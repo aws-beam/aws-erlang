@@ -367,6 +367,74 @@
 %% }
 -type list_exports_response() :: #{binary() => any()}.
 
+-type create_export_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type delete_export_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_execution_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_export_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_table_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_executions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_exports_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_tables_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_export_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -408,10 +476,7 @@
 -spec create_export(map(), create_export_request()) ->
     {ok, create_export_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_export_errors(), tuple()}.
 create_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_export(Client, Input, []).
@@ -419,10 +484,7 @@ create_export(Client, Input)
 -spec create_export(map(), create_export_request(), proplists:proplist()) ->
     {ok, create_export_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_export_errors(), tuple()}.
 create_export(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateExport">>, Input, Options).
@@ -431,10 +493,7 @@ create_export(Client, Input, Options)
 -spec delete_export(map(), delete_export_request()) ->
     {ok, delete_export_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_export_errors(), tuple()}.
 delete_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_export(Client, Input, []).
@@ -442,10 +501,7 @@ delete_export(Client, Input)
 -spec delete_export(map(), delete_export_request(), proplists:proplist()) ->
     {ok, delete_export_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_export_errors(), tuple()}.
 delete_export(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteExport">>, Input, Options).
@@ -454,10 +510,7 @@ delete_export(Client, Input, Options)
 -spec get_execution(map(), get_execution_request()) ->
     {ok, get_execution_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_execution_errors(), tuple()}.
 get_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_execution(Client, Input, []).
@@ -465,10 +518,7 @@ get_execution(Client, Input)
 -spec get_execution(map(), get_execution_request(), proplists:proplist()) ->
     {ok, get_execution_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_execution_errors(), tuple()}.
 get_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetExecution">>, Input, Options).
@@ -477,10 +527,7 @@ get_execution(Client, Input, Options)
 -spec get_export(map(), get_export_request()) ->
     {ok, get_export_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_export_errors(), tuple()}.
 get_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_export(Client, Input, []).
@@ -488,10 +535,7 @@ get_export(Client, Input)
 -spec get_export(map(), get_export_request(), proplists:proplist()) ->
     {ok, get_export_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_export_errors(), tuple()}.
 get_export(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetExport">>, Input, Options).
@@ -503,9 +547,7 @@ get_export(Client, Input, Options)
 -spec get_table(map(), get_table_request()) ->
     {ok, get_table_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_table_errors(), tuple()}.
 get_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_table(Client, Input, []).
@@ -513,9 +555,7 @@ get_table(Client, Input)
 -spec get_table(map(), get_table_request(), proplists:proplist()) ->
     {ok, get_table_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_table_errors(), tuple()}.
 get_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTable">>, Input, Options).
@@ -524,10 +564,7 @@ get_table(Client, Input, Options)
 -spec list_executions(map(), list_executions_request()) ->
     {ok, list_executions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_executions_errors(), tuple()}.
 list_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_executions(Client, Input, []).
@@ -535,10 +572,7 @@ list_executions(Client, Input)
 -spec list_executions(map(), list_executions_request(), proplists:proplist()) ->
     {ok, list_executions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_executions_errors(), tuple()}.
 list_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListExecutions">>, Input, Options).
@@ -547,9 +581,7 @@ list_executions(Client, Input, Options)
 -spec list_exports(map(), list_exports_request()) ->
     {ok, list_exports_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_exports_errors(), tuple()}.
 list_exports(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_exports(Client, Input, []).
@@ -557,9 +589,7 @@ list_exports(Client, Input)
 -spec list_exports(map(), list_exports_request(), proplists:proplist()) ->
     {ok, list_exports_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_exports_errors(), tuple()}.
 list_exports(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListExports">>, Input, Options).
@@ -568,9 +598,7 @@ list_exports(Client, Input, Options)
 -spec list_tables(map(), list_tables_request()) ->
     {ok, list_tables_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tables_errors(), tuple()}.
 list_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tables(Client, Input, []).
@@ -578,9 +606,7 @@ list_tables(Client, Input)
 -spec list_tables(map(), list_tables_request(), proplists:proplist()) ->
     {ok, list_tables_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tables_errors(), tuple()}.
 list_tables(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTables">>, Input, Options).
@@ -589,10 +615,7 @@ list_tables(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -600,10 +623,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -612,10 +632,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -623,10 +640,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -635,10 +649,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -646,10 +657,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -661,10 +669,7 @@ untag_resource(Client, Input, Options)
 -spec update_export(map(), update_export_request()) ->
     {ok, update_export_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_export_errors(), tuple()}.
 update_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_export(Client, Input, []).
@@ -672,10 +677,7 @@ update_export(Client, Input)
 -spec update_export(map(), update_export_request(), proplists:proplist()) ->
     {ok, update_export_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_export_errors(), tuple()}.
 update_export(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateExport">>, Input, Options).

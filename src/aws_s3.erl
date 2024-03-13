@@ -249,6 +249,7 @@
 %% }
 -type error() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_bucket_policy_request() :: #{
 %%   <<"ChecksumAlgorithm">> => list(any()),
@@ -259,6 +260,7 @@
 %% }
 -type put_bucket_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_bucket_logging_request() :: #{
 %%   <<"BucketLoggingStatus">> := bucket_logging_status(),
@@ -267,6 +269,7 @@
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
 -type put_bucket_logging_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% inventory_s3_bucket_destination() :: #{
@@ -278,11 +281,13 @@
 %% }
 -type inventory_s3_bucket_destination() :: #{binary() => any()}.
 
+
 %% Example:
 %% records_event() :: #{
 %%   <<"Payload">> => binary()
 %% }
 -type records_event() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_bucket_metrics_configurations_output() :: #{
@@ -292,6 +297,7 @@
 %%   <<"NextContinuationToken">> => string()
 %% }
 -type list_bucket_metrics_configurations_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_object_request() :: #{
@@ -303,6 +309,7 @@
 %% }
 -type delete_object_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_accelerate_configuration_output() :: #{
 %%   <<"RequestCharged">> => list(any()),
@@ -310,11 +317,13 @@
 %% }
 -type get_bucket_accelerate_configuration_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% c_o_r_s_configuration() :: #{
 %%   <<"CORSRules">> => list(c_o_r_s_rule()())
 %% }
 -type c_o_r_s_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_bucket_ownership_controls_request() :: #{
@@ -322,15 +331,18 @@
 %% }
 -type get_bucket_ownership_controls_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_bucket_metrics_configurations_request() :: #{
 %%   <<"ContinuationToken">> => string(),
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
 -type list_bucket_metrics_configurations_request() :: #{binary() => any()}.
+
 %% Example:
 %% no_such_key() :: #{}
 -type no_such_key() :: #{}.
+
 
 %% Example:
 %% get_bucket_policy_output() :: #{
@@ -338,11 +350,13 @@
 %% }
 -type get_bucket_policy_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% encryption_configuration() :: #{
 %%   <<"ReplicaKmsKeyID">> => string()
 %% }
 -type encryption_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_bucket_versioning_request() :: #{
@@ -354,6 +368,7 @@
 %% }
 -type put_bucket_versioning_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_object_torrent_output() :: #{
 %%   <<"Body">> => binary(),
@@ -361,12 +376,14 @@
 %% }
 -type get_object_torrent_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_object_tagging_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string(),
 %%   <<"VersionId">> => string()
 %% }
 -type delete_object_tagging_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% inventory_configuration() :: #{
@@ -380,6 +397,7 @@
 %% }
 -type inventory_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% copy_object_result() :: #{
 %%   <<"ChecksumCRC32">> => string(),
@@ -391,6 +409,7 @@
 %% }
 -type copy_object_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% public_access_block_configuration() :: #{
 %%   <<"BlockPublicAcls">> => boolean(),
@@ -400,6 +419,7 @@
 %% }
 -type public_access_block_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_accelerate_configuration_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string(),
@@ -407,11 +427,13 @@
 %% }
 -type get_bucket_accelerate_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% inventory_schedule() :: #{
 %%   <<"Frequency">> => list(any())
 %% }
 -type inventory_schedule() :: #{binary() => any()}.
+
 
 %% Example:
 %% write_get_object_response_request() :: #{
@@ -458,6 +480,7 @@
 %% }
 -type write_get_object_response_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% target_grant() :: #{
 %%   <<"Grantee">> => grantee(),
@@ -465,11 +488,13 @@
 %% }
 -type target_grant() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_bucket_website_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
 -type delete_bucket_website_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_bucket_ownership_controls_output() :: #{
@@ -477,17 +502,20 @@
 %% }
 -type get_bucket_ownership_controls_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% ownership_controls_rule() :: #{
 %%   <<"ObjectOwnership">> => list(any())
 %% }
 -type ownership_controls_rule() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_request_payment_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
 -type get_bucket_request_payment_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_public_access_block_request() :: #{
@@ -498,6 +526,7 @@
 %% }
 -type put_public_access_block_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_object_tagging_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string(),
@@ -506,11 +535,13 @@
 %% }
 -type get_object_tagging_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% abort_incomplete_multipart_upload() :: #{
 %%   <<"DaysAfterInitiation">> => integer()
 %% }
 -type abort_incomplete_multipart_upload() :: #{binary() => any()}.
+
 
 %% Example:
 %% lifecycle_rule() :: #{
@@ -526,17 +557,20 @@
 %% }
 -type lifecycle_rule() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_public_access_block_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
 -type delete_public_access_block_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_policy_status_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
 -type get_bucket_policy_status_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_object_versions_request() :: #{
@@ -552,6 +586,7 @@
 %% }
 -type list_object_versions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% versioning_configuration() :: #{
 %%   <<"MFADelete">> => list(any()),
@@ -559,12 +594,14 @@
 %% }
 -type versioning_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete() :: #{
 %%   <<"Objects">> => list(object_identifier()()),
 %%   <<"Quiet">> => boolean()
 %% }
 -type delete() :: #{binary() => any()}.
+
 
 %% Example:
 %% upload_part_output() :: #{
@@ -582,6 +619,7 @@
 %% }
 -type upload_part_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_bucket_cors_request() :: #{
 %%   <<"CORSConfiguration">> := c_o_r_s_configuration(),
@@ -591,12 +629,14 @@
 %% }
 -type put_bucket_cors_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_bucket_analytics_configuration_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string(),
 %%   <<"Id">> := string()
 %% }
 -type delete_bucket_analytics_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% head_bucket_output() :: #{
@@ -607,11 +647,13 @@
 %% }
 -type head_bucket_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_intelligent_tiering_configuration_output() :: #{
 %%   <<"IntelligentTieringConfiguration">> => intelligent_tiering_configuration()
 %% }
 -type get_bucket_intelligent_tiering_configuration_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% queue_configuration() :: #{
@@ -622,12 +664,14 @@
 %% }
 -type queue_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% filter_rule() :: #{
 %%   <<"Name">> => list(any()),
 %%   <<"Value">> => string()
 %% }
 -type filter_rule() :: #{binary() => any()}.
+
 
 %% Example:
 %% session_credentials() :: #{
@@ -638,11 +682,13 @@
 %% }
 -type session_credentials() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_logging_output() :: #{
 %%   <<"LoggingEnabled">> => logging_enabled()
 %% }
 -type get_bucket_logging_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% redirect() :: #{
@@ -654,12 +700,14 @@
 %% }
 -type redirect() :: #{binary() => any()}.
 
+
 %% Example:
 %% source_selection_criteria() :: #{
 %%   <<"ReplicaModifications">> => replica_modifications(),
 %%   <<"SseKmsEncryptedObjects">> => sse_kms_encrypted_objects()
 %% }
 -type source_selection_criteria() :: #{binary() => any()}.
+
 
 %% Example:
 %% head_object_output() :: #{
@@ -700,17 +748,20 @@
 %% }
 -type head_object_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_bucket_tagging_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
 -type delete_bucket_tagging_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% stats_event() :: #{
 %%   <<"Details">> => stats()
 %% }
 -type stats_event() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_bucket_replication_request() :: #{
@@ -722,11 +773,13 @@
 %% }
 -type put_bucket_replication_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_object_lock_configuration_output() :: #{
 %%   <<"RequestCharged">> => list(any())
 %% }
 -type put_object_lock_configuration_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_object_retention_output() :: #{
@@ -734,11 +787,13 @@
 %% }
 -type get_object_retention_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% common_prefix() :: #{
 %%   <<"Prefix">> => string()
 %% }
 -type common_prefix() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_bucket_acl_request() :: #{
@@ -746,11 +801,13 @@
 %% }
 -type get_bucket_acl_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% analytics_export_destination() :: #{
 %%   <<"S3BucketDestination">> => analytics_s3_bucket_destination()
 %% }
 -type analytics_export_destination() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_bucket_inventory_configurations_output() :: #{
@@ -761,11 +818,13 @@
 %% }
 -type list_bucket_inventory_configurations_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_object_legal_hold_output() :: #{
 %%   <<"RequestCharged">> => list(any())
 %% }
 -type put_object_legal_hold_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% inventory_filter() :: #{
@@ -773,11 +832,13 @@
 %% }
 -type inventory_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_object_retention_output() :: #{
 %%   <<"RequestCharged">> => list(any())
 %% }
 -type put_object_retention_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_object_acl_request() :: #{
@@ -796,6 +857,7 @@
 %% }
 -type put_object_acl_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% restore_object_request() :: #{
 %%   <<"ChecksumAlgorithm">> => list(any()),
@@ -805,6 +867,7 @@
 %%   <<"VersionId">> => string()
 %% }
 -type restore_object_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% copy_part_result() :: #{
@@ -817,6 +880,7 @@
 %% }
 -type copy_part_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% lambda_function_configuration() :: #{
 %%   <<"Events">> => list(list(any())()),
@@ -825,9 +889,11 @@
 %%   <<"LambdaFunctionArn">> => string()
 %% }
 -type lambda_function_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% object_not_in_active_tier_error() :: #{}
 -type object_not_in_active_tier_error() :: #{}.
+
 
 %% Example:
 %% list_objects_request() :: #{
@@ -842,12 +908,14 @@
 %% }
 -type list_objects_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_inventory_configuration_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string(),
 %%   <<"Id">> := string()
 %% }
 -type get_bucket_inventory_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% input_serialization() :: #{
@@ -857,6 +925,7 @@
 %%   <<"Parquet">> => parquet_input()
 %% }
 -type input_serialization() :: #{binary() => any()}.
+
 
 %% Example:
 %% upload_part_request() :: #{
@@ -878,6 +947,7 @@
 %% }
 -type upload_part_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% grantee() :: #{
 %%   <<"DisplayName">> => string(),
@@ -888,11 +958,13 @@
 %% }
 -type grantee() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_object_legal_hold_output() :: #{
 %%   <<"LegalHold">> => object_lock_legal_hold()
 %% }
 -type get_object_legal_hold_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% deleted_object() :: #{
@@ -903,6 +975,7 @@
 %% }
 -type deleted_object() :: #{binary() => any()}.
 
+
 %% Example:
 %% progress() :: #{
 %%   <<"BytesProcessed">> => float(),
@@ -911,11 +984,13 @@
 %% }
 -type progress() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_inventory_configuration_output() :: #{
 %%   <<"InventoryConfiguration">> => inventory_configuration()
 %% }
 -type get_bucket_inventory_configuration_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_object_output() :: #{
@@ -936,12 +1011,14 @@
 %% }
 -type put_object_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_bucket_analytics_configurations_request() :: #{
 %%   <<"ContinuationToken">> => string(),
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
 -type list_bucket_analytics_configurations_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% topic_configuration() :: #{
@@ -952,11 +1029,13 @@
 %% }
 -type topic_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_versioning_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
 -type get_bucket_versioning_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_object_versions_output() :: #{
@@ -977,11 +1056,13 @@
 %% }
 -type list_object_versions_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_lifecycle_configuration_output() :: #{
 %%   <<"Rules">> => list(lifecycle_rule()())
 %% }
 -type get_bucket_lifecycle_configuration_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% sse_kms_encrypted_objects() :: #{
@@ -989,11 +1070,13 @@
 %% }
 -type sse_kms_encrypted_objects() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_policy_status_output() :: #{
 %%   <<"PolicyStatus">> => policy_status()
 %% }
 -type get_bucket_policy_status_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_multipart_upload_output() :: #{
@@ -1013,6 +1096,7 @@
 %% }
 -type create_multipart_upload_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_acl_output() :: #{
 %%   <<"Grants">> => list(grant()()),
@@ -1020,11 +1104,13 @@
 %% }
 -type get_bucket_acl_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% object_lock_rule() :: #{
 %%   <<"DefaultRetention">> => default_retention()
 %% }
 -type object_lock_rule() :: #{binary() => any()}.
+
 
 %% Example:
 %% location_info() :: #{
@@ -1033,11 +1119,13 @@
 %% }
 -type location_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_bucket_ownership_controls_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
 -type delete_bucket_ownership_controls_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_bucket_location_output() :: #{
@@ -1045,12 +1133,14 @@
 %% }
 -type get_bucket_location_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_bucket_inventory_configuration_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string(),
 %%   <<"Id">> := string()
 %% }
 -type delete_bucket_inventory_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% logging_enabled() :: #{
@@ -1060,6 +1150,7 @@
 %%   <<"TargetPrefix">> => string()
 %% }
 -type logging_enabled() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_marker_entry() :: #{
@@ -1071,6 +1162,7 @@
 %% }
 -type delete_marker_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% select_parameters() :: #{
 %%   <<"Expression">> => string(),
@@ -1079,15 +1171,18 @@
 %%   <<"OutputSerialization">> => output_serialization()
 %% }
 -type select_parameters() :: #{binary() => any()}.
+
 %% Example:
 %% bucket_already_owned_by_you() :: #{}
 -type bucket_already_owned_by_you() :: #{}.
+
 
 %% Example:
 %% delete_bucket_policy_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
 -type delete_bucket_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_multipart_uploads_request() :: #{
@@ -1101,6 +1196,7 @@
 %%   <<"UploadIdMarker">> => string()
 %% }
 -type list_multipart_uploads_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_object_request() :: #{
@@ -1142,6 +1238,7 @@
 %% }
 -type put_object_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% object_version() :: #{
 %%   <<"ChecksumAlgorithm">> => list(list(any())()),
@@ -1157,12 +1254,14 @@
 %% }
 -type object_version() :: #{binary() => any()}.
 
+
 %% Example:
 %% noncurrent_version_expiration() :: #{
 %%   <<"NewerNoncurrentVersions">> => integer(),
 %%   <<"NoncurrentDays">> => integer()
 %% }
 -type noncurrent_version_expiration() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_object_legal_hold_request() :: #{
@@ -1172,11 +1271,13 @@
 %% }
 -type get_object_legal_hold_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_bucket_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
 -type delete_bucket_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_bucket_notification_configuration_request() :: #{
@@ -1186,12 +1287,14 @@
 %% }
 -type put_bucket_notification_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% scan_range() :: #{
 %%   <<"End">> => float(),
 %%   <<"Start">> => float()
 %% }
 -type scan_range() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_object_legal_hold_request() :: #{
@@ -1204,12 +1307,14 @@
 %% }
 -type put_object_legal_hold_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_analytics_configuration_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string(),
 %%   <<"Id">> := string()
 %% }
 -type get_bucket_analytics_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% restore_object_output() :: #{
@@ -1218,17 +1323,20 @@
 %% }
 -type restore_object_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_session_request() :: #{
 %%   <<"SessionMode">> => list(any())
 %% }
 -type create_session_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% json_input() :: #{
 %%   <<"Type">> => list(any())
 %% }
 -type json_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% metrics() :: #{
@@ -1237,11 +1345,13 @@
 %% }
 -type metrics() :: #{binary() => any()}.
 
+
 %% Example:
 %% replica_modifications() :: #{
 %%   <<"Status">> => list(any())
 %% }
 -type replica_modifications() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_bucket_encryption_request() :: #{
@@ -1249,11 +1359,13 @@
 %% }
 -type get_bucket_encryption_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% replication_time_value() :: #{
 %%   <<"Minutes">> => integer()
 %% }
 -type replication_time_value() :: #{binary() => any()}.
+
 
 %% Example:
 %% upload_part_copy_request() :: #{
@@ -1277,17 +1389,20 @@
 %% }
 -type upload_part_copy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% policy_status() :: #{
 %%   <<"IsPublic">> => boolean()
 %% }
 -type policy_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_replication_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
 -type get_bucket_replication_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_bucket_analytics_configurations_output() :: #{
@@ -1298,6 +1413,7 @@
 %% }
 -type list_bucket_analytics_configurations_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% replication_configuration() :: #{
 %%   <<"Role">> => string(),
@@ -1305,11 +1421,13 @@
 %% }
 -type replication_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_tagging_output() :: #{
 %%   <<"TagSet">> => list(tag()())
 %% }
 -type get_bucket_tagging_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% object_identifier() :: #{
@@ -1318,12 +1436,14 @@
 %% }
 -type object_identifier() :: #{binary() => any()}.
 
+
 %% Example:
 %% intelligent_tiering_and_operator() :: #{
 %%   <<"Prefix">> => string(),
 %%   <<"Tags">> => list(tag()())
 %% }
 -type intelligent_tiering_and_operator() :: #{binary() => any()}.
+
 
 %% Example:
 %% copy_object_output() :: #{
@@ -1341,11 +1461,13 @@
 %% }
 -type copy_object_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_website_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
 -type get_bucket_website_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% json_output() :: #{
@@ -1353,11 +1475,13 @@
 %% }
 -type json_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_intelligent_tiering_configuration_request() :: #{
 %%   <<"Id">> := string()
 %% }
 -type get_bucket_intelligent_tiering_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% grant() :: #{
@@ -1366,20 +1490,24 @@
 %% }
 -type grant() :: #{binary() => any()}.
 
+
 %% Example:
 %% notification_configuration_filter() :: #{
 %%   <<"Key">> => s3_key_filter()
 %% }
 -type notification_configuration_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_session_output() :: #{
 %%   <<"Credentials">> => session_credentials()
 %% }
 -type create_session_output() :: #{binary() => any()}.
+
 %% Example:
 %% parquet_input() :: #{}
 -type parquet_input() :: #{}.
+
 
 %% Example:
 %% tag() :: #{
@@ -1388,12 +1516,14 @@
 %% }
 -type tag() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_object_tagging_output() :: #{
 %%   <<"TagSet">> => list(tag()()),
 %%   <<"VersionId">> => string()
 %% }
 -type get_object_tagging_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_object_attributes_output() :: #{
@@ -1409,17 +1539,20 @@
 %% }
 -type get_object_attributes_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_encryption_output() :: #{
 %%   <<"ServerSideEncryptionConfiguration">> => server_side_encryption_configuration()
 %% }
 -type get_bucket_encryption_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_cors_output() :: #{
 %%   <<"CORSRules">> => list(c_o_r_s_rule()())
 %% }
 -type get_bucket_cors_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% noncurrent_version_transition() :: #{
@@ -1429,6 +1562,7 @@
 %% }
 -type noncurrent_version_transition() :: #{binary() => any()}.
 
+
 %% Example:
 %% bucket_info() :: #{
 %%   <<"DataRedundancy">> => list(any()),
@@ -1436,11 +1570,13 @@
 %% }
 -type bucket_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_object_tagging_output() :: #{
 %%   <<"VersionId">> => string()
 %% }
 -type delete_object_tagging_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% abort_multipart_upload_output() :: #{
@@ -1448,17 +1584,20 @@
 %% }
 -type abort_multipart_upload_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% select_object_content_output() :: #{
 %%   <<"Payload">> => list()
 %% }
 -type select_object_content_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_bucket_intelligent_tiering_configuration_request() :: #{
 %%   <<"Id">> := string()
 %% }
 -type delete_bucket_intelligent_tiering_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_multipart_upload_request() :: #{
@@ -1493,6 +1632,7 @@
 %% }
 -type create_multipart_upload_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% csv_input() :: #{
 %%   <<"AllowQuotedRecordDelimiter">> => boolean(),
@@ -1505,6 +1645,7 @@
 %% }
 -type csv_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% stats() :: #{
 %%   <<"BytesProcessed">> => float(),
@@ -1513,12 +1654,14 @@
 %% }
 -type stats() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_buckets_output() :: #{
 %%   <<"Buckets">> => list(bucket()()),
 %%   <<"Owner">> => owner()
 %% }
 -type list_buckets_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_bucket_configuration() :: #{
@@ -1527,9 +1670,11 @@
 %%   <<"LocationConstraint">> => list(any())
 %% }
 -type create_bucket_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% bucket_already_exists() :: #{}
 -type bucket_already_exists() :: #{}.
+
 
 %% Example:
 %% server_side_encryption_rule() :: #{
@@ -1537,6 +1682,7 @@
 %%   <<"BucketKeyEnabled">> => boolean()
 %% }
 -type server_side_encryption_rule() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_bucket_intelligent_tiering_configurations_output() :: #{
@@ -1547,12 +1693,14 @@
 %% }
 -type list_bucket_intelligent_tiering_configurations_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% initiator() :: #{
 %%   <<"DisplayName">> => string(),
 %%   <<"ID">> => string()
 %% }
 -type initiator() :: #{binary() => any()}.
+
 
 %% Example:
 %% select_object_content_request() :: #{
@@ -1569,6 +1717,7 @@
 %% }
 -type select_object_content_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% completed_part() :: #{
 %%   <<"ChecksumCRC32">> => string(),
@@ -1580,6 +1729,7 @@
 %% }
 -type completed_part() :: #{binary() => any()}.
 
+
 %% Example:
 %% analytics_s3_bucket_destination() :: #{
 %%   <<"Bucket">> => string(),
@@ -1589,6 +1739,7 @@
 %% }
 -type analytics_s3_bucket_destination() :: #{binary() => any()}.
 
+
 %% Example:
 %% encryption() :: #{
 %%   <<"EncryptionType">> => list(any()),
@@ -1597,14 +1748,17 @@
 %% }
 -type encryption() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_bucket_encryption_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
 -type delete_bucket_encryption_request() :: #{binary() => any()}.
+
 %% Example:
 %% continuation_event() :: #{}
 -type continuation_event() :: #{}.
+
 
 %% Example:
 %% s3_key_filter() :: #{
@@ -1612,12 +1766,14 @@
 %% }
 -type s3_key_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_bucket_metrics_configuration_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string(),
 %%   <<"Id">> := string()
 %% }
 -type delete_bucket_metrics_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% intelligent_tiering_configuration() :: #{
@@ -1628,6 +1784,7 @@
 %% }
 -type intelligent_tiering_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% redirect_all_requests_to() :: #{
 %%   <<"HostName">> => string(),
@@ -1635,11 +1792,13 @@
 %% }
 -type redirect_all_requests_to() :: #{binary() => any()}.
 
+
 %% Example:
 %% tagging() :: #{
 %%   <<"TagSet">> => list(tag()())
 %% }
 -type tagging() :: #{binary() => any()}.
+
 
 %% Example:
 %% request_payment_configuration() :: #{
@@ -1647,11 +1806,13 @@
 %% }
 -type request_payment_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_control_translation() :: #{
 %%   <<"Owner">> => list(any())
 %% }
 -type access_control_translation() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_bucket_request_payment_request() :: #{
@@ -1662,12 +1823,14 @@
 %% }
 -type put_bucket_request_payment_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% server_side_encryption_by_default() :: #{
 %%   <<"KMSMasterKeyID">> => string(),
 %%   <<"SSEAlgorithm">> => list(any())
 %% }
 -type server_side_encryption_by_default() :: #{binary() => any()}.
+
 
 %% Example:
 %% website_configuration() :: #{
@@ -1678,11 +1841,13 @@
 %% }
 -type website_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% output_location() :: #{
 %%   <<"S3">> => s3_location()
 %% }
 -type output_location() :: #{binary() => any()}.
+
 
 %% Example:
 %% target_object_key_format() :: #{
@@ -1691,11 +1856,13 @@
 %% }
 -type target_object_key_format() :: #{binary() => any()}.
 
+
 %% Example:
 %% storage_class_analysis() :: #{
 %%   <<"DataExport">> => storage_class_analysis_data_export()
 %% }
 -type storage_class_analysis() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_object_attributes_parts() :: #{
@@ -1707,6 +1874,7 @@
 %%   <<"TotalPartsCount">> => integer()
 %% }
 -type get_object_attributes_parts() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_objects_v2_output() :: #{
@@ -1726,12 +1894,14 @@
 %% }
 -type list_objects_v2_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% condition() :: #{
 %%   <<"HttpErrorCodeReturnedEquals">> => string(),
 %%   <<"KeyPrefixEquals">> => string()
 %% }
 -type condition() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_object_output() :: #{
@@ -1774,6 +1944,7 @@
 %% }
 -type get_object_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_location() :: #{
 %%   <<"AccessControlList">> => list(grant()()),
@@ -1786,6 +1957,7 @@
 %%   <<"UserMetadata">> => list(metadata_entry()())
 %% }
 -type s3_location() :: #{binary() => any()}.
+
 
 %% Example:
 %% object() :: #{
@@ -1800,11 +1972,13 @@
 %% }
 -type object() :: #{binary() => any()}.
 
+
 %% Example:
 %% progress_event() :: #{
 %%   <<"Details">> => progress()
 %% }
 -type progress_event() :: #{binary() => any()}.
+
 
 %% Example:
 %% complete_multipart_upload_output() :: #{
@@ -1825,11 +1999,13 @@
 %% }
 -type complete_multipart_upload_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% server_side_encryption_configuration() :: #{
 %%   <<"Rules">> => list(server_side_encryption_rule()())
 %% }
 -type server_side_encryption_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_object_acl_output() :: #{
@@ -1838,6 +2014,7 @@
 %%   <<"RequestCharged">> => list(any())
 %% }
 -type get_object_acl_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_bucket_encryption_request() :: #{
@@ -1848,6 +2025,7 @@
 %% }
 -type put_bucket_encryption_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% default_retention() :: #{
 %%   <<"Days">> => integer(),
@@ -1856,11 +2034,13 @@
 %% }
 -type default_retention() :: #{binary() => any()}.
 
+
 %% Example:
 %% ownership_controls() :: #{
 %%   <<"Rules">> => list(ownership_controls_rule()())
 %% }
 -type ownership_controls() :: #{binary() => any()}.
+
 
 %% Example:
 %% notification_configuration() :: #{
@@ -1871,6 +2051,7 @@
 %% }
 -type notification_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% object_lock_configuration() :: #{
 %%   <<"ObjectLockEnabled">> => list(any()),
@@ -1878,11 +2059,13 @@
 %% }
 -type object_lock_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_lifecycle_configuration_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
 -type get_bucket_lifecycle_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_objects_output() :: #{
@@ -1892,11 +2075,13 @@
 %% }
 -type delete_objects_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_object_acl_output() :: #{
 %%   <<"RequestCharged">> => list(any())
 %% }
 -type put_object_acl_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_objects_output() :: #{
@@ -1914,6 +2099,7 @@
 %% }
 -type list_objects_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% checksum() :: #{
 %%   <<"ChecksumCRC32">> => string(),
@@ -1922,9 +2108,11 @@
 %%   <<"ChecksumSHA256">> => string()
 %% }
 -type checksum() :: #{binary() => any()}.
+
 %% Example:
 %% event_bridge_configuration() :: #{}
 -type event_bridge_configuration() :: #{}.
+
 
 %% Example:
 %% get_bucket_versioning_output() :: #{
@@ -1932,9 +2120,11 @@
 %%   <<"Status">> => list(any())
 %% }
 -type get_bucket_versioning_output() :: #{binary() => any()}.
+
 %% Example:
 %% no_such_bucket() :: #{}
 -type no_such_bucket() :: #{}.
+
 
 %% Example:
 %% get_bucket_metrics_configuration_request() :: #{
@@ -1943,11 +2133,13 @@
 %% }
 -type get_bucket_metrics_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_policy_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
 -type get_bucket_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% bucket_logging_status() :: #{
@@ -1955,11 +2147,13 @@
 %% }
 -type bucket_logging_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_object_lock_configuration_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
 -type get_object_lock_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% copy_object_request() :: #{
@@ -2005,12 +2199,14 @@
 %% }
 -type copy_object_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_directory_buckets_request() :: #{
 %%   <<"ContinuationToken">> => string(),
 %%   <<"MaxDirectoryBuckets">> => integer()
 %% }
 -type list_directory_buckets_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_bucket_ownership_controls_request() :: #{
@@ -2020,11 +2216,13 @@
 %% }
 -type put_bucket_ownership_controls_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_bucket_lifecycle_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
 -type delete_bucket_lifecycle_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_objects_request() :: #{
@@ -2037,11 +2235,13 @@
 %% }
 -type delete_objects_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_public_access_block_output() :: #{
 %%   <<"PublicAccessBlockConfiguration">> => public_access_block_configuration()
 %% }
 -type get_public_access_block_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% restore_status() :: #{
@@ -2050,12 +2250,14 @@
 %% }
 -type restore_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% analytics_and_operator() :: #{
 %%   <<"Prefix">> => string(),
 %%   <<"Tags">> => list(tag()())
 %% }
 -type analytics_and_operator() :: #{binary() => any()}.
+
 
 %% Example:
 %% bucket() :: #{
@@ -2064,11 +2266,13 @@
 %% }
 -type bucket() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_marker_replication() :: #{
 %%   <<"Status">> => list(any())
 %% }
 -type delete_marker_replication() :: #{binary() => any()}.
+
 
 %% Example:
 %% inventory_encryption() :: #{
@@ -2076,6 +2280,7 @@
 %%   <<"SSES3">> => sse_s3()
 %% }
 -type inventory_encryption() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_bucket_request() :: #{
@@ -2091,12 +2296,14 @@
 %% }
 -type create_bucket_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% storage_class_analysis_data_export() :: #{
 %%   <<"Destination">> => analytics_export_destination(),
 %%   <<"OutputSchemaVersion">> => list(any())
 %% }
 -type storage_class_analysis_data_export() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_bucket_accelerate_configuration_request() :: #{
@@ -2105,6 +2312,7 @@
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
 -type put_bucket_accelerate_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% c_o_r_s_rule() :: #{
@@ -2116,6 +2324,7 @@
 %%   <<"MaxAgeSeconds">> => integer()
 %% }
 -type c_o_r_s_rule() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_bucket_acl_request() :: #{
@@ -2131,15 +2340,18 @@
 %%   <<"GrantWriteACP">> => string()
 %% }
 -type put_bucket_acl_request() :: #{binary() => any()}.
+
 %% Example:
 %% simple_prefix() :: #{}
 -type simple_prefix() :: #{}.
+
 
 %% Example:
 %% existing_object_replication() :: #{
 %%   <<"Status">> => list(any())
 %% }
 -type existing_object_replication() :: #{binary() => any()}.
+
 
 %% Example:
 %% transition() :: #{
@@ -2149,11 +2361,13 @@
 %% }
 -type transition() :: #{binary() => any()}.
 
+
 %% Example:
 %% index_document() :: #{
 %%   <<"Suffix">> => string()
 %% }
 -type index_document() :: #{binary() => any()}.
+
 
 %% Example:
 %% intelligent_tiering_filter() :: #{
@@ -2163,12 +2377,14 @@
 %% }
 -type intelligent_tiering_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_object_torrent_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string(),
 %%   <<"RequestPayer">> => list(any())
 %% }
 -type get_object_torrent_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_bucket_metrics_configuration_request() :: #{
@@ -2177,6 +2393,7 @@
 %%   <<"MetricsConfiguration">> := metrics_configuration()
 %% }
 -type put_bucket_metrics_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_object_retention_request() :: #{
@@ -2189,6 +2406,7 @@
 %%   <<"VersionId">> => string()
 %% }
 -type put_object_retention_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% part() :: #{
@@ -2203,11 +2421,13 @@
 %% }
 -type part() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_tagging_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
 -type get_bucket_tagging_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% object_part() :: #{
@@ -2219,9 +2439,11 @@
 %%   <<"Size">> => float()
 %% }
 -type object_part() :: #{binary() => any()}.
+
 %% Example:
 %% end_event() :: #{}
 -type end_event() :: #{}.
+
 
 %% Example:
 %% metadata_entry() :: #{
@@ -2229,15 +2451,18 @@
 %%   <<"Value">> => string()
 %% }
 -type metadata_entry() :: #{binary() => any()}.
+
 %% Example:
 %% sse_s3() :: #{}
 -type sse_s3() :: #{}.
+
 
 %% Example:
 %% get_bucket_logging_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
 -type get_bucket_logging_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_object_acl_request() :: #{
@@ -2246,6 +2471,7 @@
 %%   <<"VersionId">> => string()
 %% }
 -type get_object_acl_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% replication_rule() :: #{
@@ -2260,6 +2486,7 @@
 %%   <<"Status">> => list(any())
 %% }
 -type replication_rule() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_objects_v2_request() :: #{
@@ -2276,11 +2503,13 @@
 %% }
 -type list_objects_v2_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_bucket_output() :: #{
 %%   <<"Location">> => string()
 %% }
 -type create_bucket_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_bucket_intelligent_tiering_configuration_request() :: #{
@@ -2288,6 +2517,7 @@
 %%   <<"IntelligentTieringConfiguration">> := intelligent_tiering_configuration()
 %% }
 -type put_bucket_intelligent_tiering_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% destination() :: #{
@@ -2301,11 +2531,13 @@
 %% }
 -type destination() :: #{binary() => any()}.
 
+
 %% Example:
 %% head_bucket_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
 -type head_bucket_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% lifecycle_expiration() :: #{
@@ -2315,12 +2547,14 @@
 %% }
 -type lifecycle_expiration() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_control_policy() :: #{
 %%   <<"Grants">> => list(grant()()),
 %%   <<"Owner">> => owner()
 %% }
 -type access_control_policy() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_bucket_analytics_configuration_request() :: #{
@@ -2330,6 +2564,7 @@
 %% }
 -type put_bucket_analytics_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% object_lock_retention() :: #{
 %%   <<"Mode">> => list(any()),
@@ -2337,11 +2572,13 @@
 %% }
 -type object_lock_retention() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_object_tagging_output() :: #{
 %%   <<"VersionId">> => string()
 %% }
 -type put_object_tagging_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% upload_part_copy_output() :: #{
@@ -2356,11 +2593,13 @@
 %% }
 -type upload_part_copy_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_location_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
 -type get_bucket_location_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% multipart_upload() :: #{
@@ -2374,6 +2613,7 @@
 %% }
 -type multipart_upload() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_bucket_tagging_request() :: #{
 %%   <<"ChecksumAlgorithm">> => list(any()),
@@ -2383,11 +2623,13 @@
 %% }
 -type put_bucket_tagging_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% partitioned_prefix() :: #{
 %%   <<"PartitionDateSource">> => list(any())
 %% }
 -type partitioned_prefix() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_bucket_inventory_configurations_request() :: #{
@@ -2395,6 +2637,7 @@
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
 -type list_bucket_inventory_configurations_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_multipart_uploads_output() :: #{
@@ -2414,11 +2657,13 @@
 %% }
 -type list_multipart_uploads_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% sse_kms() :: #{
 %%   <<"KeyId">> => string()
 %% }
 -type sse_kms() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_object_lock_configuration_request() :: #{
@@ -2431,6 +2676,7 @@
 %% }
 -type put_object_lock_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_object_output() :: #{
 %%   <<"DeleteMarker">> => boolean(),
@@ -2439,11 +2685,13 @@
 %% }
 -type delete_object_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% completed_multipart_upload() :: #{
 %%   <<"Parts">> => list(completed_part()())
 %% }
 -type completed_multipart_upload() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_parts_output() :: #{
@@ -2465,6 +2713,7 @@
 %% }
 -type list_parts_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% csv_output() :: #{
 %%   <<"FieldDelimiter">> => string(),
@@ -2475,14 +2724,17 @@
 %% }
 -type csv_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_analytics_configuration_output() :: #{
 %%   <<"AnalyticsConfiguration">> => analytics_configuration()
 %% }
 -type get_bucket_analytics_configuration_output() :: #{binary() => any()}.
+
 %% Example:
 %% not_found() :: #{}
 -type not_found() :: #{}.
+
 
 %% Example:
 %% replication_rule_and_operator() :: #{
@@ -2490,6 +2742,7 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type replication_rule_and_operator() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_object_retention_request() :: #{
@@ -2499,6 +2752,7 @@
 %% }
 -type get_object_retention_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% abort_multipart_upload_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string(),
@@ -2507,12 +2761,14 @@
 %% }
 -type abort_multipart_upload_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tiering() :: #{
 %%   <<"AccessTier">> => list(any()),
 %%   <<"Days">> => integer()
 %% }
 -type tiering() :: #{binary() => any()}.
+
 
 %% Example:
 %% head_object_request() :: #{
@@ -2532,11 +2788,13 @@
 %% }
 -type head_object_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_public_access_block_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
 -type get_public_access_block_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_bucket_cors_request() :: #{
@@ -2544,20 +2802,24 @@
 %% }
 -type get_bucket_cors_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% glacier_job_parameters() :: #{
 %%   <<"Tier">> => list(any())
 %% }
 -type glacier_job_parameters() :: #{binary() => any()}.
+
 %% Example:
 %% no_such_upload() :: #{}
 -type no_such_upload() :: #{}.
+
 
 %% Example:
 %% inventory_destination() :: #{
 %%   <<"S3BucketDestination">> => inventory_s3_bucket_destination()
 %% }
 -type inventory_destination() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_parts_request() :: #{
@@ -2572,11 +2834,13 @@
 %% }
 -type list_parts_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% object_lock_legal_hold() :: #{
 %%   <<"Status">> => list(any())
 %% }
 -type object_lock_legal_hold() :: #{binary() => any()}.
+
 
 %% Example:
 %% replication_time() :: #{
@@ -2585,11 +2849,13 @@
 %% }
 -type replication_time() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_metrics_configuration_output() :: #{
 %%   <<"MetricsConfiguration">> => metrics_configuration()
 %% }
 -type get_bucket_metrics_configuration_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_directory_buckets_output() :: #{
@@ -2598,11 +2864,13 @@
 %% }
 -type list_directory_buckets_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% request_progress() :: #{
 %%   <<"Enabled">> => boolean()
 %% }
 -type request_progress() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_bucket_lifecycle_configuration_request() :: #{
@@ -2612,12 +2880,14 @@
 %% }
 -type put_bucket_lifecycle_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% output_serialization() :: #{
 %%   <<"CSV">> => csv_output(),
 %%   <<"JSON">> => json_output()
 %% }
 -type output_serialization() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_object_request() :: #{
@@ -2643,6 +2913,7 @@
 %% }
 -type get_object_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% metrics_and_operator() :: #{
 %%   <<"AccessPointArn">> => string(),
@@ -2650,6 +2921,7 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type metrics_and_operator() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_bucket_website_output() :: #{
@@ -2660,17 +2932,20 @@
 %% }
 -type get_bucket_website_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_request_payment_output() :: #{
 %%   <<"Payer">> => list(any())
 %% }
 -type get_bucket_request_payment_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% bucket_lifecycle_configuration() :: #{
 %%   <<"Rules">> => list(lifecycle_rule()())
 %% }
 -type bucket_lifecycle_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% routing_rule() :: #{
@@ -2679,12 +2954,14 @@
 %% }
 -type routing_rule() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_object_state() :: #{
 %%   <<"AccessTier">> => list(any()),
 %%   <<"StorageClass">> => list(any())
 %% }
 -type invalid_object_state() :: #{binary() => any()}.
+
 
 %% Example:
 %% complete_multipart_upload_request() :: #{
@@ -2702,6 +2979,7 @@
 %% }
 -type complete_multipart_upload_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_bucket_website_request() :: #{
 %%   <<"ChecksumAlgorithm">> => list(any()),
@@ -2710,6 +2988,7 @@
 %%   <<"WebsiteConfiguration">> := website_configuration()
 %% }
 -type put_bucket_website_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% restore_request() :: #{
@@ -2723,6 +3002,7 @@
 %% }
 -type restore_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% analytics_configuration() :: #{
 %%   <<"Filter">> => list(),
@@ -2731,11 +3011,13 @@
 %% }
 -type analytics_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_bucket_replication_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
 -type delete_bucket_replication_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_object_tagging_request() :: #{
@@ -2748,11 +3030,13 @@
 %% }
 -type put_object_tagging_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_replication_output() :: #{
 %%   <<"ReplicationConfiguration">> => replication_configuration()
 %% }
 -type get_bucket_replication_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_bucket_intelligent_tiering_configurations_request() :: #{
@@ -2760,26 +3044,31 @@
 %% }
 -type list_bucket_intelligent_tiering_configurations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_notification_configuration_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
 -type get_bucket_notification_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_bucket_cors_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
 -type delete_bucket_cors_request() :: #{binary() => any()}.
+
 %% Example:
 %% object_already_in_active_tier_error() :: #{}
 -type object_already_in_active_tier_error() :: #{}.
+
 
 %% Example:
 %% get_object_lock_configuration_output() :: #{
 %%   <<"ObjectLockConfiguration">> => object_lock_configuration()
 %% }
 -type get_object_lock_configuration_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_object_attributes_request() :: #{
@@ -2795,12 +3084,14 @@
 %% }
 -type get_object_attributes_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% owner() :: #{
 %%   <<"DisplayName">> => string(),
 %%   <<"ID">> => string()
 %% }
 -type owner() :: #{binary() => any()}.
+
 
 %% Example:
 %% metrics_configuration() :: #{
@@ -2809,17 +3100,20 @@
 %% }
 -type metrics_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% accelerate_configuration() :: #{
 %%   <<"Status">> => list(any())
 %% }
 -type accelerate_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% error_document() :: #{
 %%   <<"Key">> => string()
 %% }
 -type error_document() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_bucket_inventory_configuration_request() :: #{
@@ -2829,6 +3123,7 @@
 %% }
 -type put_bucket_inventory_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% lifecycle_rule_and_operator() :: #{
 %%   <<"ObjectSizeGreaterThan">> => float(),
@@ -2837,6 +3132,47 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type lifecycle_rule_and_operator() :: #{binary() => any()}.
+
+-type abort_multipart_upload_errors() ::
+    no_such_upload().
+
+-type copy_object_errors() ::
+    object_not_in_active_tier_error().
+
+-type create_bucket_errors() ::
+    bucket_already_exists() | 
+    bucket_already_owned_by_you().
+
+-type create_session_errors() ::
+    no_such_bucket().
+
+-type get_object_errors() ::
+    invalid_object_state() | 
+    no_such_key().
+
+-type get_object_acl_errors() ::
+    no_such_key().
+
+-type get_object_attributes_errors() ::
+    no_such_key().
+
+-type head_bucket_errors() ::
+    not_found().
+
+-type head_object_errors() ::
+    not_found().
+
+-type list_objects_errors() ::
+    no_such_bucket().
+
+-type list_objects_v2_errors() ::
+    no_such_bucket().
+
+-type put_object_acl_errors() ::
+    no_such_key().
+
+-type restore_object_errors() ::
+    object_already_in_active_tier_error().
 
 %%====================================================================
 %% API
@@ -2924,14 +3260,14 @@
 -spec abort_multipart_upload(map(), binary() | list(), binary() | list(), abort_multipart_upload_request()) ->
     {ok, abort_multipart_upload_output(), tuple()} |
     {error, any()} |
-    {error, no_such_upload(), tuple()}.
+    {error, abort_multipart_upload_errors(), tuple()}.
 abort_multipart_upload(Client, Bucket, Key, Input) ->
     abort_multipart_upload(Client, Bucket, Key, Input, []).
 
 -spec abort_multipart_upload(map(), binary() | list(), binary() | list(), abort_multipart_upload_request(), proplists:proplist()) ->
     {ok, abort_multipart_upload_output(), tuple()} |
     {error, any()} |
-    {error, no_such_upload(), tuple()}.
+    {error, abort_multipart_upload_errors(), tuple()}.
 abort_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?x-id=AbortMultipartUpload"],
@@ -3382,14 +3718,14 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 -spec copy_object(map(), binary() | list(), binary() | list(), copy_object_request()) ->
     {ok, copy_object_output(), tuple()} |
     {error, any()} |
-    {error, object_not_in_active_tier_error(), tuple()}.
+    {error, copy_object_errors(), tuple()}.
 copy_object(Client, Bucket, Key, Input) ->
     copy_object(Client, Bucket, Key, Input, []).
 
 -spec copy_object(map(), binary() | list(), binary() | list(), copy_object_request(), proplists:proplist()) ->
     {ok, copy_object_output(), tuple()} |
     {error, any()} |
-    {error, object_not_in_active_tier_error(), tuple()}.
+    {error, copy_object_errors(), tuple()}.
 copy_object(Client, Bucket, Key, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?x-id=CopyObject"],
@@ -3624,16 +3960,14 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
 -spec create_bucket(map(), binary() | list(), create_bucket_request()) ->
     {ok, create_bucket_output(), tuple()} |
     {error, any()} |
-    {error, bucket_already_exists(), tuple()} |
-    {error, bucket_already_owned_by_you(), tuple()}.
+    {error, create_bucket_errors(), tuple()}.
 create_bucket(Client, Bucket, Input) ->
     create_bucket(Client, Bucket, Input, []).
 
 -spec create_bucket(map(), binary() | list(), create_bucket_request(), proplists:proplist()) ->
     {ok, create_bucket_output(), tuple()} |
     {error, any()} |
-    {error, bucket_already_exists(), tuple()} |
-    {error, bucket_already_owned_by_you(), tuple()}.
+    {error, create_bucket_errors(), tuple()}.
 create_bucket(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), ""],
@@ -4122,7 +4456,7 @@ create_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 -spec create_session(map(), binary() | list()) ->
     {ok, create_session_output(), tuple()} |
     {error, any()} |
-    {error, no_such_bucket(), tuple()}.
+    {error, create_session_errors(), tuple()}.
 create_session(Client, Bucket)
   when is_map(Client) ->
     create_session(Client, Bucket, #{}, #{}).
@@ -4130,7 +4464,7 @@ create_session(Client, Bucket)
 -spec create_session(map(), binary() | list(), map(), map()) ->
     {ok, create_session_output(), tuple()} |
     {error, any()} |
-    {error, no_such_bucket(), tuple()}.
+    {error, create_session_errors(), tuple()}.
 create_session(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     create_session(Client, Bucket, QueryMap, HeadersMap, []).
@@ -4138,7 +4472,7 @@ create_session(Client, Bucket, QueryMap, HeadersMap)
 -spec create_session(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, create_session_output(), tuple()} |
     {error, any()} |
-    {error, no_such_bucket(), tuple()}.
+    {error, create_session_errors(), tuple()}.
 create_session(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?session"],
@@ -7204,8 +7538,7 @@ get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options0)
 -spec get_object(map(), binary() | list(), binary() | list()) ->
     {ok, get_object_output(), tuple()} |
     {error, any()} |
-    {error, invalid_object_state(), tuple()} |
-    {error, no_such_key(), tuple()}.
+    {error, get_object_errors(), tuple()}.
 get_object(Client, Bucket, Key)
   when is_map(Client) ->
     get_object(Client, Bucket, Key, #{}, #{}).
@@ -7213,8 +7546,7 @@ get_object(Client, Bucket, Key)
 -spec get_object(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_object_output(), tuple()} |
     {error, any()} |
-    {error, invalid_object_state(), tuple()} |
-    {error, no_such_key(), tuple()}.
+    {error, get_object_errors(), tuple()}.
 get_object(Client, Bucket, Key, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_object(Client, Bucket, Key, QueryMap, HeadersMap, []).
@@ -7222,8 +7554,7 @@ get_object(Client, Bucket, Key, QueryMap, HeadersMap)
 -spec get_object(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_object_output(), tuple()} |
     {error, any()} |
-    {error, invalid_object_state(), tuple()} |
-    {error, no_such_key(), tuple()}.
+    {error, get_object_errors(), tuple()}.
 get_object(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?x-id=GetObject"],
@@ -7360,7 +7691,7 @@ get_object(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 -spec get_object_acl(map(), binary() | list(), binary() | list()) ->
     {ok, get_object_acl_output(), tuple()} |
     {error, any()} |
-    {error, no_such_key(), tuple()}.
+    {error, get_object_acl_errors(), tuple()}.
 get_object_acl(Client, Bucket, Key)
   when is_map(Client) ->
     get_object_acl(Client, Bucket, Key, #{}, #{}).
@@ -7368,7 +7699,7 @@ get_object_acl(Client, Bucket, Key)
 -spec get_object_acl(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_object_acl_output(), tuple()} |
     {error, any()} |
-    {error, no_such_key(), tuple()}.
+    {error, get_object_acl_errors(), tuple()}.
 get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, []).
@@ -7376,7 +7707,7 @@ get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap)
 -spec get_object_acl(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_object_acl_output(), tuple()} |
     {error, any()} |
-    {error, no_such_key(), tuple()}.
+    {error, get_object_acl_errors(), tuple()}.
 get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?acl"],
@@ -7598,7 +7929,7 @@ get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 -spec get_object_attributes(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_object_attributes_output(), tuple()} |
     {error, any()} |
-    {error, no_such_key(), tuple()}.
+    {error, get_object_attributes_errors(), tuple()}.
 get_object_attributes(Client, Bucket, Key, ObjectAttributes)
   when is_map(Client) ->
     get_object_attributes(Client, Bucket, Key, ObjectAttributes, #{}, #{}).
@@ -7606,7 +7937,7 @@ get_object_attributes(Client, Bucket, Key, ObjectAttributes)
 -spec get_object_attributes(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_object_attributes_output(), tuple()} |
     {error, any()} |
-    {error, no_such_key(), tuple()}.
+    {error, get_object_attributes_errors(), tuple()}.
 get_object_attributes(Client, Bucket, Key, ObjectAttributes, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_object_attributes(Client, Bucket, Key, ObjectAttributes, QueryMap, HeadersMap, []).
@@ -7614,7 +7945,7 @@ get_object_attributes(Client, Bucket, Key, ObjectAttributes, QueryMap, HeadersMa
 -spec get_object_attributes(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_object_attributes_output(), tuple()} |
     {error, any()} |
-    {error, no_such_key(), tuple()}.
+    {error, get_object_attributes_errors(), tuple()}.
 get_object_attributes(Client, Bucket, Key, ObjectAttributes, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?attributes"],
@@ -8159,14 +8490,14 @@ get_public_access_block(Client, Bucket, QueryMap, HeadersMap, Options0)
 -spec head_bucket(map(), binary() | list(), head_bucket_request()) ->
     {ok, head_bucket_output(), tuple()} |
     {error, any()} |
-    {error, not_found(), tuple()}.
+    {error, head_bucket_errors(), tuple()}.
 head_bucket(Client, Bucket, Input) ->
     head_bucket(Client, Bucket, Input, []).
 
 -spec head_bucket(map(), binary() | list(), head_bucket_request(), proplists:proplist()) ->
     {ok, head_bucket_output(), tuple()} |
     {error, any()} |
-    {error, not_found(), tuple()}.
+    {error, head_bucket_errors(), tuple()}.
 head_bucket(Client, Bucket, Input0, Options0) ->
     Method = head,
     Path = ["/", aws_util:encode_uri(Bucket), ""],
@@ -8360,14 +8691,14 @@ head_bucket(Client, Bucket, Input0, Options0) ->
 -spec head_object(map(), binary() | list(), binary() | list(), head_object_request()) ->
     {ok, head_object_output(), tuple()} |
     {error, any()} |
-    {error, not_found(), tuple()}.
+    {error, head_object_errors(), tuple()}.
 head_object(Client, Bucket, Key, Input) ->
     head_object(Client, Bucket, Key, Input, []).
 
 -spec head_object(map(), binary() | list(), binary() | list(), head_object_request(), proplists:proplist()) ->
     {ok, head_object_output(), tuple()} |
     {error, any()} |
-    {error, not_found(), tuple()}.
+    {error, head_object_errors(), tuple()}.
 head_object(Client, Bucket, Key, Input0, Options0) ->
     Method = head,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
@@ -9234,7 +9565,7 @@ list_object_versions(Client, Bucket, QueryMap, HeadersMap, Options0)
 -spec list_objects(map(), binary() | list()) ->
     {ok, list_objects_output(), tuple()} |
     {error, any()} |
-    {error, no_such_bucket(), tuple()}.
+    {error, list_objects_errors(), tuple()}.
 list_objects(Client, Bucket)
   when is_map(Client) ->
     list_objects(Client, Bucket, #{}, #{}).
@@ -9242,7 +9573,7 @@ list_objects(Client, Bucket)
 -spec list_objects(map(), binary() | list(), map(), map()) ->
     {ok, list_objects_output(), tuple()} |
     {error, any()} |
-    {error, no_such_bucket(), tuple()}.
+    {error, list_objects_errors(), tuple()}.
 list_objects(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_objects(Client, Bucket, QueryMap, HeadersMap, []).
@@ -9250,7 +9581,7 @@ list_objects(Client, Bucket, QueryMap, HeadersMap)
 -spec list_objects(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_objects_output(), tuple()} |
     {error, any()} |
-    {error, no_such_bucket(), tuple()}.
+    {error, list_objects_errors(), tuple()}.
 list_objects(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), ""],
@@ -9393,7 +9724,7 @@ list_objects(Client, Bucket, QueryMap, HeadersMap, Options0)
 -spec list_objects_v2(map(), binary() | list()) ->
     {ok, list_objects_v2_output(), tuple()} |
     {error, any()} |
-    {error, no_such_bucket(), tuple()}.
+    {error, list_objects_v2_errors(), tuple()}.
 list_objects_v2(Client, Bucket)
   when is_map(Client) ->
     list_objects_v2(Client, Bucket, #{}, #{}).
@@ -9401,7 +9732,7 @@ list_objects_v2(Client, Bucket)
 -spec list_objects_v2(map(), binary() | list(), map(), map()) ->
     {ok, list_objects_v2_output(), tuple()} |
     {error, any()} |
-    {error, no_such_bucket(), tuple()}.
+    {error, list_objects_v2_errors(), tuple()}.
 list_objects_v2(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_objects_v2(Client, Bucket, QueryMap, HeadersMap, []).
@@ -9409,7 +9740,7 @@ list_objects_v2(Client, Bucket, QueryMap, HeadersMap)
 -spec list_objects_v2(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_objects_v2_output(), tuple()} |
     {error, any()} |
-    {error, no_such_bucket(), tuple()}.
+    {error, list_objects_v2_errors(), tuple()}.
 list_objects_v2(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?list-type=2"],
@@ -11997,14 +12328,14 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
 -spec put_object_acl(map(), binary() | list(), binary() | list(), put_object_acl_request()) ->
     {ok, put_object_acl_output(), tuple()} |
     {error, any()} |
-    {error, no_such_key(), tuple()}.
+    {error, put_object_acl_errors(), tuple()}.
 put_object_acl(Client, Bucket, Key, Input) ->
     put_object_acl(Client, Bucket, Key, Input, []).
 
 -spec put_object_acl(map(), binary() | list(), binary() | list(), put_object_acl_request(), proplists:proplist()) ->
     {ok, put_object_acl_output(), tuple()} |
     {error, any()} |
-    {error, no_such_key(), tuple()}.
+    {error, put_object_acl_errors(), tuple()}.
 put_object_acl(Client, Bucket, Key, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?acl"],
@@ -12710,14 +13041,14 @@ put_public_access_block(Client, Bucket, Input0, Options0) ->
 -spec restore_object(map(), binary() | list(), binary() | list(), restore_object_request()) ->
     {ok, restore_object_output(), tuple()} |
     {error, any()} |
-    {error, object_already_in_active_tier_error(), tuple()}.
+    {error, restore_object_errors(), tuple()}.
 restore_object(Client, Bucket, Key, Input) ->
     restore_object(Client, Bucket, Key, Input, []).
 
 -spec restore_object(map(), binary() | list(), binary() | list(), restore_object_request(), proplists:proplist()) ->
     {ok, restore_object_output(), tuple()} |
     {error, any()} |
-    {error, object_already_in_active_tier_error(), tuple()}.
+    {error, restore_object_errors(), tuple()}.
 restore_object(Client, Bucket, Key, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?restore&x-id=RestoreObject"],

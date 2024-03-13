@@ -170,11 +170,13 @@
 %% }
 -type data_source_introspection_model_index() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_type_request() :: #{
 %%   <<"format">> := list(any())
 %% }
 -type get_type_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% associate_merged_graphql_api_response() :: #{
@@ -182,12 +184,14 @@
 %% }
 -type associate_merged_graphql_api_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_domain_names_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_domain_names_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% evaluate_code_response() :: #{
@@ -197,6 +201,7 @@
 %% }
 -type evaluate_code_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% code_error_location() :: #{
 %%   <<"column">> => integer(),
@@ -204,9 +209,11 @@
 %%   <<"span">> => integer()
 %% }
 -type code_error_location() :: #{binary() => any()}.
+
 %% Example:
 %% delete_type_request() :: #{}
 -type delete_type_request() :: #{}.
+
 
 %% Example:
 %% list_resolvers_request() :: #{
@@ -214,27 +221,33 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_resolvers_request() :: #{binary() => any()}.
+
 %% Example:
 %% flush_api_cache_request() :: #{}
 -type flush_api_cache_request() :: #{}.
+
 
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_type_response() :: #{}
 -type delete_type_response() :: #{}.
+
 
 %% Example:
 %% internal_failure_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type internal_failure_exception() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_source_graphql_api_request() :: #{}
 -type disassociate_source_graphql_api_request() :: #{}.
+
 
 %% Example:
 %% list_api_keys_response() :: #{
@@ -243,11 +256,13 @@
 %% }
 -type list_api_keys_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% lambda_conflict_handler_config() :: #{
 %%   <<"lambdaConflictHandlerArn">> => string()
 %% }
 -type lambda_conflict_handler_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% evaluate_code_error_detail() :: #{
@@ -256,11 +271,13 @@
 %% }
 -type evaluate_code_error_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% unauthorized_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type unauthorized_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_source_api_associations_response() :: #{
@@ -269,12 +286,14 @@
 %% }
 -type list_source_api_associations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_functions_response() :: #{
 %%   <<"functions">> => list(function_configuration()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_functions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_types_response() :: #{
@@ -283,17 +302,20 @@
 %% }
 -type list_types_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% api_limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type api_limit_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_resolver_response() :: #{
 %%   <<"resolver">> => resolver()
 %% }
 -type update_resolver_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_data_source_request() :: #{
@@ -312,6 +334,7 @@
 %% }
 -type create_data_source_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_source_introspection_model_field() :: #{
 %%   <<"length">> => float(),
@@ -320,6 +343,7 @@
 %% }
 -type data_source_introspection_model_field() :: #{binary() => any()}.
 
+
 %% Example:
 %% lambda_authorizer_config() :: #{
 %%   <<"authorizerResultTtlInSeconds">> => integer(),
@@ -327,12 +351,15 @@
 %%   <<"identityValidationExpression">> => string()
 %% }
 -type lambda_authorizer_config() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 %% Example:
 %% delete_graphql_api_response() :: #{}
 -type delete_graphql_api_response() :: #{}.
+
 
 %% Example:
 %% list_graphql_apis_response() :: #{
@@ -340,12 +367,15 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_graphql_apis_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_resolver_request() :: #{}
 -type get_resolver_request() :: #{}.
+
 %% Example:
 %% delete_domain_name_response() :: #{}
 -type delete_domain_name_response() :: #{}.
+
 
 %% Example:
 %% additional_authentication_provider() :: #{
@@ -356,6 +386,7 @@
 %% }
 -type additional_authentication_provider() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_source_api_associations_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -363,11 +394,13 @@
 %% }
 -type list_source_api_associations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_source_api_association_response() :: #{
 %%   <<"sourceApiAssociation">> => source_api_association()
 %% }
 -type get_source_api_association_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_resolvers_by_function_request() :: #{
@@ -376,6 +409,7 @@
 %% }
 -type list_resolvers_by_function_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_api_key_request() :: #{
 %%   <<"description">> => string(),
@@ -383,12 +417,14 @@
 %% }
 -type update_api_key_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_schema_creation_status_response() :: #{
 %%   <<"details">> => string(),
 %%   <<"status">> => list(any())
 %% }
 -type get_schema_creation_status_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% cognito_user_pool_config() :: #{
@@ -398,11 +434,13 @@
 %% }
 -type cognito_user_pool_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% api_key_limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type api_key_limit_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_domain_name_request() :: #{
@@ -411,6 +449,7 @@
 %%   <<"domainName">> := string()
 %% }
 -type create_domain_name_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_graphql_apis_request() :: #{
@@ -421,17 +460,20 @@
 %% }
 -type list_graphql_apis_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_api_association_response() :: #{
 %%   <<"apiAssociation">> => api_association()
 %% }
 -type get_api_association_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_api_cache_response() :: #{
 %%   <<"apiCache">> => api_cache()
 %% }
 -type create_api_cache_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_types_by_association_request() :: #{
@@ -441,11 +483,13 @@
 %% }
 -type list_types_by_association_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_function_response() :: #{
 %%   <<"functionConfiguration">> => function_configuration()
 %% }
 -type get_function_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_data_source_response() :: #{
@@ -453,11 +497,13 @@
 %% }
 -type update_data_source_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_graphql_api_environment_variables_response() :: #{
 %%   <<"environmentVariables">> => map()
 %% }
 -type put_graphql_api_environment_variables_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% untag_resource_request() :: #{
@@ -465,12 +511,14 @@
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_type_request() :: #{
 %%   <<"definition">> := string(),
 %%   <<"format">> := list(any())
 %% }
 -type create_type_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% rds_http_endpoint_config() :: #{
@@ -482,12 +530,14 @@
 %% }
 -type rds_http_endpoint_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% evaluate_mapping_template_request() :: #{
 %%   <<"context">> := string(),
 %%   <<"template">> := string()
 %% }
 -type evaluate_mapping_template_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% open_id_connect_config() :: #{
@@ -498,6 +548,7 @@
 %% }
 -type open_id_connect_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% evaluate_mapping_template_response() :: #{
 %%   <<"error">> => error_detail(),
@@ -506,6 +557,7 @@
 %% }
 -type evaluate_mapping_template_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_resolvers_by_function_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -513,17 +565,20 @@
 %% }
 -type list_resolvers_by_function_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_function_response() :: #{
 %%   <<"functionConfiguration">> => function_configuration()
 %% }
 -type update_function_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_graphql_api_response() :: #{
 %%   <<"graphqlApi">> => graphql_api()
 %% }
 -type update_graphql_api_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_api_cache_request() :: #{
@@ -536,11 +591,13 @@
 %% }
 -type create_api_cache_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_api_key_response() :: #{
 %%   <<"apiKey">> => api_key()
 %% }
 -type update_api_key_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% graphql_api() :: #{
@@ -569,15 +626,19 @@
 %%   <<"xrayEnabled">> => boolean()
 %% }
 -type graphql_api() :: #{binary() => any()}.
+
 %% Example:
 %% get_api_cache_request() :: #{}
 -type get_api_cache_request() :: #{}.
+
 %% Example:
 %% delete_graphql_api_request() :: #{}
 -type delete_graphql_api_request() :: #{}.
+
 %% Example:
 %% get_api_association_request() :: #{}
 -type get_api_association_request() :: #{}.
+
 
 %% Example:
 %% caching_config() :: #{
@@ -586,6 +647,7 @@
 %% }
 -type caching_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% authorization_config() :: #{
 %%   <<"authorizationType">> => list(any()),
@@ -593,11 +655,13 @@
 %% }
 -type authorization_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_type_response() :: #{
 %%   <<"type">> => type()
 %% }
 -type get_type_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_data_sources_request() :: #{
@@ -606,14 +670,17 @@
 %% }
 -type list_data_sources_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_introspection_schema_response() :: #{
 %%   <<"schema">> => binary()
 %% }
 -type get_introspection_schema_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_data_source_response() :: #{}
 -type delete_data_source_response() :: #{}.
+
 
 %% Example:
 %% delta_sync_config() :: #{
@@ -623,6 +690,7 @@
 %% }
 -type delta_sync_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% app_sync_runtime() :: #{
 %%   <<"name">> => list(any()),
@@ -630,14 +698,17 @@
 %% }
 -type app_sync_runtime() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_api_response() :: #{
 %%   <<"apiAssociation">> => api_association()
 %% }
 -type associate_api_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_function_request() :: #{}
 -type get_function_request() :: #{}.
+
 
 %% Example:
 %% update_resolver_request() :: #{
@@ -655,6 +726,7 @@
 %% }
 -type update_resolver_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% user_pool_config() :: #{
 %%   <<"appIdClientRegex">> => string(),
@@ -664,11 +736,13 @@
 %% }
 -type user_pool_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_graphql_api_environment_variables_request() :: #{
 %%   <<"environmentVariables">> := map()
 %% }
 -type put_graphql_api_environment_variables_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_resolver_request() :: #{
@@ -687,6 +761,7 @@
 %% }
 -type create_resolver_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% code_error() :: #{
 %%   <<"errorType">> => string(),
@@ -694,9 +769,11 @@
 %%   <<"value">> => string()
 %% }
 -type code_error() :: #{binary() => any()}.
+
 %% Example:
 %% delete_function_request() :: #{}
 -type delete_function_request() :: #{}.
+
 
 %% Example:
 %% log_config() :: #{
@@ -705,9 +782,11 @@
 %%   <<"fieldLogLevel">> => list(any())
 %% }
 -type log_config() :: #{binary() => any()}.
+
 %% Example:
 %% get_data_source_request() :: #{}
 -type get_data_source_request() :: #{}.
+
 
 %% Example:
 %% list_resolvers_response() :: #{
@@ -716,20 +795,24 @@
 %% }
 -type list_resolvers_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_api_cache_response() :: #{
 %%   <<"apiCache">> => api_cache()
 %% }
 -type get_api_cache_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% disassociate_merged_graphql_api_response() :: #{
 %%   <<"sourceApiAssociationStatus">> => list(any())
 %% }
 -type disassociate_merged_graphql_api_response() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_api_request() :: #{}
 -type disassociate_api_request() :: #{}.
+
 
 %% Example:
 %% create_type_response() :: #{
@@ -737,11 +820,13 @@
 %% }
 -type create_type_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_graphql_api_environment_variables_response() :: #{
@@ -749,11 +834,13 @@
 %% }
 -type get_graphql_api_environment_variables_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_function_response() :: #{
 %%   <<"functionConfiguration">> => function_configuration()
 %% }
 -type create_function_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% enhanced_metrics_config() :: #{
@@ -762,9 +849,11 @@
 %%   <<"resolverLevelMetricsBehavior">> => list(any())
 %% }
 -type enhanced_metrics_config() :: #{binary() => any()}.
+
 %% Example:
 %% delete_api_key_response() :: #{}
 -type delete_api_key_response() :: #{}.
+
 
 %% Example:
 %% list_data_sources_response() :: #{
@@ -772,12 +861,15 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_data_sources_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_data_source_request() :: #{}
 -type delete_data_source_request() :: #{}.
+
 %% Example:
 %% delete_function_response() :: #{}
 -type delete_function_response() :: #{}.
+
 
 %% Example:
 %% api_cache() :: #{
@@ -791,14 +883,17 @@
 %% }
 -type api_cache() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_domain_name_response() :: #{
 %%   <<"domainNameConfig">> => domain_name_config()
 %% }
 -type update_domain_name_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_resolver_request() :: #{}
 -type delete_resolver_request() :: #{}.
+
 
 %% Example:
 %% get_data_source_introspection_response() :: #{
@@ -809,14 +904,17 @@
 %% }
 -type get_data_source_introspection_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_source_api_association_request() :: #{}
 -type get_source_api_association_request() :: #{}.
+
 
 %% Example:
 %% start_data_source_introspection_response() :: #{
@@ -825,6 +923,7 @@
 %%   <<"introspectionStatusDetail">> => string()
 %% }
 -type start_data_source_introspection_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% resolver() :: #{
@@ -845,6 +944,7 @@
 %% }
 -type resolver() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_domain_names_response() :: #{
 %%   <<"domainNameConfigs">> => list(domain_name_config()()),
@@ -852,11 +952,13 @@
 %% }
 -type list_domain_names_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_api_key_response() :: #{
 %%   <<"apiKey">> => api_key()
 %% }
 -type create_api_key_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_type_request() :: #{
@@ -865,17 +967,20 @@
 %% }
 -type update_type_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% pipeline_config() :: #{
 %%   <<"functions">> => list(string()())
 %% }
 -type pipeline_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_domain_name_request() :: #{
 %%   <<"description">> => string()
 %% }
 -type update_domain_name_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_api_key_request() :: #{
@@ -884,11 +989,13 @@
 %% }
 -type create_api_key_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% lambda_data_source_config() :: #{
 %%   <<"lambdaFunctionArn">> => string()
 %% }
 -type lambda_data_source_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_api_cache_request() :: #{
@@ -899,12 +1006,14 @@
 %% }
 -type update_api_cache_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_functions_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_functions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% api_association() :: #{
@@ -915,6 +1024,7 @@
 %% }
 -type api_association() :: #{binary() => any()}.
 
+
 %% Example:
 %% http_data_source_config() :: #{
 %%   <<"authorizationConfig">> => authorization_config(),
@@ -922,23 +1032,28 @@
 %% }
 -type http_data_source_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_data_source_response() :: #{
 %%   <<"dataSource">> => data_source()
 %% }
 -type create_data_source_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_schema_merge_response() :: #{
 %%   <<"sourceApiAssociationStatus">> => list(any())
 %% }
 -type start_schema_merge_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_api_cache_request() :: #{}
 -type delete_api_cache_request() :: #{}.
+
 %% Example:
 %% start_schema_merge_request() :: #{}
 -type start_schema_merge_request() :: #{}.
+
 
 %% Example:
 %% rds_data_api_config() :: #{
@@ -948,15 +1063,18 @@
 %% }
 -type rds_data_api_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_iam_config() :: #{
 %%   <<"signingRegion">> => string(),
 %%   <<"signingServiceName">> => string()
 %% }
 -type aws_iam_config() :: #{binary() => any()}.
+
 %% Example:
 %% get_schema_creation_status_request() :: #{}
 -type get_schema_creation_status_request() :: #{}.
+
 
 %% Example:
 %% error_detail() :: #{
@@ -964,11 +1082,13 @@
 %% }
 -type error_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% disassociate_source_graphql_api_response() :: #{
 %%   <<"sourceApiAssociationStatus">> => list(any())
 %% }
 -type disassociate_source_graphql_api_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_resolver_response() :: #{
@@ -976,11 +1096,13 @@
 %% }
 -type get_resolver_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% source_api_association() :: #{
@@ -997,12 +1119,15 @@
 %%   <<"sourceApiId">> => string()
 %% }
 -type source_api_association() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 %% Example:
 %% get_domain_name_request() :: #{}
 -type get_domain_name_request() :: #{}.
+
 
 %% Example:
 %% associate_api_request() :: #{
@@ -1010,17 +1135,21 @@
 %% }
 -type associate_api_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_graphql_api_response() :: #{
 %%   <<"graphqlApi">> => graphql_api()
 %% }
 -type get_graphql_api_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_resolver_response() :: #{}
 -type delete_resolver_response() :: #{}.
+
 %% Example:
 %% delete_api_key_request() :: #{}
 -type delete_api_key_request() :: #{}.
+
 
 %% Example:
 %% source_api_association_summary() :: #{
@@ -1034,6 +1163,7 @@
 %% }
 -type source_api_association_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% domain_name_config() :: #{
 %%   <<"appsyncDomainName">> => string(),
@@ -1044,11 +1174,13 @@
 %% }
 -type domain_name_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% concurrent_modification_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type concurrent_modification_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_types_by_association_response() :: #{
@@ -1057,29 +1189,35 @@
 %% }
 -type list_types_by_association_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_schema_creation_response() :: #{
 %%   <<"status">> => list(any())
 %% }
 -type start_schema_creation_response() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_merged_graphql_api_request() :: #{}
 -type disassociate_merged_graphql_api_request() :: #{}.
+
 
 %% Example:
 %% start_schema_creation_request() :: #{
 %%   <<"definition">> := binary()
 %% }
 -type start_schema_creation_request() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% api_key_validity_out_of_bounds_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type api_key_validity_out_of_bounds_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% function_configuration() :: #{
@@ -1098,12 +1236,14 @@
 %% }
 -type function_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% elasticsearch_data_source_config() :: #{
 %%   <<"awsRegion">> => string(),
 %%   <<"endpoint">> => string()
 %% }
 -type elasticsearch_data_source_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_api_keys_request() :: #{
@@ -1112,6 +1252,7 @@
 %% }
 -type list_api_keys_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% relational_database_data_source_config() :: #{
 %%   <<"rdsHttpEndpointConfig">> => rds_http_endpoint_config(),
@@ -1119,12 +1260,14 @@
 %% }
 -type relational_database_data_source_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% open_search_service_data_source_config() :: #{
 %%   <<"awsRegion">> => string(),
 %%   <<"endpoint">> => string()
 %% }
 -type open_search_service_data_source_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_data_source_request() :: #{
@@ -1141,12 +1284,15 @@
 %%   <<"type">> := list(any())
 %% }
 -type update_data_source_request() :: #{binary() => any()}.
+
 %% Example:
 %% flush_api_cache_response() :: #{}
 -type flush_api_cache_response() :: #{}.
+
 %% Example:
 %% delete_api_cache_response() :: #{}
 -type delete_api_cache_response() :: #{}.
+
 
 %% Example:
 %% associate_source_graphql_api_request() :: #{
@@ -1155,6 +1301,7 @@
 %%   <<"sourceApiIdentifier">> := string()
 %% }
 -type associate_source_graphql_api_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% type() :: #{
@@ -1166,6 +1313,7 @@
 %% }
 -type type() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_source_introspection_model() :: #{
 %%   <<"fields">> => list(data_source_introspection_model_field()()),
@@ -1176,11 +1324,13 @@
 %% }
 -type data_source_introspection_model() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_graphql_api_response() :: #{
 %%   <<"graphqlApi">> => graphql_api()
 %% }
 -type create_graphql_api_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_source_introspection_result() :: #{
@@ -1189,11 +1339,13 @@
 %% }
 -type data_source_introspection_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% evaluate_code_request() :: #{
@@ -1204,14 +1356,17 @@
 %% }
 -type evaluate_code_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_source_graphql_api_response() :: #{
 %%   <<"sourceApiAssociation">> => source_api_association()
 %% }
 -type associate_source_graphql_api_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_domain_name_request() :: #{}
 -type delete_domain_name_request() :: #{}.
+
 
 %% Example:
 %% source_api_association_config() :: #{
@@ -1219,11 +1374,13 @@
 %% }
 -type source_api_association_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% event_bridge_data_source_config() :: #{
 %%   <<"eventBusArn">> => string()
 %% }
 -type event_bridge_data_source_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_type_response() :: #{
@@ -1231,17 +1388,20 @@
 %% }
 -type update_type_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_domain_name_response() :: #{
 %%   <<"domainNameConfig">> => domain_name_config()
 %% }
 -type create_domain_name_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_source_api_association_response() :: #{
 %%   <<"sourceApiAssociation">> => source_api_association()
 %% }
 -type update_source_api_association_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_function_request() :: #{
@@ -1258,6 +1418,7 @@
 %% }
 -type update_function_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% bad_request_exception() :: #{
 %%   <<"detail">> => bad_request_detail(),
@@ -1265,6 +1426,7 @@
 %%   <<"reason">> => list(any())
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_graphql_api_request() :: #{
@@ -1285,11 +1447,13 @@
 %% }
 -type update_graphql_api_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_api_cache_response() :: #{
 %%   <<"apiCache">> => api_cache()
 %% }
 -type update_api_cache_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_resolver_response() :: #{
@@ -1297,12 +1461,14 @@
 %% }
 -type create_resolver_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_introspection_schema_request() :: #{
 %%   <<"format">> := list(any()),
 %%   <<"includeDirectives">> => boolean()
 %% }
 -type get_introspection_schema_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_function_request() :: #{
@@ -1319,14 +1485,17 @@
 %% }
 -type create_function_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% bad_request_detail() :: #{
 %%   <<"codeErrors">> => list(code_error()())
 %% }
 -type bad_request_detail() :: #{binary() => any()}.
+
 %% Example:
 %% get_graphql_api_request() :: #{}
 -type get_graphql_api_request() :: #{}.
+
 
 %% Example:
 %% update_source_api_association_request() :: #{
@@ -1334,12 +1503,15 @@
 %%   <<"sourceApiAssociationConfig">> => source_api_association_config()
 %% }
 -type update_source_api_association_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_graphql_api_environment_variables_request() :: #{}
 -type get_graphql_api_environment_variables_request() :: #{}.
+
 %% Example:
 %% disassociate_api_response() :: #{}
 -type disassociate_api_response() :: #{}.
+
 
 %% Example:
 %% data_source() :: #{
@@ -1359,6 +1531,7 @@
 %% }
 -type data_source() :: #{binary() => any()}.
 
+
 %% Example:
 %% sync_config() :: #{
 %%   <<"conflictDetection">> => list(any()),
@@ -1366,6 +1539,7 @@
 %%   <<"lambdaConflictHandlerConfig">> => lambda_conflict_handler_config()
 %% }
 -type sync_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_source_introspection_model_field_type() :: #{
@@ -1375,6 +1549,7 @@
 %%   <<"values">> => list(string()())
 %% }
 -type data_source_introspection_model_field_type() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_graphql_api_request() :: #{
@@ -1398,6 +1573,7 @@
 %% }
 -type create_graphql_api_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% api_key() :: #{
 %%   <<"deletes">> => float(),
@@ -1407,17 +1583,20 @@
 %% }
 -type api_key() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_data_source_introspection_request() :: #{
 %%   <<"rdsDataApiConfig">> => rds_data_api_config()
 %% }
 -type start_data_source_introspection_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_data_source_response() :: #{
 %%   <<"dataSource">> => data_source()
 %% }
 -type get_data_source_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% dynamodb_data_source_config() :: #{
@@ -1429,6 +1608,7 @@
 %% }
 -type dynamodb_data_source_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_types_request() :: #{
 %%   <<"format">> := list(any()),
@@ -1437,17 +1617,20 @@
 %% }
 -type list_types_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% graph_q_l_schema_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type graph_q_l_schema_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_domain_name_response() :: #{
 %%   <<"domainNameConfig">> => domain_name_config()
 %% }
 -type get_domain_name_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_data_source_introspection_request() :: #{
@@ -1457,6 +1640,7 @@
 %% }
 -type get_data_source_introspection_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_merged_graphql_api_request() :: #{
 %%   <<"description">> => string(),
@@ -1464,6 +1648,436 @@
 %%   <<"sourceApiAssociationConfig">> => source_api_association_config()
 %% }
 -type associate_merged_graphql_api_request() :: #{binary() => any()}.
+
+-type associate_api_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type associate_merged_graphql_api_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type associate_source_graphql_api_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type create_api_cache_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type create_api_key_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    api_key_validity_out_of_bounds_exception() | 
+    not_found_exception() | 
+    api_key_limit_exceeded_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type create_data_source_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type create_domain_name_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    internal_failure_exception().
+
+-type create_function_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type create_graphql_api_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    api_limit_exceeded_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type create_resolver_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type create_type_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type delete_api_cache_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type delete_api_key_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type delete_data_source_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type delete_domain_name_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type delete_function_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type delete_graphql_api_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type delete_resolver_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type delete_type_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type disassociate_api_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type disassociate_merged_graphql_api_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type disassociate_source_graphql_api_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type evaluate_code_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    internal_failure_exception().
+
+-type evaluate_mapping_template_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    internal_failure_exception().
+
+-type flush_api_cache_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type get_api_association_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type get_api_cache_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type get_data_source_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type get_data_source_introspection_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type get_domain_name_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type get_function_errors() ::
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    unauthorized_exception().
+
+-type get_graphql_api_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type get_graphql_api_environment_variables_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type get_introspection_schema_errors() ::
+    graph_q_l_schema_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type get_resolver_errors() ::
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    unauthorized_exception().
+
+-type get_schema_creation_status_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type get_source_api_association_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type get_type_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_api_keys_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_data_sources_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_domain_names_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    internal_failure_exception().
+
+-type list_functions_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_graphql_apis_errors() ::
+    bad_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_resolvers_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_resolvers_by_function_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_source_api_associations_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_tags_for_resource_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_types_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_types_by_association_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type put_graphql_api_environment_variables_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type start_data_source_introspection_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type start_schema_creation_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type start_schema_merge_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type tag_resource_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type untag_resource_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type update_api_cache_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type update_api_key_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    api_key_validity_out_of_bounds_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type update_data_source_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type update_domain_name_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type update_function_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type update_graphql_api_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type update_resolver_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type update_source_api_association_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type update_type_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
 
 %%====================================================================
 %% API
@@ -1473,20 +2087,14 @@
 -spec associate_api(map(), binary() | list(), associate_api_request()) ->
     {ok, associate_api_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, associate_api_errors(), tuple()}.
 associate_api(Client, DomainName, Input) ->
     associate_api(Client, DomainName, Input, []).
 
 -spec associate_api(map(), binary() | list(), associate_api_request(), proplists:proplist()) ->
     {ok, associate_api_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, associate_api_errors(), tuple()}.
 associate_api(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/v1/domainnames/", aws_util:encode_uri(DomainName), "/apiassociation"],
@@ -1514,24 +2122,14 @@ associate_api(Client, DomainName, Input0, Options0) ->
 -spec associate_merged_graphql_api(map(), binary() | list(), associate_merged_graphql_api_request()) ->
     {ok, associate_merged_graphql_api_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, associate_merged_graphql_api_errors(), tuple()}.
 associate_merged_graphql_api(Client, SourceApiIdentifier, Input) ->
     associate_merged_graphql_api(Client, SourceApiIdentifier, Input, []).
 
 -spec associate_merged_graphql_api(map(), binary() | list(), associate_merged_graphql_api_request(), proplists:proplist()) ->
     {ok, associate_merged_graphql_api_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, associate_merged_graphql_api_errors(), tuple()}.
 associate_merged_graphql_api(Client, SourceApiIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v1/sourceApis/", aws_util:encode_uri(SourceApiIdentifier), "/mergedApiAssociations"],
@@ -1559,24 +2157,14 @@ associate_merged_graphql_api(Client, SourceApiIdentifier, Input0, Options0) ->
 -spec associate_source_graphql_api(map(), binary() | list(), associate_source_graphql_api_request()) ->
     {ok, associate_source_graphql_api_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, associate_source_graphql_api_errors(), tuple()}.
 associate_source_graphql_api(Client, MergedApiIdentifier, Input) ->
     associate_source_graphql_api(Client, MergedApiIdentifier, Input, []).
 
 -spec associate_source_graphql_api(map(), binary() | list(), associate_source_graphql_api_request(), proplists:proplist()) ->
     {ok, associate_source_graphql_api_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, associate_source_graphql_api_errors(), tuple()}.
 associate_source_graphql_api(Client, MergedApiIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v1/mergedApis/", aws_util:encode_uri(MergedApiIdentifier), "/sourceApiAssociations"],
@@ -1603,22 +2191,14 @@ associate_source_graphql_api(Client, MergedApiIdentifier, Input0, Options0) ->
 -spec create_api_cache(map(), binary() | list(), create_api_cache_request()) ->
     {ok, create_api_cache_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_api_cache_errors(), tuple()}.
 create_api_cache(Client, ApiId, Input) ->
     create_api_cache(Client, ApiId, Input, []).
 
 -spec create_api_cache(map(), binary() | list(), create_api_cache_request(), proplists:proplist()) ->
     {ok, create_api_cache_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_api_cache_errors(), tuple()}.
 create_api_cache(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/ApiCaches"],
@@ -1646,26 +2226,14 @@ create_api_cache(Client, ApiId, Input0, Options0) ->
 -spec create_api_key(map(), binary() | list(), create_api_key_request()) ->
     {ok, create_api_key_response(), tuple()} |
     {error, any()} |
-    {error, api_key_limit_exceeded_exception(), tuple()} |
-    {error, api_key_validity_out_of_bounds_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_api_key_errors(), tuple()}.
 create_api_key(Client, ApiId, Input) ->
     create_api_key(Client, ApiId, Input, []).
 
 -spec create_api_key(map(), binary() | list(), create_api_key_request(), proplists:proplist()) ->
     {ok, create_api_key_response(), tuple()} |
     {error, any()} |
-    {error, api_key_limit_exceeded_exception(), tuple()} |
-    {error, api_key_validity_out_of_bounds_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_api_key_errors(), tuple()}.
 create_api_key(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/apikeys"],
@@ -1692,22 +2260,14 @@ create_api_key(Client, ApiId, Input0, Options0) ->
 -spec create_data_source(map(), binary() | list(), create_data_source_request()) ->
     {ok, create_data_source_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_data_source_errors(), tuple()}.
 create_data_source(Client, ApiId, Input) ->
     create_data_source(Client, ApiId, Input, []).
 
 -spec create_data_source(map(), binary() | list(), create_data_source_request(), proplists:proplist()) ->
     {ok, create_data_source_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_data_source_errors(), tuple()}.
 create_data_source(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/datasources"],
@@ -1734,18 +2294,14 @@ create_data_source(Client, ApiId, Input0, Options0) ->
 -spec create_domain_name(map(), create_domain_name_request()) ->
     {ok, create_domain_name_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()}.
+    {error, create_domain_name_errors(), tuple()}.
 create_domain_name(Client, Input) ->
     create_domain_name(Client, Input, []).
 
 -spec create_domain_name(map(), create_domain_name_request(), proplists:proplist()) ->
     {ok, create_domain_name_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()}.
+    {error, create_domain_name_errors(), tuple()}.
 create_domain_name(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/domainnames"],
@@ -1775,22 +2331,14 @@ create_domain_name(Client, Input0, Options0) ->
 -spec create_function(map(), binary() | list(), create_function_request()) ->
     {ok, create_function_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_function_errors(), tuple()}.
 create_function(Client, ApiId, Input) ->
     create_function(Client, ApiId, Input, []).
 
 -spec create_function(map(), binary() | list(), create_function_request(), proplists:proplist()) ->
     {ok, create_function_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_function_errors(), tuple()}.
 create_function(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/functions"],
@@ -1817,24 +2365,14 @@ create_function(Client, ApiId, Input0, Options0) ->
 -spec create_graphql_api(map(), create_graphql_api_request()) ->
     {ok, create_graphql_api_response(), tuple()} |
     {error, any()} |
-    {error, api_limit_exceeded_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_graphql_api_errors(), tuple()}.
 create_graphql_api(Client, Input) ->
     create_graphql_api(Client, Input, []).
 
 -spec create_graphql_api(map(), create_graphql_api_request(), proplists:proplist()) ->
     {ok, create_graphql_api_response(), tuple()} |
     {error, any()} |
-    {error, api_limit_exceeded_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_graphql_api_errors(), tuple()}.
 create_graphql_api(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis"],
@@ -1865,22 +2403,14 @@ create_graphql_api(Client, Input0, Options0) ->
 -spec create_resolver(map(), binary() | list(), binary() | list(), create_resolver_request()) ->
     {ok, create_resolver_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_resolver_errors(), tuple()}.
 create_resolver(Client, ApiId, TypeName, Input) ->
     create_resolver(Client, ApiId, TypeName, Input, []).
 
 -spec create_resolver(map(), binary() | list(), binary() | list(), create_resolver_request(), proplists:proplist()) ->
     {ok, create_resolver_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_resolver_errors(), tuple()}.
 create_resolver(Client, ApiId, TypeName, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), "/resolvers"],
@@ -1907,22 +2437,14 @@ create_resolver(Client, ApiId, TypeName, Input0, Options0) ->
 -spec create_type(map(), binary() | list(), create_type_request()) ->
     {ok, create_type_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_type_errors(), tuple()}.
 create_type(Client, ApiId, Input) ->
     create_type(Client, ApiId, Input, []).
 
 -spec create_type(map(), binary() | list(), create_type_request(), proplists:proplist()) ->
     {ok, create_type_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_type_errors(), tuple()}.
 create_type(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types"],
@@ -1949,22 +2471,14 @@ create_type(Client, ApiId, Input0, Options0) ->
 -spec delete_api_cache(map(), binary() | list(), delete_api_cache_request()) ->
     {ok, delete_api_cache_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_api_cache_errors(), tuple()}.
 delete_api_cache(Client, ApiId, Input) ->
     delete_api_cache(Client, ApiId, Input, []).
 
 -spec delete_api_cache(map(), binary() | list(), delete_api_cache_request(), proplists:proplist()) ->
     {ok, delete_api_cache_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_api_cache_errors(), tuple()}.
 delete_api_cache(Client, ApiId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/ApiCaches"],
@@ -1991,20 +2505,14 @@ delete_api_cache(Client, ApiId, Input0, Options0) ->
 -spec delete_api_key(map(), binary() | list(), binary() | list(), delete_api_key_request()) ->
     {ok, delete_api_key_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_api_key_errors(), tuple()}.
 delete_api_key(Client, ApiId, Id, Input) ->
     delete_api_key(Client, ApiId, Id, Input, []).
 
 -spec delete_api_key(map(), binary() | list(), binary() | list(), delete_api_key_request(), proplists:proplist()) ->
     {ok, delete_api_key_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_api_key_errors(), tuple()}.
 delete_api_key(Client, ApiId, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/apikeys/", aws_util:encode_uri(Id), ""],
@@ -2031,22 +2539,14 @@ delete_api_key(Client, ApiId, Id, Input0, Options0) ->
 -spec delete_data_source(map(), binary() | list(), binary() | list(), delete_data_source_request()) ->
     {ok, delete_data_source_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_data_source_errors(), tuple()}.
 delete_data_source(Client, ApiId, Name, Input) ->
     delete_data_source(Client, ApiId, Name, Input, []).
 
 -spec delete_data_source(map(), binary() | list(), binary() | list(), delete_data_source_request(), proplists:proplist()) ->
     {ok, delete_data_source_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_data_source_errors(), tuple()}.
 delete_data_source(Client, ApiId, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/datasources/", aws_util:encode_uri(Name), ""],
@@ -2073,22 +2573,14 @@ delete_data_source(Client, ApiId, Name, Input0, Options0) ->
 -spec delete_domain_name(map(), binary() | list(), delete_domain_name_request()) ->
     {ok, delete_domain_name_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_domain_name_errors(), tuple()}.
 delete_domain_name(Client, DomainName, Input) ->
     delete_domain_name(Client, DomainName, Input, []).
 
 -spec delete_domain_name(map(), binary() | list(), delete_domain_name_request(), proplists:proplist()) ->
     {ok, delete_domain_name_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_domain_name_errors(), tuple()}.
 delete_domain_name(Client, DomainName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/domainnames/", aws_util:encode_uri(DomainName), ""],
@@ -2115,22 +2607,14 @@ delete_domain_name(Client, DomainName, Input0, Options0) ->
 -spec delete_function(map(), binary() | list(), binary() | list(), delete_function_request()) ->
     {ok, delete_function_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_function_errors(), tuple()}.
 delete_function(Client, ApiId, FunctionId, Input) ->
     delete_function(Client, ApiId, FunctionId, Input, []).
 
 -spec delete_function(map(), binary() | list(), binary() | list(), delete_function_request(), proplists:proplist()) ->
     {ok, delete_function_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_function_errors(), tuple()}.
 delete_function(Client, ApiId, FunctionId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/functions/", aws_util:encode_uri(FunctionId), ""],
@@ -2157,24 +2641,14 @@ delete_function(Client, ApiId, FunctionId, Input0, Options0) ->
 -spec delete_graphql_api(map(), binary() | list(), delete_graphql_api_request()) ->
     {ok, delete_graphql_api_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_graphql_api_errors(), tuple()}.
 delete_graphql_api(Client, ApiId, Input) ->
     delete_graphql_api(Client, ApiId, Input, []).
 
 -spec delete_graphql_api(map(), binary() | list(), delete_graphql_api_request(), proplists:proplist()) ->
     {ok, delete_graphql_api_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_graphql_api_errors(), tuple()}.
 delete_graphql_api(Client, ApiId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), ""],
@@ -2201,22 +2675,14 @@ delete_graphql_api(Client, ApiId, Input0, Options0) ->
 -spec delete_resolver(map(), binary() | list(), binary() | list(), binary() | list(), delete_resolver_request()) ->
     {ok, delete_resolver_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_resolver_errors(), tuple()}.
 delete_resolver(Client, ApiId, FieldName, TypeName, Input) ->
     delete_resolver(Client, ApiId, FieldName, TypeName, Input, []).
 
 -spec delete_resolver(map(), binary() | list(), binary() | list(), binary() | list(), delete_resolver_request(), proplists:proplist()) ->
     {ok, delete_resolver_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_resolver_errors(), tuple()}.
 delete_resolver(Client, ApiId, FieldName, TypeName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), "/resolvers/", aws_util:encode_uri(FieldName), ""],
@@ -2243,22 +2709,14 @@ delete_resolver(Client, ApiId, FieldName, TypeName, Input0, Options0) ->
 -spec delete_type(map(), binary() | list(), binary() | list(), delete_type_request()) ->
     {ok, delete_type_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_type_errors(), tuple()}.
 delete_type(Client, ApiId, TypeName, Input) ->
     delete_type(Client, ApiId, TypeName, Input, []).
 
 -spec delete_type(map(), binary() | list(), binary() | list(), delete_type_request(), proplists:proplist()) ->
     {ok, delete_type_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_type_errors(), tuple()}.
 delete_type(Client, ApiId, TypeName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), ""],
@@ -2285,22 +2743,14 @@ delete_type(Client, ApiId, TypeName, Input0, Options0) ->
 -spec disassociate_api(map(), binary() | list(), disassociate_api_request()) ->
     {ok, disassociate_api_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, disassociate_api_errors(), tuple()}.
 disassociate_api(Client, DomainName, Input) ->
     disassociate_api(Client, DomainName, Input, []).
 
 -spec disassociate_api(map(), binary() | list(), disassociate_api_request(), proplists:proplist()) ->
     {ok, disassociate_api_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, disassociate_api_errors(), tuple()}.
 disassociate_api(Client, DomainName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/domainnames/", aws_util:encode_uri(DomainName), "/apiassociation"],
@@ -2329,22 +2779,14 @@ disassociate_api(Client, DomainName, Input0, Options0) ->
 -spec disassociate_merged_graphql_api(map(), binary() | list(), binary() | list(), disassociate_merged_graphql_api_request()) ->
     {ok, disassociate_merged_graphql_api_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, disassociate_merged_graphql_api_errors(), tuple()}.
 disassociate_merged_graphql_api(Client, AssociationId, SourceApiIdentifier, Input) ->
     disassociate_merged_graphql_api(Client, AssociationId, SourceApiIdentifier, Input, []).
 
 -spec disassociate_merged_graphql_api(map(), binary() | list(), binary() | list(), disassociate_merged_graphql_api_request(), proplists:proplist()) ->
     {ok, disassociate_merged_graphql_api_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, disassociate_merged_graphql_api_errors(), tuple()}.
 disassociate_merged_graphql_api(Client, AssociationId, SourceApiIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/sourceApis/", aws_util:encode_uri(SourceApiIdentifier), "/mergedApiAssociations/", aws_util:encode_uri(AssociationId), ""],
@@ -2373,22 +2815,14 @@ disassociate_merged_graphql_api(Client, AssociationId, SourceApiIdentifier, Inpu
 -spec disassociate_source_graphql_api(map(), binary() | list(), binary() | list(), disassociate_source_graphql_api_request()) ->
     {ok, disassociate_source_graphql_api_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, disassociate_source_graphql_api_errors(), tuple()}.
 disassociate_source_graphql_api(Client, AssociationId, MergedApiIdentifier, Input) ->
     disassociate_source_graphql_api(Client, AssociationId, MergedApiIdentifier, Input, []).
 
 -spec disassociate_source_graphql_api(map(), binary() | list(), binary() | list(), disassociate_source_graphql_api_request(), proplists:proplist()) ->
     {ok, disassociate_source_graphql_api_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, disassociate_source_graphql_api_errors(), tuple()}.
 disassociate_source_graphql_api(Client, AssociationId, MergedApiIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/mergedApis/", aws_util:encode_uri(MergedApiIdentifier), "/sourceApiAssociations/", aws_util:encode_uri(AssociationId), ""],
@@ -2424,18 +2858,14 @@ disassociate_source_graphql_api(Client, AssociationId, MergedApiIdentifier, Inpu
 -spec evaluate_code(map(), evaluate_code_request()) ->
     {ok, evaluate_code_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()}.
+    {error, evaluate_code_errors(), tuple()}.
 evaluate_code(Client, Input) ->
     evaluate_code(Client, Input, []).
 
 -spec evaluate_code(map(), evaluate_code_request(), proplists:proplist()) ->
     {ok, evaluate_code_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()}.
+    {error, evaluate_code_errors(), tuple()}.
 evaluate_code(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/dataplane-evaluatecode"],
@@ -2474,18 +2904,14 @@ evaluate_code(Client, Input0, Options0) ->
 -spec evaluate_mapping_template(map(), evaluate_mapping_template_request()) ->
     {ok, evaluate_mapping_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()}.
+    {error, evaluate_mapping_template_errors(), tuple()}.
 evaluate_mapping_template(Client, Input) ->
     evaluate_mapping_template(Client, Input, []).
 
 -spec evaluate_mapping_template(map(), evaluate_mapping_template_request(), proplists:proplist()) ->
     {ok, evaluate_mapping_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()}.
+    {error, evaluate_mapping_template_errors(), tuple()}.
 evaluate_mapping_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/dataplane-evaluatetemplate"],
@@ -2512,22 +2938,14 @@ evaluate_mapping_template(Client, Input0, Options0) ->
 -spec flush_api_cache(map(), binary() | list(), flush_api_cache_request()) ->
     {ok, flush_api_cache_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, flush_api_cache_errors(), tuple()}.
 flush_api_cache(Client, ApiId, Input) ->
     flush_api_cache(Client, ApiId, Input, []).
 
 -spec flush_api_cache(map(), binary() | list(), flush_api_cache_request(), proplists:proplist()) ->
     {ok, flush_api_cache_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, flush_api_cache_errors(), tuple()}.
 flush_api_cache(Client, ApiId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/FlushCache"],
@@ -2554,10 +2972,7 @@ flush_api_cache(Client, ApiId, Input0, Options0) ->
 -spec get_api_association(map(), binary() | list()) ->
     {ok, get_api_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_api_association_errors(), tuple()}.
 get_api_association(Client, DomainName)
   when is_map(Client) ->
     get_api_association(Client, DomainName, #{}, #{}).
@@ -2565,10 +2980,7 @@ get_api_association(Client, DomainName)
 -spec get_api_association(map(), binary() | list(), map(), map()) ->
     {ok, get_api_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_api_association_errors(), tuple()}.
 get_api_association(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_api_association(Client, DomainName, QueryMap, HeadersMap, []).
@@ -2576,10 +2988,7 @@ get_api_association(Client, DomainName, QueryMap, HeadersMap)
 -spec get_api_association(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_api_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_api_association_errors(), tuple()}.
 get_api_association(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/domainnames/", aws_util:encode_uri(DomainName), "/apiassociation"],
@@ -2600,11 +3009,7 @@ get_api_association(Client, DomainName, QueryMap, HeadersMap, Options0)
 -spec get_api_cache(map(), binary() | list()) ->
     {ok, get_api_cache_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_api_cache_errors(), tuple()}.
 get_api_cache(Client, ApiId)
   when is_map(Client) ->
     get_api_cache(Client, ApiId, #{}, #{}).
@@ -2612,11 +3017,7 @@ get_api_cache(Client, ApiId)
 -spec get_api_cache(map(), binary() | list(), map(), map()) ->
     {ok, get_api_cache_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_api_cache_errors(), tuple()}.
 get_api_cache(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_api_cache(Client, ApiId, QueryMap, HeadersMap, []).
@@ -2624,11 +3025,7 @@ get_api_cache(Client, ApiId, QueryMap, HeadersMap)
 -spec get_api_cache(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_api_cache_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_api_cache_errors(), tuple()}.
 get_api_cache(Client, ApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/ApiCaches"],
@@ -2649,11 +3046,7 @@ get_api_cache(Client, ApiId, QueryMap, HeadersMap, Options0)
 -spec get_data_source(map(), binary() | list(), binary() | list()) ->
     {ok, get_data_source_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_data_source_errors(), tuple()}.
 get_data_source(Client, ApiId, Name)
   when is_map(Client) ->
     get_data_source(Client, ApiId, Name, #{}, #{}).
@@ -2661,11 +3054,7 @@ get_data_source(Client, ApiId, Name)
 -spec get_data_source(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_data_source_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_data_source_errors(), tuple()}.
 get_data_source(Client, ApiId, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_source(Client, ApiId, Name, QueryMap, HeadersMap, []).
@@ -2673,11 +3062,7 @@ get_data_source(Client, ApiId, Name, QueryMap, HeadersMap)
 -spec get_data_source(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_data_source_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_data_source_errors(), tuple()}.
 get_data_source(Client, ApiId, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/datasources/", aws_util:encode_uri(Name), ""],
@@ -2703,9 +3088,7 @@ get_data_source(Client, ApiId, Name, QueryMap, HeadersMap, Options0)
 -spec get_data_source_introspection(map(), binary() | list()) ->
     {ok, get_data_source_introspection_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_data_source_introspection_errors(), tuple()}.
 get_data_source_introspection(Client, IntrospectionId)
   when is_map(Client) ->
     get_data_source_introspection(Client, IntrospectionId, #{}, #{}).
@@ -2713,9 +3096,7 @@ get_data_source_introspection(Client, IntrospectionId)
 -spec get_data_source_introspection(map(), binary() | list(), map(), map()) ->
     {ok, get_data_source_introspection_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_data_source_introspection_errors(), tuple()}.
 get_data_source_introspection(Client, IntrospectionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_source_introspection(Client, IntrospectionId, QueryMap, HeadersMap, []).
@@ -2723,9 +3104,7 @@ get_data_source_introspection(Client, IntrospectionId, QueryMap, HeadersMap)
 -spec get_data_source_introspection(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_data_source_introspection_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_data_source_introspection_errors(), tuple()}.
 get_data_source_introspection(Client, IntrospectionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/datasources/introspections/", aws_util:encode_uri(IntrospectionId), ""],
@@ -2752,10 +3131,7 @@ get_data_source_introspection(Client, IntrospectionId, QueryMap, HeadersMap, Opt
 -spec get_domain_name(map(), binary() | list()) ->
     {ok, get_domain_name_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_domain_name_errors(), tuple()}.
 get_domain_name(Client, DomainName)
   when is_map(Client) ->
     get_domain_name(Client, DomainName, #{}, #{}).
@@ -2763,10 +3139,7 @@ get_domain_name(Client, DomainName)
 -spec get_domain_name(map(), binary() | list(), map(), map()) ->
     {ok, get_domain_name_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_domain_name_errors(), tuple()}.
 get_domain_name(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_domain_name(Client, DomainName, QueryMap, HeadersMap, []).
@@ -2774,10 +3147,7 @@ get_domain_name(Client, DomainName, QueryMap, HeadersMap)
 -spec get_domain_name(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_domain_name_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_domain_name_errors(), tuple()}.
 get_domain_name(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/domainnames/", aws_util:encode_uri(DomainName), ""],
@@ -2798,9 +3168,7 @@ get_domain_name(Client, DomainName, QueryMap, HeadersMap, Options0)
 -spec get_function(map(), binary() | list(), binary() | list()) ->
     {ok, get_function_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_function_errors(), tuple()}.
 get_function(Client, ApiId, FunctionId)
   when is_map(Client) ->
     get_function(Client, ApiId, FunctionId, #{}, #{}).
@@ -2808,9 +3176,7 @@ get_function(Client, ApiId, FunctionId)
 -spec get_function(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_function_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_function_errors(), tuple()}.
 get_function(Client, ApiId, FunctionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function(Client, ApiId, FunctionId, QueryMap, HeadersMap, []).
@@ -2818,9 +3184,7 @@ get_function(Client, ApiId, FunctionId, QueryMap, HeadersMap)
 -spec get_function(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_function_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_function_errors(), tuple()}.
 get_function(Client, ApiId, FunctionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/functions/", aws_util:encode_uri(FunctionId), ""],
@@ -2841,11 +3205,7 @@ get_function(Client, ApiId, FunctionId, QueryMap, HeadersMap, Options0)
 -spec get_graphql_api(map(), binary() | list()) ->
     {ok, get_graphql_api_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_graphql_api_errors(), tuple()}.
 get_graphql_api(Client, ApiId)
   when is_map(Client) ->
     get_graphql_api(Client, ApiId, #{}, #{}).
@@ -2853,11 +3213,7 @@ get_graphql_api(Client, ApiId)
 -spec get_graphql_api(map(), binary() | list(), map(), map()) ->
     {ok, get_graphql_api_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_graphql_api_errors(), tuple()}.
 get_graphql_api(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_graphql_api(Client, ApiId, QueryMap, HeadersMap, []).
@@ -2865,11 +3221,7 @@ get_graphql_api(Client, ApiId, QueryMap, HeadersMap)
 -spec get_graphql_api(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_graphql_api_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_graphql_api_errors(), tuple()}.
 get_graphql_api(Client, ApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), ""],
@@ -2891,11 +3243,7 @@ get_graphql_api(Client, ApiId, QueryMap, HeadersMap, Options0)
 -spec get_graphql_api_environment_variables(map(), binary() | list()) ->
     {ok, get_graphql_api_environment_variables_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_graphql_api_environment_variables_errors(), tuple()}.
 get_graphql_api_environment_variables(Client, ApiId)
   when is_map(Client) ->
     get_graphql_api_environment_variables(Client, ApiId, #{}, #{}).
@@ -2903,11 +3251,7 @@ get_graphql_api_environment_variables(Client, ApiId)
 -spec get_graphql_api_environment_variables(map(), binary() | list(), map(), map()) ->
     {ok, get_graphql_api_environment_variables_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_graphql_api_environment_variables_errors(), tuple()}.
 get_graphql_api_environment_variables(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_graphql_api_environment_variables(Client, ApiId, QueryMap, HeadersMap, []).
@@ -2915,11 +3259,7 @@ get_graphql_api_environment_variables(Client, ApiId, QueryMap, HeadersMap)
 -spec get_graphql_api_environment_variables(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_graphql_api_environment_variables_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_graphql_api_environment_variables_errors(), tuple()}.
 get_graphql_api_environment_variables(Client, ApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/environmentVariables"],
@@ -2940,10 +3280,7 @@ get_graphql_api_environment_variables(Client, ApiId, QueryMap, HeadersMap, Optio
 -spec get_introspection_schema(map(), binary() | list(), binary() | list()) ->
     {ok, get_introspection_schema_response(), tuple()} |
     {error, any()} |
-    {error, graph_q_l_schema_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_introspection_schema_errors(), tuple()}.
 get_introspection_schema(Client, ApiId, Format)
   when is_map(Client) ->
     get_introspection_schema(Client, ApiId, Format, #{}, #{}).
@@ -2951,10 +3288,7 @@ get_introspection_schema(Client, ApiId, Format)
 -spec get_introspection_schema(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_introspection_schema_response(), tuple()} |
     {error, any()} |
-    {error, graph_q_l_schema_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_introspection_schema_errors(), tuple()}.
 get_introspection_schema(Client, ApiId, Format, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_introspection_schema(Client, ApiId, Format, QueryMap, HeadersMap, []).
@@ -2962,10 +3296,7 @@ get_introspection_schema(Client, ApiId, Format, QueryMap, HeadersMap)
 -spec get_introspection_schema(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_introspection_schema_response(), tuple()} |
     {error, any()} |
-    {error, graph_q_l_schema_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_introspection_schema_errors(), tuple()}.
 get_introspection_schema(Client, ApiId, Format, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/schema"],
@@ -2991,9 +3322,7 @@ get_introspection_schema(Client, ApiId, Format, QueryMap, HeadersMap, Options0)
 -spec get_resolver(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_resolver_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_resolver_errors(), tuple()}.
 get_resolver(Client, ApiId, FieldName, TypeName)
   when is_map(Client) ->
     get_resolver(Client, ApiId, FieldName, TypeName, #{}, #{}).
@@ -3001,9 +3330,7 @@ get_resolver(Client, ApiId, FieldName, TypeName)
 -spec get_resolver(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_resolver_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_resolver_errors(), tuple()}.
 get_resolver(Client, ApiId, FieldName, TypeName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resolver(Client, ApiId, FieldName, TypeName, QueryMap, HeadersMap, []).
@@ -3011,9 +3338,7 @@ get_resolver(Client, ApiId, FieldName, TypeName, QueryMap, HeadersMap)
 -spec get_resolver(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_resolver_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_resolver_errors(), tuple()}.
 get_resolver(Client, ApiId, FieldName, TypeName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), "/resolvers/", aws_util:encode_uri(FieldName), ""],
@@ -3034,10 +3359,7 @@ get_resolver(Client, ApiId, FieldName, TypeName, QueryMap, HeadersMap, Options0)
 -spec get_schema_creation_status(map(), binary() | list()) ->
     {ok, get_schema_creation_status_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_schema_creation_status_errors(), tuple()}.
 get_schema_creation_status(Client, ApiId)
   when is_map(Client) ->
     get_schema_creation_status(Client, ApiId, #{}, #{}).
@@ -3045,10 +3367,7 @@ get_schema_creation_status(Client, ApiId)
 -spec get_schema_creation_status(map(), binary() | list(), map(), map()) ->
     {ok, get_schema_creation_status_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_schema_creation_status_errors(), tuple()}.
 get_schema_creation_status(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_schema_creation_status(Client, ApiId, QueryMap, HeadersMap, []).
@@ -3056,10 +3375,7 @@ get_schema_creation_status(Client, ApiId, QueryMap, HeadersMap)
 -spec get_schema_creation_status(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_schema_creation_status_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_schema_creation_status_errors(), tuple()}.
 get_schema_creation_status(Client, ApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/schemacreation"],
@@ -3080,10 +3396,7 @@ get_schema_creation_status(Client, ApiId, QueryMap, HeadersMap, Options0)
 -spec get_source_api_association(map(), binary() | list(), binary() | list()) ->
     {ok, get_source_api_association_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_source_api_association_errors(), tuple()}.
 get_source_api_association(Client, AssociationId, MergedApiIdentifier)
   when is_map(Client) ->
     get_source_api_association(Client, AssociationId, MergedApiIdentifier, #{}, #{}).
@@ -3091,10 +3404,7 @@ get_source_api_association(Client, AssociationId, MergedApiIdentifier)
 -spec get_source_api_association(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_source_api_association_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_source_api_association_errors(), tuple()}.
 get_source_api_association(Client, AssociationId, MergedApiIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_source_api_association(Client, AssociationId, MergedApiIdentifier, QueryMap, HeadersMap, []).
@@ -3102,10 +3412,7 @@ get_source_api_association(Client, AssociationId, MergedApiIdentifier, QueryMap,
 -spec get_source_api_association(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_source_api_association_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_source_api_association_errors(), tuple()}.
 get_source_api_association(Client, AssociationId, MergedApiIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/mergedApis/", aws_util:encode_uri(MergedApiIdentifier), "/sourceApiAssociations/", aws_util:encode_uri(AssociationId), ""],
@@ -3126,11 +3433,7 @@ get_source_api_association(Client, AssociationId, MergedApiIdentifier, QueryMap,
 -spec get_type(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_type_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_type_errors(), tuple()}.
 get_type(Client, ApiId, TypeName, Format)
   when is_map(Client) ->
     get_type(Client, ApiId, TypeName, Format, #{}, #{}).
@@ -3138,11 +3441,7 @@ get_type(Client, ApiId, TypeName, Format)
 -spec get_type(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_type_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_type_errors(), tuple()}.
 get_type(Client, ApiId, TypeName, Format, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_type(Client, ApiId, TypeName, Format, QueryMap, HeadersMap, []).
@@ -3150,11 +3449,7 @@ get_type(Client, ApiId, TypeName, Format, QueryMap, HeadersMap)
 -spec get_type(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_type_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_type_errors(), tuple()}.
 get_type(Client, ApiId, TypeName, Format, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), ""],
@@ -3185,10 +3480,7 @@ get_type(Client, ApiId, TypeName, Format, QueryMap, HeadersMap, Options0)
 -spec list_api_keys(map(), binary() | list()) ->
     {ok, list_api_keys_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_api_keys_errors(), tuple()}.
 list_api_keys(Client, ApiId)
   when is_map(Client) ->
     list_api_keys(Client, ApiId, #{}, #{}).
@@ -3196,10 +3488,7 @@ list_api_keys(Client, ApiId)
 -spec list_api_keys(map(), binary() | list(), map(), map()) ->
     {ok, list_api_keys_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_api_keys_errors(), tuple()}.
 list_api_keys(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_api_keys(Client, ApiId, QueryMap, HeadersMap, []).
@@ -3207,10 +3496,7 @@ list_api_keys(Client, ApiId, QueryMap, HeadersMap)
 -spec list_api_keys(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_api_keys_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_api_keys_errors(), tuple()}.
 list_api_keys(Client, ApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/apikeys"],
@@ -3236,10 +3522,7 @@ list_api_keys(Client, ApiId, QueryMap, HeadersMap, Options0)
 -spec list_data_sources(map(), binary() | list()) ->
     {ok, list_data_sources_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_data_sources_errors(), tuple()}.
 list_data_sources(Client, ApiId)
   when is_map(Client) ->
     list_data_sources(Client, ApiId, #{}, #{}).
@@ -3247,10 +3530,7 @@ list_data_sources(Client, ApiId)
 -spec list_data_sources(map(), binary() | list(), map(), map()) ->
     {ok, list_data_sources_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_data_sources_errors(), tuple()}.
 list_data_sources(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_sources(Client, ApiId, QueryMap, HeadersMap, []).
@@ -3258,10 +3538,7 @@ list_data_sources(Client, ApiId, QueryMap, HeadersMap)
 -spec list_data_sources(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_data_sources_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_data_sources_errors(), tuple()}.
 list_data_sources(Client, ApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/datasources"],
@@ -3287,9 +3564,7 @@ list_data_sources(Client, ApiId, QueryMap, HeadersMap, Options0)
 -spec list_domain_names(map()) ->
     {ok, list_domain_names_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()}.
+    {error, list_domain_names_errors(), tuple()}.
 list_domain_names(Client)
   when is_map(Client) ->
     list_domain_names(Client, #{}, #{}).
@@ -3297,9 +3572,7 @@ list_domain_names(Client)
 -spec list_domain_names(map(), map(), map()) ->
     {ok, list_domain_names_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()}.
+    {error, list_domain_names_errors(), tuple()}.
 list_domain_names(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_domain_names(Client, QueryMap, HeadersMap, []).
@@ -3307,9 +3580,7 @@ list_domain_names(Client, QueryMap, HeadersMap)
 -spec list_domain_names(map(), map(), map(), proplists:proplist()) ->
     {ok, list_domain_names_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()}.
+    {error, list_domain_names_errors(), tuple()}.
 list_domain_names(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/domainnames"],
@@ -3335,10 +3606,7 @@ list_domain_names(Client, QueryMap, HeadersMap, Options0)
 -spec list_functions(map(), binary() | list()) ->
     {ok, list_functions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_functions_errors(), tuple()}.
 list_functions(Client, ApiId)
   when is_map(Client) ->
     list_functions(Client, ApiId, #{}, #{}).
@@ -3346,10 +3614,7 @@ list_functions(Client, ApiId)
 -spec list_functions(map(), binary() | list(), map(), map()) ->
     {ok, list_functions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_functions_errors(), tuple()}.
 list_functions(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_functions(Client, ApiId, QueryMap, HeadersMap, []).
@@ -3357,10 +3622,7 @@ list_functions(Client, ApiId, QueryMap, HeadersMap)
 -spec list_functions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_functions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_functions_errors(), tuple()}.
 list_functions(Client, ApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/functions"],
@@ -3386,9 +3648,7 @@ list_functions(Client, ApiId, QueryMap, HeadersMap, Options0)
 -spec list_graphql_apis(map()) ->
     {ok, list_graphql_apis_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_graphql_apis_errors(), tuple()}.
 list_graphql_apis(Client)
   when is_map(Client) ->
     list_graphql_apis(Client, #{}, #{}).
@@ -3396,9 +3656,7 @@ list_graphql_apis(Client)
 -spec list_graphql_apis(map(), map(), map()) ->
     {ok, list_graphql_apis_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_graphql_apis_errors(), tuple()}.
 list_graphql_apis(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_graphql_apis(Client, QueryMap, HeadersMap, []).
@@ -3406,9 +3664,7 @@ list_graphql_apis(Client, QueryMap, HeadersMap)
 -spec list_graphql_apis(map(), map(), map(), proplists:proplist()) ->
     {ok, list_graphql_apis_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_graphql_apis_errors(), tuple()}.
 list_graphql_apis(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis"],
@@ -3436,10 +3692,7 @@ list_graphql_apis(Client, QueryMap, HeadersMap, Options0)
 -spec list_resolvers(map(), binary() | list(), binary() | list()) ->
     {ok, list_resolvers_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_resolvers_errors(), tuple()}.
 list_resolvers(Client, ApiId, TypeName)
   when is_map(Client) ->
     list_resolvers(Client, ApiId, TypeName, #{}, #{}).
@@ -3447,10 +3700,7 @@ list_resolvers(Client, ApiId, TypeName)
 -spec list_resolvers(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_resolvers_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_resolvers_errors(), tuple()}.
 list_resolvers(Client, ApiId, TypeName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_resolvers(Client, ApiId, TypeName, QueryMap, HeadersMap, []).
@@ -3458,10 +3708,7 @@ list_resolvers(Client, ApiId, TypeName, QueryMap, HeadersMap)
 -spec list_resolvers(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_resolvers_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_resolvers_errors(), tuple()}.
 list_resolvers(Client, ApiId, TypeName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), "/resolvers"],
@@ -3487,10 +3734,7 @@ list_resolvers(Client, ApiId, TypeName, QueryMap, HeadersMap, Options0)
 -spec list_resolvers_by_function(map(), binary() | list(), binary() | list()) ->
     {ok, list_resolvers_by_function_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_resolvers_by_function_errors(), tuple()}.
 list_resolvers_by_function(Client, ApiId, FunctionId)
   when is_map(Client) ->
     list_resolvers_by_function(Client, ApiId, FunctionId, #{}, #{}).
@@ -3498,10 +3742,7 @@ list_resolvers_by_function(Client, ApiId, FunctionId)
 -spec list_resolvers_by_function(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_resolvers_by_function_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_resolvers_by_function_errors(), tuple()}.
 list_resolvers_by_function(Client, ApiId, FunctionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_resolvers_by_function(Client, ApiId, FunctionId, QueryMap, HeadersMap, []).
@@ -3509,10 +3750,7 @@ list_resolvers_by_function(Client, ApiId, FunctionId, QueryMap, HeadersMap)
 -spec list_resolvers_by_function(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_resolvers_by_function_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_resolvers_by_function_errors(), tuple()}.
 list_resolvers_by_function(Client, ApiId, FunctionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/functions/", aws_util:encode_uri(FunctionId), "/resolvers"],
@@ -3538,10 +3776,7 @@ list_resolvers_by_function(Client, ApiId, FunctionId, QueryMap, HeadersMap, Opti
 -spec list_source_api_associations(map(), binary() | list()) ->
     {ok, list_source_api_associations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_source_api_associations_errors(), tuple()}.
 list_source_api_associations(Client, ApiId)
   when is_map(Client) ->
     list_source_api_associations(Client, ApiId, #{}, #{}).
@@ -3549,10 +3784,7 @@ list_source_api_associations(Client, ApiId)
 -spec list_source_api_associations(map(), binary() | list(), map(), map()) ->
     {ok, list_source_api_associations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_source_api_associations_errors(), tuple()}.
 list_source_api_associations(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_source_api_associations(Client, ApiId, QueryMap, HeadersMap, []).
@@ -3560,10 +3792,7 @@ list_source_api_associations(Client, ApiId, QueryMap, HeadersMap)
 -spec list_source_api_associations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_source_api_associations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_source_api_associations_errors(), tuple()}.
 list_source_api_associations(Client, ApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/sourceApiAssociations"],
@@ -3589,12 +3818,7 @@ list_source_api_associations(Client, ApiId, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -3602,12 +3826,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -3615,12 +3834,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -3641,11 +3855,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec list_types(map(), binary() | list(), binary() | list()) ->
     {ok, list_types_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_types_errors(), tuple()}.
 list_types(Client, ApiId, Format)
   when is_map(Client) ->
     list_types(Client, ApiId, Format, #{}, #{}).
@@ -3653,11 +3863,7 @@ list_types(Client, ApiId, Format)
 -spec list_types(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_types_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_types_errors(), tuple()}.
 list_types(Client, ApiId, Format, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_types(Client, ApiId, Format, QueryMap, HeadersMap, []).
@@ -3665,11 +3871,7 @@ list_types(Client, ApiId, Format, QueryMap, HeadersMap)
 -spec list_types(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_types_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_types_errors(), tuple()}.
 list_types(Client, ApiId, Format, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types"],
@@ -3696,11 +3898,7 @@ list_types(Client, ApiId, Format, QueryMap, HeadersMap, Options0)
 -spec list_types_by_association(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_types_by_association_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_types_by_association_errors(), tuple()}.
 list_types_by_association(Client, AssociationId, MergedApiIdentifier, Format)
   when is_map(Client) ->
     list_types_by_association(Client, AssociationId, MergedApiIdentifier, Format, #{}, #{}).
@@ -3708,11 +3906,7 @@ list_types_by_association(Client, AssociationId, MergedApiIdentifier, Format)
 -spec list_types_by_association(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_types_by_association_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_types_by_association_errors(), tuple()}.
 list_types_by_association(Client, AssociationId, MergedApiIdentifier, Format, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_types_by_association(Client, AssociationId, MergedApiIdentifier, Format, QueryMap, HeadersMap, []).
@@ -3720,11 +3914,7 @@ list_types_by_association(Client, AssociationId, MergedApiIdentifier, Format, Qu
 -spec list_types_by_association(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_types_by_association_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_types_by_association_errors(), tuple()}.
 list_types_by_association(Client, AssociationId, MergedApiIdentifier, Format, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/mergedApis/", aws_util:encode_uri(MergedApiIdentifier), "/sourceApiAssociations/", aws_util:encode_uri(AssociationId), "/types"],
@@ -3793,24 +3983,14 @@ list_types_by_association(Client, AssociationId, MergedApiIdentifier, Format, Qu
 -spec put_graphql_api_environment_variables(map(), binary() | list(), put_graphql_api_environment_variables_request()) ->
     {ok, put_graphql_api_environment_variables_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, put_graphql_api_environment_variables_errors(), tuple()}.
 put_graphql_api_environment_variables(Client, ApiId, Input) ->
     put_graphql_api_environment_variables(Client, ApiId, Input, []).
 
 -spec put_graphql_api_environment_variables(map(), binary() | list(), put_graphql_api_environment_variables_request(), proplists:proplist()) ->
     {ok, put_graphql_api_environment_variables_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, put_graphql_api_environment_variables_errors(), tuple()}.
 put_graphql_api_environment_variables(Client, ApiId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/environmentVariables"],
@@ -3840,20 +4020,14 @@ put_graphql_api_environment_variables(Client, ApiId, Input0, Options0) ->
 -spec start_data_source_introspection(map(), start_data_source_introspection_request()) ->
     {ok, start_data_source_introspection_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, start_data_source_introspection_errors(), tuple()}.
 start_data_source_introspection(Client, Input) ->
     start_data_source_introspection(Client, Input, []).
 
 -spec start_data_source_introspection(map(), start_data_source_introspection_request(), proplists:proplist()) ->
     {ok, start_data_source_introspection_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, start_data_source_introspection_errors(), tuple()}.
 start_data_source_introspection(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datasources/introspections"],
@@ -3883,22 +4057,14 @@ start_data_source_introspection(Client, Input0, Options0) ->
 -spec start_schema_creation(map(), binary() | list(), start_schema_creation_request()) ->
     {ok, start_schema_creation_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, start_schema_creation_errors(), tuple()}.
 start_schema_creation(Client, ApiId, Input) ->
     start_schema_creation(Client, ApiId, Input, []).
 
 -spec start_schema_creation(map(), binary() | list(), start_schema_creation_request(), proplists:proplist()) ->
     {ok, start_schema_creation_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, start_schema_creation_errors(), tuple()}.
 start_schema_creation(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/schemacreation"],
@@ -3927,22 +4093,14 @@ start_schema_creation(Client, ApiId, Input0, Options0) ->
 -spec start_schema_merge(map(), binary() | list(), binary() | list(), start_schema_merge_request()) ->
     {ok, start_schema_merge_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, start_schema_merge_errors(), tuple()}.
 start_schema_merge(Client, AssociationId, MergedApiIdentifier, Input) ->
     start_schema_merge(Client, AssociationId, MergedApiIdentifier, Input, []).
 
 -spec start_schema_merge(map(), binary() | list(), binary() | list(), start_schema_merge_request(), proplists:proplist()) ->
     {ok, start_schema_merge_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, start_schema_merge_errors(), tuple()}.
 start_schema_merge(Client, AssociationId, MergedApiIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v1/mergedApis/", aws_util:encode_uri(MergedApiIdentifier), "/sourceApiAssociations/", aws_util:encode_uri(AssociationId), "/merge"],
@@ -3969,24 +4127,14 @@ start_schema_merge(Client, AssociationId, MergedApiIdentifier, Input0, Options0)
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -4013,24 +4161,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -4058,22 +4196,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_api_cache(map(), binary() | list(), update_api_cache_request()) ->
     {ok, update_api_cache_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_api_cache_errors(), tuple()}.
 update_api_cache(Client, ApiId, Input) ->
     update_api_cache(Client, ApiId, Input, []).
 
 -spec update_api_cache(map(), binary() | list(), update_api_cache_request(), proplists:proplist()) ->
     {ok, update_api_cache_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_api_cache_errors(), tuple()}.
 update_api_cache(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/ApiCaches/update"],
@@ -4102,24 +4232,14 @@ update_api_cache(Client, ApiId, Input0, Options0) ->
 -spec update_api_key(map(), binary() | list(), binary() | list(), update_api_key_request()) ->
     {ok, update_api_key_response(), tuple()} |
     {error, any()} |
-    {error, api_key_validity_out_of_bounds_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_api_key_errors(), tuple()}.
 update_api_key(Client, ApiId, Id, Input) ->
     update_api_key(Client, ApiId, Id, Input, []).
 
 -spec update_api_key(map(), binary() | list(), binary() | list(), update_api_key_request(), proplists:proplist()) ->
     {ok, update_api_key_response(), tuple()} |
     {error, any()} |
-    {error, api_key_validity_out_of_bounds_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_api_key_errors(), tuple()}.
 update_api_key(Client, ApiId, Id, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/apikeys/", aws_util:encode_uri(Id), ""],
@@ -4146,22 +4266,14 @@ update_api_key(Client, ApiId, Id, Input0, Options0) ->
 -spec update_data_source(map(), binary() | list(), binary() | list(), update_data_source_request()) ->
     {ok, update_data_source_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_data_source_errors(), tuple()}.
 update_data_source(Client, ApiId, Name, Input) ->
     update_data_source(Client, ApiId, Name, Input, []).
 
 -spec update_data_source(map(), binary() | list(), binary() | list(), update_data_source_request(), proplists:proplist()) ->
     {ok, update_data_source_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_data_source_errors(), tuple()}.
 update_data_source(Client, ApiId, Name, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/datasources/", aws_util:encode_uri(Name), ""],
@@ -4188,22 +4300,14 @@ update_data_source(Client, ApiId, Name, Input0, Options0) ->
 -spec update_domain_name(map(), binary() | list(), update_domain_name_request()) ->
     {ok, update_domain_name_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_domain_name_errors(), tuple()}.
 update_domain_name(Client, DomainName, Input) ->
     update_domain_name(Client, DomainName, Input, []).
 
 -spec update_domain_name(map(), binary() | list(), update_domain_name_request(), proplists:proplist()) ->
     {ok, update_domain_name_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_domain_name_errors(), tuple()}.
 update_domain_name(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/v1/domainnames/", aws_util:encode_uri(DomainName), ""],
@@ -4230,22 +4334,14 @@ update_domain_name(Client, DomainName, Input0, Options0) ->
 -spec update_function(map(), binary() | list(), binary() | list(), update_function_request()) ->
     {ok, update_function_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_function_errors(), tuple()}.
 update_function(Client, ApiId, FunctionId, Input) ->
     update_function(Client, ApiId, FunctionId, Input, []).
 
 -spec update_function(map(), binary() | list(), binary() | list(), update_function_request(), proplists:proplist()) ->
     {ok, update_function_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_function_errors(), tuple()}.
 update_function(Client, ApiId, FunctionId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/functions/", aws_util:encode_uri(FunctionId), ""],
@@ -4272,24 +4368,14 @@ update_function(Client, ApiId, FunctionId, Input0, Options0) ->
 -spec update_graphql_api(map(), binary() | list(), update_graphql_api_request()) ->
     {ok, update_graphql_api_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_graphql_api_errors(), tuple()}.
 update_graphql_api(Client, ApiId, Input) ->
     update_graphql_api(Client, ApiId, Input, []).
 
 -spec update_graphql_api(map(), binary() | list(), update_graphql_api_request(), proplists:proplist()) ->
     {ok, update_graphql_api_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_graphql_api_errors(), tuple()}.
 update_graphql_api(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), ""],
@@ -4316,22 +4402,14 @@ update_graphql_api(Client, ApiId, Input0, Options0) ->
 -spec update_resolver(map(), binary() | list(), binary() | list(), binary() | list(), update_resolver_request()) ->
     {ok, update_resolver_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_resolver_errors(), tuple()}.
 update_resolver(Client, ApiId, FieldName, TypeName, Input) ->
     update_resolver(Client, ApiId, FieldName, TypeName, Input, []).
 
 -spec update_resolver(map(), binary() | list(), binary() | list(), binary() | list(), update_resolver_request(), proplists:proplist()) ->
     {ok, update_resolver_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_resolver_errors(), tuple()}.
 update_resolver(Client, ApiId, FieldName, TypeName, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), "/resolvers/", aws_util:encode_uri(FieldName), ""],
@@ -4359,22 +4437,14 @@ update_resolver(Client, ApiId, FieldName, TypeName, Input0, Options0) ->
 -spec update_source_api_association(map(), binary() | list(), binary() | list(), update_source_api_association_request()) ->
     {ok, update_source_api_association_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_source_api_association_errors(), tuple()}.
 update_source_api_association(Client, AssociationId, MergedApiIdentifier, Input) ->
     update_source_api_association(Client, AssociationId, MergedApiIdentifier, Input, []).
 
 -spec update_source_api_association(map(), binary() | list(), binary() | list(), update_source_api_association_request(), proplists:proplist()) ->
     {ok, update_source_api_association_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_source_api_association_errors(), tuple()}.
 update_source_api_association(Client, AssociationId, MergedApiIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v1/mergedApis/", aws_util:encode_uri(MergedApiIdentifier), "/sourceApiAssociations/", aws_util:encode_uri(AssociationId), ""],
@@ -4401,22 +4471,14 @@ update_source_api_association(Client, AssociationId, MergedApiIdentifier, Input0
 -spec update_type(map(), binary() | list(), binary() | list(), update_type_request()) ->
     {ok, update_type_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_type_errors(), tuple()}.
 update_type(Client, ApiId, TypeName, Input) ->
     update_type(Client, ApiId, TypeName, Input, []).
 
 -spec update_type(map(), binary() | list(), binary() | list(), update_type_request(), proplists:proplist()) ->
     {ok, update_type_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_type_errors(), tuple()}.
 update_type(Client, ApiId, TypeName, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), ""],

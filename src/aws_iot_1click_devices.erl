@@ -53,11 +53,13 @@
 %% }
 -type list_devices_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"Tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% internal_failure_exception() :: #{
@@ -65,6 +67,7 @@
 %%   <<"Message">> => string()
 %% }
 -type internal_failure_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% device_description() :: #{
@@ -78,11 +81,13 @@
 %% }
 -type device_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_device_state_request() :: #{
 %%   <<"Enabled">> => boolean()
 %% }
 -type update_device_state_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% forbidden_exception() :: #{
@@ -90,27 +95,33 @@
 %%   <<"Message">> => string()
 %% }
 -type forbidden_exception() :: #{binary() => any()}.
+
 %% Example:
 %% unclaim_device_request() :: #{}
 -type unclaim_device_request() :: #{}.
+
 
 %% Example:
 %% finalize_device_claim_request() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type finalize_device_claim_request() :: #{binary() => any()}.
+
 %% Example:
 %% update_device_state_response() :: #{}
 -type update_device_state_response() :: #{}.
+
 
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 %% Example:
 %% claim_devices_by_claim_code_request() :: #{}
 -type claim_devices_by_claim_code_request() :: #{}.
+
 
 %% Example:
 %% list_device_events_response() :: #{
@@ -119,6 +130,7 @@
 %% }
 -type list_device_events_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Code">> => string(),
@@ -126,11 +138,13 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% initiate_device_claim_response() :: #{
 %%   <<"State">> => string()
 %% }
 -type initiate_device_claim_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_device_events_request() :: #{
@@ -141,30 +155,37 @@
 %% }
 -type list_device_events_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_request_exception() :: #{
 %%   <<"Code">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type invalid_request_exception() :: #{binary() => any()}.
+
 %% Example:
 %% get_device_methods_request() :: #{}
 -type get_device_methods_request() :: #{}.
+
 %% Example:
 %% initiate_device_claim_request() :: #{}
 -type initiate_device_claim_request() :: #{}.
+
 %% Example:
 %% describe_device_request() :: #{}
 -type describe_device_request() :: #{}.
+
 
 %% Example:
 %% finalize_device_claim_response() :: #{
 %%   <<"State">> => string()
 %% }
 -type finalize_device_claim_response() :: #{binary() => any()}.
+
 %% Example:
 %% attributes() :: #{}
 -type attributes() :: #{}.
+
 
 %% Example:
 %% get_device_methods_response() :: #{
@@ -172,11 +193,13 @@
 %% }
 -type get_device_methods_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_devices_response() :: #{
@@ -185,12 +208,14 @@
 %% }
 -type list_devices_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% invoke_device_method_request() :: #{
 %%   <<"DeviceMethod">> => device_method(),
 %%   <<"DeviceMethodParameters">> => string()
 %% }
 -type invoke_device_method_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% claim_devices_by_claim_code_response() :: #{
@@ -199,21 +224,25 @@
 %% }
 -type claim_devices_by_claim_code_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% device_event() :: #{
 %%   <<"Device">> => device(),
 %%   <<"StdEvent">> => string()
 %% }
 -type device_event() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% unclaim_device_response() :: #{
 %%   <<"State">> => string()
 %% }
 -type unclaim_device_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% device() :: #{
@@ -223,11 +252,13 @@
 %% }
 -type device() :: #{binary() => any()}.
 
+
 %% Example:
 %% invoke_device_method_response() :: #{
 %%   <<"DeviceMethodResponse">> => string()
 %% }
 -type invoke_device_method_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% precondition_failed_exception() :: #{
@@ -236,12 +267,14 @@
 %% }
 -type precondition_failed_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% range_not_satisfiable_exception() :: #{
 %%   <<"Code">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type range_not_satisfiable_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_conflict_exception() :: #{
@@ -250,6 +283,7 @@
 %% }
 -type resource_conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% device_method() :: #{
 %%   <<"DeviceType">> => string(),
@@ -257,11 +291,83 @@
 %% }
 -type device_method() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_device_response() :: #{
 %%   <<"DeviceDescription">> => device_description()
 %% }
 -type describe_device_response() :: #{binary() => any()}.
+
+-type claim_devices_by_claim_code_errors() ::
+    invalid_request_exception() | 
+    forbidden_exception() | 
+    internal_failure_exception().
+
+-type describe_device_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type finalize_device_claim_errors() ::
+    resource_conflict_exception() | 
+    precondition_failed_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type get_device_methods_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type initiate_device_claim_errors() ::
+    resource_conflict_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type invoke_device_method_errors() ::
+    resource_conflict_exception() | 
+    range_not_satisfiable_exception() | 
+    precondition_failed_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_device_events_errors() ::
+    range_not_satisfiable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_devices_errors() ::
+    range_not_satisfiable_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_tags_for_resource_errors() ::
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type tag_resource_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type unclaim_device_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type untag_resource_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type update_device_state_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
 
 %%====================================================================
 %% API
@@ -273,18 +379,14 @@
 -spec claim_devices_by_claim_code(map(), binary() | list(), claim_devices_by_claim_code_request()) ->
     {ok, claim_devices_by_claim_code_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, claim_devices_by_claim_code_errors(), tuple()}.
 claim_devices_by_claim_code(Client, ClaimCode, Input) ->
     claim_devices_by_claim_code(Client, ClaimCode, Input, []).
 
 -spec claim_devices_by_claim_code(map(), binary() | list(), claim_devices_by_claim_code_request(), proplists:proplist()) ->
     {ok, claim_devices_by_claim_code_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, claim_devices_by_claim_code_errors(), tuple()}.
 claim_devices_by_claim_code(Client, ClaimCode, Input0, Options0) ->
     Method = put,
     Path = ["/claims/", aws_util:encode_uri(ClaimCode), ""],
@@ -313,9 +415,7 @@ claim_devices_by_claim_code(Client, ClaimCode, Input0, Options0) ->
 -spec describe_device(map(), binary() | list()) ->
     {ok, describe_device_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_device_errors(), tuple()}.
 describe_device(Client, DeviceId)
   when is_map(Client) ->
     describe_device(Client, DeviceId, #{}, #{}).
@@ -323,9 +423,7 @@ describe_device(Client, DeviceId)
 -spec describe_device(map(), binary() | list(), map(), map()) ->
     {ok, describe_device_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_device_errors(), tuple()}.
 describe_device(Client, DeviceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_device(Client, DeviceId, QueryMap, HeadersMap, []).
@@ -333,9 +431,7 @@ describe_device(Client, DeviceId, QueryMap, HeadersMap)
 -spec describe_device(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_device_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_device_errors(), tuple()}.
 describe_device(Client, DeviceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/devices/", aws_util:encode_uri(DeviceId), ""],
@@ -362,22 +458,14 @@ describe_device(Client, DeviceId, QueryMap, HeadersMap, Options0)
 -spec finalize_device_claim(map(), binary() | list(), finalize_device_claim_request()) ->
     {ok, finalize_device_claim_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, finalize_device_claim_errors(), tuple()}.
 finalize_device_claim(Client, DeviceId, Input) ->
     finalize_device_claim(Client, DeviceId, Input, []).
 
 -spec finalize_device_claim(map(), binary() | list(), finalize_device_claim_request(), proplists:proplist()) ->
     {ok, finalize_device_claim_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, finalize_device_claim_errors(), tuple()}.
 finalize_device_claim(Client, DeviceId, Input0, Options0) ->
     Method = put,
     Path = ["/devices/", aws_util:encode_uri(DeviceId), "/finalize-claim"],
@@ -405,9 +493,7 @@ finalize_device_claim(Client, DeviceId, Input0, Options0) ->
 -spec get_device_methods(map(), binary() | list()) ->
     {ok, get_device_methods_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_device_methods_errors(), tuple()}.
 get_device_methods(Client, DeviceId)
   when is_map(Client) ->
     get_device_methods(Client, DeviceId, #{}, #{}).
@@ -415,9 +501,7 @@ get_device_methods(Client, DeviceId)
 -spec get_device_methods(map(), binary() | list(), map(), map()) ->
     {ok, get_device_methods_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_device_methods_errors(), tuple()}.
 get_device_methods(Client, DeviceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_device_methods(Client, DeviceId, QueryMap, HeadersMap, []).
@@ -425,9 +509,7 @@ get_device_methods(Client, DeviceId, QueryMap, HeadersMap)
 -spec get_device_methods(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_device_methods_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_device_methods_errors(), tuple()}.
 get_device_methods(Client, DeviceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/devices/", aws_util:encode_uri(DeviceId), "/methods"],
@@ -454,20 +536,14 @@ get_device_methods(Client, DeviceId, QueryMap, HeadersMap, Options0)
 -spec initiate_device_claim(map(), binary() | list(), initiate_device_claim_request()) ->
     {ok, initiate_device_claim_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, initiate_device_claim_errors(), tuple()}.
 initiate_device_claim(Client, DeviceId, Input) ->
     initiate_device_claim(Client, DeviceId, Input, []).
 
 -spec initiate_device_claim(map(), binary() | list(), initiate_device_claim_request(), proplists:proplist()) ->
     {ok, initiate_device_claim_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, initiate_device_claim_errors(), tuple()}.
 initiate_device_claim(Client, DeviceId, Input0, Options0) ->
     Method = put,
     Path = ["/devices/", aws_util:encode_uri(DeviceId), "/initiate-claim"],
@@ -498,24 +574,14 @@ initiate_device_claim(Client, DeviceId, Input0, Options0) ->
 -spec invoke_device_method(map(), binary() | list(), invoke_device_method_request()) ->
     {ok, invoke_device_method_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, range_not_satisfiable_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, invoke_device_method_errors(), tuple()}.
 invoke_device_method(Client, DeviceId, Input) ->
     invoke_device_method(Client, DeviceId, Input, []).
 
 -spec invoke_device_method(map(), binary() | list(), invoke_device_method_request(), proplists:proplist()) ->
     {ok, invoke_device_method_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, range_not_satisfiable_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, invoke_device_method_errors(), tuple()}.
 invoke_device_method(Client, DeviceId, Input0, Options0) ->
     Method = post,
     Path = ["/devices/", aws_util:encode_uri(DeviceId), "/methods"],
@@ -544,10 +610,7 @@ invoke_device_method(Client, DeviceId, Input0, Options0) ->
 -spec list_device_events(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_device_events_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, range_not_satisfiable_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_device_events_errors(), tuple()}.
 list_device_events(Client, DeviceId, FromTimeStamp, ToTimeStamp)
   when is_map(Client) ->
     list_device_events(Client, DeviceId, FromTimeStamp, ToTimeStamp, #{}, #{}).
@@ -555,10 +618,7 @@ list_device_events(Client, DeviceId, FromTimeStamp, ToTimeStamp)
 -spec list_device_events(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_device_events_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, range_not_satisfiable_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_device_events_errors(), tuple()}.
 list_device_events(Client, DeviceId, FromTimeStamp, ToTimeStamp, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_device_events(Client, DeviceId, FromTimeStamp, ToTimeStamp, QueryMap, HeadersMap, []).
@@ -566,10 +626,7 @@ list_device_events(Client, DeviceId, FromTimeStamp, ToTimeStamp, QueryMap, Heade
 -spec list_device_events(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_device_events_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, range_not_satisfiable_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_device_events_errors(), tuple()}.
 list_device_events(Client, DeviceId, FromTimeStamp, ToTimeStamp, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/devices/", aws_util:encode_uri(DeviceId), "/events"],
@@ -598,9 +655,7 @@ list_device_events(Client, DeviceId, FromTimeStamp, ToTimeStamp, QueryMap, Heade
 -spec list_devices(map()) ->
     {ok, list_devices_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, range_not_satisfiable_exception(), tuple()}.
+    {error, list_devices_errors(), tuple()}.
 list_devices(Client)
   when is_map(Client) ->
     list_devices(Client, #{}, #{}).
@@ -608,9 +663,7 @@ list_devices(Client)
 -spec list_devices(map(), map(), map()) ->
     {ok, list_devices_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, range_not_satisfiable_exception(), tuple()}.
+    {error, list_devices_errors(), tuple()}.
 list_devices(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_devices(Client, QueryMap, HeadersMap, []).
@@ -618,9 +671,7 @@ list_devices(Client, QueryMap, HeadersMap)
 -spec list_devices(map(), map(), map(), proplists:proplist()) ->
     {ok, list_devices_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, range_not_satisfiable_exception(), tuple()}.
+    {error, list_devices_errors(), tuple()}.
 list_devices(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/devices"],
@@ -647,8 +698,7 @@ list_devices(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -656,8 +706,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -665,8 +714,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -692,18 +740,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -730,18 +774,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec unclaim_device(map(), binary() | list(), unclaim_device_request()) ->
     {ok, unclaim_device_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, unclaim_device_errors(), tuple()}.
 unclaim_device(Client, DeviceId, Input) ->
     unclaim_device(Client, DeviceId, Input, []).
 
 -spec unclaim_device(map(), binary() | list(), unclaim_device_request(), proplists:proplist()) ->
     {ok, unclaim_device_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, unclaim_device_errors(), tuple()}.
 unclaim_device(Client, DeviceId, Input0, Options0) ->
     Method = put,
     Path = ["/devices/", aws_util:encode_uri(DeviceId), "/unclaim"],
@@ -770,18 +810,14 @@ unclaim_device(Client, DeviceId, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -810,18 +846,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_device_state(map(), binary() | list(), update_device_state_request()) ->
     {ok, update_device_state_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_device_state_errors(), tuple()}.
 update_device_state(Client, DeviceId, Input) ->
     update_device_state(Client, DeviceId, Input, []).
 
 -spec update_device_state(map(), binary() | list(), update_device_state_request(), proplists:proplist()) ->
     {ok, update_device_state_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_device_state_errors(), tuple()}.
 update_device_state(Client, DeviceId, Input0, Options0) ->
     Method = put,
     Path = ["/devices/", aws_util:encode_uri(DeviceId), "/state"],

@@ -1573,6 +1573,189 @@
 %% }
 -type delete_source_credentials_output() :: #{binary() => any()}.
 
+-type batch_delete_builds_errors() ::
+    invalid_input_exception().
+
+-type batch_get_build_batches_errors() ::
+    invalid_input_exception().
+
+-type batch_get_builds_errors() ::
+    invalid_input_exception().
+
+-type batch_get_fleets_errors() ::
+    invalid_input_exception().
+
+-type batch_get_projects_errors() ::
+    invalid_input_exception().
+
+-type batch_get_report_groups_errors() ::
+    invalid_input_exception().
+
+-type batch_get_reports_errors() ::
+    invalid_input_exception().
+
+-type create_fleet_errors() ::
+    resource_already_exists_exception() | 
+    invalid_input_exception() | 
+    account_limit_exceeded_exception().
+
+-type create_project_errors() ::
+    resource_already_exists_exception() | 
+    invalid_input_exception() | 
+    account_limit_exceeded_exception().
+
+-type create_report_group_errors() ::
+    resource_already_exists_exception() | 
+    invalid_input_exception() | 
+    account_limit_exceeded_exception().
+
+-type create_webhook_errors() ::
+    resource_already_exists_exception() | 
+    o_auth_provider_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type delete_build_batch_errors() ::
+    invalid_input_exception().
+
+-type delete_fleet_errors() ::
+    invalid_input_exception().
+
+-type delete_project_errors() ::
+    invalid_input_exception().
+
+-type delete_report_errors() ::
+    invalid_input_exception().
+
+-type delete_report_group_errors() ::
+    invalid_input_exception().
+
+-type delete_resource_policy_errors() ::
+    invalid_input_exception().
+
+-type delete_source_credentials_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type delete_webhook_errors() ::
+    o_auth_provider_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type describe_code_coverages_errors() ::
+    invalid_input_exception().
+
+-type describe_test_cases_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type get_report_group_trend_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type get_resource_policy_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type import_source_credentials_errors() ::
+    resource_already_exists_exception() | 
+    invalid_input_exception() | 
+    account_limit_exceeded_exception().
+
+-type invalidate_project_cache_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type list_build_batches_errors() ::
+    invalid_input_exception().
+
+-type list_build_batches_for_project_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type list_builds_errors() ::
+    invalid_input_exception().
+
+-type list_builds_for_project_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type list_fleets_errors() ::
+    invalid_input_exception().
+
+-type list_projects_errors() ::
+    invalid_input_exception().
+
+-type list_report_groups_errors() ::
+    invalid_input_exception().
+
+-type list_reports_errors() ::
+    invalid_input_exception().
+
+-type list_reports_for_report_group_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type list_shared_projects_errors() ::
+    invalid_input_exception().
+
+-type list_shared_report_groups_errors() ::
+    invalid_input_exception().
+
+-type list_source_credentials_errors() ::
+    invalid_input_exception().
+
+-type put_resource_policy_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type retry_build_errors() ::
+    invalid_input_exception() | 
+    account_limit_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type retry_build_batch_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type start_build_errors() ::
+    invalid_input_exception() | 
+    account_limit_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type start_build_batch_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type stop_build_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type stop_build_batch_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type update_fleet_errors() ::
+    invalid_input_exception() | 
+    account_limit_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type update_project_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type update_project_visibility_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type update_report_group_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type update_webhook_errors() ::
+    o_auth_provider_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -1582,7 +1765,7 @@
 -spec batch_delete_builds(map(), batch_delete_builds_input()) ->
     {ok, batch_delete_builds_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, batch_delete_builds_errors(), tuple()}.
 batch_delete_builds(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_builds(Client, Input, []).
@@ -1590,7 +1773,7 @@ batch_delete_builds(Client, Input)
 -spec batch_delete_builds(map(), batch_delete_builds_input(), proplists:proplist()) ->
     {ok, batch_delete_builds_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, batch_delete_builds_errors(), tuple()}.
 batch_delete_builds(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDeleteBuilds">>, Input, Options).
@@ -1599,7 +1782,7 @@ batch_delete_builds(Client, Input, Options)
 -spec batch_get_build_batches(map(), batch_get_build_batches_input()) ->
     {ok, batch_get_build_batches_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, batch_get_build_batches_errors(), tuple()}.
 batch_get_build_batches(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_build_batches(Client, Input, []).
@@ -1607,7 +1790,7 @@ batch_get_build_batches(Client, Input)
 -spec batch_get_build_batches(map(), batch_get_build_batches_input(), proplists:proplist()) ->
     {ok, batch_get_build_batches_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, batch_get_build_batches_errors(), tuple()}.
 batch_get_build_batches(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetBuildBatches">>, Input, Options).
@@ -1616,7 +1799,7 @@ batch_get_build_batches(Client, Input, Options)
 -spec batch_get_builds(map(), batch_get_builds_input()) ->
     {ok, batch_get_builds_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, batch_get_builds_errors(), tuple()}.
 batch_get_builds(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_builds(Client, Input, []).
@@ -1624,7 +1807,7 @@ batch_get_builds(Client, Input)
 -spec batch_get_builds(map(), batch_get_builds_input(), proplists:proplist()) ->
     {ok, batch_get_builds_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, batch_get_builds_errors(), tuple()}.
 batch_get_builds(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetBuilds">>, Input, Options).
@@ -1633,7 +1816,7 @@ batch_get_builds(Client, Input, Options)
 -spec batch_get_fleets(map(), batch_get_fleets_input()) ->
     {ok, batch_get_fleets_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, batch_get_fleets_errors(), tuple()}.
 batch_get_fleets(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_fleets(Client, Input, []).
@@ -1641,7 +1824,7 @@ batch_get_fleets(Client, Input)
 -spec batch_get_fleets(map(), batch_get_fleets_input(), proplists:proplist()) ->
     {ok, batch_get_fleets_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, batch_get_fleets_errors(), tuple()}.
 batch_get_fleets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetFleets">>, Input, Options).
@@ -1650,7 +1833,7 @@ batch_get_fleets(Client, Input, Options)
 -spec batch_get_projects(map(), batch_get_projects_input()) ->
     {ok, batch_get_projects_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, batch_get_projects_errors(), tuple()}.
 batch_get_projects(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_projects(Client, Input, []).
@@ -1658,7 +1841,7 @@ batch_get_projects(Client, Input)
 -spec batch_get_projects(map(), batch_get_projects_input(), proplists:proplist()) ->
     {ok, batch_get_projects_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, batch_get_projects_errors(), tuple()}.
 batch_get_projects(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetProjects">>, Input, Options).
@@ -1668,7 +1851,7 @@ batch_get_projects(Client, Input, Options)
 -spec batch_get_report_groups(map(), batch_get_report_groups_input()) ->
     {ok, batch_get_report_groups_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, batch_get_report_groups_errors(), tuple()}.
 batch_get_report_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_report_groups(Client, Input, []).
@@ -1676,7 +1859,7 @@ batch_get_report_groups(Client, Input)
 -spec batch_get_report_groups(map(), batch_get_report_groups_input(), proplists:proplist()) ->
     {ok, batch_get_report_groups_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, batch_get_report_groups_errors(), tuple()}.
 batch_get_report_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetReportGroups">>, Input, Options).
@@ -1686,7 +1869,7 @@ batch_get_report_groups(Client, Input, Options)
 -spec batch_get_reports(map(), batch_get_reports_input()) ->
     {ok, batch_get_reports_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, batch_get_reports_errors(), tuple()}.
 batch_get_reports(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_reports(Client, Input, []).
@@ -1694,7 +1877,7 @@ batch_get_reports(Client, Input)
 -spec batch_get_reports(map(), batch_get_reports_input(), proplists:proplist()) ->
     {ok, batch_get_reports_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, batch_get_reports_errors(), tuple()}.
 batch_get_reports(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetReports">>, Input, Options).
@@ -1703,9 +1886,7 @@ batch_get_reports(Client, Input, Options)
 -spec create_fleet(map(), create_fleet_input()) ->
     {ok, create_fleet_output(), tuple()} |
     {error, any()} |
-    {error, account_limit_exceeded_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()}.
+    {error, create_fleet_errors(), tuple()}.
 create_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_fleet(Client, Input, []).
@@ -1713,9 +1894,7 @@ create_fleet(Client, Input)
 -spec create_fleet(map(), create_fleet_input(), proplists:proplist()) ->
     {ok, create_fleet_output(), tuple()} |
     {error, any()} |
-    {error, account_limit_exceeded_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()}.
+    {error, create_fleet_errors(), tuple()}.
 create_fleet(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFleet">>, Input, Options).
@@ -1724,9 +1903,7 @@ create_fleet(Client, Input, Options)
 -spec create_project(map(), create_project_input()) ->
     {ok, create_project_output(), tuple()} |
     {error, any()} |
-    {error, account_limit_exceeded_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()}.
+    {error, create_project_errors(), tuple()}.
 create_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_project(Client, Input, []).
@@ -1734,9 +1911,7 @@ create_project(Client, Input)
 -spec create_project(map(), create_project_input(), proplists:proplist()) ->
     {ok, create_project_output(), tuple()} |
     {error, any()} |
-    {error, account_limit_exceeded_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()}.
+    {error, create_project_errors(), tuple()}.
 create_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateProject">>, Input, Options).
@@ -1748,9 +1923,7 @@ create_project(Client, Input, Options)
 -spec create_report_group(map(), create_report_group_input()) ->
     {ok, create_report_group_output(), tuple()} |
     {error, any()} |
-    {error, account_limit_exceeded_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()}.
+    {error, create_report_group_errors(), tuple()}.
 create_report_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_report_group(Client, Input, []).
@@ -1758,9 +1931,7 @@ create_report_group(Client, Input)
 -spec create_report_group(map(), create_report_group_input(), proplists:proplist()) ->
     {ok, create_report_group_output(), tuple()} |
     {error, any()} |
-    {error, account_limit_exceeded_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()}.
+    {error, create_report_group_errors(), tuple()}.
 create_report_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateReportGroup">>, Input, Options).
@@ -1787,10 +1958,7 @@ create_report_group(Client, Input, Options)
 -spec create_webhook(map(), create_webhook_input()) ->
     {ok, create_webhook_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, o_auth_provider_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_webhook_errors(), tuple()}.
 create_webhook(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_webhook(Client, Input, []).
@@ -1798,10 +1966,7 @@ create_webhook(Client, Input)
 -spec create_webhook(map(), create_webhook_input(), proplists:proplist()) ->
     {ok, create_webhook_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, o_auth_provider_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_webhook_errors(), tuple()}.
 create_webhook(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWebhook">>, Input, Options).
@@ -1810,7 +1975,7 @@ create_webhook(Client, Input, Options)
 -spec delete_build_batch(map(), delete_build_batch_input()) ->
     {ok, delete_build_batch_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, delete_build_batch_errors(), tuple()}.
 delete_build_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_build_batch(Client, Input, []).
@@ -1818,7 +1983,7 @@ delete_build_batch(Client, Input)
 -spec delete_build_batch(map(), delete_build_batch_input(), proplists:proplist()) ->
     {ok, delete_build_batch_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, delete_build_batch_errors(), tuple()}.
 delete_build_batch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBuildBatch">>, Input, Options).
@@ -1829,7 +1994,7 @@ delete_build_batch(Client, Input, Options)
 -spec delete_fleet(map(), delete_fleet_input()) ->
     {ok, delete_fleet_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, delete_fleet_errors(), tuple()}.
 delete_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_fleet(Client, Input, []).
@@ -1837,7 +2002,7 @@ delete_fleet(Client, Input)
 -spec delete_fleet(map(), delete_fleet_input(), proplists:proplist()) ->
     {ok, delete_fleet_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, delete_fleet_errors(), tuple()}.
 delete_fleet(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFleet">>, Input, Options).
@@ -1848,7 +2013,7 @@ delete_fleet(Client, Input, Options)
 -spec delete_project(map(), delete_project_input()) ->
     {ok, delete_project_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, delete_project_errors(), tuple()}.
 delete_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_project(Client, Input, []).
@@ -1856,7 +2021,7 @@ delete_project(Client, Input)
 -spec delete_project(map(), delete_project_input(), proplists:proplist()) ->
     {ok, delete_project_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, delete_project_errors(), tuple()}.
 delete_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProject">>, Input, Options).
@@ -1866,7 +2031,7 @@ delete_project(Client, Input, Options)
 -spec delete_report(map(), delete_report_input()) ->
     {ok, delete_report_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, delete_report_errors(), tuple()}.
 delete_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_report(Client, Input, []).
@@ -1874,7 +2039,7 @@ delete_report(Client, Input)
 -spec delete_report(map(), delete_report_input(), proplists:proplist()) ->
     {ok, delete_report_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, delete_report_errors(), tuple()}.
 delete_report(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteReport">>, Input, Options).
@@ -1885,7 +2050,7 @@ delete_report(Client, Input, Options)
 -spec delete_report_group(map(), delete_report_group_input()) ->
     {ok, delete_report_group_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, delete_report_group_errors(), tuple()}.
 delete_report_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_report_group(Client, Input, []).
@@ -1893,7 +2058,7 @@ delete_report_group(Client, Input)
 -spec delete_report_group(map(), delete_report_group_input(), proplists:proplist()) ->
     {ok, delete_report_group_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, delete_report_group_errors(), tuple()}.
 delete_report_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteReportGroup">>, Input, Options).
@@ -1902,7 +2067,7 @@ delete_report_group(Client, Input, Options)
 -spec delete_resource_policy(map(), delete_resource_policy_input()) ->
     {ok, delete_resource_policy_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
@@ -1910,7 +2075,7 @@ delete_resource_policy(Client, Input)
 -spec delete_resource_policy(map(), delete_resource_policy_input(), proplists:proplist()) ->
     {ok, delete_resource_policy_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourcePolicy">>, Input, Options).
@@ -1920,8 +2085,7 @@ delete_resource_policy(Client, Input, Options)
 -spec delete_source_credentials(map(), delete_source_credentials_input()) ->
     {ok, delete_source_credentials_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_source_credentials_errors(), tuple()}.
 delete_source_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_source_credentials(Client, Input, []).
@@ -1929,8 +2093,7 @@ delete_source_credentials(Client, Input)
 -spec delete_source_credentials(map(), delete_source_credentials_input(), proplists:proplist()) ->
     {ok, delete_source_credentials_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_source_credentials_errors(), tuple()}.
 delete_source_credentials(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSourceCredentials">>, Input, Options).
@@ -1943,9 +2106,7 @@ delete_source_credentials(Client, Input, Options)
 -spec delete_webhook(map(), delete_webhook_input()) ->
     {ok, delete_webhook_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, o_auth_provider_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_webhook_errors(), tuple()}.
 delete_webhook(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_webhook(Client, Input, []).
@@ -1953,9 +2114,7 @@ delete_webhook(Client, Input)
 -spec delete_webhook(map(), delete_webhook_input(), proplists:proplist()) ->
     {ok, delete_webhook_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, o_auth_provider_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_webhook_errors(), tuple()}.
 delete_webhook(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWebhook">>, Input, Options).
@@ -1964,7 +2123,7 @@ delete_webhook(Client, Input, Options)
 -spec describe_code_coverages(map(), describe_code_coverages_input()) ->
     {ok, describe_code_coverages_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, describe_code_coverages_errors(), tuple()}.
 describe_code_coverages(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_code_coverages(Client, Input, []).
@@ -1972,7 +2131,7 @@ describe_code_coverages(Client, Input)
 -spec describe_code_coverages(map(), describe_code_coverages_input(), proplists:proplist()) ->
     {ok, describe_code_coverages_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, describe_code_coverages_errors(), tuple()}.
 describe_code_coverages(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCodeCoverages">>, Input, Options).
@@ -1982,8 +2141,7 @@ describe_code_coverages(Client, Input, Options)
 -spec describe_test_cases(map(), describe_test_cases_input()) ->
     {ok, describe_test_cases_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_test_cases_errors(), tuple()}.
 describe_test_cases(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_test_cases(Client, Input, []).
@@ -1991,8 +2149,7 @@ describe_test_cases(Client, Input)
 -spec describe_test_cases(map(), describe_test_cases_input(), proplists:proplist()) ->
     {ok, describe_test_cases_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_test_cases_errors(), tuple()}.
 describe_test_cases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTestCases">>, Input, Options).
@@ -2002,8 +2159,7 @@ describe_test_cases(Client, Input, Options)
 -spec get_report_group_trend(map(), get_report_group_trend_input()) ->
     {ok, get_report_group_trend_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_report_group_trend_errors(), tuple()}.
 get_report_group_trend(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_report_group_trend(Client, Input, []).
@@ -2011,8 +2167,7 @@ get_report_group_trend(Client, Input)
 -spec get_report_group_trend(map(), get_report_group_trend_input(), proplists:proplist()) ->
     {ok, get_report_group_trend_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_report_group_trend_errors(), tuple()}.
 get_report_group_trend(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetReportGroupTrend">>, Input, Options).
@@ -2021,8 +2176,7 @@ get_report_group_trend(Client, Input, Options)
 -spec get_resource_policy(map(), get_resource_policy_input()) ->
     {ok, get_resource_policy_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_resource_policy_errors(), tuple()}.
 get_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_policy(Client, Input, []).
@@ -2030,8 +2184,7 @@ get_resource_policy(Client, Input)
 -spec get_resource_policy(map(), get_resource_policy_input(), proplists:proplist()) ->
     {ok, get_resource_policy_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_resource_policy_errors(), tuple()}.
 get_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourcePolicy">>, Input, Options).
@@ -2043,9 +2196,7 @@ get_resource_policy(Client, Input, Options)
 -spec import_source_credentials(map(), import_source_credentials_input()) ->
     {ok, import_source_credentials_output(), tuple()} |
     {error, any()} |
-    {error, account_limit_exceeded_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()}.
+    {error, import_source_credentials_errors(), tuple()}.
 import_source_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_source_credentials(Client, Input, []).
@@ -2053,9 +2204,7 @@ import_source_credentials(Client, Input)
 -spec import_source_credentials(map(), import_source_credentials_input(), proplists:proplist()) ->
     {ok, import_source_credentials_output(), tuple()} |
     {error, any()} |
-    {error, account_limit_exceeded_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()}.
+    {error, import_source_credentials_errors(), tuple()}.
 import_source_credentials(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportSourceCredentials">>, Input, Options).
@@ -2064,8 +2213,7 @@ import_source_credentials(Client, Input, Options)
 -spec invalidate_project_cache(map(), invalidate_project_cache_input()) ->
     {ok, invalidate_project_cache_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, invalidate_project_cache_errors(), tuple()}.
 invalidate_project_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     invalidate_project_cache(Client, Input, []).
@@ -2073,8 +2221,7 @@ invalidate_project_cache(Client, Input)
 -spec invalidate_project_cache(map(), invalidate_project_cache_input(), proplists:proplist()) ->
     {ok, invalidate_project_cache_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, invalidate_project_cache_errors(), tuple()}.
 invalidate_project_cache(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"InvalidateProjectCache">>, Input, Options).
@@ -2084,7 +2231,7 @@ invalidate_project_cache(Client, Input, Options)
 -spec list_build_batches(map(), list_build_batches_input()) ->
     {ok, list_build_batches_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_build_batches_errors(), tuple()}.
 list_build_batches(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_build_batches(Client, Input, []).
@@ -2092,7 +2239,7 @@ list_build_batches(Client, Input)
 -spec list_build_batches(map(), list_build_batches_input(), proplists:proplist()) ->
     {ok, list_build_batches_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_build_batches_errors(), tuple()}.
 list_build_batches(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBuildBatches">>, Input, Options).
@@ -2102,8 +2249,7 @@ list_build_batches(Client, Input, Options)
 -spec list_build_batches_for_project(map(), list_build_batches_for_project_input()) ->
     {ok, list_build_batches_for_project_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_build_batches_for_project_errors(), tuple()}.
 list_build_batches_for_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_build_batches_for_project(Client, Input, []).
@@ -2111,8 +2257,7 @@ list_build_batches_for_project(Client, Input)
 -spec list_build_batches_for_project(map(), list_build_batches_for_project_input(), proplists:proplist()) ->
     {ok, list_build_batches_for_project_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_build_batches_for_project_errors(), tuple()}.
 list_build_batches_for_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBuildBatchesForProject">>, Input, Options).
@@ -2122,7 +2267,7 @@ list_build_batches_for_project(Client, Input, Options)
 -spec list_builds(map(), list_builds_input()) ->
     {ok, list_builds_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_builds_errors(), tuple()}.
 list_builds(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_builds(Client, Input, []).
@@ -2130,7 +2275,7 @@ list_builds(Client, Input)
 -spec list_builds(map(), list_builds_input(), proplists:proplist()) ->
     {ok, list_builds_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_builds_errors(), tuple()}.
 list_builds(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBuilds">>, Input, Options).
@@ -2141,8 +2286,7 @@ list_builds(Client, Input, Options)
 -spec list_builds_for_project(map(), list_builds_for_project_input()) ->
     {ok, list_builds_for_project_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_builds_for_project_errors(), tuple()}.
 list_builds_for_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_builds_for_project(Client, Input, []).
@@ -2150,8 +2294,7 @@ list_builds_for_project(Client, Input)
 -spec list_builds_for_project(map(), list_builds_for_project_input(), proplists:proplist()) ->
     {ok, list_builds_for_project_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_builds_for_project_errors(), tuple()}.
 list_builds_for_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBuildsForProject">>, Input, Options).
@@ -2176,7 +2319,7 @@ list_curated_environment_images(Client, Input, Options)
 -spec list_fleets(map(), list_fleets_input()) ->
     {ok, list_fleets_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_fleets_errors(), tuple()}.
 list_fleets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_fleets(Client, Input, []).
@@ -2184,7 +2327,7 @@ list_fleets(Client, Input)
 -spec list_fleets(map(), list_fleets_input(), proplists:proplist()) ->
     {ok, list_fleets_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_fleets_errors(), tuple()}.
 list_fleets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFleets">>, Input, Options).
@@ -2195,7 +2338,7 @@ list_fleets(Client, Input, Options)
 -spec list_projects(map(), list_projects_input()) ->
     {ok, list_projects_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_projects_errors(), tuple()}.
 list_projects(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_projects(Client, Input, []).
@@ -2203,7 +2346,7 @@ list_projects(Client, Input)
 -spec list_projects(map(), list_projects_input(), proplists:proplist()) ->
     {ok, list_projects_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_projects_errors(), tuple()}.
 list_projects(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProjects">>, Input, Options).
@@ -2214,7 +2357,7 @@ list_projects(Client, Input, Options)
 -spec list_report_groups(map(), list_report_groups_input()) ->
     {ok, list_report_groups_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_report_groups_errors(), tuple()}.
 list_report_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_report_groups(Client, Input, []).
@@ -2222,7 +2365,7 @@ list_report_groups(Client, Input)
 -spec list_report_groups(map(), list_report_groups_input(), proplists:proplist()) ->
     {ok, list_report_groups_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_report_groups_errors(), tuple()}.
 list_report_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListReportGroups">>, Input, Options).
@@ -2233,7 +2376,7 @@ list_report_groups(Client, Input, Options)
 -spec list_reports(map(), list_reports_input()) ->
     {ok, list_reports_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_reports_errors(), tuple()}.
 list_reports(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_reports(Client, Input, []).
@@ -2241,7 +2384,7 @@ list_reports(Client, Input)
 -spec list_reports(map(), list_reports_input(), proplists:proplist()) ->
     {ok, list_reports_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_reports_errors(), tuple()}.
 list_reports(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListReports">>, Input, Options).
@@ -2251,8 +2394,7 @@ list_reports(Client, Input, Options)
 -spec list_reports_for_report_group(map(), list_reports_for_report_group_input()) ->
     {ok, list_reports_for_report_group_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_reports_for_report_group_errors(), tuple()}.
 list_reports_for_report_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_reports_for_report_group(Client, Input, []).
@@ -2260,8 +2402,7 @@ list_reports_for_report_group(Client, Input)
 -spec list_reports_for_report_group(map(), list_reports_for_report_group_input(), proplists:proplist()) ->
     {ok, list_reports_for_report_group_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_reports_for_report_group_errors(), tuple()}.
 list_reports_for_report_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListReportsForReportGroup">>, Input, Options).
@@ -2271,7 +2412,7 @@ list_reports_for_report_group(Client, Input, Options)
 -spec list_shared_projects(map(), list_shared_projects_input()) ->
     {ok, list_shared_projects_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_shared_projects_errors(), tuple()}.
 list_shared_projects(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_shared_projects(Client, Input, []).
@@ -2279,7 +2420,7 @@ list_shared_projects(Client, Input)
 -spec list_shared_projects(map(), list_shared_projects_input(), proplists:proplist()) ->
     {ok, list_shared_projects_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_shared_projects_errors(), tuple()}.
 list_shared_projects(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSharedProjects">>, Input, Options).
@@ -2289,7 +2430,7 @@ list_shared_projects(Client, Input, Options)
 -spec list_shared_report_groups(map(), list_shared_report_groups_input()) ->
     {ok, list_shared_report_groups_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_shared_report_groups_errors(), tuple()}.
 list_shared_report_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_shared_report_groups(Client, Input, []).
@@ -2297,7 +2438,7 @@ list_shared_report_groups(Client, Input)
 -spec list_shared_report_groups(map(), list_shared_report_groups_input(), proplists:proplist()) ->
     {ok, list_shared_report_groups_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_shared_report_groups_errors(), tuple()}.
 list_shared_report_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSharedReportGroups">>, Input, Options).
@@ -2306,7 +2447,7 @@ list_shared_report_groups(Client, Input, Options)
 -spec list_source_credentials(map(), list_source_credentials_input()) ->
     {ok, list_source_credentials_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_source_credentials_errors(), tuple()}.
 list_source_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_source_credentials(Client, Input, []).
@@ -2314,7 +2455,7 @@ list_source_credentials(Client, Input)
 -spec list_source_credentials(map(), list_source_credentials_input(), proplists:proplist()) ->
     {ok, list_source_credentials_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_source_credentials_errors(), tuple()}.
 list_source_credentials(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSourceCredentials">>, Input, Options).
@@ -2324,8 +2465,7 @@ list_source_credentials(Client, Input, Options)
 -spec put_resource_policy(map(), put_resource_policy_input()) ->
     {ok, put_resource_policy_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
@@ -2333,8 +2473,7 @@ put_resource_policy(Client, Input)
 -spec put_resource_policy(map(), put_resource_policy_input(), proplists:proplist()) ->
     {ok, put_resource_policy_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResourcePolicy">>, Input, Options).
@@ -2343,9 +2482,7 @@ put_resource_policy(Client, Input, Options)
 -spec retry_build(map(), retry_build_input()) ->
     {ok, retry_build_output(), tuple()} |
     {error, any()} |
-    {error, account_limit_exceeded_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, retry_build_errors(), tuple()}.
 retry_build(Client, Input)
   when is_map(Client), is_map(Input) ->
     retry_build(Client, Input, []).
@@ -2353,9 +2490,7 @@ retry_build(Client, Input)
 -spec retry_build(map(), retry_build_input(), proplists:proplist()) ->
     {ok, retry_build_output(), tuple()} |
     {error, any()} |
-    {error, account_limit_exceeded_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, retry_build_errors(), tuple()}.
 retry_build(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RetryBuild">>, Input, Options).
@@ -2366,8 +2501,7 @@ retry_build(Client, Input, Options)
 -spec retry_build_batch(map(), retry_build_batch_input()) ->
     {ok, retry_build_batch_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, retry_build_batch_errors(), tuple()}.
 retry_build_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     retry_build_batch(Client, Input, []).
@@ -2375,8 +2509,7 @@ retry_build_batch(Client, Input)
 -spec retry_build_batch(map(), retry_build_batch_input(), proplists:proplist()) ->
     {ok, retry_build_batch_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, retry_build_batch_errors(), tuple()}.
 retry_build_batch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RetryBuildBatch">>, Input, Options).
@@ -2393,9 +2526,7 @@ retry_build_batch(Client, Input, Options)
 -spec start_build(map(), start_build_input()) ->
     {ok, start_build_output(), tuple()} |
     {error, any()} |
-    {error, account_limit_exceeded_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_build_errors(), tuple()}.
 start_build(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_build(Client, Input, []).
@@ -2403,9 +2534,7 @@ start_build(Client, Input)
 -spec start_build(map(), start_build_input(), proplists:proplist()) ->
     {ok, start_build_output(), tuple()} |
     {error, any()} |
-    {error, account_limit_exceeded_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_build_errors(), tuple()}.
 start_build(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartBuild">>, Input, Options).
@@ -2414,8 +2543,7 @@ start_build(Client, Input, Options)
 -spec start_build_batch(map(), start_build_batch_input()) ->
     {ok, start_build_batch_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_build_batch_errors(), tuple()}.
 start_build_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_build_batch(Client, Input, []).
@@ -2423,8 +2551,7 @@ start_build_batch(Client, Input)
 -spec start_build_batch(map(), start_build_batch_input(), proplists:proplist()) ->
     {ok, start_build_batch_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_build_batch_errors(), tuple()}.
 start_build_batch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartBuildBatch">>, Input, Options).
@@ -2433,8 +2560,7 @@ start_build_batch(Client, Input, Options)
 -spec stop_build(map(), stop_build_input()) ->
     {ok, stop_build_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_build_errors(), tuple()}.
 stop_build(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_build(Client, Input, []).
@@ -2442,8 +2568,7 @@ stop_build(Client, Input)
 -spec stop_build(map(), stop_build_input(), proplists:proplist()) ->
     {ok, stop_build_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_build_errors(), tuple()}.
 stop_build(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopBuild">>, Input, Options).
@@ -2452,8 +2577,7 @@ stop_build(Client, Input, Options)
 -spec stop_build_batch(map(), stop_build_batch_input()) ->
     {ok, stop_build_batch_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_build_batch_errors(), tuple()}.
 stop_build_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_build_batch(Client, Input, []).
@@ -2461,8 +2585,7 @@ stop_build_batch(Client, Input)
 -spec stop_build_batch(map(), stop_build_batch_input(), proplists:proplist()) ->
     {ok, stop_build_batch_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_build_batch_errors(), tuple()}.
 stop_build_batch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopBuildBatch">>, Input, Options).
@@ -2471,9 +2594,7 @@ stop_build_batch(Client, Input, Options)
 -spec update_fleet(map(), update_fleet_input()) ->
     {ok, update_fleet_output(), tuple()} |
     {error, any()} |
-    {error, account_limit_exceeded_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_fleet_errors(), tuple()}.
 update_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_fleet(Client, Input, []).
@@ -2481,9 +2602,7 @@ update_fleet(Client, Input)
 -spec update_fleet(map(), update_fleet_input(), proplists:proplist()) ->
     {ok, update_fleet_output(), tuple()} |
     {error, any()} |
-    {error, account_limit_exceeded_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_fleet_errors(), tuple()}.
 update_fleet(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFleet">>, Input, Options).
@@ -2492,8 +2611,7 @@ update_fleet(Client, Input, Options)
 -spec update_project(map(), update_project_input()) ->
     {ok, update_project_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_project_errors(), tuple()}.
 update_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_project(Client, Input, []).
@@ -2501,8 +2619,7 @@ update_project(Client, Input)
 -spec update_project(map(), update_project_input(), proplists:proplist()) ->
     {ok, update_project_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_project_errors(), tuple()}.
 update_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateProject">>, Input, Options).
@@ -2553,8 +2670,7 @@ update_project(Client, Input, Options)
 -spec update_project_visibility(map(), update_project_visibility_input()) ->
     {ok, update_project_visibility_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_project_visibility_errors(), tuple()}.
 update_project_visibility(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_project_visibility(Client, Input, []).
@@ -2562,8 +2678,7 @@ update_project_visibility(Client, Input)
 -spec update_project_visibility(map(), update_project_visibility_input(), proplists:proplist()) ->
     {ok, update_project_visibility_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_project_visibility_errors(), tuple()}.
 update_project_visibility(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateProjectVisibility">>, Input, Options).
@@ -2573,8 +2688,7 @@ update_project_visibility(Client, Input, Options)
 -spec update_report_group(map(), update_report_group_input()) ->
     {ok, update_report_group_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_report_group_errors(), tuple()}.
 update_report_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_report_group(Client, Input, []).
@@ -2582,8 +2696,7 @@ update_report_group(Client, Input)
 -spec update_report_group(map(), update_report_group_input(), proplists:proplist()) ->
     {ok, update_report_group_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_report_group_errors(), tuple()}.
 update_report_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateReportGroup">>, Input, Options).
@@ -2594,9 +2707,7 @@ update_report_group(Client, Input, Options)
 -spec update_webhook(map(), update_webhook_input()) ->
     {ok, update_webhook_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, o_auth_provider_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_webhook_errors(), tuple()}.
 update_webhook(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_webhook(Client, Input, []).
@@ -2604,9 +2715,7 @@ update_webhook(Client, Input)
 -spec update_webhook(map(), update_webhook_input(), proplists:proplist()) ->
     {ok, update_webhook_output(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, o_auth_provider_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_webhook_errors(), tuple()}.
 update_webhook(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateWebhook">>, Input, Options).

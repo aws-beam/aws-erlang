@@ -96,11 +96,13 @@
 %% }
 -type readiness_check_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"Tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_resource_set_request() :: #{
@@ -111,6 +113,7 @@
 %% }
 -type create_resource_set_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_recovery_group_response() :: #{
 %%   <<"Cells">> => list(string()()),
@@ -119,6 +122,7 @@
 %%   <<"Tags">> => map()
 %% }
 -type get_recovery_group_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_cell_response() :: #{
@@ -129,12 +133,15 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_cell_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_cell_request() :: #{}
 -type delete_cell_request() :: #{}.
+
 %% Example:
 %% get_recovery_group_request() :: #{}
 -type get_recovery_group_request() :: #{}.
+
 
 %% Example:
 %% list_readiness_checks_request() :: #{
@@ -142,6 +149,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_readiness_checks_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% dns_target_resource() :: #{
@@ -153,6 +161,7 @@
 %% }
 -type dns_target_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% r53_resource_record() :: #{
 %%   <<"DomainName">> => string(),
@@ -160,21 +169,25 @@
 %% }
 -type r53_resource_record() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_cells_response() :: #{
 %%   <<"Cells">> => list(cell_output()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_cells_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_resource_set_request() :: #{}
 -type delete_resource_set_request() :: #{}.
+
 
 %% Example:
 %% create_cross_account_authorization_response() :: #{
 %%   <<"CrossAccountAuthorization">> => string()
 %% }
 -type create_cross_account_authorization_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% recovery_group_output() :: #{
@@ -185,12 +198,14 @@
 %% }
 -type recovery_group_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_resource_sets_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_resource_sets_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_set_output() :: #{
@@ -202,11 +217,13 @@
 %% }
 -type resource_set_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_cross_account_authorization_request() :: #{
 %%   <<"CrossAccountAuthorization">> := string()
 %% }
 -type create_cross_account_authorization_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_recovery_group_readiness_summary_response() :: #{
@@ -216,11 +233,13 @@
 %% }
 -type get_recovery_group_readiness_summary_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_recovery_group_response() :: #{
@@ -231,6 +250,7 @@
 %% }
 -type update_recovery_group_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_rules_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -238,9 +258,11 @@
 %%   <<"ResourceType">> => string()
 %% }
 -type list_rules_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_cell_request() :: #{}
 -type get_cell_request() :: #{}.
+
 
 %% Example:
 %% update_readiness_check_response() :: #{
@@ -251,6 +273,7 @@
 %% }
 -type update_readiness_check_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% target_resource() :: #{
 %%   <<"NLBResource">> => n_lb_resource(),
@@ -258,12 +281,14 @@
 %% }
 -type target_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_recovery_group_readiness_summary_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type get_recovery_group_readiness_summary_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_cell_readiness_summary_response() :: #{
@@ -273,6 +298,7 @@
 %% }
 -type get_cell_readiness_summary_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_cells_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -280,14 +306,17 @@
 %% }
 -type list_cells_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resources_response() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type list_tags_for_resources_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_cross_account_authorization_request() :: #{}
 -type delete_cross_account_authorization_request() :: #{}.
+
 
 %% Example:
 %% list_readiness_checks_response() :: #{
@@ -295,6 +324,7 @@
 %%   <<"ReadinessChecks">> => list(readiness_check_output()())
 %% }
 -type list_readiness_checks_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_readiness_check_request() :: #{
@@ -304,11 +334,13 @@
 %% }
 -type create_readiness_check_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -316,11 +348,13 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_readiness_check_request() :: #{
 %%   <<"ResourceSetName">> := string()
 %% }
 -type update_readiness_check_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_readiness_check_status_response() :: #{
@@ -331,17 +365,20 @@
 %% }
 -type get_readiness_check_status_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_recovery_group_request() :: #{
 %%   <<"Cells">> := list(string()())
 %% }
 -type update_recovery_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% recommendation() :: #{
 %%   <<"RecommendationText">> => string()
 %% }
 -type recommendation() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_architecture_recommendations_response() :: #{
@@ -351,12 +388,14 @@
 %% }
 -type get_architecture_recommendations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_readiness_check_status_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type get_readiness_check_status_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_readiness_check_response() :: #{
@@ -367,15 +406,18 @@
 %% }
 -type create_readiness_check_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_cross_account_authorizations_response() :: #{
 %%   <<"CrossAccountAuthorizations">> => list(string()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_cross_account_authorizations_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_resource_set_request() :: #{}
 -type get_resource_set_request() :: #{}.
+
 
 %% Example:
 %% update_cell_response() :: #{
@@ -387,6 +429,7 @@
 %% }
 -type update_cell_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_readiness_check_response() :: #{
 %%   <<"ReadinessCheckArn">> => string(),
@@ -395,6 +438,7 @@
 %%   <<"Tags">> => map()
 %% }
 -type get_readiness_check_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_resource_set_response() :: #{
@@ -406,6 +450,7 @@
 %% }
 -type create_resource_set_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% readiness_check_output() :: #{
 %%   <<"ReadinessCheckArn">> => string(),
@@ -415,6 +460,7 @@
 %% }
 -type readiness_check_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_recovery_groups_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -422,12 +468,14 @@
 %% }
 -type list_recovery_groups_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_architecture_recommendations_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type get_architecture_recommendations_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_resource_set_response() :: #{
@@ -439,6 +487,7 @@
 %% }
 -type get_resource_set_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_resource_sets_response() :: #{
 %%   <<"NextToken">> => string(),
@@ -446,14 +495,17 @@
 %% }
 -type list_resource_sets_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_cross_account_authorization_response() :: #{}
 -type delete_cross_account_authorization_response() :: #{}.
+
 
 %% Example:
 %% get_cell_readiness_summary_request() :: #{
@@ -462,6 +514,7 @@
 %% }
 -type get_cell_readiness_summary_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_readiness_check_resource_status_response() :: #{
 %%   <<"NextToken">> => string(),
@@ -469,6 +522,7 @@
 %%   <<"Rules">> => list(rule_result()())
 %% }
 -type get_readiness_check_resource_status_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_cell_response() :: #{
@@ -480,11 +534,13 @@
 %% }
 -type get_cell_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_rules_response() :: #{
@@ -492,9 +548,11 @@
 %%   <<"Rules">> => list(list_rules_output()())
 %% }
 -type list_rules_response() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% update_resource_set_request() :: #{
@@ -502,6 +560,7 @@
 %%   <<"Resources">> := list(resource()())
 %% }
 -type update_resource_set_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_recovery_group_response() :: #{
@@ -512,6 +571,7 @@
 %% }
 -type create_recovery_group_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% rule_result() :: #{
 %%   <<"LastCheckedTimestamp">> => non_neg_integer(),
@@ -520,9 +580,11 @@
 %%   <<"RuleId">> => string()
 %% }
 -type rule_result() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resources_request() :: #{}
 -type list_tags_for_resources_request() :: #{}.
+
 
 %% Example:
 %% get_readiness_check_resource_status_request() :: #{
@@ -530,6 +592,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type get_readiness_check_resource_status_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_rules_output() :: #{
@@ -539,14 +602,17 @@
 %% }
 -type list_rules_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_readiness_check_request() :: #{}
 -type delete_readiness_check_request() :: #{}.
+
 
 %% Example:
 %% n_lb_resource() :: #{
@@ -554,11 +620,13 @@
 %% }
 -type n_lb_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% cell_output() :: #{
@@ -570,6 +638,7 @@
 %% }
 -type cell_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_recovery_group_request() :: #{
 %%   <<"Cells">> => list(string()()),
@@ -577,6 +646,7 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_recovery_group_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_cell_request() :: #{
@@ -586,11 +656,13 @@
 %% }
 -type create_cell_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_cell_request() :: #{
 %%   <<"Cells">> := list(string()())
 %% }
 -type update_cell_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_cross_account_authorizations_request() :: #{
@@ -598,6 +670,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_cross_account_authorizations_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_result() :: #{
@@ -608,6 +681,7 @@
 %% }
 -type resource_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_resource_set_response() :: #{
 %%   <<"ResourceSetArn">> => string(),
@@ -617,12 +691,15 @@
 %%   <<"Tags">> => map()
 %% }
 -type update_resource_set_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_readiness_check_request() :: #{}
 -type get_readiness_check_request() :: #{}.
+
 %% Example:
 %% delete_recovery_group_request() :: #{}
 -type delete_recovery_group_request() :: #{}.
+
 
 %% Example:
 %% list_recovery_groups_response() :: #{
@@ -631,11 +708,13 @@
 %% }
 -type list_recovery_groups_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% message() :: #{
 %%   <<"MessageText">> => string()
 %% }
 -type message() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource() :: #{
@@ -646,6 +725,217 @@
 %% }
 -type resource() :: #{binary() => any()}.
 
+-type create_cell_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type create_cross_account_authorization_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type create_readiness_check_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type create_recovery_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type create_resource_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_cell_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_cross_account_authorization_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type delete_readiness_check_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_recovery_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_resource_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_architecture_recommendations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_cell_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_cell_readiness_summary_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_readiness_check_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_readiness_check_resource_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_readiness_check_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_recovery_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_recovery_group_readiness_summary_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_resource_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_cells_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_cross_account_authorizations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_readiness_checks_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_recovery_groups_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_resource_sets_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_rules_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resources_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_cell_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_readiness_check_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_recovery_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_resource_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -654,22 +944,14 @@
 -spec create_cell(map(), create_cell_request()) ->
     {ok, create_cell_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_cell_errors(), tuple()}.
 create_cell(Client, Input) ->
     create_cell(Client, Input, []).
 
 -spec create_cell(map(), create_cell_request(), proplists:proplist()) ->
     {ok, create_cell_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_cell_errors(), tuple()}.
 create_cell(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cells"],
@@ -700,22 +982,14 @@ create_cell(Client, Input0, Options0) ->
 -spec create_cross_account_authorization(map(), create_cross_account_authorization_request()) ->
     {ok, create_cross_account_authorization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_cross_account_authorization_errors(), tuple()}.
 create_cross_account_authorization(Client, Input) ->
     create_cross_account_authorization(Client, Input, []).
 
 -spec create_cross_account_authorization(map(), create_cross_account_authorization_request(), proplists:proplist()) ->
     {ok, create_cross_account_authorization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_cross_account_authorization_errors(), tuple()}.
 create_cross_account_authorization(Client, Input0, Options0) ->
     Method = post,
     Path = ["/crossaccountauthorizations"],
@@ -747,22 +1021,14 @@ create_cross_account_authorization(Client, Input0, Options0) ->
 -spec create_readiness_check(map(), create_readiness_check_request()) ->
     {ok, create_readiness_check_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_readiness_check_errors(), tuple()}.
 create_readiness_check(Client, Input) ->
     create_readiness_check(Client, Input, []).
 
 -spec create_readiness_check(map(), create_readiness_check_request(), proplists:proplist()) ->
     {ok, create_readiness_check_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_readiness_check_errors(), tuple()}.
 create_readiness_check(Client, Input0, Options0) ->
     Method = post,
     Path = ["/readinesschecks"],
@@ -792,22 +1058,14 @@ create_readiness_check(Client, Input0, Options0) ->
 -spec create_recovery_group(map(), create_recovery_group_request()) ->
     {ok, create_recovery_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_recovery_group_errors(), tuple()}.
 create_recovery_group(Client, Input) ->
     create_recovery_group(Client, Input, []).
 
 -spec create_recovery_group(map(), create_recovery_group_request(), proplists:proplist()) ->
     {ok, create_recovery_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_recovery_group_errors(), tuple()}.
 create_recovery_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/recoverygroups"],
@@ -838,22 +1096,14 @@ create_recovery_group(Client, Input0, Options0) ->
 -spec create_resource_set(map(), create_resource_set_request()) ->
     {ok, create_resource_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_resource_set_errors(), tuple()}.
 create_resource_set(Client, Input) ->
     create_resource_set(Client, Input, []).
 
 -spec create_resource_set(map(), create_resource_set_request(), proplists:proplist()) ->
     {ok, create_resource_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_resource_set_errors(), tuple()}.
 create_resource_set(Client, Input0, Options0) ->
     Method = post,
     Path = ["/resourcesets"],
@@ -882,22 +1132,14 @@ create_resource_set(Client, Input0, Options0) ->
 -spec delete_cell(map(), binary() | list(), delete_cell_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_cell_errors(), tuple()}.
 delete_cell(Client, CellName, Input) ->
     delete_cell(Client, CellName, Input, []).
 
 -spec delete_cell(map(), binary() | list(), delete_cell_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_cell_errors(), tuple()}.
 delete_cell(Client, CellName, Input0, Options0) ->
     Method = delete,
     Path = ["/cells/", aws_util:encode_uri(CellName), ""],
@@ -924,20 +1166,14 @@ delete_cell(Client, CellName, Input0, Options0) ->
 -spec delete_cross_account_authorization(map(), binary() | list(), delete_cross_account_authorization_request()) ->
     {ok, delete_cross_account_authorization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_cross_account_authorization_errors(), tuple()}.
 delete_cross_account_authorization(Client, CrossAccountAuthorization, Input) ->
     delete_cross_account_authorization(Client, CrossAccountAuthorization, Input, []).
 
 -spec delete_cross_account_authorization(map(), binary() | list(), delete_cross_account_authorization_request(), proplists:proplist()) ->
     {ok, delete_cross_account_authorization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_cross_account_authorization_errors(), tuple()}.
 delete_cross_account_authorization(Client, CrossAccountAuthorization, Input0, Options0) ->
     Method = delete,
     Path = ["/crossaccountauthorizations/", aws_util:encode_uri(CrossAccountAuthorization), ""],
@@ -964,22 +1200,14 @@ delete_cross_account_authorization(Client, CrossAccountAuthorization, Input0, Op
 -spec delete_readiness_check(map(), binary() | list(), delete_readiness_check_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_readiness_check_errors(), tuple()}.
 delete_readiness_check(Client, ReadinessCheckName, Input) ->
     delete_readiness_check(Client, ReadinessCheckName, Input, []).
 
 -spec delete_readiness_check(map(), binary() | list(), delete_readiness_check_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_readiness_check_errors(), tuple()}.
 delete_readiness_check(Client, ReadinessCheckName, Input0, Options0) ->
     Method = delete,
     Path = ["/readinesschecks/", aws_util:encode_uri(ReadinessCheckName), ""],
@@ -1006,22 +1234,14 @@ delete_readiness_check(Client, ReadinessCheckName, Input0, Options0) ->
 -spec delete_recovery_group(map(), binary() | list(), delete_recovery_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_recovery_group_errors(), tuple()}.
 delete_recovery_group(Client, RecoveryGroupName, Input) ->
     delete_recovery_group(Client, RecoveryGroupName, Input, []).
 
 -spec delete_recovery_group(map(), binary() | list(), delete_recovery_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_recovery_group_errors(), tuple()}.
 delete_recovery_group(Client, RecoveryGroupName, Input0, Options0) ->
     Method = delete,
     Path = ["/recoverygroups/", aws_util:encode_uri(RecoveryGroupName), ""],
@@ -1048,22 +1268,14 @@ delete_recovery_group(Client, RecoveryGroupName, Input0, Options0) ->
 -spec delete_resource_set(map(), binary() | list(), delete_resource_set_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_resource_set_errors(), tuple()}.
 delete_resource_set(Client, ResourceSetName, Input) ->
     delete_resource_set(Client, ResourceSetName, Input, []).
 
 -spec delete_resource_set(map(), binary() | list(), delete_resource_set_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_resource_set_errors(), tuple()}.
 delete_resource_set(Client, ResourceSetName, Input0, Options0) ->
     Method = delete,
     Path = ["/resourcesets/", aws_util:encode_uri(ResourceSetName), ""],
@@ -1091,11 +1303,7 @@ delete_resource_set(Client, ResourceSetName, Input0, Options0) ->
 -spec get_architecture_recommendations(map(), binary() | list()) ->
     {ok, get_architecture_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_architecture_recommendations_errors(), tuple()}.
 get_architecture_recommendations(Client, RecoveryGroupName)
   when is_map(Client) ->
     get_architecture_recommendations(Client, RecoveryGroupName, #{}, #{}).
@@ -1103,11 +1311,7 @@ get_architecture_recommendations(Client, RecoveryGroupName)
 -spec get_architecture_recommendations(map(), binary() | list(), map(), map()) ->
     {ok, get_architecture_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_architecture_recommendations_errors(), tuple()}.
 get_architecture_recommendations(Client, RecoveryGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_architecture_recommendations(Client, RecoveryGroupName, QueryMap, HeadersMap, []).
@@ -1115,11 +1319,7 @@ get_architecture_recommendations(Client, RecoveryGroupName, QueryMap, HeadersMap
 -spec get_architecture_recommendations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_architecture_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_architecture_recommendations_errors(), tuple()}.
 get_architecture_recommendations(Client, RecoveryGroupName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/recoverygroups/", aws_util:encode_uri(RecoveryGroupName), "/architectureRecommendations"],
@@ -1147,11 +1347,7 @@ get_architecture_recommendations(Client, RecoveryGroupName, QueryMap, HeadersMap
 -spec get_cell(map(), binary() | list()) ->
     {ok, get_cell_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_cell_errors(), tuple()}.
 get_cell(Client, CellName)
   when is_map(Client) ->
     get_cell(Client, CellName, #{}, #{}).
@@ -1159,11 +1355,7 @@ get_cell(Client, CellName)
 -spec get_cell(map(), binary() | list(), map(), map()) ->
     {ok, get_cell_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_cell_errors(), tuple()}.
 get_cell(Client, CellName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cell(Client, CellName, QueryMap, HeadersMap, []).
@@ -1171,11 +1363,7 @@ get_cell(Client, CellName, QueryMap, HeadersMap)
 -spec get_cell(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_cell_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_cell_errors(), tuple()}.
 get_cell(Client, CellName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/cells/", aws_util:encode_uri(CellName), ""],
@@ -1199,11 +1387,7 @@ get_cell(Client, CellName, QueryMap, HeadersMap, Options0)
 -spec get_cell_readiness_summary(map(), binary() | list()) ->
     {ok, get_cell_readiness_summary_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_cell_readiness_summary_errors(), tuple()}.
 get_cell_readiness_summary(Client, CellName)
   when is_map(Client) ->
     get_cell_readiness_summary(Client, CellName, #{}, #{}).
@@ -1211,11 +1395,7 @@ get_cell_readiness_summary(Client, CellName)
 -spec get_cell_readiness_summary(map(), binary() | list(), map(), map()) ->
     {ok, get_cell_readiness_summary_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_cell_readiness_summary_errors(), tuple()}.
 get_cell_readiness_summary(Client, CellName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cell_readiness_summary(Client, CellName, QueryMap, HeadersMap, []).
@@ -1223,11 +1403,7 @@ get_cell_readiness_summary(Client, CellName, QueryMap, HeadersMap)
 -spec get_cell_readiness_summary(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_cell_readiness_summary_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_cell_readiness_summary_errors(), tuple()}.
 get_cell_readiness_summary(Client, CellName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/cellreadiness/", aws_util:encode_uri(CellName), ""],
@@ -1253,11 +1429,7 @@ get_cell_readiness_summary(Client, CellName, QueryMap, HeadersMap, Options0)
 -spec get_readiness_check(map(), binary() | list()) ->
     {ok, get_readiness_check_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_readiness_check_errors(), tuple()}.
 get_readiness_check(Client, ReadinessCheckName)
   when is_map(Client) ->
     get_readiness_check(Client, ReadinessCheckName, #{}, #{}).
@@ -1265,11 +1437,7 @@ get_readiness_check(Client, ReadinessCheckName)
 -spec get_readiness_check(map(), binary() | list(), map(), map()) ->
     {ok, get_readiness_check_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_readiness_check_errors(), tuple()}.
 get_readiness_check(Client, ReadinessCheckName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_readiness_check(Client, ReadinessCheckName, QueryMap, HeadersMap, []).
@@ -1277,11 +1445,7 @@ get_readiness_check(Client, ReadinessCheckName, QueryMap, HeadersMap)
 -spec get_readiness_check(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_readiness_check_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_readiness_check_errors(), tuple()}.
 get_readiness_check(Client, ReadinessCheckName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/readinesschecks/", aws_util:encode_uri(ReadinessCheckName), ""],
@@ -1306,11 +1470,7 @@ get_readiness_check(Client, ReadinessCheckName, QueryMap, HeadersMap, Options0)
 -spec get_readiness_check_resource_status(map(), binary() | list(), binary() | list()) ->
     {ok, get_readiness_check_resource_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_readiness_check_resource_status_errors(), tuple()}.
 get_readiness_check_resource_status(Client, ReadinessCheckName, ResourceIdentifier)
   when is_map(Client) ->
     get_readiness_check_resource_status(Client, ReadinessCheckName, ResourceIdentifier, #{}, #{}).
@@ -1318,11 +1478,7 @@ get_readiness_check_resource_status(Client, ReadinessCheckName, ResourceIdentifi
 -spec get_readiness_check_resource_status(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_readiness_check_resource_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_readiness_check_resource_status_errors(), tuple()}.
 get_readiness_check_resource_status(Client, ReadinessCheckName, ResourceIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_readiness_check_resource_status(Client, ReadinessCheckName, ResourceIdentifier, QueryMap, HeadersMap, []).
@@ -1330,11 +1486,7 @@ get_readiness_check_resource_status(Client, ReadinessCheckName, ResourceIdentifi
 -spec get_readiness_check_resource_status(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_readiness_check_resource_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_readiness_check_resource_status_errors(), tuple()}.
 get_readiness_check_resource_status(Client, ReadinessCheckName, ResourceIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/readinesschecks/", aws_util:encode_uri(ReadinessCheckName), "/resource/", aws_util:encode_uri(ResourceIdentifier), "/status"],
@@ -1364,11 +1516,7 @@ get_readiness_check_resource_status(Client, ReadinessCheckName, ResourceIdentifi
 -spec get_readiness_check_status(map(), binary() | list()) ->
     {ok, get_readiness_check_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_readiness_check_status_errors(), tuple()}.
 get_readiness_check_status(Client, ReadinessCheckName)
   when is_map(Client) ->
     get_readiness_check_status(Client, ReadinessCheckName, #{}, #{}).
@@ -1376,11 +1524,7 @@ get_readiness_check_status(Client, ReadinessCheckName)
 -spec get_readiness_check_status(map(), binary() | list(), map(), map()) ->
     {ok, get_readiness_check_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_readiness_check_status_errors(), tuple()}.
 get_readiness_check_status(Client, ReadinessCheckName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_readiness_check_status(Client, ReadinessCheckName, QueryMap, HeadersMap, []).
@@ -1388,11 +1532,7 @@ get_readiness_check_status(Client, ReadinessCheckName, QueryMap, HeadersMap)
 -spec get_readiness_check_status(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_readiness_check_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_readiness_check_status_errors(), tuple()}.
 get_readiness_check_status(Client, ReadinessCheckName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/readinesschecks/", aws_util:encode_uri(ReadinessCheckName), "/status"],
@@ -1419,11 +1559,7 @@ get_readiness_check_status(Client, ReadinessCheckName, QueryMap, HeadersMap, Opt
 -spec get_recovery_group(map(), binary() | list()) ->
     {ok, get_recovery_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_recovery_group_errors(), tuple()}.
 get_recovery_group(Client, RecoveryGroupName)
   when is_map(Client) ->
     get_recovery_group(Client, RecoveryGroupName, #{}, #{}).
@@ -1431,11 +1567,7 @@ get_recovery_group(Client, RecoveryGroupName)
 -spec get_recovery_group(map(), binary() | list(), map(), map()) ->
     {ok, get_recovery_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_recovery_group_errors(), tuple()}.
 get_recovery_group(Client, RecoveryGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_recovery_group(Client, RecoveryGroupName, QueryMap, HeadersMap, []).
@@ -1443,11 +1575,7 @@ get_recovery_group(Client, RecoveryGroupName, QueryMap, HeadersMap)
 -spec get_recovery_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_recovery_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_recovery_group_errors(), tuple()}.
 get_recovery_group(Client, RecoveryGroupName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/recoverygroups/", aws_util:encode_uri(RecoveryGroupName), ""],
@@ -1472,11 +1600,7 @@ get_recovery_group(Client, RecoveryGroupName, QueryMap, HeadersMap, Options0)
 -spec get_recovery_group_readiness_summary(map(), binary() | list()) ->
     {ok, get_recovery_group_readiness_summary_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_recovery_group_readiness_summary_errors(), tuple()}.
 get_recovery_group_readiness_summary(Client, RecoveryGroupName)
   when is_map(Client) ->
     get_recovery_group_readiness_summary(Client, RecoveryGroupName, #{}, #{}).
@@ -1484,11 +1608,7 @@ get_recovery_group_readiness_summary(Client, RecoveryGroupName)
 -spec get_recovery_group_readiness_summary(map(), binary() | list(), map(), map()) ->
     {ok, get_recovery_group_readiness_summary_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_recovery_group_readiness_summary_errors(), tuple()}.
 get_recovery_group_readiness_summary(Client, RecoveryGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_recovery_group_readiness_summary(Client, RecoveryGroupName, QueryMap, HeadersMap, []).
@@ -1496,11 +1616,7 @@ get_recovery_group_readiness_summary(Client, RecoveryGroupName, QueryMap, Header
 -spec get_recovery_group_readiness_summary(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_recovery_group_readiness_summary_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_recovery_group_readiness_summary_errors(), tuple()}.
 get_recovery_group_readiness_summary(Client, RecoveryGroupName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/recoverygroupreadiness/", aws_util:encode_uri(RecoveryGroupName), ""],
@@ -1527,11 +1643,7 @@ get_recovery_group_readiness_summary(Client, RecoveryGroupName, QueryMap, Header
 -spec get_resource_set(map(), binary() | list()) ->
     {ok, get_resource_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_resource_set_errors(), tuple()}.
 get_resource_set(Client, ResourceSetName)
   when is_map(Client) ->
     get_resource_set(Client, ResourceSetName, #{}, #{}).
@@ -1539,11 +1651,7 @@ get_resource_set(Client, ResourceSetName)
 -spec get_resource_set(map(), binary() | list(), map(), map()) ->
     {ok, get_resource_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_resource_set_errors(), tuple()}.
 get_resource_set(Client, ResourceSetName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resource_set(Client, ResourceSetName, QueryMap, HeadersMap, []).
@@ -1551,11 +1659,7 @@ get_resource_set(Client, ResourceSetName, QueryMap, HeadersMap)
 -spec get_resource_set(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_resource_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_resource_set_errors(), tuple()}.
 get_resource_set(Client, ResourceSetName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resourcesets/", aws_util:encode_uri(ResourceSetName), ""],
@@ -1576,10 +1680,7 @@ get_resource_set(Client, ResourceSetName, QueryMap, HeadersMap, Options0)
 -spec list_cells(map()) ->
     {ok, list_cells_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_cells_errors(), tuple()}.
 list_cells(Client)
   when is_map(Client) ->
     list_cells(Client, #{}, #{}).
@@ -1587,10 +1688,7 @@ list_cells(Client)
 -spec list_cells(map(), map(), map()) ->
     {ok, list_cells_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_cells_errors(), tuple()}.
 list_cells(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_cells(Client, QueryMap, HeadersMap, []).
@@ -1598,10 +1696,7 @@ list_cells(Client, QueryMap, HeadersMap)
 -spec list_cells(map(), map(), map(), proplists:proplist()) ->
     {ok, list_cells_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_cells_errors(), tuple()}.
 list_cells(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/cells"],
@@ -1628,10 +1723,7 @@ list_cells(Client, QueryMap, HeadersMap, Options0)
 -spec list_cross_account_authorizations(map()) ->
     {ok, list_cross_account_authorizations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_cross_account_authorizations_errors(), tuple()}.
 list_cross_account_authorizations(Client)
   when is_map(Client) ->
     list_cross_account_authorizations(Client, #{}, #{}).
@@ -1639,10 +1731,7 @@ list_cross_account_authorizations(Client)
 -spec list_cross_account_authorizations(map(), map(), map()) ->
     {ok, list_cross_account_authorizations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_cross_account_authorizations_errors(), tuple()}.
 list_cross_account_authorizations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_cross_account_authorizations(Client, QueryMap, HeadersMap, []).
@@ -1650,10 +1739,7 @@ list_cross_account_authorizations(Client, QueryMap, HeadersMap)
 -spec list_cross_account_authorizations(map(), map(), map(), proplists:proplist()) ->
     {ok, list_cross_account_authorizations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_cross_account_authorizations_errors(), tuple()}.
 list_cross_account_authorizations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/crossaccountauthorizations"],
@@ -1679,10 +1765,7 @@ list_cross_account_authorizations(Client, QueryMap, HeadersMap, Options0)
 -spec list_readiness_checks(map()) ->
     {ok, list_readiness_checks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_readiness_checks_errors(), tuple()}.
 list_readiness_checks(Client)
   when is_map(Client) ->
     list_readiness_checks(Client, #{}, #{}).
@@ -1690,10 +1773,7 @@ list_readiness_checks(Client)
 -spec list_readiness_checks(map(), map(), map()) ->
     {ok, list_readiness_checks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_readiness_checks_errors(), tuple()}.
 list_readiness_checks(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_readiness_checks(Client, QueryMap, HeadersMap, []).
@@ -1701,10 +1781,7 @@ list_readiness_checks(Client, QueryMap, HeadersMap)
 -spec list_readiness_checks(map(), map(), map(), proplists:proplist()) ->
     {ok, list_readiness_checks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_readiness_checks_errors(), tuple()}.
 list_readiness_checks(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/readinesschecks"],
@@ -1730,10 +1807,7 @@ list_readiness_checks(Client, QueryMap, HeadersMap, Options0)
 -spec list_recovery_groups(map()) ->
     {ok, list_recovery_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_recovery_groups_errors(), tuple()}.
 list_recovery_groups(Client)
   when is_map(Client) ->
     list_recovery_groups(Client, #{}, #{}).
@@ -1741,10 +1815,7 @@ list_recovery_groups(Client)
 -spec list_recovery_groups(map(), map(), map()) ->
     {ok, list_recovery_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_recovery_groups_errors(), tuple()}.
 list_recovery_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_recovery_groups(Client, QueryMap, HeadersMap, []).
@@ -1752,10 +1823,7 @@ list_recovery_groups(Client, QueryMap, HeadersMap)
 -spec list_recovery_groups(map(), map(), map(), proplists:proplist()) ->
     {ok, list_recovery_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_recovery_groups_errors(), tuple()}.
 list_recovery_groups(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/recoverygroups"],
@@ -1781,10 +1849,7 @@ list_recovery_groups(Client, QueryMap, HeadersMap, Options0)
 -spec list_resource_sets(map()) ->
     {ok, list_resource_sets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_resource_sets_errors(), tuple()}.
 list_resource_sets(Client)
   when is_map(Client) ->
     list_resource_sets(Client, #{}, #{}).
@@ -1792,10 +1857,7 @@ list_resource_sets(Client)
 -spec list_resource_sets(map(), map(), map()) ->
     {ok, list_resource_sets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_resource_sets_errors(), tuple()}.
 list_resource_sets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_resource_sets(Client, QueryMap, HeadersMap, []).
@@ -1803,10 +1865,7 @@ list_resource_sets(Client, QueryMap, HeadersMap)
 -spec list_resource_sets(map(), map(), map(), proplists:proplist()) ->
     {ok, list_resource_sets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_resource_sets_errors(), tuple()}.
 list_resource_sets(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resourcesets"],
@@ -1833,10 +1892,7 @@ list_resource_sets(Client, QueryMap, HeadersMap, Options0)
 -spec list_rules(map()) ->
     {ok, list_rules_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_rules_errors(), tuple()}.
 list_rules(Client)
   when is_map(Client) ->
     list_rules(Client, #{}, #{}).
@@ -1844,10 +1900,7 @@ list_rules(Client)
 -spec list_rules(map(), map(), map()) ->
     {ok, list_rules_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_rules_errors(), tuple()}.
 list_rules(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_rules(Client, QueryMap, HeadersMap, []).
@@ -1855,10 +1908,7 @@ list_rules(Client, QueryMap, HeadersMap)
 -spec list_rules(map(), map(), map(), proplists:proplist()) ->
     {ok, list_rules_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_rules_errors(), tuple()}.
 list_rules(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/rules"],
@@ -1885,9 +1935,7 @@ list_rules(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resources(map(), binary() | list()) ->
     {ok, list_tags_for_resources_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resources_errors(), tuple()}.
 list_tags_for_resources(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resources(Client, ResourceArn, #{}, #{}).
@@ -1895,9 +1943,7 @@ list_tags_for_resources(Client, ResourceArn)
 -spec list_tags_for_resources(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resources_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resources_errors(), tuple()}.
 list_tags_for_resources(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resources(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1905,9 +1951,7 @@ list_tags_for_resources(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resources(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resources_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resources_errors(), tuple()}.
 list_tags_for_resources(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1928,18 +1972,14 @@ list_tags_for_resources(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1966,18 +2006,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2006,22 +2042,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_cell(map(), binary() | list(), update_cell_request()) ->
     {ok, update_cell_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_cell_errors(), tuple()}.
 update_cell(Client, CellName, Input) ->
     update_cell(Client, CellName, Input, []).
 
 -spec update_cell(map(), binary() | list(), update_cell_request(), proplists:proplist()) ->
     {ok, update_cell_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_cell_errors(), tuple()}.
 update_cell(Client, CellName, Input0, Options0) ->
     Method = put,
     Path = ["/cells/", aws_util:encode_uri(CellName), ""],
@@ -2048,22 +2076,14 @@ update_cell(Client, CellName, Input0, Options0) ->
 -spec update_readiness_check(map(), binary() | list(), update_readiness_check_request()) ->
     {ok, update_readiness_check_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_readiness_check_errors(), tuple()}.
 update_readiness_check(Client, ReadinessCheckName, Input) ->
     update_readiness_check(Client, ReadinessCheckName, Input, []).
 
 -spec update_readiness_check(map(), binary() | list(), update_readiness_check_request(), proplists:proplist()) ->
     {ok, update_readiness_check_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_readiness_check_errors(), tuple()}.
 update_readiness_check(Client, ReadinessCheckName, Input0, Options0) ->
     Method = put,
     Path = ["/readinesschecks/", aws_util:encode_uri(ReadinessCheckName), ""],
@@ -2090,22 +2110,14 @@ update_readiness_check(Client, ReadinessCheckName, Input0, Options0) ->
 -spec update_recovery_group(map(), binary() | list(), update_recovery_group_request()) ->
     {ok, update_recovery_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_recovery_group_errors(), tuple()}.
 update_recovery_group(Client, RecoveryGroupName, Input) ->
     update_recovery_group(Client, RecoveryGroupName, Input, []).
 
 -spec update_recovery_group(map(), binary() | list(), update_recovery_group_request(), proplists:proplist()) ->
     {ok, update_recovery_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_recovery_group_errors(), tuple()}.
 update_recovery_group(Client, RecoveryGroupName, Input0, Options0) ->
     Method = put,
     Path = ["/recoverygroups/", aws_util:encode_uri(RecoveryGroupName), ""],
@@ -2132,22 +2144,14 @@ update_recovery_group(Client, RecoveryGroupName, Input0, Options0) ->
 -spec update_resource_set(map(), binary() | list(), update_resource_set_request()) ->
     {ok, update_resource_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_resource_set_errors(), tuple()}.
 update_resource_set(Client, ResourceSetName, Input) ->
     update_resource_set(Client, ResourceSetName, Input, []).
 
 -spec update_resource_set(map(), binary() | list(), update_resource_set_request(), proplists:proplist()) ->
     {ok, update_resource_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_resource_set_errors(), tuple()}.
 update_resource_set(Client, ResourceSetName, Input0, Options0) ->
     Method = put,
     Path = ["/resourcesets/", aws_util:encode_uri(ResourceSetName), ""],

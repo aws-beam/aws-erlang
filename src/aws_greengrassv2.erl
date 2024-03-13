@@ -115,6 +115,7 @@
 %% }
 -type lambda_function_recipe_source() :: #{binary() => any()}.
 
+
 %% Example:
 %% deployment_component_update_policy() :: #{
 %%   <<"action">> => list(any()),
@@ -122,11 +123,13 @@
 %% }
 -type deployment_component_update_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% disassociate_service_role_from_account_response() :: #{
 %%   <<"disassociatedAt">> => string()
 %% }
 -type disassociate_service_role_from_account_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_component_version_response() :: #{
@@ -138,11 +141,13 @@
 %% }
 -type create_component_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_deployments_request() :: #{
@@ -154,6 +159,7 @@
 %% }
 -type list_deployments_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_connectivity_info_response() :: #{
 %%   <<"message">> => string(),
@@ -161,21 +167,25 @@
 %% }
 -type update_connectivity_info_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_component_versions_response() :: #{
 %%   <<"componentVersions">> => list(component_version_list_item()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_component_versions_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_component_version_artifact_request() :: #{}
 -type get_component_version_artifact_request() :: #{}.
+
 
 %% Example:
 %% disassociate_client_device_from_core_device_entry() :: #{
 %%   <<"thingName">> => string()
 %% }
 -type disassociate_client_device_from_core_device_entry() :: #{binary() => any()}.
+
 
 %% Example:
 %% deployment() :: #{
@@ -190,15 +200,18 @@
 %% }
 -type deployment() :: #{binary() => any()}.
 
+
 %% Example:
 %% component_dependency_requirement() :: #{
 %%   <<"dependencyType">> => list(any()),
 %%   <<"versionRequirement">> => string()
 %% }
 -type component_dependency_requirement() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% lambda_execution_parameters() :: #{
@@ -216,12 +229,14 @@
 %% }
 -type lambda_execution_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_deployments_response() :: #{
 %%   <<"deployments">> => list(deployment()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_deployments_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_core_devices_request() :: #{
@@ -232,6 +247,7 @@
 %% }
 -type list_core_devices_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% lambda_volume_mount() :: #{
 %%   <<"addGroupOwner">> => boolean(),
@@ -240,6 +256,7 @@
 %%   <<"sourcePath">> => string()
 %% }
 -type lambda_volume_mount() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_deployment_request() :: #{
@@ -254,6 +271,7 @@
 %% }
 -type create_deployment_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_core_device_response() :: #{
 %%   <<"architecture">> => string(),
@@ -266,18 +284,22 @@
 %% }
 -type get_core_device_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_core_devices_response() :: #{
 %%   <<"coreDevices">> => list(core_device()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_core_devices_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_core_device_request() :: #{}
 -type delete_core_device_request() :: #{}.
+
 %% Example:
 %% delete_component_request() :: #{}
 -type delete_component_request() :: #{}.
+
 
 %% Example:
 %% lambda_event_source() :: #{
@@ -285,6 +307,7 @@
 %%   <<"type">> => list(any())
 %% }
 -type lambda_event_source() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_component_response() :: #{
@@ -294,12 +317,14 @@
 %% }
 -type get_component_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% system_resource_limits() :: #{
 %%   <<"cpus">> => float(),
 %%   <<"memory">> => float()
 %% }
 -type system_resource_limits() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_installed_components_response() :: #{
@@ -308,12 +333,14 @@
 %% }
 -type list_installed_components_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% io_t_job_executions_rollout_config() :: #{
 %%   <<"exponentialRate">> => io_t_job_exponential_rollout_rate(),
 %%   <<"maximumPerMinute">> => integer()
 %% }
 -type io_t_job_executions_rollout_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% core_device() :: #{
@@ -323,6 +350,7 @@
 %% }
 -type core_device() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_deployment_response() :: #{
 %%   <<"deploymentId">> => string(),
@@ -331,11 +359,13 @@
 %% }
 -type create_deployment_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% io_t_job_exponential_rollout_rate() :: #{
@@ -344,9 +374,11 @@
 %%   <<"rateIncreaseCriteria">> => io_t_job_rate_increase_criteria()
 %% }
 -type io_t_job_exponential_rollout_rate() :: #{binary() => any()}.
+
 %% Example:
 %% get_service_role_for_account_request() :: #{}
 -type get_service_role_for_account_request() :: #{}.
+
 
 %% Example:
 %% associate_client_device_with_core_device_error_entry() :: #{
@@ -356,14 +388,17 @@
 %% }
 -type associate_client_device_with_core_device_error_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_connectivity_info_request() :: #{
 %%   <<"connectivityInfo">> := list(connectivity_info()())
 %% }
 -type update_connectivity_info_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_core_device_request() :: #{}
 -type get_core_device_request() :: #{}.
+
 
 %% Example:
 %% deployment_configuration_validation_policy() :: #{
@@ -371,12 +406,14 @@
 %% }
 -type deployment_configuration_validation_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_component_versions_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_component_versions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% effective_deployment() :: #{
@@ -394,14 +431,17 @@
 %% }
 -type effective_deployment() :: #{binary() => any()}.
 
+
 %% Example:
 %% request_already_in_progress_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type request_already_in_progress_exception() :: #{binary() => any()}.
+
 %% Example:
 %% cancel_deployment_request() :: #{}
 -type cancel_deployment_request() :: #{}.
+
 
 %% Example:
 %% connectivity_info() :: #{
@@ -412,12 +452,14 @@
 %% }
 -type connectivity_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_connectivity_info_response() :: #{
 %%   <<"connectivityInfo">> => list(connectivity_info()()),
 %%   <<"message">> => string()
 %% }
 -type get_connectivity_info_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% installed_component() :: #{
@@ -433,6 +475,7 @@
 %% }
 -type installed_component() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_component_version_request() :: #{
 %%   <<"clientToken">> => string(),
@@ -442,6 +485,7 @@
 %% }
 -type create_component_version_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string(),
@@ -449,6 +493,7 @@
 %%   <<"resourceType">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -458,6 +503,7 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_components_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -466,11 +512,13 @@
 %% }
 -type list_components_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_disassociate_client_device_from_core_device_response() :: #{
 %%   <<"errorEntries">> => list(disassociate_client_device_from_core_device_error_entry()())
 %% }
 -type batch_disassociate_client_device_from_core_device_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
@@ -481,6 +529,7 @@
 %%   <<"serviceCode">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% component_latest_version() :: #{
@@ -493,6 +542,7 @@
 %% }
 -type component_latest_version() :: #{binary() => any()}.
 
+
 %% Example:
 %% deployment_io_t_job_configuration() :: #{
 %%   <<"abortConfig">> => io_t_job_abort_config(),
@@ -501,6 +551,7 @@
 %% }
 -type deployment_io_t_job_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% component() :: #{
 %%   <<"arn">> => string(),
@@ -508,9 +559,11 @@
 %%   <<"latestVersion">> => component_latest_version()
 %% }
 -type component() :: #{binary() => any()}.
+
 %% Example:
 %% get_deployment_request() :: #{}
 -type get_deployment_request() :: #{}.
+
 
 %% Example:
 %% resolved_component_version() :: #{
@@ -523,6 +576,7 @@
 %% }
 -type resolved_component_version() :: #{binary() => any()}.
 
+
 %% Example:
 %% component_platform() :: #{
 %%   <<"attributes">> => map(),
@@ -530,12 +584,14 @@
 %% }
 -type component_platform() :: #{binary() => any()}.
 
+
 %% Example:
 %% io_t_job_rate_increase_criteria() :: #{
 %%   <<"numberOfNotifiedThings">> => integer(),
 %%   <<"numberOfSucceededThings">> => integer()
 %% }
 -type io_t_job_rate_increase_criteria() :: #{binary() => any()}.
+
 
 %% Example:
 %% cloud_component_status() :: #{
@@ -547,6 +603,7 @@
 %% }
 -type cloud_component_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% component_run_with() :: #{
 %%   <<"posixUser">> => string(),
@@ -555,11 +612,13 @@
 %% }
 -type component_run_with() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% effective_deployment_status_details() :: #{
@@ -568,12 +627,14 @@
 %% }
 -type effective_deployment_status_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception_field() :: #{
 %%   <<"message">> => string(),
 %%   <<"name">> => string()
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
+
 
 %% Example:
 %% component_deployment_specification() :: #{
@@ -583,21 +644,25 @@
 %% }
 -type component_deployment_specification() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_client_devices_associated_with_core_device_response() :: #{
 %%   <<"associatedClientDevices">> => list(associated_client_device()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_client_devices_associated_with_core_device_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_connectivity_info_request() :: #{}
 -type get_connectivity_info_request() :: #{}.
+
 
 %% Example:
 %% associate_service_role_to_account_request() :: #{
 %%   <<"roleArn">> := string()
 %% }
 -type associate_service_role_to_account_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% deployment_policies() :: #{
@@ -606,9 +671,11 @@
 %%   <<"failureHandlingPolicy">> => list(any())
 %% }
 -type deployment_policies() :: #{binary() => any()}.
+
 %% Example:
 %% delete_deployment_request() :: #{}
 -type delete_deployment_request() :: #{}.
+
 
 %% Example:
 %% internal_server_exception() :: #{
@@ -617,6 +684,7 @@
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% component_configuration_update() :: #{
 %%   <<"merge">> => string(),
@@ -624,11 +692,13 @@
 %% }
 -type component_configuration_update() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_client_device_with_core_device_entry() :: #{
 %%   <<"thingName">> => string()
 %% }
 -type associate_client_device_with_core_device_entry() :: #{binary() => any()}.
+
 
 %% Example:
 %% io_t_job_timeout_config() :: #{
@@ -636,11 +706,13 @@
 %% }
 -type io_t_job_timeout_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% resolve_component_candidates_response() :: #{
 %%   <<"resolvedComponentVersions">> => list(resolved_component_version()())
 %% }
 -type resolve_component_candidates_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% disassociate_client_device_from_core_device_error_entry() :: #{
@@ -650,26 +722,31 @@
 %% }
 -type disassociate_client_device_from_core_device_error_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_disassociate_client_device_from_core_device_request() :: #{
 %%   <<"entries">> => list(disassociate_client_device_from_core_device_entry()())
 %% }
 -type batch_disassociate_client_device_from_core_device_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% io_t_job_abort_config() :: #{
 %%   <<"criteriaList">> => list(io_t_job_abort_criteria()())
 %% }
 -type io_t_job_abort_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% component_version_list_item() :: #{
@@ -678,6 +755,7 @@
 %%   <<"componentVersion">> => string()
 %% }
 -type component_version_list_item() :: #{binary() => any()}.
+
 
 %% Example:
 %% lambda_container_params() :: #{
@@ -688,6 +766,7 @@
 %% }
 -type lambda_container_params() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"fields">> => list(validation_exception_field()()),
@@ -695,15 +774,18 @@
 %%   <<"reason">> => list(any())
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% cancel_deployment_response() :: #{
 %%   <<"message">> => string()
 %% }
 -type cancel_deployment_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_deployment_response() :: #{
@@ -724,6 +806,7 @@
 %% }
 -type get_deployment_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => string(),
@@ -732,6 +815,7 @@
 %%   <<"serviceCode">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_component_response() :: #{
@@ -747,12 +831,14 @@
 %% }
 -type describe_component_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_effective_deployments_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_effective_deployments_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_components_response() :: #{
@@ -761,11 +847,13 @@
 %% }
 -type list_components_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_component_version_artifact_response() :: #{
 %%   <<"preSignedUrl">> => string()
 %% }
 -type get_component_version_artifact_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_installed_components_request() :: #{
@@ -775,11 +863,13 @@
 %% }
 -type list_installed_components_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_associate_client_device_with_core_device_response() :: #{
 %%   <<"errorEntries">> => list(associate_client_device_with_core_device_error_entry()())
 %% }
 -type batch_associate_client_device_with_core_device_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_client_devices_associated_with_core_device_request() :: #{
@@ -788,15 +878,18 @@
 %% }
 -type list_client_devices_associated_with_core_device_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% associated_client_device() :: #{
 %%   <<"associationTimestamp">> => non_neg_integer(),
 %%   <<"thingName">> => string()
 %% }
 -type associated_client_device() :: #{binary() => any()}.
+
 %% Example:
 %% describe_component_request() :: #{}
 -type describe_component_request() :: #{}.
+
 
 %% Example:
 %% component_candidate() :: #{
@@ -806,12 +899,14 @@
 %% }
 -type component_candidate() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_effective_deployments_response() :: #{
 %%   <<"effectiveDeployments">> => list(effective_deployment()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_effective_deployments_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% lambda_linux_process_params() :: #{
@@ -820,6 +915,7 @@
 %% }
 -type lambda_linux_process_params() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_service_role_for_account_response() :: #{
 %%   <<"associatedAt">> => string(),
@@ -827,11 +923,13 @@
 %% }
 -type get_service_role_for_account_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_associate_client_device_with_core_device_request() :: #{
 %%   <<"entries">> => list(associate_client_device_with_core_device_entry()())
 %% }
 -type batch_associate_client_device_with_core_device_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% io_t_job_abort_criteria() :: #{
@@ -842,20 +940,24 @@
 %% }
 -type io_t_job_abort_criteria() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_service_role_to_account_response() :: #{
 %%   <<"associatedAt">> => string()
 %% }
 -type associate_service_role_to_account_response() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_service_role_from_account_request() :: #{}
 -type disassociate_service_role_from_account_request() :: #{}.
+
 
 %% Example:
 %% get_component_request() :: #{
 %%   <<"recipeOutputFormat">> => list(any())
 %% }
 -type get_component_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% resolve_component_candidates_request() :: #{
@@ -864,6 +966,7 @@
 %% }
 -type resolve_component_candidates_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% lambda_device_mount() :: #{
 %%   <<"addGroupOwner">> => boolean(),
@@ -871,6 +974,193 @@
 %%   <<"permission">> => list(any())
 %% }
 -type lambda_device_mount() :: #{binary() => any()}.
+
+-type associate_service_role_to_account_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type batch_associate_client_device_with_core_device_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type batch_disassociate_client_device_from_core_device_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type cancel_deployment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_component_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception() | 
+    request_already_in_progress_exception().
+
+-type create_deployment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    request_already_in_progress_exception().
+
+-type delete_component_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_core_device_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_deployment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_component_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type disassociate_service_role_from_account_errors() ::
+    internal_server_exception().
+
+-type get_component_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_component_version_artifact_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_connectivity_info_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type get_core_device_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_deployment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_service_role_for_account_errors() ::
+    internal_server_exception().
+
+-type list_client_devices_associated_with_core_device_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_component_versions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_components_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_core_devices_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_deployments_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_effective_deployments_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_installed_components_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type resolve_component_candidates_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_connectivity_info_errors() ::
+    validation_exception() | 
+    internal_server_exception().
 
 %%====================================================================
 %% API
@@ -894,16 +1184,14 @@
 -spec associate_service_role_to_account(map(), associate_service_role_to_account_request()) ->
     {ok, associate_service_role_to_account_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_service_role_to_account_errors(), tuple()}.
 associate_service_role_to_account(Client, Input) ->
     associate_service_role_to_account(Client, Input, []).
 
 -spec associate_service_role_to_account(map(), associate_service_role_to_account_request(), proplists:proplist()) ->
     {ok, associate_service_role_to_account_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_service_role_to_account_errors(), tuple()}.
 associate_service_role_to_account(Client, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/servicerole"],
@@ -951,22 +1239,14 @@ associate_service_role_to_account(Client, Input0, Options0) ->
 -spec batch_associate_client_device_with_core_device(map(), binary() | list(), batch_associate_client_device_with_core_device_request()) ->
     {ok, batch_associate_client_device_with_core_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_associate_client_device_with_core_device_errors(), tuple()}.
 batch_associate_client_device_with_core_device(Client, CoreDeviceThingName, Input) ->
     batch_associate_client_device_with_core_device(Client, CoreDeviceThingName, Input, []).
 
 -spec batch_associate_client_device_with_core_device(map(), binary() | list(), batch_associate_client_device_with_core_device_request(), proplists:proplist()) ->
     {ok, batch_associate_client_device_with_core_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_associate_client_device_with_core_device_errors(), tuple()}.
 batch_associate_client_device_with_core_device(Client, CoreDeviceThingName, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/v2/coreDevices/", aws_util:encode_uri(CoreDeviceThingName), "/associateClientDevices"],
@@ -998,22 +1278,14 @@ batch_associate_client_device_with_core_device(Client, CoreDeviceThingName, Inpu
 -spec batch_disassociate_client_device_from_core_device(map(), binary() | list(), batch_disassociate_client_device_from_core_device_request()) ->
     {ok, batch_disassociate_client_device_from_core_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_disassociate_client_device_from_core_device_errors(), tuple()}.
 batch_disassociate_client_device_from_core_device(Client, CoreDeviceThingName, Input) ->
     batch_disassociate_client_device_from_core_device(Client, CoreDeviceThingName, Input, []).
 
 -spec batch_disassociate_client_device_from_core_device(map(), binary() | list(), batch_disassociate_client_device_from_core_device_request(), proplists:proplist()) ->
     {ok, batch_disassociate_client_device_from_core_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_disassociate_client_device_from_core_device_errors(), tuple()}.
 batch_disassociate_client_device_from_core_device(Client, CoreDeviceThingName, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/v2/coreDevices/", aws_util:encode_uri(CoreDeviceThingName), "/disassociateClientDevices"],
@@ -1045,24 +1317,14 @@ batch_disassociate_client_device_from_core_device(Client, CoreDeviceThingName, I
 -spec cancel_deployment(map(), binary() | list(), cancel_deployment_request()) ->
     {ok, cancel_deployment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_deployment_errors(), tuple()}.
 cancel_deployment(Client, DeploymentId, Input) ->
     cancel_deployment(Client, DeploymentId, Input, []).
 
 -spec cancel_deployment(map(), binary() | list(), cancel_deployment_request(), proplists:proplist()) ->
     {ok, cancel_deployment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_deployment_errors(), tuple()}.
 cancel_deployment(Client, DeploymentId, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/v2/deployments/", aws_util:encode_uri(DeploymentId), "/cancel"],
@@ -1148,26 +1410,14 @@ cancel_deployment(Client, DeploymentId, Input0, Options0) ->
 -spec create_component_version(map(), create_component_version_request()) ->
     {ok, create_component_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_already_in_progress_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_component_version_errors(), tuple()}.
 create_component_version(Client, Input) ->
     create_component_version(Client, Input, []).
 
 -spec create_component_version(map(), create_component_version_request(), proplists:proplist()) ->
     {ok, create_component_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_already_in_progress_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_component_version_errors(), tuple()}.
 create_component_version(Client, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/v2/createComponentVersion"],
@@ -1217,26 +1467,14 @@ create_component_version(Client, Input0, Options0) ->
 -spec create_deployment(map(), create_deployment_request()) ->
     {ok, create_deployment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_already_in_progress_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_deployment_errors(), tuple()}.
 create_deployment(Client, Input) ->
     create_deployment(Client, Input, []).
 
 -spec create_deployment(map(), create_deployment_request(), proplists:proplist()) ->
     {ok, create_deployment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_already_in_progress_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_deployment_errors(), tuple()}.
 create_deployment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/v2/deployments"],
@@ -1271,24 +1509,14 @@ create_deployment(Client, Input0, Options0) ->
 -spec delete_component(map(), binary() | list(), delete_component_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_component_errors(), tuple()}.
 delete_component(Client, Arn, Input) ->
     delete_component(Client, Arn, Input, []).
 
 -spec delete_component(map(), binary() | list(), delete_component_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_component_errors(), tuple()}.
 delete_component(Client, Arn, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/v2/components/", aws_util:encode_uri(Arn), ""],
@@ -1323,24 +1551,14 @@ delete_component(Client, Arn, Input0, Options0) ->
 -spec delete_core_device(map(), binary() | list(), delete_core_device_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_core_device_errors(), tuple()}.
 delete_core_device(Client, CoreDeviceThingName, Input) ->
     delete_core_device(Client, CoreDeviceThingName, Input, []).
 
 -spec delete_core_device(map(), binary() | list(), delete_core_device_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_core_device_errors(), tuple()}.
 delete_core_device(Client, CoreDeviceThingName, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/v2/coreDevices/", aws_util:encode_uri(CoreDeviceThingName), ""],
@@ -1377,24 +1595,14 @@ delete_core_device(Client, CoreDeviceThingName, Input0, Options0) ->
 -spec delete_deployment(map(), binary() | list(), delete_deployment_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_deployment_errors(), tuple()}.
 delete_deployment(Client, DeploymentId, Input) ->
     delete_deployment(Client, DeploymentId, Input, []).
 
 -spec delete_deployment(map(), binary() | list(), delete_deployment_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_deployment_errors(), tuple()}.
 delete_deployment(Client, DeploymentId, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/v2/deployments/", aws_util:encode_uri(DeploymentId), ""],
@@ -1421,11 +1629,7 @@ delete_deployment(Client, DeploymentId, Input0, Options0) ->
 -spec describe_component(map(), binary() | list()) ->
     {ok, describe_component_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_component_errors(), tuple()}.
 describe_component(Client, Arn)
   when is_map(Client) ->
     describe_component(Client, Arn, #{}, #{}).
@@ -1433,11 +1637,7 @@ describe_component(Client, Arn)
 -spec describe_component(map(), binary() | list(), map(), map()) ->
     {ok, describe_component_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_component_errors(), tuple()}.
 describe_component(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_component(Client, Arn, QueryMap, HeadersMap, []).
@@ -1445,11 +1645,7 @@ describe_component(Client, Arn, QueryMap, HeadersMap)
 -spec describe_component(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_component_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_component_errors(), tuple()}.
 describe_component(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/components/", aws_util:encode_uri(Arn), "/metadata"],
@@ -1479,14 +1675,14 @@ describe_component(Client, Arn, QueryMap, HeadersMap, Options0)
 -spec disassociate_service_role_from_account(map(), disassociate_service_role_from_account_request()) ->
     {ok, disassociate_service_role_from_account_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, disassociate_service_role_from_account_errors(), tuple()}.
 disassociate_service_role_from_account(Client, Input) ->
     disassociate_service_role_from_account(Client, Input, []).
 
 -spec disassociate_service_role_from_account(map(), disassociate_service_role_from_account_request(), proplists:proplist()) ->
     {ok, disassociate_service_role_from_account_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, disassociate_service_role_from_account_errors(), tuple()}.
 disassociate_service_role_from_account(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/servicerole"],
@@ -1513,11 +1709,7 @@ disassociate_service_role_from_account(Client, Input0, Options0) ->
 -spec get_component(map(), binary() | list()) ->
     {ok, get_component_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_component_errors(), tuple()}.
 get_component(Client, Arn)
   when is_map(Client) ->
     get_component(Client, Arn, #{}, #{}).
@@ -1525,11 +1717,7 @@ get_component(Client, Arn)
 -spec get_component(map(), binary() | list(), map(), map()) ->
     {ok, get_component_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_component_errors(), tuple()}.
 get_component(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_component(Client, Arn, QueryMap, HeadersMap, []).
@@ -1537,11 +1725,7 @@ get_component(Client, Arn, QueryMap, HeadersMap)
 -spec get_component(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_component_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_component_errors(), tuple()}.
 get_component(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/components/", aws_util:encode_uri(Arn), ""],
@@ -1572,11 +1756,7 @@ get_component(Client, Arn, QueryMap, HeadersMap, Options0)
 -spec get_component_version_artifact(map(), binary() | list(), binary() | list()) ->
     {ok, get_component_version_artifact_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_component_version_artifact_errors(), tuple()}.
 get_component_version_artifact(Client, Arn, ArtifactName)
   when is_map(Client) ->
     get_component_version_artifact(Client, Arn, ArtifactName, #{}, #{}).
@@ -1584,11 +1764,7 @@ get_component_version_artifact(Client, Arn, ArtifactName)
 -spec get_component_version_artifact(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_component_version_artifact_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_component_version_artifact_errors(), tuple()}.
 get_component_version_artifact(Client, Arn, ArtifactName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_component_version_artifact(Client, Arn, ArtifactName, QueryMap, HeadersMap, []).
@@ -1596,11 +1772,7 @@ get_component_version_artifact(Client, Arn, ArtifactName, QueryMap, HeadersMap)
 -spec get_component_version_artifact(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_component_version_artifact_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_component_version_artifact_errors(), tuple()}.
 get_component_version_artifact(Client, Arn, ArtifactName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/components/", aws_util:encode_uri(Arn), "/artifacts/", aws_util:encode_multi_segment_uri(ArtifactName), ""],
@@ -1632,8 +1804,7 @@ get_component_version_artifact(Client, Arn, ArtifactName, QueryMap, HeadersMap, 
 -spec get_connectivity_info(map(), binary() | list()) ->
     {ok, get_connectivity_info_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_connectivity_info_errors(), tuple()}.
 get_connectivity_info(Client, ThingName)
   when is_map(Client) ->
     get_connectivity_info(Client, ThingName, #{}, #{}).
@@ -1641,8 +1812,7 @@ get_connectivity_info(Client, ThingName)
 -spec get_connectivity_info(map(), binary() | list(), map(), map()) ->
     {ok, get_connectivity_info_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_connectivity_info_errors(), tuple()}.
 get_connectivity_info(Client, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_connectivity_info(Client, ThingName, QueryMap, HeadersMap, []).
@@ -1650,8 +1820,7 @@ get_connectivity_info(Client, ThingName, QueryMap, HeadersMap)
 -spec get_connectivity_info(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_connectivity_info_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_connectivity_info_errors(), tuple()}.
 get_connectivity_info(Client, ThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/things/", aws_util:encode_uri(ThingName), "/connectivityInfo"],
@@ -1698,11 +1867,7 @@ get_connectivity_info(Client, ThingName, QueryMap, HeadersMap, Options0)
 -spec get_core_device(map(), binary() | list()) ->
     {ok, get_core_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_core_device_errors(), tuple()}.
 get_core_device(Client, CoreDeviceThingName)
   when is_map(Client) ->
     get_core_device(Client, CoreDeviceThingName, #{}, #{}).
@@ -1710,11 +1875,7 @@ get_core_device(Client, CoreDeviceThingName)
 -spec get_core_device(map(), binary() | list(), map(), map()) ->
     {ok, get_core_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_core_device_errors(), tuple()}.
 get_core_device(Client, CoreDeviceThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_core_device(Client, CoreDeviceThingName, QueryMap, HeadersMap, []).
@@ -1722,11 +1883,7 @@ get_core_device(Client, CoreDeviceThingName, QueryMap, HeadersMap)
 -spec get_core_device(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_core_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_core_device_errors(), tuple()}.
 get_core_device(Client, CoreDeviceThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/coreDevices/", aws_util:encode_uri(CoreDeviceThingName), ""],
@@ -1749,11 +1906,7 @@ get_core_device(Client, CoreDeviceThingName, QueryMap, HeadersMap, Options0)
 -spec get_deployment(map(), binary() | list()) ->
     {ok, get_deployment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_deployment_errors(), tuple()}.
 get_deployment(Client, DeploymentId)
   when is_map(Client) ->
     get_deployment(Client, DeploymentId, #{}, #{}).
@@ -1761,11 +1914,7 @@ get_deployment(Client, DeploymentId)
 -spec get_deployment(map(), binary() | list(), map(), map()) ->
     {ok, get_deployment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_deployment_errors(), tuple()}.
 get_deployment(Client, DeploymentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_deployment(Client, DeploymentId, QueryMap, HeadersMap, []).
@@ -1773,11 +1922,7 @@ get_deployment(Client, DeploymentId, QueryMap, HeadersMap)
 -spec get_deployment(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_deployment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_deployment_errors(), tuple()}.
 get_deployment(Client, DeploymentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/deployments/", aws_util:encode_uri(DeploymentId), ""],
@@ -1807,7 +1952,7 @@ get_deployment(Client, DeploymentId, QueryMap, HeadersMap, Options0)
 -spec get_service_role_for_account(map()) ->
     {ok, get_service_role_for_account_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, get_service_role_for_account_errors(), tuple()}.
 get_service_role_for_account(Client)
   when is_map(Client) ->
     get_service_role_for_account(Client, #{}, #{}).
@@ -1815,7 +1960,7 @@ get_service_role_for_account(Client)
 -spec get_service_role_for_account(map(), map(), map()) ->
     {ok, get_service_role_for_account_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, get_service_role_for_account_errors(), tuple()}.
 get_service_role_for_account(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_service_role_for_account(Client, QueryMap, HeadersMap, []).
@@ -1823,7 +1968,7 @@ get_service_role_for_account(Client, QueryMap, HeadersMap)
 -spec get_service_role_for_account(map(), map(), map(), proplists:proplist()) ->
     {ok, get_service_role_for_account_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, get_service_role_for_account_errors(), tuple()}.
 get_service_role_for_account(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/servicerole"],
@@ -1846,11 +1991,7 @@ get_service_role_for_account(Client, QueryMap, HeadersMap, Options0)
 -spec list_client_devices_associated_with_core_device(map(), binary() | list()) ->
     {ok, list_client_devices_associated_with_core_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_client_devices_associated_with_core_device_errors(), tuple()}.
 list_client_devices_associated_with_core_device(Client, CoreDeviceThingName)
   when is_map(Client) ->
     list_client_devices_associated_with_core_device(Client, CoreDeviceThingName, #{}, #{}).
@@ -1858,11 +1999,7 @@ list_client_devices_associated_with_core_device(Client, CoreDeviceThingName)
 -spec list_client_devices_associated_with_core_device(map(), binary() | list(), map(), map()) ->
     {ok, list_client_devices_associated_with_core_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_client_devices_associated_with_core_device_errors(), tuple()}.
 list_client_devices_associated_with_core_device(Client, CoreDeviceThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_client_devices_associated_with_core_device(Client, CoreDeviceThingName, QueryMap, HeadersMap, []).
@@ -1870,11 +2007,7 @@ list_client_devices_associated_with_core_device(Client, CoreDeviceThingName, Que
 -spec list_client_devices_associated_with_core_device(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_client_devices_associated_with_core_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_client_devices_associated_with_core_device_errors(), tuple()}.
 list_client_devices_associated_with_core_device(Client, CoreDeviceThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/coreDevices/", aws_util:encode_uri(CoreDeviceThingName), "/associatedClientDevices"],
@@ -1903,11 +2036,7 @@ list_client_devices_associated_with_core_device(Client, CoreDeviceThingName, Que
 -spec list_component_versions(map(), binary() | list()) ->
     {ok, list_component_versions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_component_versions_errors(), tuple()}.
 list_component_versions(Client, Arn)
   when is_map(Client) ->
     list_component_versions(Client, Arn, #{}, #{}).
@@ -1915,11 +2044,7 @@ list_component_versions(Client, Arn)
 -spec list_component_versions(map(), binary() | list(), map(), map()) ->
     {ok, list_component_versions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_component_versions_errors(), tuple()}.
 list_component_versions(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_component_versions(Client, Arn, QueryMap, HeadersMap, []).
@@ -1927,11 +2052,7 @@ list_component_versions(Client, Arn, QueryMap, HeadersMap)
 -spec list_component_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_component_versions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_component_versions_errors(), tuple()}.
 list_component_versions(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/components/", aws_util:encode_uri(Arn), "/versions"],
@@ -1960,11 +2081,7 @@ list_component_versions(Client, Arn, QueryMap, HeadersMap, Options0)
 -spec list_components(map()) ->
     {ok, list_components_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_components_errors(), tuple()}.
 list_components(Client)
   when is_map(Client) ->
     list_components(Client, #{}, #{}).
@@ -1972,11 +2089,7 @@ list_components(Client)
 -spec list_components(map(), map(), map()) ->
     {ok, list_components_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_components_errors(), tuple()}.
 list_components(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_components(Client, QueryMap, HeadersMap, []).
@@ -1984,11 +2097,7 @@ list_components(Client, QueryMap, HeadersMap)
 -spec list_components(map(), map(), map(), proplists:proplist()) ->
     {ok, list_components_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_components_errors(), tuple()}.
 list_components(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/components"],
@@ -2041,10 +2150,7 @@ list_components(Client, QueryMap, HeadersMap, Options0)
 -spec list_core_devices(map()) ->
     {ok, list_core_devices_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_core_devices_errors(), tuple()}.
 list_core_devices(Client)
   when is_map(Client) ->
     list_core_devices(Client, #{}, #{}).
@@ -2052,10 +2158,7 @@ list_core_devices(Client)
 -spec list_core_devices(map(), map(), map()) ->
     {ok, list_core_devices_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_core_devices_errors(), tuple()}.
 list_core_devices(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_core_devices(Client, QueryMap, HeadersMap, []).
@@ -2063,10 +2166,7 @@ list_core_devices(Client, QueryMap, HeadersMap)
 -spec list_core_devices(map(), map(), map(), proplists:proplist()) ->
     {ok, list_core_devices_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_core_devices_errors(), tuple()}.
 list_core_devices(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/coreDevices"],
@@ -2094,10 +2194,7 @@ list_core_devices(Client, QueryMap, HeadersMap, Options0)
 -spec list_deployments(map()) ->
     {ok, list_deployments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_deployments_errors(), tuple()}.
 list_deployments(Client)
   when is_map(Client) ->
     list_deployments(Client, #{}, #{}).
@@ -2105,10 +2202,7 @@ list_deployments(Client)
 -spec list_deployments(map(), map(), map()) ->
     {ok, list_deployments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_deployments_errors(), tuple()}.
 list_deployments(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_deployments(Client, QueryMap, HeadersMap, []).
@@ -2116,10 +2210,7 @@ list_deployments(Client, QueryMap, HeadersMap)
 -spec list_deployments(map(), map(), map(), proplists:proplist()) ->
     {ok, list_deployments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_deployments_errors(), tuple()}.
 list_deployments(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/deployments"],
@@ -2149,11 +2240,7 @@ list_deployments(Client, QueryMap, HeadersMap, Options0)
 -spec list_effective_deployments(map(), binary() | list()) ->
     {ok, list_effective_deployments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_effective_deployments_errors(), tuple()}.
 list_effective_deployments(Client, CoreDeviceThingName)
   when is_map(Client) ->
     list_effective_deployments(Client, CoreDeviceThingName, #{}, #{}).
@@ -2161,11 +2248,7 @@ list_effective_deployments(Client, CoreDeviceThingName)
 -spec list_effective_deployments(map(), binary() | list(), map(), map()) ->
     {ok, list_effective_deployments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_effective_deployments_errors(), tuple()}.
 list_effective_deployments(Client, CoreDeviceThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_effective_deployments(Client, CoreDeviceThingName, QueryMap, HeadersMap, []).
@@ -2173,11 +2256,7 @@ list_effective_deployments(Client, CoreDeviceThingName, QueryMap, HeadersMap)
 -spec list_effective_deployments(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_effective_deployments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_effective_deployments_errors(), tuple()}.
 list_effective_deployments(Client, CoreDeviceThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/coreDevices/", aws_util:encode_uri(CoreDeviceThingName), "/effectiveDeployments"],
@@ -2237,11 +2316,7 @@ list_effective_deployments(Client, CoreDeviceThingName, QueryMap, HeadersMap, Op
 -spec list_installed_components(map(), binary() | list()) ->
     {ok, list_installed_components_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_installed_components_errors(), tuple()}.
 list_installed_components(Client, CoreDeviceThingName)
   when is_map(Client) ->
     list_installed_components(Client, CoreDeviceThingName, #{}, #{}).
@@ -2249,11 +2324,7 @@ list_installed_components(Client, CoreDeviceThingName)
 -spec list_installed_components(map(), binary() | list(), map(), map()) ->
     {ok, list_installed_components_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_installed_components_errors(), tuple()}.
 list_installed_components(Client, CoreDeviceThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_installed_components(Client, CoreDeviceThingName, QueryMap, HeadersMap, []).
@@ -2261,11 +2332,7 @@ list_installed_components(Client, CoreDeviceThingName, QueryMap, HeadersMap)
 -spec list_installed_components(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_installed_components_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_installed_components_errors(), tuple()}.
 list_installed_components(Client, CoreDeviceThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/coreDevices/", aws_util:encode_uri(CoreDeviceThingName), "/installedComponents"],
@@ -2292,9 +2359,7 @@ list_installed_components(Client, CoreDeviceThingName, QueryMap, HeadersMap, Opt
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -2302,9 +2367,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -2312,9 +2375,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2362,24 +2423,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec resolve_component_candidates(map(), resolve_component_candidates_request()) ->
     {ok, resolve_component_candidates_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, resolve_component_candidates_errors(), tuple()}.
 resolve_component_candidates(Client, Input) ->
     resolve_component_candidates(Client, Input, []).
 
 -spec resolve_component_candidates(map(), resolve_component_candidates_request(), proplists:proplist()) ->
     {ok, resolve_component_candidates_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, resolve_component_candidates_errors(), tuple()}.
 resolve_component_candidates(Client, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/v2/resolveComponentCandidates"],
@@ -2409,18 +2460,14 @@ resolve_component_candidates(Client, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2447,18 +2494,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2497,16 +2540,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_connectivity_info(map(), binary() | list(), update_connectivity_info_request()) ->
     {ok, update_connectivity_info_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_connectivity_info_errors(), tuple()}.
 update_connectivity_info(Client, ThingName, Input) ->
     update_connectivity_info(Client, ThingName, Input, []).
 
 -spec update_connectivity_info(map(), binary() | list(), update_connectivity_info_request(), proplists:proplist()) ->
     {ok, update_connectivity_info_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_connectivity_info_errors(), tuple()}.
 update_connectivity_info(Client, ThingName, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/things/", aws_util:encode_uri(ThingName), "/connectivityInfo"],

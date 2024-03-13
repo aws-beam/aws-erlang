@@ -93,11 +93,13 @@
 %% }
 -type connector() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"Tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% private_key_attributes_v4() :: #{
@@ -109,6 +111,7 @@
 %% }
 -type private_key_attributes_v4() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_template_group_access_control_entry_request() :: #{
 %%   <<"AccessRights">> => access_rights(),
@@ -116,12 +119,14 @@
 %% }
 -type update_template_group_access_control_entry_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_connectors_response() :: #{
 %%   <<"Connectors">> => list(connector_summary()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_connectors_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_directory_registration_request() :: #{
@@ -131,6 +136,7 @@
 %% }
 -type create_directory_registration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_templates_request() :: #{
 %%   <<"ConnectorArn">> := string(),
@@ -138,9 +144,11 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_templates_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_template_group_access_control_entry_request() :: #{}
 -type delete_template_group_access_control_entry_request() :: #{}.
+
 
 %% Example:
 %% enrollment_flags_v3() :: #{
@@ -151,6 +159,7 @@
 %%   <<"UserInteractionRequired">> => [boolean()]
 %% }
 -type enrollment_flags_v3() :: #{binary() => any()}.
+
 
 %% Example:
 %% template_v3() :: #{
@@ -166,12 +175,14 @@
 %% }
 -type template_v3() :: #{binary() => any()}.
 
+
 %% Example:
 %% general_flags_v2() :: #{
 %%   <<"AutoEnrollment">> => [boolean()],
 %%   <<"MachineType">> => [boolean()]
 %% }
 -type general_flags_v2() :: #{binary() => any()}.
+
 
 %% Example:
 %% access_control_entry_summary() :: #{
@@ -184,6 +195,7 @@
 %% }
 -type access_control_entry_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% enrollment_flags_v4() :: #{
 %%   <<"EnableKeyReuseOnNtTokenKeysetStorageFull">> => [boolean()],
@@ -193,9 +205,11 @@
 %%   <<"UserInteractionRequired">> => [boolean()]
 %% }
 -type enrollment_flags_v4() :: #{binary() => any()}.
+
 %% Example:
 %% get_directory_registration_request() :: #{}
 -type get_directory_registration_request() :: #{}.
+
 
 %% Example:
 %% template_revision() :: #{
@@ -204,6 +218,7 @@
 %% }
 -type template_revision() :: #{binary() => any()}.
 
+
 %% Example:
 %% private_key_flags_v2() :: #{
 %%   <<"ClientVersion">> => list(any()),
@@ -211,6 +226,7 @@
 %%   <<"StrongKeyProtectionRequired">> => [boolean()]
 %% }
 -type private_key_flags_v2() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_template_request() :: #{
@@ -222,11 +238,13 @@
 %% }
 -type create_template_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_template_response() :: #{
 %%   <<"Template">> => template()
 %% }
 -type get_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% directory_registration_summary() :: #{
@@ -239,6 +257,7 @@
 %% }
 -type directory_registration_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_template_group_access_control_entry_request() :: #{
 %%   <<"AccessRights">> := access_rights(),
@@ -248,6 +267,7 @@
 %% }
 -type create_template_group_access_control_entry_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_connectors_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -255,12 +275,14 @@
 %% }
 -type list_connectors_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_template_request() :: #{
 %%   <<"Definition">> => list(),
 %%   <<"ReenrollAllCertificateHolders">> => [boolean()]
 %% }
 -type update_template_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% key_usage_flags() :: #{
@@ -272,11 +294,13 @@
 %% }
 -type key_usage_flags() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> := list([string()]())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% subject_name_flags_v4() :: #{
@@ -293,12 +317,14 @@
 %% }
 -type subject_name_flags_v4() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_service_principal_names_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"ServicePrincipalNames">> => list(service_principal_name_summary()())
 %% }
 -type list_service_principal_names_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% enrollment_flags_v2() :: #{
@@ -310,15 +336,18 @@
 %% }
 -type enrollment_flags_v2() :: #{binary() => any()}.
 
+
 %% Example:
 %% extensions_v3() :: #{
 %%   <<"ApplicationPolicies">> => application_policies(),
 %%   <<"KeyUsage">> => key_usage()
 %% }
 -type extensions_v3() :: #{binary() => any()}.
+
 %% Example:
 %% delete_template_request() :: #{}
 -type delete_template_request() :: #{}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -328,6 +357,7 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => [string()],
@@ -335,6 +365,7 @@
 %%   <<"ResourceType">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_principal_name_summary() :: #{
@@ -347,6 +378,7 @@
 %% }
 -type service_principal_name_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% extensions_v2() :: #{
 %%   <<"ApplicationPolicies">> => application_policies(),
@@ -354,11 +386,13 @@
 %% }
 -type extensions_v2() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_template_group_access_control_entry_response() :: #{
 %%   <<"AccessControlEntry">> => access_control_entry()
 %% }
 -type get_template_group_access_control_entry_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
@@ -370,6 +404,7 @@
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% key_usage_property_flags() :: #{
 %%   <<"Decrypt">> => [boolean()],
@@ -377,6 +412,7 @@
 %%   <<"Sign">> => [boolean()]
 %% }
 -type key_usage_property_flags() :: #{binary() => any()}.
+
 
 %% Example:
 %% template_v4() :: #{
@@ -391,6 +427,7 @@
 %%   <<"SupersededTemplates">> => list(string()())
 %% }
 -type template_v4() :: #{binary() => any()}.
+
 
 %% Example:
 %% template_summary() :: #{
@@ -407,6 +444,7 @@
 %% }
 -type template_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% private_key_attributes_v2() :: #{
 %%   <<"CryptoProviders">> => list([string()]()),
@@ -414,6 +452,7 @@
 %%   <<"MinimalKeyLength">> => [integer()]
 %% }
 -type private_key_attributes_v2() :: #{binary() => any()}.
+
 
 %% Example:
 %% directory_registration() :: #{
@@ -425,9 +464,11 @@
 %%   <<"UpdatedAt">> => [non_neg_integer()]
 %% }
 -type directory_registration() :: #{binary() => any()}.
+
 %% Example:
 %% delete_directory_registration_request() :: #{}
 -type delete_directory_registration_request() :: #{}.
+
 
 %% Example:
 %% service_principal_name() :: #{
@@ -439,15 +480,18 @@
 %%   <<"UpdatedAt">> => [non_neg_integer()]
 %% }
 -type service_principal_name() :: #{binary() => any()}.
+
 %% Example:
 %% get_service_principal_name_request() :: #{}
 -type get_service_principal_name_request() :: #{}.
+
 
 %% Example:
 %% get_service_principal_name_response() :: #{
 %%   <<"ServicePrincipalName">> => service_principal_name()
 %% }
 -type get_service_principal_name_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% access_control_entry() :: #{
@@ -460,17 +504,20 @@
 %% }
 -type access_control_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_connector_response() :: #{
 %%   <<"ConnectorArn">> => string()
 %% }
 -type create_connector_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_directory_registrations_response() :: #{
@@ -479,14 +526,17 @@
 %% }
 -type list_directory_registrations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_directory_registration_response() :: #{
 %%   <<"DirectoryRegistrationArn">> => string()
 %% }
 -type create_directory_registration_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_connector_request() :: #{}
 -type get_connector_request() :: #{}.
+
 
 %% Example:
 %% internal_server_exception() :: #{
@@ -494,17 +544,20 @@
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_directory_registration_response() :: #{
 %%   <<"DirectoryRegistration">> => directory_registration()
 %% }
 -type get_directory_registration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_service_principal_name_request() :: #{
 %%   <<"ClientToken">> => string()
 %% }
 -type create_service_principal_name_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% private_key_attributes_v3() :: #{
@@ -515,12 +568,15 @@
 %%   <<"MinimalKeyLength">> => [integer()]
 %% }
 -type private_key_attributes_v3() :: #{binary() => any()}.
+
 %% Example:
 %% delete_service_principal_name_request() :: #{}
 -type delete_service_principal_name_request() :: #{}.
+
 %% Example:
 %% get_template_group_access_control_entry_request() :: #{}
 -type get_template_group_access_control_entry_request() :: #{}.
+
 
 %% Example:
 %% list_template_group_access_control_entries_request() :: #{
@@ -528,6 +584,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_template_group_access_control_entries_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% subject_name_flags_v3() :: #{
@@ -544,12 +601,14 @@
 %% }
 -type subject_name_flags_v3() :: #{binary() => any()}.
 
+
 %% Example:
 %% validity_period() :: #{
 %%   <<"Period">> => [float()],
 %%   <<"PeriodType">> => list(any())
 %% }
 -type validity_period() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_directory_registrations_request() :: #{
@@ -558,11 +617,13 @@
 %% }
 -type list_directory_registrations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% application_policies() :: #{
@@ -570,6 +631,7 @@
 %%   <<"Policies">> => list(list()())
 %% }
 -type application_policies() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_connector_request() :: #{
@@ -581,12 +643,14 @@
 %% }
 -type create_connector_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_templates_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Templates">> => list(template_summary()())
 %% }
 -type list_templates_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% connector_summary() :: #{
@@ -601,9 +665,11 @@
 %%   <<"VpcInformation">> => vpc_information()
 %% }
 -type connector_summary() :: #{binary() => any()}.
+
 %% Example:
 %% get_template_request() :: #{}
 -type get_template_request() :: #{}.
+
 
 %% Example:
 %% validation_exception() :: #{
@@ -611,9 +677,11 @@
 %%   <<"Reason">> => list(any())
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% list_template_group_access_control_entries_response() :: #{
@@ -622,6 +690,7 @@
 %% }
 -type list_template_group_access_control_entries_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_rights() :: #{
 %%   <<"AutoEnroll">> => list(any()),
@@ -629,12 +698,14 @@
 %% }
 -type access_rights() :: #{binary() => any()}.
 
+
 %% Example:
 %% extensions_v4() :: #{
 %%   <<"ApplicationPolicies">> => application_policies(),
 %%   <<"KeyUsage">> => key_usage()
 %% }
 -type extensions_v4() :: #{binary() => any()}.
+
 
 %% Example:
 %% throttling_exception() :: #{
@@ -644,6 +715,7 @@
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% general_flags_v4() :: #{
 %%   <<"AutoEnrollment">> => [boolean()],
@@ -651,11 +723,13 @@
 %% }
 -type general_flags_v4() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_connector_response() :: #{
 %%   <<"Connector">> => connector()
 %% }
 -type get_connector_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% template_v2() :: #{
@@ -670,6 +744,7 @@
 %% }
 -type template_v2() :: #{binary() => any()}.
 
+
 %% Example:
 %% private_key_flags_v4() :: #{
 %%   <<"ClientVersion">> => list(any()),
@@ -681,12 +756,14 @@
 %% }
 -type private_key_flags_v4() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_service_principal_names_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_service_principal_names_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% subject_name_flags_v2() :: #{
@@ -702,15 +779,18 @@
 %%   <<"SanRequireUpn">> => [boolean()]
 %% }
 -type subject_name_flags_v2() :: #{binary() => any()}.
+
 %% Example:
 %% delete_connector_request() :: #{}
 -type delete_connector_request() :: #{}.
+
 
 %% Example:
 %% create_template_response() :: #{
 %%   <<"TemplateArn">> => string()
 %% }
 -type create_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% template() :: #{
@@ -727,11 +807,13 @@
 %% }
 -type template() :: #{binary() => any()}.
 
+
 %% Example:
 %% vpc_information() :: #{
 %%   <<"SecurityGroupIds">> => list(string()())
 %% }
 -type vpc_information() :: #{binary() => any()}.
+
 
 %% Example:
 %% private_key_flags_v3() :: #{
@@ -742,12 +824,14 @@
 %% }
 -type private_key_flags_v3() :: #{binary() => any()}.
 
+
 %% Example:
 %% certificate_validity() :: #{
 %%   <<"RenewalPeriod">> => validity_period(),
 %%   <<"ValidityPeriod">> => validity_period()
 %% }
 -type certificate_validity() :: #{binary() => any()}.
+
 
 %% Example:
 %% general_flags_v3() :: #{
@@ -756,12 +840,199 @@
 %% }
 -type general_flags_v3() :: #{binary() => any()}.
 
+
 %% Example:
 %% key_usage() :: #{
 %%   <<"Critical">> => [boolean()],
 %%   <<"UsageFlags">> => key_usage_flags()
 %% }
 -type key_usage() :: #{binary() => any()}.
+
+-type create_connector_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_directory_registration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_service_principal_name_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_template_group_access_control_entry_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_connector_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_directory_registration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_service_principal_name_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_template_group_access_control_entry_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_connector_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_directory_registration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_service_principal_name_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_template_group_access_control_entry_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_connectors_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_directory_registrations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_service_principal_names_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_template_group_access_control_entries_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_templates_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_template_group_access_control_entry_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -775,26 +1046,14 @@
 -spec create_connector(map(), create_connector_request()) ->
     {ok, create_connector_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_connector_errors(), tuple()}.
 create_connector(Client, Input) ->
     create_connector(Client, Input, []).
 
 -spec create_connector(map(), create_connector_request(), proplists:proplist()) ->
     {ok, create_connector_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_connector_errors(), tuple()}.
 create_connector(Client, Input0, Options0) ->
     Method = post,
     Path = ["/connectors"],
@@ -823,24 +1082,14 @@ create_connector(Client, Input0, Options0) ->
 -spec create_directory_registration(map(), create_directory_registration_request()) ->
     {ok, create_directory_registration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_directory_registration_errors(), tuple()}.
 create_directory_registration(Client, Input) ->
     create_directory_registration(Client, Input, []).
 
 -spec create_directory_registration(map(), create_directory_registration_request(), proplists:proplist()) ->
     {ok, create_directory_registration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_directory_registration_errors(), tuple()}.
 create_directory_registration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/directoryRegistrations"],
@@ -873,24 +1122,14 @@ create_directory_registration(Client, Input0, Options0) ->
 -spec create_service_principal_name(map(), binary() | list(), binary() | list(), create_service_principal_name_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_service_principal_name_errors(), tuple()}.
 create_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, Input) ->
     create_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, Input, []).
 
 -spec create_service_principal_name(map(), binary() | list(), binary() | list(), create_service_principal_name_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_service_principal_name_errors(), tuple()}.
 create_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, Input0, Options0) ->
     Method = post,
     Path = ["/directoryRegistrations/", aws_util:encode_uri(DirectoryRegistrationArn), "/servicePrincipalNames/", aws_util:encode_uri(ConnectorArn), ""],
@@ -921,26 +1160,14 @@ create_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, In
 -spec create_template(map(), create_template_request()) ->
     {ok, create_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_template_errors(), tuple()}.
 create_template(Client, Input) ->
     create_template(Client, Input, []).
 
 -spec create_template(map(), create_template_request(), proplists:proplist()) ->
     {ok, create_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_template_errors(), tuple()}.
 create_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/templates"],
@@ -971,26 +1198,14 @@ create_template(Client, Input0, Options0) ->
 -spec create_template_group_access_control_entry(map(), binary() | list(), create_template_group_access_control_entry_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_template_group_access_control_entry_errors(), tuple()}.
 create_template_group_access_control_entry(Client, TemplateArn, Input) ->
     create_template_group_access_control_entry(Client, TemplateArn, Input, []).
 
 -spec create_template_group_access_control_entry(map(), binary() | list(), create_template_group_access_control_entry_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_template_group_access_control_entry_errors(), tuple()}.
 create_template_group_access_control_entry(Client, TemplateArn, Input0, Options0) ->
     Method = post,
     Path = ["/templates/", aws_util:encode_uri(TemplateArn), "/accessControlEntries"],
@@ -1026,24 +1241,14 @@ create_template_group_access_control_entry(Client, TemplateArn, Input0, Options0
 -spec delete_connector(map(), binary() | list(), delete_connector_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_connector_errors(), tuple()}.
 delete_connector(Client, ConnectorArn, Input) ->
     delete_connector(Client, ConnectorArn, Input, []).
 
 -spec delete_connector(map(), binary() | list(), delete_connector_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_connector_errors(), tuple()}.
 delete_connector(Client, ConnectorArn, Input0, Options0) ->
     Method = delete,
     Path = ["/connectors/", aws_util:encode_uri(ConnectorArn), ""],
@@ -1073,22 +1278,14 @@ delete_connector(Client, ConnectorArn, Input0, Options0) ->
 -spec delete_directory_registration(map(), binary() | list(), delete_directory_registration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_directory_registration_errors(), tuple()}.
 delete_directory_registration(Client, DirectoryRegistrationArn, Input) ->
     delete_directory_registration(Client, DirectoryRegistrationArn, Input, []).
 
 -spec delete_directory_registration(map(), binary() | list(), delete_directory_registration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_directory_registration_errors(), tuple()}.
 delete_directory_registration(Client, DirectoryRegistrationArn, Input0, Options0) ->
     Method = delete,
     Path = ["/directoryRegistrations/", aws_util:encode_uri(DirectoryRegistrationArn), ""],
@@ -1117,22 +1314,14 @@ delete_directory_registration(Client, DirectoryRegistrationArn, Input0, Options0
 -spec delete_service_principal_name(map(), binary() | list(), binary() | list(), delete_service_principal_name_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_service_principal_name_errors(), tuple()}.
 delete_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, Input) ->
     delete_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, Input, []).
 
 -spec delete_service_principal_name(map(), binary() | list(), binary() | list(), delete_service_principal_name_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_service_principal_name_errors(), tuple()}.
 delete_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, Input0, Options0) ->
     Method = delete,
     Path = ["/directoryRegistrations/", aws_util:encode_uri(DirectoryRegistrationArn), "/servicePrincipalNames/", aws_util:encode_uri(ConnectorArn), ""],
@@ -1162,24 +1351,14 @@ delete_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, In
 -spec delete_template(map(), binary() | list(), delete_template_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_template_errors(), tuple()}.
 delete_template(Client, TemplateArn, Input) ->
     delete_template(Client, TemplateArn, Input, []).
 
 -spec delete_template(map(), binary() | list(), delete_template_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_template_errors(), tuple()}.
 delete_template(Client, TemplateArn, Input0, Options0) ->
     Method = delete,
     Path = ["/templates/", aws_util:encode_uri(TemplateArn), ""],
@@ -1206,24 +1385,14 @@ delete_template(Client, TemplateArn, Input0, Options0) ->
 -spec delete_template_group_access_control_entry(map(), binary() | list(), binary() | list(), delete_template_group_access_control_entry_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_template_group_access_control_entry_errors(), tuple()}.
 delete_template_group_access_control_entry(Client, GroupSecurityIdentifier, TemplateArn, Input) ->
     delete_template_group_access_control_entry(Client, GroupSecurityIdentifier, TemplateArn, Input, []).
 
 -spec delete_template_group_access_control_entry(map(), binary() | list(), binary() | list(), delete_template_group_access_control_entry_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_template_group_access_control_entry_errors(), tuple()}.
 delete_template_group_access_control_entry(Client, GroupSecurityIdentifier, TemplateArn, Input0, Options0) ->
     Method = delete,
     Path = ["/templates/", aws_util:encode_uri(TemplateArn), "/accessControlEntries/", aws_util:encode_uri(GroupSecurityIdentifier), ""],
@@ -1253,11 +1422,7 @@ delete_template_group_access_control_entry(Client, GroupSecurityIdentifier, Temp
 -spec get_connector(map(), binary() | list()) ->
     {ok, get_connector_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_connector_errors(), tuple()}.
 get_connector(Client, ConnectorArn)
   when is_map(Client) ->
     get_connector(Client, ConnectorArn, #{}, #{}).
@@ -1265,11 +1430,7 @@ get_connector(Client, ConnectorArn)
 -spec get_connector(map(), binary() | list(), map(), map()) ->
     {ok, get_connector_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_connector_errors(), tuple()}.
 get_connector(Client, ConnectorArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_connector(Client, ConnectorArn, QueryMap, HeadersMap, []).
@@ -1277,11 +1438,7 @@ get_connector(Client, ConnectorArn, QueryMap, HeadersMap)
 -spec get_connector(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_connector_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_connector_errors(), tuple()}.
 get_connector(Client, ConnectorArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/connectors/", aws_util:encode_uri(ConnectorArn), ""],
@@ -1303,11 +1460,7 @@ get_connector(Client, ConnectorArn, QueryMap, HeadersMap, Options0)
 -spec get_directory_registration(map(), binary() | list()) ->
     {ok, get_directory_registration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_directory_registration_errors(), tuple()}.
 get_directory_registration(Client, DirectoryRegistrationArn)
   when is_map(Client) ->
     get_directory_registration(Client, DirectoryRegistrationArn, #{}, #{}).
@@ -1315,11 +1468,7 @@ get_directory_registration(Client, DirectoryRegistrationArn)
 -spec get_directory_registration(map(), binary() | list(), map(), map()) ->
     {ok, get_directory_registration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_directory_registration_errors(), tuple()}.
 get_directory_registration(Client, DirectoryRegistrationArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_directory_registration(Client, DirectoryRegistrationArn, QueryMap, HeadersMap, []).
@@ -1327,11 +1476,7 @@ get_directory_registration(Client, DirectoryRegistrationArn, QueryMap, HeadersMa
 -spec get_directory_registration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_directory_registration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_directory_registration_errors(), tuple()}.
 get_directory_registration(Client, DirectoryRegistrationArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/directoryRegistrations/", aws_util:encode_uri(DirectoryRegistrationArn), ""],
@@ -1354,11 +1499,7 @@ get_directory_registration(Client, DirectoryRegistrationArn, QueryMap, HeadersMa
 -spec get_service_principal_name(map(), binary() | list(), binary() | list()) ->
     {ok, get_service_principal_name_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_service_principal_name_errors(), tuple()}.
 get_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn)
   when is_map(Client) ->
     get_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, #{}, #{}).
@@ -1366,11 +1507,7 @@ get_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn)
 -spec get_service_principal_name(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_service_principal_name_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_service_principal_name_errors(), tuple()}.
 get_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, QueryMap, HeadersMap, []).
@@ -1378,11 +1515,7 @@ get_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, Query
 -spec get_service_principal_name(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_service_principal_name_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_service_principal_name_errors(), tuple()}.
 get_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/directoryRegistrations/", aws_util:encode_uri(DirectoryRegistrationArn), "/servicePrincipalNames/", aws_util:encode_uri(ConnectorArn), ""],
@@ -1405,11 +1538,7 @@ get_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, Query
 -spec get_template(map(), binary() | list()) ->
     {ok, get_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_template_errors(), tuple()}.
 get_template(Client, TemplateArn)
   when is_map(Client) ->
     get_template(Client, TemplateArn, #{}, #{}).
@@ -1417,11 +1546,7 @@ get_template(Client, TemplateArn)
 -spec get_template(map(), binary() | list(), map(), map()) ->
     {ok, get_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_template_errors(), tuple()}.
 get_template(Client, TemplateArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_template(Client, TemplateArn, QueryMap, HeadersMap, []).
@@ -1429,11 +1554,7 @@ get_template(Client, TemplateArn, QueryMap, HeadersMap)
 -spec get_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_template_errors(), tuple()}.
 get_template(Client, TemplateArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/templates/", aws_util:encode_uri(TemplateArn), ""],
@@ -1454,11 +1575,7 @@ get_template(Client, TemplateArn, QueryMap, HeadersMap, Options0)
 -spec get_template_group_access_control_entry(map(), binary() | list(), binary() | list()) ->
     {ok, get_template_group_access_control_entry_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_template_group_access_control_entry_errors(), tuple()}.
 get_template_group_access_control_entry(Client, GroupSecurityIdentifier, TemplateArn)
   when is_map(Client) ->
     get_template_group_access_control_entry(Client, GroupSecurityIdentifier, TemplateArn, #{}, #{}).
@@ -1466,11 +1583,7 @@ get_template_group_access_control_entry(Client, GroupSecurityIdentifier, Templat
 -spec get_template_group_access_control_entry(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_template_group_access_control_entry_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_template_group_access_control_entry_errors(), tuple()}.
 get_template_group_access_control_entry(Client, GroupSecurityIdentifier, TemplateArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_template_group_access_control_entry(Client, GroupSecurityIdentifier, TemplateArn, QueryMap, HeadersMap, []).
@@ -1478,11 +1591,7 @@ get_template_group_access_control_entry(Client, GroupSecurityIdentifier, Templat
 -spec get_template_group_access_control_entry(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_template_group_access_control_entry_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_template_group_access_control_entry_errors(), tuple()}.
 get_template_group_access_control_entry(Client, GroupSecurityIdentifier, TemplateArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/templates/", aws_util:encode_uri(TemplateArn), "/accessControlEntries/", aws_util:encode_uri(GroupSecurityIdentifier), ""],
@@ -1505,10 +1614,7 @@ get_template_group_access_control_entry(Client, GroupSecurityIdentifier, Templat
 -spec list_connectors(map()) ->
     {ok, list_connectors_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_connectors_errors(), tuple()}.
 list_connectors(Client)
   when is_map(Client) ->
     list_connectors(Client, #{}, #{}).
@@ -1516,10 +1622,7 @@ list_connectors(Client)
 -spec list_connectors(map(), map(), map()) ->
     {ok, list_connectors_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_connectors_errors(), tuple()}.
 list_connectors(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_connectors(Client, QueryMap, HeadersMap, []).
@@ -1527,10 +1630,7 @@ list_connectors(Client, QueryMap, HeadersMap)
 -spec list_connectors(map(), map(), map(), proplists:proplist()) ->
     {ok, list_connectors_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_connectors_errors(), tuple()}.
 list_connectors(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/connectors"],
@@ -1558,10 +1658,7 @@ list_connectors(Client, QueryMap, HeadersMap, Options0)
 -spec list_directory_registrations(map()) ->
     {ok, list_directory_registrations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_directory_registrations_errors(), tuple()}.
 list_directory_registrations(Client)
   when is_map(Client) ->
     list_directory_registrations(Client, #{}, #{}).
@@ -1569,10 +1666,7 @@ list_directory_registrations(Client)
 -spec list_directory_registrations(map(), map(), map()) ->
     {ok, list_directory_registrations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_directory_registrations_errors(), tuple()}.
 list_directory_registrations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_directory_registrations(Client, QueryMap, HeadersMap, []).
@@ -1580,10 +1674,7 @@ list_directory_registrations(Client, QueryMap, HeadersMap)
 -spec list_directory_registrations(map(), map(), map(), proplists:proplist()) ->
     {ok, list_directory_registrations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_directory_registrations_errors(), tuple()}.
 list_directory_registrations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/directoryRegistrations"],
@@ -1611,11 +1702,7 @@ list_directory_registrations(Client, QueryMap, HeadersMap, Options0)
 -spec list_service_principal_names(map(), binary() | list()) ->
     {ok, list_service_principal_names_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_service_principal_names_errors(), tuple()}.
 list_service_principal_names(Client, DirectoryRegistrationArn)
   when is_map(Client) ->
     list_service_principal_names(Client, DirectoryRegistrationArn, #{}, #{}).
@@ -1623,11 +1710,7 @@ list_service_principal_names(Client, DirectoryRegistrationArn)
 -spec list_service_principal_names(map(), binary() | list(), map(), map()) ->
     {ok, list_service_principal_names_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_service_principal_names_errors(), tuple()}.
 list_service_principal_names(Client, DirectoryRegistrationArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_service_principal_names(Client, DirectoryRegistrationArn, QueryMap, HeadersMap, []).
@@ -1635,11 +1718,7 @@ list_service_principal_names(Client, DirectoryRegistrationArn, QueryMap, Headers
 -spec list_service_principal_names(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_service_principal_names_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_service_principal_names_errors(), tuple()}.
 list_service_principal_names(Client, DirectoryRegistrationArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/directoryRegistrations/", aws_util:encode_uri(DirectoryRegistrationArn), "/servicePrincipalNames"],
@@ -1665,11 +1744,7 @@ list_service_principal_names(Client, DirectoryRegistrationArn, QueryMap, Headers
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1677,11 +1752,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1689,11 +1760,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1714,11 +1781,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec list_template_group_access_control_entries(map(), binary() | list()) ->
     {ok, list_template_group_access_control_entries_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_template_group_access_control_entries_errors(), tuple()}.
 list_template_group_access_control_entries(Client, TemplateArn)
   when is_map(Client) ->
     list_template_group_access_control_entries(Client, TemplateArn, #{}, #{}).
@@ -1726,11 +1789,7 @@ list_template_group_access_control_entries(Client, TemplateArn)
 -spec list_template_group_access_control_entries(map(), binary() | list(), map(), map()) ->
     {ok, list_template_group_access_control_entries_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_template_group_access_control_entries_errors(), tuple()}.
 list_template_group_access_control_entries(Client, TemplateArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_template_group_access_control_entries(Client, TemplateArn, QueryMap, HeadersMap, []).
@@ -1738,11 +1797,7 @@ list_template_group_access_control_entries(Client, TemplateArn, QueryMap, Header
 -spec list_template_group_access_control_entries(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_template_group_access_control_entries_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_template_group_access_control_entries_errors(), tuple()}.
 list_template_group_access_control_entries(Client, TemplateArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/templates/", aws_util:encode_uri(TemplateArn), "/accessControlEntries"],
@@ -1768,11 +1823,7 @@ list_template_group_access_control_entries(Client, TemplateArn, QueryMap, Header
 -spec list_templates(map(), binary() | list()) ->
     {ok, list_templates_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_templates_errors(), tuple()}.
 list_templates(Client, ConnectorArn)
   when is_map(Client) ->
     list_templates(Client, ConnectorArn, #{}, #{}).
@@ -1780,11 +1831,7 @@ list_templates(Client, ConnectorArn)
 -spec list_templates(map(), binary() | list(), map(), map()) ->
     {ok, list_templates_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_templates_errors(), tuple()}.
 list_templates(Client, ConnectorArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_templates(Client, ConnectorArn, QueryMap, HeadersMap, []).
@@ -1792,11 +1839,7 @@ list_templates(Client, ConnectorArn, QueryMap, HeadersMap)
 -spec list_templates(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_templates_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_templates_errors(), tuple()}.
 list_templates(Client, ConnectorArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/templates"],
@@ -1823,22 +1866,14 @@ list_templates(Client, ConnectorArn, QueryMap, HeadersMap, Options0)
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1865,22 +1900,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1909,24 +1936,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_template(map(), binary() | list(), update_template_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_template_errors(), tuple()}.
 update_template(Client, TemplateArn, Input) ->
     update_template(Client, TemplateArn, Input, []).
 
 -spec update_template(map(), binary() | list(), update_template_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_template_errors(), tuple()}.
 update_template(Client, TemplateArn, Input0, Options0) ->
     Method = patch,
     Path = ["/templates/", aws_util:encode_uri(TemplateArn), ""],
@@ -1955,24 +1972,14 @@ update_template(Client, TemplateArn, Input0, Options0) ->
 -spec update_template_group_access_control_entry(map(), binary() | list(), binary() | list(), update_template_group_access_control_entry_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_template_group_access_control_entry_errors(), tuple()}.
 update_template_group_access_control_entry(Client, GroupSecurityIdentifier, TemplateArn, Input) ->
     update_template_group_access_control_entry(Client, GroupSecurityIdentifier, TemplateArn, Input, []).
 
 -spec update_template_group_access_control_entry(map(), binary() | list(), binary() | list(), update_template_group_access_control_entry_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_template_group_access_control_entry_errors(), tuple()}.
 update_template_group_access_control_entry(Client, GroupSecurityIdentifier, TemplateArn, Input0, Options0) ->
     Method = patch,
     Path = ["/templates/", aws_util:encode_uri(TemplateArn), "/accessControlEntries/", aws_util:encode_uri(GroupSecurityIdentifier), ""],

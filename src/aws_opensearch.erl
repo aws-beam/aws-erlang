@@ -178,12 +178,14 @@
 %% }
 -type add_data_source_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% inbound_connection_status() :: #{
 %%   <<"Message">> => string(),
 %%   <<"StatusCode">> => list(any())
 %% }
 -type inbound_connection_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% dry_run_progress_status() :: #{
@@ -195,6 +197,7 @@
 %% }
 -type dry_run_progress_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% window_start_time() :: #{
 %%   <<"Hours">> => float(),
@@ -202,11 +205,13 @@
 %% }
 -type window_start_time() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_domain_names_request() :: #{
 %%   <<"EngineType">> => list(any())
 %% }
 -type list_domain_names_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% outbound_connection() :: #{
@@ -220,6 +225,7 @@
 %% }
 -type outbound_connection() :: #{binary() => any()}.
 
+
 %% Example:
 %% modifying_properties() :: #{
 %%   <<"ActiveValue">> => string(),
@@ -229,6 +235,7 @@
 %% }
 -type modifying_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% auto_tune_options_output() :: #{
 %%   <<"ErrorMessage">> => string(),
@@ -237,11 +244,13 @@
 %% }
 -type auto_tune_options_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_domain_response() :: #{
 %%   <<"DomainStatus">> => domain_status()
 %% }
 -type delete_domain_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_domain_auto_tunes_response() :: #{
@@ -250,12 +259,14 @@
 %% }
 -type describe_domain_auto_tunes_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_vpc_endpoints_for_domain_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"VpcEndpointSummaryList">> => list(vpc_endpoint_summary()())
 %% }
 -type list_vpc_endpoints_for_domain_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_domain_auto_tunes_request() :: #{
@@ -264,12 +275,14 @@
 %% }
 -type describe_domain_auto_tunes_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% package_source() :: #{
 %%   <<"S3BucketName">> => string(),
 %%   <<"S3Key">> => string()
 %% }
 -type package_source() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_outbound_connections_request() :: #{
@@ -279,6 +292,7 @@
 %% }
 -type describe_outbound_connections_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% compatible_versions_map() :: #{
 %%   <<"SourceVersion">> => string(),
@@ -286,17 +300,20 @@
 %% }
 -type compatible_versions_map() :: #{binary() => any()}.
 
+
 %% Example:
 %% snapshot_options() :: #{
 %%   <<"AutomatedSnapshotStartHour">> => integer()
 %% }
 -type snapshot_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% auto_tune_details() :: #{
 %%   <<"ScheduledAutoTuneDetails">> => scheduled_auto_tune_details()
 %% }
 -type auto_tune_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_outbound_connections_response() :: #{
@@ -305,11 +322,13 @@
 %% }
 -type describe_outbound_connections_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% authorize_vpc_endpoint_access_response() :: #{
 %%   <<"AuthorizedPrincipal">> => authorized_principal()
 %% }
 -type authorize_vpc_endpoint_access_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% package_details() :: #{
@@ -327,11 +346,13 @@
 %% }
 -type package_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_domain_change_progress_request() :: #{
 %%   <<"ChangeId">> => string()
 %% }
 -type describe_domain_change_progress_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% cluster_config_status() :: #{
@@ -339,6 +360,7 @@
 %%   <<"Status">> => option_status()
 %% }
 -type cluster_config_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_outbound_connection_request() :: #{
@@ -350,6 +372,7 @@
 %% }
 -type create_outbound_connection_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_package_request() :: #{
 %%   <<"PackageDescription">> => string(),
@@ -358,6 +381,7 @@
 %%   <<"PackageType">> := list(any())
 %% }
 -type create_package_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% auto_tune_status() :: #{
@@ -370,11 +394,13 @@
 %% }
 -type auto_tune_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_vpc_endpoints_request() :: #{
 %%   <<"NextToken">> => string()
 %% }
 -type list_vpc_endpoints_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% cold_storage_options() :: #{
@@ -382,11 +408,13 @@
 %% }
 -type cold_storage_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_vpc_endpoints_request() :: #{
 %%   <<"VpcEndpointIds">> := list(string()())
 %% }
 -type describe_vpc_endpoints_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% auto_tune_options_status() :: #{
@@ -395,12 +423,14 @@
 %% }
 -type auto_tune_options_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% snapshot_options_status() :: #{
 %%   <<"Options">> => snapshot_options(),
 %%   <<"Status">> => option_status()
 %% }
 -type snapshot_options_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% vpc_endpoint_summary() :: #{
@@ -411,12 +441,14 @@
 %% }
 -type vpc_endpoint_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% recurring_charge() :: #{
 %%   <<"RecurringChargeAmount">> => float(),
 %%   <<"RecurringChargeFrequency">> => string()
 %% }
 -type recurring_charge() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_reserved_instance_offerings_response() :: #{
@@ -425,12 +457,14 @@
 %% }
 -type describe_reserved_instance_offerings_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_vpc_endpoints_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"VpcEndpointSummaryList">> => list(vpc_endpoint_summary()())
 %% }
 -type list_vpc_endpoints_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_dry_run_progress_response() :: #{
@@ -439,6 +473,7 @@
 %%   <<"DryRunResults">> => dry_run_results()
 %% }
 -type describe_dry_run_progress_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% instance_type_details() :: #{
@@ -453,11 +488,13 @@
 %% }
 -type instance_type_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_domains_request() :: #{
 %%   <<"DomainNames">> := list(string()())
 %% }
 -type describe_domains_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% vpc_derived_info() :: #{
@@ -467,9 +504,11 @@
 %%   <<"VPCId">> => string()
 %% }
 -type vpc_derived_info() :: #{binary() => any()}.
+
 %% Example:
 %% reject_inbound_connection_request() :: #{}
 -type reject_inbound_connection_request() :: #{}.
+
 
 %% Example:
 %% saml_idp() :: #{
@@ -477,6 +516,7 @@
 %%   <<"MetadataContent">> => string()
 %% }
 -type saml_idp() :: #{binary() => any()}.
+
 
 %% Example:
 %% domain_config() :: #{
@@ -502,11 +542,13 @@
 %% }
 -type domain_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_domain_maintenance_status_request() :: #{
 %%   <<"MaintenanceId">> := string()
 %% }
 -type get_domain_maintenance_status_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_domain_maintenance_status_response() :: #{
@@ -519,14 +561,17 @@
 %% }
 -type get_domain_maintenance_status_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_response() :: #{
 %%   <<"TagList">> => list(tag()())
 %% }
 -type list_tags_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_inbound_connection_request() :: #{}
 -type delete_inbound_connection_request() :: #{}.
+
 
 %% Example:
 %% outbound_connection_status() :: #{
@@ -535,6 +580,7 @@
 %% }
 -type outbound_connection_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_domain_maintenance_request() :: #{
 %%   <<"Action">> := list(any()),
@@ -542,12 +588,14 @@
 %% }
 -type start_domain_maintenance_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% storage_type_limit() :: #{
 %%   <<"LimitName">> => string(),
 %%   <<"LimitValues">> => list(string()())
 %% }
 -type storage_type_limit() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_outbound_connection_response() :: #{
@@ -561,12 +609,14 @@
 %% }
 -type create_outbound_connection_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% ebs_options_status() :: #{
 %%   <<"Options">> => ebs_options(),
 %%   <<"Status">> => option_status()
 %% }
 -type ebs_options_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% authorized_principal() :: #{
@@ -575,17 +625,20 @@
 %% }
 -type authorized_principal() :: #{binary() => any()}.
 
+
 %% Example:
 %% disabled_operation_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type disabled_operation_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_vpc_endpoint_response() :: #{
 %%   <<"VpcEndpointSummary">> => vpc_endpoint_summary()
 %% }
 -type delete_vpc_endpoint_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% storage_type() :: #{
@@ -595,17 +648,20 @@
 %% }
 -type storage_type() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_package_response() :: #{
 %%   <<"PackageDetails">> => package_details()
 %% }
 -type update_package_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_data_source_response() :: #{
 %%   <<"Message">> => string()
 %% }
 -type update_data_source_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% additional_limit() :: #{
@@ -614,11 +670,13 @@
 %% }
 -type additional_limit() :: #{binary() => any()}.
 
+
 %% Example:
 %% reject_inbound_connection_response() :: #{
 %%   <<"Connection">> => inbound_connection()
 %% }
 -type reject_inbound_connection_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% vpc_derived_info_status() :: #{
@@ -626,15 +684,18 @@
 %%   <<"Status">> => option_status()
 %% }
 -type vpc_derived_info_status() :: #{binary() => any()}.
+
 %% Example:
 %% describe_domain_config_request() :: #{}
 -type describe_domain_config_request() :: #{}.
+
 
 %% Example:
 %% update_scheduled_action_response() :: #{
 %%   <<"ScheduledAction">> => scheduled_action()
 %% }
 -type update_scheduled_action_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% domain_maintenance_details() :: #{
@@ -648,6 +709,7 @@
 %%   <<"UpdatedAt">> => non_neg_integer()
 %% }
 -type domain_maintenance_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_domain_health_response() :: #{
@@ -667,17 +729,20 @@
 %% }
 -type describe_domain_health_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_service_software_update_response() :: #{
 %%   <<"ServiceSoftwareOptions">> => service_software_options()
 %% }
 -type start_service_software_update_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% accept_inbound_connection_response() :: #{
 %%   <<"Connection">> => inbound_connection()
 %% }
 -type accept_inbound_connection_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_inbound_connections_response() :: #{
@@ -686,11 +751,13 @@
 %% }
 -type describe_inbound_connections_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% cancel_domain_config_change_request() :: #{
 %%   <<"DryRun">> => boolean()
 %% }
 -type cancel_domain_config_change_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% saml_options_output() :: #{
@@ -702,6 +769,7 @@
 %% }
 -type saml_options_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% cognito_options_status() :: #{
 %%   <<"Options">> => cognito_options(),
@@ -709,15 +777,18 @@
 %% }
 -type cognito_options_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_scheduled_actions_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_scheduled_actions_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_domain_request() :: #{}
 -type delete_domain_request() :: #{}.
+
 
 %% Example:
 %% auto_tune_maintenance_schedule() :: #{
@@ -727,6 +798,7 @@
 %% }
 -type auto_tune_maintenance_schedule() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_packages_for_domain_response() :: #{
 %%   <<"DomainPackageDetailsList">> => list(domain_package_details()()),
@@ -734,20 +806,24 @@
 %% }
 -type list_packages_for_domain_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_compatible_versions_request() :: #{
 %%   <<"DomainName">> => string()
 %% }
 -type get_compatible_versions_request() :: #{binary() => any()}.
+
 %% Example:
 %% list_data_sources_request() :: #{}
 -type list_data_sources_request() :: #{}.
+
 
 %% Example:
 %% delete_data_source_response() :: #{
 %%   <<"Message">> => string()
 %% }
 -type delete_data_source_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% change_progress_status_details() :: #{
@@ -764,6 +840,7 @@
 %% }
 -type change_progress_status_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_scheduled_action_request() :: #{
 %%   <<"ActionID">> := string(),
@@ -773,12 +850,14 @@
 %% }
 -type update_scheduled_action_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% add_tags_request() :: #{
 %%   <<"ARN">> := string(),
 %%   <<"TagList">> := list(tag()())
 %% }
 -type add_tags_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% validation_failure() :: #{
@@ -787,6 +866,7 @@
 %% }
 -type validation_failure() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_reserved_instances_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -794,6 +874,7 @@
 %%   <<"ReservedInstanceId">> => string()
 %% }
 -type describe_reserved_instances_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% upgrade_history() :: #{
@@ -804,11 +885,13 @@
 %% }
 -type upgrade_history() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_package_response() :: #{
@@ -816,11 +899,13 @@
 %% }
 -type delete_package_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_domain_request() :: #{
@@ -846,12 +931,14 @@
 %% }
 -type create_domain_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_packages_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"PackageDetailsList">> => list(package_details()())
 %% }
 -type describe_packages_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% tag() :: #{
@@ -860,12 +947,14 @@
 %% }
 -type tag() :: #{binary() => any()}.
 
+
 %% Example:
 %% dry_run_results() :: #{
 %%   <<"DeploymentType">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type dry_run_results() :: #{binary() => any()}.
+
 
 %% Example:
 %% availability_zone_info() :: #{
@@ -878,6 +967,7 @@
 %% }
 -type availability_zone_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% advanced_security_options() :: #{
 %%   <<"AnonymousAuthDisableDate">> => non_neg_integer(),
@@ -887,6 +977,7 @@
 %%   <<"SAMLOptions">> => saml_options_output()
 %% }
 -type advanced_security_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% option_status() :: #{
@@ -898,15 +989,18 @@
 %% }
 -type option_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% off_peak_window_options_status() :: #{
 %%   <<"Options">> => off_peak_window_options(),
 %%   <<"Status">> => option_status()
 %% }
 -type off_peak_window_options_status() :: #{binary() => any()}.
+
 %% Example:
 %% get_data_source_request() :: #{}
 -type get_data_source_request() :: #{}.
+
 
 %% Example:
 %% cancel_domain_config_change_response() :: #{
@@ -916,6 +1010,7 @@
 %% }
 -type cancel_domain_config_change_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% node_to_node_encryption_options_status() :: #{
 %%   <<"Options">> => node_to_node_encryption_options(),
@@ -923,12 +1018,14 @@
 %% }
 -type node_to_node_encryption_options_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_upgrade_history_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"UpgradeHistories">> => list(upgrade_history()())
 %% }
 -type get_upgrade_history_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_domain_config_response() :: #{
@@ -938,6 +1035,7 @@
 %% }
 -type update_domain_config_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% add_data_source_request() :: #{
 %%   <<"DataSourceType">> := list(),
@@ -945,6 +1043,7 @@
 %%   <<"Name">> := string()
 %% }
 -type add_data_source_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_domain_config_request() :: #{
@@ -969,6 +1068,7 @@
 %% }
 -type update_domain_config_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% scheduled_action() :: #{
 %%   <<"Cancellable">> => boolean(),
@@ -983,12 +1083,14 @@
 %% }
 -type scheduled_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_scheduled_actions_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"ScheduledActions">> => list(scheduled_action()())
 %% }
 -type list_scheduled_actions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% off_peak_window_options() :: #{
@@ -997,6 +1099,7 @@
 %% }
 -type off_peak_window_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% connection_properties() :: #{
 %%   <<"CrossClusterSearch">> => cross_cluster_search_connection_properties(),
@@ -1004,11 +1107,13 @@
 %% }
 -type connection_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% dependency_failure_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type dependency_failure_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_domain_config_response() :: #{
@@ -1016,11 +1121,13 @@
 %% }
 -type describe_domain_config_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_instance_type_limits_response() :: #{
 %%   <<"LimitsByRole">> => map()
 %% }
 -type describe_instance_type_limits_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_vpc_endpoints_response() :: #{
@@ -1029,20 +1136,24 @@
 %% }
 -type describe_vpc_endpoints_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_inbound_connection_response() :: #{
 %%   <<"Connection">> => inbound_connection()
 %% }
 -type delete_inbound_connection_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_data_sources_response() :: #{
 %%   <<"DataSources">> => list(data_source_details()())
 %% }
 -type list_data_sources_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_data_source_request() :: #{}
 -type delete_data_source_request() :: #{}.
+
 
 %% Example:
 %% describe_packages_filter() :: #{
@@ -1051,17 +1162,21 @@
 %% }
 -type describe_packages_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_vpc_endpoint_response() :: #{
 %%   <<"VpcEndpoint">> => vpc_endpoint()
 %% }
 -type update_vpc_endpoint_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_domain_nodes_request() :: #{}
 -type describe_domain_nodes_request() :: #{}.
+
 %% Example:
 %% delete_outbound_connection_request() :: #{}
 -type delete_outbound_connection_request() :: #{}.
+
 
 %% Example:
 %% error_details() :: #{
@@ -1070,11 +1185,13 @@
 %% }
 -type error_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_instance_type_limits_request() :: #{
 %%   <<"DomainName">> => string()
 %% }
 -type describe_instance_type_limits_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% encryption_at_rest_options() :: #{
@@ -1082,6 +1199,7 @@
 %%   <<"KmsKeyId">> => string()
 %% }
 -type encryption_at_rest_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_package_version_history_response() :: #{
@@ -1091,11 +1209,13 @@
 %% }
 -type get_package_version_history_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_domain_response() :: #{
 %%   <<"DomainStatus">> => domain_status()
 %% }
 -type describe_domain_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% version_status() :: #{
@@ -1104,11 +1224,13 @@
 %% }
 -type version_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_vpc_endpoints_for_domain_request() :: #{
 %%   <<"NextToken">> => string()
 %% }
 -type list_vpc_endpoints_for_domain_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% saml_options_input() :: #{
@@ -1122,15 +1244,18 @@
 %% }
 -type saml_options_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_reserved_instances_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"ReservedInstances">> => list(reserved_instance()())
 %% }
 -type describe_reserved_instances_response() :: #{binary() => any()}.
+
 %% Example:
 %% accept_inbound_connection_request() :: #{}
 -type accept_inbound_connection_request() :: #{}.
+
 
 %% Example:
 %% vpc_endpoint() :: #{
@@ -1143,12 +1268,14 @@
 %% }
 -type vpc_endpoint() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_package_version_history_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type get_package_version_history_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% scheduled_auto_tune_details() :: #{
@@ -1159,6 +1286,7 @@
 %% }
 -type scheduled_auto_tune_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_versions_response() :: #{
 %%   <<"NextToken">> => string(),
@@ -1166,12 +1294,14 @@
 %% }
 -type list_versions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% ip_address_type_status() :: #{
 %%   <<"Options">> => list(any()),
 %%   <<"Status">> => option_status()
 %% }
 -type ip_address_type_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% ebs_options() :: #{
@@ -1183,6 +1313,7 @@
 %% }
 -type ebs_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_package_request() :: #{
 %%   <<"CommitMessage">> => string(),
@@ -1192,14 +1323,17 @@
 %% }
 -type update_package_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_domain_names_response() :: #{
 %%   <<"DomainNames">> => list(domain_info()())
 %% }
 -type list_domain_names_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_domain_health_request() :: #{}
 -type describe_domain_health_request() :: #{}.
+
 
 %% Example:
 %% plugin_properties() :: #{
@@ -1210,9 +1344,11 @@
 %%   <<"Version">> => string()
 %% }
 -type plugin_properties() :: #{binary() => any()}.
+
 %% Example:
 %% associate_package_request() :: #{}
 -type associate_package_request() :: #{}.
+
 
 %% Example:
 %% filter() :: #{
@@ -1220,6 +1356,7 @@
 %%   <<"Values">> => list(string()())
 %% }
 -type filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% inbound_connection() :: #{
@@ -1231,14 +1368,17 @@
 %% }
 -type inbound_connection() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_glue_data_catalog() :: #{
 %%   <<"RoleArn">> => string()
 %% }
 -type s3_glue_data_catalog() :: #{binary() => any()}.
+
 %% Example:
 %% dissociate_package_request() :: #{}
 -type dissociate_package_request() :: #{}.
+
 
 %% Example:
 %% advanced_security_options_input() :: #{
@@ -1250,6 +1390,7 @@
 %% }
 -type advanced_security_options_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_source_details() :: #{
 %%   <<"DataSourceType">> => list(),
@@ -1257,6 +1398,7 @@
 %%   <<"Name">> => string()
 %% }
 -type data_source_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% domain_status() :: #{
@@ -1294,12 +1436,14 @@
 %% }
 -type domain_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% domain_info() :: #{
 %%   <<"DomainName">> => string(),
 %%   <<"EngineType">> => list(any())
 %% }
 -type domain_info() :: #{binary() => any()}.
+
 
 %% Example:
 %% cognito_options() :: #{
@@ -1310,11 +1454,13 @@
 %% }
 -type cognito_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_vpc_endpoint_access_request() :: #{
 %%   <<"NextToken">> => string()
 %% }
 -type list_vpc_endpoint_access_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_vpc_endpoint_request() :: #{
@@ -1324,6 +1470,7 @@
 %% }
 -type create_vpc_endpoint_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% auto_tune_options_input() :: #{
 %%   <<"DesiredState">> => list(any()),
@@ -1331,6 +1478,7 @@
 %%   <<"UseOffPeakWindow">> => boolean()
 %% }
 -type auto_tune_options_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% cancelled_change_property() :: #{
@@ -1340,11 +1488,13 @@
 %% }
 -type cancelled_change_property() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_domain_change_progress_response() :: #{
 %%   <<"ChangeProgressStatus">> => change_progress_status_details()
 %% }
 -type describe_domain_change_progress_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% instance_limits() :: #{
@@ -1352,11 +1502,13 @@
 %% }
 -type instance_limits() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_type_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_type_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% reserved_instance_offering() :: #{
@@ -1371,6 +1523,7 @@
 %% }
 -type reserved_instance_offering() :: #{binary() => any()}.
 
+
 %% Example:
 %% change_progress_details() :: #{
 %%   <<"ChangeId">> => string(),
@@ -1382,6 +1535,7 @@
 %% }
 -type change_progress_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_reserved_instance_offerings_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -1390,17 +1544,20 @@
 %% }
 -type describe_reserved_instance_offerings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% cancel_service_software_update_request() :: #{
 %%   <<"DomainName">> := string()
 %% }
 -type cancel_service_software_update_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% zone_awareness_config() :: #{
 %%   <<"AvailabilityZoneCount">> => integer()
 %% }
 -type zone_awareness_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_upgrade_history_request() :: #{
@@ -1409,6 +1566,7 @@
 %% }
 -type get_upgrade_history_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_domain_information() :: #{
 %%   <<"DomainName">> => string(),
@@ -1416,6 +1574,7 @@
 %%   <<"Region">> => string()
 %% }
 -type aws_domain_information() :: #{binary() => any()}.
+
 
 %% Example:
 %% change_progress_stage() :: #{
@@ -1426,11 +1585,13 @@
 %% }
 -type change_progress_stage() :: #{binary() => any()}.
 
+
 %% Example:
 %% dissociate_package_response() :: #{
 %%   <<"DomainPackageDetails">> => domain_package_details()
 %% }
 -type dissociate_package_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_domain_maintenances_request() :: #{
@@ -1440,9 +1601,11 @@
 %%   <<"Status">> => list(any())
 %% }
 -type list_domain_maintenances_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_package_request() :: #{}
 -type delete_package_request() :: #{}.
+
 
 %% Example:
 %% internal_exception() :: #{
@@ -1450,14 +1613,17 @@
 %% }
 -type internal_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 %% Example:
 %% describe_domain_request() :: #{}
 -type describe_domain_request() :: #{}.
+
 
 %% Example:
 %% domain_nodes_status() :: #{
@@ -1472,12 +1638,14 @@
 %% }
 -type domain_nodes_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_packages_for_domain_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_packages_for_domain_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% advanced_security_options_status() :: #{
@@ -1486,12 +1654,14 @@
 %% }
 -type advanced_security_options_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% duration() :: #{
 %%   <<"Unit">> => list(any()),
 %%   <<"Value">> => float()
 %% }
 -type duration() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_domains_for_package_request() :: #{
@@ -1500,12 +1670,14 @@
 %% }
 -type list_domains_for_package_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% purchase_reserved_instance_offering_response() :: #{
 %%   <<"ReservationName">> => string(),
 %%   <<"ReservedInstanceId">> => string()
 %% }
 -type purchase_reserved_instance_offering_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% slot_not_available_exception() :: #{
@@ -1514,11 +1686,13 @@
 %% }
 -type slot_not_available_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% authorize_vpc_endpoint_access_request() :: #{
 %%   <<"Account">> := string()
 %% }
 -type authorize_vpc_endpoint_access_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_software_options() :: #{
@@ -1533,12 +1707,14 @@
 %% }
 -type service_software_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% log_publishing_options_status() :: #{
 %%   <<"Options">> => map(),
 %%   <<"Status">> => option_status()
 %% }
 -type log_publishing_options_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% upgrade_domain_request() :: #{
@@ -1549,11 +1725,13 @@
 %% }
 -type upgrade_domain_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_service_software_update_request() :: #{
@@ -1562,6 +1740,7 @@
 %%   <<"ScheduleAt">> => list(any())
 %% }
 -type start_service_software_update_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_instance_type_details_request() :: #{
@@ -1573,6 +1752,7 @@
 %% }
 -type list_instance_type_details_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% auto_tune_options() :: #{
 %%   <<"DesiredState">> => list(any()),
@@ -1582,11 +1762,13 @@
 %% }
 -type auto_tune_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% software_update_options() :: #{
 %%   <<"AutoSoftwareUpdateEnabled">> => boolean()
 %% }
 -type software_update_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_data_source_request() :: #{
@@ -1594,9 +1776,11 @@
 %%   <<"Description">> => string()
 %% }
 -type update_data_source_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_upgrade_status_request() :: #{}
 -type get_upgrade_status_request() :: #{}.
+
 
 %% Example:
 %% upgrade_domain_response() :: #{
@@ -1608,9 +1792,11 @@
 %%   <<"UpgradeId">> => string()
 %% }
 -type upgrade_domain_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_vpc_endpoint_request() :: #{}
 -type delete_vpc_endpoint_request() :: #{}.
+
 
 %% Example:
 %% create_domain_response() :: #{
@@ -1618,17 +1804,20 @@
 %% }
 -type create_domain_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% base_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type base_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% node_to_node_encryption_options() :: #{
 %%   <<"Enabled">> => boolean()
 %% }
 -type node_to_node_encryption_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_versions_request() :: #{
@@ -1637,11 +1826,13 @@
 %% }
 -type list_versions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_package_response() :: #{
 %%   <<"PackageDetails">> => package_details()
 %% }
 -type create_package_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% limits() :: #{
@@ -1651,6 +1842,7 @@
 %% }
 -type limits() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_dry_run_progress_request() :: #{
 %%   <<"DryRunId">> => string(),
@@ -1658,11 +1850,13 @@
 %% }
 -type describe_dry_run_progress_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_domain_maintenance_response() :: #{
 %%   <<"MaintenanceId">> => string()
 %% }
 -type start_domain_maintenance_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% revoke_vpc_endpoint_access_request() :: #{
@@ -1670,11 +1864,13 @@
 %% }
 -type revoke_vpc_endpoint_access_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% environment_info() :: #{
 %%   <<"AvailabilityZoneInformation">> => list(availability_zone_info()())
 %% }
 -type environment_info() :: #{binary() => any()}.
+
 
 %% Example:
 %% vpc_options() :: #{
@@ -1683,11 +1879,13 @@
 %% }
 -type vpc_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_domains_response() :: #{
 %%   <<"DomainStatusList">> => list(domain_status()())
 %% }
 -type describe_domains_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% limit_exceeded_exception() :: #{
@@ -1695,11 +1893,13 @@
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_outbound_connection_response() :: #{
 %%   <<"Connection">> => outbound_connection()
 %% }
 -type delete_outbound_connection_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% cluster_config() :: #{
@@ -1718,11 +1918,13 @@
 %% }
 -type cluster_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_vpc_endpoint_response() :: #{
 %%   <<"VpcEndpoint">> => vpc_endpoint()
 %% }
 -type create_vpc_endpoint_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% domain_endpoint_options_status() :: #{
@@ -1731,6 +1933,7 @@
 %% }
 -type domain_endpoint_options_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_inbound_connections_request() :: #{
 %%   <<"Filters">> => list(filter()()),
@@ -1738,6 +1941,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_inbound_connections_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% domain_package_details() :: #{
@@ -1753,6 +1957,7 @@
 %% }
 -type domain_package_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% advanced_options_status() :: #{
 %%   <<"Options">> => map(),
@@ -1760,12 +1965,14 @@
 %% }
 -type advanced_options_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_policies_status() :: #{
 %%   <<"Options">> => string(),
 %%   <<"Status">> => option_status()
 %% }
 -type access_policies_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% reserved_instance() :: #{
@@ -1786,6 +1993,7 @@
 %% }
 -type reserved_instance() :: #{binary() => any()}.
 
+
 %% Example:
 %% package_version_history() :: #{
 %%   <<"CommitMessage">> => string(),
@@ -1795,11 +2003,13 @@
 %% }
 -type package_version_history() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_already_exists_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_already_exists_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_vpc_endpoint_request() :: #{
@@ -1808,12 +2018,14 @@
 %% }
 -type update_vpc_endpoint_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% remove_tags_request() :: #{
 %%   <<"ARN">> := string(),
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type remove_tags_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_domain_maintenances_response() :: #{
@@ -1822,11 +2034,13 @@
 %% }
 -type list_domain_maintenances_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_request() :: #{
 %%   <<"ARN">> := string()
 %% }
 -type list_tags_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% cancel_service_software_update_response() :: #{
@@ -1834,12 +2048,14 @@
 %% }
 -type cancel_service_software_update_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% auto_tune() :: #{
 %%   <<"AutoTuneDetails">> => auto_tune_details(),
 %%   <<"AutoTuneType">> => list(any())
 %% }
 -type auto_tune() :: #{binary() => any()}.
+
 
 %% Example:
 %% purchase_reserved_instance_offering_request() :: #{
@@ -1849,6 +2065,7 @@
 %% }
 -type purchase_reserved_instance_offering_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_packages_request() :: #{
 %%   <<"Filters">> => list(describe_packages_filter()()),
@@ -1857,11 +2074,13 @@
 %% }
 -type describe_packages_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% cross_cluster_search_connection_properties() :: #{
 %%   <<"SkipUnavailable">> => list(any())
 %% }
 -type cross_cluster_search_connection_properties() :: #{binary() => any()}.
+
 
 %% Example:
 %% upgrade_step_item() :: #{
@@ -1872,6 +2091,7 @@
 %% }
 -type upgrade_step_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% log_publishing_option() :: #{
 %%   <<"CloudWatchLogsLogGroupArn">> => string(),
@@ -1879,12 +2099,14 @@
 %% }
 -type log_publishing_option() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_vpc_endpoint_access_response() :: #{
 %%   <<"AuthorizedPrincipalList">> => list(authorized_principal()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_vpc_endpoint_access_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_data_source_response() :: #{
@@ -1894,12 +2116,14 @@
 %% }
 -type get_data_source_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_instance_type_details_response() :: #{
 %%   <<"InstanceTypeDetails">> => list(instance_type_details()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_instance_type_details_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% vpc_endpoint_error() :: #{
@@ -1909,6 +2133,7 @@
 %% }
 -type vpc_endpoint_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_upgrade_status_response() :: #{
 %%   <<"StepStatus">> => list(any()),
@@ -1916,6 +2141,7 @@
 %%   <<"UpgradeStep">> => list(any())
 %% }
 -type get_upgrade_status_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% domain_endpoint_options() :: #{
@@ -1927,11 +2153,13 @@
 %% }
 -type domain_endpoint_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_package_response() :: #{
 %%   <<"DomainPackageDetails">> => domain_package_details()
 %% }
 -type associate_package_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% encryption_at_rest_options_status() :: #{
@@ -1940,11 +2168,13 @@
 %% }
 -type encryption_at_rest_options_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% domain_information_container() :: #{
 %%   <<"AWSDomainInformation">> => aws_domain_information()
 %% }
 -type domain_information_container() :: #{binary() => any()}.
+
 
 %% Example:
 %% instance_count_limits() :: #{
@@ -1953,14 +2183,17 @@
 %% }
 -type instance_count_limits() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_domain_nodes_response() :: #{
 %%   <<"DomainNodesStatusList">> => list(domain_nodes_status()())
 %% }
 -type describe_domain_nodes_response() :: #{binary() => any()}.
+
 %% Example:
 %% revoke_vpc_endpoint_access_response() :: #{}
 -type revoke_vpc_endpoint_access_response() :: #{}.
+
 
 %% Example:
 %% software_update_options_status() :: #{
@@ -1969,11 +2202,13 @@
 %% }
 -type software_update_options_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% off_peak_window() :: #{
 %%   <<"WindowStartTime">> => window_start_time()
 %% }
 -type off_peak_window() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_domains_for_package_response() :: #{
@@ -1982,17 +2217,20 @@
 %% }
 -type list_domains_for_package_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_pagination_token_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_pagination_token_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_compatible_versions_response() :: #{
 %%   <<"CompatibleVersions">> => list(compatible_versions_map()())
 %% }
 -type get_compatible_versions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% master_user_options() :: #{
@@ -2001,6 +2239,427 @@
 %%   <<"MasterUserPassword">> => string()
 %% }
 -type master_user_options() :: #{binary() => any()}.
+
+-type accept_inbound_connection_errors() ::
+    limit_exceeded_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type add_data_source_errors() ::
+    limit_exceeded_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    dependency_failure_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type add_tags_errors() ::
+    limit_exceeded_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    internal_exception().
+
+-type associate_package_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type authorize_vpc_endpoint_access_errors() ::
+    limit_exceeded_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type cancel_domain_config_change_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type cancel_service_software_update_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type create_domain_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    invalid_type_exception() | 
+    disabled_operation_exception().
+
+-type create_outbound_connection_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    disabled_operation_exception().
+
+-type create_package_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_type_exception().
+
+-type create_vpc_endpoint_errors() ::
+    limit_exceeded_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    conflict_exception() | 
+    disabled_operation_exception().
+
+-type delete_data_source_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    dependency_failure_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type delete_domain_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type delete_inbound_connection_errors() ::
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type delete_outbound_connection_errors() ::
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type delete_package_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_vpc_endpoint_errors() ::
+    base_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type describe_domain_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type describe_domain_auto_tunes_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type describe_domain_change_progress_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type describe_domain_config_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type describe_domain_health_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type describe_domain_nodes_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    dependency_failure_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type describe_domains_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception().
+
+-type describe_dry_run_progress_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type describe_inbound_connections_errors() ::
+    invalid_pagination_token_exception() | 
+    disabled_operation_exception().
+
+-type describe_instance_type_limits_errors() ::
+    limit_exceeded_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    invalid_type_exception() | 
+    resource_not_found_exception().
+
+-type describe_outbound_connections_errors() ::
+    invalid_pagination_token_exception() | 
+    disabled_operation_exception().
+
+-type describe_packages_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type describe_reserved_instance_offerings_errors() ::
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type describe_reserved_instances_errors() ::
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type describe_vpc_endpoints_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    disabled_operation_exception().
+
+-type dissociate_package_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_compatible_versions_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type get_data_source_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    dependency_failure_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type get_domain_maintenance_status_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type get_package_version_history_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type get_upgrade_history_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type get_upgrade_status_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type list_data_sources_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    dependency_failure_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type list_domain_maintenances_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type list_domain_names_errors() ::
+    base_exception() | 
+    validation_exception().
+
+-type list_domains_for_package_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type list_instance_type_details_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type list_packages_for_domain_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type list_scheduled_actions_errors() ::
+    invalid_pagination_token_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type list_versions_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type list_vpc_endpoint_access_errors() ::
+    base_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type list_vpc_endpoints_errors() ::
+    base_exception() | 
+    internal_exception() | 
+    disabled_operation_exception().
+
+-type list_vpc_endpoints_for_domain_errors() ::
+    base_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type purchase_reserved_instance_offering_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type reject_inbound_connection_errors() ::
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type remove_tags_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception().
+
+-type revoke_vpc_endpoint_access_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type start_domain_maintenance_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type start_service_software_update_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type update_data_source_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    dependency_failure_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type update_domain_config_errors() ::
+    limit_exceeded_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    invalid_type_exception() | 
+    resource_not_found_exception().
+
+-type update_package_errors() ::
+    limit_exceeded_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type update_scheduled_action_errors() ::
+    limit_exceeded_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    slot_not_available_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_vpc_endpoint_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    disabled_operation_exception().
+
+-type upgrade_domain_errors() ::
+    resource_already_exists_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
 
 %%====================================================================
 %% API
@@ -2016,18 +2675,14 @@
 -spec accept_inbound_connection(map(), binary() | list(), accept_inbound_connection_request()) ->
     {ok, accept_inbound_connection_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, accept_inbound_connection_errors(), tuple()}.
 accept_inbound_connection(Client, ConnectionId, Input) ->
     accept_inbound_connection(Client, ConnectionId, Input, []).
 
 -spec accept_inbound_connection(map(), binary() | list(), accept_inbound_connection_request(), proplists:proplist()) ->
     {ok, accept_inbound_connection_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, accept_inbound_connection_errors(), tuple()}.
 accept_inbound_connection(Client, ConnectionId, Input0, Options0) ->
     Method = put,
     Path = ["/2021-01-01/opensearch/cc/inboundConnection/", aws_util:encode_uri(ConnectionId), "/accept"],
@@ -2059,26 +2714,14 @@ accept_inbound_connection(Client, ConnectionId, Input0, Options0) ->
 -spec add_data_source(map(), binary() | list(), add_data_source_request()) ->
     {ok, add_data_source_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, dependency_failure_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, add_data_source_errors(), tuple()}.
 add_data_source(Client, DomainName, Input) ->
     add_data_source(Client, DomainName, Input, []).
 
 -spec add_data_source(map(), binary() | list(), add_data_source_request(), proplists:proplist()) ->
     {ok, add_data_source_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, dependency_failure_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, add_data_source_errors(), tuple()}.
 add_data_source(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/dataSource"],
@@ -2111,20 +2754,14 @@ add_data_source(Client, DomainName, Input0, Options0) ->
 -spec add_tags(map(), add_tags_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, add_tags_errors(), tuple()}.
 add_tags(Client, Input) ->
     add_tags(Client, Input, []).
 
 -spec add_tags(map(), add_tags_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, add_tags_errors(), tuple()}.
 add_tags(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/tags"],
@@ -2156,24 +2793,14 @@ add_tags(Client, Input0, Options0) ->
 -spec associate_package(map(), binary() | list(), binary() | list(), associate_package_request()) ->
     {ok, associate_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_package_errors(), tuple()}.
 associate_package(Client, DomainName, PackageID, Input) ->
     associate_package(Client, DomainName, PackageID, Input, []).
 
 -spec associate_package(map(), binary() | list(), binary() | list(), associate_package_request(), proplists:proplist()) ->
     {ok, associate_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_package_errors(), tuple()}.
 associate_package(Client, DomainName, PackageID, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/packages/associate/", aws_util:encode_uri(PackageID), "/", aws_util:encode_uri(DomainName), ""],
@@ -2202,24 +2829,14 @@ associate_package(Client, DomainName, PackageID, Input0, Options0) ->
 -spec authorize_vpc_endpoint_access(map(), binary() | list(), authorize_vpc_endpoint_access_request()) ->
     {ok, authorize_vpc_endpoint_access_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, authorize_vpc_endpoint_access_errors(), tuple()}.
 authorize_vpc_endpoint_access(Client, DomainName, Input) ->
     authorize_vpc_endpoint_access(Client, DomainName, Input, []).
 
 -spec authorize_vpc_endpoint_access(map(), binary() | list(), authorize_vpc_endpoint_access_request(), proplists:proplist()) ->
     {ok, authorize_vpc_endpoint_access_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, authorize_vpc_endpoint_access_errors(), tuple()}.
 authorize_vpc_endpoint_access(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/authorizeVpcEndpointAccess"],
@@ -2247,22 +2864,14 @@ authorize_vpc_endpoint_access(Client, DomainName, Input0, Options0) ->
 -spec cancel_domain_config_change(map(), binary() | list(), cancel_domain_config_change_request()) ->
     {ok, cancel_domain_config_change_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_domain_config_change_errors(), tuple()}.
 cancel_domain_config_change(Client, DomainName, Input) ->
     cancel_domain_config_change(Client, DomainName, Input, []).
 
 -spec cancel_domain_config_change(map(), binary() | list(), cancel_domain_config_change_request(), proplists:proplist()) ->
     {ok, cancel_domain_config_change_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_domain_config_change_errors(), tuple()}.
 cancel_domain_config_change(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/config/cancel"],
@@ -2297,20 +2906,14 @@ cancel_domain_config_change(Client, DomainName, Input0, Options0) ->
 -spec cancel_service_software_update(map(), cancel_service_software_update_request()) ->
     {ok, cancel_service_software_update_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_service_software_update_errors(), tuple()}.
 cancel_service_software_update(Client, Input) ->
     cancel_service_software_update(Client, Input, []).
 
 -spec cancel_service_software_update(map(), cancel_service_software_update_request(), proplists:proplist()) ->
     {ok, cancel_service_software_update_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_service_software_update_errors(), tuple()}.
 cancel_service_software_update(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/serviceSoftwareUpdate/cancel"],
@@ -2341,26 +2944,14 @@ cancel_service_software_update(Client, Input0, Options0) ->
 -spec create_domain(map(), create_domain_request()) ->
     {ok, create_domain_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_domain_errors(), tuple()}.
 create_domain(Client, Input) ->
     create_domain(Client, Input, []).
 
 -spec create_domain(map(), create_domain_request(), proplists:proplist()) ->
     {ok, create_domain_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_domain_errors(), tuple()}.
 create_domain(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/domain"],
@@ -2393,20 +2984,14 @@ create_domain(Client, Input0, Options0) ->
 -spec create_outbound_connection(map(), create_outbound_connection_request()) ->
     {ok, create_outbound_connection_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()}.
+    {error, create_outbound_connection_errors(), tuple()}.
 create_outbound_connection(Client, Input) ->
     create_outbound_connection(Client, Input, []).
 
 -spec create_outbound_connection(map(), create_outbound_connection_request(), proplists:proplist()) ->
     {ok, create_outbound_connection_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()}.
+    {error, create_outbound_connection_errors(), tuple()}.
 create_outbound_connection(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/cc/outboundConnection"],
@@ -2437,26 +3022,14 @@ create_outbound_connection(Client, Input0, Options0) ->
 -spec create_package(map(), create_package_request()) ->
     {ok, create_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_package_errors(), tuple()}.
 create_package(Client, Input) ->
     create_package(Client, Input, []).
 
 -spec create_package(map(), create_package_request(), proplists:proplist()) ->
     {ok, create_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_package_errors(), tuple()}.
 create_package(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/packages"],
@@ -2483,24 +3056,14 @@ create_package(Client, Input0, Options0) ->
 -spec create_vpc_endpoint(map(), create_vpc_endpoint_request()) ->
     {ok, create_vpc_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_vpc_endpoint_errors(), tuple()}.
 create_vpc_endpoint(Client, Input) ->
     create_vpc_endpoint(Client, Input, []).
 
 -spec create_vpc_endpoint(map(), create_vpc_endpoint_request(), proplists:proplist()) ->
     {ok, create_vpc_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_vpc_endpoint_errors(), tuple()}.
 create_vpc_endpoint(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/vpcEndpoints"],
@@ -2531,24 +3094,14 @@ create_vpc_endpoint(Client, Input0, Options0) ->
 -spec delete_data_source(map(), binary() | list(), binary() | list(), delete_data_source_request()) ->
     {ok, delete_data_source_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, dependency_failure_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_data_source_errors(), tuple()}.
 delete_data_source(Client, DomainName, Name, Input) ->
     delete_data_source(Client, DomainName, Name, Input, []).
 
 -spec delete_data_source(map(), binary() | list(), binary() | list(), delete_data_source_request(), proplists:proplist()) ->
     {ok, delete_data_source_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, dependency_failure_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_data_source_errors(), tuple()}.
 delete_data_source(Client, DomainName, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/dataSource/", aws_util:encode_uri(Name), ""],
@@ -2578,20 +3131,14 @@ delete_data_source(Client, DomainName, Name, Input0, Options0) ->
 -spec delete_domain(map(), binary() | list(), delete_domain_request()) ->
     {ok, delete_domain_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_domain_errors(), tuple()}.
 delete_domain(Client, DomainName, Input) ->
     delete_domain(Client, DomainName, Input, []).
 
 -spec delete_domain(map(), binary() | list(), delete_domain_request(), proplists:proplist()) ->
     {ok, delete_domain_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_domain_errors(), tuple()}.
 delete_domain(Client, DomainName, Input0, Options0) ->
     Method = delete,
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), ""],
@@ -2624,16 +3171,14 @@ delete_domain(Client, DomainName, Input0, Options0) ->
 -spec delete_inbound_connection(map(), binary() | list(), delete_inbound_connection_request()) ->
     {ok, delete_inbound_connection_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_inbound_connection_errors(), tuple()}.
 delete_inbound_connection(Client, ConnectionId, Input) ->
     delete_inbound_connection(Client, ConnectionId, Input, []).
 
 -spec delete_inbound_connection(map(), binary() | list(), delete_inbound_connection_request(), proplists:proplist()) ->
     {ok, delete_inbound_connection_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_inbound_connection_errors(), tuple()}.
 delete_inbound_connection(Client, ConnectionId, Input0, Options0) ->
     Method = delete,
     Path = ["/2021-01-01/opensearch/cc/inboundConnection/", aws_util:encode_uri(ConnectionId), ""],
@@ -2666,16 +3211,14 @@ delete_inbound_connection(Client, ConnectionId, Input0, Options0) ->
 -spec delete_outbound_connection(map(), binary() | list(), delete_outbound_connection_request()) ->
     {ok, delete_outbound_connection_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_outbound_connection_errors(), tuple()}.
 delete_outbound_connection(Client, ConnectionId, Input) ->
     delete_outbound_connection(Client, ConnectionId, Input, []).
 
 -spec delete_outbound_connection(map(), binary() | list(), delete_outbound_connection_request(), proplists:proplist()) ->
     {ok, delete_outbound_connection_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_outbound_connection_errors(), tuple()}.
 delete_outbound_connection(Client, ConnectionId, Input0, Options0) ->
     Method = delete,
     Path = ["/2021-01-01/opensearch/cc/outboundConnection/", aws_util:encode_uri(ConnectionId), ""],
@@ -2706,24 +3249,14 @@ delete_outbound_connection(Client, ConnectionId, Input0, Options0) ->
 -spec delete_package(map(), binary() | list(), delete_package_request()) ->
     {ok, delete_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_package_errors(), tuple()}.
 delete_package(Client, PackageID, Input) ->
     delete_package(Client, PackageID, Input, []).
 
 -spec delete_package(map(), binary() | list(), delete_package_request(), proplists:proplist()) ->
     {ok, delete_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_package_errors(), tuple()}.
 delete_package(Client, PackageID, Input0, Options0) ->
     Method = delete,
     Path = ["/2021-01-01/packages/", aws_util:encode_uri(PackageID), ""],
@@ -2750,20 +3283,14 @@ delete_package(Client, PackageID, Input0, Options0) ->
 -spec delete_vpc_endpoint(map(), binary() | list(), delete_vpc_endpoint_request()) ->
     {ok, delete_vpc_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_vpc_endpoint_errors(), tuple()}.
 delete_vpc_endpoint(Client, VpcEndpointId, Input) ->
     delete_vpc_endpoint(Client, VpcEndpointId, Input, []).
 
 -spec delete_vpc_endpoint(map(), binary() | list(), delete_vpc_endpoint_request(), proplists:proplist()) ->
     {ok, delete_vpc_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_vpc_endpoint_errors(), tuple()}.
 delete_vpc_endpoint(Client, VpcEndpointId, Input0, Options0) ->
     Method = delete,
     Path = ["/2021-01-01/opensearch/vpcEndpoints/", aws_util:encode_uri(VpcEndpointId), ""],
@@ -2792,10 +3319,7 @@ delete_vpc_endpoint(Client, VpcEndpointId, Input0, Options0) ->
 -spec describe_domain(map(), binary() | list()) ->
     {ok, describe_domain_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_domain_errors(), tuple()}.
 describe_domain(Client, DomainName)
   when is_map(Client) ->
     describe_domain(Client, DomainName, #{}, #{}).
@@ -2803,10 +3327,7 @@ describe_domain(Client, DomainName)
 -spec describe_domain(map(), binary() | list(), map(), map()) ->
     {ok, describe_domain_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_domain_errors(), tuple()}.
 describe_domain(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_domain(Client, DomainName, QueryMap, HeadersMap, []).
@@ -2814,10 +3335,7 @@ describe_domain(Client, DomainName, QueryMap, HeadersMap)
 -spec describe_domain(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_domain_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_domain_errors(), tuple()}.
 describe_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), ""],
@@ -2844,10 +3362,7 @@ describe_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
 -spec describe_domain_auto_tunes(map(), binary() | list()) ->
     {ok, describe_domain_auto_tunes_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_domain_auto_tunes_errors(), tuple()}.
 describe_domain_auto_tunes(Client, DomainName)
   when is_map(Client) ->
     describe_domain_auto_tunes(Client, DomainName, #{}, #{}).
@@ -2855,10 +3370,7 @@ describe_domain_auto_tunes(Client, DomainName)
 -spec describe_domain_auto_tunes(map(), binary() | list(), map(), map()) ->
     {ok, describe_domain_auto_tunes_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_domain_auto_tunes_errors(), tuple()}.
 describe_domain_auto_tunes(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_domain_auto_tunes(Client, DomainName, QueryMap, HeadersMap, []).
@@ -2866,10 +3378,7 @@ describe_domain_auto_tunes(Client, DomainName, QueryMap, HeadersMap)
 -spec describe_domain_auto_tunes(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_domain_auto_tunes_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_domain_auto_tunes_errors(), tuple()}.
 describe_domain_auto_tunes(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/autoTunes"],
@@ -2896,10 +3405,7 @@ describe_domain_auto_tunes(Client, DomainName, QueryMap, HeadersMap, Options0)
 -spec describe_domain_change_progress(map(), binary() | list()) ->
     {ok, describe_domain_change_progress_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_domain_change_progress_errors(), tuple()}.
 describe_domain_change_progress(Client, DomainName)
   when is_map(Client) ->
     describe_domain_change_progress(Client, DomainName, #{}, #{}).
@@ -2907,10 +3413,7 @@ describe_domain_change_progress(Client, DomainName)
 -spec describe_domain_change_progress(map(), binary() | list(), map(), map()) ->
     {ok, describe_domain_change_progress_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_domain_change_progress_errors(), tuple()}.
 describe_domain_change_progress(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_domain_change_progress(Client, DomainName, QueryMap, HeadersMap, []).
@@ -2918,10 +3421,7 @@ describe_domain_change_progress(Client, DomainName, QueryMap, HeadersMap)
 -spec describe_domain_change_progress(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_domain_change_progress_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_domain_change_progress_errors(), tuple()}.
 describe_domain_change_progress(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/progress"],
@@ -2946,10 +3446,7 @@ describe_domain_change_progress(Client, DomainName, QueryMap, HeadersMap, Option
 -spec describe_domain_config(map(), binary() | list()) ->
     {ok, describe_domain_config_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_domain_config_errors(), tuple()}.
 describe_domain_config(Client, DomainName)
   when is_map(Client) ->
     describe_domain_config(Client, DomainName, #{}, #{}).
@@ -2957,10 +3454,7 @@ describe_domain_config(Client, DomainName)
 -spec describe_domain_config(map(), binary() | list(), map(), map()) ->
     {ok, describe_domain_config_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_domain_config_errors(), tuple()}.
 describe_domain_config(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_domain_config(Client, DomainName, QueryMap, HeadersMap, []).
@@ -2968,10 +3462,7 @@ describe_domain_config(Client, DomainName, QueryMap, HeadersMap)
 -spec describe_domain_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_domain_config_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_domain_config_errors(), tuple()}.
 describe_domain_config(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/config"],
@@ -2994,11 +3485,7 @@ describe_domain_config(Client, DomainName, QueryMap, HeadersMap, Options0)
 -spec describe_domain_health(map(), binary() | list()) ->
     {ok, describe_domain_health_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_domain_health_errors(), tuple()}.
 describe_domain_health(Client, DomainName)
   when is_map(Client) ->
     describe_domain_health(Client, DomainName, #{}, #{}).
@@ -3006,11 +3493,7 @@ describe_domain_health(Client, DomainName)
 -spec describe_domain_health(map(), binary() | list(), map(), map()) ->
     {ok, describe_domain_health_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_domain_health_errors(), tuple()}.
 describe_domain_health(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_domain_health(Client, DomainName, QueryMap, HeadersMap, []).
@@ -3018,11 +3501,7 @@ describe_domain_health(Client, DomainName, QueryMap, HeadersMap)
 -spec describe_domain_health(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_domain_health_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_domain_health_errors(), tuple()}.
 describe_domain_health(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/health"],
@@ -3046,12 +3525,7 @@ describe_domain_health(Client, DomainName, QueryMap, HeadersMap, Options0)
 -spec describe_domain_nodes(map(), binary() | list()) ->
     {ok, describe_domain_nodes_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, dependency_failure_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_domain_nodes_errors(), tuple()}.
 describe_domain_nodes(Client, DomainName)
   when is_map(Client) ->
     describe_domain_nodes(Client, DomainName, #{}, #{}).
@@ -3059,12 +3533,7 @@ describe_domain_nodes(Client, DomainName)
 -spec describe_domain_nodes(map(), binary() | list(), map(), map()) ->
     {ok, describe_domain_nodes_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, dependency_failure_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_domain_nodes_errors(), tuple()}.
 describe_domain_nodes(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_domain_nodes(Client, DomainName, QueryMap, HeadersMap, []).
@@ -3072,12 +3541,7 @@ describe_domain_nodes(Client, DomainName, QueryMap, HeadersMap)
 -spec describe_domain_nodes(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_domain_nodes_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, dependency_failure_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_domain_nodes_errors(), tuple()}.
 describe_domain_nodes(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/nodes"],
@@ -3100,18 +3564,14 @@ describe_domain_nodes(Client, DomainName, QueryMap, HeadersMap, Options0)
 -spec describe_domains(map(), describe_domains_request()) ->
     {ok, describe_domains_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_domains_errors(), tuple()}.
 describe_domains(Client, Input) ->
     describe_domains(Client, Input, []).
 
 -spec describe_domains(map(), describe_domains_request(), proplists:proplist()) ->
     {ok, describe_domains_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_domains_errors(), tuple()}.
 describe_domains(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/domain-info"],
@@ -3144,11 +3604,7 @@ describe_domains(Client, Input0, Options0) ->
 -spec describe_dry_run_progress(map(), binary() | list()) ->
     {ok, describe_dry_run_progress_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_dry_run_progress_errors(), tuple()}.
 describe_dry_run_progress(Client, DomainName)
   when is_map(Client) ->
     describe_dry_run_progress(Client, DomainName, #{}, #{}).
@@ -3156,11 +3612,7 @@ describe_dry_run_progress(Client, DomainName)
 -spec describe_dry_run_progress(map(), binary() | list(), map(), map()) ->
     {ok, describe_dry_run_progress_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_dry_run_progress_errors(), tuple()}.
 describe_dry_run_progress(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dry_run_progress(Client, DomainName, QueryMap, HeadersMap, []).
@@ -3168,11 +3620,7 @@ describe_dry_run_progress(Client, DomainName, QueryMap, HeadersMap)
 -spec describe_dry_run_progress(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_dry_run_progress_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_dry_run_progress_errors(), tuple()}.
 describe_dry_run_progress(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/dryRun"],
@@ -3204,16 +3652,14 @@ describe_dry_run_progress(Client, DomainName, QueryMap, HeadersMap, Options0)
 -spec describe_inbound_connections(map(), describe_inbound_connections_request()) ->
     {ok, describe_inbound_connections_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()}.
+    {error, describe_inbound_connections_errors(), tuple()}.
 describe_inbound_connections(Client, Input) ->
     describe_inbound_connections(Client, Input, []).
 
 -spec describe_inbound_connections(map(), describe_inbound_connections_request(), proplists:proplist()) ->
     {ok, describe_inbound_connections_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()}.
+    {error, describe_inbound_connections_errors(), tuple()}.
 describe_inbound_connections(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/cc/inboundConnection/search"],
@@ -3242,12 +3688,7 @@ describe_inbound_connections(Client, Input0, Options0) ->
 -spec describe_instance_type_limits(map(), binary() | list(), binary() | list()) ->
     {ok, describe_instance_type_limits_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_instance_type_limits_errors(), tuple()}.
 describe_instance_type_limits(Client, EngineVersion, InstanceType)
   when is_map(Client) ->
     describe_instance_type_limits(Client, EngineVersion, InstanceType, #{}, #{}).
@@ -3255,12 +3696,7 @@ describe_instance_type_limits(Client, EngineVersion, InstanceType)
 -spec describe_instance_type_limits(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_instance_type_limits_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_instance_type_limits_errors(), tuple()}.
 describe_instance_type_limits(Client, EngineVersion, InstanceType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_instance_type_limits(Client, EngineVersion, InstanceType, QueryMap, HeadersMap, []).
@@ -3268,12 +3704,7 @@ describe_instance_type_limits(Client, EngineVersion, InstanceType, QueryMap, Hea
 -spec describe_instance_type_limits(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_instance_type_limits_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_instance_type_limits_errors(), tuple()}.
 describe_instance_type_limits(Client, EngineVersion, InstanceType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/instanceTypeLimits/", aws_util:encode_uri(EngineVersion), "/", aws_util:encode_uri(InstanceType), ""],
@@ -3304,16 +3735,14 @@ describe_instance_type_limits(Client, EngineVersion, InstanceType, QueryMap, Hea
 -spec describe_outbound_connections(map(), describe_outbound_connections_request()) ->
     {ok, describe_outbound_connections_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()}.
+    {error, describe_outbound_connections_errors(), tuple()}.
 describe_outbound_connections(Client, Input) ->
     describe_outbound_connections(Client, Input, []).
 
 -spec describe_outbound_connections(map(), describe_outbound_connections_request(), proplists:proplist()) ->
     {ok, describe_outbound_connections_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()}.
+    {error, describe_outbound_connections_errors(), tuple()}.
 describe_outbound_connections(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/cc/outboundConnection/search"],
@@ -3344,22 +3773,14 @@ describe_outbound_connections(Client, Input0, Options0) ->
 -spec describe_packages(map(), describe_packages_request()) ->
     {ok, describe_packages_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_packages_errors(), tuple()}.
 describe_packages(Client, Input) ->
     describe_packages(Client, Input, []).
 
 -spec describe_packages(map(), describe_packages_request(), proplists:proplist()) ->
     {ok, describe_packages_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_packages_errors(), tuple()}.
 describe_packages(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/packages/describe"],
@@ -3391,10 +3812,7 @@ describe_packages(Client, Input0, Options0) ->
 -spec describe_reserved_instance_offerings(map()) ->
     {ok, describe_reserved_instance_offerings_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_reserved_instance_offerings_errors(), tuple()}.
 describe_reserved_instance_offerings(Client)
   when is_map(Client) ->
     describe_reserved_instance_offerings(Client, #{}, #{}).
@@ -3402,10 +3820,7 @@ describe_reserved_instance_offerings(Client)
 -spec describe_reserved_instance_offerings(map(), map(), map()) ->
     {ok, describe_reserved_instance_offerings_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_reserved_instance_offerings_errors(), tuple()}.
 describe_reserved_instance_offerings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_reserved_instance_offerings(Client, QueryMap, HeadersMap, []).
@@ -3413,10 +3828,7 @@ describe_reserved_instance_offerings(Client, QueryMap, HeadersMap)
 -spec describe_reserved_instance_offerings(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_reserved_instance_offerings_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_reserved_instance_offerings_errors(), tuple()}.
 describe_reserved_instance_offerings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/reservedInstanceOfferings"],
@@ -3448,10 +3860,7 @@ describe_reserved_instance_offerings(Client, QueryMap, HeadersMap, Options0)
 -spec describe_reserved_instances(map()) ->
     {ok, describe_reserved_instances_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_reserved_instances_errors(), tuple()}.
 describe_reserved_instances(Client)
   when is_map(Client) ->
     describe_reserved_instances(Client, #{}, #{}).
@@ -3459,10 +3868,7 @@ describe_reserved_instances(Client)
 -spec describe_reserved_instances(map(), map(), map()) ->
     {ok, describe_reserved_instances_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_reserved_instances_errors(), tuple()}.
 describe_reserved_instances(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_reserved_instances(Client, QueryMap, HeadersMap, []).
@@ -3470,10 +3876,7 @@ describe_reserved_instances(Client, QueryMap, HeadersMap)
 -spec describe_reserved_instances(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_reserved_instances_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_reserved_instances_errors(), tuple()}.
 describe_reserved_instances(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/reservedInstances"],
@@ -3501,20 +3904,14 @@ describe_reserved_instances(Client, QueryMap, HeadersMap, Options0)
 -spec describe_vpc_endpoints(map(), describe_vpc_endpoints_request()) ->
     {ok, describe_vpc_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_vpc_endpoints_errors(), tuple()}.
 describe_vpc_endpoints(Client, Input) ->
     describe_vpc_endpoints(Client, Input, []).
 
 -spec describe_vpc_endpoints(map(), describe_vpc_endpoints_request(), proplists:proplist()) ->
     {ok, describe_vpc_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_vpc_endpoints_errors(), tuple()}.
 describe_vpc_endpoints(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/vpcEndpoints/describe"],
@@ -3550,24 +3947,14 @@ describe_vpc_endpoints(Client, Input0, Options0) ->
 -spec dissociate_package(map(), binary() | list(), binary() | list(), dissociate_package_request()) ->
     {ok, dissociate_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, dissociate_package_errors(), tuple()}.
 dissociate_package(Client, DomainName, PackageID, Input) ->
     dissociate_package(Client, DomainName, PackageID, Input, []).
 
 -spec dissociate_package(map(), binary() | list(), binary() | list(), dissociate_package_request(), proplists:proplist()) ->
     {ok, dissociate_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, dissociate_package_errors(), tuple()}.
 dissociate_package(Client, DomainName, PackageID, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/packages/dissociate/", aws_util:encode_uri(PackageID), "/", aws_util:encode_uri(DomainName), ""],
@@ -3596,11 +3983,7 @@ dissociate_package(Client, DomainName, PackageID, Input0, Options0) ->
 -spec get_compatible_versions(map()) ->
     {ok, get_compatible_versions_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_compatible_versions_errors(), tuple()}.
 get_compatible_versions(Client)
   when is_map(Client) ->
     get_compatible_versions(Client, #{}, #{}).
@@ -3608,11 +3991,7 @@ get_compatible_versions(Client)
 -spec get_compatible_versions(map(), map(), map()) ->
     {ok, get_compatible_versions_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_compatible_versions_errors(), tuple()}.
 get_compatible_versions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_compatible_versions(Client, QueryMap, HeadersMap, []).
@@ -3620,11 +3999,7 @@ get_compatible_versions(Client, QueryMap, HeadersMap)
 -spec get_compatible_versions(map(), map(), map(), proplists:proplist()) ->
     {ok, get_compatible_versions_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_compatible_versions_errors(), tuple()}.
 get_compatible_versions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/compatibleVersions"],
@@ -3649,12 +4024,7 @@ get_compatible_versions(Client, QueryMap, HeadersMap, Options0)
 -spec get_data_source(map(), binary() | list(), binary() | list()) ->
     {ok, get_data_source_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, dependency_failure_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_data_source_errors(), tuple()}.
 get_data_source(Client, DomainName, Name)
   when is_map(Client) ->
     get_data_source(Client, DomainName, Name, #{}, #{}).
@@ -3662,12 +4032,7 @@ get_data_source(Client, DomainName, Name)
 -spec get_data_source(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_data_source_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, dependency_failure_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_data_source_errors(), tuple()}.
 get_data_source(Client, DomainName, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_source(Client, DomainName, Name, QueryMap, HeadersMap, []).
@@ -3675,12 +4040,7 @@ get_data_source(Client, DomainName, Name, QueryMap, HeadersMap)
 -spec get_data_source(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_data_source_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, dependency_failure_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_data_source_errors(), tuple()}.
 get_data_source(Client, DomainName, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/dataSource/", aws_util:encode_uri(Name), ""],
@@ -3701,11 +4061,7 @@ get_data_source(Client, DomainName, Name, QueryMap, HeadersMap, Options0)
 -spec get_domain_maintenance_status(map(), binary() | list(), binary() | list()) ->
     {ok, get_domain_maintenance_status_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_domain_maintenance_status_errors(), tuple()}.
 get_domain_maintenance_status(Client, DomainName, MaintenanceId)
   when is_map(Client) ->
     get_domain_maintenance_status(Client, DomainName, MaintenanceId, #{}, #{}).
@@ -3713,11 +4069,7 @@ get_domain_maintenance_status(Client, DomainName, MaintenanceId)
 -spec get_domain_maintenance_status(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_domain_maintenance_status_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_domain_maintenance_status_errors(), tuple()}.
 get_domain_maintenance_status(Client, DomainName, MaintenanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_domain_maintenance_status(Client, DomainName, MaintenanceId, QueryMap, HeadersMap, []).
@@ -3725,11 +4077,7 @@ get_domain_maintenance_status(Client, DomainName, MaintenanceId, QueryMap, Heade
 -spec get_domain_maintenance_status(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_domain_maintenance_status_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_domain_maintenance_status_errors(), tuple()}.
 get_domain_maintenance_status(Client, DomainName, MaintenanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/domainMaintenance"],
@@ -3760,11 +4108,7 @@ get_domain_maintenance_status(Client, DomainName, MaintenanceId, QueryMap, Heade
 -spec get_package_version_history(map(), binary() | list()) ->
     {ok, get_package_version_history_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_package_version_history_errors(), tuple()}.
 get_package_version_history(Client, PackageID)
   when is_map(Client) ->
     get_package_version_history(Client, PackageID, #{}, #{}).
@@ -3772,11 +4116,7 @@ get_package_version_history(Client, PackageID)
 -spec get_package_version_history(map(), binary() | list(), map(), map()) ->
     {ok, get_package_version_history_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_package_version_history_errors(), tuple()}.
 get_package_version_history(Client, PackageID, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_package_version_history(Client, PackageID, QueryMap, HeadersMap, []).
@@ -3784,11 +4124,7 @@ get_package_version_history(Client, PackageID, QueryMap, HeadersMap)
 -spec get_package_version_history(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_package_version_history_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_package_version_history_errors(), tuple()}.
 get_package_version_history(Client, PackageID, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/packages/", aws_util:encode_uri(PackageID), "/history"],
@@ -3816,11 +4152,7 @@ get_package_version_history(Client, PackageID, QueryMap, HeadersMap, Options0)
 -spec get_upgrade_history(map(), binary() | list()) ->
     {ok, get_upgrade_history_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_upgrade_history_errors(), tuple()}.
 get_upgrade_history(Client, DomainName)
   when is_map(Client) ->
     get_upgrade_history(Client, DomainName, #{}, #{}).
@@ -3828,11 +4160,7 @@ get_upgrade_history(Client, DomainName)
 -spec get_upgrade_history(map(), binary() | list(), map(), map()) ->
     {ok, get_upgrade_history_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_upgrade_history_errors(), tuple()}.
 get_upgrade_history(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_upgrade_history(Client, DomainName, QueryMap, HeadersMap, []).
@@ -3840,11 +4168,7 @@ get_upgrade_history(Client, DomainName, QueryMap, HeadersMap)
 -spec get_upgrade_history(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_upgrade_history_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_upgrade_history_errors(), tuple()}.
 get_upgrade_history(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/upgradeDomain/", aws_util:encode_uri(DomainName), "/history"],
@@ -3872,11 +4196,7 @@ get_upgrade_history(Client, DomainName, QueryMap, HeadersMap, Options0)
 -spec get_upgrade_status(map(), binary() | list()) ->
     {ok, get_upgrade_status_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_upgrade_status_errors(), tuple()}.
 get_upgrade_status(Client, DomainName)
   when is_map(Client) ->
     get_upgrade_status(Client, DomainName, #{}, #{}).
@@ -3884,11 +4204,7 @@ get_upgrade_status(Client, DomainName)
 -spec get_upgrade_status(map(), binary() | list(), map(), map()) ->
     {ok, get_upgrade_status_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_upgrade_status_errors(), tuple()}.
 get_upgrade_status(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_upgrade_status(Client, DomainName, QueryMap, HeadersMap, []).
@@ -3896,11 +4212,7 @@ get_upgrade_status(Client, DomainName, QueryMap, HeadersMap)
 -spec get_upgrade_status(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_upgrade_status_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_upgrade_status_errors(), tuple()}.
 get_upgrade_status(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/upgradeDomain/", aws_util:encode_uri(DomainName), "/status"],
@@ -3926,12 +4238,7 @@ get_upgrade_status(Client, DomainName, QueryMap, HeadersMap, Options0)
 -spec list_data_sources(map(), binary() | list()) ->
     {ok, list_data_sources_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, dependency_failure_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_data_sources_errors(), tuple()}.
 list_data_sources(Client, DomainName)
   when is_map(Client) ->
     list_data_sources(Client, DomainName, #{}, #{}).
@@ -3939,12 +4246,7 @@ list_data_sources(Client, DomainName)
 -spec list_data_sources(map(), binary() | list(), map(), map()) ->
     {ok, list_data_sources_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, dependency_failure_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_data_sources_errors(), tuple()}.
 list_data_sources(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_sources(Client, DomainName, QueryMap, HeadersMap, []).
@@ -3952,12 +4254,7 @@ list_data_sources(Client, DomainName, QueryMap, HeadersMap)
 -spec list_data_sources(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_data_sources_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, dependency_failure_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_data_sources_errors(), tuple()}.
 list_data_sources(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/dataSource"],
@@ -3978,11 +4275,7 @@ list_data_sources(Client, DomainName, QueryMap, HeadersMap, Options0)
 -spec list_domain_maintenances(map(), binary() | list()) ->
     {ok, list_domain_maintenances_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_domain_maintenances_errors(), tuple()}.
 list_domain_maintenances(Client, DomainName)
   when is_map(Client) ->
     list_domain_maintenances(Client, DomainName, #{}, #{}).
@@ -3990,11 +4283,7 @@ list_domain_maintenances(Client, DomainName)
 -spec list_domain_maintenances(map(), binary() | list(), map(), map()) ->
     {ok, list_domain_maintenances_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_domain_maintenances_errors(), tuple()}.
 list_domain_maintenances(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_domain_maintenances(Client, DomainName, QueryMap, HeadersMap, []).
@@ -4002,11 +4291,7 @@ list_domain_maintenances(Client, DomainName, QueryMap, HeadersMap)
 -spec list_domain_maintenances(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_domain_maintenances_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_domain_maintenances_errors(), tuple()}.
 list_domain_maintenances(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/domainMaintenances"],
@@ -4036,8 +4321,7 @@ list_domain_maintenances(Client, DomainName, QueryMap, HeadersMap, Options0)
 -spec list_domain_names(map()) ->
     {ok, list_domain_names_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_domain_names_errors(), tuple()}.
 list_domain_names(Client)
   when is_map(Client) ->
     list_domain_names(Client, #{}, #{}).
@@ -4045,8 +4329,7 @@ list_domain_names(Client)
 -spec list_domain_names(map(), map(), map()) ->
     {ok, list_domain_names_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_domain_names_errors(), tuple()}.
 list_domain_names(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_domain_names(Client, QueryMap, HeadersMap, []).
@@ -4054,8 +4337,7 @@ list_domain_names(Client, QueryMap, HeadersMap)
 -spec list_domain_names(map(), map(), map(), proplists:proplist()) ->
     {ok, list_domain_names_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_domain_names_errors(), tuple()}.
 list_domain_names(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/domain"],
@@ -4086,11 +4368,7 @@ list_domain_names(Client, QueryMap, HeadersMap, Options0)
 -spec list_domains_for_package(map(), binary() | list()) ->
     {ok, list_domains_for_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_domains_for_package_errors(), tuple()}.
 list_domains_for_package(Client, PackageID)
   when is_map(Client) ->
     list_domains_for_package(Client, PackageID, #{}, #{}).
@@ -4098,11 +4376,7 @@ list_domains_for_package(Client, PackageID)
 -spec list_domains_for_package(map(), binary() | list(), map(), map()) ->
     {ok, list_domains_for_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_domains_for_package_errors(), tuple()}.
 list_domains_for_package(Client, PackageID, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_domains_for_package(Client, PackageID, QueryMap, HeadersMap, []).
@@ -4110,11 +4384,7 @@ list_domains_for_package(Client, PackageID, QueryMap, HeadersMap)
 -spec list_domains_for_package(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_domains_for_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_domains_for_package_errors(), tuple()}.
 list_domains_for_package(Client, PackageID, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/packages/", aws_util:encode_uri(PackageID), "/domains"],
@@ -4142,10 +4412,7 @@ list_domains_for_package(Client, PackageID, QueryMap, HeadersMap, Options0)
 -spec list_instance_type_details(map(), binary() | list()) ->
     {ok, list_instance_type_details_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_instance_type_details_errors(), tuple()}.
 list_instance_type_details(Client, EngineVersion)
   when is_map(Client) ->
     list_instance_type_details(Client, EngineVersion, #{}, #{}).
@@ -4153,10 +4420,7 @@ list_instance_type_details(Client, EngineVersion)
 -spec list_instance_type_details(map(), binary() | list(), map(), map()) ->
     {ok, list_instance_type_details_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_instance_type_details_errors(), tuple()}.
 list_instance_type_details(Client, EngineVersion, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_instance_type_details(Client, EngineVersion, QueryMap, HeadersMap, []).
@@ -4164,10 +4428,7 @@ list_instance_type_details(Client, EngineVersion, QueryMap, HeadersMap)
 -spec list_instance_type_details(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_instance_type_details_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_instance_type_details_errors(), tuple()}.
 list_instance_type_details(Client, EngineVersion, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/instanceTypeDetails/", aws_util:encode_uri(EngineVersion), ""],
@@ -4202,11 +4463,7 @@ list_instance_type_details(Client, EngineVersion, QueryMap, HeadersMap, Options0
 -spec list_packages_for_domain(map(), binary() | list()) ->
     {ok, list_packages_for_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_packages_for_domain_errors(), tuple()}.
 list_packages_for_domain(Client, DomainName)
   when is_map(Client) ->
     list_packages_for_domain(Client, DomainName, #{}, #{}).
@@ -4214,11 +4471,7 @@ list_packages_for_domain(Client, DomainName)
 -spec list_packages_for_domain(map(), binary() | list(), map(), map()) ->
     {ok, list_packages_for_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_packages_for_domain_errors(), tuple()}.
 list_packages_for_domain(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_packages_for_domain(Client, DomainName, QueryMap, HeadersMap, []).
@@ -4226,11 +4479,7 @@ list_packages_for_domain(Client, DomainName, QueryMap, HeadersMap)
 -spec list_packages_for_domain(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_packages_for_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_packages_for_domain_errors(), tuple()}.
 list_packages_for_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/domain/", aws_util:encode_uri(DomainName), "/packages"],
@@ -4265,11 +4514,7 @@ list_packages_for_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
 -spec list_scheduled_actions(map(), binary() | list()) ->
     {ok, list_scheduled_actions_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_scheduled_actions_errors(), tuple()}.
 list_scheduled_actions(Client, DomainName)
   when is_map(Client) ->
     list_scheduled_actions(Client, DomainName, #{}, #{}).
@@ -4277,11 +4522,7 @@ list_scheduled_actions(Client, DomainName)
 -spec list_scheduled_actions(map(), binary() | list(), map(), map()) ->
     {ok, list_scheduled_actions_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_scheduled_actions_errors(), tuple()}.
 list_scheduled_actions(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_scheduled_actions(Client, DomainName, QueryMap, HeadersMap, []).
@@ -4289,11 +4530,7 @@ list_scheduled_actions(Client, DomainName, QueryMap, HeadersMap)
 -spec list_scheduled_actions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_scheduled_actions_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_scheduled_actions_errors(), tuple()}.
 list_scheduled_actions(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/scheduledActions"],
@@ -4323,10 +4560,7 @@ list_scheduled_actions(Client, DomainName, QueryMap, HeadersMap, Options0)
 -spec list_tags(map(), binary() | list()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, ARN)
   when is_map(Client) ->
     list_tags(Client, ARN, #{}, #{}).
@@ -4334,10 +4568,7 @@ list_tags(Client, ARN)
 -spec list_tags(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, ARN, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags(Client, ARN, QueryMap, HeadersMap, []).
@@ -4345,10 +4576,7 @@ list_tags(Client, ARN, QueryMap, HeadersMap)
 -spec list_tags(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, ARN, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/tags"],
@@ -4375,10 +4603,7 @@ list_tags(Client, ARN, QueryMap, HeadersMap, Options0)
 -spec list_versions(map()) ->
     {ok, list_versions_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_versions_errors(), tuple()}.
 list_versions(Client)
   when is_map(Client) ->
     list_versions(Client, #{}, #{}).
@@ -4386,10 +4611,7 @@ list_versions(Client)
 -spec list_versions(map(), map(), map()) ->
     {ok, list_versions_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_versions_errors(), tuple()}.
 list_versions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_versions(Client, QueryMap, HeadersMap, []).
@@ -4397,10 +4619,7 @@ list_versions(Client, QueryMap, HeadersMap)
 -spec list_versions(map(), map(), map(), proplists:proplist()) ->
     {ok, list_versions_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_versions_errors(), tuple()}.
 list_versions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/versions"],
@@ -4429,10 +4648,7 @@ list_versions(Client, QueryMap, HeadersMap, Options0)
 -spec list_vpc_endpoint_access(map(), binary() | list()) ->
     {ok, list_vpc_endpoint_access_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_vpc_endpoint_access_errors(), tuple()}.
 list_vpc_endpoint_access(Client, DomainName)
   when is_map(Client) ->
     list_vpc_endpoint_access(Client, DomainName, #{}, #{}).
@@ -4440,10 +4656,7 @@ list_vpc_endpoint_access(Client, DomainName)
 -spec list_vpc_endpoint_access(map(), binary() | list(), map(), map()) ->
     {ok, list_vpc_endpoint_access_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_vpc_endpoint_access_errors(), tuple()}.
 list_vpc_endpoint_access(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_vpc_endpoint_access(Client, DomainName, QueryMap, HeadersMap, []).
@@ -4451,10 +4664,7 @@ list_vpc_endpoint_access(Client, DomainName, QueryMap, HeadersMap)
 -spec list_vpc_endpoint_access(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_vpc_endpoint_access_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_vpc_endpoint_access_errors(), tuple()}.
 list_vpc_endpoint_access(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/listVpcEndpointAccess"],
@@ -4480,9 +4690,7 @@ list_vpc_endpoint_access(Client, DomainName, QueryMap, HeadersMap, Options0)
 -spec list_vpc_endpoints(map()) ->
     {ok, list_vpc_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()}.
+    {error, list_vpc_endpoints_errors(), tuple()}.
 list_vpc_endpoints(Client)
   when is_map(Client) ->
     list_vpc_endpoints(Client, #{}, #{}).
@@ -4490,9 +4698,7 @@ list_vpc_endpoints(Client)
 -spec list_vpc_endpoints(map(), map(), map()) ->
     {ok, list_vpc_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()}.
+    {error, list_vpc_endpoints_errors(), tuple()}.
 list_vpc_endpoints(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_vpc_endpoints(Client, QueryMap, HeadersMap, []).
@@ -4500,9 +4706,7 @@ list_vpc_endpoints(Client, QueryMap, HeadersMap)
 -spec list_vpc_endpoints(map(), map(), map(), proplists:proplist()) ->
     {ok, list_vpc_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()}.
+    {error, list_vpc_endpoints_errors(), tuple()}.
 list_vpc_endpoints(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/vpcEndpoints"],
@@ -4529,10 +4733,7 @@ list_vpc_endpoints(Client, QueryMap, HeadersMap, Options0)
 -spec list_vpc_endpoints_for_domain(map(), binary() | list()) ->
     {ok, list_vpc_endpoints_for_domain_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_vpc_endpoints_for_domain_errors(), tuple()}.
 list_vpc_endpoints_for_domain(Client, DomainName)
   when is_map(Client) ->
     list_vpc_endpoints_for_domain(Client, DomainName, #{}, #{}).
@@ -4540,10 +4741,7 @@ list_vpc_endpoints_for_domain(Client, DomainName)
 -spec list_vpc_endpoints_for_domain(map(), binary() | list(), map(), map()) ->
     {ok, list_vpc_endpoints_for_domain_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_vpc_endpoints_for_domain_errors(), tuple()}.
 list_vpc_endpoints_for_domain(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_vpc_endpoints_for_domain(Client, DomainName, QueryMap, HeadersMap, []).
@@ -4551,10 +4749,7 @@ list_vpc_endpoints_for_domain(Client, DomainName, QueryMap, HeadersMap)
 -spec list_vpc_endpoints_for_domain(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_vpc_endpoints_for_domain_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_vpc_endpoints_for_domain_errors(), tuple()}.
 list_vpc_endpoints_for_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/vpcEndpoints"],
@@ -4579,24 +4774,14 @@ list_vpc_endpoints_for_domain(Client, DomainName, QueryMap, HeadersMap, Options0
 -spec purchase_reserved_instance_offering(map(), purchase_reserved_instance_offering_request()) ->
     {ok, purchase_reserved_instance_offering_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, purchase_reserved_instance_offering_errors(), tuple()}.
 purchase_reserved_instance_offering(Client, Input) ->
     purchase_reserved_instance_offering(Client, Input, []).
 
 -spec purchase_reserved_instance_offering(map(), purchase_reserved_instance_offering_request(), proplists:proplist()) ->
     {ok, purchase_reserved_instance_offering_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, purchase_reserved_instance_offering_errors(), tuple()}.
 purchase_reserved_instance_offering(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/purchaseReservedInstanceOffering"],
@@ -4625,16 +4810,14 @@ purchase_reserved_instance_offering(Client, Input0, Options0) ->
 -spec reject_inbound_connection(map(), binary() | list(), reject_inbound_connection_request()) ->
     {ok, reject_inbound_connection_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, reject_inbound_connection_errors(), tuple()}.
 reject_inbound_connection(Client, ConnectionId, Input) ->
     reject_inbound_connection(Client, ConnectionId, Input, []).
 
 -spec reject_inbound_connection(map(), binary() | list(), reject_inbound_connection_request(), proplists:proplist()) ->
     {ok, reject_inbound_connection_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, reject_inbound_connection_errors(), tuple()}.
 reject_inbound_connection(Client, ConnectionId, Input0, Options0) ->
     Method = put,
     Path = ["/2021-01-01/opensearch/cc/inboundConnection/", aws_util:encode_uri(ConnectionId), "/reject"],
@@ -4666,18 +4849,14 @@ reject_inbound_connection(Client, ConnectionId, Input0, Options0) ->
 -spec remove_tags(map(), remove_tags_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, remove_tags_errors(), tuple()}.
 remove_tags(Client, Input) ->
     remove_tags(Client, Input, []).
 
 -spec remove_tags(map(), remove_tags_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, remove_tags_errors(), tuple()}.
 remove_tags(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/tags-removal"],
@@ -4706,22 +4885,14 @@ remove_tags(Client, Input0, Options0) ->
 -spec revoke_vpc_endpoint_access(map(), binary() | list(), revoke_vpc_endpoint_access_request()) ->
     {ok, revoke_vpc_endpoint_access_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, revoke_vpc_endpoint_access_errors(), tuple()}.
 revoke_vpc_endpoint_access(Client, DomainName, Input) ->
     revoke_vpc_endpoint_access(Client, DomainName, Input, []).
 
 -spec revoke_vpc_endpoint_access(map(), binary() | list(), revoke_vpc_endpoint_access_request(), proplists:proplist()) ->
     {ok, revoke_vpc_endpoint_access_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, revoke_vpc_endpoint_access_errors(), tuple()}.
 revoke_vpc_endpoint_access(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/revokeVpcEndpointAccess"],
@@ -4752,22 +4923,14 @@ revoke_vpc_endpoint_access(Client, DomainName, Input0, Options0) ->
 -spec start_domain_maintenance(map(), binary() | list(), start_domain_maintenance_request()) ->
     {ok, start_domain_maintenance_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_domain_maintenance_errors(), tuple()}.
 start_domain_maintenance(Client, DomainName, Input) ->
     start_domain_maintenance(Client, DomainName, Input, []).
 
 -spec start_domain_maintenance(map(), binary() | list(), start_domain_maintenance_request(), proplists:proplist()) ->
     {ok, start_domain_maintenance_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_domain_maintenance_errors(), tuple()}.
 start_domain_maintenance(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/domainMaintenance"],
@@ -4800,20 +4963,14 @@ start_domain_maintenance(Client, DomainName, Input0, Options0) ->
 -spec start_service_software_update(map(), start_service_software_update_request()) ->
     {ok, start_service_software_update_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_service_software_update_errors(), tuple()}.
 start_service_software_update(Client, Input) ->
     start_service_software_update(Client, Input, []).
 
 -spec start_service_software_update(map(), start_service_software_update_request(), proplists:proplist()) ->
     {ok, start_service_software_update_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_service_software_update_errors(), tuple()}.
 start_service_software_update(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/serviceSoftwareUpdate/start"],
@@ -4845,24 +5002,14 @@ start_service_software_update(Client, Input0, Options0) ->
 -spec update_data_source(map(), binary() | list(), binary() | list(), update_data_source_request()) ->
     {ok, update_data_source_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, dependency_failure_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_data_source_errors(), tuple()}.
 update_data_source(Client, DomainName, Name, Input) ->
     update_data_source(Client, DomainName, Name, Input, []).
 
 -spec update_data_source(map(), binary() | list(), binary() | list(), update_data_source_request(), proplists:proplist()) ->
     {ok, update_data_source_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, dependency_failure_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_data_source_errors(), tuple()}.
 update_data_source(Client, DomainName, Name, Input0, Options0) ->
     Method = put,
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/dataSource/", aws_util:encode_uri(Name), ""],
@@ -4891,24 +5038,14 @@ update_data_source(Client, DomainName, Name, Input0, Options0) ->
 -spec update_domain_config(map(), binary() | list(), update_domain_config_request()) ->
     {ok, update_domain_config_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_domain_config_errors(), tuple()}.
 update_domain_config(Client, DomainName, Input) ->
     update_domain_config(Client, DomainName, Input, []).
 
 -spec update_domain_config(map(), binary() | list(), update_domain_config_request(), proplists:proplist()) ->
     {ok, update_domain_config_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_domain_config_errors(), tuple()}.
 update_domain_config(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/config"],
@@ -4939,24 +5076,14 @@ update_domain_config(Client, DomainName, Input0, Options0) ->
 -spec update_package(map(), update_package_request()) ->
     {ok, update_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_package_errors(), tuple()}.
 update_package(Client, Input) ->
     update_package(Client, Input, []).
 
 -spec update_package(map(), update_package_request(), proplists:proplist()) ->
     {ok, update_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_package_errors(), tuple()}.
 update_package(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/packages/update"],
@@ -4991,26 +5118,14 @@ update_package(Client, Input0, Options0) ->
 -spec update_scheduled_action(map(), binary() | list(), update_scheduled_action_request()) ->
     {ok, update_scheduled_action_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, slot_not_available_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_scheduled_action_errors(), tuple()}.
 update_scheduled_action(Client, DomainName, Input) ->
     update_scheduled_action(Client, DomainName, Input, []).
 
 -spec update_scheduled_action(map(), binary() | list(), update_scheduled_action_request(), proplists:proplist()) ->
     {ok, update_scheduled_action_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, slot_not_available_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_scheduled_action_errors(), tuple()}.
 update_scheduled_action(Client, DomainName, Input0, Options0) ->
     Method = put,
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/scheduledAction/update"],
@@ -5037,24 +5152,14 @@ update_scheduled_action(Client, DomainName, Input0, Options0) ->
 -spec update_vpc_endpoint(map(), update_vpc_endpoint_request()) ->
     {ok, update_vpc_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_vpc_endpoint_errors(), tuple()}.
 update_vpc_endpoint(Client, Input) ->
     update_vpc_endpoint(Client, Input, []).
 
 -spec update_vpc_endpoint(map(), update_vpc_endpoint_request(), proplists:proplist()) ->
     {ok, update_vpc_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_vpc_endpoint_errors(), tuple()}.
 update_vpc_endpoint(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/vpcEndpoints/update"],
@@ -5083,24 +5188,14 @@ update_vpc_endpoint(Client, Input0, Options0) ->
 -spec upgrade_domain(map(), upgrade_domain_request()) ->
     {ok, upgrade_domain_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, upgrade_domain_errors(), tuple()}.
 upgrade_domain(Client, Input) ->
     upgrade_domain(Client, Input, []).
 
 -spec upgrade_domain(map(), upgrade_domain_request(), proplists:proplist()) ->
     {ok, upgrade_domain_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, upgrade_domain_errors(), tuple()}.
 upgrade_domain(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/upgradeDomain"],

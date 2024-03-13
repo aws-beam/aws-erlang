@@ -111,6 +111,7 @@
 %% }
 -type anomaly_source_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_integration_config() :: #{
 %%   <<"KMSServerSideEncryption">> => kms_server_side_encryption_integration(),
@@ -118,9 +119,11 @@
 %%   <<"OpsCenter">> => ops_center_integration()
 %% }
 -type service_integration_config() :: #{binary() => any()}.
+
 %% Example:
 %% update_resource_collection_response() :: #{}
 -type update_resource_collection_response() :: #{}.
+
 
 %% Example:
 %% list_organization_insights_response() :: #{
@@ -130,12 +133,14 @@
 %% }
 -type list_organization_insights_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% performance_insights_stat() :: #{
 %%   <<"Type">> => string(),
 %%   <<"Value">> => float()
 %% }
 -type performance_insights_stat() :: #{binary() => any()}.
+
 
 %% Example:
 %% anomaly_time_range() :: #{
@@ -144,11 +149,13 @@
 %% }
 -type anomaly_time_range() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_feedback_request() :: #{
 %%   <<"InsightFeedback">> => insight_feedback()
 %% }
 -type put_feedback_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_insight_health() :: #{
@@ -157,12 +164,14 @@
 %% }
 -type service_insight_health() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_insights_any_status_filter() :: #{
 %%   <<"StartTimeRange">> => start_time_range(),
 %%   <<"Type">> => list(any())
 %% }
 -type list_insights_any_status_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_insights_request() :: #{
@@ -172,12 +181,14 @@
 %% }
 -type list_insights_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_insight_response() :: #{
 %%   <<"ProactiveInsight">> => proactive_insight(),
 %%   <<"ReactiveInsight">> => reactive_insight()
 %% }
 -type describe_insight_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% performance_insights_metric_dimension_group() :: #{
@@ -187,11 +198,13 @@
 %% }
 -type performance_insights_metric_dimension_group() :: #{binary() => any()}.
 
+
 %% Example:
 %% add_notification_channel_request() :: #{
 %%   <<"Config">> := notification_channel_config()
 %% }
 -type add_notification_channel_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_anomalies_for_insight_filters() :: #{
@@ -199,11 +212,13 @@
 %% }
 -type list_anomalies_for_insight_filters() :: #{binary() => any()}.
 
+
 %% Example:
 %% performance_insights_reference_scalar() :: #{
 %%   <<"Value">> => float()
 %% }
 -type performance_insights_reference_scalar() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_organization_overview_request() :: #{
@@ -214,6 +229,7 @@
 %% }
 -type describe_organization_overview_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% account_insight_health() :: #{
 %%   <<"OpenProactiveInsights">> => integer(),
@@ -221,12 +237,14 @@
 %% }
 -type account_insight_health() :: #{binary() => any()}.
 
+
 %% Example:
 %% recommendation_related_event() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Resources">> => list(recommendation_related_event_resource()())
 %% }
 -type recommendation_related_event() :: #{binary() => any()}.
+
 
 %% Example:
 %% reactive_insight() :: #{
@@ -240,6 +258,7 @@
 %%   <<"Status">> => list(any())
 %% }
 -type reactive_insight() :: #{binary() => any()}.
+
 
 %% Example:
 %% proactive_organization_insight_summary() :: #{
@@ -256,6 +275,7 @@
 %% }
 -type proactive_organization_insight_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_resource_collection_response() :: #{
 %%   <<"NextToken">> => string(),
@@ -263,15 +283,18 @@
 %% }
 -type get_resource_collection_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% recommendation_related_cloud_watch_metrics_source_detail() :: #{
 %%   <<"MetricName">> => string(),
 %%   <<"Namespace">> => string()
 %% }
 -type recommendation_related_cloud_watch_metrics_source_detail() :: #{binary() => any()}.
+
 %% Example:
 %% update_event_sources_config_response() :: #{}
 -type update_event_sources_config_response() :: #{}.
+
 
 %% Example:
 %% recommendation_related_anomaly_source_detail() :: #{
@@ -279,12 +302,14 @@
 %% }
 -type recommendation_related_anomaly_source_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_account_overview_request() :: #{
 %%   <<"FromTime">> := non_neg_integer(),
 %%   <<"ToTime">> => non_neg_integer()
 %% }
 -type describe_account_overview_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% proactive_anomaly() :: #{
@@ -304,9 +329,11 @@
 %%   <<"UpdateTime">> => non_neg_integer()
 %% }
 -type proactive_anomaly() :: #{binary() => any()}.
+
 %% Example:
 %% remove_notification_channel_request() :: #{}
 -type remove_notification_channel_request() :: #{}.
+
 
 %% Example:
 %% list_insights_response() :: #{
@@ -316,6 +343,7 @@
 %% }
 -type list_insights_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_health() :: #{
 %%   <<"AnalyzedResourceCount">> => float(),
@@ -323,6 +351,7 @@
 %%   <<"ServiceName">> => list(any())
 %% }
 -type service_health() :: #{binary() => any()}.
+
 
 %% Example:
 %% kms_server_side_encryption_integration() :: #{
@@ -332,6 +361,7 @@
 %% }
 -type kms_server_side_encryption_integration() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_monitored_resources_request() :: #{
 %%   <<"Filters">> => list_monitored_resources_filters(),
@@ -339,6 +369,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_monitored_resources_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% proactive_insight() :: #{
@@ -354,11 +385,13 @@
 %% }
 -type proactive_insight() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_cost_estimation_request() :: #{
 %%   <<"NextToken">> => string()
 %% }
 -type get_cost_estimation_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% anomalous_log_group() :: #{
@@ -369,9 +402,11 @@
 %%   <<"NumberOfLogLinesScanned">> => integer()
 %% }
 -type anomalous_log_group() :: #{binary() => any()}.
+
 %% Example:
 %% put_feedback_response() :: #{}
 -type put_feedback_response() :: #{}.
+
 
 %% Example:
 %% proactive_insight_summary() :: #{
@@ -387,12 +422,14 @@
 %% }
 -type proactive_insight_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_anomaly_response() :: #{
 %%   <<"ProactiveAnomaly">> => proactive_anomaly(),
 %%   <<"ReactiveAnomaly">> => reactive_anomaly()
 %% }
 -type describe_anomaly_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_resource_collection_filter() :: #{
@@ -401,12 +438,14 @@
 %% }
 -type update_resource_collection_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% cost_estimation_time_range() :: #{
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"StartTime">> => non_neg_integer()
 %% }
 -type cost_estimation_time_range() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_events_filters() :: #{
@@ -419,6 +458,7 @@
 %% }
 -type list_events_filters() :: #{binary() => any()}.
 
+
 %% Example:
 %% kms_server_side_encryption_integration_config() :: #{
 %%   <<"KMSKeyId">> => string(),
@@ -426,6 +466,7 @@
 %%   <<"Type">> => list(any())
 %% }
 -type kms_server_side_encryption_integration_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_organization_insights_filters() :: #{
@@ -436,11 +477,13 @@
 %% }
 -type search_organization_insights_filters() :: #{binary() => any()}.
 
+
 %% Example:
 %% performance_insights_reference_metric() :: #{
 %%   <<"MetricQuery">> => performance_insights_metric_query()
 %% }
 -type performance_insights_reference_metric() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_insights_response() :: #{
@@ -450,11 +493,13 @@
 %% }
 -type search_insights_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% ops_center_integration_config() :: #{
 %%   <<"OptInStatus">> => list(any())
 %% }
 -type ops_center_integration_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% cloud_watch_metrics_data_summary() :: #{
@@ -463,12 +508,14 @@
 %% }
 -type cloud_watch_metrics_data_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_tag_collection_filter() :: #{
 %%   <<"AppBoundaryKey">> => string(),
 %%   <<"TagValues">> => list(string()())
 %% }
 -type update_tag_collection_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_events_request() :: #{
@@ -479,6 +526,7 @@
 %% }
 -type list_events_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% notification_channel() :: #{
 %%   <<"Config">> => notification_channel_config(),
@@ -486,11 +534,13 @@
 %% }
 -type notification_channel() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_service_integration_request() :: #{
 %%   <<"ServiceIntegration">> := update_service_integration_config()
 %% }
 -type update_service_integration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% tag_collection() :: #{
@@ -498,6 +548,7 @@
 %%   <<"TagValues">> => list(string()())
 %% }
 -type tag_collection() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_cost_estimation_response() :: #{
@@ -510,11 +561,13 @@
 %% }
 -type get_cost_estimation_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_insights_ongoing_status_filter() :: #{
 %%   <<"Type">> => list(any())
 %% }
 -type list_insights_ongoing_status_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% anomaly_reported_time_range() :: #{
@@ -523,6 +576,7 @@
 %% }
 -type anomaly_reported_time_range() :: #{binary() => any()}.
 
+
 %% Example:
 %% cloud_formation_health() :: #{
 %%   <<"AnalyzedResourceCount">> => float(),
@@ -530,6 +584,7 @@
 %%   <<"StackName">> => string()
 %% }
 -type cloud_formation_health() :: #{binary() => any()}.
+
 
 %% Example:
 %% reactive_organization_insight_summary() :: #{
@@ -545,11 +600,13 @@
 %% }
 -type reactive_organization_insight_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% amazon_code_guru_profiler_integration() :: #{
 %%   <<"Status">> => list(any())
 %% }
 -type amazon_code_guru_profiler_integration() :: #{binary() => any()}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -559,6 +616,7 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => string(),
@@ -566,9 +624,11 @@
 %%   <<"ResourceType">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 %% Example:
 %% remove_notification_channel_response() :: #{}
 -type remove_notification_channel_response() :: #{}.
+
 
 %% Example:
 %% list_notification_channels_response() :: #{
@@ -576,6 +636,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_notification_channels_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% reactive_insight_summary() :: #{
@@ -590,11 +651,13 @@
 %% }
 -type reactive_insight_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% event_sources_config() :: #{
 %%   <<"AmazonCodeGuruProfiler">> => amazon_code_guru_profiler_integration()
 %% }
 -type event_sources_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% cloud_formation_cost_estimation_resource_collection_filter() :: #{
@@ -602,15 +665,18 @@
 %% }
 -type cloud_formation_cost_estimation_resource_collection_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% prediction_time_range() :: #{
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"StartTime">> => non_neg_integer()
 %% }
 -type prediction_time_range() :: #{binary() => any()}.
+
 %% Example:
 %% describe_service_integration_request() :: #{}
 -type describe_service_integration_request() :: #{}.
+
 
 %% Example:
 %% log_anomaly_showcase() :: #{
@@ -618,11 +684,13 @@
 %% }
 -type log_anomaly_showcase() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_collection() :: #{
 %%   <<"ServiceNames">> => list(list(any())())
 %% }
 -type service_collection() :: #{binary() => any()}.
+
 
 %% Example:
 %% add_notification_channel_response() :: #{
@@ -630,11 +698,13 @@
 %% }
 -type add_notification_channel_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_resource_collection_health_response() :: #{
@@ -644,6 +714,7 @@
 %%   <<"Tags">> => list(tag_health()())
 %% }
 -type describe_resource_collection_health_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% recommendation() :: #{
@@ -656,6 +727,7 @@
 %%   <<"RelatedEvents">> => list(recommendation_related_event()())
 %% }
 -type recommendation() :: #{binary() => any()}.
+
 
 %% Example:
 %% reactive_anomaly() :: #{
@@ -675,6 +747,7 @@
 %% }
 -type reactive_anomaly() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_organization_insights_request() :: #{
 %%   <<"AccountIds">> := list(string()()),
@@ -686,11 +759,13 @@
 %% }
 -type search_organization_insights_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_cloud_formation_collection_filter() :: #{
 %%   <<"StackNames">> => list(string()())
 %% }
 -type update_cloud_formation_collection_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% performance_insights_reference_comparison_values() :: #{
@@ -698,6 +773,7 @@
 %%   <<"ReferenceScalar">> => performance_insights_reference_scalar()
 %% }
 -type performance_insights_reference_comparison_values() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_account_health_response() :: #{
@@ -709,12 +785,14 @@
 %% }
 -type describe_account_health_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% anomaly_source_details() :: #{
 %%   <<"CloudWatchMetrics">> => list(cloud_watch_metrics_detail()()),
 %%   <<"PerformanceInsightsMetrics">> => list(performance_insights_metrics_detail()())
 %% }
 -type anomaly_source_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% timestamp_metric_value_pair() :: #{
@@ -723,11 +801,13 @@
 %% }
 -type timestamp_metric_value_pair() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_insight_request() :: #{
 %%   <<"AccountId">> => string()
 %% }
 -type describe_insight_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_monitored_resources_response() :: #{
@@ -735,6 +815,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_monitored_resources_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_insights_request() :: #{
@@ -746,12 +827,14 @@
 %% }
 -type search_insights_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_collection_filter() :: #{
 %%   <<"AppBoundaryKey">> => string(),
 %%   <<"TagValues">> => list(string()())
 %% }
 -type tag_collection_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% validation_exception_field() :: #{
@@ -760,12 +843,14 @@
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
 
+
 %% Example:
 %% performance_insights_reference_data() :: #{
 %%   <<"ComparisonValues">> => performance_insights_reference_comparison_values(),
 %%   <<"Name">> => string()
 %% }
 -type performance_insights_reference_data() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_account_overview_response() :: #{
@@ -774,6 +859,7 @@
 %%   <<"ReactiveInsights">> => integer()
 %% }
 -type describe_account_overview_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% reactive_anomaly_summary() :: #{
@@ -793,6 +879,7 @@
 %% }
 -type reactive_anomaly_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_insights_filters() :: #{
 %%   <<"ResourceCollection">> => resource_collection(),
@@ -802,11 +889,13 @@
 %% }
 -type search_insights_filters() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_event_sources_config_response() :: #{
 %%   <<"EventSources">> => event_sources_config()
 %% }
 -type describe_event_sources_config_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% cloud_watch_metrics_detail() :: #{
@@ -820,6 +909,7 @@
 %% }
 -type cloud_watch_metrics_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_organization_insights_response() :: #{
 %%   <<"NextToken">> => string(),
@@ -828,11 +918,13 @@
 %% }
 -type search_organization_insights_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% cloud_formation_collection_filter() :: #{
 %%   <<"StackNames">> => list(string()())
 %% }
 -type cloud_formation_collection_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% recommendation_related_anomaly() :: #{
@@ -842,12 +934,14 @@
 %% }
 -type recommendation_related_anomaly() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_cost_estimation_resource_collection_filter() :: #{
 %%   <<"AppBoundaryKey">> => string(),
 %%   <<"TagValues">> => list(string()())
 %% }
 -type tag_cost_estimation_resource_collection_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_anomalous_log_groups_request() :: #{
@@ -857,12 +951,14 @@
 %% }
 -type list_anomalous_log_groups_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_events_response() :: #{
 %%   <<"Events">> => list(event()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_events_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_insights_closed_status_filter() :: #{
@@ -871,6 +967,7 @@
 %% }
 -type list_insights_closed_status_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% anomaly_resource() :: #{
 %%   <<"Name">> => string(),
@@ -878,12 +975,14 @@
 %% }
 -type anomaly_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% recommendation_related_anomaly_resource() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Type">> => string()
 %% }
 -type recommendation_related_anomaly_resource() :: #{binary() => any()}.
+
 
 %% Example:
 %% log_anomaly_class() :: #{
@@ -897,12 +996,14 @@
 %% }
 -type log_anomaly_class() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RetryAfterSeconds">> => integer()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% insight_time_range() :: #{
@@ -911,12 +1012,14 @@
 %% }
 -type insight_time_range() :: #{binary() => any()}.
 
+
 %% Example:
 %% end_time_range() :: #{
 %%   <<"FromTime">> => non_neg_integer(),
 %%   <<"ToTime">> => non_neg_integer()
 %% }
 -type end_time_range() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_organization_resource_collection_health_response() :: #{
@@ -927,9 +1030,11 @@
 %%   <<"Tags">> => list(tag_health()())
 %% }
 -type describe_organization_resource_collection_health_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_event_sources_config_request() :: #{}
 -type describe_event_sources_config_request() :: #{}.
+
 
 %% Example:
 %% event_resource() :: #{
@@ -939,11 +1044,13 @@
 %% }
 -type event_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% logs_anomaly_detection_integration() :: #{
 %%   <<"OptInStatus">> => list(any())
 %% }
 -type logs_anomaly_detection_integration() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_organization_overview_response() :: #{
@@ -951,6 +1058,7 @@
 %%   <<"ReactiveInsights">> => integer()
 %% }
 -type describe_organization_overview_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% event() :: #{
@@ -965,6 +1073,7 @@
 %% }
 -type event() :: #{binary() => any()}.
 
+
 %% Example:
 %% performance_insights_metric_query() :: #{
 %%   <<"Filter">> => map(),
@@ -973,12 +1082,14 @@
 %% }
 -type performance_insights_metric_query() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_collection_filter() :: #{
 %%   <<"CloudFormation">> => cloud_formation_collection_filter(),
 %%   <<"Tags">> => list(tag_collection_filter()())
 %% }
 -type resource_collection_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_organization_resource_collection_health_request() :: #{
@@ -990,6 +1101,7 @@
 %% }
 -type describe_organization_resource_collection_health_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_anomalies_for_insight_response() :: #{
 %%   <<"NextToken">> => string(),
@@ -997,6 +1109,7 @@
 %%   <<"ReactiveAnomalies">> => list(reactive_anomaly_summary()())
 %% }
 -type list_anomalies_for_insight_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% tag_health() :: #{
@@ -1007,24 +1120,29 @@
 %% }
 -type tag_health() :: #{binary() => any()}.
 
+
 %% Example:
 %% cost_estimation_resource_collection_filter() :: #{
 %%   <<"CloudFormation">> => cloud_formation_cost_estimation_resource_collection_filter(),
 %%   <<"Tags">> => list(tag_cost_estimation_resource_collection_filter()())
 %% }
 -type cost_estimation_resource_collection_filter() :: #{binary() => any()}.
+
 %% Example:
 %% describe_account_health_request() :: #{}
 -type describe_account_health_request() :: #{}.
+
 
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_insight_response() :: #{}
 -type delete_insight_response() :: #{}.
+
 
 %% Example:
 %% update_resource_collection_request() :: #{
@@ -1032,9 +1150,11 @@
 %%   <<"ResourceCollection">> := update_resource_collection_filter()
 %% }
 -type update_resource_collection_request() :: #{binary() => any()}.
+
 %% Example:
 %% start_cost_estimation_response() :: #{}
 -type start_cost_estimation_response() :: #{}.
+
 
 %% Example:
 %% list_notification_channels_request() :: #{
@@ -1042,11 +1162,13 @@
 %% }
 -type list_notification_channels_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_event_sources_config_request() :: #{
 %%   <<"EventSources">> => event_sources_config()
 %% }
 -type update_event_sources_config_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% recommendation_related_event_resource() :: #{
@@ -1055,11 +1177,13 @@
 %% }
 -type recommendation_related_event_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% cloud_formation_collection() :: #{
 %%   <<"StackNames">> => list(string()())
 %% }
 -type cloud_formation_collection() :: #{binary() => any()}.
+
 
 %% Example:
 %% validation_exception() :: #{
@@ -1068,9 +1192,11 @@
 %%   <<"Reason">> => list(any())
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_insight_request() :: #{}
 -type delete_insight_request() :: #{}.
+
 
 %% Example:
 %% list_anomalous_log_groups_response() :: #{
@@ -1080,17 +1206,20 @@
 %% }
 -type list_anomalous_log_groups_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% sns_channel_config() :: #{
 %%   <<"TopicArn">> => string()
 %% }
 -type sns_channel_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% logs_anomaly_detection_integration_config() :: #{
 %%   <<"OptInStatus">> => list(any())
 %% }
 -type logs_anomaly_detection_integration_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% cloud_watch_metrics_dimension() :: #{
@@ -1099,11 +1228,13 @@
 %% }
 -type cloud_watch_metrics_dimension() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_service_integration_response() :: #{
 %%   <<"ServiceIntegration">> => service_integration_config()
 %% }
 -type describe_service_integration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% performance_insights_metrics_detail() :: #{
@@ -1116,6 +1247,7 @@
 %% }
 -type performance_insights_metrics_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"Message">> => string(),
@@ -1125,11 +1257,13 @@
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_feedback_response() :: #{
 %%   <<"InsightFeedback">> => insight_feedback()
 %% }
 -type describe_feedback_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_cost_estimation_request() :: #{
@@ -1137,15 +1271,18 @@
 %%   <<"ResourceCollection">> := cost_estimation_resource_collection_filter()
 %% }
 -type start_cost_estimation_request() :: #{binary() => any()}.
+
 %% Example:
 %% update_service_integration_response() :: #{}
 -type update_service_integration_response() :: #{}.
+
 
 %% Example:
 %% get_resource_collection_request() :: #{
 %%   <<"NextToken">> => string()
 %% }
 -type get_resource_collection_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% insight_health() :: #{
@@ -1155,11 +1292,13 @@
 %% }
 -type insight_health() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_anomaly_request() :: #{
 %%   <<"AccountId">> => string()
 %% }
 -type describe_anomaly_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_service_integration_config() :: #{
@@ -1169,11 +1308,13 @@
 %% }
 -type update_service_integration_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_feedback_request() :: #{
 %%   <<"InsightId">> => string()
 %% }
 -type describe_feedback_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_time_range() :: #{
@@ -1182,12 +1323,14 @@
 %% }
 -type start_time_range() :: #{binary() => any()}.
 
+
 %% Example:
 %% notification_channel_config() :: #{
 %%   <<"Filters">> => notification_filter_config(),
 %%   <<"Sns">> => sns_channel_config()
 %% }
 -type notification_channel_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% event_time_range() :: #{
@@ -1196,12 +1339,14 @@
 %% }
 -type event_time_range() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_monitored_resources_filters() :: #{
 %%   <<"ResourcePermission">> => list(any()),
 %%   <<"ResourceTypeFilters">> => list(list(any())())
 %% }
 -type list_monitored_resources_filters() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_organization_insights_request() :: #{
@@ -1213,12 +1358,14 @@
 %% }
 -type list_organization_insights_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% notification_filter_config() :: #{
 %%   <<"MessageTypes">> => list(list(any())()),
 %%   <<"Severities">> => list(list(any())())
 %% }
 -type notification_filter_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_organization_health_response() :: #{
@@ -1229,12 +1376,14 @@
 %% }
 -type describe_organization_health_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_recommendations_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Recommendations">> => list(recommendation()())
 %% }
 -type list_recommendations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_insights_status_filter() :: #{
@@ -1244,6 +1393,7 @@
 %% }
 -type list_insights_status_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% insight_feedback() :: #{
 %%   <<"Feedback">> => list(any()),
@@ -1251,11 +1401,13 @@
 %% }
 -type insight_feedback() :: #{binary() => any()}.
 
+
 %% Example:
 %% ops_center_integration() :: #{
 %%   <<"OptInStatus">> => list(any())
 %% }
 -type ops_center_integration() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_resource_cost() :: #{
@@ -1267,12 +1419,14 @@
 %% }
 -type service_resource_cost() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_collection() :: #{
 %%   <<"CloudFormation">> => cloud_formation_collection(),
 %%   <<"Tags">> => list(tag_collection()())
 %% }
 -type resource_collection() :: #{binary() => any()}.
+
 
 %% Example:
 %% proactive_anomaly_summary() :: #{
@@ -1293,6 +1447,7 @@
 %% }
 -type proactive_anomaly_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_anomalies_for_insight_request() :: #{
 %%   <<"AccountId">> => string(),
@@ -1303,6 +1458,7 @@
 %% }
 -type list_anomalies_for_insight_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% account_health() :: #{
 %%   <<"AccountId">> => string(),
@@ -1310,12 +1466,14 @@
 %% }
 -type account_health() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_organization_health_request() :: #{
 %%   <<"AccountIds">> => list(string()()),
 %%   <<"OrganizationalUnitIds">> => list(string()())
 %% }
 -type describe_organization_health_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_recommendations_request() :: #{
@@ -1326,11 +1484,13 @@
 %% }
 -type list_recommendations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_resource_collection_health_request() :: #{
 %%   <<"NextToken">> => string()
 %% }
 -type describe_resource_collection_health_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% monitored_resource_identifier() :: #{
@@ -1341,6 +1501,215 @@
 %%   <<"Type">> => string()
 %% }
 -type monitored_resource_identifier() :: #{binary() => any()}.
+
+-type add_notification_channel_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_insight_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_account_health_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type describe_account_overview_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type describe_anomaly_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_event_sources_config_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type describe_feedback_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_insight_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_organization_health_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type describe_organization_overview_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type describe_organization_resource_collection_health_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type describe_resource_collection_health_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type describe_service_integration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_cost_estimation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_resource_collection_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_anomalies_for_insight_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_anomalous_log_groups_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_events_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_insights_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_monitored_resources_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_notification_channels_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_organization_insights_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_recommendations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type put_feedback_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type remove_notification_channel_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type search_insights_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type search_organization_insights_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type start_cost_estimation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_event_sources_config_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type update_resource_collection_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type update_service_integration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -1369,26 +1738,14 @@
 -spec add_notification_channel(map(), add_notification_channel_request()) ->
     {ok, add_notification_channel_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, add_notification_channel_errors(), tuple()}.
 add_notification_channel(Client, Input) ->
     add_notification_channel(Client, Input, []).
 
 -spec add_notification_channel(map(), add_notification_channel_request(), proplists:proplist()) ->
     {ok, add_notification_channel_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, add_notification_channel_errors(), tuple()}.
 add_notification_channel(Client, Input0, Options0) ->
     Method = put,
     Path = ["/channels"],
@@ -1416,24 +1773,14 @@ add_notification_channel(Client, Input0, Options0) ->
 -spec delete_insight(map(), binary() | list(), delete_insight_request()) ->
     {ok, delete_insight_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_insight_errors(), tuple()}.
 delete_insight(Client, Id, Input) ->
     delete_insight(Client, Id, Input, []).
 
 -spec delete_insight(map(), binary() | list(), delete_insight_request(), proplists:proplist()) ->
     {ok, delete_insight_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_insight_errors(), tuple()}.
 delete_insight(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/insights/", aws_util:encode_uri(Id), ""],
@@ -1465,10 +1812,7 @@ delete_insight(Client, Id, Input0, Options0) ->
 -spec describe_account_health(map()) ->
     {ok, describe_account_health_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_account_health_errors(), tuple()}.
 describe_account_health(Client)
   when is_map(Client) ->
     describe_account_health(Client, #{}, #{}).
@@ -1476,10 +1820,7 @@ describe_account_health(Client)
 -spec describe_account_health(map(), map(), map()) ->
     {ok, describe_account_health_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_account_health_errors(), tuple()}.
 describe_account_health(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_account_health(Client, QueryMap, HeadersMap, []).
@@ -1487,10 +1828,7 @@ describe_account_health(Client, QueryMap, HeadersMap)
 -spec describe_account_health(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_account_health_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_account_health_errors(), tuple()}.
 describe_account_health(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/health"],
@@ -1515,20 +1853,14 @@ describe_account_health(Client, QueryMap, HeadersMap, Options0)
 -spec describe_account_overview(map(), describe_account_overview_request()) ->
     {ok, describe_account_overview_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_account_overview_errors(), tuple()}.
 describe_account_overview(Client, Input) ->
     describe_account_overview(Client, Input, []).
 
 -spec describe_account_overview(map(), describe_account_overview_request(), proplists:proplist()) ->
     {ok, describe_account_overview_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_account_overview_errors(), tuple()}.
 describe_account_overview(Client, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/overview"],
@@ -1555,11 +1887,7 @@ describe_account_overview(Client, Input0, Options0) ->
 -spec describe_anomaly(map(), binary() | list()) ->
     {ok, describe_anomaly_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_anomaly_errors(), tuple()}.
 describe_anomaly(Client, Id)
   when is_map(Client) ->
     describe_anomaly(Client, Id, #{}, #{}).
@@ -1567,11 +1895,7 @@ describe_anomaly(Client, Id)
 -spec describe_anomaly(map(), binary() | list(), map(), map()) ->
     {ok, describe_anomaly_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_anomaly_errors(), tuple()}.
 describe_anomaly(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_anomaly(Client, Id, QueryMap, HeadersMap, []).
@@ -1579,11 +1903,7 @@ describe_anomaly(Client, Id, QueryMap, HeadersMap)
 -spec describe_anomaly(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_anomaly_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_anomaly_errors(), tuple()}.
 describe_anomaly(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/anomalies/", aws_util:encode_uri(Id), ""],
@@ -1615,20 +1935,14 @@ describe_anomaly(Client, Id, QueryMap, HeadersMap, Options0)
 -spec describe_event_sources_config(map(), describe_event_sources_config_request()) ->
     {ok, describe_event_sources_config_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_event_sources_config_errors(), tuple()}.
 describe_event_sources_config(Client, Input) ->
     describe_event_sources_config(Client, Input, []).
 
 -spec describe_event_sources_config(map(), describe_event_sources_config_request(), proplists:proplist()) ->
     {ok, describe_event_sources_config_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_event_sources_config_errors(), tuple()}.
 describe_event_sources_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/event-sources"],
@@ -1656,22 +1970,14 @@ describe_event_sources_config(Client, Input0, Options0) ->
 -spec describe_feedback(map(), describe_feedback_request()) ->
     {ok, describe_feedback_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_feedback_errors(), tuple()}.
 describe_feedback(Client, Input) ->
     describe_feedback(Client, Input, []).
 
 -spec describe_feedback(map(), describe_feedback_request(), proplists:proplist()) ->
     {ok, describe_feedback_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_feedback_errors(), tuple()}.
 describe_feedback(Client, Input0, Options0) ->
     Method = post,
     Path = ["/feedback"],
@@ -1698,11 +2004,7 @@ describe_feedback(Client, Input0, Options0) ->
 -spec describe_insight(map(), binary() | list()) ->
     {ok, describe_insight_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_insight_errors(), tuple()}.
 describe_insight(Client, Id)
   when is_map(Client) ->
     describe_insight(Client, Id, #{}, #{}).
@@ -1710,11 +2012,7 @@ describe_insight(Client, Id)
 -spec describe_insight(map(), binary() | list(), map(), map()) ->
     {ok, describe_insight_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_insight_errors(), tuple()}.
 describe_insight(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_insight(Client, Id, QueryMap, HeadersMap, []).
@@ -1722,11 +2020,7 @@ describe_insight(Client, Id, QueryMap, HeadersMap)
 -spec describe_insight(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_insight_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_insight_errors(), tuple()}.
 describe_insight(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/insights/", aws_util:encode_uri(Id), ""],
@@ -1753,20 +2047,14 @@ describe_insight(Client, Id, QueryMap, HeadersMap, Options0)
 -spec describe_organization_health(map(), describe_organization_health_request()) ->
     {ok, describe_organization_health_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_organization_health_errors(), tuple()}.
 describe_organization_health(Client, Input) ->
     describe_organization_health(Client, Input, []).
 
 -spec describe_organization_health(map(), describe_organization_health_request(), proplists:proplist()) ->
     {ok, describe_organization_health_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_organization_health_errors(), tuple()}.
 describe_organization_health(Client, Input0, Options0) ->
     Method = post,
     Path = ["/organization/health"],
@@ -1796,20 +2084,14 @@ describe_organization_health(Client, Input0, Options0) ->
 -spec describe_organization_overview(map(), describe_organization_overview_request()) ->
     {ok, describe_organization_overview_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_organization_overview_errors(), tuple()}.
 describe_organization_overview(Client, Input) ->
     describe_organization_overview(Client, Input, []).
 
 -spec describe_organization_overview(map(), describe_organization_overview_request(), proplists:proplist()) ->
     {ok, describe_organization_overview_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_organization_overview_errors(), tuple()}.
 describe_organization_overview(Client, Input0, Options0) ->
     Method = post,
     Path = ["/organization/overview"],
@@ -1841,20 +2123,14 @@ describe_organization_overview(Client, Input0, Options0) ->
 -spec describe_organization_resource_collection_health(map(), describe_organization_resource_collection_health_request()) ->
     {ok, describe_organization_resource_collection_health_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_organization_resource_collection_health_errors(), tuple()}.
 describe_organization_resource_collection_health(Client, Input) ->
     describe_organization_resource_collection_health(Client, Input, []).
 
 -spec describe_organization_resource_collection_health(map(), describe_organization_resource_collection_health_request(), proplists:proplist()) ->
     {ok, describe_organization_resource_collection_health_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_organization_resource_collection_health_errors(), tuple()}.
 describe_organization_resource_collection_health(Client, Input0, Options0) ->
     Method = post,
     Path = ["/organization/health/resource-collection"],
@@ -1893,10 +2169,7 @@ describe_organization_resource_collection_health(Client, Input0, Options0) ->
 -spec describe_resource_collection_health(map(), binary() | list()) ->
     {ok, describe_resource_collection_health_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_resource_collection_health_errors(), tuple()}.
 describe_resource_collection_health(Client, ResourceCollectionType)
   when is_map(Client) ->
     describe_resource_collection_health(Client, ResourceCollectionType, #{}, #{}).
@@ -1904,10 +2177,7 @@ describe_resource_collection_health(Client, ResourceCollectionType)
 -spec describe_resource_collection_health(map(), binary() | list(), map(), map()) ->
     {ok, describe_resource_collection_health_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_resource_collection_health_errors(), tuple()}.
 describe_resource_collection_health(Client, ResourceCollectionType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_resource_collection_health(Client, ResourceCollectionType, QueryMap, HeadersMap, []).
@@ -1915,10 +2185,7 @@ describe_resource_collection_health(Client, ResourceCollectionType, QueryMap, He
 -spec describe_resource_collection_health(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_resource_collection_health_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_resource_collection_health_errors(), tuple()}.
 describe_resource_collection_health(Client, ResourceCollectionType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/health/resource-collection/", aws_util:encode_uri(ResourceCollectionType), ""],
@@ -1948,11 +2215,7 @@ describe_resource_collection_health(Client, ResourceCollectionType, QueryMap, He
 -spec describe_service_integration(map()) ->
     {ok, describe_service_integration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_service_integration_errors(), tuple()}.
 describe_service_integration(Client)
   when is_map(Client) ->
     describe_service_integration(Client, #{}, #{}).
@@ -1960,11 +2223,7 @@ describe_service_integration(Client)
 -spec describe_service_integration(map(), map(), map()) ->
     {ok, describe_service_integration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_service_integration_errors(), tuple()}.
 describe_service_integration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_service_integration(Client, QueryMap, HeadersMap, []).
@@ -1972,11 +2231,7 @@ describe_service_integration(Client, QueryMap, HeadersMap)
 -spec describe_service_integration(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_service_integration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_service_integration_errors(), tuple()}.
 describe_service_integration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/service-integrations"],
@@ -2005,11 +2260,7 @@ describe_service_integration(Client, QueryMap, HeadersMap, Options0)
 -spec get_cost_estimation(map()) ->
     {ok, get_cost_estimation_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_cost_estimation_errors(), tuple()}.
 get_cost_estimation(Client)
   when is_map(Client) ->
     get_cost_estimation(Client, #{}, #{}).
@@ -2017,11 +2268,7 @@ get_cost_estimation(Client)
 -spec get_cost_estimation(map(), map(), map()) ->
     {ok, get_cost_estimation_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_cost_estimation_errors(), tuple()}.
 get_cost_estimation(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cost_estimation(Client, QueryMap, HeadersMap, []).
@@ -2029,11 +2276,7 @@ get_cost_estimation(Client, QueryMap, HeadersMap)
 -spec get_cost_estimation(map(), map(), map(), proplists:proplist()) ->
     {ok, get_cost_estimation_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_cost_estimation_errors(), tuple()}.
 get_cost_estimation(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/cost-estimation"],
@@ -2067,11 +2310,7 @@ get_cost_estimation(Client, QueryMap, HeadersMap, Options0)
 -spec get_resource_collection(map(), binary() | list()) ->
     {ok, get_resource_collection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_resource_collection_errors(), tuple()}.
 get_resource_collection(Client, ResourceCollectionType)
   when is_map(Client) ->
     get_resource_collection(Client, ResourceCollectionType, #{}, #{}).
@@ -2079,11 +2318,7 @@ get_resource_collection(Client, ResourceCollectionType)
 -spec get_resource_collection(map(), binary() | list(), map(), map()) ->
     {ok, get_resource_collection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_resource_collection_errors(), tuple()}.
 get_resource_collection(Client, ResourceCollectionType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resource_collection(Client, ResourceCollectionType, QueryMap, HeadersMap, []).
@@ -2091,11 +2326,7 @@ get_resource_collection(Client, ResourceCollectionType, QueryMap, HeadersMap)
 -spec get_resource_collection(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_resource_collection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_resource_collection_errors(), tuple()}.
 get_resource_collection(Client, ResourceCollectionType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resource-collections/", aws_util:encode_uri(ResourceCollectionType), ""],
@@ -2122,22 +2353,14 @@ get_resource_collection(Client, ResourceCollectionType, QueryMap, HeadersMap, Op
 -spec list_anomalies_for_insight(map(), binary() | list(), list_anomalies_for_insight_request()) ->
     {ok, list_anomalies_for_insight_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_anomalies_for_insight_errors(), tuple()}.
 list_anomalies_for_insight(Client, InsightId, Input) ->
     list_anomalies_for_insight(Client, InsightId, Input, []).
 
 -spec list_anomalies_for_insight(map(), binary() | list(), list_anomalies_for_insight_request(), proplists:proplist()) ->
     {ok, list_anomalies_for_insight_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_anomalies_for_insight_errors(), tuple()}.
 list_anomalies_for_insight(Client, InsightId, Input0, Options0) ->
     Method = post,
     Path = ["/anomalies/insight/", aws_util:encode_uri(InsightId), ""],
@@ -2165,22 +2388,14 @@ list_anomalies_for_insight(Client, InsightId, Input0, Options0) ->
 -spec list_anomalous_log_groups(map(), list_anomalous_log_groups_request()) ->
     {ok, list_anomalous_log_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_anomalous_log_groups_errors(), tuple()}.
 list_anomalous_log_groups(Client, Input) ->
     list_anomalous_log_groups(Client, Input, []).
 
 -spec list_anomalous_log_groups(map(), list_anomalous_log_groups_request(), proplists:proplist()) ->
     {ok, list_anomalous_log_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_anomalous_log_groups_errors(), tuple()}.
 list_anomalous_log_groups(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-log-anomalies"],
@@ -2210,22 +2425,14 @@ list_anomalous_log_groups(Client, Input0, Options0) ->
 -spec list_events(map(), list_events_request()) ->
     {ok, list_events_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_events_errors(), tuple()}.
 list_events(Client, Input) ->
     list_events(Client, Input, []).
 
 -spec list_events(map(), list_events_request(), proplists:proplist()) ->
     {ok, list_events_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_events_errors(), tuple()}.
 list_events(Client, Input0, Options0) ->
     Method = post,
     Path = ["/events"],
@@ -2256,20 +2463,14 @@ list_events(Client, Input0, Options0) ->
 -spec list_insights(map(), list_insights_request()) ->
     {ok, list_insights_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_insights_errors(), tuple()}.
 list_insights(Client, Input) ->
     list_insights(Client, Input, []).
 
 -spec list_insights(map(), list_insights_request(), proplists:proplist()) ->
     {ok, list_insights_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_insights_errors(), tuple()}.
 list_insights(Client, Input0, Options0) ->
     Method = post,
     Path = ["/insights"],
@@ -2298,20 +2499,14 @@ list_insights(Client, Input0, Options0) ->
 -spec list_monitored_resources(map(), list_monitored_resources_request()) ->
     {ok, list_monitored_resources_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_monitored_resources_errors(), tuple()}.
 list_monitored_resources(Client, Input) ->
     list_monitored_resources(Client, Input, []).
 
 -spec list_monitored_resources(map(), list_monitored_resources_request(), proplists:proplist()) ->
     {ok, list_monitored_resources_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_monitored_resources_errors(), tuple()}.
 list_monitored_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/monitoredResources"],
@@ -2345,20 +2540,14 @@ list_monitored_resources(Client, Input0, Options0) ->
 -spec list_notification_channels(map(), list_notification_channels_request()) ->
     {ok, list_notification_channels_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_notification_channels_errors(), tuple()}.
 list_notification_channels(Client, Input) ->
     list_notification_channels(Client, Input, []).
 
 -spec list_notification_channels(map(), list_notification_channels_request(), proplists:proplist()) ->
     {ok, list_notification_channels_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_notification_channels_errors(), tuple()}.
 list_notification_channels(Client, Input0, Options0) ->
     Method = post,
     Path = ["/channels"],
@@ -2385,20 +2574,14 @@ list_notification_channels(Client, Input0, Options0) ->
 -spec list_organization_insights(map(), list_organization_insights_request()) ->
     {ok, list_organization_insights_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_organization_insights_errors(), tuple()}.
 list_organization_insights(Client, Input) ->
     list_organization_insights(Client, Input, []).
 
 -spec list_organization_insights(map(), list_organization_insights_request(), proplists:proplist()) ->
     {ok, list_organization_insights_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_organization_insights_errors(), tuple()}.
 list_organization_insights(Client, Input0, Options0) ->
     Method = post,
     Path = ["/organization/insights"],
@@ -2428,22 +2611,14 @@ list_organization_insights(Client, Input0, Options0) ->
 -spec list_recommendations(map(), list_recommendations_request()) ->
     {ok, list_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_recommendations_errors(), tuple()}.
 list_recommendations(Client, Input) ->
     list_recommendations(Client, Input, []).
 
 -spec list_recommendations(map(), list_recommendations_request(), proplists:proplist()) ->
     {ok, list_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_recommendations_errors(), tuple()}.
 list_recommendations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/recommendations"],
@@ -2470,24 +2645,14 @@ list_recommendations(Client, Input0, Options0) ->
 -spec put_feedback(map(), put_feedback_request()) ->
     {ok, put_feedback_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_feedback_errors(), tuple()}.
 put_feedback(Client, Input) ->
     put_feedback(Client, Input, []).
 
 -spec put_feedback(map(), put_feedback_request(), proplists:proplist()) ->
     {ok, put_feedback_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_feedback_errors(), tuple()}.
 put_feedback(Client, Input0, Options0) ->
     Method = put,
     Path = ["/feedback"],
@@ -2519,24 +2684,14 @@ put_feedback(Client, Input0, Options0) ->
 -spec remove_notification_channel(map(), binary() | list(), remove_notification_channel_request()) ->
     {ok, remove_notification_channel_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, remove_notification_channel_errors(), tuple()}.
 remove_notification_channel(Client, Id, Input) ->
     remove_notification_channel(Client, Id, Input, []).
 
 -spec remove_notification_channel(map(), binary() | list(), remove_notification_channel_request(), proplists:proplist()) ->
     {ok, remove_notification_channel_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, remove_notification_channel_errors(), tuple()}.
 remove_notification_channel(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/channels/", aws_util:encode_uri(Id), ""],
@@ -2573,20 +2728,14 @@ remove_notification_channel(Client, Id, Input0, Options0) ->
 -spec search_insights(map(), search_insights_request()) ->
     {ok, search_insights_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_insights_errors(), tuple()}.
 search_insights(Client, Input) ->
     search_insights(Client, Input, []).
 
 -spec search_insights(map(), search_insights_request(), proplists:proplist()) ->
     {ok, search_insights_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_insights_errors(), tuple()}.
 search_insights(Client, Input0, Options0) ->
     Method = post,
     Path = ["/insights/search"],
@@ -2623,20 +2772,14 @@ search_insights(Client, Input0, Options0) ->
 -spec search_organization_insights(map(), search_organization_insights_request()) ->
     {ok, search_organization_insights_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_organization_insights_errors(), tuple()}.
 search_organization_insights(Client, Input) ->
     search_organization_insights(Client, Input, []).
 
 -spec search_organization_insights(map(), search_organization_insights_request(), proplists:proplist()) ->
     {ok, search_organization_insights_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_organization_insights_errors(), tuple()}.
 search_organization_insights(Client, Input0, Options0) ->
     Method = post,
     Path = ["/organization/insights/search"],
@@ -2665,24 +2808,14 @@ search_organization_insights(Client, Input0, Options0) ->
 -spec start_cost_estimation(map(), start_cost_estimation_request()) ->
     {ok, start_cost_estimation_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_cost_estimation_errors(), tuple()}.
 start_cost_estimation(Client, Input) ->
     start_cost_estimation(Client, Input, []).
 
 -spec start_cost_estimation(map(), start_cost_estimation_request(), proplists:proplist()) ->
     {ok, start_cost_estimation_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_cost_estimation_errors(), tuple()}.
 start_cost_estimation(Client, Input0, Options0) ->
     Method = put,
     Path = ["/cost-estimation"],
@@ -2716,20 +2849,14 @@ start_cost_estimation(Client, Input0, Options0) ->
 -spec update_event_sources_config(map(), update_event_sources_config_request()) ->
     {ok, update_event_sources_config_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_event_sources_config_errors(), tuple()}.
 update_event_sources_config(Client, Input) ->
     update_event_sources_config(Client, Input, []).
 
 -spec update_event_sources_config(map(), update_event_sources_config_request(), proplists:proplist()) ->
     {ok, update_event_sources_config_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_event_sources_config_errors(), tuple()}.
 update_event_sources_config(Client, Input0, Options0) ->
     Method = put,
     Path = ["/event-sources"],
@@ -2766,22 +2893,14 @@ update_event_sources_config(Client, Input0, Options0) ->
 -spec update_resource_collection(map(), update_resource_collection_request()) ->
     {ok, update_resource_collection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_resource_collection_errors(), tuple()}.
 update_resource_collection(Client, Input) ->
     update_resource_collection(Client, Input, []).
 
 -spec update_resource_collection(map(), update_resource_collection_request(), proplists:proplist()) ->
     {ok, update_resource_collection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_resource_collection_errors(), tuple()}.
 update_resource_collection(Client, Input0, Options0) ->
     Method = put,
     Path = ["/resource-collections"],
@@ -2814,22 +2933,14 @@ update_resource_collection(Client, Input0, Options0) ->
 -spec update_service_integration(map(), update_service_integration_request()) ->
     {ok, update_service_integration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_service_integration_errors(), tuple()}.
 update_service_integration(Client, Input) ->
     update_service_integration(Client, Input, []).
 
 -spec update_service_integration(map(), update_service_integration_request(), proplists:proplist()) ->
     {ok, update_service_integration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_service_integration_errors(), tuple()}.
 update_service_integration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/service-integrations"],

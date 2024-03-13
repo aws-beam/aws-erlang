@@ -23,6 +23,7 @@
 %% }
 -type rationale() :: #{binary() => any()}.
 
+
 %% Example:
 %% inference_configuration() :: #{
 %%   <<"maximumLength">> => integer(),
@@ -33,12 +34,14 @@
 %% }
 -type inference_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% bad_gateway_exception() :: #{
 %%   <<"message">> => string(),
 %%   <<"resourceName">> => string()
 %% }
 -type bad_gateway_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% dependency_failed_exception() :: #{
@@ -47,12 +50,14 @@
 %% }
 -type dependency_failed_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% citation() :: #{
 %%   <<"generatedResponsePart">> => generated_response_part(),
 %%   <<"retrievedReferences">> => list(retrieved_reference()())
 %% }
 -type citation() :: #{binary() => any()}.
+
 
 %% Example:
 %% retrieve_and_generate_response() :: #{
@@ -62,11 +67,13 @@
 %% }
 -type retrieve_and_generate_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% knowledge_base_query() :: #{
 %%   <<"text">> => [string()]
 %% }
 -type knowledge_base_query() :: #{binary() => any()}.
+
 
 %% Example:
 %% payload_part() :: #{
@@ -75,12 +82,14 @@
 %% }
 -type payload_part() :: #{binary() => any()}.
 
+
 %% Example:
 %% failure_trace() :: #{
 %%   <<"failureReason">> => string(),
 %%   <<"traceId">> => string()
 %% }
 -type failure_trace() :: #{binary() => any()}.
+
 
 %% Example:
 %% action_group_invocation_input() :: #{
@@ -92,12 +101,14 @@
 %% }
 -type action_group_invocation_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% retrieved_reference() :: #{
 %%   <<"content">> => retrieval_result_content(),
 %%   <<"location">> => retrieval_result_location()
 %% }
 -type retrieved_reference() :: #{binary() => any()}.
+
 
 %% Example:
 %% retrieval_result_location() :: #{
@@ -106,11 +117,13 @@
 %% }
 -type retrieval_result_location() :: #{binary() => any()}.
 
+
 %% Example:
 %% retrieve_and_generate_session_configuration() :: #{
 %%   <<"kmsKeyArn">> => string()
 %% }
 -type retrieve_and_generate_session_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% retrieve_and_generate_request() :: #{
@@ -121,6 +134,7 @@
 %% }
 -type retrieve_and_generate_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% retrieve_and_generate_configuration() :: #{
 %%   <<"knowledgeBaseConfiguration">> => knowledge_base_retrieve_and_generate_configuration(),
@@ -128,17 +142,20 @@
 %% }
 -type retrieve_and_generate_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% retrieval_result_s3_location() :: #{
 %%   <<"uri">> => [string()]
 %% }
 -type retrieval_result_s3_location() :: #{binary() => any()}.
 
+
 %% Example:
 %% retrieval_result_content() :: #{
 %%   <<"text">> => [string()]
 %% }
 -type retrieval_result_content() :: #{binary() => any()}.
+
 
 %% Example:
 %% knowledge_base_retrieve_and_generate_configuration() :: #{
@@ -147,6 +164,7 @@
 %%   <<"retrievalConfiguration">> => knowledge_base_retrieval_configuration()
 %% }
 -type knowledge_base_retrieve_and_generate_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% observation() :: #{
@@ -159,12 +177,14 @@
 %% }
 -type observation() :: #{binary() => any()}.
 
+
 %% Example:
 %% span() :: #{
 %%   <<"end">> => [integer()],
 %%   <<"start">> => [integer()]
 %% }
 -type span() :: #{binary() => any()}.
+
 
 %% Example:
 %% pre_processing_parsed_response() :: #{
@@ -173,11 +193,13 @@
 %% }
 -type pre_processing_parsed_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -185,11 +207,13 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% post_processing_parsed_response() :: #{
 %%   <<"text">> => string()
 %% }
 -type post_processing_parsed_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% knowledge_base_retrieval_configuration() :: #{
@@ -197,11 +221,13 @@
 %% }
 -type knowledge_base_retrieval_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% text_response_part() :: #{
@@ -209,6 +235,7 @@
 %%   <<"text">> => [string()]
 %% }
 -type text_response_part() :: #{binary() => any()}.
+
 
 %% Example:
 %% invoke_agent_response() :: #{
@@ -218,6 +245,7 @@
 %% }
 -type invoke_agent_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% session_state() :: #{
 %%   <<"promptSessionAttributes">> => map(),
@@ -225,12 +253,14 @@
 %% }
 -type session_state() :: #{binary() => any()}.
 
+
 %% Example:
 %% pre_processing_model_invocation_output() :: #{
 %%   <<"parsedResponse">> => pre_processing_parsed_response(),
 %%   <<"traceId">> => string()
 %% }
 -type pre_processing_model_invocation_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% parameter() :: #{
@@ -240,11 +270,13 @@
 %% }
 -type parameter() :: #{binary() => any()}.
 
+
 %% Example:
 %% retrieve_and_generate_input() :: #{
 %%   <<"text">> => [string()]
 %% }
 -type retrieve_and_generate_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% reprompt_response() :: #{
@@ -253,11 +285,13 @@
 %% }
 -type reprompt_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% final_response() :: #{
 %%   <<"text">> => string()
 %% }
 -type final_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% knowledge_base_vector_search_configuration() :: #{
@@ -266,11 +300,13 @@
 %% }
 -type knowledge_base_vector_search_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% model_invocation_input() :: #{
@@ -284,11 +320,13 @@
 %% }
 -type model_invocation_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% attribution() :: #{
 %%   <<"citations">> => list(citation()())
 %% }
 -type attribution() :: #{binary() => any()}.
+
 
 %% Example:
 %% trace_part() :: #{
@@ -299,11 +337,13 @@
 %% }
 -type trace_part() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% generated_response_part() :: #{
@@ -311,11 +351,13 @@
 %% }
 -type generated_response_part() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% throttling_exception() :: #{
@@ -323,11 +365,13 @@
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% retrieve_and_generate_output() :: #{
 %%   <<"text">> => [string()]
 %% }
 -type retrieve_and_generate_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% action_group_invocation_output() :: #{
@@ -335,11 +379,13 @@
 %% }
 -type action_group_invocation_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% knowledge_base_lookup_output() :: #{
 %%   <<"retrievedReferences">> => list(retrieved_reference()())
 %% }
 -type knowledge_base_lookup_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% retrieve_request() :: #{
@@ -348,6 +394,7 @@
 %%   <<"retrievalQuery">> := knowledge_base_query()
 %% }
 -type retrieve_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% invoke_agent_request() :: #{
@@ -358,6 +405,7 @@
 %% }
 -type invoke_agent_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% invocation_input() :: #{
 %%   <<"actionGroupInvocationInput">> => action_group_invocation_input(),
@@ -367,11 +415,13 @@
 %% }
 -type invocation_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% request_body() :: #{
 %%   <<"content">> => map()
 %% }
 -type request_body() :: #{binary() => any()}.
+
 
 %% Example:
 %% post_processing_model_invocation_output() :: #{
@@ -380,12 +430,14 @@
 %% }
 -type post_processing_model_invocation_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% retrieve_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"retrievalResults">> => list(knowledge_base_retrieval_result()())
 %% }
 -type retrieve_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% knowledge_base_lookup_input() :: #{
@@ -394,6 +446,7 @@
 %% }
 -type knowledge_base_lookup_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% knowledge_base_retrieval_result() :: #{
 %%   <<"content">> => retrieval_result_content(),
@@ -401,6 +454,39 @@
 %%   <<"score">> => [float()]
 %% }
 -type knowledge_base_retrieval_result() :: #{binary() => any()}.
+
+-type invoke_agent_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    dependency_failed_exception() | 
+    bad_gateway_exception().
+
+-type retrieve_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    dependency_failed_exception() | 
+    bad_gateway_exception().
+
+-type retrieve_and_generate_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    dependency_failed_exception() | 
+    bad_gateway_exception().
 
 %%====================================================================
 %% API
@@ -436,30 +522,14 @@
 -spec invoke_agent(map(), binary() | list(), binary() | list(), binary() | list(), invoke_agent_request()) ->
     {ok, invoke_agent_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, dependency_failed_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, invoke_agent_errors(), tuple()}.
 invoke_agent(Client, AgentAliasId, AgentId, SessionId, Input) ->
     invoke_agent(Client, AgentAliasId, AgentId, SessionId, Input, []).
 
 -spec invoke_agent(map(), binary() | list(), binary() | list(), binary() | list(), invoke_agent_request(), proplists:proplist()) ->
     {ok, invoke_agent_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, dependency_failed_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, invoke_agent_errors(), tuple()}.
 invoke_agent(Client, AgentAliasId, AgentId, SessionId, Input0, Options0) ->
     Method = post,
     Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentAliases/", aws_util:encode_uri(AgentAliasId), "/sessions/", aws_util:encode_uri(SessionId), "/text"],
@@ -503,30 +573,14 @@ invoke_agent(Client, AgentAliasId, AgentId, SessionId, Input0, Options0) ->
 -spec retrieve(map(), binary() | list(), retrieve_request()) ->
     {ok, retrieve_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, dependency_failed_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, retrieve_errors(), tuple()}.
 retrieve(Client, KnowledgeBaseId, Input) ->
     retrieve(Client, KnowledgeBaseId, Input, []).
 
 -spec retrieve(map(), binary() | list(), retrieve_request(), proplists:proplist()) ->
     {ok, retrieve_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, dependency_failed_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, retrieve_errors(), tuple()}.
 retrieve(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/retrieve"],
@@ -563,30 +617,14 @@ retrieve(Client, KnowledgeBaseId, Input0, Options0) ->
 -spec retrieve_and_generate(map(), retrieve_and_generate_request()) ->
     {ok, retrieve_and_generate_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, dependency_failed_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, retrieve_and_generate_errors(), tuple()}.
 retrieve_and_generate(Client, Input) ->
     retrieve_and_generate(Client, Input, []).
 
 -spec retrieve_and_generate(map(), retrieve_and_generate_request(), proplists:proplist()) ->
     {ok, retrieve_and_generate_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, dependency_failed_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, retrieve_and_generate_errors(), tuple()}.
 retrieve_and_generate(Client, Input0, Options0) ->
     Method = post,
     Path = ["/retrieveAndGenerate"],

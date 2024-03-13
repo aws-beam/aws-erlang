@@ -127,6 +127,7 @@
 %% }
 -type delete_object_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% grant_permissions_request() :: #{
 %%   <<"CatalogId">> => string(),
@@ -137,12 +138,14 @@
 %% }
 -type grant_permissions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_permissions_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"PrincipalResourcePermissions">> => list(principal_resource_permissions()())
 %% }
 -type list_permissions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_databases_by_l_f_tags_request() :: #{
@@ -153,11 +156,13 @@
 %% }
 -type search_databases_by_l_f_tags_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_lake_formation_identity_center_configuration_response() :: #{
 %%   <<"ApplicationArn">> => string()
 %% }
 -type create_lake_formation_identity_center_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% l_f_tag_key_resource() :: #{
@@ -167,6 +172,7 @@
 %% }
 -type l_f_tag_key_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% principal_permissions() :: #{
 %%   <<"Permissions">> => list(list(any())()),
@@ -174,17 +180,20 @@
 %% }
 -type principal_permissions() :: #{binary() => any()}.
 
+
 %% Example:
 %% entity_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type entity_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% operation_timeout_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type operation_timeout_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_resources_response() :: #{
@@ -193,11 +202,13 @@
 %% }
 -type list_resources_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_resource_response() :: #{
 %%   <<"ResourceInfo">> => resource_info()
 %% }
 -type describe_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% filter_condition() :: #{
@@ -207,6 +218,7 @@
 %% }
 -type filter_condition() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_l_f_tag_request() :: #{
 %%   <<"CatalogId">> => string(),
@@ -215,6 +227,7 @@
 %%   <<"TagValuesToDelete">> => list(string()())
 %% }
 -type update_l_f_tag_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% query_session_context() :: #{
@@ -226,6 +239,7 @@
 %% }
 -type query_session_context() :: #{binary() => any()}.
 
+
 %% Example:
 %% l_f_tag() :: #{
 %%   <<"TagKey">> => string(),
@@ -233,11 +247,13 @@
 %% }
 -type l_f_tag() :: #{binary() => any()}.
 
+
 %% Example:
 %% expired_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type expired_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_resource_request() :: #{
@@ -248,6 +264,7 @@
 %% }
 -type update_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_table_storage_optimizer_request() :: #{
 %%   <<"CatalogId">> => string(),
@@ -257,11 +274,13 @@
 %% }
 -type update_table_storage_optimizer_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% commit_transaction_request() :: #{
 %%   <<"TransactionId">> := string()
 %% }
 -type commit_transaction_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_l_f_tag_request() :: #{
@@ -269,6 +288,7 @@
 %%   <<"TagKey">> := string()
 %% }
 -type get_l_f_tag_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_resource_l_f_tags_response() :: #{
@@ -278,17 +298,20 @@
 %% }
 -type get_resource_l_f_tags_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% cancel_transaction_request() :: #{
 %%   <<"TransactionId">> := string()
 %% }
 -type cancel_transaction_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_transaction_response() :: #{
 %%   <<"TransactionDescription">> => transaction_description()
 %% }
 -type describe_transaction_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% l_f_tag_policy_resource() :: #{
@@ -297,6 +320,7 @@
 %%   <<"ResourceType">> => list(any())
 %% }
 -type l_f_tag_policy_resource() :: #{binary() => any()}.
+
 
 %% Example:
 %% table_resource() :: #{
@@ -307,12 +331,14 @@
 %% }
 -type table_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% l_f_tag_error() :: #{
 %%   <<"Error">> => error_detail(),
 %%   <<"LFTag">> => l_f_tag_pair()
 %% }
 -type l_f_tag_error() :: #{binary() => any()}.
+
 
 %% Example:
 %% planning_statistics() :: #{
@@ -323,11 +349,13 @@
 %% }
 -type planning_statistics() :: #{binary() => any()}.
 
+
 %% Example:
 %% already_exists_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type already_exists_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_lake_formation_identity_center_configuration_request() :: #{
@@ -336,9 +364,11 @@
 %%   <<"ExternalFiltering">> => external_filtering_configuration()
 %% }
 -type update_lake_formation_identity_center_configuration_request() :: #{binary() => any()}.
+
 %% Example:
 %% all_rows_wildcard() :: #{}
 -type all_rows_wildcard() :: #{}.
+
 
 %% Example:
 %% create_lake_formation_identity_center_configuration_request() :: #{
@@ -348,12 +378,14 @@
 %% }
 -type create_lake_formation_identity_center_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_transactions_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Transactions">> => list(transaction_description()())
 %% }
 -type list_transactions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_temporary_glue_partition_credentials_response() :: #{
@@ -364,6 +396,7 @@
 %% }
 -type get_temporary_glue_partition_credentials_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% database_resource() :: #{
 %%   <<"CatalogId">> => string(),
@@ -371,15 +404,18 @@
 %% }
 -type database_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_lake_formation_opt_in_request() :: #{
 %%   <<"Principal">> := data_lake_principal(),
 %%   <<"Resource">> := resource()
 %% }
 -type delete_lake_formation_opt_in_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_l_f_tag_response() :: #{}
 -type delete_l_f_tag_response() :: #{}.
+
 
 %% Example:
 %% tagged_table() :: #{
@@ -389,6 +425,7 @@
 %%   <<"Table">> => table_resource()
 %% }
 -type tagged_table() :: #{binary() => any()}.
+
 
 %% Example:
 %% principal_resource_permissions() :: #{
@@ -402,12 +439,14 @@
 %% }
 -type principal_resource_permissions() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_table_storage_optimizers_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"StorageOptimizerList">> => list(storage_optimizer()())
 %% }
 -type list_table_storage_optimizers_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_tables_by_l_f_tags_request() :: #{
@@ -418,11 +457,13 @@
 %% }
 -type search_tables_by_l_f_tags_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% transaction_canceled_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type transaction_canceled_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% partition_objects() :: #{
@@ -431,17 +472,20 @@
 %% }
 -type partition_objects() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_query_state_request() :: #{
 %%   <<"QueryId">> := string()
 %% }
 -type get_query_state_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_service_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_service_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_l_f_tag_response() :: #{
@@ -450,9 +494,11 @@
 %%   <<"TagValues">> => list(string()())
 %% }
 -type get_l_f_tag_response() :: #{binary() => any()}.
+
 %% Example:
 %% deregister_resource_response() :: #{}
 -type deregister_resource_response() :: #{}.
+
 
 %% Example:
 %% create_l_f_tag_request() :: #{
@@ -462,12 +508,14 @@
 %% }
 -type create_l_f_tag_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_lake_formation_opt_ins_response() :: #{
 %%   <<"LakeFormationOptInsInfoList">> => list(lake_formation_opt_ins_info()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_lake_formation_opt_ins_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_data_cells_filter_request() :: #{
@@ -477,11 +525,13 @@
 %% }
 -type list_data_cells_filter_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_number_limit_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type resource_number_limit_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% virtual_object() :: #{
@@ -490,17 +540,20 @@
 %% }
 -type virtual_object() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_transaction_request() :: #{
 %%   <<"TransactionType">> => list(any())
 %% }
 -type start_transaction_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% transaction_commit_in_progress_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type transaction_commit_in_progress_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_transactions_request() :: #{
@@ -510,9 +563,11 @@
 %%   <<"StatusFilter">> => list(any())
 %% }
 -type list_transactions_request() :: #{binary() => any()}.
+
 %% Example:
 %% extend_transaction_response() :: #{}
 -type extend_transaction_response() :: #{}.
+
 
 %% Example:
 %% query_planning_context() :: #{
@@ -524,12 +579,14 @@
 %% }
 -type query_planning_context() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_lake_formation_opt_in_request() :: #{
 %%   <<"Principal">> := data_lake_principal(),
 %%   <<"Resource">> := resource()
 %% }
 -type create_lake_formation_opt_in_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_table_objects_request() :: #{
@@ -544,6 +601,7 @@
 %% }
 -type get_table_objects_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_query_planning_request() :: #{
 %%   <<"QueryPlanningContext">> := query_planning_context(),
@@ -551,17 +609,20 @@
 %% }
 -type start_query_planning_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_lake_principal() :: #{
 %%   <<"DataLakePrincipalIdentifier">> => string()
 %% }
 -type data_lake_principal() :: #{binary() => any()}.
 
+
 %% Example:
 %% add_l_f_tags_to_resource_response() :: #{
 %%   <<"Failures">> => list(l_f_tag_error()())
 %% }
 -type add_l_f_tags_to_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_cells_filter() :: #{
@@ -576,11 +637,13 @@
 %% }
 -type data_cells_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttled_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type throttled_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% storage_optimizer() :: #{
@@ -592,27 +655,33 @@
 %% }
 -type storage_optimizer() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_location_resource() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"ResourceArn">> => string()
 %% }
 -type data_location_resource() :: #{binary() => any()}.
+
 %% Example:
 %% delete_data_cells_filter_response() :: #{}
 -type delete_data_cells_filter_response() :: #{}.
+
 %% Example:
 %% register_resource_response() :: #{}
 -type register_resource_response() :: #{}.
+
 %% Example:
 %% put_data_lake_settings_response() :: #{}
 -type put_data_lake_settings_response() :: #{}.
+
 
 %% Example:
 %% partition_value_list() :: #{
 %%   <<"Values">> => list(string()())
 %% }
 -type partition_value_list() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_work_unit_results_request() :: #{
@@ -622,21 +691,25 @@
 %% }
 -type get_work_unit_results_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_databases_by_l_f_tags_response() :: #{
 %%   <<"DatabaseList">> => list(tagged_database()()),
 %%   <<"NextToken">> => string()
 %% }
 -type search_databases_by_l_f_tags_response() :: #{binary() => any()}.
+
 %% Example:
 %% update_l_f_tag_response() :: #{}
 -type update_l_f_tag_response() :: #{}.
+
 
 %% Example:
 %% get_data_lake_settings_request() :: #{
 %%   <<"CatalogId">> => string()
 %% }
 -type get_data_lake_settings_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_temporary_glue_partition_credentials_request() :: #{
@@ -648,9 +721,11 @@
 %%   <<"TableArn">> := string()
 %% }
 -type get_temporary_glue_partition_credentials_request() :: #{binary() => any()}.
+
 %% Example:
 %% update_data_cells_filter_response() :: #{}
 -type update_data_cells_filter_response() :: #{}.
+
 
 %% Example:
 %% transaction_committed_exception() :: #{
@@ -658,11 +733,13 @@
 %% }
 -type transaction_committed_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% column_wildcard() :: #{
 %%   <<"ExcludedColumnNames">> => list(string()())
 %% }
 -type column_wildcard() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_permissions_request_entry() :: #{
@@ -673,24 +750,30 @@
 %%   <<"Resource">> => resource()
 %% }
 -type batch_permissions_request_entry() :: #{binary() => any()}.
+
 %% Example:
 %% update_table_objects_response() :: #{}
 -type update_table_objects_response() :: #{}.
+
 
 %% Example:
 %% commit_transaction_response() :: #{
 %%   <<"TransactionStatus">> => list(any())
 %% }
 -type commit_transaction_response() :: #{binary() => any()}.
+
 %% Example:
 %% table_wildcard() :: #{}
 -type table_wildcard() :: #{}.
+
 %% Example:
 %% catalog_resource() :: #{}
 -type catalog_resource() :: #{}.
+
 %% Example:
 %% update_resource_response() :: #{}
 -type update_resource_response() :: #{}.
+
 
 %% Example:
 %% table_object() :: #{
@@ -700,11 +783,13 @@
 %% }
 -type table_object() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_transaction_request() :: #{
 %%   <<"TransactionId">> := string()
 %% }
 -type describe_transaction_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% lake_formation_opt_ins_info() :: #{
@@ -715,17 +800,20 @@
 %% }
 -type lake_formation_opt_ins_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% remove_l_f_tags_from_resource_response() :: #{
 %%   <<"Failures">> => list(l_f_tag_error()())
 %% }
 -type remove_l_f_tags_from_resource_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% details_map() :: #{
 %%   <<"ResourceShare">> => list(string()())
 %% }
 -type details_map() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_work_units_request() :: #{
@@ -735,12 +823,14 @@
 %% }
 -type get_work_units_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_tables_by_l_f_tags_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"TableList">> => list(tagged_table()())
 %% }
 -type search_tables_by_l_f_tags_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% add_object_input() :: #{
@@ -751,6 +841,7 @@
 %% }
 -type add_object_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% transaction_description() :: #{
 %%   <<"TransactionEndTime">> => non_neg_integer(),
@@ -760,6 +851,7 @@
 %% }
 -type transaction_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_resource_l_f_tags_request() :: #{
 %%   <<"CatalogId">> => string(),
@@ -768,6 +860,7 @@
 %% }
 -type get_resource_l_f_tags_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% row_filter() :: #{
 %%   <<"AllRowsWildcard">> => all_rows_wildcard(),
@@ -775,14 +868,17 @@
 %% }
 -type row_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_input_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_input_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_objects_on_cancel_response() :: #{}
 -type delete_objects_on_cancel_response() :: #{}.
+
 
 %% Example:
 %% get_data_lake_settings_response() :: #{
@@ -790,11 +886,13 @@
 %% }
 -type get_data_lake_settings_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_data_cells_filter_request() :: #{
 %%   <<"TableData">> := data_cells_filter()
 %% }
 -type update_data_cells_filter_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% write_operation() :: #{
@@ -802,6 +900,7 @@
 %%   <<"DeleteObject">> => delete_object_input()
 %% }
 -type write_operation() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_temporary_glue_table_credentials_response() :: #{
@@ -813,6 +912,7 @@
 %% }
 -type get_temporary_glue_table_credentials_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_lake_formation_identity_center_configuration_response() :: #{
 %%   <<"ApplicationArn">> => string(),
@@ -822,12 +922,14 @@
 %% }
 -type describe_lake_formation_identity_center_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_query_state_response() :: #{
 %%   <<"Error">> => string(),
 %%   <<"State">> => list(any())
 %% }
 -type get_query_state_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% l_f_tag_pair() :: #{
@@ -837,12 +939,14 @@
 %% }
 -type l_f_tag_pair() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_l_f_tag_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"TagKey">> := string()
 %% }
 -type delete_l_f_tag_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_lake_formation_opt_ins_request() :: #{
@@ -853,17 +957,21 @@
 %% }
 -type list_lake_formation_opt_ins_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_lake_formation_identity_center_configuration_request() :: #{
 %%   <<"CatalogId">> => string()
 %% }
 -type describe_lake_formation_identity_center_configuration_request() :: #{binary() => any()}.
+
 %% Example:
 %% create_l_f_tag_response() :: #{}
 -type create_l_f_tag_response() :: #{}.
+
 %% Example:
 %% delete_lake_formation_identity_center_configuration_response() :: #{}
 -type delete_lake_formation_identity_center_configuration_response() :: #{}.
+
 
 %% Example:
 %% list_permissions_request() :: #{
@@ -877,11 +985,13 @@
 %% }
 -type list_permissions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_revoke_permissions_response() :: #{
 %%   <<"Failures">> => list(batch_permissions_failure_entry()())
 %% }
 -type batch_revoke_permissions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_table_objects_request() :: #{
@@ -892,9 +1002,11 @@
 %%   <<"WriteOperations">> := list(write_operation()())
 %% }
 -type update_table_objects_request() :: #{binary() => any()}.
+
 %% Example:
 %% update_lake_formation_identity_center_configuration_response() :: #{}
 -type update_lake_formation_identity_center_configuration_response() :: #{}.
+
 
 %% Example:
 %% list_data_cells_filter_response() :: #{
@@ -903,12 +1015,14 @@
 %% }
 -type list_data_cells_filter_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_permissions_failure_entry() :: #{
 %%   <<"Error">> => error_detail(),
 %%   <<"RequestEntry">> => batch_permissions_request_entry()
 %% }
 -type batch_permissions_failure_entry() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_effective_permissions_for_path_response() :: #{
@@ -917,6 +1031,7 @@
 %% }
 -type get_effective_permissions_for_path_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_grant_permissions_request() :: #{
 %%   <<"CatalogId">> => string(),
@@ -924,11 +1039,13 @@
 %% }
 -type batch_grant_permissions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_table_storage_optimizer_response() :: #{
 %%   <<"Result">> => string()
 %% }
 -type update_table_storage_optimizer_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_l_f_tags_request() :: #{
@@ -938,15 +1055,18 @@
 %%   <<"ResourceShareType">> => list(any())
 %% }
 -type list_l_f_tags_request() :: #{binary() => any()}.
+
 %% Example:
 %% revoke_permissions_response() :: #{}
 -type revoke_permissions_response() :: #{}.
+
 
 %% Example:
 %% get_work_unit_results_response() :: #{
 %%   <<"ResultStream">> => binary()
 %% }
 -type get_work_unit_results_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% register_resource_request() :: #{
@@ -958,6 +1078,7 @@
 %% }
 -type register_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_objects_on_cancel_request() :: #{
 %%   <<"CatalogId">> => string(),
@@ -968,15 +1089,18 @@
 %% }
 -type delete_objects_on_cancel_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% error_detail() :: #{
 %%   <<"ErrorCode">> => string(),
 %%   <<"ErrorMessage">> => string()
 %% }
 -type error_detail() :: #{binary() => any()}.
+
 %% Example:
 %% create_lake_formation_opt_in_response() :: #{}
 -type create_lake_formation_opt_in_response() :: #{}.
+
 
 %% Example:
 %% data_lake_settings() :: #{
@@ -993,17 +1117,20 @@
 %% }
 -type data_lake_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% statistics_not_ready_yet_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type statistics_not_ready_yet_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% assume_decorated_role_with_saml_request() :: #{
@@ -1014,11 +1141,13 @@
 %% }
 -type assume_decorated_role_with_saml_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_grant_permissions_response() :: #{
 %%   <<"Failures">> => list(batch_permissions_failure_entry()())
 %% }
 -type batch_grant_permissions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% external_filtering_configuration() :: #{
@@ -1026,9 +1155,11 @@
 %%   <<"Status">> => list(any())
 %% }
 -type external_filtering_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% create_data_cells_filter_response() :: #{}
 -type create_data_cells_filter_response() :: #{}.
+
 
 %% Example:
 %% data_cells_filter_resource() :: #{
@@ -1039,11 +1170,13 @@
 %% }
 -type data_cells_filter_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% concurrent_modification_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type concurrent_modification_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_query_statistics_request() :: #{
@@ -1051,17 +1184,20 @@
 %% }
 -type get_query_statistics_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% work_units_not_ready_yet_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type work_units_not_ready_yet_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% audit_context() :: #{
 %%   <<"AdditionalAuditContext">> => string()
 %% }
 -type audit_context() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_work_units_response() :: #{
@@ -1071,12 +1207,14 @@
 %% }
 -type get_work_units_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% tagged_database() :: #{
 %%   <<"Database">> => database_resource(),
 %%   <<"LFTags">> => list(l_f_tag_pair()())
 %% }
 -type tagged_database() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_data_lake_settings_request() :: #{
@@ -1085,6 +1223,7 @@
 %% }
 -type put_data_lake_settings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_revoke_permissions_request() :: #{
 %%   <<"CatalogId">> => string(),
@@ -1092,17 +1231,20 @@
 %% }
 -type batch_revoke_permissions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_data_cells_filter_request() :: #{
 %%   <<"TableData">> := data_cells_filter()
 %% }
 -type create_data_cells_filter_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% permission_type_mismatch_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type permission_type_mismatch_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% execution_statistics() :: #{
@@ -1112,6 +1254,7 @@
 %% }
 -type execution_statistics() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_query_statistics_response() :: #{
 %%   <<"ExecutionStatistics">> => execution_statistics(),
@@ -1119,6 +1262,7 @@
 %%   <<"QuerySubmissionTime">> => non_neg_integer()
 %% }
 -type get_query_statistics_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_info() :: #{
@@ -1130,11 +1274,13 @@
 %% }
 -type resource_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_resource_request() :: #{
 %%   <<"ResourceArn">> := string()
 %% }
 -type describe_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_table_objects_response() :: #{
@@ -1143,11 +1289,13 @@
 %% }
 -type get_table_objects_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% extend_transaction_request() :: #{
 %%   <<"TransactionId">> => string()
 %% }
 -type extend_transaction_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% table_with_columns_resource() :: #{
@@ -1159,6 +1307,7 @@
 %% }
 -type table_with_columns_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_resources_request() :: #{
 %%   <<"FilterConditionList">> => list(filter_condition()()),
@@ -1167,12 +1316,14 @@
 %% }
 -type list_resources_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_l_f_tags_response() :: #{
 %%   <<"LFTags">> => list(l_f_tag_pair()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_l_f_tags_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% revoke_permissions_request() :: #{
@@ -1184,6 +1335,7 @@
 %% }
 -type revoke_permissions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_data_cells_filter_request() :: #{
 %%   <<"DatabaseName">> => string(),
@@ -1193,14 +1345,17 @@
 %% }
 -type delete_data_cells_filter_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_lake_formation_identity_center_configuration_request() :: #{
 %%   <<"CatalogId">> => string()
 %% }
 -type delete_lake_formation_identity_center_configuration_request() :: #{binary() => any()}.
+
 %% Example:
 %% cancel_transaction_response() :: #{}
 -type cancel_transaction_response() :: #{}.
+
 
 %% Example:
 %% get_data_cells_filter_request() :: #{
@@ -1210,6 +1365,7 @@
 %%   <<"TableName">> := string()
 %% }
 -type get_data_cells_filter_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_temporary_glue_table_credentials_request() :: #{
@@ -1223,11 +1379,13 @@
 %% }
 -type get_temporary_glue_table_credentials_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% glue_encryption_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type glue_encryption_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% remove_l_f_tags_from_resource_request() :: #{
@@ -1236,6 +1394,7 @@
 %%   <<"Resource">> := resource()
 %% }
 -type remove_l_f_tags_from_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_effective_permissions_for_path_request() :: #{
@@ -1246,6 +1405,7 @@
 %% }
 -type get_effective_permissions_for_path_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% work_unit_range() :: #{
 %%   <<"WorkUnitIdMax">> => float(),
@@ -1254,17 +1414,20 @@
 %% }
 -type work_unit_range() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_data_cells_filter_response() :: #{
 %%   <<"DataCellsFilter">> => data_cells_filter()
 %% }
 -type get_data_cells_filter_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_ready_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type resource_not_ready_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% assume_decorated_role_with_saml_response() :: #{
@@ -1275,11 +1438,13 @@
 %% }
 -type assume_decorated_role_with_saml_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% deregister_resource_request() :: #{
 %%   <<"ResourceArn">> := string()
 %% }
 -type deregister_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_table_storage_optimizers_request() :: #{
@@ -1292,17 +1457,21 @@
 %% }
 -type list_table_storage_optimizers_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_transaction_response() :: #{
 %%   <<"TransactionId">> => string()
 %% }
 -type start_transaction_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_lake_formation_opt_in_response() :: #{}
 -type delete_lake_formation_opt_in_response() :: #{}.
+
 %% Example:
 %% grant_permissions_response() :: #{}
 -type grant_permissions_response() :: #{}.
+
 
 %% Example:
 %% add_l_f_tags_to_resource_request() :: #{
@@ -1312,11 +1481,13 @@
 %% }
 -type add_l_f_tags_to_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_query_planning_response() :: #{
 %%   <<"QueryId">> => string()
 %% }
 -type start_query_planning_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% column_l_f_tag() :: #{
@@ -1324,6 +1495,7 @@
 %%   <<"Name">> => string()
 %% }
 -type column_l_f_tag() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource() :: #{
@@ -1338,6 +1510,383 @@
 %% }
 -type resource() :: #{binary() => any()}.
 
+-type add_l_f_tags_to_resource_errors() ::
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type assume_decorated_role_with_saml_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type batch_grant_permissions_errors() ::
+    invalid_input_exception() | 
+    operation_timeout_exception().
+
+-type batch_revoke_permissions_errors() ::
+    invalid_input_exception() | 
+    operation_timeout_exception().
+
+-type cancel_transaction_errors() ::
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    transaction_committed_exception() | 
+    transaction_commit_in_progress_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type commit_transaction_errors() ::
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    transaction_canceled_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type create_data_cells_filter_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    already_exists_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type create_l_f_tag_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type create_lake_formation_identity_center_configuration_errors() ::
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    already_exists_exception() | 
+    operation_timeout_exception().
+
+-type create_lake_formation_opt_in_errors() ::
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type delete_data_cells_filter_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type delete_l_f_tag_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type delete_lake_formation_identity_center_configuration_errors() ::
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type delete_lake_formation_opt_in_errors() ::
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type delete_objects_on_cancel_errors() ::
+    resource_not_ready_exception() | 
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    transaction_committed_exception() | 
+    internal_service_exception() | 
+    transaction_canceled_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type deregister_resource_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type describe_lake_formation_identity_center_configuration_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type describe_resource_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type describe_transaction_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type extend_transaction_errors() ::
+    invalid_input_exception() | 
+    transaction_committed_exception() | 
+    transaction_commit_in_progress_exception() | 
+    internal_service_exception() | 
+    transaction_canceled_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_data_cells_filter_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_data_lake_settings_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type get_effective_permissions_for_path_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_l_f_tag_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_query_state_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception().
+
+-type get_query_statistics_errors() ::
+    statistics_not_ready_yet_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    throttled_exception() | 
+    internal_service_exception() | 
+    expired_exception().
+
+-type get_resource_l_f_tags_errors() ::
+    glue_encryption_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_table_objects_errors() ::
+    resource_not_ready_exception() | 
+    invalid_input_exception() | 
+    transaction_committed_exception() | 
+    internal_service_exception() | 
+    transaction_canceled_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_temporary_glue_partition_credentials_errors() ::
+    permission_type_mismatch_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_temporary_glue_table_credentials_errors() ::
+    permission_type_mismatch_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_work_unit_results_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    throttled_exception() | 
+    internal_service_exception() | 
+    expired_exception().
+
+-type get_work_units_errors() ::
+    work_units_not_ready_yet_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    expired_exception().
+
+-type grant_permissions_errors() ::
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    entity_not_found_exception().
+
+-type list_data_cells_filter_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type list_l_f_tags_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type list_lake_formation_opt_ins_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type list_permissions_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type list_resources_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type list_table_storage_optimizers_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type list_transactions_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type put_data_lake_settings_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception().
+
+-type register_resource_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    already_exists_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type remove_l_f_tags_from_resource_errors() ::
+    glue_encryption_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type revoke_permissions_errors() ::
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    entity_not_found_exception().
+
+-type search_databases_by_l_f_tags_errors() ::
+    glue_encryption_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type search_tables_by_l_f_tags_errors() ::
+    glue_encryption_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type start_query_planning_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    throttled_exception() | 
+    internal_service_exception().
+
+-type start_transaction_errors() ::
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type update_data_cells_filter_errors() ::
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type update_l_f_tag_errors() ::
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type update_lake_formation_identity_center_configuration_errors() ::
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type update_resource_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type update_table_objects_errors() ::
+    resource_not_ready_exception() | 
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    transaction_committed_exception() | 
+    transaction_commit_in_progress_exception() | 
+    internal_service_exception() | 
+    transaction_canceled_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type update_table_storage_optimizer_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -1346,24 +1895,14 @@
 -spec add_l_f_tags_to_resource(map(), add_l_f_tags_to_resource_request()) ->
     {ok, add_l_f_tags_to_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, add_l_f_tags_to_resource_errors(), tuple()}.
 add_l_f_tags_to_resource(Client, Input) ->
     add_l_f_tags_to_resource(Client, Input, []).
 
 -spec add_l_f_tags_to_resource(map(), add_l_f_tags_to_resource_request(), proplists:proplist()) ->
     {ok, add_l_f_tags_to_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, add_l_f_tags_to_resource_errors(), tuple()}.
 add_l_f_tags_to_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/AddLFTagsToResource"],
@@ -1406,22 +1945,14 @@ add_l_f_tags_to_resource(Client, Input0, Options0) ->
 -spec assume_decorated_role_with_saml(map(), assume_decorated_role_with_saml_request()) ->
     {ok, assume_decorated_role_with_saml_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, assume_decorated_role_with_saml_errors(), tuple()}.
 assume_decorated_role_with_saml(Client, Input) ->
     assume_decorated_role_with_saml(Client, Input, []).
 
 -spec assume_decorated_role_with_saml(map(), assume_decorated_role_with_saml_request(), proplists:proplist()) ->
     {ok, assume_decorated_role_with_saml_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, assume_decorated_role_with_saml_errors(), tuple()}.
 assume_decorated_role_with_saml(Client, Input0, Options0) ->
     Method = post,
     Path = ["/AssumeDecoratedRoleWithSAML"],
@@ -1448,16 +1979,14 @@ assume_decorated_role_with_saml(Client, Input0, Options0) ->
 -spec batch_grant_permissions(map(), batch_grant_permissions_request()) ->
     {ok, batch_grant_permissions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_grant_permissions_errors(), tuple()}.
 batch_grant_permissions(Client, Input) ->
     batch_grant_permissions(Client, Input, []).
 
 -spec batch_grant_permissions(map(), batch_grant_permissions_request(), proplists:proplist()) ->
     {ok, batch_grant_permissions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_grant_permissions_errors(), tuple()}.
 batch_grant_permissions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/BatchGrantPermissions"],
@@ -1484,16 +2013,14 @@ batch_grant_permissions(Client, Input0, Options0) ->
 -spec batch_revoke_permissions(map(), batch_revoke_permissions_request()) ->
     {ok, batch_revoke_permissions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_revoke_permissions_errors(), tuple()}.
 batch_revoke_permissions(Client, Input) ->
     batch_revoke_permissions(Client, Input, []).
 
 -spec batch_revoke_permissions(map(), batch_revoke_permissions_request(), proplists:proplist()) ->
     {ok, batch_revoke_permissions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_revoke_permissions_errors(), tuple()}.
 batch_revoke_permissions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/BatchRevokePermissions"],
@@ -1522,26 +2049,14 @@ batch_revoke_permissions(Client, Input0, Options0) ->
 -spec cancel_transaction(map(), cancel_transaction_request()) ->
     {ok, cancel_transaction_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, transaction_commit_in_progress_exception(), tuple()} |
-    {error, transaction_committed_exception(), tuple()}.
+    {error, cancel_transaction_errors(), tuple()}.
 cancel_transaction(Client, Input) ->
     cancel_transaction(Client, Input, []).
 
 -spec cancel_transaction(map(), cancel_transaction_request(), proplists:proplist()) ->
     {ok, cancel_transaction_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, transaction_commit_in_progress_exception(), tuple()} |
-    {error, transaction_committed_exception(), tuple()}.
+    {error, cancel_transaction_errors(), tuple()}.
 cancel_transaction(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CancelTransaction"],
@@ -1571,24 +2086,14 @@ cancel_transaction(Client, Input0, Options0) ->
 -spec commit_transaction(map(), commit_transaction_request()) ->
     {ok, commit_transaction_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, transaction_canceled_exception(), tuple()}.
+    {error, commit_transaction_errors(), tuple()}.
 commit_transaction(Client, Input) ->
     commit_transaction(Client, Input, []).
 
 -spec commit_transaction(map(), commit_transaction_request(), proplists:proplist()) ->
     {ok, commit_transaction_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, transaction_canceled_exception(), tuple()}.
+    {error, commit_transaction_errors(), tuple()}.
 commit_transaction(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CommitTransaction"],
@@ -1616,26 +2121,14 @@ commit_transaction(Client, Input0, Options0) ->
 -spec create_data_cells_filter(map(), create_data_cells_filter_request()) ->
     {ok, create_data_cells_filter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_data_cells_filter_errors(), tuple()}.
 create_data_cells_filter(Client, Input) ->
     create_data_cells_filter(Client, Input, []).
 
 -spec create_data_cells_filter(map(), create_data_cells_filter_request(), proplists:proplist()) ->
     {ok, create_data_cells_filter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_data_cells_filter_errors(), tuple()}.
 create_data_cells_filter(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateDataCellsFilter"],
@@ -1662,24 +2155,14 @@ create_data_cells_filter(Client, Input0, Options0) ->
 -spec create_l_f_tag(map(), create_l_f_tag_request()) ->
     {ok, create_l_f_tag_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_l_f_tag_errors(), tuple()}.
 create_l_f_tag(Client, Input) ->
     create_l_f_tag(Client, Input, []).
 
 -spec create_l_f_tag(map(), create_l_f_tag_request(), proplists:proplist()) ->
     {ok, create_l_f_tag_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_l_f_tag_errors(), tuple()}.
 create_l_f_tag(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateLFTag"],
@@ -1708,24 +2191,14 @@ create_l_f_tag(Client, Input0, Options0) ->
 -spec create_lake_formation_identity_center_configuration(map(), create_lake_formation_identity_center_configuration_request()) ->
     {ok, create_lake_formation_identity_center_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, create_lake_formation_identity_center_configuration_errors(), tuple()}.
 create_lake_formation_identity_center_configuration(Client, Input) ->
     create_lake_formation_identity_center_configuration(Client, Input, []).
 
 -spec create_lake_formation_identity_center_configuration(map(), create_lake_formation_identity_center_configuration_request(), proplists:proplist()) ->
     {ok, create_lake_formation_identity_center_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, create_lake_formation_identity_center_configuration_errors(), tuple()}.
 create_lake_formation_identity_center_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateLakeFormationIdentityCenterConfiguration"],
@@ -1753,24 +2226,14 @@ create_lake_formation_identity_center_configuration(Client, Input0, Options0) ->
 -spec create_lake_formation_opt_in(map(), create_lake_formation_opt_in_request()) ->
     {ok, create_lake_formation_opt_in_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, create_lake_formation_opt_in_errors(), tuple()}.
 create_lake_formation_opt_in(Client, Input) ->
     create_lake_formation_opt_in(Client, Input, []).
 
 -spec create_lake_formation_opt_in(map(), create_lake_formation_opt_in_request(), proplists:proplist()) ->
     {ok, create_lake_formation_opt_in_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, create_lake_formation_opt_in_errors(), tuple()}.
 create_lake_formation_opt_in(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateLakeFormationOptIn"],
@@ -1797,22 +2260,14 @@ create_lake_formation_opt_in(Client, Input0, Options0) ->
 -spec delete_data_cells_filter(map(), delete_data_cells_filter_request()) ->
     {ok, delete_data_cells_filter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_data_cells_filter_errors(), tuple()}.
 delete_data_cells_filter(Client, Input) ->
     delete_data_cells_filter(Client, Input, []).
 
 -spec delete_data_cells_filter(map(), delete_data_cells_filter_request(), proplists:proplist()) ->
     {ok, delete_data_cells_filter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_data_cells_filter_errors(), tuple()}.
 delete_data_cells_filter(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteDataCellsFilter"],
@@ -1845,22 +2300,14 @@ delete_data_cells_filter(Client, Input0, Options0) ->
 -spec delete_l_f_tag(map(), delete_l_f_tag_request()) ->
     {ok, delete_l_f_tag_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_l_f_tag_errors(), tuple()}.
 delete_l_f_tag(Client, Input) ->
     delete_l_f_tag(Client, Input, []).
 
 -spec delete_l_f_tag(map(), delete_l_f_tag_request(), proplists:proplist()) ->
     {ok, delete_l_f_tag_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_l_f_tag_errors(), tuple()}.
 delete_l_f_tag(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteLFTag"],
@@ -1887,24 +2334,14 @@ delete_l_f_tag(Client, Input0, Options0) ->
 -spec delete_lake_formation_identity_center_configuration(map(), delete_lake_formation_identity_center_configuration_request()) ->
     {ok, delete_lake_formation_identity_center_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_lake_formation_identity_center_configuration_errors(), tuple()}.
 delete_lake_formation_identity_center_configuration(Client, Input) ->
     delete_lake_formation_identity_center_configuration(Client, Input, []).
 
 -spec delete_lake_formation_identity_center_configuration(map(), delete_lake_formation_identity_center_configuration_request(), proplists:proplist()) ->
     {ok, delete_lake_formation_identity_center_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_lake_formation_identity_center_configuration_errors(), tuple()}.
 delete_lake_formation_identity_center_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteLakeFormationIdentityCenterConfiguration"],
@@ -1932,24 +2369,14 @@ delete_lake_formation_identity_center_configuration(Client, Input0, Options0) ->
 -spec delete_lake_formation_opt_in(map(), delete_lake_formation_opt_in_request()) ->
     {ok, delete_lake_formation_opt_in_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_lake_formation_opt_in_errors(), tuple()}.
 delete_lake_formation_opt_in(Client, Input) ->
     delete_lake_formation_opt_in(Client, Input, []).
 
 -spec delete_lake_formation_opt_in(map(), delete_lake_formation_opt_in_request(), proplists:proplist()) ->
     {ok, delete_lake_formation_opt_in_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_lake_formation_opt_in_errors(), tuple()}.
 delete_lake_formation_opt_in(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteLakeFormationOptIn"],
@@ -1987,28 +2414,14 @@ delete_lake_formation_opt_in(Client, Input0, Options0) ->
 -spec delete_objects_on_cancel(map(), delete_objects_on_cancel_request()) ->
     {ok, delete_objects_on_cancel_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, transaction_canceled_exception(), tuple()} |
-    {error, transaction_committed_exception(), tuple()}.
+    {error, delete_objects_on_cancel_errors(), tuple()}.
 delete_objects_on_cancel(Client, Input) ->
     delete_objects_on_cancel(Client, Input, []).
 
 -spec delete_objects_on_cancel(map(), delete_objects_on_cancel_request(), proplists:proplist()) ->
     {ok, delete_objects_on_cancel_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, transaction_canceled_exception(), tuple()} |
-    {error, transaction_committed_exception(), tuple()}.
+    {error, delete_objects_on_cancel_errors(), tuple()}.
 delete_objects_on_cancel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteObjectsOnCancel"],
@@ -2038,20 +2451,14 @@ delete_objects_on_cancel(Client, Input0, Options0) ->
 -spec deregister_resource(map(), deregister_resource_request()) ->
     {ok, deregister_resource_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, deregister_resource_errors(), tuple()}.
 deregister_resource(Client, Input) ->
     deregister_resource(Client, Input, []).
 
 -spec deregister_resource(map(), deregister_resource_request(), proplists:proplist()) ->
     {ok, deregister_resource_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, deregister_resource_errors(), tuple()}.
 deregister_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeregisterResource"],
@@ -2078,22 +2485,14 @@ deregister_resource(Client, Input0, Options0) ->
 -spec describe_lake_formation_identity_center_configuration(map(), describe_lake_formation_identity_center_configuration_request()) ->
     {ok, describe_lake_formation_identity_center_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, describe_lake_formation_identity_center_configuration_errors(), tuple()}.
 describe_lake_formation_identity_center_configuration(Client, Input) ->
     describe_lake_formation_identity_center_configuration(Client, Input, []).
 
 -spec describe_lake_formation_identity_center_configuration(map(), describe_lake_formation_identity_center_configuration_request(), proplists:proplist()) ->
     {ok, describe_lake_formation_identity_center_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, describe_lake_formation_identity_center_configuration_errors(), tuple()}.
 describe_lake_formation_identity_center_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DescribeLakeFormationIdentityCenterConfiguration"],
@@ -2121,20 +2520,14 @@ describe_lake_formation_identity_center_configuration(Client, Input0, Options0) 
 -spec describe_resource(map(), describe_resource_request()) ->
     {ok, describe_resource_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, describe_resource_errors(), tuple()}.
 describe_resource(Client, Input) ->
     describe_resource(Client, Input, []).
 
 -spec describe_resource(map(), describe_resource_request(), proplists:proplist()) ->
     {ok, describe_resource_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, describe_resource_errors(), tuple()}.
 describe_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DescribeResource"],
@@ -2161,20 +2554,14 @@ describe_resource(Client, Input0, Options0) ->
 -spec describe_transaction(map(), describe_transaction_request()) ->
     {ok, describe_transaction_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, describe_transaction_errors(), tuple()}.
 describe_transaction(Client, Input) ->
     describe_transaction(Client, Input, []).
 
 -spec describe_transaction(map(), describe_transaction_request(), proplists:proplist()) ->
     {ok, describe_transaction_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, describe_transaction_errors(), tuple()}.
 describe_transaction(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DescribeTransaction"],
@@ -2205,26 +2592,14 @@ describe_transaction(Client, Input0, Options0) ->
 -spec extend_transaction(map(), extend_transaction_request()) ->
     {ok, extend_transaction_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, transaction_canceled_exception(), tuple()} |
-    {error, transaction_commit_in_progress_exception(), tuple()} |
-    {error, transaction_committed_exception(), tuple()}.
+    {error, extend_transaction_errors(), tuple()}.
 extend_transaction(Client, Input) ->
     extend_transaction(Client, Input, []).
 
 -spec extend_transaction(map(), extend_transaction_request(), proplists:proplist()) ->
     {ok, extend_transaction_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, transaction_canceled_exception(), tuple()} |
-    {error, transaction_commit_in_progress_exception(), tuple()} |
-    {error, transaction_committed_exception(), tuple()}.
+    {error, extend_transaction_errors(), tuple()}.
 extend_transaction(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ExtendTransaction"],
@@ -2251,22 +2626,14 @@ extend_transaction(Client, Input0, Options0) ->
 -spec get_data_cells_filter(map(), get_data_cells_filter_request()) ->
     {ok, get_data_cells_filter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_data_cells_filter_errors(), tuple()}.
 get_data_cells_filter(Client, Input) ->
     get_data_cells_filter(Client, Input, []).
 
 -spec get_data_cells_filter(map(), get_data_cells_filter_request(), proplists:proplist()) ->
     {ok, get_data_cells_filter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_data_cells_filter_errors(), tuple()}.
 get_data_cells_filter(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetDataCellsFilter"],
@@ -2294,18 +2661,14 @@ get_data_cells_filter(Client, Input0, Options0) ->
 -spec get_data_lake_settings(map(), get_data_lake_settings_request()) ->
     {ok, get_data_lake_settings_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, get_data_lake_settings_errors(), tuple()}.
 get_data_lake_settings(Client, Input) ->
     get_data_lake_settings(Client, Input, []).
 
 -spec get_data_lake_settings(map(), get_data_lake_settings_request(), proplists:proplist()) ->
     {ok, get_data_lake_settings_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, get_data_lake_settings_errors(), tuple()}.
 get_data_lake_settings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetDataLakeSettings"],
@@ -2337,20 +2700,14 @@ get_data_lake_settings(Client, Input0, Options0) ->
 -spec get_effective_permissions_for_path(map(), get_effective_permissions_for_path_request()) ->
     {ok, get_effective_permissions_for_path_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_effective_permissions_for_path_errors(), tuple()}.
 get_effective_permissions_for_path(Client, Input) ->
     get_effective_permissions_for_path(Client, Input, []).
 
 -spec get_effective_permissions_for_path(map(), get_effective_permissions_for_path_request(), proplists:proplist()) ->
     {ok, get_effective_permissions_for_path_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_effective_permissions_for_path_errors(), tuple()}.
 get_effective_permissions_for_path(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetEffectivePermissionsForPath"],
@@ -2377,22 +2734,14 @@ get_effective_permissions_for_path(Client, Input0, Options0) ->
 -spec get_l_f_tag(map(), get_l_f_tag_request()) ->
     {ok, get_l_f_tag_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_l_f_tag_errors(), tuple()}.
 get_l_f_tag(Client, Input) ->
     get_l_f_tag(Client, Input, []).
 
 -spec get_l_f_tag(map(), get_l_f_tag_request(), proplists:proplist()) ->
     {ok, get_l_f_tag_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_l_f_tag_errors(), tuple()}.
 get_l_f_tag(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetLFTag"],
@@ -2424,18 +2773,14 @@ get_l_f_tag(Client, Input0, Options0) ->
 -spec get_query_state(map(), get_query_state_request()) ->
     {ok, get_query_state_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, get_query_state_errors(), tuple()}.
 get_query_state(Client, Input) ->
     get_query_state(Client, Input, []).
 
 -spec get_query_state(map(), get_query_state_request(), proplists:proplist()) ->
     {ok, get_query_state_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, get_query_state_errors(), tuple()}.
 get_query_state(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetQueryState"],
@@ -2462,24 +2807,14 @@ get_query_state(Client, Input0, Options0) ->
 -spec get_query_statistics(map(), get_query_statistics_request()) ->
     {ok, get_query_statistics_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, expired_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, statistics_not_ready_yet_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_query_statistics_errors(), tuple()}.
 get_query_statistics(Client, Input) ->
     get_query_statistics(Client, Input, []).
 
 -spec get_query_statistics(map(), get_query_statistics_request(), proplists:proplist()) ->
     {ok, get_query_statistics_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, expired_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, statistics_not_ready_yet_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_query_statistics_errors(), tuple()}.
 get_query_statistics(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetQueryStatistics"],
@@ -2506,24 +2841,14 @@ get_query_statistics(Client, Input0, Options0) ->
 -spec get_resource_l_f_tags(map(), get_resource_l_f_tags_request()) ->
     {ok, get_resource_l_f_tags_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_resource_l_f_tags_errors(), tuple()}.
 get_resource_l_f_tags(Client, Input) ->
     get_resource_l_f_tags(Client, Input, []).
 
 -spec get_resource_l_f_tags(map(), get_resource_l_f_tags_request(), proplists:proplist()) ->
     {ok, get_resource_l_f_tags_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_resource_l_f_tags_errors(), tuple()}.
 get_resource_l_f_tags(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetResourceLFTags"],
@@ -2553,26 +2878,14 @@ get_resource_l_f_tags(Client, Input0, Options0) ->
 -spec get_table_objects(map(), get_table_objects_request()) ->
     {ok, get_table_objects_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, transaction_canceled_exception(), tuple()} |
-    {error, transaction_committed_exception(), tuple()}.
+    {error, get_table_objects_errors(), tuple()}.
 get_table_objects(Client, Input) ->
     get_table_objects(Client, Input, []).
 
 -spec get_table_objects(map(), get_table_objects_request(), proplists:proplist()) ->
     {ok, get_table_objects_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, transaction_canceled_exception(), tuple()} |
-    {error, transaction_committed_exception(), tuple()}.
+    {error, get_table_objects_errors(), tuple()}.
 get_table_objects(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetTableObjects"],
@@ -2605,24 +2918,14 @@ get_table_objects(Client, Input0, Options0) ->
 -spec get_temporary_glue_partition_credentials(map(), get_temporary_glue_partition_credentials_request()) ->
     {ok, get_temporary_glue_partition_credentials_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, permission_type_mismatch_exception(), tuple()}.
+    {error, get_temporary_glue_partition_credentials_errors(), tuple()}.
 get_temporary_glue_partition_credentials(Client, Input) ->
     get_temporary_glue_partition_credentials(Client, Input, []).
 
 -spec get_temporary_glue_partition_credentials(map(), get_temporary_glue_partition_credentials_request(), proplists:proplist()) ->
     {ok, get_temporary_glue_partition_credentials_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, permission_type_mismatch_exception(), tuple()}.
+    {error, get_temporary_glue_partition_credentials_errors(), tuple()}.
 get_temporary_glue_partition_credentials(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetTemporaryGluePartitionCredentials"],
@@ -2654,24 +2957,14 @@ get_temporary_glue_partition_credentials(Client, Input0, Options0) ->
 -spec get_temporary_glue_table_credentials(map(), get_temporary_glue_table_credentials_request()) ->
     {ok, get_temporary_glue_table_credentials_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, permission_type_mismatch_exception(), tuple()}.
+    {error, get_temporary_glue_table_credentials_errors(), tuple()}.
 get_temporary_glue_table_credentials(Client, Input) ->
     get_temporary_glue_table_credentials(Client, Input, []).
 
 -spec get_temporary_glue_table_credentials(map(), get_temporary_glue_table_credentials_request(), proplists:proplist()) ->
     {ok, get_temporary_glue_table_credentials_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, permission_type_mismatch_exception(), tuple()}.
+    {error, get_temporary_glue_table_credentials_errors(), tuple()}.
 get_temporary_glue_table_credentials(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetTemporaryGlueTableCredentials"],
@@ -2700,22 +2993,14 @@ get_temporary_glue_table_credentials(Client, Input0, Options0) ->
 -spec get_work_unit_results(map(), get_work_unit_results_request()) ->
     {ok, get_work_unit_results_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, expired_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_work_unit_results_errors(), tuple()}.
 get_work_unit_results(Client, Input) ->
     get_work_unit_results(Client, Input, []).
 
 -spec get_work_unit_results(map(), get_work_unit_results_request(), proplists:proplist()) ->
     {ok, get_work_unit_results_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, expired_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_work_unit_results_errors(), tuple()}.
 get_work_unit_results(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetWorkUnitResults"],
@@ -2743,22 +3028,14 @@ get_work_unit_results(Client, Input0, Options0) ->
 -spec get_work_units(map(), get_work_units_request()) ->
     {ok, get_work_units_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, expired_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, work_units_not_ready_yet_exception(), tuple()}.
+    {error, get_work_units_errors(), tuple()}.
 get_work_units(Client, Input) ->
     get_work_units(Client, Input, []).
 
 -spec get_work_units(map(), get_work_units_request(), proplists:proplist()) ->
     {ok, get_work_units_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, expired_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, work_units_not_ready_yet_exception(), tuple()}.
+    {error, get_work_units_errors(), tuple()}.
 get_work_units(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetWorkUnits"],
@@ -2790,18 +3067,14 @@ get_work_units(Client, Input0, Options0) ->
 -spec grant_permissions(map(), grant_permissions_request()) ->
     {ok, grant_permissions_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, grant_permissions_errors(), tuple()}.
 grant_permissions(Client, Input) ->
     grant_permissions(Client, Input, []).
 
 -spec grant_permissions(map(), grant_permissions_request(), proplists:proplist()) ->
     {ok, grant_permissions_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, grant_permissions_errors(), tuple()}.
 grant_permissions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GrantPermissions"],
@@ -2828,20 +3101,14 @@ grant_permissions(Client, Input0, Options0) ->
 -spec list_data_cells_filter(map(), list_data_cells_filter_request()) ->
     {ok, list_data_cells_filter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_data_cells_filter_errors(), tuple()}.
 list_data_cells_filter(Client, Input) ->
     list_data_cells_filter(Client, Input, []).
 
 -spec list_data_cells_filter(map(), list_data_cells_filter_request(), proplists:proplist()) ->
     {ok, list_data_cells_filter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_data_cells_filter_errors(), tuple()}.
 list_data_cells_filter(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListDataCellsFilter"],
@@ -2868,22 +3135,14 @@ list_data_cells_filter(Client, Input0, Options0) ->
 -spec list_l_f_tags(map(), list_l_f_tags_request()) ->
     {ok, list_l_f_tags_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_l_f_tags_errors(), tuple()}.
 list_l_f_tags(Client, Input) ->
     list_l_f_tags(Client, Input, []).
 
 -spec list_l_f_tags(map(), list_l_f_tags_request(), proplists:proplist()) ->
     {ok, list_l_f_tags_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_l_f_tags_errors(), tuple()}.
 list_l_f_tags(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListLFTags"],
@@ -2911,20 +3170,14 @@ list_l_f_tags(Client, Input0, Options0) ->
 -spec list_lake_formation_opt_ins(map(), list_lake_formation_opt_ins_request()) ->
     {ok, list_lake_formation_opt_ins_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_lake_formation_opt_ins_errors(), tuple()}.
 list_lake_formation_opt_ins(Client, Input) ->
     list_lake_formation_opt_ins(Client, Input, []).
 
 -spec list_lake_formation_opt_ins(map(), list_lake_formation_opt_ins_request(), proplists:proplist()) ->
     {ok, list_lake_formation_opt_ins_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_lake_formation_opt_ins_errors(), tuple()}.
 list_lake_formation_opt_ins(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListLakeFormationOptIns"],
@@ -2962,18 +3215,14 @@ list_lake_formation_opt_ins(Client, Input0, Options0) ->
 -spec list_permissions(map(), list_permissions_request()) ->
     {ok, list_permissions_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_permissions_errors(), tuple()}.
 list_permissions(Client, Input) ->
     list_permissions(Client, Input, []).
 
 -spec list_permissions(map(), list_permissions_request(), proplists:proplist()) ->
     {ok, list_permissions_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_permissions_errors(), tuple()}.
 list_permissions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListPermissions"],
@@ -3000,18 +3249,14 @@ list_permissions(Client, Input0, Options0) ->
 -spec list_resources(map(), list_resources_request()) ->
     {ok, list_resources_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_resources_errors(), tuple()}.
 list_resources(Client, Input) ->
     list_resources(Client, Input, []).
 
 -spec list_resources(map(), list_resources_request(), proplists:proplist()) ->
     {ok, list_resources_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_resources_errors(), tuple()}.
 list_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListResources"],
@@ -3039,20 +3284,14 @@ list_resources(Client, Input0, Options0) ->
 -spec list_table_storage_optimizers(map(), list_table_storage_optimizers_request()) ->
     {ok, list_table_storage_optimizers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_table_storage_optimizers_errors(), tuple()}.
 list_table_storage_optimizers(Client, Input) ->
     list_table_storage_optimizers(Client, Input, []).
 
 -spec list_table_storage_optimizers(map(), list_table_storage_optimizers_request(), proplists:proplist()) ->
     {ok, list_table_storage_optimizers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_table_storage_optimizers_errors(), tuple()}.
 list_table_storage_optimizers(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListTableStorageOptimizers"],
@@ -3085,18 +3324,14 @@ list_table_storage_optimizers(Client, Input0, Options0) ->
 -spec list_transactions(map(), list_transactions_request()) ->
     {ok, list_transactions_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_transactions_errors(), tuple()}.
 list_transactions(Client, Input) ->
     list_transactions(Client, Input, []).
 
 -spec list_transactions(map(), list_transactions_request(), proplists:proplist()) ->
     {ok, list_transactions_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_transactions_errors(), tuple()}.
 list_transactions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListTransactions"],
@@ -3132,16 +3367,14 @@ list_transactions(Client, Input0, Options0) ->
 -spec put_data_lake_settings(map(), put_data_lake_settings_request()) ->
     {ok, put_data_lake_settings_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, put_data_lake_settings_errors(), tuple()}.
 put_data_lake_settings(Client, Input) ->
     put_data_lake_settings(Client, Input, []).
 
 -spec put_data_lake_settings(map(), put_data_lake_settings_request(), proplists:proplist()) ->
     {ok, put_data_lake_settings_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, put_data_lake_settings_errors(), tuple()}.
 put_data_lake_settings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/PutDataLakeSettings"],
@@ -3189,26 +3422,14 @@ put_data_lake_settings(Client, Input0, Options0) ->
 -spec register_resource(map(), register_resource_request()) ->
     {ok, register_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, register_resource_errors(), tuple()}.
 register_resource(Client, Input) ->
     register_resource(Client, Input, []).
 
 -spec register_resource(map(), register_resource_request(), proplists:proplist()) ->
     {ok, register_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, register_resource_errors(), tuple()}.
 register_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/RegisterResource"],
@@ -3239,26 +3460,14 @@ register_resource(Client, Input0, Options0) ->
 -spec remove_l_f_tags_from_resource(map(), remove_l_f_tags_from_resource_request()) ->
     {ok, remove_l_f_tags_from_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, remove_l_f_tags_from_resource_errors(), tuple()}.
 remove_l_f_tags_from_resource(Client, Input) ->
     remove_l_f_tags_from_resource(Client, Input, []).
 
 -spec remove_l_f_tags_from_resource(map(), remove_l_f_tags_from_resource_request(), proplists:proplist()) ->
     {ok, remove_l_f_tags_from_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, remove_l_f_tags_from_resource_errors(), tuple()}.
 remove_l_f_tags_from_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/RemoveLFTagsFromResource"],
@@ -3286,18 +3495,14 @@ remove_l_f_tags_from_resource(Client, Input0, Options0) ->
 -spec revoke_permissions(map(), revoke_permissions_request()) ->
     {ok, revoke_permissions_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, revoke_permissions_errors(), tuple()}.
 revoke_permissions(Client, Input) ->
     revoke_permissions(Client, Input, []).
 
 -spec revoke_permissions(map(), revoke_permissions_request(), proplists:proplist()) ->
     {ok, revoke_permissions_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, revoke_permissions_errors(), tuple()}.
 revoke_permissions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/RevokePermissions"],
@@ -3331,24 +3536,14 @@ revoke_permissions(Client, Input0, Options0) ->
 -spec search_databases_by_l_f_tags(map(), search_databases_by_l_f_tags_request()) ->
     {ok, search_databases_by_l_f_tags_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, search_databases_by_l_f_tags_errors(), tuple()}.
 search_databases_by_l_f_tags(Client, Input) ->
     search_databases_by_l_f_tags(Client, Input, []).
 
 -spec search_databases_by_l_f_tags(map(), search_databases_by_l_f_tags_request(), proplists:proplist()) ->
     {ok, search_databases_by_l_f_tags_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, search_databases_by_l_f_tags_errors(), tuple()}.
 search_databases_by_l_f_tags(Client, Input0, Options0) ->
     Method = post,
     Path = ["/SearchDatabasesByLFTags"],
@@ -3382,24 +3577,14 @@ search_databases_by_l_f_tags(Client, Input0, Options0) ->
 -spec search_tables_by_l_f_tags(map(), search_tables_by_l_f_tags_request()) ->
     {ok, search_tables_by_l_f_tags_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, search_tables_by_l_f_tags_errors(), tuple()}.
 search_tables_by_l_f_tags(Client, Input) ->
     search_tables_by_l_f_tags(Client, Input, []).
 
 -spec search_tables_by_l_f_tags(map(), search_tables_by_l_f_tags_request(), proplists:proplist()) ->
     {ok, search_tables_by_l_f_tags_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, search_tables_by_l_f_tags_errors(), tuple()}.
 search_tables_by_l_f_tags(Client, Input0, Options0) ->
     Method = post,
     Path = ["/SearchTablesByLFTags"],
@@ -3430,20 +3615,14 @@ search_tables_by_l_f_tags(Client, Input0, Options0) ->
 -spec start_query_planning(map(), start_query_planning_request()) ->
     {ok, start_query_planning_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, start_query_planning_errors(), tuple()}.
 start_query_planning(Client, Input) ->
     start_query_planning(Client, Input, []).
 
 -spec start_query_planning(map(), start_query_planning_request(), proplists:proplist()) ->
     {ok, start_query_planning_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, start_query_planning_errors(), tuple()}.
 start_query_planning(Client, Input0, Options0) ->
     Method = post,
     Path = ["/StartQueryPlanning"],
@@ -3473,16 +3652,14 @@ start_query_planning(Client, Input0, Options0) ->
 -spec start_transaction(map(), start_transaction_request()) ->
     {ok, start_transaction_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, start_transaction_errors(), tuple()}.
 start_transaction(Client, Input) ->
     start_transaction(Client, Input, []).
 
 -spec start_transaction(map(), start_transaction_request(), proplists:proplist()) ->
     {ok, start_transaction_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, start_transaction_errors(), tuple()}.
 start_transaction(Client, Input0, Options0) ->
     Method = post,
     Path = ["/StartTransaction"],
@@ -3509,24 +3686,14 @@ start_transaction(Client, Input0, Options0) ->
 -spec update_data_cells_filter(map(), update_data_cells_filter_request()) ->
     {ok, update_data_cells_filter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, update_data_cells_filter_errors(), tuple()}.
 update_data_cells_filter(Client, Input) ->
     update_data_cells_filter(Client, Input, []).
 
 -spec update_data_cells_filter(map(), update_data_cells_filter_request(), proplists:proplist()) ->
     {ok, update_data_cells_filter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, update_data_cells_filter_errors(), tuple()}.
 update_data_cells_filter(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateDataCellsFilter"],
@@ -3560,24 +3727,14 @@ update_data_cells_filter(Client, Input0, Options0) ->
 -spec update_l_f_tag(map(), update_l_f_tag_request()) ->
     {ok, update_l_f_tag_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, update_l_f_tag_errors(), tuple()}.
 update_l_f_tag(Client, Input) ->
     update_l_f_tag(Client, Input, []).
 
 -spec update_l_f_tag(map(), update_l_f_tag_request(), proplists:proplist()) ->
     {ok, update_l_f_tag_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, update_l_f_tag_errors(), tuple()}.
 update_l_f_tag(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateLFTag"],
@@ -3604,24 +3761,14 @@ update_l_f_tag(Client, Input0, Options0) ->
 -spec update_lake_formation_identity_center_configuration(map(), update_lake_formation_identity_center_configuration_request()) ->
     {ok, update_lake_formation_identity_center_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, update_lake_formation_identity_center_configuration_errors(), tuple()}.
 update_lake_formation_identity_center_configuration(Client, Input) ->
     update_lake_formation_identity_center_configuration(Client, Input, []).
 
 -spec update_lake_formation_identity_center_configuration(map(), update_lake_formation_identity_center_configuration_request(), proplists:proplist()) ->
     {ok, update_lake_formation_identity_center_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, update_lake_formation_identity_center_configuration_errors(), tuple()}.
 update_lake_formation_identity_center_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateLakeFormationIdentityCenterConfiguration"],
@@ -3649,20 +3796,14 @@ update_lake_formation_identity_center_configuration(Client, Input0, Options0) ->
 -spec update_resource(map(), update_resource_request()) ->
     {ok, update_resource_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, update_resource_errors(), tuple()}.
 update_resource(Client, Input) ->
     update_resource(Client, Input, []).
 
 -spec update_resource(map(), update_resource_request(), proplists:proplist()) ->
     {ok, update_resource_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, update_resource_errors(), tuple()}.
 update_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateResource"],
@@ -3690,30 +3831,14 @@ update_resource(Client, Input0, Options0) ->
 -spec update_table_objects(map(), update_table_objects_request()) ->
     {ok, update_table_objects_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, transaction_canceled_exception(), tuple()} |
-    {error, transaction_commit_in_progress_exception(), tuple()} |
-    {error, transaction_committed_exception(), tuple()}.
+    {error, update_table_objects_errors(), tuple()}.
 update_table_objects(Client, Input) ->
     update_table_objects(Client, Input, []).
 
 -spec update_table_objects(map(), update_table_objects_request(), proplists:proplist()) ->
     {ok, update_table_objects_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, transaction_canceled_exception(), tuple()} |
-    {error, transaction_commit_in_progress_exception(), tuple()} |
-    {error, transaction_committed_exception(), tuple()}.
+    {error, update_table_objects_errors(), tuple()}.
 update_table_objects(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateTableObjects"],
@@ -3740,20 +3865,14 @@ update_table_objects(Client, Input0, Options0) ->
 -spec update_table_storage_optimizer(map(), update_table_storage_optimizer_request()) ->
     {ok, update_table_storage_optimizer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, update_table_storage_optimizer_errors(), tuple()}.
 update_table_storage_optimizer(Client, Input) ->
     update_table_storage_optimizer(Client, Input, []).
 
 -spec update_table_storage_optimizer(map(), update_table_storage_optimizer_request(), proplists:proplist()) ->
     {ok, update_table_storage_optimizer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, update_table_storage_optimizer_errors(), tuple()}.
 update_table_storage_optimizer(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateTableStorageOptimizer"],

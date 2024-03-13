@@ -890,6 +890,161 @@
 %% }
 -type delete_worker_block_response() :: #{binary() => any()}.
 
+-type accept_qualification_request_errors() ::
+    request_error() | 
+    service_fault().
+
+-type approve_assignment_errors() ::
+    request_error() | 
+    service_fault().
+
+-type associate_qualification_with_worker_errors() ::
+    request_error() | 
+    service_fault().
+
+-type create_additional_assignments_for_hit_errors() ::
+    request_error() | 
+    service_fault().
+
+-type create_hit_errors() ::
+    request_error() | 
+    service_fault().
+
+-type create_hit_type_errors() ::
+    request_error() | 
+    service_fault().
+
+-type create_hit_with_hit_type_errors() ::
+    request_error() | 
+    service_fault().
+
+-type create_qualification_type_errors() ::
+    request_error() | 
+    service_fault().
+
+-type create_worker_block_errors() ::
+    request_error() | 
+    service_fault().
+
+-type delete_hit_errors() ::
+    request_error() | 
+    service_fault().
+
+-type delete_qualification_type_errors() ::
+    request_error() | 
+    service_fault().
+
+-type delete_worker_block_errors() ::
+    request_error() | 
+    service_fault().
+
+-type disassociate_qualification_from_worker_errors() ::
+    request_error() | 
+    service_fault().
+
+-type get_account_balance_errors() ::
+    request_error() | 
+    service_fault().
+
+-type get_assignment_errors() ::
+    request_error() | 
+    service_fault().
+
+-type get_file_upload_url_errors() ::
+    request_error() | 
+    service_fault().
+
+-type get_hit_errors() ::
+    request_error() | 
+    service_fault().
+
+-type get_qualification_score_errors() ::
+    request_error() | 
+    service_fault().
+
+-type get_qualification_type_errors() ::
+    request_error() | 
+    service_fault().
+
+-type list_assignments_for_hit_errors() ::
+    request_error() | 
+    service_fault().
+
+-type list_bonus_payments_errors() ::
+    request_error() | 
+    service_fault().
+
+-type list_hits_errors() ::
+    request_error() | 
+    service_fault().
+
+-type list_hits_for_qualification_type_errors() ::
+    request_error() | 
+    service_fault().
+
+-type list_qualification_requests_errors() ::
+    request_error() | 
+    service_fault().
+
+-type list_qualification_types_errors() ::
+    request_error() | 
+    service_fault().
+
+-type list_review_policy_results_for_hit_errors() ::
+    request_error() | 
+    service_fault().
+
+-type list_reviewable_hits_errors() ::
+    request_error() | 
+    service_fault().
+
+-type list_worker_blocks_errors() ::
+    request_error() | 
+    service_fault().
+
+-type list_workers_with_qualification_type_errors() ::
+    request_error() | 
+    service_fault().
+
+-type notify_workers_errors() ::
+    request_error() | 
+    service_fault().
+
+-type reject_assignment_errors() ::
+    request_error() | 
+    service_fault().
+
+-type reject_qualification_request_errors() ::
+    request_error() | 
+    service_fault().
+
+-type send_bonus_errors() ::
+    request_error() | 
+    service_fault().
+
+-type send_test_event_notification_errors() ::
+    request_error() | 
+    service_fault().
+
+-type update_expiration_for_hit_errors() ::
+    request_error() | 
+    service_fault().
+
+-type update_hit_review_status_errors() ::
+    request_error() | 
+    service_fault().
+
+-type update_hit_type_of_hit_errors() ::
+    request_error() | 
+    service_fault().
+
+-type update_notification_settings_errors() ::
+    request_error() | 
+    service_fault().
+
+-type update_qualification_type_errors() ::
+    request_error() | 
+    service_fault().
 
 %%====================================================================
 %% API
@@ -907,8 +1062,7 @@
 -spec accept_qualification_request(map(), accept_qualification_request_request()) ->
     {ok, accept_qualification_request_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, accept_qualification_request_errors(), tuple()}.
 accept_qualification_request(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_qualification_request(Client, Input, []).
@@ -916,8 +1070,7 @@ accept_qualification_request(Client, Input)
 -spec accept_qualification_request(map(), accept_qualification_request_request(), proplists:proplist()) ->
     {ok, accept_qualification_request_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, accept_qualification_request_errors(), tuple()}.
 accept_qualification_request(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcceptQualificationRequest">>, Input, Options).
@@ -950,8 +1103,7 @@ accept_qualification_request(Client, Input, Options)
 -spec approve_assignment(map(), approve_assignment_request()) ->
     {ok, approve_assignment_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, approve_assignment_errors(), tuple()}.
 approve_assignment(Client, Input)
   when is_map(Client), is_map(Input) ->
     approve_assignment(Client, Input, []).
@@ -959,8 +1111,7 @@ approve_assignment(Client, Input)
 -spec approve_assignment(map(), approve_assignment_request(), proplists:proplist()) ->
     {ok, approve_assignment_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, approve_assignment_errors(), tuple()}.
 approve_assignment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ApproveAssignment">>, Input, Options).
@@ -991,8 +1142,7 @@ approve_assignment(Client, Input, Options)
 -spec associate_qualification_with_worker(map(), associate_qualification_with_worker_request()) ->
     {ok, associate_qualification_with_worker_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, associate_qualification_with_worker_errors(), tuple()}.
 associate_qualification_with_worker(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_qualification_with_worker(Client, Input, []).
@@ -1000,8 +1150,7 @@ associate_qualification_with_worker(Client, Input)
 -spec associate_qualification_with_worker(map(), associate_qualification_with_worker_request(), proplists:proplist()) ->
     {ok, associate_qualification_with_worker_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, associate_qualification_with_worker_errors(), tuple()}.
 associate_qualification_with_worker(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateQualificationWithWorker">>, Input, Options).
@@ -1029,8 +1178,7 @@ associate_qualification_with_worker(Client, Input, Options)
 -spec create_additional_assignments_for_hit(map(), create_additional_assignments_for_hit_request()) ->
     {ok, create_additional_assignments_for_hit_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, create_additional_assignments_for_hit_errors(), tuple()}.
 create_additional_assignments_for_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_additional_assignments_for_hit(Client, Input, []).
@@ -1038,8 +1186,7 @@ create_additional_assignments_for_hit(Client, Input)
 -spec create_additional_assignments_for_hit(map(), create_additional_assignments_for_hit_request(), proplists:proplist()) ->
     {ok, create_additional_assignments_for_hit_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, create_additional_assignments_for_hit_errors(), tuple()}.
 create_additional_assignments_for_hit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAdditionalAssignmentsForHIT">>, Input, Options).
@@ -1075,8 +1222,7 @@ create_additional_assignments_for_hit(Client, Input, Options)
 -spec create_hit(map(), create_hit_request()) ->
     {ok, create_hit_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, create_hit_errors(), tuple()}.
 create_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hit(Client, Input, []).
@@ -1084,8 +1230,7 @@ create_hit(Client, Input)
 -spec create_hit(map(), create_hit_request(), proplists:proplist()) ->
     {ok, create_hit_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, create_hit_errors(), tuple()}.
 create_hit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHIT">>, Input, Options).
@@ -1102,8 +1247,7 @@ create_hit(Client, Input, Options)
 -spec create_hit_type(map(), create_hit_type_request()) ->
     {ok, create_hit_type_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, create_hit_type_errors(), tuple()}.
 create_hit_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hit_type(Client, Input, []).
@@ -1111,8 +1255,7 @@ create_hit_type(Client, Input)
 -spec create_hit_type(map(), create_hit_type_request(), proplists:proplist()) ->
     {ok, create_hit_type_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, create_hit_type_errors(), tuple()}.
 create_hit_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHITType">>, Input, Options).
@@ -1141,8 +1284,7 @@ create_hit_type(Client, Input, Options)
 -spec create_hit_with_hit_type(map(), create_hit_with_hit_type_request()) ->
     {ok, create_hit_with_hit_type_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, create_hit_with_hit_type_errors(), tuple()}.
 create_hit_with_hit_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hit_with_hit_type(Client, Input, []).
@@ -1150,8 +1292,7 @@ create_hit_with_hit_type(Client, Input)
 -spec create_hit_with_hit_type(map(), create_hit_with_hit_type_request(), proplists:proplist()) ->
     {ok, create_hit_with_hit_type_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, create_hit_with_hit_type_errors(), tuple()}.
 create_hit_with_hit_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHITWithHITType">>, Input, Options).
@@ -1165,8 +1306,7 @@ create_hit_with_hit_type(Client, Input, Options)
 -spec create_qualification_type(map(), create_qualification_type_request()) ->
     {ok, create_qualification_type_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, create_qualification_type_errors(), tuple()}.
 create_qualification_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_qualification_type(Client, Input, []).
@@ -1174,8 +1314,7 @@ create_qualification_type(Client, Input)
 -spec create_qualification_type(map(), create_qualification_type_request(), proplists:proplist()) ->
     {ok, create_qualification_type_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, create_qualification_type_errors(), tuple()}.
 create_qualification_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateQualificationType">>, Input, Options).
@@ -1188,8 +1327,7 @@ create_qualification_type(Client, Input, Options)
 -spec create_worker_block(map(), create_worker_block_request()) ->
     {ok, create_worker_block_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, create_worker_block_errors(), tuple()}.
 create_worker_block(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_worker_block(Client, Input, []).
@@ -1197,8 +1335,7 @@ create_worker_block(Client, Input)
 -spec create_worker_block(map(), create_worker_block_request(), proplists:proplist()) ->
     {ok, create_worker_block_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, create_worker_block_errors(), tuple()}.
 create_worker_block(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWorkerBlock">>, Input, Options).
@@ -1231,8 +1368,7 @@ create_worker_block(Client, Input, Options)
 -spec delete_hit(map(), delete_hit_request()) ->
     {ok, delete_hit_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, delete_hit_errors(), tuple()}.
 delete_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_hit(Client, Input, []).
@@ -1240,8 +1376,7 @@ delete_hit(Client, Input)
 -spec delete_hit(map(), delete_hit_request(), proplists:proplist()) ->
     {ok, delete_hit_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, delete_hit_errors(), tuple()}.
 delete_hit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteHIT">>, Input, Options).
@@ -1267,8 +1402,7 @@ delete_hit(Client, Input, Options)
 -spec delete_qualification_type(map(), delete_qualification_type_request()) ->
     {ok, delete_qualification_type_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, delete_qualification_type_errors(), tuple()}.
 delete_qualification_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_qualification_type(Client, Input, []).
@@ -1276,8 +1410,7 @@ delete_qualification_type(Client, Input)
 -spec delete_qualification_type(map(), delete_qualification_type_request(), proplists:proplist()) ->
     {ok, delete_qualification_type_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, delete_qualification_type_errors(), tuple()}.
 delete_qualification_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteQualificationType">>, Input, Options).
@@ -1293,8 +1426,7 @@ delete_qualification_type(Client, Input, Options)
 -spec delete_worker_block(map(), delete_worker_block_request()) ->
     {ok, delete_worker_block_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, delete_worker_block_errors(), tuple()}.
 delete_worker_block(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_worker_block(Client, Input, []).
@@ -1302,8 +1434,7 @@ delete_worker_block(Client, Input)
 -spec delete_worker_block(map(), delete_worker_block_request(), proplists:proplist()) ->
     {ok, delete_worker_block_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, delete_worker_block_errors(), tuple()}.
 delete_worker_block(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWorkerBlock">>, Input, Options).
@@ -1317,8 +1448,7 @@ delete_worker_block(Client, Input, Options)
 -spec disassociate_qualification_from_worker(map(), disassociate_qualification_from_worker_request()) ->
     {ok, disassociate_qualification_from_worker_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, disassociate_qualification_from_worker_errors(), tuple()}.
 disassociate_qualification_from_worker(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_qualification_from_worker(Client, Input, []).
@@ -1326,8 +1456,7 @@ disassociate_qualification_from_worker(Client, Input)
 -spec disassociate_qualification_from_worker(map(), disassociate_qualification_from_worker_request(), proplists:proplist()) ->
     {ok, disassociate_qualification_from_worker_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, disassociate_qualification_from_worker_errors(), tuple()}.
 disassociate_qualification_from_worker(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateQualificationFromWorker">>, Input, Options).
@@ -1344,8 +1473,7 @@ disassociate_qualification_from_worker(Client, Input, Options)
 -spec get_account_balance(map(), get_account_balance_request()) ->
     {ok, get_account_balance_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, get_account_balance_errors(), tuple()}.
 get_account_balance(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_account_balance(Client, Input, []).
@@ -1353,8 +1481,7 @@ get_account_balance(Client, Input)
 -spec get_account_balance(map(), get_account_balance_request(), proplists:proplist()) ->
     {ok, get_account_balance_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, get_account_balance_errors(), tuple()}.
 get_account_balance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAccountBalance">>, Input, Options).
@@ -1365,8 +1492,7 @@ get_account_balance(Client, Input, Options)
 -spec get_assignment(map(), get_assignment_request()) ->
     {ok, get_assignment_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, get_assignment_errors(), tuple()}.
 get_assignment(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_assignment(Client, Input, []).
@@ -1374,8 +1500,7 @@ get_assignment(Client, Input)
 -spec get_assignment(map(), get_assignment_request(), proplists:proplist()) ->
     {ok, get_assignment_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, get_assignment_errors(), tuple()}.
 get_assignment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAssignment">>, Input, Options).
@@ -1401,8 +1526,7 @@ get_assignment(Client, Input, Options)
 -spec get_file_upload_url(map(), get_file_upload_url_request()) ->
     {ok, get_file_upload_url_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, get_file_upload_url_errors(), tuple()}.
 get_file_upload_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_file_upload_url(Client, Input, []).
@@ -1410,8 +1534,7 @@ get_file_upload_url(Client, Input)
 -spec get_file_upload_url(map(), get_file_upload_url_request(), proplists:proplist()) ->
     {ok, get_file_upload_url_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, get_file_upload_url_errors(), tuple()}.
 get_file_upload_url(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetFileUploadURL">>, Input, Options).
@@ -1421,8 +1544,7 @@ get_file_upload_url(Client, Input, Options)
 -spec get_hit(map(), get_hit_request()) ->
     {ok, get_hit_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, get_hit_errors(), tuple()}.
 get_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_hit(Client, Input, []).
@@ -1430,8 +1552,7 @@ get_hit(Client, Input)
 -spec get_hit(map(), get_hit_request(), proplists:proplist()) ->
     {ok, get_hit_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, get_hit_errors(), tuple()}.
 get_hit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetHIT">>, Input, Options).
@@ -1453,8 +1574,7 @@ get_hit(Client, Input, Options)
 -spec get_qualification_score(map(), get_qualification_score_request()) ->
     {ok, get_qualification_score_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, get_qualification_score_errors(), tuple()}.
 get_qualification_score(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_qualification_score(Client, Input, []).
@@ -1462,8 +1582,7 @@ get_qualification_score(Client, Input)
 -spec get_qualification_score(map(), get_qualification_score_request(), proplists:proplist()) ->
     {ok, get_qualification_score_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, get_qualification_score_errors(), tuple()}.
 get_qualification_score(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetQualificationScore">>, Input, Options).
@@ -1474,8 +1593,7 @@ get_qualification_score(Client, Input, Options)
 -spec get_qualification_type(map(), get_qualification_type_request()) ->
     {ok, get_qualification_type_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, get_qualification_type_errors(), tuple()}.
 get_qualification_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_qualification_type(Client, Input, []).
@@ -1483,8 +1601,7 @@ get_qualification_type(Client, Input)
 -spec get_qualification_type(map(), get_qualification_type_request(), proplists:proplist()) ->
     {ok, get_qualification_type_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, get_qualification_type_errors(), tuple()}.
 get_qualification_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetQualificationType">>, Input, Options).
@@ -1520,8 +1637,7 @@ get_qualification_type(Client, Input, Options)
 -spec list_assignments_for_hit(map(), list_assignments_for_hit_request()) ->
     {ok, list_assignments_for_hit_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, list_assignments_for_hit_errors(), tuple()}.
 list_assignments_for_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_assignments_for_hit(Client, Input, []).
@@ -1529,8 +1645,7 @@ list_assignments_for_hit(Client, Input)
 -spec list_assignments_for_hit(map(), list_assignments_for_hit_request(), proplists:proplist()) ->
     {ok, list_assignments_for_hit_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, list_assignments_for_hit_errors(), tuple()}.
 list_assignments_for_hit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAssignmentsForHIT">>, Input, Options).
@@ -1543,8 +1658,7 @@ list_assignments_for_hit(Client, Input, Options)
 -spec list_bonus_payments(map(), list_bonus_payments_request()) ->
     {ok, list_bonus_payments_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, list_bonus_payments_errors(), tuple()}.
 list_bonus_payments(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_bonus_payments(Client, Input, []).
@@ -1552,8 +1666,7 @@ list_bonus_payments(Client, Input)
 -spec list_bonus_payments(map(), list_bonus_payments_request(), proplists:proplist()) ->
     {ok, list_bonus_payments_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, list_bonus_payments_errors(), tuple()}.
 list_bonus_payments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBonusPayments">>, Input, Options).
@@ -1569,8 +1682,7 @@ list_bonus_payments(Client, Input, Options)
 -spec list_hits(map(), list_hits_request()) ->
     {ok, list_hits_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, list_hits_errors(), tuple()}.
 list_hits(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_hits(Client, Input, []).
@@ -1578,8 +1690,7 @@ list_hits(Client, Input)
 -spec list_hits(map(), list_hits_request(), proplists:proplist()) ->
     {ok, list_hits_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, list_hits_errors(), tuple()}.
 list_hits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListHITs">>, Input, Options).
@@ -1594,8 +1705,7 @@ list_hits(Client, Input, Options)
 -spec list_hits_for_qualification_type(map(), list_hits_for_qualification_type_request()) ->
     {ok, list_hits_for_qualification_type_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, list_hits_for_qualification_type_errors(), tuple()}.
 list_hits_for_qualification_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_hits_for_qualification_type(Client, Input, []).
@@ -1603,8 +1713,7 @@ list_hits_for_qualification_type(Client, Input)
 -spec list_hits_for_qualification_type(map(), list_hits_for_qualification_type_request(), proplists:proplist()) ->
     {ok, list_hits_for_qualification_type_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, list_hits_for_qualification_type_errors(), tuple()}.
 list_hits_for_qualification_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListHITsForQualificationType">>, Input, Options).
@@ -1621,8 +1730,7 @@ list_hits_for_qualification_type(Client, Input, Options)
 -spec list_qualification_requests(map(), list_qualification_requests_request()) ->
     {ok, list_qualification_requests_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, list_qualification_requests_errors(), tuple()}.
 list_qualification_requests(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_qualification_requests(Client, Input, []).
@@ -1630,8 +1738,7 @@ list_qualification_requests(Client, Input)
 -spec list_qualification_requests(map(), list_qualification_requests_request(), proplists:proplist()) ->
     {ok, list_qualification_requests_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, list_qualification_requests_errors(), tuple()}.
 list_qualification_requests(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListQualificationRequests">>, Input, Options).
@@ -1644,8 +1751,7 @@ list_qualification_requests(Client, Input, Options)
 -spec list_qualification_types(map(), list_qualification_types_request()) ->
     {ok, list_qualification_types_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, list_qualification_types_errors(), tuple()}.
 list_qualification_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_qualification_types(Client, Input, []).
@@ -1653,8 +1759,7 @@ list_qualification_types(Client, Input)
 -spec list_qualification_types(map(), list_qualification_types_request(), proplists:proplist()) ->
     {ok, list_qualification_types_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, list_qualification_types_errors(), tuple()}.
 list_qualification_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListQualificationTypes">>, Input, Options).
@@ -1673,8 +1778,7 @@ list_qualification_types(Client, Input, Options)
 -spec list_review_policy_results_for_hit(map(), list_review_policy_results_for_hit_request()) ->
     {ok, list_review_policy_results_for_hit_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, list_review_policy_results_for_hit_errors(), tuple()}.
 list_review_policy_results_for_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_review_policy_results_for_hit(Client, Input, []).
@@ -1682,8 +1786,7 @@ list_review_policy_results_for_hit(Client, Input)
 -spec list_review_policy_results_for_hit(map(), list_review_policy_results_for_hit_request(), proplists:proplist()) ->
     {ok, list_review_policy_results_for_hit_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, list_review_policy_results_for_hit_errors(), tuple()}.
 list_review_policy_results_for_hit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListReviewPolicyResultsForHIT">>, Input, Options).
@@ -1696,8 +1799,7 @@ list_review_policy_results_for_hit(Client, Input, Options)
 -spec list_reviewable_hits(map(), list_reviewable_hits_request()) ->
     {ok, list_reviewable_hits_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, list_reviewable_hits_errors(), tuple()}.
 list_reviewable_hits(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_reviewable_hits(Client, Input, []).
@@ -1705,8 +1807,7 @@ list_reviewable_hits(Client, Input)
 -spec list_reviewable_hits(map(), list_reviewable_hits_request(), proplists:proplist()) ->
     {ok, list_reviewable_hits_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, list_reviewable_hits_errors(), tuple()}.
 list_reviewable_hits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListReviewableHITs">>, Input, Options).
@@ -1716,8 +1817,7 @@ list_reviewable_hits(Client, Input, Options)
 -spec list_worker_blocks(map(), list_worker_blocks_request()) ->
     {ok, list_worker_blocks_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, list_worker_blocks_errors(), tuple()}.
 list_worker_blocks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_worker_blocks(Client, Input, []).
@@ -1725,8 +1825,7 @@ list_worker_blocks(Client, Input)
 -spec list_worker_blocks(map(), list_worker_blocks_request(), proplists:proplist()) ->
     {ok, list_worker_blocks_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, list_worker_blocks_errors(), tuple()}.
 list_worker_blocks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWorkerBlocks">>, Input, Options).
@@ -1738,8 +1837,7 @@ list_worker_blocks(Client, Input, Options)
 -spec list_workers_with_qualification_type(map(), list_workers_with_qualification_type_request()) ->
     {ok, list_workers_with_qualification_type_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, list_workers_with_qualification_type_errors(), tuple()}.
 list_workers_with_qualification_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_workers_with_qualification_type(Client, Input, []).
@@ -1747,8 +1845,7 @@ list_workers_with_qualification_type(Client, Input)
 -spec list_workers_with_qualification_type(map(), list_workers_with_qualification_type_request(), proplists:proplist()) ->
     {ok, list_workers_with_qualification_type_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, list_workers_with_qualification_type_errors(), tuple()}.
 list_workers_with_qualification_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWorkersWithQualificationType">>, Input, Options).
@@ -1767,8 +1864,7 @@ list_workers_with_qualification_type(Client, Input, Options)
 -spec notify_workers(map(), notify_workers_request()) ->
     {ok, notify_workers_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, notify_workers_errors(), tuple()}.
 notify_workers(Client, Input)
   when is_map(Client), is_map(Input) ->
     notify_workers(Client, Input, []).
@@ -1776,8 +1872,7 @@ notify_workers(Client, Input)
 -spec notify_workers(map(), notify_workers_request(), proplists:proplist()) ->
     {ok, notify_workers_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, notify_workers_errors(), tuple()}.
 notify_workers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"NotifyWorkers">>, Input, Options).
@@ -1798,8 +1893,7 @@ notify_workers(Client, Input, Options)
 -spec reject_assignment(map(), reject_assignment_request()) ->
     {ok, reject_assignment_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, reject_assignment_errors(), tuple()}.
 reject_assignment(Client, Input)
   when is_map(Client), is_map(Input) ->
     reject_assignment(Client, Input, []).
@@ -1807,8 +1901,7 @@ reject_assignment(Client, Input)
 -spec reject_assignment(map(), reject_assignment_request(), proplists:proplist()) ->
     {ok, reject_assignment_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, reject_assignment_errors(), tuple()}.
 reject_assignment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RejectAssignment">>, Input, Options).
@@ -1823,8 +1916,7 @@ reject_assignment(Client, Input, Options)
 -spec reject_qualification_request(map(), reject_qualification_request_request()) ->
     {ok, reject_qualification_request_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, reject_qualification_request_errors(), tuple()}.
 reject_qualification_request(Client, Input)
   when is_map(Client), is_map(Input) ->
     reject_qualification_request(Client, Input, []).
@@ -1832,8 +1924,7 @@ reject_qualification_request(Client, Input)
 -spec reject_qualification_request(map(), reject_qualification_request_request(), proplists:proplist()) ->
     {ok, reject_qualification_request_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, reject_qualification_request_errors(), tuple()}.
 reject_qualification_request(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RejectQualificationRequest">>, Input, Options).
@@ -1855,8 +1946,7 @@ reject_qualification_request(Client, Input, Options)
 -spec send_bonus(map(), send_bonus_request()) ->
     {ok, send_bonus_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, send_bonus_errors(), tuple()}.
 send_bonus(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_bonus(Client, Input, []).
@@ -1864,8 +1954,7 @@ send_bonus(Client, Input)
 -spec send_bonus(map(), send_bonus_request(), proplists:proplist()) ->
     {ok, send_bonus_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, send_bonus_errors(), tuple()}.
 send_bonus(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendBonus">>, Input, Options).
@@ -1885,8 +1974,7 @@ send_bonus(Client, Input, Options)
 -spec send_test_event_notification(map(), send_test_event_notification_request()) ->
     {ok, send_test_event_notification_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, send_test_event_notification_errors(), tuple()}.
 send_test_event_notification(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_test_event_notification(Client, Input, []).
@@ -1894,8 +1982,7 @@ send_test_event_notification(Client, Input)
 -spec send_test_event_notification(map(), send_test_event_notification_request(), proplists:proplist()) ->
     {ok, send_test_event_notification_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, send_test_event_notification_errors(), tuple()}.
 send_test_event_notification(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendTestEventNotification">>, Input, Options).
@@ -1909,8 +1996,7 @@ send_test_event_notification(Client, Input, Options)
 -spec update_expiration_for_hit(map(), update_expiration_for_hit_request()) ->
     {ok, update_expiration_for_hit_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, update_expiration_for_hit_errors(), tuple()}.
 update_expiration_for_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_expiration_for_hit(Client, Input, []).
@@ -1918,8 +2004,7 @@ update_expiration_for_hit(Client, Input)
 -spec update_expiration_for_hit(map(), update_expiration_for_hit_request(), proplists:proplist()) ->
     {ok, update_expiration_for_hit_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, update_expiration_for_hit_errors(), tuple()}.
 update_expiration_for_hit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateExpirationForHIT">>, Input, Options).
@@ -1933,8 +2018,7 @@ update_expiration_for_hit(Client, Input, Options)
 -spec update_hit_review_status(map(), update_hit_review_status_request()) ->
     {ok, update_hit_review_status_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, update_hit_review_status_errors(), tuple()}.
 update_hit_review_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_hit_review_status(Client, Input, []).
@@ -1942,8 +2026,7 @@ update_hit_review_status(Client, Input)
 -spec update_hit_review_status(map(), update_hit_review_status_request(), proplists:proplist()) ->
     {ok, update_hit_review_status_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, update_hit_review_status_errors(), tuple()}.
 update_hit_review_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateHITReviewStatus">>, Input, Options).
@@ -1960,8 +2043,7 @@ update_hit_review_status(Client, Input, Options)
 -spec update_hit_type_of_hit(map(), update_hit_type_of_hit_request()) ->
     {ok, update_hit_type_of_hit_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, update_hit_type_of_hit_errors(), tuple()}.
 update_hit_type_of_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_hit_type_of_hit(Client, Input, []).
@@ -1969,8 +2051,7 @@ update_hit_type_of_hit(Client, Input)
 -spec update_hit_type_of_hit(map(), update_hit_type_of_hit_request(), proplists:proplist()) ->
     {ok, update_hit_type_of_hit_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, update_hit_type_of_hit_errors(), tuple()}.
 update_hit_type_of_hit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateHITTypeOfHIT">>, Input, Options).
@@ -1996,8 +2077,7 @@ update_hit_type_of_hit(Client, Input, Options)
 -spec update_notification_settings(map(), update_notification_settings_request()) ->
     {ok, update_notification_settings_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, update_notification_settings_errors(), tuple()}.
 update_notification_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_notification_settings(Client, Input, []).
@@ -2005,8 +2085,7 @@ update_notification_settings(Client, Input)
 -spec update_notification_settings(map(), update_notification_settings_request(), proplists:proplist()) ->
     {ok, update_notification_settings_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, update_notification_settings_errors(), tuple()}.
 update_notification_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateNotificationSettings">>, Input, Options).
@@ -2054,8 +2133,7 @@ update_notification_settings(Client, Input, Options)
 -spec update_qualification_type(map(), update_qualification_type_request()) ->
     {ok, update_qualification_type_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, update_qualification_type_errors(), tuple()}.
 update_qualification_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_qualification_type(Client, Input, []).
@@ -2063,8 +2141,7 @@ update_qualification_type(Client, Input)
 -spec update_qualification_type(map(), update_qualification_type_request(), proplists:proplist()) ->
     {ok, update_qualification_type_response(), tuple()} |
     {error, any()} |
-    {error, request_error(), tuple()} |
-    {error, service_fault(), tuple()}.
+    {error, update_qualification_type_errors(), tuple()}.
 update_qualification_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateQualificationType">>, Input, Options).

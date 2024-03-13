@@ -48,12 +48,15 @@
 %% Example:
 %% delete_schedule_group_output() :: #{}
 -type delete_schedule_group_output() :: #{}.
+
 %% Example:
 %% delete_schedule_output() :: #{}
 -type delete_schedule_output() :: #{}.
+
 %% Example:
 %% get_schedule_group_input() :: #{}
 -type get_schedule_group_input() :: #{}.
+
 
 %% Example:
 %% schedule_group_summary() :: #{
@@ -65,12 +68,14 @@
 %% }
 -type schedule_group_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% sage_maker_pipeline_parameter() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Value">> => string()
 %% }
 -type sage_maker_pipeline_parameter() :: #{binary() => any()}.
+
 
 %% Example:
 %% flexible_time_window() :: #{
@@ -79,11 +84,13 @@
 %% }
 -type flexible_time_window() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_output() :: #{
 %%   <<"Tags">> => list(tag()())
 %% }
 -type list_tags_for_resource_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_schedule_output() :: #{
@@ -105,6 +112,7 @@
 %% }
 -type get_schedule_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_schedule_input() :: #{
 %%   <<"ClientToken">> => string(),
@@ -112,11 +120,13 @@
 %% }
 -type delete_schedule_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_schedule_output() :: #{
 %%   <<"ScheduleArn">> := string()
 %% }
 -type update_schedule_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% target() :: #{
@@ -133,6 +143,7 @@
 %% }
 -type target() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_schedule_group_output() :: #{
 %%   <<"Arn">> => string(),
@@ -143,11 +154,13 @@
 %% }
 -type get_schedule_group_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_schedule_groups_output() :: #{
@@ -156,11 +169,13 @@
 %% }
 -type list_schedule_groups_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% tag() :: #{
@@ -169,17 +184,20 @@
 %% }
 -type tag() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% target_summary() :: #{
 %%   <<"Arn">> => string()
 %% }
 -type target_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_schedule_input() :: #{
@@ -198,17 +216,20 @@
 %% }
 -type update_schedule_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% sage_maker_pipeline_parameters() :: #{
 %%   <<"PipelineParameterList">> => list(sage_maker_pipeline_parameter()())
 %% }
 -type sage_maker_pipeline_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% sqs_parameters() :: #{
 %%   <<"MessageGroupId">> => string()
 %% }
 -type sqs_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% schedule_summary() :: #{
@@ -222,6 +243,7 @@
 %% }
 -type schedule_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% event_bridge_parameters() :: #{
 %%   <<"DetailType">> => string(),
@@ -229,11 +251,13 @@
 %% }
 -type event_bridge_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_input() :: #{
 %%   <<"Tags">> := list(tag()())
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_schedule_input() :: #{
@@ -252,26 +276,31 @@
 %% }
 -type create_schedule_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_schedule_group_input() :: #{
 %%   <<"ClientToken">> => string()
 %% }
 -type delete_schedule_group_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_schedule_input() :: #{
 %%   <<"GroupName">> => string()
 %% }
 -type get_schedule_input() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_output() :: #{}
 -type tag_resource_output() :: #{}.
+
 
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% capacity_provider_strategy_item() :: #{
@@ -281,6 +310,7 @@
 %% }
 -type capacity_provider_strategy_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% placement_constraint() :: #{
 %%   <<"expression">> => string(),
@@ -288,17 +318,20 @@
 %% }
 -type placement_constraint() :: #{binary() => any()}.
 
+
 %% Example:
 %% network_configuration() :: #{
 %%   <<"awsvpcConfiguration">> => aws_vpc_configuration()
 %% }
 -type network_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_schedule_group_output() :: #{
 %%   <<"ScheduleGroupArn">> := string()
 %% }
 -type create_schedule_group_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_schedule_groups_input() :: #{
@@ -308,6 +341,7 @@
 %% }
 -type list_schedule_groups_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_schedules_output() :: #{
 %%   <<"NextToken">> => string(),
@@ -315,11 +349,13 @@
 %% }
 -type list_schedules_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_input() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% dead_letter_config() :: #{
@@ -327,17 +363,21 @@
 %% }
 -type dead_letter_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_input() :: #{}
 -type list_tags_for_resource_input() :: #{}.
+
 %% Example:
 %% untag_resource_output() :: #{}
 -type untag_resource_output() :: #{}.
+
 
 %% Example:
 %% list_schedules_input() :: #{
@@ -349,17 +389,20 @@
 %% }
 -type list_schedules_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_schedule_output() :: #{
 %%   <<"ScheduleArn">> := string()
 %% }
 -type create_schedule_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_vpc_configuration() :: #{
@@ -369,11 +412,13 @@
 %% }
 -type aws_vpc_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% kinesis_parameters() :: #{
 %%   <<"PartitionKey">> => string()
 %% }
 -type kinesis_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_schedule_group_input() :: #{
@@ -382,6 +427,7 @@
 %% }
 -type create_schedule_group_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% retry_policy() :: #{
 %%   <<"MaximumEventAgeInSeconds">> => integer(),
@@ -389,12 +435,14 @@
 %% }
 -type retry_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% placement_strategy() :: #{
 %%   <<"field">> => string(),
 %%   <<"type">> => string()
 %% }
 -type placement_strategy() :: #{binary() => any()}.
+
 
 %% Example:
 %% ecs_parameters() :: #{
@@ -415,6 +463,85 @@
 %% }
 -type ecs_parameters() :: #{binary() => any()}.
 
+-type create_schedule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_schedule_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_schedule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_schedule_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_schedule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_schedule_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_schedule_groups_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_schedules_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_schedule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -423,24 +550,14 @@
 -spec create_schedule(map(), binary() | list(), create_schedule_input()) ->
     {ok, create_schedule_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_schedule_errors(), tuple()}.
 create_schedule(Client, Name, Input) ->
     create_schedule(Client, Name, Input, []).
 
 -spec create_schedule(map(), binary() | list(), create_schedule_input(), proplists:proplist()) ->
     {ok, create_schedule_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_schedule_errors(), tuple()}.
 create_schedule(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/schedules/", aws_util:encode_uri(Name), ""],
@@ -467,22 +584,14 @@ create_schedule(Client, Name, Input0, Options0) ->
 -spec create_schedule_group(map(), binary() | list(), create_schedule_group_input()) ->
     {ok, create_schedule_group_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_schedule_group_errors(), tuple()}.
 create_schedule_group(Client, Name, Input) ->
     create_schedule_group(Client, Name, Input, []).
 
 -spec create_schedule_group(map(), binary() | list(), create_schedule_group_input(), proplists:proplist()) ->
     {ok, create_schedule_group_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_schedule_group_errors(), tuple()}.
 create_schedule_group(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/schedule-groups/", aws_util:encode_uri(Name), ""],
@@ -509,22 +618,14 @@ create_schedule_group(Client, Name, Input0, Options0) ->
 -spec delete_schedule(map(), binary() | list(), delete_schedule_input()) ->
     {ok, delete_schedule_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_schedule_errors(), tuple()}.
 delete_schedule(Client, Name, Input) ->
     delete_schedule(Client, Name, Input, []).
 
 -spec delete_schedule(map(), binary() | list(), delete_schedule_input(), proplists:proplist()) ->
     {ok, delete_schedule_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_schedule_errors(), tuple()}.
 delete_schedule(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/schedules/", aws_util:encode_uri(Name), ""],
@@ -564,22 +665,14 @@ delete_schedule(Client, Name, Input0, Options0) ->
 -spec delete_schedule_group(map(), binary() | list(), delete_schedule_group_input()) ->
     {ok, delete_schedule_group_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_schedule_group_errors(), tuple()}.
 delete_schedule_group(Client, Name, Input) ->
     delete_schedule_group(Client, Name, Input, []).
 
 -spec delete_schedule_group(map(), binary() | list(), delete_schedule_group_input(), proplists:proplist()) ->
     {ok, delete_schedule_group_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_schedule_group_errors(), tuple()}.
 delete_schedule_group(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/schedule-groups/", aws_util:encode_uri(Name), ""],
@@ -607,10 +700,7 @@ delete_schedule_group(Client, Name, Input0, Options0) ->
 -spec get_schedule(map(), binary() | list()) ->
     {ok, get_schedule_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_schedule_errors(), tuple()}.
 get_schedule(Client, Name)
   when is_map(Client) ->
     get_schedule(Client, Name, #{}, #{}).
@@ -618,10 +708,7 @@ get_schedule(Client, Name)
 -spec get_schedule(map(), binary() | list(), map(), map()) ->
     {ok, get_schedule_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_schedule_errors(), tuple()}.
 get_schedule(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_schedule(Client, Name, QueryMap, HeadersMap, []).
@@ -629,10 +716,7 @@ get_schedule(Client, Name, QueryMap, HeadersMap)
 -spec get_schedule(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_schedule_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_schedule_errors(), tuple()}.
 get_schedule(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/schedules/", aws_util:encode_uri(Name), ""],
@@ -657,10 +741,7 @@ get_schedule(Client, Name, QueryMap, HeadersMap, Options0)
 -spec get_schedule_group(map(), binary() | list()) ->
     {ok, get_schedule_group_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_schedule_group_errors(), tuple()}.
 get_schedule_group(Client, Name)
   when is_map(Client) ->
     get_schedule_group(Client, Name, #{}, #{}).
@@ -668,10 +749,7 @@ get_schedule_group(Client, Name)
 -spec get_schedule_group(map(), binary() | list(), map(), map()) ->
     {ok, get_schedule_group_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_schedule_group_errors(), tuple()}.
 get_schedule_group(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_schedule_group(Client, Name, QueryMap, HeadersMap, []).
@@ -679,10 +757,7 @@ get_schedule_group(Client, Name, QueryMap, HeadersMap)
 -spec get_schedule_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_schedule_group_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_schedule_group_errors(), tuple()}.
 get_schedule_group(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/schedule-groups/", aws_util:encode_uri(Name), ""],
@@ -703,9 +778,7 @@ get_schedule_group(Client, Name, QueryMap, HeadersMap, Options0)
 -spec list_schedule_groups(map()) ->
     {ok, list_schedule_groups_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_schedule_groups_errors(), tuple()}.
 list_schedule_groups(Client)
   when is_map(Client) ->
     list_schedule_groups(Client, #{}, #{}).
@@ -713,9 +786,7 @@ list_schedule_groups(Client)
 -spec list_schedule_groups(map(), map(), map()) ->
     {ok, list_schedule_groups_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_schedule_groups_errors(), tuple()}.
 list_schedule_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_schedule_groups(Client, QueryMap, HeadersMap, []).
@@ -723,9 +794,7 @@ list_schedule_groups(Client, QueryMap, HeadersMap)
 -spec list_schedule_groups(map(), map(), map(), proplists:proplist()) ->
     {ok, list_schedule_groups_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_schedule_groups_errors(), tuple()}.
 list_schedule_groups(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/schedule-groups"],
@@ -752,10 +821,7 @@ list_schedule_groups(Client, QueryMap, HeadersMap, Options0)
 -spec list_schedules(map()) ->
     {ok, list_schedules_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_schedules_errors(), tuple()}.
 list_schedules(Client)
   when is_map(Client) ->
     list_schedules(Client, #{}, #{}).
@@ -763,10 +829,7 @@ list_schedules(Client)
 -spec list_schedules(map(), map(), map()) ->
     {ok, list_schedules_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_schedules_errors(), tuple()}.
 list_schedules(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_schedules(Client, QueryMap, HeadersMap, []).
@@ -774,10 +837,7 @@ list_schedules(Client, QueryMap, HeadersMap)
 -spec list_schedules(map(), map(), map(), proplists:proplist()) ->
     {ok, list_schedules_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_schedules_errors(), tuple()}.
 list_schedules(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/schedules"],
@@ -806,10 +866,7 @@ list_schedules(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -817,10 +874,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -828,10 +882,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -855,22 +906,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec tag_resource(map(), binary() | list(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -898,22 +941,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -952,22 +987,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_schedule(map(), binary() | list(), update_schedule_input()) ->
     {ok, update_schedule_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_schedule_errors(), tuple()}.
 update_schedule(Client, Name, Input) ->
     update_schedule(Client, Name, Input, []).
 
 -spec update_schedule(map(), binary() | list(), update_schedule_input(), proplists:proplist()) ->
     {ok, update_schedule_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_schedule_errors(), tuple()}.
 update_schedule(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/schedules/", aws_util:encode_uri(Name), ""],

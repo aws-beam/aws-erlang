@@ -1725,6 +1725,314 @@
 %% }
 -type get_prepared_statement_output() :: #{binary() => any()}.
 
+-type batch_get_named_query_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type batch_get_prepared_statement_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type batch_get_query_execution_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type cancel_capacity_reservation_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type create_capacity_reservation_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type create_data_catalog_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type create_named_query_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type create_notebook_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception().
+
+-type create_prepared_statement_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type create_presigned_notebook_url_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type create_work_group_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type delete_capacity_reservation_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type delete_data_catalog_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type delete_named_query_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type delete_notebook_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception().
+
+-type delete_prepared_statement_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type delete_work_group_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type export_notebook_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception().
+
+-type get_calculation_execution_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type get_calculation_execution_code_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type get_calculation_execution_status_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type get_capacity_assignment_configuration_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type get_capacity_reservation_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type get_data_catalog_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type get_database_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    metadata_exception().
+
+-type get_named_query_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type get_notebook_metadata_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception().
+
+-type get_prepared_statement_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type get_query_execution_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type get_query_results_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception().
+
+-type get_query_runtime_statistics_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type get_session_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type get_session_status_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type get_table_metadata_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    metadata_exception().
+
+-type get_work_group_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type import_notebook_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception().
+
+-type list_application_d_p_u_sizes_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception().
+
+-type list_calculation_executions_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_capacity_reservations_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type list_data_catalogs_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type list_databases_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    metadata_exception().
+
+-type list_engine_versions_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type list_executors_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_named_queries_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type list_notebook_metadata_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception().
+
+-type list_notebook_sessions_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_prepared_statements_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type list_query_executions_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type list_sessions_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_table_metadata_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    metadata_exception().
+
+-type list_tags_for_resource_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_work_groups_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type put_capacity_assignment_configuration_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type start_calculation_execution_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type start_query_execution_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception().
+
+-type start_session_errors() ::
+    session_already_exists_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type stop_calculation_execution_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type stop_query_execution_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type tag_resource_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type terminate_session_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type update_capacity_reservation_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type update_data_catalog_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type update_named_query_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type update_notebook_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception().
+
+-type update_notebook_metadata_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception().
+
+-type update_prepared_statement_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type update_work_group_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
 
 %%====================================================================
 %% API
@@ -1748,8 +2056,7 @@
 -spec batch_get_named_query(map(), batch_get_named_query_input()) ->
     {ok, batch_get_named_query_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, batch_get_named_query_errors(), tuple()}.
 batch_get_named_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_named_query(Client, Input, []).
@@ -1757,8 +2064,7 @@ batch_get_named_query(Client, Input)
 -spec batch_get_named_query(map(), batch_get_named_query_input(), proplists:proplist()) ->
     {ok, batch_get_named_query_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, batch_get_named_query_errors(), tuple()}.
 batch_get_named_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetNamedQuery">>, Input, Options).
@@ -1776,8 +2082,7 @@ batch_get_named_query(Client, Input, Options)
 -spec batch_get_prepared_statement(map(), batch_get_prepared_statement_input()) ->
     {ok, batch_get_prepared_statement_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, batch_get_prepared_statement_errors(), tuple()}.
 batch_get_prepared_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_prepared_statement(Client, Input, []).
@@ -1785,8 +2090,7 @@ batch_get_prepared_statement(Client, Input)
 -spec batch_get_prepared_statement(map(), batch_get_prepared_statement_input(), proplists:proplist()) ->
     {ok, batch_get_prepared_statement_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, batch_get_prepared_statement_errors(), tuple()}.
 batch_get_prepared_statement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetPreparedStatement">>, Input, Options).
@@ -1805,8 +2109,7 @@ batch_get_prepared_statement(Client, Input, Options)
 -spec batch_get_query_execution(map(), batch_get_query_execution_input()) ->
     {ok, batch_get_query_execution_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, batch_get_query_execution_errors(), tuple()}.
 batch_get_query_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_query_execution(Client, Input, []).
@@ -1814,8 +2117,7 @@ batch_get_query_execution(Client, Input)
 -spec batch_get_query_execution(map(), batch_get_query_execution_input(), proplists:proplist()) ->
     {ok, batch_get_query_execution_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, batch_get_query_execution_errors(), tuple()}.
 batch_get_query_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetQueryExecution">>, Input, Options).
@@ -1831,8 +2133,7 @@ batch_get_query_execution(Client, Input, Options)
 -spec cancel_capacity_reservation(map(), cancel_capacity_reservation_input()) ->
     {ok, cancel_capacity_reservation_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, cancel_capacity_reservation_errors(), tuple()}.
 cancel_capacity_reservation(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_capacity_reservation(Client, Input, []).
@@ -1840,8 +2141,7 @@ cancel_capacity_reservation(Client, Input)
 -spec cancel_capacity_reservation(map(), cancel_capacity_reservation_input(), proplists:proplist()) ->
     {ok, cancel_capacity_reservation_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, cancel_capacity_reservation_errors(), tuple()}.
 cancel_capacity_reservation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelCapacityReservation">>, Input, Options).
@@ -1852,8 +2152,7 @@ cancel_capacity_reservation(Client, Input, Options)
 -spec create_capacity_reservation(map(), create_capacity_reservation_input()) ->
     {ok, create_capacity_reservation_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_capacity_reservation_errors(), tuple()}.
 create_capacity_reservation(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_capacity_reservation(Client, Input, []).
@@ -1861,8 +2160,7 @@ create_capacity_reservation(Client, Input)
 -spec create_capacity_reservation(map(), create_capacity_reservation_input(), proplists:proplist()) ->
     {ok, create_capacity_reservation_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_capacity_reservation_errors(), tuple()}.
 create_capacity_reservation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCapacityReservation">>, Input, Options).
@@ -1875,8 +2173,7 @@ create_capacity_reservation(Client, Input, Options)
 -spec create_data_catalog(map(), create_data_catalog_input()) ->
     {ok, create_data_catalog_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_data_catalog_errors(), tuple()}.
 create_data_catalog(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_catalog(Client, Input, []).
@@ -1884,8 +2181,7 @@ create_data_catalog(Client, Input)
 -spec create_data_catalog(map(), create_data_catalog_input(), proplists:proplist()) ->
     {ok, create_data_catalog_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_data_catalog_errors(), tuple()}.
 create_data_catalog(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDataCatalog">>, Input, Options).
@@ -1897,8 +2193,7 @@ create_data_catalog(Client, Input, Options)
 -spec create_named_query(map(), create_named_query_input()) ->
     {ok, create_named_query_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_named_query_errors(), tuple()}.
 create_named_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_named_query(Client, Input, []).
@@ -1906,8 +2201,7 @@ create_named_query(Client, Input)
 -spec create_named_query(map(), create_named_query_input(), proplists:proplist()) ->
     {ok, create_named_query_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_named_query_errors(), tuple()}.
 create_named_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateNamedQuery">>, Input, Options).
@@ -1921,9 +2215,7 @@ create_named_query(Client, Input, Options)
 -spec create_notebook(map(), create_notebook_input()) ->
     {ok, create_notebook_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_notebook_errors(), tuple()}.
 create_notebook(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_notebook(Client, Input, []).
@@ -1931,9 +2223,7 @@ create_notebook(Client, Input)
 -spec create_notebook(map(), create_notebook_input(), proplists:proplist()) ->
     {ok, create_notebook_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_notebook_errors(), tuple()}.
 create_notebook(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateNotebook">>, Input, Options).
@@ -1942,8 +2232,7 @@ create_notebook(Client, Input, Options)
 -spec create_prepared_statement(map(), create_prepared_statement_input()) ->
     {ok, create_prepared_statement_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_prepared_statement_errors(), tuple()}.
 create_prepared_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_prepared_statement(Client, Input, []).
@@ -1951,8 +2240,7 @@ create_prepared_statement(Client, Input)
 -spec create_prepared_statement(map(), create_prepared_statement_input(), proplists:proplist()) ->
     {ok, create_prepared_statement_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_prepared_statement_errors(), tuple()}.
 create_prepared_statement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePreparedStatement">>, Input, Options).
@@ -1971,9 +2259,7 @@ create_prepared_statement(Client, Input, Options)
 -spec create_presigned_notebook_url(map(), create_presigned_notebook_url_request()) ->
     {ok, create_presigned_notebook_url_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_presigned_notebook_url_errors(), tuple()}.
 create_presigned_notebook_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_presigned_notebook_url(Client, Input, []).
@@ -1981,9 +2267,7 @@ create_presigned_notebook_url(Client, Input)
 -spec create_presigned_notebook_url(map(), create_presigned_notebook_url_request(), proplists:proplist()) ->
     {ok, create_presigned_notebook_url_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_presigned_notebook_url_errors(), tuple()}.
 create_presigned_notebook_url(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePresignedNotebookUrl">>, Input, Options).
@@ -1995,8 +2279,7 @@ create_presigned_notebook_url(Client, Input, Options)
 -spec create_work_group(map(), create_work_group_input()) ->
     {ok, create_work_group_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_work_group_errors(), tuple()}.
 create_work_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_work_group(Client, Input, []).
@@ -2004,8 +2287,7 @@ create_work_group(Client, Input)
 -spec create_work_group(map(), create_work_group_input(), proplists:proplist()) ->
     {ok, create_work_group_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_work_group_errors(), tuple()}.
 create_work_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWorkGroup">>, Input, Options).
@@ -2023,8 +2305,7 @@ create_work_group(Client, Input, Options)
 -spec delete_capacity_reservation(map(), delete_capacity_reservation_input()) ->
     {ok, delete_capacity_reservation_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, delete_capacity_reservation_errors(), tuple()}.
 delete_capacity_reservation(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_capacity_reservation(Client, Input, []).
@@ -2032,8 +2313,7 @@ delete_capacity_reservation(Client, Input)
 -spec delete_capacity_reservation(map(), delete_capacity_reservation_input(), proplists:proplist()) ->
     {ok, delete_capacity_reservation_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, delete_capacity_reservation_errors(), tuple()}.
 delete_capacity_reservation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCapacityReservation">>, Input, Options).
@@ -2042,8 +2322,7 @@ delete_capacity_reservation(Client, Input, Options)
 -spec delete_data_catalog(map(), delete_data_catalog_input()) ->
     {ok, delete_data_catalog_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, delete_data_catalog_errors(), tuple()}.
 delete_data_catalog(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_data_catalog(Client, Input, []).
@@ -2051,8 +2330,7 @@ delete_data_catalog(Client, Input)
 -spec delete_data_catalog(map(), delete_data_catalog_input(), proplists:proplist()) ->
     {ok, delete_data_catalog_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, delete_data_catalog_errors(), tuple()}.
 delete_data_catalog(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDataCatalog">>, Input, Options).
@@ -2063,8 +2341,7 @@ delete_data_catalog(Client, Input, Options)
 -spec delete_named_query(map(), delete_named_query_input()) ->
     {ok, delete_named_query_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, delete_named_query_errors(), tuple()}.
 delete_named_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_named_query(Client, Input, []).
@@ -2072,8 +2349,7 @@ delete_named_query(Client, Input)
 -spec delete_named_query(map(), delete_named_query_input(), proplists:proplist()) ->
     {ok, delete_named_query_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, delete_named_query_errors(), tuple()}.
 delete_named_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteNamedQuery">>, Input, Options).
@@ -2082,9 +2358,7 @@ delete_named_query(Client, Input, Options)
 -spec delete_notebook(map(), delete_notebook_input()) ->
     {ok, delete_notebook_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_notebook_errors(), tuple()}.
 delete_notebook(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_notebook(Client, Input, []).
@@ -2092,9 +2366,7 @@ delete_notebook(Client, Input)
 -spec delete_notebook(map(), delete_notebook_input(), proplists:proplist()) ->
     {ok, delete_notebook_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_notebook_errors(), tuple()}.
 delete_notebook(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteNotebook">>, Input, Options).
@@ -2105,9 +2377,7 @@ delete_notebook(Client, Input, Options)
 -spec delete_prepared_statement(map(), delete_prepared_statement_input()) ->
     {ok, delete_prepared_statement_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_prepared_statement_errors(), tuple()}.
 delete_prepared_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_prepared_statement(Client, Input, []).
@@ -2115,9 +2385,7 @@ delete_prepared_statement(Client, Input)
 -spec delete_prepared_statement(map(), delete_prepared_statement_input(), proplists:proplist()) ->
     {ok, delete_prepared_statement_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_prepared_statement_errors(), tuple()}.
 delete_prepared_statement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePreparedStatement">>, Input, Options).
@@ -2129,8 +2397,7 @@ delete_prepared_statement(Client, Input, Options)
 -spec delete_work_group(map(), delete_work_group_input()) ->
     {ok, delete_work_group_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, delete_work_group_errors(), tuple()}.
 delete_work_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_work_group(Client, Input, []).
@@ -2138,8 +2405,7 @@ delete_work_group(Client, Input)
 -spec delete_work_group(map(), delete_work_group_input(), proplists:proplist()) ->
     {ok, delete_work_group_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, delete_work_group_errors(), tuple()}.
 delete_work_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWorkGroup">>, Input, Options).
@@ -2148,9 +2414,7 @@ delete_work_group(Client, Input, Options)
 -spec export_notebook(map(), export_notebook_input()) ->
     {ok, export_notebook_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, export_notebook_errors(), tuple()}.
 export_notebook(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_notebook(Client, Input, []).
@@ -2158,9 +2422,7 @@ export_notebook(Client, Input)
 -spec export_notebook(map(), export_notebook_input(), proplists:proplist()) ->
     {ok, export_notebook_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, export_notebook_errors(), tuple()}.
 export_notebook(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportNotebook">>, Input, Options).
@@ -2169,9 +2431,7 @@ export_notebook(Client, Input, Options)
 -spec get_calculation_execution(map(), get_calculation_execution_request()) ->
     {ok, get_calculation_execution_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_calculation_execution_errors(), tuple()}.
 get_calculation_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_calculation_execution(Client, Input, []).
@@ -2179,9 +2439,7 @@ get_calculation_execution(Client, Input)
 -spec get_calculation_execution(map(), get_calculation_execution_request(), proplists:proplist()) ->
     {ok, get_calculation_execution_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_calculation_execution_errors(), tuple()}.
 get_calculation_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCalculationExecution">>, Input, Options).
@@ -2190,9 +2448,7 @@ get_calculation_execution(Client, Input, Options)
 -spec get_calculation_execution_code(map(), get_calculation_execution_code_request()) ->
     {ok, get_calculation_execution_code_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_calculation_execution_code_errors(), tuple()}.
 get_calculation_execution_code(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_calculation_execution_code(Client, Input, []).
@@ -2200,9 +2456,7 @@ get_calculation_execution_code(Client, Input)
 -spec get_calculation_execution_code(map(), get_calculation_execution_code_request(), proplists:proplist()) ->
     {ok, get_calculation_execution_code_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_calculation_execution_code_errors(), tuple()}.
 get_calculation_execution_code(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCalculationExecutionCode">>, Input, Options).
@@ -2211,9 +2465,7 @@ get_calculation_execution_code(Client, Input, Options)
 -spec get_calculation_execution_status(map(), get_calculation_execution_status_request()) ->
     {ok, get_calculation_execution_status_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_calculation_execution_status_errors(), tuple()}.
 get_calculation_execution_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_calculation_execution_status(Client, Input, []).
@@ -2221,9 +2473,7 @@ get_calculation_execution_status(Client, Input)
 -spec get_calculation_execution_status(map(), get_calculation_execution_status_request(), proplists:proplist()) ->
     {ok, get_calculation_execution_status_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_calculation_execution_status_errors(), tuple()}.
 get_calculation_execution_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCalculationExecutionStatus">>, Input, Options).
@@ -2234,8 +2484,7 @@ get_calculation_execution_status(Client, Input, Options)
 -spec get_capacity_assignment_configuration(map(), get_capacity_assignment_configuration_input()) ->
     {ok, get_capacity_assignment_configuration_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, get_capacity_assignment_configuration_errors(), tuple()}.
 get_capacity_assignment_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_capacity_assignment_configuration(Client, Input, []).
@@ -2243,8 +2492,7 @@ get_capacity_assignment_configuration(Client, Input)
 -spec get_capacity_assignment_configuration(map(), get_capacity_assignment_configuration_input(), proplists:proplist()) ->
     {ok, get_capacity_assignment_configuration_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, get_capacity_assignment_configuration_errors(), tuple()}.
 get_capacity_assignment_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCapacityAssignmentConfiguration">>, Input, Options).
@@ -2254,8 +2502,7 @@ get_capacity_assignment_configuration(Client, Input, Options)
 -spec get_capacity_reservation(map(), get_capacity_reservation_input()) ->
     {ok, get_capacity_reservation_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, get_capacity_reservation_errors(), tuple()}.
 get_capacity_reservation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_capacity_reservation(Client, Input, []).
@@ -2263,8 +2510,7 @@ get_capacity_reservation(Client, Input)
 -spec get_capacity_reservation(map(), get_capacity_reservation_input(), proplists:proplist()) ->
     {ok, get_capacity_reservation_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, get_capacity_reservation_errors(), tuple()}.
 get_capacity_reservation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCapacityReservation">>, Input, Options).
@@ -2273,8 +2519,7 @@ get_capacity_reservation(Client, Input, Options)
 -spec get_data_catalog(map(), get_data_catalog_input()) ->
     {ok, get_data_catalog_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, get_data_catalog_errors(), tuple()}.
 get_data_catalog(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_data_catalog(Client, Input, []).
@@ -2282,8 +2527,7 @@ get_data_catalog(Client, Input)
 -spec get_data_catalog(map(), get_data_catalog_input(), proplists:proplist()) ->
     {ok, get_data_catalog_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, get_data_catalog_errors(), tuple()}.
 get_data_catalog(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDataCatalog">>, Input, Options).
@@ -2293,9 +2537,7 @@ get_data_catalog(Client, Input, Options)
 -spec get_database(map(), get_database_input()) ->
     {ok, get_database_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, metadata_exception(), tuple()}.
+    {error, get_database_errors(), tuple()}.
 get_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_database(Client, Input, []).
@@ -2303,9 +2545,7 @@ get_database(Client, Input)
 -spec get_database(map(), get_database_input(), proplists:proplist()) ->
     {ok, get_database_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, metadata_exception(), tuple()}.
+    {error, get_database_errors(), tuple()}.
 get_database(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDatabase">>, Input, Options).
@@ -2317,8 +2557,7 @@ get_database(Client, Input, Options)
 -spec get_named_query(map(), get_named_query_input()) ->
     {ok, get_named_query_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, get_named_query_errors(), tuple()}.
 get_named_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_named_query(Client, Input, []).
@@ -2326,8 +2565,7 @@ get_named_query(Client, Input)
 -spec get_named_query(map(), get_named_query_input(), proplists:proplist()) ->
     {ok, get_named_query_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, get_named_query_errors(), tuple()}.
 get_named_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetNamedQuery">>, Input, Options).
@@ -2336,9 +2574,7 @@ get_named_query(Client, Input, Options)
 -spec get_notebook_metadata(map(), get_notebook_metadata_input()) ->
     {ok, get_notebook_metadata_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_notebook_metadata_errors(), tuple()}.
 get_notebook_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_notebook_metadata(Client, Input, []).
@@ -2346,9 +2582,7 @@ get_notebook_metadata(Client, Input)
 -spec get_notebook_metadata(map(), get_notebook_metadata_input(), proplists:proplist()) ->
     {ok, get_notebook_metadata_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_notebook_metadata_errors(), tuple()}.
 get_notebook_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetNotebookMetadata">>, Input, Options).
@@ -2359,9 +2593,7 @@ get_notebook_metadata(Client, Input, Options)
 -spec get_prepared_statement(map(), get_prepared_statement_input()) ->
     {ok, get_prepared_statement_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_prepared_statement_errors(), tuple()}.
 get_prepared_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_prepared_statement(Client, Input, []).
@@ -2369,9 +2601,7 @@ get_prepared_statement(Client, Input)
 -spec get_prepared_statement(map(), get_prepared_statement_input(), proplists:proplist()) ->
     {ok, get_prepared_statement_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_prepared_statement_errors(), tuple()}.
 get_prepared_statement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPreparedStatement">>, Input, Options).
@@ -2385,8 +2615,7 @@ get_prepared_statement(Client, Input, Options)
 -spec get_query_execution(map(), get_query_execution_input()) ->
     {ok, get_query_execution_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, get_query_execution_errors(), tuple()}.
 get_query_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_query_execution(Client, Input, []).
@@ -2394,8 +2623,7 @@ get_query_execution(Client, Input)
 -spec get_query_execution(map(), get_query_execution_input(), proplists:proplist()) ->
     {ok, get_query_execution_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, get_query_execution_errors(), tuple()}.
 get_query_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetQueryExecution">>, Input, Options).
@@ -2424,9 +2652,7 @@ get_query_execution(Client, Input, Options)
 -spec get_query_results(map(), get_query_results_input()) ->
     {ok, get_query_results_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_query_results_errors(), tuple()}.
 get_query_results(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_query_results(Client, Input, []).
@@ -2434,9 +2660,7 @@ get_query_results(Client, Input)
 -spec get_query_results(map(), get_query_results_input(), proplists:proplist()) ->
     {ok, get_query_results_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_query_results_errors(), tuple()}.
 get_query_results(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetQueryResults">>, Input, Options).
@@ -2455,8 +2679,7 @@ get_query_results(Client, Input, Options)
 -spec get_query_runtime_statistics(map(), get_query_runtime_statistics_input()) ->
     {ok, get_query_runtime_statistics_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, get_query_runtime_statistics_errors(), tuple()}.
 get_query_runtime_statistics(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_query_runtime_statistics(Client, Input, []).
@@ -2464,8 +2687,7 @@ get_query_runtime_statistics(Client, Input)
 -spec get_query_runtime_statistics(map(), get_query_runtime_statistics_input(), proplists:proplist()) ->
     {ok, get_query_runtime_statistics_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, get_query_runtime_statistics_errors(), tuple()}.
 get_query_runtime_statistics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetQueryRuntimeStatistics">>, Input, Options).
@@ -2476,9 +2698,7 @@ get_query_runtime_statistics(Client, Input, Options)
 -spec get_session(map(), get_session_request()) ->
     {ok, get_session_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_session_errors(), tuple()}.
 get_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_session(Client, Input, []).
@@ -2486,9 +2706,7 @@ get_session(Client, Input)
 -spec get_session(map(), get_session_request(), proplists:proplist()) ->
     {ok, get_session_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_session_errors(), tuple()}.
 get_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSession">>, Input, Options).
@@ -2497,9 +2715,7 @@ get_session(Client, Input, Options)
 -spec get_session_status(map(), get_session_status_request()) ->
     {ok, get_session_status_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_session_status_errors(), tuple()}.
 get_session_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_session_status(Client, Input, []).
@@ -2507,9 +2723,7 @@ get_session_status(Client, Input)
 -spec get_session_status(map(), get_session_status_request(), proplists:proplist()) ->
     {ok, get_session_status_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_session_status_errors(), tuple()}.
 get_session_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSessionStatus">>, Input, Options).
@@ -2519,9 +2733,7 @@ get_session_status(Client, Input, Options)
 -spec get_table_metadata(map(), get_table_metadata_input()) ->
     {ok, get_table_metadata_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, metadata_exception(), tuple()}.
+    {error, get_table_metadata_errors(), tuple()}.
 get_table_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_table_metadata(Client, Input, []).
@@ -2529,9 +2741,7 @@ get_table_metadata(Client, Input)
 -spec get_table_metadata(map(), get_table_metadata_input(), proplists:proplist()) ->
     {ok, get_table_metadata_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, metadata_exception(), tuple()}.
+    {error, get_table_metadata_errors(), tuple()}.
 get_table_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTableMetadata">>, Input, Options).
@@ -2540,8 +2750,7 @@ get_table_metadata(Client, Input, Options)
 -spec get_work_group(map(), get_work_group_input()) ->
     {ok, get_work_group_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, get_work_group_errors(), tuple()}.
 get_work_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_work_group(Client, Input, []).
@@ -2549,8 +2758,7 @@ get_work_group(Client, Input)
 -spec get_work_group(map(), get_work_group_input(), proplists:proplist()) ->
     {ok, get_work_group_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, get_work_group_errors(), tuple()}.
 get_work_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetWorkGroup">>, Input, Options).
@@ -2568,9 +2776,7 @@ get_work_group(Client, Input, Options)
 -spec import_notebook(map(), import_notebook_input()) ->
     {ok, import_notebook_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, import_notebook_errors(), tuple()}.
 import_notebook(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_notebook(Client, Input, []).
@@ -2578,9 +2784,7 @@ import_notebook(Client, Input)
 -spec import_notebook(map(), import_notebook_input(), proplists:proplist()) ->
     {ok, import_notebook_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, import_notebook_errors(), tuple()}.
 import_notebook(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportNotebook">>, Input, Options).
@@ -2591,9 +2795,7 @@ import_notebook(Client, Input, Options)
 -spec list_application_d_p_u_sizes(map(), list_application_d_p_u_sizes_input()) ->
     {ok, list_application_d_p_u_sizes_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_application_d_p_u_sizes_errors(), tuple()}.
 list_application_d_p_u_sizes(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_application_d_p_u_sizes(Client, Input, []).
@@ -2601,9 +2803,7 @@ list_application_d_p_u_sizes(Client, Input)
 -spec list_application_d_p_u_sizes(map(), list_application_d_p_u_sizes_input(), proplists:proplist()) ->
     {ok, list_application_d_p_u_sizes_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_application_d_p_u_sizes_errors(), tuple()}.
 list_application_d_p_u_sizes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApplicationDPUSizes">>, Input, Options).
@@ -2615,9 +2815,7 @@ list_application_d_p_u_sizes(Client, Input, Options)
 -spec list_calculation_executions(map(), list_calculation_executions_request()) ->
     {ok, list_calculation_executions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_calculation_executions_errors(), tuple()}.
 list_calculation_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_calculation_executions(Client, Input, []).
@@ -2625,9 +2823,7 @@ list_calculation_executions(Client, Input)
 -spec list_calculation_executions(map(), list_calculation_executions_request(), proplists:proplist()) ->
     {ok, list_calculation_executions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_calculation_executions_errors(), tuple()}.
 list_calculation_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCalculationExecutions">>, Input, Options).
@@ -2636,8 +2832,7 @@ list_calculation_executions(Client, Input, Options)
 -spec list_capacity_reservations(map(), list_capacity_reservations_input()) ->
     {ok, list_capacity_reservations_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_capacity_reservations_errors(), tuple()}.
 list_capacity_reservations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_capacity_reservations(Client, Input, []).
@@ -2645,8 +2840,7 @@ list_capacity_reservations(Client, Input)
 -spec list_capacity_reservations(map(), list_capacity_reservations_input(), proplists:proplist()) ->
     {ok, list_capacity_reservations_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_capacity_reservations_errors(), tuple()}.
 list_capacity_reservations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCapacityReservations">>, Input, Options).
@@ -2659,8 +2853,7 @@ list_capacity_reservations(Client, Input, Options)
 -spec list_data_catalogs(map(), list_data_catalogs_input()) ->
     {ok, list_data_catalogs_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_data_catalogs_errors(), tuple()}.
 list_data_catalogs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_data_catalogs(Client, Input, []).
@@ -2668,8 +2861,7 @@ list_data_catalogs(Client, Input)
 -spec list_data_catalogs(map(), list_data_catalogs_input(), proplists:proplist()) ->
     {ok, list_data_catalogs_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_data_catalogs_errors(), tuple()}.
 list_data_catalogs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDataCatalogs">>, Input, Options).
@@ -2678,9 +2870,7 @@ list_data_catalogs(Client, Input, Options)
 -spec list_databases(map(), list_databases_input()) ->
     {ok, list_databases_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, metadata_exception(), tuple()}.
+    {error, list_databases_errors(), tuple()}.
 list_databases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_databases(Client, Input, []).
@@ -2688,9 +2878,7 @@ list_databases(Client, Input)
 -spec list_databases(map(), list_databases_input(), proplists:proplist()) ->
     {ok, list_databases_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, metadata_exception(), tuple()}.
+    {error, list_databases_errors(), tuple()}.
 list_databases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDatabases">>, Input, Options).
@@ -2701,8 +2889,7 @@ list_databases(Client, Input, Options)
 -spec list_engine_versions(map(), list_engine_versions_input()) ->
     {ok, list_engine_versions_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_engine_versions_errors(), tuple()}.
 list_engine_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_engine_versions(Client, Input, []).
@@ -2710,8 +2897,7 @@ list_engine_versions(Client, Input)
 -spec list_engine_versions(map(), list_engine_versions_input(), proplists:proplist()) ->
     {ok, list_engine_versions_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_engine_versions_errors(), tuple()}.
 list_engine_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEngineVersions">>, Input, Options).
@@ -2725,9 +2911,7 @@ list_engine_versions(Client, Input, Options)
 -spec list_executors(map(), list_executors_request()) ->
     {ok, list_executors_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_executors_errors(), tuple()}.
 list_executors(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_executors(Client, Input, []).
@@ -2735,9 +2919,7 @@ list_executors(Client, Input)
 -spec list_executors(map(), list_executors_request(), proplists:proplist()) ->
     {ok, list_executors_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_executors_errors(), tuple()}.
 list_executors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListExecutors">>, Input, Options).
@@ -2752,8 +2934,7 @@ list_executors(Client, Input, Options)
 -spec list_named_queries(map(), list_named_queries_input()) ->
     {ok, list_named_queries_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_named_queries_errors(), tuple()}.
 list_named_queries(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_named_queries(Client, Input, []).
@@ -2761,8 +2942,7 @@ list_named_queries(Client, Input)
 -spec list_named_queries(map(), list_named_queries_input(), proplists:proplist()) ->
     {ok, list_named_queries_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_named_queries_errors(), tuple()}.
 list_named_queries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListNamedQueries">>, Input, Options).
@@ -2772,9 +2952,7 @@ list_named_queries(Client, Input, Options)
 -spec list_notebook_metadata(map(), list_notebook_metadata_input()) ->
     {ok, list_notebook_metadata_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_notebook_metadata_errors(), tuple()}.
 list_notebook_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_notebook_metadata(Client, Input, []).
@@ -2782,9 +2960,7 @@ list_notebook_metadata(Client, Input)
 -spec list_notebook_metadata(map(), list_notebook_metadata_input(), proplists:proplist()) ->
     {ok, list_notebook_metadata_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_notebook_metadata_errors(), tuple()}.
 list_notebook_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListNotebookMetadata">>, Input, Options).
@@ -2799,9 +2975,7 @@ list_notebook_metadata(Client, Input, Options)
 -spec list_notebook_sessions(map(), list_notebook_sessions_request()) ->
     {ok, list_notebook_sessions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_notebook_sessions_errors(), tuple()}.
 list_notebook_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_notebook_sessions(Client, Input, []).
@@ -2809,9 +2983,7 @@ list_notebook_sessions(Client, Input)
 -spec list_notebook_sessions(map(), list_notebook_sessions_request(), proplists:proplist()) ->
     {ok, list_notebook_sessions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_notebook_sessions_errors(), tuple()}.
 list_notebook_sessions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListNotebookSessions">>, Input, Options).
@@ -2820,8 +2992,7 @@ list_notebook_sessions(Client, Input, Options)
 -spec list_prepared_statements(map(), list_prepared_statements_input()) ->
     {ok, list_prepared_statements_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_prepared_statements_errors(), tuple()}.
 list_prepared_statements(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_prepared_statements(Client, Input, []).
@@ -2829,8 +3000,7 @@ list_prepared_statements(Client, Input)
 -spec list_prepared_statements(map(), list_prepared_statements_input(), proplists:proplist()) ->
     {ok, list_prepared_statements_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_prepared_statements_errors(), tuple()}.
 list_prepared_statements(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPreparedStatements">>, Input, Options).
@@ -2846,8 +3016,7 @@ list_prepared_statements(Client, Input, Options)
 -spec list_query_executions(map(), list_query_executions_input()) ->
     {ok, list_query_executions_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_query_executions_errors(), tuple()}.
 list_query_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_query_executions(Client, Input, []).
@@ -2855,8 +3024,7 @@ list_query_executions(Client, Input)
 -spec list_query_executions(map(), list_query_executions_input(), proplists:proplist()) ->
     {ok, list_query_executions_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_query_executions_errors(), tuple()}.
 list_query_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListQueryExecutions">>, Input, Options).
@@ -2870,9 +3038,7 @@ list_query_executions(Client, Input, Options)
 -spec list_sessions(map(), list_sessions_request()) ->
     {ok, list_sessions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_sessions_errors(), tuple()}.
 list_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_sessions(Client, Input, []).
@@ -2880,9 +3046,7 @@ list_sessions(Client, Input)
 -spec list_sessions(map(), list_sessions_request(), proplists:proplist()) ->
     {ok, list_sessions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_sessions_errors(), tuple()}.
 list_sessions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSessions">>, Input, Options).
@@ -2892,9 +3056,7 @@ list_sessions(Client, Input, Options)
 -spec list_table_metadata(map(), list_table_metadata_input()) ->
     {ok, list_table_metadata_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, metadata_exception(), tuple()}.
+    {error, list_table_metadata_errors(), tuple()}.
 list_table_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_table_metadata(Client, Input, []).
@@ -2902,9 +3064,7 @@ list_table_metadata(Client, Input)
 -spec list_table_metadata(map(), list_table_metadata_input(), proplists:proplist()) ->
     {ok, list_table_metadata_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, metadata_exception(), tuple()}.
+    {error, list_table_metadata_errors(), tuple()}.
 list_table_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTableMetadata">>, Input, Options).
@@ -2913,9 +3073,7 @@ list_table_metadata(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -2923,9 +3081,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_input(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -2934,8 +3090,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec list_work_groups(map(), list_work_groups_input()) ->
     {ok, list_work_groups_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_work_groups_errors(), tuple()}.
 list_work_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_work_groups(Client, Input, []).
@@ -2943,8 +3098,7 @@ list_work_groups(Client, Input)
 -spec list_work_groups(map(), list_work_groups_input(), proplists:proplist()) ->
     {ok, list_work_groups_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_work_groups_errors(), tuple()}.
 list_work_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWorkGroups">>, Input, Options).
@@ -2959,8 +3113,7 @@ list_work_groups(Client, Input, Options)
 -spec put_capacity_assignment_configuration(map(), put_capacity_assignment_configuration_input()) ->
     {ok, put_capacity_assignment_configuration_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, put_capacity_assignment_configuration_errors(), tuple()}.
 put_capacity_assignment_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_capacity_assignment_configuration(Client, Input, []).
@@ -2968,8 +3121,7 @@ put_capacity_assignment_configuration(Client, Input)
 -spec put_capacity_assignment_configuration(map(), put_capacity_assignment_configuration_input(), proplists:proplist()) ->
     {ok, put_capacity_assignment_configuration_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, put_capacity_assignment_configuration_errors(), tuple()}.
 put_capacity_assignment_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutCapacityAssignmentConfiguration">>, Input, Options).
@@ -2988,9 +3140,7 @@ put_capacity_assignment_configuration(Client, Input, Options)
 -spec start_calculation_execution(map(), start_calculation_execution_request()) ->
     {ok, start_calculation_execution_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_calculation_execution_errors(), tuple()}.
 start_calculation_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_calculation_execution(Client, Input, []).
@@ -2998,9 +3148,7 @@ start_calculation_execution(Client, Input)
 -spec start_calculation_execution(map(), start_calculation_execution_request(), proplists:proplist()) ->
     {ok, start_calculation_execution_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_calculation_execution_errors(), tuple()}.
 start_calculation_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartCalculationExecution">>, Input, Options).
@@ -3019,9 +3167,7 @@ start_calculation_execution(Client, Input, Options)
 -spec start_query_execution(map(), start_query_execution_input()) ->
     {ok, start_query_execution_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, start_query_execution_errors(), tuple()}.
 start_query_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_query_execution(Client, Input, []).
@@ -3029,9 +3175,7 @@ start_query_execution(Client, Input)
 -spec start_query_execution(map(), start_query_execution_input(), proplists:proplist()) ->
     {ok, start_query_execution_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, start_query_execution_errors(), tuple()}.
 start_query_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartQueryExecution">>, Input, Options).
@@ -3043,11 +3187,7 @@ start_query_execution(Client, Input, Options)
 -spec start_session(map(), start_session_request()) ->
     {ok, start_session_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, session_already_exists_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, start_session_errors(), tuple()}.
 start_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_session(Client, Input, []).
@@ -3055,11 +3195,7 @@ start_session(Client, Input)
 -spec start_session(map(), start_session_request(), proplists:proplist()) ->
     {ok, start_session_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, session_already_exists_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, start_session_errors(), tuple()}.
 start_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartSession">>, Input, Options).
@@ -3081,9 +3217,7 @@ start_session(Client, Input, Options)
 -spec stop_calculation_execution(map(), stop_calculation_execution_request()) ->
     {ok, stop_calculation_execution_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_calculation_execution_errors(), tuple()}.
 stop_calculation_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_calculation_execution(Client, Input, []).
@@ -3091,9 +3225,7 @@ stop_calculation_execution(Client, Input)
 -spec stop_calculation_execution(map(), stop_calculation_execution_request(), proplists:proplist()) ->
     {ok, stop_calculation_execution_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_calculation_execution_errors(), tuple()}.
 stop_calculation_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopCalculationExecution">>, Input, Options).
@@ -3105,8 +3237,7 @@ stop_calculation_execution(Client, Input, Options)
 -spec stop_query_execution(map(), stop_query_execution_input()) ->
     {ok, stop_query_execution_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, stop_query_execution_errors(), tuple()}.
 stop_query_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_query_execution(Client, Input, []).
@@ -3114,8 +3245,7 @@ stop_query_execution(Client, Input)
 -spec stop_query_execution(map(), stop_query_execution_input(), proplists:proplist()) ->
     {ok, stop_query_execution_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, stop_query_execution_errors(), tuple()}.
 stop_query_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopQueryExecution">>, Input, Options).
@@ -3144,9 +3274,7 @@ stop_query_execution(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -3154,9 +3282,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -3173,9 +3299,7 @@ tag_resource(Client, Input, Options)
 -spec terminate_session(map(), terminate_session_request()) ->
     {ok, terminate_session_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, terminate_session_errors(), tuple()}.
 terminate_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     terminate_session(Client, Input, []).
@@ -3183,9 +3307,7 @@ terminate_session(Client, Input)
 -spec terminate_session(map(), terminate_session_request(), proplists:proplist()) ->
     {ok, terminate_session_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, terminate_session_errors(), tuple()}.
 terminate_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TerminateSession">>, Input, Options).
@@ -3194,9 +3316,7 @@ terminate_session(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -3204,9 +3324,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -3217,8 +3335,7 @@ untag_resource(Client, Input, Options)
 -spec update_capacity_reservation(map(), update_capacity_reservation_input()) ->
     {ok, update_capacity_reservation_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_capacity_reservation_errors(), tuple()}.
 update_capacity_reservation(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_capacity_reservation(Client, Input, []).
@@ -3226,8 +3343,7 @@ update_capacity_reservation(Client, Input)
 -spec update_capacity_reservation(map(), update_capacity_reservation_input(), proplists:proplist()) ->
     {ok, update_capacity_reservation_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_capacity_reservation_errors(), tuple()}.
 update_capacity_reservation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCapacityReservation">>, Input, Options).
@@ -3236,8 +3352,7 @@ update_capacity_reservation(Client, Input, Options)
 -spec update_data_catalog(map(), update_data_catalog_input()) ->
     {ok, update_data_catalog_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_data_catalog_errors(), tuple()}.
 update_data_catalog(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_data_catalog(Client, Input, []).
@@ -3245,8 +3360,7 @@ update_data_catalog(Client, Input)
 -spec update_data_catalog(map(), update_data_catalog_input(), proplists:proplist()) ->
     {ok, update_data_catalog_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_data_catalog_errors(), tuple()}.
 update_data_catalog(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDataCatalog">>, Input, Options).
@@ -3258,8 +3372,7 @@ update_data_catalog(Client, Input, Options)
 -spec update_named_query(map(), update_named_query_input()) ->
     {ok, update_named_query_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_named_query_errors(), tuple()}.
 update_named_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_named_query(Client, Input, []).
@@ -3267,8 +3380,7 @@ update_named_query(Client, Input)
 -spec update_named_query(map(), update_named_query_input(), proplists:proplist()) ->
     {ok, update_named_query_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_named_query_errors(), tuple()}.
 update_named_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateNamedQuery">>, Input, Options).
@@ -3277,9 +3389,7 @@ update_named_query(Client, Input, Options)
 -spec update_notebook(map(), update_notebook_input()) ->
     {ok, update_notebook_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_notebook_errors(), tuple()}.
 update_notebook(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_notebook(Client, Input, []).
@@ -3287,9 +3397,7 @@ update_notebook(Client, Input)
 -spec update_notebook(map(), update_notebook_input(), proplists:proplist()) ->
     {ok, update_notebook_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_notebook_errors(), tuple()}.
 update_notebook(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateNotebook">>, Input, Options).
@@ -3298,9 +3406,7 @@ update_notebook(Client, Input, Options)
 -spec update_notebook_metadata(map(), update_notebook_metadata_input()) ->
     {ok, update_notebook_metadata_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_notebook_metadata_errors(), tuple()}.
 update_notebook_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_notebook_metadata(Client, Input, []).
@@ -3308,9 +3414,7 @@ update_notebook_metadata(Client, Input)
 -spec update_notebook_metadata(map(), update_notebook_metadata_input(), proplists:proplist()) ->
     {ok, update_notebook_metadata_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_notebook_metadata_errors(), tuple()}.
 update_notebook_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateNotebookMetadata">>, Input, Options).
@@ -3319,9 +3423,7 @@ update_notebook_metadata(Client, Input, Options)
 -spec update_prepared_statement(map(), update_prepared_statement_input()) ->
     {ok, update_prepared_statement_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_prepared_statement_errors(), tuple()}.
 update_prepared_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_prepared_statement(Client, Input, []).
@@ -3329,9 +3431,7 @@ update_prepared_statement(Client, Input)
 -spec update_prepared_statement(map(), update_prepared_statement_input(), proplists:proplist()) ->
     {ok, update_prepared_statement_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_prepared_statement_errors(), tuple()}.
 update_prepared_statement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePreparedStatement">>, Input, Options).
@@ -3343,8 +3443,7 @@ update_prepared_statement(Client, Input, Options)
 -spec update_work_group(map(), update_work_group_input()) ->
     {ok, update_work_group_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_work_group_errors(), tuple()}.
 update_work_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_work_group(Client, Input, []).
@@ -3352,8 +3451,7 @@ update_work_group(Client, Input)
 -spec update_work_group(map(), update_work_group_input(), proplists:proplist()) ->
     {ok, update_work_group_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_work_group_errors(), tuple()}.
 update_work_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateWorkGroup">>, Input, Options).

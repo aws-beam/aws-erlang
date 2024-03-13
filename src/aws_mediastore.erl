@@ -392,6 +392,115 @@
 %% }
 -type create_container_input() :: #{binary() => any()}.
 
+-type create_container_errors() ::
+    limit_exceeded_exception() | 
+    container_in_use_exception() | 
+    internal_server_error().
+
+-type delete_container_errors() ::
+    container_in_use_exception() | 
+    internal_server_error() | 
+    container_not_found_exception().
+
+-type delete_container_policy_errors() ::
+    container_in_use_exception() | 
+    internal_server_error() | 
+    container_not_found_exception() | 
+    policy_not_found_exception().
+
+-type delete_cors_policy_errors() ::
+    container_in_use_exception() | 
+    internal_server_error() | 
+    container_not_found_exception() | 
+    cors_policy_not_found_exception().
+
+-type delete_lifecycle_policy_errors() ::
+    container_in_use_exception() | 
+    internal_server_error() | 
+    container_not_found_exception() | 
+    policy_not_found_exception().
+
+-type delete_metric_policy_errors() ::
+    container_in_use_exception() | 
+    internal_server_error() | 
+    container_not_found_exception() | 
+    policy_not_found_exception().
+
+-type describe_container_errors() ::
+    internal_server_error() | 
+    container_not_found_exception().
+
+-type get_container_policy_errors() ::
+    container_in_use_exception() | 
+    internal_server_error() | 
+    container_not_found_exception() | 
+    policy_not_found_exception().
+
+-type get_cors_policy_errors() ::
+    container_in_use_exception() | 
+    internal_server_error() | 
+    container_not_found_exception() | 
+    cors_policy_not_found_exception().
+
+-type get_lifecycle_policy_errors() ::
+    container_in_use_exception() | 
+    internal_server_error() | 
+    container_not_found_exception() | 
+    policy_not_found_exception().
+
+-type get_metric_policy_errors() ::
+    container_in_use_exception() | 
+    internal_server_error() | 
+    container_not_found_exception() | 
+    policy_not_found_exception().
+
+-type list_containers_errors() ::
+    internal_server_error().
+
+-type list_tags_for_resource_errors() ::
+    container_in_use_exception() | 
+    internal_server_error() | 
+    container_not_found_exception().
+
+-type put_container_policy_errors() ::
+    container_in_use_exception() | 
+    internal_server_error() | 
+    container_not_found_exception().
+
+-type put_cors_policy_errors() ::
+    container_in_use_exception() | 
+    internal_server_error() | 
+    container_not_found_exception().
+
+-type put_lifecycle_policy_errors() ::
+    container_in_use_exception() | 
+    internal_server_error() | 
+    container_not_found_exception().
+
+-type put_metric_policy_errors() ::
+    container_in_use_exception() | 
+    internal_server_error() | 
+    container_not_found_exception().
+
+-type start_access_logging_errors() ::
+    container_in_use_exception() | 
+    internal_server_error() | 
+    container_not_found_exception().
+
+-type stop_access_logging_errors() ::
+    container_in_use_exception() | 
+    internal_server_error() | 
+    container_not_found_exception().
+
+-type tag_resource_errors() ::
+    container_in_use_exception() | 
+    internal_server_error() | 
+    container_not_found_exception().
+
+-type untag_resource_errors() ::
+    container_in_use_exception() | 
+    internal_server_error() | 
+    container_not_found_exception().
 
 %%====================================================================
 %% API
@@ -404,9 +513,7 @@
 -spec create_container(map(), create_container_input()) ->
     {ok, create_container_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_container_errors(), tuple()}.
 create_container(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_container(Client, Input, []).
@@ -414,9 +521,7 @@ create_container(Client, Input)
 -spec create_container(map(), create_container_input(), proplists:proplist()) ->
     {ok, create_container_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_container_errors(), tuple()}.
 create_container(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateContainer">>, Input, Options).
@@ -430,9 +535,7 @@ create_container(Client, Input, Options)
 -spec delete_container(map(), delete_container_input()) ->
     {ok, delete_container_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, delete_container_errors(), tuple()}.
 delete_container(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_container(Client, Input, []).
@@ -440,9 +543,7 @@ delete_container(Client, Input)
 -spec delete_container(map(), delete_container_input(), proplists:proplist()) ->
     {ok, delete_container_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, delete_container_errors(), tuple()}.
 delete_container(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteContainer">>, Input, Options).
@@ -452,10 +553,7 @@ delete_container(Client, Input, Options)
 -spec delete_container_policy(map(), delete_container_policy_input()) ->
     {ok, delete_container_policy_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, policy_not_found_exception(), tuple()}.
+    {error, delete_container_policy_errors(), tuple()}.
 delete_container_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_container_policy(Client, Input, []).
@@ -463,10 +561,7 @@ delete_container_policy(Client, Input)
 -spec delete_container_policy(map(), delete_container_policy_input(), proplists:proplist()) ->
     {ok, delete_container_policy_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, policy_not_found_exception(), tuple()}.
+    {error, delete_container_policy_errors(), tuple()}.
 delete_container_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteContainerPolicy">>, Input, Options).
@@ -482,10 +577,7 @@ delete_container_policy(Client, Input, Options)
 -spec delete_cors_policy(map(), delete_cors_policy_input()) ->
     {ok, delete_cors_policy_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, cors_policy_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, delete_cors_policy_errors(), tuple()}.
 delete_cors_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cors_policy(Client, Input, []).
@@ -493,10 +585,7 @@ delete_cors_policy(Client, Input)
 -spec delete_cors_policy(map(), delete_cors_policy_input(), proplists:proplist()) ->
     {ok, delete_cors_policy_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, cors_policy_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, delete_cors_policy_errors(), tuple()}.
 delete_cors_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCorsPolicy">>, Input, Options).
@@ -507,10 +596,7 @@ delete_cors_policy(Client, Input, Options)
 -spec delete_lifecycle_policy(map(), delete_lifecycle_policy_input()) ->
     {ok, delete_lifecycle_policy_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, policy_not_found_exception(), tuple()}.
+    {error, delete_lifecycle_policy_errors(), tuple()}.
 delete_lifecycle_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_lifecycle_policy(Client, Input, []).
@@ -518,10 +604,7 @@ delete_lifecycle_policy(Client, Input)
 -spec delete_lifecycle_policy(map(), delete_lifecycle_policy_input(), proplists:proplist()) ->
     {ok, delete_lifecycle_policy_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, policy_not_found_exception(), tuple()}.
+    {error, delete_lifecycle_policy_errors(), tuple()}.
 delete_lifecycle_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLifecyclePolicy">>, Input, Options).
@@ -534,10 +617,7 @@ delete_lifecycle_policy(Client, Input, Options)
 -spec delete_metric_policy(map(), delete_metric_policy_input()) ->
     {ok, delete_metric_policy_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, policy_not_found_exception(), tuple()}.
+    {error, delete_metric_policy_errors(), tuple()}.
 delete_metric_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_metric_policy(Client, Input, []).
@@ -545,10 +625,7 @@ delete_metric_policy(Client, Input)
 -spec delete_metric_policy(map(), delete_metric_policy_input(), proplists:proplist()) ->
     {ok, delete_metric_policy_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, policy_not_found_exception(), tuple()}.
+    {error, delete_metric_policy_errors(), tuple()}.
 delete_metric_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMetricPolicy">>, Input, Options).
@@ -568,8 +645,7 @@ delete_metric_policy(Client, Input, Options)
 -spec describe_container(map(), describe_container_input()) ->
     {ok, describe_container_output(), tuple()} |
     {error, any()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_container_errors(), tuple()}.
 describe_container(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_container(Client, Input, []).
@@ -577,8 +653,7 @@ describe_container(Client, Input)
 -spec describe_container(map(), describe_container_input(), proplists:proplist()) ->
     {ok, describe_container_output(), tuple()} |
     {error, any()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_container_errors(), tuple()}.
 describe_container(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeContainer">>, Input, Options).
@@ -592,10 +667,7 @@ describe_container(Client, Input, Options)
 -spec get_container_policy(map(), get_container_policy_input()) ->
     {ok, get_container_policy_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, policy_not_found_exception(), tuple()}.
+    {error, get_container_policy_errors(), tuple()}.
 get_container_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_container_policy(Client, Input, []).
@@ -603,10 +675,7 @@ get_container_policy(Client, Input)
 -spec get_container_policy(map(), get_container_policy_input(), proplists:proplist()) ->
     {ok, get_container_policy_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, policy_not_found_exception(), tuple()}.
+    {error, get_container_policy_errors(), tuple()}.
 get_container_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetContainerPolicy">>, Input, Options).
@@ -622,10 +691,7 @@ get_container_policy(Client, Input, Options)
 -spec get_cors_policy(map(), get_cors_policy_input()) ->
     {ok, get_cors_policy_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, cors_policy_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, get_cors_policy_errors(), tuple()}.
 get_cors_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_cors_policy(Client, Input, []).
@@ -633,10 +699,7 @@ get_cors_policy(Client, Input)
 -spec get_cors_policy(map(), get_cors_policy_input(), proplists:proplist()) ->
     {ok, get_cors_policy_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, cors_policy_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, get_cors_policy_errors(), tuple()}.
 get_cors_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCorsPolicy">>, Input, Options).
@@ -646,10 +709,7 @@ get_cors_policy(Client, Input, Options)
 -spec get_lifecycle_policy(map(), get_lifecycle_policy_input()) ->
     {ok, get_lifecycle_policy_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, policy_not_found_exception(), tuple()}.
+    {error, get_lifecycle_policy_errors(), tuple()}.
 get_lifecycle_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_lifecycle_policy(Client, Input, []).
@@ -657,10 +717,7 @@ get_lifecycle_policy(Client, Input)
 -spec get_lifecycle_policy(map(), get_lifecycle_policy_input(), proplists:proplist()) ->
     {ok, get_lifecycle_policy_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, policy_not_found_exception(), tuple()}.
+    {error, get_lifecycle_policy_errors(), tuple()}.
 get_lifecycle_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLifecyclePolicy">>, Input, Options).
@@ -669,10 +726,7 @@ get_lifecycle_policy(Client, Input, Options)
 -spec get_metric_policy(map(), get_metric_policy_input()) ->
     {ok, get_metric_policy_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, policy_not_found_exception(), tuple()}.
+    {error, get_metric_policy_errors(), tuple()}.
 get_metric_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_metric_policy(Client, Input, []).
@@ -680,10 +734,7 @@ get_metric_policy(Client, Input)
 -spec get_metric_policy(map(), get_metric_policy_input(), proplists:proplist()) ->
     {ok, get_metric_policy_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, policy_not_found_exception(), tuple()}.
+    {error, get_metric_policy_errors(), tuple()}.
 get_metric_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMetricPolicy">>, Input, Options).
@@ -707,7 +758,7 @@ get_metric_policy(Client, Input, Options)
 -spec list_containers(map(), list_containers_input()) ->
     {ok, list_containers_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, list_containers_errors(), tuple()}.
 list_containers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_containers(Client, Input, []).
@@ -715,7 +766,7 @@ list_containers(Client, Input)
 -spec list_containers(map(), list_containers_input(), proplists:proplist()) ->
     {ok, list_containers_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, list_containers_errors(), tuple()}.
 list_containers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListContainers">>, Input, Options).
@@ -724,9 +775,7 @@ list_containers(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -734,9 +783,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_input(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -757,9 +804,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec put_container_policy(map(), put_container_policy_input()) ->
     {ok, put_container_policy_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, put_container_policy_errors(), tuple()}.
 put_container_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_container_policy(Client, Input, []).
@@ -767,9 +812,7 @@ put_container_policy(Client, Input)
 -spec put_container_policy(map(), put_container_policy_input(), proplists:proplist()) ->
     {ok, put_container_policy_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, put_container_policy_errors(), tuple()}.
 put_container_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutContainerPolicy">>, Input, Options).
@@ -801,9 +844,7 @@ put_container_policy(Client, Input, Options)
 -spec put_cors_policy(map(), put_cors_policy_input()) ->
     {ok, put_cors_policy_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, put_cors_policy_errors(), tuple()}.
 put_cors_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_cors_policy(Client, Input, []).
@@ -811,9 +852,7 @@ put_cors_policy(Client, Input)
 -spec put_cors_policy(map(), put_cors_policy_input(), proplists:proplist()) ->
     {ok, put_cors_policy_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, put_cors_policy_errors(), tuple()}.
 put_cors_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutCorsPolicy">>, Input, Options).
@@ -830,9 +869,7 @@ put_cors_policy(Client, Input, Options)
 -spec put_lifecycle_policy(map(), put_lifecycle_policy_input()) ->
     {ok, put_lifecycle_policy_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, put_lifecycle_policy_errors(), tuple()}.
 put_lifecycle_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_lifecycle_policy(Client, Input, []).
@@ -840,9 +877,7 @@ put_lifecycle_policy(Client, Input)
 -spec put_lifecycle_policy(map(), put_lifecycle_policy_input(), proplists:proplist()) ->
     {ok, put_lifecycle_policy_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, put_lifecycle_policy_errors(), tuple()}.
 put_lifecycle_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutLifecyclePolicy">>, Input, Options).
@@ -854,9 +889,7 @@ put_lifecycle_policy(Client, Input, Options)
 -spec put_metric_policy(map(), put_metric_policy_input()) ->
     {ok, put_metric_policy_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, put_metric_policy_errors(), tuple()}.
 put_metric_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_metric_policy(Client, Input, []).
@@ -864,9 +897,7 @@ put_metric_policy(Client, Input)
 -spec put_metric_policy(map(), put_metric_policy_input(), proplists:proplist()) ->
     {ok, put_metric_policy_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, put_metric_policy_errors(), tuple()}.
 put_metric_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutMetricPolicy">>, Input, Options).
@@ -878,9 +909,7 @@ put_metric_policy(Client, Input, Options)
 -spec start_access_logging(map(), start_access_logging_input()) ->
     {ok, start_access_logging_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, start_access_logging_errors(), tuple()}.
 start_access_logging(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_access_logging(Client, Input, []).
@@ -888,9 +917,7 @@ start_access_logging(Client, Input)
 -spec start_access_logging(map(), start_access_logging_input(), proplists:proplist()) ->
     {ok, start_access_logging_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, start_access_logging_errors(), tuple()}.
 start_access_logging(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartAccessLogging">>, Input, Options).
@@ -903,9 +930,7 @@ start_access_logging(Client, Input, Options)
 -spec stop_access_logging(map(), stop_access_logging_input()) ->
     {ok, stop_access_logging_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, stop_access_logging_errors(), tuple()}.
 stop_access_logging(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_access_logging(Client, Input, []).
@@ -913,9 +938,7 @@ stop_access_logging(Client, Input)
 -spec stop_access_logging(map(), stop_access_logging_input(), proplists:proplist()) ->
     {ok, stop_access_logging_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, stop_access_logging_errors(), tuple()}.
 stop_access_logging(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopAccessLogging">>, Input, Options).
@@ -933,9 +956,7 @@ stop_access_logging(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -943,9 +964,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -956,9 +975,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -966,9 +983,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, container_in_use_exception(), tuple()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).

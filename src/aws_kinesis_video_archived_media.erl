@@ -27,12 +27,14 @@
 %% }
 -type client_limit_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% clip_fragment_selector() :: #{
 %%   <<"FragmentSelectorType">> => list(any()),
 %%   <<"TimestampRange">> => clip_timestamp_range()
 %% }
 -type clip_fragment_selector() :: #{binary() => any()}.
+
 
 %% Example:
 %% clip_timestamp_range() :: #{
@@ -41,6 +43,7 @@
 %% }
 -type clip_timestamp_range() :: #{binary() => any()}.
 
+
 %% Example:
 %% dash_fragment_selector() :: #{
 %%   <<"FragmentSelectorType">> => list(any()),
@@ -48,12 +51,14 @@
 %% }
 -type dash_fragment_selector() :: #{binary() => any()}.
 
+
 %% Example:
 %% dash_timestamp_range() :: #{
 %%   <<"EndTimestamp">> => non_neg_integer(),
 %%   <<"StartTimestamp">> => non_neg_integer()
 %% }
 -type dash_timestamp_range() :: #{binary() => any()}.
+
 
 %% Example:
 %% fragment() :: #{
@@ -65,12 +70,14 @@
 %% }
 -type fragment() :: #{binary() => any()}.
 
+
 %% Example:
 %% fragment_selector() :: #{
 %%   <<"FragmentSelectorType">> => list(any()),
 %%   <<"TimestampRange">> => timestamp_range()
 %% }
 -type fragment_selector() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_clip_input() :: #{
@@ -80,12 +87,14 @@
 %% }
 -type get_clip_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_clip_output() :: #{
 %%   <<"ContentType">> => string(),
 %%   <<"Payload">> => binary()
 %% }
 -type get_clip_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_dash_streaming_session_url_input() :: #{
@@ -100,11 +109,13 @@
 %% }
 -type get_dash_streaming_session_url_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_dash_streaming_session_url_output() :: #{
 %%   <<"DASHStreamingSessionURL">> => string()
 %% }
 -type get_dash_streaming_session_url_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_hls_streaming_session_url_input() :: #{
@@ -120,11 +131,13 @@
 %% }
 -type get_hls_streaming_session_url_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_hls_streaming_session_url_output() :: #{
 %%   <<"HLSStreamingSessionURL">> => string()
 %% }
 -type get_hls_streaming_session_url_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_images_input() :: #{
@@ -143,12 +156,14 @@
 %% }
 -type get_images_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_images_output() :: #{
 %%   <<"Images">> => list(image()()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_images_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_media_for_fragment_list_input() :: #{
@@ -158,12 +173,14 @@
 %% }
 -type get_media_for_fragment_list_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_media_for_fragment_list_output() :: #{
 %%   <<"ContentType">> => string(),
 %%   <<"Payload">> => binary()
 %% }
 -type get_media_for_fragment_list_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% hls_fragment_selector() :: #{
@@ -172,12 +189,14 @@
 %% }
 -type hls_fragment_selector() :: #{binary() => any()}.
 
+
 %% Example:
 %% hls_timestamp_range() :: #{
 %%   <<"EndTimestamp">> => non_neg_integer(),
 %%   <<"StartTimestamp">> => non_neg_integer()
 %% }
 -type hls_timestamp_range() :: #{binary() => any()}.
+
 
 %% Example:
 %% image() :: #{
@@ -187,11 +206,13 @@
 %% }
 -type image() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_argument_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_argument_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% invalid_codec_private_data_exception() :: #{
@@ -199,11 +220,13 @@
 %% }
 -type invalid_codec_private_data_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_media_frame_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_media_frame_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_fragments_input() :: #{
@@ -215,6 +238,7 @@
 %% }
 -type list_fragments_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_fragments_output() :: #{
 %%   <<"Fragments">> => list(fragment()()),
@@ -222,11 +246,13 @@
 %% }
 -type list_fragments_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% missing_codec_private_data_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type missing_codec_private_data_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% no_data_retention_exception() :: #{
@@ -234,17 +260,20 @@
 %% }
 -type no_data_retention_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% not_authorized_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type not_authorized_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% timestamp_range() :: #{
@@ -253,11 +282,62 @@
 %% }
 -type timestamp_range() :: #{binary() => any()}.
 
+
 %% Example:
 %% unsupported_stream_media_type_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type unsupported_stream_media_type_exception() :: #{binary() => any()}.
+
+-type get_clip_errors() ::
+    unsupported_stream_media_type_exception() | 
+    resource_not_found_exception() | 
+    not_authorized_exception() | 
+    no_data_retention_exception() | 
+    missing_codec_private_data_exception() | 
+    invalid_media_frame_exception() | 
+    invalid_codec_private_data_exception() | 
+    invalid_argument_exception() | 
+    client_limit_exceeded_exception().
+
+-type get_dash_streaming_session_url_errors() ::
+    unsupported_stream_media_type_exception() | 
+    resource_not_found_exception() | 
+    not_authorized_exception() | 
+    no_data_retention_exception() | 
+    missing_codec_private_data_exception() | 
+    invalid_codec_private_data_exception() | 
+    invalid_argument_exception() | 
+    client_limit_exceeded_exception().
+
+-type get_hls_streaming_session_url_errors() ::
+    unsupported_stream_media_type_exception() | 
+    resource_not_found_exception() | 
+    not_authorized_exception() | 
+    no_data_retention_exception() | 
+    missing_codec_private_data_exception() | 
+    invalid_codec_private_data_exception() | 
+    invalid_argument_exception() | 
+    client_limit_exceeded_exception().
+
+-type get_images_errors() ::
+    resource_not_found_exception() | 
+    not_authorized_exception() | 
+    no_data_retention_exception() | 
+    invalid_argument_exception() | 
+    client_limit_exceeded_exception().
+
+-type get_media_for_fragment_list_errors() ::
+    resource_not_found_exception() | 
+    not_authorized_exception() | 
+    invalid_argument_exception() | 
+    client_limit_exceeded_exception().
+
+-type list_fragments_errors() ::
+    resource_not_found_exception() | 
+    not_authorized_exception() | 
+    invalid_argument_exception() | 
+    client_limit_exceeded_exception().
 
 %%====================================================================
 %% API
@@ -319,30 +399,14 @@
 -spec get_clip(map(), get_clip_input()) ->
     {ok, get_clip_output(), tuple()} |
     {error, any()} |
-    {error, client_limit_exceeded_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_codec_private_data_exception(), tuple()} |
-    {error, invalid_media_frame_exception(), tuple()} |
-    {error, missing_codec_private_data_exception(), tuple()} |
-    {error, no_data_retention_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, unsupported_stream_media_type_exception(), tuple()}.
+    {error, get_clip_errors(), tuple()}.
 get_clip(Client, Input) ->
     get_clip(Client, Input, []).
 
 -spec get_clip(map(), get_clip_input(), proplists:proplist()) ->
     {ok, get_clip_output(), tuple()} |
     {error, any()} |
-    {error, client_limit_exceeded_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_codec_private_data_exception(), tuple()} |
-    {error, invalid_media_frame_exception(), tuple()} |
-    {error, missing_codec_private_data_exception(), tuple()} |
-    {error, no_data_retention_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, unsupported_stream_media_type_exception(), tuple()}.
+    {error, get_clip_errors(), tuple()}.
 get_clip(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getClip"],
@@ -547,28 +611,14 @@ get_clip(Client, Input0, Options0) ->
 -spec get_dash_streaming_session_url(map(), get_dash_streaming_session_url_input()) ->
     {ok, get_dash_streaming_session_url_output(), tuple()} |
     {error, any()} |
-    {error, client_limit_exceeded_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_codec_private_data_exception(), tuple()} |
-    {error, missing_codec_private_data_exception(), tuple()} |
-    {error, no_data_retention_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, unsupported_stream_media_type_exception(), tuple()}.
+    {error, get_dash_streaming_session_url_errors(), tuple()}.
 get_dash_streaming_session_url(Client, Input) ->
     get_dash_streaming_session_url(Client, Input, []).
 
 -spec get_dash_streaming_session_url(map(), get_dash_streaming_session_url_input(), proplists:proplist()) ->
     {ok, get_dash_streaming_session_url_output(), tuple()} |
     {error, any()} |
-    {error, client_limit_exceeded_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_codec_private_data_exception(), tuple()} |
-    {error, missing_codec_private_data_exception(), tuple()} |
-    {error, no_data_retention_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, unsupported_stream_media_type_exception(), tuple()}.
+    {error, get_dash_streaming_session_url_errors(), tuple()}.
 get_dash_streaming_session_url(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getDASHStreamingSessionURL"],
@@ -798,28 +848,14 @@ get_dash_streaming_session_url(Client, Input0, Options0) ->
 -spec get_hls_streaming_session_url(map(), get_hls_streaming_session_url_input()) ->
     {ok, get_hls_streaming_session_url_output(), tuple()} |
     {error, any()} |
-    {error, client_limit_exceeded_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_codec_private_data_exception(), tuple()} |
-    {error, missing_codec_private_data_exception(), tuple()} |
-    {error, no_data_retention_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, unsupported_stream_media_type_exception(), tuple()}.
+    {error, get_hls_streaming_session_url_errors(), tuple()}.
 get_hls_streaming_session_url(Client, Input) ->
     get_hls_streaming_session_url(Client, Input, []).
 
 -spec get_hls_streaming_session_url(map(), get_hls_streaming_session_url_input(), proplists:proplist()) ->
     {ok, get_hls_streaming_session_url_output(), tuple()} |
     {error, any()} |
-    {error, client_limit_exceeded_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_codec_private_data_exception(), tuple()} |
-    {error, missing_codec_private_data_exception(), tuple()} |
-    {error, no_data_retention_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, unsupported_stream_media_type_exception(), tuple()}.
+    {error, get_hls_streaming_session_url_errors(), tuple()}.
 get_hls_streaming_session_url(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getHLSStreamingSessionURL"],
@@ -848,22 +884,14 @@ get_hls_streaming_session_url(Client, Input0, Options0) ->
 -spec get_images(map(), get_images_input()) ->
     {ok, get_images_output(), tuple()} |
     {error, any()} |
-    {error, client_limit_exceeded_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, no_data_retention_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_images_errors(), tuple()}.
 get_images(Client, Input) ->
     get_images(Client, Input, []).
 
 -spec get_images(map(), get_images_input(), proplists:proplist()) ->
     {ok, get_images_output(), tuple()} |
     {error, any()} |
-    {error, client_limit_exceeded_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, no_data_retention_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_images_errors(), tuple()}.
 get_images(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getImages"],
@@ -925,20 +953,14 @@ get_images(Client, Input0, Options0) ->
 -spec get_media_for_fragment_list(map(), get_media_for_fragment_list_input()) ->
     {ok, get_media_for_fragment_list_output(), tuple()} |
     {error, any()} |
-    {error, client_limit_exceeded_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_media_for_fragment_list_errors(), tuple()}.
 get_media_for_fragment_list(Client, Input) ->
     get_media_for_fragment_list(Client, Input, []).
 
 -spec get_media_for_fragment_list(map(), get_media_for_fragment_list_input(), proplists:proplist()) ->
     {ok, get_media_for_fragment_list_output(), tuple()} |
     {error, any()} |
-    {error, client_limit_exceeded_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_media_for_fragment_list_errors(), tuple()}.
 get_media_for_fragment_list(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getMediaForFragmentList"],
@@ -1020,20 +1042,14 @@ get_media_for_fragment_list(Client, Input0, Options0) ->
 -spec list_fragments(map(), list_fragments_input()) ->
     {ok, list_fragments_output(), tuple()} |
     {error, any()} |
-    {error, client_limit_exceeded_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_fragments_errors(), tuple()}.
 list_fragments(Client, Input) ->
     list_fragments(Client, Input, []).
 
 -spec list_fragments(map(), list_fragments_input(), proplists:proplist()) ->
     {ok, list_fragments_output(), tuple()} |
     {error, any()} |
-    {error, client_limit_exceeded_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_fragments_errors(), tuple()}.
 list_fragments(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listFragments"],

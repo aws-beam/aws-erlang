@@ -813,6 +813,146 @@
 %% }
 -type describe_evaluations_output() :: #{binary() => any()}.
 
+-type add_tags_errors() ::
+    invalid_tag_exception() | 
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    tag_limit_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type create_batch_prediction_errors() ::
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    idempotent_parameter_mismatch_exception().
+
+-type create_data_source_from_rds_errors() ::
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    idempotent_parameter_mismatch_exception().
+
+-type create_data_source_from_redshift_errors() ::
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    idempotent_parameter_mismatch_exception().
+
+-type create_data_source_from_s3_errors() ::
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    idempotent_parameter_mismatch_exception().
+
+-type create_evaluation_errors() ::
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    idempotent_parameter_mismatch_exception().
+
+-type create_ml_model_errors() ::
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    idempotent_parameter_mismatch_exception().
+
+-type create_realtime_endpoint_errors() ::
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type delete_batch_prediction_errors() ::
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type delete_data_source_errors() ::
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type delete_evaluation_errors() ::
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type delete_ml_model_errors() ::
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type delete_realtime_endpoint_errors() ::
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type delete_tags_errors() ::
+    invalid_tag_exception() | 
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type describe_batch_predictions_errors() ::
+    internal_server_exception() | 
+    invalid_input_exception().
+
+-type describe_data_sources_errors() ::
+    internal_server_exception() | 
+    invalid_input_exception().
+
+-type describe_evaluations_errors() ::
+    internal_server_exception() | 
+    invalid_input_exception().
+
+-type describe_ml_models_errors() ::
+    internal_server_exception() | 
+    invalid_input_exception().
+
+-type describe_tags_errors() ::
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type get_batch_prediction_errors() ::
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type get_data_source_errors() ::
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type get_evaluation_errors() ::
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type get_ml_model_errors() ::
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type predict_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    predictor_not_mounted_exception() | 
+    resource_not_found_exception().
+
+-type update_batch_prediction_errors() ::
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type update_data_source_errors() ::
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type update_evaluation_errors() ::
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type update_ml_model_errors() ::
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -827,11 +967,7 @@
 -spec add_tags(map(), add_tags_input()) ->
     {ok, add_tags_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_tag_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, tag_limit_exceeded_exception(), tuple()}.
+    {error, add_tags_errors(), tuple()}.
 add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
@@ -839,11 +975,7 @@ add_tags(Client, Input)
 -spec add_tags(map(), add_tags_input(), proplists:proplist()) ->
     {ok, add_tags_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_tag_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, tag_limit_exceeded_exception(), tuple()}.
+    {error, add_tags_errors(), tuple()}.
 add_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTags">>, Input, Options).
@@ -870,9 +1002,7 @@ add_tags(Client, Input, Options)
 -spec create_batch_prediction(map(), create_batch_prediction_input()) ->
     {ok, create_batch_prediction_output(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, create_batch_prediction_errors(), tuple()}.
 create_batch_prediction(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_batch_prediction(Client, Input, []).
@@ -880,9 +1010,7 @@ create_batch_prediction(Client, Input)
 -spec create_batch_prediction(map(), create_batch_prediction_input(), proplists:proplist()) ->
     {ok, create_batch_prediction_output(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, create_batch_prediction_errors(), tuple()}.
 create_batch_prediction(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBatchPrediction">>, Input, Options).
@@ -910,9 +1038,7 @@ create_batch_prediction(Client, Input, Options)
 -spec create_data_source_from_rds(map(), create_data_source_from_rds_input()) ->
     {ok, create_data_source_from_rds_output(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, create_data_source_from_rds_errors(), tuple()}.
 create_data_source_from_rds(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_source_from_rds(Client, Input, []).
@@ -920,9 +1046,7 @@ create_data_source_from_rds(Client, Input)
 -spec create_data_source_from_rds(map(), create_data_source_from_rds_input(), proplists:proplist()) ->
     {ok, create_data_source_from_rds_output(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, create_data_source_from_rds_errors(), tuple()}.
 create_data_source_from_rds(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDataSourceFromRDS">>, Input, Options).
@@ -981,9 +1105,7 @@ create_data_source_from_rds(Client, Input, Options)
 -spec create_data_source_from_redshift(map(), create_data_source_from_redshift_input()) ->
     {ok, create_data_source_from_redshift_output(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, create_data_source_from_redshift_errors(), tuple()}.
 create_data_source_from_redshift(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_source_from_redshift(Client, Input, []).
@@ -991,9 +1113,7 @@ create_data_source_from_redshift(Client, Input)
 -spec create_data_source_from_redshift(map(), create_data_source_from_redshift_input(), proplists:proplist()) ->
     {ok, create_data_source_from_redshift_output(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, create_data_source_from_redshift_errors(), tuple()}.
 create_data_source_from_redshift(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDataSourceFromRedshift">>, Input, Options).
@@ -1045,9 +1165,7 @@ create_data_source_from_redshift(Client, Input, Options)
 -spec create_data_source_from_s3(map(), create_data_source_from_s3_input()) ->
     {ok, create_data_source_from_s3_output(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, create_data_source_from_s3_errors(), tuple()}.
 create_data_source_from_s3(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_source_from_s3(Client, Input, []).
@@ -1055,9 +1173,7 @@ create_data_source_from_s3(Client, Input)
 -spec create_data_source_from_s3(map(), create_data_source_from_s3_input(), proplists:proplist()) ->
     {ok, create_data_source_from_s3_output(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, create_data_source_from_s3_errors(), tuple()}.
 create_data_source_from_s3(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDataSourceFromS3">>, Input, Options).
@@ -1088,9 +1204,7 @@ create_data_source_from_s3(Client, Input, Options)
 -spec create_evaluation(map(), create_evaluation_input()) ->
     {ok, create_evaluation_output(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, create_evaluation_errors(), tuple()}.
 create_evaluation(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_evaluation(Client, Input, []).
@@ -1098,9 +1212,7 @@ create_evaluation(Client, Input)
 -spec create_evaluation(map(), create_evaluation_input(), proplists:proplist()) ->
     {ok, create_evaluation_output(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, create_evaluation_errors(), tuple()}.
 create_evaluation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEvaluation">>, Input, Options).
@@ -1130,9 +1242,7 @@ create_evaluation(Client, Input, Options)
 -spec create_ml_model(map(), create_ml_model_input()) ->
     {ok, create_ml_model_output(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, create_ml_model_errors(), tuple()}.
 create_ml_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_ml_model(Client, Input, []).
@@ -1140,9 +1250,7 @@ create_ml_model(Client, Input)
 -spec create_ml_model(map(), create_ml_model_input(), proplists:proplist()) ->
     {ok, create_ml_model_output(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, create_ml_model_errors(), tuple()}.
 create_ml_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateMLModel">>, Input, Options).
@@ -1154,9 +1262,7 @@ create_ml_model(Client, Input, Options)
 -spec create_realtime_endpoint(map(), create_realtime_endpoint_input()) ->
     {ok, create_realtime_endpoint_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_realtime_endpoint_errors(), tuple()}.
 create_realtime_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_realtime_endpoint(Client, Input, []).
@@ -1164,9 +1270,7 @@ create_realtime_endpoint(Client, Input)
 -spec create_realtime_endpoint(map(), create_realtime_endpoint_input(), proplists:proplist()) ->
     {ok, create_realtime_endpoint_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_realtime_endpoint_errors(), tuple()}.
 create_realtime_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRealtimeEndpoint">>, Input, Options).
@@ -1184,9 +1288,7 @@ create_realtime_endpoint(Client, Input, Options)
 -spec delete_batch_prediction(map(), delete_batch_prediction_input()) ->
     {ok, delete_batch_prediction_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_batch_prediction_errors(), tuple()}.
 delete_batch_prediction(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_batch_prediction(Client, Input, []).
@@ -1194,9 +1296,7 @@ delete_batch_prediction(Client, Input)
 -spec delete_batch_prediction(map(), delete_batch_prediction_input(), proplists:proplist()) ->
     {ok, delete_batch_prediction_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_batch_prediction_errors(), tuple()}.
 delete_batch_prediction(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBatchPrediction">>, Input, Options).
@@ -1213,9 +1313,7 @@ delete_batch_prediction(Client, Input, Options)
 -spec delete_data_source(map(), delete_data_source_input()) ->
     {ok, delete_data_source_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_data_source_errors(), tuple()}.
 delete_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_data_source(Client, Input, []).
@@ -1223,9 +1321,7 @@ delete_data_source(Client, Input)
 -spec delete_data_source(map(), delete_data_source_input(), proplists:proplist()) ->
     {ok, delete_data_source_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_data_source_errors(), tuple()}.
 delete_data_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDataSource">>, Input, Options).
@@ -1242,9 +1338,7 @@ delete_data_source(Client, Input, Options)
 -spec delete_evaluation(map(), delete_evaluation_input()) ->
     {ok, delete_evaluation_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_evaluation_errors(), tuple()}.
 delete_evaluation(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_evaluation(Client, Input, []).
@@ -1252,9 +1346,7 @@ delete_evaluation(Client, Input)
 -spec delete_evaluation(map(), delete_evaluation_input(), proplists:proplist()) ->
     {ok, delete_evaluation_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_evaluation_errors(), tuple()}.
 delete_evaluation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEvaluation">>, Input, Options).
@@ -1270,9 +1362,7 @@ delete_evaluation(Client, Input, Options)
 -spec delete_ml_model(map(), delete_ml_model_input()) ->
     {ok, delete_ml_model_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_ml_model_errors(), tuple()}.
 delete_ml_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_ml_model(Client, Input, []).
@@ -1280,9 +1370,7 @@ delete_ml_model(Client, Input)
 -spec delete_ml_model(map(), delete_ml_model_input(), proplists:proplist()) ->
     {ok, delete_ml_model_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_ml_model_errors(), tuple()}.
 delete_ml_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMLModel">>, Input, Options).
@@ -1291,9 +1379,7 @@ delete_ml_model(Client, Input, Options)
 -spec delete_realtime_endpoint(map(), delete_realtime_endpoint_input()) ->
     {ok, delete_realtime_endpoint_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_realtime_endpoint_errors(), tuple()}.
 delete_realtime_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_realtime_endpoint(Client, Input, []).
@@ -1301,9 +1387,7 @@ delete_realtime_endpoint(Client, Input)
 -spec delete_realtime_endpoint(map(), delete_realtime_endpoint_input(), proplists:proplist()) ->
     {ok, delete_realtime_endpoint_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_realtime_endpoint_errors(), tuple()}.
 delete_realtime_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRealtimeEndpoint">>, Input, Options).
@@ -1316,10 +1400,7 @@ delete_realtime_endpoint(Client, Input, Options)
 -spec delete_tags(map(), delete_tags_input()) ->
     {ok, delete_tags_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_tag_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_tags_errors(), tuple()}.
 delete_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tags(Client, Input, []).
@@ -1327,10 +1408,7 @@ delete_tags(Client, Input)
 -spec delete_tags(map(), delete_tags_input(), proplists:proplist()) ->
     {ok, delete_tags_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_tag_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_tags_errors(), tuple()}.
 delete_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTags">>, Input, Options).
@@ -1340,8 +1418,7 @@ delete_tags(Client, Input, Options)
 -spec describe_batch_predictions(map(), describe_batch_predictions_input()) ->
     {ok, describe_batch_predictions_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, describe_batch_predictions_errors(), tuple()}.
 describe_batch_predictions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_batch_predictions(Client, Input, []).
@@ -1349,8 +1426,7 @@ describe_batch_predictions(Client, Input)
 -spec describe_batch_predictions(map(), describe_batch_predictions_input(), proplists:proplist()) ->
     {ok, describe_batch_predictions_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, describe_batch_predictions_errors(), tuple()}.
 describe_batch_predictions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBatchPredictions">>, Input, Options).
@@ -1360,8 +1436,7 @@ describe_batch_predictions(Client, Input, Options)
 -spec describe_data_sources(map(), describe_data_sources_input()) ->
     {ok, describe_data_sources_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, describe_data_sources_errors(), tuple()}.
 describe_data_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_data_sources(Client, Input, []).
@@ -1369,8 +1444,7 @@ describe_data_sources(Client, Input)
 -spec describe_data_sources(map(), describe_data_sources_input(), proplists:proplist()) ->
     {ok, describe_data_sources_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, describe_data_sources_errors(), tuple()}.
 describe_data_sources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDataSources">>, Input, Options).
@@ -1380,8 +1454,7 @@ describe_data_sources(Client, Input, Options)
 -spec describe_evaluations(map(), describe_evaluations_input()) ->
     {ok, describe_evaluations_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, describe_evaluations_errors(), tuple()}.
 describe_evaluations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_evaluations(Client, Input, []).
@@ -1389,8 +1462,7 @@ describe_evaluations(Client, Input)
 -spec describe_evaluations(map(), describe_evaluations_input(), proplists:proplist()) ->
     {ok, describe_evaluations_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, describe_evaluations_errors(), tuple()}.
 describe_evaluations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEvaluations">>, Input, Options).
@@ -1400,8 +1472,7 @@ describe_evaluations(Client, Input, Options)
 -spec describe_ml_models(map(), describe_ml_models_input()) ->
     {ok, describe_ml_models_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, describe_ml_models_errors(), tuple()}.
 describe_ml_models(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_ml_models(Client, Input, []).
@@ -1409,8 +1480,7 @@ describe_ml_models(Client, Input)
 -spec describe_ml_models(map(), describe_ml_models_input(), proplists:proplist()) ->
     {ok, describe_ml_models_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, describe_ml_models_errors(), tuple()}.
 describe_ml_models(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMLModels">>, Input, Options).
@@ -1419,9 +1489,7 @@ describe_ml_models(Client, Input, Options)
 -spec describe_tags(map(), describe_tags_input()) ->
     {ok, describe_tags_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_tags_errors(), tuple()}.
 describe_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tags(Client, Input, []).
@@ -1429,9 +1497,7 @@ describe_tags(Client, Input)
 -spec describe_tags(map(), describe_tags_input(), proplists:proplist()) ->
     {ok, describe_tags_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_tags_errors(), tuple()}.
 describe_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTags">>, Input, Options).
@@ -1442,9 +1508,7 @@ describe_tags(Client, Input, Options)
 -spec get_batch_prediction(map(), get_batch_prediction_input()) ->
     {ok, get_batch_prediction_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_batch_prediction_errors(), tuple()}.
 get_batch_prediction(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_batch_prediction(Client, Input, []).
@@ -1452,9 +1516,7 @@ get_batch_prediction(Client, Input)
 -spec get_batch_prediction(map(), get_batch_prediction_input(), proplists:proplist()) ->
     {ok, get_batch_prediction_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_batch_prediction_errors(), tuple()}.
 get_batch_prediction(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetBatchPrediction">>, Input, Options).
@@ -1469,9 +1531,7 @@ get_batch_prediction(Client, Input, Options)
 -spec get_data_source(map(), get_data_source_input()) ->
     {ok, get_data_source_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_data_source_errors(), tuple()}.
 get_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_data_source(Client, Input, []).
@@ -1479,9 +1539,7 @@ get_data_source(Client, Input)
 -spec get_data_source(map(), get_data_source_input(), proplists:proplist()) ->
     {ok, get_data_source_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_data_source_errors(), tuple()}.
 get_data_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDataSource">>, Input, Options).
@@ -1491,9 +1549,7 @@ get_data_source(Client, Input, Options)
 -spec get_evaluation(map(), get_evaluation_input()) ->
     {ok, get_evaluation_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_evaluation_errors(), tuple()}.
 get_evaluation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_evaluation(Client, Input, []).
@@ -1501,9 +1557,7 @@ get_evaluation(Client, Input)
 -spec get_evaluation(map(), get_evaluation_input(), proplists:proplist()) ->
     {ok, get_evaluation_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_evaluation_errors(), tuple()}.
 get_evaluation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEvaluation">>, Input, Options).
@@ -1515,9 +1569,7 @@ get_evaluation(Client, Input, Options)
 -spec get_ml_model(map(), get_ml_model_input()) ->
     {ok, get_ml_model_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_ml_model_errors(), tuple()}.
 get_ml_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ml_model(Client, Input, []).
@@ -1525,9 +1577,7 @@ get_ml_model(Client, Input)
 -spec get_ml_model(map(), get_ml_model_input(), proplists:proplist()) ->
     {ok, get_ml_model_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_ml_model_errors(), tuple()}.
 get_ml_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMLModel">>, Input, Options).
@@ -1540,11 +1590,7 @@ get_ml_model(Client, Input, Options)
 -spec predict(map(), predict_input()) ->
     {ok, predict_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, predictor_not_mounted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, predict_errors(), tuple()}.
 predict(Client, Input)
   when is_map(Client), is_map(Input) ->
     predict(Client, Input, []).
@@ -1552,11 +1598,7 @@ predict(Client, Input)
 -spec predict(map(), predict_input(), proplists:proplist()) ->
     {ok, predict_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, predictor_not_mounted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, predict_errors(), tuple()}.
 predict(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Predict">>, Input, Options).
@@ -1568,9 +1610,7 @@ predict(Client, Input, Options)
 -spec update_batch_prediction(map(), update_batch_prediction_input()) ->
     {ok, update_batch_prediction_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_batch_prediction_errors(), tuple()}.
 update_batch_prediction(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_batch_prediction(Client, Input, []).
@@ -1578,9 +1618,7 @@ update_batch_prediction(Client, Input)
 -spec update_batch_prediction(map(), update_batch_prediction_input(), proplists:proplist()) ->
     {ok, update_batch_prediction_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_batch_prediction_errors(), tuple()}.
 update_batch_prediction(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateBatchPrediction">>, Input, Options).
@@ -1592,9 +1630,7 @@ update_batch_prediction(Client, Input, Options)
 -spec update_data_source(map(), update_data_source_input()) ->
     {ok, update_data_source_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_data_source_errors(), tuple()}.
 update_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_data_source(Client, Input, []).
@@ -1602,9 +1638,7 @@ update_data_source(Client, Input)
 -spec update_data_source(map(), update_data_source_input(), proplists:proplist()) ->
     {ok, update_data_source_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_data_source_errors(), tuple()}.
 update_data_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDataSource">>, Input, Options).
@@ -1616,9 +1650,7 @@ update_data_source(Client, Input, Options)
 -spec update_evaluation(map(), update_evaluation_input()) ->
     {ok, update_evaluation_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_evaluation_errors(), tuple()}.
 update_evaluation(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_evaluation(Client, Input, []).
@@ -1626,9 +1658,7 @@ update_evaluation(Client, Input)
 -spec update_evaluation(map(), update_evaluation_input(), proplists:proplist()) ->
     {ok, update_evaluation_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_evaluation_errors(), tuple()}.
 update_evaluation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEvaluation">>, Input, Options).
@@ -1641,9 +1671,7 @@ update_evaluation(Client, Input, Options)
 -spec update_ml_model(map(), update_ml_model_input()) ->
     {ok, update_ml_model_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_ml_model_errors(), tuple()}.
 update_ml_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_ml_model(Client, Input, []).
@@ -1651,9 +1679,7 @@ update_ml_model(Client, Input)
 -spec update_ml_model(map(), update_ml_model_input(), proplists:proplist()) ->
     {ok, update_ml_model_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_ml_model_errors(), tuple()}.
 update_ml_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMLModel">>, Input, Options).

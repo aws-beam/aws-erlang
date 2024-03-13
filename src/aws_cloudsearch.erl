@@ -746,6 +746,174 @@
 %% }
 -type analysis_scheme_status() :: #{binary() => any()}.
 
+-type build_suggesters_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type create_domain_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    internal_exception().
+
+-type define_analysis_scheme_errors() ::
+    limit_exceeded_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    invalid_type_exception() | 
+    resource_not_found_exception().
+
+-type define_expression_errors() ::
+    limit_exceeded_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    invalid_type_exception() | 
+    resource_not_found_exception().
+
+-type define_index_field_errors() ::
+    limit_exceeded_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    invalid_type_exception() | 
+    resource_not_found_exception().
+
+-type define_suggester_errors() ::
+    limit_exceeded_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    invalid_type_exception() | 
+    resource_not_found_exception().
+
+-type delete_analysis_scheme_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    invalid_type_exception() | 
+    resource_not_found_exception().
+
+-type delete_domain_errors() ::
+    base_exception() | 
+    internal_exception().
+
+-type delete_expression_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    invalid_type_exception() | 
+    resource_not_found_exception().
+
+-type delete_index_field_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    invalid_type_exception() | 
+    resource_not_found_exception().
+
+-type delete_suggester_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    invalid_type_exception() | 
+    resource_not_found_exception().
+
+-type describe_analysis_schemes_errors() ::
+    base_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type describe_availability_options_errors() ::
+    limit_exceeded_exception() | 
+    base_exception() | 
+    internal_exception() | 
+    invalid_type_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type describe_domain_endpoint_options_errors() ::
+    limit_exceeded_exception() | 
+    base_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type describe_domains_errors() ::
+    base_exception() | 
+    internal_exception().
+
+-type describe_expressions_errors() ::
+    base_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type describe_index_fields_errors() ::
+    base_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type describe_scaling_parameters_errors() ::
+    base_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type describe_service_access_policies_errors() ::
+    base_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type describe_suggesters_errors() ::
+    base_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type index_documents_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type list_domain_names_errors() ::
+    base_exception().
+
+-type update_availability_options_errors() ::
+    limit_exceeded_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    invalid_type_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type update_domain_endpoint_options_errors() ::
+    limit_exceeded_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    invalid_type_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type update_scaling_parameters_errors() ::
+    limit_exceeded_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    invalid_type_exception() | 
+    resource_not_found_exception().
+
+-type update_service_access_policies_errors() ::
+    limit_exceeded_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    invalid_type_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -759,10 +927,7 @@
 -spec build_suggesters(map(), build_suggesters_request()) ->
     {ok, build_suggesters_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, build_suggesters_errors(), tuple()}.
 build_suggesters(Client, Input)
   when is_map(Client), is_map(Input) ->
     build_suggesters(Client, Input, []).
@@ -770,10 +935,7 @@ build_suggesters(Client, Input)
 -spec build_suggesters(map(), build_suggesters_request(), proplists:proplist()) ->
     {ok, build_suggesters_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, build_suggesters_errors(), tuple()}.
 build_suggesters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BuildSuggesters">>, Input, Options).
@@ -787,11 +949,7 @@ build_suggesters(Client, Input, Options)
 -spec create_domain(map(), create_domain_request()) ->
     {ok, create_domain_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_domain_errors(), tuple()}.
 create_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_domain(Client, Input, []).
@@ -799,11 +957,7 @@ create_domain(Client, Input)
 -spec create_domain(map(), create_domain_request(), proplists:proplist()) ->
     {ok, create_domain_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_domain_errors(), tuple()}.
 create_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDomain">>, Input, Options).
@@ -818,12 +972,7 @@ create_domain(Client, Input, Options)
 -spec define_analysis_scheme(map(), define_analysis_scheme_request()) ->
     {ok, define_analysis_scheme_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, define_analysis_scheme_errors(), tuple()}.
 define_analysis_scheme(Client, Input)
   when is_map(Client), is_map(Input) ->
     define_analysis_scheme(Client, Input, []).
@@ -831,12 +980,7 @@ define_analysis_scheme(Client, Input)
 -spec define_analysis_scheme(map(), define_analysis_scheme_request(), proplists:proplist()) ->
     {ok, define_analysis_scheme_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, define_analysis_scheme_errors(), tuple()}.
 define_analysis_scheme(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DefineAnalysisScheme">>, Input, Options).
@@ -851,12 +995,7 @@ define_analysis_scheme(Client, Input, Options)
 -spec define_expression(map(), define_expression_request()) ->
     {ok, define_expression_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, define_expression_errors(), tuple()}.
 define_expression(Client, Input)
   when is_map(Client), is_map(Input) ->
     define_expression(Client, Input, []).
@@ -864,12 +1003,7 @@ define_expression(Client, Input)
 -spec define_expression(map(), define_expression_request(), proplists:proplist()) ->
     {ok, define_expression_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, define_expression_errors(), tuple()}.
 define_expression(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DefineExpression">>, Input, Options).
@@ -888,12 +1022,7 @@ define_expression(Client, Input, Options)
 -spec define_index_field(map(), define_index_field_request()) ->
     {ok, define_index_field_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, define_index_field_errors(), tuple()}.
 define_index_field(Client, Input)
   when is_map(Client), is_map(Input) ->
     define_index_field(Client, Input, []).
@@ -901,12 +1030,7 @@ define_index_field(Client, Input)
 -spec define_index_field(map(), define_index_field_request(), proplists:proplist()) ->
     {ok, define_index_field_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, define_index_field_errors(), tuple()}.
 define_index_field(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DefineIndexField">>, Input, Options).
@@ -923,12 +1047,7 @@ define_index_field(Client, Input, Options)
 -spec define_suggester(map(), define_suggester_request()) ->
     {ok, define_suggester_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, define_suggester_errors(), tuple()}.
 define_suggester(Client, Input)
   when is_map(Client), is_map(Input) ->
     define_suggester(Client, Input, []).
@@ -936,12 +1055,7 @@ define_suggester(Client, Input)
 -spec define_suggester(map(), define_suggester_request(), proplists:proplist()) ->
     {ok, define_suggester_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, define_suggester_errors(), tuple()}.
 define_suggester(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DefineSuggester">>, Input, Options).
@@ -954,11 +1068,7 @@ define_suggester(Client, Input, Options)
 -spec delete_analysis_scheme(map(), delete_analysis_scheme_request()) ->
     {ok, delete_analysis_scheme_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_analysis_scheme_errors(), tuple()}.
 delete_analysis_scheme(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_analysis_scheme(Client, Input, []).
@@ -966,11 +1076,7 @@ delete_analysis_scheme(Client, Input)
 -spec delete_analysis_scheme(map(), delete_analysis_scheme_request(), proplists:proplist()) ->
     {ok, delete_analysis_scheme_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_analysis_scheme_errors(), tuple()}.
 delete_analysis_scheme(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAnalysisScheme">>, Input, Options).
@@ -985,8 +1091,7 @@ delete_analysis_scheme(Client, Input, Options)
 -spec delete_domain(map(), delete_domain_request()) ->
     {ok, delete_domain_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()}.
+    {error, delete_domain_errors(), tuple()}.
 delete_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_domain(Client, Input, []).
@@ -994,8 +1099,7 @@ delete_domain(Client, Input)
 -spec delete_domain(map(), delete_domain_request(), proplists:proplist()) ->
     {ok, delete_domain_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()}.
+    {error, delete_domain_errors(), tuple()}.
 delete_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDomain">>, Input, Options).
@@ -1008,11 +1112,7 @@ delete_domain(Client, Input, Options)
 -spec delete_expression(map(), delete_expression_request()) ->
     {ok, delete_expression_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_expression_errors(), tuple()}.
 delete_expression(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_expression(Client, Input, []).
@@ -1020,11 +1120,7 @@ delete_expression(Client, Input)
 -spec delete_expression(map(), delete_expression_request(), proplists:proplist()) ->
     {ok, delete_expression_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_expression_errors(), tuple()}.
 delete_expression(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteExpression">>, Input, Options).
@@ -1037,11 +1133,7 @@ delete_expression(Client, Input, Options)
 -spec delete_index_field(map(), delete_index_field_request()) ->
     {ok, delete_index_field_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_index_field_errors(), tuple()}.
 delete_index_field(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_index_field(Client, Input, []).
@@ -1049,11 +1141,7 @@ delete_index_field(Client, Input)
 -spec delete_index_field(map(), delete_index_field_request(), proplists:proplist()) ->
     {ok, delete_index_field_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_index_field_errors(), tuple()}.
 delete_index_field(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIndexField">>, Input, Options).
@@ -1066,11 +1154,7 @@ delete_index_field(Client, Input, Options)
 -spec delete_suggester(map(), delete_suggester_request()) ->
     {ok, delete_suggester_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_suggester_errors(), tuple()}.
 delete_suggester(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_suggester(Client, Input, []).
@@ -1078,11 +1162,7 @@ delete_suggester(Client, Input)
 -spec delete_suggester(map(), delete_suggester_request(), proplists:proplist()) ->
     {ok, delete_suggester_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_suggester_errors(), tuple()}.
 delete_suggester(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSuggester">>, Input, Options).
@@ -1100,9 +1180,7 @@ delete_suggester(Client, Input, Options)
 -spec describe_analysis_schemes(map(), describe_analysis_schemes_request()) ->
     {ok, describe_analysis_schemes_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_analysis_schemes_errors(), tuple()}.
 describe_analysis_schemes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_analysis_schemes(Client, Input, []).
@@ -1110,9 +1188,7 @@ describe_analysis_schemes(Client, Input)
 -spec describe_analysis_schemes(map(), describe_analysis_schemes_request(), proplists:proplist()) ->
     {ok, describe_analysis_schemes_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_analysis_schemes_errors(), tuple()}.
 describe_analysis_schemes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAnalysisSchemes">>, Input, Options).
@@ -1128,12 +1204,7 @@ describe_analysis_schemes(Client, Input, Options)
 -spec describe_availability_options(map(), describe_availability_options_request()) ->
     {ok, describe_availability_options_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_availability_options_errors(), tuple()}.
 describe_availability_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_availability_options(Client, Input, []).
@@ -1141,12 +1212,7 @@ describe_availability_options(Client, Input)
 -spec describe_availability_options(map(), describe_availability_options_request(), proplists:proplist()) ->
     {ok, describe_availability_options_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_availability_options_errors(), tuple()}.
 describe_availability_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAvailabilityOptions">>, Input, Options).
@@ -1160,11 +1226,7 @@ describe_availability_options(Client, Input, Options)
 -spec describe_domain_endpoint_options(map(), describe_domain_endpoint_options_request()) ->
     {ok, describe_domain_endpoint_options_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_domain_endpoint_options_errors(), tuple()}.
 describe_domain_endpoint_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_domain_endpoint_options(Client, Input, []).
@@ -1172,11 +1234,7 @@ describe_domain_endpoint_options(Client, Input)
 -spec describe_domain_endpoint_options(map(), describe_domain_endpoint_options_request(), proplists:proplist()) ->
     {ok, describe_domain_endpoint_options_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_domain_endpoint_options_errors(), tuple()}.
 describe_domain_endpoint_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDomainEndpointOptions">>, Input, Options).
@@ -1194,8 +1252,7 @@ describe_domain_endpoint_options(Client, Input, Options)
 -spec describe_domains(map(), describe_domains_request()) ->
     {ok, describe_domains_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()}.
+    {error, describe_domains_errors(), tuple()}.
 describe_domains(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_domains(Client, Input, []).
@@ -1203,8 +1260,7 @@ describe_domains(Client, Input)
 -spec describe_domains(map(), describe_domains_request(), proplists:proplist()) ->
     {ok, describe_domains_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()}.
+    {error, describe_domains_errors(), tuple()}.
 describe_domains(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDomains">>, Input, Options).
@@ -1221,9 +1277,7 @@ describe_domains(Client, Input, Options)
 -spec describe_expressions(map(), describe_expressions_request()) ->
     {ok, describe_expressions_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_expressions_errors(), tuple()}.
 describe_expressions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_expressions(Client, Input, []).
@@ -1231,9 +1285,7 @@ describe_expressions(Client, Input)
 -spec describe_expressions(map(), describe_expressions_request(), proplists:proplist()) ->
     {ok, describe_expressions_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_expressions_errors(), tuple()}.
 describe_expressions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeExpressions">>, Input, Options).
@@ -1251,9 +1303,7 @@ describe_expressions(Client, Input, Options)
 -spec describe_index_fields(map(), describe_index_fields_request()) ->
     {ok, describe_index_fields_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_index_fields_errors(), tuple()}.
 describe_index_fields(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_index_fields(Client, Input, []).
@@ -1261,9 +1311,7 @@ describe_index_fields(Client, Input)
 -spec describe_index_fields(map(), describe_index_fields_request(), proplists:proplist()) ->
     {ok, describe_index_fields_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_index_fields_errors(), tuple()}.
 describe_index_fields(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeIndexFields">>, Input, Options).
@@ -1278,9 +1326,7 @@ describe_index_fields(Client, Input, Options)
 -spec describe_scaling_parameters(map(), describe_scaling_parameters_request()) ->
     {ok, describe_scaling_parameters_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_scaling_parameters_errors(), tuple()}.
 describe_scaling_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_parameters(Client, Input, []).
@@ -1288,9 +1334,7 @@ describe_scaling_parameters(Client, Input)
 -spec describe_scaling_parameters(map(), describe_scaling_parameters_request(), proplists:proplist()) ->
     {ok, describe_scaling_parameters_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_scaling_parameters_errors(), tuple()}.
 describe_scaling_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScalingParameters">>, Input, Options).
@@ -1307,9 +1351,7 @@ describe_scaling_parameters(Client, Input, Options)
 -spec describe_service_access_policies(map(), describe_service_access_policies_request()) ->
     {ok, describe_service_access_policies_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_service_access_policies_errors(), tuple()}.
 describe_service_access_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_service_access_policies(Client, Input, []).
@@ -1317,9 +1359,7 @@ describe_service_access_policies(Client, Input)
 -spec describe_service_access_policies(map(), describe_service_access_policies_request(), proplists:proplist()) ->
     {ok, describe_service_access_policies_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_service_access_policies_errors(), tuple()}.
 describe_service_access_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeServiceAccessPolicies">>, Input, Options).
@@ -1337,9 +1377,7 @@ describe_service_access_policies(Client, Input, Options)
 -spec describe_suggesters(map(), describe_suggesters_request()) ->
     {ok, describe_suggesters_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_suggesters_errors(), tuple()}.
 describe_suggesters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_suggesters(Client, Input, []).
@@ -1347,9 +1385,7 @@ describe_suggesters(Client, Input)
 -spec describe_suggesters(map(), describe_suggesters_request(), proplists:proplist()) ->
     {ok, describe_suggesters_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_suggesters_errors(), tuple()}.
 describe_suggesters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSuggesters">>, Input, Options).
@@ -1362,10 +1398,7 @@ describe_suggesters(Client, Input, Options)
 -spec index_documents(map(), index_documents_request()) ->
     {ok, index_documents_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, index_documents_errors(), tuple()}.
 index_documents(Client, Input)
   when is_map(Client), is_map(Input) ->
     index_documents(Client, Input, []).
@@ -1373,10 +1406,7 @@ index_documents(Client, Input)
 -spec index_documents(map(), index_documents_request(), proplists:proplist()) ->
     {ok, index_documents_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, index_documents_errors(), tuple()}.
 index_documents(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"IndexDocuments">>, Input, Options).
@@ -1385,7 +1415,7 @@ index_documents(Client, Input, Options)
 -spec list_domain_names(map(), #{}) ->
     {ok, list_domain_names_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()}.
+    {error, list_domain_names_errors(), tuple()}.
 list_domain_names(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_domain_names(Client, Input, []).
@@ -1393,7 +1423,7 @@ list_domain_names(Client, Input)
 -spec list_domain_names(map(), #{}, proplists:proplist()) ->
     {ok, list_domain_names_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()}.
+    {error, list_domain_names_errors(), tuple()}.
 list_domain_names(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDomainNames">>, Input, Options).
@@ -1410,13 +1440,7 @@ list_domain_names(Client, Input, Options)
 -spec update_availability_options(map(), update_availability_options_request()) ->
     {ok, update_availability_options_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_availability_options_errors(), tuple()}.
 update_availability_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_availability_options(Client, Input, []).
@@ -1424,13 +1448,7 @@ update_availability_options(Client, Input)
 -spec update_availability_options(map(), update_availability_options_request(), proplists:proplist()) ->
     {ok, update_availability_options_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_availability_options_errors(), tuple()}.
 update_availability_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAvailabilityOptions">>, Input, Options).
@@ -1444,13 +1462,7 @@ update_availability_options(Client, Input, Options)
 -spec update_domain_endpoint_options(map(), update_domain_endpoint_options_request()) ->
     {ok, update_domain_endpoint_options_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_domain_endpoint_options_errors(), tuple()}.
 update_domain_endpoint_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_domain_endpoint_options(Client, Input, []).
@@ -1458,13 +1470,7 @@ update_domain_endpoint_options(Client, Input)
 -spec update_domain_endpoint_options(map(), update_domain_endpoint_options_request(), proplists:proplist()) ->
     {ok, update_domain_endpoint_options_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_domain_endpoint_options_errors(), tuple()}.
 update_domain_endpoint_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDomainEndpointOptions">>, Input, Options).
@@ -1482,12 +1488,7 @@ update_domain_endpoint_options(Client, Input, Options)
 -spec update_scaling_parameters(map(), update_scaling_parameters_request()) ->
     {ok, update_scaling_parameters_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_scaling_parameters_errors(), tuple()}.
 update_scaling_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_scaling_parameters(Client, Input, []).
@@ -1495,12 +1496,7 @@ update_scaling_parameters(Client, Input)
 -spec update_scaling_parameters(map(), update_scaling_parameters_request(), proplists:proplist()) ->
     {ok, update_scaling_parameters_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_scaling_parameters_errors(), tuple()}.
 update_scaling_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateScalingParameters">>, Input, Options).
@@ -1514,12 +1510,7 @@ update_scaling_parameters(Client, Input, Options)
 -spec update_service_access_policies(map(), update_service_access_policies_request()) ->
     {ok, update_service_access_policies_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_service_access_policies_errors(), tuple()}.
 update_service_access_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service_access_policies(Client, Input, []).
@@ -1527,12 +1518,7 @@ update_service_access_policies(Client, Input)
 -spec update_service_access_policies(map(), update_service_access_policies_request(), proplists:proplist()) ->
     {ok, update_service_access_policies_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_service_access_policies_errors(), tuple()}.
 update_service_access_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateServiceAccessPolicies">>, Input, Options).

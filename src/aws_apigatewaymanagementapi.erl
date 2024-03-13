@@ -25,12 +25,15 @@
 %% Example:
 %% delete_connection_request() :: #{}
 -type delete_connection_request() :: #{}.
+
 %% Example:
 %% forbidden_exception() :: #{}
 -type forbidden_exception() :: #{}.
+
 %% Example:
 %% get_connection_request() :: #{}
 -type get_connection_request() :: #{}.
+
 
 %% Example:
 %% get_connection_response() :: #{
@@ -39,9 +42,11 @@
 %%   <<"LastActiveAt">> => non_neg_integer()
 %% }
 -type get_connection_response() :: #{binary() => any()}.
+
 %% Example:
 %% gone_exception() :: #{}
 -type gone_exception() :: #{}.
+
 
 %% Example:
 %% identity() :: #{
@@ -49,9 +54,11 @@
 %%   <<"UserAgent">> := string()
 %% }
 -type identity() :: #{binary() => any()}.
+
 %% Example:
 %% limit_exceeded_exception() :: #{}
 -type limit_exceeded_exception() :: #{}.
+
 
 %% Example:
 %% payload_too_large_exception() :: #{
@@ -59,11 +66,28 @@
 %% }
 -type payload_too_large_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% post_to_connection_request() :: #{
 %%   <<"Data">> := binary()
 %% }
 -type post_to_connection_request() :: #{binary() => any()}.
+
+-type delete_connection_errors() ::
+    limit_exceeded_exception() | 
+    gone_exception() | 
+    forbidden_exception().
+
+-type get_connection_errors() ::
+    limit_exceeded_exception() | 
+    gone_exception() | 
+    forbidden_exception().
+
+-type post_to_connection_errors() ::
+    payload_too_large_exception() | 
+    limit_exceeded_exception() | 
+    gone_exception() | 
+    forbidden_exception().
 
 %%====================================================================
 %% API
@@ -73,18 +97,14 @@
 -spec delete_connection(map(), binary() | list(), delete_connection_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gone_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, delete_connection_errors(), tuple()}.
 delete_connection(Client, ConnectionId, Input) ->
     delete_connection(Client, ConnectionId, Input, []).
 
 -spec delete_connection(map(), binary() | list(), delete_connection_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gone_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, delete_connection_errors(), tuple()}.
 delete_connection(Client, ConnectionId, Input0, Options0) ->
     Method = delete,
     Path = ["/@connections/", aws_util:encode_uri(ConnectionId), ""],
@@ -111,9 +131,7 @@ delete_connection(Client, ConnectionId, Input0, Options0) ->
 -spec get_connection(map(), binary() | list()) ->
     {ok, get_connection_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gone_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_connection_errors(), tuple()}.
 get_connection(Client, ConnectionId)
   when is_map(Client) ->
     get_connection(Client, ConnectionId, #{}, #{}).
@@ -121,9 +139,7 @@ get_connection(Client, ConnectionId)
 -spec get_connection(map(), binary() | list(), map(), map()) ->
     {ok, get_connection_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gone_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_connection_errors(), tuple()}.
 get_connection(Client, ConnectionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_connection(Client, ConnectionId, QueryMap, HeadersMap, []).
@@ -131,9 +147,7 @@ get_connection(Client, ConnectionId, QueryMap, HeadersMap)
 -spec get_connection(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_connection_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gone_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_connection_errors(), tuple()}.
 get_connection(Client, ConnectionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/@connections/", aws_util:encode_uri(ConnectionId), ""],
@@ -154,20 +168,14 @@ get_connection(Client, ConnectionId, QueryMap, HeadersMap, Options0)
 -spec post_to_connection(map(), binary() | list(), post_to_connection_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gone_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()}.
+    {error, post_to_connection_errors(), tuple()}.
 post_to_connection(Client, ConnectionId, Input) ->
     post_to_connection(Client, ConnectionId, Input, []).
 
 -spec post_to_connection(map(), binary() | list(), post_to_connection_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gone_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()}.
+    {error, post_to_connection_errors(), tuple()}.
 post_to_connection(Client, ConnectionId, Input0, Options0) ->
     Method = post,
     Path = ["/@connections/", aws_util:encode_uri(ConnectionId), ""],

@@ -84,6 +84,7 @@
 %% }
 -type target_account_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% action_summary() :: #{
 %%   <<"description">> => string(),
@@ -93,12 +94,14 @@
 %% }
 -type action_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_experiments_response() :: #{
 %%   <<"experiments">> => list(experiment_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_experiments_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_experiment_resolved_targets_request() :: #{
@@ -108,11 +111,13 @@
 %% }
 -type list_experiment_resolved_targets_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% experiment_summary() :: #{
@@ -124,11 +129,13 @@
 %% }
 -type experiment_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_experiment_target_account_configuration_response() :: #{
 %%   <<"targetAccountConfiguration">> => experiment_target_account_configuration()
 %% }
 -type get_experiment_target_account_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_experiment_response() :: #{
@@ -136,11 +143,13 @@
 %% }
 -type get_experiment_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_target_account_configuration_response() :: #{
 %%   <<"targetAccountConfiguration">> => target_account_configuration()
 %% }
 -type update_target_account_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% experiment_template_target() :: #{
@@ -153,6 +162,7 @@
 %% }
 -type experiment_template_target() :: #{binary() => any()}.
 
+
 %% Example:
 %% experiment_target_account_configuration() :: #{
 %%   <<"accountId">> => string(),
@@ -160,9 +170,11 @@
 %%   <<"roleArn">> => string()
 %% }
 -type experiment_target_account_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% list_experiment_templates_response() :: #{
@@ -170,6 +182,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_experiment_templates_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_experiment_template_request() :: #{
@@ -183,11 +196,13 @@
 %% }
 -type update_experiment_template_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_target_resource_type_response() :: #{
 %%   <<"targetResourceType">> => target_resource_type()
 %% }
 -type get_target_resource_type_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% experiment_s3_log_configuration() :: #{
@@ -196,12 +211,14 @@
 %% }
 -type experiment_s3_log_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% experiment_action_state() :: #{
 %%   <<"reason">> => string(),
 %%   <<"status">> => list(any())
 %% }
 -type experiment_action_state() :: #{binary() => any()}.
+
 
 %% Example:
 %% experiment_action() :: #{
@@ -216,6 +233,7 @@
 %% }
 -type experiment_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% target_account_configuration_summary() :: #{
 %%   <<"accountId">> => string(),
@@ -223,9 +241,11 @@
 %%   <<"roleArn">> => string()
 %% }
 -type target_account_configuration_summary() :: #{binary() => any()}.
+
 %% Example:
 %% get_experiment_template_request() :: #{}
 -type get_experiment_template_request() :: #{}.
+
 
 %% Example:
 %% experiment_template_s3_log_configuration_input() :: #{
@@ -234,6 +254,7 @@
 %% }
 -type experiment_template_s3_log_configuration_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% experiment_template_target_filter() :: #{
 %%   <<"path">> => string(),
@@ -241,12 +262,14 @@
 %% }
 -type experiment_template_target_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_target_account_configuration_request() :: #{
 %%   <<"description">> => string(),
 %%   <<"roleArn">> => string()
 %% }
 -type update_target_account_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% experiment_log_configuration() :: #{
@@ -256,14 +279,17 @@
 %% }
 -type experiment_log_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> => list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_experiment_template_request() :: #{}
 -type delete_experiment_template_request() :: #{}.
+
 
 %% Example:
 %% create_target_account_configuration_response() :: #{
@@ -271,21 +297,25 @@
 %% }
 -type create_target_account_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_experiment_target_account_configurations_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"targetAccountConfigurations">> => list(experiment_target_account_configuration_summary()())
 %% }
 -type list_experiment_target_account_configurations_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_target_account_configuration_request() :: #{}
 -type delete_target_account_configuration_request() :: #{}.
+
 
 %% Example:
 %% experiment_template_cloud_watch_logs_log_configuration_input() :: #{
 %%   <<"logGroupArn">> => string()
 %% }
 -type experiment_template_cloud_watch_logs_log_configuration_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_target_account_configurations_request() :: #{
@@ -294,12 +324,14 @@
 %% }
 -type list_target_account_configurations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% target_resource_type_summary() :: #{
 %%   <<"description">> => string(),
 %%   <<"resourceType">> => string()
 %% }
 -type target_resource_type_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_experiment_template_action_input_item() :: #{
@@ -311,6 +343,7 @@
 %% }
 -type update_experiment_template_action_input_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% experiment_target_filter() :: #{
 %%   <<"path">> => string(),
@@ -318,11 +351,13 @@
 %% }
 -type experiment_target_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -330,12 +365,14 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_experiment_templates_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_experiment_templates_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_experiment_template_log_configuration_input() :: #{
@@ -345,15 +382,18 @@
 %% }
 -type update_experiment_template_log_configuration_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% experiment_state() :: #{
 %%   <<"reason">> => string(),
 %%   <<"status">> => list(any())
 %% }
 -type experiment_state() :: #{binary() => any()}.
+
 %% Example:
 %% get_experiment_request() :: #{}
 -type get_experiment_request() :: #{}.
+
 
 %% Example:
 %% create_experiment_template_log_configuration_input() :: #{
@@ -363,6 +403,7 @@
 %% }
 -type create_experiment_template_log_configuration_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% resolved_target() :: #{
 %%   <<"resourceType">> => string(),
@@ -371,6 +412,7 @@
 %% }
 -type resolved_target() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_target_resource_types_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -378,11 +420,13 @@
 %% }
 -type list_target_resource_types_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% experiment_template_summary() :: #{
@@ -394,6 +438,7 @@
 %% }
 -type experiment_template_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_target_account_configuration_request() :: #{
 %%   <<"clientToken">> => string(),
@@ -402,12 +447,14 @@
 %% }
 -type create_target_account_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% target_resource_type_parameter() :: #{
 %%   <<"description">> => string(),
 %%   <<"required">> => boolean()
 %% }
 -type target_resource_type_parameter() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_experiment_template_request() :: #{
@@ -422,9 +469,11 @@
 %%   <<"targets">> => map()
 %% }
 -type create_experiment_template_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_action_request() :: #{}
 -type get_action_request() :: #{}.
+
 
 %% Example:
 %% experiment_target() :: #{
@@ -437,11 +486,13 @@
 %% }
 -type experiment_target() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_action_response() :: #{
 %%   <<"action">> => action()
 %% }
 -type get_action_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_experiment_target_account_configurations_request() :: #{
@@ -449,11 +500,13 @@
 %% }
 -type list_experiment_target_account_configurations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% experiment_template_s3_log_configuration() :: #{
@@ -462,12 +515,14 @@
 %% }
 -type experiment_template_s3_log_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_actions_response() :: #{
 %%   <<"actions">> => list(action_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_actions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_actions_request() :: #{
@@ -476,12 +531,14 @@
 %% }
 -type list_actions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% experiment_stop_condition() :: #{
 %%   <<"source">> => string(),
 %%   <<"value">> => string()
 %% }
 -type experiment_stop_condition() :: #{binary() => any()}.
+
 
 %% Example:
 %% target_resource_type() :: #{
@@ -491,11 +548,13 @@
 %% }
 -type target_resource_type() :: #{binary() => any()}.
 
+
 %% Example:
 %% action_target() :: #{
 %%   <<"resourceType">> => string()
 %% }
 -type action_target() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_target_account_configurations_response() :: #{
@@ -503,9 +562,11 @@
 %%   <<"targetAccountConfigurations">> => list(target_account_configuration_summary()())
 %% }
 -type list_target_account_configurations_response() :: #{binary() => any()}.
+
 %% Example:
 %% stop_experiment_request() :: #{}
 -type stop_experiment_request() :: #{}.
+
 
 %% Example:
 %% experiment_template_stop_condition() :: #{
@@ -513,6 +574,7 @@
 %%   <<"value">> => string()
 %% }
 -type experiment_template_stop_condition() :: #{binary() => any()}.
+
 
 %% Example:
 %% experiment_template_action() :: #{
@@ -524,11 +586,13 @@
 %% }
 -type experiment_template_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_experiment_template_response() :: #{
 %%   <<"experimentTemplate">> => experiment_template()
 %% }
 -type delete_experiment_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% action() :: #{
@@ -539,6 +603,7 @@
 %%   <<"targets">> => map()
 %% }
 -type action() :: #{binary() => any()}.
+
 
 %% Example:
 %% experiment_template() :: #{
@@ -557,14 +622,17 @@
 %% }
 -type experiment_template() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_experiment_response() :: #{
 %%   <<"experiment">> => experiment()
 %% }
 -type start_experiment_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_target_account_configuration_request() :: #{}
 -type get_target_account_configuration_request() :: #{}.
+
 
 %% Example:
 %% update_experiment_template_response() :: #{
@@ -572,24 +640,29 @@
 %% }
 -type update_experiment_template_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_experiment_resolved_targets_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"resolvedTargets">> => list(resolved_target()())
 %% }
 -type list_experiment_resolved_targets_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_experiment_target_account_configuration_request() :: #{}
 -type get_experiment_target_account_configuration_request() :: #{}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% get_experiment_template_response() :: #{
 %%   <<"experimentTemplate">> => experiment_template()
 %% }
 -type get_experiment_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_experiment_template_action_input() :: #{
@@ -601,6 +674,7 @@
 %% }
 -type create_experiment_template_action_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% experiment_template_target_input_filter() :: #{
 %%   <<"path">> => string(),
@@ -608,14 +682,17 @@
 %% }
 -type experiment_template_target_input_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% list_target_resource_types_response() :: #{
@@ -624,11 +701,13 @@
 %% }
 -type list_target_resource_types_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_target_account_configuration_response() :: #{
 %%   <<"targetAccountConfiguration">> => target_account_configuration()
 %% }
 -type get_target_account_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% experiment_target_account_configuration_summary() :: #{
@@ -638,6 +717,7 @@
 %% }
 -type experiment_target_account_configuration_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% experiment_options() :: #{
 %%   <<"accountTargeting">> => list(any()),
@@ -645,12 +725,14 @@
 %% }
 -type experiment_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_experiments_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_experiments_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_experiment_request() :: #{
@@ -660,15 +742,18 @@
 %% }
 -type start_experiment_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_experiment_template_experiment_options_input() :: #{
 %%   <<"accountTargeting">> => list(any()),
 %%   <<"emptyTargetResolutionMode">> => list(any())
 %% }
 -type create_experiment_template_experiment_options_input() :: #{binary() => any()}.
+
 %% Example:
 %% get_target_resource_type_request() :: #{}
 -type get_target_resource_type_request() :: #{}.
+
 
 %% Example:
 %% experiment_template_experiment_options() :: #{
@@ -677,6 +762,7 @@
 %% }
 -type experiment_template_experiment_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_experiment_template_stop_condition_input() :: #{
 %%   <<"source">> => string(),
@@ -684,11 +770,13 @@
 %% }
 -type create_experiment_template_stop_condition_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_experiment_template_response() :: #{
 %%   <<"experimentTemplate">> => experiment_template()
 %% }
 -type create_experiment_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_experiment_template_target_input() :: #{
@@ -701,6 +789,7 @@
 %% }
 -type create_experiment_template_target_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% action_parameter() :: #{
 %%   <<"description">> => string(),
@@ -708,17 +797,20 @@
 %% }
 -type action_parameter() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_target_account_configuration_response() :: #{
 %%   <<"targetAccountConfiguration">> => target_account_configuration()
 %% }
 -type delete_target_account_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% stop_experiment_response() :: #{
 %%   <<"experiment">> => experiment()
 %% }
 -type stop_experiment_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_experiment_template_target_input() :: #{
@@ -731,11 +823,13 @@
 %% }
 -type update_experiment_template_target_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_experiment_template_experiment_options_input() :: #{
 %%   <<"emptyTargetResolutionMode">> => list(any())
 %% }
 -type update_experiment_template_experiment_options_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% experiment() :: #{
@@ -756,6 +850,7 @@
 %% }
 -type experiment() :: #{binary() => any()}.
 
+
 %% Example:
 %% experiment_template_log_configuration() :: #{
 %%   <<"cloudWatchLogsConfiguration">> => experiment_template_cloud_watch_logs_log_configuration(),
@@ -764,6 +859,7 @@
 %% }
 -type experiment_template_log_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_experiment_template_stop_condition_input() :: #{
 %%   <<"source">> => string(),
@@ -771,17 +867,106 @@
 %% }
 -type update_experiment_template_stop_condition_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% experiment_cloud_watch_logs_log_configuration() :: #{
 %%   <<"logGroupArn">> => string()
 %% }
 -type experiment_cloud_watch_logs_log_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% experiment_template_cloud_watch_logs_log_configuration() :: #{
 %%   <<"logGroupArn">> => string()
 %% }
 -type experiment_template_cloud_watch_logs_log_configuration() :: #{binary() => any()}.
+
+-type create_experiment_template_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_target_account_configuration_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_experiment_template_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type delete_target_account_configuration_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type get_action_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type get_experiment_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type get_experiment_target_account_configuration_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type get_experiment_template_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type get_target_account_configuration_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type get_target_resource_type_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type list_actions_errors() ::
+    validation_exception().
+
+-type list_experiment_resolved_targets_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type list_experiment_target_account_configurations_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type list_experiment_templates_errors() ::
+    validation_exception().
+
+-type list_experiments_errors() ::
+    validation_exception().
+
+-type list_target_account_configurations_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type list_target_resource_types_errors() ::
+    validation_exception().
+
+-type start_experiment_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type stop_experiment_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type update_experiment_template_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type update_target_account_configuration_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -810,20 +995,14 @@
 -spec create_experiment_template(map(), create_experiment_template_request()) ->
     {ok, create_experiment_template_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_experiment_template_errors(), tuple()}.
 create_experiment_template(Client, Input) ->
     create_experiment_template(Client, Input, []).
 
 -spec create_experiment_template(map(), create_experiment_template_request(), proplists:proplist()) ->
     {ok, create_experiment_template_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_experiment_template_errors(), tuple()}.
 create_experiment_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/experimentTemplates"],
@@ -857,20 +1036,14 @@ create_experiment_template(Client, Input0, Options0) ->
 -spec create_target_account_configuration(map(), binary() | list(), binary() | list(), create_target_account_configuration_request()) ->
     {ok, create_target_account_configuration_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_target_account_configuration_errors(), tuple()}.
 create_target_account_configuration(Client, AccountId, ExperimentTemplateId, Input) ->
     create_target_account_configuration(Client, AccountId, ExperimentTemplateId, Input, []).
 
 -spec create_target_account_configuration(map(), binary() | list(), binary() | list(), create_target_account_configuration_request(), proplists:proplist()) ->
     {ok, create_target_account_configuration_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_target_account_configuration_errors(), tuple()}.
 create_target_account_configuration(Client, AccountId, ExperimentTemplateId, Input0, Options0) ->
     Method = post,
     Path = ["/experimentTemplates/", aws_util:encode_uri(ExperimentTemplateId), "/targetAccountConfigurations/", aws_util:encode_uri(AccountId), ""],
@@ -897,16 +1070,14 @@ create_target_account_configuration(Client, AccountId, ExperimentTemplateId, Inp
 -spec delete_experiment_template(map(), binary() | list(), delete_experiment_template_request()) ->
     {ok, delete_experiment_template_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_experiment_template_errors(), tuple()}.
 delete_experiment_template(Client, Id, Input) ->
     delete_experiment_template(Client, Id, Input, []).
 
 -spec delete_experiment_template(map(), binary() | list(), delete_experiment_template_request(), proplists:proplist()) ->
     {ok, delete_experiment_template_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_experiment_template_errors(), tuple()}.
 delete_experiment_template(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/experimentTemplates/", aws_util:encode_uri(Id), ""],
@@ -934,16 +1105,14 @@ delete_experiment_template(Client, Id, Input0, Options0) ->
 -spec delete_target_account_configuration(map(), binary() | list(), binary() | list(), delete_target_account_configuration_request()) ->
     {ok, delete_target_account_configuration_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_target_account_configuration_errors(), tuple()}.
 delete_target_account_configuration(Client, AccountId, ExperimentTemplateId, Input) ->
     delete_target_account_configuration(Client, AccountId, ExperimentTemplateId, Input, []).
 
 -spec delete_target_account_configuration(map(), binary() | list(), binary() | list(), delete_target_account_configuration_request(), proplists:proplist()) ->
     {ok, delete_target_account_configuration_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_target_account_configuration_errors(), tuple()}.
 delete_target_account_configuration(Client, AccountId, ExperimentTemplateId, Input0, Options0) ->
     Method = delete,
     Path = ["/experimentTemplates/", aws_util:encode_uri(ExperimentTemplateId), "/targetAccountConfigurations/", aws_util:encode_uri(AccountId), ""],
@@ -970,8 +1139,7 @@ delete_target_account_configuration(Client, AccountId, ExperimentTemplateId, Inp
 -spec get_action(map(), binary() | list()) ->
     {ok, get_action_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_action_errors(), tuple()}.
 get_action(Client, Id)
   when is_map(Client) ->
     get_action(Client, Id, #{}, #{}).
@@ -979,8 +1147,7 @@ get_action(Client, Id)
 -spec get_action(map(), binary() | list(), map(), map()) ->
     {ok, get_action_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_action_errors(), tuple()}.
 get_action(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_action(Client, Id, QueryMap, HeadersMap, []).
@@ -988,8 +1155,7 @@ get_action(Client, Id, QueryMap, HeadersMap)
 -spec get_action(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_action_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_action_errors(), tuple()}.
 get_action(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/actions/", aws_util:encode_uri(Id), ""],
@@ -1010,8 +1176,7 @@ get_action(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_experiment(map(), binary() | list()) ->
     {ok, get_experiment_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_experiment_errors(), tuple()}.
 get_experiment(Client, Id)
   when is_map(Client) ->
     get_experiment(Client, Id, #{}, #{}).
@@ -1019,8 +1184,7 @@ get_experiment(Client, Id)
 -spec get_experiment(map(), binary() | list(), map(), map()) ->
     {ok, get_experiment_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_experiment_errors(), tuple()}.
 get_experiment(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_experiment(Client, Id, QueryMap, HeadersMap, []).
@@ -1028,8 +1192,7 @@ get_experiment(Client, Id, QueryMap, HeadersMap)
 -spec get_experiment(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_experiment_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_experiment_errors(), tuple()}.
 get_experiment(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/experiments/", aws_util:encode_uri(Id), ""],
@@ -1051,8 +1214,7 @@ get_experiment(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_experiment_target_account_configuration(map(), binary() | list(), binary() | list()) ->
     {ok, get_experiment_target_account_configuration_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_experiment_target_account_configuration_errors(), tuple()}.
 get_experiment_target_account_configuration(Client, AccountId, ExperimentId)
   when is_map(Client) ->
     get_experiment_target_account_configuration(Client, AccountId, ExperimentId, #{}, #{}).
@@ -1060,8 +1222,7 @@ get_experiment_target_account_configuration(Client, AccountId, ExperimentId)
 -spec get_experiment_target_account_configuration(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_experiment_target_account_configuration_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_experiment_target_account_configuration_errors(), tuple()}.
 get_experiment_target_account_configuration(Client, AccountId, ExperimentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_experiment_target_account_configuration(Client, AccountId, ExperimentId, QueryMap, HeadersMap, []).
@@ -1069,8 +1230,7 @@ get_experiment_target_account_configuration(Client, AccountId, ExperimentId, Que
 -spec get_experiment_target_account_configuration(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_experiment_target_account_configuration_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_experiment_target_account_configuration_errors(), tuple()}.
 get_experiment_target_account_configuration(Client, AccountId, ExperimentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/experiments/", aws_util:encode_uri(ExperimentId), "/targetAccountConfigurations/", aws_util:encode_uri(AccountId), ""],
@@ -1091,8 +1251,7 @@ get_experiment_target_account_configuration(Client, AccountId, ExperimentId, Que
 -spec get_experiment_template(map(), binary() | list()) ->
     {ok, get_experiment_template_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_experiment_template_errors(), tuple()}.
 get_experiment_template(Client, Id)
   when is_map(Client) ->
     get_experiment_template(Client, Id, #{}, #{}).
@@ -1100,8 +1259,7 @@ get_experiment_template(Client, Id)
 -spec get_experiment_template(map(), binary() | list(), map(), map()) ->
     {ok, get_experiment_template_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_experiment_template_errors(), tuple()}.
 get_experiment_template(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_experiment_template(Client, Id, QueryMap, HeadersMap, []).
@@ -1109,8 +1267,7 @@ get_experiment_template(Client, Id, QueryMap, HeadersMap)
 -spec get_experiment_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_experiment_template_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_experiment_template_errors(), tuple()}.
 get_experiment_template(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/experimentTemplates/", aws_util:encode_uri(Id), ""],
@@ -1132,8 +1289,7 @@ get_experiment_template(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_target_account_configuration(map(), binary() | list(), binary() | list()) ->
     {ok, get_target_account_configuration_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_target_account_configuration_errors(), tuple()}.
 get_target_account_configuration(Client, AccountId, ExperimentTemplateId)
   when is_map(Client) ->
     get_target_account_configuration(Client, AccountId, ExperimentTemplateId, #{}, #{}).
@@ -1141,8 +1297,7 @@ get_target_account_configuration(Client, AccountId, ExperimentTemplateId)
 -spec get_target_account_configuration(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_target_account_configuration_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_target_account_configuration_errors(), tuple()}.
 get_target_account_configuration(Client, AccountId, ExperimentTemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_target_account_configuration(Client, AccountId, ExperimentTemplateId, QueryMap, HeadersMap, []).
@@ -1150,8 +1305,7 @@ get_target_account_configuration(Client, AccountId, ExperimentTemplateId, QueryM
 -spec get_target_account_configuration(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_target_account_configuration_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_target_account_configuration_errors(), tuple()}.
 get_target_account_configuration(Client, AccountId, ExperimentTemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/experimentTemplates/", aws_util:encode_uri(ExperimentTemplateId), "/targetAccountConfigurations/", aws_util:encode_uri(AccountId), ""],
@@ -1172,8 +1326,7 @@ get_target_account_configuration(Client, AccountId, ExperimentTemplateId, QueryM
 -spec get_target_resource_type(map(), binary() | list()) ->
     {ok, get_target_resource_type_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_target_resource_type_errors(), tuple()}.
 get_target_resource_type(Client, ResourceType)
   when is_map(Client) ->
     get_target_resource_type(Client, ResourceType, #{}, #{}).
@@ -1181,8 +1334,7 @@ get_target_resource_type(Client, ResourceType)
 -spec get_target_resource_type(map(), binary() | list(), map(), map()) ->
     {ok, get_target_resource_type_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_target_resource_type_errors(), tuple()}.
 get_target_resource_type(Client, ResourceType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_target_resource_type(Client, ResourceType, QueryMap, HeadersMap, []).
@@ -1190,8 +1342,7 @@ get_target_resource_type(Client, ResourceType, QueryMap, HeadersMap)
 -spec get_target_resource_type(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_target_resource_type_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_target_resource_type_errors(), tuple()}.
 get_target_resource_type(Client, ResourceType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/targetResourceTypes/", aws_util:encode_uri(ResourceType), ""],
@@ -1212,7 +1363,7 @@ get_target_resource_type(Client, ResourceType, QueryMap, HeadersMap, Options0)
 -spec list_actions(map()) ->
     {ok, list_actions_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_actions_errors(), tuple()}.
 list_actions(Client)
   when is_map(Client) ->
     list_actions(Client, #{}, #{}).
@@ -1220,7 +1371,7 @@ list_actions(Client)
 -spec list_actions(map(), map(), map()) ->
     {ok, list_actions_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_actions_errors(), tuple()}.
 list_actions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_actions(Client, QueryMap, HeadersMap, []).
@@ -1228,7 +1379,7 @@ list_actions(Client, QueryMap, HeadersMap)
 -spec list_actions(map(), map(), map(), proplists:proplist()) ->
     {ok, list_actions_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_actions_errors(), tuple()}.
 list_actions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/actions"],
@@ -1254,8 +1405,7 @@ list_actions(Client, QueryMap, HeadersMap, Options0)
 -spec list_experiment_resolved_targets(map(), binary() | list()) ->
     {ok, list_experiment_resolved_targets_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_experiment_resolved_targets_errors(), tuple()}.
 list_experiment_resolved_targets(Client, ExperimentId)
   when is_map(Client) ->
     list_experiment_resolved_targets(Client, ExperimentId, #{}, #{}).
@@ -1263,8 +1413,7 @@ list_experiment_resolved_targets(Client, ExperimentId)
 -spec list_experiment_resolved_targets(map(), binary() | list(), map(), map()) ->
     {ok, list_experiment_resolved_targets_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_experiment_resolved_targets_errors(), tuple()}.
 list_experiment_resolved_targets(Client, ExperimentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_experiment_resolved_targets(Client, ExperimentId, QueryMap, HeadersMap, []).
@@ -1272,8 +1421,7 @@ list_experiment_resolved_targets(Client, ExperimentId, QueryMap, HeadersMap)
 -spec list_experiment_resolved_targets(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_experiment_resolved_targets_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_experiment_resolved_targets_errors(), tuple()}.
 list_experiment_resolved_targets(Client, ExperimentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/experiments/", aws_util:encode_uri(ExperimentId), "/resolvedTargets"],
@@ -1300,8 +1448,7 @@ list_experiment_resolved_targets(Client, ExperimentId, QueryMap, HeadersMap, Opt
 -spec list_experiment_target_account_configurations(map(), binary() | list()) ->
     {ok, list_experiment_target_account_configurations_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_experiment_target_account_configurations_errors(), tuple()}.
 list_experiment_target_account_configurations(Client, ExperimentId)
   when is_map(Client) ->
     list_experiment_target_account_configurations(Client, ExperimentId, #{}, #{}).
@@ -1309,8 +1456,7 @@ list_experiment_target_account_configurations(Client, ExperimentId)
 -spec list_experiment_target_account_configurations(map(), binary() | list(), map(), map()) ->
     {ok, list_experiment_target_account_configurations_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_experiment_target_account_configurations_errors(), tuple()}.
 list_experiment_target_account_configurations(Client, ExperimentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_experiment_target_account_configurations(Client, ExperimentId, QueryMap, HeadersMap, []).
@@ -1318,8 +1464,7 @@ list_experiment_target_account_configurations(Client, ExperimentId, QueryMap, He
 -spec list_experiment_target_account_configurations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_experiment_target_account_configurations_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_experiment_target_account_configurations_errors(), tuple()}.
 list_experiment_target_account_configurations(Client, ExperimentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/experiments/", aws_util:encode_uri(ExperimentId), "/targetAccountConfigurations"],
@@ -1344,7 +1489,7 @@ list_experiment_target_account_configurations(Client, ExperimentId, QueryMap, He
 -spec list_experiment_templates(map()) ->
     {ok, list_experiment_templates_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_experiment_templates_errors(), tuple()}.
 list_experiment_templates(Client)
   when is_map(Client) ->
     list_experiment_templates(Client, #{}, #{}).
@@ -1352,7 +1497,7 @@ list_experiment_templates(Client)
 -spec list_experiment_templates(map(), map(), map()) ->
     {ok, list_experiment_templates_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_experiment_templates_errors(), tuple()}.
 list_experiment_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_experiment_templates(Client, QueryMap, HeadersMap, []).
@@ -1360,7 +1505,7 @@ list_experiment_templates(Client, QueryMap, HeadersMap)
 -spec list_experiment_templates(map(), map(), map(), proplists:proplist()) ->
     {ok, list_experiment_templates_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_experiment_templates_errors(), tuple()}.
 list_experiment_templates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/experimentTemplates"],
@@ -1386,7 +1531,7 @@ list_experiment_templates(Client, QueryMap, HeadersMap, Options0)
 -spec list_experiments(map()) ->
     {ok, list_experiments_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_experiments_errors(), tuple()}.
 list_experiments(Client)
   when is_map(Client) ->
     list_experiments(Client, #{}, #{}).
@@ -1394,7 +1539,7 @@ list_experiments(Client)
 -spec list_experiments(map(), map(), map()) ->
     {ok, list_experiments_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_experiments_errors(), tuple()}.
 list_experiments(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_experiments(Client, QueryMap, HeadersMap, []).
@@ -1402,7 +1547,7 @@ list_experiments(Client, QueryMap, HeadersMap)
 -spec list_experiments(map(), map(), map(), proplists:proplist()) ->
     {ok, list_experiments_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_experiments_errors(), tuple()}.
 list_experiments(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/experiments"],
@@ -1463,8 +1608,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec list_target_account_configurations(map(), binary() | list()) ->
     {ok, list_target_account_configurations_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_target_account_configurations_errors(), tuple()}.
 list_target_account_configurations(Client, ExperimentTemplateId)
   when is_map(Client) ->
     list_target_account_configurations(Client, ExperimentTemplateId, #{}, #{}).
@@ -1472,8 +1616,7 @@ list_target_account_configurations(Client, ExperimentTemplateId)
 -spec list_target_account_configurations(map(), binary() | list(), map(), map()) ->
     {ok, list_target_account_configurations_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_target_account_configurations_errors(), tuple()}.
 list_target_account_configurations(Client, ExperimentTemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_target_account_configurations(Client, ExperimentTemplateId, QueryMap, HeadersMap, []).
@@ -1481,8 +1624,7 @@ list_target_account_configurations(Client, ExperimentTemplateId, QueryMap, Heade
 -spec list_target_account_configurations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_target_account_configurations_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_target_account_configurations_errors(), tuple()}.
 list_target_account_configurations(Client, ExperimentTemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/experimentTemplates/", aws_util:encode_uri(ExperimentTemplateId), "/targetAccountConfigurations"],
@@ -1508,7 +1650,7 @@ list_target_account_configurations(Client, ExperimentTemplateId, QueryMap, Heade
 -spec list_target_resource_types(map()) ->
     {ok, list_target_resource_types_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_target_resource_types_errors(), tuple()}.
 list_target_resource_types(Client)
   when is_map(Client) ->
     list_target_resource_types(Client, #{}, #{}).
@@ -1516,7 +1658,7 @@ list_target_resource_types(Client)
 -spec list_target_resource_types(map(), map(), map()) ->
     {ok, list_target_resource_types_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_target_resource_types_errors(), tuple()}.
 list_target_resource_types(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_target_resource_types(Client, QueryMap, HeadersMap, []).
@@ -1524,7 +1666,7 @@ list_target_resource_types(Client, QueryMap, HeadersMap)
 -spec list_target_resource_types(map(), map(), map(), proplists:proplist()) ->
     {ok, list_target_resource_types_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_target_resource_types_errors(), tuple()}.
 list_target_resource_types(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/targetResourceTypes"],
@@ -1550,20 +1692,14 @@ list_target_resource_types(Client, QueryMap, HeadersMap, Options0)
 -spec start_experiment(map(), start_experiment_request()) ->
     {ok, start_experiment_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_experiment_errors(), tuple()}.
 start_experiment(Client, Input) ->
     start_experiment(Client, Input, []).
 
 -spec start_experiment(map(), start_experiment_request(), proplists:proplist()) ->
     {ok, start_experiment_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_experiment_errors(), tuple()}.
 start_experiment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/experiments"],
@@ -1590,16 +1726,14 @@ start_experiment(Client, Input0, Options0) ->
 -spec stop_experiment(map(), binary() | list(), stop_experiment_request()) ->
     {ok, stop_experiment_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_experiment_errors(), tuple()}.
 stop_experiment(Client, Id, Input) ->
     stop_experiment(Client, Id, Input, []).
 
 -spec stop_experiment(map(), binary() | list(), stop_experiment_request(), proplists:proplist()) ->
     {ok, stop_experiment_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_experiment_errors(), tuple()}.
 stop_experiment(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/experiments/", aws_util:encode_uri(Id), ""],
@@ -1691,18 +1825,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_experiment_template(map(), binary() | list(), update_experiment_template_request()) ->
     {ok, update_experiment_template_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_experiment_template_errors(), tuple()}.
 update_experiment_template(Client, Id, Input) ->
     update_experiment_template(Client, Id, Input, []).
 
 -spec update_experiment_template(map(), binary() | list(), update_experiment_template_request(), proplists:proplist()) ->
     {ok, update_experiment_template_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_experiment_template_errors(), tuple()}.
 update_experiment_template(Client, Id, Input0, Options0) ->
     Method = patch,
     Path = ["/experimentTemplates/", aws_util:encode_uri(Id), ""],
@@ -1730,16 +1860,14 @@ update_experiment_template(Client, Id, Input0, Options0) ->
 -spec update_target_account_configuration(map(), binary() | list(), binary() | list(), update_target_account_configuration_request()) ->
     {ok, update_target_account_configuration_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_target_account_configuration_errors(), tuple()}.
 update_target_account_configuration(Client, AccountId, ExperimentTemplateId, Input) ->
     update_target_account_configuration(Client, AccountId, ExperimentTemplateId, Input, []).
 
 -spec update_target_account_configuration(map(), binary() | list(), binary() | list(), update_target_account_configuration_request(), proplists:proplist()) ->
     {ok, update_target_account_configuration_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_target_account_configuration_errors(), tuple()}.
 update_target_account_configuration(Client, AccountId, ExperimentTemplateId, Input0, Options0) ->
     Method = patch,
     Path = ["/experimentTemplates/", aws_util:encode_uri(ExperimentTemplateId), "/targetAccountConfigurations/", aws_util:encode_uri(AccountId), ""],

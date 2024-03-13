@@ -2548,6 +2548,584 @@
 %% }
 -type delete_serverless_cache_response() :: #{binary() => any()}.
 
+-type add_tags_to_resource_errors() ::
+    user_group_not_found_fault() | 
+    invalid_replication_group_state_fault() | 
+    invalid_serverless_cache_snapshot_state_fault() | 
+    serverless_cache_snapshot_not_found_fault() | 
+    cache_subnet_group_not_found_fault() | 
+    replication_group_not_found_fault() | 
+    invalid_serverless_cache_state_fault() | 
+    invalid_arn_fault() | 
+    cache_security_group_not_found_fault() | 
+    tag_quota_per_resource_exceeded() | 
+    serverless_cache_not_found_fault() | 
+    cache_cluster_not_found_fault() | 
+    reserved_cache_node_not_found_fault() | 
+    user_not_found_fault() | 
+    cache_parameter_group_not_found_fault() | 
+    snapshot_not_found_fault().
+
+-type authorize_cache_security_group_ingress_errors() ::
+    invalid_cache_security_group_state_fault() | 
+    invalid_parameter_value_exception() | 
+    authorization_already_exists_fault() | 
+    cache_security_group_not_found_fault() | 
+    invalid_parameter_combination_exception().
+
+-type batch_apply_update_action_errors() ::
+    invalid_parameter_value_exception() | 
+    service_update_not_found_fault().
+
+-type batch_stop_update_action_errors() ::
+    invalid_parameter_value_exception() | 
+    service_update_not_found_fault().
+
+-type complete_migration_errors() ::
+    invalid_replication_group_state_fault() | 
+    replication_group_not_found_fault() | 
+    replication_group_not_under_migration_fault().
+
+-type copy_serverless_cache_snapshot_errors() ::
+    serverless_cache_snapshot_quota_exceeded_fault() | 
+    invalid_serverless_cache_snapshot_state_fault() | 
+    serverless_cache_snapshot_not_found_fault() | 
+    service_linked_role_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    serverless_cache_snapshot_already_exists_fault() | 
+    tag_quota_per_resource_exceeded() | 
+    invalid_parameter_combination_exception().
+
+-type copy_snapshot_errors() ::
+    snapshot_already_exists_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_snapshot_state_fault() | 
+    tag_quota_per_resource_exceeded() | 
+    invalid_parameter_combination_exception() | 
+    snapshot_not_found_fault() | 
+    snapshot_quota_exceeded_fault().
+
+-type create_cache_cluster_errors() ::
+    node_quota_for_cluster_exceeded_fault() | 
+    insufficient_cache_cluster_capacity_fault() | 
+    invalid_replication_group_state_fault() | 
+    cache_subnet_group_not_found_fault() | 
+    cluster_quota_for_customer_exceeded_fault() | 
+    replication_group_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    cache_security_group_not_found_fault() | 
+    cache_cluster_already_exists_fault() | 
+    tag_quota_per_resource_exceeded() | 
+    invalid_vpc_network_state_fault() | 
+    invalid_parameter_combination_exception() | 
+    cache_parameter_group_not_found_fault() | 
+    node_quota_for_customer_exceeded_fault().
+
+-type create_cache_parameter_group_errors() ::
+    cache_parameter_group_quota_exceeded_fault() | 
+    invalid_parameter_value_exception() | 
+    tag_quota_per_resource_exceeded() | 
+    invalid_parameter_combination_exception() | 
+    invalid_cache_parameter_group_state_fault() | 
+    cache_parameter_group_already_exists_fault().
+
+-type create_cache_security_group_errors() ::
+    cache_security_group_already_exists_fault() | 
+    cache_security_group_quota_exceeded_fault() | 
+    invalid_parameter_value_exception() | 
+    tag_quota_per_resource_exceeded() | 
+    invalid_parameter_combination_exception().
+
+-type create_cache_subnet_group_errors() ::
+    cache_subnet_quota_exceeded_fault() | 
+    cache_subnet_group_already_exists_fault() | 
+    subnet_not_allowed_fault() | 
+    tag_quota_per_resource_exceeded() | 
+    invalid_subnet() | 
+    cache_subnet_group_quota_exceeded_fault().
+
+-type create_global_replication_group_errors() ::
+    global_replication_group_already_exists_fault() | 
+    invalid_replication_group_state_fault() | 
+    service_linked_role_not_found_fault() | 
+    replication_group_not_found_fault() | 
+    invalid_parameter_value_exception().
+
+-type create_replication_group_errors() ::
+    node_quota_for_cluster_exceeded_fault() | 
+    node_groups_per_replication_group_quota_exceeded_fault() | 
+    insufficient_cache_cluster_capacity_fault() | 
+    user_group_not_found_fault() | 
+    global_replication_group_not_found_fault() | 
+    cache_subnet_group_not_found_fault() | 
+    cluster_quota_for_customer_exceeded_fault() | 
+    replication_group_already_exists_fault() | 
+    invalid_parameter_value_exception() | 
+    cache_security_group_not_found_fault() | 
+    invalid_global_replication_group_state_fault() | 
+    invalid_user_group_state_fault() | 
+    tag_quota_per_resource_exceeded() | 
+    invalid_vpc_network_state_fault() | 
+    invalid_parameter_combination_exception() | 
+    cache_cluster_not_found_fault() | 
+    invalid_cache_cluster_state_fault() | 
+    cache_parameter_group_not_found_fault() | 
+    node_quota_for_customer_exceeded_fault().
+
+-type create_serverless_cache_errors() ::
+    serverless_cache_quota_for_customer_exceeded_fault() | 
+    invalid_credentials_exception() | 
+    user_group_not_found_fault() | 
+    service_linked_role_not_found_fault() | 
+    invalid_serverless_cache_state_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_user_group_state_fault() | 
+    tag_quota_per_resource_exceeded() | 
+    serverless_cache_not_found_fault() | 
+    invalid_parameter_combination_exception() | 
+    serverless_cache_already_exists_fault().
+
+-type create_serverless_cache_snapshot_errors() ::
+    serverless_cache_snapshot_quota_exceeded_fault() | 
+    service_linked_role_not_found_fault() | 
+    invalid_serverless_cache_state_fault() | 
+    invalid_parameter_value_exception() | 
+    serverless_cache_snapshot_already_exists_fault() | 
+    tag_quota_per_resource_exceeded() | 
+    serverless_cache_not_found_fault() | 
+    invalid_parameter_combination_exception().
+
+-type create_snapshot_errors() ::
+    snapshot_feature_not_supported_fault() | 
+    invalid_replication_group_state_fault() | 
+    snapshot_already_exists_fault() | 
+    replication_group_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    tag_quota_per_resource_exceeded() | 
+    invalid_parameter_combination_exception() | 
+    cache_cluster_not_found_fault() | 
+    invalid_cache_cluster_state_fault() | 
+    snapshot_quota_exceeded_fault().
+
+-type create_user_errors() ::
+    service_linked_role_not_found_fault() | 
+    duplicate_user_name_fault() | 
+    user_quota_exceeded_fault() | 
+    user_already_exists_fault() | 
+    invalid_parameter_value_exception() | 
+    tag_quota_per_resource_exceeded() | 
+    invalid_parameter_combination_exception().
+
+-type create_user_group_errors() ::
+    user_group_already_exists_fault() | 
+    default_user_required() | 
+    service_linked_role_not_found_fault() | 
+    duplicate_user_name_fault() | 
+    user_group_quota_exceeded_fault() | 
+    invalid_parameter_value_exception() | 
+    tag_quota_per_resource_exceeded() | 
+    user_not_found_fault().
+
+-type decrease_node_groups_in_global_replication_group_errors() ::
+    global_replication_group_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_global_replication_group_state_fault() | 
+    invalid_parameter_combination_exception().
+
+-type decrease_replica_count_errors() ::
+    node_groups_per_replication_group_quota_exceeded_fault() | 
+    insufficient_cache_cluster_capacity_fault() | 
+    invalid_replication_group_state_fault() | 
+    service_linked_role_not_found_fault() | 
+    cluster_quota_for_customer_exceeded_fault() | 
+    replication_group_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    no_operation_fault() | 
+    invalid_vpc_network_state_fault() | 
+    invalid_parameter_combination_exception() | 
+    invalid_cache_cluster_state_fault() | 
+    node_quota_for_customer_exceeded_fault().
+
+-type delete_cache_cluster_errors() ::
+    snapshot_feature_not_supported_fault() | 
+    snapshot_already_exists_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception() | 
+    cache_cluster_not_found_fault() | 
+    invalid_cache_cluster_state_fault() | 
+    snapshot_quota_exceeded_fault().
+
+-type delete_cache_parameter_group_errors() ::
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception() | 
+    invalid_cache_parameter_group_state_fault() | 
+    cache_parameter_group_not_found_fault().
+
+-type delete_cache_security_group_errors() ::
+    invalid_cache_security_group_state_fault() | 
+    invalid_parameter_value_exception() | 
+    cache_security_group_not_found_fault() | 
+    invalid_parameter_combination_exception().
+
+-type delete_cache_subnet_group_errors() ::
+    cache_subnet_group_not_found_fault() | 
+    cache_subnet_group_in_use().
+
+-type delete_global_replication_group_errors() ::
+    global_replication_group_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_global_replication_group_state_fault().
+
+-type delete_replication_group_errors() ::
+    snapshot_feature_not_supported_fault() | 
+    invalid_replication_group_state_fault() | 
+    snapshot_already_exists_fault() | 
+    replication_group_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception() | 
+    snapshot_quota_exceeded_fault().
+
+-type delete_serverless_cache_errors() ::
+    invalid_credentials_exception() | 
+    service_linked_role_not_found_fault() | 
+    invalid_serverless_cache_state_fault() | 
+    invalid_parameter_value_exception() | 
+    serverless_cache_snapshot_already_exists_fault() | 
+    serverless_cache_not_found_fault() | 
+    invalid_parameter_combination_exception().
+
+-type delete_serverless_cache_snapshot_errors() ::
+    invalid_serverless_cache_snapshot_state_fault() | 
+    serverless_cache_snapshot_not_found_fault() | 
+    service_linked_role_not_found_fault() | 
+    invalid_parameter_value_exception().
+
+-type delete_snapshot_errors() ::
+    invalid_parameter_value_exception() | 
+    invalid_snapshot_state_fault() | 
+    invalid_parameter_combination_exception() | 
+    snapshot_not_found_fault().
+
+-type delete_user_errors() ::
+    default_user_associated_to_user_group_fault() | 
+    service_linked_role_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    user_not_found_fault() | 
+    invalid_user_state_fault().
+
+-type delete_user_group_errors() ::
+    user_group_not_found_fault() | 
+    service_linked_role_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_user_group_state_fault().
+
+-type describe_cache_clusters_errors() ::
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception() | 
+    cache_cluster_not_found_fault().
+
+-type describe_cache_parameter_groups_errors() ::
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception() | 
+    cache_parameter_group_not_found_fault().
+
+-type describe_cache_parameters_errors() ::
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception() | 
+    cache_parameter_group_not_found_fault().
+
+-type describe_cache_security_groups_errors() ::
+    invalid_parameter_value_exception() | 
+    cache_security_group_not_found_fault() | 
+    invalid_parameter_combination_exception().
+
+-type describe_cache_subnet_groups_errors() ::
+    cache_subnet_group_not_found_fault().
+
+-type describe_engine_default_parameters_errors() ::
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception().
+
+-type describe_events_errors() ::
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception().
+
+-type describe_global_replication_groups_errors() ::
+    global_replication_group_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception().
+
+-type describe_replication_groups_errors() ::
+    replication_group_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception().
+
+-type describe_reserved_cache_nodes_errors() ::
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception() | 
+    reserved_cache_node_not_found_fault().
+
+-type describe_reserved_cache_nodes_offerings_errors() ::
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception() | 
+    reserved_cache_nodes_offering_not_found_fault().
+
+-type describe_serverless_cache_snapshots_errors() ::
+    serverless_cache_snapshot_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    serverless_cache_not_found_fault() | 
+    invalid_parameter_combination_exception().
+
+-type describe_serverless_caches_errors() ::
+    invalid_parameter_value_exception() | 
+    serverless_cache_not_found_fault() | 
+    invalid_parameter_combination_exception().
+
+-type describe_service_updates_errors() ::
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception() | 
+    service_update_not_found_fault().
+
+-type describe_snapshots_errors() ::
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception() | 
+    cache_cluster_not_found_fault() | 
+    snapshot_not_found_fault().
+
+-type describe_update_actions_errors() ::
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception().
+
+-type describe_user_groups_errors() ::
+    user_group_not_found_fault() | 
+    service_linked_role_not_found_fault() | 
+    invalid_parameter_combination_exception().
+
+-type describe_users_errors() ::
+    service_linked_role_not_found_fault() | 
+    invalid_parameter_combination_exception() | 
+    user_not_found_fault().
+
+-type disassociate_global_replication_group_errors() ::
+    global_replication_group_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_global_replication_group_state_fault() | 
+    invalid_parameter_combination_exception().
+
+-type export_serverless_cache_snapshot_errors() ::
+    invalid_serverless_cache_snapshot_state_fault() | 
+    serverless_cache_snapshot_not_found_fault() | 
+    service_linked_role_not_found_fault() | 
+    invalid_parameter_value_exception().
+
+-type failover_global_replication_group_errors() ::
+    global_replication_group_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_global_replication_group_state_fault() | 
+    invalid_parameter_combination_exception().
+
+-type increase_node_groups_in_global_replication_group_errors() ::
+    global_replication_group_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_global_replication_group_state_fault().
+
+-type increase_replica_count_errors() ::
+    node_groups_per_replication_group_quota_exceeded_fault() | 
+    insufficient_cache_cluster_capacity_fault() | 
+    invalid_replication_group_state_fault() | 
+    cluster_quota_for_customer_exceeded_fault() | 
+    replication_group_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    no_operation_fault() | 
+    invalid_vpc_network_state_fault() | 
+    invalid_parameter_combination_exception() | 
+    invalid_kms_key_fault() | 
+    invalid_cache_cluster_state_fault() | 
+    node_quota_for_customer_exceeded_fault().
+
+-type list_allowed_node_type_modifications_errors() ::
+    replication_group_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception() | 
+    cache_cluster_not_found_fault().
+
+-type list_tags_for_resource_errors() ::
+    user_group_not_found_fault() | 
+    invalid_replication_group_state_fault() | 
+    invalid_serverless_cache_snapshot_state_fault() | 
+    serverless_cache_snapshot_not_found_fault() | 
+    cache_subnet_group_not_found_fault() | 
+    replication_group_not_found_fault() | 
+    invalid_serverless_cache_state_fault() | 
+    invalid_arn_fault() | 
+    cache_security_group_not_found_fault() | 
+    serverless_cache_not_found_fault() | 
+    cache_cluster_not_found_fault() | 
+    reserved_cache_node_not_found_fault() | 
+    user_not_found_fault() | 
+    cache_parameter_group_not_found_fault() | 
+    snapshot_not_found_fault().
+
+-type modify_cache_cluster_errors() ::
+    node_quota_for_cluster_exceeded_fault() | 
+    insufficient_cache_cluster_capacity_fault() | 
+    invalid_cache_security_group_state_fault() | 
+    invalid_parameter_value_exception() | 
+    cache_security_group_not_found_fault() | 
+    invalid_vpc_network_state_fault() | 
+    invalid_parameter_combination_exception() | 
+    cache_cluster_not_found_fault() | 
+    invalid_cache_cluster_state_fault() | 
+    cache_parameter_group_not_found_fault() | 
+    node_quota_for_customer_exceeded_fault().
+
+-type modify_cache_parameter_group_errors() ::
+    invalid_parameter_value_exception() | 
+    invalid_global_replication_group_state_fault() | 
+    invalid_parameter_combination_exception() | 
+    invalid_cache_parameter_group_state_fault() | 
+    cache_parameter_group_not_found_fault().
+
+-type modify_cache_subnet_group_errors() ::
+    cache_subnet_quota_exceeded_fault() | 
+    cache_subnet_group_not_found_fault() | 
+    subnet_in_use() | 
+    subnet_not_allowed_fault() | 
+    invalid_subnet().
+
+-type modify_global_replication_group_errors() ::
+    global_replication_group_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_global_replication_group_state_fault().
+
+-type modify_replication_group_errors() ::
+    node_quota_for_cluster_exceeded_fault() | 
+    insufficient_cache_cluster_capacity_fault() | 
+    user_group_not_found_fault() | 
+    invalid_replication_group_state_fault() | 
+    invalid_cache_security_group_state_fault() | 
+    replication_group_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    cache_security_group_not_found_fault() | 
+    invalid_user_group_state_fault() | 
+    invalid_vpc_network_state_fault() | 
+    invalid_parameter_combination_exception() | 
+    cache_cluster_not_found_fault() | 
+    invalid_kms_key_fault() | 
+    invalid_cache_cluster_state_fault() | 
+    cache_parameter_group_not_found_fault() | 
+    node_quota_for_customer_exceeded_fault().
+
+-type modify_replication_group_shard_configuration_errors() ::
+    node_groups_per_replication_group_quota_exceeded_fault() | 
+    insufficient_cache_cluster_capacity_fault() | 
+    invalid_replication_group_state_fault() | 
+    replication_group_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_vpc_network_state_fault() | 
+    invalid_parameter_combination_exception() | 
+    invalid_kms_key_fault() | 
+    invalid_cache_cluster_state_fault() | 
+    node_quota_for_customer_exceeded_fault().
+
+-type modify_serverless_cache_errors() ::
+    invalid_credentials_exception() | 
+    user_group_not_found_fault() | 
+    service_linked_role_not_found_fault() | 
+    invalid_serverless_cache_state_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_user_group_state_fault() | 
+    serverless_cache_not_found_fault() | 
+    invalid_parameter_combination_exception().
+
+-type modify_user_errors() ::
+    service_linked_role_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception() | 
+    user_not_found_fault() | 
+    invalid_user_state_fault().
+
+-type modify_user_group_errors() ::
+    user_group_not_found_fault() | 
+    default_user_required() | 
+    service_linked_role_not_found_fault() | 
+    duplicate_user_name_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_user_group_state_fault() | 
+    invalid_parameter_combination_exception() | 
+    user_not_found_fault().
+
+-type purchase_reserved_cache_nodes_offering_errors() ::
+    reserved_cache_node_quota_exceeded_fault() | 
+    invalid_parameter_value_exception() | 
+    tag_quota_per_resource_exceeded() | 
+    reserved_cache_node_already_exists_fault() | 
+    invalid_parameter_combination_exception() | 
+    reserved_cache_nodes_offering_not_found_fault().
+
+-type rebalance_slots_in_global_replication_group_errors() ::
+    global_replication_group_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_global_replication_group_state_fault().
+
+-type reboot_cache_cluster_errors() ::
+    cache_cluster_not_found_fault() | 
+    invalid_cache_cluster_state_fault().
+
+-type remove_tags_from_resource_errors() ::
+    user_group_not_found_fault() | 
+    invalid_replication_group_state_fault() | 
+    invalid_serverless_cache_snapshot_state_fault() | 
+    serverless_cache_snapshot_not_found_fault() | 
+    cache_subnet_group_not_found_fault() | 
+    replication_group_not_found_fault() | 
+    invalid_serverless_cache_state_fault() | 
+    invalid_arn_fault() | 
+    cache_security_group_not_found_fault() | 
+    serverless_cache_not_found_fault() | 
+    tag_not_found_fault() | 
+    cache_cluster_not_found_fault() | 
+    reserved_cache_node_not_found_fault() | 
+    user_not_found_fault() | 
+    cache_parameter_group_not_found_fault() | 
+    snapshot_not_found_fault().
+
+-type reset_cache_parameter_group_errors() ::
+    invalid_parameter_value_exception() | 
+    invalid_global_replication_group_state_fault() | 
+    invalid_parameter_combination_exception() | 
+    invalid_cache_parameter_group_state_fault() | 
+    cache_parameter_group_not_found_fault().
+
+-type revoke_cache_security_group_ingress_errors() ::
+    invalid_cache_security_group_state_fault() | 
+    invalid_parameter_value_exception() | 
+    cache_security_group_not_found_fault() | 
+    authorization_not_found_fault() | 
+    invalid_parameter_combination_exception().
+
+-type start_migration_errors() ::
+    replication_group_already_under_migration_fault() | 
+    invalid_replication_group_state_fault() | 
+    replication_group_not_found_fault() | 
+    invalid_parameter_value_exception().
+
+-type test_failover_errors() ::
+    invalid_replication_group_state_fault() | 
+    replication_group_not_found_fault() | 
+    api_call_rate_for_customer_exceeded_fault() | 
+    node_group_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    test_failover_not_available_fault() | 
+    invalid_parameter_combination_exception() | 
+    invalid_kms_key_fault() | 
+    invalid_cache_cluster_state_fault().
+
+-type test_migration_errors() ::
+    replication_group_already_under_migration_fault() | 
+    invalid_replication_group_state_fault() | 
+    replication_group_not_found_fault() | 
+    invalid_parameter_value_exception().
 
 %%====================================================================
 %% API
@@ -2582,22 +3160,7 @@
 -spec add_tags_to_resource(map(), add_tags_to_resource_message()) ->
     {ok, tag_list_message(), tuple()} |
     {error, any()} |
-    {error, cache_cluster_not_found_fault(), tuple()} |
-    {error, cache_parameter_group_not_found_fault(), tuple()} |
-    {error, cache_security_group_not_found_fault(), tuple()} |
-    {error, cache_subnet_group_not_found_fault(), tuple()} |
-    {error, invalid_arn_fault(), tuple()} |
-    {error, invalid_replication_group_state_fault(), tuple()} |
-    {error, invalid_serverless_cache_snapshot_state_fault(), tuple()} |
-    {error, invalid_serverless_cache_state_fault(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()} |
-    {error, reserved_cache_node_not_found_fault(), tuple()} |
-    {error, serverless_cache_not_found_fault(), tuple()} |
-    {error, serverless_cache_snapshot_not_found_fault(), tuple()} |
-    {error, snapshot_not_found_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()} |
-    {error, user_group_not_found_fault(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, add_tags_to_resource_errors(), tuple()}.
 add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_resource(Client, Input, []).
@@ -2605,22 +3168,7 @@ add_tags_to_resource(Client, Input)
 -spec add_tags_to_resource(map(), add_tags_to_resource_message(), proplists:proplist()) ->
     {ok, tag_list_message(), tuple()} |
     {error, any()} |
-    {error, cache_cluster_not_found_fault(), tuple()} |
-    {error, cache_parameter_group_not_found_fault(), tuple()} |
-    {error, cache_security_group_not_found_fault(), tuple()} |
-    {error, cache_subnet_group_not_found_fault(), tuple()} |
-    {error, invalid_arn_fault(), tuple()} |
-    {error, invalid_replication_group_state_fault(), tuple()} |
-    {error, invalid_serverless_cache_snapshot_state_fault(), tuple()} |
-    {error, invalid_serverless_cache_state_fault(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()} |
-    {error, reserved_cache_node_not_found_fault(), tuple()} |
-    {error, serverless_cache_not_found_fault(), tuple()} |
-    {error, serverless_cache_snapshot_not_found_fault(), tuple()} |
-    {error, snapshot_not_found_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()} |
-    {error, user_group_not_found_fault(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, add_tags_to_resource_errors(), tuple()}.
 add_tags_to_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTagsToResource">>, Input, Options).
@@ -2638,11 +3186,7 @@ add_tags_to_resource(Client, Input, Options)
 -spec authorize_cache_security_group_ingress(map(), authorize_cache_security_group_ingress_message()) ->
     {ok, authorize_cache_security_group_ingress_result(), tuple()} |
     {error, any()} |
-    {error, authorization_already_exists_fault(), tuple()} |
-    {error, cache_security_group_not_found_fault(), tuple()} |
-    {error, invalid_cache_security_group_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, authorize_cache_security_group_ingress_errors(), tuple()}.
 authorize_cache_security_group_ingress(Client, Input)
   when is_map(Client), is_map(Input) ->
     authorize_cache_security_group_ingress(Client, Input, []).
@@ -2650,11 +3194,7 @@ authorize_cache_security_group_ingress(Client, Input)
 -spec authorize_cache_security_group_ingress(map(), authorize_cache_security_group_ingress_message(), proplists:proplist()) ->
     {ok, authorize_cache_security_group_ingress_result(), tuple()} |
     {error, any()} |
-    {error, authorization_already_exists_fault(), tuple()} |
-    {error, cache_security_group_not_found_fault(), tuple()} |
-    {error, invalid_cache_security_group_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, authorize_cache_security_group_ingress_errors(), tuple()}.
 authorize_cache_security_group_ingress(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AuthorizeCacheSecurityGroupIngress">>, Input, Options).
@@ -2668,8 +3208,7 @@ authorize_cache_security_group_ingress(Client, Input, Options)
 -spec batch_apply_update_action(map(), batch_apply_update_action_message()) ->
     {ok, update_action_results_message(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_update_not_found_fault(), tuple()}.
+    {error, batch_apply_update_action_errors(), tuple()}.
 batch_apply_update_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_apply_update_action(Client, Input, []).
@@ -2677,8 +3216,7 @@ batch_apply_update_action(Client, Input)
 -spec batch_apply_update_action(map(), batch_apply_update_action_message(), proplists:proplist()) ->
     {ok, update_action_results_message(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_update_not_found_fault(), tuple()}.
+    {error, batch_apply_update_action_errors(), tuple()}.
 batch_apply_update_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchApplyUpdateAction">>, Input, Options).
@@ -2692,8 +3230,7 @@ batch_apply_update_action(Client, Input, Options)
 -spec batch_stop_update_action(map(), batch_stop_update_action_message()) ->
     {ok, update_action_results_message(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_update_not_found_fault(), tuple()}.
+    {error, batch_stop_update_action_errors(), tuple()}.
 batch_stop_update_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_stop_update_action(Client, Input, []).
@@ -2701,8 +3238,7 @@ batch_stop_update_action(Client, Input)
 -spec batch_stop_update_action(map(), batch_stop_update_action_message(), proplists:proplist()) ->
     {ok, update_action_results_message(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_update_not_found_fault(), tuple()}.
+    {error, batch_stop_update_action_errors(), tuple()}.
 batch_stop_update_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchStopUpdateAction">>, Input, Options).
@@ -2711,9 +3247,7 @@ batch_stop_update_action(Client, Input, Options)
 -spec complete_migration(map(), complete_migration_message()) ->
     {ok, complete_migration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_replication_group_state_fault(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()} |
-    {error, replication_group_not_under_migration_fault(), tuple()}.
+    {error, complete_migration_errors(), tuple()}.
 complete_migration(Client, Input)
   when is_map(Client), is_map(Input) ->
     complete_migration(Client, Input, []).
@@ -2721,9 +3255,7 @@ complete_migration(Client, Input)
 -spec complete_migration(map(), complete_migration_message(), proplists:proplist()) ->
     {ok, complete_migration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_replication_group_state_fault(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()} |
-    {error, replication_group_not_under_migration_fault(), tuple()}.
+    {error, complete_migration_errors(), tuple()}.
 complete_migration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CompleteMigration">>, Input, Options).
@@ -2734,14 +3266,7 @@ complete_migration(Client, Input, Options)
 -spec copy_serverless_cache_snapshot(map(), copy_serverless_cache_snapshot_request()) ->
     {ok, copy_serverless_cache_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_serverless_cache_snapshot_state_fault(), tuple()} |
-    {error, serverless_cache_snapshot_already_exists_fault(), tuple()} |
-    {error, serverless_cache_snapshot_not_found_fault(), tuple()} |
-    {error, serverless_cache_snapshot_quota_exceeded_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()}.
+    {error, copy_serverless_cache_snapshot_errors(), tuple()}.
 copy_serverless_cache_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_serverless_cache_snapshot(Client, Input, []).
@@ -2749,14 +3274,7 @@ copy_serverless_cache_snapshot(Client, Input)
 -spec copy_serverless_cache_snapshot(map(), copy_serverless_cache_snapshot_request(), proplists:proplist()) ->
     {ok, copy_serverless_cache_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_serverless_cache_snapshot_state_fault(), tuple()} |
-    {error, serverless_cache_snapshot_already_exists_fault(), tuple()} |
-    {error, serverless_cache_snapshot_not_found_fault(), tuple()} |
-    {error, serverless_cache_snapshot_quota_exceeded_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()}.
+    {error, copy_serverless_cache_snapshot_errors(), tuple()}.
 copy_serverless_cache_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopyServerlessCacheSnapshot">>, Input, Options).
@@ -2860,13 +3378,7 @@ copy_serverless_cache_snapshot(Client, Input, Options)
 -spec copy_snapshot(map(), copy_snapshot_message()) ->
     {ok, copy_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_snapshot_state_fault(), tuple()} |
-    {error, snapshot_already_exists_fault(), tuple()} |
-    {error, snapshot_not_found_fault(), tuple()} |
-    {error, snapshot_quota_exceeded_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()}.
+    {error, copy_snapshot_errors(), tuple()}.
 copy_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_snapshot(Client, Input, []).
@@ -2874,13 +3386,7 @@ copy_snapshot(Client, Input)
 -spec copy_snapshot(map(), copy_snapshot_message(), proplists:proplist()) ->
     {ok, copy_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_snapshot_state_fault(), tuple()} |
-    {error, snapshot_already_exists_fault(), tuple()} |
-    {error, snapshot_not_found_fault(), tuple()} |
-    {error, snapshot_quota_exceeded_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()}.
+    {error, copy_snapshot_errors(), tuple()}.
 copy_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopySnapshot">>, Input, Options).
@@ -2894,20 +3400,7 @@ copy_snapshot(Client, Input, Options)
 -spec create_cache_cluster(map(), create_cache_cluster_message()) ->
     {ok, create_cache_cluster_result(), tuple()} |
     {error, any()} |
-    {error, cache_cluster_already_exists_fault(), tuple()} |
-    {error, cache_parameter_group_not_found_fault(), tuple()} |
-    {error, cache_security_group_not_found_fault(), tuple()} |
-    {error, cache_subnet_group_not_found_fault(), tuple()} |
-    {error, cluster_quota_for_customer_exceeded_fault(), tuple()} |
-    {error, insufficient_cache_cluster_capacity_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_replication_group_state_fault(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, node_quota_for_cluster_exceeded_fault(), tuple()} |
-    {error, node_quota_for_customer_exceeded_fault(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()}.
+    {error, create_cache_cluster_errors(), tuple()}.
 create_cache_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cache_cluster(Client, Input, []).
@@ -2915,20 +3408,7 @@ create_cache_cluster(Client, Input)
 -spec create_cache_cluster(map(), create_cache_cluster_message(), proplists:proplist()) ->
     {ok, create_cache_cluster_result(), tuple()} |
     {error, any()} |
-    {error, cache_cluster_already_exists_fault(), tuple()} |
-    {error, cache_parameter_group_not_found_fault(), tuple()} |
-    {error, cache_security_group_not_found_fault(), tuple()} |
-    {error, cache_subnet_group_not_found_fault(), tuple()} |
-    {error, cluster_quota_for_customer_exceeded_fault(), tuple()} |
-    {error, insufficient_cache_cluster_capacity_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_replication_group_state_fault(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, node_quota_for_cluster_exceeded_fault(), tuple()} |
-    {error, node_quota_for_customer_exceeded_fault(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()}.
+    {error, create_cache_cluster_errors(), tuple()}.
 create_cache_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCacheCluster">>, Input, Options).
@@ -2958,12 +3438,7 @@ create_cache_cluster(Client, Input, Options)
 -spec create_cache_parameter_group(map(), create_cache_parameter_group_message()) ->
     {ok, create_cache_parameter_group_result(), tuple()} |
     {error, any()} |
-    {error, cache_parameter_group_already_exists_fault(), tuple()} |
-    {error, cache_parameter_group_quota_exceeded_fault(), tuple()} |
-    {error, invalid_cache_parameter_group_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()}.
+    {error, create_cache_parameter_group_errors(), tuple()}.
 create_cache_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cache_parameter_group(Client, Input, []).
@@ -2971,12 +3446,7 @@ create_cache_parameter_group(Client, Input)
 -spec create_cache_parameter_group(map(), create_cache_parameter_group_message(), proplists:proplist()) ->
     {ok, create_cache_parameter_group_result(), tuple()} |
     {error, any()} |
-    {error, cache_parameter_group_already_exists_fault(), tuple()} |
-    {error, cache_parameter_group_quota_exceeded_fault(), tuple()} |
-    {error, invalid_cache_parameter_group_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()}.
+    {error, create_cache_parameter_group_errors(), tuple()}.
 create_cache_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCacheParameterGroup">>, Input, Options).
@@ -2996,11 +3466,7 @@ create_cache_parameter_group(Client, Input, Options)
 -spec create_cache_security_group(map(), create_cache_security_group_message()) ->
     {ok, create_cache_security_group_result(), tuple()} |
     {error, any()} |
-    {error, cache_security_group_already_exists_fault(), tuple()} |
-    {error, cache_security_group_quota_exceeded_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()}.
+    {error, create_cache_security_group_errors(), tuple()}.
 create_cache_security_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cache_security_group(Client, Input, []).
@@ -3008,11 +3474,7 @@ create_cache_security_group(Client, Input)
 -spec create_cache_security_group(map(), create_cache_security_group_message(), proplists:proplist()) ->
     {ok, create_cache_security_group_result(), tuple()} |
     {error, any()} |
-    {error, cache_security_group_already_exists_fault(), tuple()} |
-    {error, cache_security_group_quota_exceeded_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()}.
+    {error, create_cache_security_group_errors(), tuple()}.
 create_cache_security_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCacheSecurityGroup">>, Input, Options).
@@ -3025,12 +3487,7 @@ create_cache_security_group(Client, Input, Options)
 -spec create_cache_subnet_group(map(), create_cache_subnet_group_message()) ->
     {ok, create_cache_subnet_group_result(), tuple()} |
     {error, any()} |
-    {error, cache_subnet_group_already_exists_fault(), tuple()} |
-    {error, cache_subnet_group_quota_exceeded_fault(), tuple()} |
-    {error, cache_subnet_quota_exceeded_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, subnet_not_allowed_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()}.
+    {error, create_cache_subnet_group_errors(), tuple()}.
 create_cache_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cache_subnet_group(Client, Input, []).
@@ -3038,12 +3495,7 @@ create_cache_subnet_group(Client, Input)
 -spec create_cache_subnet_group(map(), create_cache_subnet_group_message(), proplists:proplist()) ->
     {ok, create_cache_subnet_group_result(), tuple()} |
     {error, any()} |
-    {error, cache_subnet_group_already_exists_fault(), tuple()} |
-    {error, cache_subnet_group_quota_exceeded_fault(), tuple()} |
-    {error, cache_subnet_quota_exceeded_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, subnet_not_allowed_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()}.
+    {error, create_cache_subnet_group_errors(), tuple()}.
 create_cache_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCacheSubnetGroup">>, Input, Options).
@@ -3069,11 +3521,7 @@ create_cache_subnet_group(Client, Input, Options)
 -spec create_global_replication_group(map(), create_global_replication_group_message()) ->
     {ok, create_global_replication_group_result(), tuple()} |
     {error, any()} |
-    {error, global_replication_group_already_exists_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_replication_group_state_fault(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, create_global_replication_group_errors(), tuple()}.
 create_global_replication_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_global_replication_group(Client, Input, []).
@@ -3081,11 +3529,7 @@ create_global_replication_group(Client, Input)
 -spec create_global_replication_group(map(), create_global_replication_group_message(), proplists:proplist()) ->
     {ok, create_global_replication_group_result(), tuple()} |
     {error, any()} |
-    {error, global_replication_group_already_exists_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_replication_group_state_fault(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, create_global_replication_group_errors(), tuple()}.
 create_global_replication_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGlobalReplicationGroup">>, Input, Options).
@@ -3151,25 +3595,7 @@ create_global_replication_group(Client, Input, Options)
 -spec create_replication_group(map(), create_replication_group_message()) ->
     {ok, create_replication_group_result(), tuple()} |
     {error, any()} |
-    {error, cache_cluster_not_found_fault(), tuple()} |
-    {error, cache_parameter_group_not_found_fault(), tuple()} |
-    {error, cache_security_group_not_found_fault(), tuple()} |
-    {error, cache_subnet_group_not_found_fault(), tuple()} |
-    {error, cluster_quota_for_customer_exceeded_fault(), tuple()} |
-    {error, global_replication_group_not_found_fault(), tuple()} |
-    {error, insufficient_cache_cluster_capacity_fault(), tuple()} |
-    {error, invalid_cache_cluster_state_fault(), tuple()} |
-    {error, invalid_global_replication_group_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_user_group_state_fault(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, node_groups_per_replication_group_quota_exceeded_fault(), tuple()} |
-    {error, node_quota_for_cluster_exceeded_fault(), tuple()} |
-    {error, node_quota_for_customer_exceeded_fault(), tuple()} |
-    {error, replication_group_already_exists_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()} |
-    {error, user_group_not_found_fault(), tuple()}.
+    {error, create_replication_group_errors(), tuple()}.
 create_replication_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_replication_group(Client, Input, []).
@@ -3177,25 +3603,7 @@ create_replication_group(Client, Input)
 -spec create_replication_group(map(), create_replication_group_message(), proplists:proplist()) ->
     {ok, create_replication_group_result(), tuple()} |
     {error, any()} |
-    {error, cache_cluster_not_found_fault(), tuple()} |
-    {error, cache_parameter_group_not_found_fault(), tuple()} |
-    {error, cache_security_group_not_found_fault(), tuple()} |
-    {error, cache_subnet_group_not_found_fault(), tuple()} |
-    {error, cluster_quota_for_customer_exceeded_fault(), tuple()} |
-    {error, global_replication_group_not_found_fault(), tuple()} |
-    {error, insufficient_cache_cluster_capacity_fault(), tuple()} |
-    {error, invalid_cache_cluster_state_fault(), tuple()} |
-    {error, invalid_global_replication_group_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_user_group_state_fault(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, node_groups_per_replication_group_quota_exceeded_fault(), tuple()} |
-    {error, node_quota_for_cluster_exceeded_fault(), tuple()} |
-    {error, node_quota_for_customer_exceeded_fault(), tuple()} |
-    {error, replication_group_already_exists_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()} |
-    {error, user_group_not_found_fault(), tuple()}.
+    {error, create_replication_group_errors(), tuple()}.
 create_replication_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateReplicationGroup">>, Input, Options).
@@ -3204,17 +3612,7 @@ create_replication_group(Client, Input, Options)
 -spec create_serverless_cache(map(), create_serverless_cache_request()) ->
     {ok, create_serverless_cache_response(), tuple()} |
     {error, any()} |
-    {error, invalid_credentials_exception(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_serverless_cache_state_fault(), tuple()} |
-    {error, invalid_user_group_state_fault(), tuple()} |
-    {error, serverless_cache_already_exists_fault(), tuple()} |
-    {error, serverless_cache_not_found_fault(), tuple()} |
-    {error, serverless_cache_quota_for_customer_exceeded_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()} |
-    {error, user_group_not_found_fault(), tuple()}.
+    {error, create_serverless_cache_errors(), tuple()}.
 create_serverless_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_serverless_cache(Client, Input, []).
@@ -3222,17 +3620,7 @@ create_serverless_cache(Client, Input)
 -spec create_serverless_cache(map(), create_serverless_cache_request(), proplists:proplist()) ->
     {ok, create_serverless_cache_response(), tuple()} |
     {error, any()} |
-    {error, invalid_credentials_exception(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_serverless_cache_state_fault(), tuple()} |
-    {error, invalid_user_group_state_fault(), tuple()} |
-    {error, serverless_cache_already_exists_fault(), tuple()} |
-    {error, serverless_cache_not_found_fault(), tuple()} |
-    {error, serverless_cache_quota_for_customer_exceeded_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()} |
-    {error, user_group_not_found_fault(), tuple()}.
+    {error, create_serverless_cache_errors(), tuple()}.
 create_serverless_cache(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateServerlessCache">>, Input, Options).
@@ -3244,14 +3632,7 @@ create_serverless_cache(Client, Input, Options)
 -spec create_serverless_cache_snapshot(map(), create_serverless_cache_snapshot_request()) ->
     {ok, create_serverless_cache_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_serverless_cache_state_fault(), tuple()} |
-    {error, serverless_cache_not_found_fault(), tuple()} |
-    {error, serverless_cache_snapshot_already_exists_fault(), tuple()} |
-    {error, serverless_cache_snapshot_quota_exceeded_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()}.
+    {error, create_serverless_cache_snapshot_errors(), tuple()}.
 create_serverless_cache_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_serverless_cache_snapshot(Client, Input, []).
@@ -3259,14 +3640,7 @@ create_serverless_cache_snapshot(Client, Input)
 -spec create_serverless_cache_snapshot(map(), create_serverless_cache_snapshot_request(), proplists:proplist()) ->
     {ok, create_serverless_cache_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_serverless_cache_state_fault(), tuple()} |
-    {error, serverless_cache_not_found_fault(), tuple()} |
-    {error, serverless_cache_snapshot_already_exists_fault(), tuple()} |
-    {error, serverless_cache_snapshot_quota_exceeded_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()}.
+    {error, create_serverless_cache_snapshot_errors(), tuple()}.
 create_serverless_cache_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateServerlessCacheSnapshot">>, Input, Options).
@@ -3279,16 +3653,7 @@ create_serverless_cache_snapshot(Client, Input, Options)
 -spec create_snapshot(map(), create_snapshot_message()) ->
     {ok, create_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, cache_cluster_not_found_fault(), tuple()} |
-    {error, invalid_cache_cluster_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_replication_group_state_fault(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()} |
-    {error, snapshot_already_exists_fault(), tuple()} |
-    {error, snapshot_feature_not_supported_fault(), tuple()} |
-    {error, snapshot_quota_exceeded_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()}.
+    {error, create_snapshot_errors(), tuple()}.
 create_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot(Client, Input, []).
@@ -3296,16 +3661,7 @@ create_snapshot(Client, Input)
 -spec create_snapshot(map(), create_snapshot_message(), proplists:proplist()) ->
     {ok, create_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, cache_cluster_not_found_fault(), tuple()} |
-    {error, invalid_cache_cluster_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_replication_group_state_fault(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()} |
-    {error, snapshot_already_exists_fault(), tuple()} |
-    {error, snapshot_feature_not_supported_fault(), tuple()} |
-    {error, snapshot_quota_exceeded_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()}.
+    {error, create_snapshot_errors(), tuple()}.
 create_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSnapshot">>, Input, Options).
@@ -3318,13 +3674,7 @@ create_snapshot(Client, Input, Options)
 -spec create_user(map(), create_user_message()) ->
     {ok, user(), tuple()} |
     {error, any()} |
-    {error, duplicate_user_name_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()} |
-    {error, user_already_exists_fault(), tuple()} |
-    {error, user_quota_exceeded_fault(), tuple()}.
+    {error, create_user_errors(), tuple()}.
 create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user(Client, Input, []).
@@ -3332,13 +3682,7 @@ create_user(Client, Input)
 -spec create_user(map(), create_user_message(), proplists:proplist()) ->
     {ok, user(), tuple()} |
     {error, any()} |
-    {error, duplicate_user_name_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()} |
-    {error, user_already_exists_fault(), tuple()} |
-    {error, user_quota_exceeded_fault(), tuple()}.
+    {error, create_user_errors(), tuple()}.
 create_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUser">>, Input, Options).
@@ -3351,14 +3695,7 @@ create_user(Client, Input, Options)
 -spec create_user_group(map(), create_user_group_message()) ->
     {ok, user_group(), tuple()} |
     {error, any()} |
-    {error, default_user_required(), tuple()} |
-    {error, duplicate_user_name_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()} |
-    {error, user_group_already_exists_fault(), tuple()} |
-    {error, user_group_quota_exceeded_fault(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, create_user_group_errors(), tuple()}.
 create_user_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_group(Client, Input, []).
@@ -3366,14 +3703,7 @@ create_user_group(Client, Input)
 -spec create_user_group(map(), create_user_group_message(), proplists:proplist()) ->
     {ok, user_group(), tuple()} |
     {error, any()} |
-    {error, default_user_required(), tuple()} |
-    {error, duplicate_user_name_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()} |
-    {error, user_group_already_exists_fault(), tuple()} |
-    {error, user_group_quota_exceeded_fault(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, create_user_group_errors(), tuple()}.
 create_user_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUserGroup">>, Input, Options).
@@ -3382,10 +3712,7 @@ create_user_group(Client, Input, Options)
 -spec decrease_node_groups_in_global_replication_group(map(), decrease_node_groups_in_global_replication_group_message()) ->
     {ok, decrease_node_groups_in_global_replication_group_result(), tuple()} |
     {error, any()} |
-    {error, global_replication_group_not_found_fault(), tuple()} |
-    {error, invalid_global_replication_group_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, decrease_node_groups_in_global_replication_group_errors(), tuple()}.
 decrease_node_groups_in_global_replication_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     decrease_node_groups_in_global_replication_group(Client, Input, []).
@@ -3393,10 +3720,7 @@ decrease_node_groups_in_global_replication_group(Client, Input)
 -spec decrease_node_groups_in_global_replication_group(map(), decrease_node_groups_in_global_replication_group_message(), proplists:proplist()) ->
     {ok, decrease_node_groups_in_global_replication_group_result(), tuple()} |
     {error, any()} |
-    {error, global_replication_group_not_found_fault(), tuple()} |
-    {error, invalid_global_replication_group_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, decrease_node_groups_in_global_replication_group_errors(), tuple()}.
 decrease_node_groups_in_global_replication_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DecreaseNodeGroupsInGlobalReplicationGroup">>, Input, Options).
@@ -3412,18 +3736,7 @@ decrease_node_groups_in_global_replication_group(Client, Input, Options)
 -spec decrease_replica_count(map(), decrease_replica_count_message()) ->
     {ok, decrease_replica_count_result(), tuple()} |
     {error, any()} |
-    {error, cluster_quota_for_customer_exceeded_fault(), tuple()} |
-    {error, insufficient_cache_cluster_capacity_fault(), tuple()} |
-    {error, invalid_cache_cluster_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_replication_group_state_fault(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, node_groups_per_replication_group_quota_exceeded_fault(), tuple()} |
-    {error, node_quota_for_customer_exceeded_fault(), tuple()} |
-    {error, no_operation_fault(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, decrease_replica_count_errors(), tuple()}.
 decrease_replica_count(Client, Input)
   when is_map(Client), is_map(Input) ->
     decrease_replica_count(Client, Input, []).
@@ -3431,18 +3744,7 @@ decrease_replica_count(Client, Input)
 -spec decrease_replica_count(map(), decrease_replica_count_message(), proplists:proplist()) ->
     {ok, decrease_replica_count_result(), tuple()} |
     {error, any()} |
-    {error, cluster_quota_for_customer_exceeded_fault(), tuple()} |
-    {error, insufficient_cache_cluster_capacity_fault(), tuple()} |
-    {error, invalid_cache_cluster_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_replication_group_state_fault(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, node_groups_per_replication_group_quota_exceeded_fault(), tuple()} |
-    {error, node_quota_for_customer_exceeded_fault(), tuple()} |
-    {error, no_operation_fault(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, decrease_replica_count_errors(), tuple()}.
 decrease_replica_count(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DecreaseReplicaCount">>, Input, Options).
@@ -3474,13 +3776,7 @@ decrease_replica_count(Client, Input, Options)
 -spec delete_cache_cluster(map(), delete_cache_cluster_message()) ->
     {ok, delete_cache_cluster_result(), tuple()} |
     {error, any()} |
-    {error, cache_cluster_not_found_fault(), tuple()} |
-    {error, invalid_cache_cluster_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, snapshot_already_exists_fault(), tuple()} |
-    {error, snapshot_feature_not_supported_fault(), tuple()} |
-    {error, snapshot_quota_exceeded_fault(), tuple()}.
+    {error, delete_cache_cluster_errors(), tuple()}.
 delete_cache_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cache_cluster(Client, Input, []).
@@ -3488,13 +3784,7 @@ delete_cache_cluster(Client, Input)
 -spec delete_cache_cluster(map(), delete_cache_cluster_message(), proplists:proplist()) ->
     {ok, delete_cache_cluster_result(), tuple()} |
     {error, any()} |
-    {error, cache_cluster_not_found_fault(), tuple()} |
-    {error, invalid_cache_cluster_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, snapshot_already_exists_fault(), tuple()} |
-    {error, snapshot_feature_not_supported_fault(), tuple()} |
-    {error, snapshot_quota_exceeded_fault(), tuple()}.
+    {error, delete_cache_cluster_errors(), tuple()}.
 delete_cache_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCacheCluster">>, Input, Options).
@@ -3508,10 +3798,7 @@ delete_cache_cluster(Client, Input, Options)
 -spec delete_cache_parameter_group(map(), delete_cache_parameter_group_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, cache_parameter_group_not_found_fault(), tuple()} |
-    {error, invalid_cache_parameter_group_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, delete_cache_parameter_group_errors(), tuple()}.
 delete_cache_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cache_parameter_group(Client, Input, []).
@@ -3519,10 +3806,7 @@ delete_cache_parameter_group(Client, Input)
 -spec delete_cache_parameter_group(map(), delete_cache_parameter_group_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, cache_parameter_group_not_found_fault(), tuple()} |
-    {error, invalid_cache_parameter_group_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, delete_cache_parameter_group_errors(), tuple()}.
 delete_cache_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCacheParameterGroup">>, Input, Options).
@@ -3534,10 +3818,7 @@ delete_cache_parameter_group(Client, Input, Options)
 -spec delete_cache_security_group(map(), delete_cache_security_group_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, cache_security_group_not_found_fault(), tuple()} |
-    {error, invalid_cache_security_group_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, delete_cache_security_group_errors(), tuple()}.
 delete_cache_security_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cache_security_group(Client, Input, []).
@@ -3545,10 +3826,7 @@ delete_cache_security_group(Client, Input)
 -spec delete_cache_security_group(map(), delete_cache_security_group_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, cache_security_group_not_found_fault(), tuple()} |
-    {error, invalid_cache_security_group_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, delete_cache_security_group_errors(), tuple()}.
 delete_cache_security_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCacheSecurityGroup">>, Input, Options).
@@ -3561,8 +3839,7 @@ delete_cache_security_group(Client, Input, Options)
 -spec delete_cache_subnet_group(map(), delete_cache_subnet_group_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, cache_subnet_group_in_use(), tuple()} |
-    {error, cache_subnet_group_not_found_fault(), tuple()}.
+    {error, delete_cache_subnet_group_errors(), tuple()}.
 delete_cache_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cache_subnet_group(Client, Input, []).
@@ -3570,8 +3847,7 @@ delete_cache_subnet_group(Client, Input)
 -spec delete_cache_subnet_group(map(), delete_cache_subnet_group_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, cache_subnet_group_in_use(), tuple()} |
-    {error, cache_subnet_group_not_found_fault(), tuple()}.
+    {error, delete_cache_subnet_group_errors(), tuple()}.
 delete_cache_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCacheSubnetGroup">>, Input, Options).
@@ -3603,9 +3879,7 @@ delete_cache_subnet_group(Client, Input, Options)
 -spec delete_global_replication_group(map(), delete_global_replication_group_message()) ->
     {ok, delete_global_replication_group_result(), tuple()} |
     {error, any()} |
-    {error, global_replication_group_not_found_fault(), tuple()} |
-    {error, invalid_global_replication_group_state_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, delete_global_replication_group_errors(), tuple()}.
 delete_global_replication_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_global_replication_group(Client, Input, []).
@@ -3613,9 +3887,7 @@ delete_global_replication_group(Client, Input)
 -spec delete_global_replication_group(map(), delete_global_replication_group_message(), proplists:proplist()) ->
     {ok, delete_global_replication_group_result(), tuple()} |
     {error, any()} |
-    {error, global_replication_group_not_found_fault(), tuple()} |
-    {error, invalid_global_replication_group_state_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, delete_global_replication_group_errors(), tuple()}.
 delete_global_replication_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGlobalReplicationGroup">>, Input, Options).
@@ -3640,13 +3912,7 @@ delete_global_replication_group(Client, Input, Options)
 -spec delete_replication_group(map(), delete_replication_group_message()) ->
     {ok, delete_replication_group_result(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_replication_group_state_fault(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()} |
-    {error, snapshot_already_exists_fault(), tuple()} |
-    {error, snapshot_feature_not_supported_fault(), tuple()} |
-    {error, snapshot_quota_exceeded_fault(), tuple()}.
+    {error, delete_replication_group_errors(), tuple()}.
 delete_replication_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_replication_group(Client, Input, []).
@@ -3654,13 +3920,7 @@ delete_replication_group(Client, Input)
 -spec delete_replication_group(map(), delete_replication_group_message(), proplists:proplist()) ->
     {ok, delete_replication_group_result(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_replication_group_state_fault(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()} |
-    {error, snapshot_already_exists_fault(), tuple()} |
-    {error, snapshot_feature_not_supported_fault(), tuple()} |
-    {error, snapshot_quota_exceeded_fault(), tuple()}.
+    {error, delete_replication_group_errors(), tuple()}.
 delete_replication_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteReplicationGroup">>, Input, Options).
@@ -3669,13 +3929,7 @@ delete_replication_group(Client, Input, Options)
 -spec delete_serverless_cache(map(), delete_serverless_cache_request()) ->
     {ok, delete_serverless_cache_response(), tuple()} |
     {error, any()} |
-    {error, invalid_credentials_exception(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_serverless_cache_state_fault(), tuple()} |
-    {error, serverless_cache_not_found_fault(), tuple()} |
-    {error, serverless_cache_snapshot_already_exists_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, delete_serverless_cache_errors(), tuple()}.
 delete_serverless_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_serverless_cache(Client, Input, []).
@@ -3683,13 +3937,7 @@ delete_serverless_cache(Client, Input)
 -spec delete_serverless_cache(map(), delete_serverless_cache_request(), proplists:proplist()) ->
     {ok, delete_serverless_cache_response(), tuple()} |
     {error, any()} |
-    {error, invalid_credentials_exception(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_serverless_cache_state_fault(), tuple()} |
-    {error, serverless_cache_not_found_fault(), tuple()} |
-    {error, serverless_cache_snapshot_already_exists_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, delete_serverless_cache_errors(), tuple()}.
 delete_serverless_cache(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteServerlessCache">>, Input, Options).
@@ -3700,10 +3948,7 @@ delete_serverless_cache(Client, Input, Options)
 -spec delete_serverless_cache_snapshot(map(), delete_serverless_cache_snapshot_request()) ->
     {ok, delete_serverless_cache_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_serverless_cache_snapshot_state_fault(), tuple()} |
-    {error, serverless_cache_snapshot_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, delete_serverless_cache_snapshot_errors(), tuple()}.
 delete_serverless_cache_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_serverless_cache_snapshot(Client, Input, []).
@@ -3711,10 +3956,7 @@ delete_serverless_cache_snapshot(Client, Input)
 -spec delete_serverless_cache_snapshot(map(), delete_serverless_cache_snapshot_request(), proplists:proplist()) ->
     {ok, delete_serverless_cache_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_serverless_cache_snapshot_state_fault(), tuple()} |
-    {error, serverless_cache_snapshot_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, delete_serverless_cache_snapshot_errors(), tuple()}.
 delete_serverless_cache_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteServerlessCacheSnapshot">>, Input, Options).
@@ -3730,10 +3972,7 @@ delete_serverless_cache_snapshot(Client, Input, Options)
 -spec delete_snapshot(map(), delete_snapshot_message()) ->
     {ok, delete_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_snapshot_state_fault(), tuple()} |
-    {error, snapshot_not_found_fault(), tuple()}.
+    {error, delete_snapshot_errors(), tuple()}.
 delete_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_snapshot(Client, Input, []).
@@ -3741,10 +3980,7 @@ delete_snapshot(Client, Input)
 -spec delete_snapshot(map(), delete_snapshot_message(), proplists:proplist()) ->
     {ok, delete_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_snapshot_state_fault(), tuple()} |
-    {error, snapshot_not_found_fault(), tuple()}.
+    {error, delete_snapshot_errors(), tuple()}.
 delete_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSnapshot">>, Input, Options).
@@ -3759,11 +3995,7 @@ delete_snapshot(Client, Input, Options)
 -spec delete_user(map(), delete_user_message()) ->
     {ok, user(), tuple()} |
     {error, any()} |
-    {error, default_user_associated_to_user_group_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_user_state_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, delete_user_errors(), tuple()}.
 delete_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user(Client, Input, []).
@@ -3771,11 +4003,7 @@ delete_user(Client, Input)
 -spec delete_user(map(), delete_user_message(), proplists:proplist()) ->
     {ok, user(), tuple()} |
     {error, any()} |
-    {error, default_user_associated_to_user_group_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_user_state_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, delete_user_errors(), tuple()}.
 delete_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUser">>, Input, Options).
@@ -3790,10 +4018,7 @@ delete_user(Client, Input, Options)
 -spec delete_user_group(map(), delete_user_group_message()) ->
     {ok, user_group(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_user_group_state_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, user_group_not_found_fault(), tuple()}.
+    {error, delete_user_group_errors(), tuple()}.
 delete_user_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_group(Client, Input, []).
@@ -3801,10 +4026,7 @@ delete_user_group(Client, Input)
 -spec delete_user_group(map(), delete_user_group_message(), proplists:proplist()) ->
     {ok, user_group(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_user_group_state_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, user_group_not_found_fault(), tuple()}.
+    {error, delete_user_group_errors(), tuple()}.
 delete_user_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUserGroup">>, Input, Options).
@@ -3841,9 +4063,7 @@ delete_user_group(Client, Input, Options)
 -spec describe_cache_clusters(map(), describe_cache_clusters_message()) ->
     {ok, cache_cluster_message(), tuple()} |
     {error, any()} |
-    {error, cache_cluster_not_found_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, describe_cache_clusters_errors(), tuple()}.
 describe_cache_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cache_clusters(Client, Input, []).
@@ -3851,9 +4071,7 @@ describe_cache_clusters(Client, Input)
 -spec describe_cache_clusters(map(), describe_cache_clusters_message(), proplists:proplist()) ->
     {ok, cache_cluster_message(), tuple()} |
     {error, any()} |
-    {error, cache_cluster_not_found_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, describe_cache_clusters_errors(), tuple()}.
 describe_cache_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCacheClusters">>, Input, Options).
@@ -3880,9 +4098,7 @@ describe_cache_engine_versions(Client, Input, Options)
 -spec describe_cache_parameter_groups(map(), describe_cache_parameter_groups_message()) ->
     {ok, cache_parameter_groups_message(), tuple()} |
     {error, any()} |
-    {error, cache_parameter_group_not_found_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, describe_cache_parameter_groups_errors(), tuple()}.
 describe_cache_parameter_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cache_parameter_groups(Client, Input, []).
@@ -3890,9 +4106,7 @@ describe_cache_parameter_groups(Client, Input)
 -spec describe_cache_parameter_groups(map(), describe_cache_parameter_groups_message(), proplists:proplist()) ->
     {ok, cache_parameter_groups_message(), tuple()} |
     {error, any()} |
-    {error, cache_parameter_group_not_found_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, describe_cache_parameter_groups_errors(), tuple()}.
 describe_cache_parameter_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCacheParameterGroups">>, Input, Options).
@@ -3902,9 +4116,7 @@ describe_cache_parameter_groups(Client, Input, Options)
 -spec describe_cache_parameters(map(), describe_cache_parameters_message()) ->
     {ok, cache_parameter_group_details(), tuple()} |
     {error, any()} |
-    {error, cache_parameter_group_not_found_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, describe_cache_parameters_errors(), tuple()}.
 describe_cache_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cache_parameters(Client, Input, []).
@@ -3912,9 +4124,7 @@ describe_cache_parameters(Client, Input)
 -spec describe_cache_parameters(map(), describe_cache_parameters_message(), proplists:proplist()) ->
     {ok, cache_parameter_group_details(), tuple()} |
     {error, any()} |
-    {error, cache_parameter_group_not_found_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, describe_cache_parameters_errors(), tuple()}.
 describe_cache_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCacheParameters">>, Input, Options).
@@ -3928,9 +4138,7 @@ describe_cache_parameters(Client, Input, Options)
 -spec describe_cache_security_groups(map(), describe_cache_security_groups_message()) ->
     {ok, cache_security_group_message(), tuple()} |
     {error, any()} |
-    {error, cache_security_group_not_found_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, describe_cache_security_groups_errors(), tuple()}.
 describe_cache_security_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cache_security_groups(Client, Input, []).
@@ -3938,9 +4146,7 @@ describe_cache_security_groups(Client, Input)
 -spec describe_cache_security_groups(map(), describe_cache_security_groups_message(), proplists:proplist()) ->
     {ok, cache_security_group_message(), tuple()} |
     {error, any()} |
-    {error, cache_security_group_not_found_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, describe_cache_security_groups_errors(), tuple()}.
 describe_cache_security_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCacheSecurityGroups">>, Input, Options).
@@ -3956,7 +4162,7 @@ describe_cache_security_groups(Client, Input, Options)
 -spec describe_cache_subnet_groups(map(), describe_cache_subnet_groups_message()) ->
     {ok, cache_subnet_group_message(), tuple()} |
     {error, any()} |
-    {error, cache_subnet_group_not_found_fault(), tuple()}.
+    {error, describe_cache_subnet_groups_errors(), tuple()}.
 describe_cache_subnet_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cache_subnet_groups(Client, Input, []).
@@ -3964,7 +4170,7 @@ describe_cache_subnet_groups(Client, Input)
 -spec describe_cache_subnet_groups(map(), describe_cache_subnet_groups_message(), proplists:proplist()) ->
     {ok, cache_subnet_group_message(), tuple()} |
     {error, any()} |
-    {error, cache_subnet_group_not_found_fault(), tuple()}.
+    {error, describe_cache_subnet_groups_errors(), tuple()}.
 describe_cache_subnet_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCacheSubnetGroups">>, Input, Options).
@@ -3975,8 +4181,7 @@ describe_cache_subnet_groups(Client, Input, Options)
 -spec describe_engine_default_parameters(map(), describe_engine_default_parameters_message()) ->
     {ok, describe_engine_default_parameters_result(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, describe_engine_default_parameters_errors(), tuple()}.
 describe_engine_default_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_engine_default_parameters(Client, Input, []).
@@ -3984,8 +4189,7 @@ describe_engine_default_parameters(Client, Input)
 -spec describe_engine_default_parameters(map(), describe_engine_default_parameters_message(), proplists:proplist()) ->
     {ok, describe_engine_default_parameters_result(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, describe_engine_default_parameters_errors(), tuple()}.
 describe_engine_default_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEngineDefaultParameters">>, Input, Options).
@@ -4003,8 +4207,7 @@ describe_engine_default_parameters(Client, Input, Options)
 -spec describe_events(map(), describe_events_message()) ->
     {ok, events_message(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, describe_events_errors(), tuple()}.
 describe_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events(Client, Input, []).
@@ -4012,8 +4215,7 @@ describe_events(Client, Input)
 -spec describe_events(map(), describe_events_message(), proplists:proplist()) ->
     {ok, events_message(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, describe_events_errors(), tuple()}.
 describe_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEvents">>, Input, Options).
@@ -4025,9 +4227,7 @@ describe_events(Client, Input, Options)
 -spec describe_global_replication_groups(map(), describe_global_replication_groups_message()) ->
     {ok, describe_global_replication_groups_result(), tuple()} |
     {error, any()} |
-    {error, global_replication_group_not_found_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, describe_global_replication_groups_errors(), tuple()}.
 describe_global_replication_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_global_replication_groups(Client, Input, []).
@@ -4035,9 +4235,7 @@ describe_global_replication_groups(Client, Input)
 -spec describe_global_replication_groups(map(), describe_global_replication_groups_message(), proplists:proplist()) ->
     {ok, describe_global_replication_groups_result(), tuple()} |
     {error, any()} |
-    {error, global_replication_group_not_found_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, describe_global_replication_groups_errors(), tuple()}.
 describe_global_replication_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGlobalReplicationGroups">>, Input, Options).
@@ -4052,9 +4250,7 @@ describe_global_replication_groups(Client, Input, Options)
 -spec describe_replication_groups(map(), describe_replication_groups_message()) ->
     {ok, replication_group_message(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()}.
+    {error, describe_replication_groups_errors(), tuple()}.
 describe_replication_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replication_groups(Client, Input, []).
@@ -4062,9 +4258,7 @@ describe_replication_groups(Client, Input)
 -spec describe_replication_groups(map(), describe_replication_groups_message(), proplists:proplist()) ->
     {ok, replication_group_message(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()}.
+    {error, describe_replication_groups_errors(), tuple()}.
 describe_replication_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReplicationGroups">>, Input, Options).
@@ -4075,9 +4269,7 @@ describe_replication_groups(Client, Input, Options)
 -spec describe_reserved_cache_nodes(map(), describe_reserved_cache_nodes_message()) ->
     {ok, reserved_cache_node_message(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, reserved_cache_node_not_found_fault(), tuple()}.
+    {error, describe_reserved_cache_nodes_errors(), tuple()}.
 describe_reserved_cache_nodes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_reserved_cache_nodes(Client, Input, []).
@@ -4085,9 +4277,7 @@ describe_reserved_cache_nodes(Client, Input)
 -spec describe_reserved_cache_nodes(map(), describe_reserved_cache_nodes_message(), proplists:proplist()) ->
     {ok, reserved_cache_node_message(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, reserved_cache_node_not_found_fault(), tuple()}.
+    {error, describe_reserved_cache_nodes_errors(), tuple()}.
 describe_reserved_cache_nodes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReservedCacheNodes">>, Input, Options).
@@ -4096,9 +4286,7 @@ describe_reserved_cache_nodes(Client, Input, Options)
 -spec describe_reserved_cache_nodes_offerings(map(), describe_reserved_cache_nodes_offerings_message()) ->
     {ok, reserved_cache_nodes_offering_message(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, reserved_cache_nodes_offering_not_found_fault(), tuple()}.
+    {error, describe_reserved_cache_nodes_offerings_errors(), tuple()}.
 describe_reserved_cache_nodes_offerings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_reserved_cache_nodes_offerings(Client, Input, []).
@@ -4106,9 +4294,7 @@ describe_reserved_cache_nodes_offerings(Client, Input)
 -spec describe_reserved_cache_nodes_offerings(map(), describe_reserved_cache_nodes_offerings_message(), proplists:proplist()) ->
     {ok, reserved_cache_nodes_offering_message(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, reserved_cache_nodes_offering_not_found_fault(), tuple()}.
+    {error, describe_reserved_cache_nodes_offerings_errors(), tuple()}.
 describe_reserved_cache_nodes_offerings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReservedCacheNodesOfferings">>, Input, Options).
@@ -4123,10 +4309,7 @@ describe_reserved_cache_nodes_offerings(Client, Input, Options)
 -spec describe_serverless_cache_snapshots(map(), describe_serverless_cache_snapshots_request()) ->
     {ok, describe_serverless_cache_snapshots_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, serverless_cache_not_found_fault(), tuple()} |
-    {error, serverless_cache_snapshot_not_found_fault(), tuple()}.
+    {error, describe_serverless_cache_snapshots_errors(), tuple()}.
 describe_serverless_cache_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_serverless_cache_snapshots(Client, Input, []).
@@ -4134,10 +4317,7 @@ describe_serverless_cache_snapshots(Client, Input)
 -spec describe_serverless_cache_snapshots(map(), describe_serverless_cache_snapshots_request(), proplists:proplist()) ->
     {ok, describe_serverless_cache_snapshots_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, serverless_cache_not_found_fault(), tuple()} |
-    {error, serverless_cache_snapshot_not_found_fault(), tuple()}.
+    {error, describe_serverless_cache_snapshots_errors(), tuple()}.
 describe_serverless_cache_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeServerlessCacheSnapshots">>, Input, Options).
@@ -4150,9 +4330,7 @@ describe_serverless_cache_snapshots(Client, Input, Options)
 -spec describe_serverless_caches(map(), describe_serverless_caches_request()) ->
     {ok, describe_serverless_caches_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, serverless_cache_not_found_fault(), tuple()}.
+    {error, describe_serverless_caches_errors(), tuple()}.
 describe_serverless_caches(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_serverless_caches(Client, Input, []).
@@ -4160,9 +4338,7 @@ describe_serverless_caches(Client, Input)
 -spec describe_serverless_caches(map(), describe_serverless_caches_request(), proplists:proplist()) ->
     {ok, describe_serverless_caches_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, serverless_cache_not_found_fault(), tuple()}.
+    {error, describe_serverless_caches_errors(), tuple()}.
 describe_serverless_caches(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeServerlessCaches">>, Input, Options).
@@ -4171,9 +4347,7 @@ describe_serverless_caches(Client, Input, Options)
 -spec describe_service_updates(map(), describe_service_updates_message()) ->
     {ok, service_updates_message(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_update_not_found_fault(), tuple()}.
+    {error, describe_service_updates_errors(), tuple()}.
 describe_service_updates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_service_updates(Client, Input, []).
@@ -4181,9 +4355,7 @@ describe_service_updates(Client, Input)
 -spec describe_service_updates(map(), describe_service_updates_message(), proplists:proplist()) ->
     {ok, service_updates_message(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_update_not_found_fault(), tuple()}.
+    {error, describe_service_updates_errors(), tuple()}.
 describe_service_updates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeServiceUpdates">>, Input, Options).
@@ -4200,10 +4372,7 @@ describe_service_updates(Client, Input, Options)
 -spec describe_snapshots(map(), describe_snapshots_message()) ->
     {ok, describe_snapshots_list_message(), tuple()} |
     {error, any()} |
-    {error, cache_cluster_not_found_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, snapshot_not_found_fault(), tuple()}.
+    {error, describe_snapshots_errors(), tuple()}.
 describe_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_snapshots(Client, Input, []).
@@ -4211,10 +4380,7 @@ describe_snapshots(Client, Input)
 -spec describe_snapshots(map(), describe_snapshots_message(), proplists:proplist()) ->
     {ok, describe_snapshots_list_message(), tuple()} |
     {error, any()} |
-    {error, cache_cluster_not_found_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, snapshot_not_found_fault(), tuple()}.
+    {error, describe_snapshots_errors(), tuple()}.
 describe_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSnapshots">>, Input, Options).
@@ -4223,8 +4389,7 @@ describe_snapshots(Client, Input, Options)
 -spec describe_update_actions(map(), describe_update_actions_message()) ->
     {ok, update_actions_message(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, describe_update_actions_errors(), tuple()}.
 describe_update_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_update_actions(Client, Input, []).
@@ -4232,8 +4397,7 @@ describe_update_actions(Client, Input)
 -spec describe_update_actions(map(), describe_update_actions_message(), proplists:proplist()) ->
     {ok, update_actions_message(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, describe_update_actions_errors(), tuple()}.
 describe_update_actions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUpdateActions">>, Input, Options).
@@ -4242,9 +4406,7 @@ describe_update_actions(Client, Input, Options)
 -spec describe_user_groups(map(), describe_user_groups_message()) ->
     {ok, describe_user_groups_result(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, user_group_not_found_fault(), tuple()}.
+    {error, describe_user_groups_errors(), tuple()}.
 describe_user_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user_groups(Client, Input, []).
@@ -4252,9 +4414,7 @@ describe_user_groups(Client, Input)
 -spec describe_user_groups(map(), describe_user_groups_message(), proplists:proplist()) ->
     {ok, describe_user_groups_result(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, user_group_not_found_fault(), tuple()}.
+    {error, describe_user_groups_errors(), tuple()}.
 describe_user_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUserGroups">>, Input, Options).
@@ -4263,9 +4423,7 @@ describe_user_groups(Client, Input, Options)
 -spec describe_users(map(), describe_users_message()) ->
     {ok, describe_users_result(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, describe_users_errors(), tuple()}.
 describe_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_users(Client, Input, []).
@@ -4273,9 +4431,7 @@ describe_users(Client, Input)
 -spec describe_users(map(), describe_users_message(), proplists:proplist()) ->
     {ok, describe_users_result(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, describe_users_errors(), tuple()}.
 describe_users(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUsers">>, Input, Options).
@@ -4289,10 +4445,7 @@ describe_users(Client, Input, Options)
 -spec disassociate_global_replication_group(map(), disassociate_global_replication_group_message()) ->
     {ok, disassociate_global_replication_group_result(), tuple()} |
     {error, any()} |
-    {error, global_replication_group_not_found_fault(), tuple()} |
-    {error, invalid_global_replication_group_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, disassociate_global_replication_group_errors(), tuple()}.
 disassociate_global_replication_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_global_replication_group(Client, Input, []).
@@ -4300,10 +4453,7 @@ disassociate_global_replication_group(Client, Input)
 -spec disassociate_global_replication_group(map(), disassociate_global_replication_group_message(), proplists:proplist()) ->
     {ok, disassociate_global_replication_group_result(), tuple()} |
     {error, any()} |
-    {error, global_replication_group_not_found_fault(), tuple()} |
-    {error, invalid_global_replication_group_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, disassociate_global_replication_group_errors(), tuple()}.
 disassociate_global_replication_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateGlobalReplicationGroup">>, Input, Options).
@@ -4315,10 +4465,7 @@ disassociate_global_replication_group(Client, Input, Options)
 -spec export_serverless_cache_snapshot(map(), export_serverless_cache_snapshot_request()) ->
     {ok, export_serverless_cache_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_serverless_cache_snapshot_state_fault(), tuple()} |
-    {error, serverless_cache_snapshot_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, export_serverless_cache_snapshot_errors(), tuple()}.
 export_serverless_cache_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_serverless_cache_snapshot(Client, Input, []).
@@ -4326,10 +4473,7 @@ export_serverless_cache_snapshot(Client, Input)
 -spec export_serverless_cache_snapshot(map(), export_serverless_cache_snapshot_request(), proplists:proplist()) ->
     {ok, export_serverless_cache_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_serverless_cache_snapshot_state_fault(), tuple()} |
-    {error, serverless_cache_snapshot_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, export_serverless_cache_snapshot_errors(), tuple()}.
 export_serverless_cache_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportServerlessCacheSnapshot">>, Input, Options).
@@ -4341,10 +4485,7 @@ export_serverless_cache_snapshot(Client, Input, Options)
 -spec failover_global_replication_group(map(), failover_global_replication_group_message()) ->
     {ok, failover_global_replication_group_result(), tuple()} |
     {error, any()} |
-    {error, global_replication_group_not_found_fault(), tuple()} |
-    {error, invalid_global_replication_group_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, failover_global_replication_group_errors(), tuple()}.
 failover_global_replication_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     failover_global_replication_group(Client, Input, []).
@@ -4352,10 +4493,7 @@ failover_global_replication_group(Client, Input)
 -spec failover_global_replication_group(map(), failover_global_replication_group_message(), proplists:proplist()) ->
     {ok, failover_global_replication_group_result(), tuple()} |
     {error, any()} |
-    {error, global_replication_group_not_found_fault(), tuple()} |
-    {error, invalid_global_replication_group_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, failover_global_replication_group_errors(), tuple()}.
 failover_global_replication_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"FailoverGlobalReplicationGroup">>, Input, Options).
@@ -4364,9 +4502,7 @@ failover_global_replication_group(Client, Input, Options)
 -spec increase_node_groups_in_global_replication_group(map(), increase_node_groups_in_global_replication_group_message()) ->
     {ok, increase_node_groups_in_global_replication_group_result(), tuple()} |
     {error, any()} |
-    {error, global_replication_group_not_found_fault(), tuple()} |
-    {error, invalid_global_replication_group_state_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, increase_node_groups_in_global_replication_group_errors(), tuple()}.
 increase_node_groups_in_global_replication_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     increase_node_groups_in_global_replication_group(Client, Input, []).
@@ -4374,9 +4510,7 @@ increase_node_groups_in_global_replication_group(Client, Input)
 -spec increase_node_groups_in_global_replication_group(map(), increase_node_groups_in_global_replication_group_message(), proplists:proplist()) ->
     {ok, increase_node_groups_in_global_replication_group_result(), tuple()} |
     {error, any()} |
-    {error, global_replication_group_not_found_fault(), tuple()} |
-    {error, invalid_global_replication_group_state_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, increase_node_groups_in_global_replication_group_errors(), tuple()}.
 increase_node_groups_in_global_replication_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"IncreaseNodeGroupsInGlobalReplicationGroup">>, Input, Options).
@@ -4392,18 +4526,7 @@ increase_node_groups_in_global_replication_group(Client, Input, Options)
 -spec increase_replica_count(map(), increase_replica_count_message()) ->
     {ok, increase_replica_count_result(), tuple()} |
     {error, any()} |
-    {error, cluster_quota_for_customer_exceeded_fault(), tuple()} |
-    {error, insufficient_cache_cluster_capacity_fault(), tuple()} |
-    {error, invalid_cache_cluster_state_fault(), tuple()} |
-    {error, invalid_kms_key_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_replication_group_state_fault(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, node_groups_per_replication_group_quota_exceeded_fault(), tuple()} |
-    {error, node_quota_for_customer_exceeded_fault(), tuple()} |
-    {error, no_operation_fault(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()}.
+    {error, increase_replica_count_errors(), tuple()}.
 increase_replica_count(Client, Input)
   when is_map(Client), is_map(Input) ->
     increase_replica_count(Client, Input, []).
@@ -4411,18 +4534,7 @@ increase_replica_count(Client, Input)
 -spec increase_replica_count(map(), increase_replica_count_message(), proplists:proplist()) ->
     {ok, increase_replica_count_result(), tuple()} |
     {error, any()} |
-    {error, cluster_quota_for_customer_exceeded_fault(), tuple()} |
-    {error, insufficient_cache_cluster_capacity_fault(), tuple()} |
-    {error, invalid_cache_cluster_state_fault(), tuple()} |
-    {error, invalid_kms_key_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_replication_group_state_fault(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, node_groups_per_replication_group_quota_exceeded_fault(), tuple()} |
-    {error, node_quota_for_customer_exceeded_fault(), tuple()} |
-    {error, no_operation_fault(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()}.
+    {error, increase_replica_count_errors(), tuple()}.
 increase_replica_count(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"IncreaseReplicaCount">>, Input, Options).
@@ -4440,10 +4552,7 @@ increase_replica_count(Client, Input, Options)
 -spec list_allowed_node_type_modifications(map(), list_allowed_node_type_modifications_message()) ->
     {ok, allowed_node_type_modifications_message(), tuple()} |
     {error, any()} |
-    {error, cache_cluster_not_found_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()}.
+    {error, list_allowed_node_type_modifications_errors(), tuple()}.
 list_allowed_node_type_modifications(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_allowed_node_type_modifications(Client, Input, []).
@@ -4451,10 +4560,7 @@ list_allowed_node_type_modifications(Client, Input)
 -spec list_allowed_node_type_modifications(map(), list_allowed_node_type_modifications_message(), proplists:proplist()) ->
     {ok, allowed_node_type_modifications_message(), tuple()} |
     {error, any()} |
-    {error, cache_cluster_not_found_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()}.
+    {error, list_allowed_node_type_modifications_errors(), tuple()}.
 list_allowed_node_type_modifications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAllowedNodeTypeModifications">>, Input, Options).
@@ -4477,21 +4583,7 @@ list_allowed_node_type_modifications(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_message()) ->
     {ok, tag_list_message(), tuple()} |
     {error, any()} |
-    {error, cache_cluster_not_found_fault(), tuple()} |
-    {error, cache_parameter_group_not_found_fault(), tuple()} |
-    {error, cache_security_group_not_found_fault(), tuple()} |
-    {error, cache_subnet_group_not_found_fault(), tuple()} |
-    {error, invalid_arn_fault(), tuple()} |
-    {error, invalid_replication_group_state_fault(), tuple()} |
-    {error, invalid_serverless_cache_snapshot_state_fault(), tuple()} |
-    {error, invalid_serverless_cache_state_fault(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()} |
-    {error, reserved_cache_node_not_found_fault(), tuple()} |
-    {error, serverless_cache_not_found_fault(), tuple()} |
-    {error, serverless_cache_snapshot_not_found_fault(), tuple()} |
-    {error, snapshot_not_found_fault(), tuple()} |
-    {error, user_group_not_found_fault(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -4499,21 +4591,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_message(), proplists:proplist()) ->
     {ok, tag_list_message(), tuple()} |
     {error, any()} |
-    {error, cache_cluster_not_found_fault(), tuple()} |
-    {error, cache_parameter_group_not_found_fault(), tuple()} |
-    {error, cache_security_group_not_found_fault(), tuple()} |
-    {error, cache_subnet_group_not_found_fault(), tuple()} |
-    {error, invalid_arn_fault(), tuple()} |
-    {error, invalid_replication_group_state_fault(), tuple()} |
-    {error, invalid_serverless_cache_snapshot_state_fault(), tuple()} |
-    {error, invalid_serverless_cache_state_fault(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()} |
-    {error, reserved_cache_node_not_found_fault(), tuple()} |
-    {error, serverless_cache_not_found_fault(), tuple()} |
-    {error, serverless_cache_snapshot_not_found_fault(), tuple()} |
-    {error, snapshot_not_found_fault(), tuple()} |
-    {error, user_group_not_found_fault(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -4526,17 +4604,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec modify_cache_cluster(map(), modify_cache_cluster_message()) ->
     {ok, modify_cache_cluster_result(), tuple()} |
     {error, any()} |
-    {error, cache_cluster_not_found_fault(), tuple()} |
-    {error, cache_parameter_group_not_found_fault(), tuple()} |
-    {error, cache_security_group_not_found_fault(), tuple()} |
-    {error, insufficient_cache_cluster_capacity_fault(), tuple()} |
-    {error, invalid_cache_cluster_state_fault(), tuple()} |
-    {error, invalid_cache_security_group_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, node_quota_for_cluster_exceeded_fault(), tuple()} |
-    {error, node_quota_for_customer_exceeded_fault(), tuple()}.
+    {error, modify_cache_cluster_errors(), tuple()}.
 modify_cache_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_cache_cluster(Client, Input, []).
@@ -4544,17 +4612,7 @@ modify_cache_cluster(Client, Input)
 -spec modify_cache_cluster(map(), modify_cache_cluster_message(), proplists:proplist()) ->
     {ok, modify_cache_cluster_result(), tuple()} |
     {error, any()} |
-    {error, cache_cluster_not_found_fault(), tuple()} |
-    {error, cache_parameter_group_not_found_fault(), tuple()} |
-    {error, cache_security_group_not_found_fault(), tuple()} |
-    {error, insufficient_cache_cluster_capacity_fault(), tuple()} |
-    {error, invalid_cache_cluster_state_fault(), tuple()} |
-    {error, invalid_cache_security_group_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, node_quota_for_cluster_exceeded_fault(), tuple()} |
-    {error, node_quota_for_customer_exceeded_fault(), tuple()}.
+    {error, modify_cache_cluster_errors(), tuple()}.
 modify_cache_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyCacheCluster">>, Input, Options).
@@ -4566,11 +4624,7 @@ modify_cache_cluster(Client, Input, Options)
 -spec modify_cache_parameter_group(map(), modify_cache_parameter_group_message()) ->
     {ok, cache_parameter_group_name_message(), tuple()} |
     {error, any()} |
-    {error, cache_parameter_group_not_found_fault(), tuple()} |
-    {error, invalid_cache_parameter_group_state_fault(), tuple()} |
-    {error, invalid_global_replication_group_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, modify_cache_parameter_group_errors(), tuple()}.
 modify_cache_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_cache_parameter_group(Client, Input, []).
@@ -4578,11 +4632,7 @@ modify_cache_parameter_group(Client, Input)
 -spec modify_cache_parameter_group(map(), modify_cache_parameter_group_message(), proplists:proplist()) ->
     {ok, cache_parameter_group_name_message(), tuple()} |
     {error, any()} |
-    {error, cache_parameter_group_not_found_fault(), tuple()} |
-    {error, invalid_cache_parameter_group_state_fault(), tuple()} |
-    {error, invalid_global_replication_group_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, modify_cache_parameter_group_errors(), tuple()}.
 modify_cache_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyCacheParameterGroup">>, Input, Options).
@@ -4591,11 +4641,7 @@ modify_cache_parameter_group(Client, Input, Options)
 -spec modify_cache_subnet_group(map(), modify_cache_subnet_group_message()) ->
     {ok, modify_cache_subnet_group_result(), tuple()} |
     {error, any()} |
-    {error, cache_subnet_group_not_found_fault(), tuple()} |
-    {error, cache_subnet_quota_exceeded_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, subnet_in_use(), tuple()} |
-    {error, subnet_not_allowed_fault(), tuple()}.
+    {error, modify_cache_subnet_group_errors(), tuple()}.
 modify_cache_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_cache_subnet_group(Client, Input, []).
@@ -4603,11 +4649,7 @@ modify_cache_subnet_group(Client, Input)
 -spec modify_cache_subnet_group(map(), modify_cache_subnet_group_message(), proplists:proplist()) ->
     {ok, modify_cache_subnet_group_result(), tuple()} |
     {error, any()} |
-    {error, cache_subnet_group_not_found_fault(), tuple()} |
-    {error, cache_subnet_quota_exceeded_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, subnet_in_use(), tuple()} |
-    {error, subnet_not_allowed_fault(), tuple()}.
+    {error, modify_cache_subnet_group_errors(), tuple()}.
 modify_cache_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyCacheSubnetGroup">>, Input, Options).
@@ -4616,9 +4658,7 @@ modify_cache_subnet_group(Client, Input, Options)
 -spec modify_global_replication_group(map(), modify_global_replication_group_message()) ->
     {ok, modify_global_replication_group_result(), tuple()} |
     {error, any()} |
-    {error, global_replication_group_not_found_fault(), tuple()} |
-    {error, invalid_global_replication_group_state_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, modify_global_replication_group_errors(), tuple()}.
 modify_global_replication_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_global_replication_group(Client, Input, []).
@@ -4626,9 +4666,7 @@ modify_global_replication_group(Client, Input)
 -spec modify_global_replication_group(map(), modify_global_replication_group_message(), proplists:proplist()) ->
     {ok, modify_global_replication_group_result(), tuple()} |
     {error, any()} |
-    {error, global_replication_group_not_found_fault(), tuple()} |
-    {error, invalid_global_replication_group_state_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, modify_global_replication_group_errors(), tuple()}.
 modify_global_replication_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyGlobalReplicationGroup">>, Input, Options).
@@ -4651,22 +4689,7 @@ modify_global_replication_group(Client, Input, Options)
 -spec modify_replication_group(map(), modify_replication_group_message()) ->
     {ok, modify_replication_group_result(), tuple()} |
     {error, any()} |
-    {error, cache_cluster_not_found_fault(), tuple()} |
-    {error, cache_parameter_group_not_found_fault(), tuple()} |
-    {error, cache_security_group_not_found_fault(), tuple()} |
-    {error, insufficient_cache_cluster_capacity_fault(), tuple()} |
-    {error, invalid_cache_cluster_state_fault(), tuple()} |
-    {error, invalid_cache_security_group_state_fault(), tuple()} |
-    {error, invalid_kms_key_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_replication_group_state_fault(), tuple()} |
-    {error, invalid_user_group_state_fault(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, node_quota_for_cluster_exceeded_fault(), tuple()} |
-    {error, node_quota_for_customer_exceeded_fault(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()} |
-    {error, user_group_not_found_fault(), tuple()}.
+    {error, modify_replication_group_errors(), tuple()}.
 modify_replication_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_replication_group(Client, Input, []).
@@ -4674,22 +4697,7 @@ modify_replication_group(Client, Input)
 -spec modify_replication_group(map(), modify_replication_group_message(), proplists:proplist()) ->
     {ok, modify_replication_group_result(), tuple()} |
     {error, any()} |
-    {error, cache_cluster_not_found_fault(), tuple()} |
-    {error, cache_parameter_group_not_found_fault(), tuple()} |
-    {error, cache_security_group_not_found_fault(), tuple()} |
-    {error, insufficient_cache_cluster_capacity_fault(), tuple()} |
-    {error, invalid_cache_cluster_state_fault(), tuple()} |
-    {error, invalid_cache_security_group_state_fault(), tuple()} |
-    {error, invalid_kms_key_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_replication_group_state_fault(), tuple()} |
-    {error, invalid_user_group_state_fault(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, node_quota_for_cluster_exceeded_fault(), tuple()} |
-    {error, node_quota_for_customer_exceeded_fault(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()} |
-    {error, user_group_not_found_fault(), tuple()}.
+    {error, modify_replication_group_errors(), tuple()}.
 modify_replication_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyReplicationGroup">>, Input, Options).
@@ -4700,16 +4708,7 @@ modify_replication_group(Client, Input, Options)
 -spec modify_replication_group_shard_configuration(map(), modify_replication_group_shard_configuration_message()) ->
     {ok, modify_replication_group_shard_configuration_result(), tuple()} |
     {error, any()} |
-    {error, insufficient_cache_cluster_capacity_fault(), tuple()} |
-    {error, invalid_cache_cluster_state_fault(), tuple()} |
-    {error, invalid_kms_key_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_replication_group_state_fault(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, node_groups_per_replication_group_quota_exceeded_fault(), tuple()} |
-    {error, node_quota_for_customer_exceeded_fault(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()}.
+    {error, modify_replication_group_shard_configuration_errors(), tuple()}.
 modify_replication_group_shard_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_replication_group_shard_configuration(Client, Input, []).
@@ -4717,16 +4716,7 @@ modify_replication_group_shard_configuration(Client, Input)
 -spec modify_replication_group_shard_configuration(map(), modify_replication_group_shard_configuration_message(), proplists:proplist()) ->
     {ok, modify_replication_group_shard_configuration_result(), tuple()} |
     {error, any()} |
-    {error, insufficient_cache_cluster_capacity_fault(), tuple()} |
-    {error, invalid_cache_cluster_state_fault(), tuple()} |
-    {error, invalid_kms_key_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_replication_group_state_fault(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, node_groups_per_replication_group_quota_exceeded_fault(), tuple()} |
-    {error, node_quota_for_customer_exceeded_fault(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()}.
+    {error, modify_replication_group_shard_configuration_errors(), tuple()}.
 modify_replication_group_shard_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyReplicationGroupShardConfiguration">>, Input, Options).
@@ -4735,14 +4725,7 @@ modify_replication_group_shard_configuration(Client, Input, Options)
 -spec modify_serverless_cache(map(), modify_serverless_cache_request()) ->
     {ok, modify_serverless_cache_response(), tuple()} |
     {error, any()} |
-    {error, invalid_credentials_exception(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_serverless_cache_state_fault(), tuple()} |
-    {error, invalid_user_group_state_fault(), tuple()} |
-    {error, serverless_cache_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, user_group_not_found_fault(), tuple()}.
+    {error, modify_serverless_cache_errors(), tuple()}.
 modify_serverless_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_serverless_cache(Client, Input, []).
@@ -4750,14 +4733,7 @@ modify_serverless_cache(Client, Input)
 -spec modify_serverless_cache(map(), modify_serverless_cache_request(), proplists:proplist()) ->
     {ok, modify_serverless_cache_response(), tuple()} |
     {error, any()} |
-    {error, invalid_credentials_exception(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_serverless_cache_state_fault(), tuple()} |
-    {error, invalid_user_group_state_fault(), tuple()} |
-    {error, serverless_cache_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, user_group_not_found_fault(), tuple()}.
+    {error, modify_serverless_cache_errors(), tuple()}.
 modify_serverless_cache(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyServerlessCache">>, Input, Options).
@@ -4766,11 +4742,7 @@ modify_serverless_cache(Client, Input, Options)
 -spec modify_user(map(), modify_user_message()) ->
     {ok, user(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_user_state_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, modify_user_errors(), tuple()}.
 modify_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_user(Client, Input, []).
@@ -4778,11 +4750,7 @@ modify_user(Client, Input)
 -spec modify_user(map(), modify_user_message(), proplists:proplist()) ->
     {ok, user(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_user_state_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, modify_user_errors(), tuple()}.
 modify_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyUser">>, Input, Options).
@@ -4791,14 +4759,7 @@ modify_user(Client, Input, Options)
 -spec modify_user_group(map(), modify_user_group_message()) ->
     {ok, user_group(), tuple()} |
     {error, any()} |
-    {error, default_user_required(), tuple()} |
-    {error, duplicate_user_name_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_user_group_state_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, user_group_not_found_fault(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, modify_user_group_errors(), tuple()}.
 modify_user_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_user_group(Client, Input, []).
@@ -4806,14 +4767,7 @@ modify_user_group(Client, Input)
 -spec modify_user_group(map(), modify_user_group_message(), proplists:proplist()) ->
     {ok, user_group(), tuple()} |
     {error, any()} |
-    {error, default_user_required(), tuple()} |
-    {error, duplicate_user_name_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_user_group_state_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, user_group_not_found_fault(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, modify_user_group_errors(), tuple()}.
 modify_user_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyUserGroup">>, Input, Options).
@@ -4831,12 +4785,7 @@ modify_user_group(Client, Input, Options)
 -spec purchase_reserved_cache_nodes_offering(map(), purchase_reserved_cache_nodes_offering_message()) ->
     {ok, purchase_reserved_cache_nodes_offering_result(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, reserved_cache_node_already_exists_fault(), tuple()} |
-    {error, reserved_cache_node_quota_exceeded_fault(), tuple()} |
-    {error, reserved_cache_nodes_offering_not_found_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()}.
+    {error, purchase_reserved_cache_nodes_offering_errors(), tuple()}.
 purchase_reserved_cache_nodes_offering(Client, Input)
   when is_map(Client), is_map(Input) ->
     purchase_reserved_cache_nodes_offering(Client, Input, []).
@@ -4844,12 +4793,7 @@ purchase_reserved_cache_nodes_offering(Client, Input)
 -spec purchase_reserved_cache_nodes_offering(map(), purchase_reserved_cache_nodes_offering_message(), proplists:proplist()) ->
     {ok, purchase_reserved_cache_nodes_offering_result(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, reserved_cache_node_already_exists_fault(), tuple()} |
-    {error, reserved_cache_node_quota_exceeded_fault(), tuple()} |
-    {error, reserved_cache_nodes_offering_not_found_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()}.
+    {error, purchase_reserved_cache_nodes_offering_errors(), tuple()}.
 purchase_reserved_cache_nodes_offering(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PurchaseReservedCacheNodesOffering">>, Input, Options).
@@ -4860,9 +4804,7 @@ purchase_reserved_cache_nodes_offering(Client, Input, Options)
 -spec rebalance_slots_in_global_replication_group(map(), rebalance_slots_in_global_replication_group_message()) ->
     {ok, rebalance_slots_in_global_replication_group_result(), tuple()} |
     {error, any()} |
-    {error, global_replication_group_not_found_fault(), tuple()} |
-    {error, invalid_global_replication_group_state_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, rebalance_slots_in_global_replication_group_errors(), tuple()}.
 rebalance_slots_in_global_replication_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     rebalance_slots_in_global_replication_group(Client, Input, []).
@@ -4870,9 +4812,7 @@ rebalance_slots_in_global_replication_group(Client, Input)
 -spec rebalance_slots_in_global_replication_group(map(), rebalance_slots_in_global_replication_group_message(), proplists:proplist()) ->
     {ok, rebalance_slots_in_global_replication_group_result(), tuple()} |
     {error, any()} |
-    {error, global_replication_group_not_found_fault(), tuple()} |
-    {error, invalid_global_replication_group_state_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, rebalance_slots_in_global_replication_group_errors(), tuple()}.
 rebalance_slots_in_global_replication_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RebalanceSlotsInGlobalReplicationGroup">>, Input, Options).
@@ -4907,8 +4847,7 @@ rebalance_slots_in_global_replication_group(Client, Input, Options)
 -spec reboot_cache_cluster(map(), reboot_cache_cluster_message()) ->
     {ok, reboot_cache_cluster_result(), tuple()} |
     {error, any()} |
-    {error, cache_cluster_not_found_fault(), tuple()} |
-    {error, invalid_cache_cluster_state_fault(), tuple()}.
+    {error, reboot_cache_cluster_errors(), tuple()}.
 reboot_cache_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_cache_cluster(Client, Input, []).
@@ -4916,8 +4855,7 @@ reboot_cache_cluster(Client, Input)
 -spec reboot_cache_cluster(map(), reboot_cache_cluster_message(), proplists:proplist()) ->
     {ok, reboot_cache_cluster_result(), tuple()} |
     {error, any()} |
-    {error, cache_cluster_not_found_fault(), tuple()} |
-    {error, invalid_cache_cluster_state_fault(), tuple()}.
+    {error, reboot_cache_cluster_errors(), tuple()}.
 reboot_cache_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RebootCacheCluster">>, Input, Options).
@@ -4937,22 +4875,7 @@ reboot_cache_cluster(Client, Input, Options)
 -spec remove_tags_from_resource(map(), remove_tags_from_resource_message()) ->
     {ok, tag_list_message(), tuple()} |
     {error, any()} |
-    {error, cache_cluster_not_found_fault(), tuple()} |
-    {error, cache_parameter_group_not_found_fault(), tuple()} |
-    {error, cache_security_group_not_found_fault(), tuple()} |
-    {error, cache_subnet_group_not_found_fault(), tuple()} |
-    {error, invalid_arn_fault(), tuple()} |
-    {error, invalid_replication_group_state_fault(), tuple()} |
-    {error, invalid_serverless_cache_snapshot_state_fault(), tuple()} |
-    {error, invalid_serverless_cache_state_fault(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()} |
-    {error, reserved_cache_node_not_found_fault(), tuple()} |
-    {error, serverless_cache_not_found_fault(), tuple()} |
-    {error, serverless_cache_snapshot_not_found_fault(), tuple()} |
-    {error, snapshot_not_found_fault(), tuple()} |
-    {error, tag_not_found_fault(), tuple()} |
-    {error, user_group_not_found_fault(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, remove_tags_from_resource_errors(), tuple()}.
 remove_tags_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_resource(Client, Input, []).
@@ -4960,22 +4883,7 @@ remove_tags_from_resource(Client, Input)
 -spec remove_tags_from_resource(map(), remove_tags_from_resource_message(), proplists:proplist()) ->
     {ok, tag_list_message(), tuple()} |
     {error, any()} |
-    {error, cache_cluster_not_found_fault(), tuple()} |
-    {error, cache_parameter_group_not_found_fault(), tuple()} |
-    {error, cache_security_group_not_found_fault(), tuple()} |
-    {error, cache_subnet_group_not_found_fault(), tuple()} |
-    {error, invalid_arn_fault(), tuple()} |
-    {error, invalid_replication_group_state_fault(), tuple()} |
-    {error, invalid_serverless_cache_snapshot_state_fault(), tuple()} |
-    {error, invalid_serverless_cache_state_fault(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()} |
-    {error, reserved_cache_node_not_found_fault(), tuple()} |
-    {error, serverless_cache_not_found_fault(), tuple()} |
-    {error, serverless_cache_snapshot_not_found_fault(), tuple()} |
-    {error, snapshot_not_found_fault(), tuple()} |
-    {error, tag_not_found_fault(), tuple()} |
-    {error, user_group_not_found_fault(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, remove_tags_from_resource_errors(), tuple()}.
 remove_tags_from_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTagsFromResource">>, Input, Options).
@@ -4992,11 +4900,7 @@ remove_tags_from_resource(Client, Input, Options)
 -spec reset_cache_parameter_group(map(), reset_cache_parameter_group_message()) ->
     {ok, cache_parameter_group_name_message(), tuple()} |
     {error, any()} |
-    {error, cache_parameter_group_not_found_fault(), tuple()} |
-    {error, invalid_cache_parameter_group_state_fault(), tuple()} |
-    {error, invalid_global_replication_group_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, reset_cache_parameter_group_errors(), tuple()}.
 reset_cache_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_cache_parameter_group(Client, Input, []).
@@ -5004,11 +4908,7 @@ reset_cache_parameter_group(Client, Input)
 -spec reset_cache_parameter_group(map(), reset_cache_parameter_group_message(), proplists:proplist()) ->
     {ok, cache_parameter_group_name_message(), tuple()} |
     {error, any()} |
-    {error, cache_parameter_group_not_found_fault(), tuple()} |
-    {error, invalid_cache_parameter_group_state_fault(), tuple()} |
-    {error, invalid_global_replication_group_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, reset_cache_parameter_group_errors(), tuple()}.
 reset_cache_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResetCacheParameterGroup">>, Input, Options).
@@ -5020,11 +4920,7 @@ reset_cache_parameter_group(Client, Input, Options)
 -spec revoke_cache_security_group_ingress(map(), revoke_cache_security_group_ingress_message()) ->
     {ok, revoke_cache_security_group_ingress_result(), tuple()} |
     {error, any()} |
-    {error, authorization_not_found_fault(), tuple()} |
-    {error, cache_security_group_not_found_fault(), tuple()} |
-    {error, invalid_cache_security_group_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, revoke_cache_security_group_ingress_errors(), tuple()}.
 revoke_cache_security_group_ingress(Client, Input)
   when is_map(Client), is_map(Input) ->
     revoke_cache_security_group_ingress(Client, Input, []).
@@ -5032,11 +4928,7 @@ revoke_cache_security_group_ingress(Client, Input)
 -spec revoke_cache_security_group_ingress(map(), revoke_cache_security_group_ingress_message(), proplists:proplist()) ->
     {ok, revoke_cache_security_group_ingress_result(), tuple()} |
     {error, any()} |
-    {error, authorization_not_found_fault(), tuple()} |
-    {error, cache_security_group_not_found_fault(), tuple()} |
-    {error, invalid_cache_security_group_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, revoke_cache_security_group_ingress_errors(), tuple()}.
 revoke_cache_security_group_ingress(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RevokeCacheSecurityGroupIngress">>, Input, Options).
@@ -5045,10 +4937,7 @@ revoke_cache_security_group_ingress(Client, Input, Options)
 -spec start_migration(map(), start_migration_message()) ->
     {ok, start_migration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_replication_group_state_fault(), tuple()} |
-    {error, replication_group_already_under_migration_fault(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()}.
+    {error, start_migration_errors(), tuple()}.
 start_migration(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_migration(Client, Input, []).
@@ -5056,10 +4945,7 @@ start_migration(Client, Input)
 -spec start_migration(map(), start_migration_message(), proplists:proplist()) ->
     {ok, start_migration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_replication_group_state_fault(), tuple()} |
-    {error, replication_group_already_under_migration_fault(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()}.
+    {error, start_migration_errors(), tuple()}.
 start_migration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMigration">>, Input, Options).
@@ -5141,15 +5027,7 @@ start_migration(Client, Input, Options)
 -spec test_failover(map(), test_failover_message()) ->
     {ok, test_failover_result(), tuple()} |
     {error, any()} |
-    {error, api_call_rate_for_customer_exceeded_fault(), tuple()} |
-    {error, invalid_cache_cluster_state_fault(), tuple()} |
-    {error, invalid_kms_key_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_replication_group_state_fault(), tuple()} |
-    {error, node_group_not_found_fault(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()} |
-    {error, test_failover_not_available_fault(), tuple()}.
+    {error, test_failover_errors(), tuple()}.
 test_failover(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_failover(Client, Input, []).
@@ -5157,15 +5035,7 @@ test_failover(Client, Input)
 -spec test_failover(map(), test_failover_message(), proplists:proplist()) ->
     {ok, test_failover_result(), tuple()} |
     {error, any()} |
-    {error, api_call_rate_for_customer_exceeded_fault(), tuple()} |
-    {error, invalid_cache_cluster_state_fault(), tuple()} |
-    {error, invalid_kms_key_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_replication_group_state_fault(), tuple()} |
-    {error, node_group_not_found_fault(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()} |
-    {error, test_failover_not_available_fault(), tuple()}.
+    {error, test_failover_errors(), tuple()}.
 test_failover(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TestFailover">>, Input, Options).
@@ -5175,10 +5045,7 @@ test_failover(Client, Input, Options)
 -spec test_migration(map(), test_migration_message()) ->
     {ok, test_migration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_replication_group_state_fault(), tuple()} |
-    {error, replication_group_already_under_migration_fault(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()}.
+    {error, test_migration_errors(), tuple()}.
 test_migration(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_migration(Client, Input, []).
@@ -5186,10 +5053,7 @@ test_migration(Client, Input)
 -spec test_migration(map(), test_migration_message(), proplists:proplist()) ->
     {ok, test_migration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_replication_group_state_fault(), tuple()} |
-    {error, replication_group_already_under_migration_fault(), tuple()} |
-    {error, replication_group_not_found_fault(), tuple()}.
+    {error, test_migration_errors(), tuple()}.
 test_migration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TestMigration">>, Input, Options).

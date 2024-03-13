@@ -216,6 +216,7 @@
 %% }
 -type update_assessment_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% framework_metadata() :: #{
 %%   <<"complianceType">> => string(),
@@ -225,12 +226,14 @@
 %% }
 -type framework_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_assessments_response() :: #{
 %%   <<"assessmentMetadata">> => list(assessment_metadata_item()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_assessments_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_delegations_request() :: #{
@@ -239,17 +242,20 @@
 %% }
 -type get_delegations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_control_response() :: #{
 %%   <<"control">> => control()
 %% }
 -type update_control_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% control_domain_insights() :: #{
@@ -261,12 +267,15 @@
 %%   <<"totalControlsCount">> => integer()
 %% }
 -type control_domain_insights() :: #{binary() => any()}.
+
 %% Example:
 %% get_settings_request() :: #{}
 -type get_settings_request() :: #{}.
+
 %% Example:
 %% get_insights_request() :: #{}
 -type get_insights_request() :: #{}.
+
 
 %% Example:
 %% aws_account() :: #{
@@ -276,6 +285,7 @@
 %% }
 -type aws_account() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_assessment_framework_share_request() :: #{
 %%   <<"action">> := list(any()),
@@ -283,17 +293,21 @@
 %% }
 -type update_assessment_framework_share_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_delete_delegation_by_assessment_response() :: #{
 %%   <<"errors">> => list(batch_delete_delegation_by_assessment_error()())
 %% }
 -type batch_delete_delegation_by_assessment_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_control_response() :: #{}
 -type delete_control_response() :: #{}.
+
 %% Example:
 %% delete_assessment_framework_response() :: #{}
 -type delete_assessment_framework_response() :: #{}.
+
 
 %% Example:
 %% create_assessment_report_response() :: #{
@@ -301,14 +315,17 @@
 %% }
 -type create_assessment_report_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_assessment_response() :: #{
 %%   <<"assessment">> => assessment()
 %% }
 -type create_assessment_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_assessment_framework_request() :: #{}
 -type delete_assessment_framework_request() :: #{}.
+
 
 %% Example:
 %% list_assessment_reports_response() :: #{
@@ -317,12 +334,14 @@
 %% }
 -type list_assessment_reports_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_evidence_by_evidence_folder_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type get_evidence_by_evidence_folder_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_notifications_response() :: #{
@@ -331,14 +350,17 @@
 %% }
 -type list_notifications_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% register_account_response() :: #{
 %%   <<"status">> => list(any())
 %% }
 -type register_account_response() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% assessment_evidence_folder() :: #{
@@ -363,15 +385,18 @@
 %% }
 -type assessment_evidence_folder() :: #{binary() => any()}.
 
+
 %% Example:
 %% register_account_request() :: #{
 %%   <<"delegatedAdminAccount">> => string(),
 %%   <<"kmsKey">> => string()
 %% }
 -type register_account_request() :: #{binary() => any()}.
+
 %% Example:
 %% deregister_account_request() :: #{}
 -type deregister_account_request() :: #{}.
+
 
 %% Example:
 %% assessment_reports_destination() :: #{
@@ -379,6 +404,7 @@
 %%   <<"destinationType">> => list(any())
 %% }
 -type assessment_reports_destination() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_control_insights_by_control_domain_request() :: #{
@@ -388,6 +414,7 @@
 %% }
 -type list_control_insights_by_control_domain_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% control_set() :: #{
 %%   <<"controls">> => list(control()()),
@@ -396,6 +423,7 @@
 %% }
 -type control_set() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_evidence_folders_by_assessment_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -403,17 +431,20 @@
 %% }
 -type get_evidence_folders_by_assessment_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_assessment_framework_control() :: #{
 %%   <<"id">> => string()
 %% }
 -type create_assessment_framework_control() :: #{binary() => any()}.
 
+
 %% Example:
 %% deregistration_policy() :: #{
 %%   <<"deleteResources">> => list(any())
 %% }
 -type deregistration_policy() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_metadata() :: #{
@@ -423,6 +454,7 @@
 %%   <<"name">> => string()
 %% }
 -type service_metadata() :: #{binary() => any()}.
+
 
 %% Example:
 %% assessment_metadata_item() :: #{
@@ -437,6 +469,7 @@
 %% }
 -type assessment_metadata_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_control_mapping_source() :: #{
 %%   <<"sourceDescription">> => string(),
@@ -449,15 +482,18 @@
 %% }
 -type create_control_mapping_source() :: #{binary() => any()}.
 
+
 %% Example:
 %% role() :: #{
 %%   <<"roleArn">> => string(),
 %%   <<"roleType">> => list(any())
 %% }
 -type role() :: #{binary() => any()}.
+
 %% Example:
 %% deregister_organization_admin_account_response() :: #{}
 -type deregister_organization_admin_account_response() :: #{}.
+
 
 %% Example:
 %% update_settings_response() :: #{
@@ -465,12 +501,14 @@
 %% }
 -type update_settings_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_assessment_control_set_status_request() :: #{
 %%   <<"comment">> := string(),
 %%   <<"status">> := list(any())
 %% }
 -type update_assessment_control_set_status_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% control() :: #{
@@ -491,9 +529,11 @@
 %%   <<"type">> => list(any())
 %% }
 -type control() :: #{binary() => any()}.
+
 %% Example:
 %% get_control_request() :: #{}
 -type get_control_request() :: #{}.
+
 
 %% Example:
 %% list_control_insights_by_control_domain_response() :: #{
@@ -502,14 +542,17 @@
 %% }
 -type list_control_insights_by_control_domain_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_assessment_framework_request() :: #{}
 -type get_assessment_framework_request() :: #{}.
+
 
 %% Example:
 %% control_comment() :: #{
@@ -518,6 +561,7 @@
 %%   <<"postedDate">> => non_neg_integer()
 %% }
 -type control_comment() :: #{binary() => any()}.
+
 
 %% Example:
 %% assessment_metadata() :: #{
@@ -535,12 +579,14 @@
 %% }
 -type assessment_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_disassociate_assessment_report_evidence_request() :: #{
 %%   <<"evidenceFolderId">> := string(),
 %%   <<"evidenceIds">> := list(string()())
 %% }
 -type batch_disassociate_assessment_report_evidence_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% assessment_control() :: #{
@@ -555,15 +601,18 @@
 %%   <<"status">> => list(any())
 %% }
 -type assessment_control() :: #{binary() => any()}.
+
 %% Example:
 %% get_insights_by_assessment_request() :: #{}
 -type get_insights_by_assessment_request() :: #{}.
+
 
 %% Example:
 %% update_assessment_status_request() :: #{
 %%   <<"status">> := list(any())
 %% }
 -type update_assessment_status_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% manual_evidence() :: #{
@@ -573,12 +622,14 @@
 %% }
 -type manual_evidence() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_controls_response() :: #{
 %%   <<"controlMetadataList">> => list(control_metadata()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_controls_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_keywords_for_data_source_request() :: #{
@@ -588,11 +639,13 @@
 %% }
 -type list_keywords_for_data_source_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% deregister_organization_admin_account_request() :: #{
 %%   <<"adminAccountId">> => string()
 %% }
 -type deregister_organization_admin_account_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_associate_assessment_report_evidence_request() :: #{
@@ -601,11 +654,13 @@
 %% }
 -type batch_associate_assessment_report_evidence_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_assessment_framework_response() :: #{
 %%   <<"framework">> => framework()
 %% }
 -type create_assessment_framework_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_control_domain_insights_request() :: #{
@@ -613,9 +668,11 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_control_domain_insights_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_evidence_folder_request() :: #{}
 -type get_evidence_folder_request() :: #{}.
+
 
 %% Example:
 %% list_control_domain_insights_by_assessment_response() :: #{
@@ -624,6 +681,7 @@
 %% }
 -type list_control_domain_insights_by_assessment_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_assessment_framework_control_set() :: #{
 %%   <<"controls">> => list(create_assessment_framework_control()()),
@@ -631,11 +689,13 @@
 %% }
 -type create_assessment_framework_control_set() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_control_response() :: #{
 %%   <<"control">> => control()
 %% }
 -type create_control_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_change_logs_response() :: #{
@@ -643,9 +703,11 @@
 %%   <<"nextToken">> => string()
 %% }
 -type get_change_logs_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_organization_admin_account_request() :: #{}
 -type get_organization_admin_account_request() :: #{}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -655,6 +717,7 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_organization_admin_account_response() :: #{
 %%   <<"adminAccountId">> => string(),
@@ -662,11 +725,13 @@
 %% }
 -type get_organization_admin_account_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_create_delegation_by_assessment_request() :: #{
 %%   <<"createDelegationRequests">> := list(create_delegation_request()())
 %% }
 -type batch_create_delegation_by_assessment_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% evidence_insights() :: #{
@@ -676,11 +741,13 @@
 %% }
 -type evidence_insights() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_service() :: #{
 %%   <<"serviceName">> => string()
 %% }
 -type aws_service() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_assessment_framework_request() :: #{
@@ -692,12 +759,14 @@
 %% }
 -type create_assessment_framework_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_assessment_frameworks_response() :: #{
 %%   <<"frameworkMetadataList">> => list(assessment_framework_metadata()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_assessment_frameworks_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% control_metadata() :: #{
@@ -710,6 +779,7 @@
 %% }
 -type control_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_assessment_framework_share_requests_response() :: #{
 %%   <<"assessmentFrameworkShareRequests">> => list(assessment_framework_share_request()()),
@@ -717,11 +787,13 @@
 %% }
 -type list_assessment_framework_share_requests_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_assessment_control_insights_by_control_domain_response() :: #{
@@ -730,11 +802,13 @@
 %% }
 -type list_assessment_control_insights_by_control_domain_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_assessment_control_set_status_response() :: #{
 %%   <<"controlSet">> => assessment_control_set()
 %% }
 -type update_assessment_control_set_status_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_notifications_request() :: #{
@@ -743,11 +817,13 @@
 %% }
 -type list_notifications_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_insights_by_assessment_response() :: #{
 %%   <<"insights">> => insights_by_assessment()
 %% }
 -type get_insights_by_assessment_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_assessment_framework_request() :: #{
@@ -758,6 +834,7 @@
 %% }
 -type update_assessment_framework_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_delete_delegation_by_assessment_error() :: #{
 %%   <<"delegationId">> => string(),
@@ -766,11 +843,13 @@
 %% }
 -type batch_delete_delegation_by_assessment_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_assessment_framework_share_request() :: #{
 %%   <<"requestType">> := list(any())
 %% }
 -type delete_assessment_framework_share_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% default_export_destination() :: #{
@@ -778,12 +857,15 @@
 %%   <<"destinationType">> => list(any())
 %% }
 -type default_export_destination() :: #{binary() => any()}.
+
 %% Example:
 %% delete_assessment_report_request() :: #{}
 -type delete_assessment_report_request() :: #{}.
+
 %% Example:
 %% associate_assessment_report_evidence_folder_response() :: #{}
 -type associate_assessment_report_evidence_folder_response() :: #{}.
+
 
 %% Example:
 %% list_assessment_control_insights_by_control_domain_request() :: #{
@@ -793,6 +875,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_assessment_control_insights_by_control_domain_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% assessment_control_set() :: #{
@@ -807,6 +890,7 @@
 %% }
 -type assessment_control_set() :: #{binary() => any()}.
 
+
 %% Example:
 %% assessment_report_evidence_error() :: #{
 %%   <<"errorCode">> => string(),
@@ -814,6 +898,7 @@
 %%   <<"evidenceId">> => string()
 %% }
 -type assessment_report_evidence_error() :: #{binary() => any()}.
+
 
 %% Example:
 %% settings() :: #{
@@ -828,11 +913,13 @@
 %% }
 -type settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_services_in_scope_response() :: #{
 %%   <<"serviceMetadata">> => list(service_metadata()())
 %% }
 -type get_services_in_scope_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_assessments_request() :: #{
@@ -842,6 +929,7 @@
 %% }
 -type list_assessments_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_control_domain_insights_by_assessment_request() :: #{
 %%   <<"assessmentId">> := string(),
@@ -849,9 +937,11 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_control_domain_insights_by_assessment_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_assessment_response() :: #{}
 -type delete_assessment_response() :: #{}.
+
 
 %% Example:
 %% batch_associate_assessment_report_evidence_response() :: #{
@@ -860,11 +950,13 @@
 %% }
 -type batch_associate_assessment_report_evidence_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_settings_request() :: #{
@@ -878,12 +970,14 @@
 %% }
 -type update_settings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_evidence_folders_by_assessment_control_response() :: #{
 %%   <<"evidenceFolders">> => list(assessment_evidence_folder()()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_evidence_folders_by_assessment_control_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_change_logs_request() :: #{
@@ -894,6 +988,7 @@
 %% }
 -type get_change_logs_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception_field() :: #{
 %%   <<"message">> => string(),
@@ -901,11 +996,13 @@
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
 
+
 %% Example:
 %% register_organization_admin_account_request() :: #{
 %%   <<"adminAccountId">> := string()
 %% }
 -type register_organization_admin_account_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_controls_request() :: #{
@@ -914,6 +1011,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_controls_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% insights() :: #{
@@ -927,6 +1025,7 @@
 %% }
 -type insights() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_assessment_request() :: #{
 %%   <<"assessmentDescription">> => string(),
@@ -936,6 +1035,7 @@
 %%   <<"scope">> := scope()
 %% }
 -type update_assessment_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% assessment() :: #{
@@ -947,11 +1047,13 @@
 %% }
 -type assessment() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_import_evidence_to_assessment_control_request() :: #{
 %%   <<"manualEvidence">> := list(manual_evidence()())
 %% }
 -type batch_import_evidence_to_assessment_control_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_insights_response() :: #{
@@ -959,11 +1061,13 @@
 %% }
 -type get_insights_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_settings_response() :: #{
 %%   <<"settings">> => settings()
 %% }
 -type get_settings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_evidence_folders_by_assessment_response() :: #{
@@ -972,11 +1076,13 @@
 %% }
 -type get_evidence_folders_by_assessment_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_evidence_file_upload_url_request() :: #{
 %%   <<"fileName">> := string()
 %% }
 -type get_evidence_file_upload_url_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_evidence_file_upload_url_response() :: #{
@@ -984,18 +1090,22 @@
 %%   <<"uploadUrl">> => string()
 %% }
 -type get_evidence_file_upload_url_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_assessment_request() :: #{}
 -type get_assessment_request() :: #{}.
+
 
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_assessment_report_evidence_folder_response() :: #{}
 -type disassociate_assessment_report_evidence_folder_response() :: #{}.
+
 
 %% Example:
 %% scope() :: #{
@@ -1004,11 +1114,13 @@
 %% }
 -type scope() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_delete_delegation_by_assessment_request() :: #{
 %%   <<"delegationIds">> := list(string()())
 %% }
 -type batch_delete_delegation_by_assessment_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% framework() :: #{
@@ -1029,11 +1141,13 @@
 %% }
 -type framework() :: #{binary() => any()}.
 
+
 %% Example:
 %% validate_assessment_report_integrity_request() :: #{
 %%   <<"s3RelativePath">> := string()
 %% }
 -type validate_assessment_report_integrity_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_delegations_response() :: #{
@@ -1042,6 +1156,7 @@
 %% }
 -type get_delegations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_assessment_framework_share_requests_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -1049,6 +1164,7 @@
 %%   <<"requestType">> := list(any())
 %% }
 -type list_assessment_framework_share_requests_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% assessment_report_metadata() :: #{
@@ -1063,6 +1179,7 @@
 %% }
 -type assessment_report_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_assessment_framework_control_set() :: #{
 %%   <<"controls">> => list(create_assessment_framework_control()()),
@@ -1071,12 +1188,14 @@
 %% }
 -type update_assessment_framework_control_set() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_assessment_response() :: #{
 %%   <<"assessment">> => assessment(),
 %%   <<"userRole">> => role()
 %% }
 -type get_assessment_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_control_domain_insights_response() :: #{
@@ -1085,11 +1204,13 @@
 %% }
 -type list_control_domain_insights_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% deregister_account_response() :: #{
 %%   <<"status">> => list(any())
 %% }
 -type deregister_account_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% access_denied_exception() :: #{
@@ -1097,17 +1218,20 @@
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_assessment_report_evidence_folder_request() :: #{
 %%   <<"evidenceFolderId">> := string()
 %% }
 -type associate_assessment_report_evidence_folder_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_import_evidence_to_assessment_control_response() :: #{
 %%   <<"errors">> => list(batch_import_evidence_to_assessment_control_error()())
 %% }
 -type batch_import_evidence_to_assessment_control_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% control_insights_metadata_by_assessment_item() :: #{
@@ -1118,9 +1242,11 @@
 %%   <<"name">> => string()
 %% }
 -type control_insights_metadata_by_assessment_item() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% validate_assessment_report_integrity_response() :: #{
@@ -1131,6 +1257,7 @@
 %%   <<"validationErrors">> => list(string()())
 %% }
 -type validate_assessment_report_integrity_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% assessment_framework_metadata() :: #{
@@ -1148,6 +1275,7 @@
 %% }
 -type assessment_framework_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_control_request() :: #{
 %%   <<"actionPlanInstructions">> => string(),
@@ -1158,15 +1286,18 @@
 %%   <<"testingInformation">> => string()
 %% }
 -type update_control_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_assessment_framework_share_response() :: #{}
 -type delete_assessment_framework_share_response() :: #{}.
+
 
 %% Example:
 %% update_assessment_framework_response() :: #{
 %%   <<"framework">> => framework()
 %% }
 -type update_assessment_framework_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_create_delegation_by_assessment_error() :: #{
@@ -1176,6 +1307,7 @@
 %% }
 -type batch_create_delegation_by_assessment_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"fields">> => list(validation_exception_field()()),
@@ -1183,9 +1315,11 @@
 %%   <<"reason">> => list(any())
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% batch_create_delegation_by_assessment_response() :: #{
@@ -1193,6 +1327,7 @@
 %%   <<"errors">> => list(batch_create_delegation_by_assessment_error()())
 %% }
 -type batch_create_delegation_by_assessment_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% evidence_finder_enablement() :: #{
@@ -1202,9 +1337,11 @@
 %%   <<"eventDataStoreArn">> => string()
 %% }
 -type evidence_finder_enablement() :: #{binary() => any()}.
+
 %% Example:
 %% delete_control_request() :: #{}
 -type delete_control_request() :: #{}.
+
 
 %% Example:
 %% url() :: #{
@@ -1212,6 +1349,7 @@
 %%   <<"link">> => string()
 %% }
 -type url() :: #{binary() => any()}.
+
 
 %% Example:
 %% evidence() :: #{
@@ -1233,11 +1371,13 @@
 %% }
 -type evidence() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% assessment_framework_share_request() :: #{
@@ -1259,21 +1399,25 @@
 %% }
 -type assessment_framework_share_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_evidence_by_evidence_folder_response() :: #{
 %%   <<"evidence">> => list(evidence()()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_evidence_by_evidence_folder_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_evidence_request() :: #{}
 -type get_evidence_request() :: #{}.
+
 
 %% Example:
 %% update_assessment_control_response() :: #{
 %%   <<"control">> => assessment_control()
 %% }
 -type update_assessment_control_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% delegation() :: #{
@@ -1291,12 +1435,14 @@
 %% }
 -type delegation() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_keywords_for_data_source_response() :: #{
 %%   <<"keywords">> => list(string()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_keywords_for_data_source_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% register_organization_admin_account_response() :: #{
@@ -1305,11 +1451,13 @@
 %% }
 -type register_organization_admin_account_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_evidence_response() :: #{
 %%   <<"evidence">> => evidence()
 %% }
 -type get_evidence_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% notification() :: #{
@@ -1324,6 +1472,7 @@
 %% }
 -type notification() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_assessment_framework_share_request() :: #{
 %%   <<"comment">> => string(),
@@ -1332,12 +1481,14 @@
 %% }
 -type start_assessment_framework_share_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_assessment_control_request() :: #{
 %%   <<"commentBody">> => string(),
 %%   <<"controlStatus">> => list(any())
 %% }
 -type update_assessment_control_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_assessment_frameworks_request() :: #{
@@ -1347,11 +1498,13 @@
 %% }
 -type list_assessment_frameworks_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_evidence_folder_response() :: #{
 %%   <<"evidenceFolder">> => assessment_evidence_folder()
 %% }
 -type get_evidence_folder_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% disassociate_assessment_report_evidence_folder_request() :: #{
@@ -1359,11 +1512,13 @@
 %% }
 -type disassociate_assessment_report_evidence_folder_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_assessment_framework_share_response() :: #{
 %%   <<"assessmentFrameworkShareRequest">> => assessment_framework_share_request()
 %% }
 -type start_assessment_framework_share_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% assessment_report() :: #{
@@ -1379,14 +1534,17 @@
 %% }
 -type assessment_report() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_control_response() :: #{
 %%   <<"control">> => control()
 %% }
 -type get_control_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_assessment_report_url_request() :: #{}
 -type get_assessment_report_url_request() :: #{}.
+
 
 %% Example:
 %% create_assessment_request() :: #{
@@ -1400,12 +1558,14 @@
 %% }
 -type create_assessment_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_disassociate_assessment_report_evidence_response() :: #{
 %%   <<"errors">> => list(assessment_report_evidence_error()()),
 %%   <<"evidenceIds">> => list(string()())
 %% }
 -type batch_disassociate_assessment_report_evidence_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_control_request() :: #{
@@ -1419,6 +1579,7 @@
 %% }
 -type create_control_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_import_evidence_to_assessment_control_error() :: #{
 %%   <<"errorCode">> => string(),
@@ -1426,6 +1587,7 @@
 %%   <<"manualEvidence">> => manual_evidence()
 %% }
 -type batch_import_evidence_to_assessment_control_error() :: #{binary() => any()}.
+
 
 %% Example:
 %% insights_by_assessment() :: #{
@@ -1438,12 +1600,14 @@
 %% }
 -type insights_by_assessment() :: #{binary() => any()}.
 
+
 %% Example:
 %% source_keyword() :: #{
 %%   <<"keywordInputType">> => list(any()),
 %%   <<"keywordValue">> => string()
 %% }
 -type source_keyword() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_delegation_request() :: #{
@@ -1453,18 +1617,22 @@
 %%   <<"roleType">> => list(any())
 %% }
 -type create_delegation_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_assessment_request() :: #{}
 -type delete_assessment_request() :: #{}.
+
 %% Example:
 %% get_services_in_scope_request() :: #{}
 -type get_services_in_scope_request() :: #{}.
+
 
 %% Example:
 %% update_assessment_status_response() :: #{
 %%   <<"assessment">> => assessment()
 %% }
 -type update_assessment_status_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% change_log() :: #{
@@ -1475,6 +1643,7 @@
 %%   <<"objectType">> => list(any())
 %% }
 -type change_log() :: #{binary() => any()}.
+
 
 %% Example:
 %% control_mapping_source() :: #{
@@ -1489,15 +1658,18 @@
 %% }
 -type control_mapping_source() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_assessment_reports_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_assessment_reports_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_assessment_report_response() :: #{}
 -type delete_assessment_report_response() :: #{}.
+
 
 %% Example:
 %% create_assessment_report_request() :: #{
@@ -1506,9 +1678,11 @@
 %%   <<"queryStatement">> => string()
 %% }
 -type create_assessment_report_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_account_status_request() :: #{}
 -type get_account_status_request() :: #{}.
+
 
 %% Example:
 %% get_assessment_framework_response() :: #{
@@ -1516,12 +1690,14 @@
 %% }
 -type get_assessment_framework_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_evidence_folders_by_assessment_control_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type get_evidence_folders_by_assessment_control_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% assessment_framework() :: #{
@@ -1532,11 +1708,13 @@
 %% }
 -type assessment_framework() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_assessment_framework_share_response() :: #{
 %%   <<"assessmentFrameworkShareRequest">> => assessment_framework_share_request()
 %% }
 -type update_assessment_framework_share_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% delegation_metadata() :: #{
@@ -1550,6 +1728,7 @@
 %% }
 -type delegation_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% control_insights_metadata_item() :: #{
 %%   <<"evidenceInsights">> => evidence_insights(),
@@ -1559,17 +1738,20 @@
 %% }
 -type control_insights_metadata_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_account_status_response() :: #{
 %%   <<"status">> => list(any())
 %% }
 -type get_account_status_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_assessment_report_url_response() :: #{
 %%   <<"preSignedUrl">> => url()
 %% }
 -type get_assessment_report_url_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource() :: #{
@@ -1578,6 +1760,365 @@
 %%   <<"value">> => string()
 %% }
 -type resource() :: #{binary() => any()}.
+
+-type associate_assessment_report_evidence_folder_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type batch_associate_assessment_report_evidence_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type batch_create_delegation_by_assessment_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type batch_delete_delegation_by_assessment_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type batch_disassociate_assessment_report_evidence_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type batch_import_evidence_to_assessment_control_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_assessment_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type create_assessment_framework_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type create_assessment_report_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_control_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type delete_assessment_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_assessment_framework_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_assessment_framework_share_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_assessment_report_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_control_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type deregister_account_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type deregister_organization_admin_account_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type disassociate_assessment_report_evidence_folder_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_account_status_errors() ::
+    internal_server_exception().
+
+-type get_assessment_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_assessment_framework_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_assessment_report_url_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_change_logs_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_control_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_delegations_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type get_evidence_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_evidence_by_evidence_folder_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_evidence_file_upload_url_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type get_evidence_folder_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_evidence_folders_by_assessment_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_evidence_folders_by_assessment_control_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_insights_errors() ::
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type get_insights_by_assessment_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_organization_admin_account_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_services_in_scope_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type get_settings_errors() ::
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_assessment_control_insights_by_control_domain_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_assessment_framework_share_requests_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_assessment_frameworks_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_assessment_reports_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_assessments_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_control_domain_insights_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_control_domain_insights_by_assessment_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_control_insights_by_control_domain_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_controls_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_keywords_for_data_source_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_notifications_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type register_account_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type register_organization_admin_account_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type start_assessment_framework_share_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_assessment_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_assessment_control_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_assessment_control_set_status_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_assessment_framework_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_assessment_framework_share_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type update_assessment_status_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type update_control_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_settings_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type validate_assessment_report_integrity_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -1589,20 +2130,14 @@
 -spec associate_assessment_report_evidence_folder(map(), binary() | list(), associate_assessment_report_evidence_folder_request()) ->
     {ok, associate_assessment_report_evidence_folder_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_assessment_report_evidence_folder_errors(), tuple()}.
 associate_assessment_report_evidence_folder(Client, AssessmentId, Input) ->
     associate_assessment_report_evidence_folder(Client, AssessmentId, Input, []).
 
 -spec associate_assessment_report_evidence_folder(map(), binary() | list(), associate_assessment_report_evidence_folder_request(), proplists:proplist()) ->
     {ok, associate_assessment_report_evidence_folder_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_assessment_report_evidence_folder_errors(), tuple()}.
 associate_assessment_report_evidence_folder(Client, AssessmentId, Input0, Options0) ->
     Method = put,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/associateToAssessmentReport"],
@@ -1631,20 +2166,14 @@ associate_assessment_report_evidence_folder(Client, AssessmentId, Input0, Option
 -spec batch_associate_assessment_report_evidence(map(), binary() | list(), batch_associate_assessment_report_evidence_request()) ->
     {ok, batch_associate_assessment_report_evidence_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_associate_assessment_report_evidence_errors(), tuple()}.
 batch_associate_assessment_report_evidence(Client, AssessmentId, Input) ->
     batch_associate_assessment_report_evidence(Client, AssessmentId, Input, []).
 
 -spec batch_associate_assessment_report_evidence(map(), binary() | list(), batch_associate_assessment_report_evidence_request(), proplists:proplist()) ->
     {ok, batch_associate_assessment_report_evidence_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_associate_assessment_report_evidence_errors(), tuple()}.
 batch_associate_assessment_report_evidence(Client, AssessmentId, Input0, Options0) ->
     Method = put,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/batchAssociateToAssessmentReport"],
@@ -1671,20 +2200,14 @@ batch_associate_assessment_report_evidence(Client, AssessmentId, Input0, Options
 -spec batch_create_delegation_by_assessment(map(), binary() | list(), batch_create_delegation_by_assessment_request()) ->
     {ok, batch_create_delegation_by_assessment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_create_delegation_by_assessment_errors(), tuple()}.
 batch_create_delegation_by_assessment(Client, AssessmentId, Input) ->
     batch_create_delegation_by_assessment(Client, AssessmentId, Input, []).
 
 -spec batch_create_delegation_by_assessment(map(), binary() | list(), batch_create_delegation_by_assessment_request(), proplists:proplist()) ->
     {ok, batch_create_delegation_by_assessment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_create_delegation_by_assessment_errors(), tuple()}.
 batch_create_delegation_by_assessment(Client, AssessmentId, Input0, Options0) ->
     Method = post,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/delegations"],
@@ -1711,20 +2234,14 @@ batch_create_delegation_by_assessment(Client, AssessmentId, Input0, Options0) ->
 -spec batch_delete_delegation_by_assessment(map(), binary() | list(), batch_delete_delegation_by_assessment_request()) ->
     {ok, batch_delete_delegation_by_assessment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_delete_delegation_by_assessment_errors(), tuple()}.
 batch_delete_delegation_by_assessment(Client, AssessmentId, Input) ->
     batch_delete_delegation_by_assessment(Client, AssessmentId, Input, []).
 
 -spec batch_delete_delegation_by_assessment(map(), binary() | list(), batch_delete_delegation_by_assessment_request(), proplists:proplist()) ->
     {ok, batch_delete_delegation_by_assessment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_delete_delegation_by_assessment_errors(), tuple()}.
 batch_delete_delegation_by_assessment(Client, AssessmentId, Input0, Options0) ->
     Method = put,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/delegations"],
@@ -1752,20 +2269,14 @@ batch_delete_delegation_by_assessment(Client, AssessmentId, Input0, Options0) ->
 -spec batch_disassociate_assessment_report_evidence(map(), binary() | list(), batch_disassociate_assessment_report_evidence_request()) ->
     {ok, batch_disassociate_assessment_report_evidence_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_disassociate_assessment_report_evidence_errors(), tuple()}.
 batch_disassociate_assessment_report_evidence(Client, AssessmentId, Input) ->
     batch_disassociate_assessment_report_evidence(Client, AssessmentId, Input, []).
 
 -spec batch_disassociate_assessment_report_evidence(map(), binary() | list(), batch_disassociate_assessment_report_evidence_request(), proplists:proplist()) ->
     {ok, batch_disassociate_assessment_report_evidence_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_disassociate_assessment_report_evidence_errors(), tuple()}.
 batch_disassociate_assessment_report_evidence(Client, AssessmentId, Input0, Options0) ->
     Method = put,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/batchDisassociateFromAssessmentReport"],
@@ -1818,22 +2329,14 @@ batch_disassociate_assessment_report_evidence(Client, AssessmentId, Input0, Opti
 -spec batch_import_evidence_to_assessment_control(map(), binary() | list(), binary() | list(), binary() | list(), batch_import_evidence_to_assessment_control_request()) ->
     {ok, batch_import_evidence_to_assessment_control_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_import_evidence_to_assessment_control_errors(), tuple()}.
 batch_import_evidence_to_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input) ->
     batch_import_evidence_to_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input, []).
 
 -spec batch_import_evidence_to_assessment_control(map(), binary() | list(), binary() | list(), binary() | list(), batch_import_evidence_to_assessment_control_request(), proplists:proplist()) ->
     {ok, batch_import_evidence_to_assessment_control_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_import_evidence_to_assessment_control_errors(), tuple()}.
 batch_import_evidence_to_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input0, Options0) ->
     Method = post,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/controlSets/", aws_util:encode_uri(ControlSetId), "/controls/", aws_util:encode_uri(ControlId), "/evidence"],
@@ -1860,22 +2363,14 @@ batch_import_evidence_to_assessment_control(Client, AssessmentId, ControlId, Con
 -spec create_assessment(map(), create_assessment_request()) ->
     {ok, create_assessment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_assessment_errors(), tuple()}.
 create_assessment(Client, Input) ->
     create_assessment(Client, Input, []).
 
 -spec create_assessment(map(), create_assessment_request(), proplists:proplist()) ->
     {ok, create_assessment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_assessment_errors(), tuple()}.
 create_assessment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/assessments"],
@@ -1902,22 +2397,14 @@ create_assessment(Client, Input0, Options0) ->
 -spec create_assessment_framework(map(), create_assessment_framework_request()) ->
     {ok, create_assessment_framework_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_assessment_framework_errors(), tuple()}.
 create_assessment_framework(Client, Input) ->
     create_assessment_framework(Client, Input, []).
 
 -spec create_assessment_framework(map(), create_assessment_framework_request(), proplists:proplist()) ->
     {ok, create_assessment_framework_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_assessment_framework_errors(), tuple()}.
 create_assessment_framework(Client, Input0, Options0) ->
     Method = post,
     Path = ["/assessmentFrameworks"],
@@ -1944,20 +2431,14 @@ create_assessment_framework(Client, Input0, Options0) ->
 -spec create_assessment_report(map(), binary() | list(), create_assessment_report_request()) ->
     {ok, create_assessment_report_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_assessment_report_errors(), tuple()}.
 create_assessment_report(Client, AssessmentId, Input) ->
     create_assessment_report(Client, AssessmentId, Input, []).
 
 -spec create_assessment_report(map(), binary() | list(), create_assessment_report_request(), proplists:proplist()) ->
     {ok, create_assessment_report_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_assessment_report_errors(), tuple()}.
 create_assessment_report(Client, AssessmentId, Input0, Options0) ->
     Method = post,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/reports"],
@@ -1984,22 +2465,14 @@ create_assessment_report(Client, AssessmentId, Input0, Options0) ->
 -spec create_control(map(), create_control_request()) ->
     {ok, create_control_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_control_errors(), tuple()}.
 create_control(Client, Input) ->
     create_control(Client, Input, []).
 
 -spec create_control(map(), create_control_request(), proplists:proplist()) ->
     {ok, create_control_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_control_errors(), tuple()}.
 create_control(Client, Input0, Options0) ->
     Method = post,
     Path = ["/controls"],
@@ -2026,20 +2499,14 @@ create_control(Client, Input0, Options0) ->
 -spec delete_assessment(map(), binary() | list(), delete_assessment_request()) ->
     {ok, delete_assessment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_assessment_errors(), tuple()}.
 delete_assessment(Client, AssessmentId, Input) ->
     delete_assessment(Client, AssessmentId, Input, []).
 
 -spec delete_assessment(map(), binary() | list(), delete_assessment_request(), proplists:proplist()) ->
     {ok, delete_assessment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_assessment_errors(), tuple()}.
 delete_assessment(Client, AssessmentId, Input0, Options0) ->
     Method = delete,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), ""],
@@ -2066,20 +2533,14 @@ delete_assessment(Client, AssessmentId, Input0, Options0) ->
 -spec delete_assessment_framework(map(), binary() | list(), delete_assessment_framework_request()) ->
     {ok, delete_assessment_framework_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_assessment_framework_errors(), tuple()}.
 delete_assessment_framework(Client, FrameworkId, Input) ->
     delete_assessment_framework(Client, FrameworkId, Input, []).
 
 -spec delete_assessment_framework(map(), binary() | list(), delete_assessment_framework_request(), proplists:proplist()) ->
     {ok, delete_assessment_framework_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_assessment_framework_errors(), tuple()}.
 delete_assessment_framework(Client, FrameworkId, Input0, Options0) ->
     Method = delete,
     Path = ["/assessmentFrameworks/", aws_util:encode_uri(FrameworkId), ""],
@@ -2106,20 +2567,14 @@ delete_assessment_framework(Client, FrameworkId, Input0, Options0) ->
 -spec delete_assessment_framework_share(map(), binary() | list(), delete_assessment_framework_share_request()) ->
     {ok, delete_assessment_framework_share_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_assessment_framework_share_errors(), tuple()}.
 delete_assessment_framework_share(Client, RequestId, Input) ->
     delete_assessment_framework_share(Client, RequestId, Input, []).
 
 -spec delete_assessment_framework_share(map(), binary() | list(), delete_assessment_framework_share_request(), proplists:proplist()) ->
     {ok, delete_assessment_framework_share_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_assessment_framework_share_errors(), tuple()}.
 delete_assessment_framework_share(Client, RequestId, Input0, Options0) ->
     Method = delete,
     Path = ["/assessmentFrameworkShareRequests/", aws_util:encode_uri(RequestId), ""],
@@ -2180,20 +2635,14 @@ delete_assessment_framework_share(Client, RequestId, Input0, Options0) ->
 -spec delete_assessment_report(map(), binary() | list(), binary() | list(), delete_assessment_report_request()) ->
     {ok, delete_assessment_report_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_assessment_report_errors(), tuple()}.
 delete_assessment_report(Client, AssessmentId, AssessmentReportId, Input) ->
     delete_assessment_report(Client, AssessmentId, AssessmentReportId, Input, []).
 
 -spec delete_assessment_report(map(), binary() | list(), binary() | list(), delete_assessment_report_request(), proplists:proplist()) ->
     {ok, delete_assessment_report_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_assessment_report_errors(), tuple()}.
 delete_assessment_report(Client, AssessmentId, AssessmentReportId, Input0, Options0) ->
     Method = delete,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/reports/", aws_util:encode_uri(AssessmentReportId), ""],
@@ -2229,20 +2678,14 @@ delete_assessment_report(Client, AssessmentId, AssessmentReportId, Input0, Optio
 -spec delete_control(map(), binary() | list(), delete_control_request()) ->
     {ok, delete_control_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_control_errors(), tuple()}.
 delete_control(Client, ControlId, Input) ->
     delete_control(Client, ControlId, Input, []).
 
 -spec delete_control(map(), binary() | list(), delete_control_request(), proplists:proplist()) ->
     {ok, delete_control_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_control_errors(), tuple()}.
 delete_control(Client, ControlId, Input0, Options0) ->
     Method = delete,
     Path = ["/controls/", aws_util:encode_uri(ControlId), ""],
@@ -2283,20 +2726,14 @@ delete_control(Client, ControlId, Input0, Options0) ->
 -spec deregister_account(map(), deregister_account_request()) ->
     {ok, deregister_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, deregister_account_errors(), tuple()}.
 deregister_account(Client, Input) ->
     deregister_account(Client, Input, []).
 
 -spec deregister_account(map(), deregister_account_request(), proplists:proplist()) ->
     {ok, deregister_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, deregister_account_errors(), tuple()}.
 deregister_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/account/deregisterAccount"],
@@ -2418,20 +2855,14 @@ deregister_account(Client, Input0, Options0) ->
 -spec deregister_organization_admin_account(map(), deregister_organization_admin_account_request()) ->
     {ok, deregister_organization_admin_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, deregister_organization_admin_account_errors(), tuple()}.
 deregister_organization_admin_account(Client, Input) ->
     deregister_organization_admin_account(Client, Input, []).
 
 -spec deregister_organization_admin_account(map(), deregister_organization_admin_account_request(), proplists:proplist()) ->
     {ok, deregister_organization_admin_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, deregister_organization_admin_account_errors(), tuple()}.
 deregister_organization_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/account/deregisterOrganizationAdminAccount"],
@@ -2459,20 +2890,14 @@ deregister_organization_admin_account(Client, Input0, Options0) ->
 -spec disassociate_assessment_report_evidence_folder(map(), binary() | list(), disassociate_assessment_report_evidence_folder_request()) ->
     {ok, disassociate_assessment_report_evidence_folder_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_assessment_report_evidence_folder_errors(), tuple()}.
 disassociate_assessment_report_evidence_folder(Client, AssessmentId, Input) ->
     disassociate_assessment_report_evidence_folder(Client, AssessmentId, Input, []).
 
 -spec disassociate_assessment_report_evidence_folder(map(), binary() | list(), disassociate_assessment_report_evidence_folder_request(), proplists:proplist()) ->
     {ok, disassociate_assessment_report_evidence_folder_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_assessment_report_evidence_folder_errors(), tuple()}.
 disassociate_assessment_report_evidence_folder(Client, AssessmentId, Input0, Options0) ->
     Method = put,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/disassociateFromAssessmentReport"],
@@ -2499,7 +2924,7 @@ disassociate_assessment_report_evidence_folder(Client, AssessmentId, Input0, Opt
 -spec get_account_status(map()) ->
     {ok, get_account_status_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, get_account_status_errors(), tuple()}.
 get_account_status(Client)
   when is_map(Client) ->
     get_account_status(Client, #{}, #{}).
@@ -2507,7 +2932,7 @@ get_account_status(Client)
 -spec get_account_status(map(), map(), map()) ->
     {ok, get_account_status_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, get_account_status_errors(), tuple()}.
 get_account_status(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_account_status(Client, QueryMap, HeadersMap, []).
@@ -2515,7 +2940,7 @@ get_account_status(Client, QueryMap, HeadersMap)
 -spec get_account_status(map(), map(), map(), proplists:proplist()) ->
     {ok, get_account_status_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, get_account_status_errors(), tuple()}.
 get_account_status(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/account/status"],
@@ -2536,10 +2961,7 @@ get_account_status(Client, QueryMap, HeadersMap, Options0)
 -spec get_assessment(map(), binary() | list()) ->
     {ok, get_assessment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_assessment_errors(), tuple()}.
 get_assessment(Client, AssessmentId)
   when is_map(Client) ->
     get_assessment(Client, AssessmentId, #{}, #{}).
@@ -2547,10 +2969,7 @@ get_assessment(Client, AssessmentId)
 -spec get_assessment(map(), binary() | list(), map(), map()) ->
     {ok, get_assessment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_assessment_errors(), tuple()}.
 get_assessment(Client, AssessmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_assessment(Client, AssessmentId, QueryMap, HeadersMap, []).
@@ -2558,10 +2977,7 @@ get_assessment(Client, AssessmentId, QueryMap, HeadersMap)
 -spec get_assessment(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_assessment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_assessment_errors(), tuple()}.
 get_assessment(Client, AssessmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), ""],
@@ -2582,10 +2998,7 @@ get_assessment(Client, AssessmentId, QueryMap, HeadersMap, Options0)
 -spec get_assessment_framework(map(), binary() | list()) ->
     {ok, get_assessment_framework_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_assessment_framework_errors(), tuple()}.
 get_assessment_framework(Client, FrameworkId)
   when is_map(Client) ->
     get_assessment_framework(Client, FrameworkId, #{}, #{}).
@@ -2593,10 +3006,7 @@ get_assessment_framework(Client, FrameworkId)
 -spec get_assessment_framework(map(), binary() | list(), map(), map()) ->
     {ok, get_assessment_framework_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_assessment_framework_errors(), tuple()}.
 get_assessment_framework(Client, FrameworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_assessment_framework(Client, FrameworkId, QueryMap, HeadersMap, []).
@@ -2604,10 +3014,7 @@ get_assessment_framework(Client, FrameworkId, QueryMap, HeadersMap)
 -spec get_assessment_framework(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_assessment_framework_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_assessment_framework_errors(), tuple()}.
 get_assessment_framework(Client, FrameworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessmentFrameworks/", aws_util:encode_uri(FrameworkId), ""],
@@ -2628,10 +3035,7 @@ get_assessment_framework(Client, FrameworkId, QueryMap, HeadersMap, Options0)
 -spec get_assessment_report_url(map(), binary() | list(), binary() | list()) ->
     {ok, get_assessment_report_url_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_assessment_report_url_errors(), tuple()}.
 get_assessment_report_url(Client, AssessmentId, AssessmentReportId)
   when is_map(Client) ->
     get_assessment_report_url(Client, AssessmentId, AssessmentReportId, #{}, #{}).
@@ -2639,10 +3043,7 @@ get_assessment_report_url(Client, AssessmentId, AssessmentReportId)
 -spec get_assessment_report_url(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_assessment_report_url_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_assessment_report_url_errors(), tuple()}.
 get_assessment_report_url(Client, AssessmentId, AssessmentReportId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_assessment_report_url(Client, AssessmentId, AssessmentReportId, QueryMap, HeadersMap, []).
@@ -2650,10 +3051,7 @@ get_assessment_report_url(Client, AssessmentId, AssessmentReportId, QueryMap, He
 -spec get_assessment_report_url(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_assessment_report_url_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_assessment_report_url_errors(), tuple()}.
 get_assessment_report_url(Client, AssessmentId, AssessmentReportId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/reports/", aws_util:encode_uri(AssessmentReportId), "/url"],
@@ -2674,10 +3072,7 @@ get_assessment_report_url(Client, AssessmentId, AssessmentReportId, QueryMap, He
 -spec get_change_logs(map(), binary() | list()) ->
     {ok, get_change_logs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_change_logs_errors(), tuple()}.
 get_change_logs(Client, AssessmentId)
   when is_map(Client) ->
     get_change_logs(Client, AssessmentId, #{}, #{}).
@@ -2685,10 +3080,7 @@ get_change_logs(Client, AssessmentId)
 -spec get_change_logs(map(), binary() | list(), map(), map()) ->
     {ok, get_change_logs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_change_logs_errors(), tuple()}.
 get_change_logs(Client, AssessmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_change_logs(Client, AssessmentId, QueryMap, HeadersMap, []).
@@ -2696,10 +3088,7 @@ get_change_logs(Client, AssessmentId, QueryMap, HeadersMap)
 -spec get_change_logs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_change_logs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_change_logs_errors(), tuple()}.
 get_change_logs(Client, AssessmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/changelogs"],
@@ -2727,10 +3116,7 @@ get_change_logs(Client, AssessmentId, QueryMap, HeadersMap, Options0)
 -spec get_control(map(), binary() | list()) ->
     {ok, get_control_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_control_errors(), tuple()}.
 get_control(Client, ControlId)
   when is_map(Client) ->
     get_control(Client, ControlId, #{}, #{}).
@@ -2738,10 +3124,7 @@ get_control(Client, ControlId)
 -spec get_control(map(), binary() | list(), map(), map()) ->
     {ok, get_control_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_control_errors(), tuple()}.
 get_control(Client, ControlId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_control(Client, ControlId, QueryMap, HeadersMap, []).
@@ -2749,10 +3132,7 @@ get_control(Client, ControlId, QueryMap, HeadersMap)
 -spec get_control(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_control_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_control_errors(), tuple()}.
 get_control(Client, ControlId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/controls/", aws_util:encode_uri(ControlId), ""],
@@ -2773,9 +3153,7 @@ get_control(Client, ControlId, QueryMap, HeadersMap, Options0)
 -spec get_delegations(map()) ->
     {ok, get_delegations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_delegations_errors(), tuple()}.
 get_delegations(Client)
   when is_map(Client) ->
     get_delegations(Client, #{}, #{}).
@@ -2783,9 +3161,7 @@ get_delegations(Client)
 -spec get_delegations(map(), map(), map()) ->
     {ok, get_delegations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_delegations_errors(), tuple()}.
 get_delegations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_delegations(Client, QueryMap, HeadersMap, []).
@@ -2793,9 +3169,7 @@ get_delegations(Client, QueryMap, HeadersMap)
 -spec get_delegations(map(), map(), map(), proplists:proplist()) ->
     {ok, get_delegations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_delegations_errors(), tuple()}.
 get_delegations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/delegations"],
@@ -2821,10 +3195,7 @@ get_delegations(Client, QueryMap, HeadersMap, Options0)
 -spec get_evidence(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_evidence_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_evidence_errors(), tuple()}.
 get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId)
   when is_map(Client) ->
     get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId, #{}, #{}).
@@ -2832,10 +3203,7 @@ get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId)
 -spec get_evidence(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_evidence_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_evidence_errors(), tuple()}.
 get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId, QueryMap, HeadersMap, []).
@@ -2843,10 +3211,7 @@ get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId, Q
 -spec get_evidence(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_evidence_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_evidence_errors(), tuple()}.
 get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/controlSets/", aws_util:encode_uri(ControlSetId), "/evidenceFolders/", aws_util:encode_uri(EvidenceFolderId), "/evidence/", aws_util:encode_uri(EvidenceId), ""],
@@ -2867,10 +3232,7 @@ get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId, Q
 -spec get_evidence_by_evidence_folder(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_evidence_by_evidence_folder_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_evidence_by_evidence_folder_errors(), tuple()}.
 get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId)
   when is_map(Client) ->
     get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, #{}, #{}).
@@ -2878,10 +3240,7 @@ get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFold
 -spec get_evidence_by_evidence_folder(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_evidence_by_evidence_folder_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_evidence_by_evidence_folder_errors(), tuple()}.
 get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, QueryMap, HeadersMap, []).
@@ -2889,10 +3248,7 @@ get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFold
 -spec get_evidence_by_evidence_folder(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_evidence_by_evidence_folder_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_evidence_by_evidence_folder_errors(), tuple()}.
 get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/controlSets/", aws_util:encode_uri(ControlSetId), "/evidenceFolders/", aws_util:encode_uri(EvidenceFolderId), "/evidence"],
@@ -2941,10 +3297,7 @@ get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFold
 -spec get_evidence_file_upload_url(map(), binary() | list()) ->
     {ok, get_evidence_file_upload_url_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_evidence_file_upload_url_errors(), tuple()}.
 get_evidence_file_upload_url(Client, FileName)
   when is_map(Client) ->
     get_evidence_file_upload_url(Client, FileName, #{}, #{}).
@@ -2952,10 +3305,7 @@ get_evidence_file_upload_url(Client, FileName)
 -spec get_evidence_file_upload_url(map(), binary() | list(), map(), map()) ->
     {ok, get_evidence_file_upload_url_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_evidence_file_upload_url_errors(), tuple()}.
 get_evidence_file_upload_url(Client, FileName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_evidence_file_upload_url(Client, FileName, QueryMap, HeadersMap, []).
@@ -2963,10 +3313,7 @@ get_evidence_file_upload_url(Client, FileName, QueryMap, HeadersMap)
 -spec get_evidence_file_upload_url(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_evidence_file_upload_url_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_evidence_file_upload_url_errors(), tuple()}.
 get_evidence_file_upload_url(Client, FileName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/evidenceFileUploadUrl"],
@@ -2991,10 +3338,7 @@ get_evidence_file_upload_url(Client, FileName, QueryMap, HeadersMap, Options0)
 -spec get_evidence_folder(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_evidence_folder_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_evidence_folder_errors(), tuple()}.
 get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId)
   when is_map(Client) ->
     get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, #{}, #{}).
@@ -3002,10 +3346,7 @@ get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId)
 -spec get_evidence_folder(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_evidence_folder_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_evidence_folder_errors(), tuple()}.
 get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, QueryMap, HeadersMap, []).
@@ -3013,10 +3354,7 @@ get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, QueryM
 -spec get_evidence_folder(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_evidence_folder_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_evidence_folder_errors(), tuple()}.
 get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/controlSets/", aws_util:encode_uri(ControlSetId), "/evidenceFolders/", aws_util:encode_uri(EvidenceFolderId), ""],
@@ -3038,10 +3376,7 @@ get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, QueryM
 -spec get_evidence_folders_by_assessment(map(), binary() | list()) ->
     {ok, get_evidence_folders_by_assessment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_evidence_folders_by_assessment_errors(), tuple()}.
 get_evidence_folders_by_assessment(Client, AssessmentId)
   when is_map(Client) ->
     get_evidence_folders_by_assessment(Client, AssessmentId, #{}, #{}).
@@ -3049,10 +3384,7 @@ get_evidence_folders_by_assessment(Client, AssessmentId)
 -spec get_evidence_folders_by_assessment(map(), binary() | list(), map(), map()) ->
     {ok, get_evidence_folders_by_assessment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_evidence_folders_by_assessment_errors(), tuple()}.
 get_evidence_folders_by_assessment(Client, AssessmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_evidence_folders_by_assessment(Client, AssessmentId, QueryMap, HeadersMap, []).
@@ -3060,10 +3392,7 @@ get_evidence_folders_by_assessment(Client, AssessmentId, QueryMap, HeadersMap)
 -spec get_evidence_folders_by_assessment(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_evidence_folders_by_assessment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_evidence_folders_by_assessment_errors(), tuple()}.
 get_evidence_folders_by_assessment(Client, AssessmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/evidenceFolders"],
@@ -3091,10 +3420,7 @@ get_evidence_folders_by_assessment(Client, AssessmentId, QueryMap, HeadersMap, O
 -spec get_evidence_folders_by_assessment_control(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_evidence_folders_by_assessment_control_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_evidence_folders_by_assessment_control_errors(), tuple()}.
 get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, ControlSetId)
   when is_map(Client) ->
     get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, ControlSetId, #{}, #{}).
@@ -3102,10 +3428,7 @@ get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, Cont
 -spec get_evidence_folders_by_assessment_control(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_evidence_folders_by_assessment_control_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_evidence_folders_by_assessment_control_errors(), tuple()}.
 get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, ControlSetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, ControlSetId, QueryMap, HeadersMap, []).
@@ -3113,10 +3436,7 @@ get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, Cont
 -spec get_evidence_folders_by_assessment_control(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_evidence_folders_by_assessment_control_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_evidence_folders_by_assessment_control_errors(), tuple()}.
 get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, ControlSetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/evidenceFolders-by-assessment-control/", aws_util:encode_uri(ControlSetId), "/", aws_util:encode_uri(ControlId), ""],
@@ -3143,8 +3463,7 @@ get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, Cont
 -spec get_insights(map()) ->
     {ok, get_insights_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, get_insights_errors(), tuple()}.
 get_insights(Client)
   when is_map(Client) ->
     get_insights(Client, #{}, #{}).
@@ -3152,8 +3471,7 @@ get_insights(Client)
 -spec get_insights(map(), map(), map()) ->
     {ok, get_insights_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, get_insights_errors(), tuple()}.
 get_insights(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_insights(Client, QueryMap, HeadersMap, []).
@@ -3161,8 +3479,7 @@ get_insights(Client, QueryMap, HeadersMap)
 -spec get_insights(map(), map(), map(), proplists:proplist()) ->
     {ok, get_insights_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, get_insights_errors(), tuple()}.
 get_insights(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/insights"],
@@ -3183,10 +3500,7 @@ get_insights(Client, QueryMap, HeadersMap, Options0)
 -spec get_insights_by_assessment(map(), binary() | list()) ->
     {ok, get_insights_by_assessment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_insights_by_assessment_errors(), tuple()}.
 get_insights_by_assessment(Client, AssessmentId)
   when is_map(Client) ->
     get_insights_by_assessment(Client, AssessmentId, #{}, #{}).
@@ -3194,10 +3508,7 @@ get_insights_by_assessment(Client, AssessmentId)
 -spec get_insights_by_assessment(map(), binary() | list(), map(), map()) ->
     {ok, get_insights_by_assessment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_insights_by_assessment_errors(), tuple()}.
 get_insights_by_assessment(Client, AssessmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_insights_by_assessment(Client, AssessmentId, QueryMap, HeadersMap, []).
@@ -3205,10 +3516,7 @@ get_insights_by_assessment(Client, AssessmentId, QueryMap, HeadersMap)
 -spec get_insights_by_assessment(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_insights_by_assessment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_insights_by_assessment_errors(), tuple()}.
 get_insights_by_assessment(Client, AssessmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/insights/assessments/", aws_util:encode_uri(AssessmentId), ""],
@@ -3231,10 +3539,7 @@ get_insights_by_assessment(Client, AssessmentId, QueryMap, HeadersMap, Options0)
 -spec get_organization_admin_account(map()) ->
     {ok, get_organization_admin_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_organization_admin_account_errors(), tuple()}.
 get_organization_admin_account(Client)
   when is_map(Client) ->
     get_organization_admin_account(Client, #{}, #{}).
@@ -3242,10 +3547,7 @@ get_organization_admin_account(Client)
 -spec get_organization_admin_account(map(), map(), map()) ->
     {ok, get_organization_admin_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_organization_admin_account_errors(), tuple()}.
 get_organization_admin_account(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_organization_admin_account(Client, QueryMap, HeadersMap, []).
@@ -3253,10 +3555,7 @@ get_organization_admin_account(Client, QueryMap, HeadersMap)
 -spec get_organization_admin_account(map(), map(), map(), proplists:proplist()) ->
     {ok, get_organization_admin_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_organization_admin_account_errors(), tuple()}.
 get_organization_admin_account(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/account/organizationAdminAccount"],
@@ -3285,9 +3584,7 @@ get_organization_admin_account(Client, QueryMap, HeadersMap, Options0)
 -spec get_services_in_scope(map()) ->
     {ok, get_services_in_scope_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_services_in_scope_errors(), tuple()}.
 get_services_in_scope(Client)
   when is_map(Client) ->
     get_services_in_scope(Client, #{}, #{}).
@@ -3295,9 +3592,7 @@ get_services_in_scope(Client)
 -spec get_services_in_scope(map(), map(), map()) ->
     {ok, get_services_in_scope_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_services_in_scope_errors(), tuple()}.
 get_services_in_scope(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_services_in_scope(Client, QueryMap, HeadersMap, []).
@@ -3305,9 +3600,7 @@ get_services_in_scope(Client, QueryMap, HeadersMap)
 -spec get_services_in_scope(map(), map(), map(), proplists:proplist()) ->
     {ok, get_services_in_scope_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_services_in_scope_errors(), tuple()}.
 get_services_in_scope(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/services"],
@@ -3328,8 +3621,7 @@ get_services_in_scope(Client, QueryMap, HeadersMap, Options0)
 -spec get_settings(map(), binary() | list()) ->
     {ok, get_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, get_settings_errors(), tuple()}.
 get_settings(Client, Attribute)
   when is_map(Client) ->
     get_settings(Client, Attribute, #{}, #{}).
@@ -3337,8 +3629,7 @@ get_settings(Client, Attribute)
 -spec get_settings(map(), binary() | list(), map(), map()) ->
     {ok, get_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, get_settings_errors(), tuple()}.
 get_settings(Client, Attribute, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_settings(Client, Attribute, QueryMap, HeadersMap, []).
@@ -3346,8 +3637,7 @@ get_settings(Client, Attribute, QueryMap, HeadersMap)
 -spec get_settings(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, get_settings_errors(), tuple()}.
 get_settings(Client, Attribute, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/settings/", aws_util:encode_uri(Attribute), ""],
@@ -3377,10 +3667,7 @@ get_settings(Client, Attribute, QueryMap, HeadersMap, Options0)
 -spec list_assessment_control_insights_by_control_domain(map(), binary() | list(), binary() | list()) ->
     {ok, list_assessment_control_insights_by_control_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_assessment_control_insights_by_control_domain_errors(), tuple()}.
 list_assessment_control_insights_by_control_domain(Client, AssessmentId, ControlDomainId)
   when is_map(Client) ->
     list_assessment_control_insights_by_control_domain(Client, AssessmentId, ControlDomainId, #{}, #{}).
@@ -3388,10 +3675,7 @@ list_assessment_control_insights_by_control_domain(Client, AssessmentId, Control
 -spec list_assessment_control_insights_by_control_domain(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_assessment_control_insights_by_control_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_assessment_control_insights_by_control_domain_errors(), tuple()}.
 list_assessment_control_insights_by_control_domain(Client, AssessmentId, ControlDomainId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_assessment_control_insights_by_control_domain(Client, AssessmentId, ControlDomainId, QueryMap, HeadersMap, []).
@@ -3399,10 +3683,7 @@ list_assessment_control_insights_by_control_domain(Client, AssessmentId, Control
 -spec list_assessment_control_insights_by_control_domain(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_assessment_control_insights_by_control_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_assessment_control_insights_by_control_domain_errors(), tuple()}.
 list_assessment_control_insights_by_control_domain(Client, AssessmentId, ControlDomainId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/insights/controls-by-assessment"],
@@ -3431,9 +3712,7 @@ list_assessment_control_insights_by_control_domain(Client, AssessmentId, Control
 -spec list_assessment_framework_share_requests(map(), binary() | list()) ->
     {ok, list_assessment_framework_share_requests_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_assessment_framework_share_requests_errors(), tuple()}.
 list_assessment_framework_share_requests(Client, RequestType)
   when is_map(Client) ->
     list_assessment_framework_share_requests(Client, RequestType, #{}, #{}).
@@ -3441,9 +3720,7 @@ list_assessment_framework_share_requests(Client, RequestType)
 -spec list_assessment_framework_share_requests(map(), binary() | list(), map(), map()) ->
     {ok, list_assessment_framework_share_requests_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_assessment_framework_share_requests_errors(), tuple()}.
 list_assessment_framework_share_requests(Client, RequestType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_assessment_framework_share_requests(Client, RequestType, QueryMap, HeadersMap, []).
@@ -3451,9 +3728,7 @@ list_assessment_framework_share_requests(Client, RequestType, QueryMap, HeadersM
 -spec list_assessment_framework_share_requests(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_assessment_framework_share_requests_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_assessment_framework_share_requests_errors(), tuple()}.
 list_assessment_framework_share_requests(Client, RequestType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessmentFrameworkShareRequests"],
@@ -3482,9 +3757,7 @@ list_assessment_framework_share_requests(Client, RequestType, QueryMap, HeadersM
 -spec list_assessment_frameworks(map(), binary() | list()) ->
     {ok, list_assessment_frameworks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_assessment_frameworks_errors(), tuple()}.
 list_assessment_frameworks(Client, FrameworkType)
   when is_map(Client) ->
     list_assessment_frameworks(Client, FrameworkType, #{}, #{}).
@@ -3492,9 +3765,7 @@ list_assessment_frameworks(Client, FrameworkType)
 -spec list_assessment_frameworks(map(), binary() | list(), map(), map()) ->
     {ok, list_assessment_frameworks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_assessment_frameworks_errors(), tuple()}.
 list_assessment_frameworks(Client, FrameworkType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_assessment_frameworks(Client, FrameworkType, QueryMap, HeadersMap, []).
@@ -3502,9 +3773,7 @@ list_assessment_frameworks(Client, FrameworkType, QueryMap, HeadersMap)
 -spec list_assessment_frameworks(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_assessment_frameworks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_assessment_frameworks_errors(), tuple()}.
 list_assessment_frameworks(Client, FrameworkType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessmentFrameworks"],
@@ -3531,9 +3800,7 @@ list_assessment_frameworks(Client, FrameworkType, QueryMap, HeadersMap, Options0
 -spec list_assessment_reports(map()) ->
     {ok, list_assessment_reports_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_assessment_reports_errors(), tuple()}.
 list_assessment_reports(Client)
   when is_map(Client) ->
     list_assessment_reports(Client, #{}, #{}).
@@ -3541,9 +3808,7 @@ list_assessment_reports(Client)
 -spec list_assessment_reports(map(), map(), map()) ->
     {ok, list_assessment_reports_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_assessment_reports_errors(), tuple()}.
 list_assessment_reports(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_assessment_reports(Client, QueryMap, HeadersMap, []).
@@ -3551,9 +3816,7 @@ list_assessment_reports(Client, QueryMap, HeadersMap)
 -spec list_assessment_reports(map(), map(), map(), proplists:proplist()) ->
     {ok, list_assessment_reports_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_assessment_reports_errors(), tuple()}.
 list_assessment_reports(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessmentReports"],
@@ -3579,9 +3842,7 @@ list_assessment_reports(Client, QueryMap, HeadersMap, Options0)
 -spec list_assessments(map()) ->
     {ok, list_assessments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_assessments_errors(), tuple()}.
 list_assessments(Client)
   when is_map(Client) ->
     list_assessments(Client, #{}, #{}).
@@ -3589,9 +3850,7 @@ list_assessments(Client)
 -spec list_assessments(map(), map(), map()) ->
     {ok, list_assessments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_assessments_errors(), tuple()}.
 list_assessments(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_assessments(Client, QueryMap, HeadersMap, []).
@@ -3599,9 +3858,7 @@ list_assessments(Client, QueryMap, HeadersMap)
 -spec list_assessments(map(), map(), map(), proplists:proplist()) ->
     {ok, list_assessments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_assessments_errors(), tuple()}.
 list_assessments(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessments"],
@@ -3637,10 +3894,7 @@ list_assessments(Client, QueryMap, HeadersMap, Options0)
 -spec list_control_domain_insights(map()) ->
     {ok, list_control_domain_insights_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_control_domain_insights_errors(), tuple()}.
 list_control_domain_insights(Client)
   when is_map(Client) ->
     list_control_domain_insights(Client, #{}, #{}).
@@ -3648,10 +3902,7 @@ list_control_domain_insights(Client)
 -spec list_control_domain_insights(map(), map(), map()) ->
     {ok, list_control_domain_insights_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_control_domain_insights_errors(), tuple()}.
 list_control_domain_insights(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_control_domain_insights(Client, QueryMap, HeadersMap, []).
@@ -3659,10 +3910,7 @@ list_control_domain_insights(Client, QueryMap, HeadersMap)
 -spec list_control_domain_insights(map(), map(), map(), proplists:proplist()) ->
     {ok, list_control_domain_insights_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_control_domain_insights_errors(), tuple()}.
 list_control_domain_insights(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/insights/control-domains"],
@@ -3696,10 +3944,7 @@ list_control_domain_insights(Client, QueryMap, HeadersMap, Options0)
 -spec list_control_domain_insights_by_assessment(map(), binary() | list()) ->
     {ok, list_control_domain_insights_by_assessment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_control_domain_insights_by_assessment_errors(), tuple()}.
 list_control_domain_insights_by_assessment(Client, AssessmentId)
   when is_map(Client) ->
     list_control_domain_insights_by_assessment(Client, AssessmentId, #{}, #{}).
@@ -3707,10 +3952,7 @@ list_control_domain_insights_by_assessment(Client, AssessmentId)
 -spec list_control_domain_insights_by_assessment(map(), binary() | list(), map(), map()) ->
     {ok, list_control_domain_insights_by_assessment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_control_domain_insights_by_assessment_errors(), tuple()}.
 list_control_domain_insights_by_assessment(Client, AssessmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_control_domain_insights_by_assessment(Client, AssessmentId, QueryMap, HeadersMap, []).
@@ -3718,10 +3960,7 @@ list_control_domain_insights_by_assessment(Client, AssessmentId, QueryMap, Heade
 -spec list_control_domain_insights_by_assessment(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_control_domain_insights_by_assessment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_control_domain_insights_by_assessment_errors(), tuple()}.
 list_control_domain_insights_by_assessment(Client, AssessmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/insights/control-domains-by-assessment"],
@@ -3758,10 +3997,7 @@ list_control_domain_insights_by_assessment(Client, AssessmentId, QueryMap, Heade
 -spec list_control_insights_by_control_domain(map(), binary() | list()) ->
     {ok, list_control_insights_by_control_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_control_insights_by_control_domain_errors(), tuple()}.
 list_control_insights_by_control_domain(Client, ControlDomainId)
   when is_map(Client) ->
     list_control_insights_by_control_domain(Client, ControlDomainId, #{}, #{}).
@@ -3769,10 +4005,7 @@ list_control_insights_by_control_domain(Client, ControlDomainId)
 -spec list_control_insights_by_control_domain(map(), binary() | list(), map(), map()) ->
     {ok, list_control_insights_by_control_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_control_insights_by_control_domain_errors(), tuple()}.
 list_control_insights_by_control_domain(Client, ControlDomainId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_control_insights_by_control_domain(Client, ControlDomainId, QueryMap, HeadersMap, []).
@@ -3780,10 +4013,7 @@ list_control_insights_by_control_domain(Client, ControlDomainId, QueryMap, Heade
 -spec list_control_insights_by_control_domain(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_control_insights_by_control_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_control_insights_by_control_domain_errors(), tuple()}.
 list_control_insights_by_control_domain(Client, ControlDomainId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/insights/controls"],
@@ -3810,9 +4040,7 @@ list_control_insights_by_control_domain(Client, ControlDomainId, QueryMap, Heade
 -spec list_controls(map(), binary() | list()) ->
     {ok, list_controls_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_controls_errors(), tuple()}.
 list_controls(Client, ControlType)
   when is_map(Client) ->
     list_controls(Client, ControlType, #{}, #{}).
@@ -3820,9 +4048,7 @@ list_controls(Client, ControlType)
 -spec list_controls(map(), binary() | list(), map(), map()) ->
     {ok, list_controls_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_controls_errors(), tuple()}.
 list_controls(Client, ControlType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_controls(Client, ControlType, QueryMap, HeadersMap, []).
@@ -3830,9 +4056,7 @@ list_controls(Client, ControlType, QueryMap, HeadersMap)
 -spec list_controls(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_controls_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_controls_errors(), tuple()}.
 list_controls(Client, ControlType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/controls"],
@@ -3860,9 +4084,7 @@ list_controls(Client, ControlType, QueryMap, HeadersMap, Options0)
 -spec list_keywords_for_data_source(map(), binary() | list()) ->
     {ok, list_keywords_for_data_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_keywords_for_data_source_errors(), tuple()}.
 list_keywords_for_data_source(Client, Source)
   when is_map(Client) ->
     list_keywords_for_data_source(Client, Source, #{}, #{}).
@@ -3870,9 +4092,7 @@ list_keywords_for_data_source(Client, Source)
 -spec list_keywords_for_data_source(map(), binary() | list(), map(), map()) ->
     {ok, list_keywords_for_data_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_keywords_for_data_source_errors(), tuple()}.
 list_keywords_for_data_source(Client, Source, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_keywords_for_data_source(Client, Source, QueryMap, HeadersMap, []).
@@ -3880,9 +4100,7 @@ list_keywords_for_data_source(Client, Source, QueryMap, HeadersMap)
 -spec list_keywords_for_data_source(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_keywords_for_data_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_keywords_for_data_source_errors(), tuple()}.
 list_keywords_for_data_source(Client, Source, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/dataSourceKeywords"],
@@ -3909,9 +4127,7 @@ list_keywords_for_data_source(Client, Source, QueryMap, HeadersMap, Options0)
 -spec list_notifications(map()) ->
     {ok, list_notifications_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_notifications_errors(), tuple()}.
 list_notifications(Client)
   when is_map(Client) ->
     list_notifications(Client, #{}, #{}).
@@ -3919,9 +4135,7 @@ list_notifications(Client)
 -spec list_notifications(map(), map(), map()) ->
     {ok, list_notifications_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_notifications_errors(), tuple()}.
 list_notifications(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_notifications(Client, QueryMap, HeadersMap, []).
@@ -3929,9 +4143,7 @@ list_notifications(Client, QueryMap, HeadersMap)
 -spec list_notifications(map(), map(), map(), proplists:proplist()) ->
     {ok, list_notifications_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_notifications_errors(), tuple()}.
 list_notifications(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/notifications"],
@@ -3957,9 +4169,7 @@ list_notifications(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -3967,9 +4177,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -3977,9 +4185,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -4000,22 +4206,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec register_account(map(), register_account_request()) ->
     {ok, register_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, register_account_errors(), tuple()}.
 register_account(Client, Input) ->
     register_account(Client, Input, []).
 
 -spec register_account(map(), register_account_request(), proplists:proplist()) ->
     {ok, register_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, register_account_errors(), tuple()}.
 register_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/account/registerAccount"],
@@ -4044,20 +4242,14 @@ register_account(Client, Input0, Options0) ->
 -spec register_organization_admin_account(map(), register_organization_admin_account_request()) ->
     {ok, register_organization_admin_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, register_organization_admin_account_errors(), tuple()}.
 register_organization_admin_account(Client, Input) ->
     register_organization_admin_account(Client, Input, []).
 
 -spec register_organization_admin_account(map(), register_organization_admin_account_request(), proplists:proplist()) ->
     {ok, register_organization_admin_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, register_organization_admin_account_errors(), tuple()}.
 register_organization_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/account/registerOrganizationAdminAccount"],
@@ -4137,20 +4329,14 @@ register_organization_admin_account(Client, Input0, Options0) ->
 -spec start_assessment_framework_share(map(), binary() | list(), start_assessment_framework_share_request()) ->
     {ok, start_assessment_framework_share_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_assessment_framework_share_errors(), tuple()}.
 start_assessment_framework_share(Client, FrameworkId, Input) ->
     start_assessment_framework_share(Client, FrameworkId, Input, []).
 
 -spec start_assessment_framework_share(map(), binary() | list(), start_assessment_framework_share_request(), proplists:proplist()) ->
     {ok, start_assessment_framework_share_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_assessment_framework_share_errors(), tuple()}.
 start_assessment_framework_share(Client, FrameworkId, Input0, Options0) ->
     Method = post,
     Path = ["/assessmentFrameworks/", aws_util:encode_uri(FrameworkId), "/shareRequests"],
@@ -4177,18 +4363,14 @@ start_assessment_framework_share(Client, FrameworkId, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -4215,18 +4397,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -4254,20 +4432,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_assessment(map(), binary() | list(), update_assessment_request()) ->
     {ok, update_assessment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_assessment_errors(), tuple()}.
 update_assessment(Client, AssessmentId, Input) ->
     update_assessment(Client, AssessmentId, Input, []).
 
 -spec update_assessment(map(), binary() | list(), update_assessment_request(), proplists:proplist()) ->
     {ok, update_assessment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_assessment_errors(), tuple()}.
 update_assessment(Client, AssessmentId, Input0, Options0) ->
     Method = put,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), ""],
@@ -4294,20 +4466,14 @@ update_assessment(Client, AssessmentId, Input0, Options0) ->
 -spec update_assessment_control(map(), binary() | list(), binary() | list(), binary() | list(), update_assessment_control_request()) ->
     {ok, update_assessment_control_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_assessment_control_errors(), tuple()}.
 update_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input) ->
     update_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input, []).
 
 -spec update_assessment_control(map(), binary() | list(), binary() | list(), binary() | list(), update_assessment_control_request(), proplists:proplist()) ->
     {ok, update_assessment_control_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_assessment_control_errors(), tuple()}.
 update_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input0, Options0) ->
     Method = put,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/controlSets/", aws_util:encode_uri(ControlSetId), "/controls/", aws_util:encode_uri(ControlId), ""],
@@ -4334,20 +4500,14 @@ update_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input0,
 -spec update_assessment_control_set_status(map(), binary() | list(), binary() | list(), update_assessment_control_set_status_request()) ->
     {ok, update_assessment_control_set_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_assessment_control_set_status_errors(), tuple()}.
 update_assessment_control_set_status(Client, AssessmentId, ControlSetId, Input) ->
     update_assessment_control_set_status(Client, AssessmentId, ControlSetId, Input, []).
 
 -spec update_assessment_control_set_status(map(), binary() | list(), binary() | list(), update_assessment_control_set_status_request(), proplists:proplist()) ->
     {ok, update_assessment_control_set_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_assessment_control_set_status_errors(), tuple()}.
 update_assessment_control_set_status(Client, AssessmentId, ControlSetId, Input0, Options0) ->
     Method = put,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/controlSets/", aws_util:encode_uri(ControlSetId), "/status"],
@@ -4374,20 +4534,14 @@ update_assessment_control_set_status(Client, AssessmentId, ControlSetId, Input0,
 -spec update_assessment_framework(map(), binary() | list(), update_assessment_framework_request()) ->
     {ok, update_assessment_framework_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_assessment_framework_errors(), tuple()}.
 update_assessment_framework(Client, FrameworkId, Input) ->
     update_assessment_framework(Client, FrameworkId, Input, []).
 
 -spec update_assessment_framework(map(), binary() | list(), update_assessment_framework_request(), proplists:proplist()) ->
     {ok, update_assessment_framework_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_assessment_framework_errors(), tuple()}.
 update_assessment_framework(Client, FrameworkId, Input0, Options0) ->
     Method = put,
     Path = ["/assessmentFrameworks/", aws_util:encode_uri(FrameworkId), ""],
@@ -4414,22 +4568,14 @@ update_assessment_framework(Client, FrameworkId, Input0, Options0) ->
 -spec update_assessment_framework_share(map(), binary() | list(), update_assessment_framework_share_request()) ->
     {ok, update_assessment_framework_share_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_assessment_framework_share_errors(), tuple()}.
 update_assessment_framework_share(Client, RequestId, Input) ->
     update_assessment_framework_share(Client, RequestId, Input, []).
 
 -spec update_assessment_framework_share(map(), binary() | list(), update_assessment_framework_share_request(), proplists:proplist()) ->
     {ok, update_assessment_framework_share_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_assessment_framework_share_errors(), tuple()}.
 update_assessment_framework_share(Client, RequestId, Input0, Options0) ->
     Method = put,
     Path = ["/assessmentFrameworkShareRequests/", aws_util:encode_uri(RequestId), ""],
@@ -4456,22 +4602,14 @@ update_assessment_framework_share(Client, RequestId, Input0, Options0) ->
 -spec update_assessment_status(map(), binary() | list(), update_assessment_status_request()) ->
     {ok, update_assessment_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_assessment_status_errors(), tuple()}.
 update_assessment_status(Client, AssessmentId, Input) ->
     update_assessment_status(Client, AssessmentId, Input, []).
 
 -spec update_assessment_status(map(), binary() | list(), update_assessment_status_request(), proplists:proplist()) ->
     {ok, update_assessment_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_assessment_status_errors(), tuple()}.
 update_assessment_status(Client, AssessmentId, Input0, Options0) ->
     Method = put,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/status"],
@@ -4498,20 +4636,14 @@ update_assessment_status(Client, AssessmentId, Input0, Options0) ->
 -spec update_control(map(), binary() | list(), update_control_request()) ->
     {ok, update_control_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_control_errors(), tuple()}.
 update_control(Client, ControlId, Input) ->
     update_control(Client, ControlId, Input, []).
 
 -spec update_control(map(), binary() | list(), update_control_request(), proplists:proplist()) ->
     {ok, update_control_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_control_errors(), tuple()}.
 update_control(Client, ControlId, Input0, Options0) ->
     Method = put,
     Path = ["/controls/", aws_util:encode_uri(ControlId), ""],
@@ -4538,18 +4670,14 @@ update_control(Client, ControlId, Input0, Options0) ->
 -spec update_settings(map(), update_settings_request()) ->
     {ok, update_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_settings_errors(), tuple()}.
 update_settings(Client, Input) ->
     update_settings(Client, Input, []).
 
 -spec update_settings(map(), update_settings_request(), proplists:proplist()) ->
     {ok, update_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_settings_errors(), tuple()}.
 update_settings(Client, Input0, Options0) ->
     Method = put,
     Path = ["/settings"],
@@ -4576,20 +4704,14 @@ update_settings(Client, Input0, Options0) ->
 -spec validate_assessment_report_integrity(map(), validate_assessment_report_integrity_request()) ->
     {ok, validate_assessment_report_integrity_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, validate_assessment_report_integrity_errors(), tuple()}.
 validate_assessment_report_integrity(Client, Input) ->
     validate_assessment_report_integrity(Client, Input, []).
 
 -spec validate_assessment_report_integrity(map(), validate_assessment_report_integrity_request(), proplists:proplist()) ->
     {ok, validate_assessment_report_integrity_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, validate_assessment_report_integrity_errors(), tuple()}.
 validate_assessment_report_integrity(Client, Input0, Options0) ->
     Method = post,
     Path = ["/assessmentReports/integrity"],

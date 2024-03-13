@@ -1235,6 +1235,228 @@
 %% }
 -type gpu_info() :: #{binary() => any()}.
 
+-type delete_recommendation_preferences_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    opt_in_required_exception() | 
+    resource_not_found_exception() | 
+    missing_authentication_token().
+
+-type describe_recommendation_export_jobs_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    opt_in_required_exception() | 
+    resource_not_found_exception() | 
+    missing_authentication_token().
+
+-type export_auto_scaling_group_recommendations_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    opt_in_required_exception() | 
+    missing_authentication_token().
+
+-type export_e_c_s_service_recommendations_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    opt_in_required_exception() | 
+    missing_authentication_token().
+
+-type export_ebs_volume_recommendations_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    opt_in_required_exception() | 
+    missing_authentication_token().
+
+-type export_ec2_instance_recommendations_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    opt_in_required_exception() | 
+    missing_authentication_token().
+
+-type export_lambda_function_recommendations_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    opt_in_required_exception() | 
+    missing_authentication_token().
+
+-type export_license_recommendations_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    opt_in_required_exception() | 
+    missing_authentication_token().
+
+-type get_auto_scaling_group_recommendations_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    opt_in_required_exception() | 
+    resource_not_found_exception() | 
+    missing_authentication_token().
+
+-type get_e_c_s_service_recommendation_projected_metrics_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    opt_in_required_exception() | 
+    resource_not_found_exception() | 
+    missing_authentication_token().
+
+-type get_e_c_s_service_recommendations_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    opt_in_required_exception() | 
+    resource_not_found_exception() | 
+    missing_authentication_token().
+
+-type get_ebs_volume_recommendations_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    opt_in_required_exception() | 
+    resource_not_found_exception() | 
+    missing_authentication_token().
+
+-type get_ec2_instance_recommendations_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    opt_in_required_exception() | 
+    resource_not_found_exception() | 
+    missing_authentication_token().
+
+-type get_ec2_recommendation_projected_metrics_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    opt_in_required_exception() | 
+    resource_not_found_exception() | 
+    missing_authentication_token().
+
+-type get_effective_recommendation_preferences_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    opt_in_required_exception() | 
+    resource_not_found_exception() | 
+    missing_authentication_token().
+
+-type get_enrollment_status_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    missing_authentication_token().
+
+-type get_enrollment_statuses_for_organization_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    missing_authentication_token().
+
+-type get_lambda_function_recommendations_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    opt_in_required_exception() | 
+    missing_authentication_token().
+
+-type get_license_recommendations_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    opt_in_required_exception() | 
+    resource_not_found_exception() | 
+    missing_authentication_token().
+
+-type get_recommendation_preferences_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    opt_in_required_exception() | 
+    resource_not_found_exception() | 
+    missing_authentication_token().
+
+-type get_recommendation_summaries_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    opt_in_required_exception() | 
+    missing_authentication_token().
+
+-type put_recommendation_preferences_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    opt_in_required_exception() | 
+    resource_not_found_exception() | 
+    missing_authentication_token().
+
+-type update_enrollment_status_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    missing_authentication_token().
 
 %%====================================================================
 %% API
@@ -1251,14 +1473,7 @@
 -spec delete_recommendation_preferences(map(), delete_recommendation_preferences_request()) ->
     {ok, delete_recommendation_preferences_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_recommendation_preferences_errors(), tuple()}.
 delete_recommendation_preferences(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_recommendation_preferences(Client, Input, []).
@@ -1266,14 +1481,7 @@ delete_recommendation_preferences(Client, Input)
 -spec delete_recommendation_preferences(map(), delete_recommendation_preferences_request(), proplists:proplist()) ->
     {ok, delete_recommendation_preferences_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_recommendation_preferences_errors(), tuple()}.
 delete_recommendation_preferences(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRecommendationPreferences">>, Input, Options).
@@ -1289,14 +1497,7 @@ delete_recommendation_preferences(Client, Input, Options)
 -spec describe_recommendation_export_jobs(map(), describe_recommendation_export_jobs_request()) ->
     {ok, describe_recommendation_export_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_recommendation_export_jobs_errors(), tuple()}.
 describe_recommendation_export_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_recommendation_export_jobs(Client, Input, []).
@@ -1304,14 +1505,7 @@ describe_recommendation_export_jobs(Client, Input)
 -spec describe_recommendation_export_jobs(map(), describe_recommendation_export_jobs_request(), proplists:proplist()) ->
     {ok, describe_recommendation_export_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_recommendation_export_jobs_errors(), tuple()}.
 describe_recommendation_export_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRecommendationExportJobs">>, Input, Options).
@@ -1333,14 +1527,7 @@ describe_recommendation_export_jobs(Client, Input, Options)
 -spec export_auto_scaling_group_recommendations(map(), export_auto_scaling_group_recommendations_request()) ->
     {ok, export_auto_scaling_group_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, export_auto_scaling_group_recommendations_errors(), tuple()}.
 export_auto_scaling_group_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_auto_scaling_group_recommendations(Client, Input, []).
@@ -1348,14 +1535,7 @@ export_auto_scaling_group_recommendations(Client, Input)
 -spec export_auto_scaling_group_recommendations(map(), export_auto_scaling_group_recommendations_request(), proplists:proplist()) ->
     {ok, export_auto_scaling_group_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, export_auto_scaling_group_recommendations_errors(), tuple()}.
 export_auto_scaling_group_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportAutoScalingGroupRecommendations">>, Input, Options).
@@ -1376,14 +1556,7 @@ export_auto_scaling_group_recommendations(Client, Input, Options)
 -spec export_e_c_s_service_recommendations(map(), export_e_c_s_service_recommendations_request()) ->
     {ok, export_e_c_s_service_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, export_e_c_s_service_recommendations_errors(), tuple()}.
 export_e_c_s_service_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_e_c_s_service_recommendations(Client, Input, []).
@@ -1391,14 +1564,7 @@ export_e_c_s_service_recommendations(Client, Input)
 -spec export_e_c_s_service_recommendations(map(), export_e_c_s_service_recommendations_request(), proplists:proplist()) ->
     {ok, export_e_c_s_service_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, export_e_c_s_service_recommendations_errors(), tuple()}.
 export_e_c_s_service_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportECSServiceRecommendations">>, Input, Options).
@@ -1420,14 +1586,7 @@ export_e_c_s_service_recommendations(Client, Input, Options)
 -spec export_ebs_volume_recommendations(map(), export_ebs_volume_recommendations_request()) ->
     {ok, export_ebs_volume_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, export_ebs_volume_recommendations_errors(), tuple()}.
 export_ebs_volume_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_ebs_volume_recommendations(Client, Input, []).
@@ -1435,14 +1594,7 @@ export_ebs_volume_recommendations(Client, Input)
 -spec export_ebs_volume_recommendations(map(), export_ebs_volume_recommendations_request(), proplists:proplist()) ->
     {ok, export_ebs_volume_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, export_ebs_volume_recommendations_errors(), tuple()}.
 export_ebs_volume_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportEBSVolumeRecommendations">>, Input, Options).
@@ -1464,14 +1616,7 @@ export_ebs_volume_recommendations(Client, Input, Options)
 -spec export_ec2_instance_recommendations(map(), export_ec2_instance_recommendations_request()) ->
     {ok, export_ec2_instance_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, export_ec2_instance_recommendations_errors(), tuple()}.
 export_ec2_instance_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_ec2_instance_recommendations(Client, Input, []).
@@ -1479,14 +1624,7 @@ export_ec2_instance_recommendations(Client, Input)
 -spec export_ec2_instance_recommendations(map(), export_ec2_instance_recommendations_request(), proplists:proplist()) ->
     {ok, export_ec2_instance_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, export_ec2_instance_recommendations_errors(), tuple()}.
 export_ec2_instance_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportEC2InstanceRecommendations">>, Input, Options).
@@ -1508,14 +1646,7 @@ export_ec2_instance_recommendations(Client, Input, Options)
 -spec export_lambda_function_recommendations(map(), export_lambda_function_recommendations_request()) ->
     {ok, export_lambda_function_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, export_lambda_function_recommendations_errors(), tuple()}.
 export_lambda_function_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_lambda_function_recommendations(Client, Input, []).
@@ -1523,14 +1654,7 @@ export_lambda_function_recommendations(Client, Input)
 -spec export_lambda_function_recommendations(map(), export_lambda_function_recommendations_request(), proplists:proplist()) ->
     {ok, export_lambda_function_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, export_lambda_function_recommendations_errors(), tuple()}.
 export_lambda_function_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportLambdaFunctionRecommendations">>, Input, Options).
@@ -1553,14 +1677,7 @@ export_lambda_function_recommendations(Client, Input, Options)
 -spec export_license_recommendations(map(), export_license_recommendations_request()) ->
     {ok, export_license_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, export_license_recommendations_errors(), tuple()}.
 export_license_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_license_recommendations(Client, Input, []).
@@ -1568,14 +1685,7 @@ export_license_recommendations(Client, Input)
 -spec export_license_recommendations(map(), export_license_recommendations_request(), proplists:proplist()) ->
     {ok, export_license_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, export_license_recommendations_errors(), tuple()}.
 export_license_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportLicenseRecommendations">>, Input, Options).
@@ -1593,14 +1703,7 @@ export_license_recommendations(Client, Input, Options)
 -spec get_auto_scaling_group_recommendations(map(), get_auto_scaling_group_recommendations_request()) ->
     {ok, get_auto_scaling_group_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_auto_scaling_group_recommendations_errors(), tuple()}.
 get_auto_scaling_group_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_auto_scaling_group_recommendations(Client, Input, []).
@@ -1608,14 +1711,7 @@ get_auto_scaling_group_recommendations(Client, Input)
 -spec get_auto_scaling_group_recommendations(map(), get_auto_scaling_group_recommendations_request(), proplists:proplist()) ->
     {ok, get_auto_scaling_group_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_auto_scaling_group_recommendations_errors(), tuple()}.
 get_auto_scaling_group_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAutoScalingGroupRecommendations">>, Input, Options).
@@ -1625,14 +1721,7 @@ get_auto_scaling_group_recommendations(Client, Input, Options)
 -spec get_e_c_s_service_recommendation_projected_metrics(map(), get_e_c_s_service_recommendation_projected_metrics_request()) ->
     {ok, get_e_c_s_service_recommendation_projected_metrics_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_e_c_s_service_recommendation_projected_metrics_errors(), tuple()}.
 get_e_c_s_service_recommendation_projected_metrics(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_e_c_s_service_recommendation_projected_metrics(Client, Input, []).
@@ -1640,14 +1729,7 @@ get_e_c_s_service_recommendation_projected_metrics(Client, Input)
 -spec get_e_c_s_service_recommendation_projected_metrics(map(), get_e_c_s_service_recommendation_projected_metrics_request(), proplists:proplist()) ->
     {ok, get_e_c_s_service_recommendation_projected_metrics_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_e_c_s_service_recommendation_projected_metrics_errors(), tuple()}.
 get_e_c_s_service_recommendation_projected_metrics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetECSServiceRecommendationProjectedMetrics">>, Input, Options).
@@ -1665,14 +1747,7 @@ get_e_c_s_service_recommendation_projected_metrics(Client, Input, Options)
 -spec get_e_c_s_service_recommendations(map(), get_e_c_s_service_recommendations_request()) ->
     {ok, get_e_c_s_service_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_e_c_s_service_recommendations_errors(), tuple()}.
 get_e_c_s_service_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_e_c_s_service_recommendations(Client, Input, []).
@@ -1680,14 +1755,7 @@ get_e_c_s_service_recommendations(Client, Input)
 -spec get_e_c_s_service_recommendations(map(), get_e_c_s_service_recommendations_request(), proplists:proplist()) ->
     {ok, get_e_c_s_service_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_e_c_s_service_recommendations_errors(), tuple()}.
 get_e_c_s_service_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetECSServiceRecommendations">>, Input, Options).
@@ -1705,14 +1773,7 @@ get_e_c_s_service_recommendations(Client, Input, Options)
 -spec get_ebs_volume_recommendations(map(), get_ebs_volume_recommendations_request()) ->
     {ok, get_ebs_volume_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_ebs_volume_recommendations_errors(), tuple()}.
 get_ebs_volume_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ebs_volume_recommendations(Client, Input, []).
@@ -1720,14 +1781,7 @@ get_ebs_volume_recommendations(Client, Input)
 -spec get_ebs_volume_recommendations(map(), get_ebs_volume_recommendations_request(), proplists:proplist()) ->
     {ok, get_ebs_volume_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_ebs_volume_recommendations_errors(), tuple()}.
 get_ebs_volume_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEBSVolumeRecommendations">>, Input, Options).
@@ -1745,14 +1799,7 @@ get_ebs_volume_recommendations(Client, Input, Options)
 -spec get_ec2_instance_recommendations(map(), get_ec2_instance_recommendations_request()) ->
     {ok, get_ec2_instance_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_ec2_instance_recommendations_errors(), tuple()}.
 get_ec2_instance_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ec2_instance_recommendations(Client, Input, []).
@@ -1760,14 +1807,7 @@ get_ec2_instance_recommendations(Client, Input)
 -spec get_ec2_instance_recommendations(map(), get_ec2_instance_recommendations_request(), proplists:proplist()) ->
     {ok, get_ec2_instance_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_ec2_instance_recommendations_errors(), tuple()}.
 get_ec2_instance_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEC2InstanceRecommendations">>, Input, Options).
@@ -1784,14 +1824,7 @@ get_ec2_instance_recommendations(Client, Input, Options)
 -spec get_ec2_recommendation_projected_metrics(map(), get_ec2_recommendation_projected_metrics_request()) ->
     {ok, get_ec2_recommendation_projected_metrics_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_ec2_recommendation_projected_metrics_errors(), tuple()}.
 get_ec2_recommendation_projected_metrics(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ec2_recommendation_projected_metrics(Client, Input, []).
@@ -1799,14 +1832,7 @@ get_ec2_recommendation_projected_metrics(Client, Input)
 -spec get_ec2_recommendation_projected_metrics(map(), get_ec2_recommendation_projected_metrics_request(), proplists:proplist()) ->
     {ok, get_ec2_recommendation_projected_metrics_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_ec2_recommendation_projected_metrics_errors(), tuple()}.
 get_ec2_recommendation_projected_metrics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEC2RecommendationProjectedMetrics">>, Input, Options).
@@ -1824,14 +1850,7 @@ get_ec2_recommendation_projected_metrics(Client, Input, Options)
 -spec get_effective_recommendation_preferences(map(), get_effective_recommendation_preferences_request()) ->
     {ok, get_effective_recommendation_preferences_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_effective_recommendation_preferences_errors(), tuple()}.
 get_effective_recommendation_preferences(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_effective_recommendation_preferences(Client, Input, []).
@@ -1839,14 +1858,7 @@ get_effective_recommendation_preferences(Client, Input)
 -spec get_effective_recommendation_preferences(map(), get_effective_recommendation_preferences_request(), proplists:proplist()) ->
     {ok, get_effective_recommendation_preferences_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_effective_recommendation_preferences_errors(), tuple()}.
 get_effective_recommendation_preferences(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEffectiveRecommendationPreferences">>, Input, Options).
@@ -1864,12 +1876,7 @@ get_effective_recommendation_preferences(Client, Input, Options)
 -spec get_enrollment_status(map(), get_enrollment_status_request()) ->
     {ok, get_enrollment_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_enrollment_status_errors(), tuple()}.
 get_enrollment_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_enrollment_status(Client, Input, []).
@@ -1877,12 +1884,7 @@ get_enrollment_status(Client, Input)
 -spec get_enrollment_status(map(), get_enrollment_status_request(), proplists:proplist()) ->
     {ok, get_enrollment_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_enrollment_status_errors(), tuple()}.
 get_enrollment_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEnrollmentStatus">>, Input, Options).
@@ -1896,12 +1898,7 @@ get_enrollment_status(Client, Input, Options)
 -spec get_enrollment_statuses_for_organization(map(), get_enrollment_statuses_for_organization_request()) ->
     {ok, get_enrollment_statuses_for_organization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_enrollment_statuses_for_organization_errors(), tuple()}.
 get_enrollment_statuses_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_enrollment_statuses_for_organization(Client, Input, []).
@@ -1909,12 +1906,7 @@ get_enrollment_statuses_for_organization(Client, Input)
 -spec get_enrollment_statuses_for_organization(map(), get_enrollment_statuses_for_organization_request(), proplists:proplist()) ->
     {ok, get_enrollment_statuses_for_organization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_enrollment_statuses_for_organization_errors(), tuple()}.
 get_enrollment_statuses_for_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEnrollmentStatusesForOrganization">>, Input, Options).
@@ -1931,14 +1923,7 @@ get_enrollment_statuses_for_organization(Client, Input, Options)
 -spec get_lambda_function_recommendations(map(), get_lambda_function_recommendations_request()) ->
     {ok, get_lambda_function_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_lambda_function_recommendations_errors(), tuple()}.
 get_lambda_function_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_lambda_function_recommendations(Client, Input, []).
@@ -1946,14 +1931,7 @@ get_lambda_function_recommendations(Client, Input)
 -spec get_lambda_function_recommendations(map(), get_lambda_function_recommendations_request(), proplists:proplist()) ->
     {ok, get_lambda_function_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_lambda_function_recommendations_errors(), tuple()}.
 get_lambda_function_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLambdaFunctionRecommendations">>, Input, Options).
@@ -1971,14 +1949,7 @@ get_lambda_function_recommendations(Client, Input, Options)
 -spec get_license_recommendations(map(), get_license_recommendations_request()) ->
     {ok, get_license_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_license_recommendations_errors(), tuple()}.
 get_license_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_license_recommendations(Client, Input, []).
@@ -1986,14 +1957,7 @@ get_license_recommendations(Client, Input)
 -spec get_license_recommendations(map(), get_license_recommendations_request(), proplists:proplist()) ->
     {ok, get_license_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_license_recommendations_errors(), tuple()}.
 get_license_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLicenseRecommendations">>, Input, Options).
@@ -2016,14 +1980,7 @@ get_license_recommendations(Client, Input, Options)
 -spec get_recommendation_preferences(map(), get_recommendation_preferences_request()) ->
     {ok, get_recommendation_preferences_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_recommendation_preferences_errors(), tuple()}.
 get_recommendation_preferences(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_recommendation_preferences(Client, Input, []).
@@ -2031,14 +1988,7 @@ get_recommendation_preferences(Client, Input)
 -spec get_recommendation_preferences(map(), get_recommendation_preferences_request(), proplists:proplist()) ->
     {ok, get_recommendation_preferences_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_recommendation_preferences_errors(), tuple()}.
 get_recommendation_preferences(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRecommendationPreferences">>, Input, Options).
@@ -2065,13 +2015,7 @@ get_recommendation_preferences(Client, Input, Options)
 -spec get_recommendation_summaries(map(), get_recommendation_summaries_request()) ->
     {ok, get_recommendation_summaries_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_recommendation_summaries_errors(), tuple()}.
 get_recommendation_summaries(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_recommendation_summaries(Client, Input, []).
@@ -2079,13 +2023,7 @@ get_recommendation_summaries(Client, Input)
 -spec get_recommendation_summaries(map(), get_recommendation_summaries_request(), proplists:proplist()) ->
     {ok, get_recommendation_summaries_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_recommendation_summaries_errors(), tuple()}.
 get_recommendation_summaries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRecommendationSummaries">>, Input, Options).
@@ -2102,14 +2040,7 @@ get_recommendation_summaries(Client, Input, Options)
 -spec put_recommendation_preferences(map(), put_recommendation_preferences_request()) ->
     {ok, put_recommendation_preferences_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, put_recommendation_preferences_errors(), tuple()}.
 put_recommendation_preferences(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_recommendation_preferences(Client, Input, []).
@@ -2117,14 +2048,7 @@ put_recommendation_preferences(Client, Input)
 -spec put_recommendation_preferences(map(), put_recommendation_preferences_request(), proplists:proplist()) ->
     {ok, put_recommendation_preferences_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, opt_in_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, put_recommendation_preferences_errors(), tuple()}.
 put_recommendation_preferences(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRecommendationPreferences">>, Input, Options).
@@ -2152,12 +2076,7 @@ put_recommendation_preferences(Client, Input, Options)
 -spec update_enrollment_status(map(), update_enrollment_status_request()) ->
     {ok, update_enrollment_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_enrollment_status_errors(), tuple()}.
 update_enrollment_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_enrollment_status(Client, Input, []).
@@ -2165,12 +2084,7 @@ update_enrollment_status(Client, Input)
 -spec update_enrollment_status(map(), update_enrollment_status_request(), proplists:proplist()) ->
     {ok, update_enrollment_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_authentication_token(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_enrollment_status_errors(), tuple()}.
 update_enrollment_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEnrollmentStatus">>, Input, Options).

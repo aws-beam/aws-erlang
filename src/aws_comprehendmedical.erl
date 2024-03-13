@@ -722,6 +722,169 @@
 %% }
 -type s_n_o_m_e_d_c_t_concept() :: #{binary() => any()}.
 
+-type describe_entities_detection_v2_job_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type describe_icd10_cm_inference_job_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type describe_phi_detection_job_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type describe_rx_norm_inference_job_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type describe_s_n_o_m_e_d_c_t_inference_job_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type detect_entities_errors() ::
+    text_size_limit_exceeded_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception() | 
+    invalid_encoding_exception().
+
+-type detect_entities_v2_errors() ::
+    text_size_limit_exceeded_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception() | 
+    invalid_encoding_exception().
+
+-type detect_phi_errors() ::
+    text_size_limit_exceeded_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception() | 
+    invalid_encoding_exception().
+
+-type infer_icd10_cm_errors() ::
+    text_size_limit_exceeded_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception() | 
+    invalid_encoding_exception().
+
+-type infer_rx_norm_errors() ::
+    text_size_limit_exceeded_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception() | 
+    invalid_encoding_exception().
+
+-type infer_s_n_o_m_e_d_c_t_errors() ::
+    text_size_limit_exceeded_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception() | 
+    invalid_encoding_exception().
+
+-type list_entities_detection_v2_jobs_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception().
+
+-type list_icd10_cm_inference_jobs_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception().
+
+-type list_phi_detection_jobs_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception().
+
+-type list_rx_norm_inference_jobs_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception().
+
+-type list_s_n_o_m_e_d_c_t_inference_jobs_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception().
+
+-type start_entities_detection_v2_job_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type start_icd10_cm_inference_job_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type start_phi_detection_job_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type start_rx_norm_inference_job_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type start_s_n_o_m_e_d_c_t_inference_job_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type stop_entities_detection_v2_job_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type stop_icd10_cm_inference_job_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type stop_phi_detection_job_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type stop_rx_norm_inference_job_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type stop_s_n_o_m_e_d_c_t_inference_job_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
 
 %%====================================================================
 %% API
@@ -734,10 +897,7 @@
 -spec describe_entities_detection_v2_job(map(), describe_entities_detection_v2_job_request()) ->
     {ok, describe_entities_detection_v2_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_entities_detection_v2_job_errors(), tuple()}.
 describe_entities_detection_v2_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_entities_detection_v2_job(Client, Input, []).
@@ -745,10 +905,7 @@ describe_entities_detection_v2_job(Client, Input)
 -spec describe_entities_detection_v2_job(map(), describe_entities_detection_v2_job_request(), proplists:proplist()) ->
     {ok, describe_entities_detection_v2_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_entities_detection_v2_job_errors(), tuple()}.
 describe_entities_detection_v2_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEntitiesDetectionV2Job">>, Input, Options).
@@ -760,10 +917,7 @@ describe_entities_detection_v2_job(Client, Input, Options)
 -spec describe_icd10_cm_inference_job(map(), describe_icd10_cm_inference_job_request()) ->
     {ok, describe_icd10_cm_inference_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_icd10_cm_inference_job_errors(), tuple()}.
 describe_icd10_cm_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_icd10_cm_inference_job(Client, Input, []).
@@ -771,10 +925,7 @@ describe_icd10_cm_inference_job(Client, Input)
 -spec describe_icd10_cm_inference_job(map(), describe_icd10_cm_inference_job_request(), proplists:proplist()) ->
     {ok, describe_icd10_cm_inference_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_icd10_cm_inference_job_errors(), tuple()}.
 describe_icd10_cm_inference_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeICD10CMInferenceJob">>, Input, Options).
@@ -786,10 +937,7 @@ describe_icd10_cm_inference_job(Client, Input, Options)
 -spec describe_phi_detection_job(map(), describe_phi_detection_job_request()) ->
     {ok, describe_phi_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_phi_detection_job_errors(), tuple()}.
 describe_phi_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_phi_detection_job(Client, Input, []).
@@ -797,10 +945,7 @@ describe_phi_detection_job(Client, Input)
 -spec describe_phi_detection_job(map(), describe_phi_detection_job_request(), proplists:proplist()) ->
     {ok, describe_phi_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_phi_detection_job_errors(), tuple()}.
 describe_phi_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePHIDetectionJob">>, Input, Options).
@@ -812,10 +957,7 @@ describe_phi_detection_job(Client, Input, Options)
 -spec describe_rx_norm_inference_job(map(), describe_rx_norm_inference_job_request()) ->
     {ok, describe_rx_norm_inference_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_rx_norm_inference_job_errors(), tuple()}.
 describe_rx_norm_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_rx_norm_inference_job(Client, Input, []).
@@ -823,10 +965,7 @@ describe_rx_norm_inference_job(Client, Input)
 -spec describe_rx_norm_inference_job(map(), describe_rx_norm_inference_job_request(), proplists:proplist()) ->
     {ok, describe_rx_norm_inference_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_rx_norm_inference_job_errors(), tuple()}.
 describe_rx_norm_inference_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRxNormInferenceJob">>, Input, Options).
@@ -838,10 +977,7 @@ describe_rx_norm_inference_job(Client, Input, Options)
 -spec describe_s_n_o_m_e_d_c_t_inference_job(map(), describe_s_n_o_m_e_d_c_t_inference_job_request()) ->
     {ok, describe_s_n_o_m_e_d_c_t_inference_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_s_n_o_m_e_d_c_t_inference_job_errors(), tuple()}.
 describe_s_n_o_m_e_d_c_t_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_s_n_o_m_e_d_c_t_inference_job(Client, Input, []).
@@ -849,10 +985,7 @@ describe_s_n_o_m_e_d_c_t_inference_job(Client, Input)
 -spec describe_s_n_o_m_e_d_c_t_inference_job(map(), describe_s_n_o_m_e_d_c_t_inference_job_request(), proplists:proplist()) ->
     {ok, describe_s_n_o_m_e_d_c_t_inference_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_s_n_o_m_e_d_c_t_inference_job_errors(), tuple()}.
 describe_s_n_o_m_e_d_c_t_inference_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSNOMEDCTInferenceJob">>, Input, Options).
@@ -869,12 +1002,7 @@ describe_s_n_o_m_e_d_c_t_inference_job(Client, Input, Options)
 -spec detect_entities(map(), detect_entities_request()) ->
     {ok, detect_entities_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_encoding_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, detect_entities_errors(), tuple()}.
 detect_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_entities(Client, Input, []).
@@ -882,12 +1010,7 @@ detect_entities(Client, Input)
 -spec detect_entities(map(), detect_entities_request(), proplists:proplist()) ->
     {ok, detect_entities_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_encoding_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, detect_entities_errors(), tuple()}.
 detect_entities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetectEntities">>, Input, Options).
@@ -914,12 +1037,7 @@ detect_entities(Client, Input, Options)
 -spec detect_entities_v2(map(), detect_entities_v2_request()) ->
     {ok, detect_entities_v2_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_encoding_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, detect_entities_v2_errors(), tuple()}.
 detect_entities_v2(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_entities_v2(Client, Input, []).
@@ -927,12 +1045,7 @@ detect_entities_v2(Client, Input)
 -spec detect_entities_v2(map(), detect_entities_v2_request(), proplists:proplist()) ->
     {ok, detect_entities_v2_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_encoding_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, detect_entities_v2_errors(), tuple()}.
 detect_entities_v2(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetectEntitiesV2">>, Input, Options).
@@ -946,12 +1059,7 @@ detect_entities_v2(Client, Input, Options)
 -spec detect_phi(map(), detect_phi_request()) ->
     {ok, detect_phi_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_encoding_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, detect_phi_errors(), tuple()}.
 detect_phi(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_phi(Client, Input, []).
@@ -959,12 +1067,7 @@ detect_phi(Client, Input)
 -spec detect_phi(map(), detect_phi_request(), proplists:proplist()) ->
     {ok, detect_phi_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_encoding_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, detect_phi_errors(), tuple()}.
 detect_phi(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetectPHI">>, Input, Options).
@@ -980,12 +1083,7 @@ detect_phi(Client, Input, Options)
 -spec infer_icd10_cm(map(), infer_icd10_cm_request()) ->
     {ok, infer_icd10_cm_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_encoding_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, infer_icd10_cm_errors(), tuple()}.
 infer_icd10_cm(Client, Input)
   when is_map(Client), is_map(Input) ->
     infer_icd10_cm(Client, Input, []).
@@ -993,12 +1091,7 @@ infer_icd10_cm(Client, Input)
 -spec infer_icd10_cm(map(), infer_icd10_cm_request(), proplists:proplist()) ->
     {ok, infer_icd10_cm_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_encoding_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, infer_icd10_cm_errors(), tuple()}.
 infer_icd10_cm(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"InferICD10CM">>, Input, Options).
@@ -1013,12 +1106,7 @@ infer_icd10_cm(Client, Input, Options)
 -spec infer_rx_norm(map(), infer_rx_norm_request()) ->
     {ok, infer_rx_norm_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_encoding_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, infer_rx_norm_errors(), tuple()}.
 infer_rx_norm(Client, Input)
   when is_map(Client), is_map(Input) ->
     infer_rx_norm(Client, Input, []).
@@ -1026,12 +1114,7 @@ infer_rx_norm(Client, Input)
 -spec infer_rx_norm(map(), infer_rx_norm_request(), proplists:proplist()) ->
     {ok, infer_rx_norm_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_encoding_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, infer_rx_norm_errors(), tuple()}.
 infer_rx_norm(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"InferRxNorm">>, Input, Options).
@@ -1043,12 +1126,7 @@ infer_rx_norm(Client, Input, Options)
 -spec infer_s_n_o_m_e_d_c_t(map(), infer_s_n_o_m_e_d_c_t_request()) ->
     {ok, infer_s_n_o_m_e_d_c_t_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_encoding_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, infer_s_n_o_m_e_d_c_t_errors(), tuple()}.
 infer_s_n_o_m_e_d_c_t(Client, Input)
   when is_map(Client), is_map(Input) ->
     infer_s_n_o_m_e_d_c_t(Client, Input, []).
@@ -1056,12 +1134,7 @@ infer_s_n_o_m_e_d_c_t(Client, Input)
 -spec infer_s_n_o_m_e_d_c_t(map(), infer_s_n_o_m_e_d_c_t_request(), proplists:proplist()) ->
     {ok, infer_s_n_o_m_e_d_c_t_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_encoding_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, infer_s_n_o_m_e_d_c_t_errors(), tuple()}.
 infer_s_n_o_m_e_d_c_t(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"InferSNOMEDCT">>, Input, Options).
@@ -1070,10 +1143,7 @@ infer_s_n_o_m_e_d_c_t(Client, Input, Options)
 -spec list_entities_detection_v2_jobs(map(), list_entities_detection_v2_jobs_request()) ->
     {ok, list_entities_detection_v2_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_entities_detection_v2_jobs_errors(), tuple()}.
 list_entities_detection_v2_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_entities_detection_v2_jobs(Client, Input, []).
@@ -1081,10 +1151,7 @@ list_entities_detection_v2_jobs(Client, Input)
 -spec list_entities_detection_v2_jobs(map(), list_entities_detection_v2_jobs_request(), proplists:proplist()) ->
     {ok, list_entities_detection_v2_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_entities_detection_v2_jobs_errors(), tuple()}.
 list_entities_detection_v2_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEntitiesDetectionV2Jobs">>, Input, Options).
@@ -1093,10 +1160,7 @@ list_entities_detection_v2_jobs(Client, Input, Options)
 -spec list_icd10_cm_inference_jobs(map(), list_icd10_cm_inference_jobs_request()) ->
     {ok, list_icd10_cm_inference_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_icd10_cm_inference_jobs_errors(), tuple()}.
 list_icd10_cm_inference_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_icd10_cm_inference_jobs(Client, Input, []).
@@ -1104,10 +1168,7 @@ list_icd10_cm_inference_jobs(Client, Input)
 -spec list_icd10_cm_inference_jobs(map(), list_icd10_cm_inference_jobs_request(), proplists:proplist()) ->
     {ok, list_icd10_cm_inference_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_icd10_cm_inference_jobs_errors(), tuple()}.
 list_icd10_cm_inference_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListICD10CMInferenceJobs">>, Input, Options).
@@ -1118,10 +1179,7 @@ list_icd10_cm_inference_jobs(Client, Input, Options)
 -spec list_phi_detection_jobs(map(), list_phi_detection_jobs_request()) ->
     {ok, list_phi_detection_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_phi_detection_jobs_errors(), tuple()}.
 list_phi_detection_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_phi_detection_jobs(Client, Input, []).
@@ -1129,10 +1187,7 @@ list_phi_detection_jobs(Client, Input)
 -spec list_phi_detection_jobs(map(), list_phi_detection_jobs_request(), proplists:proplist()) ->
     {ok, list_phi_detection_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_phi_detection_jobs_errors(), tuple()}.
 list_phi_detection_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPHIDetectionJobs">>, Input, Options).
@@ -1141,10 +1196,7 @@ list_phi_detection_jobs(Client, Input, Options)
 -spec list_rx_norm_inference_jobs(map(), list_rx_norm_inference_jobs_request()) ->
     {ok, list_rx_norm_inference_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_rx_norm_inference_jobs_errors(), tuple()}.
 list_rx_norm_inference_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rx_norm_inference_jobs(Client, Input, []).
@@ -1152,10 +1204,7 @@ list_rx_norm_inference_jobs(Client, Input)
 -spec list_rx_norm_inference_jobs(map(), list_rx_norm_inference_jobs_request(), proplists:proplist()) ->
     {ok, list_rx_norm_inference_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_rx_norm_inference_jobs_errors(), tuple()}.
 list_rx_norm_inference_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRxNormInferenceJobs">>, Input, Options).
@@ -1165,10 +1214,7 @@ list_rx_norm_inference_jobs(Client, Input, Options)
 -spec list_s_n_o_m_e_d_c_t_inference_jobs(map(), list_s_n_o_m_e_d_c_t_inference_jobs_request()) ->
     {ok, list_s_n_o_m_e_d_c_t_inference_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_s_n_o_m_e_d_c_t_inference_jobs_errors(), tuple()}.
 list_s_n_o_m_e_d_c_t_inference_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_s_n_o_m_e_d_c_t_inference_jobs(Client, Input, []).
@@ -1176,10 +1222,7 @@ list_s_n_o_m_e_d_c_t_inference_jobs(Client, Input)
 -spec list_s_n_o_m_e_d_c_t_inference_jobs(map(), list_s_n_o_m_e_d_c_t_inference_jobs_request(), proplists:proplist()) ->
     {ok, list_s_n_o_m_e_d_c_t_inference_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_s_n_o_m_e_d_c_t_inference_jobs_errors(), tuple()}.
 list_s_n_o_m_e_d_c_t_inference_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSNOMEDCTInferenceJobs">>, Input, Options).
@@ -1193,10 +1236,7 @@ list_s_n_o_m_e_d_c_t_inference_jobs(Client, Input, Options)
 -spec start_entities_detection_v2_job(map(), start_entities_detection_v2_job_request()) ->
     {ok, start_entities_detection_v2_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, start_entities_detection_v2_job_errors(), tuple()}.
 start_entities_detection_v2_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_entities_detection_v2_job(Client, Input, []).
@@ -1204,10 +1244,7 @@ start_entities_detection_v2_job(Client, Input)
 -spec start_entities_detection_v2_job(map(), start_entities_detection_v2_job_request(), proplists:proplist()) ->
     {ok, start_entities_detection_v2_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, start_entities_detection_v2_job_errors(), tuple()}.
 start_entities_detection_v2_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartEntitiesDetectionV2Job">>, Input, Options).
@@ -1222,10 +1259,7 @@ start_entities_detection_v2_job(Client, Input, Options)
 -spec start_icd10_cm_inference_job(map(), start_icd10_cm_inference_job_request()) ->
     {ok, start_icd10_cm_inference_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, start_icd10_cm_inference_job_errors(), tuple()}.
 start_icd10_cm_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_icd10_cm_inference_job(Client, Input, []).
@@ -1233,10 +1267,7 @@ start_icd10_cm_inference_job(Client, Input)
 -spec start_icd10_cm_inference_job(map(), start_icd10_cm_inference_job_request(), proplists:proplist()) ->
     {ok, start_icd10_cm_inference_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, start_icd10_cm_inference_job_errors(), tuple()}.
 start_icd10_cm_inference_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartICD10CMInferenceJob">>, Input, Options).
@@ -1249,10 +1280,7 @@ start_icd10_cm_inference_job(Client, Input, Options)
 -spec start_phi_detection_job(map(), start_phi_detection_job_request()) ->
     {ok, start_phi_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, start_phi_detection_job_errors(), tuple()}.
 start_phi_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_phi_detection_job(Client, Input, []).
@@ -1260,10 +1288,7 @@ start_phi_detection_job(Client, Input)
 -spec start_phi_detection_job(map(), start_phi_detection_job_request(), proplists:proplist()) ->
     {ok, start_phi_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, start_phi_detection_job_errors(), tuple()}.
 start_phi_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartPHIDetectionJob">>, Input, Options).
@@ -1278,10 +1303,7 @@ start_phi_detection_job(Client, Input, Options)
 -spec start_rx_norm_inference_job(map(), start_rx_norm_inference_job_request()) ->
     {ok, start_rx_norm_inference_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, start_rx_norm_inference_job_errors(), tuple()}.
 start_rx_norm_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_rx_norm_inference_job(Client, Input, []).
@@ -1289,10 +1311,7 @@ start_rx_norm_inference_job(Client, Input)
 -spec start_rx_norm_inference_job(map(), start_rx_norm_inference_job_request(), proplists:proplist()) ->
     {ok, start_rx_norm_inference_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, start_rx_norm_inference_job_errors(), tuple()}.
 start_rx_norm_inference_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartRxNormInferenceJob">>, Input, Options).
@@ -1306,10 +1325,7 @@ start_rx_norm_inference_job(Client, Input, Options)
 -spec start_s_n_o_m_e_d_c_t_inference_job(map(), start_s_n_o_m_e_d_c_t_inference_job_request()) ->
     {ok, start_s_n_o_m_e_d_c_t_inference_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, start_s_n_o_m_e_d_c_t_inference_job_errors(), tuple()}.
 start_s_n_o_m_e_d_c_t_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_s_n_o_m_e_d_c_t_inference_job(Client, Input, []).
@@ -1317,10 +1333,7 @@ start_s_n_o_m_e_d_c_t_inference_job(Client, Input)
 -spec start_s_n_o_m_e_d_c_t_inference_job(map(), start_s_n_o_m_e_d_c_t_inference_job_request(), proplists:proplist()) ->
     {ok, start_s_n_o_m_e_d_c_t_inference_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, start_s_n_o_m_e_d_c_t_inference_job_errors(), tuple()}.
 start_s_n_o_m_e_d_c_t_inference_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartSNOMEDCTInferenceJob">>, Input, Options).
@@ -1329,9 +1342,7 @@ start_s_n_o_m_e_d_c_t_inference_job(Client, Input, Options)
 -spec stop_entities_detection_v2_job(map(), stop_entities_detection_v2_job_request()) ->
     {ok, stop_entities_detection_v2_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_entities_detection_v2_job_errors(), tuple()}.
 stop_entities_detection_v2_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_entities_detection_v2_job(Client, Input, []).
@@ -1339,9 +1350,7 @@ stop_entities_detection_v2_job(Client, Input)
 -spec stop_entities_detection_v2_job(map(), stop_entities_detection_v2_job_request(), proplists:proplist()) ->
     {ok, stop_entities_detection_v2_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_entities_detection_v2_job_errors(), tuple()}.
 stop_entities_detection_v2_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopEntitiesDetectionV2Job">>, Input, Options).
@@ -1350,9 +1359,7 @@ stop_entities_detection_v2_job(Client, Input, Options)
 -spec stop_icd10_cm_inference_job(map(), stop_icd10_cm_inference_job_request()) ->
     {ok, stop_icd10_cm_inference_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_icd10_cm_inference_job_errors(), tuple()}.
 stop_icd10_cm_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_icd10_cm_inference_job(Client, Input, []).
@@ -1360,9 +1367,7 @@ stop_icd10_cm_inference_job(Client, Input)
 -spec stop_icd10_cm_inference_job(map(), stop_icd10_cm_inference_job_request(), proplists:proplist()) ->
     {ok, stop_icd10_cm_inference_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_icd10_cm_inference_job_errors(), tuple()}.
 stop_icd10_cm_inference_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopICD10CMInferenceJob">>, Input, Options).
@@ -1371,9 +1376,7 @@ stop_icd10_cm_inference_job(Client, Input, Options)
 -spec stop_phi_detection_job(map(), stop_phi_detection_job_request()) ->
     {ok, stop_phi_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_phi_detection_job_errors(), tuple()}.
 stop_phi_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_phi_detection_job(Client, Input, []).
@@ -1381,9 +1384,7 @@ stop_phi_detection_job(Client, Input)
 -spec stop_phi_detection_job(map(), stop_phi_detection_job_request(), proplists:proplist()) ->
     {ok, stop_phi_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_phi_detection_job_errors(), tuple()}.
 stop_phi_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopPHIDetectionJob">>, Input, Options).
@@ -1392,9 +1393,7 @@ stop_phi_detection_job(Client, Input, Options)
 -spec stop_rx_norm_inference_job(map(), stop_rx_norm_inference_job_request()) ->
     {ok, stop_rx_norm_inference_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_rx_norm_inference_job_errors(), tuple()}.
 stop_rx_norm_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_rx_norm_inference_job(Client, Input, []).
@@ -1402,9 +1401,7 @@ stop_rx_norm_inference_job(Client, Input)
 -spec stop_rx_norm_inference_job(map(), stop_rx_norm_inference_job_request(), proplists:proplist()) ->
     {ok, stop_rx_norm_inference_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_rx_norm_inference_job_errors(), tuple()}.
 stop_rx_norm_inference_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopRxNormInferenceJob">>, Input, Options).
@@ -1414,10 +1411,7 @@ stop_rx_norm_inference_job(Client, Input, Options)
 -spec stop_s_n_o_m_e_d_c_t_inference_job(map(), stop_s_n_o_m_e_d_c_t_inference_job_request()) ->
     {ok, stop_s_n_o_m_e_d_c_t_inference_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, stop_s_n_o_m_e_d_c_t_inference_job_errors(), tuple()}.
 stop_s_n_o_m_e_d_c_t_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_s_n_o_m_e_d_c_t_inference_job(Client, Input, []).
@@ -1425,10 +1419,7 @@ stop_s_n_o_m_e_d_c_t_inference_job(Client, Input)
 -spec stop_s_n_o_m_e_d_c_t_inference_job(map(), stop_s_n_o_m_e_d_c_t_inference_job_request(), proplists:proplist()) ->
     {ok, stop_s_n_o_m_e_d_c_t_inference_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, stop_s_n_o_m_e_d_c_t_inference_job_errors(), tuple()}.
 stop_s_n_o_m_e_d_c_t_inference_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopSNOMEDCTInferenceJob">>, Input, Options).

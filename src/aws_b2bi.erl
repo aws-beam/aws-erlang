@@ -646,6 +646,188 @@
 %% }
 -type start_transformer_job_response() :: #{binary() => any()}.
 
+-type create_capability_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_partnership_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_profile_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_transformer_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_capability_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_partnership_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_profile_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_transformer_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_capability_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_partnership_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_profile_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_transformer_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_transformer_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_partnerships_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type start_transformer_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type test_mapping_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type test_parsing_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_capability_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_partnership_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_profile_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_transformer_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -658,13 +840,7 @@
 -spec create_capability(map(), create_capability_request()) ->
     {ok, create_capability_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_capability_errors(), tuple()}.
 create_capability(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_capability(Client, Input, []).
@@ -672,13 +848,7 @@ create_capability(Client, Input)
 -spec create_capability(map(), create_capability_request(), proplists:proplist()) ->
     {ok, create_capability_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_capability_errors(), tuple()}.
 create_capability(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCapability">>, Input, Options).
@@ -692,13 +862,7 @@ create_capability(Client, Input, Options)
 -spec create_partnership(map(), create_partnership_request()) ->
     {ok, create_partnership_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_partnership_errors(), tuple()}.
 create_partnership(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_partnership(Client, Input, []).
@@ -706,13 +870,7 @@ create_partnership(Client, Input)
 -spec create_partnership(map(), create_partnership_request(), proplists:proplist()) ->
     {ok, create_partnership_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_partnership_errors(), tuple()}.
 create_partnership(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePartnership">>, Input, Options).
@@ -725,13 +883,7 @@ create_partnership(Client, Input, Options)
 -spec create_profile(map(), create_profile_request()) ->
     {ok, create_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_profile_errors(), tuple()}.
 create_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_profile(Client, Input, []).
@@ -739,13 +891,7 @@ create_profile(Client, Input)
 -spec create_profile(map(), create_profile_request(), proplists:proplist()) ->
     {ok, create_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_profile_errors(), tuple()}.
 create_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateProfile">>, Input, Options).
@@ -759,13 +905,7 @@ create_profile(Client, Input, Options)
 -spec create_transformer(map(), create_transformer_request()) ->
     {ok, create_transformer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_transformer_errors(), tuple()}.
 create_transformer(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_transformer(Client, Input, []).
@@ -773,13 +913,7 @@ create_transformer(Client, Input)
 -spec create_transformer(map(), create_transformer_request(), proplists:proplist()) ->
     {ok, create_transformer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_transformer_errors(), tuple()}.
 create_transformer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTransformer">>, Input, Options).
@@ -791,12 +925,7 @@ create_transformer(Client, Input, Options)
 -spec delete_capability(map(), delete_capability_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_capability_errors(), tuple()}.
 delete_capability(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_capability(Client, Input, []).
@@ -804,12 +933,7 @@ delete_capability(Client, Input)
 -spec delete_capability(map(), delete_capability_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_capability_errors(), tuple()}.
 delete_capability(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCapability">>, Input, Options).
@@ -822,12 +946,7 @@ delete_capability(Client, Input, Options)
 -spec delete_partnership(map(), delete_partnership_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_partnership_errors(), tuple()}.
 delete_partnership(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_partnership(Client, Input, []).
@@ -835,12 +954,7 @@ delete_partnership(Client, Input)
 -spec delete_partnership(map(), delete_partnership_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_partnership_errors(), tuple()}.
 delete_partnership(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePartnership">>, Input, Options).
@@ -852,12 +966,7 @@ delete_partnership(Client, Input, Options)
 -spec delete_profile(map(), delete_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_profile_errors(), tuple()}.
 delete_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_profile(Client, Input, []).
@@ -865,12 +974,7 @@ delete_profile(Client, Input)
 -spec delete_profile(map(), delete_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_profile_errors(), tuple()}.
 delete_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProfile">>, Input, Options).
@@ -884,12 +988,7 @@ delete_profile(Client, Input, Options)
 -spec delete_transformer(map(), delete_transformer_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_transformer_errors(), tuple()}.
 delete_transformer(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_transformer(Client, Input, []).
@@ -897,12 +996,7 @@ delete_transformer(Client, Input)
 -spec delete_transformer(map(), delete_transformer_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_transformer_errors(), tuple()}.
 delete_transformer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTransformer">>, Input, Options).
@@ -914,11 +1008,7 @@ delete_transformer(Client, Input, Options)
 -spec get_capability(map(), get_capability_request()) ->
     {ok, get_capability_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_capability_errors(), tuple()}.
 get_capability(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_capability(Client, Input, []).
@@ -926,11 +1016,7 @@ get_capability(Client, Input)
 -spec get_capability(map(), get_capability_request(), proplists:proplist()) ->
     {ok, get_capability_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_capability_errors(), tuple()}.
 get_capability(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCapability">>, Input, Options).
@@ -944,11 +1030,7 @@ get_capability(Client, Input, Options)
 -spec get_partnership(map(), get_partnership_request()) ->
     {ok, get_partnership_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_partnership_errors(), tuple()}.
 get_partnership(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_partnership(Client, Input, []).
@@ -956,11 +1038,7 @@ get_partnership(Client, Input)
 -spec get_partnership(map(), get_partnership_request(), proplists:proplist()) ->
     {ok, get_partnership_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_partnership_errors(), tuple()}.
 get_partnership(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPartnership">>, Input, Options).
@@ -972,11 +1050,7 @@ get_partnership(Client, Input, Options)
 -spec get_profile(map(), get_profile_request()) ->
     {ok, get_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_profile_errors(), tuple()}.
 get_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_profile(Client, Input, []).
@@ -984,11 +1058,7 @@ get_profile(Client, Input)
 -spec get_profile(map(), get_profile_request(), proplists:proplist()) ->
     {ok, get_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_profile_errors(), tuple()}.
 get_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetProfile">>, Input, Options).
@@ -1003,11 +1073,7 @@ get_profile(Client, Input, Options)
 -spec get_transformer(map(), get_transformer_request()) ->
     {ok, get_transformer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_transformer_errors(), tuple()}.
 get_transformer(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_transformer(Client, Input, []).
@@ -1015,11 +1081,7 @@ get_transformer(Client, Input)
 -spec get_transformer(map(), get_transformer_request(), proplists:proplist()) ->
     {ok, get_transformer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_transformer_errors(), tuple()}.
 get_transformer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTransformer">>, Input, Options).
@@ -1029,11 +1091,7 @@ get_transformer(Client, Input, Options)
 -spec get_transformer_job(map(), get_transformer_job_request()) ->
     {ok, get_transformer_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_transformer_job_errors(), tuple()}.
 get_transformer_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_transformer_job(Client, Input, []).
@@ -1041,11 +1099,7 @@ get_transformer_job(Client, Input)
 -spec get_transformer_job(map(), get_transformer_job_request(), proplists:proplist()) ->
     {ok, get_transformer_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_transformer_job_errors(), tuple()}.
 get_transformer_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTransformerJob">>, Input, Options).
@@ -1078,11 +1132,7 @@ list_capabilities(Client, Input, Options)
 -spec list_partnerships(map(), list_partnerships_request()) ->
     {ok, list_partnerships_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_partnerships_errors(), tuple()}.
 list_partnerships(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_partnerships(Client, Input, []).
@@ -1090,11 +1140,7 @@ list_partnerships(Client, Input)
 -spec list_partnerships(map(), list_partnerships_request(), proplists:proplist()) ->
     {ok, list_partnerships_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_partnerships_errors(), tuple()}.
 list_partnerships(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPartnerships">>, Input, Options).
@@ -1125,9 +1171,7 @@ list_profiles(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -1135,9 +1179,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -1173,11 +1215,7 @@ list_transformers(Client, Input, Options)
 -spec start_transformer_job(map(), start_transformer_job_request()) ->
     {ok, start_transformer_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_transformer_job_errors(), tuple()}.
 start_transformer_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_transformer_job(Client, Input, []).
@@ -1185,11 +1223,7 @@ start_transformer_job(Client, Input)
 -spec start_transformer_job(map(), start_transformer_job_request(), proplists:proplist()) ->
     {ok, start_transformer_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_transformer_job_errors(), tuple()}.
 start_transformer_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartTransformerJob">>, Input, Options).
@@ -1204,10 +1238,7 @@ start_transformer_job(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -1215,10 +1246,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -1231,11 +1259,7 @@ tag_resource(Client, Input, Options)
 -spec test_mapping(map(), test_mapping_request()) ->
     {ok, test_mapping_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, test_mapping_errors(), tuple()}.
 test_mapping(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_mapping(Client, Input, []).
@@ -1243,11 +1267,7 @@ test_mapping(Client, Input)
 -spec test_mapping(map(), test_mapping_request(), proplists:proplist()) ->
     {ok, test_mapping_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, test_mapping_errors(), tuple()}.
 test_mapping(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TestMapping">>, Input, Options).
@@ -1258,11 +1278,7 @@ test_mapping(Client, Input, Options)
 -spec test_parsing(map(), test_parsing_request()) ->
     {ok, test_parsing_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, test_parsing_errors(), tuple()}.
 test_parsing(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_parsing(Client, Input, []).
@@ -1270,11 +1286,7 @@ test_parsing(Client, Input)
 -spec test_parsing(map(), test_parsing_request(), proplists:proplist()) ->
     {ok, test_parsing_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, test_parsing_errors(), tuple()}.
 test_parsing(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TestParsing">>, Input, Options).
@@ -1287,9 +1299,7 @@ test_parsing(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -1297,9 +1307,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -1312,13 +1320,7 @@ untag_resource(Client, Input, Options)
 -spec update_capability(map(), update_capability_request()) ->
     {ok, update_capability_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_capability_errors(), tuple()}.
 update_capability(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_capability(Client, Input, []).
@@ -1326,13 +1328,7 @@ update_capability(Client, Input)
 -spec update_capability(map(), update_capability_request(), proplists:proplist()) ->
     {ok, update_capability_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_capability_errors(), tuple()}.
 update_capability(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCapability">>, Input, Options).
@@ -1346,13 +1342,7 @@ update_capability(Client, Input, Options)
 -spec update_partnership(map(), update_partnership_request()) ->
     {ok, update_partnership_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_partnership_errors(), tuple()}.
 update_partnership(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_partnership(Client, Input, []).
@@ -1360,13 +1350,7 @@ update_partnership(Client, Input)
 -spec update_partnership(map(), update_partnership_request(), proplists:proplist()) ->
     {ok, update_partnership_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_partnership_errors(), tuple()}.
 update_partnership(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePartnership">>, Input, Options).
@@ -1378,13 +1362,7 @@ update_partnership(Client, Input, Options)
 -spec update_profile(map(), update_profile_request()) ->
     {ok, update_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_profile_errors(), tuple()}.
 update_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_profile(Client, Input, []).
@@ -1392,13 +1370,7 @@ update_profile(Client, Input)
 -spec update_profile(map(), update_profile_request(), proplists:proplist()) ->
     {ok, update_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_profile_errors(), tuple()}.
 update_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateProfile">>, Input, Options).
@@ -1412,13 +1384,7 @@ update_profile(Client, Input, Options)
 -spec update_transformer(map(), update_transformer_request()) ->
     {ok, update_transformer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_transformer_errors(), tuple()}.
 update_transformer(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_transformer(Client, Input, []).
@@ -1426,13 +1392,7 @@ update_transformer(Client, Input)
 -spec update_transformer(map(), update_transformer_request(), proplists:proplist()) ->
     {ok, update_transformer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_transformer_errors(), tuple()}.
 update_transformer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTransformer">>, Input, Options).

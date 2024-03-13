@@ -117,6 +117,7 @@
 %% }
 -type create_node_from_template_job_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% device_job() :: #{
 %%   <<"CreatedTime">> => non_neg_integer(),
@@ -126,6 +127,7 @@
 %%   <<"JobType">> => string()
 %% }
 -type device_job() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_devices_request() :: #{
@@ -138,11 +140,13 @@
 %% }
 -type list_devices_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"Tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% provision_device_response() :: #{
@@ -154,6 +158,7 @@
 %% }
 -type provision_device_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_package_import_job_request() :: #{
 %%   <<"ClientToken">> := string(),
@@ -164,6 +169,7 @@
 %% }
 -type create_package_import_job_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% provision_device_request() :: #{
 %%   <<"Description">> => string(),
@@ -172,6 +178,7 @@
 %%   <<"Tags">> => map()
 %% }
 -type provision_device_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% node_instance() :: #{
@@ -185,6 +192,7 @@
 %% }
 -type node_instance() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_application_instance_details_response() :: #{
 %%   <<"ApplicationInstanceId">> => string(),
@@ -197,9 +205,11 @@
 %%   <<"Name">> => string()
 %% }
 -type describe_application_instance_details_response() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% list_node_from_template_jobs_response() :: #{
@@ -208,12 +218,14 @@
 %% }
 -type list_node_from_template_jobs_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_package_request() :: #{
 %%   <<"PackageName">> := string(),
 %%   <<"Tags">> => map()
 %% }
 -type create_package_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_application_instance_request() :: #{
@@ -228,6 +240,7 @@
 %% }
 -type create_application_instance_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% network_status() :: #{
 %%   <<"Ethernet0Status">> => ethernet_status(),
@@ -236,6 +249,7 @@
 %%   <<"NtpStatus">> => ntp_status()
 %% }
 -type network_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% reported_runtime_context_state() :: #{
@@ -246,6 +260,7 @@
 %% }
 -type reported_runtime_context_state() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_package_import_jobs_response() :: #{
 %%   <<"NextToken">> => string(),
@@ -253,11 +268,13 @@
 %% }
 -type list_package_import_jobs_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% package_version_input_config() :: #{
 %%   <<"S3Location">> => s3_location()
 %% }
 -type package_version_input_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_device_job_response() :: #{
@@ -272,6 +289,7 @@
 %%   <<"Status">> => string()
 %% }
 -type describe_device_job_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_application_instance_response() :: #{
@@ -293,11 +311,13 @@
 %% }
 -type describe_application_instance_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_job_for_devices_response() :: #{
 %%   <<"Jobs">> := list(job()())
 %% }
 -type create_job_for_devices_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% node_input_port() :: #{
@@ -308,9 +328,11 @@
 %%   <<"Type">> => string()
 %% }
 -type node_input_port() :: #{binary() => any()}.
+
 %% Example:
 %% describe_package_import_job_request() :: #{}
 -type describe_package_import_job_request() :: #{}.
+
 
 %% Example:
 %% list_packages_request() :: #{
@@ -319,11 +341,13 @@
 %% }
 -type list_packages_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_device_metadata_response() :: #{
 %%   <<"DeviceId">> => string()
 %% }
 -type update_device_metadata_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% ethernet_status() :: #{
@@ -332,6 +356,7 @@
 %%   <<"IpAddress">> => string()
 %% }
 -type ethernet_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_package_response() :: #{
@@ -346,6 +371,7 @@
 %% }
 -type describe_package_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% package_object() :: #{
 %%   <<"Name">> => string(),
@@ -353,9 +379,11 @@
 %%   <<"PatchVersion">> => string()
 %% }
 -type package_object() :: #{binary() => any()}.
+
 %% Example:
 %% delete_device_request() :: #{}
 -type delete_device_request() :: #{}.
+
 
 %% Example:
 %% list_application_instance_dependencies_request() :: #{
@@ -364,17 +392,20 @@
 %% }
 -type list_application_instance_dependencies_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% signal_application_instance_node_instances_response() :: #{
 %%   <<"ApplicationInstanceId">> := string()
 %% }
 -type signal_application_instance_node_instances_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_device_metadata_request() :: #{
 %%   <<"Description">> => string()
 %% }
 -type update_device_metadata_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_application_instances_response() :: #{
@@ -383,11 +414,13 @@
 %% }
 -type list_application_instances_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% node_output_port() :: #{
@@ -396,6 +429,7 @@
 %%   <<"Type">> => string()
 %% }
 -type node_output_port() :: #{binary() => any()}.
+
 
 %% Example:
 %% package_list_item() :: #{
@@ -407,6 +441,7 @@
 %% }
 -type package_list_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% node_from_template_job() :: #{
 %%   <<"CreatedTime">> => non_neg_integer(),
@@ -417,9 +452,11 @@
 %%   <<"TemplateType">> => string()
 %% }
 -type node_from_template_job() :: #{binary() => any()}.
+
 %% Example:
 %% describe_node_from_template_job_request() :: #{}
 -type describe_node_from_template_job_request() :: #{}.
+
 
 %% Example:
 %% describe_node_response() :: #{
@@ -440,11 +477,13 @@
 %% }
 -type describe_node_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% package_import_job_output_config() :: #{
 %%   <<"PackageVersionOutputConfig">> => package_version_output_config()
 %% }
 -type package_import_job_output_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% ntp_status() :: #{
@@ -454,12 +493,14 @@
 %% }
 -type ntp_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% ethernet_payload() :: #{
 %%   <<"ConnectionType">> => string(),
 %%   <<"StaticIpConnectionInfo">> => static_ip_connection_info()
 %% }
 -type ethernet_payload() :: #{binary() => any()}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -470,9 +511,11 @@
 %%   <<"ResourceType">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_package_response() :: #{}
 -type delete_package_response() :: #{}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -482,12 +525,14 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception_error_argument() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Value">> => string()
 %% }
 -type validation_exception_error_argument() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_package_import_jobs_request() :: #{
@@ -496,12 +541,14 @@
 %% }
 -type list_package_import_jobs_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% deregister_package_version_request() :: #{
 %%   <<"OwnerAccount">> => string(),
 %%   <<"UpdatedLatestPatchVersion">> => string()
 %% }
 -type deregister_package_version_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% node_signal() :: #{
@@ -510,11 +557,13 @@
 %% }
 -type node_signal() :: #{binary() => any()}.
 
+
 %% Example:
 %% package_import_job_input_config() :: #{
 %%   <<"PackageVersionInputConfig">> => package_version_input_config()
 %% }
 -type package_import_job_input_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% application_instance() :: #{
@@ -532,9 +581,11 @@
 %%   <<"Tags">> => map()
 %% }
 -type application_instance() :: #{binary() => any()}.
+
 %% Example:
 %% describe_device_request() :: #{}
 -type describe_device_request() :: #{}.
+
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
@@ -546,11 +597,13 @@
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_node_from_template_job_response() :: #{
 %%   <<"JobId">> := string()
 %% }
 -type create_node_from_template_job_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% network_payload() :: #{
@@ -560,11 +613,13 @@
 %% }
 -type network_payload() :: #{binary() => any()}.
 
+
 %% Example:
 %% ntp_payload() :: #{
 %%   <<"NtpServers">> => list(string()())
 %% }
 -type ntp_payload() :: #{binary() => any()}.
+
 
 %% Example:
 %% node_interface() :: #{
@@ -572,6 +627,7 @@
 %%   <<"Outputs">> => list(node_output_port()())
 %% }
 -type node_interface() :: #{binary() => any()}.
+
 
 %% Example:
 %% static_ip_connection_info() :: #{
@@ -581,6 +637,7 @@
 %%   <<"Mask">> => string()
 %% }
 -type static_ip_connection_info() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_nodes_request() :: #{
@@ -593,15 +650,18 @@
 %%   <<"PatchVersion">> => string()
 %% }
 -type list_nodes_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_application_instance_request() :: #{}
 -type describe_application_instance_request() :: #{}.
+
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_package_version_response() :: #{
@@ -618,15 +678,18 @@
 %% }
 -type describe_package_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_devices_response() :: #{
 %%   <<"Devices">> := list(device()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_devices_response() :: #{binary() => any()}.
+
 %% Example:
 %% register_package_version_response() :: #{}
 -type register_package_version_response() :: #{}.
+
 
 %% Example:
 %% validation_exception_field() :: #{
@@ -634,9 +697,11 @@
 %%   <<"Name">> => string()
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
+
 %% Example:
 %% describe_device_job_request() :: #{}
 -type describe_device_job_request() :: #{}.
+
 
 %% Example:
 %% s3_location() :: #{
@@ -645,6 +710,7 @@
 %%   <<"Region">> => string()
 %% }
 -type s3_location() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_node_from_template_job_response() :: #{
@@ -663,11 +729,13 @@
 %% }
 -type describe_node_from_template_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_device_response() :: #{
 %%   <<"DeviceId">> => string()
 %% }
 -type delete_device_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_devices_jobs_request() :: #{
@@ -676,9 +744,11 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_devices_jobs_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_application_instance_details_request() :: #{}
 -type describe_application_instance_details_request() :: #{}.
+
 
 %% Example:
 %% list_node_from_template_jobs_request() :: #{
@@ -687,15 +757,18 @@
 %% }
 -type list_node_from_template_jobs_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RetryAfterSeconds">> => integer()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 %% Example:
 %% remove_application_instance_request() :: #{}
 -type remove_application_instance_request() :: #{}.
+
 
 %% Example:
 %% create_application_instance_response() :: #{
@@ -703,11 +776,13 @@
 %% }
 -type create_application_instance_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_package_import_job_response() :: #{
 %%   <<"JobId">> := string()
 %% }
 -type create_package_import_job_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_panorama_node() :: #{
@@ -725,12 +800,14 @@
 %% }
 -type aws_panorama_node() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_devices_jobs_response() :: #{
 %%   <<"DeviceJobs">> => list(device_job()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_devices_jobs_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% package_import_job_output() :: #{
@@ -741,6 +818,7 @@
 %% }
 -type package_import_job_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% out_put_s3_location() :: #{
 %%   <<"BucketName">> => string(),
@@ -748,17 +826,20 @@
 %% }
 -type out_put_s3_location() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_package_request() :: #{
 %%   <<"ForceDelete">> => boolean()
 %% }
 -type delete_package_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_package_import_job_response() :: #{
@@ -776,6 +857,7 @@
 %% }
 -type describe_package_import_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% storage_location() :: #{
 %%   <<"BinaryPrefixLocation">> => string(),
@@ -785,9 +867,11 @@
 %%   <<"RepoPrefixLocation">> => string()
 %% }
 -type storage_location() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% signal_application_instance_node_instances_request() :: #{
@@ -795,11 +879,13 @@
 %% }
 -type signal_application_instance_node_instances_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% alternate_software_metadata() :: #{
 %%   <<"Version">> => string()
 %% }
 -type alternate_software_metadata() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_resource_tags() :: #{
@@ -807,6 +893,7 @@
 %%   <<"Tags">> => map()
 %% }
 -type job_resource_tags() :: #{binary() => any()}.
+
 
 %% Example:
 %% validation_exception() :: #{
@@ -817,9 +904,11 @@
 %%   <<"Reason">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% job() :: #{
@@ -828,6 +917,7 @@
 %% }
 -type job() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception_error_argument() :: #{
 %%   <<"Name">> => string(),
@@ -835,15 +925,18 @@
 %% }
 -type conflict_exception_error_argument() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_application_instance_dependencies_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"PackageObjects">> => list(package_object()())
 %% }
 -type list_application_instance_dependencies_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_package_request() :: #{}
 -type describe_package_request() :: #{}.
+
 
 %% Example:
 %% list_application_instance_node_instances_request() :: #{
@@ -852,6 +945,7 @@
 %% }
 -type list_application_instance_node_instances_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_package_response() :: #{
 %%   <<"Arn">> => string(),
@@ -859,9 +953,11 @@
 %%   <<"StorageLocation">> := storage_location()
 %% }
 -type create_package_response() :: #{binary() => any()}.
+
 %% Example:
 %% deregister_package_version_response() :: #{}
 -type deregister_package_version_response() :: #{}.
+
 
 %% Example:
 %% ota_job_config() :: #{
@@ -870,11 +966,13 @@
 %% }
 -type ota_job_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_node_request() :: #{
 %%   <<"OwnerAccount">> => string()
 %% }
 -type describe_node_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% device() :: #{
@@ -894,6 +992,7 @@
 %% }
 -type device() :: #{binary() => any()}.
 
+
 %% Example:
 %% latest_device_job() :: #{
 %%   <<"ImageVersion">> => string(),
@@ -902,12 +1001,14 @@
 %% }
 -type latest_device_job() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_package_version_request() :: #{
 %%   <<"OwnerAccount">> => string(),
 %%   <<"PatchVersion">> => string()
 %% }
 -type describe_package_version_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_job_for_devices_request() :: #{
@@ -917,12 +1018,14 @@
 %% }
 -type create_job_for_devices_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% register_package_version_request() :: #{
 %%   <<"MarkLatest">> => boolean(),
 %%   <<"OwnerAccount">> => string()
 %% }
 -type register_package_version_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_application_instance_node_instances_response() :: #{
@@ -931,15 +1034,18 @@
 %% }
 -type list_application_instance_node_instances_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_packages_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Packages">> => list(package_list_item()())
 %% }
 -type list_packages_response() :: #{binary() => any()}.
+
 %% Example:
 %% remove_application_instance_response() :: #{}
 -type remove_application_instance_response() :: #{}.
+
 
 %% Example:
 %% list_nodes_response() :: #{
@@ -948,11 +1054,13 @@
 %% }
 -type list_nodes_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% device_job_config() :: #{
 %%   <<"OTAJobConfig">> => ota_job_config()
 %% }
 -type device_job_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% package_version_output_config() :: #{
@@ -961,6 +1069,7 @@
 %%   <<"PackageVersion">> => string()
 %% }
 -type package_version_output_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% package_import_job() :: #{
@@ -973,6 +1082,7 @@
 %% }
 -type package_import_job() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_application_instances_request() :: #{
 %%   <<"DeviceId">> => string(),
@@ -981,6 +1091,7 @@
 %%   <<"StatusFilter">> => string()
 %% }
 -type list_application_instances_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_device_response() :: #{
@@ -1007,6 +1118,215 @@
 %% }
 -type describe_device_response() :: #{binary() => any()}.
 
+-type create_application_instance_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type create_job_for_devices_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_node_from_template_job_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type create_package_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type create_package_import_job_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_device_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_package_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type deregister_package_version_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_application_instance_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_application_instance_details_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_device_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_device_job_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_node_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_node_from_template_job_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type describe_package_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_package_import_job_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type describe_package_version_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_application_instance_dependencies_errors() ::
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_application_instance_node_instances_errors() ::
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_application_instances_errors() ::
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_devices_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type list_devices_jobs_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_node_from_template_jobs_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type list_nodes_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type list_package_import_jobs_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type list_packages_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type provision_device_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type register_package_version_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type remove_application_instance_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type signal_application_instance_node_instances_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_device_metadata_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -1015,20 +1335,14 @@
 -spec create_application_instance(map(), create_application_instance_request()) ->
     {ok, create_application_instance_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_application_instance_errors(), tuple()}.
 create_application_instance(Client, Input) ->
     create_application_instance(Client, Input, []).
 
 -spec create_application_instance(map(), create_application_instance_request(), proplists:proplist()) ->
     {ok, create_application_instance_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_application_instance_errors(), tuple()}.
 create_application_instance(Client, Input0, Options0) ->
     Method = post,
     Path = ["/application-instances"],
@@ -1057,22 +1371,14 @@ create_application_instance(Client, Input0, Options0) ->
 -spec create_job_for_devices(map(), create_job_for_devices_request()) ->
     {ok, create_job_for_devices_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_job_for_devices_errors(), tuple()}.
 create_job_for_devices(Client, Input) ->
     create_job_for_devices(Client, Input, []).
 
 -spec create_job_for_devices(map(), create_job_for_devices_request(), proplists:proplist()) ->
     {ok, create_job_for_devices_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_job_for_devices_errors(), tuple()}.
 create_job_for_devices(Client, Input0, Options0) ->
     Method = post,
     Path = ["/jobs"],
@@ -1099,20 +1405,14 @@ create_job_for_devices(Client, Input0, Options0) ->
 -spec create_node_from_template_job(map(), create_node_from_template_job_request()) ->
     {ok, create_node_from_template_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_node_from_template_job_errors(), tuple()}.
 create_node_from_template_job(Client, Input) ->
     create_node_from_template_job(Client, Input, []).
 
 -spec create_node_from_template_job(map(), create_node_from_template_job_request(), proplists:proplist()) ->
     {ok, create_node_from_template_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_node_from_template_job_errors(), tuple()}.
 create_node_from_template_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/packages/template-job"],
@@ -1139,20 +1439,14 @@ create_node_from_template_job(Client, Input0, Options0) ->
 -spec create_package(map(), create_package_request()) ->
     {ok, create_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_package_errors(), tuple()}.
 create_package(Client, Input) ->
     create_package(Client, Input, []).
 
 -spec create_package(map(), create_package_request(), proplists:proplist()) ->
     {ok, create_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_package_errors(), tuple()}.
 create_package(Client, Input0, Options0) ->
     Method = post,
     Path = ["/packages"],
@@ -1179,20 +1473,14 @@ create_package(Client, Input0, Options0) ->
 -spec create_package_import_job(map(), create_package_import_job_request()) ->
     {ok, create_package_import_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_package_import_job_errors(), tuple()}.
 create_package_import_job(Client, Input) ->
     create_package_import_job(Client, Input, []).
 
 -spec create_package_import_job(map(), create_package_import_job_request(), proplists:proplist()) ->
     {ok, create_package_import_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_package_import_job_errors(), tuple()}.
 create_package_import_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/packages/import-jobs"],
@@ -1219,22 +1507,14 @@ create_package_import_job(Client, Input0, Options0) ->
 -spec delete_device(map(), binary() | list(), delete_device_request()) ->
     {ok, delete_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_device_errors(), tuple()}.
 delete_device(Client, DeviceId, Input) ->
     delete_device(Client, DeviceId, Input, []).
 
 -spec delete_device(map(), binary() | list(), delete_device_request(), proplists:proplist()) ->
     {ok, delete_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_device_errors(), tuple()}.
 delete_device(Client, DeviceId, Input0, Options0) ->
     Method = delete,
     Path = ["/devices/", aws_util:encode_uri(DeviceId), ""],
@@ -1265,22 +1545,14 @@ delete_device(Client, DeviceId, Input0, Options0) ->
 -spec delete_package(map(), binary() | list(), delete_package_request()) ->
     {ok, delete_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_package_errors(), tuple()}.
 delete_package(Client, PackageId, Input) ->
     delete_package(Client, PackageId, Input, []).
 
 -spec delete_package(map(), binary() | list(), delete_package_request(), proplists:proplist()) ->
     {ok, delete_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_package_errors(), tuple()}.
 delete_package(Client, PackageId, Input0, Options0) ->
     Method = delete,
     Path = ["/packages/", aws_util:encode_uri(PackageId), ""],
@@ -1308,22 +1580,14 @@ delete_package(Client, PackageId, Input0, Options0) ->
 -spec deregister_package_version(map(), binary() | list(), binary() | list(), binary() | list(), deregister_package_version_request()) ->
     {ok, deregister_package_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, deregister_package_version_errors(), tuple()}.
 deregister_package_version(Client, PackageId, PackageVersion, PatchVersion, Input) ->
     deregister_package_version(Client, PackageId, PackageVersion, PatchVersion, Input, []).
 
 -spec deregister_package_version(map(), binary() | list(), binary() | list(), binary() | list(), deregister_package_version_request(), proplists:proplist()) ->
     {ok, deregister_package_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, deregister_package_version_errors(), tuple()}.
 deregister_package_version(Client, PackageId, PackageVersion, PatchVersion, Input0, Options0) ->
     Method = delete,
     Path = ["/packages/", aws_util:encode_uri(PackageId), "/versions/", aws_util:encode_uri(PackageVersion), "/patch/", aws_util:encode_uri(PatchVersion), ""],
@@ -1352,11 +1616,7 @@ deregister_package_version(Client, PackageId, PackageVersion, PatchVersion, Inpu
 -spec describe_application_instance(map(), binary() | list()) ->
     {ok, describe_application_instance_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_application_instance_errors(), tuple()}.
 describe_application_instance(Client, ApplicationInstanceId)
   when is_map(Client) ->
     describe_application_instance(Client, ApplicationInstanceId, #{}, #{}).
@@ -1364,11 +1624,7 @@ describe_application_instance(Client, ApplicationInstanceId)
 -spec describe_application_instance(map(), binary() | list(), map(), map()) ->
     {ok, describe_application_instance_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_application_instance_errors(), tuple()}.
 describe_application_instance(Client, ApplicationInstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_application_instance(Client, ApplicationInstanceId, QueryMap, HeadersMap, []).
@@ -1376,11 +1632,7 @@ describe_application_instance(Client, ApplicationInstanceId, QueryMap, HeadersMa
 -spec describe_application_instance(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_application_instance_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_application_instance_errors(), tuple()}.
 describe_application_instance(Client, ApplicationInstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/application-instances/", aws_util:encode_uri(ApplicationInstanceId), ""],
@@ -1402,11 +1654,7 @@ describe_application_instance(Client, ApplicationInstanceId, QueryMap, HeadersMa
 -spec describe_application_instance_details(map(), binary() | list()) ->
     {ok, describe_application_instance_details_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_application_instance_details_errors(), tuple()}.
 describe_application_instance_details(Client, ApplicationInstanceId)
   when is_map(Client) ->
     describe_application_instance_details(Client, ApplicationInstanceId, #{}, #{}).
@@ -1414,11 +1662,7 @@ describe_application_instance_details(Client, ApplicationInstanceId)
 -spec describe_application_instance_details(map(), binary() | list(), map(), map()) ->
     {ok, describe_application_instance_details_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_application_instance_details_errors(), tuple()}.
 describe_application_instance_details(Client, ApplicationInstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_application_instance_details(Client, ApplicationInstanceId, QueryMap, HeadersMap, []).
@@ -1426,11 +1670,7 @@ describe_application_instance_details(Client, ApplicationInstanceId, QueryMap, H
 -spec describe_application_instance_details(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_application_instance_details_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_application_instance_details_errors(), tuple()}.
 describe_application_instance_details(Client, ApplicationInstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/application-instances/", aws_util:encode_uri(ApplicationInstanceId), "/details"],
@@ -1451,10 +1691,7 @@ describe_application_instance_details(Client, ApplicationInstanceId, QueryMap, H
 -spec describe_device(map(), binary() | list()) ->
     {ok, describe_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_device_errors(), tuple()}.
 describe_device(Client, DeviceId)
   when is_map(Client) ->
     describe_device(Client, DeviceId, #{}, #{}).
@@ -1462,10 +1699,7 @@ describe_device(Client, DeviceId)
 -spec describe_device(map(), binary() | list(), map(), map()) ->
     {ok, describe_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_device_errors(), tuple()}.
 describe_device(Client, DeviceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_device(Client, DeviceId, QueryMap, HeadersMap, []).
@@ -1473,10 +1707,7 @@ describe_device(Client, DeviceId, QueryMap, HeadersMap)
 -spec describe_device(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_device_errors(), tuple()}.
 describe_device(Client, DeviceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/devices/", aws_util:encode_uri(DeviceId), ""],
@@ -1497,11 +1728,7 @@ describe_device(Client, DeviceId, QueryMap, HeadersMap, Options0)
 -spec describe_device_job(map(), binary() | list()) ->
     {ok, describe_device_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_device_job_errors(), tuple()}.
 describe_device_job(Client, JobId)
   when is_map(Client) ->
     describe_device_job(Client, JobId, #{}, #{}).
@@ -1509,11 +1736,7 @@ describe_device_job(Client, JobId)
 -spec describe_device_job(map(), binary() | list(), map(), map()) ->
     {ok, describe_device_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_device_job_errors(), tuple()}.
 describe_device_job(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_device_job(Client, JobId, QueryMap, HeadersMap, []).
@@ -1521,11 +1744,7 @@ describe_device_job(Client, JobId, QueryMap, HeadersMap)
 -spec describe_device_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_device_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_device_job_errors(), tuple()}.
 describe_device_job(Client, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
@@ -1546,11 +1765,7 @@ describe_device_job(Client, JobId, QueryMap, HeadersMap, Options0)
 -spec describe_node(map(), binary() | list()) ->
     {ok, describe_node_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_node_errors(), tuple()}.
 describe_node(Client, NodeId)
   when is_map(Client) ->
     describe_node(Client, NodeId, #{}, #{}).
@@ -1558,11 +1773,7 @@ describe_node(Client, NodeId)
 -spec describe_node(map(), binary() | list(), map(), map()) ->
     {ok, describe_node_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_node_errors(), tuple()}.
 describe_node(Client, NodeId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_node(Client, NodeId, QueryMap, HeadersMap, []).
@@ -1570,11 +1781,7 @@ describe_node(Client, NodeId, QueryMap, HeadersMap)
 -spec describe_node(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_node_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_node_errors(), tuple()}.
 describe_node(Client, NodeId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/nodes/", aws_util:encode_uri(NodeId), ""],
@@ -1599,10 +1806,7 @@ describe_node(Client, NodeId, QueryMap, HeadersMap, Options0)
 -spec describe_node_from_template_job(map(), binary() | list()) ->
     {ok, describe_node_from_template_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_node_from_template_job_errors(), tuple()}.
 describe_node_from_template_job(Client, JobId)
   when is_map(Client) ->
     describe_node_from_template_job(Client, JobId, #{}, #{}).
@@ -1610,10 +1814,7 @@ describe_node_from_template_job(Client, JobId)
 -spec describe_node_from_template_job(map(), binary() | list(), map(), map()) ->
     {ok, describe_node_from_template_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_node_from_template_job_errors(), tuple()}.
 describe_node_from_template_job(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_node_from_template_job(Client, JobId, QueryMap, HeadersMap, []).
@@ -1621,10 +1822,7 @@ describe_node_from_template_job(Client, JobId, QueryMap, HeadersMap)
 -spec describe_node_from_template_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_node_from_template_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_node_from_template_job_errors(), tuple()}.
 describe_node_from_template_job(Client, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/packages/template-job/", aws_util:encode_uri(JobId), ""],
@@ -1645,11 +1843,7 @@ describe_node_from_template_job(Client, JobId, QueryMap, HeadersMap, Options0)
 -spec describe_package(map(), binary() | list()) ->
     {ok, describe_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_package_errors(), tuple()}.
 describe_package(Client, PackageId)
   when is_map(Client) ->
     describe_package(Client, PackageId, #{}, #{}).
@@ -1657,11 +1851,7 @@ describe_package(Client, PackageId)
 -spec describe_package(map(), binary() | list(), map(), map()) ->
     {ok, describe_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_package_errors(), tuple()}.
 describe_package(Client, PackageId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_package(Client, PackageId, QueryMap, HeadersMap, []).
@@ -1669,11 +1859,7 @@ describe_package(Client, PackageId, QueryMap, HeadersMap)
 -spec describe_package(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_package_errors(), tuple()}.
 describe_package(Client, PackageId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/packages/metadata/", aws_util:encode_uri(PackageId), ""],
@@ -1694,10 +1880,7 @@ describe_package(Client, PackageId, QueryMap, HeadersMap, Options0)
 -spec describe_package_import_job(map(), binary() | list()) ->
     {ok, describe_package_import_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_package_import_job_errors(), tuple()}.
 describe_package_import_job(Client, JobId)
   when is_map(Client) ->
     describe_package_import_job(Client, JobId, #{}, #{}).
@@ -1705,10 +1888,7 @@ describe_package_import_job(Client, JobId)
 -spec describe_package_import_job(map(), binary() | list(), map(), map()) ->
     {ok, describe_package_import_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_package_import_job_errors(), tuple()}.
 describe_package_import_job(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_package_import_job(Client, JobId, QueryMap, HeadersMap, []).
@@ -1716,10 +1896,7 @@ describe_package_import_job(Client, JobId, QueryMap, HeadersMap)
 -spec describe_package_import_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_package_import_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_package_import_job_errors(), tuple()}.
 describe_package_import_job(Client, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/packages/import-jobs/", aws_util:encode_uri(JobId), ""],
@@ -1740,11 +1917,7 @@ describe_package_import_job(Client, JobId, QueryMap, HeadersMap, Options0)
 -spec describe_package_version(map(), binary() | list(), binary() | list()) ->
     {ok, describe_package_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_package_version_errors(), tuple()}.
 describe_package_version(Client, PackageId, PackageVersion)
   when is_map(Client) ->
     describe_package_version(Client, PackageId, PackageVersion, #{}, #{}).
@@ -1752,11 +1925,7 @@ describe_package_version(Client, PackageId, PackageVersion)
 -spec describe_package_version(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_package_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_package_version_errors(), tuple()}.
 describe_package_version(Client, PackageId, PackageVersion, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_package_version(Client, PackageId, PackageVersion, QueryMap, HeadersMap, []).
@@ -1764,11 +1933,7 @@ describe_package_version(Client, PackageId, PackageVersion, QueryMap, HeadersMap
 -spec describe_package_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_package_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_package_version_errors(), tuple()}.
 describe_package_version(Client, PackageId, PackageVersion, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/packages/metadata/", aws_util:encode_uri(PackageId), "/versions/", aws_util:encode_uri(PackageVersion), ""],
@@ -1794,8 +1959,7 @@ describe_package_version(Client, PackageId, PackageVersion, QueryMap, HeadersMap
 -spec list_application_instance_dependencies(map(), binary() | list()) ->
     {ok, list_application_instance_dependencies_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, list_application_instance_dependencies_errors(), tuple()}.
 list_application_instance_dependencies(Client, ApplicationInstanceId)
   when is_map(Client) ->
     list_application_instance_dependencies(Client, ApplicationInstanceId, #{}, #{}).
@@ -1803,8 +1967,7 @@ list_application_instance_dependencies(Client, ApplicationInstanceId)
 -spec list_application_instance_dependencies(map(), binary() | list(), map(), map()) ->
     {ok, list_application_instance_dependencies_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, list_application_instance_dependencies_errors(), tuple()}.
 list_application_instance_dependencies(Client, ApplicationInstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_application_instance_dependencies(Client, ApplicationInstanceId, QueryMap, HeadersMap, []).
@@ -1812,8 +1975,7 @@ list_application_instance_dependencies(Client, ApplicationInstanceId, QueryMap, 
 -spec list_application_instance_dependencies(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_application_instance_dependencies_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, list_application_instance_dependencies_errors(), tuple()}.
 list_application_instance_dependencies(Client, ApplicationInstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/application-instances/", aws_util:encode_uri(ApplicationInstanceId), "/package-dependencies"],
@@ -1839,8 +2001,7 @@ list_application_instance_dependencies(Client, ApplicationInstanceId, QueryMap, 
 -spec list_application_instance_node_instances(map(), binary() | list()) ->
     {ok, list_application_instance_node_instances_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, list_application_instance_node_instances_errors(), tuple()}.
 list_application_instance_node_instances(Client, ApplicationInstanceId)
   when is_map(Client) ->
     list_application_instance_node_instances(Client, ApplicationInstanceId, #{}, #{}).
@@ -1848,8 +2009,7 @@ list_application_instance_node_instances(Client, ApplicationInstanceId)
 -spec list_application_instance_node_instances(map(), binary() | list(), map(), map()) ->
     {ok, list_application_instance_node_instances_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, list_application_instance_node_instances_errors(), tuple()}.
 list_application_instance_node_instances(Client, ApplicationInstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_application_instance_node_instances(Client, ApplicationInstanceId, QueryMap, HeadersMap, []).
@@ -1857,8 +2017,7 @@ list_application_instance_node_instances(Client, ApplicationInstanceId, QueryMap
 -spec list_application_instance_node_instances(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_application_instance_node_instances_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, list_application_instance_node_instances_errors(), tuple()}.
 list_application_instance_node_instances(Client, ApplicationInstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/application-instances/", aws_util:encode_uri(ApplicationInstanceId), "/node-instances"],
@@ -1884,8 +2043,7 @@ list_application_instance_node_instances(Client, ApplicationInstanceId, QueryMap
 -spec list_application_instances(map()) ->
     {ok, list_application_instances_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, list_application_instances_errors(), tuple()}.
 list_application_instances(Client)
   when is_map(Client) ->
     list_application_instances(Client, #{}, #{}).
@@ -1893,8 +2051,7 @@ list_application_instances(Client)
 -spec list_application_instances(map(), map(), map()) ->
     {ok, list_application_instances_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, list_application_instances_errors(), tuple()}.
 list_application_instances(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_application_instances(Client, QueryMap, HeadersMap, []).
@@ -1902,8 +2059,7 @@ list_application_instances(Client, QueryMap, HeadersMap)
 -spec list_application_instances(map(), map(), map(), proplists:proplist()) ->
     {ok, list_application_instances_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, list_application_instances_errors(), tuple()}.
 list_application_instances(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/application-instances"],
@@ -1931,10 +2087,7 @@ list_application_instances(Client, QueryMap, HeadersMap, Options0)
 -spec list_devices(map()) ->
     {ok, list_devices_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_devices_errors(), tuple()}.
 list_devices(Client)
   when is_map(Client) ->
     list_devices(Client, #{}, #{}).
@@ -1942,10 +2095,7 @@ list_devices(Client)
 -spec list_devices(map(), map(), map()) ->
     {ok, list_devices_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_devices_errors(), tuple()}.
 list_devices(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_devices(Client, QueryMap, HeadersMap, []).
@@ -1953,10 +2103,7 @@ list_devices(Client, QueryMap, HeadersMap)
 -spec list_devices(map(), map(), map(), proplists:proplist()) ->
     {ok, list_devices_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_devices_errors(), tuple()}.
 list_devices(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/devices"],
@@ -1986,11 +2133,7 @@ list_devices(Client, QueryMap, HeadersMap, Options0)
 -spec list_devices_jobs(map()) ->
     {ok, list_devices_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_devices_jobs_errors(), tuple()}.
 list_devices_jobs(Client)
   when is_map(Client) ->
     list_devices_jobs(Client, #{}, #{}).
@@ -1998,11 +2141,7 @@ list_devices_jobs(Client)
 -spec list_devices_jobs(map(), map(), map()) ->
     {ok, list_devices_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_devices_jobs_errors(), tuple()}.
 list_devices_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_devices_jobs(Client, QueryMap, HeadersMap, []).
@@ -2010,11 +2149,7 @@ list_devices_jobs(Client, QueryMap, HeadersMap)
 -spec list_devices_jobs(map(), map(), map(), proplists:proplist()) ->
     {ok, list_devices_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_devices_jobs_errors(), tuple()}.
 list_devices_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobs"],
@@ -2041,10 +2176,7 @@ list_devices_jobs(Client, QueryMap, HeadersMap, Options0)
 -spec list_node_from_template_jobs(map()) ->
     {ok, list_node_from_template_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_node_from_template_jobs_errors(), tuple()}.
 list_node_from_template_jobs(Client)
   when is_map(Client) ->
     list_node_from_template_jobs(Client, #{}, #{}).
@@ -2052,10 +2184,7 @@ list_node_from_template_jobs(Client)
 -spec list_node_from_template_jobs(map(), map(), map()) ->
     {ok, list_node_from_template_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_node_from_template_jobs_errors(), tuple()}.
 list_node_from_template_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_node_from_template_jobs(Client, QueryMap, HeadersMap, []).
@@ -2063,10 +2192,7 @@ list_node_from_template_jobs(Client, QueryMap, HeadersMap)
 -spec list_node_from_template_jobs(map(), map(), map(), proplists:proplist()) ->
     {ok, list_node_from_template_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_node_from_template_jobs_errors(), tuple()}.
 list_node_from_template_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/packages/template-job"],
@@ -2092,9 +2218,7 @@ list_node_from_template_jobs(Client, QueryMap, HeadersMap, Options0)
 -spec list_nodes(map()) ->
     {ok, list_nodes_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_nodes_errors(), tuple()}.
 list_nodes(Client)
   when is_map(Client) ->
     list_nodes(Client, #{}, #{}).
@@ -2102,9 +2226,7 @@ list_nodes(Client)
 -spec list_nodes(map(), map(), map()) ->
     {ok, list_nodes_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_nodes_errors(), tuple()}.
 list_nodes(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_nodes(Client, QueryMap, HeadersMap, []).
@@ -2112,9 +2234,7 @@ list_nodes(Client, QueryMap, HeadersMap)
 -spec list_nodes(map(), map(), map(), proplists:proplist()) ->
     {ok, list_nodes_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_nodes_errors(), tuple()}.
 list_nodes(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/nodes"],
@@ -2145,10 +2265,7 @@ list_nodes(Client, QueryMap, HeadersMap, Options0)
 -spec list_package_import_jobs(map()) ->
     {ok, list_package_import_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_package_import_jobs_errors(), tuple()}.
 list_package_import_jobs(Client)
   when is_map(Client) ->
     list_package_import_jobs(Client, #{}, #{}).
@@ -2156,10 +2273,7 @@ list_package_import_jobs(Client)
 -spec list_package_import_jobs(map(), map(), map()) ->
     {ok, list_package_import_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_package_import_jobs_errors(), tuple()}.
 list_package_import_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_package_import_jobs(Client, QueryMap, HeadersMap, []).
@@ -2167,10 +2281,7 @@ list_package_import_jobs(Client, QueryMap, HeadersMap)
 -spec list_package_import_jobs(map(), map(), map(), proplists:proplist()) ->
     {ok, list_package_import_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_package_import_jobs_errors(), tuple()}.
 list_package_import_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/packages/import-jobs"],
@@ -2196,11 +2307,7 @@ list_package_import_jobs(Client, QueryMap, HeadersMap, Options0)
 -spec list_packages(map()) ->
     {ok, list_packages_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_packages_errors(), tuple()}.
 list_packages(Client)
   when is_map(Client) ->
     list_packages(Client, #{}, #{}).
@@ -2208,11 +2315,7 @@ list_packages(Client)
 -spec list_packages(map(), map(), map()) ->
     {ok, list_packages_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_packages_errors(), tuple()}.
 list_packages(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_packages(Client, QueryMap, HeadersMap, []).
@@ -2220,11 +2323,7 @@ list_packages(Client, QueryMap, HeadersMap)
 -spec list_packages(map(), map(), map(), proplists:proplist()) ->
     {ok, list_packages_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_packages_errors(), tuple()}.
 list_packages(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/packages"],
@@ -2250,9 +2349,7 @@ list_packages(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -2260,9 +2357,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -2270,9 +2365,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2301,22 +2394,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec provision_device(map(), provision_device_request()) ->
     {ok, provision_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, provision_device_errors(), tuple()}.
 provision_device(Client, Input) ->
     provision_device(Client, Input, []).
 
 -spec provision_device(map(), provision_device_request(), proplists:proplist()) ->
     {ok, provision_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, provision_device_errors(), tuple()}.
 provision_device(Client, Input0, Options0) ->
     Method = post,
     Path = ["/devices"],
@@ -2343,20 +2428,14 @@ provision_device(Client, Input0, Options0) ->
 -spec register_package_version(map(), binary() | list(), binary() | list(), binary() | list(), register_package_version_request()) ->
     {ok, register_package_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, register_package_version_errors(), tuple()}.
 register_package_version(Client, PackageId, PackageVersion, PatchVersion, Input) ->
     register_package_version(Client, PackageId, PackageVersion, PatchVersion, Input, []).
 
 -spec register_package_version(map(), binary() | list(), binary() | list(), binary() | list(), register_package_version_request(), proplists:proplist()) ->
     {ok, register_package_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, register_package_version_errors(), tuple()}.
 register_package_version(Client, PackageId, PackageVersion, PatchVersion, Input0, Options0) ->
     Method = put,
     Path = ["/packages/", aws_util:encode_uri(PackageId), "/versions/", aws_util:encode_uri(PackageVersion), "/patch/", aws_util:encode_uri(PatchVersion), ""],
@@ -2383,22 +2462,14 @@ register_package_version(Client, PackageId, PackageVersion, PatchVersion, Input0
 -spec remove_application_instance(map(), binary() | list(), remove_application_instance_request()) ->
     {ok, remove_application_instance_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, remove_application_instance_errors(), tuple()}.
 remove_application_instance(Client, ApplicationInstanceId, Input) ->
     remove_application_instance(Client, ApplicationInstanceId, Input, []).
 
 -spec remove_application_instance(map(), binary() | list(), remove_application_instance_request(), proplists:proplist()) ->
     {ok, remove_application_instance_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, remove_application_instance_errors(), tuple()}.
 remove_application_instance(Client, ApplicationInstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/application-instances/", aws_util:encode_uri(ApplicationInstanceId), ""],
@@ -2425,20 +2496,14 @@ remove_application_instance(Client, ApplicationInstanceId, Input0, Options0) ->
 -spec signal_application_instance_node_instances(map(), binary() | list(), signal_application_instance_node_instances_request()) ->
     {ok, signal_application_instance_node_instances_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, signal_application_instance_node_instances_errors(), tuple()}.
 signal_application_instance_node_instances(Client, ApplicationInstanceId, Input) ->
     signal_application_instance_node_instances(Client, ApplicationInstanceId, Input, []).
 
 -spec signal_application_instance_node_instances(map(), binary() | list(), signal_application_instance_node_instances_request(), proplists:proplist()) ->
     {ok, signal_application_instance_node_instances_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, signal_application_instance_node_instances_errors(), tuple()}.
 signal_application_instance_node_instances(Client, ApplicationInstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/application-instances/", aws_util:encode_uri(ApplicationInstanceId), "/node-signals"],
@@ -2465,18 +2530,14 @@ signal_application_instance_node_instances(Client, ApplicationInstanceId, Input0
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2503,18 +2564,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2542,22 +2599,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_device_metadata(map(), binary() | list(), update_device_metadata_request()) ->
     {ok, update_device_metadata_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_device_metadata_errors(), tuple()}.
 update_device_metadata(Client, DeviceId, Input) ->
     update_device_metadata(Client, DeviceId, Input, []).
 
 -spec update_device_metadata(map(), binary() | list(), update_device_metadata_request(), proplists:proplist()) ->
     {ok, update_device_metadata_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_device_metadata_errors(), tuple()}.
 update_device_metadata(Client, DeviceId, Input0, Options0) ->
     Method = put,
     Path = ["/devices/", aws_util:encode_uri(DeviceId), ""],

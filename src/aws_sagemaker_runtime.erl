@@ -21,17 +21,20 @@
 %% }
 -type internal_dependency_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_failure() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_failure() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_stream_failure() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_stream_failure() :: #{binary() => any()}.
+
 
 %% Example:
 %% invoke_endpoint_async_input() :: #{
@@ -45,6 +48,7 @@
 %% }
 -type invoke_endpoint_async_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% invoke_endpoint_async_output() :: #{
 %%   <<"FailureLocation">> => string(),
@@ -52,6 +56,7 @@
 %%   <<"OutputLocation">> => string()
 %% }
 -type invoke_endpoint_async_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% invoke_endpoint_input() :: #{
@@ -68,6 +73,7 @@
 %% }
 -type invoke_endpoint_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% invoke_endpoint_output() :: #{
 %%   <<"Body">> => binary(),
@@ -76,6 +82,7 @@
 %%   <<"InvokedProductionVariant">> => string()
 %% }
 -type invoke_endpoint_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% invoke_endpoint_with_response_stream_input() :: #{
@@ -90,6 +97,7 @@
 %% }
 -type invoke_endpoint_with_response_stream_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% invoke_endpoint_with_response_stream_output() :: #{
 %%   <<"Body">> => list(),
@@ -98,6 +106,7 @@
 %%   <<"InvokedProductionVariant">> => string()
 %% }
 -type invoke_endpoint_with_response_stream_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% model_error() :: #{
@@ -108,11 +117,13 @@
 %% }
 -type model_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% model_not_ready_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type model_not_ready_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% model_stream_error() :: #{
@@ -121,11 +132,13 @@
 %% }
 -type model_stream_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% payload_part() :: #{
 %%   <<"Bytes">> => binary()
 %% }
 -type payload_part() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_unavailable() :: #{
@@ -133,11 +146,33 @@
 %% }
 -type service_unavailable() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_error() :: #{
 %%   <<"Message">> => string()
 %% }
 -type validation_error() :: #{binary() => any()}.
+
+-type invoke_endpoint_errors() ::
+    validation_error() | 
+    service_unavailable() | 
+    model_not_ready_exception() | 
+    model_error() | 
+    internal_failure() | 
+    internal_dependency_exception().
+
+-type invoke_endpoint_async_errors() ::
+    validation_error() | 
+    service_unavailable() | 
+    internal_failure().
+
+-type invoke_endpoint_with_response_stream_errors() ::
+    validation_error() | 
+    service_unavailable() | 
+    model_stream_error() | 
+    model_error() | 
+    internal_stream_failure() | 
+    internal_failure().
 
 %%====================================================================
 %% API
@@ -181,24 +216,14 @@
 -spec invoke_endpoint(map(), binary() | list(), invoke_endpoint_input()) ->
     {ok, invoke_endpoint_output(), tuple()} |
     {error, any()} |
-    {error, internal_dependency_exception(), tuple()} |
-    {error, internal_failure(), tuple()} |
-    {error, model_error(), tuple()} |
-    {error, model_not_ready_exception(), tuple()} |
-    {error, service_unavailable(), tuple()} |
-    {error, validation_error(), tuple()}.
+    {error, invoke_endpoint_errors(), tuple()}.
 invoke_endpoint(Client, EndpointName, Input) ->
     invoke_endpoint(Client, EndpointName, Input, []).
 
 -spec invoke_endpoint(map(), binary() | list(), invoke_endpoint_input(), proplists:proplist()) ->
     {ok, invoke_endpoint_output(), tuple()} |
     {error, any()} |
-    {error, internal_dependency_exception(), tuple()} |
-    {error, internal_failure(), tuple()} |
-    {error, model_error(), tuple()} |
-    {error, model_not_ready_exception(), tuple()} |
-    {error, service_unavailable(), tuple()} |
-    {error, validation_error(), tuple()}.
+    {error, invoke_endpoint_errors(), tuple()}.
 invoke_endpoint(Client, EndpointName, Input0, Options0) ->
     Method = post,
     Path = ["/endpoints/", aws_util:encode_uri(EndpointName), "/invocations"],
@@ -277,18 +302,14 @@ invoke_endpoint(Client, EndpointName, Input0, Options0) ->
 -spec invoke_endpoint_async(map(), binary() | list(), invoke_endpoint_async_input()) ->
     {ok, invoke_endpoint_async_output(), tuple()} |
     {error, any()} |
-    {error, internal_failure(), tuple()} |
-    {error, service_unavailable(), tuple()} |
-    {error, validation_error(), tuple()}.
+    {error, invoke_endpoint_async_errors(), tuple()}.
 invoke_endpoint_async(Client, EndpointName, Input) ->
     invoke_endpoint_async(Client, EndpointName, Input, []).
 
 -spec invoke_endpoint_async(map(), binary() | list(), invoke_endpoint_async_input(), proplists:proplist()) ->
     {ok, invoke_endpoint_async_output(), tuple()} |
     {error, any()} |
-    {error, internal_failure(), tuple()} |
-    {error, service_unavailable(), tuple()} |
-    {error, validation_error(), tuple()}.
+    {error, invoke_endpoint_async_errors(), tuple()}.
 invoke_endpoint_async(Client, EndpointName, Input0, Options0) ->
     Method = post,
     Path = ["/endpoints/", aws_util:encode_uri(EndpointName), "/async-invocations"],
@@ -383,24 +404,14 @@ invoke_endpoint_async(Client, EndpointName, Input0, Options0) ->
 -spec invoke_endpoint_with_response_stream(map(), binary() | list(), invoke_endpoint_with_response_stream_input()) ->
     {ok, invoke_endpoint_with_response_stream_output(), tuple()} |
     {error, any()} |
-    {error, internal_failure(), tuple()} |
-    {error, internal_stream_failure(), tuple()} |
-    {error, model_error(), tuple()} |
-    {error, model_stream_error(), tuple()} |
-    {error, service_unavailable(), tuple()} |
-    {error, validation_error(), tuple()}.
+    {error, invoke_endpoint_with_response_stream_errors(), tuple()}.
 invoke_endpoint_with_response_stream(Client, EndpointName, Input) ->
     invoke_endpoint_with_response_stream(Client, EndpointName, Input, []).
 
 -spec invoke_endpoint_with_response_stream(map(), binary() | list(), invoke_endpoint_with_response_stream_input(), proplists:proplist()) ->
     {ok, invoke_endpoint_with_response_stream_output(), tuple()} |
     {error, any()} |
-    {error, internal_failure(), tuple()} |
-    {error, internal_stream_failure(), tuple()} |
-    {error, model_error(), tuple()} |
-    {error, model_stream_error(), tuple()} |
-    {error, service_unavailable(), tuple()} |
-    {error, validation_error(), tuple()}.
+    {error, invoke_endpoint_with_response_stream_errors(), tuple()}.
 invoke_endpoint_with_response_stream(Client, EndpointName, Input0, Options0) ->
     Method = post,
     Path = ["/endpoints/", aws_util:encode_uri(EndpointName), "/invocations-response-stream"],

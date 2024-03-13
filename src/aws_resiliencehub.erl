@@ -156,6 +156,7 @@
 %% }
 -type app() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_update_recommendation_status_request() :: #{
 %%   <<"appArn">> := string(),
@@ -163,12 +164,14 @@
 %% }
 -type batch_update_recommendation_status_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_app_component_compliances_response() :: #{
 %%   <<"componentCompliances">> := list(app_component_compliance()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_app_component_compliances_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_app_version_resources_resolution_status_request() :: #{
@@ -178,6 +181,7 @@
 %% }
 -type describe_app_version_resources_resolution_status_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_apps_response() :: #{
 %%   <<"appSummaries">> := list(app_summary()()),
@@ -185,11 +189,13 @@
 %% }
 -type list_apps_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_app_component_recommendations_response() :: #{
@@ -197,6 +203,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_app_component_recommendations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_app_version_resource_request() :: #{
@@ -210,6 +217,7 @@
 %% }
 -type describe_app_version_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_app_component_recommendations_request() :: #{
 %%   <<"assessmentArn">> := string(),
@@ -218,6 +226,7 @@
 %% }
 -type list_app_component_recommendations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% add_draft_app_version_resource_mappings_response() :: #{
 %%   <<"appArn">> := string(),
@@ -225,6 +234,7 @@
 %%   <<"resourceMappings">> := list(resource_mapping()())
 %% }
 -type add_draft_app_version_resource_mappings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_app_request() :: #{
@@ -239,6 +249,7 @@
 %% }
 -type create_app_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_app_version_resources_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -247,11 +258,13 @@
 %% }
 -type list_app_version_resources_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_app_response() :: #{
 %%   <<"appArn">> := string()
 %% }
 -type delete_app_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_app_version_app_component_response() :: #{
@@ -260,6 +273,7 @@
 %%   <<"appVersion">> := string()
 %% }
 -type create_app_version_app_component_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_app_assessments_request() :: #{
@@ -274,12 +288,14 @@
 %% }
 -type list_app_assessments_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_app_versions_response() :: #{
 %%   <<"appVersions">> := list(app_version_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_app_versions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% remove_draft_app_version_resource_mappings_response() :: #{
@@ -288,15 +304,18 @@
 %% }
 -type remove_draft_app_version_resource_mappings_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% resolve_app_version_resources_request() :: #{
 %%   <<"appArn">> := string(),
 %%   <<"appVersion">> := string()
 %% }
 -type resolve_app_version_resources_request() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% update_app_version_app_component_request() :: #{
@@ -308,12 +327,14 @@
 %% }
 -type update_app_version_app_component_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_draft_app_version_template_request() :: #{
 %%   <<"appArn">> := string(),
 %%   <<"appTemplateBody">> := string()
 %% }
 -type put_draft_app_version_template_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_mapping() :: #{
@@ -328,6 +349,7 @@
 %% }
 -type resource_mapping() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_unsupported_app_version_resources_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -335,6 +357,7 @@
 %%   <<"unsupportedResources">> := list(unsupported_resource()())
 %% }
 -type list_unsupported_app_version_resources_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% resiliency_score() :: #{
@@ -344,6 +367,7 @@
 %% }
 -type resiliency_score() :: #{binary() => any()}.
 
+
 %% Example:
 %% unsupported_resource() :: #{
 %%   <<"logicalResourceId">> => logical_resource_id(),
@@ -352,6 +376,7 @@
 %%   <<"unsupportedResourceStatus">> => string()
 %% }
 -type unsupported_resource() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_app_version_resource_request() :: #{
@@ -368,6 +393,7 @@
 %% }
 -type create_app_version_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% config_recommendation() :: #{
 %%   <<"appComponentName">> => string(),
@@ -383,6 +409,7 @@
 %% }
 -type config_recommendation() :: #{binary() => any()}.
 
+
 %% Example:
 %% event_subscription() :: #{
 %%   <<"eventType">> => string(),
@@ -391,12 +418,14 @@
 %% }
 -type event_subscription() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_app_version_template_request() :: #{
 %%   <<"appArn">> := string(),
 %%   <<"appVersion">> := string()
 %% }
 -type describe_app_version_template_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% import_resources_to_draft_app_version_request() :: #{
@@ -408,12 +437,14 @@
 %% }
 -type import_resources_to_draft_app_version_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_app_input_source_response() :: #{
 %%   <<"appArn">> => string(),
 %%   <<"appInputSource">> => app_input_source()
 %% }
 -type delete_app_input_source_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_app_assessment_request() :: #{
@@ -425,6 +456,7 @@
 %% }
 -type start_app_assessment_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_app_version_app_components_response() :: #{
 %%   <<"appArn">> := string(),
@@ -434,6 +466,7 @@
 %% }
 -type list_app_version_app_components_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_update_recommendation_status_response() :: #{
 %%   <<"appArn">> => string(),
@@ -441,6 +474,7 @@
 %%   <<"successfulEntries">> => list(batch_update_recommendation_status_successful_entry()())
 %% }
 -type batch_update_recommendation_status_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_unsupported_app_version_resources_request() :: #{
@@ -452,6 +486,7 @@
 %% }
 -type list_unsupported_app_version_resources_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_app_input_sources_request() :: #{
 %%   <<"appArn">> := string(),
@@ -461,6 +496,7 @@
 %% }
 -type list_app_input_sources_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_test_recommendations_request() :: #{
 %%   <<"assessmentArn">> := string(),
@@ -469,6 +505,7 @@
 %% }
 -type list_test_recommendations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% failure_policy() :: #{
 %%   <<"rpoInSecs">> => integer(),
@@ -476,17 +513,20 @@
 %% }
 -type failure_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_recommendation_template_response() :: #{
 %%   <<"recommendationTemplate">> => recommendation_template()
 %% }
 -type create_recommendation_template_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_app_response() :: #{
 %%   <<"app">> := app()
 %% }
 -type describe_app_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% disruption_compliance() :: #{
@@ -503,11 +543,13 @@
 %% }
 -type disruption_compliance() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_resiliency_policies_request() :: #{
@@ -516,6 +558,7 @@
 %%   <<"policyName">> => string()
 %% }
 -type list_resiliency_policies_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_recommendation_status_request_entry() :: #{
@@ -527,11 +570,13 @@
 %% }
 -type update_recommendation_status_request_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% terraform_source() :: #{
 %%   <<"s3StateFileUrl">> => string()
 %% }
 -type terraform_source() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_app_version_resources_request() :: #{
@@ -543,12 +588,14 @@
 %% }
 -type list_app_version_resources_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_errors_details() :: #{
 %%   <<"hasMoreErrors">> => boolean(),
 %%   <<"resourceErrors">> => list(resource_error()())
 %% }
 -type resource_errors_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% component_recommendation() :: #{
@@ -558,6 +605,7 @@
 %% }
 -type component_recommendation() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_app_version_resource_response() :: #{
 %%   <<"appArn">> := string(),
@@ -565,6 +613,7 @@
 %%   <<"physicalResource">> => physical_resource()
 %% }
 -type create_app_version_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% logical_resource_id() :: #{
@@ -576,6 +625,7 @@
 %% }
 -type logical_resource_id() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_app_version_resource_response() :: #{
 %%   <<"appArn">> := string(),
@@ -584,11 +634,13 @@
 %% }
 -type delete_app_version_resource_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_app_assessment_request() :: #{
 %%   <<"assessmentArn">> := string()
 %% }
 -type describe_app_assessment_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% recommendation_item() :: #{
@@ -601,12 +653,14 @@
 %% }
 -type recommendation_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_app_version_resource_mappings_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"resourceMappings">> := list(resource_mapping()())
 %% }
 -type list_app_version_resource_mappings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_app_version_resource_response() :: #{
@@ -616,12 +670,14 @@
 %% }
 -type describe_app_version_resource_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_draft_app_version_template_response() :: #{
 %%   <<"appArn">> => string(),
 %%   <<"appVersion">> => string()
 %% }
 -type put_draft_app_version_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -631,6 +687,7 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string(),
@@ -639,6 +696,7 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_app_assessment_compliance_drifts_request() :: #{
 %%   <<"assessmentArn">> := string(),
@@ -646,6 +704,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_app_assessment_compliance_drifts_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_app_input_source_request() :: #{
@@ -657,6 +716,7 @@
 %% }
 -type delete_app_input_source_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_suggested_resiliency_policies_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -664,12 +724,14 @@
 %% }
 -type list_suggested_resiliency_policies_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_update_recommendation_status_failed_entry() :: #{
 %%   <<"entryId">> => string(),
 %%   <<"errorMessage">> => string()
 %% }
 -type batch_update_recommendation_status_failed_entry() :: #{binary() => any()}.
+
 
 %% Example:
 %% alarm_recommendation() :: #{
@@ -686,12 +748,14 @@
 %% }
 -type alarm_recommendation() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_recommendation_templates_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"recommendationTemplates">> => list(recommendation_template()())
 %% }
 -type list_recommendation_templates_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% scoring_component_resiliency_score() :: #{
@@ -701,6 +765,7 @@
 %%   <<"score">> => float()
 %% }
 -type scoring_component_resiliency_score() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_resiliency_policy_request() :: #{
@@ -714,6 +779,7 @@
 %% }
 -type create_resiliency_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_app_assessments_response() :: #{
 %%   <<"assessmentSummaries">> := list(app_assessment_summary()()),
@@ -721,11 +787,13 @@
 %% }
 -type list_app_assessments_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_sop_recommendations_request() :: #{
@@ -734,6 +802,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_sop_recommendations_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_app_version_resource_mappings_request() :: #{
@@ -744,12 +813,14 @@
 %% }
 -type list_app_version_resource_mappings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% add_draft_app_version_resource_mappings_request() :: #{
 %%   <<"appArn">> := string(),
 %%   <<"resourceMappings">> := list(resource_mapping()())
 %% }
 -type add_draft_app_version_resource_mappings_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_app_version_app_component_request() :: #{
@@ -759,11 +830,13 @@
 %% }
 -type describe_app_version_app_component_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_resiliency_policy_response() :: #{
 %%   <<"policy">> := resiliency_policy()
 %% }
 -type update_resiliency_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% publish_app_version_response() :: #{
@@ -774,6 +847,7 @@
 %% }
 -type publish_app_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_app_version_resource_response() :: #{
 %%   <<"appArn">> := string(),
@@ -781,6 +855,7 @@
 %%   <<"physicalResource">> => physical_resource()
 %% }
 -type update_app_version_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_update_recommendation_status_successful_entry() :: #{
@@ -792,11 +867,13 @@
 %% }
 -type batch_update_recommendation_status_successful_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_resiliency_policy_response() :: #{
 %%   <<"policy">> := resiliency_policy()
 %% }
 -type create_resiliency_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_app_version_response() :: #{
@@ -806,6 +883,7 @@
 %% }
 -type update_app_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_alarm_recommendations_response() :: #{
 %%   <<"alarmRecommendations">> := list(alarm_recommendation()()),
@@ -813,11 +891,13 @@
 %% }
 -type list_alarm_recommendations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% eks_source_cluster_namespace() :: #{
@@ -826,11 +906,13 @@
 %% }
 -type eks_source_cluster_namespace() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_draft_app_version_resources_import_status_request() :: #{
 %%   <<"appArn">> := string()
 %% }
 -type describe_draft_app_version_resources_import_status_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_app_version_template_response() :: #{
@@ -840,11 +922,13 @@
 %% }
 -type describe_app_version_template_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_resiliency_policy_response() :: #{
 %%   <<"policy">> := resiliency_policy()
 %% }
 -type describe_resiliency_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% app_component() :: #{
@@ -854,6 +938,7 @@
 %%   <<"type">> => string()
 %% }
 -type app_component() :: #{binary() => any()}.
+
 
 %% Example:
 %% recommendation_disruption_compliance() :: #{
@@ -865,12 +950,14 @@
 %% }
 -type recommendation_disruption_compliance() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_suggested_resiliency_policies_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"resiliencyPolicies">> := list(resiliency_policy()())
 %% }
 -type list_suggested_resiliency_policies_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_error() :: #{
@@ -880,12 +967,14 @@
 %% }
 -type resource_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_location() :: #{
 %%   <<"bucket">> => string(),
 %%   <<"prefix">> => string()
 %% }
 -type s3_location() :: #{binary() => any()}.
+
 
 %% Example:
 %% resolve_app_version_resources_response() :: #{
@@ -895,6 +984,7 @@
 %%   <<"status">> := string()
 %% }
 -type resolve_app_version_resources_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% app_input_source() :: #{
@@ -907,12 +997,14 @@
 %% }
 -type app_input_source() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_recommendation_template_response() :: #{
 %%   <<"recommendationTemplateArn">> := string(),
 %%   <<"status">> := string()
 %% }
 -type delete_recommendation_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% physical_resource() :: #{
@@ -927,6 +1019,7 @@
 %%   <<"sourceType">> => string()
 %% }
 -type physical_resource() :: #{binary() => any()}.
+
 
 %% Example:
 %% app_summary() :: #{
@@ -945,6 +1038,7 @@
 %% }
 -type app_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_test_recommendations_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -952,17 +1046,20 @@
 %% }
 -type list_test_recommendations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_app_response() :: #{
 %%   <<"app">> := app()
 %% }
 -type update_app_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% app_assessment_summary() :: #{
@@ -983,12 +1080,14 @@
 %% }
 -type app_assessment_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% eks_source() :: #{
 %%   <<"eksClusterArn">> => string(),
 %%   <<"namespaces">> => list(string()())
 %% }
 -type eks_source() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_app_request() :: #{
@@ -997,6 +1096,7 @@
 %%   <<"forceDelete">> => boolean()
 %% }
 -type delete_app_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_app_version_resource_request() :: #{
@@ -1013,6 +1113,7 @@
 %% }
 -type update_app_version_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% publish_app_version_request() :: #{
 %%   <<"appArn">> := string(),
@@ -1020,11 +1121,13 @@
 %% }
 -type publish_app_version_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_app_request() :: #{
 %%   <<"appArn">> := string()
 %% }
 -type describe_app_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_resiliency_policy_request() :: #{
@@ -1033,11 +1136,13 @@
 %% }
 -type delete_resiliency_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_app_assessment_compliance_drifts_response() :: #{
@@ -1046,6 +1151,7 @@
 %% }
 -type list_app_assessment_compliance_drifts_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_app_version_app_component_response() :: #{
 %%   <<"appArn">> := string(),
@@ -1053,9 +1159,11 @@
 %%   <<"appVersion">> := string()
 %% }
 -type delete_app_version_app_component_response() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% delete_app_version_app_component_request() :: #{
@@ -1064,6 +1172,7 @@
 %%   <<"id">> := string()
 %% }
 -type delete_app_version_app_component_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% import_resources_to_draft_app_version_response() :: #{
@@ -1076,6 +1185,7 @@
 %% }
 -type import_resources_to_draft_app_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% app_version_summary() :: #{
 %%   <<"appVersion">> => string(),
@@ -1084,6 +1194,7 @@
 %%   <<"versionName">> => string()
 %% }
 -type app_version_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_app_version_app_components_request() :: #{
@@ -1094,6 +1205,7 @@
 %% }
 -type list_app_version_app_components_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% permission_model() :: #{
 %%   <<"crossAccountRoleArns">> => list(string()()),
@@ -1101,6 +1213,7 @@
 %%   <<"type">> => string()
 %% }
 -type permission_model() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_resiliency_policy_request() :: #{
@@ -1113,6 +1226,7 @@
 %% }
 -type update_resiliency_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_app_input_sources_response() :: #{
 %%   <<"appInputSources">> := list(app_input_source()()),
@@ -1120,14 +1234,17 @@
 %% }
 -type list_app_input_sources_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% resiliency_policy() :: #{
@@ -1143,6 +1260,7 @@
 %% }
 -type resiliency_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_app_request() :: #{
 %%   <<"appArn">> := string(),
@@ -1154,6 +1272,7 @@
 %%   <<"policyArn">> => string()
 %% }
 -type update_app_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% app_assessment() :: #{
@@ -1178,6 +1297,7 @@
 %% }
 -type app_assessment() :: #{binary() => any()}.
 
+
 %% Example:
 %% test_recommendation() :: #{
 %%   <<"appComponentName">> => string(),
@@ -1195,6 +1315,7 @@
 %% }
 -type test_recommendation() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_recommendation_templates_request() :: #{
 %%   <<"assessmentArn">> := string(),
@@ -1207,6 +1328,7 @@
 %% }
 -type list_recommendation_templates_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => string(),
@@ -1214,11 +1336,13 @@
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_app_assessment_response() :: #{
 %%   <<"assessment">> := app_assessment()
 %% }
 -type start_app_assessment_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_recommendation_status_item() :: #{
@@ -1228,6 +1352,7 @@
 %% }
 -type update_recommendation_status_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_alarm_recommendations_request() :: #{
 %%   <<"assessmentArn">> := string(),
@@ -1236,6 +1361,7 @@
 %% }
 -type list_alarm_recommendations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_app_version_request() :: #{
 %%   <<"additionalInfo">> => map(),
@@ -1243,17 +1369,20 @@
 %% }
 -type update_app_version_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_resiliency_policy_request() :: #{
 %%   <<"policyArn">> := string()
 %% }
 -type describe_resiliency_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_app_assessment_response() :: #{
 %%   <<"assessment">> := app_assessment()
 %% }
 -type describe_app_assessment_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_app_version_app_component_response() :: #{
@@ -1262,6 +1391,7 @@
 %%   <<"appVersion">> := string()
 %% }
 -type describe_app_version_app_component_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_apps_request() :: #{
@@ -1275,6 +1405,7 @@
 %% }
 -type list_apps_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_app_version_app_component_response() :: #{
 %%   <<"appArn">> := string(),
@@ -1282,6 +1413,7 @@
 %%   <<"appVersion">> := string()
 %% }
 -type update_app_version_app_component_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% recommendation_template() :: #{
@@ -1302,11 +1434,13 @@
 %% }
 -type recommendation_template() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_resiliency_policy_response() :: #{
 %%   <<"policyArn">> := string()
 %% }
 -type delete_resiliency_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_app_version_resource_request() :: #{
@@ -1320,6 +1454,7 @@
 %% }
 -type delete_app_version_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_sop_recommendations_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -1327,12 +1462,14 @@
 %% }
 -type list_sop_recommendations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_app_assessment_response() :: #{
 %%   <<"assessmentArn">> := string(),
 %%   <<"assessmentStatus">> := string()
 %% }
 -type delete_app_assessment_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% physical_resource_id() :: #{
@@ -1343,11 +1480,13 @@
 %% }
 -type physical_resource_id() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_app_response() :: #{
 %%   <<"app">> := app()
 %% }
 -type create_app_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_app_component_compliances_request() :: #{
@@ -1356,6 +1495,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_app_component_compliances_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_app_versions_request() :: #{
@@ -1366,6 +1506,7 @@
 %%   <<"startTime">> => non_neg_integer()
 %% }
 -type list_app_versions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% compliance_drift() :: #{
@@ -1382,6 +1523,7 @@
 %% }
 -type compliance_drift() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_app_version_app_component_request() :: #{
 %%   <<"additionalInfo">> => map(),
@@ -1393,12 +1535,14 @@
 %% }
 -type create_app_version_app_component_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_recommendation_template_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"recommendationTemplateArn">> := string()
 %% }
 -type delete_recommendation_template_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% cost() :: #{
@@ -1407,6 +1551,7 @@
 %%   <<"frequency">> => string()
 %% }
 -type cost() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_app_version_resources_resolution_status_response() :: #{
@@ -1418,12 +1563,14 @@
 %% }
 -type describe_app_version_resources_resolution_status_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_resiliency_policies_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"resiliencyPolicies">> := list(resiliency_policy()())
 %% }
 -type list_resiliency_policies_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% remove_draft_app_version_resource_mappings_request() :: #{
@@ -1436,6 +1583,7 @@
 %%   <<"terraformSourceNames">> => list(string()())
 %% }
 -type remove_draft_app_version_resource_mappings_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% sop_recommendation() :: #{
@@ -1451,6 +1599,7 @@
 %% }
 -type sop_recommendation() :: #{binary() => any()}.
 
+
 %% Example:
 %% app_component_compliance() :: #{
 %%   <<"appComponentName">> => string(),
@@ -1462,12 +1611,14 @@
 %% }
 -type app_component_compliance() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_app_assessment_request() :: #{
 %%   <<"assessmentArn">> := string(),
 %%   <<"clientToken">> => string()
 %% }
 -type delete_app_assessment_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_recommendation_template_request() :: #{
@@ -1482,12 +1633,14 @@
 %% }
 -type create_recommendation_template_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_app_version_request() :: #{
 %%   <<"appArn">> := string(),
 %%   <<"appVersion">> := string()
 %% }
 -type describe_app_version_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_draft_app_version_resources_import_status_response() :: #{
@@ -1499,6 +1652,7 @@
 %% }
 -type describe_draft_app_version_resources_import_status_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_app_version_response() :: #{
 %%   <<"additionalInfo">> => map(),
@@ -1506,6 +1660,416 @@
 %%   <<"appVersion">> := string()
 %% }
 -type describe_app_version_response() :: #{binary() => any()}.
+
+-type add_draft_app_version_resource_mappings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type batch_update_recommendation_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_app_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_app_version_app_component_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_app_version_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_recommendation_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_resiliency_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_app_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_app_assessment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_app_input_source_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_app_version_app_component_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_app_version_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_recommendation_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_resiliency_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_app_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_app_assessment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_app_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_app_version_app_component_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_app_version_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_app_version_resources_resolution_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_app_version_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_draft_app_version_resources_import_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_resiliency_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type import_resources_to_draft_app_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_alarm_recommendations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_app_assessment_compliance_drifts_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_app_assessments_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_app_component_compliances_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_app_component_recommendations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_app_input_sources_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_app_version_app_components_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_app_version_resource_mappings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_app_version_resources_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_app_versions_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_apps_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_recommendation_templates_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_resiliency_policies_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_sop_recommendations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_suggested_resiliency_policies_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_test_recommendations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_unsupported_app_version_resources_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type publish_app_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type put_draft_app_version_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type remove_draft_app_version_resource_mappings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type resolve_app_version_resources_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_app_assessment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_app_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_app_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_app_version_app_component_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_app_version_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_resiliency_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -1524,24 +2088,14 @@
 -spec add_draft_app_version_resource_mappings(map(), add_draft_app_version_resource_mappings_request()) ->
     {ok, add_draft_app_version_resource_mappings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, add_draft_app_version_resource_mappings_errors(), tuple()}.
 add_draft_app_version_resource_mappings(Client, Input) ->
     add_draft_app_version_resource_mappings(Client, Input, []).
 
 -spec add_draft_app_version_resource_mappings(map(), add_draft_app_version_resource_mappings_request(), proplists:proplist()) ->
     {ok, add_draft_app_version_resource_mappings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, add_draft_app_version_resource_mappings_errors(), tuple()}.
 add_draft_app_version_resource_mappings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/add-draft-app-version-resource-mappings"],
@@ -1569,22 +2123,14 @@ add_draft_app_version_resource_mappings(Client, Input0, Options0) ->
 -spec batch_update_recommendation_status(map(), batch_update_recommendation_status_request()) ->
     {ok, batch_update_recommendation_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_update_recommendation_status_errors(), tuple()}.
 batch_update_recommendation_status(Client, Input) ->
     batch_update_recommendation_status(Client, Input, []).
 
 -spec batch_update_recommendation_status(map(), batch_update_recommendation_status_request(), proplists:proplist()) ->
     {ok, batch_update_recommendation_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_update_recommendation_status_errors(), tuple()}.
 batch_update_recommendation_status(Client, Input0, Options0) ->
     Method = post,
     Path = ["/batch-update-recommendation-status"],
@@ -1635,26 +2181,14 @@ batch_update_recommendation_status(Client, Input0, Options0) ->
 -spec create_app(map(), create_app_request()) ->
     {ok, create_app_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_app_errors(), tuple()}.
 create_app(Client, Input) ->
     create_app(Client, Input, []).
 
 -spec create_app(map(), create_app_request(), proplists:proplist()) ->
     {ok, create_app_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_app_errors(), tuple()}.
 create_app(Client, Input0, Options0) ->
     Method = post,
     Path = ["/create-app"],
@@ -1686,26 +2220,14 @@ create_app(Client, Input0, Options0) ->
 -spec create_app_version_app_component(map(), create_app_version_app_component_request()) ->
     {ok, create_app_version_app_component_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_app_version_app_component_errors(), tuple()}.
 create_app_version_app_component(Client, Input) ->
     create_app_version_app_component(Client, Input, []).
 
 -spec create_app_version_app_component(map(), create_app_version_app_component_request(), proplists:proplist()) ->
     {ok, create_app_version_app_component_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_app_version_app_component_errors(), tuple()}.
 create_app_version_app_component(Client, Input0, Options0) ->
     Method = post,
     Path = ["/create-app-version-app-component"],
@@ -1749,26 +2271,14 @@ create_app_version_app_component(Client, Input0, Options0) ->
 -spec create_app_version_resource(map(), create_app_version_resource_request()) ->
     {ok, create_app_version_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_app_version_resource_errors(), tuple()}.
 create_app_version_resource(Client, Input) ->
     create_app_version_resource(Client, Input, []).
 
 -spec create_app_version_resource(map(), create_app_version_resource_request(), proplists:proplist()) ->
     {ok, create_app_version_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_app_version_resource_errors(), tuple()}.
 create_app_version_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/create-app-version-resource"],
@@ -1796,26 +2306,14 @@ create_app_version_resource(Client, Input0, Options0) ->
 -spec create_recommendation_template(map(), create_recommendation_template_request()) ->
     {ok, create_recommendation_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_recommendation_template_errors(), tuple()}.
 create_recommendation_template(Client, Input) ->
     create_recommendation_template(Client, Input, []).
 
 -spec create_recommendation_template(map(), create_recommendation_template_request(), proplists:proplist()) ->
     {ok, create_recommendation_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_recommendation_template_errors(), tuple()}.
 create_recommendation_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/create-recommendation-template"],
@@ -1852,24 +2350,14 @@ create_recommendation_template(Client, Input0, Options0) ->
 -spec create_resiliency_policy(map(), create_resiliency_policy_request()) ->
     {ok, create_resiliency_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_resiliency_policy_errors(), tuple()}.
 create_resiliency_policy(Client, Input) ->
     create_resiliency_policy(Client, Input, []).
 
 -spec create_resiliency_policy(map(), create_resiliency_policy_request(), proplists:proplist()) ->
     {ok, create_resiliency_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_resiliency_policy_errors(), tuple()}.
 create_resiliency_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/create-resiliency-policy"],
@@ -1899,22 +2387,14 @@ create_resiliency_policy(Client, Input0, Options0) ->
 -spec delete_app(map(), delete_app_request()) ->
     {ok, delete_app_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_app_errors(), tuple()}.
 delete_app(Client, Input) ->
     delete_app(Client, Input, []).
 
 -spec delete_app(map(), delete_app_request(), proplists:proplist()) ->
     {ok, delete_app_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_app_errors(), tuple()}.
 delete_app(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-app"],
@@ -1944,24 +2424,14 @@ delete_app(Client, Input0, Options0) ->
 -spec delete_app_assessment(map(), delete_app_assessment_request()) ->
     {ok, delete_app_assessment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_app_assessment_errors(), tuple()}.
 delete_app_assessment(Client, Input) ->
     delete_app_assessment(Client, Input, []).
 
 -spec delete_app_assessment(map(), delete_app_assessment_request(), proplists:proplist()) ->
     {ok, delete_app_assessment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_app_assessment_errors(), tuple()}.
 delete_app_assessment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-app-assessment"],
@@ -1989,24 +2459,14 @@ delete_app_assessment(Client, Input0, Options0) ->
 -spec delete_app_input_source(map(), delete_app_input_source_request()) ->
     {ok, delete_app_input_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_app_input_source_errors(), tuple()}.
 delete_app_input_source(Client, Input) ->
     delete_app_input_source(Client, Input, []).
 
 -spec delete_app_input_source(map(), delete_app_input_source_request(), proplists:proplist()) ->
     {ok, delete_app_input_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_app_input_source_errors(), tuple()}.
 delete_app_input_source(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-app-input-source"],
@@ -2040,24 +2500,14 @@ delete_app_input_source(Client, Input0, Options0) ->
 -spec delete_app_version_app_component(map(), delete_app_version_app_component_request()) ->
     {ok, delete_app_version_app_component_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_app_version_app_component_errors(), tuple()}.
 delete_app_version_app_component(Client, Input) ->
     delete_app_version_app_component(Client, Input, []).
 
 -spec delete_app_version_app_component(map(), delete_app_version_app_component_request(), proplists:proplist()) ->
     {ok, delete_app_version_app_component_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_app_version_app_component_errors(), tuple()}.
 delete_app_version_app_component(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-app-version-app-component"],
@@ -2093,24 +2543,14 @@ delete_app_version_app_component(Client, Input0, Options0) ->
 -spec delete_app_version_resource(map(), delete_app_version_resource_request()) ->
     {ok, delete_app_version_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_app_version_resource_errors(), tuple()}.
 delete_app_version_resource(Client, Input) ->
     delete_app_version_resource(Client, Input, []).
 
 -spec delete_app_version_resource(map(), delete_app_version_resource_request(), proplists:proplist()) ->
     {ok, delete_app_version_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_app_version_resource_errors(), tuple()}.
 delete_app_version_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-app-version-resource"],
@@ -2140,22 +2580,14 @@ delete_app_version_resource(Client, Input0, Options0) ->
 -spec delete_recommendation_template(map(), delete_recommendation_template_request()) ->
     {ok, delete_recommendation_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_recommendation_template_errors(), tuple()}.
 delete_recommendation_template(Client, Input) ->
     delete_recommendation_template(Client, Input, []).
 
 -spec delete_recommendation_template(map(), delete_recommendation_template_request(), proplists:proplist()) ->
     {ok, delete_recommendation_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_recommendation_template_errors(), tuple()}.
 delete_recommendation_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-recommendation-template"],
@@ -2184,24 +2616,14 @@ delete_recommendation_template(Client, Input0, Options0) ->
 -spec delete_resiliency_policy(map(), delete_resiliency_policy_request()) ->
     {ok, delete_resiliency_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_resiliency_policy_errors(), tuple()}.
 delete_resiliency_policy(Client, Input) ->
     delete_resiliency_policy(Client, Input, []).
 
 -spec delete_resiliency_policy(map(), delete_resiliency_policy_request(), proplists:proplist()) ->
     {ok, delete_resiliency_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_resiliency_policy_errors(), tuple()}.
 delete_resiliency_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-resiliency-policy"],
@@ -2228,22 +2650,14 @@ delete_resiliency_policy(Client, Input0, Options0) ->
 -spec describe_app(map(), describe_app_request()) ->
     {ok, describe_app_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_app_errors(), tuple()}.
 describe_app(Client, Input) ->
     describe_app(Client, Input, []).
 
 -spec describe_app(map(), describe_app_request(), proplists:proplist()) ->
     {ok, describe_app_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_app_errors(), tuple()}.
 describe_app(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-app"],
@@ -2270,22 +2684,14 @@ describe_app(Client, Input0, Options0) ->
 -spec describe_app_assessment(map(), describe_app_assessment_request()) ->
     {ok, describe_app_assessment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_app_assessment_errors(), tuple()}.
 describe_app_assessment(Client, Input) ->
     describe_app_assessment(Client, Input, []).
 
 -spec describe_app_assessment(map(), describe_app_assessment_request(), proplists:proplist()) ->
     {ok, describe_app_assessment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_app_assessment_errors(), tuple()}.
 describe_app_assessment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-app-assessment"],
@@ -2312,22 +2718,14 @@ describe_app_assessment(Client, Input0, Options0) ->
 -spec describe_app_version(map(), describe_app_version_request()) ->
     {ok, describe_app_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_app_version_errors(), tuple()}.
 describe_app_version(Client, Input) ->
     describe_app_version(Client, Input, []).
 
 -spec describe_app_version(map(), describe_app_version_request(), proplists:proplist()) ->
     {ok, describe_app_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_app_version_errors(), tuple()}.
 describe_app_version(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-app-version"],
@@ -2354,24 +2752,14 @@ describe_app_version(Client, Input0, Options0) ->
 -spec describe_app_version_app_component(map(), describe_app_version_app_component_request()) ->
     {ok, describe_app_version_app_component_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_app_version_app_component_errors(), tuple()}.
 describe_app_version_app_component(Client, Input) ->
     describe_app_version_app_component(Client, Input, []).
 
 -spec describe_app_version_app_component(map(), describe_app_version_app_component_request(), proplists:proplist()) ->
     {ok, describe_app_version_app_component_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_app_version_app_component_errors(), tuple()}.
 describe_app_version_app_component(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-app-version-app-component"],
@@ -2409,24 +2797,14 @@ describe_app_version_app_component(Client, Input0, Options0) ->
 -spec describe_app_version_resource(map(), describe_app_version_resource_request()) ->
     {ok, describe_app_version_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_app_version_resource_errors(), tuple()}.
 describe_app_version_resource(Client, Input) ->
     describe_app_version_resource(Client, Input, []).
 
 -spec describe_app_version_resource(map(), describe_app_version_resource_request(), proplists:proplist()) ->
     {ok, describe_app_version_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_app_version_resource_errors(), tuple()}.
 describe_app_version_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-app-version-resource"],
@@ -2458,22 +2836,14 @@ describe_app_version_resource(Client, Input0, Options0) ->
 -spec describe_app_version_resources_resolution_status(map(), describe_app_version_resources_resolution_status_request()) ->
     {ok, describe_app_version_resources_resolution_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_app_version_resources_resolution_status_errors(), tuple()}.
 describe_app_version_resources_resolution_status(Client, Input) ->
     describe_app_version_resources_resolution_status(Client, Input, []).
 
 -spec describe_app_version_resources_resolution_status(map(), describe_app_version_resources_resolution_status_request(), proplists:proplist()) ->
     {ok, describe_app_version_resources_resolution_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_app_version_resources_resolution_status_errors(), tuple()}.
 describe_app_version_resources_resolution_status(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-app-version-resources-resolution-status"],
@@ -2500,22 +2870,14 @@ describe_app_version_resources_resolution_status(Client, Input0, Options0) ->
 -spec describe_app_version_template(map(), describe_app_version_template_request()) ->
     {ok, describe_app_version_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_app_version_template_errors(), tuple()}.
 describe_app_version_template(Client, Input) ->
     describe_app_version_template(Client, Input, []).
 
 -spec describe_app_version_template(map(), describe_app_version_template_request(), proplists:proplist()) ->
     {ok, describe_app_version_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_app_version_template_errors(), tuple()}.
 describe_app_version_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-app-version-template"],
@@ -2550,22 +2912,14 @@ describe_app_version_template(Client, Input0, Options0) ->
 -spec describe_draft_app_version_resources_import_status(map(), describe_draft_app_version_resources_import_status_request()) ->
     {ok, describe_draft_app_version_resources_import_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_draft_app_version_resources_import_status_errors(), tuple()}.
 describe_draft_app_version_resources_import_status(Client, Input) ->
     describe_draft_app_version_resources_import_status(Client, Input, []).
 
 -spec describe_draft_app_version_resources_import_status(map(), describe_draft_app_version_resources_import_status_request(), proplists:proplist()) ->
     {ok, describe_draft_app_version_resources_import_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_draft_app_version_resources_import_status_errors(), tuple()}.
 describe_draft_app_version_resources_import_status(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-draft-app-version-resources-import-status"],
@@ -2598,22 +2952,14 @@ describe_draft_app_version_resources_import_status(Client, Input0, Options0) ->
 -spec describe_resiliency_policy(map(), describe_resiliency_policy_request()) ->
     {ok, describe_resiliency_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_resiliency_policy_errors(), tuple()}.
 describe_resiliency_policy(Client, Input) ->
     describe_resiliency_policy(Client, Input, []).
 
 -spec describe_resiliency_policy(map(), describe_resiliency_policy_request(), proplists:proplist()) ->
     {ok, describe_resiliency_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_resiliency_policy_errors(), tuple()}.
 describe_resiliency_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-resiliency-policy"],
@@ -2646,26 +2992,14 @@ describe_resiliency_policy(Client, Input0, Options0) ->
 -spec import_resources_to_draft_app_version(map(), import_resources_to_draft_app_version_request()) ->
     {ok, import_resources_to_draft_app_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, import_resources_to_draft_app_version_errors(), tuple()}.
 import_resources_to_draft_app_version(Client, Input) ->
     import_resources_to_draft_app_version(Client, Input, []).
 
 -spec import_resources_to_draft_app_version(map(), import_resources_to_draft_app_version_request(), proplists:proplist()) ->
     {ok, import_resources_to_draft_app_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, import_resources_to_draft_app_version_errors(), tuple()}.
 import_resources_to_draft_app_version(Client, Input0, Options0) ->
     Method = post,
     Path = ["/import-resources-to-draft-app-version"],
@@ -2692,22 +3026,14 @@ import_resources_to_draft_app_version(Client, Input0, Options0) ->
 -spec list_alarm_recommendations(map(), list_alarm_recommendations_request()) ->
     {ok, list_alarm_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_alarm_recommendations_errors(), tuple()}.
 list_alarm_recommendations(Client, Input) ->
     list_alarm_recommendations(Client, Input, []).
 
 -spec list_alarm_recommendations(map(), list_alarm_recommendations_request(), proplists:proplist()) ->
     {ok, list_alarm_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_alarm_recommendations_errors(), tuple()}.
 list_alarm_recommendations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-alarm-recommendations"],
@@ -2735,20 +3061,14 @@ list_alarm_recommendations(Client, Input0, Options0) ->
 -spec list_app_assessment_compliance_drifts(map(), list_app_assessment_compliance_drifts_request()) ->
     {ok, list_app_assessment_compliance_drifts_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_app_assessment_compliance_drifts_errors(), tuple()}.
 list_app_assessment_compliance_drifts(Client, Input) ->
     list_app_assessment_compliance_drifts(Client, Input, []).
 
 -spec list_app_assessment_compliance_drifts(map(), list_app_assessment_compliance_drifts_request(), proplists:proplist()) ->
     {ok, list_app_assessment_compliance_drifts_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_app_assessment_compliance_drifts_errors(), tuple()}.
 list_app_assessment_compliance_drifts(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-app-assessment-compliance-drifts"],
@@ -2778,11 +3098,7 @@ list_app_assessment_compliance_drifts(Client, Input0, Options0) ->
 -spec list_app_assessments(map()) ->
     {ok, list_app_assessments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_app_assessments_errors(), tuple()}.
 list_app_assessments(Client)
   when is_map(Client) ->
     list_app_assessments(Client, #{}, #{}).
@@ -2790,11 +3106,7 @@ list_app_assessments(Client)
 -spec list_app_assessments(map(), map(), map()) ->
     {ok, list_app_assessments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_app_assessments_errors(), tuple()}.
 list_app_assessments(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_app_assessments(Client, QueryMap, HeadersMap, []).
@@ -2802,11 +3114,7 @@ list_app_assessments(Client, QueryMap, HeadersMap)
 -spec list_app_assessments(map(), map(), map(), proplists:proplist()) ->
     {ok, list_app_assessments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_app_assessments_errors(), tuple()}.
 list_app_assessments(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/list-app-assessments"],
@@ -2838,22 +3146,14 @@ list_app_assessments(Client, QueryMap, HeadersMap, Options0)
 -spec list_app_component_compliances(map(), list_app_component_compliances_request()) ->
     {ok, list_app_component_compliances_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_app_component_compliances_errors(), tuple()}.
 list_app_component_compliances(Client, Input) ->
     list_app_component_compliances(Client, Input, []).
 
 -spec list_app_component_compliances(map(), list_app_component_compliances_request(), proplists:proplist()) ->
     {ok, list_app_component_compliances_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_app_component_compliances_errors(), tuple()}.
 list_app_component_compliances(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-app-component-compliances"],
@@ -2881,22 +3181,14 @@ list_app_component_compliances(Client, Input0, Options0) ->
 -spec list_app_component_recommendations(map(), list_app_component_recommendations_request()) ->
     {ok, list_app_component_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_app_component_recommendations_errors(), tuple()}.
 list_app_component_recommendations(Client, Input) ->
     list_app_component_recommendations(Client, Input, []).
 
 -spec list_app_component_recommendations(map(), list_app_component_recommendations_request(), proplists:proplist()) ->
     {ok, list_app_component_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_app_component_recommendations_errors(), tuple()}.
 list_app_component_recommendations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-app-component-recommendations"],
@@ -2928,22 +3220,14 @@ list_app_component_recommendations(Client, Input0, Options0) ->
 -spec list_app_input_sources(map(), list_app_input_sources_request()) ->
     {ok, list_app_input_sources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_app_input_sources_errors(), tuple()}.
 list_app_input_sources(Client, Input) ->
     list_app_input_sources(Client, Input, []).
 
 -spec list_app_input_sources(map(), list_app_input_sources_request(), proplists:proplist()) ->
     {ok, list_app_input_sources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_app_input_sources_errors(), tuple()}.
 list_app_input_sources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-app-input-sources"],
@@ -2971,24 +3255,14 @@ list_app_input_sources(Client, Input0, Options0) ->
 -spec list_app_version_app_components(map(), list_app_version_app_components_request()) ->
     {ok, list_app_version_app_components_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_app_version_app_components_errors(), tuple()}.
 list_app_version_app_components(Client, Input) ->
     list_app_version_app_components(Client, Input, []).
 
 -spec list_app_version_app_components(map(), list_app_version_app_components_request(), proplists:proplist()) ->
     {ok, list_app_version_app_components_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_app_version_app_components_errors(), tuple()}.
 list_app_version_app_components(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-app-version-app-components"],
@@ -3021,22 +3295,14 @@ list_app_version_app_components(Client, Input0, Options0) ->
 -spec list_app_version_resource_mappings(map(), list_app_version_resource_mappings_request()) ->
     {ok, list_app_version_resource_mappings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_app_version_resource_mappings_errors(), tuple()}.
 list_app_version_resource_mappings(Client, Input) ->
     list_app_version_resource_mappings(Client, Input, []).
 
 -spec list_app_version_resource_mappings(map(), list_app_version_resource_mappings_request(), proplists:proplist()) ->
     {ok, list_app_version_resource_mappings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_app_version_resource_mappings_errors(), tuple()}.
 list_app_version_resource_mappings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-app-version-resource-mappings"],
@@ -3063,24 +3329,14 @@ list_app_version_resource_mappings(Client, Input0, Options0) ->
 -spec list_app_version_resources(map(), list_app_version_resources_request()) ->
     {ok, list_app_version_resources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_app_version_resources_errors(), tuple()}.
 list_app_version_resources(Client, Input) ->
     list_app_version_resources(Client, Input, []).
 
 -spec list_app_version_resources(map(), list_app_version_resources_request(), proplists:proplist()) ->
     {ok, list_app_version_resources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_app_version_resources_errors(), tuple()}.
 list_app_version_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-app-version-resources"],
@@ -3107,20 +3363,14 @@ list_app_version_resources(Client, Input0, Options0) ->
 -spec list_app_versions(map(), list_app_versions_request()) ->
     {ok, list_app_versions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_app_versions_errors(), tuple()}.
 list_app_versions(Client, Input) ->
     list_app_versions(Client, Input, []).
 
 -spec list_app_versions(map(), list_app_versions_request(), proplists:proplist()) ->
     {ok, list_app_versions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_app_versions_errors(), tuple()}.
 list_app_versions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-app-versions"],
@@ -3157,10 +3407,7 @@ list_app_versions(Client, Input0, Options0) ->
 -spec list_apps(map()) ->
     {ok, list_apps_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_apps_errors(), tuple()}.
 list_apps(Client)
   when is_map(Client) ->
     list_apps(Client, #{}, #{}).
@@ -3168,10 +3415,7 @@ list_apps(Client)
 -spec list_apps(map(), map(), map()) ->
     {ok, list_apps_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_apps_errors(), tuple()}.
 list_apps(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_apps(Client, QueryMap, HeadersMap, []).
@@ -3179,10 +3423,7 @@ list_apps(Client, QueryMap, HeadersMap)
 -spec list_apps(map(), map(), map(), proplists:proplist()) ->
     {ok, list_apps_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_apps_errors(), tuple()}.
 list_apps(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/list-apps"],
@@ -3214,10 +3455,7 @@ list_apps(Client, QueryMap, HeadersMap, Options0)
 -spec list_recommendation_templates(map(), binary() | list()) ->
     {ok, list_recommendation_templates_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_recommendation_templates_errors(), tuple()}.
 list_recommendation_templates(Client, AssessmentArn)
   when is_map(Client) ->
     list_recommendation_templates(Client, AssessmentArn, #{}, #{}).
@@ -3225,10 +3463,7 @@ list_recommendation_templates(Client, AssessmentArn)
 -spec list_recommendation_templates(map(), binary() | list(), map(), map()) ->
     {ok, list_recommendation_templates_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_recommendation_templates_errors(), tuple()}.
 list_recommendation_templates(Client, AssessmentArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_recommendation_templates(Client, AssessmentArn, QueryMap, HeadersMap, []).
@@ -3236,10 +3471,7 @@ list_recommendation_templates(Client, AssessmentArn, QueryMap, HeadersMap)
 -spec list_recommendation_templates(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_recommendation_templates_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_recommendation_templates_errors(), tuple()}.
 list_recommendation_templates(Client, AssessmentArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/list-recommendation-templates"],
@@ -3270,11 +3502,7 @@ list_recommendation_templates(Client, AssessmentArn, QueryMap, HeadersMap, Optio
 -spec list_resiliency_policies(map()) ->
     {ok, list_resiliency_policies_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_resiliency_policies_errors(), tuple()}.
 list_resiliency_policies(Client)
   when is_map(Client) ->
     list_resiliency_policies(Client, #{}, #{}).
@@ -3282,11 +3510,7 @@ list_resiliency_policies(Client)
 -spec list_resiliency_policies(map(), map(), map()) ->
     {ok, list_resiliency_policies_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_resiliency_policies_errors(), tuple()}.
 list_resiliency_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_resiliency_policies(Client, QueryMap, HeadersMap, []).
@@ -3294,11 +3518,7 @@ list_resiliency_policies(Client, QueryMap, HeadersMap)
 -spec list_resiliency_policies(map(), map(), map(), proplists:proplist()) ->
     {ok, list_resiliency_policies_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_resiliency_policies_errors(), tuple()}.
 list_resiliency_policies(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/list-resiliency-policies"],
@@ -3327,24 +3547,14 @@ list_resiliency_policies(Client, QueryMap, HeadersMap, Options0)
 -spec list_sop_recommendations(map(), list_sop_recommendations_request()) ->
     {ok, list_sop_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_sop_recommendations_errors(), tuple()}.
 list_sop_recommendations(Client, Input) ->
     list_sop_recommendations(Client, Input, []).
 
 -spec list_sop_recommendations(map(), list_sop_recommendations_request(), proplists:proplist()) ->
     {ok, list_sop_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_sop_recommendations_errors(), tuple()}.
 list_sop_recommendations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-sop-recommendations"],
@@ -3372,11 +3582,7 @@ list_sop_recommendations(Client, Input0, Options0) ->
 -spec list_suggested_resiliency_policies(map()) ->
     {ok, list_suggested_resiliency_policies_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_suggested_resiliency_policies_errors(), tuple()}.
 list_suggested_resiliency_policies(Client)
   when is_map(Client) ->
     list_suggested_resiliency_policies(Client, #{}, #{}).
@@ -3384,11 +3590,7 @@ list_suggested_resiliency_policies(Client)
 -spec list_suggested_resiliency_policies(map(), map(), map()) ->
     {ok, list_suggested_resiliency_policies_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_suggested_resiliency_policies_errors(), tuple()}.
 list_suggested_resiliency_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_suggested_resiliency_policies(Client, QueryMap, HeadersMap, []).
@@ -3396,11 +3598,7 @@ list_suggested_resiliency_policies(Client, QueryMap, HeadersMap)
 -spec list_suggested_resiliency_policies(map(), map(), map(), proplists:proplist()) ->
     {ok, list_suggested_resiliency_policies_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_suggested_resiliency_policies_errors(), tuple()}.
 list_suggested_resiliency_policies(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/list-suggested-resiliency-policies"],
@@ -3427,11 +3625,7 @@ list_suggested_resiliency_policies(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -3439,11 +3633,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -3451,11 +3641,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -3476,24 +3662,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec list_test_recommendations(map(), list_test_recommendations_request()) ->
     {ok, list_test_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_test_recommendations_errors(), tuple()}.
 list_test_recommendations(Client, Input) ->
     list_test_recommendations(Client, Input, []).
 
 -spec list_test_recommendations(map(), list_test_recommendations_request(), proplists:proplist()) ->
     {ok, list_test_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_test_recommendations_errors(), tuple()}.
 list_test_recommendations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-test-recommendations"],
@@ -3526,24 +3702,14 @@ list_test_recommendations(Client, Input0, Options0) ->
 -spec list_unsupported_app_version_resources(map(), list_unsupported_app_version_resources_request()) ->
     {ok, list_unsupported_app_version_resources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_unsupported_app_version_resources_errors(), tuple()}.
 list_unsupported_app_version_resources(Client, Input) ->
     list_unsupported_app_version_resources(Client, Input, []).
 
 -spec list_unsupported_app_version_resources(map(), list_unsupported_app_version_resources_request(), proplists:proplist()) ->
     {ok, list_unsupported_app_version_resources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_unsupported_app_version_resources_errors(), tuple()}.
 list_unsupported_app_version_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-unsupported-app-version-resources"],
@@ -3570,24 +3736,14 @@ list_unsupported_app_version_resources(Client, Input0, Options0) ->
 -spec publish_app_version(map(), publish_app_version_request()) ->
     {ok, publish_app_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, publish_app_version_errors(), tuple()}.
 publish_app_version(Client, Input) ->
     publish_app_version(Client, Input, []).
 
 -spec publish_app_version(map(), publish_app_version_request(), proplists:proplist()) ->
     {ok, publish_app_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, publish_app_version_errors(), tuple()}.
 publish_app_version(Client, Input0, Options0) ->
     Method = post,
     Path = ["/publish-app-version"],
@@ -3615,24 +3771,14 @@ publish_app_version(Client, Input0, Options0) ->
 -spec put_draft_app_version_template(map(), put_draft_app_version_template_request()) ->
     {ok, put_draft_app_version_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_draft_app_version_template_errors(), tuple()}.
 put_draft_app_version_template(Client, Input) ->
     put_draft_app_version_template(Client, Input, []).
 
 -spec put_draft_app_version_template(map(), put_draft_app_version_template_request(), proplists:proplist()) ->
     {ok, put_draft_app_version_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_draft_app_version_template_errors(), tuple()}.
 put_draft_app_version_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/put-draft-app-version-template"],
@@ -3659,24 +3805,14 @@ put_draft_app_version_template(Client, Input0, Options0) ->
 -spec remove_draft_app_version_resource_mappings(map(), remove_draft_app_version_resource_mappings_request()) ->
     {ok, remove_draft_app_version_resource_mappings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, remove_draft_app_version_resource_mappings_errors(), tuple()}.
 remove_draft_app_version_resource_mappings(Client, Input) ->
     remove_draft_app_version_resource_mappings(Client, Input, []).
 
 -spec remove_draft_app_version_resource_mappings(map(), remove_draft_app_version_resource_mappings_request(), proplists:proplist()) ->
     {ok, remove_draft_app_version_resource_mappings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, remove_draft_app_version_resource_mappings_errors(), tuple()}.
 remove_draft_app_version_resource_mappings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/remove-draft-app-version-resource-mappings"],
@@ -3703,24 +3839,14 @@ remove_draft_app_version_resource_mappings(Client, Input0, Options0) ->
 -spec resolve_app_version_resources(map(), resolve_app_version_resources_request()) ->
     {ok, resolve_app_version_resources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, resolve_app_version_resources_errors(), tuple()}.
 resolve_app_version_resources(Client, Input) ->
     resolve_app_version_resources(Client, Input, []).
 
 -spec resolve_app_version_resources(map(), resolve_app_version_resources_request(), proplists:proplist()) ->
     {ok, resolve_app_version_resources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, resolve_app_version_resources_errors(), tuple()}.
 resolve_app_version_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/resolve-app-version-resources"],
@@ -3747,26 +3873,14 @@ resolve_app_version_resources(Client, Input0, Options0) ->
 -spec start_app_assessment(map(), start_app_assessment_request()) ->
     {ok, start_app_assessment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_app_assessment_errors(), tuple()}.
 start_app_assessment(Client, Input) ->
     start_app_assessment(Client, Input, []).
 
 -spec start_app_assessment(map(), start_app_assessment_request(), proplists:proplist()) ->
     {ok, start_app_assessment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_app_assessment_errors(), tuple()}.
 start_app_assessment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/start-app-assessment"],
@@ -3793,22 +3907,14 @@ start_app_assessment(Client, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -3835,22 +3941,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -3878,24 +3976,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_app(map(), update_app_request()) ->
     {ok, update_app_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_app_errors(), tuple()}.
 update_app(Client, Input) ->
     update_app(Client, Input, []).
 
 -spec update_app(map(), update_app_request(), proplists:proplist()) ->
     {ok, update_app_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_app_errors(), tuple()}.
 update_app(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-app"],
@@ -3928,24 +4016,14 @@ update_app(Client, Input0, Options0) ->
 -spec update_app_version(map(), update_app_version_request()) ->
     {ok, update_app_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_app_version_errors(), tuple()}.
 update_app_version(Client, Input) ->
     update_app_version(Client, Input, []).
 
 -spec update_app_version(map(), update_app_version_request(), proplists:proplist()) ->
     {ok, update_app_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_app_version_errors(), tuple()}.
 update_app_version(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-app-version"],
@@ -3977,24 +4055,14 @@ update_app_version(Client, Input0, Options0) ->
 -spec update_app_version_app_component(map(), update_app_version_app_component_request()) ->
     {ok, update_app_version_app_component_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_app_version_app_component_errors(), tuple()}.
 update_app_version_app_component(Client, Input) ->
     update_app_version_app_component(Client, Input, []).
 
 -spec update_app_version_app_component(map(), update_app_version_app_component_request(), proplists:proplist()) ->
     {ok, update_app_version_app_component_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_app_version_app_component_errors(), tuple()}.
 update_app_version_app_component(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-app-version-app-component"],
@@ -4031,26 +4099,14 @@ update_app_version_app_component(Client, Input0, Options0) ->
 -spec update_app_version_resource(map(), update_app_version_resource_request()) ->
     {ok, update_app_version_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_app_version_resource_errors(), tuple()}.
 update_app_version_resource(Client, Input) ->
     update_app_version_resource(Client, Input, []).
 
 -spec update_app_version_resource(map(), update_app_version_resource_request(), proplists:proplist()) ->
     {ok, update_app_version_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_app_version_resource_errors(), tuple()}.
 update_app_version_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-app-version-resource"],
@@ -4089,24 +4145,14 @@ update_app_version_resource(Client, Input0, Options0) ->
 -spec update_resiliency_policy(map(), update_resiliency_policy_request()) ->
     {ok, update_resiliency_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_resiliency_policy_errors(), tuple()}.
 update_resiliency_policy(Client, Input) ->
     update_resiliency_policy(Client, Input, []).
 
 -spec update_resiliency_policy(map(), update_resiliency_policy_request(), proplists:proplist()) ->
     {ok, update_resiliency_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_resiliency_policy_errors(), tuple()}.
 update_resiliency_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-resiliency-policy"],

@@ -335,9 +335,11 @@
 %%   <<"tags">> => map()
 %% }
 -type campaign_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_journey_request() :: #{}
 -type delete_journey_request() :: #{}.
+
 
 %% Example:
 %% journey_response() :: #{
@@ -366,6 +368,7 @@
 %% }
 -type journey_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% treatment_resource() :: #{
 %%   <<"CustomDeliveryConfiguration">> => custom_delivery_configuration(),
@@ -380,11 +383,13 @@
 %% }
 -type treatment_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_user_endpoints_response() :: #{
 %%   <<"EndpointsResponse">> => endpoints_response()
 %% }
 -type delete_user_endpoints_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% verify_o_t_p_message_request() :: #{
@@ -392,11 +397,13 @@
 %% }
 -type verify_o_t_p_message_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_campaign_activities_response() :: #{
 %%   <<"ActivitiesResponse">> => activities_response()
 %% }
 -type get_campaign_activities_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% wait_time() :: #{
@@ -405,17 +412,20 @@
 %% }
 -type wait_time() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_import_job_response() :: #{
 %%   <<"ImportJobResponse">> => import_job_response()
 %% }
 -type create_import_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_template_active_version_request() :: #{
 %%   <<"TemplateActiveVersionRequest">> := template_active_version_request()
 %% }
 -type update_template_active_version_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% verify_o_t_p_message_request_parameters() :: #{
@@ -425,6 +435,7 @@
 %% }
 -type verify_o_t_p_message_request_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% in_app_campaign_schedule() :: #{
 %%   <<"EndDate">> => string(),
@@ -432,6 +443,7 @@
 %%   <<"QuietTime">> => quiet_time()
 %% }
 -type in_app_campaign_schedule() :: #{binary() => any()}.
+
 
 %% Example:
 %% application_date_range_kpi_response() :: #{
@@ -443,9 +455,11 @@
 %%   <<"StartTime">> => non_neg_integer()
 %% }
 -type application_date_range_kpi_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_channels_request() :: #{}
 -type get_channels_request() :: #{}.
+
 
 %% Example:
 %% get_application_date_range_kpi_request() :: #{
@@ -455,6 +469,7 @@
 %%   <<"StartTime">> => non_neg_integer()
 %% }
 -type get_application_date_range_kpi_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% campaign_limits() :: #{
@@ -466,11 +481,13 @@
 %% }
 -type campaign_limits() :: #{binary() => any()}.
 
+
 %% Example:
 %% campaign_state() :: #{
 %%   <<"CampaignStatus">> => list(any())
 %% }
 -type campaign_state() :: #{binary() => any()}.
+
 
 %% Example:
 %% message_configuration() :: #{
@@ -486,11 +503,13 @@
 %% }
 -type message_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_push_template_response() :: #{
 %%   <<"CreateTemplateMessageBody">> => create_template_message_body()
 %% }
 -type create_push_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_apns_voip_sandbox_channel_response() :: #{
@@ -498,11 +517,13 @@
 %% }
 -type get_apns_voip_sandbox_channel_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_campaign_response() :: #{
 %%   <<"CampaignResponse">> => campaign_response()
 %% }
 -type update_campaign_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% tag_resource_request() :: #{
@@ -510,11 +531,13 @@
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% endpoints_response() :: #{
 %%   <<"Item">> => list(endpoint_response()())
 %% }
 -type endpoints_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% push_notification_template_response() :: #{
@@ -536,11 +559,13 @@
 %% }
 -type push_notification_template_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_import_job_request() :: #{
 %%   <<"ImportJobRequest">> := import_job_request()
 %% }
 -type create_import_job_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_push_template_response() :: #{
@@ -548,11 +573,13 @@
 %% }
 -type get_push_template_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_campaign_versions_response() :: #{
 %%   <<"CampaignsResponse">> => campaigns_response()
 %% }
 -type get_campaign_versions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_apps_request() :: #{
@@ -560,6 +587,7 @@
 %%   <<"Token">> => string()
 %% }
 -type get_apps_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% baidu_message() :: #{
@@ -580,6 +608,7 @@
 %% }
 -type baidu_message() :: #{binary() => any()}.
 
+
 %% Example:
 %% channel_response() :: #{
 %%   <<"ApplicationId">> => string(),
@@ -593,15 +622,19 @@
 %%   <<"Version">> => integer()
 %% }
 -type channel_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_campaign_version_request() :: #{}
 -type get_campaign_version_request() :: #{}.
+
 %% Example:
 %% get_journey_request() :: #{}
 -type get_journey_request() :: #{}.
+
 %% Example:
 %% get_campaign_request() :: #{}
 -type get_campaign_request() :: #{}.
+
 
 %% Example:
 %% recency_dimension() :: #{
@@ -610,11 +643,13 @@
 %% }
 -type recency_dimension() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_voice_template_request() :: #{
 %%   <<"VoiceTemplateRequest">> := voice_template_request()
 %% }
 -type create_voice_template_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% simple_condition() :: #{
@@ -623,6 +658,7 @@
 %%   <<"SegmentDimensions">> => segment_dimensions()
 %% }
 -type simple_condition() :: #{binary() => any()}.
+
 
 %% Example:
 %% email_template_request() :: #{
@@ -636,6 +672,7 @@
 %% }
 -type email_template_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% event_condition() :: #{
 %%   <<"Dimensions">> => event_dimensions(),
@@ -643,11 +680,13 @@
 %% }
 -type event_condition() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_push_template_response() :: #{
 %%   <<"MessageBody">> => message_body()
 %% }
 -type update_push_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% verification_response() :: #{
@@ -655,11 +694,13 @@
 %% }
 -type verification_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_app_request() :: #{
 %%   <<"CreateApplicationRequest">> := create_application_request()
 %% }
 -type create_app_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% export_jobs_response() :: #{
@@ -668,11 +709,13 @@
 %% }
 -type export_jobs_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_app_response() :: #{
 %%   <<"ApplicationResponse">> => application_response()
 %% }
 -type delete_app_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% conditional_split_activity() :: #{
@@ -683,6 +726,7 @@
 %% }
 -type conditional_split_activity() :: #{binary() => any()}.
 
+
 %% Example:
 %% campaign_hook() :: #{
 %%   <<"LambdaFunctionName">> => string(),
@@ -690,9 +734,11 @@
 %%   <<"WebUrl">> => string()
 %% }
 -type campaign_hook() :: #{binary() => any()}.
+
 %% Example:
 %% delete_apns_sandbox_channel_request() :: #{}
 -type delete_apns_sandbox_channel_request() :: #{}.
+
 
 %% Example:
 %% get_email_channel_response() :: #{
@@ -700,11 +746,13 @@
 %% }
 -type get_email_channel_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_endpoint_response() :: #{
 %%   <<"MessageBody">> => message_body()
 %% }
 -type update_endpoint_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% a_p_n_s_channel_request() :: #{
@@ -719,12 +767,14 @@
 %% }
 -type a_p_n_s_channel_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% open_hours_rule() :: #{
 %%   <<"EndTime">> => string(),
 %%   <<"StartTime">> => string()
 %% }
 -type open_hours_rule() :: #{binary() => any()}.
+
 
 %% Example:
 %% campaigns_response() :: #{
@@ -733,6 +783,7 @@
 %% }
 -type campaigns_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_email_template_request() :: #{
 %%   <<"CreateNewVersion">> => boolean(),
@@ -740,6 +791,7 @@
 %%   <<"Version">> => string()
 %% }
 -type update_email_template_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% push_notification_template_request() :: #{
@@ -755,11 +807,13 @@
 %% }
 -type push_notification_template_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_in_app_template_response() :: #{
 %%   <<"TemplateCreateMessageBody">> => template_create_message_body()
 %% }
 -type create_in_app_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% result_row_value() :: #{
@@ -769,11 +823,13 @@
 %% }
 -type result_row_value() :: #{binary() => any()}.
 
+
 %% Example:
 %% journey_custom_message() :: #{
 %%   <<"Data">> => string()
 %% }
 -type journey_custom_message() :: #{binary() => any()}.
+
 
 %% Example:
 %% number_validate_request() :: #{
@@ -781,6 +837,7 @@
 %%   <<"PhoneNumber">> => string()
 %% }
 -type number_validate_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% endpoint_batch_item() :: #{
@@ -799,11 +856,13 @@
 %% }
 -type endpoint_batch_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_email_channel_response() :: #{
 %%   <<"EmailChannelResponse">> => email_channel_response()
 %% }
 -type update_email_channel_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% base_kpi_result() :: #{
@@ -811,11 +870,13 @@
 %% }
 -type base_kpi_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_baidu_channel_response() :: #{
 %%   <<"BaiduChannelResponse">> => baidu_channel_response()
 %% }
 -type delete_baidu_channel_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_journey_state_request() :: #{
@@ -823,11 +884,13 @@
 %% }
 -type update_journey_state_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% endpoint_batch_request() :: #{
 %%   <<"Item">> => list(endpoint_batch_item()())
 %% }
 -type endpoint_batch_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% g_p_s_point_dimension() :: #{
@@ -836,6 +899,7 @@
 %% }
 -type g_p_s_point_dimension() :: #{binary() => any()}.
 
+
 %% Example:
 %% quiet_time() :: #{
 %%   <<"End">> => string(),
@@ -843,11 +907,13 @@
 %% }
 -type quiet_time() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_sms_channel_request() :: #{
 %%   <<"SMSChannelRequest">> := sms_channel_request()
 %% }
 -type update_sms_channel_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_templates_request() :: #{
@@ -858,12 +924,14 @@
 %% }
 -type list_templates_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% random_split_entry() :: #{
 %%   <<"NextActivity">> => string(),
 %%   <<"Percentage">> => integer()
 %% }
 -type random_split_entry() :: #{binary() => any()}.
+
 
 %% Example:
 %% campaign_event_filter() :: #{
@@ -872,11 +940,13 @@
 %% }
 -type campaign_event_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_event_stream_request() :: #{
 %%   <<"WriteEventStream">> := write_event_stream()
 %% }
 -type put_event_stream_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% push_message_activity() :: #{
@@ -887,6 +957,7 @@
 %% }
 -type push_message_activity() :: #{binary() => any()}.
 
+
 %% Example:
 %% voice_message() :: #{
 %%   <<"Body">> => string(),
@@ -896,15 +967,19 @@
 %%   <<"VoiceId">> => string()
 %% }
 -type voice_message() :: #{binary() => any()}.
+
 %% Example:
 %% get_segment_version_request() :: #{}
 -type get_segment_version_request() :: #{}.
+
 %% Example:
 %% get_in_app_messages_request() :: #{}
 -type get_in_app_messages_request() :: #{}.
+
 %% Example:
 %% get_segment_request() :: #{}
 -type get_segment_request() :: #{}.
+
 
 %% Example:
 %% get_voice_channel_response() :: #{
@@ -912,11 +987,13 @@
 %% }
 -type get_voice_channel_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_segment_versions_response() :: #{
 %%   <<"SegmentsResponse">> => segments_response()
 %% }
 -type get_segment_versions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% forbidden_exception() :: #{
@@ -924,6 +1001,7 @@
 %%   <<"RequestID">> => string()
 %% }
 -type forbidden_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% send_users_message_request() :: #{
@@ -935,12 +1013,14 @@
 %% }
 -type send_users_message_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% event_item_response() :: #{
 %%   <<"Message">> => string(),
 %%   <<"StatusCode">> => integer()
 %% }
 -type event_item_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% in_app_message_header_config() :: #{
@@ -950,6 +1030,7 @@
 %% }
 -type in_app_message_header_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% event_start_condition() :: #{
 %%   <<"EventFilter">> => event_filter(),
@@ -957,11 +1038,13 @@
 %% }
 -type event_start_condition() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_email_channel_request() :: #{
 %%   <<"EmailChannelRequest">> := email_channel_request()
 %% }
 -type update_email_channel_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% campaign_date_range_kpi_response() :: #{
@@ -975,6 +1058,7 @@
 %% }
 -type campaign_date_range_kpi_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% template_create_message_body() :: #{
 %%   <<"Arn">> => string(),
@@ -983,6 +1067,7 @@
 %% }
 -type template_create_message_body() :: #{binary() => any()}.
 
+
 %% Example:
 %% events_batch() :: #{
 %%   <<"Endpoint">> => public_endpoint(),
@@ -990,11 +1075,13 @@
 %% }
 -type events_batch() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_export_job_response() :: #{
 %%   <<"ExportJobResponse">> => export_job_response()
 %% }
 -type create_export_job_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% a_p_n_s_voip_channel_request() :: #{
@@ -1009,6 +1096,7 @@
 %% }
 -type a_p_n_s_voip_channel_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% method_not_allowed_exception() :: #{
 %%   <<"Message">> => string(),
@@ -1016,26 +1104,31 @@
 %% }
 -type method_not_allowed_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_channels_response() :: #{
 %%   <<"ChannelsResponse">> => channels_response()
 %% }
 -type get_channels_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_gcm_channel_request() :: #{
 %%   <<"GCMChannelRequest">> := g_cm_channel_request()
 %% }
 -type update_gcm_channel_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_sms_channel_request() :: #{}
 -type get_sms_channel_request() :: #{}.
+
 
 %% Example:
 %% get_export_jobs_response() :: #{
 %%   <<"ExportJobsResponse">> => export_jobs_response()
 %% }
 -type get_export_jobs_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% send_o_t_p_message_request_parameters() :: #{
@@ -1053,11 +1146,13 @@
 %% }
 -type send_o_t_p_message_request_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_apns_sandbox_channel_response() :: #{
 %%   <<"APNSSandboxChannelResponse">> => a_p_n_s_sandbox_channel_response()
 %% }
 -type delete_apns_sandbox_channel_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% journey_run_execution_activity_metrics_response() :: #{
@@ -1071,17 +1166,20 @@
 %% }
 -type journey_run_execution_activity_metrics_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_apns_sandbox_channel_request() :: #{
 %%   <<"APNSSandboxChannelRequest">> := a_p_n_s_sandbox_channel_request()
 %% }
 -type update_apns_sandbox_channel_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_gcm_channel_response() :: #{
 %%   <<"GCMChannelResponse">> => g_cm_channel_response()
 %% }
 -type delete_gcm_channel_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% templates_response() :: #{
@@ -1090,11 +1188,13 @@
 %% }
 -type templates_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_sms_channel_response() :: #{
 %%   <<"SMSChannelResponse">> => sms_channel_response()
 %% }
 -type update_sms_channel_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% attributes_resource() :: #{
@@ -1104,17 +1204,20 @@
 %% }
 -type attributes_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_recommender_configuration_response() :: #{
 %%   <<"RecommenderConfigurationResponse">> => recommender_configuration_response()
 %% }
 -type delete_recommender_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_voice_channel_request() :: #{
 %%   <<"VoiceChannelRequest">> := voice_channel_request()
 %% }
 -type update_voice_channel_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_in_app_template_request() :: #{
@@ -1124,12 +1227,14 @@
 %% }
 -type update_in_app_template_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% message_body() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RequestID">> => string()
 %% }
 -type message_body() :: #{binary() => any()}.
+
 
 %% Example:
 %% write_journey_request() :: #{
@@ -1155,17 +1260,20 @@
 %% }
 -type write_journey_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% raw_email() :: #{
 %%   <<"Data">> => binary()
 %% }
 -type raw_email() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_apns_voip_channel_response() :: #{
 %%   <<"APNSVoipChannelResponse">> => a_p_n_s_voip_channel_response()
 %% }
 -type get_apns_voip_channel_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% activity_response() :: #{
@@ -1186,17 +1294,20 @@
 %% }
 -type activity_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_in_app_template_response() :: #{
 %%   <<"MessageBody">> => message_body()
 %% }
 -type delete_in_app_template_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_apns_channel_response() :: #{
 %%   <<"APNSChannelResponse">> => a_p_n_s_channel_response()
 %% }
 -type update_apns_channel_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% open_hours() :: #{
@@ -1207,12 +1318,15 @@
 %%   <<"VOICE">> => map()
 %% }
 -type open_hours() :: #{binary() => any()}.
+
 %% Example:
 %% get_baidu_channel_request() :: #{}
 -type get_baidu_channel_request() :: #{}.
+
 %% Example:
 %% delete_campaign_request() :: #{}
 -type delete_campaign_request() :: #{}.
+
 
 %% Example:
 %% sms_message() :: #{
@@ -1228,6 +1342,7 @@
 %% }
 -type sms_message() :: #{binary() => any()}.
 
+
 %% Example:
 %% sms_message_activity() :: #{
 %%   <<"MessageConfig">> => journey_sms_message(),
@@ -1236,6 +1351,7 @@
 %%   <<"TemplateVersion">> => string()
 %% }
 -type sms_message_activity() :: #{binary() => any()}.
+
 
 %% Example:
 %% template_response() :: #{
@@ -1251,11 +1367,13 @@
 %% }
 -type template_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_endpoint_request() :: #{
 %%   <<"EndpointRequest">> := endpoint_request()
 %% }
 -type update_endpoint_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% endpoint_send_configuration() :: #{
@@ -1267,11 +1385,13 @@
 %% }
 -type endpoint_send_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_events_response() :: #{
 %%   <<"EventsResponse">> => events_response()
 %% }
 -type put_events_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% journeys_response() :: #{
@@ -1280,11 +1400,13 @@
 %% }
 -type journeys_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% events_request() :: #{
 %%   <<"BatchItem">> => map()
 %% }
 -type events_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% message_result() :: #{
@@ -1296,6 +1418,7 @@
 %% }
 -type message_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_journey_execution_metrics_request() :: #{
 %%   <<"NextToken">> => string(),
@@ -1303,11 +1426,13 @@
 %% }
 -type get_journey_execution_metrics_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_import_jobs_response() :: #{
 %%   <<"ImportJobsResponse">> => import_jobs_response()
 %% }
 -type get_import_jobs_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_voice_template_response() :: #{
@@ -1315,17 +1440,20 @@
 %% }
 -type update_voice_template_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_apns_voip_channel_response() :: #{
 %%   <<"APNSVoipChannelResponse">> => a_p_n_s_voip_channel_response()
 %% }
 -type update_apns_voip_channel_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% application_settings_resource() :: #{
@@ -1338,11 +1466,13 @@
 %% }
 -type application_settings_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_recommender_configuration_response() :: #{
 %%   <<"RecommenderConfigurationResponse">> => recommender_configuration_response()
 %% }
 -type create_recommender_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% template_version_response() :: #{
@@ -1356,6 +1486,7 @@
 %% }
 -type template_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_requests_exception() :: #{
 %%   <<"Message">> => string(),
@@ -1363,11 +1494,13 @@
 %% }
 -type too_many_requests_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_push_template_request() :: #{
 %%   <<"Version">> => string()
 %% }
 -type get_push_template_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_apns_voip_sandbox_channel_request() :: #{
@@ -1375,11 +1508,13 @@
 %% }
 -type update_apns_voip_sandbox_channel_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% phone_number_validate_response() :: #{
 %%   <<"NumberValidateResponse">> => number_validate_response()
 %% }
 -type phone_number_validate_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% holdout_activity() :: #{
@@ -1388,11 +1523,13 @@
 %% }
 -type holdout_activity() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_sms_template_response() :: #{
 %%   <<"MessageBody">> => message_body()
 %% }
 -type update_sms_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_email_template_request() :: #{
@@ -1400,15 +1537,18 @@
 %% }
 -type delete_email_template_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% segment_reference() :: #{
 %%   <<"Id">> => string(),
 %%   <<"Version">> => integer()
 %% }
 -type segment_reference() :: #{binary() => any()}.
+
 %% Example:
 %% get_recommender_configuration_request() :: #{}
 -type get_recommender_configuration_request() :: #{}.
+
 
 %% Example:
 %% ad_m_channel_response() :: #{
@@ -1425,14 +1565,17 @@
 %% }
 -type ad_m_channel_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_baidu_channel_request() :: #{
 %%   <<"BaiduChannelRequest">> := baidu_channel_request()
 %% }
 -type update_baidu_channel_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_email_channel_request() :: #{}
 -type delete_email_channel_request() :: #{}.
+
 
 %% Example:
 %% get_sms_template_request() :: #{
@@ -1440,11 +1583,13 @@
 %% }
 -type get_sms_template_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_voice_template_request() :: #{
 %%   <<"Version">> => string()
 %% }
 -type delete_voice_template_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% contact_center_activity() :: #{
@@ -1452,11 +1597,13 @@
 %% }
 -type contact_center_activity() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_push_template_request() :: #{
 %%   <<"Version">> => string()
 %% }
 -type delete_push_template_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% baidu_channel_request() :: #{
@@ -1465,6 +1612,7 @@
 %%   <<"SecretKey">> => string()
 %% }
 -type baidu_channel_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% import_job_resource() :: #{
@@ -1479,11 +1627,13 @@
 %% }
 -type import_job_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% segment_condition() :: #{
 %%   <<"SegmentId">> => string()
 %% }
 -type segment_condition() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_gcm_channel_response() :: #{
@@ -1491,11 +1641,13 @@
 %% }
 -type update_gcm_channel_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_email_template_request() :: #{
 %%   <<"EmailTemplateRequest">> := email_template_request()
 %% }
 -type create_email_template_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% import_job_response() :: #{
@@ -1515,17 +1667,20 @@
 %% }
 -type import_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_segment_request() :: #{
 %%   <<"WriteSegmentRequest">> := write_segment_request()
 %% }
 -type update_segment_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_template_active_version_response() :: #{
 %%   <<"MessageBody">> => message_body()
 %% }
 -type update_template_active_version_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% address_configuration() :: #{
@@ -1537,6 +1692,7 @@
 %%   <<"TitleOverride">> => string()
 %% }
 -type address_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% email_channel_response() :: #{
@@ -1558,12 +1714,14 @@
 %% }
 -type email_channel_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% result_row() :: #{
 %%   <<"GroupedBys">> => list(result_row_value()()),
 %%   <<"Values">> => list(result_row_value()())
 %% }
 -type result_row() :: #{binary() => any()}.
+
 
 %% Example:
 %% custom_delivery_configuration() :: #{
@@ -1572,11 +1730,13 @@
 %% }
 -type custom_delivery_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_baidu_channel_response() :: #{
 %%   <<"BaiduChannelResponse">> => baidu_channel_response()
 %% }
 -type update_baidu_channel_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% phone_number_validate_request() :: #{
@@ -1584,11 +1744,13 @@
 %% }
 -type phone_number_validate_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_segment_response() :: #{
 %%   <<"SegmentResponse">> => segment_response()
 %% }
 -type create_segment_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% g_cm_channel_response() :: #{
@@ -1608,20 +1770,24 @@
 %% }
 -type g_cm_channel_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_application_settings_response() :: #{
 %%   <<"ApplicationSettingsResource">> => application_settings_resource()
 %% }
 -type get_application_settings_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_journey_state_response() :: #{
 %%   <<"JourneyResponse">> => journey_response()
 %% }
 -type update_journey_state_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_app_request() :: #{}
 -type get_app_request() :: #{}.
+
 
 %% Example:
 %% default_push_notification_template() :: #{
@@ -1633,11 +1799,13 @@
 %% }
 -type default_push_notification_template() :: #{binary() => any()}.
 
+
 %% Example:
 %% send_messages_request() :: #{
 %%   <<"MessageRequest">> := message_request()
 %% }
 -type send_messages_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% closed_days_rule() :: #{
@@ -1647,11 +1815,13 @@
 %% }
 -type closed_days_rule() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_recommender_configuration_response() :: #{
 %%   <<"RecommenderConfigurationResponse">> => recommender_configuration_response()
 %% }
 -type get_recommender_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_journey_request() :: #{
@@ -1659,11 +1829,13 @@
 %% }
 -type update_journey_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_application_date_range_kpi_response() :: #{
 %%   <<"ApplicationDateRangeKpiResponse">> => application_date_range_kpi_response()
 %% }
 -type get_application_date_range_kpi_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% campaign_sms_message() :: #{
@@ -1675,6 +1847,7 @@
 %%   <<"TemplateId">> => string()
 %% }
 -type campaign_sms_message() :: #{binary() => any()}.
+
 
 %% Example:
 %% a_p_n_s_channel_response() :: #{
@@ -1693,11 +1866,13 @@
 %% }
 -type a_p_n_s_channel_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_push_template_request() :: #{
 %%   <<"PushNotificationTemplateRequest">> := push_notification_template_request()
 %% }
 -type create_push_template_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% a_p_n_s_voip_sandbox_channel_response() :: #{
@@ -1716,11 +1891,13 @@
 %% }
 -type a_p_n_s_voip_sandbox_channel_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% send_o_t_p_message_request() :: #{
 %%   <<"SendOTPMessageRequestParameters">> := send_o_t_p_message_request_parameters()
 %% }
 -type send_o_t_p_message_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% journey_execution_metrics_response() :: #{
@@ -1731,14 +1908,17 @@
 %% }
 -type journey_execution_metrics_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_attributes_request() :: #{
 %%   <<"Blacklist">> => list(string()())
 %% }
 -type update_attributes_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_voice_channel_request() :: #{}
 -type get_voice_channel_request() :: #{}.
+
 
 %% Example:
 %% update_recommender_configuration_shape() :: #{
@@ -1754,6 +1934,7 @@
 %% }
 -type update_recommender_configuration_shape() :: #{binary() => any()}.
 
+
 %% Example:
 %% application_settings_journey_limits() :: #{
 %%   <<"DailyCap">> => integer(),
@@ -1762,11 +1943,13 @@
 %% }
 -type application_settings_journey_limits() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_voice_template_response() :: #{
 %%   <<"MessageBody">> => message_body()
 %% }
 -type delete_voice_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% baidu_channel_response() :: #{
@@ -1783,9 +1966,11 @@
 %%   <<"Version">> => integer()
 %% }
 -type baidu_channel_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_gcm_channel_request() :: #{}
 -type delete_gcm_channel_request() :: #{}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -1793,6 +1978,7 @@
 %%   <<"RequestID">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% write_segment_request() :: #{
@@ -1802,12 +1988,15 @@
 %%   <<"tags">> => map()
 %% }
 -type write_segment_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_apns_voip_sandbox_channel_request() :: #{}
 -type delete_apns_voip_sandbox_channel_request() :: #{}.
+
 %% Example:
 %% get_export_job_request() :: #{}
 -type get_export_job_request() :: #{}.
+
 
 %% Example:
 %% get_in_app_template_response() :: #{
@@ -1815,11 +2004,13 @@
 %% }
 -type get_in_app_template_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_campaign_response() :: #{
 %%   <<"CampaignResponse">> => campaign_response()
 %% }
 -type delete_campaign_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% import_job_request() :: #{
@@ -1834,11 +2025,13 @@
 %% }
 -type import_job_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_endpoint_response() :: #{
 %%   <<"EndpointResponse">> => endpoint_response()
 %% }
 -type get_endpoint_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% activity() :: #{
@@ -1856,6 +2049,7 @@
 %% }
 -type activity() :: #{binary() => any()}.
 
+
 %% Example:
 %% journey_run_execution_metrics_response() :: #{
 %%   <<"ApplicationId">> => string(),
@@ -1866,11 +2060,13 @@
 %% }
 -type journey_run_execution_metrics_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% voice_channel_request() :: #{
 %%   <<"Enabled">> => boolean()
 %% }
 -type voice_channel_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% a_p_n_s_push_notification_template() :: #{
@@ -1883,9 +2079,11 @@
 %%   <<"Url">> => string()
 %% }
 -type a_p_n_s_push_notification_template() :: #{binary() => any()}.
+
 %% Example:
 %% get_apns_channel_request() :: #{}
 -type get_apns_channel_request() :: #{}.
+
 
 %% Example:
 %% get_apps_response() :: #{
@@ -1893,11 +2091,13 @@
 %% }
 -type get_apps_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% send_o_t_p_message_response() :: #{
 %%   <<"MessageResponse">> => message_response()
 %% }
 -type send_o_t_p_message_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_apns_voip_sandbox_channel_response() :: #{
@@ -1905,11 +2105,13 @@
 %% }
 -type delete_apns_voip_sandbox_channel_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_export_job_response() :: #{
 %%   <<"ExportJobResponse">> => export_job_response()
 %% }
 -type get_export_job_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% payload_too_large_exception() :: #{
@@ -1918,14 +2120,17 @@
 %% }
 -type payload_too_large_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_endpoint_response() :: #{
 %%   <<"EndpointResponse">> => endpoint_response()
 %% }
 -type delete_endpoint_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_apns_voip_channel_request() :: #{}
 -type delete_apns_voip_channel_request() :: #{}.
+
 
 %% Example:
 %% update_voice_template_request() :: #{
@@ -1934,6 +2139,7 @@
 %%   <<"VoiceTemplateRequest">> := voice_template_request()
 %% }
 -type update_voice_template_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% endpoint_message_result() :: #{
@@ -1946,6 +2152,7 @@
 %% }
 -type endpoint_message_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% write_event_stream() :: #{
 %%   <<"DestinationStreamArn">> => string(),
@@ -1953,11 +2160,13 @@
 %% }
 -type write_event_stream() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_events_request() :: #{
 %%   <<"EventsRequest">> := events_request()
 %% }
 -type put_events_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% segment_dimensions() :: #{
@@ -1969,9 +2178,11 @@
 %%   <<"UserAttributes">> => map()
 %% }
 -type segment_dimensions() :: #{binary() => any()}.
+
 %% Example:
 %% get_apns_voip_sandbox_channel_request() :: #{}
 -type get_apns_voip_sandbox_channel_request() :: #{}.
+
 
 %% Example:
 %% voice_channel_response() :: #{
@@ -1988,11 +2199,13 @@
 %% }
 -type voice_channel_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_segment_export_jobs_response() :: #{
 %%   <<"ExportJobsResponse">> => export_jobs_response()
 %% }
 -type get_segment_export_jobs_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% a_p_n_s_message() :: #{
@@ -2017,14 +2230,17 @@
 %% }
 -type a_p_n_s_message() :: #{binary() => any()}.
 
+
 %% Example:
 %% template_active_version_request() :: #{
 %%   <<"Version">> => string()
 %% }
 -type template_active_version_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_import_job_request() :: #{}
 -type get_import_job_request() :: #{}.
+
 
 %% Example:
 %% in_app_message_content() :: #{
@@ -2037,12 +2253,14 @@
 %% }
 -type in_app_message_content() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_template_versions_request() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"PageSize">> => string()
 %% }
 -type list_template_versions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% message_response() :: #{
@@ -2053,14 +2271,17 @@
 %% }
 -type message_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_journey_response() :: #{
 %%   <<"JourneyResponse">> => journey_response()
 %% }
 -type get_journey_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_apns_voip_channel_request() :: #{}
 -type get_apns_voip_channel_request() :: #{}.
+
 
 %% Example:
 %% journey_schedule() :: #{
@@ -2070,11 +2291,13 @@
 %% }
 -type journey_schedule() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_email_template_response() :: #{
 %%   <<"MessageBody">> => message_body()
 %% }
 -type delete_email_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% export_job_response() :: #{
@@ -2094,12 +2317,14 @@
 %% }
 -type export_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% applications_response() :: #{
 %%   <<"Item">> => list(application_response()()),
 %%   <<"NextToken">> => string()
 %% }
 -type applications_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% sms_channel_response() :: #{
@@ -2120,6 +2345,7 @@
 %% }
 -type sms_channel_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% not_found_exception() :: #{
 %%   <<"Message">> => string(),
@@ -2127,11 +2353,13 @@
 %% }
 -type not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_journey_response() :: #{
 %%   <<"JourneyResponse">> => journey_response()
 %% }
 -type update_journey_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% in_app_message_body_config() :: #{
@@ -2141,6 +2369,7 @@
 %% }
 -type in_app_message_body_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_push_template_request() :: #{
 %%   <<"CreateNewVersion">> => boolean(),
@@ -2148,15 +2377,18 @@
 %%   <<"Version">> => string()
 %% }
 -type update_push_template_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_user_endpoints_request() :: #{}
 -type get_user_endpoints_request() :: #{}.
+
 
 %% Example:
 %% get_campaign_version_response() :: #{
 %%   <<"CampaignResponse">> => campaign_response()
 %% }
 -type get_campaign_version_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_campaign_activities_request() :: #{
@@ -2165,6 +2397,7 @@
 %% }
 -type get_campaign_activities_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_import_jobs_request() :: #{
 %%   <<"PageSize">> => string(),
@@ -2172,11 +2405,13 @@
 %% }
 -type get_import_jobs_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_template_versions_response() :: #{
 %%   <<"TemplateVersionsResponse">> => template_versions_response()
 %% }
 -type list_template_versions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% journey_push_message() :: #{
@@ -2184,11 +2419,13 @@
 %% }
 -type journey_push_message() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_segments_response() :: #{
 %%   <<"SegmentsResponse">> => segments_response()
 %% }
 -type get_segments_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_event_stream_response() :: #{
@@ -2196,11 +2433,13 @@
 %% }
 -type get_event_stream_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_event_stream_response() :: #{
 %%   <<"EventStream">> => event_stream()
 %% }
 -type put_event_stream_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_campaign_date_range_kpi_request() :: #{
@@ -2211,11 +2450,13 @@
 %% }
 -type get_campaign_date_range_kpi_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_apns_voip_channel_response() :: #{
 %%   <<"APNSVoipChannelResponse">> => a_p_n_s_voip_channel_response()
 %% }
 -type delete_apns_voip_channel_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_segment_import_jobs_response() :: #{
@@ -2223,11 +2464,13 @@
 %% }
 -type get_segment_import_jobs_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_endpoints_batch_request() :: #{
 %%   <<"EndpointBatchRequest">> := endpoint_batch_request()
 %% }
 -type update_endpoints_batch_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% template_versions_response() :: #{
@@ -2237,9 +2480,11 @@
 %%   <<"RequestID">> => string()
 %% }
 -type template_versions_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_baidu_channel_request() :: #{}
 -type delete_baidu_channel_request() :: #{}.
+
 
 %% Example:
 %% get_sms_channel_response() :: #{
@@ -2247,11 +2492,13 @@
 %% }
 -type get_sms_channel_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_voice_channel_response() :: #{
 %%   <<"VoiceChannelResponse">> => voice_channel_response()
 %% }
 -type delete_voice_channel_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
@@ -2259,11 +2506,13 @@
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_email_channel_response() :: #{
 %%   <<"EmailChannelResponse">> => email_channel_response()
 %% }
 -type delete_email_channel_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_application_request() :: #{
@@ -2272,11 +2521,13 @@
 %% }
 -type create_application_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_adm_channel_response() :: #{
 %%   <<"ADMChannelResponse">> => ad_m_channel_response()
 %% }
 -type update_adm_channel_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_user_endpoints_response() :: #{
@@ -2284,11 +2535,13 @@
 %% }
 -type get_user_endpoints_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_journey_run_execution_metrics_response() :: #{
 %%   <<"JourneyRunExecutionMetricsResponse">> => journey_run_execution_metrics_response()
 %% }
 -type get_journey_run_execution_metrics_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% in_app_message() :: #{
@@ -2298,6 +2551,7 @@
 %% }
 -type in_app_message() :: #{binary() => any()}.
 
+
 %% Example:
 %% segment_location() :: #{
 %%   <<"Country">> => set_dimension(),
@@ -2305,11 +2559,13 @@
 %% }
 -type segment_location() :: #{binary() => any()}.
 
+
 %% Example:
 %% remove_attributes_request() :: #{
 %%   <<"UpdateAttributesRequest">> := update_attributes_request()
 %% }
 -type remove_attributes_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_campaign_date_range_kpi_response() :: #{
@@ -2317,11 +2573,13 @@
 %% }
 -type get_campaign_date_range_kpi_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_endpoints_batch_response() :: #{
 %%   <<"MessageBody">> => message_body()
 %% }
 -type update_endpoints_batch_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_journey_execution_metrics_response() :: #{
@@ -2329,11 +2587,13 @@
 %% }
 -type get_journey_execution_metrics_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_adm_channel_response() :: #{
 %%   <<"ADMChannelResponse">> => ad_m_channel_response()
 %% }
 -type get_adm_channel_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% simple_email_part() :: #{
@@ -2342,6 +2602,7 @@
 %% }
 -type simple_email_part() :: #{binary() => any()}.
 
+
 %% Example:
 %% import_jobs_response() :: #{
 %%   <<"Item">> => list(import_job_response()()),
@@ -2349,12 +2610,14 @@
 %% }
 -type import_jobs_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% condition() :: #{
 %%   <<"Conditions">> => list(simple_condition()()),
 %%   <<"Operator">> => list(any())
 %% }
 -type condition() :: #{binary() => any()}.
+
 
 %% Example:
 %% journey_run_response() :: #{
@@ -2365,11 +2628,13 @@
 %% }
 -type journey_run_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_journey_runs_response() :: #{
 %%   <<"JourneyRunsResponse">> => journey_runs_response()
 %% }
 -type get_journey_runs_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% campaign_in_app_message() :: #{
@@ -2380,11 +2645,13 @@
 %% }
 -type campaign_in_app_message() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_segment_response() :: #{
 %%   <<"SegmentResponse">> => segment_response()
 %% }
 -type get_segment_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% session() :: #{
@@ -2395,6 +2662,7 @@
 %% }
 -type session() :: #{binary() => any()}.
 
+
 %% Example:
 %% event_filter() :: #{
 %%   <<"Dimensions">> => event_dimensions(),
@@ -2402,11 +2670,13 @@
 %% }
 -type event_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_segment_request() :: #{
 %%   <<"WriteSegmentRequest">> := write_segment_request()
 %% }
 -type create_segment_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% endpoint_location() :: #{
@@ -2419,6 +2689,7 @@
 %% }
 -type endpoint_location() :: #{binary() => any()}.
 
+
 %% Example:
 %% journey_execution_activity_metrics_response() :: #{
 %%   <<"ActivityType">> => string(),
@@ -2429,6 +2700,7 @@
 %%   <<"Metrics">> => map()
 %% }
 -type journey_execution_activity_metrics_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% direct_message_configuration() :: #{
@@ -2444,12 +2716,14 @@
 %% }
 -type direct_message_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_recommender_configurations_response() :: #{
 %%   <<"Item">> => list(recommender_configuration_response()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_recommender_configurations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% metric_dimension() :: #{
@@ -2458,11 +2732,13 @@
 %% }
 -type metric_dimension() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_apns_channel_response() :: #{
 %%   <<"APNSChannelResponse">> => a_p_n_s_channel_response()
 %% }
 -type get_apns_channel_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% journey_timeframe_cap() :: #{
@@ -2470,6 +2746,7 @@
 %%   <<"Days">> => integer()
 %% }
 -type journey_timeframe_cap() :: #{binary() => any()}.
+
 
 %% Example:
 %% event_dimensions() :: #{
@@ -2479,6 +2756,7 @@
 %% }
 -type event_dimensions() :: #{binary() => any()}.
 
+
 %% Example:
 %% g_cm_channel_request() :: #{
 %%   <<"ApiKey">> => string(),
@@ -2487,6 +2765,7 @@
 %%   <<"ServiceJson">> => string()
 %% }
 -type g_cm_channel_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% voice_template_request() :: #{
@@ -2498,6 +2777,7 @@
 %%   <<"tags">> => map()
 %% }
 -type voice_template_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% email_message() :: #{
@@ -2511,11 +2791,13 @@
 %% }
 -type email_message() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_segment_response() :: #{
 %%   <<"SegmentResponse">> => segment_response()
 %% }
 -type delete_segment_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_sms_template_response() :: #{
@@ -2523,11 +2805,13 @@
 %% }
 -type create_sms_template_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_export_job_request() :: #{
 %%   <<"ExportJobRequest">> := export_job_request()
 %% }
 -type create_export_job_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% segment_import_resource() :: #{
@@ -2539,12 +2823,15 @@
 %%   <<"Size">> => integer()
 %% }
 -type segment_import_resource() :: #{binary() => any()}.
+
 %% Example:
 %% delete_adm_channel_request() :: #{}
 -type delete_adm_channel_request() :: #{}.
+
 %% Example:
 %% delete_recommender_configuration_request() :: #{}
 -type delete_recommender_configuration_request() :: #{}.
+
 
 %% Example:
 %% update_apns_voip_sandbox_channel_response() :: #{
@@ -2552,17 +2839,20 @@
 %% }
 -type update_apns_voip_sandbox_channel_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% journey_email_message() :: #{
 %%   <<"FromAddress">> => string()
 %% }
 -type journey_email_message() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_apns_channel_response() :: #{
 %%   <<"APNSChannelResponse">> => a_p_n_s_channel_response()
 %% }
 -type delete_apns_channel_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% a_p_n_s_sandbox_channel_request() :: #{
@@ -2577,6 +2867,7 @@
 %% }
 -type a_p_n_s_sandbox_channel_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% segment_group() :: #{
 %%   <<"Dimensions">> => list(segment_dimensions()()),
@@ -2585,6 +2876,7 @@
 %%   <<"Type">> => list(any())
 %% }
 -type segment_group() :: #{binary() => any()}.
+
 
 %% Example:
 %% journey_sms_message() :: #{
@@ -2596,6 +2888,7 @@
 %% }
 -type journey_sms_message() :: #{binary() => any()}.
 
+
 %% Example:
 %% g_p_s_coordinates() :: #{
 %%   <<"Latitude">> => float(),
@@ -2603,11 +2896,13 @@
 %% }
 -type g_p_s_coordinates() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_app_response() :: #{
 %%   <<"ApplicationResponse">> => application_response()
 %% }
 -type get_app_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% email_message_activity() :: #{
@@ -2617,15 +2912,18 @@
 %%   <<"TemplateVersion">> => string()
 %% }
 -type email_message_activity() :: #{binary() => any()}.
+
 %% Example:
 %% get_event_stream_request() :: #{}
 -type get_event_stream_request() :: #{}.
+
 
 %% Example:
 %% get_recommender_configurations_response() :: #{
 %%   <<"ListRecommenderConfigurationsResponse">> => list_recommender_configurations_response()
 %% }
 -type get_recommender_configurations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% schedule() :: #{
@@ -2639,11 +2937,13 @@
 %% }
 -type schedule() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_push_template_response() :: #{
 %%   <<"MessageBody">> => message_body()
 %% }
 -type delete_push_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% a_p_n_s_voip_channel_response() :: #{
@@ -2661,9 +2961,11 @@
 %%   <<"Version">> => integer()
 %% }
 -type a_p_n_s_voip_channel_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_user_endpoints_request() :: #{}
 -type delete_user_endpoints_request() :: #{}.
+
 
 %% Example:
 %% list_journeys_request() :: #{
@@ -2671,6 +2973,7 @@
 %%   <<"Token">> => string()
 %% }
 -type list_journeys_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% email_template_response() :: #{
@@ -2690,6 +2993,7 @@
 %% }
 -type email_template_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_sms_template_request() :: #{
 %%   <<"CreateNewVersion">> => boolean(),
@@ -2698,12 +3002,14 @@
 %% }
 -type update_sms_template_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_journey_execution_activity_metrics_request() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"PageSize">> => string()
 %% }
 -type get_journey_execution_activity_metrics_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% event() :: #{
@@ -2719,6 +3025,7 @@
 %%   <<"Timestamp">> => string()
 %% }
 -type event() :: #{binary() => any()}.
+
 
 %% Example:
 %% a_p_n_s_sandbox_channel_response() :: #{
@@ -2737,15 +3044,18 @@
 %% }
 -type a_p_n_s_sandbox_channel_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% activities_response() :: #{
 %%   <<"Item">> => list(activity_response()()),
 %%   <<"NextToken">> => string()
 %% }
 -type activities_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_app_request() :: #{}
 -type delete_app_request() :: #{}.
+
 
 %% Example:
 %% send_messages_response() :: #{
@@ -2753,20 +3063,24 @@
 %% }
 -type send_messages_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% in_app_messages_response() :: #{
 %%   <<"InAppMessageCampaigns">> => list(in_app_message_campaign()())
 %% }
 -type in_app_messages_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_endpoint_request() :: #{}
 -type delete_endpoint_request() :: #{}.
+
 
 %% Example:
 %% get_voice_template_response() :: #{
 %%   <<"VoiceTemplateResponse">> => voice_template_response()
 %% }
 -type get_voice_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_template_message_body() :: #{
@@ -2775,6 +3089,7 @@
 %%   <<"RequestID">> => string()
 %% }
 -type create_template_message_body() :: #{binary() => any()}.
+
 
 %% Example:
 %% voice_template_response() :: #{
@@ -2792,9 +3107,11 @@
 %%   <<"tags">> => map()
 %% }
 -type voice_template_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_adm_channel_request() :: #{}
 -type get_adm_channel_request() :: #{}.
+
 
 %% Example:
 %% update_apns_sandbox_channel_response() :: #{
@@ -2802,11 +3119,13 @@
 %% }
 -type update_apns_sandbox_channel_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_import_job_response() :: #{
 %%   <<"ImportJobResponse">> => import_job_response()
 %% }
 -type get_import_job_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_journey_run_execution_activity_metrics_response() :: #{
@@ -2814,11 +3133,13 @@
 %% }
 -type get_journey_run_execution_activity_metrics_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% send_users_messages_request() :: #{
 %%   <<"SendUsersMessageRequest">> := send_users_message_request()
 %% }
 -type send_users_messages_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% export_job_request() :: #{
@@ -2828,6 +3149,7 @@
 %%   <<"SegmentVersion">> => integer()
 %% }
 -type export_job_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% write_campaign_request() :: #{
@@ -2851,17 +3173,20 @@
 %% }
 -type write_campaign_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_baidu_channel_response() :: #{
 %%   <<"BaiduChannelResponse">> => baidu_channel_response()
 %% }
 -type get_baidu_channel_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% campaign_custom_message() :: #{
 %%   <<"Data">> => string()
 %% }
 -type campaign_custom_message() :: #{binary() => any()}.
+
 
 %% Example:
 %% email_channel_request() :: #{
@@ -2873,17 +3198,20 @@
 %% }
 -type email_channel_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_campaign_request() :: #{
 %%   <<"WriteCampaignRequest">> := write_campaign_request()
 %% }
 -type create_campaign_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% events_response() :: #{
 %%   <<"Results">> => map()
 %% }
 -type events_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% default_button_configuration() :: #{
@@ -2896,12 +3224,14 @@
 %% }
 -type default_button_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% journey_runs_response() :: #{
 %%   <<"Item">> => list(journey_run_response()()),
 %%   <<"NextToken">> => string()
 %% }
 -type journey_runs_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% sms_template_response() :: #{
@@ -2919,12 +3249,14 @@
 %% }
 -type sms_template_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% segments_response() :: #{
 %%   <<"Item">> => list(segment_response()()),
 %%   <<"NextToken">> => string()
 %% }
 -type segments_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% closed_days() :: #{
@@ -2936,17 +3268,20 @@
 %% }
 -type closed_days() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_event_stream_response() :: #{
 %%   <<"EventStream">> => event_stream()
 %% }
 -type delete_event_stream_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_sms_template_response() :: #{
 %%   <<"MessageBody">> => message_body()
 %% }
 -type delete_sms_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_segment_versions_request() :: #{
@@ -2955,11 +3290,13 @@
 %% }
 -type get_segment_versions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% channels_response() :: #{
 %%   <<"Channels">> => map()
 %% }
 -type channels_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_recommender_configurations_request() :: #{
@@ -2968,11 +3305,13 @@
 %% }
 -type get_recommender_configurations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_journey_date_range_kpi_response() :: #{
 %%   <<"JourneyDateRangeKpiResponse">> => journey_date_range_kpi_response()
 %% }
 -type get_journey_date_range_kpi_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_journey_request() :: #{
@@ -2980,11 +3319,13 @@
 %% }
 -type create_journey_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_sms_template_response() :: #{
 %%   <<"SMSTemplateResponse">> => sms_template_response()
 %% }
 -type get_sms_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% segment_demographics() :: #{
@@ -2997,6 +3338,7 @@
 %% }
 -type segment_demographics() :: #{binary() => any()}.
 
+
 %% Example:
 %% application_response() :: #{
 %%   <<"Arn">> => string(),
@@ -3007,11 +3349,13 @@
 %% }
 -type application_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_voice_channel_response() :: #{
 %%   <<"VoiceChannelResponse">> => voice_channel_response()
 %% }
 -type update_voice_channel_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% send_users_messages_response() :: #{
@@ -3019,11 +3363,13 @@
 %% }
 -type send_users_messages_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_templates_response() :: #{
 %%   <<"TemplatesResponse">> => templates_response()
 %% }
 -type list_templates_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% default_message() :: #{
@@ -3032,11 +3378,13 @@
 %% }
 -type default_message() :: #{binary() => any()}.
 
+
 %% Example:
 %% remove_attributes_response() :: #{
 %%   <<"AttributesResource">> => attributes_resource()
 %% }
 -type remove_attributes_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_export_jobs_request() :: #{
@@ -3044,6 +3392,7 @@
 %%   <<"Token">> => string()
 %% }
 -type get_export_jobs_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% campaign_email_message() :: #{
@@ -3054,6 +3403,7 @@
 %% }
 -type campaign_email_message() :: #{binary() => any()}.
 
+
 %% Example:
 %% ad_m_channel_request() :: #{
 %%   <<"ClientId">> => string(),
@@ -3062,20 +3412,24 @@
 %% }
 -type ad_m_channel_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_apns_voip_channel_request() :: #{
 %%   <<"APNSVoipChannelRequest">> := a_p_n_s_voip_channel_request()
 %% }
 -type update_apns_voip_channel_request() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% create_sms_template_request() :: #{
 %%   <<"SMSTemplateRequest">> := sms_template_request()
 %% }
 -type create_sms_template_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% sms_template_request() :: #{
@@ -3087,11 +3441,13 @@
 %% }
 -type sms_template_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% segment_behaviors() :: #{
 %%   <<"Recency">> => recency_dimension()
 %% }
 -type segment_behaviors() :: #{binary() => any()}.
+
 
 %% Example:
 %% a_p_n_s_voip_sandbox_channel_request() :: #{
@@ -3106,11 +3462,13 @@
 %% }
 -type a_p_n_s_voip_sandbox_channel_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_voice_template_response() :: #{
 %%   <<"CreateTemplateMessageBody">> => create_template_message_body()
 %% }
 -type create_voice_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% template_configuration() :: #{
@@ -3121,15 +3479,18 @@
 %%   <<"VoiceTemplate">> => template()
 %% }
 -type template_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% get_application_settings_request() :: #{}
 -type get_application_settings_request() :: #{}.
+
 
 %% Example:
 %% create_recommender_configuration_request() :: #{
 %%   <<"CreateRecommenderConfiguration">> := create_recommender_configuration_shape()
 %% }
 -type create_recommender_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% item_response() :: #{
@@ -3138,12 +3499,14 @@
 %% }
 -type item_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_error_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RequestID">> => string()
 %% }
 -type internal_server_error_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% override_button_configuration() :: #{
@@ -3152,6 +3515,7 @@
 %% }
 -type override_button_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_condition() :: #{
 %%   <<"Description">> => string(),
@@ -3159,6 +3523,7 @@
 %%   <<"SegmentStartCondition">> => segment_condition()
 %% }
 -type start_condition() :: #{binary() => any()}.
+
 
 %% Example:
 %% endpoint_demographic() :: #{
@@ -3173,12 +3538,14 @@
 %% }
 -type endpoint_demographic() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_segment_export_jobs_request() :: #{
 %%   <<"PageSize">> => string(),
 %%   <<"Token">> => string()
 %% }
 -type get_segment_export_jobs_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% message_request() :: #{
@@ -3190,6 +3557,7 @@
 %%   <<"TraceId">> => string()
 %% }
 -type message_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% endpoint_request() :: #{
@@ -3207,11 +3575,13 @@
 %% }
 -type endpoint_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_campaign_response() :: #{
 %%   <<"CampaignResponse">> => campaign_response()
 %% }
 -type get_campaign_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% attribute_dimension() :: #{
@@ -3219,6 +3589,7 @@
 %%   <<"Values">> => list(string()())
 %% }
 -type attribute_dimension() :: #{binary() => any()}.
+
 
 %% Example:
 %% event_stream() :: #{
@@ -3230,9 +3601,11 @@
 %%   <<"RoleArn">> => string()
 %% }
 -type event_stream() :: #{binary() => any()}.
+
 %% Example:
 %% delete_apns_channel_request() :: #{}
 -type delete_apns_channel_request() :: #{}.
+
 
 %% Example:
 %% sms_channel_request() :: #{
@@ -3242,6 +3615,7 @@
 %% }
 -type sms_channel_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_campaign_versions_request() :: #{
 %%   <<"PageSize">> => string(),
@@ -3249,11 +3623,13 @@
 %% }
 -type get_campaign_versions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_recommender_configuration_response() :: #{
 %%   <<"RecommenderConfigurationResponse">> => recommender_configuration_response()
 %% }
 -type update_recommender_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% set_dimension() :: #{
@@ -3262,11 +3638,13 @@
 %% }
 -type set_dimension() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_adm_channel_request() :: #{
 %%   <<"ADMChannelRequest">> := ad_m_channel_request()
 %% }
 -type update_adm_channel_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% write_treatment_resource() :: #{
@@ -3280,11 +3658,13 @@
 %% }
 -type write_treatment_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_segment_response() :: #{
 %%   <<"SegmentResponse">> => segment_response()
 %% }
 -type update_segment_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_journey_runs_request() :: #{
@@ -3292,6 +3672,7 @@
 %%   <<"Token">> => string()
 %% }
 -type get_journey_runs_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% simple_email() :: #{
@@ -3301,6 +3682,7 @@
 %% }
 -type simple_email() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_campaigns_request() :: #{
 %%   <<"PageSize">> => string(),
@@ -3308,11 +3690,13 @@
 %% }
 -type get_campaigns_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_voice_template_request() :: #{
 %%   <<"Version">> => string()
 %% }
 -type get_voice_template_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_application_settings_request() :: #{
@@ -3320,12 +3704,14 @@
 %% }
 -type update_application_settings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_segment_import_jobs_request() :: #{
 %%   <<"PageSize">> => string(),
 %%   <<"Token">> => string()
 %% }
 -type get_segment_import_jobs_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% endpoint_response() :: #{
@@ -3347,6 +3733,7 @@
 %% }
 -type endpoint_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% multi_conditional_split_activity() :: #{
 %%   <<"Branches">> => list(multi_conditional_branch()()),
@@ -3354,9 +3741,11 @@
 %%   <<"EvaluationWaitTime">> => wait_time()
 %% }
 -type multi_conditional_split_activity() :: #{binary() => any()}.
+
 %% Example:
 %% delete_voice_channel_request() :: #{}
 -type delete_voice_channel_request() :: #{}.
+
 
 %% Example:
 %% journey_limits() :: #{
@@ -3368,9 +3757,11 @@
 %%   <<"TotalCap">> => integer()
 %% }
 -type journey_limits() :: #{binary() => any()}.
+
 %% Example:
 %% delete_segment_request() :: #{}
 -type delete_segment_request() :: #{}.
+
 
 %% Example:
 %% write_application_settings_request() :: #{
@@ -3383,11 +3774,13 @@
 %% }
 -type write_application_settings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_in_app_messages_response() :: #{
 %%   <<"InAppMessagesResponse">> => in_app_messages_response()
 %% }
 -type get_in_app_messages_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% default_push_notification_message() :: #{
@@ -3401,11 +3794,13 @@
 %% }
 -type default_push_notification_message() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_segment_version_response() :: #{
 %%   <<"SegmentResponse">> => segment_response()
 %% }
 -type get_segment_version_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% bad_request_exception() :: #{
@@ -3414,11 +3809,13 @@
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% tags_model() :: #{
 %%   <<"tags">> => map()
 %% }
 -type tags_model() :: #{binary() => any()}.
+
 
 %% Example:
 %% segment_response() :: #{
@@ -3437,11 +3834,13 @@
 %% }
 -type segment_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_email_template_response() :: #{
 %%   <<"EmailTemplateResponse">> => email_template_response()
 %% }
 -type get_email_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_campaigns_response() :: #{
@@ -3449,11 +3848,13 @@
 %% }
 -type get_campaigns_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% verify_o_t_p_message_response() :: #{
 %%   <<"VerificationResponse">> => verification_response()
 %% }
 -type verify_o_t_p_message_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% in_app_message_campaign() :: #{
@@ -3467,6 +3868,7 @@
 %%   <<"TreatmentId">> => string()
 %% }
 -type in_app_message_campaign() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_recommender_configuration_shape() :: #{
@@ -3482,11 +3884,13 @@
 %% }
 -type create_recommender_configuration_shape() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_email_template_request() :: #{
 %%   <<"Version">> => string()
 %% }
 -type get_email_template_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_campaign_request() :: #{
@@ -3494,17 +3898,20 @@
 %% }
 -type update_campaign_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% journey_state_request() :: #{
 %%   <<"State">> => list(any())
 %% }
 -type journey_state_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_email_template_response() :: #{
 %%   <<"MessageBody">> => message_body()
 %% }
 -type update_email_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% android_push_notification_template() :: #{
@@ -3520,6 +3927,7 @@
 %% }
 -type android_push_notification_template() :: #{binary() => any()}.
 
+
 %% Example:
 %% export_job_resource() :: #{
 %%   <<"RoleArn">> => string(),
@@ -3529,6 +3937,7 @@
 %% }
 -type export_job_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% template() :: #{
 %%   <<"Name">> => string(),
@@ -3536,11 +3945,13 @@
 %% }
 -type template() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_journey_response() :: #{
 %%   <<"JourneyResponse">> => journey_response()
 %% }
 -type delete_journey_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% multi_conditional_branch() :: #{
@@ -3548,9 +3959,11 @@
 %%   <<"NextActivity">> => string()
 %% }
 -type multi_conditional_branch() :: #{binary() => any()}.
+
 %% Example:
 %% delete_event_stream_request() :: #{}
 -type delete_event_stream_request() :: #{}.
+
 
 %% Example:
 %% update_application_settings_response() :: #{
@@ -3558,11 +3971,13 @@
 %% }
 -type update_application_settings_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_in_app_template_request() :: #{
 %%   <<"Version">> => string()
 %% }
 -type get_in_app_template_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_adm_channel_response() :: #{
@@ -3570,20 +3985,24 @@
 %% }
 -type delete_adm_channel_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_in_app_template_response() :: #{
 %%   <<"MessageBody">> => message_body()
 %% }
 -type update_in_app_template_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_apns_sandbox_channel_request() :: #{}
 -type get_apns_sandbox_channel_request() :: #{}.
+
 
 %% Example:
 %% create_journey_response() :: #{
 %%   <<"JourneyResponse">> => journey_response()
 %% }
 -type create_journey_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% send_users_message_response() :: #{
@@ -3592,6 +4011,7 @@
 %%   <<"Result">> => map()
 %% }
 -type send_users_message_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_journey_date_range_kpi_request() :: #{
@@ -3602,11 +4022,13 @@
 %% }
 -type get_journey_date_range_kpi_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_app_response() :: #{
 %%   <<"ApplicationResponse">> => application_response()
 %% }
 -type create_app_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_apns_sandbox_channel_response() :: #{
@@ -3614,11 +4036,13 @@
 %% }
 -type get_apns_sandbox_channel_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% random_split_activity() :: #{
 %%   <<"Branches">> => list(random_split_entry()())
 %% }
 -type random_split_activity() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_journey_execution_activity_metrics_response() :: #{
@@ -3626,12 +4050,14 @@
 %% }
 -type get_journey_execution_activity_metrics_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% segment_group_list() :: #{
 %%   <<"Groups">> => list(segment_group()()),
 %%   <<"Include">> => list(any())
 %% }
 -type segment_group_list() :: #{binary() => any()}.
+
 
 %% Example:
 %% in_app_template_request() :: #{
@@ -3643,17 +4069,21 @@
 %% }
 -type in_app_template_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_campaign_response() :: #{
 %%   <<"CampaignResponse">> => campaign_response()
 %% }
 -type create_campaign_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_endpoint_request() :: #{}
 -type get_endpoint_request() :: #{}.
+
 %% Example:
 %% get_email_channel_request() :: #{}
 -type get_email_channel_request() :: #{}.
+
 
 %% Example:
 %% journey_channel_settings() :: #{
@@ -3661,6 +4091,7 @@
 %%   <<"ConnectCampaignExecutionRoleArn">> => string()
 %% }
 -type journey_channel_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% number_validate_response() :: #{
@@ -3681,11 +4112,13 @@
 %% }
 -type number_validate_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_sms_channel_response() :: #{
 %%   <<"SMSChannelResponse">> => sms_channel_response()
 %% }
 -type delete_sms_channel_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% g_cm_message() :: #{
@@ -3709,9 +4142,11 @@
 %%   <<"Url">> => string()
 %% }
 -type g_cm_message() :: #{binary() => any()}.
+
 %% Example:
 %% delete_sms_channel_request() :: #{}
 -type delete_sms_channel_request() :: #{}.
+
 
 %% Example:
 %% list_journeys_response() :: #{
@@ -3719,11 +4154,13 @@
 %% }
 -type list_journeys_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_gcm_channel_response() :: #{
 %%   <<"GCMChannelResponse">> => g_cm_channel_response()
 %% }
 -type get_gcm_channel_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% in_app_message_button() :: #{
@@ -3734,12 +4171,14 @@
 %% }
 -type in_app_message_button() :: #{binary() => any()}.
 
+
 %% Example:
 %% wait_activity() :: #{
 %%   <<"NextActivity">> => string(),
 %%   <<"WaitTime">> => wait_time()
 %% }
 -type wait_activity() :: #{binary() => any()}.
+
 
 %% Example:
 %% journey_date_range_kpi_response() :: #{
@@ -3753,12 +4192,14 @@
 %% }
 -type journey_date_range_kpi_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_journey_run_execution_metrics_request() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"PageSize">> => string()
 %% }
 -type get_journey_run_execution_metrics_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% endpoint_item_response() :: #{
@@ -3767,6 +4208,7 @@
 %% }
 -type endpoint_item_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_journey_run_execution_activity_metrics_request() :: #{
 %%   <<"NextToken">> => string(),
@@ -3774,11 +4216,13 @@
 %% }
 -type get_journey_run_execution_activity_metrics_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_in_app_template_request() :: #{
 %%   <<"Version">> => string()
 %% }
 -type delete_in_app_template_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_apns_channel_request() :: #{
@@ -3786,11 +4230,13 @@
 %% }
 -type update_apns_channel_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_recommender_configuration_request() :: #{
 %%   <<"UpdateRecommenderConfiguration">> := update_recommender_configuration_shape()
 %% }
 -type update_recommender_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_email_template_response() :: #{
@@ -3798,20 +4244,24 @@
 %% }
 -type create_email_template_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_in_app_template_request() :: #{
 %%   <<"InAppTemplateRequest">> := in_app_template_request()
 %% }
 -type create_in_app_template_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_sms_template_request() :: #{
 %%   <<"Version">> => string()
 %% }
 -type delete_sms_template_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_gcm_channel_request() :: #{}
 -type get_gcm_channel_request() :: #{}.
+
 
 %% Example:
 %% endpoint_user() :: #{
@@ -3819,6 +4269,7 @@
 %%   <<"UserId">> => string()
 %% }
 -type endpoint_user() :: #{binary() => any()}.
+
 
 %% Example:
 %% custom_message_activity() :: #{
@@ -3830,6 +4281,7 @@
 %%   <<"TemplateVersion">> => string()
 %% }
 -type custom_message_activity() :: #{binary() => any()}.
+
 
 %% Example:
 %% ad_m_message() :: #{
@@ -3852,12 +4304,14 @@
 %% }
 -type ad_m_message() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_segments_request() :: #{
 %%   <<"PageSize">> => string(),
 %%   <<"Token">> => string()
 %% }
 -type get_segments_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% in_app_template_response() :: #{
@@ -3874,6 +4328,7 @@
 %%   <<"tags">> => map()
 %% }
 -type in_app_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% message() :: #{
@@ -3892,6 +4347,7 @@
 %% }
 -type message() :: #{binary() => any()}.
 
+
 %% Example:
 %% public_endpoint() :: #{
 %%   <<"Address">> => string(),
@@ -3907,6 +4363,7 @@
 %%   <<"User">> => endpoint_user()
 %% }
 -type public_endpoint() :: #{binary() => any()}.
+
 
 %% Example:
 %% recommender_configuration_response() :: #{
@@ -3925,6 +4382,1066 @@
 %% }
 -type recommender_configuration_response() :: #{binary() => any()}.
 
+-type create_app_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type create_campaign_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type create_email_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type create_export_job_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type create_import_job_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type create_in_app_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type create_journey_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type create_push_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type create_recommender_configuration_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type create_segment_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type create_sms_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type create_voice_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type delete_adm_channel_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type delete_apns_channel_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type delete_apns_sandbox_channel_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type delete_apns_voip_channel_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type delete_apns_voip_sandbox_channel_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type delete_app_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type delete_baidu_channel_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type delete_campaign_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type delete_email_channel_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type delete_email_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type delete_endpoint_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type delete_event_stream_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type delete_gcm_channel_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type delete_in_app_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type delete_journey_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type delete_push_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type delete_recommender_configuration_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type delete_segment_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type delete_sms_channel_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type delete_sms_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type delete_user_endpoints_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type delete_voice_channel_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type delete_voice_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_adm_channel_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_apns_channel_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_apns_sandbox_channel_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_apns_voip_channel_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_apns_voip_sandbox_channel_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_app_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_application_date_range_kpi_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_application_settings_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_apps_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_baidu_channel_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_campaign_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_campaign_activities_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_campaign_date_range_kpi_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_campaign_version_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_campaign_versions_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_campaigns_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_channels_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_email_channel_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_email_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_endpoint_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_event_stream_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_export_job_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_export_jobs_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_gcm_channel_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_import_job_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_import_jobs_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_in_app_messages_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_in_app_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_journey_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_journey_date_range_kpi_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_journey_execution_activity_metrics_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_journey_execution_metrics_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_journey_run_execution_activity_metrics_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_journey_run_execution_metrics_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_journey_runs_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_push_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_recommender_configuration_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_recommender_configurations_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_segment_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_segment_export_jobs_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_segment_import_jobs_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_segment_version_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_segment_versions_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_segments_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_sms_channel_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_sms_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_user_endpoints_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_voice_channel_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_voice_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type list_journeys_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type list_template_versions_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type list_templates_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type phone_number_validate_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type put_event_stream_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type put_events_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type remove_attributes_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type send_messages_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type send_o_t_p_message_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type send_users_messages_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type update_adm_channel_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type update_apns_channel_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type update_apns_sandbox_channel_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type update_apns_voip_channel_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type update_apns_voip_sandbox_channel_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type update_application_settings_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type update_baidu_channel_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type update_campaign_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type update_email_channel_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type update_email_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type update_endpoint_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type update_endpoints_batch_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type update_gcm_channel_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type update_in_app_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type update_journey_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type update_journey_state_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type update_push_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type update_recommender_configuration_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type update_segment_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type update_sms_channel_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type update_sms_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type update_template_active_version_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type update_voice_channel_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type update_voice_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type verify_o_t_p_message_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    payload_too_large_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -3933,26 +5450,14 @@
 -spec create_app(map(), create_app_request()) ->
     {ok, create_app_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_app_errors(), tuple()}.
 create_app(Client, Input) ->
     create_app(Client, Input, []).
 
 -spec create_app(map(), create_app_request(), proplists:proplist()) ->
     {ok, create_app_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_app_errors(), tuple()}.
 create_app(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apps"],
@@ -3980,26 +5485,14 @@ create_app(Client, Input0, Options0) ->
 -spec create_campaign(map(), binary() | list(), create_campaign_request()) ->
     {ok, create_campaign_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_campaign_errors(), tuple()}.
 create_campaign(Client, ApplicationId, Input) ->
     create_campaign(Client, ApplicationId, Input, []).
 
 -spec create_campaign(map(), binary() | list(), create_campaign_request(), proplists:proplist()) ->
     {ok, create_campaign_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_campaign_errors(), tuple()}.
 create_campaign(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/campaigns"],
@@ -4027,22 +5520,14 @@ create_campaign(Client, ApplicationId, Input0, Options0) ->
 -spec create_email_template(map(), binary() | list(), create_email_template_request()) ->
     {ok, create_email_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_email_template_errors(), tuple()}.
 create_email_template(Client, TemplateName, Input) ->
     create_email_template(Client, TemplateName, Input, []).
 
 -spec create_email_template(map(), binary() | list(), create_email_template_request(), proplists:proplist()) ->
     {ok, create_email_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_email_template_errors(), tuple()}.
 create_email_template(Client, TemplateName, Input0, Options0) ->
     Method = post,
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/email"],
@@ -4069,26 +5554,14 @@ create_email_template(Client, TemplateName, Input0, Options0) ->
 -spec create_export_job(map(), binary() | list(), create_export_job_request()) ->
     {ok, create_export_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_export_job_errors(), tuple()}.
 create_export_job(Client, ApplicationId, Input) ->
     create_export_job(Client, ApplicationId, Input, []).
 
 -spec create_export_job(map(), binary() | list(), create_export_job_request(), proplists:proplist()) ->
     {ok, create_export_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_export_job_errors(), tuple()}.
 create_export_job(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/jobs/export"],
@@ -4115,26 +5588,14 @@ create_export_job(Client, ApplicationId, Input0, Options0) ->
 -spec create_import_job(map(), binary() | list(), create_import_job_request()) ->
     {ok, create_import_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_import_job_errors(), tuple()}.
 create_import_job(Client, ApplicationId, Input) ->
     create_import_job(Client, ApplicationId, Input, []).
 
 -spec create_import_job(map(), binary() | list(), create_import_job_request(), proplists:proplist()) ->
     {ok, create_import_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_import_job_errors(), tuple()}.
 create_import_job(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/jobs/import"],
@@ -4162,22 +5623,14 @@ create_import_job(Client, ApplicationId, Input0, Options0) ->
 -spec create_in_app_template(map(), binary() | list(), create_in_app_template_request()) ->
     {ok, create_in_app_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_in_app_template_errors(), tuple()}.
 create_in_app_template(Client, TemplateName, Input) ->
     create_in_app_template(Client, TemplateName, Input, []).
 
 -spec create_in_app_template(map(), binary() | list(), create_in_app_template_request(), proplists:proplist()) ->
     {ok, create_in_app_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_in_app_template_errors(), tuple()}.
 create_in_app_template(Client, TemplateName, Input0, Options0) ->
     Method = post,
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/inapp"],
@@ -4204,26 +5657,14 @@ create_in_app_template(Client, TemplateName, Input0, Options0) ->
 -spec create_journey(map(), binary() | list(), create_journey_request()) ->
     {ok, create_journey_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_journey_errors(), tuple()}.
 create_journey(Client, ApplicationId, Input) ->
     create_journey(Client, ApplicationId, Input, []).
 
 -spec create_journey(map(), binary() | list(), create_journey_request(), proplists:proplist()) ->
     {ok, create_journey_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_journey_errors(), tuple()}.
 create_journey(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys"],
@@ -4251,22 +5692,14 @@ create_journey(Client, ApplicationId, Input0, Options0) ->
 -spec create_push_template(map(), binary() | list(), create_push_template_request()) ->
     {ok, create_push_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_push_template_errors(), tuple()}.
 create_push_template(Client, TemplateName, Input) ->
     create_push_template(Client, TemplateName, Input, []).
 
 -spec create_push_template(map(), binary() | list(), create_push_template_request(), proplists:proplist()) ->
     {ok, create_push_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_push_template_errors(), tuple()}.
 create_push_template(Client, TemplateName, Input0, Options0) ->
     Method = post,
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/push"],
@@ -4293,26 +5726,14 @@ create_push_template(Client, TemplateName, Input0, Options0) ->
 -spec create_recommender_configuration(map(), create_recommender_configuration_request()) ->
     {ok, create_recommender_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_recommender_configuration_errors(), tuple()}.
 create_recommender_configuration(Client, Input) ->
     create_recommender_configuration(Client, Input, []).
 
 -spec create_recommender_configuration(map(), create_recommender_configuration_request(), proplists:proplist()) ->
     {ok, create_recommender_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_recommender_configuration_errors(), tuple()}.
 create_recommender_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/recommenders"],
@@ -4341,26 +5762,14 @@ create_recommender_configuration(Client, Input0, Options0) ->
 -spec create_segment(map(), binary() | list(), create_segment_request()) ->
     {ok, create_segment_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_segment_errors(), tuple()}.
 create_segment(Client, ApplicationId, Input) ->
     create_segment(Client, ApplicationId, Input, []).
 
 -spec create_segment(map(), binary() | list(), create_segment_request(), proplists:proplist()) ->
     {ok, create_segment_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_segment_errors(), tuple()}.
 create_segment(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/segments"],
@@ -4388,22 +5797,14 @@ create_segment(Client, ApplicationId, Input0, Options0) ->
 -spec create_sms_template(map(), binary() | list(), create_sms_template_request()) ->
     {ok, create_sms_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_sms_template_errors(), tuple()}.
 create_sms_template(Client, TemplateName, Input) ->
     create_sms_template(Client, TemplateName, Input, []).
 
 -spec create_sms_template(map(), binary() | list(), create_sms_template_request(), proplists:proplist()) ->
     {ok, create_sms_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_sms_template_errors(), tuple()}.
 create_sms_template(Client, TemplateName, Input0, Options0) ->
     Method = post,
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/sms"],
@@ -4431,22 +5832,14 @@ create_sms_template(Client, TemplateName, Input0, Options0) ->
 -spec create_voice_template(map(), binary() | list(), create_voice_template_request()) ->
     {ok, create_voice_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_voice_template_errors(), tuple()}.
 create_voice_template(Client, TemplateName, Input) ->
     create_voice_template(Client, TemplateName, Input, []).
 
 -spec create_voice_template(map(), binary() | list(), create_voice_template_request(), proplists:proplist()) ->
     {ok, create_voice_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_voice_template_errors(), tuple()}.
 create_voice_template(Client, TemplateName, Input0, Options0) ->
     Method = post,
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/voice"],
@@ -4474,26 +5867,14 @@ create_voice_template(Client, TemplateName, Input0, Options0) ->
 -spec delete_adm_channel(map(), binary() | list(), delete_adm_channel_request()) ->
     {ok, delete_adm_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_adm_channel_errors(), tuple()}.
 delete_adm_channel(Client, ApplicationId, Input) ->
     delete_adm_channel(Client, ApplicationId, Input, []).
 
 -spec delete_adm_channel(map(), binary() | list(), delete_adm_channel_request(), proplists:proplist()) ->
     {ok, delete_adm_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_adm_channel_errors(), tuple()}.
 delete_adm_channel(Client, ApplicationId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/adm"],
@@ -4521,26 +5902,14 @@ delete_adm_channel(Client, ApplicationId, Input0, Options0) ->
 -spec delete_apns_channel(map(), binary() | list(), delete_apns_channel_request()) ->
     {ok, delete_apns_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_apns_channel_errors(), tuple()}.
 delete_apns_channel(Client, ApplicationId, Input) ->
     delete_apns_channel(Client, ApplicationId, Input, []).
 
 -spec delete_apns_channel(map(), binary() | list(), delete_apns_channel_request(), proplists:proplist()) ->
     {ok, delete_apns_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_apns_channel_errors(), tuple()}.
 delete_apns_channel(Client, ApplicationId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns"],
@@ -4568,26 +5937,14 @@ delete_apns_channel(Client, ApplicationId, Input0, Options0) ->
 -spec delete_apns_sandbox_channel(map(), binary() | list(), delete_apns_sandbox_channel_request()) ->
     {ok, delete_apns_sandbox_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_apns_sandbox_channel_errors(), tuple()}.
 delete_apns_sandbox_channel(Client, ApplicationId, Input) ->
     delete_apns_sandbox_channel(Client, ApplicationId, Input, []).
 
 -spec delete_apns_sandbox_channel(map(), binary() | list(), delete_apns_sandbox_channel_request(), proplists:proplist()) ->
     {ok, delete_apns_sandbox_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_apns_sandbox_channel_errors(), tuple()}.
 delete_apns_sandbox_channel(Client, ApplicationId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns_sandbox"],
@@ -4615,26 +5972,14 @@ delete_apns_sandbox_channel(Client, ApplicationId, Input0, Options0) ->
 -spec delete_apns_voip_channel(map(), binary() | list(), delete_apns_voip_channel_request()) ->
     {ok, delete_apns_voip_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_apns_voip_channel_errors(), tuple()}.
 delete_apns_voip_channel(Client, ApplicationId, Input) ->
     delete_apns_voip_channel(Client, ApplicationId, Input, []).
 
 -spec delete_apns_voip_channel(map(), binary() | list(), delete_apns_voip_channel_request(), proplists:proplist()) ->
     {ok, delete_apns_voip_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_apns_voip_channel_errors(), tuple()}.
 delete_apns_voip_channel(Client, ApplicationId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns_voip"],
@@ -4662,26 +6007,14 @@ delete_apns_voip_channel(Client, ApplicationId, Input0, Options0) ->
 -spec delete_apns_voip_sandbox_channel(map(), binary() | list(), delete_apns_voip_sandbox_channel_request()) ->
     {ok, delete_apns_voip_sandbox_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_apns_voip_sandbox_channel_errors(), tuple()}.
 delete_apns_voip_sandbox_channel(Client, ApplicationId, Input) ->
     delete_apns_voip_sandbox_channel(Client, ApplicationId, Input, []).
 
 -spec delete_apns_voip_sandbox_channel(map(), binary() | list(), delete_apns_voip_sandbox_channel_request(), proplists:proplist()) ->
     {ok, delete_apns_voip_sandbox_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_apns_voip_sandbox_channel_errors(), tuple()}.
 delete_apns_voip_sandbox_channel(Client, ApplicationId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns_voip_sandbox"],
@@ -4708,26 +6041,14 @@ delete_apns_voip_sandbox_channel(Client, ApplicationId, Input0, Options0) ->
 -spec delete_app(map(), binary() | list(), delete_app_request()) ->
     {ok, delete_app_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_app_errors(), tuple()}.
 delete_app(Client, ApplicationId, Input) ->
     delete_app(Client, ApplicationId, Input, []).
 
 -spec delete_app(map(), binary() | list(), delete_app_request(), proplists:proplist()) ->
     {ok, delete_app_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_app_errors(), tuple()}.
 delete_app(Client, ApplicationId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), ""],
@@ -4755,26 +6076,14 @@ delete_app(Client, ApplicationId, Input0, Options0) ->
 -spec delete_baidu_channel(map(), binary() | list(), delete_baidu_channel_request()) ->
     {ok, delete_baidu_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_baidu_channel_errors(), tuple()}.
 delete_baidu_channel(Client, ApplicationId, Input) ->
     delete_baidu_channel(Client, ApplicationId, Input, []).
 
 -spec delete_baidu_channel(map(), binary() | list(), delete_baidu_channel_request(), proplists:proplist()) ->
     {ok, delete_baidu_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_baidu_channel_errors(), tuple()}.
 delete_baidu_channel(Client, ApplicationId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/baidu"],
@@ -4801,26 +6110,14 @@ delete_baidu_channel(Client, ApplicationId, Input0, Options0) ->
 -spec delete_campaign(map(), binary() | list(), binary() | list(), delete_campaign_request()) ->
     {ok, delete_campaign_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_campaign_errors(), tuple()}.
 delete_campaign(Client, ApplicationId, CampaignId, Input) ->
     delete_campaign(Client, ApplicationId, CampaignId, Input, []).
 
 -spec delete_campaign(map(), binary() | list(), binary() | list(), delete_campaign_request(), proplists:proplist()) ->
     {ok, delete_campaign_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_campaign_errors(), tuple()}.
 delete_campaign(Client, ApplicationId, CampaignId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/campaigns/", aws_util:encode_uri(CampaignId), ""],
@@ -4848,26 +6145,14 @@ delete_campaign(Client, ApplicationId, CampaignId, Input0, Options0) ->
 -spec delete_email_channel(map(), binary() | list(), delete_email_channel_request()) ->
     {ok, delete_email_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_email_channel_errors(), tuple()}.
 delete_email_channel(Client, ApplicationId, Input) ->
     delete_email_channel(Client, ApplicationId, Input, []).
 
 -spec delete_email_channel(map(), binary() | list(), delete_email_channel_request(), proplists:proplist()) ->
     {ok, delete_email_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_email_channel_errors(), tuple()}.
 delete_email_channel(Client, ApplicationId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/email"],
@@ -4895,26 +6180,14 @@ delete_email_channel(Client, ApplicationId, Input0, Options0) ->
 -spec delete_email_template(map(), binary() | list(), delete_email_template_request()) ->
     {ok, delete_email_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_email_template_errors(), tuple()}.
 delete_email_template(Client, TemplateName, Input) ->
     delete_email_template(Client, TemplateName, Input, []).
 
 -spec delete_email_template(map(), binary() | list(), delete_email_template_request(), proplists:proplist()) ->
     {ok, delete_email_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_email_template_errors(), tuple()}.
 delete_email_template(Client, TemplateName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/email"],
@@ -4942,26 +6215,14 @@ delete_email_template(Client, TemplateName, Input0, Options0) ->
 -spec delete_endpoint(map(), binary() | list(), binary() | list(), delete_endpoint_request()) ->
     {ok, delete_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_endpoint_errors(), tuple()}.
 delete_endpoint(Client, ApplicationId, EndpointId, Input) ->
     delete_endpoint(Client, ApplicationId, EndpointId, Input, []).
 
 -spec delete_endpoint(map(), binary() | list(), binary() | list(), delete_endpoint_request(), proplists:proplist()) ->
     {ok, delete_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_endpoint_errors(), tuple()}.
 delete_endpoint(Client, ApplicationId, EndpointId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/endpoints/", aws_util:encode_uri(EndpointId), ""],
@@ -4988,26 +6249,14 @@ delete_endpoint(Client, ApplicationId, EndpointId, Input0, Options0) ->
 -spec delete_event_stream(map(), binary() | list(), delete_event_stream_request()) ->
     {ok, delete_event_stream_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_event_stream_errors(), tuple()}.
 delete_event_stream(Client, ApplicationId, Input) ->
     delete_event_stream(Client, ApplicationId, Input, []).
 
 -spec delete_event_stream(map(), binary() | list(), delete_event_stream_request(), proplists:proplist()) ->
     {ok, delete_event_stream_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_event_stream_errors(), tuple()}.
 delete_event_stream(Client, ApplicationId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/eventstream"],
@@ -5035,26 +6284,14 @@ delete_event_stream(Client, ApplicationId, Input0, Options0) ->
 -spec delete_gcm_channel(map(), binary() | list(), delete_gcm_channel_request()) ->
     {ok, delete_gcm_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_gcm_channel_errors(), tuple()}.
 delete_gcm_channel(Client, ApplicationId, Input) ->
     delete_gcm_channel(Client, ApplicationId, Input, []).
 
 -spec delete_gcm_channel(map(), binary() | list(), delete_gcm_channel_request(), proplists:proplist()) ->
     {ok, delete_gcm_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_gcm_channel_errors(), tuple()}.
 delete_gcm_channel(Client, ApplicationId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/gcm"],
@@ -5082,26 +6319,14 @@ delete_gcm_channel(Client, ApplicationId, Input0, Options0) ->
 -spec delete_in_app_template(map(), binary() | list(), delete_in_app_template_request()) ->
     {ok, delete_in_app_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_in_app_template_errors(), tuple()}.
 delete_in_app_template(Client, TemplateName, Input) ->
     delete_in_app_template(Client, TemplateName, Input, []).
 
 -spec delete_in_app_template(map(), binary() | list(), delete_in_app_template_request(), proplists:proplist()) ->
     {ok, delete_in_app_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_in_app_template_errors(), tuple()}.
 delete_in_app_template(Client, TemplateName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/inapp"],
@@ -5129,26 +6354,14 @@ delete_in_app_template(Client, TemplateName, Input0, Options0) ->
 -spec delete_journey(map(), binary() | list(), binary() | list(), delete_journey_request()) ->
     {ok, delete_journey_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_journey_errors(), tuple()}.
 delete_journey(Client, ApplicationId, JourneyId, Input) ->
     delete_journey(Client, ApplicationId, JourneyId, Input, []).
 
 -spec delete_journey(map(), binary() | list(), binary() | list(), delete_journey_request(), proplists:proplist()) ->
     {ok, delete_journey_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_journey_errors(), tuple()}.
 delete_journey(Client, ApplicationId, JourneyId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys/", aws_util:encode_uri(JourneyId), ""],
@@ -5176,26 +6389,14 @@ delete_journey(Client, ApplicationId, JourneyId, Input0, Options0) ->
 -spec delete_push_template(map(), binary() | list(), delete_push_template_request()) ->
     {ok, delete_push_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_push_template_errors(), tuple()}.
 delete_push_template(Client, TemplateName, Input) ->
     delete_push_template(Client, TemplateName, Input, []).
 
 -spec delete_push_template(map(), binary() | list(), delete_push_template_request(), proplists:proplist()) ->
     {ok, delete_push_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_push_template_errors(), tuple()}.
 delete_push_template(Client, TemplateName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/push"],
@@ -5223,26 +6424,14 @@ delete_push_template(Client, TemplateName, Input0, Options0) ->
 -spec delete_recommender_configuration(map(), binary() | list(), delete_recommender_configuration_request()) ->
     {ok, delete_recommender_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_recommender_configuration_errors(), tuple()}.
 delete_recommender_configuration(Client, RecommenderId, Input) ->
     delete_recommender_configuration(Client, RecommenderId, Input, []).
 
 -spec delete_recommender_configuration(map(), binary() | list(), delete_recommender_configuration_request(), proplists:proplist()) ->
     {ok, delete_recommender_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_recommender_configuration_errors(), tuple()}.
 delete_recommender_configuration(Client, RecommenderId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/recommenders/", aws_util:encode_uri(RecommenderId), ""],
@@ -5269,26 +6458,14 @@ delete_recommender_configuration(Client, RecommenderId, Input0, Options0) ->
 -spec delete_segment(map(), binary() | list(), binary() | list(), delete_segment_request()) ->
     {ok, delete_segment_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_segment_errors(), tuple()}.
 delete_segment(Client, ApplicationId, SegmentId, Input) ->
     delete_segment(Client, ApplicationId, SegmentId, Input, []).
 
 -spec delete_segment(map(), binary() | list(), binary() | list(), delete_segment_request(), proplists:proplist()) ->
     {ok, delete_segment_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_segment_errors(), tuple()}.
 delete_segment(Client, ApplicationId, SegmentId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/segments/", aws_util:encode_uri(SegmentId), ""],
@@ -5316,26 +6493,14 @@ delete_segment(Client, ApplicationId, SegmentId, Input0, Options0) ->
 -spec delete_sms_channel(map(), binary() | list(), delete_sms_channel_request()) ->
     {ok, delete_sms_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_sms_channel_errors(), tuple()}.
 delete_sms_channel(Client, ApplicationId, Input) ->
     delete_sms_channel(Client, ApplicationId, Input, []).
 
 -spec delete_sms_channel(map(), binary() | list(), delete_sms_channel_request(), proplists:proplist()) ->
     {ok, delete_sms_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_sms_channel_errors(), tuple()}.
 delete_sms_channel(Client, ApplicationId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/sms"],
@@ -5363,26 +6528,14 @@ delete_sms_channel(Client, ApplicationId, Input0, Options0) ->
 -spec delete_sms_template(map(), binary() | list(), delete_sms_template_request()) ->
     {ok, delete_sms_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_sms_template_errors(), tuple()}.
 delete_sms_template(Client, TemplateName, Input) ->
     delete_sms_template(Client, TemplateName, Input, []).
 
 -spec delete_sms_template(map(), binary() | list(), delete_sms_template_request(), proplists:proplist()) ->
     {ok, delete_sms_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_sms_template_errors(), tuple()}.
 delete_sms_template(Client, TemplateName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/sms"],
@@ -5411,26 +6564,14 @@ delete_sms_template(Client, TemplateName, Input0, Options0) ->
 -spec delete_user_endpoints(map(), binary() | list(), binary() | list(), delete_user_endpoints_request()) ->
     {ok, delete_user_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_user_endpoints_errors(), tuple()}.
 delete_user_endpoints(Client, ApplicationId, UserId, Input) ->
     delete_user_endpoints(Client, ApplicationId, UserId, Input, []).
 
 -spec delete_user_endpoints(map(), binary() | list(), binary() | list(), delete_user_endpoints_request(), proplists:proplist()) ->
     {ok, delete_user_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_user_endpoints_errors(), tuple()}.
 delete_user_endpoints(Client, ApplicationId, UserId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/users/", aws_util:encode_uri(UserId), ""],
@@ -5458,26 +6599,14 @@ delete_user_endpoints(Client, ApplicationId, UserId, Input0, Options0) ->
 -spec delete_voice_channel(map(), binary() | list(), delete_voice_channel_request()) ->
     {ok, delete_voice_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_voice_channel_errors(), tuple()}.
 delete_voice_channel(Client, ApplicationId, Input) ->
     delete_voice_channel(Client, ApplicationId, Input, []).
 
 -spec delete_voice_channel(map(), binary() | list(), delete_voice_channel_request(), proplists:proplist()) ->
     {ok, delete_voice_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_voice_channel_errors(), tuple()}.
 delete_voice_channel(Client, ApplicationId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/voice"],
@@ -5505,26 +6634,14 @@ delete_voice_channel(Client, ApplicationId, Input0, Options0) ->
 -spec delete_voice_template(map(), binary() | list(), delete_voice_template_request()) ->
     {ok, delete_voice_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_voice_template_errors(), tuple()}.
 delete_voice_template(Client, TemplateName, Input) ->
     delete_voice_template(Client, TemplateName, Input, []).
 
 -spec delete_voice_template(map(), binary() | list(), delete_voice_template_request(), proplists:proplist()) ->
     {ok, delete_voice_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_voice_template_errors(), tuple()}.
 delete_voice_template(Client, TemplateName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/voice"],
@@ -5553,13 +6670,7 @@ delete_voice_template(Client, TemplateName, Input0, Options0) ->
 -spec get_adm_channel(map(), binary() | list()) ->
     {ok, get_adm_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_adm_channel_errors(), tuple()}.
 get_adm_channel(Client, ApplicationId)
   when is_map(Client) ->
     get_adm_channel(Client, ApplicationId, #{}, #{}).
@@ -5567,13 +6678,7 @@ get_adm_channel(Client, ApplicationId)
 -spec get_adm_channel(map(), binary() | list(), map(), map()) ->
     {ok, get_adm_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_adm_channel_errors(), tuple()}.
 get_adm_channel(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_adm_channel(Client, ApplicationId, QueryMap, HeadersMap, []).
@@ -5581,13 +6686,7 @@ get_adm_channel(Client, ApplicationId, QueryMap, HeadersMap)
 -spec get_adm_channel(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_adm_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_adm_channel_errors(), tuple()}.
 get_adm_channel(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/adm"],
@@ -5609,13 +6708,7 @@ get_adm_channel(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 -spec get_apns_channel(map(), binary() | list()) ->
     {ok, get_apns_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_apns_channel_errors(), tuple()}.
 get_apns_channel(Client, ApplicationId)
   when is_map(Client) ->
     get_apns_channel(Client, ApplicationId, #{}, #{}).
@@ -5623,13 +6716,7 @@ get_apns_channel(Client, ApplicationId)
 -spec get_apns_channel(map(), binary() | list(), map(), map()) ->
     {ok, get_apns_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_apns_channel_errors(), tuple()}.
 get_apns_channel(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_apns_channel(Client, ApplicationId, QueryMap, HeadersMap, []).
@@ -5637,13 +6724,7 @@ get_apns_channel(Client, ApplicationId, QueryMap, HeadersMap)
 -spec get_apns_channel(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_apns_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_apns_channel_errors(), tuple()}.
 get_apns_channel(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns"],
@@ -5665,13 +6746,7 @@ get_apns_channel(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 -spec get_apns_sandbox_channel(map(), binary() | list()) ->
     {ok, get_apns_sandbox_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_apns_sandbox_channel_errors(), tuple()}.
 get_apns_sandbox_channel(Client, ApplicationId)
   when is_map(Client) ->
     get_apns_sandbox_channel(Client, ApplicationId, #{}, #{}).
@@ -5679,13 +6754,7 @@ get_apns_sandbox_channel(Client, ApplicationId)
 -spec get_apns_sandbox_channel(map(), binary() | list(), map(), map()) ->
     {ok, get_apns_sandbox_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_apns_sandbox_channel_errors(), tuple()}.
 get_apns_sandbox_channel(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_apns_sandbox_channel(Client, ApplicationId, QueryMap, HeadersMap, []).
@@ -5693,13 +6762,7 @@ get_apns_sandbox_channel(Client, ApplicationId, QueryMap, HeadersMap)
 -spec get_apns_sandbox_channel(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_apns_sandbox_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_apns_sandbox_channel_errors(), tuple()}.
 get_apns_sandbox_channel(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns_sandbox"],
@@ -5721,13 +6784,7 @@ get_apns_sandbox_channel(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 -spec get_apns_voip_channel(map(), binary() | list()) ->
     {ok, get_apns_voip_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_apns_voip_channel_errors(), tuple()}.
 get_apns_voip_channel(Client, ApplicationId)
   when is_map(Client) ->
     get_apns_voip_channel(Client, ApplicationId, #{}, #{}).
@@ -5735,13 +6792,7 @@ get_apns_voip_channel(Client, ApplicationId)
 -spec get_apns_voip_channel(map(), binary() | list(), map(), map()) ->
     {ok, get_apns_voip_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_apns_voip_channel_errors(), tuple()}.
 get_apns_voip_channel(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_apns_voip_channel(Client, ApplicationId, QueryMap, HeadersMap, []).
@@ -5749,13 +6800,7 @@ get_apns_voip_channel(Client, ApplicationId, QueryMap, HeadersMap)
 -spec get_apns_voip_channel(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_apns_voip_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_apns_voip_channel_errors(), tuple()}.
 get_apns_voip_channel(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns_voip"],
@@ -5777,13 +6822,7 @@ get_apns_voip_channel(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 -spec get_apns_voip_sandbox_channel(map(), binary() | list()) ->
     {ok, get_apns_voip_sandbox_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_apns_voip_sandbox_channel_errors(), tuple()}.
 get_apns_voip_sandbox_channel(Client, ApplicationId)
   when is_map(Client) ->
     get_apns_voip_sandbox_channel(Client, ApplicationId, #{}, #{}).
@@ -5791,13 +6830,7 @@ get_apns_voip_sandbox_channel(Client, ApplicationId)
 -spec get_apns_voip_sandbox_channel(map(), binary() | list(), map(), map()) ->
     {ok, get_apns_voip_sandbox_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_apns_voip_sandbox_channel_errors(), tuple()}.
 get_apns_voip_sandbox_channel(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_apns_voip_sandbox_channel(Client, ApplicationId, QueryMap, HeadersMap, []).
@@ -5805,13 +6838,7 @@ get_apns_voip_sandbox_channel(Client, ApplicationId, QueryMap, HeadersMap)
 -spec get_apns_voip_sandbox_channel(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_apns_voip_sandbox_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_apns_voip_sandbox_channel_errors(), tuple()}.
 get_apns_voip_sandbox_channel(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns_voip_sandbox"],
@@ -5832,13 +6859,7 @@ get_apns_voip_sandbox_channel(Client, ApplicationId, QueryMap, HeadersMap, Optio
 -spec get_app(map(), binary() | list()) ->
     {ok, get_app_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_app_errors(), tuple()}.
 get_app(Client, ApplicationId)
   when is_map(Client) ->
     get_app(Client, ApplicationId, #{}, #{}).
@@ -5846,13 +6867,7 @@ get_app(Client, ApplicationId)
 -spec get_app(map(), binary() | list(), map(), map()) ->
     {ok, get_app_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_app_errors(), tuple()}.
 get_app(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_app(Client, ApplicationId, QueryMap, HeadersMap, []).
@@ -5860,13 +6875,7 @@ get_app(Client, ApplicationId, QueryMap, HeadersMap)
 -spec get_app(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_app_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_app_errors(), tuple()}.
 get_app(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), ""],
@@ -5888,13 +6897,7 @@ get_app(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 -spec get_application_date_range_kpi(map(), binary() | list(), binary() | list()) ->
     {ok, get_application_date_range_kpi_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_application_date_range_kpi_errors(), tuple()}.
 get_application_date_range_kpi(Client, ApplicationId, KpiName)
   when is_map(Client) ->
     get_application_date_range_kpi(Client, ApplicationId, KpiName, #{}, #{}).
@@ -5902,13 +6905,7 @@ get_application_date_range_kpi(Client, ApplicationId, KpiName)
 -spec get_application_date_range_kpi(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_application_date_range_kpi_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_application_date_range_kpi_errors(), tuple()}.
 get_application_date_range_kpi(Client, ApplicationId, KpiName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application_date_range_kpi(Client, ApplicationId, KpiName, QueryMap, HeadersMap, []).
@@ -5916,13 +6913,7 @@ get_application_date_range_kpi(Client, ApplicationId, KpiName, QueryMap, Headers
 -spec get_application_date_range_kpi(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_application_date_range_kpi_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_application_date_range_kpi_errors(), tuple()}.
 get_application_date_range_kpi(Client, ApplicationId, KpiName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/kpis/daterange/", aws_util:encode_uri(KpiName), ""],
@@ -5950,13 +6941,7 @@ get_application_date_range_kpi(Client, ApplicationId, KpiName, QueryMap, Headers
 -spec get_application_settings(map(), binary() | list()) ->
     {ok, get_application_settings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_application_settings_errors(), tuple()}.
 get_application_settings(Client, ApplicationId)
   when is_map(Client) ->
     get_application_settings(Client, ApplicationId, #{}, #{}).
@@ -5964,13 +6949,7 @@ get_application_settings(Client, ApplicationId)
 -spec get_application_settings(map(), binary() | list(), map(), map()) ->
     {ok, get_application_settings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_application_settings_errors(), tuple()}.
 get_application_settings(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application_settings(Client, ApplicationId, QueryMap, HeadersMap, []).
@@ -5978,13 +6957,7 @@ get_application_settings(Client, ApplicationId, QueryMap, HeadersMap)
 -spec get_application_settings(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_application_settings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_application_settings_errors(), tuple()}.
 get_application_settings(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/settings"],
@@ -6006,13 +6979,7 @@ get_application_settings(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 -spec get_apps(map()) ->
     {ok, get_apps_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_apps_errors(), tuple()}.
 get_apps(Client)
   when is_map(Client) ->
     get_apps(Client, #{}, #{}).
@@ -6020,13 +6987,7 @@ get_apps(Client)
 -spec get_apps(map(), map(), map()) ->
     {ok, get_apps_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_apps_errors(), tuple()}.
 get_apps(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_apps(Client, QueryMap, HeadersMap, []).
@@ -6034,13 +6995,7 @@ get_apps(Client, QueryMap, HeadersMap)
 -spec get_apps(map(), map(), map(), proplists:proplist()) ->
     {ok, get_apps_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_apps_errors(), tuple()}.
 get_apps(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps"],
@@ -6067,13 +7022,7 @@ get_apps(Client, QueryMap, HeadersMap, Options0)
 -spec get_baidu_channel(map(), binary() | list()) ->
     {ok, get_baidu_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_baidu_channel_errors(), tuple()}.
 get_baidu_channel(Client, ApplicationId)
   when is_map(Client) ->
     get_baidu_channel(Client, ApplicationId, #{}, #{}).
@@ -6081,13 +7030,7 @@ get_baidu_channel(Client, ApplicationId)
 -spec get_baidu_channel(map(), binary() | list(), map(), map()) ->
     {ok, get_baidu_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_baidu_channel_errors(), tuple()}.
 get_baidu_channel(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_baidu_channel(Client, ApplicationId, QueryMap, HeadersMap, []).
@@ -6095,13 +7038,7 @@ get_baidu_channel(Client, ApplicationId, QueryMap, HeadersMap)
 -spec get_baidu_channel(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_baidu_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_baidu_channel_errors(), tuple()}.
 get_baidu_channel(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/baidu"],
@@ -6123,13 +7060,7 @@ get_baidu_channel(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 -spec get_campaign(map(), binary() | list(), binary() | list()) ->
     {ok, get_campaign_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_campaign_errors(), tuple()}.
 get_campaign(Client, ApplicationId, CampaignId)
   when is_map(Client) ->
     get_campaign(Client, ApplicationId, CampaignId, #{}, #{}).
@@ -6137,13 +7068,7 @@ get_campaign(Client, ApplicationId, CampaignId)
 -spec get_campaign(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_campaign_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_campaign_errors(), tuple()}.
 get_campaign(Client, ApplicationId, CampaignId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_campaign(Client, ApplicationId, CampaignId, QueryMap, HeadersMap, []).
@@ -6151,13 +7076,7 @@ get_campaign(Client, ApplicationId, CampaignId, QueryMap, HeadersMap)
 -spec get_campaign(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_campaign_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_campaign_errors(), tuple()}.
 get_campaign(Client, ApplicationId, CampaignId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/campaigns/", aws_util:encode_uri(CampaignId), ""],
@@ -6178,13 +7097,7 @@ get_campaign(Client, ApplicationId, CampaignId, QueryMap, HeadersMap, Options0)
 -spec get_campaign_activities(map(), binary() | list(), binary() | list()) ->
     {ok, get_campaign_activities_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_campaign_activities_errors(), tuple()}.
 get_campaign_activities(Client, ApplicationId, CampaignId)
   when is_map(Client) ->
     get_campaign_activities(Client, ApplicationId, CampaignId, #{}, #{}).
@@ -6192,13 +7105,7 @@ get_campaign_activities(Client, ApplicationId, CampaignId)
 -spec get_campaign_activities(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_campaign_activities_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_campaign_activities_errors(), tuple()}.
 get_campaign_activities(Client, ApplicationId, CampaignId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_campaign_activities(Client, ApplicationId, CampaignId, QueryMap, HeadersMap, []).
@@ -6206,13 +7113,7 @@ get_campaign_activities(Client, ApplicationId, CampaignId, QueryMap, HeadersMap)
 -spec get_campaign_activities(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_campaign_activities_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_campaign_activities_errors(), tuple()}.
 get_campaign_activities(Client, ApplicationId, CampaignId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/campaigns/", aws_util:encode_uri(CampaignId), "/activities"],
@@ -6239,13 +7140,7 @@ get_campaign_activities(Client, ApplicationId, CampaignId, QueryMap, HeadersMap,
 -spec get_campaign_date_range_kpi(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_campaign_date_range_kpi_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_campaign_date_range_kpi_errors(), tuple()}.
 get_campaign_date_range_kpi(Client, ApplicationId, CampaignId, KpiName)
   when is_map(Client) ->
     get_campaign_date_range_kpi(Client, ApplicationId, CampaignId, KpiName, #{}, #{}).
@@ -6253,13 +7148,7 @@ get_campaign_date_range_kpi(Client, ApplicationId, CampaignId, KpiName)
 -spec get_campaign_date_range_kpi(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_campaign_date_range_kpi_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_campaign_date_range_kpi_errors(), tuple()}.
 get_campaign_date_range_kpi(Client, ApplicationId, CampaignId, KpiName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_campaign_date_range_kpi(Client, ApplicationId, CampaignId, KpiName, QueryMap, HeadersMap, []).
@@ -6267,13 +7156,7 @@ get_campaign_date_range_kpi(Client, ApplicationId, CampaignId, KpiName, QueryMap
 -spec get_campaign_date_range_kpi(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_campaign_date_range_kpi_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_campaign_date_range_kpi_errors(), tuple()}.
 get_campaign_date_range_kpi(Client, ApplicationId, CampaignId, KpiName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/campaigns/", aws_util:encode_uri(CampaignId), "/kpis/daterange/", aws_util:encode_uri(KpiName), ""],
@@ -6302,13 +7185,7 @@ get_campaign_date_range_kpi(Client, ApplicationId, CampaignId, KpiName, QueryMap
 -spec get_campaign_version(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_campaign_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_campaign_version_errors(), tuple()}.
 get_campaign_version(Client, ApplicationId, CampaignId, Version)
   when is_map(Client) ->
     get_campaign_version(Client, ApplicationId, CampaignId, Version, #{}, #{}).
@@ -6316,13 +7193,7 @@ get_campaign_version(Client, ApplicationId, CampaignId, Version)
 -spec get_campaign_version(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_campaign_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_campaign_version_errors(), tuple()}.
 get_campaign_version(Client, ApplicationId, CampaignId, Version, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_campaign_version(Client, ApplicationId, CampaignId, Version, QueryMap, HeadersMap, []).
@@ -6330,13 +7201,7 @@ get_campaign_version(Client, ApplicationId, CampaignId, Version, QueryMap, Heade
 -spec get_campaign_version(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_campaign_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_campaign_version_errors(), tuple()}.
 get_campaign_version(Client, ApplicationId, CampaignId, Version, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/campaigns/", aws_util:encode_uri(CampaignId), "/versions/", aws_util:encode_uri(Version), ""],
@@ -6358,13 +7223,7 @@ get_campaign_version(Client, ApplicationId, CampaignId, Version, QueryMap, Heade
 -spec get_campaign_versions(map(), binary() | list(), binary() | list()) ->
     {ok, get_campaign_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_campaign_versions_errors(), tuple()}.
 get_campaign_versions(Client, ApplicationId, CampaignId)
   when is_map(Client) ->
     get_campaign_versions(Client, ApplicationId, CampaignId, #{}, #{}).
@@ -6372,13 +7231,7 @@ get_campaign_versions(Client, ApplicationId, CampaignId)
 -spec get_campaign_versions(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_campaign_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_campaign_versions_errors(), tuple()}.
 get_campaign_versions(Client, ApplicationId, CampaignId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_campaign_versions(Client, ApplicationId, CampaignId, QueryMap, HeadersMap, []).
@@ -6386,13 +7239,7 @@ get_campaign_versions(Client, ApplicationId, CampaignId, QueryMap, HeadersMap)
 -spec get_campaign_versions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_campaign_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_campaign_versions_errors(), tuple()}.
 get_campaign_versions(Client, ApplicationId, CampaignId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/campaigns/", aws_util:encode_uri(CampaignId), "/versions"],
@@ -6419,13 +7266,7 @@ get_campaign_versions(Client, ApplicationId, CampaignId, QueryMap, HeadersMap, O
 -spec get_campaigns(map(), binary() | list()) ->
     {ok, get_campaigns_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_campaigns_errors(), tuple()}.
 get_campaigns(Client, ApplicationId)
   when is_map(Client) ->
     get_campaigns(Client, ApplicationId, #{}, #{}).
@@ -6433,13 +7274,7 @@ get_campaigns(Client, ApplicationId)
 -spec get_campaigns(map(), binary() | list(), map(), map()) ->
     {ok, get_campaigns_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_campaigns_errors(), tuple()}.
 get_campaigns(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_campaigns(Client, ApplicationId, QueryMap, HeadersMap, []).
@@ -6447,13 +7282,7 @@ get_campaigns(Client, ApplicationId, QueryMap, HeadersMap)
 -spec get_campaigns(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_campaigns_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_campaigns_errors(), tuple()}.
 get_campaigns(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/campaigns"],
@@ -6480,13 +7309,7 @@ get_campaigns(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 -spec get_channels(map(), binary() | list()) ->
     {ok, get_channels_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_channels_errors(), tuple()}.
 get_channels(Client, ApplicationId)
   when is_map(Client) ->
     get_channels(Client, ApplicationId, #{}, #{}).
@@ -6494,13 +7317,7 @@ get_channels(Client, ApplicationId)
 -spec get_channels(map(), binary() | list(), map(), map()) ->
     {ok, get_channels_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_channels_errors(), tuple()}.
 get_channels(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_channels(Client, ApplicationId, QueryMap, HeadersMap, []).
@@ -6508,13 +7325,7 @@ get_channels(Client, ApplicationId, QueryMap, HeadersMap)
 -spec get_channels(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_channels_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_channels_errors(), tuple()}.
 get_channels(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels"],
@@ -6536,13 +7347,7 @@ get_channels(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 -spec get_email_channel(map(), binary() | list()) ->
     {ok, get_email_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_email_channel_errors(), tuple()}.
 get_email_channel(Client, ApplicationId)
   when is_map(Client) ->
     get_email_channel(Client, ApplicationId, #{}, #{}).
@@ -6550,13 +7355,7 @@ get_email_channel(Client, ApplicationId)
 -spec get_email_channel(map(), binary() | list(), map(), map()) ->
     {ok, get_email_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_email_channel_errors(), tuple()}.
 get_email_channel(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_email_channel(Client, ApplicationId, QueryMap, HeadersMap, []).
@@ -6564,13 +7363,7 @@ get_email_channel(Client, ApplicationId, QueryMap, HeadersMap)
 -spec get_email_channel(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_email_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_email_channel_errors(), tuple()}.
 get_email_channel(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/email"],
@@ -6592,13 +7385,7 @@ get_email_channel(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 -spec get_email_template(map(), binary() | list()) ->
     {ok, get_email_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_email_template_errors(), tuple()}.
 get_email_template(Client, TemplateName)
   when is_map(Client) ->
     get_email_template(Client, TemplateName, #{}, #{}).
@@ -6606,13 +7393,7 @@ get_email_template(Client, TemplateName)
 -spec get_email_template(map(), binary() | list(), map(), map()) ->
     {ok, get_email_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_email_template_errors(), tuple()}.
 get_email_template(Client, TemplateName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_email_template(Client, TemplateName, QueryMap, HeadersMap, []).
@@ -6620,13 +7401,7 @@ get_email_template(Client, TemplateName, QueryMap, HeadersMap)
 -spec get_email_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_email_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_email_template_errors(), tuple()}.
 get_email_template(Client, TemplateName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/email"],
@@ -6652,13 +7427,7 @@ get_email_template(Client, TemplateName, QueryMap, HeadersMap, Options0)
 -spec get_endpoint(map(), binary() | list(), binary() | list()) ->
     {ok, get_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_endpoint_errors(), tuple()}.
 get_endpoint(Client, ApplicationId, EndpointId)
   when is_map(Client) ->
     get_endpoint(Client, ApplicationId, EndpointId, #{}, #{}).
@@ -6666,13 +7435,7 @@ get_endpoint(Client, ApplicationId, EndpointId)
 -spec get_endpoint(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_endpoint_errors(), tuple()}.
 get_endpoint(Client, ApplicationId, EndpointId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_endpoint(Client, ApplicationId, EndpointId, QueryMap, HeadersMap, []).
@@ -6680,13 +7443,7 @@ get_endpoint(Client, ApplicationId, EndpointId, QueryMap, HeadersMap)
 -spec get_endpoint(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_endpoint_errors(), tuple()}.
 get_endpoint(Client, ApplicationId, EndpointId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/endpoints/", aws_util:encode_uri(EndpointId), ""],
@@ -6708,13 +7465,7 @@ get_endpoint(Client, ApplicationId, EndpointId, QueryMap, HeadersMap, Options0)
 -spec get_event_stream(map(), binary() | list()) ->
     {ok, get_event_stream_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_event_stream_errors(), tuple()}.
 get_event_stream(Client, ApplicationId)
   when is_map(Client) ->
     get_event_stream(Client, ApplicationId, #{}, #{}).
@@ -6722,13 +7473,7 @@ get_event_stream(Client, ApplicationId)
 -spec get_event_stream(map(), binary() | list(), map(), map()) ->
     {ok, get_event_stream_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_event_stream_errors(), tuple()}.
 get_event_stream(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_event_stream(Client, ApplicationId, QueryMap, HeadersMap, []).
@@ -6736,13 +7481,7 @@ get_event_stream(Client, ApplicationId, QueryMap, HeadersMap)
 -spec get_event_stream(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_event_stream_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_event_stream_errors(), tuple()}.
 get_event_stream(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/eventstream"],
@@ -6764,13 +7503,7 @@ get_event_stream(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 -spec get_export_job(map(), binary() | list(), binary() | list()) ->
     {ok, get_export_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_export_job_errors(), tuple()}.
 get_export_job(Client, ApplicationId, JobId)
   when is_map(Client) ->
     get_export_job(Client, ApplicationId, JobId, #{}, #{}).
@@ -6778,13 +7511,7 @@ get_export_job(Client, ApplicationId, JobId)
 -spec get_export_job(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_export_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_export_job_errors(), tuple()}.
 get_export_job(Client, ApplicationId, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_export_job(Client, ApplicationId, JobId, QueryMap, HeadersMap, []).
@@ -6792,13 +7519,7 @@ get_export_job(Client, ApplicationId, JobId, QueryMap, HeadersMap)
 -spec get_export_job(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_export_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_export_job_errors(), tuple()}.
 get_export_job(Client, ApplicationId, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/jobs/export/", aws_util:encode_uri(JobId), ""],
@@ -6820,13 +7541,7 @@ get_export_job(Client, ApplicationId, JobId, QueryMap, HeadersMap, Options0)
 -spec get_export_jobs(map(), binary() | list()) ->
     {ok, get_export_jobs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_export_jobs_errors(), tuple()}.
 get_export_jobs(Client, ApplicationId)
   when is_map(Client) ->
     get_export_jobs(Client, ApplicationId, #{}, #{}).
@@ -6834,13 +7549,7 @@ get_export_jobs(Client, ApplicationId)
 -spec get_export_jobs(map(), binary() | list(), map(), map()) ->
     {ok, get_export_jobs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_export_jobs_errors(), tuple()}.
 get_export_jobs(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_export_jobs(Client, ApplicationId, QueryMap, HeadersMap, []).
@@ -6848,13 +7557,7 @@ get_export_jobs(Client, ApplicationId, QueryMap, HeadersMap)
 -spec get_export_jobs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_export_jobs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_export_jobs_errors(), tuple()}.
 get_export_jobs(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/jobs/export"],
@@ -6881,13 +7584,7 @@ get_export_jobs(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 -spec get_gcm_channel(map(), binary() | list()) ->
     {ok, get_gcm_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_gcm_channel_errors(), tuple()}.
 get_gcm_channel(Client, ApplicationId)
   when is_map(Client) ->
     get_gcm_channel(Client, ApplicationId, #{}, #{}).
@@ -6895,13 +7592,7 @@ get_gcm_channel(Client, ApplicationId)
 -spec get_gcm_channel(map(), binary() | list(), map(), map()) ->
     {ok, get_gcm_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_gcm_channel_errors(), tuple()}.
 get_gcm_channel(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_gcm_channel(Client, ApplicationId, QueryMap, HeadersMap, []).
@@ -6909,13 +7600,7 @@ get_gcm_channel(Client, ApplicationId, QueryMap, HeadersMap)
 -spec get_gcm_channel(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_gcm_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_gcm_channel_errors(), tuple()}.
 get_gcm_channel(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/gcm"],
@@ -6937,13 +7622,7 @@ get_gcm_channel(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 -spec get_import_job(map(), binary() | list(), binary() | list()) ->
     {ok, get_import_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_import_job_errors(), tuple()}.
 get_import_job(Client, ApplicationId, JobId)
   when is_map(Client) ->
     get_import_job(Client, ApplicationId, JobId, #{}, #{}).
@@ -6951,13 +7630,7 @@ get_import_job(Client, ApplicationId, JobId)
 -spec get_import_job(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_import_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_import_job_errors(), tuple()}.
 get_import_job(Client, ApplicationId, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_import_job(Client, ApplicationId, JobId, QueryMap, HeadersMap, []).
@@ -6965,13 +7638,7 @@ get_import_job(Client, ApplicationId, JobId, QueryMap, HeadersMap)
 -spec get_import_job(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_import_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_import_job_errors(), tuple()}.
 get_import_job(Client, ApplicationId, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/jobs/import/", aws_util:encode_uri(JobId), ""],
@@ -6993,13 +7660,7 @@ get_import_job(Client, ApplicationId, JobId, QueryMap, HeadersMap, Options0)
 -spec get_import_jobs(map(), binary() | list()) ->
     {ok, get_import_jobs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_import_jobs_errors(), tuple()}.
 get_import_jobs(Client, ApplicationId)
   when is_map(Client) ->
     get_import_jobs(Client, ApplicationId, #{}, #{}).
@@ -7007,13 +7668,7 @@ get_import_jobs(Client, ApplicationId)
 -spec get_import_jobs(map(), binary() | list(), map(), map()) ->
     {ok, get_import_jobs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_import_jobs_errors(), tuple()}.
 get_import_jobs(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_import_jobs(Client, ApplicationId, QueryMap, HeadersMap, []).
@@ -7021,13 +7676,7 @@ get_import_jobs(Client, ApplicationId, QueryMap, HeadersMap)
 -spec get_import_jobs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_import_jobs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_import_jobs_errors(), tuple()}.
 get_import_jobs(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/jobs/import"],
@@ -7053,13 +7702,7 @@ get_import_jobs(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 -spec get_in_app_messages(map(), binary() | list(), binary() | list()) ->
     {ok, get_in_app_messages_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_in_app_messages_errors(), tuple()}.
 get_in_app_messages(Client, ApplicationId, EndpointId)
   when is_map(Client) ->
     get_in_app_messages(Client, ApplicationId, EndpointId, #{}, #{}).
@@ -7067,13 +7710,7 @@ get_in_app_messages(Client, ApplicationId, EndpointId)
 -spec get_in_app_messages(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_in_app_messages_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_in_app_messages_errors(), tuple()}.
 get_in_app_messages(Client, ApplicationId, EndpointId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_in_app_messages(Client, ApplicationId, EndpointId, QueryMap, HeadersMap, []).
@@ -7081,13 +7718,7 @@ get_in_app_messages(Client, ApplicationId, EndpointId, QueryMap, HeadersMap)
 -spec get_in_app_messages(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_in_app_messages_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_in_app_messages_errors(), tuple()}.
 get_in_app_messages(Client, ApplicationId, EndpointId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/endpoints/", aws_util:encode_uri(EndpointId), "/inappmessages"],
@@ -7109,13 +7740,7 @@ get_in_app_messages(Client, ApplicationId, EndpointId, QueryMap, HeadersMap, Opt
 -spec get_in_app_template(map(), binary() | list()) ->
     {ok, get_in_app_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_in_app_template_errors(), tuple()}.
 get_in_app_template(Client, TemplateName)
   when is_map(Client) ->
     get_in_app_template(Client, TemplateName, #{}, #{}).
@@ -7123,13 +7748,7 @@ get_in_app_template(Client, TemplateName)
 -spec get_in_app_template(map(), binary() | list(), map(), map()) ->
     {ok, get_in_app_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_in_app_template_errors(), tuple()}.
 get_in_app_template(Client, TemplateName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_in_app_template(Client, TemplateName, QueryMap, HeadersMap, []).
@@ -7137,13 +7756,7 @@ get_in_app_template(Client, TemplateName, QueryMap, HeadersMap)
 -spec get_in_app_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_in_app_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_in_app_template_errors(), tuple()}.
 get_in_app_template(Client, TemplateName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/inapp"],
@@ -7169,13 +7782,7 @@ get_in_app_template(Client, TemplateName, QueryMap, HeadersMap, Options0)
 -spec get_journey(map(), binary() | list(), binary() | list()) ->
     {ok, get_journey_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_journey_errors(), tuple()}.
 get_journey(Client, ApplicationId, JourneyId)
   when is_map(Client) ->
     get_journey(Client, ApplicationId, JourneyId, #{}, #{}).
@@ -7183,13 +7790,7 @@ get_journey(Client, ApplicationId, JourneyId)
 -spec get_journey(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_journey_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_journey_errors(), tuple()}.
 get_journey(Client, ApplicationId, JourneyId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_journey(Client, ApplicationId, JourneyId, QueryMap, HeadersMap, []).
@@ -7197,13 +7798,7 @@ get_journey(Client, ApplicationId, JourneyId, QueryMap, HeadersMap)
 -spec get_journey(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_journey_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_journey_errors(), tuple()}.
 get_journey(Client, ApplicationId, JourneyId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys/", aws_util:encode_uri(JourneyId), ""],
@@ -7225,13 +7820,7 @@ get_journey(Client, ApplicationId, JourneyId, QueryMap, HeadersMap, Options0)
 -spec get_journey_date_range_kpi(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_journey_date_range_kpi_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_journey_date_range_kpi_errors(), tuple()}.
 get_journey_date_range_kpi(Client, ApplicationId, JourneyId, KpiName)
   when is_map(Client) ->
     get_journey_date_range_kpi(Client, ApplicationId, JourneyId, KpiName, #{}, #{}).
@@ -7239,13 +7828,7 @@ get_journey_date_range_kpi(Client, ApplicationId, JourneyId, KpiName)
 -spec get_journey_date_range_kpi(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_journey_date_range_kpi_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_journey_date_range_kpi_errors(), tuple()}.
 get_journey_date_range_kpi(Client, ApplicationId, JourneyId, KpiName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_journey_date_range_kpi(Client, ApplicationId, JourneyId, KpiName, QueryMap, HeadersMap, []).
@@ -7253,13 +7836,7 @@ get_journey_date_range_kpi(Client, ApplicationId, JourneyId, KpiName, QueryMap, 
 -spec get_journey_date_range_kpi(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_journey_date_range_kpi_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_journey_date_range_kpi_errors(), tuple()}.
 get_journey_date_range_kpi(Client, ApplicationId, JourneyId, KpiName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys/", aws_util:encode_uri(JourneyId), "/kpis/daterange/", aws_util:encode_uri(KpiName), ""],
@@ -7288,13 +7865,7 @@ get_journey_date_range_kpi(Client, ApplicationId, JourneyId, KpiName, QueryMap, 
 -spec get_journey_execution_activity_metrics(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_journey_execution_activity_metrics_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_journey_execution_activity_metrics_errors(), tuple()}.
 get_journey_execution_activity_metrics(Client, ApplicationId, JourneyActivityId, JourneyId)
   when is_map(Client) ->
     get_journey_execution_activity_metrics(Client, ApplicationId, JourneyActivityId, JourneyId, #{}, #{}).
@@ -7302,13 +7873,7 @@ get_journey_execution_activity_metrics(Client, ApplicationId, JourneyActivityId,
 -spec get_journey_execution_activity_metrics(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_journey_execution_activity_metrics_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_journey_execution_activity_metrics_errors(), tuple()}.
 get_journey_execution_activity_metrics(Client, ApplicationId, JourneyActivityId, JourneyId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_journey_execution_activity_metrics(Client, ApplicationId, JourneyActivityId, JourneyId, QueryMap, HeadersMap, []).
@@ -7316,13 +7881,7 @@ get_journey_execution_activity_metrics(Client, ApplicationId, JourneyActivityId,
 -spec get_journey_execution_activity_metrics(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_journey_execution_activity_metrics_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_journey_execution_activity_metrics_errors(), tuple()}.
 get_journey_execution_activity_metrics(Client, ApplicationId, JourneyActivityId, JourneyId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys/", aws_util:encode_uri(JourneyId), "/activities/", aws_util:encode_uri(JourneyActivityId), "/execution-metrics"],
@@ -7349,13 +7908,7 @@ get_journey_execution_activity_metrics(Client, ApplicationId, JourneyActivityId,
 -spec get_journey_execution_metrics(map(), binary() | list(), binary() | list()) ->
     {ok, get_journey_execution_metrics_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_journey_execution_metrics_errors(), tuple()}.
 get_journey_execution_metrics(Client, ApplicationId, JourneyId)
   when is_map(Client) ->
     get_journey_execution_metrics(Client, ApplicationId, JourneyId, #{}, #{}).
@@ -7363,13 +7916,7 @@ get_journey_execution_metrics(Client, ApplicationId, JourneyId)
 -spec get_journey_execution_metrics(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_journey_execution_metrics_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_journey_execution_metrics_errors(), tuple()}.
 get_journey_execution_metrics(Client, ApplicationId, JourneyId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_journey_execution_metrics(Client, ApplicationId, JourneyId, QueryMap, HeadersMap, []).
@@ -7377,13 +7924,7 @@ get_journey_execution_metrics(Client, ApplicationId, JourneyId, QueryMap, Header
 -spec get_journey_execution_metrics(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_journey_execution_metrics_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_journey_execution_metrics_errors(), tuple()}.
 get_journey_execution_metrics(Client, ApplicationId, JourneyId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys/", aws_util:encode_uri(JourneyId), "/execution-metrics"],
@@ -7410,13 +7951,7 @@ get_journey_execution_metrics(Client, ApplicationId, JourneyId, QueryMap, Header
 -spec get_journey_run_execution_activity_metrics(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_journey_run_execution_activity_metrics_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_journey_run_execution_activity_metrics_errors(), tuple()}.
 get_journey_run_execution_activity_metrics(Client, ApplicationId, JourneyActivityId, JourneyId, RunId)
   when is_map(Client) ->
     get_journey_run_execution_activity_metrics(Client, ApplicationId, JourneyActivityId, JourneyId, RunId, #{}, #{}).
@@ -7424,13 +7959,7 @@ get_journey_run_execution_activity_metrics(Client, ApplicationId, JourneyActivit
 -spec get_journey_run_execution_activity_metrics(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_journey_run_execution_activity_metrics_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_journey_run_execution_activity_metrics_errors(), tuple()}.
 get_journey_run_execution_activity_metrics(Client, ApplicationId, JourneyActivityId, JourneyId, RunId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_journey_run_execution_activity_metrics(Client, ApplicationId, JourneyActivityId, JourneyId, RunId, QueryMap, HeadersMap, []).
@@ -7438,13 +7967,7 @@ get_journey_run_execution_activity_metrics(Client, ApplicationId, JourneyActivit
 -spec get_journey_run_execution_activity_metrics(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_journey_run_execution_activity_metrics_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_journey_run_execution_activity_metrics_errors(), tuple()}.
 get_journey_run_execution_activity_metrics(Client, ApplicationId, JourneyActivityId, JourneyId, RunId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys/", aws_util:encode_uri(JourneyId), "/runs/", aws_util:encode_uri(RunId), "/activities/", aws_util:encode_uri(JourneyActivityId), "/execution-metrics"],
@@ -7471,13 +7994,7 @@ get_journey_run_execution_activity_metrics(Client, ApplicationId, JourneyActivit
 -spec get_journey_run_execution_metrics(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_journey_run_execution_metrics_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_journey_run_execution_metrics_errors(), tuple()}.
 get_journey_run_execution_metrics(Client, ApplicationId, JourneyId, RunId)
   when is_map(Client) ->
     get_journey_run_execution_metrics(Client, ApplicationId, JourneyId, RunId, #{}, #{}).
@@ -7485,13 +8002,7 @@ get_journey_run_execution_metrics(Client, ApplicationId, JourneyId, RunId)
 -spec get_journey_run_execution_metrics(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_journey_run_execution_metrics_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_journey_run_execution_metrics_errors(), tuple()}.
 get_journey_run_execution_metrics(Client, ApplicationId, JourneyId, RunId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_journey_run_execution_metrics(Client, ApplicationId, JourneyId, RunId, QueryMap, HeadersMap, []).
@@ -7499,13 +8010,7 @@ get_journey_run_execution_metrics(Client, ApplicationId, JourneyId, RunId, Query
 -spec get_journey_run_execution_metrics(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_journey_run_execution_metrics_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_journey_run_execution_metrics_errors(), tuple()}.
 get_journey_run_execution_metrics(Client, ApplicationId, JourneyId, RunId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys/", aws_util:encode_uri(JourneyId), "/runs/", aws_util:encode_uri(RunId), "/execution-metrics"],
@@ -7531,13 +8036,7 @@ get_journey_run_execution_metrics(Client, ApplicationId, JourneyId, RunId, Query
 -spec get_journey_runs(map(), binary() | list(), binary() | list()) ->
     {ok, get_journey_runs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_journey_runs_errors(), tuple()}.
 get_journey_runs(Client, ApplicationId, JourneyId)
   when is_map(Client) ->
     get_journey_runs(Client, ApplicationId, JourneyId, #{}, #{}).
@@ -7545,13 +8044,7 @@ get_journey_runs(Client, ApplicationId, JourneyId)
 -spec get_journey_runs(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_journey_runs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_journey_runs_errors(), tuple()}.
 get_journey_runs(Client, ApplicationId, JourneyId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_journey_runs(Client, ApplicationId, JourneyId, QueryMap, HeadersMap, []).
@@ -7559,13 +8052,7 @@ get_journey_runs(Client, ApplicationId, JourneyId, QueryMap, HeadersMap)
 -spec get_journey_runs(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_journey_runs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_journey_runs_errors(), tuple()}.
 get_journey_runs(Client, ApplicationId, JourneyId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys/", aws_util:encode_uri(JourneyId), "/runs"],
@@ -7592,13 +8079,7 @@ get_journey_runs(Client, ApplicationId, JourneyId, QueryMap, HeadersMap, Options
 -spec get_push_template(map(), binary() | list()) ->
     {ok, get_push_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_push_template_errors(), tuple()}.
 get_push_template(Client, TemplateName)
   when is_map(Client) ->
     get_push_template(Client, TemplateName, #{}, #{}).
@@ -7606,13 +8087,7 @@ get_push_template(Client, TemplateName)
 -spec get_push_template(map(), binary() | list(), map(), map()) ->
     {ok, get_push_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_push_template_errors(), tuple()}.
 get_push_template(Client, TemplateName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_push_template(Client, TemplateName, QueryMap, HeadersMap, []).
@@ -7620,13 +8095,7 @@ get_push_template(Client, TemplateName, QueryMap, HeadersMap)
 -spec get_push_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_push_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_push_template_errors(), tuple()}.
 get_push_template(Client, TemplateName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/push"],
@@ -7652,13 +8121,7 @@ get_push_template(Client, TemplateName, QueryMap, HeadersMap, Options0)
 -spec get_recommender_configuration(map(), binary() | list()) ->
     {ok, get_recommender_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_recommender_configuration_errors(), tuple()}.
 get_recommender_configuration(Client, RecommenderId)
   when is_map(Client) ->
     get_recommender_configuration(Client, RecommenderId, #{}, #{}).
@@ -7666,13 +8129,7 @@ get_recommender_configuration(Client, RecommenderId)
 -spec get_recommender_configuration(map(), binary() | list(), map(), map()) ->
     {ok, get_recommender_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_recommender_configuration_errors(), tuple()}.
 get_recommender_configuration(Client, RecommenderId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_recommender_configuration(Client, RecommenderId, QueryMap, HeadersMap, []).
@@ -7680,13 +8137,7 @@ get_recommender_configuration(Client, RecommenderId, QueryMap, HeadersMap)
 -spec get_recommender_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_recommender_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_recommender_configuration_errors(), tuple()}.
 get_recommender_configuration(Client, RecommenderId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/recommenders/", aws_util:encode_uri(RecommenderId), ""],
@@ -7708,13 +8159,7 @@ get_recommender_configuration(Client, RecommenderId, QueryMap, HeadersMap, Optio
 -spec get_recommender_configurations(map()) ->
     {ok, get_recommender_configurations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_recommender_configurations_errors(), tuple()}.
 get_recommender_configurations(Client)
   when is_map(Client) ->
     get_recommender_configurations(Client, #{}, #{}).
@@ -7722,13 +8167,7 @@ get_recommender_configurations(Client)
 -spec get_recommender_configurations(map(), map(), map()) ->
     {ok, get_recommender_configurations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_recommender_configurations_errors(), tuple()}.
 get_recommender_configurations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_recommender_configurations(Client, QueryMap, HeadersMap, []).
@@ -7736,13 +8175,7 @@ get_recommender_configurations(Client, QueryMap, HeadersMap)
 -spec get_recommender_configurations(map(), map(), map(), proplists:proplist()) ->
     {ok, get_recommender_configurations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_recommender_configurations_errors(), tuple()}.
 get_recommender_configurations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/recommenders"],
@@ -7769,13 +8202,7 @@ get_recommender_configurations(Client, QueryMap, HeadersMap, Options0)
 -spec get_segment(map(), binary() | list(), binary() | list()) ->
     {ok, get_segment_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_segment_errors(), tuple()}.
 get_segment(Client, ApplicationId, SegmentId)
   when is_map(Client) ->
     get_segment(Client, ApplicationId, SegmentId, #{}, #{}).
@@ -7783,13 +8210,7 @@ get_segment(Client, ApplicationId, SegmentId)
 -spec get_segment(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_segment_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_segment_errors(), tuple()}.
 get_segment(Client, ApplicationId, SegmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_segment(Client, ApplicationId, SegmentId, QueryMap, HeadersMap, []).
@@ -7797,13 +8218,7 @@ get_segment(Client, ApplicationId, SegmentId, QueryMap, HeadersMap)
 -spec get_segment(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_segment_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_segment_errors(), tuple()}.
 get_segment(Client, ApplicationId, SegmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/segments/", aws_util:encode_uri(SegmentId), ""],
@@ -7825,13 +8240,7 @@ get_segment(Client, ApplicationId, SegmentId, QueryMap, HeadersMap, Options0)
 -spec get_segment_export_jobs(map(), binary() | list(), binary() | list()) ->
     {ok, get_segment_export_jobs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_segment_export_jobs_errors(), tuple()}.
 get_segment_export_jobs(Client, ApplicationId, SegmentId)
   when is_map(Client) ->
     get_segment_export_jobs(Client, ApplicationId, SegmentId, #{}, #{}).
@@ -7839,13 +8248,7 @@ get_segment_export_jobs(Client, ApplicationId, SegmentId)
 -spec get_segment_export_jobs(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_segment_export_jobs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_segment_export_jobs_errors(), tuple()}.
 get_segment_export_jobs(Client, ApplicationId, SegmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_segment_export_jobs(Client, ApplicationId, SegmentId, QueryMap, HeadersMap, []).
@@ -7853,13 +8256,7 @@ get_segment_export_jobs(Client, ApplicationId, SegmentId, QueryMap, HeadersMap)
 -spec get_segment_export_jobs(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_segment_export_jobs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_segment_export_jobs_errors(), tuple()}.
 get_segment_export_jobs(Client, ApplicationId, SegmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/segments/", aws_util:encode_uri(SegmentId), "/jobs/export"],
@@ -7886,13 +8283,7 @@ get_segment_export_jobs(Client, ApplicationId, SegmentId, QueryMap, HeadersMap, 
 -spec get_segment_import_jobs(map(), binary() | list(), binary() | list()) ->
     {ok, get_segment_import_jobs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_segment_import_jobs_errors(), tuple()}.
 get_segment_import_jobs(Client, ApplicationId, SegmentId)
   when is_map(Client) ->
     get_segment_import_jobs(Client, ApplicationId, SegmentId, #{}, #{}).
@@ -7900,13 +8291,7 @@ get_segment_import_jobs(Client, ApplicationId, SegmentId)
 -spec get_segment_import_jobs(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_segment_import_jobs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_segment_import_jobs_errors(), tuple()}.
 get_segment_import_jobs(Client, ApplicationId, SegmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_segment_import_jobs(Client, ApplicationId, SegmentId, QueryMap, HeadersMap, []).
@@ -7914,13 +8299,7 @@ get_segment_import_jobs(Client, ApplicationId, SegmentId, QueryMap, HeadersMap)
 -spec get_segment_import_jobs(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_segment_import_jobs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_segment_import_jobs_errors(), tuple()}.
 get_segment_import_jobs(Client, ApplicationId, SegmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/segments/", aws_util:encode_uri(SegmentId), "/jobs/import"],
@@ -7948,13 +8327,7 @@ get_segment_import_jobs(Client, ApplicationId, SegmentId, QueryMap, HeadersMap, 
 -spec get_segment_version(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_segment_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_segment_version_errors(), tuple()}.
 get_segment_version(Client, ApplicationId, SegmentId, Version)
   when is_map(Client) ->
     get_segment_version(Client, ApplicationId, SegmentId, Version, #{}, #{}).
@@ -7962,13 +8335,7 @@ get_segment_version(Client, ApplicationId, SegmentId, Version)
 -spec get_segment_version(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_segment_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_segment_version_errors(), tuple()}.
 get_segment_version(Client, ApplicationId, SegmentId, Version, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_segment_version(Client, ApplicationId, SegmentId, Version, QueryMap, HeadersMap, []).
@@ -7976,13 +8343,7 @@ get_segment_version(Client, ApplicationId, SegmentId, Version, QueryMap, Headers
 -spec get_segment_version(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_segment_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_segment_version_errors(), tuple()}.
 get_segment_version(Client, ApplicationId, SegmentId, Version, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/segments/", aws_util:encode_uri(SegmentId), "/versions/", aws_util:encode_uri(Version), ""],
@@ -8005,13 +8366,7 @@ get_segment_version(Client, ApplicationId, SegmentId, Version, QueryMap, Headers
 -spec get_segment_versions(map(), binary() | list(), binary() | list()) ->
     {ok, get_segment_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_segment_versions_errors(), tuple()}.
 get_segment_versions(Client, ApplicationId, SegmentId)
   when is_map(Client) ->
     get_segment_versions(Client, ApplicationId, SegmentId, #{}, #{}).
@@ -8019,13 +8374,7 @@ get_segment_versions(Client, ApplicationId, SegmentId)
 -spec get_segment_versions(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_segment_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_segment_versions_errors(), tuple()}.
 get_segment_versions(Client, ApplicationId, SegmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_segment_versions(Client, ApplicationId, SegmentId, QueryMap, HeadersMap, []).
@@ -8033,13 +8382,7 @@ get_segment_versions(Client, ApplicationId, SegmentId, QueryMap, HeadersMap)
 -spec get_segment_versions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_segment_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_segment_versions_errors(), tuple()}.
 get_segment_versions(Client, ApplicationId, SegmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/segments/", aws_util:encode_uri(SegmentId), "/versions"],
@@ -8066,13 +8409,7 @@ get_segment_versions(Client, ApplicationId, SegmentId, QueryMap, HeadersMap, Opt
 -spec get_segments(map(), binary() | list()) ->
     {ok, get_segments_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_segments_errors(), tuple()}.
 get_segments(Client, ApplicationId)
   when is_map(Client) ->
     get_segments(Client, ApplicationId, #{}, #{}).
@@ -8080,13 +8417,7 @@ get_segments(Client, ApplicationId)
 -spec get_segments(map(), binary() | list(), map(), map()) ->
     {ok, get_segments_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_segments_errors(), tuple()}.
 get_segments(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_segments(Client, ApplicationId, QueryMap, HeadersMap, []).
@@ -8094,13 +8425,7 @@ get_segments(Client, ApplicationId, QueryMap, HeadersMap)
 -spec get_segments(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_segments_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_segments_errors(), tuple()}.
 get_segments(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/segments"],
@@ -8127,13 +8452,7 @@ get_segments(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 -spec get_sms_channel(map(), binary() | list()) ->
     {ok, get_sms_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_sms_channel_errors(), tuple()}.
 get_sms_channel(Client, ApplicationId)
   when is_map(Client) ->
     get_sms_channel(Client, ApplicationId, #{}, #{}).
@@ -8141,13 +8460,7 @@ get_sms_channel(Client, ApplicationId)
 -spec get_sms_channel(map(), binary() | list(), map(), map()) ->
     {ok, get_sms_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_sms_channel_errors(), tuple()}.
 get_sms_channel(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sms_channel(Client, ApplicationId, QueryMap, HeadersMap, []).
@@ -8155,13 +8468,7 @@ get_sms_channel(Client, ApplicationId, QueryMap, HeadersMap)
 -spec get_sms_channel(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sms_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_sms_channel_errors(), tuple()}.
 get_sms_channel(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/sms"],
@@ -8183,13 +8490,7 @@ get_sms_channel(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 -spec get_sms_template(map(), binary() | list()) ->
     {ok, get_sms_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_sms_template_errors(), tuple()}.
 get_sms_template(Client, TemplateName)
   when is_map(Client) ->
     get_sms_template(Client, TemplateName, #{}, #{}).
@@ -8197,13 +8498,7 @@ get_sms_template(Client, TemplateName)
 -spec get_sms_template(map(), binary() | list(), map(), map()) ->
     {ok, get_sms_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_sms_template_errors(), tuple()}.
 get_sms_template(Client, TemplateName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sms_template(Client, TemplateName, QueryMap, HeadersMap, []).
@@ -8211,13 +8506,7 @@ get_sms_template(Client, TemplateName, QueryMap, HeadersMap)
 -spec get_sms_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sms_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_sms_template_errors(), tuple()}.
 get_sms_template(Client, TemplateName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/sms"],
@@ -8243,13 +8532,7 @@ get_sms_template(Client, TemplateName, QueryMap, HeadersMap, Options0)
 -spec get_user_endpoints(map(), binary() | list(), binary() | list()) ->
     {ok, get_user_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_user_endpoints_errors(), tuple()}.
 get_user_endpoints(Client, ApplicationId, UserId)
   when is_map(Client) ->
     get_user_endpoints(Client, ApplicationId, UserId, #{}, #{}).
@@ -8257,13 +8540,7 @@ get_user_endpoints(Client, ApplicationId, UserId)
 -spec get_user_endpoints(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_user_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_user_endpoints_errors(), tuple()}.
 get_user_endpoints(Client, ApplicationId, UserId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_user_endpoints(Client, ApplicationId, UserId, QueryMap, HeadersMap, []).
@@ -8271,13 +8548,7 @@ get_user_endpoints(Client, ApplicationId, UserId, QueryMap, HeadersMap)
 -spec get_user_endpoints(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_user_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_user_endpoints_errors(), tuple()}.
 get_user_endpoints(Client, ApplicationId, UserId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/users/", aws_util:encode_uri(UserId), ""],
@@ -8299,13 +8570,7 @@ get_user_endpoints(Client, ApplicationId, UserId, QueryMap, HeadersMap, Options0
 -spec get_voice_channel(map(), binary() | list()) ->
     {ok, get_voice_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_voice_channel_errors(), tuple()}.
 get_voice_channel(Client, ApplicationId)
   when is_map(Client) ->
     get_voice_channel(Client, ApplicationId, #{}, #{}).
@@ -8313,13 +8578,7 @@ get_voice_channel(Client, ApplicationId)
 -spec get_voice_channel(map(), binary() | list(), map(), map()) ->
     {ok, get_voice_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_voice_channel_errors(), tuple()}.
 get_voice_channel(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_channel(Client, ApplicationId, QueryMap, HeadersMap, []).
@@ -8327,13 +8586,7 @@ get_voice_channel(Client, ApplicationId, QueryMap, HeadersMap)
 -spec get_voice_channel(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_voice_channel_errors(), tuple()}.
 get_voice_channel(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/voice"],
@@ -8355,13 +8608,7 @@ get_voice_channel(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 -spec get_voice_template(map(), binary() | list()) ->
     {ok, get_voice_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_voice_template_errors(), tuple()}.
 get_voice_template(Client, TemplateName)
   when is_map(Client) ->
     get_voice_template(Client, TemplateName, #{}, #{}).
@@ -8369,13 +8616,7 @@ get_voice_template(Client, TemplateName)
 -spec get_voice_template(map(), binary() | list(), map(), map()) ->
     {ok, get_voice_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_voice_template_errors(), tuple()}.
 get_voice_template(Client, TemplateName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_template(Client, TemplateName, QueryMap, HeadersMap, []).
@@ -8383,13 +8624,7 @@ get_voice_template(Client, TemplateName, QueryMap, HeadersMap)
 -spec get_voice_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_voice_template_errors(), tuple()}.
 get_voice_template(Client, TemplateName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/voice"],
@@ -8415,13 +8650,7 @@ get_voice_template(Client, TemplateName, QueryMap, HeadersMap, Options0)
 -spec list_journeys(map(), binary() | list()) ->
     {ok, list_journeys_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_journeys_errors(), tuple()}.
 list_journeys(Client, ApplicationId)
   when is_map(Client) ->
     list_journeys(Client, ApplicationId, #{}, #{}).
@@ -8429,13 +8658,7 @@ list_journeys(Client, ApplicationId)
 -spec list_journeys(map(), binary() | list(), map(), map()) ->
     {ok, list_journeys_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_journeys_errors(), tuple()}.
 list_journeys(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_journeys(Client, ApplicationId, QueryMap, HeadersMap, []).
@@ -8443,13 +8666,7 @@ list_journeys(Client, ApplicationId, QueryMap, HeadersMap)
 -spec list_journeys(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_journeys_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_journeys_errors(), tuple()}.
 list_journeys(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys"],
@@ -8511,13 +8728,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec list_template_versions(map(), binary() | list(), binary() | list()) ->
     {ok, list_template_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_template_versions_errors(), tuple()}.
 list_template_versions(Client, TemplateName, TemplateType)
   when is_map(Client) ->
     list_template_versions(Client, TemplateName, TemplateType, #{}, #{}).
@@ -8525,13 +8736,7 @@ list_template_versions(Client, TemplateName, TemplateType)
 -spec list_template_versions(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_template_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_template_versions_errors(), tuple()}.
 list_template_versions(Client, TemplateName, TemplateType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_template_versions(Client, TemplateName, TemplateType, QueryMap, HeadersMap, []).
@@ -8539,13 +8744,7 @@ list_template_versions(Client, TemplateName, TemplateType, QueryMap, HeadersMap)
 -spec list_template_versions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_template_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_template_versions_errors(), tuple()}.
 list_template_versions(Client, TemplateName, TemplateType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/", aws_util:encode_uri(TemplateType), "/versions"],
@@ -8572,11 +8771,7 @@ list_template_versions(Client, TemplateName, TemplateType, QueryMap, HeadersMap,
 -spec list_templates(map()) ->
     {ok, list_templates_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_templates_errors(), tuple()}.
 list_templates(Client)
   when is_map(Client) ->
     list_templates(Client, #{}, #{}).
@@ -8584,11 +8779,7 @@ list_templates(Client)
 -spec list_templates(map(), map(), map()) ->
     {ok, list_templates_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_templates_errors(), tuple()}.
 list_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_templates(Client, QueryMap, HeadersMap, []).
@@ -8596,11 +8787,7 @@ list_templates(Client, QueryMap, HeadersMap)
 -spec list_templates(map(), map(), map(), proplists:proplist()) ->
     {ok, list_templates_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_templates_errors(), tuple()}.
 list_templates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/templates"],
@@ -8628,26 +8815,14 @@ list_templates(Client, QueryMap, HeadersMap, Options0)
 -spec phone_number_validate(map(), phone_number_validate_request()) ->
     {ok, phone_number_validate_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, phone_number_validate_errors(), tuple()}.
 phone_number_validate(Client, Input) ->
     phone_number_validate(Client, Input, []).
 
 -spec phone_number_validate(map(), phone_number_validate_request(), proplists:proplist()) ->
     {ok, phone_number_validate_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, phone_number_validate_errors(), tuple()}.
 phone_number_validate(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/phone/number/validate"],
@@ -8675,26 +8850,14 @@ phone_number_validate(Client, Input0, Options0) ->
 -spec put_event_stream(map(), binary() | list(), put_event_stream_request()) ->
     {ok, put_event_stream_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_event_stream_errors(), tuple()}.
 put_event_stream(Client, ApplicationId, Input) ->
     put_event_stream(Client, ApplicationId, Input, []).
 
 -spec put_event_stream(map(), binary() | list(), put_event_stream_request(), proplists:proplist()) ->
     {ok, put_event_stream_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_event_stream_errors(), tuple()}.
 put_event_stream(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/eventstream"],
@@ -8722,26 +8885,14 @@ put_event_stream(Client, ApplicationId, Input0, Options0) ->
 -spec put_events(map(), binary() | list(), put_events_request()) ->
     {ok, put_events_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_events_errors(), tuple()}.
 put_events(Client, ApplicationId, Input) ->
     put_events(Client, ApplicationId, Input, []).
 
 -spec put_events(map(), binary() | list(), put_events_request(), proplists:proplist()) ->
     {ok, put_events_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_events_errors(), tuple()}.
 put_events(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/events"],
@@ -8772,26 +8923,14 @@ put_events(Client, ApplicationId, Input0, Options0) ->
 -spec remove_attributes(map(), binary() | list(), binary() | list(), remove_attributes_request()) ->
     {ok, remove_attributes_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, remove_attributes_errors(), tuple()}.
 remove_attributes(Client, ApplicationId, AttributeType, Input) ->
     remove_attributes(Client, ApplicationId, AttributeType, Input, []).
 
 -spec remove_attributes(map(), binary() | list(), binary() | list(), remove_attributes_request(), proplists:proplist()) ->
     {ok, remove_attributes_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, remove_attributes_errors(), tuple()}.
 remove_attributes(Client, ApplicationId, AttributeType, Input0, Options0) ->
     Method = put,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/attributes/", aws_util:encode_uri(AttributeType), ""],
@@ -8818,26 +8957,14 @@ remove_attributes(Client, ApplicationId, AttributeType, Input0, Options0) ->
 -spec send_messages(map(), binary() | list(), send_messages_request()) ->
     {ok, send_messages_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, send_messages_errors(), tuple()}.
 send_messages(Client, ApplicationId, Input) ->
     send_messages(Client, ApplicationId, Input, []).
 
 -spec send_messages(map(), binary() | list(), send_messages_request(), proplists:proplist()) ->
     {ok, send_messages_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, send_messages_errors(), tuple()}.
 send_messages(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/messages"],
@@ -8864,26 +8991,14 @@ send_messages(Client, ApplicationId, Input0, Options0) ->
 -spec send_o_t_p_message(map(), binary() | list(), send_o_t_p_message_request()) ->
     {ok, send_o_t_p_message_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, send_o_t_p_message_errors(), tuple()}.
 send_o_t_p_message(Client, ApplicationId, Input) ->
     send_o_t_p_message(Client, ApplicationId, Input, []).
 
 -spec send_o_t_p_message(map(), binary() | list(), send_o_t_p_message_request(), proplists:proplist()) ->
     {ok, send_o_t_p_message_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, send_o_t_p_message_errors(), tuple()}.
 send_o_t_p_message(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/otp"],
@@ -8910,26 +9025,14 @@ send_o_t_p_message(Client, ApplicationId, Input0, Options0) ->
 -spec send_users_messages(map(), binary() | list(), send_users_messages_request()) ->
     {ok, send_users_messages_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, send_users_messages_errors(), tuple()}.
 send_users_messages(Client, ApplicationId, Input) ->
     send_users_messages(Client, ApplicationId, Input, []).
 
 -spec send_users_messages(map(), binary() | list(), send_users_messages_request(), proplists:proplist()) ->
     {ok, send_users_messages_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, send_users_messages_errors(), tuple()}.
 send_users_messages(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/users-messages"],
@@ -9024,26 +9127,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_adm_channel(map(), binary() | list(), update_adm_channel_request()) ->
     {ok, update_adm_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_adm_channel_errors(), tuple()}.
 update_adm_channel(Client, ApplicationId, Input) ->
     update_adm_channel(Client, ApplicationId, Input, []).
 
 -spec update_adm_channel(map(), binary() | list(), update_adm_channel_request(), proplists:proplist()) ->
     {ok, update_adm_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_adm_channel_errors(), tuple()}.
 update_adm_channel(Client, ApplicationId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/adm"],
@@ -9071,26 +9162,14 @@ update_adm_channel(Client, ApplicationId, Input0, Options0) ->
 -spec update_apns_channel(map(), binary() | list(), update_apns_channel_request()) ->
     {ok, update_apns_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_apns_channel_errors(), tuple()}.
 update_apns_channel(Client, ApplicationId, Input) ->
     update_apns_channel(Client, ApplicationId, Input, []).
 
 -spec update_apns_channel(map(), binary() | list(), update_apns_channel_request(), proplists:proplist()) ->
     {ok, update_apns_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_apns_channel_errors(), tuple()}.
 update_apns_channel(Client, ApplicationId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns"],
@@ -9118,26 +9197,14 @@ update_apns_channel(Client, ApplicationId, Input0, Options0) ->
 -spec update_apns_sandbox_channel(map(), binary() | list(), update_apns_sandbox_channel_request()) ->
     {ok, update_apns_sandbox_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_apns_sandbox_channel_errors(), tuple()}.
 update_apns_sandbox_channel(Client, ApplicationId, Input) ->
     update_apns_sandbox_channel(Client, ApplicationId, Input, []).
 
 -spec update_apns_sandbox_channel(map(), binary() | list(), update_apns_sandbox_channel_request(), proplists:proplist()) ->
     {ok, update_apns_sandbox_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_apns_sandbox_channel_errors(), tuple()}.
 update_apns_sandbox_channel(Client, ApplicationId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns_sandbox"],
@@ -9165,26 +9232,14 @@ update_apns_sandbox_channel(Client, ApplicationId, Input0, Options0) ->
 -spec update_apns_voip_channel(map(), binary() | list(), update_apns_voip_channel_request()) ->
     {ok, update_apns_voip_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_apns_voip_channel_errors(), tuple()}.
 update_apns_voip_channel(Client, ApplicationId, Input) ->
     update_apns_voip_channel(Client, ApplicationId, Input, []).
 
 -spec update_apns_voip_channel(map(), binary() | list(), update_apns_voip_channel_request(), proplists:proplist()) ->
     {ok, update_apns_voip_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_apns_voip_channel_errors(), tuple()}.
 update_apns_voip_channel(Client, ApplicationId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns_voip"],
@@ -9213,26 +9268,14 @@ update_apns_voip_channel(Client, ApplicationId, Input0, Options0) ->
 -spec update_apns_voip_sandbox_channel(map(), binary() | list(), update_apns_voip_sandbox_channel_request()) ->
     {ok, update_apns_voip_sandbox_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_apns_voip_sandbox_channel_errors(), tuple()}.
 update_apns_voip_sandbox_channel(Client, ApplicationId, Input) ->
     update_apns_voip_sandbox_channel(Client, ApplicationId, Input, []).
 
 -spec update_apns_voip_sandbox_channel(map(), binary() | list(), update_apns_voip_sandbox_channel_request(), proplists:proplist()) ->
     {ok, update_apns_voip_sandbox_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_apns_voip_sandbox_channel_errors(), tuple()}.
 update_apns_voip_sandbox_channel(Client, ApplicationId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns_voip_sandbox"],
@@ -9259,26 +9302,14 @@ update_apns_voip_sandbox_channel(Client, ApplicationId, Input0, Options0) ->
 -spec update_application_settings(map(), binary() | list(), update_application_settings_request()) ->
     {ok, update_application_settings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_application_settings_errors(), tuple()}.
 update_application_settings(Client, ApplicationId, Input) ->
     update_application_settings(Client, ApplicationId, Input, []).
 
 -spec update_application_settings(map(), binary() | list(), update_application_settings_request(), proplists:proplist()) ->
     {ok, update_application_settings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_application_settings_errors(), tuple()}.
 update_application_settings(Client, ApplicationId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/settings"],
@@ -9306,26 +9337,14 @@ update_application_settings(Client, ApplicationId, Input0, Options0) ->
 -spec update_baidu_channel(map(), binary() | list(), update_baidu_channel_request()) ->
     {ok, update_baidu_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_baidu_channel_errors(), tuple()}.
 update_baidu_channel(Client, ApplicationId, Input) ->
     update_baidu_channel(Client, ApplicationId, Input, []).
 
 -spec update_baidu_channel(map(), binary() | list(), update_baidu_channel_request(), proplists:proplist()) ->
     {ok, update_baidu_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_baidu_channel_errors(), tuple()}.
 update_baidu_channel(Client, ApplicationId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/baidu"],
@@ -9352,26 +9371,14 @@ update_baidu_channel(Client, ApplicationId, Input0, Options0) ->
 -spec update_campaign(map(), binary() | list(), binary() | list(), update_campaign_request()) ->
     {ok, update_campaign_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_campaign_errors(), tuple()}.
 update_campaign(Client, ApplicationId, CampaignId, Input) ->
     update_campaign(Client, ApplicationId, CampaignId, Input, []).
 
 -spec update_campaign(map(), binary() | list(), binary() | list(), update_campaign_request(), proplists:proplist()) ->
     {ok, update_campaign_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_campaign_errors(), tuple()}.
 update_campaign(Client, ApplicationId, CampaignId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/campaigns/", aws_util:encode_uri(CampaignId), ""],
@@ -9399,26 +9406,14 @@ update_campaign(Client, ApplicationId, CampaignId, Input0, Options0) ->
 -spec update_email_channel(map(), binary() | list(), update_email_channel_request()) ->
     {ok, update_email_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_email_channel_errors(), tuple()}.
 update_email_channel(Client, ApplicationId, Input) ->
     update_email_channel(Client, ApplicationId, Input, []).
 
 -spec update_email_channel(map(), binary() | list(), update_email_channel_request(), proplists:proplist()) ->
     {ok, update_email_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_email_channel_errors(), tuple()}.
 update_email_channel(Client, ApplicationId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/email"],
@@ -9446,26 +9441,14 @@ update_email_channel(Client, ApplicationId, Input0, Options0) ->
 -spec update_email_template(map(), binary() | list(), update_email_template_request()) ->
     {ok, update_email_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_email_template_errors(), tuple()}.
 update_email_template(Client, TemplateName, Input) ->
     update_email_template(Client, TemplateName, Input, []).
 
 -spec update_email_template(map(), binary() | list(), update_email_template_request(), proplists:proplist()) ->
     {ok, update_email_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_email_template_errors(), tuple()}.
 update_email_template(Client, TemplateName, Input0, Options0) ->
     Method = put,
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/email"],
@@ -9500,26 +9483,14 @@ update_email_template(Client, TemplateName, Input0, Options0) ->
 -spec update_endpoint(map(), binary() | list(), binary() | list(), update_endpoint_request()) ->
     {ok, update_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_endpoint_errors(), tuple()}.
 update_endpoint(Client, ApplicationId, EndpointId, Input) ->
     update_endpoint(Client, ApplicationId, EndpointId, Input, []).
 
 -spec update_endpoint(map(), binary() | list(), binary() | list(), update_endpoint_request(), proplists:proplist()) ->
     {ok, update_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_endpoint_errors(), tuple()}.
 update_endpoint(Client, ApplicationId, EndpointId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/endpoints/", aws_util:encode_uri(EndpointId), ""],
@@ -9553,26 +9524,14 @@ update_endpoint(Client, ApplicationId, EndpointId, Input0, Options0) ->
 -spec update_endpoints_batch(map(), binary() | list(), update_endpoints_batch_request()) ->
     {ok, update_endpoints_batch_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_endpoints_batch_errors(), tuple()}.
 update_endpoints_batch(Client, ApplicationId, Input) ->
     update_endpoints_batch(Client, ApplicationId, Input, []).
 
 -spec update_endpoints_batch(map(), binary() | list(), update_endpoints_batch_request(), proplists:proplist()) ->
     {ok, update_endpoints_batch_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_endpoints_batch_errors(), tuple()}.
 update_endpoints_batch(Client, ApplicationId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/endpoints"],
@@ -9600,26 +9559,14 @@ update_endpoints_batch(Client, ApplicationId, Input0, Options0) ->
 -spec update_gcm_channel(map(), binary() | list(), update_gcm_channel_request()) ->
     {ok, update_gcm_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_gcm_channel_errors(), tuple()}.
 update_gcm_channel(Client, ApplicationId, Input) ->
     update_gcm_channel(Client, ApplicationId, Input, []).
 
 -spec update_gcm_channel(map(), binary() | list(), update_gcm_channel_request(), proplists:proplist()) ->
     {ok, update_gcm_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_gcm_channel_errors(), tuple()}.
 update_gcm_channel(Client, ApplicationId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/gcm"],
@@ -9647,26 +9594,14 @@ update_gcm_channel(Client, ApplicationId, Input0, Options0) ->
 -spec update_in_app_template(map(), binary() | list(), update_in_app_template_request()) ->
     {ok, update_in_app_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_in_app_template_errors(), tuple()}.
 update_in_app_template(Client, TemplateName, Input) ->
     update_in_app_template(Client, TemplateName, Input, []).
 
 -spec update_in_app_template(map(), binary() | list(), update_in_app_template_request(), proplists:proplist()) ->
     {ok, update_in_app_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_in_app_template_errors(), tuple()}.
 update_in_app_template(Client, TemplateName, Input0, Options0) ->
     Method = put,
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/inapp"],
@@ -9695,28 +9630,14 @@ update_in_app_template(Client, TemplateName, Input0, Options0) ->
 -spec update_journey(map(), binary() | list(), binary() | list(), update_journey_request()) ->
     {ok, update_journey_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_journey_errors(), tuple()}.
 update_journey(Client, ApplicationId, JourneyId, Input) ->
     update_journey(Client, ApplicationId, JourneyId, Input, []).
 
 -spec update_journey(map(), binary() | list(), binary() | list(), update_journey_request(), proplists:proplist()) ->
     {ok, update_journey_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_journey_errors(), tuple()}.
 update_journey(Client, ApplicationId, JourneyId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys/", aws_util:encode_uri(JourneyId), ""],
@@ -9743,26 +9664,14 @@ update_journey(Client, ApplicationId, JourneyId, Input0, Options0) ->
 -spec update_journey_state(map(), binary() | list(), binary() | list(), update_journey_state_request()) ->
     {ok, update_journey_state_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_journey_state_errors(), tuple()}.
 update_journey_state(Client, ApplicationId, JourneyId, Input) ->
     update_journey_state(Client, ApplicationId, JourneyId, Input, []).
 
 -spec update_journey_state(map(), binary() | list(), binary() | list(), update_journey_state_request(), proplists:proplist()) ->
     {ok, update_journey_state_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_journey_state_errors(), tuple()}.
 update_journey_state(Client, ApplicationId, JourneyId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys/", aws_util:encode_uri(JourneyId), "/state"],
@@ -9790,26 +9699,14 @@ update_journey_state(Client, ApplicationId, JourneyId, Input0, Options0) ->
 -spec update_push_template(map(), binary() | list(), update_push_template_request()) ->
     {ok, update_push_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_push_template_errors(), tuple()}.
 update_push_template(Client, TemplateName, Input) ->
     update_push_template(Client, TemplateName, Input, []).
 
 -spec update_push_template(map(), binary() | list(), update_push_template_request(), proplists:proplist()) ->
     {ok, update_push_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_push_template_errors(), tuple()}.
 update_push_template(Client, TemplateName, Input0, Options0) ->
     Method = put,
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/push"],
@@ -9838,26 +9735,14 @@ update_push_template(Client, TemplateName, Input0, Options0) ->
 -spec update_recommender_configuration(map(), binary() | list(), update_recommender_configuration_request()) ->
     {ok, update_recommender_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_recommender_configuration_errors(), tuple()}.
 update_recommender_configuration(Client, RecommenderId, Input) ->
     update_recommender_configuration(Client, RecommenderId, Input, []).
 
 -spec update_recommender_configuration(map(), binary() | list(), update_recommender_configuration_request(), proplists:proplist()) ->
     {ok, update_recommender_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_recommender_configuration_errors(), tuple()}.
 update_recommender_configuration(Client, RecommenderId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/recommenders/", aws_util:encode_uri(RecommenderId), ""],
@@ -9886,26 +9771,14 @@ update_recommender_configuration(Client, RecommenderId, Input0, Options0) ->
 -spec update_segment(map(), binary() | list(), binary() | list(), update_segment_request()) ->
     {ok, update_segment_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_segment_errors(), tuple()}.
 update_segment(Client, ApplicationId, SegmentId, Input) ->
     update_segment(Client, ApplicationId, SegmentId, Input, []).
 
 -spec update_segment(map(), binary() | list(), binary() | list(), update_segment_request(), proplists:proplist()) ->
     {ok, update_segment_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_segment_errors(), tuple()}.
 update_segment(Client, ApplicationId, SegmentId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/segments/", aws_util:encode_uri(SegmentId), ""],
@@ -9933,26 +9806,14 @@ update_segment(Client, ApplicationId, SegmentId, Input0, Options0) ->
 -spec update_sms_channel(map(), binary() | list(), update_sms_channel_request()) ->
     {ok, update_sms_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_sms_channel_errors(), tuple()}.
 update_sms_channel(Client, ApplicationId, Input) ->
     update_sms_channel(Client, ApplicationId, Input, []).
 
 -spec update_sms_channel(map(), binary() | list(), update_sms_channel_request(), proplists:proplist()) ->
     {ok, update_sms_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_sms_channel_errors(), tuple()}.
 update_sms_channel(Client, ApplicationId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/sms"],
@@ -9980,26 +9841,14 @@ update_sms_channel(Client, ApplicationId, Input0, Options0) ->
 -spec update_sms_template(map(), binary() | list(), update_sms_template_request()) ->
     {ok, update_sms_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_sms_template_errors(), tuple()}.
 update_sms_template(Client, TemplateName, Input) ->
     update_sms_template(Client, TemplateName, Input, []).
 
 -spec update_sms_template(map(), binary() | list(), update_sms_template_request(), proplists:proplist()) ->
     {ok, update_sms_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_sms_template_errors(), tuple()}.
 update_sms_template(Client, TemplateName, Input0, Options0) ->
     Method = put,
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/sms"],
@@ -10029,26 +9878,14 @@ update_sms_template(Client, TemplateName, Input0, Options0) ->
 -spec update_template_active_version(map(), binary() | list(), binary() | list(), update_template_active_version_request()) ->
     {ok, update_template_active_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_template_active_version_errors(), tuple()}.
 update_template_active_version(Client, TemplateName, TemplateType, Input) ->
     update_template_active_version(Client, TemplateName, TemplateType, Input, []).
 
 -spec update_template_active_version(map(), binary() | list(), binary() | list(), update_template_active_version_request(), proplists:proplist()) ->
     {ok, update_template_active_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_template_active_version_errors(), tuple()}.
 update_template_active_version(Client, TemplateName, TemplateType, Input0, Options0) ->
     Method = put,
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/", aws_util:encode_uri(TemplateType), "/active-version"],
@@ -10076,26 +9913,14 @@ update_template_active_version(Client, TemplateName, TemplateType, Input0, Optio
 -spec update_voice_channel(map(), binary() | list(), update_voice_channel_request()) ->
     {ok, update_voice_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_voice_channel_errors(), tuple()}.
 update_voice_channel(Client, ApplicationId, Input) ->
     update_voice_channel(Client, ApplicationId, Input, []).
 
 -spec update_voice_channel(map(), binary() | list(), update_voice_channel_request(), proplists:proplist()) ->
     {ok, update_voice_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_voice_channel_errors(), tuple()}.
 update_voice_channel(Client, ApplicationId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/voice"],
@@ -10123,26 +9948,14 @@ update_voice_channel(Client, ApplicationId, Input0, Options0) ->
 -spec update_voice_template(map(), binary() | list(), update_voice_template_request()) ->
     {ok, update_voice_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_voice_template_errors(), tuple()}.
 update_voice_template(Client, TemplateName, Input) ->
     update_voice_template(Client, TemplateName, Input, []).
 
 -spec update_voice_template(map(), binary() | list(), update_voice_template_request(), proplists:proplist()) ->
     {ok, update_voice_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_voice_template_errors(), tuple()}.
 update_voice_template(Client, TemplateName, Input0, Options0) ->
     Method = put,
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/voice"],
@@ -10171,26 +9984,14 @@ update_voice_template(Client, TemplateName, Input0, Options0) ->
 -spec verify_o_t_p_message(map(), binary() | list(), verify_o_t_p_message_request()) ->
     {ok, verify_o_t_p_message_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, verify_o_t_p_message_errors(), tuple()}.
 verify_o_t_p_message(Client, ApplicationId, Input) ->
     verify_o_t_p_message(Client, ApplicationId, Input, []).
 
 -spec verify_o_t_p_message(map(), binary() | list(), verify_o_t_p_message_request(), proplists:proplist()) ->
     {ok, verify_o_t_p_message_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, verify_o_t_p_message_errors(), tuple()}.
 verify_o_t_p_message(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/verify-otp"],

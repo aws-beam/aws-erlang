@@ -90,6 +90,7 @@
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_schema_request() :: #{
 %%   <<"Content">> := string(),
@@ -99,11 +100,13 @@
 %% }
 -type create_schema_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_code_binding_source_request() :: #{
 %%   <<"SchemaVersion">> => string()
 %% }
 -type get_code_binding_source_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% unauthorized_exception() :: #{
@@ -112,11 +115,13 @@
 %% }
 -type unauthorized_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_code_binding_request() :: #{
 %%   <<"SchemaVersion">> => string()
 %% }
 -type describe_code_binding_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_schemas_request() :: #{
@@ -126,17 +131,21 @@
 %% }
 -type search_schemas_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_schema_request() :: #{
 %%   <<"SchemaVersion">> => string()
 %% }
 -type describe_schema_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_schema_request() :: #{}
 -type delete_schema_request() :: #{}.
+
 %% Example:
 %% delete_registry_request() :: #{}
 -type delete_registry_request() :: #{}.
+
 
 %% Example:
 %% forbidden_exception() :: #{
@@ -145,12 +154,14 @@
 %% }
 -type forbidden_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_schema_versions_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"SchemaVersions">> => list(schema_version_summary()())
 %% }
 -type list_schema_versions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_registry_response() :: #{
@@ -161,6 +172,7 @@
 %% }
 -type create_registry_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_discoverers_request() :: #{
 %%   <<"DiscovererIdPrefix">> => string(),
@@ -169,9 +181,11 @@
 %%   <<"SourceArnPrefix">> => string()
 %% }
 -type list_discoverers_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_discoverer_request() :: #{}
 -type delete_discoverer_request() :: #{}.
+
 
 %% Example:
 %% create_discoverer_response() :: #{
@@ -185,6 +199,7 @@
 %% }
 -type create_discoverer_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_discovered_schema_request() :: #{
 %%   <<"Events">> := list(string()()),
@@ -192,12 +207,14 @@
 %% }
 -type get_discovered_schema_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_resource_policy_response() :: #{
 %%   <<"Policy">> => string(),
 %%   <<"RevisionId">> => string()
 %% }
 -type get_resource_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_schema_response() :: #{
@@ -213,6 +230,7 @@
 %% }
 -type describe_schema_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% gone_exception() :: #{
 %%   <<"Code">> => string(),
@@ -220,11 +238,13 @@
 %% }
 -type gone_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_registry_request() :: #{
 %%   <<"Description">> => string()
 %% }
 -type update_registry_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_schema_response() :: #{
@@ -239,6 +259,7 @@
 %% }
 -type update_schema_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_discoverer_response() :: #{
 %%   <<"CrossAccount">> => boolean(),
@@ -250,6 +271,7 @@
 %%   <<"Tags">> => map()
 %% }
 -type update_discoverer_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_schema_response() :: #{
@@ -264,11 +286,13 @@
 %% }
 -type create_schema_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% too_many_requests_exception() :: #{
@@ -276,6 +300,7 @@
 %%   <<"Message">> => string()
 %% }
 -type too_many_requests_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_discoverer_response() :: #{
@@ -289,11 +314,13 @@
 %% }
 -type describe_discoverer_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_code_binding_request() :: #{
 %%   <<"SchemaVersion">> => string()
 %% }
 -type put_code_binding_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_schemas_request() :: #{
@@ -302,6 +329,7 @@
 %%   <<"SchemaNamePrefix">> => string()
 %% }
 -type list_schemas_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_code_binding_response() :: #{
@@ -312,12 +340,14 @@
 %% }
 -type put_code_binding_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% export_schema_request() :: #{
 %%   <<"SchemaVersion">> => string(),
 %%   <<"Type">> := string()
 %% }
 -type export_schema_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_discoverer_request() :: #{
@@ -326,12 +356,14 @@
 %% }
 -type update_discoverer_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"Code">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_discoverer_request() :: #{
@@ -342,6 +374,7 @@
 %% }
 -type create_discoverer_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_discoverers_response() :: #{
 %%   <<"Discoverers">> => list(discoverer_summary()()),
@@ -349,14 +382,17 @@
 %% }
 -type list_discoverers_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_code_binding_source_response() :: #{
 %%   <<"Body">> => binary()
 %% }
 -type get_code_binding_source_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_schema_version_request() :: #{}
 -type delete_schema_version_request() :: #{}.
+
 
 %% Example:
 %% schema_summary() :: #{
@@ -368,6 +404,7 @@
 %% }
 -type schema_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_schema_summary() :: #{
 %%   <<"RegistryName">> => string(),
@@ -377,6 +414,7 @@
 %% }
 -type search_schema_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% not_found_exception() :: #{
 %%   <<"Code">> => string(),
@@ -384,11 +422,13 @@
 %% }
 -type not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_unavailable_exception() :: #{
@@ -397,6 +437,7 @@
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% stop_discoverer_response() :: #{
 %%   <<"DiscovererId">> => string(),
@@ -404,11 +445,13 @@
 %% }
 -type stop_discoverer_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_resource_policy_request() :: #{
 %%   <<"RegistryName">> => string()
 %% }
 -type get_resource_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_registry_response() :: #{
@@ -418,9 +461,11 @@
 %%   <<"Tags">> => map()
 %% }
 -type describe_registry_response() :: #{binary() => any()}.
+
 %% Example:
 %% stop_discoverer_request() :: #{}
 -type stop_discoverer_request() :: #{}.
+
 
 %% Example:
 %% search_schema_version_summary() :: #{
@@ -429,6 +474,7 @@
 %%   <<"Type">> => list(any())
 %% }
 -type search_schema_version_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_registry_response() :: #{
@@ -439,15 +485,18 @@
 %% }
 -type update_registry_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_schema_versions_request() :: #{
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_schema_versions_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_discoverer_request() :: #{}
 -type describe_discoverer_request() :: #{}.
+
 
 %% Example:
 %% list_registries_response() :: #{
@@ -455,6 +504,7 @@
 %%   <<"Registries">> => list(registry_summary()())
 %% }
 -type list_registries_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_resource_policy_request() :: #{
@@ -464,6 +514,7 @@
 %% }
 -type put_resource_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_schemas_response() :: #{
 %%   <<"NextToken">> => string(),
@@ -471,11 +522,13 @@
 %% }
 -type search_schemas_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_discovered_schema_response() :: #{
 %%   <<"Content">> => string()
 %% }
 -type get_discovered_schema_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_registries_request() :: #{
@@ -485,9 +538,11 @@
 %%   <<"Scope">> => string()
 %% }
 -type list_registries_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_registry_request() :: #{}
 -type describe_registry_request() :: #{}.
+
 
 %% Example:
 %% export_schema_response() :: #{
@@ -498,9 +553,11 @@
 %%   <<"Type">> => string()
 %% }
 -type export_schema_response() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% internal_server_error_exception() :: #{
@@ -509,12 +566,14 @@
 %% }
 -type internal_server_error_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_registry_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"Tags">> => map()
 %% }
 -type create_registry_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_resource_policy_response() :: #{
@@ -523,6 +582,7 @@
 %% }
 -type put_resource_policy_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% bad_request_exception() :: #{
 %%   <<"Code">> => string(),
@@ -530,11 +590,13 @@
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_resource_policy_request() :: #{
 %%   <<"RegistryName">> => string()
 %% }
 -type delete_resource_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_discoverer_response() :: #{
@@ -542,6 +604,7 @@
 %%   <<"State">> => list(any())
 %% }
 -type start_discoverer_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% discoverer_summary() :: #{
@@ -554,6 +617,7 @@
 %% }
 -type discoverer_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_schemas_response() :: #{
 %%   <<"NextToken">> => string(),
@@ -561,12 +625,14 @@
 %% }
 -type list_schemas_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% precondition_failed_exception() :: #{
 %%   <<"Code">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type precondition_failed_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% schema_version_summary() :: #{
@@ -577,6 +643,7 @@
 %% }
 -type schema_version_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_code_binding_response() :: #{
 %%   <<"CreationDate">> => non_neg_integer(),
@@ -586,6 +653,7 @@
 %% }
 -type describe_code_binding_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% registry_summary() :: #{
 %%   <<"RegistryArn">> => string(),
@@ -593,9 +661,11 @@
 %%   <<"Tags">> => map()
 %% }
 -type registry_summary() :: #{binary() => any()}.
+
 %% Example:
 %% start_discoverer_request() :: #{}
 -type start_discoverer_request() :: #{}.
+
 
 %% Example:
 %% update_schema_request() :: #{
@@ -606,6 +676,243 @@
 %% }
 -type update_schema_request() :: #{binary() => any()}.
 
+-type create_discoverer_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type create_registry_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type create_schema_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    forbidden_exception().
+
+-type delete_discoverer_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type delete_registry_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type delete_resource_policy_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type delete_schema_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type delete_schema_version_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type describe_code_binding_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type describe_discoverer_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type describe_registry_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type describe_schema_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type export_schema_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type get_code_binding_source_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type get_discovered_schema_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type get_resource_policy_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type list_discoverers_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type list_registries_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type list_schema_versions_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type list_schemas_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type list_tags_for_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    forbidden_exception().
+
+-type put_code_binding_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    gone_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type put_resource_policy_errors() ::
+    precondition_failed_exception() | 
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type search_schemas_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type start_discoverer_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type stop_discoverer_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type tag_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    forbidden_exception().
+
+-type untag_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    forbidden_exception().
+
+-type update_discoverer_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type update_registry_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type update_schema_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -614,24 +921,14 @@
 -spec create_discoverer(map(), create_discoverer_request()) ->
     {ok, create_discoverer_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_discoverer_errors(), tuple()}.
 create_discoverer(Client, Input) ->
     create_discoverer(Client, Input, []).
 
 -spec create_discoverer(map(), create_discoverer_request(), proplists:proplist()) ->
     {ok, create_discoverer_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_discoverer_errors(), tuple()}.
 create_discoverer(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/discoverers"],
@@ -658,24 +955,14 @@ create_discoverer(Client, Input0, Options0) ->
 -spec create_registry(map(), binary() | list(), create_registry_request()) ->
     {ok, create_registry_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_registry_errors(), tuple()}.
 create_registry(Client, RegistryName, Input) ->
     create_registry(Client, RegistryName, Input, []).
 
 -spec create_registry(map(), binary() | list(), create_registry_request(), proplists:proplist()) ->
     {ok, create_registry_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_registry_errors(), tuple()}.
 create_registry(Client, RegistryName, Input0, Options0) ->
     Method = post,
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), ""],
@@ -704,20 +991,14 @@ create_registry(Client, RegistryName, Input0, Options0) ->
 -spec create_schema(map(), binary() | list(), binary() | list(), create_schema_request()) ->
     {ok, create_schema_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_schema_errors(), tuple()}.
 create_schema(Client, RegistryName, SchemaName, Input) ->
     create_schema(Client, RegistryName, SchemaName, Input, []).
 
 -spec create_schema(map(), binary() | list(), binary() | list(), create_schema_request(), proplists:proplist()) ->
     {ok, create_schema_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_schema_errors(), tuple()}.
 create_schema(Client, RegistryName, SchemaName, Input0, Options0) ->
     Method = post,
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), ""],
@@ -744,24 +1025,14 @@ create_schema(Client, RegistryName, SchemaName, Input0, Options0) ->
 -spec delete_discoverer(map(), binary() | list(), delete_discoverer_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_discoverer_errors(), tuple()}.
 delete_discoverer(Client, DiscovererId, Input) ->
     delete_discoverer(Client, DiscovererId, Input, []).
 
 -spec delete_discoverer(map(), binary() | list(), delete_discoverer_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_discoverer_errors(), tuple()}.
 delete_discoverer(Client, DiscovererId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/discoverers/id/", aws_util:encode_uri(DiscovererId), ""],
@@ -788,24 +1059,14 @@ delete_discoverer(Client, DiscovererId, Input0, Options0) ->
 -spec delete_registry(map(), binary() | list(), delete_registry_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_registry_errors(), tuple()}.
 delete_registry(Client, RegistryName, Input) ->
     delete_registry(Client, RegistryName, Input, []).
 
 -spec delete_registry(map(), binary() | list(), delete_registry_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_registry_errors(), tuple()}.
 delete_registry(Client, RegistryName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), ""],
@@ -832,24 +1093,14 @@ delete_registry(Client, RegistryName, Input0, Options0) ->
 -spec delete_resource_policy(map(), delete_resource_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input) ->
     delete_resource_policy(Client, Input, []).
 
 -spec delete_resource_policy(map(), delete_resource_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/policy"],
@@ -877,24 +1128,14 @@ delete_resource_policy(Client, Input0, Options0) ->
 -spec delete_schema(map(), binary() | list(), binary() | list(), delete_schema_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_schema_errors(), tuple()}.
 delete_schema(Client, RegistryName, SchemaName, Input) ->
     delete_schema(Client, RegistryName, SchemaName, Input, []).
 
 -spec delete_schema(map(), binary() | list(), binary() | list(), delete_schema_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_schema_errors(), tuple()}.
 delete_schema(Client, RegistryName, SchemaName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), ""],
@@ -921,24 +1162,14 @@ delete_schema(Client, RegistryName, SchemaName, Input0, Options0) ->
 -spec delete_schema_version(map(), binary() | list(), binary() | list(), binary() | list(), delete_schema_version_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_schema_version_errors(), tuple()}.
 delete_schema_version(Client, RegistryName, SchemaName, SchemaVersion, Input) ->
     delete_schema_version(Client, RegistryName, SchemaName, SchemaVersion, Input, []).
 
 -spec delete_schema_version(map(), binary() | list(), binary() | list(), binary() | list(), delete_schema_version_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_schema_version_errors(), tuple()}.
 delete_schema_version(Client, RegistryName, SchemaName, SchemaVersion, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), "/version/", aws_util:encode_uri(SchemaVersion), ""],
@@ -965,12 +1196,7 @@ delete_schema_version(Client, RegistryName, SchemaName, SchemaVersion, Input0, O
 -spec describe_code_binding(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_code_binding_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_code_binding_errors(), tuple()}.
 describe_code_binding(Client, Language, RegistryName, SchemaName)
   when is_map(Client) ->
     describe_code_binding(Client, Language, RegistryName, SchemaName, #{}, #{}).
@@ -978,12 +1204,7 @@ describe_code_binding(Client, Language, RegistryName, SchemaName)
 -spec describe_code_binding(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_code_binding_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_code_binding_errors(), tuple()}.
 describe_code_binding(Client, Language, RegistryName, SchemaName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_code_binding(Client, Language, RegistryName, SchemaName, QueryMap, HeadersMap, []).
@@ -991,12 +1212,7 @@ describe_code_binding(Client, Language, RegistryName, SchemaName, QueryMap, Head
 -spec describe_code_binding(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_code_binding_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_code_binding_errors(), tuple()}.
 describe_code_binding(Client, Language, RegistryName, SchemaName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), "/language/", aws_util:encode_uri(Language), ""],
@@ -1021,12 +1237,7 @@ describe_code_binding(Client, Language, RegistryName, SchemaName, QueryMap, Head
 -spec describe_discoverer(map(), binary() | list()) ->
     {ok, describe_discoverer_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_discoverer_errors(), tuple()}.
 describe_discoverer(Client, DiscovererId)
   when is_map(Client) ->
     describe_discoverer(Client, DiscovererId, #{}, #{}).
@@ -1034,12 +1245,7 @@ describe_discoverer(Client, DiscovererId)
 -spec describe_discoverer(map(), binary() | list(), map(), map()) ->
     {ok, describe_discoverer_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_discoverer_errors(), tuple()}.
 describe_discoverer(Client, DiscovererId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_discoverer(Client, DiscovererId, QueryMap, HeadersMap, []).
@@ -1047,12 +1253,7 @@ describe_discoverer(Client, DiscovererId, QueryMap, HeadersMap)
 -spec describe_discoverer(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_discoverer_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_discoverer_errors(), tuple()}.
 describe_discoverer(Client, DiscovererId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/discoverers/id/", aws_util:encode_uri(DiscovererId), ""],
@@ -1073,12 +1274,7 @@ describe_discoverer(Client, DiscovererId, QueryMap, HeadersMap, Options0)
 -spec describe_registry(map(), binary() | list()) ->
     {ok, describe_registry_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_registry_errors(), tuple()}.
 describe_registry(Client, RegistryName)
   when is_map(Client) ->
     describe_registry(Client, RegistryName, #{}, #{}).
@@ -1086,12 +1282,7 @@ describe_registry(Client, RegistryName)
 -spec describe_registry(map(), binary() | list(), map(), map()) ->
     {ok, describe_registry_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_registry_errors(), tuple()}.
 describe_registry(Client, RegistryName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_registry(Client, RegistryName, QueryMap, HeadersMap, []).
@@ -1099,12 +1290,7 @@ describe_registry(Client, RegistryName, QueryMap, HeadersMap)
 -spec describe_registry(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_registry_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_registry_errors(), tuple()}.
 describe_registry(Client, RegistryName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), ""],
@@ -1125,12 +1311,7 @@ describe_registry(Client, RegistryName, QueryMap, HeadersMap, Options0)
 -spec describe_schema(map(), binary() | list(), binary() | list()) ->
     {ok, describe_schema_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_schema_errors(), tuple()}.
 describe_schema(Client, RegistryName, SchemaName)
   when is_map(Client) ->
     describe_schema(Client, RegistryName, SchemaName, #{}, #{}).
@@ -1138,12 +1319,7 @@ describe_schema(Client, RegistryName, SchemaName)
 -spec describe_schema(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_schema_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_schema_errors(), tuple()}.
 describe_schema(Client, RegistryName, SchemaName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_schema(Client, RegistryName, SchemaName, QueryMap, HeadersMap, []).
@@ -1151,12 +1327,7 @@ describe_schema(Client, RegistryName, SchemaName, QueryMap, HeadersMap)
 -spec describe_schema(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_schema_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_schema_errors(), tuple()}.
 describe_schema(Client, RegistryName, SchemaName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), ""],
@@ -1181,13 +1352,7 @@ describe_schema(Client, RegistryName, SchemaName, QueryMap, HeadersMap, Options0
 -spec export_schema(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, export_schema_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, export_schema_errors(), tuple()}.
 export_schema(Client, RegistryName, SchemaName, Type)
   when is_map(Client) ->
     export_schema(Client, RegistryName, SchemaName, Type, #{}, #{}).
@@ -1195,13 +1360,7 @@ export_schema(Client, RegistryName, SchemaName, Type)
 -spec export_schema(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, export_schema_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, export_schema_errors(), tuple()}.
 export_schema(Client, RegistryName, SchemaName, Type, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     export_schema(Client, RegistryName, SchemaName, Type, QueryMap, HeadersMap, []).
@@ -1209,13 +1368,7 @@ export_schema(Client, RegistryName, SchemaName, Type, QueryMap, HeadersMap)
 -spec export_schema(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, export_schema_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, export_schema_errors(), tuple()}.
 export_schema(Client, RegistryName, SchemaName, Type, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), "/export"],
@@ -1241,12 +1394,7 @@ export_schema(Client, RegistryName, SchemaName, Type, QueryMap, HeadersMap, Opti
 -spec get_code_binding_source(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_code_binding_source_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_code_binding_source_errors(), tuple()}.
 get_code_binding_source(Client, Language, RegistryName, SchemaName)
   when is_map(Client) ->
     get_code_binding_source(Client, Language, RegistryName, SchemaName, #{}, #{}).
@@ -1254,12 +1402,7 @@ get_code_binding_source(Client, Language, RegistryName, SchemaName)
 -spec get_code_binding_source(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_code_binding_source_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_code_binding_source_errors(), tuple()}.
 get_code_binding_source(Client, Language, RegistryName, SchemaName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_code_binding_source(Client, Language, RegistryName, SchemaName, QueryMap, HeadersMap, []).
@@ -1267,12 +1410,7 @@ get_code_binding_source(Client, Language, RegistryName, SchemaName, QueryMap, He
 -spec get_code_binding_source(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_code_binding_source_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_code_binding_source_errors(), tuple()}.
 get_code_binding_source(Client, Language, RegistryName, SchemaName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), "/language/", aws_util:encode_uri(Language), "/source"],
@@ -1297,22 +1435,14 @@ get_code_binding_source(Client, Language, RegistryName, SchemaName, QueryMap, He
 -spec get_discovered_schema(map(), get_discovered_schema_request()) ->
     {ok, get_discovered_schema_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_discovered_schema_errors(), tuple()}.
 get_discovered_schema(Client, Input) ->
     get_discovered_schema(Client, Input, []).
 
 -spec get_discovered_schema(map(), get_discovered_schema_request(), proplists:proplist()) ->
     {ok, get_discovered_schema_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_discovered_schema_errors(), tuple()}.
 get_discovered_schema(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/discover"],
@@ -1339,12 +1469,7 @@ get_discovered_schema(Client, Input0, Options0) ->
 -spec get_resource_policy(map()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_resource_policy_errors(), tuple()}.
 get_resource_policy(Client)
   when is_map(Client) ->
     get_resource_policy(Client, #{}, #{}).
@@ -1352,12 +1477,7 @@ get_resource_policy(Client)
 -spec get_resource_policy(map(), map(), map()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_resource_policy_errors(), tuple()}.
 get_resource_policy(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resource_policy(Client, QueryMap, HeadersMap, []).
@@ -1365,12 +1485,7 @@ get_resource_policy(Client, QueryMap, HeadersMap)
 -spec get_resource_policy(map(), map(), map(), proplists:proplist()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_resource_policy_errors(), tuple()}.
 get_resource_policy(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/policy"],
@@ -1395,11 +1510,7 @@ get_resource_policy(Client, QueryMap, HeadersMap, Options0)
 -spec list_discoverers(map()) ->
     {ok, list_discoverers_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_discoverers_errors(), tuple()}.
 list_discoverers(Client)
   when is_map(Client) ->
     list_discoverers(Client, #{}, #{}).
@@ -1407,11 +1518,7 @@ list_discoverers(Client)
 -spec list_discoverers(map(), map(), map()) ->
     {ok, list_discoverers_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_discoverers_errors(), tuple()}.
 list_discoverers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_discoverers(Client, QueryMap, HeadersMap, []).
@@ -1419,11 +1526,7 @@ list_discoverers(Client, QueryMap, HeadersMap)
 -spec list_discoverers(map(), map(), map(), proplists:proplist()) ->
     {ok, list_discoverers_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_discoverers_errors(), tuple()}.
 list_discoverers(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/discoverers"],
@@ -1451,11 +1554,7 @@ list_discoverers(Client, QueryMap, HeadersMap, Options0)
 -spec list_registries(map()) ->
     {ok, list_registries_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_registries_errors(), tuple()}.
 list_registries(Client)
   when is_map(Client) ->
     list_registries(Client, #{}, #{}).
@@ -1463,11 +1562,7 @@ list_registries(Client)
 -spec list_registries(map(), map(), map()) ->
     {ok, list_registries_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_registries_errors(), tuple()}.
 list_registries(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_registries(Client, QueryMap, HeadersMap, []).
@@ -1475,11 +1570,7 @@ list_registries(Client, QueryMap, HeadersMap)
 -spec list_registries(map(), map(), map(), proplists:proplist()) ->
     {ok, list_registries_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_registries_errors(), tuple()}.
 list_registries(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/registries"],
@@ -1507,12 +1598,7 @@ list_registries(Client, QueryMap, HeadersMap, Options0)
 -spec list_schema_versions(map(), binary() | list(), binary() | list()) ->
     {ok, list_schema_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_schema_versions_errors(), tuple()}.
 list_schema_versions(Client, RegistryName, SchemaName)
   when is_map(Client) ->
     list_schema_versions(Client, RegistryName, SchemaName, #{}, #{}).
@@ -1520,12 +1606,7 @@ list_schema_versions(Client, RegistryName, SchemaName)
 -spec list_schema_versions(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_schema_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_schema_versions_errors(), tuple()}.
 list_schema_versions(Client, RegistryName, SchemaName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_schema_versions(Client, RegistryName, SchemaName, QueryMap, HeadersMap, []).
@@ -1533,12 +1614,7 @@ list_schema_versions(Client, RegistryName, SchemaName, QueryMap, HeadersMap)
 -spec list_schema_versions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_schema_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_schema_versions_errors(), tuple()}.
 list_schema_versions(Client, RegistryName, SchemaName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), "/versions"],
@@ -1564,11 +1640,7 @@ list_schema_versions(Client, RegistryName, SchemaName, QueryMap, HeadersMap, Opt
 -spec list_schemas(map(), binary() | list()) ->
     {ok, list_schemas_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_schemas_errors(), tuple()}.
 list_schemas(Client, RegistryName)
   when is_map(Client) ->
     list_schemas(Client, RegistryName, #{}, #{}).
@@ -1576,11 +1648,7 @@ list_schemas(Client, RegistryName)
 -spec list_schemas(map(), binary() | list(), map(), map()) ->
     {ok, list_schemas_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_schemas_errors(), tuple()}.
 list_schemas(Client, RegistryName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_schemas(Client, RegistryName, QueryMap, HeadersMap, []).
@@ -1588,11 +1656,7 @@ list_schemas(Client, RegistryName, QueryMap, HeadersMap)
 -spec list_schemas(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_schemas_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_schemas_errors(), tuple()}.
 list_schemas(Client, RegistryName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas"],
@@ -1619,10 +1683,7 @@ list_schemas(Client, RegistryName, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1630,10 +1691,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1641,10 +1699,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1665,26 +1720,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec put_code_binding(map(), binary() | list(), binary() | list(), binary() | list(), put_code_binding_request()) ->
     {ok, put_code_binding_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gone_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, put_code_binding_errors(), tuple()}.
 put_code_binding(Client, Language, RegistryName, SchemaName, Input) ->
     put_code_binding(Client, Language, RegistryName, SchemaName, Input, []).
 
 -spec put_code_binding(map(), binary() | list(), binary() | list(), binary() | list(), put_code_binding_request(), proplists:proplist()) ->
     {ok, put_code_binding_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gone_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, put_code_binding_errors(), tuple()}.
 put_code_binding(Client, Language, RegistryName, SchemaName, Input0, Options0) ->
     Method = post,
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), "/language/", aws_util:encode_uri(Language), ""],
@@ -1712,26 +1755,14 @@ put_code_binding(Client, Language, RegistryName, SchemaName, Input0, Options0) -
 -spec put_resource_policy(map(), put_resource_policy_request()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input) ->
     put_resource_policy(Client, Input, []).
 
 -spec put_resource_policy(map(), put_resource_policy_request(), proplists:proplist()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v1/policy"],
@@ -1759,11 +1790,7 @@ put_resource_policy(Client, Input0, Options0) ->
 -spec search_schemas(map(), binary() | list(), binary() | list()) ->
     {ok, search_schemas_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, search_schemas_errors(), tuple()}.
 search_schemas(Client, RegistryName, Keywords)
   when is_map(Client) ->
     search_schemas(Client, RegistryName, Keywords, #{}, #{}).
@@ -1771,11 +1798,7 @@ search_schemas(Client, RegistryName, Keywords)
 -spec search_schemas(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, search_schemas_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, search_schemas_errors(), tuple()}.
 search_schemas(Client, RegistryName, Keywords, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     search_schemas(Client, RegistryName, Keywords, QueryMap, HeadersMap, []).
@@ -1783,11 +1806,7 @@ search_schemas(Client, RegistryName, Keywords, QueryMap, HeadersMap)
 -spec search_schemas(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, search_schemas_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, search_schemas_errors(), tuple()}.
 search_schemas(Client, RegistryName, Keywords, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/search"],
@@ -1814,24 +1833,14 @@ search_schemas(Client, RegistryName, Keywords, QueryMap, HeadersMap, Options0)
 -spec start_discoverer(map(), binary() | list(), start_discoverer_request()) ->
     {ok, start_discoverer_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, start_discoverer_errors(), tuple()}.
 start_discoverer(Client, DiscovererId, Input) ->
     start_discoverer(Client, DiscovererId, Input, []).
 
 -spec start_discoverer(map(), binary() | list(), start_discoverer_request(), proplists:proplist()) ->
     {ok, start_discoverer_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, start_discoverer_errors(), tuple()}.
 start_discoverer(Client, DiscovererId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/discoverers/id/", aws_util:encode_uri(DiscovererId), "/start"],
@@ -1858,24 +1867,14 @@ start_discoverer(Client, DiscovererId, Input0, Options0) ->
 -spec stop_discoverer(map(), binary() | list(), stop_discoverer_request()) ->
     {ok, stop_discoverer_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, stop_discoverer_errors(), tuple()}.
 stop_discoverer(Client, DiscovererId, Input) ->
     stop_discoverer(Client, DiscovererId, Input, []).
 
 -spec stop_discoverer(map(), binary() | list(), stop_discoverer_request(), proplists:proplist()) ->
     {ok, stop_discoverer_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, stop_discoverer_errors(), tuple()}.
 stop_discoverer(Client, DiscovererId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/discoverers/id/", aws_util:encode_uri(DiscovererId), "/stop"],
@@ -1902,20 +1901,14 @@ stop_discoverer(Client, DiscovererId, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1942,20 +1935,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1983,24 +1970,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_discoverer(map(), binary() | list(), update_discoverer_request()) ->
     {ok, update_discoverer_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_discoverer_errors(), tuple()}.
 update_discoverer(Client, DiscovererId, Input) ->
     update_discoverer(Client, DiscovererId, Input, []).
 
 -spec update_discoverer(map(), binary() | list(), update_discoverer_request(), proplists:proplist()) ->
     {ok, update_discoverer_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_discoverer_errors(), tuple()}.
 update_discoverer(Client, DiscovererId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/discoverers/id/", aws_util:encode_uri(DiscovererId), ""],
@@ -2027,24 +2004,14 @@ update_discoverer(Client, DiscovererId, Input0, Options0) ->
 -spec update_registry(map(), binary() | list(), update_registry_request()) ->
     {ok, update_registry_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_registry_errors(), tuple()}.
 update_registry(Client, RegistryName, Input) ->
     update_registry(Client, RegistryName, Input, []).
 
 -spec update_registry(map(), binary() | list(), update_registry_request(), proplists:proplist()) ->
     {ok, update_registry_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_registry_errors(), tuple()}.
 update_registry(Client, RegistryName, Input0, Options0) ->
     Method = put,
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), ""],
@@ -2073,22 +2040,14 @@ update_registry(Client, RegistryName, Input0, Options0) ->
 -spec update_schema(map(), binary() | list(), binary() | list(), update_schema_request()) ->
     {ok, update_schema_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, update_schema_errors(), tuple()}.
 update_schema(Client, RegistryName, SchemaName, Input) ->
     update_schema(Client, RegistryName, SchemaName, Input, []).
 
 -spec update_schema(map(), binary() | list(), binary() | list(), update_schema_request(), proplists:proplist()) ->
     {ok, update_schema_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, update_schema_errors(), tuple()}.
 update_schema(Client, RegistryName, SchemaName, Input0, Options0) ->
     Method = put,
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), ""],

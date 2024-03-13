@@ -88,23 +88,28 @@
 %% }
 -type get_canary_runs_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"Tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_failure_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_failure_exception() :: #{binary() => any()}.
+
 %% Example:
 %% stop_canary_request() :: #{}
 -type stop_canary_request() :: #{}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% describe_canaries_response() :: #{
@@ -113,6 +118,7 @@
 %% }
 -type describe_canaries_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_canaries_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -120,9 +126,11 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_canaries_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_canary_response() :: #{}
 -type delete_canary_response() :: #{}.
+
 
 %% Example:
 %% create_canary_request() :: #{
@@ -141,12 +149,14 @@
 %% }
 -type create_canary_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% visual_reference_output() :: #{
 %%   <<"BaseCanaryRunId">> => string(),
 %%   <<"BaseScreenshots">> => list(base_screenshot()())
 %% }
 -type visual_reference_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% canary_status() :: #{
@@ -156,12 +166,14 @@
 %% }
 -type canary_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_runtime_versions_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"RuntimeVersions">> => list(runtime_version()())
 %% }
 -type describe_runtime_versions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% canary_run_config_output() :: #{
@@ -171,6 +183,7 @@
 %% }
 -type canary_run_config_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_canaries_last_run_response() :: #{
 %%   <<"CanariesLastRun">> => list(canary_last_run()()),
@@ -178,20 +191,24 @@
 %% }
 -type describe_canaries_last_run_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 %% Example:
 %% stop_canary_response() :: #{}
 -type stop_canary_response() :: #{}.
+
 
 %% Example:
 %% too_many_requests_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_requests_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_group_resources_response() :: #{
@@ -200,15 +217,18 @@
 %% }
 -type list_group_resources_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_encryption_config() :: #{
 %%   <<"EncryptionMode">> => list(any()),
 %%   <<"KmsKeyArn">> => string()
 %% }
 -type s3_encryption_config() :: #{binary() => any()}.
+
 %% Example:
 %% start_canary_response() :: #{}
 -type start_canary_response() :: #{}.
+
 
 %% Example:
 %% canary_run() :: #{
@@ -220,21 +240,25 @@
 %% }
 -type canary_run() :: #{binary() => any()}.
 
+
 %% Example:
 %% canary_schedule_input() :: #{
 %%   <<"DurationInSeconds">> => float(),
 %%   <<"Expression">> => string()
 %% }
 -type canary_schedule_input() :: #{binary() => any()}.
+
 %% Example:
 %% associate_resource_response() :: #{}
 -type associate_resource_response() :: #{}.
+
 
 %% Example:
 %% get_canary_response() :: #{
 %%   <<"Canary">> => canary()
 %% }
 -type get_canary_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% canary_run_config_input() :: #{
@@ -245,11 +269,13 @@
 %% }
 -type canary_run_config_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_canary_request() :: #{
@@ -267,11 +293,13 @@
 %% }
 -type update_canary_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% canary_run_timeline() :: #{
@@ -279,15 +307,18 @@
 %%   <<"Started">> => non_neg_integer()
 %% }
 -type canary_run_timeline() :: #{binary() => any()}.
+
 %% Example:
 %% update_canary_response() :: #{}
 -type update_canary_response() :: #{}.
+
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% canary_run_status() :: #{
@@ -297,6 +328,7 @@
 %% }
 -type canary_run_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% canary_last_run() :: #{
 %%   <<"CanaryName">> => string(),
@@ -304,11 +336,13 @@
 %% }
 -type canary_last_run() :: #{binary() => any()}.
 
+
 %% Example:
 %% artifact_config_output() :: #{
 %%   <<"S3Encryption">> => s3_encryption_config()
 %% }
 -type artifact_config_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% base_screenshot() :: #{
@@ -317,11 +351,13 @@
 %% }
 -type base_screenshot() :: #{binary() => any()}.
 
+
 %% Example:
 %% not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% vpc_config_output() :: #{
@@ -331,11 +367,13 @@
 %% }
 -type vpc_config_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_group_request() :: #{
@@ -343,9 +381,11 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_group_request() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_resource_response() :: #{}
 -type disassociate_resource_response() :: #{}.
+
 
 %% Example:
 %% canary_timeline() :: #{
@@ -356,11 +396,13 @@
 %% }
 -type canary_timeline() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_resource_request() :: #{
 %%   <<"ResourceArn">> := string()
 %% }
 -type associate_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_canary_runs_response() :: #{
@@ -369,12 +411,14 @@
 %% }
 -type get_canary_runs_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% canary_code_output() :: #{
 %%   <<"Handler">> => string(),
 %%   <<"SourceLocationArn">> => string()
 %% }
 -type canary_code_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_canaries_last_run_request() :: #{
@@ -384,11 +428,13 @@
 %% }
 -type describe_canaries_last_run_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% disassociate_resource_request() :: #{
 %%   <<"ResourceArn">> := string()
 %% }
 -type disassociate_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_runtime_versions_request() :: #{
@@ -397,6 +443,7 @@
 %% }
 -type describe_runtime_versions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% visual_reference_input() :: #{
 %%   <<"BaseCanaryRunId">> => string(),
@@ -404,26 +451,32 @@
 %% }
 -type visual_reference_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% request_entity_too_large_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type request_entity_too_large_exception() :: #{binary() => any()}.
+
 %% Example:
 %% start_canary_request() :: #{}
 -type start_canary_request() :: #{}.
+
 %% Example:
 %% delete_group_response() :: #{}
 -type delete_group_response() :: #{}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% runtime_version() :: #{
@@ -433,6 +486,7 @@
 %%   <<"VersionName">> => string()
 %% }
 -type runtime_version() :: #{binary() => any()}.
+
 
 %% Example:
 %% canary() :: #{
@@ -456,6 +510,7 @@
 %% }
 -type canary() :: #{binary() => any()}.
 
+
 %% Example:
 %% vpc_config_input() :: #{
 %%   <<"SecurityGroupIds">> => list(string()()),
@@ -463,11 +518,13 @@
 %% }
 -type vpc_config_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_canary_request() :: #{
 %%   <<"DeleteLambda">> => boolean()
 %% }
 -type delete_canary_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_associated_groups_request() :: #{
@@ -476,14 +533,17 @@
 %% }
 -type list_associated_groups_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% list_group_resources_request() :: #{
@@ -491,6 +551,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_group_resources_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% group() :: #{
@@ -503,23 +564,28 @@
 %% }
 -type group() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_group_response() :: #{
 %%   <<"Group">> => group()
 %% }
 -type get_group_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_group_request() :: #{}
 -type delete_group_request() :: #{}.
+
 %% Example:
 %% get_canary_request() :: #{}
 -type get_canary_request() :: #{}.
+
 
 %% Example:
 %% bad_request_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% group_summary() :: #{
@@ -529,6 +595,7 @@
 %% }
 -type group_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_associated_groups_response() :: #{
 %%   <<"Groups">> => list(group_summary()()),
@@ -536,15 +603,18 @@
 %% }
 -type list_associated_groups_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_groups_response() :: #{
 %%   <<"Groups">> => list(group_summary()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_groups_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_group_request() :: #{}
 -type get_group_request() :: #{}.
+
 
 %% Example:
 %% canary_schedule_output() :: #{
@@ -553,6 +623,7 @@
 %% }
 -type canary_schedule_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_groups_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -560,11 +631,13 @@
 %% }
 -type list_groups_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_canary_response() :: #{
 %%   <<"Canary">> => canary()
 %% }
 -type create_canary_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% canary_code_input() :: #{
@@ -576,17 +649,137 @@
 %% }
 -type canary_code_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% artifact_config_input() :: #{
 %%   <<"S3Encryption">> => s3_encryption_config()
 %% }
 -type artifact_config_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_group_response() :: #{
 %%   <<"Group">> => group()
 %% }
 -type create_group_response() :: #{binary() => any()}.
+
+-type associate_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_canary_errors() ::
+    validation_exception() | 
+    request_entity_too_large_exception() | 
+    internal_server_exception().
+
+-type create_group_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_canary_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_group_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_canaries_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type describe_canaries_last_run_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type describe_runtime_versions_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type disassociate_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_canary_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type get_canary_runs_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_group_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_associated_groups_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_group_resources_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_groups_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    internal_failure_exception().
+
+-type start_canary_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type stop_canary_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    internal_failure_exception().
+
+-type untag_resource_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    internal_failure_exception().
+
+-type update_canary_errors() ::
+    validation_exception() | 
+    request_entity_too_large_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -603,22 +796,14 @@
 -spec associate_resource(map(), binary() | list(), associate_resource_request()) ->
     {ok, associate_resource_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_resource_errors(), tuple()}.
 associate_resource(Client, GroupIdentifier, Input) ->
     associate_resource(Client, GroupIdentifier, Input, []).
 
 -spec associate_resource(map(), binary() | list(), associate_resource_request(), proplists:proplist()) ->
     {ok, associate_resource_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_resource_errors(), tuple()}.
 associate_resource(Client, GroupIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/group/", aws_util:encode_uri(GroupIdentifier), "/associate"],
@@ -674,18 +859,14 @@ associate_resource(Client, GroupIdentifier, Input0, Options0) ->
 -spec create_canary(map(), create_canary_request()) ->
     {ok, create_canary_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_entity_too_large_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_canary_errors(), tuple()}.
 create_canary(Client, Input) ->
     create_canary(Client, Input, []).
 
 -spec create_canary(map(), create_canary_request(), proplists:proplist()) ->
     {ok, create_canary_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_entity_too_large_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_canary_errors(), tuple()}.
 create_canary(Client, Input0, Options0) ->
     Method = post,
     Path = ["/canary"],
@@ -737,20 +918,14 @@ create_canary(Client, Input0, Options0) ->
 -spec create_group(map(), create_group_request()) ->
     {ok, create_group_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_group_errors(), tuple()}.
 create_group(Client, Input) ->
     create_group(Client, Input, []).
 
 -spec create_group(map(), create_group_request(), proplists:proplist()) ->
     {ok, create_group_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_group_errors(), tuple()}.
 create_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/group"],
@@ -813,20 +988,14 @@ create_group(Client, Input0, Options0) ->
 -spec delete_canary(map(), binary() | list(), delete_canary_request()) ->
     {ok, delete_canary_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_canary_errors(), tuple()}.
 delete_canary(Client, Name, Input) ->
     delete_canary(Client, Name, Input, []).
 
 -spec delete_canary(map(), binary() | list(), delete_canary_request(), proplists:proplist()) ->
     {ok, delete_canary_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_canary_errors(), tuple()}.
 delete_canary(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/canary/", aws_util:encode_uri(Name), ""],
@@ -863,20 +1032,14 @@ delete_canary(Client, Name, Input0, Options0) ->
 -spec delete_group(map(), binary() | list(), delete_group_request()) ->
     {ok, delete_group_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_group_errors(), tuple()}.
 delete_group(Client, GroupIdentifier, Input) ->
     delete_group(Client, GroupIdentifier, Input, []).
 
 -spec delete_group(map(), binary() | list(), delete_group_request(), proplists:proplist()) ->
     {ok, delete_group_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_group_errors(), tuple()}.
 delete_group(Client, GroupIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/group/", aws_util:encode_uri(GroupIdentifier), ""],
@@ -921,16 +1084,14 @@ delete_group(Client, GroupIdentifier, Input0, Options0) ->
 -spec describe_canaries(map(), describe_canaries_request()) ->
     {ok, describe_canaries_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_canaries_errors(), tuple()}.
 describe_canaries(Client, Input) ->
     describe_canaries(Client, Input, []).
 
 -spec describe_canaries(map(), describe_canaries_request(), proplists:proplist()) ->
     {ok, describe_canaries_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_canaries_errors(), tuple()}.
 describe_canaries(Client, Input0, Options0) ->
     Method = post,
     Path = ["/canaries"],
@@ -974,16 +1135,14 @@ describe_canaries(Client, Input0, Options0) ->
 -spec describe_canaries_last_run(map(), describe_canaries_last_run_request()) ->
     {ok, describe_canaries_last_run_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_canaries_last_run_errors(), tuple()}.
 describe_canaries_last_run(Client, Input) ->
     describe_canaries_last_run(Client, Input, []).
 
 -spec describe_canaries_last_run(map(), describe_canaries_last_run_request(), proplists:proplist()) ->
     {ok, describe_canaries_last_run_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_canaries_last_run_errors(), tuple()}.
 describe_canaries_last_run(Client, Input0, Options0) ->
     Method = post,
     Path = ["/canaries/last-run"],
@@ -1015,16 +1174,14 @@ describe_canaries_last_run(Client, Input0, Options0) ->
 -spec describe_runtime_versions(map(), describe_runtime_versions_request()) ->
     {ok, describe_runtime_versions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_runtime_versions_errors(), tuple()}.
 describe_runtime_versions(Client, Input) ->
     describe_runtime_versions(Client, Input, []).
 
 -spec describe_runtime_versions(map(), describe_runtime_versions_request(), proplists:proplist()) ->
     {ok, describe_runtime_versions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_runtime_versions_errors(), tuple()}.
 describe_runtime_versions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/runtime-versions"],
@@ -1053,20 +1210,14 @@ describe_runtime_versions(Client, Input0, Options0) ->
 -spec disassociate_resource(map(), binary() | list(), disassociate_resource_request()) ->
     {ok, disassociate_resource_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_resource_errors(), tuple()}.
 disassociate_resource(Client, GroupIdentifier, Input) ->
     disassociate_resource(Client, GroupIdentifier, Input, []).
 
 -spec disassociate_resource(map(), binary() | list(), disassociate_resource_request(), proplists:proplist()) ->
     {ok, disassociate_resource_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_resource_errors(), tuple()}.
 disassociate_resource(Client, GroupIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/group/", aws_util:encode_uri(GroupIdentifier), "/disassociate"],
@@ -1098,8 +1249,7 @@ disassociate_resource(Client, GroupIdentifier, Input0, Options0) ->
 -spec get_canary(map(), binary() | list()) ->
     {ok, get_canary_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_canary_errors(), tuple()}.
 get_canary(Client, Name)
   when is_map(Client) ->
     get_canary(Client, Name, #{}, #{}).
@@ -1107,8 +1257,7 @@ get_canary(Client, Name)
 -spec get_canary(map(), binary() | list(), map(), map()) ->
     {ok, get_canary_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_canary_errors(), tuple()}.
 get_canary(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_canary(Client, Name, QueryMap, HeadersMap, []).
@@ -1116,8 +1265,7 @@ get_canary(Client, Name, QueryMap, HeadersMap)
 -spec get_canary(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_canary_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_canary_errors(), tuple()}.
 get_canary(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/canary/", aws_util:encode_uri(Name), ""],
@@ -1138,18 +1286,14 @@ get_canary(Client, Name, QueryMap, HeadersMap, Options0)
 -spec get_canary_runs(map(), binary() | list(), get_canary_runs_request()) ->
     {ok, get_canary_runs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_canary_runs_errors(), tuple()}.
 get_canary_runs(Client, Name, Input) ->
     get_canary_runs(Client, Name, Input, []).
 
 -spec get_canary_runs(map(), binary() | list(), get_canary_runs_request(), proplists:proplist()) ->
     {ok, get_canary_runs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_canary_runs_errors(), tuple()}.
 get_canary_runs(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/canary/", aws_util:encode_uri(Name), "/runs"],
@@ -1179,10 +1323,7 @@ get_canary_runs(Client, Name, Input0, Options0) ->
 -spec get_group(map(), binary() | list()) ->
     {ok, get_group_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_group_errors(), tuple()}.
 get_group(Client, GroupIdentifier)
   when is_map(Client) ->
     get_group(Client, GroupIdentifier, #{}, #{}).
@@ -1190,10 +1331,7 @@ get_group(Client, GroupIdentifier)
 -spec get_group(map(), binary() | list(), map(), map()) ->
     {ok, get_group_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_group_errors(), tuple()}.
 get_group(Client, GroupIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_group(Client, GroupIdentifier, QueryMap, HeadersMap, []).
@@ -1201,10 +1339,7 @@ get_group(Client, GroupIdentifier, QueryMap, HeadersMap)
 -spec get_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_group_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_group_errors(), tuple()}.
 get_group(Client, GroupIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/group/", aws_util:encode_uri(GroupIdentifier), ""],
@@ -1229,18 +1364,14 @@ get_group(Client, GroupIdentifier, QueryMap, HeadersMap, Options0)
 -spec list_associated_groups(map(), binary() | list(), list_associated_groups_request()) ->
     {ok, list_associated_groups_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_associated_groups_errors(), tuple()}.
 list_associated_groups(Client, ResourceArn, Input) ->
     list_associated_groups(Client, ResourceArn, Input, []).
 
 -spec list_associated_groups(map(), binary() | list(), list_associated_groups_request(), proplists:proplist()) ->
     {ok, list_associated_groups_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_associated_groups_errors(), tuple()}.
 list_associated_groups(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/resource/", aws_util:encode_uri(ResourceArn), "/groups"],
@@ -1268,20 +1399,14 @@ list_associated_groups(Client, ResourceArn, Input0, Options0) ->
 -spec list_group_resources(map(), binary() | list(), list_group_resources_request()) ->
     {ok, list_group_resources_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_group_resources_errors(), tuple()}.
 list_group_resources(Client, GroupIdentifier, Input) ->
     list_group_resources(Client, GroupIdentifier, Input, []).
 
 -spec list_group_resources(map(), binary() | list(), list_group_resources_request(), proplists:proplist()) ->
     {ok, list_group_resources_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_group_resources_errors(), tuple()}.
 list_group_resources(Client, GroupIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/group/", aws_util:encode_uri(GroupIdentifier), "/resources"],
@@ -1312,16 +1437,14 @@ list_group_resources(Client, GroupIdentifier, Input0, Options0) ->
 -spec list_groups(map(), list_groups_request()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_groups_errors(), tuple()}.
 list_groups(Client, Input) ->
     list_groups(Client, Input, []).
 
 -spec list_groups(map(), list_groups_request(), proplists:proplist()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_groups_errors(), tuple()}.
 list_groups(Client, Input0, Options0) ->
     Method = post,
     Path = ["/groups"],
@@ -1348,11 +1471,7 @@ list_groups(Client, Input0, Options0) ->
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1360,11 +1479,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1372,11 +1487,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1402,20 +1513,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec start_canary(map(), binary() | list(), start_canary_request()) ->
     {ok, start_canary_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_canary_errors(), tuple()}.
 start_canary(Client, Name, Input) ->
     start_canary(Client, Name, Input, []).
 
 -spec start_canary(map(), binary() | list(), start_canary_request(), proplists:proplist()) ->
     {ok, start_canary_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_canary_errors(), tuple()}.
 start_canary(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/canary/", aws_util:encode_uri(Name), "/start"],
@@ -1450,20 +1555,14 @@ start_canary(Client, Name, Input0, Options0) ->
 -spec stop_canary(map(), binary() | list(), stop_canary_request()) ->
     {ok, stop_canary_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_canary_errors(), tuple()}.
 stop_canary(Client, Name, Input) ->
     stop_canary(Client, Name, Input, []).
 
 -spec stop_canary(map(), binary() | list(), stop_canary_request(), proplists:proplist()) ->
     {ok, stop_canary_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_canary_errors(), tuple()}.
 stop_canary(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/canary/", aws_util:encode_uri(Name), "/stop"],
@@ -1510,22 +1609,14 @@ stop_canary(Client, Name, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1552,22 +1643,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1602,22 +1685,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_canary(map(), binary() | list(), update_canary_request()) ->
     {ok, update_canary_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_entity_too_large_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_canary_errors(), tuple()}.
 update_canary(Client, Name, Input) ->
     update_canary(Client, Name, Input, []).
 
 -spec update_canary(map(), binary() | list(), update_canary_request(), proplists:proplist()) ->
     {ok, update_canary_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_entity_too_large_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_canary_errors(), tuple()}.
 update_canary(Client, Name, Input0, Options0) ->
     Method = patch,
     Path = ["/canary/", aws_util:encode_uri(Name), ""],

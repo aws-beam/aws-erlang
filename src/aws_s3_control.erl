@@ -243,6 +243,7 @@
 %% }
 -type region_report() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_bucket_policy_request() :: #{
 %%   <<"AccountId">> := string(),
@@ -250,6 +251,7 @@
 %%   <<"Policy">> := string()
 %% }
 -type put_bucket_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_multi_region_access_point_policy_request() :: #{
@@ -259,12 +261,14 @@
 %% }
 -type put_multi_region_access_point_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% storage_lens_group_level_selection_criteria() :: #{
 %%   <<"Exclude">> => list(string()()),
 %%   <<"Include">> => list(string()())
 %% }
 -type storage_lens_group_level_selection_criteria() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_manifest() :: #{
@@ -273,11 +277,13 @@
 %% }
 -type job_manifest() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_storage_lens_configuration_tagging_result() :: #{
 %%   <<"Tags">> => list(storage_lens_tag()())
 %% }
 -type get_storage_lens_configuration_tagging_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_multi_region_access_point_request() :: #{
@@ -287,11 +293,13 @@
 %% }
 -type delete_multi_region_access_point_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% encryption_configuration() :: #{
 %%   <<"ReplicaKmsKeyID">> => string()
 %% }
 -type encryption_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% tag_resource_request() :: #{
@@ -300,11 +308,13 @@
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% no_such_public_access_block_configuration() :: #{
 %%   <<"Message">> => string()
 %% }
 -type no_such_public_access_block_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_bucket_versioning_request() :: #{
@@ -314,6 +324,7 @@
 %% }
 -type put_bucket_versioning_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% multi_region_access_point_regional_response() :: #{
 %%   <<"Name">> => string(),
@@ -321,17 +332,20 @@
 %% }
 -type multi_region_access_point_regional_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_storage_lens_configuration_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type get_storage_lens_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_access_point_configuration_for_object_lambda_result() :: #{
 %%   <<"Configuration">> => object_lambda_configuration()
 %% }
 -type get_access_point_configuration_for_object_lambda_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% public_access_block_configuration() :: #{
@@ -342,6 +356,7 @@
 %% }
 -type public_access_block_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% storage_lens_data_export() :: #{
 %%   <<"CloudWatchMetrics">> => cloud_watch_metrics(),
@@ -349,11 +364,13 @@
 %% }
 -type storage_lens_data_export() :: #{binary() => any()}.
 
+
 %% Example:
 %% storage_lens_group_level() :: #{
 %%   <<"SelectionCriteria">> => storage_lens_group_level_selection_criteria()
 %% }
 -type storage_lens_group_level() :: #{binary() => any()}.
+
 
 %% Example:
 %% prefix_level_storage_metrics() :: #{
@@ -361,6 +378,7 @@
 %%   <<"SelectionCriteria">> => selection_criteria()
 %% }
 -type prefix_level_storage_metrics() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_access_grants_instance_result() :: #{
@@ -371,6 +389,7 @@
 %% }
 -type create_access_grants_instance_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% generated_manifest_encryption() :: #{
 %%   <<"SSEKMS">> => sse_kms_encryption(),
@@ -378,11 +397,13 @@
 %% }
 -type generated_manifest_encryption() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_job_result() :: #{
 %%   <<"Job">> => job_descriptor()
 %% }
 -type describe_job_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% match_object_age() :: #{
@@ -391,6 +412,7 @@
 %% }
 -type match_object_age() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_jobs_result() :: #{
 %%   <<"Jobs">> => list(job_list_descriptor()()),
@@ -398,12 +420,14 @@
 %% }
 -type list_jobs_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_public_access_block_request() :: #{
 %%   <<"AccountId">> := string(),
 %%   <<"PublicAccessBlockConfiguration">> := public_access_block_configuration()
 %% }
 -type put_public_access_block_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_access_grant_result() :: #{
@@ -419,11 +443,13 @@
 %% }
 -type get_access_grant_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% vpc_configuration() :: #{
 %%   <<"VpcId">> => string()
 %% }
 -type vpc_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_access_control_list() :: #{
@@ -432,11 +458,13 @@
 %% }
 -type s3_access_control_list() :: #{binary() => any()}.
 
+
 %% Example:
 %% abort_incomplete_multipart_upload() :: #{
 %%   <<"DaysAfterInitiation">> => integer()
 %% }
 -type abort_incomplete_multipart_upload() :: #{binary() => any()}.
+
 
 %% Example:
 %% lifecycle_rule() :: #{
@@ -450,15 +478,18 @@
 %%   <<"Transitions">> => list(transition()())
 %% }
 -type lifecycle_rule() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_result() :: #{}
 -type untag_resource_result() :: #{}.
+
 
 %% Example:
 %% delete_public_access_block_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type delete_public_access_block_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_access_grants_instance_resource_policy_result() :: #{
@@ -467,6 +498,7 @@
 %%   <<"Policy">> => string()
 %% }
 -type put_access_grants_instance_resource_policy_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% object_lambda_configuration() :: #{
@@ -477,11 +509,13 @@
 %% }
 -type object_lambda_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_multi_region_access_point_policy_result() :: #{
 %%   <<"Policy">> => multi_region_access_point_policy_document()
 %% }
 -type get_multi_region_access_point_policy_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% versioning_configuration() :: #{
@@ -489,6 +523,7 @@
 %%   <<"Status">> => list(any())
 %% }
 -type versioning_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_report() :: #{
@@ -500,6 +535,7 @@
 %% }
 -type job_report() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_storage_lens_group_request() :: #{
 %%   <<"AccountId">> := string(),
@@ -508,12 +544,14 @@
 %% }
 -type create_storage_lens_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_access_grants_result() :: #{
 %%   <<"AccessGrantsList">> => list(list_access_grant_entry()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_access_grants_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_access_grants_instance_resource_policy_request() :: #{
@@ -523,11 +561,13 @@
 %% }
 -type put_access_grants_instance_resource_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_job_tagging_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type delete_job_tagging_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_jobs_request() :: #{
@@ -538,6 +578,7 @@
 %% }
 -type list_jobs_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_access_grants_instance_request() :: #{
 %%   <<"AccountId">> := string(),
@@ -546,12 +587,14 @@
 %% }
 -type create_access_grants_instance_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% source_selection_criteria() :: #{
 %%   <<"ReplicaModifications">> => replica_modifications(),
 %%   <<"SseKmsEncryptedObjects">> => sse_kms_encrypted_objects()
 %% }
 -type source_selection_criteria() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_job_tagging_request() :: #{
@@ -560,11 +603,13 @@
 %% }
 -type put_job_tagging_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% lifecycle_configuration() :: #{
 %%   <<"Rules">> => list(lifecycle_rule()())
 %% }
 -type lifecycle_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_storage_lens_group_entry() :: #{
@@ -574,11 +619,13 @@
 %% }
 -type list_storage_lens_group_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_bucket_tagging_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type delete_bucket_tagging_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_storage_lens_group_request() :: #{
@@ -586,11 +633,13 @@
 %% }
 -type get_storage_lens_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% prefix_level() :: #{
 %%   <<"StorageMetrics">> => prefix_level_storage_metrics()
 %% }
 -type prefix_level() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_access_grant_result() :: #{
@@ -606,6 +655,7 @@
 %% }
 -type create_access_grant_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% credentials() :: #{
 %%   <<"AccessKeyId">> => string(),
@@ -615,12 +665,14 @@
 %% }
 -type credentials() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_bucket_replication_request() :: #{
 %%   <<"AccountId">> := string(),
 %%   <<"ReplicationConfiguration">> := replication_configuration()
 %% }
 -type put_bucket_replication_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_access_point_for_object_lambda_result() :: #{
@@ -629,11 +681,13 @@
 %% }
 -type create_access_point_for_object_lambda_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% job_status_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type job_status_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_access_grants_instance_for_prefix_result() :: #{
@@ -642,12 +696,14 @@
 %% }
 -type get_access_grants_instance_for_prefix_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_access_grants_identity_center_request() :: #{
 %%   <<"AccountId">> := string(),
 %%   <<"IdentityCenterArn">> := string()
 %% }
 -type associate_access_grants_identity_center_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_storage_lens_configurations_result() :: #{
@@ -656,11 +712,13 @@
 %% }
 -type list_storage_lens_configurations_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_multi_region_access_point_input() :: #{
 %%   <<"Name">> => string()
 %% }
 -type delete_multi_region_access_point_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_multi_region_access_point_operation_result() :: #{
@@ -668,11 +726,13 @@
 %% }
 -type describe_multi_region_access_point_operation_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_access_point_for_object_lambda_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type get_access_point_for_object_lambda_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_access_points_for_object_lambda_request() :: #{
@@ -682,11 +742,13 @@
 %% }
 -type list_access_points_for_object_lambda_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_job_tagging_result() :: #{
 %%   <<"Tags">> => list(s3_tag()())
 %% }
 -type get_job_tagging_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_access_grants_location_request() :: #{
@@ -696,6 +758,7 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type create_access_grants_location_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% async_operation() :: #{
@@ -708,11 +771,13 @@
 %% }
 -type async_operation() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_access_point_policy_for_object_lambda_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type delete_access_point_policy_for_object_lambda_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_bucket_destination() :: #{
@@ -725,11 +790,13 @@
 %% }
 -type s3_bucket_destination() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_storage_lens_group_result() :: #{
 %%   <<"StorageLensGroup">> => storage_lens_group()
 %% }
 -type get_storage_lens_group_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_access_grants_instance_resource_policy_request() :: #{
@@ -737,12 +804,14 @@
 %% }
 -type get_access_grants_instance_resource_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% grantee() :: #{
 %%   <<"GranteeIdentifier">> => string(),
 %%   <<"GranteeType">> => list(any())
 %% }
 -type grantee() :: #{binary() => any()}.
+
 
 %% Example:
 %% bucket_level() :: #{
@@ -754,11 +823,13 @@
 %% }
 -type bucket_level() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_access_point_policy_status_result() :: #{
 %%   <<"PolicyStatus">> => policy_status()
 %% }
 -type get_access_point_policy_status_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_grantee() :: #{
@@ -767,6 +838,7 @@
 %%   <<"TypeIdentifier">> => list(any())
 %% }
 -type s3_grantee() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_job_request() :: #{
@@ -784,11 +856,13 @@
 %% }
 -type create_job_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_access_point_policy_for_object_lambda_result() :: #{
 %%   <<"Policy">> => string()
 %% }
 -type get_access_point_policy_for_object_lambda_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% storage_lens_tag() :: #{
@@ -796,6 +870,7 @@
 %%   <<"Value">> => string()
 %% }
 -type storage_lens_tag() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_access_grant_entry() :: #{
@@ -811,6 +886,7 @@
 %% }
 -type list_access_grant_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% storage_lens_group_filter() :: #{
 %%   <<"And">> => storage_lens_group_and_operator(),
@@ -823,6 +899,7 @@
 %% }
 -type storage_lens_group_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% storage_lens_group_or_operator() :: #{
 %%   <<"MatchAnyPrefix">> => list(string()()),
@@ -833,11 +910,13 @@
 %% }
 -type storage_lens_group_or_operator() :: #{binary() => any()}.
 
+
 %% Example:
 %% proposed_multi_region_access_point_policy() :: #{
 %%   <<"Policy">> => string()
 %% }
 -type proposed_multi_region_access_point_policy() :: #{binary() => any()}.
+
 
 %% Example:
 %% include() :: #{
@@ -846,11 +925,13 @@
 %% }
 -type include() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_service_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_service_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_multi_region_access_point_policy_input() :: #{
@@ -858,6 +939,7 @@
 %%   <<"Policy">> => string()
 %% }
 -type put_multi_region_access_point_policy_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_access_grants_instance_result() :: #{
@@ -868,17 +950,20 @@
 %% }
 -type get_access_grants_instance_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% sse_kms_encryption() :: #{
 %%   <<"KeyId">> => string()
 %% }
 -type sse_kms_encryption() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_versioning_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type get_bucket_versioning_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% untag_resource_request() :: #{
@@ -887,11 +972,13 @@
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% advanced_data_protection_metrics() :: #{
 %%   <<"IsEnabled">> => boolean()
 %% }
 -type advanced_data_protection_metrics() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_access_point_for_object_lambda_request() :: #{
@@ -900,17 +987,20 @@
 %% }
 -type create_access_point_for_object_lambda_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_requests_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_requests_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% sse_kms_encrypted_objects() :: #{
 %%   <<"Status">> => list(any())
 %% }
 -type sse_kms_encrypted_objects() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_manifest_location() :: #{
@@ -920,12 +1010,14 @@
 %% }
 -type job_manifest_location() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_access_points_for_object_lambda_result() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"ObjectLambdaAccessPointList">> => list(object_lambda_access_point()())
 %% }
 -type list_access_points_for_object_lambda_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_storage_lens_configuration_request() :: #{
@@ -935,11 +1027,13 @@
 %% }
 -type put_storage_lens_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_storage_lens_configuration_result() :: #{
 %%   <<"StorageLensConfiguration">> => storage_lens_configuration()
 %% }
 -type get_storage_lens_configuration_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_job_manifest_generator() :: #{
@@ -951,6 +1045,7 @@
 %% }
 -type s3_job_manifest_generator() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_regional_buckets_result() :: #{
 %%   <<"NextToken">> => string(),
@@ -958,11 +1053,13 @@
 %% }
 -type list_regional_buckets_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_bucket_lifecycle_configuration_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type delete_bucket_lifecycle_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% object_lambda_access_point() :: #{
@@ -972,6 +1069,7 @@
 %% }
 -type object_lambda_access_point() :: #{binary() => any()}.
 
+
 %% Example:
 %% replication_rule_filter() :: #{
 %%   <<"And">> => replication_rule_and_operator(),
@@ -980,11 +1078,13 @@
 %% }
 -type replication_rule_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_storage_lens_configuration_tagging_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type delete_storage_lens_configuration_tagging_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_multi_region_access_point_request() :: #{
@@ -993,6 +1093,7 @@
 %%   <<"Details">> := create_multi_region_access_point_input()
 %% }
 -type create_multi_region_access_point_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_operation() :: #{
@@ -1008,15 +1109,18 @@
 %% }
 -type job_operation() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_storage_lens_groups_request() :: #{
 %%   <<"AccountId">> := string(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_storage_lens_groups_request() :: #{binary() => any()}.
+
 %% Example:
 %% bucket_already_owned_by_you() :: #{}
 -type bucket_already_owned_by_you() :: #{}.
+
 
 %% Example:
 %% delete_bucket_policy_request() :: #{
@@ -1024,11 +1128,13 @@
 %% }
 -type delete_bucket_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_multi_region_access_point_policy_result() :: #{
 %%   <<"RequestTokenARN">> => string()
 %% }
 -type put_multi_region_access_point_policy_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_storage_lens_configuration_request() :: #{
@@ -1036,11 +1142,13 @@
 %% }
 -type delete_storage_lens_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% dissociate_access_grants_identity_center_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type dissociate_access_grants_identity_center_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% noncurrent_version_expiration() :: #{
@@ -1048,12 +1156,15 @@
 %%   <<"NoncurrentDays">> => integer()
 %% }
 -type noncurrent_version_expiration() :: #{binary() => any()}.
+
 %% Example:
 %% delete_storage_lens_configuration_tagging_result() :: #{}
 -type delete_storage_lens_configuration_tagging_result() :: #{}.
+
 %% Example:
 %% submit_multi_region_access_point_routes_result() :: #{}
 -type submit_multi_region_access_point_routes_result() :: #{}.
+
 
 %% Example:
 %% list_access_grants_instances_request() :: #{
@@ -1063,11 +1174,13 @@
 %% }
 -type list_access_grants_instances_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% multi_region_access_points_async_response() :: #{
 %%   <<"Regions">> => list(multi_region_access_point_regional_response()())
 %% }
 -type multi_region_access_points_async_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_multi_region_access_points_result() :: #{
@@ -1076,17 +1189,20 @@
 %% }
 -type list_multi_region_access_points_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_bucket_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type delete_bucket_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_multi_region_access_point_policy_status_result() :: #{
 %%   <<"Established">> => policy_status()
 %% }
 -type get_multi_region_access_point_policy_status_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_access_point_request() :: #{
@@ -1098,11 +1214,13 @@
 %% }
 -type create_access_point_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_access_grants_instance_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type delete_access_grants_instance_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% submit_multi_region_access_point_routes_request() :: #{
@@ -1111,6 +1229,7 @@
 %% }
 -type submit_multi_region_access_point_routes_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% metrics() :: #{
 %%   <<"EventThreshold">> => replication_time_value(),
@@ -1118,11 +1237,13 @@
 %% }
 -type metrics() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_multi_region_access_point_result() :: #{
 %%   <<"RequestTokenARN">> => string()
 %% }
 -type create_multi_region_access_point_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% region() :: #{
@@ -1131,11 +1252,13 @@
 %% }
 -type region() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_storage_lens_configuration_tagging_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type get_storage_lens_configuration_tagging_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_access_point_policy_for_object_lambda_request() :: #{
@@ -1143,11 +1266,13 @@
 %% }
 -type get_access_point_policy_for_object_lambda_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_access_point_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type get_access_point_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% replica_modifications() :: #{
@@ -1155,11 +1280,13 @@
 %% }
 -type replica_modifications() :: #{binary() => any()}.
 
+
 %% Example:
 %% replication_time_value() :: #{
 %%   <<"Minutes">> => integer()
 %% }
 -type replication_time_value() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_access_grants_location_request() :: #{
@@ -1168,6 +1295,7 @@
 %% }
 -type update_access_grants_location_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% exclude() :: #{
 %%   <<"Buckets">> => list(string()()),
@@ -1175,17 +1303,20 @@
 %% }
 -type exclude() :: #{binary() => any()}.
 
+
 %% Example:
 %% policy_status() :: #{
 %%   <<"IsPublic">> => boolean()
 %% }
 -type policy_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_replication_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type get_bucket_replication_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_initiate_restore_object_operation() :: #{
@@ -1194,12 +1325,14 @@
 %% }
 -type s3_initiate_restore_object_operation() :: #{binary() => any()}.
 
+
 %% Example:
 %% replication_configuration() :: #{
 %%   <<"Role">> => string(),
 %%   <<"Rules">> => list(replication_rule()())
 %% }
 -type replication_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_access_control_policy() :: #{
@@ -1208,17 +1341,20 @@
 %% }
 -type s3_access_control_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_access_point_configuration_for_object_lambda_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type get_access_point_configuration_for_object_lambda_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_access_grant_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type get_access_grant_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_grant() :: #{
@@ -1227,12 +1363,14 @@
 %% }
 -type s3_grant() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Value">> => string()
 %% }
 -type tag() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_data_access_request() :: #{
@@ -1245,11 +1383,13 @@
 %% }
 -type get_data_access_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_policy_result() :: #{
 %%   <<"Policy">> => string()
 %% }
 -type get_bucket_policy_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% invalid_request_exception() :: #{
@@ -1257,12 +1397,14 @@
 %% }
 -type invalid_request_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% noncurrent_version_transition() :: #{
 %%   <<"NoncurrentDays">> => integer(),
 %%   <<"StorageClass">> => list(any())
 %% }
 -type noncurrent_version_transition() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_access_grants_location_result() :: #{
@@ -1274,6 +1416,7 @@
 %% }
 -type get_access_grants_location_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% lifecycle_rule_filter() :: #{
 %%   <<"And">> => lifecycle_rule_and_operator(),
@@ -1284,17 +1427,20 @@
 %% }
 -type lifecycle_rule_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_storage_lens_group_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type delete_storage_lens_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_next_token_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_next_token_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_job_status_result() :: #{
@@ -1304,6 +1450,7 @@
 %% }
 -type update_job_status_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_multi_region_access_points_request() :: #{
 %%   <<"AccountId">> := string(),
@@ -1312,12 +1459,14 @@
 %% }
 -type list_multi_region_access_points_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% multi_region_access_point_policy_document() :: #{
 %%   <<"Established">> => established_multi_region_access_point_policy(),
 %%   <<"Proposed">> => proposed_multi_region_access_point_policy()
 %% }
 -type multi_region_access_point_policy_document() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_access_grants_instance_entry() :: #{
@@ -1328,6 +1477,7 @@
 %% }
 -type list_access_grants_instance_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_access_grants_instance_resource_policy_result() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
@@ -1336,6 +1486,7 @@
 %% }
 -type get_access_grants_instance_resource_policy_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% job_failure() :: #{
 %%   <<"FailureCode">> => string(),
@@ -1343,26 +1494,31 @@
 %% }
 -type job_failure() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_bucket_configuration() :: #{
 %%   <<"LocationConstraint">> => list(any())
 %% }
 -type create_bucket_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type not_found_exception() :: #{binary() => any()}.
+
 %% Example:
 %% bucket_already_exists() :: #{}
 -type bucket_already_exists() :: #{}.
+
 
 %% Example:
 %% get_bucket_replication_result() :: #{
 %%   <<"ReplicationConfiguration">> => replication_configuration()
 %% }
 -type get_bucket_replication_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% regional_bucket() :: #{
@@ -1374,6 +1530,7 @@
 %% }
 -type regional_bucket() :: #{binary() => any()}.
 
+
 %% Example:
 %% async_response_details() :: #{
 %%   <<"ErrorDetails">> => async_error_details(),
@@ -1381,11 +1538,13 @@
 %% }
 -type async_response_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_set_object_acl_operation() :: #{
 %%   <<"AccessControlPolicy">> => s3_access_control_policy()
 %% }
 -type s3_set_object_acl_operation() :: #{binary() => any()}.
+
 
 %% Example:
 %% async_request_parameters() :: #{
@@ -1395,11 +1554,13 @@
 %% }
 -type async_request_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% tagging() :: #{
 %%   <<"TagSet">> => list(s3_tag()())
 %% }
 -type tagging() :: #{binary() => any()}.
+
 
 %% Example:
 %% activity_metrics() :: #{
@@ -1407,11 +1568,13 @@
 %% }
 -type activity_metrics() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_control_translation() :: #{
 %%   <<"Owner">> => list(any())
 %% }
 -type access_control_translation() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_access_grants_location_result() :: #{
@@ -1423,11 +1586,13 @@
 %% }
 -type create_access_grants_location_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_job_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type describe_job_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% storage_lens_data_export_encryption() :: #{
@@ -1435,6 +1600,7 @@
 %%   <<"SSES3">> => sse_s3()
 %% }
 -type storage_lens_data_export_encryption() :: #{binary() => any()}.
+
 
 %% Example:
 %% storage_lens_group_and_operator() :: #{
@@ -1446,12 +1612,14 @@
 %% }
 -type storage_lens_group_and_operator() :: #{binary() => any()}.
 
+
 %% Example:
 %% object_lambda_transformation_configuration() :: #{
 %%   <<"Actions">> => list(list(any())()),
 %%   <<"ContentTransformation">> => list()
 %% }
 -type object_lambda_transformation_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_descriptor() :: #{
@@ -1477,11 +1645,13 @@
 %% }
 -type job_descriptor() :: #{binary() => any()}.
 
+
 %% Example:
 %% detailed_status_codes_metrics() :: #{
 %%   <<"IsEnabled">> => boolean()
 %% }
 -type detailed_status_codes_metrics() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_access_point_policy_status_request() :: #{
@@ -1489,12 +1659,14 @@
 %% }
 -type get_access_point_policy_status_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% job_manifest_spec() :: #{
 %%   <<"Fields">> => list(list(any())()),
 %%   <<"Format">> => list(any())
 %% }
 -type job_manifest_spec() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_object_metadata() :: #{
@@ -1512,6 +1684,7 @@
 %% }
 -type s3_object_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_access_grants_instances_result() :: #{
 %%   <<"AccessGrantsInstancesList">> => list(list_access_grants_instance_entry()()),
@@ -1519,17 +1692,20 @@
 %% }
 -type list_access_grants_instances_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_multi_region_access_point_result() :: #{
 %%   <<"RequestTokenARN">> => string()
 %% }
 -type delete_multi_region_access_point_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% established_multi_region_access_point_policy() :: #{
 %%   <<"Policy">> => string()
 %% }
 -type established_multi_region_access_point_policy() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_access_grants_location_result() :: #{
@@ -1540,9 +1716,11 @@
 %%   <<"LocationScope">> => string()
 %% }
 -type update_access_grants_location_result() :: #{binary() => any()}.
+
 %% Example:
 %% delete_job_tagging_result() :: #{}
 -type delete_job_tagging_result() :: #{}.
+
 
 %% Example:
 %% create_multi_region_access_point_input() :: #{
@@ -1552,6 +1730,7 @@
 %% }
 -type create_multi_region_access_point_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% storage_lens_group() :: #{
 %%   <<"Filter">> => storage_lens_group_filter(),
@@ -1559,6 +1738,7 @@
 %%   <<"StorageLensGroupArn">> => string()
 %% }
 -type storage_lens_group() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_access_point_for_object_lambda_result() :: #{
@@ -1569,15 +1749,18 @@
 %% }
 -type get_access_point_for_object_lambda_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_bucket_result() :: #{
 %%   <<"BucketArn">> => string(),
 %%   <<"Location">> => string()
 %% }
 -type create_bucket_result() :: #{binary() => any()}.
+
 %% Example:
 %% s3_replicate_object_operation() :: #{}
 -type s3_replicate_object_operation() :: #{}.
+
 
 %% Example:
 %% list_regional_buckets_request() :: #{
@@ -1587,6 +1770,7 @@
 %%   <<"OutpostId">> => string()
 %% }
 -type list_regional_buckets_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_manifest_output_location() :: #{
@@ -1598,11 +1782,13 @@
 %% }
 -type s3_manifest_output_location() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_access_point_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type delete_access_point_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% lambda_invoke_operation() :: #{
@@ -1612,11 +1798,13 @@
 %% }
 -type lambda_invoke_operation() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_lifecycle_configuration_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type get_bucket_lifecycle_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_access_grants_instance_resource_policy_request() :: #{
@@ -1624,17 +1812,20 @@
 %% }
 -type delete_access_grants_instance_resource_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% storage_lens_aws_org() :: #{
 %%   <<"Arn">> => string()
 %% }
 -type storage_lens_aws_org() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_result() :: #{
 %%   <<"Tags">> => list(tag()())
 %% }
 -type list_tags_for_resource_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% async_error_details() :: #{
@@ -1644,6 +1835,7 @@
 %%   <<"Resource">> => string()
 %% }
 -type async_error_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_list_descriptor() :: #{
@@ -1658,17 +1850,20 @@
 %% }
 -type job_list_descriptor() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_access_point_for_object_lambda_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type delete_access_point_for_object_lambda_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type get_bucket_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_copy_object_operation() :: #{
@@ -1693,11 +1888,13 @@
 %% }
 -type s3_copy_object_operation() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_policy_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type get_bucket_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_public_access_block_output() :: #{
@@ -1705,11 +1902,13 @@
 %% }
 -type get_public_access_block_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_access_point_policy_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type delete_access_point_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_lambda_transformation() :: #{
@@ -1718,17 +1917,20 @@
 %% }
 -type aws_lambda_transformation() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_tagging_result() :: #{
 %%   <<"TagSet">> => list(s3_tag()())
 %% }
 -type get_bucket_tagging_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_marker_replication() :: #{
 %%   <<"Status">> => list(any())
 %% }
 -type delete_marker_replication() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_bucket_request() :: #{
@@ -1744,6 +1946,7 @@
 %% }
 -type create_bucket_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% key_name_constraint() :: #{
 %%   <<"MatchAnyPrefix">> => list(string()()),
@@ -1751,6 +1954,7 @@
 %%   <<"MatchAnySuffix">> => list(string()())
 %% }
 -type key_name_constraint() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_bucket_result() :: #{
@@ -1760,11 +1964,13 @@
 %% }
 -type get_bucket_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_job_tagging_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type get_job_tagging_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_data_access_result() :: #{
@@ -1773,11 +1979,13 @@
 %% }
 -type get_data_access_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_access_point_policy_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type get_access_point_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_timers() :: #{
@@ -1785,11 +1993,13 @@
 %% }
 -type job_timers() :: #{binary() => any()}.
 
+
 %% Example:
 %% existing_object_replication() :: #{
 %%   <<"Status">> => list(any())
 %% }
 -type existing_object_replication() :: #{binary() => any()}.
+
 
 %% Example:
 %% transition() :: #{
@@ -1799,6 +2009,7 @@
 %% }
 -type transition() :: #{binary() => any()}.
 
+
 %% Example:
 %% multi_region_access_point_route() :: #{
 %%   <<"Bucket">> => string(),
@@ -1806,15 +2017,18 @@
 %%   <<"TrafficDialPercentage">> => integer()
 %% }
 -type multi_region_access_point_route() :: #{binary() => any()}.
+
 %% Example:
 %% s3_delete_object_tagging_operation() :: #{}
 -type s3_delete_object_tagging_operation() :: #{}.
+
 
 %% Example:
 %% get_multi_region_access_point_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type get_multi_region_access_point_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_manifest_generator_filter() :: #{
@@ -1829,6 +2043,7 @@
 %% }
 -type job_manifest_generator_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% multi_region_access_point_report() :: #{
 %%   <<"Alias">> => string(),
@@ -1840,14 +2055,17 @@
 %% }
 -type multi_region_access_point_report() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_tagging_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type get_bucket_tagging_request() :: #{binary() => any()}.
+
 %% Example:
 %% sse_s3_encryption() :: #{}
 -type sse_s3_encryption() :: #{}.
+
 
 %% Example:
 %% list_access_grants_locations_result() :: #{
@@ -1856,20 +2074,24 @@
 %% }
 -type list_access_grants_locations_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_access_point_policy_status_for_object_lambda_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type get_access_point_policy_status_for_object_lambda_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_grants_location_configuration() :: #{
 %%   <<"S3SubPrefix">> => string()
 %% }
 -type access_grants_location_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% sse_s3() :: #{}
 -type sse_s3() :: #{}.
+
 
 %% Example:
 %% put_access_point_policy_for_object_lambda_request() :: #{
@@ -1877,6 +2099,7 @@
 %%   <<"Policy">> := string()
 %% }
 -type put_access_point_policy_for_object_lambda_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_access_grants_request() :: #{
@@ -1891,17 +2114,20 @@
 %% }
 -type list_access_grants_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_access_grants_location_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type delete_access_grants_location_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_multi_region_access_point_routes_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type get_multi_region_access_point_routes_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% replication_rule() :: #{
@@ -1918,12 +2144,14 @@
 %% }
 -type replication_rule() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_retention() :: #{
 %%   <<"Mode">> => list(any()),
 %%   <<"RetainUntilDate">> => non_neg_integer()
 %% }
 -type s3_retention() :: #{binary() => any()}.
+
 
 %% Example:
 %% match_object_size() :: #{
@@ -1932,6 +2160,7 @@
 %% }
 -type match_object_size() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_job_priority_result() :: #{
 %%   <<"JobId">> => string(),
@@ -1939,11 +2168,13 @@
 %% }
 -type update_job_priority_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type list_tags_for_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% access_point() :: #{
@@ -1957,11 +2188,13 @@
 %% }
 -type access_point() :: #{binary() => any()}.
 
+
 %% Example:
 %% cloud_watch_metrics() :: #{
 %%   <<"IsEnabled">> => boolean()
 %% }
 -type cloud_watch_metrics() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_bucket_versioning_result() :: #{
@@ -1970,11 +2203,13 @@
 %% }
 -type get_bucket_versioning_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% idempotency_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type idempotency_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% destination() :: #{
@@ -1988,6 +2223,7 @@
 %% }
 -type destination() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_job_status_request() :: #{
 %%   <<"AccountId">> := string(),
@@ -1995,6 +2231,7 @@
 %%   <<"StatusUpdateReason">> => string()
 %% }
 -type update_job_status_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% lifecycle_expiration() :: #{
@@ -2004,17 +2241,20 @@
 %% }
 -type lifecycle_expiration() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_set_object_legal_hold_operation() :: #{
 %%   <<"LegalHold">> => s3_object_lock_legal_hold()
 %% }
 -type s3_set_object_legal_hold_operation() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_job_result() :: #{
 %%   <<"JobId">> => string()
 %% }
 -type create_job_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_bucket_tagging_request() :: #{
@@ -2023,6 +2263,7 @@
 %% }
 -type put_bucket_tagging_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_access_grants_instance_for_prefix_request() :: #{
 %%   <<"AccountId">> := string(),
@@ -2030,11 +2271,13 @@
 %% }
 -type get_access_grants_instance_for_prefix_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% sse_kms() :: #{
 %%   <<"KeyId">> => string()
 %% }
 -type sse_kms() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_job_priority_request() :: #{
@@ -2042,6 +2285,7 @@
 %%   <<"Priority">> := integer()
 %% }
 -type update_job_priority_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_access_point_result() :: #{
@@ -2057,9 +2301,11 @@
 %%   <<"VpcConfiguration">> => vpc_configuration()
 %% }
 -type get_access_point_result() :: #{binary() => any()}.
+
 %% Example:
 %% put_storage_lens_configuration_tagging_result() :: #{}
 -type put_storage_lens_configuration_tagging_result() :: #{}.
+
 
 %% Example:
 %% list_access_points_result() :: #{
@@ -2067,15 +2313,18 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_access_points_result() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_result() :: #{}
 -type tag_resource_result() :: #{}.
+
 
 %% Example:
 %% get_multi_region_access_point_policy_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type get_multi_region_access_point_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% replication_rule_and_operator() :: #{
@@ -2084,17 +2333,20 @@
 %% }
 -type replication_rule_and_operator() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_access_point_policy_status_for_object_lambda_result() :: #{
 %%   <<"PolicyStatus">> => policy_status()
 %% }
 -type get_access_point_policy_status_for_object_lambda_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% bad_request_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_multi_region_access_point_routes_result() :: #{
@@ -2103,6 +2355,7 @@
 %% }
 -type get_multi_region_access_point_routes_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% object_lambda_access_point_alias() :: #{
 %%   <<"Status">> => list(any()),
@@ -2110,11 +2363,13 @@
 %% }
 -type object_lambda_access_point_alias() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_public_access_block_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type get_public_access_block_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_access_point_policy_request() :: #{
@@ -2122,6 +2377,7 @@
 %%   <<"Policy">> := string()
 %% }
 -type put_access_point_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% selection_criteria() :: #{
@@ -2131,12 +2387,14 @@
 %% }
 -type selection_criteria() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_access_point_result() :: #{
 %%   <<"AccessPointArn">> => string(),
 %%   <<"Alias">> => string()
 %% }
 -type create_access_point_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_storage_lens_configuration_entry() :: #{
@@ -2147,6 +2405,7 @@
 %% }
 -type list_storage_lens_configuration_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% replication_time() :: #{
 %%   <<"Status">> => list(any()),
@@ -2154,12 +2413,14 @@
 %% }
 -type replication_time() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_object_owner() :: #{
 %%   <<"DisplayName">> => string(),
 %%   <<"ID">> => string()
 %% }
 -type s3_object_owner() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_access_points_request() :: #{
@@ -2170,6 +2431,7 @@
 %% }
 -type list_access_points_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_storage_lens_configuration_tagging_request() :: #{
 %%   <<"AccountId">> := string(),
@@ -2177,17 +2439,20 @@
 %% }
 -type put_storage_lens_configuration_tagging_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_access_point_policy_result() :: #{
 %%   <<"Policy">> => string()
 %% }
 -type get_access_point_policy_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_multi_region_access_point_policy_status_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type get_multi_region_access_point_policy_status_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% storage_lens_configuration() :: #{
@@ -2202,11 +2467,13 @@
 %% }
 -type storage_lens_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_set_object_tagging_operation() :: #{
 %%   <<"TagSet">> => list(s3_tag()())
 %% }
 -type s3_set_object_tagging_operation() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_bucket_lifecycle_configuration_request() :: #{
@@ -2215,11 +2482,13 @@
 %% }
 -type put_bucket_lifecycle_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_access_grant_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type delete_access_grant_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_tag() :: #{
@@ -2228,6 +2497,7 @@
 %% }
 -type s3_tag() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_generated_manifest_descriptor() :: #{
 %%   <<"Format">> => list(any()),
@@ -2235,11 +2505,13 @@
 %% }
 -type s3_generated_manifest_descriptor() :: #{binary() => any()}.
 
+
 %% Example:
 %% advanced_cost_optimization_metrics() :: #{
 %%   <<"IsEnabled">> => boolean()
 %% }
 -type advanced_cost_optimization_metrics() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_access_grant_request() :: #{
@@ -2254,11 +2526,13 @@
 %% }
 -type create_access_grant_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_lifecycle_configuration_result() :: #{
 %%   <<"Rules">> => list(lifecycle_rule()())
 %% }
 -type get_bucket_lifecycle_configuration_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_access_grants_locations_request() :: #{
@@ -2269,11 +2543,13 @@
 %% }
 -type list_access_grants_locations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_multi_region_access_point_operation_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type describe_multi_region_access_point_operation_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_set_object_retention_operation() :: #{
@@ -2281,6 +2557,7 @@
 %%   <<"Retention">> => s3_retention()
 %% }
 -type s3_set_object_retention_operation() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_access_grants_locations_entry() :: #{
@@ -2292,12 +2569,14 @@
 %% }
 -type list_access_grants_locations_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_storage_lens_group_request() :: #{
 %%   <<"AccountId">> := string(),
 %%   <<"StorageLensGroup">> := storage_lens_group()
 %% }
 -type update_storage_lens_group_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% account_level() :: #{
@@ -2310,6 +2589,7 @@
 %% }
 -type account_level() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_storage_lens_groups_result() :: #{
 %%   <<"NextToken">> => string(),
@@ -2317,11 +2597,13 @@
 %% }
 -type list_storage_lens_groups_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_access_grants_location_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type get_access_grants_location_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_object_lock_legal_hold() :: #{
@@ -2329,14 +2611,17 @@
 %% }
 -type s3_object_lock_legal_hold() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_bucket_replication_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type delete_bucket_replication_request() :: #{binary() => any()}.
+
 %% Example:
 %% put_job_tagging_result() :: #{}
 -type put_job_tagging_result() :: #{}.
+
 
 %% Example:
 %% list_storage_lens_configurations_request() :: #{
@@ -2344,6 +2629,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_storage_lens_configurations_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_progress_summary() :: #{
@@ -2354,6 +2640,7 @@
 %% }
 -type job_progress_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_access_point_configuration_for_object_lambda_request() :: #{
 %%   <<"AccountId">> := string(),
@@ -2361,17 +2648,20 @@
 %% }
 -type put_access_point_configuration_for_object_lambda_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_tags_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_tags_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_multi_region_access_point_result() :: #{
 %%   <<"AccessPoint">> => multi_region_access_point_report()
 %% }
 -type get_multi_region_access_point_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% lifecycle_rule_and_operator() :: #{
@@ -2382,11 +2672,65 @@
 %% }
 -type lifecycle_rule_and_operator() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_access_grants_instance_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type get_access_grants_instance_request() :: #{binary() => any()}.
+
+-type create_bucket_errors() ::
+    bucket_already_exists() | 
+    bucket_already_owned_by_you().
+
+-type create_job_errors() ::
+    bad_request_exception() | 
+    idempotency_exception() | 
+    too_many_requests_exception() | 
+    internal_service_exception().
+
+-type delete_job_tagging_errors() ::
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    internal_service_exception().
+
+-type describe_job_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    internal_service_exception().
+
+-type get_job_tagging_errors() ::
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    internal_service_exception().
+
+-type get_public_access_block_errors() ::
+    no_such_public_access_block_configuration().
+
+-type list_jobs_errors() ::
+    invalid_next_token_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception().
+
+-type put_job_tagging_errors() ::
+    too_many_tags_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    internal_service_exception().
+
+-type update_job_priority_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    internal_service_exception().
+
+-type update_job_status_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    internal_service_exception() | 
+    job_status_exception().
 
 %%====================================================================
 %% API
@@ -2798,16 +3142,14 @@ create_access_point_for_object_lambda(Client, Name, Input0, Options0) ->
 -spec create_bucket(map(), binary() | list(), create_bucket_request()) ->
     {ok, create_bucket_result(), tuple()} |
     {error, any()} |
-    {error, bucket_already_exists(), tuple()} |
-    {error, bucket_already_owned_by_you(), tuple()}.
+    {error, create_bucket_errors(), tuple()}.
 create_bucket(Client, Bucket, Input) ->
     create_bucket(Client, Bucket, Input, []).
 
 -spec create_bucket(map(), binary() | list(), create_bucket_request(), proplists:proplist()) ->
     {ok, create_bucket_result(), tuple()} |
     {error, any()} |
-    {error, bucket_already_exists(), tuple()} |
-    {error, bucket_already_owned_by_you(), tuple()}.
+    {error, create_bucket_errors(), tuple()}.
 create_bucket(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), ""],
@@ -2892,20 +3234,14 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 -spec create_job(map(), create_job_request()) ->
     {ok, create_job_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, idempotency_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_job_errors(), tuple()}.
 create_job(Client, Input) ->
     create_job(Client, Input, []).
 
 -spec create_job(map(), create_job_request(), proplists:proplist()) ->
     {ok, create_job_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, idempotency_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_job_errors(), tuple()}.
 create_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v20180820/jobs"],
@@ -3884,18 +4220,14 @@ delete_bucket_tagging(Client, Bucket, Input0, Options0) ->
 -spec delete_job_tagging(map(), binary() | list(), delete_job_tagging_request()) ->
     {ok, delete_job_tagging_result(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_job_tagging_errors(), tuple()}.
 delete_job_tagging(Client, JobId, Input) ->
     delete_job_tagging(Client, JobId, Input, []).
 
 -spec delete_job_tagging(map(), binary() | list(), delete_job_tagging_request(), proplists:proplist()) ->
     {ok, delete_job_tagging_result(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_job_tagging_errors(), tuple()}.
 delete_job_tagging(Client, JobId, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), "/tagging"],
@@ -4211,10 +4543,7 @@ delete_storage_lens_group(Client, Name, Input0, Options0) ->
 -spec describe_job(map(), binary() | list(), binary() | list()) ->
     {ok, describe_job_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_job_errors(), tuple()}.
 describe_job(Client, JobId, AccountId)
   when is_map(Client) ->
     describe_job(Client, JobId, AccountId, #{}, #{}).
@@ -4222,10 +4551,7 @@ describe_job(Client, JobId, AccountId)
 -spec describe_job(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_job_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_job_errors(), tuple()}.
 describe_job(Client, JobId, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_job(Client, JobId, AccountId, QueryMap, HeadersMap, []).
@@ -4233,10 +4559,7 @@ describe_job(Client, JobId, AccountId, QueryMap, HeadersMap)
 -spec describe_job(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_job_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_job_errors(), tuple()}.
 describe_job(Client, JobId, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), ""],
@@ -5580,9 +5903,7 @@ get_data_access(Client, Permission, Target, AccountId, QueryMap, HeadersMap, Opt
 -spec get_job_tagging(map(), binary() | list(), binary() | list()) ->
     {ok, get_job_tagging_result(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_job_tagging_errors(), tuple()}.
 get_job_tagging(Client, JobId, AccountId)
   when is_map(Client) ->
     get_job_tagging(Client, JobId, AccountId, #{}, #{}).
@@ -5590,9 +5911,7 @@ get_job_tagging(Client, JobId, AccountId)
 -spec get_job_tagging(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_job_tagging_result(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_job_tagging_errors(), tuple()}.
 get_job_tagging(Client, JobId, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_job_tagging(Client, JobId, AccountId, QueryMap, HeadersMap, []).
@@ -5600,9 +5919,7 @@ get_job_tagging(Client, JobId, AccountId, QueryMap, HeadersMap)
 -spec get_job_tagging(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_job_tagging_result(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_job_tagging_errors(), tuple()}.
 get_job_tagging(Client, JobId, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), "/tagging"],
@@ -5884,7 +6201,7 @@ get_multi_region_access_point_routes(Client, Mrap, AccountId, QueryMap, HeadersM
 -spec get_public_access_block(map(), binary() | list()) ->
     {ok, get_public_access_block_output(), tuple()} |
     {error, any()} |
-    {error, no_such_public_access_block_configuration(), tuple()}.
+    {error, get_public_access_block_errors(), tuple()}.
 get_public_access_block(Client, AccountId)
   when is_map(Client) ->
     get_public_access_block(Client, AccountId, #{}, #{}).
@@ -5892,7 +6209,7 @@ get_public_access_block(Client, AccountId)
 -spec get_public_access_block(map(), binary() | list(), map(), map()) ->
     {ok, get_public_access_block_output(), tuple()} |
     {error, any()} |
-    {error, no_such_public_access_block_configuration(), tuple()}.
+    {error, get_public_access_block_errors(), tuple()}.
 get_public_access_block(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_public_access_block(Client, AccountId, QueryMap, HeadersMap, []).
@@ -5900,7 +6217,7 @@ get_public_access_block(Client, AccountId, QueryMap, HeadersMap)
 -spec get_public_access_block(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_public_access_block_output(), tuple()} |
     {error, any()} |
-    {error, no_such_public_access_block_configuration(), tuple()}.
+    {error, get_public_access_block_errors(), tuple()}.
 get_public_access_block(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/configuration/publicAccessBlock"],
@@ -6407,9 +6724,7 @@ list_access_points_for_object_lambda(Client, AccountId, QueryMap, HeadersMap, Op
 -spec list_jobs(map(), binary() | list()) ->
     {ok, list_jobs_result(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_jobs_errors(), tuple()}.
 list_jobs(Client, AccountId)
   when is_map(Client) ->
     list_jobs(Client, AccountId, #{}, #{}).
@@ -6417,9 +6732,7 @@ list_jobs(Client, AccountId)
 -spec list_jobs(map(), binary() | list(), map(), map()) ->
     {ok, list_jobs_result(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_jobs_errors(), tuple()}.
 list_jobs(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_jobs(Client, AccountId, QueryMap, HeadersMap, []).
@@ -6427,9 +6740,7 @@ list_jobs(Client, AccountId, QueryMap, HeadersMap)
 -spec list_jobs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_jobs_result(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_jobs_errors(), tuple()}.
 list_jobs(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/jobs"],
@@ -7571,20 +7882,14 @@ put_bucket_versioning(Client, Bucket, Input0, Options0) ->
 -spec put_job_tagging(map(), binary() | list(), put_job_tagging_request()) ->
     {ok, put_job_tagging_result(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, put_job_tagging_errors(), tuple()}.
 put_job_tagging(Client, JobId, Input) ->
     put_job_tagging(Client, JobId, Input, []).
 
 -spec put_job_tagging(map(), binary() | list(), put_job_tagging_request(), proplists:proplist()) ->
     {ok, put_job_tagging_result(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, put_job_tagging_errors(), tuple()}.
 put_job_tagging(Client, JobId, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), "/tagging"],
@@ -8082,20 +8387,14 @@ update_access_grants_location(Client, AccessGrantsLocationId, Input0, Options0) 
 -spec update_job_priority(map(), binary() | list(), update_job_priority_request()) ->
     {ok, update_job_priority_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_job_priority_errors(), tuple()}.
 update_job_priority(Client, JobId, Input) ->
     update_job_priority(Client, JobId, Input, []).
 
 -spec update_job_priority(map(), binary() | list(), update_job_priority_request(), proplists:proplist()) ->
     {ok, update_job_priority_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_job_priority_errors(), tuple()}.
 update_job_priority(Client, JobId, Input0, Options0) ->
     Method = post,
     Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), "/priority"],
@@ -8151,22 +8450,14 @@ update_job_priority(Client, JobId, Input0, Options0) ->
 -spec update_job_status(map(), binary() | list(), update_job_status_request()) ->
     {ok, update_job_status_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, job_status_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_job_status_errors(), tuple()}.
 update_job_status(Client, JobId, Input) ->
     update_job_status(Client, JobId, Input, []).
 
 -spec update_job_status(map(), binary() | list(), update_job_status_request(), proplists:proplist()) ->
     {ok, update_job_status_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, job_status_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_job_status_errors(), tuple()}.
 update_job_status(Client, JobId, Input0, Options0) ->
     Method = post,
     Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), "/status"],

@@ -207,6 +207,26 @@
 %% }
 -type untag_resource_response() :: #{binary() => any()}.
 
+-type close_tunnel_errors() ::
+    resource_not_found_exception().
+
+-type describe_tunnel_errors() ::
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    resource_not_found_exception().
+
+-type open_tunnel_errors() ::
+    limit_exceeded_exception().
+
+-type rotate_tunnel_access_token_errors() ::
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -225,7 +245,7 @@
 -spec close_tunnel(map(), close_tunnel_request()) ->
     {ok, close_tunnel_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, close_tunnel_errors(), tuple()}.
 close_tunnel(Client, Input)
   when is_map(Client), is_map(Input) ->
     close_tunnel(Client, Input, []).
@@ -233,7 +253,7 @@ close_tunnel(Client, Input)
 -spec close_tunnel(map(), close_tunnel_request(), proplists:proplist()) ->
     {ok, close_tunnel_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, close_tunnel_errors(), tuple()}.
 close_tunnel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CloseTunnel">>, Input, Options).
@@ -246,7 +266,7 @@ close_tunnel(Client, Input, Options)
 -spec describe_tunnel(map(), describe_tunnel_request()) ->
     {ok, describe_tunnel_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_tunnel_errors(), tuple()}.
 describe_tunnel(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tunnel(Client, Input, []).
@@ -254,7 +274,7 @@ describe_tunnel(Client, Input)
 -spec describe_tunnel(map(), describe_tunnel_request(), proplists:proplist()) ->
     {ok, describe_tunnel_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_tunnel_errors(), tuple()}.
 describe_tunnel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTunnel">>, Input, Options).
@@ -263,7 +283,7 @@ describe_tunnel(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -271,7 +291,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -308,7 +328,7 @@ list_tunnels(Client, Input, Options)
 -spec open_tunnel(map(), open_tunnel_request()) ->
     {ok, open_tunnel_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, open_tunnel_errors(), tuple()}.
 open_tunnel(Client, Input)
   when is_map(Client), is_map(Input) ->
     open_tunnel(Client, Input, []).
@@ -316,7 +336,7 @@ open_tunnel(Client, Input)
 -spec open_tunnel(map(), open_tunnel_request(), proplists:proplist()) ->
     {ok, open_tunnel_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, open_tunnel_errors(), tuple()}.
 open_tunnel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"OpenTunnel">>, Input, Options).
@@ -339,7 +359,7 @@ open_tunnel(Client, Input, Options)
 -spec rotate_tunnel_access_token(map(), rotate_tunnel_access_token_request()) ->
     {ok, rotate_tunnel_access_token_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, rotate_tunnel_access_token_errors(), tuple()}.
 rotate_tunnel_access_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     rotate_tunnel_access_token(Client, Input, []).
@@ -347,7 +367,7 @@ rotate_tunnel_access_token(Client, Input)
 -spec rotate_tunnel_access_token(map(), rotate_tunnel_access_token_request(), proplists:proplist()) ->
     {ok, rotate_tunnel_access_token_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, rotate_tunnel_access_token_errors(), tuple()}.
 rotate_tunnel_access_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RotateTunnelAccessToken">>, Input, Options).
@@ -356,7 +376,7 @@ rotate_tunnel_access_token(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -364,7 +384,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -373,7 +393,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -381,7 +401,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).

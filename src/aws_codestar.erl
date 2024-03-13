@@ -560,6 +560,104 @@
 %% }
 -type update_project_result() :: #{binary() => any()}.
 
+-type associate_team_member_errors() ::
+    project_configuration_exception() | 
+    invalid_service_role_exception() | 
+    project_not_found_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    concurrent_modification_exception() | 
+    team_member_already_associated_exception().
+
+-type create_project_errors() ::
+    project_configuration_exception() | 
+    invalid_service_role_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    concurrent_modification_exception() | 
+    project_already_exists_exception() | 
+    project_creation_failed_exception().
+
+-type create_user_profile_errors() ::
+    validation_exception() | 
+    user_profile_already_exists_exception().
+
+-type delete_project_errors() ::
+    invalid_service_role_exception() | 
+    validation_exception() | 
+    concurrent_modification_exception().
+
+-type delete_user_profile_errors() ::
+    validation_exception().
+
+-type describe_project_errors() ::
+    project_configuration_exception() | 
+    invalid_service_role_exception() | 
+    project_not_found_exception() | 
+    validation_exception() | 
+    concurrent_modification_exception().
+
+-type describe_user_profile_errors() ::
+    user_profile_not_found_exception() | 
+    validation_exception().
+
+-type disassociate_team_member_errors() ::
+    invalid_service_role_exception() | 
+    project_not_found_exception() | 
+    validation_exception() | 
+    concurrent_modification_exception().
+
+-type list_projects_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception().
+
+-type list_resources_errors() ::
+    project_not_found_exception() | 
+    validation_exception() | 
+    invalid_next_token_exception().
+
+-type list_tags_for_project_errors() ::
+    project_not_found_exception() | 
+    validation_exception() | 
+    invalid_next_token_exception().
+
+-type list_team_members_errors() ::
+    project_not_found_exception() | 
+    validation_exception() | 
+    invalid_next_token_exception().
+
+-type list_user_profiles_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception().
+
+-type tag_project_errors() ::
+    project_not_found_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    concurrent_modification_exception().
+
+-type untag_project_errors() ::
+    project_not_found_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    concurrent_modification_exception().
+
+-type update_project_errors() ::
+    project_not_found_exception() | 
+    validation_exception().
+
+-type update_team_member_errors() ::
+    project_configuration_exception() | 
+    invalid_service_role_exception() | 
+    project_not_found_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    concurrent_modification_exception() | 
+    team_member_not_found_exception().
+
+-type update_user_profile_errors() ::
+    user_profile_not_found_exception() | 
+    validation_exception().
 
 %%====================================================================
 %% API
@@ -569,13 +667,7 @@
 -spec associate_team_member(map(), associate_team_member_request()) ->
     {ok, associate_team_member_result(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_service_role_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, project_configuration_exception(), tuple()} |
-    {error, project_not_found_exception(), tuple()} |
-    {error, team_member_already_associated_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_team_member_errors(), tuple()}.
 associate_team_member(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_team_member(Client, Input, []).
@@ -583,13 +675,7 @@ associate_team_member(Client, Input)
 -spec associate_team_member(map(), associate_team_member_request(), proplists:proplist()) ->
     {ok, associate_team_member_result(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_service_role_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, project_configuration_exception(), tuple()} |
-    {error, project_not_found_exception(), tuple()} |
-    {error, team_member_already_associated_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_team_member_errors(), tuple()}.
 associate_team_member(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateTeamMember">>, Input, Options).
@@ -604,13 +690,7 @@ associate_team_member(Client, Input, Options)
 -spec create_project(map(), create_project_request()) ->
     {ok, create_project_result(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_service_role_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, project_already_exists_exception(), tuple()} |
-    {error, project_configuration_exception(), tuple()} |
-    {error, project_creation_failed_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_project_errors(), tuple()}.
 create_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_project(Client, Input, []).
@@ -618,13 +698,7 @@ create_project(Client, Input)
 -spec create_project(map(), create_project_request(), proplists:proplist()) ->
     {ok, create_project_result(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_service_role_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, project_already_exists_exception(), tuple()} |
-    {error, project_configuration_exception(), tuple()} |
-    {error, project_creation_failed_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_project_errors(), tuple()}.
 create_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateProject">>, Input, Options).
@@ -640,8 +714,7 @@ create_project(Client, Input, Options)
 -spec create_user_profile(map(), create_user_profile_request()) ->
     {ok, create_user_profile_result(), tuple()} |
     {error, any()} |
-    {error, user_profile_already_exists_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_user_profile_errors(), tuple()}.
 create_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_profile(Client, Input, []).
@@ -649,8 +722,7 @@ create_user_profile(Client, Input)
 -spec create_user_profile(map(), create_user_profile_request(), proplists:proplist()) ->
     {ok, create_user_profile_result(), tuple()} |
     {error, any()} |
-    {error, user_profile_already_exists_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_user_profile_errors(), tuple()}.
 create_user_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUserProfile">>, Input, Options).
@@ -663,9 +735,7 @@ create_user_profile(Client, Input, Options)
 -spec delete_project(map(), delete_project_request()) ->
     {ok, delete_project_result(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_service_role_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_project_errors(), tuple()}.
 delete_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_project(Client, Input, []).
@@ -673,9 +743,7 @@ delete_project(Client, Input)
 -spec delete_project(map(), delete_project_request(), proplists:proplist()) ->
     {ok, delete_project_result(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_service_role_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_project_errors(), tuple()}.
 delete_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProject">>, Input, Options).
@@ -689,7 +757,7 @@ delete_project(Client, Input, Options)
 -spec delete_user_profile(map(), delete_user_profile_request()) ->
     {ok, delete_user_profile_result(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_user_profile_errors(), tuple()}.
 delete_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_profile(Client, Input, []).
@@ -697,7 +765,7 @@ delete_user_profile(Client, Input)
 -spec delete_user_profile(map(), delete_user_profile_request(), proplists:proplist()) ->
     {ok, delete_user_profile_result(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_user_profile_errors(), tuple()}.
 delete_user_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUserProfile">>, Input, Options).
@@ -706,11 +774,7 @@ delete_user_profile(Client, Input, Options)
 -spec describe_project(map(), describe_project_request()) ->
     {ok, describe_project_result(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_service_role_exception(), tuple()} |
-    {error, project_configuration_exception(), tuple()} |
-    {error, project_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_project_errors(), tuple()}.
 describe_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_project(Client, Input, []).
@@ -718,11 +782,7 @@ describe_project(Client, Input)
 -spec describe_project(map(), describe_project_request(), proplists:proplist()) ->
     {ok, describe_project_result(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_service_role_exception(), tuple()} |
-    {error, project_configuration_exception(), tuple()} |
-    {error, project_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_project_errors(), tuple()}.
 describe_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeProject">>, Input, Options).
@@ -732,8 +792,7 @@ describe_project(Client, Input, Options)
 -spec describe_user_profile(map(), describe_user_profile_request()) ->
     {ok, describe_user_profile_result(), tuple()} |
     {error, any()} |
-    {error, user_profile_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_user_profile_errors(), tuple()}.
 describe_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user_profile(Client, Input, []).
@@ -741,8 +800,7 @@ describe_user_profile(Client, Input)
 -spec describe_user_profile(map(), describe_user_profile_request(), proplists:proplist()) ->
     {ok, describe_user_profile_result(), tuple()} |
     {error, any()} |
-    {error, user_profile_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_user_profile_errors(), tuple()}.
 describe_user_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUserProfile">>, Input, Options).
@@ -758,10 +816,7 @@ describe_user_profile(Client, Input, Options)
 -spec disassociate_team_member(map(), disassociate_team_member_request()) ->
     {ok, disassociate_team_member_result(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_service_role_exception(), tuple()} |
-    {error, project_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_team_member_errors(), tuple()}.
 disassociate_team_member(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_team_member(Client, Input, []).
@@ -769,10 +824,7 @@ disassociate_team_member(Client, Input)
 -spec disassociate_team_member(map(), disassociate_team_member_request(), proplists:proplist()) ->
     {ok, disassociate_team_member_result(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_service_role_exception(), tuple()} |
-    {error, project_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_team_member_errors(), tuple()}.
 disassociate_team_member(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateTeamMember">>, Input, Options).
@@ -781,8 +833,7 @@ disassociate_team_member(Client, Input, Options)
 -spec list_projects(map(), list_projects_request()) ->
     {ok, list_projects_result(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_projects_errors(), tuple()}.
 list_projects(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_projects(Client, Input, []).
@@ -790,8 +841,7 @@ list_projects(Client, Input)
 -spec list_projects(map(), list_projects_request(), proplists:proplist()) ->
     {ok, list_projects_result(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_projects_errors(), tuple()}.
 list_projects(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProjects">>, Input, Options).
@@ -800,9 +850,7 @@ list_projects(Client, Input, Options)
 -spec list_resources(map(), list_resources_request()) ->
     {ok, list_resources_result(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, project_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_resources_errors(), tuple()}.
 list_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resources(Client, Input, []).
@@ -810,9 +858,7 @@ list_resources(Client, Input)
 -spec list_resources(map(), list_resources_request(), proplists:proplist()) ->
     {ok, list_resources_result(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, project_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_resources_errors(), tuple()}.
 list_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResources">>, Input, Options).
@@ -821,9 +867,7 @@ list_resources(Client, Input, Options)
 -spec list_tags_for_project(map(), list_tags_for_project_request()) ->
     {ok, list_tags_for_project_result(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, project_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_project_errors(), tuple()}.
 list_tags_for_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_project(Client, Input, []).
@@ -831,9 +875,7 @@ list_tags_for_project(Client, Input)
 -spec list_tags_for_project(map(), list_tags_for_project_request(), proplists:proplist()) ->
     {ok, list_tags_for_project_result(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, project_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_project_errors(), tuple()}.
 list_tags_for_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForProject">>, Input, Options).
@@ -842,9 +884,7 @@ list_tags_for_project(Client, Input, Options)
 -spec list_team_members(map(), list_team_members_request()) ->
     {ok, list_team_members_result(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, project_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_team_members_errors(), tuple()}.
 list_team_members(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_team_members(Client, Input, []).
@@ -852,9 +892,7 @@ list_team_members(Client, Input)
 -spec list_team_members(map(), list_team_members_request(), proplists:proplist()) ->
     {ok, list_team_members_result(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, project_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_team_members_errors(), tuple()}.
 list_team_members(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTeamMembers">>, Input, Options).
@@ -864,8 +902,7 @@ list_team_members(Client, Input, Options)
 -spec list_user_profiles(map(), list_user_profiles_request()) ->
     {ok, list_user_profiles_result(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_user_profiles_errors(), tuple()}.
 list_user_profiles(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_user_profiles(Client, Input, []).
@@ -873,8 +910,7 @@ list_user_profiles(Client, Input)
 -spec list_user_profiles(map(), list_user_profiles_request(), proplists:proplist()) ->
     {ok, list_user_profiles_result(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_user_profiles_errors(), tuple()}.
 list_user_profiles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUserProfiles">>, Input, Options).
@@ -883,10 +919,7 @@ list_user_profiles(Client, Input, Options)
 -spec tag_project(map(), tag_project_request()) ->
     {ok, tag_project_result(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, project_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_project_errors(), tuple()}.
 tag_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_project(Client, Input, []).
@@ -894,10 +927,7 @@ tag_project(Client, Input)
 -spec tag_project(map(), tag_project_request(), proplists:proplist()) ->
     {ok, tag_project_result(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, project_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_project_errors(), tuple()}.
 tag_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagProject">>, Input, Options).
@@ -906,10 +936,7 @@ tag_project(Client, Input, Options)
 -spec untag_project(map(), untag_project_request()) ->
     {ok, untag_project_result(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, project_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_project_errors(), tuple()}.
 untag_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_project(Client, Input, []).
@@ -917,10 +944,7 @@ untag_project(Client, Input)
 -spec untag_project(map(), untag_project_request(), proplists:proplist()) ->
     {ok, untag_project_result(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, project_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_project_errors(), tuple()}.
 untag_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagProject">>, Input, Options).
@@ -929,8 +953,7 @@ untag_project(Client, Input, Options)
 -spec update_project(map(), update_project_request()) ->
     {ok, update_project_result(), tuple()} |
     {error, any()} |
-    {error, project_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_project_errors(), tuple()}.
 update_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_project(Client, Input, []).
@@ -938,8 +961,7 @@ update_project(Client, Input)
 -spec update_project(map(), update_project_request(), proplists:proplist()) ->
     {ok, update_project_result(), tuple()} |
     {error, any()} |
-    {error, project_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_project_errors(), tuple()}.
 update_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateProject">>, Input, Options).
@@ -953,13 +975,7 @@ update_project(Client, Input, Options)
 -spec update_team_member(map(), update_team_member_request()) ->
     {ok, update_team_member_result(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_service_role_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, project_configuration_exception(), tuple()} |
-    {error, project_not_found_exception(), tuple()} |
-    {error, team_member_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_team_member_errors(), tuple()}.
 update_team_member(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_team_member(Client, Input, []).
@@ -967,13 +983,7 @@ update_team_member(Client, Input)
 -spec update_team_member(map(), update_team_member_request(), proplists:proplist()) ->
     {ok, update_team_member_result(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_service_role_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, project_configuration_exception(), tuple()} |
-    {error, project_not_found_exception(), tuple()} |
-    {error, team_member_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_team_member_errors(), tuple()}.
 update_team_member(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTeamMember">>, Input, Options).
@@ -987,8 +997,7 @@ update_team_member(Client, Input, Options)
 -spec update_user_profile(map(), update_user_profile_request()) ->
     {ok, update_user_profile_result(), tuple()} |
     {error, any()} |
-    {error, user_profile_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_user_profile_errors(), tuple()}.
 update_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_profile(Client, Input, []).
@@ -996,8 +1005,7 @@ update_user_profile(Client, Input)
 -spec update_user_profile(map(), update_user_profile_request(), proplists:proplist()) ->
     {ok, update_user_profile_result(), tuple()} |
     {error, any()} |
-    {error, user_profile_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_user_profile_errors(), tuple()}.
 update_user_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUserProfile">>, Input, Options).

@@ -596,11 +596,13 @@
 %% }
 -type associate_instance_storage_config_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% contact_filter() :: #{
 %%   <<"ContactStates">> => list(list(any())())
 %% }
 -type contact_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% answer_machine_detection_config() :: #{
@@ -609,11 +611,13 @@
 %% }
 -type answer_machine_detection_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_user_identity_info_request() :: #{
 %%   <<"IdentityInfo">> := user_identity_info()
 %% }
 -type update_user_identity_info_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_contact_evaluations_request() :: #{
@@ -621,6 +625,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_contact_evaluations_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% outbound_caller_config() :: #{
@@ -630,11 +635,13 @@
 %% }
 -type outbound_caller_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% queue_search_filter() :: #{
 %%   <<"TagFilter">> => control_plane_tag_filter()
 %% }
 -type queue_search_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% action_summary() :: #{
@@ -642,11 +649,13 @@
 %% }
 -type action_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_user_proficiencies_request() :: #{
 %%   <<"UserProficiencies">> := list(user_proficiency()())
 %% }
 -type update_user_proficiencies_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% associate_default_vocabulary_request() :: #{
@@ -654,17 +663,21 @@
 %% }
 -type associate_default_vocabulary_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_persistent_contact_association_response() :: #{
 %%   <<"ContinuedFromContactId">> => string()
 %% }
 -type create_persistent_contact_association_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_contact_flow_module_request() :: #{}
 -type delete_contact_flow_module_request() :: #{}.
+
 %% Example:
 %% delete_view_version_response() :: #{}
 -type delete_view_version_response() :: #{}.
+
 
 %% Example:
 %% get_current_user_data_request() :: #{
@@ -674,11 +687,13 @@
 %% }
 -type get_current_user_data_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% chat_streaming_configuration() :: #{
 %%   <<"StreamingEndpointArn">> => string()
 %% }
 -type chat_streaming_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% view_input_content() :: #{
@@ -687,6 +702,7 @@
 %% }
 -type view_input_content() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_contact_references_response() :: #{
 %%   <<"NextToken">> => string(),
@@ -694,12 +710,14 @@
 %% }
 -type list_contact_references_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_vocabularies_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"VocabularySummaryList">> => list(vocabulary_summary()())
 %% }
 -type search_vocabularies_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_current_metric_data_request() :: #{
@@ -712,11 +730,13 @@
 %% }
 -type get_current_metric_data_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% participant_capabilities() :: #{
 %%   <<"Video">> => list(any())
 %% }
 -type participant_capabilities() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_rule_request() :: #{
@@ -728,6 +748,7 @@
 %%   <<"TriggerEventSource">> := rule_trigger_event_source()
 %% }
 -type create_rule_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_evaluation_form_request() :: #{
@@ -741,6 +762,7 @@
 %% }
 -type update_evaluation_form_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% security_profile_search_criteria() :: #{
 %%   <<"AndConditions">> => list(security_profile_search_criteria()()),
@@ -749,12 +771,14 @@
 %% }
 -type security_profile_search_criteria() :: #{binary() => any()}.
 
+
 %% Example:
 %% disassociate_traffic_distribution_group_user_request() :: #{
 %%   <<"InstanceId">> := string(),
 %%   <<"UserId">> := string()
 %% }
 -type disassociate_traffic_distribution_group_user_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% email_reference() :: #{
@@ -763,12 +787,14 @@
 %% }
 -type email_reference() :: #{binary() => any()}.
 
+
 %% Example:
 %% number_reference() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Value">> => string()
 %% }
 -type number_reference() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_participant_request() :: #{
@@ -779,17 +805,20 @@
 %% }
 -type create_participant_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% output_type_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type output_type_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% traffic_distribution_group_summary() :: #{
@@ -801,6 +830,7 @@
 %%   <<"Status">> => list(any())
 %% }
 -type traffic_distribution_group_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% contact_flow_module() :: #{
@@ -815,6 +845,7 @@
 %% }
 -type contact_flow_module() :: #{binary() => any()}.
 
+
 %% Example:
 %% user_summary() :: #{
 %%   <<"Arn">> => string(),
@@ -824,12 +855,15 @@
 %%   <<"Username">> => string()
 %% }
 -type user_summary() :: #{binary() => any()}.
+
 %% Example:
 %% describe_user_hierarchy_structure_request() :: #{}
 -type describe_user_hierarchy_structure_request() :: #{}.
+
 %% Example:
 %% get_federation_token_request() :: #{}
 -type get_federation_token_request() :: #{}.
+
 
 %% Example:
 %% list_queues_request() :: #{
@@ -839,6 +873,7 @@
 %% }
 -type list_queues_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_lambda_functions_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -846,12 +881,14 @@
 %% }
 -type list_lambda_functions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% encryption_config() :: #{
 %%   <<"EncryptionType">> => list(any()),
 %%   <<"KeyId">> => string()
 %% }
 -type encryption_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_phone_numbers_summary() :: #{
@@ -867,14 +904,17 @@
 %% }
 -type list_phone_numbers_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% campaign() :: #{
 %%   <<"CampaignId">> => string()
 %% }
 -type campaign() :: #{binary() => any()}.
+
 %% Example:
 %% describe_user_hierarchy_group_request() :: #{}
 -type describe_user_hierarchy_group_request() :: #{}.
+
 
 %% Example:
 %% search_users_response() :: #{
@@ -883,6 +923,7 @@
 %%   <<"Users">> => list(user_search_summary()())
 %% }
 -type search_users_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_contact_recording_request() :: #{
@@ -893,15 +934,18 @@
 %% }
 -type start_contact_recording_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_traffic_distribution_group_users_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"TrafficDistributionGroupUserSummaryList">> => list(traffic_distribution_group_user_summary()())
 %% }
 -type list_traffic_distribution_group_users_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_traffic_distribution_group_request() :: #{}
 -type describe_traffic_distribution_group_request() :: #{}.
+
 
 %% Example:
 %% prompt_summary() :: #{
@@ -912,9 +956,11 @@
 %%   <<"Name">> => string()
 %% }
 -type prompt_summary() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_flow_request() :: #{}
 -type disassociate_flow_request() :: #{}.
+
 
 %% Example:
 %% create_use_case_response() :: #{
@@ -922,6 +968,7 @@
 %%   <<"UseCaseId">> => string()
 %% }
 -type create_use_case_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% replicate_instance_request() :: #{
@@ -931,6 +978,7 @@
 %% }
 -type replicate_instance_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% deactivate_evaluation_form_response() :: #{
 %%   <<"EvaluationFormArn">> => string(),
@@ -939,6 +987,7 @@
 %% }
 -type deactivate_evaluation_form_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_hours_of_operations_response() :: #{
 %%   <<"ApproximateTotalCount">> => float(),
@@ -946,6 +995,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type search_hours_of_operations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% view_summary() :: #{
@@ -958,11 +1008,13 @@
 %% }
 -type view_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% activate_evaluation_form_request() :: #{
 %%   <<"EvaluationFormVersion">> := integer()
 %% }
 -type activate_evaluation_form_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% successful_request() :: #{
@@ -971,14 +1023,17 @@
 %% }
 -type successful_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_instance_storage_config_response() :: #{
 %%   <<"StorageConfig">> => instance_storage_config()
 %% }
 -type describe_instance_storage_config_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_contact_request() :: #{}
 -type describe_contact_request() :: #{}.
+
 
 %% Example:
 %% agent_status() :: #{
@@ -995,12 +1050,14 @@
 %% }
 -type agent_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_available_phone_numbers_response() :: #{
 %%   <<"AvailableNumbersList">> => list(available_number_summary()()),
 %%   <<"NextToken">> => string()
 %% }
 -type search_available_phone_numbers_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% dimensions() :: #{
@@ -1010,6 +1067,7 @@
 %%   <<"RoutingStepExpression">> => string()
 %% }
 -type dimensions() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_task_template_response() :: #{
@@ -1028,15 +1086,18 @@
 %%   <<"Tags">> => map()
 %% }
 -type get_task_template_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_use_case_request() :: #{}
 -type delete_use_case_request() :: #{}.
+
 
 %% Example:
 %% describe_prompt_response() :: #{
 %%   <<"Prompt">> => prompt()
 %% }
 -type describe_prompt_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_hours_of_operations_response() :: #{
@@ -1045,12 +1106,14 @@
 %% }
 -type list_hours_of_operations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% property_validation_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"PropertyList">> => list(property_validation_exception_property()())
 %% }
 -type property_validation_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% user_identity_info_lite() :: #{
@@ -1059,11 +1122,13 @@
 %% }
 -type user_identity_info_lite() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_contact_response() :: #{
 %%   <<"Contact">> => contact()
 %% }
 -type describe_contact_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_flow_associations_response() :: #{
@@ -1071,6 +1136,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_flow_associations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_contacts_time_range() :: #{
@@ -1080,15 +1146,18 @@
 %% }
 -type search_contacts_time_range() :: #{binary() => any()}.
 
+
 %% Example:
 %% threshold_v2() :: #{
 %%   <<"Comparison">> => string(),
 %%   <<"ThresholdValue">> => float()
 %% }
 -type threshold_v2() :: #{binary() => any()}.
+
 %% Example:
 %% update_contact_attributes_response() :: #{}
 -type update_contact_attributes_response() :: #{}.
+
 
 %% Example:
 %% create_contact_flow_request() :: #{
@@ -1100,6 +1169,7 @@
 %% }
 -type create_contact_flow_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% metric_interval() :: #{
 %%   <<"EndTime">> => non_neg_integer(),
@@ -1107,6 +1177,7 @@
 %%   <<"StartTime">> => non_neg_integer()
 %% }
 -type metric_interval() :: #{binary() => any()}.
+
 
 %% Example:
 %% real_time_contact_analysis_transcript_item_with_content() :: #{
@@ -1116,6 +1187,7 @@
 %% }
 -type real_time_contact_analysis_transcript_item_with_content() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_predefined_attributes_response() :: #{
 %%   <<"ApproximateTotalCount">> => float(),
@@ -1124,6 +1196,7 @@
 %% }
 -type search_predefined_attributes_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_in_use_exception() :: #{
 %%   <<"Message">> => string(),
@@ -1131,6 +1204,7 @@
 %%   <<"ResourceType">> => list(any())
 %% }
 -type resource_in_use_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_hours_of_operations_request() :: #{
@@ -1141,9 +1215,11 @@
 %%   <<"SearchFilter">> => hours_of_operation_search_filter()
 %% }
 -type search_hours_of_operations_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_predefined_attribute_request() :: #{}
 -type describe_predefined_attribute_request() :: #{}.
+
 
 %% Example:
 %% get_prompt_file_response() :: #{
@@ -1152,6 +1228,7 @@
 %%   <<"PromptPresignedUrl">> => string()
 %% }
 -type get_prompt_file_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% hierarchy_path_reference() :: #{
@@ -1163,6 +1240,7 @@
 %% }
 -type hierarchy_path_reference() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_flow_association_response() :: #{
 %%   <<"FlowId">> => string(),
@@ -1170,6 +1248,7 @@
 %%   <<"ResourceType">> => list(any())
 %% }
 -type get_flow_association_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% evaluation_form_version_summary() :: #{
@@ -1185,6 +1264,7 @@
 %% }
 -type evaluation_form_version_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_user_proficiencies_response() :: #{
 %%   <<"LastModifiedRegion">> => string(),
@@ -1194,6 +1274,7 @@
 %% }
 -type list_user_proficiencies_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% historical_metric_result() :: #{
 %%   <<"Collections">> => list(historical_metric_data()()),
@@ -1201,11 +1282,13 @@
 %% }
 -type historical_metric_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_agent_status_response() :: #{
 %%   <<"AgentStatus">> => agent_status()
 %% }
 -type describe_agent_status_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% send_chat_integration_event_response() :: #{
@@ -1213,6 +1296,7 @@
 %%   <<"NewChatCreated">> => boolean()
 %% }
 -type send_chat_integration_event_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% meeting() :: #{
@@ -1223,6 +1307,7 @@
 %% }
 -type meeting() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_resource_tags_response() :: #{
 %%   <<"NextToken">> => string(),
@@ -1230,11 +1315,13 @@
 %% }
 -type search_resource_tags_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% phone_number_quick_connect_config() :: #{
 %%   <<"PhoneNumber">> => string()
 %% }
 -type phone_number_quick_connect_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_security_profile_response() :: #{
@@ -1242,11 +1329,13 @@
 %% }
 -type describe_security_profile_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_evaluation_form_request() :: #{
 %%   <<"EvaluationFormVersion">> => integer()
 %% }
 -type delete_evaluation_form_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_security_profile_response() :: #{
@@ -1255,11 +1344,13 @@
 %% }
 -type create_security_profile_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% outbound_contact_not_permitted_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type outbound_contact_not_permitted_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_prompts_response() :: #{
@@ -1267,6 +1358,7 @@
 %%   <<"PromptSummaryList">> => list(prompt_summary()())
 %% }
 -type list_prompts_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% user_data_filters() :: #{
@@ -1277,9 +1369,11 @@
 %%   <<"UserHierarchyGroups">> => list(string()())
 %% }
 -type user_data_filters() :: #{binary() => any()}.
+
 %% Example:
 %% delete_view_request() :: #{}
 -type delete_view_request() :: #{}.
+
 
 %% Example:
 %% chat_message() :: #{
@@ -1287,6 +1381,7 @@
 %%   <<"ContentType">> => string()
 %% }
 -type chat_message() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_hours_of_operation_request() :: #{
@@ -1298,14 +1393,17 @@
 %% }
 -type create_hours_of_operation_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% real_time_contact_analysis_point_of_interest() :: #{
 %%   <<"TranscriptItems">> => list(real_time_contact_analysis_transcript_item_with_character_offsets()())
 %% }
 -type real_time_contact_analysis_point_of_interest() :: #{binary() => any()}.
+
 %% Example:
 %% update_contact_flow_metadata_response() :: #{}
 -type update_contact_flow_metadata_response() :: #{}.
+
 
 %% Example:
 %% disassociate_lex_bot_request() :: #{
@@ -1313,6 +1411,7 @@
 %%   <<"LexRegion">> := string()
 %% }
 -type disassociate_lex_bot_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_security_profile_request() :: #{
@@ -1324,6 +1423,7 @@
 %% }
 -type update_security_profile_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% credentials() :: #{
 %%   <<"AccessToken">> => string(),
@@ -1332,9 +1432,11 @@
 %%   <<"RefreshTokenExpiration">> => non_neg_integer()
 %% }
 -type credentials() :: #{binary() => any()}.
+
 %% Example:
 %% describe_vocabulary_request() :: #{}
 -type describe_vocabulary_request() :: #{}.
+
 
 %% Example:
 %% update_instance_storage_config_request() :: #{
@@ -1343,12 +1445,14 @@
 %% }
 -type update_instance_storage_config_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_condition() :: #{
 %%   <<"TagKey">> => string(),
 %%   <<"TagValue">> => string()
 %% }
 -type tag_condition() :: #{binary() => any()}.
+
 
 %% Example:
 %% view() :: #{
@@ -1368,11 +1472,13 @@
 %% }
 -type view() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_queue_response() :: #{
 %%   <<"Queue">> => queue()
 %% }
 -type describe_queue_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% hours_of_operation() :: #{
@@ -1388,11 +1494,13 @@
 %% }
 -type hours_of_operation() :: #{binary() => any()}.
 
+
 %% Example:
 %% read_only_field_info() :: #{
 %%   <<"Id">> => task_template_field_identifier()
 %% }
 -type read_only_field_info() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_quick_connect_name_request() :: #{
@@ -1400,9 +1508,11 @@
 %%   <<"Name">> => string()
 %% }
 -type update_quick_connect_name_request() :: #{binary() => any()}.
+
 %% Example:
 %% stop_contact_recording_response() :: #{}
 -type stop_contact_recording_response() :: #{}.
+
 
 %% Example:
 %% metric_filter_v2() :: #{
@@ -1411,6 +1521,7 @@
 %%   <<"Negate">> => boolean()
 %% }
 -type metric_filter_v2() :: #{binary() => any()}.
+
 
 %% Example:
 %% routing_profile_queue_config_summary() :: #{
@@ -1423,12 +1534,14 @@
 %% }
 -type routing_profile_queue_config_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_metric_data_v2_response() :: #{
 %%   <<"MetricResults">> => list(metric_result_v2()()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_metric_data_v2_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_flow_associations_request() :: #{
@@ -1438,11 +1551,13 @@
 %% }
 -type list_flow_associations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% hours_of_operation_search_filter() :: #{
 %%   <<"TagFilter">> => control_plane_tag_filter()
 %% }
 -type hours_of_operation_search_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_task_template_request() :: #{
@@ -1457,6 +1572,7 @@
 %% }
 -type create_task_template_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% error_result() :: #{
 %%   <<"ErrorCode">> => string(),
@@ -1464,11 +1580,13 @@
 %% }
 -type error_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% kinesis_firehose_config() :: #{
 %%   <<"FirehoseArn">> => string()
 %% }
 -type kinesis_firehose_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% task_template_field() :: #{
@@ -1479,11 +1597,13 @@
 %% }
 -type task_template_field() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_evaluation_form_response() :: #{
 %%   <<"EvaluationForm">> => evaluation_form()
 %% }
 -type describe_evaluation_form_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% task_template_defaults() :: #{
@@ -1491,14 +1611,17 @@
 %% }
 -type task_template_defaults() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_queue_max_contacts_request() :: #{
 %%   <<"MaxContacts">> => integer()
 %% }
 -type update_queue_max_contacts_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_task_template_response() :: #{}
 -type delete_task_template_response() :: #{}.
+
 
 %% Example:
 %% create_integration_association_response() :: #{
@@ -1507,11 +1630,13 @@
 %% }
 -type create_integration_association_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% required_field_info() :: #{
 %%   <<"Id">> => task_template_field_identifier()
 %% }
 -type required_field_info() :: #{binary() => any()}.
+
 
 %% Example:
 %% user_search_summary() :: #{
@@ -1528,11 +1653,13 @@
 %% }
 -type user_search_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% lex_v2_bot() :: #{
 %%   <<"AliasArn">> => string()
 %% }
 -type lex_v2_bot() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_traffic_distribution_group_response() :: #{
@@ -1541,11 +1668,13 @@
 %% }
 -type create_traffic_distribution_group_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% contact_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type contact_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% contact_flow_not_published_exception() :: #{
@@ -1553,11 +1682,13 @@
 %% }
 -type contact_flow_not_published_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% traffic_distribution_group_user_summary() :: #{
 %%   <<"UserId">> => string()
 %% }
 -type traffic_distribution_group_user_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% use_case() :: #{
@@ -1567,6 +1698,7 @@
 %% }
 -type use_case() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_hours_of_operation_request() :: #{
 %%   <<"Config">> => list(hours_of_operation_config()()),
@@ -1575,6 +1707,7 @@
 %%   <<"TimeZone">> => string()
 %% }
 -type update_hours_of_operation_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_routing_profiles_request() :: #{
@@ -1586,6 +1719,7 @@
 %% }
 -type search_routing_profiles_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_rule_request() :: #{
 %%   <<"Actions">> := list(rule_action()()),
@@ -1595,11 +1729,13 @@
 %% }
 -type update_rule_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_outbound_voice_contact_response() :: #{
 %%   <<"ContactId">> => string()
 %% }
 -type start_outbound_voice_contact_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_contact_flows_request() :: #{
@@ -1608,6 +1744,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_contact_flows_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% user_identity_info() :: #{
@@ -1619,12 +1756,14 @@
 %% }
 -type user_identity_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_instance_attributes_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_instance_attributes_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_vocabulary_response() :: #{
@@ -1634,17 +1773,20 @@
 %% }
 -type create_vocabulary_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% wisdom_info() :: #{
 %%   <<"SessionArn">> => string()
 %% }
 -type wisdom_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% release_phone_number_request() :: #{
 %%   <<"ClientToken">> => string()
 %% }
 -type release_phone_number_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% stop_contact_request() :: #{
@@ -1654,15 +1796,18 @@
 %% }
 -type stop_contact_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_phone_number_response() :: #{
 %%   <<"PhoneNumberArn">> => string(),
 %%   <<"PhoneNumberId">> => string()
 %% }
 -type update_phone_number_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_user_hierarchy_group_request() :: #{}
 -type delete_user_hierarchy_group_request() :: #{}.
+
 
 %% Example:
 %% lex_bot_config() :: #{
@@ -1671,11 +1816,13 @@
 %% }
 -type lex_bot_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% real_time_contact_analysis_segment_issues() :: #{
 %%   <<"IssuesDetected">> => list(real_time_contact_analysis_issue_detected()())
 %% }
 -type real_time_contact_analysis_segment_issues() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_instance_response() :: #{
@@ -1684,12 +1831,14 @@
 %% }
 -type create_instance_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_contact_evaluations_response() :: #{
 %%   <<"EvaluationSummaryList">> => list(evaluation_summary()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_contact_evaluations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% task_template_default_field_value() :: #{
@@ -1698,11 +1847,13 @@
 %% }
 -type task_template_default_field_value() :: #{binary() => any()}.
 
+
 %% Example:
 %% evaluation_note() :: #{
 %%   <<"Value">> => string()
 %% }
 -type evaluation_note() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_contact_flow_module_metadata_request() :: #{
@@ -1712,6 +1863,7 @@
 %% }
 -type update_contact_flow_module_metadata_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_prompt_response() :: #{
 %%   <<"PromptARN">> => string(),
@@ -1719,14 +1871,17 @@
 %% }
 -type update_prompt_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_contact_flow_exception() :: #{
 %%   <<"problems">> => list(problem_detail()())
 %% }
 -type invalid_contact_flow_exception() :: #{binary() => any()}.
+
 %% Example:
 %% update_view_metadata_response() :: #{}
 -type update_view_metadata_response() :: #{}.
+
 
 %% Example:
 %% list_evaluation_form_versions_request() :: #{
@@ -1734,9 +1889,11 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_evaluation_form_versions_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_view_version_request() :: #{}
 -type delete_view_version_request() :: #{}.
+
 
 %% Example:
 %% import_phone_number_response() :: #{
@@ -1745,15 +1902,18 @@
 %% }
 -type import_phone_number_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% persistent_chat() :: #{
 %%   <<"RehydrationType">> => list(any()),
 %%   <<"SourceContactId">> => string()
 %% }
 -type persistent_chat() :: #{binary() => any()}.
+
 %% Example:
 %% update_contact_schedule_response() :: #{}
 -type update_contact_schedule_response() :: #{}.
+
 
 %% Example:
 %% queue() :: #{
@@ -1771,6 +1931,7 @@
 %% }
 -type queue() :: #{binary() => any()}.
 
+
 %% Example:
 %% user_proficiency_disassociate() :: #{
 %%   <<"AttributeName">> => string(),
@@ -1778,11 +1939,13 @@
 %% }
 -type user_proficiency_disassociate() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_service_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_service_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_use_cases_request() :: #{
@@ -1791,11 +1954,13 @@
 %% }
 -type list_use_cases_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% disassociate_approved_origin_request() :: #{
 %%   <<"Origin">> := string()
 %% }
 -type disassociate_approved_origin_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% segment_attribute_value() :: #{
@@ -1803,11 +1968,13 @@
 %% }
 -type segment_attribute_value() :: #{binary() => any()}.
 
+
 %% Example:
 %% real_time_contact_analysis_segment_categories() :: #{
 %%   <<"MatchedDetails">> => map()
 %% }
 -type real_time_contact_analysis_segment_categories() :: #{binary() => any()}.
+
 
 %% Example:
 %% associate_lambda_function_request() :: #{
@@ -1815,18 +1982,22 @@
 %% }
 -type associate_lambda_function_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% transcript() :: #{
 %%   <<"Criteria">> => list(transcript_criteria()()),
 %%   <<"MatchType">> => list(any())
 %% }
 -type transcript() :: #{binary() => any()}.
+
 %% Example:
 %% suspend_contact_recording_response() :: #{}
 -type suspend_contact_recording_response() :: #{}.
+
 %% Example:
 %% update_participant_role_config_response() :: #{}
 -type update_participant_role_config_response() :: #{}.
+
 
 %% Example:
 %% disassociate_queue_quick_connects_request() :: #{
@@ -1834,11 +2005,13 @@
 %% }
 -type disassociate_queue_quick_connects_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_security_profile_applications_response() :: #{
@@ -1849,11 +2022,13 @@
 %% }
 -type list_security_profile_applications_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_quick_connect_config_request() :: #{
 %%   <<"QuickConnectConfig">> := quick_connect_config()
 %% }
 -type update_quick_connect_config_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_queue_hours_of_operation_request() :: #{
@@ -1861,11 +2036,13 @@
 %% }
 -type update_queue_hours_of_operation_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_requests_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_requests_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% participant_details_to_add() :: #{
@@ -1873,6 +2050,7 @@
 %%   <<"ParticipantRole">> => list(any())
 %% }
 -type participant_details_to_add() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_contact_streaming_request() :: #{
@@ -1883,6 +2061,7 @@
 %% }
 -type start_contact_streaming_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_analytics_data_set_response() :: #{
 %%   <<"DataSetId">> => string(),
@@ -1892,6 +2071,7 @@
 %% }
 -type associate_analytics_data_set_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_rules_request() :: #{
 %%   <<"EventSourceName">> => list(any()),
@@ -1900,6 +2080,7 @@
 %%   <<"PublishStatus">> => list(any())
 %% }
 -type list_rules_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% import_phone_number_request() :: #{
@@ -1911,12 +2092,14 @@
 %% }
 -type import_phone_number_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% claim_phone_number_response() :: #{
 %%   <<"PhoneNumberArn">> => string(),
 %%   <<"PhoneNumberId">> => string()
 %% }
 -type claim_phone_number_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% queue_info() :: #{
@@ -1925,12 +2108,14 @@
 %% }
 -type queue_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% evaluation_answer_output() :: #{
 %%   <<"SystemSuggestedValue">> => list(),
 %%   <<"Value">> => list()
 %% }
 -type evaluation_answer_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% available_number_summary() :: #{
@@ -1940,17 +2125,20 @@
 %% }
 -type available_number_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_view_version_response() :: #{
 %%   <<"View">> => view()
 %% }
 -type create_view_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_phone_number_response() :: #{
 %%   <<"ClaimedPhoneNumberSummary">> => claimed_phone_number_summary()
 %% }
 -type describe_phone_number_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% hierarchy_group_summary() :: #{
@@ -1962,15 +2150,18 @@
 %% }
 -type hierarchy_group_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% participant_token_credentials() :: #{
 %%   <<"Expiry">> => string(),
 %%   <<"ParticipantToken">> => string()
 %% }
 -type participant_token_credentials() :: #{binary() => any()}.
+
 %% Example:
 %% describe_contact_flow_module_request() :: #{}
 -type describe_contact_flow_module_request() :: #{}.
+
 
 %% Example:
 %% pause_contact_request() :: #{
@@ -1980,11 +2171,13 @@
 %% }
 -type pause_contact_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_instance_attribute_response() :: #{
 %%   <<"Attribute">> => attribute()
 %% }
 -type describe_instance_attribute_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% participant_timer_configuration() :: #{
@@ -1994,11 +2187,13 @@
 %% }
 -type participant_timer_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_approved_origin_request() :: #{
 %%   <<"Origin">> := string()
 %% }
 -type associate_approved_origin_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% destination_not_allowed_exception() :: #{
@@ -2006,11 +2201,13 @@
 %% }
 -type destination_not_allowed_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% invisible_field_info() :: #{
 %%   <<"Id">> => task_template_field_identifier()
 %% }
 -type invisible_field_info() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_quick_connect_response() :: #{
@@ -2019,12 +2216,14 @@
 %% }
 -type create_quick_connect_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_lex_bots_response() :: #{
 %%   <<"LexBots">> => list(lex_bot()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_lex_bots_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_vocabulary_request() :: #{
@@ -2036,6 +2235,7 @@
 %% }
 -type create_vocabulary_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% metric_result_v2() :: #{
 %%   <<"Collections">> => list(metric_data_v2()()),
@@ -2043,6 +2243,7 @@
 %%   <<"MetricInterval">> => metric_interval()
 %% }
 -type metric_result_v2() :: #{binary() => any()}.
+
 
 %% Example:
 %% transfer_contact_request() :: #{
@@ -2054,12 +2255,15 @@
 %%   <<"UserId">> => string()
 %% }
 -type transfer_contact_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_phone_number_request() :: #{}
 -type describe_phone_number_request() :: #{}.
+
 %% Example:
 %% resume_contact_recording_response() :: #{}
 -type resume_contact_recording_response() :: #{}.
+
 
 %% Example:
 %% list_agent_status_request() :: #{
@@ -2068,6 +2272,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_agent_status_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% queue_summary() :: #{
@@ -2079,9 +2284,11 @@
 %%   <<"QueueType">> => list(any())
 %% }
 -type queue_summary() :: #{binary() => any()}.
+
 %% Example:
 %% update_contact_flow_name_response() :: #{}
 -type update_contact_flow_name_response() :: #{}.
+
 
 %% Example:
 %% list_task_templates_response() :: #{
@@ -2090,6 +2297,7 @@
 %% }
 -type list_task_templates_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_current_user_data_response() :: #{
 %%   <<"ApproximateTotalCount">> => float(),
@@ -2097,9 +2305,11 @@
 %%   <<"UserDataList">> => list(user_data()())
 %% }
 -type get_current_user_data_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_rule_request() :: #{}
 -type delete_rule_request() :: #{}.
+
 
 %% Example:
 %% contact_flow_summary() :: #{
@@ -2111,6 +2321,7 @@
 %% }
 -type contact_flow_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_contact_evaluation_request() :: #{
 %%   <<"Answers">> => map(),
@@ -2118,12 +2329,14 @@
 %% }
 -type update_contact_evaluation_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_lex_bots_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_lex_bots_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_phone_numbers_v2_request() :: #{
@@ -2136,9 +2349,11 @@
 %%   <<"TargetArn">> => string()
 %% }
 -type list_phone_numbers_v2_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_prompt_request() :: #{}
 -type delete_prompt_request() :: #{}.
+
 
 %% Example:
 %% send_chat_integration_event_request() :: #{
@@ -2150,11 +2365,13 @@
 %% }
 -type send_chat_integration_event_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_user_hierarchy_structure_response() :: #{
 %%   <<"HierarchyStructure">> => hierarchy_structure()
 %% }
 -type describe_user_hierarchy_structure_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% user_data() :: #{
@@ -2170,11 +2387,13 @@
 %% }
 -type user_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_predefined_attribute_response() :: #{
 %%   <<"PredefinedAttribute">> => predefined_attribute()
 %% }
 -type describe_predefined_attribute_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_federation_token_response() :: #{
@@ -2185,6 +2404,7 @@
 %% }
 -type get_federation_token_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_traffic_distribution_groups_request() :: #{
 %%   <<"InstanceId">> => string(),
@@ -2192,6 +2412,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_traffic_distribution_groups_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% quick_connect_search_criteria() :: #{
@@ -2201,11 +2422,13 @@
 %% }
 -type quick_connect_search_criteria() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_view_response() :: #{
 %%   <<"View">> => view()
 %% }
 -type describe_view_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% monitor_contact_request() :: #{
@@ -2217,6 +2440,7 @@
 %% }
 -type monitor_contact_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_quick_connect_request() :: #{
 %%   <<"Description">> => string(),
@@ -2225,6 +2449,7 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_quick_connect_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% task_action_definition() :: #{
@@ -2235,21 +2460,25 @@
 %% }
 -type task_action_definition() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_traffic_distribution_group_user_request() :: #{
 %%   <<"InstanceId">> := string(),
 %%   <<"UserId">> := string()
 %% }
 -type associate_traffic_distribution_group_user_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_contact_flow_response() :: #{}
 -type delete_contact_flow_response() :: #{}.
+
 
 %% Example:
 %% update_instance_attribute_request() :: #{
 %%   <<"Value">> := string()
 %% }
 -type update_instance_attribute_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% hours_of_operation_summary() :: #{
@@ -2261,12 +2490,14 @@
 %% }
 -type hours_of_operation_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_evaluation_form_response() :: #{
 %%   <<"EvaluationFormArn">> => string(),
 %%   <<"EvaluationFormId">> => string()
 %% }
 -type create_evaluation_form_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% agent_contact_reference() :: #{
@@ -2280,24 +2511,29 @@
 %% }
 -type agent_contact_reference() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_lambda_functions_response() :: #{
 %%   <<"LambdaFunctions">> => list(string()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_lambda_functions_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_routing_profile_request() :: #{}
 -type delete_routing_profile_request() :: #{}.
+
 
 %% Example:
 %% cross_channel_behavior() :: #{
 %%   <<"BehaviorType">> => list(any())
 %% }
 -type cross_channel_behavior() :: #{binary() => any()}.
+
 %% Example:
 %% empty_field_value() :: #{}
 -type empty_field_value() :: #{}.
+
 
 %% Example:
 %% view_content() :: #{
@@ -2306,6 +2542,7 @@
 %%   <<"Template">> => string()
 %% }
 -type view_content() :: #{binary() => any()}.
+
 
 %% Example:
 %% evaluation_form_summary() :: #{
@@ -2323,11 +2560,13 @@
 %% }
 -type evaluation_form_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_task_template_request() :: #{
 %%   <<"SnapshotVersion">> => string()
 %% }
 -type get_task_template_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% disassociate_analytics_data_set_request() :: #{
@@ -2335,9 +2574,11 @@
 %%   <<"TargetAccountId">> => string()
 %% }
 -type disassociate_analytics_data_set_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_agent_status_request() :: #{}
 -type describe_agent_status_request() :: #{}.
+
 
 %% Example:
 %% list_security_keys_request() :: #{
@@ -2345,6 +2586,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_security_keys_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_prompt_request() :: #{
@@ -2355,11 +2597,13 @@
 %% }
 -type create_prompt_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_routing_profile_queues_request() :: #{
 %%   <<"QueueConfigs">> := list(routing_profile_queue_config()())
 %% }
 -type associate_routing_profile_queues_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_prompts_response() :: #{
@@ -2369,6 +2613,7 @@
 %% }
 -type search_prompts_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_bots_request() :: #{
 %%   <<"LexVersion">> := list(any()),
@@ -2377,17 +2622,20 @@
 %% }
 -type list_bots_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_security_profile_request() :: #{
@@ -2401,15 +2649,18 @@
 %% }
 -type create_security_profile_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_view_version_request() :: #{
 %%   <<"VersionDescription">> => string(),
 %%   <<"ViewContentSha256">> => string()
 %% }
 -type create_view_version_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_instance_attribute_request() :: #{}
 -type describe_instance_attribute_request() :: #{}.
+
 
 %% Example:
 %% list_security_profile_permissions_response() :: #{
@@ -2420,12 +2671,14 @@
 %% }
 -type list_security_profile_permissions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_predefined_attribute_request() :: #{
 %%   <<"Name">> := string(),
 %%   <<"Values">> := list()
 %% }
 -type create_predefined_attribute_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% stop_contact_recording_request() :: #{
@@ -2435,11 +2688,13 @@
 %% }
 -type stop_contact_recording_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% real_time_contact_analysis_category_details() :: #{
 %%   <<"PointsOfInterest">> => list(real_time_contact_analysis_point_of_interest()())
 %% }
 -type real_time_contact_analysis_category_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_traffic_distribution_group_request() :: #{
@@ -2451,6 +2706,7 @@
 %% }
 -type create_traffic_distribution_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% security_profile_summary() :: #{
 %%   <<"Arn">> => string(),
@@ -2461,6 +2717,7 @@
 %% }
 -type security_profile_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_contact_evaluation_response() :: #{
 %%   <<"Evaluation">> => evaluation(),
@@ -2468,11 +2725,13 @@
 %% }
 -type describe_contact_evaluation_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_evaluation_form_request() :: #{
 %%   <<"EvaluationFormVersion">> => integer()
 %% }
 -type describe_evaluation_form_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% send_notification_action_definition() :: #{
@@ -2484,6 +2743,7 @@
 %% }
 -type send_notification_action_definition() :: #{binary() => any()}.
 
+
 %% Example:
 %% user_quick_connect_config() :: #{
 %%   <<"ContactFlowId">> => string(),
@@ -2491,12 +2751,14 @@
 %% }
 -type user_quick_connect_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% phone_number_status() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Status">> => list(any())
 %% }
 -type phone_number_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% agent_info() :: #{
@@ -2506,11 +2768,13 @@
 %% }
 -type agent_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_hours_of_operation_response() :: #{
 %%   <<"HoursOfOperation">> => hours_of_operation()
 %% }
 -type describe_hours_of_operation_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_disassociate_analytics_data_set_request() :: #{
@@ -2519,12 +2783,14 @@
 %% }
 -type batch_disassociate_analytics_data_set_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_prompt_response() :: #{
 %%   <<"PromptARN">> => string(),
 %%   <<"PromptId">> => string()
 %% }
 -type create_prompt_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_integration_association_request() :: #{
@@ -2537,11 +2803,13 @@
 %% }
 -type create_integration_association_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% audio_features() :: #{
 %%   <<"EchoReduction">> => list(any())
 %% }
 -type audio_features() :: #{binary() => any()}.
+
 
 %% Example:
 %% routing_profile_queue_config() :: #{
@@ -2551,11 +2819,13 @@
 %% }
 -type routing_profile_queue_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_request_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_request_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_task_template_request() :: #{
@@ -2568,9 +2838,11 @@
 %%   <<"Status">> => list(any())
 %% }
 -type update_task_template_request() :: #{binary() => any()}.
+
 %% Example:
 %% update_contact_response() :: #{}
 -type update_contact_response() :: #{}.
+
 
 %% Example:
 %% disassociate_bot_request() :: #{
@@ -2578,6 +2850,7 @@
 %%   <<"LexV2Bot">> => lex_v2_bot()
 %% }
 -type disassociate_bot_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% evaluation_score() :: #{
@@ -2587,12 +2860,14 @@
 %% }
 -type evaluation_score() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_put_contact_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"ContactDataRequestList">> := list(contact_data_request()())
 %% }
 -type batch_put_contact_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_task_templates_request() :: #{
@@ -2603,11 +2878,13 @@
 %% }
 -type list_task_templates_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% telephony_config() :: #{
 %%   <<"Distributions">> => list(distribution()())
 %% }
 -type telephony_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_security_profiles_response() :: #{
@@ -2616,6 +2893,7 @@
 %% }
 -type list_security_profiles_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_participant_response() :: #{
 %%   <<"ParticipantCredentials">> => participant_token_credentials(),
@@ -2623,12 +2901,14 @@
 %% }
 -type create_participant_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% hierarchy_group_condition() :: #{
 %%   <<"HierarchyGroupMatchType">> => list(any()),
 %%   <<"Value">> => string()
 %% }
 -type hierarchy_group_condition() :: #{binary() => any()}.
+
 
 %% Example:
 %% vocabulary_summary() :: #{
@@ -2642,12 +2922,14 @@
 %% }
 -type vocabulary_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_view_versions_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_view_versions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_contact_flow_module_request() :: #{
@@ -2658,9 +2940,11 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_contact_flow_module_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_instance_request() :: #{}
 -type describe_instance_request() :: #{}.
+
 
 %% Example:
 %% security_profiles_search_filter() :: #{
@@ -2668,11 +2952,13 @@
 %% }
 -type security_profiles_search_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_get_flow_association_request() :: #{
@@ -2680,6 +2966,7 @@
 %%   <<"ResourceType">> => list(any())
 %% }
 -type batch_get_flow_association_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_config() :: #{
@@ -2689,11 +2976,13 @@
 %% }
 -type s3_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_contact_flow_content_request() :: #{
 %%   <<"Content">> := string()
 %% }
 -type update_contact_flow_content_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% user_phone_config() :: #{
@@ -2704,12 +2993,14 @@
 %% }
 -type user_phone_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% submit_contact_evaluation_response() :: #{
 %%   <<"EvaluationArn">> => string(),
 %%   <<"EvaluationId">> => string()
 %% }
 -type submit_contact_evaluation_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% evaluation_form() :: #{
@@ -2730,12 +3021,14 @@
 %% }
 -type evaluation_form() :: #{binary() => any()}.
 
+
 %% Example:
 %% real_time_contact_analysis_transcript_item_with_character_offsets() :: #{
 %%   <<"CharacterOffsets">> => real_time_contact_analysis_character_interval(),
 %%   <<"Id">> => string()
 %% }
 -type real_time_contact_analysis_transcript_item_with_character_offsets() :: #{binary() => any()}.
+
 
 %% Example:
 %% view_version_summary() :: #{
@@ -2749,11 +3042,13 @@
 %% }
 -type view_version_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% numeric_question_property_value_automation() :: #{
 %%   <<"Label">> => list(any())
 %% }
 -type numeric_question_property_value_automation() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_traffic_distribution_request() :: #{
@@ -2762,12 +3057,15 @@
 %%   <<"TelephonyConfig">> => telephony_config()
 %% }
 -type update_traffic_distribution_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_task_template_request() :: #{}
 -type delete_task_template_request() :: #{}.
+
 %% Example:
 %% tag_contact_response() :: #{}
 -type tag_contact_response() :: #{}.
+
 
 %% Example:
 %% list_phone_numbers_request() :: #{
@@ -2777,6 +3075,7 @@
 %%   <<"PhoneNumberTypes">> => list(list(any())())
 %% }
 -type list_phone_numbers_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_metric_data_request() :: #{
@@ -2789,6 +3088,7 @@
 %%   <<"StartTime">> := non_neg_integer()
 %% }
 -type get_metric_data_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% vocabulary() :: #{
@@ -2804,11 +3104,13 @@
 %% }
 -type vocabulary() :: #{binary() => any()}.
 
+
 %% Example:
 %% disassociate_routing_profile_queues_request() :: #{
 %%   <<"QueueReferences">> := list(routing_profile_queue_reference()())
 %% }
 -type disassociate_routing_profile_queues_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% filter_v2() :: #{
@@ -2816,6 +3118,7 @@
 %%   <<"FilterValues">> => list(string()())
 %% }
 -type filter_v2() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_agent_status_request() :: #{
@@ -2826,15 +3129,18 @@
 %%   <<"State">> => list(any())
 %% }
 -type update_agent_status_request() :: #{binary() => any()}.
+
 %% Example:
 %% associate_default_vocabulary_response() :: #{}
 -type associate_default_vocabulary_response() :: #{}.
+
 
 %% Example:
 %% routing_profile_search_filter() :: #{
 %%   <<"TagFilter">> => control_plane_tag_filter()
 %% }
 -type routing_profile_search_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_view_metadata_request() :: #{
@@ -2843,6 +3149,7 @@
 %% }
 -type update_view_metadata_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_users_response() :: #{
 %%   <<"NextToken">> => string(),
@@ -2850,12 +3157,14 @@
 %% }
 -type list_users_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% application() :: #{
 %%   <<"ApplicationPermissions">> => list(string()()),
 %%   <<"Namespace">> => string()
 %% }
 -type application() :: #{binary() => any()}.
+
 
 %% Example:
 %% hierarchy_level() :: #{
@@ -2866,9 +3175,11 @@
 %%   <<"Name">> => string()
 %% }
 -type hierarchy_level() :: #{binary() => any()}.
+
 %% Example:
 %% describe_view_request() :: #{}
 -type describe_view_request() :: #{}.
+
 
 %% Example:
 %% update_evaluation_form_response() :: #{
@@ -2878,11 +3189,13 @@
 %% }
 -type update_evaluation_form_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% user_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type user_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_evaluation_form_versions_response() :: #{
@@ -2890,6 +3203,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_evaluation_form_versions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_evaluation_form_request() :: #{
@@ -2900,9 +3214,11 @@
 %%   <<"Title">> := string()
 %% }
 -type create_evaluation_form_request() :: #{binary() => any()}.
+
 %% Example:
 %% start_contact_recording_response() :: #{}
 -type start_contact_recording_response() :: #{}.
+
 
 %% Example:
 %% get_metric_data_v2_request() :: #{
@@ -2918,6 +3234,7 @@
 %% }
 -type get_metric_data_v2_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% claim_phone_number_request() :: #{
 %%   <<"ClientToken">> => string(),
@@ -2929,11 +3246,13 @@
 %% }
 -type claim_phone_number_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_contact_request() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_contact_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_quick_connects_response() :: #{
@@ -2943,6 +3262,7 @@
 %% }
 -type search_quick_connects_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_realtime_contact_analysis_segments_v2_response() :: #{
 %%   <<"Channel">> => list(any()),
@@ -2951,6 +3271,7 @@
 %%   <<"Status">> => list(any())
 %% }
 -type list_realtime_contact_analysis_segments_v2_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% integration_association_summary() :: #{
@@ -2965,6 +3286,7 @@
 %% }
 -type integration_association_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_analytics_data_associations_request() :: #{
 %%   <<"DataSetId">> => string(),
@@ -2972,6 +3294,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_analytics_data_associations_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_contacts_response() :: #{
@@ -2981,12 +3304,14 @@
 %% }
 -type search_contacts_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_predefined_attributes_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_predefined_attributes_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_quick_connects_request() :: #{
@@ -2996,6 +3321,7 @@
 %% }
 -type list_quick_connects_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% distribution() :: #{
 %%   <<"Percentage">> => integer(),
@@ -3003,11 +3329,13 @@
 %% }
 -type distribution() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_contact_streaming_response() :: #{
 %%   <<"StreamingId">> => string()
 %% }
 -type start_contact_streaming_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_user_hierarchy_request() :: #{
@@ -3015,11 +3343,13 @@
 %% }
 -type update_user_hierarchy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% quick_connect_search_filter() :: #{
 %%   <<"TagFilter">> => control_plane_tag_filter()
 %% }
 -type quick_connect_search_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% disassociate_lambda_function_request() :: #{
@@ -3027,11 +3357,13 @@
 %% }
 -type disassociate_lambda_function_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% disassociate_instance_storage_config_request() :: #{
 %%   <<"ResourceType">> := list(any())
 %% }
 -type disassociate_instance_storage_config_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_routing_profile_queues_request() :: #{
@@ -3039,11 +3371,13 @@
 %% }
 -type update_routing_profile_queues_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_user_phone_config_request() :: #{
 %%   <<"PhoneConfig">> := user_phone_config()
 %% }
 -type update_user_phone_config_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% evaluation_form_question() :: #{
@@ -3057,6 +3391,7 @@
 %% }
 -type evaluation_form_question() :: #{binary() => any()}.
 
+
 %% Example:
 %% notification_recipient_type() :: #{
 %%   <<"UserIds">> => list(string()()),
@@ -3064,11 +3399,13 @@
 %% }
 -type notification_recipient_type() :: #{binary() => any()}.
 
+
 %% Example:
 %% kinesis_stream_config() :: #{
 %%   <<"StreamArn">> => string()
 %% }
 -type kinesis_stream_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% real_time_contact_analysis_segment_event() :: #{
@@ -3081,6 +3418,7 @@
 %% }
 -type real_time_contact_analysis_segment_event() :: #{binary() => any()}.
 
+
 %% Example:
 %% agent_hierarchy_groups() :: #{
 %%   <<"L1Ids">> => list(string()()),
@@ -3091,11 +3429,13 @@
 %% }
 -type agent_hierarchy_groups() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_use_cases_response() :: #{
@@ -3104,6 +3444,7 @@
 %% }
 -type list_use_cases_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_set() :: #{
 %%   <<"key">> => string(),
@@ -3111,11 +3452,13 @@
 %% }
 -type tag_set() :: #{binary() => any()}.
 
+
 %% Example:
 %% problem_detail() :: #{
 %%   <<"message">> => string()
 %% }
 -type problem_detail() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_queues_request() :: #{
@@ -3127,12 +3470,14 @@
 %% }
 -type search_queues_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_analytics_data_set_request() :: #{
 %%   <<"DataSetId">> := string(),
 %%   <<"TargetAccountId">> => string()
 %% }
 -type associate_analytics_data_set_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_users_request() :: #{
@@ -3144,6 +3489,7 @@
 %% }
 -type search_users_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_user_hierarchy_group_response() :: #{
 %%   <<"HierarchyGroupArn">> => string(),
@@ -3151,11 +3497,13 @@
 %% }
 -type create_user_hierarchy_group_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% disassociate_user_proficiencies_request() :: #{
 %%   <<"UserProficiencies">> := list(user_proficiency_disassociate()())
 %% }
 -type disassociate_user_proficiencies_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% contact_data_request() :: #{
@@ -3168,11 +3516,13 @@
 %% }
 -type contact_data_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% disassociate_phone_number_contact_flow_request() :: #{
 %%   <<"InstanceId">> := string()
 %% }
 -type disassociate_phone_number_contact_flow_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% contact_analysis() :: #{
@@ -3180,12 +3530,14 @@
 %% }
 -type contact_analysis() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_approved_origins_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Origins">> => list(string()())
 %% }
 -type list_approved_origins_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% security_profile_search_summary() :: #{
@@ -3198,11 +3550,13 @@
 %% }
 -type security_profile_search_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_view_response() :: #{
 %%   <<"View">> => view()
 %% }
 -type create_view_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% routing_profile_search_criteria() :: #{
@@ -3212,6 +3566,7 @@
 %% }
 -type routing_profile_search_criteria() :: #{binary() => any()}.
 
+
 %% Example:
 %% evaluation_form_numeric_question_option() :: #{
 %%   <<"AutomaticFail">> => boolean(),
@@ -3220,6 +3575,7 @@
 %%   <<"Score">> => integer()
 %% }
 -type evaluation_form_numeric_question_option() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_task_contact_request() :: #{
@@ -3238,12 +3594,14 @@
 %% }
 -type start_task_contact_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_case_action_definition() :: #{
 %%   <<"Fields">> => list(field_value()()),
 %%   <<"TemplateId">> => string()
 %% }
 -type create_case_action_definition() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_rule_response() :: #{
@@ -3252,12 +3610,14 @@
 %% }
 -type create_rule_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% current_metric_result() :: #{
 %%   <<"Collections">> => list(current_metric_data()()),
 %%   <<"Dimensions">> => dimensions()
 %% }
 -type current_metric_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% associate_phone_number_contact_flow_request() :: #{
@@ -3266,11 +3626,13 @@
 %% }
 -type associate_phone_number_contact_flow_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_predefined_attribute_request() :: #{
 %%   <<"Values">> => list()
 %% }
 -type update_predefined_attribute_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_integration_associations_request() :: #{
@@ -3280,6 +3642,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_integration_associations_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_queue_request() :: #{
@@ -3292,15 +3655,18 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_queue_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_contact_flow_module_response() :: #{}
 -type delete_contact_flow_module_response() :: #{}.
+
 
 %% Example:
 %% chat_participant_role_config() :: #{
 %%   <<"ParticipantTimerConfigList">> => list(participant_timer_configuration()())
 %% }
 -type chat_participant_role_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% single_select_question_rule_category_automation() :: #{
@@ -3310,12 +3676,14 @@
 %% }
 -type single_select_question_rule_category_automation() :: #{binary() => any()}.
 
+
 %% Example:
 %% lex_bot() :: #{
 %%   <<"LexRegion">> => string(),
 %%   <<"Name">> => string()
 %% }
 -type lex_bot() :: #{binary() => any()}.
+
 
 %% Example:
 %% hierarchy_path() :: #{
@@ -3327,6 +3695,7 @@
 %% }
 -type hierarchy_path() :: #{binary() => any()}.
 
+
 %% Example:
 %% quick_connect_config() :: #{
 %%   <<"PhoneConfig">> => phone_number_quick_connect_config(),
@@ -3336,12 +3705,14 @@
 %% }
 -type quick_connect_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_instances_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_instances_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% connection_data() :: #{
@@ -3350,6 +3721,7 @@
 %% }
 -type connection_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% monitor_contact_response() :: #{
 %%   <<"ContactArn">> => string(),
@@ -3357,11 +3729,13 @@
 %% }
 -type monitor_contact_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_instance_storage_config_response() :: #{
 %%   <<"AssociationId">> => string()
 %% }
 -type associate_instance_storage_config_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_traffic_distribution_group_users_request() :: #{
@@ -3369,9 +3743,11 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_traffic_distribution_group_users_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_user_request() :: #{}
 -type delete_user_request() :: #{}.
+
 
 %% Example:
 %% get_metric_data_response() :: #{
@@ -3380,12 +3756,14 @@
 %% }
 -type get_metric_data_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_evaluation_forms_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_evaluation_forms_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% contact_flow_module_summary() :: #{
@@ -3396,6 +3774,7 @@
 %% }
 -type contact_flow_module_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% flow_association_summary() :: #{
 %%   <<"FlowId">> => string(),
@@ -3403,6 +3782,7 @@
 %%   <<"ResourceType">> => list(any())
 %% }
 -type flow_association_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% rule() :: #{
@@ -3420,6 +3800,7 @@
 %% }
 -type rule() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_user_hierarchy_groups_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -3427,12 +3808,14 @@
 %% }
 -type list_user_hierarchy_groups_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% sort() :: #{
 %%   <<"FieldName">> => list(any()),
 %%   <<"Order">> => list(any())
 %% }
 -type sort() :: #{binary() => any()}.
+
 
 %% Example:
 %% contact() :: #{
@@ -3462,17 +3845,20 @@
 %% }
 -type contact() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_routing_profile_default_outbound_queue_request() :: #{
 %%   <<"DefaultOutboundQueueId">> := string()
 %% }
 -type update_routing_profile_default_outbound_queue_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_routing_profile_concurrency_request() :: #{
 %%   <<"MediaConcurrencies">> := list(media_concurrency()())
 %% }
 -type update_routing_profile_concurrency_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% routing_profile_queue_reference() :: #{
@@ -3481,12 +3867,14 @@
 %% }
 -type routing_profile_queue_reference() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_agent_status_response() :: #{
 %%   <<"AgentStatusARN">> => string(),
 %%   <<"AgentStatusId">> => string()
 %% }
 -type create_agent_status_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_views_request() :: #{
@@ -3496,6 +3884,7 @@
 %% }
 -type list_views_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% stop_contact_streaming_request() :: #{
 %%   <<"ContactId">> := string(),
@@ -3504,12 +3893,14 @@
 %% }
 -type stop_contact_streaming_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% user_reference() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string()
 %% }
 -type user_reference() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_contact_flow_metadata_request() :: #{
@@ -3518,6 +3909,7 @@
 %%   <<"Name">> => string()
 %% }
 -type update_contact_flow_metadata_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% routing_profile_summary() :: #{
@@ -3529,17 +3921,20 @@
 %% }
 -type routing_profile_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% dismiss_user_contact_request() :: #{
 %%   <<"ContactId">> := string()
 %% }
 -type dismiss_user_contact_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% voice_recording_configuration() :: #{
 %%   <<"VoiceRecordingTrack">> => list(any())
 %% }
 -type voice_recording_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% evaluation_form_numeric_question_properties() :: #{
@@ -3550,6 +3945,7 @@
 %% }
 -type evaluation_form_numeric_question_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_instance_attributes_response() :: #{
 %%   <<"Attributes">> => list(attribute()()),
@@ -3557,11 +3953,13 @@
 %% }
 -type list_instance_attributes_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_user_status_request() :: #{
 %%   <<"AgentStatusId">> := string()
 %% }
 -type put_user_status_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% hierarchy_group() :: #{
@@ -3576,12 +3974,14 @@
 %% }
 -type hierarchy_group() :: #{binary() => any()}.
 
+
 %% Example:
 %% searchable_contact_attributes_criteria() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Values">> => list(string()())
 %% }
 -type searchable_contact_attributes_criteria() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_view_versions_response() :: #{
@@ -3590,12 +3990,14 @@
 %% }
 -type list_view_versions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% endpoint() :: #{
 %%   <<"Address">> => string(),
 %%   <<"Type">> => list(any())
 %% }
 -type endpoint() :: #{binary() => any()}.
+
 
 %% Example:
 %% queue_reference() :: #{
@@ -3604,6 +4006,7 @@
 %% }
 -type queue_reference() :: #{binary() => any()}.
 
+
 %% Example:
 %% interval_details() :: #{
 %%   <<"IntervalPeriod">> => list(any()),
@@ -3611,12 +4014,14 @@
 %% }
 -type interval_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_contact_flow_modules_response() :: #{
 %%   <<"ContactFlowModulesSummaryList">> => list(contact_flow_module_summary()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_contact_flow_modules_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% rule_action() :: #{
@@ -3631,6 +4036,7 @@
 %% }
 -type rule_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_instances_response() :: #{
 %%   <<"InstanceSummaryList">> => list(instance_summary()()),
@@ -3638,14 +4044,17 @@
 %% }
 -type list_instances_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_routing_profile_agent_availability_timer_request() :: #{
 %%   <<"AgentAvailabilityTimer">> := list(any())
 %% }
 -type update_routing_profile_agent_availability_timer_request() :: #{binary() => any()}.
+
 %% Example:
 %% resume_contact_response() :: #{}
 -type resume_contact_response() :: #{}.
+
 
 %% Example:
 %% list_prompts_request() :: #{
@@ -3653,9 +4062,11 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_prompts_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_contact_evaluation_request() :: #{}
 -type delete_contact_evaluation_request() :: #{}.
+
 
 %% Example:
 %% list_security_profile_permissions_request() :: #{
@@ -3664,14 +4075,17 @@
 %% }
 -type list_security_profile_permissions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_case_action_definition() :: #{
 %%   <<"Fields">> => list(field_value()())
 %% }
 -type update_case_action_definition() :: #{binary() => any()}.
+
 %% Example:
 %% untag_contact_response() :: #{}
 -type untag_contact_response() :: #{}.
+
 
 %% Example:
 %% security_profile() :: #{
@@ -3688,6 +4102,7 @@
 %% }
 -type security_profile() :: #{binary() => any()}.
 
+
 %% Example:
 %% quick_connect_summary() :: #{
 %%   <<"Arn">> => string(),
@@ -3699,11 +4114,13 @@
 %% }
 -type quick_connect_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_security_key_request() :: #{
 %%   <<"Key">> := string()
 %% }
 -type associate_security_key_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% current_metric() :: #{
@@ -3711,6 +4128,7 @@
 %%   <<"Unit">> => list(any())
 %% }
 -type current_metric() :: #{binary() => any()}.
+
 
 %% Example:
 %% traffic_distribution_group() :: #{
@@ -3725,6 +4143,7 @@
 %% }
 -type traffic_distribution_group() :: #{binary() => any()}.
 
+
 %% Example:
 %% rule_summary() :: #{
 %%   <<"ActionSummaries">> => list(action_summary()()),
@@ -3738,6 +4157,7 @@
 %% }
 -type rule_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_security_profile_applications_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -3745,12 +4165,14 @@
 %% }
 -type list_security_profile_applications_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_routing_profile_name_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"Name">> => string()
 %% }
 -type update_routing_profile_name_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_routing_profile_queues_response() :: #{
@@ -3761,6 +4183,7 @@
 %% }
 -type list_routing_profile_queues_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_contact_flow_modules_request() :: #{
 %%   <<"ContactFlowModuleState">> => list(any()),
@@ -3769,6 +4192,7 @@
 %% }
 -type list_contact_flow_modules_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_bot_request() :: #{
 %%   <<"LexBot">> => lex_bot(),
@@ -3776,20 +4200,24 @@
 %% }
 -type associate_bot_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_lex_bot_request() :: #{
 %%   <<"LexBot">> := lex_bot()
 %% }
 -type associate_lex_bot_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_security_profile_request() :: #{}
 -type delete_security_profile_request() :: #{}.
+
 
 %% Example:
 %% describe_user_response() :: #{
 %%   <<"User">> => user()
 %% }
 -type describe_user_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% string_condition() :: #{
@@ -3799,12 +4227,14 @@
 %% }
 -type string_condition() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_bots_response() :: #{
 %%   <<"LexBots">> => list(lex_bot_config()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_bots_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% contact_search_summary_agent_info() :: #{
@@ -3813,17 +4243,21 @@
 %% }
 -type contact_search_summary_agent_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_user_hierarchy_structure_request() :: #{
 %%   <<"HierarchyStructure">> := hierarchy_structure_update()
 %% }
 -type update_user_hierarchy_structure_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_traffic_distribution_group_request() :: #{}
 -type delete_traffic_distribution_group_request() :: #{}.
+
 %% Example:
 %% describe_rule_request() :: #{}
 -type describe_rule_request() :: #{}.
+
 
 %% Example:
 %% deactivate_evaluation_form_request() :: #{
@@ -3831,17 +4265,20 @@
 %% }
 -type deactivate_evaluation_form_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_user_security_profiles_request() :: #{
 %%   <<"SecurityProfileIds">> := list(string()())
 %% }
 -type update_user_security_profiles_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% instance_status_reason() :: #{
 %%   <<"Message">> => string()
 %% }
 -type instance_status_reason() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_agent_status_request() :: #{
@@ -3853,6 +4290,7 @@
 %% }
 -type create_agent_status_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% resume_contact_request() :: #{
 %%   <<"ContactFlowId">> => string(),
@@ -3860,18 +4298,23 @@
 %%   <<"InstanceId">> := string()
 %% }
 -type resume_contact_request() :: #{binary() => any()}.
+
 %% Example:
 %% associate_traffic_distribution_group_user_response() :: #{}
 -type associate_traffic_distribution_group_user_response() :: #{}.
+
 %% Example:
 %% update_contact_routing_data_response() :: #{}
 -type update_contact_routing_data_response() :: #{}.
+
 %% Example:
 %% get_flow_association_request() :: #{}
 -type get_flow_association_request() :: #{}.
+
 %% Example:
 %% delete_integration_association_request() :: #{}
 -type delete_integration_association_request() :: #{}.
+
 
 %% Example:
 %% list_security_keys_response() :: #{
@@ -3879,6 +4322,7 @@
 %%   <<"SecurityKeys">> => list(security_key()())
 %% }
 -type list_security_keys_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_view_request() :: #{
@@ -3891,6 +4335,7 @@
 %% }
 -type create_view_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_prompt_request() :: #{
 %%   <<"Description">> => string(),
@@ -3898,6 +4343,7 @@
 %%   <<"S3Uri">> => string()
 %% }
 -type update_prompt_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% user_search_criteria() :: #{
@@ -3907,9 +4353,11 @@
 %%   <<"StringCondition">> => string_condition()
 %% }
 -type user_search_criteria() :: #{binary() => any()}.
+
 %% Example:
 %% describe_contact_evaluation_request() :: #{}
 -type describe_contact_evaluation_request() :: #{}.
+
 
 %% Example:
 %% get_traffic_distribution_response() :: #{
@@ -3921,12 +4369,14 @@
 %% }
 -type get_traffic_distribution_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% transfer_contact_response() :: #{
 %%   <<"ContactArn">> => string(),
 %%   <<"ContactId">> => string()
 %% }
 -type transfer_contact_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_view_content_request() :: #{
@@ -3935,12 +4385,14 @@
 %% }
 -type update_view_content_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_contact_evaluation_response() :: #{
 %%   <<"EvaluationArn">> => string(),
 %%   <<"EvaluationId">> => string()
 %% }
 -type update_contact_evaluation_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% evaluation_form_single_select_question_option() :: #{
@@ -3951,11 +4403,13 @@
 %% }
 -type evaluation_form_single_select_question_option() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_view_content_response() :: #{
 %%   <<"View">> => view()
 %% }
 -type update_view_content_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_instance_request() :: #{
@@ -3969,12 +4423,14 @@
 %% }
 -type create_instance_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% hierarchy_group_summary_reference() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string()
 %% }
 -type hierarchy_group_summary_reference() :: #{binary() => any()}.
+
 
 %% Example:
 %% hierarchy_structure() :: #{
@@ -3985,15 +4441,18 @@
 %%   <<"LevelTwo">> => hierarchy_level()
 %% }
 -type hierarchy_structure() :: #{binary() => any()}.
+
 %% Example:
 %% stop_contact_streaming_response() :: #{}
 -type stop_contact_streaming_response() :: #{}.
+
 
 %% Example:
 %% describe_instance_response() :: #{
 %%   <<"Instance">> => instance()
 %% }
 -type describe_instance_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% new_session_details() :: #{
@@ -4004,17 +4463,20 @@
 %% }
 -type new_session_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_queue_outbound_caller_config_request() :: #{
 %%   <<"OutboundCallerConfig">> := outbound_caller_config()
 %% }
 -type update_queue_outbound_caller_config_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_contact_attributes_response() :: #{
 %%   <<"Attributes">> => map()
 %% }
 -type get_contact_attributes_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% instance() :: #{
@@ -4033,11 +4495,13 @@
 %% }
 -type instance() :: #{binary() => any()}.
 
+
 %% Example:
 %% sign_in_config() :: #{
 %%   <<"Distributions">> => list(sign_in_distribution()())
 %% }
 -type sign_in_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_routing_profiles_response() :: #{
@@ -4046,11 +4510,13 @@
 %% }
 -type list_routing_profiles_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% invalid_parameter_exception() :: #{
@@ -4058,12 +4524,14 @@
 %% }
 -type invalid_parameter_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_contact_flow_module_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string()
 %% }
 -type create_contact_flow_module_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_web_r_t_c_contact_response() :: #{
@@ -4074,15 +4542,18 @@
 %% }
 -type start_web_r_t_c_contact_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% current_metric_sort_criteria() :: #{
 %%   <<"SortByMetric">> => list(any()),
 %%   <<"SortOrder">> => list(any())
 %% }
 -type current_metric_sort_criteria() :: #{binary() => any()}.
+
 %% Example:
 %% update_traffic_distribution_response() :: #{}
 -type update_traffic_distribution_response() :: #{}.
+
 
 %% Example:
 %% security_key() :: #{
@@ -4092,12 +4563,14 @@
 %% }
 -type security_key() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_rules_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"RuleSummaryList">> => list(rule_summary()())
 %% }
 -type list_rules_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_resource_tags_request() :: #{
@@ -4109,11 +4582,13 @@
 %% }
 -type search_resource_tags_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% disconnect_reason() :: #{
 %%   <<"Code">> => string()
 %% }
 -type disconnect_reason() :: #{binary() => any()}.
+
 
 %% Example:
 %% replicate_instance_response() :: #{
@@ -4122,6 +4597,7 @@
 %% }
 -type replicate_instance_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% real_time_contact_analysis_character_interval() :: #{
 %%   <<"BeginOffsetChar">> => integer(),
@@ -4129,12 +4605,14 @@
 %% }
 -type real_time_contact_analysis_character_interval() :: #{binary() => any()}.
 
+
 %% Example:
 %% field_value() :: #{
 %%   <<"Id">> => string(),
 %%   <<"Value">> => field_value_union()
 %% }
 -type field_value() :: #{binary() => any()}.
+
 
 %% Example:
 %% task_template_constraints() :: #{
@@ -4144,6 +4622,7 @@
 %% }
 -type task_template_constraints() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_contact_routing_data_request() :: #{
 %%   <<"QueuePriority">> => float(),
@@ -4151,11 +4630,13 @@
 %% }
 -type update_contact_routing_data_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_traffic_distribution_group_response() :: #{
 %%   <<"TrafficDistributionGroup">> => traffic_distribution_group()
 %% }
 -type describe_traffic_distribution_group_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_hours_of_operations_request() :: #{
@@ -4164,11 +4645,13 @@
 %% }
 -type list_hours_of_operations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_user_hierarchy_group_response() :: #{
 %%   <<"HierarchyGroup">> => hierarchy_group()
 %% }
 -type describe_user_hierarchy_group_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_queue_name_request() :: #{
@@ -4176,6 +4659,7 @@
 %%   <<"Name">> => string()
 %% }
 -type update_queue_name_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% tag_contact_request() :: #{
@@ -4185,12 +4669,14 @@
 %% }
 -type tag_contact_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_contact_evaluation_response() :: #{
 %%   <<"EvaluationArn">> => string(),
 %%   <<"EvaluationId">> => string()
 %% }
 -type start_contact_evaluation_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_routing_profiles_response() :: #{
@@ -4200,12 +4686,14 @@
 %% }
 -type search_routing_profiles_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% queue_quick_connect_config() :: #{
 %%   <<"ContactFlowId">> => string(),
 %%   <<"QueueId">> => string()
 %% }
 -type queue_quick_connect_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% user_proficiency() :: #{
@@ -4214,6 +4702,7 @@
 %%   <<"Level">> => float()
 %% }
 -type user_proficiency() :: #{binary() => any()}.
+
 
 %% Example:
 %% queue_search_criteria() :: #{
@@ -4224,21 +4713,25 @@
 %% }
 -type queue_search_criteria() :: #{binary() => any()}.
 
+
 %% Example:
 %% submit_contact_evaluation_request() :: #{
 %%   <<"Answers">> => map(),
 %%   <<"Notes">> => map()
 %% }
 -type submit_contact_evaluation_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_user_request() :: #{}
 -type describe_user_request() :: #{}.
+
 
 %% Example:
 %% associate_user_proficiencies_request() :: #{
 %%   <<"UserProficiencies">> := list(user_proficiency()())
 %% }
 -type associate_user_proficiencies_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_security_profiles_request() :: #{
@@ -4250,6 +4743,7 @@
 %% }
 -type search_security_profiles_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_prompts_request() :: #{
 %%   <<"InstanceId">> := string(),
@@ -4259,9 +4753,11 @@
 %%   <<"SearchFilter">> => prompt_search_filter()
 %% }
 -type search_prompts_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_security_profile_request() :: #{}
 -type describe_security_profile_request() :: #{}.
+
 
 %% Example:
 %% search_security_profiles_response() :: #{
@@ -4271,11 +4767,13 @@
 %% }
 -type search_security_profiles_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% agent_config() :: #{
 %%   <<"Distributions">> => list(distribution()())
 %% }
 -type agent_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% evaluation_answer_input() :: #{
@@ -4283,11 +4781,13 @@
 %% }
 -type evaluation_answer_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% event_bridge_action_definition() :: #{
 %%   <<"Name">> => string()
 %% }
 -type event_bridge_action_definition() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_default_vocabularies_request() :: #{
@@ -4297,6 +4797,7 @@
 %% }
 -type list_default_vocabularies_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_contact_references_request() :: #{
 %%   <<"NextToken">> => string(),
@@ -4304,11 +4805,13 @@
 %% }
 -type list_contact_references_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% meeting_features_configuration() :: #{
 %%   <<"Audio">> => audio_features()
 %% }
 -type meeting_features_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_contact_attributes_request() :: #{
@@ -4318,6 +4821,7 @@
 %% }
 -type update_contact_attributes_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_contact_request() :: #{
 %%   <<"Description">> => string(),
@@ -4325,9 +4829,11 @@
 %%   <<"References">> => map()
 %% }
 -type update_contact_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_contact_flow_request() :: #{}
 -type describe_contact_flow_request() :: #{}.
+
 
 %% Example:
 %% list_queue_quick_connects_response() :: #{
@@ -4338,12 +4844,14 @@
 %% }
 -type list_queue_quick_connects_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% searchable_contact_attributes() :: #{
 %%   <<"Criteria">> => list(searchable_contact_attributes_criteria()()),
 %%   <<"MatchType">> => list(any())
 %% }
 -type searchable_contact_attributes() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_routing_profiles_request() :: #{
@@ -4352,6 +4860,7 @@
 %% }
 -type list_routing_profiles_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_put_contact_response() :: #{
 %%   <<"FailedRequestList">> => list(failed_request()()),
@@ -4359,26 +4868,32 @@
 %% }
 -type batch_put_contact_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_contact_flow_response() :: #{
 %%   <<"ContactFlow">> => contact_flow()
 %% }
 -type describe_contact_flow_response() :: #{binary() => any()}.
+
 %% Example:
 %% update_contact_flow_content_response() :: #{}
 -type update_contact_flow_content_response() :: #{}.
+
 %% Example:
 %% stop_contact_response() :: #{}
 -type stop_contact_response() :: #{}.
+
 
 %% Example:
 %% invalid_contact_flow_module_exception() :: #{
 %%   <<"Problems">> => list(problem_detail()())
 %% }
 -type invalid_contact_flow_module_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% contact_flow() :: #{
@@ -4393,12 +4908,14 @@
 %% }
 -type contact_flow() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_traffic_distribution_groups_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"TrafficDistributionGroupSummaryList">> => list(traffic_distribution_group_summary()())
 %% }
 -type list_traffic_distribution_groups_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_contact_flows_response() :: #{
@@ -4407,11 +4924,13 @@
 %% }
 -type list_contact_flows_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% idempotency_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type idempotency_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_quick_connects_request() :: #{
@@ -4423,6 +4942,7 @@
 %% }
 -type search_quick_connects_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% evaluation_form_section() :: #{
 %%   <<"Instructions">> => string(),
@@ -4432,6 +4952,7 @@
 %%   <<"Weight">> => float()
 %% }
 -type evaluation_form_section() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_contacts_request() :: #{
@@ -4443,9 +4964,11 @@
 %%   <<"TimeRange">> := search_contacts_time_range()
 %% }
 -type search_contacts_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_quick_connect_request() :: #{}
 -type delete_quick_connect_request() :: #{}.
+
 
 %% Example:
 %% list_integration_associations_response() :: #{
@@ -4453,6 +4976,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_integration_associations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% field_value_union() :: #{
@@ -4462,6 +4986,7 @@
 %%   <<"StringValue">> => string()
 %% }
 -type field_value_union() :: #{binary() => any()}.
+
 
 %% Example:
 %% phone_number_summary() :: #{
@@ -4473,11 +4998,13 @@
 %% }
 -type phone_number_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% hierarchy_level_update() :: #{
 %%   <<"Name">> => string()
 %% }
 -type hierarchy_level_update() :: #{binary() => any()}.
+
 
 %% Example:
 %% resume_contact_recording_request() :: #{
@@ -4486,9 +5013,11 @@
 %%   <<"InstanceId">> := string()
 %% }
 -type resume_contact_recording_request() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_security_key_request() :: #{}
 -type disassociate_security_key_request() :: #{}.
+
 
 %% Example:
 %% instance_summary() :: #{
@@ -4505,11 +5034,13 @@
 %% }
 -type instance_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_instance_storage_config_request() :: #{
 %%   <<"ResourceType">> := list(any())
 %% }
 -type describe_instance_storage_config_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% throttling_exception() :: #{
@@ -4517,11 +5048,13 @@
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_participant_role_config_request() :: #{
 %%   <<"ChannelConfiguration">> := list()
 %% }
 -type update_participant_role_config_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_predefined_attributes_request() :: #{
@@ -4531,9 +5064,11 @@
 %%   <<"SearchCriteria">> => predefined_attribute_search_criteria()
 %% }
 -type search_predefined_attributes_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_instance_request() :: #{}
 -type delete_instance_request() :: #{}.
+
 
 %% Example:
 %% current_metric_data() :: #{
@@ -4541,6 +5076,7 @@
 %%   <<"Value">> => float()
 %% }
 -type current_metric_data() :: #{binary() => any()}.
+
 
 %% Example:
 %% user() :: #{
@@ -4559,15 +5095,18 @@
 %% }
 -type user() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_contact_flow_name_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"Name">> => string()
 %% }
 -type update_contact_flow_name_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_vocabulary_request() :: #{}
 -type delete_vocabulary_request() :: #{}.
+
 
 %% Example:
 %% contact_search_summary() :: #{
@@ -4585,14 +5124,17 @@
 %% }
 -type contact_search_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_contact_flow_module_response() :: #{
 %%   <<"ContactFlowModule">> => contact_flow_module()
 %% }
 -type describe_contact_flow_module_response() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_flow_response() :: #{}
 -type disassociate_flow_response() :: #{}.
+
 
 %% Example:
 %% predefined_attribute_search_criteria() :: #{
@@ -4602,11 +5144,13 @@
 %% }
 -type predefined_attribute_search_criteria() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_quick_connect_response() :: #{
 %%   <<"QuickConnect">> => quick_connect()
 %% }
 -type describe_quick_connect_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% predefined_attribute_summary() :: #{
@@ -4616,11 +5160,13 @@
 %% }
 -type predefined_attribute_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% real_time_contact_analysis_transcript_item_redaction() :: #{
 %%   <<"CharacterOffsets">> => list(real_time_contact_analysis_character_interval()())
 %% }
 -type real_time_contact_analysis_transcript_item_redaction() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_user_hierarchy_group_request() :: #{
@@ -4630,12 +5176,14 @@
 %% }
 -type create_user_hierarchy_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_hours_of_operation_response() :: #{
 %%   <<"HoursOfOperationArn">> => string(),
 %%   <<"HoursOfOperationId">> => string()
 %% }
 -type create_hours_of_operation_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% hours_of_operation_search_criteria() :: #{
@@ -4645,18 +5193,22 @@
 %% }
 -type hours_of_operation_search_criteria() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_routing_profile_response() :: #{
 %%   <<"RoutingProfileArn">> => string(),
 %%   <<"RoutingProfileId">> => string()
 %% }
 -type create_routing_profile_response() :: #{binary() => any()}.
+
 %% Example:
 %% assign_contact_category_action_definition() :: #{}
 -type assign_contact_category_action_definition() :: #{}.
+
 %% Example:
 %% get_prompt_file_request() :: #{}
 -type get_prompt_file_request() :: #{}.
+
 
 %% Example:
 %% analytics_data_association_result() :: #{
@@ -4666,9 +5218,11 @@
 %%   <<"TargetAccountId">> => string()
 %% }
 -type analytics_data_association_result() :: #{binary() => any()}.
+
 %% Example:
 %% delete_view_response() :: #{}
 -type delete_view_response() :: #{}.
+
 
 %% Example:
 %% list_phone_numbers_v2_response() :: #{
@@ -4677,12 +5231,14 @@
 %% }
 -type list_phone_numbers_v2_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_user_proficiencies_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_user_proficiencies_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_task_template_response() :: #{
@@ -4701,6 +5257,7 @@
 %% }
 -type update_task_template_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% metric_v2() :: #{
 %%   <<"MetricFilters">> => list(metric_filter_v2()()),
@@ -4709,12 +5266,14 @@
 %% }
 -type metric_v2() :: #{binary() => any()}.
 
+
 %% Example:
 %% threshold() :: #{
 %%   <<"Comparison">> => list(any()),
 %%   <<"ThresholdValue">> => float()
 %% }
 -type threshold() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_outbound_voice_contact_request() :: #{
@@ -4735,12 +5294,14 @@
 %% }
 -type start_outbound_voice_contact_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% attribute() :: #{
 %%   <<"AttributeType">> => list(any()),
 %%   <<"Value">> => string()
 %% }
 -type attribute() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_use_case_request() :: #{
@@ -4749,12 +5310,14 @@
 %% }
 -type create_use_case_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_users_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_users_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% default_vocabulary() :: #{
@@ -4765,11 +5328,13 @@
 %% }
 -type default_vocabulary() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_task_contact_response() :: #{
 %%   <<"ContactId">> => string()
 %% }
 -type start_task_contact_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% chat_event() :: #{
@@ -4778,6 +5343,7 @@
 %%   <<"Type">> => list(any())
 %% }
 -type chat_event() :: #{binary() => any()}.
+
 
 %% Example:
 %% filters() :: #{
@@ -4788,6 +5354,7 @@
 %% }
 -type filters() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_agent_status_response() :: #{
 %%   <<"AgentStatusSummaryList">> => list(agent_status_summary()()),
@@ -4795,17 +5362,20 @@
 %% }
 -type list_agent_status_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_user_routing_profile_request() :: #{
 %%   <<"RoutingProfileId">> := string()
 %% }
 -type update_user_routing_profile_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% task_template_field_identifier() :: #{
 %%   <<"Name">> => string()
 %% }
 -type task_template_field_identifier() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_queue_quick_connects_request() :: #{
@@ -4814,11 +5384,13 @@
 %% }
 -type list_queue_quick_connects_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% limit_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_queues_response() :: #{
@@ -4827,12 +5399,14 @@
 %% }
 -type list_queues_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_evaluation_forms_response() :: #{
 %%   <<"EvaluationFormSummaryList">> => list(evaluation_form_summary()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_evaluation_forms_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% evaluation_form_single_select_question_properties() :: #{
@@ -4841,9 +5415,11 @@
 %%   <<"Options">> => list(evaluation_form_single_select_question_option()())
 %% }
 -type evaluation_form_single_select_question_properties() :: #{binary() => any()}.
+
 %% Example:
 %% get_traffic_distribution_request() :: #{}
 -type get_traffic_distribution_request() :: #{}.
+
 
 %% Example:
 %% attendee() :: #{
@@ -4851,6 +5427,7 @@
 %%   <<"JoinToken">> => string()
 %% }
 -type attendee() :: #{binary() => any()}.
+
 
 %% Example:
 %% agent_status_summary() :: #{
@@ -4862,9 +5439,11 @@
 %%   <<"Type">> => list(any())
 %% }
 -type agent_status_summary() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_traffic_distribution_group_user_response() :: #{}
 -type disassociate_traffic_distribution_group_user_response() :: #{}.
+
 
 %% Example:
 %% search_vocabularies_request() :: #{
@@ -4876,11 +5455,13 @@
 %% }
 -type search_vocabularies_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% prompt_search_filter() :: #{
 %%   <<"TagFilter">> => control_plane_tag_filter()
 %% }
 -type prompt_search_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_queue_status_request() :: #{
@@ -4888,11 +5469,13 @@
 %% }
 -type update_queue_status_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_vocabulary_response() :: #{
 %%   <<"Vocabulary">> => vocabulary()
 %% }
 -type describe_vocabulary_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% associate_flow_request() :: #{
@@ -4902,6 +5485,7 @@
 %% }
 -type associate_flow_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_connect_reference() :: #{
 %%   <<"Type">> => list(any()),
@@ -4909,15 +5493,18 @@
 %% }
 -type aws_connect_reference() :: #{binary() => any()}.
 
+
 %% Example:
 %% metric_data_v2() :: #{
 %%   <<"Metric">> => metric_v2(),
 %%   <<"Value">> => float()
 %% }
 -type metric_data_v2() :: #{binary() => any()}.
+
 %% Example:
 %% describe_prompt_request() :: #{}
 -type describe_prompt_request() :: #{}.
+
 
 %% Example:
 %% list_phone_numbers_response() :: #{
@@ -4925,6 +5512,7 @@
 %%   <<"PhoneNumberSummaryList">> => list(phone_number_summary()())
 %% }
 -type list_phone_numbers_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% real_time_contact_analysis_attachment() :: #{
@@ -4935,15 +5523,18 @@
 %% }
 -type real_time_contact_analysis_attachment() :: #{binary() => any()}.
 
+
 %% Example:
 %% contact_search_summary_queue_info() :: #{
 %%   <<"EnqueueTimestamp">> => non_neg_integer(),
 %%   <<"Id">> => string()
 %% }
 -type contact_search_summary_queue_info() :: #{binary() => any()}.
+
 %% Example:
 %% delete_queue_request() :: #{}
 -type delete_queue_request() :: #{}.
+
 
 %% Example:
 %% evaluation() :: #{
@@ -4960,6 +5551,7 @@
 %% }
 -type evaluation() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_vocabulary_response() :: #{
 %%   <<"State">> => list(any()),
@@ -4968,6 +5560,7 @@
 %% }
 -type delete_vocabulary_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_phone_number_metadata_request() :: #{
 %%   <<"ClientToken">> => string(),
@@ -4975,12 +5568,14 @@
 %% }
 -type update_phone_number_metadata_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% sign_in_distribution() :: #{
 %%   <<"Enabled">> => boolean(),
 %%   <<"Region">> => string()
 %% }
 -type sign_in_distribution() :: #{binary() => any()}.
+
 
 %% Example:
 %% media_concurrency() :: #{
@@ -4990,6 +5585,7 @@
 %% }
 -type media_concurrency() :: #{binary() => any()}.
 
+
 %% Example:
 %% control_plane_tag_filter() :: #{
 %%   <<"AndConditions">> => list(tag_condition()()),
@@ -4997,6 +5593,7 @@
 %%   <<"TagCondition">> => tag_condition()
 %% }
 -type control_plane_tag_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% evaluation_metadata() :: #{
@@ -5007,12 +5604,14 @@
 %% }
 -type evaluation_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% evaluation_form_scoring_strategy() :: #{
 %%   <<"Mode">> => list(any()),
 %%   <<"Status">> => list(any())
 %% }
 -type evaluation_form_scoring_strategy() :: #{binary() => any()}.
+
 
 %% Example:
 %% quick_connect() :: #{
@@ -5026,15 +5625,18 @@
 %%   <<"Tags">> => map()
 %% }
 -type quick_connect() :: #{binary() => any()}.
+
 %% Example:
 %% pause_contact_response() :: #{}
 -type pause_contact_response() :: #{}.
+
 
 %% Example:
 %% associate_security_key_response() :: #{
 %%   <<"AssociationId">> => string()
 %% }
 -type associate_security_key_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% hours_of_operation_config() :: #{
@@ -5044,6 +5646,7 @@
 %% }
 -type hours_of_operation_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% activate_evaluation_form_response() :: #{
 %%   <<"EvaluationFormArn">> => string(),
@@ -5052,12 +5655,14 @@
 %% }
 -type activate_evaluation_form_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_approved_origins_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_approved_origins_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% historical_metric() :: #{
@@ -5068,6 +5673,7 @@
 %% }
 -type historical_metric() :: #{binary() => any()}.
 
+
 %% Example:
 %% failed_request() :: #{
 %%   <<"FailureReasonCode">> => list(any()),
@@ -5076,6 +5682,7 @@
 %% }
 -type failed_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_associate_analytics_data_set_request() :: #{
 %%   <<"DataSetIds">> := list(string()()),
@@ -5083,11 +5690,13 @@
 %% }
 -type batch_associate_analytics_data_set_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_queue_quick_connects_request() :: #{
 %%   <<"QuickConnectIds">> := list(string()())
 %% }
 -type associate_queue_quick_connects_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% tag_search_condition() :: #{
@@ -5097,6 +5706,7 @@
 %%   <<"tagValueComparisonType">> => list(any())
 %% }
 -type tag_search_condition() :: #{binary() => any()}.
+
 
 %% Example:
 %% task_template_metadata() :: #{
@@ -5110,6 +5720,7 @@
 %% }
 -type task_template_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% attachment_reference() :: #{
 %%   <<"Name">> => string(),
@@ -5118,12 +5729,14 @@
 %% }
 -type attachment_reference() :: #{binary() => any()}.
 
+
 %% Example:
 %% url_reference() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Value">> => string()
 %% }
 -type url_reference() :: #{binary() => any()}.
+
 
 %% Example:
 %% string_reference() :: #{
@@ -5132,12 +5745,14 @@
 %% }
 -type string_reference() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_predefined_attributes_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"PredefinedAttributeSummaryList">> => list(predefined_attribute_summary()())
 %% }
 -type list_predefined_attributes_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% routing_profile() :: #{
@@ -5158,11 +5773,13 @@
 %% }
 -type routing_profile() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_routing_profile_response() :: #{
 %%   <<"RoutingProfile">> => routing_profile()
 %% }
 -type describe_routing_profile_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% rule_trigger_event_source() :: #{
@@ -5170,6 +5787,7 @@
 %%   <<"IntegrationAssociationId">> => string()
 %% }
 -type rule_trigger_event_source() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_routing_profile_request() :: #{
@@ -5182,6 +5800,7 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_routing_profile_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_chat_contact_request() :: #{
@@ -5199,6 +5818,7 @@
 %% }
 -type start_chat_contact_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_chat_contact_response() :: #{
 %%   <<"ContactId">> => string(),
@@ -5208,6 +5828,7 @@
 %% }
 -type start_chat_contact_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_phone_number_request() :: #{
 %%   <<"ClientToken">> => string(),
@@ -5216,6 +5837,7 @@
 %% }
 -type update_phone_number_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_contact_schedule_request() :: #{
 %%   <<"ContactId">> := string(),
@@ -5223,9 +5845,11 @@
 %%   <<"ScheduledTime">> := non_neg_integer()
 %% }
 -type update_contact_schedule_request() :: #{binary() => any()}.
+
 %% Example:
 %% put_user_status_response() :: #{}
 -type put_user_status_response() :: #{}.
+
 
 %% Example:
 %% hours_of_operation_time_slice() :: #{
@@ -5234,6 +5858,7 @@
 %% }
 -type hours_of_operation_time_slice() :: #{binary() => any()}.
 
+
 %% Example:
 %% prompt_search_criteria() :: #{
 %%   <<"AndConditions">> => list(prompt_search_criteria()()),
@@ -5241,6 +5866,7 @@
 %%   <<"StringCondition">> => string_condition()
 %% }
 -type prompt_search_criteria() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_criteria() :: #{
@@ -5253,9 +5879,11 @@
 %%   <<"SearchableContactAttributes">> => searchable_contact_attributes()
 %% }
 -type search_criteria() :: #{binary() => any()}.
+
 %% Example:
 %% update_contact_flow_module_metadata_response() :: #{}
 -type update_contact_flow_module_metadata_response() :: #{}.
+
 
 %% Example:
 %% list_security_profiles_request() :: #{
@@ -5263,12 +5891,15 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_security_profiles_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_hours_of_operation_request() :: #{}
 -type describe_hours_of_operation_request() :: #{}.
+
 %% Example:
 %% describe_routing_profile_request() :: #{}
 -type describe_routing_profile_request() :: #{}.
+
 
 %% Example:
 %% kinesis_video_stream_config() :: #{
@@ -5278,6 +5909,7 @@
 %% }
 -type kinesis_video_stream_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_contact_evaluation_request() :: #{
 %%   <<"ClientToken">> => string(),
@@ -5285,6 +5917,7 @@
 %%   <<"EvaluationFormId">> := string()
 %% }
 -type start_contact_evaluation_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% claimed_phone_number_summary() :: #{
@@ -5302,6 +5935,7 @@
 %% }
 -type claimed_phone_number_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_quick_connects_response() :: #{
 %%   <<"NextToken">> => string(),
@@ -5309,12 +5943,14 @@
 %% }
 -type list_quick_connects_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_task_template_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string()
 %% }
 -type create_task_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% evaluation_summary() :: #{
@@ -5329,9 +5965,11 @@
 %%   <<"Status">> => list(any())
 %% }
 -type evaluation_summary() :: #{binary() => any()}.
+
 %% Example:
 %% end_associated_tasks_action_definition() :: #{}
 -type end_associated_tasks_action_definition() :: #{}.
+
 
 %% Example:
 %% historical_metric_data() :: #{
@@ -5339,9 +5977,11 @@
 %%   <<"Value">> => float()
 %% }
 -type historical_metric_data() :: #{binary() => any()}.
+
 %% Example:
 %% associate_flow_response() :: #{}
 -type associate_flow_response() :: #{}.
+
 
 %% Example:
 %% list_instance_storage_configs_response() :: #{
@@ -5350,11 +5990,13 @@
 %% }
 -type list_instance_storage_configs_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_ready_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type resource_not_ready_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% evaluation_form_single_select_question_automation() :: #{
@@ -5362,6 +6004,7 @@
 %%   <<"Options">> => list(list()())
 %% }
 -type evaluation_form_single_select_question_automation() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_queues_response() :: #{
@@ -5371,6 +6014,7 @@
 %% }
 -type search_queues_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% routing_profile_reference() :: #{
 %%   <<"Arn">> => string(),
@@ -5378,17 +6022,21 @@
 %% }
 -type routing_profile_reference() :: #{binary() => any()}.
 
+
 %% Example:
 %% real_time_contact_analysis_issue_detected() :: #{
 %%   <<"TranscriptItems">> => list(real_time_contact_analysis_transcript_item_with_content()())
 %% }
 -type real_time_contact_analysis_issue_detected() :: #{binary() => any()}.
+
 %% Example:
 %% describe_quick_connect_request() :: #{}
 -type describe_quick_connect_request() :: #{}.
+
 %% Example:
 %% delete_predefined_attribute_request() :: #{}
 -type delete_predefined_attribute_request() :: #{}.
+
 
 %% Example:
 %% create_user_response() :: #{
@@ -5396,6 +6044,7 @@
 %%   <<"UserId">> => string()
 %% }
 -type create_user_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_instance_storage_configs_request() :: #{
@@ -5405,6 +6054,7 @@
 %% }
 -type list_instance_storage_configs_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_views_response() :: #{
 %%   <<"NextToken">> => string(),
@@ -5412,20 +6062,24 @@
 %% }
 -type list_views_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% duplicate_resource_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type duplicate_resource_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_hours_of_operation_request() :: #{}
 -type delete_hours_of_operation_request() :: #{}.
+
 
 %% Example:
 %% maximum_result_returned_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type maximum_result_returned_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_persistent_contact_association_request() :: #{
@@ -5435,15 +6089,18 @@
 %% }
 -type create_persistent_contact_association_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_analytics_data_associations_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Results">> => list(analytics_data_association_result()())
 %% }
 -type list_analytics_data_associations_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_traffic_distribution_group_response() :: #{}
 -type delete_traffic_distribution_group_response() :: #{}.
+
 
 %% Example:
 %% resource_conflict_exception() :: #{
@@ -5451,12 +6108,14 @@
 %% }
 -type resource_conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_user_hierarchy_groups_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"UserHierarchyGroupSummaryList">> => list(hierarchy_group_summary()())
 %% }
 -type list_user_hierarchy_groups_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_web_r_t_c_contact_request() :: #{
@@ -5472,6 +6131,7 @@
 %% }
 -type start_web_r_t_c_contact_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% hierarchy_structure_update() :: #{
 %%   <<"LevelFive">> => hierarchy_level_update(),
@@ -5482,6 +6142,7 @@
 %% }
 -type hierarchy_structure_update() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_default_vocabularies_response() :: #{
 %%   <<"DefaultVocabularyList">> => list(default_vocabulary()()),
@@ -5489,11 +6150,13 @@
 %% }
 -type list_default_vocabularies_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% user_search_filter() :: #{
 %%   <<"TagFilter">> => control_plane_tag_filter()
 %% }
 -type user_search_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% prompt() :: #{
@@ -5507,6 +6170,7 @@
 %% }
 -type prompt() :: #{binary() => any()}.
 
+
 %% Example:
 %% media_placement() :: #{
 %%   <<"AudioFallbackUrl">> => string(),
@@ -5517,6 +6181,7 @@
 %% }
 -type media_placement() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_realtime_contact_analysis_segments_v2_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -5525,9 +6190,11 @@
 %%   <<"SegmentTypes">> := list(list(any())())
 %% }
 -type list_realtime_contact_analysis_segments_v2_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_contact_flow_request() :: #{}
 -type delete_contact_flow_request() :: #{}.
+
 
 %% Example:
 %% get_current_metric_data_response() :: #{
@@ -5537,6 +6204,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type get_current_metric_data_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_available_phone_numbers_request() :: #{
@@ -5550,17 +6218,20 @@
 %% }
 -type search_available_phone_numbers_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_rule_response() :: #{
 %%   <<"Rule">> => rule()
 %% }
 -type describe_rule_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% participant_details() :: #{
 %%   <<"DisplayName">> => string()
 %% }
 -type participant_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% date_reference() :: #{
@@ -5569,12 +6240,14 @@
 %% }
 -type date_reference() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_queue_response() :: #{
 %%   <<"QueueArn">> => string(),
 %%   <<"QueueId">> => string()
 %% }
 -type create_queue_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% predefined_attribute() :: #{
@@ -5585,11 +6258,13 @@
 %% }
 -type predefined_attribute() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_user_hierarchy_group_name_request() :: #{
 %%   <<"Name">> := string()
 %% }
 -type update_user_hierarchy_group_name_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% real_time_contact_analysis_segment_attachments() :: #{
@@ -5601,6 +6276,7 @@
 %%   <<"Time">> => list()
 %% }
 -type real_time_contact_analysis_segment_attachments() :: #{binary() => any()}.
+
 
 %% Example:
 %% real_time_contact_analysis_segment_transcript() :: #{
@@ -5616,6 +6292,7 @@
 %% }
 -type real_time_contact_analysis_segment_transcript() :: #{binary() => any()}.
 
+
 %% Example:
 %% transcript_criteria() :: #{
 %%   <<"MatchType">> => list(any()),
@@ -5624,15 +6301,18 @@
 %% }
 -type transcript_criteria() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_contact_flow_response() :: #{
 %%   <<"ContactFlowArn">> => string(),
 %%   <<"ContactFlowId">> => string()
 %% }
 -type create_contact_flow_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_queue_request() :: #{}
 -type describe_queue_request() :: #{}.
+
 
 %% Example:
 %% batch_disassociate_analytics_data_set_response() :: #{
@@ -5640,9 +6320,11 @@
 %%   <<"Errors">> => list(error_result()())
 %% }
 -type batch_disassociate_analytics_data_set_response() :: #{binary() => any()}.
+
 %% Example:
 %% update_contact_flow_module_content_response() :: #{}
 -type update_contact_flow_module_content_response() :: #{}.
+
 
 %% Example:
 %% batch_get_flow_association_response() :: #{
@@ -5650,11 +6332,13 @@
 %% }
 -type batch_get_flow_association_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_tags_search_criteria() :: #{
 %%   <<"TagSearchCondition">> => tag_search_condition()
 %% }
 -type resource_tags_search_criteria() :: #{binary() => any()}.
+
 
 %% Example:
 %% suspend_contact_recording_request() :: #{
@@ -5663,6 +6347,7 @@
 %%   <<"InstanceId">> := string()
 %% }
 -type suspend_contact_recording_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_user_request() :: #{
@@ -5678,6 +6363,7 @@
 %% }
 -type create_user_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% property_validation_exception_property() :: #{
 %%   <<"Message">> => string(),
@@ -5685,6 +6371,7 @@
 %%   <<"Reason">> => list(any())
 %% }
 -type property_validation_exception_property() :: #{binary() => any()}.
+
 
 %% Example:
 %% evaluation_form_content() :: #{
@@ -5697,15 +6384,18 @@
 %%   <<"Title">> => string()
 %% }
 -type evaluation_form_content() :: #{binary() => any()}.
+
 %% Example:
 %% dismiss_user_contact_response() :: #{}
 -type dismiss_user_contact_response() :: #{}.
+
 
 %% Example:
 %% update_contact_flow_module_content_request() :: #{
 %%   <<"Content">> := string()
 %% }
 -type update_contact_flow_module_content_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% instance_storage_config() :: #{
@@ -5718,12 +6408,14 @@
 %% }
 -type instance_storage_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_routing_profile_queues_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_routing_profile_queues_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% agent_status_reference() :: #{
@@ -5733,15 +6425,18 @@
 %% }
 -type agent_status_reference() :: #{binary() => any()}.
 
+
 %% Example:
 %% allowed_capabilities() :: #{
 %%   <<"Agent">> => participant_capabilities(),
 %%   <<"Customer">> => participant_capabilities()
 %% }
 -type allowed_capabilities() :: #{binary() => any()}.
+
 %% Example:
 %% get_contact_attributes_request() :: #{}
 -type get_contact_attributes_request() :: #{}.
+
 
 %% Example:
 %% batch_associate_analytics_data_set_response() :: #{
@@ -5749,6 +6444,1812 @@
 %%   <<"Errors">> => list(error_result()())
 %% }
 -type batch_associate_analytics_data_set_response() :: #{binary() => any()}.
+
+-type activate_evaluation_form_errors() ::
+    resource_conflict_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type associate_analytics_data_set_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type associate_approved_origin_errors() ::
+    resource_conflict_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type associate_bot_errors() ::
+    resource_conflict_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type associate_default_vocabulary_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type associate_flow_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type associate_instance_storage_config_errors() ::
+    resource_conflict_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type associate_lambda_function_errors() ::
+    resource_conflict_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type associate_lex_bot_errors() ::
+    resource_conflict_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type associate_phone_number_contact_flow_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type associate_queue_quick_connects_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type associate_routing_profile_queues_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type associate_security_key_errors() ::
+    resource_conflict_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type associate_traffic_distribution_group_user_errors() ::
+    resource_conflict_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type associate_user_proficiencies_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type batch_associate_analytics_data_set_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type batch_disassociate_analytics_data_set_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type batch_get_flow_association_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type batch_put_contact_errors() ::
+    limit_exceeded_exception() | 
+    idempotency_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type claim_phone_number_errors() ::
+    throttling_exception() | 
+    idempotency_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type create_agent_status_errors() ::
+    duplicate_resource_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type create_contact_flow_errors() ::
+    duplicate_resource_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    invalid_contact_flow_exception().
+
+-type create_contact_flow_module_errors() ::
+    duplicate_resource_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    idempotency_exception() | 
+    invalid_contact_flow_module_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type create_evaluation_form_errors() ::
+    resource_conflict_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type create_hours_of_operation_errors() ::
+    duplicate_resource_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type create_instance_errors() ::
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type create_integration_association_errors() ::
+    duplicate_resource_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type create_participant_errors() ::
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type create_persistent_contact_association_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type create_predefined_attribute_errors() ::
+    duplicate_resource_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type create_prompt_errors() ::
+    duplicate_resource_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception().
+
+-type create_queue_errors() ::
+    duplicate_resource_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type create_quick_connect_errors() ::
+    duplicate_resource_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type create_routing_profile_errors() ::
+    duplicate_resource_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type create_rule_errors() ::
+    resource_conflict_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type create_security_profile_errors() ::
+    duplicate_resource_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type create_task_template_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    property_validation_exception().
+
+-type create_traffic_distribution_group_errors() ::
+    resource_conflict_exception() | 
+    resource_not_ready_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type create_use_case_errors() ::
+    duplicate_resource_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type create_user_errors() ::
+    duplicate_resource_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type create_user_hierarchy_group_errors() ::
+    duplicate_resource_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type create_view_errors() ::
+    duplicate_resource_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    internal_service_exception() | 
+    resource_in_use_exception().
+
+-type create_view_version_errors() ::
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    internal_service_exception() | 
+    resource_in_use_exception().
+
+-type create_vocabulary_errors() ::
+    resource_conflict_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type deactivate_evaluation_form_errors() ::
+    resource_conflict_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type delete_contact_evaluation_errors() ::
+    resource_conflict_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type delete_contact_flow_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type delete_contact_flow_module_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type delete_evaluation_form_errors() ::
+    resource_conflict_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type delete_hours_of_operation_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type delete_instance_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type delete_integration_association_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type delete_predefined_attribute_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    resource_in_use_exception().
+
+-type delete_prompt_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type delete_queue_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    resource_in_use_exception().
+
+-type delete_quick_connect_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type delete_routing_profile_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    resource_in_use_exception().
+
+-type delete_rule_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type delete_security_profile_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    resource_in_use_exception().
+
+-type delete_task_template_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type delete_traffic_distribution_group_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    resource_in_use_exception().
+
+-type delete_use_case_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type delete_user_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type delete_user_hierarchy_group_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    resource_in_use_exception().
+
+-type delete_view_errors() ::
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    internal_service_exception() | 
+    resource_in_use_exception().
+
+-type delete_view_version_errors() ::
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    internal_service_exception() | 
+    resource_in_use_exception().
+
+-type delete_vocabulary_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    resource_in_use_exception().
+
+-type describe_agent_status_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type describe_contact_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type describe_contact_evaluation_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type describe_contact_flow_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    contact_flow_not_published_exception().
+
+-type describe_contact_flow_module_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type describe_evaluation_form_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type describe_hours_of_operation_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type describe_instance_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type describe_instance_attribute_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type describe_instance_storage_config_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type describe_phone_number_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type describe_predefined_attribute_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type describe_prompt_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type describe_queue_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type describe_quick_connect_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type describe_routing_profile_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type describe_rule_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type describe_security_profile_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type describe_traffic_distribution_group_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type describe_user_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type describe_user_hierarchy_group_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type describe_user_hierarchy_structure_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type describe_view_errors() ::
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    internal_service_exception().
+
+-type describe_vocabulary_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type disassociate_analytics_data_set_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type disassociate_approved_origin_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type disassociate_bot_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type disassociate_flow_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type disassociate_instance_storage_config_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type disassociate_lambda_function_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type disassociate_lex_bot_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type disassociate_phone_number_contact_flow_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type disassociate_queue_quick_connects_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type disassociate_routing_profile_queues_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type disassociate_security_key_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type disassociate_traffic_distribution_group_user_errors() ::
+    resource_conflict_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type disassociate_user_proficiencies_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type dismiss_user_contact_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type get_contact_attributes_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type get_current_metric_data_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type get_current_user_data_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type get_federation_token_errors() ::
+    duplicate_resource_exception() | 
+    invalid_parameter_exception() | 
+    user_not_found_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type get_flow_association_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type get_metric_data_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type get_metric_data_v2_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type get_prompt_file_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type get_task_template_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type get_traffic_distribution_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type import_phone_number_errors() ::
+    throttling_exception() | 
+    idempotency_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_agent_statuses_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_analytics_data_associations_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_approved_origins_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_bots_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_contact_evaluations_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_contact_flow_modules_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_contact_flows_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_contact_references_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_default_vocabularies_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception().
+
+-type list_evaluation_form_versions_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_evaluation_forms_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_flow_associations_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_hours_of_operations_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_instance_attributes_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_instance_storage_configs_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_instances_errors() ::
+    invalid_request_exception() | 
+    internal_service_exception().
+
+-type list_integration_associations_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_lambda_functions_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_lex_bots_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_phone_numbers_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_phone_numbers_v2_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_predefined_attributes_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_prompts_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_queue_quick_connects_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_queues_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_quick_connects_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_realtime_contact_analysis_segments_v2_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    output_type_not_found_exception().
+
+-type list_routing_profile_queues_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_routing_profiles_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_rules_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_security_keys_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_security_profile_applications_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_security_profile_permissions_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_security_profiles_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_task_templates_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_traffic_distribution_group_users_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_traffic_distribution_groups_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception().
+
+-type list_use_cases_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_user_hierarchy_groups_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_user_proficiencies_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_users_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_view_versions_errors() ::
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    internal_service_exception().
+
+-type list_views_errors() ::
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    internal_service_exception().
+
+-type monitor_contact_errors() ::
+    throttling_exception() | 
+    idempotency_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type pause_contact_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_service_exception().
+
+-type put_user_status_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type release_phone_number_errors() ::
+    throttling_exception() | 
+    idempotency_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    resource_in_use_exception().
+
+-type replicate_instance_errors() ::
+    resource_conflict_exception() | 
+    resource_not_ready_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type resume_contact_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_service_exception().
+
+-type resume_contact_recording_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type search_available_phone_numbers_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_service_exception().
+
+-type search_contacts_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type search_hours_of_operations_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type search_predefined_attributes_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type search_prompts_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type search_queues_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type search_quick_connects_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type search_resource_tags_errors() ::
+    maximum_result_returned_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type search_routing_profiles_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type search_security_profiles_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type search_users_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type search_vocabularies_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception().
+
+-type send_chat_integration_event_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type start_chat_contact_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type start_contact_evaluation_errors() ::
+    resource_conflict_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type start_contact_recording_errors() ::
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type start_contact_streaming_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type start_outbound_voice_contact_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    destination_not_allowed_exception() | 
+    internal_service_exception() | 
+    outbound_contact_not_permitted_exception().
+
+-type start_task_contact_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type start_web_r_t_c_contact_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type stop_contact_errors() ::
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    contact_not_found_exception().
+
+-type stop_contact_recording_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type stop_contact_streaming_errors() ::
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type submit_contact_evaluation_errors() ::
+    resource_conflict_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type suspend_contact_recording_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type tag_contact_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type transfer_contact_errors() ::
+    throttling_exception() | 
+    idempotency_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type untag_contact_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_agent_status_errors() ::
+    duplicate_resource_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_contact_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_contact_attributes_errors() ::
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_contact_evaluation_errors() ::
+    resource_conflict_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_contact_flow_content_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    invalid_contact_flow_exception().
+
+-type update_contact_flow_metadata_errors() ::
+    duplicate_resource_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_contact_flow_module_content_errors() ::
+    throttling_exception() | 
+    invalid_contact_flow_module_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_contact_flow_module_metadata_errors() ::
+    duplicate_resource_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_contact_flow_name_errors() ::
+    duplicate_resource_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_contact_routing_data_errors() ::
+    resource_conflict_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_contact_schedule_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_evaluation_form_errors() ::
+    resource_conflict_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_hours_of_operation_errors() ::
+    duplicate_resource_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_instance_attribute_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_instance_storage_config_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_participant_role_config_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_phone_number_errors() ::
+    throttling_exception() | 
+    idempotency_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    resource_in_use_exception().
+
+-type update_phone_number_metadata_errors() ::
+    throttling_exception() | 
+    idempotency_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    resource_in_use_exception().
+
+-type update_predefined_attribute_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_prompt_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_queue_hours_of_operation_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_queue_max_contacts_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_queue_name_errors() ::
+    duplicate_resource_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_queue_outbound_caller_config_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_queue_status_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_quick_connect_config_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_quick_connect_name_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_routing_profile_agent_availability_timer_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_routing_profile_concurrency_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_routing_profile_default_outbound_queue_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_routing_profile_name_errors() ::
+    duplicate_resource_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_routing_profile_queues_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_rule_errors() ::
+    resource_conflict_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_security_profile_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_task_template_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    property_validation_exception().
+
+-type update_traffic_distribution_errors() ::
+    resource_conflict_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_user_hierarchy_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_user_hierarchy_group_name_errors() ::
+    duplicate_resource_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_user_hierarchy_structure_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    resource_in_use_exception().
+
+-type update_user_identity_info_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_user_phone_config_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_user_proficiencies_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_user_routing_profile_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_user_security_profiles_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_view_content_errors() ::
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    internal_service_exception() | 
+    resource_in_use_exception().
+
+-type update_view_metadata_errors() ::
+    duplicate_resource_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    internal_service_exception() | 
+    resource_in_use_exception().
 
 %%====================================================================
 %% API
@@ -5763,22 +8264,14 @@
 -spec activate_evaluation_form(map(), binary() | list(), binary() | list(), activate_evaluation_form_request()) ->
     {ok, activate_evaluation_form_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, activate_evaluation_form_errors(), tuple()}.
 activate_evaluation_form(Client, EvaluationFormId, InstanceId, Input) ->
     activate_evaluation_form(Client, EvaluationFormId, InstanceId, Input, []).
 
 -spec activate_evaluation_form(map(), binary() | list(), binary() | list(), activate_evaluation_form_request(), proplists:proplist()) ->
     {ok, activate_evaluation_form_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, activate_evaluation_form_errors(), tuple()}.
 activate_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/evaluation-forms/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationFormId), "/activate"],
@@ -5810,22 +8303,14 @@ activate_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options0)
 -spec associate_analytics_data_set(map(), binary() | list(), associate_analytics_data_set_request()) ->
     {ok, associate_analytics_data_set_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_analytics_data_set_errors(), tuple()}.
 associate_analytics_data_set(Client, InstanceId, Input) ->
     associate_analytics_data_set(Client, InstanceId, Input, []).
 
 -spec associate_analytics_data_set(map(), binary() | list(), associate_analytics_data_set_request(), proplists:proplist()) ->
     {ok, associate_analytics_data_set_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_analytics_data_set_errors(), tuple()}.
 associate_analytics_data_set(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/analytics-data/instance/", aws_util:encode_uri(InstanceId), "/association"],
@@ -5855,26 +8340,14 @@ associate_analytics_data_set(Client, InstanceId, Input0, Options0) ->
 -spec associate_approved_origin(map(), binary() | list(), associate_approved_origin_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_approved_origin_errors(), tuple()}.
 associate_approved_origin(Client, InstanceId, Input) ->
     associate_approved_origin(Client, InstanceId, Input, []).
 
 -spec associate_approved_origin(map(), binary() | list(), associate_approved_origin_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_approved_origin_errors(), tuple()}.
 associate_approved_origin(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/approved-origin"],
@@ -5906,26 +8379,14 @@ associate_approved_origin(Client, InstanceId, Input0, Options0) ->
 -spec associate_bot(map(), binary() | list(), associate_bot_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_bot_errors(), tuple()}.
 associate_bot(Client, InstanceId, Input) ->
     associate_bot(Client, InstanceId, Input, []).
 
 -spec associate_bot(map(), binary() | list(), associate_bot_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_bot_errors(), tuple()}.
 associate_bot(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/bot"],
@@ -5955,22 +8416,14 @@ associate_bot(Client, InstanceId, Input0, Options0) ->
 -spec associate_default_vocabulary(map(), binary() | list(), binary() | list(), associate_default_vocabulary_request()) ->
     {ok, associate_default_vocabulary_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_default_vocabulary_errors(), tuple()}.
 associate_default_vocabulary(Client, InstanceId, LanguageCode, Input) ->
     associate_default_vocabulary(Client, InstanceId, LanguageCode, Input, []).
 
 -spec associate_default_vocabulary(map(), binary() | list(), binary() | list(), associate_default_vocabulary_request(), proplists:proplist()) ->
     {ok, associate_default_vocabulary_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_default_vocabulary_errors(), tuple()}.
 associate_default_vocabulary(Client, InstanceId, LanguageCode, Input0, Options0) ->
     Method = put,
     Path = ["/default-vocabulary/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(LanguageCode), ""],
@@ -5997,24 +8450,14 @@ associate_default_vocabulary(Client, InstanceId, LanguageCode, Input0, Options0)
 -spec associate_flow(map(), binary() | list(), associate_flow_request()) ->
     {ok, associate_flow_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_flow_errors(), tuple()}.
 associate_flow(Client, InstanceId, Input) ->
     associate_flow(Client, InstanceId, Input, []).
 
 -spec associate_flow(map(), binary() | list(), associate_flow_request(), proplists:proplist()) ->
     {ok, associate_flow_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_flow_errors(), tuple()}.
 associate_flow(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/flow-associations/", aws_util:encode_uri(InstanceId), ""],
@@ -6054,24 +8497,14 @@ associate_flow(Client, InstanceId, Input0, Options0) ->
 -spec associate_instance_storage_config(map(), binary() | list(), associate_instance_storage_config_request()) ->
     {ok, associate_instance_storage_config_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_instance_storage_config_errors(), tuple()}.
 associate_instance_storage_config(Client, InstanceId, Input) ->
     associate_instance_storage_config(Client, InstanceId, Input, []).
 
 -spec associate_instance_storage_config(map(), binary() | list(), associate_instance_storage_config_request(), proplists:proplist()) ->
     {ok, associate_instance_storage_config_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_instance_storage_config_errors(), tuple()}.
 associate_instance_storage_config(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/storage-config"],
@@ -6103,26 +8536,14 @@ associate_instance_storage_config(Client, InstanceId, Input0, Options0) ->
 -spec associate_lambda_function(map(), binary() | list(), associate_lambda_function_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_lambda_function_errors(), tuple()}.
 associate_lambda_function(Client, InstanceId, Input) ->
     associate_lambda_function(Client, InstanceId, Input, []).
 
 -spec associate_lambda_function(map(), binary() | list(), associate_lambda_function_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_lambda_function_errors(), tuple()}.
 associate_lambda_function(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/lambda-function"],
@@ -6154,26 +8575,14 @@ associate_lambda_function(Client, InstanceId, Input0, Options0) ->
 -spec associate_lex_bot(map(), binary() | list(), associate_lex_bot_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_lex_bot_errors(), tuple()}.
 associate_lex_bot(Client, InstanceId, Input) ->
     associate_lex_bot(Client, InstanceId, Input, []).
 
 -spec associate_lex_bot(map(), binary() | list(), associate_lex_bot_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_lex_bot_errors(), tuple()}.
 associate_lex_bot(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/lex-bot"],
@@ -6216,22 +8625,14 @@ associate_lex_bot(Client, InstanceId, Input0, Options0) ->
 -spec associate_phone_number_contact_flow(map(), binary() | list(), associate_phone_number_contact_flow_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_phone_number_contact_flow_errors(), tuple()}.
 associate_phone_number_contact_flow(Client, PhoneNumberId, Input) ->
     associate_phone_number_contact_flow(Client, PhoneNumberId, Input, []).
 
 -spec associate_phone_number_contact_flow(map(), binary() | list(), associate_phone_number_contact_flow_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_phone_number_contact_flow_errors(), tuple()}.
 associate_phone_number_contact_flow(Client, PhoneNumberId, Input0, Options0) ->
     Method = put,
     Path = ["/phone-number/", aws_util:encode_uri(PhoneNumberId), "/contact-flow"],
@@ -6261,24 +8662,14 @@ associate_phone_number_contact_flow(Client, PhoneNumberId, Input0, Options0) ->
 -spec associate_queue_quick_connects(map(), binary() | list(), binary() | list(), associate_queue_quick_connects_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_queue_quick_connects_errors(), tuple()}.
 associate_queue_quick_connects(Client, InstanceId, QueueId, Input) ->
     associate_queue_quick_connects(Client, InstanceId, QueueId, Input, []).
 
 -spec associate_queue_quick_connects(map(), binary() | list(), binary() | list(), associate_queue_quick_connects_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_queue_quick_connects_errors(), tuple()}.
 associate_queue_quick_connects(Client, InstanceId, QueueId, Input0, Options0) ->
     Method = post,
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/associate-quick-connects"],
@@ -6305,22 +8696,14 @@ associate_queue_quick_connects(Client, InstanceId, QueueId, Input0, Options0) ->
 -spec associate_routing_profile_queues(map(), binary() | list(), binary() | list(), associate_routing_profile_queues_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_routing_profile_queues_errors(), tuple()}.
 associate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input) ->
     associate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input, []).
 
 -spec associate_routing_profile_queues(map(), binary() | list(), binary() | list(), associate_routing_profile_queues_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_routing_profile_queues_errors(), tuple()}.
 associate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/associate-queues"],
@@ -6350,26 +8733,14 @@ associate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, O
 -spec associate_security_key(map(), binary() | list(), associate_security_key_request()) ->
     {ok, associate_security_key_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_security_key_errors(), tuple()}.
 associate_security_key(Client, InstanceId, Input) ->
     associate_security_key(Client, InstanceId, Input, []).
 
 -spec associate_security_key(map(), binary() | list(), associate_security_key_request(), proplists:proplist()) ->
     {ok, associate_security_key_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_security_key_errors(), tuple()}.
 associate_security_key(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/security-key"],
@@ -6396,24 +8767,14 @@ associate_security_key(Client, InstanceId, Input0, Options0) ->
 -spec associate_traffic_distribution_group_user(map(), binary() | list(), associate_traffic_distribution_group_user_request()) ->
     {ok, associate_traffic_distribution_group_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_traffic_distribution_group_user_errors(), tuple()}.
 associate_traffic_distribution_group_user(Client, TrafficDistributionGroupId, Input) ->
     associate_traffic_distribution_group_user(Client, TrafficDistributionGroupId, Input, []).
 
 -spec associate_traffic_distribution_group_user(map(), binary() | list(), associate_traffic_distribution_group_user_request(), proplists:proplist()) ->
     {ok, associate_traffic_distribution_group_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_traffic_distribution_group_user_errors(), tuple()}.
 associate_traffic_distribution_group_user(Client, TrafficDistributionGroupId, Input0, Options0) ->
     Method = put,
     Path = ["/traffic-distribution-group/", aws_util:encode_uri(TrafficDistributionGroupId), "/user"],
@@ -6440,22 +8801,14 @@ associate_traffic_distribution_group_user(Client, TrafficDistributionGroupId, In
 -spec associate_user_proficiencies(map(), binary() | list(), binary() | list(), associate_user_proficiencies_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_user_proficiencies_errors(), tuple()}.
 associate_user_proficiencies(Client, InstanceId, UserId, Input) ->
     associate_user_proficiencies(Client, InstanceId, UserId, Input, []).
 
 -spec associate_user_proficiencies(map(), binary() | list(), binary() | list(), associate_user_proficiencies_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_user_proficiencies_errors(), tuple()}.
 associate_user_proficiencies(Client, InstanceId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/associate-proficiencies"],
@@ -6487,22 +8840,14 @@ associate_user_proficiencies(Client, InstanceId, UserId, Input0, Options0) ->
 -spec batch_associate_analytics_data_set(map(), binary() | list(), batch_associate_analytics_data_set_request()) ->
     {ok, batch_associate_analytics_data_set_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_associate_analytics_data_set_errors(), tuple()}.
 batch_associate_analytics_data_set(Client, InstanceId, Input) ->
     batch_associate_analytics_data_set(Client, InstanceId, Input, []).
 
 -spec batch_associate_analytics_data_set(map(), binary() | list(), batch_associate_analytics_data_set_request(), proplists:proplist()) ->
     {ok, batch_associate_analytics_data_set_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_associate_analytics_data_set_errors(), tuple()}.
 batch_associate_analytics_data_set(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/analytics-data/instance/", aws_util:encode_uri(InstanceId), "/associations"],
@@ -6534,22 +8879,14 @@ batch_associate_analytics_data_set(Client, InstanceId, Input0, Options0) ->
 -spec batch_disassociate_analytics_data_set(map(), binary() | list(), batch_disassociate_analytics_data_set_request()) ->
     {ok, batch_disassociate_analytics_data_set_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_disassociate_analytics_data_set_errors(), tuple()}.
 batch_disassociate_analytics_data_set(Client, InstanceId, Input) ->
     batch_disassociate_analytics_data_set(Client, InstanceId, Input, []).
 
 -spec batch_disassociate_analytics_data_set(map(), binary() | list(), batch_disassociate_analytics_data_set_request(), proplists:proplist()) ->
     {ok, batch_disassociate_analytics_data_set_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_disassociate_analytics_data_set_errors(), tuple()}.
 batch_disassociate_analytics_data_set(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/analytics-data/instance/", aws_util:encode_uri(InstanceId), "/associations"],
@@ -6576,24 +8913,14 @@ batch_disassociate_analytics_data_set(Client, InstanceId, Input0, Options0) ->
 -spec batch_get_flow_association(map(), binary() | list(), batch_get_flow_association_request()) ->
     {ok, batch_get_flow_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_get_flow_association_errors(), tuple()}.
 batch_get_flow_association(Client, InstanceId, Input) ->
     batch_get_flow_association(Client, InstanceId, Input, []).
 
 -spec batch_get_flow_association(map(), binary() | list(), batch_get_flow_association_request(), proplists:proplist()) ->
     {ok, batch_get_flow_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_get_flow_association_errors(), tuple()}.
 batch_get_flow_association(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/flow-associations-batch/", aws_util:encode_uri(InstanceId), ""],
@@ -6634,24 +8961,14 @@ batch_get_flow_association(Client, InstanceId, Input0, Options0) ->
 -spec batch_put_contact(map(), binary() | list(), batch_put_contact_request()) ->
     {ok, batch_put_contact_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotency_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, batch_put_contact_errors(), tuple()}.
 batch_put_contact(Client, InstanceId, Input) ->
     batch_put_contact(Client, InstanceId, Input, []).
 
 -spec batch_put_contact(map(), binary() | list(), batch_put_contact_request(), proplists:proplist()) ->
     {ok, batch_put_contact_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotency_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, batch_put_contact_errors(), tuple()}.
 batch_put_contact(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/contact/batch/", aws_util:encode_uri(InstanceId), ""],
@@ -6728,24 +9045,14 @@ batch_put_contact(Client, InstanceId, Input0, Options0) ->
 -spec claim_phone_number(map(), claim_phone_number_request()) ->
     {ok, claim_phone_number_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotency_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, claim_phone_number_errors(), tuple()}.
 claim_phone_number(Client, Input) ->
     claim_phone_number(Client, Input, []).
 
 -spec claim_phone_number(map(), claim_phone_number_request(), proplists:proplist()) ->
     {ok, claim_phone_number_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotency_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, claim_phone_number_errors(), tuple()}.
 claim_phone_number(Client, Input0, Options0) ->
     Method = post,
     Path = ["/phone-number/claim"],
@@ -6775,26 +9082,14 @@ claim_phone_number(Client, Input0, Options0) ->
 -spec create_agent_status(map(), binary() | list(), create_agent_status_request()) ->
     {ok, create_agent_status_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_agent_status_errors(), tuple()}.
 create_agent_status(Client, InstanceId, Input) ->
     create_agent_status(Client, InstanceId, Input, []).
 
 -spec create_agent_status(map(), binary() | list(), create_agent_status_request(), proplists:proplist()) ->
     {ok, create_agent_status_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_agent_status_errors(), tuple()}.
 create_agent_status(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/agent-status/", aws_util:encode_uri(InstanceId), ""],
@@ -6825,28 +9120,14 @@ create_agent_status(Client, InstanceId, Input0, Options0) ->
 -spec create_contact_flow(map(), binary() | list(), create_contact_flow_request()) ->
     {ok, create_contact_flow_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_contact_flow_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_contact_flow_errors(), tuple()}.
 create_contact_flow(Client, InstanceId, Input) ->
     create_contact_flow(Client, InstanceId, Input, []).
 
 -spec create_contact_flow(map(), binary() | list(), create_contact_flow_request(), proplists:proplist()) ->
     {ok, create_contact_flow_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_contact_flow_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_contact_flow_errors(), tuple()}.
 create_contact_flow(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), ""],
@@ -6873,32 +9154,14 @@ create_contact_flow(Client, InstanceId, Input0, Options0) ->
 -spec create_contact_flow_module(map(), binary() | list(), create_contact_flow_module_request()) ->
     {ok, create_contact_flow_module_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, idempotency_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_contact_flow_module_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_contact_flow_module_errors(), tuple()}.
 create_contact_flow_module(Client, InstanceId, Input) ->
     create_contact_flow_module(Client, InstanceId, Input, []).
 
 -spec create_contact_flow_module(map(), binary() | list(), create_contact_flow_module_request(), proplists:proplist()) ->
     {ok, create_contact_flow_module_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, idempotency_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_contact_flow_module_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_contact_flow_module_errors(), tuple()}.
 create_contact_flow_module(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/contact-flow-modules/", aws_util:encode_uri(InstanceId), ""],
@@ -6932,24 +9195,14 @@ create_contact_flow_module(Client, InstanceId, Input0, Options0) ->
 -spec create_evaluation_form(map(), binary() | list(), create_evaluation_form_request()) ->
     {ok, create_evaluation_form_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_evaluation_form_errors(), tuple()}.
 create_evaluation_form(Client, InstanceId, Input) ->
     create_evaluation_form(Client, InstanceId, Input, []).
 
 -spec create_evaluation_form(map(), binary() | list(), create_evaluation_form_request(), proplists:proplist()) ->
     {ok, create_evaluation_form_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_evaluation_form_errors(), tuple()}.
 create_evaluation_form(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/evaluation-forms/", aws_util:encode_uri(InstanceId), ""],
@@ -6979,26 +9232,14 @@ create_evaluation_form(Client, InstanceId, Input0, Options0) ->
 -spec create_hours_of_operation(map(), binary() | list(), create_hours_of_operation_request()) ->
     {ok, create_hours_of_operation_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_hours_of_operation_errors(), tuple()}.
 create_hours_of_operation(Client, InstanceId, Input) ->
     create_hours_of_operation(Client, InstanceId, Input, []).
 
 -spec create_hours_of_operation(map(), binary() | list(), create_hours_of_operation_request(), proplists:proplist()) ->
     {ok, create_hours_of_operation_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_hours_of_operation_errors(), tuple()}.
 create_hours_of_operation(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/hours-of-operations/", aws_util:encode_uri(InstanceId), ""],
@@ -7041,22 +9282,14 @@ create_hours_of_operation(Client, InstanceId, Input0, Options0) ->
 -spec create_instance(map(), create_instance_request()) ->
     {ok, create_instance_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_instance_errors(), tuple()}.
 create_instance(Client, Input) ->
     create_instance(Client, Input, []).
 
 -spec create_instance(map(), create_instance_request(), proplists:proplist()) ->
     {ok, create_instance_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_instance_errors(), tuple()}.
 create_instance(Client, Input0, Options0) ->
     Method = put,
     Path = ["/instance"],
@@ -7085,22 +9318,14 @@ create_instance(Client, Input0, Options0) ->
 -spec create_integration_association(map(), binary() | list(), create_integration_association_request()) ->
     {ok, create_integration_association_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_integration_association_errors(), tuple()}.
 create_integration_association(Client, InstanceId, Input) ->
     create_integration_association(Client, InstanceId, Input, []).
 
 -spec create_integration_association(map(), binary() | list(), create_integration_association_request(), proplists:proplist()) ->
     {ok, create_integration_association_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_integration_association_errors(), tuple()}.
 create_integration_association(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations"],
@@ -7131,22 +9356,14 @@ create_integration_association(Client, InstanceId, Input0, Options0) ->
 -spec create_participant(map(), create_participant_request()) ->
     {ok, create_participant_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_participant_errors(), tuple()}.
 create_participant(Client, Input) ->
     create_participant(Client, Input, []).
 
 -spec create_participant(map(), create_participant_request(), proplists:proplist()) ->
     {ok, create_participant_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_participant_errors(), tuple()}.
 create_participant(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/create-participant"],
@@ -7179,24 +9396,14 @@ create_participant(Client, Input0, Options0) ->
 -spec create_persistent_contact_association(map(), binary() | list(), binary() | list(), create_persistent_contact_association_request()) ->
     {ok, create_persistent_contact_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_persistent_contact_association_errors(), tuple()}.
 create_persistent_contact_association(Client, InitialContactId, InstanceId, Input) ->
     create_persistent_contact_association(Client, InitialContactId, InstanceId, Input, []).
 
 -spec create_persistent_contact_association(map(), binary() | list(), binary() | list(), create_persistent_contact_association_request(), proplists:proplist()) ->
     {ok, create_persistent_contact_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_persistent_contact_association_errors(), tuple()}.
 create_persistent_contact_association(Client, InitialContactId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/contact/persistent-contact-association/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(InitialContactId), ""],
@@ -7224,26 +9431,14 @@ create_persistent_contact_association(Client, InitialContactId, InstanceId, Inpu
 -spec create_predefined_attribute(map(), binary() | list(), create_predefined_attribute_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_predefined_attribute_errors(), tuple()}.
 create_predefined_attribute(Client, InstanceId, Input) ->
     create_predefined_attribute(Client, InstanceId, Input, []).
 
 -spec create_predefined_attribute(map(), binary() | list(), create_predefined_attribute_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_predefined_attribute_errors(), tuple()}.
 create_predefined_attribute(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/predefined-attributes/", aws_util:encode_uri(InstanceId), ""],
@@ -7276,24 +9471,14 @@ create_predefined_attribute(Client, InstanceId, Input0, Options0) ->
 -spec create_prompt(map(), binary() | list(), create_prompt_request()) ->
     {ok, create_prompt_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_prompt_errors(), tuple()}.
 create_prompt(Client, InstanceId, Input) ->
     create_prompt(Client, InstanceId, Input, []).
 
 -spec create_prompt(map(), binary() | list(), create_prompt_request(), proplists:proplist()) ->
     {ok, create_prompt_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_prompt_errors(), tuple()}.
 create_prompt(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/prompts/", aws_util:encode_uri(InstanceId), ""],
@@ -7350,26 +9535,14 @@ create_prompt(Client, InstanceId, Input0, Options0) ->
 -spec create_queue(map(), binary() | list(), create_queue_request()) ->
     {ok, create_queue_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_queue_errors(), tuple()}.
 create_queue(Client, InstanceId, Input) ->
     create_queue(Client, InstanceId, Input, []).
 
 -spec create_queue(map(), binary() | list(), create_queue_request(), proplists:proplist()) ->
     {ok, create_queue_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_queue_errors(), tuple()}.
 create_queue(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/queues/", aws_util:encode_uri(InstanceId), ""],
@@ -7396,26 +9569,14 @@ create_queue(Client, InstanceId, Input0, Options0) ->
 -spec create_quick_connect(map(), binary() | list(), create_quick_connect_request()) ->
     {ok, create_quick_connect_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_quick_connect_errors(), tuple()}.
 create_quick_connect(Client, InstanceId, Input) ->
     create_quick_connect(Client, InstanceId, Input, []).
 
 -spec create_quick_connect(map(), binary() | list(), create_quick_connect_request(), proplists:proplist()) ->
     {ok, create_quick_connect_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_quick_connect_errors(), tuple()}.
 create_quick_connect(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), ""],
@@ -7442,26 +9603,14 @@ create_quick_connect(Client, InstanceId, Input0, Options0) ->
 -spec create_routing_profile(map(), binary() | list(), create_routing_profile_request()) ->
     {ok, create_routing_profile_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_routing_profile_errors(), tuple()}.
 create_routing_profile(Client, InstanceId, Input) ->
     create_routing_profile(Client, InstanceId, Input, []).
 
 -spec create_routing_profile(map(), binary() | list(), create_routing_profile_request(), proplists:proplist()) ->
     {ok, create_routing_profile_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_routing_profile_errors(), tuple()}.
 create_routing_profile(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), ""],
@@ -7493,26 +9642,14 @@ create_routing_profile(Client, InstanceId, Input0, Options0) ->
 -spec create_rule(map(), binary() | list(), create_rule_request()) ->
     {ok, create_rule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_rule_errors(), tuple()}.
 create_rule(Client, InstanceId, Input) ->
     create_rule(Client, InstanceId, Input, []).
 
 -spec create_rule(map(), binary() | list(), create_rule_request(), proplists:proplist()) ->
     {ok, create_rule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_rule_errors(), tuple()}.
 create_rule(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/rules/", aws_util:encode_uri(InstanceId), ""],
@@ -7539,26 +9676,14 @@ create_rule(Client, InstanceId, Input0, Options0) ->
 -spec create_security_profile(map(), binary() | list(), create_security_profile_request()) ->
     {ok, create_security_profile_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_security_profile_errors(), tuple()}.
 create_security_profile(Client, InstanceId, Input) ->
     create_security_profile(Client, InstanceId, Input, []).
 
 -spec create_security_profile(map(), binary() | list(), create_security_profile_request(), proplists:proplist()) ->
     {ok, create_security_profile_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_security_profile_errors(), tuple()}.
 create_security_profile(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/security-profiles/", aws_util:encode_uri(InstanceId), ""],
@@ -7585,24 +9710,14 @@ create_security_profile(Client, InstanceId, Input0, Options0) ->
 -spec create_task_template(map(), binary() | list(), create_task_template_request()) ->
     {ok, create_task_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, property_validation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_task_template_errors(), tuple()}.
 create_task_template(Client, InstanceId, Input) ->
     create_task_template(Client, InstanceId, Input, []).
 
 -spec create_task_template(map(), binary() | list(), create_task_template_request(), proplists:proplist()) ->
     {ok, create_task_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, property_validation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_task_template_errors(), tuple()}.
 create_task_template(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/task/template"],
@@ -7646,28 +9761,14 @@ create_task_template(Client, InstanceId, Input0, Options0) ->
 -spec create_traffic_distribution_group(map(), create_traffic_distribution_group_request()) ->
     {ok, create_traffic_distribution_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_traffic_distribution_group_errors(), tuple()}.
 create_traffic_distribution_group(Client, Input) ->
     create_traffic_distribution_group(Client, Input, []).
 
 -spec create_traffic_distribution_group(map(), create_traffic_distribution_group_request(), proplists:proplist()) ->
     {ok, create_traffic_distribution_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_traffic_distribution_group_errors(), tuple()}.
 create_traffic_distribution_group(Client, Input0, Options0) ->
     Method = put,
     Path = ["/traffic-distribution-group"],
@@ -7694,22 +9795,14 @@ create_traffic_distribution_group(Client, Input0, Options0) ->
 -spec create_use_case(map(), binary() | list(), binary() | list(), create_use_case_request()) ->
     {ok, create_use_case_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_use_case_errors(), tuple()}.
 create_use_case(Client, InstanceId, IntegrationAssociationId, Input) ->
     create_use_case(Client, InstanceId, IntegrationAssociationId, Input, []).
 
 -spec create_use_case(map(), binary() | list(), binary() | list(), create_use_case_request(), proplists:proplist()) ->
     {ok, create_use_case_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_use_case_errors(), tuple()}.
 create_use_case(Client, InstanceId, IntegrationAssociationId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations/", aws_util:encode_uri(IntegrationAssociationId), "/use-cases"],
@@ -7750,26 +9843,14 @@ create_use_case(Client, InstanceId, IntegrationAssociationId, Input0, Options0) 
 -spec create_user(map(), binary() | list(), create_user_request()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_user_errors(), tuple()}.
 create_user(Client, InstanceId, Input) ->
     create_user(Client, InstanceId, Input, []).
 
 -spec create_user(map(), binary() | list(), create_user_request(), proplists:proplist()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_user_errors(), tuple()}.
 create_user(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/users/", aws_util:encode_uri(InstanceId), ""],
@@ -7796,26 +9877,14 @@ create_user(Client, InstanceId, Input0, Options0) ->
 -spec create_user_hierarchy_group(map(), binary() | list(), create_user_hierarchy_group_request()) ->
     {ok, create_user_hierarchy_group_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_user_hierarchy_group_errors(), tuple()}.
 create_user_hierarchy_group(Client, InstanceId, Input) ->
     create_user_hierarchy_group(Client, InstanceId, Input, []).
 
 -spec create_user_hierarchy_group(map(), binary() | list(), create_user_hierarchy_group_request(), proplists:proplist()) ->
     {ok, create_user_hierarchy_group_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_user_hierarchy_group_errors(), tuple()}.
 create_user_hierarchy_group(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/user-hierarchy-groups/", aws_util:encode_uri(InstanceId), ""],
@@ -7855,30 +9924,14 @@ create_user_hierarchy_group(Client, InstanceId, Input0, Options0) ->
 -spec create_view(map(), binary() | list(), create_view_request()) ->
     {ok, create_view_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_view_errors(), tuple()}.
 create_view(Client, InstanceId, Input) ->
     create_view(Client, InstanceId, Input, []).
 
 -spec create_view(map(), binary() | list(), create_view_request(), proplists:proplist()) ->
     {ok, create_view_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_view_errors(), tuple()}.
 create_view(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/views/", aws_util:encode_uri(InstanceId), ""],
@@ -7913,28 +9966,14 @@ create_view(Client, InstanceId, Input0, Options0) ->
 -spec create_view_version(map(), binary() | list(), binary() | list(), create_view_version_request()) ->
     {ok, create_view_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_view_version_errors(), tuple()}.
 create_view_version(Client, InstanceId, ViewId, Input) ->
     create_view_version(Client, InstanceId, ViewId, Input, []).
 
 -spec create_view_version(map(), binary() | list(), binary() | list(), create_view_version_request(), proplists:proplist()) ->
     {ok, create_view_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_view_version_errors(), tuple()}.
 create_view_version(Client, InstanceId, ViewId, Input0, Options0) ->
     Method = put,
     Path = ["/views/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ViewId), "/versions"],
@@ -7968,26 +10007,14 @@ create_view_version(Client, InstanceId, ViewId, Input0, Options0) ->
 -spec create_vocabulary(map(), binary() | list(), create_vocabulary_request()) ->
     {ok, create_vocabulary_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_vocabulary_errors(), tuple()}.
 create_vocabulary(Client, InstanceId, Input) ->
     create_vocabulary(Client, InstanceId, Input, []).
 
 -spec create_vocabulary(map(), binary() | list(), create_vocabulary_request(), proplists:proplist()) ->
     {ok, create_vocabulary_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_vocabulary_errors(), tuple()}.
 create_vocabulary(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/vocabulary/", aws_util:encode_uri(InstanceId), ""],
@@ -8019,22 +10046,14 @@ create_vocabulary(Client, InstanceId, Input0, Options0) ->
 -spec deactivate_evaluation_form(map(), binary() | list(), binary() | list(), deactivate_evaluation_form_request()) ->
     {ok, deactivate_evaluation_form_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, deactivate_evaluation_form_errors(), tuple()}.
 deactivate_evaluation_form(Client, EvaluationFormId, InstanceId, Input) ->
     deactivate_evaluation_form(Client, EvaluationFormId, InstanceId, Input, []).
 
 -spec deactivate_evaluation_form(map(), binary() | list(), binary() | list(), deactivate_evaluation_form_request(), proplists:proplist()) ->
     {ok, deactivate_evaluation_form_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, deactivate_evaluation_form_errors(), tuple()}.
 deactivate_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/evaluation-forms/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationFormId), "/deactivate"],
@@ -8062,22 +10081,14 @@ deactivate_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options
 -spec delete_contact_evaluation(map(), binary() | list(), binary() | list(), delete_contact_evaluation_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_contact_evaluation_errors(), tuple()}.
 delete_contact_evaluation(Client, EvaluationId, InstanceId, Input) ->
     delete_contact_evaluation(Client, EvaluationId, InstanceId, Input, []).
 
 -spec delete_contact_evaluation(map(), binary() | list(), binary() | list(), delete_contact_evaluation_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_contact_evaluation_errors(), tuple()}.
 delete_contact_evaluation(Client, EvaluationId, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/contact-evaluations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationId), ""],
@@ -8104,24 +10115,14 @@ delete_contact_evaluation(Client, EvaluationId, InstanceId, Input0, Options0) ->
 -spec delete_contact_flow(map(), binary() | list(), binary() | list(), delete_contact_flow_request()) ->
     {ok, delete_contact_flow_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_contact_flow_errors(), tuple()}.
 delete_contact_flow(Client, ContactFlowId, InstanceId, Input) ->
     delete_contact_flow(Client, ContactFlowId, InstanceId, Input, []).
 
 -spec delete_contact_flow(map(), binary() | list(), binary() | list(), delete_contact_flow_request(), proplists:proplist()) ->
     {ok, delete_contact_flow_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_contact_flow_errors(), tuple()}.
 delete_contact_flow(Client, ContactFlowId, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), ""],
@@ -8148,24 +10149,14 @@ delete_contact_flow(Client, ContactFlowId, InstanceId, Input0, Options0) ->
 -spec delete_contact_flow_module(map(), binary() | list(), binary() | list(), delete_contact_flow_module_request()) ->
     {ok, delete_contact_flow_module_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_contact_flow_module_errors(), tuple()}.
 delete_contact_flow_module(Client, ContactFlowModuleId, InstanceId, Input) ->
     delete_contact_flow_module(Client, ContactFlowModuleId, InstanceId, Input, []).
 
 -spec delete_contact_flow_module(map(), binary() | list(), binary() | list(), delete_contact_flow_module_request(), proplists:proplist()) ->
     {ok, delete_contact_flow_module_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_contact_flow_module_errors(), tuple()}.
 delete_contact_flow_module(Client, ContactFlowModuleId, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/contact-flow-modules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowModuleId), ""],
@@ -8198,22 +10189,14 @@ delete_contact_flow_module(Client, ContactFlowModuleId, InstanceId, Input0, Opti
 -spec delete_evaluation_form(map(), binary() | list(), binary() | list(), delete_evaluation_form_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_evaluation_form_errors(), tuple()}.
 delete_evaluation_form(Client, EvaluationFormId, InstanceId, Input) ->
     delete_evaluation_form(Client, EvaluationFormId, InstanceId, Input, []).
 
 -spec delete_evaluation_form(map(), binary() | list(), binary() | list(), delete_evaluation_form_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_evaluation_form_errors(), tuple()}.
 delete_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/evaluation-forms/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationFormId), ""],
@@ -8244,22 +10227,14 @@ delete_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options0) -
 -spec delete_hours_of_operation(map(), binary() | list(), binary() | list(), delete_hours_of_operation_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_hours_of_operation_errors(), tuple()}.
 delete_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input) ->
     delete_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input, []).
 
 -spec delete_hours_of_operation(map(), binary() | list(), binary() | list(), delete_hours_of_operation_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_hours_of_operation_errors(), tuple()}.
 delete_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/hours-of-operations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HoursOfOperationId), ""],
@@ -8297,18 +10272,14 @@ delete_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input0, Option
 -spec delete_instance(map(), binary() | list(), delete_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_instance_errors(), tuple()}.
 delete_instance(Client, InstanceId, Input) ->
     delete_instance(Client, InstanceId, Input, []).
 
 -spec delete_instance(map(), binary() | list(), delete_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_instance_errors(), tuple()}.
 delete_instance(Client, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), ""],
@@ -8339,20 +10310,14 @@ delete_instance(Client, InstanceId, Input0, Options0) ->
 -spec delete_integration_association(map(), binary() | list(), binary() | list(), delete_integration_association_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_integration_association_errors(), tuple()}.
 delete_integration_association(Client, InstanceId, IntegrationAssociationId, Input) ->
     delete_integration_association(Client, InstanceId, IntegrationAssociationId, Input, []).
 
 -spec delete_integration_association(map(), binary() | list(), binary() | list(), delete_integration_association_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_integration_association_errors(), tuple()}.
 delete_integration_association(Client, InstanceId, IntegrationAssociationId, Input0, Options0) ->
     Method = delete,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations/", aws_util:encode_uri(IntegrationAssociationId), ""],
@@ -8380,24 +10345,14 @@ delete_integration_association(Client, InstanceId, IntegrationAssociationId, Inp
 -spec delete_predefined_attribute(map(), binary() | list(), binary() | list(), delete_predefined_attribute_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_predefined_attribute_errors(), tuple()}.
 delete_predefined_attribute(Client, InstanceId, Name, Input) ->
     delete_predefined_attribute(Client, InstanceId, Name, Input, []).
 
 -spec delete_predefined_attribute(map(), binary() | list(), binary() | list(), delete_predefined_attribute_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_predefined_attribute_errors(), tuple()}.
 delete_predefined_attribute(Client, InstanceId, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/predefined-attributes/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(Name), ""],
@@ -8424,22 +10379,14 @@ delete_predefined_attribute(Client, InstanceId, Name, Input0, Options0) ->
 -spec delete_prompt(map(), binary() | list(), binary() | list(), delete_prompt_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_prompt_errors(), tuple()}.
 delete_prompt(Client, InstanceId, PromptId, Input) ->
     delete_prompt(Client, InstanceId, PromptId, Input, []).
 
 -spec delete_prompt(map(), binary() | list(), binary() | list(), delete_prompt_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_prompt_errors(), tuple()}.
 delete_prompt(Client, InstanceId, PromptId, Input0, Options0) ->
     Method = delete,
     Path = ["/prompts/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(PromptId), ""],
@@ -8466,24 +10413,14 @@ delete_prompt(Client, InstanceId, PromptId, Input0, Options0) ->
 -spec delete_queue(map(), binary() | list(), binary() | list(), delete_queue_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_queue_errors(), tuple()}.
 delete_queue(Client, InstanceId, QueueId, Input) ->
     delete_queue(Client, InstanceId, QueueId, Input, []).
 
 -spec delete_queue(map(), binary() | list(), binary() | list(), delete_queue_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_queue_errors(), tuple()}.
 delete_queue(Client, InstanceId, QueueId, Input0, Options0) ->
     Method = delete,
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), ""],
@@ -8510,22 +10447,14 @@ delete_queue(Client, InstanceId, QueueId, Input0, Options0) ->
 -spec delete_quick_connect(map(), binary() | list(), binary() | list(), delete_quick_connect_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_quick_connect_errors(), tuple()}.
 delete_quick_connect(Client, InstanceId, QuickConnectId, Input) ->
     delete_quick_connect(Client, InstanceId, QuickConnectId, Input, []).
 
 -spec delete_quick_connect(map(), binary() | list(), binary() | list(), delete_quick_connect_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_quick_connect_errors(), tuple()}.
 delete_quick_connect(Client, InstanceId, QuickConnectId, Input0, Options0) ->
     Method = delete,
     Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QuickConnectId), ""],
@@ -8552,24 +10481,14 @@ delete_quick_connect(Client, InstanceId, QuickConnectId, Input0, Options0) ->
 -spec delete_routing_profile(map(), binary() | list(), binary() | list(), delete_routing_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_routing_profile_errors(), tuple()}.
 delete_routing_profile(Client, InstanceId, RoutingProfileId, Input) ->
     delete_routing_profile(Client, InstanceId, RoutingProfileId, Input, []).
 
 -spec delete_routing_profile(map(), binary() | list(), binary() | list(), delete_routing_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_routing_profile_errors(), tuple()}.
 delete_routing_profile(Client, InstanceId, RoutingProfileId, Input0, Options0) ->
     Method = delete,
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), ""],
@@ -8596,22 +10515,14 @@ delete_routing_profile(Client, InstanceId, RoutingProfileId, Input0, Options0) -
 -spec delete_rule(map(), binary() | list(), binary() | list(), delete_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_rule_errors(), tuple()}.
 delete_rule(Client, InstanceId, RuleId, Input) ->
     delete_rule(Client, InstanceId, RuleId, Input, []).
 
 -spec delete_rule(map(), binary() | list(), binary() | list(), delete_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_rule_errors(), tuple()}.
 delete_rule(Client, InstanceId, RuleId, Input0, Options0) ->
     Method = delete,
     Path = ["/rules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RuleId), ""],
@@ -8638,26 +10549,14 @@ delete_rule(Client, InstanceId, RuleId, Input0, Options0) ->
 -spec delete_security_profile(map(), binary() | list(), binary() | list(), delete_security_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_security_profile_errors(), tuple()}.
 delete_security_profile(Client, InstanceId, SecurityProfileId, Input) ->
     delete_security_profile(Client, InstanceId, SecurityProfileId, Input, []).
 
 -spec delete_security_profile(map(), binary() | list(), binary() | list(), delete_security_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_security_profile_errors(), tuple()}.
 delete_security_profile(Client, InstanceId, SecurityProfileId, Input0, Options0) ->
     Method = delete,
     Path = ["/security-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(SecurityProfileId), ""],
@@ -8684,22 +10583,14 @@ delete_security_profile(Client, InstanceId, SecurityProfileId, Input0, Options0)
 -spec delete_task_template(map(), binary() | list(), binary() | list(), delete_task_template_request()) ->
     {ok, delete_task_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_task_template_errors(), tuple()}.
 delete_task_template(Client, InstanceId, TaskTemplateId, Input) ->
     delete_task_template(Client, InstanceId, TaskTemplateId, Input, []).
 
 -spec delete_task_template(map(), binary() | list(), binary() | list(), delete_task_template_request(), proplists:proplist()) ->
     {ok, delete_task_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_task_template_errors(), tuple()}.
 delete_task_template(Client, InstanceId, TaskTemplateId, Input0, Options0) ->
     Method = delete,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/task/template/", aws_util:encode_uri(TaskTemplateId), ""],
@@ -8736,22 +10627,14 @@ delete_task_template(Client, InstanceId, TaskTemplateId, Input0, Options0) ->
 -spec delete_traffic_distribution_group(map(), binary() | list(), delete_traffic_distribution_group_request()) ->
     {ok, delete_traffic_distribution_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_traffic_distribution_group_errors(), tuple()}.
 delete_traffic_distribution_group(Client, TrafficDistributionGroupId, Input) ->
     delete_traffic_distribution_group(Client, TrafficDistributionGroupId, Input, []).
 
 -spec delete_traffic_distribution_group(map(), binary() | list(), delete_traffic_distribution_group_request(), proplists:proplist()) ->
     {ok, delete_traffic_distribution_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_traffic_distribution_group_errors(), tuple()}.
 delete_traffic_distribution_group(Client, TrafficDistributionGroupId, Input0, Options0) ->
     Method = delete,
     Path = ["/traffic-distribution-group/", aws_util:encode_uri(TrafficDistributionGroupId), ""],
@@ -8778,20 +10661,14 @@ delete_traffic_distribution_group(Client, TrafficDistributionGroupId, Input0, Op
 -spec delete_use_case(map(), binary() | list(), binary() | list(), binary() | list(), delete_use_case_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_use_case_errors(), tuple()}.
 delete_use_case(Client, InstanceId, IntegrationAssociationId, UseCaseId, Input) ->
     delete_use_case(Client, InstanceId, IntegrationAssociationId, UseCaseId, Input, []).
 
 -spec delete_use_case(map(), binary() | list(), binary() | list(), binary() | list(), delete_use_case_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_use_case_errors(), tuple()}.
 delete_use_case(Client, InstanceId, IntegrationAssociationId, UseCaseId, Input0, Options0) ->
     Method = delete,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations/", aws_util:encode_uri(IntegrationAssociationId), "/use-cases/", aws_util:encode_uri(UseCaseId), ""],
@@ -8826,22 +10703,14 @@ delete_use_case(Client, InstanceId, IntegrationAssociationId, UseCaseId, Input0,
 -spec delete_user(map(), binary() | list(), binary() | list(), delete_user_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_user_errors(), tuple()}.
 delete_user(Client, InstanceId, UserId, Input) ->
     delete_user(Client, InstanceId, UserId, Input, []).
 
 -spec delete_user(map(), binary() | list(), binary() | list(), delete_user_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_user_errors(), tuple()}.
 delete_user(Client, InstanceId, UserId, Input0, Options0) ->
     Method = delete,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), ""],
@@ -8871,24 +10740,14 @@ delete_user(Client, InstanceId, UserId, Input0, Options0) ->
 -spec delete_user_hierarchy_group(map(), binary() | list(), binary() | list(), delete_user_hierarchy_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_user_hierarchy_group_errors(), tuple()}.
 delete_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, Input) ->
     delete_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, Input, []).
 
 -spec delete_user_hierarchy_group(map(), binary() | list(), binary() | list(), delete_user_hierarchy_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_user_hierarchy_group_errors(), tuple()}.
 delete_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/user-hierarchy-groups/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HierarchyGroupId), ""],
@@ -8918,26 +10777,14 @@ delete_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, Input0, Option
 -spec delete_view(map(), binary() | list(), binary() | list(), delete_view_request()) ->
     {ok, delete_view_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_view_errors(), tuple()}.
 delete_view(Client, InstanceId, ViewId, Input) ->
     delete_view(Client, InstanceId, ViewId, Input, []).
 
 -spec delete_view(map(), binary() | list(), binary() | list(), delete_view_request(), proplists:proplist()) ->
     {ok, delete_view_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_view_errors(), tuple()}.
 delete_view(Client, InstanceId, ViewId, Input0, Options0) ->
     Method = delete,
     Path = ["/views/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ViewId), ""],
@@ -8965,26 +10812,14 @@ delete_view(Client, InstanceId, ViewId, Input0, Options0) ->
 -spec delete_view_version(map(), binary() | list(), binary() | list(), binary() | list(), delete_view_version_request()) ->
     {ok, delete_view_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_view_version_errors(), tuple()}.
 delete_view_version(Client, InstanceId, ViewId, ViewVersion, Input) ->
     delete_view_version(Client, InstanceId, ViewId, ViewVersion, Input, []).
 
 -spec delete_view_version(map(), binary() | list(), binary() | list(), binary() | list(), delete_view_version_request(), proplists:proplist()) ->
     {ok, delete_view_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_view_version_errors(), tuple()}.
 delete_view_version(Client, InstanceId, ViewId, ViewVersion, Input0, Options0) ->
     Method = delete,
     Path = ["/views/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ViewId), "/versions/", aws_util:encode_uri(ViewVersion), ""],
@@ -9011,24 +10846,14 @@ delete_view_version(Client, InstanceId, ViewId, ViewVersion, Input0, Options0) -
 -spec delete_vocabulary(map(), binary() | list(), binary() | list(), delete_vocabulary_request()) ->
     {ok, delete_vocabulary_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_vocabulary_errors(), tuple()}.
 delete_vocabulary(Client, InstanceId, VocabularyId, Input) ->
     delete_vocabulary(Client, InstanceId, VocabularyId, Input, []).
 
 -spec delete_vocabulary(map(), binary() | list(), binary() | list(), delete_vocabulary_request(), proplists:proplist()) ->
     {ok, delete_vocabulary_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_vocabulary_errors(), tuple()}.
 delete_vocabulary(Client, InstanceId, VocabularyId, Input0, Options0) ->
     Method = post,
     Path = ["/vocabulary-remove/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(VocabularyId), ""],
@@ -9058,11 +10883,7 @@ delete_vocabulary(Client, InstanceId, VocabularyId, Input0, Options0) ->
 -spec describe_agent_status(map(), binary() | list(), binary() | list()) ->
     {ok, describe_agent_status_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_agent_status_errors(), tuple()}.
 describe_agent_status(Client, AgentStatusId, InstanceId)
   when is_map(Client) ->
     describe_agent_status(Client, AgentStatusId, InstanceId, #{}, #{}).
@@ -9070,11 +10891,7 @@ describe_agent_status(Client, AgentStatusId, InstanceId)
 -spec describe_agent_status(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_agent_status_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_agent_status_errors(), tuple()}.
 describe_agent_status(Client, AgentStatusId, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_agent_status(Client, AgentStatusId, InstanceId, QueryMap, HeadersMap, []).
@@ -9082,11 +10899,7 @@ describe_agent_status(Client, AgentStatusId, InstanceId, QueryMap, HeadersMap)
 -spec describe_agent_status(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_agent_status_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_agent_status_errors(), tuple()}.
 describe_agent_status(Client, AgentStatusId, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/agent-status/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(AgentStatusId), ""],
@@ -9117,11 +10930,7 @@ describe_agent_status(Client, AgentStatusId, InstanceId, QueryMap, HeadersMap, O
 -spec describe_contact(map(), binary() | list(), binary() | list()) ->
     {ok, describe_contact_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_contact_errors(), tuple()}.
 describe_contact(Client, ContactId, InstanceId)
   when is_map(Client) ->
     describe_contact(Client, ContactId, InstanceId, #{}, #{}).
@@ -9129,11 +10938,7 @@ describe_contact(Client, ContactId, InstanceId)
 -spec describe_contact(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_contact_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_contact_errors(), tuple()}.
 describe_contact(Client, ContactId, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_contact(Client, ContactId, InstanceId, QueryMap, HeadersMap, []).
@@ -9141,11 +10946,7 @@ describe_contact(Client, ContactId, InstanceId, QueryMap, HeadersMap)
 -spec describe_contact(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_contact_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_contact_errors(), tuple()}.
 describe_contact(Client, ContactId, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/contacts/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactId), ""],
@@ -9167,10 +10968,7 @@ describe_contact(Client, ContactId, InstanceId, QueryMap, HeadersMap, Options0)
 -spec describe_contact_evaluation(map(), binary() | list(), binary() | list()) ->
     {ok, describe_contact_evaluation_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_contact_evaluation_errors(), tuple()}.
 describe_contact_evaluation(Client, EvaluationId, InstanceId)
   when is_map(Client) ->
     describe_contact_evaluation(Client, EvaluationId, InstanceId, #{}, #{}).
@@ -9178,10 +10976,7 @@ describe_contact_evaluation(Client, EvaluationId, InstanceId)
 -spec describe_contact_evaluation(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_contact_evaluation_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_contact_evaluation_errors(), tuple()}.
 describe_contact_evaluation(Client, EvaluationId, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_contact_evaluation(Client, EvaluationId, InstanceId, QueryMap, HeadersMap, []).
@@ -9189,10 +10984,7 @@ describe_contact_evaluation(Client, EvaluationId, InstanceId, QueryMap, HeadersM
 -spec describe_contact_evaluation(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_contact_evaluation_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_contact_evaluation_errors(), tuple()}.
 describe_contact_evaluation(Client, EvaluationId, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/contact-evaluations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationId), ""],
@@ -9217,12 +11009,7 @@ describe_contact_evaluation(Client, EvaluationId, InstanceId, QueryMap, HeadersM
 -spec describe_contact_flow(map(), binary() | list(), binary() | list()) ->
     {ok, describe_contact_flow_response(), tuple()} |
     {error, any()} |
-    {error, contact_flow_not_published_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_contact_flow_errors(), tuple()}.
 describe_contact_flow(Client, ContactFlowId, InstanceId)
   when is_map(Client) ->
     describe_contact_flow(Client, ContactFlowId, InstanceId, #{}, #{}).
@@ -9230,12 +11017,7 @@ describe_contact_flow(Client, ContactFlowId, InstanceId)
 -spec describe_contact_flow(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_contact_flow_response(), tuple()} |
     {error, any()} |
-    {error, contact_flow_not_published_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_contact_flow_errors(), tuple()}.
 describe_contact_flow(Client, ContactFlowId, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_contact_flow(Client, ContactFlowId, InstanceId, QueryMap, HeadersMap, []).
@@ -9243,12 +11025,7 @@ describe_contact_flow(Client, ContactFlowId, InstanceId, QueryMap, HeadersMap)
 -spec describe_contact_flow(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_contact_flow_response(), tuple()} |
     {error, any()} |
-    {error, contact_flow_not_published_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_contact_flow_errors(), tuple()}.
 describe_contact_flow(Client, ContactFlowId, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), ""],
@@ -9269,12 +11046,7 @@ describe_contact_flow(Client, ContactFlowId, InstanceId, QueryMap, HeadersMap, O
 -spec describe_contact_flow_module(map(), binary() | list(), binary() | list()) ->
     {ok, describe_contact_flow_module_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_contact_flow_module_errors(), tuple()}.
 describe_contact_flow_module(Client, ContactFlowModuleId, InstanceId)
   when is_map(Client) ->
     describe_contact_flow_module(Client, ContactFlowModuleId, InstanceId, #{}, #{}).
@@ -9282,12 +11054,7 @@ describe_contact_flow_module(Client, ContactFlowModuleId, InstanceId)
 -spec describe_contact_flow_module(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_contact_flow_module_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_contact_flow_module_errors(), tuple()}.
 describe_contact_flow_module(Client, ContactFlowModuleId, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_contact_flow_module(Client, ContactFlowModuleId, InstanceId, QueryMap, HeadersMap, []).
@@ -9295,12 +11062,7 @@ describe_contact_flow_module(Client, ContactFlowModuleId, InstanceId, QueryMap, 
 -spec describe_contact_flow_module(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_contact_flow_module_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_contact_flow_module_errors(), tuple()}.
 describe_contact_flow_module(Client, ContactFlowModuleId, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/contact-flow-modules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowModuleId), ""],
@@ -9326,10 +11088,7 @@ describe_contact_flow_module(Client, ContactFlowModuleId, InstanceId, QueryMap, 
 -spec describe_evaluation_form(map(), binary() | list(), binary() | list()) ->
     {ok, describe_evaluation_form_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_evaluation_form_errors(), tuple()}.
 describe_evaluation_form(Client, EvaluationFormId, InstanceId)
   when is_map(Client) ->
     describe_evaluation_form(Client, EvaluationFormId, InstanceId, #{}, #{}).
@@ -9337,10 +11096,7 @@ describe_evaluation_form(Client, EvaluationFormId, InstanceId)
 -spec describe_evaluation_form(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_evaluation_form_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_evaluation_form_errors(), tuple()}.
 describe_evaluation_form(Client, EvaluationFormId, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_evaluation_form(Client, EvaluationFormId, InstanceId, QueryMap, HeadersMap, []).
@@ -9348,10 +11104,7 @@ describe_evaluation_form(Client, EvaluationFormId, InstanceId, QueryMap, Headers
 -spec describe_evaluation_form(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_evaluation_form_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_evaluation_form_errors(), tuple()}.
 describe_evaluation_form(Client, EvaluationFormId, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/evaluation-forms/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationFormId), ""],
@@ -9379,11 +11132,7 @@ describe_evaluation_form(Client, EvaluationFormId, InstanceId, QueryMap, Headers
 -spec describe_hours_of_operation(map(), binary() | list(), binary() | list()) ->
     {ok, describe_hours_of_operation_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_hours_of_operation_errors(), tuple()}.
 describe_hours_of_operation(Client, HoursOfOperationId, InstanceId)
   when is_map(Client) ->
     describe_hours_of_operation(Client, HoursOfOperationId, InstanceId, #{}, #{}).
@@ -9391,11 +11140,7 @@ describe_hours_of_operation(Client, HoursOfOperationId, InstanceId)
 -spec describe_hours_of_operation(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_hours_of_operation_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_hours_of_operation_errors(), tuple()}.
 describe_hours_of_operation(Client, HoursOfOperationId, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_hours_of_operation(Client, HoursOfOperationId, InstanceId, QueryMap, HeadersMap, []).
@@ -9403,11 +11148,7 @@ describe_hours_of_operation(Client, HoursOfOperationId, InstanceId, QueryMap, He
 -spec describe_hours_of_operation(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_hours_of_operation_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_hours_of_operation_errors(), tuple()}.
 describe_hours_of_operation(Client, HoursOfOperationId, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/hours-of-operations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HoursOfOperationId), ""],
@@ -9439,9 +11180,7 @@ describe_hours_of_operation(Client, HoursOfOperationId, InstanceId, QueryMap, He
 -spec describe_instance(map(), binary() | list()) ->
     {ok, describe_instance_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_instance_errors(), tuple()}.
 describe_instance(Client, InstanceId)
   when is_map(Client) ->
     describe_instance(Client, InstanceId, #{}, #{}).
@@ -9449,9 +11188,7 @@ describe_instance(Client, InstanceId)
 -spec describe_instance(map(), binary() | list(), map(), map()) ->
     {ok, describe_instance_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_instance_errors(), tuple()}.
 describe_instance(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_instance(Client, InstanceId, QueryMap, HeadersMap, []).
@@ -9459,9 +11196,7 @@ describe_instance(Client, InstanceId, QueryMap, HeadersMap)
 -spec describe_instance(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_instance_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_instance_errors(), tuple()}.
 describe_instance(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), ""],
@@ -9485,11 +11220,7 @@ describe_instance(Client, InstanceId, QueryMap, HeadersMap, Options0)
 -spec describe_instance_attribute(map(), binary() | list(), binary() | list()) ->
     {ok, describe_instance_attribute_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_instance_attribute_errors(), tuple()}.
 describe_instance_attribute(Client, AttributeType, InstanceId)
   when is_map(Client) ->
     describe_instance_attribute(Client, AttributeType, InstanceId, #{}, #{}).
@@ -9497,11 +11228,7 @@ describe_instance_attribute(Client, AttributeType, InstanceId)
 -spec describe_instance_attribute(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_instance_attribute_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_instance_attribute_errors(), tuple()}.
 describe_instance_attribute(Client, AttributeType, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_instance_attribute(Client, AttributeType, InstanceId, QueryMap, HeadersMap, []).
@@ -9509,11 +11236,7 @@ describe_instance_attribute(Client, AttributeType, InstanceId, QueryMap, Headers
 -spec describe_instance_attribute(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_instance_attribute_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_instance_attribute_errors(), tuple()}.
 describe_instance_attribute(Client, AttributeType, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/attribute/", aws_util:encode_uri(AttributeType), ""],
@@ -9539,11 +11262,7 @@ describe_instance_attribute(Client, AttributeType, InstanceId, QueryMap, Headers
 -spec describe_instance_storage_config(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_instance_storage_config_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_instance_storage_config_errors(), tuple()}.
 describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType)
   when is_map(Client) ->
     describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType, #{}, #{}).
@@ -9551,11 +11270,7 @@ describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType
 -spec describe_instance_storage_config(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_instance_storage_config_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_instance_storage_config_errors(), tuple()}.
 describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType, QueryMap, HeadersMap, []).
@@ -9563,11 +11278,7 @@ describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType
 -spec describe_instance_storage_config(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_instance_storage_config_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_instance_storage_config_errors(), tuple()}.
 describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/storage-config/", aws_util:encode_uri(AssociationId), ""],
@@ -9608,11 +11319,7 @@ describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType
 -spec describe_phone_number(map(), binary() | list()) ->
     {ok, describe_phone_number_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_phone_number_errors(), tuple()}.
 describe_phone_number(Client, PhoneNumberId)
   when is_map(Client) ->
     describe_phone_number(Client, PhoneNumberId, #{}, #{}).
@@ -9620,11 +11327,7 @@ describe_phone_number(Client, PhoneNumberId)
 -spec describe_phone_number(map(), binary() | list(), map(), map()) ->
     {ok, describe_phone_number_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_phone_number_errors(), tuple()}.
 describe_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, []).
@@ -9632,11 +11335,7 @@ describe_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap)
 -spec describe_phone_number(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_phone_number_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_phone_number_errors(), tuple()}.
 describe_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/phone-number/", aws_util:encode_uri(PhoneNumberId), ""],
@@ -9658,11 +11357,7 @@ describe_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, Options0)
 -spec describe_predefined_attribute(map(), binary() | list(), binary() | list()) ->
     {ok, describe_predefined_attribute_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_predefined_attribute_errors(), tuple()}.
 describe_predefined_attribute(Client, InstanceId, Name)
   when is_map(Client) ->
     describe_predefined_attribute(Client, InstanceId, Name, #{}, #{}).
@@ -9670,11 +11365,7 @@ describe_predefined_attribute(Client, InstanceId, Name)
 -spec describe_predefined_attribute(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_predefined_attribute_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_predefined_attribute_errors(), tuple()}.
 describe_predefined_attribute(Client, InstanceId, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_predefined_attribute(Client, InstanceId, Name, QueryMap, HeadersMap, []).
@@ -9682,11 +11373,7 @@ describe_predefined_attribute(Client, InstanceId, Name, QueryMap, HeadersMap)
 -spec describe_predefined_attribute(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_predefined_attribute_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_predefined_attribute_errors(), tuple()}.
 describe_predefined_attribute(Client, InstanceId, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/predefined-attributes/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(Name), ""],
@@ -9707,11 +11394,7 @@ describe_predefined_attribute(Client, InstanceId, Name, QueryMap, HeadersMap, Op
 -spec describe_prompt(map(), binary() | list(), binary() | list()) ->
     {ok, describe_prompt_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_prompt_errors(), tuple()}.
 describe_prompt(Client, InstanceId, PromptId)
   when is_map(Client) ->
     describe_prompt(Client, InstanceId, PromptId, #{}, #{}).
@@ -9719,11 +11402,7 @@ describe_prompt(Client, InstanceId, PromptId)
 -spec describe_prompt(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_prompt_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_prompt_errors(), tuple()}.
 describe_prompt(Client, InstanceId, PromptId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_prompt(Client, InstanceId, PromptId, QueryMap, HeadersMap, []).
@@ -9731,11 +11410,7 @@ describe_prompt(Client, InstanceId, PromptId, QueryMap, HeadersMap)
 -spec describe_prompt(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_prompt_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_prompt_errors(), tuple()}.
 describe_prompt(Client, InstanceId, PromptId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prompts/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(PromptId), ""],
@@ -9759,11 +11434,7 @@ describe_prompt(Client, InstanceId, PromptId, QueryMap, HeadersMap, Options0)
 -spec describe_queue(map(), binary() | list(), binary() | list()) ->
     {ok, describe_queue_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_queue_errors(), tuple()}.
 describe_queue(Client, InstanceId, QueueId)
   when is_map(Client) ->
     describe_queue(Client, InstanceId, QueueId, #{}, #{}).
@@ -9771,11 +11442,7 @@ describe_queue(Client, InstanceId, QueueId)
 -spec describe_queue(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_queue_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_queue_errors(), tuple()}.
 describe_queue(Client, InstanceId, QueueId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_queue(Client, InstanceId, QueueId, QueryMap, HeadersMap, []).
@@ -9783,11 +11450,7 @@ describe_queue(Client, InstanceId, QueueId, QueryMap, HeadersMap)
 -spec describe_queue(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_queue_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_queue_errors(), tuple()}.
 describe_queue(Client, InstanceId, QueueId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), ""],
@@ -9808,11 +11471,7 @@ describe_queue(Client, InstanceId, QueueId, QueryMap, HeadersMap, Options0)
 -spec describe_quick_connect(map(), binary() | list(), binary() | list()) ->
     {ok, describe_quick_connect_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_quick_connect_errors(), tuple()}.
 describe_quick_connect(Client, InstanceId, QuickConnectId)
   when is_map(Client) ->
     describe_quick_connect(Client, InstanceId, QuickConnectId, #{}, #{}).
@@ -9820,11 +11479,7 @@ describe_quick_connect(Client, InstanceId, QuickConnectId)
 -spec describe_quick_connect(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_quick_connect_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_quick_connect_errors(), tuple()}.
 describe_quick_connect(Client, InstanceId, QuickConnectId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_quick_connect(Client, InstanceId, QuickConnectId, QueryMap, HeadersMap, []).
@@ -9832,11 +11487,7 @@ describe_quick_connect(Client, InstanceId, QuickConnectId, QueryMap, HeadersMap)
 -spec describe_quick_connect(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_quick_connect_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_quick_connect_errors(), tuple()}.
 describe_quick_connect(Client, InstanceId, QuickConnectId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QuickConnectId), ""],
@@ -9857,11 +11508,7 @@ describe_quick_connect(Client, InstanceId, QuickConnectId, QueryMap, HeadersMap,
 -spec describe_routing_profile(map(), binary() | list(), binary() | list()) ->
     {ok, describe_routing_profile_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_routing_profile_errors(), tuple()}.
 describe_routing_profile(Client, InstanceId, RoutingProfileId)
   when is_map(Client) ->
     describe_routing_profile(Client, InstanceId, RoutingProfileId, #{}, #{}).
@@ -9869,11 +11516,7 @@ describe_routing_profile(Client, InstanceId, RoutingProfileId)
 -spec describe_routing_profile(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_routing_profile_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_routing_profile_errors(), tuple()}.
 describe_routing_profile(Client, InstanceId, RoutingProfileId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_routing_profile(Client, InstanceId, RoutingProfileId, QueryMap, HeadersMap, []).
@@ -9881,11 +11524,7 @@ describe_routing_profile(Client, InstanceId, RoutingProfileId, QueryMap, Headers
 -spec describe_routing_profile(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_routing_profile_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_routing_profile_errors(), tuple()}.
 describe_routing_profile(Client, InstanceId, RoutingProfileId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), ""],
@@ -9906,11 +11545,7 @@ describe_routing_profile(Client, InstanceId, RoutingProfileId, QueryMap, Headers
 -spec describe_rule(map(), binary() | list(), binary() | list()) ->
     {ok, describe_rule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_rule_errors(), tuple()}.
 describe_rule(Client, InstanceId, RuleId)
   when is_map(Client) ->
     describe_rule(Client, InstanceId, RuleId, #{}, #{}).
@@ -9918,11 +11553,7 @@ describe_rule(Client, InstanceId, RuleId)
 -spec describe_rule(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_rule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_rule_errors(), tuple()}.
 describe_rule(Client, InstanceId, RuleId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_rule(Client, InstanceId, RuleId, QueryMap, HeadersMap, []).
@@ -9930,11 +11561,7 @@ describe_rule(Client, InstanceId, RuleId, QueryMap, HeadersMap)
 -spec describe_rule(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_rule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_rule_errors(), tuple()}.
 describe_rule(Client, InstanceId, RuleId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/rules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RuleId), ""],
@@ -9955,11 +11582,7 @@ describe_rule(Client, InstanceId, RuleId, QueryMap, HeadersMap, Options0)
 -spec describe_security_profile(map(), binary() | list(), binary() | list()) ->
     {ok, describe_security_profile_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_security_profile_errors(), tuple()}.
 describe_security_profile(Client, InstanceId, SecurityProfileId)
   when is_map(Client) ->
     describe_security_profile(Client, InstanceId, SecurityProfileId, #{}, #{}).
@@ -9967,11 +11590,7 @@ describe_security_profile(Client, InstanceId, SecurityProfileId)
 -spec describe_security_profile(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_security_profile_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_security_profile_errors(), tuple()}.
 describe_security_profile(Client, InstanceId, SecurityProfileId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_security_profile(Client, InstanceId, SecurityProfileId, QueryMap, HeadersMap, []).
@@ -9979,11 +11598,7 @@ describe_security_profile(Client, InstanceId, SecurityProfileId, QueryMap, Heade
 -spec describe_security_profile(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_security_profile_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_security_profile_errors(), tuple()}.
 describe_security_profile(Client, InstanceId, SecurityProfileId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/security-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(SecurityProfileId), ""],
@@ -10004,11 +11619,7 @@ describe_security_profile(Client, InstanceId, SecurityProfileId, QueryMap, Heade
 -spec describe_traffic_distribution_group(map(), binary() | list()) ->
     {ok, describe_traffic_distribution_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_traffic_distribution_group_errors(), tuple()}.
 describe_traffic_distribution_group(Client, TrafficDistributionGroupId)
   when is_map(Client) ->
     describe_traffic_distribution_group(Client, TrafficDistributionGroupId, #{}, #{}).
@@ -10016,11 +11627,7 @@ describe_traffic_distribution_group(Client, TrafficDistributionGroupId)
 -spec describe_traffic_distribution_group(map(), binary() | list(), map(), map()) ->
     {ok, describe_traffic_distribution_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_traffic_distribution_group_errors(), tuple()}.
 describe_traffic_distribution_group(Client, TrafficDistributionGroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_traffic_distribution_group(Client, TrafficDistributionGroupId, QueryMap, HeadersMap, []).
@@ -10028,11 +11635,7 @@ describe_traffic_distribution_group(Client, TrafficDistributionGroupId, QueryMap
 -spec describe_traffic_distribution_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_traffic_distribution_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_traffic_distribution_group_errors(), tuple()}.
 describe_traffic_distribution_group(Client, TrafficDistributionGroupId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/traffic-distribution-group/", aws_util:encode_uri(TrafficDistributionGroupId), ""],
@@ -10058,11 +11661,7 @@ describe_traffic_distribution_group(Client, TrafficDistributionGroupId, QueryMap
 -spec describe_user(map(), binary() | list(), binary() | list()) ->
     {ok, describe_user_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_user_errors(), tuple()}.
 describe_user(Client, InstanceId, UserId)
   when is_map(Client) ->
     describe_user(Client, InstanceId, UserId, #{}, #{}).
@@ -10070,11 +11669,7 @@ describe_user(Client, InstanceId, UserId)
 -spec describe_user(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_user_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_user_errors(), tuple()}.
 describe_user(Client, InstanceId, UserId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_user(Client, InstanceId, UserId, QueryMap, HeadersMap, []).
@@ -10082,11 +11677,7 @@ describe_user(Client, InstanceId, UserId, QueryMap, HeadersMap)
 -spec describe_user(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_user_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_user_errors(), tuple()}.
 describe_user(Client, InstanceId, UserId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), ""],
@@ -10107,11 +11698,7 @@ describe_user(Client, InstanceId, UserId, QueryMap, HeadersMap, Options0)
 -spec describe_user_hierarchy_group(map(), binary() | list(), binary() | list()) ->
     {ok, describe_user_hierarchy_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_user_hierarchy_group_errors(), tuple()}.
 describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId)
   when is_map(Client) ->
     describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, #{}, #{}).
@@ -10119,11 +11706,7 @@ describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId)
 -spec describe_user_hierarchy_group(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_user_hierarchy_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_user_hierarchy_group_errors(), tuple()}.
 describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, QueryMap, HeadersMap, []).
@@ -10131,11 +11714,7 @@ describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, QueryMap, He
 -spec describe_user_hierarchy_group(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_user_hierarchy_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_user_hierarchy_group_errors(), tuple()}.
 describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/user-hierarchy-groups/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HierarchyGroupId), ""],
@@ -10157,11 +11736,7 @@ describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, QueryMap, He
 -spec describe_user_hierarchy_structure(map(), binary() | list()) ->
     {ok, describe_user_hierarchy_structure_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_user_hierarchy_structure_errors(), tuple()}.
 describe_user_hierarchy_structure(Client, InstanceId)
   when is_map(Client) ->
     describe_user_hierarchy_structure(Client, InstanceId, #{}, #{}).
@@ -10169,11 +11744,7 @@ describe_user_hierarchy_structure(Client, InstanceId)
 -spec describe_user_hierarchy_structure(map(), binary() | list(), map(), map()) ->
     {ok, describe_user_hierarchy_structure_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_user_hierarchy_structure_errors(), tuple()}.
 describe_user_hierarchy_structure(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_user_hierarchy_structure(Client, InstanceId, QueryMap, HeadersMap, []).
@@ -10181,11 +11752,7 @@ describe_user_hierarchy_structure(Client, InstanceId, QueryMap, HeadersMap)
 -spec describe_user_hierarchy_structure(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_user_hierarchy_structure_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_user_hierarchy_structure_errors(), tuple()}.
 describe_user_hierarchy_structure(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/user-hierarchy-structure/", aws_util:encode_uri(InstanceId), ""],
@@ -10220,12 +11787,7 @@ describe_user_hierarchy_structure(Client, InstanceId, QueryMap, HeadersMap, Opti
 -spec describe_view(map(), binary() | list(), binary() | list()) ->
     {ok, describe_view_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_view_errors(), tuple()}.
 describe_view(Client, InstanceId, ViewId)
   when is_map(Client) ->
     describe_view(Client, InstanceId, ViewId, #{}, #{}).
@@ -10233,12 +11795,7 @@ describe_view(Client, InstanceId, ViewId)
 -spec describe_view(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_view_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_view_errors(), tuple()}.
 describe_view(Client, InstanceId, ViewId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_view(Client, InstanceId, ViewId, QueryMap, HeadersMap, []).
@@ -10246,12 +11803,7 @@ describe_view(Client, InstanceId, ViewId, QueryMap, HeadersMap)
 -spec describe_view(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_view_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_view_errors(), tuple()}.
 describe_view(Client, InstanceId, ViewId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/views/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ViewId), ""],
@@ -10272,11 +11824,7 @@ describe_view(Client, InstanceId, ViewId, QueryMap, HeadersMap, Options0)
 -spec describe_vocabulary(map(), binary() | list(), binary() | list()) ->
     {ok, describe_vocabulary_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_vocabulary_errors(), tuple()}.
 describe_vocabulary(Client, InstanceId, VocabularyId)
   when is_map(Client) ->
     describe_vocabulary(Client, InstanceId, VocabularyId, #{}, #{}).
@@ -10284,11 +11832,7 @@ describe_vocabulary(Client, InstanceId, VocabularyId)
 -spec describe_vocabulary(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_vocabulary_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_vocabulary_errors(), tuple()}.
 describe_vocabulary(Client, InstanceId, VocabularyId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_vocabulary(Client, InstanceId, VocabularyId, QueryMap, HeadersMap, []).
@@ -10296,11 +11840,7 @@ describe_vocabulary(Client, InstanceId, VocabularyId, QueryMap, HeadersMap)
 -spec describe_vocabulary(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_vocabulary_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_vocabulary_errors(), tuple()}.
 describe_vocabulary(Client, InstanceId, VocabularyId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/vocabulary/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(VocabularyId), ""],
@@ -10324,22 +11864,14 @@ describe_vocabulary(Client, InstanceId, VocabularyId, QueryMap, HeadersMap, Opti
 -spec disassociate_analytics_data_set(map(), binary() | list(), disassociate_analytics_data_set_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_analytics_data_set_errors(), tuple()}.
 disassociate_analytics_data_set(Client, InstanceId, Input) ->
     disassociate_analytics_data_set(Client, InstanceId, Input, []).
 
 -spec disassociate_analytics_data_set(map(), binary() | list(), disassociate_analytics_data_set_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_analytics_data_set_errors(), tuple()}.
 disassociate_analytics_data_set(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/analytics-data/instance/", aws_util:encode_uri(InstanceId), "/association"],
@@ -10369,22 +11901,14 @@ disassociate_analytics_data_set(Client, InstanceId, Input0, Options0) ->
 -spec disassociate_approved_origin(map(), binary() | list(), disassociate_approved_origin_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_approved_origin_errors(), tuple()}.
 disassociate_approved_origin(Client, InstanceId, Input) ->
     disassociate_approved_origin(Client, InstanceId, Input, []).
 
 -spec disassociate_approved_origin(map(), binary() | list(), disassociate_approved_origin_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_approved_origin_errors(), tuple()}.
 disassociate_approved_origin(Client, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/approved-origin"],
@@ -10417,20 +11941,14 @@ disassociate_approved_origin(Client, InstanceId, Input0, Options0) ->
 -spec disassociate_bot(map(), binary() | list(), disassociate_bot_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_bot_errors(), tuple()}.
 disassociate_bot(Client, InstanceId, Input) ->
     disassociate_bot(Client, InstanceId, Input, []).
 
 -spec disassociate_bot(map(), binary() | list(), disassociate_bot_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_bot_errors(), tuple()}.
 disassociate_bot(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/bot"],
@@ -10457,24 +11975,14 @@ disassociate_bot(Client, InstanceId, Input0, Options0) ->
 -spec disassociate_flow(map(), binary() | list(), binary() | list(), binary() | list(), disassociate_flow_request()) ->
     {ok, disassociate_flow_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_flow_errors(), tuple()}.
 disassociate_flow(Client, InstanceId, ResourceId, ResourceType, Input) ->
     disassociate_flow(Client, InstanceId, ResourceId, ResourceType, Input, []).
 
 -spec disassociate_flow(map(), binary() | list(), binary() | list(), binary() | list(), disassociate_flow_request(), proplists:proplist()) ->
     {ok, disassociate_flow_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_flow_errors(), tuple()}.
 disassociate_flow(Client, InstanceId, ResourceId, ResourceType, Input0, Options0) ->
     Method = delete,
     Path = ["/flow-associations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ResourceId), "/", aws_util:encode_uri(ResourceType), ""],
@@ -10506,22 +12014,14 @@ disassociate_flow(Client, InstanceId, ResourceId, ResourceType, Input0, Options0
 -spec disassociate_instance_storage_config(map(), binary() | list(), binary() | list(), disassociate_instance_storage_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_instance_storage_config_errors(), tuple()}.
 disassociate_instance_storage_config(Client, AssociationId, InstanceId, Input) ->
     disassociate_instance_storage_config(Client, AssociationId, InstanceId, Input, []).
 
 -spec disassociate_instance_storage_config(map(), binary() | list(), binary() | list(), disassociate_instance_storage_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_instance_storage_config_errors(), tuple()}.
 disassociate_instance_storage_config(Client, AssociationId, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/storage-config/", aws_util:encode_uri(AssociationId), ""],
@@ -10554,22 +12054,14 @@ disassociate_instance_storage_config(Client, AssociationId, InstanceId, Input0, 
 -spec disassociate_lambda_function(map(), binary() | list(), disassociate_lambda_function_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_lambda_function_errors(), tuple()}.
 disassociate_lambda_function(Client, InstanceId, Input) ->
     disassociate_lambda_function(Client, InstanceId, Input, []).
 
 -spec disassociate_lambda_function(map(), binary() | list(), disassociate_lambda_function_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_lambda_function_errors(), tuple()}.
 disassociate_lambda_function(Client, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/lambda-function"],
@@ -10602,22 +12094,14 @@ disassociate_lambda_function(Client, InstanceId, Input0, Options0) ->
 -spec disassociate_lex_bot(map(), binary() | list(), disassociate_lex_bot_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_lex_bot_errors(), tuple()}.
 disassociate_lex_bot(Client, InstanceId, Input) ->
     disassociate_lex_bot(Client, InstanceId, Input, []).
 
 -spec disassociate_lex_bot(map(), binary() | list(), disassociate_lex_bot_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_lex_bot_errors(), tuple()}.
 disassociate_lex_bot(Client, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/lex-bot"],
@@ -10661,22 +12145,14 @@ disassociate_lex_bot(Client, InstanceId, Input0, Options0) ->
 -spec disassociate_phone_number_contact_flow(map(), binary() | list(), disassociate_phone_number_contact_flow_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_phone_number_contact_flow_errors(), tuple()}.
 disassociate_phone_number_contact_flow(Client, PhoneNumberId, Input) ->
     disassociate_phone_number_contact_flow(Client, PhoneNumberId, Input, []).
 
 -spec disassociate_phone_number_contact_flow(map(), binary() | list(), disassociate_phone_number_contact_flow_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_phone_number_contact_flow_errors(), tuple()}.
 disassociate_phone_number_contact_flow(Client, PhoneNumberId, Input0, Options0) ->
     Method = delete,
     Path = ["/phone-number/", aws_util:encode_uri(PhoneNumberId), "/contact-flow"],
@@ -10707,22 +12183,14 @@ disassociate_phone_number_contact_flow(Client, PhoneNumberId, Input0, Options0) 
 -spec disassociate_queue_quick_connects(map(), binary() | list(), binary() | list(), disassociate_queue_quick_connects_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_queue_quick_connects_errors(), tuple()}.
 disassociate_queue_quick_connects(Client, InstanceId, QueueId, Input) ->
     disassociate_queue_quick_connects(Client, InstanceId, QueueId, Input, []).
 
 -spec disassociate_queue_quick_connects(map(), binary() | list(), binary() | list(), disassociate_queue_quick_connects_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_queue_quick_connects_errors(), tuple()}.
 disassociate_queue_quick_connects(Client, InstanceId, QueueId, Input0, Options0) ->
     Method = post,
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/disassociate-quick-connects"],
@@ -10749,22 +12217,14 @@ disassociate_queue_quick_connects(Client, InstanceId, QueueId, Input0, Options0)
 -spec disassociate_routing_profile_queues(map(), binary() | list(), binary() | list(), disassociate_routing_profile_queues_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_routing_profile_queues_errors(), tuple()}.
 disassociate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input) ->
     disassociate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input, []).
 
 -spec disassociate_routing_profile_queues(map(), binary() | list(), binary() | list(), disassociate_routing_profile_queues_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_routing_profile_queues_errors(), tuple()}.
 disassociate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/disassociate-queues"],
@@ -10794,22 +12254,14 @@ disassociate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0
 -spec disassociate_security_key(map(), binary() | list(), binary() | list(), disassociate_security_key_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_security_key_errors(), tuple()}.
 disassociate_security_key(Client, AssociationId, InstanceId, Input) ->
     disassociate_security_key(Client, AssociationId, InstanceId, Input, []).
 
 -spec disassociate_security_key(map(), binary() | list(), binary() | list(), disassociate_security_key_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_security_key_errors(), tuple()}.
 disassociate_security_key(Client, AssociationId, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/security-key/", aws_util:encode_uri(AssociationId), ""],
@@ -10836,24 +12288,14 @@ disassociate_security_key(Client, AssociationId, InstanceId, Input0, Options0) -
 -spec disassociate_traffic_distribution_group_user(map(), binary() | list(), disassociate_traffic_distribution_group_user_request()) ->
     {ok, disassociate_traffic_distribution_group_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_traffic_distribution_group_user_errors(), tuple()}.
 disassociate_traffic_distribution_group_user(Client, TrafficDistributionGroupId, Input) ->
     disassociate_traffic_distribution_group_user(Client, TrafficDistributionGroupId, Input, []).
 
 -spec disassociate_traffic_distribution_group_user(map(), binary() | list(), disassociate_traffic_distribution_group_user_request(), proplists:proplist()) ->
     {ok, disassociate_traffic_distribution_group_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_traffic_distribution_group_user_errors(), tuple()}.
 disassociate_traffic_distribution_group_user(Client, TrafficDistributionGroupId, Input0, Options0) ->
     Method = delete,
     Path = ["/traffic-distribution-group/", aws_util:encode_uri(TrafficDistributionGroupId), "/user"],
@@ -10882,22 +12324,14 @@ disassociate_traffic_distribution_group_user(Client, TrafficDistributionGroupId,
 -spec disassociate_user_proficiencies(map(), binary() | list(), binary() | list(), disassociate_user_proficiencies_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_user_proficiencies_errors(), tuple()}.
 disassociate_user_proficiencies(Client, InstanceId, UserId, Input) ->
     disassociate_user_proficiencies(Client, InstanceId, UserId, Input, []).
 
 -spec disassociate_user_proficiencies(map(), binary() | list(), binary() | list(), disassociate_user_proficiencies_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_user_proficiencies_errors(), tuple()}.
 disassociate_user_proficiencies(Client, InstanceId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/disassociate-proficiencies"],
@@ -10932,24 +12366,14 @@ disassociate_user_proficiencies(Client, InstanceId, UserId, Input0, Options0) ->
 -spec dismiss_user_contact(map(), binary() | list(), binary() | list(), dismiss_user_contact_request()) ->
     {ok, dismiss_user_contact_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, dismiss_user_contact_errors(), tuple()}.
 dismiss_user_contact(Client, InstanceId, UserId, Input) ->
     dismiss_user_contact(Client, InstanceId, UserId, Input, []).
 
 -spec dismiss_user_contact(map(), binary() | list(), binary() | list(), dismiss_user_contact_request(), proplists:proplist()) ->
     {ok, dismiss_user_contact_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, dismiss_user_contact_errors(), tuple()}.
 dismiss_user_contact(Client, InstanceId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/contact"],
@@ -10976,9 +12400,7 @@ dismiss_user_contact(Client, InstanceId, UserId, Input0, Options0) ->
 -spec get_contact_attributes(map(), binary() | list(), binary() | list()) ->
     {ok, get_contact_attributes_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_contact_attributes_errors(), tuple()}.
 get_contact_attributes(Client, InitialContactId, InstanceId)
   when is_map(Client) ->
     get_contact_attributes(Client, InitialContactId, InstanceId, #{}, #{}).
@@ -10986,9 +12408,7 @@ get_contact_attributes(Client, InitialContactId, InstanceId)
 -spec get_contact_attributes(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_contact_attributes_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_contact_attributes_errors(), tuple()}.
 get_contact_attributes(Client, InitialContactId, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_contact_attributes(Client, InitialContactId, InstanceId, QueryMap, HeadersMap, []).
@@ -10996,9 +12416,7 @@ get_contact_attributes(Client, InitialContactId, InstanceId, QueryMap, HeadersMa
 -spec get_contact_attributes(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_contact_attributes_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_contact_attributes_errors(), tuple()}.
 get_contact_attributes(Client, InitialContactId, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/contact/attributes/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(InitialContactId), ""],
@@ -11025,22 +12443,14 @@ get_contact_attributes(Client, InitialContactId, InstanceId, QueryMap, HeadersMa
 -spec get_current_metric_data(map(), binary() | list(), get_current_metric_data_request()) ->
     {ok, get_current_metric_data_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_current_metric_data_errors(), tuple()}.
 get_current_metric_data(Client, InstanceId, Input) ->
     get_current_metric_data(Client, InstanceId, Input, []).
 
 -spec get_current_metric_data(map(), binary() | list(), get_current_metric_data_request(), proplists:proplist()) ->
     {ok, get_current_metric_data_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_current_metric_data_errors(), tuple()}.
 get_current_metric_data(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/metrics/current/", aws_util:encode_uri(InstanceId), ""],
@@ -11068,22 +12478,14 @@ get_current_metric_data(Client, InstanceId, Input0, Options0) ->
 -spec get_current_user_data(map(), binary() | list(), get_current_user_data_request()) ->
     {ok, get_current_user_data_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_current_user_data_errors(), tuple()}.
 get_current_user_data(Client, InstanceId, Input) ->
     get_current_user_data(Client, InstanceId, Input, []).
 
 -spec get_current_user_data(map(), binary() | list(), get_current_user_data_request(), proplists:proplist()) ->
     {ok, get_current_user_data_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_current_user_data_errors(), tuple()}.
 get_current_user_data(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/metrics/userdata/", aws_util:encode_uri(InstanceId), ""],
@@ -11129,12 +12531,7 @@ get_current_user_data(Client, InstanceId, Input0, Options0) ->
 -spec get_federation_token(map(), binary() | list()) ->
     {ok, get_federation_token_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, get_federation_token_errors(), tuple()}.
 get_federation_token(Client, InstanceId)
   when is_map(Client) ->
     get_federation_token(Client, InstanceId, #{}, #{}).
@@ -11142,12 +12539,7 @@ get_federation_token(Client, InstanceId)
 -spec get_federation_token(map(), binary() | list(), map(), map()) ->
     {ok, get_federation_token_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, get_federation_token_errors(), tuple()}.
 get_federation_token(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_federation_token(Client, InstanceId, QueryMap, HeadersMap, []).
@@ -11155,12 +12547,7 @@ get_federation_token(Client, InstanceId, QueryMap, HeadersMap)
 -spec get_federation_token(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_federation_token_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, get_federation_token_errors(), tuple()}.
 get_federation_token(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/user/federate/", aws_util:encode_uri(InstanceId), ""],
@@ -11181,12 +12568,7 @@ get_federation_token(Client, InstanceId, QueryMap, HeadersMap, Options0)
 -spec get_flow_association(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_flow_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_flow_association_errors(), tuple()}.
 get_flow_association(Client, InstanceId, ResourceId, ResourceType)
   when is_map(Client) ->
     get_flow_association(Client, InstanceId, ResourceId, ResourceType, #{}, #{}).
@@ -11194,12 +12576,7 @@ get_flow_association(Client, InstanceId, ResourceId, ResourceType)
 -spec get_flow_association(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_flow_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_flow_association_errors(), tuple()}.
 get_flow_association(Client, InstanceId, ResourceId, ResourceType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_flow_association(Client, InstanceId, ResourceId, ResourceType, QueryMap, HeadersMap, []).
@@ -11207,12 +12584,7 @@ get_flow_association(Client, InstanceId, ResourceId, ResourceType, QueryMap, Hea
 -spec get_flow_association(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_flow_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_flow_association_errors(), tuple()}.
 get_flow_association(Client, InstanceId, ResourceId, ResourceType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/flow-associations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ResourceId), "/", aws_util:encode_uri(ResourceType), ""],
@@ -11254,22 +12626,14 @@ get_flow_association(Client, InstanceId, ResourceId, ResourceType, QueryMap, Hea
 -spec get_metric_data(map(), binary() | list(), get_metric_data_request()) ->
     {ok, get_metric_data_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_metric_data_errors(), tuple()}.
 get_metric_data(Client, InstanceId, Input) ->
     get_metric_data(Client, InstanceId, Input, []).
 
 -spec get_metric_data(map(), binary() | list(), get_metric_data_request(), proplists:proplist()) ->
     {ok, get_metric_data_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_metric_data_errors(), tuple()}.
 get_metric_data(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/metrics/historical/", aws_util:encode_uri(InstanceId), ""],
@@ -11312,22 +12676,14 @@ get_metric_data(Client, InstanceId, Input0, Options0) ->
 -spec get_metric_data_v2(map(), get_metric_data_v2_request()) ->
     {ok, get_metric_data_v2_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_metric_data_v2_errors(), tuple()}.
 get_metric_data_v2(Client, Input) ->
     get_metric_data_v2(Client, Input, []).
 
 -spec get_metric_data_v2(map(), get_metric_data_v2_request(), proplists:proplist()) ->
     {ok, get_metric_data_v2_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_metric_data_v2_errors(), tuple()}.
 get_metric_data_v2(Client, Input0, Options0) ->
     Method = post,
     Path = ["/metrics/data"],
@@ -11354,11 +12710,7 @@ get_metric_data_v2(Client, Input0, Options0) ->
 -spec get_prompt_file(map(), binary() | list(), binary() | list()) ->
     {ok, get_prompt_file_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_prompt_file_errors(), tuple()}.
 get_prompt_file(Client, InstanceId, PromptId)
   when is_map(Client) ->
     get_prompt_file(Client, InstanceId, PromptId, #{}, #{}).
@@ -11366,11 +12718,7 @@ get_prompt_file(Client, InstanceId, PromptId)
 -spec get_prompt_file(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_prompt_file_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_prompt_file_errors(), tuple()}.
 get_prompt_file(Client, InstanceId, PromptId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_prompt_file(Client, InstanceId, PromptId, QueryMap, HeadersMap, []).
@@ -11378,11 +12726,7 @@ get_prompt_file(Client, InstanceId, PromptId, QueryMap, HeadersMap)
 -spec get_prompt_file(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_prompt_file_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_prompt_file_errors(), tuple()}.
 get_prompt_file(Client, InstanceId, PromptId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prompts/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(PromptId), "/file"],
@@ -11405,11 +12749,7 @@ get_prompt_file(Client, InstanceId, PromptId, QueryMap, HeadersMap, Options0)
 -spec get_task_template(map(), binary() | list(), binary() | list()) ->
     {ok, get_task_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_task_template_errors(), tuple()}.
 get_task_template(Client, InstanceId, TaskTemplateId)
   when is_map(Client) ->
     get_task_template(Client, InstanceId, TaskTemplateId, #{}, #{}).
@@ -11417,11 +12757,7 @@ get_task_template(Client, InstanceId, TaskTemplateId)
 -spec get_task_template(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_task_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_task_template_errors(), tuple()}.
 get_task_template(Client, InstanceId, TaskTemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_task_template(Client, InstanceId, TaskTemplateId, QueryMap, HeadersMap, []).
@@ -11429,11 +12765,7 @@ get_task_template(Client, InstanceId, TaskTemplateId, QueryMap, HeadersMap)
 -spec get_task_template(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_task_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_task_template_errors(), tuple()}.
 get_task_template(Client, InstanceId, TaskTemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/task/template/", aws_util:encode_uri(TaskTemplateId), ""],
@@ -11459,11 +12791,7 @@ get_task_template(Client, InstanceId, TaskTemplateId, QueryMap, HeadersMap, Opti
 -spec get_traffic_distribution(map(), binary() | list()) ->
     {ok, get_traffic_distribution_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_traffic_distribution_errors(), tuple()}.
 get_traffic_distribution(Client, Id)
   when is_map(Client) ->
     get_traffic_distribution(Client, Id, #{}, #{}).
@@ -11471,11 +12799,7 @@ get_traffic_distribution(Client, Id)
 -spec get_traffic_distribution(map(), binary() | list(), map(), map()) ->
     {ok, get_traffic_distribution_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_traffic_distribution_errors(), tuple()}.
 get_traffic_distribution(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_traffic_distribution(Client, Id, QueryMap, HeadersMap, []).
@@ -11483,11 +12807,7 @@ get_traffic_distribution(Client, Id, QueryMap, HeadersMap)
 -spec get_traffic_distribution(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_traffic_distribution_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_traffic_distribution_errors(), tuple()}.
 get_traffic_distribution(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/traffic-distribution/", aws_util:encode_uri(Id), ""],
@@ -11513,24 +12833,14 @@ get_traffic_distribution(Client, Id, QueryMap, HeadersMap, Options0)
 -spec import_phone_number(map(), import_phone_number_request()) ->
     {ok, import_phone_number_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotency_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, import_phone_number_errors(), tuple()}.
 import_phone_number(Client, Input) ->
     import_phone_number(Client, Input, []).
 
 -spec import_phone_number(map(), import_phone_number_request(), proplists:proplist()) ->
     {ok, import_phone_number_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotency_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, import_phone_number_errors(), tuple()}.
 import_phone_number(Client, Input0, Options0) ->
     Method = post,
     Path = ["/phone-number/import"],
@@ -11560,11 +12870,7 @@ import_phone_number(Client, Input0, Options0) ->
 -spec list_agent_statuses(map(), binary() | list()) ->
     {ok, list_agent_status_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_agent_statuses_errors(), tuple()}.
 list_agent_statuses(Client, InstanceId)
   when is_map(Client) ->
     list_agent_statuses(Client, InstanceId, #{}, #{}).
@@ -11572,11 +12878,7 @@ list_agent_statuses(Client, InstanceId)
 -spec list_agent_statuses(map(), binary() | list(), map(), map()) ->
     {ok, list_agent_status_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_agent_statuses_errors(), tuple()}.
 list_agent_statuses(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_agent_statuses(Client, InstanceId, QueryMap, HeadersMap, []).
@@ -11584,11 +12886,7 @@ list_agent_statuses(Client, InstanceId, QueryMap, HeadersMap)
 -spec list_agent_statuses(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_agent_status_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_agent_statuses_errors(), tuple()}.
 list_agent_statuses(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/agent-status/", aws_util:encode_uri(InstanceId), ""],
@@ -11620,11 +12918,7 @@ list_agent_statuses(Client, InstanceId, QueryMap, HeadersMap, Options0)
 -spec list_analytics_data_associations(map(), binary() | list()) ->
     {ok, list_analytics_data_associations_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_analytics_data_associations_errors(), tuple()}.
 list_analytics_data_associations(Client, InstanceId)
   when is_map(Client) ->
     list_analytics_data_associations(Client, InstanceId, #{}, #{}).
@@ -11632,11 +12926,7 @@ list_analytics_data_associations(Client, InstanceId)
 -spec list_analytics_data_associations(map(), binary() | list(), map(), map()) ->
     {ok, list_analytics_data_associations_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_analytics_data_associations_errors(), tuple()}.
 list_analytics_data_associations(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_analytics_data_associations(Client, InstanceId, QueryMap, HeadersMap, []).
@@ -11644,11 +12934,7 @@ list_analytics_data_associations(Client, InstanceId, QueryMap, HeadersMap)
 -spec list_analytics_data_associations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_analytics_data_associations_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_analytics_data_associations_errors(), tuple()}.
 list_analytics_data_associations(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/analytics-data/instance/", aws_util:encode_uri(InstanceId), "/association"],
@@ -11679,11 +12965,7 @@ list_analytics_data_associations(Client, InstanceId, QueryMap, HeadersMap, Optio
 -spec list_approved_origins(map(), binary() | list()) ->
     {ok, list_approved_origins_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_approved_origins_errors(), tuple()}.
 list_approved_origins(Client, InstanceId)
   when is_map(Client) ->
     list_approved_origins(Client, InstanceId, #{}, #{}).
@@ -11691,11 +12973,7 @@ list_approved_origins(Client, InstanceId)
 -spec list_approved_origins(map(), binary() | list(), map(), map()) ->
     {ok, list_approved_origins_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_approved_origins_errors(), tuple()}.
 list_approved_origins(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_approved_origins(Client, InstanceId, QueryMap, HeadersMap, []).
@@ -11703,11 +12981,7 @@ list_approved_origins(Client, InstanceId, QueryMap, HeadersMap)
 -spec list_approved_origins(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_approved_origins_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_approved_origins_errors(), tuple()}.
 list_approved_origins(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/approved-origins"],
@@ -11738,10 +13012,7 @@ list_approved_origins(Client, InstanceId, QueryMap, HeadersMap, Options0)
 -spec list_bots(map(), binary() | list(), binary() | list()) ->
     {ok, list_bots_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_bots_errors(), tuple()}.
 list_bots(Client, InstanceId, LexVersion)
   when is_map(Client) ->
     list_bots(Client, InstanceId, LexVersion, #{}, #{}).
@@ -11749,10 +13020,7 @@ list_bots(Client, InstanceId, LexVersion)
 -spec list_bots(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_bots_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_bots_errors(), tuple()}.
 list_bots(Client, InstanceId, LexVersion, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_bots(Client, InstanceId, LexVersion, QueryMap, HeadersMap, []).
@@ -11760,10 +13028,7 @@ list_bots(Client, InstanceId, LexVersion, QueryMap, HeadersMap)
 -spec list_bots(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_bots_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_bots_errors(), tuple()}.
 list_bots(Client, InstanceId, LexVersion, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/bots"],
@@ -11790,10 +13055,7 @@ list_bots(Client, InstanceId, LexVersion, QueryMap, HeadersMap, Options0)
 -spec list_contact_evaluations(map(), binary() | list(), binary() | list()) ->
     {ok, list_contact_evaluations_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_contact_evaluations_errors(), tuple()}.
 list_contact_evaluations(Client, InstanceId, ContactId)
   when is_map(Client) ->
     list_contact_evaluations(Client, InstanceId, ContactId, #{}, #{}).
@@ -11801,10 +13063,7 @@ list_contact_evaluations(Client, InstanceId, ContactId)
 -spec list_contact_evaluations(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_contact_evaluations_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_contact_evaluations_errors(), tuple()}.
 list_contact_evaluations(Client, InstanceId, ContactId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_contact_evaluations(Client, InstanceId, ContactId, QueryMap, HeadersMap, []).
@@ -11812,10 +13071,7 @@ list_contact_evaluations(Client, InstanceId, ContactId, QueryMap, HeadersMap)
 -spec list_contact_evaluations(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_contact_evaluations_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_contact_evaluations_errors(), tuple()}.
 list_contact_evaluations(Client, InstanceId, ContactId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/contact-evaluations/", aws_util:encode_uri(InstanceId), ""],
@@ -11843,12 +13099,7 @@ list_contact_evaluations(Client, InstanceId, ContactId, QueryMap, HeadersMap, Op
 -spec list_contact_flow_modules(map(), binary() | list()) ->
     {ok, list_contact_flow_modules_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_contact_flow_modules_errors(), tuple()}.
 list_contact_flow_modules(Client, InstanceId)
   when is_map(Client) ->
     list_contact_flow_modules(Client, InstanceId, #{}, #{}).
@@ -11856,12 +13107,7 @@ list_contact_flow_modules(Client, InstanceId)
 -spec list_contact_flow_modules(map(), binary() | list(), map(), map()) ->
     {ok, list_contact_flow_modules_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_contact_flow_modules_errors(), tuple()}.
 list_contact_flow_modules(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_contact_flow_modules(Client, InstanceId, QueryMap, HeadersMap, []).
@@ -11869,12 +13115,7 @@ list_contact_flow_modules(Client, InstanceId, QueryMap, HeadersMap)
 -spec list_contact_flow_modules(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_contact_flow_modules_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_contact_flow_modules_errors(), tuple()}.
 list_contact_flow_modules(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/contact-flow-modules-summary/", aws_util:encode_uri(InstanceId), ""],
@@ -11911,11 +13152,7 @@ list_contact_flow_modules(Client, InstanceId, QueryMap, HeadersMap, Options0)
 -spec list_contact_flows(map(), binary() | list()) ->
     {ok, list_contact_flows_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_contact_flows_errors(), tuple()}.
 list_contact_flows(Client, InstanceId)
   when is_map(Client) ->
     list_contact_flows(Client, InstanceId, #{}, #{}).
@@ -11923,11 +13160,7 @@ list_contact_flows(Client, InstanceId)
 -spec list_contact_flows(map(), binary() | list(), map(), map()) ->
     {ok, list_contact_flows_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_contact_flows_errors(), tuple()}.
 list_contact_flows(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_contact_flows(Client, InstanceId, QueryMap, HeadersMap, []).
@@ -11935,11 +13168,7 @@ list_contact_flows(Client, InstanceId, QueryMap, HeadersMap)
 -spec list_contact_flows(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_contact_flows_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_contact_flows_errors(), tuple()}.
 list_contact_flows(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/contact-flows-summary/", aws_util:encode_uri(InstanceId), ""],
@@ -11971,11 +13200,7 @@ list_contact_flows(Client, InstanceId, QueryMap, HeadersMap, Options0)
 -spec list_contact_references(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_contact_references_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_contact_references_errors(), tuple()}.
 list_contact_references(Client, ContactId, InstanceId, ReferenceTypes)
   when is_map(Client) ->
     list_contact_references(Client, ContactId, InstanceId, ReferenceTypes, #{}, #{}).
@@ -11983,11 +13208,7 @@ list_contact_references(Client, ContactId, InstanceId, ReferenceTypes)
 -spec list_contact_references(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_contact_references_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_contact_references_errors(), tuple()}.
 list_contact_references(Client, ContactId, InstanceId, ReferenceTypes, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_contact_references(Client, ContactId, InstanceId, ReferenceTypes, QueryMap, HeadersMap, []).
@@ -11995,11 +13216,7 @@ list_contact_references(Client, ContactId, InstanceId, ReferenceTypes, QueryMap,
 -spec list_contact_references(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_contact_references_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_contact_references_errors(), tuple()}.
 list_contact_references(Client, ContactId, InstanceId, ReferenceTypes, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/contact/references/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactId), ""],
@@ -12026,20 +13243,14 @@ list_contact_references(Client, ContactId, InstanceId, ReferenceTypes, QueryMap,
 -spec list_default_vocabularies(map(), binary() | list(), list_default_vocabularies_request()) ->
     {ok, list_default_vocabularies_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_default_vocabularies_errors(), tuple()}.
 list_default_vocabularies(Client, InstanceId, Input) ->
     list_default_vocabularies(Client, InstanceId, Input, []).
 
 -spec list_default_vocabularies(map(), binary() | list(), list_default_vocabularies_request(), proplists:proplist()) ->
     {ok, list_default_vocabularies_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_default_vocabularies_errors(), tuple()}.
 list_default_vocabularies(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/default-vocabulary-summary/", aws_util:encode_uri(InstanceId), ""],
@@ -12067,10 +13278,7 @@ list_default_vocabularies(Client, InstanceId, Input0, Options0) ->
 -spec list_evaluation_form_versions(map(), binary() | list(), binary() | list()) ->
     {ok, list_evaluation_form_versions_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_evaluation_form_versions_errors(), tuple()}.
 list_evaluation_form_versions(Client, EvaluationFormId, InstanceId)
   when is_map(Client) ->
     list_evaluation_form_versions(Client, EvaluationFormId, InstanceId, #{}, #{}).
@@ -12078,10 +13286,7 @@ list_evaluation_form_versions(Client, EvaluationFormId, InstanceId)
 -spec list_evaluation_form_versions(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_evaluation_form_versions_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_evaluation_form_versions_errors(), tuple()}.
 list_evaluation_form_versions(Client, EvaluationFormId, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_evaluation_form_versions(Client, EvaluationFormId, InstanceId, QueryMap, HeadersMap, []).
@@ -12089,10 +13294,7 @@ list_evaluation_form_versions(Client, EvaluationFormId, InstanceId, QueryMap, He
 -spec list_evaluation_form_versions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_evaluation_form_versions_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_evaluation_form_versions_errors(), tuple()}.
 list_evaluation_form_versions(Client, EvaluationFormId, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/evaluation-forms/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationFormId), "/versions"],
@@ -12118,10 +13320,7 @@ list_evaluation_form_versions(Client, EvaluationFormId, InstanceId, QueryMap, He
 -spec list_evaluation_forms(map(), binary() | list()) ->
     {ok, list_evaluation_forms_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_evaluation_forms_errors(), tuple()}.
 list_evaluation_forms(Client, InstanceId)
   when is_map(Client) ->
     list_evaluation_forms(Client, InstanceId, #{}, #{}).
@@ -12129,10 +13328,7 @@ list_evaluation_forms(Client, InstanceId)
 -spec list_evaluation_forms(map(), binary() | list(), map(), map()) ->
     {ok, list_evaluation_forms_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_evaluation_forms_errors(), tuple()}.
 list_evaluation_forms(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_evaluation_forms(Client, InstanceId, QueryMap, HeadersMap, []).
@@ -12140,10 +13336,7 @@ list_evaluation_forms(Client, InstanceId, QueryMap, HeadersMap)
 -spec list_evaluation_forms(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_evaluation_forms_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_evaluation_forms_errors(), tuple()}.
 list_evaluation_forms(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/evaluation-forms/", aws_util:encode_uri(InstanceId), ""],
@@ -12169,12 +13362,7 @@ list_evaluation_forms(Client, InstanceId, QueryMap, HeadersMap, Options0)
 -spec list_flow_associations(map(), binary() | list()) ->
     {ok, list_flow_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_flow_associations_errors(), tuple()}.
 list_flow_associations(Client, InstanceId)
   when is_map(Client) ->
     list_flow_associations(Client, InstanceId, #{}, #{}).
@@ -12182,12 +13370,7 @@ list_flow_associations(Client, InstanceId)
 -spec list_flow_associations(map(), binary() | list(), map(), map()) ->
     {ok, list_flow_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_flow_associations_errors(), tuple()}.
 list_flow_associations(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_flow_associations(Client, InstanceId, QueryMap, HeadersMap, []).
@@ -12195,12 +13378,7 @@ list_flow_associations(Client, InstanceId, QueryMap, HeadersMap)
 -spec list_flow_associations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_flow_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_flow_associations_errors(), tuple()}.
 list_flow_associations(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/flow-associations-summary/", aws_util:encode_uri(InstanceId), ""],
@@ -12235,11 +13413,7 @@ list_flow_associations(Client, InstanceId, QueryMap, HeadersMap, Options0)
 -spec list_hours_of_operations(map(), binary() | list()) ->
     {ok, list_hours_of_operations_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_hours_of_operations_errors(), tuple()}.
 list_hours_of_operations(Client, InstanceId)
   when is_map(Client) ->
     list_hours_of_operations(Client, InstanceId, #{}, #{}).
@@ -12247,11 +13421,7 @@ list_hours_of_operations(Client, InstanceId)
 -spec list_hours_of_operations(map(), binary() | list(), map(), map()) ->
     {ok, list_hours_of_operations_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_hours_of_operations_errors(), tuple()}.
 list_hours_of_operations(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_hours_of_operations(Client, InstanceId, QueryMap, HeadersMap, []).
@@ -12259,11 +13429,7 @@ list_hours_of_operations(Client, InstanceId, QueryMap, HeadersMap)
 -spec list_hours_of_operations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_hours_of_operations_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_hours_of_operations_errors(), tuple()}.
 list_hours_of_operations(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/hours-of-operations-summary/", aws_util:encode_uri(InstanceId), ""],
@@ -12292,11 +13458,7 @@ list_hours_of_operations(Client, InstanceId, QueryMap, HeadersMap, Options0)
 -spec list_instance_attributes(map(), binary() | list()) ->
     {ok, list_instance_attributes_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_instance_attributes_errors(), tuple()}.
 list_instance_attributes(Client, InstanceId)
   when is_map(Client) ->
     list_instance_attributes(Client, InstanceId, #{}, #{}).
@@ -12304,11 +13466,7 @@ list_instance_attributes(Client, InstanceId)
 -spec list_instance_attributes(map(), binary() | list(), map(), map()) ->
     {ok, list_instance_attributes_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_instance_attributes_errors(), tuple()}.
 list_instance_attributes(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_instance_attributes(Client, InstanceId, QueryMap, HeadersMap, []).
@@ -12316,11 +13474,7 @@ list_instance_attributes(Client, InstanceId, QueryMap, HeadersMap)
 -spec list_instance_attributes(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_instance_attributes_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_instance_attributes_errors(), tuple()}.
 list_instance_attributes(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/attributes"],
@@ -12351,11 +13505,7 @@ list_instance_attributes(Client, InstanceId, QueryMap, HeadersMap, Options0)
 -spec list_instance_storage_configs(map(), binary() | list(), binary() | list()) ->
     {ok, list_instance_storage_configs_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_instance_storage_configs_errors(), tuple()}.
 list_instance_storage_configs(Client, InstanceId, ResourceType)
   when is_map(Client) ->
     list_instance_storage_configs(Client, InstanceId, ResourceType, #{}, #{}).
@@ -12363,11 +13513,7 @@ list_instance_storage_configs(Client, InstanceId, ResourceType)
 -spec list_instance_storage_configs(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_instance_storage_configs_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_instance_storage_configs_errors(), tuple()}.
 list_instance_storage_configs(Client, InstanceId, ResourceType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_instance_storage_configs(Client, InstanceId, ResourceType, QueryMap, HeadersMap, []).
@@ -12375,11 +13521,7 @@ list_instance_storage_configs(Client, InstanceId, ResourceType, QueryMap, Header
 -spec list_instance_storage_configs(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_instance_storage_configs_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_instance_storage_configs_errors(), tuple()}.
 list_instance_storage_configs(Client, InstanceId, ResourceType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/storage-configs"],
@@ -12413,8 +13555,7 @@ list_instance_storage_configs(Client, InstanceId, ResourceType, QueryMap, Header
 -spec list_instances(map()) ->
     {ok, list_instances_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_instances_errors(), tuple()}.
 list_instances(Client)
   when is_map(Client) ->
     list_instances(Client, #{}, #{}).
@@ -12422,8 +13563,7 @@ list_instances(Client)
 -spec list_instances(map(), map(), map()) ->
     {ok, list_instances_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_instances_errors(), tuple()}.
 list_instances(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_instances(Client, QueryMap, HeadersMap, []).
@@ -12431,8 +13571,7 @@ list_instances(Client, QueryMap, HeadersMap)
 -spec list_instances(map(), map(), map(), proplists:proplist()) ->
     {ok, list_instances_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_instances_errors(), tuple()}.
 list_instances(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance"],
@@ -12460,10 +13599,7 @@ list_instances(Client, QueryMap, HeadersMap, Options0)
 -spec list_integration_associations(map(), binary() | list()) ->
     {ok, list_integration_associations_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_integration_associations_errors(), tuple()}.
 list_integration_associations(Client, InstanceId)
   when is_map(Client) ->
     list_integration_associations(Client, InstanceId, #{}, #{}).
@@ -12471,10 +13607,7 @@ list_integration_associations(Client, InstanceId)
 -spec list_integration_associations(map(), binary() | list(), map(), map()) ->
     {ok, list_integration_associations_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_integration_associations_errors(), tuple()}.
 list_integration_associations(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_integration_associations(Client, InstanceId, QueryMap, HeadersMap, []).
@@ -12482,10 +13615,7 @@ list_integration_associations(Client, InstanceId, QueryMap, HeadersMap)
 -spec list_integration_associations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_integration_associations_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_integration_associations_errors(), tuple()}.
 list_integration_associations(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations"],
@@ -12518,11 +13648,7 @@ list_integration_associations(Client, InstanceId, QueryMap, HeadersMap, Options0
 -spec list_lambda_functions(map(), binary() | list()) ->
     {ok, list_lambda_functions_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_lambda_functions_errors(), tuple()}.
 list_lambda_functions(Client, InstanceId)
   when is_map(Client) ->
     list_lambda_functions(Client, InstanceId, #{}, #{}).
@@ -12530,11 +13656,7 @@ list_lambda_functions(Client, InstanceId)
 -spec list_lambda_functions(map(), binary() | list(), map(), map()) ->
     {ok, list_lambda_functions_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_lambda_functions_errors(), tuple()}.
 list_lambda_functions(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_lambda_functions(Client, InstanceId, QueryMap, HeadersMap, []).
@@ -12542,11 +13664,7 @@ list_lambda_functions(Client, InstanceId, QueryMap, HeadersMap)
 -spec list_lambda_functions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_lambda_functions_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_lambda_functions_errors(), tuple()}.
 list_lambda_functions(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/lambda-functions"],
@@ -12579,11 +13697,7 @@ list_lambda_functions(Client, InstanceId, QueryMap, HeadersMap, Options0)
 -spec list_lex_bots(map(), binary() | list()) ->
     {ok, list_lex_bots_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_lex_bots_errors(), tuple()}.
 list_lex_bots(Client, InstanceId)
   when is_map(Client) ->
     list_lex_bots(Client, InstanceId, #{}, #{}).
@@ -12591,11 +13705,7 @@ list_lex_bots(Client, InstanceId)
 -spec list_lex_bots(map(), binary() | list(), map(), map()) ->
     {ok, list_lex_bots_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_lex_bots_errors(), tuple()}.
 list_lex_bots(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_lex_bots(Client, InstanceId, QueryMap, HeadersMap, []).
@@ -12603,11 +13713,7 @@ list_lex_bots(Client, InstanceId, QueryMap, HeadersMap)
 -spec list_lex_bots(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_lex_bots_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_lex_bots_errors(), tuple()}.
 list_lex_bots(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/lex-bots"],
@@ -12663,11 +13769,7 @@ list_lex_bots(Client, InstanceId, QueryMap, HeadersMap, Options0)
 -spec list_phone_numbers(map(), binary() | list()) ->
     {ok, list_phone_numbers_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_phone_numbers_errors(), tuple()}.
 list_phone_numbers(Client, InstanceId)
   when is_map(Client) ->
     list_phone_numbers(Client, InstanceId, #{}, #{}).
@@ -12675,11 +13777,7 @@ list_phone_numbers(Client, InstanceId)
 -spec list_phone_numbers(map(), binary() | list(), map(), map()) ->
     {ok, list_phone_numbers_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_phone_numbers_errors(), tuple()}.
 list_phone_numbers(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_phone_numbers(Client, InstanceId, QueryMap, HeadersMap, []).
@@ -12687,11 +13785,7 @@ list_phone_numbers(Client, InstanceId, QueryMap, HeadersMap)
 -spec list_phone_numbers(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_phone_numbers_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_phone_numbers_errors(), tuple()}.
 list_phone_numbers(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/phone-numbers-summary/", aws_util:encode_uri(InstanceId), ""],
@@ -12740,22 +13834,14 @@ list_phone_numbers(Client, InstanceId, QueryMap, HeadersMap, Options0)
 -spec list_phone_numbers_v2(map(), list_phone_numbers_v2_request()) ->
     {ok, list_phone_numbers_v2_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_phone_numbers_v2_errors(), tuple()}.
 list_phone_numbers_v2(Client, Input) ->
     list_phone_numbers_v2(Client, Input, []).
 
 -spec list_phone_numbers_v2(map(), list_phone_numbers_v2_request(), proplists:proplist()) ->
     {ok, list_phone_numbers_v2_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_phone_numbers_v2_errors(), tuple()}.
 list_phone_numbers_v2(Client, Input0, Options0) ->
     Method = post,
     Path = ["/phone-number/list"],
@@ -12783,11 +13869,7 @@ list_phone_numbers_v2(Client, Input0, Options0) ->
 -spec list_predefined_attributes(map(), binary() | list()) ->
     {ok, list_predefined_attributes_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_predefined_attributes_errors(), tuple()}.
 list_predefined_attributes(Client, InstanceId)
   when is_map(Client) ->
     list_predefined_attributes(Client, InstanceId, #{}, #{}).
@@ -12795,11 +13877,7 @@ list_predefined_attributes(Client, InstanceId)
 -spec list_predefined_attributes(map(), binary() | list(), map(), map()) ->
     {ok, list_predefined_attributes_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_predefined_attributes_errors(), tuple()}.
 list_predefined_attributes(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_predefined_attributes(Client, InstanceId, QueryMap, HeadersMap, []).
@@ -12807,11 +13885,7 @@ list_predefined_attributes(Client, InstanceId, QueryMap, HeadersMap)
 -spec list_predefined_attributes(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_predefined_attributes_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_predefined_attributes_errors(), tuple()}.
 list_predefined_attributes(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/predefined-attributes/", aws_util:encode_uri(InstanceId), ""],
@@ -12838,11 +13912,7 @@ list_predefined_attributes(Client, InstanceId, QueryMap, HeadersMap, Options0)
 -spec list_prompts(map(), binary() | list()) ->
     {ok, list_prompts_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_prompts_errors(), tuple()}.
 list_prompts(Client, InstanceId)
   when is_map(Client) ->
     list_prompts(Client, InstanceId, #{}, #{}).
@@ -12850,11 +13920,7 @@ list_prompts(Client, InstanceId)
 -spec list_prompts(map(), binary() | list(), map(), map()) ->
     {ok, list_prompts_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_prompts_errors(), tuple()}.
 list_prompts(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_prompts(Client, InstanceId, QueryMap, HeadersMap, []).
@@ -12862,11 +13928,7 @@ list_prompts(Client, InstanceId, QueryMap, HeadersMap)
 -spec list_prompts(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_prompts_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_prompts_errors(), tuple()}.
 list_prompts(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prompts-summary/", aws_util:encode_uri(InstanceId), ""],
@@ -12895,11 +13957,7 @@ list_prompts(Client, InstanceId, QueryMap, HeadersMap, Options0)
 -spec list_queue_quick_connects(map(), binary() | list(), binary() | list()) ->
     {ok, list_queue_quick_connects_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_queue_quick_connects_errors(), tuple()}.
 list_queue_quick_connects(Client, InstanceId, QueueId)
   when is_map(Client) ->
     list_queue_quick_connects(Client, InstanceId, QueueId, #{}, #{}).
@@ -12907,11 +13965,7 @@ list_queue_quick_connects(Client, InstanceId, QueueId)
 -spec list_queue_quick_connects(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_queue_quick_connects_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_queue_quick_connects_errors(), tuple()}.
 list_queue_quick_connects(Client, InstanceId, QueueId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_queue_quick_connects(Client, InstanceId, QueueId, QueryMap, HeadersMap, []).
@@ -12919,11 +13973,7 @@ list_queue_quick_connects(Client, InstanceId, QueueId, QueryMap, HeadersMap)
 -spec list_queue_quick_connects(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_queue_quick_connects_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_queue_quick_connects_errors(), tuple()}.
 list_queue_quick_connects(Client, InstanceId, QueueId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/quick-connects"],
@@ -12962,11 +14012,7 @@ list_queue_quick_connects(Client, InstanceId, QueueId, QueryMap, HeadersMap, Opt
 -spec list_queues(map(), binary() | list()) ->
     {ok, list_queues_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_queues_errors(), tuple()}.
 list_queues(Client, InstanceId)
   when is_map(Client) ->
     list_queues(Client, InstanceId, #{}, #{}).
@@ -12974,11 +14020,7 @@ list_queues(Client, InstanceId)
 -spec list_queues(map(), binary() | list(), map(), map()) ->
     {ok, list_queues_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_queues_errors(), tuple()}.
 list_queues(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_queues(Client, InstanceId, QueryMap, HeadersMap, []).
@@ -12986,11 +14028,7 @@ list_queues(Client, InstanceId, QueryMap, HeadersMap)
 -spec list_queues(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_queues_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_queues_errors(), tuple()}.
 list_queues(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/queues-summary/", aws_util:encode_uri(InstanceId), ""],
@@ -13018,11 +14056,7 @@ list_queues(Client, InstanceId, QueryMap, HeadersMap, Options0)
 -spec list_quick_connects(map(), binary() | list()) ->
     {ok, list_quick_connects_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_quick_connects_errors(), tuple()}.
 list_quick_connects(Client, InstanceId)
   when is_map(Client) ->
     list_quick_connects(Client, InstanceId, #{}, #{}).
@@ -13030,11 +14064,7 @@ list_quick_connects(Client, InstanceId)
 -spec list_quick_connects(map(), binary() | list(), map(), map()) ->
     {ok, list_quick_connects_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_quick_connects_errors(), tuple()}.
 list_quick_connects(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_quick_connects(Client, InstanceId, QueryMap, HeadersMap, []).
@@ -13042,11 +14072,7 @@ list_quick_connects(Client, InstanceId, QueryMap, HeadersMap)
 -spec list_quick_connects(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_quick_connects_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_quick_connects_errors(), tuple()}.
 list_quick_connects(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), ""],
@@ -13074,24 +14100,14 @@ list_quick_connects(Client, InstanceId, QueryMap, HeadersMap, Options0)
 -spec list_realtime_contact_analysis_segments_v2(map(), binary() | list(), binary() | list(), list_realtime_contact_analysis_segments_v2_request()) ->
     {ok, list_realtime_contact_analysis_segments_v2_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, output_type_not_found_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_realtime_contact_analysis_segments_v2_errors(), tuple()}.
 list_realtime_contact_analysis_segments_v2(Client, ContactId, InstanceId, Input) ->
     list_realtime_contact_analysis_segments_v2(Client, ContactId, InstanceId, Input, []).
 
 -spec list_realtime_contact_analysis_segments_v2(map(), binary() | list(), binary() | list(), list_realtime_contact_analysis_segments_v2_request(), proplists:proplist()) ->
     {ok, list_realtime_contact_analysis_segments_v2_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, output_type_not_found_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_realtime_contact_analysis_segments_v2_errors(), tuple()}.
 list_realtime_contact_analysis_segments_v2(Client, ContactId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/contact/list-real-time-analysis-segments-v2/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactId), ""],
@@ -13118,11 +14134,7 @@ list_realtime_contact_analysis_segments_v2(Client, ContactId, InstanceId, Input0
 -spec list_routing_profile_queues(map(), binary() | list(), binary() | list()) ->
     {ok, list_routing_profile_queues_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_routing_profile_queues_errors(), tuple()}.
 list_routing_profile_queues(Client, InstanceId, RoutingProfileId)
   when is_map(Client) ->
     list_routing_profile_queues(Client, InstanceId, RoutingProfileId, #{}, #{}).
@@ -13130,11 +14142,7 @@ list_routing_profile_queues(Client, InstanceId, RoutingProfileId)
 -spec list_routing_profile_queues(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_routing_profile_queues_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_routing_profile_queues_errors(), tuple()}.
 list_routing_profile_queues(Client, InstanceId, RoutingProfileId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_routing_profile_queues(Client, InstanceId, RoutingProfileId, QueryMap, HeadersMap, []).
@@ -13142,11 +14150,7 @@ list_routing_profile_queues(Client, InstanceId, RoutingProfileId, QueryMap, Head
 -spec list_routing_profile_queues(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_routing_profile_queues_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_routing_profile_queues_errors(), tuple()}.
 list_routing_profile_queues(Client, InstanceId, RoutingProfileId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/queues"],
@@ -13181,11 +14185,7 @@ list_routing_profile_queues(Client, InstanceId, RoutingProfileId, QueryMap, Head
 -spec list_routing_profiles(map(), binary() | list()) ->
     {ok, list_routing_profiles_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_routing_profiles_errors(), tuple()}.
 list_routing_profiles(Client, InstanceId)
   when is_map(Client) ->
     list_routing_profiles(Client, InstanceId, #{}, #{}).
@@ -13193,11 +14193,7 @@ list_routing_profiles(Client, InstanceId)
 -spec list_routing_profiles(map(), binary() | list(), map(), map()) ->
     {ok, list_routing_profiles_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_routing_profiles_errors(), tuple()}.
 list_routing_profiles(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_routing_profiles(Client, InstanceId, QueryMap, HeadersMap, []).
@@ -13205,11 +14201,7 @@ list_routing_profiles(Client, InstanceId, QueryMap, HeadersMap)
 -spec list_routing_profiles(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_routing_profiles_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_routing_profiles_errors(), tuple()}.
 list_routing_profiles(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/routing-profiles-summary/", aws_util:encode_uri(InstanceId), ""],
@@ -13235,11 +14227,7 @@ list_routing_profiles(Client, InstanceId, QueryMap, HeadersMap, Options0)
 -spec list_rules(map(), binary() | list()) ->
     {ok, list_rules_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_rules_errors(), tuple()}.
 list_rules(Client, InstanceId)
   when is_map(Client) ->
     list_rules(Client, InstanceId, #{}, #{}).
@@ -13247,11 +14235,7 @@ list_rules(Client, InstanceId)
 -spec list_rules(map(), binary() | list(), map(), map()) ->
     {ok, list_rules_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_rules_errors(), tuple()}.
 list_rules(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_rules(Client, InstanceId, QueryMap, HeadersMap, []).
@@ -13259,11 +14243,7 @@ list_rules(Client, InstanceId, QueryMap, HeadersMap)
 -spec list_rules(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_rules_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_rules_errors(), tuple()}.
 list_rules(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/rules/", aws_util:encode_uri(InstanceId), ""],
@@ -13295,11 +14275,7 @@ list_rules(Client, InstanceId, QueryMap, HeadersMap, Options0)
 -spec list_security_keys(map(), binary() | list()) ->
     {ok, list_security_keys_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_security_keys_errors(), tuple()}.
 list_security_keys(Client, InstanceId)
   when is_map(Client) ->
     list_security_keys(Client, InstanceId, #{}, #{}).
@@ -13307,11 +14283,7 @@ list_security_keys(Client, InstanceId)
 -spec list_security_keys(map(), binary() | list(), map(), map()) ->
     {ok, list_security_keys_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_security_keys_errors(), tuple()}.
 list_security_keys(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_security_keys(Client, InstanceId, QueryMap, HeadersMap, []).
@@ -13319,11 +14291,7 @@ list_security_keys(Client, InstanceId, QueryMap, HeadersMap)
 -spec list_security_keys(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_security_keys_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_security_keys_errors(), tuple()}.
 list_security_keys(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/security-keys"],
@@ -13350,11 +14318,7 @@ list_security_keys(Client, InstanceId, QueryMap, HeadersMap, Options0)
 -spec list_security_profile_applications(map(), binary() | list(), binary() | list()) ->
     {ok, list_security_profile_applications_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_security_profile_applications_errors(), tuple()}.
 list_security_profile_applications(Client, InstanceId, SecurityProfileId)
   when is_map(Client) ->
     list_security_profile_applications(Client, InstanceId, SecurityProfileId, #{}, #{}).
@@ -13362,11 +14326,7 @@ list_security_profile_applications(Client, InstanceId, SecurityProfileId)
 -spec list_security_profile_applications(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_security_profile_applications_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_security_profile_applications_errors(), tuple()}.
 list_security_profile_applications(Client, InstanceId, SecurityProfileId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_security_profile_applications(Client, InstanceId, SecurityProfileId, QueryMap, HeadersMap, []).
@@ -13374,11 +14334,7 @@ list_security_profile_applications(Client, InstanceId, SecurityProfileId, QueryM
 -spec list_security_profile_applications(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_security_profile_applications_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_security_profile_applications_errors(), tuple()}.
 list_security_profile_applications(Client, InstanceId, SecurityProfileId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/security-profiles-applications/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(SecurityProfileId), ""],
@@ -13404,11 +14360,7 @@ list_security_profile_applications(Client, InstanceId, SecurityProfileId, QueryM
 -spec list_security_profile_permissions(map(), binary() | list(), binary() | list()) ->
     {ok, list_security_profile_permissions_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_security_profile_permissions_errors(), tuple()}.
 list_security_profile_permissions(Client, InstanceId, SecurityProfileId)
   when is_map(Client) ->
     list_security_profile_permissions(Client, InstanceId, SecurityProfileId, #{}, #{}).
@@ -13416,11 +14368,7 @@ list_security_profile_permissions(Client, InstanceId, SecurityProfileId)
 -spec list_security_profile_permissions(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_security_profile_permissions_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_security_profile_permissions_errors(), tuple()}.
 list_security_profile_permissions(Client, InstanceId, SecurityProfileId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_security_profile_permissions(Client, InstanceId, SecurityProfileId, QueryMap, HeadersMap, []).
@@ -13428,11 +14376,7 @@ list_security_profile_permissions(Client, InstanceId, SecurityProfileId, QueryMa
 -spec list_security_profile_permissions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_security_profile_permissions_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_security_profile_permissions_errors(), tuple()}.
 list_security_profile_permissions(Client, InstanceId, SecurityProfileId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/security-profiles-permissions/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(SecurityProfileId), ""],
@@ -13464,11 +14408,7 @@ list_security_profile_permissions(Client, InstanceId, SecurityProfileId, QueryMa
 -spec list_security_profiles(map(), binary() | list()) ->
     {ok, list_security_profiles_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_security_profiles_errors(), tuple()}.
 list_security_profiles(Client, InstanceId)
   when is_map(Client) ->
     list_security_profiles(Client, InstanceId, #{}, #{}).
@@ -13476,11 +14416,7 @@ list_security_profiles(Client, InstanceId)
 -spec list_security_profiles(map(), binary() | list(), map(), map()) ->
     {ok, list_security_profiles_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_security_profiles_errors(), tuple()}.
 list_security_profiles(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_security_profiles(Client, InstanceId, QueryMap, HeadersMap, []).
@@ -13488,11 +14424,7 @@ list_security_profiles(Client, InstanceId, QueryMap, HeadersMap)
 -spec list_security_profiles(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_security_profiles_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_security_profiles_errors(), tuple()}.
 list_security_profiles(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/security-profiles-summary/", aws_util:encode_uri(InstanceId), ""],
@@ -13524,11 +14456,7 @@ list_security_profiles(Client, InstanceId, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -13536,11 +14464,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -13548,11 +14472,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -13573,11 +14493,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec list_task_templates(map(), binary() | list()) ->
     {ok, list_task_templates_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_task_templates_errors(), tuple()}.
 list_task_templates(Client, InstanceId)
   when is_map(Client) ->
     list_task_templates(Client, InstanceId, #{}, #{}).
@@ -13585,11 +14501,7 @@ list_task_templates(Client, InstanceId)
 -spec list_task_templates(map(), binary() | list(), map(), map()) ->
     {ok, list_task_templates_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_task_templates_errors(), tuple()}.
 list_task_templates(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_task_templates(Client, InstanceId, QueryMap, HeadersMap, []).
@@ -13597,11 +14509,7 @@ list_task_templates(Client, InstanceId, QueryMap, HeadersMap)
 -spec list_task_templates(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_task_templates_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_task_templates_errors(), tuple()}.
 list_task_templates(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/task/template"],
@@ -13629,11 +14537,7 @@ list_task_templates(Client, InstanceId, QueryMap, HeadersMap, Options0)
 -spec list_traffic_distribution_group_users(map(), binary() | list()) ->
     {ok, list_traffic_distribution_group_users_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_traffic_distribution_group_users_errors(), tuple()}.
 list_traffic_distribution_group_users(Client, TrafficDistributionGroupId)
   when is_map(Client) ->
     list_traffic_distribution_group_users(Client, TrafficDistributionGroupId, #{}, #{}).
@@ -13641,11 +14545,7 @@ list_traffic_distribution_group_users(Client, TrafficDistributionGroupId)
 -spec list_traffic_distribution_group_users(map(), binary() | list(), map(), map()) ->
     {ok, list_traffic_distribution_group_users_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_traffic_distribution_group_users_errors(), tuple()}.
 list_traffic_distribution_group_users(Client, TrafficDistributionGroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_traffic_distribution_group_users(Client, TrafficDistributionGroupId, QueryMap, HeadersMap, []).
@@ -13653,11 +14553,7 @@ list_traffic_distribution_group_users(Client, TrafficDistributionGroupId, QueryM
 -spec list_traffic_distribution_group_users(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_traffic_distribution_group_users_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_traffic_distribution_group_users_errors(), tuple()}.
 list_traffic_distribution_group_users(Client, TrafficDistributionGroupId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/traffic-distribution-group/", aws_util:encode_uri(TrafficDistributionGroupId), "/user"],
@@ -13683,10 +14579,7 @@ list_traffic_distribution_group_users(Client, TrafficDistributionGroupId, QueryM
 -spec list_traffic_distribution_groups(map()) ->
     {ok, list_traffic_distribution_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_traffic_distribution_groups_errors(), tuple()}.
 list_traffic_distribution_groups(Client)
   when is_map(Client) ->
     list_traffic_distribution_groups(Client, #{}, #{}).
@@ -13694,10 +14587,7 @@ list_traffic_distribution_groups(Client)
 -spec list_traffic_distribution_groups(map(), map(), map()) ->
     {ok, list_traffic_distribution_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_traffic_distribution_groups_errors(), tuple()}.
 list_traffic_distribution_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_traffic_distribution_groups(Client, QueryMap, HeadersMap, []).
@@ -13705,10 +14595,7 @@ list_traffic_distribution_groups(Client, QueryMap, HeadersMap)
 -spec list_traffic_distribution_groups(map(), map(), map(), proplists:proplist()) ->
     {ok, list_traffic_distribution_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_traffic_distribution_groups_errors(), tuple()}.
 list_traffic_distribution_groups(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/traffic-distribution-groups"],
@@ -13735,10 +14622,7 @@ list_traffic_distribution_groups(Client, QueryMap, HeadersMap, Options0)
 -spec list_use_cases(map(), binary() | list(), binary() | list()) ->
     {ok, list_use_cases_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_use_cases_errors(), tuple()}.
 list_use_cases(Client, InstanceId, IntegrationAssociationId)
   when is_map(Client) ->
     list_use_cases(Client, InstanceId, IntegrationAssociationId, #{}, #{}).
@@ -13746,10 +14630,7 @@ list_use_cases(Client, InstanceId, IntegrationAssociationId)
 -spec list_use_cases(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_use_cases_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_use_cases_errors(), tuple()}.
 list_use_cases(Client, InstanceId, IntegrationAssociationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_use_cases(Client, InstanceId, IntegrationAssociationId, QueryMap, HeadersMap, []).
@@ -13757,10 +14638,7 @@ list_use_cases(Client, InstanceId, IntegrationAssociationId, QueryMap, HeadersMa
 -spec list_use_cases(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_use_cases_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_use_cases_errors(), tuple()}.
 list_use_cases(Client, InstanceId, IntegrationAssociationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations/", aws_util:encode_uri(IntegrationAssociationId), "/use-cases"],
@@ -13794,11 +14672,7 @@ list_use_cases(Client, InstanceId, IntegrationAssociationId, QueryMap, HeadersMa
 -spec list_user_hierarchy_groups(map(), binary() | list()) ->
     {ok, list_user_hierarchy_groups_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_user_hierarchy_groups_errors(), tuple()}.
 list_user_hierarchy_groups(Client, InstanceId)
   when is_map(Client) ->
     list_user_hierarchy_groups(Client, InstanceId, #{}, #{}).
@@ -13806,11 +14680,7 @@ list_user_hierarchy_groups(Client, InstanceId)
 -spec list_user_hierarchy_groups(map(), binary() | list(), map(), map()) ->
     {ok, list_user_hierarchy_groups_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_user_hierarchy_groups_errors(), tuple()}.
 list_user_hierarchy_groups(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_user_hierarchy_groups(Client, InstanceId, QueryMap, HeadersMap, []).
@@ -13818,11 +14688,7 @@ list_user_hierarchy_groups(Client, InstanceId, QueryMap, HeadersMap)
 -spec list_user_hierarchy_groups(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_user_hierarchy_groups_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_user_hierarchy_groups_errors(), tuple()}.
 list_user_hierarchy_groups(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/user-hierarchy-groups-summary/", aws_util:encode_uri(InstanceId), ""],
@@ -13848,11 +14714,7 @@ list_user_hierarchy_groups(Client, InstanceId, QueryMap, HeadersMap, Options0)
 -spec list_user_proficiencies(map(), binary() | list(), binary() | list()) ->
     {ok, list_user_proficiencies_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_user_proficiencies_errors(), tuple()}.
 list_user_proficiencies(Client, InstanceId, UserId)
   when is_map(Client) ->
     list_user_proficiencies(Client, InstanceId, UserId, #{}, #{}).
@@ -13860,11 +14722,7 @@ list_user_proficiencies(Client, InstanceId, UserId)
 -spec list_user_proficiencies(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_user_proficiencies_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_user_proficiencies_errors(), tuple()}.
 list_user_proficiencies(Client, InstanceId, UserId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_user_proficiencies(Client, InstanceId, UserId, QueryMap, HeadersMap, []).
@@ -13872,11 +14730,7 @@ list_user_proficiencies(Client, InstanceId, UserId, QueryMap, HeadersMap)
 -spec list_user_proficiencies(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_user_proficiencies_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_user_proficiencies_errors(), tuple()}.
 list_user_proficiencies(Client, InstanceId, UserId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/proficiencies"],
@@ -13904,11 +14758,7 @@ list_user_proficiencies(Client, InstanceId, UserId, QueryMap, HeadersMap, Option
 -spec list_users(map(), binary() | list()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_users_errors(), tuple()}.
 list_users(Client, InstanceId)
   when is_map(Client) ->
     list_users(Client, InstanceId, #{}, #{}).
@@ -13916,11 +14766,7 @@ list_users(Client, InstanceId)
 -spec list_users(map(), binary() | list(), map(), map()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_users_errors(), tuple()}.
 list_users(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_users(Client, InstanceId, QueryMap, HeadersMap, []).
@@ -13928,11 +14774,7 @@ list_users(Client, InstanceId, QueryMap, HeadersMap)
 -spec list_users(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_users_errors(), tuple()}.
 list_users(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/users-summary/", aws_util:encode_uri(InstanceId), ""],
@@ -13962,12 +14804,7 @@ list_users(Client, InstanceId, QueryMap, HeadersMap, Options0)
 -spec list_view_versions(map(), binary() | list(), binary() | list()) ->
     {ok, list_view_versions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_view_versions_errors(), tuple()}.
 list_view_versions(Client, InstanceId, ViewId)
   when is_map(Client) ->
     list_view_versions(Client, InstanceId, ViewId, #{}, #{}).
@@ -13975,12 +14812,7 @@ list_view_versions(Client, InstanceId, ViewId)
 -spec list_view_versions(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_view_versions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_view_versions_errors(), tuple()}.
 list_view_versions(Client, InstanceId, ViewId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_view_versions(Client, InstanceId, ViewId, QueryMap, HeadersMap, []).
@@ -13988,12 +14820,7 @@ list_view_versions(Client, InstanceId, ViewId, QueryMap, HeadersMap)
 -spec list_view_versions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_view_versions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_view_versions_errors(), tuple()}.
 list_view_versions(Client, InstanceId, ViewId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/views/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ViewId), "/versions"],
@@ -14021,12 +14848,7 @@ list_view_versions(Client, InstanceId, ViewId, QueryMap, HeadersMap, Options0)
 -spec list_views(map(), binary() | list()) ->
     {ok, list_views_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_views_errors(), tuple()}.
 list_views(Client, InstanceId)
   when is_map(Client) ->
     list_views(Client, InstanceId, #{}, #{}).
@@ -14034,12 +14856,7 @@ list_views(Client, InstanceId)
 -spec list_views(map(), binary() | list(), map(), map()) ->
     {ok, list_views_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_views_errors(), tuple()}.
 list_views(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_views(Client, InstanceId, QueryMap, HeadersMap, []).
@@ -14047,12 +14864,7 @@ list_views(Client, InstanceId, QueryMap, HeadersMap)
 -spec list_views(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_views_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_views_errors(), tuple()}.
 list_views(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/views/", aws_util:encode_uri(InstanceId), ""],
@@ -14083,26 +14895,14 @@ list_views(Client, InstanceId, QueryMap, HeadersMap, Options0)
 -spec monitor_contact(map(), monitor_contact_request()) ->
     {ok, monitor_contact_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotency_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, monitor_contact_errors(), tuple()}.
 monitor_contact(Client, Input) ->
     monitor_contact(Client, Input, []).
 
 -spec monitor_contact(map(), monitor_contact_request(), proplists:proplist()) ->
     {ok, monitor_contact_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotency_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, monitor_contact_errors(), tuple()}.
 monitor_contact(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/monitor"],
@@ -14129,28 +14929,14 @@ monitor_contact(Client, Input0, Options0) ->
 -spec pause_contact(map(), pause_contact_request()) ->
     {ok, pause_contact_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, pause_contact_errors(), tuple()}.
 pause_contact(Client, Input) ->
     pause_contact(Client, Input, []).
 
 -spec pause_contact(map(), pause_contact_request(), proplists:proplist()) ->
     {ok, pause_contact_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, pause_contact_errors(), tuple()}.
 pause_contact(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/pause"],
@@ -14187,24 +14973,14 @@ pause_contact(Client, Input0, Options0) ->
 -spec put_user_status(map(), binary() | list(), binary() | list(), put_user_status_request()) ->
     {ok, put_user_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, put_user_status_errors(), tuple()}.
 put_user_status(Client, InstanceId, UserId, Input) ->
     put_user_status(Client, InstanceId, UserId, Input, []).
 
 -spec put_user_status(map(), binary() | list(), binary() | list(), put_user_status_request(), proplists:proplist()) ->
     {ok, put_user_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, put_user_status_errors(), tuple()}.
 put_user_status(Client, InstanceId, UserId, Input0, Options0) ->
     Method = put,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/status"],
@@ -14272,26 +15048,14 @@ put_user_status(Client, InstanceId, UserId, Input0, Options0) ->
 -spec release_phone_number(map(), binary() | list(), release_phone_number_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotency_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, release_phone_number_errors(), tuple()}.
 release_phone_number(Client, PhoneNumberId, Input) ->
     release_phone_number(Client, PhoneNumberId, Input, []).
 
 -spec release_phone_number(map(), binary() | list(), release_phone_number_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotency_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, release_phone_number_errors(), tuple()}.
 release_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     Method = delete,
     Path = ["/phone-number/", aws_util:encode_uri(PhoneNumberId), ""],
@@ -14329,28 +15093,14 @@ release_phone_number(Client, PhoneNumberId, Input0, Options0) ->
 -spec replicate_instance(map(), binary() | list(), replicate_instance_request()) ->
     {ok, replicate_instance_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, replicate_instance_errors(), tuple()}.
 replicate_instance(Client, InstanceId, Input) ->
     replicate_instance(Client, InstanceId, Input, []).
 
 -spec replicate_instance(map(), binary() | list(), replicate_instance_request(), proplists:proplist()) ->
     {ok, replicate_instance_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, replicate_instance_errors(), tuple()}.
 replicate_instance(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/replicate"],
@@ -14377,26 +15127,14 @@ replicate_instance(Client, InstanceId, Input0, Options0) ->
 -spec resume_contact(map(), resume_contact_request()) ->
     {ok, resume_contact_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, resume_contact_errors(), tuple()}.
 resume_contact(Client, Input) ->
     resume_contact(Client, Input, []).
 
 -spec resume_contact(map(), resume_contact_request(), proplists:proplist()) ->
     {ok, resume_contact_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, resume_contact_errors(), tuple()}.
 resume_contact(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/resume"],
@@ -14432,18 +15170,14 @@ resume_contact(Client, Input0, Options0) ->
 -spec resume_contact_recording(map(), resume_contact_recording_request()) ->
     {ok, resume_contact_recording_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, resume_contact_recording_errors(), tuple()}.
 resume_contact_recording(Client, Input) ->
     resume_contact_recording(Client, Input, []).
 
 -spec resume_contact_recording(map(), resume_contact_recording_request(), proplists:proplist()) ->
     {ok, resume_contact_recording_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, resume_contact_recording_errors(), tuple()}.
 resume_contact_recording(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/resume-recording"],
@@ -14477,20 +15211,14 @@ resume_contact_recording(Client, Input0, Options0) ->
 -spec search_available_phone_numbers(map(), search_available_phone_numbers_request()) ->
     {ok, search_available_phone_numbers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_available_phone_numbers_errors(), tuple()}.
 search_available_phone_numbers(Client, Input) ->
     search_available_phone_numbers(Client, Input, []).
 
 -spec search_available_phone_numbers(map(), search_available_phone_numbers_request(), proplists:proplist()) ->
     {ok, search_available_phone_numbers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_available_phone_numbers_errors(), tuple()}.
 search_available_phone_numbers(Client, Input0, Options0) ->
     Method = post,
     Path = ["/phone-number/search-available"],
@@ -14517,22 +15245,14 @@ search_available_phone_numbers(Client, Input0, Options0) ->
 -spec search_contacts(map(), search_contacts_request()) ->
     {ok, search_contacts_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_contacts_errors(), tuple()}.
 search_contacts(Client, Input) ->
     search_contacts(Client, Input, []).
 
 -spec search_contacts(map(), search_contacts_request(), proplists:proplist()) ->
     {ok, search_contacts_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_contacts_errors(), tuple()}.
 search_contacts(Client, Input0, Options0) ->
     Method = post,
     Path = ["/search-contacts"],
@@ -14561,22 +15281,14 @@ search_contacts(Client, Input0, Options0) ->
 -spec search_hours_of_operations(map(), search_hours_of_operations_request()) ->
     {ok, search_hours_of_operations_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_hours_of_operations_errors(), tuple()}.
 search_hours_of_operations(Client, Input) ->
     search_hours_of_operations(Client, Input, []).
 
 -spec search_hours_of_operations(map(), search_hours_of_operations_request(), proplists:proplist()) ->
     {ok, search_hours_of_operations_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_hours_of_operations_errors(), tuple()}.
 search_hours_of_operations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/search-hours-of-operations"],
@@ -14603,22 +15315,14 @@ search_hours_of_operations(Client, Input0, Options0) ->
 -spec search_predefined_attributes(map(), search_predefined_attributes_request()) ->
     {ok, search_predefined_attributes_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_predefined_attributes_errors(), tuple()}.
 search_predefined_attributes(Client, Input) ->
     search_predefined_attributes(Client, Input, []).
 
 -spec search_predefined_attributes(map(), search_predefined_attributes_request(), proplists:proplist()) ->
     {ok, search_predefined_attributes_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_predefined_attributes_errors(), tuple()}.
 search_predefined_attributes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/search-predefined-attributes"],
@@ -14646,22 +15350,14 @@ search_predefined_attributes(Client, Input0, Options0) ->
 -spec search_prompts(map(), search_prompts_request()) ->
     {ok, search_prompts_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_prompts_errors(), tuple()}.
 search_prompts(Client, Input) ->
     search_prompts(Client, Input, []).
 
 -spec search_prompts(map(), search_prompts_request(), proplists:proplist()) ->
     {ok, search_prompts_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_prompts_errors(), tuple()}.
 search_prompts(Client, Input0, Options0) ->
     Method = post,
     Path = ["/search-prompts"],
@@ -14689,22 +15385,14 @@ search_prompts(Client, Input0, Options0) ->
 -spec search_queues(map(), search_queues_request()) ->
     {ok, search_queues_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_queues_errors(), tuple()}.
 search_queues(Client, Input) ->
     search_queues(Client, Input, []).
 
 -spec search_queues(map(), search_queues_request(), proplists:proplist()) ->
     {ok, search_queues_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_queues_errors(), tuple()}.
 search_queues(Client, Input0, Options0) ->
     Method = post,
     Path = ["/search-queues"],
@@ -14732,22 +15420,14 @@ search_queues(Client, Input0, Options0) ->
 -spec search_quick_connects(map(), search_quick_connects_request()) ->
     {ok, search_quick_connects_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_quick_connects_errors(), tuple()}.
 search_quick_connects(Client, Input) ->
     search_quick_connects(Client, Input, []).
 
 -spec search_quick_connects(map(), search_quick_connects_request(), proplists:proplist()) ->
     {ok, search_quick_connects_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_quick_connects_errors(), tuple()}.
 search_quick_connects(Client, Input0, Options0) ->
     Method = post,
     Path = ["/search-quick-connects"],
@@ -14775,24 +15455,14 @@ search_quick_connects(Client, Input0, Options0) ->
 -spec search_resource_tags(map(), search_resource_tags_request()) ->
     {ok, search_resource_tags_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, maximum_result_returned_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_resource_tags_errors(), tuple()}.
 search_resource_tags(Client, Input) ->
     search_resource_tags(Client, Input, []).
 
 -spec search_resource_tags(map(), search_resource_tags_request(), proplists:proplist()) ->
     {ok, search_resource_tags_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, maximum_result_returned_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_resource_tags_errors(), tuple()}.
 search_resource_tags(Client, Input0, Options0) ->
     Method = post,
     Path = ["/search-resource-tags"],
@@ -14820,22 +15490,14 @@ search_resource_tags(Client, Input0, Options0) ->
 -spec search_routing_profiles(map(), search_routing_profiles_request()) ->
     {ok, search_routing_profiles_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_routing_profiles_errors(), tuple()}.
 search_routing_profiles(Client, Input) ->
     search_routing_profiles(Client, Input, []).
 
 -spec search_routing_profiles(map(), search_routing_profiles_request(), proplists:proplist()) ->
     {ok, search_routing_profiles_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_routing_profiles_errors(), tuple()}.
 search_routing_profiles(Client, Input0, Options0) ->
     Method = post,
     Path = ["/search-routing-profiles"],
@@ -14864,22 +15526,14 @@ search_routing_profiles(Client, Input0, Options0) ->
 -spec search_security_profiles(map(), search_security_profiles_request()) ->
     {ok, search_security_profiles_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_security_profiles_errors(), tuple()}.
 search_security_profiles(Client, Input) ->
     search_security_profiles(Client, Input, []).
 
 -spec search_security_profiles(map(), search_security_profiles_request(), proplists:proplist()) ->
     {ok, search_security_profiles_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_security_profiles_errors(), tuple()}.
 search_security_profiles(Client, Input0, Options0) ->
     Method = post,
     Path = ["/search-security-profiles"],
@@ -14909,22 +15563,14 @@ search_security_profiles(Client, Input0, Options0) ->
 -spec search_users(map(), search_users_request()) ->
     {ok, search_users_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_users_errors(), tuple()}.
 search_users(Client, Input) ->
     search_users(Client, Input, []).
 
 -spec search_users(map(), search_users_request(), proplists:proplist()) ->
     {ok, search_users_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_users_errors(), tuple()}.
 search_users(Client, Input0, Options0) ->
     Method = post,
     Path = ["/search-users"],
@@ -14953,20 +15599,14 @@ search_users(Client, Input0, Options0) ->
 -spec search_vocabularies(map(), binary() | list(), search_vocabularies_request()) ->
     {ok, search_vocabularies_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_vocabularies_errors(), tuple()}.
 search_vocabularies(Client, InstanceId, Input) ->
     search_vocabularies(Client, InstanceId, Input, []).
 
 -spec search_vocabularies(map(), binary() | list(), search_vocabularies_request(), proplists:proplist()) ->
     {ok, search_vocabularies_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_vocabularies_errors(), tuple()}.
 search_vocabularies(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/vocabulary-summary/", aws_util:encode_uri(InstanceId), ""],
@@ -15014,22 +15654,14 @@ search_vocabularies(Client, InstanceId, Input0, Options0) ->
 -spec send_chat_integration_event(map(), send_chat_integration_event_request()) ->
     {ok, send_chat_integration_event_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, send_chat_integration_event_errors(), tuple()}.
 send_chat_integration_event(Client, Input) ->
     send_chat_integration_event(Client, Input, []).
 
 -spec send_chat_integration_event(map(), send_chat_integration_event_request(), proplists:proplist()) ->
     {ok, send_chat_integration_event_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, send_chat_integration_event_errors(), tuple()}.
 send_chat_integration_event(Client, Input0, Options0) ->
     Method = post,
     Path = ["/chat-integration-event"],
@@ -15091,22 +15723,14 @@ send_chat_integration_event(Client, Input0, Options0) ->
 -spec start_chat_contact(map(), start_chat_contact_request()) ->
     {ok, start_chat_contact_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_chat_contact_errors(), tuple()}.
 start_chat_contact(Client, Input) ->
     start_chat_contact(Client, Input, []).
 
 -spec start_chat_contact(map(), start_chat_contact_request(), proplists:proplist()) ->
     {ok, start_chat_contact_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_chat_contact_errors(), tuple()}.
 start_chat_contact(Client, Input0, Options0) ->
     Method = put,
     Path = ["/contact/chat"],
@@ -15144,24 +15768,14 @@ start_chat_contact(Client, Input0, Options0) ->
 -spec start_contact_evaluation(map(), binary() | list(), start_contact_evaluation_request()) ->
     {ok, start_contact_evaluation_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, start_contact_evaluation_errors(), tuple()}.
 start_contact_evaluation(Client, InstanceId, Input) ->
     start_contact_evaluation(Client, InstanceId, Input, []).
 
 -spec start_contact_evaluation(map(), binary() | list(), start_contact_evaluation_request(), proplists:proplist()) ->
     {ok, start_contact_evaluation_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, start_contact_evaluation_errors(), tuple()}.
 start_contact_evaluation(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/contact-evaluations/", aws_util:encode_uri(InstanceId), ""],
@@ -15212,20 +15826,14 @@ start_contact_evaluation(Client, InstanceId, Input0, Options0) ->
 -spec start_contact_recording(map(), start_contact_recording_request()) ->
     {ok, start_contact_recording_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_contact_recording_errors(), tuple()}.
 start_contact_recording(Client, Input) ->
     start_contact_recording(Client, Input, []).
 
 -spec start_contact_recording(map(), start_contact_recording_request(), proplists:proplist()) ->
     {ok, start_contact_recording_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_contact_recording_errors(), tuple()}.
 start_contact_recording(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/start-recording"],
@@ -15258,22 +15866,14 @@ start_contact_recording(Client, Input0, Options0) ->
 -spec start_contact_streaming(map(), start_contact_streaming_request()) ->
     {ok, start_contact_streaming_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_contact_streaming_errors(), tuple()}.
 start_contact_streaming(Client, Input) ->
     start_contact_streaming(Client, Input, []).
 
 -spec start_contact_streaming(map(), start_contact_streaming_request(), proplists:proplist()) ->
     {ok, start_contact_streaming_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_contact_streaming_errors(), tuple()}.
 start_contact_streaming(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/start-streaming"],
@@ -15328,26 +15928,14 @@ start_contact_streaming(Client, Input0, Options0) ->
 -spec start_outbound_voice_contact(map(), start_outbound_voice_contact_request()) ->
     {ok, start_outbound_voice_contact_response(), tuple()} |
     {error, any()} |
-    {error, destination_not_allowed_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, outbound_contact_not_permitted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_outbound_voice_contact_errors(), tuple()}.
 start_outbound_voice_contact(Client, Input) ->
     start_outbound_voice_contact(Client, Input, []).
 
 -spec start_outbound_voice_contact(map(), start_outbound_voice_contact_request(), proplists:proplist()) ->
     {ok, start_outbound_voice_contact_response(), tuple()} |
     {error, any()} |
-    {error, destination_not_allowed_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, outbound_contact_not_permitted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_outbound_voice_contact_errors(), tuple()}.
 start_outbound_voice_contact(Client, Input0, Options0) ->
     Method = put,
     Path = ["/contact/outbound-voice"],
@@ -15427,24 +16015,14 @@ start_outbound_voice_contact(Client, Input0, Options0) ->
 -spec start_task_contact(map(), start_task_contact_request()) ->
     {ok, start_task_contact_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, start_task_contact_errors(), tuple()}.
 start_task_contact(Client, Input) ->
     start_task_contact(Client, Input, []).
 
 -spec start_task_contact(map(), start_task_contact_request(), proplists:proplist()) ->
     {ok, start_task_contact_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, start_task_contact_errors(), tuple()}.
 start_task_contact(Client, Input0, Options0) ->
     Method = put,
     Path = ["/contact/task"],
@@ -15476,22 +16054,14 @@ start_task_contact(Client, Input0, Options0) ->
 -spec start_web_r_t_c_contact(map(), start_web_r_t_c_contact_request()) ->
     {ok, start_web_r_t_c_contact_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_web_r_t_c_contact_errors(), tuple()}.
 start_web_r_t_c_contact(Client, Input) ->
     start_web_r_t_c_contact(Client, Input, []).
 
 -spec start_web_r_t_c_contact(map(), start_web_r_t_c_contact_request(), proplists:proplist()) ->
     {ok, start_web_r_t_c_contact_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_web_r_t_c_contact_errors(), tuple()}.
 start_web_r_t_c_contact(Client, Input0, Options0) ->
     Method = put,
     Path = ["/contact/webrtc"],
@@ -15531,22 +16101,14 @@ start_web_r_t_c_contact(Client, Input0, Options0) ->
 -spec stop_contact(map(), stop_contact_request()) ->
     {ok, stop_contact_response(), tuple()} |
     {error, any()} |
-    {error, contact_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_contact_errors(), tuple()}.
 stop_contact(Client, Input) ->
     stop_contact(Client, Input, []).
 
 -spec stop_contact(map(), stop_contact_request(), proplists:proplist()) ->
     {ok, stop_contact_response(), tuple()} |
     {error, any()} |
-    {error, contact_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_contact_errors(), tuple()}.
 stop_contact(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/stop"],
@@ -15584,18 +16146,14 @@ stop_contact(Client, Input0, Options0) ->
 -spec stop_contact_recording(map(), stop_contact_recording_request()) ->
     {ok, stop_contact_recording_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_contact_recording_errors(), tuple()}.
 stop_contact_recording(Client, Input) ->
     stop_contact_recording(Client, Input, []).
 
 -spec stop_contact_recording(map(), stop_contact_recording_request(), proplists:proplist()) ->
     {ok, stop_contact_recording_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_contact_recording_errors(), tuple()}.
 stop_contact_recording(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/stop-recording"],
@@ -15627,20 +16185,14 @@ stop_contact_recording(Client, Input0, Options0) ->
 -spec stop_contact_streaming(map(), stop_contact_streaming_request()) ->
     {ok, stop_contact_streaming_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_contact_streaming_errors(), tuple()}.
 stop_contact_streaming(Client, Input) ->
     stop_contact_streaming(Client, Input, []).
 
 -spec stop_contact_streaming(map(), stop_contact_streaming_request(), proplists:proplist()) ->
     {ok, stop_contact_streaming_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_contact_streaming_errors(), tuple()}.
 stop_contact_streaming(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/stop-streaming"],
@@ -15680,22 +16232,14 @@ stop_contact_streaming(Client, Input0, Options0) ->
 -spec submit_contact_evaluation(map(), binary() | list(), binary() | list(), submit_contact_evaluation_request()) ->
     {ok, submit_contact_evaluation_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, submit_contact_evaluation_errors(), tuple()}.
 submit_contact_evaluation(Client, EvaluationId, InstanceId, Input) ->
     submit_contact_evaluation(Client, EvaluationId, InstanceId, Input, []).
 
 -spec submit_contact_evaluation(map(), binary() | list(), binary() | list(), submit_contact_evaluation_request(), proplists:proplist()) ->
     {ok, submit_contact_evaluation_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, submit_contact_evaluation_errors(), tuple()}.
 submit_contact_evaluation(Client, EvaluationId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/contact-evaluations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationId), "/submit"],
@@ -15737,18 +16281,14 @@ submit_contact_evaluation(Client, EvaluationId, InstanceId, Input0, Options0) ->
 -spec suspend_contact_recording(map(), suspend_contact_recording_request()) ->
     {ok, suspend_contact_recording_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, suspend_contact_recording_errors(), tuple()}.
 suspend_contact_recording(Client, Input) ->
     suspend_contact_recording(Client, Input, []).
 
 -spec suspend_contact_recording(map(), suspend_contact_recording_request(), proplists:proplist()) ->
     {ok, suspend_contact_recording_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, suspend_contact_recording_errors(), tuple()}.
 suspend_contact_recording(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/suspend-recording"],
@@ -15780,22 +16320,14 @@ suspend_contact_recording(Client, Input0, Options0) ->
 -spec tag_contact(map(), tag_contact_request()) ->
     {ok, tag_contact_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, tag_contact_errors(), tuple()}.
 tag_contact(Client, Input) ->
     tag_contact(Client, Input, []).
 
 -spec tag_contact(map(), tag_contact_request(), proplists:proplist()) ->
     {ok, tag_contact_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, tag_contact_errors(), tuple()}.
 tag_contact(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/tags"],
@@ -15835,22 +16367,14 @@ tag_contact(Client, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -15900,26 +16424,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec transfer_contact(map(), transfer_contact_request()) ->
     {ok, transfer_contact_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotency_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, transfer_contact_errors(), tuple()}.
 transfer_contact(Client, Input) ->
     transfer_contact(Client, Input, []).
 
 -spec transfer_contact(map(), transfer_contact_request(), proplists:proplist()) ->
     {ok, transfer_contact_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotency_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, transfer_contact_errors(), tuple()}.
 transfer_contact(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/transfer"],
@@ -15951,22 +16463,14 @@ transfer_contact(Client, Input0, Options0) ->
 -spec untag_contact(map(), binary() | list(), binary() | list(), untag_contact_request()) ->
     {ok, untag_contact_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, untag_contact_errors(), tuple()}.
 untag_contact(Client, ContactId, InstanceId, Input) ->
     untag_contact(Client, ContactId, InstanceId, Input, []).
 
 -spec untag_contact(map(), binary() | list(), binary() | list(), untag_contact_request(), proplists:proplist()) ->
     {ok, untag_contact_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, untag_contact_errors(), tuple()}.
 untag_contact(Client, ContactId, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/contact/tags/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactId), ""],
@@ -15994,22 +16498,14 @@ untag_contact(Client, ContactId, InstanceId, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -16040,26 +16536,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_agent_status(map(), binary() | list(), binary() | list(), update_agent_status_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_agent_status_errors(), tuple()}.
 update_agent_status(Client, AgentStatusId, InstanceId, Input) ->
     update_agent_status(Client, AgentStatusId, InstanceId, Input, []).
 
 -spec update_agent_status(map(), binary() | list(), binary() | list(), update_agent_status_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_agent_status_errors(), tuple()}.
 update_agent_status(Client, AgentStatusId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/agent-status/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(AgentStatusId), ""],
@@ -16095,22 +16579,14 @@ update_agent_status(Client, AgentStatusId, InstanceId, Input0, Options0) ->
 -spec update_contact(map(), binary() | list(), binary() | list(), update_contact_request()) ->
     {ok, update_contact_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_contact_errors(), tuple()}.
 update_contact(Client, ContactId, InstanceId, Input) ->
     update_contact(Client, ContactId, InstanceId, Input, []).
 
 -spec update_contact(map(), binary() | list(), binary() | list(), update_contact_request(), proplists:proplist()) ->
     {ok, update_contact_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_contact_errors(), tuple()}.
 update_contact(Client, ContactId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/contacts/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactId), ""],
@@ -16162,20 +16638,14 @@ update_contact(Client, ContactId, InstanceId, Input0, Options0) ->
 -spec update_contact_attributes(map(), update_contact_attributes_request()) ->
     {ok, update_contact_attributes_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_contact_attributes_errors(), tuple()}.
 update_contact_attributes(Client, Input) ->
     update_contact_attributes(Client, Input, []).
 
 -spec update_contact_attributes(map(), update_contact_attributes_request(), proplists:proplist()) ->
     {ok, update_contact_attributes_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_contact_attributes_errors(), tuple()}.
 update_contact_attributes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/attributes"],
@@ -16210,22 +16680,14 @@ update_contact_attributes(Client, Input0, Options0) ->
 -spec update_contact_evaluation(map(), binary() | list(), binary() | list(), update_contact_evaluation_request()) ->
     {ok, update_contact_evaluation_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_contact_evaluation_errors(), tuple()}.
 update_contact_evaluation(Client, EvaluationId, InstanceId, Input) ->
     update_contact_evaluation(Client, EvaluationId, InstanceId, Input, []).
 
 -spec update_contact_evaluation(map(), binary() | list(), binary() | list(), update_contact_evaluation_request(), proplists:proplist()) ->
     {ok, update_contact_evaluation_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_contact_evaluation_errors(), tuple()}.
 update_contact_evaluation(Client, EvaluationId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/contact-evaluations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationId), ""],
@@ -16256,24 +16718,14 @@ update_contact_evaluation(Client, EvaluationId, InstanceId, Input0, Options0) ->
 -spec update_contact_flow_content(map(), binary() | list(), binary() | list(), update_contact_flow_content_request()) ->
     {ok, update_contact_flow_content_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_contact_flow_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_contact_flow_content_errors(), tuple()}.
 update_contact_flow_content(Client, ContactFlowId, InstanceId, Input) ->
     update_contact_flow_content(Client, ContactFlowId, InstanceId, Input, []).
 
 -spec update_contact_flow_content(map(), binary() | list(), binary() | list(), update_contact_flow_content_request(), proplists:proplist()) ->
     {ok, update_contact_flow_content_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_contact_flow_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_contact_flow_content_errors(), tuple()}.
 update_contact_flow_content(Client, ContactFlowId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), "/content"],
@@ -16300,24 +16752,14 @@ update_contact_flow_content(Client, ContactFlowId, InstanceId, Input0, Options0)
 -spec update_contact_flow_metadata(map(), binary() | list(), binary() | list(), update_contact_flow_metadata_request()) ->
     {ok, update_contact_flow_metadata_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_contact_flow_metadata_errors(), tuple()}.
 update_contact_flow_metadata(Client, ContactFlowId, InstanceId, Input) ->
     update_contact_flow_metadata(Client, ContactFlowId, InstanceId, Input, []).
 
 -spec update_contact_flow_metadata(map(), binary() | list(), binary() | list(), update_contact_flow_metadata_request(), proplists:proplist()) ->
     {ok, update_contact_flow_metadata_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_contact_flow_metadata_errors(), tuple()}.
 update_contact_flow_metadata(Client, ContactFlowId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), "/metadata"],
@@ -16345,24 +16787,14 @@ update_contact_flow_metadata(Client, ContactFlowId, InstanceId, Input0, Options0
 -spec update_contact_flow_module_content(map(), binary() | list(), binary() | list(), update_contact_flow_module_content_request()) ->
     {ok, update_contact_flow_module_content_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_contact_flow_module_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_contact_flow_module_content_errors(), tuple()}.
 update_contact_flow_module_content(Client, ContactFlowModuleId, InstanceId, Input) ->
     update_contact_flow_module_content(Client, ContactFlowModuleId, InstanceId, Input, []).
 
 -spec update_contact_flow_module_content(map(), binary() | list(), binary() | list(), update_contact_flow_module_content_request(), proplists:proplist()) ->
     {ok, update_contact_flow_module_content_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_contact_flow_module_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_contact_flow_module_content_errors(), tuple()}.
 update_contact_flow_module_content(Client, ContactFlowModuleId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/contact-flow-modules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowModuleId), "/content"],
@@ -16389,26 +16821,14 @@ update_contact_flow_module_content(Client, ContactFlowModuleId, InstanceId, Inpu
 -spec update_contact_flow_module_metadata(map(), binary() | list(), binary() | list(), update_contact_flow_module_metadata_request()) ->
     {ok, update_contact_flow_module_metadata_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_contact_flow_module_metadata_errors(), tuple()}.
 update_contact_flow_module_metadata(Client, ContactFlowModuleId, InstanceId, Input) ->
     update_contact_flow_module_metadata(Client, ContactFlowModuleId, InstanceId, Input, []).
 
 -spec update_contact_flow_module_metadata(map(), binary() | list(), binary() | list(), update_contact_flow_module_metadata_request(), proplists:proplist()) ->
     {ok, update_contact_flow_module_metadata_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_contact_flow_module_metadata_errors(), tuple()}.
 update_contact_flow_module_metadata(Client, ContactFlowModuleId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/contact-flow-modules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowModuleId), "/metadata"],
@@ -16439,24 +16859,14 @@ update_contact_flow_module_metadata(Client, ContactFlowModuleId, InstanceId, Inp
 -spec update_contact_flow_name(map(), binary() | list(), binary() | list(), update_contact_flow_name_request()) ->
     {ok, update_contact_flow_name_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_contact_flow_name_errors(), tuple()}.
 update_contact_flow_name(Client, ContactFlowId, InstanceId, Input) ->
     update_contact_flow_name(Client, ContactFlowId, InstanceId, Input, []).
 
 -spec update_contact_flow_name(map(), binary() | list(), binary() | list(), update_contact_flow_name_request(), proplists:proplist()) ->
     {ok, update_contact_flow_name_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_contact_flow_name_errors(), tuple()}.
 update_contact_flow_name(Client, ContactFlowId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), "/name"],
@@ -16503,24 +16913,14 @@ update_contact_flow_name(Client, ContactFlowId, InstanceId, Input0, Options0) ->
 -spec update_contact_routing_data(map(), binary() | list(), binary() | list(), update_contact_routing_data_request()) ->
     {ok, update_contact_routing_data_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_contact_routing_data_errors(), tuple()}.
 update_contact_routing_data(Client, ContactId, InstanceId, Input) ->
     update_contact_routing_data(Client, ContactId, InstanceId, Input, []).
 
 -spec update_contact_routing_data(map(), binary() | list(), binary() | list(), update_contact_routing_data_request(), proplists:proplist()) ->
     {ok, update_contact_routing_data_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_contact_routing_data_errors(), tuple()}.
 update_contact_routing_data(Client, ContactId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/contacts/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactId), "/routing-data"],
@@ -16548,24 +16948,14 @@ update_contact_routing_data(Client, ContactId, InstanceId, Input0, Options0) ->
 -spec update_contact_schedule(map(), update_contact_schedule_request()) ->
     {ok, update_contact_schedule_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_contact_schedule_errors(), tuple()}.
 update_contact_schedule(Client, Input) ->
     update_contact_schedule(Client, Input, []).
 
 -spec update_contact_schedule(map(), update_contact_schedule_request(), proplists:proplist()) ->
     {ok, update_contact_schedule_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_contact_schedule_errors(), tuple()}.
 update_contact_schedule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/schedule"],
@@ -16602,24 +16992,14 @@ update_contact_schedule(Client, Input0, Options0) ->
 -spec update_evaluation_form(map(), binary() | list(), binary() | list(), update_evaluation_form_request()) ->
     {ok, update_evaluation_form_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_evaluation_form_errors(), tuple()}.
 update_evaluation_form(Client, EvaluationFormId, InstanceId, Input) ->
     update_evaluation_form(Client, EvaluationFormId, InstanceId, Input, []).
 
 -spec update_evaluation_form(map(), binary() | list(), binary() | list(), update_evaluation_form_request(), proplists:proplist()) ->
     {ok, update_evaluation_form_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_evaluation_form_errors(), tuple()}.
 update_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/evaluation-forms/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationFormId), ""],
@@ -16649,24 +17029,14 @@ update_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options0) -
 -spec update_hours_of_operation(map(), binary() | list(), binary() | list(), update_hours_of_operation_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_hours_of_operation_errors(), tuple()}.
 update_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input) ->
     update_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input, []).
 
 -spec update_hours_of_operation(map(), binary() | list(), binary() | list(), update_hours_of_operation_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_hours_of_operation_errors(), tuple()}.
 update_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/hours-of-operations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HoursOfOperationId), ""],
@@ -16696,22 +17066,14 @@ update_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input0, Option
 -spec update_instance_attribute(map(), binary() | list(), binary() | list(), update_instance_attribute_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_instance_attribute_errors(), tuple()}.
 update_instance_attribute(Client, AttributeType, InstanceId, Input) ->
     update_instance_attribute(Client, AttributeType, InstanceId, Input, []).
 
 -spec update_instance_attribute(map(), binary() | list(), binary() | list(), update_instance_attribute_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_instance_attribute_errors(), tuple()}.
 update_instance_attribute(Client, AttributeType, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/attribute/", aws_util:encode_uri(AttributeType), ""],
@@ -16742,22 +17104,14 @@ update_instance_attribute(Client, AttributeType, InstanceId, Input0, Options0) -
 -spec update_instance_storage_config(map(), binary() | list(), binary() | list(), update_instance_storage_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_instance_storage_config_errors(), tuple()}.
 update_instance_storage_config(Client, AssociationId, InstanceId, Input) ->
     update_instance_storage_config(Client, AssociationId, InstanceId, Input, []).
 
 -spec update_instance_storage_config(map(), binary() | list(), binary() | list(), update_instance_storage_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_instance_storage_config_errors(), tuple()}.
 update_instance_storage_config(Client, AssociationId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/storage-config/", aws_util:encode_uri(AssociationId), ""],
@@ -16801,24 +17155,14 @@ update_instance_storage_config(Client, AssociationId, InstanceId, Input0, Option
 -spec update_participant_role_config(map(), binary() | list(), binary() | list(), update_participant_role_config_request()) ->
     {ok, update_participant_role_config_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_participant_role_config_errors(), tuple()}.
 update_participant_role_config(Client, ContactId, InstanceId, Input) ->
     update_participant_role_config(Client, ContactId, InstanceId, Input, []).
 
 -spec update_participant_role_config(map(), binary() | list(), binary() | list(), update_participant_role_config_request(), proplists:proplist()) ->
     {ok, update_participant_role_config_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_participant_role_config_errors(), tuple()}.
 update_participant_role_config(Client, ContactId, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/contact/participant-role-config/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactId), ""],
@@ -16863,26 +17207,14 @@ update_participant_role_config(Client, ContactId, InstanceId, Input0, Options0) 
 -spec update_phone_number(map(), binary() | list(), update_phone_number_request()) ->
     {ok, update_phone_number_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotency_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_phone_number_errors(), tuple()}.
 update_phone_number(Client, PhoneNumberId, Input) ->
     update_phone_number(Client, PhoneNumberId, Input, []).
 
 -spec update_phone_number(map(), binary() | list(), update_phone_number_request(), proplists:proplist()) ->
     {ok, update_phone_number_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotency_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_phone_number_errors(), tuple()}.
 update_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     Method = put,
     Path = ["/phone-number/", aws_util:encode_uri(PhoneNumberId), ""],
@@ -16914,28 +17246,14 @@ update_phone_number(Client, PhoneNumberId, Input0, Options0) ->
 -spec update_phone_number_metadata(map(), binary() | list(), update_phone_number_metadata_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotency_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_phone_number_metadata_errors(), tuple()}.
 update_phone_number_metadata(Client, PhoneNumberId, Input) ->
     update_phone_number_metadata(Client, PhoneNumberId, Input, []).
 
 -spec update_phone_number_metadata(map(), binary() | list(), update_phone_number_metadata_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotency_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_phone_number_metadata_errors(), tuple()}.
 update_phone_number_metadata(Client, PhoneNumberId, Input0, Options0) ->
     Method = put,
     Path = ["/phone-number/", aws_util:encode_uri(PhoneNumberId), "/metadata"],
@@ -16963,22 +17281,14 @@ update_phone_number_metadata(Client, PhoneNumberId, Input0, Options0) ->
 -spec update_predefined_attribute(map(), binary() | list(), binary() | list(), update_predefined_attribute_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_predefined_attribute_errors(), tuple()}.
 update_predefined_attribute(Client, InstanceId, Name, Input) ->
     update_predefined_attribute(Client, InstanceId, Name, Input, []).
 
 -spec update_predefined_attribute(map(), binary() | list(), binary() | list(), update_predefined_attribute_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_predefined_attribute_errors(), tuple()}.
 update_predefined_attribute(Client, InstanceId, Name, Input0, Options0) ->
     Method = post,
     Path = ["/predefined-attributes/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(Name), ""],
@@ -17005,22 +17315,14 @@ update_predefined_attribute(Client, InstanceId, Name, Input0, Options0) ->
 -spec update_prompt(map(), binary() | list(), binary() | list(), update_prompt_request()) ->
     {ok, update_prompt_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_prompt_errors(), tuple()}.
 update_prompt(Client, InstanceId, PromptId, Input) ->
     update_prompt(Client, InstanceId, PromptId, Input, []).
 
 -spec update_prompt(map(), binary() | list(), binary() | list(), update_prompt_request(), proplists:proplist()) ->
     {ok, update_prompt_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_prompt_errors(), tuple()}.
 update_prompt(Client, InstanceId, PromptId, Input0, Options0) ->
     Method = post,
     Path = ["/prompts/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(PromptId), ""],
@@ -17050,22 +17352,14 @@ update_prompt(Client, InstanceId, PromptId, Input0, Options0) ->
 -spec update_queue_hours_of_operation(map(), binary() | list(), binary() | list(), update_queue_hours_of_operation_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_queue_hours_of_operation_errors(), tuple()}.
 update_queue_hours_of_operation(Client, InstanceId, QueueId, Input) ->
     update_queue_hours_of_operation(Client, InstanceId, QueueId, Input, []).
 
 -spec update_queue_hours_of_operation(map(), binary() | list(), binary() | list(), update_queue_hours_of_operation_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_queue_hours_of_operation_errors(), tuple()}.
 update_queue_hours_of_operation(Client, InstanceId, QueueId, Input0, Options0) ->
     Method = post,
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/hours-of-operation"],
@@ -17097,22 +17391,14 @@ update_queue_hours_of_operation(Client, InstanceId, QueueId, Input0, Options0) -
 -spec update_queue_max_contacts(map(), binary() | list(), binary() | list(), update_queue_max_contacts_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_queue_max_contacts_errors(), tuple()}.
 update_queue_max_contacts(Client, InstanceId, QueueId, Input) ->
     update_queue_max_contacts(Client, InstanceId, QueueId, Input, []).
 
 -spec update_queue_max_contacts(map(), binary() | list(), binary() | list(), update_queue_max_contacts_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_queue_max_contacts_errors(), tuple()}.
 update_queue_max_contacts(Client, InstanceId, QueueId, Input0, Options0) ->
     Method = post,
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/max-contacts"],
@@ -17143,24 +17429,14 @@ update_queue_max_contacts(Client, InstanceId, QueueId, Input0, Options0) ->
 -spec update_queue_name(map(), binary() | list(), binary() | list(), update_queue_name_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_queue_name_errors(), tuple()}.
 update_queue_name(Client, InstanceId, QueueId, Input) ->
     update_queue_name(Client, InstanceId, QueueId, Input, []).
 
 -spec update_queue_name(map(), binary() | list(), binary() | list(), update_queue_name_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_queue_name_errors(), tuple()}.
 update_queue_name(Client, InstanceId, QueueId, Input0, Options0) ->
     Method = post,
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/name"],
@@ -17219,22 +17495,14 @@ update_queue_name(Client, InstanceId, QueueId, Input0, Options0) ->
 -spec update_queue_outbound_caller_config(map(), binary() | list(), binary() | list(), update_queue_outbound_caller_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_queue_outbound_caller_config_errors(), tuple()}.
 update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input) ->
     update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input, []).
 
 -spec update_queue_outbound_caller_config(map(), binary() | list(), binary() | list(), update_queue_outbound_caller_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_queue_outbound_caller_config_errors(), tuple()}.
 update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input0, Options0) ->
     Method = post,
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/outbound-caller-config"],
@@ -17264,22 +17532,14 @@ update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input0, Options
 -spec update_queue_status(map(), binary() | list(), binary() | list(), update_queue_status_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_queue_status_errors(), tuple()}.
 update_queue_status(Client, InstanceId, QueueId, Input) ->
     update_queue_status(Client, InstanceId, QueueId, Input, []).
 
 -spec update_queue_status(map(), binary() | list(), binary() | list(), update_queue_status_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_queue_status_errors(), tuple()}.
 update_queue_status(Client, InstanceId, QueueId, Input0, Options0) ->
     Method = post,
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/status"],
@@ -17306,22 +17566,14 @@ update_queue_status(Client, InstanceId, QueueId, Input0, Options0) ->
 -spec update_quick_connect_config(map(), binary() | list(), binary() | list(), update_quick_connect_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_quick_connect_config_errors(), tuple()}.
 update_quick_connect_config(Client, InstanceId, QuickConnectId, Input) ->
     update_quick_connect_config(Client, InstanceId, QuickConnectId, Input, []).
 
 -spec update_quick_connect_config(map(), binary() | list(), binary() | list(), update_quick_connect_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_quick_connect_config_errors(), tuple()}.
 update_quick_connect_config(Client, InstanceId, QuickConnectId, Input0, Options0) ->
     Method = post,
     Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QuickConnectId), "/config"],
@@ -17351,22 +17603,14 @@ update_quick_connect_config(Client, InstanceId, QuickConnectId, Input0, Options0
 -spec update_quick_connect_name(map(), binary() | list(), binary() | list(), update_quick_connect_name_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_quick_connect_name_errors(), tuple()}.
 update_quick_connect_name(Client, InstanceId, QuickConnectId, Input) ->
     update_quick_connect_name(Client, InstanceId, QuickConnectId, Input, []).
 
 -spec update_quick_connect_name(map(), binary() | list(), binary() | list(), update_quick_connect_name_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_quick_connect_name_errors(), tuple()}.
 update_quick_connect_name(Client, InstanceId, QuickConnectId, Input0, Options0) ->
     Method = post,
     Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QuickConnectId), "/name"],
@@ -17396,22 +17640,14 @@ update_quick_connect_name(Client, InstanceId, QuickConnectId, Input0, Options0) 
 -spec update_routing_profile_agent_availability_timer(map(), binary() | list(), binary() | list(), update_routing_profile_agent_availability_timer_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_routing_profile_agent_availability_timer_errors(), tuple()}.
 update_routing_profile_agent_availability_timer(Client, InstanceId, RoutingProfileId, Input) ->
     update_routing_profile_agent_availability_timer(Client, InstanceId, RoutingProfileId, Input, []).
 
 -spec update_routing_profile_agent_availability_timer(map(), binary() | list(), binary() | list(), update_routing_profile_agent_availability_timer_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_routing_profile_agent_availability_timer_errors(), tuple()}.
 update_routing_profile_agent_availability_timer(Client, InstanceId, RoutingProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/agent-availability-timer"],
@@ -17440,22 +17676,14 @@ update_routing_profile_agent_availability_timer(Client, InstanceId, RoutingProfi
 -spec update_routing_profile_concurrency(map(), binary() | list(), binary() | list(), update_routing_profile_concurrency_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_routing_profile_concurrency_errors(), tuple()}.
 update_routing_profile_concurrency(Client, InstanceId, RoutingProfileId, Input) ->
     update_routing_profile_concurrency(Client, InstanceId, RoutingProfileId, Input, []).
 
 -spec update_routing_profile_concurrency(map(), binary() | list(), binary() | list(), update_routing_profile_concurrency_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_routing_profile_concurrency_errors(), tuple()}.
 update_routing_profile_concurrency(Client, InstanceId, RoutingProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/concurrency"],
@@ -17482,22 +17710,14 @@ update_routing_profile_concurrency(Client, InstanceId, RoutingProfileId, Input0,
 -spec update_routing_profile_default_outbound_queue(map(), binary() | list(), binary() | list(), update_routing_profile_default_outbound_queue_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_routing_profile_default_outbound_queue_errors(), tuple()}.
 update_routing_profile_default_outbound_queue(Client, InstanceId, RoutingProfileId, Input) ->
     update_routing_profile_default_outbound_queue(Client, InstanceId, RoutingProfileId, Input, []).
 
 -spec update_routing_profile_default_outbound_queue(map(), binary() | list(), binary() | list(), update_routing_profile_default_outbound_queue_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_routing_profile_default_outbound_queue_errors(), tuple()}.
 update_routing_profile_default_outbound_queue(Client, InstanceId, RoutingProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/default-outbound-queue"],
@@ -17527,24 +17747,14 @@ update_routing_profile_default_outbound_queue(Client, InstanceId, RoutingProfile
 -spec update_routing_profile_name(map(), binary() | list(), binary() | list(), update_routing_profile_name_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_routing_profile_name_errors(), tuple()}.
 update_routing_profile_name(Client, InstanceId, RoutingProfileId, Input) ->
     update_routing_profile_name(Client, InstanceId, RoutingProfileId, Input, []).
 
 -spec update_routing_profile_name(map(), binary() | list(), binary() | list(), update_routing_profile_name_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_routing_profile_name_errors(), tuple()}.
 update_routing_profile_name(Client, InstanceId, RoutingProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/name"],
@@ -17572,22 +17782,14 @@ update_routing_profile_name(Client, InstanceId, RoutingProfileId, Input0, Option
 -spec update_routing_profile_queues(map(), binary() | list(), binary() | list(), update_routing_profile_queues_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_routing_profile_queues_errors(), tuple()}.
 update_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input) ->
     update_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input, []).
 
 -spec update_routing_profile_queues(map(), binary() | list(), binary() | list(), update_routing_profile_queues_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_routing_profile_queues_errors(), tuple()}.
 update_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/queues"],
@@ -17619,24 +17821,14 @@ update_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Opti
 -spec update_rule(map(), binary() | list(), binary() | list(), update_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_rule_errors(), tuple()}.
 update_rule(Client, InstanceId, RuleId, Input) ->
     update_rule(Client, InstanceId, RuleId, Input, []).
 
 -spec update_rule(map(), binary() | list(), binary() | list(), update_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_rule_errors(), tuple()}.
 update_rule(Client, InstanceId, RuleId, Input0, Options0) ->
     Method = put,
     Path = ["/rules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RuleId), ""],
@@ -17663,22 +17855,14 @@ update_rule(Client, InstanceId, RuleId, Input0, Options0) ->
 -spec update_security_profile(map(), binary() | list(), binary() | list(), update_security_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_security_profile_errors(), tuple()}.
 update_security_profile(Client, InstanceId, SecurityProfileId, Input) ->
     update_security_profile(Client, InstanceId, SecurityProfileId, Input, []).
 
 -spec update_security_profile(map(), binary() | list(), binary() | list(), update_security_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_security_profile_errors(), tuple()}.
 update_security_profile(Client, InstanceId, SecurityProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/security-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(SecurityProfileId), ""],
@@ -17710,24 +17894,14 @@ update_security_profile(Client, InstanceId, SecurityProfileId, Input0, Options0)
 -spec update_task_template(map(), binary() | list(), binary() | list(), update_task_template_request()) ->
     {ok, update_task_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, property_validation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_task_template_errors(), tuple()}.
 update_task_template(Client, InstanceId, TaskTemplateId, Input) ->
     update_task_template(Client, InstanceId, TaskTemplateId, Input, []).
 
 -spec update_task_template(map(), binary() | list(), binary() | list(), update_task_template_request(), proplists:proplist()) ->
     {ok, update_task_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, property_validation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_task_template_errors(), tuple()}.
 update_task_template(Client, InstanceId, TaskTemplateId, Input0, Options0) ->
     Method = post,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/task/template/", aws_util:encode_uri(TaskTemplateId), ""],
@@ -17772,24 +17946,14 @@ update_task_template(Client, InstanceId, TaskTemplateId, Input0, Options0) ->
 -spec update_traffic_distribution(map(), binary() | list(), update_traffic_distribution_request()) ->
     {ok, update_traffic_distribution_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_traffic_distribution_errors(), tuple()}.
 update_traffic_distribution(Client, Id, Input) ->
     update_traffic_distribution(Client, Id, Input, []).
 
 -spec update_traffic_distribution(map(), binary() | list(), update_traffic_distribution_request(), proplists:proplist()) ->
     {ok, update_traffic_distribution_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_traffic_distribution_errors(), tuple()}.
 update_traffic_distribution(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/traffic-distribution/", aws_util:encode_uri(Id), ""],
@@ -17816,22 +17980,14 @@ update_traffic_distribution(Client, Id, Input0, Options0) ->
 -spec update_user_hierarchy(map(), binary() | list(), binary() | list(), update_user_hierarchy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_user_hierarchy_errors(), tuple()}.
 update_user_hierarchy(Client, InstanceId, UserId, Input) ->
     update_user_hierarchy(Client, InstanceId, UserId, Input, []).
 
 -spec update_user_hierarchy(map(), binary() | list(), binary() | list(), update_user_hierarchy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_user_hierarchy_errors(), tuple()}.
 update_user_hierarchy(Client, InstanceId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/hierarchy"],
@@ -17858,24 +18014,14 @@ update_user_hierarchy(Client, InstanceId, UserId, Input0, Options0) ->
 -spec update_user_hierarchy_group_name(map(), binary() | list(), binary() | list(), update_user_hierarchy_group_name_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_user_hierarchy_group_name_errors(), tuple()}.
 update_user_hierarchy_group_name(Client, HierarchyGroupId, InstanceId, Input) ->
     update_user_hierarchy_group_name(Client, HierarchyGroupId, InstanceId, Input, []).
 
 -spec update_user_hierarchy_group_name(map(), binary() | list(), binary() | list(), update_user_hierarchy_group_name_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_user_hierarchy_group_name_errors(), tuple()}.
 update_user_hierarchy_group_name(Client, HierarchyGroupId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/user-hierarchy-groups/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HierarchyGroupId), "/name"],
@@ -17903,24 +18049,14 @@ update_user_hierarchy_group_name(Client, HierarchyGroupId, InstanceId, Input0, O
 -spec update_user_hierarchy_structure(map(), binary() | list(), update_user_hierarchy_structure_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_user_hierarchy_structure_errors(), tuple()}.
 update_user_hierarchy_structure(Client, InstanceId, Input) ->
     update_user_hierarchy_structure(Client, InstanceId, Input, []).
 
 -spec update_user_hierarchy_structure(map(), binary() | list(), update_user_hierarchy_structure_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_user_hierarchy_structure_errors(), tuple()}.
 update_user_hierarchy_structure(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/user-hierarchy-structure/", aws_util:encode_uri(InstanceId), ""],
@@ -17960,22 +18096,14 @@ update_user_hierarchy_structure(Client, InstanceId, Input0, Options0) ->
 -spec update_user_identity_info(map(), binary() | list(), binary() | list(), update_user_identity_info_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_user_identity_info_errors(), tuple()}.
 update_user_identity_info(Client, InstanceId, UserId, Input) ->
     update_user_identity_info(Client, InstanceId, UserId, Input, []).
 
 -spec update_user_identity_info(map(), binary() | list(), binary() | list(), update_user_identity_info_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_user_identity_info_errors(), tuple()}.
 update_user_identity_info(Client, InstanceId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/identity-info"],
@@ -18002,22 +18130,14 @@ update_user_identity_info(Client, InstanceId, UserId, Input0, Options0) ->
 -spec update_user_phone_config(map(), binary() | list(), binary() | list(), update_user_phone_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_user_phone_config_errors(), tuple()}.
 update_user_phone_config(Client, InstanceId, UserId, Input) ->
     update_user_phone_config(Client, InstanceId, UserId, Input, []).
 
 -spec update_user_phone_config(map(), binary() | list(), binary() | list(), update_user_phone_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_user_phone_config_errors(), tuple()}.
 update_user_phone_config(Client, InstanceId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/phone-config"],
@@ -18044,22 +18164,14 @@ update_user_phone_config(Client, InstanceId, UserId, Input0, Options0) ->
 -spec update_user_proficiencies(map(), binary() | list(), binary() | list(), update_user_proficiencies_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_user_proficiencies_errors(), tuple()}.
 update_user_proficiencies(Client, InstanceId, UserId, Input) ->
     update_user_proficiencies(Client, InstanceId, UserId, Input, []).
 
 -spec update_user_proficiencies(map(), binary() | list(), binary() | list(), update_user_proficiencies_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_user_proficiencies_errors(), tuple()}.
 update_user_proficiencies(Client, InstanceId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/proficiencies"],
@@ -18086,22 +18198,14 @@ update_user_proficiencies(Client, InstanceId, UserId, Input0, Options0) ->
 -spec update_user_routing_profile(map(), binary() | list(), binary() | list(), update_user_routing_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_user_routing_profile_errors(), tuple()}.
 update_user_routing_profile(Client, InstanceId, UserId, Input) ->
     update_user_routing_profile(Client, InstanceId, UserId, Input, []).
 
 -spec update_user_routing_profile(map(), binary() | list(), binary() | list(), update_user_routing_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_user_routing_profile_errors(), tuple()}.
 update_user_routing_profile(Client, InstanceId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/routing-profile"],
@@ -18128,22 +18232,14 @@ update_user_routing_profile(Client, InstanceId, UserId, Input0, Options0) ->
 -spec update_user_security_profiles(map(), binary() | list(), binary() | list(), update_user_security_profiles_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_user_security_profiles_errors(), tuple()}.
 update_user_security_profiles(Client, InstanceId, UserId, Input) ->
     update_user_security_profiles(Client, InstanceId, UserId, Input, []).
 
 -spec update_user_security_profiles(map(), binary() | list(), binary() | list(), update_user_security_profiles_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_user_security_profiles_errors(), tuple()}.
 update_user_security_profiles(Client, InstanceId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/security-profiles"],
@@ -18179,26 +18275,14 @@ update_user_security_profiles(Client, InstanceId, UserId, Input0, Options0) ->
 -spec update_view_content(map(), binary() | list(), binary() | list(), update_view_content_request()) ->
     {ok, update_view_content_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_view_content_errors(), tuple()}.
 update_view_content(Client, InstanceId, ViewId, Input) ->
     update_view_content(Client, InstanceId, ViewId, Input, []).
 
 -spec update_view_content(map(), binary() | list(), binary() | list(), update_view_content_request(), proplists:proplist()) ->
     {ok, update_view_content_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_view_content_errors(), tuple()}.
 update_view_content(Client, InstanceId, ViewId, Input0, Options0) ->
     Method = post,
     Path = ["/views/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ViewId), ""],
@@ -18228,28 +18312,14 @@ update_view_content(Client, InstanceId, ViewId, Input0, Options0) ->
 -spec update_view_metadata(map(), binary() | list(), binary() | list(), update_view_metadata_request()) ->
     {ok, update_view_metadata_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_view_metadata_errors(), tuple()}.
 update_view_metadata(Client, InstanceId, ViewId, Input) ->
     update_view_metadata(Client, InstanceId, ViewId, Input, []).
 
 -spec update_view_metadata(map(), binary() | list(), binary() | list(), update_view_metadata_request(), proplists:proplist()) ->
     {ok, update_view_metadata_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_view_metadata_errors(), tuple()}.
 update_view_metadata(Client, InstanceId, ViewId, Input0, Options0) ->
     Method = post,
     Path = ["/views/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ViewId), "/metadata"],

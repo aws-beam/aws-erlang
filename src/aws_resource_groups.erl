@@ -98,11 +98,13 @@
 %% }
 -type resource_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% unauthorized_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type unauthorized_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_group_input() :: #{
@@ -114,11 +116,13 @@
 %% }
 -type create_group_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_group_query_output() :: #{
 %%   <<"GroupQuery">> => group_query()
 %% }
 -type update_group_query_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_group_resources_item() :: #{
@@ -127,11 +131,13 @@
 %% }
 -type list_group_resources_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% forbidden_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type forbidden_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% tag_output() :: #{
@@ -140,11 +146,13 @@
 %% }
 -type tag_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% method_not_allowed_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type method_not_allowed_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_group_query_input() :: #{
@@ -154,17 +162,20 @@
 %% }
 -type update_group_query_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_group_configuration_input() :: #{
 %%   <<"Group">> => string()
 %% }
 -type get_group_configuration_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_status() :: #{
 %%   <<"Name">> => list(any())
 %% }
 -type resource_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_query() :: #{
@@ -173,11 +184,13 @@
 %% }
 -type resource_query() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_requests_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_requests_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% group_identifier() :: #{
@@ -186,6 +199,7 @@
 %% }
 -type group_identifier() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_tags_output() :: #{
 %%   <<"Arn">> => string(),
@@ -193,11 +207,13 @@
 %% }
 -type get_tags_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_input() :: #{
 %%   <<"Keys">> := list(string()())
 %% }
 -type untag_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_group_output() :: #{
@@ -205,12 +221,14 @@
 %% }
 -type update_group_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_group_configuration_input() :: #{
 %%   <<"Configuration">> => list(group_configuration_item()()),
 %%   <<"Group">> => string()
 %% }
 -type put_group_configuration_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_groups_output() :: #{
@@ -220,6 +238,7 @@
 %% }
 -type list_groups_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_group_query_input() :: #{
 %%   <<"Group">> => string(),
@@ -227,11 +246,13 @@
 %% }
 -type get_group_query_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_group_configuration_output() :: #{
 %%   <<"GroupConfiguration">> => group_configuration()
 %% }
 -type get_group_configuration_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% pending_resource() :: #{
@@ -239,11 +260,13 @@
 %% }
 -type pending_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_group_query_output() :: #{
 %%   <<"GroupQuery">> => group_query()
 %% }
 -type get_group_query_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% group_resources_output() :: #{
@@ -253,6 +276,7 @@
 %% }
 -type group_resources_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_identifier() :: #{
 %%   <<"ResourceArn">> => string(),
@@ -260,12 +284,14 @@
 %% }
 -type resource_identifier() :: #{binary() => any()}.
 
+
 %% Example:
 %% group_configuration_parameter() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Values">> => list(string()())
 %% }
 -type group_configuration_parameter() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_group_output() :: #{
@@ -276,6 +302,7 @@
 %% }
 -type create_group_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% ungroup_resources_output() :: #{
 %%   <<"Failed">> => list(failed_resource()()),
@@ -283,6 +310,7 @@
 %%   <<"Succeeded">> => list(string()())
 %% }
 -type ungroup_resources_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_resources_input() :: #{
@@ -292,11 +320,13 @@
 %% }
 -type search_resources_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% group_filter() :: #{
@@ -305,12 +335,14 @@
 %% }
 -type group_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% group_resources_input() :: #{
 %%   <<"Group">> := string(),
 %%   <<"ResourceArns">> := list(string()())
 %% }
 -type group_resources_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_resources_output() :: #{
@@ -319,6 +351,7 @@
 %%   <<"ResourceIdentifiers">> => list(resource_identifier()())
 %% }
 -type search_resources_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_group_resources_output() :: #{
@@ -329,12 +362,14 @@
 %% }
 -type list_group_resources_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_group_input() :: #{
 %%   <<"Group">> => string(),
 %%   <<"GroupName">> => string()
 %% }
 -type delete_group_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% group_query() :: #{
@@ -343,11 +378,13 @@
 %% }
 -type group_query() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_account_settings_input() :: #{
 %%   <<"GroupLifecycleEventsDesiredStatus">> => list(any())
 %% }
 -type update_account_settings_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_group_output() :: #{
@@ -355,11 +392,13 @@
 %% }
 -type get_group_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_account_settings_output() :: #{
 %%   <<"AccountSettings">> => account_settings()
 %% }
 -type update_account_settings_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_group_input() :: #{
@@ -367,6 +406,7 @@
 %%   <<"GroupName">> => string()
 %% }
 -type get_group_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_group_resources_input() :: #{
@@ -378,6 +418,7 @@
 %% }
 -type list_group_resources_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% account_settings() :: #{
 %%   <<"GroupLifecycleEventsDesiredStatus">> => list(any()),
@@ -385,6 +426,7 @@
 %%   <<"GroupLifecycleEventsStatusMessage">> => string()
 %% }
 -type account_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_group_input() :: #{
@@ -394,14 +436,17 @@
 %% }
 -type update_group_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_error_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_server_error_exception() :: #{binary() => any()}.
+
 %% Example:
 %% get_tags_input() :: #{}
 -type get_tags_input() :: #{}.
+
 
 %% Example:
 %% group() :: #{
@@ -411,11 +456,13 @@
 %% }
 -type group() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_account_settings_output() :: #{
 %%   <<"AccountSettings">> => account_settings()
 %% }
 -type get_account_settings_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% ungroup_resources_input() :: #{
@@ -423,6 +470,7 @@
 %%   <<"ResourceArns">> := list(string()())
 %% }
 -type ungroup_resources_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_groups_input() :: #{
@@ -432,12 +480,14 @@
 %% }
 -type list_groups_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_output() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Keys">> => list(string()())
 %% }
 -type untag_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% failed_resource() :: #{
@@ -447,17 +497,20 @@
 %% }
 -type failed_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% bad_request_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_group_output() :: #{
 %%   <<"Group">> => group()
 %% }
 -type delete_group_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% group_configuration() :: #{
@@ -468,15 +521,18 @@
 %% }
 -type group_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% query_error() :: #{
 %%   <<"ErrorCode">> => list(any()),
 %%   <<"Message">> => string()
 %% }
 -type query_error() :: #{binary() => any()}.
+
 %% Example:
 %% put_group_configuration_output() :: #{}
 -type put_group_configuration_output() :: #{}.
+
 
 %% Example:
 %% group_configuration_item() :: #{
@@ -485,11 +541,153 @@
 %% }
 -type group_configuration_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_input() :: #{
 %%   <<"Tags">> := map()
 %% }
 -type tag_input() :: #{binary() => any()}.
+
+-type create_group_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type delete_group_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_account_settings_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_group_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_group_configuration_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_group_query_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_tags_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type group_resources_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type list_group_resources_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type list_groups_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type put_group_configuration_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type search_resources_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type tag_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type ungroup_resources_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type untag_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type update_account_settings_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type update_group_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type update_group_query_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
 
 %%====================================================================
 %% API
@@ -516,22 +714,14 @@
 -spec create_group(map(), create_group_input()) ->
     {ok, create_group_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_group_errors(), tuple()}.
 create_group(Client, Input) ->
     create_group(Client, Input, []).
 
 -spec create_group(map(), create_group_input(), proplists:proplist()) ->
     {ok, create_group_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_group_errors(), tuple()}.
 create_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/groups"],
@@ -568,24 +758,14 @@ create_group(Client, Input0, Options0) ->
 -spec delete_group(map(), delete_group_input()) ->
     {ok, delete_group_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_group_errors(), tuple()}.
 delete_group(Client, Input) ->
     delete_group(Client, Input, []).
 
 -spec delete_group(map(), delete_group_input(), proplists:proplist()) ->
     {ok, delete_group_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_group_errors(), tuple()}.
 delete_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-group"],
@@ -612,22 +792,14 @@ delete_group(Client, Input0, Options0) ->
 -spec get_account_settings(map(), #{}) ->
     {ok, get_account_settings_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_account_settings_errors(), tuple()}.
 get_account_settings(Client, Input) ->
     get_account_settings(Client, Input, []).
 
 -spec get_account_settings(map(), #{}, proplists:proplist()) ->
     {ok, get_account_settings_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_account_settings_errors(), tuple()}.
 get_account_settings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-account-settings"],
@@ -660,24 +832,14 @@ get_account_settings(Client, Input0, Options0) ->
 -spec get_group(map(), get_group_input()) ->
     {ok, get_group_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_group_errors(), tuple()}.
 get_group(Client, Input) ->
     get_group(Client, Input, []).
 
 -spec get_group(map(), get_group_input(), proplists:proplist()) ->
     {ok, get_group_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_group_errors(), tuple()}.
 get_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-group"],
@@ -716,24 +878,14 @@ get_group(Client, Input0, Options0) ->
 -spec get_group_configuration(map(), get_group_configuration_input()) ->
     {ok, get_group_configuration_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_group_configuration_errors(), tuple()}.
 get_group_configuration(Client, Input) ->
     get_group_configuration(Client, Input, []).
 
 -spec get_group_configuration(map(), get_group_configuration_input(), proplists:proplist()) ->
     {ok, get_group_configuration_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_group_configuration_errors(), tuple()}.
 get_group_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-group-configuration"],
@@ -772,24 +924,14 @@ get_group_configuration(Client, Input0, Options0) ->
 -spec get_group_query(map(), get_group_query_input()) ->
     {ok, get_group_query_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_group_query_errors(), tuple()}.
 get_group_query(Client, Input) ->
     get_group_query(Client, Input, []).
 
 -spec get_group_query(map(), get_group_query_input(), proplists:proplist()) ->
     {ok, get_group_query_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_group_query_errors(), tuple()}.
 get_group_query(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-group-query"],
@@ -824,12 +966,7 @@ get_group_query(Client, Input0, Options0) ->
 -spec get_tags(map(), binary() | list()) ->
     {ok, get_tags_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_tags_errors(), tuple()}.
 get_tags(Client, Arn)
   when is_map(Client) ->
     get_tags(Client, Arn, #{}, #{}).
@@ -837,12 +974,7 @@ get_tags(Client, Arn)
 -spec get_tags(map(), binary() | list(), map(), map()) ->
     {ok, get_tags_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_tags_errors(), tuple()}.
 get_tags(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_tags(Client, Arn, QueryMap, HeadersMap, []).
@@ -850,12 +982,7 @@ get_tags(Client, Arn, QueryMap, HeadersMap)
 -spec get_tags(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_tags_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_tags_errors(), tuple()}.
 get_tags(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resources/", aws_util:encode_uri(Arn), "/tags"],
@@ -894,24 +1021,14 @@ get_tags(Client, Arn, QueryMap, HeadersMap, Options0)
 -spec group_resources(map(), group_resources_input()) ->
     {ok, group_resources_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, group_resources_errors(), tuple()}.
 group_resources(Client, Input) ->
     group_resources(Client, Input, []).
 
 -spec group_resources(map(), group_resources_input(), proplists:proplist()) ->
     {ok, group_resources_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, group_resources_errors(), tuple()}.
 group_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/group-resources"],
@@ -952,26 +1069,14 @@ group_resources(Client, Input0, Options0) ->
 -spec list_group_resources(map(), list_group_resources_input()) ->
     {ok, list_group_resources_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_group_resources_errors(), tuple()}.
 list_group_resources(Client, Input) ->
     list_group_resources(Client, Input, []).
 
 -spec list_group_resources(map(), list_group_resources_input(), proplists:proplist()) ->
     {ok, list_group_resources_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_group_resources_errors(), tuple()}.
 list_group_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-group-resources"],
@@ -1004,22 +1109,14 @@ list_group_resources(Client, Input0, Options0) ->
 -spec list_groups(map(), list_groups_input()) ->
     {ok, list_groups_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_groups_errors(), tuple()}.
 list_groups(Client, Input) ->
     list_groups(Client, Input, []).
 
 -spec list_groups(map(), list_groups_input(), proplists:proplist()) ->
     {ok, list_groups_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_groups_errors(), tuple()}.
 list_groups(Client, Input0, Options0) ->
     Method = post,
     Path = ["/groups-list"],
@@ -1058,24 +1155,14 @@ list_groups(Client, Input0, Options0) ->
 -spec put_group_configuration(map(), put_group_configuration_input()) ->
     {ok, put_group_configuration_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_group_configuration_errors(), tuple()}.
 put_group_configuration(Client, Input) ->
     put_group_configuration(Client, Input, []).
 
 -spec put_group_configuration(map(), put_group_configuration_input(), proplists:proplist()) ->
     {ok, put_group_configuration_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_group_configuration_errors(), tuple()}.
 put_group_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/put-group-configuration"],
@@ -1119,24 +1206,14 @@ put_group_configuration(Client, Input0, Options0) ->
 -spec search_resources(map(), search_resources_input()) ->
     {ok, search_resources_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, search_resources_errors(), tuple()}.
 search_resources(Client, Input) ->
     search_resources(Client, Input, []).
 
 -spec search_resources(map(), search_resources_input(), proplists:proplist()) ->
     {ok, search_resources_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, search_resources_errors(), tuple()}.
 search_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/resources/search"],
@@ -1179,24 +1256,14 @@ search_resources(Client, Input0, Options0) ->
 -spec tag(map(), binary() | list(), tag_input()) ->
     {ok, tag_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, tag_errors(), tuple()}.
 tag(Client, Arn, Input) ->
     tag(Client, Arn, Input, []).
 
 -spec tag(map(), binary() | list(), tag_input(), proplists:proplist()) ->
     {ok, tag_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, tag_errors(), tuple()}.
 tag(Client, Arn, Input0, Options0) ->
     Method = put,
     Path = ["/resources/", aws_util:encode_uri(Arn), "/tags"],
@@ -1235,24 +1302,14 @@ tag(Client, Arn, Input0, Options0) ->
 -spec ungroup_resources(map(), ungroup_resources_input()) ->
     {ok, ungroup_resources_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, ungroup_resources_errors(), tuple()}.
 ungroup_resources(Client, Input) ->
     ungroup_resources(Client, Input, []).
 
 -spec ungroup_resources(map(), ungroup_resources_input(), proplists:proplist()) ->
     {ok, ungroup_resources_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, ungroup_resources_errors(), tuple()}.
 ungroup_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ungroup-resources"],
@@ -1285,24 +1342,14 @@ ungroup_resources(Client, Input0, Options0) ->
 -spec untag(map(), binary() | list(), untag_input()) ->
     {ok, untag_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, untag_errors(), tuple()}.
 untag(Client, Arn, Input) ->
     untag(Client, Arn, Input, []).
 
 -spec untag(map(), binary() | list(), untag_input(), proplists:proplist()) ->
     {ok, untag_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, untag_errors(), tuple()}.
 untag(Client, Arn, Input0, Options0) ->
     Method = patch,
     Path = ["/resources/", aws_util:encode_uri(Arn), "/tags"],
@@ -1336,22 +1383,14 @@ untag(Client, Arn, Input0, Options0) ->
 -spec update_account_settings(map(), update_account_settings_input()) ->
     {ok, update_account_settings_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_account_settings_errors(), tuple()}.
 update_account_settings(Client, Input) ->
     update_account_settings(Client, Input, []).
 
 -spec update_account_settings(map(), update_account_settings_input(), proplists:proplist()) ->
     {ok, update_account_settings_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_account_settings_errors(), tuple()}.
 update_account_settings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-account-settings"],
@@ -1387,24 +1426,14 @@ update_account_settings(Client, Input0, Options0) ->
 -spec update_group(map(), update_group_input()) ->
     {ok, update_group_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_group_errors(), tuple()}.
 update_group(Client, Input) ->
     update_group(Client, Input, []).
 
 -spec update_group(map(), update_group_input(), proplists:proplist()) ->
     {ok, update_group_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_group_errors(), tuple()}.
 update_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-group"],
@@ -1441,24 +1470,14 @@ update_group(Client, Input0, Options0) ->
 -spec update_group_query(map(), update_group_query_input()) ->
     {ok, update_group_query_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_group_query_errors(), tuple()}.
 update_group_query(Client, Input) ->
     update_group_query(Client, Input, []).
 
 -spec update_group_query(map(), update_group_query_input(), proplists:proplist()) ->
     {ok, update_group_query_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_group_query_errors(), tuple()}.
 update_group_query(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-group-query"],

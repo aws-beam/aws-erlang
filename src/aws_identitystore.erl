@@ -535,6 +535,94 @@
 %% }
 -type list_group_memberships_for_member_request() :: #{binary() => any()}.
 
+-type create_group_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_group_membership_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_user_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_group_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_group_membership_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_user_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_group_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_group_membership_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_user_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type get_group_id_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type get_group_membership_id_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type get_user_id_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type is_member_in_groups_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type list_group_memberships_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type list_group_memberships_for_member_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type list_groups_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type list_users_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type update_group_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_user_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -544,10 +632,7 @@
 -spec create_group(map(), create_group_request()) ->
     {ok, create_group_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_group_errors(), tuple()}.
 create_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_group(Client, Input, []).
@@ -555,10 +640,7 @@ create_group(Client, Input)
 -spec create_group(map(), create_group_request(), proplists:proplist()) ->
     {ok, create_group_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_group_errors(), tuple()}.
 create_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGroup">>, Input, Options).
@@ -570,10 +652,7 @@ create_group(Client, Input, Options)
 -spec create_group_membership(map(), create_group_membership_request()) ->
     {ok, create_group_membership_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_group_membership_errors(), tuple()}.
 create_group_membership(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_group_membership(Client, Input, []).
@@ -581,10 +660,7 @@ create_group_membership(Client, Input)
 -spec create_group_membership(map(), create_group_membership_request(), proplists:proplist()) ->
     {ok, create_group_membership_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_group_membership_errors(), tuple()}.
 create_group_membership(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGroupMembership">>, Input, Options).
@@ -593,10 +669,7 @@ create_group_membership(Client, Input, Options)
 -spec create_user(map(), create_user_request()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_user_errors(), tuple()}.
 create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user(Client, Input, []).
@@ -604,10 +677,7 @@ create_user(Client, Input)
 -spec create_user(map(), create_user_request(), proplists:proplist()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_user_errors(), tuple()}.
 create_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUser">>, Input, Options).
@@ -616,9 +686,7 @@ create_user(Client, Input, Options)
 -spec delete_group(map(), delete_group_request()) ->
     {ok, delete_group_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_group_errors(), tuple()}.
 delete_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_group(Client, Input, []).
@@ -626,9 +694,7 @@ delete_group(Client, Input)
 -spec delete_group(map(), delete_group_request(), proplists:proplist()) ->
     {ok, delete_group_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_group_errors(), tuple()}.
 delete_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGroup">>, Input, Options).
@@ -637,9 +703,7 @@ delete_group(Client, Input, Options)
 -spec delete_group_membership(map(), delete_group_membership_request()) ->
     {ok, delete_group_membership_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_group_membership_errors(), tuple()}.
 delete_group_membership(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_group_membership(Client, Input, []).
@@ -647,9 +711,7 @@ delete_group_membership(Client, Input)
 -spec delete_group_membership(map(), delete_group_membership_request(), proplists:proplist()) ->
     {ok, delete_group_membership_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_group_membership_errors(), tuple()}.
 delete_group_membership(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGroupMembership">>, Input, Options).
@@ -658,9 +720,7 @@ delete_group_membership(Client, Input, Options)
 -spec delete_user(map(), delete_user_request()) ->
     {ok, delete_user_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_user_errors(), tuple()}.
 delete_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user(Client, Input, []).
@@ -668,9 +728,7 @@ delete_user(Client, Input)
 -spec delete_user(map(), delete_user_request(), proplists:proplist()) ->
     {ok, delete_user_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_user_errors(), tuple()}.
 delete_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUser">>, Input, Options).
@@ -688,8 +746,7 @@ delete_user(Client, Input, Options)
 -spec describe_group(map(), describe_group_request()) ->
     {ok, describe_group_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_group_errors(), tuple()}.
 describe_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_group(Client, Input, []).
@@ -697,8 +754,7 @@ describe_group(Client, Input)
 -spec describe_group(map(), describe_group_request(), proplists:proplist()) ->
     {ok, describe_group_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_group_errors(), tuple()}.
 describe_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGroup">>, Input, Options).
@@ -715,8 +771,7 @@ describe_group(Client, Input, Options)
 -spec describe_group_membership(map(), describe_group_membership_request()) ->
     {ok, describe_group_membership_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_group_membership_errors(), tuple()}.
 describe_group_membership(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_group_membership(Client, Input, []).
@@ -724,8 +779,7 @@ describe_group_membership(Client, Input)
 -spec describe_group_membership(map(), describe_group_membership_request(), proplists:proplist()) ->
     {ok, describe_group_membership_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_group_membership_errors(), tuple()}.
 describe_group_membership(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGroupMembership">>, Input, Options).
@@ -742,8 +796,7 @@ describe_group_membership(Client, Input, Options)
 -spec describe_user(map(), describe_user_request()) ->
     {ok, describe_user_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_user_errors(), tuple()}.
 describe_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user(Client, Input, []).
@@ -751,8 +804,7 @@ describe_user(Client, Input)
 -spec describe_user(map(), describe_user_request(), proplists:proplist()) ->
     {ok, describe_user_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_user_errors(), tuple()}.
 describe_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUser">>, Input, Options).
@@ -768,8 +820,7 @@ describe_user(Client, Input, Options)
 -spec get_group_id(map(), get_group_id_request()) ->
     {ok, get_group_id_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_group_id_errors(), tuple()}.
 get_group_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_group_id(Client, Input, []).
@@ -777,8 +828,7 @@ get_group_id(Client, Input)
 -spec get_group_id(map(), get_group_id_request(), proplists:proplist()) ->
     {ok, get_group_id_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_group_id_errors(), tuple()}.
 get_group_id(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetGroupId">>, Input, Options).
@@ -794,8 +844,7 @@ get_group_id(Client, Input, Options)
 -spec get_group_membership_id(map(), get_group_membership_id_request()) ->
     {ok, get_group_membership_id_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_group_membership_id_errors(), tuple()}.
 get_group_membership_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_group_membership_id(Client, Input, []).
@@ -803,8 +852,7 @@ get_group_membership_id(Client, Input)
 -spec get_group_membership_id(map(), get_group_membership_id_request(), proplists:proplist()) ->
     {ok, get_group_membership_id_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_group_membership_id_errors(), tuple()}.
 get_group_membership_id(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetGroupMembershipId">>, Input, Options).
@@ -820,8 +868,7 @@ get_group_membership_id(Client, Input, Options)
 -spec get_user_id(map(), get_user_id_request()) ->
     {ok, get_user_id_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_user_id_errors(), tuple()}.
 get_user_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_user_id(Client, Input, []).
@@ -829,8 +876,7 @@ get_user_id(Client, Input)
 -spec get_user_id(map(), get_user_id_request(), proplists:proplist()) ->
     {ok, get_user_id_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_user_id_errors(), tuple()}.
 get_user_id(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUserId">>, Input, Options).
@@ -847,8 +893,7 @@ get_user_id(Client, Input, Options)
 -spec is_member_in_groups(map(), is_member_in_groups_request()) ->
     {ok, is_member_in_groups_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, is_member_in_groups_errors(), tuple()}.
 is_member_in_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     is_member_in_groups(Client, Input, []).
@@ -856,8 +901,7 @@ is_member_in_groups(Client, Input)
 -spec is_member_in_groups(map(), is_member_in_groups_request(), proplists:proplist()) ->
     {ok, is_member_in_groups_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, is_member_in_groups_errors(), tuple()}.
 is_member_in_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"IsMemberInGroups">>, Input, Options).
@@ -875,8 +919,7 @@ is_member_in_groups(Client, Input, Options)
 -spec list_group_memberships(map(), list_group_memberships_request()) ->
     {ok, list_group_memberships_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_group_memberships_errors(), tuple()}.
 list_group_memberships(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_group_memberships(Client, Input, []).
@@ -884,8 +927,7 @@ list_group_memberships(Client, Input)
 -spec list_group_memberships(map(), list_group_memberships_request(), proplists:proplist()) ->
     {ok, list_group_memberships_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_group_memberships_errors(), tuple()}.
 list_group_memberships(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGroupMemberships">>, Input, Options).
@@ -903,8 +945,7 @@ list_group_memberships(Client, Input, Options)
 -spec list_group_memberships_for_member(map(), list_group_memberships_for_member_request()) ->
     {ok, list_group_memberships_for_member_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_group_memberships_for_member_errors(), tuple()}.
 list_group_memberships_for_member(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_group_memberships_for_member(Client, Input, []).
@@ -912,8 +953,7 @@ list_group_memberships_for_member(Client, Input)
 -spec list_group_memberships_for_member(map(), list_group_memberships_for_member_request(), proplists:proplist()) ->
     {ok, list_group_memberships_for_member_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_group_memberships_for_member_errors(), tuple()}.
 list_group_memberships_for_member(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGroupMembershipsForMember">>, Input, Options).
@@ -933,8 +973,7 @@ list_group_memberships_for_member(Client, Input, Options)
 -spec list_groups(map(), list_groups_request()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_groups_errors(), tuple()}.
 list_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_groups(Client, Input, []).
@@ -942,8 +981,7 @@ list_groups(Client, Input)
 -spec list_groups(map(), list_groups_request(), proplists:proplist()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_groups_errors(), tuple()}.
 list_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGroups">>, Input, Options).
@@ -963,8 +1001,7 @@ list_groups(Client, Input, Options)
 -spec list_users(map(), list_users_request()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_users_errors(), tuple()}.
 list_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_users(Client, Input, []).
@@ -972,8 +1009,7 @@ list_users(Client, Input)
 -spec list_users(map(), list_users_request(), proplists:proplist()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_users_errors(), tuple()}.
 list_users(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUsers">>, Input, Options).
@@ -983,10 +1019,7 @@ list_users(Client, Input, Options)
 -spec update_group(map(), update_group_request()) ->
     {ok, update_group_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_group_errors(), tuple()}.
 update_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_group(Client, Input, []).
@@ -994,10 +1027,7 @@ update_group(Client, Input)
 -spec update_group(map(), update_group_request(), proplists:proplist()) ->
     {ok, update_group_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_group_errors(), tuple()}.
 update_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGroup">>, Input, Options).
@@ -1007,10 +1037,7 @@ update_group(Client, Input, Options)
 -spec update_user(map(), update_user_request()) ->
     {ok, update_user_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_user_errors(), tuple()}.
 update_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user(Client, Input, []).
@@ -1018,10 +1045,7 @@ update_user(Client, Input)
 -spec update_user(map(), update_user_request(), proplists:proplist()) ->
     {ok, update_user_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_user_errors(), tuple()}.
 update_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUser">>, Input, Options).

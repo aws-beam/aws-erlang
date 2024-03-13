@@ -1382,6 +1382,433 @@
 %% }
 -type list_associations_for_license_configuration_response() :: #{binary() => any()}.
 
+-type accept_grant_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type check_in_license_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    rate_limit_exceeded_exception().
+
+-type checkout_borrow_license_errors() ::
+    unsupported_digital_signature_method_exception() | 
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    redirect_exception() | 
+    resource_not_found_exception() | 
+    no_entitlements_allowed_exception() | 
+    entitlement_not_allowed_exception() | 
+    rate_limit_exceeded_exception().
+
+-type checkout_license_errors() ::
+    unsupported_digital_signature_method_exception() | 
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    redirect_exception() | 
+    resource_not_found_exception() | 
+    no_entitlements_allowed_exception() | 
+    rate_limit_exceeded_exception().
+
+-type create_grant_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type create_grant_version_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type create_license_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    redirect_exception() | 
+    rate_limit_exceeded_exception().
+
+-type create_license_configuration_errors() ::
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type create_license_conversion_task_for_resource_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type create_license_manager_report_generator_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    rate_limit_exceeded_exception().
+
+-type create_license_version_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    redirect_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    rate_limit_exceeded_exception().
+
+-type create_token_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    resource_limit_exceeded_exception() | 
+    redirect_exception() | 
+    resource_not_found_exception() | 
+    rate_limit_exceeded_exception().
+
+-type delete_grant_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type delete_license_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    redirect_exception() | 
+    conflict_exception() | 
+    rate_limit_exceeded_exception().
+
+-type delete_license_configuration_errors() ::
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type delete_license_manager_report_generator_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    rate_limit_exceeded_exception().
+
+-type delete_token_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    redirect_exception() | 
+    resource_not_found_exception() | 
+    rate_limit_exceeded_exception().
+
+-type extend_license_consumption_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    rate_limit_exceeded_exception().
+
+-type get_access_token_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    rate_limit_exceeded_exception().
+
+-type get_grant_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type get_license_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type get_license_configuration_errors() ::
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type get_license_conversion_task_errors() ::
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type get_license_manager_report_generator_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    rate_limit_exceeded_exception().
+
+-type get_license_usage_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type get_service_settings_errors() ::
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    rate_limit_exceeded_exception().
+
+-type list_associations_for_license_configuration_errors() ::
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception() | 
+    filter_limit_exceeded_exception().
+
+-type list_distributed_grants_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type list_failures_for_license_configuration_operations_errors() ::
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type list_license_configurations_errors() ::
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception() | 
+    filter_limit_exceeded_exception().
+
+-type list_license_conversion_tasks_errors() ::
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type list_license_manager_report_generators_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    rate_limit_exceeded_exception().
+
+-type list_license_specifications_for_resource_errors() ::
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type list_license_versions_errors() ::
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type list_licenses_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type list_received_grants_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type list_received_grants_for_organization_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type list_received_licenses_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type list_received_licenses_for_organization_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type list_resource_inventory_errors() ::
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    failed_dependency_exception() | 
+    rate_limit_exceeded_exception() | 
+    filter_limit_exceeded_exception().
+
+-type list_tags_for_resource_errors() ::
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type list_tokens_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    rate_limit_exceeded_exception().
+
+-type list_usage_for_license_configuration_errors() ::
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception() | 
+    filter_limit_exceeded_exception().
+
+-type reject_grant_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type tag_resource_errors() ::
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type untag_resource_errors() ::
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type update_license_configuration_errors() ::
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
+
+-type update_license_manager_report_generator_errors() ::
+    validation_exception() | 
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    rate_limit_exceeded_exception().
+
+-type update_license_specifications_for_resource_errors() ::
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_resource_state_exception() | 
+    invalid_parameter_value_exception() | 
+    license_usage_exception() | 
+    rate_limit_exceeded_exception().
+
+-type update_service_settings_errors() ::
+    server_internal_exception() | 
+    access_denied_exception() | 
+    authorization_exception() | 
+    invalid_parameter_value_exception() | 
+    rate_limit_exceeded_exception().
 
 %%====================================================================
 %% API
@@ -1391,13 +1818,7 @@
 -spec accept_grant(map(), accept_grant_request()) ->
     {ok, accept_grant_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, accept_grant_errors(), tuple()}.
 accept_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_grant(Client, Input, []).
@@ -1405,13 +1826,7 @@ accept_grant(Client, Input)
 -spec accept_grant(map(), accept_grant_request(), proplists:proplist()) ->
     {ok, accept_grant_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, accept_grant_errors(), tuple()}.
 accept_grant(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcceptGrant">>, Input, Options).
@@ -1422,14 +1837,7 @@ accept_grant(Client, Input, Options)
 -spec check_in_license(map(), check_in_license_request()) ->
     {ok, check_in_license_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, check_in_license_errors(), tuple()}.
 check_in_license(Client, Input)
   when is_map(Client), is_map(Input) ->
     check_in_license(Client, Input, []).
@@ -1437,14 +1845,7 @@ check_in_license(Client, Input)
 -spec check_in_license(map(), check_in_license_request(), proplists:proplist()) ->
     {ok, check_in_license_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, check_in_license_errors(), tuple()}.
 check_in_license(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CheckInLicense">>, Input, Options).
@@ -1453,17 +1854,7 @@ check_in_license(Client, Input, Options)
 -spec checkout_borrow_license(map(), checkout_borrow_license_request()) ->
     {ok, checkout_borrow_license_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, entitlement_not_allowed_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_entitlements_allowed_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, redirect_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, unsupported_digital_signature_method_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, checkout_borrow_license_errors(), tuple()}.
 checkout_borrow_license(Client, Input)
   when is_map(Client), is_map(Input) ->
     checkout_borrow_license(Client, Input, []).
@@ -1471,17 +1862,7 @@ checkout_borrow_license(Client, Input)
 -spec checkout_borrow_license(map(), checkout_borrow_license_request(), proplists:proplist()) ->
     {ok, checkout_borrow_license_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, entitlement_not_allowed_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_entitlements_allowed_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, redirect_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, unsupported_digital_signature_method_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, checkout_borrow_license_errors(), tuple()}.
 checkout_borrow_license(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CheckoutBorrowLicense">>, Input, Options).
@@ -1494,16 +1875,7 @@ checkout_borrow_license(Client, Input, Options)
 -spec checkout_license(map(), checkout_license_request()) ->
     {ok, checkout_license_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_entitlements_allowed_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, redirect_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, unsupported_digital_signature_method_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, checkout_license_errors(), tuple()}.
 checkout_license(Client, Input)
   when is_map(Client), is_map(Input) ->
     checkout_license(Client, Input, []).
@@ -1511,16 +1883,7 @@ checkout_license(Client, Input)
 -spec checkout_license(map(), checkout_license_request(), proplists:proplist()) ->
     {ok, checkout_license_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_entitlements_allowed_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, redirect_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, unsupported_digital_signature_method_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, checkout_license_errors(), tuple()}.
 checkout_license(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CheckoutLicense">>, Input, Options).
@@ -1537,13 +1900,7 @@ checkout_license(Client, Input, Options)
 -spec create_grant(map(), create_grant_request()) ->
     {ok, create_grant_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_grant_errors(), tuple()}.
 create_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_grant(Client, Input, []).
@@ -1551,13 +1908,7 @@ create_grant(Client, Input)
 -spec create_grant(map(), create_grant_request(), proplists:proplist()) ->
     {ok, create_grant_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_grant_errors(), tuple()}.
 create_grant(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGrant">>, Input, Options).
@@ -1571,13 +1922,7 @@ create_grant(Client, Input, Options)
 -spec create_grant_version(map(), create_grant_version_request()) ->
     {ok, create_grant_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_grant_version_errors(), tuple()}.
 create_grant_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_grant_version(Client, Input, []).
@@ -1585,13 +1930,7 @@ create_grant_version(Client, Input)
 -spec create_grant_version(map(), create_grant_version_request(), proplists:proplist()) ->
     {ok, create_grant_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_grant_version_errors(), tuple()}.
 create_grant_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGrantVersion">>, Input, Options).
@@ -1600,13 +1939,7 @@ create_grant_version(Client, Input, Options)
 -spec create_license(map(), create_license_request()) ->
     {ok, create_license_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, redirect_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_license_errors(), tuple()}.
 create_license(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_license(Client, Input, []).
@@ -1614,13 +1947,7 @@ create_license(Client, Input)
 -spec create_license(map(), create_license_request(), proplists:proplist()) ->
     {ok, create_license_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, redirect_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_license_errors(), tuple()}.
 create_license(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLicense">>, Input, Options).
@@ -1640,12 +1967,7 @@ create_license(Client, Input, Options)
 -spec create_license_configuration(map(), create_license_configuration_request()) ->
     {ok, create_license_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, create_license_configuration_errors(), tuple()}.
 create_license_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_license_configuration(Client, Input, []).
@@ -1653,12 +1975,7 @@ create_license_configuration(Client, Input)
 -spec create_license_configuration(map(), create_license_configuration_request(), proplists:proplist()) ->
     {ok, create_license_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, create_license_configuration_errors(), tuple()}.
 create_license_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLicenseConfiguration">>, Input, Options).
@@ -1667,12 +1984,7 @@ create_license_configuration(Client, Input, Options)
 -spec create_license_conversion_task_for_resource(map(), create_license_conversion_task_for_resource_request()) ->
     {ok, create_license_conversion_task_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_license_conversion_task_for_resource_errors(), tuple()}.
 create_license_conversion_task_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_license_conversion_task_for_resource(Client, Input, []).
@@ -1680,12 +1992,7 @@ create_license_conversion_task_for_resource(Client, Input)
 -spec create_license_conversion_task_for_resource(map(), create_license_conversion_task_for_resource_request(), proplists:proplist()) ->
     {ok, create_license_conversion_task_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_license_conversion_task_for_resource_errors(), tuple()}.
 create_license_conversion_task_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLicenseConversionTaskForResource">>, Input, Options).
@@ -1694,14 +2001,7 @@ create_license_conversion_task_for_resource(Client, Input, Options)
 -spec create_license_manager_report_generator(map(), create_license_manager_report_generator_request()) ->
     {ok, create_license_manager_report_generator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_license_manager_report_generator_errors(), tuple()}.
 create_license_manager_report_generator(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_license_manager_report_generator(Client, Input, []).
@@ -1709,14 +2009,7 @@ create_license_manager_report_generator(Client, Input)
 -spec create_license_manager_report_generator(map(), create_license_manager_report_generator_request(), proplists:proplist()) ->
     {ok, create_license_manager_report_generator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_license_manager_report_generator_errors(), tuple()}.
 create_license_manager_report_generator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLicenseManagerReportGenerator">>, Input, Options).
@@ -1725,14 +2018,7 @@ create_license_manager_report_generator(Client, Input, Options)
 -spec create_license_version(map(), create_license_version_request()) ->
     {ok, create_license_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, redirect_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_license_version_errors(), tuple()}.
 create_license_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_license_version(Client, Input, []).
@@ -1740,14 +2026,7 @@ create_license_version(Client, Input)
 -spec create_license_version(map(), create_license_version_request(), proplists:proplist()) ->
     {ok, create_license_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, redirect_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_license_version_errors(), tuple()}.
 create_license_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLicenseVersion">>, Input, Options).
@@ -1762,14 +2041,7 @@ create_license_version(Client, Input, Options)
 -spec create_token(map(), create_token_request()) ->
     {ok, create_token_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, redirect_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_token_errors(), tuple()}.
 create_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_token(Client, Input, []).
@@ -1777,14 +2049,7 @@ create_token(Client, Input)
 -spec create_token(map(), create_token_request(), proplists:proplist()) ->
     {ok, create_token_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, redirect_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_token_errors(), tuple()}.
 create_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateToken">>, Input, Options).
@@ -1793,13 +2058,7 @@ create_token(Client, Input, Options)
 -spec delete_grant(map(), delete_grant_request()) ->
     {ok, delete_grant_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_grant_errors(), tuple()}.
 delete_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_grant(Client, Input, []).
@@ -1807,13 +2066,7 @@ delete_grant(Client, Input)
 -spec delete_grant(map(), delete_grant_request(), proplists:proplist()) ->
     {ok, delete_grant_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_grant_errors(), tuple()}.
 delete_grant(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGrant">>, Input, Options).
@@ -1822,14 +2075,7 @@ delete_grant(Client, Input, Options)
 -spec delete_license(map(), delete_license_request()) ->
     {ok, delete_license_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, redirect_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_license_errors(), tuple()}.
 delete_license(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_license(Client, Input, []).
@@ -1837,14 +2083,7 @@ delete_license(Client, Input)
 -spec delete_license(map(), delete_license_request(), proplists:proplist()) ->
     {ok, delete_license_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, redirect_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_license_errors(), tuple()}.
 delete_license(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLicense">>, Input, Options).
@@ -1855,11 +2094,7 @@ delete_license(Client, Input, Options)
 -spec delete_license_configuration(map(), delete_license_configuration_request()) ->
     {ok, delete_license_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, delete_license_configuration_errors(), tuple()}.
 delete_license_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_license_configuration(Client, Input, []).
@@ -1867,11 +2102,7 @@ delete_license_configuration(Client, Input)
 -spec delete_license_configuration(map(), delete_license_configuration_request(), proplists:proplist()) ->
     {ok, delete_license_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, delete_license_configuration_errors(), tuple()}.
 delete_license_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLicenseConfiguration">>, Input, Options).
@@ -1885,14 +2116,7 @@ delete_license_configuration(Client, Input, Options)
 -spec delete_license_manager_report_generator(map(), delete_license_manager_report_generator_request()) ->
     {ok, delete_license_manager_report_generator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_license_manager_report_generator_errors(), tuple()}.
 delete_license_manager_report_generator(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_license_manager_report_generator(Client, Input, []).
@@ -1900,14 +2124,7 @@ delete_license_manager_report_generator(Client, Input)
 -spec delete_license_manager_report_generator(map(), delete_license_manager_report_generator_request(), proplists:proplist()) ->
     {ok, delete_license_manager_report_generator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_license_manager_report_generator_errors(), tuple()}.
 delete_license_manager_report_generator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLicenseManagerReportGenerator">>, Input, Options).
@@ -1918,13 +2135,7 @@ delete_license_manager_report_generator(Client, Input, Options)
 -spec delete_token(map(), delete_token_request()) ->
     {ok, delete_token_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, redirect_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_token_errors(), tuple()}.
 delete_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_token(Client, Input, []).
@@ -1932,13 +2143,7 @@ delete_token(Client, Input)
 -spec delete_token(map(), delete_token_request(), proplists:proplist()) ->
     {ok, delete_token_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, redirect_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_token_errors(), tuple()}.
 delete_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteToken">>, Input, Options).
@@ -1947,13 +2152,7 @@ delete_token(Client, Input, Options)
 -spec extend_license_consumption(map(), extend_license_consumption_request()) ->
     {ok, extend_license_consumption_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, extend_license_consumption_errors(), tuple()}.
 extend_license_consumption(Client, Input)
   when is_map(Client), is_map(Input) ->
     extend_license_consumption(Client, Input, []).
@@ -1961,13 +2160,7 @@ extend_license_consumption(Client, Input)
 -spec extend_license_consumption(map(), extend_license_consumption_request(), proplists:proplist()) ->
     {ok, extend_license_consumption_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, extend_license_consumption_errors(), tuple()}.
 extend_license_consumption(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExtendLicenseConsumption">>, Input, Options).
@@ -1979,11 +2172,7 @@ extend_license_consumption(Client, Input, Options)
 -spec get_access_token(map(), get_access_token_request()) ->
     {ok, get_access_token_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_access_token_errors(), tuple()}.
 get_access_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_access_token(Client, Input, []).
@@ -1991,11 +2180,7 @@ get_access_token(Client, Input)
 -spec get_access_token(map(), get_access_token_request(), proplists:proplist()) ->
     {ok, get_access_token_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_access_token_errors(), tuple()}.
 get_access_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAccessToken">>, Input, Options).
@@ -2004,13 +2189,7 @@ get_access_token(Client, Input, Options)
 -spec get_grant(map(), get_grant_request()) ->
     {ok, get_grant_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_grant_errors(), tuple()}.
 get_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_grant(Client, Input, []).
@@ -2018,13 +2197,7 @@ get_grant(Client, Input)
 -spec get_grant(map(), get_grant_request(), proplists:proplist()) ->
     {ok, get_grant_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_grant_errors(), tuple()}.
 get_grant(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetGrant">>, Input, Options).
@@ -2033,12 +2206,7 @@ get_grant(Client, Input, Options)
 -spec get_license(map(), get_license_request()) ->
     {ok, get_license_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_license_errors(), tuple()}.
 get_license(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_license(Client, Input, []).
@@ -2046,12 +2214,7 @@ get_license(Client, Input)
 -spec get_license(map(), get_license_request(), proplists:proplist()) ->
     {ok, get_license_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_license_errors(), tuple()}.
 get_license(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLicense">>, Input, Options).
@@ -2060,11 +2223,7 @@ get_license(Client, Input, Options)
 -spec get_license_configuration(map(), get_license_configuration_request()) ->
     {ok, get_license_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, get_license_configuration_errors(), tuple()}.
 get_license_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_license_configuration(Client, Input, []).
@@ -2072,11 +2231,7 @@ get_license_configuration(Client, Input)
 -spec get_license_configuration(map(), get_license_configuration_request(), proplists:proplist()) ->
     {ok, get_license_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, get_license_configuration_errors(), tuple()}.
 get_license_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLicenseConfiguration">>, Input, Options).
@@ -2085,11 +2240,7 @@ get_license_configuration(Client, Input, Options)
 -spec get_license_conversion_task(map(), get_license_conversion_task_request()) ->
     {ok, get_license_conversion_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, get_license_conversion_task_errors(), tuple()}.
 get_license_conversion_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_license_conversion_task(Client, Input, []).
@@ -2097,11 +2248,7 @@ get_license_conversion_task(Client, Input)
 -spec get_license_conversion_task(map(), get_license_conversion_task_request(), proplists:proplist()) ->
     {ok, get_license_conversion_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, get_license_conversion_task_errors(), tuple()}.
 get_license_conversion_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLicenseConversionTask">>, Input, Options).
@@ -2110,14 +2257,7 @@ get_license_conversion_task(Client, Input, Options)
 -spec get_license_manager_report_generator(map(), get_license_manager_report_generator_request()) ->
     {ok, get_license_manager_report_generator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_license_manager_report_generator_errors(), tuple()}.
 get_license_manager_report_generator(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_license_manager_report_generator(Client, Input, []).
@@ -2125,14 +2265,7 @@ get_license_manager_report_generator(Client, Input)
 -spec get_license_manager_report_generator(map(), get_license_manager_report_generator_request(), proplists:proplist()) ->
     {ok, get_license_manager_report_generator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_license_manager_report_generator_errors(), tuple()}.
 get_license_manager_report_generator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLicenseManagerReportGenerator">>, Input, Options).
@@ -2141,12 +2274,7 @@ get_license_manager_report_generator(Client, Input, Options)
 -spec get_license_usage(map(), get_license_usage_request()) ->
     {ok, get_license_usage_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_license_usage_errors(), tuple()}.
 get_license_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_license_usage(Client, Input, []).
@@ -2154,12 +2282,7 @@ get_license_usage(Client, Input)
 -spec get_license_usage(map(), get_license_usage_request(), proplists:proplist()) ->
     {ok, get_license_usage_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_license_usage_errors(), tuple()}.
 get_license_usage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLicenseUsage">>, Input, Options).
@@ -2168,10 +2291,7 @@ get_license_usage(Client, Input, Options)
 -spec get_service_settings(map(), get_service_settings_request()) ->
     {ok, get_service_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, get_service_settings_errors(), tuple()}.
 get_service_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_settings(Client, Input, []).
@@ -2179,10 +2299,7 @@ get_service_settings(Client, Input)
 -spec get_service_settings(map(), get_service_settings_request(), proplists:proplist()) ->
     {ok, get_service_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, get_service_settings_errors(), tuple()}.
 get_service_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServiceSettings">>, Input, Options).
@@ -2198,12 +2315,7 @@ get_service_settings(Client, Input, Options)
 -spec list_associations_for_license_configuration(map(), list_associations_for_license_configuration_request()) ->
     {ok, list_associations_for_license_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, filter_limit_exceeded_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, list_associations_for_license_configuration_errors(), tuple()}.
 list_associations_for_license_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_associations_for_license_configuration(Client, Input, []).
@@ -2211,12 +2323,7 @@ list_associations_for_license_configuration(Client, Input)
 -spec list_associations_for_license_configuration(map(), list_associations_for_license_configuration_request(), proplists:proplist()) ->
     {ok, list_associations_for_license_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, filter_limit_exceeded_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, list_associations_for_license_configuration_errors(), tuple()}.
 list_associations_for_license_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAssociationsForLicenseConfiguration">>, Input, Options).
@@ -2225,13 +2332,7 @@ list_associations_for_license_configuration(Client, Input, Options)
 -spec list_distributed_grants(map(), list_distributed_grants_request()) ->
     {ok, list_distributed_grants_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_distributed_grants_errors(), tuple()}.
 list_distributed_grants(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_distributed_grants(Client, Input, []).
@@ -2239,13 +2340,7 @@ list_distributed_grants(Client, Input)
 -spec list_distributed_grants(map(), list_distributed_grants_request(), proplists:proplist()) ->
     {ok, list_distributed_grants_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_distributed_grants_errors(), tuple()}.
 list_distributed_grants(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDistributedGrants">>, Input, Options).
@@ -2254,11 +2349,7 @@ list_distributed_grants(Client, Input, Options)
 -spec list_failures_for_license_configuration_operations(map(), list_failures_for_license_configuration_operations_request()) ->
     {ok, list_failures_for_license_configuration_operations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, list_failures_for_license_configuration_operations_errors(), tuple()}.
 list_failures_for_license_configuration_operations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_failures_for_license_configuration_operations(Client, Input, []).
@@ -2266,11 +2357,7 @@ list_failures_for_license_configuration_operations(Client, Input)
 -spec list_failures_for_license_configuration_operations(map(), list_failures_for_license_configuration_operations_request(), proplists:proplist()) ->
     {ok, list_failures_for_license_configuration_operations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, list_failures_for_license_configuration_operations_errors(), tuple()}.
 list_failures_for_license_configuration_operations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFailuresForLicenseConfigurationOperations">>, Input, Options).
@@ -2279,12 +2366,7 @@ list_failures_for_license_configuration_operations(Client, Input, Options)
 -spec list_license_configurations(map(), list_license_configurations_request()) ->
     {ok, list_license_configurations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, filter_limit_exceeded_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, list_license_configurations_errors(), tuple()}.
 list_license_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_license_configurations(Client, Input, []).
@@ -2292,12 +2374,7 @@ list_license_configurations(Client, Input)
 -spec list_license_configurations(map(), list_license_configurations_request(), proplists:proplist()) ->
     {ok, list_license_configurations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, filter_limit_exceeded_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, list_license_configurations_errors(), tuple()}.
 list_license_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLicenseConfigurations">>, Input, Options).
@@ -2306,11 +2383,7 @@ list_license_configurations(Client, Input, Options)
 -spec list_license_conversion_tasks(map(), list_license_conversion_tasks_request()) ->
     {ok, list_license_conversion_tasks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, list_license_conversion_tasks_errors(), tuple()}.
 list_license_conversion_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_license_conversion_tasks(Client, Input, []).
@@ -2318,11 +2391,7 @@ list_license_conversion_tasks(Client, Input)
 -spec list_license_conversion_tasks(map(), list_license_conversion_tasks_request(), proplists:proplist()) ->
     {ok, list_license_conversion_tasks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, list_license_conversion_tasks_errors(), tuple()}.
 list_license_conversion_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLicenseConversionTasks">>, Input, Options).
@@ -2331,14 +2400,7 @@ list_license_conversion_tasks(Client, Input, Options)
 -spec list_license_manager_report_generators(map(), list_license_manager_report_generators_request()) ->
     {ok, list_license_manager_report_generators_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_license_manager_report_generators_errors(), tuple()}.
 list_license_manager_report_generators(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_license_manager_report_generators(Client, Input, []).
@@ -2346,14 +2408,7 @@ list_license_manager_report_generators(Client, Input)
 -spec list_license_manager_report_generators(map(), list_license_manager_report_generators_request(), proplists:proplist()) ->
     {ok, list_license_manager_report_generators_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_license_manager_report_generators_errors(), tuple()}.
 list_license_manager_report_generators(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLicenseManagerReportGenerators">>, Input, Options).
@@ -2362,11 +2417,7 @@ list_license_manager_report_generators(Client, Input, Options)
 -spec list_license_specifications_for_resource(map(), list_license_specifications_for_resource_request()) ->
     {ok, list_license_specifications_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, list_license_specifications_for_resource_errors(), tuple()}.
 list_license_specifications_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_license_specifications_for_resource(Client, Input, []).
@@ -2374,11 +2425,7 @@ list_license_specifications_for_resource(Client, Input)
 -spec list_license_specifications_for_resource(map(), list_license_specifications_for_resource_request(), proplists:proplist()) ->
     {ok, list_license_specifications_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, list_license_specifications_for_resource_errors(), tuple()}.
 list_license_specifications_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLicenseSpecificationsForResource">>, Input, Options).
@@ -2387,11 +2434,7 @@ list_license_specifications_for_resource(Client, Input, Options)
 -spec list_license_versions(map(), list_license_versions_request()) ->
     {ok, list_license_versions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, list_license_versions_errors(), tuple()}.
 list_license_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_license_versions(Client, Input, []).
@@ -2399,11 +2442,7 @@ list_license_versions(Client, Input)
 -spec list_license_versions(map(), list_license_versions_request(), proplists:proplist()) ->
     {ok, list_license_versions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, list_license_versions_errors(), tuple()}.
 list_license_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLicenseVersions">>, Input, Options).
@@ -2412,12 +2451,7 @@ list_license_versions(Client, Input, Options)
 -spec list_licenses(map(), list_licenses_request()) ->
     {ok, list_licenses_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_licenses_errors(), tuple()}.
 list_licenses(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_licenses(Client, Input, []).
@@ -2425,12 +2459,7 @@ list_licenses(Client, Input)
 -spec list_licenses(map(), list_licenses_request(), proplists:proplist()) ->
     {ok, list_licenses_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_licenses_errors(), tuple()}.
 list_licenses(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLicenses">>, Input, Options).
@@ -2444,13 +2473,7 @@ list_licenses(Client, Input, Options)
 -spec list_received_grants(map(), list_received_grants_request()) ->
     {ok, list_received_grants_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_received_grants_errors(), tuple()}.
 list_received_grants(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_received_grants(Client, Input, []).
@@ -2458,13 +2481,7 @@ list_received_grants(Client, Input)
 -spec list_received_grants(map(), list_received_grants_request(), proplists:proplist()) ->
     {ok, list_received_grants_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_received_grants_errors(), tuple()}.
 list_received_grants(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListReceivedGrants">>, Input, Options).
@@ -2473,13 +2490,7 @@ list_received_grants(Client, Input, Options)
 -spec list_received_grants_for_organization(map(), list_received_grants_for_organization_request()) ->
     {ok, list_received_grants_for_organization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_received_grants_for_organization_errors(), tuple()}.
 list_received_grants_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_received_grants_for_organization(Client, Input, []).
@@ -2487,13 +2498,7 @@ list_received_grants_for_organization(Client, Input)
 -spec list_received_grants_for_organization(map(), list_received_grants_for_organization_request(), proplists:proplist()) ->
     {ok, list_received_grants_for_organization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_received_grants_for_organization_errors(), tuple()}.
 list_received_grants_for_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListReceivedGrantsForOrganization">>, Input, Options).
@@ -2502,13 +2507,7 @@ list_received_grants_for_organization(Client, Input, Options)
 -spec list_received_licenses(map(), list_received_licenses_request()) ->
     {ok, list_received_licenses_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_received_licenses_errors(), tuple()}.
 list_received_licenses(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_received_licenses(Client, Input, []).
@@ -2516,13 +2515,7 @@ list_received_licenses(Client, Input)
 -spec list_received_licenses(map(), list_received_licenses_request(), proplists:proplist()) ->
     {ok, list_received_licenses_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_received_licenses_errors(), tuple()}.
 list_received_licenses(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListReceivedLicenses">>, Input, Options).
@@ -2531,13 +2524,7 @@ list_received_licenses(Client, Input, Options)
 -spec list_received_licenses_for_organization(map(), list_received_licenses_for_organization_request()) ->
     {ok, list_received_licenses_for_organization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_received_licenses_for_organization_errors(), tuple()}.
 list_received_licenses_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_received_licenses_for_organization(Client, Input, []).
@@ -2545,13 +2532,7 @@ list_received_licenses_for_organization(Client, Input)
 -spec list_received_licenses_for_organization(map(), list_received_licenses_for_organization_request(), proplists:proplist()) ->
     {ok, list_received_licenses_for_organization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_received_licenses_for_organization_errors(), tuple()}.
 list_received_licenses_for_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListReceivedLicensesForOrganization">>, Input, Options).
@@ -2560,13 +2541,7 @@ list_received_licenses_for_organization(Client, Input, Options)
 -spec list_resource_inventory(map(), list_resource_inventory_request()) ->
     {ok, list_resource_inventory_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, failed_dependency_exception(), tuple()} |
-    {error, filter_limit_exceeded_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, list_resource_inventory_errors(), tuple()}.
 list_resource_inventory(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_inventory(Client, Input, []).
@@ -2574,13 +2549,7 @@ list_resource_inventory(Client, Input)
 -spec list_resource_inventory(map(), list_resource_inventory_request(), proplists:proplist()) ->
     {ok, list_resource_inventory_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, failed_dependency_exception(), tuple()} |
-    {error, filter_limit_exceeded_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, list_resource_inventory_errors(), tuple()}.
 list_resource_inventory(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResourceInventory">>, Input, Options).
@@ -2589,11 +2558,7 @@ list_resource_inventory(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -2601,11 +2566,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -2614,11 +2575,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec list_tokens(map(), list_tokens_request()) ->
     {ok, list_tokens_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tokens_errors(), tuple()}.
 list_tokens(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tokens(Client, Input, []).
@@ -2626,11 +2583,7 @@ list_tokens(Client, Input)
 -spec list_tokens(map(), list_tokens_request(), proplists:proplist()) ->
     {ok, list_tokens_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tokens_errors(), tuple()}.
 list_tokens(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTokens">>, Input, Options).
@@ -2644,12 +2597,7 @@ list_tokens(Client, Input, Options)
 -spec list_usage_for_license_configuration(map(), list_usage_for_license_configuration_request()) ->
     {ok, list_usage_for_license_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, filter_limit_exceeded_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, list_usage_for_license_configuration_errors(), tuple()}.
 list_usage_for_license_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_usage_for_license_configuration(Client, Input, []).
@@ -2657,12 +2605,7 @@ list_usage_for_license_configuration(Client, Input)
 -spec list_usage_for_license_configuration(map(), list_usage_for_license_configuration_request(), proplists:proplist()) ->
     {ok, list_usage_for_license_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, filter_limit_exceeded_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, list_usage_for_license_configuration_errors(), tuple()}.
 list_usage_for_license_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUsageForLicenseConfiguration">>, Input, Options).
@@ -2671,13 +2614,7 @@ list_usage_for_license_configuration(Client, Input, Options)
 -spec reject_grant(map(), reject_grant_request()) ->
     {ok, reject_grant_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, reject_grant_errors(), tuple()}.
 reject_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     reject_grant(Client, Input, []).
@@ -2685,13 +2622,7 @@ reject_grant(Client, Input)
 -spec reject_grant(map(), reject_grant_request(), proplists:proplist()) ->
     {ok, reject_grant_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, reject_grant_errors(), tuple()}.
 reject_grant(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RejectGrant">>, Input, Options).
@@ -2700,11 +2631,7 @@ reject_grant(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -2712,11 +2639,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -2725,11 +2648,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -2737,11 +2656,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -2750,12 +2665,7 @@ untag_resource(Client, Input, Options)
 -spec update_license_configuration(map(), update_license_configuration_request()) ->
     {ok, update_license_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, update_license_configuration_errors(), tuple()}.
 update_license_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_license_configuration(Client, Input, []).
@@ -2763,12 +2673,7 @@ update_license_configuration(Client, Input)
 -spec update_license_configuration(map(), update_license_configuration_request(), proplists:proplist()) ->
     {ok, update_license_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, update_license_configuration_errors(), tuple()}.
 update_license_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLicenseConfiguration">>, Input, Options).
@@ -2780,14 +2685,7 @@ update_license_configuration(Client, Input, Options)
 -spec update_license_manager_report_generator(map(), update_license_manager_report_generator_request()) ->
     {ok, update_license_manager_report_generator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_license_manager_report_generator_errors(), tuple()}.
 update_license_manager_report_generator(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_license_manager_report_generator(Client, Input, []).
@@ -2795,14 +2693,7 @@ update_license_manager_report_generator(Client, Input)
 -spec update_license_manager_report_generator(map(), update_license_manager_report_generator_request(), proplists:proplist()) ->
     {ok, update_license_manager_report_generator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_license_manager_report_generator_errors(), tuple()}.
 update_license_manager_report_generator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLicenseManagerReportGenerator">>, Input, Options).
@@ -2818,13 +2709,7 @@ update_license_manager_report_generator(Client, Input, Options)
 -spec update_license_specifications_for_resource(map(), update_license_specifications_for_resource_request()) ->
     {ok, update_license_specifications_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, license_usage_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, update_license_specifications_for_resource_errors(), tuple()}.
 update_license_specifications_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_license_specifications_for_resource(Client, Input, []).
@@ -2832,13 +2717,7 @@ update_license_specifications_for_resource(Client, Input)
 -spec update_license_specifications_for_resource(map(), update_license_specifications_for_resource_request(), proplists:proplist()) ->
     {ok, update_license_specifications_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, license_usage_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, update_license_specifications_for_resource_errors(), tuple()}.
 update_license_specifications_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLicenseSpecificationsForResource">>, Input, Options).
@@ -2847,11 +2726,7 @@ update_license_specifications_for_resource(Client, Input, Options)
 -spec update_service_settings(map(), update_service_settings_request()) ->
     {ok, update_service_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, update_service_settings_errors(), tuple()}.
 update_service_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service_settings(Client, Input, []).
@@ -2859,11 +2734,7 @@ update_service_settings(Client, Input)
 -spec update_service_settings(map(), update_service_settings_request(), proplists:proplist()) ->
     {ok, update_service_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, rate_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()}.
+    {error, update_service_settings_errors(), tuple()}.
 update_service_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateServiceSettings">>, Input, Options).

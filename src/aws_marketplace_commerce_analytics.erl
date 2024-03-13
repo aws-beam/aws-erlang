@@ -54,6 +54,11 @@
 %% }
 -type start_support_data_export_result() :: #{binary() => any()}.
 
+-type generate_data_set_errors() ::
+    marketplace_commerce_analytics_exception().
+
+-type start_support_data_export_errors() ::
+    marketplace_commerce_analytics_exception().
 
 %%====================================================================
 %% API
@@ -77,7 +82,7 @@
 -spec generate_data_set(map(), generate_data_set_request()) ->
     {ok, generate_data_set_result(), tuple()} |
     {error, any()} |
-    {error, marketplace_commerce_analytics_exception(), tuple()}.
+    {error, generate_data_set_errors(), tuple()}.
 generate_data_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_data_set(Client, Input, []).
@@ -85,7 +90,7 @@ generate_data_set(Client, Input)
 -spec generate_data_set(map(), generate_data_set_request(), proplists:proplist()) ->
     {ok, generate_data_set_result(), tuple()} |
     {error, any()} |
-    {error, marketplace_commerce_analytics_exception(), tuple()}.
+    {error, generate_data_set_errors(), tuple()}.
 generate_data_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GenerateDataSet">>, Input, Options).
@@ -111,7 +116,7 @@ generate_data_set(Client, Input, Options)
 -spec start_support_data_export(map(), start_support_data_export_request()) ->
     {ok, start_support_data_export_result(), tuple()} |
     {error, any()} |
-    {error, marketplace_commerce_analytics_exception(), tuple()}.
+    {error, start_support_data_export_errors(), tuple()}.
 start_support_data_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_support_data_export(Client, Input, []).
@@ -119,7 +124,7 @@ start_support_data_export(Client, Input)
 -spec start_support_data_export(map(), start_support_data_export_request(), proplists:proplist()) ->
     {ok, start_support_data_export_result(), tuple()} |
     {error, any()} |
-    {error, marketplace_commerce_analytics_exception(), tuple()}.
+    {error, start_support_data_export_errors(), tuple()}.
 start_support_data_export(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartSupportDataExport">>, Input, Options).

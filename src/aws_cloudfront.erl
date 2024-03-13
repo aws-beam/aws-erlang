@@ -297,6 +297,7 @@
 %% }
 -type response_headers_policy_in_use() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalidation_summary() :: #{
 %%   <<"CreateTime">> => non_neg_integer(),
@@ -305,11 +306,13 @@
 %% }
 -type invalidation_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_origin_access_controls() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_origin_access_controls() :: #{binary() => any()}.
+
 
 %% Example:
 %% realtime_metrics_subscription_config() :: #{
@@ -317,11 +320,13 @@
 %% }
 -type realtime_metrics_subscription_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% key_value_store_association() :: #{
 %%   <<"KeyValueStoreARN">> => string()
 %% }
 -type key_value_store_association() :: #{binary() => any()}.
+
 
 %% Example:
 %% signer() :: #{
@@ -330,6 +335,7 @@
 %% }
 -type signer() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_cache_policy_request() :: #{
 %%   <<"CachePolicyConfig">> := cache_policy_config(),
@@ -337,17 +343,20 @@
 %% }
 -type update_cache_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_response_headers_policies_result() :: #{
 %%   <<"ResponseHeadersPolicyList">> => response_headers_policy_list()
 %% }
 -type list_response_headers_policies_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% cloud_front_origin_access_identity_already_exists() :: #{
 %%   <<"Message">> => string()
 %% }
 -type cloud_front_origin_access_identity_already_exists() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_realtime_log_configs_request() :: #{
@@ -356,11 +365,13 @@
 %% }
 -type list_realtime_log_configs_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_origin_groups_per_distribution() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_origin_groups_per_distribution() :: #{binary() => any()}.
+
 
 %% Example:
 %% end_point() :: #{
@@ -369,6 +380,7 @@
 %% }
 -type end_point() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_response_headers_policy_result() :: #{
 %%   <<"ETag">> => string(),
@@ -376,11 +388,13 @@
 %% }
 -type update_response_headers_policy_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% streaming_distribution_not_disabled() :: #{
 %%   <<"Message">> => string()
 %% }
 -type streaming_distribution_not_disabled() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_realtime_log_config_request() :: #{
@@ -389,11 +403,13 @@
 %% }
 -type delete_realtime_log_config_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_origin_request_policies_result() :: #{
 %%   <<"OriginRequestPolicyList">> => origin_request_policy_list()
 %% }
 -type list_origin_request_policies_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% cannot_change_immutable_public_key_fields() :: #{
@@ -401,17 +417,20 @@
 %% }
 -type cannot_change_immutable_public_key_fields() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_function_associations() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_function_associations() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_origin_access_identity() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_origin_access_identity() :: #{binary() => any()}.
+
 
 %% Example:
 %% forwarded_values() :: #{
@@ -422,11 +441,13 @@
 %% }
 -type forwarded_values() :: #{binary() => any()}.
 
+
 %% Example:
 %% distribution_not_disabled() :: #{
 %%   <<"Message">> => string()
 %% }
 -type distribution_not_disabled() :: #{binary() => any()}.
+
 
 %% Example:
 %% tag_resource_request() :: #{
@@ -434,6 +455,7 @@
 %%   <<"Tags">> := tags()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% realtime_log_configs() :: #{
@@ -445,14 +467,17 @@
 %% }
 -type realtime_log_configs() :: #{binary() => any()}.
 
+
 %% Example:
 %% no_such_continuous_deployment_policy() :: #{
 %%   <<"Message">> => string()
 %% }
 -type no_such_continuous_deployment_policy() :: #{binary() => any()}.
+
 %% Example:
 %% get_continuous_deployment_policy_request() :: #{}
 -type get_continuous_deployment_policy_request() :: #{}.
+
 
 %% Example:
 %% update_key_group_result() :: #{
@@ -461,11 +486,13 @@
 %% }
 -type update_key_group_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_custom_headers_in_response_headers_policy() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_custom_headers_in_response_headers_policy() :: #{binary() => any()}.
+
 
 %% Example:
 %% too_many_response_headers_policies() :: #{
@@ -473,11 +500,13 @@
 %% }
 -type too_many_response_headers_policies() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_cookies_in_cache_policy() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_cookies_in_cache_policy() :: #{binary() => any()}.
+
 
 %% Example:
 %% too_many_invalidations_in_progress() :: #{
@@ -485,15 +514,18 @@
 %% }
 -type too_many_invalidations_in_progress() :: #{binary() => any()}.
 
+
 %% Example:
 %% status_codes() :: #{
 %%   <<"Items">> => list(integer()()),
 %%   <<"Quantity">> => integer()
 %% }
 -type status_codes() :: #{binary() => any()}.
+
 %% Example:
 %% get_streaming_distribution_config_request() :: #{}
 -type get_streaming_distribution_config_request() :: #{}.
+
 
 %% Example:
 %% lambda_function_associations() :: #{
@@ -502,17 +534,20 @@
 %% }
 -type lambda_function_associations() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_continuous_deployment_policies() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_continuous_deployment_policies() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_long_c_s_p_in_response_headers_policy() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_long_c_s_p_in_response_headers_policy() :: #{binary() => any()}.
+
 
 %% Example:
 %% field_level_encryption_summary() :: #{
@@ -524,14 +559,17 @@
 %% }
 -type field_level_encryption_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% query_arg_profile_empty() :: #{
 %%   <<"Message">> => string()
 %% }
 -type query_arg_profile_empty() :: #{binary() => any()}.
+
 %% Example:
 %% get_origin_request_policy_request() :: #{}
 -type get_origin_request_policy_request() :: #{}.
+
 
 %% Example:
 %% distribution_config_with_tags() :: #{
@@ -539,6 +577,7 @@
 %%   <<"Tags">> => tags()
 %% }
 -type distribution_config_with_tags() :: #{binary() => any()}.
+
 
 %% Example:
 %% copy_distribution_result() :: #{
@@ -548,29 +587,35 @@
 %% }
 -type copy_distribution_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_origin_request_policy_request() :: #{
 %%   <<"IfMatch">> => string()
 %% }
 -type delete_origin_request_policy_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_cloud_front_origin_access_identity_request() :: #{}
 -type get_cloud_front_origin_access_identity_request() :: #{}.
+
 
 %% Example:
 %% illegal_origin_access_configuration() :: #{
 %%   <<"Message">> => string()
 %% }
 -type illegal_origin_access_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% get_field_level_encryption_profile_request() :: #{}
 -type get_field_level_encryption_profile_request() :: #{}.
+
 
 %% Example:
 %% invalid_if_match_version() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_if_match_version() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_origin_request_policy_result() :: #{
@@ -579,11 +624,13 @@
 %% }
 -type update_origin_request_policy_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_field_level_encryption_profile_request() :: #{
 %%   <<"FieldLevelEncryptionProfileConfig">> := field_level_encryption_profile_config()
 %% }
 -type create_field_level_encryption_profile_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% too_many_distributions_associated_to_cache_policy() :: #{
@@ -591,11 +638,13 @@
 %% }
 -type too_many_distributions_associated_to_cache_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% trusted_key_group_does_not_exist() :: #{
 %%   <<"Message">> => string()
 %% }
 -type trusted_key_group_does_not_exist() :: #{binary() => any()}.
+
 
 %% Example:
 %% continuous_deployment_policy_list() :: #{
@@ -606,11 +655,13 @@
 %% }
 -type continuous_deployment_policy_list() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_realtime_log_config_result() :: #{
 %%   <<"RealtimeLogConfig">> => realtime_log_config()
 %% }
 -type create_realtime_log_config_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% encryption_entities() :: #{
@@ -619,12 +670,14 @@
 %% }
 -type encryption_entities() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_cloud_front_origin_access_identity_config_result() :: #{
 %%   <<"CloudFrontOriginAccessIdentityConfig">> => cloud_front_origin_access_identity_config(),
 %%   <<"ETag">> => string()
 %% }
 -type get_cloud_front_origin_access_identity_config_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_origin_request_policies_request() :: #{
@@ -634,11 +687,13 @@
 %% }
 -type list_origin_request_policies_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_query_string_parameters() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_query_string_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_monitoring_subscription_result() :: #{
@@ -646,17 +701,20 @@
 %% }
 -type get_monitoring_subscription_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_functions() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_functions() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_distributions_associated_to_origin_request_policy() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_distributions_associated_to_origin_request_policy() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_function_result() :: #{
@@ -666,20 +724,24 @@
 %% }
 -type get_function_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_distributions_associated_to_key_group() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_distributions_associated_to_key_group() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_tagging() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_tagging() :: #{binary() => any()}.
+
 %% Example:
 %% get_continuous_deployment_policy_config_request() :: #{}
 -type get_continuous_deployment_policy_config_request() :: #{}.
+
 
 %% Example:
 %% origin_request_policy_config() :: #{
@@ -691,11 +753,13 @@
 %% }
 -type origin_request_policy_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_key_value_stores_result() :: #{
 %%   <<"KeyValueStoreList">> => key_value_store_list()
 %% }
 -type list_key_value_stores_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_continuous_deployment_policy_result() :: #{
@@ -704,11 +768,13 @@
 %% }
 -type update_continuous_deployment_policy_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_protocol_settings() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_protocol_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% field_level_encryption_list() :: #{
@@ -718,9 +784,11 @@
 %%   <<"Quantity">> => integer()
 %% }
 -type field_level_encryption_list() :: #{binary() => any()}.
+
 %% Example:
 %% get_response_headers_policy_request() :: #{}
 -type get_response_headers_policy_request() :: #{}.
+
 
 %% Example:
 %% list_distributions_by_web_acl_id_result() :: #{
@@ -728,11 +796,13 @@
 %% }
 -type list_distributions_by_web_acl_id_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% public_key_already_exists() :: #{
 %%   <<"Message">> => string()
 %% }
 -type public_key_already_exists() :: #{binary() => any()}.
+
 
 %% Example:
 %% continuous_deployment_single_weight_config() :: #{
@@ -740,6 +810,7 @@
 %%   <<"Weight">> => float()
 %% }
 -type continuous_deployment_single_weight_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% response_headers_policy_strict_transport_security() :: #{
@@ -750,6 +821,7 @@
 %% }
 -type response_headers_policy_strict_transport_security() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_streaming_distribution_config_result() :: #{
 %%   <<"ETag">> => string(),
@@ -757,11 +829,13 @@
 %% }
 -type get_streaming_distribution_config_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% entity_not_found() :: #{
 %%   <<"Message">> => string()
 %% }
 -type entity_not_found() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_field_level_encryption_config_request() :: #{
@@ -769,9 +843,11 @@
 %%   <<"IfMatch">> => string()
 %% }
 -type update_field_level_encryption_config_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_monitoring_subscription_result() :: #{}
 -type delete_monitoring_subscription_result() :: #{}.
+
 
 %% Example:
 %% list_invalidations_request() :: #{
@@ -780,11 +856,13 @@
 %% }
 -type list_invalidations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_in_use() :: #{
 %%   <<"Message">> => string()
 %% }
 -type resource_in_use() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_cache_policy_result() :: #{
@@ -792,6 +870,7 @@
 %%   <<"ETag">> => string()
 %% }
 -type update_cache_policy_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% conflicting_alias() :: #{
@@ -801,6 +880,7 @@
 %% }
 -type conflicting_alias() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_distributions_by_cache_policy_id_request() :: #{
 %%   <<"Marker">> => string(),
@@ -808,17 +888,20 @@
 %% }
 -type list_distributions_by_cache_policy_id_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_field_level_encryption_content_type_profiles() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_field_level_encryption_content_type_profiles() :: #{binary() => any()}.
 
+
 %% Example:
 %% continuous_deployment_policy_already_exists() :: #{
 %%   <<"Message">> => string()
 %% }
 -type continuous_deployment_policy_already_exists() :: #{binary() => any()}.
+
 
 %% Example:
 %% cache_policy_config() :: #{
@@ -831,6 +914,7 @@
 %% }
 -type cache_policy_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% trusted_key_groups() :: #{
 %%   <<"Enabled">> => boolean(),
@@ -839,12 +923,14 @@
 %% }
 -type trusted_key_groups() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_cloud_front_origin_access_identity_request() :: #{
 %%   <<"CloudFrontOriginAccessIdentityConfig">> := cloud_front_origin_access_identity_config(),
 %%   <<"IfMatch">> => string()
 %% }
 -type update_cloud_front_origin_access_identity_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% cloud_front_origin_access_identity_summary() :: #{
@@ -853,6 +939,7 @@
 %%   <<"S3CanonicalUserId">> => string()
 %% }
 -type cloud_front_origin_access_identity_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% origin_access_control_list() :: #{
@@ -865,6 +952,7 @@
 %% }
 -type origin_access_control_list() :: #{binary() => any()}.
 
+
 %% Example:
 %% geo_restriction() :: #{
 %%   <<"Items">> => list(string()()),
@@ -873,20 +961,24 @@
 %% }
 -type geo_restriction() :: #{binary() => any()}.
 
+
 %% Example:
 %% response_headers_policy_content_type_options() :: #{
 %%   <<"Override">> => boolean()
 %% }
 -type response_headers_policy_content_type_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_origin_access_control_request() :: #{
 %%   <<"OriginAccessControlConfig">> := origin_access_control_config()
 %% }
 -type create_origin_access_control_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_origin_request_policy_config_request() :: #{}
 -type get_origin_request_policy_config_request() :: #{}.
+
 
 %% Example:
 %% copy_distribution_request() :: #{
@@ -896,6 +988,7 @@
 %%   <<"Staging">> => boolean()
 %% }
 -type copy_distribution_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% test_result() :: #{
@@ -907,6 +1000,7 @@
 %% }
 -type test_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_cloud_front_origin_access_identity_result() :: #{
 %%   <<"CloudFrontOriginAccessIdentity">> => cloud_front_origin_access_identity(),
@@ -914,11 +1008,13 @@
 %% }
 -type update_cloud_front_origin_access_identity_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% origin_group_member() :: #{
 %%   <<"OriginId">> => string()
 %% }
 -type origin_group_member() :: #{binary() => any()}.
+
 
 %% Example:
 %% distribution_summary() :: #{
@@ -946,12 +1042,14 @@
 %% }
 -type distribution_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_cloud_front_origin_access_identities_request() :: #{
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => [integer()]
 %% }
 -type list_cloud_front_origin_access_identities_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% alias_i_c_p_recordal() :: #{
@@ -960,11 +1058,13 @@
 %% }
 -type alias_i_c_p_recordal() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_cloud_front_origin_access_identities_result() :: #{
 %%   <<"CloudFrontOriginAccessIdentityList">> => cloud_front_origin_access_identity_list()
 %% }
 -type list_cloud_front_origin_access_identities_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% session_stickiness_config() :: #{
@@ -973,11 +1073,13 @@
 %% }
 -type session_stickiness_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_public_keys_result() :: #{
 %%   <<"PublicKeyList">> => public_key_list()
 %% }
 -type list_public_keys_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_field_level_encryption_configs_result() :: #{
@@ -985,11 +1087,13 @@
 %% }
 -type list_field_level_encryption_configs_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% field_level_encryption_config_in_use() :: #{
 %%   <<"Message">> => string()
 %% }
 -type field_level_encryption_config_in_use() :: #{binary() => any()}.
+
 
 %% Example:
 %% default_cache_behavior() :: #{
@@ -1014,6 +1118,7 @@
 %% }
 -type default_cache_behavior() :: #{binary() => any()}.
 
+
 %% Example:
 %% field_level_encryption_profile() :: #{
 %%   <<"FieldLevelEncryptionProfileConfig">> => field_level_encryption_profile_config(),
@@ -1022,11 +1127,13 @@
 %% }
 -type field_level_encryption_profile() :: #{binary() => any()}.
 
+
 %% Example:
 %% illegal_update() :: #{
 %%   <<"Message">> => string()
 %% }
 -type illegal_update() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_key_value_store_result() :: #{
@@ -1036,11 +1143,13 @@
 %% }
 -type create_key_value_store_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% continuous_deployment_policy_summary() :: #{
 %%   <<"ContinuousDeploymentPolicy">> => continuous_deployment_policy()
 %% }
 -type continuous_deployment_policy_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_functions_result() :: #{
@@ -1048,11 +1157,13 @@
 %% }
 -type list_functions_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% cloud_front_origin_access_identity_in_use() :: #{
 %%   <<"Message">> => string()
 %% }
 -type cloud_front_origin_access_identity_in_use() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_function_result() :: #{
@@ -1060,6 +1171,7 @@
 %%   <<"FunctionSummary">> => function_summary()
 %% }
 -type describe_function_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% key_group_config() :: #{
@@ -1069,12 +1181,14 @@
 %% }
 -type key_group_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_origin() :: #{
 %%   <<"DomainName">> => string(),
 %%   <<"OriginAccessIdentity">> => string()
 %% }
 -type s3_origin() :: #{binary() => any()}.
+
 
 %% Example:
 %% response_headers_policy() :: #{
@@ -1084,11 +1198,13 @@
 %% }
 -type response_headers_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_t_t_l_order() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_t_t_l_order() :: #{binary() => any()}.
+
 
 %% Example:
 %% field_level_encryption_profile_already_exists() :: #{
@@ -1096,20 +1212,24 @@
 %% }
 -type field_level_encryption_profile_already_exists() :: #{binary() => any()}.
 
+
 %% Example:
 %% test_function_result() :: #{
 %%   <<"TestResult">> => test_result()
 %% }
 -type test_function_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% monitoring_subscription() :: #{
 %%   <<"RealtimeMetricsSubscriptionConfig">> => realtime_metrics_subscription_config()
 %% }
 -type monitoring_subscription() :: #{binary() => any()}.
+
 %% Example:
 %% get_public_key_config_request() :: #{}
 -type get_public_key_config_request() :: #{}.
+
 
 %% Example:
 %% get_invalidation_result() :: #{
@@ -1117,11 +1237,13 @@
 %% }
 -type get_invalidation_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied() :: #{
 %%   <<"Message">> => string()
 %% }
 -type access_denied() :: #{binary() => any()}.
+
 
 %% Example:
 %% streaming_logging_config() :: #{
@@ -1131,11 +1253,13 @@
 %% }
 -type streaming_logging_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_invalidation_request() :: #{
 %%   <<"InvalidationBatch">> := invalidation_batch()
 %% }
 -type create_invalidation_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% query_string_cache_keys() :: #{
@@ -1144,11 +1268,13 @@
 %% }
 -type query_string_cache_keys() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_streaming_distribution_request() :: #{
 %%   <<"StreamingDistributionConfig">> := streaming_distribution_config()
 %% }
 -type create_streaming_distribution_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% origin_access_control_summary() :: #{
@@ -1160,9 +1286,11 @@
 %%   <<"SigningProtocol">> => list(any())
 %% }
 -type origin_access_control_summary() :: #{binary() => any()}.
+
 %% Example:
 %% get_key_group_config_request() :: #{}
 -type get_key_group_config_request() :: #{}.
+
 
 %% Example:
 %% too_many_cookie_names_in_white_list() :: #{
@@ -1170,17 +1298,20 @@
 %% }
 -type too_many_cookie_names_in_white_list() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_distribution_request() :: #{
 %%   <<"DistributionConfig">> := distribution_config()
 %% }
 -type create_distribution_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_continuous_deployment_policy_request() :: #{
 %%   <<"ContinuousDeploymentPolicyConfig">> := continuous_deployment_policy_config()
 %% }
 -type create_continuous_deployment_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% logging_config() :: #{
@@ -1191,11 +1322,13 @@
 %% }
 -type logging_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_argument() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_argument() :: #{binary() => any()}.
+
 
 %% Example:
 %% response_headers_policy_referrer_policy() :: #{
@@ -1204,12 +1337,14 @@
 %% }
 -type response_headers_policy_referrer_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"Resource">> := string(),
 %%   <<"TagKeys">> := tag_keys()
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_streaming_distribution_result() :: #{
@@ -1219,11 +1354,13 @@
 %% }
 -type create_streaming_distribution_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_web_acl_id() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_web_acl_id() :: #{binary() => any()}.
+
 
 %% Example:
 %% too_many_cookies_in_origin_request_policy() :: #{
@@ -1231,12 +1368,14 @@
 %% }
 -type too_many_cookies_in_origin_request_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_cache_policy_result() :: #{
 %%   <<"CachePolicy">> => cache_policy(),
 %%   <<"ETag">> => string()
 %% }
 -type get_cache_policy_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_continuous_deployment_policy_result() :: #{
@@ -1246,6 +1385,7 @@
 %% }
 -type create_continuous_deployment_policy_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% key_group() :: #{
 %%   <<"Id">> => string(),
@@ -1254,6 +1394,7 @@
 %% }
 -type key_group() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_distributions_by_key_group_request() :: #{
 %%   <<"Marker">> => string(),
@@ -1261,12 +1402,14 @@
 %% }
 -type list_distributions_by_key_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_public_key_request() :: #{
 %%   <<"IfMatch">> => string(),
 %%   <<"PublicKeyConfig">> := public_key_config()
 %% }
 -type update_public_key_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% content_type_profile() :: #{
@@ -1276,12 +1419,14 @@
 %% }
 -type content_type_profile() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_key_group_result() :: #{
 %%   <<"ETag">> => string(),
 %%   <<"KeyGroup">> => key_group()
 %% }
 -type get_key_group_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% origin_request_policy_headers_config() :: #{
@@ -1290,11 +1435,13 @@
 %% }
 -type origin_request_policy_headers_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_too_large() :: #{
 %%   <<"Message">> => string()
 %% }
 -type batch_too_large() :: #{binary() => any()}.
+
 
 %% Example:
 %% query_arg_profiles() :: #{
@@ -1303,12 +1450,14 @@
 %% }
 -type query_arg_profiles() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_continuous_deployment_policy_request() :: #{
 %%   <<"ContinuousDeploymentPolicyConfig">> := continuous_deployment_policy_config(),
 %%   <<"IfMatch">> => string()
 %% }
 -type update_continuous_deployment_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% response_headers_policy_access_control_allow_origins() :: #{
@@ -1317,6 +1466,7 @@
 %% }
 -type response_headers_policy_access_control_allow_origins() :: #{binary() => any()}.
 
+
 %% Example:
 %% function_association() :: #{
 %%   <<"EventType">> => list(any()),
@@ -1324,11 +1474,13 @@
 %% }
 -type function_association() :: #{binary() => any()}.
 
+
 %% Example:
 %% key_group_already_exists() :: #{
 %%   <<"Message">> => string()
 %% }
 -type key_group_already_exists() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_realtime_log_config_request() :: #{
@@ -1336,6 +1488,7 @@
 %%   <<"Name">> => string()
 %% }
 -type get_realtime_log_config_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% key_group_list() :: #{
@@ -1346,6 +1499,7 @@
 %% }
 -type key_group_list() :: #{binary() => any()}.
 
+
 %% Example:
 %% continuous_deployment_policy() :: #{
 %%   <<"ContinuousDeploymentPolicyConfig">> => continuous_deployment_policy_config(),
@@ -1354,6 +1508,7 @@
 %% }
 -type continuous_deployment_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% origin_shield() :: #{
 %%   <<"Enabled">> => boolean(),
@@ -1361,11 +1516,13 @@
 %% }
 -type origin_shield() :: #{binary() => any()}.
 
+
 %% Example:
 %% entity_already_exists() :: #{
 %%   <<"Message">> => string()
 %% }
 -type entity_already_exists() :: #{binary() => any()}.
+
 
 %% Example:
 %% content_type_profiles() :: #{
@@ -1374,6 +1531,7 @@
 %% }
 -type content_type_profiles() :: #{binary() => any()}.
 
+
 %% Example:
 %% response_headers_policy_frame_options() :: #{
 %%   <<"FrameOption">> => list(any()),
@@ -1381,11 +1539,13 @@
 %% }
 -type response_headers_policy_frame_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_field_level_encryption_profiles_result() :: #{
 %%   <<"FieldLevelEncryptionProfileList">> => field_level_encryption_profile_list()
 %% }
 -type list_field_level_encryption_profiles_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% entity_size_limit_exceeded() :: #{
@@ -1393,17 +1553,20 @@
 %% }
 -type entity_size_limit_exceeded() :: #{binary() => any()}.
 
+
 %% Example:
 %% field_level_encryption_profile_in_use() :: #{
 %%   <<"Message">> => string()
 %% }
 -type field_level_encryption_profile_in_use() :: #{binary() => any()}.
 
+
 %% Example:
 %% no_such_field_level_encryption_config() :: #{
 %%   <<"Message">> => string()
 %% }
 -type no_such_field_level_encryption_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% cache_policy_list() :: #{
@@ -1414,12 +1577,14 @@
 %% }
 -type cache_policy_list() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_public_keys_request() :: #{
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => [integer()]
 %% }
 -type list_public_keys_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_distribution_config_result() :: #{
@@ -1428,6 +1593,7 @@
 %% }
 -type get_distribution_config_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_key_value_stores_request() :: #{
 %%   <<"Marker">> => string(),
@@ -1435,6 +1601,7 @@
 %%   <<"Status">> => string()
 %% }
 -type list_key_value_stores_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% streaming_distribution() :: #{
@@ -1448,6 +1615,7 @@
 %% }
 -type streaming_distribution() :: #{binary() => any()}.
 
+
 %% Example:
 %% origins() :: #{
 %%   <<"Items">> => list(origin()()),
@@ -1455,11 +1623,13 @@
 %% }
 -type origins() :: #{binary() => any()}.
 
+
 %% Example:
 %% no_such_cloud_front_origin_access_identity() :: #{
 %%   <<"Message">> => string()
 %% }
 -type no_such_cloud_front_origin_access_identity() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_field_level_encryption_config_request() :: #{
@@ -1467,11 +1637,13 @@
 %% }
 -type delete_field_level_encryption_config_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% function_size_limit_exceeded() :: #{
 %%   <<"Message">> => string()
 %% }
 -type function_size_limit_exceeded() :: #{binary() => any()}.
+
 
 %% Example:
 %% cached_methods() :: #{
@@ -1480,11 +1652,13 @@
 %% }
 -type cached_methods() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_origin_access_control() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_origin_access_control() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_key_value_store_result() :: #{
@@ -1493,11 +1667,13 @@
 %% }
 -type describe_key_value_store_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_origin() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_origin() :: #{binary() => any()}.
+
 
 %% Example:
 %% cache_behaviors() :: #{
@@ -1506,6 +1682,7 @@
 %% }
 -type cache_behaviors() :: #{binary() => any()}.
 
+
 %% Example:
 %% custom_headers() :: #{
 %%   <<"Items">> => list(origin_custom_header()()),
@@ -1513,11 +1690,13 @@
 %% }
 -type custom_headers() :: #{binary() => any()}.
 
+
 %% Example:
 %% field_level_encryption_config_already_exists() :: #{
 %%   <<"Message">> => string()
 %% }
 -type field_level_encryption_config_already_exists() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_realtime_log_config_request() :: #{
@@ -1528,17 +1707,20 @@
 %% }
 -type create_realtime_log_config_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% unsupported_operation() :: #{
 %%   <<"Message">> => string()
 %% }
 -type unsupported_operation() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_headers_in_cache_policy() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_headers_in_cache_policy() :: #{binary() => any()}.
+
 
 %% Example:
 %% function_associations() :: #{
@@ -1547,11 +1729,13 @@
 %% }
 -type function_associations() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_certificates() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_certificates() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_conflicting_aliases_request() :: #{
@@ -1562,11 +1746,13 @@
 %% }
 -type list_conflicting_aliases_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_streaming_distribution_with_tags_request() :: #{
 %%   <<"StreamingDistributionConfigWithTags">> := streaming_distribution_config_with_tags()
 %% }
 -type create_streaming_distribution_with_tags_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% traffic_config() :: #{
@@ -1576,6 +1762,7 @@
 %% }
 -type traffic_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% cache_policy_cookies_config() :: #{
 %%   <<"CookieBehavior">> => list(any()),
@@ -1583,11 +1770,13 @@
 %% }
 -type cache_policy_cookies_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_cloud_front_origin_access_identity_request() :: #{
 %%   <<"IfMatch">> => string()
 %% }
 -type delete_cloud_front_origin_access_identity_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% lambda_function_association() :: #{
@@ -1596,18 +1785,22 @@
 %%   <<"LambdaFunctionARN">> => string()
 %% }
 -type lambda_function_association() :: #{binary() => any()}.
+
 %% Example:
 %% describe_key_value_store_request() :: #{}
 -type describe_key_value_store_request() :: #{}.
+
 %% Example:
 %% get_distribution_config_request() :: #{}
 -type get_distribution_config_request() :: #{}.
+
 
 %% Example:
 %% delete_public_key_request() :: #{
 %%   <<"IfMatch">> => string()
 %% }
 -type delete_public_key_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% distribution_config() :: #{
@@ -1633,6 +1826,7 @@
 %% }
 -type distribution_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_continuous_deployment_policy_result() :: #{
 %%   <<"ContinuousDeploymentPolicy">> => continuous_deployment_policy(),
@@ -1640,17 +1834,20 @@
 %% }
 -type get_continuous_deployment_policy_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_required_protocol() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_required_protocol() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_function_request() :: #{
 %%   <<"Stage">> => list(any())
 %% }
 -type get_function_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% origin_request_policy_cookies_config() :: #{
@@ -1659,6 +1856,7 @@
 %% }
 -type origin_request_policy_cookies_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_key_value_store_result() :: #{
 %%   <<"ETag">> => string(),
@@ -1666,11 +1864,13 @@
 %% }
 -type update_key_value_store_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_key_groups_result() :: #{
 %%   <<"KeyGroupList">> => key_group_list()
 %% }
 -type list_key_groups_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_key_group_request() :: #{
@@ -1678,11 +1878,13 @@
 %% }
 -type create_key_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_response_headers_policy_request() :: #{
 %%   <<"IfMatch">> => string()
 %% }
 -type delete_response_headers_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% origin_access_control_in_use() :: #{
@@ -1690,11 +1892,13 @@
 %% }
 -type origin_access_control_in_use() :: #{binary() => any()}.
 
+
 %% Example:
 %% precondition_failed() :: #{
 %%   <<"Message">> => string()
 %% }
 -type precondition_failed() :: #{binary() => any()}.
+
 
 %% Example:
 %% public_key_list() :: #{
@@ -1705,6 +1909,7 @@
 %% }
 -type public_key_list() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_response_headers_policy_request() :: #{
 %%   <<"IfMatch">> => string(),
@@ -1712,15 +1917,18 @@
 %% }
 -type update_response_headers_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% response_headers_policy_custom_headers_config() :: #{
 %%   <<"Items">> => list(response_headers_policy_custom_header()()),
 %%   <<"Quantity">> => integer()
 %% }
 -type response_headers_policy_custom_headers_config() :: #{binary() => any()}.
+
 %% Example:
 %% get_cache_policy_config_request() :: #{}
 -type get_cache_policy_config_request() :: #{}.
+
 
 %% Example:
 %% list_key_groups_request() :: #{
@@ -1729,11 +1937,13 @@
 %% }
 -type list_key_groups_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_distribution_cnames() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_distribution_cnames() :: #{binary() => any()}.
+
 
 %% Example:
 %% no_such_origin_request_policy() :: #{
@@ -1741,11 +1951,13 @@
 %% }
 -type no_such_origin_request_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% no_such_distribution() :: #{
 %%   <<"Message">> => string()
 %% }
 -type no_such_distribution() :: #{binary() => any()}.
+
 
 %% Example:
 %% tag() :: #{
@@ -1753,9 +1965,11 @@
 %%   <<"Value">> => string()
 %% }
 -type tag() :: #{binary() => any()}.
+
 %% Example:
 %% get_field_level_encryption_profile_config_request() :: #{}
 -type get_field_level_encryption_profile_config_request() :: #{}.
+
 
 %% Example:
 %% cache_policy_summary() :: #{
@@ -1764,12 +1978,14 @@
 %% }
 -type cache_policy_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% query_arg_profile() :: #{
 %%   <<"ProfileId">> => string(),
 %%   <<"QueryArg">> => string()
 %% }
 -type query_arg_profile() :: #{binary() => any()}.
+
 
 %% Example:
 %% response_headers_policy_access_control_expose_headers() :: #{
@@ -1778,11 +1994,13 @@
 %% }
 -type response_headers_policy_access_control_expose_headers() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_origin_config() :: #{
 %%   <<"OriginAccessIdentity">> => string()
 %% }
 -type s3_origin_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_distribution_request() :: #{
@@ -1791,11 +2009,13 @@
 %% }
 -type update_distribution_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_trusted_signers() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_trusted_signers() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_function_request() :: #{
@@ -1803,11 +2023,13 @@
 %% }
 -type delete_function_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% publish_function_result() :: #{
 %%   <<"FunctionSummary">> => function_summary()
 %% }
 -type publish_function_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% too_many_query_strings_in_origin_request_policy() :: #{
@@ -1815,11 +2037,13 @@
 %% }
 -type too_many_query_strings_in_origin_request_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_cache_policies() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_cache_policies() :: #{binary() => any()}.
+
 
 %% Example:
 %% response_headers_policy_remove_headers_config() :: #{
@@ -1828,17 +2052,20 @@
 %% }
 -type response_headers_policy_remove_headers_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_error_code() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_error_code() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_distributions_result() :: #{
 %%   <<"DistributionList">> => distribution_list()
 %% }
 -type list_distributions_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_response_headers_policies_request() :: #{
@@ -1848,6 +2075,7 @@
 %% }
 -type list_response_headers_policies_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% field_level_encryption() :: #{
 %%   <<"FieldLevelEncryptionConfig">> => field_level_encryption_config(),
@@ -1856,11 +2084,13 @@
 %% }
 -type field_level_encryption() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_geo_restriction_parameter() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_geo_restriction_parameter() :: #{binary() => any()}.
+
 
 %% Example:
 %% key_value_store_associations() :: #{
@@ -1869,6 +2099,7 @@
 %% }
 -type key_value_store_associations() :: #{binary() => any()}.
 
+
 %% Example:
 %% origin_access_control() :: #{
 %%   <<"Id">> => string(),
@@ -1876,11 +2107,13 @@
 %% }
 -type origin_access_control() :: #{binary() => any()}.
 
+
 %% Example:
 %% origin_request_policy_already_exists() :: #{
 %%   <<"Message">> => string()
 %% }
 -type origin_request_policy_already_exists() :: #{binary() => any()}.
+
 
 %% Example:
 %% origin_request_policy() :: #{
@@ -1890,17 +2123,20 @@
 %% }
 -type origin_request_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% response_headers_policy_already_exists() :: #{
 %%   <<"Message">> => string()
 %% }
 -type response_headers_policy_already_exists() :: #{binary() => any()}.
 
+
 %% Example:
 %% continuous_deployment_policy_in_use() :: #{
 %%   <<"Message">> => string()
 %% }
 -type continuous_deployment_policy_in_use() :: #{binary() => any()}.
+
 
 %% Example:
 %% response_headers_policy_list() :: #{
@@ -1911,6 +2147,7 @@
 %% }
 -type response_headers_policy_list() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_origin_access_control_request() :: #{
 %%   <<"IfMatch">> => string(),
@@ -1918,11 +2155,13 @@
 %% }
 -type update_origin_access_control_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_realtime_log_config_result() :: #{
 %%   <<"RealtimeLogConfig">> => realtime_log_config()
 %% }
 -type update_realtime_log_config_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% too_many_distributions_with_function_associations() :: #{
@@ -1930,11 +2169,13 @@
 %% }
 -type too_many_distributions_with_function_associations() :: #{binary() => any()}.
 
+
 %% Example:
 %% missing_body() :: #{
 %%   <<"Message">> => string()
 %% }
 -type missing_body() :: #{binary() => any()}.
+
 
 %% Example:
 %% cookie_names() :: #{
@@ -1943,11 +2184,13 @@
 %% }
 -type cookie_names() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_query_strings_in_cache_policy() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_query_strings_in_cache_policy() :: #{binary() => any()}.
+
 
 %% Example:
 %% inconsistent_quantities() :: #{
@@ -1955,17 +2198,20 @@
 %% }
 -type inconsistent_quantities() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_headers_for_s3_origin() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_headers_for_s3_origin() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_distributions_by_cache_policy_id_result() :: #{
 %%   <<"DistributionIdList">> => distribution_id_list()
 %% }
 -type list_distributions_by_cache_policy_id_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% field_patterns() :: #{
@@ -1974,11 +2220,13 @@
 %% }
 -type field_patterns() :: #{binary() => any()}.
 
+
 %% Example:
 %% monitoring_subscription_already_exists() :: #{
 %%   <<"Message">> => string()
 %% }
 -type monitoring_subscription_already_exists() :: #{binary() => any()}.
+
 
 %% Example:
 %% invalid_lambda_function_association() :: #{
@@ -1986,11 +2234,13 @@
 %% }
 -type invalid_lambda_function_association() :: #{binary() => any()}.
 
+
 %% Example:
 %% tags() :: #{
 %%   <<"Items">> => list(tag()())
 %% }
 -type tags() :: #{binary() => any()}.
+
 
 %% Example:
 %% distribution() :: #{
@@ -2007,11 +2257,13 @@
 %% }
 -type distribution() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_cache_policy_request() :: #{
 %%   <<"CachePolicyConfig">> := cache_policy_config()
 %% }
 -type create_cache_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% origin_request_policy_query_strings_config() :: #{
@@ -2020,17 +2272,20 @@
 %% }
 -type origin_request_policy_query_strings_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_origin_keepalive_timeout() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_origin_keepalive_timeout() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_continuous_deployment_policies_result() :: #{
 %%   <<"ContinuousDeploymentPolicyList">> => continuous_deployment_policy_list()
 %% }
 -type list_continuous_deployment_policies_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% kinesis_stream_config() :: #{
@@ -2039,11 +2294,13 @@
 %% }
 -type kinesis_stream_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_forward_cookies() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_forward_cookies() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_key_group_result() :: #{
@@ -2053,11 +2310,13 @@
 %% }
 -type create_key_group_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_key_group_request() :: #{
 %%   <<"IfMatch">> => string()
 %% }
 -type delete_key_group_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_field_level_encryption_config_result() :: #{
@@ -2067,17 +2326,20 @@
 %% }
 -type create_field_level_encryption_config_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% realtime_log_config_already_exists() :: #{
 %%   <<"Message">> => string()
 %% }
 -type realtime_log_config_already_exists() :: #{binary() => any()}.
 
+
 %% Example:
 %% no_such_cache_policy() :: #{
 %%   <<"Message">> => string()
 %% }
 -type no_such_cache_policy() :: #{binary() => any()}.
+
 
 %% Example:
 %% aliases() :: #{
@@ -2086,11 +2348,13 @@
 %% }
 -type aliases() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_alias_request() :: #{
 %%   <<"Alias">> := string()
 %% }
 -type associate_alias_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% origin_groups() :: #{
@@ -2098,6 +2362,7 @@
 %%   <<"Quantity">> => integer()
 %% }
 -type origin_groups() :: #{binary() => any()}.
+
 
 %% Example:
 %% encryption_entity() :: #{
@@ -2107,12 +2372,14 @@
 %% }
 -type encryption_entity() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalidation_batch() :: #{
 %%   <<"CallerReference">> => string(),
 %%   <<"Paths">> => paths()
 %% }
 -type invalidation_batch() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_streaming_distributions_request() :: #{
@@ -2121,11 +2388,13 @@
 %% }
 -type list_streaming_distributions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% trusted_signer_does_not_exist() :: #{
 %%   <<"Message">> => string()
 %% }
 -type trusted_signer_does_not_exist() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_cloud_front_origin_access_identity_request() :: #{
@@ -2133,20 +2402,24 @@
 %% }
 -type create_cloud_front_origin_access_identity_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% no_such_streaming_distribution() :: #{
 %%   <<"Message">> => string()
 %% }
 -type no_such_streaming_distribution() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_origin_read_timeout() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_origin_read_timeout() :: #{binary() => any()}.
+
 %% Example:
 %% get_invalidation_request() :: #{}
 -type get_invalidation_request() :: #{}.
+
 
 %% Example:
 %% continuous_deployment_policy_config() :: #{
@@ -2156,12 +2429,14 @@
 %% }
 -type continuous_deployment_policy_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_origin_request_policy_config_result() :: #{
 %%   <<"ETag">> => string(),
 %%   <<"OriginRequestPolicyConfig">> => origin_request_policy_config()
 %% }
 -type get_origin_request_policy_config_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_response_headers_policy_result() :: #{
@@ -2171,6 +2446,7 @@
 %% }
 -type create_response_headers_policy_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_key_value_store_request() :: #{
 %%   <<"Comment">> := string(),
@@ -2178,11 +2454,13 @@
 %% }
 -type update_key_value_store_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_domain_name_for_origin_access_control() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_domain_name_for_origin_access_control() :: #{binary() => any()}.
+
 
 %% Example:
 %% response_headers_policy_content_security_policy() :: #{
@@ -2190,6 +2468,7 @@
 %%   <<"Override">> => boolean()
 %% }
 -type response_headers_policy_content_security_policy() :: #{binary() => any()}.
+
 
 %% Example:
 %% public_key() :: #{
@@ -2199,12 +2478,14 @@
 %% }
 -type public_key() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_field_level_encryption_profile_request() :: #{
 %%   <<"FieldLevelEncryptionProfileConfig">> := field_level_encryption_profile_config(),
 %%   <<"IfMatch">> => string()
 %% }
 -type update_field_level_encryption_profile_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% field_level_encryption_profile_summary() :: #{
@@ -2216,6 +2497,7 @@
 %% }
 -type field_level_encryption_profile_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% function_summary() :: #{
 %%   <<"FunctionConfig">> => function_config(),
@@ -2225,11 +2507,13 @@
 %% }
 -type function_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_key_groups_associated_to_distribution() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_key_groups_associated_to_distribution() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_cache_policy_result() :: #{
@@ -2239,6 +2523,7 @@
 %% }
 -type create_cache_policy_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_key_value_store_request() :: #{
 %%   <<"Comment">> => string(),
@@ -2247,12 +2532,14 @@
 %% }
 -type create_key_value_store_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% origin_custom_header() :: #{
 %%   <<"HeaderName">> => string(),
 %%   <<"HeaderValue">> => string()
 %% }
 -type origin_custom_header() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_field_level_encryption_profiles_request() :: #{
@@ -2261,11 +2548,13 @@
 %% }
 -type list_field_level_encryption_profiles_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% cache_policy_already_exists() :: #{
 %%   <<"Message">> => string()
 %% }
 -type cache_policy_already_exists() :: #{binary() => any()}.
+
 
 %% Example:
 %% too_many_headers_in_forwarded_values() :: #{
@@ -2273,20 +2562,24 @@
 %% }
 -type too_many_headers_in_forwarded_values() :: #{binary() => any()}.
 
+
 %% Example:
 %% response_headers_policy_remove_header() :: #{
 %%   <<"Header">> => string()
 %% }
 -type response_headers_policy_remove_header() :: #{binary() => any()}.
+
 %% Example:
 %% get_field_level_encryption_request() :: #{}
 -type get_field_level_encryption_request() :: #{}.
+
 
 %% Example:
 %% invalid_minimum_protocol_version() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_minimum_protocol_version() :: #{binary() => any()}.
+
 
 %% Example:
 %% key_value_store_list() :: #{
@@ -2297,12 +2590,14 @@
 %% }
 -type key_value_store_list() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_cloud_front_origin_access_identity_result() :: #{
 %%   <<"CloudFrontOriginAccessIdentity">> => cloud_front_origin_access_identity(),
 %%   <<"ETag">> => string()
 %% }
 -type get_cloud_front_origin_access_identity_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% query_string_names() :: #{
@@ -2311,12 +2606,14 @@
 %% }
 -type query_string_names() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_field_level_encryption_result() :: #{
 %%   <<"ETag">> => string(),
 %%   <<"FieldLevelEncryption">> => field_level_encryption()
 %% }
 -type get_field_level_encryption_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_streaming_distribution_request() :: #{
@@ -2325,11 +2622,13 @@
 %% }
 -type update_streaming_distribution_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_streaming_distributions() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_streaming_distributions() :: #{binary() => any()}.
+
 
 %% Example:
 %% no_such_origin_access_control() :: #{
@@ -2337,11 +2636,13 @@
 %% }
 -type no_such_origin_access_control() :: #{binary() => any()}.
 
+
 %% Example:
 %% cannot_delete_entity_while_in_use() :: #{
 %%   <<"Message">> => string()
 %% }
 -type cannot_delete_entity_while_in_use() :: #{binary() => any()}.
+
 
 %% Example:
 %% conflicting_aliases_list() :: #{
@@ -2352,11 +2653,13 @@
 %% }
 -type conflicting_aliases_list() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_field_level_encryption_profiles() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_field_level_encryption_profiles() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_field_level_encryption_configs_request() :: #{
@@ -2365,15 +2668,18 @@
 %% }
 -type list_field_level_encryption_configs_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_public_key_result() :: #{
 %%   <<"ETag">> => string(),
 %%   <<"PublicKey">> => public_key()
 %% }
 -type update_public_key_result() :: #{binary() => any()}.
+
 %% Example:
 %% get_field_level_encryption_config_request() :: #{}
 -type get_field_level_encryption_config_request() :: #{}.
+
 
 %% Example:
 %% too_many_field_level_encryption_configs() :: #{
@@ -2381,17 +2687,20 @@
 %% }
 -type too_many_field_level_encryption_configs() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_key_value_store_request() :: #{
 %%   <<"IfMatch">> := string()
 %% }
 -type delete_key_value_store_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_origin_custom_headers() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_origin_custom_headers() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_function_result() :: #{
@@ -2401,11 +2710,13 @@
 %% }
 -type create_function_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% distribution_already_exists() :: #{
 %%   <<"Message">> => string()
 %% }
 -type distribution_already_exists() :: #{binary() => any()}.
+
 
 %% Example:
 %% field_level_encryption_config() :: #{
@@ -2416,11 +2727,13 @@
 %% }
 -type field_level_encryption_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_cache_policies_result() :: #{
 %%   <<"CachePolicyList">> => cache_policy_list()
 %% }
 -type list_cache_policies_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% active_trusted_signers() :: #{
@@ -2430,6 +2743,7 @@
 %% }
 -type active_trusted_signers() :: #{binary() => any()}.
 
+
 %% Example:
 %% cloud_front_origin_access_identity() :: #{
 %%   <<"CloudFrontOriginAccessIdentityConfig">> => cloud_front_origin_access_identity_config(),
@@ -2437,6 +2751,7 @@
 %%   <<"S3CanonicalUserId">> => string()
 %% }
 -type cloud_front_origin_access_identity() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_functions_request() :: #{
@@ -2446,11 +2761,13 @@
 %% }
 -type list_functions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_origins() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_origins() :: #{binary() => any()}.
+
 
 %% Example:
 %% too_many_distributions_with_single_function_arn() :: #{
@@ -2458,17 +2775,20 @@
 %% }
 -type too_many_distributions_with_single_function_arn() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_distributions_with_lambda_associations() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_distributions_with_lambda_associations() :: #{binary() => any()}.
 
+
 %% Example:
 %% no_such_resource() :: #{
 %%   <<"Message">> => string()
 %% }
 -type no_such_resource() :: #{binary() => any()}.
+
 
 %% Example:
 %% distribution_list() :: #{
@@ -2480,6 +2800,7 @@
 %%   <<"Quantity">> => integer()
 %% }
 -type distribution_list() :: #{binary() => any()}.
+
 
 %% Example:
 %% response_headers_policy_config() :: #{
@@ -2493,20 +2814,24 @@
 %% }
 -type response_headers_policy_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_cache_policy_request() :: #{
 %%   <<"IfMatch">> => string()
 %% }
 -type delete_cache_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_result() :: #{
 %%   <<"Tags">> => tags()
 %% }
 -type list_tags_for_resource_result() :: #{binary() => any()}.
+
 %% Example:
 %% get_response_headers_policy_config_request() :: #{}
 -type get_response_headers_policy_config_request() :: #{}.
+
 
 %% Example:
 %% too_many_field_level_encryption_encryption_entities() :: #{
@@ -2514,17 +2839,20 @@
 %% }
 -type too_many_field_level_encryption_encryption_entities() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_lambda_function_associations() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_lambda_function_associations() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_streaming_distribution_cnames() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_streaming_distribution_cnames() :: #{binary() => any()}.
+
 
 %% Example:
 %% function_config() :: #{
@@ -2534,11 +2862,13 @@
 %% }
 -type function_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_streaming_distributions_result() :: #{
 %%   <<"StreamingDistributionList">> => streaming_distribution_list()
 %% }
 -type list_streaming_distributions_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% origin_request_policy_summary() :: #{
@@ -2547,11 +2877,13 @@
 %% }
 -type origin_request_policy_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_keys() :: #{
 %%   <<"Items">> => list(string()())
 %% }
 -type tag_keys() :: #{binary() => any()}.
+
 
 %% Example:
 %% too_many_realtime_log_configs() :: #{
@@ -2559,11 +2891,13 @@
 %% }
 -type too_many_realtime_log_configs() :: #{binary() => any()}.
 
+
 %% Example:
 %% cache_policy_in_use() :: #{
 %%   <<"Message">> => string()
 %% }
 -type cache_policy_in_use() :: #{binary() => any()}.
+
 
 %% Example:
 %% origin_group() :: #{
@@ -2572,12 +2906,15 @@
 %%   <<"Members">> => origin_group_members()
 %% }
 -type origin_group() :: #{binary() => any()}.
+
 %% Example:
 %% get_key_group_request() :: #{}
 -type get_key_group_request() :: #{}.
+
 %% Example:
 %% get_public_key_request() :: #{}
 -type get_public_key_request() :: #{}.
+
 
 %% Example:
 %% create_distribution_result() :: #{
@@ -2586,6 +2923,7 @@
 %%   <<"Location">> => string()
 %% }
 -type create_distribution_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% custom_error_response() :: #{
@@ -2596,11 +2934,13 @@
 %% }
 -type custom_error_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_distributions_associated_to_response_headers_policy() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_distributions_associated_to_response_headers_policy() :: #{binary() => any()}.
+
 
 %% Example:
 %% test_function_request() :: #{
@@ -2610,11 +2950,13 @@
 %% }
 -type test_function_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_monitoring_subscription_result() :: #{
 %%   <<"MonitoringSubscription">> => monitoring_subscription()
 %% }
 -type create_monitoring_subscription_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% response_headers_policy_custom_header() :: #{
@@ -2624,11 +2966,13 @@
 %% }
 -type response_headers_policy_custom_header() :: #{binary() => any()}.
 
+
 %% Example:
 %% no_such_function_exists() :: #{
 %%   <<"Message">> => string()
 %% }
 -type no_such_function_exists() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_field_level_encryption_profile_config_result() :: #{
@@ -2637,6 +2981,7 @@
 %% }
 -type get_field_level_encryption_profile_config_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% origin_ssl_protocols() :: #{
 %%   <<"Items">> => list(list(any())()),
@@ -2644,11 +2989,13 @@
 %% }
 -type origin_ssl_protocols() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_cloud_front_origin_access_identities() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_cloud_front_origin_access_identities() :: #{binary() => any()}.
+
 
 %% Example:
 %% field_level_encryption_profile_config() :: #{
@@ -2659,11 +3006,13 @@
 %% }
 -type field_level_encryption_profile_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_origin_access_controls_result() :: #{
 %%   <<"OriginAccessControlList">> => origin_access_control_list()
 %% }
 -type list_origin_access_controls_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_distributions_by_web_acl_id_request() :: #{
@@ -2672,14 +3021,17 @@
 %% }
 -type list_distributions_by_web_acl_id_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_distributions_by_response_headers_policy_id_result() :: #{
 %%   <<"DistributionIdList">> => distribution_id_list()
 %% }
 -type list_distributions_by_response_headers_policy_id_result() :: #{binary() => any()}.
+
 %% Example:
 %% get_monitoring_subscription_request() :: #{}
 -type get_monitoring_subscription_request() :: #{}.
+
 
 %% Example:
 %% origin() :: #{
@@ -2696,6 +3048,7 @@
 %% }
 -type origin() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_field_level_encryption_profile_result() :: #{
 %%   <<"ETag">> => string(),
@@ -2704,11 +3057,13 @@
 %% }
 -type create_field_level_encryption_profile_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_public_keys_in_key_group() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_public_keys_in_key_group() :: #{binary() => any()}.
+
 
 %% Example:
 %% continuous_deployment_single_header_config() :: #{
@@ -2717,12 +3072,14 @@
 %% }
 -type continuous_deployment_single_header_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_distributions_request() :: #{
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => [integer()]
 %% }
 -type list_distributions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_realtime_log_config_request() :: #{
@@ -2734,6 +3091,7 @@
 %% }
 -type update_realtime_log_config_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_distribution_result() :: #{
 %%   <<"Distribution">> => distribution(),
@@ -2741,20 +3099,24 @@
 %% }
 -type get_distribution_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_cache_behaviors() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_cache_behaviors() :: #{binary() => any()}.
+
 %% Example:
 %% get_origin_access_control_request() :: #{}
 -type get_origin_access_control_request() :: #{}.
+
 
 %% Example:
 %% list_invalidations_result() :: #{
 %%   <<"InvalidationList">> => invalidation_list()
 %% }
 -type list_invalidations_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% function_list() :: #{
@@ -2764,9 +3126,11 @@
 %%   <<"Quantity">> => integer()
 %% }
 -type function_list() :: #{binary() => any()}.
+
 %% Example:
 %% get_cloud_front_origin_access_identity_config_request() :: #{}
 -type get_cloud_front_origin_access_identity_config_request() :: #{}.
+
 
 %% Example:
 %% response_headers_policy_server_timing_headers_config() :: #{
@@ -2775,6 +3139,7 @@
 %% }
 -type response_headers_policy_server_timing_headers_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% headers() :: #{
 %%   <<"Items">> => list(string()()),
@@ -2782,11 +3147,13 @@
 %% }
 -type headers() :: #{binary() => any()}.
 
+
 %% Example:
 %% realtime_log_config_in_use() :: #{
 %%   <<"Message">> => string()
 %% }
 -type realtime_log_config_in_use() :: #{binary() => any()}.
+
 
 %% Example:
 %% streaming_distribution_summary() :: #{
@@ -2804,6 +3171,7 @@
 %% }
 -type streaming_distribution_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_distributions_by_realtime_log_config_request() :: #{
 %%   <<"Marker">> => string(),
@@ -2812,6 +3180,7 @@
 %%   <<"RealtimeLogConfigName">> => string()
 %% }
 -type list_distributions_by_realtime_log_config_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% response_headers_policy_cors_config() :: #{
@@ -2825,11 +3194,13 @@
 %% }
 -type response_headers_policy_cors_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% origin_group_failover_criteria() :: #{
 %%   <<"StatusCodes">> => status_codes()
 %% }
 -type origin_group_failover_criteria() :: #{binary() => any()}.
+
 
 %% Example:
 %% too_many_key_groups() :: #{
@@ -2837,11 +3208,13 @@
 %% }
 -type too_many_key_groups() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_request() :: #{
 %%   <<"Resource">> := string()
 %% }
 -type list_tags_for_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_public_key_config_result() :: #{
@@ -2850,11 +3223,13 @@
 %% }
 -type get_public_key_config_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% test_function_failed() :: #{
 %%   <<"Message">> => string()
 %% }
 -type test_function_failed() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_response_headers_policy_config_result() :: #{
@@ -2863,11 +3238,13 @@
 %% }
 -type get_response_headers_policy_config_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% function_already_exists() :: #{
 %%   <<"Message">> => string()
 %% }
 -type function_already_exists() :: #{binary() => any()}.
+
 
 %% Example:
 %% origin_group_members() :: #{
@@ -2876,17 +3253,20 @@
 %% }
 -type origin_group_members() :: #{binary() => any()}.
 
+
 %% Example:
 %% streaming_distribution_already_exists() :: #{
 %%   <<"Message">> => string()
 %% }
 -type streaming_distribution_already_exists() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_default_root_object() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_default_root_object() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_origin_request_policy_result() :: #{
@@ -2896,6 +3276,7 @@
 %% }
 -type create_origin_request_policy_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_distributions_by_origin_request_policy_id_request() :: #{
 %%   <<"Marker">> => string(),
@@ -2903,11 +3284,13 @@
 %% }
 -type list_distributions_by_origin_request_policy_id_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% cname_already_exists() :: #{
 %%   <<"Message">> => string()
 %% }
 -type cname_already_exists() :: #{binary() => any()}.
+
 
 %% Example:
 %% field_level_encryption_profile_size_exceeded() :: #{
@@ -2915,11 +3298,13 @@
 %% }
 -type field_level_encryption_profile_size_exceeded() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_response_headers_policy_request() :: #{
 %%   <<"ResponseHeadersPolicyConfig">> := response_headers_policy_config()
 %% }
 -type create_response_headers_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% too_many_field_level_encryption_field_patterns() :: #{
@@ -2927,12 +3312,14 @@
 %% }
 -type too_many_field_level_encryption_field_patterns() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_continuous_deployment_policy_config_result() :: #{
 %%   <<"ContinuousDeploymentPolicyConfig">> => continuous_deployment_policy_config(),
 %%   <<"ETag">> => string()
 %% }
 -type get_continuous_deployment_policy_config_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% origin_request_policy_list() :: #{
@@ -2942,6 +3329,7 @@
 %%   <<"Quantity">> => integer()
 %% }
 -type origin_request_policy_list() :: #{binary() => any()}.
+
 
 %% Example:
 %% key_value_store() :: #{
@@ -2954,17 +3342,20 @@
 %% }
 -type key_value_store() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_remove_headers_in_response_headers_policy() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_remove_headers_in_response_headers_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_origin_request_policies() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_origin_request_policies() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_origin_access_control_result() :: #{
@@ -2973,17 +3364,20 @@
 %% }
 -type get_origin_access_control_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_origin_access_control_request() :: #{
 %%   <<"IfMatch">> => string()
 %% }
 -type delete_origin_access_control_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_continuous_deployment_policy_request() :: #{
 %%   <<"IfMatch">> => string()
 %% }
 -type delete_continuous_deployment_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_cloud_front_origin_access_identity_result() :: #{
@@ -2993,6 +3387,7 @@
 %% }
 -type create_cloud_front_origin_access_identity_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_response_headers_policy_result() :: #{
 %%   <<"ETag">> => string(),
@@ -3000,11 +3395,13 @@
 %% }
 -type get_response_headers_policy_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_distributions_by_key_group_result() :: #{
 %%   <<"DistributionIdList">> => distribution_id_list()
 %% }
 -type list_distributions_by_key_group_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_cache_policies_request() :: #{
@@ -3014,11 +3411,13 @@
 %% }
 -type list_cache_policies_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% no_such_invalidation() :: #{
 %%   <<"Message">> => string()
 %% }
 -type no_such_invalidation() :: #{binary() => any()}.
+
 
 %% Example:
 %% too_many_query_string_parameters() :: #{
@@ -3026,17 +3425,20 @@
 %% }
 -type too_many_query_string_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% illegal_delete() :: #{
 %%   <<"Message">> => string()
 %% }
 -type illegal_delete() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_viewer_certificate() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_viewer_certificate() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_distribution_result() :: #{
@@ -3045,11 +3447,13 @@
 %% }
 -type update_distribution_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_conflicting_aliases_result() :: #{
 %%   <<"ConflictingAliasesList">> => conflicting_aliases_list()
 %% }
 -type list_conflicting_aliases_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_distribution_with_staging_config_request() :: #{
@@ -3058,6 +3462,7 @@
 %% }
 -type update_distribution_with_staging_config_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% paths() :: #{
 %%   <<"Items">> => list(string()()),
@@ -3065,17 +3470,20 @@
 %% }
 -type paths() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_relative_path() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_relative_path() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_field_level_encryption_config_request() :: #{
 %%   <<"FieldLevelEncryptionConfig">> := field_level_encryption_config()
 %% }
 -type create_field_level_encryption_config_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_origin_access_control_result() :: #{
@@ -3085,17 +3493,20 @@
 %% }
 -type create_origin_access_control_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_streaming_distribution_request() :: #{
 %%   <<"IfMatch">> => string()
 %% }
 -type delete_streaming_distribution_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% no_such_response_headers_policy() :: #{
 %%   <<"Message">> => string()
 %% }
 -type no_such_response_headers_policy() :: #{binary() => any()}.
+
 
 %% Example:
 %% cloud_front_origin_access_identity_config() :: #{
@@ -3104,12 +3515,14 @@
 %% }
 -type cloud_front_origin_access_identity_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% k_g_key_pair_ids() :: #{
 %%   <<"KeyGroupId">> => string(),
 %%   <<"KeyPairIds">> => key_pair_ids()
 %% }
 -type k_g_key_pair_ids() :: #{binary() => any()}.
+
 
 %% Example:
 %% invalidation_list() :: #{
@@ -3122,6 +3535,7 @@
 %% }
 -type invalidation_list() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_public_key_result() :: #{
 %%   <<"ETag">> => string(),
@@ -3130,12 +3544,14 @@
 %% }
 -type create_public_key_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% response_headers_policy_access_control_allow_methods() :: #{
 %%   <<"Items">> => list(list(any())()),
 %%   <<"Quantity">> => integer()
 %% }
 -type response_headers_policy_access_control_allow_methods() :: #{binary() => any()}.
+
 
 %% Example:
 %% response_headers_policy_security_headers_config() :: #{
@@ -3148,11 +3564,13 @@
 %% }
 -type response_headers_policy_security_headers_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% realtime_log_config_owner_mismatch() :: #{
 %%   <<"Message">> => string()
 %% }
 -type realtime_log_config_owner_mismatch() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_distribution_with_tags_result() :: #{
@@ -3162,6 +3580,7 @@
 %% }
 -type create_distribution_with_tags_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_origin_request_policy_request() :: #{
 %%   <<"IfMatch">> => string(),
@@ -3169,14 +3588,17 @@
 %% }
 -type update_origin_request_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% origin_access_control_already_exists() :: #{
 %%   <<"Message">> => string()
 %% }
 -type origin_access_control_already_exists() :: #{binary() => any()}.
+
 %% Example:
 %% get_distribution_request() :: #{}
 -type get_distribution_request() :: #{}.
+
 
 %% Example:
 %% streaming_distribution_config_with_tags() :: #{
@@ -3185,11 +3607,13 @@
 %% }
 -type streaming_distribution_config_with_tags() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_field_level_encryption_profile_request() :: #{
 %%   <<"IfMatch">> => string()
 %% }
 -type delete_field_level_encryption_profile_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_function_request() :: #{
@@ -3199,12 +3623,14 @@
 %% }
 -type update_function_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_origin_access_control_result() :: #{
 %%   <<"ETag">> => string(),
 %%   <<"OriginAccessControl">> => origin_access_control()
 %% }
 -type update_origin_access_control_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% import_source() :: #{
@@ -3213,11 +3639,13 @@
 %% }
 -type import_source() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_distribution_request() :: #{
 %%   <<"IfMatch">> => string()
 %% }
 -type delete_distribution_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% field_level_encryption_profile_list() :: #{
@@ -3228,17 +3656,20 @@
 %% }
 -type field_level_encryption_profile_list() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_distributions_by_realtime_log_config_result() :: #{
 %%   <<"DistributionList">> => distribution_list()
 %% }
 -type list_distributions_by_realtime_log_config_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% no_such_origin() :: #{
 %%   <<"Message">> => string()
 %% }
 -type no_such_origin() :: #{binary() => any()}.
+
 
 %% Example:
 %% query_arg_profile_config() :: #{
@@ -3247,21 +3678,25 @@
 %% }
 -type query_arg_profile_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_field_level_encryption_config_result() :: #{
 %%   <<"ETag">> => string(),
 %%   <<"FieldLevelEncryptionConfig">> => field_level_encryption_config()
 %% }
 -type get_field_level_encryption_config_result() :: #{binary() => any()}.
+
 %% Example:
 %% delete_monitoring_subscription_request() :: #{}
 -type delete_monitoring_subscription_request() :: #{}.
+
 
 %% Example:
 %% no_such_monitoring_subscription() :: #{
 %%   <<"Message">> => string()
 %% }
 -type no_such_monitoring_subscription() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_function_request() :: #{
@@ -3271,6 +3706,7 @@
 %% }
 -type create_function_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% allowed_methods() :: #{
 %%   <<"CachedMethods">> => cached_methods(),
@@ -3279,12 +3715,14 @@
 %% }
 -type allowed_methods() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_origin_access_controls_request() :: #{
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => [integer()]
 %% }
 -type list_origin_access_controls_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% public_key_summary() :: #{
@@ -3296,11 +3734,13 @@
 %% }
 -type public_key_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% illegal_field_level_encryption_config_association_with_cache_behavior() :: #{
 %%   <<"Message">> => string()
 %% }
 -type illegal_field_level_encryption_config_association_with_cache_behavior() :: #{binary() => any()}.
+
 
 %% Example:
 %% cloud_front_origin_access_identity_list() :: #{
@@ -3313,17 +3753,20 @@
 %% }
 -type cloud_front_origin_access_identity_list() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_distributions_by_origin_request_policy_id_result() :: #{
 %%   <<"DistributionIdList">> => distribution_id_list()
 %% }
 -type list_distributions_by_origin_request_policy_id_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_public_keys() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_public_keys() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_cache_policy_config_result() :: #{
@@ -3332,6 +3775,7 @@
 %% }
 -type get_cache_policy_config_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% cache_policy() :: #{
 %%   <<"CachePolicyConfig">> => cache_policy_config(),
@@ -3339,6 +3783,7 @@
 %%   <<"LastModifiedTime">> => non_neg_integer()
 %% }
 -type cache_policy() :: #{binary() => any()}.
+
 
 %% Example:
 %% public_key_config() :: #{
@@ -3349,6 +3794,7 @@
 %% }
 -type public_key_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_streaming_distribution_result() :: #{
 %%   <<"ETag">> => string(),
@@ -3356,11 +3802,13 @@
 %% }
 -type get_streaming_distribution_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_distribution_with_tags_request() :: #{
 %%   <<"DistributionConfigWithTags">> := distribution_config_with_tags()
 %% }
 -type create_distribution_with_tags_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_streaming_distribution_result() :: #{
@@ -3369,12 +3817,14 @@
 %% }
 -type update_streaming_distribution_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_continuous_deployment_policies_request() :: #{
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => [integer()]
 %% }
 -type list_continuous_deployment_policies_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% response_headers_policy_x_s_s_protection() :: #{
@@ -3385,6 +3835,7 @@
 %% }
 -type response_headers_policy_x_s_s_protection() :: #{binary() => any()}.
 
+
 %% Example:
 %% custom_error_responses() :: #{
 %%   <<"Items">> => list(custom_error_response()()),
@@ -3392,11 +3843,13 @@
 %% }
 -type custom_error_responses() :: #{binary() => any()}.
 
+
 %% Example:
 %% no_such_field_level_encryption_profile() :: #{
 %%   <<"Message">> => string()
 %% }
 -type no_such_field_level_encryption_profile() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_invalidation_result() :: #{
@@ -3405,6 +3858,7 @@
 %% }
 -type create_invalidation_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_key_group_config_result() :: #{
 %%   <<"ETag">> => string(),
@@ -3412,11 +3866,13 @@
 %% }
 -type get_key_group_config_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_function_association() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_function_association() :: #{binary() => any()}.
+
 
 %% Example:
 %% cache_behavior() :: #{
@@ -3442,12 +3898,14 @@
 %% }
 -type cache_behavior() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_field_level_encryption_config_result() :: #{
 %%   <<"ETag">> => string(),
 %%   <<"FieldLevelEncryption">> => field_level_encryption()
 %% }
 -type update_field_level_encryption_config_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% parameters_in_cache_key_and_forwarded_to_origin() :: #{
@@ -3459,11 +3917,13 @@
 %% }
 -type parameters_in_cache_key_and_forwarded_to_origin() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_realtime_log_configs_result() :: #{
 %%   <<"RealtimeLogConfigs">> => realtime_log_configs()
 %% }
 -type list_realtime_log_configs_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% cache_policy_headers_config() :: #{
@@ -3472,11 +3932,13 @@
 %% }
 -type cache_policy_headers_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_origin_request_policy_request() :: #{
 %%   <<"OriginRequestPolicyConfig">> := origin_request_policy_config()
 %% }
 -type create_origin_request_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% public_key_in_use() :: #{
@@ -3484,17 +3946,20 @@
 %% }
 -type public_key_in_use() :: #{binary() => any()}.
 
+
 %% Example:
 %% function_in_use() :: #{
 %%   <<"Message">> => string()
 %% }
 -type function_in_use() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_headers_in_origin_request_policy() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_headers_in_origin_request_policy() :: #{binary() => any()}.
+
 
 %% Example:
 %% viewer_certificate() :: #{
@@ -3508,6 +3973,7 @@
 %% }
 -type viewer_certificate() :: #{binary() => any()}.
 
+
 %% Example:
 %% cache_policy_query_strings_config() :: #{
 %%   <<"QueryStringBehavior">> => list(any()),
@@ -3515,12 +3981,14 @@
 %% }
 -type cache_policy_query_strings_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_distributions_by_response_headers_policy_id_request() :: #{
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => [integer()]
 %% }
 -type list_distributions_by_response_headers_policy_id_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% origin_access_control_config() :: #{
@@ -3532,11 +4000,13 @@
 %% }
 -type origin_access_control_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% no_such_realtime_log_config() :: #{
 %%   <<"Message">> => string()
 %% }
 -type no_such_realtime_log_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_public_key_result() :: #{
@@ -3545,11 +4015,13 @@
 %% }
 -type get_public_key_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% publish_function_request() :: #{
 %%   <<"IfMatch">> := string()
 %% }
 -type publish_function_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% trusted_signers() :: #{
@@ -3558,6 +4030,7 @@
 %%   <<"Quantity">> => integer()
 %% }
 -type trusted_signers() :: #{binary() => any()}.
+
 
 %% Example:
 %% streaming_distribution_list() :: #{
@@ -3570,11 +4043,13 @@
 %% }
 -type streaming_distribution_list() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_function_request() :: #{
 %%   <<"Stage">> => list(any())
 %% }
 -type describe_function_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% staging_distribution_dns_names() :: #{
@@ -3583,12 +4058,14 @@
 %% }
 -type staging_distribution_dns_names() :: #{binary() => any()}.
 
+
 %% Example:
 %% response_headers_policy_summary() :: #{
 %%   <<"ResponseHeadersPolicy">> => response_headers_policy(),
 %%   <<"Type">> => list(any())
 %% }
 -type response_headers_policy_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_origin_request_policy_result() :: #{
@@ -3597,11 +4074,13 @@
 %% }
 -type get_origin_request_policy_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% no_such_public_key() :: #{
 %%   <<"Message">> => string()
 %% }
 -type no_such_public_key() :: #{binary() => any()}.
+
 
 %% Example:
 %% entity_limit_exceeded() :: #{
@@ -3609,17 +4088,20 @@
 %% }
 -type entity_limit_exceeded() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_public_key_request() :: #{
 %%   <<"PublicKeyConfig">> := public_key_config()
 %% }
 -type create_public_key_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_distributions() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_distributions() :: #{binary() => any()}.
+
 
 %% Example:
 %% function_metadata() :: #{
@@ -3630,6 +4112,7 @@
 %% }
 -type function_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_origin_access_control_config_result() :: #{
 %%   <<"ETag">> => string(),
@@ -3637,11 +4120,13 @@
 %% }
 -type get_origin_access_control_config_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% restrictions() :: #{
 %%   <<"GeoRestriction">> => geo_restriction()
 %% }
 -type restrictions() :: #{binary() => any()}.
+
 
 %% Example:
 %% key_pair_ids() :: #{
@@ -3649,15 +4134,18 @@
 %%   <<"Quantity">> => integer()
 %% }
 -type key_pair_ids() :: #{binary() => any()}.
+
 %% Example:
 %% get_cache_policy_request() :: #{}
 -type get_cache_policy_request() :: #{}.
+
 
 %% Example:
 %% invalid_response_code() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_response_code() :: #{binary() => any()}.
+
 
 %% Example:
 %% invalidation() :: #{
@@ -3668,6 +4156,7 @@
 %% }
 -type invalidation() :: #{binary() => any()}.
 
+
 %% Example:
 %% cookie_preference() :: #{
 %%   <<"Forward">> => list(any()),
@@ -3675,12 +4164,14 @@
 %% }
 -type cookie_preference() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_key_group_request() :: #{
 %%   <<"IfMatch">> => string(),
 %%   <<"KeyGroupConfig">> := key_group_config()
 %% }
 -type update_key_group_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% streaming_distribution_config() :: #{
@@ -3695,11 +4186,13 @@
 %% }
 -type streaming_distribution_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_field_level_encryption_query_arg_profiles() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_field_level_encryption_query_arg_profiles() :: #{binary() => any()}.
+
 
 %% Example:
 %% active_trusted_key_groups() :: #{
@@ -3708,6 +4201,7 @@
 %%   <<"Quantity">> => integer()
 %% }
 -type active_trusted_key_groups() :: #{binary() => any()}.
+
 
 %% Example:
 %% realtime_log_config() :: #{
@@ -3718,9 +4212,11 @@
 %%   <<"SamplingRate">> => float()
 %% }
 -type realtime_log_config() :: #{binary() => any()}.
+
 %% Example:
 %% get_origin_access_control_config_request() :: #{}
 -type get_origin_access_control_config_request() :: #{}.
+
 
 %% Example:
 %% distribution_id_list() :: #{
@@ -3733,11 +4229,13 @@
 %% }
 -type distribution_id_list() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_location_code() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_location_code() :: #{binary() => any()}.
+
 
 %% Example:
 %% staging_distribution_in_use() :: #{
@@ -3745,11 +4243,13 @@
 %% }
 -type staging_distribution_in_use() :: #{binary() => any()}.
 
+
 %% Example:
 %% origin_request_policy_in_use() :: #{
 %%   <<"Message">> => string()
 %% }
 -type origin_request_policy_in_use() :: #{binary() => any()}.
+
 
 %% Example:
 %% key_group_summary() :: #{
@@ -3757,17 +4257,20 @@
 %% }
 -type key_group_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_monitoring_subscription_request() :: #{
 %%   <<"MonitoringSubscription">> := monitoring_subscription()
 %% }
 -type create_monitoring_subscription_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_distributions_associated_to_field_level_encryption_config() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_distributions_associated_to_field_level_encryption_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% content_type_profile_config() :: #{
@@ -3776,12 +4279,14 @@
 %% }
 -type content_type_profile_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% response_headers_policy_access_control_allow_headers() :: #{
 %%   <<"Items">> => list(string()()),
 %%   <<"Quantity">> => integer()
 %% }
 -type response_headers_policy_access_control_allow_headers() :: #{binary() => any()}.
+
 
 %% Example:
 %% custom_origin_config() :: #{
@@ -3794,6 +4299,7 @@
 %% }
 -type custom_origin_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_streaming_distribution_with_tags_result() :: #{
 %%   <<"ETag">> => string(),
@@ -3802,21 +4308,25 @@
 %% }
 -type create_streaming_distribution_with_tags_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_field_level_encryption_profile_result() :: #{
 %%   <<"ETag">> => string(),
 %%   <<"FieldLevelEncryptionProfile">> => field_level_encryption_profile()
 %% }
 -type get_field_level_encryption_profile_result() :: #{binary() => any()}.
+
 %% Example:
 %% get_streaming_distribution_request() :: #{}
 -type get_streaming_distribution_request() :: #{}.
+
 
 %% Example:
 %% get_realtime_log_config_result() :: #{
 %%   <<"RealtimeLogConfig">> => realtime_log_config()
 %% }
 -type get_realtime_log_config_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_distribution_with_staging_config_result() :: #{
@@ -3825,6 +4335,7 @@
 %% }
 -type update_distribution_with_staging_config_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_field_level_encryption_profile_result() :: #{
 %%   <<"ETag">> => string(),
@@ -3832,11 +4343,13 @@
 %% }
 -type update_field_level_encryption_profile_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_distributions_associated_to_origin_access_control() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_distributions_associated_to_origin_access_control() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_function_result() :: #{
@@ -3844,6 +4357,999 @@
 %%   <<"FunctionSummary">> => function_summary()
 %% }
 -type update_function_result() :: #{binary() => any()}.
+
+-type associate_alias_errors() ::
+    no_such_distribution() | 
+    too_many_distribution_cnames() | 
+    invalid_argument() | 
+    access_denied() | 
+    illegal_update().
+
+-type copy_distribution_errors() ::
+    too_many_distributions_associated_to_origin_access_control() | 
+    too_many_distributions_associated_to_field_level_encryption_config() | 
+    invalid_location_code() | 
+    invalid_response_code() | 
+    too_many_distributions() | 
+    no_such_realtime_log_config() | 
+    invalid_function_association() | 
+    illegal_field_level_encryption_config_association_with_cache_behavior() | 
+    no_such_origin() | 
+    realtime_log_config_owner_mismatch() | 
+    no_such_response_headers_policy() | 
+    invalid_relative_path() | 
+    invalid_viewer_certificate() | 
+    too_many_query_string_parameters() | 
+    cname_already_exists() | 
+    invalid_default_root_object() | 
+    too_many_cache_behaviors() | 
+    too_many_distributions_associated_to_response_headers_policy() | 
+    too_many_lambda_function_associations() | 
+    too_many_distributions_with_lambda_associations() | 
+    too_many_distributions_with_single_function_arn() | 
+    too_many_origins() | 
+    distribution_already_exists() | 
+    too_many_origin_custom_headers() | 
+    invalid_minimum_protocol_version() | 
+    too_many_headers_in_forwarded_values() | 
+    too_many_key_groups_associated_to_distribution() | 
+    invalid_origin_read_timeout() | 
+    trusted_signer_does_not_exist() | 
+    no_such_cache_policy() | 
+    invalid_forward_cookies() | 
+    invalid_origin_keepalive_timeout() | 
+    invalid_lambda_function_association() | 
+    invalid_headers_for_s3_origin() | 
+    inconsistent_quantities() | 
+    missing_body() | 
+    too_many_distributions_with_function_associations() | 
+    invalid_geo_restriction_parameter() | 
+    invalid_error_code() | 
+    too_many_trusted_signers() | 
+    no_such_distribution() | 
+    no_such_origin_request_policy() | 
+    too_many_distribution_cnames() | 
+    precondition_failed() | 
+    invalid_required_protocol() | 
+    too_many_certificates() | 
+    invalid_origin() | 
+    invalid_origin_access_control() | 
+    no_such_field_level_encryption_config() | 
+    invalid_web_acl_id() | 
+    invalid_argument() | 
+    too_many_cookie_names_in_white_list() | 
+    access_denied() | 
+    invalid_t_t_l_order() | 
+    invalid_protocol_settings() | 
+    too_many_distributions_associated_to_key_group() | 
+    too_many_distributions_associated_to_origin_request_policy() | 
+    invalid_query_string_parameters() | 
+    trusted_key_group_does_not_exist() | 
+    too_many_distributions_associated_to_cache_policy() | 
+    invalid_if_match_version() | 
+    invalid_origin_access_identity() | 
+    too_many_function_associations() | 
+    too_many_origin_groups_per_distribution().
+
+-type create_cache_policy_errors() ::
+    cache_policy_already_exists() | 
+    inconsistent_quantities() | 
+    too_many_query_strings_in_cache_policy() | 
+    too_many_cache_policies() | 
+    too_many_headers_in_cache_policy() | 
+    invalid_argument() | 
+    access_denied() | 
+    too_many_cookies_in_cache_policy().
+
+-type create_cloud_front_origin_access_identity_errors() ::
+    too_many_cloud_front_origin_access_identities() | 
+    inconsistent_quantities() | 
+    missing_body() | 
+    invalid_argument() | 
+    cloud_front_origin_access_identity_already_exists().
+
+-type create_continuous_deployment_policy_errors() ::
+    staging_distribution_in_use() | 
+    inconsistent_quantities() | 
+    invalid_argument() | 
+    access_denied() | 
+    continuous_deployment_policy_already_exists() | 
+    too_many_continuous_deployment_policies().
+
+-type create_distribution_errors() ::
+    too_many_distributions_associated_to_origin_access_control() | 
+    too_many_distributions_associated_to_field_level_encryption_config() | 
+    invalid_location_code() | 
+    invalid_response_code() | 
+    too_many_distributions() | 
+    no_such_realtime_log_config() | 
+    invalid_function_association() | 
+    illegal_field_level_encryption_config_association_with_cache_behavior() | 
+    no_such_origin() | 
+    realtime_log_config_owner_mismatch() | 
+    no_such_response_headers_policy() | 
+    invalid_relative_path() | 
+    invalid_viewer_certificate() | 
+    too_many_query_string_parameters() | 
+    cname_already_exists() | 
+    invalid_default_root_object() | 
+    too_many_cache_behaviors() | 
+    too_many_distributions_associated_to_response_headers_policy() | 
+    too_many_lambda_function_associations() | 
+    too_many_distributions_with_lambda_associations() | 
+    too_many_distributions_with_single_function_arn() | 
+    too_many_origins() | 
+    distribution_already_exists() | 
+    too_many_origin_custom_headers() | 
+    invalid_minimum_protocol_version() | 
+    too_many_headers_in_forwarded_values() | 
+    too_many_key_groups_associated_to_distribution() | 
+    invalid_domain_name_for_origin_access_control() | 
+    invalid_origin_read_timeout() | 
+    trusted_signer_does_not_exist() | 
+    no_such_cache_policy() | 
+    invalid_forward_cookies() | 
+    invalid_origin_keepalive_timeout() | 
+    invalid_lambda_function_association() | 
+    invalid_headers_for_s3_origin() | 
+    inconsistent_quantities() | 
+    missing_body() | 
+    too_many_distributions_with_function_associations() | 
+    continuous_deployment_policy_in_use() | 
+    invalid_geo_restriction_parameter() | 
+    invalid_error_code() | 
+    too_many_trusted_signers() | 
+    no_such_origin_request_policy() | 
+    too_many_distribution_cnames() | 
+    invalid_required_protocol() | 
+    too_many_certificates() | 
+    invalid_origin() | 
+    invalid_origin_access_control() | 
+    no_such_field_level_encryption_config() | 
+    invalid_web_acl_id() | 
+    invalid_argument() | 
+    too_many_cookie_names_in_white_list() | 
+    access_denied() | 
+    invalid_t_t_l_order() | 
+    invalid_protocol_settings() | 
+    too_many_distributions_associated_to_key_group() | 
+    too_many_distributions_associated_to_origin_request_policy() | 
+    invalid_query_string_parameters() | 
+    trusted_key_group_does_not_exist() | 
+    too_many_distributions_associated_to_cache_policy() | 
+    illegal_origin_access_configuration() | 
+    no_such_continuous_deployment_policy() | 
+    invalid_origin_access_identity() | 
+    too_many_function_associations() | 
+    too_many_origin_groups_per_distribution().
+
+-type create_distribution_with_tags_errors() ::
+    too_many_distributions_associated_to_origin_access_control() | 
+    too_many_distributions_associated_to_field_level_encryption_config() | 
+    invalid_location_code() | 
+    invalid_response_code() | 
+    too_many_distributions() | 
+    no_such_realtime_log_config() | 
+    invalid_function_association() | 
+    illegal_field_level_encryption_config_association_with_cache_behavior() | 
+    no_such_origin() | 
+    realtime_log_config_owner_mismatch() | 
+    no_such_response_headers_policy() | 
+    invalid_relative_path() | 
+    invalid_viewer_certificate() | 
+    too_many_query_string_parameters() | 
+    cname_already_exists() | 
+    invalid_default_root_object() | 
+    too_many_cache_behaviors() | 
+    too_many_distributions_associated_to_response_headers_policy() | 
+    too_many_lambda_function_associations() | 
+    too_many_distributions_with_lambda_associations() | 
+    too_many_distributions_with_single_function_arn() | 
+    too_many_origins() | 
+    distribution_already_exists() | 
+    too_many_origin_custom_headers() | 
+    invalid_minimum_protocol_version() | 
+    too_many_headers_in_forwarded_values() | 
+    too_many_key_groups_associated_to_distribution() | 
+    invalid_domain_name_for_origin_access_control() | 
+    invalid_origin_read_timeout() | 
+    trusted_signer_does_not_exist() | 
+    no_such_cache_policy() | 
+    invalid_forward_cookies() | 
+    invalid_origin_keepalive_timeout() | 
+    invalid_lambda_function_association() | 
+    invalid_headers_for_s3_origin() | 
+    inconsistent_quantities() | 
+    missing_body() | 
+    too_many_distributions_with_function_associations() | 
+    continuous_deployment_policy_in_use() | 
+    invalid_geo_restriction_parameter() | 
+    invalid_error_code() | 
+    too_many_trusted_signers() | 
+    no_such_origin_request_policy() | 
+    too_many_distribution_cnames() | 
+    invalid_required_protocol() | 
+    too_many_certificates() | 
+    invalid_origin() | 
+    invalid_origin_access_control() | 
+    no_such_field_level_encryption_config() | 
+    invalid_web_acl_id() | 
+    invalid_argument() | 
+    too_many_cookie_names_in_white_list() | 
+    access_denied() | 
+    invalid_t_t_l_order() | 
+    invalid_protocol_settings() | 
+    invalid_tagging() | 
+    too_many_distributions_associated_to_key_group() | 
+    too_many_distributions_associated_to_origin_request_policy() | 
+    invalid_query_string_parameters() | 
+    trusted_key_group_does_not_exist() | 
+    too_many_distributions_associated_to_cache_policy() | 
+    illegal_origin_access_configuration() | 
+    no_such_continuous_deployment_policy() | 
+    invalid_origin_access_identity() | 
+    too_many_function_associations() | 
+    too_many_origin_groups_per_distribution().
+
+-type create_field_level_encryption_config_errors() ::
+    too_many_field_level_encryption_query_arg_profiles() | 
+    no_such_field_level_encryption_profile() | 
+    too_many_field_level_encryption_configs() | 
+    inconsistent_quantities() | 
+    field_level_encryption_config_already_exists() | 
+    invalid_argument() | 
+    too_many_field_level_encryption_content_type_profiles() | 
+    query_arg_profile_empty().
+
+-type create_field_level_encryption_profile_errors() ::
+    no_such_public_key() | 
+    too_many_field_level_encryption_field_patterns() | 
+    field_level_encryption_profile_size_exceeded() | 
+    too_many_field_level_encryption_encryption_entities() | 
+    too_many_field_level_encryption_profiles() | 
+    inconsistent_quantities() | 
+    invalid_argument() | 
+    field_level_encryption_profile_already_exists().
+
+-type create_function_errors() ::
+    function_already_exists() | 
+    unsupported_operation() | 
+    function_size_limit_exceeded() | 
+    invalid_argument() | 
+    too_many_functions().
+
+-type create_invalidation_errors() ::
+    inconsistent_quantities() | 
+    missing_body() | 
+    no_such_distribution() | 
+    batch_too_large() | 
+    invalid_argument() | 
+    access_denied() | 
+    too_many_invalidations_in_progress().
+
+-type create_key_group_errors() ::
+    too_many_key_groups() | 
+    too_many_public_keys_in_key_group() | 
+    key_group_already_exists() | 
+    invalid_argument().
+
+-type create_key_value_store_errors() ::
+    entity_limit_exceeded() | 
+    entity_size_limit_exceeded() | 
+    entity_already_exists() | 
+    invalid_argument() | 
+    access_denied().
+
+-type create_monitoring_subscription_errors() ::
+    monitoring_subscription_already_exists() | 
+    no_such_distribution() | 
+    unsupported_operation() | 
+    access_denied().
+
+-type create_origin_access_control_errors() ::
+    origin_access_control_already_exists() | 
+    invalid_argument() | 
+    too_many_origin_access_controls().
+
+-type create_origin_request_policy_errors() ::
+    too_many_headers_in_origin_request_policy() | 
+    too_many_origin_request_policies() | 
+    inconsistent_quantities() | 
+    origin_request_policy_already_exists() | 
+    too_many_query_strings_in_origin_request_policy() | 
+    too_many_cookies_in_origin_request_policy() | 
+    invalid_argument() | 
+    access_denied().
+
+-type create_public_key_errors() ::
+    too_many_public_keys() | 
+    invalid_argument() | 
+    public_key_already_exists().
+
+-type create_realtime_log_config_errors() ::
+    too_many_realtime_log_configs() | 
+    realtime_log_config_already_exists() | 
+    invalid_argument() | 
+    access_denied().
+
+-type create_response_headers_policy_errors() ::
+    too_many_remove_headers_in_response_headers_policy() | 
+    inconsistent_quantities() | 
+    response_headers_policy_already_exists() | 
+    invalid_argument() | 
+    access_denied() | 
+    too_long_c_s_p_in_response_headers_policy() | 
+    too_many_response_headers_policies() | 
+    too_many_custom_headers_in_response_headers_policy().
+
+-type create_streaming_distribution_errors() ::
+    cname_already_exists() | 
+    streaming_distribution_already_exists() | 
+    too_many_streaming_distribution_cnames() | 
+    too_many_streaming_distributions() | 
+    trusted_signer_does_not_exist() | 
+    inconsistent_quantities() | 
+    missing_body() | 
+    too_many_trusted_signers() | 
+    invalid_origin() | 
+    invalid_origin_access_control() | 
+    invalid_argument() | 
+    access_denied() | 
+    invalid_origin_access_identity().
+
+-type create_streaming_distribution_with_tags_errors() ::
+    cname_already_exists() | 
+    streaming_distribution_already_exists() | 
+    too_many_streaming_distribution_cnames() | 
+    too_many_streaming_distributions() | 
+    trusted_signer_does_not_exist() | 
+    inconsistent_quantities() | 
+    missing_body() | 
+    too_many_trusted_signers() | 
+    invalid_origin() | 
+    invalid_origin_access_control() | 
+    invalid_argument() | 
+    access_denied() | 
+    invalid_tagging() | 
+    invalid_origin_access_identity().
+
+-type delete_cache_policy_errors() ::
+    illegal_delete() | 
+    cache_policy_in_use() | 
+    no_such_cache_policy() | 
+    precondition_failed() | 
+    access_denied() | 
+    invalid_if_match_version().
+
+-type delete_cloud_front_origin_access_identity_errors() ::
+    precondition_failed() | 
+    no_such_cloud_front_origin_access_identity() | 
+    access_denied() | 
+    cloud_front_origin_access_identity_in_use() | 
+    invalid_if_match_version().
+
+-type delete_continuous_deployment_policy_errors() ::
+    continuous_deployment_policy_in_use() | 
+    precondition_failed() | 
+    invalid_argument() | 
+    access_denied() | 
+    invalid_if_match_version() | 
+    no_such_continuous_deployment_policy().
+
+-type delete_distribution_errors() ::
+    no_such_distribution() | 
+    precondition_failed() | 
+    access_denied() | 
+    invalid_if_match_version() | 
+    distribution_not_disabled().
+
+-type delete_field_level_encryption_config_errors() ::
+    precondition_failed() | 
+    no_such_field_level_encryption_config() | 
+    access_denied() | 
+    field_level_encryption_config_in_use() | 
+    invalid_if_match_version().
+
+-type delete_field_level_encryption_profile_errors() ::
+    no_such_field_level_encryption_profile() | 
+    precondition_failed() | 
+    field_level_encryption_profile_in_use() | 
+    access_denied() | 
+    invalid_if_match_version().
+
+-type delete_function_errors() ::
+    function_in_use() | 
+    no_such_function_exists() | 
+    precondition_failed() | 
+    unsupported_operation() | 
+    invalid_if_match_version().
+
+-type delete_key_group_errors() ::
+    no_such_resource() | 
+    precondition_failed() | 
+    resource_in_use() | 
+    invalid_if_match_version().
+
+-type delete_key_value_store_errors() ::
+    cannot_delete_entity_while_in_use() | 
+    precondition_failed() | 
+    access_denied() | 
+    entity_not_found() | 
+    invalid_if_match_version().
+
+-type delete_monitoring_subscription_errors() ::
+    no_such_monitoring_subscription() | 
+    no_such_distribution() | 
+    unsupported_operation() | 
+    access_denied().
+
+-type delete_origin_access_control_errors() ::
+    no_such_origin_access_control() | 
+    precondition_failed() | 
+    origin_access_control_in_use() | 
+    access_denied() | 
+    invalid_if_match_version().
+
+-type delete_origin_request_policy_errors() ::
+    origin_request_policy_in_use() | 
+    illegal_delete() | 
+    no_such_origin_request_policy() | 
+    precondition_failed() | 
+    access_denied() | 
+    invalid_if_match_version().
+
+-type delete_public_key_errors() ::
+    no_such_public_key() | 
+    public_key_in_use() | 
+    precondition_failed() | 
+    access_denied() | 
+    invalid_if_match_version().
+
+-type delete_realtime_log_config_errors() ::
+    no_such_realtime_log_config() | 
+    realtime_log_config_in_use() | 
+    invalid_argument() | 
+    access_denied().
+
+-type delete_response_headers_policy_errors() ::
+    no_such_response_headers_policy() | 
+    illegal_delete() | 
+    precondition_failed() | 
+    access_denied() | 
+    invalid_if_match_version() | 
+    response_headers_policy_in_use().
+
+-type delete_streaming_distribution_errors() ::
+    no_such_streaming_distribution() | 
+    precondition_failed() | 
+    access_denied() | 
+    invalid_if_match_version() | 
+    streaming_distribution_not_disabled().
+
+-type describe_function_errors() ::
+    no_such_function_exists() | 
+    unsupported_operation().
+
+-type describe_key_value_store_errors() ::
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found().
+
+-type get_cache_policy_errors() ::
+    no_such_cache_policy() | 
+    access_denied().
+
+-type get_cache_policy_config_errors() ::
+    no_such_cache_policy() | 
+    access_denied().
+
+-type get_cloud_front_origin_access_identity_errors() ::
+    no_such_cloud_front_origin_access_identity() | 
+    access_denied().
+
+-type get_cloud_front_origin_access_identity_config_errors() ::
+    no_such_cloud_front_origin_access_identity() | 
+    access_denied().
+
+-type get_continuous_deployment_policy_errors() ::
+    access_denied() | 
+    no_such_continuous_deployment_policy().
+
+-type get_continuous_deployment_policy_config_errors() ::
+    access_denied() | 
+    no_such_continuous_deployment_policy().
+
+-type get_distribution_errors() ::
+    no_such_distribution() | 
+    access_denied().
+
+-type get_distribution_config_errors() ::
+    no_such_distribution() | 
+    access_denied().
+
+-type get_field_level_encryption_errors() ::
+    no_such_field_level_encryption_config() | 
+    access_denied().
+
+-type get_field_level_encryption_config_errors() ::
+    no_such_field_level_encryption_config() | 
+    access_denied().
+
+-type get_field_level_encryption_profile_errors() ::
+    no_such_field_level_encryption_profile() | 
+    access_denied().
+
+-type get_field_level_encryption_profile_config_errors() ::
+    no_such_field_level_encryption_profile() | 
+    access_denied().
+
+-type get_function_errors() ::
+    no_such_function_exists() | 
+    unsupported_operation().
+
+-type get_invalidation_errors() ::
+    no_such_invalidation() | 
+    no_such_distribution() | 
+    access_denied().
+
+-type get_key_group_errors() ::
+    no_such_resource().
+
+-type get_key_group_config_errors() ::
+    no_such_resource().
+
+-type get_monitoring_subscription_errors() ::
+    no_such_monitoring_subscription() | 
+    no_such_distribution() | 
+    unsupported_operation() | 
+    access_denied().
+
+-type get_origin_access_control_errors() ::
+    no_such_origin_access_control() | 
+    access_denied().
+
+-type get_origin_access_control_config_errors() ::
+    no_such_origin_access_control() | 
+    access_denied().
+
+-type get_origin_request_policy_errors() ::
+    no_such_origin_request_policy() | 
+    access_denied().
+
+-type get_origin_request_policy_config_errors() ::
+    no_such_origin_request_policy() | 
+    access_denied().
+
+-type get_public_key_errors() ::
+    no_such_public_key() | 
+    access_denied().
+
+-type get_public_key_config_errors() ::
+    no_such_public_key() | 
+    access_denied().
+
+-type get_realtime_log_config_errors() ::
+    no_such_realtime_log_config() | 
+    invalid_argument() | 
+    access_denied().
+
+-type get_response_headers_policy_errors() ::
+    no_such_response_headers_policy() | 
+    access_denied().
+
+-type get_response_headers_policy_config_errors() ::
+    no_such_response_headers_policy() | 
+    access_denied().
+
+-type get_streaming_distribution_errors() ::
+    no_such_streaming_distribution() | 
+    access_denied().
+
+-type get_streaming_distribution_config_errors() ::
+    no_such_streaming_distribution() | 
+    access_denied().
+
+-type list_cache_policies_errors() ::
+    no_such_cache_policy() | 
+    invalid_argument() | 
+    access_denied().
+
+-type list_cloud_front_origin_access_identities_errors() ::
+    invalid_argument().
+
+-type list_conflicting_aliases_errors() ::
+    no_such_distribution() | 
+    invalid_argument().
+
+-type list_continuous_deployment_policies_errors() ::
+    invalid_argument() | 
+    access_denied() | 
+    no_such_continuous_deployment_policy().
+
+-type list_distributions_errors() ::
+    invalid_argument().
+
+-type list_distributions_by_cache_policy_id_errors() ::
+    no_such_cache_policy() | 
+    invalid_argument() | 
+    access_denied().
+
+-type list_distributions_by_key_group_errors() ::
+    no_such_resource() | 
+    invalid_argument().
+
+-type list_distributions_by_origin_request_policy_id_errors() ::
+    no_such_origin_request_policy() | 
+    invalid_argument() | 
+    access_denied().
+
+-type list_distributions_by_realtime_log_config_errors() ::
+    invalid_argument().
+
+-type list_distributions_by_response_headers_policy_id_errors() ::
+    no_such_response_headers_policy() | 
+    invalid_argument() | 
+    access_denied().
+
+-type list_distributions_by_web_acl_id_errors() ::
+    invalid_web_acl_id() | 
+    invalid_argument().
+
+-type list_field_level_encryption_configs_errors() ::
+    invalid_argument().
+
+-type list_field_level_encryption_profiles_errors() ::
+    invalid_argument().
+
+-type list_functions_errors() ::
+    unsupported_operation() | 
+    invalid_argument().
+
+-type list_invalidations_errors() ::
+    no_such_distribution() | 
+    invalid_argument() | 
+    access_denied().
+
+-type list_key_groups_errors() ::
+    invalid_argument().
+
+-type list_key_value_stores_errors() ::
+    invalid_argument() | 
+    access_denied().
+
+-type list_origin_access_controls_errors() ::
+    invalid_argument().
+
+-type list_origin_request_policies_errors() ::
+    no_such_origin_request_policy() | 
+    invalid_argument() | 
+    access_denied().
+
+-type list_public_keys_errors() ::
+    invalid_argument().
+
+-type list_realtime_log_configs_errors() ::
+    no_such_realtime_log_config() | 
+    invalid_argument() | 
+    access_denied().
+
+-type list_response_headers_policies_errors() ::
+    no_such_response_headers_policy() | 
+    invalid_argument() | 
+    access_denied().
+
+-type list_streaming_distributions_errors() ::
+    invalid_argument().
+
+-type list_tags_for_resource_errors() ::
+    no_such_resource() | 
+    invalid_argument() | 
+    access_denied() | 
+    invalid_tagging().
+
+-type publish_function_errors() ::
+    no_such_function_exists() | 
+    precondition_failed() | 
+    unsupported_operation() | 
+    invalid_argument() | 
+    invalid_if_match_version().
+
+-type tag_resource_errors() ::
+    no_such_resource() | 
+    invalid_argument() | 
+    access_denied() | 
+    invalid_tagging().
+
+-type test_function_errors() ::
+    test_function_failed() | 
+    no_such_function_exists() | 
+    unsupported_operation() | 
+    invalid_argument() | 
+    invalid_if_match_version().
+
+-type untag_resource_errors() ::
+    no_such_resource() | 
+    invalid_argument() | 
+    access_denied() | 
+    invalid_tagging().
+
+-type update_cache_policy_errors() ::
+    cache_policy_already_exists() | 
+    no_such_cache_policy() | 
+    inconsistent_quantities() | 
+    too_many_query_strings_in_cache_policy() | 
+    precondition_failed() | 
+    too_many_headers_in_cache_policy() | 
+    invalid_argument() | 
+    access_denied() | 
+    illegal_update() | 
+    invalid_if_match_version() | 
+    too_many_cookies_in_cache_policy().
+
+-type update_cloud_front_origin_access_identity_errors() ::
+    inconsistent_quantities() | 
+    missing_body() | 
+    precondition_failed() | 
+    no_such_cloud_front_origin_access_identity() | 
+    invalid_argument() | 
+    access_denied() | 
+    illegal_update() | 
+    invalid_if_match_version().
+
+-type update_continuous_deployment_policy_errors() ::
+    staging_distribution_in_use() | 
+    inconsistent_quantities() | 
+    precondition_failed() | 
+    invalid_argument() | 
+    access_denied() | 
+    invalid_if_match_version() | 
+    no_such_continuous_deployment_policy().
+
+-type update_distribution_errors() ::
+    too_many_distributions_associated_to_origin_access_control() | 
+    too_many_distributions_associated_to_field_level_encryption_config() | 
+    staging_distribution_in_use() | 
+    invalid_location_code() | 
+    invalid_response_code() | 
+    no_such_realtime_log_config() | 
+    invalid_function_association() | 
+    illegal_field_level_encryption_config_association_with_cache_behavior() | 
+    no_such_origin() | 
+    realtime_log_config_owner_mismatch() | 
+    no_such_response_headers_policy() | 
+    invalid_relative_path() | 
+    invalid_viewer_certificate() | 
+    too_many_query_string_parameters() | 
+    cname_already_exists() | 
+    invalid_default_root_object() | 
+    too_many_cache_behaviors() | 
+    too_many_distributions_associated_to_response_headers_policy() | 
+    too_many_lambda_function_associations() | 
+    too_many_distributions_with_lambda_associations() | 
+    too_many_distributions_with_single_function_arn() | 
+    too_many_origins() | 
+    too_many_origin_custom_headers() | 
+    invalid_minimum_protocol_version() | 
+    too_many_headers_in_forwarded_values() | 
+    too_many_key_groups_associated_to_distribution() | 
+    invalid_domain_name_for_origin_access_control() | 
+    invalid_origin_read_timeout() | 
+    trusted_signer_does_not_exist() | 
+    no_such_cache_policy() | 
+    invalid_forward_cookies() | 
+    invalid_origin_keepalive_timeout() | 
+    invalid_lambda_function_association() | 
+    invalid_headers_for_s3_origin() | 
+    inconsistent_quantities() | 
+    missing_body() | 
+    too_many_distributions_with_function_associations() | 
+    continuous_deployment_policy_in_use() | 
+    invalid_geo_restriction_parameter() | 
+    invalid_error_code() | 
+    too_many_trusted_signers() | 
+    no_such_distribution() | 
+    no_such_origin_request_policy() | 
+    too_many_distribution_cnames() | 
+    precondition_failed() | 
+    invalid_required_protocol() | 
+    too_many_certificates() | 
+    invalid_origin_access_control() | 
+    no_such_field_level_encryption_config() | 
+    invalid_web_acl_id() | 
+    invalid_argument() | 
+    too_many_cookie_names_in_white_list() | 
+    access_denied() | 
+    invalid_t_t_l_order() | 
+    illegal_update() | 
+    too_many_distributions_associated_to_key_group() | 
+    too_many_distributions_associated_to_origin_request_policy() | 
+    invalid_query_string_parameters() | 
+    trusted_key_group_does_not_exist() | 
+    too_many_distributions_associated_to_cache_policy() | 
+    invalid_if_match_version() | 
+    illegal_origin_access_configuration() | 
+    no_such_continuous_deployment_policy() | 
+    invalid_origin_access_identity() | 
+    too_many_function_associations() | 
+    too_many_origin_groups_per_distribution().
+
+-type update_distribution_with_staging_config_errors() ::
+    too_many_distributions_associated_to_origin_access_control() | 
+    too_many_distributions_associated_to_field_level_encryption_config() | 
+    invalid_location_code() | 
+    invalid_response_code() | 
+    no_such_realtime_log_config() | 
+    invalid_function_association() | 
+    illegal_field_level_encryption_config_association_with_cache_behavior() | 
+    no_such_origin() | 
+    realtime_log_config_owner_mismatch() | 
+    no_such_response_headers_policy() | 
+    invalid_relative_path() | 
+    invalid_viewer_certificate() | 
+    too_many_query_string_parameters() | 
+    cname_already_exists() | 
+    invalid_default_root_object() | 
+    too_many_cache_behaviors() | 
+    too_many_distributions_associated_to_response_headers_policy() | 
+    too_many_lambda_function_associations() | 
+    too_many_distributions_with_lambda_associations() | 
+    too_many_distributions_with_single_function_arn() | 
+    too_many_origins() | 
+    too_many_origin_custom_headers() | 
+    invalid_minimum_protocol_version() | 
+    too_many_headers_in_forwarded_values() | 
+    too_many_key_groups_associated_to_distribution() | 
+    invalid_origin_read_timeout() | 
+    trusted_signer_does_not_exist() | 
+    no_such_cache_policy() | 
+    invalid_forward_cookies() | 
+    invalid_origin_keepalive_timeout() | 
+    invalid_lambda_function_association() | 
+    invalid_headers_for_s3_origin() | 
+    inconsistent_quantities() | 
+    missing_body() | 
+    too_many_distributions_with_function_associations() | 
+    invalid_geo_restriction_parameter() | 
+    invalid_error_code() | 
+    too_many_trusted_signers() | 
+    no_such_distribution() | 
+    no_such_origin_request_policy() | 
+    too_many_distribution_cnames() | 
+    precondition_failed() | 
+    invalid_required_protocol() | 
+    too_many_certificates() | 
+    invalid_origin_access_control() | 
+    no_such_field_level_encryption_config() | 
+    invalid_web_acl_id() | 
+    invalid_argument() | 
+    too_many_cookie_names_in_white_list() | 
+    access_denied() | 
+    invalid_t_t_l_order() | 
+    illegal_update() | 
+    too_many_distributions_associated_to_key_group() | 
+    too_many_distributions_associated_to_origin_request_policy() | 
+    invalid_query_string_parameters() | 
+    trusted_key_group_does_not_exist() | 
+    too_many_distributions_associated_to_cache_policy() | 
+    invalid_if_match_version() | 
+    invalid_origin_access_identity() | 
+    too_many_function_associations() | 
+    too_many_origin_groups_per_distribution().
+
+-type update_field_level_encryption_config_errors() ::
+    too_many_field_level_encryption_query_arg_profiles() | 
+    no_such_field_level_encryption_profile() | 
+    inconsistent_quantities() | 
+    precondition_failed() | 
+    no_such_field_level_encryption_config() | 
+    invalid_argument() | 
+    access_denied() | 
+    illegal_update() | 
+    too_many_field_level_encryption_content_type_profiles() | 
+    invalid_if_match_version() | 
+    query_arg_profile_empty().
+
+-type update_field_level_encryption_profile_errors() ::
+    no_such_public_key() | 
+    no_such_field_level_encryption_profile() | 
+    too_many_field_level_encryption_field_patterns() | 
+    field_level_encryption_profile_size_exceeded() | 
+    too_many_field_level_encryption_encryption_entities() | 
+    inconsistent_quantities() | 
+    precondition_failed() | 
+    invalid_argument() | 
+    access_denied() | 
+    field_level_encryption_profile_already_exists() | 
+    illegal_update() | 
+    invalid_if_match_version().
+
+-type update_function_errors() ::
+    no_such_function_exists() | 
+    precondition_failed() | 
+    unsupported_operation() | 
+    function_size_limit_exceeded() | 
+    invalid_argument() | 
+    invalid_if_match_version().
+
+-type update_key_group_errors() ::
+    too_many_public_keys_in_key_group() | 
+    no_such_resource() | 
+    precondition_failed() | 
+    key_group_already_exists() | 
+    invalid_argument() | 
+    invalid_if_match_version().
+
+-type update_key_value_store_errors() ::
+    precondition_failed() | 
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found() | 
+    invalid_if_match_version().
+
+-type update_origin_access_control_errors() ::
+    origin_access_control_already_exists() | 
+    no_such_origin_access_control() | 
+    precondition_failed() | 
+    invalid_argument() | 
+    access_denied() | 
+    illegal_update() | 
+    invalid_if_match_version().
+
+-type update_origin_request_policy_errors() ::
+    too_many_headers_in_origin_request_policy() | 
+    inconsistent_quantities() | 
+    origin_request_policy_already_exists() | 
+    too_many_query_strings_in_origin_request_policy() | 
+    no_such_origin_request_policy() | 
+    precondition_failed() | 
+    too_many_cookies_in_origin_request_policy() | 
+    invalid_argument() | 
+    access_denied() | 
+    illegal_update() | 
+    invalid_if_match_version().
+
+-type update_public_key_errors() ::
+    no_such_public_key() | 
+    precondition_failed() | 
+    invalid_argument() | 
+    access_denied() | 
+    illegal_update() | 
+    invalid_if_match_version() | 
+    cannot_change_immutable_public_key_fields().
+
+-type update_realtime_log_config_errors() ::
+    no_such_realtime_log_config() | 
+    invalid_argument() | 
+    access_denied().
+
+-type update_response_headers_policy_errors() ::
+    no_such_response_headers_policy() | 
+    too_many_remove_headers_in_response_headers_policy() | 
+    inconsistent_quantities() | 
+    response_headers_policy_already_exists() | 
+    precondition_failed() | 
+    invalid_argument() | 
+    access_denied() | 
+    illegal_update() | 
+    invalid_if_match_version() | 
+    too_long_c_s_p_in_response_headers_policy() | 
+    too_many_custom_headers_in_response_headers_policy().
+
+-type update_streaming_distribution_errors() ::
+    cname_already_exists() | 
+    too_many_streaming_distribution_cnames() | 
+    no_such_streaming_distribution() | 
+    trusted_signer_does_not_exist() | 
+    inconsistent_quantities() | 
+    missing_body() | 
+    too_many_trusted_signers() | 
+    precondition_failed() | 
+    invalid_origin_access_control() | 
+    invalid_argument() | 
+    access_denied() | 
+    illegal_update() | 
+    invalid_if_match_version() | 
+    invalid_origin_access_identity().
 
 %%====================================================================
 %% API
@@ -3874,22 +5380,14 @@
 -spec associate_alias(map(), binary() | list(), associate_alias_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, illegal_update(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_distribution(), tuple()} |
-    {error, too_many_distribution_cnames(), tuple()}.
+    {error, associate_alias_errors(), tuple()}.
 associate_alias(Client, TargetDistributionId, Input) ->
     associate_alias(Client, TargetDistributionId, Input, []).
 
 -spec associate_alias(map(), binary() | list(), associate_alias_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, illegal_update(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_distribution(), tuple()} |
-    {error, too_many_distribution_cnames(), tuple()}.
+    {error, associate_alias_errors(), tuple()}.
 associate_alias(Client, TargetDistributionId, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(TargetDistributionId), "/associate-alias"],
@@ -3941,140 +5439,14 @@ associate_alias(Client, TargetDistributionId, Input0, Options0) ->
 -spec copy_distribution(map(), binary() | list(), copy_distribution_request()) ->
     {ok, copy_distribution_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, cname_already_exists(), tuple()} |
-    {error, distribution_already_exists(), tuple()} |
-    {error, illegal_field_level_encryption_config_association_with_cache_behavior(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_default_root_object(), tuple()} |
-    {error, invalid_error_code(), tuple()} |
-    {error, invalid_forward_cookies(), tuple()} |
-    {error, invalid_function_association(), tuple()} |
-    {error, invalid_geo_restriction_parameter(), tuple()} |
-    {error, invalid_headers_for_s3_origin(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, invalid_lambda_function_association(), tuple()} |
-    {error, invalid_location_code(), tuple()} |
-    {error, invalid_minimum_protocol_version(), tuple()} |
-    {error, invalid_origin(), tuple()} |
-    {error, invalid_origin_access_control(), tuple()} |
-    {error, invalid_origin_access_identity(), tuple()} |
-    {error, invalid_origin_keepalive_timeout(), tuple()} |
-    {error, invalid_origin_read_timeout(), tuple()} |
-    {error, invalid_protocol_settings(), tuple()} |
-    {error, invalid_query_string_parameters(), tuple()} |
-    {error, invalid_relative_path(), tuple()} |
-    {error, invalid_required_protocol(), tuple()} |
-    {error, invalid_response_code(), tuple()} |
-    {error, invalid_t_t_l_order(), tuple()} |
-    {error, invalid_viewer_certificate(), tuple()} |
-    {error, invalid_web_acl_id(), tuple()} |
-    {error, missing_body(), tuple()} |
-    {error, no_such_cache_policy(), tuple()} |
-    {error, no_such_distribution(), tuple()} |
-    {error, no_such_field_level_encryption_config(), tuple()} |
-    {error, no_such_origin(), tuple()} |
-    {error, no_such_origin_request_policy(), tuple()} |
-    {error, no_such_realtime_log_config(), tuple()} |
-    {error, no_such_response_headers_policy(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, realtime_log_config_owner_mismatch(), tuple()} |
-    {error, too_many_cache_behaviors(), tuple()} |
-    {error, too_many_certificates(), tuple()} |
-    {error, too_many_cookie_names_in_white_list(), tuple()} |
-    {error, too_many_distribution_cnames(), tuple()} |
-    {error, too_many_distributions(), tuple()} |
-    {error, too_many_distributions_associated_to_cache_policy(), tuple()} |
-    {error, too_many_distributions_associated_to_field_level_encryption_config(), tuple()} |
-    {error, too_many_distributions_associated_to_key_group(), tuple()} |
-    {error, too_many_distributions_associated_to_origin_access_control(), tuple()} |
-    {error, too_many_distributions_associated_to_origin_request_policy(), tuple()} |
-    {error, too_many_distributions_associated_to_response_headers_policy(), tuple()} |
-    {error, too_many_distributions_with_function_associations(), tuple()} |
-    {error, too_many_distributions_with_lambda_associations(), tuple()} |
-    {error, too_many_distributions_with_single_function_arn(), tuple()} |
-    {error, too_many_function_associations(), tuple()} |
-    {error, too_many_headers_in_forwarded_values(), tuple()} |
-    {error, too_many_key_groups_associated_to_distribution(), tuple()} |
-    {error, too_many_lambda_function_associations(), tuple()} |
-    {error, too_many_origin_custom_headers(), tuple()} |
-    {error, too_many_origin_groups_per_distribution(), tuple()} |
-    {error, too_many_origins(), tuple()} |
-    {error, too_many_query_string_parameters(), tuple()} |
-    {error, too_many_trusted_signers(), tuple()} |
-    {error, trusted_key_group_does_not_exist(), tuple()} |
-    {error, trusted_signer_does_not_exist(), tuple()}.
+    {error, copy_distribution_errors(), tuple()}.
 copy_distribution(Client, PrimaryDistributionId, Input) ->
     copy_distribution(Client, PrimaryDistributionId, Input, []).
 
 -spec copy_distribution(map(), binary() | list(), copy_distribution_request(), proplists:proplist()) ->
     {ok, copy_distribution_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, cname_already_exists(), tuple()} |
-    {error, distribution_already_exists(), tuple()} |
-    {error, illegal_field_level_encryption_config_association_with_cache_behavior(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_default_root_object(), tuple()} |
-    {error, invalid_error_code(), tuple()} |
-    {error, invalid_forward_cookies(), tuple()} |
-    {error, invalid_function_association(), tuple()} |
-    {error, invalid_geo_restriction_parameter(), tuple()} |
-    {error, invalid_headers_for_s3_origin(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, invalid_lambda_function_association(), tuple()} |
-    {error, invalid_location_code(), tuple()} |
-    {error, invalid_minimum_protocol_version(), tuple()} |
-    {error, invalid_origin(), tuple()} |
-    {error, invalid_origin_access_control(), tuple()} |
-    {error, invalid_origin_access_identity(), tuple()} |
-    {error, invalid_origin_keepalive_timeout(), tuple()} |
-    {error, invalid_origin_read_timeout(), tuple()} |
-    {error, invalid_protocol_settings(), tuple()} |
-    {error, invalid_query_string_parameters(), tuple()} |
-    {error, invalid_relative_path(), tuple()} |
-    {error, invalid_required_protocol(), tuple()} |
-    {error, invalid_response_code(), tuple()} |
-    {error, invalid_t_t_l_order(), tuple()} |
-    {error, invalid_viewer_certificate(), tuple()} |
-    {error, invalid_web_acl_id(), tuple()} |
-    {error, missing_body(), tuple()} |
-    {error, no_such_cache_policy(), tuple()} |
-    {error, no_such_distribution(), tuple()} |
-    {error, no_such_field_level_encryption_config(), tuple()} |
-    {error, no_such_origin(), tuple()} |
-    {error, no_such_origin_request_policy(), tuple()} |
-    {error, no_such_realtime_log_config(), tuple()} |
-    {error, no_such_response_headers_policy(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, realtime_log_config_owner_mismatch(), tuple()} |
-    {error, too_many_cache_behaviors(), tuple()} |
-    {error, too_many_certificates(), tuple()} |
-    {error, too_many_cookie_names_in_white_list(), tuple()} |
-    {error, too_many_distribution_cnames(), tuple()} |
-    {error, too_many_distributions(), tuple()} |
-    {error, too_many_distributions_associated_to_cache_policy(), tuple()} |
-    {error, too_many_distributions_associated_to_field_level_encryption_config(), tuple()} |
-    {error, too_many_distributions_associated_to_key_group(), tuple()} |
-    {error, too_many_distributions_associated_to_origin_access_control(), tuple()} |
-    {error, too_many_distributions_associated_to_origin_request_policy(), tuple()} |
-    {error, too_many_distributions_associated_to_response_headers_policy(), tuple()} |
-    {error, too_many_distributions_with_function_associations(), tuple()} |
-    {error, too_many_distributions_with_lambda_associations(), tuple()} |
-    {error, too_many_distributions_with_single_function_arn(), tuple()} |
-    {error, too_many_function_associations(), tuple()} |
-    {error, too_many_headers_in_forwarded_values(), tuple()} |
-    {error, too_many_key_groups_associated_to_distribution(), tuple()} |
-    {error, too_many_lambda_function_associations(), tuple()} |
-    {error, too_many_origin_custom_headers(), tuple()} |
-    {error, too_many_origin_groups_per_distribution(), tuple()} |
-    {error, too_many_origins(), tuple()} |
-    {error, too_many_query_string_parameters(), tuple()} |
-    {error, too_many_trusted_signers(), tuple()} |
-    {error, trusted_key_group_does_not_exist(), tuple()} |
-    {error, trusted_signer_does_not_exist(), tuple()}.
+    {error, copy_distribution_errors(), tuple()}.
 copy_distribution(Client, PrimaryDistributionId, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(PrimaryDistributionId), "/copy"],
@@ -4150,28 +5522,14 @@ copy_distribution(Client, PrimaryDistributionId, Input0, Options0) ->
 -spec create_cache_policy(map(), create_cache_policy_request()) ->
     {ok, create_cache_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, cache_policy_already_exists(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, too_many_cache_policies(), tuple()} |
-    {error, too_many_cookies_in_cache_policy(), tuple()} |
-    {error, too_many_headers_in_cache_policy(), tuple()} |
-    {error, too_many_query_strings_in_cache_policy(), tuple()}.
+    {error, create_cache_policy_errors(), tuple()}.
 create_cache_policy(Client, Input) ->
     create_cache_policy(Client, Input, []).
 
 -spec create_cache_policy(map(), create_cache_policy_request(), proplists:proplist()) ->
     {ok, create_cache_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, cache_policy_already_exists(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, too_many_cache_policies(), tuple()} |
-    {error, too_many_cookies_in_cache_policy(), tuple()} |
-    {error, too_many_headers_in_cache_policy(), tuple()} |
-    {error, too_many_query_strings_in_cache_policy(), tuple()}.
+    {error, create_cache_policy_errors(), tuple()}.
 create_cache_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/cache-policy"],
@@ -4225,22 +5583,14 @@ create_cache_policy(Client, Input0, Options0) ->
 -spec create_cloud_front_origin_access_identity(map(), create_cloud_front_origin_access_identity_request()) ->
     {ok, create_cloud_front_origin_access_identity_result(), tuple()} |
     {error, any()} |
-    {error, cloud_front_origin_access_identity_already_exists(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, missing_body(), tuple()} |
-    {error, too_many_cloud_front_origin_access_identities(), tuple()}.
+    {error, create_cloud_front_origin_access_identity_errors(), tuple()}.
 create_cloud_front_origin_access_identity(Client, Input) ->
     create_cloud_front_origin_access_identity(Client, Input, []).
 
 -spec create_cloud_front_origin_access_identity(map(), create_cloud_front_origin_access_identity_request(), proplists:proplist()) ->
     {ok, create_cloud_front_origin_access_identity_result(), tuple()} |
     {error, any()} |
-    {error, cloud_front_origin_access_identity_already_exists(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, missing_body(), tuple()} |
-    {error, too_many_cloud_front_origin_access_identities(), tuple()}.
+    {error, create_cloud_front_origin_access_identity_errors(), tuple()}.
 create_cloud_front_origin_access_identity(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/origin-access-identity/cloudfront"],
@@ -4299,24 +5649,14 @@ create_cloud_front_origin_access_identity(Client, Input0, Options0) ->
 -spec create_continuous_deployment_policy(map(), create_continuous_deployment_policy_request()) ->
     {ok, create_continuous_deployment_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, continuous_deployment_policy_already_exists(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, staging_distribution_in_use(), tuple()} |
-    {error, too_many_continuous_deployment_policies(), tuple()}.
+    {error, create_continuous_deployment_policy_errors(), tuple()}.
 create_continuous_deployment_policy(Client, Input) ->
     create_continuous_deployment_policy(Client, Input, []).
 
 -spec create_continuous_deployment_policy(map(), create_continuous_deployment_policy_request(), proplists:proplist()) ->
     {ok, create_continuous_deployment_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, continuous_deployment_policy_already_exists(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, staging_distribution_in_use(), tuple()} |
-    {error, too_many_continuous_deployment_policies(), tuple()}.
+    {error, create_continuous_deployment_policy_errors(), tuple()}.
 create_continuous_deployment_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/continuous-deployment-policy"],
@@ -4360,142 +5700,14 @@ create_continuous_deployment_policy(Client, Input0, Options0) ->
 -spec create_distribution(map(), create_distribution_request()) ->
     {ok, create_distribution_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, cname_already_exists(), tuple()} |
-    {error, continuous_deployment_policy_in_use(), tuple()} |
-    {error, distribution_already_exists(), tuple()} |
-    {error, illegal_field_level_encryption_config_association_with_cache_behavior(), tuple()} |
-    {error, illegal_origin_access_configuration(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_default_root_object(), tuple()} |
-    {error, invalid_domain_name_for_origin_access_control(), tuple()} |
-    {error, invalid_error_code(), tuple()} |
-    {error, invalid_forward_cookies(), tuple()} |
-    {error, invalid_function_association(), tuple()} |
-    {error, invalid_geo_restriction_parameter(), tuple()} |
-    {error, invalid_headers_for_s3_origin(), tuple()} |
-    {error, invalid_lambda_function_association(), tuple()} |
-    {error, invalid_location_code(), tuple()} |
-    {error, invalid_minimum_protocol_version(), tuple()} |
-    {error, invalid_origin(), tuple()} |
-    {error, invalid_origin_access_control(), tuple()} |
-    {error, invalid_origin_access_identity(), tuple()} |
-    {error, invalid_origin_keepalive_timeout(), tuple()} |
-    {error, invalid_origin_read_timeout(), tuple()} |
-    {error, invalid_protocol_settings(), tuple()} |
-    {error, invalid_query_string_parameters(), tuple()} |
-    {error, invalid_relative_path(), tuple()} |
-    {error, invalid_required_protocol(), tuple()} |
-    {error, invalid_response_code(), tuple()} |
-    {error, invalid_t_t_l_order(), tuple()} |
-    {error, invalid_viewer_certificate(), tuple()} |
-    {error, invalid_web_acl_id(), tuple()} |
-    {error, missing_body(), tuple()} |
-    {error, no_such_cache_policy(), tuple()} |
-    {error, no_such_continuous_deployment_policy(), tuple()} |
-    {error, no_such_field_level_encryption_config(), tuple()} |
-    {error, no_such_origin(), tuple()} |
-    {error, no_such_origin_request_policy(), tuple()} |
-    {error, no_such_realtime_log_config(), tuple()} |
-    {error, no_such_response_headers_policy(), tuple()} |
-    {error, realtime_log_config_owner_mismatch(), tuple()} |
-    {error, too_many_cache_behaviors(), tuple()} |
-    {error, too_many_certificates(), tuple()} |
-    {error, too_many_cookie_names_in_white_list(), tuple()} |
-    {error, too_many_distribution_cnames(), tuple()} |
-    {error, too_many_distributions(), tuple()} |
-    {error, too_many_distributions_associated_to_cache_policy(), tuple()} |
-    {error, too_many_distributions_associated_to_field_level_encryption_config(), tuple()} |
-    {error, too_many_distributions_associated_to_key_group(), tuple()} |
-    {error, too_many_distributions_associated_to_origin_access_control(), tuple()} |
-    {error, too_many_distributions_associated_to_origin_request_policy(), tuple()} |
-    {error, too_many_distributions_associated_to_response_headers_policy(), tuple()} |
-    {error, too_many_distributions_with_function_associations(), tuple()} |
-    {error, too_many_distributions_with_lambda_associations(), tuple()} |
-    {error, too_many_distributions_with_single_function_arn(), tuple()} |
-    {error, too_many_function_associations(), tuple()} |
-    {error, too_many_headers_in_forwarded_values(), tuple()} |
-    {error, too_many_key_groups_associated_to_distribution(), tuple()} |
-    {error, too_many_lambda_function_associations(), tuple()} |
-    {error, too_many_origin_custom_headers(), tuple()} |
-    {error, too_many_origin_groups_per_distribution(), tuple()} |
-    {error, too_many_origins(), tuple()} |
-    {error, too_many_query_string_parameters(), tuple()} |
-    {error, too_many_trusted_signers(), tuple()} |
-    {error, trusted_key_group_does_not_exist(), tuple()} |
-    {error, trusted_signer_does_not_exist(), tuple()}.
+    {error, create_distribution_errors(), tuple()}.
 create_distribution(Client, Input) ->
     create_distribution(Client, Input, []).
 
 -spec create_distribution(map(), create_distribution_request(), proplists:proplist()) ->
     {ok, create_distribution_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, cname_already_exists(), tuple()} |
-    {error, continuous_deployment_policy_in_use(), tuple()} |
-    {error, distribution_already_exists(), tuple()} |
-    {error, illegal_field_level_encryption_config_association_with_cache_behavior(), tuple()} |
-    {error, illegal_origin_access_configuration(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_default_root_object(), tuple()} |
-    {error, invalid_domain_name_for_origin_access_control(), tuple()} |
-    {error, invalid_error_code(), tuple()} |
-    {error, invalid_forward_cookies(), tuple()} |
-    {error, invalid_function_association(), tuple()} |
-    {error, invalid_geo_restriction_parameter(), tuple()} |
-    {error, invalid_headers_for_s3_origin(), tuple()} |
-    {error, invalid_lambda_function_association(), tuple()} |
-    {error, invalid_location_code(), tuple()} |
-    {error, invalid_minimum_protocol_version(), tuple()} |
-    {error, invalid_origin(), tuple()} |
-    {error, invalid_origin_access_control(), tuple()} |
-    {error, invalid_origin_access_identity(), tuple()} |
-    {error, invalid_origin_keepalive_timeout(), tuple()} |
-    {error, invalid_origin_read_timeout(), tuple()} |
-    {error, invalid_protocol_settings(), tuple()} |
-    {error, invalid_query_string_parameters(), tuple()} |
-    {error, invalid_relative_path(), tuple()} |
-    {error, invalid_required_protocol(), tuple()} |
-    {error, invalid_response_code(), tuple()} |
-    {error, invalid_t_t_l_order(), tuple()} |
-    {error, invalid_viewer_certificate(), tuple()} |
-    {error, invalid_web_acl_id(), tuple()} |
-    {error, missing_body(), tuple()} |
-    {error, no_such_cache_policy(), tuple()} |
-    {error, no_such_continuous_deployment_policy(), tuple()} |
-    {error, no_such_field_level_encryption_config(), tuple()} |
-    {error, no_such_origin(), tuple()} |
-    {error, no_such_origin_request_policy(), tuple()} |
-    {error, no_such_realtime_log_config(), tuple()} |
-    {error, no_such_response_headers_policy(), tuple()} |
-    {error, realtime_log_config_owner_mismatch(), tuple()} |
-    {error, too_many_cache_behaviors(), tuple()} |
-    {error, too_many_certificates(), tuple()} |
-    {error, too_many_cookie_names_in_white_list(), tuple()} |
-    {error, too_many_distribution_cnames(), tuple()} |
-    {error, too_many_distributions(), tuple()} |
-    {error, too_many_distributions_associated_to_cache_policy(), tuple()} |
-    {error, too_many_distributions_associated_to_field_level_encryption_config(), tuple()} |
-    {error, too_many_distributions_associated_to_key_group(), tuple()} |
-    {error, too_many_distributions_associated_to_origin_access_control(), tuple()} |
-    {error, too_many_distributions_associated_to_origin_request_policy(), tuple()} |
-    {error, too_many_distributions_associated_to_response_headers_policy(), tuple()} |
-    {error, too_many_distributions_with_function_associations(), tuple()} |
-    {error, too_many_distributions_with_lambda_associations(), tuple()} |
-    {error, too_many_distributions_with_single_function_arn(), tuple()} |
-    {error, too_many_function_associations(), tuple()} |
-    {error, too_many_headers_in_forwarded_values(), tuple()} |
-    {error, too_many_key_groups_associated_to_distribution(), tuple()} |
-    {error, too_many_lambda_function_associations(), tuple()} |
-    {error, too_many_origin_custom_headers(), tuple()} |
-    {error, too_many_origin_groups_per_distribution(), tuple()} |
-    {error, too_many_origins(), tuple()} |
-    {error, too_many_query_string_parameters(), tuple()} |
-    {error, too_many_trusted_signers(), tuple()} |
-    {error, trusted_key_group_does_not_exist(), tuple()} |
-    {error, trusted_signer_does_not_exist(), tuple()}.
+    {error, create_distribution_errors(), tuple()}.
 create_distribution(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/distribution"],
@@ -4548,144 +5760,14 @@ create_distribution(Client, Input0, Options0) ->
 -spec create_distribution_with_tags(map(), create_distribution_with_tags_request()) ->
     {ok, create_distribution_with_tags_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, cname_already_exists(), tuple()} |
-    {error, continuous_deployment_policy_in_use(), tuple()} |
-    {error, distribution_already_exists(), tuple()} |
-    {error, illegal_field_level_encryption_config_association_with_cache_behavior(), tuple()} |
-    {error, illegal_origin_access_configuration(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_default_root_object(), tuple()} |
-    {error, invalid_domain_name_for_origin_access_control(), tuple()} |
-    {error, invalid_error_code(), tuple()} |
-    {error, invalid_forward_cookies(), tuple()} |
-    {error, invalid_function_association(), tuple()} |
-    {error, invalid_geo_restriction_parameter(), tuple()} |
-    {error, invalid_headers_for_s3_origin(), tuple()} |
-    {error, invalid_lambda_function_association(), tuple()} |
-    {error, invalid_location_code(), tuple()} |
-    {error, invalid_minimum_protocol_version(), tuple()} |
-    {error, invalid_origin(), tuple()} |
-    {error, invalid_origin_access_control(), tuple()} |
-    {error, invalid_origin_access_identity(), tuple()} |
-    {error, invalid_origin_keepalive_timeout(), tuple()} |
-    {error, invalid_origin_read_timeout(), tuple()} |
-    {error, invalid_protocol_settings(), tuple()} |
-    {error, invalid_query_string_parameters(), tuple()} |
-    {error, invalid_relative_path(), tuple()} |
-    {error, invalid_required_protocol(), tuple()} |
-    {error, invalid_response_code(), tuple()} |
-    {error, invalid_tagging(), tuple()} |
-    {error, invalid_t_t_l_order(), tuple()} |
-    {error, invalid_viewer_certificate(), tuple()} |
-    {error, invalid_web_acl_id(), tuple()} |
-    {error, missing_body(), tuple()} |
-    {error, no_such_cache_policy(), tuple()} |
-    {error, no_such_continuous_deployment_policy(), tuple()} |
-    {error, no_such_field_level_encryption_config(), tuple()} |
-    {error, no_such_origin(), tuple()} |
-    {error, no_such_origin_request_policy(), tuple()} |
-    {error, no_such_realtime_log_config(), tuple()} |
-    {error, no_such_response_headers_policy(), tuple()} |
-    {error, realtime_log_config_owner_mismatch(), tuple()} |
-    {error, too_many_cache_behaviors(), tuple()} |
-    {error, too_many_certificates(), tuple()} |
-    {error, too_many_cookie_names_in_white_list(), tuple()} |
-    {error, too_many_distribution_cnames(), tuple()} |
-    {error, too_many_distributions(), tuple()} |
-    {error, too_many_distributions_associated_to_cache_policy(), tuple()} |
-    {error, too_many_distributions_associated_to_field_level_encryption_config(), tuple()} |
-    {error, too_many_distributions_associated_to_key_group(), tuple()} |
-    {error, too_many_distributions_associated_to_origin_access_control(), tuple()} |
-    {error, too_many_distributions_associated_to_origin_request_policy(), tuple()} |
-    {error, too_many_distributions_associated_to_response_headers_policy(), tuple()} |
-    {error, too_many_distributions_with_function_associations(), tuple()} |
-    {error, too_many_distributions_with_lambda_associations(), tuple()} |
-    {error, too_many_distributions_with_single_function_arn(), tuple()} |
-    {error, too_many_function_associations(), tuple()} |
-    {error, too_many_headers_in_forwarded_values(), tuple()} |
-    {error, too_many_key_groups_associated_to_distribution(), tuple()} |
-    {error, too_many_lambda_function_associations(), tuple()} |
-    {error, too_many_origin_custom_headers(), tuple()} |
-    {error, too_many_origin_groups_per_distribution(), tuple()} |
-    {error, too_many_origins(), tuple()} |
-    {error, too_many_query_string_parameters(), tuple()} |
-    {error, too_many_trusted_signers(), tuple()} |
-    {error, trusted_key_group_does_not_exist(), tuple()} |
-    {error, trusted_signer_does_not_exist(), tuple()}.
+    {error, create_distribution_with_tags_errors(), tuple()}.
 create_distribution_with_tags(Client, Input) ->
     create_distribution_with_tags(Client, Input, []).
 
 -spec create_distribution_with_tags(map(), create_distribution_with_tags_request(), proplists:proplist()) ->
     {ok, create_distribution_with_tags_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, cname_already_exists(), tuple()} |
-    {error, continuous_deployment_policy_in_use(), tuple()} |
-    {error, distribution_already_exists(), tuple()} |
-    {error, illegal_field_level_encryption_config_association_with_cache_behavior(), tuple()} |
-    {error, illegal_origin_access_configuration(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_default_root_object(), tuple()} |
-    {error, invalid_domain_name_for_origin_access_control(), tuple()} |
-    {error, invalid_error_code(), tuple()} |
-    {error, invalid_forward_cookies(), tuple()} |
-    {error, invalid_function_association(), tuple()} |
-    {error, invalid_geo_restriction_parameter(), tuple()} |
-    {error, invalid_headers_for_s3_origin(), tuple()} |
-    {error, invalid_lambda_function_association(), tuple()} |
-    {error, invalid_location_code(), tuple()} |
-    {error, invalid_minimum_protocol_version(), tuple()} |
-    {error, invalid_origin(), tuple()} |
-    {error, invalid_origin_access_control(), tuple()} |
-    {error, invalid_origin_access_identity(), tuple()} |
-    {error, invalid_origin_keepalive_timeout(), tuple()} |
-    {error, invalid_origin_read_timeout(), tuple()} |
-    {error, invalid_protocol_settings(), tuple()} |
-    {error, invalid_query_string_parameters(), tuple()} |
-    {error, invalid_relative_path(), tuple()} |
-    {error, invalid_required_protocol(), tuple()} |
-    {error, invalid_response_code(), tuple()} |
-    {error, invalid_tagging(), tuple()} |
-    {error, invalid_t_t_l_order(), tuple()} |
-    {error, invalid_viewer_certificate(), tuple()} |
-    {error, invalid_web_acl_id(), tuple()} |
-    {error, missing_body(), tuple()} |
-    {error, no_such_cache_policy(), tuple()} |
-    {error, no_such_continuous_deployment_policy(), tuple()} |
-    {error, no_such_field_level_encryption_config(), tuple()} |
-    {error, no_such_origin(), tuple()} |
-    {error, no_such_origin_request_policy(), tuple()} |
-    {error, no_such_realtime_log_config(), tuple()} |
-    {error, no_such_response_headers_policy(), tuple()} |
-    {error, realtime_log_config_owner_mismatch(), tuple()} |
-    {error, too_many_cache_behaviors(), tuple()} |
-    {error, too_many_certificates(), tuple()} |
-    {error, too_many_cookie_names_in_white_list(), tuple()} |
-    {error, too_many_distribution_cnames(), tuple()} |
-    {error, too_many_distributions(), tuple()} |
-    {error, too_many_distributions_associated_to_cache_policy(), tuple()} |
-    {error, too_many_distributions_associated_to_field_level_encryption_config(), tuple()} |
-    {error, too_many_distributions_associated_to_key_group(), tuple()} |
-    {error, too_many_distributions_associated_to_origin_access_control(), tuple()} |
-    {error, too_many_distributions_associated_to_origin_request_policy(), tuple()} |
-    {error, too_many_distributions_associated_to_response_headers_policy(), tuple()} |
-    {error, too_many_distributions_with_function_associations(), tuple()} |
-    {error, too_many_distributions_with_lambda_associations(), tuple()} |
-    {error, too_many_distributions_with_single_function_arn(), tuple()} |
-    {error, too_many_function_associations(), tuple()} |
-    {error, too_many_headers_in_forwarded_values(), tuple()} |
-    {error, too_many_key_groups_associated_to_distribution(), tuple()} |
-    {error, too_many_lambda_function_associations(), tuple()} |
-    {error, too_many_origin_custom_headers(), tuple()} |
-    {error, too_many_origin_groups_per_distribution(), tuple()} |
-    {error, too_many_origins(), tuple()} |
-    {error, too_many_query_string_parameters(), tuple()} |
-    {error, too_many_trusted_signers(), tuple()} |
-    {error, trusted_key_group_does_not_exist(), tuple()} |
-    {error, trusted_signer_does_not_exist(), tuple()}.
+    {error, create_distribution_with_tags_errors(), tuple()}.
 create_distribution_with_tags(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/distribution?WithTags"],
@@ -4729,28 +5811,14 @@ create_distribution_with_tags(Client, Input0, Options0) ->
 -spec create_field_level_encryption_config(map(), create_field_level_encryption_config_request()) ->
     {ok, create_field_level_encryption_config_result(), tuple()} |
     {error, any()} |
-    {error, field_level_encryption_config_already_exists(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_field_level_encryption_profile(), tuple()} |
-    {error, query_arg_profile_empty(), tuple()} |
-    {error, too_many_field_level_encryption_configs(), tuple()} |
-    {error, too_many_field_level_encryption_content_type_profiles(), tuple()} |
-    {error, too_many_field_level_encryption_query_arg_profiles(), tuple()}.
+    {error, create_field_level_encryption_config_errors(), tuple()}.
 create_field_level_encryption_config(Client, Input) ->
     create_field_level_encryption_config(Client, Input, []).
 
 -spec create_field_level_encryption_config(map(), create_field_level_encryption_config_request(), proplists:proplist()) ->
     {ok, create_field_level_encryption_config_result(), tuple()} |
     {error, any()} |
-    {error, field_level_encryption_config_already_exists(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_field_level_encryption_profile(), tuple()} |
-    {error, query_arg_profile_empty(), tuple()} |
-    {error, too_many_field_level_encryption_configs(), tuple()} |
-    {error, too_many_field_level_encryption_content_type_profiles(), tuple()} |
-    {error, too_many_field_level_encryption_query_arg_profiles(), tuple()}.
+    {error, create_field_level_encryption_config_errors(), tuple()}.
 create_field_level_encryption_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/field-level-encryption"],
@@ -4794,28 +5862,14 @@ create_field_level_encryption_config(Client, Input0, Options0) ->
 -spec create_field_level_encryption_profile(map(), create_field_level_encryption_profile_request()) ->
     {ok, create_field_level_encryption_profile_result(), tuple()} |
     {error, any()} |
-    {error, field_level_encryption_profile_already_exists(), tuple()} |
-    {error, field_level_encryption_profile_size_exceeded(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_public_key(), tuple()} |
-    {error, too_many_field_level_encryption_encryption_entities(), tuple()} |
-    {error, too_many_field_level_encryption_field_patterns(), tuple()} |
-    {error, too_many_field_level_encryption_profiles(), tuple()}.
+    {error, create_field_level_encryption_profile_errors(), tuple()}.
 create_field_level_encryption_profile(Client, Input) ->
     create_field_level_encryption_profile(Client, Input, []).
 
 -spec create_field_level_encryption_profile(map(), create_field_level_encryption_profile_request(), proplists:proplist()) ->
     {ok, create_field_level_encryption_profile_result(), tuple()} |
     {error, any()} |
-    {error, field_level_encryption_profile_already_exists(), tuple()} |
-    {error, field_level_encryption_profile_size_exceeded(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_public_key(), tuple()} |
-    {error, too_many_field_level_encryption_encryption_entities(), tuple()} |
-    {error, too_many_field_level_encryption_field_patterns(), tuple()} |
-    {error, too_many_field_level_encryption_profiles(), tuple()}.
+    {error, create_field_level_encryption_profile_errors(), tuple()}.
 create_field_level_encryption_profile(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/field-level-encryption-profile"],
@@ -4876,22 +5930,14 @@ create_field_level_encryption_profile(Client, Input0, Options0) ->
 -spec create_function(map(), create_function_request()) ->
     {ok, create_function_result(), tuple()} |
     {error, any()} |
-    {error, function_already_exists(), tuple()} |
-    {error, function_size_limit_exceeded(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, too_many_functions(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, create_function_errors(), tuple()}.
 create_function(Client, Input) ->
     create_function(Client, Input, []).
 
 -spec create_function(map(), create_function_request(), proplists:proplist()) ->
     {ok, create_function_result(), tuple()} |
     {error, any()} |
-    {error, function_already_exists(), tuple()} |
-    {error, function_size_limit_exceeded(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, too_many_functions(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, create_function_errors(), tuple()}.
 create_function(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/function"],
@@ -4935,26 +5981,14 @@ create_function(Client, Input0, Options0) ->
 -spec create_invalidation(map(), binary() | list(), create_invalidation_request()) ->
     {ok, create_invalidation_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, batch_too_large(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, missing_body(), tuple()} |
-    {error, no_such_distribution(), tuple()} |
-    {error, too_many_invalidations_in_progress(), tuple()}.
+    {error, create_invalidation_errors(), tuple()}.
 create_invalidation(Client, DistributionId, Input) ->
     create_invalidation(Client, DistributionId, Input, []).
 
 -spec create_invalidation(map(), binary() | list(), create_invalidation_request(), proplists:proplist()) ->
     {ok, create_invalidation_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, batch_too_large(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, missing_body(), tuple()} |
-    {error, no_such_distribution(), tuple()} |
-    {error, too_many_invalidations_in_progress(), tuple()}.
+    {error, create_invalidation_errors(), tuple()}.
 create_invalidation(Client, DistributionId, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(DistributionId), "/invalidation"],
@@ -5016,20 +6050,14 @@ create_invalidation(Client, DistributionId, Input0, Options0) ->
 -spec create_key_group(map(), create_key_group_request()) ->
     {ok, create_key_group_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()} |
-    {error, key_group_already_exists(), tuple()} |
-    {error, too_many_key_groups(), tuple()} |
-    {error, too_many_public_keys_in_key_group(), tuple()}.
+    {error, create_key_group_errors(), tuple()}.
 create_key_group(Client, Input) ->
     create_key_group(Client, Input, []).
 
 -spec create_key_group(map(), create_key_group_request(), proplists:proplist()) ->
     {ok, create_key_group_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()} |
-    {error, key_group_already_exists(), tuple()} |
-    {error, too_many_key_groups(), tuple()} |
-    {error, too_many_public_keys_in_key_group(), tuple()}.
+    {error, create_key_group_errors(), tuple()}.
 create_key_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/key-group"],
@@ -5077,22 +6105,14 @@ create_key_group(Client, Input0, Options0) ->
 -spec create_key_value_store(map(), create_key_value_store_request()) ->
     {ok, create_key_value_store_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, entity_already_exists(), tuple()} |
-    {error, entity_limit_exceeded(), tuple()} |
-    {error, entity_size_limit_exceeded(), tuple()} |
-    {error, invalid_argument(), tuple()}.
+    {error, create_key_value_store_errors(), tuple()}.
 create_key_value_store(Client, Input) ->
     create_key_value_store(Client, Input, []).
 
 -spec create_key_value_store(map(), create_key_value_store_request(), proplists:proplist()) ->
     {ok, create_key_value_store_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, entity_already_exists(), tuple()} |
-    {error, entity_limit_exceeded(), tuple()} |
-    {error, entity_size_limit_exceeded(), tuple()} |
-    {error, invalid_argument(), tuple()}.
+    {error, create_key_value_store_errors(), tuple()}.
 create_key_value_store(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/key-value-store"],
@@ -5146,20 +6166,14 @@ create_key_value_store(Client, Input0, Options0) ->
 -spec create_monitoring_subscription(map(), binary() | list(), create_monitoring_subscription_request()) ->
     {ok, create_monitoring_subscription_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, monitoring_subscription_already_exists(), tuple()} |
-    {error, no_such_distribution(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, create_monitoring_subscription_errors(), tuple()}.
 create_monitoring_subscription(Client, DistributionId, Input) ->
     create_monitoring_subscription(Client, DistributionId, Input, []).
 
 -spec create_monitoring_subscription(map(), binary() | list(), create_monitoring_subscription_request(), proplists:proplist()) ->
     {ok, create_monitoring_subscription_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, monitoring_subscription_already_exists(), tuple()} |
-    {error, no_such_distribution(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, create_monitoring_subscription_errors(), tuple()}.
 create_monitoring_subscription(Client, DistributionId, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/distributions/", aws_util:encode_uri(DistributionId), "/monitoring-subscription"],
@@ -5201,18 +6215,14 @@ create_monitoring_subscription(Client, DistributionId, Input0, Options0) ->
 -spec create_origin_access_control(map(), create_origin_access_control_request()) ->
     {ok, create_origin_access_control_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()} |
-    {error, origin_access_control_already_exists(), tuple()} |
-    {error, too_many_origin_access_controls(), tuple()}.
+    {error, create_origin_access_control_errors(), tuple()}.
 create_origin_access_control(Client, Input) ->
     create_origin_access_control(Client, Input, []).
 
 -spec create_origin_access_control(map(), create_origin_access_control_request(), proplists:proplist()) ->
     {ok, create_origin_access_control_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()} |
-    {error, origin_access_control_already_exists(), tuple()} |
-    {error, too_many_origin_access_controls(), tuple()}.
+    {error, create_origin_access_control_errors(), tuple()}.
 create_origin_access_control(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/origin-access-control"],
@@ -5292,28 +6302,14 @@ create_origin_access_control(Client, Input0, Options0) ->
 -spec create_origin_request_policy(map(), create_origin_request_policy_request()) ->
     {ok, create_origin_request_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, origin_request_policy_already_exists(), tuple()} |
-    {error, too_many_cookies_in_origin_request_policy(), tuple()} |
-    {error, too_many_headers_in_origin_request_policy(), tuple()} |
-    {error, too_many_origin_request_policies(), tuple()} |
-    {error, too_many_query_strings_in_origin_request_policy(), tuple()}.
+    {error, create_origin_request_policy_errors(), tuple()}.
 create_origin_request_policy(Client, Input) ->
     create_origin_request_policy(Client, Input, []).
 
 -spec create_origin_request_policy(map(), create_origin_request_policy_request(), proplists:proplist()) ->
     {ok, create_origin_request_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, origin_request_policy_already_exists(), tuple()} |
-    {error, too_many_cookies_in_origin_request_policy(), tuple()} |
-    {error, too_many_headers_in_origin_request_policy(), tuple()} |
-    {error, too_many_origin_request_policies(), tuple()} |
-    {error, too_many_query_strings_in_origin_request_policy(), tuple()}.
+    {error, create_origin_request_policy_errors(), tuple()}.
 create_origin_request_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/origin-request-policy"],
@@ -5361,18 +6357,14 @@ create_origin_request_policy(Client, Input0, Options0) ->
 -spec create_public_key(map(), create_public_key_request()) ->
     {ok, create_public_key_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()} |
-    {error, public_key_already_exists(), tuple()} |
-    {error, too_many_public_keys(), tuple()}.
+    {error, create_public_key_errors(), tuple()}.
 create_public_key(Client, Input) ->
     create_public_key(Client, Input, []).
 
 -spec create_public_key(map(), create_public_key_request(), proplists:proplist()) ->
     {ok, create_public_key_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()} |
-    {error, public_key_already_exists(), tuple()} |
-    {error, too_many_public_keys(), tuple()}.
+    {error, create_public_key_errors(), tuple()}.
 create_public_key(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/public-key"],
@@ -5427,20 +6419,14 @@ create_public_key(Client, Input0, Options0) ->
 -spec create_realtime_log_config(map(), create_realtime_log_config_request()) ->
     {ok, create_realtime_log_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, realtime_log_config_already_exists(), tuple()} |
-    {error, too_many_realtime_log_configs(), tuple()}.
+    {error, create_realtime_log_config_errors(), tuple()}.
 create_realtime_log_config(Client, Input) ->
     create_realtime_log_config(Client, Input, []).
 
 -spec create_realtime_log_config(map(), create_realtime_log_config_request(), proplists:proplist()) ->
     {ok, create_realtime_log_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, realtime_log_config_already_exists(), tuple()} |
-    {error, too_many_realtime_log_configs(), tuple()}.
+    {error, create_realtime_log_config_errors(), tuple()}.
 create_realtime_log_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/realtime-log-config"],
@@ -5489,28 +6475,14 @@ create_realtime_log_config(Client, Input0, Options0) ->
 -spec create_response_headers_policy(map(), create_response_headers_policy_request()) ->
     {ok, create_response_headers_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, response_headers_policy_already_exists(), tuple()} |
-    {error, too_long_c_s_p_in_response_headers_policy(), tuple()} |
-    {error, too_many_custom_headers_in_response_headers_policy(), tuple()} |
-    {error, too_many_remove_headers_in_response_headers_policy(), tuple()} |
-    {error, too_many_response_headers_policies(), tuple()}.
+    {error, create_response_headers_policy_errors(), tuple()}.
 create_response_headers_policy(Client, Input) ->
     create_response_headers_policy(Client, Input, []).
 
 -spec create_response_headers_policy(map(), create_response_headers_policy_request(), proplists:proplist()) ->
     {ok, create_response_headers_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, response_headers_policy_already_exists(), tuple()} |
-    {error, too_long_c_s_p_in_response_headers_policy(), tuple()} |
-    {error, too_many_custom_headers_in_response_headers_policy(), tuple()} |
-    {error, too_many_remove_headers_in_response_headers_policy(), tuple()} |
-    {error, too_many_response_headers_policies(), tuple()}.
+    {error, create_response_headers_policy_errors(), tuple()}.
 create_response_headers_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/response-headers-policy"],
@@ -5560,38 +6532,14 @@ create_response_headers_policy(Client, Input0, Options0) ->
 -spec create_streaming_distribution(map(), create_streaming_distribution_request()) ->
     {ok, create_streaming_distribution_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, cname_already_exists(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_origin(), tuple()} |
-    {error, invalid_origin_access_control(), tuple()} |
-    {error, invalid_origin_access_identity(), tuple()} |
-    {error, missing_body(), tuple()} |
-    {error, streaming_distribution_already_exists(), tuple()} |
-    {error, too_many_streaming_distribution_cnames(), tuple()} |
-    {error, too_many_streaming_distributions(), tuple()} |
-    {error, too_many_trusted_signers(), tuple()} |
-    {error, trusted_signer_does_not_exist(), tuple()}.
+    {error, create_streaming_distribution_errors(), tuple()}.
 create_streaming_distribution(Client, Input) ->
     create_streaming_distribution(Client, Input, []).
 
 -spec create_streaming_distribution(map(), create_streaming_distribution_request(), proplists:proplist()) ->
     {ok, create_streaming_distribution_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, cname_already_exists(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_origin(), tuple()} |
-    {error, invalid_origin_access_control(), tuple()} |
-    {error, invalid_origin_access_identity(), tuple()} |
-    {error, missing_body(), tuple()} |
-    {error, streaming_distribution_already_exists(), tuple()} |
-    {error, too_many_streaming_distribution_cnames(), tuple()} |
-    {error, too_many_streaming_distributions(), tuple()} |
-    {error, too_many_trusted_signers(), tuple()} |
-    {error, trusted_signer_does_not_exist(), tuple()}.
+    {error, create_streaming_distribution_errors(), tuple()}.
 create_streaming_distribution(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/streaming-distribution"],
@@ -5641,40 +6589,14 @@ create_streaming_distribution(Client, Input0, Options0) ->
 -spec create_streaming_distribution_with_tags(map(), create_streaming_distribution_with_tags_request()) ->
     {ok, create_streaming_distribution_with_tags_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, cname_already_exists(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_origin(), tuple()} |
-    {error, invalid_origin_access_control(), tuple()} |
-    {error, invalid_origin_access_identity(), tuple()} |
-    {error, invalid_tagging(), tuple()} |
-    {error, missing_body(), tuple()} |
-    {error, streaming_distribution_already_exists(), tuple()} |
-    {error, too_many_streaming_distribution_cnames(), tuple()} |
-    {error, too_many_streaming_distributions(), tuple()} |
-    {error, too_many_trusted_signers(), tuple()} |
-    {error, trusted_signer_does_not_exist(), tuple()}.
+    {error, create_streaming_distribution_with_tags_errors(), tuple()}.
 create_streaming_distribution_with_tags(Client, Input) ->
     create_streaming_distribution_with_tags(Client, Input, []).
 
 -spec create_streaming_distribution_with_tags(map(), create_streaming_distribution_with_tags_request(), proplists:proplist()) ->
     {ok, create_streaming_distribution_with_tags_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, cname_already_exists(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_origin(), tuple()} |
-    {error, invalid_origin_access_control(), tuple()} |
-    {error, invalid_origin_access_identity(), tuple()} |
-    {error, invalid_tagging(), tuple()} |
-    {error, missing_body(), tuple()} |
-    {error, streaming_distribution_already_exists(), tuple()} |
-    {error, too_many_streaming_distribution_cnames(), tuple()} |
-    {error, too_many_streaming_distributions(), tuple()} |
-    {error, too_many_trusted_signers(), tuple()} |
-    {error, trusted_signer_does_not_exist(), tuple()}.
+    {error, create_streaming_distribution_with_tags_errors(), tuple()}.
 create_streaming_distribution_with_tags(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/streaming-distribution?WithTags"],
@@ -5729,24 +6651,14 @@ create_streaming_distribution_with_tags(Client, Input0, Options0) ->
 -spec delete_cache_policy(map(), binary() | list(), delete_cache_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, cache_policy_in_use(), tuple()} |
-    {error, illegal_delete(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_cache_policy(), tuple()} |
-    {error, precondition_failed(), tuple()}.
+    {error, delete_cache_policy_errors(), tuple()}.
 delete_cache_policy(Client, Id, Input) ->
     delete_cache_policy(Client, Id, Input, []).
 
 -spec delete_cache_policy(map(), binary() | list(), delete_cache_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, cache_policy_in_use(), tuple()} |
-    {error, illegal_delete(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_cache_policy(), tuple()} |
-    {error, precondition_failed(), tuple()}.
+    {error, delete_cache_policy_errors(), tuple()}.
 delete_cache_policy(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/cache-policy/", aws_util:encode_uri(Id), ""],
@@ -5775,22 +6687,14 @@ delete_cache_policy(Client, Id, Input0, Options0) ->
 -spec delete_cloud_front_origin_access_identity(map(), binary() | list(), delete_cloud_front_origin_access_identity_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, cloud_front_origin_access_identity_in_use(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_cloud_front_origin_access_identity(), tuple()} |
-    {error, precondition_failed(), tuple()}.
+    {error, delete_cloud_front_origin_access_identity_errors(), tuple()}.
 delete_cloud_front_origin_access_identity(Client, Id, Input) ->
     delete_cloud_front_origin_access_identity(Client, Id, Input, []).
 
 -spec delete_cloud_front_origin_access_identity(map(), binary() | list(), delete_cloud_front_origin_access_identity_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, cloud_front_origin_access_identity_in_use(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_cloud_front_origin_access_identity(), tuple()} |
-    {error, precondition_failed(), tuple()}.
+    {error, delete_cloud_front_origin_access_identity_errors(), tuple()}.
 delete_cloud_front_origin_access_identity(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/origin-access-identity/cloudfront/", aws_util:encode_uri(Id), ""],
@@ -5825,24 +6729,14 @@ delete_cloud_front_origin_access_identity(Client, Id, Input0, Options0) ->
 -spec delete_continuous_deployment_policy(map(), binary() | list(), delete_continuous_deployment_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, continuous_deployment_policy_in_use(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_continuous_deployment_policy(), tuple()} |
-    {error, precondition_failed(), tuple()}.
+    {error, delete_continuous_deployment_policy_errors(), tuple()}.
 delete_continuous_deployment_policy(Client, Id, Input) ->
     delete_continuous_deployment_policy(Client, Id, Input, []).
 
 -spec delete_continuous_deployment_policy(map(), binary() | list(), delete_continuous_deployment_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, continuous_deployment_policy_in_use(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_continuous_deployment_policy(), tuple()} |
-    {error, precondition_failed(), tuple()}.
+    {error, delete_continuous_deployment_policy_errors(), tuple()}.
 delete_continuous_deployment_policy(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/continuous-deployment-policy/", aws_util:encode_uri(Id), ""],
@@ -5871,22 +6765,14 @@ delete_continuous_deployment_policy(Client, Id, Input0, Options0) ->
 -spec delete_distribution(map(), binary() | list(), delete_distribution_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, distribution_not_disabled(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_distribution(), tuple()} |
-    {error, precondition_failed(), tuple()}.
+    {error, delete_distribution_errors(), tuple()}.
 delete_distribution(Client, Id, Input) ->
     delete_distribution(Client, Id, Input, []).
 
 -spec delete_distribution(map(), binary() | list(), delete_distribution_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, distribution_not_disabled(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_distribution(), tuple()} |
-    {error, precondition_failed(), tuple()}.
+    {error, delete_distribution_errors(), tuple()}.
 delete_distribution(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(Id), ""],
@@ -5915,22 +6801,14 @@ delete_distribution(Client, Id, Input0, Options0) ->
 -spec delete_field_level_encryption_config(map(), binary() | list(), delete_field_level_encryption_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, field_level_encryption_config_in_use(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_field_level_encryption_config(), tuple()} |
-    {error, precondition_failed(), tuple()}.
+    {error, delete_field_level_encryption_config_errors(), tuple()}.
 delete_field_level_encryption_config(Client, Id, Input) ->
     delete_field_level_encryption_config(Client, Id, Input, []).
 
 -spec delete_field_level_encryption_config(map(), binary() | list(), delete_field_level_encryption_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, field_level_encryption_config_in_use(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_field_level_encryption_config(), tuple()} |
-    {error, precondition_failed(), tuple()}.
+    {error, delete_field_level_encryption_config_errors(), tuple()}.
 delete_field_level_encryption_config(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/field-level-encryption/", aws_util:encode_uri(Id), ""],
@@ -5959,22 +6837,14 @@ delete_field_level_encryption_config(Client, Id, Input0, Options0) ->
 -spec delete_field_level_encryption_profile(map(), binary() | list(), delete_field_level_encryption_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, field_level_encryption_profile_in_use(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_field_level_encryption_profile(), tuple()} |
-    {error, precondition_failed(), tuple()}.
+    {error, delete_field_level_encryption_profile_errors(), tuple()}.
 delete_field_level_encryption_profile(Client, Id, Input) ->
     delete_field_level_encryption_profile(Client, Id, Input, []).
 
 -spec delete_field_level_encryption_profile(map(), binary() | list(), delete_field_level_encryption_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, field_level_encryption_profile_in_use(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_field_level_encryption_profile(), tuple()} |
-    {error, precondition_failed(), tuple()}.
+    {error, delete_field_level_encryption_profile_errors(), tuple()}.
 delete_field_level_encryption_profile(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/field-level-encryption-profile/", aws_util:encode_uri(Id), ""],
@@ -6013,22 +6883,14 @@ delete_field_level_encryption_profile(Client, Id, Input0, Options0) ->
 -spec delete_function(map(), binary() | list(), delete_function_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, function_in_use(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_function_exists(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, delete_function_errors(), tuple()}.
 delete_function(Client, Name, Input) ->
     delete_function(Client, Name, Input, []).
 
 -spec delete_function(map(), binary() | list(), delete_function_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, function_in_use(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_function_exists(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, delete_function_errors(), tuple()}.
 delete_function(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/function/", aws_util:encode_uri(Name), ""],
@@ -6068,20 +6930,14 @@ delete_function(Client, Name, Input0, Options0) ->
 -spec delete_key_group(map(), binary() | list(), delete_key_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_resource(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, resource_in_use(), tuple()}.
+    {error, delete_key_group_errors(), tuple()}.
 delete_key_group(Client, Id, Input) ->
     delete_key_group(Client, Id, Input, []).
 
 -spec delete_key_group(map(), binary() | list(), delete_key_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_resource(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, resource_in_use(), tuple()}.
+    {error, delete_key_group_errors(), tuple()}.
 delete_key_group(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/key-group/", aws_util:encode_uri(Id), ""],
@@ -6110,22 +6966,14 @@ delete_key_group(Client, Id, Input0, Options0) ->
 -spec delete_key_value_store(map(), binary() | list(), delete_key_value_store_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, cannot_delete_entity_while_in_use(), tuple()} |
-    {error, entity_not_found(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, precondition_failed(), tuple()}.
+    {error, delete_key_value_store_errors(), tuple()}.
 delete_key_value_store(Client, Name, Input) ->
     delete_key_value_store(Client, Name, Input, []).
 
 -spec delete_key_value_store(map(), binary() | list(), delete_key_value_store_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, cannot_delete_entity_while_in_use(), tuple()} |
-    {error, entity_not_found(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, precondition_failed(), tuple()}.
+    {error, delete_key_value_store_errors(), tuple()}.
 delete_key_value_store(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/key-value-store/", aws_util:encode_uri(Name), ""],
@@ -6155,20 +7003,14 @@ delete_key_value_store(Client, Name, Input0, Options0) ->
 -spec delete_monitoring_subscription(map(), binary() | list(), delete_monitoring_subscription_request()) ->
     {ok, delete_monitoring_subscription_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_distribution(), tuple()} |
-    {error, no_such_monitoring_subscription(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, delete_monitoring_subscription_errors(), tuple()}.
 delete_monitoring_subscription(Client, DistributionId, Input) ->
     delete_monitoring_subscription(Client, DistributionId, Input, []).
 
 -spec delete_monitoring_subscription(map(), binary() | list(), delete_monitoring_subscription_request(), proplists:proplist()) ->
     {ok, delete_monitoring_subscription_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_distribution(), tuple()} |
-    {error, no_such_monitoring_subscription(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, delete_monitoring_subscription_errors(), tuple()}.
 delete_monitoring_subscription(Client, DistributionId, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/distributions/", aws_util:encode_uri(DistributionId), "/monitoring-subscription"],
@@ -6201,22 +7043,14 @@ delete_monitoring_subscription(Client, DistributionId, Input0, Options0) ->
 -spec delete_origin_access_control(map(), binary() | list(), delete_origin_access_control_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_origin_access_control(), tuple()} |
-    {error, origin_access_control_in_use(), tuple()} |
-    {error, precondition_failed(), tuple()}.
+    {error, delete_origin_access_control_errors(), tuple()}.
 delete_origin_access_control(Client, Id, Input) ->
     delete_origin_access_control(Client, Id, Input, []).
 
 -spec delete_origin_access_control(map(), binary() | list(), delete_origin_access_control_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_origin_access_control(), tuple()} |
-    {error, origin_access_control_in_use(), tuple()} |
-    {error, precondition_failed(), tuple()}.
+    {error, delete_origin_access_control_errors(), tuple()}.
 delete_origin_access_control(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/origin-access-control/", aws_util:encode_uri(Id), ""],
@@ -6257,24 +7091,14 @@ delete_origin_access_control(Client, Id, Input0, Options0) ->
 -spec delete_origin_request_policy(map(), binary() | list(), delete_origin_request_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, illegal_delete(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_origin_request_policy(), tuple()} |
-    {error, origin_request_policy_in_use(), tuple()} |
-    {error, precondition_failed(), tuple()}.
+    {error, delete_origin_request_policy_errors(), tuple()}.
 delete_origin_request_policy(Client, Id, Input) ->
     delete_origin_request_policy(Client, Id, Input, []).
 
 -spec delete_origin_request_policy(map(), binary() | list(), delete_origin_request_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, illegal_delete(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_origin_request_policy(), tuple()} |
-    {error, origin_request_policy_in_use(), tuple()} |
-    {error, precondition_failed(), tuple()}.
+    {error, delete_origin_request_policy_errors(), tuple()}.
 delete_origin_request_policy(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/origin-request-policy/", aws_util:encode_uri(Id), ""],
@@ -6303,22 +7127,14 @@ delete_origin_request_policy(Client, Id, Input0, Options0) ->
 -spec delete_public_key(map(), binary() | list(), delete_public_key_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_public_key(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, public_key_in_use(), tuple()}.
+    {error, delete_public_key_errors(), tuple()}.
 delete_public_key(Client, Id, Input) ->
     delete_public_key(Client, Id, Input, []).
 
 -spec delete_public_key(map(), binary() | list(), delete_public_key_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_public_key(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, public_key_in_use(), tuple()}.
+    {error, delete_public_key_errors(), tuple()}.
 delete_public_key(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/public-key/", aws_util:encode_uri(Id), ""],
@@ -6359,20 +7175,14 @@ delete_public_key(Client, Id, Input0, Options0) ->
 -spec delete_realtime_log_config(map(), delete_realtime_log_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_realtime_log_config(), tuple()} |
-    {error, realtime_log_config_in_use(), tuple()}.
+    {error, delete_realtime_log_config_errors(), tuple()}.
 delete_realtime_log_config(Client, Input) ->
     delete_realtime_log_config(Client, Input, []).
 
 -spec delete_realtime_log_config(map(), delete_realtime_log_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_realtime_log_config(), tuple()} |
-    {error, realtime_log_config_in_use(), tuple()}.
+    {error, delete_realtime_log_config_errors(), tuple()}.
 delete_realtime_log_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/delete-realtime-log-config"],
@@ -6411,24 +7221,14 @@ delete_realtime_log_config(Client, Input0, Options0) ->
 -spec delete_response_headers_policy(map(), binary() | list(), delete_response_headers_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, illegal_delete(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_response_headers_policy(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, response_headers_policy_in_use(), tuple()}.
+    {error, delete_response_headers_policy_errors(), tuple()}.
 delete_response_headers_policy(Client, Id, Input) ->
     delete_response_headers_policy(Client, Id, Input, []).
 
 -spec delete_response_headers_policy(map(), binary() | list(), delete_response_headers_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, illegal_delete(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_response_headers_policy(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, response_headers_policy_in_use(), tuple()}.
+    {error, delete_response_headers_policy_errors(), tuple()}.
 delete_response_headers_policy(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/response-headers-policy/", aws_util:encode_uri(Id), ""],
@@ -6505,22 +7305,14 @@ delete_response_headers_policy(Client, Id, Input0, Options0) ->
 -spec delete_streaming_distribution(map(), binary() | list(), delete_streaming_distribution_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_streaming_distribution(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, streaming_distribution_not_disabled(), tuple()}.
+    {error, delete_streaming_distribution_errors(), tuple()}.
 delete_streaming_distribution(Client, Id, Input) ->
     delete_streaming_distribution(Client, Id, Input, []).
 
 -spec delete_streaming_distribution(map(), binary() | list(), delete_streaming_distribution_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_streaming_distribution(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, streaming_distribution_not_disabled(), tuple()}.
+    {error, delete_streaming_distribution_errors(), tuple()}.
 delete_streaming_distribution(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/streaming-distribution/", aws_util:encode_uri(Id), ""],
@@ -6558,8 +7350,7 @@ delete_streaming_distribution(Client, Id, Input0, Options0) ->
 -spec describe_function(map(), binary() | list()) ->
     {ok, describe_function_result(), tuple()} |
     {error, any()} |
-    {error, no_such_function_exists(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, describe_function_errors(), tuple()}.
 describe_function(Client, Name)
   when is_map(Client) ->
     describe_function(Client, Name, #{}, #{}).
@@ -6567,8 +7358,7 @@ describe_function(Client, Name)
 -spec describe_function(map(), binary() | list(), map(), map()) ->
     {ok, describe_function_result(), tuple()} |
     {error, any()} |
-    {error, no_such_function_exists(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, describe_function_errors(), tuple()}.
 describe_function(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_function(Client, Name, QueryMap, HeadersMap, []).
@@ -6576,8 +7366,7 @@ describe_function(Client, Name, QueryMap, HeadersMap)
 -spec describe_function(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_function_result(), tuple()} |
     {error, any()} |
-    {error, no_such_function_exists(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, describe_function_errors(), tuple()}.
 describe_function(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/function/", aws_util:encode_uri(Name), "/describe"],
@@ -6618,9 +7407,7 @@ describe_function(Client, Name, QueryMap, HeadersMap, Options0)
 -spec describe_key_value_store(map(), binary() | list()) ->
     {ok, describe_key_value_store_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, entity_not_found(), tuple()} |
-    {error, invalid_argument(), tuple()}.
+    {error, describe_key_value_store_errors(), tuple()}.
 describe_key_value_store(Client, Name)
   when is_map(Client) ->
     describe_key_value_store(Client, Name, #{}, #{}).
@@ -6628,9 +7415,7 @@ describe_key_value_store(Client, Name)
 -spec describe_key_value_store(map(), binary() | list(), map(), map()) ->
     {ok, describe_key_value_store_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, entity_not_found(), tuple()} |
-    {error, invalid_argument(), tuple()}.
+    {error, describe_key_value_store_errors(), tuple()}.
 describe_key_value_store(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_key_value_store(Client, Name, QueryMap, HeadersMap, []).
@@ -6638,9 +7423,7 @@ describe_key_value_store(Client, Name, QueryMap, HeadersMap)
 -spec describe_key_value_store(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_key_value_store_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, entity_not_found(), tuple()} |
-    {error, invalid_argument(), tuple()}.
+    {error, describe_key_value_store_errors(), tuple()}.
 describe_key_value_store(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/key-value-store/", aws_util:encode_uri(Name), ""],
@@ -6690,8 +7473,7 @@ describe_key_value_store(Client, Name, QueryMap, HeadersMap, Options0)
 -spec get_cache_policy(map(), binary() | list()) ->
     {ok, get_cache_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_cache_policy(), tuple()}.
+    {error, get_cache_policy_errors(), tuple()}.
 get_cache_policy(Client, Id)
   when is_map(Client) ->
     get_cache_policy(Client, Id, #{}, #{}).
@@ -6699,8 +7481,7 @@ get_cache_policy(Client, Id)
 -spec get_cache_policy(map(), binary() | list(), map(), map()) ->
     {ok, get_cache_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_cache_policy(), tuple()}.
+    {error, get_cache_policy_errors(), tuple()}.
 get_cache_policy(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cache_policy(Client, Id, QueryMap, HeadersMap, []).
@@ -6708,8 +7489,7 @@ get_cache_policy(Client, Id, QueryMap, HeadersMap)
 -spec get_cache_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_cache_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_cache_policy(), tuple()}.
+    {error, get_cache_policy_errors(), tuple()}.
 get_cache_policy(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/cache-policy/", aws_util:encode_uri(Id), ""],
@@ -6755,8 +7535,7 @@ get_cache_policy(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_cache_policy_config(map(), binary() | list()) ->
     {ok, get_cache_policy_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_cache_policy(), tuple()}.
+    {error, get_cache_policy_config_errors(), tuple()}.
 get_cache_policy_config(Client, Id)
   when is_map(Client) ->
     get_cache_policy_config(Client, Id, #{}, #{}).
@@ -6764,8 +7543,7 @@ get_cache_policy_config(Client, Id)
 -spec get_cache_policy_config(map(), binary() | list(), map(), map()) ->
     {ok, get_cache_policy_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_cache_policy(), tuple()}.
+    {error, get_cache_policy_config_errors(), tuple()}.
 get_cache_policy_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cache_policy_config(Client, Id, QueryMap, HeadersMap, []).
@@ -6773,8 +7551,7 @@ get_cache_policy_config(Client, Id, QueryMap, HeadersMap)
 -spec get_cache_policy_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_cache_policy_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_cache_policy(), tuple()}.
+    {error, get_cache_policy_config_errors(), tuple()}.
 get_cache_policy_config(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/cache-policy/", aws_util:encode_uri(Id), "/config"],
@@ -6811,8 +7588,7 @@ get_cache_policy_config(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_cloud_front_origin_access_identity(map(), binary() | list()) ->
     {ok, get_cloud_front_origin_access_identity_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_cloud_front_origin_access_identity(), tuple()}.
+    {error, get_cloud_front_origin_access_identity_errors(), tuple()}.
 get_cloud_front_origin_access_identity(Client, Id)
   when is_map(Client) ->
     get_cloud_front_origin_access_identity(Client, Id, #{}, #{}).
@@ -6820,8 +7596,7 @@ get_cloud_front_origin_access_identity(Client, Id)
 -spec get_cloud_front_origin_access_identity(map(), binary() | list(), map(), map()) ->
     {ok, get_cloud_front_origin_access_identity_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_cloud_front_origin_access_identity(), tuple()}.
+    {error, get_cloud_front_origin_access_identity_errors(), tuple()}.
 get_cloud_front_origin_access_identity(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cloud_front_origin_access_identity(Client, Id, QueryMap, HeadersMap, []).
@@ -6829,8 +7604,7 @@ get_cloud_front_origin_access_identity(Client, Id, QueryMap, HeadersMap)
 -spec get_cloud_front_origin_access_identity(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_cloud_front_origin_access_identity_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_cloud_front_origin_access_identity(), tuple()}.
+    {error, get_cloud_front_origin_access_identity_errors(), tuple()}.
 get_cloud_front_origin_access_identity(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/origin-access-identity/cloudfront/", aws_util:encode_uri(Id), ""],
@@ -6867,8 +7641,7 @@ get_cloud_front_origin_access_identity(Client, Id, QueryMap, HeadersMap, Options
 -spec get_cloud_front_origin_access_identity_config(map(), binary() | list()) ->
     {ok, get_cloud_front_origin_access_identity_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_cloud_front_origin_access_identity(), tuple()}.
+    {error, get_cloud_front_origin_access_identity_config_errors(), tuple()}.
 get_cloud_front_origin_access_identity_config(Client, Id)
   when is_map(Client) ->
     get_cloud_front_origin_access_identity_config(Client, Id, #{}, #{}).
@@ -6876,8 +7649,7 @@ get_cloud_front_origin_access_identity_config(Client, Id)
 -spec get_cloud_front_origin_access_identity_config(map(), binary() | list(), map(), map()) ->
     {ok, get_cloud_front_origin_access_identity_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_cloud_front_origin_access_identity(), tuple()}.
+    {error, get_cloud_front_origin_access_identity_config_errors(), tuple()}.
 get_cloud_front_origin_access_identity_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cloud_front_origin_access_identity_config(Client, Id, QueryMap, HeadersMap, []).
@@ -6885,8 +7657,7 @@ get_cloud_front_origin_access_identity_config(Client, Id, QueryMap, HeadersMap)
 -spec get_cloud_front_origin_access_identity_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_cloud_front_origin_access_identity_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_cloud_front_origin_access_identity(), tuple()}.
+    {error, get_cloud_front_origin_access_identity_config_errors(), tuple()}.
 get_cloud_front_origin_access_identity_config(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/origin-access-identity/cloudfront/", aws_util:encode_uri(Id), "/config"],
@@ -6925,8 +7696,7 @@ get_cloud_front_origin_access_identity_config(Client, Id, QueryMap, HeadersMap, 
 -spec get_continuous_deployment_policy(map(), binary() | list()) ->
     {ok, get_continuous_deployment_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_continuous_deployment_policy(), tuple()}.
+    {error, get_continuous_deployment_policy_errors(), tuple()}.
 get_continuous_deployment_policy(Client, Id)
   when is_map(Client) ->
     get_continuous_deployment_policy(Client, Id, #{}, #{}).
@@ -6934,8 +7704,7 @@ get_continuous_deployment_policy(Client, Id)
 -spec get_continuous_deployment_policy(map(), binary() | list(), map(), map()) ->
     {ok, get_continuous_deployment_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_continuous_deployment_policy(), tuple()}.
+    {error, get_continuous_deployment_policy_errors(), tuple()}.
 get_continuous_deployment_policy(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_continuous_deployment_policy(Client, Id, QueryMap, HeadersMap, []).
@@ -6943,8 +7712,7 @@ get_continuous_deployment_policy(Client, Id, QueryMap, HeadersMap)
 -spec get_continuous_deployment_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_continuous_deployment_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_continuous_deployment_policy(), tuple()}.
+    {error, get_continuous_deployment_policy_errors(), tuple()}.
 get_continuous_deployment_policy(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/continuous-deployment-policy/", aws_util:encode_uri(Id), ""],
@@ -6981,8 +7749,7 @@ get_continuous_deployment_policy(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_continuous_deployment_policy_config(map(), binary() | list()) ->
     {ok, get_continuous_deployment_policy_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_continuous_deployment_policy(), tuple()}.
+    {error, get_continuous_deployment_policy_config_errors(), tuple()}.
 get_continuous_deployment_policy_config(Client, Id)
   when is_map(Client) ->
     get_continuous_deployment_policy_config(Client, Id, #{}, #{}).
@@ -6990,8 +7757,7 @@ get_continuous_deployment_policy_config(Client, Id)
 -spec get_continuous_deployment_policy_config(map(), binary() | list(), map(), map()) ->
     {ok, get_continuous_deployment_policy_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_continuous_deployment_policy(), tuple()}.
+    {error, get_continuous_deployment_policy_config_errors(), tuple()}.
 get_continuous_deployment_policy_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_continuous_deployment_policy_config(Client, Id, QueryMap, HeadersMap, []).
@@ -6999,8 +7765,7 @@ get_continuous_deployment_policy_config(Client, Id, QueryMap, HeadersMap)
 -spec get_continuous_deployment_policy_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_continuous_deployment_policy_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_continuous_deployment_policy(), tuple()}.
+    {error, get_continuous_deployment_policy_config_errors(), tuple()}.
 get_continuous_deployment_policy_config(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/continuous-deployment-policy/", aws_util:encode_uri(Id), "/config"],
@@ -7037,8 +7802,7 @@ get_continuous_deployment_policy_config(Client, Id, QueryMap, HeadersMap, Option
 -spec get_distribution(map(), binary() | list()) ->
     {ok, get_distribution_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_distribution(), tuple()}.
+    {error, get_distribution_errors(), tuple()}.
 get_distribution(Client, Id)
   when is_map(Client) ->
     get_distribution(Client, Id, #{}, #{}).
@@ -7046,8 +7810,7 @@ get_distribution(Client, Id)
 -spec get_distribution(map(), binary() | list(), map(), map()) ->
     {ok, get_distribution_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_distribution(), tuple()}.
+    {error, get_distribution_errors(), tuple()}.
 get_distribution(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_distribution(Client, Id, QueryMap, HeadersMap, []).
@@ -7055,8 +7818,7 @@ get_distribution(Client, Id, QueryMap, HeadersMap)
 -spec get_distribution(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_distribution_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_distribution(), tuple()}.
+    {error, get_distribution_errors(), tuple()}.
 get_distribution(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(Id), ""],
@@ -7093,8 +7855,7 @@ get_distribution(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_distribution_config(map(), binary() | list()) ->
     {ok, get_distribution_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_distribution(), tuple()}.
+    {error, get_distribution_config_errors(), tuple()}.
 get_distribution_config(Client, Id)
   when is_map(Client) ->
     get_distribution_config(Client, Id, #{}, #{}).
@@ -7102,8 +7863,7 @@ get_distribution_config(Client, Id)
 -spec get_distribution_config(map(), binary() | list(), map(), map()) ->
     {ok, get_distribution_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_distribution(), tuple()}.
+    {error, get_distribution_config_errors(), tuple()}.
 get_distribution_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_distribution_config(Client, Id, QueryMap, HeadersMap, []).
@@ -7111,8 +7871,7 @@ get_distribution_config(Client, Id, QueryMap, HeadersMap)
 -spec get_distribution_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_distribution_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_distribution(), tuple()}.
+    {error, get_distribution_config_errors(), tuple()}.
 get_distribution_config(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(Id), "/config"],
@@ -7149,8 +7908,7 @@ get_distribution_config(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_field_level_encryption(map(), binary() | list()) ->
     {ok, get_field_level_encryption_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_field_level_encryption_config(), tuple()}.
+    {error, get_field_level_encryption_errors(), tuple()}.
 get_field_level_encryption(Client, Id)
   when is_map(Client) ->
     get_field_level_encryption(Client, Id, #{}, #{}).
@@ -7158,8 +7916,7 @@ get_field_level_encryption(Client, Id)
 -spec get_field_level_encryption(map(), binary() | list(), map(), map()) ->
     {ok, get_field_level_encryption_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_field_level_encryption_config(), tuple()}.
+    {error, get_field_level_encryption_errors(), tuple()}.
 get_field_level_encryption(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_field_level_encryption(Client, Id, QueryMap, HeadersMap, []).
@@ -7167,8 +7924,7 @@ get_field_level_encryption(Client, Id, QueryMap, HeadersMap)
 -spec get_field_level_encryption(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_field_level_encryption_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_field_level_encryption_config(), tuple()}.
+    {error, get_field_level_encryption_errors(), tuple()}.
 get_field_level_encryption(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/field-level-encryption/", aws_util:encode_uri(Id), ""],
@@ -7205,8 +7961,7 @@ get_field_level_encryption(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_field_level_encryption_config(map(), binary() | list()) ->
     {ok, get_field_level_encryption_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_field_level_encryption_config(), tuple()}.
+    {error, get_field_level_encryption_config_errors(), tuple()}.
 get_field_level_encryption_config(Client, Id)
   when is_map(Client) ->
     get_field_level_encryption_config(Client, Id, #{}, #{}).
@@ -7214,8 +7969,7 @@ get_field_level_encryption_config(Client, Id)
 -spec get_field_level_encryption_config(map(), binary() | list(), map(), map()) ->
     {ok, get_field_level_encryption_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_field_level_encryption_config(), tuple()}.
+    {error, get_field_level_encryption_config_errors(), tuple()}.
 get_field_level_encryption_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_field_level_encryption_config(Client, Id, QueryMap, HeadersMap, []).
@@ -7223,8 +7977,7 @@ get_field_level_encryption_config(Client, Id, QueryMap, HeadersMap)
 -spec get_field_level_encryption_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_field_level_encryption_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_field_level_encryption_config(), tuple()}.
+    {error, get_field_level_encryption_config_errors(), tuple()}.
 get_field_level_encryption_config(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/field-level-encryption/", aws_util:encode_uri(Id), "/config"],
@@ -7261,8 +8014,7 @@ get_field_level_encryption_config(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_field_level_encryption_profile(map(), binary() | list()) ->
     {ok, get_field_level_encryption_profile_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_field_level_encryption_profile(), tuple()}.
+    {error, get_field_level_encryption_profile_errors(), tuple()}.
 get_field_level_encryption_profile(Client, Id)
   when is_map(Client) ->
     get_field_level_encryption_profile(Client, Id, #{}, #{}).
@@ -7270,8 +8022,7 @@ get_field_level_encryption_profile(Client, Id)
 -spec get_field_level_encryption_profile(map(), binary() | list(), map(), map()) ->
     {ok, get_field_level_encryption_profile_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_field_level_encryption_profile(), tuple()}.
+    {error, get_field_level_encryption_profile_errors(), tuple()}.
 get_field_level_encryption_profile(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_field_level_encryption_profile(Client, Id, QueryMap, HeadersMap, []).
@@ -7279,8 +8030,7 @@ get_field_level_encryption_profile(Client, Id, QueryMap, HeadersMap)
 -spec get_field_level_encryption_profile(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_field_level_encryption_profile_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_field_level_encryption_profile(), tuple()}.
+    {error, get_field_level_encryption_profile_errors(), tuple()}.
 get_field_level_encryption_profile(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/field-level-encryption-profile/", aws_util:encode_uri(Id), ""],
@@ -7317,8 +8067,7 @@ get_field_level_encryption_profile(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_field_level_encryption_profile_config(map(), binary() | list()) ->
     {ok, get_field_level_encryption_profile_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_field_level_encryption_profile(), tuple()}.
+    {error, get_field_level_encryption_profile_config_errors(), tuple()}.
 get_field_level_encryption_profile_config(Client, Id)
   when is_map(Client) ->
     get_field_level_encryption_profile_config(Client, Id, #{}, #{}).
@@ -7326,8 +8075,7 @@ get_field_level_encryption_profile_config(Client, Id)
 -spec get_field_level_encryption_profile_config(map(), binary() | list(), map(), map()) ->
     {ok, get_field_level_encryption_profile_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_field_level_encryption_profile(), tuple()}.
+    {error, get_field_level_encryption_profile_config_errors(), tuple()}.
 get_field_level_encryption_profile_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_field_level_encryption_profile_config(Client, Id, QueryMap, HeadersMap, []).
@@ -7335,8 +8083,7 @@ get_field_level_encryption_profile_config(Client, Id, QueryMap, HeadersMap)
 -spec get_field_level_encryption_profile_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_field_level_encryption_profile_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_field_level_encryption_profile(), tuple()}.
+    {error, get_field_level_encryption_profile_config_errors(), tuple()}.
 get_field_level_encryption_profile_config(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/field-level-encryption-profile/", aws_util:encode_uri(Id), "/config"],
@@ -7380,8 +8127,7 @@ get_field_level_encryption_profile_config(Client, Id, QueryMap, HeadersMap, Opti
 -spec get_function(map(), binary() | list()) ->
     {ok, get_function_result(), tuple()} |
     {error, any()} |
-    {error, no_such_function_exists(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, get_function_errors(), tuple()}.
 get_function(Client, Name)
   when is_map(Client) ->
     get_function(Client, Name, #{}, #{}).
@@ -7389,8 +8135,7 @@ get_function(Client, Name)
 -spec get_function(map(), binary() | list(), map(), map()) ->
     {ok, get_function_result(), tuple()} |
     {error, any()} |
-    {error, no_such_function_exists(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, get_function_errors(), tuple()}.
 get_function(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function(Client, Name, QueryMap, HeadersMap, []).
@@ -7398,8 +8143,7 @@ get_function(Client, Name, QueryMap, HeadersMap)
 -spec get_function(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_function_result(), tuple()} |
     {error, any()} |
-    {error, no_such_function_exists(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, get_function_errors(), tuple()}.
 get_function(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/function/", aws_util:encode_uri(Name), ""],
@@ -7441,9 +8185,7 @@ get_function(Client, Name, QueryMap, HeadersMap, Options0)
 -spec get_invalidation(map(), binary() | list(), binary() | list()) ->
     {ok, get_invalidation_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_distribution(), tuple()} |
-    {error, no_such_invalidation(), tuple()}.
+    {error, get_invalidation_errors(), tuple()}.
 get_invalidation(Client, DistributionId, Id)
   when is_map(Client) ->
     get_invalidation(Client, DistributionId, Id, #{}, #{}).
@@ -7451,9 +8193,7 @@ get_invalidation(Client, DistributionId, Id)
 -spec get_invalidation(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_invalidation_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_distribution(), tuple()} |
-    {error, no_such_invalidation(), tuple()}.
+    {error, get_invalidation_errors(), tuple()}.
 get_invalidation(Client, DistributionId, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_invalidation(Client, DistributionId, Id, QueryMap, HeadersMap, []).
@@ -7461,9 +8201,7 @@ get_invalidation(Client, DistributionId, Id, QueryMap, HeadersMap)
 -spec get_invalidation(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_invalidation_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_distribution(), tuple()} |
-    {error, no_such_invalidation(), tuple()}.
+    {error, get_invalidation_errors(), tuple()}.
 get_invalidation(Client, DistributionId, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(DistributionId), "/invalidation/", aws_util:encode_uri(Id), ""],
@@ -7494,7 +8232,7 @@ get_invalidation(Client, DistributionId, Id, QueryMap, HeadersMap, Options0)
 -spec get_key_group(map(), binary() | list()) ->
     {ok, get_key_group_result(), tuple()} |
     {error, any()} |
-    {error, no_such_resource(), tuple()}.
+    {error, get_key_group_errors(), tuple()}.
 get_key_group(Client, Id)
   when is_map(Client) ->
     get_key_group(Client, Id, #{}, #{}).
@@ -7502,7 +8240,7 @@ get_key_group(Client, Id)
 -spec get_key_group(map(), binary() | list(), map(), map()) ->
     {ok, get_key_group_result(), tuple()} |
     {error, any()} |
-    {error, no_such_resource(), tuple()}.
+    {error, get_key_group_errors(), tuple()}.
 get_key_group(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_key_group(Client, Id, QueryMap, HeadersMap, []).
@@ -7510,7 +8248,7 @@ get_key_group(Client, Id, QueryMap, HeadersMap)
 -spec get_key_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_key_group_result(), tuple()} |
     {error, any()} |
-    {error, no_such_resource(), tuple()}.
+    {error, get_key_group_errors(), tuple()}.
 get_key_group(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/key-group/", aws_util:encode_uri(Id), ""],
@@ -7556,7 +8294,7 @@ get_key_group(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_key_group_config(map(), binary() | list()) ->
     {ok, get_key_group_config_result(), tuple()} |
     {error, any()} |
-    {error, no_such_resource(), tuple()}.
+    {error, get_key_group_config_errors(), tuple()}.
 get_key_group_config(Client, Id)
   when is_map(Client) ->
     get_key_group_config(Client, Id, #{}, #{}).
@@ -7564,7 +8302,7 @@ get_key_group_config(Client, Id)
 -spec get_key_group_config(map(), binary() | list(), map(), map()) ->
     {ok, get_key_group_config_result(), tuple()} |
     {error, any()} |
-    {error, no_such_resource(), tuple()}.
+    {error, get_key_group_config_errors(), tuple()}.
 get_key_group_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_key_group_config(Client, Id, QueryMap, HeadersMap, []).
@@ -7572,7 +8310,7 @@ get_key_group_config(Client, Id, QueryMap, HeadersMap)
 -spec get_key_group_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_key_group_config_result(), tuple()} |
     {error, any()} |
-    {error, no_such_resource(), tuple()}.
+    {error, get_key_group_config_errors(), tuple()}.
 get_key_group_config(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/key-group/", aws_util:encode_uri(Id), "/config"],
@@ -7611,10 +8349,7 @@ get_key_group_config(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_monitoring_subscription(map(), binary() | list()) ->
     {ok, get_monitoring_subscription_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_distribution(), tuple()} |
-    {error, no_such_monitoring_subscription(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, get_monitoring_subscription_errors(), tuple()}.
 get_monitoring_subscription(Client, DistributionId)
   when is_map(Client) ->
     get_monitoring_subscription(Client, DistributionId, #{}, #{}).
@@ -7622,10 +8357,7 @@ get_monitoring_subscription(Client, DistributionId)
 -spec get_monitoring_subscription(map(), binary() | list(), map(), map()) ->
     {ok, get_monitoring_subscription_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_distribution(), tuple()} |
-    {error, no_such_monitoring_subscription(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, get_monitoring_subscription_errors(), tuple()}.
 get_monitoring_subscription(Client, DistributionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_monitoring_subscription(Client, DistributionId, QueryMap, HeadersMap, []).
@@ -7633,10 +8365,7 @@ get_monitoring_subscription(Client, DistributionId, QueryMap, HeadersMap)
 -spec get_monitoring_subscription(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_monitoring_subscription_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_distribution(), tuple()} |
-    {error, no_such_monitoring_subscription(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, get_monitoring_subscription_errors(), tuple()}.
 get_monitoring_subscription(Client, DistributionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distributions/", aws_util:encode_uri(DistributionId), "/monitoring-subscription"],
@@ -7658,8 +8387,7 @@ get_monitoring_subscription(Client, DistributionId, QueryMap, HeadersMap, Option
 -spec get_origin_access_control(map(), binary() | list()) ->
     {ok, get_origin_access_control_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_origin_access_control(), tuple()}.
+    {error, get_origin_access_control_errors(), tuple()}.
 get_origin_access_control(Client, Id)
   when is_map(Client) ->
     get_origin_access_control(Client, Id, #{}, #{}).
@@ -7667,8 +8395,7 @@ get_origin_access_control(Client, Id)
 -spec get_origin_access_control(map(), binary() | list(), map(), map()) ->
     {ok, get_origin_access_control_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_origin_access_control(), tuple()}.
+    {error, get_origin_access_control_errors(), tuple()}.
 get_origin_access_control(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_origin_access_control(Client, Id, QueryMap, HeadersMap, []).
@@ -7676,8 +8403,7 @@ get_origin_access_control(Client, Id, QueryMap, HeadersMap)
 -spec get_origin_access_control(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_origin_access_control_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_origin_access_control(), tuple()}.
+    {error, get_origin_access_control_errors(), tuple()}.
 get_origin_access_control(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/origin-access-control/", aws_util:encode_uri(Id), ""],
@@ -7714,8 +8440,7 @@ get_origin_access_control(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_origin_access_control_config(map(), binary() | list()) ->
     {ok, get_origin_access_control_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_origin_access_control(), tuple()}.
+    {error, get_origin_access_control_config_errors(), tuple()}.
 get_origin_access_control_config(Client, Id)
   when is_map(Client) ->
     get_origin_access_control_config(Client, Id, #{}, #{}).
@@ -7723,8 +8448,7 @@ get_origin_access_control_config(Client, Id)
 -spec get_origin_access_control_config(map(), binary() | list(), map(), map()) ->
     {ok, get_origin_access_control_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_origin_access_control(), tuple()}.
+    {error, get_origin_access_control_config_errors(), tuple()}.
 get_origin_access_control_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_origin_access_control_config(Client, Id, QueryMap, HeadersMap, []).
@@ -7732,8 +8456,7 @@ get_origin_access_control_config(Client, Id, QueryMap, HeadersMap)
 -spec get_origin_access_control_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_origin_access_control_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_origin_access_control(), tuple()}.
+    {error, get_origin_access_control_config_errors(), tuple()}.
 get_origin_access_control_config(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/origin-access-control/", aws_util:encode_uri(Id), "/config"],
@@ -7784,8 +8507,7 @@ get_origin_access_control_config(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_origin_request_policy(map(), binary() | list()) ->
     {ok, get_origin_request_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_origin_request_policy(), tuple()}.
+    {error, get_origin_request_policy_errors(), tuple()}.
 get_origin_request_policy(Client, Id)
   when is_map(Client) ->
     get_origin_request_policy(Client, Id, #{}, #{}).
@@ -7793,8 +8515,7 @@ get_origin_request_policy(Client, Id)
 -spec get_origin_request_policy(map(), binary() | list(), map(), map()) ->
     {ok, get_origin_request_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_origin_request_policy(), tuple()}.
+    {error, get_origin_request_policy_errors(), tuple()}.
 get_origin_request_policy(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_origin_request_policy(Client, Id, QueryMap, HeadersMap, []).
@@ -7802,8 +8523,7 @@ get_origin_request_policy(Client, Id, QueryMap, HeadersMap)
 -spec get_origin_request_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_origin_request_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_origin_request_policy(), tuple()}.
+    {error, get_origin_request_policy_errors(), tuple()}.
 get_origin_request_policy(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/origin-request-policy/", aws_util:encode_uri(Id), ""],
@@ -7849,8 +8569,7 @@ get_origin_request_policy(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_origin_request_policy_config(map(), binary() | list()) ->
     {ok, get_origin_request_policy_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_origin_request_policy(), tuple()}.
+    {error, get_origin_request_policy_config_errors(), tuple()}.
 get_origin_request_policy_config(Client, Id)
   when is_map(Client) ->
     get_origin_request_policy_config(Client, Id, #{}, #{}).
@@ -7858,8 +8577,7 @@ get_origin_request_policy_config(Client, Id)
 -spec get_origin_request_policy_config(map(), binary() | list(), map(), map()) ->
     {ok, get_origin_request_policy_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_origin_request_policy(), tuple()}.
+    {error, get_origin_request_policy_config_errors(), tuple()}.
 get_origin_request_policy_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_origin_request_policy_config(Client, Id, QueryMap, HeadersMap, []).
@@ -7867,8 +8585,7 @@ get_origin_request_policy_config(Client, Id, QueryMap, HeadersMap)
 -spec get_origin_request_policy_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_origin_request_policy_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_origin_request_policy(), tuple()}.
+    {error, get_origin_request_policy_config_errors(), tuple()}.
 get_origin_request_policy_config(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/origin-request-policy/", aws_util:encode_uri(Id), "/config"],
@@ -7905,8 +8622,7 @@ get_origin_request_policy_config(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_public_key(map(), binary() | list()) ->
     {ok, get_public_key_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_public_key(), tuple()}.
+    {error, get_public_key_errors(), tuple()}.
 get_public_key(Client, Id)
   when is_map(Client) ->
     get_public_key(Client, Id, #{}, #{}).
@@ -7914,8 +8630,7 @@ get_public_key(Client, Id)
 -spec get_public_key(map(), binary() | list(), map(), map()) ->
     {ok, get_public_key_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_public_key(), tuple()}.
+    {error, get_public_key_errors(), tuple()}.
 get_public_key(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_public_key(Client, Id, QueryMap, HeadersMap, []).
@@ -7923,8 +8638,7 @@ get_public_key(Client, Id, QueryMap, HeadersMap)
 -spec get_public_key(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_public_key_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_public_key(), tuple()}.
+    {error, get_public_key_errors(), tuple()}.
 get_public_key(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/public-key/", aws_util:encode_uri(Id), ""],
@@ -7961,8 +8675,7 @@ get_public_key(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_public_key_config(map(), binary() | list()) ->
     {ok, get_public_key_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_public_key(), tuple()}.
+    {error, get_public_key_config_errors(), tuple()}.
 get_public_key_config(Client, Id)
   when is_map(Client) ->
     get_public_key_config(Client, Id, #{}, #{}).
@@ -7970,8 +8683,7 @@ get_public_key_config(Client, Id)
 -spec get_public_key_config(map(), binary() | list(), map(), map()) ->
     {ok, get_public_key_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_public_key(), tuple()}.
+    {error, get_public_key_config_errors(), tuple()}.
 get_public_key_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_public_key_config(Client, Id, QueryMap, HeadersMap, []).
@@ -7979,8 +8691,7 @@ get_public_key_config(Client, Id, QueryMap, HeadersMap)
 -spec get_public_key_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_public_key_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_public_key(), tuple()}.
+    {error, get_public_key_config_errors(), tuple()}.
 get_public_key_config(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/public-key/", aws_util:encode_uri(Id), "/config"],
@@ -8023,18 +8734,14 @@ get_public_key_config(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_realtime_log_config(map(), get_realtime_log_config_request()) ->
     {ok, get_realtime_log_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_realtime_log_config(), tuple()}.
+    {error, get_realtime_log_config_errors(), tuple()}.
 get_realtime_log_config(Client, Input) ->
     get_realtime_log_config(Client, Input, []).
 
 -spec get_realtime_log_config(map(), get_realtime_log_config_request(), proplists:proplist()) ->
     {ok, get_realtime_log_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_realtime_log_config(), tuple()}.
+    {error, get_realtime_log_config_errors(), tuple()}.
 get_realtime_log_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/get-realtime-log-config"],
@@ -8073,8 +8780,7 @@ get_realtime_log_config(Client, Input0, Options0) ->
 -spec get_response_headers_policy(map(), binary() | list()) ->
     {ok, get_response_headers_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_response_headers_policy(), tuple()}.
+    {error, get_response_headers_policy_errors(), tuple()}.
 get_response_headers_policy(Client, Id)
   when is_map(Client) ->
     get_response_headers_policy(Client, Id, #{}, #{}).
@@ -8082,8 +8788,7 @@ get_response_headers_policy(Client, Id)
 -spec get_response_headers_policy(map(), binary() | list(), map(), map()) ->
     {ok, get_response_headers_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_response_headers_policy(), tuple()}.
+    {error, get_response_headers_policy_errors(), tuple()}.
 get_response_headers_policy(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_response_headers_policy(Client, Id, QueryMap, HeadersMap, []).
@@ -8091,8 +8796,7 @@ get_response_headers_policy(Client, Id, QueryMap, HeadersMap)
 -spec get_response_headers_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_response_headers_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_response_headers_policy(), tuple()}.
+    {error, get_response_headers_policy_errors(), tuple()}.
 get_response_headers_policy(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/response-headers-policy/", aws_util:encode_uri(Id), ""],
@@ -8139,8 +8843,7 @@ get_response_headers_policy(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_response_headers_policy_config(map(), binary() | list()) ->
     {ok, get_response_headers_policy_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_response_headers_policy(), tuple()}.
+    {error, get_response_headers_policy_config_errors(), tuple()}.
 get_response_headers_policy_config(Client, Id)
   when is_map(Client) ->
     get_response_headers_policy_config(Client, Id, #{}, #{}).
@@ -8148,8 +8851,7 @@ get_response_headers_policy_config(Client, Id)
 -spec get_response_headers_policy_config(map(), binary() | list(), map(), map()) ->
     {ok, get_response_headers_policy_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_response_headers_policy(), tuple()}.
+    {error, get_response_headers_policy_config_errors(), tuple()}.
 get_response_headers_policy_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_response_headers_policy_config(Client, Id, QueryMap, HeadersMap, []).
@@ -8157,8 +8859,7 @@ get_response_headers_policy_config(Client, Id, QueryMap, HeadersMap)
 -spec get_response_headers_policy_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_response_headers_policy_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_response_headers_policy(), tuple()}.
+    {error, get_response_headers_policy_config_errors(), tuple()}.
 get_response_headers_policy_config(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/response-headers-policy/", aws_util:encode_uri(Id), "/config"],
@@ -8197,8 +8898,7 @@ get_response_headers_policy_config(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_streaming_distribution(map(), binary() | list()) ->
     {ok, get_streaming_distribution_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_streaming_distribution(), tuple()}.
+    {error, get_streaming_distribution_errors(), tuple()}.
 get_streaming_distribution(Client, Id)
   when is_map(Client) ->
     get_streaming_distribution(Client, Id, #{}, #{}).
@@ -8206,8 +8906,7 @@ get_streaming_distribution(Client, Id)
 -spec get_streaming_distribution(map(), binary() | list(), map(), map()) ->
     {ok, get_streaming_distribution_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_streaming_distribution(), tuple()}.
+    {error, get_streaming_distribution_errors(), tuple()}.
 get_streaming_distribution(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_streaming_distribution(Client, Id, QueryMap, HeadersMap, []).
@@ -8215,8 +8914,7 @@ get_streaming_distribution(Client, Id, QueryMap, HeadersMap)
 -spec get_streaming_distribution(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_streaming_distribution_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_streaming_distribution(), tuple()}.
+    {error, get_streaming_distribution_errors(), tuple()}.
 get_streaming_distribution(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/streaming-distribution/", aws_util:encode_uri(Id), ""],
@@ -8253,8 +8951,7 @@ get_streaming_distribution(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_streaming_distribution_config(map(), binary() | list()) ->
     {ok, get_streaming_distribution_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_streaming_distribution(), tuple()}.
+    {error, get_streaming_distribution_config_errors(), tuple()}.
 get_streaming_distribution_config(Client, Id)
   when is_map(Client) ->
     get_streaming_distribution_config(Client, Id, #{}, #{}).
@@ -8262,8 +8959,7 @@ get_streaming_distribution_config(Client, Id)
 -spec get_streaming_distribution_config(map(), binary() | list(), map(), map()) ->
     {ok, get_streaming_distribution_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_streaming_distribution(), tuple()}.
+    {error, get_streaming_distribution_config_errors(), tuple()}.
 get_streaming_distribution_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_streaming_distribution_config(Client, Id, QueryMap, HeadersMap, []).
@@ -8271,8 +8967,7 @@ get_streaming_distribution_config(Client, Id, QueryMap, HeadersMap)
 -spec get_streaming_distribution_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_streaming_distribution_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, no_such_streaming_distribution(), tuple()}.
+    {error, get_streaming_distribution_config_errors(), tuple()}.
 get_streaming_distribution_config(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/streaming-distribution/", aws_util:encode_uri(Id), "/config"],
@@ -8324,9 +9019,7 @@ get_streaming_distribution_config(Client, Id, QueryMap, HeadersMap, Options0)
 -spec list_cache_policies(map()) ->
     {ok, list_cache_policies_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_cache_policy(), tuple()}.
+    {error, list_cache_policies_errors(), tuple()}.
 list_cache_policies(Client)
   when is_map(Client) ->
     list_cache_policies(Client, #{}, #{}).
@@ -8334,9 +9027,7 @@ list_cache_policies(Client)
 -spec list_cache_policies(map(), map(), map()) ->
     {ok, list_cache_policies_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_cache_policy(), tuple()}.
+    {error, list_cache_policies_errors(), tuple()}.
 list_cache_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_cache_policies(Client, QueryMap, HeadersMap, []).
@@ -8344,9 +9035,7 @@ list_cache_policies(Client, QueryMap, HeadersMap)
 -spec list_cache_policies(map(), map(), map(), proplists:proplist()) ->
     {ok, list_cache_policies_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_cache_policy(), tuple()}.
+    {error, list_cache_policies_errors(), tuple()}.
 list_cache_policies(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/cache-policy"],
@@ -8373,7 +9062,7 @@ list_cache_policies(Client, QueryMap, HeadersMap, Options0)
 -spec list_cloud_front_origin_access_identities(map()) ->
     {ok, list_cloud_front_origin_access_identities_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()}.
+    {error, list_cloud_front_origin_access_identities_errors(), tuple()}.
 list_cloud_front_origin_access_identities(Client)
   when is_map(Client) ->
     list_cloud_front_origin_access_identities(Client, #{}, #{}).
@@ -8381,7 +9070,7 @@ list_cloud_front_origin_access_identities(Client)
 -spec list_cloud_front_origin_access_identities(map(), map(), map()) ->
     {ok, list_cloud_front_origin_access_identities_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()}.
+    {error, list_cloud_front_origin_access_identities_errors(), tuple()}.
 list_cloud_front_origin_access_identities(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_cloud_front_origin_access_identities(Client, QueryMap, HeadersMap, []).
@@ -8389,7 +9078,7 @@ list_cloud_front_origin_access_identities(Client, QueryMap, HeadersMap)
 -spec list_cloud_front_origin_access_identities(map(), map(), map(), proplists:proplist()) ->
     {ok, list_cloud_front_origin_access_identities_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()}.
+    {error, list_cloud_front_origin_access_identities_errors(), tuple()}.
 list_cloud_front_origin_access_identities(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/origin-access-identity/cloudfront"],
@@ -8460,8 +9149,7 @@ list_cloud_front_origin_access_identities(Client, QueryMap, HeadersMap, Options0
 -spec list_conflicting_aliases(map(), binary() | list(), binary() | list()) ->
     {ok, list_conflicting_aliases_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_distribution(), tuple()}.
+    {error, list_conflicting_aliases_errors(), tuple()}.
 list_conflicting_aliases(Client, Alias, DistributionId)
   when is_map(Client) ->
     list_conflicting_aliases(Client, Alias, DistributionId, #{}, #{}).
@@ -8469,8 +9157,7 @@ list_conflicting_aliases(Client, Alias, DistributionId)
 -spec list_conflicting_aliases(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_conflicting_aliases_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_distribution(), tuple()}.
+    {error, list_conflicting_aliases_errors(), tuple()}.
 list_conflicting_aliases(Client, Alias, DistributionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_conflicting_aliases(Client, Alias, DistributionId, QueryMap, HeadersMap, []).
@@ -8478,8 +9165,7 @@ list_conflicting_aliases(Client, Alias, DistributionId, QueryMap, HeadersMap)
 -spec list_conflicting_aliases(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_conflicting_aliases_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_distribution(), tuple()}.
+    {error, list_conflicting_aliases_errors(), tuple()}.
 list_conflicting_aliases(Client, Alias, DistributionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/conflicting-alias"],
@@ -8518,9 +9204,7 @@ list_conflicting_aliases(Client, Alias, DistributionId, QueryMap, HeadersMap, Op
 -spec list_continuous_deployment_policies(map()) ->
     {ok, list_continuous_deployment_policies_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_continuous_deployment_policy(), tuple()}.
+    {error, list_continuous_deployment_policies_errors(), tuple()}.
 list_continuous_deployment_policies(Client)
   when is_map(Client) ->
     list_continuous_deployment_policies(Client, #{}, #{}).
@@ -8528,9 +9212,7 @@ list_continuous_deployment_policies(Client)
 -spec list_continuous_deployment_policies(map(), map(), map()) ->
     {ok, list_continuous_deployment_policies_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_continuous_deployment_policy(), tuple()}.
+    {error, list_continuous_deployment_policies_errors(), tuple()}.
 list_continuous_deployment_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_continuous_deployment_policies(Client, QueryMap, HeadersMap, []).
@@ -8538,9 +9220,7 @@ list_continuous_deployment_policies(Client, QueryMap, HeadersMap)
 -spec list_continuous_deployment_policies(map(), map(), map(), proplists:proplist()) ->
     {ok, list_continuous_deployment_policies_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_continuous_deployment_policy(), tuple()}.
+    {error, list_continuous_deployment_policies_errors(), tuple()}.
 list_continuous_deployment_policies(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/continuous-deployment-policy"],
@@ -8566,7 +9246,7 @@ list_continuous_deployment_policies(Client, QueryMap, HeadersMap, Options0)
 -spec list_distributions(map()) ->
     {ok, list_distributions_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()}.
+    {error, list_distributions_errors(), tuple()}.
 list_distributions(Client)
   when is_map(Client) ->
     list_distributions(Client, #{}, #{}).
@@ -8574,7 +9254,7 @@ list_distributions(Client)
 -spec list_distributions(map(), map(), map()) ->
     {ok, list_distributions_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()}.
+    {error, list_distributions_errors(), tuple()}.
 list_distributions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_distributions(Client, QueryMap, HeadersMap, []).
@@ -8582,7 +9262,7 @@ list_distributions(Client, QueryMap, HeadersMap)
 -spec list_distributions(map(), map(), map(), proplists:proplist()) ->
     {ok, list_distributions_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()}.
+    {error, list_distributions_errors(), tuple()}.
 list_distributions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distribution"],
@@ -8620,9 +9300,7 @@ list_distributions(Client, QueryMap, HeadersMap, Options0)
 -spec list_distributions_by_cache_policy_id(map(), binary() | list()) ->
     {ok, list_distributions_by_cache_policy_id_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_cache_policy(), tuple()}.
+    {error, list_distributions_by_cache_policy_id_errors(), tuple()}.
 list_distributions_by_cache_policy_id(Client, CachePolicyId)
   when is_map(Client) ->
     list_distributions_by_cache_policy_id(Client, CachePolicyId, #{}, #{}).
@@ -8630,9 +9308,7 @@ list_distributions_by_cache_policy_id(Client, CachePolicyId)
 -spec list_distributions_by_cache_policy_id(map(), binary() | list(), map(), map()) ->
     {ok, list_distributions_by_cache_policy_id_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_cache_policy(), tuple()}.
+    {error, list_distributions_by_cache_policy_id_errors(), tuple()}.
 list_distributions_by_cache_policy_id(Client, CachePolicyId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_distributions_by_cache_policy_id(Client, CachePolicyId, QueryMap, HeadersMap, []).
@@ -8640,9 +9316,7 @@ list_distributions_by_cache_policy_id(Client, CachePolicyId, QueryMap, HeadersMa
 -spec list_distributions_by_cache_policy_id(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_distributions_by_cache_policy_id_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_cache_policy(), tuple()}.
+    {error, list_distributions_by_cache_policy_id_errors(), tuple()}.
 list_distributions_by_cache_policy_id(Client, CachePolicyId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distributionsByCachePolicyId/", aws_util:encode_uri(CachePolicyId), ""],
@@ -8680,8 +9354,7 @@ list_distributions_by_cache_policy_id(Client, CachePolicyId, QueryMap, HeadersMa
 -spec list_distributions_by_key_group(map(), binary() | list()) ->
     {ok, list_distributions_by_key_group_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_resource(), tuple()}.
+    {error, list_distributions_by_key_group_errors(), tuple()}.
 list_distributions_by_key_group(Client, KeyGroupId)
   when is_map(Client) ->
     list_distributions_by_key_group(Client, KeyGroupId, #{}, #{}).
@@ -8689,8 +9362,7 @@ list_distributions_by_key_group(Client, KeyGroupId)
 -spec list_distributions_by_key_group(map(), binary() | list(), map(), map()) ->
     {ok, list_distributions_by_key_group_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_resource(), tuple()}.
+    {error, list_distributions_by_key_group_errors(), tuple()}.
 list_distributions_by_key_group(Client, KeyGroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_distributions_by_key_group(Client, KeyGroupId, QueryMap, HeadersMap, []).
@@ -8698,8 +9370,7 @@ list_distributions_by_key_group(Client, KeyGroupId, QueryMap, HeadersMap)
 -spec list_distributions_by_key_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_distributions_by_key_group_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_resource(), tuple()}.
+    {error, list_distributions_by_key_group_errors(), tuple()}.
 list_distributions_by_key_group(Client, KeyGroupId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distributionsByKeyGroupId/", aws_util:encode_uri(KeyGroupId), ""],
@@ -8737,9 +9408,7 @@ list_distributions_by_key_group(Client, KeyGroupId, QueryMap, HeadersMap, Option
 -spec list_distributions_by_origin_request_policy_id(map(), binary() | list()) ->
     {ok, list_distributions_by_origin_request_policy_id_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_origin_request_policy(), tuple()}.
+    {error, list_distributions_by_origin_request_policy_id_errors(), tuple()}.
 list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId)
   when is_map(Client) ->
     list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, #{}, #{}).
@@ -8747,9 +9416,7 @@ list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId)
 -spec list_distributions_by_origin_request_policy_id(map(), binary() | list(), map(), map()) ->
     {ok, list_distributions_by_origin_request_policy_id_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_origin_request_policy(), tuple()}.
+    {error, list_distributions_by_origin_request_policy_id_errors(), tuple()}.
 list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, QueryMap, HeadersMap, []).
@@ -8757,9 +9424,7 @@ list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, Qu
 -spec list_distributions_by_origin_request_policy_id(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_distributions_by_origin_request_policy_id_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_origin_request_policy(), tuple()}.
+    {error, list_distributions_by_origin_request_policy_id_errors(), tuple()}.
 list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distributionsByOriginRequestPolicyId/", aws_util:encode_uri(OriginRequestPolicyId), ""],
@@ -8803,14 +9468,14 @@ list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, Qu
 -spec list_distributions_by_realtime_log_config(map(), list_distributions_by_realtime_log_config_request()) ->
     {ok, list_distributions_by_realtime_log_config_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()}.
+    {error, list_distributions_by_realtime_log_config_errors(), tuple()}.
 list_distributions_by_realtime_log_config(Client, Input) ->
     list_distributions_by_realtime_log_config(Client, Input, []).
 
 -spec list_distributions_by_realtime_log_config(map(), list_distributions_by_realtime_log_config_request(), proplists:proplist()) ->
     {ok, list_distributions_by_realtime_log_config_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()}.
+    {error, list_distributions_by_realtime_log_config_errors(), tuple()}.
 list_distributions_by_realtime_log_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/distributionsByRealtimeLogConfig"],
@@ -8849,9 +9514,7 @@ list_distributions_by_realtime_log_config(Client, Input0, Options0) ->
 -spec list_distributions_by_response_headers_policy_id(map(), binary() | list()) ->
     {ok, list_distributions_by_response_headers_policy_id_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_response_headers_policy(), tuple()}.
+    {error, list_distributions_by_response_headers_policy_id_errors(), tuple()}.
 list_distributions_by_response_headers_policy_id(Client, ResponseHeadersPolicyId)
   when is_map(Client) ->
     list_distributions_by_response_headers_policy_id(Client, ResponseHeadersPolicyId, #{}, #{}).
@@ -8859,9 +9522,7 @@ list_distributions_by_response_headers_policy_id(Client, ResponseHeadersPolicyId
 -spec list_distributions_by_response_headers_policy_id(map(), binary() | list(), map(), map()) ->
     {ok, list_distributions_by_response_headers_policy_id_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_response_headers_policy(), tuple()}.
+    {error, list_distributions_by_response_headers_policy_id_errors(), tuple()}.
 list_distributions_by_response_headers_policy_id(Client, ResponseHeadersPolicyId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_distributions_by_response_headers_policy_id(Client, ResponseHeadersPolicyId, QueryMap, HeadersMap, []).
@@ -8869,9 +9530,7 @@ list_distributions_by_response_headers_policy_id(Client, ResponseHeadersPolicyId
 -spec list_distributions_by_response_headers_policy_id(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_distributions_by_response_headers_policy_id_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_response_headers_policy(), tuple()}.
+    {error, list_distributions_by_response_headers_policy_id_errors(), tuple()}.
 list_distributions_by_response_headers_policy_id(Client, ResponseHeadersPolicyId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distributionsByResponseHeadersPolicyId/", aws_util:encode_uri(ResponseHeadersPolicyId), ""],
@@ -8898,8 +9557,7 @@ list_distributions_by_response_headers_policy_id(Client, ResponseHeadersPolicyId
 -spec list_distributions_by_web_acl_id(map(), binary() | list()) ->
     {ok, list_distributions_by_web_acl_id_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_web_acl_id(), tuple()}.
+    {error, list_distributions_by_web_acl_id_errors(), tuple()}.
 list_distributions_by_web_acl_id(Client, WebACLId)
   when is_map(Client) ->
     list_distributions_by_web_acl_id(Client, WebACLId, #{}, #{}).
@@ -8907,8 +9565,7 @@ list_distributions_by_web_acl_id(Client, WebACLId)
 -spec list_distributions_by_web_acl_id(map(), binary() | list(), map(), map()) ->
     {ok, list_distributions_by_web_acl_id_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_web_acl_id(), tuple()}.
+    {error, list_distributions_by_web_acl_id_errors(), tuple()}.
 list_distributions_by_web_acl_id(Client, WebACLId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_distributions_by_web_acl_id(Client, WebACLId, QueryMap, HeadersMap, []).
@@ -8916,8 +9573,7 @@ list_distributions_by_web_acl_id(Client, WebACLId, QueryMap, HeadersMap)
 -spec list_distributions_by_web_acl_id(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_distributions_by_web_acl_id_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_web_acl_id(), tuple()}.
+    {error, list_distributions_by_web_acl_id_errors(), tuple()}.
 list_distributions_by_web_acl_id(Client, WebACLId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distributionsByWebACLId/", aws_util:encode_uri(WebACLId), ""],
@@ -8945,7 +9601,7 @@ list_distributions_by_web_acl_id(Client, WebACLId, QueryMap, HeadersMap, Options
 -spec list_field_level_encryption_configs(map()) ->
     {ok, list_field_level_encryption_configs_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()}.
+    {error, list_field_level_encryption_configs_errors(), tuple()}.
 list_field_level_encryption_configs(Client)
   when is_map(Client) ->
     list_field_level_encryption_configs(Client, #{}, #{}).
@@ -8953,7 +9609,7 @@ list_field_level_encryption_configs(Client)
 -spec list_field_level_encryption_configs(map(), map(), map()) ->
     {ok, list_field_level_encryption_configs_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()}.
+    {error, list_field_level_encryption_configs_errors(), tuple()}.
 list_field_level_encryption_configs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_field_level_encryption_configs(Client, QueryMap, HeadersMap, []).
@@ -8961,7 +9617,7 @@ list_field_level_encryption_configs(Client, QueryMap, HeadersMap)
 -spec list_field_level_encryption_configs(map(), map(), map(), proplists:proplist()) ->
     {ok, list_field_level_encryption_configs_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()}.
+    {error, list_field_level_encryption_configs_errors(), tuple()}.
 list_field_level_encryption_configs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/field-level-encryption"],
@@ -8989,7 +9645,7 @@ list_field_level_encryption_configs(Client, QueryMap, HeadersMap, Options0)
 -spec list_field_level_encryption_profiles(map()) ->
     {ok, list_field_level_encryption_profiles_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()}.
+    {error, list_field_level_encryption_profiles_errors(), tuple()}.
 list_field_level_encryption_profiles(Client)
   when is_map(Client) ->
     list_field_level_encryption_profiles(Client, #{}, #{}).
@@ -8997,7 +9653,7 @@ list_field_level_encryption_profiles(Client)
 -spec list_field_level_encryption_profiles(map(), map(), map()) ->
     {ok, list_field_level_encryption_profiles_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()}.
+    {error, list_field_level_encryption_profiles_errors(), tuple()}.
 list_field_level_encryption_profiles(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_field_level_encryption_profiles(Client, QueryMap, HeadersMap, []).
@@ -9005,7 +9661,7 @@ list_field_level_encryption_profiles(Client, QueryMap, HeadersMap)
 -spec list_field_level_encryption_profiles(map(), map(), map(), proplists:proplist()) ->
     {ok, list_field_level_encryption_profiles_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()}.
+    {error, list_field_level_encryption_profiles_errors(), tuple()}.
 list_field_level_encryption_profiles(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/field-level-encryption-profile"],
@@ -9046,8 +9702,7 @@ list_field_level_encryption_profiles(Client, QueryMap, HeadersMap, Options0)
 -spec list_functions(map()) ->
     {ok, list_functions_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, list_functions_errors(), tuple()}.
 list_functions(Client)
   when is_map(Client) ->
     list_functions(Client, #{}, #{}).
@@ -9055,8 +9710,7 @@ list_functions(Client)
 -spec list_functions(map(), map(), map()) ->
     {ok, list_functions_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, list_functions_errors(), tuple()}.
 list_functions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_functions(Client, QueryMap, HeadersMap, []).
@@ -9064,8 +9718,7 @@ list_functions(Client, QueryMap, HeadersMap)
 -spec list_functions(map(), map(), map(), proplists:proplist()) ->
     {ok, list_functions_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, list_functions_errors(), tuple()}.
 list_functions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/function"],
@@ -9092,9 +9745,7 @@ list_functions(Client, QueryMap, HeadersMap, Options0)
 -spec list_invalidations(map(), binary() | list()) ->
     {ok, list_invalidations_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_distribution(), tuple()}.
+    {error, list_invalidations_errors(), tuple()}.
 list_invalidations(Client, DistributionId)
   when is_map(Client) ->
     list_invalidations(Client, DistributionId, #{}, #{}).
@@ -9102,9 +9753,7 @@ list_invalidations(Client, DistributionId)
 -spec list_invalidations(map(), binary() | list(), map(), map()) ->
     {ok, list_invalidations_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_distribution(), tuple()}.
+    {error, list_invalidations_errors(), tuple()}.
 list_invalidations(Client, DistributionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_invalidations(Client, DistributionId, QueryMap, HeadersMap, []).
@@ -9112,9 +9761,7 @@ list_invalidations(Client, DistributionId, QueryMap, HeadersMap)
 -spec list_invalidations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_invalidations_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_distribution(), tuple()}.
+    {error, list_invalidations_errors(), tuple()}.
 list_invalidations(Client, DistributionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(DistributionId), "/invalidation"],
@@ -9150,7 +9797,7 @@ list_invalidations(Client, DistributionId, QueryMap, HeadersMap, Options0)
 -spec list_key_groups(map()) ->
     {ok, list_key_groups_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()}.
+    {error, list_key_groups_errors(), tuple()}.
 list_key_groups(Client)
   when is_map(Client) ->
     list_key_groups(Client, #{}, #{}).
@@ -9158,7 +9805,7 @@ list_key_groups(Client)
 -spec list_key_groups(map(), map(), map()) ->
     {ok, list_key_groups_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()}.
+    {error, list_key_groups_errors(), tuple()}.
 list_key_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_key_groups(Client, QueryMap, HeadersMap, []).
@@ -9166,7 +9813,7 @@ list_key_groups(Client, QueryMap, HeadersMap)
 -spec list_key_groups(map(), map(), map(), proplists:proplist()) ->
     {ok, list_key_groups_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()}.
+    {error, list_key_groups_errors(), tuple()}.
 list_key_groups(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/key-group"],
@@ -9192,8 +9839,7 @@ list_key_groups(Client, QueryMap, HeadersMap, Options0)
 -spec list_key_value_stores(map()) ->
     {ok, list_key_value_stores_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()}.
+    {error, list_key_value_stores_errors(), tuple()}.
 list_key_value_stores(Client)
   when is_map(Client) ->
     list_key_value_stores(Client, #{}, #{}).
@@ -9201,8 +9847,7 @@ list_key_value_stores(Client)
 -spec list_key_value_stores(map(), map(), map()) ->
     {ok, list_key_value_stores_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()}.
+    {error, list_key_value_stores_errors(), tuple()}.
 list_key_value_stores(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_key_value_stores(Client, QueryMap, HeadersMap, []).
@@ -9210,8 +9855,7 @@ list_key_value_stores(Client, QueryMap, HeadersMap)
 -spec list_key_value_stores(map(), map(), map(), proplists:proplist()) ->
     {ok, list_key_value_stores_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()}.
+    {error, list_key_value_stores_errors(), tuple()}.
 list_key_value_stores(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/key-value-store"],
@@ -9249,7 +9893,7 @@ list_key_value_stores(Client, QueryMap, HeadersMap, Options0)
 -spec list_origin_access_controls(map()) ->
     {ok, list_origin_access_controls_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()}.
+    {error, list_origin_access_controls_errors(), tuple()}.
 list_origin_access_controls(Client)
   when is_map(Client) ->
     list_origin_access_controls(Client, #{}, #{}).
@@ -9257,7 +9901,7 @@ list_origin_access_controls(Client)
 -spec list_origin_access_controls(map(), map(), map()) ->
     {ok, list_origin_access_controls_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()}.
+    {error, list_origin_access_controls_errors(), tuple()}.
 list_origin_access_controls(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_origin_access_controls(Client, QueryMap, HeadersMap, []).
@@ -9265,7 +9909,7 @@ list_origin_access_controls(Client, QueryMap, HeadersMap)
 -spec list_origin_access_controls(map(), map(), map(), proplists:proplist()) ->
     {ok, list_origin_access_controls_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()}.
+    {error, list_origin_access_controls_errors(), tuple()}.
 list_origin_access_controls(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/origin-access-control"],
@@ -9306,9 +9950,7 @@ list_origin_access_controls(Client, QueryMap, HeadersMap, Options0)
 -spec list_origin_request_policies(map()) ->
     {ok, list_origin_request_policies_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_origin_request_policy(), tuple()}.
+    {error, list_origin_request_policies_errors(), tuple()}.
 list_origin_request_policies(Client)
   when is_map(Client) ->
     list_origin_request_policies(Client, #{}, #{}).
@@ -9316,9 +9958,7 @@ list_origin_request_policies(Client)
 -spec list_origin_request_policies(map(), map(), map()) ->
     {ok, list_origin_request_policies_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_origin_request_policy(), tuple()}.
+    {error, list_origin_request_policies_errors(), tuple()}.
 list_origin_request_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_origin_request_policies(Client, QueryMap, HeadersMap, []).
@@ -9326,9 +9966,7 @@ list_origin_request_policies(Client, QueryMap, HeadersMap)
 -spec list_origin_request_policies(map(), map(), map(), proplists:proplist()) ->
     {ok, list_origin_request_policies_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_origin_request_policy(), tuple()}.
+    {error, list_origin_request_policies_errors(), tuple()}.
 list_origin_request_policies(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/origin-request-policy"],
@@ -9356,7 +9994,7 @@ list_origin_request_policies(Client, QueryMap, HeadersMap, Options0)
 -spec list_public_keys(map()) ->
     {ok, list_public_keys_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()}.
+    {error, list_public_keys_errors(), tuple()}.
 list_public_keys(Client)
   when is_map(Client) ->
     list_public_keys(Client, #{}, #{}).
@@ -9364,7 +10002,7 @@ list_public_keys(Client)
 -spec list_public_keys(map(), map(), map()) ->
     {ok, list_public_keys_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()}.
+    {error, list_public_keys_errors(), tuple()}.
 list_public_keys(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_public_keys(Client, QueryMap, HeadersMap, []).
@@ -9372,7 +10010,7 @@ list_public_keys(Client, QueryMap, HeadersMap)
 -spec list_public_keys(map(), map(), map(), proplists:proplist()) ->
     {ok, list_public_keys_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()}.
+    {error, list_public_keys_errors(), tuple()}.
 list_public_keys(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/public-key"],
@@ -9408,9 +10046,7 @@ list_public_keys(Client, QueryMap, HeadersMap, Options0)
 -spec list_realtime_log_configs(map()) ->
     {ok, list_realtime_log_configs_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_realtime_log_config(), tuple()}.
+    {error, list_realtime_log_configs_errors(), tuple()}.
 list_realtime_log_configs(Client)
   when is_map(Client) ->
     list_realtime_log_configs(Client, #{}, #{}).
@@ -9418,9 +10054,7 @@ list_realtime_log_configs(Client)
 -spec list_realtime_log_configs(map(), map(), map()) ->
     {ok, list_realtime_log_configs_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_realtime_log_config(), tuple()}.
+    {error, list_realtime_log_configs_errors(), tuple()}.
 list_realtime_log_configs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_realtime_log_configs(Client, QueryMap, HeadersMap, []).
@@ -9428,9 +10062,7 @@ list_realtime_log_configs(Client, QueryMap, HeadersMap)
 -spec list_realtime_log_configs(map(), map(), map(), proplists:proplist()) ->
     {ok, list_realtime_log_configs_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_realtime_log_config(), tuple()}.
+    {error, list_realtime_log_configs_errors(), tuple()}.
 list_realtime_log_configs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/realtime-log-config"],
@@ -9470,9 +10102,7 @@ list_realtime_log_configs(Client, QueryMap, HeadersMap, Options0)
 -spec list_response_headers_policies(map()) ->
     {ok, list_response_headers_policies_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_response_headers_policy(), tuple()}.
+    {error, list_response_headers_policies_errors(), tuple()}.
 list_response_headers_policies(Client)
   when is_map(Client) ->
     list_response_headers_policies(Client, #{}, #{}).
@@ -9480,9 +10110,7 @@ list_response_headers_policies(Client)
 -spec list_response_headers_policies(map(), map(), map()) ->
     {ok, list_response_headers_policies_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_response_headers_policy(), tuple()}.
+    {error, list_response_headers_policies_errors(), tuple()}.
 list_response_headers_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_response_headers_policies(Client, QueryMap, HeadersMap, []).
@@ -9490,9 +10118,7 @@ list_response_headers_policies(Client, QueryMap, HeadersMap)
 -spec list_response_headers_policies(map(), map(), map(), proplists:proplist()) ->
     {ok, list_response_headers_policies_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_response_headers_policy(), tuple()}.
+    {error, list_response_headers_policies_errors(), tuple()}.
 list_response_headers_policies(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/response-headers-policy"],
@@ -9519,7 +10145,7 @@ list_response_headers_policies(Client, QueryMap, HeadersMap, Options0)
 -spec list_streaming_distributions(map()) ->
     {ok, list_streaming_distributions_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()}.
+    {error, list_streaming_distributions_errors(), tuple()}.
 list_streaming_distributions(Client)
   when is_map(Client) ->
     list_streaming_distributions(Client, #{}, #{}).
@@ -9527,7 +10153,7 @@ list_streaming_distributions(Client)
 -spec list_streaming_distributions(map(), map(), map()) ->
     {ok, list_streaming_distributions_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()}.
+    {error, list_streaming_distributions_errors(), tuple()}.
 list_streaming_distributions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_streaming_distributions(Client, QueryMap, HeadersMap, []).
@@ -9535,7 +10161,7 @@ list_streaming_distributions(Client, QueryMap, HeadersMap)
 -spec list_streaming_distributions(map(), map(), map(), proplists:proplist()) ->
     {ok, list_streaming_distributions_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()}.
+    {error, list_streaming_distributions_errors(), tuple()}.
 list_streaming_distributions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/streaming-distribution"],
@@ -9561,10 +10187,7 @@ list_streaming_distributions(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_tagging(), tuple()} |
-    {error, no_such_resource(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Resource)
   when is_map(Client) ->
     list_tags_for_resource(Client, Resource, #{}, #{}).
@@ -9572,10 +10195,7 @@ list_tags_for_resource(Client, Resource)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_tagging(), tuple()} |
-    {error, no_such_resource(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Resource, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, Resource, QueryMap, HeadersMap, []).
@@ -9583,10 +10203,7 @@ list_tags_for_resource(Client, Resource, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_tagging(), tuple()} |
-    {error, no_such_resource(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Resource, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/tagging"],
@@ -9627,22 +10244,14 @@ list_tags_for_resource(Client, Resource, QueryMap, HeadersMap, Options0)
 -spec publish_function(map(), binary() | list(), publish_function_request()) ->
     {ok, publish_function_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_function_exists(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, publish_function_errors(), tuple()}.
 publish_function(Client, Name, Input) ->
     publish_function(Client, Name, Input, []).
 
 -spec publish_function(map(), binary() | list(), publish_function_request(), proplists:proplist()) ->
     {ok, publish_function_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_function_exists(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, publish_function_errors(), tuple()}.
 publish_function(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/function/", aws_util:encode_uri(Name), "/publish"],
@@ -9671,20 +10280,14 @@ publish_function(Client, Name, Input0, Options0) ->
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_tagging(), tuple()} |
-    {error, no_such_resource(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_tagging(), tuple()} |
-    {error, no_such_resource(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/tagging?Operation=Tag"],
@@ -9731,22 +10334,14 @@ tag_resource(Client, Input0, Options0) ->
 -spec test_function(map(), binary() | list(), test_function_request()) ->
     {ok, test_function_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_function_exists(), tuple()} |
-    {error, test_function_failed(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, test_function_errors(), tuple()}.
 test_function(Client, Name, Input) ->
     test_function(Client, Name, Input, []).
 
 -spec test_function(map(), binary() | list(), test_function_request(), proplists:proplist()) ->
     {ok, test_function_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_function_exists(), tuple()} |
-    {error, test_function_failed(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, test_function_errors(), tuple()}.
 test_function(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/function/", aws_util:encode_uri(Name), "/test"],
@@ -9775,20 +10370,14 @@ test_function(Client, Name, Input0, Options0) ->
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_tagging(), tuple()} |
-    {error, no_such_resource(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_tagging(), tuple()} |
-    {error, no_such_resource(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/tagging?Operation=Untag"],
@@ -9832,34 +10421,14 @@ untag_resource(Client, Input0, Options0) ->
 -spec update_cache_policy(map(), binary() | list(), update_cache_policy_request()) ->
     {ok, update_cache_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, cache_policy_already_exists(), tuple()} |
-    {error, illegal_update(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_cache_policy(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, too_many_cookies_in_cache_policy(), tuple()} |
-    {error, too_many_headers_in_cache_policy(), tuple()} |
-    {error, too_many_query_strings_in_cache_policy(), tuple()}.
+    {error, update_cache_policy_errors(), tuple()}.
 update_cache_policy(Client, Id, Input) ->
     update_cache_policy(Client, Id, Input, []).
 
 -spec update_cache_policy(map(), binary() | list(), update_cache_policy_request(), proplists:proplist()) ->
     {ok, update_cache_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, cache_policy_already_exists(), tuple()} |
-    {error, illegal_update(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_cache_policy(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, too_many_cookies_in_cache_policy(), tuple()} |
-    {error, too_many_headers_in_cache_policy(), tuple()} |
-    {error, too_many_query_strings_in_cache_policy(), tuple()}.
+    {error, update_cache_policy_errors(), tuple()}.
 update_cache_policy(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/cache-policy/", aws_util:encode_uri(Id), ""],
@@ -9904,28 +10473,14 @@ update_cache_policy(Client, Id, Input0, Options0) ->
 -spec update_cloud_front_origin_access_identity(map(), binary() | list(), update_cloud_front_origin_access_identity_request()) ->
     {ok, update_cloud_front_origin_access_identity_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, illegal_update(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, missing_body(), tuple()} |
-    {error, no_such_cloud_front_origin_access_identity(), tuple()} |
-    {error, precondition_failed(), tuple()}.
+    {error, update_cloud_front_origin_access_identity_errors(), tuple()}.
 update_cloud_front_origin_access_identity(Client, Id, Input) ->
     update_cloud_front_origin_access_identity(Client, Id, Input, []).
 
 -spec update_cloud_front_origin_access_identity(map(), binary() | list(), update_cloud_front_origin_access_identity_request(), proplists:proplist()) ->
     {ok, update_cloud_front_origin_access_identity_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, illegal_update(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, missing_body(), tuple()} |
-    {error, no_such_cloud_front_origin_access_identity(), tuple()} |
-    {error, precondition_failed(), tuple()}.
+    {error, update_cloud_front_origin_access_identity_errors(), tuple()}.
 update_cloud_front_origin_access_identity(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/origin-access-identity/cloudfront/", aws_util:encode_uri(Id), "/config"],
@@ -9995,26 +10550,14 @@ update_cloud_front_origin_access_identity(Client, Id, Input0, Options0) ->
 -spec update_continuous_deployment_policy(map(), binary() | list(), update_continuous_deployment_policy_request()) ->
     {ok, update_continuous_deployment_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_continuous_deployment_policy(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, staging_distribution_in_use(), tuple()}.
+    {error, update_continuous_deployment_policy_errors(), tuple()}.
 update_continuous_deployment_policy(Client, Id, Input) ->
     update_continuous_deployment_policy(Client, Id, Input, []).
 
 -spec update_continuous_deployment_policy(map(), binary() | list(), update_continuous_deployment_policy_request(), proplists:proplist()) ->
     {ok, update_continuous_deployment_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_continuous_deployment_policy(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, staging_distribution_in_use(), tuple()}.
+    {error, update_continuous_deployment_policy_errors(), tuple()}.
 update_continuous_deployment_policy(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/continuous-deployment-policy/", aws_util:encode_uri(Id), ""],
@@ -10090,144 +10633,14 @@ update_continuous_deployment_policy(Client, Id, Input0, Options0) ->
 -spec update_distribution(map(), binary() | list(), update_distribution_request()) ->
     {ok, update_distribution_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, cname_already_exists(), tuple()} |
-    {error, continuous_deployment_policy_in_use(), tuple()} |
-    {error, illegal_field_level_encryption_config_association_with_cache_behavior(), tuple()} |
-    {error, illegal_origin_access_configuration(), tuple()} |
-    {error, illegal_update(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_default_root_object(), tuple()} |
-    {error, invalid_domain_name_for_origin_access_control(), tuple()} |
-    {error, invalid_error_code(), tuple()} |
-    {error, invalid_forward_cookies(), tuple()} |
-    {error, invalid_function_association(), tuple()} |
-    {error, invalid_geo_restriction_parameter(), tuple()} |
-    {error, invalid_headers_for_s3_origin(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, invalid_lambda_function_association(), tuple()} |
-    {error, invalid_location_code(), tuple()} |
-    {error, invalid_minimum_protocol_version(), tuple()} |
-    {error, invalid_origin_access_control(), tuple()} |
-    {error, invalid_origin_access_identity(), tuple()} |
-    {error, invalid_origin_keepalive_timeout(), tuple()} |
-    {error, invalid_origin_read_timeout(), tuple()} |
-    {error, invalid_query_string_parameters(), tuple()} |
-    {error, invalid_relative_path(), tuple()} |
-    {error, invalid_required_protocol(), tuple()} |
-    {error, invalid_response_code(), tuple()} |
-    {error, invalid_t_t_l_order(), tuple()} |
-    {error, invalid_viewer_certificate(), tuple()} |
-    {error, invalid_web_acl_id(), tuple()} |
-    {error, missing_body(), tuple()} |
-    {error, no_such_cache_policy(), tuple()} |
-    {error, no_such_continuous_deployment_policy(), tuple()} |
-    {error, no_such_distribution(), tuple()} |
-    {error, no_such_field_level_encryption_config(), tuple()} |
-    {error, no_such_origin(), tuple()} |
-    {error, no_such_origin_request_policy(), tuple()} |
-    {error, no_such_realtime_log_config(), tuple()} |
-    {error, no_such_response_headers_policy(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, realtime_log_config_owner_mismatch(), tuple()} |
-    {error, staging_distribution_in_use(), tuple()} |
-    {error, too_many_cache_behaviors(), tuple()} |
-    {error, too_many_certificates(), tuple()} |
-    {error, too_many_cookie_names_in_white_list(), tuple()} |
-    {error, too_many_distribution_cnames(), tuple()} |
-    {error, too_many_distributions_associated_to_cache_policy(), tuple()} |
-    {error, too_many_distributions_associated_to_field_level_encryption_config(), tuple()} |
-    {error, too_many_distributions_associated_to_key_group(), tuple()} |
-    {error, too_many_distributions_associated_to_origin_access_control(), tuple()} |
-    {error, too_many_distributions_associated_to_origin_request_policy(), tuple()} |
-    {error, too_many_distributions_associated_to_response_headers_policy(), tuple()} |
-    {error, too_many_distributions_with_function_associations(), tuple()} |
-    {error, too_many_distributions_with_lambda_associations(), tuple()} |
-    {error, too_many_distributions_with_single_function_arn(), tuple()} |
-    {error, too_many_function_associations(), tuple()} |
-    {error, too_many_headers_in_forwarded_values(), tuple()} |
-    {error, too_many_key_groups_associated_to_distribution(), tuple()} |
-    {error, too_many_lambda_function_associations(), tuple()} |
-    {error, too_many_origin_custom_headers(), tuple()} |
-    {error, too_many_origin_groups_per_distribution(), tuple()} |
-    {error, too_many_origins(), tuple()} |
-    {error, too_many_query_string_parameters(), tuple()} |
-    {error, too_many_trusted_signers(), tuple()} |
-    {error, trusted_key_group_does_not_exist(), tuple()} |
-    {error, trusted_signer_does_not_exist(), tuple()}.
+    {error, update_distribution_errors(), tuple()}.
 update_distribution(Client, Id, Input) ->
     update_distribution(Client, Id, Input, []).
 
 -spec update_distribution(map(), binary() | list(), update_distribution_request(), proplists:proplist()) ->
     {ok, update_distribution_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, cname_already_exists(), tuple()} |
-    {error, continuous_deployment_policy_in_use(), tuple()} |
-    {error, illegal_field_level_encryption_config_association_with_cache_behavior(), tuple()} |
-    {error, illegal_origin_access_configuration(), tuple()} |
-    {error, illegal_update(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_default_root_object(), tuple()} |
-    {error, invalid_domain_name_for_origin_access_control(), tuple()} |
-    {error, invalid_error_code(), tuple()} |
-    {error, invalid_forward_cookies(), tuple()} |
-    {error, invalid_function_association(), tuple()} |
-    {error, invalid_geo_restriction_parameter(), tuple()} |
-    {error, invalid_headers_for_s3_origin(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, invalid_lambda_function_association(), tuple()} |
-    {error, invalid_location_code(), tuple()} |
-    {error, invalid_minimum_protocol_version(), tuple()} |
-    {error, invalid_origin_access_control(), tuple()} |
-    {error, invalid_origin_access_identity(), tuple()} |
-    {error, invalid_origin_keepalive_timeout(), tuple()} |
-    {error, invalid_origin_read_timeout(), tuple()} |
-    {error, invalid_query_string_parameters(), tuple()} |
-    {error, invalid_relative_path(), tuple()} |
-    {error, invalid_required_protocol(), tuple()} |
-    {error, invalid_response_code(), tuple()} |
-    {error, invalid_t_t_l_order(), tuple()} |
-    {error, invalid_viewer_certificate(), tuple()} |
-    {error, invalid_web_acl_id(), tuple()} |
-    {error, missing_body(), tuple()} |
-    {error, no_such_cache_policy(), tuple()} |
-    {error, no_such_continuous_deployment_policy(), tuple()} |
-    {error, no_such_distribution(), tuple()} |
-    {error, no_such_field_level_encryption_config(), tuple()} |
-    {error, no_such_origin(), tuple()} |
-    {error, no_such_origin_request_policy(), tuple()} |
-    {error, no_such_realtime_log_config(), tuple()} |
-    {error, no_such_response_headers_policy(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, realtime_log_config_owner_mismatch(), tuple()} |
-    {error, staging_distribution_in_use(), tuple()} |
-    {error, too_many_cache_behaviors(), tuple()} |
-    {error, too_many_certificates(), tuple()} |
-    {error, too_many_cookie_names_in_white_list(), tuple()} |
-    {error, too_many_distribution_cnames(), tuple()} |
-    {error, too_many_distributions_associated_to_cache_policy(), tuple()} |
-    {error, too_many_distributions_associated_to_field_level_encryption_config(), tuple()} |
-    {error, too_many_distributions_associated_to_key_group(), tuple()} |
-    {error, too_many_distributions_associated_to_origin_access_control(), tuple()} |
-    {error, too_many_distributions_associated_to_origin_request_policy(), tuple()} |
-    {error, too_many_distributions_associated_to_response_headers_policy(), tuple()} |
-    {error, too_many_distributions_with_function_associations(), tuple()} |
-    {error, too_many_distributions_with_lambda_associations(), tuple()} |
-    {error, too_many_distributions_with_single_function_arn(), tuple()} |
-    {error, too_many_function_associations(), tuple()} |
-    {error, too_many_headers_in_forwarded_values(), tuple()} |
-    {error, too_many_key_groups_associated_to_distribution(), tuple()} |
-    {error, too_many_lambda_function_associations(), tuple()} |
-    {error, too_many_origin_custom_headers(), tuple()} |
-    {error, too_many_origin_groups_per_distribution(), tuple()} |
-    {error, too_many_origins(), tuple()} |
-    {error, too_many_query_string_parameters(), tuple()} |
-    {error, too_many_trusted_signers(), tuple()} |
-    {error, trusted_key_group_does_not_exist(), tuple()} |
-    {error, trusted_signer_does_not_exist(), tuple()}.
+    {error, update_distribution_errors(), tuple()}.
 update_distribution(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(Id), "/config"],
@@ -10301,134 +10714,14 @@ update_distribution(Client, Id, Input0, Options0) ->
 -spec update_distribution_with_staging_config(map(), binary() | list(), update_distribution_with_staging_config_request()) ->
     {ok, update_distribution_with_staging_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, cname_already_exists(), tuple()} |
-    {error, illegal_field_level_encryption_config_association_with_cache_behavior(), tuple()} |
-    {error, illegal_update(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_default_root_object(), tuple()} |
-    {error, invalid_error_code(), tuple()} |
-    {error, invalid_forward_cookies(), tuple()} |
-    {error, invalid_function_association(), tuple()} |
-    {error, invalid_geo_restriction_parameter(), tuple()} |
-    {error, invalid_headers_for_s3_origin(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, invalid_lambda_function_association(), tuple()} |
-    {error, invalid_location_code(), tuple()} |
-    {error, invalid_minimum_protocol_version(), tuple()} |
-    {error, invalid_origin_access_control(), tuple()} |
-    {error, invalid_origin_access_identity(), tuple()} |
-    {error, invalid_origin_keepalive_timeout(), tuple()} |
-    {error, invalid_origin_read_timeout(), tuple()} |
-    {error, invalid_query_string_parameters(), tuple()} |
-    {error, invalid_relative_path(), tuple()} |
-    {error, invalid_required_protocol(), tuple()} |
-    {error, invalid_response_code(), tuple()} |
-    {error, invalid_t_t_l_order(), tuple()} |
-    {error, invalid_viewer_certificate(), tuple()} |
-    {error, invalid_web_acl_id(), tuple()} |
-    {error, missing_body(), tuple()} |
-    {error, no_such_cache_policy(), tuple()} |
-    {error, no_such_distribution(), tuple()} |
-    {error, no_such_field_level_encryption_config(), tuple()} |
-    {error, no_such_origin(), tuple()} |
-    {error, no_such_origin_request_policy(), tuple()} |
-    {error, no_such_realtime_log_config(), tuple()} |
-    {error, no_such_response_headers_policy(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, realtime_log_config_owner_mismatch(), tuple()} |
-    {error, too_many_cache_behaviors(), tuple()} |
-    {error, too_many_certificates(), tuple()} |
-    {error, too_many_cookie_names_in_white_list(), tuple()} |
-    {error, too_many_distribution_cnames(), tuple()} |
-    {error, too_many_distributions_associated_to_cache_policy(), tuple()} |
-    {error, too_many_distributions_associated_to_field_level_encryption_config(), tuple()} |
-    {error, too_many_distributions_associated_to_key_group(), tuple()} |
-    {error, too_many_distributions_associated_to_origin_access_control(), tuple()} |
-    {error, too_many_distributions_associated_to_origin_request_policy(), tuple()} |
-    {error, too_many_distributions_associated_to_response_headers_policy(), tuple()} |
-    {error, too_many_distributions_with_function_associations(), tuple()} |
-    {error, too_many_distributions_with_lambda_associations(), tuple()} |
-    {error, too_many_distributions_with_single_function_arn(), tuple()} |
-    {error, too_many_function_associations(), tuple()} |
-    {error, too_many_headers_in_forwarded_values(), tuple()} |
-    {error, too_many_key_groups_associated_to_distribution(), tuple()} |
-    {error, too_many_lambda_function_associations(), tuple()} |
-    {error, too_many_origin_custom_headers(), tuple()} |
-    {error, too_many_origin_groups_per_distribution(), tuple()} |
-    {error, too_many_origins(), tuple()} |
-    {error, too_many_query_string_parameters(), tuple()} |
-    {error, too_many_trusted_signers(), tuple()} |
-    {error, trusted_key_group_does_not_exist(), tuple()} |
-    {error, trusted_signer_does_not_exist(), tuple()}.
+    {error, update_distribution_with_staging_config_errors(), tuple()}.
 update_distribution_with_staging_config(Client, Id, Input) ->
     update_distribution_with_staging_config(Client, Id, Input, []).
 
 -spec update_distribution_with_staging_config(map(), binary() | list(), update_distribution_with_staging_config_request(), proplists:proplist()) ->
     {ok, update_distribution_with_staging_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, cname_already_exists(), tuple()} |
-    {error, illegal_field_level_encryption_config_association_with_cache_behavior(), tuple()} |
-    {error, illegal_update(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_default_root_object(), tuple()} |
-    {error, invalid_error_code(), tuple()} |
-    {error, invalid_forward_cookies(), tuple()} |
-    {error, invalid_function_association(), tuple()} |
-    {error, invalid_geo_restriction_parameter(), tuple()} |
-    {error, invalid_headers_for_s3_origin(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, invalid_lambda_function_association(), tuple()} |
-    {error, invalid_location_code(), tuple()} |
-    {error, invalid_minimum_protocol_version(), tuple()} |
-    {error, invalid_origin_access_control(), tuple()} |
-    {error, invalid_origin_access_identity(), tuple()} |
-    {error, invalid_origin_keepalive_timeout(), tuple()} |
-    {error, invalid_origin_read_timeout(), tuple()} |
-    {error, invalid_query_string_parameters(), tuple()} |
-    {error, invalid_relative_path(), tuple()} |
-    {error, invalid_required_protocol(), tuple()} |
-    {error, invalid_response_code(), tuple()} |
-    {error, invalid_t_t_l_order(), tuple()} |
-    {error, invalid_viewer_certificate(), tuple()} |
-    {error, invalid_web_acl_id(), tuple()} |
-    {error, missing_body(), tuple()} |
-    {error, no_such_cache_policy(), tuple()} |
-    {error, no_such_distribution(), tuple()} |
-    {error, no_such_field_level_encryption_config(), tuple()} |
-    {error, no_such_origin(), tuple()} |
-    {error, no_such_origin_request_policy(), tuple()} |
-    {error, no_such_realtime_log_config(), tuple()} |
-    {error, no_such_response_headers_policy(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, realtime_log_config_owner_mismatch(), tuple()} |
-    {error, too_many_cache_behaviors(), tuple()} |
-    {error, too_many_certificates(), tuple()} |
-    {error, too_many_cookie_names_in_white_list(), tuple()} |
-    {error, too_many_distribution_cnames(), tuple()} |
-    {error, too_many_distributions_associated_to_cache_policy(), tuple()} |
-    {error, too_many_distributions_associated_to_field_level_encryption_config(), tuple()} |
-    {error, too_many_distributions_associated_to_key_group(), tuple()} |
-    {error, too_many_distributions_associated_to_origin_access_control(), tuple()} |
-    {error, too_many_distributions_associated_to_origin_request_policy(), tuple()} |
-    {error, too_many_distributions_associated_to_response_headers_policy(), tuple()} |
-    {error, too_many_distributions_with_function_associations(), tuple()} |
-    {error, too_many_distributions_with_lambda_associations(), tuple()} |
-    {error, too_many_distributions_with_single_function_arn(), tuple()} |
-    {error, too_many_function_associations(), tuple()} |
-    {error, too_many_headers_in_forwarded_values(), tuple()} |
-    {error, too_many_key_groups_associated_to_distribution(), tuple()} |
-    {error, too_many_lambda_function_associations(), tuple()} |
-    {error, too_many_origin_custom_headers(), tuple()} |
-    {error, too_many_origin_groups_per_distribution(), tuple()} |
-    {error, too_many_origins(), tuple()} |
-    {error, too_many_query_string_parameters(), tuple()} |
-    {error, too_many_trusted_signers(), tuple()} |
-    {error, trusted_key_group_does_not_exist(), tuple()} |
-    {error, trusted_signer_does_not_exist(), tuple()}.
+    {error, update_distribution_with_staging_config_errors(), tuple()}.
 update_distribution_with_staging_config(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(Id), "/promote-staging-config"],
@@ -10474,34 +10767,14 @@ update_distribution_with_staging_config(Client, Id, Input0, Options0) ->
 -spec update_field_level_encryption_config(map(), binary() | list(), update_field_level_encryption_config_request()) ->
     {ok, update_field_level_encryption_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, illegal_update(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_field_level_encryption_config(), tuple()} |
-    {error, no_such_field_level_encryption_profile(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, query_arg_profile_empty(), tuple()} |
-    {error, too_many_field_level_encryption_content_type_profiles(), tuple()} |
-    {error, too_many_field_level_encryption_query_arg_profiles(), tuple()}.
+    {error, update_field_level_encryption_config_errors(), tuple()}.
 update_field_level_encryption_config(Client, Id, Input) ->
     update_field_level_encryption_config(Client, Id, Input, []).
 
 -spec update_field_level_encryption_config(map(), binary() | list(), update_field_level_encryption_config_request(), proplists:proplist()) ->
     {ok, update_field_level_encryption_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, illegal_update(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_field_level_encryption_config(), tuple()} |
-    {error, no_such_field_level_encryption_profile(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, query_arg_profile_empty(), tuple()} |
-    {error, too_many_field_level_encryption_content_type_profiles(), tuple()} |
-    {error, too_many_field_level_encryption_query_arg_profiles(), tuple()}.
+    {error, update_field_level_encryption_config_errors(), tuple()}.
 update_field_level_encryption_config(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/field-level-encryption/", aws_util:encode_uri(Id), "/config"],
@@ -10546,36 +10819,14 @@ update_field_level_encryption_config(Client, Id, Input0, Options0) ->
 -spec update_field_level_encryption_profile(map(), binary() | list(), update_field_level_encryption_profile_request()) ->
     {ok, update_field_level_encryption_profile_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, field_level_encryption_profile_already_exists(), tuple()} |
-    {error, field_level_encryption_profile_size_exceeded(), tuple()} |
-    {error, illegal_update(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_field_level_encryption_profile(), tuple()} |
-    {error, no_such_public_key(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, too_many_field_level_encryption_encryption_entities(), tuple()} |
-    {error, too_many_field_level_encryption_field_patterns(), tuple()}.
+    {error, update_field_level_encryption_profile_errors(), tuple()}.
 update_field_level_encryption_profile(Client, Id, Input) ->
     update_field_level_encryption_profile(Client, Id, Input, []).
 
 -spec update_field_level_encryption_profile(map(), binary() | list(), update_field_level_encryption_profile_request(), proplists:proplist()) ->
     {ok, update_field_level_encryption_profile_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, field_level_encryption_profile_already_exists(), tuple()} |
-    {error, field_level_encryption_profile_size_exceeded(), tuple()} |
-    {error, illegal_update(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_field_level_encryption_profile(), tuple()} |
-    {error, no_such_public_key(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, too_many_field_level_encryption_encryption_entities(), tuple()} |
-    {error, too_many_field_level_encryption_field_patterns(), tuple()}.
+    {error, update_field_level_encryption_profile_errors(), tuple()}.
 update_field_level_encryption_profile(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/field-level-encryption-profile/", aws_util:encode_uri(Id), "/config"],
@@ -10630,24 +10881,14 @@ update_field_level_encryption_profile(Client, Id, Input0, Options0) ->
 -spec update_function(map(), binary() | list(), update_function_request()) ->
     {ok, update_function_result(), tuple()} |
     {error, any()} |
-    {error, function_size_limit_exceeded(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_function_exists(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, update_function_errors(), tuple()}.
 update_function(Client, Name, Input) ->
     update_function(Client, Name, Input, []).
 
 -spec update_function(map(), binary() | list(), update_function_request(), proplists:proplist()) ->
     {ok, update_function_result(), tuple()} |
     {error, any()} |
-    {error, function_size_limit_exceeded(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_function_exists(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, update_function_errors(), tuple()}.
 update_function(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/function/", aws_util:encode_uri(Name), ""],
@@ -10707,24 +10948,14 @@ update_function(Client, Name, Input0, Options0) ->
 -spec update_key_group(map(), binary() | list(), update_key_group_request()) ->
     {ok, update_key_group_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, key_group_already_exists(), tuple()} |
-    {error, no_such_resource(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, too_many_public_keys_in_key_group(), tuple()}.
+    {error, update_key_group_errors(), tuple()}.
 update_key_group(Client, Id, Input) ->
     update_key_group(Client, Id, Input, []).
 
 -spec update_key_group(map(), binary() | list(), update_key_group_request(), proplists:proplist()) ->
     {ok, update_key_group_result(), tuple()} |
     {error, any()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, key_group_already_exists(), tuple()} |
-    {error, no_such_resource(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, too_many_public_keys_in_key_group(), tuple()}.
+    {error, update_key_group_errors(), tuple()}.
 update_key_group(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/key-group/", aws_util:encode_uri(Id), ""],
@@ -10769,22 +11000,14 @@ update_key_group(Client, Id, Input0, Options0) ->
 -spec update_key_value_store(map(), binary() | list(), update_key_value_store_request()) ->
     {ok, update_key_value_store_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, entity_not_found(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, precondition_failed(), tuple()}.
+    {error, update_key_value_store_errors(), tuple()}.
 update_key_value_store(Client, Name, Input) ->
     update_key_value_store(Client, Name, Input, []).
 
 -spec update_key_value_store(map(), binary() | list(), update_key_value_store_request(), proplists:proplist()) ->
     {ok, update_key_value_store_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, entity_not_found(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, precondition_failed(), tuple()}.
+    {error, update_key_value_store_errors(), tuple()}.
 update_key_value_store(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/key-value-store/", aws_util:encode_uri(Name), ""],
@@ -10829,26 +11052,14 @@ update_key_value_store(Client, Name, Input0, Options0) ->
 -spec update_origin_access_control(map(), binary() | list(), update_origin_access_control_request()) ->
     {ok, update_origin_access_control_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, illegal_update(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_origin_access_control(), tuple()} |
-    {error, origin_access_control_already_exists(), tuple()} |
-    {error, precondition_failed(), tuple()}.
+    {error, update_origin_access_control_errors(), tuple()}.
 update_origin_access_control(Client, Id, Input) ->
     update_origin_access_control(Client, Id, Input, []).
 
 -spec update_origin_access_control(map(), binary() | list(), update_origin_access_control_request(), proplists:proplist()) ->
     {ok, update_origin_access_control_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, illegal_update(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_origin_access_control(), tuple()} |
-    {error, origin_access_control_already_exists(), tuple()} |
-    {error, precondition_failed(), tuple()}.
+    {error, update_origin_access_control_errors(), tuple()}.
 update_origin_access_control(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/origin-access-control/", aws_util:encode_uri(Id), "/config"],
@@ -10911,34 +11122,14 @@ update_origin_access_control(Client, Id, Input0, Options0) ->
 -spec update_origin_request_policy(map(), binary() | list(), update_origin_request_policy_request()) ->
     {ok, update_origin_request_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, illegal_update(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_origin_request_policy(), tuple()} |
-    {error, origin_request_policy_already_exists(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, too_many_cookies_in_origin_request_policy(), tuple()} |
-    {error, too_many_headers_in_origin_request_policy(), tuple()} |
-    {error, too_many_query_strings_in_origin_request_policy(), tuple()}.
+    {error, update_origin_request_policy_errors(), tuple()}.
 update_origin_request_policy(Client, Id, Input) ->
     update_origin_request_policy(Client, Id, Input, []).
 
 -spec update_origin_request_policy(map(), binary() | list(), update_origin_request_policy_request(), proplists:proplist()) ->
     {ok, update_origin_request_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, illegal_update(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_origin_request_policy(), tuple()} |
-    {error, origin_request_policy_already_exists(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, too_many_cookies_in_origin_request_policy(), tuple()} |
-    {error, too_many_headers_in_origin_request_policy(), tuple()} |
-    {error, too_many_query_strings_in_origin_request_policy(), tuple()}.
+    {error, update_origin_request_policy_errors(), tuple()}.
 update_origin_request_policy(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/origin-request-policy/", aws_util:encode_uri(Id), ""],
@@ -10986,26 +11177,14 @@ update_origin_request_policy(Client, Id, Input0, Options0) ->
 -spec update_public_key(map(), binary() | list(), update_public_key_request()) ->
     {ok, update_public_key_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, cannot_change_immutable_public_key_fields(), tuple()} |
-    {error, illegal_update(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_public_key(), tuple()} |
-    {error, precondition_failed(), tuple()}.
+    {error, update_public_key_errors(), tuple()}.
 update_public_key(Client, Id, Input) ->
     update_public_key(Client, Id, Input, []).
 
 -spec update_public_key(map(), binary() | list(), update_public_key_request(), proplists:proplist()) ->
     {ok, update_public_key_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, cannot_change_immutable_public_key_fields(), tuple()} |
-    {error, illegal_update(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_public_key(), tuple()} |
-    {error, precondition_failed(), tuple()}.
+    {error, update_public_key_errors(), tuple()}.
 update_public_key(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/public-key/", aws_util:encode_uri(Id), "/config"],
@@ -11071,18 +11250,14 @@ update_public_key(Client, Id, Input0, Options0) ->
 -spec update_realtime_log_config(map(), update_realtime_log_config_request()) ->
     {ok, update_realtime_log_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_realtime_log_config(), tuple()}.
+    {error, update_realtime_log_config_errors(), tuple()}.
 update_realtime_log_config(Client, Input) ->
     update_realtime_log_config(Client, Input, []).
 
 -spec update_realtime_log_config(map(), update_realtime_log_config_request(), proplists:proplist()) ->
     {ok, update_realtime_log_config_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, no_such_realtime_log_config(), tuple()}.
+    {error, update_realtime_log_config_errors(), tuple()}.
 update_realtime_log_config(Client, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/realtime-log-config"],
@@ -11127,34 +11302,14 @@ update_realtime_log_config(Client, Input0, Options0) ->
 -spec update_response_headers_policy(map(), binary() | list(), update_response_headers_policy_request()) ->
     {ok, update_response_headers_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, illegal_update(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_response_headers_policy(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, response_headers_policy_already_exists(), tuple()} |
-    {error, too_long_c_s_p_in_response_headers_policy(), tuple()} |
-    {error, too_many_custom_headers_in_response_headers_policy(), tuple()} |
-    {error, too_many_remove_headers_in_response_headers_policy(), tuple()}.
+    {error, update_response_headers_policy_errors(), tuple()}.
 update_response_headers_policy(Client, Id, Input) ->
     update_response_headers_policy(Client, Id, Input, []).
 
 -spec update_response_headers_policy(map(), binary() | list(), update_response_headers_policy_request(), proplists:proplist()) ->
     {ok, update_response_headers_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, illegal_update(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, no_such_response_headers_policy(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, response_headers_policy_already_exists(), tuple()} |
-    {error, too_long_c_s_p_in_response_headers_policy(), tuple()} |
-    {error, too_many_custom_headers_in_response_headers_policy(), tuple()} |
-    {error, too_many_remove_headers_in_response_headers_policy(), tuple()}.
+    {error, update_response_headers_policy_errors(), tuple()}.
 update_response_headers_policy(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/response-headers-policy/", aws_util:encode_uri(Id), ""],
@@ -11199,40 +11354,14 @@ update_response_headers_policy(Client, Id, Input0, Options0) ->
 -spec update_streaming_distribution(map(), binary() | list(), update_streaming_distribution_request()) ->
     {ok, update_streaming_distribution_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, cname_already_exists(), tuple()} |
-    {error, illegal_update(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, invalid_origin_access_control(), tuple()} |
-    {error, invalid_origin_access_identity(), tuple()} |
-    {error, missing_body(), tuple()} |
-    {error, no_such_streaming_distribution(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, too_many_streaming_distribution_cnames(), tuple()} |
-    {error, too_many_trusted_signers(), tuple()} |
-    {error, trusted_signer_does_not_exist(), tuple()}.
+    {error, update_streaming_distribution_errors(), tuple()}.
 update_streaming_distribution(Client, Id, Input) ->
     update_streaming_distribution(Client, Id, Input, []).
 
 -spec update_streaming_distribution(map(), binary() | list(), update_streaming_distribution_request(), proplists:proplist()) ->
     {ok, update_streaming_distribution_result(), tuple()} |
     {error, any()} |
-    {error, access_denied(), tuple()} |
-    {error, cname_already_exists(), tuple()} |
-    {error, illegal_update(), tuple()} |
-    {error, inconsistent_quantities(), tuple()} |
-    {error, invalid_argument(), tuple()} |
-    {error, invalid_if_match_version(), tuple()} |
-    {error, invalid_origin_access_control(), tuple()} |
-    {error, invalid_origin_access_identity(), tuple()} |
-    {error, missing_body(), tuple()} |
-    {error, no_such_streaming_distribution(), tuple()} |
-    {error, precondition_failed(), tuple()} |
-    {error, too_many_streaming_distribution_cnames(), tuple()} |
-    {error, too_many_trusted_signers(), tuple()} |
-    {error, trusted_signer_does_not_exist(), tuple()}.
+    {error, update_streaming_distribution_errors(), tuple()}.
 update_streaming_distribution(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/streaming-distribution/", aws_util:encode_uri(Id), "/config"],

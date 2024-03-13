@@ -101,18 +101,22 @@
 %% }
 -type update_sol_network_package_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_sol_vnf_info() :: #{
 %%   <<"vnfState">> => list(any()),
 %%   <<"vnfcResourceInfo">> => list(get_sol_vnfc_resource_info()())
 %% }
 -type get_sol_vnf_info() :: #{binary() => any()}.
+
 %% Example:
 %% delete_sol_function_package_input() :: #{}
 -type delete_sol_function_package_input() :: #{}.
+
 %% Example:
 %% delete_sol_network_instance_input() :: #{}
 -type delete_sol_network_instance_input() :: #{}.
+
 
 %% Example:
 %% create_sol_network_package_output() :: #{
@@ -124,6 +128,7 @@
 %%   <<"tags">> => map()
 %% }
 -type create_sol_network_package_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_sol_function_package_output() :: #{
@@ -141,12 +146,14 @@
 %% }
 -type get_sol_function_package_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_sol_function_instance_metadata() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"lastModified">> => [non_neg_integer()]
 %% }
 -type list_sol_function_instance_metadata() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_sol_function_instances_input() :: #{
@@ -155,6 +162,7 @@
 %% }
 -type list_sol_function_instances_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_sol_network_operations_input() :: #{
 %%   <<"maxResults">> => [integer()],
@@ -162,11 +170,13 @@
 %% }
 -type list_sol_network_operations_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% validate_sol_network_package_content_metadata() :: #{
 %%   <<"nsd">> => network_artifact_meta()
 %% }
 -type validate_sol_network_package_content_metadata() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_sol_network_packages_output() :: #{
@@ -175,6 +185,7 @@
 %% }
 -type list_sol_network_packages_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_sol_function_instance_metadata() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
@@ -182,26 +193,31 @@
 %% }
 -type get_sol_function_instance_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_sol_network_package_input() :: #{
 %%   <<"tags">> => map()
 %% }
 -type create_sol_network_package_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_sol_function_package_content_metadata() :: #{
 %%   <<"vnfd">> => function_artifact_meta()
 %% }
 -type put_sol_function_package_content_metadata() :: #{binary() => any()}.
+
 %% Example:
 %% get_sol_network_package_descriptor_input() :: #{}
 -type get_sol_network_package_descriptor_input() :: #{}.
+
 
 %% Example:
 %% get_sol_function_package_descriptor_input() :: #{
 %%   <<"accept">> := list(any())
 %% }
 -type get_sol_function_package_descriptor_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_sol_function_instance_output() :: #{
@@ -220,6 +236,7 @@
 %% }
 -type get_sol_function_instance_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_sol_network_package_output() :: #{
 %%   <<"arn">> => string(),
@@ -236,12 +253,14 @@
 %% }
 -type get_sol_network_package_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% error_info() :: #{
 %%   <<"cause">> => string(),
 %%   <<"details">> => string()
 %% }
 -type error_info() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_sol_function_package_content_output() :: #{
@@ -254,14 +273,17 @@
 %% }
 -type put_sol_function_package_content_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_output() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_output() :: #{binary() => any()}.
+
 %% Example:
 %% get_sol_network_package_input() :: #{}
 -type get_sol_network_package_input() :: #{}.
+
 
 %% Example:
 %% list_sol_network_packages_input() :: #{
@@ -270,6 +292,7 @@
 %% }
 -type list_sol_network_packages_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% validate_sol_network_package_content_input() :: #{
 %%   <<"contentType">> => list(any()),
@@ -277,12 +300,14 @@
 %% }
 -type validate_sol_network_package_content_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_sol_network_package_content_input() :: #{
 %%   <<"contentType">> => list(any()),
 %%   <<"file">> := [binary()]
 %% }
 -type put_sol_network_package_content_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_sol_network_operations_info() :: #{
@@ -296,11 +321,13 @@
 %% }
 -type list_sol_network_operations_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% terminate_sol_network_instance_input() :: #{
 %%   <<"tags">> => map()
 %% }
 -type terminate_sol_network_instance_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -308,11 +335,13 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_sol_instantiated_vnf_info() :: #{
 %%   <<"vnfState">> => list(any())
 %% }
 -type get_sol_instantiated_vnf_info() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_sol_vnfc_resource_info() :: #{
@@ -320,12 +349,14 @@
 %% }
 -type get_sol_vnfc_resource_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_sol_network_package_metadata() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"lastModified">> => [non_neg_integer()]
 %% }
 -type list_sol_network_package_metadata() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_sol_network_package_content_output() :: #{
@@ -339,6 +370,7 @@
 %% }
 -type put_sol_network_package_content_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_sol_network_instances_input() :: #{
 %%   <<"maxResults">> => [integer()],
@@ -346,17 +378,20 @@
 %% }
 -type list_sol_network_instances_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_sol_network_package_content_metadata() :: #{
 %%   <<"nsd">> => network_artifact_meta()
 %% }
 -type put_sol_network_package_content_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_sol_network_operations_metadata() :: #{
@@ -365,12 +400,14 @@
 %% }
 -type list_sol_network_operations_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_sol_network_package_content_output() :: #{
 %%   <<"contentType">> => list(any()),
 %%   <<"nsdContent">> => [binary()]
 %% }
 -type get_sol_network_package_content_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_sol_network_instance_output() :: #{
@@ -379,12 +416,14 @@
 %% }
 -type update_sol_network_instance_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% problem_details() :: #{
 %%   <<"detail">> => [string()],
 %%   <<"title">> => [string()]
 %% }
 -type problem_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_sol_network_instance_output() :: #{
@@ -396,6 +435,7 @@
 %% }
 -type create_sol_network_instance_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% terminate_sol_network_instance_output() :: #{
 %%   <<"nsLcmOpOccId">> => string(),
@@ -403,12 +443,14 @@
 %% }
 -type terminate_sol_network_instance_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_sol_function_package_content_input() :: #{
 %%   <<"contentType">> => list(any()),
 %%   <<"file">> := [binary()]
 %% }
 -type put_sol_function_package_content_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% instantiate_sol_network_instance_input() :: #{
@@ -418,12 +460,14 @@
 %% }
 -type instantiate_sol_network_instance_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_sol_function_packages_output() :: #{
 %%   <<"functionPackages">> => list(list_sol_function_package_info()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_sol_function_packages_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_sol_function_package_output() :: #{
@@ -435,15 +479,18 @@
 %%   <<"usageState">> => list(any())
 %% }
 -type create_sol_function_package_output() :: #{binary() => any()}.
+
 %% Example:
 %% cancel_sol_network_operation_input() :: #{}
 -type cancel_sol_network_operation_input() :: #{}.
+
 
 %% Example:
 %% tag_resource_input() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_sol_network_modify() :: #{
@@ -452,12 +499,14 @@
 %% }
 -type update_sol_network_modify() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_sol_network_instance_metadata() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"lastModified">> => [non_neg_integer()]
 %% }
 -type list_sol_network_instance_metadata() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_sol_network_instance_output() :: #{
@@ -473,15 +522,18 @@
 %%   <<"tags">> => map()
 %% }
 -type get_sol_network_instance_output() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_output() :: #{}
 -type tag_resource_output() :: #{}.
+
 
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_sol_function_package_descriptor_output() :: #{
@@ -490,12 +542,14 @@
 %% }
 -type get_sol_function_package_descriptor_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_sol_network_instance_metadata() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"lastModified">> => [non_neg_integer()]
 %% }
 -type get_sol_network_instance_metadata() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_sol_network_package_metadata() :: #{
@@ -504,9 +558,11 @@
 %%   <<"nsd">> => network_artifact_meta()
 %% }
 -type get_sol_network_package_metadata() :: #{binary() => any()}.
+
 %% Example:
 %% get_sol_network_operation_input() :: #{}
 -type get_sol_network_operation_input() :: #{}.
+
 
 %% Example:
 %% update_sol_network_package_input() :: #{
@@ -514,11 +570,13 @@
 %% }
 -type update_sol_network_package_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_sol_function_package_input() :: #{
 %%   <<"tags">> => map()
 %% }
 -type create_sol_function_package_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_sol_function_package_output() :: #{
@@ -526,11 +584,13 @@
 %% }
 -type update_sol_function_package_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_sol_network_operation_task_details() :: #{
@@ -543,32 +603,39 @@
 %% }
 -type get_sol_network_operation_task_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_input() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_sol_network_package_content_input() :: #{
 %%   <<"accept">> := list(any())
 %% }
 -type get_sol_network_package_content_input() :: #{binary() => any()}.
+
 %% Example:
 %% delete_sol_network_package_input() :: #{}
 -type delete_sol_network_package_input() :: #{}.
+
 %% Example:
 %% get_sol_function_package_input() :: #{}
 -type get_sol_function_package_input() :: #{}.
+
 
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_input() :: #{}
 -type list_tags_for_resource_input() :: #{}.
+
 
 %% Example:
 %% validate_sol_network_package_content_output() :: #{
@@ -581,15 +648,18 @@
 %%   <<"vnfPkgIds">> => list(string()())
 %% }
 -type validate_sol_network_package_content_output() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_output() :: #{}
 -type untag_resource_output() :: #{}.
+
 
 %% Example:
 %% get_sol_function_package_content_input() :: #{
 %%   <<"accept">> := list(any())
 %% }
 -type get_sol_function_package_content_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_sol_function_package_metadata() :: #{
@@ -599,6 +669,7 @@
 %% }
 -type get_sol_function_package_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_sol_network_instance_input() :: #{
 %%   <<"modifyVnfInfoData">> => update_sol_network_modify(),
@@ -607,11 +678,13 @@
 %% }
 -type update_sol_network_instance_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% instantiate_sol_network_instance_output() :: #{
@@ -620,12 +693,14 @@
 %% }
 -type instantiate_sol_network_instance_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% tosca_override() :: #{
 %%   <<"defaultValue">> => [string()],
 %%   <<"name">> => [string()]
 %% }
 -type tosca_override() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_sol_network_operation_metadata() :: #{
@@ -634,6 +709,7 @@
 %% }
 -type get_sol_network_operation_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_sol_network_operations_output() :: #{
 %%   <<"networkOperations">> => list(list_sol_network_operations_info()()),
@@ -641,15 +717,18 @@
 %% }
 -type list_sol_network_operations_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_sol_function_package_metadata() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"lastModified">> => [non_neg_integer()]
 %% }
 -type list_sol_function_package_metadata() :: #{binary() => any()}.
+
 %% Example:
 %% get_sol_function_instance_input() :: #{}
 -type get_sol_function_instance_input() :: #{}.
+
 
 %% Example:
 %% get_sol_vnfc_resource_info_metadata() :: #{
@@ -658,9 +737,11 @@
 %%   <<"nodeGroup">> => [string()]
 %% }
 -type get_sol_vnfc_resource_info_metadata() :: #{binary() => any()}.
+
 %% Example:
 %% get_sol_network_instance_input() :: #{}
 -type get_sol_network_instance_input() :: #{}.
+
 
 %% Example:
 %% list_sol_network_instances_output() :: #{
@@ -668,6 +749,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_sol_network_instances_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_sol_network_instance_input() :: #{
@@ -677,6 +759,7 @@
 %%   <<"tags">> => map()
 %% }
 -type create_sol_network_instance_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_sol_network_instance_info() :: #{
@@ -690,6 +773,7 @@
 %%   <<"nsdInfoId">> => string()
 %% }
 -type list_sol_network_instance_info() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_sol_function_package_info() :: #{
@@ -706,11 +790,13 @@
 %% }
 -type list_sol_function_package_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% function_artifact_meta() :: #{
 %%   <<"overrides">> => list(tosca_override()())
 %% }
 -type function_artifact_meta() :: #{binary() => any()}.
+
 
 %% Example:
 %% validate_sol_function_package_content_input() :: #{
@@ -718,6 +804,7 @@
 %%   <<"file">> := [binary()]
 %% }
 -type validate_sol_function_package_content_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% validate_sol_function_package_content_output() :: #{
@@ -730,6 +817,7 @@
 %% }
 -type validate_sol_function_package_content_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_sol_network_package_descriptor_output() :: #{
 %%   <<"contentType">> => list(any()),
@@ -737,11 +825,13 @@
 %% }
 -type get_sol_network_package_descriptor_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% validate_sol_function_package_content_metadata() :: #{
 %%   <<"vnfd">> => function_artifact_meta()
 %% }
 -type validate_sol_function_package_content_metadata() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_sol_function_package_content_output() :: #{
@@ -749,6 +839,7 @@
 %%   <<"packageContent">> => [binary()]
 %% }
 -type get_sol_function_package_content_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_sol_network_operation_output() :: #{
@@ -764,6 +855,7 @@
 %% }
 -type get_sol_network_operation_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_sol_function_instance_info() :: #{
 %%   <<"arn">> => string(),
@@ -777,11 +869,13 @@
 %% }
 -type list_sol_function_instance_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% lcm_operation_info() :: #{
 %%   <<"nsLcmOpOccId">> => string()
 %% }
 -type lcm_operation_info() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_sol_function_package_input() :: #{
@@ -789,12 +883,14 @@
 %% }
 -type update_sol_function_package_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_sol_function_instances_output() :: #{
 %%   <<"functionInstances">> => list(list_sol_function_instance_info()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_sol_function_instances_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_sol_network_package_info() :: #{
@@ -813,6 +909,7 @@
 %% }
 -type list_sol_network_package_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_sol_function_packages_input() :: #{
 %%   <<"maxResults">> => [integer()],
@@ -820,11 +917,242 @@
 %% }
 -type list_sol_function_packages_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% network_artifact_meta() :: #{
 %%   <<"overrides">> => list(tosca_override()())
 %% }
 -type network_artifact_meta() :: #{binary() => any()}.
+
+-type cancel_sol_network_operation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_sol_function_package_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type create_sol_network_instance_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type create_sol_network_package_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type delete_sol_function_package_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_sol_network_instance_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_sol_network_package_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_sol_function_instance_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_sol_function_package_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_sol_function_package_content_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_sol_function_package_descriptor_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_sol_network_instance_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_sol_network_operation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_sol_network_package_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_sol_network_package_content_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_sol_network_package_descriptor_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type instantiate_sol_network_instance_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type list_sol_function_instances_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_sol_function_packages_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_sol_network_instances_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_sol_network_operations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_sol_network_packages_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type put_sol_function_package_content_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type put_sol_network_package_content_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type terminate_sol_network_instance_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_sol_function_package_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_sol_network_instance_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type update_sol_network_package_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type validate_sol_function_package_content_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type validate_sol_network_package_content_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -837,22 +1165,14 @@
 -spec cancel_sol_network_operation(map(), binary() | list(), cancel_sol_network_operation_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_sol_network_operation_errors(), tuple()}.
 cancel_sol_network_operation(Client, NsLcmOpOccId, Input) ->
     cancel_sol_network_operation(Client, NsLcmOpOccId, Input, []).
 
 -spec cancel_sol_network_operation(map(), binary() | list(), cancel_sol_network_operation_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_sol_network_operation_errors(), tuple()}.
 cancel_sol_network_operation(Client, NsLcmOpOccId, Input0, Options0) ->
     Method = post,
     Path = ["/sol/nslcm/v1/ns_lcm_op_occs/", aws_util:encode_uri(NsLcmOpOccId), "/cancel"],
@@ -893,22 +1213,14 @@ cancel_sol_network_operation(Client, NsLcmOpOccId, Input0, Options0) ->
 -spec create_sol_function_package(map(), create_sol_function_package_input()) ->
     {ok, create_sol_function_package_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_sol_function_package_errors(), tuple()}.
 create_sol_function_package(Client, Input) ->
     create_sol_function_package(Client, Input, []).
 
 -spec create_sol_function_package(map(), create_sol_function_package_input(), proplists:proplist()) ->
     {ok, create_sol_function_package_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_sol_function_package_errors(), tuple()}.
 create_sol_function_package(Client, Input0, Options0) ->
     Method = post,
     Path = ["/sol/vnfpkgm/v1/vnf_packages"],
@@ -947,24 +1259,14 @@ create_sol_function_package(Client, Input0, Options0) ->
 -spec create_sol_network_instance(map(), create_sol_network_instance_input()) ->
     {ok, create_sol_network_instance_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_sol_network_instance_errors(), tuple()}.
 create_sol_network_instance(Client, Input) ->
     create_sol_network_instance(Client, Input, []).
 
 -spec create_sol_network_instance(map(), create_sol_network_instance_input(), proplists:proplist()) ->
     {ok, create_sol_network_instance_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_sol_network_instance_errors(), tuple()}.
 create_sol_network_instance(Client, Input0, Options0) ->
     Method = post,
     Path = ["/sol/nslcm/v1/ns_instances"],
@@ -1009,22 +1311,14 @@ create_sol_network_instance(Client, Input0, Options0) ->
 -spec create_sol_network_package(map(), create_sol_network_package_input()) ->
     {ok, create_sol_network_package_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_sol_network_package_errors(), tuple()}.
 create_sol_network_package(Client, Input) ->
     create_sol_network_package(Client, Input, []).
 
 -spec create_sol_network_package(map(), create_sol_network_package_input(), proplists:proplist()) ->
     {ok, create_sol_network_package_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_sol_network_package_errors(), tuple()}.
 create_sol_network_package(Client, Input0, Options0) ->
     Method = post,
     Path = ["/sol/nsd/v1/ns_descriptors"],
@@ -1060,22 +1354,14 @@ create_sol_network_package(Client, Input0, Options0) ->
 -spec delete_sol_function_package(map(), binary() | list(), delete_sol_function_package_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_sol_function_package_errors(), tuple()}.
 delete_sol_function_package(Client, VnfPkgId, Input) ->
     delete_sol_function_package(Client, VnfPkgId, Input, []).
 
 -spec delete_sol_function_package(map(), binary() | list(), delete_sol_function_package_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_sol_function_package_errors(), tuple()}.
 delete_sol_function_package(Client, VnfPkgId, Input0, Options0) ->
     Method = delete,
     Path = ["/sol/vnfpkgm/v1/vnf_packages/", aws_util:encode_uri(VnfPkgId), ""],
@@ -1111,22 +1397,14 @@ delete_sol_function_package(Client, VnfPkgId, Input0, Options0) ->
 -spec delete_sol_network_instance(map(), binary() | list(), delete_sol_network_instance_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_sol_network_instance_errors(), tuple()}.
 delete_sol_network_instance(Client, NsInstanceId, Input) ->
     delete_sol_network_instance(Client, NsInstanceId, Input, []).
 
 -spec delete_sol_network_instance(map(), binary() | list(), delete_sol_network_instance_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_sol_network_instance_errors(), tuple()}.
 delete_sol_network_instance(Client, NsInstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/sol/nslcm/v1/ns_instances/", aws_util:encode_uri(NsInstanceId), ""],
@@ -1161,22 +1439,14 @@ delete_sol_network_instance(Client, NsInstanceId, Input0, Options0) ->
 -spec delete_sol_network_package(map(), binary() | list(), delete_sol_network_package_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_sol_network_package_errors(), tuple()}.
 delete_sol_network_package(Client, NsdInfoId, Input) ->
     delete_sol_network_package(Client, NsdInfoId, Input, []).
 
 -spec delete_sol_network_package(map(), binary() | list(), delete_sol_network_package_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_sol_network_package_errors(), tuple()}.
 delete_sol_network_package(Client, NsdInfoId, Input0, Options0) ->
     Method = delete,
     Path = ["/sol/nsd/v1/ns_descriptors/", aws_util:encode_uri(NsdInfoId), ""],
@@ -1207,11 +1477,7 @@ delete_sol_network_package(Client, NsdInfoId, Input0, Options0) ->
 -spec get_sol_function_instance(map(), binary() | list()) ->
     {ok, get_sol_function_instance_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sol_function_instance_errors(), tuple()}.
 get_sol_function_instance(Client, VnfInstanceId)
   when is_map(Client) ->
     get_sol_function_instance(Client, VnfInstanceId, #{}, #{}).
@@ -1219,11 +1485,7 @@ get_sol_function_instance(Client, VnfInstanceId)
 -spec get_sol_function_instance(map(), binary() | list(), map(), map()) ->
     {ok, get_sol_function_instance_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sol_function_instance_errors(), tuple()}.
 get_sol_function_instance(Client, VnfInstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sol_function_instance(Client, VnfInstanceId, QueryMap, HeadersMap, []).
@@ -1231,11 +1493,7 @@ get_sol_function_instance(Client, VnfInstanceId, QueryMap, HeadersMap)
 -spec get_sol_function_instance(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sol_function_instance_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sol_function_instance_errors(), tuple()}.
 get_sol_function_instance(Client, VnfInstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sol/vnflcm/v1/vnf_instances/", aws_util:encode_uri(VnfInstanceId), ""],
@@ -1262,11 +1520,7 @@ get_sol_function_instance(Client, VnfInstanceId, QueryMap, HeadersMap, Options0)
 -spec get_sol_function_package(map(), binary() | list()) ->
     {ok, get_sol_function_package_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sol_function_package_errors(), tuple()}.
 get_sol_function_package(Client, VnfPkgId)
   when is_map(Client) ->
     get_sol_function_package(Client, VnfPkgId, #{}, #{}).
@@ -1274,11 +1528,7 @@ get_sol_function_package(Client, VnfPkgId)
 -spec get_sol_function_package(map(), binary() | list(), map(), map()) ->
     {ok, get_sol_function_package_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sol_function_package_errors(), tuple()}.
 get_sol_function_package(Client, VnfPkgId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sol_function_package(Client, VnfPkgId, QueryMap, HeadersMap, []).
@@ -1286,11 +1536,7 @@ get_sol_function_package(Client, VnfPkgId, QueryMap, HeadersMap)
 -spec get_sol_function_package(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sol_function_package_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sol_function_package_errors(), tuple()}.
 get_sol_function_package(Client, VnfPkgId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sol/vnfpkgm/v1/vnf_packages/", aws_util:encode_uri(VnfPkgId), ""],
@@ -1316,11 +1562,7 @@ get_sol_function_package(Client, VnfPkgId, QueryMap, HeadersMap, Options0)
 -spec get_sol_function_package_content(map(), binary() | list(), binary() | list()) ->
     {ok, get_sol_function_package_content_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sol_function_package_content_errors(), tuple()}.
 get_sol_function_package_content(Client, VnfPkgId, Accept)
   when is_map(Client) ->
     get_sol_function_package_content(Client, VnfPkgId, Accept, #{}, #{}).
@@ -1328,11 +1570,7 @@ get_sol_function_package_content(Client, VnfPkgId, Accept)
 -spec get_sol_function_package_content(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_sol_function_package_content_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sol_function_package_content_errors(), tuple()}.
 get_sol_function_package_content(Client, VnfPkgId, Accept, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sol_function_package_content(Client, VnfPkgId, Accept, QueryMap, HeadersMap, []).
@@ -1340,11 +1578,7 @@ get_sol_function_package_content(Client, VnfPkgId, Accept, QueryMap, HeadersMap)
 -spec get_sol_function_package_content(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sol_function_package_content_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sol_function_package_content_errors(), tuple()}.
 get_sol_function_package_content(Client, VnfPkgId, Accept, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sol/vnfpkgm/v1/vnf_packages/", aws_util:encode_uri(VnfPkgId), "/package_content"],
@@ -1394,11 +1628,7 @@ get_sol_function_package_content(Client, VnfPkgId, Accept, QueryMap, HeadersMap,
 -spec get_sol_function_package_descriptor(map(), binary() | list(), binary() | list()) ->
     {ok, get_sol_function_package_descriptor_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sol_function_package_descriptor_errors(), tuple()}.
 get_sol_function_package_descriptor(Client, VnfPkgId, Accept)
   when is_map(Client) ->
     get_sol_function_package_descriptor(Client, VnfPkgId, Accept, #{}, #{}).
@@ -1406,11 +1636,7 @@ get_sol_function_package_descriptor(Client, VnfPkgId, Accept)
 -spec get_sol_function_package_descriptor(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_sol_function_package_descriptor_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sol_function_package_descriptor_errors(), tuple()}.
 get_sol_function_package_descriptor(Client, VnfPkgId, Accept, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sol_function_package_descriptor(Client, VnfPkgId, Accept, QueryMap, HeadersMap, []).
@@ -1418,11 +1644,7 @@ get_sol_function_package_descriptor(Client, VnfPkgId, Accept, QueryMap, HeadersM
 -spec get_sol_function_package_descriptor(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sol_function_package_descriptor_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sol_function_package_descriptor_errors(), tuple()}.
 get_sol_function_package_descriptor(Client, VnfPkgId, Accept, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sol/vnfpkgm/v1/vnf_packages/", aws_util:encode_uri(VnfPkgId), "/vnfd"],
@@ -1467,11 +1689,7 @@ get_sol_function_package_descriptor(Client, VnfPkgId, Accept, QueryMap, HeadersM
 -spec get_sol_network_instance(map(), binary() | list()) ->
     {ok, get_sol_network_instance_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sol_network_instance_errors(), tuple()}.
 get_sol_network_instance(Client, NsInstanceId)
   when is_map(Client) ->
     get_sol_network_instance(Client, NsInstanceId, #{}, #{}).
@@ -1479,11 +1697,7 @@ get_sol_network_instance(Client, NsInstanceId)
 -spec get_sol_network_instance(map(), binary() | list(), map(), map()) ->
     {ok, get_sol_network_instance_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sol_network_instance_errors(), tuple()}.
 get_sol_network_instance(Client, NsInstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sol_network_instance(Client, NsInstanceId, QueryMap, HeadersMap, []).
@@ -1491,11 +1705,7 @@ get_sol_network_instance(Client, NsInstanceId, QueryMap, HeadersMap)
 -spec get_sol_network_instance(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sol_network_instance_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sol_network_instance_errors(), tuple()}.
 get_sol_network_instance(Client, NsInstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sol/nslcm/v1/ns_instances/", aws_util:encode_uri(NsInstanceId), ""],
@@ -1520,11 +1730,7 @@ get_sol_network_instance(Client, NsInstanceId, QueryMap, HeadersMap, Options0)
 -spec get_sol_network_operation(map(), binary() | list()) ->
     {ok, get_sol_network_operation_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sol_network_operation_errors(), tuple()}.
 get_sol_network_operation(Client, NsLcmOpOccId)
   when is_map(Client) ->
     get_sol_network_operation(Client, NsLcmOpOccId, #{}, #{}).
@@ -1532,11 +1738,7 @@ get_sol_network_operation(Client, NsLcmOpOccId)
 -spec get_sol_network_operation(map(), binary() | list(), map(), map()) ->
     {ok, get_sol_network_operation_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sol_network_operation_errors(), tuple()}.
 get_sol_network_operation(Client, NsLcmOpOccId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sol_network_operation(Client, NsLcmOpOccId, QueryMap, HeadersMap, []).
@@ -1544,11 +1746,7 @@ get_sol_network_operation(Client, NsLcmOpOccId, QueryMap, HeadersMap)
 -spec get_sol_network_operation(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sol_network_operation_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sol_network_operation_errors(), tuple()}.
 get_sol_network_operation(Client, NsLcmOpOccId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sol/nslcm/v1/ns_lcm_op_occs/", aws_util:encode_uri(NsLcmOpOccId), ""],
@@ -1573,11 +1771,7 @@ get_sol_network_operation(Client, NsLcmOpOccId, QueryMap, HeadersMap, Options0)
 -spec get_sol_network_package(map(), binary() | list()) ->
     {ok, get_sol_network_package_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sol_network_package_errors(), tuple()}.
 get_sol_network_package(Client, NsdInfoId)
   when is_map(Client) ->
     get_sol_network_package(Client, NsdInfoId, #{}, #{}).
@@ -1585,11 +1779,7 @@ get_sol_network_package(Client, NsdInfoId)
 -spec get_sol_network_package(map(), binary() | list(), map(), map()) ->
     {ok, get_sol_network_package_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sol_network_package_errors(), tuple()}.
 get_sol_network_package(Client, NsdInfoId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sol_network_package(Client, NsdInfoId, QueryMap, HeadersMap, []).
@@ -1597,11 +1787,7 @@ get_sol_network_package(Client, NsdInfoId, QueryMap, HeadersMap)
 -spec get_sol_network_package(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sol_network_package_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sol_network_package_errors(), tuple()}.
 get_sol_network_package(Client, NsdInfoId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sol/nsd/v1/ns_descriptors/", aws_util:encode_uri(NsdInfoId), ""],
@@ -1626,11 +1812,7 @@ get_sol_network_package(Client, NsdInfoId, QueryMap, HeadersMap, Options0)
 -spec get_sol_network_package_content(map(), binary() | list(), binary() | list()) ->
     {ok, get_sol_network_package_content_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sol_network_package_content_errors(), tuple()}.
 get_sol_network_package_content(Client, NsdInfoId, Accept)
   when is_map(Client) ->
     get_sol_network_package_content(Client, NsdInfoId, Accept, #{}, #{}).
@@ -1638,11 +1820,7 @@ get_sol_network_package_content(Client, NsdInfoId, Accept)
 -spec get_sol_network_package_content(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_sol_network_package_content_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sol_network_package_content_errors(), tuple()}.
 get_sol_network_package_content(Client, NsdInfoId, Accept, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sol_network_package_content(Client, NsdInfoId, Accept, QueryMap, HeadersMap, []).
@@ -1650,11 +1828,7 @@ get_sol_network_package_content(Client, NsdInfoId, Accept, QueryMap, HeadersMap)
 -spec get_sol_network_package_content(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sol_network_package_content_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sol_network_package_content_errors(), tuple()}.
 get_sol_network_package_content(Client, NsdInfoId, Accept, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sol/nsd/v1/ns_descriptors/", aws_util:encode_uri(NsdInfoId), "/nsd_content"],
@@ -1700,11 +1874,7 @@ get_sol_network_package_content(Client, NsdInfoId, Accept, QueryMap, HeadersMap,
 -spec get_sol_network_package_descriptor(map(), binary() | list()) ->
     {ok, get_sol_network_package_descriptor_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sol_network_package_descriptor_errors(), tuple()}.
 get_sol_network_package_descriptor(Client, NsdInfoId)
   when is_map(Client) ->
     get_sol_network_package_descriptor(Client, NsdInfoId, #{}, #{}).
@@ -1712,11 +1882,7 @@ get_sol_network_package_descriptor(Client, NsdInfoId)
 -spec get_sol_network_package_descriptor(map(), binary() | list(), map(), map()) ->
     {ok, get_sol_network_package_descriptor_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sol_network_package_descriptor_errors(), tuple()}.
 get_sol_network_package_descriptor(Client, NsdInfoId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sol_network_package_descriptor(Client, NsdInfoId, QueryMap, HeadersMap, []).
@@ -1724,11 +1890,7 @@ get_sol_network_package_descriptor(Client, NsdInfoId, QueryMap, HeadersMap)
 -spec get_sol_network_package_descriptor(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sol_network_package_descriptor_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sol_network_package_descriptor_errors(), tuple()}.
 get_sol_network_package_descriptor(Client, NsdInfoId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sol/nsd/v1/ns_descriptors/", aws_util:encode_uri(NsdInfoId), "/nsd"],
@@ -1773,24 +1935,14 @@ get_sol_network_package_descriptor(Client, NsdInfoId, QueryMap, HeadersMap, Opti
 -spec instantiate_sol_network_instance(map(), binary() | list(), instantiate_sol_network_instance_input()) ->
     {ok, instantiate_sol_network_instance_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, instantiate_sol_network_instance_errors(), tuple()}.
 instantiate_sol_network_instance(Client, NsInstanceId, Input) ->
     instantiate_sol_network_instance(Client, NsInstanceId, Input, []).
 
 -spec instantiate_sol_network_instance(map(), binary() | list(), instantiate_sol_network_instance_input(), proplists:proplist()) ->
     {ok, instantiate_sol_network_instance_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, instantiate_sol_network_instance_errors(), tuple()}.
 instantiate_sol_network_instance(Client, NsInstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/sol/nslcm/v1/ns_instances/", aws_util:encode_uri(NsInstanceId), "/instantiate"],
@@ -1820,10 +1972,7 @@ instantiate_sol_network_instance(Client, NsInstanceId, Input0, Options0) ->
 -spec list_sol_function_instances(map()) ->
     {ok, list_sol_function_instances_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_sol_function_instances_errors(), tuple()}.
 list_sol_function_instances(Client)
   when is_map(Client) ->
     list_sol_function_instances(Client, #{}, #{}).
@@ -1831,10 +1980,7 @@ list_sol_function_instances(Client)
 -spec list_sol_function_instances(map(), map(), map()) ->
     {ok, list_sol_function_instances_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_sol_function_instances_errors(), tuple()}.
 list_sol_function_instances(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sol_function_instances(Client, QueryMap, HeadersMap, []).
@@ -1842,10 +1988,7 @@ list_sol_function_instances(Client, QueryMap, HeadersMap)
 -spec list_sol_function_instances(map(), map(), map(), proplists:proplist()) ->
     {ok, list_sol_function_instances_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_sol_function_instances_errors(), tuple()}.
 list_sol_function_instances(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sol/vnflcm/v1/vnf_instances"],
@@ -1876,10 +2019,7 @@ list_sol_function_instances(Client, QueryMap, HeadersMap, Options0)
 -spec list_sol_function_packages(map()) ->
     {ok, list_sol_function_packages_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_sol_function_packages_errors(), tuple()}.
 list_sol_function_packages(Client)
   when is_map(Client) ->
     list_sol_function_packages(Client, #{}, #{}).
@@ -1887,10 +2027,7 @@ list_sol_function_packages(Client)
 -spec list_sol_function_packages(map(), map(), map()) ->
     {ok, list_sol_function_packages_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_sol_function_packages_errors(), tuple()}.
 list_sol_function_packages(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sol_function_packages(Client, QueryMap, HeadersMap, []).
@@ -1898,10 +2035,7 @@ list_sol_function_packages(Client, QueryMap, HeadersMap)
 -spec list_sol_function_packages(map(), map(), map(), proplists:proplist()) ->
     {ok, list_sol_function_packages_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_sol_function_packages_errors(), tuple()}.
 list_sol_function_packages(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sol/vnfpkgm/v1/vnf_packages"],
@@ -1931,10 +2065,7 @@ list_sol_function_packages(Client, QueryMap, HeadersMap, Options0)
 -spec list_sol_network_instances(map()) ->
     {ok, list_sol_network_instances_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_sol_network_instances_errors(), tuple()}.
 list_sol_network_instances(Client)
   when is_map(Client) ->
     list_sol_network_instances(Client, #{}, #{}).
@@ -1942,10 +2073,7 @@ list_sol_network_instances(Client)
 -spec list_sol_network_instances(map(), map(), map()) ->
     {ok, list_sol_network_instances_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_sol_network_instances_errors(), tuple()}.
 list_sol_network_instances(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sol_network_instances(Client, QueryMap, HeadersMap, []).
@@ -1953,10 +2081,7 @@ list_sol_network_instances(Client, QueryMap, HeadersMap)
 -spec list_sol_network_instances(map(), map(), map(), proplists:proplist()) ->
     {ok, list_sol_network_instances_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_sol_network_instances_errors(), tuple()}.
 list_sol_network_instances(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sol/nslcm/v1/ns_instances"],
@@ -1986,10 +2111,7 @@ list_sol_network_instances(Client, QueryMap, HeadersMap, Options0)
 -spec list_sol_network_operations(map()) ->
     {ok, list_sol_network_operations_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_sol_network_operations_errors(), tuple()}.
 list_sol_network_operations(Client)
   when is_map(Client) ->
     list_sol_network_operations(Client, #{}, #{}).
@@ -1997,10 +2119,7 @@ list_sol_network_operations(Client)
 -spec list_sol_network_operations(map(), map(), map()) ->
     {ok, list_sol_network_operations_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_sol_network_operations_errors(), tuple()}.
 list_sol_network_operations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sol_network_operations(Client, QueryMap, HeadersMap, []).
@@ -2008,10 +2127,7 @@ list_sol_network_operations(Client, QueryMap, HeadersMap)
 -spec list_sol_network_operations(map(), map(), map(), proplists:proplist()) ->
     {ok, list_sol_network_operations_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_sol_network_operations_errors(), tuple()}.
 list_sol_network_operations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sol/nslcm/v1/ns_lcm_op_occs"],
@@ -2041,10 +2157,7 @@ list_sol_network_operations(Client, QueryMap, HeadersMap, Options0)
 -spec list_sol_network_packages(map()) ->
     {ok, list_sol_network_packages_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_sol_network_packages_errors(), tuple()}.
 list_sol_network_packages(Client)
   when is_map(Client) ->
     list_sol_network_packages(Client, #{}, #{}).
@@ -2052,10 +2165,7 @@ list_sol_network_packages(Client)
 -spec list_sol_network_packages(map(), map(), map()) ->
     {ok, list_sol_network_packages_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_sol_network_packages_errors(), tuple()}.
 list_sol_network_packages(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sol_network_packages(Client, QueryMap, HeadersMap, []).
@@ -2063,10 +2173,7 @@ list_sol_network_packages(Client, QueryMap, HeadersMap)
 -spec list_sol_network_packages(map(), map(), map(), proplists:proplist()) ->
     {ok, list_sol_network_packages_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_sol_network_packages_errors(), tuple()}.
 list_sol_network_packages(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sol/nsd/v1/ns_descriptors"],
@@ -2092,11 +2199,7 @@ list_sol_network_packages(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -2104,11 +2207,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -2116,11 +2215,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2146,22 +2241,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec put_sol_function_package_content(map(), binary() | list(), put_sol_function_package_content_input()) ->
     {ok, put_sol_function_package_content_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_sol_function_package_content_errors(), tuple()}.
 put_sol_function_package_content(Client, VnfPkgId, Input) ->
     put_sol_function_package_content(Client, VnfPkgId, Input, []).
 
 -spec put_sol_function_package_content(map(), binary() | list(), put_sol_function_package_content_input(), proplists:proplist()) ->
     {ok, put_sol_function_package_content_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_sol_function_package_content_errors(), tuple()}.
 put_sol_function_package_content(Client, VnfPkgId, Input0, Options0) ->
     Method = put,
     Path = ["/sol/vnfpkgm/v1/vnf_packages/", aws_util:encode_uri(VnfPkgId), "/package_content"],
@@ -2194,22 +2281,14 @@ put_sol_function_package_content(Client, VnfPkgId, Input0, Options0) ->
 -spec put_sol_network_package_content(map(), binary() | list(), put_sol_network_package_content_input()) ->
     {ok, put_sol_network_package_content_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_sol_network_package_content_errors(), tuple()}.
 put_sol_network_package_content(Client, NsdInfoId, Input) ->
     put_sol_network_package_content(Client, NsdInfoId, Input, []).
 
 -spec put_sol_network_package_content(map(), binary() | list(), put_sol_network_package_content_input(), proplists:proplist()) ->
     {ok, put_sol_network_package_content_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_sol_network_package_content_errors(), tuple()}.
 put_sol_network_package_content(Client, NsdInfoId, Input0, Options0) ->
     Method = put,
     Path = ["/sol/nsd/v1/ns_descriptors/", aws_util:encode_uri(NsdInfoId), "/nsd_content"],
@@ -2242,22 +2321,14 @@ put_sol_network_package_content(Client, NsdInfoId, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2290,24 +2361,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec terminate_sol_network_instance(map(), binary() | list(), terminate_sol_network_instance_input()) ->
     {ok, terminate_sol_network_instance_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, terminate_sol_network_instance_errors(), tuple()}.
 terminate_sol_network_instance(Client, NsInstanceId, Input) ->
     terminate_sol_network_instance(Client, NsInstanceId, Input, []).
 
 -spec terminate_sol_network_instance(map(), binary() | list(), terminate_sol_network_instance_input(), proplists:proplist()) ->
     {ok, terminate_sol_network_instance_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, terminate_sol_network_instance_errors(), tuple()}.
 terminate_sol_network_instance(Client, NsInstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/sol/nslcm/v1/ns_instances/", aws_util:encode_uri(NsInstanceId), "/terminate"],
@@ -2338,22 +2399,14 @@ terminate_sol_network_instance(Client, NsInstanceId, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2386,22 +2439,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_sol_function_package(map(), binary() | list(), update_sol_function_package_input()) ->
     {ok, update_sol_function_package_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_sol_function_package_errors(), tuple()}.
 update_sol_function_package(Client, VnfPkgId, Input) ->
     update_sol_function_package(Client, VnfPkgId, Input, []).
 
 -spec update_sol_function_package(map(), binary() | list(), update_sol_function_package_input(), proplists:proplist()) ->
     {ok, update_sol_function_package_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_sol_function_package_errors(), tuple()}.
 update_sol_function_package(Client, VnfPkgId, Input0, Options0) ->
     Method = patch,
     Path = ["/sol/vnfpkgm/v1/vnf_packages/", aws_util:encode_uri(VnfPkgId), ""],
@@ -2432,24 +2477,14 @@ update_sol_function_package(Client, VnfPkgId, Input0, Options0) ->
 -spec update_sol_network_instance(map(), binary() | list(), update_sol_network_instance_input()) ->
     {ok, update_sol_network_instance_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_sol_network_instance_errors(), tuple()}.
 update_sol_network_instance(Client, NsInstanceId, Input) ->
     update_sol_network_instance(Client, NsInstanceId, Input, []).
 
 -spec update_sol_network_instance(map(), binary() | list(), update_sol_network_instance_input(), proplists:proplist()) ->
     {ok, update_sol_network_instance_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_sol_network_instance_errors(), tuple()}.
 update_sol_network_instance(Client, NsInstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/sol/nslcm/v1/ns_instances/", aws_util:encode_uri(NsInstanceId), "/update"],
@@ -2485,22 +2520,14 @@ update_sol_network_instance(Client, NsInstanceId, Input0, Options0) ->
 -spec update_sol_network_package(map(), binary() | list(), update_sol_network_package_input()) ->
     {ok, update_sol_network_package_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_sol_network_package_errors(), tuple()}.
 update_sol_network_package(Client, NsdInfoId, Input) ->
     update_sol_network_package(Client, NsdInfoId, Input, []).
 
 -spec update_sol_network_package(map(), binary() | list(), update_sol_network_package_input(), proplists:proplist()) ->
     {ok, update_sol_network_package_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_sol_network_package_errors(), tuple()}.
 update_sol_network_package(Client, NsdInfoId, Input0, Options0) ->
     Method = patch,
     Path = ["/sol/nsd/v1/ns_descriptors/", aws_util:encode_uri(NsdInfoId), ""],
@@ -2536,22 +2563,14 @@ update_sol_network_package(Client, NsdInfoId, Input0, Options0) ->
 -spec validate_sol_function_package_content(map(), binary() | list(), validate_sol_function_package_content_input()) ->
     {ok, validate_sol_function_package_content_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, validate_sol_function_package_content_errors(), tuple()}.
 validate_sol_function_package_content(Client, VnfPkgId, Input) ->
     validate_sol_function_package_content(Client, VnfPkgId, Input, []).
 
 -spec validate_sol_function_package_content(map(), binary() | list(), validate_sol_function_package_content_input(), proplists:proplist()) ->
     {ok, validate_sol_function_package_content_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, validate_sol_function_package_content_errors(), tuple()}.
 validate_sol_function_package_content(Client, VnfPkgId, Input0, Options0) ->
     Method = put,
     Path = ["/sol/vnfpkgm/v1/vnf_packages/", aws_util:encode_uri(VnfPkgId), "/package_content/validate"],
@@ -2588,22 +2607,14 @@ validate_sol_function_package_content(Client, VnfPkgId, Input0, Options0) ->
 -spec validate_sol_network_package_content(map(), binary() | list(), validate_sol_network_package_content_input()) ->
     {ok, validate_sol_network_package_content_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, validate_sol_network_package_content_errors(), tuple()}.
 validate_sol_network_package_content(Client, NsdInfoId, Input) ->
     validate_sol_network_package_content(Client, NsdInfoId, Input, []).
 
 -spec validate_sol_network_package_content(map(), binary() | list(), validate_sol_network_package_content_input(), proplists:proplist()) ->
     {ok, validate_sol_network_package_content_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, validate_sol_network_package_content_errors(), tuple()}.
 validate_sol_network_package_content(Client, NsdInfoId, Input0, Options0) ->
     Method = put,
     Path = ["/sol/nsd/v1/ns_descriptors/", aws_util:encode_uri(NsdInfoId), "/nsd_content/validate"],

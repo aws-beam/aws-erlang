@@ -886,6 +886,219 @@
 %% }
 -type list_protections_request() :: #{binary() => any()}.
 
+-type associate_drt_log_bucket_errors() ::
+    internal_error_exception() | 
+    limits_exceeded_exception() | 
+    no_associated_role_exception() | 
+    access_denied_for_dependency_exception() | 
+    invalid_parameter_exception() | 
+    optimistic_lock_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type associate_drt_role_errors() ::
+    internal_error_exception() | 
+    access_denied_for_dependency_exception() | 
+    invalid_parameter_exception() | 
+    optimistic_lock_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type associate_health_check_errors() ::
+    internal_error_exception() | 
+    limits_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    invalid_resource_exception() | 
+    optimistic_lock_exception() | 
+    resource_not_found_exception().
+
+-type associate_proactive_engagement_details_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    optimistic_lock_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type create_protection_errors() ::
+    internal_error_exception() | 
+    limits_exceeded_exception() | 
+    resource_already_exists_exception() | 
+    invalid_parameter_exception() | 
+    invalid_resource_exception() | 
+    optimistic_lock_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type create_protection_group_errors() ::
+    internal_error_exception() | 
+    limits_exceeded_exception() | 
+    resource_already_exists_exception() | 
+    invalid_parameter_exception() | 
+    optimistic_lock_exception() | 
+    resource_not_found_exception().
+
+-type create_subscription_errors() ::
+    internal_error_exception() | 
+    resource_already_exists_exception().
+
+-type delete_protection_errors() ::
+    internal_error_exception() | 
+    optimistic_lock_exception() | 
+    resource_not_found_exception().
+
+-type delete_protection_group_errors() ::
+    internal_error_exception() | 
+    optimistic_lock_exception() | 
+    resource_not_found_exception().
+
+-type delete_subscription_errors() ::
+    internal_error_exception() | 
+    resource_not_found_exception() | 
+    locked_subscription_exception().
+
+-type describe_attack_errors() ::
+    internal_error_exception() | 
+    access_denied_exception().
+
+-type describe_attack_statistics_errors() ::
+    internal_error_exception().
+
+-type describe_drt_access_errors() ::
+    internal_error_exception() | 
+    resource_not_found_exception().
+
+-type describe_emergency_contact_settings_errors() ::
+    internal_error_exception() | 
+    resource_not_found_exception().
+
+-type describe_protection_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception().
+
+-type describe_protection_group_errors() ::
+    internal_error_exception() | 
+    resource_not_found_exception().
+
+-type describe_subscription_errors() ::
+    internal_error_exception() | 
+    resource_not_found_exception().
+
+-type disable_application_layer_automatic_response_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    optimistic_lock_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type disable_proactive_engagement_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    optimistic_lock_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type disassociate_drt_log_bucket_errors() ::
+    internal_error_exception() | 
+    no_associated_role_exception() | 
+    access_denied_for_dependency_exception() | 
+    optimistic_lock_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type disassociate_drt_role_errors() ::
+    internal_error_exception() | 
+    optimistic_lock_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type disassociate_health_check_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    invalid_resource_exception() | 
+    optimistic_lock_exception() | 
+    resource_not_found_exception().
+
+-type enable_application_layer_automatic_response_errors() ::
+    internal_error_exception() | 
+    limits_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    optimistic_lock_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type enable_proactive_engagement_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    optimistic_lock_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type get_subscription_state_errors() ::
+    internal_error_exception().
+
+-type list_attacks_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    invalid_operation_exception().
+
+-type list_protection_groups_errors() ::
+    invalid_pagination_token_exception() | 
+    internal_error_exception() | 
+    resource_not_found_exception().
+
+-type list_protections_errors() ::
+    invalid_pagination_token_exception() | 
+    internal_error_exception() | 
+    resource_not_found_exception().
+
+-type list_resources_in_protection_group_errors() ::
+    invalid_pagination_token_exception() | 
+    internal_error_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    internal_error_exception() | 
+    invalid_resource_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    invalid_resource_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    invalid_resource_exception() | 
+    resource_not_found_exception().
+
+-type update_application_layer_automatic_response_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    optimistic_lock_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type update_emergency_contact_settings_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    optimistic_lock_exception() | 
+    resource_not_found_exception().
+
+-type update_protection_group_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    optimistic_lock_exception() | 
+    resource_not_found_exception().
+
+-type update_subscription_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    optimistic_lock_exception() | 
+    resource_not_found_exception() | 
+    locked_subscription_exception().
 
 %%====================================================================
 %% API
@@ -904,14 +1117,7 @@
 -spec associate_drt_log_bucket(map(), associate_drt_log_bucket_request()) ->
     {ok, associate_drt_log_bucket_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_for_dependency_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limits_exceeded_exception(), tuple()} |
-    {error, no_associated_role_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, associate_drt_log_bucket_errors(), tuple()}.
 associate_drt_log_bucket(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_drt_log_bucket(Client, Input, []).
@@ -919,14 +1125,7 @@ associate_drt_log_bucket(Client, Input)
 -spec associate_drt_log_bucket(map(), associate_drt_log_bucket_request(), proplists:proplist()) ->
     {ok, associate_drt_log_bucket_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_for_dependency_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limits_exceeded_exception(), tuple()} |
-    {error, no_associated_role_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, associate_drt_log_bucket_errors(), tuple()}.
 associate_drt_log_bucket(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateDRTLogBucket">>, Input, Options).
@@ -972,12 +1171,7 @@ associate_drt_log_bucket(Client, Input, Options)
 -spec associate_drt_role(map(), associate_drt_role_request()) ->
     {ok, associate_drt_role_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_for_dependency_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, associate_drt_role_errors(), tuple()}.
 associate_drt_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_drt_role(Client, Input, []).
@@ -985,12 +1179,7 @@ associate_drt_role(Client, Input)
 -spec associate_drt_role(map(), associate_drt_role_request(), proplists:proplist()) ->
     {ok, associate_drt_role_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_for_dependency_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, associate_drt_role_errors(), tuple()}.
 associate_drt_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateDRTRole">>, Input, Options).
@@ -1010,12 +1199,7 @@ associate_drt_role(Client, Input, Options)
 -spec associate_health_check(map(), associate_health_check_request()) ->
     {ok, associate_health_check_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()} |
-    {error, limits_exceeded_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, associate_health_check_errors(), tuple()}.
 associate_health_check(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_health_check(Client, Input, []).
@@ -1023,12 +1207,7 @@ associate_health_check(Client, Input)
 -spec associate_health_check(map(), associate_health_check_request(), proplists:proplist()) ->
     {ok, associate_health_check_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()} |
-    {error, limits_exceeded_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, associate_health_check_errors(), tuple()}.
 associate_health_check(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateHealthCheck">>, Input, Options).
@@ -1053,11 +1232,7 @@ associate_health_check(Client, Input, Options)
 -spec associate_proactive_engagement_details(map(), associate_proactive_engagement_details_request()) ->
     {ok, associate_proactive_engagement_details_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, associate_proactive_engagement_details_errors(), tuple()}.
 associate_proactive_engagement_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_proactive_engagement_details(Client, Input, []).
@@ -1065,11 +1240,7 @@ associate_proactive_engagement_details(Client, Input)
 -spec associate_proactive_engagement_details(map(), associate_proactive_engagement_details_request(), proplists:proplist()) ->
     {ok, associate_proactive_engagement_details_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, associate_proactive_engagement_details_errors(), tuple()}.
 associate_proactive_engagement_details(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateProactiveEngagementDetails">>, Input, Options).
@@ -1095,14 +1266,7 @@ associate_proactive_engagement_details(Client, Input, Options)
 -spec create_protection(map(), create_protection_request()) ->
     {ok, create_protection_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()} |
-    {error, limits_exceeded_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_protection_errors(), tuple()}.
 create_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_protection(Client, Input, []).
@@ -1110,14 +1274,7 @@ create_protection(Client, Input)
 -spec create_protection(map(), create_protection_request(), proplists:proplist()) ->
     {ok, create_protection_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()} |
-    {error, limits_exceeded_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_protection_errors(), tuple()}.
 create_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateProtection">>, Input, Options).
@@ -1130,12 +1287,7 @@ create_protection(Client, Input, Options)
 -spec create_protection_group(map(), create_protection_group_request()) ->
     {ok, create_protection_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limits_exceeded_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_protection_group_errors(), tuple()}.
 create_protection_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_protection_group(Client, Input, []).
@@ -1143,12 +1295,7 @@ create_protection_group(Client, Input)
 -spec create_protection_group(map(), create_protection_group_request(), proplists:proplist()) ->
     {ok, create_protection_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limits_exceeded_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_protection_group_errors(), tuple()}.
 create_protection_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateProtectionGroup">>, Input, Options).
@@ -1166,8 +1313,7 @@ create_protection_group(Client, Input, Options)
 -spec create_subscription(map(), create_subscription_request()) ->
     {ok, create_subscription_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()}.
+    {error, create_subscription_errors(), tuple()}.
 create_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_subscription(Client, Input, []).
@@ -1175,8 +1321,7 @@ create_subscription(Client, Input)
 -spec create_subscription(map(), create_subscription_request(), proplists:proplist()) ->
     {ok, create_subscription_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()}.
+    {error, create_subscription_errors(), tuple()}.
 create_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSubscription">>, Input, Options).
@@ -1185,9 +1330,7 @@ create_subscription(Client, Input, Options)
 -spec delete_protection(map(), delete_protection_request()) ->
     {ok, delete_protection_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_protection_errors(), tuple()}.
 delete_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_protection(Client, Input, []).
@@ -1195,9 +1338,7 @@ delete_protection(Client, Input)
 -spec delete_protection(map(), delete_protection_request(), proplists:proplist()) ->
     {ok, delete_protection_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_protection_errors(), tuple()}.
 delete_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProtection">>, Input, Options).
@@ -1206,9 +1347,7 @@ delete_protection(Client, Input, Options)
 -spec delete_protection_group(map(), delete_protection_group_request()) ->
     {ok, delete_protection_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_protection_group_errors(), tuple()}.
 delete_protection_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_protection_group(Client, Input, []).
@@ -1216,9 +1355,7 @@ delete_protection_group(Client, Input)
 -spec delete_protection_group(map(), delete_protection_group_request(), proplists:proplist()) ->
     {ok, delete_protection_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_protection_group_errors(), tuple()}.
 delete_protection_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProtectionGroup">>, Input, Options).
@@ -1230,9 +1367,7 @@ delete_protection_group(Client, Input, Options)
 -spec delete_subscription(map(), delete_subscription_request()) ->
     {ok, delete_subscription_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, locked_subscription_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_subscription_errors(), tuple()}.
 delete_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_subscription(Client, Input, []).
@@ -1240,9 +1375,7 @@ delete_subscription(Client, Input)
 -spec delete_subscription(map(), delete_subscription_request(), proplists:proplist()) ->
     {ok, delete_subscription_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, locked_subscription_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_subscription_errors(), tuple()}.
 delete_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSubscription">>, Input, Options).
@@ -1251,8 +1384,7 @@ delete_subscription(Client, Input, Options)
 -spec describe_attack(map(), describe_attack_request()) ->
     {ok, describe_attack_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()}.
+    {error, describe_attack_errors(), tuple()}.
 describe_attack(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_attack(Client, Input, []).
@@ -1260,8 +1392,7 @@ describe_attack(Client, Input)
 -spec describe_attack(map(), describe_attack_request(), proplists:proplist()) ->
     {ok, describe_attack_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()}.
+    {error, describe_attack_errors(), tuple()}.
 describe_attack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAttack">>, Input, Options).
@@ -1284,7 +1415,7 @@ describe_attack(Client, Input, Options)
 -spec describe_attack_statistics(map(), describe_attack_statistics_request()) ->
     {ok, describe_attack_statistics_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()}.
+    {error, describe_attack_statistics_errors(), tuple()}.
 describe_attack_statistics(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_attack_statistics(Client, Input, []).
@@ -1292,7 +1423,7 @@ describe_attack_statistics(Client, Input)
 -spec describe_attack_statistics(map(), describe_attack_statistics_request(), proplists:proplist()) ->
     {ok, describe_attack_statistics_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()}.
+    {error, describe_attack_statistics_errors(), tuple()}.
 describe_attack_statistics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAttackStatistics">>, Input, Options).
@@ -1303,8 +1434,7 @@ describe_attack_statistics(Client, Input, Options)
 -spec describe_drt_access(map(), describe_drt_access_request()) ->
     {ok, describe_drt_access_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_drt_access_errors(), tuple()}.
 describe_drt_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_drt_access(Client, Input, []).
@@ -1312,8 +1442,7 @@ describe_drt_access(Client, Input)
 -spec describe_drt_access(map(), describe_drt_access_request(), proplists:proplist()) ->
     {ok, describe_drt_access_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_drt_access_errors(), tuple()}.
 describe_drt_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDRTAccess">>, Input, Options).
@@ -1325,8 +1454,7 @@ describe_drt_access(Client, Input, Options)
 -spec describe_emergency_contact_settings(map(), describe_emergency_contact_settings_request()) ->
     {ok, describe_emergency_contact_settings_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_emergency_contact_settings_errors(), tuple()}.
 describe_emergency_contact_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_emergency_contact_settings(Client, Input, []).
@@ -1334,8 +1462,7 @@ describe_emergency_contact_settings(Client, Input)
 -spec describe_emergency_contact_settings(map(), describe_emergency_contact_settings_request(), proplists:proplist()) ->
     {ok, describe_emergency_contact_settings_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_emergency_contact_settings_errors(), tuple()}.
 describe_emergency_contact_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEmergencyContactSettings">>, Input, Options).
@@ -1344,9 +1471,7 @@ describe_emergency_contact_settings(Client, Input, Options)
 -spec describe_protection(map(), describe_protection_request()) ->
     {ok, describe_protection_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_protection_errors(), tuple()}.
 describe_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_protection(Client, Input, []).
@@ -1354,9 +1479,7 @@ describe_protection(Client, Input)
 -spec describe_protection(map(), describe_protection_request(), proplists:proplist()) ->
     {ok, describe_protection_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_protection_errors(), tuple()}.
 describe_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeProtection">>, Input, Options).
@@ -1365,8 +1488,7 @@ describe_protection(Client, Input, Options)
 -spec describe_protection_group(map(), describe_protection_group_request()) ->
     {ok, describe_protection_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_protection_group_errors(), tuple()}.
 describe_protection_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_protection_group(Client, Input, []).
@@ -1374,8 +1496,7 @@ describe_protection_group(Client, Input)
 -spec describe_protection_group(map(), describe_protection_group_request(), proplists:proplist()) ->
     {ok, describe_protection_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_protection_group_errors(), tuple()}.
 describe_protection_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeProtectionGroup">>, Input, Options).
@@ -1385,8 +1506,7 @@ describe_protection_group(Client, Input, Options)
 -spec describe_subscription(map(), describe_subscription_request()) ->
     {ok, describe_subscription_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_subscription_errors(), tuple()}.
 describe_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_subscription(Client, Input, []).
@@ -1394,8 +1514,7 @@ describe_subscription(Client, Input)
 -spec describe_subscription(map(), describe_subscription_request(), proplists:proplist()) ->
     {ok, describe_subscription_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_subscription_errors(), tuple()}.
 describe_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSubscription">>, Input, Options).
@@ -1409,11 +1528,7 @@ describe_subscription(Client, Input, Options)
 -spec disable_application_layer_automatic_response(map(), disable_application_layer_automatic_response_request()) ->
     {ok, disable_application_layer_automatic_response_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disable_application_layer_automatic_response_errors(), tuple()}.
 disable_application_layer_automatic_response(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_application_layer_automatic_response(Client, Input, []).
@@ -1421,11 +1536,7 @@ disable_application_layer_automatic_response(Client, Input)
 -spec disable_application_layer_automatic_response(map(), disable_application_layer_automatic_response_request(), proplists:proplist()) ->
     {ok, disable_application_layer_automatic_response_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disable_application_layer_automatic_response_errors(), tuple()}.
 disable_application_layer_automatic_response(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableApplicationLayerAutomaticResponse">>, Input, Options).
@@ -1436,11 +1547,7 @@ disable_application_layer_automatic_response(Client, Input, Options)
 -spec disable_proactive_engagement(map(), disable_proactive_engagement_request()) ->
     {ok, disable_proactive_engagement_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disable_proactive_engagement_errors(), tuple()}.
 disable_proactive_engagement(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_proactive_engagement(Client, Input, []).
@@ -1448,11 +1555,7 @@ disable_proactive_engagement(Client, Input)
 -spec disable_proactive_engagement(map(), disable_proactive_engagement_request(), proplists:proplist()) ->
     {ok, disable_proactive_engagement_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disable_proactive_engagement_errors(), tuple()}.
 disable_proactive_engagement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableProactiveEngagement">>, Input, Options).
@@ -1462,12 +1565,7 @@ disable_proactive_engagement(Client, Input, Options)
 -spec disassociate_drt_log_bucket(map(), disassociate_drt_log_bucket_request()) ->
     {ok, disassociate_drt_log_bucket_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_for_dependency_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, no_associated_role_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_drt_log_bucket_errors(), tuple()}.
 disassociate_drt_log_bucket(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_drt_log_bucket(Client, Input, []).
@@ -1475,12 +1573,7 @@ disassociate_drt_log_bucket(Client, Input)
 -spec disassociate_drt_log_bucket(map(), disassociate_drt_log_bucket_request(), proplists:proplist()) ->
     {ok, disassociate_drt_log_bucket_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_for_dependency_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, no_associated_role_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_drt_log_bucket_errors(), tuple()}.
 disassociate_drt_log_bucket(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateDRTLogBucket">>, Input, Options).
@@ -1490,10 +1583,7 @@ disassociate_drt_log_bucket(Client, Input, Options)
 -spec disassociate_drt_role(map(), disassociate_drt_role_request()) ->
     {ok, disassociate_drt_role_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_drt_role_errors(), tuple()}.
 disassociate_drt_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_drt_role(Client, Input, []).
@@ -1501,10 +1591,7 @@ disassociate_drt_role(Client, Input)
 -spec disassociate_drt_role(map(), disassociate_drt_role_request(), proplists:proplist()) ->
     {ok, disassociate_drt_role_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_drt_role_errors(), tuple()}.
 disassociate_drt_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateDRTRole">>, Input, Options).
@@ -1524,11 +1611,7 @@ disassociate_drt_role(Client, Input, Options)
 -spec disassociate_health_check(map(), disassociate_health_check_request()) ->
     {ok, disassociate_health_check_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_health_check_errors(), tuple()}.
 disassociate_health_check(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_health_check(Client, Input, []).
@@ -1536,11 +1619,7 @@ disassociate_health_check(Client, Input)
 -spec disassociate_health_check(map(), disassociate_health_check_request(), proplists:proplist()) ->
     {ok, disassociate_health_check_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_health_check_errors(), tuple()}.
 disassociate_health_check(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateHealthCheck">>, Input, Options).
@@ -1579,12 +1658,7 @@ disassociate_health_check(Client, Input, Options)
 -spec enable_application_layer_automatic_response(map(), enable_application_layer_automatic_response_request()) ->
     {ok, enable_application_layer_automatic_response_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limits_exceeded_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, enable_application_layer_automatic_response_errors(), tuple()}.
 enable_application_layer_automatic_response(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_application_layer_automatic_response(Client, Input, []).
@@ -1592,12 +1666,7 @@ enable_application_layer_automatic_response(Client, Input)
 -spec enable_application_layer_automatic_response(map(), enable_application_layer_automatic_response_request(), proplists:proplist()) ->
     {ok, enable_application_layer_automatic_response_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limits_exceeded_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, enable_application_layer_automatic_response_errors(), tuple()}.
 enable_application_layer_automatic_response(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableApplicationLayerAutomaticResponse">>, Input, Options).
@@ -1608,11 +1677,7 @@ enable_application_layer_automatic_response(Client, Input, Options)
 -spec enable_proactive_engagement(map(), enable_proactive_engagement_request()) ->
     {ok, enable_proactive_engagement_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, enable_proactive_engagement_errors(), tuple()}.
 enable_proactive_engagement(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_proactive_engagement(Client, Input, []).
@@ -1620,11 +1685,7 @@ enable_proactive_engagement(Client, Input)
 -spec enable_proactive_engagement(map(), enable_proactive_engagement_request(), proplists:proplist()) ->
     {ok, enable_proactive_engagement_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, enable_proactive_engagement_errors(), tuple()}.
 enable_proactive_engagement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableProactiveEngagement">>, Input, Options).
@@ -1634,7 +1695,7 @@ enable_proactive_engagement(Client, Input, Options)
 -spec get_subscription_state(map(), get_subscription_state_request()) ->
     {ok, get_subscription_state_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()}.
+    {error, get_subscription_state_errors(), tuple()}.
 get_subscription_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_subscription_state(Client, Input, []).
@@ -1642,7 +1703,7 @@ get_subscription_state(Client, Input)
 -spec get_subscription_state(map(), get_subscription_state_request(), proplists:proplist()) ->
     {ok, get_subscription_state_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()}.
+    {error, get_subscription_state_errors(), tuple()}.
 get_subscription_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSubscriptionState">>, Input, Options).
@@ -1653,9 +1714,7 @@ get_subscription_state(Client, Input, Options)
 -spec list_attacks(map(), list_attacks_request()) ->
     {ok, list_attacks_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, list_attacks_errors(), tuple()}.
 list_attacks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_attacks(Client, Input, []).
@@ -1663,9 +1722,7 @@ list_attacks(Client, Input)
 -spec list_attacks(map(), list_attacks_request(), proplists:proplist()) ->
     {ok, list_attacks_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, list_attacks_errors(), tuple()}.
 list_attacks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAttacks">>, Input, Options).
@@ -1678,9 +1735,7 @@ list_attacks(Client, Input, Options)
 -spec list_protection_groups(map(), list_protection_groups_request()) ->
     {ok, list_protection_groups_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_protection_groups_errors(), tuple()}.
 list_protection_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_protection_groups(Client, Input, []).
@@ -1688,9 +1743,7 @@ list_protection_groups(Client, Input)
 -spec list_protection_groups(map(), list_protection_groups_request(), proplists:proplist()) ->
     {ok, list_protection_groups_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_protection_groups_errors(), tuple()}.
 list_protection_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProtectionGroups">>, Input, Options).
@@ -1703,9 +1756,7 @@ list_protection_groups(Client, Input, Options)
 -spec list_protections(map(), list_protections_request()) ->
     {ok, list_protections_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_protections_errors(), tuple()}.
 list_protections(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_protections(Client, Input, []).
@@ -1713,9 +1764,7 @@ list_protections(Client, Input)
 -spec list_protections(map(), list_protections_request(), proplists:proplist()) ->
     {ok, list_protections_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_protections_errors(), tuple()}.
 list_protections(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProtections">>, Input, Options).
@@ -1724,9 +1773,7 @@ list_protections(Client, Input, Options)
 -spec list_resources_in_protection_group(map(), list_resources_in_protection_group_request()) ->
     {ok, list_resources_in_protection_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_resources_in_protection_group_errors(), tuple()}.
 list_resources_in_protection_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resources_in_protection_group(Client, Input, []).
@@ -1734,9 +1781,7 @@ list_resources_in_protection_group(Client, Input)
 -spec list_resources_in_protection_group(map(), list_resources_in_protection_group_request(), proplists:proplist()) ->
     {ok, list_resources_in_protection_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_resources_in_protection_group_errors(), tuple()}.
 list_resources_in_protection_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResourcesInProtectionGroup">>, Input, Options).
@@ -1746,9 +1791,7 @@ list_resources_in_protection_group(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -1756,9 +1799,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -1767,10 +1808,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -1778,10 +1816,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -1790,10 +1825,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -1801,10 +1833,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -1814,11 +1843,7 @@ untag_resource(Client, Input, Options)
 -spec update_application_layer_automatic_response(map(), update_application_layer_automatic_response_request()) ->
     {ok, update_application_layer_automatic_response_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_application_layer_automatic_response_errors(), tuple()}.
 update_application_layer_automatic_response(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_application_layer_automatic_response(Client, Input, []).
@@ -1826,11 +1851,7 @@ update_application_layer_automatic_response(Client, Input)
 -spec update_application_layer_automatic_response(map(), update_application_layer_automatic_response_request(), proplists:proplist()) ->
     {ok, update_application_layer_automatic_response_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_application_layer_automatic_response_errors(), tuple()}.
 update_application_layer_automatic_response(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateApplicationLayerAutomaticResponse">>, Input, Options).
@@ -1842,10 +1863,7 @@ update_application_layer_automatic_response(Client, Input, Options)
 -spec update_emergency_contact_settings(map(), update_emergency_contact_settings_request()) ->
     {ok, update_emergency_contact_settings_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_emergency_contact_settings_errors(), tuple()}.
 update_emergency_contact_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_emergency_contact_settings(Client, Input, []).
@@ -1853,10 +1871,7 @@ update_emergency_contact_settings(Client, Input)
 -spec update_emergency_contact_settings(map(), update_emergency_contact_settings_request(), proplists:proplist()) ->
     {ok, update_emergency_contact_settings_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_emergency_contact_settings_errors(), tuple()}.
 update_emergency_contact_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEmergencyContactSettings">>, Input, Options).
@@ -1869,10 +1884,7 @@ update_emergency_contact_settings(Client, Input, Options)
 -spec update_protection_group(map(), update_protection_group_request()) ->
     {ok, update_protection_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_protection_group_errors(), tuple()}.
 update_protection_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_protection_group(Client, Input, []).
@@ -1880,10 +1892,7 @@ update_protection_group(Client, Input)
 -spec update_protection_group(map(), update_protection_group_request(), proplists:proplist()) ->
     {ok, update_protection_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_protection_group_errors(), tuple()}.
 update_protection_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateProtectionGroup">>, Input, Options).
@@ -1900,11 +1909,7 @@ update_protection_group(Client, Input, Options)
 -spec update_subscription(map(), update_subscription_request()) ->
     {ok, update_subscription_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, locked_subscription_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_subscription_errors(), tuple()}.
 update_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_subscription(Client, Input, []).
@@ -1912,11 +1917,7 @@ update_subscription(Client, Input)
 -spec update_subscription(map(), update_subscription_request(), proplists:proplist()) ->
     {ok, update_subscription_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, locked_subscription_exception(), tuple()} |
-    {error, optimistic_lock_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_subscription_errors(), tuple()}.
 update_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSubscription">>, Input, Options).

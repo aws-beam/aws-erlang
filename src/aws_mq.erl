@@ -80,6 +80,7 @@
 %% }
 -type user_pending_changes() :: #{binary() => any()}.
 
+
 %% Example:
 %% sanitization_warning() :: #{
 %%   <<"AttributeName">> => string(),
@@ -88,12 +89,14 @@
 %% }
 -type sanitization_warning() :: #{binary() => any()}.
 
+
 %% Example:
 %% user_summary() :: #{
 %%   <<"PendingChange">> => list(any()),
 %%   <<"Username">> => string()
 %% }
 -type user_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_broker_response() :: #{
@@ -133,11 +136,13 @@
 %% }
 -type describe_broker_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% promote_response() :: #{
 %%   <<"BrokerId">> => string()
 %% }
 -type promote_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_tags_request() :: #{
@@ -145,11 +150,13 @@
 %% }
 -type delete_tags_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% availability_zone() :: #{
 %%   <<"Name">> => string()
 %% }
 -type availability_zone() :: #{binary() => any()}.
+
 
 %% Example:
 %% unauthorized_exception() :: #{
@@ -157,6 +164,7 @@
 %%   <<"Message">> => string()
 %% }
 -type unauthorized_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_broker_request() :: #{
@@ -184,12 +192,14 @@
 %% }
 -type create_broker_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_configuration_request() :: #{
 %%   <<"Data">> := string(),
 %%   <<"Description">> => string()
 %% }
 -type update_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_broker_engine_types_response() :: #{
@@ -199,21 +209,25 @@
 %% }
 -type describe_broker_engine_types_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_broker_response() :: #{
 %%   <<"BrokerArn">> => string(),
 %%   <<"BrokerId">> => string()
 %% }
 -type create_broker_response() :: #{binary() => any()}.
+
 %% Example:
 %% update_user_response() :: #{}
 -type update_user_response() :: #{}.
+
 
 %% Example:
 %% engine_version() :: #{
 %%   <<"Name">> => string()
 %% }
 -type engine_version() :: #{binary() => any()}.
+
 
 %% Example:
 %% forbidden_exception() :: #{
@@ -222,6 +236,7 @@
 %% }
 -type forbidden_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_configurations_response() :: #{
 %%   <<"Configurations">> => list(configuration()()),
@@ -229,9 +244,11 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_configurations_response() :: #{binary() => any()}.
+
 %% Example:
 %% reboot_broker_response() :: #{}
 -type reboot_broker_response() :: #{}.
+
 
 %% Example:
 %% data_replication_metadata_output() :: #{
@@ -240,17 +257,20 @@
 %% }
 -type data_replication_metadata_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_response() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type list_tags_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_broker_response() :: #{
 %%   <<"BrokerId">> => string()
 %% }
 -type delete_broker_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% configuration() :: #{
@@ -267,12 +287,14 @@
 %% }
 -type configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% logs() :: #{
 %%   <<"Audit">> => boolean(),
 %%   <<"General">> => boolean()
 %% }
 -type logs() :: #{binary() => any()}.
+
 
 %% Example:
 %% encryption_options() :: #{
@@ -281,6 +303,7 @@
 %% }
 -type encryption_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_configurations_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -288,11 +311,13 @@
 %% }
 -type list_configurations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_tags_request() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type create_tags_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% pending_logs() :: #{
@@ -301,6 +326,7 @@
 %% }
 -type pending_logs() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_brokers_response() :: #{
 %%   <<"BrokerSummaries">> => list(broker_summary()()),
@@ -308,12 +334,14 @@
 %% }
 -type list_brokers_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"ErrorAttribute">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_broker_engine_types_request() :: #{
@@ -323,17 +351,21 @@
 %% }
 -type describe_broker_engine_types_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% promote_request() :: #{
 %%   <<"Mode">> := list(any())
 %% }
 -type promote_request() :: #{binary() => any()}.
+
 %% Example:
 %% reboot_broker_request() :: #{}
 -type reboot_broker_request() :: #{}.
+
 %% Example:
 %% describe_configuration_revision_request() :: #{}
 -type describe_configuration_revision_request() :: #{}.
+
 
 %% Example:
 %% list_users_response() :: #{
@@ -344,12 +376,14 @@
 %% }
 -type list_users_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% not_found_exception() :: #{
 %%   <<"ErrorAttribute">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% broker_summary() :: #{
@@ -364,6 +398,7 @@
 %% }
 -type broker_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_configuration_request() :: #{
 %%   <<"AuthenticationStrategy">> => list(any()),
@@ -374,6 +409,7 @@
 %% }
 -type create_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_configuration_revisions_response() :: #{
 %%   <<"ConfigurationId">> => string(),
@@ -382,9 +418,11 @@
 %%   <<"Revisions">> => list(configuration_revision()())
 %% }
 -type list_configuration_revisions_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_user_request() :: #{}
 -type delete_user_request() :: #{}.
+
 
 %% Example:
 %% create_configuration_response() :: #{
@@ -396,6 +434,7 @@
 %%   <<"Name">> => string()
 %% }
 -type create_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% ldap_server_metadata_input() :: #{
@@ -412,12 +451,15 @@
 %%   <<"UserSearchSubtree">> => boolean()
 %% }
 -type ldap_server_metadata_input() :: #{binary() => any()}.
+
 %% Example:
 %% delete_broker_request() :: #{}
 -type delete_broker_request() :: #{}.
+
 %% Example:
 %% delete_user_response() :: #{}
 -type delete_user_response() :: #{}.
+
 
 %% Example:
 %% describe_broker_instance_options_request() :: #{
@@ -428,6 +470,7 @@
 %%   <<"StorageType">> => string()
 %% }
 -type describe_broker_instance_options_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_configuration_response() :: #{
@@ -440,12 +483,14 @@
 %% }
 -type update_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% broker_engine_type() :: #{
 %%   <<"EngineType">> => list(any()),
 %%   <<"EngineVersions">> => list(engine_version()())
 %% }
 -type broker_engine_type() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_configuration_revision_response() :: #{
@@ -455,6 +500,7 @@
 %%   <<"Description">> => string()
 %% }
 -type describe_configuration_revision_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_user_response() :: #{
@@ -466,6 +512,7 @@
 %%   <<"Username">> => string()
 %% }
 -type describe_user_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% ldap_server_metadata_output() :: #{
@@ -482,6 +529,7 @@
 %% }
 -type ldap_server_metadata_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% broker_instance() :: #{
 %%   <<"ConsoleURL">> => string(),
@@ -489,6 +537,7 @@
 %%   <<"IpAddress">> => string()
 %% }
 -type broker_instance() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_configuration_response() :: #{
@@ -505,6 +554,7 @@
 %% }
 -type describe_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% weekly_start_time() :: #{
 %%   <<"DayOfWeek">> => list(any()),
@@ -512,9 +562,11 @@
 %%   <<"TimeZone">> => string()
 %% }
 -type weekly_start_time() :: #{binary() => any()}.
+
 %% Example:
 %% describe_user_request() :: #{}
 -type describe_user_request() :: #{}.
+
 
 %% Example:
 %% update_user_request() :: #{
@@ -525,12 +577,14 @@
 %% }
 -type update_user_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_error_exception() :: #{
 %%   <<"ErrorAttribute">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type internal_server_error_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% user() :: #{
@@ -542,6 +596,7 @@
 %% }
 -type user() :: #{binary() => any()}.
 
+
 %% Example:
 %% logs_summary() :: #{
 %%   <<"Audit">> => boolean(),
@@ -552,15 +607,18 @@
 %% }
 -type logs_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_users_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_users_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_broker_request() :: #{}
 -type describe_broker_request() :: #{}.
+
 
 %% Example:
 %% broker_instance_option() :: #{
@@ -572,9 +630,11 @@
 %%   <<"SupportedEngineVersions">> => list(string()())
 %% }
 -type broker_instance_option() :: #{binary() => any()}.
+
 %% Example:
 %% describe_configuration_request() :: #{}
 -type describe_configuration_request() :: #{}.
+
 
 %% Example:
 %% configuration_id() :: #{
@@ -583,12 +643,14 @@
 %% }
 -type configuration_id() :: #{binary() => any()}.
 
+
 %% Example:
 %% bad_request_exception() :: #{
 %%   <<"ErrorAttribute">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_broker_response() :: #{
@@ -609,12 +671,14 @@
 %% }
 -type update_broker_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_replication_counterpart() :: #{
 %%   <<"BrokerId">> => string(),
 %%   <<"Region">> => string()
 %% }
 -type data_replication_counterpart() :: #{binary() => any()}.
+
 
 %% Example:
 %% configurations() :: #{
@@ -624,6 +688,7 @@
 %% }
 -type configurations() :: #{binary() => any()}.
 
+
 %% Example:
 %% configuration_revision() :: #{
 %%   <<"Created">> => non_neg_integer(),
@@ -631,9 +696,11 @@
 %%   <<"Revision">> => integer()
 %% }
 -type configuration_revision() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_request() :: #{}
 -type list_tags_request() :: #{}.
+
 
 %% Example:
 %% describe_broker_instance_options_response() :: #{
@@ -642,6 +709,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_broker_instance_options_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_broker_request() :: #{
@@ -657,9 +725,11 @@
 %%   <<"SecurityGroups">> => list(string()())
 %% }
 -type update_broker_request() :: #{binary() => any()}.
+
 %% Example:
 %% create_user_response() :: #{}
 -type create_user_response() :: #{}.
+
 
 %% Example:
 %% action_required() :: #{
@@ -668,6 +738,7 @@
 %% }
 -type action_required() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_configuration_revisions_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -675,12 +746,14 @@
 %% }
 -type list_configuration_revisions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_brokers_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_brokers_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_user_request() :: #{
@@ -690,6 +763,145 @@
 %%   <<"ReplicationUser">> => boolean()
 %% }
 -type create_user_request() :: #{binary() => any()}.
+
+-type create_broker_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type create_configuration_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    forbidden_exception().
+
+-type create_tags_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    forbidden_exception().
+
+-type create_user_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    forbidden_exception().
+
+-type delete_broker_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    forbidden_exception().
+
+-type delete_tags_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    forbidden_exception().
+
+-type delete_user_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    forbidden_exception().
+
+-type describe_broker_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    forbidden_exception().
+
+-type describe_broker_engine_types_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception().
+
+-type describe_broker_instance_options_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception().
+
+-type describe_configuration_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    forbidden_exception().
+
+-type describe_configuration_revision_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    forbidden_exception().
+
+-type describe_user_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    forbidden_exception().
+
+-type list_brokers_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception().
+
+-type list_configuration_revisions_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    forbidden_exception().
+
+-type list_configurations_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception().
+
+-type list_tags_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    forbidden_exception().
+
+-type list_users_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    forbidden_exception().
+
+-type promote_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    forbidden_exception().
+
+-type reboot_broker_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    forbidden_exception().
+
+-type update_broker_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    forbidden_exception().
+
+-type update_configuration_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    forbidden_exception().
+
+-type update_user_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    forbidden_exception().
 
 %%====================================================================
 %% API
@@ -740,22 +952,14 @@
 -spec create_broker(map(), create_broker_request()) ->
     {ok, create_broker_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_broker_errors(), tuple()}.
 create_broker(Client, Input) ->
     create_broker(Client, Input, []).
 
 -spec create_broker(map(), create_broker_request(), proplists:proplist()) ->
     {ok, create_broker_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_broker_errors(), tuple()}.
 create_broker(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/brokers"],
@@ -784,20 +988,14 @@ create_broker(Client, Input0, Options0) ->
 -spec create_configuration(map(), create_configuration_request()) ->
     {ok, create_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, create_configuration_errors(), tuple()}.
 create_configuration(Client, Input) ->
     create_configuration(Client, Input, []).
 
 -spec create_configuration(map(), create_configuration_request(), proplists:proplist()) ->
     {ok, create_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, create_configuration_errors(), tuple()}.
 create_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/configurations"],
@@ -824,20 +1022,14 @@ create_configuration(Client, Input0, Options0) ->
 -spec create_tags(map(), binary() | list(), create_tags_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, create_tags_errors(), tuple()}.
 create_tags(Client, ResourceArn, Input) ->
     create_tags(Client, ResourceArn, Input, []).
 
 -spec create_tags(map(), binary() | list(), create_tags_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, create_tags_errors(), tuple()}.
 create_tags(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -870,22 +1062,14 @@ create_tags(Client, ResourceArn, Input0, Options0) ->
 -spec create_user(map(), binary() | list(), binary() | list(), create_user_request()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, create_user_errors(), tuple()}.
 create_user(Client, BrokerId, Username, Input) ->
     create_user(Client, BrokerId, Username, Input, []).
 
 -spec create_user(map(), binary() | list(), binary() | list(), create_user_request(), proplists:proplist()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, create_user_errors(), tuple()}.
 create_user(Client, BrokerId, Username, Input0, Options0) ->
     Method = post,
     Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), "/users/", aws_util:encode_uri(Username), ""],
@@ -914,20 +1098,14 @@ create_user(Client, BrokerId, Username, Input0, Options0) ->
 -spec delete_broker(map(), binary() | list(), delete_broker_request()) ->
     {ok, delete_broker_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_broker_errors(), tuple()}.
 delete_broker(Client, BrokerId, Input) ->
     delete_broker(Client, BrokerId, Input, []).
 
 -spec delete_broker(map(), binary() | list(), delete_broker_request(), proplists:proplist()) ->
     {ok, delete_broker_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_broker_errors(), tuple()}.
 delete_broker(Client, BrokerId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), ""],
@@ -954,20 +1132,14 @@ delete_broker(Client, BrokerId, Input0, Options0) ->
 -spec delete_tags(map(), binary() | list(), delete_tags_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_tags_errors(), tuple()}.
 delete_tags(Client, ResourceArn, Input) ->
     delete_tags(Client, ResourceArn, Input, []).
 
 -spec delete_tags(map(), binary() | list(), delete_tags_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_tags_errors(), tuple()}.
 delete_tags(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -995,20 +1167,14 @@ delete_tags(Client, ResourceArn, Input0, Options0) ->
 -spec delete_user(map(), binary() | list(), binary() | list(), delete_user_request()) ->
     {ok, delete_user_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_user_errors(), tuple()}.
 delete_user(Client, BrokerId, Username, Input) ->
     delete_user(Client, BrokerId, Username, Input, []).
 
 -spec delete_user(map(), binary() | list(), binary() | list(), delete_user_request(), proplists:proplist()) ->
     {ok, delete_user_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_user_errors(), tuple()}.
 delete_user(Client, BrokerId, Username, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), "/users/", aws_util:encode_uri(Username), ""],
@@ -1035,10 +1201,7 @@ delete_user(Client, BrokerId, Username, Input0, Options0) ->
 -spec describe_broker(map(), binary() | list()) ->
     {ok, describe_broker_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, describe_broker_errors(), tuple()}.
 describe_broker(Client, BrokerId)
   when is_map(Client) ->
     describe_broker(Client, BrokerId, #{}, #{}).
@@ -1046,10 +1209,7 @@ describe_broker(Client, BrokerId)
 -spec describe_broker(map(), binary() | list(), map(), map()) ->
     {ok, describe_broker_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, describe_broker_errors(), tuple()}.
 describe_broker(Client, BrokerId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_broker(Client, BrokerId, QueryMap, HeadersMap, []).
@@ -1057,10 +1217,7 @@ describe_broker(Client, BrokerId, QueryMap, HeadersMap)
 -spec describe_broker(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_broker_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, describe_broker_errors(), tuple()}.
 describe_broker(Client, BrokerId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), ""],
@@ -1081,9 +1238,7 @@ describe_broker(Client, BrokerId, QueryMap, HeadersMap, Options0)
 -spec describe_broker_engine_types(map()) ->
     {ok, describe_broker_engine_types_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, describe_broker_engine_types_errors(), tuple()}.
 describe_broker_engine_types(Client)
   when is_map(Client) ->
     describe_broker_engine_types(Client, #{}, #{}).
@@ -1091,9 +1246,7 @@ describe_broker_engine_types(Client)
 -spec describe_broker_engine_types(map(), map(), map()) ->
     {ok, describe_broker_engine_types_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, describe_broker_engine_types_errors(), tuple()}.
 describe_broker_engine_types(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_broker_engine_types(Client, QueryMap, HeadersMap, []).
@@ -1101,9 +1254,7 @@ describe_broker_engine_types(Client, QueryMap, HeadersMap)
 -spec describe_broker_engine_types(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_broker_engine_types_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, describe_broker_engine_types_errors(), tuple()}.
 describe_broker_engine_types(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/broker-engine-types"],
@@ -1130,9 +1281,7 @@ describe_broker_engine_types(Client, QueryMap, HeadersMap, Options0)
 -spec describe_broker_instance_options(map()) ->
     {ok, describe_broker_instance_options_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, describe_broker_instance_options_errors(), tuple()}.
 describe_broker_instance_options(Client)
   when is_map(Client) ->
     describe_broker_instance_options(Client, #{}, #{}).
@@ -1140,9 +1289,7 @@ describe_broker_instance_options(Client)
 -spec describe_broker_instance_options(map(), map(), map()) ->
     {ok, describe_broker_instance_options_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, describe_broker_instance_options_errors(), tuple()}.
 describe_broker_instance_options(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_broker_instance_options(Client, QueryMap, HeadersMap, []).
@@ -1150,9 +1297,7 @@ describe_broker_instance_options(Client, QueryMap, HeadersMap)
 -spec describe_broker_instance_options(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_broker_instance_options_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, describe_broker_instance_options_errors(), tuple()}.
 describe_broker_instance_options(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/broker-instance-options"],
@@ -1181,10 +1326,7 @@ describe_broker_instance_options(Client, QueryMap, HeadersMap, Options0)
 -spec describe_configuration(map(), binary() | list()) ->
     {ok, describe_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, describe_configuration_errors(), tuple()}.
 describe_configuration(Client, ConfigurationId)
   when is_map(Client) ->
     describe_configuration(Client, ConfigurationId, #{}, #{}).
@@ -1192,10 +1334,7 @@ describe_configuration(Client, ConfigurationId)
 -spec describe_configuration(map(), binary() | list(), map(), map()) ->
     {ok, describe_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, describe_configuration_errors(), tuple()}.
 describe_configuration(Client, ConfigurationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_configuration(Client, ConfigurationId, QueryMap, HeadersMap, []).
@@ -1203,10 +1342,7 @@ describe_configuration(Client, ConfigurationId, QueryMap, HeadersMap)
 -spec describe_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, describe_configuration_errors(), tuple()}.
 describe_configuration(Client, ConfigurationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/configurations/", aws_util:encode_uri(ConfigurationId), ""],
@@ -1228,10 +1364,7 @@ describe_configuration(Client, ConfigurationId, QueryMap, HeadersMap, Options0)
 -spec describe_configuration_revision(map(), binary() | list(), binary() | list()) ->
     {ok, describe_configuration_revision_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, describe_configuration_revision_errors(), tuple()}.
 describe_configuration_revision(Client, ConfigurationId, ConfigurationRevision)
   when is_map(Client) ->
     describe_configuration_revision(Client, ConfigurationId, ConfigurationRevision, #{}, #{}).
@@ -1239,10 +1372,7 @@ describe_configuration_revision(Client, ConfigurationId, ConfigurationRevision)
 -spec describe_configuration_revision(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_configuration_revision_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, describe_configuration_revision_errors(), tuple()}.
 describe_configuration_revision(Client, ConfigurationId, ConfigurationRevision, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_configuration_revision(Client, ConfigurationId, ConfigurationRevision, QueryMap, HeadersMap, []).
@@ -1250,10 +1380,7 @@ describe_configuration_revision(Client, ConfigurationId, ConfigurationRevision, 
 -spec describe_configuration_revision(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_configuration_revision_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, describe_configuration_revision_errors(), tuple()}.
 describe_configuration_revision(Client, ConfigurationId, ConfigurationRevision, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/configurations/", aws_util:encode_uri(ConfigurationId), "/revisions/", aws_util:encode_uri(ConfigurationRevision), ""],
@@ -1274,10 +1401,7 @@ describe_configuration_revision(Client, ConfigurationId, ConfigurationRevision, 
 -spec describe_user(map(), binary() | list(), binary() | list()) ->
     {ok, describe_user_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, describe_user_errors(), tuple()}.
 describe_user(Client, BrokerId, Username)
   when is_map(Client) ->
     describe_user(Client, BrokerId, Username, #{}, #{}).
@@ -1285,10 +1409,7 @@ describe_user(Client, BrokerId, Username)
 -spec describe_user(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_user_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, describe_user_errors(), tuple()}.
 describe_user(Client, BrokerId, Username, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_user(Client, BrokerId, Username, QueryMap, HeadersMap, []).
@@ -1296,10 +1417,7 @@ describe_user(Client, BrokerId, Username, QueryMap, HeadersMap)
 -spec describe_user(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_user_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, describe_user_errors(), tuple()}.
 describe_user(Client, BrokerId, Username, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), "/users/", aws_util:encode_uri(Username), ""],
@@ -1320,9 +1438,7 @@ describe_user(Client, BrokerId, Username, QueryMap, HeadersMap, Options0)
 -spec list_brokers(map()) ->
     {ok, list_brokers_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_brokers_errors(), tuple()}.
 list_brokers(Client)
   when is_map(Client) ->
     list_brokers(Client, #{}, #{}).
@@ -1330,9 +1446,7 @@ list_brokers(Client)
 -spec list_brokers(map(), map(), map()) ->
     {ok, list_brokers_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_brokers_errors(), tuple()}.
 list_brokers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_brokers(Client, QueryMap, HeadersMap, []).
@@ -1340,9 +1454,7 @@ list_brokers(Client, QueryMap, HeadersMap)
 -spec list_brokers(map(), map(), map(), proplists:proplist()) ->
     {ok, list_brokers_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_brokers_errors(), tuple()}.
 list_brokers(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/brokers"],
@@ -1368,10 +1480,7 @@ list_brokers(Client, QueryMap, HeadersMap, Options0)
 -spec list_configuration_revisions(map(), binary() | list()) ->
     {ok, list_configuration_revisions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_configuration_revisions_errors(), tuple()}.
 list_configuration_revisions(Client, ConfigurationId)
   when is_map(Client) ->
     list_configuration_revisions(Client, ConfigurationId, #{}, #{}).
@@ -1379,10 +1488,7 @@ list_configuration_revisions(Client, ConfigurationId)
 -spec list_configuration_revisions(map(), binary() | list(), map(), map()) ->
     {ok, list_configuration_revisions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_configuration_revisions_errors(), tuple()}.
 list_configuration_revisions(Client, ConfigurationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configuration_revisions(Client, ConfigurationId, QueryMap, HeadersMap, []).
@@ -1390,10 +1496,7 @@ list_configuration_revisions(Client, ConfigurationId, QueryMap, HeadersMap)
 -spec list_configuration_revisions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_configuration_revisions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_configuration_revisions_errors(), tuple()}.
 list_configuration_revisions(Client, ConfigurationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/configurations/", aws_util:encode_uri(ConfigurationId), "/revisions"],
@@ -1419,9 +1522,7 @@ list_configuration_revisions(Client, ConfigurationId, QueryMap, HeadersMap, Opti
 -spec list_configurations(map()) ->
     {ok, list_configurations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_configurations_errors(), tuple()}.
 list_configurations(Client)
   when is_map(Client) ->
     list_configurations(Client, #{}, #{}).
@@ -1429,9 +1530,7 @@ list_configurations(Client)
 -spec list_configurations(map(), map(), map()) ->
     {ok, list_configurations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_configurations_errors(), tuple()}.
 list_configurations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configurations(Client, QueryMap, HeadersMap, []).
@@ -1439,9 +1538,7 @@ list_configurations(Client, QueryMap, HeadersMap)
 -spec list_configurations(map(), map(), map(), proplists:proplist()) ->
     {ok, list_configurations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_configurations_errors(), tuple()}.
 list_configurations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/configurations"],
@@ -1467,10 +1564,7 @@ list_configurations(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags(map(), binary() | list()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, ResourceArn)
   when is_map(Client) ->
     list_tags(Client, ResourceArn, #{}, #{}).
@@ -1478,10 +1572,7 @@ list_tags(Client, ResourceArn)
 -spec list_tags(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1489,10 +1580,7 @@ list_tags(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1513,10 +1601,7 @@ list_tags(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec list_users(map(), binary() | list()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_users_errors(), tuple()}.
 list_users(Client, BrokerId)
   when is_map(Client) ->
     list_users(Client, BrokerId, #{}, #{}).
@@ -1524,10 +1609,7 @@ list_users(Client, BrokerId)
 -spec list_users(map(), binary() | list(), map(), map()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_users_errors(), tuple()}.
 list_users(Client, BrokerId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_users(Client, BrokerId, QueryMap, HeadersMap, []).
@@ -1535,10 +1617,7 @@ list_users(Client, BrokerId, QueryMap, HeadersMap)
 -spec list_users(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_users_errors(), tuple()}.
 list_users(Client, BrokerId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), "/users"],
@@ -1565,20 +1644,14 @@ list_users(Client, BrokerId, QueryMap, HeadersMap, Options0)
 -spec promote(map(), binary() | list(), promote_request()) ->
     {ok, promote_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, promote_errors(), tuple()}.
 promote(Client, BrokerId, Input) ->
     promote(Client, BrokerId, Input, []).
 
 -spec promote(map(), binary() | list(), promote_request(), proplists:proplist()) ->
     {ok, promote_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, promote_errors(), tuple()}.
 promote(Client, BrokerId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), "/promote"],
@@ -1607,20 +1680,14 @@ promote(Client, BrokerId, Input0, Options0) ->
 -spec reboot_broker(map(), binary() | list(), reboot_broker_request()) ->
     {ok, reboot_broker_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, reboot_broker_errors(), tuple()}.
 reboot_broker(Client, BrokerId, Input) ->
     reboot_broker(Client, BrokerId, Input, []).
 
 -spec reboot_broker(map(), binary() | list(), reboot_broker_request(), proplists:proplist()) ->
     {ok, reboot_broker_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, reboot_broker_errors(), tuple()}.
 reboot_broker(Client, BrokerId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), "/reboot"],
@@ -1647,22 +1714,14 @@ reboot_broker(Client, BrokerId, Input0, Options0) ->
 -spec update_broker(map(), binary() | list(), update_broker_request()) ->
     {ok, update_broker_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_broker_errors(), tuple()}.
 update_broker(Client, BrokerId, Input) ->
     update_broker(Client, BrokerId, Input, []).
 
 -spec update_broker(map(), binary() | list(), update_broker_request(), proplists:proplist()) ->
     {ok, update_broker_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_broker_errors(), tuple()}.
 update_broker(Client, BrokerId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), ""],
@@ -1689,22 +1748,14 @@ update_broker(Client, BrokerId, Input0, Options0) ->
 -spec update_configuration(map(), binary() | list(), update_configuration_request()) ->
     {ok, update_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_configuration_errors(), tuple()}.
 update_configuration(Client, ConfigurationId, Input) ->
     update_configuration(Client, ConfigurationId, Input, []).
 
 -spec update_configuration(map(), binary() | list(), update_configuration_request(), proplists:proplist()) ->
     {ok, update_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_configuration_errors(), tuple()}.
 update_configuration(Client, ConfigurationId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/configurations/", aws_util:encode_uri(ConfigurationId), ""],
@@ -1731,22 +1782,14 @@ update_configuration(Client, ConfigurationId, Input0, Options0) ->
 -spec update_user(map(), binary() | list(), binary() | list(), update_user_request()) ->
     {ok, update_user_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_user_errors(), tuple()}.
 update_user(Client, BrokerId, Username, Input) ->
     update_user(Client, BrokerId, Username, Input, []).
 
 -spec update_user(map(), binary() | list(), binary() | list(), update_user_request(), proplists:proplist()) ->
     {ok, update_user_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_user_errors(), tuple()}.
 update_user(Client, BrokerId, Username, Input0, Options0) ->
     Method = put,
     Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), "/users/", aws_util:encode_uri(Username), ""],

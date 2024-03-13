@@ -35,11 +35,13 @@
 %% }
 -type bucket() :: #{binary() => any()}.
 
+
 %% Example:
 %% bucket_info() :: #{
 %%   <<"buckets">> => list(bucket()())
 %% }
 -type bucket_info() :: #{binary() => any()}.
+
 
 %% Example:
 %% document_service_exception() :: #{
@@ -48,11 +50,13 @@
 %% }
 -type document_service_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% document_service_warning() :: #{
 %%   <<"message">> => string()
 %% }
 -type document_service_warning() :: #{binary() => any()}.
+
 
 %% Example:
 %% field_stats() :: #{
@@ -67,6 +71,7 @@
 %% }
 -type field_stats() :: #{binary() => any()}.
 
+
 %% Example:
 %% hit() :: #{
 %%   <<"exprs">> => map(),
@@ -75,6 +80,7 @@
 %%   <<"id">> => string()
 %% }
 -type hit() :: #{binary() => any()}.
+
 
 %% Example:
 %% hits() :: #{
@@ -85,11 +91,13 @@
 %% }
 -type hits() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type search_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_request() :: #{
@@ -110,6 +118,7 @@
 %% }
 -type search_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_response() :: #{
 %%   <<"facets">> => map(),
@@ -119,12 +128,14 @@
 %% }
 -type search_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_status() :: #{
 %%   <<"rid">> => string(),
 %%   <<"timems">> => float()
 %% }
 -type search_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% suggest_model() :: #{
@@ -134,6 +145,7 @@
 %% }
 -type suggest_model() :: #{binary() => any()}.
 
+
 %% Example:
 %% suggest_request() :: #{
 %%   <<"query">> := string(),
@@ -142,6 +154,7 @@
 %% }
 -type suggest_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% suggest_response() :: #{
 %%   <<"status">> => suggest_status(),
@@ -149,12 +162,14 @@
 %% }
 -type suggest_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% suggest_status() :: #{
 %%   <<"rid">> => string(),
 %%   <<"timems">> => float()
 %% }
 -type suggest_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% suggestion_match() :: #{
@@ -164,12 +179,14 @@
 %% }
 -type suggestion_match() :: #{binary() => any()}.
 
+
 %% Example:
 %% upload_documents_request() :: #{
 %%   <<"contentType">> := list(any()),
 %%   <<"documents">> := binary()
 %% }
 -type upload_documents_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% upload_documents_response() :: #{
@@ -179,6 +196,15 @@
 %%   <<"warnings">> => list(document_service_warning()())
 %% }
 -type upload_documents_response() :: #{binary() => any()}.
+
+-type search_errors() ::
+    search_exception().
+
+-type suggest_errors() ::
+    search_exception().
+
+-type upload_documents_errors() ::
+    document_service_exception().
 
 %%====================================================================
 %% API
@@ -212,7 +238,7 @@
 -spec search(map(), binary() | list()) ->
     {ok, search_response(), tuple()} |
     {error, any()} |
-    {error, search_exception(), tuple()}.
+    {error, search_errors(), tuple()}.
 search(Client, Query)
   when is_map(Client) ->
     search(Client, Query, #{}, #{}).
@@ -220,7 +246,7 @@ search(Client, Query)
 -spec search(map(), binary() | list(), map(), map()) ->
     {ok, search_response(), tuple()} |
     {error, any()} |
-    {error, search_exception(), tuple()}.
+    {error, search_errors(), tuple()}.
 search(Client, Query, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     search(Client, Query, QueryMap, HeadersMap, []).
@@ -228,7 +254,7 @@ search(Client, Query, QueryMap, HeadersMap)
 -spec search(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, search_response(), tuple()} |
     {error, any()} |
-    {error, search_exception(), tuple()}.
+    {error, search_errors(), tuple()}.
 search(Client, Query, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-01-01/search?format=sdk&pretty=true"],
@@ -284,7 +310,7 @@ search(Client, Query, QueryMap, HeadersMap, Options0)
 -spec suggest(map(), binary() | list(), binary() | list()) ->
     {ok, suggest_response(), tuple()} |
     {error, any()} |
-    {error, search_exception(), tuple()}.
+    {error, suggest_errors(), tuple()}.
 suggest(Client, Query, Suggester)
   when is_map(Client) ->
     suggest(Client, Query, Suggester, #{}, #{}).
@@ -292,7 +318,7 @@ suggest(Client, Query, Suggester)
 -spec suggest(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, suggest_response(), tuple()} |
     {error, any()} |
-    {error, search_exception(), tuple()}.
+    {error, suggest_errors(), tuple()}.
 suggest(Client, Query, Suggester, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     suggest(Client, Query, Suggester, QueryMap, HeadersMap, []).
@@ -300,7 +326,7 @@ suggest(Client, Query, Suggester, QueryMap, HeadersMap)
 -spec suggest(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, suggest_response(), tuple()} |
     {error, any()} |
-    {error, search_exception(), tuple()}.
+    {error, suggest_errors(), tuple()}.
 suggest(Client, Query, Suggester, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-01-01/suggest?format=sdk&pretty=true"],
@@ -354,14 +380,14 @@ suggest(Client, Query, Suggester, QueryMap, HeadersMap, Options0)
 -spec upload_documents(map(), upload_documents_request()) ->
     {ok, upload_documents_response(), tuple()} |
     {error, any()} |
-    {error, document_service_exception(), tuple()}.
+    {error, upload_documents_errors(), tuple()}.
 upload_documents(Client, Input) ->
     upload_documents(Client, Input, []).
 
 -spec upload_documents(map(), upload_documents_request(), proplists:proplist()) ->
     {ok, upload_documents_response(), tuple()} |
     {error, any()} |
-    {error, document_service_exception(), tuple()}.
+    {error, upload_documents_errors(), tuple()}.
 upload_documents(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2013-01-01/documents/batch?format=sdk"],

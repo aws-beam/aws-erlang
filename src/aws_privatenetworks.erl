@@ -82,6 +82,7 @@
 %% }
 -type list_orders_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_network_site_request() :: #{
 %%   <<"clientToken">> => string(),
@@ -90,6 +91,7 @@
 %% }
 -type update_network_site_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_network_response() :: #{
 %%   <<"network">> := network(),
@@ -97,12 +99,14 @@
 %% }
 -type create_network_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_networks_response() :: #{
 %%   <<"networks">> => list(network()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_networks_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% ordered_resource_definition() :: #{
@@ -112,23 +116,28 @@
 %% }
 -type ordered_resource_definition() :: #{binary() => any()}.
 
+
 %% Example:
 %% tracking_information() :: #{
 %%   <<"trackingNumber">> => [string()]
 %% }
 -type tracking_information() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_network_request() :: #{}
 -type get_network_request() :: #{}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% site_plan() :: #{
@@ -136,9 +145,11 @@
 %%   <<"resourceDefinitions">> => list(network_resource_definition()())
 %% }
 -type site_plan() :: #{binary() => any()}.
+
 %% Example:
 %% get_network_resource_request() :: #{}
 -type get_network_resource_request() :: #{}.
+
 
 %% Example:
 %% list_device_identifiers_response() :: #{
@@ -147,11 +158,13 @@
 %% }
 -type list_device_identifiers_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% acknowledge_order_receipt_request() :: #{
 %%   <<"orderArn">> := string()
 %% }
 -type acknowledge_order_receipt_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% device_identifier() :: #{
@@ -167,11 +180,13 @@
 %% }
 -type device_identifier() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_network_resource_update_response() :: #{
 %%   <<"networkResource">> => network_resource()
 %% }
 -type start_network_resource_update_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% untag_resource_request() :: #{
@@ -179,12 +194,14 @@
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_network_site_response() :: #{
 %%   <<"networkSite">> => network_site(),
 %%   <<"tags">> => map()
 %% }
 -type get_network_site_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% position() :: #{
@@ -196,11 +213,13 @@
 %% }
 -type position() :: #{binary() => any()}.
 
+
 %% Example:
 %% configure_access_point_response() :: #{
 %%   <<"accessPoint">> := network_resource()
 %% }
 -type configure_access_point_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_network_response() :: #{
@@ -208,12 +227,14 @@
 %% }
 -type delete_network_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_device_identifier_response() :: #{
 %%   <<"deviceIdentifier">> => device_identifier(),
 %%   <<"tags">> => map()
 %% }
 -type get_device_identifier_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_network_sites_request() :: #{
@@ -224,12 +245,14 @@
 %% }
 -type list_network_sites_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% name_value_pair() :: #{
 %%   <<"name">> => [string()],
 %%   <<"value">> => [string()]
 %% }
 -type name_value_pair() :: #{binary() => any()}.
+
 
 %% Example:
 %% network_resource_definition() :: #{
@@ -238,6 +261,7 @@
 %%   <<"type">> => string()
 %% }
 -type network_resource_definition() :: #{binary() => any()}.
+
 
 %% Example:
 %% network_site() :: #{
@@ -255,6 +279,7 @@
 %% }
 -type network_site() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => [string()],
@@ -262,6 +287,7 @@
 %%   <<"resourceType">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% configure_access_point_request() :: #{
@@ -274,6 +300,7 @@
 %% }
 -type configure_access_point_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_network_site_response() :: #{
 %%   <<"networkSite">> => network_site(),
@@ -281,11 +308,13 @@
 %% }
 -type update_network_site_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_network_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
 -type delete_network_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% return_information() :: #{
@@ -296,6 +325,7 @@
 %% }
 -type return_information() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_networks_request() :: #{
 %%   <<"filters">> => map(),
@@ -304,20 +334,24 @@
 %% }
 -type list_networks_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% activate_network_site_response() :: #{
 %%   <<"networkSite">> => network_site()
 %% }
 -type activate_network_site_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_order_request() :: #{}
 -type get_order_request() :: #{}.
+
 
 %% Example:
 %% create_network_site_response() :: #{
@@ -326,6 +360,7 @@
 %% }
 -type create_network_site_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception_field() :: #{
 %%   <<"message">> => [string()],
@@ -333,17 +368,20 @@
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_network_site_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
 -type delete_network_site_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% deactivate_device_identifier_response() :: #{
 %%   <<"deviceIdentifier">> := device_identifier()
 %% }
 -type deactivate_device_identifier_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% order() :: #{
@@ -358,6 +396,7 @@
 %% }
 -type order() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_network_resource_response() :: #{
 %%   <<"networkResource">> := network_resource(),
@@ -365,11 +404,13 @@
 %% }
 -type get_network_resource_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% ping_response() :: #{
 %%   <<"status">> => [string()]
 %% }
 -type ping_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% activate_device_identifier_response() :: #{
@@ -378,11 +419,13 @@
 %% }
 -type activate_device_identifier_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% acknowledge_order_receipt_response() :: #{
 %%   <<"order">> := order()
 %% }
 -type acknowledge_order_receipt_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% internal_server_exception() :: #{
@@ -390,6 +433,7 @@
 %%   <<"retryAfterSeconds">> => [integer()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_network_request() :: #{
@@ -400,6 +444,7 @@
 %% }
 -type create_network_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_network_resources_request() :: #{
 %%   <<"filters">> => map(),
@@ -409,6 +454,7 @@
 %% }
 -type list_network_resources_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_network_resources_response() :: #{
 %%   <<"networkResources">> => list(network_resource()()),
@@ -416,12 +462,14 @@
 %% }
 -type list_network_resources_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% deactivate_device_identifier_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"deviceIdentifierArn">> := string()
 %% }
 -type deactivate_device_identifier_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_device_identifiers_request() :: #{
@@ -432,11 +480,13 @@
 %% }
 -type list_device_identifiers_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% activate_device_identifier_request() :: #{
@@ -444,6 +494,7 @@
 %%   <<"deviceIdentifierArn">> := string()
 %% }
 -type activate_device_identifier_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% commitment_information() :: #{
@@ -453,15 +504,18 @@
 %% }
 -type commitment_information() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_network_response() :: #{
 %%   <<"network">> := network(),
 %%   <<"tags">> => map()
 %% }
 -type get_network_response() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% network() :: #{
@@ -474,6 +528,7 @@
 %% }
 -type network() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"fieldList">> => list(validation_exception_field()()),
@@ -481,15 +536,18 @@
 %%   <<"reason">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% activate_network_site_request() :: #{
@@ -499,9 +557,11 @@
 %%   <<"shippingAddress">> := address()
 %% }
 -type activate_network_site_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_device_identifier_request() :: #{}
 -type get_device_identifier_request() :: #{}.
+
 
 %% Example:
 %% network_resource() :: #{
@@ -525,14 +585,17 @@
 %% }
 -type network_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% limit_exceeded_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
+
 %% Example:
 %% get_network_site_request() :: #{}
 -type get_network_site_request() :: #{}.
+
 
 %% Example:
 %% start_network_resource_update_request() :: #{
@@ -543,6 +606,7 @@
 %%   <<"updateType">> := string()
 %% }
 -type start_network_resource_update_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% address() :: #{
@@ -560,6 +624,7 @@
 %% }
 -type address() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_order_response() :: #{
 %%   <<"order">> := order(),
@@ -567,12 +632,14 @@
 %% }
 -type get_order_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% commitment_configuration() :: #{
 %%   <<"automaticRenewal">> => [boolean()],
 %%   <<"commitmentLength">> => string()
 %% }
 -type commitment_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_network_site_plan_request() :: #{
@@ -582,6 +649,7 @@
 %% }
 -type update_network_site_plan_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_orders_request() :: #{
 %%   <<"filters">> => map(),
@@ -590,6 +658,7 @@
 %%   <<"startToken">> => string()
 %% }
 -type list_orders_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_network_site_request() :: #{
@@ -604,11 +673,13 @@
 %% }
 -type create_network_site_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_network_site_response() :: #{
 %%   <<"networkSite">> => network_site()
 %% }
 -type delete_network_site_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_network_sites_response() :: #{
@@ -616,6 +687,142 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_network_sites_response() :: #{binary() => any()}.
+
+-type acknowledge_order_receipt_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type activate_device_identifier_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type activate_network_site_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type configure_access_point_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_network_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    internal_server_exception().
+
+-type create_network_site_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type deactivate_device_identifier_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_network_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_network_site_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_device_identifier_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_network_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_network_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_network_site_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_order_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_device_identifiers_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_network_resources_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_network_sites_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_networks_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_orders_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type ping_errors() ::
+    internal_server_exception().
+
+-type start_network_resource_update_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_network_site_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_network_site_plan_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -625,18 +832,14 @@
 -spec acknowledge_order_receipt(map(), acknowledge_order_receipt_request()) ->
     {ok, acknowledge_order_receipt_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, acknowledge_order_receipt_errors(), tuple()}.
 acknowledge_order_receipt(Client, Input) ->
     acknowledge_order_receipt(Client, Input, []).
 
 -spec acknowledge_order_receipt(map(), acknowledge_order_receipt_request(), proplists:proplist()) ->
     {ok, acknowledge_order_receipt_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, acknowledge_order_receipt_errors(), tuple()}.
 acknowledge_order_receipt(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/orders/acknowledge"],
@@ -663,18 +866,14 @@ acknowledge_order_receipt(Client, Input0, Options0) ->
 -spec activate_device_identifier(map(), activate_device_identifier_request()) ->
     {ok, activate_device_identifier_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, activate_device_identifier_errors(), tuple()}.
 activate_device_identifier(Client, Input) ->
     activate_device_identifier(Client, Input, []).
 
 -spec activate_device_identifier(map(), activate_device_identifier_request(), proplists:proplist()) ->
     {ok, activate_device_identifier_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, activate_device_identifier_errors(), tuple()}.
 activate_device_identifier(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/device-identifiers/activate"],
@@ -701,18 +900,14 @@ activate_device_identifier(Client, Input0, Options0) ->
 -spec activate_network_site(map(), activate_network_site_request()) ->
     {ok, activate_network_site_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, activate_network_site_errors(), tuple()}.
 activate_network_site(Client, Input) ->
     activate_network_site(Client, Input, []).
 
 -spec activate_network_site(map(), activate_network_site_request(), proplists:proplist()) ->
     {ok, activate_network_site_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, activate_network_site_errors(), tuple()}.
 activate_network_site(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/network-sites/activate"],
@@ -748,18 +943,14 @@ activate_network_site(Client, Input0, Options0) ->
 -spec configure_access_point(map(), configure_access_point_request()) ->
     {ok, configure_access_point_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, configure_access_point_errors(), tuple()}.
 configure_access_point(Client, Input) ->
     configure_access_point(Client, Input, []).
 
 -spec configure_access_point(map(), configure_access_point_request(), proplists:proplist()) ->
     {ok, configure_access_point_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, configure_access_point_errors(), tuple()}.
 configure_access_point(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/network-resources/configure"],
@@ -786,18 +977,14 @@ configure_access_point(Client, Input0, Options0) ->
 -spec create_network(map(), create_network_request()) ->
     {ok, create_network_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_network_errors(), tuple()}.
 create_network(Client, Input) ->
     create_network(Client, Input, []).
 
 -spec create_network(map(), create_network_request(), proplists:proplist()) ->
     {ok, create_network_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_network_errors(), tuple()}.
 create_network(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/networks"],
@@ -824,18 +1011,14 @@ create_network(Client, Input0, Options0) ->
 -spec create_network_site(map(), create_network_site_request()) ->
     {ok, create_network_site_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_network_site_errors(), tuple()}.
 create_network_site(Client, Input) ->
     create_network_site(Client, Input, []).
 
 -spec create_network_site(map(), create_network_site_request(), proplists:proplist()) ->
     {ok, create_network_site_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_network_site_errors(), tuple()}.
 create_network_site(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/network-sites"],
@@ -862,18 +1045,14 @@ create_network_site(Client, Input0, Options0) ->
 -spec deactivate_device_identifier(map(), deactivate_device_identifier_request()) ->
     {ok, deactivate_device_identifier_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, deactivate_device_identifier_errors(), tuple()}.
 deactivate_device_identifier(Client, Input) ->
     deactivate_device_identifier(Client, Input, []).
 
 -spec deactivate_device_identifier(map(), deactivate_device_identifier_request(), proplists:proplist()) ->
     {ok, deactivate_device_identifier_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, deactivate_device_identifier_errors(), tuple()}.
 deactivate_device_identifier(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/device-identifiers/deactivate"],
@@ -906,20 +1085,14 @@ deactivate_device_identifier(Client, Input0, Options0) ->
 -spec delete_network(map(), binary() | list(), delete_network_request()) ->
     {ok, delete_network_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_network_errors(), tuple()}.
 delete_network(Client, NetworkArn, Input) ->
     delete_network(Client, NetworkArn, Input, []).
 
 -spec delete_network(map(), binary() | list(), delete_network_request(), proplists:proplist()) ->
     {ok, delete_network_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_network_errors(), tuple()}.
 delete_network(Client, NetworkArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/networks/", aws_util:encode_uri(NetworkArn), ""],
@@ -955,20 +1128,14 @@ delete_network(Client, NetworkArn, Input0, Options0) ->
 -spec delete_network_site(map(), binary() | list(), delete_network_site_request()) ->
     {ok, delete_network_site_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_network_site_errors(), tuple()}.
 delete_network_site(Client, NetworkSiteArn, Input) ->
     delete_network_site(Client, NetworkSiteArn, Input, []).
 
 -spec delete_network_site(map(), binary() | list(), delete_network_site_request(), proplists:proplist()) ->
     {ok, delete_network_site_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_network_site_errors(), tuple()}.
 delete_network_site(Client, NetworkSiteArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/network-sites/", aws_util:encode_uri(NetworkSiteArn), ""],
@@ -996,9 +1163,7 @@ delete_network_site(Client, NetworkSiteArn, Input0, Options0) ->
 -spec get_device_identifier(map(), binary() | list()) ->
     {ok, get_device_identifier_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_device_identifier_errors(), tuple()}.
 get_device_identifier(Client, DeviceIdentifierArn)
   when is_map(Client) ->
     get_device_identifier(Client, DeviceIdentifierArn, #{}, #{}).
@@ -1006,9 +1171,7 @@ get_device_identifier(Client, DeviceIdentifierArn)
 -spec get_device_identifier(map(), binary() | list(), map(), map()) ->
     {ok, get_device_identifier_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_device_identifier_errors(), tuple()}.
 get_device_identifier(Client, DeviceIdentifierArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_device_identifier(Client, DeviceIdentifierArn, QueryMap, HeadersMap, []).
@@ -1016,9 +1179,7 @@ get_device_identifier(Client, DeviceIdentifierArn, QueryMap, HeadersMap)
 -spec get_device_identifier(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_device_identifier_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_device_identifier_errors(), tuple()}.
 get_device_identifier(Client, DeviceIdentifierArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/device-identifiers/", aws_util:encode_uri(DeviceIdentifierArn), ""],
@@ -1039,9 +1200,7 @@ get_device_identifier(Client, DeviceIdentifierArn, QueryMap, HeadersMap, Options
 -spec get_network(map(), binary() | list()) ->
     {ok, get_network_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_network_errors(), tuple()}.
 get_network(Client, NetworkArn)
   when is_map(Client) ->
     get_network(Client, NetworkArn, #{}, #{}).
@@ -1049,9 +1208,7 @@ get_network(Client, NetworkArn)
 -spec get_network(map(), binary() | list(), map(), map()) ->
     {ok, get_network_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_network_errors(), tuple()}.
 get_network(Client, NetworkArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_network(Client, NetworkArn, QueryMap, HeadersMap, []).
@@ -1059,9 +1216,7 @@ get_network(Client, NetworkArn, QueryMap, HeadersMap)
 -spec get_network(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_network_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_network_errors(), tuple()}.
 get_network(Client, NetworkArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/networks/", aws_util:encode_uri(NetworkArn), ""],
@@ -1082,9 +1237,7 @@ get_network(Client, NetworkArn, QueryMap, HeadersMap, Options0)
 -spec get_network_resource(map(), binary() | list()) ->
     {ok, get_network_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_network_resource_errors(), tuple()}.
 get_network_resource(Client, NetworkResourceArn)
   when is_map(Client) ->
     get_network_resource(Client, NetworkResourceArn, #{}, #{}).
@@ -1092,9 +1245,7 @@ get_network_resource(Client, NetworkResourceArn)
 -spec get_network_resource(map(), binary() | list(), map(), map()) ->
     {ok, get_network_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_network_resource_errors(), tuple()}.
 get_network_resource(Client, NetworkResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_network_resource(Client, NetworkResourceArn, QueryMap, HeadersMap, []).
@@ -1102,9 +1253,7 @@ get_network_resource(Client, NetworkResourceArn, QueryMap, HeadersMap)
 -spec get_network_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_network_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_network_resource_errors(), tuple()}.
 get_network_resource(Client, NetworkResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/network-resources/", aws_util:encode_uri(NetworkResourceArn), ""],
@@ -1125,9 +1274,7 @@ get_network_resource(Client, NetworkResourceArn, QueryMap, HeadersMap, Options0)
 -spec get_network_site(map(), binary() | list()) ->
     {ok, get_network_site_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_network_site_errors(), tuple()}.
 get_network_site(Client, NetworkSiteArn)
   when is_map(Client) ->
     get_network_site(Client, NetworkSiteArn, #{}, #{}).
@@ -1135,9 +1282,7 @@ get_network_site(Client, NetworkSiteArn)
 -spec get_network_site(map(), binary() | list(), map(), map()) ->
     {ok, get_network_site_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_network_site_errors(), tuple()}.
 get_network_site(Client, NetworkSiteArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_network_site(Client, NetworkSiteArn, QueryMap, HeadersMap, []).
@@ -1145,9 +1290,7 @@ get_network_site(Client, NetworkSiteArn, QueryMap, HeadersMap)
 -spec get_network_site(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_network_site_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_network_site_errors(), tuple()}.
 get_network_site(Client, NetworkSiteArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/network-sites/", aws_util:encode_uri(NetworkSiteArn), ""],
@@ -1168,9 +1311,7 @@ get_network_site(Client, NetworkSiteArn, QueryMap, HeadersMap, Options0)
 -spec get_order(map(), binary() | list()) ->
     {ok, get_order_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_order_errors(), tuple()}.
 get_order(Client, OrderArn)
   when is_map(Client) ->
     get_order(Client, OrderArn, #{}, #{}).
@@ -1178,9 +1319,7 @@ get_order(Client, OrderArn)
 -spec get_order(map(), binary() | list(), map(), map()) ->
     {ok, get_order_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_order_errors(), tuple()}.
 get_order(Client, OrderArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_order(Client, OrderArn, QueryMap, HeadersMap, []).
@@ -1188,9 +1327,7 @@ get_order(Client, OrderArn, QueryMap, HeadersMap)
 -spec get_order(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_order_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_order_errors(), tuple()}.
 get_order(Client, OrderArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/orders/", aws_util:encode_uri(OrderArn), ""],
@@ -1220,18 +1357,14 @@ get_order(Client, OrderArn, QueryMap, HeadersMap, Options0)
 -spec list_device_identifiers(map(), list_device_identifiers_request()) ->
     {ok, list_device_identifiers_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_device_identifiers_errors(), tuple()}.
 list_device_identifiers(Client, Input) ->
     list_device_identifiers(Client, Input, []).
 
 -spec list_device_identifiers(map(), list_device_identifiers_request(), proplists:proplist()) ->
     {ok, list_device_identifiers_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_device_identifiers_errors(), tuple()}.
 list_device_identifiers(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/device-identifiers/list"],
@@ -1267,18 +1400,14 @@ list_device_identifiers(Client, Input0, Options0) ->
 -spec list_network_resources(map(), list_network_resources_request()) ->
     {ok, list_network_resources_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_network_resources_errors(), tuple()}.
 list_network_resources(Client, Input) ->
     list_network_resources(Client, Input, []).
 
 -spec list_network_resources(map(), list_network_resources_request(), proplists:proplist()) ->
     {ok, list_network_resources_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_network_resources_errors(), tuple()}.
 list_network_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/network-resources"],
@@ -1308,18 +1437,14 @@ list_network_resources(Client, Input0, Options0) ->
 -spec list_network_sites(map(), list_network_sites_request()) ->
     {ok, list_network_sites_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_network_sites_errors(), tuple()}.
 list_network_sites(Client, Input) ->
     list_network_sites(Client, Input, []).
 
 -spec list_network_sites(map(), list_network_sites_request(), proplists:proplist()) ->
     {ok, list_network_sites_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_network_sites_errors(), tuple()}.
 list_network_sites(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/network-sites/list"],
@@ -1349,18 +1474,14 @@ list_network_sites(Client, Input0, Options0) ->
 -spec list_networks(map(), list_networks_request()) ->
     {ok, list_networks_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_networks_errors(), tuple()}.
 list_networks(Client, Input) ->
     list_networks(Client, Input, []).
 
 -spec list_networks(map(), list_networks_request(), proplists:proplist()) ->
     {ok, list_networks_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_networks_errors(), tuple()}.
 list_networks(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/networks/list"],
@@ -1396,18 +1517,14 @@ list_networks(Client, Input0, Options0) ->
 -spec list_orders(map(), list_orders_request()) ->
     {ok, list_orders_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_orders_errors(), tuple()}.
 list_orders(Client, Input) ->
     list_orders(Client, Input, []).
 
 -spec list_orders(map(), list_orders_request(), proplists:proplist()) ->
     {ok, list_orders_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_orders_errors(), tuple()}.
 list_orders(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/orders/list"],
@@ -1434,11 +1551,7 @@ list_orders(Client, Input0, Options0) ->
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1446,11 +1559,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1458,11 +1567,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1483,7 +1588,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec ping(map()) ->
     {ok, ping_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, ping_errors(), tuple()}.
 ping(Client)
   when is_map(Client) ->
     ping(Client, #{}, #{}).
@@ -1491,7 +1596,7 @@ ping(Client)
 -spec ping(map(), map(), map()) ->
     {ok, ping_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, ping_errors(), tuple()}.
 ping(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     ping(Client, QueryMap, HeadersMap, []).
@@ -1499,7 +1604,7 @@ ping(Client, QueryMap, HeadersMap)
 -spec ping(map(), map(), map(), proplists:proplist()) ->
     {ok, ping_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, ping_errors(), tuple()}.
 ping(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ping"],
@@ -1540,18 +1645,14 @@ ping(Client, QueryMap, HeadersMap, Options0)
 -spec start_network_resource_update(map(), start_network_resource_update_request()) ->
     {ok, start_network_resource_update_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_network_resource_update_errors(), tuple()}.
 start_network_resource_update(Client, Input) ->
     start_network_resource_update(Client, Input, []).
 
 -spec start_network_resource_update(map(), start_network_resource_update_request(), proplists:proplist()) ->
     {ok, start_network_resource_update_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_network_resource_update_errors(), tuple()}.
 start_network_resource_update(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/network-resources/update"],
@@ -1578,22 +1679,14 @@ start_network_resource_update(Client, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1620,22 +1713,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1663,18 +1748,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_network_site(map(), update_network_site_request()) ->
     {ok, update_network_site_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_network_site_errors(), tuple()}.
 update_network_site(Client, Input) ->
     update_network_site(Client, Input, []).
 
 -spec update_network_site(map(), update_network_site_request(), proplists:proplist()) ->
     {ok, update_network_site_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_network_site_errors(), tuple()}.
 update_network_site(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v1/network-sites/site"],
@@ -1701,18 +1782,14 @@ update_network_site(Client, Input0, Options0) ->
 -spec update_network_site_plan(map(), update_network_site_plan_request()) ->
     {ok, update_network_site_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_network_site_plan_errors(), tuple()}.
 update_network_site_plan(Client, Input) ->
     update_network_site_plan(Client, Input, []).
 
 -spec update_network_site_plan(map(), update_network_site_plan_request(), proplists:proplist()) ->
     {ok, update_network_site_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_network_site_plan_errors(), tuple()}.
 update_network_site_plan(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v1/network-sites/plan"],

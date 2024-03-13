@@ -2630,6 +2630,520 @@
 %% }
 -type batch_put_document_response_failed_document() :: #{binary() => any()}.
 
+-type associate_entities_to_experience_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    resource_already_exist_exception().
+
+-type associate_personas_to_entities_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    resource_already_exist_exception().
+
+-type batch_delete_document_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type batch_delete_featured_results_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type batch_get_document_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type batch_put_document_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type clear_query_suggestions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_access_control_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_data_source_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    resource_already_exist_exception().
+
+-type create_experience_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_faq_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_featured_results_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    featured_results_conflict_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_index_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception() | 
+    resource_already_exist_exception().
+
+-type create_query_suggestions_block_list_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_thesaurus_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_access_control_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_data_source_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_experience_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_faq_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_index_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_principal_mapping_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_query_suggestions_block_list_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_thesaurus_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_access_control_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_data_source_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_experience_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_faq_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_featured_results_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_index_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_principal_mapping_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_query_suggestions_block_list_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_query_suggestions_config_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_thesaurus_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type disassociate_entities_from_experience_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type disassociate_personas_from_entities_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_query_suggestions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_snapshots_errors() ::
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_access_control_configurations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_data_source_sync_jobs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_data_sources_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_entity_personas_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_experience_entities_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_experiences_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_faqs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_featured_results_sets_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_groups_older_than_ordering_id_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_indices_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_query_suggestions_block_lists_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_unavailable_exception().
+
+-type list_thesauri_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type put_principal_mapping_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type query_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type retrieve_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_data_source_sync_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    resource_in_use_exception().
+
+-type stop_data_source_sync_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type submit_feedback_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_unavailable_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_unavailable_exception().
+
+-type update_access_control_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_data_source_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_experience_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_featured_results_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    featured_results_conflict_exception() | 
+    resource_not_found_exception().
+
+-type update_index_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_query_suggestions_block_list_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_query_suggestions_config_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_thesaurus_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -2647,12 +3161,7 @@
 -spec associate_entities_to_experience(map(), associate_entities_to_experience_request()) ->
     {ok, associate_entities_to_experience_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_already_exist_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_entities_to_experience_errors(), tuple()}.
 associate_entities_to_experience(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_entities_to_experience(Client, Input, []).
@@ -2660,12 +3169,7 @@ associate_entities_to_experience(Client, Input)
 -spec associate_entities_to_experience(map(), associate_entities_to_experience_request(), proplists:proplist()) ->
     {ok, associate_entities_to_experience_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_already_exist_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_entities_to_experience_errors(), tuple()}.
 associate_entities_to_experience(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateEntitiesToExperience">>, Input, Options).
@@ -2683,12 +3187,7 @@ associate_entities_to_experience(Client, Input, Options)
 -spec associate_personas_to_entities(map(), associate_personas_to_entities_request()) ->
     {ok, associate_personas_to_entities_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_already_exist_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_personas_to_entities_errors(), tuple()}.
 associate_personas_to_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_personas_to_entities(Client, Input, []).
@@ -2696,12 +3195,7 @@ associate_personas_to_entities(Client, Input)
 -spec associate_personas_to_entities(map(), associate_personas_to_entities_request(), proplists:proplist()) ->
     {ok, associate_personas_to_entities_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_already_exist_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_personas_to_entities_errors(), tuple()}.
 associate_personas_to_entities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociatePersonasToEntities">>, Input, Options).
@@ -2727,12 +3221,7 @@ associate_personas_to_entities(Client, Input, Options)
 -spec batch_delete_document(map(), batch_delete_document_request()) ->
     {ok, batch_delete_document_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_delete_document_errors(), tuple()}.
 batch_delete_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_document(Client, Input, []).
@@ -2740,12 +3229,7 @@ batch_delete_document(Client, Input)
 -spec batch_delete_document(map(), batch_delete_document_request(), proplists:proplist()) ->
     {ok, batch_delete_document_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_delete_document_errors(), tuple()}.
 batch_delete_document(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDeleteDocument">>, Input, Options).
@@ -2760,11 +3244,7 @@ batch_delete_document(Client, Input, Options)
 -spec batch_delete_featured_results_set(map(), batch_delete_featured_results_set_request()) ->
     {ok, batch_delete_featured_results_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_delete_featured_results_set_errors(), tuple()}.
 batch_delete_featured_results_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_featured_results_set(Client, Input, []).
@@ -2772,11 +3252,7 @@ batch_delete_featured_results_set(Client, Input)
 -spec batch_delete_featured_results_set(map(), batch_delete_featured_results_set_request(), proplists:proplist()) ->
     {ok, batch_delete_featured_results_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_delete_featured_results_set_errors(), tuple()}.
 batch_delete_featured_results_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDeleteFeaturedResultsSet">>, Input, Options).
@@ -2804,12 +3280,7 @@ batch_delete_featured_results_set(Client, Input, Options)
 -spec batch_get_document_status(map(), batch_get_document_status_request()) ->
     {ok, batch_get_document_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_document_status_errors(), tuple()}.
 batch_get_document_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_document_status(Client, Input, []).
@@ -2817,12 +3288,7 @@ batch_get_document_status(Client, Input)
 -spec batch_get_document_status(map(), batch_get_document_status_request(), proplists:proplist()) ->
     {ok, batch_get_document_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_document_status_errors(), tuple()}.
 batch_get_document_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetDocumentStatus">>, Input, Options).
@@ -2853,13 +3319,7 @@ batch_get_document_status(Client, Input, Options)
 -spec batch_put_document(map(), batch_put_document_request()) ->
     {ok, batch_put_document_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_put_document_errors(), tuple()}.
 batch_put_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_put_document(Client, Input, []).
@@ -2867,13 +3327,7 @@ batch_put_document(Client, Input)
 -spec batch_put_document(map(), batch_put_document_request(), proplists:proplist()) ->
     {ok, batch_put_document_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_put_document_errors(), tuple()}.
 batch_put_document(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchPutDocument">>, Input, Options).
@@ -2892,12 +3346,7 @@ batch_put_document(Client, Input, Options)
 -spec clear_query_suggestions(map(), clear_query_suggestions_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, clear_query_suggestions_errors(), tuple()}.
 clear_query_suggestions(Client, Input)
   when is_map(Client), is_map(Input) ->
     clear_query_suggestions(Client, Input, []).
@@ -2905,12 +3354,7 @@ clear_query_suggestions(Client, Input)
 -spec clear_query_suggestions(map(), clear_query_suggestions_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, clear_query_suggestions_errors(), tuple()}.
 clear_query_suggestions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ClearQuerySuggestions">>, Input, Options).
@@ -2958,13 +3402,7 @@ clear_query_suggestions(Client, Input, Options)
 -spec create_access_control_configuration(map(), create_access_control_configuration_request()) ->
     {ok, create_access_control_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_access_control_configuration_errors(), tuple()}.
 create_access_control_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_access_control_configuration(Client, Input, []).
@@ -2972,13 +3410,7 @@ create_access_control_configuration(Client, Input)
 -spec create_access_control_configuration(map(), create_access_control_configuration_request(), proplists:proplist()) ->
     {ok, create_access_control_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_access_control_configuration_errors(), tuple()}.
 create_access_control_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAccessControlConfiguration">>, Input, Options).
@@ -3004,14 +3436,7 @@ create_access_control_configuration(Client, Input, Options)
 -spec create_data_source(map(), create_data_source_request()) ->
     {ok, create_data_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_already_exist_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_data_source_errors(), tuple()}.
 create_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_source(Client, Input, []).
@@ -3019,14 +3444,7 @@ create_data_source(Client, Input)
 -spec create_data_source(map(), create_data_source_request(), proplists:proplist()) ->
     {ok, create_data_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_already_exist_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_data_source_errors(), tuple()}.
 create_data_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDataSource">>, Input, Options).
@@ -3042,13 +3460,7 @@ create_data_source(Client, Input, Options)
 -spec create_experience(map(), create_experience_request()) ->
     {ok, create_experience_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_experience_errors(), tuple()}.
 create_experience(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_experience(Client, Input, []).
@@ -3056,13 +3468,7 @@ create_experience(Client, Input)
 -spec create_experience(map(), create_experience_request(), proplists:proplist()) ->
     {ok, create_experience_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_experience_errors(), tuple()}.
 create_experience(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateExperience">>, Input, Options).
@@ -3079,13 +3485,7 @@ create_experience(Client, Input, Options)
 -spec create_faq(map(), create_faq_request()) ->
     {ok, create_faq_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_faq_errors(), tuple()}.
 create_faq(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_faq(Client, Input, []).
@@ -3093,13 +3493,7 @@ create_faq(Client, Input)
 -spec create_faq(map(), create_faq_request(), proplists:proplist()) ->
     {ok, create_faq_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_faq_errors(), tuple()}.
 create_faq(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFaq">>, Input, Options).
@@ -3122,13 +3516,7 @@ create_faq(Client, Input, Options)
 -spec create_featured_results_set(map(), create_featured_results_set_request()) ->
     {ok, create_featured_results_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, featured_results_conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_featured_results_set_errors(), tuple()}.
 create_featured_results_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_featured_results_set(Client, Input, []).
@@ -3136,13 +3524,7 @@ create_featured_results_set(Client, Input)
 -spec create_featured_results_set(map(), create_featured_results_set_request(), proplists:proplist()) ->
     {ok, create_featured_results_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, featured_results_conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_featured_results_set_errors(), tuple()}.
 create_featured_results_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFeaturedResultsSet">>, Input, Options).
@@ -3168,13 +3550,7 @@ create_featured_results_set(Client, Input, Options)
 -spec create_index(map(), create_index_request()) ->
     {ok, create_index_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_already_exist_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_index_errors(), tuple()}.
 create_index(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_index(Client, Input, []).
@@ -3182,13 +3558,7 @@ create_index(Client, Input)
 -spec create_index(map(), create_index_request(), proplists:proplist()) ->
     {ok, create_index_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_already_exist_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_index_errors(), tuple()}.
 create_index(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateIndex">>, Input, Options).
@@ -3217,13 +3587,7 @@ create_index(Client, Input, Options)
 -spec create_query_suggestions_block_list(map(), create_query_suggestions_block_list_request()) ->
     {ok, create_query_suggestions_block_list_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_query_suggestions_block_list_errors(), tuple()}.
 create_query_suggestions_block_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_query_suggestions_block_list(Client, Input, []).
@@ -3231,13 +3595,7 @@ create_query_suggestions_block_list(Client, Input)
 -spec create_query_suggestions_block_list(map(), create_query_suggestions_block_list_request(), proplists:proplist()) ->
     {ok, create_query_suggestions_block_list_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_query_suggestions_block_list_errors(), tuple()}.
 create_query_suggestions_block_list(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateQuerySuggestionsBlockList">>, Input, Options).
@@ -3254,13 +3612,7 @@ create_query_suggestions_block_list(Client, Input, Options)
 -spec create_thesaurus(map(), create_thesaurus_request()) ->
     {ok, create_thesaurus_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_thesaurus_errors(), tuple()}.
 create_thesaurus(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_thesaurus(Client, Input, []).
@@ -3268,13 +3620,7 @@ create_thesaurus(Client, Input)
 -spec create_thesaurus(map(), create_thesaurus_request(), proplists:proplist()) ->
     {ok, create_thesaurus_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_thesaurus_errors(), tuple()}.
 create_thesaurus(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateThesaurus">>, Input, Options).
@@ -3291,12 +3637,7 @@ create_thesaurus(Client, Input, Options)
 -spec delete_access_control_configuration(map(), delete_access_control_configuration_request()) ->
     {ok, delete_access_control_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_access_control_configuration_errors(), tuple()}.
 delete_access_control_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_access_control_configuration(Client, Input, []).
@@ -3304,12 +3645,7 @@ delete_access_control_configuration(Client, Input)
 -spec delete_access_control_configuration(map(), delete_access_control_configuration_request(), proplists:proplist()) ->
     {ok, delete_access_control_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_access_control_configuration_errors(), tuple()}.
 delete_access_control_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAccessControlConfiguration">>, Input, Options).
@@ -3332,12 +3668,7 @@ delete_access_control_configuration(Client, Input, Options)
 -spec delete_data_source(map(), delete_data_source_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_data_source_errors(), tuple()}.
 delete_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_data_source(Client, Input, []).
@@ -3345,12 +3676,7 @@ delete_data_source(Client, Input)
 -spec delete_data_source(map(), delete_data_source_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_data_source_errors(), tuple()}.
 delete_data_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDataSource">>, Input, Options).
@@ -3364,12 +3690,7 @@ delete_data_source(Client, Input, Options)
 -spec delete_experience(map(), delete_experience_request()) ->
     {ok, delete_experience_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_experience_errors(), tuple()}.
 delete_experience(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_experience(Client, Input, []).
@@ -3377,12 +3698,7 @@ delete_experience(Client, Input)
 -spec delete_experience(map(), delete_experience_request(), proplists:proplist()) ->
     {ok, delete_experience_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_experience_errors(), tuple()}.
 delete_experience(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteExperience">>, Input, Options).
@@ -3391,12 +3707,7 @@ delete_experience(Client, Input, Options)
 -spec delete_faq(map(), delete_faq_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_faq_errors(), tuple()}.
 delete_faq(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_faq(Client, Input, []).
@@ -3404,12 +3715,7 @@ delete_faq(Client, Input)
 -spec delete_faq(map(), delete_faq_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_faq_errors(), tuple()}.
 delete_faq(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFaq">>, Input, Options).
@@ -3424,12 +3730,7 @@ delete_faq(Client, Input, Options)
 -spec delete_index(map(), delete_index_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_index_errors(), tuple()}.
 delete_index(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_index(Client, Input, []).
@@ -3437,12 +3738,7 @@ delete_index(Client, Input)
 -spec delete_index(map(), delete_index_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_index_errors(), tuple()}.
 delete_index(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIndex">>, Input, Options).
@@ -3472,12 +3768,7 @@ delete_index(Client, Input, Options)
 -spec delete_principal_mapping(map(), delete_principal_mapping_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_principal_mapping_errors(), tuple()}.
 delete_principal_mapping(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_principal_mapping(Client, Input, []).
@@ -3485,12 +3776,7 @@ delete_principal_mapping(Client, Input)
 -spec delete_principal_mapping(map(), delete_principal_mapping_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_principal_mapping_errors(), tuple()}.
 delete_principal_mapping(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePrincipalMapping">>, Input, Options).
@@ -3506,12 +3792,7 @@ delete_principal_mapping(Client, Input, Options)
 -spec delete_query_suggestions_block_list(map(), delete_query_suggestions_block_list_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_query_suggestions_block_list_errors(), tuple()}.
 delete_query_suggestions_block_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_query_suggestions_block_list(Client, Input, []).
@@ -3519,12 +3800,7 @@ delete_query_suggestions_block_list(Client, Input)
 -spec delete_query_suggestions_block_list(map(), delete_query_suggestions_block_list_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_query_suggestions_block_list_errors(), tuple()}.
 delete_query_suggestions_block_list(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteQuerySuggestionsBlockList">>, Input, Options).
@@ -3533,12 +3809,7 @@ delete_query_suggestions_block_list(Client, Input, Options)
 -spec delete_thesaurus(map(), delete_thesaurus_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_thesaurus_errors(), tuple()}.
 delete_thesaurus(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_thesaurus(Client, Input, []).
@@ -3546,12 +3817,7 @@ delete_thesaurus(Client, Input)
 -spec delete_thesaurus(map(), delete_thesaurus_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_thesaurus_errors(), tuple()}.
 delete_thesaurus(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteThesaurus">>, Input, Options).
@@ -3567,11 +3833,7 @@ delete_thesaurus(Client, Input, Options)
 -spec describe_access_control_configuration(map(), describe_access_control_configuration_request()) ->
     {ok, describe_access_control_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_access_control_configuration_errors(), tuple()}.
 describe_access_control_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_access_control_configuration(Client, Input, []).
@@ -3579,11 +3841,7 @@ describe_access_control_configuration(Client, Input)
 -spec describe_access_control_configuration(map(), describe_access_control_configuration_request(), proplists:proplist()) ->
     {ok, describe_access_control_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_access_control_configuration_errors(), tuple()}.
 describe_access_control_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccessControlConfiguration">>, Input, Options).
@@ -3592,11 +3850,7 @@ describe_access_control_configuration(Client, Input, Options)
 -spec describe_data_source(map(), describe_data_source_request()) ->
     {ok, describe_data_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_data_source_errors(), tuple()}.
 describe_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_data_source(Client, Input, []).
@@ -3604,11 +3858,7 @@ describe_data_source(Client, Input)
 -spec describe_data_source(map(), describe_data_source_request(), proplists:proplist()) ->
     {ok, describe_data_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_data_source_errors(), tuple()}.
 describe_data_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDataSource">>, Input, Options).
@@ -3623,11 +3873,7 @@ describe_data_source(Client, Input, Options)
 -spec describe_experience(map(), describe_experience_request()) ->
     {ok, describe_experience_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_experience_errors(), tuple()}.
 describe_experience(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_experience(Client, Input, []).
@@ -3635,11 +3881,7 @@ describe_experience(Client, Input)
 -spec describe_experience(map(), describe_experience_request(), proplists:proplist()) ->
     {ok, describe_experience_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_experience_errors(), tuple()}.
 describe_experience(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeExperience">>, Input, Options).
@@ -3648,11 +3890,7 @@ describe_experience(Client, Input, Options)
 -spec describe_faq(map(), describe_faq_request()) ->
     {ok, describe_faq_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_faq_errors(), tuple()}.
 describe_faq(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_faq(Client, Input, []).
@@ -3660,11 +3898,7 @@ describe_faq(Client, Input)
 -spec describe_faq(map(), describe_faq_request(), proplists:proplist()) ->
     {ok, describe_faq_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_faq_errors(), tuple()}.
 describe_faq(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFaq">>, Input, Options).
@@ -3678,11 +3912,7 @@ describe_faq(Client, Input, Options)
 -spec describe_featured_results_set(map(), describe_featured_results_set_request()) ->
     {ok, describe_featured_results_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_featured_results_set_errors(), tuple()}.
 describe_featured_results_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_featured_results_set(Client, Input, []).
@@ -3690,11 +3920,7 @@ describe_featured_results_set(Client, Input)
 -spec describe_featured_results_set(map(), describe_featured_results_set_request(), proplists:proplist()) ->
     {ok, describe_featured_results_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_featured_results_set_errors(), tuple()}.
 describe_featured_results_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFeaturedResultsSet">>, Input, Options).
@@ -3703,11 +3929,7 @@ describe_featured_results_set(Client, Input, Options)
 -spec describe_index(map(), describe_index_request()) ->
     {ok, describe_index_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_index_errors(), tuple()}.
 describe_index(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_index(Client, Input, []).
@@ -3715,11 +3937,7 @@ describe_index(Client, Input)
 -spec describe_index(map(), describe_index_request(), proplists:proplist()) ->
     {ok, describe_index_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_index_errors(), tuple()}.
 describe_index(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeIndex">>, Input, Options).
@@ -3741,11 +3959,7 @@ describe_index(Client, Input, Options)
 -spec describe_principal_mapping(map(), describe_principal_mapping_request()) ->
     {ok, describe_principal_mapping_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_principal_mapping_errors(), tuple()}.
 describe_principal_mapping(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_principal_mapping(Client, Input, []).
@@ -3753,11 +3967,7 @@ describe_principal_mapping(Client, Input)
 -spec describe_principal_mapping(map(), describe_principal_mapping_request(), proplists:proplist()) ->
     {ok, describe_principal_mapping_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_principal_mapping_errors(), tuple()}.
 describe_principal_mapping(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePrincipalMapping">>, Input, Options).
@@ -3773,11 +3983,7 @@ describe_principal_mapping(Client, Input, Options)
 -spec describe_query_suggestions_block_list(map(), describe_query_suggestions_block_list_request()) ->
     {ok, describe_query_suggestions_block_list_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_query_suggestions_block_list_errors(), tuple()}.
 describe_query_suggestions_block_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_query_suggestions_block_list(Client, Input, []).
@@ -3785,11 +3991,7 @@ describe_query_suggestions_block_list(Client, Input)
 -spec describe_query_suggestions_block_list(map(), describe_query_suggestions_block_list_request(), proplists:proplist()) ->
     {ok, describe_query_suggestions_block_list_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_query_suggestions_block_list_errors(), tuple()}.
 describe_query_suggestions_block_list(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeQuerySuggestionsBlockList">>, Input, Options).
@@ -3804,11 +4006,7 @@ describe_query_suggestions_block_list(Client, Input, Options)
 -spec describe_query_suggestions_config(map(), describe_query_suggestions_config_request()) ->
     {ok, describe_query_suggestions_config_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_query_suggestions_config_errors(), tuple()}.
 describe_query_suggestions_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_query_suggestions_config(Client, Input, []).
@@ -3816,11 +4014,7 @@ describe_query_suggestions_config(Client, Input)
 -spec describe_query_suggestions_config(map(), describe_query_suggestions_config_request(), proplists:proplist()) ->
     {ok, describe_query_suggestions_config_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_query_suggestions_config_errors(), tuple()}.
 describe_query_suggestions_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeQuerySuggestionsConfig">>, Input, Options).
@@ -3829,11 +4023,7 @@ describe_query_suggestions_config(Client, Input, Options)
 -spec describe_thesaurus(map(), describe_thesaurus_request()) ->
     {ok, describe_thesaurus_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_thesaurus_errors(), tuple()}.
 describe_thesaurus(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_thesaurus(Client, Input, []).
@@ -3841,11 +4031,7 @@ describe_thesaurus(Client, Input)
 -spec describe_thesaurus(map(), describe_thesaurus_request(), proplists:proplist()) ->
     {ok, describe_thesaurus_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_thesaurus_errors(), tuple()}.
 describe_thesaurus(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeThesaurus">>, Input, Options).
@@ -3861,11 +4047,7 @@ describe_thesaurus(Client, Input, Options)
 -spec disassociate_entities_from_experience(map(), disassociate_entities_from_experience_request()) ->
     {ok, disassociate_entities_from_experience_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_entities_from_experience_errors(), tuple()}.
 disassociate_entities_from_experience(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_entities_from_experience(Client, Input, []).
@@ -3873,11 +4055,7 @@ disassociate_entities_from_experience(Client, Input)
 -spec disassociate_entities_from_experience(map(), disassociate_entities_from_experience_request(), proplists:proplist()) ->
     {ok, disassociate_entities_from_experience_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_entities_from_experience_errors(), tuple()}.
 disassociate_entities_from_experience(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateEntitiesFromExperience">>, Input, Options).
@@ -3895,11 +4073,7 @@ disassociate_entities_from_experience(Client, Input, Options)
 -spec disassociate_personas_from_entities(map(), disassociate_personas_from_entities_request()) ->
     {ok, disassociate_personas_from_entities_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_personas_from_entities_errors(), tuple()}.
 disassociate_personas_from_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_personas_from_entities(Client, Input, []).
@@ -3907,11 +4081,7 @@ disassociate_personas_from_entities(Client, Input)
 -spec disassociate_personas_from_entities(map(), disassociate_personas_from_entities_request(), proplists:proplist()) ->
     {ok, disassociate_personas_from_entities_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_personas_from_entities_errors(), tuple()}.
 disassociate_personas_from_entities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociatePersonasFromEntities">>, Input, Options).
@@ -3923,13 +4093,7 @@ disassociate_personas_from_entities(Client, Input, Options)
 -spec get_query_suggestions(map(), get_query_suggestions_request()) ->
     {ok, get_query_suggestions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_query_suggestions_errors(), tuple()}.
 get_query_suggestions(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_query_suggestions(Client, Input, []).
@@ -3937,13 +4101,7 @@ get_query_suggestions(Client, Input)
 -spec get_query_suggestions(map(), get_query_suggestions_request(), proplists:proplist()) ->
     {ok, get_query_suggestions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_query_suggestions_errors(), tuple()}.
 get_query_suggestions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetQuerySuggestions">>, Input, Options).
@@ -3955,10 +4113,7 @@ get_query_suggestions(Client, Input, Options)
 -spec get_snapshots(map(), get_snapshots_request()) ->
     {ok, get_snapshots_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_snapshots_errors(), tuple()}.
 get_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_snapshots(Client, Input, []).
@@ -3966,10 +4121,7 @@ get_snapshots(Client, Input)
 -spec get_snapshots(map(), get_snapshots_request(), proplists:proplist()) ->
     {ok, get_snapshots_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_snapshots_errors(), tuple()}.
 get_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSnapshots">>, Input, Options).
@@ -3985,11 +4137,7 @@ get_snapshots(Client, Input, Options)
 -spec list_access_control_configurations(map(), list_access_control_configurations_request()) ->
     {ok, list_access_control_configurations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_access_control_configurations_errors(), tuple()}.
 list_access_control_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_access_control_configurations(Client, Input, []).
@@ -3997,11 +4145,7 @@ list_access_control_configurations(Client, Input)
 -spec list_access_control_configurations(map(), list_access_control_configurations_request(), proplists:proplist()) ->
     {ok, list_access_control_configurations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_access_control_configurations_errors(), tuple()}.
 list_access_control_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAccessControlConfigurations">>, Input, Options).
@@ -4010,12 +4154,7 @@ list_access_control_configurations(Client, Input, Options)
 -spec list_data_source_sync_jobs(map(), list_data_source_sync_jobs_request()) ->
     {ok, list_data_source_sync_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_data_source_sync_jobs_errors(), tuple()}.
 list_data_source_sync_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_data_source_sync_jobs(Client, Input, []).
@@ -4023,12 +4162,7 @@ list_data_source_sync_jobs(Client, Input)
 -spec list_data_source_sync_jobs(map(), list_data_source_sync_jobs_request(), proplists:proplist()) ->
     {ok, list_data_source_sync_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_data_source_sync_jobs_errors(), tuple()}.
 list_data_source_sync_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDataSourceSyncJobs">>, Input, Options).
@@ -4037,11 +4171,7 @@ list_data_source_sync_jobs(Client, Input, Options)
 -spec list_data_sources(map(), list_data_sources_request()) ->
     {ok, list_data_sources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_data_sources_errors(), tuple()}.
 list_data_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_data_sources(Client, Input, []).
@@ -4049,11 +4179,7 @@ list_data_sources(Client, Input)
 -spec list_data_sources(map(), list_data_sources_request(), proplists:proplist()) ->
     {ok, list_data_sources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_data_sources_errors(), tuple()}.
 list_data_sources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDataSources">>, Input, Options).
@@ -4063,11 +4189,7 @@ list_data_sources(Client, Input, Options)
 -spec list_entity_personas(map(), list_entity_personas_request()) ->
     {ok, list_entity_personas_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_entity_personas_errors(), tuple()}.
 list_entity_personas(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_entity_personas(Client, Input, []).
@@ -4075,11 +4197,7 @@ list_entity_personas(Client, Input)
 -spec list_entity_personas(map(), list_entity_personas_request(), proplists:proplist()) ->
     {ok, list_entity_personas_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_entity_personas_errors(), tuple()}.
 list_entity_personas(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEntityPersonas">>, Input, Options).
@@ -4096,11 +4214,7 @@ list_entity_personas(Client, Input, Options)
 -spec list_experience_entities(map(), list_experience_entities_request()) ->
     {ok, list_experience_entities_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_experience_entities_errors(), tuple()}.
 list_experience_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_experience_entities(Client, Input, []).
@@ -4108,11 +4222,7 @@ list_experience_entities(Client, Input)
 -spec list_experience_entities(map(), list_experience_entities_request(), proplists:proplist()) ->
     {ok, list_experience_entities_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_experience_entities_errors(), tuple()}.
 list_experience_entities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListExperienceEntities">>, Input, Options).
@@ -4128,11 +4238,7 @@ list_experience_entities(Client, Input, Options)
 -spec list_experiences(map(), list_experiences_request()) ->
     {ok, list_experiences_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_experiences_errors(), tuple()}.
 list_experiences(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_experiences(Client, Input, []).
@@ -4140,11 +4246,7 @@ list_experiences(Client, Input)
 -spec list_experiences(map(), list_experiences_request(), proplists:proplist()) ->
     {ok, list_experiences_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_experiences_errors(), tuple()}.
 list_experiences(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListExperiences">>, Input, Options).
@@ -4153,11 +4255,7 @@ list_experiences(Client, Input, Options)
 -spec list_faqs(map(), list_faqs_request()) ->
     {ok, list_faqs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_faqs_errors(), tuple()}.
 list_faqs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_faqs(Client, Input, []).
@@ -4165,11 +4263,7 @@ list_faqs(Client, Input)
 -spec list_faqs(map(), list_faqs_request(), proplists:proplist()) ->
     {ok, list_faqs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_faqs_errors(), tuple()}.
 list_faqs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFaqs">>, Input, Options).
@@ -4184,11 +4278,7 @@ list_faqs(Client, Input, Options)
 -spec list_featured_results_sets(map(), list_featured_results_sets_request()) ->
     {ok, list_featured_results_sets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_featured_results_sets_errors(), tuple()}.
 list_featured_results_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_featured_results_sets(Client, Input, []).
@@ -4196,11 +4286,7 @@ list_featured_results_sets(Client, Input)
 -spec list_featured_results_sets(map(), list_featured_results_sets_request(), proplists:proplist()) ->
     {ok, list_featured_results_sets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_featured_results_sets_errors(), tuple()}.
 list_featured_results_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFeaturedResultsSets">>, Input, Options).
@@ -4214,12 +4300,7 @@ list_featured_results_sets(Client, Input, Options)
 -spec list_groups_older_than_ordering_id(map(), list_groups_older_than_ordering_id_request()) ->
     {ok, list_groups_older_than_ordering_id_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_groups_older_than_ordering_id_errors(), tuple()}.
 list_groups_older_than_ordering_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_groups_older_than_ordering_id(Client, Input, []).
@@ -4227,12 +4308,7 @@ list_groups_older_than_ordering_id(Client, Input)
 -spec list_groups_older_than_ordering_id(map(), list_groups_older_than_ordering_id_request(), proplists:proplist()) ->
     {ok, list_groups_older_than_ordering_id_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_groups_older_than_ordering_id_errors(), tuple()}.
 list_groups_older_than_ordering_id(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGroupsOlderThanOrderingId">>, Input, Options).
@@ -4241,10 +4317,7 @@ list_groups_older_than_ordering_id(Client, Input, Options)
 -spec list_indices(map(), list_indices_request()) ->
     {ok, list_indices_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_indices_errors(), tuple()}.
 list_indices(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_indices(Client, Input, []).
@@ -4252,10 +4325,7 @@ list_indices(Client, Input)
 -spec list_indices(map(), list_indices_request(), proplists:proplist()) ->
     {ok, list_indices_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_indices_errors(), tuple()}.
 list_indices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListIndices">>, Input, Options).
@@ -4272,11 +4342,7 @@ list_indices(Client, Input, Options)
 -spec list_query_suggestions_block_lists(map(), list_query_suggestions_block_lists_request()) ->
     {ok, list_query_suggestions_block_lists_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_query_suggestions_block_lists_errors(), tuple()}.
 list_query_suggestions_block_lists(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_query_suggestions_block_lists(Client, Input, []).
@@ -4284,11 +4350,7 @@ list_query_suggestions_block_lists(Client, Input)
 -spec list_query_suggestions_block_lists(map(), list_query_suggestions_block_lists_request(), proplists:proplist()) ->
     {ok, list_query_suggestions_block_lists_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_query_suggestions_block_lists_errors(), tuple()}.
 list_query_suggestions_block_lists(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListQuerySuggestionsBlockLists">>, Input, Options).
@@ -4300,11 +4362,7 @@ list_query_suggestions_block_lists(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -4312,11 +4370,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -4325,11 +4379,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec list_thesauri(map(), list_thesauri_request()) ->
     {ok, list_thesauri_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_thesauri_errors(), tuple()}.
 list_thesauri(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_thesauri(Client, Input, []).
@@ -4337,11 +4387,7 @@ list_thesauri(Client, Input)
 -spec list_thesauri(map(), list_thesauri_request(), proplists:proplist()) ->
     {ok, list_thesauri_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_thesauri_errors(), tuple()}.
 list_thesauri(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListThesauri">>, Input, Options).
@@ -4373,13 +4419,7 @@ list_thesauri(Client, Input, Options)
 -spec put_principal_mapping(map(), put_principal_mapping_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_principal_mapping_errors(), tuple()}.
 put_principal_mapping(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_principal_mapping(Client, Input, []).
@@ -4387,13 +4427,7 @@ put_principal_mapping(Client, Input)
 -spec put_principal_mapping(map(), put_principal_mapping_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_principal_mapping_errors(), tuple()}.
 put_principal_mapping(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutPrincipalMapping">>, Input, Options).
@@ -4441,13 +4475,7 @@ put_principal_mapping(Client, Input, Options)
 -spec query(map(), query_request()) ->
     {ok, query_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, query_errors(), tuple()}.
 query(Client, Input)
   when is_map(Client), is_map(Input) ->
     query(Client, Input, []).
@@ -4455,13 +4483,7 @@ query(Client, Input)
 -spec query(map(), query_request(), proplists:proplist()) ->
     {ok, query_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, query_errors(), tuple()}.
 query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Query">>, Input, Options).
@@ -4515,13 +4537,7 @@ query(Client, Input, Options)
 -spec retrieve(map(), retrieve_request()) ->
     {ok, retrieve_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, retrieve_errors(), tuple()}.
 retrieve(Client, Input)
   when is_map(Client), is_map(Input) ->
     retrieve(Client, Input, []).
@@ -4529,13 +4545,7 @@ retrieve(Client, Input)
 -spec retrieve(map(), retrieve_request(), proplists:proplist()) ->
     {ok, retrieve_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, retrieve_errors(), tuple()}.
 retrieve(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Retrieve">>, Input, Options).
@@ -4554,13 +4564,7 @@ retrieve(Client, Input, Options)
 -spec start_data_source_sync_job(map(), start_data_source_sync_job_request()) ->
     {ok, start_data_source_sync_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_data_source_sync_job_errors(), tuple()}.
 start_data_source_sync_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_data_source_sync_job(Client, Input, []).
@@ -4568,13 +4572,7 @@ start_data_source_sync_job(Client, Input)
 -spec start_data_source_sync_job(map(), start_data_source_sync_job_request(), proplists:proplist()) ->
     {ok, start_data_source_sync_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_data_source_sync_job_errors(), tuple()}.
 start_data_source_sync_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDataSourceSyncJob">>, Input, Options).
@@ -4586,11 +4584,7 @@ start_data_source_sync_job(Client, Input, Options)
 -spec stop_data_source_sync_job(map(), stop_data_source_sync_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_data_source_sync_job_errors(), tuple()}.
 stop_data_source_sync_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_data_source_sync_job(Client, Input, []).
@@ -4598,11 +4592,7 @@ stop_data_source_sync_job(Client, Input)
 -spec stop_data_source_sync_job(map(), stop_data_source_sync_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_data_source_sync_job_errors(), tuple()}.
 stop_data_source_sync_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopDataSourceSyncJob">>, Input, Options).
@@ -4615,12 +4605,7 @@ stop_data_source_sync_job(Client, Input, Options)
 -spec submit_feedback(map(), submit_feedback_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, submit_feedback_errors(), tuple()}.
 submit_feedback(Client, Input)
   when is_map(Client), is_map(Input) ->
     submit_feedback(Client, Input, []).
@@ -4628,12 +4613,7 @@ submit_feedback(Client, Input)
 -spec submit_feedback(map(), submit_feedback_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, submit_feedback_errors(), tuple()}.
 submit_feedback(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SubmitFeedback">>, Input, Options).
@@ -4646,11 +4626,7 @@ submit_feedback(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -4658,11 +4634,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -4671,11 +4643,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -4683,11 +4651,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -4733,13 +4697,7 @@ untag_resource(Client, Input, Options)
 -spec update_access_control_configuration(map(), update_access_control_configuration_request()) ->
     {ok, update_access_control_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_access_control_configuration_errors(), tuple()}.
 update_access_control_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_access_control_configuration(Client, Input, []).
@@ -4747,13 +4705,7 @@ update_access_control_configuration(Client, Input)
 -spec update_access_control_configuration(map(), update_access_control_configuration_request(), proplists:proplist()) ->
     {ok, update_access_control_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_access_control_configuration_errors(), tuple()}.
 update_access_control_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAccessControlConfiguration">>, Input, Options).
@@ -4762,12 +4714,7 @@ update_access_control_configuration(Client, Input, Options)
 -spec update_data_source(map(), update_data_source_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_data_source_errors(), tuple()}.
 update_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_data_source(Client, Input, []).
@@ -4775,12 +4722,7 @@ update_data_source(Client, Input)
 -spec update_data_source(map(), update_data_source_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_data_source_errors(), tuple()}.
 update_data_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDataSource">>, Input, Options).
@@ -4794,12 +4736,7 @@ update_data_source(Client, Input, Options)
 -spec update_experience(map(), update_experience_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_experience_errors(), tuple()}.
 update_experience(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_experience(Client, Input, []).
@@ -4807,12 +4744,7 @@ update_experience(Client, Input)
 -spec update_experience(map(), update_experience_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_experience_errors(), tuple()}.
 update_experience(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateExperience">>, Input, Options).
@@ -4829,12 +4761,7 @@ update_experience(Client, Input, Options)
 -spec update_featured_results_set(map(), update_featured_results_set_request()) ->
     {ok, update_featured_results_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, featured_results_conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_featured_results_set_errors(), tuple()}.
 update_featured_results_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_featured_results_set(Client, Input, []).
@@ -4842,12 +4769,7 @@ update_featured_results_set(Client, Input)
 -spec update_featured_results_set(map(), update_featured_results_set_request(), proplists:proplist()) ->
     {ok, update_featured_results_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, featured_results_conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_featured_results_set_errors(), tuple()}.
 update_featured_results_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFeaturedResultsSet">>, Input, Options).
@@ -4856,13 +4778,7 @@ update_featured_results_set(Client, Input, Options)
 -spec update_index(map(), update_index_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_index_errors(), tuple()}.
 update_index(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_index(Client, Input, []).
@@ -4870,13 +4786,7 @@ update_index(Client, Input)
 -spec update_index(map(), update_index_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_index_errors(), tuple()}.
 update_index(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateIndex">>, Input, Options).
@@ -4899,12 +4809,7 @@ update_index(Client, Input, Options)
 -spec update_query_suggestions_block_list(map(), update_query_suggestions_block_list_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_query_suggestions_block_list_errors(), tuple()}.
 update_query_suggestions_block_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_query_suggestions_block_list(Client, Input, []).
@@ -4912,12 +4817,7 @@ update_query_suggestions_block_list(Client, Input)
 -spec update_query_suggestions_block_list(map(), update_query_suggestions_block_list_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_query_suggestions_block_list_errors(), tuple()}.
 update_query_suggestions_block_list(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateQuerySuggestionsBlockList">>, Input, Options).
@@ -4941,12 +4841,7 @@ update_query_suggestions_block_list(Client, Input, Options)
 -spec update_query_suggestions_config(map(), update_query_suggestions_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_query_suggestions_config_errors(), tuple()}.
 update_query_suggestions_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_query_suggestions_config(Client, Input, []).
@@ -4954,12 +4849,7 @@ update_query_suggestions_config(Client, Input)
 -spec update_query_suggestions_config(map(), update_query_suggestions_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_query_suggestions_config_errors(), tuple()}.
 update_query_suggestions_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateQuerySuggestionsConfig">>, Input, Options).
@@ -4968,12 +4858,7 @@ update_query_suggestions_config(Client, Input, Options)
 -spec update_thesaurus(map(), update_thesaurus_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_thesaurus_errors(), tuple()}.
 update_thesaurus(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_thesaurus(Client, Input, []).
@@ -4981,12 +4866,7 @@ update_thesaurus(Client, Input)
 -spec update_thesaurus(map(), update_thesaurus_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_thesaurus_errors(), tuple()}.
 update_thesaurus(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateThesaurus">>, Input, Options).

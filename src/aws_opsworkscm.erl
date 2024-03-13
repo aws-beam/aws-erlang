@@ -536,6 +536,95 @@
 %% }
 -type delete_server_request() :: #{binary() => any()}.
 
+-type associate_node_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type create_backup_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type create_server_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type delete_backup_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type delete_server_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type describe_backups_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception().
+
+-type describe_events_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception().
+
+-type describe_node_association_status_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_servers_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception().
+
+-type disassociate_node_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type export_server_engine_attribute_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type restore_server_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type start_maintenance_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type update_server_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type update_server_engine_attributes_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
 
 %%====================================================================
 %% API
@@ -571,9 +660,7 @@
 -spec associate_node(map(), associate_node_request()) ->
     {ok, associate_node_response(), tuple()} |
     {error, any()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_node_errors(), tuple()}.
 associate_node(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_node(Client, Input, []).
@@ -581,9 +668,7 @@ associate_node(Client, Input)
 -spec associate_node(map(), associate_node_request(), proplists:proplist()) ->
     {ok, associate_node_response(), tuple()} |
     {error, any()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_node_errors(), tuple()}.
 associate_node(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateNode">>, Input, Options).
@@ -611,10 +696,7 @@ associate_node(Client, Input, Options)
 -spec create_backup(map(), create_backup_request()) ->
     {ok, create_backup_response(), tuple()} |
     {error, any()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_backup_errors(), tuple()}.
 create_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_backup(Client, Input, []).
@@ -622,10 +704,7 @@ create_backup(Client, Input)
 -spec create_backup(map(), create_backup_request(), proplists:proplist()) ->
     {ok, create_backup_response(), tuple()} |
     {error, any()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_backup_errors(), tuple()}.
 create_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBackup">>, Input, Options).
@@ -671,10 +750,7 @@ create_backup(Client, Input, Options)
 -spec create_server(map(), create_server_request()) ->
     {ok, create_server_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_server_errors(), tuple()}.
 create_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_server(Client, Input, []).
@@ -682,10 +758,7 @@ create_server(Client, Input)
 -spec create_server(map(), create_server_request(), proplists:proplist()) ->
     {ok, create_server_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_server_errors(), tuple()}.
 create_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateServer">>, Input, Options).
@@ -705,9 +778,7 @@ create_server(Client, Input, Options)
 -spec delete_backup(map(), delete_backup_request()) ->
     {ok, delete_backup_response(), tuple()} |
     {error, any()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_backup_errors(), tuple()}.
 delete_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_backup(Client, Input, []).
@@ -715,9 +786,7 @@ delete_backup(Client, Input)
 -spec delete_backup(map(), delete_backup_request(), proplists:proplist()) ->
     {ok, delete_backup_response(), tuple()} |
     {error, any()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_backup_errors(), tuple()}.
 delete_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBackup">>, Input, Options).
@@ -743,9 +812,7 @@ delete_backup(Client, Input, Options)
 -spec delete_server(map(), delete_server_request()) ->
     {ok, delete_server_response(), tuple()} |
     {error, any()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_server_errors(), tuple()}.
 delete_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_server(Client, Input, []).
@@ -753,9 +820,7 @@ delete_server(Client, Input)
 -spec delete_server(map(), delete_server_request(), proplists:proplist()) ->
     {ok, delete_server_response(), tuple()} |
     {error, any()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_server_errors(), tuple()}.
 delete_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteServer">>, Input, Options).
@@ -794,9 +859,7 @@ describe_account_attributes(Client, Input, Options)
 -spec describe_backups(map(), describe_backups_request()) ->
     {ok, describe_backups_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_backups_errors(), tuple()}.
 describe_backups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_backups(Client, Input, []).
@@ -804,9 +867,7 @@ describe_backups(Client, Input)
 -spec describe_backups(map(), describe_backups_request(), proplists:proplist()) ->
     {ok, describe_backups_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_backups_errors(), tuple()}.
 describe_backups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBackups">>, Input, Options).
@@ -825,9 +886,7 @@ describe_backups(Client, Input, Options)
 -spec describe_events(map(), describe_events_request()) ->
     {ok, describe_events_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_events_errors(), tuple()}.
 describe_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events(Client, Input, []).
@@ -835,9 +894,7 @@ describe_events(Client, Input)
 -spec describe_events(map(), describe_events_request(), proplists:proplist()) ->
     {ok, describe_events_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_events_errors(), tuple()}.
 describe_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEvents">>, Input, Options).
@@ -853,8 +910,7 @@ describe_events(Client, Input, Options)
 -spec describe_node_association_status(map(), describe_node_association_status_request()) ->
     {ok, describe_node_association_status_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_node_association_status_errors(), tuple()}.
 describe_node_association_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_node_association_status(Client, Input, []).
@@ -862,8 +918,7 @@ describe_node_association_status(Client, Input)
 -spec describe_node_association_status(map(), describe_node_association_status_request(), proplists:proplist()) ->
     {ok, describe_node_association_status_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_node_association_status_errors(), tuple()}.
 describe_node_association_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeNodeAssociationStatus">>, Input, Options).
@@ -884,9 +939,7 @@ describe_node_association_status(Client, Input, Options)
 -spec describe_servers(map(), describe_servers_request()) ->
     {ok, describe_servers_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_servers_errors(), tuple()}.
 describe_servers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_servers(Client, Input, []).
@@ -894,9 +947,7 @@ describe_servers(Client, Input)
 -spec describe_servers(map(), describe_servers_request(), proplists:proplist()) ->
     {ok, describe_servers_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_servers_errors(), tuple()}.
 describe_servers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeServers">>, Input, Options).
@@ -919,9 +970,7 @@ describe_servers(Client, Input, Options)
 -spec disassociate_node(map(), disassociate_node_request()) ->
     {ok, disassociate_node_response(), tuple()} |
     {error, any()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_node_errors(), tuple()}.
 disassociate_node(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_node(Client, Input, []).
@@ -929,9 +978,7 @@ disassociate_node(Client, Input)
 -spec disassociate_node(map(), disassociate_node_request(), proplists:proplist()) ->
     {ok, disassociate_node_response(), tuple()} |
     {error, any()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_node_errors(), tuple()}.
 disassociate_node(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateNode">>, Input, Options).
@@ -954,9 +1001,7 @@ disassociate_node(Client, Input, Options)
 -spec export_server_engine_attribute(map(), export_server_engine_attribute_request()) ->
     {ok, export_server_engine_attribute_response(), tuple()} |
     {error, any()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, export_server_engine_attribute_errors(), tuple()}.
 export_server_engine_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_server_engine_attribute(Client, Input, []).
@@ -964,9 +1009,7 @@ export_server_engine_attribute(Client, Input)
 -spec export_server_engine_attribute(map(), export_server_engine_attribute_request(), proplists:proplist()) ->
     {ok, export_server_engine_attribute_response(), tuple()} |
     {error, any()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, export_server_engine_attribute_errors(), tuple()}.
 export_server_engine_attribute(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportServerEngineAttribute">>, Input, Options).
@@ -977,8 +1020,7 @@ export_server_engine_attribute(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -986,8 +1028,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -1016,9 +1057,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec restore_server(map(), restore_server_request()) ->
     {ok, restore_server_response(), tuple()} |
     {error, any()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, restore_server_errors(), tuple()}.
 restore_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_server(Client, Input, []).
@@ -1026,9 +1065,7 @@ restore_server(Client, Input)
 -spec restore_server(map(), restore_server_request(), proplists:proplist()) ->
     {ok, restore_server_response(), tuple()} |
     {error, any()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, restore_server_errors(), tuple()}.
 restore_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreServer">>, Input, Options).
@@ -1050,9 +1087,7 @@ restore_server(Client, Input, Options)
 -spec start_maintenance(map(), start_maintenance_request()) ->
     {ok, start_maintenance_response(), tuple()} |
     {error, any()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_maintenance_errors(), tuple()}.
 start_maintenance(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_maintenance(Client, Input, []).
@@ -1060,9 +1095,7 @@ start_maintenance(Client, Input)
 -spec start_maintenance(map(), start_maintenance_request(), proplists:proplist()) ->
     {ok, start_maintenance_response(), tuple()} |
     {error, any()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_maintenance_errors(), tuple()}.
 start_maintenance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMaintenance">>, Input, Options).
@@ -1072,9 +1105,7 @@ start_maintenance(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -1082,9 +1113,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -1093,9 +1122,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -1103,9 +1130,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -1117,9 +1142,7 @@ untag_resource(Client, Input, Options)
 -spec update_server(map(), update_server_request()) ->
     {ok, update_server_response(), tuple()} |
     {error, any()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_server_errors(), tuple()}.
 update_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_server(Client, Input, []).
@@ -1127,9 +1150,7 @@ update_server(Client, Input)
 -spec update_server(map(), update_server_request(), proplists:proplist()) ->
     {ok, update_server_response(), tuple()} |
     {error, any()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_server_errors(), tuple()}.
 update_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateServer">>, Input, Options).
@@ -1155,9 +1176,7 @@ update_server(Client, Input, Options)
 -spec update_server_engine_attributes(map(), update_server_engine_attributes_request()) ->
     {ok, update_server_engine_attributes_response(), tuple()} |
     {error, any()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_server_engine_attributes_errors(), tuple()}.
 update_server_engine_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_server_engine_attributes(Client, Input, []).
@@ -1165,9 +1184,7 @@ update_server_engine_attributes(Client, Input)
 -spec update_server_engine_attributes(map(), update_server_engine_attributes_request(), proplists:proplist()) ->
     {ok, update_server_engine_attributes_response(), tuple()} |
     {error, any()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_server_engine_attributes_errors(), tuple()}.
 update_server_engine_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateServerEngineAttributes">>, Input, Options).

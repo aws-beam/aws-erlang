@@ -187,11 +187,13 @@
 %% }
 -type list_workflow_executions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% cancel_lifecycle_execution_response() :: #{
 %%   <<"lifecycleExecutionId">> => string()
 %% }
 -type cancel_lifecycle_execution_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_workflow_build_versions_response() :: #{
@@ -200,6 +202,7 @@
 %% }
 -type list_workflow_build_versions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_distribution_configurations_request() :: #{
 %%   <<"filters">> => list(filter()()),
@@ -207,6 +210,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_distribution_configurations_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_workflow_request() :: #{
@@ -223,11 +227,13 @@
 %% }
 -type create_workflow_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_image_policy_request() :: #{
 %%   <<"imageArn">> := string()
 %% }
 -type get_image_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_resource_state_update_request() :: #{
@@ -241,6 +247,7 @@
 %% }
 -type start_resource_state_update_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_image_pipeline_images_request() :: #{
 %%   <<"filters">> => list(filter()()),
@@ -250,6 +257,7 @@
 %% }
 -type list_image_pipeline_images_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_container_recipe_policy_response() :: #{
 %%   <<"containerRecipeArn">> => string(),
@@ -257,12 +265,14 @@
 %% }
 -type put_container_recipe_policy_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% lifecycle_policy_detail_exclusion_rules() :: #{
 %%   <<"amis">> => lifecycle_policy_detail_exclusion_rules_amis(),
 %%   <<"tagMap">> => map()
 %% }
 -type lifecycle_policy_detail_exclusion_rules() :: #{binary() => any()}.
+
 
 %% Example:
 %% import_vm_image_request() :: #{
@@ -277,11 +287,13 @@
 %% }
 -type import_vm_image_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% component_parameter_detail() :: #{
@@ -292,12 +304,14 @@
 %% }
 -type component_parameter_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% image_scan_state() :: #{
 %%   <<"reason">> => string(),
 %%   <<"status">> => list(any())
 %% }
 -type image_scan_state() :: #{binary() => any()}.
+
 
 %% Example:
 %% lifecycle_policy_detail_action_include_resources() :: #{
@@ -306,6 +320,7 @@
 %%   <<"snapshots">> => boolean()
 %% }
 -type lifecycle_policy_detail_action_include_resources() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_workflow_step_executions_response() :: #{
@@ -319,6 +334,7 @@
 %% }
 -type list_workflow_step_executions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_image_packages_request() :: #{
 %%   <<"imageBuildVersionArn">> := string(),
@@ -327,12 +343,14 @@
 %% }
 -type list_image_packages_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% container() :: #{
 %%   <<"imageUris">> => list(string()()),
 %%   <<"region">> => string()
 %% }
 -type container() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_distribution_configuration_response() :: #{
@@ -341,6 +359,7 @@
 %%   <<"requestId">> => string()
 %% }
 -type update_distribution_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% infrastructure_configuration_summary() :: #{
@@ -356,6 +375,7 @@
 %% }
 -type infrastructure_configuration_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_image_recipes_request() :: #{
 %%   <<"filters">> => list(filter()()),
@@ -364,6 +384,7 @@
 %%   <<"owner">> => list(any())
 %% }
 -type list_image_recipes_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% workflow_version() :: #{
@@ -377,6 +398,7 @@
 %% }
 -type workflow_version() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_image_pipelines_response() :: #{
 %%   <<"imagePipelineList">> => list(image_pipeline()()),
@@ -384,6 +406,7 @@
 %%   <<"requestId">> => string()
 %% }
 -type list_image_pipelines_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_image_response() :: #{
@@ -393,6 +416,7 @@
 %% }
 -type create_image_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_container_recipe_policy_request() :: #{
 %%   <<"containerRecipeArn">> := string(),
@@ -400,12 +424,14 @@
 %% }
 -type put_container_recipe_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_waiting_workflow_steps_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"steps">> => list(workflow_step_execution()())
 %% }
 -type list_waiting_workflow_steps_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_lifecycle_policy_request() :: #{
@@ -420,11 +446,13 @@
 %% }
 -type update_lifecycle_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% remediation() :: #{
 %%   <<"recommendation">> => remediation_recommendation()
 %% }
 -type remediation() :: #{binary() => any()}.
+
 
 %% Example:
 %% image_scanning_configuration() :: #{
@@ -432,6 +460,7 @@
 %%   <<"imageScanningEnabled">> => boolean()
 %% }
 -type image_scanning_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_image_pipeline_execution_response() :: #{
@@ -441,12 +470,14 @@
 %% }
 -type start_image_pipeline_execution_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_image_recipe_policy_response() :: #{
 %%   <<"imageRecipeArn">> => string(),
 %%   <<"requestId">> => string()
 %% }
 -type put_image_recipe_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_workflow_step_execution_response() :: #{
@@ -469,15 +500,18 @@
 %%   <<"workflowExecutionId">> => string()
 %% }
 -type get_workflow_step_execution_response() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% invalid_version_number_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_version_number_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_lifecycle_execution_resources_response() :: #{
@@ -488,11 +522,13 @@
 %% }
 -type list_lifecycle_execution_resources_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_workflow_request() :: #{
 %%   <<"workflowBuildVersionArn">> := string()
 %% }
 -type delete_workflow_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_image_scan_finding_aggregations_request() :: #{
@@ -500,6 +536,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_image_scan_finding_aggregations_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% image_pipeline() :: #{
@@ -526,11 +563,13 @@
 %% }
 -type image_pipeline() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_in_use_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_in_use_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% workflow_parameter_detail() :: #{
@@ -541,11 +580,13 @@
 %% }
 -type workflow_parameter_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% forbidden_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type forbidden_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% instance_block_device_mapping() :: #{
@@ -556,11 +597,13 @@
 %% }
 -type instance_block_device_mapping() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_lifecycle_policy_response() :: #{
 %%   <<"lifecyclePolicyArn">> => string()
 %% }
 -type update_lifecycle_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% ebs_instance_block_device_specification() :: #{
@@ -575,6 +618,7 @@
 %% }
 -type ebs_instance_block_device_specification() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_container_recipe_response() :: #{
 %%   <<"containerRecipe">> => container_recipe(),
@@ -582,11 +626,13 @@
 %% }
 -type get_container_recipe_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_lifecycle_execution_request() :: #{
 %%   <<"lifecycleExecutionId">> := string()
 %% }
 -type get_lifecycle_execution_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% vulnerability_id_aggregation() :: #{
@@ -594,6 +640,7 @@
 %%   <<"vulnerabilityId">> => string()
 %% }
 -type vulnerability_id_aggregation() :: #{binary() => any()}.
+
 
 %% Example:
 %% ami() :: #{
@@ -606,11 +653,13 @@
 %% }
 -type ami() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_state() :: #{
 %%   <<"status">> => list(any())
 %% }
 -type resource_state() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_image_response() :: #{
@@ -619,12 +668,14 @@
 %% }
 -type get_image_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_image_recipe_policy_response() :: #{
 %%   <<"policy">> => string(),
 %%   <<"requestId">> => string()
 %% }
 -type get_image_recipe_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_lifecycle_policies_request() :: #{
@@ -634,12 +685,14 @@
 %% }
 -type list_lifecycle_policies_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% lifecycle_execution_resource_action() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"reason">> => string()
 %% }
 -type lifecycle_execution_resource_action() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_image_pipeline_response() :: #{
@@ -648,6 +701,7 @@
 %%   <<"requestId">> => string()
 %% }
 -type create_image_pipeline_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_infrastructure_configuration_request() :: #{
@@ -668,11 +722,13 @@
 %% }
 -type create_infrastructure_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_component_request() :: #{
 %%   <<"componentBuildVersionArn">> := string()
 %% }
 -type delete_component_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% send_workflow_step_action_request() :: #{
@@ -684,6 +740,7 @@
 %% }
 -type send_workflow_step_action_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% ecr_configuration() :: #{
 %%   <<"containerTags">> => list(string()()),
@@ -691,11 +748,13 @@
 %% }
 -type ecr_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_lifecycle_execution_response() :: #{
 %%   <<"lifecycleExecution">> => lifecycle_execution()
 %% }
 -type get_lifecycle_execution_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_component_response() :: #{
@@ -704,12 +763,14 @@
 %% }
 -type get_component_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% image_scan_findings_filter() :: #{
 %%   <<"name">> => string(),
 %%   <<"values">> => list(string()())
 %% }
 -type image_scan_findings_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_image_recipe_request() :: #{
@@ -726,11 +787,13 @@
 %% }
 -type create_image_recipe_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_container_recipe_policy_request() :: #{
 %%   <<"containerRecipeArn">> := string()
 %% }
 -type get_container_recipe_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_container_recipes_response() :: #{
@@ -740,12 +803,14 @@
 %% }
 -type list_container_recipes_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_infrastructure_configuration_response() :: #{
 %%   <<"infrastructureConfiguration">> => infrastructure_configuration(),
 %%   <<"requestId">> => string()
 %% }
 -type get_infrastructure_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% cancel_image_creation_request() :: #{
@@ -754,11 +819,13 @@
 %% }
 -type cancel_image_creation_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_component_build_versions_request() :: #{
@@ -767,6 +834,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_component_build_versions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% import_component_request() :: #{
@@ -785,11 +853,13 @@
 %% }
 -type import_component_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% call_rate_limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type call_rate_limit_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% component_summary() :: #{
@@ -810,12 +880,14 @@
 %% }
 -type component_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% target_container_repository() :: #{
 %%   <<"repositoryName">> => string(),
 %%   <<"service">> => list(any())
 %% }
 -type target_container_repository() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_distribution_configuration_request() :: #{
@@ -827,12 +899,14 @@
 %% }
 -type create_distribution_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_container_recipe_response() :: #{
 %%   <<"containerRecipeArn">> => string(),
 %%   <<"requestId">> => string()
 %% }
 -type delete_container_recipe_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% workflow_execution_metadata() :: #{
@@ -851,6 +925,7 @@
 %% }
 -type workflow_execution_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% component_state() :: #{
 %%   <<"reason">> => string(),
@@ -858,11 +933,13 @@
 %% }
 -type component_state() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_workflow_request() :: #{
 %%   <<"workflowBuildVersionArn">> := string()
 %% }
 -type get_workflow_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% severity_counts() :: #{
@@ -873,17 +950,20 @@
 %% }
 -type severity_counts() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_parameter_combination_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_parameter_combination_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_container_recipe_request() :: #{
 %%   <<"containerRecipeArn">> := string()
 %% }
 -type delete_container_recipe_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% image_scan_finding_aggregation() :: #{
@@ -893,6 +973,7 @@
 %%   <<"vulnerabilityIdAggregation">> => vulnerability_id_aggregation()
 %% }
 -type image_scan_finding_aggregation() :: #{binary() => any()}.
+
 
 %% Example:
 %% image_version() :: #{
@@ -909,11 +990,13 @@
 %% }
 -type image_version() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_workflow_step_execution_request() :: #{
 %%   <<"stepExecutionId">> := string()
 %% }
 -type get_workflow_step_execution_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_resource_state_update_response() :: #{
@@ -922,11 +1005,13 @@
 %% }
 -type start_resource_state_update_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_image_pipeline_request() :: #{
 %%   <<"imagePipelineArn">> := string()
 %% }
 -type delete_image_pipeline_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% workflow_parameter() :: #{
@@ -935,11 +1020,13 @@
 %% }
 -type workflow_parameter() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_image_request() :: #{
 %%   <<"imageBuildVersionArn">> := string()
 %% }
 -type get_image_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% workflow_step_execution() :: #{
@@ -953,6 +1040,7 @@
 %% }
 -type workflow_step_execution() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_distribution_configurations_response() :: #{
 %%   <<"distributionConfigurationSummaryList">> => list(distribution_configuration_summary()()),
@@ -961,12 +1049,14 @@
 %% }
 -type list_distribution_configurations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_image_policy_response() :: #{
 %%   <<"policy">> => string(),
 %%   <<"requestId">> => string()
 %% }
 -type get_image_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_component_response() :: #{
@@ -976,17 +1066,20 @@
 %% }
 -type create_component_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_workflow_response() :: #{
 %%   <<"workflowBuildVersionArn">> => string()
 %% }
 -type delete_workflow_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_lifecycle_policy_response() :: #{
 %%   <<"lifecyclePolicyArn">> => string()
 %% }
 -type delete_lifecycle_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% lifecycle_execution_resource() :: #{
@@ -1002,11 +1095,13 @@
 %% }
 -type lifecycle_execution_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_distribution_configuration_request() :: #{
 %%   <<"distributionConfigurationArn">> := string()
 %% }
 -type delete_distribution_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_image_recipe_request() :: #{
@@ -1014,11 +1109,13 @@
 %% }
 -type get_image_recipe_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% systems_manager_agent() :: #{
 %%   <<"uninstallAfterBuild">> => boolean()
 %% }
 -type systems_manager_agent() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_image_recipe_response() :: #{
@@ -1028,6 +1125,7 @@
 %% }
 -type create_image_recipe_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% lifecycle_policy_detail() :: #{
 %%   <<"action">> => lifecycle_policy_detail_action(),
@@ -1036,11 +1134,13 @@
 %% }
 -type lifecycle_policy_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_image_recipe_request() :: #{
 %%   <<"imageRecipeArn">> := string()
 %% }
 -type delete_image_recipe_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_export_configuration() :: #{
@@ -1051,17 +1151,20 @@
 %% }
 -type s3_export_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% client_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type client_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_infrastructure_configuration_request() :: #{
@@ -1081,6 +1184,7 @@
 %% }
 -type update_infrastructure_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_components_request() :: #{
 %%   <<"byName">> => boolean(),
@@ -1091,6 +1195,7 @@
 %% }
 -type list_components_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_workflow_executions_request() :: #{
 %%   <<"imageBuildVersionArn">> := string(),
@@ -1098,6 +1203,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_workflow_executions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% lifecycle_policy_summary() :: #{
@@ -1114,12 +1220,14 @@
 %% }
 -type lifecycle_policy_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_logs() :: #{
 %%   <<"s3BucketName">> => string(),
 %%   <<"s3KeyPrefix">> => string()
 %% }
 -type s3_logs() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_container_recipe_request() :: #{
@@ -1142,6 +1250,7 @@
 %% }
 -type create_container_recipe_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_component_policy_request() :: #{
 %%   <<"componentArn">> := string(),
@@ -1149,11 +1258,13 @@
 %% }
 -type put_component_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_request_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_request_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_image_request() :: #{
@@ -1171,6 +1282,7 @@
 %% }
 -type create_image_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_image_pipeline_response() :: #{
 %%   <<"imagePipeline">> => image_pipeline(),
@@ -1178,11 +1290,13 @@
 %% }
 -type get_image_pipeline_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_lifecycle_policies_response() :: #{
@@ -1190,6 +1304,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_lifecycle_policies_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_images_request() :: #{
@@ -1201,6 +1316,7 @@
 %%   <<"owner">> => list(any())
 %% }
 -type list_images_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% component() :: #{
@@ -1225,6 +1341,7 @@
 %% }
 -type component() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_state_update_include_resources() :: #{
 %%   <<"amis">> => boolean(),
@@ -1232,6 +1349,7 @@
 %%   <<"snapshots">> => boolean()
 %% }
 -type resource_state_update_include_resources() :: #{binary() => any()}.
+
 
 %% Example:
 %% send_workflow_step_action_response() :: #{
@@ -1241,17 +1359,20 @@
 %% }
 -type send_workflow_step_action_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% idempotent_parameter_mismatch_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type idempotent_parameter_mismatch_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_parameter_value_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_parameter_value_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_image_recipe_policy_request() :: #{
@@ -1260,12 +1381,14 @@
 %% }
 -type put_image_recipe_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_component_policy_response() :: #{
 %%   <<"policy">> => string(),
 %%   <<"requestId">> => string()
 %% }
 -type get_component_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_workflows_request() :: #{
@@ -1277,11 +1400,13 @@
 %% }
 -type list_workflows_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_container_recipe_request() :: #{
 %%   <<"containerRecipeArn">> := string()
 %% }
 -type get_container_recipe_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% distribution_configuration() :: #{
@@ -1296,12 +1421,14 @@
 %% }
 -type distribution_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% lifecycle_execution_resource_state() :: #{
 %%   <<"reason">> => string(),
 %%   <<"status">> => list(any())
 %% }
 -type lifecycle_execution_resource_state() :: #{binary() => any()}.
+
 
 %% Example:
 %% workflow() :: #{
@@ -1321,6 +1448,7 @@
 %% }
 -type workflow() :: #{binary() => any()}.
 
+
 %% Example:
 %% cvss_score_details() :: #{
 %%   <<"adjustments">> => list(cvss_score_adjustment()()),
@@ -1332,6 +1460,7 @@
 %% }
 -type cvss_score_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_image_pipelines_request() :: #{
 %%   <<"filters">> => list(filter()()),
@@ -1339,6 +1468,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_image_pipelines_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% distribution() :: #{
@@ -1352,6 +1482,7 @@
 %% }
 -type distribution() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_image_scan_findings_response() :: #{
 %%   <<"findings">> => list(image_scan_finding()()),
@@ -1360,12 +1491,14 @@
 %% }
 -type list_image_scan_findings_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_image_recipe_response() :: #{
 %%   <<"imageRecipeArn">> => string(),
 %%   <<"requestId">> => string()
 %% }
 -type delete_image_recipe_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% remediation_recommendation() :: #{
@@ -1374,17 +1507,20 @@
 %% }
 -type remediation_recommendation() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type service_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% inspector_score_details() :: #{
 %%   <<"adjustedCvss">> => cvss_score_details()
 %% }
 -type inspector_score_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_component_request() :: #{
@@ -1402,6 +1538,7 @@
 %% }
 -type create_component_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% vulnerable_package() :: #{
 %%   <<"arch">> => string(),
@@ -1417,6 +1554,7 @@
 %% }
 -type vulnerable_package() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_distribution_configuration_request() :: #{
 %%   <<"clientToken">> := string(),
@@ -1426,17 +1564,20 @@
 %% }
 -type update_distribution_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_state_update_exclusion_rules() :: #{
 %%   <<"amis">> => lifecycle_policy_detail_exclusion_rules_amis()
 %% }
 -type resource_state_update_exclusion_rules() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% cvss_score_adjustment() :: #{
@@ -1445,12 +1586,14 @@
 %% }
 -type cvss_score_adjustment() :: #{binary() => any()}.
 
+
 %% Example:
 %% lifecycle_execution_snapshot_resource() :: #{
 %%   <<"snapshotId">> => string(),
 %%   <<"state">> => lifecycle_execution_resource_state()
 %% }
 -type lifecycle_execution_snapshot_resource() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_infrastructure_configurations_response() :: #{
@@ -1459,6 +1602,7 @@
 %%   <<"requestId">> => string()
 %% }
 -type list_infrastructure_configurations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% container_recipe_summary() :: #{
@@ -1473,11 +1617,13 @@
 %% }
 -type container_recipe_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_workflow_execution_request() :: #{
 %%   <<"workflowExecutionId">> := string()
 %% }
 -type get_workflow_execution_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_lifecycle_executions_request() :: #{
@@ -1487,11 +1633,13 @@
 %% }
 -type list_lifecycle_executions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_unavailable_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% component_version() :: #{
@@ -1507,12 +1655,14 @@
 %% }
 -type component_version() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_lifecycle_policy_response() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"lifecyclePolicyArn">> => string()
 %% }
 -type create_lifecycle_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_image_policy_request() :: #{
@@ -1521,11 +1671,13 @@
 %% }
 -type put_image_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_distribution_configuration_request() :: #{
 %%   <<"distributionConfigurationArn">> := string()
 %% }
 -type get_distribution_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% import_component_response() :: #{
@@ -1534,6 +1686,7 @@
 %%   <<"requestId">> => string()
 %% }
 -type import_component_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_image_pipeline_request() :: #{
@@ -1555,6 +1708,7 @@
 %% }
 -type create_image_pipeline_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% lifecycle_policy_detail_filter() :: #{
 %%   <<"retainAtLeast">> => integer(),
@@ -1564,12 +1718,14 @@
 %% }
 -type lifecycle_policy_detail_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% filter() :: #{
 %%   <<"name">> => string(),
 %%   <<"values">> => list(string()())
 %% }
 -type filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_distribution_configuration_response() :: #{
@@ -1579,12 +1735,14 @@
 %% }
 -type create_distribution_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_distribution_configuration_response() :: #{
 %%   <<"distributionConfigurationArn">> => string(),
 %%   <<"requestId">> => string()
 %% }
 -type delete_distribution_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_images_response() :: #{
@@ -1594,12 +1752,14 @@
 %% }
 -type list_images_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_lifecycle_executions_response() :: #{
 %%   <<"lifecycleExecutions">> => list(lifecycle_execution()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_lifecycle_executions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_component_build_versions_response() :: #{
@@ -1609,6 +1769,7 @@
 %% }
 -type list_component_build_versions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_image_packages_response() :: #{
 %%   <<"imagePackageList">> => list(image_package()()),
@@ -1616,6 +1777,7 @@
 %%   <<"requestId">> => string()
 %% }
 -type list_image_packages_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% workflow_summary() :: #{
@@ -1632,12 +1794,14 @@
 %% }
 -type workflow_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% image_tests_configuration() :: #{
 %%   <<"imageTestsEnabled">> => boolean(),
 %%   <<"timeoutMinutes">> => integer()
 %% }
 -type image_tests_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_container_recipes_request() :: #{
@@ -1648,6 +1812,7 @@
 %% }
 -type list_container_recipes_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_image_build_versions_request() :: #{
 %%   <<"filters">> => list(filter()()),
@@ -1657,12 +1822,14 @@
 %% }
 -type list_image_build_versions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_component_response() :: #{
 %%   <<"componentBuildVersionArn">> => string(),
 %%   <<"requestId">> => string()
 %% }
 -type delete_component_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% additional_instance_configuration() :: #{
@@ -1671,11 +1838,13 @@
 %% }
 -type additional_instance_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_infrastructure_configuration_request() :: #{
 %%   <<"infrastructureConfigurationArn">> := string()
 %% }
 -type get_infrastructure_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_image_request() :: #{
@@ -1683,11 +1852,13 @@
 %% }
 -type delete_image_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% lifecycle_execution_resources_impacted_summary() :: #{
 %%   <<"hasImpactedResources">> => boolean()
 %% }
 -type lifecycle_execution_resources_impacted_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% image_recipe() :: #{
@@ -1708,11 +1879,13 @@
 %% }
 -type image_recipe() :: #{binary() => any()}.
 
+
 %% Example:
 %% fast_launch_snapshot_configuration() :: #{
 %%   <<"targetResourceCount">> => integer()
 %% }
 -type fast_launch_snapshot_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% lifecycle_policy() :: #{
@@ -1731,12 +1904,14 @@
 %% }
 -type lifecycle_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_component_policy_response() :: #{
 %%   <<"componentArn">> => string(),
 %%   <<"requestId">> => string()
 %% }
 -type put_component_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_workflow_execution_response() :: #{
@@ -1757,6 +1932,7 @@
 %% }
 -type get_workflow_execution_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% schedule() :: #{
 %%   <<"pipelineExecutionStartCondition">> => list(any()),
@@ -1764,6 +1940,7 @@
 %%   <<"timezone">> => string()
 %% }
 -type schedule() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_image_scan_findings_request() :: #{
@@ -1773,6 +1950,7 @@
 %% }
 -type list_image_scan_findings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% lifecycle_policy_resource_selection() :: #{
 %%   <<"recipes">> => list(lifecycle_policy_resource_selection_recipe()()),
@@ -1780,11 +1958,13 @@
 %% }
 -type lifecycle_policy_resource_selection() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_lifecycle_policy_request() :: #{
 %%   <<"lifecyclePolicyArn">> := string()
 %% }
 -type delete_lifecycle_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% image_scan_finding() :: #{
@@ -1805,6 +1985,7 @@
 %% }
 -type image_scan_finding() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_workflow_step_executions_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -1813,11 +1994,13 @@
 %% }
 -type list_workflow_step_executions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_image_recipe_policy_request() :: #{
 %%   <<"imageRecipeArn">> := string()
 %% }
 -type get_image_recipe_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% account_aggregation() :: #{
@@ -1826,12 +2009,14 @@
 %% }
 -type account_aggregation() :: #{binary() => any()}.
 
+
 %% Example:
 %% output_resources() :: #{
 %%   <<"amis">> => list(ami()()),
 %%   <<"containers">> => list(container()())
 %% }
 -type output_resources() :: #{binary() => any()}.
+
 
 %% Example:
 %% cancel_image_creation_response() :: #{
@@ -1840,6 +2025,7 @@
 %%   <<"requestId">> => string()
 %% }
 -type cancel_image_creation_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% image() :: #{
@@ -1872,6 +2058,7 @@
 %% }
 -type image() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_image_pipeline_response() :: #{
 %%   <<"imagePipelineArn">> => string(),
@@ -1879,11 +2066,13 @@
 %% }
 -type delete_image_pipeline_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_image_pipeline_request() :: #{
 %%   <<"imagePipelineArn">> := string()
 %% }
 -type get_image_pipeline_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_workflow_response() :: #{
@@ -1892,12 +2081,14 @@
 %% }
 -type create_workflow_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_image_policy_response() :: #{
 %%   <<"imageArn">> => string(),
 %%   <<"requestId">> => string()
 %% }
 -type put_image_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% package_vulnerability_details() :: #{
@@ -1914,6 +2105,7 @@
 %% }
 -type package_vulnerability_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% cvss_score() :: #{
 %%   <<"baseScore">> => float(),
@@ -1923,12 +2115,14 @@
 %% }
 -type cvss_score() :: #{binary() => any()}.
 
+
 %% Example:
 %% instance_metadata_options() :: #{
 %%   <<"httpPutResponseHopLimit">> => integer(),
 %%   <<"httpTokens">> => string()
 %% }
 -type instance_metadata_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_infrastructure_configuration_response() :: #{
@@ -1938,11 +2132,13 @@
 %% }
 -type update_infrastructure_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_parameter_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_parameter_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% fast_launch_launch_template_specification() :: #{
@@ -1952,6 +2148,7 @@
 %% }
 -type fast_launch_launch_template_specification() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_workflow_build_versions_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -1959,6 +2156,7 @@
 %%   <<"workflowVersionArn">> := string()
 %% }
 -type list_workflow_build_versions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% import_vm_image_response() :: #{
@@ -1968,11 +2166,13 @@
 %% }
 -type import_vm_image_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_infrastructure_configuration_request() :: #{
 %%   <<"infrastructureConfigurationArn">> := string()
 %% }
 -type delete_infrastructure_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_image_scan_finding_aggregations_response() :: #{
@@ -1982,9 +2182,11 @@
 %%   <<"responses">> => list(image_scan_finding_aggregation()())
 %% }
 -type list_image_scan_finding_aggregations_response() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% image_recipe_summary() :: #{
@@ -1998,6 +2200,7 @@
 %% }
 -type image_recipe_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% fast_launch_configuration() :: #{
 %%   <<"accountId">> => string(),
@@ -2007,6 +2210,7 @@
 %%   <<"snapshotConfiguration">> => fast_launch_snapshot_configuration()
 %% }
 -type fast_launch_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% ami_distribution_configuration() :: #{
@@ -2019,6 +2223,7 @@
 %% }
 -type ami_distribution_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% component_configuration() :: #{
 %%   <<"componentArn">> => string(),
@@ -2026,12 +2231,14 @@
 %% }
 -type component_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% instance_configuration() :: #{
 %%   <<"blockDeviceMappings">> => list(instance_block_device_mapping()()),
 %%   <<"image">> => string()
 %% }
 -type instance_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_infrastructure_configuration_response() :: #{
@@ -2041,6 +2248,7 @@
 %% }
 -type create_infrastructure_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% container_distribution_configuration() :: #{
 %%   <<"containerTags">> => list(string()()),
@@ -2049,11 +2257,13 @@
 %% }
 -type container_distribution_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_lifecycle_policy_request() :: #{
 %%   <<"lifecyclePolicyArn">> := string()
 %% }
 -type get_lifecycle_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% image_aggregation() :: #{
@@ -2061,9 +2271,11 @@
 %%   <<"severityCounts">> => severity_counts()
 %% }
 -type image_aggregation() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% get_container_recipe_policy_response() :: #{
@@ -2072,6 +2284,7 @@
 %% }
 -type get_container_recipe_policy_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_container_recipe_response() :: #{
 %%   <<"clientToken">> => string(),
@@ -2079,6 +2292,7 @@
 %%   <<"requestId">> => string()
 %% }
 -type create_container_recipe_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% container_recipe() :: #{
@@ -2102,6 +2316,7 @@
 %% }
 -type container_recipe() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_lifecycle_policy_request() :: #{
 %%   <<"clientToken">> := string(),
@@ -2116,11 +2331,13 @@
 %% }
 -type create_lifecycle_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_dependency_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_dependency_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% lifecycle_execution_state() :: #{
@@ -2129,6 +2346,7 @@
 %% }
 -type lifecycle_execution_state() :: #{binary() => any()}.
 
+
 %% Example:
 %% image_package() :: #{
 %%   <<"packageName">> => string(),
@@ -2136,12 +2354,14 @@
 %% }
 -type image_package() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_image_response() :: #{
 %%   <<"imageBuildVersionArn">> => string(),
 %%   <<"requestId">> => string()
 %% }
 -type delete_image_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% lifecycle_execution() :: #{
@@ -2154,6 +2374,7 @@
 %% }
 -type lifecycle_execution() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_components_response() :: #{
 %%   <<"componentVersionList">> => list(component_version()()),
@@ -2162,12 +2383,14 @@
 %% }
 -type list_components_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% lifecycle_policy_resource_selection_recipe() :: #{
 %%   <<"name">> => string(),
 %%   <<"semanticVersion">> => string()
 %% }
 -type lifecycle_policy_resource_selection_recipe() :: #{binary() => any()}.
+
 
 %% Example:
 %% workflow_step_metadata() :: #{
@@ -2185,6 +2408,7 @@
 %% }
 -type workflow_step_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_image_build_versions_response() :: #{
 %%   <<"imageSummaryList">> => list(image_summary()()),
@@ -2192,6 +2416,7 @@
 %%   <<"requestId">> => string()
 %% }
 -type list_image_build_versions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_image_pipeline_request() :: #{
@@ -2212,6 +2437,7 @@
 %% }
 -type update_image_pipeline_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_lifecycle_execution_resources_request() :: #{
 %%   <<"lifecycleExecutionId">> := string(),
@@ -2221,6 +2447,7 @@
 %% }
 -type list_lifecycle_execution_resources_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% image_state() :: #{
 %%   <<"reason">> => string(),
@@ -2228,12 +2455,14 @@
 %% }
 -type image_state() :: #{binary() => any()}.
 
+
 %% Example:
 %% cancel_lifecycle_execution_request() :: #{
 %%   <<"clientToken">> := string(),
 %%   <<"lifecycleExecutionId">> := string()
 %% }
 -type cancel_lifecycle_execution_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% workflow_configuration() :: #{
@@ -2244,12 +2473,14 @@
 %% }
 -type workflow_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% workflow_state() :: #{
 %%   <<"reason">> => string(),
 %%   <<"status">> => list(any())
 %% }
 -type workflow_state() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_infrastructure_configurations_request() :: #{
@@ -2258,6 +2489,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_infrastructure_configurations_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% image_summary() :: #{
@@ -2279,12 +2511,14 @@
 %% }
 -type image_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% lifecycle_policy_detail_action() :: #{
 %%   <<"includeResources">> => lifecycle_policy_detail_action_include_resources(),
 %%   <<"type">> => list(any())
 %% }
 -type lifecycle_policy_detail_action() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_image_recipes_response() :: #{
@@ -2294,11 +2528,13 @@
 %% }
 -type list_image_recipes_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_already_exists_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_already_exists_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_waiting_workflow_steps_request() :: #{
@@ -2306,6 +2542,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_waiting_workflow_steps_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% lifecycle_policy_detail_exclusion_rules_amis() :: #{
@@ -2317,6 +2554,7 @@
 %% }
 -type lifecycle_policy_detail_exclusion_rules_amis() :: #{binary() => any()}.
 
+
 %% Example:
 %% launch_template_configuration() :: #{
 %%   <<"accountId">> => string(),
@@ -2324,6 +2562,7 @@
 %%   <<"setDefaultVersion">> => boolean()
 %% }
 -type launch_template_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% infrastructure_configuration() :: #{
@@ -2346,11 +2585,13 @@
 %% }
 -type infrastructure_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_component_policy_request() :: #{
 %%   <<"componentArn">> := string()
 %% }
 -type get_component_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_workflows_response() :: #{
@@ -2359,12 +2600,14 @@
 %% }
 -type list_workflows_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_image_pipeline_execution_request() :: #{
 %%   <<"clientToken">> := string(),
 %%   <<"imagePipelineArn">> := string()
 %% }
 -type start_image_pipeline_execution_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% lifecycle_policy_detail_exclusion_rules_amis_last_launched() :: #{
@@ -2373,12 +2616,14 @@
 %% }
 -type lifecycle_policy_detail_exclusion_rules_amis_last_launched() :: #{binary() => any()}.
 
+
 %% Example:
 %% image_pipeline_aggregation() :: #{
 %%   <<"imagePipelineArn">> => string(),
 %%   <<"severityCounts">> => severity_counts()
 %% }
 -type image_pipeline_aggregation() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_infrastructure_configuration_response() :: #{
@@ -2387,12 +2632,14 @@
 %% }
 -type delete_infrastructure_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% component_parameter() :: #{
 %%   <<"name">> => string(),
 %%   <<"value">> => list(string()())
 %% }
 -type component_parameter() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_image_recipe_response() :: #{
@@ -2401,12 +2648,14 @@
 %% }
 -type get_image_recipe_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_distribution_configuration_response() :: #{
 %%   <<"distributionConfiguration">> => distribution_configuration(),
 %%   <<"requestId">> => string()
 %% }
 -type get_distribution_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% distribution_configuration_summary() :: #{
@@ -2420,6 +2669,7 @@
 %% }
 -type distribution_configuration_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% launch_permission_configuration() :: #{
 %%   <<"organizationArns">> => list(string()()),
@@ -2429,11 +2679,13 @@
 %% }
 -type launch_permission_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% logging() :: #{
 %%   <<"s3Logs">> => s3_logs()
 %% }
 -type logging() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_image_pipeline_images_response() :: #{
@@ -2443,11 +2695,13 @@
 %% }
 -type list_image_pipeline_images_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_component_request() :: #{
 %%   <<"componentBuildVersionArn">> := string()
 %% }
 -type get_component_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_lifecycle_policy_response() :: #{
@@ -2455,11 +2709,13 @@
 %% }
 -type get_lifecycle_policy_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_pagination_token_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_pagination_token_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_image_pipeline_response() :: #{
@@ -2469,11 +2725,692 @@
 %% }
 -type update_image_pipeline_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_workflow_response() :: #{
 %%   <<"workflow">> => workflow()
 %% }
 -type get_workflow_response() :: #{binary() => any()}.
+
+-type cancel_image_creation_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception() | 
+    resource_in_use_exception().
+
+-type cancel_lifecycle_execution_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception() | 
+    resource_in_use_exception().
+
+-type create_component_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    invalid_parameter_combination_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception() | 
+    resource_in_use_exception() | 
+    invalid_version_number_exception().
+
+-type create_container_recipe_errors() ::
+    resource_already_exists_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception() | 
+    resource_in_use_exception() | 
+    invalid_version_number_exception().
+
+-type create_distribution_configuration_errors() ::
+    resource_already_exists_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    invalid_parameter_combination_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception() | 
+    resource_in_use_exception().
+
+-type create_image_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception() | 
+    resource_in_use_exception().
+
+-type create_image_pipeline_errors() ::
+    resource_already_exists_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception() | 
+    resource_in_use_exception().
+
+-type create_image_recipe_errors() ::
+    resource_already_exists_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception() | 
+    resource_in_use_exception() | 
+    invalid_version_number_exception().
+
+-type create_infrastructure_configuration_errors() ::
+    resource_already_exists_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception() | 
+    resource_in_use_exception().
+
+-type create_lifecycle_policy_errors() ::
+    resource_already_exists_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception() | 
+    resource_in_use_exception().
+
+-type create_workflow_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    invalid_parameter_combination_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception() | 
+    resource_in_use_exception() | 
+    invalid_version_number_exception().
+
+-type delete_component_errors() ::
+    resource_dependency_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type delete_container_recipe_errors() ::
+    resource_dependency_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type delete_distribution_configuration_errors() ::
+    resource_dependency_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type delete_image_errors() ::
+    resource_dependency_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type delete_image_pipeline_errors() ::
+    resource_dependency_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type delete_image_recipe_errors() ::
+    resource_dependency_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type delete_infrastructure_configuration_errors() ::
+    resource_dependency_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type delete_lifecycle_policy_errors() ::
+    resource_dependency_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type delete_workflow_errors() ::
+    resource_dependency_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type get_component_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type get_component_policy_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type get_container_recipe_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type get_container_recipe_policy_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type get_distribution_configuration_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type get_image_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type get_image_pipeline_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type get_image_policy_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type get_image_recipe_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type get_image_recipe_policy_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type get_infrastructure_configuration_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type get_lifecycle_execution_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type get_lifecycle_policy_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type get_workflow_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type get_workflow_execution_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type get_workflow_step_execution_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type import_component_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    invalid_parameter_combination_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception() | 
+    resource_in_use_exception() | 
+    invalid_version_number_exception().
+
+-type import_vm_image_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    client_exception().
+
+-type list_component_build_versions_errors() ::
+    invalid_pagination_token_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type list_components_errors() ::
+    invalid_pagination_token_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type list_container_recipes_errors() ::
+    invalid_pagination_token_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type list_distribution_configurations_errors() ::
+    invalid_pagination_token_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type list_image_build_versions_errors() ::
+    invalid_pagination_token_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type list_image_packages_errors() ::
+    invalid_pagination_token_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type list_image_pipeline_images_errors() ::
+    invalid_pagination_token_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type list_image_pipelines_errors() ::
+    invalid_pagination_token_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type list_image_recipes_errors() ::
+    invalid_pagination_token_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type list_image_scan_finding_aggregations_errors() ::
+    invalid_pagination_token_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type list_image_scan_findings_errors() ::
+    invalid_pagination_token_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type list_images_errors() ::
+    invalid_pagination_token_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type list_infrastructure_configurations_errors() ::
+    invalid_pagination_token_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type list_lifecycle_execution_resources_errors() ::
+    invalid_pagination_token_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type list_lifecycle_executions_errors() ::
+    invalid_pagination_token_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type list_lifecycle_policies_errors() ::
+    invalid_pagination_token_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type list_tags_for_resource_errors() ::
+    invalid_parameter_exception() | 
+    service_exception() | 
+    resource_not_found_exception().
+
+-type list_waiting_workflow_steps_errors() ::
+    invalid_pagination_token_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type list_workflow_build_versions_errors() ::
+    invalid_pagination_token_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type list_workflow_executions_errors() ::
+    invalid_pagination_token_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type list_workflow_step_executions_errors() ::
+    invalid_pagination_token_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type list_workflows_errors() ::
+    invalid_pagination_token_exception() | 
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type put_component_policy_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type put_container_recipe_policy_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type put_image_policy_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type put_image_recipe_policy_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type send_workflow_step_action_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception() | 
+    resource_in_use_exception().
+
+-type start_image_pipeline_execution_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception() | 
+    resource_in_use_exception().
+
+-type start_resource_state_update_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception() | 
+    resource_in_use_exception().
+
+-type tag_resource_errors() ::
+    invalid_parameter_exception() | 
+    service_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    invalid_parameter_exception() | 
+    service_exception() | 
+    resource_not_found_exception().
+
+-type update_distribution_configuration_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    invalid_parameter_combination_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception() | 
+    resource_in_use_exception().
+
+-type update_image_pipeline_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception() | 
+    resource_in_use_exception().
+
+-type update_infrastructure_configuration_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception() | 
+    resource_in_use_exception().
+
+-type update_lifecycle_policy_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    invalid_parameter_combination_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception() | 
+    resource_in_use_exception().
 
 %%====================================================================
 %% API
@@ -2486,28 +3423,14 @@
 -spec cancel_image_creation(map(), cancel_image_creation_request()) ->
     {ok, cancel_image_creation_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, cancel_image_creation_errors(), tuple()}.
 cancel_image_creation(Client, Input) ->
     cancel_image_creation(Client, Input, []).
 
 -spec cancel_image_creation(map(), cancel_image_creation_request(), proplists:proplist()) ->
     {ok, cancel_image_creation_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, cancel_image_creation_errors(), tuple()}.
 cancel_image_creation(Client, Input0, Options0) ->
     Method = put,
     Path = ["/CancelImageCreation"],
@@ -2534,28 +3457,14 @@ cancel_image_creation(Client, Input0, Options0) ->
 -spec cancel_lifecycle_execution(map(), cancel_lifecycle_execution_request()) ->
     {ok, cancel_lifecycle_execution_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, cancel_lifecycle_execution_errors(), tuple()}.
 cancel_lifecycle_execution(Client, Input) ->
     cancel_lifecycle_execution(Client, Input, []).
 
 -spec cancel_lifecycle_execution(map(), cancel_lifecycle_execution_request(), proplists:proplist()) ->
     {ok, cancel_lifecycle_execution_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, cancel_lifecycle_execution_errors(), tuple()}.
 cancel_lifecycle_execution(Client, Input0, Options0) ->
     Method = put,
     Path = ["/CancelLifecycleExecution"],
@@ -2593,34 +3502,14 @@ cancel_lifecycle_execution(Client, Input0, Options0) ->
 -spec create_component(map(), create_component_request()) ->
     {ok, create_component_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_version_number_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_component_errors(), tuple()}.
 create_component(Client, Input) ->
     create_component(Client, Input, []).
 
 -spec create_component(map(), create_component_request(), proplists:proplist()) ->
     {ok, create_component_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_version_number_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_component_errors(), tuple()}.
 create_component(Client, Input0, Options0) ->
     Method = put,
     Path = ["/CreateComponent"],
@@ -2650,34 +3539,14 @@ create_component(Client, Input0, Options0) ->
 -spec create_container_recipe(map(), create_container_recipe_request()) ->
     {ok, create_container_recipe_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_version_number_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_container_recipe_errors(), tuple()}.
 create_container_recipe(Client, Input) ->
     create_container_recipe(Client, Input, []).
 
 -spec create_container_recipe(map(), create_container_recipe_request(), proplists:proplist()) ->
     {ok, create_container_recipe_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_version_number_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_container_recipe_errors(), tuple()}.
 create_container_recipe(Client, Input0, Options0) ->
     Method = put,
     Path = ["/CreateContainerRecipe"],
@@ -2707,34 +3576,14 @@ create_container_recipe(Client, Input0, Options0) ->
 -spec create_distribution_configuration(map(), create_distribution_configuration_request()) ->
     {ok, create_distribution_configuration_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_distribution_configuration_errors(), tuple()}.
 create_distribution_configuration(Client, Input) ->
     create_distribution_configuration(Client, Input, []).
 
 -spec create_distribution_configuration(map(), create_distribution_configuration_request(), proplists:proplist()) ->
     {ok, create_distribution_configuration_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_distribution_configuration_errors(), tuple()}.
 create_distribution_configuration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/CreateDistributionConfiguration"],
@@ -2767,30 +3616,14 @@ create_distribution_configuration(Client, Input0, Options0) ->
 -spec create_image(map(), create_image_request()) ->
     {ok, create_image_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_image_errors(), tuple()}.
 create_image(Client, Input) ->
     create_image(Client, Input, []).
 
 -spec create_image(map(), create_image_request(), proplists:proplist()) ->
     {ok, create_image_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_image_errors(), tuple()}.
 create_image(Client, Input0, Options0) ->
     Method = put,
     Path = ["/CreateImage"],
@@ -2820,32 +3653,14 @@ create_image(Client, Input0, Options0) ->
 -spec create_image_pipeline(map(), create_image_pipeline_request()) ->
     {ok, create_image_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_image_pipeline_errors(), tuple()}.
 create_image_pipeline(Client, Input) ->
     create_image_pipeline(Client, Input, []).
 
 -spec create_image_pipeline(map(), create_image_pipeline_request(), proplists:proplist()) ->
     {ok, create_image_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_image_pipeline_errors(), tuple()}.
 create_image_pipeline(Client, Input0, Options0) ->
     Method = put,
     Path = ["/CreateImagePipeline"],
@@ -2875,34 +3690,14 @@ create_image_pipeline(Client, Input0, Options0) ->
 -spec create_image_recipe(map(), create_image_recipe_request()) ->
     {ok, create_image_recipe_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_version_number_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_image_recipe_errors(), tuple()}.
 create_image_recipe(Client, Input) ->
     create_image_recipe(Client, Input, []).
 
 -spec create_image_recipe(map(), create_image_recipe_request(), proplists:proplist()) ->
     {ok, create_image_recipe_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_version_number_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_image_recipe_errors(), tuple()}.
 create_image_recipe(Client, Input0, Options0) ->
     Method = put,
     Path = ["/CreateImageRecipe"],
@@ -2932,32 +3727,14 @@ create_image_recipe(Client, Input0, Options0) ->
 -spec create_infrastructure_configuration(map(), create_infrastructure_configuration_request()) ->
     {ok, create_infrastructure_configuration_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_infrastructure_configuration_errors(), tuple()}.
 create_infrastructure_configuration(Client, Input) ->
     create_infrastructure_configuration(Client, Input, []).
 
 -spec create_infrastructure_configuration(map(), create_infrastructure_configuration_request(), proplists:proplist()) ->
     {ok, create_infrastructure_configuration_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_infrastructure_configuration_errors(), tuple()}.
 create_infrastructure_configuration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/CreateInfrastructureConfiguration"],
@@ -2984,32 +3761,14 @@ create_infrastructure_configuration(Client, Input0, Options0) ->
 -spec create_lifecycle_policy(map(), create_lifecycle_policy_request()) ->
     {ok, create_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_lifecycle_policy_errors(), tuple()}.
 create_lifecycle_policy(Client, Input) ->
     create_lifecycle_policy(Client, Input, []).
 
 -spec create_lifecycle_policy(map(), create_lifecycle_policy_request(), proplists:proplist()) ->
     {ok, create_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_lifecycle_policy_errors(), tuple()}.
 create_lifecycle_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/CreateLifecyclePolicy"],
@@ -3036,34 +3795,14 @@ create_lifecycle_policy(Client, Input0, Options0) ->
 -spec create_workflow(map(), create_workflow_request()) ->
     {ok, create_workflow_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_version_number_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_workflow_errors(), tuple()}.
 create_workflow(Client, Input) ->
     create_workflow(Client, Input, []).
 
 -spec create_workflow(map(), create_workflow_request(), proplists:proplist()) ->
     {ok, create_workflow_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_version_number_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_workflow_errors(), tuple()}.
 create_workflow(Client, Input0, Options0) ->
     Method = put,
     Path = ["/CreateWorkflow"],
@@ -3090,26 +3829,14 @@ create_workflow(Client, Input0, Options0) ->
 -spec delete_component(map(), delete_component_request()) ->
     {ok, delete_component_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_dependency_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_component_errors(), tuple()}.
 delete_component(Client, Input) ->
     delete_component(Client, Input, []).
 
 -spec delete_component(map(), delete_component_request(), proplists:proplist()) ->
     {ok, delete_component_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_dependency_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_component_errors(), tuple()}.
 delete_component(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/DeleteComponent"],
@@ -3137,26 +3864,14 @@ delete_component(Client, Input0, Options0) ->
 -spec delete_container_recipe(map(), delete_container_recipe_request()) ->
     {ok, delete_container_recipe_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_dependency_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_container_recipe_errors(), tuple()}.
 delete_container_recipe(Client, Input) ->
     delete_container_recipe(Client, Input, []).
 
 -spec delete_container_recipe(map(), delete_container_recipe_request(), proplists:proplist()) ->
     {ok, delete_container_recipe_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_dependency_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_container_recipe_errors(), tuple()}.
 delete_container_recipe(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/DeleteContainerRecipe"],
@@ -3184,26 +3899,14 @@ delete_container_recipe(Client, Input0, Options0) ->
 -spec delete_distribution_configuration(map(), delete_distribution_configuration_request()) ->
     {ok, delete_distribution_configuration_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_dependency_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_distribution_configuration_errors(), tuple()}.
 delete_distribution_configuration(Client, Input) ->
     delete_distribution_configuration(Client, Input, []).
 
 -spec delete_distribution_configuration(map(), delete_distribution_configuration_request(), proplists:proplist()) ->
     {ok, delete_distribution_configuration_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_dependency_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_distribution_configuration_errors(), tuple()}.
 delete_distribution_configuration(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/DeleteDistributionConfiguration"],
@@ -3257,26 +3960,14 @@ delete_distribution_configuration(Client, Input0, Options0) ->
 -spec delete_image(map(), delete_image_request()) ->
     {ok, delete_image_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_dependency_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_image_errors(), tuple()}.
 delete_image(Client, Input) ->
     delete_image(Client, Input, []).
 
 -spec delete_image(map(), delete_image_request(), proplists:proplist()) ->
     {ok, delete_image_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_dependency_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_image_errors(), tuple()}.
 delete_image(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/DeleteImage"],
@@ -3304,26 +3995,14 @@ delete_image(Client, Input0, Options0) ->
 -spec delete_image_pipeline(map(), delete_image_pipeline_request()) ->
     {ok, delete_image_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_dependency_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_image_pipeline_errors(), tuple()}.
 delete_image_pipeline(Client, Input) ->
     delete_image_pipeline(Client, Input, []).
 
 -spec delete_image_pipeline(map(), delete_image_pipeline_request(), proplists:proplist()) ->
     {ok, delete_image_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_dependency_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_image_pipeline_errors(), tuple()}.
 delete_image_pipeline(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/DeleteImagePipeline"],
@@ -3351,26 +4030,14 @@ delete_image_pipeline(Client, Input0, Options0) ->
 -spec delete_image_recipe(map(), delete_image_recipe_request()) ->
     {ok, delete_image_recipe_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_dependency_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_image_recipe_errors(), tuple()}.
 delete_image_recipe(Client, Input) ->
     delete_image_recipe(Client, Input, []).
 
 -spec delete_image_recipe(map(), delete_image_recipe_request(), proplists:proplist()) ->
     {ok, delete_image_recipe_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_dependency_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_image_recipe_errors(), tuple()}.
 delete_image_recipe(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/DeleteImageRecipe"],
@@ -3398,26 +4065,14 @@ delete_image_recipe(Client, Input0, Options0) ->
 -spec delete_infrastructure_configuration(map(), delete_infrastructure_configuration_request()) ->
     {ok, delete_infrastructure_configuration_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_dependency_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_infrastructure_configuration_errors(), tuple()}.
 delete_infrastructure_configuration(Client, Input) ->
     delete_infrastructure_configuration(Client, Input, []).
 
 -spec delete_infrastructure_configuration(map(), delete_infrastructure_configuration_request(), proplists:proplist()) ->
     {ok, delete_infrastructure_configuration_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_dependency_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_infrastructure_configuration_errors(), tuple()}.
 delete_infrastructure_configuration(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/DeleteInfrastructureConfiguration"],
@@ -3445,26 +4100,14 @@ delete_infrastructure_configuration(Client, Input0, Options0) ->
 -spec delete_lifecycle_policy(map(), delete_lifecycle_policy_request()) ->
     {ok, delete_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_dependency_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_lifecycle_policy_errors(), tuple()}.
 delete_lifecycle_policy(Client, Input) ->
     delete_lifecycle_policy(Client, Input, []).
 
 -spec delete_lifecycle_policy(map(), delete_lifecycle_policy_request(), proplists:proplist()) ->
     {ok, delete_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_dependency_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_lifecycle_policy_errors(), tuple()}.
 delete_lifecycle_policy(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/DeleteLifecyclePolicy"],
@@ -3492,26 +4135,14 @@ delete_lifecycle_policy(Client, Input0, Options0) ->
 -spec delete_workflow(map(), delete_workflow_request()) ->
     {ok, delete_workflow_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_dependency_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_workflow_errors(), tuple()}.
 delete_workflow(Client, Input) ->
     delete_workflow(Client, Input, []).
 
 -spec delete_workflow(map(), delete_workflow_request(), proplists:proplist()) ->
     {ok, delete_workflow_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_dependency_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_workflow_errors(), tuple()}.
 delete_workflow(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/DeleteWorkflow"],
@@ -3539,12 +4170,7 @@ delete_workflow(Client, Input0, Options0) ->
 -spec get_component(map(), binary() | list()) ->
     {ok, get_component_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_component_errors(), tuple()}.
 get_component(Client, ComponentBuildVersionArn)
   when is_map(Client) ->
     get_component(Client, ComponentBuildVersionArn, #{}, #{}).
@@ -3552,12 +4178,7 @@ get_component(Client, ComponentBuildVersionArn)
 -spec get_component(map(), binary() | list(), map(), map()) ->
     {ok, get_component_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_component_errors(), tuple()}.
 get_component(Client, ComponentBuildVersionArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_component(Client, ComponentBuildVersionArn, QueryMap, HeadersMap, []).
@@ -3565,12 +4186,7 @@ get_component(Client, ComponentBuildVersionArn, QueryMap, HeadersMap)
 -spec get_component(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_component_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_component_errors(), tuple()}.
 get_component(Client, ComponentBuildVersionArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetComponent"],
@@ -3595,12 +4211,7 @@ get_component(Client, ComponentBuildVersionArn, QueryMap, HeadersMap, Options0)
 -spec get_component_policy(map(), binary() | list()) ->
     {ok, get_component_policy_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_component_policy_errors(), tuple()}.
 get_component_policy(Client, ComponentArn)
   when is_map(Client) ->
     get_component_policy(Client, ComponentArn, #{}, #{}).
@@ -3608,12 +4219,7 @@ get_component_policy(Client, ComponentArn)
 -spec get_component_policy(map(), binary() | list(), map(), map()) ->
     {ok, get_component_policy_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_component_policy_errors(), tuple()}.
 get_component_policy(Client, ComponentArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_component_policy(Client, ComponentArn, QueryMap, HeadersMap, []).
@@ -3621,12 +4227,7 @@ get_component_policy(Client, ComponentArn, QueryMap, HeadersMap)
 -spec get_component_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_component_policy_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_component_policy_errors(), tuple()}.
 get_component_policy(Client, ComponentArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetComponentPolicy"],
@@ -3651,12 +4252,7 @@ get_component_policy(Client, ComponentArn, QueryMap, HeadersMap, Options0)
 -spec get_container_recipe(map(), binary() | list()) ->
     {ok, get_container_recipe_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_container_recipe_errors(), tuple()}.
 get_container_recipe(Client, ContainerRecipeArn)
   when is_map(Client) ->
     get_container_recipe(Client, ContainerRecipeArn, #{}, #{}).
@@ -3664,12 +4260,7 @@ get_container_recipe(Client, ContainerRecipeArn)
 -spec get_container_recipe(map(), binary() | list(), map(), map()) ->
     {ok, get_container_recipe_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_container_recipe_errors(), tuple()}.
 get_container_recipe(Client, ContainerRecipeArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_container_recipe(Client, ContainerRecipeArn, QueryMap, HeadersMap, []).
@@ -3677,12 +4268,7 @@ get_container_recipe(Client, ContainerRecipeArn, QueryMap, HeadersMap)
 -spec get_container_recipe(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_container_recipe_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_container_recipe_errors(), tuple()}.
 get_container_recipe(Client, ContainerRecipeArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetContainerRecipe"],
@@ -3707,12 +4293,7 @@ get_container_recipe(Client, ContainerRecipeArn, QueryMap, HeadersMap, Options0)
 -spec get_container_recipe_policy(map(), binary() | list()) ->
     {ok, get_container_recipe_policy_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_container_recipe_policy_errors(), tuple()}.
 get_container_recipe_policy(Client, ContainerRecipeArn)
   when is_map(Client) ->
     get_container_recipe_policy(Client, ContainerRecipeArn, #{}, #{}).
@@ -3720,12 +4301,7 @@ get_container_recipe_policy(Client, ContainerRecipeArn)
 -spec get_container_recipe_policy(map(), binary() | list(), map(), map()) ->
     {ok, get_container_recipe_policy_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_container_recipe_policy_errors(), tuple()}.
 get_container_recipe_policy(Client, ContainerRecipeArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_container_recipe_policy(Client, ContainerRecipeArn, QueryMap, HeadersMap, []).
@@ -3733,12 +4309,7 @@ get_container_recipe_policy(Client, ContainerRecipeArn, QueryMap, HeadersMap)
 -spec get_container_recipe_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_container_recipe_policy_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_container_recipe_policy_errors(), tuple()}.
 get_container_recipe_policy(Client, ContainerRecipeArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetContainerRecipePolicy"],
@@ -3763,12 +4334,7 @@ get_container_recipe_policy(Client, ContainerRecipeArn, QueryMap, HeadersMap, Op
 -spec get_distribution_configuration(map(), binary() | list()) ->
     {ok, get_distribution_configuration_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_distribution_configuration_errors(), tuple()}.
 get_distribution_configuration(Client, DistributionConfigurationArn)
   when is_map(Client) ->
     get_distribution_configuration(Client, DistributionConfigurationArn, #{}, #{}).
@@ -3776,12 +4342,7 @@ get_distribution_configuration(Client, DistributionConfigurationArn)
 -spec get_distribution_configuration(map(), binary() | list(), map(), map()) ->
     {ok, get_distribution_configuration_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_distribution_configuration_errors(), tuple()}.
 get_distribution_configuration(Client, DistributionConfigurationArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_distribution_configuration(Client, DistributionConfigurationArn, QueryMap, HeadersMap, []).
@@ -3789,12 +4350,7 @@ get_distribution_configuration(Client, DistributionConfigurationArn, QueryMap, H
 -spec get_distribution_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_distribution_configuration_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_distribution_configuration_errors(), tuple()}.
 get_distribution_configuration(Client, DistributionConfigurationArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetDistributionConfiguration"],
@@ -3819,12 +4375,7 @@ get_distribution_configuration(Client, DistributionConfigurationArn, QueryMap, H
 -spec get_image(map(), binary() | list()) ->
     {ok, get_image_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_image_errors(), tuple()}.
 get_image(Client, ImageBuildVersionArn)
   when is_map(Client) ->
     get_image(Client, ImageBuildVersionArn, #{}, #{}).
@@ -3832,12 +4383,7 @@ get_image(Client, ImageBuildVersionArn)
 -spec get_image(map(), binary() | list(), map(), map()) ->
     {ok, get_image_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_image_errors(), tuple()}.
 get_image(Client, ImageBuildVersionArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_image(Client, ImageBuildVersionArn, QueryMap, HeadersMap, []).
@@ -3845,12 +4391,7 @@ get_image(Client, ImageBuildVersionArn, QueryMap, HeadersMap)
 -spec get_image(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_image_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_image_errors(), tuple()}.
 get_image(Client, ImageBuildVersionArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetImage"],
@@ -3875,12 +4416,7 @@ get_image(Client, ImageBuildVersionArn, QueryMap, HeadersMap, Options0)
 -spec get_image_pipeline(map(), binary() | list()) ->
     {ok, get_image_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_image_pipeline_errors(), tuple()}.
 get_image_pipeline(Client, ImagePipelineArn)
   when is_map(Client) ->
     get_image_pipeline(Client, ImagePipelineArn, #{}, #{}).
@@ -3888,12 +4424,7 @@ get_image_pipeline(Client, ImagePipelineArn)
 -spec get_image_pipeline(map(), binary() | list(), map(), map()) ->
     {ok, get_image_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_image_pipeline_errors(), tuple()}.
 get_image_pipeline(Client, ImagePipelineArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_image_pipeline(Client, ImagePipelineArn, QueryMap, HeadersMap, []).
@@ -3901,12 +4432,7 @@ get_image_pipeline(Client, ImagePipelineArn, QueryMap, HeadersMap)
 -spec get_image_pipeline(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_image_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_image_pipeline_errors(), tuple()}.
 get_image_pipeline(Client, ImagePipelineArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetImagePipeline"],
@@ -3931,12 +4457,7 @@ get_image_pipeline(Client, ImagePipelineArn, QueryMap, HeadersMap, Options0)
 -spec get_image_policy(map(), binary() | list()) ->
     {ok, get_image_policy_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_image_policy_errors(), tuple()}.
 get_image_policy(Client, ImageArn)
   when is_map(Client) ->
     get_image_policy(Client, ImageArn, #{}, #{}).
@@ -3944,12 +4465,7 @@ get_image_policy(Client, ImageArn)
 -spec get_image_policy(map(), binary() | list(), map(), map()) ->
     {ok, get_image_policy_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_image_policy_errors(), tuple()}.
 get_image_policy(Client, ImageArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_image_policy(Client, ImageArn, QueryMap, HeadersMap, []).
@@ -3957,12 +4473,7 @@ get_image_policy(Client, ImageArn, QueryMap, HeadersMap)
 -spec get_image_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_image_policy_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_image_policy_errors(), tuple()}.
 get_image_policy(Client, ImageArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetImagePolicy"],
@@ -3987,12 +4498,7 @@ get_image_policy(Client, ImageArn, QueryMap, HeadersMap, Options0)
 -spec get_image_recipe(map(), binary() | list()) ->
     {ok, get_image_recipe_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_image_recipe_errors(), tuple()}.
 get_image_recipe(Client, ImageRecipeArn)
   when is_map(Client) ->
     get_image_recipe(Client, ImageRecipeArn, #{}, #{}).
@@ -4000,12 +4506,7 @@ get_image_recipe(Client, ImageRecipeArn)
 -spec get_image_recipe(map(), binary() | list(), map(), map()) ->
     {ok, get_image_recipe_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_image_recipe_errors(), tuple()}.
 get_image_recipe(Client, ImageRecipeArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_image_recipe(Client, ImageRecipeArn, QueryMap, HeadersMap, []).
@@ -4013,12 +4514,7 @@ get_image_recipe(Client, ImageRecipeArn, QueryMap, HeadersMap)
 -spec get_image_recipe(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_image_recipe_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_image_recipe_errors(), tuple()}.
 get_image_recipe(Client, ImageRecipeArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetImageRecipe"],
@@ -4043,12 +4539,7 @@ get_image_recipe(Client, ImageRecipeArn, QueryMap, HeadersMap, Options0)
 -spec get_image_recipe_policy(map(), binary() | list()) ->
     {ok, get_image_recipe_policy_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_image_recipe_policy_errors(), tuple()}.
 get_image_recipe_policy(Client, ImageRecipeArn)
   when is_map(Client) ->
     get_image_recipe_policy(Client, ImageRecipeArn, #{}, #{}).
@@ -4056,12 +4547,7 @@ get_image_recipe_policy(Client, ImageRecipeArn)
 -spec get_image_recipe_policy(map(), binary() | list(), map(), map()) ->
     {ok, get_image_recipe_policy_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_image_recipe_policy_errors(), tuple()}.
 get_image_recipe_policy(Client, ImageRecipeArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_image_recipe_policy(Client, ImageRecipeArn, QueryMap, HeadersMap, []).
@@ -4069,12 +4555,7 @@ get_image_recipe_policy(Client, ImageRecipeArn, QueryMap, HeadersMap)
 -spec get_image_recipe_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_image_recipe_policy_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_image_recipe_policy_errors(), tuple()}.
 get_image_recipe_policy(Client, ImageRecipeArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetImageRecipePolicy"],
@@ -4099,12 +4580,7 @@ get_image_recipe_policy(Client, ImageRecipeArn, QueryMap, HeadersMap, Options0)
 -spec get_infrastructure_configuration(map(), binary() | list()) ->
     {ok, get_infrastructure_configuration_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_infrastructure_configuration_errors(), tuple()}.
 get_infrastructure_configuration(Client, InfrastructureConfigurationArn)
   when is_map(Client) ->
     get_infrastructure_configuration(Client, InfrastructureConfigurationArn, #{}, #{}).
@@ -4112,12 +4588,7 @@ get_infrastructure_configuration(Client, InfrastructureConfigurationArn)
 -spec get_infrastructure_configuration(map(), binary() | list(), map(), map()) ->
     {ok, get_infrastructure_configuration_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_infrastructure_configuration_errors(), tuple()}.
 get_infrastructure_configuration(Client, InfrastructureConfigurationArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_infrastructure_configuration(Client, InfrastructureConfigurationArn, QueryMap, HeadersMap, []).
@@ -4125,12 +4596,7 @@ get_infrastructure_configuration(Client, InfrastructureConfigurationArn, QueryMa
 -spec get_infrastructure_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_infrastructure_configuration_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_infrastructure_configuration_errors(), tuple()}.
 get_infrastructure_configuration(Client, InfrastructureConfigurationArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetInfrastructureConfiguration"],
@@ -4156,12 +4622,7 @@ get_infrastructure_configuration(Client, InfrastructureConfigurationArn, QueryMa
 -spec get_lifecycle_execution(map(), binary() | list()) ->
     {ok, get_lifecycle_execution_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_lifecycle_execution_errors(), tuple()}.
 get_lifecycle_execution(Client, LifecycleExecutionId)
   when is_map(Client) ->
     get_lifecycle_execution(Client, LifecycleExecutionId, #{}, #{}).
@@ -4169,12 +4630,7 @@ get_lifecycle_execution(Client, LifecycleExecutionId)
 -spec get_lifecycle_execution(map(), binary() | list(), map(), map()) ->
     {ok, get_lifecycle_execution_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_lifecycle_execution_errors(), tuple()}.
 get_lifecycle_execution(Client, LifecycleExecutionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_lifecycle_execution(Client, LifecycleExecutionId, QueryMap, HeadersMap, []).
@@ -4182,12 +4638,7 @@ get_lifecycle_execution(Client, LifecycleExecutionId, QueryMap, HeadersMap)
 -spec get_lifecycle_execution(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_lifecycle_execution_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_lifecycle_execution_errors(), tuple()}.
 get_lifecycle_execution(Client, LifecycleExecutionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetLifecycleExecution"],
@@ -4212,12 +4663,7 @@ get_lifecycle_execution(Client, LifecycleExecutionId, QueryMap, HeadersMap, Opti
 -spec get_lifecycle_policy(map(), binary() | list()) ->
     {ok, get_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_lifecycle_policy_errors(), tuple()}.
 get_lifecycle_policy(Client, LifecyclePolicyArn)
   when is_map(Client) ->
     get_lifecycle_policy(Client, LifecyclePolicyArn, #{}, #{}).
@@ -4225,12 +4671,7 @@ get_lifecycle_policy(Client, LifecyclePolicyArn)
 -spec get_lifecycle_policy(map(), binary() | list(), map(), map()) ->
     {ok, get_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_lifecycle_policy_errors(), tuple()}.
 get_lifecycle_policy(Client, LifecyclePolicyArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_lifecycle_policy(Client, LifecyclePolicyArn, QueryMap, HeadersMap, []).
@@ -4238,12 +4679,7 @@ get_lifecycle_policy(Client, LifecyclePolicyArn, QueryMap, HeadersMap)
 -spec get_lifecycle_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_lifecycle_policy_errors(), tuple()}.
 get_lifecycle_policy(Client, LifecyclePolicyArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetLifecyclePolicy"],
@@ -4268,12 +4704,7 @@ get_lifecycle_policy(Client, LifecyclePolicyArn, QueryMap, HeadersMap, Options0)
 -spec get_workflow(map(), binary() | list()) ->
     {ok, get_workflow_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_workflow_errors(), tuple()}.
 get_workflow(Client, WorkflowBuildVersionArn)
   when is_map(Client) ->
     get_workflow(Client, WorkflowBuildVersionArn, #{}, #{}).
@@ -4281,12 +4712,7 @@ get_workflow(Client, WorkflowBuildVersionArn)
 -spec get_workflow(map(), binary() | list(), map(), map()) ->
     {ok, get_workflow_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_workflow_errors(), tuple()}.
 get_workflow(Client, WorkflowBuildVersionArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_workflow(Client, WorkflowBuildVersionArn, QueryMap, HeadersMap, []).
@@ -4294,12 +4720,7 @@ get_workflow(Client, WorkflowBuildVersionArn, QueryMap, HeadersMap)
 -spec get_workflow(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_workflow_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_workflow_errors(), tuple()}.
 get_workflow(Client, WorkflowBuildVersionArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetWorkflow"],
@@ -4326,12 +4747,7 @@ get_workflow(Client, WorkflowBuildVersionArn, QueryMap, HeadersMap, Options0)
 -spec get_workflow_execution(map(), binary() | list()) ->
     {ok, get_workflow_execution_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_workflow_execution_errors(), tuple()}.
 get_workflow_execution(Client, WorkflowExecutionId)
   when is_map(Client) ->
     get_workflow_execution(Client, WorkflowExecutionId, #{}, #{}).
@@ -4339,12 +4755,7 @@ get_workflow_execution(Client, WorkflowExecutionId)
 -spec get_workflow_execution(map(), binary() | list(), map(), map()) ->
     {ok, get_workflow_execution_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_workflow_execution_errors(), tuple()}.
 get_workflow_execution(Client, WorkflowExecutionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_workflow_execution(Client, WorkflowExecutionId, QueryMap, HeadersMap, []).
@@ -4352,12 +4763,7 @@ get_workflow_execution(Client, WorkflowExecutionId, QueryMap, HeadersMap)
 -spec get_workflow_execution(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_workflow_execution_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_workflow_execution_errors(), tuple()}.
 get_workflow_execution(Client, WorkflowExecutionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetWorkflowExecution"],
@@ -4384,12 +4790,7 @@ get_workflow_execution(Client, WorkflowExecutionId, QueryMap, HeadersMap, Option
 -spec get_workflow_step_execution(map(), binary() | list()) ->
     {ok, get_workflow_step_execution_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_workflow_step_execution_errors(), tuple()}.
 get_workflow_step_execution(Client, StepExecutionId)
   when is_map(Client) ->
     get_workflow_step_execution(Client, StepExecutionId, #{}, #{}).
@@ -4397,12 +4798,7 @@ get_workflow_step_execution(Client, StepExecutionId)
 -spec get_workflow_step_execution(map(), binary() | list(), map(), map()) ->
     {ok, get_workflow_step_execution_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_workflow_step_execution_errors(), tuple()}.
 get_workflow_step_execution(Client, StepExecutionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_workflow_step_execution(Client, StepExecutionId, QueryMap, HeadersMap, []).
@@ -4410,12 +4806,7 @@ get_workflow_step_execution(Client, StepExecutionId, QueryMap, HeadersMap)
 -spec get_workflow_step_execution(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_workflow_step_execution_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_workflow_step_execution_errors(), tuple()}.
 get_workflow_step_execution(Client, StepExecutionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetWorkflowStepExecution"],
@@ -4441,32 +4832,14 @@ get_workflow_step_execution(Client, StepExecutionId, QueryMap, HeadersMap, Optio
 -spec import_component(map(), import_component_request()) ->
     {ok, import_component_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_version_number_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, import_component_errors(), tuple()}.
 import_component(Client, Input) ->
     import_component(Client, Input, []).
 
 -spec import_component(map(), import_component_request(), proplists:proplist()) ->
     {ok, import_component_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_version_number_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, import_component_errors(), tuple()}.
 import_component(Client, Input0, Options0) ->
     Method = put,
     Path = ["/ImportComponent"],
@@ -4508,18 +4881,14 @@ import_component(Client, Input0, Options0) ->
 -spec import_vm_image(map(), import_vm_image_request()) ->
     {ok, import_vm_image_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, import_vm_image_errors(), tuple()}.
 import_vm_image(Client, Input) ->
     import_vm_image(Client, Input, []).
 
 -spec import_vm_image(map(), import_vm_image_request(), proplists:proplist()) ->
     {ok, import_vm_image_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, import_vm_image_errors(), tuple()}.
 import_vm_image(Client, Input0, Options0) ->
     Method = put,
     Path = ["/ImportVmImage"],
@@ -4559,26 +4928,14 @@ import_vm_image(Client, Input0, Options0) ->
 -spec list_component_build_versions(map(), list_component_build_versions_request()) ->
     {ok, list_component_build_versions_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_component_build_versions_errors(), tuple()}.
 list_component_build_versions(Client, Input) ->
     list_component_build_versions(Client, Input, []).
 
 -spec list_component_build_versions(map(), list_component_build_versions_request(), proplists:proplist()) ->
     {ok, list_component_build_versions_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_component_build_versions_errors(), tuple()}.
 list_component_build_versions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListComponentBuildVersions"],
@@ -4621,26 +4978,14 @@ list_component_build_versions(Client, Input0, Options0) ->
 -spec list_components(map(), list_components_request()) ->
     {ok, list_components_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_components_errors(), tuple()}.
 list_components(Client, Input) ->
     list_components(Client, Input, []).
 
 -spec list_components(map(), list_components_request(), proplists:proplist()) ->
     {ok, list_components_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_components_errors(), tuple()}.
 list_components(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListComponents"],
@@ -4667,26 +5012,14 @@ list_components(Client, Input0, Options0) ->
 -spec list_container_recipes(map(), list_container_recipes_request()) ->
     {ok, list_container_recipes_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_container_recipes_errors(), tuple()}.
 list_container_recipes(Client, Input) ->
     list_container_recipes(Client, Input, []).
 
 -spec list_container_recipes(map(), list_container_recipes_request(), proplists:proplist()) ->
     {ok, list_container_recipes_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_container_recipes_errors(), tuple()}.
 list_container_recipes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListContainerRecipes"],
@@ -4713,26 +5046,14 @@ list_container_recipes(Client, Input0, Options0) ->
 -spec list_distribution_configurations(map(), list_distribution_configurations_request()) ->
     {ok, list_distribution_configurations_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_distribution_configurations_errors(), tuple()}.
 list_distribution_configurations(Client, Input) ->
     list_distribution_configurations(Client, Input, []).
 
 -spec list_distribution_configurations(map(), list_distribution_configurations_request(), proplists:proplist()) ->
     {ok, list_distribution_configurations_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_distribution_configurations_errors(), tuple()}.
 list_distribution_configurations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListDistributionConfigurations"],
@@ -4759,26 +5080,14 @@ list_distribution_configurations(Client, Input0, Options0) ->
 -spec list_image_build_versions(map(), list_image_build_versions_request()) ->
     {ok, list_image_build_versions_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_image_build_versions_errors(), tuple()}.
 list_image_build_versions(Client, Input) ->
     list_image_build_versions(Client, Input, []).
 
 -spec list_image_build_versions(map(), list_image_build_versions_request(), proplists:proplist()) ->
     {ok, list_image_build_versions_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_image_build_versions_errors(), tuple()}.
 list_image_build_versions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListImageBuildVersions"],
@@ -4807,28 +5116,14 @@ list_image_build_versions(Client, Input0, Options0) ->
 -spec list_image_packages(map(), list_image_packages_request()) ->
     {ok, list_image_packages_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_image_packages_errors(), tuple()}.
 list_image_packages(Client, Input) ->
     list_image_packages(Client, Input, []).
 
 -spec list_image_packages(map(), list_image_packages_request(), proplists:proplist()) ->
     {ok, list_image_packages_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_image_packages_errors(), tuple()}.
 list_image_packages(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListImagePackages"],
@@ -4855,28 +5150,14 @@ list_image_packages(Client, Input0, Options0) ->
 -spec list_image_pipeline_images(map(), list_image_pipeline_images_request()) ->
     {ok, list_image_pipeline_images_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_image_pipeline_images_errors(), tuple()}.
 list_image_pipeline_images(Client, Input) ->
     list_image_pipeline_images(Client, Input, []).
 
 -spec list_image_pipeline_images(map(), list_image_pipeline_images_request(), proplists:proplist()) ->
     {ok, list_image_pipeline_images_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_image_pipeline_images_errors(), tuple()}.
 list_image_pipeline_images(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListImagePipelineImages"],
@@ -4903,26 +5184,14 @@ list_image_pipeline_images(Client, Input0, Options0) ->
 -spec list_image_pipelines(map(), list_image_pipelines_request()) ->
     {ok, list_image_pipelines_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_image_pipelines_errors(), tuple()}.
 list_image_pipelines(Client, Input) ->
     list_image_pipelines(Client, Input, []).
 
 -spec list_image_pipelines(map(), list_image_pipelines_request(), proplists:proplist()) ->
     {ok, list_image_pipelines_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_image_pipelines_errors(), tuple()}.
 list_image_pipelines(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListImagePipelines"],
@@ -4949,26 +5218,14 @@ list_image_pipelines(Client, Input0, Options0) ->
 -spec list_image_recipes(map(), list_image_recipes_request()) ->
     {ok, list_image_recipes_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_image_recipes_errors(), tuple()}.
 list_image_recipes(Client, Input) ->
     list_image_recipes(Client, Input, []).
 
 -spec list_image_recipes(map(), list_image_recipes_request(), proplists:proplist()) ->
     {ok, list_image_recipes_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_image_recipes_errors(), tuple()}.
 list_image_recipes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListImageRecipes"],
@@ -5014,26 +5271,14 @@ list_image_recipes(Client, Input0, Options0) ->
 -spec list_image_scan_finding_aggregations(map(), list_image_scan_finding_aggregations_request()) ->
     {ok, list_image_scan_finding_aggregations_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_image_scan_finding_aggregations_errors(), tuple()}.
 list_image_scan_finding_aggregations(Client, Input) ->
     list_image_scan_finding_aggregations(Client, Input, []).
 
 -spec list_image_scan_finding_aggregations(map(), list_image_scan_finding_aggregations_request(), proplists:proplist()) ->
     {ok, list_image_scan_finding_aggregations_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_image_scan_finding_aggregations_errors(), tuple()}.
 list_image_scan_finding_aggregations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListImageScanFindingAggregations"],
@@ -5060,26 +5305,14 @@ list_image_scan_finding_aggregations(Client, Input0, Options0) ->
 -spec list_image_scan_findings(map(), list_image_scan_findings_request()) ->
     {ok, list_image_scan_findings_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_image_scan_findings_errors(), tuple()}.
 list_image_scan_findings(Client, Input) ->
     list_image_scan_findings(Client, Input, []).
 
 -spec list_image_scan_findings(map(), list_image_scan_findings_request(), proplists:proplist()) ->
     {ok, list_image_scan_findings_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_image_scan_findings_errors(), tuple()}.
 list_image_scan_findings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListImageScanFindings"],
@@ -5109,26 +5342,14 @@ list_image_scan_findings(Client, Input0, Options0) ->
 -spec list_images(map(), list_images_request()) ->
     {ok, list_images_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_images_errors(), tuple()}.
 list_images(Client, Input) ->
     list_images(Client, Input, []).
 
 -spec list_images(map(), list_images_request(), proplists:proplist()) ->
     {ok, list_images_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_images_errors(), tuple()}.
 list_images(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListImages"],
@@ -5155,26 +5376,14 @@ list_images(Client, Input0, Options0) ->
 -spec list_infrastructure_configurations(map(), list_infrastructure_configurations_request()) ->
     {ok, list_infrastructure_configurations_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_infrastructure_configurations_errors(), tuple()}.
 list_infrastructure_configurations(Client, Input) ->
     list_infrastructure_configurations(Client, Input, []).
 
 -spec list_infrastructure_configurations(map(), list_infrastructure_configurations_request(), proplists:proplist()) ->
     {ok, list_infrastructure_configurations_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_infrastructure_configurations_errors(), tuple()}.
 list_infrastructure_configurations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListInfrastructureConfigurations"],
@@ -5202,26 +5411,14 @@ list_infrastructure_configurations(Client, Input0, Options0) ->
 -spec list_lifecycle_execution_resources(map(), list_lifecycle_execution_resources_request()) ->
     {ok, list_lifecycle_execution_resources_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_lifecycle_execution_resources_errors(), tuple()}.
 list_lifecycle_execution_resources(Client, Input) ->
     list_lifecycle_execution_resources(Client, Input, []).
 
 -spec list_lifecycle_execution_resources(map(), list_lifecycle_execution_resources_request(), proplists:proplist()) ->
     {ok, list_lifecycle_execution_resources_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_lifecycle_execution_resources_errors(), tuple()}.
 list_lifecycle_execution_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListLifecycleExecutionResources"],
@@ -5248,26 +5445,14 @@ list_lifecycle_execution_resources(Client, Input0, Options0) ->
 -spec list_lifecycle_executions(map(), list_lifecycle_executions_request()) ->
     {ok, list_lifecycle_executions_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_lifecycle_executions_errors(), tuple()}.
 list_lifecycle_executions(Client, Input) ->
     list_lifecycle_executions(Client, Input, []).
 
 -spec list_lifecycle_executions(map(), list_lifecycle_executions_request(), proplists:proplist()) ->
     {ok, list_lifecycle_executions_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_lifecycle_executions_errors(), tuple()}.
 list_lifecycle_executions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListLifecycleExecutions"],
@@ -5294,26 +5479,14 @@ list_lifecycle_executions(Client, Input0, Options0) ->
 -spec list_lifecycle_policies(map(), list_lifecycle_policies_request()) ->
     {ok, list_lifecycle_policies_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_lifecycle_policies_errors(), tuple()}.
 list_lifecycle_policies(Client, Input) ->
     list_lifecycle_policies(Client, Input, []).
 
 -spec list_lifecycle_policies(map(), list_lifecycle_policies_request(), proplists:proplist()) ->
     {ok, list_lifecycle_policies_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_lifecycle_policies_errors(), tuple()}.
 list_lifecycle_policies(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListLifecyclePolicies"],
@@ -5340,9 +5513,7 @@ list_lifecycle_policies(Client, Input0, Options0) ->
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -5350,9 +5521,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -5360,9 +5529,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -5385,26 +5552,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec list_waiting_workflow_steps(map(), list_waiting_workflow_steps_request()) ->
     {ok, list_waiting_workflow_steps_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_waiting_workflow_steps_errors(), tuple()}.
 list_waiting_workflow_steps(Client, Input) ->
     list_waiting_workflow_steps(Client, Input, []).
 
 -spec list_waiting_workflow_steps(map(), list_waiting_workflow_steps_request(), proplists:proplist()) ->
     {ok, list_waiting_workflow_steps_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_waiting_workflow_steps_errors(), tuple()}.
 list_waiting_workflow_steps(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListWaitingWorkflowSteps"],
@@ -5431,26 +5586,14 @@ list_waiting_workflow_steps(Client, Input0, Options0) ->
 -spec list_workflow_build_versions(map(), list_workflow_build_versions_request()) ->
     {ok, list_workflow_build_versions_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_workflow_build_versions_errors(), tuple()}.
 list_workflow_build_versions(Client, Input) ->
     list_workflow_build_versions(Client, Input, []).
 
 -spec list_workflow_build_versions(map(), list_workflow_build_versions_request(), proplists:proplist()) ->
     {ok, list_workflow_build_versions_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_workflow_build_versions_errors(), tuple()}.
 list_workflow_build_versions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListWorkflowBuildVersions"],
@@ -5479,26 +5622,14 @@ list_workflow_build_versions(Client, Input0, Options0) ->
 -spec list_workflow_executions(map(), list_workflow_executions_request()) ->
     {ok, list_workflow_executions_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_workflow_executions_errors(), tuple()}.
 list_workflow_executions(Client, Input) ->
     list_workflow_executions(Client, Input, []).
 
 -spec list_workflow_executions(map(), list_workflow_executions_request(), proplists:proplist()) ->
     {ok, list_workflow_executions_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_workflow_executions_errors(), tuple()}.
 list_workflow_executions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListWorkflowExecutions"],
@@ -5527,26 +5658,14 @@ list_workflow_executions(Client, Input0, Options0) ->
 -spec list_workflow_step_executions(map(), list_workflow_step_executions_request()) ->
     {ok, list_workflow_step_executions_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_workflow_step_executions_errors(), tuple()}.
 list_workflow_step_executions(Client, Input) ->
     list_workflow_step_executions(Client, Input, []).
 
 -spec list_workflow_step_executions(map(), list_workflow_step_executions_request(), proplists:proplist()) ->
     {ok, list_workflow_step_executions_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_workflow_step_executions_errors(), tuple()}.
 list_workflow_step_executions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListWorkflowStepExecutions"],
@@ -5573,26 +5692,14 @@ list_workflow_step_executions(Client, Input0, Options0) ->
 -spec list_workflows(map(), list_workflows_request()) ->
     {ok, list_workflows_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_workflows_errors(), tuple()}.
 list_workflows(Client, Input) ->
     list_workflows(Client, Input, []).
 
 -spec list_workflows(map(), list_workflows_request(), proplists:proplist()) ->
     {ok, list_workflows_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_workflows_errors(), tuple()}.
 list_workflows(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListWorkflows"],
@@ -5628,28 +5735,14 @@ list_workflows(Client, Input0, Options0) ->
 -spec put_component_policy(map(), put_component_policy_request()) ->
     {ok, put_component_policy_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_component_policy_errors(), tuple()}.
 put_component_policy(Client, Input) ->
     put_component_policy(Client, Input, []).
 
 -spec put_component_policy(map(), put_component_policy_request(), proplists:proplist()) ->
     {ok, put_component_policy_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_component_policy_errors(), tuple()}.
 put_component_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/PutComponentPolicy"],
@@ -5689,28 +5782,14 @@ put_component_policy(Client, Input0, Options0) ->
 -spec put_container_recipe_policy(map(), put_container_recipe_policy_request()) ->
     {ok, put_container_recipe_policy_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_container_recipe_policy_errors(), tuple()}.
 put_container_recipe_policy(Client, Input) ->
     put_container_recipe_policy(Client, Input, []).
 
 -spec put_container_recipe_policy(map(), put_container_recipe_policy_request(), proplists:proplist()) ->
     {ok, put_container_recipe_policy_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_container_recipe_policy_errors(), tuple()}.
 put_container_recipe_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/PutContainerRecipePolicy"],
@@ -5746,28 +5825,14 @@ put_container_recipe_policy(Client, Input0, Options0) ->
 -spec put_image_policy(map(), put_image_policy_request()) ->
     {ok, put_image_policy_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_image_policy_errors(), tuple()}.
 put_image_policy(Client, Input) ->
     put_image_policy(Client, Input, []).
 
 -spec put_image_policy(map(), put_image_policy_request(), proplists:proplist()) ->
     {ok, put_image_policy_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_image_policy_errors(), tuple()}.
 put_image_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/PutImagePolicy"],
@@ -5803,28 +5868,14 @@ put_image_policy(Client, Input0, Options0) ->
 -spec put_image_recipe_policy(map(), put_image_recipe_policy_request()) ->
     {ok, put_image_recipe_policy_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_image_recipe_policy_errors(), tuple()}.
 put_image_recipe_policy(Client, Input) ->
     put_image_recipe_policy(Client, Input, []).
 
 -spec put_image_recipe_policy(map(), put_image_recipe_policy_request(), proplists:proplist()) ->
     {ok, put_image_recipe_policy_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_image_recipe_policy_errors(), tuple()}.
 put_image_recipe_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/PutImageRecipePolicy"],
@@ -5852,32 +5903,14 @@ put_image_recipe_policy(Client, Input0, Options0) ->
 -spec send_workflow_step_action(map(), send_workflow_step_action_request()) ->
     {ok, send_workflow_step_action_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, send_workflow_step_action_errors(), tuple()}.
 send_workflow_step_action(Client, Input) ->
     send_workflow_step_action(Client, Input, []).
 
 -spec send_workflow_step_action(map(), send_workflow_step_action_request(), proplists:proplist()) ->
     {ok, send_workflow_step_action_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, send_workflow_step_action_errors(), tuple()}.
 send_workflow_step_action(Client, Input0, Options0) ->
     Method = put,
     Path = ["/SendWorkflowStepAction"],
@@ -5904,30 +5937,14 @@ send_workflow_step_action(Client, Input0, Options0) ->
 -spec start_image_pipeline_execution(map(), start_image_pipeline_execution_request()) ->
     {ok, start_image_pipeline_execution_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, start_image_pipeline_execution_errors(), tuple()}.
 start_image_pipeline_execution(Client, Input) ->
     start_image_pipeline_execution(Client, Input, []).
 
 -spec start_image_pipeline_execution(map(), start_image_pipeline_execution_request(), proplists:proplist()) ->
     {ok, start_image_pipeline_execution_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, start_image_pipeline_execution_errors(), tuple()}.
 start_image_pipeline_execution(Client, Input0, Options0) ->
     Method = put,
     Path = ["/StartImagePipelineExecution"],
@@ -5955,30 +5972,14 @@ start_image_pipeline_execution(Client, Input0, Options0) ->
 -spec start_resource_state_update(map(), start_resource_state_update_request()) ->
     {ok, start_resource_state_update_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, start_resource_state_update_errors(), tuple()}.
 start_resource_state_update(Client, Input) ->
     start_resource_state_update(Client, Input, []).
 
 -spec start_resource_state_update(map(), start_resource_state_update_request(), proplists:proplist()) ->
     {ok, start_resource_state_update_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, start_resource_state_update_errors(), tuple()}.
 start_resource_state_update(Client, Input0, Options0) ->
     Method = put,
     Path = ["/StartResourceStateUpdate"],
@@ -6005,18 +6006,14 @@ start_resource_state_update(Client, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -6043,18 +6040,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -6085,30 +6078,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_distribution_configuration(map(), update_distribution_configuration_request()) ->
     {ok, update_distribution_configuration_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, update_distribution_configuration_errors(), tuple()}.
 update_distribution_configuration(Client, Input) ->
     update_distribution_configuration(Client, Input, []).
 
 -spec update_distribution_configuration(map(), update_distribution_configuration_request(), proplists:proplist()) ->
     {ok, update_distribution_configuration_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, update_distribution_configuration_errors(), tuple()}.
 update_distribution_configuration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/UpdateDistributionConfiguration"],
@@ -6145,28 +6122,14 @@ update_distribution_configuration(Client, Input0, Options0) ->
 -spec update_image_pipeline(map(), update_image_pipeline_request()) ->
     {ok, update_image_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, update_image_pipeline_errors(), tuple()}.
 update_image_pipeline(Client, Input) ->
     update_image_pipeline(Client, Input, []).
 
 -spec update_image_pipeline(map(), update_image_pipeline_request(), proplists:proplist()) ->
     {ok, update_image_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, update_image_pipeline_errors(), tuple()}.
 update_image_pipeline(Client, Input0, Options0) ->
     Method = put,
     Path = ["/UpdateImagePipeline"],
@@ -6196,28 +6159,14 @@ update_image_pipeline(Client, Input0, Options0) ->
 -spec update_infrastructure_configuration(map(), update_infrastructure_configuration_request()) ->
     {ok, update_infrastructure_configuration_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, update_infrastructure_configuration_errors(), tuple()}.
 update_infrastructure_configuration(Client, Input) ->
     update_infrastructure_configuration(Client, Input, []).
 
 -spec update_infrastructure_configuration(map(), update_infrastructure_configuration_request(), proplists:proplist()) ->
     {ok, update_infrastructure_configuration_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, update_infrastructure_configuration_errors(), tuple()}.
 update_infrastructure_configuration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/UpdateInfrastructureConfiguration"],
@@ -6244,30 +6193,14 @@ update_infrastructure_configuration(Client, Input0, Options0) ->
 -spec update_lifecycle_policy(map(), update_lifecycle_policy_request()) ->
     {ok, update_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, update_lifecycle_policy_errors(), tuple()}.
 update_lifecycle_policy(Client, Input) ->
     update_lifecycle_policy(Client, Input, []).
 
 -spec update_lifecycle_policy(map(), update_lifecycle_policy_request(), proplists:proplist()) ->
     {ok, update_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, call_rate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, update_lifecycle_policy_errors(), tuple()}.
 update_lifecycle_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/UpdateLifecyclePolicy"],

@@ -2196,6 +2196,304 @@
 %% }
 -type update_business_report_schedule_request() :: #{binary() => any()}.
 
+-type approve_skill_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception().
+
+-type associate_contact_with_address_book_errors() ::
+    limit_exceeded_exception().
+
+-type associate_device_with_network_profile_errors() ::
+    concurrent_modification_exception() | 
+    device_not_registered_exception() | 
+    not_found_exception().
+
+-type associate_device_with_room_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    device_not_registered_exception().
+
+-type associate_skill_group_with_room_errors() ::
+    concurrent_modification_exception().
+
+-type associate_skill_with_skill_group_errors() ::
+    skill_not_linked_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception().
+
+-type associate_skill_with_users_errors() ::
+    concurrent_modification_exception() | 
+    not_found_exception().
+
+-type create_address_book_errors() ::
+    limit_exceeded_exception() | 
+    already_exists_exception().
+
+-type create_business_report_schedule_errors() ::
+    already_exists_exception().
+
+-type create_conference_provider_errors() ::
+    already_exists_exception().
+
+-type create_contact_errors() ::
+    limit_exceeded_exception() | 
+    already_exists_exception().
+
+-type create_gateway_group_errors() ::
+    limit_exceeded_exception() | 
+    already_exists_exception().
+
+-type create_network_profile_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    invalid_certificate_authority_exception() | 
+    invalid_service_linked_role_state_exception() | 
+    already_exists_exception().
+
+-type create_profile_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    already_exists_exception().
+
+-type create_room_errors() ::
+    limit_exceeded_exception() | 
+    already_exists_exception().
+
+-type create_skill_group_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    already_exists_exception().
+
+-type create_user_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    resource_in_use_exception().
+
+-type delete_address_book_errors() ::
+    concurrent_modification_exception() | 
+    not_found_exception().
+
+-type delete_business_report_schedule_errors() ::
+    concurrent_modification_exception() | 
+    not_found_exception().
+
+-type delete_conference_provider_errors() ::
+    not_found_exception().
+
+-type delete_contact_errors() ::
+    concurrent_modification_exception() | 
+    not_found_exception().
+
+-type delete_device_errors() ::
+    concurrent_modification_exception() | 
+    invalid_certificate_authority_exception() | 
+    not_found_exception().
+
+-type delete_device_usage_data_errors() ::
+    limit_exceeded_exception() | 
+    device_not_registered_exception() | 
+    not_found_exception().
+
+-type delete_gateway_group_errors() ::
+    resource_associated_exception().
+
+-type delete_network_profile_errors() ::
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    resource_in_use_exception().
+
+-type delete_profile_errors() ::
+    concurrent_modification_exception() | 
+    not_found_exception().
+
+-type delete_room_errors() ::
+    concurrent_modification_exception() | 
+    not_found_exception().
+
+-type delete_room_skill_parameter_errors() ::
+    concurrent_modification_exception().
+
+-type delete_skill_authorization_errors() ::
+    concurrent_modification_exception() | 
+    not_found_exception().
+
+-type delete_skill_group_errors() ::
+    concurrent_modification_exception() | 
+    not_found_exception().
+
+-type delete_user_errors() ::
+    concurrent_modification_exception() | 
+    not_found_exception().
+
+-type disassociate_device_from_room_errors() ::
+    concurrent_modification_exception() | 
+    device_not_registered_exception().
+
+-type disassociate_skill_from_skill_group_errors() ::
+    concurrent_modification_exception() | 
+    not_found_exception().
+
+-type disassociate_skill_from_users_errors() ::
+    concurrent_modification_exception() | 
+    not_found_exception().
+
+-type disassociate_skill_group_from_room_errors() ::
+    concurrent_modification_exception().
+
+-type forget_smart_home_appliances_errors() ::
+    not_found_exception().
+
+-type get_address_book_errors() ::
+    not_found_exception().
+
+-type get_conference_preference_errors() ::
+    not_found_exception().
+
+-type get_conference_provider_errors() ::
+    not_found_exception().
+
+-type get_contact_errors() ::
+    not_found_exception().
+
+-type get_device_errors() ::
+    not_found_exception().
+
+-type get_gateway_errors() ::
+    not_found_exception().
+
+-type get_gateway_group_errors() ::
+    not_found_exception().
+
+-type get_invitation_configuration_errors() ::
+    not_found_exception().
+
+-type get_network_profile_errors() ::
+    invalid_secrets_manager_resource_exception() | 
+    not_found_exception().
+
+-type get_profile_errors() ::
+    not_found_exception().
+
+-type get_room_errors() ::
+    not_found_exception().
+
+-type get_room_skill_parameter_errors() ::
+    not_found_exception().
+
+-type get_skill_group_errors() ::
+    not_found_exception().
+
+-type list_device_events_errors() ::
+    not_found_exception().
+
+-type list_smart_home_appliances_errors() ::
+    not_found_exception().
+
+-type list_tags_errors() ::
+    not_found_exception().
+
+-type put_conference_preference_errors() ::
+    not_found_exception().
+
+-type put_invitation_configuration_errors() ::
+    concurrent_modification_exception() | 
+    not_found_exception().
+
+-type put_room_skill_parameter_errors() ::
+    concurrent_modification_exception().
+
+-type put_skill_authorization_errors() ::
+    concurrent_modification_exception() | 
+    unauthorized_exception().
+
+-type register_avs_device_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    invalid_device_exception().
+
+-type reject_skill_errors() ::
+    concurrent_modification_exception() | 
+    not_found_exception().
+
+-type resolve_room_errors() ::
+    not_found_exception().
+
+-type revoke_invitation_errors() ::
+    concurrent_modification_exception() | 
+    not_found_exception().
+
+-type send_announcement_errors() ::
+    limit_exceeded_exception() | 
+    already_exists_exception().
+
+-type send_invitation_errors() ::
+    concurrent_modification_exception() | 
+    invalid_user_status_exception() | 
+    not_found_exception().
+
+-type start_device_sync_errors() ::
+    device_not_registered_exception().
+
+-type start_smart_home_appliance_discovery_errors() ::
+    not_found_exception().
+
+-type tag_resource_errors() ::
+    not_found_exception().
+
+-type untag_resource_errors() ::
+    not_found_exception().
+
+-type update_address_book_errors() ::
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    name_in_use_exception().
+
+-type update_business_report_schedule_errors() ::
+    concurrent_modification_exception() | 
+    not_found_exception().
+
+-type update_conference_provider_errors() ::
+    not_found_exception().
+
+-type update_contact_errors() ::
+    concurrent_modification_exception() | 
+    not_found_exception().
+
+-type update_device_errors() ::
+    concurrent_modification_exception() | 
+    device_not_registered_exception() | 
+    not_found_exception().
+
+-type update_gateway_errors() ::
+    not_found_exception() | 
+    name_in_use_exception().
+
+-type update_gateway_group_errors() ::
+    not_found_exception() | 
+    name_in_use_exception().
+
+-type update_network_profile_errors() ::
+    invalid_secrets_manager_resource_exception() | 
+    concurrent_modification_exception() | 
+    invalid_certificate_authority_exception() | 
+    not_found_exception() | 
+    name_in_use_exception().
+
+-type update_profile_errors() ::
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    name_in_use_exception().
+
+-type update_room_errors() ::
+    not_found_exception() | 
+    name_in_use_exception().
+
+-type update_skill_group_errors() ::
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    name_in_use_exception().
 
 %%====================================================================
 %% API
@@ -2210,9 +2508,7 @@
 -spec approve_skill(map(), approve_skill_request()) ->
     {ok, approve_skill_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, approve_skill_errors(), tuple()}.
 approve_skill(Client, Input)
   when is_map(Client), is_map(Input) ->
     approve_skill(Client, Input, []).
@@ -2220,9 +2516,7 @@ approve_skill(Client, Input)
 -spec approve_skill(map(), approve_skill_request(), proplists:proplist()) ->
     {ok, approve_skill_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, approve_skill_errors(), tuple()}.
 approve_skill(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ApproveSkill">>, Input, Options).
@@ -2231,7 +2525,7 @@ approve_skill(Client, Input, Options)
 -spec associate_contact_with_address_book(map(), associate_contact_with_address_book_request()) ->
     {ok, associate_contact_with_address_book_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, associate_contact_with_address_book_errors(), tuple()}.
 associate_contact_with_address_book(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_contact_with_address_book(Client, Input, []).
@@ -2239,7 +2533,7 @@ associate_contact_with_address_book(Client, Input)
 -spec associate_contact_with_address_book(map(), associate_contact_with_address_book_request(), proplists:proplist()) ->
     {ok, associate_contact_with_address_book_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, associate_contact_with_address_book_errors(), tuple()}.
 associate_contact_with_address_book(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateContactWithAddressBook">>, Input, Options).
@@ -2248,9 +2542,7 @@ associate_contact_with_address_book(Client, Input, Options)
 -spec associate_device_with_network_profile(map(), associate_device_with_network_profile_request()) ->
     {ok, associate_device_with_network_profile_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, device_not_registered_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, associate_device_with_network_profile_errors(), tuple()}.
 associate_device_with_network_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_device_with_network_profile(Client, Input, []).
@@ -2258,9 +2550,7 @@ associate_device_with_network_profile(Client, Input)
 -spec associate_device_with_network_profile(map(), associate_device_with_network_profile_request(), proplists:proplist()) ->
     {ok, associate_device_with_network_profile_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, device_not_registered_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, associate_device_with_network_profile_errors(), tuple()}.
 associate_device_with_network_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateDeviceWithNetworkProfile">>, Input, Options).
@@ -2275,9 +2565,7 @@ associate_device_with_network_profile(Client, Input, Options)
 -spec associate_device_with_room(map(), associate_device_with_room_request()) ->
     {ok, associate_device_with_room_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, device_not_registered_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, associate_device_with_room_errors(), tuple()}.
 associate_device_with_room(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_device_with_room(Client, Input, []).
@@ -2285,9 +2573,7 @@ associate_device_with_room(Client, Input)
 -spec associate_device_with_room(map(), associate_device_with_room_request(), proplists:proplist()) ->
     {ok, associate_device_with_room_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, device_not_registered_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, associate_device_with_room_errors(), tuple()}.
 associate_device_with_room(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateDeviceWithRoom">>, Input, Options).
@@ -2299,7 +2585,7 @@ associate_device_with_room(Client, Input, Options)
 -spec associate_skill_group_with_room(map(), associate_skill_group_with_room_request()) ->
     {ok, associate_skill_group_with_room_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()}.
+    {error, associate_skill_group_with_room_errors(), tuple()}.
 associate_skill_group_with_room(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_skill_group_with_room(Client, Input, []).
@@ -2307,7 +2593,7 @@ associate_skill_group_with_room(Client, Input)
 -spec associate_skill_group_with_room(map(), associate_skill_group_with_room_request(), proplists:proplist()) ->
     {ok, associate_skill_group_with_room_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()}.
+    {error, associate_skill_group_with_room_errors(), tuple()}.
 associate_skill_group_with_room(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateSkillGroupWithRoom">>, Input, Options).
@@ -2316,9 +2602,7 @@ associate_skill_group_with_room(Client, Input, Options)
 -spec associate_skill_with_skill_group(map(), associate_skill_with_skill_group_request()) ->
     {ok, associate_skill_with_skill_group_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, skill_not_linked_exception(), tuple()}.
+    {error, associate_skill_with_skill_group_errors(), tuple()}.
 associate_skill_with_skill_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_skill_with_skill_group(Client, Input, []).
@@ -2326,9 +2610,7 @@ associate_skill_with_skill_group(Client, Input)
 -spec associate_skill_with_skill_group(map(), associate_skill_with_skill_group_request(), proplists:proplist()) ->
     {ok, associate_skill_with_skill_group_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, skill_not_linked_exception(), tuple()}.
+    {error, associate_skill_with_skill_group_errors(), tuple()}.
 associate_skill_with_skill_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateSkillWithSkillGroup">>, Input, Options).
@@ -2338,8 +2620,7 @@ associate_skill_with_skill_group(Client, Input, Options)
 -spec associate_skill_with_users(map(), associate_skill_with_users_request()) ->
     {ok, associate_skill_with_users_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, associate_skill_with_users_errors(), tuple()}.
 associate_skill_with_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_skill_with_users(Client, Input, []).
@@ -2347,8 +2628,7 @@ associate_skill_with_users(Client, Input)
 -spec associate_skill_with_users(map(), associate_skill_with_users_request(), proplists:proplist()) ->
     {ok, associate_skill_with_users_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, associate_skill_with_users_errors(), tuple()}.
 associate_skill_with_users(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateSkillWithUsers">>, Input, Options).
@@ -2357,8 +2637,7 @@ associate_skill_with_users(Client, Input, Options)
 -spec create_address_book(map(), create_address_book_request()) ->
     {ok, create_address_book_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_address_book_errors(), tuple()}.
 create_address_book(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_address_book(Client, Input, []).
@@ -2366,8 +2645,7 @@ create_address_book(Client, Input)
 -spec create_address_book(map(), create_address_book_request(), proplists:proplist()) ->
     {ok, create_address_book_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_address_book_errors(), tuple()}.
 create_address_book(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAddressBook">>, Input, Options).
@@ -2378,7 +2656,7 @@ create_address_book(Client, Input, Options)
 -spec create_business_report_schedule(map(), create_business_report_schedule_request()) ->
     {ok, create_business_report_schedule_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()}.
+    {error, create_business_report_schedule_errors(), tuple()}.
 create_business_report_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_business_report_schedule(Client, Input, []).
@@ -2386,7 +2664,7 @@ create_business_report_schedule(Client, Input)
 -spec create_business_report_schedule(map(), create_business_report_schedule_request(), proplists:proplist()) ->
     {ok, create_business_report_schedule_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()}.
+    {error, create_business_report_schedule_errors(), tuple()}.
 create_business_report_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBusinessReportSchedule">>, Input, Options).
@@ -2395,7 +2673,7 @@ create_business_report_schedule(Client, Input, Options)
 -spec create_conference_provider(map(), create_conference_provider_request()) ->
     {ok, create_conference_provider_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()}.
+    {error, create_conference_provider_errors(), tuple()}.
 create_conference_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_conference_provider(Client, Input, []).
@@ -2403,7 +2681,7 @@ create_conference_provider(Client, Input)
 -spec create_conference_provider(map(), create_conference_provider_request(), proplists:proplist()) ->
     {ok, create_conference_provider_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()}.
+    {error, create_conference_provider_errors(), tuple()}.
 create_conference_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateConferenceProvider">>, Input, Options).
@@ -2412,8 +2690,7 @@ create_conference_provider(Client, Input, Options)
 -spec create_contact(map(), create_contact_request()) ->
     {ok, create_contact_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_contact_errors(), tuple()}.
 create_contact(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_contact(Client, Input, []).
@@ -2421,8 +2698,7 @@ create_contact(Client, Input)
 -spec create_contact(map(), create_contact_request(), proplists:proplist()) ->
     {ok, create_contact_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_contact_errors(), tuple()}.
 create_contact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateContact">>, Input, Options).
@@ -2431,8 +2707,7 @@ create_contact(Client, Input, Options)
 -spec create_gateway_group(map(), create_gateway_group_request()) ->
     {ok, create_gateway_group_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_gateway_group_errors(), tuple()}.
 create_gateway_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_gateway_group(Client, Input, []).
@@ -2440,8 +2715,7 @@ create_gateway_group(Client, Input)
 -spec create_gateway_group(map(), create_gateway_group_request(), proplists:proplist()) ->
     {ok, create_gateway_group_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_gateway_group_errors(), tuple()}.
 create_gateway_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGatewayGroup">>, Input, Options).
@@ -2450,11 +2724,7 @@ create_gateway_group(Client, Input, Options)
 -spec create_network_profile(map(), create_network_profile_request()) ->
     {ok, create_network_profile_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_certificate_authority_exception(), tuple()} |
-    {error, invalid_service_linked_role_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_network_profile_errors(), tuple()}.
 create_network_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_network_profile(Client, Input, []).
@@ -2462,11 +2732,7 @@ create_network_profile(Client, Input)
 -spec create_network_profile(map(), create_network_profile_request(), proplists:proplist()) ->
     {ok, create_network_profile_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_certificate_authority_exception(), tuple()} |
-    {error, invalid_service_linked_role_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_network_profile_errors(), tuple()}.
 create_network_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateNetworkProfile">>, Input, Options).
@@ -2475,9 +2741,7 @@ create_network_profile(Client, Input, Options)
 -spec create_profile(map(), create_profile_request()) ->
     {ok, create_profile_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_profile_errors(), tuple()}.
 create_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_profile(Client, Input, []).
@@ -2485,9 +2749,7 @@ create_profile(Client, Input)
 -spec create_profile(map(), create_profile_request(), proplists:proplist()) ->
     {ok, create_profile_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_profile_errors(), tuple()}.
 create_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateProfile">>, Input, Options).
@@ -2496,8 +2758,7 @@ create_profile(Client, Input, Options)
 -spec create_room(map(), create_room_request()) ->
     {ok, create_room_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_room_errors(), tuple()}.
 create_room(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_room(Client, Input, []).
@@ -2505,8 +2766,7 @@ create_room(Client, Input)
 -spec create_room(map(), create_room_request(), proplists:proplist()) ->
     {ok, create_room_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_room_errors(), tuple()}.
 create_room(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRoom">>, Input, Options).
@@ -2515,9 +2775,7 @@ create_room(Client, Input, Options)
 -spec create_skill_group(map(), create_skill_group_request()) ->
     {ok, create_skill_group_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_skill_group_errors(), tuple()}.
 create_skill_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_skill_group(Client, Input, []).
@@ -2525,9 +2783,7 @@ create_skill_group(Client, Input)
 -spec create_skill_group(map(), create_skill_group_request(), proplists:proplist()) ->
     {ok, create_skill_group_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_skill_group_errors(), tuple()}.
 create_skill_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSkillGroup">>, Input, Options).
@@ -2536,9 +2792,7 @@ create_skill_group(Client, Input, Options)
 -spec create_user(map(), create_user_request()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, create_user_errors(), tuple()}.
 create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user(Client, Input, []).
@@ -2546,9 +2800,7 @@ create_user(Client, Input)
 -spec create_user(map(), create_user_request(), proplists:proplist()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, create_user_errors(), tuple()}.
 create_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUser">>, Input, Options).
@@ -2557,8 +2809,7 @@ create_user(Client, Input, Options)
 -spec delete_address_book(map(), delete_address_book_request()) ->
     {ok, delete_address_book_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_address_book_errors(), tuple()}.
 delete_address_book(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_address_book(Client, Input, []).
@@ -2566,8 +2817,7 @@ delete_address_book(Client, Input)
 -spec delete_address_book(map(), delete_address_book_request(), proplists:proplist()) ->
     {ok, delete_address_book_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_address_book_errors(), tuple()}.
 delete_address_book(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAddressBook">>, Input, Options).
@@ -2578,8 +2828,7 @@ delete_address_book(Client, Input, Options)
 -spec delete_business_report_schedule(map(), delete_business_report_schedule_request()) ->
     {ok, delete_business_report_schedule_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_business_report_schedule_errors(), tuple()}.
 delete_business_report_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_business_report_schedule(Client, Input, []).
@@ -2587,8 +2836,7 @@ delete_business_report_schedule(Client, Input)
 -spec delete_business_report_schedule(map(), delete_business_report_schedule_request(), proplists:proplist()) ->
     {ok, delete_business_report_schedule_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_business_report_schedule_errors(), tuple()}.
 delete_business_report_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBusinessReportSchedule">>, Input, Options).
@@ -2597,7 +2845,7 @@ delete_business_report_schedule(Client, Input, Options)
 -spec delete_conference_provider(map(), delete_conference_provider_request()) ->
     {ok, delete_conference_provider_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_conference_provider_errors(), tuple()}.
 delete_conference_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_conference_provider(Client, Input, []).
@@ -2605,7 +2853,7 @@ delete_conference_provider(Client, Input)
 -spec delete_conference_provider(map(), delete_conference_provider_request(), proplists:proplist()) ->
     {ok, delete_conference_provider_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_conference_provider_errors(), tuple()}.
 delete_conference_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConferenceProvider">>, Input, Options).
@@ -2614,8 +2862,7 @@ delete_conference_provider(Client, Input, Options)
 -spec delete_contact(map(), delete_contact_request()) ->
     {ok, delete_contact_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_contact_errors(), tuple()}.
 delete_contact(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_contact(Client, Input, []).
@@ -2623,8 +2870,7 @@ delete_contact(Client, Input)
 -spec delete_contact(map(), delete_contact_request(), proplists:proplist()) ->
     {ok, delete_contact_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_contact_errors(), tuple()}.
 delete_contact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteContact">>, Input, Options).
@@ -2633,9 +2879,7 @@ delete_contact(Client, Input, Options)
 -spec delete_device(map(), delete_device_request()) ->
     {ok, delete_device_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_certificate_authority_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_device_errors(), tuple()}.
 delete_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_device(Client, Input, []).
@@ -2643,9 +2887,7 @@ delete_device(Client, Input)
 -spec delete_device(map(), delete_device_request(), proplists:proplist()) ->
     {ok, delete_device_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_certificate_authority_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_device_errors(), tuple()}.
 delete_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDevice">>, Input, Options).
@@ -2661,9 +2903,7 @@ delete_device(Client, Input, Options)
 -spec delete_device_usage_data(map(), delete_device_usage_data_request()) ->
     {ok, delete_device_usage_data_response(), tuple()} |
     {error, any()} |
-    {error, device_not_registered_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_device_usage_data_errors(), tuple()}.
 delete_device_usage_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_device_usage_data(Client, Input, []).
@@ -2671,9 +2911,7 @@ delete_device_usage_data(Client, Input)
 -spec delete_device_usage_data(map(), delete_device_usage_data_request(), proplists:proplist()) ->
     {ok, delete_device_usage_data_response(), tuple()} |
     {error, any()} |
-    {error, device_not_registered_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_device_usage_data_errors(), tuple()}.
 delete_device_usage_data(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDeviceUsageData">>, Input, Options).
@@ -2682,7 +2920,7 @@ delete_device_usage_data(Client, Input, Options)
 -spec delete_gateway_group(map(), delete_gateway_group_request()) ->
     {ok, delete_gateway_group_response(), tuple()} |
     {error, any()} |
-    {error, resource_associated_exception(), tuple()}.
+    {error, delete_gateway_group_errors(), tuple()}.
 delete_gateway_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_gateway_group(Client, Input, []).
@@ -2690,7 +2928,7 @@ delete_gateway_group(Client, Input)
 -spec delete_gateway_group(map(), delete_gateway_group_request(), proplists:proplist()) ->
     {ok, delete_gateway_group_response(), tuple()} |
     {error, any()} |
-    {error, resource_associated_exception(), tuple()}.
+    {error, delete_gateway_group_errors(), tuple()}.
 delete_gateway_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGatewayGroup">>, Input, Options).
@@ -2699,9 +2937,7 @@ delete_gateway_group(Client, Input, Options)
 -spec delete_network_profile(map(), delete_network_profile_request()) ->
     {ok, delete_network_profile_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_network_profile_errors(), tuple()}.
 delete_network_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_network_profile(Client, Input, []).
@@ -2709,9 +2945,7 @@ delete_network_profile(Client, Input)
 -spec delete_network_profile(map(), delete_network_profile_request(), proplists:proplist()) ->
     {ok, delete_network_profile_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_network_profile_errors(), tuple()}.
 delete_network_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteNetworkProfile">>, Input, Options).
@@ -2720,8 +2954,7 @@ delete_network_profile(Client, Input, Options)
 -spec delete_profile(map(), delete_profile_request()) ->
     {ok, delete_profile_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_profile_errors(), tuple()}.
 delete_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_profile(Client, Input, []).
@@ -2729,8 +2962,7 @@ delete_profile(Client, Input)
 -spec delete_profile(map(), delete_profile_request(), proplists:proplist()) ->
     {ok, delete_profile_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_profile_errors(), tuple()}.
 delete_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProfile">>, Input, Options).
@@ -2739,8 +2971,7 @@ delete_profile(Client, Input, Options)
 -spec delete_room(map(), delete_room_request()) ->
     {ok, delete_room_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_room_errors(), tuple()}.
 delete_room(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_room(Client, Input, []).
@@ -2748,8 +2979,7 @@ delete_room(Client, Input)
 -spec delete_room(map(), delete_room_request(), proplists:proplist()) ->
     {ok, delete_room_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_room_errors(), tuple()}.
 delete_room(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRoom">>, Input, Options).
@@ -2759,7 +2989,7 @@ delete_room(Client, Input, Options)
 -spec delete_room_skill_parameter(map(), delete_room_skill_parameter_request()) ->
     {ok, delete_room_skill_parameter_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()}.
+    {error, delete_room_skill_parameter_errors(), tuple()}.
 delete_room_skill_parameter(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_room_skill_parameter(Client, Input, []).
@@ -2767,7 +2997,7 @@ delete_room_skill_parameter(Client, Input)
 -spec delete_room_skill_parameter(map(), delete_room_skill_parameter_request(), proplists:proplist()) ->
     {ok, delete_room_skill_parameter_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()}.
+    {error, delete_room_skill_parameter_errors(), tuple()}.
 delete_room_skill_parameter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRoomSkillParameter">>, Input, Options).
@@ -2776,8 +3006,7 @@ delete_room_skill_parameter(Client, Input, Options)
 -spec delete_skill_authorization(map(), delete_skill_authorization_request()) ->
     {ok, delete_skill_authorization_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_skill_authorization_errors(), tuple()}.
 delete_skill_authorization(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_skill_authorization(Client, Input, []).
@@ -2785,8 +3014,7 @@ delete_skill_authorization(Client, Input)
 -spec delete_skill_authorization(map(), delete_skill_authorization_request(), proplists:proplist()) ->
     {ok, delete_skill_authorization_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_skill_authorization_errors(), tuple()}.
 delete_skill_authorization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSkillAuthorization">>, Input, Options).
@@ -2795,8 +3023,7 @@ delete_skill_authorization(Client, Input, Options)
 -spec delete_skill_group(map(), delete_skill_group_request()) ->
     {ok, delete_skill_group_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_skill_group_errors(), tuple()}.
 delete_skill_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_skill_group(Client, Input, []).
@@ -2804,8 +3031,7 @@ delete_skill_group(Client, Input)
 -spec delete_skill_group(map(), delete_skill_group_request(), proplists:proplist()) ->
     {ok, delete_skill_group_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_skill_group_errors(), tuple()}.
 delete_skill_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSkillGroup">>, Input, Options).
@@ -2814,8 +3040,7 @@ delete_skill_group(Client, Input, Options)
 -spec delete_user(map(), delete_user_request()) ->
     {ok, delete_user_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_user_errors(), tuple()}.
 delete_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user(Client, Input, []).
@@ -2823,8 +3048,7 @@ delete_user(Client, Input)
 -spec delete_user(map(), delete_user_request(), proplists:proplist()) ->
     {ok, delete_user_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_user_errors(), tuple()}.
 delete_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUser">>, Input, Options).
@@ -2853,8 +3077,7 @@ disassociate_contact_from_address_book(Client, Input, Options)
 -spec disassociate_device_from_room(map(), disassociate_device_from_room_request()) ->
     {ok, disassociate_device_from_room_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, device_not_registered_exception(), tuple()}.
+    {error, disassociate_device_from_room_errors(), tuple()}.
 disassociate_device_from_room(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_device_from_room(Client, Input, []).
@@ -2862,8 +3085,7 @@ disassociate_device_from_room(Client, Input)
 -spec disassociate_device_from_room(map(), disassociate_device_from_room_request(), proplists:proplist()) ->
     {ok, disassociate_device_from_room_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, device_not_registered_exception(), tuple()}.
+    {error, disassociate_device_from_room_errors(), tuple()}.
 disassociate_device_from_room(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateDeviceFromRoom">>, Input, Options).
@@ -2872,8 +3094,7 @@ disassociate_device_from_room(Client, Input, Options)
 -spec disassociate_skill_from_skill_group(map(), disassociate_skill_from_skill_group_request()) ->
     {ok, disassociate_skill_from_skill_group_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, disassociate_skill_from_skill_group_errors(), tuple()}.
 disassociate_skill_from_skill_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_skill_from_skill_group(Client, Input, []).
@@ -2881,8 +3102,7 @@ disassociate_skill_from_skill_group(Client, Input)
 -spec disassociate_skill_from_skill_group(map(), disassociate_skill_from_skill_group_request(), proplists:proplist()) ->
     {ok, disassociate_skill_from_skill_group_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, disassociate_skill_from_skill_group_errors(), tuple()}.
 disassociate_skill_from_skill_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateSkillFromSkillGroup">>, Input, Options).
@@ -2893,8 +3113,7 @@ disassociate_skill_from_skill_group(Client, Input, Options)
 -spec disassociate_skill_from_users(map(), disassociate_skill_from_users_request()) ->
     {ok, disassociate_skill_from_users_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, disassociate_skill_from_users_errors(), tuple()}.
 disassociate_skill_from_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_skill_from_users(Client, Input, []).
@@ -2902,8 +3121,7 @@ disassociate_skill_from_users(Client, Input)
 -spec disassociate_skill_from_users(map(), disassociate_skill_from_users_request(), proplists:proplist()) ->
     {ok, disassociate_skill_from_users_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, disassociate_skill_from_users_errors(), tuple()}.
 disassociate_skill_from_users(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateSkillFromUsers">>, Input, Options).
@@ -2915,7 +3133,7 @@ disassociate_skill_from_users(Client, Input, Options)
 -spec disassociate_skill_group_from_room(map(), disassociate_skill_group_from_room_request()) ->
     {ok, disassociate_skill_group_from_room_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()}.
+    {error, disassociate_skill_group_from_room_errors(), tuple()}.
 disassociate_skill_group_from_room(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_skill_group_from_room(Client, Input, []).
@@ -2923,7 +3141,7 @@ disassociate_skill_group_from_room(Client, Input)
 -spec disassociate_skill_group_from_room(map(), disassociate_skill_group_from_room_request(), proplists:proplist()) ->
     {ok, disassociate_skill_group_from_room_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()}.
+    {error, disassociate_skill_group_from_room_errors(), tuple()}.
 disassociate_skill_group_from_room(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateSkillGroupFromRoom">>, Input, Options).
@@ -2932,7 +3150,7 @@ disassociate_skill_group_from_room(Client, Input, Options)
 -spec forget_smart_home_appliances(map(), forget_smart_home_appliances_request()) ->
     {ok, forget_smart_home_appliances_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, forget_smart_home_appliances_errors(), tuple()}.
 forget_smart_home_appliances(Client, Input)
   when is_map(Client), is_map(Input) ->
     forget_smart_home_appliances(Client, Input, []).
@@ -2940,7 +3158,7 @@ forget_smart_home_appliances(Client, Input)
 -spec forget_smart_home_appliances(map(), forget_smart_home_appliances_request(), proplists:proplist()) ->
     {ok, forget_smart_home_appliances_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, forget_smart_home_appliances_errors(), tuple()}.
 forget_smart_home_appliances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ForgetSmartHomeAppliances">>, Input, Options).
@@ -2949,7 +3167,7 @@ forget_smart_home_appliances(Client, Input, Options)
 -spec get_address_book(map(), get_address_book_request()) ->
     {ok, get_address_book_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_address_book_errors(), tuple()}.
 get_address_book(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_address_book(Client, Input, []).
@@ -2957,7 +3175,7 @@ get_address_book(Client, Input)
 -spec get_address_book(map(), get_address_book_request(), proplists:proplist()) ->
     {ok, get_address_book_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_address_book_errors(), tuple()}.
 get_address_book(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAddressBook">>, Input, Options).
@@ -2966,7 +3184,7 @@ get_address_book(Client, Input, Options)
 -spec get_conference_preference(map(), get_conference_preference_request()) ->
     {ok, get_conference_preference_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_conference_preference_errors(), tuple()}.
 get_conference_preference(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_conference_preference(Client, Input, []).
@@ -2974,7 +3192,7 @@ get_conference_preference(Client, Input)
 -spec get_conference_preference(map(), get_conference_preference_request(), proplists:proplist()) ->
     {ok, get_conference_preference_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_conference_preference_errors(), tuple()}.
 get_conference_preference(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetConferencePreference">>, Input, Options).
@@ -2983,7 +3201,7 @@ get_conference_preference(Client, Input, Options)
 -spec get_conference_provider(map(), get_conference_provider_request()) ->
     {ok, get_conference_provider_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_conference_provider_errors(), tuple()}.
 get_conference_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_conference_provider(Client, Input, []).
@@ -2991,7 +3209,7 @@ get_conference_provider(Client, Input)
 -spec get_conference_provider(map(), get_conference_provider_request(), proplists:proplist()) ->
     {ok, get_conference_provider_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_conference_provider_errors(), tuple()}.
 get_conference_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetConferenceProvider">>, Input, Options).
@@ -3000,7 +3218,7 @@ get_conference_provider(Client, Input, Options)
 -spec get_contact(map(), get_contact_request()) ->
     {ok, get_contact_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_contact_errors(), tuple()}.
 get_contact(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_contact(Client, Input, []).
@@ -3008,7 +3226,7 @@ get_contact(Client, Input)
 -spec get_contact(map(), get_contact_request(), proplists:proplist()) ->
     {ok, get_contact_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_contact_errors(), tuple()}.
 get_contact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetContact">>, Input, Options).
@@ -3017,7 +3235,7 @@ get_contact(Client, Input, Options)
 -spec get_device(map(), get_device_request()) ->
     {ok, get_device_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_device_errors(), tuple()}.
 get_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_device(Client, Input, []).
@@ -3025,7 +3243,7 @@ get_device(Client, Input)
 -spec get_device(map(), get_device_request(), proplists:proplist()) ->
     {ok, get_device_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_device_errors(), tuple()}.
 get_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDevice">>, Input, Options).
@@ -3034,7 +3252,7 @@ get_device(Client, Input, Options)
 -spec get_gateway(map(), get_gateway_request()) ->
     {ok, get_gateway_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_gateway_errors(), tuple()}.
 get_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_gateway(Client, Input, []).
@@ -3042,7 +3260,7 @@ get_gateway(Client, Input)
 -spec get_gateway(map(), get_gateway_request(), proplists:proplist()) ->
     {ok, get_gateway_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_gateway_errors(), tuple()}.
 get_gateway(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetGateway">>, Input, Options).
@@ -3051,7 +3269,7 @@ get_gateway(Client, Input, Options)
 -spec get_gateway_group(map(), get_gateway_group_request()) ->
     {ok, get_gateway_group_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_gateway_group_errors(), tuple()}.
 get_gateway_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_gateway_group(Client, Input, []).
@@ -3059,7 +3277,7 @@ get_gateway_group(Client, Input)
 -spec get_gateway_group(map(), get_gateway_group_request(), proplists:proplist()) ->
     {ok, get_gateway_group_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_gateway_group_errors(), tuple()}.
 get_gateway_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetGatewayGroup">>, Input, Options).
@@ -3070,7 +3288,7 @@ get_gateway_group(Client, Input, Options)
 -spec get_invitation_configuration(map(), get_invitation_configuration_request()) ->
     {ok, get_invitation_configuration_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_invitation_configuration_errors(), tuple()}.
 get_invitation_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_invitation_configuration(Client, Input, []).
@@ -3078,7 +3296,7 @@ get_invitation_configuration(Client, Input)
 -spec get_invitation_configuration(map(), get_invitation_configuration_request(), proplists:proplist()) ->
     {ok, get_invitation_configuration_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_invitation_configuration_errors(), tuple()}.
 get_invitation_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInvitationConfiguration">>, Input, Options).
@@ -3087,8 +3305,7 @@ get_invitation_configuration(Client, Input, Options)
 -spec get_network_profile(map(), get_network_profile_request()) ->
     {ok, get_network_profile_response(), tuple()} |
     {error, any()} |
-    {error, invalid_secrets_manager_resource_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_network_profile_errors(), tuple()}.
 get_network_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_network_profile(Client, Input, []).
@@ -3096,8 +3313,7 @@ get_network_profile(Client, Input)
 -spec get_network_profile(map(), get_network_profile_request(), proplists:proplist()) ->
     {ok, get_network_profile_response(), tuple()} |
     {error, any()} |
-    {error, invalid_secrets_manager_resource_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_network_profile_errors(), tuple()}.
 get_network_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetNetworkProfile">>, Input, Options).
@@ -3106,7 +3322,7 @@ get_network_profile(Client, Input, Options)
 -spec get_profile(map(), get_profile_request()) ->
     {ok, get_profile_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_profile_errors(), tuple()}.
 get_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_profile(Client, Input, []).
@@ -3114,7 +3330,7 @@ get_profile(Client, Input)
 -spec get_profile(map(), get_profile_request(), proplists:proplist()) ->
     {ok, get_profile_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_profile_errors(), tuple()}.
 get_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetProfile">>, Input, Options).
@@ -3123,7 +3339,7 @@ get_profile(Client, Input, Options)
 -spec get_room(map(), get_room_request()) ->
     {ok, get_room_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_room_errors(), tuple()}.
 get_room(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_room(Client, Input, []).
@@ -3131,7 +3347,7 @@ get_room(Client, Input)
 -spec get_room(map(), get_room_request(), proplists:proplist()) ->
     {ok, get_room_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_room_errors(), tuple()}.
 get_room(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRoom">>, Input, Options).
@@ -3141,7 +3357,7 @@ get_room(Client, Input, Options)
 -spec get_room_skill_parameter(map(), get_room_skill_parameter_request()) ->
     {ok, get_room_skill_parameter_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_room_skill_parameter_errors(), tuple()}.
 get_room_skill_parameter(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_room_skill_parameter(Client, Input, []).
@@ -3149,7 +3365,7 @@ get_room_skill_parameter(Client, Input)
 -spec get_room_skill_parameter(map(), get_room_skill_parameter_request(), proplists:proplist()) ->
     {ok, get_room_skill_parameter_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_room_skill_parameter_errors(), tuple()}.
 get_room_skill_parameter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRoomSkillParameter">>, Input, Options).
@@ -3158,7 +3374,7 @@ get_room_skill_parameter(Client, Input, Options)
 -spec get_skill_group(map(), get_skill_group_request()) ->
     {ok, get_skill_group_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_skill_group_errors(), tuple()}.
 get_skill_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_skill_group(Client, Input, []).
@@ -3166,7 +3382,7 @@ get_skill_group(Client, Input)
 -spec get_skill_group(map(), get_skill_group_request(), proplists:proplist()) ->
     {ok, get_skill_group_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_skill_group_errors(), tuple()}.
 get_skill_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSkillGroup">>, Input, Options).
@@ -3211,7 +3427,7 @@ list_conference_providers(Client, Input, Options)
 -spec list_device_events(map(), list_device_events_request()) ->
     {ok, list_device_events_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_device_events_errors(), tuple()}.
 list_device_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_device_events(Client, Input, []).
@@ -3219,7 +3435,7 @@ list_device_events(Client, Input)
 -spec list_device_events(map(), list_device_events_request(), proplists:proplist()) ->
     {ok, list_device_events_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_device_events_errors(), tuple()}.
 list_device_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDeviceEvents">>, Input, Options).
@@ -3311,7 +3527,7 @@ list_skills_store_skills_by_category(Client, Input, Options)
 -spec list_smart_home_appliances(map(), list_smart_home_appliances_request()) ->
     {ok, list_smart_home_appliances_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_smart_home_appliances_errors(), tuple()}.
 list_smart_home_appliances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_smart_home_appliances(Client, Input, []).
@@ -3319,7 +3535,7 @@ list_smart_home_appliances(Client, Input)
 -spec list_smart_home_appliances(map(), list_smart_home_appliances_request(), proplists:proplist()) ->
     {ok, list_smart_home_appliances_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_smart_home_appliances_errors(), tuple()}.
 list_smart_home_appliances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSmartHomeAppliances">>, Input, Options).
@@ -3328,7 +3544,7 @@ list_smart_home_appliances(Client, Input, Options)
 -spec list_tags(map(), list_tags_request()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags(Client, Input, []).
@@ -3336,7 +3552,7 @@ list_tags(Client, Input)
 -spec list_tags(map(), list_tags_request(), proplists:proplist()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTags">>, Input, Options).
@@ -3347,7 +3563,7 @@ list_tags(Client, Input, Options)
 -spec put_conference_preference(map(), put_conference_preference_request()) ->
     {ok, put_conference_preference_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, put_conference_preference_errors(), tuple()}.
 put_conference_preference(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_conference_preference(Client, Input, []).
@@ -3355,7 +3571,7 @@ put_conference_preference(Client, Input)
 -spec put_conference_preference(map(), put_conference_preference_request(), proplists:proplist()) ->
     {ok, put_conference_preference_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, put_conference_preference_errors(), tuple()}.
 put_conference_preference(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutConferencePreference">>, Input, Options).
@@ -3366,8 +3582,7 @@ put_conference_preference(Client, Input, Options)
 -spec put_invitation_configuration(map(), put_invitation_configuration_request()) ->
     {ok, put_invitation_configuration_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, put_invitation_configuration_errors(), tuple()}.
 put_invitation_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_invitation_configuration(Client, Input, []).
@@ -3375,8 +3590,7 @@ put_invitation_configuration(Client, Input)
 -spec put_invitation_configuration(map(), put_invitation_configuration_request(), proplists:proplist()) ->
     {ok, put_invitation_configuration_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, put_invitation_configuration_errors(), tuple()}.
 put_invitation_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutInvitationConfiguration">>, Input, Options).
@@ -3389,7 +3603,7 @@ put_invitation_configuration(Client, Input, Options)
 -spec put_room_skill_parameter(map(), put_room_skill_parameter_request()) ->
     {ok, put_room_skill_parameter_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()}.
+    {error, put_room_skill_parameter_errors(), tuple()}.
 put_room_skill_parameter(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_room_skill_parameter(Client, Input, []).
@@ -3397,7 +3611,7 @@ put_room_skill_parameter(Client, Input)
 -spec put_room_skill_parameter(map(), put_room_skill_parameter_request(), proplists:proplist()) ->
     {ok, put_room_skill_parameter_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()}.
+    {error, put_room_skill_parameter_errors(), tuple()}.
 put_room_skill_parameter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRoomSkillParameter">>, Input, Options).
@@ -3411,8 +3625,7 @@ put_room_skill_parameter(Client, Input, Options)
 -spec put_skill_authorization(map(), put_skill_authorization_request()) ->
     {ok, put_skill_authorization_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, put_skill_authorization_errors(), tuple()}.
 put_skill_authorization(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_skill_authorization(Client, Input, []).
@@ -3420,8 +3633,7 @@ put_skill_authorization(Client, Input)
 -spec put_skill_authorization(map(), put_skill_authorization_request(), proplists:proplist()) ->
     {ok, put_skill_authorization_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, put_skill_authorization_errors(), tuple()}.
 put_skill_authorization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutSkillAuthorization">>, Input, Options).
@@ -3432,10 +3644,7 @@ put_skill_authorization(Client, Input, Options)
 -spec register_avs_device(map(), register_avs_device_request()) ->
     {ok, register_avs_device_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_device_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, register_avs_device_errors(), tuple()}.
 register_avs_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_avs_device(Client, Input, []).
@@ -3443,10 +3652,7 @@ register_avs_device(Client, Input)
 -spec register_avs_device(map(), register_avs_device_request(), proplists:proplist()) ->
     {ok, register_avs_device_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_device_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, register_avs_device_errors(), tuple()}.
 register_avs_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterAVSDevice">>, Input, Options).
@@ -3461,8 +3667,7 @@ register_avs_device(Client, Input, Options)
 -spec reject_skill(map(), reject_skill_request()) ->
     {ok, reject_skill_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, reject_skill_errors(), tuple()}.
 reject_skill(Client, Input)
   when is_map(Client), is_map(Input) ->
     reject_skill(Client, Input, []).
@@ -3470,8 +3675,7 @@ reject_skill(Client, Input)
 -spec reject_skill(map(), reject_skill_request(), proplists:proplist()) ->
     {ok, reject_skill_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, reject_skill_errors(), tuple()}.
 reject_skill(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RejectSkill">>, Input, Options).
@@ -3495,7 +3699,7 @@ reject_skill(Client, Input, Options)
 -spec resolve_room(map(), resolve_room_request()) ->
     {ok, resolve_room_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, resolve_room_errors(), tuple()}.
 resolve_room(Client, Input)
   when is_map(Client), is_map(Input) ->
     resolve_room(Client, Input, []).
@@ -3503,7 +3707,7 @@ resolve_room(Client, Input)
 -spec resolve_room(map(), resolve_room_request(), proplists:proplist()) ->
     {ok, resolve_room_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, resolve_room_errors(), tuple()}.
 resolve_room(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResolveRoom">>, Input, Options).
@@ -3512,8 +3716,7 @@ resolve_room(Client, Input, Options)
 -spec revoke_invitation(map(), revoke_invitation_request()) ->
     {ok, revoke_invitation_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, revoke_invitation_errors(), tuple()}.
 revoke_invitation(Client, Input)
   when is_map(Client), is_map(Input) ->
     revoke_invitation(Client, Input, []).
@@ -3521,8 +3724,7 @@ revoke_invitation(Client, Input)
 -spec revoke_invitation(map(), revoke_invitation_request(), proplists:proplist()) ->
     {ok, revoke_invitation_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, revoke_invitation_errors(), tuple()}.
 revoke_invitation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RevokeInvitation">>, Input, Options).
@@ -3665,8 +3867,7 @@ search_users(Client, Input, Options)
 -spec send_announcement(map(), send_announcement_request()) ->
     {ok, send_announcement_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, send_announcement_errors(), tuple()}.
 send_announcement(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_announcement(Client, Input, []).
@@ -3674,8 +3875,7 @@ send_announcement(Client, Input)
 -spec send_announcement(map(), send_announcement_request(), proplists:proplist()) ->
     {ok, send_announcement_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, send_announcement_errors(), tuple()}.
 send_announcement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendAnnouncement">>, Input, Options).
@@ -3687,9 +3887,7 @@ send_announcement(Client, Input, Options)
 -spec send_invitation(map(), send_invitation_request()) ->
     {ok, send_invitation_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_user_status_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, send_invitation_errors(), tuple()}.
 send_invitation(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_invitation(Client, Input, []).
@@ -3697,9 +3895,7 @@ send_invitation(Client, Input)
 -spec send_invitation(map(), send_invitation_request(), proplists:proplist()) ->
     {ok, send_invitation_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_user_status_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, send_invitation_errors(), tuple()}.
 send_invitation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendInvitation">>, Input, Options).
@@ -3726,7 +3922,7 @@ send_invitation(Client, Input, Options)
 -spec start_device_sync(map(), start_device_sync_request()) ->
     {ok, start_device_sync_response(), tuple()} |
     {error, any()} |
-    {error, device_not_registered_exception(), tuple()}.
+    {error, start_device_sync_errors(), tuple()}.
 start_device_sync(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_device_sync(Client, Input, []).
@@ -3734,7 +3930,7 @@ start_device_sync(Client, Input)
 -spec start_device_sync(map(), start_device_sync_request(), proplists:proplist()) ->
     {ok, start_device_sync_response(), tuple()} |
     {error, any()} |
-    {error, device_not_registered_exception(), tuple()}.
+    {error, start_device_sync_errors(), tuple()}.
 start_device_sync(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDeviceSync">>, Input, Options).
@@ -3745,7 +3941,7 @@ start_device_sync(Client, Input, Options)
 -spec start_smart_home_appliance_discovery(map(), start_smart_home_appliance_discovery_request()) ->
     {ok, start_smart_home_appliance_discovery_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, start_smart_home_appliance_discovery_errors(), tuple()}.
 start_smart_home_appliance_discovery(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_smart_home_appliance_discovery(Client, Input, []).
@@ -3753,7 +3949,7 @@ start_smart_home_appliance_discovery(Client, Input)
 -spec start_smart_home_appliance_discovery(map(), start_smart_home_appliance_discovery_request(), proplists:proplist()) ->
     {ok, start_smart_home_appliance_discovery_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, start_smart_home_appliance_discovery_errors(), tuple()}.
 start_smart_home_appliance_discovery(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartSmartHomeApplianceDiscovery">>, Input, Options).
@@ -3762,7 +3958,7 @@ start_smart_home_appliance_discovery(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -3770,7 +3966,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -3779,7 +3975,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -3787,7 +3983,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -3796,9 +3992,7 @@ untag_resource(Client, Input, Options)
 -spec update_address_book(map(), update_address_book_request()) ->
     {ok, update_address_book_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, name_in_use_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_address_book_errors(), tuple()}.
 update_address_book(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_address_book(Client, Input, []).
@@ -3806,9 +4000,7 @@ update_address_book(Client, Input)
 -spec update_address_book(map(), update_address_book_request(), proplists:proplist()) ->
     {ok, update_address_book_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, name_in_use_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_address_book_errors(), tuple()}.
 update_address_book(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAddressBook">>, Input, Options).
@@ -3819,8 +4011,7 @@ update_address_book(Client, Input, Options)
 -spec update_business_report_schedule(map(), update_business_report_schedule_request()) ->
     {ok, update_business_report_schedule_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_business_report_schedule_errors(), tuple()}.
 update_business_report_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_business_report_schedule(Client, Input, []).
@@ -3828,8 +4019,7 @@ update_business_report_schedule(Client, Input)
 -spec update_business_report_schedule(map(), update_business_report_schedule_request(), proplists:proplist()) ->
     {ok, update_business_report_schedule_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_business_report_schedule_errors(), tuple()}.
 update_business_report_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateBusinessReportSchedule">>, Input, Options).
@@ -3838,7 +4028,7 @@ update_business_report_schedule(Client, Input, Options)
 -spec update_conference_provider(map(), update_conference_provider_request()) ->
     {ok, update_conference_provider_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_conference_provider_errors(), tuple()}.
 update_conference_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_conference_provider(Client, Input, []).
@@ -3846,7 +4036,7 @@ update_conference_provider(Client, Input)
 -spec update_conference_provider(map(), update_conference_provider_request(), proplists:proplist()) ->
     {ok, update_conference_provider_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_conference_provider_errors(), tuple()}.
 update_conference_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateConferenceProvider">>, Input, Options).
@@ -3855,8 +4045,7 @@ update_conference_provider(Client, Input, Options)
 -spec update_contact(map(), update_contact_request()) ->
     {ok, update_contact_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_contact_errors(), tuple()}.
 update_contact(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_contact(Client, Input, []).
@@ -3864,8 +4053,7 @@ update_contact(Client, Input)
 -spec update_contact(map(), update_contact_request(), proplists:proplist()) ->
     {ok, update_contact_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_contact_errors(), tuple()}.
 update_contact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateContact">>, Input, Options).
@@ -3874,9 +4062,7 @@ update_contact(Client, Input, Options)
 -spec update_device(map(), update_device_request()) ->
     {ok, update_device_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, device_not_registered_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_device_errors(), tuple()}.
 update_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_device(Client, Input, []).
@@ -3884,9 +4070,7 @@ update_device(Client, Input)
 -spec update_device(map(), update_device_request(), proplists:proplist()) ->
     {ok, update_device_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, device_not_registered_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_device_errors(), tuple()}.
 update_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDevice">>, Input, Options).
@@ -3898,8 +4082,7 @@ update_device(Client, Input, Options)
 -spec update_gateway(map(), update_gateway_request()) ->
     {ok, update_gateway_response(), tuple()} |
     {error, any()} |
-    {error, name_in_use_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_gateway_errors(), tuple()}.
 update_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_gateway(Client, Input, []).
@@ -3907,8 +4090,7 @@ update_gateway(Client, Input)
 -spec update_gateway(map(), update_gateway_request(), proplists:proplist()) ->
     {ok, update_gateway_response(), tuple()} |
     {error, any()} |
-    {error, name_in_use_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_gateway_errors(), tuple()}.
 update_gateway(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGateway">>, Input, Options).
@@ -3920,8 +4102,7 @@ update_gateway(Client, Input, Options)
 -spec update_gateway_group(map(), update_gateway_group_request()) ->
     {ok, update_gateway_group_response(), tuple()} |
     {error, any()} |
-    {error, name_in_use_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_gateway_group_errors(), tuple()}.
 update_gateway_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_gateway_group(Client, Input, []).
@@ -3929,8 +4110,7 @@ update_gateway_group(Client, Input)
 -spec update_gateway_group(map(), update_gateway_group_request(), proplists:proplist()) ->
     {ok, update_gateway_group_response(), tuple()} |
     {error, any()} |
-    {error, name_in_use_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_gateway_group_errors(), tuple()}.
 update_gateway_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGatewayGroup">>, Input, Options).
@@ -3939,11 +4119,7 @@ update_gateway_group(Client, Input, Options)
 -spec update_network_profile(map(), update_network_profile_request()) ->
     {ok, update_network_profile_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_certificate_authority_exception(), tuple()} |
-    {error, invalid_secrets_manager_resource_exception(), tuple()} |
-    {error, name_in_use_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_network_profile_errors(), tuple()}.
 update_network_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_network_profile(Client, Input, []).
@@ -3951,11 +4127,7 @@ update_network_profile(Client, Input)
 -spec update_network_profile(map(), update_network_profile_request(), proplists:proplist()) ->
     {ok, update_network_profile_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_certificate_authority_exception(), tuple()} |
-    {error, invalid_secrets_manager_resource_exception(), tuple()} |
-    {error, name_in_use_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_network_profile_errors(), tuple()}.
 update_network_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateNetworkProfile">>, Input, Options).
@@ -3964,9 +4136,7 @@ update_network_profile(Client, Input, Options)
 -spec update_profile(map(), update_profile_request()) ->
     {ok, update_profile_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, name_in_use_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_profile_errors(), tuple()}.
 update_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_profile(Client, Input, []).
@@ -3974,9 +4144,7 @@ update_profile(Client, Input)
 -spec update_profile(map(), update_profile_request(), proplists:proplist()) ->
     {ok, update_profile_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, name_in_use_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_profile_errors(), tuple()}.
 update_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateProfile">>, Input, Options).
@@ -3985,8 +4153,7 @@ update_profile(Client, Input, Options)
 -spec update_room(map(), update_room_request()) ->
     {ok, update_room_response(), tuple()} |
     {error, any()} |
-    {error, name_in_use_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_room_errors(), tuple()}.
 update_room(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_room(Client, Input, []).
@@ -3994,8 +4161,7 @@ update_room(Client, Input)
 -spec update_room(map(), update_room_request(), proplists:proplist()) ->
     {ok, update_room_response(), tuple()} |
     {error, any()} |
-    {error, name_in_use_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_room_errors(), tuple()}.
 update_room(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRoom">>, Input, Options).
@@ -4004,9 +4170,7 @@ update_room(Client, Input, Options)
 -spec update_skill_group(map(), update_skill_group_request()) ->
     {ok, update_skill_group_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, name_in_use_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_skill_group_errors(), tuple()}.
 update_skill_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_skill_group(Client, Input, []).
@@ -4014,9 +4178,7 @@ update_skill_group(Client, Input)
 -spec update_skill_group(map(), update_skill_group_request(), proplists:proplist()) ->
     {ok, update_skill_group_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, name_in_use_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_skill_group_errors(), tuple()}.
 update_skill_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSkillGroup">>, Input, Options).

@@ -172,6 +172,7 @@
 %% }
 -type list_enabled_controls_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% disable_control_input() :: #{
 %%   <<"controlIdentifier">> := string(),
@@ -179,11 +180,13 @@
 %% }
 -type disable_control_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% disable_control_output() :: #{
 %%   <<"operationIdentifier">> := string()
 %% }
 -type disable_control_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% enablement_status_summary() :: #{
@@ -192,12 +195,14 @@
 %% }
 -type enablement_status_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% enabled_control_parameter() :: #{
 %%   <<"key">> => [string()],
 %%   <<"value">> => [any()]
 %% }
 -type enabled_control_parameter() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_enabled_baselines_input() :: #{
@@ -206,6 +211,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_enabled_baselines_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% enable_control_input() :: #{
@@ -216,17 +222,20 @@
 %% }
 -type enable_control_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_landing_zone_output() :: #{
 %%   <<"operationIdentifier">> => string()
 %% }
 -type update_landing_zone_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_enabled_control_output() :: #{
 %%   <<"enabledControlDetails">> => enabled_control_details()
 %% }
 -type get_enabled_control_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_enabled_controls_input() :: #{
@@ -236,6 +245,7 @@
 %% }
 -type list_enabled_controls_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_landing_zones_input() :: #{
 %%   <<"maxResults">> => integer(),
@@ -243,17 +253,20 @@
 %% }
 -type list_landing_zones_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% reset_enabled_baseline_input() :: #{
 %%   <<"enabledBaselineIdentifier">> := string()
 %% }
 -type reset_enabled_baseline_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_output() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% enabled_baseline_summary() :: #{
@@ -265,11 +278,13 @@
 %% }
 -type enabled_baseline_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_baseline_operation_input() :: #{
 %%   <<"operationIdentifier">> := string()
 %% }
 -type get_baseline_operation_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_baselines_output() :: #{
@@ -278,12 +293,14 @@
 %% }
 -type list_baselines_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_enabled_baselines_output() :: #{
 %%   <<"enabledBaselines">> => list(enabled_baseline_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_enabled_baselines_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% enabled_control_summary() :: #{
@@ -295,11 +312,13 @@
 %% }
 -type enabled_control_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% region() :: #{
 %%   <<"name">> => string()
 %% }
 -type region() :: #{binary() => any()}.
+
 
 %% Example:
 %% disable_baseline_input() :: #{
@@ -307,11 +326,13 @@
 %% }
 -type disable_baseline_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_enabled_baseline_output() :: #{
 %%   <<"enabledBaselineDetails">> => enabled_baseline_details()
 %% }
 -type get_enabled_baseline_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -319,11 +340,13 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% enabled_baseline_parameter() :: #{
@@ -331,6 +354,7 @@
 %%   <<"value">> => any()
 %% }
 -type enabled_baseline_parameter() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_landing_zone_input() :: #{
@@ -340,11 +364,13 @@
 %% }
 -type create_landing_zone_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_enabled_control_input() :: #{
 %%   <<"enabledControlIdentifier">> := string()
 %% }
 -type get_enabled_control_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% landing_zone_detail() :: #{
@@ -357,11 +383,13 @@
 %% }
 -type landing_zone_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_landing_zone_input() :: #{
@@ -371,6 +399,7 @@
 %% }
 -type update_landing_zone_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_landing_zones_output() :: #{
 %%   <<"landingZones">> => list(landing_zone_summary()()),
@@ -378,17 +407,20 @@
 %% }
 -type list_landing_zones_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_landing_zone_output() :: #{
 %%   <<"landingZone">> => landing_zone_detail()
 %% }
 -type get_landing_zone_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_landing_zone_operation_input() :: #{
 %%   <<"operationIdentifier">> := string()
 %% }
 -type get_landing_zone_operation_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% enabled_control_parameter_summary() :: #{
@@ -397,6 +429,7 @@
 %% }
 -type enabled_control_parameter_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% enable_baseline_output() :: #{
 %%   <<"arn">> => string(),
@@ -404,11 +437,13 @@
 %% }
 -type enable_baseline_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_control_operation_input() :: #{
 %%   <<"operationIdentifier">> := string()
 %% }
 -type get_control_operation_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_landing_zone_input() :: #{
@@ -416,11 +451,13 @@
 %% }
 -type delete_landing_zone_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_landing_zone_output() :: #{
 %%   <<"operationIdentifier">> => string()
 %% }
 -type delete_landing_zone_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_landing_zone_operation_output() :: #{
@@ -428,11 +465,13 @@
 %% }
 -type get_landing_zone_operation_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_input() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% enable_control_output() :: #{
@@ -441,14 +480,17 @@
 %% }
 -type enable_control_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% landing_zone_summary() :: #{
 %%   <<"arn">> => string()
 %% }
 -type landing_zone_summary() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_output() :: #{}
 -type tag_resource_output() :: #{}.
+
 
 %% Example:
 %% internal_server_exception() :: #{
@@ -456,11 +498,13 @@
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_baseline_operation_output() :: #{
 %%   <<"baselineOperation">> => baseline_operation()
 %% }
 -type get_baseline_operation_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% baseline_operation() :: #{
@@ -473,11 +517,13 @@
 %% }
 -type baseline_operation() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% enabled_baseline_filter() :: #{
@@ -486,11 +532,13 @@
 %% }
 -type enabled_baseline_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_input() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% enable_baseline_input() :: #{
@@ -502,6 +550,7 @@
 %% }
 -type enable_baseline_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% control_operation() :: #{
 %%   <<"endTime">> => non_neg_integer(),
@@ -512,17 +561,21 @@
 %% }
 -type control_operation() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_input() :: #{}
 -type list_tags_for_resource_input() :: #{}.
+
 %% Example:
 %% untag_resource_output() :: #{}
 -type untag_resource_output() :: #{}.
+
 
 %% Example:
 %% throttling_exception() :: #{
@@ -533,6 +586,7 @@
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_enabled_baseline_input() :: #{
 %%   <<"baselineVersion">> := string(),
@@ -541,11 +595,13 @@
 %% }
 -type update_enabled_baseline_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_enabled_baseline_input() :: #{
 %%   <<"enabledBaselineIdentifier">> := string()
 %% }
 -type get_enabled_baseline_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% enabled_baseline_details() :: #{
@@ -558,11 +614,13 @@
 %% }
 -type enabled_baseline_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% landing_zone_drift_status_summary() :: #{
 %%   <<"status">> => list(any())
 %% }
 -type landing_zone_drift_status_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_enabled_control_input() :: #{
@@ -570,6 +628,7 @@
 %%   <<"parameters">> := list(enabled_control_parameter()())
 %% }
 -type update_enabled_control_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% baseline_summary() :: #{
@@ -579,11 +638,13 @@
 %% }
 -type baseline_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% reset_landing_zone_input() :: #{
 %%   <<"landingZoneIdentifier">> := [string()]
 %% }
 -type reset_landing_zone_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% enabled_control_details() :: #{
@@ -597,11 +658,13 @@
 %% }
 -type enabled_control_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_control_operation_output() :: #{
 %%   <<"controlOperation">> := control_operation()
 %% }
 -type get_control_operation_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_enabled_baseline_output() :: #{
@@ -609,12 +672,14 @@
 %% }
 -type update_enabled_baseline_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_landing_zone_output() :: #{
 %%   <<"arn">> => string(),
 %%   <<"operationIdentifier">> => string()
 %% }
 -type create_landing_zone_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_baseline_output() :: #{
@@ -624,11 +689,13 @@
 %% }
 -type get_baseline_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% reset_landing_zone_output() :: #{
 %%   <<"operationIdentifier">> => string()
 %% }
 -type reset_landing_zone_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% enabled_baseline_parameter_summary() :: #{
@@ -637,6 +704,7 @@
 %% }
 -type enabled_baseline_parameter_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_baselines_input() :: #{
 %%   <<"maxResults">> => integer(),
@@ -644,11 +712,13 @@
 %% }
 -type list_baselines_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% reset_enabled_baseline_output() :: #{
 %%   <<"operationIdentifier">> => string()
 %% }
 -type reset_enabled_baseline_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_landing_zone_input() :: #{
@@ -656,11 +726,13 @@
 %% }
 -type get_landing_zone_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% drift_status_summary() :: #{
 %%   <<"driftStatus">> => list(any())
 %% }
 -type drift_status_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% landing_zone_operation_detail() :: #{
@@ -672,11 +744,13 @@
 %% }
 -type landing_zone_operation_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_enabled_control_output() :: #{
 %%   <<"operationIdentifier">> => string()
 %% }
 -type update_enabled_control_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% disable_baseline_output() :: #{
@@ -684,11 +758,195 @@
 %% }
 -type disable_baseline_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_baseline_input() :: #{
 %%   <<"baselineIdentifier">> := string()
 %% }
 -type get_baseline_input() :: #{binary() => any()}.
+
+-type create_landing_zone_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_landing_zone_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type disable_baseline_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type disable_control_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type enable_baseline_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type enable_control_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_baseline_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_baseline_operation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_control_operation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_enabled_baseline_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_enabled_control_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_landing_zone_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_landing_zone_operation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_baselines_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_enabled_baselines_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_enabled_controls_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_landing_zones_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type reset_enabled_baseline_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type reset_landing_zone_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_enabled_baseline_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_enabled_control_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_landing_zone_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -702,22 +960,14 @@
 -spec create_landing_zone(map(), create_landing_zone_input()) ->
     {ok, create_landing_zone_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_landing_zone_errors(), tuple()}.
 create_landing_zone(Client, Input) ->
     create_landing_zone(Client, Input, []).
 
 -spec create_landing_zone(map(), create_landing_zone_input(), proplists:proplist()) ->
     {ok, create_landing_zone_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_landing_zone_errors(), tuple()}.
 create_landing_zone(Client, Input0, Options0) ->
     Method = post,
     Path = ["/create-landingzone"],
@@ -749,24 +999,14 @@ create_landing_zone(Client, Input0, Options0) ->
 -spec delete_landing_zone(map(), delete_landing_zone_input()) ->
     {ok, delete_landing_zone_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_landing_zone_errors(), tuple()}.
 delete_landing_zone(Client, Input) ->
     delete_landing_zone(Client, Input, []).
 
 -spec delete_landing_zone(map(), delete_landing_zone_input(), proplists:proplist()) ->
     {ok, delete_landing_zone_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_landing_zone_errors(), tuple()}.
 delete_landing_zone(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-landingzone"],
@@ -797,26 +1037,14 @@ delete_landing_zone(Client, Input0, Options0) ->
 -spec disable_baseline(map(), disable_baseline_input()) ->
     {ok, disable_baseline_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disable_baseline_errors(), tuple()}.
 disable_baseline(Client, Input) ->
     disable_baseline(Client, Input, []).
 
 -spec disable_baseline(map(), disable_baseline_input(), proplists:proplist()) ->
     {ok, disable_baseline_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disable_baseline_errors(), tuple()}.
 disable_baseline(Client, Input0, Options0) ->
     Method = post,
     Path = ["/disable-baseline"],
@@ -852,26 +1080,14 @@ disable_baseline(Client, Input0, Options0) ->
 -spec disable_control(map(), disable_control_input()) ->
     {ok, disable_control_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disable_control_errors(), tuple()}.
 disable_control(Client, Input) ->
     disable_control(Client, Input, []).
 
 -spec disable_control(map(), disable_control_input(), proplists:proplist()) ->
     {ok, disable_control_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disable_control_errors(), tuple()}.
 disable_control(Client, Input0, Options0) ->
     Method = post,
     Path = ["/disable-control"],
@@ -901,26 +1117,14 @@ disable_control(Client, Input0, Options0) ->
 -spec enable_baseline(map(), enable_baseline_input()) ->
     {ok, enable_baseline_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, enable_baseline_errors(), tuple()}.
 enable_baseline(Client, Input) ->
     enable_baseline(Client, Input, []).
 
 -spec enable_baseline(map(), enable_baseline_input(), proplists:proplist()) ->
     {ok, enable_baseline_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, enable_baseline_errors(), tuple()}.
 enable_baseline(Client, Input0, Options0) ->
     Method = post,
     Path = ["/enable-baseline"],
@@ -956,26 +1160,14 @@ enable_baseline(Client, Input0, Options0) ->
 -spec enable_control(map(), enable_control_input()) ->
     {ok, enable_control_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, enable_control_errors(), tuple()}.
 enable_control(Client, Input) ->
     enable_control(Client, Input, []).
 
 -spec enable_control(map(), enable_control_input(), proplists:proplist()) ->
     {ok, enable_control_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, enable_control_errors(), tuple()}.
 enable_control(Client, Input0, Options0) ->
     Method = post,
     Path = ["/enable-control"],
@@ -1003,22 +1195,14 @@ enable_control(Client, Input0, Options0) ->
 -spec get_baseline(map(), get_baseline_input()) ->
     {ok, get_baseline_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_baseline_errors(), tuple()}.
 get_baseline(Client, Input) ->
     get_baseline(Client, Input, []).
 
 -spec get_baseline(map(), get_baseline_input(), proplists:proplist()) ->
     {ok, get_baseline_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_baseline_errors(), tuple()}.
 get_baseline(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-baseline"],
@@ -1050,22 +1234,14 @@ get_baseline(Client, Input0, Options0) ->
 -spec get_baseline_operation(map(), get_baseline_operation_input()) ->
     {ok, get_baseline_operation_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_baseline_operation_errors(), tuple()}.
 get_baseline_operation(Client, Input) ->
     get_baseline_operation(Client, Input, []).
 
 -spec get_baseline_operation(map(), get_baseline_operation_input(), proplists:proplist()) ->
     {ok, get_baseline_operation_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_baseline_operation_errors(), tuple()}.
 get_baseline_operation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-baseline-operation"],
@@ -1099,22 +1275,14 @@ get_baseline_operation(Client, Input0, Options0) ->
 -spec get_control_operation(map(), get_control_operation_input()) ->
     {ok, get_control_operation_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_control_operation_errors(), tuple()}.
 get_control_operation(Client, Input) ->
     get_control_operation(Client, Input, []).
 
 -spec get_control_operation(map(), get_control_operation_input(), proplists:proplist()) ->
     {ok, get_control_operation_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_control_operation_errors(), tuple()}.
 get_control_operation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-control-operation"],
@@ -1142,22 +1310,14 @@ get_control_operation(Client, Input0, Options0) ->
 -spec get_enabled_baseline(map(), get_enabled_baseline_input()) ->
     {ok, get_enabled_baseline_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_enabled_baseline_errors(), tuple()}.
 get_enabled_baseline(Client, Input) ->
     get_enabled_baseline(Client, Input, []).
 
 -spec get_enabled_baseline(map(), get_enabled_baseline_input(), proplists:proplist()) ->
     {ok, get_enabled_baseline_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_enabled_baseline_errors(), tuple()}.
 get_enabled_baseline(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-enabled-baseline"],
@@ -1189,22 +1349,14 @@ get_enabled_baseline(Client, Input0, Options0) ->
 -spec get_enabled_control(map(), get_enabled_control_input()) ->
     {ok, get_enabled_control_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_enabled_control_errors(), tuple()}.
 get_enabled_control(Client, Input) ->
     get_enabled_control(Client, Input, []).
 
 -spec get_enabled_control(map(), get_enabled_control_input(), proplists:proplist()) ->
     {ok, get_enabled_control_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_enabled_control_errors(), tuple()}.
 get_enabled_control(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-enabled-control"],
@@ -1233,22 +1385,14 @@ get_enabled_control(Client, Input0, Options0) ->
 -spec get_landing_zone(map(), get_landing_zone_input()) ->
     {ok, get_landing_zone_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_landing_zone_errors(), tuple()}.
 get_landing_zone(Client, Input) ->
     get_landing_zone(Client, Input, []).
 
 -spec get_landing_zone(map(), get_landing_zone_input(), proplists:proplist()) ->
     {ok, get_landing_zone_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_landing_zone_errors(), tuple()}.
 get_landing_zone(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-landingzone"],
@@ -1278,22 +1422,14 @@ get_landing_zone(Client, Input0, Options0) ->
 -spec get_landing_zone_operation(map(), get_landing_zone_operation_input()) ->
     {ok, get_landing_zone_operation_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_landing_zone_operation_errors(), tuple()}.
 get_landing_zone_operation(Client, Input) ->
     get_landing_zone_operation(Client, Input, []).
 
 -spec get_landing_zone_operation(map(), get_landing_zone_operation_input(), proplists:proplist()) ->
     {ok, get_landing_zone_operation_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_landing_zone_operation_errors(), tuple()}.
 get_landing_zone_operation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-landingzone-operation"],
@@ -1320,20 +1456,14 @@ get_landing_zone_operation(Client, Input0, Options0) ->
 -spec list_baselines(map(), list_baselines_input()) ->
     {ok, list_baselines_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_baselines_errors(), tuple()}.
 list_baselines(Client, Input) ->
     list_baselines(Client, Input, []).
 
 -spec list_baselines(map(), list_baselines_input(), proplists:proplist()) ->
     {ok, list_baselines_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_baselines_errors(), tuple()}.
 list_baselines(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-baselines"],
@@ -1364,20 +1494,14 @@ list_baselines(Client, Input0, Options0) ->
 -spec list_enabled_baselines(map(), list_enabled_baselines_input()) ->
     {ok, list_enabled_baselines_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_enabled_baselines_errors(), tuple()}.
 list_enabled_baselines(Client, Input) ->
     list_enabled_baselines(Client, Input, []).
 
 -spec list_enabled_baselines(map(), list_enabled_baselines_input(), proplists:proplist()) ->
     {ok, list_enabled_baselines_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_enabled_baselines_errors(), tuple()}.
 list_enabled_baselines(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-enabled-baselines"],
@@ -1411,22 +1535,14 @@ list_enabled_baselines(Client, Input0, Options0) ->
 -spec list_enabled_controls(map(), list_enabled_controls_input()) ->
     {ok, list_enabled_controls_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_enabled_controls_errors(), tuple()}.
 list_enabled_controls(Client, Input) ->
     list_enabled_controls(Client, Input, []).
 
 -spec list_enabled_controls(map(), list_enabled_controls_input(), proplists:proplist()) ->
     {ok, list_enabled_controls_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_enabled_controls_errors(), tuple()}.
 list_enabled_controls(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-enabled-controls"],
@@ -1460,20 +1576,14 @@ list_enabled_controls(Client, Input0, Options0) ->
 -spec list_landing_zones(map(), list_landing_zones_input()) ->
     {ok, list_landing_zones_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_landing_zones_errors(), tuple()}.
 list_landing_zones(Client, Input) ->
     list_landing_zones(Client, Input, []).
 
 -spec list_landing_zones(map(), list_landing_zones_input(), proplists:proplist()) ->
     {ok, list_landing_zones_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_landing_zones_errors(), tuple()}.
 list_landing_zones(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-landingzones"],
@@ -1505,9 +1615,7 @@ list_landing_zones(Client, Input0, Options0) ->
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1515,9 +1623,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1525,9 +1631,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1551,26 +1655,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec reset_enabled_baseline(map(), reset_enabled_baseline_input()) ->
     {ok, reset_enabled_baseline_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, reset_enabled_baseline_errors(), tuple()}.
 reset_enabled_baseline(Client, Input) ->
     reset_enabled_baseline(Client, Input, []).
 
 -spec reset_enabled_baseline(map(), reset_enabled_baseline_input(), proplists:proplist()) ->
     {ok, reset_enabled_baseline_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, reset_enabled_baseline_errors(), tuple()}.
 reset_enabled_baseline(Client, Input0, Options0) ->
     Method = post,
     Path = ["/reset-enabled-baseline"],
@@ -1600,24 +1692,14 @@ reset_enabled_baseline(Client, Input0, Options0) ->
 -spec reset_landing_zone(map(), reset_landing_zone_input()) ->
     {ok, reset_landing_zone_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, reset_landing_zone_errors(), tuple()}.
 reset_landing_zone(Client, Input) ->
     reset_landing_zone(Client, Input, []).
 
 -spec reset_landing_zone(map(), reset_landing_zone_input(), proplists:proplist()) ->
     {ok, reset_landing_zone_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, reset_landing_zone_errors(), tuple()}.
 reset_landing_zone(Client, Input0, Options0) ->
     Method = post,
     Path = ["/reset-landingzone"],
@@ -1649,18 +1731,14 @@ reset_landing_zone(Client, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1692,18 +1770,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1732,26 +1806,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_enabled_baseline(map(), update_enabled_baseline_input()) ->
     {ok, update_enabled_baseline_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_enabled_baseline_errors(), tuple()}.
 update_enabled_baseline(Client, Input) ->
     update_enabled_baseline(Client, Input, []).
 
 -spec update_enabled_baseline(map(), update_enabled_baseline_input(), proplists:proplist()) ->
     {ok, update_enabled_baseline_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_enabled_baseline_errors(), tuple()}.
 update_enabled_baseline(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-enabled-baseline"],
@@ -1796,26 +1858,14 @@ update_enabled_baseline(Client, Input0, Options0) ->
 -spec update_enabled_control(map(), update_enabled_control_input()) ->
     {ok, update_enabled_control_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_enabled_control_errors(), tuple()}.
 update_enabled_control(Client, Input) ->
     update_enabled_control(Client, Input, []).
 
 -spec update_enabled_control(map(), update_enabled_control_input(), proplists:proplist()) ->
     {ok, update_enabled_control_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_enabled_control_errors(), tuple()}.
 update_enabled_control(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-enabled-control"],
@@ -1847,24 +1897,14 @@ update_enabled_control(Client, Input0, Options0) ->
 -spec update_landing_zone(map(), update_landing_zone_input()) ->
     {ok, update_landing_zone_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_landing_zone_errors(), tuple()}.
 update_landing_zone(Client, Input) ->
     update_landing_zone(Client, Input, []).
 
 -spec update_landing_zone(map(), update_landing_zone_input(), proplists:proplist()) ->
     {ok, update_landing_zone_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_landing_zone_errors(), tuple()}.
 update_landing_zone(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-landingzone"],

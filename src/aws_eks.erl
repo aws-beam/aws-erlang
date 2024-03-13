@@ -168,9 +168,11 @@
 %%   <<"nodegroups">> => list(string()())
 %% }
 -type list_nodegroups_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_cluster_request() :: #{}
 -type describe_cluster_request() :: #{}.
+
 
 %% Example:
 %% delete_fargate_profile_response() :: #{
@@ -178,12 +180,14 @@
 %% }
 -type delete_fargate_profile_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_access_policies_response() :: #{
 %%   <<"accessPolicies">> => list(access_policy()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_access_policies_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% insight_summary() :: #{
@@ -198,12 +202,14 @@
 %% }
 -type insight_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_policy() :: #{
 %%   <<"arn">> => string(),
 %%   <<"name">> => string()
 %% }
 -type access_policy() :: #{binary() => any()}.
+
 
 %% Example:
 %% addon_issue() :: #{
@@ -213,6 +219,7 @@
 %% }
 -type addon_issue() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_insights_request() :: #{
 %%   <<"filter">> => insights_filter(),
@@ -221,17 +228,20 @@
 %% }
 -type list_insights_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_insight_response() :: #{
 %%   <<"insight">> => insight()
 %% }
 -type describe_insight_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% encryption_config() :: #{
@@ -240,6 +250,7 @@
 %% }
 -type encryption_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_labels_payload() :: #{
 %%   <<"addOrUpdateLabels">> => map(),
@@ -247,11 +258,13 @@
 %% }
 -type update_labels_payload() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_eks_anywhere_subscription_response() :: #{
 %%   <<"subscription">> => eks_anywhere_subscription()
 %% }
 -type describe_eks_anywhere_subscription_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% outpost_config_response() :: #{
@@ -261,6 +274,7 @@
 %% }
 -type outpost_config_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% compatibility() :: #{
 %%   <<"clusterVersion">> => string(),
@@ -269,11 +283,13 @@
 %% }
 -type compatibility() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_addon_response() :: #{
 %%   <<"addon">> => addon()
 %% }
 -type describe_addon_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_nodegroup_request() :: #{
@@ -297,17 +313,20 @@
 %% }
 -type create_nodegroup_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_addon_request() :: #{
 %%   <<"preserve">> => boolean()
 %% }
 -type delete_addon_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_cluster_response() :: #{
 %%   <<"cluster">> => cluster()
 %% }
 -type describe_cluster_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% unsupported_availability_zone_exception() :: #{
@@ -317,9 +336,11 @@
 %%   <<"validZones">> => list(string()())
 %% }
 -type unsupported_availability_zone_exception() :: #{binary() => any()}.
+
 %% Example:
 %% deregister_cluster_request() :: #{}
 -type deregister_cluster_request() :: #{}.
+
 
 %% Example:
 %% update_nodegroup_config_request() :: #{
@@ -331,12 +352,14 @@
 %% }
 -type update_nodegroup_config_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_scope() :: #{
 %%   <<"namespaces">> => list(string()()),
 %%   <<"type">> => list(any())
 %% }
 -type access_scope() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_associated_access_policies_response() :: #{
@@ -347,14 +370,17 @@
 %% }
 -type list_associated_access_policies_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_addon_response() :: #{
 %%   <<"addon">> => addon()
 %% }
 -type delete_addon_response() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% create_fargate_profile_response() :: #{
@@ -362,11 +388,13 @@
 %% }
 -type create_fargate_profile_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_cluster_response() :: #{
 %%   <<"cluster">> => cluster()
 %% }
 -type create_cluster_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% pod_identity_association() :: #{
@@ -382,6 +410,7 @@
 %% }
 -type pod_identity_association() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_in_use_exception() :: #{
 %%   <<"addonName">> => string(),
@@ -391,11 +420,13 @@
 %% }
 -type resource_in_use_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_identity_provider_config_request() :: #{
 %%   <<"identityProviderConfig">> := identity_provider_config()
 %% }
 -type describe_identity_provider_config_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_addon_configuration_response() :: #{
@@ -405,11 +436,13 @@
 %% }
 -type describe_addon_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% identity() :: #{
 %%   <<"oidc">> => o_id_c()
 %% }
 -type identity() :: #{binary() => any()}.
+
 
 %% Example:
 %% nodegroup_update_config() :: #{
@@ -418,6 +451,7 @@
 %% }
 -type nodegroup_update_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_identity_provider_config_response() :: #{
 %%   <<"tags">> => map(),
@@ -425,15 +459,18 @@
 %% }
 -type associate_identity_provider_config_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% identity_provider_config() :: #{
 %%   <<"name">> => string(),
 %%   <<"type">> => string()
 %% }
 -type identity_provider_config() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_access_policy_request() :: #{}
 -type disassociate_access_policy_request() :: #{}.
+
 
 %% Example:
 %% update_access_entry_request() :: #{
@@ -442,6 +479,7 @@
 %%   <<"username">> => string()
 %% }
 -type update_access_entry_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% nodegroup() :: #{
@@ -471,6 +509,7 @@
 %% }
 -type nodegroup() :: #{binary() => any()}.
 
+
 %% Example:
 %% nodegroup_scaling_config() :: #{
 %%   <<"desiredSize">> => integer(),
@@ -479,11 +518,13 @@
 %% }
 -type nodegroup_scaling_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% deregister_cluster_response() :: #{
 %%   <<"cluster">> => cluster()
 %% }
 -type deregister_cluster_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_eks_anywhere_subscriptions_request() :: #{
@@ -493,12 +534,14 @@
 %% }
 -type list_eks_anywhere_subscriptions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_access_policies_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_access_policies_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_insights_response() :: #{
@@ -507,11 +550,13 @@
 %% }
 -type list_insights_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% identity_provider_config_response() :: #{
 %%   <<"oidc">> => oidc_identity_provider_config()
 %% }
 -type identity_provider_config_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_access_config_request() :: #{
@@ -519,15 +564,18 @@
 %%   <<"bootstrapClusterCreatorAdminPermissions">> => boolean()
 %% }
 -type create_access_config_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_eks_anywhere_subscription_request() :: #{}
 -type delete_eks_anywhere_subscription_request() :: #{}.
+
 
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% register_cluster_request() :: #{
@@ -538,11 +586,13 @@
 %% }
 -type register_cluster_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% control_plane_placement_response() :: #{
 %%   <<"groupName">> => string()
 %% }
 -type control_plane_placement_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% insight_status() :: #{
@@ -550,9 +600,11 @@
 %%   <<"status">> => list(any())
 %% }
 -type insight_status() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_access_policy_response() :: #{}
 -type disassociate_access_policy_response() :: #{}.
+
 
 %% Example:
 %% list_pod_identity_associations_response() :: #{
@@ -561,12 +613,14 @@
 %% }
 -type list_pod_identity_associations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_addons_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_addons_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_addon_versions_request() :: #{
@@ -579,6 +633,7 @@
 %%   <<"types">> => list(string()())
 %% }
 -type describe_addon_versions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% addon() :: #{
@@ -599,12 +654,14 @@
 %% }
 -type addon() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_taints_payload() :: #{
 %%   <<"addOrUpdateTaints">> => list(taint()()),
 %%   <<"removeTaints">> => list(taint()())
 %% }
 -type update_taints_payload() :: #{binary() => any()}.
+
 
 %% Example:
 %% access_entry() :: #{
@@ -619,15 +676,18 @@
 %%   <<"username">> => string()
 %% }
 -type access_entry() :: #{binary() => any()}.
+
 %% Example:
 %% describe_fargate_profile_request() :: #{}
 -type describe_fargate_profile_request() :: #{}.
+
 
 %% Example:
 %% provider() :: #{
 %%   <<"keyArn">> => string()
 %% }
 -type provider() :: #{binary() => any()}.
+
 
 %% Example:
 %% eks_anywhere_subscription_term() :: #{
@@ -636,11 +696,13 @@
 %% }
 -type eks_anywhere_subscription_term() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_access_entry_response() :: #{
 %%   <<"accessEntry">> => access_entry()
 %% }
 -type update_access_entry_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_eks_anywhere_subscription_request() :: #{
@@ -653,6 +715,7 @@
 %%   <<"term">> := eks_anywhere_subscription_term()
 %% }
 -type create_eks_anywhere_subscription_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_cluster_request() :: #{
@@ -670,6 +733,7 @@
 %% }
 -type create_cluster_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
@@ -681,6 +745,7 @@
 %% }
 -type update() :: #{binary() => any()}.
 
+
 %% Example:
 %% insights_filter() :: #{
 %%   <<"categories">> => list(list(any())()),
@@ -689,11 +754,13 @@
 %% }
 -type insights_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_encryption_config_response() :: #{
 %%   <<"update">> => update()
 %% }
 -type associate_encryption_config_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% client_exception() :: #{
@@ -704,6 +771,7 @@
 %%   <<"subscriptionId">> => string()
 %% }
 -type client_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -716,6 +784,7 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_addon_request() :: #{
 %%   <<"addonVersion">> => string(),
@@ -726,11 +795,13 @@
 %% }
 -type update_addon_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_pod_identity_association_response() :: #{
 %%   <<"association">> => pod_identity_association()
 %% }
 -type update_pod_identity_association_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% outpost_config_request() :: #{
@@ -740,11 +811,13 @@
 %% }
 -type outpost_config_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_fargate_profile_response() :: #{
 %%   <<"fargateProfile">> => fargate_profile()
 %% }
 -type describe_fargate_profile_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% deprecation_detail() :: #{
@@ -756,6 +829,7 @@
 %% }
 -type deprecation_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_request_exception() :: #{
 %%   <<"addonName">> => string(),
@@ -766,12 +840,14 @@
 %% }
 -type invalid_request_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_encryption_config_request() :: #{
 %%   <<"clientRequestToken">> => string(),
 %%   <<"encryptionConfig">> := list(encryption_config()())
 %% }
 -type associate_encryption_config_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% issue() :: #{
@@ -781,11 +857,13 @@
 %% }
 -type issue() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_eks_anywhere_subscription_response() :: #{
 %%   <<"subscription">> => eks_anywhere_subscription()
 %% }
 -type create_eks_anywhere_subscription_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% cluster() :: #{
@@ -813,11 +891,13 @@
 %% }
 -type cluster() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_cluster_config_response() :: #{
 %%   <<"update">> => update()
 %% }
 -type update_cluster_config_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_pod_identity_association_request() :: #{
@@ -826,12 +906,14 @@
 %% }
 -type update_pod_identity_association_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_updates_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"updateIds">> => list(string()())
 %% }
 -type list_updates_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_addon_versions_response() :: #{
@@ -840,12 +922,14 @@
 %% }
 -type describe_addon_versions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_config_response() :: #{
 %%   <<"authenticationMode">> => list(any()),
 %%   <<"bootstrapClusterCreatorAdminPermissions">> => boolean()
 %% }
 -type access_config_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_limit_exceeded_exception() :: #{
@@ -856,6 +940,7 @@
 %% }
 -type resource_limit_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_updates_request() :: #{
 %%   <<"addonName">> => string(),
@@ -865,11 +950,13 @@
 %% }
 -type list_updates_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_addon_request() :: #{
@@ -883,15 +970,18 @@
 %% }
 -type create_addon_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_addon_configuration_request() :: #{
 %%   <<"addonName">> := string(),
 %%   <<"addonVersion">> := string()
 %% }
 -type describe_addon_configuration_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_nodegroup_request() :: #{}
 -type describe_nodegroup_request() :: #{}.
+
 
 %% Example:
 %% describe_access_entry_response() :: #{
@@ -899,20 +989,24 @@
 %% }
 -type describe_access_entry_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_pod_identity_association_response() :: #{
 %%   <<"association">> => pod_identity_association()
 %% }
 -type delete_pod_identity_association_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_insight_request() :: #{}
 -type describe_insight_request() :: #{}.
+
 
 %% Example:
 %% list_nodegroups_request() :: #{
@@ -920,6 +1014,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_nodegroups_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% vpc_config_request() :: #{
@@ -931,6 +1026,7 @@
 %% }
 -type vpc_config_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% pod_identity_association_summary() :: #{
 %%   <<"associationArn">> => string(),
@@ -941,11 +1037,13 @@
 %% }
 -type pod_identity_association_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_unavailable_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% associate_identity_provider_config_request() :: #{
@@ -955,11 +1053,13 @@
 %% }
 -type associate_identity_provider_config_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_nodegroup_response() :: #{
 %%   <<"nodegroup">> => nodegroup()
 %% }
 -type create_nodegroup_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% disassociate_identity_provider_config_request() :: #{
@@ -968,11 +1068,13 @@
 %% }
 -type disassociate_identity_provider_config_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% o_id_c() :: #{
 %%   <<"issuer">> => string()
 %% }
 -type o_id_c() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_clusters_response() :: #{
@@ -981,11 +1083,13 @@
 %% }
 -type list_clusters_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_cluster_response() :: #{
 %%   <<"cluster">> => cluster()
 %% }
 -type delete_cluster_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_fargate_profiles_response() :: #{
@@ -993,9 +1097,11 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_fargate_profiles_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_fargate_profile_request() :: #{}
 -type delete_fargate_profile_request() :: #{}.
+
 
 %% Example:
 %% associate_access_policy_response() :: #{
@@ -1005,11 +1111,13 @@
 %% }
 -type associate_access_policy_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_addon_response() :: #{
 %%   <<"update">> => update()
 %% }
 -type update_addon_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_clusters_request() :: #{
@@ -1019,17 +1127,20 @@
 %% }
 -type list_clusters_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_nodegroup_config_response() :: #{
 %%   <<"update">> => update()
 %% }
 -type update_nodegroup_config_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_nodegroup_version_response() :: #{
 %%   <<"update">> => update()
 %% }
 -type update_nodegroup_version_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% kubernetes_network_config_request() :: #{
@@ -1038,11 +1149,13 @@
 %% }
 -type kubernetes_network_config_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% control_plane_placement_request() :: #{
 %%   <<"groupName">> => string()
 %% }
 -type control_plane_placement_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% certificate() :: #{
@@ -1050,12 +1163,14 @@
 %% }
 -type certificate() :: #{binary() => any()}.
 
+
 %% Example:
 %% marketplace_information() :: #{
 %%   <<"productId">> => string(),
 %%   <<"productUrl">> => string()
 %% }
 -type marketplace_information() :: #{binary() => any()}.
+
 
 %% Example:
 %% insight_resource_detail() :: #{
@@ -1065,11 +1180,13 @@
 %% }
 -type insight_resource_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_access_entry_response() :: #{
 %%   <<"accessEntry">> => access_entry()
 %% }
 -type create_access_entry_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% associated_access_policy() :: #{
@@ -1079,15 +1196,18 @@
 %%   <<"policyArn">> => string()
 %% }
 -type associated_access_policy() :: #{binary() => any()}.
+
 %% Example:
 %% delete_cluster_request() :: #{}
 -type delete_cluster_request() :: #{}.
+
 
 %% Example:
 %% delete_eks_anywhere_subscription_response() :: #{
 %%   <<"subscription">> => eks_anywhere_subscription()
 %% }
 -type delete_eks_anywhere_subscription_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_fargate_profile_request() :: #{
@@ -1100,12 +1220,14 @@
 %% }
 -type create_fargate_profile_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_eks_anywhere_subscription_request() :: #{
 %%   <<"autoRenew">> := boolean(),
 %%   <<"clientRequestToken">> => string()
 %% }
 -type update_eks_anywhere_subscription_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% error_detail() :: #{
@@ -1115,6 +1237,7 @@
 %% }
 -type error_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_param() :: #{
 %%   <<"type">> => list(any()),
@@ -1122,11 +1245,13 @@
 %% }
 -type update_param() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% eks_anywhere_subscription() :: #{
@@ -1145,6 +1270,7 @@
 %% }
 -type eks_anywhere_subscription() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_parameter_exception() :: #{
 %%   <<"addonName">> => string(),
@@ -1155,18 +1281,22 @@
 %%   <<"subscriptionId">> => string()
 %% }
 -type invalid_parameter_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_pod_identity_association_request() :: #{}
 -type delete_pod_identity_association_request() :: #{}.
+
 
 %% Example:
 %% cluster_health() :: #{
 %%   <<"issues">> => list(cluster_issue()())
 %% }
 -type cluster_health() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% remote_access_config() :: #{
@@ -1175,6 +1305,7 @@
 %% }
 -type remote_access_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_identity_provider_configs_response() :: #{
 %%   <<"identityProviderConfigs">> => list(identity_provider_config()()),
@@ -1182,12 +1313,14 @@
 %% }
 -type list_identity_provider_configs_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_associated_access_policies_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_associated_access_policies_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% oidc_identity_provider_config_request() :: #{
@@ -1202,6 +1335,7 @@
 %% }
 -type oidc_identity_provider_config_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_access_entry_request() :: #{
 %%   <<"clientRequestToken">> => string(),
@@ -1213,6 +1347,7 @@
 %% }
 -type create_access_entry_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% taint() :: #{
 %%   <<"effect">> => list(any()),
@@ -1221,14 +1356,17 @@
 %% }
 -type taint() :: #{binary() => any()}.
 
+
 %% Example:
 %% auto_scaling_group() :: #{
 %%   <<"name">> => string()
 %% }
 -type auto_scaling_group() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% addon_health() :: #{
@@ -1236,12 +1374,14 @@
 %% }
 -type addon_health() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_update_request() :: #{
 %%   <<"addonName">> => string(),
 %%   <<"nodegroupName">> => string()
 %% }
 -type describe_update_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% oidc_identity_provider_config() :: #{
@@ -1260,11 +1400,13 @@
 %% }
 -type oidc_identity_provider_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% nodegroup_health() :: #{
 %%   <<"issues">> => list(issue()())
 %% }
 -type nodegroup_health() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_nodegroup_version_request() :: #{
@@ -1276,21 +1418,25 @@
 %% }
 -type update_nodegroup_version_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% connector_config_request() :: #{
 %%   <<"provider">> => list(any()),
 %%   <<"roleArn">> => string()
 %% }
 -type connector_config_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_access_entry_request() :: #{}
 -type describe_access_entry_request() :: #{}.
+
 
 %% Example:
 %% delete_nodegroup_response() :: #{
 %%   <<"nodegroup">> => nodegroup()
 %% }
 -type delete_nodegroup_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% client_stat() :: #{
@@ -1299,6 +1445,7 @@
 %%   <<"userAgent">> => string()
 %% }
 -type client_stat() :: #{binary() => any()}.
+
 
 %% Example:
 %% connector_config_response() :: #{
@@ -1310,6 +1457,7 @@
 %% }
 -type connector_config_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% nodegroup_resources() :: #{
 %%   <<"autoScalingGroups">> => list(auto_scaling_group()()),
@@ -1317,11 +1465,13 @@
 %% }
 -type nodegroup_resources() :: #{binary() => any()}.
 
+
 %% Example:
 %% disassociate_identity_provider_config_response() :: #{
 %%   <<"update">> => update()
 %% }
 -type disassociate_identity_provider_config_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% server_exception() :: #{
@@ -1333,6 +1483,7 @@
 %% }
 -type server_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% kubernetes_network_config_response() :: #{
 %%   <<"ipFamily">> => list(any()),
@@ -1340,6 +1491,7 @@
 %%   <<"serviceIpv6Cidr">> => string()
 %% }
 -type kubernetes_network_config_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% fargate_profile() :: #{
@@ -1355,11 +1507,13 @@
 %% }
 -type fargate_profile() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_access_config_request() :: #{
 %%   <<"authenticationMode">> => list(any())
 %% }
 -type update_access_config_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% addon_info() :: #{
@@ -1372,12 +1526,14 @@
 %% }
 -type addon_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_eks_anywhere_subscriptions_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"subscriptions">> => list(eks_anywhere_subscription()())
 %% }
 -type list_eks_anywhere_subscriptions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_pod_identity_associations_request() :: #{
@@ -1388,11 +1544,13 @@
 %% }
 -type list_pod_identity_associations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_cluster_version_response() :: #{
 %%   <<"update">> => update()
 %% }
 -type update_cluster_version_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% associate_access_policy_request() :: #{
@@ -1400,6 +1558,7 @@
 %%   <<"policyArn">> := string()
 %% }
 -type associate_access_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% launch_template_specification() :: #{
@@ -1409,11 +1568,13 @@
 %% }
 -type launch_template_specification() :: #{binary() => any()}.
 
+
 %% Example:
 %% bad_request_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% vpc_config_response() :: #{
@@ -1427,11 +1588,13 @@
 %% }
 -type vpc_config_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_eks_anywhere_subscription_response() :: #{
 %%   <<"subscription">> => eks_anywhere_subscription()
 %% }
 -type update_eks_anywhere_subscription_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_fargate_profiles_request() :: #{
@@ -1439,12 +1602,15 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_fargate_profiles_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_pod_identity_association_request() :: #{}
 -type describe_pod_identity_association_request() :: #{}.
+
 %% Example:
 %% delete_access_entry_request() :: #{}
 -type delete_access_entry_request() :: #{}.
+
 
 %% Example:
 %% insight() :: #{
@@ -1463,6 +1629,7 @@
 %% }
 -type insight() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_cluster_config_request() :: #{
 %%   <<"accessConfig">> => update_access_config_request(),
@@ -1472,6 +1639,7 @@
 %% }
 -type update_cluster_config_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% cluster_issue() :: #{
 %%   <<"code">> => list(any()),
@@ -1479,9 +1647,11 @@
 %%   <<"resourceIds">> => list(string()())
 %% }
 -type cluster_issue() :: #{binary() => any()}.
+
 %% Example:
 %% describe_addon_request() :: #{}
 -type describe_addon_request() :: #{}.
+
 
 %% Example:
 %% list_addons_response() :: #{
@@ -1490,11 +1660,13 @@
 %% }
 -type list_addons_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% insight_category_specific_summary() :: #{
 %%   <<"deprecationDetails">> => list(deprecation_detail()())
 %% }
 -type insight_category_specific_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% log_setup() :: #{
@@ -1503,11 +1675,13 @@
 %% }
 -type log_setup() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_addon_response() :: #{
 %%   <<"addon">> => addon()
 %% }
 -type create_addon_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% register_cluster_response() :: #{
@@ -1515,11 +1689,13 @@
 %% }
 -type register_cluster_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_nodegroup_response() :: #{
 %%   <<"nodegroup">> => nodegroup()
 %% }
 -type describe_nodegroup_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_access_entries_response() :: #{
@@ -1527,6 +1703,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_access_entries_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_pod_identity_association_request() :: #{
@@ -1538,11 +1715,13 @@
 %% }
 -type create_pod_identity_association_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_identity_provider_config_response() :: #{
 %%   <<"identityProviderConfig">> => identity_provider_config_response()
 %% }
 -type describe_identity_provider_config_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% fargate_profile_selector() :: #{
@@ -1550,6 +1729,7 @@
 %%   <<"namespace">> => string()
 %% }
 -type fargate_profile_selector() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_access_entries_request() :: #{
@@ -1559,17 +1739,20 @@
 %% }
 -type list_access_entries_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_pod_identity_association_response() :: #{
 %%   <<"association">> => pod_identity_association()
 %% }
 -type describe_pod_identity_association_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% logging() :: #{
 %%   <<"clusterLogging">> => list(log_setup()())
 %% }
 -type logging() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_identity_provider_configs_request() :: #{
@@ -1578,6 +1761,7 @@
 %% }
 -type list_identity_provider_configs_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_cluster_version_request() :: #{
 %%   <<"clientRequestToken">> => string(),
@@ -1585,17 +1769,21 @@
 %% }
 -type update_cluster_version_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_propagation_delay_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_propagation_delay_exception() :: #{binary() => any()}.
+
 %% Example:
 %% describe_eks_anywhere_subscription_request() :: #{}
 -type describe_eks_anywhere_subscription_request() :: #{}.
+
 %% Example:
 %% delete_access_entry_response() :: #{}
 -type delete_access_entry_response() :: #{}.
+
 
 %% Example:
 %% describe_update_response() :: #{
@@ -1603,11 +1791,13 @@
 %% }
 -type describe_update_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_pod_identity_association_response() :: #{
 %%   <<"association">> => pod_identity_association()
 %% }
 -type create_pod_identity_association_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% addon_version_info() :: #{
@@ -1617,9 +1807,379 @@
 %%   <<"requiresConfiguration">> => boolean()
 %% }
 -type addon_version_info() :: #{binary() => any()}.
+
 %% Example:
 %% delete_nodegroup_request() :: #{}
 -type delete_nodegroup_request() :: #{}.
+
+-type associate_access_policy_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type associate_encryption_config_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    client_exception() | 
+    resource_in_use_exception().
+
+-type associate_identity_provider_config_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    client_exception() | 
+    resource_in_use_exception().
+
+-type create_access_entry_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type create_addon_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    client_exception() | 
+    resource_in_use_exception().
+
+-type create_cluster_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    client_exception() | 
+    resource_in_use_exception() | 
+    unsupported_availability_zone_exception().
+
+-type create_eks_anywhere_subscription_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    client_exception().
+
+-type create_fargate_profile_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    unsupported_availability_zone_exception().
+
+-type create_nodegroup_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    resource_in_use_exception().
+
+-type create_pod_identity_association_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type delete_access_entry_errors() ::
+    server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type delete_addon_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    client_exception().
+
+-type delete_cluster_errors() ::
+    server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    client_exception() | 
+    resource_in_use_exception().
+
+-type delete_eks_anywhere_subscription_errors() ::
+    server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    client_exception().
+
+-type delete_fargate_profile_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    client_exception().
+
+-type delete_nodegroup_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    client_exception() | 
+    resource_in_use_exception().
+
+-type delete_pod_identity_association_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type deregister_cluster_errors() ::
+    server_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    client_exception() | 
+    resource_in_use_exception().
+
+-type describe_access_entry_errors() ::
+    server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_addon_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    client_exception().
+
+-type describe_addon_configuration_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception().
+
+-type describe_addon_versions_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception().
+
+-type describe_cluster_errors() ::
+    server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    client_exception().
+
+-type describe_eks_anywhere_subscription_errors() ::
+    server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    client_exception().
+
+-type describe_fargate_profile_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    client_exception().
+
+-type describe_identity_provider_config_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    client_exception().
+
+-type describe_insight_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_nodegroup_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    client_exception().
+
+-type describe_pod_identity_association_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_update_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    client_exception().
+
+-type disassociate_access_policy_errors() ::
+    server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type disassociate_identity_provider_config_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    client_exception() | 
+    resource_in_use_exception().
+
+-type list_access_entries_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_access_policies_errors() ::
+    server_exception().
+
+-type list_addons_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    client_exception().
+
+-type list_associated_access_policies_errors() ::
+    server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_clusters_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    client_exception().
+
+-type list_eks_anywhere_subscriptions_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    client_exception().
+
+-type list_fargate_profiles_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    client_exception().
+
+-type list_identity_provider_configs_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    client_exception().
+
+-type list_insights_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_nodegroups_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    client_exception().
+
+-type list_pod_identity_associations_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    bad_request_exception() | 
+    not_found_exception().
+
+-type list_updates_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    client_exception().
+
+-type register_cluster_errors() ::
+    resource_propagation_delay_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    client_exception() | 
+    resource_in_use_exception().
+
+-type tag_resource_errors() ::
+    bad_request_exception() | 
+    not_found_exception().
+
+-type untag_resource_errors() ::
+    bad_request_exception() | 
+    not_found_exception().
+
+-type update_access_entry_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type update_addon_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    client_exception() | 
+    resource_in_use_exception().
+
+-type update_cluster_config_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    client_exception() | 
+    resource_in_use_exception().
+
+-type update_cluster_version_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    client_exception() | 
+    resource_in_use_exception().
+
+-type update_eks_anywhere_subscription_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    client_exception().
+
+-type update_nodegroup_config_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    client_exception() | 
+    resource_in_use_exception().
+
+-type update_nodegroup_version_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    client_exception() | 
+    resource_in_use_exception().
+
+-type update_pod_identity_association_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -1635,20 +2195,14 @@
 -spec associate_access_policy(map(), binary() | list(), binary() | list(), associate_access_policy_request()) ->
     {ok, associate_access_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, associate_access_policy_errors(), tuple()}.
 associate_access_policy(Client, ClusterName, PrincipalArn, Input) ->
     associate_access_policy(Client, ClusterName, PrincipalArn, Input, []).
 
 -spec associate_access_policy(map(), binary() | list(), binary() | list(), associate_access_policy_request(), proplists:proplist()) ->
     {ok, associate_access_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, associate_access_policy_errors(), tuple()}.
 associate_access_policy(Client, ClusterName, PrincipalArn, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/access-entries/", aws_util:encode_uri(PrincipalArn), "/access-policies"],
@@ -1681,24 +2235,14 @@ associate_access_policy(Client, ClusterName, PrincipalArn, Input0, Options0) ->
 -spec associate_encryption_config(map(), binary() | list(), associate_encryption_config_request()) ->
     {ok, associate_encryption_config_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, associate_encryption_config_errors(), tuple()}.
 associate_encryption_config(Client, ClusterName, Input) ->
     associate_encryption_config(Client, ClusterName, Input, []).
 
 -spec associate_encryption_config(map(), binary() | list(), associate_encryption_config_request(), proplists:proplist()) ->
     {ok, associate_encryption_config_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, associate_encryption_config_errors(), tuple()}.
 associate_encryption_config(Client, ClusterName, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/encryption-config/associate"],
@@ -1739,24 +2283,14 @@ associate_encryption_config(Client, ClusterName, Input0, Options0) ->
 -spec associate_identity_provider_config(map(), binary() | list(), associate_identity_provider_config_request()) ->
     {ok, associate_identity_provider_config_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, associate_identity_provider_config_errors(), tuple()}.
 associate_identity_provider_config(Client, ClusterName, Input) ->
     associate_identity_provider_config(Client, ClusterName, Input, []).
 
 -spec associate_identity_provider_config(map(), binary() | list(), associate_identity_provider_config_request(), proplists:proplist()) ->
     {ok, associate_identity_provider_config_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, associate_identity_provider_config_errors(), tuple()}.
 associate_identity_provider_config(Client, ClusterName, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/identity-provider-configs/associate"],
@@ -1804,24 +2338,14 @@ associate_identity_provider_config(Client, ClusterName, Input0, Options0) ->
 -spec create_access_entry(map(), binary() | list(), create_access_entry_request()) ->
     {ok, create_access_entry_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, create_access_entry_errors(), tuple()}.
 create_access_entry(Client, ClusterName, Input) ->
     create_access_entry(Client, ClusterName, Input, []).
 
 -spec create_access_entry(map(), binary() | list(), create_access_entry_request(), proplists:proplist()) ->
     {ok, create_access_entry_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, create_access_entry_errors(), tuple()}.
 create_access_entry(Client, ClusterName, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/access-entries"],
@@ -1856,24 +2380,14 @@ create_access_entry(Client, ClusterName, Input0, Options0) ->
 -spec create_addon(map(), binary() | list(), create_addon_request()) ->
     {ok, create_addon_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, create_addon_errors(), tuple()}.
 create_addon(Client, ClusterName, Input) ->
     create_addon(Client, ClusterName, Input, []).
 
 -spec create_addon(map(), binary() | list(), create_addon_request(), proplists:proplist()) ->
     {ok, create_addon_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, create_addon_errors(), tuple()}.
 create_addon(Client, ClusterName, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/addons"],
@@ -1967,26 +2481,14 @@ create_addon(Client, ClusterName, Input0, Options0) ->
 -spec create_cluster(map(), create_cluster_request()) ->
     {ok, create_cluster_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unsupported_availability_zone_exception(), tuple()}.
+    {error, create_cluster_errors(), tuple()}.
 create_cluster(Client, Input) ->
     create_cluster(Client, Input, []).
 
 -spec create_cluster(map(), create_cluster_request(), proplists:proplist()) ->
     {ok, create_cluster_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unsupported_availability_zone_exception(), tuple()}.
+    {error, create_cluster_errors(), tuple()}.
 create_cluster(Client, Input0, Options0) ->
     Method = post,
     Path = ["/clusters"],
@@ -2020,22 +2522,14 @@ create_cluster(Client, Input0, Options0) ->
 -spec create_eks_anywhere_subscription(map(), create_eks_anywhere_subscription_request()) ->
     {ok, create_eks_anywhere_subscription_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_eks_anywhere_subscription_errors(), tuple()}.
 create_eks_anywhere_subscription(Client, Input) ->
     create_eks_anywhere_subscription(Client, Input, []).
 
 -spec create_eks_anywhere_subscription(map(), create_eks_anywhere_subscription_request(), proplists:proplist()) ->
     {ok, create_eks_anywhere_subscription_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_eks_anywhere_subscription_errors(), tuple()}.
 create_eks_anywhere_subscription(Client, Input0, Options0) ->
     Method = post,
     Path = ["/eks-anywhere-subscriptions"],
@@ -2108,24 +2602,14 @@ create_eks_anywhere_subscription(Client, Input0, Options0) ->
 -spec create_fargate_profile(map(), binary() | list(), create_fargate_profile_request()) ->
     {ok, create_fargate_profile_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_availability_zone_exception(), tuple()}.
+    {error, create_fargate_profile_errors(), tuple()}.
 create_fargate_profile(Client, ClusterName, Input) ->
     create_fargate_profile(Client, ClusterName, Input, []).
 
 -spec create_fargate_profile(map(), binary() | list(), create_fargate_profile_request(), proplists:proplist()) ->
     {ok, create_fargate_profile_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_availability_zone_exception(), tuple()}.
+    {error, create_fargate_profile_errors(), tuple()}.
 create_fargate_profile(Client, ClusterName, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/fargate-profiles"],
@@ -2174,26 +2658,14 @@ create_fargate_profile(Client, ClusterName, Input0, Options0) ->
 -spec create_nodegroup(map(), binary() | list(), create_nodegroup_request()) ->
     {ok, create_nodegroup_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_nodegroup_errors(), tuple()}.
 create_nodegroup(Client, ClusterName, Input) ->
     create_nodegroup(Client, ClusterName, Input, []).
 
 -spec create_nodegroup(map(), binary() | list(), create_nodegroup_request(), proplists:proplist()) ->
     {ok, create_nodegroup_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_nodegroup_errors(), tuple()}.
 create_nodegroup(Client, ClusterName, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/node-groups"],
@@ -2242,24 +2714,14 @@ create_nodegroup(Client, ClusterName, Input0, Options0) ->
 -spec create_pod_identity_association(map(), binary() | list(), create_pod_identity_association_request()) ->
     {ok, create_pod_identity_association_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, create_pod_identity_association_errors(), tuple()}.
 create_pod_identity_association(Client, ClusterName, Input) ->
     create_pod_identity_association(Client, ClusterName, Input, []).
 
 -spec create_pod_identity_association(map(), binary() | list(), create_pod_identity_association_request(), proplists:proplist()) ->
     {ok, create_pod_identity_association_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, create_pod_identity_association_errors(), tuple()}.
 create_pod_identity_association(Client, ClusterName, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/pod-identity-associations"],
@@ -2292,18 +2754,14 @@ create_pod_identity_association(Client, ClusterName, Input0, Options0) ->
 -spec delete_access_entry(map(), binary() | list(), binary() | list(), delete_access_entry_request()) ->
     {ok, delete_access_entry_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, delete_access_entry_errors(), tuple()}.
 delete_access_entry(Client, ClusterName, PrincipalArn, Input) ->
     delete_access_entry(Client, ClusterName, PrincipalArn, Input, []).
 
 -spec delete_access_entry(map(), binary() | list(), binary() | list(), delete_access_entry_request(), proplists:proplist()) ->
     {ok, delete_access_entry_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, delete_access_entry_errors(), tuple()}.
 delete_access_entry(Client, ClusterName, PrincipalArn, Input0, Options0) ->
     Method = delete,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/access-entries/", aws_util:encode_uri(PrincipalArn), ""],
@@ -2334,22 +2792,14 @@ delete_access_entry(Client, ClusterName, PrincipalArn, Input0, Options0) ->
 -spec delete_addon(map(), binary() | list(), binary() | list(), delete_addon_request()) ->
     {ok, delete_addon_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, delete_addon_errors(), tuple()}.
 delete_addon(Client, AddonName, ClusterName, Input) ->
     delete_addon(Client, AddonName, ClusterName, Input, []).
 
 -spec delete_addon(map(), binary() | list(), binary() | list(), delete_addon_request(), proplists:proplist()) ->
     {ok, delete_addon_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, delete_addon_errors(), tuple()}.
 delete_addon(Client, AddonName, ClusterName, Input0, Options0) ->
     Method = delete,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/addons/", aws_util:encode_uri(AddonName), ""],
@@ -2393,22 +2843,14 @@ delete_addon(Client, AddonName, ClusterName, Input0, Options0) ->
 -spec delete_cluster(map(), binary() | list(), delete_cluster_request()) ->
     {ok, delete_cluster_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_cluster_errors(), tuple()}.
 delete_cluster(Client, Name, Input) ->
     delete_cluster(Client, Name, Input, []).
 
 -spec delete_cluster(map(), binary() | list(), delete_cluster_request(), proplists:proplist()) ->
     {ok, delete_cluster_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_cluster_errors(), tuple()}.
 delete_cluster(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/clusters/", aws_util:encode_uri(Name), ""],
@@ -2442,20 +2884,14 @@ delete_cluster(Client, Name, Input0, Options0) ->
 -spec delete_eks_anywhere_subscription(map(), binary() | list(), delete_eks_anywhere_subscription_request()) ->
     {ok, delete_eks_anywhere_subscription_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, delete_eks_anywhere_subscription_errors(), tuple()}.
 delete_eks_anywhere_subscription(Client, Id, Input) ->
     delete_eks_anywhere_subscription(Client, Id, Input, []).
 
 -spec delete_eks_anywhere_subscription(map(), binary() | list(), delete_eks_anywhere_subscription_request(), proplists:proplist()) ->
     {ok, delete_eks_anywhere_subscription_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, delete_eks_anywhere_subscription_errors(), tuple()}.
 delete_eks_anywhere_subscription(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/eks-anywhere-subscriptions/", aws_util:encode_uri(Id), ""],
@@ -2495,20 +2931,14 @@ delete_eks_anywhere_subscription(Client, Id, Input0, Options0) ->
 -spec delete_fargate_profile(map(), binary() | list(), binary() | list(), delete_fargate_profile_request()) ->
     {ok, delete_fargate_profile_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, delete_fargate_profile_errors(), tuple()}.
 delete_fargate_profile(Client, ClusterName, FargateProfileName, Input) ->
     delete_fargate_profile(Client, ClusterName, FargateProfileName, Input, []).
 
 -spec delete_fargate_profile(map(), binary() | list(), binary() | list(), delete_fargate_profile_request(), proplists:proplist()) ->
     {ok, delete_fargate_profile_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, delete_fargate_profile_errors(), tuple()}.
 delete_fargate_profile(Client, ClusterName, FargateProfileName, Input0, Options0) ->
     Method = delete,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/fargate-profiles/", aws_util:encode_uri(FargateProfileName), ""],
@@ -2535,24 +2965,14 @@ delete_fargate_profile(Client, ClusterName, FargateProfileName, Input0, Options0
 -spec delete_nodegroup(map(), binary() | list(), binary() | list(), delete_nodegroup_request()) ->
     {ok, delete_nodegroup_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_nodegroup_errors(), tuple()}.
 delete_nodegroup(Client, ClusterName, NodegroupName, Input) ->
     delete_nodegroup(Client, ClusterName, NodegroupName, Input, []).
 
 -spec delete_nodegroup(map(), binary() | list(), binary() | list(), delete_nodegroup_request(), proplists:proplist()) ->
     {ok, delete_nodegroup_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_nodegroup_errors(), tuple()}.
 delete_nodegroup(Client, ClusterName, NodegroupName, Input0, Options0) ->
     Method = delete,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/node-groups/", aws_util:encode_uri(NodegroupName), ""],
@@ -2584,20 +3004,14 @@ delete_nodegroup(Client, ClusterName, NodegroupName, Input0, Options0) ->
 -spec delete_pod_identity_association(map(), binary() | list(), binary() | list(), delete_pod_identity_association_request()) ->
     {ok, delete_pod_identity_association_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, delete_pod_identity_association_errors(), tuple()}.
 delete_pod_identity_association(Client, AssociationId, ClusterName, Input) ->
     delete_pod_identity_association(Client, AssociationId, ClusterName, Input, []).
 
 -spec delete_pod_identity_association(map(), binary() | list(), binary() | list(), delete_pod_identity_association_request(), proplists:proplist()) ->
     {ok, delete_pod_identity_association_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, delete_pod_identity_association_errors(), tuple()}.
 delete_pod_identity_association(Client, AssociationId, ClusterName, Input0, Options0) ->
     Method = delete,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/pod-identity-associations/", aws_util:encode_uri(AssociationId), ""],
@@ -2631,24 +3045,14 @@ delete_pod_identity_association(Client, AssociationId, ClusterName, Input0, Opti
 -spec deregister_cluster(map(), binary() | list(), deregister_cluster_request()) ->
     {ok, deregister_cluster_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, deregister_cluster_errors(), tuple()}.
 deregister_cluster(Client, Name, Input) ->
     deregister_cluster(Client, Name, Input, []).
 
 -spec deregister_cluster(map(), binary() | list(), deregister_cluster_request(), proplists:proplist()) ->
     {ok, deregister_cluster_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, deregister_cluster_errors(), tuple()}.
 deregister_cluster(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/cluster-registrations/", aws_util:encode_uri(Name), ""],
@@ -2675,9 +3079,7 @@ deregister_cluster(Client, Name, Input0, Options0) ->
 -spec describe_access_entry(map(), binary() | list(), binary() | list()) ->
     {ok, describe_access_entry_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_access_entry_errors(), tuple()}.
 describe_access_entry(Client, ClusterName, PrincipalArn)
   when is_map(Client) ->
     describe_access_entry(Client, ClusterName, PrincipalArn, #{}, #{}).
@@ -2685,9 +3087,7 @@ describe_access_entry(Client, ClusterName, PrincipalArn)
 -spec describe_access_entry(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_access_entry_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_access_entry_errors(), tuple()}.
 describe_access_entry(Client, ClusterName, PrincipalArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_access_entry(Client, ClusterName, PrincipalArn, QueryMap, HeadersMap, []).
@@ -2695,9 +3095,7 @@ describe_access_entry(Client, ClusterName, PrincipalArn, QueryMap, HeadersMap)
 -spec describe_access_entry(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_access_entry_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_access_entry_errors(), tuple()}.
 describe_access_entry(Client, ClusterName, PrincipalArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/access-entries/", aws_util:encode_uri(PrincipalArn), ""],
@@ -2718,11 +3116,7 @@ describe_access_entry(Client, ClusterName, PrincipalArn, QueryMap, HeadersMap, O
 -spec describe_addon(map(), binary() | list(), binary() | list()) ->
     {ok, describe_addon_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_addon_errors(), tuple()}.
 describe_addon(Client, AddonName, ClusterName)
   when is_map(Client) ->
     describe_addon(Client, AddonName, ClusterName, #{}, #{}).
@@ -2730,11 +3124,7 @@ describe_addon(Client, AddonName, ClusterName)
 -spec describe_addon(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_addon_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_addon_errors(), tuple()}.
 describe_addon(Client, AddonName, ClusterName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_addon(Client, AddonName, ClusterName, QueryMap, HeadersMap, []).
@@ -2742,11 +3132,7 @@ describe_addon(Client, AddonName, ClusterName, QueryMap, HeadersMap)
 -spec describe_addon(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_addon_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_addon_errors(), tuple()}.
 describe_addon(Client, AddonName, ClusterName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/addons/", aws_util:encode_uri(AddonName), ""],
@@ -2767,9 +3153,7 @@ describe_addon(Client, AddonName, ClusterName, QueryMap, HeadersMap, Options0)
 -spec describe_addon_configuration(map(), binary() | list(), binary() | list()) ->
     {ok, describe_addon_configuration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_addon_configuration_errors(), tuple()}.
 describe_addon_configuration(Client, AddonName, AddonVersion)
   when is_map(Client) ->
     describe_addon_configuration(Client, AddonName, AddonVersion, #{}, #{}).
@@ -2777,9 +3161,7 @@ describe_addon_configuration(Client, AddonName, AddonVersion)
 -spec describe_addon_configuration(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_addon_configuration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_addon_configuration_errors(), tuple()}.
 describe_addon_configuration(Client, AddonName, AddonVersion, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_addon_configuration(Client, AddonName, AddonVersion, QueryMap, HeadersMap, []).
@@ -2787,9 +3169,7 @@ describe_addon_configuration(Client, AddonName, AddonVersion, QueryMap, HeadersM
 -spec describe_addon_configuration(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_addon_configuration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_addon_configuration_errors(), tuple()}.
 describe_addon_configuration(Client, AddonName, AddonVersion, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/addons/configuration-schemas"],
@@ -2820,9 +3200,7 @@ describe_addon_configuration(Client, AddonName, AddonVersion, QueryMap, HeadersM
 -spec describe_addon_versions(map()) ->
     {ok, describe_addon_versions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_addon_versions_errors(), tuple()}.
 describe_addon_versions(Client)
   when is_map(Client) ->
     describe_addon_versions(Client, #{}, #{}).
@@ -2830,9 +3208,7 @@ describe_addon_versions(Client)
 -spec describe_addon_versions(map(), map(), map()) ->
     {ok, describe_addon_versions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_addon_versions_errors(), tuple()}.
 describe_addon_versions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_addon_versions(Client, QueryMap, HeadersMap, []).
@@ -2840,9 +3216,7 @@ describe_addon_versions(Client, QueryMap, HeadersMap)
 -spec describe_addon_versions(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_addon_versions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_addon_versions_errors(), tuple()}.
 describe_addon_versions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/addons/supported-versions"],
@@ -2885,10 +3259,7 @@ describe_addon_versions(Client, QueryMap, HeadersMap, Options0)
 -spec describe_cluster(map(), binary() | list()) ->
     {ok, describe_cluster_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_cluster_errors(), tuple()}.
 describe_cluster(Client, Name)
   when is_map(Client) ->
     describe_cluster(Client, Name, #{}, #{}).
@@ -2896,10 +3267,7 @@ describe_cluster(Client, Name)
 -spec describe_cluster(map(), binary() | list(), map(), map()) ->
     {ok, describe_cluster_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_cluster_errors(), tuple()}.
 describe_cluster(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_cluster(Client, Name, QueryMap, HeadersMap, []).
@@ -2907,10 +3275,7 @@ describe_cluster(Client, Name, QueryMap, HeadersMap)
 -spec describe_cluster(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_cluster_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_cluster_errors(), tuple()}.
 describe_cluster(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clusters/", aws_util:encode_uri(Name), ""],
@@ -2931,10 +3296,7 @@ describe_cluster(Client, Name, QueryMap, HeadersMap, Options0)
 -spec describe_eks_anywhere_subscription(map(), binary() | list()) ->
     {ok, describe_eks_anywhere_subscription_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_eks_anywhere_subscription_errors(), tuple()}.
 describe_eks_anywhere_subscription(Client, Id)
   when is_map(Client) ->
     describe_eks_anywhere_subscription(Client, Id, #{}, #{}).
@@ -2942,10 +3304,7 @@ describe_eks_anywhere_subscription(Client, Id)
 -spec describe_eks_anywhere_subscription(map(), binary() | list(), map(), map()) ->
     {ok, describe_eks_anywhere_subscription_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_eks_anywhere_subscription_errors(), tuple()}.
 describe_eks_anywhere_subscription(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_eks_anywhere_subscription(Client, Id, QueryMap, HeadersMap, []).
@@ -2953,10 +3312,7 @@ describe_eks_anywhere_subscription(Client, Id, QueryMap, HeadersMap)
 -spec describe_eks_anywhere_subscription(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_eks_anywhere_subscription_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_eks_anywhere_subscription_errors(), tuple()}.
 describe_eks_anywhere_subscription(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/eks-anywhere-subscriptions/", aws_util:encode_uri(Id), ""],
@@ -2977,10 +3333,7 @@ describe_eks_anywhere_subscription(Client, Id, QueryMap, HeadersMap, Options0)
 -spec describe_fargate_profile(map(), binary() | list(), binary() | list()) ->
     {ok, describe_fargate_profile_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_fargate_profile_errors(), tuple()}.
 describe_fargate_profile(Client, ClusterName, FargateProfileName)
   when is_map(Client) ->
     describe_fargate_profile(Client, ClusterName, FargateProfileName, #{}, #{}).
@@ -2988,10 +3341,7 @@ describe_fargate_profile(Client, ClusterName, FargateProfileName)
 -spec describe_fargate_profile(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_fargate_profile_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_fargate_profile_errors(), tuple()}.
 describe_fargate_profile(Client, ClusterName, FargateProfileName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_fargate_profile(Client, ClusterName, FargateProfileName, QueryMap, HeadersMap, []).
@@ -2999,10 +3349,7 @@ describe_fargate_profile(Client, ClusterName, FargateProfileName, QueryMap, Head
 -spec describe_fargate_profile(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_fargate_profile_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_fargate_profile_errors(), tuple()}.
 describe_fargate_profile(Client, ClusterName, FargateProfileName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/fargate-profiles/", aws_util:encode_uri(FargateProfileName), ""],
@@ -3023,22 +3370,14 @@ describe_fargate_profile(Client, ClusterName, FargateProfileName, QueryMap, Head
 -spec describe_identity_provider_config(map(), binary() | list(), describe_identity_provider_config_request()) ->
     {ok, describe_identity_provider_config_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_identity_provider_config_errors(), tuple()}.
 describe_identity_provider_config(Client, ClusterName, Input) ->
     describe_identity_provider_config(Client, ClusterName, Input, []).
 
 -spec describe_identity_provider_config(map(), binary() | list(), describe_identity_provider_config_request(), proplists:proplist()) ->
     {ok, describe_identity_provider_config_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_identity_provider_config_errors(), tuple()}.
 describe_identity_provider_config(Client, ClusterName, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/identity-provider-configs/describe"],
@@ -3065,10 +3404,7 @@ describe_identity_provider_config(Client, ClusterName, Input0, Options0) ->
 -spec describe_insight(map(), binary() | list(), binary() | list()) ->
     {ok, describe_insight_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_insight_errors(), tuple()}.
 describe_insight(Client, ClusterName, Id)
   when is_map(Client) ->
     describe_insight(Client, ClusterName, Id, #{}, #{}).
@@ -3076,10 +3412,7 @@ describe_insight(Client, ClusterName, Id)
 -spec describe_insight(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_insight_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_insight_errors(), tuple()}.
 describe_insight(Client, ClusterName, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_insight(Client, ClusterName, Id, QueryMap, HeadersMap, []).
@@ -3087,10 +3420,7 @@ describe_insight(Client, ClusterName, Id, QueryMap, HeadersMap)
 -spec describe_insight(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_insight_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_insight_errors(), tuple()}.
 describe_insight(Client, ClusterName, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/insights/", aws_util:encode_uri(Id), ""],
@@ -3111,11 +3441,7 @@ describe_insight(Client, ClusterName, Id, QueryMap, HeadersMap, Options0)
 -spec describe_nodegroup(map(), binary() | list(), binary() | list()) ->
     {ok, describe_nodegroup_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_nodegroup_errors(), tuple()}.
 describe_nodegroup(Client, ClusterName, NodegroupName)
   when is_map(Client) ->
     describe_nodegroup(Client, ClusterName, NodegroupName, #{}, #{}).
@@ -3123,11 +3449,7 @@ describe_nodegroup(Client, ClusterName, NodegroupName)
 -spec describe_nodegroup(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_nodegroup_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_nodegroup_errors(), tuple()}.
 describe_nodegroup(Client, ClusterName, NodegroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_nodegroup(Client, ClusterName, NodegroupName, QueryMap, HeadersMap, []).
@@ -3135,11 +3457,7 @@ describe_nodegroup(Client, ClusterName, NodegroupName, QueryMap, HeadersMap)
 -spec describe_nodegroup(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_nodegroup_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_nodegroup_errors(), tuple()}.
 describe_nodegroup(Client, ClusterName, NodegroupName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/node-groups/", aws_util:encode_uri(NodegroupName), ""],
@@ -3169,10 +3487,7 @@ describe_nodegroup(Client, ClusterName, NodegroupName, QueryMap, HeadersMap, Opt
 -spec describe_pod_identity_association(map(), binary() | list(), binary() | list()) ->
     {ok, describe_pod_identity_association_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_pod_identity_association_errors(), tuple()}.
 describe_pod_identity_association(Client, AssociationId, ClusterName)
   when is_map(Client) ->
     describe_pod_identity_association(Client, AssociationId, ClusterName, #{}, #{}).
@@ -3180,10 +3495,7 @@ describe_pod_identity_association(Client, AssociationId, ClusterName)
 -spec describe_pod_identity_association(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_pod_identity_association_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_pod_identity_association_errors(), tuple()}.
 describe_pod_identity_association(Client, AssociationId, ClusterName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_pod_identity_association(Client, AssociationId, ClusterName, QueryMap, HeadersMap, []).
@@ -3191,10 +3503,7 @@ describe_pod_identity_association(Client, AssociationId, ClusterName, QueryMap, 
 -spec describe_pod_identity_association(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_pod_identity_association_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_pod_identity_association_errors(), tuple()}.
 describe_pod_identity_association(Client, AssociationId, ClusterName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/pod-identity-associations/", aws_util:encode_uri(AssociationId), ""],
@@ -3221,10 +3530,7 @@ describe_pod_identity_association(Client, AssociationId, ClusterName, QueryMap, 
 -spec describe_update(map(), binary() | list(), binary() | list()) ->
     {ok, describe_update_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_update_errors(), tuple()}.
 describe_update(Client, Name, UpdateId)
   when is_map(Client) ->
     describe_update(Client, Name, UpdateId, #{}, #{}).
@@ -3232,10 +3538,7 @@ describe_update(Client, Name, UpdateId)
 -spec describe_update(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_update_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_update_errors(), tuple()}.
 describe_update(Client, Name, UpdateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_update(Client, Name, UpdateId, QueryMap, HeadersMap, []).
@@ -3243,10 +3546,7 @@ describe_update(Client, Name, UpdateId, QueryMap, HeadersMap)
 -spec describe_update(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_update_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_update_errors(), tuple()}.
 describe_update(Client, Name, UpdateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clusters/", aws_util:encode_uri(Name), "/updates/", aws_util:encode_uri(UpdateId), ""],
@@ -3272,18 +3572,14 @@ describe_update(Client, Name, UpdateId, QueryMap, HeadersMap, Options0)
 -spec disassociate_access_policy(map(), binary() | list(), binary() | list(), binary() | list(), disassociate_access_policy_request()) ->
     {ok, disassociate_access_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, disassociate_access_policy_errors(), tuple()}.
 disassociate_access_policy(Client, ClusterName, PolicyArn, PrincipalArn, Input) ->
     disassociate_access_policy(Client, ClusterName, PolicyArn, PrincipalArn, Input, []).
 
 -spec disassociate_access_policy(map(), binary() | list(), binary() | list(), binary() | list(), disassociate_access_policy_request(), proplists:proplist()) ->
     {ok, disassociate_access_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, disassociate_access_policy_errors(), tuple()}.
 disassociate_access_policy(Client, ClusterName, PolicyArn, PrincipalArn, Input0, Options0) ->
     Method = delete,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/access-entries/", aws_util:encode_uri(PrincipalArn), "/access-policies/", aws_util:encode_uri(PolicyArn), ""],
@@ -3316,24 +3612,14 @@ disassociate_access_policy(Client, ClusterName, PolicyArn, PrincipalArn, Input0,
 -spec disassociate_identity_provider_config(map(), binary() | list(), disassociate_identity_provider_config_request()) ->
     {ok, disassociate_identity_provider_config_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, disassociate_identity_provider_config_errors(), tuple()}.
 disassociate_identity_provider_config(Client, ClusterName, Input) ->
     disassociate_identity_provider_config(Client, ClusterName, Input, []).
 
 -spec disassociate_identity_provider_config(map(), binary() | list(), disassociate_identity_provider_config_request(), proplists:proplist()) ->
     {ok, disassociate_identity_provider_config_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, disassociate_identity_provider_config_errors(), tuple()}.
 disassociate_identity_provider_config(Client, ClusterName, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/identity-provider-configs/disassociate"],
@@ -3360,10 +3646,7 @@ disassociate_identity_provider_config(Client, ClusterName, Input0, Options0) ->
 -spec list_access_entries(map(), binary() | list()) ->
     {ok, list_access_entries_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_access_entries_errors(), tuple()}.
 list_access_entries(Client, ClusterName)
   when is_map(Client) ->
     list_access_entries(Client, ClusterName, #{}, #{}).
@@ -3371,10 +3654,7 @@ list_access_entries(Client, ClusterName)
 -spec list_access_entries(map(), binary() | list(), map(), map()) ->
     {ok, list_access_entries_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_access_entries_errors(), tuple()}.
 list_access_entries(Client, ClusterName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_access_entries(Client, ClusterName, QueryMap, HeadersMap, []).
@@ -3382,10 +3662,7 @@ list_access_entries(Client, ClusterName, QueryMap, HeadersMap)
 -spec list_access_entries(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_access_entries_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_access_entries_errors(), tuple()}.
 list_access_entries(Client, ClusterName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/access-entries"],
@@ -3412,7 +3689,7 @@ list_access_entries(Client, ClusterName, QueryMap, HeadersMap, Options0)
 -spec list_access_policies(map()) ->
     {ok, list_access_policies_response(), tuple()} |
     {error, any()} |
-    {error, server_exception(), tuple()}.
+    {error, list_access_policies_errors(), tuple()}.
 list_access_policies(Client)
   when is_map(Client) ->
     list_access_policies(Client, #{}, #{}).
@@ -3420,7 +3697,7 @@ list_access_policies(Client)
 -spec list_access_policies(map(), map(), map()) ->
     {ok, list_access_policies_response(), tuple()} |
     {error, any()} |
-    {error, server_exception(), tuple()}.
+    {error, list_access_policies_errors(), tuple()}.
 list_access_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_access_policies(Client, QueryMap, HeadersMap, []).
@@ -3428,7 +3705,7 @@ list_access_policies(Client, QueryMap, HeadersMap)
 -spec list_access_policies(map(), map(), map(), proplists:proplist()) ->
     {ok, list_access_policies_response(), tuple()} |
     {error, any()} |
-    {error, server_exception(), tuple()}.
+    {error, list_access_policies_errors(), tuple()}.
 list_access_policies(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/access-policies"],
@@ -3454,11 +3731,7 @@ list_access_policies(Client, QueryMap, HeadersMap, Options0)
 -spec list_addons(map(), binary() | list()) ->
     {ok, list_addons_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_addons_errors(), tuple()}.
 list_addons(Client, ClusterName)
   when is_map(Client) ->
     list_addons(Client, ClusterName, #{}, #{}).
@@ -3466,11 +3739,7 @@ list_addons(Client, ClusterName)
 -spec list_addons(map(), binary() | list(), map(), map()) ->
     {ok, list_addons_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_addons_errors(), tuple()}.
 list_addons(Client, ClusterName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_addons(Client, ClusterName, QueryMap, HeadersMap, []).
@@ -3478,11 +3747,7 @@ list_addons(Client, ClusterName, QueryMap, HeadersMap)
 -spec list_addons(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_addons_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_addons_errors(), tuple()}.
 list_addons(Client, ClusterName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/addons"],
@@ -3508,9 +3773,7 @@ list_addons(Client, ClusterName, QueryMap, HeadersMap, Options0)
 -spec list_associated_access_policies(map(), binary() | list(), binary() | list()) ->
     {ok, list_associated_access_policies_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_associated_access_policies_errors(), tuple()}.
 list_associated_access_policies(Client, ClusterName, PrincipalArn)
   when is_map(Client) ->
     list_associated_access_policies(Client, ClusterName, PrincipalArn, #{}, #{}).
@@ -3518,9 +3781,7 @@ list_associated_access_policies(Client, ClusterName, PrincipalArn)
 -spec list_associated_access_policies(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_associated_access_policies_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_associated_access_policies_errors(), tuple()}.
 list_associated_access_policies(Client, ClusterName, PrincipalArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_associated_access_policies(Client, ClusterName, PrincipalArn, QueryMap, HeadersMap, []).
@@ -3528,9 +3789,7 @@ list_associated_access_policies(Client, ClusterName, PrincipalArn, QueryMap, Hea
 -spec list_associated_access_policies(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_associated_access_policies_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_associated_access_policies_errors(), tuple()}.
 list_associated_access_policies(Client, ClusterName, PrincipalArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/access-entries/", aws_util:encode_uri(PrincipalArn), "/access-policies"],
@@ -3558,10 +3817,7 @@ list_associated_access_policies(Client, ClusterName, PrincipalArn, QueryMap, Hea
 -spec list_clusters(map()) ->
     {ok, list_clusters_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_clusters_errors(), tuple()}.
 list_clusters(Client)
   when is_map(Client) ->
     list_clusters(Client, #{}, #{}).
@@ -3569,10 +3825,7 @@ list_clusters(Client)
 -spec list_clusters(map(), map(), map()) ->
     {ok, list_clusters_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_clusters_errors(), tuple()}.
 list_clusters(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_clusters(Client, QueryMap, HeadersMap, []).
@@ -3580,10 +3833,7 @@ list_clusters(Client, QueryMap, HeadersMap)
 -spec list_clusters(map(), map(), map(), proplists:proplist()) ->
     {ok, list_clusters_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_clusters_errors(), tuple()}.
 list_clusters(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clusters"],
@@ -3610,10 +3860,7 @@ list_clusters(Client, QueryMap, HeadersMap, Options0)
 -spec list_eks_anywhere_subscriptions(map()) ->
     {ok, list_eks_anywhere_subscriptions_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_eks_anywhere_subscriptions_errors(), tuple()}.
 list_eks_anywhere_subscriptions(Client)
   when is_map(Client) ->
     list_eks_anywhere_subscriptions(Client, #{}, #{}).
@@ -3621,10 +3868,7 @@ list_eks_anywhere_subscriptions(Client)
 -spec list_eks_anywhere_subscriptions(map(), map(), map()) ->
     {ok, list_eks_anywhere_subscriptions_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_eks_anywhere_subscriptions_errors(), tuple()}.
 list_eks_anywhere_subscriptions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_eks_anywhere_subscriptions(Client, QueryMap, HeadersMap, []).
@@ -3632,10 +3876,7 @@ list_eks_anywhere_subscriptions(Client, QueryMap, HeadersMap)
 -spec list_eks_anywhere_subscriptions(map(), map(), map(), proplists:proplist()) ->
     {ok, list_eks_anywhere_subscriptions_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_eks_anywhere_subscriptions_errors(), tuple()}.
 list_eks_anywhere_subscriptions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/eks-anywhere-subscriptions"],
@@ -3664,10 +3905,7 @@ list_eks_anywhere_subscriptions(Client, QueryMap, HeadersMap, Options0)
 -spec list_fargate_profiles(map(), binary() | list()) ->
     {ok, list_fargate_profiles_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_fargate_profiles_errors(), tuple()}.
 list_fargate_profiles(Client, ClusterName)
   when is_map(Client) ->
     list_fargate_profiles(Client, ClusterName, #{}, #{}).
@@ -3675,10 +3913,7 @@ list_fargate_profiles(Client, ClusterName)
 -spec list_fargate_profiles(map(), binary() | list(), map(), map()) ->
     {ok, list_fargate_profiles_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_fargate_profiles_errors(), tuple()}.
 list_fargate_profiles(Client, ClusterName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_fargate_profiles(Client, ClusterName, QueryMap, HeadersMap, []).
@@ -3686,10 +3921,7 @@ list_fargate_profiles(Client, ClusterName, QueryMap, HeadersMap)
 -spec list_fargate_profiles(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_fargate_profiles_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_fargate_profiles_errors(), tuple()}.
 list_fargate_profiles(Client, ClusterName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/fargate-profiles"],
@@ -3715,11 +3947,7 @@ list_fargate_profiles(Client, ClusterName, QueryMap, HeadersMap, Options0)
 -spec list_identity_provider_configs(map(), binary() | list()) ->
     {ok, list_identity_provider_configs_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_identity_provider_configs_errors(), tuple()}.
 list_identity_provider_configs(Client, ClusterName)
   when is_map(Client) ->
     list_identity_provider_configs(Client, ClusterName, #{}, #{}).
@@ -3727,11 +3955,7 @@ list_identity_provider_configs(Client, ClusterName)
 -spec list_identity_provider_configs(map(), binary() | list(), map(), map()) ->
     {ok, list_identity_provider_configs_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_identity_provider_configs_errors(), tuple()}.
 list_identity_provider_configs(Client, ClusterName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_identity_provider_configs(Client, ClusterName, QueryMap, HeadersMap, []).
@@ -3739,11 +3963,7 @@ list_identity_provider_configs(Client, ClusterName, QueryMap, HeadersMap)
 -spec list_identity_provider_configs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_identity_provider_configs_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_identity_provider_configs_errors(), tuple()}.
 list_identity_provider_configs(Client, ClusterName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/identity-provider-configs"],
@@ -3773,20 +3993,14 @@ list_identity_provider_configs(Client, ClusterName, QueryMap, HeadersMap, Option
 -spec list_insights(map(), binary() | list(), list_insights_request()) ->
     {ok, list_insights_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_insights_errors(), tuple()}.
 list_insights(Client, ClusterName, Input) ->
     list_insights(Client, ClusterName, Input, []).
 
 -spec list_insights(map(), binary() | list(), list_insights_request(), proplists:proplist()) ->
     {ok, list_insights_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_insights_errors(), tuple()}.
 list_insights(Client, ClusterName, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/insights"],
@@ -3818,11 +4032,7 @@ list_insights(Client, ClusterName, Input0, Options0) ->
 -spec list_nodegroups(map(), binary() | list()) ->
     {ok, list_nodegroups_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_nodegroups_errors(), tuple()}.
 list_nodegroups(Client, ClusterName)
   when is_map(Client) ->
     list_nodegroups(Client, ClusterName, #{}, #{}).
@@ -3830,11 +4040,7 @@ list_nodegroups(Client, ClusterName)
 -spec list_nodegroups(map(), binary() | list(), map(), map()) ->
     {ok, list_nodegroups_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_nodegroups_errors(), tuple()}.
 list_nodegroups(Client, ClusterName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_nodegroups(Client, ClusterName, QueryMap, HeadersMap, []).
@@ -3842,11 +4048,7 @@ list_nodegroups(Client, ClusterName, QueryMap, HeadersMap)
 -spec list_nodegroups(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_nodegroups_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_nodegroups_errors(), tuple()}.
 list_nodegroups(Client, ClusterName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/node-groups"],
@@ -3875,10 +4077,7 @@ list_nodegroups(Client, ClusterName, QueryMap, HeadersMap, Options0)
 -spec list_pod_identity_associations(map(), binary() | list()) ->
     {ok, list_pod_identity_associations_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_pod_identity_associations_errors(), tuple()}.
 list_pod_identity_associations(Client, ClusterName)
   when is_map(Client) ->
     list_pod_identity_associations(Client, ClusterName, #{}, #{}).
@@ -3886,10 +4085,7 @@ list_pod_identity_associations(Client, ClusterName)
 -spec list_pod_identity_associations(map(), binary() | list(), map(), map()) ->
     {ok, list_pod_identity_associations_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_pod_identity_associations_errors(), tuple()}.
 list_pod_identity_associations(Client, ClusterName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_pod_identity_associations(Client, ClusterName, QueryMap, HeadersMap, []).
@@ -3897,10 +4093,7 @@ list_pod_identity_associations(Client, ClusterName, QueryMap, HeadersMap)
 -spec list_pod_identity_associations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_pod_identity_associations_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_pod_identity_associations_errors(), tuple()}.
 list_pod_identity_associations(Client, ClusterName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/pod-identity-associations"],
@@ -3928,8 +4121,7 @@ list_pod_identity_associations(Client, ClusterName, QueryMap, HeadersMap, Option
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -3937,8 +4129,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -3946,8 +4137,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -3969,10 +4159,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec list_updates(map(), binary() | list()) ->
     {ok, list_updates_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_updates_errors(), tuple()}.
 list_updates(Client, Name)
   when is_map(Client) ->
     list_updates(Client, Name, #{}, #{}).
@@ -3980,10 +4167,7 @@ list_updates(Client, Name)
 -spec list_updates(map(), binary() | list(), map(), map()) ->
     {ok, list_updates_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_updates_errors(), tuple()}.
 list_updates(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_updates(Client, Name, QueryMap, HeadersMap, []).
@@ -3991,10 +4175,7 @@ list_updates(Client, Name, QueryMap, HeadersMap)
 -spec list_updates(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_updates_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_updates_errors(), tuple()}.
 list_updates(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clusters/", aws_util:encode_uri(Name), "/updates"],
@@ -4046,28 +4227,14 @@ list_updates(Client, Name, QueryMap, HeadersMap, Options0)
 -spec register_cluster(map(), register_cluster_request()) ->
     {ok, register_cluster_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_propagation_delay_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, register_cluster_errors(), tuple()}.
 register_cluster(Client, Input) ->
     register_cluster(Client, Input, []).
 
 -spec register_cluster(map(), register_cluster_request(), proplists:proplist()) ->
     {ok, register_cluster_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_propagation_delay_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, register_cluster_errors(), tuple()}.
 register_cluster(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cluster-registrations"],
@@ -4106,16 +4273,14 @@ register_cluster(Client, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -4142,16 +4307,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -4179,20 +4342,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_access_entry(map(), binary() | list(), binary() | list(), update_access_entry_request()) ->
     {ok, update_access_entry_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, update_access_entry_errors(), tuple()}.
 update_access_entry(Client, ClusterName, PrincipalArn, Input) ->
     update_access_entry(Client, ClusterName, PrincipalArn, Input, []).
 
 -spec update_access_entry(map(), binary() | list(), binary() | list(), update_access_entry_request(), proplists:proplist()) ->
     {ok, update_access_entry_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, update_access_entry_errors(), tuple()}.
 update_access_entry(Client, ClusterName, PrincipalArn, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/access-entries/", aws_util:encode_uri(PrincipalArn), ""],
@@ -4219,24 +4376,14 @@ update_access_entry(Client, ClusterName, PrincipalArn, Input0, Options0) ->
 -spec update_addon(map(), binary() | list(), binary() | list(), update_addon_request()) ->
     {ok, update_addon_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, update_addon_errors(), tuple()}.
 update_addon(Client, AddonName, ClusterName, Input) ->
     update_addon(Client, AddonName, ClusterName, Input, []).
 
 -spec update_addon(map(), binary() | list(), binary() | list(), update_addon_request(), proplists:proplist()) ->
     {ok, update_addon_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, update_addon_errors(), tuple()}.
 update_addon(Client, AddonName, ClusterName, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/addons/", aws_util:encode_uri(AddonName), "/update"],
@@ -4320,24 +4467,14 @@ update_addon(Client, AddonName, ClusterName, Input0, Options0) ->
 -spec update_cluster_config(map(), binary() | list(), update_cluster_config_request()) ->
     {ok, update_cluster_config_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, update_cluster_config_errors(), tuple()}.
 update_cluster_config(Client, Name, Input) ->
     update_cluster_config(Client, Name, Input, []).
 
 -spec update_cluster_config(map(), binary() | list(), update_cluster_config_request(), proplists:proplist()) ->
     {ok, update_cluster_config_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, update_cluster_config_errors(), tuple()}.
 update_cluster_config(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(Name), "/update-config"],
@@ -4384,24 +4521,14 @@ update_cluster_config(Client, Name, Input0, Options0) ->
 -spec update_cluster_version(map(), binary() | list(), update_cluster_version_request()) ->
     {ok, update_cluster_version_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, update_cluster_version_errors(), tuple()}.
 update_cluster_version(Client, Name, Input) ->
     update_cluster_version(Client, Name, Input, []).
 
 -spec update_cluster_version(map(), binary() | list(), update_cluster_version_request(), proplists:proplist()) ->
     {ok, update_cluster_version_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, update_cluster_version_errors(), tuple()}.
 update_cluster_version(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(Name), "/updates"],
@@ -4431,22 +4558,14 @@ update_cluster_version(Client, Name, Input0, Options0) ->
 -spec update_eks_anywhere_subscription(map(), binary() | list(), update_eks_anywhere_subscription_request()) ->
     {ok, update_eks_anywhere_subscription_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, update_eks_anywhere_subscription_errors(), tuple()}.
 update_eks_anywhere_subscription(Client, Id, Input) ->
     update_eks_anywhere_subscription(Client, Id, Input, []).
 
 -spec update_eks_anywhere_subscription(map(), binary() | list(), update_eks_anywhere_subscription_request(), proplists:proplist()) ->
     {ok, update_eks_anywhere_subscription_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, update_eks_anywhere_subscription_errors(), tuple()}.
 update_eks_anywhere_subscription(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/eks-anywhere-subscriptions/", aws_util:encode_uri(Id), ""],
@@ -4481,24 +4600,14 @@ update_eks_anywhere_subscription(Client, Id, Input0, Options0) ->
 -spec update_nodegroup_config(map(), binary() | list(), binary() | list(), update_nodegroup_config_request()) ->
     {ok, update_nodegroup_config_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, update_nodegroup_config_errors(), tuple()}.
 update_nodegroup_config(Client, ClusterName, NodegroupName, Input) ->
     update_nodegroup_config(Client, ClusterName, NodegroupName, Input, []).
 
 -spec update_nodegroup_config(map(), binary() | list(), binary() | list(), update_nodegroup_config_request(), proplists:proplist()) ->
     {ok, update_nodegroup_config_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, update_nodegroup_config_errors(), tuple()}.
 update_nodegroup_config(Client, ClusterName, NodegroupName, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/node-groups/", aws_util:encode_uri(NodegroupName), "/update-config"],
@@ -4564,24 +4673,14 @@ update_nodegroup_config(Client, ClusterName, NodegroupName, Input0, Options0) ->
 -spec update_nodegroup_version(map(), binary() | list(), binary() | list(), update_nodegroup_version_request()) ->
     {ok, update_nodegroup_version_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, update_nodegroup_version_errors(), tuple()}.
 update_nodegroup_version(Client, ClusterName, NodegroupName, Input) ->
     update_nodegroup_version(Client, ClusterName, NodegroupName, Input, []).
 
 -spec update_nodegroup_version(map(), binary() | list(), binary() | list(), update_nodegroup_version_request(), proplists:proplist()) ->
     {ok, update_nodegroup_version_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, update_nodegroup_version_errors(), tuple()}.
 update_nodegroup_version(Client, ClusterName, NodegroupName, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/node-groups/", aws_util:encode_uri(NodegroupName), "/update-version"],
@@ -4615,20 +4714,14 @@ update_nodegroup_version(Client, ClusterName, NodegroupName, Input0, Options0) -
 -spec update_pod_identity_association(map(), binary() | list(), binary() | list(), update_pod_identity_association_request()) ->
     {ok, update_pod_identity_association_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, update_pod_identity_association_errors(), tuple()}.
 update_pod_identity_association(Client, AssociationId, ClusterName, Input) ->
     update_pod_identity_association(Client, AssociationId, ClusterName, Input, []).
 
 -spec update_pod_identity_association(map(), binary() | list(), binary() | list(), update_pod_identity_association_request(), proplists:proplist()) ->
     {ok, update_pod_identity_association_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, update_pod_identity_association_errors(), tuple()}.
 update_pod_identity_association(Client, AssociationId, ClusterName, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/pod-identity-associations/", aws_util:encode_uri(AssociationId), ""],

@@ -32,6 +32,7 @@
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% categories() :: #{
 %%   <<"MatchedCategories">> => list(string()()),
@@ -39,11 +40,13 @@
 %% }
 -type categories() :: #{binary() => any()}.
 
+
 %% Example:
 %% category_details() :: #{
 %%   <<"PointsOfInterest">> => list(point_of_interest()())
 %% }
 -type category_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% character_offsets() :: #{
@@ -52,11 +55,13 @@
 %% }
 -type character_offsets() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_service_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_service_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% invalid_request_exception() :: #{
@@ -64,11 +69,13 @@
 %% }
 -type invalid_request_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% issue_detected() :: #{
 %%   <<"CharacterOffsets">> => character_offsets()
 %% }
 -type issue_detected() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_realtime_contact_analysis_segments_request() :: #{
@@ -79,12 +86,14 @@
 %% }
 -type list_realtime_contact_analysis_segments_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_realtime_contact_analysis_segments_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Segments">> => list(realtime_contact_analysis_segment()())
 %% }
 -type list_realtime_contact_analysis_segments_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% point_of_interest() :: #{
@@ -93,6 +102,7 @@
 %% }
 -type point_of_interest() :: #{binary() => any()}.
 
+
 %% Example:
 %% realtime_contact_analysis_segment() :: #{
 %%   <<"Categories">> => categories(),
@@ -100,17 +110,20 @@
 %% }
 -type realtime_contact_analysis_segment() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% transcript() :: #{
@@ -125,6 +138,13 @@
 %% }
 -type transcript() :: #{binary() => any()}.
 
+-type list_realtime_contact_analysis_segments_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -134,22 +154,14 @@
 -spec list_realtime_contact_analysis_segments(map(), list_realtime_contact_analysis_segments_request()) ->
     {ok, list_realtime_contact_analysis_segments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_realtime_contact_analysis_segments_errors(), tuple()}.
 list_realtime_contact_analysis_segments(Client, Input) ->
     list_realtime_contact_analysis_segments(Client, Input, []).
 
 -spec list_realtime_contact_analysis_segments(map(), list_realtime_contact_analysis_segments_request(), proplists:proplist()) ->
     {ok, list_realtime_contact_analysis_segments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_realtime_contact_analysis_segments_errors(), tuple()}.
 list_realtime_contact_analysis_segments(Client, Input0, Options0) ->
     Method = post,
     Path = ["/realtime-contact-analysis/analysis-segments"],

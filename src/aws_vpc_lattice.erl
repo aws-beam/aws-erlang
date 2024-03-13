@@ -149,6 +149,7 @@
 %% }
 -type http_match() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_access_log_subscription_request() :: #{
 %%   <<"clientToken">> => string(),
@@ -157,6 +158,7 @@
 %%   <<"tags">> => map()
 %% }
 -type create_access_log_subscription_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_service_network_vpc_association_response() :: #{
@@ -167,9 +169,11 @@
 %%   <<"status">> => string()
 %% }
 -type update_service_network_vpc_association_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_access_log_subscription_response() :: #{}
 -type delete_access_log_subscription_response() :: #{}.
+
 
 %% Example:
 %% rule_update_success() :: #{
@@ -183,6 +187,7 @@
 %% }
 -type rule_update_success() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_service_network_vpc_association_response() :: #{
 %%   <<"arn">> => string(),
@@ -192,6 +197,7 @@
 %%   <<"status">> => string()
 %% }
 -type create_service_network_vpc_association_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_rule_request() :: #{
@@ -204,6 +210,7 @@
 %% }
 -type create_rule_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_target_group_request() :: #{
 %%   <<"clientToken">> => string(),
@@ -214,11 +221,13 @@
 %% }
 -type create_target_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_update_rule_request() :: #{
 %%   <<"rules">> := list(rule_update()())
 %% }
 -type batch_update_rule_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_target_group_response() :: #{
@@ -236,20 +245,24 @@
 %% }
 -type get_target_group_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_resource_policy_response() :: #{}
 -type delete_resource_policy_response() :: #{}.
+
 
 %% Example:
 %% deregister_targets_request() :: #{
 %%   <<"targets">> := list(target()())
 %% }
 -type deregister_targets_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_listener_response() :: #{
@@ -263,9 +276,11 @@
 %%   <<"serviceId">> => string()
 %% }
 -type create_listener_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_service_network_request() :: #{}
 -type delete_service_network_request() :: #{}.
+
 
 %% Example:
 %% get_service_response() :: #{
@@ -284,11 +299,13 @@
 %% }
 -type get_service_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% forward_action() :: #{
 %%   <<"targetGroups">> => list(weighted_target_group()())
 %% }
 -type forward_action() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_service_network_request() :: #{
@@ -298,6 +315,7 @@
 %%   <<"tags">> => map()
 %% }
 -type create_service_network_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_network_service_association_summary() :: #{
@@ -316,9 +334,11 @@
 %%   <<"status">> => string()
 %% }
 -type service_network_service_association_summary() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% get_service_network_response() :: #{
@@ -333,6 +353,7 @@
 %% }
 -type get_service_network_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_service_network_response() :: #{
 %%   <<"arn">> => string(),
@@ -341,6 +362,7 @@
 %%   <<"name">> => string()
 %% }
 -type update_service_network_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_service_network_service_association_response() :: #{
@@ -353,6 +375,7 @@
 %% }
 -type create_service_network_service_association_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_service_network_response() :: #{
 %%   <<"arn">> => string(),
@@ -362,18 +385,22 @@
 %% }
 -type create_service_network_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_service_network_vpc_associations_response() :: #{
 %%   <<"items">> := list(service_network_vpc_association_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_service_network_vpc_associations_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_access_log_subscription_request() :: #{}
 -type get_access_log_subscription_request() :: #{}.
+
 %% Example:
 %% get_service_network_request() :: #{}
 -type get_service_network_request() :: #{}.
+
 
 %% Example:
 %% service_network_summary() :: #{
@@ -387,6 +414,7 @@
 %% }
 -type service_network_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_rule_request() :: #{
 %%   <<"action">> => list(),
@@ -395,14 +423,17 @@
 %% }
 -type update_rule_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_resource_policy_response() :: #{
 %%   <<"policy">> => string()
 %% }
 -type get_resource_policy_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_auth_policy_response() :: #{}
 -type delete_auth_policy_response() :: #{}.
+
 
 %% Example:
 %% get_service_network_vpc_association_response() :: #{
@@ -421,9 +452,11 @@
 %%   <<"vpcId">> => string()
 %% }
 -type get_service_network_vpc_association_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_rule_request() :: #{}
 -type get_rule_request() :: #{}.
+
 
 %% Example:
 %% list_access_log_subscriptions_response() :: #{
@@ -432,11 +465,13 @@
 %% }
 -type list_access_log_subscriptions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_access_log_subscription_response() :: #{
@@ -448,12 +483,14 @@
 %% }
 -type create_access_log_subscription_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_rules_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_rules_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% target_group_summary() :: #{
@@ -473,6 +510,7 @@
 %% }
 -type target_group_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_service_network_service_associations_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -481,9 +519,11 @@
 %%   <<"serviceNetworkIdentifier">> => string()
 %% }
 -type list_service_network_service_associations_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_service_request() :: #{}
 -type get_service_request() :: #{}.
+
 
 %% Example:
 %% get_listener_response() :: #{
@@ -500,6 +540,7 @@
 %% }
 -type get_listener_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_auth_policy_response() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
@@ -509,11 +550,13 @@
 %% }
 -type get_auth_policy_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_target_group_request() :: #{
 %%   <<"healthCheck">> := health_check_config()
 %% }
 -type update_target_group_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_services_request() :: #{
@@ -521,9 +564,11 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_services_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_rule_request() :: #{}
 -type delete_rule_request() :: #{}.
+
 
 %% Example:
 %% update_target_group_response() :: #{
@@ -535,9 +580,11 @@
 %%   <<"type">> => string()
 %% }
 -type update_target_group_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_rule_response() :: #{}
 -type delete_rule_response() :: #{}.
+
 
 %% Example:
 %% service_network_vpc_association_summary() :: #{
@@ -554,6 +601,7 @@
 %% }
 -type service_network_vpc_association_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% target() :: #{
 %%   <<"id">> => [string()],
@@ -561,12 +609,14 @@
 %% }
 -type target() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_service_networks_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_service_networks_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_rule_response() :: #{
@@ -580,6 +630,7 @@
 %% }
 -type update_rule_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => [string()],
@@ -587,6 +638,7 @@
 %%   <<"resourceType">> => [string()]
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -596,6 +648,7 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_listeners_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -603,12 +656,14 @@
 %% }
 -type list_listeners_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_services_response() :: #{
 %%   <<"items">> => list(service_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_services_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_target_group_response() :: #{
@@ -621,6 +676,7 @@
 %% }
 -type create_target_group_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => [string()],
@@ -631,6 +687,7 @@
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% target_summary() :: #{
 %%   <<"id">> => [string()],
@@ -640,12 +697,14 @@
 %% }
 -type target_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% weighted_target_group() :: #{
 %%   <<"targetGroupIdentifier">> => string(),
 %%   <<"weight">> => integer()
 %% }
 -type weighted_target_group() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_summary() :: #{
@@ -659,9 +718,11 @@
 %%   <<"status">> => string()
 %% }
 -type service_summary() :: #{binary() => any()}.
+
 %% Example:
 %% delete_service_network_vpc_association_request() :: #{}
 -type delete_service_network_vpc_association_request() :: #{}.
+
 
 %% Example:
 %% create_service_request() :: #{
@@ -674,12 +735,14 @@
 %% }
 -type create_service_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% path_match() :: #{
 %%   <<"caseSensitive">> => boolean(),
 %%   <<"match">> => list()
 %% }
 -type path_match() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_target_group_response() :: #{
@@ -689,6 +752,7 @@
 %% }
 -type delete_target_group_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% header_match() :: #{
 %%   <<"caseSensitive">> => boolean(),
@@ -697,14 +761,17 @@
 %% }
 -type header_match() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_auth_policy_request() :: #{}
 -type delete_auth_policy_request() :: #{}.
+
 
 %% Example:
 %% get_rule_response() :: #{
@@ -720,12 +787,14 @@
 %% }
 -type get_rule_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception_field() :: #{
 %%   <<"message">> => [string()],
 %%   <<"name">> => [string()]
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_service_network_service_association_response() :: #{
@@ -734,6 +803,7 @@
 %%   <<"status">> => string()
 %% }
 -type delete_service_network_service_association_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_rule_response() :: #{
@@ -745,18 +815,22 @@
 %%   <<"priority">> => integer()
 %% }
 -type create_rule_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_service_network_response() :: #{}
 -type delete_service_network_response() :: #{}.
+
 
 %% Example:
 %% put_auth_policy_request() :: #{
 %%   <<"policy">> := string()
 %% }
 -type put_auth_policy_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_resource_policy_request() :: #{}
 -type get_resource_policy_request() :: #{}.
+
 
 %% Example:
 %% delete_service_network_vpc_association_response() :: #{
@@ -766,6 +840,7 @@
 %% }
 -type delete_service_network_vpc_association_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_listeners_response() :: #{
 %%   <<"items">> := list(listener_summary()()),
@@ -773,12 +848,14 @@
 %% }
 -type list_listeners_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_target_groups_response() :: #{
 %%   <<"items">> => list(target_group_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_target_groups_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_access_log_subscription_response() :: #{
@@ -789,9 +866,11 @@
 %%   <<"resourceId">> := string()
 %% }
 -type update_access_log_subscription_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_access_log_subscription_request() :: #{}
 -type delete_access_log_subscription_request() :: #{}.
+
 
 %% Example:
 %% update_service_request() :: #{
@@ -799,9 +878,11 @@
 %%   <<"certificateArn">> => string()
 %% }
 -type update_service_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_target_group_request() :: #{}
 -type delete_target_group_request() :: #{}.
+
 
 %% Example:
 %% rule_summary() :: #{
@@ -815,6 +896,7 @@
 %% }
 -type rule_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => [string()],
@@ -822,11 +904,13 @@
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% register_targets_request() :: #{
 %%   <<"targets">> := list(target()())
 %% }
 -type register_targets_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_targets_request() :: #{
@@ -836,11 +920,13 @@
 %% }
 -type list_targets_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_access_log_subscription_request() :: #{
 %%   <<"destinationArn">> := string()
 %% }
 -type update_access_log_subscription_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% access_log_subscription_summary() :: #{
@@ -853,6 +939,7 @@
 %%   <<"resourceId">> => string()
 %% }
 -type access_log_subscription_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_service_network_service_association_response() :: #{
@@ -874,11 +961,13 @@
 %% }
 -type get_service_network_service_association_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_resource_policy_request() :: #{
 %%   <<"policy">> := string()
 %% }
 -type put_resource_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% access_denied_exception() :: #{
@@ -886,11 +975,13 @@
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_listener_request() :: #{
 %%   <<"defaultAction">> := list()
 %% }
 -type update_listener_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_listener_response() :: #{
@@ -905,12 +996,14 @@
 %% }
 -type update_listener_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_rules_response() :: #{
 %%   <<"items">> := list(rule_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_rules_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_target_groups_request() :: #{
@@ -920,6 +1013,7 @@
 %%   <<"vpcIdentifier">> => string()
 %% }
 -type list_target_groups_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% listener_summary() :: #{
@@ -932,9 +1026,11 @@
 %%   <<"protocol">> => string()
 %% }
 -type listener_summary() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% validation_exception() :: #{
@@ -943,12 +1039,15 @@
 %%   <<"reason">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 %% Example:
 %% delete_service_request() :: #{}
 -type delete_service_request() :: #{}.
+
 
 %% Example:
 %% health_check_config() :: #{
@@ -965,6 +1064,7 @@
 %% }
 -type health_check_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => [string()],
@@ -973,15 +1073,18 @@
 %%   <<"serviceCode">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_service_network_service_association_request() :: #{}
 -type delete_service_network_service_association_request() :: #{}.
+
 
 %% Example:
 %% fixed_response_action() :: #{
 %%   <<"statusCode">> => integer()
 %% }
 -type fixed_response_action() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_service_network_vpc_associations_request() :: #{
@@ -992,15 +1095,18 @@
 %% }
 -type list_service_network_vpc_associations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_auth_policy_response() :: #{
 %%   <<"policy">> => string(),
 %%   <<"state">> => string()
 %% }
 -type put_auth_policy_response() :: #{binary() => any()}.
+
 %% Example:
 %% put_resource_policy_response() :: #{}
 -type put_resource_policy_response() :: #{}.
+
 
 %% Example:
 %% target_failure() :: #{
@@ -1010,12 +1116,15 @@
 %%   <<"port">> => integer()
 %% }
 -type target_failure() :: #{binary() => any()}.
+
 %% Example:
 %% get_auth_policy_request() :: #{}
 -type get_auth_policy_request() :: #{}.
+
 %% Example:
 %% delete_resource_policy_request() :: #{}
 -type delete_resource_policy_request() :: #{}.
+
 
 %% Example:
 %% register_targets_response() :: #{
@@ -1023,6 +1132,7 @@
 %%   <<"unsuccessful">> => list(target_failure()())
 %% }
 -type register_targets_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% rule_update() :: #{
@@ -1033,12 +1143,14 @@
 %% }
 -type rule_update() :: #{binary() => any()}.
 
+
 %% Example:
 %% dns_entry() :: #{
 %%   <<"domainName">> => [string()],
 %%   <<"hostedZoneId">> => [string()]
 %% }
 -type dns_entry() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_service_response() :: #{
@@ -1051,6 +1163,7 @@
 %% }
 -type update_service_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_service_response() :: #{
 %%   <<"arn">> => string(),
@@ -1060,11 +1173,13 @@
 %% }
 -type delete_service_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_service_network_vpc_association_request() :: #{
 %%   <<"securityGroupIds">> := list(string()())
 %% }
 -type update_service_network_vpc_association_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% deregister_targets_response() :: #{
@@ -1073,14 +1188,17 @@
 %% }
 -type deregister_targets_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_service_network_request() :: #{
 %%   <<"authType">> := string()
 %% }
 -type update_service_network_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_listener_request() :: #{}
 -type get_listener_request() :: #{}.
+
 
 %% Example:
 %% create_service_response() :: #{
@@ -1095,18 +1213,22 @@
 %% }
 -type create_service_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_update_rule_response() :: #{
 %%   <<"successful">> => list(rule_update_success()()),
 %%   <<"unsuccessful">> => list(rule_update_failure()())
 %% }
 -type batch_update_rule_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_target_group_request() :: #{}
 -type get_target_group_request() :: #{}.
+
 %% Example:
 %% delete_listener_request() :: #{}
 -type delete_listener_request() :: #{}.
+
 
 %% Example:
 %% list_targets_response() :: #{
@@ -1114,6 +1236,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_targets_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_access_log_subscription_response() :: #{
@@ -1127,6 +1250,7 @@
 %% }
 -type get_access_log_subscription_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% target_group_config() :: #{
 %%   <<"healthCheck">> => health_check_config(),
@@ -1139,6 +1263,7 @@
 %% }
 -type target_group_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_service_network_vpc_association_request() :: #{
 %%   <<"clientToken">> => string(),
@@ -1149,6 +1274,7 @@
 %% }
 -type create_service_network_vpc_association_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_access_log_subscriptions_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -1156,9 +1282,11 @@
 %%   <<"resourceIdentifier">> := string()
 %% }
 -type list_access_log_subscriptions_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_listener_response() :: #{}
 -type delete_listener_response() :: #{}.
+
 
 %% Example:
 %% rule_update_failure() :: #{
@@ -1168,6 +1296,7 @@
 %% }
 -type rule_update_failure() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_service_networks_response() :: #{
 %%   <<"items">> := list(service_network_summary()()),
@@ -1175,15 +1304,18 @@
 %% }
 -type list_service_networks_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_service_network_service_associations_response() :: #{
 %%   <<"items">> := list(service_network_service_association_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_service_network_service_associations_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_service_network_service_association_request() :: #{}
 -type get_service_network_service_association_request() :: #{}.
+
 
 %% Example:
 %% create_listener_request() :: #{
@@ -1196,6 +1328,7 @@
 %% }
 -type create_listener_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_service_network_service_association_request() :: #{
 %%   <<"clientToken">> => string(),
@@ -1204,9 +1337,398 @@
 %%   <<"tags">> => map()
 %% }
 -type create_service_network_service_association_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_service_network_vpc_association_request() :: #{}
 -type get_service_network_vpc_association_request() :: #{}.
+
+-type batch_update_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_access_log_subscription_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_listener_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_service_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_service_network_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_service_network_service_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_service_network_vpc_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_target_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_access_log_subscription_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_auth_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_listener_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_resource_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_service_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_service_network_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_service_network_service_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_service_network_vpc_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_target_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type deregister_targets_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_access_log_subscription_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_auth_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_listener_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_resource_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_service_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_service_network_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_service_network_service_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_service_network_vpc_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_target_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_access_log_subscriptions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_listeners_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_rules_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_service_network_service_associations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_service_network_vpc_associations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_service_networks_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_services_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_target_groups_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_targets_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type put_auth_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type put_resource_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type register_targets_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_access_log_subscription_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_listener_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_service_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_service_network_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_service_network_vpc_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_target_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -1220,24 +1742,14 @@
 -spec batch_update_rule(map(), binary() | list(), binary() | list(), batch_update_rule_request()) ->
     {ok, batch_update_rule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_update_rule_errors(), tuple()}.
 batch_update_rule(Client, ListenerIdentifier, ServiceIdentifier, Input) ->
     batch_update_rule(Client, ListenerIdentifier, ServiceIdentifier, Input, []).
 
 -spec batch_update_rule(map(), binary() | list(), binary() | list(), batch_update_rule_request(), proplists:proplist()) ->
     {ok, batch_update_rule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_update_rule_errors(), tuple()}.
 batch_update_rule(Client, ListenerIdentifier, ServiceIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/services/", aws_util:encode_uri(ServiceIdentifier), "/listeners/", aws_util:encode_uri(ListenerIdentifier), "/rules"],
@@ -1277,24 +1789,14 @@ batch_update_rule(Client, ListenerIdentifier, ServiceIdentifier, Input0, Options
 -spec create_access_log_subscription(map(), create_access_log_subscription_request()) ->
     {ok, create_access_log_subscription_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_access_log_subscription_errors(), tuple()}.
 create_access_log_subscription(Client, Input) ->
     create_access_log_subscription(Client, Input, []).
 
 -spec create_access_log_subscription(map(), create_access_log_subscription_request(), proplists:proplist()) ->
     {ok, create_access_log_subscription_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_access_log_subscription_errors(), tuple()}.
 create_access_log_subscription(Client, Input0, Options0) ->
     Method = post,
     Path = ["/accesslogsubscriptions"],
@@ -1328,26 +1830,14 @@ create_access_log_subscription(Client, Input0, Options0) ->
 -spec create_listener(map(), binary() | list(), create_listener_request()) ->
     {ok, create_listener_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_listener_errors(), tuple()}.
 create_listener(Client, ServiceIdentifier, Input) ->
     create_listener(Client, ServiceIdentifier, Input, []).
 
 -spec create_listener(map(), binary() | list(), create_listener_request(), proplists:proplist()) ->
     {ok, create_listener_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_listener_errors(), tuple()}.
 create_listener(Client, ServiceIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/services/", aws_util:encode_uri(ServiceIdentifier), "/listeners"],
@@ -1382,26 +1872,14 @@ create_listener(Client, ServiceIdentifier, Input0, Options0) ->
 -spec create_rule(map(), binary() | list(), binary() | list(), create_rule_request()) ->
     {ok, create_rule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_rule_errors(), tuple()}.
 create_rule(Client, ListenerIdentifier, ServiceIdentifier, Input) ->
     create_rule(Client, ListenerIdentifier, ServiceIdentifier, Input, []).
 
 -spec create_rule(map(), binary() | list(), binary() | list(), create_rule_request(), proplists:proplist()) ->
     {ok, create_rule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_rule_errors(), tuple()}.
 create_rule(Client, ListenerIdentifier, ServiceIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/services/", aws_util:encode_uri(ServiceIdentifier), "/listeners/", aws_util:encode_uri(ListenerIdentifier), "/rules"],
@@ -1436,26 +1914,14 @@ create_rule(Client, ListenerIdentifier, ServiceIdentifier, Input0, Options0) ->
 -spec create_service(map(), create_service_request()) ->
     {ok, create_service_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_service_errors(), tuple()}.
 create_service(Client, Input) ->
     create_service(Client, Input, []).
 
 -spec create_service(map(), create_service_request(), proplists:proplist()) ->
     {ok, create_service_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_service_errors(), tuple()}.
 create_service(Client, Input0, Options0) ->
     Method = post,
     Path = ["/services"],
@@ -1490,26 +1956,14 @@ create_service(Client, Input0, Options0) ->
 -spec create_service_network(map(), create_service_network_request()) ->
     {ok, create_service_network_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_service_network_errors(), tuple()}.
 create_service_network(Client, Input) ->
     create_service_network(Client, Input, []).
 
 -spec create_service_network(map(), create_service_network_request(), proplists:proplist()) ->
     {ok, create_service_network_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_service_network_errors(), tuple()}.
 create_service_network(Client, Input0, Options0) ->
     Method = post,
     Path = ["/servicenetworks"],
@@ -1550,26 +2004,14 @@ create_service_network(Client, Input0, Options0) ->
 -spec create_service_network_service_association(map(), create_service_network_service_association_request()) ->
     {ok, create_service_network_service_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_service_network_service_association_errors(), tuple()}.
 create_service_network_service_association(Client, Input) ->
     create_service_network_service_association(Client, Input, []).
 
 -spec create_service_network_service_association(map(), create_service_network_service_association_request(), proplists:proplist()) ->
     {ok, create_service_network_service_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_service_network_service_association_errors(), tuple()}.
 create_service_network_service_association(Client, Input0, Options0) ->
     Method = post,
     Path = ["/servicenetworkserviceassociations"],
@@ -1617,26 +2059,14 @@ create_service_network_service_association(Client, Input0, Options0) ->
 -spec create_service_network_vpc_association(map(), create_service_network_vpc_association_request()) ->
     {ok, create_service_network_vpc_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_service_network_vpc_association_errors(), tuple()}.
 create_service_network_vpc_association(Client, Input) ->
     create_service_network_vpc_association(Client, Input, []).
 
 -spec create_service_network_vpc_association(map(), create_service_network_vpc_association_request(), proplists:proplist()) ->
     {ok, create_service_network_vpc_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_service_network_vpc_association_errors(), tuple()}.
 create_service_network_vpc_association(Client, Input0, Options0) ->
     Method = post,
     Path = ["/servicenetworkvpcassociations"],
@@ -1672,26 +2102,14 @@ create_service_network_vpc_association(Client, Input0, Options0) ->
 -spec create_target_group(map(), create_target_group_request()) ->
     {ok, create_target_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_target_group_errors(), tuple()}.
 create_target_group(Client, Input) ->
     create_target_group(Client, Input, []).
 
 -spec create_target_group(map(), create_target_group_request(), proplists:proplist()) ->
     {ok, create_target_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_target_group_errors(), tuple()}.
 create_target_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/targetgroups"],
@@ -1718,22 +2136,14 @@ create_target_group(Client, Input0, Options0) ->
 -spec delete_access_log_subscription(map(), binary() | list(), delete_access_log_subscription_request()) ->
     {ok, delete_access_log_subscription_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_access_log_subscription_errors(), tuple()}.
 delete_access_log_subscription(Client, AccessLogSubscriptionIdentifier, Input) ->
     delete_access_log_subscription(Client, AccessLogSubscriptionIdentifier, Input, []).
 
 -spec delete_access_log_subscription(map(), binary() | list(), delete_access_log_subscription_request(), proplists:proplist()) ->
     {ok, delete_access_log_subscription_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_access_log_subscription_errors(), tuple()}.
 delete_access_log_subscription(Client, AccessLogSubscriptionIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/accesslogsubscriptions/", aws_util:encode_uri(AccessLogSubscriptionIdentifier), ""],
@@ -1768,22 +2178,14 @@ delete_access_log_subscription(Client, AccessLogSubscriptionIdentifier, Input0, 
 -spec delete_auth_policy(map(), binary() | list(), delete_auth_policy_request()) ->
     {ok, delete_auth_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_auth_policy_errors(), tuple()}.
 delete_auth_policy(Client, ResourceIdentifier, Input) ->
     delete_auth_policy(Client, ResourceIdentifier, Input, []).
 
 -spec delete_auth_policy(map(), binary() | list(), delete_auth_policy_request(), proplists:proplist()) ->
     {ok, delete_auth_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_auth_policy_errors(), tuple()}.
 delete_auth_policy(Client, ResourceIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/authpolicy/", aws_util:encode_uri(ResourceIdentifier), ""],
@@ -1810,24 +2212,14 @@ delete_auth_policy(Client, ResourceIdentifier, Input0, Options0) ->
 -spec delete_listener(map(), binary() | list(), binary() | list(), delete_listener_request()) ->
     {ok, delete_listener_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_listener_errors(), tuple()}.
 delete_listener(Client, ListenerIdentifier, ServiceIdentifier, Input) ->
     delete_listener(Client, ListenerIdentifier, ServiceIdentifier, Input, []).
 
 -spec delete_listener(map(), binary() | list(), binary() | list(), delete_listener_request(), proplists:proplist()) ->
     {ok, delete_listener_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_listener_errors(), tuple()}.
 delete_listener(Client, ListenerIdentifier, ServiceIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/services/", aws_util:encode_uri(ServiceIdentifier), "/listeners/", aws_util:encode_uri(ListenerIdentifier), ""],
@@ -1854,22 +2246,14 @@ delete_listener(Client, ListenerIdentifier, ServiceIdentifier, Input0, Options0)
 -spec delete_resource_policy(map(), binary() | list(), delete_resource_policy_request()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, ResourceArn, Input) ->
     delete_resource_policy(Client, ResourceArn, Input, []).
 
 -spec delete_resource_policy(map(), binary() | list(), delete_resource_policy_request(), proplists:proplist()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/resourcepolicy/", aws_util:encode_uri(ResourceArn), ""],
@@ -1908,24 +2292,14 @@ delete_resource_policy(Client, ResourceArn, Input0, Options0) ->
 -spec delete_rule(map(), binary() | list(), binary() | list(), binary() | list(), delete_rule_request()) ->
     {ok, delete_rule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_rule_errors(), tuple()}.
 delete_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, Input) ->
     delete_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, Input, []).
 
 -spec delete_rule(map(), binary() | list(), binary() | list(), binary() | list(), delete_rule_request(), proplists:proplist()) ->
     {ok, delete_rule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_rule_errors(), tuple()}.
 delete_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/services/", aws_util:encode_uri(ServiceIdentifier), "/listeners/", aws_util:encode_uri(ListenerIdentifier), "/rules/", aws_util:encode_uri(RuleIdentifier), ""],
@@ -1963,24 +2337,14 @@ delete_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, Input
 -spec delete_service(map(), binary() | list(), delete_service_request()) ->
     {ok, delete_service_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_service_errors(), tuple()}.
 delete_service(Client, ServiceIdentifier, Input) ->
     delete_service(Client, ServiceIdentifier, Input, []).
 
 -spec delete_service(map(), binary() | list(), delete_service_request(), proplists:proplist()) ->
     {ok, delete_service_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_service_errors(), tuple()}.
 delete_service(Client, ServiceIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/services/", aws_util:encode_uri(ServiceIdentifier), ""],
@@ -2017,24 +2381,14 @@ delete_service(Client, ServiceIdentifier, Input0, Options0) ->
 -spec delete_service_network(map(), binary() | list(), delete_service_network_request()) ->
     {ok, delete_service_network_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_service_network_errors(), tuple()}.
 delete_service_network(Client, ServiceNetworkIdentifier, Input) ->
     delete_service_network(Client, ServiceNetworkIdentifier, Input, []).
 
 -spec delete_service_network(map(), binary() | list(), delete_service_network_request(), proplists:proplist()) ->
     {ok, delete_service_network_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_service_network_errors(), tuple()}.
 delete_service_network(Client, ServiceNetworkIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/servicenetworks/", aws_util:encode_uri(ServiceNetworkIdentifier), ""],
@@ -2065,24 +2419,14 @@ delete_service_network(Client, ServiceNetworkIdentifier, Input0, Options0) ->
 -spec delete_service_network_service_association(map(), binary() | list(), delete_service_network_service_association_request()) ->
     {ok, delete_service_network_service_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_service_network_service_association_errors(), tuple()}.
 delete_service_network_service_association(Client, ServiceNetworkServiceAssociationIdentifier, Input) ->
     delete_service_network_service_association(Client, ServiceNetworkServiceAssociationIdentifier, Input, []).
 
 -spec delete_service_network_service_association(map(), binary() | list(), delete_service_network_service_association_request(), proplists:proplist()) ->
     {ok, delete_service_network_service_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_service_network_service_association_errors(), tuple()}.
 delete_service_network_service_association(Client, ServiceNetworkServiceAssociationIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/servicenetworkserviceassociations/", aws_util:encode_uri(ServiceNetworkServiceAssociationIdentifier), ""],
@@ -2112,24 +2456,14 @@ delete_service_network_service_association(Client, ServiceNetworkServiceAssociat
 -spec delete_service_network_vpc_association(map(), binary() | list(), delete_service_network_vpc_association_request()) ->
     {ok, delete_service_network_vpc_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_service_network_vpc_association_errors(), tuple()}.
 delete_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifier, Input) ->
     delete_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifier, Input, []).
 
 -spec delete_service_network_vpc_association(map(), binary() | list(), delete_service_network_vpc_association_request(), proplists:proplist()) ->
     {ok, delete_service_network_vpc_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_service_network_vpc_association_errors(), tuple()}.
 delete_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/servicenetworkvpcassociations/", aws_util:encode_uri(ServiceNetworkVpcAssociationIdentifier), ""],
@@ -2159,22 +2493,14 @@ delete_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdent
 -spec delete_target_group(map(), binary() | list(), delete_target_group_request()) ->
     {ok, delete_target_group_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_target_group_errors(), tuple()}.
 delete_target_group(Client, TargetGroupIdentifier, Input) ->
     delete_target_group(Client, TargetGroupIdentifier, Input, []).
 
 -spec delete_target_group(map(), binary() | list(), delete_target_group_request(), proplists:proplist()) ->
     {ok, delete_target_group_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_target_group_errors(), tuple()}.
 delete_target_group(Client, TargetGroupIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/targetgroups/", aws_util:encode_uri(TargetGroupIdentifier), ""],
@@ -2201,24 +2527,14 @@ delete_target_group(Client, TargetGroupIdentifier, Input0, Options0) ->
 -spec deregister_targets(map(), binary() | list(), deregister_targets_request()) ->
     {ok, deregister_targets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, deregister_targets_errors(), tuple()}.
 deregister_targets(Client, TargetGroupIdentifier, Input) ->
     deregister_targets(Client, TargetGroupIdentifier, Input, []).
 
 -spec deregister_targets(map(), binary() | list(), deregister_targets_request(), proplists:proplist()) ->
     {ok, deregister_targets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, deregister_targets_errors(), tuple()}.
 deregister_targets(Client, TargetGroupIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/targetgroups/", aws_util:encode_uri(TargetGroupIdentifier), "/deregistertargets"],
@@ -2245,11 +2561,7 @@ deregister_targets(Client, TargetGroupIdentifier, Input0, Options0) ->
 -spec get_access_log_subscription(map(), binary() | list()) ->
     {ok, get_access_log_subscription_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_access_log_subscription_errors(), tuple()}.
 get_access_log_subscription(Client, AccessLogSubscriptionIdentifier)
   when is_map(Client) ->
     get_access_log_subscription(Client, AccessLogSubscriptionIdentifier, #{}, #{}).
@@ -2257,11 +2569,7 @@ get_access_log_subscription(Client, AccessLogSubscriptionIdentifier)
 -spec get_access_log_subscription(map(), binary() | list(), map(), map()) ->
     {ok, get_access_log_subscription_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_access_log_subscription_errors(), tuple()}.
 get_access_log_subscription(Client, AccessLogSubscriptionIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_log_subscription(Client, AccessLogSubscriptionIdentifier, QueryMap, HeadersMap, []).
@@ -2269,11 +2577,7 @@ get_access_log_subscription(Client, AccessLogSubscriptionIdentifier, QueryMap, H
 -spec get_access_log_subscription(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_access_log_subscription_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_access_log_subscription_errors(), tuple()}.
 get_access_log_subscription(Client, AccessLogSubscriptionIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accesslogsubscriptions/", aws_util:encode_uri(AccessLogSubscriptionIdentifier), ""],
@@ -2296,11 +2600,7 @@ get_access_log_subscription(Client, AccessLogSubscriptionIdentifier, QueryMap, H
 -spec get_auth_policy(map(), binary() | list()) ->
     {ok, get_auth_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_auth_policy_errors(), tuple()}.
 get_auth_policy(Client, ResourceIdentifier)
   when is_map(Client) ->
     get_auth_policy(Client, ResourceIdentifier, #{}, #{}).
@@ -2308,11 +2608,7 @@ get_auth_policy(Client, ResourceIdentifier)
 -spec get_auth_policy(map(), binary() | list(), map(), map()) ->
     {ok, get_auth_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_auth_policy_errors(), tuple()}.
 get_auth_policy(Client, ResourceIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_auth_policy(Client, ResourceIdentifier, QueryMap, HeadersMap, []).
@@ -2320,11 +2616,7 @@ get_auth_policy(Client, ResourceIdentifier, QueryMap, HeadersMap)
 -spec get_auth_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_auth_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_auth_policy_errors(), tuple()}.
 get_auth_policy(Client, ResourceIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/authpolicy/", aws_util:encode_uri(ResourceIdentifier), ""],
@@ -2346,11 +2638,7 @@ get_auth_policy(Client, ResourceIdentifier, QueryMap, HeadersMap, Options0)
 -spec get_listener(map(), binary() | list(), binary() | list()) ->
     {ok, get_listener_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_listener_errors(), tuple()}.
 get_listener(Client, ListenerIdentifier, ServiceIdentifier)
   when is_map(Client) ->
     get_listener(Client, ListenerIdentifier, ServiceIdentifier, #{}, #{}).
@@ -2358,11 +2646,7 @@ get_listener(Client, ListenerIdentifier, ServiceIdentifier)
 -spec get_listener(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_listener_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_listener_errors(), tuple()}.
 get_listener(Client, ListenerIdentifier, ServiceIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_listener(Client, ListenerIdentifier, ServiceIdentifier, QueryMap, HeadersMap, []).
@@ -2370,11 +2654,7 @@ get_listener(Client, ListenerIdentifier, ServiceIdentifier, QueryMap, HeadersMap
 -spec get_listener(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_listener_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_listener_errors(), tuple()}.
 get_listener(Client, ListenerIdentifier, ServiceIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/services/", aws_util:encode_uri(ServiceIdentifier), "/listeners/", aws_util:encode_uri(ListenerIdentifier), ""],
@@ -2399,11 +2679,7 @@ get_listener(Client, ListenerIdentifier, ServiceIdentifier, QueryMap, HeadersMap
 -spec get_resource_policy(map(), binary() | list()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_resource_policy_errors(), tuple()}.
 get_resource_policy(Client, ResourceArn)
   when is_map(Client) ->
     get_resource_policy(Client, ResourceArn, #{}, #{}).
@@ -2411,11 +2687,7 @@ get_resource_policy(Client, ResourceArn)
 -spec get_resource_policy(map(), binary() | list(), map(), map()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_resource_policy_errors(), tuple()}.
 get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -2423,11 +2695,7 @@ get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap)
 -spec get_resource_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_resource_policy_errors(), tuple()}.
 get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resourcepolicy/", aws_util:encode_uri(ResourceArn), ""],
@@ -2454,11 +2722,7 @@ get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec get_rule(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_rule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_rule_errors(), tuple()}.
 get_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier)
   when is_map(Client) ->
     get_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, #{}, #{}).
@@ -2466,11 +2730,7 @@ get_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier)
 -spec get_rule(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_rule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_rule_errors(), tuple()}.
 get_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, QueryMap, HeadersMap, []).
@@ -2478,11 +2738,7 @@ get_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, QueryMap
 -spec get_rule(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_rule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_rule_errors(), tuple()}.
 get_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/services/", aws_util:encode_uri(ServiceIdentifier), "/listeners/", aws_util:encode_uri(ListenerIdentifier), "/rules/", aws_util:encode_uri(RuleIdentifier), ""],
@@ -2503,11 +2759,7 @@ get_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, QueryMap
 -spec get_service(map(), binary() | list()) ->
     {ok, get_service_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_service_errors(), tuple()}.
 get_service(Client, ServiceIdentifier)
   when is_map(Client) ->
     get_service(Client, ServiceIdentifier, #{}, #{}).
@@ -2515,11 +2767,7 @@ get_service(Client, ServiceIdentifier)
 -spec get_service(map(), binary() | list(), map(), map()) ->
     {ok, get_service_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_service_errors(), tuple()}.
 get_service(Client, ServiceIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_service(Client, ServiceIdentifier, QueryMap, HeadersMap, []).
@@ -2527,11 +2775,7 @@ get_service(Client, ServiceIdentifier, QueryMap, HeadersMap)
 -spec get_service(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_service_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_service_errors(), tuple()}.
 get_service(Client, ServiceIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/services/", aws_util:encode_uri(ServiceIdentifier), ""],
@@ -2552,11 +2796,7 @@ get_service(Client, ServiceIdentifier, QueryMap, HeadersMap, Options0)
 -spec get_service_network(map(), binary() | list()) ->
     {ok, get_service_network_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_service_network_errors(), tuple()}.
 get_service_network(Client, ServiceNetworkIdentifier)
   when is_map(Client) ->
     get_service_network(Client, ServiceNetworkIdentifier, #{}, #{}).
@@ -2564,11 +2804,7 @@ get_service_network(Client, ServiceNetworkIdentifier)
 -spec get_service_network(map(), binary() | list(), map(), map()) ->
     {ok, get_service_network_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_service_network_errors(), tuple()}.
 get_service_network(Client, ServiceNetworkIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_service_network(Client, ServiceNetworkIdentifier, QueryMap, HeadersMap, []).
@@ -2576,11 +2812,7 @@ get_service_network(Client, ServiceNetworkIdentifier, QueryMap, HeadersMap)
 -spec get_service_network(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_service_network_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_service_network_errors(), tuple()}.
 get_service_network(Client, ServiceNetworkIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/servicenetworks/", aws_util:encode_uri(ServiceNetworkIdentifier), ""],
@@ -2603,11 +2835,7 @@ get_service_network(Client, ServiceNetworkIdentifier, QueryMap, HeadersMap, Opti
 -spec get_service_network_service_association(map(), binary() | list()) ->
     {ok, get_service_network_service_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_service_network_service_association_errors(), tuple()}.
 get_service_network_service_association(Client, ServiceNetworkServiceAssociationIdentifier)
   when is_map(Client) ->
     get_service_network_service_association(Client, ServiceNetworkServiceAssociationIdentifier, #{}, #{}).
@@ -2615,11 +2843,7 @@ get_service_network_service_association(Client, ServiceNetworkServiceAssociation
 -spec get_service_network_service_association(map(), binary() | list(), map(), map()) ->
     {ok, get_service_network_service_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_service_network_service_association_errors(), tuple()}.
 get_service_network_service_association(Client, ServiceNetworkServiceAssociationIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_service_network_service_association(Client, ServiceNetworkServiceAssociationIdentifier, QueryMap, HeadersMap, []).
@@ -2627,11 +2851,7 @@ get_service_network_service_association(Client, ServiceNetworkServiceAssociation
 -spec get_service_network_service_association(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_service_network_service_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_service_network_service_association_errors(), tuple()}.
 get_service_network_service_association(Client, ServiceNetworkServiceAssociationIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/servicenetworkserviceassociations/", aws_util:encode_uri(ServiceNetworkServiceAssociationIdentifier), ""],
@@ -2653,11 +2873,7 @@ get_service_network_service_association(Client, ServiceNetworkServiceAssociation
 -spec get_service_network_vpc_association(map(), binary() | list()) ->
     {ok, get_service_network_vpc_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_service_network_vpc_association_errors(), tuple()}.
 get_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifier)
   when is_map(Client) ->
     get_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifier, #{}, #{}).
@@ -2665,11 +2881,7 @@ get_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifi
 -spec get_service_network_vpc_association(map(), binary() | list(), map(), map()) ->
     {ok, get_service_network_vpc_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_service_network_vpc_association_errors(), tuple()}.
 get_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifier, QueryMap, HeadersMap, []).
@@ -2677,11 +2889,7 @@ get_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifi
 -spec get_service_network_vpc_association(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_service_network_vpc_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_service_network_vpc_association_errors(), tuple()}.
 get_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/servicenetworkvpcassociations/", aws_util:encode_uri(ServiceNetworkVpcAssociationIdentifier), ""],
@@ -2702,11 +2910,7 @@ get_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifi
 -spec get_target_group(map(), binary() | list()) ->
     {ok, get_target_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_target_group_errors(), tuple()}.
 get_target_group(Client, TargetGroupIdentifier)
   when is_map(Client) ->
     get_target_group(Client, TargetGroupIdentifier, #{}, #{}).
@@ -2714,11 +2918,7 @@ get_target_group(Client, TargetGroupIdentifier)
 -spec get_target_group(map(), binary() | list(), map(), map()) ->
     {ok, get_target_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_target_group_errors(), tuple()}.
 get_target_group(Client, TargetGroupIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_target_group(Client, TargetGroupIdentifier, QueryMap, HeadersMap, []).
@@ -2726,11 +2926,7 @@ get_target_group(Client, TargetGroupIdentifier, QueryMap, HeadersMap)
 -spec get_target_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_target_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_target_group_errors(), tuple()}.
 get_target_group(Client, TargetGroupIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/targetgroups/", aws_util:encode_uri(TargetGroupIdentifier), ""],
@@ -2752,10 +2948,7 @@ get_target_group(Client, TargetGroupIdentifier, QueryMap, HeadersMap, Options0)
 -spec list_access_log_subscriptions(map(), binary() | list()) ->
     {ok, list_access_log_subscriptions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_access_log_subscriptions_errors(), tuple()}.
 list_access_log_subscriptions(Client, ResourceIdentifier)
   when is_map(Client) ->
     list_access_log_subscriptions(Client, ResourceIdentifier, #{}, #{}).
@@ -2763,10 +2956,7 @@ list_access_log_subscriptions(Client, ResourceIdentifier)
 -spec list_access_log_subscriptions(map(), binary() | list(), map(), map()) ->
     {ok, list_access_log_subscriptions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_access_log_subscriptions_errors(), tuple()}.
 list_access_log_subscriptions(Client, ResourceIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_access_log_subscriptions(Client, ResourceIdentifier, QueryMap, HeadersMap, []).
@@ -2774,10 +2964,7 @@ list_access_log_subscriptions(Client, ResourceIdentifier, QueryMap, HeadersMap)
 -spec list_access_log_subscriptions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_access_log_subscriptions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_access_log_subscriptions_errors(), tuple()}.
 list_access_log_subscriptions(Client, ResourceIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accesslogsubscriptions"],
@@ -2804,11 +2991,7 @@ list_access_log_subscriptions(Client, ResourceIdentifier, QueryMap, HeadersMap, 
 -spec list_listeners(map(), binary() | list()) ->
     {ok, list_listeners_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_listeners_errors(), tuple()}.
 list_listeners(Client, ServiceIdentifier)
   when is_map(Client) ->
     list_listeners(Client, ServiceIdentifier, #{}, #{}).
@@ -2816,11 +2999,7 @@ list_listeners(Client, ServiceIdentifier)
 -spec list_listeners(map(), binary() | list(), map(), map()) ->
     {ok, list_listeners_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_listeners_errors(), tuple()}.
 list_listeners(Client, ServiceIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_listeners(Client, ServiceIdentifier, QueryMap, HeadersMap, []).
@@ -2828,11 +3007,7 @@ list_listeners(Client, ServiceIdentifier, QueryMap, HeadersMap)
 -spec list_listeners(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_listeners_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_listeners_errors(), tuple()}.
 list_listeners(Client, ServiceIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/services/", aws_util:encode_uri(ServiceIdentifier), "/listeners"],
@@ -2858,11 +3033,7 @@ list_listeners(Client, ServiceIdentifier, QueryMap, HeadersMap, Options0)
 -spec list_rules(map(), binary() | list(), binary() | list()) ->
     {ok, list_rules_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_rules_errors(), tuple()}.
 list_rules(Client, ListenerIdentifier, ServiceIdentifier)
   when is_map(Client) ->
     list_rules(Client, ListenerIdentifier, ServiceIdentifier, #{}, #{}).
@@ -2870,11 +3041,7 @@ list_rules(Client, ListenerIdentifier, ServiceIdentifier)
 -spec list_rules(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_rules_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_rules_errors(), tuple()}.
 list_rules(Client, ListenerIdentifier, ServiceIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_rules(Client, ListenerIdentifier, ServiceIdentifier, QueryMap, HeadersMap, []).
@@ -2882,11 +3049,7 @@ list_rules(Client, ListenerIdentifier, ServiceIdentifier, QueryMap, HeadersMap)
 -spec list_rules(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_rules_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_rules_errors(), tuple()}.
 list_rules(Client, ListenerIdentifier, ServiceIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/services/", aws_util:encode_uri(ServiceIdentifier), "/listeners/", aws_util:encode_uri(ListenerIdentifier), "/rules"],
@@ -2927,10 +3090,7 @@ list_rules(Client, ListenerIdentifier, ServiceIdentifier, QueryMap, HeadersMap, 
 -spec list_service_network_service_associations(map()) ->
     {ok, list_service_network_service_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_service_network_service_associations_errors(), tuple()}.
 list_service_network_service_associations(Client)
   when is_map(Client) ->
     list_service_network_service_associations(Client, #{}, #{}).
@@ -2938,10 +3098,7 @@ list_service_network_service_associations(Client)
 -spec list_service_network_service_associations(map(), map(), map()) ->
     {ok, list_service_network_service_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_service_network_service_associations_errors(), tuple()}.
 list_service_network_service_associations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_service_network_service_associations(Client, QueryMap, HeadersMap, []).
@@ -2949,10 +3106,7 @@ list_service_network_service_associations(Client, QueryMap, HeadersMap)
 -spec list_service_network_service_associations(map(), map(), map(), proplists:proplist()) ->
     {ok, list_service_network_service_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_service_network_service_associations_errors(), tuple()}.
 list_service_network_service_associations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/servicenetworkserviceassociations"],
@@ -2985,10 +3139,7 @@ list_service_network_service_associations(Client, QueryMap, HeadersMap, Options0
 -spec list_service_network_vpc_associations(map()) ->
     {ok, list_service_network_vpc_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_service_network_vpc_associations_errors(), tuple()}.
 list_service_network_vpc_associations(Client)
   when is_map(Client) ->
     list_service_network_vpc_associations(Client, #{}, #{}).
@@ -2996,10 +3147,7 @@ list_service_network_vpc_associations(Client)
 -spec list_service_network_vpc_associations(map(), map(), map()) ->
     {ok, list_service_network_vpc_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_service_network_vpc_associations_errors(), tuple()}.
 list_service_network_vpc_associations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_service_network_vpc_associations(Client, QueryMap, HeadersMap, []).
@@ -3007,10 +3155,7 @@ list_service_network_vpc_associations(Client, QueryMap, HeadersMap)
 -spec list_service_network_vpc_associations(map(), map(), map(), proplists:proplist()) ->
     {ok, list_service_network_vpc_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_service_network_vpc_associations_errors(), tuple()}.
 list_service_network_vpc_associations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/servicenetworkvpcassociations"],
@@ -3042,10 +3187,7 @@ list_service_network_vpc_associations(Client, QueryMap, HeadersMap, Options0)
 -spec list_service_networks(map()) ->
     {ok, list_service_networks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_service_networks_errors(), tuple()}.
 list_service_networks(Client)
   when is_map(Client) ->
     list_service_networks(Client, #{}, #{}).
@@ -3053,10 +3195,7 @@ list_service_networks(Client)
 -spec list_service_networks(map(), map(), map()) ->
     {ok, list_service_networks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_service_networks_errors(), tuple()}.
 list_service_networks(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_service_networks(Client, QueryMap, HeadersMap, []).
@@ -3064,10 +3203,7 @@ list_service_networks(Client, QueryMap, HeadersMap)
 -spec list_service_networks(map(), map(), map(), proplists:proplist()) ->
     {ok, list_service_networks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_service_networks_errors(), tuple()}.
 list_service_networks(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/servicenetworks"],
@@ -3094,10 +3230,7 @@ list_service_networks(Client, QueryMap, HeadersMap, Options0)
 -spec list_services(map()) ->
     {ok, list_services_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_services_errors(), tuple()}.
 list_services(Client)
   when is_map(Client) ->
     list_services(Client, #{}, #{}).
@@ -3105,10 +3238,7 @@ list_services(Client)
 -spec list_services(map(), map(), map()) ->
     {ok, list_services_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_services_errors(), tuple()}.
 list_services(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_services(Client, QueryMap, HeadersMap, []).
@@ -3116,10 +3246,7 @@ list_services(Client, QueryMap, HeadersMap)
 -spec list_services(map(), map(), map(), proplists:proplist()) ->
     {ok, list_services_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_services_errors(), tuple()}.
 list_services(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/services"],
@@ -3145,10 +3272,7 @@ list_services(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -3156,10 +3280,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -3167,10 +3288,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -3194,10 +3312,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec list_target_groups(map()) ->
     {ok, list_target_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_target_groups_errors(), tuple()}.
 list_target_groups(Client)
   when is_map(Client) ->
     list_target_groups(Client, #{}, #{}).
@@ -3205,10 +3320,7 @@ list_target_groups(Client)
 -spec list_target_groups(map(), map(), map()) ->
     {ok, list_target_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_target_groups_errors(), tuple()}.
 list_target_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_target_groups(Client, QueryMap, HeadersMap, []).
@@ -3216,10 +3328,7 @@ list_target_groups(Client, QueryMap, HeadersMap)
 -spec list_target_groups(map(), map(), map(), proplists:proplist()) ->
     {ok, list_target_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_target_groups_errors(), tuple()}.
 list_target_groups(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/targetgroups"],
@@ -3251,22 +3360,14 @@ list_target_groups(Client, QueryMap, HeadersMap, Options0)
 -spec list_targets(map(), binary() | list(), list_targets_request()) ->
     {ok, list_targets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_targets_errors(), tuple()}.
 list_targets(Client, TargetGroupIdentifier, Input) ->
     list_targets(Client, TargetGroupIdentifier, Input, []).
 
 -spec list_targets(map(), binary() | list(), list_targets_request(), proplists:proplist()) ->
     {ok, list_targets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_targets_errors(), tuple()}.
 list_targets(Client, TargetGroupIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/targetgroups/", aws_util:encode_uri(TargetGroupIdentifier), "/listtargets"],
@@ -3295,22 +3396,14 @@ list_targets(Client, TargetGroupIdentifier, Input0, Options0) ->
 -spec put_auth_policy(map(), binary() | list(), put_auth_policy_request()) ->
     {ok, put_auth_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_auth_policy_errors(), tuple()}.
 put_auth_policy(Client, ResourceIdentifier, Input) ->
     put_auth_policy(Client, ResourceIdentifier, Input, []).
 
 -spec put_auth_policy(map(), binary() | list(), put_auth_policy_request(), proplists:proplist()) ->
     {ok, put_auth_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_auth_policy_errors(), tuple()}.
 put_auth_policy(Client, ResourceIdentifier, Input0, Options0) ->
     Method = put,
     Path = ["/authpolicy/", aws_util:encode_uri(ResourceIdentifier), ""],
@@ -3343,22 +3436,14 @@ put_auth_policy(Client, ResourceIdentifier, Input0, Options0) ->
 -spec put_resource_policy(map(), binary() | list(), put_resource_policy_request()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, ResourceArn, Input) ->
     put_resource_policy(Client, ResourceArn, Input, []).
 
 -spec put_resource_policy(map(), binary() | list(), put_resource_policy_request(), proplists:proplist()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, ResourceArn, Input0, Options0) ->
     Method = put,
     Path = ["/resourcepolicy/", aws_util:encode_uri(ResourceArn), ""],
@@ -3388,26 +3473,14 @@ put_resource_policy(Client, ResourceArn, Input0, Options0) ->
 -spec register_targets(map(), binary() | list(), register_targets_request()) ->
     {ok, register_targets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, register_targets_errors(), tuple()}.
 register_targets(Client, TargetGroupIdentifier, Input) ->
     register_targets(Client, TargetGroupIdentifier, Input, []).
 
 -spec register_targets(map(), binary() | list(), register_targets_request(), proplists:proplist()) ->
     {ok, register_targets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, register_targets_errors(), tuple()}.
 register_targets(Client, TargetGroupIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/targetgroups/", aws_util:encode_uri(TargetGroupIdentifier), "/registertargets"],
@@ -3434,22 +3507,14 @@ register_targets(Client, TargetGroupIdentifier, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -3476,20 +3541,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -3517,24 +3576,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_access_log_subscription(map(), binary() | list(), update_access_log_subscription_request()) ->
     {ok, update_access_log_subscription_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_access_log_subscription_errors(), tuple()}.
 update_access_log_subscription(Client, AccessLogSubscriptionIdentifier, Input) ->
     update_access_log_subscription(Client, AccessLogSubscriptionIdentifier, Input, []).
 
 -spec update_access_log_subscription(map(), binary() | list(), update_access_log_subscription_request(), proplists:proplist()) ->
     {ok, update_access_log_subscription_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_access_log_subscription_errors(), tuple()}.
 update_access_log_subscription(Client, AccessLogSubscriptionIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/accesslogsubscriptions/", aws_util:encode_uri(AccessLogSubscriptionIdentifier), ""],
@@ -3561,24 +3610,14 @@ update_access_log_subscription(Client, AccessLogSubscriptionIdentifier, Input0, 
 -spec update_listener(map(), binary() | list(), binary() | list(), update_listener_request()) ->
     {ok, update_listener_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_listener_errors(), tuple()}.
 update_listener(Client, ListenerIdentifier, ServiceIdentifier, Input) ->
     update_listener(Client, ListenerIdentifier, ServiceIdentifier, Input, []).
 
 -spec update_listener(map(), binary() | list(), binary() | list(), update_listener_request(), proplists:proplist()) ->
     {ok, update_listener_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_listener_errors(), tuple()}.
 update_listener(Client, ListenerIdentifier, ServiceIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/services/", aws_util:encode_uri(ServiceIdentifier), "/listeners/", aws_util:encode_uri(ListenerIdentifier), ""],
@@ -3608,24 +3647,14 @@ update_listener(Client, ListenerIdentifier, ServiceIdentifier, Input0, Options0)
 -spec update_rule(map(), binary() | list(), binary() | list(), binary() | list(), update_rule_request()) ->
     {ok, update_rule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_rule_errors(), tuple()}.
 update_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, Input) ->
     update_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, Input, []).
 
 -spec update_rule(map(), binary() | list(), binary() | list(), binary() | list(), update_rule_request(), proplists:proplist()) ->
     {ok, update_rule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_rule_errors(), tuple()}.
 update_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/services/", aws_util:encode_uri(ServiceIdentifier), "/listeners/", aws_util:encode_uri(ListenerIdentifier), "/rules/", aws_util:encode_uri(RuleIdentifier), ""],
@@ -3652,24 +3681,14 @@ update_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, Input
 -spec update_service(map(), binary() | list(), update_service_request()) ->
     {ok, update_service_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_service_errors(), tuple()}.
 update_service(Client, ServiceIdentifier, Input) ->
     update_service(Client, ServiceIdentifier, Input, []).
 
 -spec update_service(map(), binary() | list(), update_service_request(), proplists:proplist()) ->
     {ok, update_service_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_service_errors(), tuple()}.
 update_service(Client, ServiceIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/services/", aws_util:encode_uri(ServiceIdentifier), ""],
@@ -3696,24 +3715,14 @@ update_service(Client, ServiceIdentifier, Input0, Options0) ->
 -spec update_service_network(map(), binary() | list(), update_service_network_request()) ->
     {ok, update_service_network_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_service_network_errors(), tuple()}.
 update_service_network(Client, ServiceNetworkIdentifier, Input) ->
     update_service_network(Client, ServiceNetworkIdentifier, Input, []).
 
 -spec update_service_network(map(), binary() | list(), update_service_network_request(), proplists:proplist()) ->
     {ok, update_service_network_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_service_network_errors(), tuple()}.
 update_service_network(Client, ServiceNetworkIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/servicenetworks/", aws_util:encode_uri(ServiceNetworkIdentifier), ""],
@@ -3743,24 +3752,14 @@ update_service_network(Client, ServiceNetworkIdentifier, Input0, Options0) ->
 -spec update_service_network_vpc_association(map(), binary() | list(), update_service_network_vpc_association_request()) ->
     {ok, update_service_network_vpc_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_service_network_vpc_association_errors(), tuple()}.
 update_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifier, Input) ->
     update_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifier, Input, []).
 
 -spec update_service_network_vpc_association(map(), binary() | list(), update_service_network_vpc_association_request(), proplists:proplist()) ->
     {ok, update_service_network_vpc_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_service_network_vpc_association_errors(), tuple()}.
 update_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/servicenetworkvpcassociations/", aws_util:encode_uri(ServiceNetworkVpcAssociationIdentifier), ""],
@@ -3787,24 +3786,14 @@ update_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdent
 -spec update_target_group(map(), binary() | list(), update_target_group_request()) ->
     {ok, update_target_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_target_group_errors(), tuple()}.
 update_target_group(Client, TargetGroupIdentifier, Input) ->
     update_target_group(Client, TargetGroupIdentifier, Input, []).
 
 -spec update_target_group(map(), binary() | list(), update_target_group_request(), proplists:proplist()) ->
     {ok, update_target_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_target_group_errors(), tuple()}.
 update_target_group(Client, TargetGroupIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/targetgroups/", aws_util:encode_uri(TargetGroupIdentifier), ""],

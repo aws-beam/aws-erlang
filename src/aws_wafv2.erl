@@ -2132,6 +2132,404 @@
 %% }
 -type association_config() :: #{binary() => any()}.
 
+-type associate_web_acl_errors() ::
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_unavailable_entity_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type check_capacity_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_subscription_not_found_exception() | 
+    w_a_f_invalid_resource_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_unavailable_entity_exception() | 
+    w_a_f_nonexistent_item_exception() | 
+    w_a_f_expired_managed_rule_group_version_exception().
+
+-type create_api_key_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception().
+
+-type create_ip_set_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_optimistic_lock_exception() | 
+    w_a_f_duplicate_item_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_internal_error_exception().
+
+-type create_regex_pattern_set_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_optimistic_lock_exception() | 
+    w_a_f_duplicate_item_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_internal_error_exception().
+
+-type create_rule_group_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_subscription_not_found_exception() | 
+    w_a_f_optimistic_lock_exception() | 
+    w_a_f_duplicate_item_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_unavailable_entity_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type create_web_acl_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_subscription_not_found_exception() | 
+    w_a_f_configuration_warning_exception() | 
+    w_a_f_optimistic_lock_exception() | 
+    w_a_f_duplicate_item_exception() | 
+    w_a_f_invalid_resource_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_unavailable_entity_exception() | 
+    w_a_f_nonexistent_item_exception() | 
+    w_a_f_expired_managed_rule_group_version_exception().
+
+-type delete_api_key_errors() ::
+    w_a_f_optimistic_lock_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_firewall_manager_rule_groups_errors() ::
+    w_a_f_optimistic_lock_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_ip_set_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_optimistic_lock_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_associated_item_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_logging_configuration_errors() ::
+    w_a_f_optimistic_lock_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_permission_policy_errors() ::
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_regex_pattern_set_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_optimistic_lock_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_associated_item_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_rule_group_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_optimistic_lock_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_associated_item_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_web_acl_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_optimistic_lock_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_associated_item_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type describe_all_managed_products_errors() ::
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception().
+
+-type describe_managed_products_by_vendor_errors() ::
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception().
+
+-type describe_managed_rule_group_errors() ::
+    w_a_f_invalid_resource_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception() | 
+    w_a_f_expired_managed_rule_group_version_exception().
+
+-type disassociate_web_acl_errors() ::
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type generate_mobile_sdk_release_url_errors() ::
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_decrypted_api_key_errors() ::
+    w_a_f_invalid_resource_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_ip_set_errors() ::
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_logging_configuration_errors() ::
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_managed_rule_set_errors() ::
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_mobile_sdk_release_errors() ::
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_permission_policy_errors() ::
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_rate_based_statement_managed_keys_errors() ::
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_unsupported_aggregate_key_type_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_regex_pattern_set_errors() ::
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_rule_group_errors() ::
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_sampled_requests_errors() ::
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_web_acl_errors() ::
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_web_acl_for_resource_errors() ::
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_unavailable_entity_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type list_api_keys_errors() ::
+    w_a_f_invalid_resource_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception().
+
+-type list_available_managed_rule_group_versions_errors() ::
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type list_available_managed_rule_groups_errors() ::
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception().
+
+-type list_ip_sets_errors() ::
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception().
+
+-type list_logging_configurations_errors() ::
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception().
+
+-type list_managed_rule_sets_errors() ::
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception().
+
+-type list_mobile_sdk_releases_errors() ::
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception().
+
+-type list_regex_pattern_sets_errors() ::
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception().
+
+-type list_resources_for_web_acl_errors() ::
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type list_rule_groups_errors() ::
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception().
+
+-type list_tags_for_resource_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type list_web_acls_errors() ::
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception().
+
+-type put_logging_configuration_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_log_destination_permission_issue_exception() | 
+    w_a_f_optimistic_lock_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_service_linked_role_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type put_managed_rule_set_versions_errors() ::
+    w_a_f_optimistic_lock_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type put_permission_policy_errors() ::
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_invalid_permission_policy_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type tag_resource_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type untag_resource_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type update_ip_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_optimistic_lock_exception() | 
+    w_a_f_duplicate_item_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type update_managed_rule_set_version_expiry_date_errors() ::
+    w_a_f_optimistic_lock_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type update_regex_pattern_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_optimistic_lock_exception() | 
+    w_a_f_duplicate_item_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type update_rule_group_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_subscription_not_found_exception() | 
+    w_a_f_configuration_warning_exception() | 
+    w_a_f_optimistic_lock_exception() | 
+    w_a_f_duplicate_item_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_unavailable_entity_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type update_web_acl_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_subscription_not_found_exception() | 
+    w_a_f_configuration_warning_exception() | 
+    w_a_f_optimistic_lock_exception() | 
+    w_a_f_duplicate_item_exception() | 
+    w_a_f_invalid_resource_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_unavailable_entity_exception() | 
+    w_a_f_nonexistent_item_exception() | 
+    w_a_f_expired_managed_rule_group_version_exception().
 
 %%====================================================================
 %% API
@@ -2187,11 +2585,7 @@
 -spec associate_web_acl(map(), associate_web_acl_request()) ->
     {ok, associate_web_acl_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_unavailable_entity_exception(), tuple()}.
+    {error, associate_web_acl_errors(), tuple()}.
 associate_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_web_acl(Client, Input, []).
@@ -2199,11 +2593,7 @@ associate_web_acl(Client, Input)
 -spec associate_web_acl(map(), associate_web_acl_request(), proplists:proplist()) ->
     {ok, associate_web_acl_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_unavailable_entity_exception(), tuple()}.
+    {error, associate_web_acl_errors(), tuple()}.
 associate_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateWebACL">>, Input, Options).
@@ -2230,15 +2620,7 @@ associate_web_acl(Client, Input, Options)
 -spec check_capacity(map(), check_capacity_request()) ->
     {ok, check_capacity_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_expired_managed_rule_group_version_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_invalid_resource_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_subscription_not_found_exception(), tuple()} |
-    {error, w_a_f_unavailable_entity_exception(), tuple()}.
+    {error, check_capacity_errors(), tuple()}.
 check_capacity(Client, Input)
   when is_map(Client), is_map(Input) ->
     check_capacity(Client, Input, []).
@@ -2246,15 +2628,7 @@ check_capacity(Client, Input)
 -spec check_capacity(map(), check_capacity_request(), proplists:proplist()) ->
     {ok, check_capacity_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_expired_managed_rule_group_version_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_invalid_resource_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_subscription_not_found_exception(), tuple()} |
-    {error, w_a_f_unavailable_entity_exception(), tuple()}.
+    {error, check_capacity_errors(), tuple()}.
 check_capacity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CheckCapacity">>, Input, Options).
@@ -2276,10 +2650,7 @@ check_capacity(Client, Input, Options)
 -spec create_api_key(map(), create_api_key_request()) ->
     {ok, create_api_key_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()}.
+    {error, create_api_key_errors(), tuple()}.
 create_api_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_api_key(Client, Input, []).
@@ -2287,10 +2658,7 @@ create_api_key(Client, Input)
 -spec create_api_key(map(), create_api_key_request(), proplists:proplist()) ->
     {ok, create_api_key_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()}.
+    {error, create_api_key_errors(), tuple()}.
 create_api_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAPIKey">>, Input, Options).
@@ -2305,14 +2673,7 @@ create_api_key(Client, Input, Options)
 -spec create_ip_set(map(), create_ip_set_request()) ->
     {ok, create_ip_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_duplicate_item_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, create_ip_set_errors(), tuple()}.
 create_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_ip_set(Client, Input, []).
@@ -2320,14 +2681,7 @@ create_ip_set(Client, Input)
 -spec create_ip_set(map(), create_ip_set_request(), proplists:proplist()) ->
     {ok, create_ip_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_duplicate_item_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, create_ip_set_errors(), tuple()}.
 create_ip_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateIPSet">>, Input, Options).
@@ -2338,14 +2692,7 @@ create_ip_set(Client, Input, Options)
 -spec create_regex_pattern_set(map(), create_regex_pattern_set_request()) ->
     {ok, create_regex_pattern_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_duplicate_item_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, create_regex_pattern_set_errors(), tuple()}.
 create_regex_pattern_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_regex_pattern_set(Client, Input, []).
@@ -2353,14 +2700,7 @@ create_regex_pattern_set(Client, Input)
 -spec create_regex_pattern_set(map(), create_regex_pattern_set_request(), proplists:proplist()) ->
     {ok, create_regex_pattern_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_duplicate_item_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, create_regex_pattern_set_errors(), tuple()}.
 create_regex_pattern_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRegexPatternSet">>, Input, Options).
@@ -2375,17 +2715,7 @@ create_regex_pattern_set(Client, Input, Options)
 -spec create_rule_group(map(), create_rule_group_request()) ->
     {ok, create_rule_group_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_duplicate_item_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()} |
-    {error, w_a_f_subscription_not_found_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()} |
-    {error, w_a_f_unavailable_entity_exception(), tuple()}.
+    {error, create_rule_group_errors(), tuple()}.
 create_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_rule_group(Client, Input, []).
@@ -2393,17 +2723,7 @@ create_rule_group(Client, Input)
 -spec create_rule_group(map(), create_rule_group_request(), proplists:proplist()) ->
     {ok, create_rule_group_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_duplicate_item_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()} |
-    {error, w_a_f_subscription_not_found_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()} |
-    {error, w_a_f_unavailable_entity_exception(), tuple()}.
+    {error, create_rule_group_errors(), tuple()}.
 create_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRuleGroup">>, Input, Options).
@@ -2424,20 +2744,7 @@ create_rule_group(Client, Input, Options)
 -spec create_web_acl(map(), create_web_acl_request()) ->
     {ok, create_web_acl_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_configuration_warning_exception(), tuple()} |
-    {error, w_a_f_duplicate_item_exception(), tuple()} |
-    {error, w_a_f_expired_managed_rule_group_version_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_invalid_resource_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()} |
-    {error, w_a_f_subscription_not_found_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()} |
-    {error, w_a_f_unavailable_entity_exception(), tuple()}.
+    {error, create_web_acl_errors(), tuple()}.
 create_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_web_acl(Client, Input, []).
@@ -2445,20 +2752,7 @@ create_web_acl(Client, Input)
 -spec create_web_acl(map(), create_web_acl_request(), proplists:proplist()) ->
     {ok, create_web_acl_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_configuration_warning_exception(), tuple()} |
-    {error, w_a_f_duplicate_item_exception(), tuple()} |
-    {error, w_a_f_expired_managed_rule_group_version_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_invalid_resource_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()} |
-    {error, w_a_f_subscription_not_found_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()} |
-    {error, w_a_f_unavailable_entity_exception(), tuple()}.
+    {error, create_web_acl_errors(), tuple()}.
 create_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWebACL">>, Input, Options).
@@ -2470,11 +2764,7 @@ create_web_acl(Client, Input, Options)
 -spec delete_api_key(map(), delete_api_key_request()) ->
     {ok, delete_api_key_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()}.
+    {error, delete_api_key_errors(), tuple()}.
 delete_api_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_api_key(Client, Input, []).
@@ -2482,11 +2772,7 @@ delete_api_key(Client, Input)
 -spec delete_api_key(map(), delete_api_key_request(), proplists:proplist()) ->
     {ok, delete_api_key_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()}.
+    {error, delete_api_key_errors(), tuple()}.
 delete_api_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAPIKey">>, Input, Options).
@@ -2500,11 +2786,7 @@ delete_api_key(Client, Input, Options)
 -spec delete_firewall_manager_rule_groups(map(), delete_firewall_manager_rule_groups_request()) ->
     {ok, delete_firewall_manager_rule_groups_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()}.
+    {error, delete_firewall_manager_rule_groups_errors(), tuple()}.
 delete_firewall_manager_rule_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_firewall_manager_rule_groups(Client, Input, []).
@@ -2512,11 +2794,7 @@ delete_firewall_manager_rule_groups(Client, Input)
 -spec delete_firewall_manager_rule_groups(map(), delete_firewall_manager_rule_groups_request(), proplists:proplist()) ->
     {ok, delete_firewall_manager_rule_groups_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()}.
+    {error, delete_firewall_manager_rule_groups_errors(), tuple()}.
 delete_firewall_manager_rule_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFirewallManagerRuleGroups">>, Input, Options).
@@ -2525,14 +2803,7 @@ delete_firewall_manager_rule_groups(Client, Input, Options)
 -spec delete_ip_set(map(), delete_ip_set_request()) ->
     {ok, delete_ip_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_associated_item_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, delete_ip_set_errors(), tuple()}.
 delete_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_ip_set(Client, Input, []).
@@ -2540,14 +2811,7 @@ delete_ip_set(Client, Input)
 -spec delete_ip_set(map(), delete_ip_set_request(), proplists:proplist()) ->
     {ok, delete_ip_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_associated_item_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, delete_ip_set_errors(), tuple()}.
 delete_ip_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIPSet">>, Input, Options).
@@ -2556,11 +2820,7 @@ delete_ip_set(Client, Input, Options)
 -spec delete_logging_configuration(map(), delete_logging_configuration_request()) ->
     {ok, delete_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()}.
+    {error, delete_logging_configuration_errors(), tuple()}.
 delete_logging_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_logging_configuration(Client, Input, []).
@@ -2568,11 +2828,7 @@ delete_logging_configuration(Client, Input)
 -spec delete_logging_configuration(map(), delete_logging_configuration_request(), proplists:proplist()) ->
     {ok, delete_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()}.
+    {error, delete_logging_configuration_errors(), tuple()}.
 delete_logging_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLoggingConfiguration">>, Input, Options).
@@ -2583,9 +2839,7 @@ delete_logging_configuration(Client, Input, Options)
 -spec delete_permission_policy(map(), delete_permission_policy_request()) ->
     {ok, delete_permission_policy_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, delete_permission_policy_errors(), tuple()}.
 delete_permission_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_permission_policy(Client, Input, []).
@@ -2593,9 +2847,7 @@ delete_permission_policy(Client, Input)
 -spec delete_permission_policy(map(), delete_permission_policy_request(), proplists:proplist()) ->
     {ok, delete_permission_policy_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, delete_permission_policy_errors(), tuple()}.
 delete_permission_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePermissionPolicy">>, Input, Options).
@@ -2604,14 +2856,7 @@ delete_permission_policy(Client, Input, Options)
 -spec delete_regex_pattern_set(map(), delete_regex_pattern_set_request()) ->
     {ok, delete_regex_pattern_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_associated_item_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, delete_regex_pattern_set_errors(), tuple()}.
 delete_regex_pattern_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_regex_pattern_set(Client, Input, []).
@@ -2619,14 +2864,7 @@ delete_regex_pattern_set(Client, Input)
 -spec delete_regex_pattern_set(map(), delete_regex_pattern_set_request(), proplists:proplist()) ->
     {ok, delete_regex_pattern_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_associated_item_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, delete_regex_pattern_set_errors(), tuple()}.
 delete_regex_pattern_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRegexPatternSet">>, Input, Options).
@@ -2635,14 +2873,7 @@ delete_regex_pattern_set(Client, Input, Options)
 -spec delete_rule_group(map(), delete_rule_group_request()) ->
     {ok, delete_rule_group_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_associated_item_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, delete_rule_group_errors(), tuple()}.
 delete_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rule_group(Client, Input, []).
@@ -2650,14 +2881,7 @@ delete_rule_group(Client, Input)
 -spec delete_rule_group(map(), delete_rule_group_request(), proplists:proplist()) ->
     {ok, delete_rule_group_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_associated_item_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, delete_rule_group_errors(), tuple()}.
 delete_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRuleGroup">>, Input, Options).
@@ -2694,14 +2918,7 @@ delete_rule_group(Client, Input, Options)
 -spec delete_web_acl(map(), delete_web_acl_request()) ->
     {ok, delete_web_acl_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_associated_item_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, delete_web_acl_errors(), tuple()}.
 delete_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_web_acl(Client, Input, []).
@@ -2709,14 +2926,7 @@ delete_web_acl(Client, Input)
 -spec delete_web_acl(map(), delete_web_acl_request(), proplists:proplist()) ->
     {ok, delete_web_acl_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_associated_item_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, delete_web_acl_errors(), tuple()}.
 delete_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWebACL">>, Input, Options).
@@ -2726,9 +2936,7 @@ delete_web_acl(Client, Input, Options)
 -spec describe_all_managed_products(map(), describe_all_managed_products_request()) ->
     {ok, describe_all_managed_products_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()}.
+    {error, describe_all_managed_products_errors(), tuple()}.
 describe_all_managed_products(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_all_managed_products(Client, Input, []).
@@ -2736,9 +2944,7 @@ describe_all_managed_products(Client, Input)
 -spec describe_all_managed_products(map(), describe_all_managed_products_request(), proplists:proplist()) ->
     {ok, describe_all_managed_products_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()}.
+    {error, describe_all_managed_products_errors(), tuple()}.
 describe_all_managed_products(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAllManagedProducts">>, Input, Options).
@@ -2748,9 +2954,7 @@ describe_all_managed_products(Client, Input, Options)
 -spec describe_managed_products_by_vendor(map(), describe_managed_products_by_vendor_request()) ->
     {ok, describe_managed_products_by_vendor_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()}.
+    {error, describe_managed_products_by_vendor_errors(), tuple()}.
 describe_managed_products_by_vendor(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_managed_products_by_vendor(Client, Input, []).
@@ -2758,9 +2962,7 @@ describe_managed_products_by_vendor(Client, Input)
 -spec describe_managed_products_by_vendor(map(), describe_managed_products_by_vendor_request(), proplists:proplist()) ->
     {ok, describe_managed_products_by_vendor_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()}.
+    {error, describe_managed_products_by_vendor_errors(), tuple()}.
 describe_managed_products_by_vendor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeManagedProductsByVendor">>, Input, Options).
@@ -2770,12 +2972,7 @@ describe_managed_products_by_vendor(Client, Input, Options)
 -spec describe_managed_rule_group(map(), describe_managed_rule_group_request()) ->
     {ok, describe_managed_rule_group_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_expired_managed_rule_group_version_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_invalid_resource_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, describe_managed_rule_group_errors(), tuple()}.
 describe_managed_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_managed_rule_group(Client, Input, []).
@@ -2783,12 +2980,7 @@ describe_managed_rule_group(Client, Input)
 -spec describe_managed_rule_group(map(), describe_managed_rule_group_request(), proplists:proplist()) ->
     {ok, describe_managed_rule_group_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_expired_managed_rule_group_version_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_invalid_resource_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, describe_managed_rule_group_errors(), tuple()}.
 describe_managed_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeManagedRuleGroup">>, Input, Options).
@@ -2819,10 +3011,7 @@ describe_managed_rule_group(Client, Input, Options)
 -spec disassociate_web_acl(map(), disassociate_web_acl_request()) ->
     {ok, disassociate_web_acl_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, disassociate_web_acl_errors(), tuple()}.
 disassociate_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_web_acl(Client, Input, []).
@@ -2830,10 +3019,7 @@ disassociate_web_acl(Client, Input)
 -spec disassociate_web_acl(map(), disassociate_web_acl_request(), proplists:proplist()) ->
     {ok, disassociate_web_acl_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, disassociate_web_acl_errors(), tuple()}.
 disassociate_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateWebACL">>, Input, Options).
@@ -2850,10 +3036,7 @@ disassociate_web_acl(Client, Input, Options)
 -spec generate_mobile_sdk_release_url(map(), generate_mobile_sdk_release_url_request()) ->
     {ok, generate_mobile_sdk_release_url_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, generate_mobile_sdk_release_url_errors(), tuple()}.
 generate_mobile_sdk_release_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_mobile_sdk_release_url(Client, Input, []).
@@ -2861,10 +3044,7 @@ generate_mobile_sdk_release_url(Client, Input)
 -spec generate_mobile_sdk_release_url(map(), generate_mobile_sdk_release_url_request(), proplists:proplist()) ->
     {ok, generate_mobile_sdk_release_url_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, generate_mobile_sdk_release_url_errors(), tuple()}.
 generate_mobile_sdk_release_url(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GenerateMobileSdkReleaseUrl">>, Input, Options).
@@ -2884,11 +3064,7 @@ generate_mobile_sdk_release_url(Client, Input, Options)
 -spec get_decrypted_api_key(map(), get_decrypted_api_key_request()) ->
     {ok, get_decrypted_api_key_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_invalid_resource_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_decrypted_api_key_errors(), tuple()}.
 get_decrypted_api_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_decrypted_api_key(Client, Input, []).
@@ -2896,11 +3072,7 @@ get_decrypted_api_key(Client, Input)
 -spec get_decrypted_api_key(map(), get_decrypted_api_key_request(), proplists:proplist()) ->
     {ok, get_decrypted_api_key_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_invalid_resource_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_decrypted_api_key_errors(), tuple()}.
 get_decrypted_api_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDecryptedAPIKey">>, Input, Options).
@@ -2909,10 +3081,7 @@ get_decrypted_api_key(Client, Input, Options)
 -spec get_ip_set(map(), get_ip_set_request()) ->
     {ok, get_ip_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_ip_set_errors(), tuple()}.
 get_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ip_set(Client, Input, []).
@@ -2920,10 +3089,7 @@ get_ip_set(Client, Input)
 -spec get_ip_set(map(), get_ip_set_request(), proplists:proplist()) ->
     {ok, get_ip_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_ip_set_errors(), tuple()}.
 get_ip_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetIPSet">>, Input, Options).
@@ -2932,10 +3098,7 @@ get_ip_set(Client, Input, Options)
 -spec get_logging_configuration(map(), get_logging_configuration_request()) ->
     {ok, get_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_logging_configuration_errors(), tuple()}.
 get_logging_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_logging_configuration(Client, Input, []).
@@ -2943,10 +3106,7 @@ get_logging_configuration(Client, Input)
 -spec get_logging_configuration(map(), get_logging_configuration_request(), proplists:proplist()) ->
     {ok, get_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_logging_configuration_errors(), tuple()}.
 get_logging_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLoggingConfiguration">>, Input, Options).
@@ -2964,10 +3124,7 @@ get_logging_configuration(Client, Input, Options)
 -spec get_managed_rule_set(map(), get_managed_rule_set_request()) ->
     {ok, get_managed_rule_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_managed_rule_set_errors(), tuple()}.
 get_managed_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_managed_rule_set(Client, Input, []).
@@ -2975,10 +3132,7 @@ get_managed_rule_set(Client, Input)
 -spec get_managed_rule_set(map(), get_managed_rule_set_request(), proplists:proplist()) ->
     {ok, get_managed_rule_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_managed_rule_set_errors(), tuple()}.
 get_managed_rule_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetManagedRuleSet">>, Input, Options).
@@ -2996,10 +3150,7 @@ get_managed_rule_set(Client, Input, Options)
 -spec get_mobile_sdk_release(map(), get_mobile_sdk_release_request()) ->
     {ok, get_mobile_sdk_release_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_mobile_sdk_release_errors(), tuple()}.
 get_mobile_sdk_release(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_mobile_sdk_release(Client, Input, []).
@@ -3007,10 +3158,7 @@ get_mobile_sdk_release(Client, Input)
 -spec get_mobile_sdk_release(map(), get_mobile_sdk_release_request(), proplists:proplist()) ->
     {ok, get_mobile_sdk_release_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_mobile_sdk_release_errors(), tuple()}.
 get_mobile_sdk_release(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMobileSdkRelease">>, Input, Options).
@@ -3021,9 +3169,7 @@ get_mobile_sdk_release(Client, Input, Options)
 -spec get_permission_policy(map(), get_permission_policy_request()) ->
     {ok, get_permission_policy_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_permission_policy_errors(), tuple()}.
 get_permission_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_permission_policy(Client, Input, []).
@@ -3031,9 +3177,7 @@ get_permission_policy(Client, Input)
 -spec get_permission_policy(map(), get_permission_policy_request(), proplists:proplist()) ->
     {ok, get_permission_policy_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_permission_policy_errors(), tuple()}.
 get_permission_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPermissionPolicy">>, Input, Options).
@@ -3075,11 +3219,7 @@ get_permission_policy(Client, Input, Options)
 -spec get_rate_based_statement_managed_keys(map(), get_rate_based_statement_managed_keys_request()) ->
     {ok, get_rate_based_statement_managed_keys_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_unsupported_aggregate_key_type_exception(), tuple()}.
+    {error, get_rate_based_statement_managed_keys_errors(), tuple()}.
 get_rate_based_statement_managed_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_rate_based_statement_managed_keys(Client, Input, []).
@@ -3087,11 +3227,7 @@ get_rate_based_statement_managed_keys(Client, Input)
 -spec get_rate_based_statement_managed_keys(map(), get_rate_based_statement_managed_keys_request(), proplists:proplist()) ->
     {ok, get_rate_based_statement_managed_keys_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_unsupported_aggregate_key_type_exception(), tuple()}.
+    {error, get_rate_based_statement_managed_keys_errors(), tuple()}.
 get_rate_based_statement_managed_keys(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRateBasedStatementManagedKeys">>, Input, Options).
@@ -3100,10 +3236,7 @@ get_rate_based_statement_managed_keys(Client, Input, Options)
 -spec get_regex_pattern_set(map(), get_regex_pattern_set_request()) ->
     {ok, get_regex_pattern_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_regex_pattern_set_errors(), tuple()}.
 get_regex_pattern_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_regex_pattern_set(Client, Input, []).
@@ -3111,10 +3244,7 @@ get_regex_pattern_set(Client, Input)
 -spec get_regex_pattern_set(map(), get_regex_pattern_set_request(), proplists:proplist()) ->
     {ok, get_regex_pattern_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_regex_pattern_set_errors(), tuple()}.
 get_regex_pattern_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRegexPatternSet">>, Input, Options).
@@ -3123,10 +3253,7 @@ get_regex_pattern_set(Client, Input, Options)
 -spec get_rule_group(map(), get_rule_group_request()) ->
     {ok, get_rule_group_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_rule_group_errors(), tuple()}.
 get_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_rule_group(Client, Input, []).
@@ -3134,10 +3261,7 @@ get_rule_group(Client, Input)
 -spec get_rule_group(map(), get_rule_group_request(), proplists:proplist()) ->
     {ok, get_rule_group_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_rule_group_errors(), tuple()}.
 get_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRuleGroup">>, Input, Options).
@@ -3163,9 +3287,7 @@ get_rule_group(Client, Input, Options)
 -spec get_sampled_requests(map(), get_sampled_requests_request()) ->
     {ok, get_sampled_requests_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_sampled_requests_errors(), tuple()}.
 get_sampled_requests(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_sampled_requests(Client, Input, []).
@@ -3173,9 +3295,7 @@ get_sampled_requests(Client, Input)
 -spec get_sampled_requests(map(), get_sampled_requests_request(), proplists:proplist()) ->
     {ok, get_sampled_requests_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_sampled_requests_errors(), tuple()}.
 get_sampled_requests(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSampledRequests">>, Input, Options).
@@ -3184,10 +3304,7 @@ get_sampled_requests(Client, Input, Options)
 -spec get_web_acl(map(), get_web_acl_request()) ->
     {ok, get_web_acl_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_web_acl_errors(), tuple()}.
 get_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_web_acl(Client, Input, []).
@@ -3195,10 +3312,7 @@ get_web_acl(Client, Input)
 -spec get_web_acl(map(), get_web_acl_request(), proplists:proplist()) ->
     {ok, get_web_acl_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_web_acl_errors(), tuple()}.
 get_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetWebACL">>, Input, Options).
@@ -3227,11 +3341,7 @@ get_web_acl(Client, Input, Options)
 -spec get_web_acl_for_resource(map(), get_web_acl_for_resource_request()) ->
     {ok, get_web_acl_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_unavailable_entity_exception(), tuple()}.
+    {error, get_web_acl_for_resource_errors(), tuple()}.
 get_web_acl_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_web_acl_for_resource(Client, Input, []).
@@ -3239,11 +3349,7 @@ get_web_acl_for_resource(Client, Input)
 -spec get_web_acl_for_resource(map(), get_web_acl_for_resource_request(), proplists:proplist()) ->
     {ok, get_web_acl_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_unavailable_entity_exception(), tuple()}.
+    {error, get_web_acl_for_resource_errors(), tuple()}.
 get_web_acl_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetWebACLForResource">>, Input, Options).
@@ -3262,10 +3368,7 @@ get_web_acl_for_resource(Client, Input, Options)
 -spec list_api_keys(map(), list_api_keys_request()) ->
     {ok, list_api_keys_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_invalid_resource_exception(), tuple()}.
+    {error, list_api_keys_errors(), tuple()}.
 list_api_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_api_keys(Client, Input, []).
@@ -3273,10 +3376,7 @@ list_api_keys(Client, Input)
 -spec list_api_keys(map(), list_api_keys_request(), proplists:proplist()) ->
     {ok, list_api_keys_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_invalid_resource_exception(), tuple()}.
+    {error, list_api_keys_errors(), tuple()}.
 list_api_keys(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAPIKeys">>, Input, Options).
@@ -3286,10 +3386,7 @@ list_api_keys(Client, Input, Options)
 -spec list_available_managed_rule_group_versions(map(), list_available_managed_rule_group_versions_request()) ->
     {ok, list_available_managed_rule_group_versions_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, list_available_managed_rule_group_versions_errors(), tuple()}.
 list_available_managed_rule_group_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_available_managed_rule_group_versions(Client, Input, []).
@@ -3297,10 +3394,7 @@ list_available_managed_rule_group_versions(Client, Input)
 -spec list_available_managed_rule_group_versions(map(), list_available_managed_rule_group_versions_request(), proplists:proplist()) ->
     {ok, list_available_managed_rule_group_versions_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, list_available_managed_rule_group_versions_errors(), tuple()}.
 list_available_managed_rule_group_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAvailableManagedRuleGroupVersions">>, Input, Options).
@@ -3315,9 +3409,7 @@ list_available_managed_rule_group_versions(Client, Input, Options)
 -spec list_available_managed_rule_groups(map(), list_available_managed_rule_groups_request()) ->
     {ok, list_available_managed_rule_groups_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()}.
+    {error, list_available_managed_rule_groups_errors(), tuple()}.
 list_available_managed_rule_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_available_managed_rule_groups(Client, Input, []).
@@ -3325,9 +3417,7 @@ list_available_managed_rule_groups(Client, Input)
 -spec list_available_managed_rule_groups(map(), list_available_managed_rule_groups_request(), proplists:proplist()) ->
     {ok, list_available_managed_rule_groups_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()}.
+    {error, list_available_managed_rule_groups_errors(), tuple()}.
 list_available_managed_rule_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAvailableManagedRuleGroups">>, Input, Options).
@@ -3338,9 +3428,7 @@ list_available_managed_rule_groups(Client, Input, Options)
 -spec list_ip_sets(map(), list_ip_sets_request()) ->
     {ok, list_ip_sets_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()}.
+    {error, list_ip_sets_errors(), tuple()}.
 list_ip_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_ip_sets(Client, Input, []).
@@ -3348,9 +3436,7 @@ list_ip_sets(Client, Input)
 -spec list_ip_sets(map(), list_ip_sets_request(), proplists:proplist()) ->
     {ok, list_ip_sets_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()}.
+    {error, list_ip_sets_errors(), tuple()}.
 list_ip_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListIPSets">>, Input, Options).
@@ -3359,9 +3445,7 @@ list_ip_sets(Client, Input, Options)
 -spec list_logging_configurations(map(), list_logging_configurations_request()) ->
     {ok, list_logging_configurations_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()}.
+    {error, list_logging_configurations_errors(), tuple()}.
 list_logging_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_logging_configurations(Client, Input, []).
@@ -3369,9 +3453,7 @@ list_logging_configurations(Client, Input)
 -spec list_logging_configurations(map(), list_logging_configurations_request(), proplists:proplist()) ->
     {ok, list_logging_configurations_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()}.
+    {error, list_logging_configurations_errors(), tuple()}.
 list_logging_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLoggingConfigurations">>, Input, Options).
@@ -3389,9 +3471,7 @@ list_logging_configurations(Client, Input, Options)
 -spec list_managed_rule_sets(map(), list_managed_rule_sets_request()) ->
     {ok, list_managed_rule_sets_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()}.
+    {error, list_managed_rule_sets_errors(), tuple()}.
 list_managed_rule_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_managed_rule_sets(Client, Input, []).
@@ -3399,9 +3479,7 @@ list_managed_rule_sets(Client, Input)
 -spec list_managed_rule_sets(map(), list_managed_rule_sets_request(), proplists:proplist()) ->
     {ok, list_managed_rule_sets_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()}.
+    {error, list_managed_rule_sets_errors(), tuple()}.
 list_managed_rule_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListManagedRuleSets">>, Input, Options).
@@ -3419,9 +3497,7 @@ list_managed_rule_sets(Client, Input, Options)
 -spec list_mobile_sdk_releases(map(), list_mobile_sdk_releases_request()) ->
     {ok, list_mobile_sdk_releases_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()}.
+    {error, list_mobile_sdk_releases_errors(), tuple()}.
 list_mobile_sdk_releases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_mobile_sdk_releases(Client, Input, []).
@@ -3429,9 +3505,7 @@ list_mobile_sdk_releases(Client, Input)
 -spec list_mobile_sdk_releases(map(), list_mobile_sdk_releases_request(), proplists:proplist()) ->
     {ok, list_mobile_sdk_releases_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()}.
+    {error, list_mobile_sdk_releases_errors(), tuple()}.
 list_mobile_sdk_releases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMobileSdkReleases">>, Input, Options).
@@ -3442,9 +3516,7 @@ list_mobile_sdk_releases(Client, Input, Options)
 -spec list_regex_pattern_sets(map(), list_regex_pattern_sets_request()) ->
     {ok, list_regex_pattern_sets_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()}.
+    {error, list_regex_pattern_sets_errors(), tuple()}.
 list_regex_pattern_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_regex_pattern_sets(Client, Input, []).
@@ -3452,9 +3524,7 @@ list_regex_pattern_sets(Client, Input)
 -spec list_regex_pattern_sets(map(), list_regex_pattern_sets_request(), proplists:proplist()) ->
     {ok, list_regex_pattern_sets_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()}.
+    {error, list_regex_pattern_sets_errors(), tuple()}.
 list_regex_pattern_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRegexPatternSets">>, Input, Options).
@@ -3480,10 +3550,7 @@ list_regex_pattern_sets(Client, Input, Options)
 -spec list_resources_for_web_acl(map(), list_resources_for_web_acl_request()) ->
     {ok, list_resources_for_web_acl_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, list_resources_for_web_acl_errors(), tuple()}.
 list_resources_for_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resources_for_web_acl(Client, Input, []).
@@ -3491,10 +3558,7 @@ list_resources_for_web_acl(Client, Input)
 -spec list_resources_for_web_acl(map(), list_resources_for_web_acl_request(), proplists:proplist()) ->
     {ok, list_resources_for_web_acl_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, list_resources_for_web_acl_errors(), tuple()}.
 list_resources_for_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResourcesForWebACL">>, Input, Options).
@@ -3505,9 +3569,7 @@ list_resources_for_web_acl(Client, Input, Options)
 -spec list_rule_groups(map(), list_rule_groups_request()) ->
     {ok, list_rule_groups_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()}.
+    {error, list_rule_groups_errors(), tuple()}.
 list_rule_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rule_groups(Client, Input, []).
@@ -3515,9 +3577,7 @@ list_rule_groups(Client, Input)
 -spec list_rule_groups(map(), list_rule_groups_request(), proplists:proplist()) ->
     {ok, list_rule_groups_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()}.
+    {error, list_rule_groups_errors(), tuple()}.
 list_rule_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRuleGroups">>, Input, Options).
@@ -3541,12 +3601,7 @@ list_rule_groups(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -3554,12 +3609,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -3570,9 +3620,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec list_web_acls(map(), list_web_acls_request()) ->
     {ok, list_web_acls_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()}.
+    {error, list_web_acls_errors(), tuple()}.
 list_web_acls(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_web_acls(Client, Input, []).
@@ -3580,9 +3628,7 @@ list_web_acls(Client, Input)
 -spec list_web_acls(map(), list_web_acls_request(), proplists:proplist()) ->
     {ok, list_web_acls_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()}.
+    {error, list_web_acls_errors(), tuple()}.
 list_web_acls(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWebACLs">>, Input, Options).
@@ -3641,14 +3687,7 @@ list_web_acls(Client, Input, Options)
 -spec put_logging_configuration(map(), put_logging_configuration_request()) ->
     {ok, put_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_log_destination_permission_issue_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()} |
-    {error, w_a_f_service_linked_role_error_exception(), tuple()}.
+    {error, put_logging_configuration_errors(), tuple()}.
 put_logging_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_logging_configuration(Client, Input, []).
@@ -3656,14 +3695,7 @@ put_logging_configuration(Client, Input)
 -spec put_logging_configuration(map(), put_logging_configuration_request(), proplists:proplist()) ->
     {ok, put_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_log_destination_permission_issue_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()} |
-    {error, w_a_f_service_linked_role_error_exception(), tuple()}.
+    {error, put_logging_configuration_errors(), tuple()}.
 put_logging_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutLoggingConfiguration">>, Input, Options).
@@ -3699,11 +3731,7 @@ put_logging_configuration(Client, Input, Options)
 -spec put_managed_rule_set_versions(map(), put_managed_rule_set_versions_request()) ->
     {ok, put_managed_rule_set_versions_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()}.
+    {error, put_managed_rule_set_versions_errors(), tuple()}.
 put_managed_rule_set_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_managed_rule_set_versions(Client, Input, []).
@@ -3711,11 +3739,7 @@ put_managed_rule_set_versions(Client, Input)
 -spec put_managed_rule_set_versions(map(), put_managed_rule_set_versions_request(), proplists:proplist()) ->
     {ok, put_managed_rule_set_versions_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()}.
+    {error, put_managed_rule_set_versions_errors(), tuple()}.
 put_managed_rule_set_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutManagedRuleSetVersions">>, Input, Options).
@@ -3739,10 +3763,7 @@ put_managed_rule_set_versions(Client, Input, Options)
 -spec put_permission_policy(map(), put_permission_policy_request()) ->
     {ok, put_permission_policy_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_invalid_permission_policy_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, put_permission_policy_errors(), tuple()}.
 put_permission_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_permission_policy(Client, Input, []).
@@ -3750,10 +3771,7 @@ put_permission_policy(Client, Input)
 -spec put_permission_policy(map(), put_permission_policy_request(), proplists:proplist()) ->
     {ok, put_permission_policy_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_invalid_permission_policy_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, put_permission_policy_errors(), tuple()}.
 put_permission_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutPermissionPolicy">>, Input, Options).
@@ -3777,13 +3795,7 @@ put_permission_policy(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -3791,13 +3803,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -3813,12 +3819,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -3826,12 +3827,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -3874,13 +3870,7 @@ untag_resource(Client, Input, Options)
 -spec update_ip_set(map(), update_ip_set_request()) ->
     {ok, update_ip_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_duplicate_item_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()}.
+    {error, update_ip_set_errors(), tuple()}.
 update_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_ip_set(Client, Input, []).
@@ -3888,13 +3878,7 @@ update_ip_set(Client, Input)
 -spec update_ip_set(map(), update_ip_set_request(), proplists:proplist()) ->
     {ok, update_ip_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_duplicate_item_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()}.
+    {error, update_ip_set_errors(), tuple()}.
 update_ip_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateIPSet">>, Input, Options).
@@ -3918,11 +3902,7 @@ update_ip_set(Client, Input, Options)
 -spec update_managed_rule_set_version_expiry_date(map(), update_managed_rule_set_version_expiry_date_request()) ->
     {ok, update_managed_rule_set_version_expiry_date_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()}.
+    {error, update_managed_rule_set_version_expiry_date_errors(), tuple()}.
 update_managed_rule_set_version_expiry_date(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_managed_rule_set_version_expiry_date(Client, Input, []).
@@ -3930,11 +3910,7 @@ update_managed_rule_set_version_expiry_date(Client, Input)
 -spec update_managed_rule_set_version_expiry_date(map(), update_managed_rule_set_version_expiry_date_request(), proplists:proplist()) ->
     {ok, update_managed_rule_set_version_expiry_date_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()}.
+    {error, update_managed_rule_set_version_expiry_date_errors(), tuple()}.
 update_managed_rule_set_version_expiry_date(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateManagedRuleSetVersionExpiryDate">>, Input, Options).
@@ -3978,13 +3954,7 @@ update_managed_rule_set_version_expiry_date(Client, Input, Options)
 -spec update_regex_pattern_set(map(), update_regex_pattern_set_request()) ->
     {ok, update_regex_pattern_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_duplicate_item_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()}.
+    {error, update_regex_pattern_set_errors(), tuple()}.
 update_regex_pattern_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_regex_pattern_set(Client, Input, []).
@@ -3992,13 +3962,7 @@ update_regex_pattern_set(Client, Input)
 -spec update_regex_pattern_set(map(), update_regex_pattern_set_request(), proplists:proplist()) ->
     {ok, update_regex_pattern_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_duplicate_item_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()}.
+    {error, update_regex_pattern_set_errors(), tuple()}.
 update_regex_pattern_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRegexPatternSet">>, Input, Options).
@@ -4048,16 +4012,7 @@ update_regex_pattern_set(Client, Input, Options)
 -spec update_rule_group(map(), update_rule_group_request()) ->
     {ok, update_rule_group_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_configuration_warning_exception(), tuple()} |
-    {error, w_a_f_duplicate_item_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()} |
-    {error, w_a_f_subscription_not_found_exception(), tuple()} |
-    {error, w_a_f_unavailable_entity_exception(), tuple()}.
+    {error, update_rule_group_errors(), tuple()}.
 update_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rule_group(Client, Input, []).
@@ -4065,16 +4020,7 @@ update_rule_group(Client, Input)
 -spec update_rule_group(map(), update_rule_group_request(), proplists:proplist()) ->
     {ok, update_rule_group_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_configuration_warning_exception(), tuple()} |
-    {error, w_a_f_duplicate_item_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()} |
-    {error, w_a_f_subscription_not_found_exception(), tuple()} |
-    {error, w_a_f_unavailable_entity_exception(), tuple()}.
+    {error, update_rule_group_errors(), tuple()}.
 update_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRuleGroup">>, Input, Options).
@@ -4133,18 +4079,7 @@ update_rule_group(Client, Input, Options)
 -spec update_web_acl(map(), update_web_acl_request()) ->
     {ok, update_web_acl_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_configuration_warning_exception(), tuple()} |
-    {error, w_a_f_duplicate_item_exception(), tuple()} |
-    {error, w_a_f_expired_managed_rule_group_version_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_invalid_resource_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()} |
-    {error, w_a_f_subscription_not_found_exception(), tuple()} |
-    {error, w_a_f_unavailable_entity_exception(), tuple()}.
+    {error, update_web_acl_errors(), tuple()}.
 update_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_web_acl(Client, Input, []).
@@ -4152,18 +4087,7 @@ update_web_acl(Client, Input)
 -spec update_web_acl(map(), update_web_acl_request(), proplists:proplist()) ->
     {ok, update_web_acl_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_configuration_warning_exception(), tuple()} |
-    {error, w_a_f_duplicate_item_exception(), tuple()} |
-    {error, w_a_f_expired_managed_rule_group_version_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_invalid_resource_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_optimistic_lock_exception(), tuple()} |
-    {error, w_a_f_subscription_not_found_exception(), tuple()} |
-    {error, w_a_f_unavailable_entity_exception(), tuple()}.
+    {error, update_web_acl_errors(), tuple()}.
 update_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateWebACL">>, Input, Options).

@@ -40,18 +40,22 @@
 %%   <<"message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_report_definition_request() :: #{}
 -type delete_report_definition_request() :: #{}.
+
 
 %% Example:
 %% delete_report_definition_result() :: #{
 %%   <<"reportId">> => string()
 %% }
 -type delete_report_definition_result() :: #{binary() => any()}.
+
 %% Example:
 %% get_report_definition_request() :: #{}
 -type get_report_definition_request() :: #{}.
+
 
 %% Example:
 %% get_report_definition_result() :: #{
@@ -65,11 +69,13 @@
 %% }
 -type get_report_definition_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% import_application_usage_request() :: #{
 %%   <<"sourceS3Location">> := source_s3_location()
 %% }
 -type import_application_usage_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% import_application_usage_result() :: #{
@@ -77,11 +83,13 @@
 %% }
 -type import_application_usage_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_report_definitions_request() :: #{
@@ -90,12 +98,14 @@
 %% }
 -type list_report_definitions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_report_definitions_result() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"reportDefinitions">> => list(report_definition()())
 %% }
 -type list_report_definitions_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_report_definition_request() :: #{
@@ -107,11 +117,13 @@
 %% }
 -type put_report_definition_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_report_definition_result() :: #{
 %%   <<"reportId">> => string()
 %% }
 -type put_report_definition_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% report_definition() :: #{
@@ -125,6 +137,7 @@
 %% }
 -type report_definition() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_location() :: #{
 %%   <<"bucket">> => string(),
@@ -132,11 +145,13 @@
 %% }
 -type s3_location() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% source_s3_location() :: #{
@@ -146,11 +161,13 @@
 %% }
 -type source_s3_location() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_report_definition_request() :: #{
@@ -161,17 +178,56 @@
 %% }
 -type update_report_definition_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_report_definition_result() :: #{
 %%   <<"reportId">> => string()
 %% }
 -type update_report_definition_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
+-type delete_report_definition_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_report_definition_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type import_application_usage_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_report_definitions_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type put_report_definition_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type update_report_definition_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -185,20 +241,14 @@
 -spec delete_report_definition(map(), binary() | list(), delete_report_definition_request()) ->
     {ok, delete_report_definition_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_report_definition_errors(), tuple()}.
 delete_report_definition(Client, ReportId, Input) ->
     delete_report_definition(Client, ReportId, Input, []).
 
 -spec delete_report_definition(map(), binary() | list(), delete_report_definition_request(), proplists:proplist()) ->
     {ok, delete_report_definition_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_report_definition_errors(), tuple()}.
 delete_report_definition(Client, ReportId, Input0, Options0) ->
     Method = delete,
     Path = ["/reportDefinition/", aws_util:encode_uri(ReportId), ""],
@@ -226,10 +276,7 @@ delete_report_definition(Client, ReportId, Input0, Options0) ->
 -spec get_report_definition(map(), binary() | list()) ->
     {ok, get_report_definition_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_report_definition_errors(), tuple()}.
 get_report_definition(Client, ReportId)
   when is_map(Client) ->
     get_report_definition(Client, ReportId, #{}, #{}).
@@ -237,10 +284,7 @@ get_report_definition(Client, ReportId)
 -spec get_report_definition(map(), binary() | list(), map(), map()) ->
     {ok, get_report_definition_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_report_definition_errors(), tuple()}.
 get_report_definition(Client, ReportId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_report_definition(Client, ReportId, QueryMap, HeadersMap, []).
@@ -248,10 +292,7 @@ get_report_definition(Client, ReportId, QueryMap, HeadersMap)
 -spec get_report_definition(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_report_definition_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_report_definition_errors(), tuple()}.
 get_report_definition(Client, ReportId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/reportDefinition/", aws_util:encode_uri(ReportId), ""],
@@ -279,20 +320,14 @@ get_report_definition(Client, ReportId, QueryMap, HeadersMap, Options0)
 -spec import_application_usage(map(), import_application_usage_request()) ->
     {ok, import_application_usage_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, import_application_usage_errors(), tuple()}.
 import_application_usage(Client, Input) ->
     import_application_usage(Client, Input, []).
 
 -spec import_application_usage(map(), import_application_usage_request(), proplists:proplist()) ->
     {ok, import_application_usage_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, import_application_usage_errors(), tuple()}.
 import_application_usage(Client, Input0, Options0) ->
     Method = post,
     Path = ["/importApplicationUsage"],
@@ -322,10 +357,7 @@ import_application_usage(Client, Input0, Options0) ->
 -spec list_report_definitions(map()) ->
     {ok, list_report_definitions_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_report_definitions_errors(), tuple()}.
 list_report_definitions(Client)
   when is_map(Client) ->
     list_report_definitions(Client, #{}, #{}).
@@ -333,10 +365,7 @@ list_report_definitions(Client)
 -spec list_report_definitions(map(), map(), map()) ->
     {ok, list_report_definitions_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_report_definitions_errors(), tuple()}.
 list_report_definitions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_report_definitions(Client, QueryMap, HeadersMap, []).
@@ -344,10 +373,7 @@ list_report_definitions(Client, QueryMap, HeadersMap)
 -spec list_report_definitions(map(), map(), map(), proplists:proplist()) ->
     {ok, list_report_definitions_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_report_definitions_errors(), tuple()}.
 list_report_definitions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/reportDefinition"],
@@ -374,22 +400,14 @@ list_report_definitions(Client, QueryMap, HeadersMap, Options0)
 -spec put_report_definition(map(), put_report_definition_request()) ->
     {ok, put_report_definition_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_report_definition_errors(), tuple()}.
 put_report_definition(Client, Input) ->
     put_report_definition(Client, Input, []).
 
 -spec put_report_definition(map(), put_report_definition_request(), proplists:proplist()) ->
     {ok, put_report_definition_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_report_definition_errors(), tuple()}.
 put_report_definition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/reportDefinition"],
@@ -416,20 +434,14 @@ put_report_definition(Client, Input0, Options0) ->
 -spec update_report_definition(map(), binary() | list(), update_report_definition_request()) ->
     {ok, update_report_definition_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_report_definition_errors(), tuple()}.
 update_report_definition(Client, ReportId, Input) ->
     update_report_definition(Client, ReportId, Input, []).
 
 -spec update_report_definition(map(), binary() | list(), update_report_definition_request(), proplists:proplist()) ->
     {ok, update_report_definition_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_report_definition_errors(), tuple()}.
 update_report_definition(Client, ReportId, Input0, Options0) ->
     Method = put,
     Path = ["/reportDefinition/", aws_util:encode_uri(ReportId), ""],

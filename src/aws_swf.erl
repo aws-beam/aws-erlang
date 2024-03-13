@@ -1469,6 +1469,174 @@
 %% }
 -type child_workflow_execution_started_event_attributes() :: #{binary() => any()}.
 
+-type count_closed_workflow_executions_errors() ::
+    operation_not_permitted_fault() | 
+    unknown_resource_fault().
+
+-type count_open_workflow_executions_errors() ::
+    operation_not_permitted_fault() | 
+    unknown_resource_fault().
+
+-type count_pending_activity_tasks_errors() ::
+    operation_not_permitted_fault() | 
+    unknown_resource_fault().
+
+-type count_pending_decision_tasks_errors() ::
+    operation_not_permitted_fault() | 
+    unknown_resource_fault().
+
+-type deprecate_activity_type_errors() ::
+    operation_not_permitted_fault() | 
+    unknown_resource_fault() | 
+    type_deprecated_fault().
+
+-type deprecate_domain_errors() ::
+    domain_deprecated_fault() | 
+    operation_not_permitted_fault() | 
+    unknown_resource_fault().
+
+-type deprecate_workflow_type_errors() ::
+    operation_not_permitted_fault() | 
+    unknown_resource_fault() | 
+    type_deprecated_fault().
+
+-type describe_activity_type_errors() ::
+    operation_not_permitted_fault() | 
+    unknown_resource_fault().
+
+-type describe_domain_errors() ::
+    operation_not_permitted_fault() | 
+    unknown_resource_fault().
+
+-type describe_workflow_execution_errors() ::
+    operation_not_permitted_fault() | 
+    unknown_resource_fault().
+
+-type describe_workflow_type_errors() ::
+    operation_not_permitted_fault() | 
+    unknown_resource_fault().
+
+-type get_workflow_execution_history_errors() ::
+    operation_not_permitted_fault() | 
+    unknown_resource_fault().
+
+-type list_activity_types_errors() ::
+    operation_not_permitted_fault() | 
+    unknown_resource_fault().
+
+-type list_closed_workflow_executions_errors() ::
+    operation_not_permitted_fault() | 
+    unknown_resource_fault().
+
+-type list_domains_errors() ::
+    operation_not_permitted_fault().
+
+-type list_open_workflow_executions_errors() ::
+    operation_not_permitted_fault() | 
+    unknown_resource_fault().
+
+-type list_tags_for_resource_errors() ::
+    operation_not_permitted_fault() | 
+    unknown_resource_fault() | 
+    limit_exceeded_fault().
+
+-type list_workflow_types_errors() ::
+    operation_not_permitted_fault() | 
+    unknown_resource_fault().
+
+-type poll_for_activity_task_errors() ::
+    operation_not_permitted_fault() | 
+    unknown_resource_fault() | 
+    limit_exceeded_fault().
+
+-type poll_for_decision_task_errors() ::
+    operation_not_permitted_fault() | 
+    unknown_resource_fault() | 
+    limit_exceeded_fault().
+
+-type record_activity_task_heartbeat_errors() ::
+    operation_not_permitted_fault() | 
+    unknown_resource_fault().
+
+-type register_activity_type_errors() ::
+    type_already_exists_fault() | 
+    operation_not_permitted_fault() | 
+    unknown_resource_fault() | 
+    limit_exceeded_fault().
+
+-type register_domain_errors() ::
+    domain_already_exists_fault() | 
+    operation_not_permitted_fault() | 
+    too_many_tags_fault() | 
+    limit_exceeded_fault().
+
+-type register_workflow_type_errors() ::
+    type_already_exists_fault() | 
+    operation_not_permitted_fault() | 
+    unknown_resource_fault() | 
+    limit_exceeded_fault().
+
+-type request_cancel_workflow_execution_errors() ::
+    operation_not_permitted_fault() | 
+    unknown_resource_fault().
+
+-type respond_activity_task_canceled_errors() ::
+    operation_not_permitted_fault() | 
+    unknown_resource_fault().
+
+-type respond_activity_task_completed_errors() ::
+    operation_not_permitted_fault() | 
+    unknown_resource_fault().
+
+-type respond_activity_task_failed_errors() ::
+    operation_not_permitted_fault() | 
+    unknown_resource_fault().
+
+-type respond_decision_task_completed_errors() ::
+    operation_not_permitted_fault() | 
+    unknown_resource_fault().
+
+-type signal_workflow_execution_errors() ::
+    operation_not_permitted_fault() | 
+    unknown_resource_fault().
+
+-type start_workflow_execution_errors() ::
+    default_undefined_fault() | 
+    operation_not_permitted_fault() | 
+    unknown_resource_fault() | 
+    type_deprecated_fault() | 
+    workflow_execution_already_started_fault() | 
+    limit_exceeded_fault().
+
+-type tag_resource_errors() ::
+    operation_not_permitted_fault() | 
+    too_many_tags_fault() | 
+    unknown_resource_fault() | 
+    limit_exceeded_fault().
+
+-type terminate_workflow_execution_errors() ::
+    operation_not_permitted_fault() | 
+    unknown_resource_fault().
+
+-type undeprecate_activity_type_errors() ::
+    type_already_exists_fault() | 
+    operation_not_permitted_fault() | 
+    unknown_resource_fault().
+
+-type undeprecate_domain_errors() ::
+    domain_already_exists_fault() | 
+    operation_not_permitted_fault() | 
+    unknown_resource_fault().
+
+-type undeprecate_workflow_type_errors() ::
+    type_already_exists_fault() | 
+    operation_not_permitted_fault() | 
+    unknown_resource_fault().
+
+-type untag_resource_errors() ::
+    operation_not_permitted_fault() | 
+    unknown_resource_fault() | 
+    limit_exceeded_fault().
 
 %%====================================================================
 %% API
@@ -1520,8 +1688,7 @@
 -spec count_closed_workflow_executions(map(), count_closed_workflow_executions_input()) ->
     {ok, workflow_execution_count(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, count_closed_workflow_executions_errors(), tuple()}.
 count_closed_workflow_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     count_closed_workflow_executions(Client, Input, []).
@@ -1529,8 +1696,7 @@ count_closed_workflow_executions(Client, Input)
 -spec count_closed_workflow_executions(map(), count_closed_workflow_executions_input(), proplists:proplist()) ->
     {ok, workflow_execution_count(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, count_closed_workflow_executions_errors(), tuple()}.
 count_closed_workflow_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CountClosedWorkflowExecutions">>, Input, Options).
@@ -1581,8 +1747,7 @@ count_closed_workflow_executions(Client, Input, Options)
 -spec count_open_workflow_executions(map(), count_open_workflow_executions_input()) ->
     {ok, workflow_execution_count(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, count_open_workflow_executions_errors(), tuple()}.
 count_open_workflow_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     count_open_workflow_executions(Client, Input, []).
@@ -1590,8 +1755,7 @@ count_open_workflow_executions(Client, Input)
 -spec count_open_workflow_executions(map(), count_open_workflow_executions_input(), proplists:proplist()) ->
     {ok, workflow_execution_count(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, count_open_workflow_executions_errors(), tuple()}.
 count_open_workflow_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CountOpenWorkflowExecutions">>, Input, Options).
@@ -1634,8 +1798,7 @@ count_open_workflow_executions(Client, Input, Options)
 -spec count_pending_activity_tasks(map(), count_pending_activity_tasks_input()) ->
     {ok, pending_task_count(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, count_pending_activity_tasks_errors(), tuple()}.
 count_pending_activity_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     count_pending_activity_tasks(Client, Input, []).
@@ -1643,8 +1806,7 @@ count_pending_activity_tasks(Client, Input)
 -spec count_pending_activity_tasks(map(), count_pending_activity_tasks_input(), proplists:proplist()) ->
     {ok, pending_task_count(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, count_pending_activity_tasks_errors(), tuple()}.
 count_pending_activity_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CountPendingActivityTasks">>, Input, Options).
@@ -1687,8 +1849,7 @@ count_pending_activity_tasks(Client, Input, Options)
 -spec count_pending_decision_tasks(map(), count_pending_decision_tasks_input()) ->
     {ok, pending_task_count(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, count_pending_decision_tasks_errors(), tuple()}.
 count_pending_decision_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     count_pending_decision_tasks(Client, Input, []).
@@ -1696,8 +1857,7 @@ count_pending_decision_tasks(Client, Input)
 -spec count_pending_decision_tasks(map(), count_pending_decision_tasks_input(), proplists:proplist()) ->
     {ok, pending_task_count(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, count_pending_decision_tasks_errors(), tuple()}.
 count_pending_decision_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CountPendingDecisionTasks">>, Input, Options).
@@ -1748,9 +1908,7 @@ count_pending_decision_tasks(Client, Input, Options)
 -spec deprecate_activity_type(map(), deprecate_activity_type_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, type_deprecated_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, deprecate_activity_type_errors(), tuple()}.
 deprecate_activity_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     deprecate_activity_type(Client, Input, []).
@@ -1758,9 +1916,7 @@ deprecate_activity_type(Client, Input)
 -spec deprecate_activity_type(map(), deprecate_activity_type_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, type_deprecated_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, deprecate_activity_type_errors(), tuple()}.
 deprecate_activity_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeprecateActivityType">>, Input, Options).
@@ -1808,9 +1964,7 @@ deprecate_activity_type(Client, Input, Options)
 -spec deprecate_domain(map(), deprecate_domain_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, domain_deprecated_fault(), tuple()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, deprecate_domain_errors(), tuple()}.
 deprecate_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     deprecate_domain(Client, Input, []).
@@ -1818,9 +1972,7 @@ deprecate_domain(Client, Input)
 -spec deprecate_domain(map(), deprecate_domain_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, domain_deprecated_fault(), tuple()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, deprecate_domain_errors(), tuple()}.
 deprecate_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeprecateDomain">>, Input, Options).
@@ -1873,9 +2025,7 @@ deprecate_domain(Client, Input, Options)
 -spec deprecate_workflow_type(map(), deprecate_workflow_type_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, type_deprecated_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, deprecate_workflow_type_errors(), tuple()}.
 deprecate_workflow_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     deprecate_workflow_type(Client, Input, []).
@@ -1883,9 +2033,7 @@ deprecate_workflow_type(Client, Input)
 -spec deprecate_workflow_type(map(), deprecate_workflow_type_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, type_deprecated_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, deprecate_workflow_type_errors(), tuple()}.
 deprecate_workflow_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeprecateWorkflowType">>, Input, Options).
@@ -1932,8 +2080,7 @@ deprecate_workflow_type(Client, Input, Options)
 -spec describe_activity_type(map(), describe_activity_type_input()) ->
     {ok, activity_type_detail(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, describe_activity_type_errors(), tuple()}.
 describe_activity_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_activity_type(Client, Input, []).
@@ -1941,8 +2088,7 @@ describe_activity_type(Client, Input)
 -spec describe_activity_type(map(), describe_activity_type_input(), proplists:proplist()) ->
     {ok, activity_type_detail(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, describe_activity_type_errors(), tuple()}.
 describe_activity_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeActivityType">>, Input, Options).
@@ -1979,8 +2125,7 @@ describe_activity_type(Client, Input, Options)
 -spec describe_domain(map(), describe_domain_input()) ->
     {ok, domain_detail(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, describe_domain_errors(), tuple()}.
 describe_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_domain(Client, Input, []).
@@ -1988,8 +2133,7 @@ describe_domain(Client, Input)
 -spec describe_domain(map(), describe_domain_input(), proplists:proplist()) ->
     {ok, domain_detail(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, describe_domain_errors(), tuple()}.
 describe_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDomain">>, Input, Options).
@@ -2030,8 +2174,7 @@ describe_domain(Client, Input, Options)
 -spec describe_workflow_execution(map(), describe_workflow_execution_input()) ->
     {ok, workflow_execution_detail(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, describe_workflow_execution_errors(), tuple()}.
 describe_workflow_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workflow_execution(Client, Input, []).
@@ -2039,8 +2182,7 @@ describe_workflow_execution(Client, Input)
 -spec describe_workflow_execution(map(), describe_workflow_execution_input(), proplists:proplist()) ->
     {ok, workflow_execution_detail(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, describe_workflow_execution_errors(), tuple()}.
 describe_workflow_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWorkflowExecution">>, Input, Options).
@@ -2087,8 +2229,7 @@ describe_workflow_execution(Client, Input, Options)
 -spec describe_workflow_type(map(), describe_workflow_type_input()) ->
     {ok, workflow_type_detail(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, describe_workflow_type_errors(), tuple()}.
 describe_workflow_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workflow_type(Client, Input, []).
@@ -2096,8 +2237,7 @@ describe_workflow_type(Client, Input)
 -spec describe_workflow_type(map(), describe_workflow_type_input(), proplists:proplist()) ->
     {ok, workflow_type_detail(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, describe_workflow_type_errors(), tuple()}.
 describe_workflow_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWorkflowType">>, Input, Options).
@@ -2141,8 +2281,7 @@ describe_workflow_type(Client, Input, Options)
 -spec get_workflow_execution_history(map(), get_workflow_execution_history_input()) ->
     {ok, history(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, get_workflow_execution_history_errors(), tuple()}.
 get_workflow_execution_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_workflow_execution_history(Client, Input, []).
@@ -2150,8 +2289,7 @@ get_workflow_execution_history(Client, Input)
 -spec get_workflow_execution_history(map(), get_workflow_execution_history_input(), proplists:proplist()) ->
     {ok, history(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, get_workflow_execution_history_errors(), tuple()}.
 get_workflow_execution_history(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetWorkflowExecutionHistory">>, Input, Options).
@@ -2195,8 +2333,7 @@ get_workflow_execution_history(Client, Input, Options)
 -spec list_activity_types(map(), list_activity_types_input()) ->
     {ok, activity_type_infos(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, list_activity_types_errors(), tuple()}.
 list_activity_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_activity_types(Client, Input, []).
@@ -2204,8 +2341,7 @@ list_activity_types(Client, Input)
 -spec list_activity_types(map(), list_activity_types_input(), proplists:proplist()) ->
     {ok, activity_type_infos(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, list_activity_types_errors(), tuple()}.
 list_activity_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListActivityTypes">>, Input, Options).
@@ -2260,8 +2396,7 @@ list_activity_types(Client, Input, Options)
 -spec list_closed_workflow_executions(map(), list_closed_workflow_executions_input()) ->
     {ok, workflow_execution_infos(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, list_closed_workflow_executions_errors(), tuple()}.
 list_closed_workflow_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_closed_workflow_executions(Client, Input, []).
@@ -2269,8 +2404,7 @@ list_closed_workflow_executions(Client, Input)
 -spec list_closed_workflow_executions(map(), list_closed_workflow_executions_input(), proplists:proplist()) ->
     {ok, workflow_execution_infos(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, list_closed_workflow_executions_errors(), tuple()}.
 list_closed_workflow_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListClosedWorkflowExecutions">>, Input, Options).
@@ -2316,7 +2450,7 @@ list_closed_workflow_executions(Client, Input, Options)
 -spec list_domains(map(), list_domains_input()) ->
     {ok, domain_infos(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()}.
+    {error, list_domains_errors(), tuple()}.
 list_domains(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_domains(Client, Input, []).
@@ -2324,7 +2458,7 @@ list_domains(Client, Input)
 -spec list_domains(map(), list_domains_input(), proplists:proplist()) ->
     {ok, domain_infos(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()}.
+    {error, list_domains_errors(), tuple()}.
 list_domains(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDomains">>, Input, Options).
@@ -2379,8 +2513,7 @@ list_domains(Client, Input, Options)
 -spec list_open_workflow_executions(map(), list_open_workflow_executions_input()) ->
     {ok, workflow_execution_infos(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, list_open_workflow_executions_errors(), tuple()}.
 list_open_workflow_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_open_workflow_executions(Client, Input, []).
@@ -2388,8 +2521,7 @@ list_open_workflow_executions(Client, Input)
 -spec list_open_workflow_executions(map(), list_open_workflow_executions_input(), proplists:proplist()) ->
     {ok, workflow_execution_infos(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, list_open_workflow_executions_errors(), tuple()}.
 list_open_workflow_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOpenWorkflowExecutions">>, Input, Options).
@@ -2398,9 +2530,7 @@ list_open_workflow_executions(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -2408,9 +2538,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_input(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -2449,8 +2577,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec list_workflow_types(map(), list_workflow_types_input()) ->
     {ok, workflow_type_infos(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, list_workflow_types_errors(), tuple()}.
 list_workflow_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_workflow_types(Client, Input, []).
@@ -2458,8 +2585,7 @@ list_workflow_types(Client, Input)
 -spec list_workflow_types(map(), list_workflow_types_input(), proplists:proplist()) ->
     {ok, workflow_type_infos(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, list_workflow_types_errors(), tuple()}.
 list_workflow_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWorkflowTypes">>, Input, Options).
@@ -2514,9 +2640,7 @@ list_workflow_types(Client, Input, Options)
 -spec poll_for_activity_task(map(), poll_for_activity_task_input()) ->
     {ok, activity_task(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, poll_for_activity_task_errors(), tuple()}.
 poll_for_activity_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     poll_for_activity_task(Client, Input, []).
@@ -2524,9 +2648,7 @@ poll_for_activity_task(Client, Input)
 -spec poll_for_activity_task(map(), poll_for_activity_task_input(), proplists:proplist()) ->
     {ok, activity_task(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, poll_for_activity_task_errors(), tuple()}.
 poll_for_activity_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PollForActivityTask">>, Input, Options).
@@ -2597,9 +2719,7 @@ poll_for_activity_task(Client, Input, Options)
 -spec poll_for_decision_task(map(), poll_for_decision_task_input()) ->
     {ok, decision_task(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, poll_for_decision_task_errors(), tuple()}.
 poll_for_decision_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     poll_for_decision_task(Client, Input, []).
@@ -2607,9 +2727,7 @@ poll_for_decision_task(Client, Input)
 -spec poll_for_decision_task(map(), poll_for_decision_task_input(), proplists:proplist()) ->
     {ok, decision_task(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, poll_for_decision_task_errors(), tuple()}.
 poll_for_decision_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PollForDecisionTask">>, Input, Options).
@@ -2684,8 +2802,7 @@ poll_for_decision_task(Client, Input, Options)
 -spec record_activity_task_heartbeat(map(), record_activity_task_heartbeat_input()) ->
     {ok, activity_task_status(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, record_activity_task_heartbeat_errors(), tuple()}.
 record_activity_task_heartbeat(Client, Input)
   when is_map(Client), is_map(Input) ->
     record_activity_task_heartbeat(Client, Input, []).
@@ -2693,8 +2810,7 @@ record_activity_task_heartbeat(Client, Input)
 -spec record_activity_task_heartbeat(map(), record_activity_task_heartbeat_input(), proplists:proplist()) ->
     {ok, activity_task_status(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, record_activity_task_heartbeat_errors(), tuple()}.
 record_activity_task_heartbeat(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RecordActivityTaskHeartbeat">>, Input, Options).
@@ -2745,10 +2861,7 @@ record_activity_task_heartbeat(Client, Input, Options)
 -spec register_activity_type(map(), register_activity_type_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, type_already_exists_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, register_activity_type_errors(), tuple()}.
 register_activity_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_activity_type(Client, Input, []).
@@ -2756,10 +2869,7 @@ register_activity_type(Client, Input)
 -spec register_activity_type(map(), register_activity_type_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, type_already_exists_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, register_activity_type_errors(), tuple()}.
 register_activity_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterActivityType">>, Input, Options).
@@ -2795,10 +2905,7 @@ register_activity_type(Client, Input, Options)
 -spec register_domain(map(), register_domain_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, domain_already_exists_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, too_many_tags_fault(), tuple()}.
+    {error, register_domain_errors(), tuple()}.
 register_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_domain(Client, Input, []).
@@ -2806,10 +2913,7 @@ register_domain(Client, Input)
 -spec register_domain(map(), register_domain_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, domain_already_exists_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, too_many_tags_fault(), tuple()}.
+    {error, register_domain_errors(), tuple()}.
 register_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterDomain">>, Input, Options).
@@ -2863,10 +2967,7 @@ register_domain(Client, Input, Options)
 -spec register_workflow_type(map(), register_workflow_type_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, type_already_exists_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, register_workflow_type_errors(), tuple()}.
 register_workflow_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_workflow_type(Client, Input, []).
@@ -2874,10 +2975,7 @@ register_workflow_type(Client, Input)
 -spec register_workflow_type(map(), register_workflow_type_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, type_already_exists_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, register_workflow_type_errors(), tuple()}.
 register_workflow_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterWorkflowType">>, Input, Options).
@@ -2931,8 +3029,7 @@ register_workflow_type(Client, Input, Options)
 -spec request_cancel_workflow_execution(map(), request_cancel_workflow_execution_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, request_cancel_workflow_execution_errors(), tuple()}.
 request_cancel_workflow_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     request_cancel_workflow_execution(Client, Input, []).
@@ -2940,8 +3037,7 @@ request_cancel_workflow_execution(Client, Input)
 -spec request_cancel_workflow_execution(map(), request_cancel_workflow_execution_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, request_cancel_workflow_execution_errors(), tuple()}.
 request_cancel_workflow_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RequestCancelWorkflowExecution">>, Input, Options).
@@ -2999,8 +3095,7 @@ request_cancel_workflow_execution(Client, Input, Options)
 -spec respond_activity_task_canceled(map(), respond_activity_task_canceled_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, respond_activity_task_canceled_errors(), tuple()}.
 respond_activity_task_canceled(Client, Input)
   when is_map(Client), is_map(Input) ->
     respond_activity_task_canceled(Client, Input, []).
@@ -3008,8 +3103,7 @@ respond_activity_task_canceled(Client, Input)
 -spec respond_activity_task_canceled(map(), respond_activity_task_canceled_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, respond_activity_task_canceled_errors(), tuple()}.
 respond_activity_task_canceled(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RespondActivityTaskCanceled">>, Input, Options).
@@ -3068,8 +3162,7 @@ respond_activity_task_canceled(Client, Input, Options)
 -spec respond_activity_task_completed(map(), respond_activity_task_completed_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, respond_activity_task_completed_errors(), tuple()}.
 respond_activity_task_completed(Client, Input)
   when is_map(Client), is_map(Input) ->
     respond_activity_task_completed(Client, Input, []).
@@ -3077,8 +3170,7 @@ respond_activity_task_completed(Client, Input)
 -spec respond_activity_task_completed(map(), respond_activity_task_completed_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, respond_activity_task_completed_errors(), tuple()}.
 respond_activity_task_completed(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RespondActivityTaskCompleted">>, Input, Options).
@@ -3129,8 +3221,7 @@ respond_activity_task_completed(Client, Input, Options)
 -spec respond_activity_task_failed(map(), respond_activity_task_failed_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, respond_activity_task_failed_errors(), tuple()}.
 respond_activity_task_failed(Client, Input)
   when is_map(Client), is_map(Input) ->
     respond_activity_task_failed(Client, Input, []).
@@ -3138,8 +3229,7 @@ respond_activity_task_failed(Client, Input)
 -spec respond_activity_task_failed(map(), respond_activity_task_failed_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, respond_activity_task_failed_errors(), tuple()}.
 respond_activity_task_failed(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RespondActivityTaskFailed">>, Input, Options).
@@ -3176,8 +3266,7 @@ respond_activity_task_failed(Client, Input, Options)
 -spec respond_decision_task_completed(map(), respond_decision_task_completed_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, respond_decision_task_completed_errors(), tuple()}.
 respond_decision_task_completed(Client, Input)
   when is_map(Client), is_map(Input) ->
     respond_decision_task_completed(Client, Input, []).
@@ -3185,8 +3274,7 @@ respond_decision_task_completed(Client, Input)
 -spec respond_decision_task_completed(map(), respond_decision_task_completed_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, respond_decision_task_completed_errors(), tuple()}.
 respond_decision_task_completed(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RespondDecisionTaskCompleted">>, Input, Options).
@@ -3237,8 +3325,7 @@ respond_decision_task_completed(Client, Input, Options)
 -spec signal_workflow_execution(map(), signal_workflow_execution_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, signal_workflow_execution_errors(), tuple()}.
 signal_workflow_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     signal_workflow_execution(Client, Input, []).
@@ -3246,8 +3333,7 @@ signal_workflow_execution(Client, Input)
 -spec signal_workflow_execution(map(), signal_workflow_execution_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, signal_workflow_execution_errors(), tuple()}.
 signal_workflow_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SignalWorkflowExecution">>, Input, Options).
@@ -3306,12 +3392,7 @@ signal_workflow_execution(Client, Input, Options)
 -spec start_workflow_execution(map(), start_workflow_execution_input()) ->
     {ok, run(), tuple()} |
     {error, any()} |
-    {error, default_undefined_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, type_deprecated_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()} |
-    {error, workflow_execution_already_started_fault(), tuple()}.
+    {error, start_workflow_execution_errors(), tuple()}.
 start_workflow_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_workflow_execution(Client, Input, []).
@@ -3319,12 +3400,7 @@ start_workflow_execution(Client, Input)
 -spec start_workflow_execution(map(), start_workflow_execution_input(), proplists:proplist()) ->
     {ok, run(), tuple()} |
     {error, any()} |
-    {error, default_undefined_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, type_deprecated_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()} |
-    {error, workflow_execution_already_started_fault(), tuple()}.
+    {error, start_workflow_execution_errors(), tuple()}.
 start_workflow_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartWorkflowExecution">>, Input, Options).
@@ -3335,10 +3411,7 @@ start_workflow_execution(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, too_many_tags_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -3346,10 +3419,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, too_many_tags_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -3404,8 +3474,7 @@ tag_resource(Client, Input, Options)
 -spec terminate_workflow_execution(map(), terminate_workflow_execution_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, terminate_workflow_execution_errors(), tuple()}.
 terminate_workflow_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     terminate_workflow_execution(Client, Input, []).
@@ -3413,8 +3482,7 @@ terminate_workflow_execution(Client, Input)
 -spec terminate_workflow_execution(map(), terminate_workflow_execution_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, terminate_workflow_execution_errors(), tuple()}.
 terminate_workflow_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TerminateWorkflowExecution">>, Input, Options).
@@ -3463,9 +3531,7 @@ terminate_workflow_execution(Client, Input, Options)
 -spec undeprecate_activity_type(map(), undeprecate_activity_type_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, type_already_exists_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, undeprecate_activity_type_errors(), tuple()}.
 undeprecate_activity_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     undeprecate_activity_type(Client, Input, []).
@@ -3473,9 +3539,7 @@ undeprecate_activity_type(Client, Input)
 -spec undeprecate_activity_type(map(), undeprecate_activity_type_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, type_already_exists_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, undeprecate_activity_type_errors(), tuple()}.
 undeprecate_activity_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UndeprecateActivityType">>, Input, Options).
@@ -3517,9 +3581,7 @@ undeprecate_activity_type(Client, Input, Options)
 -spec undeprecate_domain(map(), undeprecate_domain_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, domain_already_exists_fault(), tuple()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, undeprecate_domain_errors(), tuple()}.
 undeprecate_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     undeprecate_domain(Client, Input, []).
@@ -3527,9 +3589,7 @@ undeprecate_domain(Client, Input)
 -spec undeprecate_domain(map(), undeprecate_domain_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, domain_already_exists_fault(), tuple()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, undeprecate_domain_errors(), tuple()}.
 undeprecate_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UndeprecateDomain">>, Input, Options).
@@ -3578,9 +3638,7 @@ undeprecate_domain(Client, Input, Options)
 -spec undeprecate_workflow_type(map(), undeprecate_workflow_type_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, type_already_exists_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, undeprecate_workflow_type_errors(), tuple()}.
 undeprecate_workflow_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     undeprecate_workflow_type(Client, Input, []).
@@ -3588,9 +3646,7 @@ undeprecate_workflow_type(Client, Input)
 -spec undeprecate_workflow_type(map(), undeprecate_workflow_type_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, type_already_exists_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, undeprecate_workflow_type_errors(), tuple()}.
 undeprecate_workflow_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UndeprecateWorkflowType">>, Input, Options).
@@ -3599,9 +3655,7 @@ undeprecate_workflow_type(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -3609,9 +3663,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, operation_not_permitted_fault(), tuple()} |
-    {error, unknown_resource_fault(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).

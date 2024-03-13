@@ -51,6 +51,7 @@
 %% }
 -type pipe_source_rabbit_mq_broker_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_pipe_source_active_mq_broker_parameters() :: #{
 %%   <<"BatchSize">> => integer(),
@@ -58,6 +59,7 @@
 %%   <<"MaximumBatchingWindowInSeconds">> => integer()
 %% }
 -type update_pipe_source_active_mq_broker_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_pipe_response() :: #{
@@ -70,17 +72,20 @@
 %% }
 -type delete_pipe_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> => map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% pipe_target_sage_maker_pipeline_parameters() :: #{
 %%   <<"PipelineParameterList">> => list(sage_maker_pipeline_parameter()())
 %% }
 -type pipe_target_sage_maker_pipeline_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% pipe_log_configuration() :: #{
@@ -92,17 +97,20 @@
 %% }
 -type pipe_log_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% cloudwatch_logs_log_destination_parameters() :: #{
 %%   <<"LogGroupArn">> => string()
 %% }
 -type cloudwatch_logs_log_destination_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_retry_strategy() :: #{
 %%   <<"Attempts">> => integer()
 %% }
 -type batch_retry_strategy() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_pipe_response() :: #{
@@ -115,12 +123,14 @@
 %% }
 -type update_pipe_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% ecs_environment_variable() :: #{
 %%   <<"name">> => string(),
 %%   <<"value">> => string()
 %% }
 -type ecs_environment_variable() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_pipe_source_self_managed_kafka_parameters() :: #{
@@ -131,6 +141,7 @@
 %%   <<"Vpc">> => self_managed_kafka_access_configuration_vpc()
 %% }
 -type update_pipe_source_self_managed_kafka_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_pipe_request() :: #{
@@ -145,15 +156,18 @@
 %%   <<"TargetParameters">> => pipe_target_parameters()
 %% }
 -type update_pipe_request() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% filter_criteria() :: #{
 %%   <<"Filters">> => list(filter()())
 %% }
 -type filter_criteria() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_pipes_request() :: #{
@@ -167,12 +181,14 @@
 %% }
 -type list_pipes_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% ecs_inference_accelerator_override() :: #{
 %%   <<"deviceName">> => string(),
 %%   <<"deviceType">> => string()
 %% }
 -type ecs_inference_accelerator_override() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_pipe_response() :: #{
@@ -185,17 +201,20 @@
 %% }
 -type start_pipe_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_array_properties() :: #{
 %%   <<"Size">> => integer()
 %% }
 -type batch_array_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% pipe_target_state_machine_parameters() :: #{
 %%   <<"InvocationType">> => string()
 %% }
 -type pipe_target_state_machine_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% pipe_target_event_bridge_event_bus_parameters() :: #{
@@ -207,6 +226,7 @@
 %% }
 -type pipe_target_event_bridge_event_bus_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% sage_maker_pipeline_parameter() :: #{
 %%   <<"Name">> => string(),
@@ -214,15 +234,18 @@
 %% }
 -type sage_maker_pipeline_parameter() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_resource_requirement() :: #{
 %%   <<"Type">> => string(),
 %%   <<"Value">> => [string()]
 %% }
 -type batch_resource_requirement() :: #{binary() => any()}.
+
 %% Example:
 %% describe_pipe_request() :: #{}
 -type describe_pipe_request() :: #{}.
+
 
 %% Example:
 %% s3_log_destination() :: #{
@@ -233,6 +256,7 @@
 %% }
 -type s3_log_destination() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_pipe_source_rabbit_mq_broker_parameters() :: #{
 %%   <<"BatchSize">> => integer(),
@@ -240,6 +264,7 @@
 %%   <<"MaximumBatchingWindowInSeconds">> => integer()
 %% }
 -type update_pipe_source_rabbit_mq_broker_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% pipe_source_managed_streaming_kafka_parameters() :: #{
@@ -252,26 +277,31 @@
 %% }
 -type pipe_source_managed_streaming_kafka_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> => list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% firehose_log_destination_parameters() :: #{
 %%   <<"DeliveryStreamArn">> => string()
 %% }
 -type firehose_log_destination_parameters() :: #{binary() => any()}.
+
 %% Example:
 %% start_pipe_request() :: #{}
 -type start_pipe_request() :: #{}.
+
 
 %% Example:
 %% cloudwatch_logs_log_destination() :: #{
 %%   <<"LogGroupArn">> => string()
 %% }
 -type cloudwatch_logs_log_destination() :: #{binary() => any()}.
+
 
 %% Example:
 %% pipe() :: #{
@@ -287,6 +317,7 @@
 %%   <<"Target">> => string()
 %% }
 -type pipe() :: #{binary() => any()}.
+
 
 %% Example:
 %% pipe_target_parameters() :: #{
@@ -305,6 +336,7 @@
 %% }
 -type pipe_target_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% pipe_source_parameters() :: #{
 %%   <<"ActiveMQBrokerParameters">> => pipe_source_active_mq_broker_parameters(),
@@ -318,6 +350,7 @@
 %% }
 -type pipe_source_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => [string()],
@@ -326,12 +359,14 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Value">> => string()
 %% }
 -type tag() :: #{binary() => any()}.
+
 
 %% Example:
 %% pipe_target_batch_job_parameters() :: #{
@@ -345,12 +380,14 @@
 %% }
 -type pipe_target_batch_job_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% pipe_source_sqs_queue_parameters() :: #{
 %%   <<"BatchSize">> => integer(),
 %%   <<"MaximumBatchingWindowInSeconds">> => integer()
 %% }
 -type pipe_source_sqs_queue_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
@@ -362,6 +399,7 @@
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% pipe_target_http_parameters() :: #{
 %%   <<"HeaderParameters">> => map(),
@@ -370,6 +408,7 @@
 %% }
 -type pipe_target_http_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% pipe_target_sqs_queue_parameters() :: #{
 %%   <<"MessageDeduplicationId">> => string(),
@@ -377,17 +416,20 @@
 %% }
 -type pipe_target_sqs_queue_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% pipe_target_kinesis_stream_parameters() :: #{
 %%   <<"PartitionKey">> => string()
 %% }
 -type pipe_target_kinesis_stream_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_pipes_response() :: #{
@@ -396,6 +438,7 @@
 %% }
 -type list_pipes_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% pipe_target_cloud_watch_logs_parameters() :: #{
 %%   <<"LogStreamName">> => string(),
@@ -403,11 +446,13 @@
 %% }
 -type pipe_target_cloud_watch_logs_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_log_destination_parameters() :: #{
@@ -417,6 +462,7 @@
 %%   <<"Prefix">> => string()
 %% }
 -type s3_log_destination_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_pipe_request() :: #{
@@ -434,6 +480,7 @@
 %% }
 -type create_pipe_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception_field() :: #{
 %%   <<"message">> => string(),
@@ -441,11 +488,13 @@
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
 
+
 %% Example:
 %% filter() :: #{
 %%   <<"Pattern">> => string()
 %% }
 -type filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% ecs_container_override() :: #{
@@ -460,12 +509,14 @@
 %% }
 -type ecs_container_override() :: #{binary() => any()}.
 
+
 %% Example:
 %% ecs_environment_file() :: #{
 %%   <<"type">> => string(),
 %%   <<"value">> => string()
 %% }
 -type ecs_environment_file() :: #{binary() => any()}.
+
 
 %% Example:
 %% stop_pipe_response() :: #{
@@ -477,6 +528,7 @@
 %%   <<"Name">> => string()
 %% }
 -type stop_pipe_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% ecs_task_override() :: #{
@@ -490,6 +542,7 @@
 %% }
 -type ecs_task_override() :: #{binary() => any()}.
 
+
 %% Example:
 %% capacity_provider_strategy_item() :: #{
 %%   <<"base">> => integer(),
@@ -498,6 +551,7 @@
 %% }
 -type capacity_provider_strategy_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% placement_constraint() :: #{
 %%   <<"expression">> => string(),
@@ -505,11 +559,13 @@
 %% }
 -type placement_constraint() :: #{binary() => any()}.
 
+
 %% Example:
 %% network_configuration() :: #{
 %%   <<"awsvpcConfiguration">> => aws_vpc_configuration()
 %% }
 -type network_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% pipe_source_kinesis_stream_parameters() :: #{
@@ -525,12 +581,14 @@
 %% }
 -type pipe_source_kinesis_stream_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_exception() :: #{
 %%   <<"message">> => [string()],
 %%   <<"retryAfterSeconds">> => [integer()]
 %% }
 -type internal_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% pipe_target_ecs_task_parameters() :: #{
@@ -551,12 +609,15 @@
 %%   <<"TaskDefinitionArn">> => string()
 %% }
 -type pipe_target_ecs_task_parameters() :: #{binary() => any()}.
+
 %% Example:
 %% delete_pipe_request() :: #{}
 -type delete_pipe_request() :: #{}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% create_pipe_response() :: #{
@@ -569,11 +630,13 @@
 %% }
 -type create_pipe_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% dead_letter_config() :: #{
 %%   <<"Arn">> => string()
 %% }
 -type dead_letter_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% validation_exception() :: #{
@@ -581,15 +644,18 @@
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% pipe_target_lambda_function_parameters() :: #{
 %%   <<"InvocationType">> => string()
 %% }
 -type pipe_target_lambda_function_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% throttling_exception() :: #{
@@ -599,6 +665,7 @@
 %%   <<"serviceCode">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% pipe_target_redshift_data_parameters() :: #{
@@ -610,6 +677,7 @@
 %%   <<"WithEvent">> => boolean()
 %% }
 -type pipe_target_redshift_data_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% pipe_source_dynamo_db_stream_parameters() :: #{
@@ -624,6 +692,7 @@
 %% }
 -type pipe_source_dynamo_db_stream_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_pipe_source_managed_streaming_kafka_parameters() :: #{
 %%   <<"BatchSize">> => integer(),
@@ -632,15 +701,18 @@
 %% }
 -type update_pipe_source_managed_streaming_kafka_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_job_dependency() :: #{
 %%   <<"JobId">> => [string()],
 %%   <<"Type">> => string()
 %% }
 -type batch_job_dependency() :: #{binary() => any()}.
+
 %% Example:
 %% stop_pipe_request() :: #{}
 -type stop_pipe_request() :: #{}.
+
 
 %% Example:
 %% aws_vpc_configuration() :: #{
@@ -649,6 +721,7 @@
 %%   <<"Subnets">> => list(string()())
 %% }
 -type aws_vpc_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% pipe_log_configuration_parameters() :: #{
@@ -660,11 +733,13 @@
 %% }
 -type pipe_log_configuration_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% ecs_ephemeral_storage() :: #{
 %%   <<"sizeInGiB">> => integer()
 %% }
 -type ecs_ephemeral_storage() :: #{binary() => any()}.
+
 
 %% Example:
 %% ecs_resource_requirement() :: #{
@@ -672,6 +747,7 @@
 %%   <<"value">> => string()
 %% }
 -type ecs_resource_requirement() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_pipe_source_kinesis_stream_parameters() :: #{
@@ -684,6 +760,7 @@
 %%   <<"ParallelizationFactor">> => integer()
 %% }
 -type update_pipe_source_kinesis_stream_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% pipe_source_self_managed_kafka_parameters() :: #{
@@ -699,6 +776,7 @@
 %% }
 -type pipe_source_self_managed_kafka_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_container_overrides() :: #{
 %%   <<"Command">> => list(string()()),
@@ -708,12 +786,14 @@
 %% }
 -type batch_container_overrides() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_environment_variable() :: #{
 %%   <<"Name">> => [string()],
 %%   <<"Value">> => [string()]
 %% }
 -type batch_environment_variable() :: #{binary() => any()}.
+
 
 %% Example:
 %% pipe_enrichment_http_parameters() :: #{
@@ -723,6 +803,7 @@
 %% }
 -type pipe_enrichment_http_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_pipe_source_sqs_queue_parameters() :: #{
 %%   <<"BatchSize">> => integer(),
@@ -730,11 +811,13 @@
 %% }
 -type update_pipe_source_sqs_queue_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% firehose_log_destination() :: #{
 %%   <<"DeliveryStreamArn">> => string()
 %% }
 -type firehose_log_destination() :: #{binary() => any()}.
+
 
 %% Example:
 %% pipe_enrichment_parameters() :: #{
@@ -742,6 +825,7 @@
 %%   <<"InputTemplate">> => string()
 %% }
 -type pipe_enrichment_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_pipe_source_parameters() :: #{
@@ -756,12 +840,14 @@
 %% }
 -type update_pipe_source_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% self_managed_kafka_access_configuration_vpc() :: #{
 %%   <<"SecurityGroup">> => list(string()()),
 %%   <<"Subnets">> => list(string()())
 %% }
 -type self_managed_kafka_access_configuration_vpc() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_pipe_response() :: #{
@@ -785,12 +871,14 @@
 %% }
 -type describe_pipe_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% placement_strategy() :: #{
 %%   <<"field">> => string(),
 %%   <<"type">> => string()
 %% }
 -type placement_strategy() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_pipe_source_dynamo_db_stream_parameters() :: #{
@@ -804,6 +892,7 @@
 %% }
 -type update_pipe_source_dynamo_db_stream_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% pipe_source_active_mq_broker_parameters() :: #{
 %%   <<"BatchSize">> => integer(),
@@ -812,6 +901,68 @@
 %%   <<"QueueName">> => string()
 %% }
 -type pipe_source_active_mq_broker_parameters() :: #{binary() => any()}.
+
+-type create_pipe_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    not_found_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_pipe_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    not_found_exception() | 
+    conflict_exception().
+
+-type describe_pipe_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    not_found_exception().
+
+-type list_pipes_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    internal_exception() | 
+    not_found_exception().
+
+-type start_pipe_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    not_found_exception() | 
+    conflict_exception().
+
+-type stop_pipe_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    internal_exception() | 
+    not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    internal_exception() | 
+    not_found_exception().
+
+-type update_pipe_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -824,24 +975,14 @@
 -spec create_pipe(map(), binary() | list(), create_pipe_request()) ->
     {ok, create_pipe_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_pipe_errors(), tuple()}.
 create_pipe(Client, Name, Input) ->
     create_pipe(Client, Name, Input, []).
 
 -spec create_pipe(map(), binary() | list(), create_pipe_request(), proplists:proplist()) ->
     {ok, create_pipe_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_pipe_errors(), tuple()}.
 create_pipe(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/v1/pipes/", aws_util:encode_uri(Name), ""],
@@ -872,22 +1013,14 @@ create_pipe(Client, Name, Input0, Options0) ->
 -spec delete_pipe(map(), binary() | list(), delete_pipe_request()) ->
     {ok, delete_pipe_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_pipe_errors(), tuple()}.
 delete_pipe(Client, Name, Input) ->
     delete_pipe(Client, Name, Input, []).
 
 -spec delete_pipe(map(), binary() | list(), delete_pipe_request(), proplists:proplist()) ->
     {ok, delete_pipe_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_pipe_errors(), tuple()}.
 delete_pipe(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/pipes/", aws_util:encode_uri(Name), ""],
@@ -918,10 +1051,7 @@ delete_pipe(Client, Name, Input0, Options0) ->
 -spec describe_pipe(map(), binary() | list()) ->
     {ok, describe_pipe_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_pipe_errors(), tuple()}.
 describe_pipe(Client, Name)
   when is_map(Client) ->
     describe_pipe(Client, Name, #{}, #{}).
@@ -929,10 +1059,7 @@ describe_pipe(Client, Name)
 -spec describe_pipe(map(), binary() | list(), map(), map()) ->
     {ok, describe_pipe_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_pipe_errors(), tuple()}.
 describe_pipe(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_pipe(Client, Name, QueryMap, HeadersMap, []).
@@ -940,10 +1067,7 @@ describe_pipe(Client, Name, QueryMap, HeadersMap)
 -spec describe_pipe(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_pipe_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_pipe_errors(), tuple()}.
 describe_pipe(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/pipes/", aws_util:encode_uri(Name), ""],
@@ -968,9 +1092,7 @@ describe_pipe(Client, Name, QueryMap, HeadersMap, Options0)
 -spec list_pipes(map()) ->
     {ok, list_pipes_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_pipes_errors(), tuple()}.
 list_pipes(Client)
   when is_map(Client) ->
     list_pipes(Client, #{}, #{}).
@@ -978,9 +1100,7 @@ list_pipes(Client)
 -spec list_pipes(map(), map(), map()) ->
     {ok, list_pipes_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_pipes_errors(), tuple()}.
 list_pipes(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_pipes(Client, QueryMap, HeadersMap, []).
@@ -988,9 +1108,7 @@ list_pipes(Client, QueryMap, HeadersMap)
 -spec list_pipes(map(), map(), map(), proplists:proplist()) ->
     {ok, list_pipes_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_pipes_errors(), tuple()}.
 list_pipes(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/pipes"],
@@ -1021,9 +1139,7 @@ list_pipes(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1031,9 +1147,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1041,9 +1155,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1064,22 +1176,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec start_pipe(map(), binary() | list(), start_pipe_request()) ->
     {ok, start_pipe_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_pipe_errors(), tuple()}.
 start_pipe(Client, Name, Input) ->
     start_pipe(Client, Name, Input, []).
 
 -spec start_pipe(map(), binary() | list(), start_pipe_request(), proplists:proplist()) ->
     {ok, start_pipe_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_pipe_errors(), tuple()}.
 start_pipe(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/v1/pipes/", aws_util:encode_uri(Name), "/start"],
@@ -1106,22 +1210,14 @@ start_pipe(Client, Name, Input0, Options0) ->
 -spec stop_pipe(map(), binary() | list(), stop_pipe_request()) ->
     {ok, stop_pipe_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_pipe_errors(), tuple()}.
 stop_pipe(Client, Name, Input) ->
     stop_pipe(Client, Name, Input, []).
 
 -spec stop_pipe(map(), binary() | list(), stop_pipe_request(), proplists:proplist()) ->
     {ok, stop_pipe_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_pipe_errors(), tuple()}.
 stop_pipe(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/v1/pipes/", aws_util:encode_uri(Name), "/stop"],
@@ -1169,18 +1265,14 @@ stop_pipe(Client, Name, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1207,18 +1299,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1264,22 +1352,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_pipe(map(), binary() | list(), update_pipe_request()) ->
     {ok, update_pipe_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_pipe_errors(), tuple()}.
 update_pipe(Client, Name, Input) ->
     update_pipe(Client, Name, Input, []).
 
 -spec update_pipe(map(), binary() | list(), update_pipe_request(), proplists:proplist()) ->
     {ok, update_pipe_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_pipe_errors(), tuple()}.
 update_pipe(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/v1/pipes/", aws_util:encode_uri(Name), ""],

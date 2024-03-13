@@ -1091,6 +1091,168 @@
 %% }
 -type delete_insight_rules_output() :: #{binary() => any()}.
 
+-type delete_alarms_errors() ::
+    resource_not_found().
+
+-type delete_anomaly_detector_errors() ::
+    internal_service_fault() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_combination_exception() | 
+    missing_required_parameter_exception().
+
+-type delete_dashboards_errors() ::
+    internal_service_fault() | 
+    invalid_parameter_value_exception() | 
+    dashboard_not_found_error().
+
+-type delete_insight_rules_errors() ::
+    invalid_parameter_value_exception() | 
+    missing_required_parameter_exception().
+
+-type delete_metric_stream_errors() ::
+    internal_service_fault() | 
+    invalid_parameter_value_exception() | 
+    missing_required_parameter_exception().
+
+-type describe_alarm_history_errors() ::
+    invalid_next_token().
+
+-type describe_alarms_errors() ::
+    invalid_next_token().
+
+-type describe_anomaly_detectors_errors() ::
+    invalid_next_token() | 
+    internal_service_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception().
+
+-type describe_insight_rules_errors() ::
+    invalid_next_token().
+
+-type disable_insight_rules_errors() ::
+    invalid_parameter_value_exception() | 
+    missing_required_parameter_exception().
+
+-type enable_insight_rules_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    missing_required_parameter_exception().
+
+-type get_dashboard_errors() ::
+    internal_service_fault() | 
+    invalid_parameter_value_exception() | 
+    dashboard_not_found_error().
+
+-type get_insight_rule_report_errors() ::
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_required_parameter_exception().
+
+-type get_metric_data_errors() ::
+    invalid_next_token().
+
+-type get_metric_statistics_errors() ::
+    internal_service_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception() | 
+    missing_required_parameter_exception().
+
+-type get_metric_stream_errors() ::
+    internal_service_fault() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_combination_exception() | 
+    missing_required_parameter_exception().
+
+-type list_dashboards_errors() ::
+    internal_service_fault() | 
+    invalid_parameter_value_exception().
+
+-type list_managed_insight_rules_errors() ::
+    invalid_next_token() | 
+    invalid_parameter_value_exception() | 
+    missing_required_parameter_exception().
+
+-type list_metric_streams_errors() ::
+    invalid_next_token() | 
+    internal_service_fault() | 
+    invalid_parameter_value_exception() | 
+    missing_required_parameter_exception().
+
+-type list_metrics_errors() ::
+    internal_service_fault() | 
+    invalid_parameter_value_exception().
+
+-type list_tags_for_resource_errors() ::
+    internal_service_fault() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception().
+
+-type put_anomaly_detector_errors() ::
+    internal_service_fault() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception() | 
+    missing_required_parameter_exception().
+
+-type put_composite_alarm_errors() ::
+    limit_exceeded_fault().
+
+-type put_dashboard_errors() ::
+    internal_service_fault() | 
+    dashboard_invalid_input_error().
+
+-type put_insight_rule_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    missing_required_parameter_exception().
+
+-type put_managed_insight_rules_errors() ::
+    invalid_parameter_value_exception() | 
+    missing_required_parameter_exception().
+
+-type put_metric_alarm_errors() ::
+    limit_exceeded_fault().
+
+-type put_metric_data_errors() ::
+    internal_service_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception() | 
+    missing_required_parameter_exception().
+
+-type put_metric_stream_errors() ::
+    internal_service_fault() | 
+    concurrent_modification_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception() | 
+    missing_required_parameter_exception().
+
+-type set_alarm_state_errors() ::
+    invalid_format_fault() | 
+    resource_not_found().
+
+-type start_metric_streams_errors() ::
+    internal_service_fault() | 
+    invalid_parameter_value_exception() | 
+    missing_required_parameter_exception().
+
+-type stop_metric_streams_errors() ::
+    internal_service_fault() | 
+    invalid_parameter_value_exception() | 
+    missing_required_parameter_exception().
+
+-type tag_resource_errors() ::
+    internal_service_fault() | 
+    concurrent_modification_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    internal_service_fault() | 
+    concurrent_modification_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -1130,7 +1292,7 @@
 -spec delete_alarms(map(), delete_alarms_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_alarms_errors(), tuple()}.
 delete_alarms(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_alarms(Client, Input, []).
@@ -1138,7 +1300,7 @@ delete_alarms(Client, Input)
 -spec delete_alarms(map(), delete_alarms_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_alarms_errors(), tuple()}.
 delete_alarms(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAlarms">>, Input, Options).
@@ -1156,11 +1318,7 @@ delete_alarms(Client, Input, Options)
 -spec delete_anomaly_detector(map(), delete_anomaly_detector_input()) ->
     {ok, delete_anomaly_detector_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_anomaly_detector_errors(), tuple()}.
 delete_anomaly_detector(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_anomaly_detector(Client, Input, []).
@@ -1168,11 +1326,7 @@ delete_anomaly_detector(Client, Input)
 -spec delete_anomaly_detector(map(), delete_anomaly_detector_input(), proplists:proplist()) ->
     {ok, delete_anomaly_detector_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_anomaly_detector_errors(), tuple()}.
 delete_anomaly_detector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAnomalyDetector">>, Input, Options).
@@ -1186,9 +1340,7 @@ delete_anomaly_detector(Client, Input, Options)
 -spec delete_dashboards(map(), delete_dashboards_input()) ->
     {ok, delete_dashboards_output(), tuple()} |
     {error, any()} |
-    {error, dashboard_not_found_error(), tuple()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, delete_dashboards_errors(), tuple()}.
 delete_dashboards(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_dashboards(Client, Input, []).
@@ -1196,9 +1348,7 @@ delete_dashboards(Client, Input)
 -spec delete_dashboards(map(), delete_dashboards_input(), proplists:proplist()) ->
     {ok, delete_dashboards_output(), tuple()} |
     {error, any()} |
-    {error, dashboard_not_found_error(), tuple()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, delete_dashboards_errors(), tuple()}.
 delete_dashboards(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDashboards">>, Input, Options).
@@ -1212,8 +1362,7 @@ delete_dashboards(Client, Input, Options)
 -spec delete_insight_rules(map(), delete_insight_rules_input()) ->
     {ok, delete_insight_rules_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()}.
+    {error, delete_insight_rules_errors(), tuple()}.
 delete_insight_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_insight_rules(Client, Input, []).
@@ -1221,8 +1370,7 @@ delete_insight_rules(Client, Input)
 -spec delete_insight_rules(map(), delete_insight_rules_input(), proplists:proplist()) ->
     {ok, delete_insight_rules_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()}.
+    {error, delete_insight_rules_errors(), tuple()}.
 delete_insight_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInsightRules">>, Input, Options).
@@ -1231,9 +1379,7 @@ delete_insight_rules(Client, Input, Options)
 -spec delete_metric_stream(map(), delete_metric_stream_input()) ->
     {ok, delete_metric_stream_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()}.
+    {error, delete_metric_stream_errors(), tuple()}.
 delete_metric_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_metric_stream(Client, Input, []).
@@ -1241,9 +1387,7 @@ delete_metric_stream(Client, Input)
 -spec delete_metric_stream(map(), delete_metric_stream_input(), proplists:proplist()) ->
     {ok, delete_metric_stream_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()}.
+    {error, delete_metric_stream_errors(), tuple()}.
 delete_metric_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMetricStream">>, Input, Options).
@@ -1265,7 +1409,7 @@ delete_metric_stream(Client, Input, Options)
 -spec describe_alarm_history(map(), describe_alarm_history_input()) ->
     {ok, describe_alarm_history_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_alarm_history_errors(), tuple()}.
 describe_alarm_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_alarm_history(Client, Input, []).
@@ -1273,7 +1417,7 @@ describe_alarm_history(Client, Input)
 -spec describe_alarm_history(map(), describe_alarm_history_input(), proplists:proplist()) ->
     {ok, describe_alarm_history_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_alarm_history_errors(), tuple()}.
 describe_alarm_history(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAlarmHistory">>, Input, Options).
@@ -1292,7 +1436,7 @@ describe_alarm_history(Client, Input, Options)
 -spec describe_alarms(map(), describe_alarms_input()) ->
     {ok, describe_alarms_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_alarms_errors(), tuple()}.
 describe_alarms(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_alarms(Client, Input, []).
@@ -1300,7 +1444,7 @@ describe_alarms(Client, Input)
 -spec describe_alarms(map(), describe_alarms_input(), proplists:proplist()) ->
     {ok, describe_alarms_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_alarms_errors(), tuple()}.
 describe_alarms(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAlarms">>, Input, Options).
@@ -1343,10 +1487,7 @@ describe_alarms_for_metric(Client, Input, Options)
 -spec describe_anomaly_detectors(map(), describe_anomaly_detectors_input()) ->
     {ok, describe_anomaly_detectors_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, describe_anomaly_detectors_errors(), tuple()}.
 describe_anomaly_detectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_anomaly_detectors(Client, Input, []).
@@ -1354,10 +1495,7 @@ describe_anomaly_detectors(Client, Input)
 -spec describe_anomaly_detectors(map(), describe_anomaly_detectors_input(), proplists:proplist()) ->
     {ok, describe_anomaly_detectors_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, describe_anomaly_detectors_errors(), tuple()}.
 describe_anomaly_detectors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAnomalyDetectors">>, Input, Options).
@@ -1370,7 +1508,7 @@ describe_anomaly_detectors(Client, Input, Options)
 -spec describe_insight_rules(map(), describe_insight_rules_input()) ->
     {ok, describe_insight_rules_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_insight_rules_errors(), tuple()}.
 describe_insight_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_insight_rules(Client, Input, []).
@@ -1378,7 +1516,7 @@ describe_insight_rules(Client, Input)
 -spec describe_insight_rules(map(), describe_insight_rules_input(), proplists:proplist()) ->
     {ok, describe_insight_rules_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_insight_rules_errors(), tuple()}.
 describe_insight_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInsightRules">>, Input, Options).
@@ -1408,8 +1546,7 @@ disable_alarm_actions(Client, Input, Options)
 -spec disable_insight_rules(map(), disable_insight_rules_input()) ->
     {ok, disable_insight_rules_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()}.
+    {error, disable_insight_rules_errors(), tuple()}.
 disable_insight_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_insight_rules(Client, Input, []).
@@ -1417,8 +1554,7 @@ disable_insight_rules(Client, Input)
 -spec disable_insight_rules(map(), disable_insight_rules_input(), proplists:proplist()) ->
     {ok, disable_insight_rules_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()}.
+    {error, disable_insight_rules_errors(), tuple()}.
 disable_insight_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableInsightRules">>, Input, Options).
@@ -1444,9 +1580,7 @@ enable_alarm_actions(Client, Input, Options)
 -spec enable_insight_rules(map(), enable_insight_rules_input()) ->
     {ok, enable_insight_rules_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()}.
+    {error, enable_insight_rules_errors(), tuple()}.
 enable_insight_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_insight_rules(Client, Input, []).
@@ -1454,9 +1588,7 @@ enable_insight_rules(Client, Input)
 -spec enable_insight_rules(map(), enable_insight_rules_input(), proplists:proplist()) ->
     {ok, enable_insight_rules_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()}.
+    {error, enable_insight_rules_errors(), tuple()}.
 enable_insight_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableInsightRules">>, Input, Options).
@@ -1471,9 +1603,7 @@ enable_insight_rules(Client, Input, Options)
 -spec get_dashboard(map(), get_dashboard_input()) ->
     {ok, get_dashboard_output(), tuple()} |
     {error, any()} |
-    {error, dashboard_not_found_error(), tuple()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, get_dashboard_errors(), tuple()}.
 get_dashboard(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_dashboard(Client, Input, []).
@@ -1481,9 +1611,7 @@ get_dashboard(Client, Input)
 -spec get_dashboard(map(), get_dashboard_input(), proplists:proplist()) ->
     {ok, get_dashboard_output(), tuple()} |
     {error, any()} |
-    {error, dashboard_not_found_error(), tuple()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, get_dashboard_errors(), tuple()}.
 get_dashboard(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDashboard">>, Input, Options).
@@ -1527,9 +1655,7 @@ get_dashboard(Client, Input, Options)
 -spec get_insight_rule_report(map(), get_insight_rule_report_input()) ->
     {ok, get_insight_rule_report_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_insight_rule_report_errors(), tuple()}.
 get_insight_rule_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_insight_rule_report(Client, Input, []).
@@ -1537,9 +1663,7 @@ get_insight_rule_report(Client, Input)
 -spec get_insight_rule_report(map(), get_insight_rule_report_input(), proplists:proplist()) ->
     {ok, get_insight_rule_report_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_insight_rule_report_errors(), tuple()}.
 get_insight_rule_report(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInsightRuleReport">>, Input, Options).
@@ -1629,7 +1753,7 @@ get_insight_rule_report(Client, Input, Options)
 -spec get_metric_data(map(), get_metric_data_input()) ->
     {ok, get_metric_data_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, get_metric_data_errors(), tuple()}.
 get_metric_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_metric_data(Client, Input, []).
@@ -1637,7 +1761,7 @@ get_metric_data(Client, Input)
 -spec get_metric_data(map(), get_metric_data_input(), proplists:proplist()) ->
     {ok, get_metric_data_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, get_metric_data_errors(), tuple()}.
 get_metric_data(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMetricData">>, Input, Options).
@@ -1710,10 +1834,7 @@ get_metric_data(Client, Input, Options)
 -spec get_metric_statistics(map(), get_metric_statistics_input()) ->
     {ok, get_metric_statistics_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()}.
+    {error, get_metric_statistics_errors(), tuple()}.
 get_metric_statistics(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_metric_statistics(Client, Input, []).
@@ -1721,10 +1842,7 @@ get_metric_statistics(Client, Input)
 -spec get_metric_statistics(map(), get_metric_statistics_input(), proplists:proplist()) ->
     {ok, get_metric_statistics_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()}.
+    {error, get_metric_statistics_errors(), tuple()}.
 get_metric_statistics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMetricStatistics">>, Input, Options).
@@ -1733,11 +1851,7 @@ get_metric_statistics(Client, Input, Options)
 -spec get_metric_stream(map(), get_metric_stream_input()) ->
     {ok, get_metric_stream_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_metric_stream_errors(), tuple()}.
 get_metric_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_metric_stream(Client, Input, []).
@@ -1745,11 +1859,7 @@ get_metric_stream(Client, Input)
 -spec get_metric_stream(map(), get_metric_stream_input(), proplists:proplist()) ->
     {ok, get_metric_stream_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_metric_stream_errors(), tuple()}.
 get_metric_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMetricStream">>, Input, Options).
@@ -1804,8 +1914,7 @@ get_metric_widget_image(Client, Input, Options)
 -spec list_dashboards(map(), list_dashboards_input()) ->
     {ok, list_dashboards_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, list_dashboards_errors(), tuple()}.
 list_dashboards(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dashboards(Client, Input, []).
@@ -1813,8 +1922,7 @@ list_dashboards(Client, Input)
 -spec list_dashboards(map(), list_dashboards_input(), proplists:proplist()) ->
     {ok, list_dashboards_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, list_dashboards_errors(), tuple()}.
 list_dashboards(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDashboards">>, Input, Options).
@@ -1827,9 +1935,7 @@ list_dashboards(Client, Input, Options)
 -spec list_managed_insight_rules(map(), list_managed_insight_rules_input()) ->
     {ok, list_managed_insight_rules_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()}.
+    {error, list_managed_insight_rules_errors(), tuple()}.
 list_managed_insight_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_managed_insight_rules(Client, Input, []).
@@ -1837,9 +1943,7 @@ list_managed_insight_rules(Client, Input)
 -spec list_managed_insight_rules(map(), list_managed_insight_rules_input(), proplists:proplist()) ->
     {ok, list_managed_insight_rules_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()}.
+    {error, list_managed_insight_rules_errors(), tuple()}.
 list_managed_insight_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListManagedInsightRules">>, Input, Options).
@@ -1848,10 +1952,7 @@ list_managed_insight_rules(Client, Input, Options)
 -spec list_metric_streams(map(), list_metric_streams_input()) ->
     {ok, list_metric_streams_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()}.
+    {error, list_metric_streams_errors(), tuple()}.
 list_metric_streams(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_metric_streams(Client, Input, []).
@@ -1859,10 +1960,7 @@ list_metric_streams(Client, Input)
 -spec list_metric_streams(map(), list_metric_streams_input(), proplists:proplist()) ->
     {ok, list_metric_streams_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()}.
+    {error, list_metric_streams_errors(), tuple()}.
 list_metric_streams(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMetricStreams">>, Input, Options).
@@ -1903,8 +2001,7 @@ list_metric_streams(Client, Input, Options)
 -spec list_metrics(map(), list_metrics_input()) ->
     {ok, list_metrics_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, list_metrics_errors(), tuple()}.
 list_metrics(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_metrics(Client, Input, []).
@@ -1912,8 +2009,7 @@ list_metrics(Client, Input)
 -spec list_metrics(map(), list_metrics_input(), proplists:proplist()) ->
     {ok, list_metrics_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, list_metrics_errors(), tuple()}.
 list_metrics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMetrics">>, Input, Options).
@@ -1925,9 +2021,7 @@ list_metrics(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -1935,9 +2029,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_input(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -1952,11 +2044,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec put_anomaly_detector(map(), put_anomaly_detector_input()) ->
     {ok, put_anomaly_detector_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()}.
+    {error, put_anomaly_detector_errors(), tuple()}.
 put_anomaly_detector(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_anomaly_detector(Client, Input, []).
@@ -1964,11 +2052,7 @@ put_anomaly_detector(Client, Input)
 -spec put_anomaly_detector(map(), put_anomaly_detector_input(), proplists:proplist()) ->
     {ok, put_anomaly_detector_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()}.
+    {error, put_anomaly_detector_errors(), tuple()}.
 put_anomaly_detector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAnomalyDetector">>, Input, Options).
@@ -2043,7 +2127,7 @@ put_anomaly_detector(Client, Input, Options)
 -spec put_composite_alarm(map(), put_composite_alarm_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_fault(), tuple()}.
+    {error, put_composite_alarm_errors(), tuple()}.
 put_composite_alarm(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_composite_alarm(Client, Input, []).
@@ -2051,7 +2135,7 @@ put_composite_alarm(Client, Input)
 -spec put_composite_alarm(map(), put_composite_alarm_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_fault(), tuple()}.
+    {error, put_composite_alarm_errors(), tuple()}.
 put_composite_alarm(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutCompositeAlarm">>, Input, Options).
@@ -2085,8 +2169,7 @@ put_composite_alarm(Client, Input, Options)
 -spec put_dashboard(map(), put_dashboard_input()) ->
     {ok, put_dashboard_output(), tuple()} |
     {error, any()} |
-    {error, dashboard_invalid_input_error(), tuple()} |
-    {error, internal_service_fault(), tuple()}.
+    {error, put_dashboard_errors(), tuple()}.
 put_dashboard(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_dashboard(Client, Input, []).
@@ -2094,8 +2177,7 @@ put_dashboard(Client, Input)
 -spec put_dashboard(map(), put_dashboard_input(), proplists:proplist()) ->
     {ok, put_dashboard_output(), tuple()} |
     {error, any()} |
-    {error, dashboard_invalid_input_error(), tuple()} |
-    {error, internal_service_fault(), tuple()}.
+    {error, put_dashboard_errors(), tuple()}.
 put_dashboard(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutDashboard">>, Input, Options).
@@ -2114,9 +2196,7 @@ put_dashboard(Client, Input, Options)
 -spec put_insight_rule(map(), put_insight_rule_input()) ->
     {ok, put_insight_rule_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()}.
+    {error, put_insight_rule_errors(), tuple()}.
 put_insight_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_insight_rule(Client, Input, []).
@@ -2124,9 +2204,7 @@ put_insight_rule(Client, Input)
 -spec put_insight_rule(map(), put_insight_rule_input(), proplists:proplist()) ->
     {ok, put_insight_rule_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()}.
+    {error, put_insight_rule_errors(), tuple()}.
 put_insight_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutInsightRule">>, Input, Options).
@@ -2152,8 +2230,7 @@ put_insight_rule(Client, Input, Options)
 -spec put_managed_insight_rules(map(), put_managed_insight_rules_input()) ->
     {ok, put_managed_insight_rules_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()}.
+    {error, put_managed_insight_rules_errors(), tuple()}.
 put_managed_insight_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_managed_insight_rules(Client, Input, []).
@@ -2161,8 +2238,7 @@ put_managed_insight_rules(Client, Input)
 -spec put_managed_insight_rules(map(), put_managed_insight_rules_input(), proplists:proplist()) ->
     {ok, put_managed_insight_rules_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()}.
+    {error, put_managed_insight_rules_errors(), tuple()}.
 put_managed_insight_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutManagedInsightRules">>, Input, Options).
@@ -2238,7 +2314,7 @@ put_managed_insight_rules(Client, Input, Options)
 -spec put_metric_alarm(map(), put_metric_alarm_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_fault(), tuple()}.
+    {error, put_metric_alarm_errors(), tuple()}.
 put_metric_alarm(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_metric_alarm(Client, Input, []).
@@ -2246,7 +2322,7 @@ put_metric_alarm(Client, Input)
 -spec put_metric_alarm(map(), put_metric_alarm_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_fault(), tuple()}.
+    {error, put_metric_alarm_errors(), tuple()}.
 put_metric_alarm(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutMetricAlarm">>, Input, Options).
@@ -2327,10 +2403,7 @@ put_metric_alarm(Client, Input, Options)
 -spec put_metric_data(map(), put_metric_data_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()}.
+    {error, put_metric_data_errors(), tuple()}.
 put_metric_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_metric_data(Client, Input, []).
@@ -2338,10 +2411,7 @@ put_metric_data(Client, Input)
 -spec put_metric_data(map(), put_metric_data_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()}.
+    {error, put_metric_data_errors(), tuple()}.
 put_metric_data(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutMetricData">>, Input, Options).
@@ -2398,11 +2468,7 @@ put_metric_data(Client, Input, Options)
 -spec put_metric_stream(map(), put_metric_stream_input()) ->
     {ok, put_metric_stream_output(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()}.
+    {error, put_metric_stream_errors(), tuple()}.
 put_metric_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_metric_stream(Client, Input, []).
@@ -2410,11 +2476,7 @@ put_metric_stream(Client, Input)
 -spec put_metric_stream(map(), put_metric_stream_input(), proplists:proplist()) ->
     {ok, put_metric_stream_output(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()}.
+    {error, put_metric_stream_errors(), tuple()}.
 put_metric_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutMetricStream">>, Input, Options).
@@ -2452,8 +2514,7 @@ put_metric_stream(Client, Input, Options)
 -spec set_alarm_state(map(), set_alarm_state_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_format_fault(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, set_alarm_state_errors(), tuple()}.
 set_alarm_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_alarm_state(Client, Input, []).
@@ -2461,8 +2522,7 @@ set_alarm_state(Client, Input)
 -spec set_alarm_state(map(), set_alarm_state_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_format_fault(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, set_alarm_state_errors(), tuple()}.
 set_alarm_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetAlarmState">>, Input, Options).
@@ -2472,9 +2532,7 @@ set_alarm_state(Client, Input, Options)
 -spec start_metric_streams(map(), start_metric_streams_input()) ->
     {ok, start_metric_streams_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()}.
+    {error, start_metric_streams_errors(), tuple()}.
 start_metric_streams(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_metric_streams(Client, Input, []).
@@ -2482,9 +2540,7 @@ start_metric_streams(Client, Input)
 -spec start_metric_streams(map(), start_metric_streams_input(), proplists:proplist()) ->
     {ok, start_metric_streams_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()}.
+    {error, start_metric_streams_errors(), tuple()}.
 start_metric_streams(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMetricStreams">>, Input, Options).
@@ -2494,9 +2550,7 @@ start_metric_streams(Client, Input, Options)
 -spec stop_metric_streams(map(), stop_metric_streams_input()) ->
     {ok, stop_metric_streams_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()}.
+    {error, stop_metric_streams_errors(), tuple()}.
 stop_metric_streams(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_metric_streams(Client, Input, []).
@@ -2504,9 +2558,7 @@ stop_metric_streams(Client, Input)
 -spec stop_metric_streams(map(), stop_metric_streams_input(), proplists:proplist()) ->
     {ok, stop_metric_streams_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()}.
+    {error, stop_metric_streams_errors(), tuple()}.
 stop_metric_streams(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopMetricStreams">>, Input, Options).
@@ -2536,10 +2588,7 @@ stop_metric_streams(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -2547,10 +2596,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -2559,10 +2605,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -2570,10 +2613,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).

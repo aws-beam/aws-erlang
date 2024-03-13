@@ -101,6 +101,7 @@
 %% no_api_render_config() :: #{}
 -type no_api_render_config() :: #{}.
 
+
 %% Example:
 %% theme() :: #{
 %%   <<"appId">> => [string()],
@@ -115,17 +116,20 @@
 %% }
 -type theme() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% codegen_generic_data_non_model() :: #{
 %%   <<"fields">> => map()
 %% }
 -type codegen_generic_data_non_model() :: #{binary() => any()}.
+
 
 %% Example:
 %% codegen_generic_data_field() :: #{
@@ -138,6 +142,7 @@
 %% }
 -type codegen_generic_data_field() :: #{binary() => any()}.
 
+
 %% Example:
 %% exchange_code_for_token_response() :: #{
 %%   <<"accessToken">> := string(),
@@ -145,9 +150,11 @@
 %%   <<"refreshToken">> := string()
 %% }
 -type exchange_code_for_token_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_theme_request() :: #{}
 -type get_theme_request() :: #{}.
+
 
 %% Example:
 %% form() :: #{
@@ -166,9 +173,11 @@
 %%   <<"tags">> => map()
 %% }
 -type form() :: #{binary() => any()}.
+
 %% Example:
 %% data_store_render_config() :: #{}
 -type data_store_render_config() :: #{}.
+
 
 %% Example:
 %% unauthorized_exception() :: #{
@@ -176,12 +185,14 @@
 %% }
 -type unauthorized_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% form_data_type_config() :: #{
 %%   <<"dataSourceType">> => string(),
 %%   <<"dataTypeName">> => [string()]
 %% }
 -type form_data_type_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% codegen_job() :: #{
@@ -201,9 +212,11 @@
 %%   <<"tags">> => map()
 %% }
 -type codegen_job() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% form_c_t_a() :: #{
@@ -213,6 +226,7 @@
 %%   <<"submit">> => form_button()
 %% }
 -type form_c_t_a() :: #{binary() => any()}.
+
 
 %% Example:
 %% file_uploader_field_config() :: #{
@@ -225,6 +239,7 @@
 %% }
 -type file_uploader_field_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% codegen_job_summary() :: #{
 %%   <<"appId">> => string(),
@@ -234,6 +249,7 @@
 %%   <<"modifiedAt">> => [non_neg_integer()]
 %% }
 -type codegen_job_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_form_data() :: #{
@@ -249,6 +265,7 @@
 %% }
 -type update_form_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% component_binding_properties_value_properties() :: #{
 %%   <<"bucket">> => [string()],
@@ -262,6 +279,7 @@
 %% }
 -type component_binding_properties_value_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% component_variant() :: #{
 %%   <<"overrides">> => map(),
@@ -269,11 +287,13 @@
 %% }
 -type component_variant() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_form_response() :: #{
 %%   <<"entity">> => form()
 %% }
 -type update_form_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_theme_data() :: #{
@@ -284,18 +304,22 @@
 %% }
 -type create_theme_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% sort_property() :: #{
 %%   <<"direction">> => list(any()),
 %%   <<"field">> => [string()]
 %% }
 -type sort_property() :: #{binary() => any()}.
+
 %% Example:
 %% delete_component_request() :: #{}
 -type delete_component_request() :: #{}.
+
 %% Example:
 %% delete_form_request() :: #{}
 -type delete_form_request() :: #{}.
+
 
 %% Example:
 %% start_codegen_job_data() :: #{
@@ -307,11 +331,13 @@
 %% }
 -type start_codegen_job_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_component_response() :: #{
 %%   <<"component">> => component()
 %% }
 -type get_component_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_metadata_flag_body() :: #{
@@ -319,17 +345,20 @@
 %% }
 -type put_metadata_flag_body() :: #{binary() => any()}.
 
+
 %% Example:
 %% codegen_generic_data_enum() :: #{
 %%   <<"values">> => list([string()]())
 %% }
 -type codegen_generic_data_enum() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% form_binding_element() :: #{
@@ -338,6 +367,7 @@
 %% }
 -type form_binding_element() :: #{binary() => any()}.
 
+
 %% Example:
 %% refresh_token_response() :: #{
 %%   <<"accessToken">> := string(),
@@ -345,26 +375,31 @@
 %% }
 -type refresh_token_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_theme_response() :: #{
 %%   <<"theme">> => theme()
 %% }
 -type get_theme_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_codegen_job_response() :: #{
 %%   <<"entity">> => codegen_job()
 %% }
 -type start_codegen_job_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_theme_request() :: #{}
 -type delete_theme_request() :: #{}.
+
 
 %% Example:
 %% update_component_response() :: #{
 %%   <<"entity">> => component()
 %% }
 -type update_component_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% component_summary() :: #{
@@ -376,11 +411,13 @@
 %% }
 -type component_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% form_input_binding_properties_value_properties() :: #{
 %%   <<"model">> => [string()]
 %% }
 -type form_input_binding_properties_value_properties() :: #{binary() => any()}.
+
 
 %% Example:
 %% component_property_binding_properties() :: #{
@@ -389,11 +426,13 @@
 %% }
 -type component_property_binding_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_metadata_flag_request() :: #{
 %%   <<"body">> := put_metadata_flag_body()
 %% }
 -type put_metadata_flag_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% refresh_token_request_body() :: #{
@@ -402,11 +441,13 @@
 %% }
 -type refresh_token_request_body() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_metadata_response() :: #{
 %%   <<"features">> := map()
 %% }
 -type get_metadata_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_codegen_jobs_response() :: #{
@@ -415,14 +456,17 @@
 %% }
 -type list_codegen_jobs_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_theme_response() :: #{
 %%   <<"entity">> => theme()
 %% }
 -type create_theme_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_form_request() :: #{}
 -type get_form_request() :: #{}.
+
 
 %% Example:
 %% codegen_feature_flags() :: #{
@@ -431,11 +475,13 @@
 %% }
 -type codegen_feature_flags() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_component_response() :: #{
 %%   <<"entity">> => component()
 %% }
 -type create_component_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_component_data() :: #{
@@ -454,12 +500,14 @@
 %% }
 -type create_component_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_codegen_jobs_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_codegen_jobs_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_component_request() :: #{
@@ -468,12 +516,14 @@
 %% }
 -type update_component_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% export_forms_response() :: #{
 %%   <<"entities">> := list(form()()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type export_forms_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_themes_request() :: #{
@@ -482,11 +532,13 @@
 %% }
 -type list_themes_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_components_request() :: #{
@@ -494,9 +546,11 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_components_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_metadata_request() :: #{}
 -type get_metadata_request() :: #{}.
+
 
 %% Example:
 %% field_config() :: #{
@@ -508,17 +562,20 @@
 %% }
 -type field_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_form_response() :: #{
 %%   <<"form">> => form()
 %% }
 -type get_form_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% component_child() :: #{
@@ -530,6 +587,7 @@
 %%   <<"sourceId">> => [string()]
 %% }
 -type component_child() :: #{binary() => any()}.
+
 
 %% Example:
 %% component() :: #{
@@ -553,11 +611,13 @@
 %% }
 -type component() :: #{binary() => any()}.
 
+
 %% Example:
 %% refresh_token_request() :: #{
 %%   <<"refreshTokenBody">> := refresh_token_request_body()
 %% }
 -type refresh_token_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_forms_response() :: #{
@@ -566,12 +626,14 @@
 %% }
 -type list_forms_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% value_mapping() :: #{
 %%   <<"displayValue">> => form_input_value_property(),
 %%   <<"value">> => form_input_value_property()
 %% }
 -type value_mapping() :: #{binary() => any()}.
+
 
 %% Example:
 %% react_start_codegen_job_data() :: #{
@@ -585,12 +647,14 @@
 %% }
 -type react_start_codegen_job_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% export_components_response() :: #{
 %%   <<"entities">> := list(component()()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type export_components_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_theme_request() :: #{
@@ -599,6 +663,7 @@
 %% }
 -type update_theme_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_theme_request() :: #{
 %%   <<"clientToken">> => [string()],
@@ -606,17 +671,20 @@
 %% }
 -type create_theme_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% export_themes_request() :: #{
 %%   <<"nextToken">> => [string()]
 %% }
 -type export_themes_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% exchange_code_for_token_request() :: #{
 %%   <<"request">> := exchange_code_for_token_request_body()
 %% }
 -type exchange_code_for_token_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_codegen_job_request() :: #{
@@ -625,6 +693,7 @@
 %% }
 -type start_codegen_job_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_form_request() :: #{
 %%   <<"clientToken">> => [string()],
@@ -632,11 +701,13 @@
 %% }
 -type create_form_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_codegen_job_response() :: #{
 %%   <<"job">> => codegen_job()
 %% }
 -type get_codegen_job_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_component_request() :: #{
@@ -644,6 +715,7 @@
 %%   <<"componentToCreate">> := create_component_data()
 %% }
 -type create_component_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% sectional_element() :: #{
@@ -656,6 +728,7 @@
 %% }
 -type sectional_element() :: #{binary() => any()}.
 
+
 %% Example:
 %% exchange_code_for_token_request_body() :: #{
 %%   <<"clientId">> => string(),
@@ -663,6 +736,7 @@
 %%   <<"redirectUri">> => [string()]
 %% }
 -type exchange_code_for_token_request_body() :: #{binary() => any()}.
+
 
 %% Example:
 %% mutation_action_set_state_parameter() :: #{
@@ -672,17 +746,20 @@
 %% }
 -type mutation_action_set_state_parameter() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% codegen_job_asset() :: #{
 %%   <<"downloadUrl">> => [string()]
 %% }
 -type codegen_job_asset() :: #{binary() => any()}.
+
 
 %% Example:
 %% field_input_config() :: #{
@@ -704,9 +781,11 @@
 %%   <<"valueMappings">> => value_mappings()
 %% }
 -type field_input_config() :: #{binary() => any()}.
+
 %% Example:
 %% get_codegen_job_request() :: #{}
 -type get_codegen_job_request() :: #{}.
+
 
 %% Example:
 %% create_form_data() :: #{
@@ -723,12 +802,14 @@
 %% }
 -type create_form_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% theme_value() :: #{
 %%   <<"children">> => list(theme_values()()),
 %%   <<"value">> => [string()]
 %% }
 -type theme_value() :: #{binary() => any()}.
+
 
 %% Example:
 %% form_style() :: #{
@@ -738,11 +819,13 @@
 %% }
 -type form_style() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_form_response() :: #{
 %%   <<"entity">> => form()
 %% }
 -type create_form_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% form_input_value_property() :: #{
@@ -752,6 +835,7 @@
 %% }
 -type form_input_value_property() :: #{binary() => any()}.
 
+
 %% Example:
 %% component_event() :: #{
 %%   <<"action">> => [string()],
@@ -760,12 +844,14 @@
 %% }
 -type component_event() :: #{binary() => any()}.
 
+
 %% Example:
 %% form_input_value_property_binding_properties() :: #{
 %%   <<"field">> => [string()],
 %%   <<"property">> => [string()]
 %% }
 -type form_input_value_property_binding_properties() :: #{binary() => any()}.
+
 
 %% Example:
 %% form_button() :: #{
@@ -775,11 +861,13 @@
 %% }
 -type form_button() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% graph_q_l_render_config() :: #{
@@ -791,6 +879,7 @@
 %% }
 -type graph_q_l_render_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_forms_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -798,11 +887,13 @@
 %% }
 -type list_forms_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_theme_response() :: #{
 %%   <<"entity">> => theme()
 %% }
 -type update_theme_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% theme_values() :: #{
@@ -810,6 +901,7 @@
 %%   <<"value">> => theme_value()
 %% }
 -type theme_values() :: #{binary() => any()}.
+
 
 %% Example:
 %% component_property() :: #{
@@ -831,11 +923,13 @@
 %% }
 -type component_property() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_parameter_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type invalid_parameter_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% codegen_job_generic_data_schema() :: #{
@@ -845,6 +939,7 @@
 %%   <<"nonModels">> => map()
 %% }
 -type codegen_job_generic_data_schema() :: #{binary() => any()}.
+
 
 %% Example:
 %% action_parameters() :: #{
@@ -859,9 +954,11 @@
 %%   <<"url">> => component_property()
 %% }
 -type action_parameters() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% form_summary() :: #{
@@ -874,6 +971,7 @@
 %% }
 -type form_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% theme_summary() :: #{
 %%   <<"appId">> => [string()],
@@ -882,6 +980,7 @@
 %%   <<"name">> => string()
 %% }
 -type theme_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_theme_data() :: #{
@@ -892,6 +991,7 @@
 %% }
 -type update_theme_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_form_request() :: #{
 %%   <<"clientToken">> => [string()],
@@ -899,14 +999,17 @@
 %% }
 -type update_form_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% export_components_request() :: #{
 %%   <<"nextToken">> => [string()]
 %% }
 -type export_components_request() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% component_data_configuration() :: #{
@@ -917,11 +1020,13 @@
 %% }
 -type component_data_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% predicate() :: #{
@@ -934,11 +1039,13 @@
 %% }
 -type predicate() :: #{binary() => any()}.
 
+
 %% Example:
 %% export_forms_request() :: #{
 %%   <<"nextToken">> => [string()]
 %% }
 -type export_forms_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% codegen_dependency() :: #{
@@ -949,12 +1056,14 @@
 %% }
 -type codegen_dependency() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_components_response() :: #{
 %%   <<"entities">> := list(component_summary()()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_components_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% codegen_generic_data_relationship_type() :: #{
@@ -970,6 +1079,7 @@
 %% }
 -type codegen_generic_data_relationship_type() :: #{binary() => any()}.
 
+
 %% Example:
 %% codegen_generic_data_model() :: #{
 %%   <<"fields">> => map(),
@@ -977,6 +1087,7 @@
 %%   <<"primaryKeys">> => list([string()]())
 %% }
 -type codegen_generic_data_model() :: #{binary() => any()}.
+
 
 %% Example:
 %% field_validation_configuration() :: #{
@@ -987,12 +1098,14 @@
 %% }
 -type field_validation_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% value_mappings() :: #{
 %%   <<"bindingProperties">> => map(),
 %%   <<"values">> => list(value_mapping()())
 %% }
 -type value_mappings() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_themes_response() :: #{
@@ -1001,6 +1114,7 @@
 %% }
 -type list_themes_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% form_input_binding_properties_value() :: #{
 %%   <<"bindingProperties">> => form_input_binding_properties_value_properties(),
@@ -1008,12 +1122,14 @@
 %% }
 -type form_input_binding_properties_value() :: #{binary() => any()}.
 
+
 %% Example:
 %% export_themes_response() :: #{
 %%   <<"entities">> := list(theme()()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type export_themes_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% component_binding_properties_value() :: #{
@@ -1023,14 +1139,17 @@
 %% }
 -type component_binding_properties_value() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_conflict_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type resource_conflict_exception() :: #{binary() => any()}.
+
 %% Example:
 %% get_component_request() :: #{}
 -type get_component_request() :: #{}.
+
 
 %% Example:
 %% update_component_data() :: #{
@@ -1049,6 +1168,7 @@
 %% }
 -type update_component_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% component_condition_property() :: #{
 %%   <<"else">> => component_property(),
@@ -1061,6 +1181,144 @@
 %% }
 -type component_condition_property() :: #{binary() => any()}.
 
+-type create_component_errors() ::
+    resource_conflict_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type create_form_errors() ::
+    resource_conflict_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type create_theme_errors() ::
+    resource_conflict_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type delete_component_errors() ::
+    invalid_parameter_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_form_errors() ::
+    invalid_parameter_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_theme_errors() ::
+    invalid_parameter_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type exchange_code_for_token_errors() ::
+    invalid_parameter_exception().
+
+-type export_components_errors() ::
+    invalid_parameter_exception() | 
+    internal_server_exception().
+
+-type export_forms_errors() ::
+    invalid_parameter_exception() | 
+    internal_server_exception().
+
+-type export_themes_errors() ::
+    invalid_parameter_exception() | 
+    internal_server_exception().
+
+-type get_codegen_job_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_component_errors() ::
+    invalid_parameter_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_form_errors() ::
+    invalid_parameter_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_metadata_errors() ::
+    invalid_parameter_exception() | 
+    unauthorized_exception().
+
+-type get_theme_errors() ::
+    invalid_parameter_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_codegen_jobs_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_exception().
+
+-type list_components_errors() ::
+    invalid_parameter_exception() | 
+    internal_server_exception().
+
+-type list_forms_errors() ::
+    invalid_parameter_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception().
+
+-type list_themes_errors() ::
+    invalid_parameter_exception() | 
+    internal_server_exception().
+
+-type put_metadata_flag_errors() ::
+    invalid_parameter_exception() | 
+    unauthorized_exception().
+
+-type refresh_token_errors() ::
+    invalid_parameter_exception().
+
+-type start_codegen_job_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception().
+
+-type update_component_errors() ::
+    resource_conflict_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_exception().
+
+-type update_form_errors() ::
+    resource_conflict_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_exception().
+
+-type update_theme_errors() ::
+    resource_conflict_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -1069,20 +1327,14 @@
 -spec create_component(map(), binary() | list(), binary() | list(), create_component_request()) ->
     {ok, create_component_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_component_errors(), tuple()}.
 create_component(Client, AppId, EnvironmentName, Input) ->
     create_component(Client, AppId, EnvironmentName, Input, []).
 
 -spec create_component(map(), binary() | list(), binary() | list(), create_component_request(), proplists:proplist()) ->
     {ok, create_component_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_component_errors(), tuple()}.
 create_component(Client, AppId, EnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/components"],
@@ -1110,20 +1362,14 @@ create_component(Client, AppId, EnvironmentName, Input0, Options0) ->
 -spec create_form(map(), binary() | list(), binary() | list(), create_form_request()) ->
     {ok, create_form_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_form_errors(), tuple()}.
 create_form(Client, AppId, EnvironmentName, Input) ->
     create_form(Client, AppId, EnvironmentName, Input, []).
 
 -spec create_form(map(), binary() | list(), binary() | list(), create_form_request(), proplists:proplist()) ->
     {ok, create_form_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_form_errors(), tuple()}.
 create_form(Client, AppId, EnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/forms"],
@@ -1151,20 +1397,14 @@ create_form(Client, AppId, EnvironmentName, Input0, Options0) ->
 -spec create_theme(map(), binary() | list(), binary() | list(), create_theme_request()) ->
     {ok, create_theme_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_theme_errors(), tuple()}.
 create_theme(Client, AppId, EnvironmentName, Input) ->
     create_theme(Client, AppId, EnvironmentName, Input, []).
 
 -spec create_theme(map(), binary() | list(), binary() | list(), create_theme_request(), proplists:proplist()) ->
     {ok, create_theme_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_theme_errors(), tuple()}.
 create_theme(Client, AppId, EnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/themes"],
@@ -1192,18 +1432,14 @@ create_theme(Client, AppId, EnvironmentName, Input0, Options0) ->
 -spec delete_component(map(), binary() | list(), binary() | list(), binary() | list(), delete_component_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_component_errors(), tuple()}.
 delete_component(Client, AppId, EnvironmentName, Id, Input) ->
     delete_component(Client, AppId, EnvironmentName, Id, Input, []).
 
 -spec delete_component(map(), binary() | list(), binary() | list(), binary() | list(), delete_component_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_component_errors(), tuple()}.
 delete_component(Client, AppId, EnvironmentName, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/components/", aws_util:encode_uri(Id), ""],
@@ -1230,18 +1466,14 @@ delete_component(Client, AppId, EnvironmentName, Id, Input0, Options0) ->
 -spec delete_form(map(), binary() | list(), binary() | list(), binary() | list(), delete_form_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_form_errors(), tuple()}.
 delete_form(Client, AppId, EnvironmentName, Id, Input) ->
     delete_form(Client, AppId, EnvironmentName, Id, Input, []).
 
 -spec delete_form(map(), binary() | list(), binary() | list(), binary() | list(), delete_form_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_form_errors(), tuple()}.
 delete_form(Client, AppId, EnvironmentName, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/forms/", aws_util:encode_uri(Id), ""],
@@ -1268,18 +1500,14 @@ delete_form(Client, AppId, EnvironmentName, Id, Input0, Options0) ->
 -spec delete_theme(map(), binary() | list(), binary() | list(), binary() | list(), delete_theme_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_theme_errors(), tuple()}.
 delete_theme(Client, AppId, EnvironmentName, Id, Input) ->
     delete_theme(Client, AppId, EnvironmentName, Id, Input, []).
 
 -spec delete_theme(map(), binary() | list(), binary() | list(), binary() | list(), delete_theme_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_theme_errors(), tuple()}.
 delete_theme(Client, AppId, EnvironmentName, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/themes/", aws_util:encode_uri(Id), ""],
@@ -1309,14 +1537,14 @@ delete_theme(Client, AppId, EnvironmentName, Id, Input0, Options0) ->
 -spec exchange_code_for_token(map(), binary() | list(), exchange_code_for_token_request()) ->
     {ok, exchange_code_for_token_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, exchange_code_for_token_errors(), tuple()}.
 exchange_code_for_token(Client, Provider, Input) ->
     exchange_code_for_token(Client, Provider, Input, []).
 
 -spec exchange_code_for_token(map(), binary() | list(), exchange_code_for_token_request(), proplists:proplist()) ->
     {ok, exchange_code_for_token_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, exchange_code_for_token_errors(), tuple()}.
 exchange_code_for_token(Client, Provider, Input0, Options0) ->
     Method = post,
     Path = ["/tokens/", aws_util:encode_uri(Provider), ""],
@@ -1344,8 +1572,7 @@ exchange_code_for_token(Client, Provider, Input0, Options0) ->
 -spec export_components(map(), binary() | list(), binary() | list()) ->
     {ok, export_components_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, export_components_errors(), tuple()}.
 export_components(Client, AppId, EnvironmentName)
   when is_map(Client) ->
     export_components(Client, AppId, EnvironmentName, #{}, #{}).
@@ -1353,8 +1580,7 @@ export_components(Client, AppId, EnvironmentName)
 -spec export_components(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, export_components_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, export_components_errors(), tuple()}.
 export_components(Client, AppId, EnvironmentName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     export_components(Client, AppId, EnvironmentName, QueryMap, HeadersMap, []).
@@ -1362,8 +1588,7 @@ export_components(Client, AppId, EnvironmentName, QueryMap, HeadersMap)
 -spec export_components(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, export_components_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, export_components_errors(), tuple()}.
 export_components(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/export/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/components"],
@@ -1389,8 +1614,7 @@ export_components(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0
 -spec export_forms(map(), binary() | list(), binary() | list()) ->
     {ok, export_forms_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, export_forms_errors(), tuple()}.
 export_forms(Client, AppId, EnvironmentName)
   when is_map(Client) ->
     export_forms(Client, AppId, EnvironmentName, #{}, #{}).
@@ -1398,8 +1622,7 @@ export_forms(Client, AppId, EnvironmentName)
 -spec export_forms(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, export_forms_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, export_forms_errors(), tuple()}.
 export_forms(Client, AppId, EnvironmentName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     export_forms(Client, AppId, EnvironmentName, QueryMap, HeadersMap, []).
@@ -1407,8 +1630,7 @@ export_forms(Client, AppId, EnvironmentName, QueryMap, HeadersMap)
 -spec export_forms(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, export_forms_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, export_forms_errors(), tuple()}.
 export_forms(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/export/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/forms"],
@@ -1434,8 +1656,7 @@ export_forms(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
 -spec export_themes(map(), binary() | list(), binary() | list()) ->
     {ok, export_themes_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, export_themes_errors(), tuple()}.
 export_themes(Client, AppId, EnvironmentName)
   when is_map(Client) ->
     export_themes(Client, AppId, EnvironmentName, #{}, #{}).
@@ -1443,8 +1664,7 @@ export_themes(Client, AppId, EnvironmentName)
 -spec export_themes(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, export_themes_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, export_themes_errors(), tuple()}.
 export_themes(Client, AppId, EnvironmentName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     export_themes(Client, AppId, EnvironmentName, QueryMap, HeadersMap, []).
@@ -1452,8 +1672,7 @@ export_themes(Client, AppId, EnvironmentName, QueryMap, HeadersMap)
 -spec export_themes(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, export_themes_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, export_themes_errors(), tuple()}.
 export_themes(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/export/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/themes"],
@@ -1478,10 +1697,7 @@ export_themes(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
 -spec get_codegen_job(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_codegen_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_codegen_job_errors(), tuple()}.
 get_codegen_job(Client, AppId, EnvironmentName, Id)
   when is_map(Client) ->
     get_codegen_job(Client, AppId, EnvironmentName, Id, #{}, #{}).
@@ -1489,10 +1705,7 @@ get_codegen_job(Client, AppId, EnvironmentName, Id)
 -spec get_codegen_job(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_codegen_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_codegen_job_errors(), tuple()}.
 get_codegen_job(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_codegen_job(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap, []).
@@ -1500,10 +1713,7 @@ get_codegen_job(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap)
 -spec get_codegen_job(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_codegen_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_codegen_job_errors(), tuple()}.
 get_codegen_job(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/codegen-jobs/", aws_util:encode_uri(Id), ""],
@@ -1524,9 +1734,7 @@ get_codegen_job(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap, Option
 -spec get_component(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_component_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_component_errors(), tuple()}.
 get_component(Client, AppId, EnvironmentName, Id)
   when is_map(Client) ->
     get_component(Client, AppId, EnvironmentName, Id, #{}, #{}).
@@ -1534,9 +1742,7 @@ get_component(Client, AppId, EnvironmentName, Id)
 -spec get_component(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_component_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_component_errors(), tuple()}.
 get_component(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_component(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap, []).
@@ -1544,9 +1750,7 @@ get_component(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap)
 -spec get_component(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_component_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_component_errors(), tuple()}.
 get_component(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/components/", aws_util:encode_uri(Id), ""],
@@ -1567,9 +1771,7 @@ get_component(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap, Options0
 -spec get_form(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_form_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_form_errors(), tuple()}.
 get_form(Client, AppId, EnvironmentName, Id)
   when is_map(Client) ->
     get_form(Client, AppId, EnvironmentName, Id, #{}, #{}).
@@ -1577,9 +1779,7 @@ get_form(Client, AppId, EnvironmentName, Id)
 -spec get_form(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_form_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_form_errors(), tuple()}.
 get_form(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_form(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap, []).
@@ -1587,9 +1787,7 @@ get_form(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap)
 -spec get_form(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_form_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_form_errors(), tuple()}.
 get_form(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/forms/", aws_util:encode_uri(Id), ""],
@@ -1610,8 +1808,7 @@ get_form(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap, Options0)
 -spec get_metadata(map(), binary() | list(), binary() | list()) ->
     {ok, get_metadata_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_metadata_errors(), tuple()}.
 get_metadata(Client, AppId, EnvironmentName)
   when is_map(Client) ->
     get_metadata(Client, AppId, EnvironmentName, #{}, #{}).
@@ -1619,8 +1816,7 @@ get_metadata(Client, AppId, EnvironmentName)
 -spec get_metadata(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_metadata_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_metadata_errors(), tuple()}.
 get_metadata(Client, AppId, EnvironmentName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_metadata(Client, AppId, EnvironmentName, QueryMap, HeadersMap, []).
@@ -1628,8 +1824,7 @@ get_metadata(Client, AppId, EnvironmentName, QueryMap, HeadersMap)
 -spec get_metadata(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_metadata_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_metadata_errors(), tuple()}.
 get_metadata(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/metadata"],
@@ -1650,9 +1845,7 @@ get_metadata(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
 -spec get_theme(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_theme_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_theme_errors(), tuple()}.
 get_theme(Client, AppId, EnvironmentName, Id)
   when is_map(Client) ->
     get_theme(Client, AppId, EnvironmentName, Id, #{}, #{}).
@@ -1660,9 +1853,7 @@ get_theme(Client, AppId, EnvironmentName, Id)
 -spec get_theme(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_theme_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_theme_errors(), tuple()}.
 get_theme(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_theme(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap, []).
@@ -1670,9 +1861,7 @@ get_theme(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap)
 -spec get_theme(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_theme_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_theme_errors(), tuple()}.
 get_theme(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/themes/", aws_util:encode_uri(Id), ""],
@@ -1694,9 +1883,7 @@ get_theme(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap, Options0)
 -spec list_codegen_jobs(map(), binary() | list(), binary() | list()) ->
     {ok, list_codegen_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_codegen_jobs_errors(), tuple()}.
 list_codegen_jobs(Client, AppId, EnvironmentName)
   when is_map(Client) ->
     list_codegen_jobs(Client, AppId, EnvironmentName, #{}, #{}).
@@ -1704,9 +1891,7 @@ list_codegen_jobs(Client, AppId, EnvironmentName)
 -spec list_codegen_jobs(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_codegen_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_codegen_jobs_errors(), tuple()}.
 list_codegen_jobs(Client, AppId, EnvironmentName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_codegen_jobs(Client, AppId, EnvironmentName, QueryMap, HeadersMap, []).
@@ -1714,9 +1899,7 @@ list_codegen_jobs(Client, AppId, EnvironmentName, QueryMap, HeadersMap)
 -spec list_codegen_jobs(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_codegen_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_codegen_jobs_errors(), tuple()}.
 list_codegen_jobs(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/codegen-jobs"],
@@ -1744,8 +1927,7 @@ list_codegen_jobs(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0
 -spec list_components(map(), binary() | list(), binary() | list()) ->
     {ok, list_components_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, list_components_errors(), tuple()}.
 list_components(Client, AppId, EnvironmentName)
   when is_map(Client) ->
     list_components(Client, AppId, EnvironmentName, #{}, #{}).
@@ -1753,8 +1935,7 @@ list_components(Client, AppId, EnvironmentName)
 -spec list_components(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_components_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, list_components_errors(), tuple()}.
 list_components(Client, AppId, EnvironmentName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_components(Client, AppId, EnvironmentName, QueryMap, HeadersMap, []).
@@ -1762,8 +1943,7 @@ list_components(Client, AppId, EnvironmentName, QueryMap, HeadersMap)
 -spec list_components(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_components_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, list_components_errors(), tuple()}.
 list_components(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/components"],
@@ -1790,8 +1970,7 @@ list_components(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
 -spec list_forms(map(), binary() | list(), binary() | list()) ->
     {ok, list_forms_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, list_forms_errors(), tuple()}.
 list_forms(Client, AppId, EnvironmentName)
   when is_map(Client) ->
     list_forms(Client, AppId, EnvironmentName, #{}, #{}).
@@ -1799,8 +1978,7 @@ list_forms(Client, AppId, EnvironmentName)
 -spec list_forms(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_forms_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, list_forms_errors(), tuple()}.
 list_forms(Client, AppId, EnvironmentName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_forms(Client, AppId, EnvironmentName, QueryMap, HeadersMap, []).
@@ -1808,8 +1986,7 @@ list_forms(Client, AppId, EnvironmentName, QueryMap, HeadersMap)
 -spec list_forms(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_forms_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, list_forms_errors(), tuple()}.
 list_forms(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/forms"],
@@ -1835,11 +2012,7 @@ list_forms(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1847,11 +2020,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1859,11 +2028,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1885,8 +2050,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec list_themes(map(), binary() | list(), binary() | list()) ->
     {ok, list_themes_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, list_themes_errors(), tuple()}.
 list_themes(Client, AppId, EnvironmentName)
   when is_map(Client) ->
     list_themes(Client, AppId, EnvironmentName, #{}, #{}).
@@ -1894,8 +2058,7 @@ list_themes(Client, AppId, EnvironmentName)
 -spec list_themes(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_themes_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, list_themes_errors(), tuple()}.
 list_themes(Client, AppId, EnvironmentName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_themes(Client, AppId, EnvironmentName, QueryMap, HeadersMap, []).
@@ -1903,8 +2066,7 @@ list_themes(Client, AppId, EnvironmentName, QueryMap, HeadersMap)
 -spec list_themes(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_themes_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, list_themes_errors(), tuple()}.
 list_themes(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/themes"],
@@ -1930,16 +2092,14 @@ list_themes(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
 -spec put_metadata_flag(map(), binary() | list(), binary() | list(), binary() | list(), put_metadata_flag_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, put_metadata_flag_errors(), tuple()}.
 put_metadata_flag(Client, AppId, EnvironmentName, FeatureName, Input) ->
     put_metadata_flag(Client, AppId, EnvironmentName, FeatureName, Input, []).
 
 -spec put_metadata_flag(map(), binary() | list(), binary() | list(), binary() | list(), put_metadata_flag_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, put_metadata_flag_errors(), tuple()}.
 put_metadata_flag(Client, AppId, EnvironmentName, FeatureName, Input0, Options0) ->
     Method = put,
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/metadata/features/", aws_util:encode_uri(FeatureName), ""],
@@ -1970,14 +2130,14 @@ put_metadata_flag(Client, AppId, EnvironmentName, FeatureName, Input0, Options0)
 -spec refresh_token(map(), binary() | list(), refresh_token_request()) ->
     {ok, refresh_token_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, refresh_token_errors(), tuple()}.
 refresh_token(Client, Provider, Input) ->
     refresh_token(Client, Provider, Input, []).
 
 -spec refresh_token(map(), binary() | list(), refresh_token_request(), proplists:proplist()) ->
     {ok, refresh_token_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, refresh_token_errors(), tuple()}.
 refresh_token(Client, Provider, Input0, Options0) ->
     Method = post,
     Path = ["/tokens/", aws_util:encode_uri(Provider), "/refresh"],
@@ -2005,18 +2165,14 @@ refresh_token(Client, Provider, Input0, Options0) ->
 -spec start_codegen_job(map(), binary() | list(), binary() | list(), start_codegen_job_request()) ->
     {ok, start_codegen_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, start_codegen_job_errors(), tuple()}.
 start_codegen_job(Client, AppId, EnvironmentName, Input) ->
     start_codegen_job(Client, AppId, EnvironmentName, Input, []).
 
 -spec start_codegen_job(map(), binary() | list(), binary() | list(), start_codegen_job_request(), proplists:proplist()) ->
     {ok, start_codegen_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, start_codegen_job_errors(), tuple()}.
 start_codegen_job(Client, AppId, EnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/codegen-jobs"],
@@ -2044,22 +2200,14 @@ start_codegen_job(Client, AppId, EnvironmentName, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2086,22 +2234,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2129,18 +2269,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_component(map(), binary() | list(), binary() | list(), binary() | list(), update_component_request()) ->
     {ok, update_component_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()}.
+    {error, update_component_errors(), tuple()}.
 update_component(Client, AppId, EnvironmentName, Id, Input) ->
     update_component(Client, AppId, EnvironmentName, Id, Input, []).
 
 -spec update_component(map(), binary() | list(), binary() | list(), binary() | list(), update_component_request(), proplists:proplist()) ->
     {ok, update_component_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()}.
+    {error, update_component_errors(), tuple()}.
 update_component(Client, AppId, EnvironmentName, Id, Input0, Options0) ->
     Method = patch,
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/components/", aws_util:encode_uri(Id), ""],
@@ -2168,18 +2304,14 @@ update_component(Client, AppId, EnvironmentName, Id, Input0, Options0) ->
 -spec update_form(map(), binary() | list(), binary() | list(), binary() | list(), update_form_request()) ->
     {ok, update_form_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()}.
+    {error, update_form_errors(), tuple()}.
 update_form(Client, AppId, EnvironmentName, Id, Input) ->
     update_form(Client, AppId, EnvironmentName, Id, Input, []).
 
 -spec update_form(map(), binary() | list(), binary() | list(), binary() | list(), update_form_request(), proplists:proplist()) ->
     {ok, update_form_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()}.
+    {error, update_form_errors(), tuple()}.
 update_form(Client, AppId, EnvironmentName, Id, Input0, Options0) ->
     Method = patch,
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/forms/", aws_util:encode_uri(Id), ""],
@@ -2207,18 +2339,14 @@ update_form(Client, AppId, EnvironmentName, Id, Input0, Options0) ->
 -spec update_theme(map(), binary() | list(), binary() | list(), binary() | list(), update_theme_request()) ->
     {ok, update_theme_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()}.
+    {error, update_theme_errors(), tuple()}.
 update_theme(Client, AppId, EnvironmentName, Id, Input) ->
     update_theme(Client, AppId, EnvironmentName, Id, Input, []).
 
 -spec update_theme(map(), binary() | list(), binary() | list(), binary() | list(), update_theme_request(), proplists:proplist()) ->
     {ok, update_theme_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()}.
+    {error, update_theme_errors(), tuple()}.
 update_theme(Client, AppId, EnvironmentName, Id, Input0, Options0) ->
     Method = patch,
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/themes/", aws_util:encode_uri(Id), ""],

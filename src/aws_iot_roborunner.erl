@@ -65,6 +65,7 @@
 %% }
 -type list_destinations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_destination_response() :: #{
 %%   <<"arn">> := string(),
@@ -75,6 +76,7 @@
 %% }
 -type create_destination_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_destination_request() :: #{
 %%   <<"additionalFixedProperties">> => string(),
@@ -84,6 +86,7 @@
 %%   <<"state">> => string()
 %% }
 -type create_destination_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_destination_response() :: #{
@@ -97,15 +100,18 @@
 %%   <<"updatedAt">> := non_neg_integer()
 %% }
 -type get_destination_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_worker_fleet_response() :: #{}
 -type delete_worker_fleet_response() :: #{}.
+
 
 %% Example:
 %% get_worker_request() :: #{
 %%   <<"id">> := string()
 %% }
 -type get_worker_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_worker_request() :: #{
@@ -118,9 +124,11 @@
 %%   <<"vendorProperties">> => vendor_properties()
 %% }
 -type update_worker_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_site_response() :: #{}
 -type delete_site_response() :: #{}.
+
 
 %% Example:
 %% list_workers_request() :: #{
@@ -131,6 +139,7 @@
 %% }
 -type list_workers_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_worker_fleets_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -139,12 +148,14 @@
 %% }
 -type list_worker_fleets_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_worker_fleets_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"workerFleets">> => list(worker_fleet()())
 %% }
 -type list_worker_fleets_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_site_request() :: #{
@@ -155,11 +166,13 @@
 %% }
 -type create_site_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_worker_request() :: #{
 %%   <<"id">> := string()
 %% }
 -type delete_worker_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_site_response() :: #{
@@ -172,6 +185,7 @@
 %% }
 -type update_site_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_worker_response() :: #{
 %%   <<"arn">> := string(),
@@ -182,20 +196,24 @@
 %% }
 -type create_worker_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_worker_response() :: #{}
 -type delete_worker_response() :: #{}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_worker_fleet_response() :: #{
@@ -209,14 +227,17 @@
 %% }
 -type get_worker_fleet_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_destination_response() :: #{}
 -type delete_destination_response() :: #{}.
+
 
 %% Example:
 %% cartesian_coordinates() :: #{
@@ -225,6 +246,7 @@
 %%   <<"z">> => [float()]
 %% }
 -type cartesian_coordinates() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_worker_fleet_response() :: #{
@@ -235,11 +257,13 @@
 %% }
 -type create_worker_fleet_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_site_request() :: #{
 %%   <<"id">> := string()
 %% }
 -type delete_site_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% site() :: #{
@@ -250,6 +274,7 @@
 %% }
 -type site() :: #{binary() => any()}.
 
+
 %% Example:
 %% vendor_properties() :: #{
 %%   <<"vendorAdditionalFixedProperties">> => string(),
@@ -258,6 +283,7 @@
 %%   <<"vendorWorkerIpAddress">> => string()
 %% }
 -type vendor_properties() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_destinations_request() :: #{
@@ -268,11 +294,13 @@
 %% }
 -type list_destinations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_site_request() :: #{
 %%   <<"id">> := string()
 %% }
 -type get_site_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_worker_fleet_response() :: #{
@@ -284,11 +312,13 @@
 %% }
 -type update_worker_fleet_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_destination_request() :: #{
 %%   <<"id">> := string()
 %% }
 -type delete_destination_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_site_response() :: #{
@@ -302,6 +332,7 @@
 %% }
 -type get_site_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_sites_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -309,11 +340,13 @@
 %% }
 -type list_sites_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_destination_request() :: #{
@@ -323,6 +356,7 @@
 %%   <<"state">> => string()
 %% }
 -type update_destination_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_worker_response() :: #{
@@ -341,6 +375,7 @@
 %% }
 -type get_worker_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_site_request() :: #{
 %%   <<"countryCode">> => string(),
@@ -350,11 +385,13 @@
 %% }
 -type update_site_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_worker_fleet_request() :: #{
 %%   <<"id">> := string()
 %% }
 -type get_worker_fleet_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_workers_response() :: #{
@@ -363,11 +400,13 @@
 %% }
 -type list_workers_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_worker_fleet_request() :: #{
@@ -378,17 +417,20 @@
 %% }
 -type create_worker_fleet_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_destination_request() :: #{
 %%   <<"id">> := string()
 %% }
 -type get_destination_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% destination() :: #{
@@ -403,6 +445,7 @@
 %% }
 -type destination() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_destination_response() :: #{
 %%   <<"additionalFixedProperties">> => string(),
@@ -414,11 +457,13 @@
 %% }
 -type update_destination_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% worker_fleet() :: #{
@@ -431,6 +476,7 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type worker_fleet() :: #{binary() => any()}.
+
 
 %% Example:
 %% worker() :: #{
@@ -449,6 +495,7 @@
 %% }
 -type worker() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_worker_response() :: #{
 %%   <<"additionalFixedProperties">> => string(),
@@ -464,6 +511,7 @@
 %% }
 -type update_worker_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_worker_fleet_request() :: #{
 %%   <<"additionalFixedProperties">> => string(),
@@ -471,6 +519,7 @@
 %%   <<"name">> => string()
 %% }
 -type update_worker_fleet_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_worker_request() :: #{
@@ -485,6 +534,7 @@
 %% }
 -type create_worker_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_site_response() :: #{
 %%   <<"arn">> := string(),
@@ -494,11 +544,13 @@
 %% }
 -type create_site_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_worker_fleet_request() :: #{
 %%   <<"id">> := string()
 %% }
 -type delete_worker_fleet_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_sites_request() :: #{
@@ -506,6 +558,156 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_sites_request() :: #{binary() => any()}.
+
+-type create_destination_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_site_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_worker_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_worker_fleet_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_destination_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_site_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_worker_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_worker_fleet_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_destination_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_site_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_worker_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_worker_fleet_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_destinations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_sites_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_worker_fleets_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_workers_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_destination_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_site_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_worker_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_worker_fleet_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -515,26 +717,14 @@
 -spec create_destination(map(), create_destination_request()) ->
     {ok, create_destination_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_destination_errors(), tuple()}.
 create_destination(Client, Input) ->
     create_destination(Client, Input, []).
 
 -spec create_destination(map(), create_destination_request(), proplists:proplist()) ->
     {ok, create_destination_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_destination_errors(), tuple()}.
 create_destination(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createDestination"],
@@ -561,24 +751,14 @@ create_destination(Client, Input0, Options0) ->
 -spec create_site(map(), create_site_request()) ->
     {ok, create_site_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_site_errors(), tuple()}.
 create_site(Client, Input) ->
     create_site(Client, Input, []).
 
 -spec create_site(map(), create_site_request(), proplists:proplist()) ->
     {ok, create_site_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_site_errors(), tuple()}.
 create_site(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createSite"],
@@ -605,26 +785,14 @@ create_site(Client, Input0, Options0) ->
 -spec create_worker(map(), create_worker_request()) ->
     {ok, create_worker_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_worker_errors(), tuple()}.
 create_worker(Client, Input) ->
     create_worker(Client, Input, []).
 
 -spec create_worker(map(), create_worker_request(), proplists:proplist()) ->
     {ok, create_worker_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_worker_errors(), tuple()}.
 create_worker(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createWorker"],
@@ -651,26 +819,14 @@ create_worker(Client, Input0, Options0) ->
 -spec create_worker_fleet(map(), create_worker_fleet_request()) ->
     {ok, create_worker_fleet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_worker_fleet_errors(), tuple()}.
 create_worker_fleet(Client, Input) ->
     create_worker_fleet(Client, Input, []).
 
 -spec create_worker_fleet(map(), create_worker_fleet_request(), proplists:proplist()) ->
     {ok, create_worker_fleet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_worker_fleet_errors(), tuple()}.
 create_worker_fleet(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createWorkerFleet"],
@@ -697,24 +853,14 @@ create_worker_fleet(Client, Input0, Options0) ->
 -spec delete_destination(map(), delete_destination_request()) ->
     {ok, delete_destination_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_destination_errors(), tuple()}.
 delete_destination(Client, Input) ->
     delete_destination(Client, Input, []).
 
 -spec delete_destination(map(), delete_destination_request(), proplists:proplist()) ->
     {ok, delete_destination_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_destination_errors(), tuple()}.
 delete_destination(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteDestination"],
@@ -741,24 +887,14 @@ delete_destination(Client, Input0, Options0) ->
 -spec delete_site(map(), delete_site_request()) ->
     {ok, delete_site_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_site_errors(), tuple()}.
 delete_site(Client, Input) ->
     delete_site(Client, Input, []).
 
 -spec delete_site(map(), delete_site_request(), proplists:proplist()) ->
     {ok, delete_site_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_site_errors(), tuple()}.
 delete_site(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteSite"],
@@ -785,24 +921,14 @@ delete_site(Client, Input0, Options0) ->
 -spec delete_worker(map(), delete_worker_request()) ->
     {ok, delete_worker_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_worker_errors(), tuple()}.
 delete_worker(Client, Input) ->
     delete_worker(Client, Input, []).
 
 -spec delete_worker(map(), delete_worker_request(), proplists:proplist()) ->
     {ok, delete_worker_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_worker_errors(), tuple()}.
 delete_worker(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteWorker"],
@@ -829,24 +955,14 @@ delete_worker(Client, Input0, Options0) ->
 -spec delete_worker_fleet(map(), delete_worker_fleet_request()) ->
     {ok, delete_worker_fleet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_worker_fleet_errors(), tuple()}.
 delete_worker_fleet(Client, Input) ->
     delete_worker_fleet(Client, Input, []).
 
 -spec delete_worker_fleet(map(), delete_worker_fleet_request(), proplists:proplist()) ->
     {ok, delete_worker_fleet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_worker_fleet_errors(), tuple()}.
 delete_worker_fleet(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteWorkerFleet"],
@@ -873,11 +989,7 @@ delete_worker_fleet(Client, Input0, Options0) ->
 -spec get_destination(map(), binary() | list()) ->
     {ok, get_destination_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_destination_errors(), tuple()}.
 get_destination(Client, Id)
   when is_map(Client) ->
     get_destination(Client, Id, #{}, #{}).
@@ -885,11 +997,7 @@ get_destination(Client, Id)
 -spec get_destination(map(), binary() | list(), map(), map()) ->
     {ok, get_destination_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_destination_errors(), tuple()}.
 get_destination(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_destination(Client, Id, QueryMap, HeadersMap, []).
@@ -897,11 +1005,7 @@ get_destination(Client, Id, QueryMap, HeadersMap)
 -spec get_destination(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_destination_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_destination_errors(), tuple()}.
 get_destination(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/getDestination"],
@@ -926,11 +1030,7 @@ get_destination(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_site(map(), binary() | list()) ->
     {ok, get_site_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_site_errors(), tuple()}.
 get_site(Client, Id)
   when is_map(Client) ->
     get_site(Client, Id, #{}, #{}).
@@ -938,11 +1038,7 @@ get_site(Client, Id)
 -spec get_site(map(), binary() | list(), map(), map()) ->
     {ok, get_site_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_site_errors(), tuple()}.
 get_site(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_site(Client, Id, QueryMap, HeadersMap, []).
@@ -950,11 +1046,7 @@ get_site(Client, Id, QueryMap, HeadersMap)
 -spec get_site(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_site_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_site_errors(), tuple()}.
 get_site(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/getSite"],
@@ -979,11 +1071,7 @@ get_site(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_worker(map(), binary() | list()) ->
     {ok, get_worker_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_worker_errors(), tuple()}.
 get_worker(Client, Id)
   when is_map(Client) ->
     get_worker(Client, Id, #{}, #{}).
@@ -991,11 +1079,7 @@ get_worker(Client, Id)
 -spec get_worker(map(), binary() | list(), map(), map()) ->
     {ok, get_worker_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_worker_errors(), tuple()}.
 get_worker(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_worker(Client, Id, QueryMap, HeadersMap, []).
@@ -1003,11 +1087,7 @@ get_worker(Client, Id, QueryMap, HeadersMap)
 -spec get_worker(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_worker_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_worker_errors(), tuple()}.
 get_worker(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/getWorker"],
@@ -1032,11 +1112,7 @@ get_worker(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_worker_fleet(map(), binary() | list()) ->
     {ok, get_worker_fleet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_worker_fleet_errors(), tuple()}.
 get_worker_fleet(Client, Id)
   when is_map(Client) ->
     get_worker_fleet(Client, Id, #{}, #{}).
@@ -1044,11 +1120,7 @@ get_worker_fleet(Client, Id)
 -spec get_worker_fleet(map(), binary() | list(), map(), map()) ->
     {ok, get_worker_fleet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_worker_fleet_errors(), tuple()}.
 get_worker_fleet(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_worker_fleet(Client, Id, QueryMap, HeadersMap, []).
@@ -1056,11 +1128,7 @@ get_worker_fleet(Client, Id, QueryMap, HeadersMap)
 -spec get_worker_fleet(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_worker_fleet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_worker_fleet_errors(), tuple()}.
 get_worker_fleet(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/getWorkerFleet"],
@@ -1085,11 +1153,7 @@ get_worker_fleet(Client, Id, QueryMap, HeadersMap, Options0)
 -spec list_destinations(map(), binary() | list()) ->
     {ok, list_destinations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_destinations_errors(), tuple()}.
 list_destinations(Client, Site)
   when is_map(Client) ->
     list_destinations(Client, Site, #{}, #{}).
@@ -1097,11 +1161,7 @@ list_destinations(Client, Site)
 -spec list_destinations(map(), binary() | list(), map(), map()) ->
     {ok, list_destinations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_destinations_errors(), tuple()}.
 list_destinations(Client, Site, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_destinations(Client, Site, QueryMap, HeadersMap, []).
@@ -1109,11 +1169,7 @@ list_destinations(Client, Site, QueryMap, HeadersMap)
 -spec list_destinations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_destinations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_destinations_errors(), tuple()}.
 list_destinations(Client, Site, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/listDestinations"],
@@ -1141,10 +1197,7 @@ list_destinations(Client, Site, QueryMap, HeadersMap, Options0)
 -spec list_sites(map()) ->
     {ok, list_sites_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_sites_errors(), tuple()}.
 list_sites(Client)
   when is_map(Client) ->
     list_sites(Client, #{}, #{}).
@@ -1152,10 +1205,7 @@ list_sites(Client)
 -spec list_sites(map(), map(), map()) ->
     {ok, list_sites_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_sites_errors(), tuple()}.
 list_sites(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sites(Client, QueryMap, HeadersMap, []).
@@ -1163,10 +1213,7 @@ list_sites(Client, QueryMap, HeadersMap)
 -spec list_sites(map(), map(), map(), proplists:proplist()) ->
     {ok, list_sites_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_sites_errors(), tuple()}.
 list_sites(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/listSites"],
@@ -1192,11 +1239,7 @@ list_sites(Client, QueryMap, HeadersMap, Options0)
 -spec list_worker_fleets(map(), binary() | list()) ->
     {ok, list_worker_fleets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_worker_fleets_errors(), tuple()}.
 list_worker_fleets(Client, Site)
   when is_map(Client) ->
     list_worker_fleets(Client, Site, #{}, #{}).
@@ -1204,11 +1247,7 @@ list_worker_fleets(Client, Site)
 -spec list_worker_fleets(map(), binary() | list(), map(), map()) ->
     {ok, list_worker_fleets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_worker_fleets_errors(), tuple()}.
 list_worker_fleets(Client, Site, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_worker_fleets(Client, Site, QueryMap, HeadersMap, []).
@@ -1216,11 +1255,7 @@ list_worker_fleets(Client, Site, QueryMap, HeadersMap)
 -spec list_worker_fleets(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_worker_fleets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_worker_fleets_errors(), tuple()}.
 list_worker_fleets(Client, Site, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/listWorkerFleets"],
@@ -1247,11 +1282,7 @@ list_worker_fleets(Client, Site, QueryMap, HeadersMap, Options0)
 -spec list_workers(map(), binary() | list()) ->
     {ok, list_workers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_workers_errors(), tuple()}.
 list_workers(Client, Site)
   when is_map(Client) ->
     list_workers(Client, Site, #{}, #{}).
@@ -1259,11 +1290,7 @@ list_workers(Client, Site)
 -spec list_workers(map(), binary() | list(), map(), map()) ->
     {ok, list_workers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_workers_errors(), tuple()}.
 list_workers(Client, Site, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_workers(Client, Site, QueryMap, HeadersMap, []).
@@ -1271,11 +1298,7 @@ list_workers(Client, Site, QueryMap, HeadersMap)
 -spec list_workers(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_workers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_workers_errors(), tuple()}.
 list_workers(Client, Site, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/listWorkers"],
@@ -1303,22 +1326,14 @@ list_workers(Client, Site, QueryMap, HeadersMap, Options0)
 -spec update_destination(map(), update_destination_request()) ->
     {ok, update_destination_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_destination_errors(), tuple()}.
 update_destination(Client, Input) ->
     update_destination(Client, Input, []).
 
 -spec update_destination(map(), update_destination_request(), proplists:proplist()) ->
     {ok, update_destination_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_destination_errors(), tuple()}.
 update_destination(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateDestination"],
@@ -1345,22 +1360,14 @@ update_destination(Client, Input0, Options0) ->
 -spec update_site(map(), update_site_request()) ->
     {ok, update_site_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_site_errors(), tuple()}.
 update_site(Client, Input) ->
     update_site(Client, Input, []).
 
 -spec update_site(map(), update_site_request(), proplists:proplist()) ->
     {ok, update_site_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_site_errors(), tuple()}.
 update_site(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateSite"],
@@ -1387,22 +1394,14 @@ update_site(Client, Input0, Options0) ->
 -spec update_worker(map(), update_worker_request()) ->
     {ok, update_worker_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_worker_errors(), tuple()}.
 update_worker(Client, Input) ->
     update_worker(Client, Input, []).
 
 -spec update_worker(map(), update_worker_request(), proplists:proplist()) ->
     {ok, update_worker_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_worker_errors(), tuple()}.
 update_worker(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateWorker"],
@@ -1429,22 +1428,14 @@ update_worker(Client, Input0, Options0) ->
 -spec update_worker_fleet(map(), update_worker_fleet_request()) ->
     {ok, update_worker_fleet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_worker_fleet_errors(), tuple()}.
 update_worker_fleet(Client, Input) ->
     update_worker_fleet(Client, Input, []).
 
 -spec update_worker_fleet(map(), update_worker_fleet_request(), proplists:proplist()) ->
     {ok, update_worker_fleet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_worker_fleet_errors(), tuple()}.
 update_worker_fleet(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateWorkerFleet"],

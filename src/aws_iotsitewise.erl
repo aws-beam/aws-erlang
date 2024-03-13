@@ -233,11 +233,13 @@
 %% }
 -type delete_asset_model_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_gateway_request() :: #{
 %%   <<"gatewayName">> := string()
 %% }
 -type update_gateway_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% execute_query_request() :: #{
@@ -247,6 +249,7 @@
 %% }
 -type execute_query_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% action_summary() :: #{
 %%   <<"actionDefinitionId">> => string(),
@@ -254,6 +257,7 @@
 %%   <<"targetResource">> => target_resource()
 %% }
 -type action_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_dashboards_request() :: #{
@@ -263,6 +267,7 @@
 %% }
 -type list_dashboards_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_asset_property_aggregates_response() :: #{
 %%   <<"errorEntries">> => list(batch_get_asset_property_aggregates_error_entry()()),
@@ -271,6 +276,7 @@
 %%   <<"successEntries">> => list(batch_get_asset_property_aggregates_success_entry()())
 %% }
 -type batch_get_asset_property_aggregates_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_project_response() :: #{
@@ -284,6 +290,7 @@
 %% }
 -type describe_project_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_default_encryption_configuration_response() :: #{
 %%   <<"configurationStatus">> => configuration_status(),
@@ -292,6 +299,7 @@
 %% }
 -type put_default_encryption_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_composition_relationships_response() :: #{
 %%   <<"compositionRelationshipSummaries">> => list(composition_relationship_summary()()),
@@ -299,21 +307,25 @@
 %% }
 -type list_composition_relationships_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_access_policies_response() :: #{
 %%   <<"accessPolicySummaries">> => list(access_policy_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_access_policies_response() :: #{binary() => any()}.
+
 %% Example:
 %% update_dashboard_response() :: #{}
 -type update_dashboard_response() :: #{}.
+
 
 %% Example:
 %% portal_resource() :: #{
 %%   <<"id">> => string()
 %% }
 -type portal_resource() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_asset_model_composite_model_response() :: #{
@@ -331,6 +343,7 @@
 %% }
 -type describe_asset_model_composite_model_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_dashboard_request() :: #{
 %%   <<"clientToken">> => string(),
@@ -340,6 +353,7 @@
 %% }
 -type update_dashboard_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
@@ -347,17 +361,20 @@
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_failure_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type internal_failure_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_associate_project_assets_response() :: #{
 %%   <<"errors">> => list(asset_error_details()())
 %% }
 -type batch_associate_project_assets_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_property() :: #{
@@ -373,6 +390,7 @@
 %% }
 -type asset_property() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflicting_operation_exception() :: #{
 %%   <<"message">> => string(),
@@ -380,9 +398,11 @@
 %%   <<"resourceId">> => string()
 %% }
 -type conflicting_operation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% describe_asset_model_composite_model_request() :: #{}
 -type describe_asset_model_composite_model_request() :: #{}.
+
 
 %% Example:
 %% get_asset_property_aggregates_response() :: #{
@@ -391,11 +411,13 @@
 %% }
 -type get_asset_property_aggregates_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% unauthorized_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type unauthorized_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_project_assets_response() :: #{
@@ -404,6 +426,7 @@
 %% }
 -type list_project_assets_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% interpolated_asset_property_value() :: #{
 %%   <<"timestamp">> => time_in_nanos(),
@@ -411,11 +434,13 @@
 %% }
 -type interpolated_asset_property_value() :: #{binary() => any()}.
 
+
 %% Example:
 %% greengrass() :: #{
 %%   <<"groupArn">> => string()
 %% }
 -type greengrass() :: #{binary() => any()}.
+
 
 %% Example:
 %% project_summary() :: #{
@@ -426,9 +451,11 @@
 %%   <<"name">> => string()
 %% }
 -type project_summary() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% detailed_error() :: #{
@@ -436,6 +463,7 @@
 %%   <<"message">> => string()
 %% }
 -type detailed_error() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_model_hierarchy() :: #{
@@ -446,12 +474,14 @@
 %% }
 -type asset_model_hierarchy() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_gateway_response() :: #{
 %%   <<"gatewayArn">> => string(),
 %%   <<"gatewayId">> => string()
 %% }
 -type create_gateway_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% metric() :: #{
@@ -461,9 +491,11 @@
 %%   <<"window">> => metric_window()
 %% }
 -type metric() :: #{binary() => any()}.
+
 %% Example:
 %% delete_access_policy_response() :: #{}
 -type delete_access_policy_response() :: #{}.
+
 
 %% Example:
 %% list_gateways_request() :: #{
@@ -472,6 +504,7 @@
 %% }
 -type list_gateways_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% expression_variable() :: #{
 %%   <<"name">> => string(),
@@ -479,12 +512,14 @@
 %% }
 -type expression_variable() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_asset_model_composite_models_response() :: #{
 %%   <<"assetModelCompositeModelSummaries">> => list(asset_model_composite_model_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_asset_model_composite_models_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_bulk_import_job_request() :: #{
@@ -498,11 +533,13 @@
 %% }
 -type create_bulk_import_job_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_asset_property_value_response() :: #{
 %%   <<"propertyValue">> => asset_property_value()
 %% }
 -type get_asset_property_value_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_property_value() :: #{
@@ -511,9 +548,11 @@
 %%   <<"value">> => variant()
 %% }
 -type asset_property_value() :: #{binary() => any()}.
+
 %% Example:
 %% put_logging_options_response() :: #{}
 -type put_logging_options_response() :: #{}.
+
 
 %% Example:
 %% identity() :: #{
@@ -524,12 +563,14 @@
 %% }
 -type identity() :: #{binary() => any()}.
 
+
 %% Example:
 %% file_format() :: #{
 %%   <<"csv">> => csv(),
 %%   <<"parquet">> => parquet()
 %% }
 -type file_format() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_bulk_import_jobs_request() :: #{
@@ -539,6 +580,7 @@
 %% }
 -type list_bulk_import_jobs_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_default_encryption_configuration_response() :: #{
 %%   <<"configurationStatus">> => configuration_status(),
@@ -546,9 +588,11 @@
 %%   <<"kmsKeyArn">> => string()
 %% }
 -type describe_default_encryption_configuration_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_project_request() :: #{}
 -type describe_project_request() :: #{}.
+
 
 %% Example:
 %% describe_action_response() :: #{
@@ -559,9 +603,11 @@
 %%   <<"targetResource">> => target_resource()
 %% }
 -type describe_action_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_bulk_import_job_request() :: #{}
 -type describe_bulk_import_job_request() :: #{}.
+
 
 %% Example:
 %% describe_asset_response() :: #{
@@ -581,6 +627,7 @@
 %% }
 -type describe_asset_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_asset_property_value_entry() :: #{
 %%   <<"assetId">> => string(),
@@ -591,12 +638,14 @@
 %% }
 -type put_asset_property_value_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% retention_period() :: #{
 %%   <<"numberOfDays">> => integer(),
 %%   <<"unlimited">> => boolean()
 %% }
 -type retention_period() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_get_asset_property_value_skipped_entry() :: #{
@@ -606,11 +655,13 @@
 %% }
 -type batch_get_asset_property_value_skipped_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_access_policy_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
 -type delete_access_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_model_property() :: #{
@@ -625,6 +676,7 @@
 %% }
 -type asset_model_property() :: #{binary() => any()}.
 
+
 %% Example:
 %% datum() :: #{
 %%   <<"arrayValue">> => list(datum()()),
@@ -634,11 +686,13 @@
 %% }
 -type datum() :: #{binary() => any()}.
 
+
 %% Example:
 %% project_resource() :: #{
 %%   <<"id">> => string()
 %% }
 -type project_resource() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_portal_response() :: #{
@@ -649,6 +703,7 @@
 %%   <<"ssoApplicationId">> => string()
 %% }
 -type create_portal_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_asset_property_response() :: #{
@@ -661,6 +716,7 @@
 %% }
 -type describe_asset_property_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_asset_property_value_request() :: #{
 %%   <<"assetId">> => string(),
@@ -668,6 +724,7 @@
 %%   <<"propertyId">> => string()
 %% }
 -type get_asset_property_value_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_model_composite_model() :: #{
@@ -679,6 +736,7 @@
 %%   <<"type">> => string()
 %% }
 -type asset_model_composite_model() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_access_policies_request() :: #{
@@ -692,12 +750,14 @@
 %% }
 -type list_access_policies_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_access_policy_response() :: #{
 %%   <<"accessPolicyArn">> => string(),
 %%   <<"accessPolicyId">> => string()
 %% }
 -type create_access_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% error_report_location() :: #{
@@ -706,6 +766,7 @@
 %% }
 -type error_report_location() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_asset_property_value_history_skipped_entry() :: #{
 %%   <<"completionStatus">> => list(any()),
@@ -713,6 +774,7 @@
 %%   <<"errorInfo">> => batch_get_asset_property_value_history_error_info()
 %% }
 -type batch_get_asset_property_value_history_skipped_entry() :: #{binary() => any()}.
+
 
 %% Example:
 %% access_policy_summary() :: #{
@@ -725,11 +787,13 @@
 %% }
 -type access_policy_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_asset_model_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
 -type delete_asset_model_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_get_asset_property_aggregates_request() :: #{
@@ -739,11 +803,13 @@
 %% }
 -type batch_get_asset_property_aggregates_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_logging_options_response() :: #{
 %%   <<"loggingOptions">> => logging_options()
 %% }
 -type describe_logging_options_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% composite_model_property() :: #{
@@ -755,11 +821,13 @@
 %% }
 -type composite_model_property() :: #{binary() => any()}.
 
+
 %% Example:
 %% user_identity() :: #{
 %%   <<"id">> => string()
 %% }
 -type user_identity() :: #{binary() => any()}.
+
 
 %% Example:
 %% metric_processing_config() :: #{
@@ -767,11 +835,13 @@
 %% }
 -type metric_processing_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% group_identity() :: #{
 %%   <<"id">> => string()
 %% }
 -type group_identity() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_asset_request() :: #{
@@ -785,11 +855,13 @@
 %% }
 -type create_asset_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% metric_window() :: #{
 %%   <<"tumbling">> => tumbling_window()
 %% }
 -type metric_window() :: #{binary() => any()}.
+
 
 %% Example:
 %% file() :: #{
@@ -799,12 +871,14 @@
 %% }
 -type file() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_status() :: #{
 %%   <<"error">> => error_details(),
 %%   <<"state">> => list(any())
 %% }
 -type asset_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_summary() :: #{
@@ -821,6 +895,7 @@
 %% }
 -type asset_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_asset_property_aggregates_skipped_entry() :: #{
 %%   <<"completionStatus">> => list(any()),
@@ -829,15 +904,18 @@
 %% }
 -type batch_get_asset_property_aggregates_skipped_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 %% Example:
 %% update_project_response() :: #{}
 -type update_project_response() :: #{}.
+
 
 %% Example:
 %% portal_status() :: #{
@@ -845,6 +923,7 @@
 %%   <<"state">> => list(any())
 %% }
 -type portal_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_model_summary() :: #{
@@ -860,6 +939,7 @@
 %% }
 -type asset_model_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_time_series_request() :: #{
 %%   <<"alias">> => string(),
@@ -868,12 +948,14 @@
 %% }
 -type describe_time_series_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% alarms() :: #{
 %%   <<"alarmRoleArn">> => string(),
 %%   <<"notificationLambdaArn">> => string()
 %% }
 -type alarms() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_associated_assets_request() :: #{
@@ -884,12 +966,14 @@
 %% }
 -type list_associated_assets_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% configuration_status() :: #{
 %%   <<"error">> => configuration_error_details(),
 %%   <<"state">> => list(any())
 %% }
 -type configuration_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_get_asset_property_value_history_response() :: #{
@@ -900,11 +984,13 @@
 %% }
 -type batch_get_asset_property_value_history_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% multi_layer_storage() :: #{
 %%   <<"customerManagedS3Storage">> => customer_managed_s3_storage()
 %% }
 -type multi_layer_storage() :: #{binary() => any()}.
+
 
 %% Example:
 %% target_resource() :: #{
@@ -912,15 +998,18 @@
 %% }
 -type target_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_project_assets_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_project_assets_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_action_request() :: #{}
 -type describe_action_request() :: #{}.
+
 
 %% Example:
 %% describe_bulk_import_job_response() :: #{
@@ -938,12 +1027,14 @@
 %% }
 -type describe_bulk_import_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_associate_project_assets_request() :: #{
 %%   <<"assetIds">> := list(string()()),
 %%   <<"clientToken">> => string()
 %% }
 -type batch_associate_project_assets_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_asset_model_response() :: #{
@@ -953,14 +1044,17 @@
 %% }
 -type create_asset_model_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_asset_response() :: #{
 %%   <<"assetStatus">> => asset_status()
 %% }
 -type update_asset_response() :: #{binary() => any()}.
+
 %% Example:
 %% update_access_policy_response() :: #{}
 -type update_access_policy_response() :: #{}.
+
 
 %% Example:
 %% batch_get_asset_property_value_error_entry() :: #{
@@ -970,11 +1064,13 @@
 %% }
 -type batch_get_asset_property_value_error_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% execute_action_response() :: #{
 %%   <<"actionId">> => string()
 %% }
 -type execute_action_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% gateway_summary() :: #{
@@ -987,12 +1083,14 @@
 %% }
 -type gateway_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_time_series_response() :: #{
 %%   <<"TimeSeriesSummaries">> => list(time_series_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_time_series_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_portals_request() :: #{
@@ -1001,6 +1099,7 @@
 %% }
 -type list_portals_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% job_summary() :: #{
 %%   <<"id">> => string(),
@@ -1008,6 +1107,7 @@
 %%   <<"status">> => list(any())
 %% }
 -type job_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_composite_model() :: #{
@@ -1019,9 +1119,11 @@
 %%   <<"type">> => string()
 %% }
 -type asset_composite_model() :: #{binary() => any()}.
+
 %% Example:
 %% describe_gateway_capability_configuration_request() :: #{}
 -type describe_gateway_capability_configuration_request() :: #{}.
+
 
 %% Example:
 %% update_gateway_capability_configuration_request() :: #{
@@ -1030,11 +1132,13 @@
 %% }
 -type update_gateway_capability_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_portal_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
 -type delete_portal_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_time_series_response() :: #{
@@ -1050,12 +1154,14 @@
 %% }
 -type describe_time_series_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_asset_property_aggregates_success_entry() :: #{
 %%   <<"aggregatedValues">> => list(aggregated_value()()),
 %%   <<"entryId">> => string()
 %% }
 -type batch_get_asset_property_aggregates_success_entry() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_interpolated_asset_property_values_request() :: #{
@@ -1075,12 +1181,14 @@
 %% }
 -type get_interpolated_asset_property_values_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_project_response() :: #{
 %%   <<"projectArn">> => string(),
 %%   <<"projectId">> => string()
 %% }
 -type create_project_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% monitor_error_details() :: #{
@@ -1089,11 +1197,13 @@
 %% }
 -type monitor_error_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_get_asset_property_aggregates_error_entry() :: #{
@@ -1103,12 +1213,14 @@
 %% }
 -type batch_get_asset_property_aggregates_error_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% warm_tier_retention_period() :: #{
 %%   <<"numberOfDays">> => integer(),
 %%   <<"unlimited">> => boolean()
 %% }
 -type warm_tier_retention_period() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_get_asset_property_value_error_info() :: #{
@@ -1117,6 +1229,7 @@
 %% }
 -type batch_get_asset_property_value_error_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_composite_model_path_segment() :: #{
 %%   <<"id">> => string(),
@@ -1124,11 +1237,13 @@
 %% }
 -type asset_composite_model_path_segment() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_request_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_request_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% aggregated_value() :: #{
@@ -1138,11 +1253,13 @@
 %% }
 -type aggregated_value() :: #{binary() => any()}.
 
+
 %% Example:
 %% row() :: #{
 %%   <<"data">> => list(datum()())
 %% }
 -type row() :: #{binary() => any()}.
+
 
 %% Example:
 %% disassociate_time_series_from_asset_property_request() :: #{
@@ -1153,11 +1270,13 @@
 %% }
 -type disassociate_time_series_from_asset_property_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_portal_response() :: #{
 %%   <<"portalStatus">> => portal_status()
 %% }
 -type delete_portal_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_asset_model_request() :: #{
@@ -1170,6 +1289,7 @@
 %%   <<"clientToken">> => string()
 %% }
 -type update_asset_model_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_portal_request() :: #{
@@ -1186,6 +1306,7 @@
 %% }
 -type create_portal_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% associated_assets_summary() :: #{
 %%   <<"arn">> => string(),
@@ -1201,12 +1322,14 @@
 %% }
 -type associated_assets_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% gateway_capability_summary() :: #{
 %%   <<"capabilityNamespace">> => string(),
 %%   <<"capabilitySyncStatus">> => list(any())
 %% }
 -type gateway_capability_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% configuration_error_details() :: #{
@@ -1215,11 +1338,13 @@
 %% }
 -type configuration_error_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_portal_response() :: #{
 %%   <<"portalStatus">> => portal_status()
 %% }
 -type update_portal_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_gateway_capability_configuration_response() :: #{
@@ -1229,6 +1354,7 @@
 %%   <<"gatewayId">> => string()
 %% }
 -type describe_gateway_capability_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_property_summary() :: #{
@@ -1242,6 +1368,7 @@
 %% }
 -type asset_property_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_model_composite_model_definition() :: #{
 %%   <<"description">> => string(),
@@ -1253,14 +1380,17 @@
 %% }
 -type asset_model_composite_model_definition() :: #{binary() => any()}.
 
+
 %% Example:
 %% csv() :: #{
 %%   <<"columnNames">> => list(list(any())())
 %% }
 -type csv() :: #{binary() => any()}.
+
 %% Example:
 %% describe_default_encryption_configuration_request() :: #{}
 -type describe_default_encryption_configuration_request() :: #{}.
+
 
 %% Example:
 %% list_asset_relationships_request() :: #{
@@ -1269,6 +1399,7 @@
 %%   <<"traversalType">> := list(any())
 %% }
 -type list_asset_relationships_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_dashboard_response() :: #{
@@ -1282,6 +1413,7 @@
 %%   <<"projectId">> => string()
 %% }
 -type describe_dashboard_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_portal_response() :: #{
@@ -1303,12 +1435,14 @@
 %% }
 -type describe_portal_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_model_property_path_segment() :: #{
 %%   <<"id">> => string(),
 %%   <<"name">> => string()
 %% }
 -type asset_model_property_path_segment() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_projects_response() :: #{
@@ -1317,17 +1451,20 @@
 %% }
 -type list_projects_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_asset_response() :: #{
 %%   <<"assetStatus">> => asset_status()
 %% }
 -type delete_asset_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% job_configuration() :: #{
 %%   <<"fileFormat">> => file_format()
 %% }
 -type job_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% error_details() :: #{
@@ -1337,6 +1474,7 @@
 %% }
 -type error_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% property_notification() :: #{
 %%   <<"state">> => list(any()),
@@ -1344,11 +1482,13 @@
 %% }
 -type property_notification() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_asset_property_request() :: #{
@@ -1359,6 +1499,7 @@
 %% }
 -type update_asset_property_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_gateway_capability_configuration_response() :: #{
 %%   <<"capabilityNamespace">> => string(),
@@ -1366,11 +1507,13 @@
 %% }
 -type update_gateway_capability_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% action_payload() :: #{
 %%   <<"stringValue">> => string()
 %% }
 -type action_payload() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_actions_response() :: #{
@@ -1379,6 +1522,7 @@
 %% }
 -type list_actions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% customer_managed_s3_storage() :: #{
 %%   <<"roleArn">> => string(),
@@ -1386,11 +1530,13 @@
 %% }
 -type customer_managed_s3_storage() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_unavailable_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% image_location() :: #{
@@ -1399,6 +1545,7 @@
 %% }
 -type image_location() :: #{binary() => any()}.
 
+
 %% Example:
 %% composition_relationship_summary() :: #{
 %%   <<"assetModelCompositeModelId">> => string(),
@@ -1406,6 +1553,7 @@
 %%   <<"assetModelId">> => string()
 %% }
 -type composition_relationship_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_actions_request() :: #{
@@ -1416,11 +1564,13 @@
 %% }
 -type list_actions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% iam_role_identity() :: #{
 %%   <<"arn">> => string()
 %% }
 -type iam_role_identity() :: #{binary() => any()}.
+
 
 %% Example:
 %% transform_processing_config() :: #{
@@ -1428,6 +1578,7 @@
 %%   <<"forwardingConfig">> => forwarding_config()
 %% }
 -type transform_processing_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_asset_model_composite_model_request() :: #{
@@ -1443,6 +1594,7 @@
 %% }
 -type create_asset_model_composite_model_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% image_file() :: #{
 %%   <<"data">> => binary(),
@@ -1450,11 +1602,13 @@
 %% }
 -type image_file() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_asset_model_request() :: #{
 %%   <<"excludeProperties">> => boolean()
 %% }
 -type describe_asset_model_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_storage_configuration_response() :: #{
@@ -1468,6 +1622,7 @@
 %% }
 -type put_storage_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_asset_property_value_history_request() :: #{
 %%   <<"entries">> := list(batch_get_asset_property_value_history_entry()()),
@@ -1475,15 +1630,18 @@
 %%   <<"nextToken">> => string()
 %% }
 -type batch_get_asset_property_value_history_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_logging_options_request() :: #{}
 -type describe_logging_options_request() :: #{}.
+
 
 %% Example:
 %% iam_user_identity() :: #{
 %%   <<"arn">> => string()
 %% }
 -type iam_user_identity() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_get_asset_property_value_history_error_entry() :: #{
@@ -1493,6 +1651,7 @@
 %% }
 -type batch_get_asset_property_value_history_error_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_asset_model_composite_model_response() :: #{
 %%   <<"assetModelCompositeModelId">> => string(),
@@ -1501,11 +1660,13 @@
 %% }
 -type create_asset_model_composite_model_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_dashboard_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
 -type delete_dashboard_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_asset_model_composite_model_request() :: #{
@@ -1513,15 +1674,18 @@
 %% }
 -type delete_asset_model_composite_model_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_asset_models_response() :: #{
 %%   <<"assetModelSummaries">> => list(asset_model_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_asset_models_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_asset_property_request() :: #{}
 -type describe_asset_property_request() :: #{}.
+
 
 %% Example:
 %% asset_model_status() :: #{
@@ -1529,9 +1693,11 @@
 %%   <<"state">> => list(any())
 %% }
 -type asset_model_status() :: #{binary() => any()}.
+
 %% Example:
 %% describe_access_policy_request() :: #{}
 -type describe_access_policy_request() :: #{}.
+
 
 %% Example:
 %% list_asset_model_composite_models_request() :: #{
@@ -1539,18 +1705,22 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_asset_model_composite_models_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_asset_composite_model_request() :: #{}
 -type describe_asset_composite_model_request() :: #{}.
+
 %% Example:
 %% delete_dashboard_response() :: #{}
 -type delete_dashboard_response() :: #{}.
+
 
 %% Example:
 %% batch_put_asset_property_value_request() :: #{
 %%   <<"entries">> := list(put_asset_property_value_entry()())
 %% }
 -type batch_put_asset_property_value_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_model_hierarchy_definition() :: #{
@@ -1560,6 +1730,7 @@
 %%   <<"name">> => string()
 %% }
 -type asset_model_hierarchy_definition() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_asset_model_response() :: #{
@@ -1579,6 +1750,7 @@
 %% }
 -type describe_asset_model_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_asset_property_value_success_entry() :: #{
 %%   <<"assetPropertyValue">> => asset_property_value(),
@@ -1586,15 +1758,18 @@
 %% }
 -type batch_get_asset_property_value_success_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_portals_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"portalSummaries">> => list(portal_summary()())
 %% }
 -type list_portals_response() :: #{binary() => any()}.
+
 %% Example:
 %% parquet() :: #{}
 -type parquet() :: #{}.
+
 
 %% Example:
 %% put_storage_configuration_request() :: #{
@@ -1606,15 +1781,18 @@
 %%   <<"warmTierRetentionPeriod">> => warm_tier_retention_period()
 %% }
 -type put_storage_configuration_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_project_response() :: #{}
 -type delete_project_response() :: #{}.
+
 
 %% Example:
 %% forwarding_config() :: #{
 %%   <<"state">> => list(any())
 %% }
 -type forwarding_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% gateway_platform() :: #{
@@ -1623,12 +1801,14 @@
 %% }
 -type gateway_platform() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_dashboard_response() :: #{
 %%   <<"dashboardArn">> => string(),
 %%   <<"dashboardId">> => string()
 %% }
 -type create_dashboard_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_project_request() :: #{
@@ -1638,6 +1818,7 @@
 %% }
 -type update_project_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_gateway_request() :: #{
 %%   <<"gatewayName">> := string(),
@@ -1645,6 +1826,7 @@
 %%   <<"tags">> => map()
 %% }
 -type create_gateway_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_bulk_import_job_response() :: #{
@@ -1654,6 +1836,7 @@
 %% }
 -type create_bulk_import_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_asset_model_properties_request() :: #{
 %%   <<"filter">> => list(any()),
@@ -1661,6 +1844,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_asset_model_properties_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_access_policy_response() :: #{
@@ -1674,12 +1858,14 @@
 %% }
 -type describe_access_policy_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_model_composite_model_path_segment() :: #{
 %%   <<"id">> => string(),
 %%   <<"name">> => string()
 %% }
 -type asset_model_composite_model_path_segment() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_interpolated_asset_property_values_response() :: #{
@@ -1688,11 +1874,13 @@
 %% }
 -type get_interpolated_asset_property_values_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_asset_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
 -type delete_asset_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% image() :: #{
@@ -1701,6 +1889,7 @@
 %% }
 -type image() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_assets_request() :: #{
 %%   <<"childAssetId">> := string(),
@@ -1708,6 +1897,7 @@
 %%   <<"hierarchyId">> := string()
 %% }
 -type associate_assets_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_get_asset_property_aggregates_entry() :: #{
@@ -1724,6 +1914,7 @@
 %% }
 -type batch_get_asset_property_aggregates_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_asset_property_value_response() :: #{
 %%   <<"errorEntries">> => list(batch_get_asset_property_value_error_entry()()),
@@ -1733,6 +1924,7 @@
 %% }
 -type batch_get_asset_property_value_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% transform() :: #{
 %%   <<"expression">> => string(),
@@ -1741,11 +1933,13 @@
 %% }
 -type transform() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_asset_property_value_history_request() :: #{
@@ -1761,12 +1955,14 @@
 %% }
 -type get_asset_property_value_history_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_relationship_summary() :: #{
 %%   <<"hierarchyInfo">> => asset_hierarchy_info(),
 %%   <<"relationshipType">> => list(any())
 %% }
 -type asset_relationship_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_composite_model_summary() :: #{
@@ -1779,6 +1975,7 @@
 %% }
 -type asset_composite_model_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_asset_response() :: #{
 %%   <<"assetArn">> => string(),
@@ -1786,6 +1983,7 @@
 %%   <<"assetStatus">> => asset_status()
 %% }
 -type create_asset_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_access_policy_request() :: #{
@@ -1796,6 +1994,7 @@
 %% }
 -type update_access_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_asset_request() :: #{
 %%   <<"assetDescription">> => string(),
@@ -1804,9 +2003,11 @@
 %%   <<"clientToken">> => string()
 %% }
 -type update_asset_request() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% dashboard_summary() :: #{
@@ -1818,17 +2019,20 @@
 %% }
 -type dashboard_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_logging_options_request() :: #{
 %%   <<"loggingOptions">> := logging_options()
 %% }
 -type put_logging_options_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% measurement_processing_config() :: #{
 %%   <<"forwardingConfig">> => forwarding_config()
 %% }
 -type measurement_processing_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% property_type() :: #{
@@ -1839,6 +2043,7 @@
 %% }
 -type property_type() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_time_series_request() :: #{
 %%   <<"alias">> => string(),
@@ -1847,18 +2052,22 @@
 %%   <<"propertyId">> => string()
 %% }
 -type delete_time_series_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_gateway_request() :: #{}
 -type delete_gateway_request() :: #{}.
+
 %% Example:
 %% describe_gateway_request() :: #{}
 -type describe_gateway_request() :: #{}.
+
 
 %% Example:
 %% batch_disassociate_project_assets_response() :: #{
 %%   <<"errors">> => list(asset_error_details()())
 %% }
 -type batch_disassociate_project_assets_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_portal_request() :: #{
@@ -1873,6 +2082,7 @@
 %% }
 -type update_portal_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_storage_configuration_response() :: #{
 %%   <<"configurationStatus">> => configuration_status(),
@@ -1886,6 +2096,7 @@
 %% }
 -type describe_storage_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_error_details() :: #{
 %%   <<"assetId">> => string(),
@@ -1894,12 +2105,14 @@
 %% }
 -type asset_error_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% time_in_nanos() :: #{
 %%   <<"offsetInNanos">> => integer(),
 %%   <<"timeInSeconds">> => float()
 %% }
 -type time_in_nanos() :: #{binary() => any()}.
+
 
 %% Example:
 %% tumbling_window() :: #{
@@ -1908,11 +2121,13 @@
 %% }
 -type tumbling_window() :: #{binary() => any()}.
 
+
 %% Example:
 %% measurement() :: #{
 %%   <<"processingConfig">> => measurement_processing_config()
 %% }
 -type measurement() :: #{binary() => any()}.
+
 
 %% Example:
 %% validation_exception() :: #{
@@ -1920,11 +2135,13 @@
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_request() :: #{
 %%   <<"resourceArn">> := string()
 %% }
 -type list_tags_for_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_get_asset_property_value_history_error_info() :: #{
@@ -1933,11 +2150,13 @@
 %% }
 -type batch_get_asset_property_value_history_error_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_asset_model_composite_model_response() :: #{
 %%   <<"assetModelStatus">> => asset_model_status()
 %% }
 -type delete_asset_model_composite_model_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% property() :: #{
@@ -1953,6 +2172,7 @@
 %% }
 -type property() :: #{binary() => any()}.
 
+
 %% Example:
 %% execute_query_response() :: #{
 %%   <<"columns">> => list(column_info()()),
@@ -1961,11 +2181,13 @@
 %% }
 -type execute_query_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% query_timeout_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type query_timeout_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_asset_property_value_history_response() :: #{
@@ -1973,6 +2195,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type get_asset_property_value_history_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_model_composite_model_summary() :: #{
@@ -1985,6 +2208,7 @@
 %% }
 -type asset_model_composite_model_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_composition_relationships_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -1992,17 +2216,20 @@
 %% }
 -type list_composition_relationships_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% composition_details() :: #{
 %%   <<"compositionRelationship">> => list(composition_relationship_item()())
 %% }
 -type composition_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_project_request() :: #{
@@ -2013,6 +2240,7 @@
 %%   <<"tags">> => map()
 %% }
 -type create_project_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_gateway_response() :: #{
@@ -2026,12 +2254,14 @@
 %% }
 -type describe_gateway_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_asset_property_value_request() :: #{
 %%   <<"entries">> := list(batch_get_asset_property_value_entry()()),
 %%   <<"nextToken">> => string()
 %% }
 -type batch_get_asset_property_value_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% disassociate_assets_request() :: #{
@@ -2041,6 +2271,7 @@
 %% }
 -type disassociate_assets_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_asset_property_value_history_success_entry() :: #{
 %%   <<"assetPropertyValueHistory">> => list(asset_property_value()()),
@@ -2048,12 +2279,14 @@
 %% }
 -type batch_get_asset_property_value_history_success_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_property_path_segment() :: #{
 %%   <<"id">> => string(),
 %%   <<"name">> => string()
 %% }
 -type asset_property_path_segment() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_time_series_request() :: #{
@@ -2065,6 +2298,7 @@
 %% }
 -type list_time_series_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_projects_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -2072,6 +2306,7 @@
 %%   <<"portalId">> := string()
 %% }
 -type list_projects_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_dashboard_request() :: #{
@@ -2084,6 +2319,7 @@
 %% }
 -type create_dashboard_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_asset_model_composite_model_request() :: #{
 %%   <<"assetModelCompositeModelDescription">> => string(),
@@ -2094,12 +2330,14 @@
 %% }
 -type update_asset_model_composite_model_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_asset_relationships_response() :: #{
 %%   <<"assetRelationshipSummaries">> => list(asset_relationship_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_asset_relationships_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% aggregates() :: #{
@@ -2112,6 +2350,7 @@
 %% }
 -type aggregates() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_asset_model_properties_response() :: #{
 %%   <<"assetModelPropertySummaries">> => list(asset_model_property_summary()()),
@@ -2119,11 +2358,13 @@
 %% }
 -type list_asset_model_properties_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% attribute() :: #{
 %%   <<"defaultValue">> => string()
 %% }
 -type attribute() :: #{binary() => any()}.
+
 
 %% Example:
 %% portal_summary() :: #{
@@ -2138,11 +2379,13 @@
 %% }
 -type portal_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_assets_request() :: #{
@@ -2153,6 +2396,7 @@
 %% }
 -type list_assets_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_disassociate_project_assets_request() :: #{
 %%   <<"assetIds">> := list(string()()),
@@ -2160,11 +2404,13 @@
 %% }
 -type batch_disassociate_project_assets_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_put_asset_property_value_response() :: #{
 %%   <<"errorEntries">> => list(batch_put_asset_property_error_entry()())
 %% }
 -type batch_put_asset_property_value_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_asset_composite_model_response() :: #{
@@ -2181,20 +2427,24 @@
 %% }
 -type describe_asset_composite_model_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% composition_relationship_item() :: #{
 %%   <<"id">> => string()
 %% }
 -type composition_relationship_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% logging_options() :: #{
 %%   <<"level">> => list(any())
 %% }
 -type logging_options() :: #{binary() => any()}.
+
 %% Example:
 %% describe_dashboard_request() :: #{}
 -type describe_dashboard_request() :: #{}.
+
 
 %% Example:
 %% list_asset_properties_response() :: #{
@@ -2203,6 +2453,7 @@
 %% }
 -type list_asset_properties_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_hierarchy() :: #{
 %%   <<"externalId">> => string(),
@@ -2210,6 +2461,7 @@
 %%   <<"name">> => string()
 %% }
 -type asset_hierarchy() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_model_property_definition() :: #{
@@ -2223,6 +2475,7 @@
 %% }
 -type asset_model_property_definition() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_hierarchy_info() :: #{
 %%   <<"childAssetId">> => string(),
@@ -2230,12 +2483,14 @@
 %% }
 -type asset_hierarchy_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_put_asset_property_error_entry() :: #{
 %%   <<"entryId">> => string(),
 %%   <<"errors">> => list(batch_put_asset_property_error()())
 %% }
 -type batch_put_asset_property_error_entry() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_asset_properties_request() :: #{
@@ -2245,6 +2500,7 @@
 %% }
 -type list_asset_properties_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% variable_value() :: #{
 %%   <<"hierarchyId">> => string(),
@@ -2252,9 +2508,11 @@
 %%   <<"propertyPath">> => list(asset_model_property_path_segment()())
 %% }
 -type variable_value() :: #{binary() => any()}.
+
 %% Example:
 %% describe_portal_request() :: #{}
 -type describe_portal_request() :: #{}.
+
 
 %% Example:
 %% resource_already_exists_exception() :: #{
@@ -2264,12 +2522,14 @@
 %% }
 -type resource_already_exists_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% column_info() :: #{
 %%   <<"name">> => string(),
 %%   <<"type">> => column_type()
 %% }
 -type column_info() :: #{binary() => any()}.
+
 
 %% Example:
 %% time_series_summary() :: #{
@@ -2285,11 +2545,13 @@
 %% }
 -type time_series_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_project_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
 -type delete_project_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_asset_model_request() :: #{
@@ -2306,6 +2568,7 @@
 %% }
 -type create_asset_model_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% execute_action_request() :: #{
 %%   <<"actionDefinitionId">> := string(),
@@ -2315,6 +2578,7 @@
 %% }
 -type execute_action_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_put_asset_property_error() :: #{
 %%   <<"errorCode">> => list(any()),
@@ -2323,6 +2587,7 @@
 %% }
 -type batch_put_asset_property_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_assets_response() :: #{
 %%   <<"assetSummaries">> => list(asset_summary()()),
@@ -2330,11 +2595,13 @@
 %% }
 -type list_assets_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_asset_model_response() :: #{
 %%   <<"assetModelStatus">> => asset_model_status()
 %% }
 -type update_asset_model_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_asset_request() :: #{
@@ -2342,12 +2609,14 @@
 %% }
 -type describe_asset_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_dashboards_response() :: #{
 %%   <<"dashboardSummaries">> => list(dashboard_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_dashboards_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_get_asset_property_value_entry() :: #{
@@ -2358,6 +2627,7 @@
 %% }
 -type batch_get_asset_property_value_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_gateways_response() :: #{
 %%   <<"gatewaySummaries">> => list(gateway_summary()()),
@@ -2365,12 +2635,14 @@
 %% }
 -type list_gateways_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_asset_property_aggregates_error_info() :: #{
 %%   <<"errorCode">> => list(any()),
 %%   <<"errorTimestamp">> => non_neg_integer()
 %% }
 -type batch_get_asset_property_aggregates_error_info() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_access_policy_request() :: #{
@@ -2382,6 +2654,7 @@
 %% }
 -type create_access_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_default_encryption_configuration_request() :: #{
 %%   <<"encryptionType">> := list(any()),
@@ -2389,11 +2662,13 @@
 %% }
 -type put_default_encryption_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% greengrass_v2() :: #{
 %%   <<"coreDeviceThingName">> => string()
 %% }
 -type greengrass_v2() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_get_asset_property_value_history_entry() :: #{
@@ -2407,6 +2682,7 @@
 %%   <<"timeOrdering">> => list(any())
 %% }
 -type batch_get_asset_property_value_history_entry() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_asset_property_aggregates_request() :: #{
@@ -2424,6 +2700,7 @@
 %% }
 -type get_asset_property_aggregates_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% variant() :: #{
 %%   <<"booleanValue">> => boolean(),
@@ -2433,6 +2710,7 @@
 %% }
 -type variant() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_asset_models_request() :: #{
 %%   <<"assetModelTypes">> => list(list(any())()),
@@ -2441,6 +2719,7 @@
 %% }
 -type list_asset_models_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_tags_exception() :: #{
 %%   <<"message">> => string(),
@@ -2448,15 +2727,18 @@
 %% }
 -type too_many_tags_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_associated_assets_response() :: #{
 %%   <<"assetSummaries">> => list(associated_assets_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_associated_assets_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_storage_configuration_request() :: #{}
 -type describe_storage_configuration_request() :: #{}.
+
 
 %% Example:
 %% update_asset_model_composite_model_response() :: #{
@@ -2465,6 +2747,7 @@
 %% }
 -type update_asset_model_composite_model_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% action_definition() :: #{
 %%   <<"actionDefinitionId">> => string(),
@@ -2472,6 +2755,7 @@
 %%   <<"actionType">> => string()
 %% }
 -type action_definition() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_model_property_summary() :: #{
@@ -2487,11 +2771,13 @@
 %% }
 -type asset_model_property_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% column_type() :: #{
 %%   <<"scalarType">> => list(any())
 %% }
 -type column_type() :: #{binary() => any()}.
+
 
 %% Example:
 %% associate_time_series_to_asset_property_request() :: #{
@@ -2502,6 +2788,7 @@
 %% }
 -type associate_time_series_to_asset_property_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource() :: #{
 %%   <<"portal">> => portal_resource(),
@@ -2509,12 +2796,580 @@
 %% }
 -type resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_bulk_import_jobs_response() :: #{
 %%   <<"jobSummaries">> => list(job_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_bulk_import_jobs_response() :: #{binary() => any()}.
+
+-type associate_assets_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type associate_time_series_to_asset_property_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type batch_associate_project_assets_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type batch_disassociate_project_assets_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type batch_get_asset_property_aggregates_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type batch_get_asset_property_value_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type batch_get_asset_property_value_history_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type batch_put_asset_property_value_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type create_access_policy_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type create_asset_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type create_asset_model_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type create_asset_model_composite_model_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type create_bulk_import_job_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type create_dashboard_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type create_gateway_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type create_portal_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type create_project_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type delete_access_policy_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type delete_asset_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type delete_asset_model_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type delete_asset_model_composite_model_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type delete_dashboard_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type delete_gateway_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type delete_portal_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type delete_project_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type delete_time_series_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type describe_access_policy_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_action_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_asset_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_asset_composite_model_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_asset_model_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_asset_model_composite_model_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_asset_property_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_bulk_import_job_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_dashboard_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_default_encryption_configuration_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type describe_gateway_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_gateway_capability_configuration_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_logging_options_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_portal_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_project_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_storage_configuration_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type describe_time_series_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type disassociate_assets_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type disassociate_time_series_from_asset_property_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type execute_action_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type execute_query_errors() ::
+    throttling_exception() | 
+    query_timeout_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type get_asset_property_aggregates_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type get_asset_property_value_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type get_asset_property_value_history_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type get_interpolated_asset_property_values_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_access_policies_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_actions_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_asset_model_composite_models_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_asset_model_properties_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_asset_models_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_asset_properties_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_asset_relationships_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_assets_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_associated_assets_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_bulk_import_jobs_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_composition_relationships_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_dashboards_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_gateways_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_portals_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_project_assets_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_projects_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_tags_for_resource_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type list_time_series_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type put_default_encryption_configuration_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type put_logging_options_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type put_storage_configuration_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type untag_resource_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type update_access_policy_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type update_asset_errors() ::
+    resource_already_exists_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type update_asset_model_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type update_asset_model_composite_model_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type update_asset_property_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type update_dashboard_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type update_gateway_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type update_gateway_capability_configuration_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type update_portal_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type update_project_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
 
 %%====================================================================
 %% API
@@ -2531,26 +3386,14 @@
 -spec associate_assets(map(), binary() | list(), associate_assets_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_assets_errors(), tuple()}.
 associate_assets(Client, AssetId, Input) ->
     associate_assets(Client, AssetId, Input, []).
 
 -spec associate_assets(map(), binary() | list(), associate_assets_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_assets_errors(), tuple()}.
 associate_assets(Client, AssetId, Input0, Options0) ->
     Method = post,
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/associate"],
@@ -2577,22 +3420,14 @@ associate_assets(Client, AssetId, Input0, Options0) ->
 -spec associate_time_series_to_asset_property(map(), associate_time_series_to_asset_property_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_time_series_to_asset_property_errors(), tuple()}.
 associate_time_series_to_asset_property(Client, Input) ->
     associate_time_series_to_asset_property(Client, Input, []).
 
 -spec associate_time_series_to_asset_property(map(), associate_time_series_to_asset_property_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_time_series_to_asset_property_errors(), tuple()}.
 associate_time_series_to_asset_property(Client, Input0, Options0) ->
     Method = post,
     Path = ["/timeseries/associate"],
@@ -2623,22 +3458,14 @@ associate_time_series_to_asset_property(Client, Input0, Options0) ->
 -spec batch_associate_project_assets(map(), binary() | list(), batch_associate_project_assets_request()) ->
     {ok, batch_associate_project_assets_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_associate_project_assets_errors(), tuple()}.
 batch_associate_project_assets(Client, ProjectId, Input) ->
     batch_associate_project_assets(Client, ProjectId, Input, []).
 
 -spec batch_associate_project_assets(map(), binary() | list(), batch_associate_project_assets_request(), proplists:proplist()) ->
     {ok, batch_associate_project_assets_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_associate_project_assets_errors(), tuple()}.
 batch_associate_project_assets(Client, ProjectId, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(ProjectId), "/assets/associate"],
@@ -2666,20 +3493,14 @@ batch_associate_project_assets(Client, ProjectId, Input0, Options0) ->
 -spec batch_disassociate_project_assets(map(), binary() | list(), batch_disassociate_project_assets_request()) ->
     {ok, batch_disassociate_project_assets_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_disassociate_project_assets_errors(), tuple()}.
 batch_disassociate_project_assets(Client, ProjectId, Input) ->
     batch_disassociate_project_assets(Client, ProjectId, Input, []).
 
 -spec batch_disassociate_project_assets(map(), binary() | list(), batch_disassociate_project_assets_request(), proplists:proplist()) ->
     {ok, batch_disassociate_project_assets_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_disassociate_project_assets_errors(), tuple()}.
 batch_disassociate_project_assets(Client, ProjectId, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(ProjectId), "/assets/disassociate"],
@@ -2713,20 +3534,14 @@ batch_disassociate_project_assets(Client, ProjectId, Input0, Options0) ->
 -spec batch_get_asset_property_aggregates(map(), batch_get_asset_property_aggregates_request()) ->
     {ok, batch_get_asset_property_aggregates_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_get_asset_property_aggregates_errors(), tuple()}.
 batch_get_asset_property_aggregates(Client, Input) ->
     batch_get_asset_property_aggregates(Client, Input, []).
 
 -spec batch_get_asset_property_aggregates(map(), batch_get_asset_property_aggregates_request(), proplists:proplist()) ->
     {ok, batch_get_asset_property_aggregates_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_get_asset_property_aggregates_errors(), tuple()}.
 batch_get_asset_property_aggregates(Client, Input0, Options0) ->
     Method = post,
     Path = ["/properties/batch/aggregates"],
@@ -2758,20 +3573,14 @@ batch_get_asset_property_aggregates(Client, Input0, Options0) ->
 -spec batch_get_asset_property_value(map(), batch_get_asset_property_value_request()) ->
     {ok, batch_get_asset_property_value_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_get_asset_property_value_errors(), tuple()}.
 batch_get_asset_property_value(Client, Input) ->
     batch_get_asset_property_value(Client, Input, []).
 
 -spec batch_get_asset_property_value(map(), batch_get_asset_property_value_request(), proplists:proplist()) ->
     {ok, batch_get_asset_property_value_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_get_asset_property_value_errors(), tuple()}.
 batch_get_asset_property_value(Client, Input0, Options0) ->
     Method = post,
     Path = ["/properties/batch/latest"],
@@ -2803,20 +3612,14 @@ batch_get_asset_property_value(Client, Input0, Options0) ->
 -spec batch_get_asset_property_value_history(map(), batch_get_asset_property_value_history_request()) ->
     {ok, batch_get_asset_property_value_history_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_get_asset_property_value_history_errors(), tuple()}.
 batch_get_asset_property_value_history(Client, Input) ->
     batch_get_asset_property_value_history(Client, Input, []).
 
 -spec batch_get_asset_property_value_history(map(), batch_get_asset_property_value_history_request(), proplists:proplist()) ->
     {ok, batch_get_asset_property_value_history_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_get_asset_property_value_history_errors(), tuple()}.
 batch_get_asset_property_value_history(Client, Input0, Options0) ->
     Method = post,
     Path = ["/properties/batch/history"],
@@ -2878,26 +3681,14 @@ batch_get_asset_property_value_history(Client, Input0, Options0) ->
 -spec batch_put_asset_property_value(map(), batch_put_asset_property_value_request()) ->
     {ok, batch_put_asset_property_value_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_put_asset_property_value_errors(), tuple()}.
 batch_put_asset_property_value(Client, Input) ->
     batch_put_asset_property_value(Client, Input, []).
 
 -spec batch_put_asset_property_value(map(), batch_put_asset_property_value_request(), proplists:proplist()) ->
     {ok, batch_put_asset_property_value_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_put_asset_property_value_errors(), tuple()}.
 batch_put_asset_property_value(Client, Input0, Options0) ->
     Method = post,
     Path = ["/properties"],
@@ -2927,22 +3718,14 @@ batch_put_asset_property_value(Client, Input0, Options0) ->
 -spec create_access_policy(map(), create_access_policy_request()) ->
     {ok, create_access_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_access_policy_errors(), tuple()}.
 create_access_policy(Client, Input) ->
     create_access_policy(Client, Input, []).
 
 -spec create_access_policy(map(), create_access_policy_request(), proplists:proplist()) ->
     {ok, create_access_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_access_policy_errors(), tuple()}.
 create_access_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/access-policies"],
@@ -2974,26 +3757,14 @@ create_access_policy(Client, Input0, Options0) ->
 -spec create_asset(map(), create_asset_request()) ->
     {ok, create_asset_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_asset_errors(), tuple()}.
 create_asset(Client, Input) ->
     create_asset(Client, Input, []).
 
 -spec create_asset(map(), create_asset_request(), proplists:proplist()) ->
     {ok, create_asset_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_asset_errors(), tuple()}.
 create_asset(Client, Input0, Options0) ->
     Method = post,
     Path = ["/assets"],
@@ -3043,26 +3814,14 @@ create_asset(Client, Input0, Options0) ->
 -spec create_asset_model(map(), create_asset_model_request()) ->
     {ok, create_asset_model_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_asset_model_errors(), tuple()}.
 create_asset_model(Client, Input) ->
     create_asset_model(Client, Input, []).
 
 -spec create_asset_model(map(), create_asset_model_request(), proplists:proplist()) ->
     {ok, create_asset_model_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_asset_model_errors(), tuple()}.
 create_asset_model(Client, Input0, Options0) ->
     Method = post,
     Path = ["/asset-models"],
@@ -3119,26 +3878,14 @@ create_asset_model(Client, Input0, Options0) ->
 -spec create_asset_model_composite_model(map(), binary() | list(), create_asset_model_composite_model_request()) ->
     {ok, create_asset_model_composite_model_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_asset_model_composite_model_errors(), tuple()}.
 create_asset_model_composite_model(Client, AssetModelId, Input) ->
     create_asset_model_composite_model(Client, AssetModelId, Input, []).
 
 -spec create_asset_model_composite_model(map(), binary() | list(), create_asset_model_composite_model_request(), proplists:proplist()) ->
     {ok, create_asset_model_composite_model_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_asset_model_composite_model_errors(), tuple()}.
 create_asset_model_composite_model(Client, AssetModelId, Input0, Options0) ->
     Method = post,
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), "/composite-models"],
@@ -3180,26 +3927,14 @@ create_asset_model_composite_model(Client, AssetModelId, Input0, Options0) ->
 -spec create_bulk_import_job(map(), create_bulk_import_job_request()) ->
     {ok, create_bulk_import_job_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_bulk_import_job_errors(), tuple()}.
 create_bulk_import_job(Client, Input) ->
     create_bulk_import_job(Client, Input, []).
 
 -spec create_bulk_import_job(map(), create_bulk_import_job_request(), proplists:proplist()) ->
     {ok, create_bulk_import_job_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_bulk_import_job_errors(), tuple()}.
 create_bulk_import_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/jobs"],
@@ -3226,22 +3961,14 @@ create_bulk_import_job(Client, Input0, Options0) ->
 -spec create_dashboard(map(), create_dashboard_request()) ->
     {ok, create_dashboard_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_dashboard_errors(), tuple()}.
 create_dashboard(Client, Input) ->
     create_dashboard(Client, Input, []).
 
 -spec create_dashboard(map(), create_dashboard_request(), proplists:proplist()) ->
     {ok, create_dashboard_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_dashboard_errors(), tuple()}.
 create_dashboard(Client, Input0, Options0) ->
     Method = post,
     Path = ["/dashboards"],
@@ -3275,22 +4002,14 @@ create_dashboard(Client, Input0, Options0) ->
 -spec create_gateway(map(), create_gateway_request()) ->
     {ok, create_gateway_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_gateway_errors(), tuple()}.
 create_gateway(Client, Input) ->
     create_gateway(Client, Input, []).
 
 -spec create_gateway(map(), create_gateway_request(), proplists:proplist()) ->
     {ok, create_gateway_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_gateway_errors(), tuple()}.
 create_gateway(Client, Input0, Options0) ->
     Method = post,
     Path = ["/20200301/gateways"],
@@ -3327,22 +4046,14 @@ create_gateway(Client, Input0, Options0) ->
 -spec create_portal(map(), create_portal_request()) ->
     {ok, create_portal_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_portal_errors(), tuple()}.
 create_portal(Client, Input) ->
     create_portal(Client, Input, []).
 
 -spec create_portal(map(), create_portal_request(), proplists:proplist()) ->
     {ok, create_portal_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_portal_errors(), tuple()}.
 create_portal(Client, Input0, Options0) ->
     Method = post,
     Path = ["/portals"],
@@ -3373,22 +4084,14 @@ create_portal(Client, Input0, Options0) ->
 -spec create_project(map(), create_project_request()) ->
     {ok, create_project_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_project_errors(), tuple()}.
 create_project(Client, Input) ->
     create_project(Client, Input, []).
 
 -spec create_project(map(), create_project_request(), proplists:proplist()) ->
     {ok, create_project_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_project_errors(), tuple()}.
 create_project(Client, Input0, Options0) ->
     Method = post,
     Path = ["/projects"],
@@ -3420,20 +4123,14 @@ create_project(Client, Input0, Options0) ->
 -spec delete_access_policy(map(), binary() | list(), delete_access_policy_request()) ->
     {ok, delete_access_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_access_policy_errors(), tuple()}.
 delete_access_policy(Client, AccessPolicyId, Input) ->
     delete_access_policy(Client, AccessPolicyId, Input, []).
 
 -spec delete_access_policy(map(), binary() | list(), delete_access_policy_request(), proplists:proplist()) ->
     {ok, delete_access_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_access_policy_errors(), tuple()}.
 delete_access_policy(Client, AccessPolicyId, Input0, Options0) ->
     Method = delete,
     Path = ["/access-policies/", aws_util:encode_uri(AccessPolicyId), ""],
@@ -3472,22 +4169,14 @@ delete_access_policy(Client, AccessPolicyId, Input0, Options0) ->
 -spec delete_asset(map(), binary() | list(), delete_asset_request()) ->
     {ok, delete_asset_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_asset_errors(), tuple()}.
 delete_asset(Client, AssetId, Input) ->
     delete_asset(Client, AssetId, Input, []).
 
 -spec delete_asset(map(), binary() | list(), delete_asset_request(), proplists:proplist()) ->
     {ok, delete_asset_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_asset_errors(), tuple()}.
 delete_asset(Client, AssetId, Input0, Options0) ->
     Method = delete,
     Path = ["/assets/", aws_util:encode_uri(AssetId), ""],
@@ -3526,22 +4215,14 @@ delete_asset(Client, AssetId, Input0, Options0) ->
 -spec delete_asset_model(map(), binary() | list(), delete_asset_model_request()) ->
     {ok, delete_asset_model_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_asset_model_errors(), tuple()}.
 delete_asset_model(Client, AssetModelId, Input) ->
     delete_asset_model(Client, AssetModelId, Input, []).
 
 -spec delete_asset_model(map(), binary() | list(), delete_asset_model_request(), proplists:proplist()) ->
     {ok, delete_asset_model_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_asset_model_errors(), tuple()}.
 delete_asset_model(Client, AssetModelId, Input0, Options0) ->
     Method = delete,
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), ""],
@@ -3580,22 +4261,14 @@ delete_asset_model(Client, AssetModelId, Input0, Options0) ->
 -spec delete_asset_model_composite_model(map(), binary() | list(), binary() | list(), delete_asset_model_composite_model_request()) ->
     {ok, delete_asset_model_composite_model_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_asset_model_composite_model_errors(), tuple()}.
 delete_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, Input) ->
     delete_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, Input, []).
 
 -spec delete_asset_model_composite_model(map(), binary() | list(), binary() | list(), delete_asset_model_composite_model_request(), proplists:proplist()) ->
     {ok, delete_asset_model_composite_model_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_asset_model_composite_model_errors(), tuple()}.
 delete_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, Input0, Options0) ->
     Method = delete,
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), "/composite-models/", aws_util:encode_uri(AssetModelCompositeModelId), ""],
@@ -3623,20 +4296,14 @@ delete_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetMode
 -spec delete_dashboard(map(), binary() | list(), delete_dashboard_request()) ->
     {ok, delete_dashboard_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_dashboard_errors(), tuple()}.
 delete_dashboard(Client, DashboardId, Input) ->
     delete_dashboard(Client, DashboardId, Input, []).
 
 -spec delete_dashboard(map(), binary() | list(), delete_dashboard_request(), proplists:proplist()) ->
     {ok, delete_dashboard_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_dashboard_errors(), tuple()}.
 delete_dashboard(Client, DashboardId, Input0, Options0) ->
     Method = delete,
     Path = ["/dashboards/", aws_util:encode_uri(DashboardId), ""],
@@ -3667,20 +4334,14 @@ delete_dashboard(Client, DashboardId, Input0, Options0) ->
 -spec delete_gateway(map(), binary() | list(), delete_gateway_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_gateway_errors(), tuple()}.
 delete_gateway(Client, GatewayId, Input) ->
     delete_gateway(Client, GatewayId, Input, []).
 
 -spec delete_gateway(map(), binary() | list(), delete_gateway_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_gateway_errors(), tuple()}.
 delete_gateway(Client, GatewayId, Input0, Options0) ->
     Method = delete,
     Path = ["/20200301/gateways/", aws_util:encode_uri(GatewayId), ""],
@@ -3707,22 +4368,14 @@ delete_gateway(Client, GatewayId, Input0, Options0) ->
 -spec delete_portal(map(), binary() | list(), delete_portal_request()) ->
     {ok, delete_portal_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_portal_errors(), tuple()}.
 delete_portal(Client, PortalId, Input) ->
     delete_portal(Client, PortalId, Input, []).
 
 -spec delete_portal(map(), binary() | list(), delete_portal_request(), proplists:proplist()) ->
     {ok, delete_portal_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_portal_errors(), tuple()}.
 delete_portal(Client, PortalId, Input0, Options0) ->
     Method = delete,
     Path = ["/portals/", aws_util:encode_uri(PortalId), ""],
@@ -3750,20 +4403,14 @@ delete_portal(Client, PortalId, Input0, Options0) ->
 -spec delete_project(map(), binary() | list(), delete_project_request()) ->
     {ok, delete_project_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_project_errors(), tuple()}.
 delete_project(Client, ProjectId, Input) ->
     delete_project(Client, ProjectId, Input, []).
 
 -spec delete_project(map(), binary() | list(), delete_project_request(), proplists:proplist()) ->
     {ok, delete_project_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_project_errors(), tuple()}.
 delete_project(Client, ProjectId, Input0, Options0) ->
     Method = delete,
     Path = ["/projects/", aws_util:encode_uri(ProjectId), ""],
@@ -3808,22 +4455,14 @@ delete_project(Client, ProjectId, Input0, Options0) ->
 -spec delete_time_series(map(), delete_time_series_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_time_series_errors(), tuple()}.
 delete_time_series(Client, Input) ->
     delete_time_series(Client, Input, []).
 
 -spec delete_time_series(map(), delete_time_series_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_time_series_errors(), tuple()}.
 delete_time_series(Client, Input0, Options0) ->
     Method = post,
     Path = ["/timeseries/delete"],
@@ -3855,10 +4494,7 @@ delete_time_series(Client, Input0, Options0) ->
 -spec describe_access_policy(map(), binary() | list()) ->
     {ok, describe_access_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_access_policy_errors(), tuple()}.
 describe_access_policy(Client, AccessPolicyId)
   when is_map(Client) ->
     describe_access_policy(Client, AccessPolicyId, #{}, #{}).
@@ -3866,10 +4502,7 @@ describe_access_policy(Client, AccessPolicyId)
 -spec describe_access_policy(map(), binary() | list(), map(), map()) ->
     {ok, describe_access_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_access_policy_errors(), tuple()}.
 describe_access_policy(Client, AccessPolicyId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_access_policy(Client, AccessPolicyId, QueryMap, HeadersMap, []).
@@ -3877,10 +4510,7 @@ describe_access_policy(Client, AccessPolicyId, QueryMap, HeadersMap)
 -spec describe_access_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_access_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_access_policy_errors(), tuple()}.
 describe_access_policy(Client, AccessPolicyId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/access-policies/", aws_util:encode_uri(AccessPolicyId), ""],
@@ -3901,10 +4531,7 @@ describe_access_policy(Client, AccessPolicyId, QueryMap, HeadersMap, Options0)
 -spec describe_action(map(), binary() | list()) ->
     {ok, describe_action_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_action_errors(), tuple()}.
 describe_action(Client, ActionId)
   when is_map(Client) ->
     describe_action(Client, ActionId, #{}, #{}).
@@ -3912,10 +4539,7 @@ describe_action(Client, ActionId)
 -spec describe_action(map(), binary() | list(), map(), map()) ->
     {ok, describe_action_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_action_errors(), tuple()}.
 describe_action(Client, ActionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_action(Client, ActionId, QueryMap, HeadersMap, []).
@@ -3923,10 +4547,7 @@ describe_action(Client, ActionId, QueryMap, HeadersMap)
 -spec describe_action(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_action_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_action_errors(), tuple()}.
 describe_action(Client, ActionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/actions/", aws_util:encode_uri(ActionId), ""],
@@ -3947,10 +4568,7 @@ describe_action(Client, ActionId, QueryMap, HeadersMap, Options0)
 -spec describe_asset(map(), binary() | list()) ->
     {ok, describe_asset_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_asset_errors(), tuple()}.
 describe_asset(Client, AssetId)
   when is_map(Client) ->
     describe_asset(Client, AssetId, #{}, #{}).
@@ -3958,10 +4576,7 @@ describe_asset(Client, AssetId)
 -spec describe_asset(map(), binary() | list(), map(), map()) ->
     {ok, describe_asset_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_asset_errors(), tuple()}.
 describe_asset(Client, AssetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_asset(Client, AssetId, QueryMap, HeadersMap, []).
@@ -3969,10 +4584,7 @@ describe_asset(Client, AssetId, QueryMap, HeadersMap)
 -spec describe_asset(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_asset_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_asset_errors(), tuple()}.
 describe_asset(Client, AssetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assets/", aws_util:encode_uri(AssetId), ""],
@@ -4004,10 +4616,7 @@ describe_asset(Client, AssetId, QueryMap, HeadersMap, Options0)
 -spec describe_asset_composite_model(map(), binary() | list(), binary() | list()) ->
     {ok, describe_asset_composite_model_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_asset_composite_model_errors(), tuple()}.
 describe_asset_composite_model(Client, AssetCompositeModelId, AssetId)
   when is_map(Client) ->
     describe_asset_composite_model(Client, AssetCompositeModelId, AssetId, #{}, #{}).
@@ -4015,10 +4624,7 @@ describe_asset_composite_model(Client, AssetCompositeModelId, AssetId)
 -spec describe_asset_composite_model(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_asset_composite_model_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_asset_composite_model_errors(), tuple()}.
 describe_asset_composite_model(Client, AssetCompositeModelId, AssetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_asset_composite_model(Client, AssetCompositeModelId, AssetId, QueryMap, HeadersMap, []).
@@ -4026,10 +4632,7 @@ describe_asset_composite_model(Client, AssetCompositeModelId, AssetId, QueryMap,
 -spec describe_asset_composite_model(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_asset_composite_model_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_asset_composite_model_errors(), tuple()}.
 describe_asset_composite_model(Client, AssetCompositeModelId, AssetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/composite-models/", aws_util:encode_uri(AssetCompositeModelId), ""],
@@ -4050,10 +4653,7 @@ describe_asset_composite_model(Client, AssetCompositeModelId, AssetId, QueryMap,
 -spec describe_asset_model(map(), binary() | list()) ->
     {ok, describe_asset_model_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_asset_model_errors(), tuple()}.
 describe_asset_model(Client, AssetModelId)
   when is_map(Client) ->
     describe_asset_model(Client, AssetModelId, #{}, #{}).
@@ -4061,10 +4661,7 @@ describe_asset_model(Client, AssetModelId)
 -spec describe_asset_model(map(), binary() | list(), map(), map()) ->
     {ok, describe_asset_model_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_asset_model_errors(), tuple()}.
 describe_asset_model(Client, AssetModelId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_asset_model(Client, AssetModelId, QueryMap, HeadersMap, []).
@@ -4072,10 +4669,7 @@ describe_asset_model(Client, AssetModelId, QueryMap, HeadersMap)
 -spec describe_asset_model(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_asset_model_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_asset_model_errors(), tuple()}.
 describe_asset_model(Client, AssetModelId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), ""],
@@ -4105,10 +4699,7 @@ describe_asset_model(Client, AssetModelId, QueryMap, HeadersMap, Options0)
 -spec describe_asset_model_composite_model(map(), binary() | list(), binary() | list()) ->
     {ok, describe_asset_model_composite_model_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_asset_model_composite_model_errors(), tuple()}.
 describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId)
   when is_map(Client) ->
     describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, #{}, #{}).
@@ -4116,10 +4707,7 @@ describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetMo
 -spec describe_asset_model_composite_model(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_asset_model_composite_model_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_asset_model_composite_model_errors(), tuple()}.
 describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, QueryMap, HeadersMap, []).
@@ -4127,10 +4715,7 @@ describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetMo
 -spec describe_asset_model_composite_model(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_asset_model_composite_model_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_asset_model_composite_model_errors(), tuple()}.
 describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), "/composite-models/", aws_util:encode_uri(AssetModelCompositeModelId), ""],
@@ -4163,10 +4748,7 @@ describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetMo
 -spec describe_asset_property(map(), binary() | list(), binary() | list()) ->
     {ok, describe_asset_property_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_asset_property_errors(), tuple()}.
 describe_asset_property(Client, AssetId, PropertyId)
   when is_map(Client) ->
     describe_asset_property(Client, AssetId, PropertyId, #{}, #{}).
@@ -4174,10 +4756,7 @@ describe_asset_property(Client, AssetId, PropertyId)
 -spec describe_asset_property(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_asset_property_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_asset_property_errors(), tuple()}.
 describe_asset_property(Client, AssetId, PropertyId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_asset_property(Client, AssetId, PropertyId, QueryMap, HeadersMap, []).
@@ -4185,10 +4764,7 @@ describe_asset_property(Client, AssetId, PropertyId, QueryMap, HeadersMap)
 -spec describe_asset_property(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_asset_property_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_asset_property_errors(), tuple()}.
 describe_asset_property(Client, AssetId, PropertyId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/properties/", aws_util:encode_uri(PropertyId), ""],
@@ -4214,10 +4790,7 @@ describe_asset_property(Client, AssetId, PropertyId, QueryMap, HeadersMap, Optio
 -spec describe_bulk_import_job(map(), binary() | list()) ->
     {ok, describe_bulk_import_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_bulk_import_job_errors(), tuple()}.
 describe_bulk_import_job(Client, JobId)
   when is_map(Client) ->
     describe_bulk_import_job(Client, JobId, #{}, #{}).
@@ -4225,10 +4798,7 @@ describe_bulk_import_job(Client, JobId)
 -spec describe_bulk_import_job(map(), binary() | list(), map(), map()) ->
     {ok, describe_bulk_import_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_bulk_import_job_errors(), tuple()}.
 describe_bulk_import_job(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_bulk_import_job(Client, JobId, QueryMap, HeadersMap, []).
@@ -4236,10 +4806,7 @@ describe_bulk_import_job(Client, JobId, QueryMap, HeadersMap)
 -spec describe_bulk_import_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_bulk_import_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_bulk_import_job_errors(), tuple()}.
 describe_bulk_import_job(Client, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
@@ -4260,10 +4827,7 @@ describe_bulk_import_job(Client, JobId, QueryMap, HeadersMap, Options0)
 -spec describe_dashboard(map(), binary() | list()) ->
     {ok, describe_dashboard_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_dashboard_errors(), tuple()}.
 describe_dashboard(Client, DashboardId)
   when is_map(Client) ->
     describe_dashboard(Client, DashboardId, #{}, #{}).
@@ -4271,10 +4835,7 @@ describe_dashboard(Client, DashboardId)
 -spec describe_dashboard(map(), binary() | list(), map(), map()) ->
     {ok, describe_dashboard_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_dashboard_errors(), tuple()}.
 describe_dashboard(Client, DashboardId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dashboard(Client, DashboardId, QueryMap, HeadersMap, []).
@@ -4282,10 +4843,7 @@ describe_dashboard(Client, DashboardId, QueryMap, HeadersMap)
 -spec describe_dashboard(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_dashboard_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_dashboard_errors(), tuple()}.
 describe_dashboard(Client, DashboardId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/dashboards/", aws_util:encode_uri(DashboardId), ""],
@@ -4313,9 +4871,7 @@ describe_dashboard(Client, DashboardId, QueryMap, HeadersMap, Options0)
 -spec describe_default_encryption_configuration(map()) ->
     {ok, describe_default_encryption_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_default_encryption_configuration_errors(), tuple()}.
 describe_default_encryption_configuration(Client)
   when is_map(Client) ->
     describe_default_encryption_configuration(Client, #{}, #{}).
@@ -4323,9 +4879,7 @@ describe_default_encryption_configuration(Client)
 -spec describe_default_encryption_configuration(map(), map(), map()) ->
     {ok, describe_default_encryption_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_default_encryption_configuration_errors(), tuple()}.
 describe_default_encryption_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_default_encryption_configuration(Client, QueryMap, HeadersMap, []).
@@ -4333,9 +4887,7 @@ describe_default_encryption_configuration(Client, QueryMap, HeadersMap)
 -spec describe_default_encryption_configuration(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_default_encryption_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_default_encryption_configuration_errors(), tuple()}.
 describe_default_encryption_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/configuration/account/encryption"],
@@ -4356,10 +4908,7 @@ describe_default_encryption_configuration(Client, QueryMap, HeadersMap, Options0
 -spec describe_gateway(map(), binary() | list()) ->
     {ok, describe_gateway_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_gateway_errors(), tuple()}.
 describe_gateway(Client, GatewayId)
   when is_map(Client) ->
     describe_gateway(Client, GatewayId, #{}, #{}).
@@ -4367,10 +4916,7 @@ describe_gateway(Client, GatewayId)
 -spec describe_gateway(map(), binary() | list(), map(), map()) ->
     {ok, describe_gateway_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_gateway_errors(), tuple()}.
 describe_gateway(Client, GatewayId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_gateway(Client, GatewayId, QueryMap, HeadersMap, []).
@@ -4378,10 +4924,7 @@ describe_gateway(Client, GatewayId, QueryMap, HeadersMap)
 -spec describe_gateway(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_gateway_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_gateway_errors(), tuple()}.
 describe_gateway(Client, GatewayId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/20200301/gateways/", aws_util:encode_uri(GatewayId), ""],
@@ -4411,10 +4954,7 @@ describe_gateway(Client, GatewayId, QueryMap, HeadersMap, Options0)
 -spec describe_gateway_capability_configuration(map(), binary() | list(), binary() | list()) ->
     {ok, describe_gateway_capability_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_gateway_capability_configuration_errors(), tuple()}.
 describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId)
   when is_map(Client) ->
     describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId, #{}, #{}).
@@ -4422,10 +4962,7 @@ describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId
 -spec describe_gateway_capability_configuration(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_gateway_capability_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_gateway_capability_configuration_errors(), tuple()}.
 describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId, QueryMap, HeadersMap, []).
@@ -4433,10 +4970,7 @@ describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId
 -spec describe_gateway_capability_configuration(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_gateway_capability_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_gateway_capability_configuration_errors(), tuple()}.
 describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/20200301/gateways/", aws_util:encode_uri(GatewayId), "/capability/", aws_util:encode_uri(CapabilityNamespace), ""],
@@ -4457,10 +4991,7 @@ describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId
 -spec describe_logging_options(map()) ->
     {ok, describe_logging_options_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_logging_options_errors(), tuple()}.
 describe_logging_options(Client)
   when is_map(Client) ->
     describe_logging_options(Client, #{}, #{}).
@@ -4468,10 +4999,7 @@ describe_logging_options(Client)
 -spec describe_logging_options(map(), map(), map()) ->
     {ok, describe_logging_options_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_logging_options_errors(), tuple()}.
 describe_logging_options(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_logging_options(Client, QueryMap, HeadersMap, []).
@@ -4479,10 +5007,7 @@ describe_logging_options(Client, QueryMap, HeadersMap)
 -spec describe_logging_options(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_logging_options_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_logging_options_errors(), tuple()}.
 describe_logging_options(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/logging"],
@@ -4503,10 +5028,7 @@ describe_logging_options(Client, QueryMap, HeadersMap, Options0)
 -spec describe_portal(map(), binary() | list()) ->
     {ok, describe_portal_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_portal_errors(), tuple()}.
 describe_portal(Client, PortalId)
   when is_map(Client) ->
     describe_portal(Client, PortalId, #{}, #{}).
@@ -4514,10 +5036,7 @@ describe_portal(Client, PortalId)
 -spec describe_portal(map(), binary() | list(), map(), map()) ->
     {ok, describe_portal_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_portal_errors(), tuple()}.
 describe_portal(Client, PortalId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_portal(Client, PortalId, QueryMap, HeadersMap, []).
@@ -4525,10 +5044,7 @@ describe_portal(Client, PortalId, QueryMap, HeadersMap)
 -spec describe_portal(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_portal_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_portal_errors(), tuple()}.
 describe_portal(Client, PortalId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/portals/", aws_util:encode_uri(PortalId), ""],
@@ -4549,10 +5065,7 @@ describe_portal(Client, PortalId, QueryMap, HeadersMap, Options0)
 -spec describe_project(map(), binary() | list()) ->
     {ok, describe_project_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_project_errors(), tuple()}.
 describe_project(Client, ProjectId)
   when is_map(Client) ->
     describe_project(Client, ProjectId, #{}, #{}).
@@ -4560,10 +5073,7 @@ describe_project(Client, ProjectId)
 -spec describe_project(map(), binary() | list(), map(), map()) ->
     {ok, describe_project_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_project_errors(), tuple()}.
 describe_project(Client, ProjectId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_project(Client, ProjectId, QueryMap, HeadersMap, []).
@@ -4571,10 +5081,7 @@ describe_project(Client, ProjectId, QueryMap, HeadersMap)
 -spec describe_project(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_project_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_project_errors(), tuple()}.
 describe_project(Client, ProjectId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects/", aws_util:encode_uri(ProjectId), ""],
@@ -4596,12 +5103,7 @@ describe_project(Client, ProjectId, QueryMap, HeadersMap, Options0)
 -spec describe_storage_configuration(map()) ->
     {ok, describe_storage_configuration_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_storage_configuration_errors(), tuple()}.
 describe_storage_configuration(Client)
   when is_map(Client) ->
     describe_storage_configuration(Client, #{}, #{}).
@@ -4609,12 +5111,7 @@ describe_storage_configuration(Client)
 -spec describe_storage_configuration(map(), map(), map()) ->
     {ok, describe_storage_configuration_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_storage_configuration_errors(), tuple()}.
 describe_storage_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_storage_configuration(Client, QueryMap, HeadersMap, []).
@@ -4622,12 +5119,7 @@ describe_storage_configuration(Client, QueryMap, HeadersMap)
 -spec describe_storage_configuration(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_storage_configuration_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_storage_configuration_errors(), tuple()}.
 describe_storage_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/configuration/account/storage"],
@@ -4660,10 +5152,7 @@ describe_storage_configuration(Client, QueryMap, HeadersMap, Options0)
 -spec describe_time_series(map()) ->
     {ok, describe_time_series_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_time_series_errors(), tuple()}.
 describe_time_series(Client)
   when is_map(Client) ->
     describe_time_series(Client, #{}, #{}).
@@ -4671,10 +5160,7 @@ describe_time_series(Client)
 -spec describe_time_series(map(), map(), map()) ->
     {ok, describe_time_series_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_time_series_errors(), tuple()}.
 describe_time_series(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_time_series(Client, QueryMap, HeadersMap, []).
@@ -4682,10 +5168,7 @@ describe_time_series(Client, QueryMap, HeadersMap)
 -spec describe_time_series(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_time_series_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_time_series_errors(), tuple()}.
 describe_time_series(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/timeseries/describe"],
@@ -4714,22 +5197,14 @@ describe_time_series(Client, QueryMap, HeadersMap, Options0)
 -spec disassociate_assets(map(), binary() | list(), disassociate_assets_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_assets_errors(), tuple()}.
 disassociate_assets(Client, AssetId, Input) ->
     disassociate_assets(Client, AssetId, Input, []).
 
 -spec disassociate_assets(map(), binary() | list(), disassociate_assets_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_assets_errors(), tuple()}.
 disassociate_assets(Client, AssetId, Input0, Options0) ->
     Method = post,
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/disassociate"],
@@ -4756,22 +5231,14 @@ disassociate_assets(Client, AssetId, Input0, Options0) ->
 -spec disassociate_time_series_from_asset_property(map(), disassociate_time_series_from_asset_property_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_time_series_from_asset_property_errors(), tuple()}.
 disassociate_time_series_from_asset_property(Client, Input) ->
     disassociate_time_series_from_asset_property(Client, Input, []).
 
 -spec disassociate_time_series_from_asset_property(map(), disassociate_time_series_from_asset_property_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_time_series_from_asset_property_errors(), tuple()}.
 disassociate_time_series_from_asset_property(Client, Input0, Options0) ->
     Method = post,
     Path = ["/timeseries/disassociate"],
@@ -4801,24 +5268,14 @@ disassociate_time_series_from_asset_property(Client, Input0, Options0) ->
 -spec execute_action(map(), execute_action_request()) ->
     {ok, execute_action_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, execute_action_errors(), tuple()}.
 execute_action(Client, Input) ->
     execute_action(Client, Input, []).
 
 -spec execute_action(map(), execute_action_request(), proplists:proplist()) ->
     {ok, execute_action_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, execute_action_errors(), tuple()}.
 execute_action(Client, Input0, Options0) ->
     Method = post,
     Path = ["/actions"],
@@ -4846,26 +5303,14 @@ execute_action(Client, Input0, Options0) ->
 -spec execute_query(map(), execute_query_request()) ->
     {ok, execute_query_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, query_timeout_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, execute_query_errors(), tuple()}.
 execute_query(Client, Input) ->
     execute_query(Client, Input, []).
 
 -spec execute_query(map(), execute_query_request(), proplists:proplist()) ->
     {ok, execute_query_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, query_timeout_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, execute_query_errors(), tuple()}.
 execute_query(Client, Input0, Options0) ->
     Method = post,
     Path = ["/queries/execution"],
@@ -4906,11 +5351,7 @@ execute_query(Client, Input0, Options0) ->
 -spec get_asset_property_aggregates(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_asset_property_aggregates_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_asset_property_aggregates_errors(), tuple()}.
 get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, StartDate)
   when is_map(Client) ->
     get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, StartDate, #{}, #{}).
@@ -4918,11 +5359,7 @@ get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, Start
 -spec get_asset_property_aggregates(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_asset_property_aggregates_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_asset_property_aggregates_errors(), tuple()}.
 get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, StartDate, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, StartDate, QueryMap, HeadersMap, []).
@@ -4930,11 +5367,7 @@ get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, Start
 -spec get_asset_property_aggregates(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_asset_property_aggregates_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_asset_property_aggregates_errors(), tuple()}.
 get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, StartDate, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/properties/aggregates"],
@@ -4983,11 +5416,7 @@ get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, Start
 -spec get_asset_property_value(map()) ->
     {ok, get_asset_property_value_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_asset_property_value_errors(), tuple()}.
 get_asset_property_value(Client)
   when is_map(Client) ->
     get_asset_property_value(Client, #{}, #{}).
@@ -4995,11 +5424,7 @@ get_asset_property_value(Client)
 -spec get_asset_property_value(map(), map(), map()) ->
     {ok, get_asset_property_value_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_asset_property_value_errors(), tuple()}.
 get_asset_property_value(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_asset_property_value(Client, QueryMap, HeadersMap, []).
@@ -5007,11 +5432,7 @@ get_asset_property_value(Client, QueryMap, HeadersMap)
 -spec get_asset_property_value(map(), map(), map(), proplists:proplist()) ->
     {ok, get_asset_property_value_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_asset_property_value_errors(), tuple()}.
 get_asset_property_value(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/properties/latest"],
@@ -5052,11 +5473,7 @@ get_asset_property_value(Client, QueryMap, HeadersMap, Options0)
 -spec get_asset_property_value_history(map()) ->
     {ok, get_asset_property_value_history_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_asset_property_value_history_errors(), tuple()}.
 get_asset_property_value_history(Client)
   when is_map(Client) ->
     get_asset_property_value_history(Client, #{}, #{}).
@@ -5064,11 +5481,7 @@ get_asset_property_value_history(Client)
 -spec get_asset_property_value_history(map(), map(), map()) ->
     {ok, get_asset_property_value_history_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_asset_property_value_history_errors(), tuple()}.
 get_asset_property_value_history(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_asset_property_value_history(Client, QueryMap, HeadersMap, []).
@@ -5076,11 +5489,7 @@ get_asset_property_value_history(Client, QueryMap, HeadersMap)
 -spec get_asset_property_value_history(map(), map(), map(), proplists:proplist()) ->
     {ok, get_asset_property_value_history_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_asset_property_value_history_errors(), tuple()}.
 get_asset_property_value_history(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/properties/history"],
@@ -5132,11 +5541,7 @@ get_asset_property_value_history(Client, QueryMap, HeadersMap, Options0)
 -spec get_interpolated_asset_property_values(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_interpolated_asset_property_values_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_interpolated_asset_property_values_errors(), tuple()}.
 get_interpolated_asset_property_values(Client, EndTimeInSeconds, IntervalInSeconds, Quality, StartTimeInSeconds, Type)
   when is_map(Client) ->
     get_interpolated_asset_property_values(Client, EndTimeInSeconds, IntervalInSeconds, Quality, StartTimeInSeconds, Type, #{}, #{}).
@@ -5144,11 +5549,7 @@ get_interpolated_asset_property_values(Client, EndTimeInSeconds, IntervalInSecon
 -spec get_interpolated_asset_property_values(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_interpolated_asset_property_values_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_interpolated_asset_property_values_errors(), tuple()}.
 get_interpolated_asset_property_values(Client, EndTimeInSeconds, IntervalInSeconds, Quality, StartTimeInSeconds, Type, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_interpolated_asset_property_values(Client, EndTimeInSeconds, IntervalInSeconds, Quality, StartTimeInSeconds, Type, QueryMap, HeadersMap, []).
@@ -5156,11 +5557,7 @@ get_interpolated_asset_property_values(Client, EndTimeInSeconds, IntervalInSecon
 -spec get_interpolated_asset_property_values(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_interpolated_asset_property_values_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_interpolated_asset_property_values_errors(), tuple()}.
 get_interpolated_asset_property_values(Client, EndTimeInSeconds, IntervalInSeconds, Quality, StartTimeInSeconds, Type, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/properties/interpolated"],
@@ -5200,9 +5597,7 @@ get_interpolated_asset_property_values(Client, EndTimeInSeconds, IntervalInSecon
 -spec list_access_policies(map()) ->
     {ok, list_access_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_access_policies_errors(), tuple()}.
 list_access_policies(Client)
   when is_map(Client) ->
     list_access_policies(Client, #{}, #{}).
@@ -5210,9 +5605,7 @@ list_access_policies(Client)
 -spec list_access_policies(map(), map(), map()) ->
     {ok, list_access_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_access_policies_errors(), tuple()}.
 list_access_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_access_policies(Client, QueryMap, HeadersMap, []).
@@ -5220,9 +5613,7 @@ list_access_policies(Client, QueryMap, HeadersMap)
 -spec list_access_policies(map(), map(), map(), proplists:proplist()) ->
     {ok, list_access_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_access_policies_errors(), tuple()}.
 list_access_policies(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/access-policies"],
@@ -5253,10 +5644,7 @@ list_access_policies(Client, QueryMap, HeadersMap, Options0)
 -spec list_actions(map(), binary() | list(), binary() | list()) ->
     {ok, list_actions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_actions_errors(), tuple()}.
 list_actions(Client, TargetResourceId, TargetResourceType)
   when is_map(Client) ->
     list_actions(Client, TargetResourceId, TargetResourceType, #{}, #{}).
@@ -5264,10 +5652,7 @@ list_actions(Client, TargetResourceId, TargetResourceType)
 -spec list_actions(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_actions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_actions_errors(), tuple()}.
 list_actions(Client, TargetResourceId, TargetResourceType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_actions(Client, TargetResourceId, TargetResourceType, QueryMap, HeadersMap, []).
@@ -5275,10 +5660,7 @@ list_actions(Client, TargetResourceId, TargetResourceType, QueryMap, HeadersMap)
 -spec list_actions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_actions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_actions_errors(), tuple()}.
 list_actions(Client, TargetResourceId, TargetResourceType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/actions"],
@@ -5307,10 +5689,7 @@ list_actions(Client, TargetResourceId, TargetResourceType, QueryMap, HeadersMap,
 -spec list_asset_model_composite_models(map(), binary() | list()) ->
     {ok, list_asset_model_composite_models_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_asset_model_composite_models_errors(), tuple()}.
 list_asset_model_composite_models(Client, AssetModelId)
   when is_map(Client) ->
     list_asset_model_composite_models(Client, AssetModelId, #{}, #{}).
@@ -5318,10 +5697,7 @@ list_asset_model_composite_models(Client, AssetModelId)
 -spec list_asset_model_composite_models(map(), binary() | list(), map(), map()) ->
     {ok, list_asset_model_composite_models_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_asset_model_composite_models_errors(), tuple()}.
 list_asset_model_composite_models(Client, AssetModelId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_asset_model_composite_models(Client, AssetModelId, QueryMap, HeadersMap, []).
@@ -5329,10 +5705,7 @@ list_asset_model_composite_models(Client, AssetModelId, QueryMap, HeadersMap)
 -spec list_asset_model_composite_models(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_asset_model_composite_models_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_asset_model_composite_models_errors(), tuple()}.
 list_asset_model_composite_models(Client, AssetModelId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), "/composite-models"],
@@ -5363,10 +5736,7 @@ list_asset_model_composite_models(Client, AssetModelId, QueryMap, HeadersMap, Op
 -spec list_asset_model_properties(map(), binary() | list()) ->
     {ok, list_asset_model_properties_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_asset_model_properties_errors(), tuple()}.
 list_asset_model_properties(Client, AssetModelId)
   when is_map(Client) ->
     list_asset_model_properties(Client, AssetModelId, #{}, #{}).
@@ -5374,10 +5744,7 @@ list_asset_model_properties(Client, AssetModelId)
 -spec list_asset_model_properties(map(), binary() | list(), map(), map()) ->
     {ok, list_asset_model_properties_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_asset_model_properties_errors(), tuple()}.
 list_asset_model_properties(Client, AssetModelId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_asset_model_properties(Client, AssetModelId, QueryMap, HeadersMap, []).
@@ -5385,10 +5752,7 @@ list_asset_model_properties(Client, AssetModelId, QueryMap, HeadersMap)
 -spec list_asset_model_properties(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_asset_model_properties_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_asset_model_properties_errors(), tuple()}.
 list_asset_model_properties(Client, AssetModelId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), "/properties"],
@@ -5415,9 +5779,7 @@ list_asset_model_properties(Client, AssetModelId, QueryMap, HeadersMap, Options0
 -spec list_asset_models(map()) ->
     {ok, list_asset_models_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_asset_models_errors(), tuple()}.
 list_asset_models(Client)
   when is_map(Client) ->
     list_asset_models(Client, #{}, #{}).
@@ -5425,9 +5787,7 @@ list_asset_models(Client)
 -spec list_asset_models(map(), map(), map()) ->
     {ok, list_asset_models_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_asset_models_errors(), tuple()}.
 list_asset_models(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_asset_models(Client, QueryMap, HeadersMap, []).
@@ -5435,9 +5795,7 @@ list_asset_models(Client, QueryMap, HeadersMap)
 -spec list_asset_models(map(), map(), map(), proplists:proplist()) ->
     {ok, list_asset_models_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_asset_models_errors(), tuple()}.
 list_asset_models(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/asset-models"],
@@ -5468,10 +5826,7 @@ list_asset_models(Client, QueryMap, HeadersMap, Options0)
 -spec list_asset_properties(map(), binary() | list()) ->
     {ok, list_asset_properties_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_asset_properties_errors(), tuple()}.
 list_asset_properties(Client, AssetId)
   when is_map(Client) ->
     list_asset_properties(Client, AssetId, #{}, #{}).
@@ -5479,10 +5834,7 @@ list_asset_properties(Client, AssetId)
 -spec list_asset_properties(map(), binary() | list(), map(), map()) ->
     {ok, list_asset_properties_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_asset_properties_errors(), tuple()}.
 list_asset_properties(Client, AssetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_asset_properties(Client, AssetId, QueryMap, HeadersMap, []).
@@ -5490,10 +5842,7 @@ list_asset_properties(Client, AssetId, QueryMap, HeadersMap)
 -spec list_asset_properties(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_asset_properties_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_asset_properties_errors(), tuple()}.
 list_asset_properties(Client, AssetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/properties"],
@@ -5525,10 +5874,7 @@ list_asset_properties(Client, AssetId, QueryMap, HeadersMap, Options0)
 -spec list_asset_relationships(map(), binary() | list(), binary() | list()) ->
     {ok, list_asset_relationships_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_asset_relationships_errors(), tuple()}.
 list_asset_relationships(Client, AssetId, TraversalType)
   when is_map(Client) ->
     list_asset_relationships(Client, AssetId, TraversalType, #{}, #{}).
@@ -5536,10 +5882,7 @@ list_asset_relationships(Client, AssetId, TraversalType)
 -spec list_asset_relationships(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_asset_relationships_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_asset_relationships_errors(), tuple()}.
 list_asset_relationships(Client, AssetId, TraversalType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_asset_relationships(Client, AssetId, TraversalType, QueryMap, HeadersMap, []).
@@ -5547,10 +5890,7 @@ list_asset_relationships(Client, AssetId, TraversalType, QueryMap, HeadersMap)
 -spec list_asset_relationships(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_asset_relationships_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_asset_relationships_errors(), tuple()}.
 list_asset_relationships(Client, AssetId, TraversalType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/assetRelationships"],
@@ -5590,10 +5930,7 @@ list_asset_relationships(Client, AssetId, TraversalType, QueryMap, HeadersMap, O
 -spec list_assets(map()) ->
     {ok, list_assets_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_assets_errors(), tuple()}.
 list_assets(Client)
   when is_map(Client) ->
     list_assets(Client, #{}, #{}).
@@ -5601,10 +5938,7 @@ list_assets(Client)
 -spec list_assets(map(), map(), map()) ->
     {ok, list_assets_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_assets_errors(), tuple()}.
 list_assets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_assets(Client, QueryMap, HeadersMap, []).
@@ -5612,10 +5946,7 @@ list_assets(Client, QueryMap, HeadersMap)
 -spec list_assets(map(), map(), map(), proplists:proplist()) ->
     {ok, list_assets_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_assets_errors(), tuple()}.
 list_assets(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assets"],
@@ -5650,10 +5981,7 @@ list_assets(Client, QueryMap, HeadersMap, Options0)
 -spec list_associated_assets(map(), binary() | list()) ->
     {ok, list_associated_assets_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_associated_assets_errors(), tuple()}.
 list_associated_assets(Client, AssetId)
   when is_map(Client) ->
     list_associated_assets(Client, AssetId, #{}, #{}).
@@ -5661,10 +5989,7 @@ list_associated_assets(Client, AssetId)
 -spec list_associated_assets(map(), binary() | list(), map(), map()) ->
     {ok, list_associated_assets_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_associated_assets_errors(), tuple()}.
 list_associated_assets(Client, AssetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_associated_assets(Client, AssetId, QueryMap, HeadersMap, []).
@@ -5672,10 +5997,7 @@ list_associated_assets(Client, AssetId, QueryMap, HeadersMap)
 -spec list_associated_assets(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_associated_assets_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_associated_assets_errors(), tuple()}.
 list_associated_assets(Client, AssetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/hierarchies"],
@@ -5708,10 +6030,7 @@ list_associated_assets(Client, AssetId, QueryMap, HeadersMap, Options0)
 -spec list_bulk_import_jobs(map()) ->
     {ok, list_bulk_import_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_bulk_import_jobs_errors(), tuple()}.
 list_bulk_import_jobs(Client)
   when is_map(Client) ->
     list_bulk_import_jobs(Client, #{}, #{}).
@@ -5719,10 +6038,7 @@ list_bulk_import_jobs(Client)
 -spec list_bulk_import_jobs(map(), map(), map()) ->
     {ok, list_bulk_import_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_bulk_import_jobs_errors(), tuple()}.
 list_bulk_import_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_bulk_import_jobs(Client, QueryMap, HeadersMap, []).
@@ -5730,10 +6046,7 @@ list_bulk_import_jobs(Client, QueryMap, HeadersMap)
 -spec list_bulk_import_jobs(map(), map(), map(), proplists:proplist()) ->
     {ok, list_bulk_import_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_bulk_import_jobs_errors(), tuple()}.
 list_bulk_import_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobs"],
@@ -5761,10 +6074,7 @@ list_bulk_import_jobs(Client, QueryMap, HeadersMap, Options0)
 -spec list_composition_relationships(map(), binary() | list()) ->
     {ok, list_composition_relationships_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_composition_relationships_errors(), tuple()}.
 list_composition_relationships(Client, AssetModelId)
   when is_map(Client) ->
     list_composition_relationships(Client, AssetModelId, #{}, #{}).
@@ -5772,10 +6082,7 @@ list_composition_relationships(Client, AssetModelId)
 -spec list_composition_relationships(map(), binary() | list(), map(), map()) ->
     {ok, list_composition_relationships_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_composition_relationships_errors(), tuple()}.
 list_composition_relationships(Client, AssetModelId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_composition_relationships(Client, AssetModelId, QueryMap, HeadersMap, []).
@@ -5783,10 +6090,7 @@ list_composition_relationships(Client, AssetModelId, QueryMap, HeadersMap)
 -spec list_composition_relationships(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_composition_relationships_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_composition_relationships_errors(), tuple()}.
 list_composition_relationships(Client, AssetModelId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), "/composition-relationships"],
@@ -5813,9 +6117,7 @@ list_composition_relationships(Client, AssetModelId, QueryMap, HeadersMap, Optio
 -spec list_dashboards(map(), binary() | list()) ->
     {ok, list_dashboards_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_dashboards_errors(), tuple()}.
 list_dashboards(Client, ProjectId)
   when is_map(Client) ->
     list_dashboards(Client, ProjectId, #{}, #{}).
@@ -5823,9 +6125,7 @@ list_dashboards(Client, ProjectId)
 -spec list_dashboards(map(), binary() | list(), map(), map()) ->
     {ok, list_dashboards_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_dashboards_errors(), tuple()}.
 list_dashboards(Client, ProjectId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_dashboards(Client, ProjectId, QueryMap, HeadersMap, []).
@@ -5833,9 +6133,7 @@ list_dashboards(Client, ProjectId, QueryMap, HeadersMap)
 -spec list_dashboards(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_dashboards_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_dashboards_errors(), tuple()}.
 list_dashboards(Client, ProjectId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/dashboards"],
@@ -5862,9 +6160,7 @@ list_dashboards(Client, ProjectId, QueryMap, HeadersMap, Options0)
 -spec list_gateways(map()) ->
     {ok, list_gateways_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_gateways_errors(), tuple()}.
 list_gateways(Client)
   when is_map(Client) ->
     list_gateways(Client, #{}, #{}).
@@ -5872,9 +6168,7 @@ list_gateways(Client)
 -spec list_gateways(map(), map(), map()) ->
     {ok, list_gateways_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_gateways_errors(), tuple()}.
 list_gateways(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_gateways(Client, QueryMap, HeadersMap, []).
@@ -5882,9 +6176,7 @@ list_gateways(Client, QueryMap, HeadersMap)
 -spec list_gateways(map(), map(), map(), proplists:proplist()) ->
     {ok, list_gateways_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_gateways_errors(), tuple()}.
 list_gateways(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/20200301/gateways"],
@@ -5910,9 +6202,7 @@ list_gateways(Client, QueryMap, HeadersMap, Options0)
 -spec list_portals(map()) ->
     {ok, list_portals_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_portals_errors(), tuple()}.
 list_portals(Client)
   when is_map(Client) ->
     list_portals(Client, #{}, #{}).
@@ -5920,9 +6210,7 @@ list_portals(Client)
 -spec list_portals(map(), map(), map()) ->
     {ok, list_portals_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_portals_errors(), tuple()}.
 list_portals(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_portals(Client, QueryMap, HeadersMap, []).
@@ -5930,9 +6218,7 @@ list_portals(Client, QueryMap, HeadersMap)
 -spec list_portals(map(), map(), map(), proplists:proplist()) ->
     {ok, list_portals_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_portals_errors(), tuple()}.
 list_portals(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/portals"],
@@ -5959,9 +6245,7 @@ list_portals(Client, QueryMap, HeadersMap, Options0)
 -spec list_project_assets(map(), binary() | list()) ->
     {ok, list_project_assets_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_project_assets_errors(), tuple()}.
 list_project_assets(Client, ProjectId)
   when is_map(Client) ->
     list_project_assets(Client, ProjectId, #{}, #{}).
@@ -5969,9 +6253,7 @@ list_project_assets(Client, ProjectId)
 -spec list_project_assets(map(), binary() | list(), map(), map()) ->
     {ok, list_project_assets_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_project_assets_errors(), tuple()}.
 list_project_assets(Client, ProjectId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_project_assets(Client, ProjectId, QueryMap, HeadersMap, []).
@@ -5979,9 +6261,7 @@ list_project_assets(Client, ProjectId, QueryMap, HeadersMap)
 -spec list_project_assets(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_project_assets_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_project_assets_errors(), tuple()}.
 list_project_assets(Client, ProjectId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects/", aws_util:encode_uri(ProjectId), "/assets"],
@@ -6008,9 +6288,7 @@ list_project_assets(Client, ProjectId, QueryMap, HeadersMap, Options0)
 -spec list_projects(map(), binary() | list()) ->
     {ok, list_projects_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_projects_errors(), tuple()}.
 list_projects(Client, PortalId)
   when is_map(Client) ->
     list_projects(Client, PortalId, #{}, #{}).
@@ -6018,9 +6296,7 @@ list_projects(Client, PortalId)
 -spec list_projects(map(), binary() | list(), map(), map()) ->
     {ok, list_projects_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_projects_errors(), tuple()}.
 list_projects(Client, PortalId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_projects(Client, PortalId, QueryMap, HeadersMap, []).
@@ -6028,9 +6304,7 @@ list_projects(Client, PortalId, QueryMap, HeadersMap)
 -spec list_projects(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_projects_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_projects_errors(), tuple()}.
 list_projects(Client, PortalId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects"],
@@ -6057,13 +6331,7 @@ list_projects(Client, PortalId, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -6071,13 +6339,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -6085,13 +6347,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags"],
@@ -6116,10 +6372,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec list_time_series(map()) ->
     {ok, list_time_series_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_time_series_errors(), tuple()}.
 list_time_series(Client)
   when is_map(Client) ->
     list_time_series(Client, #{}, #{}).
@@ -6127,10 +6380,7 @@ list_time_series(Client)
 -spec list_time_series(map(), map(), map()) ->
     {ok, list_time_series_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_time_series_errors(), tuple()}.
 list_time_series(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_time_series(Client, QueryMap, HeadersMap, []).
@@ -6138,10 +6388,7 @@ list_time_series(Client, QueryMap, HeadersMap)
 -spec list_time_series(map(), map(), map(), proplists:proplist()) ->
     {ok, list_time_series_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_time_series_errors(), tuple()}.
 list_time_series(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/timeseries"],
@@ -6177,22 +6424,14 @@ list_time_series(Client, QueryMap, HeadersMap, Options0)
 -spec put_default_encryption_configuration(map(), put_default_encryption_configuration_request()) ->
     {ok, put_default_encryption_configuration_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, put_default_encryption_configuration_errors(), tuple()}.
 put_default_encryption_configuration(Client, Input) ->
     put_default_encryption_configuration(Client, Input, []).
 
 -spec put_default_encryption_configuration(map(), put_default_encryption_configuration_request(), proplists:proplist()) ->
     {ok, put_default_encryption_configuration_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, put_default_encryption_configuration_errors(), tuple()}.
 put_default_encryption_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/configuration/account/encryption"],
@@ -6219,22 +6458,14 @@ put_default_encryption_configuration(Client, Input0, Options0) ->
 -spec put_logging_options(map(), put_logging_options_request()) ->
     {ok, put_logging_options_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, put_logging_options_errors(), tuple()}.
 put_logging_options(Client, Input) ->
     put_logging_options(Client, Input, []).
 
 -spec put_logging_options(map(), put_logging_options_request(), proplists:proplist()) ->
     {ok, put_logging_options_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, put_logging_options_errors(), tuple()}.
 put_logging_options(Client, Input0, Options0) ->
     Method = put,
     Path = ["/logging"],
@@ -6261,26 +6492,14 @@ put_logging_options(Client, Input0, Options0) ->
 -spec put_storage_configuration(map(), put_storage_configuration_request()) ->
     {ok, put_storage_configuration_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, put_storage_configuration_errors(), tuple()}.
 put_storage_configuration(Client, Input) ->
     put_storage_configuration(Client, Input, []).
 
 -spec put_storage_configuration(map(), put_storage_configuration_request(), proplists:proplist()) ->
     {ok, put_storage_configuration_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, put_storage_configuration_errors(), tuple()}.
 put_storage_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/configuration/account/storage"],
@@ -6310,28 +6529,14 @@ put_storage_configuration(Client, Input0, Options0) ->
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags"],
@@ -6359,26 +6564,14 @@ tag_resource(Client, Input0, Options0) ->
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/tags"],
@@ -6409,20 +6602,14 @@ untag_resource(Client, Input0, Options0) ->
 -spec update_access_policy(map(), binary() | list(), update_access_policy_request()) ->
     {ok, update_access_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_access_policy_errors(), tuple()}.
 update_access_policy(Client, AccessPolicyId, Input) ->
     update_access_policy(Client, AccessPolicyId, Input, []).
 
 -spec update_access_policy(map(), binary() | list(), update_access_policy_request(), proplists:proplist()) ->
     {ok, update_access_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_access_policy_errors(), tuple()}.
 update_access_policy(Client, AccessPolicyId, Input0, Options0) ->
     Method = put,
     Path = ["/access-policies/", aws_util:encode_uri(AccessPolicyId), ""],
@@ -6454,24 +6641,14 @@ update_access_policy(Client, AccessPolicyId, Input0, Options0) ->
 -spec update_asset(map(), binary() | list(), update_asset_request()) ->
     {ok, update_asset_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_asset_errors(), tuple()}.
 update_asset(Client, AssetId, Input) ->
     update_asset(Client, AssetId, Input, []).
 
 -spec update_asset(map(), binary() | list(), update_asset_request(), proplists:proplist()) ->
     {ok, update_asset_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_asset_errors(), tuple()}.
 update_asset(Client, AssetId, Input0, Options0) ->
     Method = put,
     Path = ["/assets/", aws_util:encode_uri(AssetId), ""],
@@ -6523,26 +6700,14 @@ update_asset(Client, AssetId, Input0, Options0) ->
 -spec update_asset_model(map(), binary() | list(), update_asset_model_request()) ->
     {ok, update_asset_model_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_asset_model_errors(), tuple()}.
 update_asset_model(Client, AssetModelId, Input) ->
     update_asset_model(Client, AssetModelId, Input, []).
 
 -spec update_asset_model(map(), binary() | list(), update_asset_model_request(), proplists:proplist()) ->
     {ok, update_asset_model_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_asset_model_errors(), tuple()}.
 update_asset_model(Client, AssetModelId, Input0, Options0) ->
     Method = put,
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), ""],
@@ -6593,26 +6758,14 @@ update_asset_model(Client, AssetModelId, Input0, Options0) ->
 -spec update_asset_model_composite_model(map(), binary() | list(), binary() | list(), update_asset_model_composite_model_request()) ->
     {ok, update_asset_model_composite_model_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_asset_model_composite_model_errors(), tuple()}.
 update_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, Input) ->
     update_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, Input, []).
 
 -spec update_asset_model_composite_model(map(), binary() | list(), binary() | list(), update_asset_model_composite_model_request(), proplists:proplist()) ->
     {ok, update_asset_model_composite_model_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_asset_model_composite_model_errors(), tuple()}.
 update_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, Input0, Options0) ->
     Method = put,
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), "/composite-models/", aws_util:encode_uri(AssetModelCompositeModelId), ""],
@@ -6647,22 +6800,14 @@ update_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetMode
 -spec update_asset_property(map(), binary() | list(), binary() | list(), update_asset_property_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_asset_property_errors(), tuple()}.
 update_asset_property(Client, AssetId, PropertyId, Input) ->
     update_asset_property(Client, AssetId, PropertyId, Input, []).
 
 -spec update_asset_property(map(), binary() | list(), binary() | list(), update_asset_property_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_asset_property_errors(), tuple()}.
 update_asset_property(Client, AssetId, PropertyId, Input0, Options0) ->
     Method = put,
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/properties/", aws_util:encode_uri(PropertyId), ""],
@@ -6689,20 +6834,14 @@ update_asset_property(Client, AssetId, PropertyId, Input0, Options0) ->
 -spec update_dashboard(map(), binary() | list(), update_dashboard_request()) ->
     {ok, update_dashboard_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_dashboard_errors(), tuple()}.
 update_dashboard(Client, DashboardId, Input) ->
     update_dashboard(Client, DashboardId, Input, []).
 
 -spec update_dashboard(map(), binary() | list(), update_dashboard_request(), proplists:proplist()) ->
     {ok, update_dashboard_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_dashboard_errors(), tuple()}.
 update_dashboard(Client, DashboardId, Input0, Options0) ->
     Method = put,
     Path = ["/dashboards/", aws_util:encode_uri(DashboardId), ""],
@@ -6729,22 +6868,14 @@ update_dashboard(Client, DashboardId, Input0, Options0) ->
 -spec update_gateway(map(), binary() | list(), update_gateway_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_gateway_errors(), tuple()}.
 update_gateway(Client, GatewayId, Input) ->
     update_gateway(Client, GatewayId, Input, []).
 
 -spec update_gateway(map(), binary() | list(), update_gateway_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_gateway_errors(), tuple()}.
 update_gateway(Client, GatewayId, Input0, Options0) ->
     Method = put,
     Path = ["/20200301/gateways/", aws_util:encode_uri(GatewayId), ""],
@@ -6781,24 +6912,14 @@ update_gateway(Client, GatewayId, Input0, Options0) ->
 -spec update_gateway_capability_configuration(map(), binary() | list(), update_gateway_capability_configuration_request()) ->
     {ok, update_gateway_capability_configuration_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_gateway_capability_configuration_errors(), tuple()}.
 update_gateway_capability_configuration(Client, GatewayId, Input) ->
     update_gateway_capability_configuration(Client, GatewayId, Input, []).
 
 -spec update_gateway_capability_configuration(map(), binary() | list(), update_gateway_capability_configuration_request(), proplists:proplist()) ->
     {ok, update_gateway_capability_configuration_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_gateway_capability_configuration_errors(), tuple()}.
 update_gateway_capability_configuration(Client, GatewayId, Input0, Options0) ->
     Method = post,
     Path = ["/20200301/gateways/", aws_util:encode_uri(GatewayId), "/capability"],
@@ -6825,22 +6946,14 @@ update_gateway_capability_configuration(Client, GatewayId, Input0, Options0) ->
 -spec update_portal(map(), binary() | list(), update_portal_request()) ->
     {ok, update_portal_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_portal_errors(), tuple()}.
 update_portal(Client, PortalId, Input) ->
     update_portal(Client, PortalId, Input, []).
 
 -spec update_portal(map(), binary() | list(), update_portal_request(), proplists:proplist()) ->
     {ok, update_portal_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_operation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_portal_errors(), tuple()}.
 update_portal(Client, PortalId, Input0, Options0) ->
     Method = put,
     Path = ["/portals/", aws_util:encode_uri(PortalId), ""],
@@ -6867,20 +6980,14 @@ update_portal(Client, PortalId, Input0, Options0) ->
 -spec update_project(map(), binary() | list(), update_project_request()) ->
     {ok, update_project_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_project_errors(), tuple()}.
 update_project(Client, ProjectId, Input) ->
     update_project(Client, ProjectId, Input, []).
 
 -spec update_project(map(), binary() | list(), update_project_request(), proplists:proplist()) ->
     {ok, update_project_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_project_errors(), tuple()}.
 update_project(Client, ProjectId, Input0, Options0) ->
     Method = put,
     Path = ["/projects/", aws_util:encode_uri(ProjectId), ""],

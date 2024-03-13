@@ -2321,6 +2321,660 @@
 %% }
 -type get_template_sync_config_output() :: #{binary() => any()}.
 
+-type accept_environment_account_connection_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type cancel_component_deployment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type cancel_environment_deployment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type cancel_service_instance_deployment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type cancel_service_pipeline_deployment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_component_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_environment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_environment_account_connection_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_environment_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_environment_template_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_repository_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_service_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_service_instance_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_service_sync_config_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_service_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_service_template_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_template_sync_config_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_component_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_deployment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_environment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_environment_account_connection_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_environment_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_environment_template_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_repository_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_service_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_service_sync_config_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_service_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_service_template_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_template_sync_config_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_account_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_component_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_deployment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_environment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_environment_account_connection_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_environment_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_environment_template_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_repository_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_repository_sync_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_resources_summary_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type get_service_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_service_instance_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_service_instance_sync_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_service_sync_blocker_summary_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_service_sync_config_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_service_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_service_template_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_template_sync_config_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_template_sync_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_component_outputs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_component_provisioned_resources_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_components_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_deployments_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_environment_account_connections_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_environment_outputs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_environment_provisioned_resources_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_environment_template_versions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_environment_templates_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_environments_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_repositories_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_repository_sync_definitions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_service_instance_outputs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_service_instance_provisioned_resources_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_service_instances_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_service_pipeline_outputs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_service_pipeline_provisioned_resources_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_service_template_versions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_service_templates_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_services_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type notify_resource_deployment_status_change_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type reject_environment_account_connection_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_account_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type update_component_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_environment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_environment_account_connection_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_environment_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_environment_template_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_service_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_service_instance_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_service_pipeline_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_service_sync_blocker_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_service_sync_config_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_service_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_service_template_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_template_sync_config_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -2340,12 +2994,7 @@
 -spec accept_environment_account_connection(map(), accept_environment_account_connection_input()) ->
     {ok, accept_environment_account_connection_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, accept_environment_account_connection_errors(), tuple()}.
 accept_environment_account_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_environment_account_connection(Client, Input, []).
@@ -2353,12 +3002,7 @@ accept_environment_account_connection(Client, Input)
 -spec accept_environment_account_connection(map(), accept_environment_account_connection_input(), proplists:proplist()) ->
     {ok, accept_environment_account_connection_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, accept_environment_account_connection_errors(), tuple()}.
 accept_environment_account_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcceptEnvironmentAccountConnection">>, Input, Options).
@@ -2374,12 +3018,7 @@ accept_environment_account_connection(Client, Input, Options)
 -spec cancel_component_deployment(map(), cancel_component_deployment_input()) ->
     {ok, cancel_component_deployment_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_component_deployment_errors(), tuple()}.
 cancel_component_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_component_deployment(Client, Input, []).
@@ -2387,12 +3026,7 @@ cancel_component_deployment(Client, Input)
 -spec cancel_component_deployment(map(), cancel_component_deployment_input(), proplists:proplist()) ->
     {ok, cancel_component_deployment_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_component_deployment_errors(), tuple()}.
 cancel_component_deployment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelComponentDeployment">>, Input, Options).
@@ -2420,12 +3054,7 @@ cancel_component_deployment(Client, Input, Options)
 -spec cancel_environment_deployment(map(), cancel_environment_deployment_input()) ->
     {ok, cancel_environment_deployment_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_environment_deployment_errors(), tuple()}.
 cancel_environment_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_environment_deployment(Client, Input, []).
@@ -2433,12 +3062,7 @@ cancel_environment_deployment(Client, Input)
 -spec cancel_environment_deployment(map(), cancel_environment_deployment_input(), proplists:proplist()) ->
     {ok, cancel_environment_deployment_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_environment_deployment_errors(), tuple()}.
 cancel_environment_deployment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelEnvironmentDeployment">>, Input, Options).
@@ -2467,12 +3091,7 @@ cancel_environment_deployment(Client, Input, Options)
 -spec cancel_service_instance_deployment(map(), cancel_service_instance_deployment_input()) ->
     {ok, cancel_service_instance_deployment_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_service_instance_deployment_errors(), tuple()}.
 cancel_service_instance_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_service_instance_deployment(Client, Input, []).
@@ -2480,12 +3099,7 @@ cancel_service_instance_deployment(Client, Input)
 -spec cancel_service_instance_deployment(map(), cancel_service_instance_deployment_input(), proplists:proplist()) ->
     {ok, cancel_service_instance_deployment_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_service_instance_deployment_errors(), tuple()}.
 cancel_service_instance_deployment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelServiceInstanceDeployment">>, Input, Options).
@@ -2514,12 +3128,7 @@ cancel_service_instance_deployment(Client, Input, Options)
 -spec cancel_service_pipeline_deployment(map(), cancel_service_pipeline_deployment_input()) ->
     {ok, cancel_service_pipeline_deployment_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_service_pipeline_deployment_errors(), tuple()}.
 cancel_service_pipeline_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_service_pipeline_deployment(Client, Input, []).
@@ -2527,12 +3136,7 @@ cancel_service_pipeline_deployment(Client, Input)
 -spec cancel_service_pipeline_deployment(map(), cancel_service_pipeline_deployment_input(), proplists:proplist()) ->
     {ok, cancel_service_pipeline_deployment_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_service_pipeline_deployment_errors(), tuple()}.
 cancel_service_pipeline_deployment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelServicePipelineDeployment">>, Input, Options).
@@ -2549,13 +3153,7 @@ cancel_service_pipeline_deployment(Client, Input, Options)
 -spec create_component(map(), create_component_input()) ->
     {ok, create_component_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_component_errors(), tuple()}.
 create_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_component(Client, Input, []).
@@ -2563,13 +3161,7 @@ create_component(Client, Input)
 -spec create_component(map(), create_component_input(), proplists:proplist()) ->
     {ok, create_component_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_component_errors(), tuple()}.
 create_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateComponent">>, Input, Options).
@@ -2598,13 +3190,7 @@ create_component(Client, Input, Options)
 -spec create_environment(map(), create_environment_input()) ->
     {ok, create_environment_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_environment_errors(), tuple()}.
 create_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_environment(Client, Input, []).
@@ -2612,13 +3198,7 @@ create_environment(Client, Input)
 -spec create_environment(map(), create_environment_input(), proplists:proplist()) ->
     {ok, create_environment_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_environment_errors(), tuple()}.
 create_environment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEnvironment">>, Input, Options).
@@ -2638,12 +3218,7 @@ create_environment(Client, Input, Options)
 -spec create_environment_account_connection(map(), create_environment_account_connection_input()) ->
     {ok, create_environment_account_connection_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_environment_account_connection_errors(), tuple()}.
 create_environment_account_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_environment_account_connection(Client, Input, []).
@@ -2651,12 +3226,7 @@ create_environment_account_connection(Client, Input)
 -spec create_environment_account_connection(map(), create_environment_account_connection_input(), proplists:proplist()) ->
     {ok, create_environment_account_connection_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_environment_account_connection_errors(), tuple()}.
 create_environment_account_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEnvironmentAccountConnection">>, Input, Options).
@@ -2686,12 +3256,7 @@ create_environment_account_connection(Client, Input, Options)
 -spec create_environment_template(map(), create_environment_template_input()) ->
     {ok, create_environment_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_environment_template_errors(), tuple()}.
 create_environment_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_environment_template(Client, Input, []).
@@ -2699,12 +3264,7 @@ create_environment_template(Client, Input)
 -spec create_environment_template(map(), create_environment_template_input(), proplists:proplist()) ->
     {ok, create_environment_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_environment_template_errors(), tuple()}.
 create_environment_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEnvironmentTemplate">>, Input, Options).
@@ -2718,13 +3278,7 @@ create_environment_template(Client, Input, Options)
 -spec create_environment_template_version(map(), create_environment_template_version_input()) ->
     {ok, create_environment_template_version_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_environment_template_version_errors(), tuple()}.
 create_environment_template_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_environment_template_version(Client, Input, []).
@@ -2732,13 +3286,7 @@ create_environment_template_version(Client, Input)
 -spec create_environment_template_version(map(), create_environment_template_version_input(), proplists:proplist()) ->
     {ok, create_environment_template_version_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_environment_template_version_errors(), tuple()}.
 create_environment_template_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEnvironmentTemplateVersion">>, Input, Options).
@@ -2766,12 +3314,7 @@ create_environment_template_version(Client, Input, Options)
 -spec create_repository(map(), create_repository_input()) ->
     {ok, create_repository_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_repository_errors(), tuple()}.
 create_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_repository(Client, Input, []).
@@ -2779,12 +3322,7 @@ create_repository(Client, Input)
 -spec create_repository(map(), create_repository_input(), proplists:proplist()) ->
     {ok, create_repository_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_repository_errors(), tuple()}.
 create_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRepository">>, Input, Options).
@@ -2800,13 +3338,7 @@ create_repository(Client, Input, Options)
 -spec create_service(map(), create_service_input()) ->
     {ok, create_service_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_service_errors(), tuple()}.
 create_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service(Client, Input, []).
@@ -2814,13 +3346,7 @@ create_service(Client, Input)
 -spec create_service(map(), create_service_input(), proplists:proplist()) ->
     {ok, create_service_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_service_errors(), tuple()}.
 create_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateService">>, Input, Options).
@@ -2829,12 +3355,7 @@ create_service(Client, Input, Options)
 -spec create_service_instance(map(), create_service_instance_input()) ->
     {ok, create_service_instance_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_service_instance_errors(), tuple()}.
 create_service_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service_instance(Client, Input, []).
@@ -2842,12 +3363,7 @@ create_service_instance(Client, Input)
 -spec create_service_instance(map(), create_service_instance_input(), proplists:proplist()) ->
     {ok, create_service_instance_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_service_instance_errors(), tuple()}.
 create_service_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateServiceInstance">>, Input, Options).
@@ -2856,12 +3372,7 @@ create_service_instance(Client, Input, Options)
 -spec create_service_sync_config(map(), create_service_sync_config_input()) ->
     {ok, create_service_sync_config_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_service_sync_config_errors(), tuple()}.
 create_service_sync_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service_sync_config(Client, Input, []).
@@ -2869,12 +3380,7 @@ create_service_sync_config(Client, Input)
 -spec create_service_sync_config(map(), create_service_sync_config_input(), proplists:proplist()) ->
     {ok, create_service_sync_config_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_service_sync_config_errors(), tuple()}.
 create_service_sync_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateServiceSyncConfig">>, Input, Options).
@@ -2896,12 +3402,7 @@ create_service_sync_config(Client, Input, Options)
 -spec create_service_template(map(), create_service_template_input()) ->
     {ok, create_service_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_service_template_errors(), tuple()}.
 create_service_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service_template(Client, Input, []).
@@ -2909,12 +3410,7 @@ create_service_template(Client, Input)
 -spec create_service_template(map(), create_service_template_input(), proplists:proplist()) ->
     {ok, create_service_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_service_template_errors(), tuple()}.
 create_service_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateServiceTemplate">>, Input, Options).
@@ -2929,13 +3425,7 @@ create_service_template(Client, Input, Options)
 -spec create_service_template_version(map(), create_service_template_version_input()) ->
     {ok, create_service_template_version_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_service_template_version_errors(), tuple()}.
 create_service_template_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service_template_version(Client, Input, []).
@@ -2943,13 +3433,7 @@ create_service_template_version(Client, Input)
 -spec create_service_template_version(map(), create_service_template_version_input(), proplists:proplist()) ->
     {ok, create_service_template_version_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_service_template_version_errors(), tuple()}.
 create_service_template_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateServiceTemplateVersion">>, Input, Options).
@@ -2972,12 +3456,7 @@ create_service_template_version(Client, Input, Options)
 -spec create_template_sync_config(map(), create_template_sync_config_input()) ->
     {ok, create_template_sync_config_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_template_sync_config_errors(), tuple()}.
 create_template_sync_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_template_sync_config(Client, Input, []).
@@ -2985,12 +3464,7 @@ create_template_sync_config(Client, Input)
 -spec create_template_sync_config(map(), create_template_sync_config_input(), proplists:proplist()) ->
     {ok, create_template_sync_config_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_template_sync_config_errors(), tuple()}.
 create_template_sync_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTemplateSyncConfig">>, Input, Options).
@@ -3005,12 +3479,7 @@ create_template_sync_config(Client, Input, Options)
 -spec delete_component(map(), delete_component_input()) ->
     {ok, delete_component_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_component_errors(), tuple()}.
 delete_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_component(Client, Input, []).
@@ -3018,12 +3487,7 @@ delete_component(Client, Input)
 -spec delete_component(map(), delete_component_input(), proplists:proplist()) ->
     {ok, delete_component_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_component_errors(), tuple()}.
 delete_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteComponent">>, Input, Options).
@@ -3032,11 +3496,7 @@ delete_component(Client, Input, Options)
 -spec delete_deployment(map(), delete_deployment_input()) ->
     {ok, delete_deployment_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_deployment_errors(), tuple()}.
 delete_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_deployment(Client, Input, []).
@@ -3044,11 +3504,7 @@ delete_deployment(Client, Input)
 -spec delete_deployment(map(), delete_deployment_input(), proplists:proplist()) ->
     {ok, delete_deployment_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_deployment_errors(), tuple()}.
 delete_deployment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDeployment">>, Input, Options).
@@ -3057,12 +3513,7 @@ delete_deployment(Client, Input, Options)
 -spec delete_environment(map(), delete_environment_input()) ->
     {ok, delete_environment_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_environment_errors(), tuple()}.
 delete_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_environment(Client, Input, []).
@@ -3070,12 +3521,7 @@ delete_environment(Client, Input)
 -spec delete_environment(map(), delete_environment_input(), proplists:proplist()) ->
     {ok, delete_environment_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_environment_errors(), tuple()}.
 delete_environment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEnvironment">>, Input, Options).
@@ -3097,12 +3543,7 @@ delete_environment(Client, Input, Options)
 -spec delete_environment_account_connection(map(), delete_environment_account_connection_input()) ->
     {ok, delete_environment_account_connection_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_environment_account_connection_errors(), tuple()}.
 delete_environment_account_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_environment_account_connection(Client, Input, []).
@@ -3110,12 +3551,7 @@ delete_environment_account_connection(Client, Input)
 -spec delete_environment_account_connection(map(), delete_environment_account_connection_input(), proplists:proplist()) ->
     {ok, delete_environment_account_connection_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_environment_account_connection_errors(), tuple()}.
 delete_environment_account_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEnvironmentAccountConnection">>, Input, Options).
@@ -3125,12 +3561,7 @@ delete_environment_account_connection(Client, Input, Options)
 -spec delete_environment_template(map(), delete_environment_template_input()) ->
     {ok, delete_environment_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_environment_template_errors(), tuple()}.
 delete_environment_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_environment_template(Client, Input, []).
@@ -3138,12 +3569,7 @@ delete_environment_template(Client, Input)
 -spec delete_environment_template(map(), delete_environment_template_input(), proplists:proplist()) ->
     {ok, delete_environment_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_environment_template_errors(), tuple()}.
 delete_environment_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEnvironmentTemplate">>, Input, Options).
@@ -3165,12 +3591,7 @@ delete_environment_template(Client, Input, Options)
 -spec delete_environment_template_version(map(), delete_environment_template_version_input()) ->
     {ok, delete_environment_template_version_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_environment_template_version_errors(), tuple()}.
 delete_environment_template_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_environment_template_version(Client, Input, []).
@@ -3178,12 +3599,7 @@ delete_environment_template_version(Client, Input)
 -spec delete_environment_template_version(map(), delete_environment_template_version_input(), proplists:proplist()) ->
     {ok, delete_environment_template_version_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_environment_template_version_errors(), tuple()}.
 delete_environment_template_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEnvironmentTemplateVersion">>, Input, Options).
@@ -3192,12 +3608,7 @@ delete_environment_template_version(Client, Input, Options)
 -spec delete_repository(map(), delete_repository_input()) ->
     {ok, delete_repository_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_repository_errors(), tuple()}.
 delete_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_repository(Client, Input, []).
@@ -3205,12 +3616,7 @@ delete_repository(Client, Input)
 -spec delete_repository(map(), delete_repository_input(), proplists:proplist()) ->
     {ok, delete_repository_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_repository_errors(), tuple()}.
 delete_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRepository">>, Input, Options).
@@ -3229,12 +3635,7 @@ delete_repository(Client, Input, Options)
 -spec delete_service(map(), delete_service_input()) ->
     {ok, delete_service_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_service_errors(), tuple()}.
 delete_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service(Client, Input, []).
@@ -3242,12 +3643,7 @@ delete_service(Client, Input)
 -spec delete_service(map(), delete_service_input(), proplists:proplist()) ->
     {ok, delete_service_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_service_errors(), tuple()}.
 delete_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteService">>, Input, Options).
@@ -3256,12 +3652,7 @@ delete_service(Client, Input, Options)
 -spec delete_service_sync_config(map(), delete_service_sync_config_input()) ->
     {ok, delete_service_sync_config_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_service_sync_config_errors(), tuple()}.
 delete_service_sync_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service_sync_config(Client, Input, []).
@@ -3269,12 +3660,7 @@ delete_service_sync_config(Client, Input)
 -spec delete_service_sync_config(map(), delete_service_sync_config_input(), proplists:proplist()) ->
     {ok, delete_service_sync_config_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_service_sync_config_errors(), tuple()}.
 delete_service_sync_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteServiceSyncConfig">>, Input, Options).
@@ -3285,12 +3671,7 @@ delete_service_sync_config(Client, Input, Options)
 -spec delete_service_template(map(), delete_service_template_input()) ->
     {ok, delete_service_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_service_template_errors(), tuple()}.
 delete_service_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service_template(Client, Input, []).
@@ -3298,12 +3679,7 @@ delete_service_template(Client, Input)
 -spec delete_service_template(map(), delete_service_template_input(), proplists:proplist()) ->
     {ok, delete_service_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_service_template_errors(), tuple()}.
 delete_service_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteServiceTemplate">>, Input, Options).
@@ -3329,12 +3705,7 @@ delete_service_template(Client, Input, Options)
 -spec delete_service_template_version(map(), delete_service_template_version_input()) ->
     {ok, delete_service_template_version_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_service_template_version_errors(), tuple()}.
 delete_service_template_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service_template_version(Client, Input, []).
@@ -3342,12 +3713,7 @@ delete_service_template_version(Client, Input)
 -spec delete_service_template_version(map(), delete_service_template_version_input(), proplists:proplist()) ->
     {ok, delete_service_template_version_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_service_template_version_errors(), tuple()}.
 delete_service_template_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteServiceTemplateVersion">>, Input, Options).
@@ -3356,12 +3722,7 @@ delete_service_template_version(Client, Input, Options)
 -spec delete_template_sync_config(map(), delete_template_sync_config_input()) ->
     {ok, delete_template_sync_config_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_template_sync_config_errors(), tuple()}.
 delete_template_sync_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_template_sync_config(Client, Input, []).
@@ -3369,12 +3730,7 @@ delete_template_sync_config(Client, Input)
 -spec delete_template_sync_config(map(), delete_template_sync_config_input(), proplists:proplist()) ->
     {ok, delete_template_sync_config_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_template_sync_config_errors(), tuple()}.
 delete_template_sync_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTemplateSyncConfig">>, Input, Options).
@@ -3383,11 +3739,7 @@ delete_template_sync_config(Client, Input, Options)
 -spec get_account_settings(map(), get_account_settings_input()) ->
     {ok, get_account_settings_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_account_settings_errors(), tuple()}.
 get_account_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_account_settings(Client, Input, []).
@@ -3395,11 +3747,7 @@ get_account_settings(Client, Input)
 -spec get_account_settings(map(), get_account_settings_input(), proplists:proplist()) ->
     {ok, get_account_settings_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_account_settings_errors(), tuple()}.
 get_account_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAccountSettings">>, Input, Options).
@@ -3414,11 +3762,7 @@ get_account_settings(Client, Input, Options)
 -spec get_component(map(), get_component_input()) ->
     {ok, get_component_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_component_errors(), tuple()}.
 get_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_component(Client, Input, []).
@@ -3426,11 +3770,7 @@ get_component(Client, Input)
 -spec get_component(map(), get_component_input(), proplists:proplist()) ->
     {ok, get_component_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_component_errors(), tuple()}.
 get_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetComponent">>, Input, Options).
@@ -3439,11 +3779,7 @@ get_component(Client, Input, Options)
 -spec get_deployment(map(), get_deployment_input()) ->
     {ok, get_deployment_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_deployment_errors(), tuple()}.
 get_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_deployment(Client, Input, []).
@@ -3451,11 +3787,7 @@ get_deployment(Client, Input)
 -spec get_deployment(map(), get_deployment_input(), proplists:proplist()) ->
     {ok, get_deployment_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_deployment_errors(), tuple()}.
 get_deployment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDeployment">>, Input, Options).
@@ -3464,11 +3796,7 @@ get_deployment(Client, Input, Options)
 -spec get_environment(map(), get_environment_input()) ->
     {ok, get_environment_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_environment_errors(), tuple()}.
 get_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_environment(Client, Input, []).
@@ -3476,11 +3804,7 @@ get_environment(Client, Input)
 -spec get_environment(map(), get_environment_input(), proplists:proplist()) ->
     {ok, get_environment_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_environment_errors(), tuple()}.
 get_environment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEnvironment">>, Input, Options).
@@ -3495,11 +3819,7 @@ get_environment(Client, Input, Options)
 -spec get_environment_account_connection(map(), get_environment_account_connection_input()) ->
     {ok, get_environment_account_connection_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_environment_account_connection_errors(), tuple()}.
 get_environment_account_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_environment_account_connection(Client, Input, []).
@@ -3507,11 +3827,7 @@ get_environment_account_connection(Client, Input)
 -spec get_environment_account_connection(map(), get_environment_account_connection_input(), proplists:proplist()) ->
     {ok, get_environment_account_connection_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_environment_account_connection_errors(), tuple()}.
 get_environment_account_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEnvironmentAccountConnection">>, Input, Options).
@@ -3520,11 +3836,7 @@ get_environment_account_connection(Client, Input, Options)
 -spec get_environment_template(map(), get_environment_template_input()) ->
     {ok, get_environment_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_environment_template_errors(), tuple()}.
 get_environment_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_environment_template(Client, Input, []).
@@ -3532,11 +3844,7 @@ get_environment_template(Client, Input)
 -spec get_environment_template(map(), get_environment_template_input(), proplists:proplist()) ->
     {ok, get_environment_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_environment_template_errors(), tuple()}.
 get_environment_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEnvironmentTemplate">>, Input, Options).
@@ -3546,11 +3854,7 @@ get_environment_template(Client, Input, Options)
 -spec get_environment_template_version(map(), get_environment_template_version_input()) ->
     {ok, get_environment_template_version_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_environment_template_version_errors(), tuple()}.
 get_environment_template_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_environment_template_version(Client, Input, []).
@@ -3558,11 +3862,7 @@ get_environment_template_version(Client, Input)
 -spec get_environment_template_version(map(), get_environment_template_version_input(), proplists:proplist()) ->
     {ok, get_environment_template_version_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_environment_template_version_errors(), tuple()}.
 get_environment_template_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEnvironmentTemplateVersion">>, Input, Options).
@@ -3571,11 +3871,7 @@ get_environment_template_version(Client, Input, Options)
 -spec get_repository(map(), get_repository_input()) ->
     {ok, get_repository_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_repository_errors(), tuple()}.
 get_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_repository(Client, Input, []).
@@ -3583,11 +3879,7 @@ get_repository(Client, Input)
 -spec get_repository(map(), get_repository_input(), proplists:proplist()) ->
     {ok, get_repository_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_repository_errors(), tuple()}.
 get_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRepository">>, Input, Options).
@@ -3610,11 +3902,7 @@ get_repository(Client, Input, Options)
 -spec get_repository_sync_status(map(), get_repository_sync_status_input()) ->
     {ok, get_repository_sync_status_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_repository_sync_status_errors(), tuple()}.
 get_repository_sync_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_repository_sync_status(Client, Input, []).
@@ -3622,11 +3910,7 @@ get_repository_sync_status(Client, Input)
 -spec get_repository_sync_status(map(), get_repository_sync_status_input(), proplists:proplist()) ->
     {ok, get_repository_sync_status_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_repository_sync_status_errors(), tuple()}.
 get_repository_sync_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRepositorySyncStatus">>, Input, Options).
@@ -3656,10 +3940,7 @@ get_repository_sync_status(Client, Input, Options)
 -spec get_resources_summary(map(), get_resources_summary_input()) ->
     {ok, get_resources_summary_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_resources_summary_errors(), tuple()}.
 get_resources_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resources_summary(Client, Input, []).
@@ -3667,10 +3948,7 @@ get_resources_summary(Client, Input)
 -spec get_resources_summary(map(), get_resources_summary_input(), proplists:proplist()) ->
     {ok, get_resources_summary_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_resources_summary_errors(), tuple()}.
 get_resources_summary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourcesSummary">>, Input, Options).
@@ -3679,11 +3957,7 @@ get_resources_summary(Client, Input, Options)
 -spec get_service(map(), get_service_input()) ->
     {ok, get_service_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_service_errors(), tuple()}.
 get_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service(Client, Input, []).
@@ -3691,11 +3965,7 @@ get_service(Client, Input)
 -spec get_service(map(), get_service_input(), proplists:proplist()) ->
     {ok, get_service_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_service_errors(), tuple()}.
 get_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetService">>, Input, Options).
@@ -3707,11 +3977,7 @@ get_service(Client, Input, Options)
 -spec get_service_instance(map(), get_service_instance_input()) ->
     {ok, get_service_instance_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_service_instance_errors(), tuple()}.
 get_service_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_instance(Client, Input, []).
@@ -3719,11 +3985,7 @@ get_service_instance(Client, Input)
 -spec get_service_instance(map(), get_service_instance_input(), proplists:proplist()) ->
     {ok, get_service_instance_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_service_instance_errors(), tuple()}.
 get_service_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServiceInstance">>, Input, Options).
@@ -3732,11 +3994,7 @@ get_service_instance(Client, Input, Options)
 -spec get_service_instance_sync_status(map(), get_service_instance_sync_status_input()) ->
     {ok, get_service_instance_sync_status_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_service_instance_sync_status_errors(), tuple()}.
 get_service_instance_sync_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_instance_sync_status(Client, Input, []).
@@ -3744,11 +4002,7 @@ get_service_instance_sync_status(Client, Input)
 -spec get_service_instance_sync_status(map(), get_service_instance_sync_status_input(), proplists:proplist()) ->
     {ok, get_service_instance_sync_status_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_service_instance_sync_status_errors(), tuple()}.
 get_service_instance_sync_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServiceInstanceSyncStatus">>, Input, Options).
@@ -3757,11 +4011,7 @@ get_service_instance_sync_status(Client, Input, Options)
 -spec get_service_sync_blocker_summary(map(), get_service_sync_blocker_summary_input()) ->
     {ok, get_service_sync_blocker_summary_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_service_sync_blocker_summary_errors(), tuple()}.
 get_service_sync_blocker_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_sync_blocker_summary(Client, Input, []).
@@ -3769,11 +4019,7 @@ get_service_sync_blocker_summary(Client, Input)
 -spec get_service_sync_blocker_summary(map(), get_service_sync_blocker_summary_input(), proplists:proplist()) ->
     {ok, get_service_sync_blocker_summary_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_service_sync_blocker_summary_errors(), tuple()}.
 get_service_sync_blocker_summary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServiceSyncBlockerSummary">>, Input, Options).
@@ -3782,11 +4028,7 @@ get_service_sync_blocker_summary(Client, Input, Options)
 -spec get_service_sync_config(map(), get_service_sync_config_input()) ->
     {ok, get_service_sync_config_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_service_sync_config_errors(), tuple()}.
 get_service_sync_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_sync_config(Client, Input, []).
@@ -3794,11 +4036,7 @@ get_service_sync_config(Client, Input)
 -spec get_service_sync_config(map(), get_service_sync_config_input(), proplists:proplist()) ->
     {ok, get_service_sync_config_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_service_sync_config_errors(), tuple()}.
 get_service_sync_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServiceSyncConfig">>, Input, Options).
@@ -3807,11 +4045,7 @@ get_service_sync_config(Client, Input, Options)
 -spec get_service_template(map(), get_service_template_input()) ->
     {ok, get_service_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_service_template_errors(), tuple()}.
 get_service_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_template(Client, Input, []).
@@ -3819,11 +4053,7 @@ get_service_template(Client, Input)
 -spec get_service_template(map(), get_service_template_input(), proplists:proplist()) ->
     {ok, get_service_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_service_template_errors(), tuple()}.
 get_service_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServiceTemplate">>, Input, Options).
@@ -3832,11 +4062,7 @@ get_service_template(Client, Input, Options)
 -spec get_service_template_version(map(), get_service_template_version_input()) ->
     {ok, get_service_template_version_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_service_template_version_errors(), tuple()}.
 get_service_template_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_template_version(Client, Input, []).
@@ -3844,11 +4070,7 @@ get_service_template_version(Client, Input)
 -spec get_service_template_version(map(), get_service_template_version_input(), proplists:proplist()) ->
     {ok, get_service_template_version_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_service_template_version_errors(), tuple()}.
 get_service_template_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServiceTemplateVersion">>, Input, Options).
@@ -3857,11 +4079,7 @@ get_service_template_version(Client, Input, Options)
 -spec get_template_sync_config(map(), get_template_sync_config_input()) ->
     {ok, get_template_sync_config_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_template_sync_config_errors(), tuple()}.
 get_template_sync_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_template_sync_config(Client, Input, []).
@@ -3869,11 +4087,7 @@ get_template_sync_config(Client, Input)
 -spec get_template_sync_config(map(), get_template_sync_config_input(), proplists:proplist()) ->
     {ok, get_template_sync_config_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_template_sync_config_errors(), tuple()}.
 get_template_sync_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTemplateSyncConfig">>, Input, Options).
@@ -3882,11 +4096,7 @@ get_template_sync_config(Client, Input, Options)
 -spec get_template_sync_status(map(), get_template_sync_status_input()) ->
     {ok, get_template_sync_status_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_template_sync_status_errors(), tuple()}.
 get_template_sync_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_template_sync_status(Client, Input, []).
@@ -3894,11 +4104,7 @@ get_template_sync_status(Client, Input)
 -spec get_template_sync_status(map(), get_template_sync_status_input(), proplists:proplist()) ->
     {ok, get_template_sync_status_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_template_sync_status_errors(), tuple()}.
 get_template_sync_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTemplateSyncStatus">>, Input, Options).
@@ -3913,11 +4119,7 @@ get_template_sync_status(Client, Input, Options)
 -spec list_component_outputs(map(), list_component_outputs_input()) ->
     {ok, list_component_outputs_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_component_outputs_errors(), tuple()}.
 list_component_outputs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_component_outputs(Client, Input, []).
@@ -3925,11 +4127,7 @@ list_component_outputs(Client, Input)
 -spec list_component_outputs(map(), list_component_outputs_input(), proplists:proplist()) ->
     {ok, list_component_outputs_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_component_outputs_errors(), tuple()}.
 list_component_outputs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListComponentOutputs">>, Input, Options).
@@ -3944,11 +4142,7 @@ list_component_outputs(Client, Input, Options)
 -spec list_component_provisioned_resources(map(), list_component_provisioned_resources_input()) ->
     {ok, list_component_provisioned_resources_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_component_provisioned_resources_errors(), tuple()}.
 list_component_provisioned_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_component_provisioned_resources(Client, Input, []).
@@ -3956,11 +4150,7 @@ list_component_provisioned_resources(Client, Input)
 -spec list_component_provisioned_resources(map(), list_component_provisioned_resources_input(), proplists:proplist()) ->
     {ok, list_component_provisioned_resources_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_component_provisioned_resources_errors(), tuple()}.
 list_component_provisioned_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListComponentProvisionedResources">>, Input, Options).
@@ -3978,10 +4168,7 @@ list_component_provisioned_resources(Client, Input, Options)
 -spec list_components(map(), list_components_input()) ->
     {ok, list_components_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_components_errors(), tuple()}.
 list_components(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_components(Client, Input, []).
@@ -3989,10 +4176,7 @@ list_components(Client, Input)
 -spec list_components(map(), list_components_input(), proplists:proplist()) ->
     {ok, list_components_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_components_errors(), tuple()}.
 list_components(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListComponents">>, Input, Options).
@@ -4004,11 +4188,7 @@ list_components(Client, Input, Options)
 -spec list_deployments(map(), list_deployments_input()) ->
     {ok, list_deployments_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_deployments_errors(), tuple()}.
 list_deployments(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_deployments(Client, Input, []).
@@ -4016,11 +4196,7 @@ list_deployments(Client, Input)
 -spec list_deployments(map(), list_deployments_input(), proplists:proplist()) ->
     {ok, list_deployments_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_deployments_errors(), tuple()}.
 list_deployments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDeployments">>, Input, Options).
@@ -4034,10 +4210,7 @@ list_deployments(Client, Input, Options)
 -spec list_environment_account_connections(map(), list_environment_account_connections_input()) ->
     {ok, list_environment_account_connections_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_environment_account_connections_errors(), tuple()}.
 list_environment_account_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_environment_account_connections(Client, Input, []).
@@ -4045,10 +4218,7 @@ list_environment_account_connections(Client, Input)
 -spec list_environment_account_connections(map(), list_environment_account_connections_input(), proplists:proplist()) ->
     {ok, list_environment_account_connections_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_environment_account_connections_errors(), tuple()}.
 list_environment_account_connections(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEnvironmentAccountConnections">>, Input, Options).
@@ -4057,11 +4227,7 @@ list_environment_account_connections(Client, Input, Options)
 -spec list_environment_outputs(map(), list_environment_outputs_input()) ->
     {ok, list_environment_outputs_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_environment_outputs_errors(), tuple()}.
 list_environment_outputs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_environment_outputs(Client, Input, []).
@@ -4069,11 +4235,7 @@ list_environment_outputs(Client, Input)
 -spec list_environment_outputs(map(), list_environment_outputs_input(), proplists:proplist()) ->
     {ok, list_environment_outputs_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_environment_outputs_errors(), tuple()}.
 list_environment_outputs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEnvironmentOutputs">>, Input, Options).
@@ -4082,11 +4244,7 @@ list_environment_outputs(Client, Input, Options)
 -spec list_environment_provisioned_resources(map(), list_environment_provisioned_resources_input()) ->
     {ok, list_environment_provisioned_resources_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_environment_provisioned_resources_errors(), tuple()}.
 list_environment_provisioned_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_environment_provisioned_resources(Client, Input, []).
@@ -4094,11 +4252,7 @@ list_environment_provisioned_resources(Client, Input)
 -spec list_environment_provisioned_resources(map(), list_environment_provisioned_resources_input(), proplists:proplist()) ->
     {ok, list_environment_provisioned_resources_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_environment_provisioned_resources_errors(), tuple()}.
 list_environment_provisioned_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEnvironmentProvisionedResources">>, Input, Options).
@@ -4108,11 +4262,7 @@ list_environment_provisioned_resources(Client, Input, Options)
 -spec list_environment_template_versions(map(), list_environment_template_versions_input()) ->
     {ok, list_environment_template_versions_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_environment_template_versions_errors(), tuple()}.
 list_environment_template_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_environment_template_versions(Client, Input, []).
@@ -4120,11 +4270,7 @@ list_environment_template_versions(Client, Input)
 -spec list_environment_template_versions(map(), list_environment_template_versions_input(), proplists:proplist()) ->
     {ok, list_environment_template_versions_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_environment_template_versions_errors(), tuple()}.
 list_environment_template_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEnvironmentTemplateVersions">>, Input, Options).
@@ -4133,10 +4279,7 @@ list_environment_template_versions(Client, Input, Options)
 -spec list_environment_templates(map(), list_environment_templates_input()) ->
     {ok, list_environment_templates_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_environment_templates_errors(), tuple()}.
 list_environment_templates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_environment_templates(Client, Input, []).
@@ -4144,10 +4287,7 @@ list_environment_templates(Client, Input)
 -spec list_environment_templates(map(), list_environment_templates_input(), proplists:proplist()) ->
     {ok, list_environment_templates_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_environment_templates_errors(), tuple()}.
 list_environment_templates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEnvironmentTemplates">>, Input, Options).
@@ -4156,11 +4296,7 @@ list_environment_templates(Client, Input, Options)
 -spec list_environments(map(), list_environments_input()) ->
     {ok, list_environments_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_environments(Client, Input, []).
@@ -4168,11 +4304,7 @@ list_environments(Client, Input)
 -spec list_environments(map(), list_environments_input(), proplists:proplist()) ->
     {ok, list_environments_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEnvironments">>, Input, Options).
@@ -4181,11 +4313,7 @@ list_environments(Client, Input, Options)
 -spec list_repositories(map(), list_repositories_input()) ->
     {ok, list_repositories_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_repositories_errors(), tuple()}.
 list_repositories(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_repositories(Client, Input, []).
@@ -4193,11 +4321,7 @@ list_repositories(Client, Input)
 -spec list_repositories(map(), list_repositories_input(), proplists:proplist()) ->
     {ok, list_repositories_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_repositories_errors(), tuple()}.
 list_repositories(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRepositories">>, Input, Options).
@@ -4206,10 +4330,7 @@ list_repositories(Client, Input, Options)
 -spec list_repository_sync_definitions(map(), list_repository_sync_definitions_input()) ->
     {ok, list_repository_sync_definitions_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_repository_sync_definitions_errors(), tuple()}.
 list_repository_sync_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_repository_sync_definitions(Client, Input, []).
@@ -4217,10 +4338,7 @@ list_repository_sync_definitions(Client, Input)
 -spec list_repository_sync_definitions(map(), list_repository_sync_definitions_input(), proplists:proplist()) ->
     {ok, list_repository_sync_definitions_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_repository_sync_definitions_errors(), tuple()}.
 list_repository_sync_definitions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRepositorySyncDefinitions">>, Input, Options).
@@ -4229,11 +4347,7 @@ list_repository_sync_definitions(Client, Input, Options)
 -spec list_service_instance_outputs(map(), list_service_instance_outputs_input()) ->
     {ok, list_service_instance_outputs_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_service_instance_outputs_errors(), tuple()}.
 list_service_instance_outputs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_instance_outputs(Client, Input, []).
@@ -4241,11 +4355,7 @@ list_service_instance_outputs(Client, Input)
 -spec list_service_instance_outputs(map(), list_service_instance_outputs_input(), proplists:proplist()) ->
     {ok, list_service_instance_outputs_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_service_instance_outputs_errors(), tuple()}.
 list_service_instance_outputs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServiceInstanceOutputs">>, Input, Options).
@@ -4254,11 +4364,7 @@ list_service_instance_outputs(Client, Input, Options)
 -spec list_service_instance_provisioned_resources(map(), list_service_instance_provisioned_resources_input()) ->
     {ok, list_service_instance_provisioned_resources_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_service_instance_provisioned_resources_errors(), tuple()}.
 list_service_instance_provisioned_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_instance_provisioned_resources(Client, Input, []).
@@ -4266,11 +4372,7 @@ list_service_instance_provisioned_resources(Client, Input)
 -spec list_service_instance_provisioned_resources(map(), list_service_instance_provisioned_resources_input(), proplists:proplist()) ->
     {ok, list_service_instance_provisioned_resources_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_service_instance_provisioned_resources_errors(), tuple()}.
 list_service_instance_provisioned_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServiceInstanceProvisionedResources">>, Input, Options).
@@ -4282,11 +4384,7 @@ list_service_instance_provisioned_resources(Client, Input, Options)
 -spec list_service_instances(map(), list_service_instances_input()) ->
     {ok, list_service_instances_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_service_instances_errors(), tuple()}.
 list_service_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_instances(Client, Input, []).
@@ -4294,11 +4392,7 @@ list_service_instances(Client, Input)
 -spec list_service_instances(map(), list_service_instances_input(), proplists:proplist()) ->
     {ok, list_service_instances_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_service_instances_errors(), tuple()}.
 list_service_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServiceInstances">>, Input, Options).
@@ -4307,11 +4401,7 @@ list_service_instances(Client, Input, Options)
 -spec list_service_pipeline_outputs(map(), list_service_pipeline_outputs_input()) ->
     {ok, list_service_pipeline_outputs_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_service_pipeline_outputs_errors(), tuple()}.
 list_service_pipeline_outputs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_pipeline_outputs(Client, Input, []).
@@ -4319,11 +4409,7 @@ list_service_pipeline_outputs(Client, Input)
 -spec list_service_pipeline_outputs(map(), list_service_pipeline_outputs_input(), proplists:proplist()) ->
     {ok, list_service_pipeline_outputs_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_service_pipeline_outputs_errors(), tuple()}.
 list_service_pipeline_outputs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServicePipelineOutputs">>, Input, Options).
@@ -4332,11 +4418,7 @@ list_service_pipeline_outputs(Client, Input, Options)
 -spec list_service_pipeline_provisioned_resources(map(), list_service_pipeline_provisioned_resources_input()) ->
     {ok, list_service_pipeline_provisioned_resources_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_service_pipeline_provisioned_resources_errors(), tuple()}.
 list_service_pipeline_provisioned_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_pipeline_provisioned_resources(Client, Input, []).
@@ -4344,11 +4426,7 @@ list_service_pipeline_provisioned_resources(Client, Input)
 -spec list_service_pipeline_provisioned_resources(map(), list_service_pipeline_provisioned_resources_input(), proplists:proplist()) ->
     {ok, list_service_pipeline_provisioned_resources_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_service_pipeline_provisioned_resources_errors(), tuple()}.
 list_service_pipeline_provisioned_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServicePipelineProvisionedResources">>, Input, Options).
@@ -4357,11 +4435,7 @@ list_service_pipeline_provisioned_resources(Client, Input, Options)
 -spec list_service_template_versions(map(), list_service_template_versions_input()) ->
     {ok, list_service_template_versions_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_service_template_versions_errors(), tuple()}.
 list_service_template_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_template_versions(Client, Input, []).
@@ -4369,11 +4443,7 @@ list_service_template_versions(Client, Input)
 -spec list_service_template_versions(map(), list_service_template_versions_input(), proplists:proplist()) ->
     {ok, list_service_template_versions_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_service_template_versions_errors(), tuple()}.
 list_service_template_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServiceTemplateVersions">>, Input, Options).
@@ -4382,10 +4452,7 @@ list_service_template_versions(Client, Input, Options)
 -spec list_service_templates(map(), list_service_templates_input()) ->
     {ok, list_service_templates_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_service_templates_errors(), tuple()}.
 list_service_templates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_templates(Client, Input, []).
@@ -4393,10 +4460,7 @@ list_service_templates(Client, Input)
 -spec list_service_templates(map(), list_service_templates_input(), proplists:proplist()) ->
     {ok, list_service_templates_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_service_templates_errors(), tuple()}.
 list_service_templates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServiceTemplates">>, Input, Options).
@@ -4405,10 +4469,7 @@ list_service_templates(Client, Input, Options)
 -spec list_services(map(), list_services_input()) ->
     {ok, list_services_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_services_errors(), tuple()}.
 list_services(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_services(Client, Input, []).
@@ -4416,10 +4477,7 @@ list_services(Client, Input)
 -spec list_services(map(), list_services_input(), proplists:proplist()) ->
     {ok, list_services_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_services_errors(), tuple()}.
 list_services(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServices">>, Input, Options).
@@ -4433,11 +4491,7 @@ list_services(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -4445,11 +4499,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_input(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -4463,13 +4513,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec notify_resource_deployment_status_change(map(), notify_resource_deployment_status_change_input()) ->
     {ok, notify_resource_deployment_status_change_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, notify_resource_deployment_status_change_errors(), tuple()}.
 notify_resource_deployment_status_change(Client, Input)
   when is_map(Client), is_map(Input) ->
     notify_resource_deployment_status_change(Client, Input, []).
@@ -4477,13 +4521,7 @@ notify_resource_deployment_status_change(Client, Input)
 -spec notify_resource_deployment_status_change(map(), notify_resource_deployment_status_change_input(), proplists:proplist()) ->
     {ok, notify_resource_deployment_status_change_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, notify_resource_deployment_status_change_errors(), tuple()}.
 notify_resource_deployment_status_change(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"NotifyResourceDeploymentStatusChange">>, Input, Options).
@@ -4505,12 +4543,7 @@ notify_resource_deployment_status_change(Client, Input, Options)
 -spec reject_environment_account_connection(map(), reject_environment_account_connection_input()) ->
     {ok, reject_environment_account_connection_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, reject_environment_account_connection_errors(), tuple()}.
 reject_environment_account_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     reject_environment_account_connection(Client, Input, []).
@@ -4518,12 +4551,7 @@ reject_environment_account_connection(Client, Input)
 -spec reject_environment_account_connection(map(), reject_environment_account_connection_input(), proplists:proplist()) ->
     {ok, reject_environment_account_connection_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, reject_environment_account_connection_errors(), tuple()}.
 reject_environment_account_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RejectEnvironmentAccountConnection">>, Input, Options).
@@ -4539,12 +4567,7 @@ reject_environment_account_connection(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -4552,12 +4575,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -4572,12 +4590,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -4585,12 +4598,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -4600,11 +4608,7 @@ untag_resource(Client, Input, Options)
 -spec update_account_settings(map(), update_account_settings_input()) ->
     {ok, update_account_settings_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_account_settings_errors(), tuple()}.
 update_account_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_account_settings(Client, Input, []).
@@ -4612,11 +4616,7 @@ update_account_settings(Client, Input)
 -spec update_account_settings(map(), update_account_settings_input(), proplists:proplist()) ->
     {ok, update_account_settings_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_account_settings_errors(), tuple()}.
 update_account_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAccountSettings">>, Input, Options).
@@ -4638,13 +4638,7 @@ update_account_settings(Client, Input, Options)
 -spec update_component(map(), update_component_input()) ->
     {ok, update_component_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_component_errors(), tuple()}.
 update_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_component(Client, Input, []).
@@ -4652,13 +4646,7 @@ update_component(Client, Input)
 -spec update_component(map(), update_component_input(), proplists:proplist()) ->
     {ok, update_component_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_component_errors(), tuple()}.
 update_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateComponent">>, Input, Options).
@@ -4732,12 +4720,7 @@ update_component(Client, Input, Options)
 -spec update_environment(map(), update_environment_input()) ->
     {ok, update_environment_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_environment_errors(), tuple()}.
 update_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_environment(Client, Input, []).
@@ -4745,12 +4728,7 @@ update_environment(Client, Input)
 -spec update_environment(map(), update_environment_input(), proplists:proplist()) ->
     {ok, update_environment_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_environment_errors(), tuple()}.
 update_environment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEnvironment">>, Input, Options).
@@ -4765,12 +4743,7 @@ update_environment(Client, Input, Options)
 -spec update_environment_account_connection(map(), update_environment_account_connection_input()) ->
     {ok, update_environment_account_connection_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_environment_account_connection_errors(), tuple()}.
 update_environment_account_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_environment_account_connection(Client, Input, []).
@@ -4778,12 +4751,7 @@ update_environment_account_connection(Client, Input)
 -spec update_environment_account_connection(map(), update_environment_account_connection_input(), proplists:proplist()) ->
     {ok, update_environment_account_connection_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_environment_account_connection_errors(), tuple()}.
 update_environment_account_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEnvironmentAccountConnection">>, Input, Options).
@@ -4792,12 +4760,7 @@ update_environment_account_connection(Client, Input, Options)
 -spec update_environment_template(map(), update_environment_template_input()) ->
     {ok, update_environment_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_environment_template_errors(), tuple()}.
 update_environment_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_environment_template(Client, Input, []).
@@ -4805,12 +4768,7 @@ update_environment_template(Client, Input)
 -spec update_environment_template(map(), update_environment_template_input(), proplists:proplist()) ->
     {ok, update_environment_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_environment_template_errors(), tuple()}.
 update_environment_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEnvironmentTemplate">>, Input, Options).
@@ -4819,12 +4777,7 @@ update_environment_template(Client, Input, Options)
 -spec update_environment_template_version(map(), update_environment_template_version_input()) ->
     {ok, update_environment_template_version_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_environment_template_version_errors(), tuple()}.
 update_environment_template_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_environment_template_version(Client, Input, []).
@@ -4832,12 +4785,7 @@ update_environment_template_version(Client, Input)
 -spec update_environment_template_version(map(), update_environment_template_version_input(), proplists:proplist()) ->
     {ok, update_environment_template_version_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_environment_template_version_errors(), tuple()}.
 update_environment_template_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEnvironmentTemplateVersion">>, Input, Options).
@@ -4864,13 +4812,7 @@ update_environment_template_version(Client, Input, Options)
 -spec update_service(map(), update_service_input()) ->
     {ok, update_service_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_service_errors(), tuple()}.
 update_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service(Client, Input, []).
@@ -4878,13 +4820,7 @@ update_service(Client, Input)
 -spec update_service(map(), update_service_input(), proplists:proplist()) ->
     {ok, update_service_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_service_errors(), tuple()}.
 update_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateService">>, Input, Options).
@@ -4907,12 +4843,7 @@ update_service(Client, Input, Options)
 -spec update_service_instance(map(), update_service_instance_input()) ->
     {ok, update_service_instance_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_service_instance_errors(), tuple()}.
 update_service_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service_instance(Client, Input, []).
@@ -4920,12 +4851,7 @@ update_service_instance(Client, Input)
 -spec update_service_instance(map(), update_service_instance_input(), proplists:proplist()) ->
     {ok, update_service_instance_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_service_instance_errors(), tuple()}.
 update_service_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateServiceInstance">>, Input, Options).
@@ -4968,12 +4894,7 @@ update_service_instance(Client, Input, Options)
 -spec update_service_pipeline(map(), update_service_pipeline_input()) ->
     {ok, update_service_pipeline_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_service_pipeline_errors(), tuple()}.
 update_service_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service_pipeline(Client, Input, []).
@@ -4981,12 +4902,7 @@ update_service_pipeline(Client, Input)
 -spec update_service_pipeline(map(), update_service_pipeline_input(), proplists:proplist()) ->
     {ok, update_service_pipeline_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_service_pipeline_errors(), tuple()}.
 update_service_pipeline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateServicePipeline">>, Input, Options).
@@ -4995,12 +4911,7 @@ update_service_pipeline(Client, Input, Options)
 -spec update_service_sync_blocker(map(), update_service_sync_blocker_input()) ->
     {ok, update_service_sync_blocker_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_service_sync_blocker_errors(), tuple()}.
 update_service_sync_blocker(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service_sync_blocker(Client, Input, []).
@@ -5008,12 +4919,7 @@ update_service_sync_blocker(Client, Input)
 -spec update_service_sync_blocker(map(), update_service_sync_blocker_input(), proplists:proplist()) ->
     {ok, update_service_sync_blocker_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_service_sync_blocker_errors(), tuple()}.
 update_service_sync_blocker(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateServiceSyncBlocker">>, Input, Options).
@@ -5022,12 +4928,7 @@ update_service_sync_blocker(Client, Input, Options)
 -spec update_service_sync_config(map(), update_service_sync_config_input()) ->
     {ok, update_service_sync_config_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_service_sync_config_errors(), tuple()}.
 update_service_sync_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service_sync_config(Client, Input, []).
@@ -5035,12 +4936,7 @@ update_service_sync_config(Client, Input)
 -spec update_service_sync_config(map(), update_service_sync_config_input(), proplists:proplist()) ->
     {ok, update_service_sync_config_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_service_sync_config_errors(), tuple()}.
 update_service_sync_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateServiceSyncConfig">>, Input, Options).
@@ -5049,12 +4945,7 @@ update_service_sync_config(Client, Input, Options)
 -spec update_service_template(map(), update_service_template_input()) ->
     {ok, update_service_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_service_template_errors(), tuple()}.
 update_service_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service_template(Client, Input, []).
@@ -5062,12 +4953,7 @@ update_service_template(Client, Input)
 -spec update_service_template(map(), update_service_template_input(), proplists:proplist()) ->
     {ok, update_service_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_service_template_errors(), tuple()}.
 update_service_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateServiceTemplate">>, Input, Options).
@@ -5076,12 +4962,7 @@ update_service_template(Client, Input, Options)
 -spec update_service_template_version(map(), update_service_template_version_input()) ->
     {ok, update_service_template_version_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_service_template_version_errors(), tuple()}.
 update_service_template_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service_template_version(Client, Input, []).
@@ -5089,12 +4970,7 @@ update_service_template_version(Client, Input)
 -spec update_service_template_version(map(), update_service_template_version_input(), proplists:proplist()) ->
     {ok, update_service_template_version_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_service_template_version_errors(), tuple()}.
 update_service_template_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateServiceTemplateVersion">>, Input, Options).
@@ -5109,12 +4985,7 @@ update_service_template_version(Client, Input, Options)
 -spec update_template_sync_config(map(), update_template_sync_config_input()) ->
     {ok, update_template_sync_config_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_template_sync_config_errors(), tuple()}.
 update_template_sync_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_template_sync_config(Client, Input, []).
@@ -5122,12 +4993,7 @@ update_template_sync_config(Client, Input)
 -spec update_template_sync_config(map(), update_template_sync_config_input(), proplists:proplist()) ->
     {ok, update_template_sync_config_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_template_sync_config_errors(), tuple()}.
 update_template_sync_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTemplateSyncConfig">>, Input, Options).

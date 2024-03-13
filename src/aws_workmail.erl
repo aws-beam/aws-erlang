@@ -1962,6 +1962,574 @@
 %% }
 -type resource() :: #{binary() => any()}.
 
+-type associate_delegate_to_resource_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_state_exception() | 
+    unsupported_operation_exception() | 
+    entity_not_found_exception().
+
+-type associate_member_to_group_errors() ::
+    directory_service_authentication_failed_exception() | 
+    directory_unavailable_exception() | 
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_state_exception() | 
+    unsupported_operation_exception() | 
+    entity_not_found_exception().
+
+-type assume_impersonation_role_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    resource_not_found_exception() | 
+    organization_state_exception().
+
+-type cancel_mailbox_export_job_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_not_found_exception().
+
+-type create_alias_errors() ::
+    limit_exceeded_exception() | 
+    email_address_in_use_exception() | 
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    mail_domain_state_exception() | 
+    mail_domain_not_found_exception() | 
+    organization_state_exception() | 
+    entity_state_exception() | 
+    entity_not_found_exception().
+
+-type create_availability_configuration_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    name_availability_exception() | 
+    organization_state_exception().
+
+-type create_group_errors() ::
+    directory_service_authentication_failed_exception() | 
+    reserved_name_exception() | 
+    directory_unavailable_exception() | 
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    name_availability_exception() | 
+    organization_state_exception() | 
+    unsupported_operation_exception().
+
+-type create_impersonation_role_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_state_exception() | 
+    entity_not_found_exception().
+
+-type create_mobile_device_access_rule_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception().
+
+-type create_organization_errors() ::
+    limit_exceeded_exception() | 
+    directory_in_use_exception() | 
+    directory_unavailable_exception() | 
+    invalid_parameter_exception() | 
+    name_availability_exception().
+
+-type create_resource_errors() ::
+    directory_service_authentication_failed_exception() | 
+    reserved_name_exception() | 
+    directory_unavailable_exception() | 
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    name_availability_exception() | 
+    organization_state_exception() | 
+    unsupported_operation_exception().
+
+-type create_user_errors() ::
+    invalid_password_exception() | 
+    directory_service_authentication_failed_exception() | 
+    reserved_name_exception() | 
+    directory_unavailable_exception() | 
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    name_availability_exception() | 
+    organization_state_exception() | 
+    unsupported_operation_exception().
+
+-type delete_access_control_rule_errors() ::
+    organization_not_found_exception() | 
+    organization_state_exception().
+
+-type delete_alias_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_state_exception() | 
+    entity_not_found_exception().
+
+-type delete_availability_configuration_errors() ::
+    organization_not_found_exception() | 
+    organization_state_exception().
+
+-type delete_email_monitoring_configuration_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception().
+
+-type delete_group_errors() ::
+    directory_service_authentication_failed_exception() | 
+    directory_unavailable_exception() | 
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_state_exception() | 
+    unsupported_operation_exception().
+
+-type delete_impersonation_role_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception().
+
+-type delete_mailbox_permissions_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_state_exception() | 
+    entity_not_found_exception().
+
+-type delete_mobile_device_access_override_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_not_found_exception().
+
+-type delete_mobile_device_access_rule_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception().
+
+-type delete_organization_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception().
+
+-type delete_resource_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_state_exception() | 
+    unsupported_operation_exception().
+
+-type delete_retention_policy_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception().
+
+-type delete_user_errors() ::
+    directory_service_authentication_failed_exception() | 
+    directory_unavailable_exception() | 
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_state_exception() | 
+    unsupported_operation_exception().
+
+-type deregister_from_work_mail_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_state_exception() | 
+    entity_not_found_exception().
+
+-type deregister_mail_domain_errors() ::
+    invalid_custom_ses_configuration_exception() | 
+    invalid_parameter_exception() | 
+    mail_domain_in_use_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception().
+
+-type describe_email_monitoring_configuration_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    resource_not_found_exception() | 
+    organization_state_exception().
+
+-type describe_entity_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_not_found_exception().
+
+-type describe_group_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_not_found_exception().
+
+-type describe_inbound_dmarc_settings_errors() ::
+    organization_not_found_exception() | 
+    organization_state_exception().
+
+-type describe_mailbox_export_job_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_not_found_exception().
+
+-type describe_organization_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception().
+
+-type describe_resource_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    unsupported_operation_exception() | 
+    entity_not_found_exception().
+
+-type describe_user_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_not_found_exception().
+
+-type disassociate_delegate_from_resource_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_state_exception() | 
+    unsupported_operation_exception() | 
+    entity_not_found_exception().
+
+-type disassociate_member_from_group_errors() ::
+    directory_service_authentication_failed_exception() | 
+    directory_unavailable_exception() | 
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_state_exception() | 
+    unsupported_operation_exception() | 
+    entity_not_found_exception().
+
+-type get_access_control_effect_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    resource_not_found_exception() | 
+    organization_state_exception() | 
+    entity_not_found_exception().
+
+-type get_default_retention_policy_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_not_found_exception().
+
+-type get_impersonation_role_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    resource_not_found_exception() | 
+    organization_state_exception().
+
+-type get_impersonation_role_effect_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    resource_not_found_exception() | 
+    organization_state_exception() | 
+    entity_state_exception() | 
+    entity_not_found_exception().
+
+-type get_mail_domain_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    mail_domain_not_found_exception() | 
+    organization_state_exception().
+
+-type get_mailbox_details_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_not_found_exception().
+
+-type get_mobile_device_access_effect_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception().
+
+-type get_mobile_device_access_override_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    resource_not_found_exception() | 
+    organization_state_exception() | 
+    entity_not_found_exception().
+
+-type list_access_control_rules_errors() ::
+    organization_not_found_exception() | 
+    organization_state_exception().
+
+-type list_aliases_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_state_exception() | 
+    entity_not_found_exception().
+
+-type list_availability_configurations_errors() ::
+    organization_not_found_exception() | 
+    organization_state_exception().
+
+-type list_group_members_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_state_exception() | 
+    entity_not_found_exception().
+
+-type list_groups_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_not_found_exception().
+
+-type list_groups_for_entity_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_state_exception() | 
+    entity_not_found_exception().
+
+-type list_impersonation_roles_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception().
+
+-type list_mail_domains_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception().
+
+-type list_mailbox_export_jobs_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception().
+
+-type list_mailbox_permissions_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_not_found_exception().
+
+-type list_mobile_device_access_overrides_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_not_found_exception().
+
+-type list_mobile_device_access_rules_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception().
+
+-type list_organizations_errors() ::
+    invalid_parameter_exception().
+
+-type list_resource_delegates_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_state_exception() | 
+    unsupported_operation_exception() | 
+    entity_not_found_exception().
+
+-type list_resources_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    unsupported_operation_exception().
+
+-type list_tags_for_resource_errors() ::
+    resource_not_found_exception().
+
+-type list_users_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception().
+
+-type put_access_control_rule_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    resource_not_found_exception() | 
+    organization_state_exception() | 
+    entity_not_found_exception().
+
+-type put_email_monitoring_configuration_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    resource_not_found_exception() | 
+    organization_state_exception().
+
+-type put_inbound_dmarc_settings_errors() ::
+    organization_not_found_exception() | 
+    organization_state_exception().
+
+-type put_mailbox_permissions_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_state_exception() | 
+    entity_not_found_exception().
+
+-type put_mobile_device_access_override_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_state_exception() | 
+    entity_not_found_exception().
+
+-type put_retention_policy_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception().
+
+-type register_mail_domain_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    mail_domain_in_use_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception().
+
+-type register_to_work_mail_errors() ::
+    directory_service_authentication_failed_exception() | 
+    email_address_in_use_exception() | 
+    entity_already_registered_exception() | 
+    directory_unavailable_exception() | 
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    mail_domain_state_exception() | 
+    mail_domain_not_found_exception() | 
+    organization_state_exception() | 
+    entity_state_exception() | 
+    entity_not_found_exception().
+
+-type reset_password_errors() ::
+    invalid_password_exception() | 
+    directory_service_authentication_failed_exception() | 
+    directory_unavailable_exception() | 
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_state_exception() | 
+    unsupported_operation_exception() | 
+    entity_not_found_exception().
+
+-type start_mailbox_export_job_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_not_found_exception().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    organization_state_exception().
+
+-type test_availability_configuration_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    resource_not_found_exception() | 
+    organization_state_exception().
+
+-type untag_resource_errors() ::
+    resource_not_found_exception().
+
+-type update_availability_configuration_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    resource_not_found_exception() | 
+    organization_state_exception().
+
+-type update_default_mail_domain_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    mail_domain_state_exception() | 
+    mail_domain_not_found_exception() | 
+    organization_state_exception().
+
+-type update_group_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_state_exception() | 
+    unsupported_operation_exception() | 
+    entity_not_found_exception().
+
+-type update_impersonation_role_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    resource_not_found_exception() | 
+    organization_state_exception() | 
+    entity_state_exception() | 
+    entity_not_found_exception().
+
+-type update_mailbox_quota_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_state_exception() | 
+    entity_not_found_exception().
+
+-type update_mobile_device_access_rule_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_not_found_exception().
+
+-type update_primary_email_address_errors() ::
+    directory_service_authentication_failed_exception() | 
+    email_address_in_use_exception() | 
+    directory_unavailable_exception() | 
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    mail_domain_state_exception() | 
+    mail_domain_not_found_exception() | 
+    organization_state_exception() | 
+    entity_state_exception() | 
+    unsupported_operation_exception() | 
+    entity_not_found_exception().
+
+-type update_resource_errors() ::
+    email_address_in_use_exception() | 
+    directory_unavailable_exception() | 
+    invalid_parameter_exception() | 
+    invalid_configuration_exception() | 
+    organization_not_found_exception() | 
+    mail_domain_state_exception() | 
+    name_availability_exception() | 
+    mail_domain_not_found_exception() | 
+    organization_state_exception() | 
+    entity_state_exception() | 
+    unsupported_operation_exception() | 
+    entity_not_found_exception().
+
+-type update_user_errors() ::
+    directory_service_authentication_failed_exception() | 
+    directory_unavailable_exception() | 
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_state_exception() | 
+    unsupported_operation_exception() | 
+    entity_not_found_exception().
 
 %%====================================================================
 %% API
@@ -1971,12 +2539,7 @@
 -spec associate_delegate_to_resource(map(), associate_delegate_to_resource_request()) ->
     {ok, associate_delegate_to_resource_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, associate_delegate_to_resource_errors(), tuple()}.
 associate_delegate_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_delegate_to_resource(Client, Input, []).
@@ -1984,12 +2547,7 @@ associate_delegate_to_resource(Client, Input)
 -spec associate_delegate_to_resource(map(), associate_delegate_to_resource_request(), proplists:proplist()) ->
     {ok, associate_delegate_to_resource_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, associate_delegate_to_resource_errors(), tuple()}.
 associate_delegate_to_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateDelegateToResource">>, Input, Options).
@@ -1998,14 +2556,7 @@ associate_delegate_to_resource(Client, Input, Options)
 -spec associate_member_to_group(map(), associate_member_to_group_request()) ->
     {ok, associate_member_to_group_response(), tuple()} |
     {error, any()} |
-    {error, directory_service_authentication_failed_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, associate_member_to_group_errors(), tuple()}.
 associate_member_to_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_member_to_group(Client, Input, []).
@@ -2013,14 +2564,7 @@ associate_member_to_group(Client, Input)
 -spec associate_member_to_group(map(), associate_member_to_group_request(), proplists:proplist()) ->
     {ok, associate_member_to_group_response(), tuple()} |
     {error, any()} |
-    {error, directory_service_authentication_failed_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, associate_member_to_group_errors(), tuple()}.
 associate_member_to_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateMemberToGroup">>, Input, Options).
@@ -2032,10 +2576,7 @@ associate_member_to_group(Client, Input, Options)
 -spec assume_impersonation_role(map(), assume_impersonation_role_request()) ->
     {ok, assume_impersonation_role_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, assume_impersonation_role_errors(), tuple()}.
 assume_impersonation_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     assume_impersonation_role(Client, Input, []).
@@ -2043,10 +2584,7 @@ assume_impersonation_role(Client, Input)
 -spec assume_impersonation_role(map(), assume_impersonation_role_request(), proplists:proplist()) ->
     {ok, assume_impersonation_role_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, assume_impersonation_role_errors(), tuple()}.
 assume_impersonation_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssumeImpersonationRole">>, Input, Options).
@@ -2059,10 +2597,7 @@ assume_impersonation_role(Client, Input, Options)
 -spec cancel_mailbox_export_job(map(), cancel_mailbox_export_job_request()) ->
     {ok, cancel_mailbox_export_job_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, cancel_mailbox_export_job_errors(), tuple()}.
 cancel_mailbox_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_mailbox_export_job(Client, Input, []).
@@ -2070,10 +2605,7 @@ cancel_mailbox_export_job(Client, Input)
 -spec cancel_mailbox_export_job(map(), cancel_mailbox_export_job_request(), proplists:proplist()) ->
     {ok, cancel_mailbox_export_job_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, cancel_mailbox_export_job_errors(), tuple()}.
 cancel_mailbox_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelMailboxExportJob">>, Input, Options).
@@ -2083,15 +2615,7 @@ cancel_mailbox_export_job(Client, Input, Options)
 -spec create_alias(map(), create_alias_request()) ->
     {ok, create_alias_response(), tuple()} |
     {error, any()} |
-    {error, email_address_in_use_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, mail_domain_not_found_exception(), tuple()} |
-    {error, mail_domain_state_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, create_alias_errors(), tuple()}.
 create_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_alias(Client, Input, []).
@@ -2099,15 +2623,7 @@ create_alias(Client, Input)
 -spec create_alias(map(), create_alias_request(), proplists:proplist()) ->
     {ok, create_alias_response(), tuple()} |
     {error, any()} |
-    {error, email_address_in_use_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, mail_domain_not_found_exception(), tuple()} |
-    {error, mail_domain_state_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, create_alias_errors(), tuple()}.
 create_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAlias">>, Input, Options).
@@ -2117,11 +2633,7 @@ create_alias(Client, Input, Options)
 -spec create_availability_configuration(map(), create_availability_configuration_request()) ->
     {ok, create_availability_configuration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, name_availability_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, create_availability_configuration_errors(), tuple()}.
 create_availability_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_availability_configuration(Client, Input, []).
@@ -2129,11 +2641,7 @@ create_availability_configuration(Client, Input)
 -spec create_availability_configuration(map(), create_availability_configuration_request(), proplists:proplist()) ->
     {ok, create_availability_configuration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, name_availability_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, create_availability_configuration_errors(), tuple()}.
 create_availability_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAvailabilityConfiguration">>, Input, Options).
@@ -2143,14 +2651,7 @@ create_availability_configuration(Client, Input, Options)
 -spec create_group(map(), create_group_request()) ->
     {ok, create_group_response(), tuple()} |
     {error, any()} |
-    {error, directory_service_authentication_failed_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, name_availability_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, reserved_name_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, create_group_errors(), tuple()}.
 create_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_group(Client, Input, []).
@@ -2158,14 +2659,7 @@ create_group(Client, Input)
 -spec create_group(map(), create_group_request(), proplists:proplist()) ->
     {ok, create_group_response(), tuple()} |
     {error, any()} |
-    {error, directory_service_authentication_failed_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, name_availability_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, reserved_name_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, create_group_errors(), tuple()}.
 create_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGroup">>, Input, Options).
@@ -2181,12 +2675,7 @@ create_group(Client, Input, Options)
 -spec create_impersonation_role(map(), create_impersonation_role_request()) ->
     {ok, create_impersonation_role_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, create_impersonation_role_errors(), tuple()}.
 create_impersonation_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_impersonation_role(Client, Input, []).
@@ -2194,12 +2683,7 @@ create_impersonation_role(Client, Input)
 -spec create_impersonation_role(map(), create_impersonation_role_request(), proplists:proplist()) ->
     {ok, create_impersonation_role_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, create_impersonation_role_errors(), tuple()}.
 create_impersonation_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateImpersonationRole">>, Input, Options).
@@ -2209,10 +2693,7 @@ create_impersonation_role(Client, Input, Options)
 -spec create_mobile_device_access_rule(map(), create_mobile_device_access_rule_request()) ->
     {ok, create_mobile_device_access_rule_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, create_mobile_device_access_rule_errors(), tuple()}.
 create_mobile_device_access_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_mobile_device_access_rule(Client, Input, []).
@@ -2220,10 +2701,7 @@ create_mobile_device_access_rule(Client, Input)
 -spec create_mobile_device_access_rule(map(), create_mobile_device_access_rule_request(), proplists:proplist()) ->
     {ok, create_mobile_device_access_rule_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, create_mobile_device_access_rule_errors(), tuple()}.
 create_mobile_device_access_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateMobileDeviceAccessRule">>, Input, Options).
@@ -2259,11 +2737,7 @@ create_mobile_device_access_rule(Client, Input, Options)
 -spec create_organization(map(), create_organization_request()) ->
     {ok, create_organization_response(), tuple()} |
     {error, any()} |
-    {error, directory_in_use_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, name_availability_exception(), tuple()}.
+    {error, create_organization_errors(), tuple()}.
 create_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_organization(Client, Input, []).
@@ -2271,11 +2745,7 @@ create_organization(Client, Input)
 -spec create_organization(map(), create_organization_request(), proplists:proplist()) ->
     {ok, create_organization_response(), tuple()} |
     {error, any()} |
-    {error, directory_in_use_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, name_availability_exception(), tuple()}.
+    {error, create_organization_errors(), tuple()}.
 create_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateOrganization">>, Input, Options).
@@ -2284,14 +2754,7 @@ create_organization(Client, Input, Options)
 -spec create_resource(map(), create_resource_request()) ->
     {ok, create_resource_response(), tuple()} |
     {error, any()} |
-    {error, directory_service_authentication_failed_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, name_availability_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, reserved_name_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, create_resource_errors(), tuple()}.
 create_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_resource(Client, Input, []).
@@ -2299,14 +2762,7 @@ create_resource(Client, Input)
 -spec create_resource(map(), create_resource_request(), proplists:proplist()) ->
     {ok, create_resource_response(), tuple()} |
     {error, any()} |
-    {error, directory_service_authentication_failed_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, name_availability_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, reserved_name_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, create_resource_errors(), tuple()}.
 create_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateResource">>, Input, Options).
@@ -2316,15 +2772,7 @@ create_resource(Client, Input, Options)
 -spec create_user(map(), create_user_request()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
-    {error, directory_service_authentication_failed_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_password_exception(), tuple()} |
-    {error, name_availability_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, reserved_name_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, create_user_errors(), tuple()}.
 create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user(Client, Input, []).
@@ -2332,15 +2780,7 @@ create_user(Client, Input)
 -spec create_user(map(), create_user_request(), proplists:proplist()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
-    {error, directory_service_authentication_failed_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_password_exception(), tuple()} |
-    {error, name_availability_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, reserved_name_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, create_user_errors(), tuple()}.
 create_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUser">>, Input, Options).
@@ -2354,8 +2794,7 @@ create_user(Client, Input, Options)
 -spec delete_access_control_rule(map(), delete_access_control_rule_request()) ->
     {ok, delete_access_control_rule_response(), tuple()} |
     {error, any()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, delete_access_control_rule_errors(), tuple()}.
 delete_access_control_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_access_control_rule(Client, Input, []).
@@ -2363,8 +2802,7 @@ delete_access_control_rule(Client, Input)
 -spec delete_access_control_rule(map(), delete_access_control_rule_request(), proplists:proplist()) ->
     {ok, delete_access_control_rule_response(), tuple()} |
     {error, any()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, delete_access_control_rule_errors(), tuple()}.
 delete_access_control_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAccessControlRule">>, Input, Options).
@@ -2375,11 +2813,7 @@ delete_access_control_rule(Client, Input, Options)
 -spec delete_alias(map(), delete_alias_request()) ->
     {ok, delete_alias_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, delete_alias_errors(), tuple()}.
 delete_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_alias(Client, Input, []).
@@ -2387,11 +2821,7 @@ delete_alias(Client, Input)
 -spec delete_alias(map(), delete_alias_request(), proplists:proplist()) ->
     {ok, delete_alias_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, delete_alias_errors(), tuple()}.
 delete_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAlias">>, Input, Options).
@@ -2401,8 +2831,7 @@ delete_alias(Client, Input, Options)
 -spec delete_availability_configuration(map(), delete_availability_configuration_request()) ->
     {ok, delete_availability_configuration_response(), tuple()} |
     {error, any()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, delete_availability_configuration_errors(), tuple()}.
 delete_availability_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_availability_configuration(Client, Input, []).
@@ -2410,8 +2839,7 @@ delete_availability_configuration(Client, Input)
 -spec delete_availability_configuration(map(), delete_availability_configuration_request(), proplists:proplist()) ->
     {ok, delete_availability_configuration_response(), tuple()} |
     {error, any()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, delete_availability_configuration_errors(), tuple()}.
 delete_availability_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAvailabilityConfiguration">>, Input, Options).
@@ -2421,9 +2849,7 @@ delete_availability_configuration(Client, Input, Options)
 -spec delete_email_monitoring_configuration(map(), delete_email_monitoring_configuration_request()) ->
     {ok, delete_email_monitoring_configuration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, delete_email_monitoring_configuration_errors(), tuple()}.
 delete_email_monitoring_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_email_monitoring_configuration(Client, Input, []).
@@ -2431,9 +2857,7 @@ delete_email_monitoring_configuration(Client, Input)
 -spec delete_email_monitoring_configuration(map(), delete_email_monitoring_configuration_request(), proplists:proplist()) ->
     {ok, delete_email_monitoring_configuration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, delete_email_monitoring_configuration_errors(), tuple()}.
 delete_email_monitoring_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEmailMonitoringConfiguration">>, Input, Options).
@@ -2442,13 +2866,7 @@ delete_email_monitoring_configuration(Client, Input, Options)
 -spec delete_group(map(), delete_group_request()) ->
     {ok, delete_group_response(), tuple()} |
     {error, any()} |
-    {error, directory_service_authentication_failed_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, delete_group_errors(), tuple()}.
 delete_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_group(Client, Input, []).
@@ -2456,13 +2874,7 @@ delete_group(Client, Input)
 -spec delete_group(map(), delete_group_request(), proplists:proplist()) ->
     {ok, delete_group_response(), tuple()} |
     {error, any()} |
-    {error, directory_service_authentication_failed_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, delete_group_errors(), tuple()}.
 delete_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGroup">>, Input, Options).
@@ -2471,9 +2883,7 @@ delete_group(Client, Input, Options)
 -spec delete_impersonation_role(map(), delete_impersonation_role_request()) ->
     {ok, delete_impersonation_role_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, delete_impersonation_role_errors(), tuple()}.
 delete_impersonation_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_impersonation_role(Client, Input, []).
@@ -2481,9 +2891,7 @@ delete_impersonation_role(Client, Input)
 -spec delete_impersonation_role(map(), delete_impersonation_role_request(), proplists:proplist()) ->
     {ok, delete_impersonation_role_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, delete_impersonation_role_errors(), tuple()}.
 delete_impersonation_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteImpersonationRole">>, Input, Options).
@@ -2492,11 +2900,7 @@ delete_impersonation_role(Client, Input, Options)
 -spec delete_mailbox_permissions(map(), delete_mailbox_permissions_request()) ->
     {ok, delete_mailbox_permissions_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, delete_mailbox_permissions_errors(), tuple()}.
 delete_mailbox_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_mailbox_permissions(Client, Input, []).
@@ -2504,11 +2908,7 @@ delete_mailbox_permissions(Client, Input)
 -spec delete_mailbox_permissions(map(), delete_mailbox_permissions_request(), proplists:proplist()) ->
     {ok, delete_mailbox_permissions_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, delete_mailbox_permissions_errors(), tuple()}.
 delete_mailbox_permissions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMailboxPermissions">>, Input, Options).
@@ -2522,10 +2922,7 @@ delete_mailbox_permissions(Client, Input, Options)
 -spec delete_mobile_device_access_override(map(), delete_mobile_device_access_override_request()) ->
     {ok, delete_mobile_device_access_override_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, delete_mobile_device_access_override_errors(), tuple()}.
 delete_mobile_device_access_override(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_mobile_device_access_override(Client, Input, []).
@@ -2533,10 +2930,7 @@ delete_mobile_device_access_override(Client, Input)
 -spec delete_mobile_device_access_override(map(), delete_mobile_device_access_override_request(), proplists:proplist()) ->
     {ok, delete_mobile_device_access_override_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, delete_mobile_device_access_override_errors(), tuple()}.
 delete_mobile_device_access_override(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMobileDeviceAccessOverride">>, Input, Options).
@@ -2550,9 +2944,7 @@ delete_mobile_device_access_override(Client, Input, Options)
 -spec delete_mobile_device_access_rule(map(), delete_mobile_device_access_rule_request()) ->
     {ok, delete_mobile_device_access_rule_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, delete_mobile_device_access_rule_errors(), tuple()}.
 delete_mobile_device_access_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_mobile_device_access_rule(Client, Input, []).
@@ -2560,9 +2952,7 @@ delete_mobile_device_access_rule(Client, Input)
 -spec delete_mobile_device_access_rule(map(), delete_mobile_device_access_rule_request(), proplists:proplist()) ->
     {ok, delete_mobile_device_access_rule_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, delete_mobile_device_access_rule_errors(), tuple()}.
 delete_mobile_device_access_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMobileDeviceAccessRule">>, Input, Options).
@@ -2577,9 +2967,7 @@ delete_mobile_device_access_rule(Client, Input, Options)
 -spec delete_organization(map(), delete_organization_request()) ->
     {ok, delete_organization_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, delete_organization_errors(), tuple()}.
 delete_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_organization(Client, Input, []).
@@ -2587,9 +2975,7 @@ delete_organization(Client, Input)
 -spec delete_organization(map(), delete_organization_request(), proplists:proplist()) ->
     {ok, delete_organization_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, delete_organization_errors(), tuple()}.
 delete_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteOrganization">>, Input, Options).
@@ -2598,11 +2984,7 @@ delete_organization(Client, Input, Options)
 -spec delete_resource(map(), delete_resource_request()) ->
     {ok, delete_resource_response(), tuple()} |
     {error, any()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, delete_resource_errors(), tuple()}.
 delete_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource(Client, Input, []).
@@ -2610,11 +2992,7 @@ delete_resource(Client, Input)
 -spec delete_resource(map(), delete_resource_request(), proplists:proplist()) ->
     {ok, delete_resource_response(), tuple()} |
     {error, any()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, delete_resource_errors(), tuple()}.
 delete_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResource">>, Input, Options).
@@ -2624,9 +3002,7 @@ delete_resource(Client, Input, Options)
 -spec delete_retention_policy(map(), delete_retention_policy_request()) ->
     {ok, delete_retention_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, delete_retention_policy_errors(), tuple()}.
 delete_retention_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_retention_policy(Client, Input, []).
@@ -2634,9 +3010,7 @@ delete_retention_policy(Client, Input)
 -spec delete_retention_policy(map(), delete_retention_policy_request(), proplists:proplist()) ->
     {ok, delete_retention_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, delete_retention_policy_errors(), tuple()}.
 delete_retention_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRetentionPolicy">>, Input, Options).
@@ -2653,13 +3027,7 @@ delete_retention_policy(Client, Input, Options)
 -spec delete_user(map(), delete_user_request()) ->
     {ok, delete_user_response(), tuple()} |
     {error, any()} |
-    {error, directory_service_authentication_failed_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, delete_user_errors(), tuple()}.
 delete_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user(Client, Input, []).
@@ -2667,13 +3035,7 @@ delete_user(Client, Input)
 -spec delete_user(map(), delete_user_request(), proplists:proplist()) ->
     {ok, delete_user_response(), tuple()} |
     {error, any()} |
-    {error, directory_service_authentication_failed_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, delete_user_errors(), tuple()}.
 delete_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUser">>, Input, Options).
@@ -2688,11 +3050,7 @@ delete_user(Client, Input, Options)
 -spec deregister_from_work_mail(map(), deregister_from_work_mail_request()) ->
     {ok, deregister_from_work_mail_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, deregister_from_work_mail_errors(), tuple()}.
 deregister_from_work_mail(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_from_work_mail(Client, Input, []).
@@ -2700,11 +3058,7 @@ deregister_from_work_mail(Client, Input)
 -spec deregister_from_work_mail(map(), deregister_from_work_mail_request(), proplists:proplist()) ->
     {ok, deregister_from_work_mail_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, deregister_from_work_mail_errors(), tuple()}.
 deregister_from_work_mail(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterFromWorkMail">>, Input, Options).
@@ -2718,11 +3072,7 @@ deregister_from_work_mail(Client, Input, Options)
 -spec deregister_mail_domain(map(), deregister_mail_domain_request()) ->
     {ok, deregister_mail_domain_response(), tuple()} |
     {error, any()} |
-    {error, invalid_custom_ses_configuration_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, mail_domain_in_use_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, deregister_mail_domain_errors(), tuple()}.
 deregister_mail_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_mail_domain(Client, Input, []).
@@ -2730,11 +3080,7 @@ deregister_mail_domain(Client, Input)
 -spec deregister_mail_domain(map(), deregister_mail_domain_request(), proplists:proplist()) ->
     {ok, deregister_mail_domain_response(), tuple()} |
     {error, any()} |
-    {error, invalid_custom_ses_configuration_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, mail_domain_in_use_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, deregister_mail_domain_errors(), tuple()}.
 deregister_mail_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterMailDomain">>, Input, Options).
@@ -2744,10 +3090,7 @@ deregister_mail_domain(Client, Input, Options)
 -spec describe_email_monitoring_configuration(map(), describe_email_monitoring_configuration_request()) ->
     {ok, describe_email_monitoring_configuration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_email_monitoring_configuration_errors(), tuple()}.
 describe_email_monitoring_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_email_monitoring_configuration(Client, Input, []).
@@ -2755,10 +3098,7 @@ describe_email_monitoring_configuration(Client, Input)
 -spec describe_email_monitoring_configuration(map(), describe_email_monitoring_configuration_request(), proplists:proplist()) ->
     {ok, describe_email_monitoring_configuration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_email_monitoring_configuration_errors(), tuple()}.
 describe_email_monitoring_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEmailMonitoringConfiguration">>, Input, Options).
@@ -2767,10 +3107,7 @@ describe_email_monitoring_configuration(Client, Input, Options)
 -spec describe_entity(map(), describe_entity_request()) ->
     {ok, describe_entity_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, describe_entity_errors(), tuple()}.
 describe_entity(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_entity(Client, Input, []).
@@ -2778,10 +3115,7 @@ describe_entity(Client, Input)
 -spec describe_entity(map(), describe_entity_request(), proplists:proplist()) ->
     {ok, describe_entity_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, describe_entity_errors(), tuple()}.
 describe_entity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEntity">>, Input, Options).
@@ -2790,10 +3124,7 @@ describe_entity(Client, Input, Options)
 -spec describe_group(map(), describe_group_request()) ->
     {ok, describe_group_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, describe_group_errors(), tuple()}.
 describe_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_group(Client, Input, []).
@@ -2801,10 +3132,7 @@ describe_group(Client, Input)
 -spec describe_group(map(), describe_group_request(), proplists:proplist()) ->
     {ok, describe_group_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, describe_group_errors(), tuple()}.
 describe_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGroup">>, Input, Options).
@@ -2813,8 +3141,7 @@ describe_group(Client, Input, Options)
 -spec describe_inbound_dmarc_settings(map(), describe_inbound_dmarc_settings_request()) ->
     {ok, describe_inbound_dmarc_settings_response(), tuple()} |
     {error, any()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, describe_inbound_dmarc_settings_errors(), tuple()}.
 describe_inbound_dmarc_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_inbound_dmarc_settings(Client, Input, []).
@@ -2822,8 +3149,7 @@ describe_inbound_dmarc_settings(Client, Input)
 -spec describe_inbound_dmarc_settings(map(), describe_inbound_dmarc_settings_request(), proplists:proplist()) ->
     {ok, describe_inbound_dmarc_settings_response(), tuple()} |
     {error, any()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, describe_inbound_dmarc_settings_errors(), tuple()}.
 describe_inbound_dmarc_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInboundDmarcSettings">>, Input, Options).
@@ -2832,10 +3158,7 @@ describe_inbound_dmarc_settings(Client, Input, Options)
 -spec describe_mailbox_export_job(map(), describe_mailbox_export_job_request()) ->
     {ok, describe_mailbox_export_job_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, describe_mailbox_export_job_errors(), tuple()}.
 describe_mailbox_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_mailbox_export_job(Client, Input, []).
@@ -2843,10 +3166,7 @@ describe_mailbox_export_job(Client, Input)
 -spec describe_mailbox_export_job(map(), describe_mailbox_export_job_request(), proplists:proplist()) ->
     {ok, describe_mailbox_export_job_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, describe_mailbox_export_job_errors(), tuple()}.
 describe_mailbox_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMailboxExportJob">>, Input, Options).
@@ -2856,8 +3176,7 @@ describe_mailbox_export_job(Client, Input, Options)
 -spec describe_organization(map(), describe_organization_request()) ->
     {ok, describe_organization_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()}.
+    {error, describe_organization_errors(), tuple()}.
 describe_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_organization(Client, Input, []).
@@ -2865,8 +3184,7 @@ describe_organization(Client, Input)
 -spec describe_organization(map(), describe_organization_request(), proplists:proplist()) ->
     {ok, describe_organization_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()}.
+    {error, describe_organization_errors(), tuple()}.
 describe_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeOrganization">>, Input, Options).
@@ -2875,11 +3193,7 @@ describe_organization(Client, Input, Options)
 -spec describe_resource(map(), describe_resource_request()) ->
     {ok, describe_resource_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, describe_resource_errors(), tuple()}.
 describe_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_resource(Client, Input, []).
@@ -2887,11 +3201,7 @@ describe_resource(Client, Input)
 -spec describe_resource(map(), describe_resource_request(), proplists:proplist()) ->
     {ok, describe_resource_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, describe_resource_errors(), tuple()}.
 describe_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeResource">>, Input, Options).
@@ -2900,10 +3210,7 @@ describe_resource(Client, Input, Options)
 -spec describe_user(map(), describe_user_request()) ->
     {ok, describe_user_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, describe_user_errors(), tuple()}.
 describe_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user(Client, Input, []).
@@ -2911,10 +3218,7 @@ describe_user(Client, Input)
 -spec describe_user(map(), describe_user_request(), proplists:proplist()) ->
     {ok, describe_user_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, describe_user_errors(), tuple()}.
 describe_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUser">>, Input, Options).
@@ -2923,12 +3227,7 @@ describe_user(Client, Input, Options)
 -spec disassociate_delegate_from_resource(map(), disassociate_delegate_from_resource_request()) ->
     {ok, disassociate_delegate_from_resource_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, disassociate_delegate_from_resource_errors(), tuple()}.
 disassociate_delegate_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_delegate_from_resource(Client, Input, []).
@@ -2936,12 +3235,7 @@ disassociate_delegate_from_resource(Client, Input)
 -spec disassociate_delegate_from_resource(map(), disassociate_delegate_from_resource_request(), proplists:proplist()) ->
     {ok, disassociate_delegate_from_resource_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, disassociate_delegate_from_resource_errors(), tuple()}.
 disassociate_delegate_from_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateDelegateFromResource">>, Input, Options).
@@ -2950,14 +3244,7 @@ disassociate_delegate_from_resource(Client, Input, Options)
 -spec disassociate_member_from_group(map(), disassociate_member_from_group_request()) ->
     {ok, disassociate_member_from_group_response(), tuple()} |
     {error, any()} |
-    {error, directory_service_authentication_failed_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, disassociate_member_from_group_errors(), tuple()}.
 disassociate_member_from_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_member_from_group(Client, Input, []).
@@ -2965,14 +3252,7 @@ disassociate_member_from_group(Client, Input)
 -spec disassociate_member_from_group(map(), disassociate_member_from_group_request(), proplists:proplist()) ->
     {ok, disassociate_member_from_group_response(), tuple()} |
     {error, any()} |
-    {error, directory_service_authentication_failed_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, disassociate_member_from_group_errors(), tuple()}.
 disassociate_member_from_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateMemberFromGroup">>, Input, Options).
@@ -2987,11 +3267,7 @@ disassociate_member_from_group(Client, Input, Options)
 -spec get_access_control_effect(map(), get_access_control_effect_request()) ->
     {ok, get_access_control_effect_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_access_control_effect_errors(), tuple()}.
 get_access_control_effect(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_access_control_effect(Client, Input, []).
@@ -2999,11 +3275,7 @@ get_access_control_effect(Client, Input)
 -spec get_access_control_effect(map(), get_access_control_effect_request(), proplists:proplist()) ->
     {ok, get_access_control_effect_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_access_control_effect_errors(), tuple()}.
 get_access_control_effect(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAccessControlEffect">>, Input, Options).
@@ -3013,10 +3285,7 @@ get_access_control_effect(Client, Input, Options)
 -spec get_default_retention_policy(map(), get_default_retention_policy_request()) ->
     {ok, get_default_retention_policy_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, get_default_retention_policy_errors(), tuple()}.
 get_default_retention_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_default_retention_policy(Client, Input, []).
@@ -3024,10 +3293,7 @@ get_default_retention_policy(Client, Input)
 -spec get_default_retention_policy(map(), get_default_retention_policy_request(), proplists:proplist()) ->
     {ok, get_default_retention_policy_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, get_default_retention_policy_errors(), tuple()}.
 get_default_retention_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDefaultRetentionPolicy">>, Input, Options).
@@ -3037,10 +3303,7 @@ get_default_retention_policy(Client, Input, Options)
 -spec get_impersonation_role(map(), get_impersonation_role_request()) ->
     {ok, get_impersonation_role_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_impersonation_role_errors(), tuple()}.
 get_impersonation_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_impersonation_role(Client, Input, []).
@@ -3048,10 +3311,7 @@ get_impersonation_role(Client, Input)
 -spec get_impersonation_role(map(), get_impersonation_role_request(), proplists:proplist()) ->
     {ok, get_impersonation_role_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_impersonation_role_errors(), tuple()}.
 get_impersonation_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetImpersonationRole">>, Input, Options).
@@ -3061,12 +3321,7 @@ get_impersonation_role(Client, Input, Options)
 -spec get_impersonation_role_effect(map(), get_impersonation_role_effect_request()) ->
     {ok, get_impersonation_role_effect_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_impersonation_role_effect_errors(), tuple()}.
 get_impersonation_role_effect(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_impersonation_role_effect(Client, Input, []).
@@ -3074,12 +3329,7 @@ get_impersonation_role_effect(Client, Input)
 -spec get_impersonation_role_effect(map(), get_impersonation_role_effect_request(), proplists:proplist()) ->
     {ok, get_impersonation_role_effect_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_impersonation_role_effect_errors(), tuple()}.
 get_impersonation_role_effect(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetImpersonationRoleEffect">>, Input, Options).
@@ -3089,10 +3339,7 @@ get_impersonation_role_effect(Client, Input, Options)
 -spec get_mail_domain(map(), get_mail_domain_request()) ->
     {ok, get_mail_domain_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, mail_domain_not_found_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, get_mail_domain_errors(), tuple()}.
 get_mail_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_mail_domain(Client, Input, []).
@@ -3100,10 +3347,7 @@ get_mail_domain(Client, Input)
 -spec get_mail_domain(map(), get_mail_domain_request(), proplists:proplist()) ->
     {ok, get_mail_domain_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, mail_domain_not_found_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, get_mail_domain_errors(), tuple()}.
 get_mail_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMailDomain">>, Input, Options).
@@ -3113,10 +3357,7 @@ get_mail_domain(Client, Input, Options)
 -spec get_mailbox_details(map(), get_mailbox_details_request()) ->
     {ok, get_mailbox_details_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, get_mailbox_details_errors(), tuple()}.
 get_mailbox_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_mailbox_details(Client, Input, []).
@@ -3124,10 +3365,7 @@ get_mailbox_details(Client, Input)
 -spec get_mailbox_details(map(), get_mailbox_details_request(), proplists:proplist()) ->
     {ok, get_mailbox_details_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, get_mailbox_details_errors(), tuple()}.
 get_mailbox_details(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMailboxDetails">>, Input, Options).
@@ -3142,9 +3380,7 @@ get_mailbox_details(Client, Input, Options)
 -spec get_mobile_device_access_effect(map(), get_mobile_device_access_effect_request()) ->
     {ok, get_mobile_device_access_effect_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, get_mobile_device_access_effect_errors(), tuple()}.
 get_mobile_device_access_effect(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_mobile_device_access_effect(Client, Input, []).
@@ -3152,9 +3388,7 @@ get_mobile_device_access_effect(Client, Input)
 -spec get_mobile_device_access_effect(map(), get_mobile_device_access_effect_request(), proplists:proplist()) ->
     {ok, get_mobile_device_access_effect_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, get_mobile_device_access_effect_errors(), tuple()}.
 get_mobile_device_access_effect(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMobileDeviceAccessEffect">>, Input, Options).
@@ -3164,11 +3398,7 @@ get_mobile_device_access_effect(Client, Input, Options)
 -spec get_mobile_device_access_override(map(), get_mobile_device_access_override_request()) ->
     {ok, get_mobile_device_access_override_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_mobile_device_access_override_errors(), tuple()}.
 get_mobile_device_access_override(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_mobile_device_access_override(Client, Input, []).
@@ -3176,11 +3406,7 @@ get_mobile_device_access_override(Client, Input)
 -spec get_mobile_device_access_override(map(), get_mobile_device_access_override_request(), proplists:proplist()) ->
     {ok, get_mobile_device_access_override_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_mobile_device_access_override_errors(), tuple()}.
 get_mobile_device_access_override(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMobileDeviceAccessOverride">>, Input, Options).
@@ -3189,8 +3415,7 @@ get_mobile_device_access_override(Client, Input, Options)
 -spec list_access_control_rules(map(), list_access_control_rules_request()) ->
     {ok, list_access_control_rules_response(), tuple()} |
     {error, any()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, list_access_control_rules_errors(), tuple()}.
 list_access_control_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_access_control_rules(Client, Input, []).
@@ -3198,8 +3423,7 @@ list_access_control_rules(Client, Input)
 -spec list_access_control_rules(map(), list_access_control_rules_request(), proplists:proplist()) ->
     {ok, list_access_control_rules_response(), tuple()} |
     {error, any()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, list_access_control_rules_errors(), tuple()}.
 list_access_control_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAccessControlRules">>, Input, Options).
@@ -3209,11 +3433,7 @@ list_access_control_rules(Client, Input, Options)
 -spec list_aliases(map(), list_aliases_request()) ->
     {ok, list_aliases_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, list_aliases_errors(), tuple()}.
 list_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_aliases(Client, Input, []).
@@ -3221,11 +3441,7 @@ list_aliases(Client, Input)
 -spec list_aliases(map(), list_aliases_request(), proplists:proplist()) ->
     {ok, list_aliases_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, list_aliases_errors(), tuple()}.
 list_aliases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAliases">>, Input, Options).
@@ -3235,8 +3451,7 @@ list_aliases(Client, Input, Options)
 -spec list_availability_configurations(map(), list_availability_configurations_request()) ->
     {ok, list_availability_configurations_response(), tuple()} |
     {error, any()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, list_availability_configurations_errors(), tuple()}.
 list_availability_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_availability_configurations(Client, Input, []).
@@ -3244,8 +3459,7 @@ list_availability_configurations(Client, Input)
 -spec list_availability_configurations(map(), list_availability_configurations_request(), proplists:proplist()) ->
     {ok, list_availability_configurations_response(), tuple()} |
     {error, any()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, list_availability_configurations_errors(), tuple()}.
 list_availability_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAvailabilityConfigurations">>, Input, Options).
@@ -3257,11 +3471,7 @@ list_availability_configurations(Client, Input, Options)
 -spec list_group_members(map(), list_group_members_request()) ->
     {ok, list_group_members_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, list_group_members_errors(), tuple()}.
 list_group_members(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_group_members(Client, Input, []).
@@ -3269,11 +3479,7 @@ list_group_members(Client, Input)
 -spec list_group_members(map(), list_group_members_request(), proplists:proplist()) ->
     {ok, list_group_members_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, list_group_members_errors(), tuple()}.
 list_group_members(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGroupMembers">>, Input, Options).
@@ -3282,10 +3488,7 @@ list_group_members(Client, Input, Options)
 -spec list_groups(map(), list_groups_request()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, list_groups_errors(), tuple()}.
 list_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_groups(Client, Input, []).
@@ -3293,10 +3496,7 @@ list_groups(Client, Input)
 -spec list_groups(map(), list_groups_request(), proplists:proplist()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, list_groups_errors(), tuple()}.
 list_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGroups">>, Input, Options).
@@ -3305,11 +3505,7 @@ list_groups(Client, Input, Options)
 -spec list_groups_for_entity(map(), list_groups_for_entity_request()) ->
     {ok, list_groups_for_entity_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, list_groups_for_entity_errors(), tuple()}.
 list_groups_for_entity(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_groups_for_entity(Client, Input, []).
@@ -3317,11 +3513,7 @@ list_groups_for_entity(Client, Input)
 -spec list_groups_for_entity(map(), list_groups_for_entity_request(), proplists:proplist()) ->
     {ok, list_groups_for_entity_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, list_groups_for_entity_errors(), tuple()}.
 list_groups_for_entity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGroupsForEntity">>, Input, Options).
@@ -3331,9 +3523,7 @@ list_groups_for_entity(Client, Input, Options)
 -spec list_impersonation_roles(map(), list_impersonation_roles_request()) ->
     {ok, list_impersonation_roles_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, list_impersonation_roles_errors(), tuple()}.
 list_impersonation_roles(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_impersonation_roles(Client, Input, []).
@@ -3341,9 +3531,7 @@ list_impersonation_roles(Client, Input)
 -spec list_impersonation_roles(map(), list_impersonation_roles_request(), proplists:proplist()) ->
     {ok, list_impersonation_roles_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, list_impersonation_roles_errors(), tuple()}.
 list_impersonation_roles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListImpersonationRoles">>, Input, Options).
@@ -3352,9 +3540,7 @@ list_impersonation_roles(Client, Input, Options)
 -spec list_mail_domains(map(), list_mail_domains_request()) ->
     {ok, list_mail_domains_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, list_mail_domains_errors(), tuple()}.
 list_mail_domains(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_mail_domains(Client, Input, []).
@@ -3362,9 +3548,7 @@ list_mail_domains(Client, Input)
 -spec list_mail_domains(map(), list_mail_domains_request(), proplists:proplist()) ->
     {ok, list_mail_domains_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, list_mail_domains_errors(), tuple()}.
 list_mail_domains(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMailDomains">>, Input, Options).
@@ -3375,9 +3559,7 @@ list_mail_domains(Client, Input, Options)
 -spec list_mailbox_export_jobs(map(), list_mailbox_export_jobs_request()) ->
     {ok, list_mailbox_export_jobs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, list_mailbox_export_jobs_errors(), tuple()}.
 list_mailbox_export_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_mailbox_export_jobs(Client, Input, []).
@@ -3385,9 +3567,7 @@ list_mailbox_export_jobs(Client, Input)
 -spec list_mailbox_export_jobs(map(), list_mailbox_export_jobs_request(), proplists:proplist()) ->
     {ok, list_mailbox_export_jobs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, list_mailbox_export_jobs_errors(), tuple()}.
 list_mailbox_export_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMailboxExportJobs">>, Input, Options).
@@ -3398,10 +3578,7 @@ list_mailbox_export_jobs(Client, Input, Options)
 -spec list_mailbox_permissions(map(), list_mailbox_permissions_request()) ->
     {ok, list_mailbox_permissions_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, list_mailbox_permissions_errors(), tuple()}.
 list_mailbox_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_mailbox_permissions(Client, Input, []).
@@ -3409,10 +3586,7 @@ list_mailbox_permissions(Client, Input)
 -spec list_mailbox_permissions(map(), list_mailbox_permissions_request(), proplists:proplist()) ->
     {ok, list_mailbox_permissions_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, list_mailbox_permissions_errors(), tuple()}.
 list_mailbox_permissions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMailboxPermissions">>, Input, Options).
@@ -3422,10 +3596,7 @@ list_mailbox_permissions(Client, Input, Options)
 -spec list_mobile_device_access_overrides(map(), list_mobile_device_access_overrides_request()) ->
     {ok, list_mobile_device_access_overrides_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, list_mobile_device_access_overrides_errors(), tuple()}.
 list_mobile_device_access_overrides(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_mobile_device_access_overrides(Client, Input, []).
@@ -3433,10 +3604,7 @@ list_mobile_device_access_overrides(Client, Input)
 -spec list_mobile_device_access_overrides(map(), list_mobile_device_access_overrides_request(), proplists:proplist()) ->
     {ok, list_mobile_device_access_overrides_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, list_mobile_device_access_overrides_errors(), tuple()}.
 list_mobile_device_access_overrides(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMobileDeviceAccessOverrides">>, Input, Options).
@@ -3446,9 +3614,7 @@ list_mobile_device_access_overrides(Client, Input, Options)
 -spec list_mobile_device_access_rules(map(), list_mobile_device_access_rules_request()) ->
     {ok, list_mobile_device_access_rules_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, list_mobile_device_access_rules_errors(), tuple()}.
 list_mobile_device_access_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_mobile_device_access_rules(Client, Input, []).
@@ -3456,9 +3622,7 @@ list_mobile_device_access_rules(Client, Input)
 -spec list_mobile_device_access_rules(map(), list_mobile_device_access_rules_request(), proplists:proplist()) ->
     {ok, list_mobile_device_access_rules_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, list_mobile_device_access_rules_errors(), tuple()}.
 list_mobile_device_access_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMobileDeviceAccessRules">>, Input, Options).
@@ -3467,7 +3631,7 @@ list_mobile_device_access_rules(Client, Input, Options)
 -spec list_organizations(map(), list_organizations_request()) ->
     {ok, list_organizations_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, list_organizations_errors(), tuple()}.
 list_organizations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_organizations(Client, Input, []).
@@ -3475,7 +3639,7 @@ list_organizations(Client, Input)
 -spec list_organizations(map(), list_organizations_request(), proplists:proplist()) ->
     {ok, list_organizations_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, list_organizations_errors(), tuple()}.
 list_organizations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOrganizations">>, Input, Options).
@@ -3487,12 +3651,7 @@ list_organizations(Client, Input, Options)
 -spec list_resource_delegates(map(), list_resource_delegates_request()) ->
     {ok, list_resource_delegates_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, list_resource_delegates_errors(), tuple()}.
 list_resource_delegates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_delegates(Client, Input, []).
@@ -3500,12 +3659,7 @@ list_resource_delegates(Client, Input)
 -spec list_resource_delegates(map(), list_resource_delegates_request(), proplists:proplist()) ->
     {ok, list_resource_delegates_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, list_resource_delegates_errors(), tuple()}.
 list_resource_delegates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResourceDelegates">>, Input, Options).
@@ -3514,10 +3668,7 @@ list_resource_delegates(Client, Input, Options)
 -spec list_resources(map(), list_resources_request()) ->
     {ok, list_resources_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, list_resources_errors(), tuple()}.
 list_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resources(Client, Input, []).
@@ -3525,10 +3676,7 @@ list_resources(Client, Input)
 -spec list_resources(map(), list_resources_request(), proplists:proplist()) ->
     {ok, list_resources_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, list_resources_errors(), tuple()}.
 list_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResources">>, Input, Options).
@@ -3537,7 +3685,7 @@ list_resources(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -3545,7 +3693,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -3554,9 +3702,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec list_users(map(), list_users_request()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, list_users_errors(), tuple()}.
 list_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_users(Client, Input, []).
@@ -3564,9 +3710,7 @@ list_users(Client, Input)
 -spec list_users(map(), list_users_request(), proplists:proplist()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, list_users_errors(), tuple()}.
 list_users(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUsers">>, Input, Options).
@@ -3582,12 +3726,7 @@ list_users(Client, Input, Options)
 -spec put_access_control_rule(map(), put_access_control_rule_request()) ->
     {ok, put_access_control_rule_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_access_control_rule_errors(), tuple()}.
 put_access_control_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_access_control_rule(Client, Input, []).
@@ -3595,12 +3734,7 @@ put_access_control_rule(Client, Input)
 -spec put_access_control_rule(map(), put_access_control_rule_request(), proplists:proplist()) ->
     {ok, put_access_control_rule_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_access_control_rule_errors(), tuple()}.
 put_access_control_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAccessControlRule">>, Input, Options).
@@ -3610,10 +3744,7 @@ put_access_control_rule(Client, Input, Options)
 -spec put_email_monitoring_configuration(map(), put_email_monitoring_configuration_request()) ->
     {ok, put_email_monitoring_configuration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_email_monitoring_configuration_errors(), tuple()}.
 put_email_monitoring_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_email_monitoring_configuration(Client, Input, []).
@@ -3621,10 +3752,7 @@ put_email_monitoring_configuration(Client, Input)
 -spec put_email_monitoring_configuration(map(), put_email_monitoring_configuration_request(), proplists:proplist()) ->
     {ok, put_email_monitoring_configuration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_email_monitoring_configuration_errors(), tuple()}.
 put_email_monitoring_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutEmailMonitoringConfiguration">>, Input, Options).
@@ -3633,8 +3761,7 @@ put_email_monitoring_configuration(Client, Input, Options)
 -spec put_inbound_dmarc_settings(map(), put_inbound_dmarc_settings_request()) ->
     {ok, put_inbound_dmarc_settings_response(), tuple()} |
     {error, any()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, put_inbound_dmarc_settings_errors(), tuple()}.
 put_inbound_dmarc_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_inbound_dmarc_settings(Client, Input, []).
@@ -3642,8 +3769,7 @@ put_inbound_dmarc_settings(Client, Input)
 -spec put_inbound_dmarc_settings(map(), put_inbound_dmarc_settings_request(), proplists:proplist()) ->
     {ok, put_inbound_dmarc_settings_response(), tuple()} |
     {error, any()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, put_inbound_dmarc_settings_errors(), tuple()}.
 put_inbound_dmarc_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutInboundDmarcSettings">>, Input, Options).
@@ -3655,11 +3781,7 @@ put_inbound_dmarc_settings(Client, Input, Options)
 -spec put_mailbox_permissions(map(), put_mailbox_permissions_request()) ->
     {ok, put_mailbox_permissions_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, put_mailbox_permissions_errors(), tuple()}.
 put_mailbox_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_mailbox_permissions(Client, Input, []).
@@ -3667,11 +3789,7 @@ put_mailbox_permissions(Client, Input)
 -spec put_mailbox_permissions(map(), put_mailbox_permissions_request(), proplists:proplist()) ->
     {ok, put_mailbox_permissions_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, put_mailbox_permissions_errors(), tuple()}.
 put_mailbox_permissions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutMailboxPermissions">>, Input, Options).
@@ -3681,11 +3799,7 @@ put_mailbox_permissions(Client, Input, Options)
 -spec put_mobile_device_access_override(map(), put_mobile_device_access_override_request()) ->
     {ok, put_mobile_device_access_override_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, put_mobile_device_access_override_errors(), tuple()}.
 put_mobile_device_access_override(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_mobile_device_access_override(Client, Input, []).
@@ -3693,11 +3807,7 @@ put_mobile_device_access_override(Client, Input)
 -spec put_mobile_device_access_override(map(), put_mobile_device_access_override_request(), proplists:proplist()) ->
     {ok, put_mobile_device_access_override_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, put_mobile_device_access_override_errors(), tuple()}.
 put_mobile_device_access_override(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutMobileDeviceAccessOverride">>, Input, Options).
@@ -3706,10 +3816,7 @@ put_mobile_device_access_override(Client, Input, Options)
 -spec put_retention_policy(map(), put_retention_policy_request()) ->
     {ok, put_retention_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, put_retention_policy_errors(), tuple()}.
 put_retention_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_retention_policy(Client, Input, []).
@@ -3717,10 +3824,7 @@ put_retention_policy(Client, Input)
 -spec put_retention_policy(map(), put_retention_policy_request(), proplists:proplist()) ->
     {ok, put_retention_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, put_retention_policy_errors(), tuple()}.
 put_retention_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRetentionPolicy">>, Input, Options).
@@ -3735,11 +3839,7 @@ put_retention_policy(Client, Input, Options)
 -spec register_mail_domain(map(), register_mail_domain_request()) ->
     {ok, register_mail_domain_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, mail_domain_in_use_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, register_mail_domain_errors(), tuple()}.
 register_mail_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_mail_domain(Client, Input, []).
@@ -3747,11 +3847,7 @@ register_mail_domain(Client, Input)
 -spec register_mail_domain(map(), register_mail_domain_request(), proplists:proplist()) ->
     {ok, register_mail_domain_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, mail_domain_in_use_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, register_mail_domain_errors(), tuple()}.
 register_mail_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterMailDomain">>, Input, Options).
@@ -3773,17 +3869,7 @@ register_mail_domain(Client, Input, Options)
 -spec register_to_work_mail(map(), register_to_work_mail_request()) ->
     {ok, register_to_work_mail_response(), tuple()} |
     {error, any()} |
-    {error, directory_service_authentication_failed_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, email_address_in_use_exception(), tuple()} |
-    {error, entity_already_registered_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, mail_domain_not_found_exception(), tuple()} |
-    {error, mail_domain_state_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, register_to_work_mail_errors(), tuple()}.
 register_to_work_mail(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_to_work_mail(Client, Input, []).
@@ -3791,17 +3877,7 @@ register_to_work_mail(Client, Input)
 -spec register_to_work_mail(map(), register_to_work_mail_request(), proplists:proplist()) ->
     {ok, register_to_work_mail_response(), tuple()} |
     {error, any()} |
-    {error, directory_service_authentication_failed_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, email_address_in_use_exception(), tuple()} |
-    {error, entity_already_registered_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, mail_domain_not_found_exception(), tuple()} |
-    {error, mail_domain_state_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, register_to_work_mail_errors(), tuple()}.
 register_to_work_mail(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterToWorkMail">>, Input, Options).
@@ -3810,15 +3886,7 @@ register_to_work_mail(Client, Input, Options)
 -spec reset_password(map(), reset_password_request()) ->
     {ok, reset_password_response(), tuple()} |
     {error, any()} |
-    {error, directory_service_authentication_failed_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_password_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, reset_password_errors(), tuple()}.
 reset_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_password(Client, Input, []).
@@ -3826,15 +3894,7 @@ reset_password(Client, Input)
 -spec reset_password(map(), reset_password_request(), proplists:proplist()) ->
     {ok, reset_password_response(), tuple()} |
     {error, any()} |
-    {error, directory_service_authentication_failed_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_password_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, reset_password_errors(), tuple()}.
 reset_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResetPassword">>, Input, Options).
@@ -3851,11 +3911,7 @@ reset_password(Client, Input, Options)
 -spec start_mailbox_export_job(map(), start_mailbox_export_job_request()) ->
     {ok, start_mailbox_export_job_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, start_mailbox_export_job_errors(), tuple()}.
 start_mailbox_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_mailbox_export_job(Client, Input, []).
@@ -3863,11 +3919,7 @@ start_mailbox_export_job(Client, Input)
 -spec start_mailbox_export_job(map(), start_mailbox_export_job_request(), proplists:proplist()) ->
     {ok, start_mailbox_export_job_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, start_mailbox_export_job_errors(), tuple()}.
 start_mailbox_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMailboxExportJob">>, Input, Options).
@@ -3877,10 +3929,7 @@ start_mailbox_export_job(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -3888,10 +3937,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -3914,10 +3960,7 @@ tag_resource(Client, Input, Options)
 -spec test_availability_configuration(map(), test_availability_configuration_request()) ->
     {ok, test_availability_configuration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, test_availability_configuration_errors(), tuple()}.
 test_availability_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_availability_configuration(Client, Input, []).
@@ -3925,10 +3968,7 @@ test_availability_configuration(Client, Input)
 -spec test_availability_configuration(map(), test_availability_configuration_request(), proplists:proplist()) ->
     {ok, test_availability_configuration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, test_availability_configuration_errors(), tuple()}.
 test_availability_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TestAvailabilityConfiguration">>, Input, Options).
@@ -3938,7 +3978,7 @@ test_availability_configuration(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -3946,7 +3986,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -3957,10 +3997,7 @@ untag_resource(Client, Input, Options)
 -spec update_availability_configuration(map(), update_availability_configuration_request()) ->
     {ok, update_availability_configuration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_availability_configuration_errors(), tuple()}.
 update_availability_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_availability_configuration(Client, Input, []).
@@ -3968,10 +4005,7 @@ update_availability_configuration(Client, Input)
 -spec update_availability_configuration(map(), update_availability_configuration_request(), proplists:proplist()) ->
     {ok, update_availability_configuration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_availability_configuration_errors(), tuple()}.
 update_availability_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAvailabilityConfiguration">>, Input, Options).
@@ -3984,11 +4018,7 @@ update_availability_configuration(Client, Input, Options)
 -spec update_default_mail_domain(map(), update_default_mail_domain_request()) ->
     {ok, update_default_mail_domain_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, mail_domain_not_found_exception(), tuple()} |
-    {error, mail_domain_state_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, update_default_mail_domain_errors(), tuple()}.
 update_default_mail_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_default_mail_domain(Client, Input, []).
@@ -3996,11 +4026,7 @@ update_default_mail_domain(Client, Input)
 -spec update_default_mail_domain(map(), update_default_mail_domain_request(), proplists:proplist()) ->
     {ok, update_default_mail_domain_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, mail_domain_not_found_exception(), tuple()} |
-    {error, mail_domain_state_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, update_default_mail_domain_errors(), tuple()}.
 update_default_mail_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDefaultMailDomain">>, Input, Options).
@@ -4009,12 +4035,7 @@ update_default_mail_domain(Client, Input, Options)
 -spec update_group(map(), update_group_request()) ->
     {ok, update_group_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, update_group_errors(), tuple()}.
 update_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_group(Client, Input, []).
@@ -4022,12 +4043,7 @@ update_group(Client, Input)
 -spec update_group(map(), update_group_request(), proplists:proplist()) ->
     {ok, update_group_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, update_group_errors(), tuple()}.
 update_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGroup">>, Input, Options).
@@ -4036,13 +4052,7 @@ update_group(Client, Input, Options)
 -spec update_impersonation_role(map(), update_impersonation_role_request()) ->
     {ok, update_impersonation_role_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_impersonation_role_errors(), tuple()}.
 update_impersonation_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_impersonation_role(Client, Input, []).
@@ -4050,13 +4060,7 @@ update_impersonation_role(Client, Input)
 -spec update_impersonation_role(map(), update_impersonation_role_request(), proplists:proplist()) ->
     {ok, update_impersonation_role_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_impersonation_role_errors(), tuple()}.
 update_impersonation_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateImpersonationRole">>, Input, Options).
@@ -4067,11 +4071,7 @@ update_impersonation_role(Client, Input, Options)
 -spec update_mailbox_quota(map(), update_mailbox_quota_request()) ->
     {ok, update_mailbox_quota_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, update_mailbox_quota_errors(), tuple()}.
 update_mailbox_quota(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_mailbox_quota(Client, Input, []).
@@ -4079,11 +4079,7 @@ update_mailbox_quota(Client, Input)
 -spec update_mailbox_quota(map(), update_mailbox_quota_request(), proplists:proplist()) ->
     {ok, update_mailbox_quota_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, update_mailbox_quota_errors(), tuple()}.
 update_mailbox_quota(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMailboxQuota">>, Input, Options).
@@ -4093,10 +4089,7 @@ update_mailbox_quota(Client, Input, Options)
 -spec update_mobile_device_access_rule(map(), update_mobile_device_access_rule_request()) ->
     {ok, update_mobile_device_access_rule_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, update_mobile_device_access_rule_errors(), tuple()}.
 update_mobile_device_access_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_mobile_device_access_rule(Client, Input, []).
@@ -4104,10 +4097,7 @@ update_mobile_device_access_rule(Client, Input)
 -spec update_mobile_device_access_rule(map(), update_mobile_device_access_rule_request(), proplists:proplist()) ->
     {ok, update_mobile_device_access_rule_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()}.
+    {error, update_mobile_device_access_rule_errors(), tuple()}.
 update_mobile_device_access_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMobileDeviceAccessRule">>, Input, Options).
@@ -4121,17 +4111,7 @@ update_mobile_device_access_rule(Client, Input, Options)
 -spec update_primary_email_address(map(), update_primary_email_address_request()) ->
     {ok, update_primary_email_address_response(), tuple()} |
     {error, any()} |
-    {error, directory_service_authentication_failed_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, email_address_in_use_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, mail_domain_not_found_exception(), tuple()} |
-    {error, mail_domain_state_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, update_primary_email_address_errors(), tuple()}.
 update_primary_email_address(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_primary_email_address(Client, Input, []).
@@ -4139,17 +4119,7 @@ update_primary_email_address(Client, Input)
 -spec update_primary_email_address(map(), update_primary_email_address_request(), proplists:proplist()) ->
     {ok, update_primary_email_address_response(), tuple()} |
     {error, any()} |
-    {error, directory_service_authentication_failed_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, email_address_in_use_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, mail_domain_not_found_exception(), tuple()} |
-    {error, mail_domain_state_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, update_primary_email_address_errors(), tuple()}.
 update_primary_email_address(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePrimaryEmailAddress">>, Input, Options).
@@ -4163,18 +4133,7 @@ update_primary_email_address(Client, Input, Options)
 -spec update_resource(map(), update_resource_request()) ->
     {ok, update_resource_response(), tuple()} |
     {error, any()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, email_address_in_use_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_configuration_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, mail_domain_not_found_exception(), tuple()} |
-    {error, mail_domain_state_exception(), tuple()} |
-    {error, name_availability_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, update_resource_errors(), tuple()}.
 update_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_resource(Client, Input, []).
@@ -4182,18 +4141,7 @@ update_resource(Client, Input)
 -spec update_resource(map(), update_resource_request(), proplists:proplist()) ->
     {ok, update_resource_response(), tuple()} |
     {error, any()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, email_address_in_use_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_configuration_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, mail_domain_not_found_exception(), tuple()} |
-    {error, mail_domain_state_exception(), tuple()} |
-    {error, name_availability_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, update_resource_errors(), tuple()}.
 update_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateResource">>, Input, Options).
@@ -4206,14 +4154,7 @@ update_resource(Client, Input, Options)
 -spec update_user(map(), update_user_request()) ->
     {ok, update_user_response(), tuple()} |
     {error, any()} |
-    {error, directory_service_authentication_failed_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, update_user_errors(), tuple()}.
 update_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user(Client, Input, []).
@@ -4221,14 +4162,7 @@ update_user(Client, Input)
 -spec update_user(map(), update_user_request(), proplists:proplist()) ->
     {ok, update_user_response(), tuple()} |
     {error, any()} |
-    {error, directory_service_authentication_failed_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, entity_state_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, organization_not_found_exception(), tuple()} |
-    {error, organization_state_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, update_user_errors(), tuple()}.
 update_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUser">>, Input, Options).

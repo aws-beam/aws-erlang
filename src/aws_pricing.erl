@@ -209,6 +209,45 @@
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+-type describe_services_errors() ::
+    throttling_exception() | 
+    not_found_exception() | 
+    invalid_parameter_exception() | 
+    invalid_next_token_exception() | 
+    internal_error_exception() | 
+    expired_next_token_exception().
+
+-type get_attribute_values_errors() ::
+    throttling_exception() | 
+    not_found_exception() | 
+    invalid_parameter_exception() | 
+    invalid_next_token_exception() | 
+    internal_error_exception() | 
+    expired_next_token_exception().
+
+-type get_price_list_file_url_errors() ::
+    throttling_exception() | 
+    not_found_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    access_denied_exception().
+
+-type get_products_errors() ::
+    throttling_exception() | 
+    not_found_exception() | 
+    invalid_parameter_exception() | 
+    invalid_next_token_exception() | 
+    internal_error_exception() | 
+    expired_next_token_exception().
+
+-type list_price_lists_errors() ::
+    throttling_exception() | 
+    not_found_exception() | 
+    invalid_parameter_exception() | 
+    invalid_next_token_exception() | 
+    internal_error_exception() | 
+    expired_next_token_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -229,12 +268,7 @@
 -spec describe_services(map(), describe_services_request()) ->
     {ok, describe_services_response(), tuple()} |
     {error, any()} |
-    {error, expired_next_token_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_services_errors(), tuple()}.
 describe_services(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_services(Client, Input, []).
@@ -242,12 +276,7 @@ describe_services(Client, Input)
 -spec describe_services(map(), describe_services_request(), proplists:proplist()) ->
     {ok, describe_services_response(), tuple()} |
     {error, any()} |
-    {error, expired_next_token_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_services_errors(), tuple()}.
 describe_services(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeServices">>, Input, Options).
@@ -263,12 +292,7 @@ describe_services(Client, Input, Options)
 -spec get_attribute_values(map(), get_attribute_values_request()) ->
     {ok, get_attribute_values_response(), tuple()} |
     {error, any()} |
-    {error, expired_next_token_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_attribute_values_errors(), tuple()}.
 get_attribute_values(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_attribute_values(Client, Input, []).
@@ -276,12 +300,7 @@ get_attribute_values(Client, Input)
 -spec get_attribute_values(map(), get_attribute_values_request(), proplists:proplist()) ->
     {ok, get_attribute_values_response(), tuple()} |
     {error, any()} |
-    {error, expired_next_token_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_attribute_values_errors(), tuple()}.
 get_attribute_values(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAttributeValues">>, Input, Options).
@@ -303,11 +322,7 @@ get_attribute_values(Client, Input, Options)
 -spec get_price_list_file_url(map(), get_price_list_file_url_request()) ->
     {ok, get_price_list_file_url_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_price_list_file_url_errors(), tuple()}.
 get_price_list_file_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_price_list_file_url(Client, Input, []).
@@ -315,11 +330,7 @@ get_price_list_file_url(Client, Input)
 -spec get_price_list_file_url(map(), get_price_list_file_url_request(), proplists:proplist()) ->
     {ok, get_price_list_file_url_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_price_list_file_url_errors(), tuple()}.
 get_price_list_file_url(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPriceListFileUrl">>, Input, Options).
@@ -328,12 +339,7 @@ get_price_list_file_url(Client, Input, Options)
 -spec get_products(map(), get_products_request()) ->
     {ok, get_products_response(), tuple()} |
     {error, any()} |
-    {error, expired_next_token_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_products_errors(), tuple()}.
 get_products(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_products(Client, Input, []).
@@ -341,12 +347,7 @@ get_products(Client, Input)
 -spec get_products(map(), get_products_request(), proplists:proplist()) ->
     {ok, get_products_response(), tuple()} |
     {error, any()} |
-    {error, expired_next_token_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_products_errors(), tuple()}.
 get_products(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetProducts">>, Input, Options).
@@ -375,13 +376,7 @@ get_products(Client, Input, Options)
 -spec list_price_lists(map(), list_price_lists_request()) ->
     {ok, list_price_lists_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, expired_next_token_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_price_lists_errors(), tuple()}.
 list_price_lists(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_price_lists(Client, Input, []).
@@ -389,13 +384,7 @@ list_price_lists(Client, Input)
 -spec list_price_lists(map(), list_price_lists_request(), proplists:proplist()) ->
     {ok, list_price_lists_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, expired_next_token_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_price_lists_errors(), tuple()}.
 list_price_lists(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPriceLists">>, Input, Options).

@@ -950,6 +950,239 @@
 %% }
 -type update_assessment_target_request() :: #{binary() => any()}.
 
+-type add_attributes_to_findings_errors() ::
+    access_denied_exception() | 
+    internal_exception() | 
+    service_temporarily_unavailable_exception() | 
+    invalid_input_exception() | 
+    no_such_entity_exception().
+
+-type create_assessment_target_errors() ::
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    service_temporarily_unavailable_exception() | 
+    invalid_input_exception() | 
+    invalid_cross_account_role_exception() | 
+    no_such_entity_exception().
+
+-type create_assessment_template_errors() ::
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    service_temporarily_unavailable_exception() | 
+    invalid_input_exception() | 
+    no_such_entity_exception().
+
+-type create_exclusions_preview_errors() ::
+    access_denied_exception() | 
+    internal_exception() | 
+    service_temporarily_unavailable_exception() | 
+    invalid_input_exception() | 
+    preview_generation_in_progress_exception() | 
+    no_such_entity_exception().
+
+-type create_resource_group_errors() ::
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    service_temporarily_unavailable_exception() | 
+    invalid_input_exception().
+
+-type delete_assessment_run_errors() ::
+    access_denied_exception() | 
+    internal_exception() | 
+    service_temporarily_unavailable_exception() | 
+    invalid_input_exception() | 
+    assessment_run_in_progress_exception() | 
+    no_such_entity_exception().
+
+-type delete_assessment_target_errors() ::
+    access_denied_exception() | 
+    internal_exception() | 
+    service_temporarily_unavailable_exception() | 
+    invalid_input_exception() | 
+    assessment_run_in_progress_exception() | 
+    no_such_entity_exception().
+
+-type delete_assessment_template_errors() ::
+    access_denied_exception() | 
+    internal_exception() | 
+    service_temporarily_unavailable_exception() | 
+    invalid_input_exception() | 
+    assessment_run_in_progress_exception() | 
+    no_such_entity_exception().
+
+-type describe_assessment_runs_errors() ::
+    internal_exception() | 
+    invalid_input_exception().
+
+-type describe_assessment_targets_errors() ::
+    internal_exception() | 
+    invalid_input_exception().
+
+-type describe_assessment_templates_errors() ::
+    internal_exception() | 
+    invalid_input_exception().
+
+-type describe_cross_account_access_role_errors() ::
+    internal_exception().
+
+-type describe_exclusions_errors() ::
+    internal_exception() | 
+    invalid_input_exception().
+
+-type describe_findings_errors() ::
+    internal_exception() | 
+    invalid_input_exception().
+
+-type describe_resource_groups_errors() ::
+    internal_exception() | 
+    invalid_input_exception().
+
+-type describe_rules_packages_errors() ::
+    internal_exception() | 
+    invalid_input_exception().
+
+-type get_assessment_report_errors() ::
+    access_denied_exception() | 
+    internal_exception() | 
+    service_temporarily_unavailable_exception() | 
+    invalid_input_exception() | 
+    assessment_run_in_progress_exception() | 
+    unsupported_feature_exception() | 
+    no_such_entity_exception().
+
+-type get_exclusions_preview_errors() ::
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    no_such_entity_exception().
+
+-type get_telemetry_metadata_errors() ::
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    no_such_entity_exception().
+
+-type list_assessment_run_agents_errors() ::
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    no_such_entity_exception().
+
+-type list_assessment_runs_errors() ::
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    no_such_entity_exception().
+
+-type list_assessment_targets_errors() ::
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception().
+
+-type list_assessment_templates_errors() ::
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    no_such_entity_exception().
+
+-type list_event_subscriptions_errors() ::
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    no_such_entity_exception().
+
+-type list_exclusions_errors() ::
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    no_such_entity_exception().
+
+-type list_findings_errors() ::
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    no_such_entity_exception().
+
+-type list_rules_packages_errors() ::
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception().
+
+-type list_tags_for_resource_errors() ::
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    no_such_entity_exception().
+
+-type preview_agents_errors() ::
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_cross_account_role_exception() | 
+    no_such_entity_exception().
+
+-type register_cross_account_access_role_errors() ::
+    access_denied_exception() | 
+    internal_exception() | 
+    service_temporarily_unavailable_exception() | 
+    invalid_input_exception() | 
+    invalid_cross_account_role_exception().
+
+-type remove_attributes_from_findings_errors() ::
+    access_denied_exception() | 
+    internal_exception() | 
+    service_temporarily_unavailable_exception() | 
+    invalid_input_exception() | 
+    no_such_entity_exception().
+
+-type set_tags_for_resource_errors() ::
+    access_denied_exception() | 
+    internal_exception() | 
+    service_temporarily_unavailable_exception() | 
+    invalid_input_exception() | 
+    no_such_entity_exception().
+
+-type start_assessment_run_errors() ::
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    service_temporarily_unavailable_exception() | 
+    invalid_input_exception() | 
+    agents_already_running_assessment_exception() | 
+    invalid_cross_account_role_exception() | 
+    no_such_entity_exception().
+
+-type stop_assessment_run_errors() ::
+    access_denied_exception() | 
+    internal_exception() | 
+    service_temporarily_unavailable_exception() | 
+    invalid_input_exception() | 
+    no_such_entity_exception().
+
+-type subscribe_to_event_errors() ::
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    service_temporarily_unavailable_exception() | 
+    invalid_input_exception() | 
+    no_such_entity_exception().
+
+-type unsubscribe_from_event_errors() ::
+    access_denied_exception() | 
+    internal_exception() | 
+    service_temporarily_unavailable_exception() | 
+    invalid_input_exception() | 
+    no_such_entity_exception().
+
+-type update_assessment_target_errors() ::
+    access_denied_exception() | 
+    internal_exception() | 
+    service_temporarily_unavailable_exception() | 
+    invalid_input_exception() | 
+    no_such_entity_exception().
 
 %%====================================================================
 %% API
@@ -961,11 +1194,7 @@
 -spec add_attributes_to_findings(map(), add_attributes_to_findings_request()) ->
     {ok, add_attributes_to_findings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, add_attributes_to_findings_errors(), tuple()}.
 add_attributes_to_findings(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_attributes_to_findings(Client, Input, []).
@@ -973,11 +1202,7 @@ add_attributes_to_findings(Client, Input)
 -spec add_attributes_to_findings(map(), add_attributes_to_findings_request(), proplists:proplist()) ->
     {ok, add_attributes_to_findings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, add_attributes_to_findings_errors(), tuple()}.
 add_attributes_to_findings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddAttributesToFindings">>, Input, Options).
@@ -1003,13 +1228,7 @@ add_attributes_to_findings(Client, Input, Options)
 -spec create_assessment_target(map(), create_assessment_target_request()) ->
     {ok, create_assessment_target_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_cross_account_role_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, create_assessment_target_errors(), tuple()}.
 create_assessment_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_assessment_target(Client, Input, []).
@@ -1017,13 +1236,7 @@ create_assessment_target(Client, Input)
 -spec create_assessment_target(map(), create_assessment_target_request(), proplists:proplist()) ->
     {ok, create_assessment_target_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_cross_account_role_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, create_assessment_target_errors(), tuple()}.
 create_assessment_target(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAssessmentTarget">>, Input, Options).
@@ -1041,12 +1254,7 @@ create_assessment_target(Client, Input, Options)
 -spec create_assessment_template(map(), create_assessment_template_request()) ->
     {ok, create_assessment_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, create_assessment_template_errors(), tuple()}.
 create_assessment_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_assessment_template(Client, Input, []).
@@ -1054,12 +1262,7 @@ create_assessment_template(Client, Input)
 -spec create_assessment_template(map(), create_assessment_template_request(), proplists:proplist()) ->
     {ok, create_assessment_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, create_assessment_template_errors(), tuple()}.
 create_assessment_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAssessmentTemplate">>, Input, Options).
@@ -1073,12 +1276,7 @@ create_assessment_template(Client, Input, Options)
 -spec create_exclusions_preview(map(), create_exclusions_preview_request()) ->
     {ok, create_exclusions_preview_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, preview_generation_in_progress_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, create_exclusions_preview_errors(), tuple()}.
 create_exclusions_preview(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_exclusions_preview(Client, Input, []).
@@ -1086,12 +1284,7 @@ create_exclusions_preview(Client, Input)
 -spec create_exclusions_preview(map(), create_exclusions_preview_request(), proplists:proplist()) ->
     {ok, create_exclusions_preview_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, preview_generation_in_progress_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, create_exclusions_preview_errors(), tuple()}.
 create_exclusions_preview(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateExclusionsPreview">>, Input, Options).
@@ -1108,11 +1301,7 @@ create_exclusions_preview(Client, Input, Options)
 -spec create_resource_group(map(), create_resource_group_request()) ->
     {ok, create_resource_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, create_resource_group_errors(), tuple()}.
 create_resource_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_resource_group(Client, Input, []).
@@ -1120,11 +1309,7 @@ create_resource_group(Client, Input)
 -spec create_resource_group(map(), create_resource_group_request(), proplists:proplist()) ->
     {ok, create_resource_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, create_resource_group_errors(), tuple()}.
 create_resource_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateResourceGroup">>, Input, Options).
@@ -1135,12 +1320,7 @@ create_resource_group(Client, Input, Options)
 -spec delete_assessment_run(map(), delete_assessment_run_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, assessment_run_in_progress_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, delete_assessment_run_errors(), tuple()}.
 delete_assessment_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_assessment_run(Client, Input, []).
@@ -1148,12 +1328,7 @@ delete_assessment_run(Client, Input)
 -spec delete_assessment_run(map(), delete_assessment_run_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, assessment_run_in_progress_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, delete_assessment_run_errors(), tuple()}.
 delete_assessment_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAssessmentRun">>, Input, Options).
@@ -1164,12 +1339,7 @@ delete_assessment_run(Client, Input, Options)
 -spec delete_assessment_target(map(), delete_assessment_target_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, assessment_run_in_progress_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, delete_assessment_target_errors(), tuple()}.
 delete_assessment_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_assessment_target(Client, Input, []).
@@ -1177,12 +1347,7 @@ delete_assessment_target(Client, Input)
 -spec delete_assessment_target(map(), delete_assessment_target_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, assessment_run_in_progress_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, delete_assessment_target_errors(), tuple()}.
 delete_assessment_target(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAssessmentTarget">>, Input, Options).
@@ -1193,12 +1358,7 @@ delete_assessment_target(Client, Input, Options)
 -spec delete_assessment_template(map(), delete_assessment_template_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, assessment_run_in_progress_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, delete_assessment_template_errors(), tuple()}.
 delete_assessment_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_assessment_template(Client, Input, []).
@@ -1206,12 +1366,7 @@ delete_assessment_template(Client, Input)
 -spec delete_assessment_template(map(), delete_assessment_template_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, assessment_run_in_progress_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, delete_assessment_template_errors(), tuple()}.
 delete_assessment_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAssessmentTemplate">>, Input, Options).
@@ -1222,8 +1377,7 @@ delete_assessment_template(Client, Input, Options)
 -spec describe_assessment_runs(map(), describe_assessment_runs_request()) ->
     {ok, describe_assessment_runs_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, describe_assessment_runs_errors(), tuple()}.
 describe_assessment_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_assessment_runs(Client, Input, []).
@@ -1231,8 +1385,7 @@ describe_assessment_runs(Client, Input)
 -spec describe_assessment_runs(map(), describe_assessment_runs_request(), proplists:proplist()) ->
     {ok, describe_assessment_runs_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, describe_assessment_runs_errors(), tuple()}.
 describe_assessment_runs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAssessmentRuns">>, Input, Options).
@@ -1243,8 +1396,7 @@ describe_assessment_runs(Client, Input, Options)
 -spec describe_assessment_targets(map(), describe_assessment_targets_request()) ->
     {ok, describe_assessment_targets_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, describe_assessment_targets_errors(), tuple()}.
 describe_assessment_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_assessment_targets(Client, Input, []).
@@ -1252,8 +1404,7 @@ describe_assessment_targets(Client, Input)
 -spec describe_assessment_targets(map(), describe_assessment_targets_request(), proplists:proplist()) ->
     {ok, describe_assessment_targets_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, describe_assessment_targets_errors(), tuple()}.
 describe_assessment_targets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAssessmentTargets">>, Input, Options).
@@ -1264,8 +1415,7 @@ describe_assessment_targets(Client, Input, Options)
 -spec describe_assessment_templates(map(), describe_assessment_templates_request()) ->
     {ok, describe_assessment_templates_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, describe_assessment_templates_errors(), tuple()}.
 describe_assessment_templates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_assessment_templates(Client, Input, []).
@@ -1273,8 +1423,7 @@ describe_assessment_templates(Client, Input)
 -spec describe_assessment_templates(map(), describe_assessment_templates_request(), proplists:proplist()) ->
     {ok, describe_assessment_templates_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, describe_assessment_templates_errors(), tuple()}.
 describe_assessment_templates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAssessmentTemplates">>, Input, Options).
@@ -1285,7 +1434,7 @@ describe_assessment_templates(Client, Input, Options)
 -spec describe_cross_account_access_role(map(), #{}) ->
     {ok, describe_cross_account_access_role_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()}.
+    {error, describe_cross_account_access_role_errors(), tuple()}.
 describe_cross_account_access_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cross_account_access_role(Client, Input, []).
@@ -1293,7 +1442,7 @@ describe_cross_account_access_role(Client, Input)
 -spec describe_cross_account_access_role(map(), #{}, proplists:proplist()) ->
     {ok, describe_cross_account_access_role_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()}.
+    {error, describe_cross_account_access_role_errors(), tuple()}.
 describe_cross_account_access_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCrossAccountAccessRole">>, Input, Options).
@@ -1303,8 +1452,7 @@ describe_cross_account_access_role(Client, Input, Options)
 -spec describe_exclusions(map(), describe_exclusions_request()) ->
     {ok, describe_exclusions_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, describe_exclusions_errors(), tuple()}.
 describe_exclusions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_exclusions(Client, Input, []).
@@ -1312,8 +1460,7 @@ describe_exclusions(Client, Input)
 -spec describe_exclusions(map(), describe_exclusions_request(), proplists:proplist()) ->
     {ok, describe_exclusions_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, describe_exclusions_errors(), tuple()}.
 describe_exclusions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeExclusions">>, Input, Options).
@@ -1323,8 +1470,7 @@ describe_exclusions(Client, Input, Options)
 -spec describe_findings(map(), describe_findings_request()) ->
     {ok, describe_findings_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, describe_findings_errors(), tuple()}.
 describe_findings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_findings(Client, Input, []).
@@ -1332,8 +1478,7 @@ describe_findings(Client, Input)
 -spec describe_findings(map(), describe_findings_request(), proplists:proplist()) ->
     {ok, describe_findings_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, describe_findings_errors(), tuple()}.
 describe_findings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFindings">>, Input, Options).
@@ -1344,8 +1489,7 @@ describe_findings(Client, Input, Options)
 -spec describe_resource_groups(map(), describe_resource_groups_request()) ->
     {ok, describe_resource_groups_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, describe_resource_groups_errors(), tuple()}.
 describe_resource_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_resource_groups(Client, Input, []).
@@ -1353,8 +1497,7 @@ describe_resource_groups(Client, Input)
 -spec describe_resource_groups(map(), describe_resource_groups_request(), proplists:proplist()) ->
     {ok, describe_resource_groups_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, describe_resource_groups_errors(), tuple()}.
 describe_resource_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeResourceGroups">>, Input, Options).
@@ -1365,8 +1508,7 @@ describe_resource_groups(Client, Input, Options)
 -spec describe_rules_packages(map(), describe_rules_packages_request()) ->
     {ok, describe_rules_packages_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, describe_rules_packages_errors(), tuple()}.
 describe_rules_packages(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_rules_packages(Client, Input, []).
@@ -1374,8 +1516,7 @@ describe_rules_packages(Client, Input)
 -spec describe_rules_packages(map(), describe_rules_packages_request(), proplists:proplist()) ->
     {ok, describe_rules_packages_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, describe_rules_packages_errors(), tuple()}.
 describe_rules_packages(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRulesPackages">>, Input, Options).
@@ -1386,13 +1527,7 @@ describe_rules_packages(Client, Input, Options)
 -spec get_assessment_report(map(), get_assessment_report_request()) ->
     {ok, get_assessment_report_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, assessment_run_in_progress_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()} |
-    {error, unsupported_feature_exception(), tuple()}.
+    {error, get_assessment_report_errors(), tuple()}.
 get_assessment_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_assessment_report(Client, Input, []).
@@ -1400,13 +1535,7 @@ get_assessment_report(Client, Input)
 -spec get_assessment_report(map(), get_assessment_report_request(), proplists:proplist()) ->
     {ok, get_assessment_report_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, assessment_run_in_progress_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()} |
-    {error, unsupported_feature_exception(), tuple()}.
+    {error, get_assessment_report_errors(), tuple()}.
 get_assessment_report(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAssessmentReport">>, Input, Options).
@@ -1420,10 +1549,7 @@ get_assessment_report(Client, Input, Options)
 -spec get_exclusions_preview(map(), get_exclusions_preview_request()) ->
     {ok, get_exclusions_preview_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, get_exclusions_preview_errors(), tuple()}.
 get_exclusions_preview(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_exclusions_preview(Client, Input, []).
@@ -1431,10 +1557,7 @@ get_exclusions_preview(Client, Input)
 -spec get_exclusions_preview(map(), get_exclusions_preview_request(), proplists:proplist()) ->
     {ok, get_exclusions_preview_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, get_exclusions_preview_errors(), tuple()}.
 get_exclusions_preview(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetExclusionsPreview">>, Input, Options).
@@ -1445,10 +1568,7 @@ get_exclusions_preview(Client, Input, Options)
 -spec get_telemetry_metadata(map(), get_telemetry_metadata_request()) ->
     {ok, get_telemetry_metadata_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, get_telemetry_metadata_errors(), tuple()}.
 get_telemetry_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_telemetry_metadata(Client, Input, []).
@@ -1456,10 +1576,7 @@ get_telemetry_metadata(Client, Input)
 -spec get_telemetry_metadata(map(), get_telemetry_metadata_request(), proplists:proplist()) ->
     {ok, get_telemetry_metadata_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, get_telemetry_metadata_errors(), tuple()}.
 get_telemetry_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTelemetryMetadata">>, Input, Options).
@@ -1470,10 +1587,7 @@ get_telemetry_metadata(Client, Input, Options)
 -spec list_assessment_run_agents(map(), list_assessment_run_agents_request()) ->
     {ok, list_assessment_run_agents_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, list_assessment_run_agents_errors(), tuple()}.
 list_assessment_run_agents(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_assessment_run_agents(Client, Input, []).
@@ -1481,10 +1595,7 @@ list_assessment_run_agents(Client, Input)
 -spec list_assessment_run_agents(map(), list_assessment_run_agents_request(), proplists:proplist()) ->
     {ok, list_assessment_run_agents_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, list_assessment_run_agents_errors(), tuple()}.
 list_assessment_run_agents(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAssessmentRunAgents">>, Input, Options).
@@ -1495,10 +1606,7 @@ list_assessment_run_agents(Client, Input, Options)
 -spec list_assessment_runs(map(), list_assessment_runs_request()) ->
     {ok, list_assessment_runs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, list_assessment_runs_errors(), tuple()}.
 list_assessment_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_assessment_runs(Client, Input, []).
@@ -1506,10 +1614,7 @@ list_assessment_runs(Client, Input)
 -spec list_assessment_runs(map(), list_assessment_runs_request(), proplists:proplist()) ->
     {ok, list_assessment_runs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, list_assessment_runs_errors(), tuple()}.
 list_assessment_runs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAssessmentRuns">>, Input, Options).
@@ -1523,9 +1628,7 @@ list_assessment_runs(Client, Input, Options)
 -spec list_assessment_targets(map(), list_assessment_targets_request()) ->
     {ok, list_assessment_targets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_assessment_targets_errors(), tuple()}.
 list_assessment_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_assessment_targets(Client, Input, []).
@@ -1533,9 +1636,7 @@ list_assessment_targets(Client, Input)
 -spec list_assessment_targets(map(), list_assessment_targets_request(), proplists:proplist()) ->
     {ok, list_assessment_targets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_assessment_targets_errors(), tuple()}.
 list_assessment_targets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAssessmentTargets">>, Input, Options).
@@ -1546,10 +1647,7 @@ list_assessment_targets(Client, Input, Options)
 -spec list_assessment_templates(map(), list_assessment_templates_request()) ->
     {ok, list_assessment_templates_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, list_assessment_templates_errors(), tuple()}.
 list_assessment_templates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_assessment_templates(Client, Input, []).
@@ -1557,10 +1655,7 @@ list_assessment_templates(Client, Input)
 -spec list_assessment_templates(map(), list_assessment_templates_request(), proplists:proplist()) ->
     {ok, list_assessment_templates_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, list_assessment_templates_errors(), tuple()}.
 list_assessment_templates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAssessmentTemplates">>, Input, Options).
@@ -1574,10 +1669,7 @@ list_assessment_templates(Client, Input, Options)
 -spec list_event_subscriptions(map(), list_event_subscriptions_request()) ->
     {ok, list_event_subscriptions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, list_event_subscriptions_errors(), tuple()}.
 list_event_subscriptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_event_subscriptions(Client, Input, []).
@@ -1585,10 +1677,7 @@ list_event_subscriptions(Client, Input)
 -spec list_event_subscriptions(map(), list_event_subscriptions_request(), proplists:proplist()) ->
     {ok, list_event_subscriptions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, list_event_subscriptions_errors(), tuple()}.
 list_event_subscriptions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEventSubscriptions">>, Input, Options).
@@ -1597,10 +1686,7 @@ list_event_subscriptions(Client, Input, Options)
 -spec list_exclusions(map(), list_exclusions_request()) ->
     {ok, list_exclusions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, list_exclusions_errors(), tuple()}.
 list_exclusions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_exclusions(Client, Input, []).
@@ -1608,10 +1694,7 @@ list_exclusions(Client, Input)
 -spec list_exclusions(map(), list_exclusions_request(), proplists:proplist()) ->
     {ok, list_exclusions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, list_exclusions_errors(), tuple()}.
 list_exclusions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListExclusions">>, Input, Options).
@@ -1622,10 +1705,7 @@ list_exclusions(Client, Input, Options)
 -spec list_findings(map(), list_findings_request()) ->
     {ok, list_findings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, list_findings_errors(), tuple()}.
 list_findings(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_findings(Client, Input, []).
@@ -1633,10 +1713,7 @@ list_findings(Client, Input)
 -spec list_findings(map(), list_findings_request(), proplists:proplist()) ->
     {ok, list_findings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, list_findings_errors(), tuple()}.
 list_findings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFindings">>, Input, Options).
@@ -1645,9 +1722,7 @@ list_findings(Client, Input, Options)
 -spec list_rules_packages(map(), list_rules_packages_request()) ->
     {ok, list_rules_packages_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_rules_packages_errors(), tuple()}.
 list_rules_packages(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rules_packages(Client, Input, []).
@@ -1655,9 +1730,7 @@ list_rules_packages(Client, Input)
 -spec list_rules_packages(map(), list_rules_packages_request(), proplists:proplist()) ->
     {ok, list_rules_packages_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_rules_packages_errors(), tuple()}.
 list_rules_packages(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRulesPackages">>, Input, Options).
@@ -1666,10 +1739,7 @@ list_rules_packages(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -1677,10 +1747,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -1691,11 +1758,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec preview_agents(map(), preview_agents_request()) ->
     {ok, preview_agents_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_cross_account_role_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, preview_agents_errors(), tuple()}.
 preview_agents(Client, Input)
   when is_map(Client), is_map(Input) ->
     preview_agents(Client, Input, []).
@@ -1703,11 +1766,7 @@ preview_agents(Client, Input)
 -spec preview_agents(map(), preview_agents_request(), proplists:proplist()) ->
     {ok, preview_agents_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_cross_account_role_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, preview_agents_errors(), tuple()}.
 preview_agents(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PreviewAgents">>, Input, Options).
@@ -1718,11 +1777,7 @@ preview_agents(Client, Input, Options)
 -spec register_cross_account_access_role(map(), register_cross_account_access_role_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_cross_account_role_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, register_cross_account_access_role_errors(), tuple()}.
 register_cross_account_access_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_cross_account_access_role(Client, Input, []).
@@ -1730,11 +1785,7 @@ register_cross_account_access_role(Client, Input)
 -spec register_cross_account_access_role(map(), register_cross_account_access_role_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_cross_account_role_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, register_cross_account_access_role_errors(), tuple()}.
 register_cross_account_access_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterCrossAccountAccessRole">>, Input, Options).
@@ -1746,11 +1797,7 @@ register_cross_account_access_role(Client, Input, Options)
 -spec remove_attributes_from_findings(map(), remove_attributes_from_findings_request()) ->
     {ok, remove_attributes_from_findings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, remove_attributes_from_findings_errors(), tuple()}.
 remove_attributes_from_findings(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_attributes_from_findings(Client, Input, []).
@@ -1758,11 +1805,7 @@ remove_attributes_from_findings(Client, Input)
 -spec remove_attributes_from_findings(map(), remove_attributes_from_findings_request(), proplists:proplist()) ->
     {ok, remove_attributes_from_findings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, remove_attributes_from_findings_errors(), tuple()}.
 remove_attributes_from_findings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveAttributesFromFindings">>, Input, Options).
@@ -1773,11 +1816,7 @@ remove_attributes_from_findings(Client, Input, Options)
 -spec set_tags_for_resource(map(), set_tags_for_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, set_tags_for_resource_errors(), tuple()}.
 set_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_tags_for_resource(Client, Input, []).
@@ -1785,11 +1824,7 @@ set_tags_for_resource(Client, Input)
 -spec set_tags_for_resource(map(), set_tags_for_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, set_tags_for_resource_errors(), tuple()}.
 set_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetTagsForResource">>, Input, Options).
@@ -1804,14 +1839,7 @@ set_tags_for_resource(Client, Input, Options)
 -spec start_assessment_run(map(), start_assessment_run_request()) ->
     {ok, start_assessment_run_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, agents_already_running_assessment_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_cross_account_role_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, start_assessment_run_errors(), tuple()}.
 start_assessment_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_assessment_run(Client, Input, []).
@@ -1819,14 +1847,7 @@ start_assessment_run(Client, Input)
 -spec start_assessment_run(map(), start_assessment_run_request(), proplists:proplist()) ->
     {ok, start_assessment_run_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, agents_already_running_assessment_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_cross_account_role_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, start_assessment_run_errors(), tuple()}.
 start_assessment_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartAssessmentRun">>, Input, Options).
@@ -1837,11 +1858,7 @@ start_assessment_run(Client, Input, Options)
 -spec stop_assessment_run(map(), stop_assessment_run_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, stop_assessment_run_errors(), tuple()}.
 stop_assessment_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_assessment_run(Client, Input, []).
@@ -1849,11 +1866,7 @@ stop_assessment_run(Client, Input)
 -spec stop_assessment_run(map(), stop_assessment_run_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, stop_assessment_run_errors(), tuple()}.
 stop_assessment_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopAssessmentRun">>, Input, Options).
@@ -1864,12 +1877,7 @@ stop_assessment_run(Client, Input, Options)
 -spec subscribe_to_event(map(), subscribe_to_event_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, subscribe_to_event_errors(), tuple()}.
 subscribe_to_event(Client, Input)
   when is_map(Client), is_map(Input) ->
     subscribe_to_event(Client, Input, []).
@@ -1877,12 +1885,7 @@ subscribe_to_event(Client, Input)
 -spec subscribe_to_event(map(), subscribe_to_event_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, subscribe_to_event_errors(), tuple()}.
 subscribe_to_event(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SubscribeToEvent">>, Input, Options).
@@ -1893,11 +1896,7 @@ subscribe_to_event(Client, Input, Options)
 -spec unsubscribe_from_event(map(), unsubscribe_from_event_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, unsubscribe_from_event_errors(), tuple()}.
 unsubscribe_from_event(Client, Input)
   when is_map(Client), is_map(Input) ->
     unsubscribe_from_event(Client, Input, []).
@@ -1905,11 +1904,7 @@ unsubscribe_from_event(Client, Input)
 -spec unsubscribe_from_event(map(), unsubscribe_from_event_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, unsubscribe_from_event_errors(), tuple()}.
 unsubscribe_from_event(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UnsubscribeFromEvent">>, Input, Options).
@@ -1924,11 +1919,7 @@ unsubscribe_from_event(Client, Input, Options)
 -spec update_assessment_target(map(), update_assessment_target_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, update_assessment_target_errors(), tuple()}.
 update_assessment_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_assessment_target(Client, Input, []).
@@ -1936,11 +1927,7 @@ update_assessment_target(Client, Input)
 -spec update_assessment_target(map(), update_assessment_target_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_temporarily_unavailable_exception(), tuple()}.
+    {error, update_assessment_target_errors(), tuple()}.
 update_assessment_target(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAssessmentTarget">>, Input, Options).

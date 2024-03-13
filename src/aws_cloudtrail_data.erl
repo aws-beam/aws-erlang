@@ -31,6 +31,7 @@
 %% }
 -type audit_event() :: #{binary() => any()}.
 
+
 %% Example:
 %% audit_event_result_entry() :: #{
 %%   <<"eventID">> => string(),
@@ -38,11 +39,13 @@
 %% }
 -type audit_event_result_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% channel_insufficient_permission() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type channel_insufficient_permission() :: #{binary() => any()}.
+
 
 %% Example:
 %% channel_not_found() :: #{
@@ -50,11 +53,13 @@
 %% }
 -type channel_not_found() :: #{binary() => any()}.
 
+
 %% Example:
 %% channel_unsupported_schema() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type channel_unsupported_schema() :: #{binary() => any()}.
+
 
 %% Example:
 %% duplicated_audit_event_id() :: #{
@@ -62,11 +67,13 @@
 %% }
 -type duplicated_audit_event_id() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_channel_arn() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type invalid_channel_arn() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_audit_events_request() :: #{
@@ -76,12 +83,14 @@
 %% }
 -type put_audit_events_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_audit_events_response() :: #{
 %%   <<"failed">> := list(result_error_entry()()),
 %%   <<"successful">> := list(audit_event_result_entry()())
 %% }
 -type put_audit_events_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% result_error_entry() :: #{
@@ -91,11 +100,20 @@
 %% }
 -type result_error_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% unsupported_operation_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type unsupported_operation_exception() :: #{binary() => any()}.
+
+-type put_audit_events_errors() ::
+    unsupported_operation_exception() | 
+    invalid_channel_arn() | 
+    duplicated_audit_event_id() | 
+    channel_unsupported_schema() | 
+    channel_not_found() | 
+    channel_insufficient_permission().
 
 %%====================================================================
 %% API
@@ -111,24 +129,14 @@
 -spec put_audit_events(map(), put_audit_events_request()) ->
     {ok, put_audit_events_response(), tuple()} |
     {error, any()} |
-    {error, channel_insufficient_permission(), tuple()} |
-    {error, channel_not_found(), tuple()} |
-    {error, channel_unsupported_schema(), tuple()} |
-    {error, duplicated_audit_event_id(), tuple()} |
-    {error, invalid_channel_arn(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, put_audit_events_errors(), tuple()}.
 put_audit_events(Client, Input) ->
     put_audit_events(Client, Input, []).
 
 -spec put_audit_events(map(), put_audit_events_request(), proplists:proplist()) ->
     {ok, put_audit_events_response(), tuple()} |
     {error, any()} |
-    {error, channel_insufficient_permission(), tuple()} |
-    {error, channel_not_found(), tuple()} |
-    {error, channel_unsupported_schema(), tuple()} |
-    {error, duplicated_audit_event_id(), tuple()} |
-    {error, invalid_channel_arn(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, put_audit_events_errors(), tuple()}.
 put_audit_events(Client, Input0, Options0) ->
     Method = post,
     Path = ["/PutAuditEvents"],

@@ -257,11 +257,13 @@
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_room_request() :: #{
 %%   <<"identifier">> := string()
 %% }
 -type delete_room_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_message_response() :: #{
@@ -269,18 +271,22 @@
 %% }
 -type delete_message_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_rooms_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"rooms">> := list(room_summary()())
 %% }
 -type list_rooms_response() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 %% Example:
 %% disconnect_user_response() :: #{}
 -type disconnect_user_response() :: #{}.
+
 
 %% Example:
 %% create_chat_token_request() :: #{
@@ -292,6 +298,7 @@
 %% }
 -type create_chat_token_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_message_request() :: #{
 %%   <<"id">> := string(),
@@ -299,6 +306,7 @@
 %%   <<"roomIdentifier">> := string()
 %% }
 -type delete_message_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% disconnect_user_request() :: #{
@@ -308,6 +316,7 @@
 %% }
 -type disconnect_user_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_logging_configuration_request() :: #{
 %%   <<"destinationConfiguration">> => list(),
@@ -315,6 +324,7 @@
 %%   <<"name">> => string()
 %% }
 -type update_logging_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_room_response() :: #{
@@ -331,6 +341,7 @@
 %% }
 -type update_room_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_logging_configuration_request() :: #{
 %%   <<"destinationConfiguration">> := list(),
@@ -339,11 +350,13 @@
 %% }
 -type create_logging_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% send_event_request() :: #{
@@ -353,6 +366,7 @@
 %% }
 -type send_event_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string(),
@@ -360,6 +374,7 @@
 %%   <<"resourceType">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_logging_configuration_response() :: #{
@@ -374,6 +389,7 @@
 %% }
 -type create_logging_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string(),
@@ -382,11 +398,13 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% send_event_response() :: #{
 %%   <<"id">> => string()
 %% }
 -type send_event_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
@@ -396,6 +414,7 @@
 %%   <<"resourceType">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_logging_configuration_response() :: #{
@@ -410,17 +429,20 @@
 %% }
 -type get_logging_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_destination_configuration() :: #{
 %%   <<"bucketName">> => string()
 %% }
 -type s3_destination_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> := map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_chat_token_response() :: #{
@@ -430,6 +452,7 @@
 %% }
 -type create_chat_token_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception_field() :: #{
 %%   <<"message">> => string(),
@@ -437,11 +460,13 @@
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_logging_configuration_request() :: #{
 %%   <<"identifier">> := string()
 %% }
 -type get_logging_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% internal_server_exception() :: #{
@@ -449,11 +474,13 @@
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_room_request() :: #{
 %%   <<"identifier">> := string()
 %% }
 -type get_room_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_logging_configurations_response() :: #{
@@ -462,11 +489,13 @@
 %% }
 -type list_logging_configurations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_room_response() :: #{
@@ -482,9 +511,11 @@
 %%   <<"updateTime">> => non_neg_integer()
 %% }
 -type get_room_response() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% validation_exception() :: #{
@@ -493,9 +524,11 @@
 %%   <<"reason">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% create_room_request() :: #{
@@ -508,6 +541,7 @@
 %% }
 -type create_room_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"limit">> => integer(),
@@ -516,6 +550,7 @@
 %%   <<"resourceType">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_rooms_request() :: #{
@@ -527,6 +562,7 @@
 %% }
 -type list_rooms_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_logging_configurations_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -534,11 +570,13 @@
 %% }
 -type list_logging_configurations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% cloud_watch_logs_destination_configuration() :: #{
 %%   <<"logGroupName">> => string()
 %% }
 -type cloud_watch_logs_destination_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% firehose_destination_configuration() :: #{
@@ -546,11 +584,13 @@
 %% }
 -type firehose_destination_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_logging_configuration_request() :: #{
 %%   <<"identifier">> := string()
 %% }
 -type delete_logging_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% room_summary() :: #{
@@ -565,6 +605,7 @@
 %% }
 -type room_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_logging_configuration_response() :: #{
 %%   <<"arn">> => string(),
@@ -577,6 +618,7 @@
 %%   <<"updateTime">> => non_neg_integer()
 %% }
 -type update_logging_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% logging_configuration_summary() :: #{
@@ -591,6 +633,7 @@
 %% }
 -type logging_configuration_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_room_request() :: #{
 %%   <<"identifier">> := string(),
@@ -601,6 +644,7 @@
 %%   <<"name">> => string()
 %% }
 -type update_room_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_room_response() :: #{
@@ -617,11 +661,13 @@
 %% }
 -type create_room_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% pending_verification() :: #{
 %%   <<"message">> => string()
 %% }
 -type pending_verification() :: #{binary() => any()}.
+
 
 %% Example:
 %% message_review_handler() :: #{
@@ -629,6 +675,109 @@
 %%   <<"uri">> => string()
 %% }
 -type message_review_handler() :: #{binary() => any()}.
+
+-type create_chat_token_errors() ::
+    pending_verification() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type create_logging_configuration_errors() ::
+    pending_verification() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_room_errors() ::
+    pending_verification() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_logging_configuration_errors() ::
+    pending_verification() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_message_errors() ::
+    pending_verification() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type delete_room_errors() ::
+    pending_verification() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type disconnect_user_errors() ::
+    pending_verification() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_logging_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_room_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_logging_configurations_errors() ::
+    validation_exception() | 
+    access_denied_exception().
+
+-type list_rooms_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type send_event_errors() ::
+    pending_verification() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_logging_configuration_errors() ::
+    pending_verification() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_room_errors() ::
+    pending_verification() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -660,20 +809,14 @@
 -spec create_chat_token(map(), create_chat_token_request()) ->
     {ok, create_chat_token_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_chat_token_errors(), tuple()}.
 create_chat_token(Client, Input) ->
     create_chat_token(Client, Input, []).
 
 -spec create_chat_token(map(), create_chat_token_request(), proplists:proplist()) ->
     {ok, create_chat_token_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_chat_token_errors(), tuple()}.
 create_chat_token(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateChatToken"],
@@ -702,24 +845,14 @@ create_chat_token(Client, Input0, Options0) ->
 -spec create_logging_configuration(map(), create_logging_configuration_request()) ->
     {ok, create_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_logging_configuration_errors(), tuple()}.
 create_logging_configuration(Client, Input) ->
     create_logging_configuration(Client, Input, []).
 
 -spec create_logging_configuration(map(), create_logging_configuration_request(), proplists:proplist()) ->
     {ok, create_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_logging_configuration_errors(), tuple()}.
 create_logging_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateLoggingConfiguration"],
@@ -746,24 +879,14 @@ create_logging_configuration(Client, Input0, Options0) ->
 -spec create_room(map(), create_room_request()) ->
     {ok, create_room_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_room_errors(), tuple()}.
 create_room(Client, Input) ->
     create_room(Client, Input, []).
 
 -spec create_room(map(), create_room_request(), proplists:proplist()) ->
     {ok, create_room_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_room_errors(), tuple()}.
 create_room(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateRoom"],
@@ -790,22 +913,14 @@ create_room(Client, Input0, Options0) ->
 -spec delete_logging_configuration(map(), delete_logging_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_logging_configuration_errors(), tuple()}.
 delete_logging_configuration(Client, Input) ->
     delete_logging_configuration(Client, Input, []).
 
 -spec delete_logging_configuration(map(), delete_logging_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_logging_configuration_errors(), tuple()}.
 delete_logging_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteLoggingConfiguration"],
@@ -841,22 +956,14 @@ delete_logging_configuration(Client, Input0, Options0) ->
 -spec delete_message(map(), delete_message_request()) ->
     {ok, delete_message_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_message_errors(), tuple()}.
 delete_message(Client, Input) ->
     delete_message(Client, Input, []).
 
 -spec delete_message(map(), delete_message_request(), proplists:proplist()) ->
     {ok, delete_message_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_message_errors(), tuple()}.
 delete_message(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteMessage"],
@@ -883,20 +990,14 @@ delete_message(Client, Input0, Options0) ->
 -spec delete_room(map(), delete_room_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_room_errors(), tuple()}.
 delete_room(Client, Input) ->
     delete_room(Client, Input, []).
 
 -spec delete_room(map(), delete_room_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_room_errors(), tuple()}.
 delete_room(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteRoom"],
@@ -929,22 +1030,14 @@ delete_room(Client, Input0, Options0) ->
 -spec disconnect_user(map(), disconnect_user_request()) ->
     {ok, disconnect_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disconnect_user_errors(), tuple()}.
 disconnect_user(Client, Input) ->
     disconnect_user(Client, Input, []).
 
 -spec disconnect_user(map(), disconnect_user_request(), proplists:proplist()) ->
     {ok, disconnect_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disconnect_user_errors(), tuple()}.
 disconnect_user(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DisconnectUser"],
@@ -971,18 +1064,14 @@ disconnect_user(Client, Input0, Options0) ->
 -spec get_logging_configuration(map(), get_logging_configuration_request()) ->
     {ok, get_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_logging_configuration_errors(), tuple()}.
 get_logging_configuration(Client, Input) ->
     get_logging_configuration(Client, Input, []).
 
 -spec get_logging_configuration(map(), get_logging_configuration_request(), proplists:proplist()) ->
     {ok, get_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_logging_configuration_errors(), tuple()}.
 get_logging_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetLoggingConfiguration"],
@@ -1009,18 +1098,14 @@ get_logging_configuration(Client, Input0, Options0) ->
 -spec get_room(map(), get_room_request()) ->
     {ok, get_room_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_room_errors(), tuple()}.
 get_room(Client, Input) ->
     get_room(Client, Input, []).
 
 -spec get_room(map(), get_room_request(), proplists:proplist()) ->
     {ok, get_room_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_room_errors(), tuple()}.
 get_room(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetRoom"],
@@ -1049,16 +1134,14 @@ get_room(Client, Input0, Options0) ->
 -spec list_logging_configurations(map(), list_logging_configurations_request()) ->
     {ok, list_logging_configurations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_logging_configurations_errors(), tuple()}.
 list_logging_configurations(Client, Input) ->
     list_logging_configurations(Client, Input, []).
 
 -spec list_logging_configurations(map(), list_logging_configurations_request(), proplists:proplist()) ->
     {ok, list_logging_configurations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_logging_configurations_errors(), tuple()}.
 list_logging_configurations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListLoggingConfigurations"],
@@ -1089,18 +1172,14 @@ list_logging_configurations(Client, Input0, Options0) ->
 -spec list_rooms(map(), list_rooms_request()) ->
     {ok, list_rooms_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_rooms_errors(), tuple()}.
 list_rooms(Client, Input) ->
     list_rooms(Client, Input, []).
 
 -spec list_rooms(map(), list_rooms_request(), proplists:proplist()) ->
     {ok, list_rooms_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_rooms_errors(), tuple()}.
 list_rooms(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListRooms"],
@@ -1127,9 +1206,7 @@ list_rooms(Client, Input0, Options0) ->
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1137,9 +1214,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1147,9 +1222,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1175,22 +1248,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec send_event(map(), send_event_request()) ->
     {ok, send_event_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, send_event_errors(), tuple()}.
 send_event(Client, Input) ->
     send_event(Client, Input, []).
 
 -spec send_event(map(), send_event_request(), proplists:proplist()) ->
     {ok, send_event_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, send_event_errors(), tuple()}.
 send_event(Client, Input0, Options0) ->
     Method = post,
     Path = ["/SendEvent"],
@@ -1217,18 +1282,14 @@ send_event(Client, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1255,18 +1316,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1294,22 +1351,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_logging_configuration(map(), update_logging_configuration_request()) ->
     {ok, update_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_logging_configuration_errors(), tuple()}.
 update_logging_configuration(Client, Input) ->
     update_logging_configuration(Client, Input, []).
 
 -spec update_logging_configuration(map(), update_logging_configuration_request(), proplists:proplist()) ->
     {ok, update_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_logging_configuration_errors(), tuple()}.
 update_logging_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateLoggingConfiguration"],
@@ -1336,20 +1385,14 @@ update_logging_configuration(Client, Input0, Options0) ->
 -spec update_room(map(), update_room_request()) ->
     {ok, update_room_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_room_errors(), tuple()}.
 update_room(Client, Input) ->
     update_room(Client, Input, []).
 
 -spec update_room(map(), update_room_request(), proplists:proplist()) ->
     {ok, update_room_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_room_errors(), tuple()}.
 update_room(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateRoom"],

@@ -3282,6 +3282,518 @@
 %% }
 -type replication_task_assessment_run() :: #{binary() => any()}.
 
+-type add_tags_to_resource_errors() ::
+    resource_not_found_fault().
+
+-type apply_pending_maintenance_action_errors() ::
+    resource_not_found_fault().
+
+-type batch_start_recommendations_errors() ::
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type cancel_replication_task_assessment_run_errors() ::
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type create_data_provider_errors() ::
+    resource_quota_exceeded_fault() | 
+    resource_already_exists_fault() | 
+    access_denied_fault().
+
+-type create_endpoint_errors() ::
+    resource_quota_exceeded_fault() | 
+    resource_already_exists_fault() | 
+    kms_key_not_accessible_fault() | 
+    s3_access_denied_fault() | 
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type create_event_subscription_errors() ::
+    kms_throttling_fault() | 
+    s_n_s_no_authorization_fault() | 
+    resource_quota_exceeded_fault() | 
+    kms_disabled_fault() | 
+    resource_already_exists_fault() | 
+    s_n_s_invalid_topic_fault() | 
+    kms_not_found_fault() | 
+    kms_access_denied_fault() | 
+    kms_invalid_state_fault() | 
+    resource_not_found_fault().
+
+-type create_fleet_advisor_collector_errors() ::
+    s3_resource_not_found_fault() | 
+    resource_quota_exceeded_fault() | 
+    s3_access_denied_fault() | 
+    access_denied_fault() | 
+    invalid_resource_state_fault().
+
+-type create_instance_profile_errors() ::
+    s3_resource_not_found_fault() | 
+    resource_quota_exceeded_fault() | 
+    resource_already_exists_fault() | 
+    kms_key_not_accessible_fault() | 
+    s3_access_denied_fault() | 
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type create_migration_project_errors() ::
+    s3_resource_not_found_fault() | 
+    resource_quota_exceeded_fault() | 
+    resource_already_exists_fault() | 
+    s3_access_denied_fault() | 
+    access_denied_fault() | 
+    resource_not_found_fault().
+
+-type create_replication_config_errors() ::
+    resource_quota_exceeded_fault() | 
+    resource_already_exists_fault() | 
+    kms_key_not_accessible_fault() | 
+    replication_subnet_group_does_not_cover_enough_a_zs() | 
+    invalid_subnet() | 
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type create_replication_instance_errors() ::
+    resource_quota_exceeded_fault() | 
+    resource_already_exists_fault() | 
+    kms_key_not_accessible_fault() | 
+    storage_quota_exceeded_fault() | 
+    insufficient_resource_capacity_fault() | 
+    replication_subnet_group_does_not_cover_enough_a_zs() | 
+    invalid_subnet() | 
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type create_replication_subnet_group_errors() ::
+    resource_quota_exceeded_fault() | 
+    resource_already_exists_fault() | 
+    replication_subnet_group_does_not_cover_enough_a_zs() | 
+    invalid_subnet() | 
+    access_denied_fault() | 
+    resource_not_found_fault().
+
+-type create_replication_task_errors() ::
+    resource_quota_exceeded_fault() | 
+    resource_already_exists_fault() | 
+    kms_key_not_accessible_fault() | 
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type delete_certificate_errors() ::
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type delete_connection_errors() ::
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type delete_data_provider_errors() ::
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type delete_endpoint_errors() ::
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type delete_event_subscription_errors() ::
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type delete_fleet_advisor_collector_errors() ::
+    collector_not_found_fault() | 
+    invalid_resource_state_fault().
+
+-type delete_fleet_advisor_databases_errors() ::
+    invalid_operation_fault() | 
+    resource_not_found_fault().
+
+-type delete_instance_profile_errors() ::
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type delete_migration_project_errors() ::
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type delete_replication_config_errors() ::
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type delete_replication_instance_errors() ::
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type delete_replication_subnet_group_errors() ::
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type delete_replication_task_errors() ::
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type delete_replication_task_assessment_run_errors() ::
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type describe_applicable_individual_assessments_errors() ::
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type describe_certificates_errors() ::
+    resource_not_found_fault().
+
+-type describe_connections_errors() ::
+    resource_not_found_fault().
+
+-type describe_conversion_configuration_errors() ::
+    resource_not_found_fault().
+
+-type describe_data_providers_errors() ::
+    access_denied_fault() | 
+    resource_not_found_fault().
+
+-type describe_endpoints_errors() ::
+    resource_not_found_fault().
+
+-type describe_event_subscriptions_errors() ::
+    resource_not_found_fault().
+
+-type describe_fleet_advisor_collectors_errors() ::
+    invalid_resource_state_fault().
+
+-type describe_fleet_advisor_databases_errors() ::
+    invalid_resource_state_fault().
+
+-type describe_fleet_advisor_lsa_analysis_errors() ::
+    invalid_resource_state_fault().
+
+-type describe_fleet_advisor_schema_object_summary_errors() ::
+    invalid_resource_state_fault().
+
+-type describe_fleet_advisor_schemas_errors() ::
+    invalid_resource_state_fault().
+
+-type describe_instance_profiles_errors() ::
+    access_denied_fault() | 
+    resource_not_found_fault().
+
+-type describe_metadata_model_assessments_errors() ::
+    resource_not_found_fault().
+
+-type describe_metadata_model_conversions_errors() ::
+    resource_not_found_fault().
+
+-type describe_metadata_model_exports_as_script_errors() ::
+    resource_not_found_fault().
+
+-type describe_metadata_model_exports_to_target_errors() ::
+    resource_not_found_fault().
+
+-type describe_metadata_model_imports_errors() ::
+    resource_not_found_fault().
+
+-type describe_migration_projects_errors() ::
+    access_denied_fault() | 
+    resource_not_found_fault().
+
+-type describe_pending_maintenance_actions_errors() ::
+    resource_not_found_fault().
+
+-type describe_recommendation_limitations_errors() ::
+    access_denied_fault() | 
+    invalid_resource_state_fault().
+
+-type describe_recommendations_errors() ::
+    access_denied_fault() | 
+    invalid_resource_state_fault().
+
+-type describe_refresh_schemas_status_errors() ::
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type describe_replication_configs_errors() ::
+    resource_not_found_fault().
+
+-type describe_replication_instance_task_logs_errors() ::
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type describe_replication_instances_errors() ::
+    resource_not_found_fault().
+
+-type describe_replication_subnet_groups_errors() ::
+    resource_not_found_fault().
+
+-type describe_replication_table_statistics_errors() ::
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type describe_replication_task_assessment_results_errors() ::
+    resource_not_found_fault().
+
+-type describe_replication_task_assessment_runs_errors() ::
+    resource_not_found_fault().
+
+-type describe_replication_task_individual_assessments_errors() ::
+    resource_not_found_fault().
+
+-type describe_replication_tasks_errors() ::
+    resource_not_found_fault().
+
+-type describe_replications_errors() ::
+    resource_not_found_fault().
+
+-type describe_schemas_errors() ::
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type describe_table_statistics_errors() ::
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type export_metadata_model_assessment_errors() ::
+    resource_not_found_fault().
+
+-type import_certificate_errors() ::
+    resource_quota_exceeded_fault() | 
+    resource_already_exists_fault() | 
+    invalid_certificate_fault().
+
+-type list_tags_for_resource_errors() ::
+    resource_not_found_fault().
+
+-type modify_conversion_configuration_errors() ::
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type modify_data_provider_errors() ::
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type modify_endpoint_errors() ::
+    resource_already_exists_fault() | 
+    kms_key_not_accessible_fault() | 
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type modify_event_subscription_errors() ::
+    kms_throttling_fault() | 
+    s_n_s_no_authorization_fault() | 
+    resource_quota_exceeded_fault() | 
+    kms_disabled_fault() | 
+    s_n_s_invalid_topic_fault() | 
+    kms_not_found_fault() | 
+    kms_access_denied_fault() | 
+    kms_invalid_state_fault() | 
+    resource_not_found_fault().
+
+-type modify_instance_profile_errors() ::
+    s3_resource_not_found_fault() | 
+    kms_key_not_accessible_fault() | 
+    s3_access_denied_fault() | 
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type modify_migration_project_errors() ::
+    s3_resource_not_found_fault() | 
+    s3_access_denied_fault() | 
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type modify_replication_config_errors() ::
+    kms_key_not_accessible_fault() | 
+    replication_subnet_group_does_not_cover_enough_a_zs() | 
+    invalid_subnet() | 
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type modify_replication_instance_errors() ::
+    resource_already_exists_fault() | 
+    storage_quota_exceeded_fault() | 
+    insufficient_resource_capacity_fault() | 
+    access_denied_fault() | 
+    upgrade_dependency_failure_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type modify_replication_subnet_group_errors() ::
+    resource_quota_exceeded_fault() | 
+    replication_subnet_group_does_not_cover_enough_a_zs() | 
+    invalid_subnet() | 
+    access_denied_fault() | 
+    subnet_already_in_use() | 
+    resource_not_found_fault().
+
+-type modify_replication_task_errors() ::
+    resource_already_exists_fault() | 
+    kms_key_not_accessible_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type move_replication_task_errors() ::
+    resource_quota_exceeded_fault() | 
+    kms_key_not_accessible_fault() | 
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type reboot_replication_instance_errors() ::
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type refresh_schemas_errors() ::
+    resource_quota_exceeded_fault() | 
+    kms_key_not_accessible_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type reload_replication_tables_errors() ::
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type reload_tables_errors() ::
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type remove_tags_from_resource_errors() ::
+    resource_not_found_fault().
+
+-type run_fleet_advisor_lsa_analysis_errors() ::
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type start_extension_pack_association_errors() ::
+    s3_resource_not_found_fault() | 
+    resource_quota_exceeded_fault() | 
+    resource_already_exists_fault() | 
+    kms_key_not_accessible_fault() | 
+    s3_access_denied_fault() | 
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type start_metadata_model_assessment_errors() ::
+    s3_resource_not_found_fault() | 
+    resource_quota_exceeded_fault() | 
+    resource_already_exists_fault() | 
+    kms_key_not_accessible_fault() | 
+    s3_access_denied_fault() | 
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type start_metadata_model_conversion_errors() ::
+    s3_resource_not_found_fault() | 
+    resource_quota_exceeded_fault() | 
+    resource_already_exists_fault() | 
+    kms_key_not_accessible_fault() | 
+    s3_access_denied_fault() | 
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type start_metadata_model_export_as_script_errors() ::
+    s3_resource_not_found_fault() | 
+    resource_quota_exceeded_fault() | 
+    resource_already_exists_fault() | 
+    kms_key_not_accessible_fault() | 
+    s3_access_denied_fault() | 
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type start_metadata_model_export_to_target_errors() ::
+    s3_resource_not_found_fault() | 
+    resource_quota_exceeded_fault() | 
+    resource_already_exists_fault() | 
+    kms_key_not_accessible_fault() | 
+    s3_access_denied_fault() | 
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type start_metadata_model_import_errors() ::
+    s3_resource_not_found_fault() | 
+    resource_quota_exceeded_fault() | 
+    resource_already_exists_fault() | 
+    kms_key_not_accessible_fault() | 
+    s3_access_denied_fault() | 
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type start_recommendations_errors() ::
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type start_replication_errors() ::
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type start_replication_task_errors() ::
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type start_replication_task_assessment_errors() ::
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type start_replication_task_assessment_run_errors() ::
+    s3_resource_not_found_fault() | 
+    kms_disabled_fault() | 
+    resource_already_exists_fault() | 
+    kms_key_not_accessible_fault() | 
+    s3_access_denied_fault() | 
+    kms_not_found_fault() | 
+    kms_fault() | 
+    kms_access_denied_fault() | 
+    kms_invalid_state_fault() | 
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type stop_replication_errors() ::
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type stop_replication_task_errors() ::
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type test_connection_errors() ::
+    resource_quota_exceeded_fault() | 
+    kms_key_not_accessible_fault() | 
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type update_subscriptions_to_event_bridge_errors() ::
+    access_denied_fault() | 
+    invalid_resource_state_fault().
 
 %%====================================================================
 %% API
@@ -3301,7 +3813,7 @@
 -spec add_tags_to_resource(map(), add_tags_to_resource_message()) ->
     {ok, add_tags_to_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, add_tags_to_resource_errors(), tuple()}.
 add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_resource(Client, Input, []).
@@ -3309,7 +3821,7 @@ add_tags_to_resource(Client, Input)
 -spec add_tags_to_resource(map(), add_tags_to_resource_message(), proplists:proplist()) ->
     {ok, add_tags_to_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, add_tags_to_resource_errors(), tuple()}.
 add_tags_to_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTagsToResource">>, Input, Options).
@@ -3319,7 +3831,7 @@ add_tags_to_resource(Client, Input, Options)
 -spec apply_pending_maintenance_action(map(), apply_pending_maintenance_action_message()) ->
     {ok, apply_pending_maintenance_action_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, apply_pending_maintenance_action_errors(), tuple()}.
 apply_pending_maintenance_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     apply_pending_maintenance_action(Client, Input, []).
@@ -3327,7 +3839,7 @@ apply_pending_maintenance_action(Client, Input)
 -spec apply_pending_maintenance_action(map(), apply_pending_maintenance_action_message(), proplists:proplist()) ->
     {ok, apply_pending_maintenance_action_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, apply_pending_maintenance_action_errors(), tuple()}.
 apply_pending_maintenance_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ApplyPendingMaintenanceAction">>, Input, Options).
@@ -3349,9 +3861,7 @@ apply_pending_maintenance_action(Client, Input, Options)
 -spec batch_start_recommendations(map(), batch_start_recommendations_request()) ->
     {ok, batch_start_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, batch_start_recommendations_errors(), tuple()}.
 batch_start_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_start_recommendations(Client, Input, []).
@@ -3359,9 +3869,7 @@ batch_start_recommendations(Client, Input)
 -spec batch_start_recommendations(map(), batch_start_recommendations_request(), proplists:proplist()) ->
     {ok, batch_start_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, batch_start_recommendations_errors(), tuple()}.
 batch_start_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchStartRecommendations">>, Input, Options).
@@ -3376,9 +3884,7 @@ batch_start_recommendations(Client, Input, Options)
 -spec cancel_replication_task_assessment_run(map(), cancel_replication_task_assessment_run_message()) ->
     {ok, cancel_replication_task_assessment_run_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, cancel_replication_task_assessment_run_errors(), tuple()}.
 cancel_replication_task_assessment_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_replication_task_assessment_run(Client, Input, []).
@@ -3386,9 +3892,7 @@ cancel_replication_task_assessment_run(Client, Input)
 -spec cancel_replication_task_assessment_run(map(), cancel_replication_task_assessment_run_message(), proplists:proplist()) ->
     {ok, cancel_replication_task_assessment_run_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, cancel_replication_task_assessment_run_errors(), tuple()}.
 cancel_replication_task_assessment_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelReplicationTaskAssessmentRun">>, Input, Options).
@@ -3400,9 +3904,7 @@ cancel_replication_task_assessment_run(Client, Input, Options)
 -spec create_data_provider(map(), create_data_provider_message()) ->
     {ok, create_data_provider_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()}.
+    {error, create_data_provider_errors(), tuple()}.
 create_data_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_provider(Client, Input, []).
@@ -3410,9 +3912,7 @@ create_data_provider(Client, Input)
 -spec create_data_provider(map(), create_data_provider_message(), proplists:proplist()) ->
     {ok, create_data_provider_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()}.
+    {error, create_data_provider_errors(), tuple()}.
 create_data_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDataProvider">>, Input, Options).
@@ -3431,13 +3931,7 @@ create_data_provider(Client, Input, Options)
 -spec create_endpoint(map(), create_endpoint_message()) ->
     {ok, create_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()} |
-    {error, s3_access_denied_fault(), tuple()}.
+    {error, create_endpoint_errors(), tuple()}.
 create_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_endpoint(Client, Input, []).
@@ -3445,13 +3939,7 @@ create_endpoint(Client, Input)
 -spec create_endpoint(map(), create_endpoint_message(), proplists:proplist()) ->
     {ok, create_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()} |
-    {error, s3_access_denied_fault(), tuple()}.
+    {error, create_endpoint_errors(), tuple()}.
 create_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEndpoint">>, Input, Options).
@@ -3486,16 +3974,7 @@ create_endpoint(Client, Input, Options)
 -spec create_event_subscription(map(), create_event_subscription_message()) ->
     {ok, create_event_subscription_response(), tuple()} |
     {error, any()} |
-    {error, kms_access_denied_fault(), tuple()} |
-    {error, kms_disabled_fault(), tuple()} |
-    {error, kms_invalid_state_fault(), tuple()} |
-    {error, kms_not_found_fault(), tuple()} |
-    {error, kms_throttling_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()} |
-    {error, s_n_s_invalid_topic_fault(), tuple()} |
-    {error, s_n_s_no_authorization_fault(), tuple()}.
+    {error, create_event_subscription_errors(), tuple()}.
 create_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_event_subscription(Client, Input, []).
@@ -3503,16 +3982,7 @@ create_event_subscription(Client, Input)
 -spec create_event_subscription(map(), create_event_subscription_message(), proplists:proplist()) ->
     {ok, create_event_subscription_response(), tuple()} |
     {error, any()} |
-    {error, kms_access_denied_fault(), tuple()} |
-    {error, kms_disabled_fault(), tuple()} |
-    {error, kms_invalid_state_fault(), tuple()} |
-    {error, kms_not_found_fault(), tuple()} |
-    {error, kms_throttling_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()} |
-    {error, s_n_s_invalid_topic_fault(), tuple()} |
-    {error, s_n_s_no_authorization_fault(), tuple()}.
+    {error, create_event_subscription_errors(), tuple()}.
 create_event_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEventSubscription">>, Input, Options).
@@ -3521,11 +3991,7 @@ create_event_subscription(Client, Input, Options)
 -spec create_fleet_advisor_collector(map(), create_fleet_advisor_collector_request()) ->
     {ok, create_fleet_advisor_collector_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()} |
-    {error, s3_access_denied_fault(), tuple()} |
-    {error, s3_resource_not_found_fault(), tuple()}.
+    {error, create_fleet_advisor_collector_errors(), tuple()}.
 create_fleet_advisor_collector(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_fleet_advisor_collector(Client, Input, []).
@@ -3533,11 +3999,7 @@ create_fleet_advisor_collector(Client, Input)
 -spec create_fleet_advisor_collector(map(), create_fleet_advisor_collector_request(), proplists:proplist()) ->
     {ok, create_fleet_advisor_collector_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()} |
-    {error, s3_access_denied_fault(), tuple()} |
-    {error, s3_resource_not_found_fault(), tuple()}.
+    {error, create_fleet_advisor_collector_errors(), tuple()}.
 create_fleet_advisor_collector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFleetAdvisorCollector">>, Input, Options).
@@ -3546,14 +4008,7 @@ create_fleet_advisor_collector(Client, Input, Options)
 -spec create_instance_profile(map(), create_instance_profile_message()) ->
     {ok, create_instance_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()} |
-    {error, s3_access_denied_fault(), tuple()} |
-    {error, s3_resource_not_found_fault(), tuple()}.
+    {error, create_instance_profile_errors(), tuple()}.
 create_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_instance_profile(Client, Input, []).
@@ -3561,14 +4016,7 @@ create_instance_profile(Client, Input)
 -spec create_instance_profile(map(), create_instance_profile_message(), proplists:proplist()) ->
     {ok, create_instance_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()} |
-    {error, s3_access_denied_fault(), tuple()} |
-    {error, s3_resource_not_found_fault(), tuple()}.
+    {error, create_instance_profile_errors(), tuple()}.
 create_instance_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateInstanceProfile">>, Input, Options).
@@ -3584,12 +4032,7 @@ create_instance_profile(Client, Input, Options)
 -spec create_migration_project(map(), create_migration_project_message()) ->
     {ok, create_migration_project_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()} |
-    {error, s3_access_denied_fault(), tuple()} |
-    {error, s3_resource_not_found_fault(), tuple()}.
+    {error, create_migration_project_errors(), tuple()}.
 create_migration_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_migration_project(Client, Input, []).
@@ -3597,12 +4040,7 @@ create_migration_project(Client, Input)
 -spec create_migration_project(map(), create_migration_project_message(), proplists:proplist()) ->
     {ok, create_migration_project_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()} |
-    {error, s3_access_denied_fault(), tuple()} |
-    {error, s3_resource_not_found_fault(), tuple()}.
+    {error, create_migration_project_errors(), tuple()}.
 create_migration_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateMigrationProject">>, Input, Options).
@@ -3617,14 +4055,7 @@ create_migration_project(Client, Input, Options)
 -spec create_replication_config(map(), create_replication_config_message()) ->
     {ok, create_replication_config_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, replication_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()}.
+    {error, create_replication_config_errors(), tuple()}.
 create_replication_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_replication_config(Client, Input, []).
@@ -3632,14 +4063,7 @@ create_replication_config(Client, Input)
 -spec create_replication_config(map(), create_replication_config_message(), proplists:proplist()) ->
     {ok, create_replication_config_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, replication_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()}.
+    {error, create_replication_config_errors(), tuple()}.
 create_replication_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateReplicationConfig">>, Input, Options).
@@ -3666,16 +4090,7 @@ create_replication_config(Client, Input, Options)
 -spec create_replication_instance(map(), create_replication_instance_message()) ->
     {ok, create_replication_instance_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, insufficient_resource_capacity_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, replication_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()} |
-    {error, storage_quota_exceeded_fault(), tuple()}.
+    {error, create_replication_instance_errors(), tuple()}.
 create_replication_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_replication_instance(Client, Input, []).
@@ -3683,16 +4098,7 @@ create_replication_instance(Client, Input)
 -spec create_replication_instance(map(), create_replication_instance_message(), proplists:proplist()) ->
     {ok, create_replication_instance_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, insufficient_resource_capacity_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, replication_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()} |
-    {error, storage_quota_exceeded_fault(), tuple()}.
+    {error, create_replication_instance_errors(), tuple()}.
 create_replication_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateReplicationInstance">>, Input, Options).
@@ -3717,12 +4123,7 @@ create_replication_instance(Client, Input, Options)
 -spec create_replication_subnet_group(map(), create_replication_subnet_group_message()) ->
     {ok, create_replication_subnet_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, replication_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()}.
+    {error, create_replication_subnet_group_errors(), tuple()}.
 create_replication_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_replication_subnet_group(Client, Input, []).
@@ -3730,12 +4131,7 @@ create_replication_subnet_group(Client, Input)
 -spec create_replication_subnet_group(map(), create_replication_subnet_group_message(), proplists:proplist()) ->
     {ok, create_replication_subnet_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, replication_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()}.
+    {error, create_replication_subnet_group_errors(), tuple()}.
 create_replication_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateReplicationSubnetGroup">>, Input, Options).
@@ -3744,12 +4140,7 @@ create_replication_subnet_group(Client, Input, Options)
 -spec create_replication_task(map(), create_replication_task_message()) ->
     {ok, create_replication_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()}.
+    {error, create_replication_task_errors(), tuple()}.
 create_replication_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_replication_task(Client, Input, []).
@@ -3757,12 +4148,7 @@ create_replication_task(Client, Input)
 -spec create_replication_task(map(), create_replication_task_message(), proplists:proplist()) ->
     {ok, create_replication_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()}.
+    {error, create_replication_task_errors(), tuple()}.
 create_replication_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateReplicationTask">>, Input, Options).
@@ -3771,8 +4157,7 @@ create_replication_task(Client, Input, Options)
 -spec delete_certificate(map(), delete_certificate_message()) ->
     {ok, delete_certificate_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, delete_certificate_errors(), tuple()}.
 delete_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_certificate(Client, Input, []).
@@ -3780,8 +4165,7 @@ delete_certificate(Client, Input)
 -spec delete_certificate(map(), delete_certificate_message(), proplists:proplist()) ->
     {ok, delete_certificate_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, delete_certificate_errors(), tuple()}.
 delete_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCertificate">>, Input, Options).
@@ -3791,9 +4175,7 @@ delete_certificate(Client, Input, Options)
 -spec delete_connection(map(), delete_connection_message()) ->
     {ok, delete_connection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, delete_connection_errors(), tuple()}.
 delete_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_connection(Client, Input, []).
@@ -3801,9 +4183,7 @@ delete_connection(Client, Input)
 -spec delete_connection(map(), delete_connection_message(), proplists:proplist()) ->
     {ok, delete_connection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, delete_connection_errors(), tuple()}.
 delete_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConnection">>, Input, Options).
@@ -3816,9 +4196,7 @@ delete_connection(Client, Input, Options)
 -spec delete_data_provider(map(), delete_data_provider_message()) ->
     {ok, delete_data_provider_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, delete_data_provider_errors(), tuple()}.
 delete_data_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_data_provider(Client, Input, []).
@@ -3826,9 +4204,7 @@ delete_data_provider(Client, Input)
 -spec delete_data_provider(map(), delete_data_provider_message(), proplists:proplist()) ->
     {ok, delete_data_provider_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, delete_data_provider_errors(), tuple()}.
 delete_data_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDataProvider">>, Input, Options).
@@ -3841,8 +4217,7 @@ delete_data_provider(Client, Input, Options)
 -spec delete_endpoint(map(), delete_endpoint_message()) ->
     {ok, delete_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, delete_endpoint_errors(), tuple()}.
 delete_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_endpoint(Client, Input, []).
@@ -3850,8 +4225,7 @@ delete_endpoint(Client, Input)
 -spec delete_endpoint(map(), delete_endpoint_message(), proplists:proplist()) ->
     {ok, delete_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, delete_endpoint_errors(), tuple()}.
 delete_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEndpoint">>, Input, Options).
@@ -3860,8 +4234,7 @@ delete_endpoint(Client, Input, Options)
 -spec delete_event_subscription(map(), delete_event_subscription_message()) ->
     {ok, delete_event_subscription_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, delete_event_subscription_errors(), tuple()}.
 delete_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_event_subscription(Client, Input, []).
@@ -3869,8 +4242,7 @@ delete_event_subscription(Client, Input)
 -spec delete_event_subscription(map(), delete_event_subscription_message(), proplists:proplist()) ->
     {ok, delete_event_subscription_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, delete_event_subscription_errors(), tuple()}.
 delete_event_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEventSubscription">>, Input, Options).
@@ -3879,8 +4251,7 @@ delete_event_subscription(Client, Input, Options)
 -spec delete_fleet_advisor_collector(map(), delete_collector_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, collector_not_found_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()}.
+    {error, delete_fleet_advisor_collector_errors(), tuple()}.
 delete_fleet_advisor_collector(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_fleet_advisor_collector(Client, Input, []).
@@ -3888,8 +4259,7 @@ delete_fleet_advisor_collector(Client, Input)
 -spec delete_fleet_advisor_collector(map(), delete_collector_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, collector_not_found_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()}.
+    {error, delete_fleet_advisor_collector_errors(), tuple()}.
 delete_fleet_advisor_collector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFleetAdvisorCollector">>, Input, Options).
@@ -3898,8 +4268,7 @@ delete_fleet_advisor_collector(Client, Input, Options)
 -spec delete_fleet_advisor_databases(map(), delete_fleet_advisor_databases_request()) ->
     {ok, delete_fleet_advisor_databases_response(), tuple()} |
     {error, any()} |
-    {error, invalid_operation_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, delete_fleet_advisor_databases_errors(), tuple()}.
 delete_fleet_advisor_databases(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_fleet_advisor_databases(Client, Input, []).
@@ -3907,8 +4276,7 @@ delete_fleet_advisor_databases(Client, Input)
 -spec delete_fleet_advisor_databases(map(), delete_fleet_advisor_databases_request(), proplists:proplist()) ->
     {ok, delete_fleet_advisor_databases_response(), tuple()} |
     {error, any()} |
-    {error, invalid_operation_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, delete_fleet_advisor_databases_errors(), tuple()}.
 delete_fleet_advisor_databases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFleetAdvisorDatabases">>, Input, Options).
@@ -3921,9 +4289,7 @@ delete_fleet_advisor_databases(Client, Input, Options)
 -spec delete_instance_profile(map(), delete_instance_profile_message()) ->
     {ok, delete_instance_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, delete_instance_profile_errors(), tuple()}.
 delete_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_instance_profile(Client, Input, []).
@@ -3931,9 +4297,7 @@ delete_instance_profile(Client, Input)
 -spec delete_instance_profile(map(), delete_instance_profile_message(), proplists:proplist()) ->
     {ok, delete_instance_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, delete_instance_profile_errors(), tuple()}.
 delete_instance_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInstanceProfile">>, Input, Options).
@@ -3944,9 +4308,7 @@ delete_instance_profile(Client, Input, Options)
 -spec delete_migration_project(map(), delete_migration_project_message()) ->
     {ok, delete_migration_project_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, delete_migration_project_errors(), tuple()}.
 delete_migration_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_migration_project(Client, Input, []).
@@ -3954,9 +4316,7 @@ delete_migration_project(Client, Input)
 -spec delete_migration_project(map(), delete_migration_project_message(), proplists:proplist()) ->
     {ok, delete_migration_project_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, delete_migration_project_errors(), tuple()}.
 delete_migration_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMigrationProject">>, Input, Options).
@@ -3971,9 +4331,7 @@ delete_migration_project(Client, Input, Options)
 -spec delete_replication_config(map(), delete_replication_config_message()) ->
     {ok, delete_replication_config_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, delete_replication_config_errors(), tuple()}.
 delete_replication_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_replication_config(Client, Input, []).
@@ -3981,9 +4339,7 @@ delete_replication_config(Client, Input)
 -spec delete_replication_config(map(), delete_replication_config_message(), proplists:proplist()) ->
     {ok, delete_replication_config_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, delete_replication_config_errors(), tuple()}.
 delete_replication_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteReplicationConfig">>, Input, Options).
@@ -3996,8 +4352,7 @@ delete_replication_config(Client, Input, Options)
 -spec delete_replication_instance(map(), delete_replication_instance_message()) ->
     {ok, delete_replication_instance_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, delete_replication_instance_errors(), tuple()}.
 delete_replication_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_replication_instance(Client, Input, []).
@@ -4005,8 +4360,7 @@ delete_replication_instance(Client, Input)
 -spec delete_replication_instance(map(), delete_replication_instance_message(), proplists:proplist()) ->
     {ok, delete_replication_instance_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, delete_replication_instance_errors(), tuple()}.
 delete_replication_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteReplicationInstance">>, Input, Options).
@@ -4015,8 +4369,7 @@ delete_replication_instance(Client, Input, Options)
 -spec delete_replication_subnet_group(map(), delete_replication_subnet_group_message()) ->
     {ok, delete_replication_subnet_group_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, delete_replication_subnet_group_errors(), tuple()}.
 delete_replication_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_replication_subnet_group(Client, Input, []).
@@ -4024,8 +4377,7 @@ delete_replication_subnet_group(Client, Input)
 -spec delete_replication_subnet_group(map(), delete_replication_subnet_group_message(), proplists:proplist()) ->
     {ok, delete_replication_subnet_group_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, delete_replication_subnet_group_errors(), tuple()}.
 delete_replication_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteReplicationSubnetGroup">>, Input, Options).
@@ -4034,8 +4386,7 @@ delete_replication_subnet_group(Client, Input, Options)
 -spec delete_replication_task(map(), delete_replication_task_message()) ->
     {ok, delete_replication_task_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, delete_replication_task_errors(), tuple()}.
 delete_replication_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_replication_task(Client, Input, []).
@@ -4043,8 +4394,7 @@ delete_replication_task(Client, Input)
 -spec delete_replication_task(map(), delete_replication_task_message(), proplists:proplist()) ->
     {ok, delete_replication_task_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, delete_replication_task_errors(), tuple()}.
 delete_replication_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteReplicationTask">>, Input, Options).
@@ -4059,9 +4409,7 @@ delete_replication_task(Client, Input, Options)
 -spec delete_replication_task_assessment_run(map(), delete_replication_task_assessment_run_message()) ->
     {ok, delete_replication_task_assessment_run_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, delete_replication_task_assessment_run_errors(), tuple()}.
 delete_replication_task_assessment_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_replication_task_assessment_run(Client, Input, []).
@@ -4069,9 +4417,7 @@ delete_replication_task_assessment_run(Client, Input)
 -spec delete_replication_task_assessment_run(map(), delete_replication_task_assessment_run_message(), proplists:proplist()) ->
     {ok, delete_replication_task_assessment_run_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, delete_replication_task_assessment_run_errors(), tuple()}.
 delete_replication_task_assessment_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteReplicationTaskAssessmentRun">>, Input, Options).
@@ -4137,9 +4483,7 @@ describe_account_attributes(Client, Input, Options)
 -spec describe_applicable_individual_assessments(map(), describe_applicable_individual_assessments_message()) ->
     {ok, describe_applicable_individual_assessments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_applicable_individual_assessments_errors(), tuple()}.
 describe_applicable_individual_assessments(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_applicable_individual_assessments(Client, Input, []).
@@ -4147,9 +4491,7 @@ describe_applicable_individual_assessments(Client, Input)
 -spec describe_applicable_individual_assessments(map(), describe_applicable_individual_assessments_message(), proplists:proplist()) ->
     {ok, describe_applicable_individual_assessments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_applicable_individual_assessments_errors(), tuple()}.
 describe_applicable_individual_assessments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeApplicableIndividualAssessments">>, Input, Options).
@@ -4158,7 +4500,7 @@ describe_applicable_individual_assessments(Client, Input, Options)
 -spec describe_certificates(map(), describe_certificates_message()) ->
     {ok, describe_certificates_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_certificates_errors(), tuple()}.
 describe_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_certificates(Client, Input, []).
@@ -4166,7 +4508,7 @@ describe_certificates(Client, Input)
 -spec describe_certificates(map(), describe_certificates_message(), proplists:proplist()) ->
     {ok, describe_certificates_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_certificates_errors(), tuple()}.
 describe_certificates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCertificates">>, Input, Options).
@@ -4179,7 +4521,7 @@ describe_certificates(Client, Input, Options)
 -spec describe_connections(map(), describe_connections_message()) ->
     {ok, describe_connections_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_connections_errors(), tuple()}.
 describe_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_connections(Client, Input, []).
@@ -4187,7 +4529,7 @@ describe_connections(Client, Input)
 -spec describe_connections(map(), describe_connections_message(), proplists:proplist()) ->
     {ok, describe_connections_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_connections_errors(), tuple()}.
 describe_connections(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConnections">>, Input, Options).
@@ -4196,7 +4538,7 @@ describe_connections(Client, Input, Options)
 -spec describe_conversion_configuration(map(), describe_conversion_configuration_message()) ->
     {ok, describe_conversion_configuration_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_conversion_configuration_errors(), tuple()}.
 describe_conversion_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_conversion_configuration(Client, Input, []).
@@ -4204,7 +4546,7 @@ describe_conversion_configuration(Client, Input)
 -spec describe_conversion_configuration(map(), describe_conversion_configuration_message(), proplists:proplist()) ->
     {ok, describe_conversion_configuration_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_conversion_configuration_errors(), tuple()}.
 describe_conversion_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConversionConfiguration">>, Input, Options).
@@ -4214,8 +4556,7 @@ describe_conversion_configuration(Client, Input, Options)
 -spec describe_data_providers(map(), describe_data_providers_message()) ->
     {ok, describe_data_providers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_data_providers_errors(), tuple()}.
 describe_data_providers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_data_providers(Client, Input, []).
@@ -4223,8 +4564,7 @@ describe_data_providers(Client, Input)
 -spec describe_data_providers(map(), describe_data_providers_message(), proplists:proplist()) ->
     {ok, describe_data_providers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_data_providers_errors(), tuple()}.
 describe_data_providers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDataProviders">>, Input, Options).
@@ -4265,7 +4605,7 @@ describe_endpoint_types(Client, Input, Options)
 -spec describe_endpoints(map(), describe_endpoints_message()) ->
     {ok, describe_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_endpoints_errors(), tuple()}.
 describe_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoints(Client, Input, []).
@@ -4273,7 +4613,7 @@ describe_endpoints(Client, Input)
 -spec describe_endpoints(map(), describe_endpoints_message(), proplists:proplist()) ->
     {ok, describe_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_endpoints_errors(), tuple()}.
 describe_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEndpoints">>, Input, Options).
@@ -4331,7 +4671,7 @@ describe_event_categories(Client, Input, Options)
 -spec describe_event_subscriptions(map(), describe_event_subscriptions_message()) ->
     {ok, describe_event_subscriptions_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_event_subscriptions_errors(), tuple()}.
 describe_event_subscriptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_subscriptions(Client, Input, []).
@@ -4339,7 +4679,7 @@ describe_event_subscriptions(Client, Input)
 -spec describe_event_subscriptions(map(), describe_event_subscriptions_message(), proplists:proplist()) ->
     {ok, describe_event_subscriptions_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_event_subscriptions_errors(), tuple()}.
 describe_event_subscriptions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEventSubscriptions">>, Input, Options).
@@ -4392,7 +4732,7 @@ describe_extension_pack_associations(Client, Input, Options)
 -spec describe_fleet_advisor_collectors(map(), describe_fleet_advisor_collectors_request()) ->
     {ok, describe_fleet_advisor_collectors_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()}.
+    {error, describe_fleet_advisor_collectors_errors(), tuple()}.
 describe_fleet_advisor_collectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_advisor_collectors(Client, Input, []).
@@ -4400,7 +4740,7 @@ describe_fleet_advisor_collectors(Client, Input)
 -spec describe_fleet_advisor_collectors(map(), describe_fleet_advisor_collectors_request(), proplists:proplist()) ->
     {ok, describe_fleet_advisor_collectors_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()}.
+    {error, describe_fleet_advisor_collectors_errors(), tuple()}.
 describe_fleet_advisor_collectors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFleetAdvisorCollectors">>, Input, Options).
@@ -4409,7 +4749,7 @@ describe_fleet_advisor_collectors(Client, Input, Options)
 -spec describe_fleet_advisor_databases(map(), describe_fleet_advisor_databases_request()) ->
     {ok, describe_fleet_advisor_databases_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()}.
+    {error, describe_fleet_advisor_databases_errors(), tuple()}.
 describe_fleet_advisor_databases(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_advisor_databases(Client, Input, []).
@@ -4417,7 +4757,7 @@ describe_fleet_advisor_databases(Client, Input)
 -spec describe_fleet_advisor_databases(map(), describe_fleet_advisor_databases_request(), proplists:proplist()) ->
     {ok, describe_fleet_advisor_databases_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()}.
+    {error, describe_fleet_advisor_databases_errors(), tuple()}.
 describe_fleet_advisor_databases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFleetAdvisorDatabases">>, Input, Options).
@@ -4428,7 +4768,7 @@ describe_fleet_advisor_databases(Client, Input, Options)
 -spec describe_fleet_advisor_lsa_analysis(map(), describe_fleet_advisor_lsa_analysis_request()) ->
     {ok, describe_fleet_advisor_lsa_analysis_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()}.
+    {error, describe_fleet_advisor_lsa_analysis_errors(), tuple()}.
 describe_fleet_advisor_lsa_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_advisor_lsa_analysis(Client, Input, []).
@@ -4436,7 +4776,7 @@ describe_fleet_advisor_lsa_analysis(Client, Input)
 -spec describe_fleet_advisor_lsa_analysis(map(), describe_fleet_advisor_lsa_analysis_request(), proplists:proplist()) ->
     {ok, describe_fleet_advisor_lsa_analysis_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()}.
+    {error, describe_fleet_advisor_lsa_analysis_errors(), tuple()}.
 describe_fleet_advisor_lsa_analysis(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFleetAdvisorLsaAnalysis">>, Input, Options).
@@ -4446,7 +4786,7 @@ describe_fleet_advisor_lsa_analysis(Client, Input, Options)
 -spec describe_fleet_advisor_schema_object_summary(map(), describe_fleet_advisor_schema_object_summary_request()) ->
     {ok, describe_fleet_advisor_schema_object_summary_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()}.
+    {error, describe_fleet_advisor_schema_object_summary_errors(), tuple()}.
 describe_fleet_advisor_schema_object_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_advisor_schema_object_summary(Client, Input, []).
@@ -4454,7 +4794,7 @@ describe_fleet_advisor_schema_object_summary(Client, Input)
 -spec describe_fleet_advisor_schema_object_summary(map(), describe_fleet_advisor_schema_object_summary_request(), proplists:proplist()) ->
     {ok, describe_fleet_advisor_schema_object_summary_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()}.
+    {error, describe_fleet_advisor_schema_object_summary_errors(), tuple()}.
 describe_fleet_advisor_schema_object_summary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFleetAdvisorSchemaObjectSummary">>, Input, Options).
@@ -4464,7 +4804,7 @@ describe_fleet_advisor_schema_object_summary(Client, Input, Options)
 -spec describe_fleet_advisor_schemas(map(), describe_fleet_advisor_schemas_request()) ->
     {ok, describe_fleet_advisor_schemas_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()}.
+    {error, describe_fleet_advisor_schemas_errors(), tuple()}.
 describe_fleet_advisor_schemas(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_advisor_schemas(Client, Input, []).
@@ -4472,7 +4812,7 @@ describe_fleet_advisor_schemas(Client, Input)
 -spec describe_fleet_advisor_schemas(map(), describe_fleet_advisor_schemas_request(), proplists:proplist()) ->
     {ok, describe_fleet_advisor_schemas_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()}.
+    {error, describe_fleet_advisor_schemas_errors(), tuple()}.
 describe_fleet_advisor_schemas(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFleetAdvisorSchemas">>, Input, Options).
@@ -4482,8 +4822,7 @@ describe_fleet_advisor_schemas(Client, Input, Options)
 -spec describe_instance_profiles(map(), describe_instance_profiles_message()) ->
     {ok, describe_instance_profiles_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_instance_profiles_errors(), tuple()}.
 describe_instance_profiles(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_profiles(Client, Input, []).
@@ -4491,8 +4830,7 @@ describe_instance_profiles(Client, Input)
 -spec describe_instance_profiles(map(), describe_instance_profiles_message(), proplists:proplist()) ->
     {ok, describe_instance_profiles_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_instance_profiles_errors(), tuple()}.
 describe_instance_profiles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInstanceProfiles">>, Input, Options).
@@ -4502,7 +4840,7 @@ describe_instance_profiles(Client, Input, Options)
 -spec describe_metadata_model_assessments(map(), describe_metadata_model_assessments_message()) ->
     {ok, describe_metadata_model_assessments_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_metadata_model_assessments_errors(), tuple()}.
 describe_metadata_model_assessments(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_metadata_model_assessments(Client, Input, []).
@@ -4510,7 +4848,7 @@ describe_metadata_model_assessments(Client, Input)
 -spec describe_metadata_model_assessments(map(), describe_metadata_model_assessments_message(), proplists:proplist()) ->
     {ok, describe_metadata_model_assessments_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_metadata_model_assessments_errors(), tuple()}.
 describe_metadata_model_assessments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMetadataModelAssessments">>, Input, Options).
@@ -4520,7 +4858,7 @@ describe_metadata_model_assessments(Client, Input, Options)
 -spec describe_metadata_model_conversions(map(), describe_metadata_model_conversions_message()) ->
     {ok, describe_metadata_model_conversions_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_metadata_model_conversions_errors(), tuple()}.
 describe_metadata_model_conversions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_metadata_model_conversions(Client, Input, []).
@@ -4528,7 +4866,7 @@ describe_metadata_model_conversions(Client, Input)
 -spec describe_metadata_model_conversions(map(), describe_metadata_model_conversions_message(), proplists:proplist()) ->
     {ok, describe_metadata_model_conversions_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_metadata_model_conversions_errors(), tuple()}.
 describe_metadata_model_conversions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMetadataModelConversions">>, Input, Options).
@@ -4537,7 +4875,7 @@ describe_metadata_model_conversions(Client, Input, Options)
 -spec describe_metadata_model_exports_as_script(map(), describe_metadata_model_exports_as_script_message()) ->
     {ok, describe_metadata_model_exports_as_script_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_metadata_model_exports_as_script_errors(), tuple()}.
 describe_metadata_model_exports_as_script(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_metadata_model_exports_as_script(Client, Input, []).
@@ -4545,7 +4883,7 @@ describe_metadata_model_exports_as_script(Client, Input)
 -spec describe_metadata_model_exports_as_script(map(), describe_metadata_model_exports_as_script_message(), proplists:proplist()) ->
     {ok, describe_metadata_model_exports_as_script_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_metadata_model_exports_as_script_errors(), tuple()}.
 describe_metadata_model_exports_as_script(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMetadataModelExportsAsScript">>, Input, Options).
@@ -4554,7 +4892,7 @@ describe_metadata_model_exports_as_script(Client, Input, Options)
 -spec describe_metadata_model_exports_to_target(map(), describe_metadata_model_exports_to_target_message()) ->
     {ok, describe_metadata_model_exports_to_target_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_metadata_model_exports_to_target_errors(), tuple()}.
 describe_metadata_model_exports_to_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_metadata_model_exports_to_target(Client, Input, []).
@@ -4562,7 +4900,7 @@ describe_metadata_model_exports_to_target(Client, Input)
 -spec describe_metadata_model_exports_to_target(map(), describe_metadata_model_exports_to_target_message(), proplists:proplist()) ->
     {ok, describe_metadata_model_exports_to_target_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_metadata_model_exports_to_target_errors(), tuple()}.
 describe_metadata_model_exports_to_target(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMetadataModelExportsToTarget">>, Input, Options).
@@ -4571,7 +4909,7 @@ describe_metadata_model_exports_to_target(Client, Input, Options)
 -spec describe_metadata_model_imports(map(), describe_metadata_model_imports_message()) ->
     {ok, describe_metadata_model_imports_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_metadata_model_imports_errors(), tuple()}.
 describe_metadata_model_imports(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_metadata_model_imports(Client, Input, []).
@@ -4579,7 +4917,7 @@ describe_metadata_model_imports(Client, Input)
 -spec describe_metadata_model_imports(map(), describe_metadata_model_imports_message(), proplists:proplist()) ->
     {ok, describe_metadata_model_imports_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_metadata_model_imports_errors(), tuple()}.
 describe_metadata_model_imports(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMetadataModelImports">>, Input, Options).
@@ -4589,8 +4927,7 @@ describe_metadata_model_imports(Client, Input, Options)
 -spec describe_migration_projects(map(), describe_migration_projects_message()) ->
     {ok, describe_migration_projects_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_migration_projects_errors(), tuple()}.
 describe_migration_projects(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_migration_projects(Client, Input, []).
@@ -4598,8 +4935,7 @@ describe_migration_projects(Client, Input)
 -spec describe_migration_projects(map(), describe_migration_projects_message(), proplists:proplist()) ->
     {ok, describe_migration_projects_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_migration_projects_errors(), tuple()}.
 describe_migration_projects(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMigrationProjects">>, Input, Options).
@@ -4625,7 +4961,7 @@ describe_orderable_replication_instances(Client, Input, Options)
 -spec describe_pending_maintenance_actions(map(), describe_pending_maintenance_actions_message()) ->
     {ok, describe_pending_maintenance_actions_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_pending_maintenance_actions_errors(), tuple()}.
 describe_pending_maintenance_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_pending_maintenance_actions(Client, Input, []).
@@ -4633,7 +4969,7 @@ describe_pending_maintenance_actions(Client, Input)
 -spec describe_pending_maintenance_actions(map(), describe_pending_maintenance_actions_message(), proplists:proplist()) ->
     {ok, describe_pending_maintenance_actions_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_pending_maintenance_actions_errors(), tuple()}.
 describe_pending_maintenance_actions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePendingMaintenanceActions">>, Input, Options).
@@ -4644,8 +4980,7 @@ describe_pending_maintenance_actions(Client, Input, Options)
 -spec describe_recommendation_limitations(map(), describe_recommendation_limitations_request()) ->
     {ok, describe_recommendation_limitations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()}.
+    {error, describe_recommendation_limitations_errors(), tuple()}.
 describe_recommendation_limitations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_recommendation_limitations(Client, Input, []).
@@ -4653,8 +4988,7 @@ describe_recommendation_limitations(Client, Input)
 -spec describe_recommendation_limitations(map(), describe_recommendation_limitations_request(), proplists:proplist()) ->
     {ok, describe_recommendation_limitations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()}.
+    {error, describe_recommendation_limitations_errors(), tuple()}.
 describe_recommendation_limitations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRecommendationLimitations">>, Input, Options).
@@ -4665,8 +4999,7 @@ describe_recommendation_limitations(Client, Input, Options)
 -spec describe_recommendations(map(), describe_recommendations_request()) ->
     {ok, describe_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()}.
+    {error, describe_recommendations_errors(), tuple()}.
 describe_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_recommendations(Client, Input, []).
@@ -4674,8 +5007,7 @@ describe_recommendations(Client, Input)
 -spec describe_recommendations(map(), describe_recommendations_request(), proplists:proplist()) ->
     {ok, describe_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()}.
+    {error, describe_recommendations_errors(), tuple()}.
 describe_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRecommendations">>, Input, Options).
@@ -4684,8 +5016,7 @@ describe_recommendations(Client, Input, Options)
 -spec describe_refresh_schemas_status(map(), describe_refresh_schemas_status_message()) ->
     {ok, describe_refresh_schemas_status_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_refresh_schemas_status_errors(), tuple()}.
 describe_refresh_schemas_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_refresh_schemas_status(Client, Input, []).
@@ -4693,8 +5024,7 @@ describe_refresh_schemas_status(Client, Input)
 -spec describe_refresh_schemas_status(map(), describe_refresh_schemas_status_message(), proplists:proplist()) ->
     {ok, describe_refresh_schemas_status_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_refresh_schemas_status_errors(), tuple()}.
 describe_refresh_schemas_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRefreshSchemasStatus">>, Input, Options).
@@ -4704,7 +5034,7 @@ describe_refresh_schemas_status(Client, Input, Options)
 -spec describe_replication_configs(map(), describe_replication_configs_message()) ->
     {ok, describe_replication_configs_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_replication_configs_errors(), tuple()}.
 describe_replication_configs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replication_configs(Client, Input, []).
@@ -4712,7 +5042,7 @@ describe_replication_configs(Client, Input)
 -spec describe_replication_configs(map(), describe_replication_configs_message(), proplists:proplist()) ->
     {ok, describe_replication_configs_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_replication_configs_errors(), tuple()}.
 describe_replication_configs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReplicationConfigs">>, Input, Options).
@@ -4721,8 +5051,7 @@ describe_replication_configs(Client, Input, Options)
 -spec describe_replication_instance_task_logs(map(), describe_replication_instance_task_logs_message()) ->
     {ok, describe_replication_instance_task_logs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_replication_instance_task_logs_errors(), tuple()}.
 describe_replication_instance_task_logs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replication_instance_task_logs(Client, Input, []).
@@ -4730,8 +5059,7 @@ describe_replication_instance_task_logs(Client, Input)
 -spec describe_replication_instance_task_logs(map(), describe_replication_instance_task_logs_message(), proplists:proplist()) ->
     {ok, describe_replication_instance_task_logs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_replication_instance_task_logs_errors(), tuple()}.
 describe_replication_instance_task_logs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReplicationInstanceTaskLogs">>, Input, Options).
@@ -4742,7 +5070,7 @@ describe_replication_instance_task_logs(Client, Input, Options)
 -spec describe_replication_instances(map(), describe_replication_instances_message()) ->
     {ok, describe_replication_instances_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_replication_instances_errors(), tuple()}.
 describe_replication_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replication_instances(Client, Input, []).
@@ -4750,7 +5078,7 @@ describe_replication_instances(Client, Input)
 -spec describe_replication_instances(map(), describe_replication_instances_message(), proplists:proplist()) ->
     {ok, describe_replication_instances_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_replication_instances_errors(), tuple()}.
 describe_replication_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReplicationInstances">>, Input, Options).
@@ -4759,7 +5087,7 @@ describe_replication_instances(Client, Input, Options)
 -spec describe_replication_subnet_groups(map(), describe_replication_subnet_groups_message()) ->
     {ok, describe_replication_subnet_groups_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_replication_subnet_groups_errors(), tuple()}.
 describe_replication_subnet_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replication_subnet_groups(Client, Input, []).
@@ -4767,7 +5095,7 @@ describe_replication_subnet_groups(Client, Input)
 -spec describe_replication_subnet_groups(map(), describe_replication_subnet_groups_message(), proplists:proplist()) ->
     {ok, describe_replication_subnet_groups_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_replication_subnet_groups_errors(), tuple()}.
 describe_replication_subnet_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReplicationSubnetGroups">>, Input, Options).
@@ -4778,8 +5106,7 @@ describe_replication_subnet_groups(Client, Input, Options)
 -spec describe_replication_table_statistics(map(), describe_replication_table_statistics_message()) ->
     {ok, describe_replication_table_statistics_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_replication_table_statistics_errors(), tuple()}.
 describe_replication_table_statistics(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replication_table_statistics(Client, Input, []).
@@ -4787,8 +5114,7 @@ describe_replication_table_statistics(Client, Input)
 -spec describe_replication_table_statistics(map(), describe_replication_table_statistics_message(), proplists:proplist()) ->
     {ok, describe_replication_table_statistics_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_replication_table_statistics_errors(), tuple()}.
 describe_replication_table_statistics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReplicationTableStatistics">>, Input, Options).
@@ -4807,7 +5133,7 @@ describe_replication_table_statistics(Client, Input, Options)
 -spec describe_replication_task_assessment_results(map(), describe_replication_task_assessment_results_message()) ->
     {ok, describe_replication_task_assessment_results_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_replication_task_assessment_results_errors(), tuple()}.
 describe_replication_task_assessment_results(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replication_task_assessment_results(Client, Input, []).
@@ -4815,7 +5141,7 @@ describe_replication_task_assessment_results(Client, Input)
 -spec describe_replication_task_assessment_results(map(), describe_replication_task_assessment_results_message(), proplists:proplist()) ->
     {ok, describe_replication_task_assessment_results_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_replication_task_assessment_results_errors(), tuple()}.
 describe_replication_task_assessment_results(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReplicationTaskAssessmentResults">>, Input, Options).
@@ -4835,7 +5161,7 @@ describe_replication_task_assessment_results(Client, Input, Options)
 -spec describe_replication_task_assessment_runs(map(), describe_replication_task_assessment_runs_message()) ->
     {ok, describe_replication_task_assessment_runs_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_replication_task_assessment_runs_errors(), tuple()}.
 describe_replication_task_assessment_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replication_task_assessment_runs(Client, Input, []).
@@ -4843,7 +5169,7 @@ describe_replication_task_assessment_runs(Client, Input)
 -spec describe_replication_task_assessment_runs(map(), describe_replication_task_assessment_runs_message(), proplists:proplist()) ->
     {ok, describe_replication_task_assessment_runs_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_replication_task_assessment_runs_errors(), tuple()}.
 describe_replication_task_assessment_runs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReplicationTaskAssessmentRuns">>, Input, Options).
@@ -4857,7 +5183,7 @@ describe_replication_task_assessment_runs(Client, Input, Options)
 -spec describe_replication_task_individual_assessments(map(), describe_replication_task_individual_assessments_message()) ->
     {ok, describe_replication_task_individual_assessments_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_replication_task_individual_assessments_errors(), tuple()}.
 describe_replication_task_individual_assessments(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replication_task_individual_assessments(Client, Input, []).
@@ -4865,7 +5191,7 @@ describe_replication_task_individual_assessments(Client, Input)
 -spec describe_replication_task_individual_assessments(map(), describe_replication_task_individual_assessments_message(), proplists:proplist()) ->
     {ok, describe_replication_task_individual_assessments_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_replication_task_individual_assessments_errors(), tuple()}.
 describe_replication_task_individual_assessments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReplicationTaskIndividualAssessments">>, Input, Options).
@@ -4876,7 +5202,7 @@ describe_replication_task_individual_assessments(Client, Input, Options)
 -spec describe_replication_tasks(map(), describe_replication_tasks_message()) ->
     {ok, describe_replication_tasks_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_replication_tasks_errors(), tuple()}.
 describe_replication_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replication_tasks(Client, Input, []).
@@ -4884,7 +5210,7 @@ describe_replication_tasks(Client, Input)
 -spec describe_replication_tasks(map(), describe_replication_tasks_message(), proplists:proplist()) ->
     {ok, describe_replication_tasks_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_replication_tasks_errors(), tuple()}.
 describe_replication_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReplicationTasks">>, Input, Options).
@@ -4895,7 +5221,7 @@ describe_replication_tasks(Client, Input, Options)
 -spec describe_replications(map(), describe_replications_message()) ->
     {ok, describe_replications_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_replications_errors(), tuple()}.
 describe_replications(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replications(Client, Input, []).
@@ -4903,7 +5229,7 @@ describe_replications(Client, Input)
 -spec describe_replications(map(), describe_replications_message(), proplists:proplist()) ->
     {ok, describe_replications_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_replications_errors(), tuple()}.
 describe_replications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReplications">>, Input, Options).
@@ -4912,8 +5238,7 @@ describe_replications(Client, Input, Options)
 -spec describe_schemas(map(), describe_schemas_message()) ->
     {ok, describe_schemas_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_schemas_errors(), tuple()}.
 describe_schemas(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_schemas(Client, Input, []).
@@ -4921,8 +5246,7 @@ describe_schemas(Client, Input)
 -spec describe_schemas(map(), describe_schemas_message(), proplists:proplist()) ->
     {ok, describe_schemas_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_schemas_errors(), tuple()}.
 describe_schemas(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSchemas">>, Input, Options).
@@ -4939,8 +5263,7 @@ describe_schemas(Client, Input, Options)
 -spec describe_table_statistics(map(), describe_table_statistics_message()) ->
     {ok, describe_table_statistics_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_table_statistics_errors(), tuple()}.
 describe_table_statistics(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_table_statistics(Client, Input, []).
@@ -4948,8 +5271,7 @@ describe_table_statistics(Client, Input)
 -spec describe_table_statistics(map(), describe_table_statistics_message(), proplists:proplist()) ->
     {ok, describe_table_statistics_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_table_statistics_errors(), tuple()}.
 describe_table_statistics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTableStatistics">>, Input, Options).
@@ -4962,7 +5284,7 @@ describe_table_statistics(Client, Input, Options)
 -spec export_metadata_model_assessment(map(), export_metadata_model_assessment_message()) ->
     {ok, export_metadata_model_assessment_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, export_metadata_model_assessment_errors(), tuple()}.
 export_metadata_model_assessment(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_metadata_model_assessment(Client, Input, []).
@@ -4970,7 +5292,7 @@ export_metadata_model_assessment(Client, Input)
 -spec export_metadata_model_assessment(map(), export_metadata_model_assessment_message(), proplists:proplist()) ->
     {ok, export_metadata_model_assessment_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, export_metadata_model_assessment_errors(), tuple()}.
 export_metadata_model_assessment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportMetadataModelAssessment">>, Input, Options).
@@ -4979,9 +5301,7 @@ export_metadata_model_assessment(Client, Input, Options)
 -spec import_certificate(map(), import_certificate_message()) ->
     {ok, import_certificate_response(), tuple()} |
     {error, any()} |
-    {error, invalid_certificate_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()}.
+    {error, import_certificate_errors(), tuple()}.
 import_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_certificate(Client, Input, []).
@@ -4989,9 +5309,7 @@ import_certificate(Client, Input)
 -spec import_certificate(map(), import_certificate_message(), proplists:proplist()) ->
     {ok, import_certificate_response(), tuple()} |
     {error, any()} |
-    {error, invalid_certificate_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()}.
+    {error, import_certificate_errors(), tuple()}.
 import_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportCertificate">>, Input, Options).
@@ -5006,7 +5324,7 @@ import_certificate(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_message()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -5014,7 +5332,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_message(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -5024,8 +5342,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec modify_conversion_configuration(map(), modify_conversion_configuration_message()) ->
     {ok, modify_conversion_configuration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, modify_conversion_configuration_errors(), tuple()}.
 modify_conversion_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_conversion_configuration(Client, Input, []).
@@ -5033,8 +5350,7 @@ modify_conversion_configuration(Client, Input)
 -spec modify_conversion_configuration(map(), modify_conversion_configuration_message(), proplists:proplist()) ->
     {ok, modify_conversion_configuration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, modify_conversion_configuration_errors(), tuple()}.
 modify_conversion_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyConversionConfiguration">>, Input, Options).
@@ -5046,9 +5362,7 @@ modify_conversion_configuration(Client, Input, Options)
 -spec modify_data_provider(map(), modify_data_provider_message()) ->
     {ok, modify_data_provider_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, modify_data_provider_errors(), tuple()}.
 modify_data_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_data_provider(Client, Input, []).
@@ -5056,9 +5370,7 @@ modify_data_provider(Client, Input)
 -spec modify_data_provider(map(), modify_data_provider_message(), proplists:proplist()) ->
     {ok, modify_data_provider_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, modify_data_provider_errors(), tuple()}.
 modify_data_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDataProvider">>, Input, Options).
@@ -5077,11 +5389,7 @@ modify_data_provider(Client, Input, Options)
 -spec modify_endpoint(map(), modify_endpoint_message()) ->
     {ok, modify_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, modify_endpoint_errors(), tuple()}.
 modify_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_endpoint(Client, Input, []).
@@ -5089,11 +5397,7 @@ modify_endpoint(Client, Input)
 -spec modify_endpoint(map(), modify_endpoint_message(), proplists:proplist()) ->
     {ok, modify_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, modify_endpoint_errors(), tuple()}.
 modify_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyEndpoint">>, Input, Options).
@@ -5102,15 +5406,7 @@ modify_endpoint(Client, Input, Options)
 -spec modify_event_subscription(map(), modify_event_subscription_message()) ->
     {ok, modify_event_subscription_response(), tuple()} |
     {error, any()} |
-    {error, kms_access_denied_fault(), tuple()} |
-    {error, kms_disabled_fault(), tuple()} |
-    {error, kms_invalid_state_fault(), tuple()} |
-    {error, kms_not_found_fault(), tuple()} |
-    {error, kms_throttling_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()} |
-    {error, s_n_s_invalid_topic_fault(), tuple()} |
-    {error, s_n_s_no_authorization_fault(), tuple()}.
+    {error, modify_event_subscription_errors(), tuple()}.
 modify_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_event_subscription(Client, Input, []).
@@ -5118,15 +5414,7 @@ modify_event_subscription(Client, Input)
 -spec modify_event_subscription(map(), modify_event_subscription_message(), proplists:proplist()) ->
     {ok, modify_event_subscription_response(), tuple()} |
     {error, any()} |
-    {error, kms_access_denied_fault(), tuple()} |
-    {error, kms_disabled_fault(), tuple()} |
-    {error, kms_invalid_state_fault(), tuple()} |
-    {error, kms_not_found_fault(), tuple()} |
-    {error, kms_throttling_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()} |
-    {error, s_n_s_invalid_topic_fault(), tuple()} |
-    {error, s_n_s_no_authorization_fault(), tuple()}.
+    {error, modify_event_subscription_errors(), tuple()}.
 modify_event_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyEventSubscription">>, Input, Options).
@@ -5140,12 +5428,7 @@ modify_event_subscription(Client, Input, Options)
 -spec modify_instance_profile(map(), modify_instance_profile_message()) ->
     {ok, modify_instance_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, s3_access_denied_fault(), tuple()} |
-    {error, s3_resource_not_found_fault(), tuple()}.
+    {error, modify_instance_profile_errors(), tuple()}.
 modify_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_instance_profile(Client, Input, []).
@@ -5153,12 +5436,7 @@ modify_instance_profile(Client, Input)
 -spec modify_instance_profile(map(), modify_instance_profile_message(), proplists:proplist()) ->
     {ok, modify_instance_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, s3_access_denied_fault(), tuple()} |
-    {error, s3_resource_not_found_fault(), tuple()}.
+    {error, modify_instance_profile_errors(), tuple()}.
 modify_instance_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyInstanceProfile">>, Input, Options).
@@ -5170,11 +5448,7 @@ modify_instance_profile(Client, Input, Options)
 -spec modify_migration_project(map(), modify_migration_project_message()) ->
     {ok, modify_migration_project_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, s3_access_denied_fault(), tuple()} |
-    {error, s3_resource_not_found_fault(), tuple()}.
+    {error, modify_migration_project_errors(), tuple()}.
 modify_migration_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_migration_project(Client, Input, []).
@@ -5182,11 +5456,7 @@ modify_migration_project(Client, Input)
 -spec modify_migration_project(map(), modify_migration_project_message(), proplists:proplist()) ->
     {ok, modify_migration_project_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, s3_access_denied_fault(), tuple()} |
-    {error, s3_resource_not_found_fault(), tuple()}.
+    {error, modify_migration_project_errors(), tuple()}.
 modify_migration_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyMigrationProject">>, Input, Options).
@@ -5211,12 +5481,7 @@ modify_migration_project(Client, Input, Options)
 -spec modify_replication_config(map(), modify_replication_config_message()) ->
     {ok, modify_replication_config_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, replication_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, modify_replication_config_errors(), tuple()}.
 modify_replication_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_replication_config(Client, Input, []).
@@ -5224,12 +5489,7 @@ modify_replication_config(Client, Input)
 -spec modify_replication_config(map(), modify_replication_config_message(), proplists:proplist()) ->
     {ok, modify_replication_config_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, replication_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, modify_replication_config_errors(), tuple()}.
 modify_replication_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyReplicationConfig">>, Input, Options).
@@ -5244,13 +5504,7 @@ modify_replication_config(Client, Input, Options)
 -spec modify_replication_instance(map(), modify_replication_instance_message()) ->
     {ok, modify_replication_instance_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, insufficient_resource_capacity_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, storage_quota_exceeded_fault(), tuple()} |
-    {error, upgrade_dependency_failure_fault(), tuple()}.
+    {error, modify_replication_instance_errors(), tuple()}.
 modify_replication_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_replication_instance(Client, Input, []).
@@ -5258,13 +5512,7 @@ modify_replication_instance(Client, Input)
 -spec modify_replication_instance(map(), modify_replication_instance_message(), proplists:proplist()) ->
     {ok, modify_replication_instance_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, insufficient_resource_capacity_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, storage_quota_exceeded_fault(), tuple()} |
-    {error, upgrade_dependency_failure_fault(), tuple()}.
+    {error, modify_replication_instance_errors(), tuple()}.
 modify_replication_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyReplicationInstance">>, Input, Options).
@@ -5273,12 +5521,7 @@ modify_replication_instance(Client, Input, Options)
 -spec modify_replication_subnet_group(map(), modify_replication_subnet_group_message()) ->
     {ok, modify_replication_subnet_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, replication_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()} |
-    {error, subnet_already_in_use(), tuple()}.
+    {error, modify_replication_subnet_group_errors(), tuple()}.
 modify_replication_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_replication_subnet_group(Client, Input, []).
@@ -5286,12 +5529,7 @@ modify_replication_subnet_group(Client, Input)
 -spec modify_replication_subnet_group(map(), modify_replication_subnet_group_message(), proplists:proplist()) ->
     {ok, modify_replication_subnet_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, replication_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()} |
-    {error, subnet_already_in_use(), tuple()}.
+    {error, modify_replication_subnet_group_errors(), tuple()}.
 modify_replication_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyReplicationSubnetGroup">>, Input, Options).
@@ -5307,10 +5545,7 @@ modify_replication_subnet_group(Client, Input, Options)
 -spec modify_replication_task(map(), modify_replication_task_message()) ->
     {ok, modify_replication_task_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, modify_replication_task_errors(), tuple()}.
 modify_replication_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_replication_task(Client, Input, []).
@@ -5318,10 +5553,7 @@ modify_replication_task(Client, Input)
 -spec modify_replication_task(map(), modify_replication_task_message(), proplists:proplist()) ->
     {ok, modify_replication_task_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, modify_replication_task_errors(), tuple()}.
 modify_replication_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyReplicationTask">>, Input, Options).
@@ -5336,11 +5568,7 @@ modify_replication_task(Client, Input, Options)
 -spec move_replication_task(map(), move_replication_task_message()) ->
     {ok, move_replication_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()}.
+    {error, move_replication_task_errors(), tuple()}.
 move_replication_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     move_replication_task(Client, Input, []).
@@ -5348,11 +5576,7 @@ move_replication_task(Client, Input)
 -spec move_replication_task(map(), move_replication_task_message(), proplists:proplist()) ->
     {ok, move_replication_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()}.
+    {error, move_replication_task_errors(), tuple()}.
 move_replication_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"MoveReplicationTask">>, Input, Options).
@@ -5364,8 +5588,7 @@ move_replication_task(Client, Input, Options)
 -spec reboot_replication_instance(map(), reboot_replication_instance_message()) ->
     {ok, reboot_replication_instance_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, reboot_replication_instance_errors(), tuple()}.
 reboot_replication_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_replication_instance(Client, Input, []).
@@ -5373,8 +5596,7 @@ reboot_replication_instance(Client, Input)
 -spec reboot_replication_instance(map(), reboot_replication_instance_message(), proplists:proplist()) ->
     {ok, reboot_replication_instance_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, reboot_replication_instance_errors(), tuple()}.
 reboot_replication_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RebootReplicationInstance">>, Input, Options).
@@ -5388,10 +5610,7 @@ reboot_replication_instance(Client, Input, Options)
 -spec refresh_schemas(map(), refresh_schemas_message()) ->
     {ok, refresh_schemas_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()}.
+    {error, refresh_schemas_errors(), tuple()}.
 refresh_schemas(Client, Input)
   when is_map(Client), is_map(Input) ->
     refresh_schemas(Client, Input, []).
@@ -5399,10 +5618,7 @@ refresh_schemas(Client, Input)
 -spec refresh_schemas(map(), refresh_schemas_message(), proplists:proplist()) ->
     {ok, refresh_schemas_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()}.
+    {error, refresh_schemas_errors(), tuple()}.
 refresh_schemas(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RefreshSchemas">>, Input, Options).
@@ -5417,8 +5633,7 @@ refresh_schemas(Client, Input, Options)
 -spec reload_replication_tables(map(), reload_replication_tables_message()) ->
     {ok, reload_replication_tables_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, reload_replication_tables_errors(), tuple()}.
 reload_replication_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     reload_replication_tables(Client, Input, []).
@@ -5426,8 +5641,7 @@ reload_replication_tables(Client, Input)
 -spec reload_replication_tables(map(), reload_replication_tables_message(), proplists:proplist()) ->
     {ok, reload_replication_tables_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, reload_replication_tables_errors(), tuple()}.
 reload_replication_tables(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ReloadReplicationTables">>, Input, Options).
@@ -5440,8 +5654,7 @@ reload_replication_tables(Client, Input, Options)
 -spec reload_tables(map(), reload_tables_message()) ->
     {ok, reload_tables_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, reload_tables_errors(), tuple()}.
 reload_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     reload_tables(Client, Input, []).
@@ -5449,8 +5662,7 @@ reload_tables(Client, Input)
 -spec reload_tables(map(), reload_tables_message(), proplists:proplist()) ->
     {ok, reload_tables_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, reload_tables_errors(), tuple()}.
 reload_tables(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ReloadTables">>, Input, Options).
@@ -5467,7 +5679,7 @@ reload_tables(Client, Input, Options)
 -spec remove_tags_from_resource(map(), remove_tags_from_resource_message()) ->
     {ok, remove_tags_from_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, remove_tags_from_resource_errors(), tuple()}.
 remove_tags_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_resource(Client, Input, []).
@@ -5475,7 +5687,7 @@ remove_tags_from_resource(Client, Input)
 -spec remove_tags_from_resource(map(), remove_tags_from_resource_message(), proplists:proplist()) ->
     {ok, remove_tags_from_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, remove_tags_from_resource_errors(), tuple()}.
 remove_tags_from_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTagsFromResource">>, Input, Options).
@@ -5485,8 +5697,7 @@ remove_tags_from_resource(Client, Input, Options)
 -spec run_fleet_advisor_lsa_analysis(map(), #{}) ->
     {ok, run_fleet_advisor_lsa_analysis_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, run_fleet_advisor_lsa_analysis_errors(), tuple()}.
 run_fleet_advisor_lsa_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     run_fleet_advisor_lsa_analysis(Client, Input, []).
@@ -5494,8 +5705,7 @@ run_fleet_advisor_lsa_analysis(Client, Input)
 -spec run_fleet_advisor_lsa_analysis(map(), #{}, proplists:proplist()) ->
     {ok, run_fleet_advisor_lsa_analysis_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, run_fleet_advisor_lsa_analysis_errors(), tuple()}.
 run_fleet_advisor_lsa_analysis(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RunFleetAdvisorLsaAnalysis">>, Input, Options).
@@ -5509,14 +5719,7 @@ run_fleet_advisor_lsa_analysis(Client, Input, Options)
 -spec start_extension_pack_association(map(), start_extension_pack_association_message()) ->
     {ok, start_extension_pack_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()} |
-    {error, s3_access_denied_fault(), tuple()} |
-    {error, s3_resource_not_found_fault(), tuple()}.
+    {error, start_extension_pack_association_errors(), tuple()}.
 start_extension_pack_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_extension_pack_association(Client, Input, []).
@@ -5524,14 +5727,7 @@ start_extension_pack_association(Client, Input)
 -spec start_extension_pack_association(map(), start_extension_pack_association_message(), proplists:proplist()) ->
     {ok, start_extension_pack_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()} |
-    {error, s3_access_denied_fault(), tuple()} |
-    {error, s3_resource_not_found_fault(), tuple()}.
+    {error, start_extension_pack_association_errors(), tuple()}.
 start_extension_pack_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartExtensionPackAssociation">>, Input, Options).
@@ -5547,14 +5743,7 @@ start_extension_pack_association(Client, Input, Options)
 -spec start_metadata_model_assessment(map(), start_metadata_model_assessment_message()) ->
     {ok, start_metadata_model_assessment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()} |
-    {error, s3_access_denied_fault(), tuple()} |
-    {error, s3_resource_not_found_fault(), tuple()}.
+    {error, start_metadata_model_assessment_errors(), tuple()}.
 start_metadata_model_assessment(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_metadata_model_assessment(Client, Input, []).
@@ -5562,14 +5751,7 @@ start_metadata_model_assessment(Client, Input)
 -spec start_metadata_model_assessment(map(), start_metadata_model_assessment_message(), proplists:proplist()) ->
     {ok, start_metadata_model_assessment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()} |
-    {error, s3_access_denied_fault(), tuple()} |
-    {error, s3_resource_not_found_fault(), tuple()}.
+    {error, start_metadata_model_assessment_errors(), tuple()}.
 start_metadata_model_assessment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMetadataModelAssessment">>, Input, Options).
@@ -5579,14 +5761,7 @@ start_metadata_model_assessment(Client, Input, Options)
 -spec start_metadata_model_conversion(map(), start_metadata_model_conversion_message()) ->
     {ok, start_metadata_model_conversion_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()} |
-    {error, s3_access_denied_fault(), tuple()} |
-    {error, s3_resource_not_found_fault(), tuple()}.
+    {error, start_metadata_model_conversion_errors(), tuple()}.
 start_metadata_model_conversion(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_metadata_model_conversion(Client, Input, []).
@@ -5594,14 +5769,7 @@ start_metadata_model_conversion(Client, Input)
 -spec start_metadata_model_conversion(map(), start_metadata_model_conversion_message(), proplists:proplist()) ->
     {ok, start_metadata_model_conversion_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()} |
-    {error, s3_access_denied_fault(), tuple()} |
-    {error, s3_resource_not_found_fault(), tuple()}.
+    {error, start_metadata_model_conversion_errors(), tuple()}.
 start_metadata_model_conversion(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMetadataModelConversion">>, Input, Options).
@@ -5611,14 +5779,7 @@ start_metadata_model_conversion(Client, Input, Options)
 -spec start_metadata_model_export_as_script(map(), start_metadata_model_export_as_script_message()) ->
     {ok, start_metadata_model_export_as_script_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()} |
-    {error, s3_access_denied_fault(), tuple()} |
-    {error, s3_resource_not_found_fault(), tuple()}.
+    {error, start_metadata_model_export_as_script_errors(), tuple()}.
 start_metadata_model_export_as_script(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_metadata_model_export_as_script(Client, Input, []).
@@ -5626,14 +5787,7 @@ start_metadata_model_export_as_script(Client, Input)
 -spec start_metadata_model_export_as_script(map(), start_metadata_model_export_as_script_message(), proplists:proplist()) ->
     {ok, start_metadata_model_export_as_script_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()} |
-    {error, s3_access_denied_fault(), tuple()} |
-    {error, s3_resource_not_found_fault(), tuple()}.
+    {error, start_metadata_model_export_as_script_errors(), tuple()}.
 start_metadata_model_export_as_script(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMetadataModelExportAsScript">>, Input, Options).
@@ -5642,14 +5796,7 @@ start_metadata_model_export_as_script(Client, Input, Options)
 -spec start_metadata_model_export_to_target(map(), start_metadata_model_export_to_target_message()) ->
     {ok, start_metadata_model_export_to_target_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()} |
-    {error, s3_access_denied_fault(), tuple()} |
-    {error, s3_resource_not_found_fault(), tuple()}.
+    {error, start_metadata_model_export_to_target_errors(), tuple()}.
 start_metadata_model_export_to_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_metadata_model_export_to_target(Client, Input, []).
@@ -5657,14 +5804,7 @@ start_metadata_model_export_to_target(Client, Input)
 -spec start_metadata_model_export_to_target(map(), start_metadata_model_export_to_target_message(), proplists:proplist()) ->
     {ok, start_metadata_model_export_to_target_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()} |
-    {error, s3_access_denied_fault(), tuple()} |
-    {error, s3_resource_not_found_fault(), tuple()}.
+    {error, start_metadata_model_export_to_target_errors(), tuple()}.
 start_metadata_model_export_to_target(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMetadataModelExportToTarget">>, Input, Options).
@@ -5677,14 +5817,7 @@ start_metadata_model_export_to_target(Client, Input, Options)
 -spec start_metadata_model_import(map(), start_metadata_model_import_message()) ->
     {ok, start_metadata_model_import_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()} |
-    {error, s3_access_denied_fault(), tuple()} |
-    {error, s3_resource_not_found_fault(), tuple()}.
+    {error, start_metadata_model_import_errors(), tuple()}.
 start_metadata_model_import(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_metadata_model_import(Client, Input, []).
@@ -5692,14 +5825,7 @@ start_metadata_model_import(Client, Input)
 -spec start_metadata_model_import(map(), start_metadata_model_import_message(), proplists:proplist()) ->
     {ok, start_metadata_model_import_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()} |
-    {error, s3_access_denied_fault(), tuple()} |
-    {error, s3_resource_not_found_fault(), tuple()}.
+    {error, start_metadata_model_import_errors(), tuple()}.
 start_metadata_model_import(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMetadataModelImport">>, Input, Options).
@@ -5714,9 +5840,7 @@ start_metadata_model_import(Client, Input, Options)
 -spec start_recommendations(map(), start_recommendations_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, start_recommendations_errors(), tuple()}.
 start_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_recommendations(Client, Input, []).
@@ -5724,9 +5848,7 @@ start_recommendations(Client, Input)
 -spec start_recommendations(map(), start_recommendations_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, start_recommendations_errors(), tuple()}.
 start_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartRecommendations">>, Input, Options).
@@ -5743,9 +5865,7 @@ start_recommendations(Client, Input, Options)
 -spec start_replication(map(), start_replication_message()) ->
     {ok, start_replication_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, start_replication_errors(), tuple()}.
 start_replication(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_replication(Client, Input, []).
@@ -5753,9 +5873,7 @@ start_replication(Client, Input)
 -spec start_replication(map(), start_replication_message(), proplists:proplist()) ->
     {ok, start_replication_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, start_replication_errors(), tuple()}.
 start_replication(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartReplication">>, Input, Options).
@@ -5768,9 +5886,7 @@ start_replication(Client, Input, Options)
 -spec start_replication_task(map(), start_replication_task_message()) ->
     {ok, start_replication_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, start_replication_task_errors(), tuple()}.
 start_replication_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_replication_task(Client, Input, []).
@@ -5778,9 +5894,7 @@ start_replication_task(Client, Input)
 -spec start_replication_task(map(), start_replication_task_message(), proplists:proplist()) ->
     {ok, start_replication_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, start_replication_task_errors(), tuple()}.
 start_replication_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartReplicationTask">>, Input, Options).
@@ -5806,8 +5920,7 @@ start_replication_task(Client, Input, Options)
 -spec start_replication_task_assessment(map(), start_replication_task_assessment_message()) ->
     {ok, start_replication_task_assessment_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, start_replication_task_assessment_errors(), tuple()}.
 start_replication_task_assessment(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_replication_task_assessment(Client, Input, []).
@@ -5815,8 +5928,7 @@ start_replication_task_assessment(Client, Input)
 -spec start_replication_task_assessment(map(), start_replication_task_assessment_message(), proplists:proplist()) ->
     {ok, start_replication_task_assessment_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, start_replication_task_assessment_errors(), tuple()}.
 start_replication_task_assessment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartReplicationTaskAssessment">>, Input, Options).
@@ -5837,18 +5949,7 @@ start_replication_task_assessment(Client, Input, Options)
 -spec start_replication_task_assessment_run(map(), start_replication_task_assessment_run_message()) ->
     {ok, start_replication_task_assessment_run_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_access_denied_fault(), tuple()} |
-    {error, kms_disabled_fault(), tuple()} |
-    {error, kms_fault(), tuple()} |
-    {error, kms_invalid_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, kms_not_found_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, s3_access_denied_fault(), tuple()} |
-    {error, s3_resource_not_found_fault(), tuple()}.
+    {error, start_replication_task_assessment_run_errors(), tuple()}.
 start_replication_task_assessment_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_replication_task_assessment_run(Client, Input, []).
@@ -5856,18 +5957,7 @@ start_replication_task_assessment_run(Client, Input)
 -spec start_replication_task_assessment_run(map(), start_replication_task_assessment_run_message(), proplists:proplist()) ->
     {ok, start_replication_task_assessment_run_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_access_denied_fault(), tuple()} |
-    {error, kms_disabled_fault(), tuple()} |
-    {error, kms_fault(), tuple()} |
-    {error, kms_invalid_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, kms_not_found_fault(), tuple()} |
-    {error, resource_already_exists_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, s3_access_denied_fault(), tuple()} |
-    {error, s3_resource_not_found_fault(), tuple()}.
+    {error, start_replication_task_assessment_run_errors(), tuple()}.
 start_replication_task_assessment_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartReplicationTaskAssessmentRun">>, Input, Options).
@@ -5879,9 +5969,7 @@ start_replication_task_assessment_run(Client, Input, Options)
 -spec stop_replication(map(), stop_replication_message()) ->
     {ok, stop_replication_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, stop_replication_errors(), tuple()}.
 stop_replication(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_replication(Client, Input, []).
@@ -5889,9 +5977,7 @@ stop_replication(Client, Input)
 -spec stop_replication(map(), stop_replication_message(), proplists:proplist()) ->
     {ok, stop_replication_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, stop_replication_errors(), tuple()}.
 stop_replication(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopReplication">>, Input, Options).
@@ -5900,8 +5986,7 @@ stop_replication(Client, Input, Options)
 -spec stop_replication_task(map(), stop_replication_task_message()) ->
     {ok, stop_replication_task_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, stop_replication_task_errors(), tuple()}.
 stop_replication_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_replication_task(Client, Input, []).
@@ -5909,8 +5994,7 @@ stop_replication_task(Client, Input)
 -spec stop_replication_task(map(), stop_replication_task_message(), proplists:proplist()) ->
     {ok, stop_replication_task_response(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, stop_replication_task_errors(), tuple()}.
 stop_replication_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopReplicationTask">>, Input, Options).
@@ -5920,11 +6004,7 @@ stop_replication_task(Client, Input, Options)
 -spec test_connection(map(), test_connection_message()) ->
     {ok, test_connection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()}.
+    {error, test_connection_errors(), tuple()}.
 test_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_connection(Client, Input, []).
@@ -5932,11 +6012,7 @@ test_connection(Client, Input)
 -spec test_connection(map(), test_connection_message(), proplists:proplist()) ->
     {ok, test_connection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, resource_quota_exceeded_fault(), tuple()}.
+    {error, test_connection_errors(), tuple()}.
 test_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TestConnection">>, Input, Options).
@@ -5963,8 +6039,7 @@ test_connection(Client, Input, Options)
 -spec update_subscriptions_to_event_bridge(map(), update_subscriptions_to_event_bridge_message()) ->
     {ok, update_subscriptions_to_event_bridge_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()}.
+    {error, update_subscriptions_to_event_bridge_errors(), tuple()}.
 update_subscriptions_to_event_bridge(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_subscriptions_to_event_bridge(Client, Input, []).
@@ -5972,8 +6047,7 @@ update_subscriptions_to_event_bridge(Client, Input)
 -spec update_subscriptions_to_event_bridge(map(), update_subscriptions_to_event_bridge_message(), proplists:proplist()) ->
     {ok, update_subscriptions_to_event_bridge_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_fault(), tuple()} |
-    {error, invalid_resource_state_fault(), tuple()}.
+    {error, update_subscriptions_to_event_bridge_errors(), tuple()}.
 update_subscriptions_to_event_bridge(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSubscriptionsToEventBridge">>, Input, Options).

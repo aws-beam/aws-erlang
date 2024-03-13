@@ -18,6 +18,7 @@
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => [string()],
@@ -26,6 +27,7 @@
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% scan_sbom_request() :: #{
 %%   <<"outputFormat">> => list(any()),
@@ -33,11 +35,13 @@
 %% }
 -type scan_sbom_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% scan_sbom_response() :: #{
 %%   <<"sbom">> => any()
 %% }
 -type scan_sbom_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% throttling_exception() :: #{
@@ -45,6 +49,7 @@
 %%   <<"retryAfterSeconds">> => [integer()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% validation_exception() :: #{
@@ -54,12 +59,19 @@
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception_field() :: #{
 %%   <<"message">> => [string()],
 %%   <<"name">> => [string()]
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
+
+-type scan_sbom_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -73,20 +85,14 @@
 -spec scan_sbom(map(), scan_sbom_request()) ->
     {ok, scan_sbom_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, scan_sbom_errors(), tuple()}.
 scan_sbom(Client, Input) ->
     scan_sbom(Client, Input, []).
 
 -spec scan_sbom(map(), scan_sbom_request(), proplists:proplist()) ->
     {ok, scan_sbom_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, scan_sbom_errors(), tuple()}.
 scan_sbom(Client, Input0, Options0) ->
     Method = post,
     Path = ["/scan/sbom"],

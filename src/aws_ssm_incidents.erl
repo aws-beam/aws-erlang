@@ -99,9 +99,11 @@
 %%   <<"resourcePolicies">> := list(resource_policy()())
 %% }
 -type get_resource_policies_output() :: #{binary() => any()}.
+
 %% Example:
 %% update_response_plan_output() :: #{}
 -type update_response_plan_output() :: #{}.
+
 
 %% Example:
 %% list_timeline_events_output() :: #{
@@ -110,6 +112,7 @@
 %% }
 -type list_timeline_events_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_incident_findings_error() :: #{
 %%   <<"code">> => [string()],
@@ -117,15 +120,18 @@
 %%   <<"message">> => [string()]
 %% }
 -type batch_get_incident_findings_error() :: #{binary() => any()}.
+
 %% Example:
 %% delete_replication_set_output() :: #{}
 -type delete_replication_set_output() :: #{}.
+
 
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_related_items_input() :: #{
@@ -134,9 +140,11 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_related_items_input() :: #{binary() => any()}.
+
 %% Example:
 %% delete_timeline_event_output() :: #{}
 -type delete_timeline_event_output() :: #{}.
+
 
 %% Example:
 %% list_replication_sets_input() :: #{
@@ -144,6 +152,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_replication_sets_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% related_item() :: #{
@@ -153,6 +162,7 @@
 %% }
 -type related_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% incident_record_source() :: #{
 %%   <<"createdBy">> => string(),
@@ -161,9 +171,11 @@
 %%   <<"source">> => string()
 %% }
 -type incident_record_source() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% start_incident_input() :: #{
@@ -176,11 +188,13 @@
 %% }
 -type start_incident_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_incident_record_input() :: #{
 %%   <<"arn">> := string()
 %% }
 -type delete_incident_record_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_deletion_protection_input() :: #{
@@ -190,6 +204,7 @@
 %% }
 -type update_deletion_protection_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_incident_findings_output() :: #{
 %%   <<"errors">> => list(batch_get_incident_findings_error()()),
@@ -197,11 +212,13 @@
 %% }
 -type batch_get_incident_findings_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_region_action() :: #{
 %%   <<"regionName">> => string()
 %% }
 -type delete_region_action() :: #{binary() => any()}.
+
 
 %% Example:
 %% finding_summary() :: #{
@@ -210,11 +227,13 @@
 %% }
 -type finding_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_response_plan_output() :: #{
 %%   <<"arn">> := string()
 %% }
 -type create_response_plan_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_incident_findings_input() :: #{
@@ -224,11 +243,13 @@
 %% }
 -type list_incident_findings_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_response_plan_input() :: #{
 %%   <<"arn">> := string()
 %% }
 -type delete_response_plan_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_incident_output() :: #{
@@ -236,11 +257,13 @@
 %% }
 -type start_incident_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_resource_policy_output() :: #{
 %%   <<"policyId">> := string()
 %% }
 -type put_resource_policy_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% timeline_event() :: #{
@@ -254,11 +277,13 @@
 %% }
 -type timeline_event() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_replication_set_input() :: #{
 %%   <<"arn">> := string()
 %% }
 -type get_replication_set_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_resource_policy_input() :: #{
@@ -266,9 +291,11 @@
 %%   <<"resourceArn">> := string()
 %% }
 -type delete_resource_policy_input() :: #{binary() => any()}.
+
 %% Example:
 %% update_deletion_protection_output() :: #{}
 -type update_deletion_protection_output() :: #{}.
+
 
 %% Example:
 %% pager_duty_incident_detail() :: #{
@@ -278,11 +305,13 @@
 %% }
 -type pager_duty_incident_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_replication_set_input() :: #{
@@ -292,12 +321,14 @@
 %% }
 -type update_replication_set_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_incident_findings_input() :: #{
 %%   <<"findingIds">> := list(string()()),
 %%   <<"incidentRecordArn">> := string()
 %% }
 -type batch_get_incident_findings_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% code_deploy_deployment() :: #{
@@ -308,15 +339,18 @@
 %% }
 -type code_deploy_deployment() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_incident_records_output() :: #{
 %%   <<"incidentRecordSummaries">> := list(incident_record_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_incident_records_output() :: #{binary() => any()}.
+
 %% Example:
 %% update_incident_record_output() :: #{}
 -type update_incident_record_output() :: #{}.
+
 
 %% Example:
 %% update_response_plan_input() :: #{
@@ -336,6 +370,7 @@
 %% }
 -type update_response_plan_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% replication_set() :: #{
 %%   <<"arn">> => string(),
@@ -349,6 +384,7 @@
 %% }
 -type replication_set() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string(),
@@ -358,6 +394,7 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string(),
@@ -366,11 +403,13 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_incident_record_output() :: #{
 %%   <<"incidentRecord">> := incident_record()
 %% }
 -type get_incident_record_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_resource_policy_input() :: #{
@@ -378,6 +417,7 @@
 %%   <<"resourceArn">> := string()
 %% }
 -type put_resource_policy_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_resource_policies_input() :: #{
@@ -387,6 +427,7 @@
 %% }
 -type get_resource_policies_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% item_identifier() :: #{
 %%   <<"type">> => string(),
@@ -394,12 +435,14 @@
 %% }
 -type item_identifier() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_replication_sets_output() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"replicationSetArns">> := list(string()())
 %% }
 -type list_replication_sets_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
@@ -411,6 +454,7 @@
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_incident_findings_output() :: #{
 %%   <<"findings">> => list(finding_summary()()),
@@ -418,14 +462,17 @@
 %% }
 -type list_incident_findings_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% pager_duty_incident_configuration() :: #{
 %%   <<"serviceId">> => [string()]
 %% }
 -type pager_duty_incident_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% update_timeline_event_output() :: #{}
 -type update_timeline_event_output() :: #{}.
+
 
 %% Example:
 %% update_incident_record_input() :: #{
@@ -440,6 +487,7 @@
 %% }
 -type update_incident_record_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% finding() :: #{
 %%   <<"creationTime">> => [non_neg_integer()],
@@ -449,6 +497,7 @@
 %% }
 -type finding() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_related_items_input() :: #{
 %%   <<"clientToken">> => string(),
@@ -457,11 +506,13 @@
 %% }
 -type update_related_items_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> := map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% pager_duty_configuration() :: #{
@@ -470,6 +521,7 @@
 %%   <<"secretId">> => [string()]
 %% }
 -type pager_duty_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% trigger_details() :: #{
@@ -480,12 +532,14 @@
 %% }
 -type trigger_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_timeline_event_input() :: #{
 %%   <<"eventId">> := string(),
 %%   <<"incidentRecordArn">> := string()
 %% }
 -type get_timeline_event_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_response_plans_input() :: #{
@@ -494,12 +548,14 @@
 %% }
 -type list_response_plans_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% filter() :: #{
 %%   <<"condition">> => list(),
 %%   <<"key">> => [string()]
 %% }
 -type filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% event_summary() :: #{
@@ -512,11 +568,13 @@
 %% }
 -type event_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_policy() :: #{
@@ -526,14 +584,17 @@
 %% }
 -type resource_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_timeline_event_output() :: #{
 %%   <<"event">> := timeline_event()
 %% }
 -type get_timeline_event_output() :: #{binary() => any()}.
+
 %% Example:
 %% delete_resource_policy_output() :: #{}
 -type delete_resource_policy_output() :: #{}.
+
 
 %% Example:
 %% get_response_plan_output() :: #{
@@ -548,6 +609,7 @@
 %% }
 -type get_response_plan_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_timeline_events_input() :: #{
 %%   <<"filters">> => list(filter()()),
@@ -558,6 +620,7 @@
 %%   <<"sortOrder">> => string()
 %% }
 -type list_timeline_events_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% incident_record_summary() :: #{
@@ -571,17 +634,21 @@
 %% }
 -type incident_record_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 %% Example:
 %% update_related_items_output() :: #{}
 -type update_related_items_output() :: #{}.
+
 
 %% Example:
 %% region_info() :: #{
@@ -591,6 +658,7 @@
 %%   <<"statusUpdateDateTime">> => [non_neg_integer()]
 %% }
 -type region_info() :: #{binary() => any()}.
+
 
 %% Example:
 %% ssm_automation() :: #{
@@ -603,20 +671,24 @@
 %% }
 -type ssm_automation() :: #{binary() => any()}.
 
+
 %% Example:
 %% region_map_input_value() :: #{
 %%   <<"sseKmsKeyId">> => string()
 %% }
 -type region_map_input_value() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% create_replication_set_input() :: #{
@@ -626,12 +698,14 @@
 %% }
 -type create_replication_set_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_timeline_event_output() :: #{
 %%   <<"eventId">> := string(),
 %%   <<"incidentRecordArn">> := string()
 %% }
 -type create_timeline_event_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% throttling_exception() :: #{
@@ -640,6 +714,7 @@
 %%   <<"serviceCode">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% incident_template() :: #{
@@ -652,6 +727,7 @@
 %% }
 -type incident_template() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_incident_records_input() :: #{
 %%   <<"filters">> => list(filter()()),
@@ -659,6 +735,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_incident_records_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% response_plan_summary() :: #{
@@ -668,15 +745,18 @@
 %% }
 -type response_plan_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% add_region_action() :: #{
 %%   <<"regionName">> => string(),
 %%   <<"sseKmsKeyId">> => string()
 %% }
 -type add_region_action() :: #{binary() => any()}.
+
 %% Example:
 %% delete_response_plan_output() :: #{}
 -type delete_response_plan_output() :: #{}.
+
 
 %% Example:
 %% list_response_plans_output() :: #{
@@ -685,11 +765,13 @@
 %% }
 -type list_response_plans_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_response_plan_input() :: #{
 %%   <<"arn">> := string()
 %% }
 -type get_response_plan_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_timeline_event_input() :: #{
@@ -703,11 +785,13 @@
 %% }
 -type update_timeline_event_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_replication_set_input() :: #{
 %%   <<"arn">> := string()
 %% }
 -type delete_replication_set_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_related_items_output() :: #{
@@ -715,9 +799,11 @@
 %%   <<"relatedItems">> := list(related_item()())
 %% }
 -type list_related_items_output() :: #{binary() => any()}.
+
 %% Example:
 %% update_replication_set_output() :: #{}
 -type update_replication_set_output() :: #{}.
+
 
 %% Example:
 %% create_timeline_event_input() :: #{
@@ -730,17 +816,20 @@
 %% }
 -type create_timeline_event_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_replication_set_output() :: #{
 %%   <<"replicationSet">> := replication_set()
 %% }
 -type get_replication_set_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_incident_record_input() :: #{
 %%   <<"arn">> := string()
 %% }
 -type get_incident_record_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_response_plan_input() :: #{
@@ -755,9 +844,11 @@
 %%   <<"tags">> => map()
 %% }
 -type create_response_plan_input() :: #{binary() => any()}.
+
 %% Example:
 %% empty_chat_channel() :: #{}
 -type empty_chat_channel() :: #{}.
+
 
 %% Example:
 %% cloud_formation_stack_update() :: #{
@@ -767,11 +858,13 @@
 %% }
 -type cloud_formation_stack_update() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_replication_set_output() :: #{
 %%   <<"arn">> := string()
 %% }
 -type create_replication_set_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% incident_record() :: #{
@@ -791,9 +884,11 @@
 %%   <<"title">> => string()
 %% }
 -type incident_record() :: #{binary() => any()}.
+
 %% Example:
 %% delete_incident_record_output() :: #{}
 -type delete_incident_record_output() :: #{}.
+
 
 %% Example:
 %% delete_timeline_event_input() :: #{
@@ -801,6 +896,227 @@
 %%   <<"incidentRecordArn">> := string()
 %% }
 -type delete_timeline_event_input() :: #{binary() => any()}.
+
+-type batch_get_incident_findings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_replication_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_response_plan_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_timeline_event_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_incident_record_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type delete_replication_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_resource_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_response_plan_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type delete_timeline_event_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type get_incident_record_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_replication_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_resource_policies_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_response_plan_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_timeline_event_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_incident_findings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_incident_records_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_related_items_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_replication_sets_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_response_plans_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_timeline_events_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type put_resource_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type start_incident_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_deletion_protection_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_incident_record_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_related_items_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_replication_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_response_plan_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_timeline_event_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -817,22 +1133,14 @@
 -spec batch_get_incident_findings(map(), batch_get_incident_findings_input()) ->
     {ok, batch_get_incident_findings_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_incident_findings_errors(), tuple()}.
 batch_get_incident_findings(Client, Input) ->
     batch_get_incident_findings(Client, Input, []).
 
 -spec batch_get_incident_findings(map(), batch_get_incident_findings_input(), proplists:proplist()) ->
     {ok, batch_get_incident_findings_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_incident_findings_errors(), tuple()}.
 batch_get_incident_findings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/batchGetIncidentFindings"],
@@ -861,24 +1169,14 @@ batch_get_incident_findings(Client, Input0, Options0) ->
 -spec create_replication_set(map(), create_replication_set_input()) ->
     {ok, create_replication_set_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_replication_set_errors(), tuple()}.
 create_replication_set(Client, Input) ->
     create_replication_set(Client, Input, []).
 
 -spec create_replication_set(map(), create_replication_set_input(), proplists:proplist()) ->
     {ok, create_replication_set_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_replication_set_errors(), tuple()}.
 create_replication_set(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createReplicationSet"],
@@ -911,24 +1209,14 @@ create_replication_set(Client, Input0, Options0) ->
 -spec create_response_plan(map(), create_response_plan_input()) ->
     {ok, create_response_plan_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_response_plan_errors(), tuple()}.
 create_response_plan(Client, Input) ->
     create_response_plan(Client, Input, []).
 
 -spec create_response_plan(map(), create_response_plan_input(), proplists:proplist()) ->
     {ok, create_response_plan_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_response_plan_errors(), tuple()}.
 create_response_plan(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createResponsePlan"],
@@ -962,24 +1250,14 @@ create_response_plan(Client, Input0, Options0) ->
 -spec create_timeline_event(map(), create_timeline_event_input()) ->
     {ok, create_timeline_event_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_timeline_event_errors(), tuple()}.
 create_timeline_event(Client, Input) ->
     create_timeline_event(Client, Input, []).
 
 -spec create_timeline_event(map(), create_timeline_event_input(), proplists:proplist()) ->
     {ok, create_timeline_event_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_timeline_event_errors(), tuple()}.
 create_timeline_event(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createTimelineEvent"],
@@ -1006,20 +1284,14 @@ create_timeline_event(Client, Input0, Options0) ->
 -spec delete_incident_record(map(), delete_incident_record_input()) ->
     {ok, delete_incident_record_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_incident_record_errors(), tuple()}.
 delete_incident_record(Client, Input) ->
     delete_incident_record(Client, Input, []).
 
 -spec delete_incident_record(map(), delete_incident_record_input(), proplists:proplist()) ->
     {ok, delete_incident_record_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_incident_record_errors(), tuple()}.
 delete_incident_record(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteIncidentRecord"],
@@ -1049,22 +1321,14 @@ delete_incident_record(Client, Input0, Options0) ->
 -spec delete_replication_set(map(), delete_replication_set_input()) ->
     {ok, delete_replication_set_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_replication_set_errors(), tuple()}.
 delete_replication_set(Client, Input) ->
     delete_replication_set(Client, Input, []).
 
 -spec delete_replication_set(map(), delete_replication_set_input(), proplists:proplist()) ->
     {ok, delete_replication_set_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_replication_set_errors(), tuple()}.
 delete_replication_set(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteReplicationSet"],
@@ -1094,22 +1358,14 @@ delete_replication_set(Client, Input0, Options0) ->
 -spec delete_resource_policy(map(), delete_resource_policy_input()) ->
     {ok, delete_resource_policy_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input) ->
     delete_resource_policy(Client, Input, []).
 
 -spec delete_resource_policy(map(), delete_resource_policy_input(), proplists:proplist()) ->
     {ok, delete_resource_policy_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteResourcePolicy"],
@@ -1140,20 +1396,14 @@ delete_resource_policy(Client, Input0, Options0) ->
 -spec delete_response_plan(map(), delete_response_plan_input()) ->
     {ok, delete_response_plan_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_response_plan_errors(), tuple()}.
 delete_response_plan(Client, Input) ->
     delete_response_plan(Client, Input, []).
 
 -spec delete_response_plan(map(), delete_response_plan_input(), proplists:proplist()) ->
     {ok, delete_response_plan_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_response_plan_errors(), tuple()}.
 delete_response_plan(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteResponsePlan"],
@@ -1180,20 +1430,14 @@ delete_response_plan(Client, Input0, Options0) ->
 -spec delete_timeline_event(map(), delete_timeline_event_input()) ->
     {ok, delete_timeline_event_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_timeline_event_errors(), tuple()}.
 delete_timeline_event(Client, Input) ->
     delete_timeline_event(Client, Input, []).
 
 -spec delete_timeline_event(map(), delete_timeline_event_input(), proplists:proplist()) ->
     {ok, delete_timeline_event_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_timeline_event_errors(), tuple()}.
 delete_timeline_event(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteTimelineEvent"],
@@ -1220,11 +1464,7 @@ delete_timeline_event(Client, Input0, Options0) ->
 -spec get_incident_record(map(), binary() | list()) ->
     {ok, get_incident_record_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_incident_record_errors(), tuple()}.
 get_incident_record(Client, Arn)
   when is_map(Client) ->
     get_incident_record(Client, Arn, #{}, #{}).
@@ -1232,11 +1472,7 @@ get_incident_record(Client, Arn)
 -spec get_incident_record(map(), binary() | list(), map(), map()) ->
     {ok, get_incident_record_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_incident_record_errors(), tuple()}.
 get_incident_record(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_incident_record(Client, Arn, QueryMap, HeadersMap, []).
@@ -1244,11 +1480,7 @@ get_incident_record(Client, Arn, QueryMap, HeadersMap)
 -spec get_incident_record(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_incident_record_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_incident_record_errors(), tuple()}.
 get_incident_record(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/getIncidentRecord"],
@@ -1273,11 +1505,7 @@ get_incident_record(Client, Arn, QueryMap, HeadersMap, Options0)
 -spec get_replication_set(map(), binary() | list()) ->
     {ok, get_replication_set_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_replication_set_errors(), tuple()}.
 get_replication_set(Client, Arn)
   when is_map(Client) ->
     get_replication_set(Client, Arn, #{}, #{}).
@@ -1285,11 +1513,7 @@ get_replication_set(Client, Arn)
 -spec get_replication_set(map(), binary() | list(), map(), map()) ->
     {ok, get_replication_set_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_replication_set_errors(), tuple()}.
 get_replication_set(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_replication_set(Client, Arn, QueryMap, HeadersMap, []).
@@ -1297,11 +1521,7 @@ get_replication_set(Client, Arn, QueryMap, HeadersMap)
 -spec get_replication_set(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_replication_set_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_replication_set_errors(), tuple()}.
 get_replication_set(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/getReplicationSet"],
@@ -1327,22 +1547,14 @@ get_replication_set(Client, Arn, QueryMap, HeadersMap, Options0)
 -spec get_resource_policies(map(), get_resource_policies_input()) ->
     {ok, get_resource_policies_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_resource_policies_errors(), tuple()}.
 get_resource_policies(Client, Input) ->
     get_resource_policies(Client, Input, []).
 
 -spec get_resource_policies(map(), get_resource_policies_input(), proplists:proplist()) ->
     {ok, get_resource_policies_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_resource_policies_errors(), tuple()}.
 get_resource_policies(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getResourcePolicies"],
@@ -1370,11 +1582,7 @@ get_resource_policies(Client, Input0, Options0) ->
 -spec get_response_plan(map(), binary() | list()) ->
     {ok, get_response_plan_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_response_plan_errors(), tuple()}.
 get_response_plan(Client, Arn)
   when is_map(Client) ->
     get_response_plan(Client, Arn, #{}, #{}).
@@ -1382,11 +1590,7 @@ get_response_plan(Client, Arn)
 -spec get_response_plan(map(), binary() | list(), map(), map()) ->
     {ok, get_response_plan_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_response_plan_errors(), tuple()}.
 get_response_plan(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_response_plan(Client, Arn, QueryMap, HeadersMap, []).
@@ -1394,11 +1598,7 @@ get_response_plan(Client, Arn, QueryMap, HeadersMap)
 -spec get_response_plan(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_response_plan_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_response_plan_errors(), tuple()}.
 get_response_plan(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/getResponsePlan"],
@@ -1423,11 +1623,7 @@ get_response_plan(Client, Arn, QueryMap, HeadersMap, Options0)
 -spec get_timeline_event(map(), binary() | list(), binary() | list()) ->
     {ok, get_timeline_event_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_timeline_event_errors(), tuple()}.
 get_timeline_event(Client, EventId, IncidentRecordArn)
   when is_map(Client) ->
     get_timeline_event(Client, EventId, IncidentRecordArn, #{}, #{}).
@@ -1435,11 +1631,7 @@ get_timeline_event(Client, EventId, IncidentRecordArn)
 -spec get_timeline_event(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_timeline_event_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_timeline_event_errors(), tuple()}.
 get_timeline_event(Client, EventId, IncidentRecordArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_timeline_event(Client, EventId, IncidentRecordArn, QueryMap, HeadersMap, []).
@@ -1447,11 +1639,7 @@ get_timeline_event(Client, EventId, IncidentRecordArn, QueryMap, HeadersMap)
 -spec get_timeline_event(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_timeline_event_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_timeline_event_errors(), tuple()}.
 get_timeline_event(Client, EventId, IncidentRecordArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/getTimelineEvent"],
@@ -1483,22 +1671,14 @@ get_timeline_event(Client, EventId, IncidentRecordArn, QueryMap, HeadersMap, Opt
 -spec list_incident_findings(map(), list_incident_findings_input()) ->
     {ok, list_incident_findings_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_incident_findings_errors(), tuple()}.
 list_incident_findings(Client, Input) ->
     list_incident_findings(Client, Input, []).
 
 -spec list_incident_findings(map(), list_incident_findings_input(), proplists:proplist()) ->
     {ok, list_incident_findings_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_incident_findings_errors(), tuple()}.
 list_incident_findings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listIncidentFindings"],
@@ -1528,20 +1708,14 @@ list_incident_findings(Client, Input0, Options0) ->
 -spec list_incident_records(map(), list_incident_records_input()) ->
     {ok, list_incident_records_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_incident_records_errors(), tuple()}.
 list_incident_records(Client, Input) ->
     list_incident_records(Client, Input, []).
 
 -spec list_incident_records(map(), list_incident_records_input(), proplists:proplist()) ->
     {ok, list_incident_records_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_incident_records_errors(), tuple()}.
 list_incident_records(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listIncidentRecords"],
@@ -1568,20 +1742,14 @@ list_incident_records(Client, Input0, Options0) ->
 -spec list_related_items(map(), list_related_items_input()) ->
     {ok, list_related_items_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_related_items_errors(), tuple()}.
 list_related_items(Client, Input) ->
     list_related_items(Client, Input, []).
 
 -spec list_related_items(map(), list_related_items_input(), proplists:proplist()) ->
     {ok, list_related_items_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_related_items_errors(), tuple()}.
 list_related_items(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listRelatedItems"],
@@ -1608,20 +1776,14 @@ list_related_items(Client, Input0, Options0) ->
 -spec list_replication_sets(map(), list_replication_sets_input()) ->
     {ok, list_replication_sets_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_replication_sets_errors(), tuple()}.
 list_replication_sets(Client, Input) ->
     list_replication_sets(Client, Input, []).
 
 -spec list_replication_sets(map(), list_replication_sets_input(), proplists:proplist()) ->
     {ok, list_replication_sets_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_replication_sets_errors(), tuple()}.
 list_replication_sets(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listReplicationSets"],
@@ -1648,20 +1810,14 @@ list_replication_sets(Client, Input0, Options0) ->
 -spec list_response_plans(map(), list_response_plans_input()) ->
     {ok, list_response_plans_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_response_plans_errors(), tuple()}.
 list_response_plans(Client, Input) ->
     list_response_plans(Client, Input, []).
 
 -spec list_response_plans(map(), list_response_plans_input(), proplists:proplist()) ->
     {ok, list_response_plans_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_response_plans_errors(), tuple()}.
 list_response_plans(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listResponsePlans"],
@@ -1689,11 +1845,7 @@ list_response_plans(Client, Input0, Options0) ->
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1701,11 +1853,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1713,11 +1861,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1738,20 +1882,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec list_timeline_events(map(), list_timeline_events_input()) ->
     {ok, list_timeline_events_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_timeline_events_errors(), tuple()}.
 list_timeline_events(Client, Input) ->
     list_timeline_events(Client, Input, []).
 
 -spec list_timeline_events(map(), list_timeline_events_input(), proplists:proplist()) ->
     {ok, list_timeline_events_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_timeline_events_errors(), tuple()}.
 list_timeline_events(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listTimelineEvents"],
@@ -1784,22 +1922,14 @@ list_timeline_events(Client, Input0, Options0) ->
 -spec put_resource_policy(map(), put_resource_policy_input()) ->
     {ok, put_resource_policy_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input) ->
     put_resource_policy(Client, Input, []).
 
 -spec put_resource_policy(map(), put_resource_policy_input(), proplists:proplist()) ->
     {ok, put_resource_policy_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/putResourcePolicy"],
@@ -1828,24 +1958,14 @@ put_resource_policy(Client, Input0, Options0) ->
 -spec start_incident(map(), start_incident_input()) ->
     {ok, start_incident_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_incident_errors(), tuple()}.
 start_incident(Client, Input) ->
     start_incident(Client, Input, []).
 
 -spec start_incident(map(), start_incident_input(), proplists:proplist()) ->
     {ok, start_incident_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_incident_errors(), tuple()}.
 start_incident(Client, Input0, Options0) ->
     Method = post,
     Path = ["/startIncident"],
@@ -1872,26 +1992,14 @@ start_incident(Client, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1918,24 +2026,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1965,22 +2063,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_deletion_protection(map(), update_deletion_protection_input()) ->
     {ok, update_deletion_protection_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_deletion_protection_errors(), tuple()}.
 update_deletion_protection(Client, Input) ->
     update_deletion_protection(Client, Input, []).
 
 -spec update_deletion_protection(map(), update_deletion_protection_input(), proplists:proplist()) ->
     {ok, update_deletion_protection_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_deletion_protection_errors(), tuple()}.
 update_deletion_protection(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateDeletionProtection"],
@@ -2013,24 +2103,14 @@ update_deletion_protection(Client, Input0, Options0) ->
 -spec update_incident_record(map(), update_incident_record_input()) ->
     {ok, update_incident_record_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_incident_record_errors(), tuple()}.
 update_incident_record(Client, Input) ->
     update_incident_record(Client, Input, []).
 
 -spec update_incident_record(map(), update_incident_record_input(), proplists:proplist()) ->
     {ok, update_incident_record_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_incident_record_errors(), tuple()}.
 update_incident_record(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateIncidentRecord"],
@@ -2058,24 +2138,14 @@ update_incident_record(Client, Input0, Options0) ->
 -spec update_related_items(map(), update_related_items_input()) ->
     {ok, update_related_items_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_related_items_errors(), tuple()}.
 update_related_items(Client, Input) ->
     update_related_items(Client, Input, []).
 
 -spec update_related_items(map(), update_related_items_input(), proplists:proplist()) ->
     {ok, update_related_items_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_related_items_errors(), tuple()}.
 update_related_items(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateRelatedItems"],
@@ -2102,24 +2172,14 @@ update_related_items(Client, Input0, Options0) ->
 -spec update_replication_set(map(), update_replication_set_input()) ->
     {ok, update_replication_set_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_replication_set_errors(), tuple()}.
 update_replication_set(Client, Input) ->
     update_replication_set(Client, Input, []).
 
 -spec update_replication_set(map(), update_replication_set_input(), proplists:proplist()) ->
     {ok, update_replication_set_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_replication_set_errors(), tuple()}.
 update_replication_set(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateReplicationSet"],
@@ -2146,24 +2206,14 @@ update_replication_set(Client, Input0, Options0) ->
 -spec update_response_plan(map(), update_response_plan_input()) ->
     {ok, update_response_plan_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_response_plan_errors(), tuple()}.
 update_response_plan(Client, Input) ->
     update_response_plan(Client, Input, []).
 
 -spec update_response_plan(map(), update_response_plan_input(), proplists:proplist()) ->
     {ok, update_response_plan_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_response_plan_errors(), tuple()}.
 update_response_plan(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateResponsePlan"],
@@ -2192,24 +2242,14 @@ update_response_plan(Client, Input0, Options0) ->
 -spec update_timeline_event(map(), update_timeline_event_input()) ->
     {ok, update_timeline_event_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_timeline_event_errors(), tuple()}.
 update_timeline_event(Client, Input) ->
     update_timeline_event(Client, Input, []).
 
 -spec update_timeline_event(map(), update_timeline_event_input(), proplists:proplist()) ->
     {ok, update_timeline_event_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_timeline_event_errors(), tuple()}.
 update_timeline_event(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateTimelineEvent"],

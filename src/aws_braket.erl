@@ -49,6 +49,7 @@
 %% cancel_job_request() :: #{}
 -type cancel_job_request() :: #{}.
 
+
 %% Example:
 %% search_quantum_tasks_response() :: #{
 %%   <<"nextToken">> => [string()],
@@ -56,11 +57,13 @@
 %% }
 -type search_quantum_tasks_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% quantum_task_summary() :: #{
@@ -76,17 +79,20 @@
 %% }
 -type quantum_task_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_quantum_task_request() :: #{
 %%   <<"additionalAttributeNames">> => list(string()())
 %% }
 -type get_quantum_task_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_job_response() :: #{
 %%   <<"jobArn">> := string()
 %% }
 -type create_job_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% device_queue_info() :: #{
@@ -95,9 +101,11 @@
 %%   <<"queueSize">> => [string()]
 %% }
 -type device_queue_info() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% job_checkpoint_config() :: #{
@@ -106,6 +114,7 @@
 %% }
 -type job_checkpoint_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% cancel_quantum_task_response() :: #{
 %%   <<"cancellationStatus">> := string(),
@@ -113,17 +122,20 @@
 %% }
 -type cancel_quantum_task_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% device_offline_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type device_offline_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% job_stopping_condition() :: #{
 %%   <<"maxRuntimeInSeconds">> => [integer()]
 %% }
 -type job_stopping_condition() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_devices_filter() :: #{
@@ -132,11 +144,13 @@
 %% }
 -type search_devices_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% device_retired_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type device_retired_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_job_request() :: #{
@@ -155,6 +169,7 @@
 %%   <<"tags">> => map()
 %% }
 -type create_job_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_quantum_task_response() :: #{
@@ -175,11 +190,13 @@
 %% }
 -type get_quantum_task_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_service_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type internal_service_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_quantum_tasks_request() :: #{
@@ -189,17 +206,20 @@
 %% }
 -type search_quantum_tasks_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list([string()]())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% cancel_quantum_task_request() :: #{
 %%   <<"clientToken">> := string()
 %% }
 -type cancel_quantum_task_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% algorithm_specification() :: #{
@@ -208,6 +228,7 @@
 %% }
 -type algorithm_specification() :: #{binary() => any()}.
 
+
 %% Example:
 %% job_output_data_config() :: #{
 %%   <<"kmsKeyId">> => string(),
@@ -215,11 +236,13 @@
 %% }
 -type job_output_data_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% device_config() :: #{
 %%   <<"device">> => string()
 %% }
 -type device_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_summary() :: #{
@@ -234,6 +257,7 @@
 %% }
 -type job_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% script_mode_config() :: #{
 %%   <<"compressionType">> => string(),
@@ -241,6 +265,7 @@
 %%   <<"s3Uri">> => string()
 %% }
 -type script_mode_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_jobs_request() :: #{
@@ -250,11 +275,13 @@
 %% }
 -type search_jobs_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -262,17 +289,20 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% container_image() :: #{
 %%   <<"uri">> => string()
 %% }
 -type container_image() :: #{binary() => any()}.
+
 
 %% Example:
 %% association() :: #{
@@ -281,11 +311,13 @@
 %% }
 -type association() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_jobs_response() :: #{
@@ -293,6 +325,7 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type search_jobs_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_quantum_tasks_filter() :: #{
@@ -302,6 +335,7 @@
 %% }
 -type search_quantum_tasks_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_jobs_filter() :: #{
 %%   <<"name">> => string(),
@@ -309,6 +343,7 @@
 %%   <<"values">> => list(string()())
 %% }
 -type search_jobs_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% hybrid_job_queue_info() :: #{
@@ -318,12 +353,14 @@
 %% }
 -type hybrid_job_queue_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_devices_response() :: #{
 %%   <<"devices">> := list(device_summary()()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type search_devices_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_event_details() :: #{
@@ -332,15 +369,18 @@
 %%   <<"timeOfEvent">> => [non_neg_integer()]
 %% }
 -type job_event_details() :: #{binary() => any()}.
+
 %% Example:
 %% get_device_request() :: #{}
 -type get_device_request() :: #{}.
+
 
 %% Example:
 %% create_quantum_task_response() :: #{
 %%   <<"quantumTaskArn">> := string()
 %% }
 -type create_quantum_task_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% device_summary() :: #{
@@ -351,6 +391,7 @@
 %%   <<"providerName">> => [string()]
 %% }
 -type device_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_quantum_task_request() :: #{
@@ -367,11 +408,13 @@
 %% }
 -type create_quantum_task_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% quantum_task_queue_info() :: #{
@@ -381,9 +424,11 @@
 %%   <<"queuePriority">> => string()
 %% }
 -type quantum_task_queue_info() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% get_job_response() :: #{
@@ -411,14 +456,17 @@
 %% }
 -type get_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% instance_config() :: #{
@@ -428,11 +476,13 @@
 %% }
 -type instance_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_job_request() :: #{
 %%   <<"additionalAttributeNames">> => list(string()())
 %% }
 -type get_job_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% throttling_exception() :: #{
@@ -440,11 +490,13 @@
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_source() :: #{
 %%   <<"s3DataSource">> => s3_data_source()
 %% }
 -type data_source() :: #{binary() => any()}.
+
 
 %% Example:
 %% input_file_config() :: #{
@@ -454,12 +506,14 @@
 %% }
 -type input_file_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% cancel_job_response() :: #{
 %%   <<"cancellationStatus">> := string(),
 %%   <<"jobArn">> := string()
 %% }
 -type cancel_job_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_devices_request() :: #{
@@ -468,6 +522,7 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type search_devices_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_device_response() :: #{
@@ -481,11 +536,101 @@
 %% }
 -type get_device_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_data_source() :: #{
 %%   <<"s3Uri">> => string()
 %% }
 -type s3_data_source() :: #{binary() => any()}.
+
+-type cancel_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_service_exception().
+
+-type cancel_quantum_task_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_service_exception().
+
+-type create_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    device_retired_exception() | 
+    device_offline_exception().
+
+-type create_quantum_task_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_service_exception() | 
+    device_retired_exception() | 
+    device_offline_exception().
+
+-type get_device_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type get_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type get_quantum_task_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type search_devices_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_service_exception().
+
+-type search_jobs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_service_exception().
+
+-type search_quantum_tasks_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_service_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
 
 %%====================================================================
 %% API
@@ -495,24 +640,14 @@
 -spec cancel_job(map(), binary() | list(), cancel_job_request()) ->
     {ok, cancel_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_job_errors(), tuple()}.
 cancel_job(Client, JobArn, Input) ->
     cancel_job(Client, JobArn, Input, []).
 
 -spec cancel_job(map(), binary() | list(), cancel_job_request(), proplists:proplist()) ->
     {ok, cancel_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_job_errors(), tuple()}.
 cancel_job(Client, JobArn, Input0, Options0) ->
     Method = put,
     Path = ["/job/", aws_util:encode_uri(JobArn), "/cancel"],
@@ -539,24 +674,14 @@ cancel_job(Client, JobArn, Input0, Options0) ->
 -spec cancel_quantum_task(map(), binary() | list(), cancel_quantum_task_request()) ->
     {ok, cancel_quantum_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_quantum_task_errors(), tuple()}.
 cancel_quantum_task(Client, QuantumTaskArn, Input) ->
     cancel_quantum_task(Client, QuantumTaskArn, Input, []).
 
 -spec cancel_quantum_task(map(), binary() | list(), cancel_quantum_task_request(), proplists:proplist()) ->
     {ok, cancel_quantum_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_quantum_task_errors(), tuple()}.
 cancel_quantum_task(Client, QuantumTaskArn, Input0, Options0) ->
     Method = put,
     Path = ["/quantum-task/", aws_util:encode_uri(QuantumTaskArn), "/cancel"],
@@ -583,28 +708,14 @@ cancel_quantum_task(Client, QuantumTaskArn, Input0, Options0) ->
 -spec create_job(map(), create_job_request()) ->
     {ok, create_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, device_offline_exception(), tuple()} |
-    {error, device_retired_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_job_errors(), tuple()}.
 create_job(Client, Input) ->
     create_job(Client, Input, []).
 
 -spec create_job(map(), create_job_request(), proplists:proplist()) ->
     {ok, create_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, device_offline_exception(), tuple()} |
-    {error, device_retired_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_job_errors(), tuple()}.
 create_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/job"],
@@ -631,26 +742,14 @@ create_job(Client, Input0, Options0) ->
 -spec create_quantum_task(map(), create_quantum_task_request()) ->
     {ok, create_quantum_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, device_offline_exception(), tuple()} |
-    {error, device_retired_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_quantum_task_errors(), tuple()}.
 create_quantum_task(Client, Input) ->
     create_quantum_task(Client, Input, []).
 
 -spec create_quantum_task(map(), create_quantum_task_request(), proplists:proplist()) ->
     {ok, create_quantum_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, device_offline_exception(), tuple()} |
-    {error, device_retired_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_quantum_task_errors(), tuple()}.
 create_quantum_task(Client, Input0, Options0) ->
     Method = post,
     Path = ["/quantum-task"],
@@ -691,11 +790,7 @@ create_quantum_task(Client, Input0, Options0) ->
 -spec get_device(map(), binary() | list()) ->
     {ok, get_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_device_errors(), tuple()}.
 get_device(Client, DeviceArn)
   when is_map(Client) ->
     get_device(Client, DeviceArn, #{}, #{}).
@@ -703,11 +798,7 @@ get_device(Client, DeviceArn)
 -spec get_device(map(), binary() | list(), map(), map()) ->
     {ok, get_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_device_errors(), tuple()}.
 get_device(Client, DeviceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_device(Client, DeviceArn, QueryMap, HeadersMap, []).
@@ -715,11 +806,7 @@ get_device(Client, DeviceArn, QueryMap, HeadersMap)
 -spec get_device(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_device_errors(), tuple()}.
 get_device(Client, DeviceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/device/", aws_util:encode_uri(DeviceArn), ""],
@@ -740,11 +827,7 @@ get_device(Client, DeviceArn, QueryMap, HeadersMap, Options0)
 -spec get_job(map(), binary() | list()) ->
     {ok, get_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_job_errors(), tuple()}.
 get_job(Client, JobArn)
   when is_map(Client) ->
     get_job(Client, JobArn, #{}, #{}).
@@ -752,11 +835,7 @@ get_job(Client, JobArn)
 -spec get_job(map(), binary() | list(), map(), map()) ->
     {ok, get_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_job_errors(), tuple()}.
 get_job(Client, JobArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_job(Client, JobArn, QueryMap, HeadersMap, []).
@@ -764,11 +843,7 @@ get_job(Client, JobArn, QueryMap, HeadersMap)
 -spec get_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_job_errors(), tuple()}.
 get_job(Client, JobArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/job/", aws_util:encode_uri(JobArn), ""],
@@ -793,11 +868,7 @@ get_job(Client, JobArn, QueryMap, HeadersMap, Options0)
 -spec get_quantum_task(map(), binary() | list()) ->
     {ok, get_quantum_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_quantum_task_errors(), tuple()}.
 get_quantum_task(Client, QuantumTaskArn)
   when is_map(Client) ->
     get_quantum_task(Client, QuantumTaskArn, #{}, #{}).
@@ -805,11 +876,7 @@ get_quantum_task(Client, QuantumTaskArn)
 -spec get_quantum_task(map(), binary() | list(), map(), map()) ->
     {ok, get_quantum_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_quantum_task_errors(), tuple()}.
 get_quantum_task(Client, QuantumTaskArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_quantum_task(Client, QuantumTaskArn, QueryMap, HeadersMap, []).
@@ -817,11 +884,7 @@ get_quantum_task(Client, QuantumTaskArn, QueryMap, HeadersMap)
 -spec get_quantum_task(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_quantum_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_quantum_task_errors(), tuple()}.
 get_quantum_task(Client, QuantumTaskArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/quantum-task/", aws_util:encode_uri(QuantumTaskArn), ""],
@@ -846,9 +909,7 @@ get_quantum_task(Client, QuantumTaskArn, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -856,9 +917,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -866,9 +925,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -889,20 +946,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec search_devices(map(), search_devices_request()) ->
     {ok, search_devices_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_devices_errors(), tuple()}.
 search_devices(Client, Input) ->
     search_devices(Client, Input, []).
 
 -spec search_devices(map(), search_devices_request(), proplists:proplist()) ->
     {ok, search_devices_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_devices_errors(), tuple()}.
 search_devices(Client, Input0, Options0) ->
     Method = post,
     Path = ["/devices"],
@@ -930,20 +981,14 @@ search_devices(Client, Input0, Options0) ->
 -spec search_jobs(map(), search_jobs_request()) ->
     {ok, search_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_jobs_errors(), tuple()}.
 search_jobs(Client, Input) ->
     search_jobs(Client, Input, []).
 
 -spec search_jobs(map(), search_jobs_request(), proplists:proplist()) ->
     {ok, search_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_jobs_errors(), tuple()}.
 search_jobs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/jobs"],
@@ -970,20 +1015,14 @@ search_jobs(Client, Input0, Options0) ->
 -spec search_quantum_tasks(map(), search_quantum_tasks_request()) ->
     {ok, search_quantum_tasks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_quantum_tasks_errors(), tuple()}.
 search_quantum_tasks(Client, Input) ->
     search_quantum_tasks(Client, Input, []).
 
 -spec search_quantum_tasks(map(), search_quantum_tasks_request(), proplists:proplist()) ->
     {ok, search_quantum_tasks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_quantum_tasks_errors(), tuple()}.
 search_quantum_tasks(Client, Input0, Options0) ->
     Method = post,
     Path = ["/quantum-tasks"],
@@ -1010,18 +1049,14 @@ search_quantum_tasks(Client, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1048,18 +1083,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],

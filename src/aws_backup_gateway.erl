@@ -569,6 +569,80 @@
 %% }
 -type start_virtual_machines_metadata_sync_output() :: #{binary() => any()}.
 
+-type associate_gateway_to_server_errors() ::
+    conflict_exception().
+
+-type delete_gateway_errors() ::
+    resource_not_found_exception().
+
+-type delete_hypervisor_errors() ::
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type disassociate_gateway_from_server_errors() ::
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_bandwidth_rate_limit_schedule_errors() ::
+    resource_not_found_exception().
+
+-type get_gateway_errors() ::
+    resource_not_found_exception().
+
+-type get_hypervisor_errors() ::
+    resource_not_found_exception().
+
+-type get_hypervisor_property_mappings_errors() ::
+    resource_not_found_exception().
+
+-type get_virtual_machine_errors() ::
+    resource_not_found_exception().
+
+-type import_hypervisor_configuration_errors() ::
+    access_denied_exception() | 
+    conflict_exception().
+
+-type list_tags_for_resource_errors() ::
+    resource_not_found_exception().
+
+-type put_bandwidth_rate_limit_schedule_errors() ::
+    resource_not_found_exception().
+
+-type put_hypervisor_property_mappings_errors() ::
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type put_maintenance_start_time_errors() ::
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_virtual_machines_metadata_sync_errors() ::
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    resource_not_found_exception().
+
+-type test_hypervisor_configuration_errors() ::
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type untag_resource_errors() ::
+    resource_not_found_exception().
+
+-type update_gateway_information_errors() ::
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_gateway_software_now_errors() ::
+    resource_not_found_exception().
+
+-type update_hypervisor_errors() ::
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -581,7 +655,7 @@
 -spec associate_gateway_to_server(map(), associate_gateway_to_server_input()) ->
     {ok, associate_gateway_to_server_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()}.
+    {error, associate_gateway_to_server_errors(), tuple()}.
 associate_gateway_to_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_gateway_to_server(Client, Input, []).
@@ -589,7 +663,7 @@ associate_gateway_to_server(Client, Input)
 -spec associate_gateway_to_server(map(), associate_gateway_to_server_input(), proplists:proplist()) ->
     {ok, associate_gateway_to_server_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()}.
+    {error, associate_gateway_to_server_errors(), tuple()}.
 associate_gateway_to_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateGatewayToServer">>, Input, Options).
@@ -616,7 +690,7 @@ create_gateway(Client, Input, Options)
 -spec delete_gateway(map(), delete_gateway_input()) ->
     {ok, delete_gateway_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_gateway_errors(), tuple()}.
 delete_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_gateway(Client, Input, []).
@@ -624,7 +698,7 @@ delete_gateway(Client, Input)
 -spec delete_gateway(map(), delete_gateway_input(), proplists:proplist()) ->
     {ok, delete_gateway_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_gateway_errors(), tuple()}.
 delete_gateway(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGateway">>, Input, Options).
@@ -633,9 +707,7 @@ delete_gateway(Client, Input, Options)
 -spec delete_hypervisor(map(), delete_hypervisor_input()) ->
     {ok, delete_hypervisor_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_hypervisor_errors(), tuple()}.
 delete_hypervisor(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_hypervisor(Client, Input, []).
@@ -643,9 +715,7 @@ delete_hypervisor(Client, Input)
 -spec delete_hypervisor(map(), delete_hypervisor_input(), proplists:proplist()) ->
     {ok, delete_hypervisor_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_hypervisor_errors(), tuple()}.
 delete_hypervisor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteHypervisor">>, Input, Options).
@@ -658,8 +728,7 @@ delete_hypervisor(Client, Input, Options)
 -spec disassociate_gateway_from_server(map(), disassociate_gateway_from_server_input()) ->
     {ok, disassociate_gateway_from_server_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_gateway_from_server_errors(), tuple()}.
 disassociate_gateway_from_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_gateway_from_server(Client, Input, []).
@@ -667,8 +736,7 @@ disassociate_gateway_from_server(Client, Input)
 -spec disassociate_gateway_from_server(map(), disassociate_gateway_from_server_input(), proplists:proplist()) ->
     {ok, disassociate_gateway_from_server_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_gateway_from_server_errors(), tuple()}.
 disassociate_gateway_from_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateGatewayFromServer">>, Input, Options).
@@ -682,7 +750,7 @@ disassociate_gateway_from_server(Client, Input, Options)
 -spec get_bandwidth_rate_limit_schedule(map(), get_bandwidth_rate_limit_schedule_input()) ->
     {ok, get_bandwidth_rate_limit_schedule_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_bandwidth_rate_limit_schedule_errors(), tuple()}.
 get_bandwidth_rate_limit_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_bandwidth_rate_limit_schedule(Client, Input, []).
@@ -690,7 +758,7 @@ get_bandwidth_rate_limit_schedule(Client, Input)
 -spec get_bandwidth_rate_limit_schedule(map(), get_bandwidth_rate_limit_schedule_input(), proplists:proplist()) ->
     {ok, get_bandwidth_rate_limit_schedule_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_bandwidth_rate_limit_schedule_errors(), tuple()}.
 get_bandwidth_rate_limit_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetBandwidthRateLimitSchedule">>, Input, Options).
@@ -700,7 +768,7 @@ get_bandwidth_rate_limit_schedule(Client, Input, Options)
 -spec get_gateway(map(), get_gateway_input()) ->
     {ok, get_gateway_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_gateway_errors(), tuple()}.
 get_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_gateway(Client, Input, []).
@@ -708,7 +776,7 @@ get_gateway(Client, Input)
 -spec get_gateway(map(), get_gateway_input(), proplists:proplist()) ->
     {ok, get_gateway_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_gateway_errors(), tuple()}.
 get_gateway(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetGateway">>, Input, Options).
@@ -722,7 +790,7 @@ get_gateway(Client, Input, Options)
 -spec get_hypervisor(map(), get_hypervisor_input()) ->
     {ok, get_hypervisor_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_hypervisor_errors(), tuple()}.
 get_hypervisor(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_hypervisor(Client, Input, []).
@@ -730,7 +798,7 @@ get_hypervisor(Client, Input)
 -spec get_hypervisor(map(), get_hypervisor_input(), proplists:proplist()) ->
     {ok, get_hypervisor_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_hypervisor_errors(), tuple()}.
 get_hypervisor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetHypervisor">>, Input, Options).
@@ -745,7 +813,7 @@ get_hypervisor(Client, Input, Options)
 -spec get_hypervisor_property_mappings(map(), get_hypervisor_property_mappings_input()) ->
     {ok, get_hypervisor_property_mappings_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_hypervisor_property_mappings_errors(), tuple()}.
 get_hypervisor_property_mappings(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_hypervisor_property_mappings(Client, Input, []).
@@ -753,7 +821,7 @@ get_hypervisor_property_mappings(Client, Input)
 -spec get_hypervisor_property_mappings(map(), get_hypervisor_property_mappings_input(), proplists:proplist()) ->
     {ok, get_hypervisor_property_mappings_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_hypervisor_property_mappings_errors(), tuple()}.
 get_hypervisor_property_mappings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetHypervisorPropertyMappings">>, Input, Options).
@@ -763,7 +831,7 @@ get_hypervisor_property_mappings(Client, Input, Options)
 -spec get_virtual_machine(map(), get_virtual_machine_input()) ->
     {ok, get_virtual_machine_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_virtual_machine_errors(), tuple()}.
 get_virtual_machine(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_virtual_machine(Client, Input, []).
@@ -771,7 +839,7 @@ get_virtual_machine(Client, Input)
 -spec get_virtual_machine(map(), get_virtual_machine_input(), proplists:proplist()) ->
     {ok, get_virtual_machine_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_virtual_machine_errors(), tuple()}.
 get_virtual_machine(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetVirtualMachine">>, Input, Options).
@@ -780,8 +848,7 @@ get_virtual_machine(Client, Input, Options)
 -spec import_hypervisor_configuration(map(), import_hypervisor_configuration_input()) ->
     {ok, import_hypervisor_configuration_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()}.
+    {error, import_hypervisor_configuration_errors(), tuple()}.
 import_hypervisor_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_hypervisor_configuration(Client, Input, []).
@@ -789,8 +856,7 @@ import_hypervisor_configuration(Client, Input)
 -spec import_hypervisor_configuration(map(), import_hypervisor_configuration_input(), proplists:proplist()) ->
     {ok, import_hypervisor_configuration_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()}.
+    {error, import_hypervisor_configuration_errors(), tuple()}.
 import_hypervisor_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportHypervisorConfiguration">>, Input, Options).
@@ -834,7 +900,7 @@ list_hypervisors(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -842,7 +908,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_input(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -872,7 +938,7 @@ list_virtual_machines(Client, Input, Options)
 -spec put_bandwidth_rate_limit_schedule(map(), put_bandwidth_rate_limit_schedule_input()) ->
     {ok, put_bandwidth_rate_limit_schedule_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_bandwidth_rate_limit_schedule_errors(), tuple()}.
 put_bandwidth_rate_limit_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_bandwidth_rate_limit_schedule(Client, Input, []).
@@ -880,7 +946,7 @@ put_bandwidth_rate_limit_schedule(Client, Input)
 -spec put_bandwidth_rate_limit_schedule(map(), put_bandwidth_rate_limit_schedule_input(), proplists:proplist()) ->
     {ok, put_bandwidth_rate_limit_schedule_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_bandwidth_rate_limit_schedule_errors(), tuple()}.
 put_bandwidth_rate_limit_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutBandwidthRateLimitSchedule">>, Input, Options).
@@ -894,9 +960,7 @@ put_bandwidth_rate_limit_schedule(Client, Input, Options)
 -spec put_hypervisor_property_mappings(map(), put_hypervisor_property_mappings_input()) ->
     {ok, put_hypervisor_property_mappings_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_hypervisor_property_mappings_errors(), tuple()}.
 put_hypervisor_property_mappings(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_hypervisor_property_mappings(Client, Input, []).
@@ -904,9 +968,7 @@ put_hypervisor_property_mappings(Client, Input)
 -spec put_hypervisor_property_mappings(map(), put_hypervisor_property_mappings_input(), proplists:proplist()) ->
     {ok, put_hypervisor_property_mappings_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_hypervisor_property_mappings_errors(), tuple()}.
 put_hypervisor_property_mappings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutHypervisorPropertyMappings">>, Input, Options).
@@ -915,8 +977,7 @@ put_hypervisor_property_mappings(Client, Input, Options)
 -spec put_maintenance_start_time(map(), put_maintenance_start_time_input()) ->
     {ok, put_maintenance_start_time_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_maintenance_start_time_errors(), tuple()}.
 put_maintenance_start_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_maintenance_start_time(Client, Input, []).
@@ -924,8 +985,7 @@ put_maintenance_start_time(Client, Input)
 -spec put_maintenance_start_time(map(), put_maintenance_start_time_input(), proplists:proplist()) ->
     {ok, put_maintenance_start_time_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_maintenance_start_time_errors(), tuple()}.
 put_maintenance_start_time(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutMaintenanceStartTime">>, Input, Options).
@@ -935,8 +995,7 @@ put_maintenance_start_time(Client, Input, Options)
 -spec start_virtual_machines_metadata_sync(map(), start_virtual_machines_metadata_sync_input()) ->
     {ok, start_virtual_machines_metadata_sync_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_virtual_machines_metadata_sync_errors(), tuple()}.
 start_virtual_machines_metadata_sync(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_virtual_machines_metadata_sync(Client, Input, []).
@@ -944,8 +1003,7 @@ start_virtual_machines_metadata_sync(Client, Input)
 -spec start_virtual_machines_metadata_sync(map(), start_virtual_machines_metadata_sync_input(), proplists:proplist()) ->
     {ok, start_virtual_machines_metadata_sync_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_virtual_machines_metadata_sync_errors(), tuple()}.
 start_virtual_machines_metadata_sync(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartVirtualMachinesMetadataSync">>, Input, Options).
@@ -954,7 +1012,7 @@ start_virtual_machines_metadata_sync(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -962,7 +1020,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -973,8 +1031,7 @@ tag_resource(Client, Input, Options)
 -spec test_hypervisor_configuration(map(), test_hypervisor_configuration_input()) ->
     {ok, test_hypervisor_configuration_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, test_hypervisor_configuration_errors(), tuple()}.
 test_hypervisor_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_hypervisor_configuration(Client, Input, []).
@@ -982,8 +1039,7 @@ test_hypervisor_configuration(Client, Input)
 -spec test_hypervisor_configuration(map(), test_hypervisor_configuration_input(), proplists:proplist()) ->
     {ok, test_hypervisor_configuration_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, test_hypervisor_configuration_errors(), tuple()}.
 test_hypervisor_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TestHypervisorConfiguration">>, Input, Options).
@@ -992,7 +1048,7 @@ test_hypervisor_configuration(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -1000,7 +1056,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -1012,8 +1068,7 @@ untag_resource(Client, Input, Options)
 -spec update_gateway_information(map(), update_gateway_information_input()) ->
     {ok, update_gateway_information_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_gateway_information_errors(), tuple()}.
 update_gateway_information(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_gateway_information(Client, Input, []).
@@ -1021,8 +1076,7 @@ update_gateway_information(Client, Input)
 -spec update_gateway_information(map(), update_gateway_information_input(), proplists:proplist()) ->
     {ok, update_gateway_information_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_gateway_information_errors(), tuple()}.
 update_gateway_information(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGatewayInformation">>, Input, Options).
@@ -1037,7 +1091,7 @@ update_gateway_information(Client, Input, Options)
 -spec update_gateway_software_now(map(), update_gateway_software_now_input()) ->
     {ok, update_gateway_software_now_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_gateway_software_now_errors(), tuple()}.
 update_gateway_software_now(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_gateway_software_now(Client, Input, []).
@@ -1045,7 +1099,7 @@ update_gateway_software_now(Client, Input)
 -spec update_gateway_software_now(map(), update_gateway_software_now_input(), proplists:proplist()) ->
     {ok, update_gateway_software_now_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_gateway_software_now_errors(), tuple()}.
 update_gateway_software_now(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGatewaySoftwareNow">>, Input, Options).
@@ -1060,9 +1114,7 @@ update_gateway_software_now(Client, Input, Options)
 -spec update_hypervisor(map(), update_hypervisor_input()) ->
     {ok, update_hypervisor_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_hypervisor_errors(), tuple()}.
 update_hypervisor(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_hypervisor(Client, Input, []).
@@ -1070,9 +1122,7 @@ update_hypervisor(Client, Input)
 -spec update_hypervisor(map(), update_hypervisor_input(), proplists:proplist()) ->
     {ok, update_hypervisor_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_hypervisor_errors(), tuple()}.
 update_hypervisor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateHypervisor">>, Input, Options).

@@ -792,6 +792,229 @@
 %% }
 -type speaker_enrollment_job_summary() :: #{binary() => any()}.
 
+-type associate_fraudster_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_domain_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_watchlist_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_domain_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_fraudster_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_speaker_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_watchlist_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_domain_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_fraudster_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_fraudster_registration_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_speaker_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_speaker_enrollment_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_watchlist_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type disassociate_fraudster_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type evaluate_session_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_domains_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_fraudster_registration_jobs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_fraudsters_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_speaker_enrollment_jobs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_speakers_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_watchlists_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type opt_out_speaker_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_fraudster_registration_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_speaker_enrollment_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_domain_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_watchlist_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -802,13 +1025,7 @@
 -spec associate_fraudster(map(), associate_fraudster_request()) ->
     {ok, associate_fraudster_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_fraudster_errors(), tuple()}.
 associate_fraudster(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_fraudster(Client, Input, []).
@@ -816,13 +1033,7 @@ associate_fraudster(Client, Input)
 -spec associate_fraudster(map(), associate_fraudster_request(), proplists:proplist()) ->
     {ok, associate_fraudster_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_fraudster_errors(), tuple()}.
 associate_fraudster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateFraudster">>, Input, Options).
@@ -836,13 +1047,7 @@ associate_fraudster(Client, Input, Options)
 -spec create_domain(map(), create_domain_request()) ->
     {ok, create_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_domain_errors(), tuple()}.
 create_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_domain(Client, Input, []).
@@ -850,13 +1055,7 @@ create_domain(Client, Input)
 -spec create_domain(map(), create_domain_request(), proplists:proplist()) ->
     {ok, create_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_domain_errors(), tuple()}.
 create_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDomain">>, Input, Options).
@@ -865,13 +1064,7 @@ create_domain(Client, Input, Options)
 -spec create_watchlist(map(), create_watchlist_request()) ->
     {ok, create_watchlist_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_watchlist_errors(), tuple()}.
 create_watchlist(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_watchlist(Client, Input, []).
@@ -879,13 +1072,7 @@ create_watchlist(Client, Input)
 -spec create_watchlist(map(), create_watchlist_request(), proplists:proplist()) ->
     {ok, create_watchlist_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_watchlist_errors(), tuple()}.
 create_watchlist(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWatchlist">>, Input, Options).
@@ -894,12 +1081,7 @@ create_watchlist(Client, Input, Options)
 -spec delete_domain(map(), delete_domain_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_domain_errors(), tuple()}.
 delete_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_domain(Client, Input, []).
@@ -907,12 +1089,7 @@ delete_domain(Client, Input)
 -spec delete_domain(map(), delete_domain_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_domain_errors(), tuple()}.
 delete_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDomain">>, Input, Options).
@@ -924,12 +1101,7 @@ delete_domain(Client, Input, Options)
 -spec delete_fraudster(map(), delete_fraudster_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_fraudster_errors(), tuple()}.
 delete_fraudster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_fraudster(Client, Input, []).
@@ -937,12 +1109,7 @@ delete_fraudster(Client, Input)
 -spec delete_fraudster(map(), delete_fraudster_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_fraudster_errors(), tuple()}.
 delete_fraudster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFraudster">>, Input, Options).
@@ -951,12 +1118,7 @@ delete_fraudster(Client, Input, Options)
 -spec delete_speaker(map(), delete_speaker_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_speaker_errors(), tuple()}.
 delete_speaker(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_speaker(Client, Input, []).
@@ -964,12 +1126,7 @@ delete_speaker(Client, Input)
 -spec delete_speaker(map(), delete_speaker_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_speaker_errors(), tuple()}.
 delete_speaker(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSpeaker">>, Input, Options).
@@ -984,12 +1141,7 @@ delete_speaker(Client, Input, Options)
 -spec delete_watchlist(map(), delete_watchlist_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_watchlist_errors(), tuple()}.
 delete_watchlist(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_watchlist(Client, Input, []).
@@ -997,12 +1149,7 @@ delete_watchlist(Client, Input)
 -spec delete_watchlist(map(), delete_watchlist_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_watchlist_errors(), tuple()}.
 delete_watchlist(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWatchlist">>, Input, Options).
@@ -1011,11 +1158,7 @@ delete_watchlist(Client, Input, Options)
 -spec describe_domain(map(), describe_domain_request()) ->
     {ok, describe_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_domain_errors(), tuple()}.
 describe_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_domain(Client, Input, []).
@@ -1023,11 +1166,7 @@ describe_domain(Client, Input)
 -spec describe_domain(map(), describe_domain_request(), proplists:proplist()) ->
     {ok, describe_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_domain_errors(), tuple()}.
 describe_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDomain">>, Input, Options).
@@ -1036,11 +1175,7 @@ describe_domain(Client, Input, Options)
 -spec describe_fraudster(map(), describe_fraudster_request()) ->
     {ok, describe_fraudster_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_fraudster_errors(), tuple()}.
 describe_fraudster(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fraudster(Client, Input, []).
@@ -1048,11 +1183,7 @@ describe_fraudster(Client, Input)
 -spec describe_fraudster(map(), describe_fraudster_request(), proplists:proplist()) ->
     {ok, describe_fraudster_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_fraudster_errors(), tuple()}.
 describe_fraudster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFraudster">>, Input, Options).
@@ -1061,11 +1192,7 @@ describe_fraudster(Client, Input, Options)
 -spec describe_fraudster_registration_job(map(), describe_fraudster_registration_job_request()) ->
     {ok, describe_fraudster_registration_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_fraudster_registration_job_errors(), tuple()}.
 describe_fraudster_registration_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fraudster_registration_job(Client, Input, []).
@@ -1073,11 +1200,7 @@ describe_fraudster_registration_job(Client, Input)
 -spec describe_fraudster_registration_job(map(), describe_fraudster_registration_job_request(), proplists:proplist()) ->
     {ok, describe_fraudster_registration_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_fraudster_registration_job_errors(), tuple()}.
 describe_fraudster_registration_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFraudsterRegistrationJob">>, Input, Options).
@@ -1086,11 +1209,7 @@ describe_fraudster_registration_job(Client, Input, Options)
 -spec describe_speaker(map(), describe_speaker_request()) ->
     {ok, describe_speaker_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_speaker_errors(), tuple()}.
 describe_speaker(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_speaker(Client, Input, []).
@@ -1098,11 +1217,7 @@ describe_speaker(Client, Input)
 -spec describe_speaker(map(), describe_speaker_request(), proplists:proplist()) ->
     {ok, describe_speaker_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_speaker_errors(), tuple()}.
 describe_speaker(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSpeaker">>, Input, Options).
@@ -1111,11 +1226,7 @@ describe_speaker(Client, Input, Options)
 -spec describe_speaker_enrollment_job(map(), describe_speaker_enrollment_job_request()) ->
     {ok, describe_speaker_enrollment_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_speaker_enrollment_job_errors(), tuple()}.
 describe_speaker_enrollment_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_speaker_enrollment_job(Client, Input, []).
@@ -1123,11 +1234,7 @@ describe_speaker_enrollment_job(Client, Input)
 -spec describe_speaker_enrollment_job(map(), describe_speaker_enrollment_job_request(), proplists:proplist()) ->
     {ok, describe_speaker_enrollment_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_speaker_enrollment_job_errors(), tuple()}.
 describe_speaker_enrollment_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSpeakerEnrollmentJob">>, Input, Options).
@@ -1136,11 +1243,7 @@ describe_speaker_enrollment_job(Client, Input, Options)
 -spec describe_watchlist(map(), describe_watchlist_request()) ->
     {ok, describe_watchlist_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_watchlist_errors(), tuple()}.
 describe_watchlist(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_watchlist(Client, Input, []).
@@ -1148,11 +1251,7 @@ describe_watchlist(Client, Input)
 -spec describe_watchlist(map(), describe_watchlist_request(), proplists:proplist()) ->
     {ok, describe_watchlist_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_watchlist_errors(), tuple()}.
 describe_watchlist(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWatchlist">>, Input, Options).
@@ -1166,12 +1265,7 @@ describe_watchlist(Client, Input, Options)
 -spec disassociate_fraudster(map(), disassociate_fraudster_request()) ->
     {ok, disassociate_fraudster_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_fraudster_errors(), tuple()}.
 disassociate_fraudster(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_fraudster(Client, Input, []).
@@ -1179,12 +1273,7 @@ disassociate_fraudster(Client, Input)
 -spec disassociate_fraudster(map(), disassociate_fraudster_request(), proplists:proplist()) ->
     {ok, disassociate_fraudster_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_fraudster_errors(), tuple()}.
 disassociate_fraudster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateFraudster">>, Input, Options).
@@ -1195,12 +1284,7 @@ disassociate_fraudster(Client, Input, Options)
 -spec evaluate_session(map(), evaluate_session_request()) ->
     {ok, evaluate_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, evaluate_session_errors(), tuple()}.
 evaluate_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     evaluate_session(Client, Input, []).
@@ -1208,12 +1292,7 @@ evaluate_session(Client, Input)
 -spec evaluate_session(map(), evaluate_session_request(), proplists:proplist()) ->
     {ok, evaluate_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, evaluate_session_errors(), tuple()}.
 evaluate_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EvaluateSession">>, Input, Options).
@@ -1222,10 +1301,7 @@ evaluate_session(Client, Input, Options)
 -spec list_domains(map(), list_domains_request()) ->
     {ok, list_domains_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_domains_errors(), tuple()}.
 list_domains(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_domains(Client, Input, []).
@@ -1233,10 +1309,7 @@ list_domains(Client, Input)
 -spec list_domains(map(), list_domains_request(), proplists:proplist()) ->
     {ok, list_domains_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_domains_errors(), tuple()}.
 list_domains(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDomains">>, Input, Options).
@@ -1250,11 +1323,7 @@ list_domains(Client, Input, Options)
 -spec list_fraudster_registration_jobs(map(), list_fraudster_registration_jobs_request()) ->
     {ok, list_fraudster_registration_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_fraudster_registration_jobs_errors(), tuple()}.
 list_fraudster_registration_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_fraudster_registration_jobs(Client, Input, []).
@@ -1262,11 +1331,7 @@ list_fraudster_registration_jobs(Client, Input)
 -spec list_fraudster_registration_jobs(map(), list_fraudster_registration_jobs_request(), proplists:proplist()) ->
     {ok, list_fraudster_registration_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_fraudster_registration_jobs_errors(), tuple()}.
 list_fraudster_registration_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFraudsterRegistrationJobs">>, Input, Options).
@@ -1275,11 +1340,7 @@ list_fraudster_registration_jobs(Client, Input, Options)
 -spec list_fraudsters(map(), list_fraudsters_request()) ->
     {ok, list_fraudsters_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_fraudsters_errors(), tuple()}.
 list_fraudsters(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_fraudsters(Client, Input, []).
@@ -1287,11 +1348,7 @@ list_fraudsters(Client, Input)
 -spec list_fraudsters(map(), list_fraudsters_request(), proplists:proplist()) ->
     {ok, list_fraudsters_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_fraudsters_errors(), tuple()}.
 list_fraudsters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFraudsters">>, Input, Options).
@@ -1305,11 +1362,7 @@ list_fraudsters(Client, Input, Options)
 -spec list_speaker_enrollment_jobs(map(), list_speaker_enrollment_jobs_request()) ->
     {ok, list_speaker_enrollment_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_speaker_enrollment_jobs_errors(), tuple()}.
 list_speaker_enrollment_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_speaker_enrollment_jobs(Client, Input, []).
@@ -1317,11 +1370,7 @@ list_speaker_enrollment_jobs(Client, Input)
 -spec list_speaker_enrollment_jobs(map(), list_speaker_enrollment_jobs_request(), proplists:proplist()) ->
     {ok, list_speaker_enrollment_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_speaker_enrollment_jobs_errors(), tuple()}.
 list_speaker_enrollment_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSpeakerEnrollmentJobs">>, Input, Options).
@@ -1330,11 +1379,7 @@ list_speaker_enrollment_jobs(Client, Input, Options)
 -spec list_speakers(map(), list_speakers_request()) ->
     {ok, list_speakers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_speakers_errors(), tuple()}.
 list_speakers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_speakers(Client, Input, []).
@@ -1342,11 +1387,7 @@ list_speakers(Client, Input)
 -spec list_speakers(map(), list_speakers_request(), proplists:proplist()) ->
     {ok, list_speakers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_speakers_errors(), tuple()}.
 list_speakers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSpeakers">>, Input, Options).
@@ -1355,11 +1396,7 @@ list_speakers(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -1367,11 +1404,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -1380,11 +1413,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec list_watchlists(map(), list_watchlists_request()) ->
     {ok, list_watchlists_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_watchlists_errors(), tuple()}.
 list_watchlists(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_watchlists(Client, Input, []).
@@ -1392,11 +1421,7 @@ list_watchlists(Client, Input)
 -spec list_watchlists(map(), list_watchlists_request(), proplists:proplist()) ->
     {ok, list_watchlists_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_watchlists_errors(), tuple()}.
 list_watchlists(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWatchlists">>, Input, Options).
@@ -1416,13 +1441,7 @@ list_watchlists(Client, Input, Options)
 -spec opt_out_speaker(map(), opt_out_speaker_request()) ->
     {ok, opt_out_speaker_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, opt_out_speaker_errors(), tuple()}.
 opt_out_speaker(Client, Input)
   when is_map(Client), is_map(Input) ->
     opt_out_speaker(Client, Input, []).
@@ -1430,13 +1449,7 @@ opt_out_speaker(Client, Input)
 -spec opt_out_speaker(map(), opt_out_speaker_request(), proplists:proplist()) ->
     {ok, opt_out_speaker_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, opt_out_speaker_errors(), tuple()}.
 opt_out_speaker(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"OptOutSpeaker">>, Input, Options).
@@ -1445,13 +1458,7 @@ opt_out_speaker(Client, Input, Options)
 -spec start_fraudster_registration_job(map(), start_fraudster_registration_job_request()) ->
     {ok, start_fraudster_registration_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_fraudster_registration_job_errors(), tuple()}.
 start_fraudster_registration_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_fraudster_registration_job(Client, Input, []).
@@ -1459,13 +1466,7 @@ start_fraudster_registration_job(Client, Input)
 -spec start_fraudster_registration_job(map(), start_fraudster_registration_job_request(), proplists:proplist()) ->
     {ok, start_fraudster_registration_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_fraudster_registration_job_errors(), tuple()}.
 start_fraudster_registration_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartFraudsterRegistrationJob">>, Input, Options).
@@ -1474,13 +1475,7 @@ start_fraudster_registration_job(Client, Input, Options)
 -spec start_speaker_enrollment_job(map(), start_speaker_enrollment_job_request()) ->
     {ok, start_speaker_enrollment_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_speaker_enrollment_job_errors(), tuple()}.
 start_speaker_enrollment_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_speaker_enrollment_job(Client, Input, []).
@@ -1488,13 +1483,7 @@ start_speaker_enrollment_job(Client, Input)
 -spec start_speaker_enrollment_job(map(), start_speaker_enrollment_job_request(), proplists:proplist()) ->
     {ok, start_speaker_enrollment_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_speaker_enrollment_job_errors(), tuple()}.
 start_speaker_enrollment_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartSpeakerEnrollmentJob">>, Input, Options).
@@ -1503,12 +1492,7 @@ start_speaker_enrollment_job(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -1516,12 +1500,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -1531,12 +1510,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -1544,12 +1518,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -1563,12 +1532,7 @@ untag_resource(Client, Input, Options)
 -spec update_domain(map(), update_domain_request()) ->
     {ok, update_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_domain_errors(), tuple()}.
 update_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_domain(Client, Input, []).
@@ -1576,12 +1540,7 @@ update_domain(Client, Input)
 -spec update_domain(map(), update_domain_request(), proplists:proplist()) ->
     {ok, update_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_domain_errors(), tuple()}.
 update_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDomain">>, Input, Options).
@@ -1592,12 +1551,7 @@ update_domain(Client, Input, Options)
 -spec update_watchlist(map(), update_watchlist_request()) ->
     {ok, update_watchlist_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_watchlist_errors(), tuple()}.
 update_watchlist(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_watchlist(Client, Input, []).
@@ -1605,12 +1559,7 @@ update_watchlist(Client, Input)
 -spec update_watchlist(map(), update_watchlist_request(), proplists:proplist()) ->
     {ok, update_watchlist_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_watchlist_errors(), tuple()}.
 update_watchlist(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateWatchlist">>, Input, Options).

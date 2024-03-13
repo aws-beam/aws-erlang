@@ -246,17 +246,20 @@
 %% }
 -type streaming_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_delete_phone_number_request() :: #{
 %%   <<"PhoneNumberIds">> := list(string()())
 %% }
 -type batch_delete_phone_number_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_voice_connector_termination_credentials_request() :: #{
 %%   <<"Credentials">> => list(credential()())
 %% }
 -type put_voice_connector_termination_credentials_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_sip_rule_request() :: #{
@@ -265,6 +268,7 @@
 %%   <<"TargetApplications">> => list(sip_rule_target_application()())
 %% }
 -type update_sip_rule_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% sip_rule() :: #{
@@ -279,6 +283,7 @@
 %% }
 -type sip_rule() :: #{binary() => any()}.
 
+
 %% Example:
 %% call_details() :: #{
 %%   <<"IsCaller">> => boolean(),
@@ -287,11 +292,13 @@
 %% }
 -type call_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_phone_number_order_response() :: #{
 %%   <<"PhoneNumberOrder">> => phone_number_order()
 %% }
 -type create_phone_number_order_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_sip_media_application_request() :: #{
@@ -302,11 +309,13 @@
 %% }
 -type create_sip_media_application_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_sip_media_application_call_response() :: #{
 %%   <<"SipMediaApplicationCall">> => sip_media_application_call()
 %% }
 -type update_sip_media_application_call_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% tag_resource_request() :: #{
@@ -315,11 +324,13 @@
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_sip_media_application_logging_configuration_request() :: #{
 %%   <<"SipMediaApplicationLoggingConfiguration">> => sip_media_application_logging_configuration()
 %% }
 -type put_sip_media_application_logging_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% proxy() :: #{
@@ -330,6 +341,7 @@
 %% }
 -type proxy() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_proxy_session_request() :: #{
 %%   <<"Capabilities">> := list(list(any())()),
@@ -337,14 +349,17 @@
 %% }
 -type update_proxy_session_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_update_phone_number_response() :: #{
 %%   <<"PhoneNumberErrors">> => list(phone_number_error()())
 %% }
 -type batch_update_phone_number_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_voice_connector_termination_health_request() :: #{}
 -type get_voice_connector_termination_health_request() :: #{}.
+
 
 %% Example:
 %% validate_e911_address_response() :: #{
@@ -355,11 +370,13 @@
 %% }
 -type validate_e911_address_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_voice_connector_response() :: #{
 %%   <<"VoiceConnector">> => voice_connector()
 %% }
 -type update_voice_connector_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_phone_number_orders_response() :: #{
@@ -367,6 +384,7 @@
 %%   <<"PhoneNumberOrders">> => list(phone_number_order()())
 %% }
 -type list_phone_number_orders_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_voice_tone_analysis_task_request() :: #{
@@ -376,12 +394,14 @@
 %% }
 -type start_voice_tone_analysis_task_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% speaker_search_result() :: #{
 %%   <<"ConfidenceScore">> => float(),
 %%   <<"VoiceProfileId">> => string()
 %% }
 -type speaker_search_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% termination_health() :: #{
@@ -390,6 +410,7 @@
 %% }
 -type termination_health() :: #{binary() => any()}.
 
+
 %% Example:
 %% participant() :: #{
 %%   <<"PhoneNumber">> => string(),
@@ -397,12 +418,14 @@
 %% }
 -type participant() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_sip_media_application_request() :: #{
 %%   <<"Endpoints">> => list(sip_media_application_endpoint()()),
 %%   <<"Name">> => string()
 %% }
 -type update_sip_media_application_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% voice_profile_domain_summary() :: #{
@@ -414,9 +437,11 @@
 %%   <<"VoiceProfileDomainId">> => string()
 %% }
 -type voice_profile_domain_summary() :: #{binary() => any()}.
+
 %% Example:
 %% delete_voice_connector_group_request() :: #{}
 -type delete_voice_connector_group_request() :: #{}.
+
 
 %% Example:
 %% origination() :: #{
@@ -425,11 +450,13 @@
 %% }
 -type origination() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_speaker_search_task_response() :: #{
 %%   <<"SpeakerSearchTask">> => speaker_search_task()
 %% }
 -type start_speaker_search_task_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_voice_connectors_request() :: #{
@@ -438,12 +465,14 @@
 %% }
 -type list_voice_connectors_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% phone_number_country() :: #{
 %%   <<"CountryCode">> => string(),
 %%   <<"SupportedPhoneNumberTypes">> => list(list(any())())
 %% }
 -type phone_number_country() :: #{binary() => any()}.
+
 
 %% Example:
 %% geo_match_params() :: #{
@@ -452,15 +481,18 @@
 %% }
 -type geo_match_params() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_available_phone_numbers_response() :: #{
 %%   <<"E164PhoneNumbers">> => list(string()()),
 %%   <<"NextToken">> => string()
 %% }
 -type search_available_phone_numbers_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_voice_connector_request() :: #{}
 -type get_voice_connector_request() :: #{}.
+
 
 %% Example:
 %% put_voice_connector_origination_response() :: #{
@@ -468,11 +500,13 @@
 %% }
 -type put_voice_connector_origination_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_sip_rule_response() :: #{
 %%   <<"SipRule">> => sip_rule()
 %% }
 -type create_sip_rule_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% associate_phone_numbers_with_voice_connector_group_request() :: #{
@@ -481,11 +515,13 @@
 %% }
 -type associate_phone_numbers_with_voice_connector_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_voice_connector_group_response() :: #{
 %%   <<"VoiceConnectorGroup">> => voice_connector_group()
 %% }
 -type create_voice_connector_group_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_voice_profile_domains_response() :: #{
@@ -493,9 +529,11 @@
 %%   <<"VoiceProfileDomains">> => list(voice_profile_domain_summary()())
 %% }
 -type list_voice_profile_domains_response() :: #{binary() => any()}.
+
 %% Example:
 %% list_voice_connector_termination_credentials_request() :: #{}
 -type list_voice_connector_termination_credentials_request() :: #{}.
+
 
 %% Example:
 %% update_phone_number_settings_request() :: #{
@@ -503,14 +541,17 @@
 %% }
 -type update_phone_number_settings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_voice_connector_proxy_response() :: #{
 %%   <<"Proxy">> => proxy()
 %% }
 -type get_voice_connector_proxy_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_voice_connector_logging_configuration_request() :: #{}
 -type get_voice_connector_logging_configuration_request() :: #{}.
+
 
 %% Example:
 %% service_failure_exception() :: #{
@@ -518,15 +559,19 @@
 %%   <<"Message">> => string()
 %% }
 -type service_failure_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_sip_rule_request() :: #{}
 -type delete_sip_rule_request() :: #{}.
+
 %% Example:
 %% get_voice_connector_emergency_calling_configuration_request() :: #{}
 -type get_voice_connector_emergency_calling_configuration_request() :: #{}.
+
 %% Example:
 %% restore_phone_number_request() :: #{}
 -type restore_phone_number_request() :: #{}.
+
 
 %% Example:
 %% put_voice_connector_emergency_calling_configuration_request() :: #{
@@ -534,11 +579,13 @@
 %% }
 -type put_voice_connector_emergency_calling_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_voice_profile_response() :: #{
 %%   <<"VoiceProfile">> => voice_profile()
 %% }
 -type create_voice_profile_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% forbidden_exception() :: #{
@@ -547,11 +594,13 @@
 %% }
 -type forbidden_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_voice_connector_response() :: #{
 %%   <<"VoiceConnector">> => voice_connector()
 %% }
 -type get_voice_connector_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_voice_profile_response() :: #{
@@ -559,20 +608,24 @@
 %% }
 -type update_voice_profile_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_proxy_session_response() :: #{
 %%   <<"ProxySession">> => proxy_session()
 %% }
 -type create_proxy_session_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_voice_profile_domain_request() :: #{}
 -type get_voice_profile_domain_request() :: #{}.
+
 
 %% Example:
 %% put_voice_connector_termination_request() :: #{
 %%   <<"Termination">> := termination()
 %% }
 -type put_voice_connector_termination_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% phone_number_association() :: #{
@@ -582,15 +635,18 @@
 %% }
 -type phone_number_association() :: #{binary() => any()}.
 
+
 %% Example:
 %% unauthorized_client_exception() :: #{
 %%   <<"Code">> => list(any()),
 %%   <<"Message">> => string()
 %% }
 -type unauthorized_client_exception() :: #{binary() => any()}.
+
 %% Example:
 %% get_voice_connector_streaming_configuration_request() :: #{}
 -type get_voice_connector_streaming_configuration_request() :: #{}.
+
 
 %% Example:
 %% phone_number() :: #{
@@ -612,6 +668,7 @@
 %% }
 -type phone_number() :: #{binary() => any()}.
 
+
 %% Example:
 %% termination() :: #{
 %%   <<"CallingRegions">> => list(string()()),
@@ -621,15 +678,18 @@
 %%   <<"Disabled">> => boolean()
 %% }
 -type termination() :: #{binary() => any()}.
+
 %% Example:
 %% get_phone_number_order_request() :: #{}
 -type get_phone_number_order_request() :: #{}.
+
 
 %% Example:
 %% create_voice_profile_domain_response() :: #{
 %%   <<"VoiceProfileDomain">> => voice_profile_domain()
 %% }
 -type create_voice_profile_domain_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% speaker_search_task() :: #{
@@ -644,20 +704,24 @@
 %% }
 -type speaker_search_task() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_phone_number_response() :: #{
 %%   <<"PhoneNumber">> => phone_number()
 %% }
 -type update_phone_number_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_speaker_search_task_response() :: #{
 %%   <<"SpeakerSearchTask">> => speaker_search_task()
 %% }
 -type get_speaker_search_task_response() :: #{binary() => any()}.
+
 %% Example:
 %% stop_speaker_search_task_request() :: #{}
 -type stop_speaker_search_task_request() :: #{}.
+
 
 %% Example:
 %% throttled_client_exception() :: #{
@@ -666,6 +730,7 @@
 %% }
 -type throttled_client_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% gone_exception() :: #{
 %%   <<"Code">> => list(any()),
@@ -673,11 +738,13 @@
 %% }
 -type gone_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_voice_profile_request() :: #{
 %%   <<"SpeakerSearchTaskId">> := string()
 %% }
 -type update_voice_profile_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% media_insights_configuration() :: #{
@@ -686,11 +753,13 @@
 %% }
 -type media_insights_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_voice_connector_termination_health_response() :: #{
 %%   <<"TerminationHealth">> => termination_health()
 %% }
 -type get_voice_connector_termination_health_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% associate_phone_numbers_with_voice_connector_request() :: #{
@@ -698,9 +767,11 @@
 %%   <<"ForceAssociate">> => boolean()
 %% }
 -type associate_phone_numbers_with_voice_connector_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_voice_connector_origination_request() :: #{}
 -type delete_voice_connector_origination_request() :: #{}.
+
 
 %% Example:
 %% list_sip_media_applications_request() :: #{
@@ -709,12 +780,14 @@
 %% }
 -type list_sip_media_applications_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% ordered_phone_number() :: #{
@@ -723,17 +796,20 @@
 %% }
 -type ordered_phone_number() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_sip_media_application_logging_configuration_response() :: #{
 %%   <<"SipMediaApplicationLoggingConfiguration">> => sip_media_application_logging_configuration()
 %% }
 -type get_sip_media_application_logging_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_proxy_session_response() :: #{
 %%   <<"ProxySession">> => proxy_session()
 %% }
 -type update_proxy_session_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_phone_number_order_request() :: #{
@@ -742,9 +818,11 @@
 %%   <<"ProductType">> := list(any())
 %% }
 -type create_phone_number_order_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_sip_media_application_request() :: #{}
 -type delete_sip_media_application_request() :: #{}.
+
 
 %% Example:
 %% get_sip_media_application_response() :: #{
@@ -752,11 +830,13 @@
 %% }
 -type get_sip_media_application_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_sip_rule_response() :: #{
 %%   <<"SipRule">> => sip_rule()
 %% }
 -type get_sip_rule_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_voice_profile_domain_response() :: #{
@@ -764,20 +844,24 @@
 %% }
 -type update_voice_profile_domain_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% voice_connector_settings() :: #{
 %%   <<"CdrBucket">> => string()
 %% }
 -type voice_connector_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_voice_tone_analysis_task_response() :: #{
 %%   <<"VoiceToneAnalysisTask">> => voice_tone_analysis_task()
 %% }
 -type get_voice_tone_analysis_task_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_proxy_session_request() :: #{}
 -type delete_proxy_session_request() :: #{}.
+
 
 %% Example:
 %% logging_configuration() :: #{
@@ -785,6 +869,7 @@
 %%   <<"EnableSIPLogs">> => boolean()
 %% }
 -type logging_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% voice_profile_domain() :: #{
@@ -798,11 +883,13 @@
 %% }
 -type voice_profile_domain() :: #{binary() => any()}.
 
+
 %% Example:
 %% restore_phone_number_response() :: #{
 %%   <<"PhoneNumber">> => phone_number()
 %% }
 -type restore_phone_number_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% speaker_search_details() :: #{
@@ -811,6 +898,7 @@
 %% }
 -type speaker_search_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_phone_number_orders_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -818,11 +906,13 @@
 %% }
 -type list_phone_number_orders_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_voice_connector_termination_response() :: #{
 %%   <<"Termination">> => termination()
 %% }
 -type put_voice_connector_termination_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_voice_connector_group_request() :: #{
@@ -831,11 +921,13 @@
 %% }
 -type update_voice_connector_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_supported_phone_number_countries_response() :: #{
 %%   <<"PhoneNumberCountries">> => list(phone_number_country()())
 %% }
 -type list_supported_phone_number_countries_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_voice_tone_analysis_task_response() :: #{
@@ -843,11 +935,13 @@
 %% }
 -type start_voice_tone_analysis_task_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_sip_media_application_response() :: #{
 %%   <<"SipMediaApplication">> => sip_media_application()
 %% }
 -type update_sip_media_application_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% d_n_i_s_emergency_calling_configuration() :: #{
@@ -857,20 +951,24 @@
 %% }
 -type d_n_i_s_emergency_calling_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_voice_connector_logging_configuration_response() :: #{
 %%   <<"LoggingConfiguration">> => logging_configuration()
 %% }
 -type get_voice_connector_logging_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% disassociate_phone_numbers_from_voice_connector_request() :: #{
 %%   <<"E164PhoneNumbers">> := list(string()())
 %% }
 -type disassociate_phone_numbers_from_voice_connector_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_voice_connector_proxy_request() :: #{}
 -type delete_voice_connector_proxy_request() :: #{}.
+
 
 %% Example:
 %% list_voice_connector_groups_response() :: #{
@@ -879,6 +977,7 @@
 %% }
 -type list_voice_connector_groups_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_sip_rules_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -886,9 +985,11 @@
 %%   <<"SipMediaApplicationId">> => string()
 %% }
 -type list_sip_rules_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_voice_profile_request() :: #{}
 -type get_voice_profile_request() :: #{}.
+
 
 %% Example:
 %% list_proxy_sessions_response() :: #{
@@ -897,6 +998,7 @@
 %% }
 -type list_proxy_sessions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"Code">> => list(any()),
@@ -904,17 +1006,20 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_sip_media_application_alexa_skill_configuration_response() :: #{
 %%   <<"SipMediaApplicationAlexaSkillConfiguration">> => sip_media_application_alexa_skill_configuration()
 %% }
 -type get_sip_media_application_alexa_skill_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_voice_connector_streaming_configuration_response() :: #{
 %%   <<"StreamingConfiguration">> => streaming_configuration()
 %% }
 -type put_voice_connector_streaming_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% validate_e911_address_request() :: #{
@@ -928,6 +1033,7 @@
 %% }
 -type validate_e911_address_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_voice_connector_groups_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -935,14 +1041,17 @@
 %% }
 -type list_voice_connector_groups_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% disassociate_phone_numbers_from_voice_connector_response() :: #{
 %%   <<"PhoneNumberErrors">> => list(phone_number_error()())
 %% }
 -type disassociate_phone_numbers_from_voice_connector_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_voice_connector_termination_request() :: #{}
 -type get_voice_connector_termination_request() :: #{}.
+
 
 %% Example:
 %% list_sip_rules_response() :: #{
@@ -951,11 +1060,13 @@
 %% }
 -type list_sip_rules_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% disassociate_phone_numbers_from_voice_connector_group_request() :: #{
 %%   <<"E164PhoneNumbers">> := list(string()())
 %% }
 -type disassociate_phone_numbers_from_voice_connector_group_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% tag() :: #{
@@ -963,6 +1074,7 @@
 %%   <<"Value">> => string()
 %% }
 -type tag() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_sip_rule_request() :: #{
@@ -973,6 +1085,7 @@
 %%   <<"TriggerValue">> := string()
 %% }
 -type create_sip_rule_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% voice_profile() :: #{
@@ -985,11 +1098,13 @@
 %% }
 -type voice_profile() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_voice_connector_streaming_configuration_request() :: #{
 %%   <<"StreamingConfiguration">> := streaming_configuration()
 %% }
 -type put_voice_connector_streaming_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_speaker_search_task_request() :: #{
@@ -1000,17 +1115,20 @@
 %% }
 -type start_speaker_search_task_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_delete_phone_number_response() :: #{
 %%   <<"PhoneNumberErrors">> => list(phone_number_error()())
 %% }
 -type batch_delete_phone_number_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_voice_connector_streaming_configuration_response() :: #{
 %%   <<"StreamingConfiguration">> => streaming_configuration()
 %% }
 -type get_voice_connector_streaming_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% proxy_session() :: #{
@@ -1030,11 +1148,13 @@
 %% }
 -type proxy_session() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_phone_number_order_response() :: #{
 %%   <<"PhoneNumberOrder">> => phone_number_order()
 %% }
 -type get_phone_number_order_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_phone_numbers_request() :: #{
@@ -1047,12 +1167,14 @@
 %% }
 -type list_phone_numbers_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_limit_exceeded_exception() :: #{
 %%   <<"Code">> => list(any()),
 %%   <<"Message">> => string()
 %% }
 -type resource_limit_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_voice_connector_request() :: #{
@@ -1062,9 +1184,11 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type create_voice_connector_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_phone_number_request() :: #{}
 -type get_phone_number_request() :: #{}.
+
 
 %% Example:
 %% create_voice_profile_request() :: #{
@@ -1072,12 +1196,14 @@
 %% }
 -type create_voice_profile_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% not_found_exception() :: #{
 %%   <<"Code">> => list(any()),
 %%   <<"Message">> => string()
 %% }
 -type not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_voice_connector_proxy_request() :: #{
@@ -1088,17 +1214,20 @@
 %% }
 -type put_voice_connector_proxy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_phone_numbers_with_voice_connector_response() :: #{
 %%   <<"PhoneNumberErrors">> => list(phone_number_error()())
 %% }
 -type associate_phone_numbers_with_voice_connector_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_voice_connector_logging_configuration_request() :: #{
 %%   <<"LoggingConfiguration">> := logging_configuration()
 %% }
 -type put_voice_connector_logging_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% phone_number_order() :: #{
@@ -1111,9 +1240,11 @@
 %%   <<"UpdatedTimestamp">> => non_neg_integer()
 %% }
 -type phone_number_order() :: #{binary() => any()}.
+
 %% Example:
 %% delete_phone_number_request() :: #{}
 -type delete_phone_number_request() :: #{}.
+
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
@@ -1121,11 +1252,13 @@
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% sip_media_application_endpoint() :: #{
 %%   <<"LambdaArn">> => string()
 %% }
 -type sip_media_application_endpoint() :: #{binary() => any()}.
+
 
 %% Example:
 %% disassociate_phone_numbers_from_voice_connector_group_response() :: #{
@@ -1133,11 +1266,13 @@
 %% }
 -type disassociate_phone_numbers_from_voice_connector_group_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_global_settings_response() :: #{
 %%   <<"VoiceConnector">> => voice_connector_settings()
 %% }
 -type get_global_settings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% voice_connector() :: #{
@@ -1152,6 +1287,7 @@
 %% }
 -type voice_connector() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_proxy_sessions_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -1159,6 +1295,7 @@
 %%   <<"Status">> => list(any())
 %% }
 -type list_proxy_sessions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% origination_route() :: #{
@@ -1170,6 +1307,7 @@
 %% }
 -type origination_route() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_voice_profile_domains_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -1177,12 +1315,14 @@
 %% }
 -type list_voice_profile_domains_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_unavailable_exception() :: #{
 %%   <<"Code">> => list(any()),
 %%   <<"Message">> => string()
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% voice_tone_analysis_task() :: #{
@@ -1196,11 +1336,13 @@
 %% }
 -type voice_tone_analysis_task() :: #{binary() => any()}.
 
+
 %% Example:
 %% streaming_notification_target() :: #{
 %%   <<"NotificationTarget">> => list(any())
 %% }
 -type streaming_notification_target() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_voice_profile_domain_request() :: #{
@@ -1212,6 +1354,7 @@
 %% }
 -type create_voice_profile_domain_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% voice_connector_item() :: #{
 %%   <<"Priority">> => integer(),
@@ -1219,11 +1362,13 @@
 %% }
 -type voice_connector_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_available_voice_connector_regions_response() :: #{
 %%   <<"VoiceConnectorRegions">> => list(list(any())())
 %% }
 -type list_available_voice_connector_regions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_sip_media_application_logging_configuration_response() :: #{
@@ -1231,17 +1376,20 @@
 %% }
 -type put_sip_media_application_logging_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_voice_connector_group_response() :: #{
 %%   <<"VoiceConnectorGroup">> => voice_connector_group()
 %% }
 -type update_voice_connector_group_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_phone_number_response() :: #{
 %%   <<"PhoneNumber">> => phone_number()
 %% }
 -type get_phone_number_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_voice_profiles_request() :: #{
@@ -1251,11 +1399,13 @@
 %% }
 -type list_voice_profiles_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_voice_connector_termination_credentials_response() :: #{
 %%   <<"Usernames">> => list(string()())
 %% }
 -type list_voice_connector_termination_credentials_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% server_side_encryption_configuration() :: #{
@@ -1263,11 +1413,13 @@
 %% }
 -type server_side_encryption_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_global_settings_request() :: #{
 %%   <<"VoiceConnector">> => voice_connector_settings()
 %% }
 -type update_global_settings_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% sip_media_application_alexa_skill_configuration() :: #{
@@ -1275,6 +1427,7 @@
 %%   <<"AlexaSkillStatus">> => list(any())
 %% }
 -type sip_media_application_alexa_skill_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_proxy_session_request() :: #{
@@ -1288,6 +1441,7 @@
 %% }
 -type create_proxy_session_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% candidate_address() :: #{
 %%   <<"city">> => string(),
@@ -1299,12 +1453,15 @@
 %%   <<"streetNumber">> => string()
 %% }
 -type candidate_address() :: #{binary() => any()}.
+
 %% Example:
 %% get_sip_rule_request() :: #{}
 -type get_sip_rule_request() :: #{}.
+
 %% Example:
 %% get_voice_connector_proxy_request() :: #{}
 -type get_voice_connector_proxy_request() :: #{}.
+
 
 %% Example:
 %% list_sip_media_applications_response() :: #{
@@ -1312,12 +1469,15 @@
 %%   <<"SipMediaApplications">> => list(sip_media_application()())
 %% }
 -type list_sip_media_applications_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_sip_media_application_logging_configuration_request() :: #{}
 -type get_sip_media_application_logging_configuration_request() :: #{}.
+
 %% Example:
 %% stop_voice_tone_analysis_task_request() :: #{}
 -type stop_voice_tone_analysis_task_request() :: #{}.
+
 
 %% Example:
 %% sip_media_application_logging_configuration() :: #{
@@ -1325,11 +1485,13 @@
 %% }
 -type sip_media_application_logging_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_proxy_session_response() :: #{
 %%   <<"ProxySession">> => proxy_session()
 %% }
 -type get_proxy_session_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_voice_profiles_response() :: #{
@@ -1338,11 +1500,13 @@
 %% }
 -type list_voice_profiles_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_sip_rule_response() :: #{
 %%   <<"SipRule">> => sip_rule()
 %% }
 -type update_sip_rule_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% voice_profile_summary() :: #{
@@ -1355,12 +1519,14 @@
 %% }
 -type voice_profile_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% unprocessable_entity_exception() :: #{
 %%   <<"Code">> => list(any()),
 %%   <<"Message">> => string()
 %% }
 -type unprocessable_entity_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_voice_connector_group_request() :: #{
@@ -1369,6 +1535,7 @@
 %% }
 -type create_voice_connector_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"Code">> => list(any()),
@@ -1376,17 +1543,20 @@
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_voice_profile_response() :: #{
 %%   <<"VoiceProfile">> => voice_profile()
 %% }
 -type get_voice_profile_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_sip_media_application_call_response() :: #{
 %%   <<"SipMediaApplicationCall">> => sip_media_application_call()
 %% }
 -type create_sip_media_application_call_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% phone_number_error() :: #{
@@ -1395,6 +1565,7 @@
 %%   <<"PhoneNumberId">> => string()
 %% }
 -type phone_number_error() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_phone_number_request_item() :: #{
@@ -1405,11 +1576,13 @@
 %% }
 -type update_phone_number_request_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_phone_numbers_with_voice_connector_group_response() :: #{
 %%   <<"PhoneNumberErrors">> => list(phone_number_error()())
 %% }
 -type associate_phone_numbers_with_voice_connector_group_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_tags_for_resource_request() :: #{
@@ -1417,17 +1590,20 @@
 %% }
 -type list_tags_for_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_voice_connector_origination_request() :: #{
 %%   <<"Origination">> := origination()
 %% }
 -type put_voice_connector_origination_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_voice_connector_termination_credentials_request() :: #{
 %%   <<"Usernames">> := list(string()())
 %% }
 -type delete_voice_connector_termination_credentials_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_voice_connectors_response() :: #{
@@ -1436,14 +1612,17 @@
 %% }
 -type list_voice_connectors_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_sip_media_application_alexa_skill_configuration_response() :: #{
 %%   <<"SipMediaApplicationAlexaSkillConfiguration">> => sip_media_application_alexa_skill_configuration()
 %% }
 -type put_sip_media_application_alexa_skill_configuration_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_voice_connector_group_request() :: #{}
 -type get_voice_connector_group_request() :: #{}.
+
 
 %% Example:
 %% voice_connector_group() :: #{
@@ -1456,17 +1635,21 @@
 %% }
 -type voice_connector_group() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_voice_connector_origination_response() :: #{
 %%   <<"Origination">> => origination()
 %% }
 -type get_voice_connector_origination_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_voice_profile_request() :: #{}
 -type delete_voice_profile_request() :: #{}.
+
 %% Example:
 %% delete_voice_profile_domain_request() :: #{}
 -type delete_voice_profile_domain_request() :: #{}.
+
 
 %% Example:
 %% get_phone_number_settings_response() :: #{
@@ -1474,6 +1657,7 @@
 %%   <<"CallingNameUpdatedTimestamp">> => non_neg_integer()
 %% }
 -type get_phone_number_settings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_sip_media_application_call_request() :: #{
@@ -1484,14 +1668,17 @@
 %% }
 -type create_sip_media_application_call_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_sip_media_application_call_request() :: #{
 %%   <<"Arguments">> := map()
 %% }
 -type update_sip_media_application_call_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_voice_connector_termination_request() :: #{}
 -type delete_voice_connector_termination_request() :: #{}.
+
 
 %% Example:
 %% get_voice_connector_group_response() :: #{
@@ -1499,26 +1686,31 @@
 %% }
 -type get_voice_connector_group_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_voice_connector_logging_configuration_response() :: #{
 %%   <<"LoggingConfiguration">> => logging_configuration()
 %% }
 -type put_voice_connector_logging_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_voice_connector_response() :: #{
 %%   <<"VoiceConnector">> => voice_connector()
 %% }
 -type create_voice_connector_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_proxy_session_request() :: #{}
 -type get_proxy_session_request() :: #{}.
+
 
 %% Example:
 %% sip_media_application_call() :: #{
 %%   <<"TransactionId">> => string()
 %% }
 -type sip_media_application_call() :: #{binary() => any()}.
+
 
 %% Example:
 %% bad_request_exception() :: #{
@@ -1527,12 +1719,14 @@
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_phone_numbers_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"PhoneNumbers">> => list(phone_number()())
 %% }
 -type list_phone_numbers_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_voice_connector_request() :: #{
@@ -1541,11 +1735,13 @@
 %% }
 -type update_voice_connector_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_voice_tone_analysis_task_request() :: #{
 %%   <<"IsCaller">> := boolean()
 %% }
 -type get_voice_tone_analysis_task_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_voice_profile_domain_request() :: #{
@@ -1554,12 +1750,14 @@
 %% }
 -type update_voice_profile_domain_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% credential() :: #{
 %%   <<"Password">> => string(),
 %%   <<"Username">> => string()
 %% }
 -type credential() :: #{binary() => any()}.
+
 
 %% Example:
 %% phone_number_capabilities() :: #{
@@ -1571,15 +1769,19 @@
 %%   <<"OutboundSMS">> => boolean()
 %% }
 -type phone_number_capabilities() :: #{binary() => any()}.
+
 %% Example:
 %% delete_voice_connector_streaming_configuration_request() :: #{}
 -type delete_voice_connector_streaming_configuration_request() :: #{}.
+
 %% Example:
 %% delete_voice_connector_emergency_calling_configuration_request() :: #{}
 -type delete_voice_connector_emergency_calling_configuration_request() :: #{}.
+
 %% Example:
 %% get_sip_media_application_request() :: #{}
 -type get_sip_media_application_request() :: #{}.
+
 
 %% Example:
 %% create_sip_media_application_response() :: #{
@@ -1587,11 +1789,13 @@
 %% }
 -type create_sip_media_application_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_voice_connector_proxy_response() :: #{
 %%   <<"Proxy">> => proxy()
 %% }
 -type put_voice_connector_proxy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% address() :: #{
@@ -1608,6 +1812,7 @@
 %% }
 -type address() :: #{binary() => any()}.
 
+
 %% Example:
 %% sip_rule_target_application() :: #{
 %%   <<"AwsRegion">> => string(),
@@ -1616,17 +1821,21 @@
 %% }
 -type sip_rule_target_application() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_voice_connector_emergency_calling_configuration_response() :: #{
 %%   <<"EmergencyCallingConfiguration">> => emergency_calling_configuration()
 %% }
 -type get_voice_connector_emergency_calling_configuration_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_speaker_search_task_request() :: #{}
 -type get_speaker_search_task_request() :: #{}.
+
 %% Example:
 %% delete_voice_connector_request() :: #{}
 -type delete_voice_connector_request() :: #{}.
+
 
 %% Example:
 %% update_phone_number_request() :: #{
@@ -1636,14 +1845,17 @@
 %% }
 -type update_phone_number_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_voice_profile_domain_response() :: #{
 %%   <<"VoiceProfileDomain">> => voice_profile_domain()
 %% }
 -type get_voice_profile_domain_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_voice_connector_origination_request() :: #{}
 -type get_voice_connector_origination_request() :: #{}.
+
 
 %% Example:
 %% put_voice_connector_emergency_calling_configuration_response() :: #{
@@ -1651,14 +1863,17 @@
 %% }
 -type put_voice_connector_emergency_calling_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_voice_connector_termination_response() :: #{
 %%   <<"Termination">> => termination()
 %% }
 -type get_voice_connector_termination_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_sip_media_application_alexa_skill_configuration_request() :: #{}
 -type get_sip_media_application_alexa_skill_configuration_request() :: #{}.
+
 
 %% Example:
 %% batch_update_phone_number_request() :: #{
@@ -1666,11 +1881,13 @@
 %% }
 -type batch_update_phone_number_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_sip_media_application_alexa_skill_configuration_request() :: #{
 %%   <<"SipMediaApplicationAlexaSkillConfiguration">> => sip_media_application_alexa_skill_configuration()
 %% }
 -type put_sip_media_application_alexa_skill_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% sip_media_application() :: #{
@@ -1683,6 +1900,7 @@
 %%   <<"UpdatedTimestamp">> => non_neg_integer()
 %% }
 -type sip_media_application() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_available_phone_numbers_request() :: #{
@@ -1697,17 +1915,903 @@
 %% }
 -type search_available_phone_numbers_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_supported_phone_number_countries_request() :: #{
 %%   <<"ProductType">> := list(any())
 %% }
 -type list_supported_phone_number_countries_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% emergency_calling_configuration() :: #{
 %%   <<"DNIS">> => list(d_n_i_s_emergency_calling_configuration()())
 %% }
 -type emergency_calling_configuration() :: #{binary() => any()}.
+
+-type associate_phone_numbers_with_voice_connector_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type associate_phone_numbers_with_voice_connector_group_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type batch_delete_phone_number_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type batch_update_phone_number_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_phone_number_order_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_proxy_session_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_sip_media_application_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_sip_media_application_call_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_sip_rule_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_voice_connector_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_voice_connector_group_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_voice_profile_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    resource_limit_exceeded_exception() | 
+    conflict_exception() | 
+    gone_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_voice_profile_domain_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_phone_number_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_proxy_session_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_sip_media_application_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_sip_rule_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_voice_connector_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_voice_connector_emergency_calling_configuration_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_voice_connector_group_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_voice_connector_origination_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_voice_connector_proxy_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_voice_connector_streaming_configuration_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_voice_connector_termination_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_voice_connector_termination_credentials_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_voice_profile_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_voice_profile_domain_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type disassociate_phone_numbers_from_voice_connector_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type disassociate_phone_numbers_from_voice_connector_group_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_global_settings_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_phone_number_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_phone_number_order_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_phone_number_settings_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_proxy_session_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_sip_media_application_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_sip_media_application_alexa_skill_configuration_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_sip_media_application_logging_configuration_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_sip_rule_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_speaker_search_task_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_voice_connector_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_voice_connector_emergency_calling_configuration_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_voice_connector_group_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_voice_connector_logging_configuration_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_voice_connector_origination_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_voice_connector_proxy_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_voice_connector_streaming_configuration_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_voice_connector_termination_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_voice_connector_termination_health_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_voice_profile_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_voice_profile_domain_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_voice_tone_analysis_task_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_available_voice_connector_regions_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_phone_number_orders_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_phone_numbers_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_proxy_sessions_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_sip_media_applications_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_sip_rules_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_supported_phone_number_countries_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_tags_for_resource_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_voice_connector_groups_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_voice_connector_termination_credentials_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_voice_connectors_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_voice_profile_domains_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_voice_profiles_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type put_sip_media_application_alexa_skill_configuration_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type put_sip_media_application_logging_configuration_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type put_voice_connector_emergency_calling_configuration_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type put_voice_connector_logging_configuration_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type put_voice_connector_origination_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type put_voice_connector_proxy_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type put_voice_connector_streaming_configuration_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type put_voice_connector_termination_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type put_voice_connector_termination_credentials_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type restore_phone_number_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    resource_limit_exceeded_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type search_available_phone_numbers_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type start_speaker_search_task_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    resource_limit_exceeded_exception() | 
+    conflict_exception() | 
+    gone_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type start_voice_tone_analysis_task_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    resource_limit_exceeded_exception() | 
+    conflict_exception() | 
+    gone_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type stop_speaker_search_task_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type stop_voice_tone_analysis_task_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type tag_resource_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    resource_limit_exceeded_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type untag_resource_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_global_settings_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_phone_number_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_phone_number_settings_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_proxy_session_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_sip_media_application_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_sip_media_application_call_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    resource_limit_exceeded_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_sip_rule_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    resource_limit_exceeded_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_voice_connector_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_voice_connector_group_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_voice_profile_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    gone_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_voice_profile_domain_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type validate_e911_address_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
 
 %%====================================================================
 %% API
@@ -1718,28 +2822,14 @@
 -spec associate_phone_numbers_with_voice_connector(map(), binary() | list(), associate_phone_numbers_with_voice_connector_request()) ->
     {ok, associate_phone_numbers_with_voice_connector_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, associate_phone_numbers_with_voice_connector_errors(), tuple()}.
 associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input) ->
     associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input, []).
 
 -spec associate_phone_numbers_with_voice_connector(map(), binary() | list(), associate_phone_numbers_with_voice_connector_request(), proplists:proplist()) ->
     {ok, associate_phone_numbers_with_voice_connector_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, associate_phone_numbers_with_voice_connector_errors(), tuple()}.
 associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "?operation=associate-phone-numbers"],
@@ -1767,28 +2857,14 @@ associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input0, O
 -spec associate_phone_numbers_with_voice_connector_group(map(), binary() | list(), associate_phone_numbers_with_voice_connector_group_request()) ->
     {ok, associate_phone_numbers_with_voice_connector_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, associate_phone_numbers_with_voice_connector_group_errors(), tuple()}.
 associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
 
 -spec associate_phone_numbers_with_voice_connector_group(map(), binary() | list(), associate_phone_numbers_with_voice_connector_group_request(), proplists:proplist()) ->
     {ok, associate_phone_numbers_with_voice_connector_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, associate_phone_numbers_with_voice_connector_group_errors(), tuple()}.
 associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), "?operation=associate-phone-numbers"],
@@ -1823,26 +2899,14 @@ associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId
 -spec batch_delete_phone_number(map(), batch_delete_phone_number_request()) ->
     {ok, batch_delete_phone_number_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, batch_delete_phone_number_errors(), tuple()}.
 batch_delete_phone_number(Client, Input) ->
     batch_delete_phone_number(Client, Input, []).
 
 -spec batch_delete_phone_number(map(), batch_delete_phone_number_request(), proplists:proplist()) ->
     {ok, batch_delete_phone_number_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, batch_delete_phone_number_errors(), tuple()}.
 batch_delete_phone_number(Client, Input0, Options0) ->
     Method = post,
     Path = ["/phone-numbers?operation=batch-delete"],
@@ -1869,26 +2933,14 @@ batch_delete_phone_number(Client, Input0, Options0) ->
 -spec batch_update_phone_number(map(), batch_update_phone_number_request()) ->
     {ok, batch_update_phone_number_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, batch_update_phone_number_errors(), tuple()}.
 batch_update_phone_number(Client, Input) ->
     batch_update_phone_number(Client, Input, []).
 
 -spec batch_update_phone_number(map(), batch_update_phone_number_request(), proplists:proplist()) ->
     {ok, batch_update_phone_number_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, batch_update_phone_number_errors(), tuple()}.
 batch_update_phone_number(Client, Input0, Options0) ->
     Method = post,
     Path = ["/phone-numbers?operation=batch-update"],
@@ -1918,28 +2970,14 @@ batch_update_phone_number(Client, Input0, Options0) ->
 -spec create_phone_number_order(map(), create_phone_number_order_request()) ->
     {ok, create_phone_number_order_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, create_phone_number_order_errors(), tuple()}.
 create_phone_number_order(Client, Input) ->
     create_phone_number_order(Client, Input, []).
 
 -spec create_phone_number_order(map(), create_phone_number_order_request(), proplists:proplist()) ->
     {ok, create_phone_number_order_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, create_phone_number_order_errors(), tuple()}.
 create_phone_number_order(Client, Input0, Options0) ->
     Method = post,
     Path = ["/phone-number-orders"],
@@ -1968,26 +3006,14 @@ create_phone_number_order(Client, Input0, Options0) ->
 -spec create_proxy_session(map(), binary() | list(), create_proxy_session_request()) ->
     {ok, create_proxy_session_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, create_proxy_session_errors(), tuple()}.
 create_proxy_session(Client, VoiceConnectorId, Input) ->
     create_proxy_session(Client, VoiceConnectorId, Input, []).
 
 -spec create_proxy_session(map(), binary() | list(), create_proxy_session_request(), proplists:proplist()) ->
     {ok, create_proxy_session_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, create_proxy_session_errors(), tuple()}.
 create_proxy_session(Client, VoiceConnectorId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions"],
@@ -2020,30 +3046,14 @@ create_proxy_session(Client, VoiceConnectorId, Input0, Options0) ->
 -spec create_sip_media_application(map(), create_sip_media_application_request()) ->
     {ok, create_sip_media_application_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, create_sip_media_application_errors(), tuple()}.
 create_sip_media_application(Client, Input) ->
     create_sip_media_application(Client, Input, []).
 
 -spec create_sip_media_application(map(), create_sip_media_application_request(), proplists:proplist()) ->
     {ok, create_sip_media_application_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, create_sip_media_application_errors(), tuple()}.
 create_sip_media_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/sip-media-applications"],
@@ -2073,28 +3083,14 @@ create_sip_media_application(Client, Input0, Options0) ->
 -spec create_sip_media_application_call(map(), binary() | list(), create_sip_media_application_call_request()) ->
     {ok, create_sip_media_application_call_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, create_sip_media_application_call_errors(), tuple()}.
 create_sip_media_application_call(Client, SipMediaApplicationId, Input) ->
     create_sip_media_application_call(Client, SipMediaApplicationId, Input, []).
 
 -spec create_sip_media_application_call(map(), binary() | list(), create_sip_media_application_call_request(), proplists:proplist()) ->
     {ok, create_sip_media_application_call_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, create_sip_media_application_call_errors(), tuple()}.
 create_sip_media_application_call(Client, SipMediaApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), "/calls"],
@@ -2127,30 +3123,14 @@ create_sip_media_application_call(Client, SipMediaApplicationId, Input0, Options
 -spec create_sip_rule(map(), create_sip_rule_request()) ->
     {ok, create_sip_rule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, create_sip_rule_errors(), tuple()}.
 create_sip_rule(Client, Input) ->
     create_sip_rule(Client, Input, []).
 
 -spec create_sip_rule(map(), create_sip_rule_request(), proplists:proplist()) ->
     {ok, create_sip_rule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, create_sip_rule_errors(), tuple()}.
 create_sip_rule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/sip-rules"],
@@ -2184,28 +3164,14 @@ create_sip_rule(Client, Input0, Options0) ->
 -spec create_voice_connector(map(), create_voice_connector_request()) ->
     {ok, create_voice_connector_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, create_voice_connector_errors(), tuple()}.
 create_voice_connector(Client, Input) ->
     create_voice_connector(Client, Input, []).
 
 -spec create_voice_connector(map(), create_voice_connector_request(), proplists:proplist()) ->
     {ok, create_voice_connector_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, create_voice_connector_errors(), tuple()}.
 create_voice_connector(Client, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors"],
@@ -2242,28 +3208,14 @@ create_voice_connector(Client, Input0, Options0) ->
 -spec create_voice_connector_group(map(), create_voice_connector_group_request()) ->
     {ok, create_voice_connector_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, create_voice_connector_group_errors(), tuple()}.
 create_voice_connector_group(Client, Input) ->
     create_voice_connector_group(Client, Input, []).
 
 -spec create_voice_connector_group(map(), create_voice_connector_group_request(), proplists:proplist()) ->
     {ok, create_voice_connector_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, create_voice_connector_group_errors(), tuple()}.
 create_voice_connector_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connector-groups"],
@@ -2302,34 +3254,14 @@ create_voice_connector_group(Client, Input0, Options0) ->
 -spec create_voice_profile(map(), create_voice_profile_request()) ->
     {ok, create_voice_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gone_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, create_voice_profile_errors(), tuple()}.
 create_voice_profile(Client, Input) ->
     create_voice_profile(Client, Input, []).
 
 -spec create_voice_profile(map(), create_voice_profile_request(), proplists:proplist()) ->
     {ok, create_voice_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gone_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, create_voice_profile_errors(), tuple()}.
 create_voice_profile(Client, Input0, Options0) ->
     Method = post,
     Path = ["/voice-profiles"],
@@ -2368,30 +3300,14 @@ create_voice_profile(Client, Input0, Options0) ->
 -spec create_voice_profile_domain(map(), create_voice_profile_domain_request()) ->
     {ok, create_voice_profile_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, create_voice_profile_domain_errors(), tuple()}.
 create_voice_profile_domain(Client, Input) ->
     create_voice_profile_domain(Client, Input, []).
 
 -spec create_voice_profile_domain(map(), create_voice_profile_domain_request(), proplists:proplist()) ->
     {ok, create_voice_profile_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, create_voice_profile_domain_errors(), tuple()}.
 create_voice_profile_domain(Client, Input0, Options0) ->
     Method = post,
     Path = ["/voice-profile-domains"],
@@ -2428,26 +3344,14 @@ create_voice_profile_domain(Client, Input0, Options0) ->
 -spec delete_phone_number(map(), binary() | list(), delete_phone_number_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_phone_number_errors(), tuple()}.
 delete_phone_number(Client, PhoneNumberId, Input) ->
     delete_phone_number(Client, PhoneNumberId, Input, []).
 
 -spec delete_phone_number(map(), binary() | list(), delete_phone_number_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_phone_number_errors(), tuple()}.
 delete_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     Method = delete,
     Path = ["/phone-numbers/", aws_util:encode_uri(PhoneNumberId), ""],
@@ -2476,26 +3380,14 @@ delete_phone_number(Client, PhoneNumberId, Input0, Options0) ->
 -spec delete_proxy_session(map(), binary() | list(), binary() | list(), delete_proxy_session_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_proxy_session_errors(), tuple()}.
 delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input) ->
     delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input, []).
 
 -spec delete_proxy_session(map(), binary() | list(), binary() | list(), delete_proxy_session_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_proxy_session_errors(), tuple()}.
 delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions/", aws_util:encode_uri(ProxySessionId), ""],
@@ -2522,28 +3414,14 @@ delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options0)
 -spec delete_sip_media_application(map(), binary() | list(), delete_sip_media_application_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_sip_media_application_errors(), tuple()}.
 delete_sip_media_application(Client, SipMediaApplicationId, Input) ->
     delete_sip_media_application(Client, SipMediaApplicationId, Input, []).
 
 -spec delete_sip_media_application(map(), binary() | list(), delete_sip_media_application_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_sip_media_application_errors(), tuple()}.
 delete_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
     Method = delete,
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), ""],
@@ -2570,28 +3448,14 @@ delete_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
 -spec delete_sip_rule(map(), binary() | list(), delete_sip_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_sip_rule_errors(), tuple()}.
 delete_sip_rule(Client, SipRuleId, Input) ->
     delete_sip_rule(Client, SipRuleId, Input, []).
 
 -spec delete_sip_rule(map(), binary() | list(), delete_sip_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_sip_rule_errors(), tuple()}.
 delete_sip_rule(Client, SipRuleId, Input0, Options0) ->
     Method = delete,
     Path = ["/sip-rules/", aws_util:encode_uri(SipRuleId), ""],
@@ -2623,28 +3487,14 @@ delete_sip_rule(Client, SipRuleId, Input0, Options0) ->
 -spec delete_voice_connector(map(), binary() | list(), delete_voice_connector_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_voice_connector_errors(), tuple()}.
 delete_voice_connector(Client, VoiceConnectorId, Input) ->
     delete_voice_connector(Client, VoiceConnectorId, Input, []).
 
 -spec delete_voice_connector(map(), binary() | list(), delete_voice_connector_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_voice_connector_errors(), tuple()}.
 delete_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), ""],
@@ -2673,26 +3523,14 @@ delete_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
 -spec delete_voice_connector_emergency_calling_configuration(map(), binary() | list(), delete_voice_connector_emergency_calling_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_voice_connector_emergency_calling_configuration_errors(), tuple()}.
 delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input, []).
 
 -spec delete_voice_connector_emergency_calling_configuration(map(), binary() | list(), delete_voice_connector_emergency_calling_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_voice_connector_emergency_calling_configuration_errors(), tuple()}.
 delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/emergency-calling-configuration"],
@@ -2724,28 +3562,14 @@ delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId,
 -spec delete_voice_connector_group(map(), binary() | list(), delete_voice_connector_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_voice_connector_group_errors(), tuple()}.
 delete_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     delete_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
 
 -spec delete_voice_connector_group(map(), binary() | list(), delete_voice_connector_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_voice_connector_group_errors(), tuple()}.
 delete_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), ""],
@@ -2776,26 +3600,14 @@ delete_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
 -spec delete_voice_connector_origination(map(), binary() | list(), delete_voice_connector_origination_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_voice_connector_origination_errors(), tuple()}.
 delete_voice_connector_origination(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_origination(Client, VoiceConnectorId, Input, []).
 
 -spec delete_voice_connector_origination(map(), binary() | list(), delete_voice_connector_origination_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_voice_connector_origination_errors(), tuple()}.
 delete_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/origination"],
@@ -2823,26 +3635,14 @@ delete_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) -
 -spec delete_voice_connector_proxy(map(), binary() | list(), delete_voice_connector_proxy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_voice_connector_proxy_errors(), tuple()}.
 delete_voice_connector_proxy(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_proxy(Client, VoiceConnectorId, Input, []).
 
 -spec delete_voice_connector_proxy(map(), binary() | list(), delete_voice_connector_proxy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_voice_connector_proxy_errors(), tuple()}.
 delete_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/programmable-numbers/proxy"],
@@ -2869,26 +3669,14 @@ delete_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
 -spec delete_voice_connector_streaming_configuration(map(), binary() | list(), delete_voice_connector_streaming_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_voice_connector_streaming_configuration_errors(), tuple()}.
 delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input, []).
 
 -spec delete_voice_connector_streaming_configuration(map(), binary() | list(), delete_voice_connector_streaming_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_voice_connector_streaming_configuration_errors(), tuple()}.
 delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/streaming-configuration"],
@@ -2919,26 +3707,14 @@ delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0,
 -spec delete_voice_connector_termination(map(), binary() | list(), delete_voice_connector_termination_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_voice_connector_termination_errors(), tuple()}.
 delete_voice_connector_termination(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_termination(Client, VoiceConnectorId, Input, []).
 
 -spec delete_voice_connector_termination(map(), binary() | list(), delete_voice_connector_termination_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_voice_connector_termination_errors(), tuple()}.
 delete_voice_connector_termination(Client, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination"],
@@ -2966,26 +3742,14 @@ delete_voice_connector_termination(Client, VoiceConnectorId, Input0, Options0) -
 -spec delete_voice_connector_termination_credentials(map(), binary() | list(), delete_voice_connector_termination_credentials_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_voice_connector_termination_credentials_errors(), tuple()}.
 delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input, []).
 
 -spec delete_voice_connector_termination_credentials(map(), binary() | list(), delete_voice_connector_termination_credentials_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_voice_connector_termination_credentials_errors(), tuple()}.
 delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination/credentials?operation=delete"],
@@ -3015,30 +3779,14 @@ delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0,
 -spec delete_voice_profile(map(), binary() | list(), delete_voice_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_voice_profile_errors(), tuple()}.
 delete_voice_profile(Client, VoiceProfileId, Input) ->
     delete_voice_profile(Client, VoiceProfileId, Input, []).
 
 -spec delete_voice_profile(map(), binary() | list(), delete_voice_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_voice_profile_errors(), tuple()}.
 delete_voice_profile(Client, VoiceProfileId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-profiles/", aws_util:encode_uri(VoiceProfileId), ""],
@@ -3067,30 +3815,14 @@ delete_voice_profile(Client, VoiceProfileId, Input0, Options0) ->
 -spec delete_voice_profile_domain(map(), binary() | list(), delete_voice_profile_domain_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_voice_profile_domain_errors(), tuple()}.
 delete_voice_profile_domain(Client, VoiceProfileDomainId, Input) ->
     delete_voice_profile_domain(Client, VoiceProfileDomainId, Input, []).
 
 -spec delete_voice_profile_domain(map(), binary() | list(), delete_voice_profile_domain_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_voice_profile_domain_errors(), tuple()}.
 delete_voice_profile_domain(Client, VoiceProfileDomainId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-profile-domains/", aws_util:encode_uri(VoiceProfileDomainId), ""],
@@ -3118,26 +3850,14 @@ delete_voice_profile_domain(Client, VoiceProfileDomainId, Input0, Options0) ->
 -spec disassociate_phone_numbers_from_voice_connector(map(), binary() | list(), disassociate_phone_numbers_from_voice_connector_request()) ->
     {ok, disassociate_phone_numbers_from_voice_connector_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, disassociate_phone_numbers_from_voice_connector_errors(), tuple()}.
 disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input) ->
     disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input, []).
 
 -spec disassociate_phone_numbers_from_voice_connector(map(), binary() | list(), disassociate_phone_numbers_from_voice_connector_request(), proplists:proplist()) ->
     {ok, disassociate_phone_numbers_from_voice_connector_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, disassociate_phone_numbers_from_voice_connector_errors(), tuple()}.
 disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "?operation=disassociate-phone-numbers"],
@@ -3166,26 +3886,14 @@ disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input0
 -spec disassociate_phone_numbers_from_voice_connector_group(map(), binary() | list(), disassociate_phone_numbers_from_voice_connector_group_request()) ->
     {ok, disassociate_phone_numbers_from_voice_connector_group_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, disassociate_phone_numbers_from_voice_connector_group_errors(), tuple()}.
 disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
 
 -spec disassociate_phone_numbers_from_voice_connector_group(map(), binary() | list(), disassociate_phone_numbers_from_voice_connector_group_request(), proplists:proplist()) ->
     {ok, disassociate_phone_numbers_from_voice_connector_group_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, disassociate_phone_numbers_from_voice_connector_group_errors(), tuple()}.
 disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), "?operation=disassociate-phone-numbers"],
@@ -3213,12 +3921,7 @@ disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGrou
 -spec get_global_settings(map()) ->
     {ok, get_global_settings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_global_settings_errors(), tuple()}.
 get_global_settings(Client)
   when is_map(Client) ->
     get_global_settings(Client, #{}, #{}).
@@ -3226,12 +3929,7 @@ get_global_settings(Client)
 -spec get_global_settings(map(), map(), map()) ->
     {ok, get_global_settings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_global_settings_errors(), tuple()}.
 get_global_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_global_settings(Client, QueryMap, HeadersMap, []).
@@ -3239,12 +3937,7 @@ get_global_settings(Client, QueryMap, HeadersMap)
 -spec get_global_settings(map(), map(), map(), proplists:proplist()) ->
     {ok, get_global_settings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_global_settings_errors(), tuple()}.
 get_global_settings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/settings"],
@@ -3267,13 +3960,7 @@ get_global_settings(Client, QueryMap, HeadersMap, Options0)
 -spec get_phone_number(map(), binary() | list()) ->
     {ok, get_phone_number_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_phone_number_errors(), tuple()}.
 get_phone_number(Client, PhoneNumberId)
   when is_map(Client) ->
     get_phone_number(Client, PhoneNumberId, #{}, #{}).
@@ -3281,13 +3968,7 @@ get_phone_number(Client, PhoneNumberId)
 -spec get_phone_number(map(), binary() | list(), map(), map()) ->
     {ok, get_phone_number_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_phone_number_errors(), tuple()}.
 get_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, []).
@@ -3295,13 +3976,7 @@ get_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap)
 -spec get_phone_number(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_phone_number_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_phone_number_errors(), tuple()}.
 get_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/phone-numbers/", aws_util:encode_uri(PhoneNumberId), ""],
@@ -3325,13 +4000,7 @@ get_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, Options0)
 -spec get_phone_number_order(map(), binary() | list()) ->
     {ok, get_phone_number_order_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_phone_number_order_errors(), tuple()}.
 get_phone_number_order(Client, PhoneNumberOrderId)
   when is_map(Client) ->
     get_phone_number_order(Client, PhoneNumberOrderId, #{}, #{}).
@@ -3339,13 +4008,7 @@ get_phone_number_order(Client, PhoneNumberOrderId)
 -spec get_phone_number_order(map(), binary() | list(), map(), map()) ->
     {ok, get_phone_number_order_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_phone_number_order_errors(), tuple()}.
 get_phone_number_order(Client, PhoneNumberOrderId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_phone_number_order(Client, PhoneNumberOrderId, QueryMap, HeadersMap, []).
@@ -3353,13 +4016,7 @@ get_phone_number_order(Client, PhoneNumberOrderId, QueryMap, HeadersMap)
 -spec get_phone_number_order(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_phone_number_order_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_phone_number_order_errors(), tuple()}.
 get_phone_number_order(Client, PhoneNumberOrderId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/phone-number-orders/", aws_util:encode_uri(PhoneNumberOrderId), ""],
@@ -3382,12 +4039,7 @@ get_phone_number_order(Client, PhoneNumberOrderId, QueryMap, HeadersMap, Options
 -spec get_phone_number_settings(map()) ->
     {ok, get_phone_number_settings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_phone_number_settings_errors(), tuple()}.
 get_phone_number_settings(Client)
   when is_map(Client) ->
     get_phone_number_settings(Client, #{}, #{}).
@@ -3395,12 +4047,7 @@ get_phone_number_settings(Client)
 -spec get_phone_number_settings(map(), map(), map()) ->
     {ok, get_phone_number_settings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_phone_number_settings_errors(), tuple()}.
 get_phone_number_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_phone_number_settings(Client, QueryMap, HeadersMap, []).
@@ -3408,12 +4055,7 @@ get_phone_number_settings(Client, QueryMap, HeadersMap)
 -spec get_phone_number_settings(map(), map(), map(), proplists:proplist()) ->
     {ok, get_phone_number_settings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_phone_number_settings_errors(), tuple()}.
 get_phone_number_settings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/settings/phone-number"],
@@ -3435,13 +4077,7 @@ get_phone_number_settings(Client, QueryMap, HeadersMap, Options0)
 -spec get_proxy_session(map(), binary() | list(), binary() | list()) ->
     {ok, get_proxy_session_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_proxy_session_errors(), tuple()}.
 get_proxy_session(Client, ProxySessionId, VoiceConnectorId)
   when is_map(Client) ->
     get_proxy_session(Client, ProxySessionId, VoiceConnectorId, #{}, #{}).
@@ -3449,13 +4085,7 @@ get_proxy_session(Client, ProxySessionId, VoiceConnectorId)
 -spec get_proxy_session(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_proxy_session_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_proxy_session_errors(), tuple()}.
 get_proxy_session(Client, ProxySessionId, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_proxy_session(Client, ProxySessionId, VoiceConnectorId, QueryMap, HeadersMap, []).
@@ -3463,13 +4093,7 @@ get_proxy_session(Client, ProxySessionId, VoiceConnectorId, QueryMap, HeadersMap
 -spec get_proxy_session(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_proxy_session_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_proxy_session_errors(), tuple()}.
 get_proxy_session(Client, ProxySessionId, VoiceConnectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions/", aws_util:encode_uri(ProxySessionId), ""],
@@ -3492,13 +4116,7 @@ get_proxy_session(Client, ProxySessionId, VoiceConnectorId, QueryMap, HeadersMap
 -spec get_sip_media_application(map(), binary() | list()) ->
     {ok, get_sip_media_application_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_sip_media_application_errors(), tuple()}.
 get_sip_media_application(Client, SipMediaApplicationId)
   when is_map(Client) ->
     get_sip_media_application(Client, SipMediaApplicationId, #{}, #{}).
@@ -3506,13 +4124,7 @@ get_sip_media_application(Client, SipMediaApplicationId)
 -spec get_sip_media_application(map(), binary() | list(), map(), map()) ->
     {ok, get_sip_media_application_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_sip_media_application_errors(), tuple()}.
 get_sip_media_application(Client, SipMediaApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sip_media_application(Client, SipMediaApplicationId, QueryMap, HeadersMap, []).
@@ -3520,13 +4132,7 @@ get_sip_media_application(Client, SipMediaApplicationId, QueryMap, HeadersMap)
 -spec get_sip_media_application(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sip_media_application_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_sip_media_application_errors(), tuple()}.
 get_sip_media_application(Client, SipMediaApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), ""],
@@ -3547,13 +4153,7 @@ get_sip_media_application(Client, SipMediaApplicationId, QueryMap, HeadersMap, O
 -spec get_sip_media_application_alexa_skill_configuration(map(), binary() | list()) ->
     {ok, get_sip_media_application_alexa_skill_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_sip_media_application_alexa_skill_configuration_errors(), tuple()}.
 get_sip_media_application_alexa_skill_configuration(Client, SipMediaApplicationId)
   when is_map(Client) ->
     get_sip_media_application_alexa_skill_configuration(Client, SipMediaApplicationId, #{}, #{}).
@@ -3561,13 +4161,7 @@ get_sip_media_application_alexa_skill_configuration(Client, SipMediaApplicationI
 -spec get_sip_media_application_alexa_skill_configuration(map(), binary() | list(), map(), map()) ->
     {ok, get_sip_media_application_alexa_skill_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_sip_media_application_alexa_skill_configuration_errors(), tuple()}.
 get_sip_media_application_alexa_skill_configuration(Client, SipMediaApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sip_media_application_alexa_skill_configuration(Client, SipMediaApplicationId, QueryMap, HeadersMap, []).
@@ -3575,13 +4169,7 @@ get_sip_media_application_alexa_skill_configuration(Client, SipMediaApplicationI
 -spec get_sip_media_application_alexa_skill_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sip_media_application_alexa_skill_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_sip_media_application_alexa_skill_configuration_errors(), tuple()}.
 get_sip_media_application_alexa_skill_configuration(Client, SipMediaApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), "/alexa-skill-configuration"],
@@ -3603,13 +4191,7 @@ get_sip_media_application_alexa_skill_configuration(Client, SipMediaApplicationI
 -spec get_sip_media_application_logging_configuration(map(), binary() | list()) ->
     {ok, get_sip_media_application_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_sip_media_application_logging_configuration_errors(), tuple()}.
 get_sip_media_application_logging_configuration(Client, SipMediaApplicationId)
   when is_map(Client) ->
     get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, #{}, #{}).
@@ -3617,13 +4199,7 @@ get_sip_media_application_logging_configuration(Client, SipMediaApplicationId)
 -spec get_sip_media_application_logging_configuration(map(), binary() | list(), map(), map()) ->
     {ok, get_sip_media_application_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_sip_media_application_logging_configuration_errors(), tuple()}.
 get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, QueryMap, HeadersMap, []).
@@ -3631,13 +4207,7 @@ get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Q
 -spec get_sip_media_application_logging_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sip_media_application_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_sip_media_application_logging_configuration_errors(), tuple()}.
 get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), "/logging-configuration"],
@@ -3660,13 +4230,7 @@ get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Q
 -spec get_sip_rule(map(), binary() | list()) ->
     {ok, get_sip_rule_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_sip_rule_errors(), tuple()}.
 get_sip_rule(Client, SipRuleId)
   when is_map(Client) ->
     get_sip_rule(Client, SipRuleId, #{}, #{}).
@@ -3674,13 +4238,7 @@ get_sip_rule(Client, SipRuleId)
 -spec get_sip_rule(map(), binary() | list(), map(), map()) ->
     {ok, get_sip_rule_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_sip_rule_errors(), tuple()}.
 get_sip_rule(Client, SipRuleId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sip_rule(Client, SipRuleId, QueryMap, HeadersMap, []).
@@ -3688,13 +4246,7 @@ get_sip_rule(Client, SipRuleId, QueryMap, HeadersMap)
 -spec get_sip_rule(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sip_rule_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_sip_rule_errors(), tuple()}.
 get_sip_rule(Client, SipRuleId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sip-rules/", aws_util:encode_uri(SipRuleId), ""],
@@ -3715,15 +4267,7 @@ get_sip_rule(Client, SipRuleId, QueryMap, HeadersMap, Options0)
 -spec get_speaker_search_task(map(), binary() | list(), binary() | list()) ->
     {ok, get_speaker_search_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_speaker_search_task_errors(), tuple()}.
 get_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId)
   when is_map(Client) ->
     get_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, #{}, #{}).
@@ -3731,15 +4275,7 @@ get_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId)
 -spec get_speaker_search_task(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_speaker_search_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_speaker_search_task_errors(), tuple()}.
 get_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, QueryMap, HeadersMap, []).
@@ -3747,15 +4283,7 @@ get_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, QueryMap,
 -spec get_speaker_search_task(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_speaker_search_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_speaker_search_task_errors(), tuple()}.
 get_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/speaker-search-tasks/", aws_util:encode_uri(SpeakerSearchTaskId), ""],
@@ -3778,13 +4306,7 @@ get_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, QueryMap,
 -spec get_voice_connector(map(), binary() | list()) ->
     {ok, get_voice_connector_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_connector_errors(), tuple()}.
 get_voice_connector(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector(Client, VoiceConnectorId, #{}, #{}).
@@ -3792,13 +4314,7 @@ get_voice_connector(Client, VoiceConnectorId)
 -spec get_voice_connector(map(), binary() | list(), map(), map()) ->
     {ok, get_voice_connector_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_connector_errors(), tuple()}.
 get_voice_connector(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
@@ -3806,13 +4322,7 @@ get_voice_connector(Client, VoiceConnectorId, QueryMap, HeadersMap)
 -spec get_voice_connector(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_connector_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_connector_errors(), tuple()}.
 get_voice_connector(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), ""],
@@ -3834,13 +4344,7 @@ get_voice_connector(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
 -spec get_voice_connector_emergency_calling_configuration(map(), binary() | list()) ->
     {ok, get_voice_connector_emergency_calling_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_connector_emergency_calling_configuration_errors(), tuple()}.
 get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, #{}, #{}).
@@ -3848,13 +4352,7 @@ get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId)
 -spec get_voice_connector_emergency_calling_configuration(map(), binary() | list(), map(), map()) ->
     {ok, get_voice_connector_emergency_calling_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_connector_emergency_calling_configuration_errors(), tuple()}.
 get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
@@ -3862,13 +4360,7 @@ get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Qu
 -spec get_voice_connector_emergency_calling_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_connector_emergency_calling_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_connector_emergency_calling_configuration_errors(), tuple()}.
 get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/emergency-calling-configuration"],
@@ -3891,13 +4383,7 @@ get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Qu
 -spec get_voice_connector_group(map(), binary() | list()) ->
     {ok, get_voice_connector_group_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_connector_group_errors(), tuple()}.
 get_voice_connector_group(Client, VoiceConnectorGroupId)
   when is_map(Client) ->
     get_voice_connector_group(Client, VoiceConnectorGroupId, #{}, #{}).
@@ -3905,13 +4391,7 @@ get_voice_connector_group(Client, VoiceConnectorGroupId)
 -spec get_voice_connector_group(map(), binary() | list(), map(), map()) ->
     {ok, get_voice_connector_group_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_connector_group_errors(), tuple()}.
 get_voice_connector_group(Client, VoiceConnectorGroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_group(Client, VoiceConnectorGroupId, QueryMap, HeadersMap, []).
@@ -3919,13 +4399,7 @@ get_voice_connector_group(Client, VoiceConnectorGroupId, QueryMap, HeadersMap)
 -spec get_voice_connector_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_connector_group_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_connector_group_errors(), tuple()}.
 get_voice_connector_group(Client, VoiceConnectorGroupId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), ""],
@@ -3950,13 +4424,7 @@ get_voice_connector_group(Client, VoiceConnectorGroupId, QueryMap, HeadersMap, O
 -spec get_voice_connector_logging_configuration(map(), binary() | list()) ->
     {ok, get_voice_connector_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_connector_logging_configuration_errors(), tuple()}.
 get_voice_connector_logging_configuration(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_logging_configuration(Client, VoiceConnectorId, #{}, #{}).
@@ -3964,13 +4432,7 @@ get_voice_connector_logging_configuration(Client, VoiceConnectorId)
 -spec get_voice_connector_logging_configuration(map(), binary() | list(), map(), map()) ->
     {ok, get_voice_connector_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_connector_logging_configuration_errors(), tuple()}.
 get_voice_connector_logging_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_logging_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
@@ -3978,13 +4440,7 @@ get_voice_connector_logging_configuration(Client, VoiceConnectorId, QueryMap, He
 -spec get_voice_connector_logging_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_connector_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_connector_logging_configuration_errors(), tuple()}.
 get_voice_connector_logging_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/logging-configuration"],
@@ -4005,13 +4461,7 @@ get_voice_connector_logging_configuration(Client, VoiceConnectorId, QueryMap, He
 -spec get_voice_connector_origination(map(), binary() | list()) ->
     {ok, get_voice_connector_origination_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_connector_origination_errors(), tuple()}.
 get_voice_connector_origination(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_origination(Client, VoiceConnectorId, #{}, #{}).
@@ -4019,13 +4469,7 @@ get_voice_connector_origination(Client, VoiceConnectorId)
 -spec get_voice_connector_origination(map(), binary() | list(), map(), map()) ->
     {ok, get_voice_connector_origination_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_connector_origination_errors(), tuple()}.
 get_voice_connector_origination(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_origination(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
@@ -4033,13 +4477,7 @@ get_voice_connector_origination(Client, VoiceConnectorId, QueryMap, HeadersMap)
 -spec get_voice_connector_origination(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_connector_origination_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_connector_origination_errors(), tuple()}.
 get_voice_connector_origination(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/origination"],
@@ -4062,13 +4500,7 @@ get_voice_connector_origination(Client, VoiceConnectorId, QueryMap, HeadersMap, 
 -spec get_voice_connector_proxy(map(), binary() | list()) ->
     {ok, get_voice_connector_proxy_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_connector_proxy_errors(), tuple()}.
 get_voice_connector_proxy(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_proxy(Client, VoiceConnectorId, #{}, #{}).
@@ -4076,13 +4508,7 @@ get_voice_connector_proxy(Client, VoiceConnectorId)
 -spec get_voice_connector_proxy(map(), binary() | list(), map(), map()) ->
     {ok, get_voice_connector_proxy_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_connector_proxy_errors(), tuple()}.
 get_voice_connector_proxy(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_proxy(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
@@ -4090,13 +4516,7 @@ get_voice_connector_proxy(Client, VoiceConnectorId, QueryMap, HeadersMap)
 -spec get_voice_connector_proxy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_connector_proxy_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_connector_proxy_errors(), tuple()}.
 get_voice_connector_proxy(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/programmable-numbers/proxy"],
@@ -4123,13 +4543,7 @@ get_voice_connector_proxy(Client, VoiceConnectorId, QueryMap, HeadersMap, Option
 -spec get_voice_connector_streaming_configuration(map(), binary() | list()) ->
     {ok, get_voice_connector_streaming_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_connector_streaming_configuration_errors(), tuple()}.
 get_voice_connector_streaming_configuration(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_streaming_configuration(Client, VoiceConnectorId, #{}, #{}).
@@ -4137,13 +4551,7 @@ get_voice_connector_streaming_configuration(Client, VoiceConnectorId)
 -spec get_voice_connector_streaming_configuration(map(), binary() | list(), map(), map()) ->
     {ok, get_voice_connector_streaming_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_connector_streaming_configuration_errors(), tuple()}.
 get_voice_connector_streaming_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_streaming_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
@@ -4151,13 +4559,7 @@ get_voice_connector_streaming_configuration(Client, VoiceConnectorId, QueryMap, 
 -spec get_voice_connector_streaming_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_connector_streaming_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_connector_streaming_configuration_errors(), tuple()}.
 get_voice_connector_streaming_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/streaming-configuration"],
@@ -4179,13 +4581,7 @@ get_voice_connector_streaming_configuration(Client, VoiceConnectorId, QueryMap, 
 -spec get_voice_connector_termination(map(), binary() | list()) ->
     {ok, get_voice_connector_termination_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_connector_termination_errors(), tuple()}.
 get_voice_connector_termination(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_termination(Client, VoiceConnectorId, #{}, #{}).
@@ -4193,13 +4589,7 @@ get_voice_connector_termination(Client, VoiceConnectorId)
 -spec get_voice_connector_termination(map(), binary() | list(), map(), map()) ->
     {ok, get_voice_connector_termination_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_connector_termination_errors(), tuple()}.
 get_voice_connector_termination(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_termination(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
@@ -4207,13 +4597,7 @@ get_voice_connector_termination(Client, VoiceConnectorId, QueryMap, HeadersMap)
 -spec get_voice_connector_termination(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_connector_termination_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_connector_termination_errors(), tuple()}.
 get_voice_connector_termination(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination"],
@@ -4237,13 +4621,7 @@ get_voice_connector_termination(Client, VoiceConnectorId, QueryMap, HeadersMap, 
 -spec get_voice_connector_termination_health(map(), binary() | list()) ->
     {ok, get_voice_connector_termination_health_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_connector_termination_health_errors(), tuple()}.
 get_voice_connector_termination_health(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_termination_health(Client, VoiceConnectorId, #{}, #{}).
@@ -4251,13 +4629,7 @@ get_voice_connector_termination_health(Client, VoiceConnectorId)
 -spec get_voice_connector_termination_health(map(), binary() | list(), map(), map()) ->
     {ok, get_voice_connector_termination_health_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_connector_termination_health_errors(), tuple()}.
 get_voice_connector_termination_health(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_termination_health(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
@@ -4265,13 +4637,7 @@ get_voice_connector_termination_health(Client, VoiceConnectorId, QueryMap, Heade
 -spec get_voice_connector_termination_health(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_connector_termination_health_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_connector_termination_health_errors(), tuple()}.
 get_voice_connector_termination_health(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination/health"],
@@ -4292,14 +4658,7 @@ get_voice_connector_termination_health(Client, VoiceConnectorId, QueryMap, Heade
 -spec get_voice_profile(map(), binary() | list()) ->
     {ok, get_voice_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_profile_errors(), tuple()}.
 get_voice_profile(Client, VoiceProfileId)
   when is_map(Client) ->
     get_voice_profile(Client, VoiceProfileId, #{}, #{}).
@@ -4307,14 +4666,7 @@ get_voice_profile(Client, VoiceProfileId)
 -spec get_voice_profile(map(), binary() | list(), map(), map()) ->
     {ok, get_voice_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_profile_errors(), tuple()}.
 get_voice_profile(Client, VoiceProfileId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_profile(Client, VoiceProfileId, QueryMap, HeadersMap, []).
@@ -4322,14 +4674,7 @@ get_voice_profile(Client, VoiceProfileId, QueryMap, HeadersMap)
 -spec get_voice_profile(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_profile_errors(), tuple()}.
 get_voice_profile(Client, VoiceProfileId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-profiles/", aws_util:encode_uri(VoiceProfileId), ""],
@@ -4350,14 +4695,7 @@ get_voice_profile(Client, VoiceProfileId, QueryMap, HeadersMap, Options0)
 -spec get_voice_profile_domain(map(), binary() | list()) ->
     {ok, get_voice_profile_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_profile_domain_errors(), tuple()}.
 get_voice_profile_domain(Client, VoiceProfileDomainId)
   when is_map(Client) ->
     get_voice_profile_domain(Client, VoiceProfileDomainId, #{}, #{}).
@@ -4365,14 +4703,7 @@ get_voice_profile_domain(Client, VoiceProfileDomainId)
 -spec get_voice_profile_domain(map(), binary() | list(), map(), map()) ->
     {ok, get_voice_profile_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_profile_domain_errors(), tuple()}.
 get_voice_profile_domain(Client, VoiceProfileDomainId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_profile_domain(Client, VoiceProfileDomainId, QueryMap, HeadersMap, []).
@@ -4380,14 +4711,7 @@ get_voice_profile_domain(Client, VoiceProfileDomainId, QueryMap, HeadersMap)
 -spec get_voice_profile_domain(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_profile_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_profile_domain_errors(), tuple()}.
 get_voice_profile_domain(Client, VoiceProfileDomainId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-profile-domains/", aws_util:encode_uri(VoiceProfileDomainId), ""],
@@ -4408,15 +4732,7 @@ get_voice_profile_domain(Client, VoiceProfileDomainId, QueryMap, HeadersMap, Opt
 -spec get_voice_tone_analysis_task(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_voice_tone_analysis_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_tone_analysis_task_errors(), tuple()}.
 get_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, IsCaller)
   when is_map(Client) ->
     get_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, IsCaller, #{}, #{}).
@@ -4424,15 +4740,7 @@ get_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, 
 -spec get_voice_tone_analysis_task(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_voice_tone_analysis_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_tone_analysis_task_errors(), tuple()}.
 get_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, IsCaller, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, IsCaller, QueryMap, HeadersMap, []).
@@ -4440,15 +4748,7 @@ get_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, 
 -spec get_voice_tone_analysis_task(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_tone_analysis_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_voice_tone_analysis_task_errors(), tuple()}.
 get_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, IsCaller, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/voice-tone-analysis-tasks/", aws_util:encode_uri(VoiceToneAnalysisTaskId), ""],
@@ -4474,12 +4774,7 @@ get_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, 
 -spec list_available_voice_connector_regions(map()) ->
     {ok, list_available_voice_connector_regions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_available_voice_connector_regions_errors(), tuple()}.
 list_available_voice_connector_regions(Client)
   when is_map(Client) ->
     list_available_voice_connector_regions(Client, #{}, #{}).
@@ -4487,12 +4782,7 @@ list_available_voice_connector_regions(Client)
 -spec list_available_voice_connector_regions(map(), map(), map()) ->
     {ok, list_available_voice_connector_regions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_available_voice_connector_regions_errors(), tuple()}.
 list_available_voice_connector_regions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_available_voice_connector_regions(Client, QueryMap, HeadersMap, []).
@@ -4500,12 +4790,7 @@ list_available_voice_connector_regions(Client, QueryMap, HeadersMap)
 -spec list_available_voice_connector_regions(map(), map(), map(), proplists:proplist()) ->
     {ok, list_available_voice_connector_regions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_available_voice_connector_regions_errors(), tuple()}.
 list_available_voice_connector_regions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connector-regions"],
@@ -4527,12 +4812,7 @@ list_available_voice_connector_regions(Client, QueryMap, HeadersMap, Options0)
 -spec list_phone_number_orders(map()) ->
     {ok, list_phone_number_orders_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_phone_number_orders_errors(), tuple()}.
 list_phone_number_orders(Client)
   when is_map(Client) ->
     list_phone_number_orders(Client, #{}, #{}).
@@ -4540,12 +4820,7 @@ list_phone_number_orders(Client)
 -spec list_phone_number_orders(map(), map(), map()) ->
     {ok, list_phone_number_orders_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_phone_number_orders_errors(), tuple()}.
 list_phone_number_orders(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_phone_number_orders(Client, QueryMap, HeadersMap, []).
@@ -4553,12 +4828,7 @@ list_phone_number_orders(Client, QueryMap, HeadersMap)
 -spec list_phone_number_orders(map(), map(), map(), proplists:proplist()) ->
     {ok, list_phone_number_orders_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_phone_number_orders_errors(), tuple()}.
 list_phone_number_orders(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/phone-number-orders"],
@@ -4587,13 +4857,7 @@ list_phone_number_orders(Client, QueryMap, HeadersMap, Options0)
 -spec list_phone_numbers(map()) ->
     {ok, list_phone_numbers_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_phone_numbers_errors(), tuple()}.
 list_phone_numbers(Client)
   when is_map(Client) ->
     list_phone_numbers(Client, #{}, #{}).
@@ -4601,13 +4865,7 @@ list_phone_numbers(Client)
 -spec list_phone_numbers(map(), map(), map()) ->
     {ok, list_phone_numbers_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_phone_numbers_errors(), tuple()}.
 list_phone_numbers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_phone_numbers(Client, QueryMap, HeadersMap, []).
@@ -4615,13 +4873,7 @@ list_phone_numbers(Client, QueryMap, HeadersMap)
 -spec list_phone_numbers(map(), map(), map(), proplists:proplist()) ->
     {ok, list_phone_numbers_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_phone_numbers_errors(), tuple()}.
 list_phone_numbers(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/phone-numbers"],
@@ -4652,13 +4904,7 @@ list_phone_numbers(Client, QueryMap, HeadersMap, Options0)
 -spec list_proxy_sessions(map(), binary() | list()) ->
     {ok, list_proxy_sessions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_proxy_sessions_errors(), tuple()}.
 list_proxy_sessions(Client, VoiceConnectorId)
   when is_map(Client) ->
     list_proxy_sessions(Client, VoiceConnectorId, #{}, #{}).
@@ -4666,13 +4912,7 @@ list_proxy_sessions(Client, VoiceConnectorId)
 -spec list_proxy_sessions(map(), binary() | list(), map(), map()) ->
     {ok, list_proxy_sessions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_proxy_sessions_errors(), tuple()}.
 list_proxy_sessions(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_proxy_sessions(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
@@ -4680,13 +4920,7 @@ list_proxy_sessions(Client, VoiceConnectorId, QueryMap, HeadersMap)
 -spec list_proxy_sessions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_proxy_sessions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_proxy_sessions_errors(), tuple()}.
 list_proxy_sessions(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions"],
@@ -4714,12 +4948,7 @@ list_proxy_sessions(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
 -spec list_sip_media_applications(map()) ->
     {ok, list_sip_media_applications_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_sip_media_applications_errors(), tuple()}.
 list_sip_media_applications(Client)
   when is_map(Client) ->
     list_sip_media_applications(Client, #{}, #{}).
@@ -4727,12 +4956,7 @@ list_sip_media_applications(Client)
 -spec list_sip_media_applications(map(), map(), map()) ->
     {ok, list_sip_media_applications_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_sip_media_applications_errors(), tuple()}.
 list_sip_media_applications(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sip_media_applications(Client, QueryMap, HeadersMap, []).
@@ -4740,12 +4964,7 @@ list_sip_media_applications(Client, QueryMap, HeadersMap)
 -spec list_sip_media_applications(map(), map(), map(), proplists:proplist()) ->
     {ok, list_sip_media_applications_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_sip_media_applications_errors(), tuple()}.
 list_sip_media_applications(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sip-media-applications"],
@@ -4771,12 +4990,7 @@ list_sip_media_applications(Client, QueryMap, HeadersMap, Options0)
 -spec list_sip_rules(map()) ->
     {ok, list_sip_rules_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_sip_rules_errors(), tuple()}.
 list_sip_rules(Client)
   when is_map(Client) ->
     list_sip_rules(Client, #{}, #{}).
@@ -4784,12 +4998,7 @@ list_sip_rules(Client)
 -spec list_sip_rules(map(), map(), map()) ->
     {ok, list_sip_rules_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_sip_rules_errors(), tuple()}.
 list_sip_rules(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sip_rules(Client, QueryMap, HeadersMap, []).
@@ -4797,12 +5006,7 @@ list_sip_rules(Client, QueryMap, HeadersMap)
 -spec list_sip_rules(map(), map(), map(), proplists:proplist()) ->
     {ok, list_sip_rules_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_sip_rules_errors(), tuple()}.
 list_sip_rules(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sip-rules"],
@@ -4829,13 +5033,7 @@ list_sip_rules(Client, QueryMap, HeadersMap, Options0)
 -spec list_supported_phone_number_countries(map(), binary() | list()) ->
     {ok, list_supported_phone_number_countries_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_supported_phone_number_countries_errors(), tuple()}.
 list_supported_phone_number_countries(Client, ProductType)
   when is_map(Client) ->
     list_supported_phone_number_countries(Client, ProductType, #{}, #{}).
@@ -4843,13 +5041,7 @@ list_supported_phone_number_countries(Client, ProductType)
 -spec list_supported_phone_number_countries(map(), binary() | list(), map(), map()) ->
     {ok, list_supported_phone_number_countries_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_supported_phone_number_countries_errors(), tuple()}.
 list_supported_phone_number_countries(Client, ProductType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_supported_phone_number_countries(Client, ProductType, QueryMap, HeadersMap, []).
@@ -4857,13 +5049,7 @@ list_supported_phone_number_countries(Client, ProductType, QueryMap, HeadersMap)
 -spec list_supported_phone_number_countries(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_supported_phone_number_countries_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_supported_phone_number_countries_errors(), tuple()}.
 list_supported_phone_number_countries(Client, ProductType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/phone-number-countries"],
@@ -4888,12 +5074,7 @@ list_supported_phone_number_countries(Client, ProductType, QueryMap, HeadersMap,
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceARN)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceARN, #{}, #{}).
@@ -4901,12 +5082,7 @@ list_tags_for_resource(Client, ResourceARN)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, []).
@@ -4914,12 +5090,7 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags"],
@@ -4946,12 +5117,7 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
 -spec list_voice_connector_groups(map()) ->
     {ok, list_voice_connector_groups_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_voice_connector_groups_errors(), tuple()}.
 list_voice_connector_groups(Client)
   when is_map(Client) ->
     list_voice_connector_groups(Client, #{}, #{}).
@@ -4959,12 +5125,7 @@ list_voice_connector_groups(Client)
 -spec list_voice_connector_groups(map(), map(), map()) ->
     {ok, list_voice_connector_groups_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_voice_connector_groups_errors(), tuple()}.
 list_voice_connector_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_voice_connector_groups(Client, QueryMap, HeadersMap, []).
@@ -4972,12 +5133,7 @@ list_voice_connector_groups(Client, QueryMap, HeadersMap)
 -spec list_voice_connector_groups(map(), map(), map(), proplists:proplist()) ->
     {ok, list_voice_connector_groups_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_voice_connector_groups_errors(), tuple()}.
 list_voice_connector_groups(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connector-groups"],
@@ -5004,13 +5160,7 @@ list_voice_connector_groups(Client, QueryMap, HeadersMap, Options0)
 -spec list_voice_connector_termination_credentials(map(), binary() | list()) ->
     {ok, list_voice_connector_termination_credentials_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_voice_connector_termination_credentials_errors(), tuple()}.
 list_voice_connector_termination_credentials(Client, VoiceConnectorId)
   when is_map(Client) ->
     list_voice_connector_termination_credentials(Client, VoiceConnectorId, #{}, #{}).
@@ -5018,13 +5168,7 @@ list_voice_connector_termination_credentials(Client, VoiceConnectorId)
 -spec list_voice_connector_termination_credentials(map(), binary() | list(), map(), map()) ->
     {ok, list_voice_connector_termination_credentials_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_voice_connector_termination_credentials_errors(), tuple()}.
 list_voice_connector_termination_credentials(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_voice_connector_termination_credentials(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
@@ -5032,13 +5176,7 @@ list_voice_connector_termination_credentials(Client, VoiceConnectorId, QueryMap,
 -spec list_voice_connector_termination_credentials(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_voice_connector_termination_credentials_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_voice_connector_termination_credentials_errors(), tuple()}.
 list_voice_connector_termination_credentials(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination/credentials"],
@@ -5060,12 +5198,7 @@ list_voice_connector_termination_credentials(Client, VoiceConnectorId, QueryMap,
 -spec list_voice_connectors(map()) ->
     {ok, list_voice_connectors_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_voice_connectors_errors(), tuple()}.
 list_voice_connectors(Client)
   when is_map(Client) ->
     list_voice_connectors(Client, #{}, #{}).
@@ -5073,12 +5206,7 @@ list_voice_connectors(Client)
 -spec list_voice_connectors(map(), map(), map()) ->
     {ok, list_voice_connectors_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_voice_connectors_errors(), tuple()}.
 list_voice_connectors(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_voice_connectors(Client, QueryMap, HeadersMap, []).
@@ -5086,12 +5214,7 @@ list_voice_connectors(Client, QueryMap, HeadersMap)
 -spec list_voice_connectors(map(), map(), map(), proplists:proplist()) ->
     {ok, list_voice_connectors_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_voice_connectors_errors(), tuple()}.
 list_voice_connectors(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors"],
@@ -5118,13 +5241,7 @@ list_voice_connectors(Client, QueryMap, HeadersMap, Options0)
 -spec list_voice_profile_domains(map()) ->
     {ok, list_voice_profile_domains_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_voice_profile_domains_errors(), tuple()}.
 list_voice_profile_domains(Client)
   when is_map(Client) ->
     list_voice_profile_domains(Client, #{}, #{}).
@@ -5132,13 +5249,7 @@ list_voice_profile_domains(Client)
 -spec list_voice_profile_domains(map(), map(), map()) ->
     {ok, list_voice_profile_domains_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_voice_profile_domains_errors(), tuple()}.
 list_voice_profile_domains(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_voice_profile_domains(Client, QueryMap, HeadersMap, []).
@@ -5146,13 +5257,7 @@ list_voice_profile_domains(Client, QueryMap, HeadersMap)
 -spec list_voice_profile_domains(map(), map(), map(), proplists:proplist()) ->
     {ok, list_voice_profile_domains_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_voice_profile_domains_errors(), tuple()}.
 list_voice_profile_domains(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-profile-domains"],
@@ -5178,13 +5283,7 @@ list_voice_profile_domains(Client, QueryMap, HeadersMap, Options0)
 -spec list_voice_profiles(map(), binary() | list()) ->
     {ok, list_voice_profiles_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_voice_profiles_errors(), tuple()}.
 list_voice_profiles(Client, VoiceProfileDomainId)
   when is_map(Client) ->
     list_voice_profiles(Client, VoiceProfileDomainId, #{}, #{}).
@@ -5192,13 +5291,7 @@ list_voice_profiles(Client, VoiceProfileDomainId)
 -spec list_voice_profiles(map(), binary() | list(), map(), map()) ->
     {ok, list_voice_profiles_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_voice_profiles_errors(), tuple()}.
 list_voice_profiles(Client, VoiceProfileDomainId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_voice_profiles(Client, VoiceProfileDomainId, QueryMap, HeadersMap, []).
@@ -5206,13 +5299,7 @@ list_voice_profiles(Client, VoiceProfileDomainId, QueryMap, HeadersMap)
 -spec list_voice_profiles(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_voice_profiles_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_voice_profiles_errors(), tuple()}.
 list_voice_profiles(Client, VoiceProfileDomainId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-profiles"],
@@ -5239,26 +5326,14 @@ list_voice_profiles(Client, VoiceProfileDomainId, QueryMap, HeadersMap, Options0
 -spec put_sip_media_application_alexa_skill_configuration(map(), binary() | list(), put_sip_media_application_alexa_skill_configuration_request()) ->
     {ok, put_sip_media_application_alexa_skill_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, put_sip_media_application_alexa_skill_configuration_errors(), tuple()}.
 put_sip_media_application_alexa_skill_configuration(Client, SipMediaApplicationId, Input) ->
     put_sip_media_application_alexa_skill_configuration(Client, SipMediaApplicationId, Input, []).
 
 -spec put_sip_media_application_alexa_skill_configuration(map(), binary() | list(), put_sip_media_application_alexa_skill_configuration_request(), proplists:proplist()) ->
     {ok, put_sip_media_application_alexa_skill_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, put_sip_media_application_alexa_skill_configuration_errors(), tuple()}.
 put_sip_media_application_alexa_skill_configuration(Client, SipMediaApplicationId, Input0, Options0) ->
     Method = put,
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), "/alexa-skill-configuration"],
@@ -5286,26 +5361,14 @@ put_sip_media_application_alexa_skill_configuration(Client, SipMediaApplicationI
 -spec put_sip_media_application_logging_configuration(map(), binary() | list(), put_sip_media_application_logging_configuration_request()) ->
     {ok, put_sip_media_application_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, put_sip_media_application_logging_configuration_errors(), tuple()}.
 put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Input) ->
     put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Input, []).
 
 -spec put_sip_media_application_logging_configuration(map(), binary() | list(), put_sip_media_application_logging_configuration_request(), proplists:proplist()) ->
     {ok, put_sip_media_application_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, put_sip_media_application_logging_configuration_errors(), tuple()}.
 put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Input0, Options0) ->
     Method = put,
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), "/logging-configuration"],
@@ -5332,26 +5395,14 @@ put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, I
 -spec put_voice_connector_emergency_calling_configuration(map(), binary() | list(), put_voice_connector_emergency_calling_configuration_request()) ->
     {ok, put_voice_connector_emergency_calling_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, put_voice_connector_emergency_calling_configuration_errors(), tuple()}.
 put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input) ->
     put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input, []).
 
 -spec put_voice_connector_emergency_calling_configuration(map(), binary() | list(), put_voice_connector_emergency_calling_configuration_request(), proplists:proplist()) ->
     {ok, put_voice_connector_emergency_calling_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, put_voice_connector_emergency_calling_configuration_errors(), tuple()}.
 put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/emergency-calling-configuration"],
@@ -5378,26 +5429,14 @@ put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, In
 -spec put_voice_connector_logging_configuration(map(), binary() | list(), put_voice_connector_logging_configuration_request()) ->
     {ok, put_voice_connector_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, put_voice_connector_logging_configuration_errors(), tuple()}.
 put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input) ->
     put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input, []).
 
 -spec put_voice_connector_logging_configuration(map(), binary() | list(), put_voice_connector_logging_configuration_request(), proplists:proplist()) ->
     {ok, put_voice_connector_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, put_voice_connector_logging_configuration_errors(), tuple()}.
 put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/logging-configuration"],
@@ -5424,26 +5463,14 @@ put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input0, Opti
 -spec put_voice_connector_origination(map(), binary() | list(), put_voice_connector_origination_request()) ->
     {ok, put_voice_connector_origination_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, put_voice_connector_origination_errors(), tuple()}.
 put_voice_connector_origination(Client, VoiceConnectorId, Input) ->
     put_voice_connector_origination(Client, VoiceConnectorId, Input, []).
 
 -spec put_voice_connector_origination(map(), binary() | list(), put_voice_connector_origination_request(), proplists:proplist()) ->
     {ok, put_voice_connector_origination_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, put_voice_connector_origination_errors(), tuple()}.
 put_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/origination"],
@@ -5471,28 +5498,14 @@ put_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) ->
 -spec put_voice_connector_proxy(map(), binary() | list(), put_voice_connector_proxy_request()) ->
     {ok, put_voice_connector_proxy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, put_voice_connector_proxy_errors(), tuple()}.
 put_voice_connector_proxy(Client, VoiceConnectorId, Input) ->
     put_voice_connector_proxy(Client, VoiceConnectorId, Input, []).
 
 -spec put_voice_connector_proxy(map(), binary() | list(), put_voice_connector_proxy_request(), proplists:proplist()) ->
     {ok, put_voice_connector_proxy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, put_voice_connector_proxy_errors(), tuple()}.
 put_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/programmable-numbers/proxy"],
@@ -5519,26 +5532,14 @@ put_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
 -spec put_voice_connector_streaming_configuration(map(), binary() | list(), put_voice_connector_streaming_configuration_request()) ->
     {ok, put_voice_connector_streaming_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, put_voice_connector_streaming_configuration_errors(), tuple()}.
 put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input) ->
     put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input, []).
 
 -spec put_voice_connector_streaming_configuration(map(), binary() | list(), put_voice_connector_streaming_configuration_request(), proplists:proplist()) ->
     {ok, put_voice_connector_streaming_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, put_voice_connector_streaming_configuration_errors(), tuple()}.
 put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/streaming-configuration"],
@@ -5565,28 +5566,14 @@ put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0, Op
 -spec put_voice_connector_termination(map(), binary() | list(), put_voice_connector_termination_request()) ->
     {ok, put_voice_connector_termination_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, put_voice_connector_termination_errors(), tuple()}.
 put_voice_connector_termination(Client, VoiceConnectorId, Input) ->
     put_voice_connector_termination(Client, VoiceConnectorId, Input, []).
 
 -spec put_voice_connector_termination(map(), binary() | list(), put_voice_connector_termination_request(), proplists:proplist()) ->
     {ok, put_voice_connector_termination_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, put_voice_connector_termination_errors(), tuple()}.
 put_voice_connector_termination(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination"],
@@ -5613,26 +5600,14 @@ put_voice_connector_termination(Client, VoiceConnectorId, Input0, Options0) ->
 -spec put_voice_connector_termination_credentials(map(), binary() | list(), put_voice_connector_termination_credentials_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, put_voice_connector_termination_credentials_errors(), tuple()}.
 put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input) ->
     put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input, []).
 
 -spec put_voice_connector_termination_credentials(map(), binary() | list(), put_voice_connector_termination_credentials_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, put_voice_connector_termination_credentials_errors(), tuple()}.
 put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination/credentials?operation=put"],
@@ -5659,28 +5634,14 @@ put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0, Op
 -spec restore_phone_number(map(), binary() | list(), restore_phone_number_request()) ->
     {ok, restore_phone_number_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, restore_phone_number_errors(), tuple()}.
 restore_phone_number(Client, PhoneNumberId, Input) ->
     restore_phone_number(Client, PhoneNumberId, Input, []).
 
 -spec restore_phone_number(map(), binary() | list(), restore_phone_number_request(), proplists:proplist()) ->
     {ok, restore_phone_number_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, restore_phone_number_errors(), tuple()}.
 restore_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     Method = post,
     Path = ["/phone-numbers/", aws_util:encode_uri(PhoneNumberId), "?operation=restore"],
@@ -5707,13 +5668,7 @@ restore_phone_number(Client, PhoneNumberId, Input0, Options0) ->
 -spec search_available_phone_numbers(map()) ->
     {ok, search_available_phone_numbers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, search_available_phone_numbers_errors(), tuple()}.
 search_available_phone_numbers(Client)
   when is_map(Client) ->
     search_available_phone_numbers(Client, #{}, #{}).
@@ -5721,13 +5676,7 @@ search_available_phone_numbers(Client)
 -spec search_available_phone_numbers(map(), map(), map()) ->
     {ok, search_available_phone_numbers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, search_available_phone_numbers_errors(), tuple()}.
 search_available_phone_numbers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     search_available_phone_numbers(Client, QueryMap, HeadersMap, []).
@@ -5735,13 +5684,7 @@ search_available_phone_numbers(Client, QueryMap, HeadersMap)
 -spec search_available_phone_numbers(map(), map(), map(), proplists:proplist()) ->
     {ok, search_available_phone_numbers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, search_available_phone_numbers_errors(), tuple()}.
 search_available_phone_numbers(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/search?type=phone-numbers"],
@@ -5779,36 +5722,14 @@ search_available_phone_numbers(Client, QueryMap, HeadersMap, Options0)
 -spec start_speaker_search_task(map(), binary() | list(), start_speaker_search_task_request()) ->
     {ok, start_speaker_search_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gone_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, start_speaker_search_task_errors(), tuple()}.
 start_speaker_search_task(Client, VoiceConnectorId, Input) ->
     start_speaker_search_task(Client, VoiceConnectorId, Input, []).
 
 -spec start_speaker_search_task(map(), binary() | list(), start_speaker_search_task_request(), proplists:proplist()) ->
     {ok, start_speaker_search_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gone_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, start_speaker_search_task_errors(), tuple()}.
 start_speaker_search_task(Client, VoiceConnectorId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/speaker-search-tasks"],
@@ -5846,36 +5767,14 @@ start_speaker_search_task(Client, VoiceConnectorId, Input0, Options0) ->
 -spec start_voice_tone_analysis_task(map(), binary() | list(), start_voice_tone_analysis_task_request()) ->
     {ok, start_voice_tone_analysis_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gone_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, start_voice_tone_analysis_task_errors(), tuple()}.
 start_voice_tone_analysis_task(Client, VoiceConnectorId, Input) ->
     start_voice_tone_analysis_task(Client, VoiceConnectorId, Input, []).
 
 -spec start_voice_tone_analysis_task(map(), binary() | list(), start_voice_tone_analysis_task_request(), proplists:proplist()) ->
     {ok, start_voice_tone_analysis_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gone_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, start_voice_tone_analysis_task_errors(), tuple()}.
 start_voice_tone_analysis_task(Client, VoiceConnectorId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/voice-tone-analysis-tasks"],
@@ -5902,32 +5801,14 @@ start_voice_tone_analysis_task(Client, VoiceConnectorId, Input0, Options0) ->
 -spec stop_speaker_search_task(map(), binary() | list(), binary() | list(), stop_speaker_search_task_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, stop_speaker_search_task_errors(), tuple()}.
 stop_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, Input) ->
     stop_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, Input, []).
 
 -spec stop_speaker_search_task(map(), binary() | list(), binary() | list(), stop_speaker_search_task_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, stop_speaker_search_task_errors(), tuple()}.
 stop_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/speaker-search-tasks/", aws_util:encode_uri(SpeakerSearchTaskId), "?operation=stop"],
@@ -5954,32 +5835,14 @@ stop_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, Input0, 
 -spec stop_voice_tone_analysis_task(map(), binary() | list(), binary() | list(), stop_voice_tone_analysis_task_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, stop_voice_tone_analysis_task_errors(), tuple()}.
 stop_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, Input) ->
     stop_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, Input, []).
 
 -spec stop_voice_tone_analysis_task(map(), binary() | list(), binary() | list(), stop_voice_tone_analysis_task_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, stop_voice_tone_analysis_task_errors(), tuple()}.
 stop_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/voice-tone-analysis-tasks/", aws_util:encode_uri(VoiceToneAnalysisTaskId), "?operation=stop"],
@@ -6006,26 +5869,14 @@ stop_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId,
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags?operation=tag-resource"],
@@ -6052,24 +5903,14 @@ tag_resource(Client, Input0, Options0) ->
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags?operation=untag-resource"],
@@ -6097,24 +5938,14 @@ untag_resource(Client, Input0, Options0) ->
 -spec update_global_settings(map(), update_global_settings_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, update_global_settings_errors(), tuple()}.
 update_global_settings(Client, Input) ->
     update_global_settings(Client, Input, []).
 
 -spec update_global_settings(map(), update_global_settings_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, update_global_settings_errors(), tuple()}.
 update_global_settings(Client, Input0, Options0) ->
     Method = put,
     Path = ["/settings"],
@@ -6155,28 +5986,14 @@ update_global_settings(Client, Input0, Options0) ->
 -spec update_phone_number(map(), binary() | list(), update_phone_number_request()) ->
     {ok, update_phone_number_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, update_phone_number_errors(), tuple()}.
 update_phone_number(Client, PhoneNumberId, Input) ->
     update_phone_number(Client, PhoneNumberId, Input, []).
 
 -spec update_phone_number(map(), binary() | list(), update_phone_number_request(), proplists:proplist()) ->
     {ok, update_phone_number_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, update_phone_number_errors(), tuple()}.
 update_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     Method = post,
     Path = ["/phone-numbers/", aws_util:encode_uri(PhoneNumberId), ""],
@@ -6210,24 +6027,14 @@ update_phone_number(Client, PhoneNumberId, Input0, Options0) ->
 -spec update_phone_number_settings(map(), update_phone_number_settings_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, update_phone_number_settings_errors(), tuple()}.
 update_phone_number_settings(Client, Input) ->
     update_phone_number_settings(Client, Input, []).
 
 -spec update_phone_number_settings(map(), update_phone_number_settings_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, update_phone_number_settings_errors(), tuple()}.
 update_phone_number_settings(Client, Input0, Options0) ->
     Method = put,
     Path = ["/settings/phone-number"],
@@ -6255,26 +6062,14 @@ update_phone_number_settings(Client, Input0, Options0) ->
 -spec update_proxy_session(map(), binary() | list(), binary() | list(), update_proxy_session_request()) ->
     {ok, update_proxy_session_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, update_proxy_session_errors(), tuple()}.
 update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input) ->
     update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input, []).
 
 -spec update_proxy_session(map(), binary() | list(), binary() | list(), update_proxy_session_request(), proplists:proplist()) ->
     {ok, update_proxy_session_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, update_proxy_session_errors(), tuple()}.
 update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions/", aws_util:encode_uri(ProxySessionId), ""],
@@ -6301,28 +6096,14 @@ update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options0)
 -spec update_sip_media_application(map(), binary() | list(), update_sip_media_application_request()) ->
     {ok, update_sip_media_application_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, update_sip_media_application_errors(), tuple()}.
 update_sip_media_application(Client, SipMediaApplicationId, Input) ->
     update_sip_media_application(Client, SipMediaApplicationId, Input, []).
 
 -spec update_sip_media_application(map(), binary() | list(), update_sip_media_application_request(), proplists:proplist()) ->
     {ok, update_sip_media_application_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, update_sip_media_application_errors(), tuple()}.
 update_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
     Method = put,
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), ""],
@@ -6354,28 +6135,14 @@ update_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
 -spec update_sip_media_application_call(map(), binary() | list(), binary() | list(), update_sip_media_application_call_request()) ->
     {ok, update_sip_media_application_call_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, update_sip_media_application_call_errors(), tuple()}.
 update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, Input) ->
     update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, Input, []).
 
 -spec update_sip_media_application_call(map(), binary() | list(), binary() | list(), update_sip_media_application_call_request(), proplists:proplist()) ->
     {ok, update_sip_media_application_call_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, update_sip_media_application_call_errors(), tuple()}.
 update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, Input0, Options0) ->
     Method = post,
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), "/calls/", aws_util:encode_uri(TransactionId), ""],
@@ -6402,30 +6169,14 @@ update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, 
 -spec update_sip_rule(map(), binary() | list(), update_sip_rule_request()) ->
     {ok, update_sip_rule_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, update_sip_rule_errors(), tuple()}.
 update_sip_rule(Client, SipRuleId, Input) ->
     update_sip_rule(Client, SipRuleId, Input, []).
 
 -spec update_sip_rule(map(), binary() | list(), update_sip_rule_request(), proplists:proplist()) ->
     {ok, update_sip_rule_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, update_sip_rule_errors(), tuple()}.
 update_sip_rule(Client, SipRuleId, Input0, Options0) ->
     Method = put,
     Path = ["/sip-rules/", aws_util:encode_uri(SipRuleId), ""],
@@ -6453,26 +6204,14 @@ update_sip_rule(Client, SipRuleId, Input0, Options0) ->
 -spec update_voice_connector(map(), binary() | list(), update_voice_connector_request()) ->
     {ok, update_voice_connector_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, update_voice_connector_errors(), tuple()}.
 update_voice_connector(Client, VoiceConnectorId, Input) ->
     update_voice_connector(Client, VoiceConnectorId, Input, []).
 
 -spec update_voice_connector(map(), binary() | list(), update_voice_connector_request(), proplists:proplist()) ->
     {ok, update_voice_connector_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, update_voice_connector_errors(), tuple()}.
 update_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), ""],
@@ -6500,28 +6239,14 @@ update_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
 -spec update_voice_connector_group(map(), binary() | list(), update_voice_connector_group_request()) ->
     {ok, update_voice_connector_group_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, update_voice_connector_group_errors(), tuple()}.
 update_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     update_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
 
 -spec update_voice_connector_group(map(), binary() | list(), update_voice_connector_group_request(), proplists:proplist()) ->
     {ok, update_voice_connector_group_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, update_voice_connector_group_errors(), tuple()}.
 update_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), ""],
@@ -6564,32 +6289,14 @@ update_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
 -spec update_voice_profile(map(), binary() | list(), update_voice_profile_request()) ->
     {ok, update_voice_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gone_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, update_voice_profile_errors(), tuple()}.
 update_voice_profile(Client, VoiceProfileId, Input) ->
     update_voice_profile(Client, VoiceProfileId, Input, []).
 
 -spec update_voice_profile(map(), binary() | list(), update_voice_profile_request(), proplists:proplist()) ->
     {ok, update_voice_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gone_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, update_voice_profile_errors(), tuple()}.
 update_voice_profile(Client, VoiceProfileId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-profiles/", aws_util:encode_uri(VoiceProfileId), ""],
@@ -6616,28 +6323,14 @@ update_voice_profile(Client, VoiceProfileId, Input0, Options0) ->
 -spec update_voice_profile_domain(map(), binary() | list(), update_voice_profile_domain_request()) ->
     {ok, update_voice_profile_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, update_voice_profile_domain_errors(), tuple()}.
 update_voice_profile_domain(Client, VoiceProfileDomainId, Input) ->
     update_voice_profile_domain(Client, VoiceProfileDomainId, Input, []).
 
 -spec update_voice_profile_domain(map(), binary() | list(), update_voice_profile_domain_request(), proplists:proplist()) ->
     {ok, update_voice_profile_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, update_voice_profile_domain_errors(), tuple()}.
 update_voice_profile_domain(Client, VoiceProfileDomainId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-profile-domains/", aws_util:encode_uri(VoiceProfileDomainId), ""],
@@ -6671,26 +6364,14 @@ update_voice_profile_domain(Client, VoiceProfileDomainId, Input0, Options0) ->
 -spec validate_e911_address(map(), validate_e911_address_request()) ->
     {ok, validate_e911_address_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, validate_e911_address_errors(), tuple()}.
 validate_e911_address(Client, Input) ->
     validate_e911_address(Client, Input, []).
 
 -spec validate_e911_address(map(), validate_e911_address_request(), proplists:proplist()) ->
     {ok, validate_e911_address_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, validate_e911_address_errors(), tuple()}.
 validate_e911_address(Client, Input0, Options0) ->
     Method = post,
     Path = ["/emergency-calling/address"],

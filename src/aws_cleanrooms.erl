@@ -193,6 +193,7 @@
 %% }
 -type configured_table_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_schemas_input() :: #{
 %%   <<"maxResults">> => integer(),
@@ -200,9 +201,11 @@
 %%   <<"schemaType">> => list(any())
 %% }
 -type list_schemas_input() :: #{binary() => any()}.
+
 %% Example:
 %% get_configured_table_association_input() :: #{}
 -type get_configured_table_association_input() :: #{}.
+
 
 %% Example:
 %% list_configured_audience_model_associations_input() :: #{
@@ -210,9 +213,11 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_configured_audience_model_associations_input() :: #{binary() => any()}.
+
 %% Example:
 %% delete_configured_audience_model_association_output() :: #{}
 -type delete_configured_audience_model_association_output() :: #{}.
+
 
 %% Example:
 %% list_analysis_templates_input() :: #{
@@ -221,6 +226,7 @@
 %% }
 -type list_analysis_templates_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_collaboration_analysis_templates_output() :: #{
 %%   <<"collaborationAnalysisTemplateSummaries">> := list(collaboration_analysis_template_summary()()),
@@ -228,11 +234,13 @@
 %% }
 -type list_collaboration_analysis_templates_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_configured_table_output() :: #{
 %%   <<"configuredTable">> := configured_table()
 %% }
 -type create_configured_table_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_privacy_budget_template_output() :: #{
@@ -240,15 +248,18 @@
 %% }
 -type create_privacy_budget_template_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% differential_privacy_preview_parameters_input() :: #{
 %%   <<"epsilon">> => integer(),
 %%   <<"usersNoisePerQuery">> => integer()
 %% }
 -type differential_privacy_preview_parameters_input() :: #{binary() => any()}.
+
 %% Example:
 %% delete_configured_table_input() :: #{}
 -type delete_configured_table_input() :: #{}.
+
 
 %% Example:
 %% list_members_output() :: #{
@@ -256,6 +267,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_members_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_membership_input() :: #{
@@ -267,17 +279,20 @@
 %% }
 -type create_membership_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_collaboration_analysis_template_input() :: #{
 %%   <<"analysisTemplateArns">> := list(string()())
 %% }
 -type batch_get_collaboration_analysis_template_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_configured_table_analysis_rule_output() :: #{
 %%   <<"analysisRule">> := configured_table_analysis_rule()
 %% }
 -type get_configured_table_analysis_rule_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_configured_table_input() :: #{
@@ -290,6 +305,7 @@
 %% }
 -type create_configured_table_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% analysis_rule() :: #{
 %%   <<"collaborationId">> => string(),
@@ -301,11 +317,13 @@
 %% }
 -type analysis_rule() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_protected_query_output() :: #{
 %%   <<"protectedQuery">> := protected_query()
 %% }
 -type get_protected_query_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_configured_table_associations_output() :: #{
@@ -313,6 +331,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_configured_table_associations_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% collaboration_analysis_template() :: #{
@@ -331,9 +350,11 @@
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
 -type collaboration_analysis_template() :: #{binary() => any()}.
+
 %% Example:
 %% get_analysis_template_input() :: #{}
 -type get_analysis_template_input() :: #{}.
+
 
 %% Example:
 %% list_analysis_templates_output() :: #{
@@ -341,6 +362,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_analysis_templates_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% protected_query_summary() :: #{
@@ -351,9 +373,11 @@
 %%   <<"status">> => string()
 %% }
 -type protected_query_summary() :: #{binary() => any()}.
+
 %% Example:
 %% get_collaboration_analysis_template_input() :: #{}
 -type get_collaboration_analysis_template_input() :: #{}.
+
 
 %% Example:
 %% list_configured_table_associations_input() :: #{
@@ -361,18 +385,22 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_configured_table_associations_input() :: #{binary() => any()}.
+
 %% Example:
 %% delete_privacy_budget_template_input() :: #{}
 -type delete_privacy_budget_template_input() :: #{}.
+
 %% Example:
 %% delete_membership_output() :: #{}
 -type delete_membership_output() :: #{}.
+
 
 %% Example:
 %% update_analysis_template_input() :: #{
 %%   <<"description">> => string()
 %% }
 -type update_analysis_template_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% column() :: #{
@@ -381,6 +409,7 @@
 %% }
 -type column() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_configured_tables_input() :: #{
 %%   <<"maxResults">> => integer(),
@@ -388,11 +417,13 @@
 %% }
 -type list_configured_tables_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_collaboration_output() :: #{
 %%   <<"collaboration">> := collaboration()
 %% }
 -type create_collaboration_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_memberships_output() :: #{
@@ -400,6 +431,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_memberships_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% configured_audience_model_association_summary() :: #{
@@ -417,11 +449,13 @@
 %% }
 -type configured_audience_model_association_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_configured_table_analysis_rule_output() :: #{
 %%   <<"analysisRule">> := configured_table_analysis_rule()
 %% }
 -type update_configured_table_analysis_rule_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_protected_queries_output() :: #{
@@ -429,6 +463,7 @@
 %%   <<"protectedQueries">> := list(protected_query_summary()())
 %% }
 -type list_protected_queries_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_protected_queries_input() :: #{
@@ -438,29 +473,35 @@
 %% }
 -type list_protected_queries_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_configured_table_analysis_rule_input() :: #{
 %%   <<"analysisRulePolicy">> := list()
 %% }
 -type update_configured_table_analysis_rule_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% differential_privacy_parameters() :: #{
 %%   <<"sensitivityParameters">> => list(differential_privacy_sensitivity_parameters()())
 %% }
 -type differential_privacy_parameters() :: #{binary() => any()}.
+
 %% Example:
 %% get_collaboration_privacy_budget_template_input() :: #{}
 -type get_collaboration_privacy_budget_template_input() :: #{}.
+
 %% Example:
 %% delete_configured_audience_model_association_input() :: #{}
 -type delete_configured_audience_model_association_input() :: #{}.
+
 
 %% Example:
 %% update_configured_table_output() :: #{
 %%   <<"configuredTable">> := configured_table()
 %% }
 -type update_configured_table_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% configured_table_association() :: #{
@@ -478,11 +519,13 @@
 %% }
 -type configured_table_association() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_membership_output() :: #{
 %%   <<"membership">> := membership()
 %% }
 -type get_membership_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% differential_privacy_privacy_budget_aggregation() :: #{
@@ -491,6 +534,7 @@
 %%   <<"type">> => list(any())
 %% }
 -type differential_privacy_privacy_budget_aggregation() :: #{binary() => any()}.
+
 
 %% Example:
 %% collaboration() :: #{
@@ -510,6 +554,7 @@
 %% }
 -type collaboration() :: #{binary() => any()}.
 
+
 %% Example:
 %% analysis_rule_aggregation() :: #{
 %%   <<"aggregateColumns">> => list(aggregate_column()()),
@@ -522,12 +567,14 @@
 %% }
 -type analysis_rule_aggregation() :: #{binary() => any()}.
 
+
 %% Example:
 %% differential_privacy_privacy_budget() :: #{
 %%   <<"aggregations">> => list(differential_privacy_privacy_budget_aggregation()()),
 %%   <<"epsilon">> => integer()
 %% }
 -type differential_privacy_privacy_budget() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_privacy_budget_templates_input() :: #{
@@ -536,11 +583,13 @@
 %% }
 -type list_privacy_budget_templates_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_analysis_template_output() :: #{
 %%   <<"analysisTemplate">> := analysis_template()
 %% }
 -type update_analysis_template_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% analysis_schema() :: #{
@@ -548,11 +597,13 @@
 %% }
 -type analysis_schema() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_collaboration_output() :: #{
 %%   <<"collaboration">> := collaboration()
 %% }
 -type update_collaboration_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_collaboration_privacy_budgets_input() :: #{
@@ -562,12 +613,14 @@
 %% }
 -type list_collaboration_privacy_budgets_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_configured_table_association_input() :: #{
 %%   <<"description">> => string(),
 %%   <<"roleArn">> => string()
 %% }
 -type update_configured_table_association_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% differential_privacy_preview_aggregation() :: #{
@@ -576,11 +629,13 @@
 %% }
 -type differential_privacy_preview_aggregation() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_output() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_collaboration_input() :: #{
@@ -589,11 +644,13 @@
 %% }
 -type update_collaboration_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% preview_privacy_impact_input() :: #{
 %%   <<"parameters">> := list()
 %% }
 -type preview_privacy_impact_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_memberships_input() :: #{
@@ -603,24 +660,29 @@
 %% }
 -type list_memberships_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_schemas_output() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"schemaSummaries">> := list(schema_summary()())
 %% }
 -type list_schemas_output() :: #{binary() => any()}.
+
 %% Example:
 %% delete_analysis_template_input() :: #{}
 -type delete_analysis_template_input() :: #{}.
+
 
 %% Example:
 %% get_collaboration_privacy_budget_template_output() :: #{
 %%   <<"collaborationPrivacyBudgetTemplate">> => collaboration_privacy_budget_template()
 %% }
 -type get_collaboration_privacy_budget_template_output() :: #{binary() => any()}.
+
 %% Example:
 %% delete_configured_table_analysis_rule_output() :: #{}
 -type delete_configured_table_analysis_rule_output() :: #{}.
+
 
 %% Example:
 %% update_privacy_budget_template_input() :: #{
@@ -629,6 +691,7 @@
 %% }
 -type update_privacy_budget_template_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% analysis_rule_custom() :: #{
 %%   <<"allowedAnalyses">> => list(string()()),
@@ -636,24 +699,30 @@
 %%   <<"differentialPrivacy">> => differential_privacy_configuration()
 %% }
 -type analysis_rule_custom() :: #{binary() => any()}.
+
 %% Example:
 %% delete_member_output() :: #{}
 -type delete_member_output() :: #{}.
+
 %% Example:
 %% delete_configured_table_association_output() :: #{}
 -type delete_configured_table_association_output() :: #{}.
+
 
 %% Example:
 %% create_analysis_template_output() :: #{
 %%   <<"analysisTemplate">> := analysis_template()
 %% }
 -type create_analysis_template_output() :: #{binary() => any()}.
+
 %% Example:
 %% get_collaboration_input() :: #{}
 -type get_collaboration_input() :: #{}.
+
 %% Example:
 %% get_protected_query_input() :: #{}
 -type get_protected_query_input() :: #{}.
+
 
 %% Example:
 %% privacy_budget_template_summary() :: #{
@@ -668,9 +737,11 @@
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
 -type privacy_budget_template_summary() :: #{binary() => any()}.
+
 %% Example:
 %% delete_collaboration_input() :: #{}
 -type delete_collaboration_input() :: #{}.
+
 
 %% Example:
 %% update_protected_query_input() :: #{
@@ -678,21 +749,25 @@
 %% }
 -type update_protected_query_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% membership_protected_query_result_configuration() :: #{
 %%   <<"outputConfiguration">> => list(),
 %%   <<"roleArn">> => string()
 %% }
 -type membership_protected_query_result_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% delete_member_input() :: #{}
 -type delete_member_input() :: #{}.
+
 
 %% Example:
 %% get_configured_audience_model_association_output() :: #{
 %%   <<"configuredAudienceModelAssociation">> => configured_audience_model_association()
 %% }
 -type get_configured_audience_model_association_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_configured_audience_model_associations_output() :: #{
@@ -701,12 +776,14 @@
 %% }
 -type list_configured_audience_model_associations_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_collaboration_privacy_budget_templates_output() :: #{
 %%   <<"collaborationPrivacyBudgetTemplateSummaries">> => list(collaboration_privacy_budget_template_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_collaboration_privacy_budget_templates_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -717,6 +794,7 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => [string()],
@@ -725,12 +803,14 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_configured_table_analysis_rule_input() :: #{
 %%   <<"analysisRulePolicy">> := list(),
 %%   <<"analysisRuleType">> := list(any())
 %% }
 -type create_configured_table_analysis_rule_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% protected_query() :: #{
@@ -748,17 +828,20 @@
 %% }
 -type protected_query() :: #{binary() => any()}.
 
+
 %% Example:
 %% protected_query_result_configuration() :: #{
 %%   <<"outputConfiguration">> => list()
 %% }
 -type protected_query_result_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_configured_table_association_output() :: #{
 %%   <<"configuredTableAssociation">> := configured_table_association()
 %% }
 -type update_configured_table_association_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
@@ -767,6 +850,7 @@
 %%   <<"quotaValue">> => [float()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% collaboration_configured_audience_model_association() :: #{
@@ -783,6 +867,7 @@
 %% }
 -type collaboration_configured_audience_model_association() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_configured_audience_model_association_input() :: #{
 %%   <<"configuredAudienceModelArn">> := string(),
@@ -793,6 +878,7 @@
 %% }
 -type create_configured_audience_model_association_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% differential_privacy_template_parameters_input() :: #{
 %%   <<"epsilon">> => integer(),
@@ -800,17 +886,20 @@
 %% }
 -type differential_privacy_template_parameters_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% membership_query_compute_payment_config() :: #{
 %%   <<"isResponsible">> => [boolean()]
 %% }
 -type membership_query_compute_payment_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% protected_query_result() :: #{
 %%   <<"output">> => list()
 %% }
 -type protected_query_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% schema_summary() :: #{
@@ -825,9 +914,11 @@
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
 -type schema_summary() :: #{binary() => any()}.
+
 %% Example:
 %% delete_configured_table_analysis_rule_input() :: #{}
 -type delete_configured_table_analysis_rule_input() :: #{}.
+
 
 %% Example:
 %% privacy_budget_template() :: #{
@@ -845,6 +936,7 @@
 %% }
 -type privacy_budget_template() :: #{binary() => any()}.
 
+
 %% Example:
 %% privacy_budget_summary() :: #{
 %%   <<"budget">> => list(),
@@ -861,11 +953,13 @@
 %% }
 -type privacy_budget_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_schema_output() :: #{
 %%   <<"schema">> := schema()
 %% }
 -type get_schema_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_collaboration_configured_audience_model_association_output() :: #{
@@ -873,12 +967,14 @@
 %% }
 -type get_collaboration_configured_audience_model_association_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_schema_output() :: #{
 %%   <<"errors">> := list(batch_get_schema_error()()),
 %%   <<"schemas">> := list(schema()())
 %% }
 -type batch_get_schema_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% collaboration_summary() :: #{
@@ -894,6 +990,7 @@
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
 -type collaboration_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% schema() :: #{
@@ -912,11 +1009,13 @@
 %% }
 -type schema() :: #{binary() => any()}.
 
+
 %% Example:
 %% differential_privacy_column() :: #{
 %%   <<"name">> => [string()]
 %% }
 -type differential_privacy_column() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_collaboration_privacy_budget_templates_input() :: #{
@@ -924,6 +1023,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_collaboration_privacy_budget_templates_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_privacy_budgets_input() :: #{
@@ -933,15 +1033,18 @@
 %% }
 -type list_privacy_budgets_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_collaboration_configured_audience_model_associations_output() :: #{
 %%   <<"collaborationConfiguredAudienceModelAssociationSummaries">> => list(collaboration_configured_audience_model_association_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_collaboration_configured_audience_model_associations_output() :: #{binary() => any()}.
+
 %% Example:
 %% delete_configured_table_association_input() :: #{}
 -type delete_configured_table_association_input() :: #{}.
+
 
 %% Example:
 %% list_privacy_budget_templates_output() :: #{
@@ -950,6 +1053,7 @@
 %% }
 -type list_privacy_budget_templates_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% analysis_rule_list() :: #{
 %%   <<"allowedJoinOperators">> => list(string()()),
@@ -957,6 +1061,7 @@
 %%   <<"listColumns">> => list(string()())
 %% }
 -type analysis_rule_list() :: #{binary() => any()}.
+
 
 %% Example:
 %% membership_summary() :: #{
@@ -975,15 +1080,18 @@
 %% }
 -type membership_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception_field() :: #{
 %%   <<"message">> => [string()],
 %%   <<"name">> => [string()]
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
+
 %% Example:
 %% get_configured_table_analysis_rule_input() :: #{}
 -type get_configured_table_analysis_rule_input() :: #{}.
+
 
 %% Example:
 %% list_collaboration_analysis_templates_input() :: #{
@@ -992,11 +1100,13 @@
 %% }
 -type list_collaboration_analysis_templates_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% protected_query_s3_output() :: #{
 %%   <<"location">> => [string()]
 %% }
 -type protected_query_s3_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% collaboration_privacy_budget_summary() :: #{
@@ -1013,12 +1123,14 @@
 %% }
 -type collaboration_privacy_budget_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_configured_audience_model_association_input() :: #{
 %%   <<"description">> => string(),
 %%   <<"name">> => string()
 %% }
 -type update_configured_audience_model_association_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_collaboration_configured_audience_model_associations_input() :: #{
@@ -1027,11 +1139,13 @@
 %% }
 -type list_collaboration_configured_audience_model_associations_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_input() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_privacy_budget_template_input() :: #{
@@ -1042,11 +1156,13 @@
 %% }
 -type create_privacy_budget_template_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_privacy_budget_template_output() :: #{
 %%   <<"privacyBudgetTemplate">> => privacy_budget_template()
 %% }
 -type get_privacy_budget_template_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_protected_query_output() :: #{
@@ -1054,17 +1170,20 @@
 %% }
 -type update_protected_query_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_configured_table_association_output() :: #{
 %%   <<"configuredTableAssociation">> := configured_table_association()
 %% }
 -type create_configured_table_association_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% differential_privacy_privacy_impact() :: #{
 %%   <<"aggregations">> => list(differential_privacy_preview_aggregation()())
 %% }
 -type differential_privacy_privacy_impact() :: #{binary() => any()}.
+
 
 %% Example:
 %% analysis_parameter() :: #{
@@ -1073,6 +1192,7 @@
 %%   <<"type">> => list(any())
 %% }
 -type analysis_parameter() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_collaboration_input() :: #{
@@ -1088,6 +1208,7 @@
 %% }
 -type create_collaboration_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% configured_table_analysis_rule() :: #{
 %%   <<"configuredTableArn">> => string(),
@@ -1099,11 +1220,13 @@
 %% }
 -type configured_table_analysis_rule() :: #{binary() => any()}.
 
+
 %% Example:
 %% query_compute_payment_config() :: #{
 %%   <<"isResponsible">> => [boolean()]
 %% }
 -type query_compute_payment_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_members_input() :: #{
@@ -1112,15 +1235,18 @@
 %% }
 -type list_members_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% differential_privacy_template_update_parameters() :: #{
 %%   <<"epsilon">> => integer(),
 %%   <<"usersNoisePerQuery">> => integer()
 %% }
 -type differential_privacy_template_update_parameters() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_output() :: #{}
 -type tag_resource_output() :: #{}.
+
 
 %% Example:
 %% aggregation_constraint() :: #{
@@ -1130,6 +1256,7 @@
 %% }
 -type aggregation_constraint() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_collaboration_privacy_budgets_output() :: #{
 %%   <<"collaborationPrivacyBudgetSummaries">> => list(collaboration_privacy_budget_summary()()),
@@ -1137,11 +1264,13 @@
 %% }
 -type list_collaboration_privacy_budgets_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% collaboration_privacy_budget_template() :: #{
@@ -1157,9 +1286,11 @@
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
 -type collaboration_privacy_budget_template() :: #{binary() => any()}.
+
 %% Example:
 %% get_schema_analysis_rule_input() :: #{}
 -type get_schema_analysis_rule_input() :: #{}.
+
 
 %% Example:
 %% configured_audience_model_association() :: #{
@@ -1178,17 +1309,20 @@
 %% }
 -type configured_audience_model_association() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_privacy_budget_template_output() :: #{
 %%   <<"privacyBudgetTemplate">> => privacy_budget_template()
 %% }
 -type update_privacy_budget_template_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% protected_query_single_member_output() :: #{
 %%   <<"accountId">> => string()
 %% }
 -type protected_query_single_member_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% access_denied_exception() :: #{
@@ -1197,11 +1331,13 @@
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% differential_privacy_configuration() :: #{
 %%   <<"columns">> => list(differential_privacy_column()())
 %% }
 -type differential_privacy_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% untag_resource_input() :: #{
@@ -1209,17 +1345,20 @@
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_protected_query_output() :: #{
 %%   <<"protectedQuery">> := protected_query()
 %% }
 -type start_protected_query_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_configured_table_analysis_rule_output() :: #{
 %%   <<"analysisRule">> := configured_table_analysis_rule()
 %% }
 -type create_configured_table_analysis_rule_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% analysis_template() :: #{
@@ -1240,11 +1379,13 @@
 %% }
 -type analysis_template() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_analysis_template_output() :: #{
 %%   <<"analysisTemplate">> := analysis_template()
 %% }
 -type get_analysis_template_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_configured_table_input() :: #{
@@ -1252,9 +1393,11 @@
 %%   <<"name">> => string()
 %% }
 -type update_configured_table_input() :: #{binary() => any()}.
+
 %% Example:
 %% get_schema_input() :: #{}
 -type get_schema_input() :: #{}.
+
 
 %% Example:
 %% batch_get_collaboration_analysis_template_error() :: #{
@@ -1264,12 +1407,14 @@
 %% }
 -type batch_get_collaboration_analysis_template_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_collaborations_output() :: #{
 %%   <<"collaborationList">> := list(collaboration_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_collaborations_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% configured_table_association_summary() :: #{
@@ -1283,6 +1428,7 @@
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
 -type configured_table_association_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% collaboration_configured_audience_model_association_summary() :: #{
@@ -1298,6 +1444,7 @@
 %% }
 -type collaboration_configured_audience_model_association_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"fieldList">> => list(validation_exception_field()()),
@@ -1305,9 +1452,11 @@
 %%   <<"reason">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_input() :: #{}
 -type list_tags_for_resource_input() :: #{}.
+
 
 %% Example:
 %% differential_privacy_template_parameters_output() :: #{
@@ -1315,12 +1464,15 @@
 %%   <<"usersNoisePerQuery">> => integer()
 %% }
 -type differential_privacy_template_parameters_output() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_output() :: #{}
 -type untag_resource_output() :: #{}.
+
 %% Example:
 %% delete_collaboration_output() :: #{}
 -type delete_collaboration_output() :: #{}.
+
 
 %% Example:
 %% get_schema_analysis_rule_output() :: #{
@@ -1328,11 +1480,13 @@
 %% }
 -type get_schema_analysis_rule_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% collaboration_analysis_template_summary() :: #{
@@ -1348,6 +1502,7 @@
 %% }
 -type collaboration_analysis_template_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% protected_query_s_q_l_parameters() :: #{
 %%   <<"analysisTemplateArn">> => string(),
@@ -1356,17 +1511,20 @@
 %% }
 -type protected_query_s_q_l_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_collaboration_output() :: #{
 %%   <<"collaboration">> := collaboration()
 %% }
 -type get_collaboration_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% protected_query_statistics() :: #{
 %%   <<"totalDurationInMillis">> => [float()]
 %% }
 -type protected_query_statistics() :: #{binary() => any()}.
+
 
 %% Example:
 %% analysis_template_summary() :: #{
@@ -1383,11 +1541,13 @@
 %% }
 -type analysis_template_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_configured_audience_model_association_output() :: #{
 %%   <<"configuredAudienceModelAssociation">> => configured_audience_model_association()
 %% }
 -type update_configured_audience_model_association_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_membership_output() :: #{
@@ -1395,12 +1555,14 @@
 %% }
 -type update_membership_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_membership_input() :: #{
 %%   <<"defaultResultConfiguration">> => membership_protected_query_result_configuration(),
 %%   <<"queryLogStatus">> => string()
 %% }
 -type update_membership_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% member_summary() :: #{
@@ -1416,6 +1578,7 @@
 %% }
 -type member_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_collaboration_analysis_template_output() :: #{
 %%   <<"collaborationAnalysisTemplates">> := list(collaboration_analysis_template()()),
@@ -1423,11 +1586,13 @@
 %% }
 -type batch_get_collaboration_analysis_template_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_schema_input() :: #{
 %%   <<"names">> := list(string()())
 %% }
 -type batch_get_schema_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% glue_table_reference() :: #{
@@ -1436,15 +1601,18 @@
 %% }
 -type glue_table_reference() :: #{binary() => any()}.
 
+
 %% Example:
 %% protected_query_error() :: #{
 %%   <<"code">> => [string()],
 %%   <<"message">> => [string()]
 %% }
 -type protected_query_error() :: #{binary() => any()}.
+
 %% Example:
 %% delete_analysis_template_output() :: #{}
 -type delete_analysis_template_output() :: #{}.
+
 
 %% Example:
 %% get_configured_table_association_output() :: #{
@@ -1452,29 +1620,35 @@
 %% }
 -type get_configured_table_association_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_membership_output() :: #{
 %%   <<"membership">> := membership()
 %% }
 -type create_membership_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% membership_payment_configuration() :: #{
 %%   <<"queryCompute">> => membership_query_compute_payment_config()
 %% }
 -type membership_payment_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% get_membership_input() :: #{}
 -type get_membership_input() :: #{}.
+
 %% Example:
 %% get_configured_audience_model_association_input() :: #{}
 -type get_configured_audience_model_association_input() :: #{}.
+
 
 %% Example:
 %% create_configured_audience_model_association_output() :: #{
 %%   <<"configuredAudienceModelAssociation">> => configured_audience_model_association()
 %% }
 -type create_configured_audience_model_association_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_protected_query_input() :: #{
@@ -1483,6 +1657,7 @@
 %%   <<"type">> := string()
 %% }
 -type start_protected_query_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% collaboration_privacy_budget_template_summary() :: #{
@@ -1497,11 +1672,13 @@
 %% }
 -type collaboration_privacy_budget_template_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% payment_configuration() :: #{
 %%   <<"queryCompute">> => query_compute_payment_config()
 %% }
 -type payment_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% configured_table() :: #{
@@ -1518,14 +1695,17 @@
 %% }
 -type configured_table() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_collaboration_analysis_template_output() :: #{
 %%   <<"collaborationAnalysisTemplate">> := collaboration_analysis_template()
 %% }
 -type get_collaboration_analysis_template_output() :: #{binary() => any()}.
+
 %% Example:
 %% get_configured_table_input() :: #{}
 -type get_configured_table_input() :: #{}.
+
 
 %% Example:
 %% aggregate_column() :: #{
@@ -1533,9 +1713,11 @@
 %%   <<"function">> => string()
 %% }
 -type aggregate_column() :: #{binary() => any()}.
+
 %% Example:
 %% get_privacy_budget_template_input() :: #{}
 -type get_privacy_budget_template_input() :: #{}.
+
 
 %% Example:
 %% create_analysis_template_input() :: #{
@@ -1548,15 +1730,18 @@
 %% }
 -type create_analysis_template_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_configured_tables_output() :: #{
 %%   <<"configuredTableSummaries">> := list(configured_table_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_configured_tables_output() :: #{binary() => any()}.
+
 %% Example:
 %% get_collaboration_configured_audience_model_association_input() :: #{}
 -type get_collaboration_configured_audience_model_association_input() :: #{}.
+
 
 %% Example:
 %% list_collaborations_input() :: #{
@@ -1566,6 +1751,7 @@
 %% }
 -type list_collaborations_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% protected_query_s3_output_configuration() :: #{
 %%   <<"bucket">> => [string()],
@@ -1573,6 +1759,7 @@
 %%   <<"resultFormat">> => string()
 %% }
 -type protected_query_s3_output_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_encryption_metadata() :: #{
@@ -1583,6 +1770,7 @@
 %% }
 -type data_encryption_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_schema_error() :: #{
 %%   <<"code">> => [string()],
@@ -1591,11 +1779,13 @@
 %% }
 -type batch_get_schema_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% preview_privacy_impact_output() :: #{
 %%   <<"privacyImpact">> => list()
 %% }
 -type preview_privacy_impact_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% member_specification() :: #{
@@ -1605,9 +1795,11 @@
 %%   <<"paymentConfiguration">> => payment_configuration()
 %% }
 -type member_specification() :: #{binary() => any()}.
+
 %% Example:
 %% delete_membership_input() :: #{}
 -type delete_membership_input() :: #{}.
+
 
 %% Example:
 %% membership() :: #{
@@ -1627,9 +1819,11 @@
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
 -type membership() :: #{binary() => any()}.
+
 %% Example:
 %% delete_configured_table_output() :: #{}
 -type delete_configured_table_output() :: #{}.
+
 
 %% Example:
 %% create_configured_table_association_input() :: #{
@@ -1641,6 +1835,7 @@
 %% }
 -type create_configured_table_association_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% differential_privacy_sensitivity_parameters() :: #{
 %%   <<"aggregationExpression">> => string(),
@@ -1651,11 +1846,13 @@
 %% }
 -type differential_privacy_sensitivity_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_configured_table_output() :: #{
 %%   <<"configuredTable">> := configured_table()
 %% }
 -type get_configured_table_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_privacy_budgets_output() :: #{
@@ -1663,9 +1860,453 @@
 %%   <<"privacyBudgetSummaries">> => list(privacy_budget_summary()())
 %% }
 -type list_privacy_budgets_output() :: #{binary() => any()}.
+
 %% Example:
 %% delete_privacy_budget_template_output() :: #{}
 -type delete_privacy_budget_template_output() :: #{}.
+
+-type batch_get_collaboration_analysis_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type batch_get_schema_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_analysis_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_collaboration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type create_configured_audience_model_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_configured_table_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_configured_table_analysis_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_configured_table_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_membership_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_privacy_budget_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_analysis_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_collaboration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type delete_configured_audience_model_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_configured_table_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_configured_table_analysis_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_configured_table_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_member_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_membership_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_privacy_budget_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_analysis_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_collaboration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type get_collaboration_analysis_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_collaboration_configured_audience_model_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_collaboration_privacy_budget_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_configured_audience_model_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_configured_table_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_configured_table_analysis_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_configured_table_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_membership_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_privacy_budget_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_protected_query_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_schema_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_schema_analysis_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_analysis_templates_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_collaboration_analysis_templates_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_collaboration_configured_audience_model_associations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_collaboration_privacy_budget_templates_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_collaboration_privacy_budgets_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_collaborations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_configured_audience_model_associations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_configured_table_associations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_configured_tables_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_members_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_memberships_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_privacy_budget_templates_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_privacy_budgets_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_protected_queries_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_schemas_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type preview_privacy_impact_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type start_protected_query_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type update_analysis_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_collaboration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type update_configured_audience_model_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_configured_table_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_configured_table_analysis_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_configured_table_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_membership_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_privacy_budget_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_protected_query_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -1677,22 +2318,14 @@
 -spec batch_get_collaboration_analysis_template(map(), binary() | list(), batch_get_collaboration_analysis_template_input()) ->
     {ok, batch_get_collaboration_analysis_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_collaboration_analysis_template_errors(), tuple()}.
 batch_get_collaboration_analysis_template(Client, CollaborationIdentifier, Input) ->
     batch_get_collaboration_analysis_template(Client, CollaborationIdentifier, Input, []).
 
 -spec batch_get_collaboration_analysis_template(map(), binary() | list(), batch_get_collaboration_analysis_template_input(), proplists:proplist()) ->
     {ok, batch_get_collaboration_analysis_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_collaboration_analysis_template_errors(), tuple()}.
 batch_get_collaboration_analysis_template(Client, CollaborationIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/batch-analysistemplates"],
@@ -1719,22 +2352,14 @@ batch_get_collaboration_analysis_template(Client, CollaborationIdentifier, Input
 -spec batch_get_schema(map(), binary() | list(), batch_get_schema_input()) ->
     {ok, batch_get_schema_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_schema_errors(), tuple()}.
 batch_get_schema(Client, CollaborationIdentifier, Input) ->
     batch_get_schema(Client, CollaborationIdentifier, Input, []).
 
 -spec batch_get_schema(map(), binary() | list(), batch_get_schema_input(), proplists:proplist()) ->
     {ok, batch_get_schema_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_schema_errors(), tuple()}.
 batch_get_schema(Client, CollaborationIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/batch-schema"],
@@ -1761,26 +2386,14 @@ batch_get_schema(Client, CollaborationIdentifier, Input0, Options0) ->
 -spec create_analysis_template(map(), binary() | list(), create_analysis_template_input()) ->
     {ok, create_analysis_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_analysis_template_errors(), tuple()}.
 create_analysis_template(Client, MembershipIdentifier, Input) ->
     create_analysis_template(Client, MembershipIdentifier, Input, []).
 
 -spec create_analysis_template(map(), binary() | list(), create_analysis_template_input(), proplists:proplist()) ->
     {ok, create_analysis_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_analysis_template_errors(), tuple()}.
 create_analysis_template(Client, MembershipIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/analysistemplates"],
@@ -1807,22 +2420,14 @@ create_analysis_template(Client, MembershipIdentifier, Input0, Options0) ->
 -spec create_collaboration(map(), create_collaboration_input()) ->
     {ok, create_collaboration_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_collaboration_errors(), tuple()}.
 create_collaboration(Client, Input) ->
     create_collaboration(Client, Input, []).
 
 -spec create_collaboration(map(), create_collaboration_input(), proplists:proplist()) ->
     {ok, create_collaboration_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_collaboration_errors(), tuple()}.
 create_collaboration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/collaborations"],
@@ -1850,26 +2455,14 @@ create_collaboration(Client, Input0, Options0) ->
 -spec create_configured_audience_model_association(map(), binary() | list(), create_configured_audience_model_association_input()) ->
     {ok, create_configured_audience_model_association_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_configured_audience_model_association_errors(), tuple()}.
 create_configured_audience_model_association(Client, MembershipIdentifier, Input) ->
     create_configured_audience_model_association(Client, MembershipIdentifier, Input, []).
 
 -spec create_configured_audience_model_association(map(), binary() | list(), create_configured_audience_model_association_input(), proplists:proplist()) ->
     {ok, create_configured_audience_model_association_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_configured_audience_model_association_errors(), tuple()}.
 create_configured_audience_model_association(Client, MembershipIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/configuredaudiencemodelassociations"],
@@ -1896,26 +2489,14 @@ create_configured_audience_model_association(Client, MembershipIdentifier, Input
 -spec create_configured_table(map(), create_configured_table_input()) ->
     {ok, create_configured_table_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_configured_table_errors(), tuple()}.
 create_configured_table(Client, Input) ->
     create_configured_table(Client, Input, []).
 
 -spec create_configured_table(map(), create_configured_table_input(), proplists:proplist()) ->
     {ok, create_configured_table_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_configured_table_errors(), tuple()}.
 create_configured_table(Client, Input0, Options0) ->
     Method = post,
     Path = ["/configuredTables"],
@@ -1945,24 +2526,14 @@ create_configured_table(Client, Input0, Options0) ->
 -spec create_configured_table_analysis_rule(map(), binary() | list(), create_configured_table_analysis_rule_input()) ->
     {ok, create_configured_table_analysis_rule_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_configured_table_analysis_rule_errors(), tuple()}.
 create_configured_table_analysis_rule(Client, ConfiguredTableIdentifier, Input) ->
     create_configured_table_analysis_rule(Client, ConfiguredTableIdentifier, Input, []).
 
 -spec create_configured_table_analysis_rule(map(), binary() | list(), create_configured_table_analysis_rule_input(), proplists:proplist()) ->
     {ok, create_configured_table_analysis_rule_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_configured_table_analysis_rule_errors(), tuple()}.
 create_configured_table_analysis_rule(Client, ConfiguredTableIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/configuredTables/", aws_util:encode_uri(ConfiguredTableIdentifier), "/analysisRule"],
@@ -1992,26 +2563,14 @@ create_configured_table_analysis_rule(Client, ConfiguredTableIdentifier, Input0,
 -spec create_configured_table_association(map(), binary() | list(), create_configured_table_association_input()) ->
     {ok, create_configured_table_association_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_configured_table_association_errors(), tuple()}.
 create_configured_table_association(Client, MembershipIdentifier, Input) ->
     create_configured_table_association(Client, MembershipIdentifier, Input, []).
 
 -spec create_configured_table_association(map(), binary() | list(), create_configured_table_association_input(), proplists:proplist()) ->
     {ok, create_configured_table_association_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_configured_table_association_errors(), tuple()}.
 create_configured_table_association(Client, MembershipIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/configuredTableAssociations"],
@@ -2040,26 +2599,14 @@ create_configured_table_association(Client, MembershipIdentifier, Input0, Option
 -spec create_membership(map(), create_membership_input()) ->
     {ok, create_membership_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_membership_errors(), tuple()}.
 create_membership(Client, Input) ->
     create_membership(Client, Input, []).
 
 -spec create_membership(map(), create_membership_input(), proplists:proplist()) ->
     {ok, create_membership_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_membership_errors(), tuple()}.
 create_membership(Client, Input0, Options0) ->
     Method = post,
     Path = ["/memberships"],
@@ -2090,24 +2637,14 @@ create_membership(Client, Input0, Options0) ->
 -spec create_privacy_budget_template(map(), binary() | list(), create_privacy_budget_template_input()) ->
     {ok, create_privacy_budget_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_privacy_budget_template_errors(), tuple()}.
 create_privacy_budget_template(Client, MembershipIdentifier, Input) ->
     create_privacy_budget_template(Client, MembershipIdentifier, Input, []).
 
 -spec create_privacy_budget_template(map(), binary() | list(), create_privacy_budget_template_input(), proplists:proplist()) ->
     {ok, create_privacy_budget_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_privacy_budget_template_errors(), tuple()}.
 create_privacy_budget_template(Client, MembershipIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/privacybudgettemplates"],
@@ -2134,22 +2671,14 @@ create_privacy_budget_template(Client, MembershipIdentifier, Input0, Options0) -
 -spec delete_analysis_template(map(), binary() | list(), binary() | list(), delete_analysis_template_input()) ->
     {ok, delete_analysis_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_analysis_template_errors(), tuple()}.
 delete_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, Input) ->
     delete_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, Input, []).
 
 -spec delete_analysis_template(map(), binary() | list(), binary() | list(), delete_analysis_template_input(), proplists:proplist()) ->
     {ok, delete_analysis_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_analysis_template_errors(), tuple()}.
 delete_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/analysistemplates/", aws_util:encode_uri(AnalysisTemplateIdentifier), ""],
@@ -2178,20 +2707,14 @@ delete_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifie
 -spec delete_collaboration(map(), binary() | list(), delete_collaboration_input()) ->
     {ok, delete_collaboration_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_collaboration_errors(), tuple()}.
 delete_collaboration(Client, CollaborationIdentifier, Input) ->
     delete_collaboration(Client, CollaborationIdentifier, Input, []).
 
 -spec delete_collaboration(map(), binary() | list(), delete_collaboration_input(), proplists:proplist()) ->
     {ok, delete_collaboration_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_collaboration_errors(), tuple()}.
 delete_collaboration(Client, CollaborationIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), ""],
@@ -2219,22 +2742,14 @@ delete_collaboration(Client, CollaborationIdentifier, Input0, Options0) ->
 -spec delete_configured_audience_model_association(map(), binary() | list(), binary() | list(), delete_configured_audience_model_association_input()) ->
     {ok, delete_configured_audience_model_association_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_configured_audience_model_association_errors(), tuple()}.
 delete_configured_audience_model_association(Client, ConfiguredAudienceModelAssociationIdentifier, MembershipIdentifier, Input) ->
     delete_configured_audience_model_association(Client, ConfiguredAudienceModelAssociationIdentifier, MembershipIdentifier, Input, []).
 
 -spec delete_configured_audience_model_association(map(), binary() | list(), binary() | list(), delete_configured_audience_model_association_input(), proplists:proplist()) ->
     {ok, delete_configured_audience_model_association_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_configured_audience_model_association_errors(), tuple()}.
 delete_configured_audience_model_association(Client, ConfiguredAudienceModelAssociationIdentifier, MembershipIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/configuredaudiencemodelassociations/", aws_util:encode_uri(ConfiguredAudienceModelAssociationIdentifier), ""],
@@ -2261,24 +2776,14 @@ delete_configured_audience_model_association(Client, ConfiguredAudienceModelAsso
 -spec delete_configured_table(map(), binary() | list(), delete_configured_table_input()) ->
     {ok, delete_configured_table_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_configured_table_errors(), tuple()}.
 delete_configured_table(Client, ConfiguredTableIdentifier, Input) ->
     delete_configured_table(Client, ConfiguredTableIdentifier, Input, []).
 
 -spec delete_configured_table(map(), binary() | list(), delete_configured_table_input(), proplists:proplist()) ->
     {ok, delete_configured_table_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_configured_table_errors(), tuple()}.
 delete_configured_table(Client, ConfiguredTableIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/configuredTables/", aws_util:encode_uri(ConfiguredTableIdentifier), ""],
@@ -2305,24 +2810,14 @@ delete_configured_table(Client, ConfiguredTableIdentifier, Input0, Options0) ->
 -spec delete_configured_table_analysis_rule(map(), binary() | list(), binary() | list(), delete_configured_table_analysis_rule_input()) ->
     {ok, delete_configured_table_analysis_rule_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_configured_table_analysis_rule_errors(), tuple()}.
 delete_configured_table_analysis_rule(Client, AnalysisRuleType, ConfiguredTableIdentifier, Input) ->
     delete_configured_table_analysis_rule(Client, AnalysisRuleType, ConfiguredTableIdentifier, Input, []).
 
 -spec delete_configured_table_analysis_rule(map(), binary() | list(), binary() | list(), delete_configured_table_analysis_rule_input(), proplists:proplist()) ->
     {ok, delete_configured_table_analysis_rule_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_configured_table_analysis_rule_errors(), tuple()}.
 delete_configured_table_analysis_rule(Client, AnalysisRuleType, ConfiguredTableIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/configuredTables/", aws_util:encode_uri(ConfiguredTableIdentifier), "/analysisRule/", aws_util:encode_uri(AnalysisRuleType), ""],
@@ -2349,24 +2844,14 @@ delete_configured_table_analysis_rule(Client, AnalysisRuleType, ConfiguredTableI
 -spec delete_configured_table_association(map(), binary() | list(), binary() | list(), delete_configured_table_association_input()) ->
     {ok, delete_configured_table_association_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_configured_table_association_errors(), tuple()}.
 delete_configured_table_association(Client, ConfiguredTableAssociationIdentifier, MembershipIdentifier, Input) ->
     delete_configured_table_association(Client, ConfiguredTableAssociationIdentifier, MembershipIdentifier, Input, []).
 
 -spec delete_configured_table_association(map(), binary() | list(), binary() | list(), delete_configured_table_association_input(), proplists:proplist()) ->
     {ok, delete_configured_table_association_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_configured_table_association_errors(), tuple()}.
 delete_configured_table_association(Client, ConfiguredTableAssociationIdentifier, MembershipIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/configuredTableAssociations/", aws_util:encode_uri(ConfiguredTableAssociationIdentifier), ""],
@@ -2398,24 +2883,14 @@ delete_configured_table_association(Client, ConfiguredTableAssociationIdentifier
 -spec delete_member(map(), binary() | list(), binary() | list(), delete_member_input()) ->
     {ok, delete_member_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_member_errors(), tuple()}.
 delete_member(Client, AccountId, CollaborationIdentifier, Input) ->
     delete_member(Client, AccountId, CollaborationIdentifier, Input, []).
 
 -spec delete_member(map(), binary() | list(), binary() | list(), delete_member_input(), proplists:proplist()) ->
     {ok, delete_member_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_member_errors(), tuple()}.
 delete_member(Client, AccountId, CollaborationIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/member/", aws_util:encode_uri(AccountId), ""],
@@ -2444,24 +2919,14 @@ delete_member(Client, AccountId, CollaborationIdentifier, Input0, Options0) ->
 -spec delete_membership(map(), binary() | list(), delete_membership_input()) ->
     {ok, delete_membership_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_membership_errors(), tuple()}.
 delete_membership(Client, MembershipIdentifier, Input) ->
     delete_membership(Client, MembershipIdentifier, Input, []).
 
 -spec delete_membership(map(), binary() | list(), delete_membership_input(), proplists:proplist()) ->
     {ok, delete_membership_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_membership_errors(), tuple()}.
 delete_membership(Client, MembershipIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), ""],
@@ -2488,22 +2953,14 @@ delete_membership(Client, MembershipIdentifier, Input0, Options0) ->
 -spec delete_privacy_budget_template(map(), binary() | list(), binary() | list(), delete_privacy_budget_template_input()) ->
     {ok, delete_privacy_budget_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_privacy_budget_template_errors(), tuple()}.
 delete_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateIdentifier, Input) ->
     delete_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateIdentifier, Input, []).
 
 -spec delete_privacy_budget_template(map(), binary() | list(), binary() | list(), delete_privacy_budget_template_input(), proplists:proplist()) ->
     {ok, delete_privacy_budget_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_privacy_budget_template_errors(), tuple()}.
 delete_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/privacybudgettemplates/", aws_util:encode_uri(PrivacyBudgetTemplateIdentifier), ""],
@@ -2530,11 +2987,7 @@ delete_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTempla
 -spec get_analysis_template(map(), binary() | list(), binary() | list()) ->
     {ok, get_analysis_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_analysis_template_errors(), tuple()}.
 get_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier)
   when is_map(Client) ->
     get_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, #{}, #{}).
@@ -2542,11 +2995,7 @@ get_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier)
 -spec get_analysis_template(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_analysis_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_analysis_template_errors(), tuple()}.
 get_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, QueryMap, HeadersMap, []).
@@ -2554,11 +3003,7 @@ get_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, 
 -spec get_analysis_template(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_analysis_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_analysis_template_errors(), tuple()}.
 get_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/analysistemplates/", aws_util:encode_uri(AnalysisTemplateIdentifier), ""],
@@ -2579,10 +3024,7 @@ get_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, 
 -spec get_collaboration(map(), binary() | list()) ->
     {ok, get_collaboration_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_collaboration_errors(), tuple()}.
 get_collaboration(Client, CollaborationIdentifier)
   when is_map(Client) ->
     get_collaboration(Client, CollaborationIdentifier, #{}, #{}).
@@ -2590,10 +3032,7 @@ get_collaboration(Client, CollaborationIdentifier)
 -spec get_collaboration(map(), binary() | list(), map(), map()) ->
     {ok, get_collaboration_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_collaboration_errors(), tuple()}.
 get_collaboration(Client, CollaborationIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_collaboration(Client, CollaborationIdentifier, QueryMap, HeadersMap, []).
@@ -2601,10 +3040,7 @@ get_collaboration(Client, CollaborationIdentifier, QueryMap, HeadersMap)
 -spec get_collaboration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_collaboration_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_collaboration_errors(), tuple()}.
 get_collaboration(Client, CollaborationIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), ""],
@@ -2625,11 +3061,7 @@ get_collaboration(Client, CollaborationIdentifier, QueryMap, HeadersMap, Options
 -spec get_collaboration_analysis_template(map(), binary() | list(), binary() | list()) ->
     {ok, get_collaboration_analysis_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_collaboration_analysis_template_errors(), tuple()}.
 get_collaboration_analysis_template(Client, AnalysisTemplateArn, CollaborationIdentifier)
   when is_map(Client) ->
     get_collaboration_analysis_template(Client, AnalysisTemplateArn, CollaborationIdentifier, #{}, #{}).
@@ -2637,11 +3069,7 @@ get_collaboration_analysis_template(Client, AnalysisTemplateArn, CollaborationId
 -spec get_collaboration_analysis_template(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_collaboration_analysis_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_collaboration_analysis_template_errors(), tuple()}.
 get_collaboration_analysis_template(Client, AnalysisTemplateArn, CollaborationIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_collaboration_analysis_template(Client, AnalysisTemplateArn, CollaborationIdentifier, QueryMap, HeadersMap, []).
@@ -2649,11 +3077,7 @@ get_collaboration_analysis_template(Client, AnalysisTemplateArn, CollaborationId
 -spec get_collaboration_analysis_template(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_collaboration_analysis_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_collaboration_analysis_template_errors(), tuple()}.
 get_collaboration_analysis_template(Client, AnalysisTemplateArn, CollaborationIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/analysistemplates/", aws_util:encode_uri(AnalysisTemplateArn), ""],
@@ -2675,11 +3099,7 @@ get_collaboration_analysis_template(Client, AnalysisTemplateArn, CollaborationId
 -spec get_collaboration_configured_audience_model_association(map(), binary() | list(), binary() | list()) ->
     {ok, get_collaboration_configured_audience_model_association_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_collaboration_configured_audience_model_association_errors(), tuple()}.
 get_collaboration_configured_audience_model_association(Client, CollaborationIdentifier, ConfiguredAudienceModelAssociationIdentifier)
   when is_map(Client) ->
     get_collaboration_configured_audience_model_association(Client, CollaborationIdentifier, ConfiguredAudienceModelAssociationIdentifier, #{}, #{}).
@@ -2687,11 +3107,7 @@ get_collaboration_configured_audience_model_association(Client, CollaborationIde
 -spec get_collaboration_configured_audience_model_association(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_collaboration_configured_audience_model_association_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_collaboration_configured_audience_model_association_errors(), tuple()}.
 get_collaboration_configured_audience_model_association(Client, CollaborationIdentifier, ConfiguredAudienceModelAssociationIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_collaboration_configured_audience_model_association(Client, CollaborationIdentifier, ConfiguredAudienceModelAssociationIdentifier, QueryMap, HeadersMap, []).
@@ -2699,11 +3115,7 @@ get_collaboration_configured_audience_model_association(Client, CollaborationIde
 -spec get_collaboration_configured_audience_model_association(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_collaboration_configured_audience_model_association_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_collaboration_configured_audience_model_association_errors(), tuple()}.
 get_collaboration_configured_audience_model_association(Client, CollaborationIdentifier, ConfiguredAudienceModelAssociationIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/configuredaudiencemodelassociations/", aws_util:encode_uri(ConfiguredAudienceModelAssociationIdentifier), ""],
@@ -2724,11 +3136,7 @@ get_collaboration_configured_audience_model_association(Client, CollaborationIde
 -spec get_collaboration_privacy_budget_template(map(), binary() | list(), binary() | list()) ->
     {ok, get_collaboration_privacy_budget_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_collaboration_privacy_budget_template_errors(), tuple()}.
 get_collaboration_privacy_budget_template(Client, CollaborationIdentifier, PrivacyBudgetTemplateIdentifier)
   when is_map(Client) ->
     get_collaboration_privacy_budget_template(Client, CollaborationIdentifier, PrivacyBudgetTemplateIdentifier, #{}, #{}).
@@ -2736,11 +3144,7 @@ get_collaboration_privacy_budget_template(Client, CollaborationIdentifier, Priva
 -spec get_collaboration_privacy_budget_template(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_collaboration_privacy_budget_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_collaboration_privacy_budget_template_errors(), tuple()}.
 get_collaboration_privacy_budget_template(Client, CollaborationIdentifier, PrivacyBudgetTemplateIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_collaboration_privacy_budget_template(Client, CollaborationIdentifier, PrivacyBudgetTemplateIdentifier, QueryMap, HeadersMap, []).
@@ -2748,11 +3152,7 @@ get_collaboration_privacy_budget_template(Client, CollaborationIdentifier, Priva
 -spec get_collaboration_privacy_budget_template(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_collaboration_privacy_budget_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_collaboration_privacy_budget_template_errors(), tuple()}.
 get_collaboration_privacy_budget_template(Client, CollaborationIdentifier, PrivacyBudgetTemplateIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/privacybudgettemplates/", aws_util:encode_uri(PrivacyBudgetTemplateIdentifier), ""],
@@ -2773,11 +3173,7 @@ get_collaboration_privacy_budget_template(Client, CollaborationIdentifier, Priva
 -spec get_configured_audience_model_association(map(), binary() | list(), binary() | list()) ->
     {ok, get_configured_audience_model_association_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_configured_audience_model_association_errors(), tuple()}.
 get_configured_audience_model_association(Client, ConfiguredAudienceModelAssociationIdentifier, MembershipIdentifier)
   when is_map(Client) ->
     get_configured_audience_model_association(Client, ConfiguredAudienceModelAssociationIdentifier, MembershipIdentifier, #{}, #{}).
@@ -2785,11 +3181,7 @@ get_configured_audience_model_association(Client, ConfiguredAudienceModelAssocia
 -spec get_configured_audience_model_association(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_configured_audience_model_association_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_configured_audience_model_association_errors(), tuple()}.
 get_configured_audience_model_association(Client, ConfiguredAudienceModelAssociationIdentifier, MembershipIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_configured_audience_model_association(Client, ConfiguredAudienceModelAssociationIdentifier, MembershipIdentifier, QueryMap, HeadersMap, []).
@@ -2797,11 +3189,7 @@ get_configured_audience_model_association(Client, ConfiguredAudienceModelAssocia
 -spec get_configured_audience_model_association(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_configured_audience_model_association_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_configured_audience_model_association_errors(), tuple()}.
 get_configured_audience_model_association(Client, ConfiguredAudienceModelAssociationIdentifier, MembershipIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/configuredaudiencemodelassociations/", aws_util:encode_uri(ConfiguredAudienceModelAssociationIdentifier), ""],
@@ -2822,11 +3210,7 @@ get_configured_audience_model_association(Client, ConfiguredAudienceModelAssocia
 -spec get_configured_table(map(), binary() | list()) ->
     {ok, get_configured_table_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_configured_table_errors(), tuple()}.
 get_configured_table(Client, ConfiguredTableIdentifier)
   when is_map(Client) ->
     get_configured_table(Client, ConfiguredTableIdentifier, #{}, #{}).
@@ -2834,11 +3218,7 @@ get_configured_table(Client, ConfiguredTableIdentifier)
 -spec get_configured_table(map(), binary() | list(), map(), map()) ->
     {ok, get_configured_table_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_configured_table_errors(), tuple()}.
 get_configured_table(Client, ConfiguredTableIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_configured_table(Client, ConfiguredTableIdentifier, QueryMap, HeadersMap, []).
@@ -2846,11 +3226,7 @@ get_configured_table(Client, ConfiguredTableIdentifier, QueryMap, HeadersMap)
 -spec get_configured_table(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_configured_table_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_configured_table_errors(), tuple()}.
 get_configured_table(Client, ConfiguredTableIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/configuredTables/", aws_util:encode_uri(ConfiguredTableIdentifier), ""],
@@ -2871,11 +3247,7 @@ get_configured_table(Client, ConfiguredTableIdentifier, QueryMap, HeadersMap, Op
 -spec get_configured_table_analysis_rule(map(), binary() | list(), binary() | list()) ->
     {ok, get_configured_table_analysis_rule_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_configured_table_analysis_rule_errors(), tuple()}.
 get_configured_table_analysis_rule(Client, AnalysisRuleType, ConfiguredTableIdentifier)
   when is_map(Client) ->
     get_configured_table_analysis_rule(Client, AnalysisRuleType, ConfiguredTableIdentifier, #{}, #{}).
@@ -2883,11 +3255,7 @@ get_configured_table_analysis_rule(Client, AnalysisRuleType, ConfiguredTableIden
 -spec get_configured_table_analysis_rule(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_configured_table_analysis_rule_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_configured_table_analysis_rule_errors(), tuple()}.
 get_configured_table_analysis_rule(Client, AnalysisRuleType, ConfiguredTableIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_configured_table_analysis_rule(Client, AnalysisRuleType, ConfiguredTableIdentifier, QueryMap, HeadersMap, []).
@@ -2895,11 +3263,7 @@ get_configured_table_analysis_rule(Client, AnalysisRuleType, ConfiguredTableIden
 -spec get_configured_table_analysis_rule(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_configured_table_analysis_rule_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_configured_table_analysis_rule_errors(), tuple()}.
 get_configured_table_analysis_rule(Client, AnalysisRuleType, ConfiguredTableIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/configuredTables/", aws_util:encode_uri(ConfiguredTableIdentifier), "/analysisRule/", aws_util:encode_uri(AnalysisRuleType), ""],
@@ -2920,11 +3284,7 @@ get_configured_table_analysis_rule(Client, AnalysisRuleType, ConfiguredTableIden
 -spec get_configured_table_association(map(), binary() | list(), binary() | list()) ->
     {ok, get_configured_table_association_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_configured_table_association_errors(), tuple()}.
 get_configured_table_association(Client, ConfiguredTableAssociationIdentifier, MembershipIdentifier)
   when is_map(Client) ->
     get_configured_table_association(Client, ConfiguredTableAssociationIdentifier, MembershipIdentifier, #{}, #{}).
@@ -2932,11 +3292,7 @@ get_configured_table_association(Client, ConfiguredTableAssociationIdentifier, M
 -spec get_configured_table_association(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_configured_table_association_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_configured_table_association_errors(), tuple()}.
 get_configured_table_association(Client, ConfiguredTableAssociationIdentifier, MembershipIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_configured_table_association(Client, ConfiguredTableAssociationIdentifier, MembershipIdentifier, QueryMap, HeadersMap, []).
@@ -2944,11 +3300,7 @@ get_configured_table_association(Client, ConfiguredTableAssociationIdentifier, M
 -spec get_configured_table_association(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_configured_table_association_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_configured_table_association_errors(), tuple()}.
 get_configured_table_association(Client, ConfiguredTableAssociationIdentifier, MembershipIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/configuredTableAssociations/", aws_util:encode_uri(ConfiguredTableAssociationIdentifier), ""],
@@ -2969,11 +3321,7 @@ get_configured_table_association(Client, ConfiguredTableAssociationIdentifier, M
 -spec get_membership(map(), binary() | list()) ->
     {ok, get_membership_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_membership_errors(), tuple()}.
 get_membership(Client, MembershipIdentifier)
   when is_map(Client) ->
     get_membership(Client, MembershipIdentifier, #{}, #{}).
@@ -2981,11 +3329,7 @@ get_membership(Client, MembershipIdentifier)
 -spec get_membership(map(), binary() | list(), map(), map()) ->
     {ok, get_membership_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_membership_errors(), tuple()}.
 get_membership(Client, MembershipIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_membership(Client, MembershipIdentifier, QueryMap, HeadersMap, []).
@@ -2993,11 +3337,7 @@ get_membership(Client, MembershipIdentifier, QueryMap, HeadersMap)
 -spec get_membership(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_membership_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_membership_errors(), tuple()}.
 get_membership(Client, MembershipIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), ""],
@@ -3018,11 +3358,7 @@ get_membership(Client, MembershipIdentifier, QueryMap, HeadersMap, Options0)
 -spec get_privacy_budget_template(map(), binary() | list(), binary() | list()) ->
     {ok, get_privacy_budget_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_privacy_budget_template_errors(), tuple()}.
 get_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateIdentifier)
   when is_map(Client) ->
     get_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateIdentifier, #{}, #{}).
@@ -3030,11 +3366,7 @@ get_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateI
 -spec get_privacy_budget_template(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_privacy_budget_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_privacy_budget_template_errors(), tuple()}.
 get_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateIdentifier, QueryMap, HeadersMap, []).
@@ -3042,11 +3374,7 @@ get_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateI
 -spec get_privacy_budget_template(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_privacy_budget_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_privacy_budget_template_errors(), tuple()}.
 get_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/privacybudgettemplates/", aws_util:encode_uri(PrivacyBudgetTemplateIdentifier), ""],
@@ -3067,11 +3395,7 @@ get_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateI
 -spec get_protected_query(map(), binary() | list(), binary() | list()) ->
     {ok, get_protected_query_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_protected_query_errors(), tuple()}.
 get_protected_query(Client, MembershipIdentifier, ProtectedQueryIdentifier)
   when is_map(Client) ->
     get_protected_query(Client, MembershipIdentifier, ProtectedQueryIdentifier, #{}, #{}).
@@ -3079,11 +3403,7 @@ get_protected_query(Client, MembershipIdentifier, ProtectedQueryIdentifier)
 -spec get_protected_query(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_protected_query_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_protected_query_errors(), tuple()}.
 get_protected_query(Client, MembershipIdentifier, ProtectedQueryIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_protected_query(Client, MembershipIdentifier, ProtectedQueryIdentifier, QueryMap, HeadersMap, []).
@@ -3091,11 +3411,7 @@ get_protected_query(Client, MembershipIdentifier, ProtectedQueryIdentifier, Quer
 -spec get_protected_query(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_protected_query_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_protected_query_errors(), tuple()}.
 get_protected_query(Client, MembershipIdentifier, ProtectedQueryIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/protectedQueries/", aws_util:encode_uri(ProtectedQueryIdentifier), ""],
@@ -3116,11 +3432,7 @@ get_protected_query(Client, MembershipIdentifier, ProtectedQueryIdentifier, Quer
 -spec get_schema(map(), binary() | list(), binary() | list()) ->
     {ok, get_schema_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_schema_errors(), tuple()}.
 get_schema(Client, CollaborationIdentifier, Name)
   when is_map(Client) ->
     get_schema(Client, CollaborationIdentifier, Name, #{}, #{}).
@@ -3128,11 +3440,7 @@ get_schema(Client, CollaborationIdentifier, Name)
 -spec get_schema(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_schema_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_schema_errors(), tuple()}.
 get_schema(Client, CollaborationIdentifier, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_schema(Client, CollaborationIdentifier, Name, QueryMap, HeadersMap, []).
@@ -3140,11 +3448,7 @@ get_schema(Client, CollaborationIdentifier, Name, QueryMap, HeadersMap)
 -spec get_schema(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_schema_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_schema_errors(), tuple()}.
 get_schema(Client, CollaborationIdentifier, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/schemas/", aws_util:encode_uri(Name), ""],
@@ -3165,11 +3469,7 @@ get_schema(Client, CollaborationIdentifier, Name, QueryMap, HeadersMap, Options0
 -spec get_schema_analysis_rule(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_schema_analysis_rule_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_schema_analysis_rule_errors(), tuple()}.
 get_schema_analysis_rule(Client, CollaborationIdentifier, Name, Type)
   when is_map(Client) ->
     get_schema_analysis_rule(Client, CollaborationIdentifier, Name, Type, #{}, #{}).
@@ -3177,11 +3477,7 @@ get_schema_analysis_rule(Client, CollaborationIdentifier, Name, Type)
 -spec get_schema_analysis_rule(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_schema_analysis_rule_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_schema_analysis_rule_errors(), tuple()}.
 get_schema_analysis_rule(Client, CollaborationIdentifier, Name, Type, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_schema_analysis_rule(Client, CollaborationIdentifier, Name, Type, QueryMap, HeadersMap, []).
@@ -3189,11 +3485,7 @@ get_schema_analysis_rule(Client, CollaborationIdentifier, Name, Type, QueryMap, 
 -spec get_schema_analysis_rule(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_schema_analysis_rule_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_schema_analysis_rule_errors(), tuple()}.
 get_schema_analysis_rule(Client, CollaborationIdentifier, Name, Type, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/schemas/", aws_util:encode_uri(Name), "/analysisRule/", aws_util:encode_uri(Type), ""],
@@ -3214,11 +3506,7 @@ get_schema_analysis_rule(Client, CollaborationIdentifier, Name, Type, QueryMap, 
 -spec list_analysis_templates(map(), binary() | list()) ->
     {ok, list_analysis_templates_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_analysis_templates_errors(), tuple()}.
 list_analysis_templates(Client, MembershipIdentifier)
   when is_map(Client) ->
     list_analysis_templates(Client, MembershipIdentifier, #{}, #{}).
@@ -3226,11 +3514,7 @@ list_analysis_templates(Client, MembershipIdentifier)
 -spec list_analysis_templates(map(), binary() | list(), map(), map()) ->
     {ok, list_analysis_templates_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_analysis_templates_errors(), tuple()}.
 list_analysis_templates(Client, MembershipIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_analysis_templates(Client, MembershipIdentifier, QueryMap, HeadersMap, []).
@@ -3238,11 +3522,7 @@ list_analysis_templates(Client, MembershipIdentifier, QueryMap, HeadersMap)
 -spec list_analysis_templates(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_analysis_templates_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_analysis_templates_errors(), tuple()}.
 list_analysis_templates(Client, MembershipIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/analysistemplates"],
@@ -3268,11 +3548,7 @@ list_analysis_templates(Client, MembershipIdentifier, QueryMap, HeadersMap, Opti
 -spec list_collaboration_analysis_templates(map(), binary() | list()) ->
     {ok, list_collaboration_analysis_templates_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_collaboration_analysis_templates_errors(), tuple()}.
 list_collaboration_analysis_templates(Client, CollaborationIdentifier)
   when is_map(Client) ->
     list_collaboration_analysis_templates(Client, CollaborationIdentifier, #{}, #{}).
@@ -3280,11 +3556,7 @@ list_collaboration_analysis_templates(Client, CollaborationIdentifier)
 -spec list_collaboration_analysis_templates(map(), binary() | list(), map(), map()) ->
     {ok, list_collaboration_analysis_templates_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_collaboration_analysis_templates_errors(), tuple()}.
 list_collaboration_analysis_templates(Client, CollaborationIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_collaboration_analysis_templates(Client, CollaborationIdentifier, QueryMap, HeadersMap, []).
@@ -3292,11 +3564,7 @@ list_collaboration_analysis_templates(Client, CollaborationIdentifier, QueryMap,
 -spec list_collaboration_analysis_templates(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_collaboration_analysis_templates_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_collaboration_analysis_templates_errors(), tuple()}.
 list_collaboration_analysis_templates(Client, CollaborationIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/analysistemplates"],
@@ -3322,11 +3590,7 @@ list_collaboration_analysis_templates(Client, CollaborationIdentifier, QueryMap,
 -spec list_collaboration_configured_audience_model_associations(map(), binary() | list()) ->
     {ok, list_collaboration_configured_audience_model_associations_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_collaboration_configured_audience_model_associations_errors(), tuple()}.
 list_collaboration_configured_audience_model_associations(Client, CollaborationIdentifier)
   when is_map(Client) ->
     list_collaboration_configured_audience_model_associations(Client, CollaborationIdentifier, #{}, #{}).
@@ -3334,11 +3598,7 @@ list_collaboration_configured_audience_model_associations(Client, CollaborationI
 -spec list_collaboration_configured_audience_model_associations(map(), binary() | list(), map(), map()) ->
     {ok, list_collaboration_configured_audience_model_associations_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_collaboration_configured_audience_model_associations_errors(), tuple()}.
 list_collaboration_configured_audience_model_associations(Client, CollaborationIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_collaboration_configured_audience_model_associations(Client, CollaborationIdentifier, QueryMap, HeadersMap, []).
@@ -3346,11 +3606,7 @@ list_collaboration_configured_audience_model_associations(Client, CollaborationI
 -spec list_collaboration_configured_audience_model_associations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_collaboration_configured_audience_model_associations_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_collaboration_configured_audience_model_associations_errors(), tuple()}.
 list_collaboration_configured_audience_model_associations(Client, CollaborationIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/configuredaudiencemodelassociations"],
@@ -3377,11 +3633,7 @@ list_collaboration_configured_audience_model_associations(Client, CollaborationI
 -spec list_collaboration_privacy_budget_templates(map(), binary() | list()) ->
     {ok, list_collaboration_privacy_budget_templates_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_collaboration_privacy_budget_templates_errors(), tuple()}.
 list_collaboration_privacy_budget_templates(Client, CollaborationIdentifier)
   when is_map(Client) ->
     list_collaboration_privacy_budget_templates(Client, CollaborationIdentifier, #{}, #{}).
@@ -3389,11 +3641,7 @@ list_collaboration_privacy_budget_templates(Client, CollaborationIdentifier)
 -spec list_collaboration_privacy_budget_templates(map(), binary() | list(), map(), map()) ->
     {ok, list_collaboration_privacy_budget_templates_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_collaboration_privacy_budget_templates_errors(), tuple()}.
 list_collaboration_privacy_budget_templates(Client, CollaborationIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_collaboration_privacy_budget_templates(Client, CollaborationIdentifier, QueryMap, HeadersMap, []).
@@ -3401,11 +3649,7 @@ list_collaboration_privacy_budget_templates(Client, CollaborationIdentifier, Que
 -spec list_collaboration_privacy_budget_templates(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_collaboration_privacy_budget_templates_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_collaboration_privacy_budget_templates_errors(), tuple()}.
 list_collaboration_privacy_budget_templates(Client, CollaborationIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/privacybudgettemplates"],
@@ -3435,11 +3679,7 @@ list_collaboration_privacy_budget_templates(Client, CollaborationIdentifier, Que
 -spec list_collaboration_privacy_budgets(map(), binary() | list(), binary() | list()) ->
     {ok, list_collaboration_privacy_budgets_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_collaboration_privacy_budgets_errors(), tuple()}.
 list_collaboration_privacy_budgets(Client, CollaborationIdentifier, PrivacyBudgetType)
   when is_map(Client) ->
     list_collaboration_privacy_budgets(Client, CollaborationIdentifier, PrivacyBudgetType, #{}, #{}).
@@ -3447,11 +3687,7 @@ list_collaboration_privacy_budgets(Client, CollaborationIdentifier, PrivacyBudge
 -spec list_collaboration_privacy_budgets(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_collaboration_privacy_budgets_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_collaboration_privacy_budgets_errors(), tuple()}.
 list_collaboration_privacy_budgets(Client, CollaborationIdentifier, PrivacyBudgetType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_collaboration_privacy_budgets(Client, CollaborationIdentifier, PrivacyBudgetType, QueryMap, HeadersMap, []).
@@ -3459,11 +3695,7 @@ list_collaboration_privacy_budgets(Client, CollaborationIdentifier, PrivacyBudge
 -spec list_collaboration_privacy_budgets(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_collaboration_privacy_budgets_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_collaboration_privacy_budgets_errors(), tuple()}.
 list_collaboration_privacy_budgets(Client, CollaborationIdentifier, PrivacyBudgetType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/privacybudgets"],
@@ -3491,10 +3723,7 @@ list_collaboration_privacy_budgets(Client, CollaborationIdentifier, PrivacyBudge
 -spec list_collaborations(map()) ->
     {ok, list_collaborations_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_collaborations_errors(), tuple()}.
 list_collaborations(Client)
   when is_map(Client) ->
     list_collaborations(Client, #{}, #{}).
@@ -3502,10 +3731,7 @@ list_collaborations(Client)
 -spec list_collaborations(map(), map(), map()) ->
     {ok, list_collaborations_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_collaborations_errors(), tuple()}.
 list_collaborations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_collaborations(Client, QueryMap, HeadersMap, []).
@@ -3513,10 +3739,7 @@ list_collaborations(Client, QueryMap, HeadersMap)
 -spec list_collaborations(map(), map(), map(), proplists:proplist()) ->
     {ok, list_collaborations_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_collaborations_errors(), tuple()}.
 list_collaborations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/collaborations"],
@@ -3544,11 +3767,7 @@ list_collaborations(Client, QueryMap, HeadersMap, Options0)
 -spec list_configured_audience_model_associations(map(), binary() | list()) ->
     {ok, list_configured_audience_model_associations_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_configured_audience_model_associations_errors(), tuple()}.
 list_configured_audience_model_associations(Client, MembershipIdentifier)
   when is_map(Client) ->
     list_configured_audience_model_associations(Client, MembershipIdentifier, #{}, #{}).
@@ -3556,11 +3775,7 @@ list_configured_audience_model_associations(Client, MembershipIdentifier)
 -spec list_configured_audience_model_associations(map(), binary() | list(), map(), map()) ->
     {ok, list_configured_audience_model_associations_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_configured_audience_model_associations_errors(), tuple()}.
 list_configured_audience_model_associations(Client, MembershipIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configured_audience_model_associations(Client, MembershipIdentifier, QueryMap, HeadersMap, []).
@@ -3568,11 +3783,7 @@ list_configured_audience_model_associations(Client, MembershipIdentifier, QueryM
 -spec list_configured_audience_model_associations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_configured_audience_model_associations_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_configured_audience_model_associations_errors(), tuple()}.
 list_configured_audience_model_associations(Client, MembershipIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/configuredaudiencemodelassociations"],
@@ -3598,11 +3809,7 @@ list_configured_audience_model_associations(Client, MembershipIdentifier, QueryM
 -spec list_configured_table_associations(map(), binary() | list()) ->
     {ok, list_configured_table_associations_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_configured_table_associations_errors(), tuple()}.
 list_configured_table_associations(Client, MembershipIdentifier)
   when is_map(Client) ->
     list_configured_table_associations(Client, MembershipIdentifier, #{}, #{}).
@@ -3610,11 +3817,7 @@ list_configured_table_associations(Client, MembershipIdentifier)
 -spec list_configured_table_associations(map(), binary() | list(), map(), map()) ->
     {ok, list_configured_table_associations_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_configured_table_associations_errors(), tuple()}.
 list_configured_table_associations(Client, MembershipIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configured_table_associations(Client, MembershipIdentifier, QueryMap, HeadersMap, []).
@@ -3622,11 +3825,7 @@ list_configured_table_associations(Client, MembershipIdentifier, QueryMap, Heade
 -spec list_configured_table_associations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_configured_table_associations_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_configured_table_associations_errors(), tuple()}.
 list_configured_table_associations(Client, MembershipIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/configuredTableAssociations"],
@@ -3652,10 +3851,7 @@ list_configured_table_associations(Client, MembershipIdentifier, QueryMap, Heade
 -spec list_configured_tables(map()) ->
     {ok, list_configured_tables_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_configured_tables_errors(), tuple()}.
 list_configured_tables(Client)
   when is_map(Client) ->
     list_configured_tables(Client, #{}, #{}).
@@ -3663,10 +3859,7 @@ list_configured_tables(Client)
 -spec list_configured_tables(map(), map(), map()) ->
     {ok, list_configured_tables_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_configured_tables_errors(), tuple()}.
 list_configured_tables(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configured_tables(Client, QueryMap, HeadersMap, []).
@@ -3674,10 +3867,7 @@ list_configured_tables(Client, QueryMap, HeadersMap)
 -spec list_configured_tables(map(), map(), map(), proplists:proplist()) ->
     {ok, list_configured_tables_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_configured_tables_errors(), tuple()}.
 list_configured_tables(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/configuredTables"],
@@ -3703,11 +3893,7 @@ list_configured_tables(Client, QueryMap, HeadersMap, Options0)
 -spec list_members(map(), binary() | list()) ->
     {ok, list_members_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_members_errors(), tuple()}.
 list_members(Client, CollaborationIdentifier)
   when is_map(Client) ->
     list_members(Client, CollaborationIdentifier, #{}, #{}).
@@ -3715,11 +3901,7 @@ list_members(Client, CollaborationIdentifier)
 -spec list_members(map(), binary() | list(), map(), map()) ->
     {ok, list_members_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_members_errors(), tuple()}.
 list_members(Client, CollaborationIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_members(Client, CollaborationIdentifier, QueryMap, HeadersMap, []).
@@ -3727,11 +3909,7 @@ list_members(Client, CollaborationIdentifier, QueryMap, HeadersMap)
 -spec list_members(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_members_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_members_errors(), tuple()}.
 list_members(Client, CollaborationIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/members"],
@@ -3757,10 +3935,7 @@ list_members(Client, CollaborationIdentifier, QueryMap, HeadersMap, Options0)
 -spec list_memberships(map()) ->
     {ok, list_memberships_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_memberships_errors(), tuple()}.
 list_memberships(Client)
   when is_map(Client) ->
     list_memberships(Client, #{}, #{}).
@@ -3768,10 +3943,7 @@ list_memberships(Client)
 -spec list_memberships(map(), map(), map()) ->
     {ok, list_memberships_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_memberships_errors(), tuple()}.
 list_memberships(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_memberships(Client, QueryMap, HeadersMap, []).
@@ -3779,10 +3951,7 @@ list_memberships(Client, QueryMap, HeadersMap)
 -spec list_memberships(map(), map(), map(), proplists:proplist()) ->
     {ok, list_memberships_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_memberships_errors(), tuple()}.
 list_memberships(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/memberships"],
@@ -3810,11 +3979,7 @@ list_memberships(Client, QueryMap, HeadersMap, Options0)
 -spec list_privacy_budget_templates(map(), binary() | list()) ->
     {ok, list_privacy_budget_templates_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_privacy_budget_templates_errors(), tuple()}.
 list_privacy_budget_templates(Client, MembershipIdentifier)
   when is_map(Client) ->
     list_privacy_budget_templates(Client, MembershipIdentifier, #{}, #{}).
@@ -3822,11 +3987,7 @@ list_privacy_budget_templates(Client, MembershipIdentifier)
 -spec list_privacy_budget_templates(map(), binary() | list(), map(), map()) ->
     {ok, list_privacy_budget_templates_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_privacy_budget_templates_errors(), tuple()}.
 list_privacy_budget_templates(Client, MembershipIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_privacy_budget_templates(Client, MembershipIdentifier, QueryMap, HeadersMap, []).
@@ -3834,11 +3995,7 @@ list_privacy_budget_templates(Client, MembershipIdentifier, QueryMap, HeadersMap
 -spec list_privacy_budget_templates(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_privacy_budget_templates_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_privacy_budget_templates_errors(), tuple()}.
 list_privacy_budget_templates(Client, MembershipIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/privacybudgettemplates"],
@@ -3865,11 +4022,7 @@ list_privacy_budget_templates(Client, MembershipIdentifier, QueryMap, HeadersMap
 -spec list_privacy_budgets(map(), binary() | list(), binary() | list()) ->
     {ok, list_privacy_budgets_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_privacy_budgets_errors(), tuple()}.
 list_privacy_budgets(Client, MembershipIdentifier, PrivacyBudgetType)
   when is_map(Client) ->
     list_privacy_budgets(Client, MembershipIdentifier, PrivacyBudgetType, #{}, #{}).
@@ -3877,11 +4030,7 @@ list_privacy_budgets(Client, MembershipIdentifier, PrivacyBudgetType)
 -spec list_privacy_budgets(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_privacy_budgets_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_privacy_budgets_errors(), tuple()}.
 list_privacy_budgets(Client, MembershipIdentifier, PrivacyBudgetType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_privacy_budgets(Client, MembershipIdentifier, PrivacyBudgetType, QueryMap, HeadersMap, []).
@@ -3889,11 +4038,7 @@ list_privacy_budgets(Client, MembershipIdentifier, PrivacyBudgetType, QueryMap, 
 -spec list_privacy_budgets(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_privacy_budgets_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_privacy_budgets_errors(), tuple()}.
 list_privacy_budgets(Client, MembershipIdentifier, PrivacyBudgetType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/privacybudgets"],
@@ -3920,11 +4065,7 @@ list_privacy_budgets(Client, MembershipIdentifier, PrivacyBudgetType, QueryMap, 
 -spec list_protected_queries(map(), binary() | list()) ->
     {ok, list_protected_queries_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_protected_queries_errors(), tuple()}.
 list_protected_queries(Client, MembershipIdentifier)
   when is_map(Client) ->
     list_protected_queries(Client, MembershipIdentifier, #{}, #{}).
@@ -3932,11 +4073,7 @@ list_protected_queries(Client, MembershipIdentifier)
 -spec list_protected_queries(map(), binary() | list(), map(), map()) ->
     {ok, list_protected_queries_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_protected_queries_errors(), tuple()}.
 list_protected_queries(Client, MembershipIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_protected_queries(Client, MembershipIdentifier, QueryMap, HeadersMap, []).
@@ -3944,11 +4081,7 @@ list_protected_queries(Client, MembershipIdentifier, QueryMap, HeadersMap)
 -spec list_protected_queries(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_protected_queries_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_protected_queries_errors(), tuple()}.
 list_protected_queries(Client, MembershipIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/protectedQueries"],
@@ -3975,11 +4108,7 @@ list_protected_queries(Client, MembershipIdentifier, QueryMap, HeadersMap, Optio
 -spec list_schemas(map(), binary() | list()) ->
     {ok, list_schemas_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_schemas_errors(), tuple()}.
 list_schemas(Client, CollaborationIdentifier)
   when is_map(Client) ->
     list_schemas(Client, CollaborationIdentifier, #{}, #{}).
@@ -3987,11 +4116,7 @@ list_schemas(Client, CollaborationIdentifier)
 -spec list_schemas(map(), binary() | list(), map(), map()) ->
     {ok, list_schemas_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_schemas_errors(), tuple()}.
 list_schemas(Client, CollaborationIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_schemas(Client, CollaborationIdentifier, QueryMap, HeadersMap, []).
@@ -3999,11 +4124,7 @@ list_schemas(Client, CollaborationIdentifier, QueryMap, HeadersMap)
 -spec list_schemas(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_schemas_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_schemas_errors(), tuple()}.
 list_schemas(Client, CollaborationIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/schemas"],
@@ -4030,8 +4151,7 @@ list_schemas(Client, CollaborationIdentifier, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -4039,8 +4159,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -4048,8 +4167,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -4071,22 +4189,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec preview_privacy_impact(map(), binary() | list(), preview_privacy_impact_input()) ->
     {ok, preview_privacy_impact_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, preview_privacy_impact_errors(), tuple()}.
 preview_privacy_impact(Client, MembershipIdentifier, Input) ->
     preview_privacy_impact(Client, MembershipIdentifier, Input, []).
 
 -spec preview_privacy_impact(map(), binary() | list(), preview_privacy_impact_input(), proplists:proplist()) ->
     {ok, preview_privacy_impact_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, preview_privacy_impact_errors(), tuple()}.
 preview_privacy_impact(Client, MembershipIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/previewprivacyimpact"],
@@ -4113,24 +4223,14 @@ preview_privacy_impact(Client, MembershipIdentifier, Input0, Options0) ->
 -spec start_protected_query(map(), binary() | list(), start_protected_query_input()) ->
     {ok, start_protected_query_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_protected_query_errors(), tuple()}.
 start_protected_query(Client, MembershipIdentifier, Input) ->
     start_protected_query(Client, MembershipIdentifier, Input, []).
 
 -spec start_protected_query(map(), binary() | list(), start_protected_query_input(), proplists:proplist()) ->
     {ok, start_protected_query_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_protected_query_errors(), tuple()}.
 start_protected_query(Client, MembershipIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/protectedQueries"],
@@ -4157,16 +4257,14 @@ start_protected_query(Client, MembershipIdentifier, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -4193,16 +4291,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -4230,22 +4326,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_analysis_template(map(), binary() | list(), binary() | list(), update_analysis_template_input()) ->
     {ok, update_analysis_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_analysis_template_errors(), tuple()}.
 update_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, Input) ->
     update_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, Input, []).
 
 -spec update_analysis_template(map(), binary() | list(), binary() | list(), update_analysis_template_input(), proplists:proplist()) ->
     {ok, update_analysis_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_analysis_template_errors(), tuple()}.
 update_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/analysistemplates/", aws_util:encode_uri(AnalysisTemplateIdentifier), ""],
@@ -4273,20 +4361,14 @@ update_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifie
 -spec update_collaboration(map(), binary() | list(), update_collaboration_input()) ->
     {ok, update_collaboration_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_collaboration_errors(), tuple()}.
 update_collaboration(Client, CollaborationIdentifier, Input) ->
     update_collaboration(Client, CollaborationIdentifier, Input, []).
 
 -spec update_collaboration(map(), binary() | list(), update_collaboration_input(), proplists:proplist()) ->
     {ok, update_collaboration_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_collaboration_errors(), tuple()}.
 update_collaboration(Client, CollaborationIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), ""],
@@ -4314,22 +4396,14 @@ update_collaboration(Client, CollaborationIdentifier, Input0, Options0) ->
 -spec update_configured_audience_model_association(map(), binary() | list(), binary() | list(), update_configured_audience_model_association_input()) ->
     {ok, update_configured_audience_model_association_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_configured_audience_model_association_errors(), tuple()}.
 update_configured_audience_model_association(Client, ConfiguredAudienceModelAssociationIdentifier, MembershipIdentifier, Input) ->
     update_configured_audience_model_association(Client, ConfiguredAudienceModelAssociationIdentifier, MembershipIdentifier, Input, []).
 
 -spec update_configured_audience_model_association(map(), binary() | list(), binary() | list(), update_configured_audience_model_association_input(), proplists:proplist()) ->
     {ok, update_configured_audience_model_association_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_configured_audience_model_association_errors(), tuple()}.
 update_configured_audience_model_association(Client, ConfiguredAudienceModelAssociationIdentifier, MembershipIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/configuredaudiencemodelassociations/", aws_util:encode_uri(ConfiguredAudienceModelAssociationIdentifier), ""],
@@ -4356,24 +4430,14 @@ update_configured_audience_model_association(Client, ConfiguredAudienceModelAsso
 -spec update_configured_table(map(), binary() | list(), update_configured_table_input()) ->
     {ok, update_configured_table_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_configured_table_errors(), tuple()}.
 update_configured_table(Client, ConfiguredTableIdentifier, Input) ->
     update_configured_table(Client, ConfiguredTableIdentifier, Input, []).
 
 -spec update_configured_table(map(), binary() | list(), update_configured_table_input(), proplists:proplist()) ->
     {ok, update_configured_table_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_configured_table_errors(), tuple()}.
 update_configured_table(Client, ConfiguredTableIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/configuredTables/", aws_util:encode_uri(ConfiguredTableIdentifier), ""],
@@ -4400,24 +4464,14 @@ update_configured_table(Client, ConfiguredTableIdentifier, Input0, Options0) ->
 -spec update_configured_table_analysis_rule(map(), binary() | list(), binary() | list(), update_configured_table_analysis_rule_input()) ->
     {ok, update_configured_table_analysis_rule_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_configured_table_analysis_rule_errors(), tuple()}.
 update_configured_table_analysis_rule(Client, AnalysisRuleType, ConfiguredTableIdentifier, Input) ->
     update_configured_table_analysis_rule(Client, AnalysisRuleType, ConfiguredTableIdentifier, Input, []).
 
 -spec update_configured_table_analysis_rule(map(), binary() | list(), binary() | list(), update_configured_table_analysis_rule_input(), proplists:proplist()) ->
     {ok, update_configured_table_analysis_rule_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_configured_table_analysis_rule_errors(), tuple()}.
 update_configured_table_analysis_rule(Client, AnalysisRuleType, ConfiguredTableIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/configuredTables/", aws_util:encode_uri(ConfiguredTableIdentifier), "/analysisRule/", aws_util:encode_uri(AnalysisRuleType), ""],
@@ -4444,24 +4498,14 @@ update_configured_table_analysis_rule(Client, AnalysisRuleType, ConfiguredTableI
 -spec update_configured_table_association(map(), binary() | list(), binary() | list(), update_configured_table_association_input()) ->
     {ok, update_configured_table_association_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_configured_table_association_errors(), tuple()}.
 update_configured_table_association(Client, ConfiguredTableAssociationIdentifier, MembershipIdentifier, Input) ->
     update_configured_table_association(Client, ConfiguredTableAssociationIdentifier, MembershipIdentifier, Input, []).
 
 -spec update_configured_table_association(map(), binary() | list(), binary() | list(), update_configured_table_association_input(), proplists:proplist()) ->
     {ok, update_configured_table_association_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_configured_table_association_errors(), tuple()}.
 update_configured_table_association(Client, ConfiguredTableAssociationIdentifier, MembershipIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/configuredTableAssociations/", aws_util:encode_uri(ConfiguredTableAssociationIdentifier), ""],
@@ -4488,24 +4532,14 @@ update_configured_table_association(Client, ConfiguredTableAssociationIdentifier
 -spec update_membership(map(), binary() | list(), update_membership_input()) ->
     {ok, update_membership_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_membership_errors(), tuple()}.
 update_membership(Client, MembershipIdentifier, Input) ->
     update_membership(Client, MembershipIdentifier, Input, []).
 
 -spec update_membership(map(), binary() | list(), update_membership_input(), proplists:proplist()) ->
     {ok, update_membership_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_membership_errors(), tuple()}.
 update_membership(Client, MembershipIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), ""],
@@ -4532,24 +4566,14 @@ update_membership(Client, MembershipIdentifier, Input0, Options0) ->
 -spec update_privacy_budget_template(map(), binary() | list(), binary() | list(), update_privacy_budget_template_input()) ->
     {ok, update_privacy_budget_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_privacy_budget_template_errors(), tuple()}.
 update_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateIdentifier, Input) ->
     update_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateIdentifier, Input, []).
 
 -spec update_privacy_budget_template(map(), binary() | list(), binary() | list(), update_privacy_budget_template_input(), proplists:proplist()) ->
     {ok, update_privacy_budget_template_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_privacy_budget_template_errors(), tuple()}.
 update_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/privacybudgettemplates/", aws_util:encode_uri(PrivacyBudgetTemplateIdentifier), ""],
@@ -4576,24 +4600,14 @@ update_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTempla
 -spec update_protected_query(map(), binary() | list(), binary() | list(), update_protected_query_input()) ->
     {ok, update_protected_query_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_protected_query_errors(), tuple()}.
 update_protected_query(Client, MembershipIdentifier, ProtectedQueryIdentifier, Input) ->
     update_protected_query(Client, MembershipIdentifier, ProtectedQueryIdentifier, Input, []).
 
 -spec update_protected_query(map(), binary() | list(), binary() | list(), update_protected_query_input(), proplists:proplist()) ->
     {ok, update_protected_query_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_protected_query_errors(), tuple()}.
 update_protected_query(Client, MembershipIdentifier, ProtectedQueryIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/protectedQueries/", aws_util:encode_uri(ProtectedQueryIdentifier), ""],

@@ -78,12 +78,14 @@
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% authorization_pending_exception() :: #{
 %%   <<"error">> => string(),
 %%   <<"error_description">> => string()
 %% }
 -type authorization_pending_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_token_request() :: #{
@@ -98,6 +100,7 @@
 %% }
 -type create_token_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_token_response() :: #{
 %%   <<"accessToken">> => string(),
@@ -107,6 +110,7 @@
 %%   <<"tokenType">> => string()
 %% }
 -type create_token_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_token_with_iam_request() :: #{
@@ -123,6 +127,7 @@
 %% }
 -type create_token_with_iam_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_token_with_iam_response() :: #{
 %%   <<"accessToken">> => string(),
@@ -135,12 +140,14 @@
 %% }
 -type create_token_with_iam_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% expired_token_exception() :: #{
 %%   <<"error">> => string(),
 %%   <<"error_description">> => string()
 %% }
 -type expired_token_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% internal_server_exception() :: #{
@@ -149,12 +156,14 @@
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_client_exception() :: #{
 %%   <<"error">> => string(),
 %%   <<"error_description">> => string()
 %% }
 -type invalid_client_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% invalid_client_metadata_exception() :: #{
@@ -163,6 +172,7 @@
 %% }
 -type invalid_client_metadata_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_grant_exception() :: #{
 %%   <<"error">> => string(),
@@ -170,12 +180,14 @@
 %% }
 -type invalid_grant_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_request_exception() :: #{
 %%   <<"error">> => string(),
 %%   <<"error_description">> => string()
 %% }
 -type invalid_request_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% invalid_request_region_exception() :: #{
@@ -186,12 +198,14 @@
 %% }
 -type invalid_request_region_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_scope_exception() :: #{
 %%   <<"error">> => string(),
 %%   <<"error_description">> => string()
 %% }
 -type invalid_scope_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% register_client_request() :: #{
@@ -200,6 +214,7 @@
 %%   <<"scopes">> => list(string()())
 %% }
 -type register_client_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% register_client_response() :: #{
@@ -212,12 +227,14 @@
 %% }
 -type register_client_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% slow_down_exception() :: #{
 %%   <<"error">> => string(),
 %%   <<"error_description">> => string()
 %% }
 -type slow_down_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_device_authorization_request() :: #{
@@ -226,6 +243,7 @@
 %%   <<"startUrl">> := string()
 %% }
 -type start_device_authorization_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_device_authorization_response() :: #{
@@ -238,6 +256,7 @@
 %% }
 -type start_device_authorization_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% unauthorized_client_exception() :: #{
 %%   <<"error">> => string(),
@@ -245,12 +264,53 @@
 %% }
 -type unauthorized_client_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% unsupported_grant_type_exception() :: #{
 %%   <<"error">> => string(),
 %%   <<"error_description">> => string()
 %% }
 -type unsupported_grant_type_exception() :: #{binary() => any()}.
+
+-type create_token_errors() ::
+    unsupported_grant_type_exception() | 
+    unauthorized_client_exception() | 
+    slow_down_exception() | 
+    invalid_scope_exception() | 
+    invalid_request_exception() | 
+    invalid_grant_exception() | 
+    invalid_client_exception() | 
+    internal_server_exception() | 
+    expired_token_exception() | 
+    authorization_pending_exception() | 
+    access_denied_exception().
+
+-type create_token_with_iam_errors() ::
+    unsupported_grant_type_exception() | 
+    unauthorized_client_exception() | 
+    slow_down_exception() | 
+    invalid_scope_exception() | 
+    invalid_request_region_exception() | 
+    invalid_request_exception() | 
+    invalid_grant_exception() | 
+    invalid_client_exception() | 
+    internal_server_exception() | 
+    expired_token_exception() | 
+    authorization_pending_exception() | 
+    access_denied_exception().
+
+-type register_client_errors() ::
+    invalid_scope_exception() | 
+    invalid_request_exception() | 
+    invalid_client_metadata_exception() | 
+    internal_server_exception().
+
+-type start_device_authorization_errors() ::
+    unauthorized_client_exception() | 
+    slow_down_exception() | 
+    invalid_request_exception() | 
+    invalid_client_exception() | 
+    internal_server_exception().
 
 %%====================================================================
 %% API
@@ -267,34 +327,14 @@
 -spec create_token(map(), create_token_request()) ->
     {ok, create_token_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_pending_exception(), tuple()} |
-    {error, expired_token_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_client_exception(), tuple()} |
-    {error, invalid_grant_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_scope_exception(), tuple()} |
-    {error, slow_down_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()} |
-    {error, unsupported_grant_type_exception(), tuple()}.
+    {error, create_token_errors(), tuple()}.
 create_token(Client, Input) ->
     create_token(Client, Input, []).
 
 -spec create_token(map(), create_token_request(), proplists:proplist()) ->
     {ok, create_token_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_pending_exception(), tuple()} |
-    {error, expired_token_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_client_exception(), tuple()} |
-    {error, invalid_grant_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_scope_exception(), tuple()} |
-    {error, slow_down_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()} |
-    {error, unsupported_grant_type_exception(), tuple()}.
+    {error, create_token_errors(), tuple()}.
 create_token(Client, Input0, Options0) ->
     Method = post,
     Path = ["/token"],
@@ -328,36 +368,14 @@ create_token(Client, Input0, Options0) ->
 -spec create_token_with_iam(map(), create_token_with_iam_request()) ->
     {ok, create_token_with_iam_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_pending_exception(), tuple()} |
-    {error, expired_token_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_client_exception(), tuple()} |
-    {error, invalid_grant_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_request_region_exception(), tuple()} |
-    {error, invalid_scope_exception(), tuple()} |
-    {error, slow_down_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()} |
-    {error, unsupported_grant_type_exception(), tuple()}.
+    {error, create_token_with_iam_errors(), tuple()}.
 create_token_with_iam(Client, Input) ->
     create_token_with_iam(Client, Input, []).
 
 -spec create_token_with_iam(map(), create_token_with_iam_request(), proplists:proplist()) ->
     {ok, create_token_with_iam_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, authorization_pending_exception(), tuple()} |
-    {error, expired_token_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_client_exception(), tuple()} |
-    {error, invalid_grant_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_request_region_exception(), tuple()} |
-    {error, invalid_scope_exception(), tuple()} |
-    {error, slow_down_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()} |
-    {error, unsupported_grant_type_exception(), tuple()}.
+    {error, create_token_with_iam_errors(), tuple()}.
 create_token_with_iam(Client, Input0, Options0) ->
     Method = post,
     Path = ["/token?aws_iam=t"],
@@ -388,20 +406,14 @@ create_token_with_iam(Client, Input0, Options0) ->
 -spec register_client(map(), register_client_request()) ->
     {ok, register_client_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_client_metadata_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_scope_exception(), tuple()}.
+    {error, register_client_errors(), tuple()}.
 register_client(Client, Input) ->
     register_client(Client, Input, []).
 
 -spec register_client(map(), register_client_request(), proplists:proplist()) ->
     {ok, register_client_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_client_metadata_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_scope_exception(), tuple()}.
+    {error, register_client_errors(), tuple()}.
 register_client(Client, Input0, Options0) ->
     Method = post,
     Path = ["/client/register"],
@@ -430,22 +442,14 @@ register_client(Client, Input0, Options0) ->
 -spec start_device_authorization(map(), start_device_authorization_request()) ->
     {ok, start_device_authorization_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_client_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, slow_down_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, start_device_authorization_errors(), tuple()}.
 start_device_authorization(Client, Input) ->
     start_device_authorization(Client, Input, []).
 
 -spec start_device_authorization(map(), start_device_authorization_request(), proplists:proplist()) ->
     {ok, start_device_authorization_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_client_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, slow_down_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, start_device_authorization_errors(), tuple()}.
 start_device_authorization(Client, Input0, Options0) ->
     Method = post,
     Path = ["/device_authorization"],

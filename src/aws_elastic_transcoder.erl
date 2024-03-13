@@ -54,9 +54,11 @@
 %% Example:
 %% cancel_job_request() :: #{}
 -type cancel_job_request() :: #{}.
+
 %% Example:
 %% delete_preset_response() :: #{}
 -type delete_preset_response() :: #{}.
+
 
 %% Example:
 %% list_pipelines_response() :: #{
@@ -64,6 +66,7 @@
 %%   <<"Pipelines">> => list(pipeline()())
 %% }
 -type list_pipelines_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_job_playlist() :: #{
@@ -75,6 +78,7 @@
 %% }
 -type create_job_playlist() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_pipeline_response() :: #{
 %%   <<"Pipeline">> => pipeline(),
@@ -82,11 +86,13 @@
 %% }
 -type update_pipeline_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_job_response() :: #{
 %%   <<"Job">> => job()
 %% }
 -type create_job_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_pipelines_request() :: #{
@@ -94,6 +100,7 @@
 %%   <<"PageToken">> => string()
 %% }
 -type list_pipelines_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_preset_request() :: #{
@@ -106,6 +113,7 @@
 %% }
 -type create_preset_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% captions() :: #{
 %%   <<"CaptionFormats">> => list(caption_format()()),
@@ -114,6 +122,7 @@
 %% }
 -type captions() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_presets_request() :: #{
 %%   <<"Ascending">> => string(),
@@ -121,11 +130,13 @@
 %% }
 -type list_presets_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_in_use_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_in_use_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_pipeline_response() :: #{
@@ -133,6 +144,7 @@
 %%   <<"Warnings">> => list(warning()())
 %% }
 -type create_pipeline_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% test_role_request() :: #{
@@ -143,6 +155,7 @@
 %% }
 -type test_role_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% input_captions() :: #{
 %%   <<"CaptionSources">> => list(caption_source()()),
@@ -150,12 +163,14 @@
 %% }
 -type input_captions() :: #{binary() => any()}.
 
+
 %% Example:
 %% read_pipeline_response() :: #{
 %%   <<"Pipeline">> => pipeline(),
 %%   <<"Warnings">> => list(warning()())
 %% }
 -type read_pipeline_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% pipeline() :: #{
@@ -173,14 +188,17 @@
 %% }
 -type pipeline() :: #{binary() => any()}.
 
+
 %% Example:
 %% read_job_response() :: #{
 %%   <<"Job">> => job()
 %% }
 -type read_job_response() :: #{binary() => any()}.
+
 %% Example:
 %% read_pipeline_request() :: #{}
 -type read_pipeline_request() :: #{}.
+
 
 %% Example:
 %% list_jobs_by_pipeline_response() :: #{
@@ -188,6 +206,7 @@
 %%   <<"NextPageToken">> => string()
 %% }
 -type list_jobs_by_pipeline_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_job_request() :: #{
@@ -202,17 +221,20 @@
 %% }
 -type create_job_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_service_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type internal_service_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% read_preset_response() :: #{
 %%   <<"Preset">> => preset()
 %% }
 -type read_preset_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_output() :: #{
@@ -240,17 +262,20 @@
 %% }
 -type job_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_pipeline_notifications_response() :: #{
 %%   <<"Pipeline">> => pipeline()
 %% }
 -type update_pipeline_notifications_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% clip() :: #{
 %%   <<"TimeSpan">> => time_span()
 %% }
 -type clip() :: #{binary() => any()}.
+
 
 %% Example:
 %% detected_properties() :: #{
@@ -262,11 +287,13 @@
 %% }
 -type detected_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% hls_content_protection() :: #{
@@ -278,6 +305,7 @@
 %%   <<"Method">> => string()
 %% }
 -type hls_content_protection() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_pipeline_request() :: #{
@@ -292,6 +320,7 @@
 %% }
 -type create_pipeline_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_pipeline_request() :: #{
 %%   <<"AwsKmsKeyArn">> => string(),
@@ -303,9 +332,11 @@
 %%   <<"ThumbnailConfig">> => pipeline_output_config()
 %% }
 -type update_pipeline_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_pipeline_request() :: #{}
 -type delete_pipeline_request() :: #{}.
+
 
 %% Example:
 %% artwork() :: #{
@@ -319,12 +350,14 @@
 %% }
 -type artwork() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_jobs_by_status_response() :: #{
 %%   <<"Jobs">> => list(job()()),
 %%   <<"NextPageToken">> => string()
 %% }
 -type list_jobs_by_status_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% video_parameters() :: #{
@@ -346,12 +379,14 @@
 %% }
 -type video_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_jobs_by_status_request() :: #{
 %%   <<"Ascending">> => string(),
 %%   <<"PageToken">> => string()
 %% }
 -type list_jobs_by_status_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% encryption() :: #{
@@ -362,6 +397,7 @@
 %% }
 -type encryption() :: #{binary() => any()}.
 
+
 %% Example:
 %% pipeline_output_config() :: #{
 %%   <<"Bucket">> => string(),
@@ -369,6 +405,7 @@
 %%   <<"StorageClass">> => string()
 %% }
 -type pipeline_output_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% audio_parameters() :: #{
@@ -381,11 +418,13 @@
 %% }
 -type audio_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_pipeline_status_request() :: #{
 %%   <<"Status">> := string()
 %% }
 -type update_pipeline_status_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_presets_response() :: #{
@@ -393,6 +432,7 @@
 %%   <<"Presets">> => list(preset()())
 %% }
 -type list_presets_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_input() :: #{
@@ -408,9 +448,11 @@
 %%   <<"TimeSpan">> => time_span()
 %% }
 -type job_input() :: #{binary() => any()}.
+
 %% Example:
 %% delete_preset_request() :: #{}
 -type delete_preset_request() :: #{}.
+
 
 %% Example:
 %% preset_watermark() :: #{
@@ -427,11 +469,13 @@
 %% }
 -type preset_watermark() :: #{binary() => any()}.
 
+
 %% Example:
 %% incompatible_version_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type incompatible_version_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% notifications() :: #{
@@ -442,6 +486,7 @@
 %% }
 -type notifications() :: #{binary() => any()}.
 
+
 %% Example:
 %% timing() :: #{
 %%   <<"FinishTimeMillis">> => float(),
@@ -449,9 +494,11 @@
 %%   <<"SubmitTimeMillis">> => float()
 %% }
 -type timing() :: #{binary() => any()}.
+
 %% Example:
 %% read_preset_request() :: #{}
 -type read_preset_request() :: #{}.
+
 
 %% Example:
 %% warning() :: #{
@@ -460,11 +507,13 @@
 %% }
 -type warning() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% caption_format() :: #{
@@ -473,6 +522,7 @@
 %%   <<"Pattern">> => string()
 %% }
 -type caption_format() :: #{binary() => any()}.
+
 
 %% Example:
 %% audio_codec_options() :: #{
@@ -483,12 +533,14 @@
 %% }
 -type audio_codec_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% job_album_art() :: #{
 %%   <<"Artwork">> => list(artwork()()),
 %%   <<"MergePolicy">> => string()
 %% }
 -type job_album_art() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_watermark() :: #{
@@ -498,11 +550,13 @@
 %% }
 -type job_watermark() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% job() :: #{
@@ -521,14 +575,17 @@
 %% }
 -type job() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_pipeline_status_response() :: #{
 %%   <<"Pipeline">> => pipeline()
 %% }
 -type update_pipeline_status_response() :: #{binary() => any()}.
+
 %% Example:
 %% read_job_request() :: #{}
 -type read_job_request() :: #{}.
+
 
 %% Example:
 %% thumbnails() :: #{
@@ -543,11 +600,13 @@
 %% }
 -type thumbnails() :: #{binary() => any()}.
 
+
 %% Example:
 %% limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% caption_source() :: #{
@@ -559,6 +618,7 @@
 %% }
 -type caption_source() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_jobs_by_pipeline_request() :: #{
 %%   <<"Ascending">> => string(),
@@ -566,12 +626,14 @@
 %% }
 -type list_jobs_by_pipeline_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_preset_response() :: #{
 %%   <<"Preset">> => preset(),
 %%   <<"Warning">> => string()
 %% }
 -type create_preset_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_job_output() :: #{
@@ -589,6 +651,7 @@
 %% }
 -type create_job_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% play_ready_drm() :: #{
 %%   <<"Format">> => string(),
@@ -599,6 +662,7 @@
 %%   <<"LicenseAcquisitionUrl">> => string()
 %% }
 -type play_ready_drm() :: #{binary() => any()}.
+
 
 %% Example:
 %% playlist() :: #{
@@ -611,9 +675,11 @@
 %%   <<"StatusDetail">> => string()
 %% }
 -type playlist() :: #{binary() => any()}.
+
 %% Example:
 %% cancel_job_response() :: #{}
 -type cancel_job_response() :: #{}.
+
 
 %% Example:
 %% preset() :: #{
@@ -629,6 +695,7 @@
 %% }
 -type preset() :: #{binary() => any()}.
 
+
 %% Example:
 %% test_role_response() :: #{
 %%   <<"Messages">> => list(string()()),
@@ -636,12 +703,14 @@
 %% }
 -type test_role_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% time_span() :: #{
 %%   <<"Duration">> => string(),
 %%   <<"StartTime">> => string()
 %% }
 -type time_span() :: #{binary() => any()}.
+
 
 %% Example:
 %% permission() :: #{
@@ -651,14 +720,140 @@
 %% }
 -type permission() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_pipeline_notifications_request() :: #{
 %%   <<"Notifications">> := notifications()
 %% }
 -type update_pipeline_notifications_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_pipeline_response() :: #{}
 -type delete_pipeline_response() :: #{}.
+
+-type cancel_job_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    resource_in_use_exception().
+
+-type create_job_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type create_pipeline_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type create_preset_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    internal_service_exception().
+
+-type delete_pipeline_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    resource_in_use_exception().
+
+-type delete_preset_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_jobs_by_pipeline_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_jobs_by_status_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_pipelines_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    internal_service_exception().
+
+-type list_presets_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    internal_service_exception().
+
+-type read_job_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type read_pipeline_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type read_preset_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type test_role_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_pipeline_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    resource_in_use_exception().
+
+-type update_pipeline_notifications_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    resource_in_use_exception().
+
+-type update_pipeline_status_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    resource_in_use_exception().
 
 %%====================================================================
 %% API
@@ -674,24 +869,14 @@
 -spec cancel_job(map(), binary() | list(), cancel_job_request()) ->
     {ok, cancel_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_job_errors(), tuple()}.
 cancel_job(Client, Id, Input) ->
     cancel_job(Client, Id, Input, []).
 
 -spec cancel_job(map(), binary() | list(), cancel_job_request(), proplists:proplist()) ->
     {ok, cancel_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_job_errors(), tuple()}.
 cancel_job(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2012-09-25/jobs/", aws_util:encode_uri(Id), ""],
@@ -726,24 +911,14 @@ cancel_job(Client, Id, Input0, Options0) ->
 -spec create_job(map(), create_job_request()) ->
     {ok, create_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_job_errors(), tuple()}.
 create_job(Client, Input) ->
     create_job(Client, Input, []).
 
 -spec create_job(map(), create_job_request(), proplists:proplist()) ->
     {ok, create_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_job_errors(), tuple()}.
 create_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2012-09-25/jobs"],
@@ -771,24 +946,14 @@ create_job(Client, Input0, Options0) ->
 -spec create_pipeline(map(), create_pipeline_request()) ->
     {ok, create_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_pipeline_errors(), tuple()}.
 create_pipeline(Client, Input) ->
     create_pipeline(Client, Input, []).
 
 -spec create_pipeline(map(), create_pipeline_request(), proplists:proplist()) ->
     {ok, create_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_pipeline_errors(), tuple()}.
 create_pipeline(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2012-09-25/pipelines"],
@@ -838,22 +1003,14 @@ create_pipeline(Client, Input0, Options0) ->
 -spec create_preset(map(), create_preset_request()) ->
     {ok, create_preset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_preset_errors(), tuple()}.
 create_preset(Client, Input) ->
     create_preset(Client, Input, []).
 
 -spec create_preset(map(), create_preset_request(), proplists:proplist()) ->
     {ok, create_preset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_preset_errors(), tuple()}.
 create_preset(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2012-09-25/presets"],
@@ -886,24 +1043,14 @@ create_preset(Client, Input0, Options0) ->
 -spec delete_pipeline(map(), binary() | list(), delete_pipeline_request()) ->
     {ok, delete_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_pipeline_errors(), tuple()}.
 delete_pipeline(Client, Id, Input) ->
     delete_pipeline(Client, Id, Input, []).
 
 -spec delete_pipeline(map(), binary() | list(), delete_pipeline_request(), proplists:proplist()) ->
     {ok, delete_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_pipeline_errors(), tuple()}.
 delete_pipeline(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2012-09-25/pipelines/", aws_util:encode_uri(Id), ""],
@@ -934,22 +1081,14 @@ delete_pipeline(Client, Id, Input0, Options0) ->
 -spec delete_preset(map(), binary() | list(), delete_preset_request()) ->
     {ok, delete_preset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_preset_errors(), tuple()}.
 delete_preset(Client, Id, Input) ->
     delete_preset(Client, Id, Input, []).
 
 -spec delete_preset(map(), binary() | list(), delete_preset_request(), proplists:proplist()) ->
     {ok, delete_preset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_preset_errors(), tuple()}.
 delete_preset(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2012-09-25/presets/", aws_util:encode_uri(Id), ""],
@@ -981,11 +1120,7 @@ delete_preset(Client, Id, Input0, Options0) ->
 -spec list_jobs_by_pipeline(map(), binary() | list()) ->
     {ok, list_jobs_by_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_jobs_by_pipeline_errors(), tuple()}.
 list_jobs_by_pipeline(Client, PipelineId)
   when is_map(Client) ->
     list_jobs_by_pipeline(Client, PipelineId, #{}, #{}).
@@ -993,11 +1128,7 @@ list_jobs_by_pipeline(Client, PipelineId)
 -spec list_jobs_by_pipeline(map(), binary() | list(), map(), map()) ->
     {ok, list_jobs_by_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_jobs_by_pipeline_errors(), tuple()}.
 list_jobs_by_pipeline(Client, PipelineId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_jobs_by_pipeline(Client, PipelineId, QueryMap, HeadersMap, []).
@@ -1005,11 +1136,7 @@ list_jobs_by_pipeline(Client, PipelineId, QueryMap, HeadersMap)
 -spec list_jobs_by_pipeline(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_jobs_by_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_jobs_by_pipeline_errors(), tuple()}.
 list_jobs_by_pipeline(Client, PipelineId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2012-09-25/jobsByPipeline/", aws_util:encode_uri(PipelineId), ""],
@@ -1039,11 +1166,7 @@ list_jobs_by_pipeline(Client, PipelineId, QueryMap, HeadersMap, Options0)
 -spec list_jobs_by_status(map(), binary() | list()) ->
     {ok, list_jobs_by_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_jobs_by_status_errors(), tuple()}.
 list_jobs_by_status(Client, Status)
   when is_map(Client) ->
     list_jobs_by_status(Client, Status, #{}, #{}).
@@ -1051,11 +1174,7 @@ list_jobs_by_status(Client, Status)
 -spec list_jobs_by_status(map(), binary() | list(), map(), map()) ->
     {ok, list_jobs_by_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_jobs_by_status_errors(), tuple()}.
 list_jobs_by_status(Client, Status, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_jobs_by_status(Client, Status, QueryMap, HeadersMap, []).
@@ -1063,11 +1182,7 @@ list_jobs_by_status(Client, Status, QueryMap, HeadersMap)
 -spec list_jobs_by_status(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_jobs_by_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_jobs_by_status_errors(), tuple()}.
 list_jobs_by_status(Client, Status, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2012-09-25/jobsByStatus/", aws_util:encode_uri(Status), ""],
@@ -1094,10 +1209,7 @@ list_jobs_by_status(Client, Status, QueryMap, HeadersMap, Options0)
 -spec list_pipelines(map()) ->
     {ok, list_pipelines_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_pipelines_errors(), tuple()}.
 list_pipelines(Client)
   when is_map(Client) ->
     list_pipelines(Client, #{}, #{}).
@@ -1105,10 +1217,7 @@ list_pipelines(Client)
 -spec list_pipelines(map(), map(), map()) ->
     {ok, list_pipelines_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_pipelines_errors(), tuple()}.
 list_pipelines(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_pipelines(Client, QueryMap, HeadersMap, []).
@@ -1116,10 +1225,7 @@ list_pipelines(Client, QueryMap, HeadersMap)
 -spec list_pipelines(map(), map(), map(), proplists:proplist()) ->
     {ok, list_pipelines_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_pipelines_errors(), tuple()}.
 list_pipelines(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2012-09-25/pipelines"],
@@ -1147,10 +1253,7 @@ list_pipelines(Client, QueryMap, HeadersMap, Options0)
 -spec list_presets(map()) ->
     {ok, list_presets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_presets_errors(), tuple()}.
 list_presets(Client)
   when is_map(Client) ->
     list_presets(Client, #{}, #{}).
@@ -1158,10 +1261,7 @@ list_presets(Client)
 -spec list_presets(map(), map(), map()) ->
     {ok, list_presets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_presets_errors(), tuple()}.
 list_presets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_presets(Client, QueryMap, HeadersMap, []).
@@ -1169,10 +1269,7 @@ list_presets(Client, QueryMap, HeadersMap)
 -spec list_presets(map(), map(), map(), proplists:proplist()) ->
     {ok, list_presets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_presets_errors(), tuple()}.
 list_presets(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2012-09-25/presets"],
@@ -1198,11 +1295,7 @@ list_presets(Client, QueryMap, HeadersMap, Options0)
 -spec read_job(map(), binary() | list()) ->
     {ok, read_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, read_job_errors(), tuple()}.
 read_job(Client, Id)
   when is_map(Client) ->
     read_job(Client, Id, #{}, #{}).
@@ -1210,11 +1303,7 @@ read_job(Client, Id)
 -spec read_job(map(), binary() | list(), map(), map()) ->
     {ok, read_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, read_job_errors(), tuple()}.
 read_job(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     read_job(Client, Id, QueryMap, HeadersMap, []).
@@ -1222,11 +1311,7 @@ read_job(Client, Id, QueryMap, HeadersMap)
 -spec read_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, read_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, read_job_errors(), tuple()}.
 read_job(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2012-09-25/jobs/", aws_util:encode_uri(Id), ""],
@@ -1248,11 +1333,7 @@ read_job(Client, Id, QueryMap, HeadersMap, Options0)
 -spec read_pipeline(map(), binary() | list()) ->
     {ok, read_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, read_pipeline_errors(), tuple()}.
 read_pipeline(Client, Id)
   when is_map(Client) ->
     read_pipeline(Client, Id, #{}, #{}).
@@ -1260,11 +1341,7 @@ read_pipeline(Client, Id)
 -spec read_pipeline(map(), binary() | list(), map(), map()) ->
     {ok, read_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, read_pipeline_errors(), tuple()}.
 read_pipeline(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     read_pipeline(Client, Id, QueryMap, HeadersMap, []).
@@ -1272,11 +1349,7 @@ read_pipeline(Client, Id, QueryMap, HeadersMap)
 -spec read_pipeline(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, read_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, read_pipeline_errors(), tuple()}.
 read_pipeline(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2012-09-25/pipelines/", aws_util:encode_uri(Id), ""],
@@ -1297,11 +1370,7 @@ read_pipeline(Client, Id, QueryMap, HeadersMap, Options0)
 -spec read_preset(map(), binary() | list()) ->
     {ok, read_preset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, read_preset_errors(), tuple()}.
 read_preset(Client, Id)
   when is_map(Client) ->
     read_preset(Client, Id, #{}, #{}).
@@ -1309,11 +1378,7 @@ read_preset(Client, Id)
 -spec read_preset(map(), binary() | list(), map(), map()) ->
     {ok, read_preset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, read_preset_errors(), tuple()}.
 read_preset(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     read_preset(Client, Id, QueryMap, HeadersMap, []).
@@ -1321,11 +1386,7 @@ read_preset(Client, Id, QueryMap, HeadersMap)
 -spec read_preset(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, read_preset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, read_preset_errors(), tuple()}.
 read_preset(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2012-09-25/presets/", aws_util:encode_uri(Id), ""],
@@ -1357,22 +1418,14 @@ read_preset(Client, Id, QueryMap, HeadersMap, Options0)
 -spec test_role(map(), test_role_request()) ->
     {ok, test_role_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, test_role_errors(), tuple()}.
 test_role(Client, Input) ->
     test_role(Client, Input, []).
 
 -spec test_role(map(), test_role_request(), proplists:proplist()) ->
     {ok, test_role_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, test_role_errors(), tuple()}.
 test_role(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2012-09-25/roleTests"],
@@ -1405,24 +1458,14 @@ test_role(Client, Input0, Options0) ->
 -spec update_pipeline(map(), binary() | list(), update_pipeline_request()) ->
     {ok, update_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_pipeline_errors(), tuple()}.
 update_pipeline(Client, Id, Input) ->
     update_pipeline(Client, Id, Input, []).
 
 -spec update_pipeline(map(), binary() | list(), update_pipeline_request(), proplists:proplist()) ->
     {ok, update_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_pipeline_errors(), tuple()}.
 update_pipeline(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2012-09-25/pipelines/", aws_util:encode_uri(Id), ""],
@@ -1453,24 +1496,14 @@ update_pipeline(Client, Id, Input0, Options0) ->
 -spec update_pipeline_notifications(map(), binary() | list(), update_pipeline_notifications_request()) ->
     {ok, update_pipeline_notifications_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_pipeline_notifications_errors(), tuple()}.
 update_pipeline_notifications(Client, Id, Input) ->
     update_pipeline_notifications(Client, Id, Input, []).
 
 -spec update_pipeline_notifications(map(), binary() | list(), update_pipeline_notifications_request(), proplists:proplist()) ->
     {ok, update_pipeline_notifications_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_pipeline_notifications_errors(), tuple()}.
 update_pipeline_notifications(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/2012-09-25/pipelines/", aws_util:encode_uri(Id), "/notifications"],
@@ -1507,24 +1540,14 @@ update_pipeline_notifications(Client, Id, Input0, Options0) ->
 -spec update_pipeline_status(map(), binary() | list(), update_pipeline_status_request()) ->
     {ok, update_pipeline_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_pipeline_status_errors(), tuple()}.
 update_pipeline_status(Client, Id, Input) ->
     update_pipeline_status(Client, Id, Input, []).
 
 -spec update_pipeline_status(map(), binary() | list(), update_pipeline_status_request(), proplists:proplist()) ->
     {ok, update_pipeline_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_version_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_pipeline_status_errors(), tuple()}.
 update_pipeline_status(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/2012-09-25/pipelines/", aws_util:encode_uri(Id), "/status"],

@@ -104,11 +104,13 @@
 %% }
 -type set_default_permission_version_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_share_invitation_expired_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_share_invitation_expired_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_permissions_response() :: #{
@@ -117,6 +119,7 @@
 %% }
 -type list_permissions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_resource_share_response() :: #{
 %%   <<"clientToken">> => string(),
@@ -124,17 +127,20 @@
 %% }
 -type create_resource_share_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_permission_response() :: #{
 %%   <<"permission">> => resource_share_permission_detail()
 %% }
 -type get_permission_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_max_results_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_max_results_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% tag_resource_request() :: #{
@@ -144,6 +150,7 @@
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_permission_versions_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -151,6 +158,7 @@
 %%   <<"permissionArn">> := string()
 %% }
 -type list_permission_versions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_replace_permission_associations_work_request() :: #{
@@ -161,6 +169,7 @@
 %% }
 -type list_replace_permission_associations_work_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_resource_share_request() :: #{
 %%   <<"allowExternalPrincipals">> => boolean(),
@@ -170,12 +179,14 @@
 %% }
 -type update_resource_share_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_resources_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"resources">> => list(resource()())
 %% }
 -type list_resources_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_share_association() :: #{
@@ -191,11 +202,13 @@
 %% }
 -type resource_share_association() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_arn_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_arn_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% malformed_policy_template_exception() :: #{
@@ -203,12 +216,14 @@
 %% }
 -type malformed_policy_template_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_resource_share_permission_response() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"returnValue">> => boolean()
 %% }
 -type associate_resource_share_permission_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_resource_share_request() :: #{
@@ -222,9 +237,11 @@
 %%   <<"tags">> => list(tag()())
 %% }
 -type create_resource_share_request() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% accept_resource_share_invitation_request() :: #{
@@ -233,12 +250,14 @@
 %% }
 -type accept_resource_share_invitation_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_permission_request() :: #{
 %%   <<"permissionArn">> := string(),
 %%   <<"permissionVersion">> => integer()
 %% }
 -type get_permission_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% replace_permission_associations_work() :: #{
@@ -254,12 +273,14 @@
 %% }
 -type replace_permission_associations_work() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_resource_share_response() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"resourceShare">> => resource_share()
 %% }
 -type update_resource_share_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_share_permission_summary() :: #{
@@ -278,11 +299,13 @@
 %% }
 -type resource_share_permission_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_share_invitation_arn_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_share_invitation_arn_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_resource_share_invitations_response() :: #{
@@ -291,11 +314,13 @@
 %% }
 -type get_resource_share_invitations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% missing_required_parameter_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type missing_required_parameter_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_resource_share_permissions_request() :: #{
@@ -305,11 +330,13 @@
 %% }
 -type list_resource_share_permissions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% unmatched_policy_permission_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type unmatched_policy_permission_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% reject_resource_share_invitation_request() :: #{
@@ -318,6 +345,7 @@
 %% }
 -type reject_resource_share_invitation_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_permission_version_request() :: #{
 %%   <<"clientToken">> => string(),
@@ -325,6 +353,7 @@
 %%   <<"policyTemplate">> := string()
 %% }
 -type create_permission_version_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_pending_invitation_resources_request() :: #{
@@ -335,6 +364,7 @@
 %% }
 -type list_pending_invitation_resources_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_permission_version_response() :: #{
 %%   <<"clientToken">> => string(),
@@ -342,6 +372,7 @@
 %%   <<"returnValue">> => boolean()
 %% }
 -type delete_permission_version_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% principal() :: #{
@@ -353,11 +384,13 @@
 %% }
 -type principal() :: #{binary() => any()}.
 
+
 %% Example:
 %% permission_already_exists_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type permission_already_exists_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% untag_resource_request() :: #{
@@ -367,6 +400,7 @@
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% disassociate_resource_share_permission_response() :: #{
 %%   <<"clientToken">> => string(),
@@ -374,11 +408,13 @@
 %% }
 -type disassociate_resource_share_permission_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_share_limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_share_limit_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_share_invitation() :: #{
@@ -394,6 +430,7 @@
 %% }
 -type resource_share_invitation() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_permission_associations_request() :: #{
 %%   <<"associationStatus">> => list(any()),
@@ -407,12 +444,14 @@
 %% }
 -type list_permission_associations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% promote_permission_created_from_policy_response() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"permission">> => resource_share_permission_summary()
 %% }
 -type promote_permission_created_from_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% disassociate_resource_share_response() :: #{
@@ -421,12 +460,14 @@
 %% }
 -type disassociate_resource_share_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_permission_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"permissionArn">> := string()
 %% }
 -type delete_permission_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% disassociate_resource_share_permission_request() :: #{
@@ -436,17 +477,20 @@
 %% }
 -type disassociate_resource_share_permission_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_policy_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_policy_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_share_invitation_already_rejected_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_share_invitation_already_rejected_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_resource_share_associations_request() :: #{
@@ -460,12 +504,14 @@
 %% }
 -type get_resource_share_associations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag() :: #{
 %%   <<"key">> => string(),
 %%   <<"value">> => string()
 %% }
 -type tag() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_share_permission_detail() :: #{
@@ -485,6 +531,7 @@
 %% }
 -type resource_share_permission_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_permission_response() :: #{
 %%   <<"clientToken">> => string(),
@@ -492,6 +539,7 @@
 %%   <<"returnValue">> => boolean()
 %% }
 -type delete_permission_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_name_and_resource_type() :: #{
@@ -501,6 +549,7 @@
 %% }
 -type service_name_and_resource_type() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_replace_permission_associations_work_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -508,11 +557,13 @@
 %% }
 -type list_replace_permission_associations_work_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% promote_resource_share_created_from_policy_response() :: #{
 %%   <<"returnValue">> => boolean()
 %% }
 -type promote_resource_share_created_from_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% permission_versions_limit_exceeded_exception() :: #{
@@ -520,17 +571,20 @@
 %% }
 -type permission_versions_limit_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_next_token_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_next_token_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% idempotent_parameter_mismatch_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type idempotent_parameter_mismatch_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% associate_resource_share_permission_request() :: #{
@@ -542,11 +596,13 @@
 %% }
 -type associate_resource_share_permission_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type tag_limit_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_resource_shares_request() :: #{
@@ -562,6 +618,7 @@
 %% }
 -type get_resource_shares_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_permission_versions_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -569,11 +626,13 @@
 %% }
 -type list_permission_versions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_state_transition_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_state_transition_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_share() :: #{
@@ -590,6 +649,7 @@
 %% }
 -type resource_share() :: #{binary() => any()}.
 
+
 %% Example:
 %% reject_resource_share_invitation_response() :: #{
 %%   <<"clientToken">> => string(),
@@ -597,11 +657,13 @@
 %% }
 -type reject_resource_share_invitation_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_unavailable_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_principals_response() :: #{
@@ -610,11 +672,13 @@
 %% }
 -type list_principals_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% operation_not_permitted_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type operation_not_permitted_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_resource_share_request() :: #{
@@ -622,6 +686,7 @@
 %%   <<"resourceShareArn">> := string()
 %% }
 -type delete_resource_share_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_resource_policies_request() :: #{
@@ -632,12 +697,14 @@
 %% }
 -type get_resource_policies_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_resource_policies_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"policies">> => list(string()())
 %% }
 -type get_resource_policies_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% disassociate_resource_share_request() :: #{
@@ -649,6 +716,7 @@
 %% }
 -type disassociate_resource_share_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% promote_permission_created_from_policy_request() :: #{
 %%   <<"clientToken">> => string(),
@@ -656,6 +724,7 @@
 %%   <<"permissionArn">> := string()
 %% }
 -type promote_permission_created_from_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_permission_request() :: #{
@@ -667,6 +736,7 @@
 %% }
 -type create_permission_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_resource_share_invitations_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -675,6 +745,7 @@
 %%   <<"resourceShareInvitationArns">> => list(string()())
 %% }
 -type get_resource_share_invitations_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% associated_permission() :: #{
@@ -689,6 +760,7 @@
 %% }
 -type associated_permission() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_permissions_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -698,12 +770,14 @@
 %% }
 -type list_permissions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_pending_invitation_resources_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"resources">> => list(resource()())
 %% }
 -type list_pending_invitation_resources_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% associate_resource_share_request() :: #{
@@ -715,6 +789,7 @@
 %% }
 -type associate_resource_share_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_resource_share_associations_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -722,11 +797,13 @@
 %% }
 -type get_resource_share_associations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% unknown_resource_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type unknown_resource_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% invalid_parameter_exception() :: #{
@@ -734,14 +811,17 @@
 %% }
 -type invalid_parameter_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% malformed_arn_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type malformed_arn_exception() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% list_resource_types_request() :: #{
@@ -751,11 +831,13 @@
 %% }
 -type list_resource_types_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% server_internal_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type server_internal_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% set_default_permission_version_response() :: #{
@@ -764,11 +846,13 @@
 %% }
 -type set_default_permission_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% enable_sharing_with_aws_organization_response() :: #{
 %%   <<"returnValue">> => boolean()
 %% }
 -type enable_sharing_with_aws_organization_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_resource_share_response() :: #{
@@ -777,11 +861,13 @@
 %% }
 -type delete_resource_share_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% associate_resource_share_response() :: #{
@@ -790,14 +876,17 @@
 %% }
 -type associate_resource_share_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_client_token_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_client_token_exception() :: #{binary() => any()}.
+
 %% Example:
 %% enable_sharing_with_aws_organization_request() :: #{}
 -type enable_sharing_with_aws_organization_request() :: #{}.
+
 
 %% Example:
 %% list_resource_share_permissions_response() :: #{
@@ -805,6 +894,7 @@
 %%   <<"permissions">> => list(resource_share_permission_summary()())
 %% }
 -type list_resource_share_permissions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_resources_request() :: #{
@@ -819,6 +909,7 @@
 %% }
 -type list_resources_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_permission_associations_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -826,11 +917,13 @@
 %% }
 -type list_permission_associations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% promote_resource_share_created_from_policy_request() :: #{
 %%   <<"resourceShareArn">> := string()
 %% }
 -type promote_resource_share_created_from_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% tag_filter() :: #{
@@ -839,11 +932,13 @@
 %% }
 -type tag_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_share_invitation_already_accepted_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_share_invitation_already_accepted_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_principals_request() :: #{
@@ -857,12 +952,14 @@
 %% }
 -type list_principals_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_resource_types_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"resourceTypes">> => list(service_name_and_resource_type()())
 %% }
 -type list_resource_types_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_permission_version_request() :: #{
@@ -872,12 +969,14 @@
 %% }
 -type delete_permission_version_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_resource_shares_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"resourceShares">> => list(resource_share()())
 %% }
 -type get_resource_shares_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% accept_resource_share_invitation_response() :: #{
@@ -886,12 +985,14 @@
 %% }
 -type accept_resource_share_invitation_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_permission_version_response() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"permission">> => resource_share_permission_detail()
 %% }
 -type create_permission_version_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% replace_permission_associations_request() :: #{
@@ -902,11 +1003,13 @@
 %% }
 -type replace_permission_associations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_resource_type_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_resource_type_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% replace_permission_associations_response() :: #{
@@ -915,6 +1018,7 @@
 %% }
 -type replace_permission_associations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_permission_response() :: #{
 %%   <<"clientToken">> => string(),
@@ -922,11 +1026,13 @@
 %% }
 -type create_permission_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_policy_violation_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type tag_policy_violation_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource() :: #{
@@ -942,11 +1048,336 @@
 %% }
 -type resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% permission_limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type permission_limit_exceeded_exception() :: #{binary() => any()}.
+
+-type accept_resource_share_invitation_errors() ::
+    resource_share_invitation_already_accepted_exception() | 
+    invalid_client_token_exception() | 
+    server_internal_exception() | 
+    malformed_arn_exception() | 
+    operation_not_permitted_exception() | 
+    service_unavailable_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    resource_share_invitation_already_rejected_exception() | 
+    resource_share_invitation_arn_not_found_exception() | 
+    resource_share_invitation_expired_exception().
+
+-type associate_resource_share_errors() ::
+    invalid_client_token_exception() | 
+    throttling_exception() | 
+    server_internal_exception() | 
+    malformed_arn_exception() | 
+    invalid_parameter_exception() | 
+    unknown_resource_exception() | 
+    operation_not_permitted_exception() | 
+    service_unavailable_exception() | 
+    invalid_state_transition_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    resource_share_limit_exceeded_exception().
+
+-type associate_resource_share_permission_errors() ::
+    invalid_client_token_exception() | 
+    server_internal_exception() | 
+    malformed_arn_exception() | 
+    invalid_parameter_exception() | 
+    unknown_resource_exception() | 
+    operation_not_permitted_exception() | 
+    service_unavailable_exception().
+
+-type create_permission_errors() ::
+    permission_limit_exceeded_exception() | 
+    invalid_client_token_exception() | 
+    server_internal_exception() | 
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    service_unavailable_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    invalid_policy_exception() | 
+    permission_already_exists_exception() | 
+    malformed_policy_template_exception().
+
+-type create_permission_version_errors() ::
+    invalid_client_token_exception() | 
+    server_internal_exception() | 
+    malformed_arn_exception() | 
+    invalid_parameter_exception() | 
+    unknown_resource_exception() | 
+    service_unavailable_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    permission_versions_limit_exceeded_exception() | 
+    invalid_policy_exception() | 
+    malformed_policy_template_exception().
+
+-type create_resource_share_errors() ::
+    tag_policy_violation_exception() | 
+    invalid_client_token_exception() | 
+    server_internal_exception() | 
+    malformed_arn_exception() | 
+    invalid_parameter_exception() | 
+    unknown_resource_exception() | 
+    operation_not_permitted_exception() | 
+    service_unavailable_exception() | 
+    invalid_state_transition_exception() | 
+    tag_limit_exceeded_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    resource_share_limit_exceeded_exception().
+
+-type delete_permission_errors() ::
+    invalid_client_token_exception() | 
+    server_internal_exception() | 
+    malformed_arn_exception() | 
+    unknown_resource_exception() | 
+    operation_not_permitted_exception() | 
+    service_unavailable_exception() | 
+    idempotent_parameter_mismatch_exception().
+
+-type delete_permission_version_errors() ::
+    invalid_client_token_exception() | 
+    server_internal_exception() | 
+    malformed_arn_exception() | 
+    invalid_parameter_exception() | 
+    unknown_resource_exception() | 
+    operation_not_permitted_exception() | 
+    service_unavailable_exception() | 
+    idempotent_parameter_mismatch_exception().
+
+-type delete_resource_share_errors() ::
+    invalid_client_token_exception() | 
+    server_internal_exception() | 
+    malformed_arn_exception() | 
+    invalid_parameter_exception() | 
+    unknown_resource_exception() | 
+    operation_not_permitted_exception() | 
+    service_unavailable_exception() | 
+    invalid_state_transition_exception() | 
+    idempotent_parameter_mismatch_exception().
+
+-type disassociate_resource_share_errors() ::
+    invalid_client_token_exception() | 
+    server_internal_exception() | 
+    malformed_arn_exception() | 
+    invalid_parameter_exception() | 
+    unknown_resource_exception() | 
+    operation_not_permitted_exception() | 
+    service_unavailable_exception() | 
+    invalid_state_transition_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    resource_share_limit_exceeded_exception().
+
+-type disassociate_resource_share_permission_errors() ::
+    invalid_client_token_exception() | 
+    server_internal_exception() | 
+    malformed_arn_exception() | 
+    invalid_parameter_exception() | 
+    unknown_resource_exception() | 
+    operation_not_permitted_exception() | 
+    service_unavailable_exception() | 
+    invalid_state_transition_exception().
+
+-type enable_sharing_with_aws_organization_errors() ::
+    server_internal_exception() | 
+    operation_not_permitted_exception() | 
+    service_unavailable_exception().
+
+-type get_permission_errors() ::
+    server_internal_exception() | 
+    malformed_arn_exception() | 
+    invalid_parameter_exception() | 
+    unknown_resource_exception() | 
+    operation_not_permitted_exception() | 
+    service_unavailable_exception().
+
+-type get_resource_policies_errors() ::
+    server_internal_exception() | 
+    malformed_arn_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    invalid_next_token_exception() | 
+    resource_arn_not_found_exception().
+
+-type get_resource_share_associations_errors() ::
+    server_internal_exception() | 
+    malformed_arn_exception() | 
+    invalid_parameter_exception() | 
+    unknown_resource_exception() | 
+    operation_not_permitted_exception() | 
+    service_unavailable_exception() | 
+    invalid_next_token_exception().
+
+-type get_resource_share_invitations_errors() ::
+    server_internal_exception() | 
+    malformed_arn_exception() | 
+    invalid_parameter_exception() | 
+    unknown_resource_exception() | 
+    service_unavailable_exception() | 
+    invalid_next_token_exception() | 
+    resource_share_invitation_arn_not_found_exception() | 
+    invalid_max_results_exception().
+
+-type get_resource_shares_errors() ::
+    server_internal_exception() | 
+    malformed_arn_exception() | 
+    invalid_parameter_exception() | 
+    unknown_resource_exception() | 
+    service_unavailable_exception() | 
+    invalid_next_token_exception().
+
+-type list_pending_invitation_resources_errors() ::
+    server_internal_exception() | 
+    malformed_arn_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    invalid_next_token_exception() | 
+    resource_share_invitation_already_rejected_exception() | 
+    missing_required_parameter_exception() | 
+    resource_share_invitation_arn_not_found_exception() | 
+    resource_share_invitation_expired_exception().
+
+-type list_permission_associations_errors() ::
+    server_internal_exception() | 
+    malformed_arn_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    invalid_next_token_exception().
+
+-type list_permission_versions_errors() ::
+    server_internal_exception() | 
+    malformed_arn_exception() | 
+    invalid_parameter_exception() | 
+    unknown_resource_exception() | 
+    operation_not_permitted_exception() | 
+    service_unavailable_exception() | 
+    invalid_next_token_exception().
+
+-type list_permissions_errors() ::
+    server_internal_exception() | 
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    service_unavailable_exception() | 
+    invalid_next_token_exception().
+
+-type list_principals_errors() ::
+    server_internal_exception() | 
+    malformed_arn_exception() | 
+    invalid_parameter_exception() | 
+    unknown_resource_exception() | 
+    service_unavailable_exception() | 
+    invalid_next_token_exception().
+
+-type list_replace_permission_associations_work_errors() ::
+    server_internal_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    invalid_next_token_exception().
+
+-type list_resource_share_permissions_errors() ::
+    server_internal_exception() | 
+    malformed_arn_exception() | 
+    invalid_parameter_exception() | 
+    unknown_resource_exception() | 
+    operation_not_permitted_exception() | 
+    service_unavailable_exception() | 
+    invalid_next_token_exception().
+
+-type list_resource_types_errors() ::
+    server_internal_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    invalid_next_token_exception().
+
+-type list_resources_errors() ::
+    invalid_resource_type_exception() | 
+    server_internal_exception() | 
+    malformed_arn_exception() | 
+    invalid_parameter_exception() | 
+    unknown_resource_exception() | 
+    service_unavailable_exception() | 
+    invalid_next_token_exception().
+
+-type promote_permission_created_from_policy_errors() ::
+    server_internal_exception() | 
+    malformed_arn_exception() | 
+    invalid_parameter_exception() | 
+    unknown_resource_exception() | 
+    operation_not_permitted_exception() | 
+    service_unavailable_exception() | 
+    missing_required_parameter_exception().
+
+-type promote_resource_share_created_from_policy_errors() ::
+    server_internal_exception() | 
+    malformed_arn_exception() | 
+    invalid_parameter_exception() | 
+    unknown_resource_exception() | 
+    operation_not_permitted_exception() | 
+    service_unavailable_exception() | 
+    invalid_state_transition_exception() | 
+    resource_share_limit_exceeded_exception() | 
+    unmatched_policy_permission_exception() | 
+    missing_required_parameter_exception().
+
+-type reject_resource_share_invitation_errors() ::
+    resource_share_invitation_already_accepted_exception() | 
+    invalid_client_token_exception() | 
+    server_internal_exception() | 
+    malformed_arn_exception() | 
+    operation_not_permitted_exception() | 
+    service_unavailable_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    resource_share_invitation_already_rejected_exception() | 
+    resource_share_invitation_arn_not_found_exception() | 
+    resource_share_invitation_expired_exception().
+
+-type replace_permission_associations_errors() ::
+    invalid_client_token_exception() | 
+    server_internal_exception() | 
+    malformed_arn_exception() | 
+    invalid_parameter_exception() | 
+    unknown_resource_exception() | 
+    operation_not_permitted_exception() | 
+    service_unavailable_exception() | 
+    idempotent_parameter_mismatch_exception().
+
+-type set_default_permission_version_errors() ::
+    invalid_client_token_exception() | 
+    server_internal_exception() | 
+    malformed_arn_exception() | 
+    invalid_parameter_exception() | 
+    unknown_resource_exception() | 
+    service_unavailable_exception() | 
+    idempotent_parameter_mismatch_exception().
+
+-type tag_resource_errors() ::
+    tag_policy_violation_exception() | 
+    server_internal_exception() | 
+    malformed_arn_exception() | 
+    invalid_parameter_exception() | 
+    unknown_resource_exception() | 
+    service_unavailable_exception() | 
+    tag_limit_exceeded_exception() | 
+    resource_arn_not_found_exception().
+
+-type untag_resource_errors() ::
+    server_internal_exception() | 
+    malformed_arn_exception() | 
+    invalid_parameter_exception() | 
+    unknown_resource_exception() | 
+    service_unavailable_exception().
+
+-type update_resource_share_errors() ::
+    invalid_client_token_exception() | 
+    server_internal_exception() | 
+    malformed_arn_exception() | 
+    invalid_parameter_exception() | 
+    unknown_resource_exception() | 
+    operation_not_permitted_exception() | 
+    service_unavailable_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    missing_required_parameter_exception().
 
 %%====================================================================
 %% API
@@ -962,32 +1393,14 @@
 -spec accept_resource_share_invitation(map(), accept_resource_share_invitation_request()) ->
     {ok, accept_resource_share_invitation_response(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, resource_share_invitation_already_accepted_exception(), tuple()} |
-    {error, resource_share_invitation_already_rejected_exception(), tuple()} |
-    {error, resource_share_invitation_arn_not_found_exception(), tuple()} |
-    {error, resource_share_invitation_expired_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, accept_resource_share_invitation_errors(), tuple()}.
 accept_resource_share_invitation(Client, Input) ->
     accept_resource_share_invitation(Client, Input, []).
 
 -spec accept_resource_share_invitation(map(), accept_resource_share_invitation_request(), proplists:proplist()) ->
     {ok, accept_resource_share_invitation_response(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, resource_share_invitation_already_accepted_exception(), tuple()} |
-    {error, resource_share_invitation_already_rejected_exception(), tuple()} |
-    {error, resource_share_invitation_arn_not_found_exception(), tuple()} |
-    {error, resource_share_invitation_expired_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, accept_resource_share_invitation_errors(), tuple()}.
 accept_resource_share_invitation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/acceptresourceshareinvitation"],
@@ -1021,34 +1434,14 @@ accept_resource_share_invitation(Client, Input0, Options0) ->
 -spec associate_resource_share(map(), associate_resource_share_request()) ->
     {ok, associate_resource_share_response(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_state_transition_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, resource_share_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, associate_resource_share_errors(), tuple()}.
 associate_resource_share(Client, Input) ->
     associate_resource_share(Client, Input, []).
 
 -spec associate_resource_share(map(), associate_resource_share_request(), proplists:proplist()) ->
     {ok, associate_resource_share_response(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_state_transition_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, resource_share_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, associate_resource_share_errors(), tuple()}.
 associate_resource_share(Client, Input0, Options0) ->
     Method = post,
     Path = ["/associateresourceshare"],
@@ -1083,26 +1476,14 @@ associate_resource_share(Client, Input0, Options0) ->
 -spec associate_resource_share_permission(map(), associate_resource_share_permission_request()) ->
     {ok, associate_resource_share_permission_response(), tuple()} |
     {error, any()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, associate_resource_share_permission_errors(), tuple()}.
 associate_resource_share_permission(Client, Input) ->
     associate_resource_share_permission(Client, Input, []).
 
 -spec associate_resource_share_permission(map(), associate_resource_share_permission_request(), proplists:proplist()) ->
     {ok, associate_resource_share_permission_response(), tuple()} |
     {error, any()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, associate_resource_share_permission_errors(), tuple()}.
 associate_resource_share_permission(Client, Input0, Options0) ->
     Method = post,
     Path = ["/associateresourcesharepermission"],
@@ -1133,32 +1514,14 @@ associate_resource_share_permission(Client, Input0, Options0) ->
 -spec create_permission(map(), create_permission_request()) ->
     {ok, create_permission_response(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_policy_exception(), tuple()} |
-    {error, malformed_policy_template_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, permission_already_exists_exception(), tuple()} |
-    {error, permission_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_permission_errors(), tuple()}.
 create_permission(Client, Input) ->
     create_permission(Client, Input, []).
 
 -spec create_permission(map(), create_permission_request(), proplists:proplist()) ->
     {ok, create_permission_response(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_policy_exception(), tuple()} |
-    {error, malformed_policy_template_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, permission_already_exists_exception(), tuple()} |
-    {error, permission_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_permission_errors(), tuple()}.
 create_permission(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createpermission"],
@@ -1197,32 +1560,14 @@ create_permission(Client, Input0, Options0) ->
 -spec create_permission_version(map(), create_permission_version_request()) ->
     {ok, create_permission_version_response(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_policy_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, malformed_policy_template_exception(), tuple()} |
-    {error, permission_versions_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, create_permission_version_errors(), tuple()}.
 create_permission_version(Client, Input) ->
     create_permission_version(Client, Input, []).
 
 -spec create_permission_version(map(), create_permission_version_request(), proplists:proplist()) ->
     {ok, create_permission_version_response(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_policy_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, malformed_policy_template_exception(), tuple()} |
-    {error, permission_versions_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, create_permission_version_errors(), tuple()}.
 create_permission_version(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createpermissionversion"],
@@ -1261,36 +1606,14 @@ create_permission_version(Client, Input0, Options0) ->
 -spec create_resource_share(map(), create_resource_share_request()) ->
     {ok, create_resource_share_response(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_state_transition_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, resource_share_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, tag_limit_exceeded_exception(), tuple()} |
-    {error, tag_policy_violation_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, create_resource_share_errors(), tuple()}.
 create_resource_share(Client, Input) ->
     create_resource_share(Client, Input, []).
 
 -spec create_resource_share(map(), create_resource_share_request(), proplists:proplist()) ->
     {ok, create_resource_share_response(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_state_transition_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, resource_share_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, tag_limit_exceeded_exception(), tuple()} |
-    {error, tag_policy_violation_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, create_resource_share_errors(), tuple()}.
 create_resource_share(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createresourceshare"],
@@ -1323,26 +1646,14 @@ create_resource_share(Client, Input0, Options0) ->
 -spec delete_permission(map(), delete_permission_request()) ->
     {ok, delete_permission_response(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, delete_permission_errors(), tuple()}.
 delete_permission(Client, Input) ->
     delete_permission(Client, Input, []).
 
 -spec delete_permission(map(), delete_permission_request(), proplists:proplist()) ->
     {ok, delete_permission_response(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, delete_permission_errors(), tuple()}.
 delete_permission(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/deletepermission"],
@@ -1378,28 +1689,14 @@ delete_permission(Client, Input0, Options0) ->
 -spec delete_permission_version(map(), delete_permission_version_request()) ->
     {ok, delete_permission_version_response(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, delete_permission_version_errors(), tuple()}.
 delete_permission_version(Client, Input) ->
     delete_permission_version(Client, Input, []).
 
 -spec delete_permission_version(map(), delete_permission_version_request(), proplists:proplist()) ->
     {ok, delete_permission_version_response(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, delete_permission_version_errors(), tuple()}.
 delete_permission_version(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/deletepermissionversion"],
@@ -1433,30 +1730,14 @@ delete_permission_version(Client, Input0, Options0) ->
 -spec delete_resource_share(map(), delete_resource_share_request()) ->
     {ok, delete_resource_share_response(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_state_transition_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, delete_resource_share_errors(), tuple()}.
 delete_resource_share(Client, Input) ->
     delete_resource_share(Client, Input, []).
 
 -spec delete_resource_share(map(), delete_resource_share_request(), proplists:proplist()) ->
     {ok, delete_resource_share_response(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_state_transition_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, delete_resource_share_errors(), tuple()}.
 delete_resource_share(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/deleteresourceshare"],
@@ -1487,32 +1768,14 @@ delete_resource_share(Client, Input0, Options0) ->
 -spec disassociate_resource_share(map(), disassociate_resource_share_request()) ->
     {ok, disassociate_resource_share_response(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_state_transition_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, resource_share_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, disassociate_resource_share_errors(), tuple()}.
 disassociate_resource_share(Client, Input) ->
     disassociate_resource_share(Client, Input, []).
 
 -spec disassociate_resource_share(map(), disassociate_resource_share_request(), proplists:proplist()) ->
     {ok, disassociate_resource_share_response(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_state_transition_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, resource_share_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, disassociate_resource_share_errors(), tuple()}.
 disassociate_resource_share(Client, Input0, Options0) ->
     Method = post,
     Path = ["/disassociateresourceshare"],
@@ -1544,28 +1807,14 @@ disassociate_resource_share(Client, Input0, Options0) ->
 -spec disassociate_resource_share_permission(map(), disassociate_resource_share_permission_request()) ->
     {ok, disassociate_resource_share_permission_response(), tuple()} |
     {error, any()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_state_transition_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, disassociate_resource_share_permission_errors(), tuple()}.
 disassociate_resource_share_permission(Client, Input) ->
     disassociate_resource_share_permission(Client, Input, []).
 
 -spec disassociate_resource_share_permission(map(), disassociate_resource_share_permission_request(), proplists:proplist()) ->
     {ok, disassociate_resource_share_permission_response(), tuple()} |
     {error, any()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_state_transition_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, disassociate_resource_share_permission_errors(), tuple()}.
 disassociate_resource_share_permission(Client, Input0, Options0) ->
     Method = post,
     Path = ["/disassociateresourcesharepermission"],
@@ -1611,18 +1860,14 @@ disassociate_resource_share_permission(Client, Input0, Options0) ->
 -spec enable_sharing_with_aws_organization(map(), enable_sharing_with_aws_organization_request()) ->
     {ok, enable_sharing_with_aws_organization_response(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, enable_sharing_with_aws_organization_errors(), tuple()}.
 enable_sharing_with_aws_organization(Client, Input) ->
     enable_sharing_with_aws_organization(Client, Input, []).
 
 -spec enable_sharing_with_aws_organization(map(), enable_sharing_with_aws_organization_request(), proplists:proplist()) ->
     {ok, enable_sharing_with_aws_organization_response(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, enable_sharing_with_aws_organization_errors(), tuple()}.
 enable_sharing_with_aws_organization(Client, Input0, Options0) ->
     Method = post,
     Path = ["/enablesharingwithawsorganization"],
@@ -1649,24 +1894,14 @@ enable_sharing_with_aws_organization(Client, Input0, Options0) ->
 -spec get_permission(map(), get_permission_request()) ->
     {ok, get_permission_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, get_permission_errors(), tuple()}.
 get_permission(Client, Input) ->
     get_permission(Client, Input, []).
 
 -spec get_permission(map(), get_permission_request(), proplists:proplist()) ->
     {ok, get_permission_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, get_permission_errors(), tuple()}.
 get_permission(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getpermission"],
@@ -1695,24 +1930,14 @@ get_permission(Client, Input0, Options0) ->
 -spec get_resource_policies(map(), get_resource_policies_request()) ->
     {ok, get_resource_policies_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, resource_arn_not_found_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_resource_policies_errors(), tuple()}.
 get_resource_policies(Client, Input) ->
     get_resource_policies(Client, Input, []).
 
 -spec get_resource_policies(map(), get_resource_policies_request(), proplists:proplist()) ->
     {ok, get_resource_policies_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, resource_arn_not_found_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_resource_policies_errors(), tuple()}.
 get_resource_policies(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getresourcepolicies"],
@@ -1741,26 +1966,14 @@ get_resource_policies(Client, Input0, Options0) ->
 -spec get_resource_share_associations(map(), get_resource_share_associations_request()) ->
     {ok, get_resource_share_associations_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, get_resource_share_associations_errors(), tuple()}.
 get_resource_share_associations(Client, Input) ->
     get_resource_share_associations(Client, Input, []).
 
 -spec get_resource_share_associations(map(), get_resource_share_associations_request(), proplists:proplist()) ->
     {ok, get_resource_share_associations_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, get_resource_share_associations_errors(), tuple()}.
 get_resource_share_associations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getresourceshareassociations"],
@@ -1788,28 +2001,14 @@ get_resource_share_associations(Client, Input0, Options0) ->
 -spec get_resource_share_invitations(map(), get_resource_share_invitations_request()) ->
     {ok, get_resource_share_invitations_response(), tuple()} |
     {error, any()} |
-    {error, invalid_max_results_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, resource_share_invitation_arn_not_found_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, get_resource_share_invitations_errors(), tuple()}.
 get_resource_share_invitations(Client, Input) ->
     get_resource_share_invitations(Client, Input, []).
 
 -spec get_resource_share_invitations(map(), get_resource_share_invitations_request(), proplists:proplist()) ->
     {ok, get_resource_share_invitations_response(), tuple()} |
     {error, any()} |
-    {error, invalid_max_results_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, resource_share_invitation_arn_not_found_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, get_resource_share_invitations_errors(), tuple()}.
 get_resource_share_invitations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getresourceshareinvitations"],
@@ -1837,24 +2036,14 @@ get_resource_share_invitations(Client, Input0, Options0) ->
 -spec get_resource_shares(map(), get_resource_shares_request()) ->
     {ok, get_resource_shares_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, get_resource_shares_errors(), tuple()}.
 get_resource_shares(Client, Input) ->
     get_resource_shares(Client, Input, []).
 
 -spec get_resource_shares(map(), get_resource_shares_request(), proplists:proplist()) ->
     {ok, get_resource_shares_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, get_resource_shares_errors(), tuple()}.
 get_resource_shares(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getresourceshares"],
@@ -1886,30 +2075,14 @@ get_resource_shares(Client, Input0, Options0) ->
 -spec list_pending_invitation_resources(map(), list_pending_invitation_resources_request()) ->
     {ok, list_pending_invitation_resources_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, resource_share_invitation_already_rejected_exception(), tuple()} |
-    {error, resource_share_invitation_arn_not_found_exception(), tuple()} |
-    {error, resource_share_invitation_expired_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_pending_invitation_resources_errors(), tuple()}.
 list_pending_invitation_resources(Client, Input) ->
     list_pending_invitation_resources(Client, Input, []).
 
 -spec list_pending_invitation_resources(map(), list_pending_invitation_resources_request(), proplists:proplist()) ->
     {ok, list_pending_invitation_resources_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, resource_share_invitation_already_rejected_exception(), tuple()} |
-    {error, resource_share_invitation_arn_not_found_exception(), tuple()} |
-    {error, resource_share_invitation_expired_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_pending_invitation_resources_errors(), tuple()}.
 list_pending_invitation_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listpendinginvitationresources"],
@@ -1942,22 +2115,14 @@ list_pending_invitation_resources(Client, Input0, Options0) ->
 -spec list_permission_associations(map(), list_permission_associations_request()) ->
     {ok, list_permission_associations_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_permission_associations_errors(), tuple()}.
 list_permission_associations(Client, Input) ->
     list_permission_associations(Client, Input, []).
 
 -spec list_permission_associations(map(), list_permission_associations_request(), proplists:proplist()) ->
     {ok, list_permission_associations_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_permission_associations_errors(), tuple()}.
 list_permission_associations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listpermissionassociations"],
@@ -1984,26 +2149,14 @@ list_permission_associations(Client, Input0, Options0) ->
 -spec list_permission_versions(map(), list_permission_versions_request()) ->
     {ok, list_permission_versions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, list_permission_versions_errors(), tuple()}.
 list_permission_versions(Client, Input) ->
     list_permission_versions(Client, Input, []).
 
 -spec list_permission_versions(map(), list_permission_versions_request(), proplists:proplist()) ->
     {ok, list_permission_versions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, list_permission_versions_errors(), tuple()}.
 list_permission_versions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listpermissionversions"],
@@ -2032,22 +2185,14 @@ list_permission_versions(Client, Input0, Options0) ->
 -spec list_permissions(map(), list_permissions_request()) ->
     {ok, list_permissions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_permissions_errors(), tuple()}.
 list_permissions(Client, Input) ->
     list_permissions(Client, Input, []).
 
 -spec list_permissions(map(), list_permissions_request(), proplists:proplist()) ->
     {ok, list_permissions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_permissions_errors(), tuple()}.
 list_permissions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listpermissions"],
@@ -2076,24 +2221,14 @@ list_permissions(Client, Input0, Options0) ->
 -spec list_principals(map(), list_principals_request()) ->
     {ok, list_principals_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, list_principals_errors(), tuple()}.
 list_principals(Client, Input) ->
     list_principals(Client, Input, []).
 
 -spec list_principals(map(), list_principals_request(), proplists:proplist()) ->
     {ok, list_principals_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, list_principals_errors(), tuple()}.
 list_principals(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listprincipals"],
@@ -2122,20 +2257,14 @@ list_principals(Client, Input0, Options0) ->
 -spec list_replace_permission_associations_work(map(), list_replace_permission_associations_work_request()) ->
     {ok, list_replace_permission_associations_work_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_replace_permission_associations_work_errors(), tuple()}.
 list_replace_permission_associations_work(Client, Input) ->
     list_replace_permission_associations_work(Client, Input, []).
 
 -spec list_replace_permission_associations_work(map(), list_replace_permission_associations_work_request(), proplists:proplist()) ->
     {ok, list_replace_permission_associations_work_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_replace_permission_associations_work_errors(), tuple()}.
 list_replace_permission_associations_work(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listreplacepermissionassociationswork"],
@@ -2162,26 +2291,14 @@ list_replace_permission_associations_work(Client, Input0, Options0) ->
 -spec list_resource_share_permissions(map(), list_resource_share_permissions_request()) ->
     {ok, list_resource_share_permissions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, list_resource_share_permissions_errors(), tuple()}.
 list_resource_share_permissions(Client, Input) ->
     list_resource_share_permissions(Client, Input, []).
 
 -spec list_resource_share_permissions(map(), list_resource_share_permissions_request(), proplists:proplist()) ->
     {ok, list_resource_share_permissions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, list_resource_share_permissions_errors(), tuple()}.
 list_resource_share_permissions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listresourcesharepermissions"],
@@ -2208,20 +2325,14 @@ list_resource_share_permissions(Client, Input0, Options0) ->
 -spec list_resource_types(map(), list_resource_types_request()) ->
     {ok, list_resource_types_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_resource_types_errors(), tuple()}.
 list_resource_types(Client, Input) ->
     list_resource_types(Client, Input, []).
 
 -spec list_resource_types(map(), list_resource_types_request(), proplists:proplist()) ->
     {ok, list_resource_types_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_resource_types_errors(), tuple()}.
 list_resource_types(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listresourcetypes"],
@@ -2250,26 +2361,14 @@ list_resource_types(Client, Input0, Options0) ->
 -spec list_resources(map(), list_resources_request()) ->
     {ok, list_resources_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_resource_type_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, list_resources_errors(), tuple()}.
 list_resources(Client, Input) ->
     list_resources(Client, Input, []).
 
 -spec list_resources(map(), list_resources_request(), proplists:proplist()) ->
     {ok, list_resources_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_resource_type_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, list_resources_errors(), tuple()}.
 list_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listresources"],
@@ -2335,26 +2434,14 @@ list_resources(Client, Input0, Options0) ->
 -spec promote_permission_created_from_policy(map(), promote_permission_created_from_policy_request()) ->
     {ok, promote_permission_created_from_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, promote_permission_created_from_policy_errors(), tuple()}.
 promote_permission_created_from_policy(Client, Input) ->
     promote_permission_created_from_policy(Client, Input, []).
 
 -spec promote_permission_created_from_policy(map(), promote_permission_created_from_policy_request(), proplists:proplist()) ->
     {ok, promote_permission_created_from_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, promote_permission_created_from_policy_errors(), tuple()}.
 promote_permission_created_from_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/promotepermissioncreatedfrompolicy"],
@@ -2404,32 +2491,14 @@ promote_permission_created_from_policy(Client, Input0, Options0) ->
 -spec promote_resource_share_created_from_policy(map(), promote_resource_share_created_from_policy_request()) ->
     {ok, promote_resource_share_created_from_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_state_transition_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, resource_share_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()} |
-    {error, unmatched_policy_permission_exception(), tuple()}.
+    {error, promote_resource_share_created_from_policy_errors(), tuple()}.
 promote_resource_share_created_from_policy(Client, Input) ->
     promote_resource_share_created_from_policy(Client, Input, []).
 
 -spec promote_resource_share_created_from_policy(map(), promote_resource_share_created_from_policy_request(), proplists:proplist()) ->
     {ok, promote_resource_share_created_from_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_state_transition_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, resource_share_limit_exceeded_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()} |
-    {error, unmatched_policy_permission_exception(), tuple()}.
+    {error, promote_resource_share_created_from_policy_errors(), tuple()}.
 promote_resource_share_created_from_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/promoteresourcesharecreatedfrompolicy"],
@@ -2458,32 +2527,14 @@ promote_resource_share_created_from_policy(Client, Input0, Options0) ->
 -spec reject_resource_share_invitation(map(), reject_resource_share_invitation_request()) ->
     {ok, reject_resource_share_invitation_response(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, resource_share_invitation_already_accepted_exception(), tuple()} |
-    {error, resource_share_invitation_already_rejected_exception(), tuple()} |
-    {error, resource_share_invitation_arn_not_found_exception(), tuple()} |
-    {error, resource_share_invitation_expired_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, reject_resource_share_invitation_errors(), tuple()}.
 reject_resource_share_invitation(Client, Input) ->
     reject_resource_share_invitation(Client, Input, []).
 
 -spec reject_resource_share_invitation(map(), reject_resource_share_invitation_request(), proplists:proplist()) ->
     {ok, reject_resource_share_invitation_response(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, resource_share_invitation_already_accepted_exception(), tuple()} |
-    {error, resource_share_invitation_already_rejected_exception(), tuple()} |
-    {error, resource_share_invitation_arn_not_found_exception(), tuple()} |
-    {error, resource_share_invitation_expired_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, reject_resource_share_invitation_errors(), tuple()}.
 reject_resource_share_invitation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/rejectresourceshareinvitation"],
@@ -2534,28 +2585,14 @@ reject_resource_share_invitation(Client, Input0, Options0) ->
 -spec replace_permission_associations(map(), replace_permission_associations_request()) ->
     {ok, replace_permission_associations_response(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, replace_permission_associations_errors(), tuple()}.
 replace_permission_associations(Client, Input) ->
     replace_permission_associations(Client, Input, []).
 
 -spec replace_permission_associations(map(), replace_permission_associations_request(), proplists:proplist()) ->
     {ok, replace_permission_associations_response(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, replace_permission_associations_errors(), tuple()}.
 replace_permission_associations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/replacepermissionassociations"],
@@ -2589,26 +2626,14 @@ replace_permission_associations(Client, Input0, Options0) ->
 -spec set_default_permission_version(map(), set_default_permission_version_request()) ->
     {ok, set_default_permission_version_response(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, set_default_permission_version_errors(), tuple()}.
 set_default_permission_version(Client, Input) ->
     set_default_permission_version(Client, Input, []).
 
 -spec set_default_permission_version(map(), set_default_permission_version_request(), proplists:proplist()) ->
     {ok, set_default_permission_version_response(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, set_default_permission_version_errors(), tuple()}.
 set_default_permission_version(Client, Input0, Options0) ->
     Method = post,
     Path = ["/setdefaultpermissionversion"],
@@ -2643,28 +2668,14 @@ set_default_permission_version(Client, Input0, Options0) ->
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, resource_arn_not_found_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, tag_limit_exceeded_exception(), tuple()} |
-    {error, tag_policy_violation_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, resource_arn_not_found_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, tag_limit_exceeded_exception(), tuple()} |
-    {error, tag_policy_violation_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tagresource"],
@@ -2692,22 +2703,14 @@ tag_resource(Client, Input0, Options0) ->
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/untagresource"],
@@ -2734,30 +2737,14 @@ untag_resource(Client, Input0, Options0) ->
 -spec update_resource_share(map(), update_resource_share_request()) ->
     {ok, update_resource_share_response(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, update_resource_share_errors(), tuple()}.
 update_resource_share(Client, Input) ->
     update_resource_share(Client, Input, []).
 
 -spec update_resource_share(map(), update_resource_share_request(), proplists:proplist()) ->
     {ok, update_resource_share_response(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_arn_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unknown_resource_exception(), tuple()}.
+    {error, update_resource_share_errors(), tuple()}.
 update_resource_share(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateresourceshare"],

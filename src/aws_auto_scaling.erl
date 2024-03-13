@@ -1762,6 +1762,260 @@
 %% }
 -type delete_policy_type() :: #{binary() => any()}.
 
+-type attach_instances_errors() ::
+    service_linked_role_failure() | 
+    resource_contention_fault().
+
+-type attach_load_balancer_target_groups_errors() ::
+    service_linked_role_failure() | 
+    resource_contention_fault().
+
+-type attach_load_balancers_errors() ::
+    service_linked_role_failure() | 
+    resource_contention_fault().
+
+-type attach_traffic_sources_errors() ::
+    service_linked_role_failure() | 
+    resource_contention_fault().
+
+-type batch_delete_scheduled_action_errors() ::
+    resource_contention_fault().
+
+-type batch_put_scheduled_update_group_action_errors() ::
+    already_exists_fault() | 
+    resource_contention_fault() | 
+    limit_exceeded_fault().
+
+-type cancel_instance_refresh_errors() ::
+    resource_contention_fault() | 
+    active_instance_refresh_not_found_fault() | 
+    limit_exceeded_fault().
+
+-type complete_lifecycle_action_errors() ::
+    resource_contention_fault().
+
+-type create_auto_scaling_group_errors() ::
+    service_linked_role_failure() | 
+    already_exists_fault() | 
+    resource_contention_fault() | 
+    limit_exceeded_fault().
+
+-type create_launch_configuration_errors() ::
+    already_exists_fault() | 
+    resource_contention_fault() | 
+    limit_exceeded_fault().
+
+-type create_or_update_tags_errors() ::
+    already_exists_fault() | 
+    resource_in_use_fault() | 
+    resource_contention_fault() | 
+    limit_exceeded_fault().
+
+-type delete_auto_scaling_group_errors() ::
+    resource_in_use_fault() | 
+    resource_contention_fault() | 
+    scaling_activity_in_progress_fault().
+
+-type delete_launch_configuration_errors() ::
+    resource_in_use_fault() | 
+    resource_contention_fault().
+
+-type delete_lifecycle_hook_errors() ::
+    resource_contention_fault().
+
+-type delete_notification_configuration_errors() ::
+    resource_contention_fault().
+
+-type delete_policy_errors() ::
+    service_linked_role_failure() | 
+    resource_contention_fault().
+
+-type delete_scheduled_action_errors() ::
+    resource_contention_fault().
+
+-type delete_tags_errors() ::
+    resource_in_use_fault() | 
+    resource_contention_fault().
+
+-type delete_warm_pool_errors() ::
+    resource_in_use_fault() | 
+    resource_contention_fault() | 
+    scaling_activity_in_progress_fault() | 
+    limit_exceeded_fault().
+
+-type describe_account_limits_errors() ::
+    resource_contention_fault().
+
+-type describe_adjustment_types_errors() ::
+    resource_contention_fault().
+
+-type describe_auto_scaling_groups_errors() ::
+    invalid_next_token() | 
+    resource_contention_fault().
+
+-type describe_auto_scaling_instances_errors() ::
+    invalid_next_token() | 
+    resource_contention_fault().
+
+-type describe_auto_scaling_notification_types_errors() ::
+    resource_contention_fault().
+
+-type describe_instance_refreshes_errors() ::
+    invalid_next_token() | 
+    resource_contention_fault().
+
+-type describe_launch_configurations_errors() ::
+    invalid_next_token() | 
+    resource_contention_fault().
+
+-type describe_lifecycle_hook_types_errors() ::
+    resource_contention_fault().
+
+-type describe_lifecycle_hooks_errors() ::
+    resource_contention_fault().
+
+-type describe_load_balancer_target_groups_errors() ::
+    invalid_next_token() | 
+    resource_contention_fault().
+
+-type describe_load_balancers_errors() ::
+    invalid_next_token() | 
+    resource_contention_fault().
+
+-type describe_metric_collection_types_errors() ::
+    resource_contention_fault().
+
+-type describe_notification_configurations_errors() ::
+    invalid_next_token() | 
+    resource_contention_fault().
+
+-type describe_policies_errors() ::
+    invalid_next_token() | 
+    service_linked_role_failure() | 
+    resource_contention_fault().
+
+-type describe_scaling_activities_errors() ::
+    invalid_next_token() | 
+    resource_contention_fault().
+
+-type describe_scaling_process_types_errors() ::
+    resource_contention_fault().
+
+-type describe_scheduled_actions_errors() ::
+    invalid_next_token() | 
+    resource_contention_fault().
+
+-type describe_tags_errors() ::
+    invalid_next_token() | 
+    resource_contention_fault().
+
+-type describe_termination_policy_types_errors() ::
+    resource_contention_fault().
+
+-type describe_traffic_sources_errors() ::
+    invalid_next_token() | 
+    resource_contention_fault().
+
+-type describe_warm_pool_errors() ::
+    invalid_next_token() | 
+    resource_contention_fault() | 
+    limit_exceeded_fault().
+
+-type detach_instances_errors() ::
+    resource_contention_fault().
+
+-type detach_load_balancer_target_groups_errors() ::
+    resource_contention_fault().
+
+-type detach_load_balancers_errors() ::
+    resource_contention_fault().
+
+-type detach_traffic_sources_errors() ::
+    resource_contention_fault().
+
+-type disable_metrics_collection_errors() ::
+    resource_contention_fault().
+
+-type enable_metrics_collection_errors() ::
+    resource_contention_fault().
+
+-type enter_standby_errors() ::
+    resource_contention_fault().
+
+-type execute_policy_errors() ::
+    resource_contention_fault() | 
+    scaling_activity_in_progress_fault().
+
+-type exit_standby_errors() ::
+    resource_contention_fault().
+
+-type get_predictive_scaling_forecast_errors() ::
+    resource_contention_fault().
+
+-type put_lifecycle_hook_errors() ::
+    resource_contention_fault() | 
+    limit_exceeded_fault().
+
+-type put_notification_configuration_errors() ::
+    service_linked_role_failure() | 
+    resource_contention_fault() | 
+    limit_exceeded_fault().
+
+-type put_scaling_policy_errors() ::
+    service_linked_role_failure() | 
+    resource_contention_fault() | 
+    limit_exceeded_fault().
+
+-type put_scheduled_update_group_action_errors() ::
+    already_exists_fault() | 
+    resource_contention_fault() | 
+    limit_exceeded_fault().
+
+-type put_warm_pool_errors() ::
+    resource_contention_fault() | 
+    limit_exceeded_fault().
+
+-type record_lifecycle_action_heartbeat_errors() ::
+    resource_contention_fault().
+
+-type resume_processes_errors() ::
+    resource_in_use_fault() | 
+    resource_contention_fault().
+
+-type rollback_instance_refresh_errors() ::
+    resource_contention_fault() | 
+    irreversible_instance_refresh_fault() | 
+    active_instance_refresh_not_found_fault() | 
+    limit_exceeded_fault().
+
+-type set_desired_capacity_errors() ::
+    resource_contention_fault() | 
+    scaling_activity_in_progress_fault().
+
+-type set_instance_health_errors() ::
+    resource_contention_fault().
+
+-type set_instance_protection_errors() ::
+    resource_contention_fault() | 
+    limit_exceeded_fault().
+
+-type start_instance_refresh_errors() ::
+    instance_refresh_in_progress_fault() | 
+    resource_contention_fault() | 
+    limit_exceeded_fault().
+
+-type suspend_processes_errors() ::
+    resource_in_use_fault() | 
+    resource_contention_fault().
+
+-type terminate_instance_in_auto_scaling_group_errors() ::
+    resource_contention_fault() | 
+    scaling_activity_in_progress_fault().
+
+-type update_auto_scaling_group_errors() ::
+    service_linked_role_failure() | 
+    resource_contention_fault() | 
+    scaling_activity_in_progress_fault().
 
 %%====================================================================
 %% API
@@ -1791,8 +2045,7 @@
 -spec attach_instances(map(), attach_instances_query()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, service_linked_role_failure(), tuple()}.
+    {error, attach_instances_errors(), tuple()}.
 attach_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_instances(Client, Input, []).
@@ -1800,8 +2053,7 @@ attach_instances(Client, Input)
 -spec attach_instances(map(), attach_instances_query(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, service_linked_role_failure(), tuple()}.
+    {error, attach_instances_errors(), tuple()}.
 attach_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachInstances">>, Input, Options).
@@ -1849,8 +2101,7 @@ attach_instances(Client, Input, Options)
 -spec attach_load_balancer_target_groups(map(), attach_load_balancer_target_groups_type()) ->
     {ok, attach_load_balancer_target_groups_result_type(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, service_linked_role_failure(), tuple()}.
+    {error, attach_load_balancer_target_groups_errors(), tuple()}.
 attach_load_balancer_target_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_load_balancer_target_groups(Client, Input, []).
@@ -1858,8 +2109,7 @@ attach_load_balancer_target_groups(Client, Input)
 -spec attach_load_balancer_target_groups(map(), attach_load_balancer_target_groups_type(), proplists:proplist()) ->
     {ok, attach_load_balancer_target_groups_result_type(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, service_linked_role_failure(), tuple()}.
+    {error, attach_load_balancer_target_groups_errors(), tuple()}.
 attach_load_balancer_target_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachLoadBalancerTargetGroups">>, Input, Options).
@@ -1896,8 +2146,7 @@ attach_load_balancer_target_groups(Client, Input, Options)
 -spec attach_load_balancers(map(), attach_load_balancers_type()) ->
     {ok, attach_load_balancers_result_type(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, service_linked_role_failure(), tuple()}.
+    {error, attach_load_balancers_errors(), tuple()}.
 attach_load_balancers(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_load_balancers(Client, Input, []).
@@ -1905,8 +2154,7 @@ attach_load_balancers(Client, Input)
 -spec attach_load_balancers(map(), attach_load_balancers_type(), proplists:proplist()) ->
     {ok, attach_load_balancers_result_type(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, service_linked_role_failure(), tuple()}.
+    {error, attach_load_balancers_errors(), tuple()}.
 attach_load_balancers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachLoadBalancers">>, Input, Options).
@@ -1939,8 +2187,7 @@ attach_load_balancers(Client, Input, Options)
 -spec attach_traffic_sources(map(), attach_traffic_sources_type()) ->
     {ok, attach_traffic_sources_result_type(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, service_linked_role_failure(), tuple()}.
+    {error, attach_traffic_sources_errors(), tuple()}.
 attach_traffic_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_traffic_sources(Client, Input, []).
@@ -1948,8 +2195,7 @@ attach_traffic_sources(Client, Input)
 -spec attach_traffic_sources(map(), attach_traffic_sources_type(), proplists:proplist()) ->
     {ok, attach_traffic_sources_result_type(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, service_linked_role_failure(), tuple()}.
+    {error, attach_traffic_sources_errors(), tuple()}.
 attach_traffic_sources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachTrafficSources">>, Input, Options).
@@ -1959,7 +2205,7 @@ attach_traffic_sources(Client, Input, Options)
 -spec batch_delete_scheduled_action(map(), batch_delete_scheduled_action_type()) ->
     {ok, batch_delete_scheduled_action_answer(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, batch_delete_scheduled_action_errors(), tuple()}.
 batch_delete_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_scheduled_action(Client, Input, []).
@@ -1967,7 +2213,7 @@ batch_delete_scheduled_action(Client, Input)
 -spec batch_delete_scheduled_action(map(), batch_delete_scheduled_action_type(), proplists:proplist()) ->
     {ok, batch_delete_scheduled_action_answer(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, batch_delete_scheduled_action_errors(), tuple()}.
 batch_delete_scheduled_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDeleteScheduledAction">>, Input, Options).
@@ -1977,9 +2223,7 @@ batch_delete_scheduled_action(Client, Input, Options)
 -spec batch_put_scheduled_update_group_action(map(), batch_put_scheduled_update_group_action_type()) ->
     {ok, batch_put_scheduled_update_group_action_answer(), tuple()} |
     {error, any()} |
-    {error, already_exists_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, batch_put_scheduled_update_group_action_errors(), tuple()}.
 batch_put_scheduled_update_group_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_put_scheduled_update_group_action(Client, Input, []).
@@ -1987,9 +2231,7 @@ batch_put_scheduled_update_group_action(Client, Input)
 -spec batch_put_scheduled_update_group_action(map(), batch_put_scheduled_update_group_action_type(), proplists:proplist()) ->
     {ok, batch_put_scheduled_update_group_action_answer(), tuple()} |
     {error, any()} |
-    {error, already_exists_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, batch_put_scheduled_update_group_action_errors(), tuple()}.
 batch_put_scheduled_update_group_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchPutScheduledUpdateGroupAction">>, Input, Options).
@@ -2013,9 +2255,7 @@ batch_put_scheduled_update_group_action(Client, Input, Options)
 -spec cancel_instance_refresh(map(), cancel_instance_refresh_type()) ->
     {ok, cancel_instance_refresh_answer(), tuple()} |
     {error, any()} |
-    {error, active_instance_refresh_not_found_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, cancel_instance_refresh_errors(), tuple()}.
 cancel_instance_refresh(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_instance_refresh(Client, Input, []).
@@ -2023,9 +2263,7 @@ cancel_instance_refresh(Client, Input)
 -spec cancel_instance_refresh(map(), cancel_instance_refresh_type(), proplists:proplist()) ->
     {ok, cancel_instance_refresh_answer(), tuple()} |
     {error, any()} |
-    {error, active_instance_refresh_not_found_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, cancel_instance_refresh_errors(), tuple()}.
 cancel_instance_refresh(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelInstanceRefresh">>, Input, Options).
@@ -2071,7 +2309,7 @@ cancel_instance_refresh(Client, Input, Options)
 -spec complete_lifecycle_action(map(), complete_lifecycle_action_type()) ->
     {ok, complete_lifecycle_action_answer(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, complete_lifecycle_action_errors(), tuple()}.
 complete_lifecycle_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     complete_lifecycle_action(Client, Input, []).
@@ -2079,7 +2317,7 @@ complete_lifecycle_action(Client, Input)
 -spec complete_lifecycle_action(map(), complete_lifecycle_action_type(), proplists:proplist()) ->
     {ok, complete_lifecycle_action_answer(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, complete_lifecycle_action_errors(), tuple()}.
 complete_lifecycle_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CompleteLifecycleAction">>, Input, Options).
@@ -2114,10 +2352,7 @@ complete_lifecycle_action(Client, Input, Options)
 -spec create_auto_scaling_group(map(), create_auto_scaling_group_type()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, already_exists_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, service_linked_role_failure(), tuple()}.
+    {error, create_auto_scaling_group_errors(), tuple()}.
 create_auto_scaling_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_auto_scaling_group(Client, Input, []).
@@ -2125,10 +2360,7 @@ create_auto_scaling_group(Client, Input)
 -spec create_auto_scaling_group(map(), create_auto_scaling_group_type(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, already_exists_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, service_linked_role_failure(), tuple()}.
+    {error, create_auto_scaling_group_errors(), tuple()}.
 create_auto_scaling_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAutoScalingGroup">>, Input, Options).
@@ -2161,9 +2393,7 @@ create_auto_scaling_group(Client, Input, Options)
 -spec create_launch_configuration(map(), create_launch_configuration_type()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, already_exists_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, create_launch_configuration_errors(), tuple()}.
 create_launch_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_launch_configuration(Client, Input, []).
@@ -2171,9 +2401,7 @@ create_launch_configuration(Client, Input)
 -spec create_launch_configuration(map(), create_launch_configuration_type(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, already_exists_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, create_launch_configuration_errors(), tuple()}.
 create_launch_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLaunchConfiguration">>, Input, Options).
@@ -2191,10 +2419,7 @@ create_launch_configuration(Client, Input, Options)
 -spec create_or_update_tags(map(), create_or_update_tags_type()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, already_exists_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, resource_in_use_fault(), tuple()}.
+    {error, create_or_update_tags_errors(), tuple()}.
 create_or_update_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_or_update_tags(Client, Input, []).
@@ -2202,10 +2427,7 @@ create_or_update_tags(Client, Input)
 -spec create_or_update_tags(map(), create_or_update_tags_type(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, already_exists_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, resource_in_use_fault(), tuple()}.
+    {error, create_or_update_tags_errors(), tuple()}.
 create_or_update_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateOrUpdateTags">>, Input, Options).
@@ -2244,9 +2466,7 @@ create_or_update_tags(Client, Input, Options)
 -spec delete_auto_scaling_group(map(), delete_auto_scaling_group_type()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, resource_in_use_fault(), tuple()} |
-    {error, scaling_activity_in_progress_fault(), tuple()}.
+    {error, delete_auto_scaling_group_errors(), tuple()}.
 delete_auto_scaling_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_auto_scaling_group(Client, Input, []).
@@ -2254,9 +2474,7 @@ delete_auto_scaling_group(Client, Input)
 -spec delete_auto_scaling_group(map(), delete_auto_scaling_group_type(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, resource_in_use_fault(), tuple()} |
-    {error, scaling_activity_in_progress_fault(), tuple()}.
+    {error, delete_auto_scaling_group_errors(), tuple()}.
 delete_auto_scaling_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAutoScalingGroup">>, Input, Options).
@@ -2269,8 +2487,7 @@ delete_auto_scaling_group(Client, Input, Options)
 -spec delete_launch_configuration(map(), launch_configuration_name_type()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, resource_in_use_fault(), tuple()}.
+    {error, delete_launch_configuration_errors(), tuple()}.
 delete_launch_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_launch_configuration(Client, Input, []).
@@ -2278,8 +2495,7 @@ delete_launch_configuration(Client, Input)
 -spec delete_launch_configuration(map(), launch_configuration_name_type(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, resource_in_use_fault(), tuple()}.
+    {error, delete_launch_configuration_errors(), tuple()}.
 delete_launch_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLaunchConfiguration">>, Input, Options).
@@ -2292,7 +2508,7 @@ delete_launch_configuration(Client, Input, Options)
 -spec delete_lifecycle_hook(map(), delete_lifecycle_hook_type()) ->
     {ok, delete_lifecycle_hook_answer(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, delete_lifecycle_hook_errors(), tuple()}.
 delete_lifecycle_hook(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_lifecycle_hook(Client, Input, []).
@@ -2300,7 +2516,7 @@ delete_lifecycle_hook(Client, Input)
 -spec delete_lifecycle_hook(map(), delete_lifecycle_hook_type(), proplists:proplist()) ->
     {ok, delete_lifecycle_hook_answer(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, delete_lifecycle_hook_errors(), tuple()}.
 delete_lifecycle_hook(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLifecycleHook">>, Input, Options).
@@ -2309,7 +2525,7 @@ delete_lifecycle_hook(Client, Input, Options)
 -spec delete_notification_configuration(map(), delete_notification_configuration_type()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, delete_notification_configuration_errors(), tuple()}.
 delete_notification_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_notification_configuration(Client, Input, []).
@@ -2317,7 +2533,7 @@ delete_notification_configuration(Client, Input)
 -spec delete_notification_configuration(map(), delete_notification_configuration_type(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, delete_notification_configuration_errors(), tuple()}.
 delete_notification_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteNotificationConfiguration">>, Input, Options).
@@ -2337,8 +2553,7 @@ delete_notification_configuration(Client, Input, Options)
 -spec delete_policy(map(), delete_policy_type()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, service_linked_role_failure(), tuple()}.
+    {error, delete_policy_errors(), tuple()}.
 delete_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_policy(Client, Input, []).
@@ -2346,8 +2561,7 @@ delete_policy(Client, Input)
 -spec delete_policy(map(), delete_policy_type(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, service_linked_role_failure(), tuple()}.
+    {error, delete_policy_errors(), tuple()}.
 delete_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePolicy">>, Input, Options).
@@ -2356,7 +2570,7 @@ delete_policy(Client, Input, Options)
 -spec delete_scheduled_action(map(), delete_scheduled_action_type()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, delete_scheduled_action_errors(), tuple()}.
 delete_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_scheduled_action(Client, Input, []).
@@ -2364,7 +2578,7 @@ delete_scheduled_action(Client, Input)
 -spec delete_scheduled_action(map(), delete_scheduled_action_type(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, delete_scheduled_action_errors(), tuple()}.
 delete_scheduled_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteScheduledAction">>, Input, Options).
@@ -2373,8 +2587,7 @@ delete_scheduled_action(Client, Input, Options)
 -spec delete_tags(map(), delete_tags_type()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, resource_in_use_fault(), tuple()}.
+    {error, delete_tags_errors(), tuple()}.
 delete_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tags(Client, Input, []).
@@ -2382,8 +2595,7 @@ delete_tags(Client, Input)
 -spec delete_tags(map(), delete_tags_type(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, resource_in_use_fault(), tuple()}.
+    {error, delete_tags_errors(), tuple()}.
 delete_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTags">>, Input, Options).
@@ -2397,10 +2609,7 @@ delete_tags(Client, Input, Options)
 -spec delete_warm_pool(map(), delete_warm_pool_type()) ->
     {ok, delete_warm_pool_answer(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, resource_in_use_fault(), tuple()} |
-    {error, scaling_activity_in_progress_fault(), tuple()}.
+    {error, delete_warm_pool_errors(), tuple()}.
 delete_warm_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_warm_pool(Client, Input, []).
@@ -2408,10 +2617,7 @@ delete_warm_pool(Client, Input)
 -spec delete_warm_pool(map(), delete_warm_pool_type(), proplists:proplist()) ->
     {ok, delete_warm_pool_answer(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, resource_in_use_fault(), tuple()} |
-    {error, scaling_activity_in_progress_fault(), tuple()}.
+    {error, delete_warm_pool_errors(), tuple()}.
 delete_warm_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWarmPool">>, Input, Options).
@@ -2430,7 +2636,7 @@ delete_warm_pool(Client, Input, Options)
 -spec describe_account_limits(map(), #{}) ->
     {ok, describe_account_limits_answer(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_account_limits_errors(), tuple()}.
 describe_account_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_limits(Client, Input, []).
@@ -2438,7 +2644,7 @@ describe_account_limits(Client, Input)
 -spec describe_account_limits(map(), #{}, proplists:proplist()) ->
     {ok, describe_account_limits_answer(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_account_limits_errors(), tuple()}.
 describe_account_limits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountLimits">>, Input, Options).
@@ -2457,7 +2663,7 @@ describe_account_limits(Client, Input, Options)
 -spec describe_adjustment_types(map(), #{}) ->
     {ok, describe_adjustment_types_answer(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_adjustment_types_errors(), tuple()}.
 describe_adjustment_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_adjustment_types(Client, Input, []).
@@ -2465,7 +2671,7 @@ describe_adjustment_types(Client, Input)
 -spec describe_adjustment_types(map(), #{}, proplists:proplist()) ->
     {ok, describe_adjustment_types_answer(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_adjustment_types_errors(), tuple()}.
 describe_adjustment_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAdjustmentTypes">>, Input, Options).
@@ -2488,8 +2694,7 @@ describe_adjustment_types(Client, Input, Options)
 -spec describe_auto_scaling_groups(map(), auto_scaling_group_names_type()) ->
     {ok, auto_scaling_groups_type(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_auto_scaling_groups_errors(), tuple()}.
 describe_auto_scaling_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_auto_scaling_groups(Client, Input, []).
@@ -2497,8 +2702,7 @@ describe_auto_scaling_groups(Client, Input)
 -spec describe_auto_scaling_groups(map(), auto_scaling_group_names_type(), proplists:proplist()) ->
     {ok, auto_scaling_groups_type(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_auto_scaling_groups_errors(), tuple()}.
 describe_auto_scaling_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAutoScalingGroups">>, Input, Options).
@@ -2508,8 +2712,7 @@ describe_auto_scaling_groups(Client, Input, Options)
 -spec describe_auto_scaling_instances(map(), describe_auto_scaling_instances_type()) ->
     {ok, auto_scaling_instances_type(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_auto_scaling_instances_errors(), tuple()}.
 describe_auto_scaling_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_auto_scaling_instances(Client, Input, []).
@@ -2517,8 +2720,7 @@ describe_auto_scaling_instances(Client, Input)
 -spec describe_auto_scaling_instances(map(), describe_auto_scaling_instances_type(), proplists:proplist()) ->
     {ok, auto_scaling_instances_type(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_auto_scaling_instances_errors(), tuple()}.
 describe_auto_scaling_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAutoScalingInstances">>, Input, Options).
@@ -2528,7 +2730,7 @@ describe_auto_scaling_instances(Client, Input, Options)
 -spec describe_auto_scaling_notification_types(map(), #{}) ->
     {ok, describe_auto_scaling_notification_types_answer(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_auto_scaling_notification_types_errors(), tuple()}.
 describe_auto_scaling_notification_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_auto_scaling_notification_types(Client, Input, []).
@@ -2536,7 +2738,7 @@ describe_auto_scaling_notification_types(Client, Input)
 -spec describe_auto_scaling_notification_types(map(), #{}, proplists:proplist()) ->
     {ok, describe_auto_scaling_notification_types_answer(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_auto_scaling_notification_types_errors(), tuple()}.
 describe_auto_scaling_notification_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAutoScalingNotificationTypes">>, Input, Options).
@@ -2566,8 +2768,7 @@ describe_auto_scaling_notification_types(Client, Input, Options)
 -spec describe_instance_refreshes(map(), describe_instance_refreshes_type()) ->
     {ok, describe_instance_refreshes_answer(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_instance_refreshes_errors(), tuple()}.
 describe_instance_refreshes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_refreshes(Client, Input, []).
@@ -2575,8 +2776,7 @@ describe_instance_refreshes(Client, Input)
 -spec describe_instance_refreshes(map(), describe_instance_refreshes_type(), proplists:proplist()) ->
     {ok, describe_instance_refreshes_answer(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_instance_refreshes_errors(), tuple()}.
 describe_instance_refreshes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInstanceRefreshes">>, Input, Options).
@@ -2586,8 +2786,7 @@ describe_instance_refreshes(Client, Input, Options)
 -spec describe_launch_configurations(map(), launch_configuration_names_type()) ->
     {ok, launch_configurations_type(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_launch_configurations_errors(), tuple()}.
 describe_launch_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_launch_configurations(Client, Input, []).
@@ -2595,8 +2794,7 @@ describe_launch_configurations(Client, Input)
 -spec describe_launch_configurations(map(), launch_configuration_names_type(), proplists:proplist()) ->
     {ok, launch_configurations_type(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_launch_configurations_errors(), tuple()}.
 describe_launch_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLaunchConfigurations">>, Input, Options).
@@ -2611,7 +2809,7 @@ describe_launch_configurations(Client, Input, Options)
 -spec describe_lifecycle_hook_types(map(), #{}) ->
     {ok, describe_lifecycle_hook_types_answer(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_lifecycle_hook_types_errors(), tuple()}.
 describe_lifecycle_hook_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_lifecycle_hook_types(Client, Input, []).
@@ -2619,7 +2817,7 @@ describe_lifecycle_hook_types(Client, Input)
 -spec describe_lifecycle_hook_types(map(), #{}, proplists:proplist()) ->
     {ok, describe_lifecycle_hook_types_answer(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_lifecycle_hook_types_errors(), tuple()}.
 describe_lifecycle_hook_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLifecycleHookTypes">>, Input, Options).
@@ -2629,7 +2827,7 @@ describe_lifecycle_hook_types(Client, Input, Options)
 -spec describe_lifecycle_hooks(map(), describe_lifecycle_hooks_type()) ->
     {ok, describe_lifecycle_hooks_answer(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_lifecycle_hooks_errors(), tuple()}.
 describe_lifecycle_hooks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_lifecycle_hooks(Client, Input, []).
@@ -2637,7 +2835,7 @@ describe_lifecycle_hooks(Client, Input)
 -spec describe_lifecycle_hooks(map(), describe_lifecycle_hooks_type(), proplists:proplist()) ->
     {ok, describe_lifecycle_hooks_answer(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_lifecycle_hooks_errors(), tuple()}.
 describe_lifecycle_hooks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLifecycleHooks">>, Input, Options).
@@ -2699,8 +2897,7 @@ describe_lifecycle_hooks(Client, Input, Options)
 -spec describe_load_balancer_target_groups(map(), describe_load_balancer_target_groups_request()) ->
     {ok, describe_load_balancer_target_groups_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_load_balancer_target_groups_errors(), tuple()}.
 describe_load_balancer_target_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_load_balancer_target_groups(Client, Input, []).
@@ -2708,8 +2905,7 @@ describe_load_balancer_target_groups(Client, Input)
 -spec describe_load_balancer_target_groups(map(), describe_load_balancer_target_groups_request(), proplists:proplist()) ->
     {ok, describe_load_balancer_target_groups_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_load_balancer_target_groups_errors(), tuple()}.
 describe_load_balancer_target_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLoadBalancerTargetGroups">>, Input, Options).
@@ -2773,8 +2969,7 @@ describe_load_balancer_target_groups(Client, Input, Options)
 -spec describe_load_balancers(map(), describe_load_balancers_request()) ->
     {ok, describe_load_balancers_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_load_balancers_errors(), tuple()}.
 describe_load_balancers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_load_balancers(Client, Input, []).
@@ -2782,8 +2977,7 @@ describe_load_balancers(Client, Input)
 -spec describe_load_balancers(map(), describe_load_balancers_request(), proplists:proplist()) ->
     {ok, describe_load_balancers_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_load_balancers_errors(), tuple()}.
 describe_load_balancers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLoadBalancers">>, Input, Options).
@@ -2793,7 +2987,7 @@ describe_load_balancers(Client, Input, Options)
 -spec describe_metric_collection_types(map(), #{}) ->
     {ok, describe_metric_collection_types_answer(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_metric_collection_types_errors(), tuple()}.
 describe_metric_collection_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_metric_collection_types(Client, Input, []).
@@ -2801,7 +2995,7 @@ describe_metric_collection_types(Client, Input)
 -spec describe_metric_collection_types(map(), #{}, proplists:proplist()) ->
     {ok, describe_metric_collection_types_answer(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_metric_collection_types_errors(), tuple()}.
 describe_metric_collection_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMetricCollectionTypes">>, Input, Options).
@@ -2812,8 +3006,7 @@ describe_metric_collection_types(Client, Input, Options)
 -spec describe_notification_configurations(map(), describe_notification_configurations_type()) ->
     {ok, describe_notification_configurations_answer(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_notification_configurations_errors(), tuple()}.
 describe_notification_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_notification_configurations(Client, Input, []).
@@ -2821,8 +3014,7 @@ describe_notification_configurations(Client, Input)
 -spec describe_notification_configurations(map(), describe_notification_configurations_type(), proplists:proplist()) ->
     {ok, describe_notification_configurations_answer(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_notification_configurations_errors(), tuple()}.
 describe_notification_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeNotificationConfigurations">>, Input, Options).
@@ -2832,9 +3024,7 @@ describe_notification_configurations(Client, Input, Options)
 -spec describe_policies(map(), describe_policies_type()) ->
     {ok, policies_type(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, service_linked_role_failure(), tuple()}.
+    {error, describe_policies_errors(), tuple()}.
 describe_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_policies(Client, Input, []).
@@ -2842,9 +3032,7 @@ describe_policies(Client, Input)
 -spec describe_policies(map(), describe_policies_type(), proplists:proplist()) ->
     {ok, policies_type(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, service_linked_role_failure(), tuple()}.
+    {error, describe_policies_errors(), tuple()}.
 describe_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePolicies">>, Input, Options).
@@ -2872,8 +3060,7 @@ describe_policies(Client, Input, Options)
 -spec describe_scaling_activities(map(), describe_scaling_activities_type()) ->
     {ok, activities_type(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_scaling_activities_errors(), tuple()}.
 describe_scaling_activities(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_activities(Client, Input, []).
@@ -2881,8 +3068,7 @@ describe_scaling_activities(Client, Input)
 -spec describe_scaling_activities(map(), describe_scaling_activities_type(), proplists:proplist()) ->
     {ok, activities_type(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_scaling_activities_errors(), tuple()}.
 describe_scaling_activities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScalingActivities">>, Input, Options).
@@ -2893,7 +3079,7 @@ describe_scaling_activities(Client, Input, Options)
 -spec describe_scaling_process_types(map(), #{}) ->
     {ok, processes_type(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_scaling_process_types_errors(), tuple()}.
 describe_scaling_process_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_process_types(Client, Input, []).
@@ -2901,7 +3087,7 @@ describe_scaling_process_types(Client, Input)
 -spec describe_scaling_process_types(map(), #{}, proplists:proplist()) ->
     {ok, processes_type(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_scaling_process_types_errors(), tuple()}.
 describe_scaling_process_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScalingProcessTypes">>, Input, Options).
@@ -2916,8 +3102,7 @@ describe_scaling_process_types(Client, Input, Options)
 -spec describe_scheduled_actions(map(), describe_scheduled_actions_type()) ->
     {ok, scheduled_actions_type(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_scheduled_actions_errors(), tuple()}.
 describe_scheduled_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scheduled_actions(Client, Input, []).
@@ -2925,8 +3110,7 @@ describe_scheduled_actions(Client, Input)
 -spec describe_scheduled_actions(map(), describe_scheduled_actions_type(), proplists:proplist()) ->
     {ok, scheduled_actions_type(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_scheduled_actions_errors(), tuple()}.
 describe_scheduled_actions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScheduledActions">>, Input, Options).
@@ -2952,8 +3136,7 @@ describe_scheduled_actions(Client, Input, Options)
 -spec describe_tags(map(), describe_tags_type()) ->
     {ok, tags_type(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_tags_errors(), tuple()}.
 describe_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tags(Client, Input, []).
@@ -2961,8 +3144,7 @@ describe_tags(Client, Input)
 -spec describe_tags(map(), describe_tags_type(), proplists:proplist()) ->
     {ok, tags_type(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_tags_errors(), tuple()}.
 describe_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTags">>, Input, Options).
@@ -2978,7 +3160,7 @@ describe_tags(Client, Input, Options)
 -spec describe_termination_policy_types(map(), #{}) ->
     {ok, describe_termination_policy_types_answer(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_termination_policy_types_errors(), tuple()}.
 describe_termination_policy_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_termination_policy_types(Client, Input, []).
@@ -2986,7 +3168,7 @@ describe_termination_policy_types(Client, Input)
 -spec describe_termination_policy_types(map(), #{}, proplists:proplist()) ->
     {ok, describe_termination_policy_types_answer(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_termination_policy_types_errors(), tuple()}.
 describe_termination_policy_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTerminationPolicyTypes">>, Input, Options).
@@ -3004,8 +3186,7 @@ describe_termination_policy_types(Client, Input, Options)
 -spec describe_traffic_sources(map(), describe_traffic_sources_request()) ->
     {ok, describe_traffic_sources_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_traffic_sources_errors(), tuple()}.
 describe_traffic_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_traffic_sources(Client, Input, []).
@@ -3013,8 +3194,7 @@ describe_traffic_sources(Client, Input)
 -spec describe_traffic_sources(map(), describe_traffic_sources_request(), proplists:proplist()) ->
     {ok, describe_traffic_sources_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_traffic_sources_errors(), tuple()}.
 describe_traffic_sources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrafficSources">>, Input, Options).
@@ -3028,9 +3208,7 @@ describe_traffic_sources(Client, Input, Options)
 -spec describe_warm_pool(map(), describe_warm_pool_type()) ->
     {ok, describe_warm_pool_answer(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_warm_pool_errors(), tuple()}.
 describe_warm_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_warm_pool(Client, Input, []).
@@ -3038,9 +3216,7 @@ describe_warm_pool(Client, Input)
 -spec describe_warm_pool(map(), describe_warm_pool_type(), proplists:proplist()) ->
     {ok, describe_warm_pool_answer(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, describe_warm_pool_errors(), tuple()}.
 describe_warm_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWarmPool">>, Input, Options).
@@ -3068,7 +3244,7 @@ describe_warm_pool(Client, Input, Options)
 -spec detach_instances(map(), detach_instances_query()) ->
     {ok, detach_instances_answer(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, detach_instances_errors(), tuple()}.
 detach_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_instances(Client, Input, []).
@@ -3076,7 +3252,7 @@ detach_instances(Client, Input)
 -spec detach_instances(map(), detach_instances_query(), proplists:proplist()) ->
     {ok, detach_instances_answer(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, detach_instances_errors(), tuple()}.
 detach_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachInstances">>, Input, Options).
@@ -3109,7 +3285,7 @@ detach_instances(Client, Input, Options)
 -spec detach_load_balancer_target_groups(map(), detach_load_balancer_target_groups_type()) ->
     {ok, detach_load_balancer_target_groups_result_type(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, detach_load_balancer_target_groups_errors(), tuple()}.
 detach_load_balancer_target_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_load_balancer_target_groups(Client, Input, []).
@@ -3117,7 +3293,7 @@ detach_load_balancer_target_groups(Client, Input)
 -spec detach_load_balancer_target_groups(map(), detach_load_balancer_target_groups_type(), proplists:proplist()) ->
     {ok, detach_load_balancer_target_groups_result_type(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, detach_load_balancer_target_groups_errors(), tuple()}.
 detach_load_balancer_target_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachLoadBalancerTargetGroups">>, Input, Options).
@@ -3149,7 +3325,7 @@ detach_load_balancer_target_groups(Client, Input, Options)
 -spec detach_load_balancers(map(), detach_load_balancers_type()) ->
     {ok, detach_load_balancers_result_type(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, detach_load_balancers_errors(), tuple()}.
 detach_load_balancers(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_load_balancers(Client, Input, []).
@@ -3157,7 +3333,7 @@ detach_load_balancers(Client, Input)
 -spec detach_load_balancers(map(), detach_load_balancers_type(), proplists:proplist()) ->
     {ok, detach_load_balancers_result_type(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, detach_load_balancers_errors(), tuple()}.
 detach_load_balancers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachLoadBalancers">>, Input, Options).
@@ -3173,7 +3349,7 @@ detach_load_balancers(Client, Input, Options)
 -spec detach_traffic_sources(map(), detach_traffic_sources_type()) ->
     {ok, detach_traffic_sources_result_type(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, detach_traffic_sources_errors(), tuple()}.
 detach_traffic_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_traffic_sources(Client, Input, []).
@@ -3181,7 +3357,7 @@ detach_traffic_sources(Client, Input)
 -spec detach_traffic_sources(map(), detach_traffic_sources_type(), proplists:proplist()) ->
     {ok, detach_traffic_sources_result_type(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, detach_traffic_sources_errors(), tuple()}.
 detach_traffic_sources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachTrafficSources">>, Input, Options).
@@ -3191,7 +3367,7 @@ detach_traffic_sources(Client, Input, Options)
 -spec disable_metrics_collection(map(), disable_metrics_collection_query()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, disable_metrics_collection_errors(), tuple()}.
 disable_metrics_collection(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_metrics_collection(Client, Input, []).
@@ -3199,7 +3375,7 @@ disable_metrics_collection(Client, Input)
 -spec disable_metrics_collection(map(), disable_metrics_collection_query(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, disable_metrics_collection_errors(), tuple()}.
 disable_metrics_collection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableMetricsCollection">>, Input, Options).
@@ -3219,7 +3395,7 @@ disable_metrics_collection(Client, Input, Options)
 -spec enable_metrics_collection(map(), enable_metrics_collection_query()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, enable_metrics_collection_errors(), tuple()}.
 enable_metrics_collection(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_metrics_collection(Client, Input, []).
@@ -3227,7 +3403,7 @@ enable_metrics_collection(Client, Input)
 -spec enable_metrics_collection(map(), enable_metrics_collection_query(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, enable_metrics_collection_errors(), tuple()}.
 enable_metrics_collection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableMetricsCollection">>, Input, Options).
@@ -3254,7 +3430,7 @@ enable_metrics_collection(Client, Input, Options)
 -spec enter_standby(map(), enter_standby_query()) ->
     {ok, enter_standby_answer(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, enter_standby_errors(), tuple()}.
 enter_standby(Client, Input)
   when is_map(Client), is_map(Input) ->
     enter_standby(Client, Input, []).
@@ -3262,7 +3438,7 @@ enter_standby(Client, Input)
 -spec enter_standby(map(), enter_standby_query(), proplists:proplist()) ->
     {ok, enter_standby_answer(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, enter_standby_errors(), tuple()}.
 enter_standby(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnterStandby">>, Input, Options).
@@ -3274,8 +3450,7 @@ enter_standby(Client, Input, Options)
 -spec execute_policy(map(), execute_policy_type()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, scaling_activity_in_progress_fault(), tuple()}.
+    {error, execute_policy_errors(), tuple()}.
 execute_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_policy(Client, Input, []).
@@ -3283,8 +3458,7 @@ execute_policy(Client, Input)
 -spec execute_policy(map(), execute_policy_type(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, scaling_activity_in_progress_fault(), tuple()}.
+    {error, execute_policy_errors(), tuple()}.
 execute_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExecutePolicy">>, Input, Options).
@@ -3302,7 +3476,7 @@ execute_policy(Client, Input, Options)
 -spec exit_standby(map(), exit_standby_query()) ->
     {ok, exit_standby_answer(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, exit_standby_errors(), tuple()}.
 exit_standby(Client, Input)
   when is_map(Client), is_map(Input) ->
     exit_standby(Client, Input, []).
@@ -3310,7 +3484,7 @@ exit_standby(Client, Input)
 -spec exit_standby(map(), exit_standby_query(), proplists:proplist()) ->
     {ok, exit_standby_answer(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, exit_standby_errors(), tuple()}.
 exit_standby(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExitStandby">>, Input, Options).
@@ -3337,7 +3511,7 @@ exit_standby(Client, Input, Options)
 -spec get_predictive_scaling_forecast(map(), get_predictive_scaling_forecast_type()) ->
     {ok, get_predictive_scaling_forecast_answer(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, get_predictive_scaling_forecast_errors(), tuple()}.
 get_predictive_scaling_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_predictive_scaling_forecast(Client, Input, []).
@@ -3345,7 +3519,7 @@ get_predictive_scaling_forecast(Client, Input)
 -spec get_predictive_scaling_forecast(map(), get_predictive_scaling_forecast_type(), proplists:proplist()) ->
     {ok, get_predictive_scaling_forecast_answer(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, get_predictive_scaling_forecast_errors(), tuple()}.
 get_predictive_scaling_forecast(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPredictiveScalingForecast">>, Input, Options).
@@ -3404,8 +3578,7 @@ get_predictive_scaling_forecast(Client, Input, Options)
 -spec put_lifecycle_hook(map(), put_lifecycle_hook_type()) ->
     {ok, put_lifecycle_hook_answer(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, put_lifecycle_hook_errors(), tuple()}.
 put_lifecycle_hook(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_lifecycle_hook(Client, Input, []).
@@ -3413,8 +3586,7 @@ put_lifecycle_hook(Client, Input)
 -spec put_lifecycle_hook(map(), put_lifecycle_hook_type(), proplists:proplist()) ->
     {ok, put_lifecycle_hook_answer(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, put_lifecycle_hook_errors(), tuple()}.
 put_lifecycle_hook(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutLifecycleHook">>, Input, Options).
@@ -3440,9 +3612,7 @@ put_lifecycle_hook(Client, Input, Options)
 -spec put_notification_configuration(map(), put_notification_configuration_type()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, service_linked_role_failure(), tuple()}.
+    {error, put_notification_configuration_errors(), tuple()}.
 put_notification_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_notification_configuration(Client, Input, []).
@@ -3450,9 +3620,7 @@ put_notification_configuration(Client, Input)
 -spec put_notification_configuration(map(), put_notification_configuration_type(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, service_linked_role_failure(), tuple()}.
+    {error, put_notification_configuration_errors(), tuple()}.
 put_notification_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutNotificationConfiguration">>, Input, Options).
@@ -3484,9 +3652,7 @@ put_notification_configuration(Client, Input, Options)
 -spec put_scaling_policy(map(), put_scaling_policy_type()) ->
     {ok, policy_arn_type(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, service_linked_role_failure(), tuple()}.
+    {error, put_scaling_policy_errors(), tuple()}.
 put_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_scaling_policy(Client, Input, []).
@@ -3494,9 +3660,7 @@ put_scaling_policy(Client, Input)
 -spec put_scaling_policy(map(), put_scaling_policy_type(), proplists:proplist()) ->
     {ok, policy_arn_type(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, service_linked_role_failure(), tuple()}.
+    {error, put_scaling_policy_errors(), tuple()}.
 put_scaling_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutScalingPolicy">>, Input, Options).
@@ -3520,9 +3684,7 @@ put_scaling_policy(Client, Input, Options)
 -spec put_scheduled_update_group_action(map(), put_scheduled_update_group_action_type()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, already_exists_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, put_scheduled_update_group_action_errors(), tuple()}.
 put_scheduled_update_group_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_scheduled_update_group_action(Client, Input, []).
@@ -3530,9 +3692,7 @@ put_scheduled_update_group_action(Client, Input)
 -spec put_scheduled_update_group_action(map(), put_scheduled_update_group_action_type(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, already_exists_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, put_scheduled_update_group_action_errors(), tuple()}.
 put_scheduled_update_group_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutScheduledUpdateGroupAction">>, Input, Options).
@@ -3563,8 +3723,7 @@ put_scheduled_update_group_action(Client, Input, Options)
 -spec put_warm_pool(map(), put_warm_pool_type()) ->
     {ok, put_warm_pool_answer(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, put_warm_pool_errors(), tuple()}.
 put_warm_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_warm_pool(Client, Input, []).
@@ -3572,8 +3731,7 @@ put_warm_pool(Client, Input)
 -spec put_warm_pool(map(), put_warm_pool_type(), proplists:proplist()) ->
     {ok, put_warm_pool_answer(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, put_warm_pool_errors(), tuple()}.
 put_warm_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutWarmPool">>, Input, Options).
@@ -3621,7 +3779,7 @@ put_warm_pool(Client, Input, Options)
 -spec record_lifecycle_action_heartbeat(map(), record_lifecycle_action_heartbeat_type()) ->
     {ok, record_lifecycle_action_heartbeat_answer(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, record_lifecycle_action_heartbeat_errors(), tuple()}.
 record_lifecycle_action_heartbeat(Client, Input)
   when is_map(Client), is_map(Input) ->
     record_lifecycle_action_heartbeat(Client, Input, []).
@@ -3629,7 +3787,7 @@ record_lifecycle_action_heartbeat(Client, Input)
 -spec record_lifecycle_action_heartbeat(map(), record_lifecycle_action_heartbeat_type(), proplists:proplist()) ->
     {ok, record_lifecycle_action_heartbeat_answer(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, record_lifecycle_action_heartbeat_errors(), tuple()}.
 record_lifecycle_action_heartbeat(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RecordLifecycleActionHeartbeat">>, Input, Options).
@@ -3645,8 +3803,7 @@ record_lifecycle_action_heartbeat(Client, Input, Options)
 -spec resume_processes(map(), scaling_process_query()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, resource_in_use_fault(), tuple()}.
+    {error, resume_processes_errors(), tuple()}.
 resume_processes(Client, Input)
   when is_map(Client), is_map(Input) ->
     resume_processes(Client, Input, []).
@@ -3654,8 +3811,7 @@ resume_processes(Client, Input)
 -spec resume_processes(map(), scaling_process_query(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, resource_in_use_fault(), tuple()}.
+    {error, resume_processes_errors(), tuple()}.
 resume_processes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResumeProcesses">>, Input, Options).
@@ -3695,10 +3851,7 @@ resume_processes(Client, Input, Options)
 -spec rollback_instance_refresh(map(), rollback_instance_refresh_type()) ->
     {ok, rollback_instance_refresh_answer(), tuple()} |
     {error, any()} |
-    {error, active_instance_refresh_not_found_fault(), tuple()} |
-    {error, irreversible_instance_refresh_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, rollback_instance_refresh_errors(), tuple()}.
 rollback_instance_refresh(Client, Input)
   when is_map(Client), is_map(Input) ->
     rollback_instance_refresh(Client, Input, []).
@@ -3706,10 +3859,7 @@ rollback_instance_refresh(Client, Input)
 -spec rollback_instance_refresh(map(), rollback_instance_refresh_type(), proplists:proplist()) ->
     {ok, rollback_instance_refresh_answer(), tuple()} |
     {error, any()} |
-    {error, active_instance_refresh_not_found_fault(), tuple()} |
-    {error, irreversible_instance_refresh_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, rollback_instance_refresh_errors(), tuple()}.
 rollback_instance_refresh(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RollbackInstanceRefresh">>, Input, Options).
@@ -3729,8 +3879,7 @@ rollback_instance_refresh(Client, Input, Options)
 -spec set_desired_capacity(map(), set_desired_capacity_type()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, scaling_activity_in_progress_fault(), tuple()}.
+    {error, set_desired_capacity_errors(), tuple()}.
 set_desired_capacity(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_desired_capacity(Client, Input, []).
@@ -3738,8 +3887,7 @@ set_desired_capacity(Client, Input)
 -spec set_desired_capacity(map(), set_desired_capacity_type(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, scaling_activity_in_progress_fault(), tuple()}.
+    {error, set_desired_capacity_errors(), tuple()}.
 set_desired_capacity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetDesiredCapacity">>, Input, Options).
@@ -3753,7 +3901,7 @@ set_desired_capacity(Client, Input, Options)
 -spec set_instance_health(map(), set_instance_health_query()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, set_instance_health_errors(), tuple()}.
 set_instance_health(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_instance_health(Client, Input, []).
@@ -3761,7 +3909,7 @@ set_instance_health(Client, Input)
 -spec set_instance_health(map(), set_instance_health_query(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, set_instance_health_errors(), tuple()}.
 set_instance_health(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetInstanceHealth">>, Input, Options).
@@ -3785,8 +3933,7 @@ set_instance_health(Client, Input, Options)
 -spec set_instance_protection(map(), set_instance_protection_query()) ->
     {ok, set_instance_protection_answer(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, set_instance_protection_errors(), tuple()}.
 set_instance_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_instance_protection(Client, Input, []).
@@ -3794,8 +3941,7 @@ set_instance_protection(Client, Input)
 -spec set_instance_protection(map(), set_instance_protection_query(), proplists:proplist()) ->
     {ok, set_instance_protection_answer(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, set_instance_protection_errors(), tuple()}.
 set_instance_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetInstanceProtection">>, Input, Options).
@@ -3847,9 +3993,7 @@ set_instance_protection(Client, Input, Options)
 -spec start_instance_refresh(map(), start_instance_refresh_type()) ->
     {ok, start_instance_refresh_answer(), tuple()} |
     {error, any()} |
-    {error, instance_refresh_in_progress_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, start_instance_refresh_errors(), tuple()}.
 start_instance_refresh(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_instance_refresh(Client, Input, []).
@@ -3857,9 +4001,7 @@ start_instance_refresh(Client, Input)
 -spec start_instance_refresh(map(), start_instance_refresh_type(), proplists:proplist()) ->
     {ok, start_instance_refresh_answer(), tuple()} |
     {error, any()} |
-    {error, instance_refresh_in_progress_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, resource_contention_fault(), tuple()}.
+    {error, start_instance_refresh_errors(), tuple()}.
 start_instance_refresh(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartInstanceRefresh">>, Input, Options).
@@ -3881,8 +4023,7 @@ start_instance_refresh(Client, Input, Options)
 -spec suspend_processes(map(), scaling_process_query()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, resource_in_use_fault(), tuple()}.
+    {error, suspend_processes_errors(), tuple()}.
 suspend_processes(Client, Input)
   when is_map(Client), is_map(Input) ->
     suspend_processes(Client, Input, []).
@@ -3890,8 +4031,7 @@ suspend_processes(Client, Input)
 -spec suspend_processes(map(), scaling_process_query(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, resource_in_use_fault(), tuple()}.
+    {error, suspend_processes_errors(), tuple()}.
 suspend_processes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SuspendProcesses">>, Input, Options).
@@ -3927,8 +4067,7 @@ suspend_processes(Client, Input, Options)
 -spec terminate_instance_in_auto_scaling_group(map(), terminate_instance_in_auto_scaling_group_type()) ->
     {ok, activity_type(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, scaling_activity_in_progress_fault(), tuple()}.
+    {error, terminate_instance_in_auto_scaling_group_errors(), tuple()}.
 terminate_instance_in_auto_scaling_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     terminate_instance_in_auto_scaling_group(Client, Input, []).
@@ -3936,8 +4075,7 @@ terminate_instance_in_auto_scaling_group(Client, Input)
 -spec terminate_instance_in_auto_scaling_group(map(), terminate_instance_in_auto_scaling_group_type(), proplists:proplist()) ->
     {ok, activity_type(), tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, scaling_activity_in_progress_fault(), tuple()}.
+    {error, terminate_instance_in_auto_scaling_group_errors(), tuple()}.
 terminate_instance_in_auto_scaling_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TerminateInstanceInAutoScalingGroup">>, Input, Options).
@@ -4003,9 +4141,7 @@ terminate_instance_in_auto_scaling_group(Client, Input, Options)
 -spec update_auto_scaling_group(map(), update_auto_scaling_group_type()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, scaling_activity_in_progress_fault(), tuple()} |
-    {error, service_linked_role_failure(), tuple()}.
+    {error, update_auto_scaling_group_errors(), tuple()}.
 update_auto_scaling_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_auto_scaling_group(Client, Input, []).
@@ -4013,9 +4149,7 @@ update_auto_scaling_group(Client, Input)
 -spec update_auto_scaling_group(map(), update_auto_scaling_group_type(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_contention_fault(), tuple()} |
-    {error, scaling_activity_in_progress_fault(), tuple()} |
-    {error, service_linked_role_failure(), tuple()}.
+    {error, update_auto_scaling_group_errors(), tuple()}.
 update_auto_scaling_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAutoScalingGroup">>, Input, Options).

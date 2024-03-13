@@ -77,6 +77,7 @@
 %% }
 -type put_encryption_config_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_service_graph_result() :: #{
 %%   <<"ContainsOldGroupVersions">> => boolean(),
@@ -87,11 +88,13 @@
 %% }
 -type get_service_graph_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% insight_impact_graph_edge() :: #{
 %%   <<"ReferenceId">> => integer()
 %% }
 -type insight_impact_graph_edge() :: #{binary() => any()}.
+
 
 %% Example:
 %% edge_statistics() :: #{
@@ -102,6 +105,7 @@
 %%   <<"TotalResponseTime">> => float()
 %% }
 -type edge_statistics() :: #{binary() => any()}.
+
 
 %% Example:
 %% insight_summary() :: #{
@@ -121,6 +125,7 @@
 %% }
 -type insight_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% response_time_root_cause_service() :: #{
 %%   <<"AccountId">> => string(),
@@ -132,6 +137,7 @@
 %% }
 -type response_time_root_cause_service() :: #{binary() => any()}.
 
+
 %% Example:
 %% insights_configuration() :: #{
 %%   <<"InsightsEnabled">> => boolean(),
@@ -139,12 +145,14 @@
 %% }
 -type insights_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
 %%   <<"Tags">> := list(tag()())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% encryption_config() :: #{
@@ -154,6 +162,7 @@
 %% }
 -type encryption_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_encryption_config_request() :: #{
 %%   <<"KeyId">> => string(),
@@ -161,11 +170,13 @@
 %% }
 -type put_encryption_config_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_group_result() :: #{
 %%   <<"Group">> => group()
 %% }
 -type create_group_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% instance_id_detail() :: #{
@@ -173,11 +184,13 @@
 %% }
 -type instance_id_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_group_result() :: #{
 %%   <<"Group">> => group()
 %% }
 -type get_group_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_trace_segments_request() :: #{
@@ -185,11 +198,13 @@
 %% }
 -type put_trace_segments_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_groups_request() :: #{
 %%   <<"NextToken">> => string()
 %% }
 -type get_groups_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% sampling_rule_update() :: #{
@@ -208,20 +223,24 @@
 %% }
 -type sampling_rule_update() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_insight_request() :: #{
 %%   <<"InsightId">> := string()
 %% }
 -type get_insight_request() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% anomalous_service() :: #{
 %%   <<"ServiceId">> => service_id()
 %% }
 -type anomalous_service() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_trace_summaries_request() :: #{
@@ -235,6 +254,7 @@
 %% }
 -type get_trace_summaries_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% insight_impact_graph_service() :: #{
 %%   <<"AccountId">> => string(),
@@ -246,6 +266,7 @@
 %% }
 -type insight_impact_graph_service() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_trace_summaries_result() :: #{
 %%   <<"ApproximateTime">> => non_neg_integer(),
@@ -255,11 +276,13 @@
 %% }
 -type get_trace_summaries_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_sampling_rule_result() :: #{
 %%   <<"SamplingRuleRecord">> => sampling_rule_record()
 %% }
 -type create_sampling_rule_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_resource_policy_result() :: #{
@@ -267,11 +290,13 @@
 %% }
 -type put_resource_policy_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% availability_zone_detail() :: #{
 %%   <<"Name">> => string()
 %% }
 -type availability_zone_detail() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_sampling_rule_request() :: #{
@@ -279,6 +304,7 @@
 %%   <<"RuleName">> => string()
 %% }
 -type delete_sampling_rule_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_telemetry_records_request() :: #{
@@ -288,6 +314,7 @@
 %%   <<"TelemetryRecords">> := list(telemetry_record()())
 %% }
 -type put_telemetry_records_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% sampling_statistic_summary() :: #{
@@ -299,12 +326,14 @@
 %% }
 -type sampling_statistic_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% error_root_cause() :: #{
 %%   <<"ClientImpacting">> => boolean(),
 %%   <<"Services">> => list(error_root_cause_service()())
 %% }
 -type error_root_cause() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_trace_graph_result() :: #{
@@ -313,11 +342,13 @@
 %% }
 -type get_trace_graph_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_sampling_rules_request() :: #{
 %%   <<"NextToken">> => string()
 %% }
 -type get_sampling_rules_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% service() :: #{
@@ -337,11 +368,13 @@
 %% }
 -type service() :: #{binary() => any()}.
 
+
 %% Example:
 %% policy_size_limit_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type policy_size_limit_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% sampling_target_document() :: #{
@@ -353,12 +386,14 @@
 %% }
 -type sampling_target_document() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_get_traces_result() :: #{
@@ -367,6 +402,7 @@
 %%   <<"UnprocessedTraceIds">> => list(string()())
 %% }
 -type batch_get_traces_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_group_request() :: #{
@@ -377,12 +413,14 @@
 %% }
 -type update_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% segment() :: #{
 %%   <<"Document">> => string(),
 %%   <<"Id">> => string()
 %% }
 -type segment() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_insight_events_request() :: #{
@@ -392,12 +430,14 @@
 %% }
 -type get_insight_events_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_traces_request() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"TraceIds">> := list(string()())
 %% }
 -type batch_get_traces_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% error_statistics() :: #{
@@ -407,12 +447,14 @@
 %% }
 -type error_statistics() :: #{binary() => any()}.
 
+
 %% Example:
 %% value_with_service_ids() :: #{
 %%   <<"AnnotationValue">> => list(),
 %%   <<"ServiceIds">> => list(service_id()())
 %% }
 -type value_with_service_ids() :: #{binary() => any()}.
+
 
 %% Example:
 %% unprocessed_statistics() :: #{
@@ -422,11 +464,13 @@
 %% }
 -type unprocessed_statistics() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_policy_revision_id_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_policy_revision_id_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% throttled_exception() :: #{
@@ -434,11 +478,13 @@
 %% }
 -type throttled_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_sampling_rule_result() :: #{
 %%   <<"SamplingRuleRecord">> => sampling_rule_record()
 %% }
 -type update_sampling_rule_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_sampling_rule_request() :: #{
@@ -446,15 +492,18 @@
 %% }
 -type update_sampling_rule_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"ResourceName">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 %% Example:
 %% put_telemetry_records_result() :: #{}
 -type put_telemetry_records_result() :: #{}.
+
 
 %% Example:
 %% insight_event() :: #{
@@ -466,12 +515,14 @@
 %% }
 -type insight_event() :: #{binary() => any()}.
 
+
 %% Example:
 %% response_time_root_cause() :: #{
 %%   <<"ClientImpacting">> => boolean(),
 %%   <<"Services">> => list(response_time_root_cause_service()())
 %% }
 -type response_time_root_cause() :: #{binary() => any()}.
+
 
 %% Example:
 %% sampling_rule() :: #{
@@ -491,6 +542,7 @@
 %% }
 -type sampling_rule() :: #{binary() => any()}.
 
+
 %% Example:
 %% unprocessed_trace_segment() :: #{
 %%   <<"ErrorCode">> => string(),
@@ -498,6 +550,7 @@
 %%   <<"Message">> => string()
 %% }
 -type unprocessed_trace_segment() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_service_graph_request() :: #{
@@ -509,6 +562,7 @@
 %% }
 -type get_service_graph_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag() :: #{
 %%   <<"Key">> => string(),
@@ -516,11 +570,13 @@
 %% }
 -type tag() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_request_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_request_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_insight_events_result() :: #{
@@ -529,11 +585,13 @@
 %% }
 -type get_insight_events_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_sampling_targets_request() :: #{
 %%   <<"SamplingStatisticsDocuments">> := list(sampling_statistics_document()())
 %% }
 -type get_sampling_targets_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% sampling_strategy() :: #{
@@ -541,6 +599,7 @@
 %%   <<"Value">> => float()
 %% }
 -type sampling_strategy() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_insight_summaries_request() :: #{
@@ -554,6 +613,7 @@
 %% }
 -type get_insight_summaries_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% time_series_service_statistics() :: #{
 %%   <<"EdgeSummaryStatistics">> => edge_statistics(),
@@ -564,6 +624,7 @@
 %% }
 -type time_series_service_statistics() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_sampling_targets_result() :: #{
 %%   <<"LastRuleModification">> => non_neg_integer(),
@@ -571,9 +632,11 @@
 %%   <<"UnprocessedStatistics">> => list(unprocessed_statistics()())
 %% }
 -type get_sampling_targets_result() :: #{binary() => any()}.
+
 %% Example:
 %% delete_group_result() :: #{}
 -type delete_group_result() :: #{}.
+
 
 %% Example:
 %% fault_root_cause_service() :: #{
@@ -586,11 +649,13 @@
 %% }
 -type fault_root_cause_service() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_resource_policies_request() :: #{
 %%   <<"NextToken">> => string()
 %% }
 -type list_resource_policies_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
@@ -599,12 +664,14 @@
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% fault_statistics() :: #{
 %%   <<"OtherCount">> => float(),
 %%   <<"TotalCount">> => float()
 %% }
 -type fault_statistics() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_group_request() :: #{
@@ -614,6 +681,7 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type create_group_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_time_series_service_statistics_request() :: #{
@@ -628,12 +696,14 @@
 %% }
 -type get_time_series_service_statistics_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_sampling_statistic_summaries_result() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"SamplingStatisticSummaries">> => list(sampling_statistic_summary()())
 %% }
 -type get_sampling_statistic_summaries_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_groups_result() :: #{
@@ -642,12 +712,14 @@
 %% }
 -type get_groups_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_trace_graph_request() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"TraceIds">> := list(string()())
 %% }
 -type get_trace_graph_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% error_root_cause_service() :: #{
@@ -660,6 +732,7 @@
 %% }
 -type error_root_cause_service() :: #{binary() => any()}.
 
+
 %% Example:
 %% trace() :: #{
 %%   <<"Duration">> => float(),
@@ -668,9 +741,11 @@
 %%   <<"Segments">> => list(segment()())
 %% }
 -type trace() :: #{binary() => any()}.
+
 %% Example:
 %% get_encryption_config_request() :: #{}
 -type get_encryption_config_request() :: #{}.
+
 
 %% Example:
 %% resource_policy() :: #{
@@ -681,6 +756,7 @@
 %% }
 -type resource_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% fault_root_cause_entity() :: #{
 %%   <<"Exceptions">> => list(root_cause_exception()()),
@@ -688,6 +764,7 @@
 %%   <<"Remote">> => boolean()
 %% }
 -type fault_root_cause_entity() :: #{binary() => any()}.
+
 
 %% Example:
 %% error_root_cause_entity() :: #{
@@ -697,11 +774,13 @@
 %% }
 -type error_root_cause_entity() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_sampling_rule_result() :: #{
 %%   <<"SamplingRuleRecord">> => sampling_rule_record()
 %% }
 -type delete_sampling_rule_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_sampling_rule_request() :: #{
@@ -709,6 +788,7 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type create_sampling_rule_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_resource_policy_request() :: #{
@@ -719,11 +799,13 @@
 %% }
 -type put_resource_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% lockout_prevention_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type lockout_prevention_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% alias() :: #{
@@ -733,11 +815,13 @@
 %% }
 -type alias() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_trace_segments_result() :: #{
 %%   <<"UnprocessedTraceSegments">> => list(unprocessed_trace_segment()())
 %% }
 -type put_trace_segments_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% forecast_statistics() :: #{
@@ -745,9 +829,11 @@
 %%   <<"FaultCountLow">> => float()
 %% }
 -type forecast_statistics() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% sampling_rule_record() :: #{
@@ -757,17 +843,20 @@
 %% }
 -type sampling_rule_record() :: #{binary() => any()}.
 
+
 %% Example:
 %% rule_limit_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type rule_limit_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_sampling_statistic_summaries_request() :: #{
 %%   <<"NextToken">> => string()
 %% }
 -type get_sampling_statistic_summaries_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% backend_connection_errors() :: #{
@@ -780,6 +869,7 @@
 %% }
 -type backend_connection_errors() :: #{binary() => any()}.
 
+
 %% Example:
 %% telemetry_record() :: #{
 %%   <<"BackendConnectionErrors">> => backend_connection_errors(),
@@ -791,12 +881,14 @@
 %% }
 -type telemetry_record() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_request() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"ResourceARN">> := string()
 %% }
 -type list_tags_for_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_id() :: #{
@@ -806,6 +898,7 @@
 %%   <<"Type">> => string()
 %% }
 -type service_id() :: #{binary() => any()}.
+
 
 %% Example:
 %% trace_summary() :: #{
@@ -833,11 +926,13 @@
 %% }
 -type trace_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_group_result() :: #{
 %%   <<"Group">> => group()
 %% }
 -type update_group_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% group() :: #{
@@ -848,6 +943,7 @@
 %% }
 -type group() :: #{binary() => any()}.
 
+
 %% Example:
 %% request_impact_statistics() :: #{
 %%   <<"FaultCount">> => float(),
@@ -856,6 +952,7 @@
 %% }
 -type request_impact_statistics() :: #{binary() => any()}.
 
+
 %% Example:
 %% fault_root_cause() :: #{
 %%   <<"ClientImpacting">> => boolean(),
@@ -863,11 +960,13 @@
 %% }
 -type fault_root_cause() :: #{binary() => any()}.
 
+
 %% Example:
 %% malformed_policy_document_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type malformed_policy_document_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_group_request() :: #{
@@ -875,6 +974,7 @@
 %%   <<"GroupName">> => string()
 %% }
 -type delete_group_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_statistics() :: #{
@@ -886,6 +986,7 @@
 %% }
 -type service_statistics() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_sampling_rules_result() :: #{
 %%   <<"NextToken">> => string(),
@@ -893,12 +994,14 @@
 %% }
 -type get_sampling_rules_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% trace_user() :: #{
 %%   <<"ServiceIds">> => list(service_id()()),
 %%   <<"UserName">> => string()
 %% }
 -type trace_user() :: #{binary() => any()}.
+
 
 %% Example:
 %% response_time_root_cause_entity() :: #{
@@ -908,12 +1011,14 @@
 %% }
 -type response_time_root_cause_entity() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_resource_policy_request() :: #{
 %%   <<"PolicyName">> := string(),
 %%   <<"PolicyRevisionId">> => string()
 %% }
 -type delete_resource_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% group_summary() :: #{
@@ -924,6 +1029,7 @@
 %% }
 -type group_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_insight_impact_graph_request() :: #{
 %%   <<"EndTime">> := non_neg_integer(),
@@ -933,11 +1039,13 @@
 %% }
 -type get_insight_impact_graph_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_arn_detail() :: #{
 %%   <<"ARN">> => string()
 %% }
 -type resource_arn_detail() :: #{binary() => any()}.
+
 
 %% Example:
 %% root_cause_exception() :: #{
@@ -945,6 +1053,7 @@
 %%   <<"Name">> => string()
 %% }
 -type root_cause_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% insight() :: #{
@@ -962,9 +1071,11 @@
 %%   <<"TopAnomalousServices">> => list(anomalous_service()())
 %% }
 -type insight() :: #{binary() => any()}.
+
 %% Example:
 %% delete_resource_policy_result() :: #{}
 -type delete_resource_policy_result() :: #{}.
+
 
 %% Example:
 %% edge() :: #{
@@ -979,6 +1090,7 @@
 %% }
 -type edge() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_group_request() :: #{
 %%   <<"GroupARN">> => string(),
@@ -986,12 +1098,14 @@
 %% }
 -type get_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% histogram_entry() :: #{
 %%   <<"Count">> => integer(),
 %%   <<"Value">> => float()
 %% }
 -type histogram_entry() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_time_series_service_statistics_result() :: #{
@@ -1001,6 +1115,7 @@
 %% }
 -type get_time_series_service_statistics_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_insight_summaries_result() :: #{
 %%   <<"InsightSummaries">> => list(insight_summary()()),
@@ -1008,11 +1123,13 @@
 %% }
 -type get_insight_summaries_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_encryption_config_result() :: #{
 %%   <<"EncryptionConfig">> => encryption_config()
 %% }
 -type get_encryption_config_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% sampling_statistics_document() :: #{
@@ -1025,12 +1142,14 @@
 %% }
 -type sampling_statistics_document() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_tags_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"ResourceName">> => string()
 %% }
 -type too_many_tags_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_insight_impact_graph_result() :: #{
@@ -1044,11 +1163,13 @@
 %% }
 -type get_insight_impact_graph_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_insight_result() :: #{
 %%   <<"Insight">> => insight()
 %% }
 -type get_insight_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% http() :: #{
@@ -1060,11 +1181,13 @@
 %% }
 -type http() :: #{binary() => any()}.
 
+
 %% Example:
 %% policy_count_limit_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type policy_count_limit_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_resource_policies_result() :: #{
@@ -1072,6 +1195,136 @@
 %%   <<"ResourcePolicies">> => list(resource_policy()())
 %% }
 -type list_resource_policies_result() :: #{binary() => any()}.
+
+-type batch_get_traces_errors() ::
+    invalid_request_exception() | 
+    throttled_exception().
+
+-type create_group_errors() ::
+    invalid_request_exception() | 
+    throttled_exception().
+
+-type create_sampling_rule_errors() ::
+    rule_limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    throttled_exception().
+
+-type delete_group_errors() ::
+    invalid_request_exception() | 
+    throttled_exception().
+
+-type delete_resource_policy_errors() ::
+    invalid_request_exception() | 
+    throttled_exception() | 
+    invalid_policy_revision_id_exception().
+
+-type delete_sampling_rule_errors() ::
+    invalid_request_exception() | 
+    throttled_exception().
+
+-type get_encryption_config_errors() ::
+    invalid_request_exception() | 
+    throttled_exception().
+
+-type get_group_errors() ::
+    invalid_request_exception() | 
+    throttled_exception().
+
+-type get_groups_errors() ::
+    invalid_request_exception() | 
+    throttled_exception().
+
+-type get_insight_errors() ::
+    invalid_request_exception() | 
+    throttled_exception().
+
+-type get_insight_events_errors() ::
+    invalid_request_exception() | 
+    throttled_exception().
+
+-type get_insight_impact_graph_errors() ::
+    invalid_request_exception() | 
+    throttled_exception().
+
+-type get_insight_summaries_errors() ::
+    invalid_request_exception() | 
+    throttled_exception().
+
+-type get_sampling_rules_errors() ::
+    invalid_request_exception() | 
+    throttled_exception().
+
+-type get_sampling_statistic_summaries_errors() ::
+    invalid_request_exception() | 
+    throttled_exception().
+
+-type get_sampling_targets_errors() ::
+    invalid_request_exception() | 
+    throttled_exception().
+
+-type get_service_graph_errors() ::
+    invalid_request_exception() | 
+    throttled_exception().
+
+-type get_time_series_service_statistics_errors() ::
+    invalid_request_exception() | 
+    throttled_exception().
+
+-type get_trace_graph_errors() ::
+    invalid_request_exception() | 
+    throttled_exception().
+
+-type get_trace_summaries_errors() ::
+    invalid_request_exception() | 
+    throttled_exception().
+
+-type list_resource_policies_errors() ::
+    invalid_request_exception() | 
+    throttled_exception().
+
+-type list_tags_for_resource_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    throttled_exception().
+
+-type put_encryption_config_errors() ::
+    invalid_request_exception() | 
+    throttled_exception().
+
+-type put_resource_policy_errors() ::
+    policy_count_limit_exceeded_exception() | 
+    malformed_policy_document_exception() | 
+    lockout_prevention_exception() | 
+    throttled_exception() | 
+    invalid_policy_revision_id_exception() | 
+    policy_size_limit_exceeded_exception().
+
+-type put_telemetry_records_errors() ::
+    invalid_request_exception() | 
+    throttled_exception().
+
+-type put_trace_segments_errors() ::
+    invalid_request_exception() | 
+    throttled_exception().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    throttled_exception().
+
+-type untag_resource_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    throttled_exception().
+
+-type update_group_errors() ::
+    invalid_request_exception() | 
+    throttled_exception().
+
+-type update_sampling_rule_errors() ::
+    invalid_request_exception() | 
+    throttled_exception().
 
 %%====================================================================
 %% API
@@ -1086,16 +1339,14 @@
 -spec batch_get_traces(map(), batch_get_traces_request()) ->
     {ok, batch_get_traces_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, batch_get_traces_errors(), tuple()}.
 batch_get_traces(Client, Input) ->
     batch_get_traces(Client, Input, []).
 
 -spec batch_get_traces(map(), batch_get_traces_request(), proplists:proplist()) ->
     {ok, batch_get_traces_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, batch_get_traces_errors(), tuple()}.
 batch_get_traces(Client, Input0, Options0) ->
     Method = post,
     Path = ["/Traces"],
@@ -1122,16 +1373,14 @@ batch_get_traces(Client, Input0, Options0) ->
 -spec create_group(map(), create_group_request()) ->
     {ok, create_group_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, create_group_errors(), tuple()}.
 create_group(Client, Input) ->
     create_group(Client, Input, []).
 
 -spec create_group(map(), create_group_request(), proplists:proplist()) ->
     {ok, create_group_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, create_group_errors(), tuple()}.
 create_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateGroup"],
@@ -1173,18 +1422,14 @@ create_group(Client, Input0, Options0) ->
 -spec create_sampling_rule(map(), create_sampling_rule_request()) ->
     {ok, create_sampling_rule_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, rule_limit_exceeded_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, create_sampling_rule_errors(), tuple()}.
 create_sampling_rule(Client, Input) ->
     create_sampling_rule(Client, Input, []).
 
 -spec create_sampling_rule(map(), create_sampling_rule_request(), proplists:proplist()) ->
     {ok, create_sampling_rule_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, rule_limit_exceeded_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, create_sampling_rule_errors(), tuple()}.
 create_sampling_rule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateSamplingRule"],
@@ -1211,16 +1456,14 @@ create_sampling_rule(Client, Input0, Options0) ->
 -spec delete_group(map(), delete_group_request()) ->
     {ok, delete_group_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, delete_group_errors(), tuple()}.
 delete_group(Client, Input) ->
     delete_group(Client, Input, []).
 
 -spec delete_group(map(), delete_group_request(), proplists:proplist()) ->
     {ok, delete_group_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, delete_group_errors(), tuple()}.
 delete_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteGroup"],
@@ -1248,18 +1491,14 @@ delete_group(Client, Input0, Options0) ->
 -spec delete_resource_policy(map(), delete_resource_policy_request()) ->
     {ok, delete_resource_policy_result(), tuple()} |
     {error, any()} |
-    {error, invalid_policy_revision_id_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input) ->
     delete_resource_policy(Client, Input, []).
 
 -spec delete_resource_policy(map(), delete_resource_policy_request(), proplists:proplist()) ->
     {ok, delete_resource_policy_result(), tuple()} |
     {error, any()} |
-    {error, invalid_policy_revision_id_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteResourcePolicy"],
@@ -1286,16 +1525,14 @@ delete_resource_policy(Client, Input0, Options0) ->
 -spec delete_sampling_rule(map(), delete_sampling_rule_request()) ->
     {ok, delete_sampling_rule_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, delete_sampling_rule_errors(), tuple()}.
 delete_sampling_rule(Client, Input) ->
     delete_sampling_rule(Client, Input, []).
 
 -spec delete_sampling_rule(map(), delete_sampling_rule_request(), proplists:proplist()) ->
     {ok, delete_sampling_rule_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, delete_sampling_rule_errors(), tuple()}.
 delete_sampling_rule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteSamplingRule"],
@@ -1322,16 +1559,14 @@ delete_sampling_rule(Client, Input0, Options0) ->
 -spec get_encryption_config(map(), get_encryption_config_request()) ->
     {ok, get_encryption_config_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_encryption_config_errors(), tuple()}.
 get_encryption_config(Client, Input) ->
     get_encryption_config(Client, Input, []).
 
 -spec get_encryption_config(map(), get_encryption_config_request(), proplists:proplist()) ->
     {ok, get_encryption_config_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_encryption_config_errors(), tuple()}.
 get_encryption_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/EncryptionConfig"],
@@ -1358,16 +1593,14 @@ get_encryption_config(Client, Input0, Options0) ->
 -spec get_group(map(), get_group_request()) ->
     {ok, get_group_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_group_errors(), tuple()}.
 get_group(Client, Input) ->
     get_group(Client, Input, []).
 
 -spec get_group(map(), get_group_request(), proplists:proplist()) ->
     {ok, get_group_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_group_errors(), tuple()}.
 get_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetGroup"],
@@ -1394,16 +1627,14 @@ get_group(Client, Input0, Options0) ->
 -spec get_groups(map(), get_groups_request()) ->
     {ok, get_groups_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_groups_errors(), tuple()}.
 get_groups(Client, Input) ->
     get_groups(Client, Input, []).
 
 -spec get_groups(map(), get_groups_request(), proplists:proplist()) ->
     {ok, get_groups_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_groups_errors(), tuple()}.
 get_groups(Client, Input0, Options0) ->
     Method = post,
     Path = ["/Groups"],
@@ -1435,16 +1666,14 @@ get_groups(Client, Input0, Options0) ->
 -spec get_insight(map(), get_insight_request()) ->
     {ok, get_insight_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_insight_errors(), tuple()}.
 get_insight(Client, Input) ->
     get_insight(Client, Input, []).
 
 -spec get_insight(map(), get_insight_request(), proplists:proplist()) ->
     {ok, get_insight_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_insight_errors(), tuple()}.
 get_insight(Client, Input0, Options0) ->
     Method = post,
     Path = ["/Insight"],
@@ -1477,16 +1706,14 @@ get_insight(Client, Input0, Options0) ->
 -spec get_insight_events(map(), get_insight_events_request()) ->
     {ok, get_insight_events_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_insight_events_errors(), tuple()}.
 get_insight_events(Client, Input) ->
     get_insight_events(Client, Input, []).
 
 -spec get_insight_events(map(), get_insight_events_request(), proplists:proplist()) ->
     {ok, get_insight_events_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_insight_events_errors(), tuple()}.
 get_insight_events(Client, Input0, Options0) ->
     Method = post,
     Path = ["/InsightEvents"],
@@ -1518,16 +1745,14 @@ get_insight_events(Client, Input0, Options0) ->
 -spec get_insight_impact_graph(map(), get_insight_impact_graph_request()) ->
     {ok, get_insight_impact_graph_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_insight_impact_graph_errors(), tuple()}.
 get_insight_impact_graph(Client, Input) ->
     get_insight_impact_graph(Client, Input, []).
 
 -spec get_insight_impact_graph(map(), get_insight_impact_graph_request(), proplists:proplist()) ->
     {ok, get_insight_impact_graph_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_insight_impact_graph_errors(), tuple()}.
 get_insight_impact_graph(Client, Input0, Options0) ->
     Method = post,
     Path = ["/InsightImpactGraph"],
@@ -1555,16 +1780,14 @@ get_insight_impact_graph(Client, Input0, Options0) ->
 -spec get_insight_summaries(map(), get_insight_summaries_request()) ->
     {ok, get_insight_summaries_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_insight_summaries_errors(), tuple()}.
 get_insight_summaries(Client, Input) ->
     get_insight_summaries(Client, Input, []).
 
 -spec get_insight_summaries(map(), get_insight_summaries_request(), proplists:proplist()) ->
     {ok, get_insight_summaries_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_insight_summaries_errors(), tuple()}.
 get_insight_summaries(Client, Input0, Options0) ->
     Method = post,
     Path = ["/InsightSummaries"],
@@ -1591,16 +1814,14 @@ get_insight_summaries(Client, Input0, Options0) ->
 -spec get_sampling_rules(map(), get_sampling_rules_request()) ->
     {ok, get_sampling_rules_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_sampling_rules_errors(), tuple()}.
 get_sampling_rules(Client, Input) ->
     get_sampling_rules(Client, Input, []).
 
 -spec get_sampling_rules(map(), get_sampling_rules_request(), proplists:proplist()) ->
     {ok, get_sampling_rules_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_sampling_rules_errors(), tuple()}.
 get_sampling_rules(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetSamplingRules"],
@@ -1628,16 +1849,14 @@ get_sampling_rules(Client, Input0, Options0) ->
 -spec get_sampling_statistic_summaries(map(), get_sampling_statistic_summaries_request()) ->
     {ok, get_sampling_statistic_summaries_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_sampling_statistic_summaries_errors(), tuple()}.
 get_sampling_statistic_summaries(Client, Input) ->
     get_sampling_statistic_summaries(Client, Input, []).
 
 -spec get_sampling_statistic_summaries(map(), get_sampling_statistic_summaries_request(), proplists:proplist()) ->
     {ok, get_sampling_statistic_summaries_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_sampling_statistic_summaries_errors(), tuple()}.
 get_sampling_statistic_summaries(Client, Input0, Options0) ->
     Method = post,
     Path = ["/SamplingStatisticSummaries"],
@@ -1665,16 +1884,14 @@ get_sampling_statistic_summaries(Client, Input0, Options0) ->
 -spec get_sampling_targets(map(), get_sampling_targets_request()) ->
     {ok, get_sampling_targets_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_sampling_targets_errors(), tuple()}.
 get_sampling_targets(Client, Input) ->
     get_sampling_targets(Client, Input, []).
 
 -spec get_sampling_targets(map(), get_sampling_targets_request(), proplists:proplist()) ->
     {ok, get_sampling_targets_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_sampling_targets_errors(), tuple()}.
 get_sampling_targets(Client, Input0, Options0) ->
     Method = post,
     Path = ["/SamplingTargets"],
@@ -1711,16 +1928,14 @@ get_sampling_targets(Client, Input0, Options0) ->
 -spec get_service_graph(map(), get_service_graph_request()) ->
     {ok, get_service_graph_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_service_graph_errors(), tuple()}.
 get_service_graph(Client, Input) ->
     get_service_graph(Client, Input, []).
 
 -spec get_service_graph(map(), get_service_graph_request(), proplists:proplist()) ->
     {ok, get_service_graph_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_service_graph_errors(), tuple()}.
 get_service_graph(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ServiceGraph"],
@@ -1748,16 +1963,14 @@ get_service_graph(Client, Input0, Options0) ->
 -spec get_time_series_service_statistics(map(), get_time_series_service_statistics_request()) ->
     {ok, get_time_series_service_statistics_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_time_series_service_statistics_errors(), tuple()}.
 get_time_series_service_statistics(Client, Input) ->
     get_time_series_service_statistics(Client, Input, []).
 
 -spec get_time_series_service_statistics(map(), get_time_series_service_statistics_request(), proplists:proplist()) ->
     {ok, get_time_series_service_statistics_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_time_series_service_statistics_errors(), tuple()}.
 get_time_series_service_statistics(Client, Input0, Options0) ->
     Method = post,
     Path = ["/TimeSeriesServiceStatistics"],
@@ -1784,16 +1997,14 @@ get_time_series_service_statistics(Client, Input0, Options0) ->
 -spec get_trace_graph(map(), get_trace_graph_request()) ->
     {ok, get_trace_graph_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_trace_graph_errors(), tuple()}.
 get_trace_graph(Client, Input) ->
     get_trace_graph(Client, Input, []).
 
 -spec get_trace_graph(map(), get_trace_graph_request(), proplists:proplist()) ->
     {ok, get_trace_graph_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_trace_graph_errors(), tuple()}.
 get_trace_graph(Client, Input0, Options0) ->
     Method = post,
     Path = ["/TraceGraph"],
@@ -1846,16 +2057,14 @@ get_trace_graph(Client, Input0, Options0) ->
 -spec get_trace_summaries(map(), get_trace_summaries_request()) ->
     {ok, get_trace_summaries_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_trace_summaries_errors(), tuple()}.
 get_trace_summaries(Client, Input) ->
     get_trace_summaries(Client, Input, []).
 
 -spec get_trace_summaries(map(), get_trace_summaries_request(), proplists:proplist()) ->
     {ok, get_trace_summaries_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_trace_summaries_errors(), tuple()}.
 get_trace_summaries(Client, Input0, Options0) ->
     Method = post,
     Path = ["/TraceSummaries"],
@@ -1883,16 +2092,14 @@ get_trace_summaries(Client, Input0, Options0) ->
 -spec list_resource_policies(map(), list_resource_policies_request()) ->
     {ok, list_resource_policies_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, list_resource_policies_errors(), tuple()}.
 list_resource_policies(Client, Input) ->
     list_resource_policies(Client, Input, []).
 
 -spec list_resource_policies(map(), list_resource_policies_request(), proplists:proplist()) ->
     {ok, list_resource_policies_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, list_resource_policies_errors(), tuple()}.
 list_resource_policies(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListResourcePolicies"],
@@ -1920,18 +2127,14 @@ list_resource_policies(Client, Input0, Options0) ->
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input) ->
     list_tags_for_resource(Client, Input, []).
 
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListTagsForResource"],
@@ -1958,16 +2161,14 @@ list_tags_for_resource(Client, Input0, Options0) ->
 -spec put_encryption_config(map(), put_encryption_config_request()) ->
     {ok, put_encryption_config_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, put_encryption_config_errors(), tuple()}.
 put_encryption_config(Client, Input) ->
     put_encryption_config(Client, Input, []).
 
 -spec put_encryption_config(map(), put_encryption_config_request(), proplists:proplist()) ->
     {ok, put_encryption_config_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, put_encryption_config_errors(), tuple()}.
 put_encryption_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/PutEncryptionConfig"],
@@ -2004,24 +2205,14 @@ put_encryption_config(Client, Input0, Options0) ->
 -spec put_resource_policy(map(), put_resource_policy_request()) ->
     {ok, put_resource_policy_result(), tuple()} |
     {error, any()} |
-    {error, invalid_policy_revision_id_exception(), tuple()} |
-    {error, lockout_prevention_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, policy_count_limit_exceeded_exception(), tuple()} |
-    {error, policy_size_limit_exceeded_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input) ->
     put_resource_policy(Client, Input, []).
 
 -spec put_resource_policy(map(), put_resource_policy_request(), proplists:proplist()) ->
     {ok, put_resource_policy_result(), tuple()} |
     {error, any()} |
-    {error, invalid_policy_revision_id_exception(), tuple()} |
-    {error, lockout_prevention_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, policy_count_limit_exceeded_exception(), tuple()} |
-    {error, policy_size_limit_exceeded_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/PutResourcePolicy"],
@@ -2048,16 +2239,14 @@ put_resource_policy(Client, Input0, Options0) ->
 -spec put_telemetry_records(map(), put_telemetry_records_request()) ->
     {ok, put_telemetry_records_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, put_telemetry_records_errors(), tuple()}.
 put_telemetry_records(Client, Input) ->
     put_telemetry_records(Client, Input, []).
 
 -spec put_telemetry_records(map(), put_telemetry_records_request(), proplists:proplist()) ->
     {ok, put_telemetry_records_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, put_telemetry_records_errors(), tuple()}.
 put_telemetry_records(Client, Input0, Options0) ->
     Method = post,
     Path = ["/TelemetryRecords"],
@@ -2146,16 +2335,14 @@ put_telemetry_records(Client, Input0, Options0) ->
 -spec put_trace_segments(map(), put_trace_segments_request()) ->
     {ok, put_trace_segments_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, put_trace_segments_errors(), tuple()}.
 put_trace_segments(Client, Input) ->
     put_trace_segments(Client, Input, []).
 
 -spec put_trace_segments(map(), put_trace_segments_request(), proplists:proplist()) ->
     {ok, put_trace_segments_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, put_trace_segments_errors(), tuple()}.
 put_trace_segments(Client, Input0, Options0) ->
     Method = post,
     Path = ["/TraceSegments"],
@@ -2183,20 +2370,14 @@ put_trace_segments(Client, Input0, Options0) ->
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttled_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttled_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/TagResource"],
@@ -2227,18 +2408,14 @@ tag_resource(Client, Input0, Options0) ->
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UntagResource"],
@@ -2265,16 +2442,14 @@ untag_resource(Client, Input0, Options0) ->
 -spec update_group(map(), update_group_request()) ->
     {ok, update_group_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, update_group_errors(), tuple()}.
 update_group(Client, Input) ->
     update_group(Client, Input, []).
 
 -spec update_group(map(), update_group_request(), proplists:proplist()) ->
     {ok, update_group_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, update_group_errors(), tuple()}.
 update_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateGroup"],
@@ -2301,16 +2476,14 @@ update_group(Client, Input0, Options0) ->
 -spec update_sampling_rule(map(), update_sampling_rule_request()) ->
     {ok, update_sampling_rule_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, update_sampling_rule_errors(), tuple()}.
 update_sampling_rule(Client, Input) ->
     update_sampling_rule(Client, Input, []).
 
 -spec update_sampling_rule(map(), update_sampling_rule_request(), proplists:proplist()) ->
     {ok, update_sampling_rule_result(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, update_sampling_rule_errors(), tuple()}.
 update_sampling_rule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateSamplingRule"],

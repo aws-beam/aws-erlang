@@ -119,6 +119,7 @@
 %% }
 -type describe_job_log_items_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_failback_replication_configuration_request() :: #{
 %%   <<"bandwidthThrottling">> => float(),
@@ -128,12 +129,14 @@
 %% }
 -type update_failback_replication_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_recovery_instances_request_filters() :: #{
 %%   <<"recoveryInstanceIDs">> => list(string()()),
 %%   <<"sourceServerIDs">> => list(string()())
 %% }
 -type describe_recovery_instances_request_filters() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_source_servers_request() :: #{
@@ -143,6 +146,7 @@
 %% }
 -type describe_source_servers_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_staging_accounts_response() :: #{
 %%   <<"accounts">> => list(account()()),
@@ -150,11 +154,13 @@
 %% }
 -type list_staging_accounts_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_recovery_request_source_server() :: #{
@@ -162,6 +168,7 @@
 %%   <<"sourceServerID">> => string()
 %% }
 -type start_recovery_request_source_server() :: #{binary() => any()}.
+
 
 %% Example:
 %% life_cycle() :: #{
@@ -173,6 +180,7 @@
 %% }
 -type life_cycle() :: #{binary() => any()}.
 
+
 %% Example:
 %% recovery_life_cycle() :: #{
 %%   <<"apiCallDateTime">> => [non_neg_integer()],
@@ -181,11 +189,13 @@
 %% }
 -type recovery_life_cycle() :: #{binary() => any()}.
 
+
 %% Example:
 %% export_source_network_cfn_template_request() :: #{
 %%   <<"sourceNetworkID">> := string()
 %% }
 -type export_source_network_cfn_template_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% source_cloud_properties() :: #{
@@ -195,6 +205,7 @@
 %% }
 -type source_cloud_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_extensible_source_servers_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -203,6 +214,7 @@
 %% }
 -type list_extensible_source_servers_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_launch_configuration_templates_request() :: #{
 %%   <<"launchConfigurationTemplateIDs">> => list(string()()),
@@ -210,9 +222,11 @@
 %%   <<"nextToken">> => string()
 %% }
 -type describe_launch_configuration_templates_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_source_server_response() :: #{}
 -type delete_source_server_response() :: #{}.
+
 
 %% Example:
 %% delete_source_server_request() :: #{
@@ -220,12 +234,14 @@
 %% }
 -type delete_source_server_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_recovery_instances_response() :: #{
 %%   <<"items">> => list(recovery_instance()()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_recovery_instances_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% replication_configuration_template() :: #{
@@ -249,6 +265,7 @@
 %% }
 -type replication_configuration_template() :: #{binary() => any()}.
 
+
 %% Example:
 %% recovery_instance_properties() :: #{
 %%   <<"cpus">> => list(c_p_u()()),
@@ -261,6 +278,7 @@
 %% }
 -type recovery_instance_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% recovery_instance_disk() :: #{
 %%   <<"bytes">> => float(),
@@ -268,6 +286,7 @@
 %%   <<"internalDeviceName">> => string()
 %% }
 -type recovery_instance_disk() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_replication_configuration_template_request() :: #{
@@ -290,6 +309,7 @@
 %% }
 -type update_replication_configuration_template_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% replication_configuration_replicated_disk() :: #{
 %%   <<"deviceName">> => string(),
@@ -301,11 +321,13 @@
 %% }
 -type replication_configuration_replicated_disk() :: #{binary() => any()}.
 
+
 %% Example:
 %% terminate_recovery_instances_response() :: #{
 %%   <<"job">> => job()
 %% }
 -type terminate_recovery_instances_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% participating_resource() :: #{
@@ -313,6 +335,7 @@
 %%   <<"participatingResourceID">> => list()
 %% }
 -type participating_resource() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_launch_action_request() :: #{
@@ -330,17 +353,20 @@
 %% }
 -type put_launch_action_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% stop_failback_request() :: #{
 %%   <<"recoveryInstanceID">> := string()
 %% }
 -type stop_failback_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_source_network_request() :: #{
 %%   <<"sourceNetworkID">> := string()
 %% }
 -type delete_source_network_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% network_interface() :: #{
@@ -350,12 +376,14 @@
 %% }
 -type network_interface() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_source_networks_response() :: #{
 %%   <<"items">> => list(source_network()()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_source_networks_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_replication_configuration_template_request() :: #{
@@ -377,6 +405,7 @@
 %% }
 -type create_replication_configuration_template_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_launch_action_response() :: #{
 %%   <<"actionCode">> => string(),
@@ -394,6 +423,7 @@
 %% }
 -type put_launch_action_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% staging_source_server() :: #{
 %%   <<"arn">> => string(),
@@ -402,6 +432,7 @@
 %% }
 -type staging_source_server() :: #{binary() => any()}.
 
+
 %% Example:
 %% launch_action_parameter() :: #{
 %%   <<"type">> => string(),
@@ -409,11 +440,13 @@
 %% }
 -type launch_action_parameter() :: #{binary() => any()}.
 
+
 %% Example:
 %% retry_data_replication_request() :: #{
 %%   <<"sourceServerID">> => string()
 %% }
 -type retry_data_replication_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_replication_configuration_request() :: #{
@@ -421,20 +454,24 @@
 %% }
 -type get_replication_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_replication_request() :: #{
 %%   <<"sourceServerID">> := string()
 %% }
 -type start_replication_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_launch_action_response() :: #{}
 -type delete_launch_action_response() :: #{}.
+
 
 %% Example:
 %% start_source_network_replication_request() :: #{
@@ -442,17 +479,20 @@
 %% }
 -type start_source_network_replication_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% stop_replication_request() :: #{
 %%   <<"sourceServerID">> := string()
 %% }
 -type stop_replication_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_failback_launch_response() :: #{
 %%   <<"job">> => job()
 %% }
 -type start_failback_launch_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% launch_configuration_template() :: #{
@@ -470,6 +510,7 @@
 %% }
 -type launch_configuration_template() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_recovery_snapshots_request() :: #{
 %%   <<"filters">> => describe_recovery_snapshots_request_filters(),
@@ -480,17 +521,20 @@
 %% }
 -type describe_recovery_snapshots_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% launch_actions_request_filters() :: #{
 %%   <<"actionIds">> => list(string()())
 %% }
 -type launch_actions_request_filters() :: #{binary() => any()}.
 
+
 %% Example:
 %% licensing() :: #{
 %%   <<"osByol">> => [boolean()]
 %% }
 -type licensing() :: #{binary() => any()}.
+
 
 %% Example:
 %% p_i_t_policy_rule() :: #{
@@ -501,6 +545,7 @@
 %%   <<"units">> => string()
 %% }
 -type p_i_t_policy_rule() :: #{binary() => any()}.
+
 
 %% Example:
 %% recovery_instance_failback() :: #{
@@ -517,6 +562,7 @@
 %% }
 -type recovery_instance_failback() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_recovery_request() :: #{
 %%   <<"isDrill">> => [boolean()],
@@ -524,6 +570,7 @@
 %%   <<"tags">> => map()
 %% }
 -type start_recovery_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% identification_hints() :: #{
@@ -533,6 +580,7 @@
 %%   <<"vmWareUuid">> => string()
 %% }
 -type identification_hints() :: #{binary() => any()}.
+
 
 %% Example:
 %% launch_action() :: #{
@@ -550,6 +598,7 @@
 %% }
 -type launch_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% source_properties() :: #{
 %%   <<"cpus">> => list(c_p_u()()),
@@ -564,6 +613,7 @@
 %% }
 -type source_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_source_servers_response() :: #{
 %%   <<"items">> => list(source_server()()),
@@ -571,11 +621,13 @@
 %% }
 -type describe_source_servers_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% reverse_replication_request() :: #{
 %%   <<"recoveryInstanceID">> := string()
 %% }
 -type reverse_replication_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_replication_configuration_templates_response() :: #{
@@ -583,6 +635,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type describe_replication_configuration_templates_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% recovery_instance_data_replication_info_replicated_disk() :: #{
@@ -593,9 +646,11 @@
 %%   <<"totalStorageBytes">> => float()
 %% }
 -type recovery_instance_data_replication_info_replicated_disk() :: #{binary() => any()}.
+
 %% Example:
 %% delete_replication_configuration_template_response() :: #{}
 -type delete_replication_configuration_template_response() :: #{}.
+
 
 %% Example:
 %% replication_configuration() :: #{
@@ -619,6 +674,7 @@
 %% }
 -type replication_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"code">> => string(),
@@ -627,6 +683,7 @@
 %%   <<"resourceType">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -637,6 +694,7 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_source_networks_request() :: #{
 %%   <<"filters">> => describe_source_networks_request_filters(),
@@ -645,6 +703,7 @@
 %% }
 -type describe_source_networks_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_replication_error() :: #{
 %%   <<"error">> => string(),
@@ -652,11 +711,13 @@
 %% }
 -type data_replication_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% disconnect_recovery_instance_request() :: #{
 %%   <<"recoveryInstanceID">> := string()
 %% }
 -type disconnect_recovery_instance_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_launch_actions_request() :: #{
@@ -666,6 +727,7 @@
 %%   <<"resourceId">> := string()
 %% }
 -type list_launch_actions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
@@ -678,12 +740,14 @@
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_source_network_recovery_request_network_entry() :: #{
 %%   <<"cfnStackName">> => string(),
 %%   <<"sourceNetworkID">> => string()
 %% }
 -type start_source_network_recovery_request_network_entry() :: #{binary() => any()}.
+
 
 %% Example:
 %% c_p_u() :: #{
@@ -692,12 +756,14 @@
 %% }
 -type c_p_u() :: #{binary() => any()}.
 
+
 %% Example:
 %% uninitialized_account_exception() :: #{
 %%   <<"code">> => string(),
 %%   <<"message">> => string()
 %% }
 -type uninitialized_account_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% launch_action_run() :: #{
@@ -708,11 +774,13 @@
 %% }
 -type launch_action_run() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_recovery_instance_request() :: #{
 %%   <<"recoveryInstanceID">> := string()
 %% }
 -type delete_recovery_instance_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% account() :: #{
@@ -720,15 +788,18 @@
 %% }
 -type account() :: #{binary() => any()}.
 
+
 %% Example:
 %% recovery_instance_data_replication_initiation() :: #{
 %%   <<"startDateTime">> => string(),
 %%   <<"steps">> => list(recovery_instance_data_replication_initiation_step()())
 %% }
 -type recovery_instance_data_replication_initiation() :: #{binary() => any()}.
+
 %% Example:
 %% initialize_service_request() :: #{}
 -type initialize_service_request() :: #{}.
+
 
 %% Example:
 %% create_launch_configuration_template_request() :: #{
@@ -744,6 +815,7 @@
 %% }
 -type create_launch_configuration_template_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% recovery_instance_data_replication_info() :: #{
 %%   <<"dataReplicationError">> => recovery_instance_data_replication_error(),
@@ -756,11 +828,13 @@
 %% }
 -type recovery_instance_data_replication_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_source_network_request() :: #{
@@ -771,11 +845,13 @@
 %% }
 -type create_source_network_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_launch_configuration_template_response() :: #{
 %%   <<"launchConfigurationTemplate">> => launch_configuration_template()
 %% }
 -type update_launch_configuration_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% source_network() :: #{
@@ -793,6 +869,7 @@
 %% }
 -type source_network() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_replication_info() :: #{
 %%   <<"dataReplicationError">> => data_replication_error(),
@@ -805,12 +882,14 @@
 %% }
 -type data_replication_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception_field() :: #{
 %%   <<"message">> => string(),
 %%   <<"name">> => string()
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_source_servers_request_filters() :: #{
@@ -820,17 +899,20 @@
 %% }
 -type describe_source_servers_request_filters() :: #{binary() => any()}.
 
+
 %% Example:
 %% reverse_replication_response() :: #{
 %%   <<"reversedDirectionSourceServerArn">> => string()
 %% }
 -type reverse_replication_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% terminate_recovery_instances_request() :: #{
 %%   <<"recoveryInstanceIDs">> := list(string()())
 %% }
 -type terminate_recovery_instances_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_replication_info_replicated_disk() :: #{
@@ -843,14 +925,17 @@
 %% }
 -type data_replication_info_replicated_disk() :: #{binary() => any()}.
 
+
 %% Example:
 %% disconnect_source_server_request() :: #{
 %%   <<"sourceServerID">> := string()
 %% }
 -type disconnect_source_server_request() :: #{binary() => any()}.
+
 %% Example:
 %% initialize_service_response() :: #{}
 -type initialize_service_response() :: #{}.
+
 
 %% Example:
 %% launch_actions_status() :: #{
@@ -858,6 +943,7 @@
 %%   <<"ssmAgentDiscoveryDatetime">> => string()
 %% }
 -type launch_actions_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% conversion_properties() :: #{
@@ -870,6 +956,7 @@
 %% }
 -type conversion_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% product_code() :: #{
 %%   <<"productCodeId">> => string(),
@@ -877,11 +964,13 @@
 %% }
 -type product_code() :: #{binary() => any()}.
 
+
 %% Example:
 %% export_source_network_cfn_template_response() :: #{
 %%   <<"s3DestinationUrl">> => string()
 %% }
 -type export_source_network_cfn_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_jobs_request_filters() :: #{
@@ -891,6 +980,7 @@
 %% }
 -type describe_jobs_request_filters() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_replication_initiation() :: #{
 %%   <<"nextAttemptDateTime">> => string(),
@@ -899,12 +989,14 @@
 %% }
 -type data_replication_initiation() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_launch_configuration_templates_response() :: #{
 %%   <<"items">> => list(launch_configuration_template()()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_launch_configuration_templates_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_launch_action_request() :: #{
@@ -913,11 +1005,13 @@
 %% }
 -type delete_launch_action_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_launch_configuration_request() :: #{
 %%   <<"sourceServerID">> := string()
 %% }
 -type get_launch_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% internal_server_exception() :: #{
@@ -925,6 +1019,7 @@
 %%   <<"retryAfterSeconds">> => float()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_source_networks_request_filters() :: #{
@@ -934,12 +1029,14 @@
 %% }
 -type describe_source_networks_request_filters() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_source_network_stack_request() :: #{
 %%   <<"cfnStackName">> := string(),
 %%   <<"sourceNetworkID">> := string()
 %% }
 -type associate_source_network_stack_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% participating_server() :: #{
@@ -950,12 +1047,14 @@
 %% }
 -type participating_server() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_replication_initiation_step() :: #{
 %%   <<"name">> => string(),
 %%   <<"status">> => string()
 %% }
 -type data_replication_initiation_step() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_source_network_recovery_request() :: #{
@@ -965,11 +1064,13 @@
 %% }
 -type start_source_network_recovery_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% stop_source_network_replication_response() :: #{
 %%   <<"sourceNetwork">> => source_network()
 %% }
 -type stop_source_network_replication_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% staging_area() :: #{
@@ -980,6 +1081,7 @@
 %% }
 -type staging_area() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"code">> => string(),
@@ -987,12 +1089,14 @@
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% recovery_instance_data_replication_initiation_step() :: #{
 %%   <<"name">> => string(),
 %%   <<"status">> => string()
 %% }
 -type recovery_instance_data_replication_initiation_step() :: #{binary() => any()}.
+
 
 %% Example:
 %% life_cycle_last_launch_initiated() :: #{
@@ -1002,6 +1106,7 @@
 %% }
 -type life_cycle_last_launch_initiated() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_launch_actions_response() :: #{
 %%   <<"items">> => list(launch_action()()),
@@ -1009,11 +1114,13 @@
 %% }
 -type list_launch_actions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% stop_replication_response() :: #{
 %%   <<"sourceServer">> => source_server()
 %% }
 -type stop_replication_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_replication_response() :: #{
@@ -1021,17 +1128,20 @@
 %% }
 -type start_replication_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_job_request() :: #{
 %%   <<"jobID">> := string()
 %% }
 -type delete_job_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_source_network_replication_response() :: #{
 %%   <<"sourceNetwork">> => source_network()
 %% }
 -type start_source_network_replication_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_failback_replication_configuration_response() :: #{
@@ -1042,6 +1152,7 @@
 %% }
 -type get_failback_replication_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_jobs_response() :: #{
 %%   <<"items">> => list(job()()),
@@ -1049,12 +1160,14 @@
 %% }
 -type describe_jobs_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% disk() :: #{
 %%   <<"bytes">> => float(),
 %%   <<"deviceName">> => string()
 %% }
 -type disk() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_launch_configuration_request() :: #{
@@ -1070,6 +1183,7 @@
 %% }
 -type update_launch_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"code">> => string(),
@@ -1078,15 +1192,18 @@
 %%   <<"reason">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% delete_replication_configuration_template_request() :: #{
 %%   <<"replicationConfigurationTemplateID">> := string()
 %% }
 -type delete_replication_configuration_template_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% job() :: #{
@@ -1103,11 +1220,13 @@
 %% }
 -type job() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_failback_replication_configuration_request() :: #{
 %%   <<"recoveryInstanceID">> := string()
 %% }
 -type get_failback_replication_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% recovery_instance() :: #{
@@ -1129,6 +1248,7 @@
 %% }
 -type recovery_instance() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => string(),
@@ -1138,11 +1258,13 @@
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% launch_into_instance_properties() :: #{
 %%   <<"launchIntoEC2InstanceID">> => string()
 %% }
 -type launch_into_instance_properties() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_failback_launch_request() :: #{
@@ -1151,11 +1273,13 @@
 %% }
 -type start_failback_launch_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_recovery_response() :: #{
 %%   <<"job">> => job()
 %% }
 -type start_recovery_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_staging_accounts_request() :: #{
@@ -1163,6 +1287,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_staging_accounts_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_log_event_data() :: #{
@@ -1175,6 +1300,7 @@
 %% }
 -type job_log_event_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_jobs_request() :: #{
 %%   <<"filters">> => describe_jobs_request_filters(),
@@ -1182,6 +1308,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type describe_jobs_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% launch_configuration() :: #{
@@ -1198,12 +1325,14 @@
 %% }
 -type launch_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_extensible_source_servers_response() :: #{
 %%   <<"items">> => list(staging_source_server()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_extensible_source_servers_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% recovery_snapshot() :: #{
@@ -1214,6 +1343,7 @@
 %%   <<"timestamp">> => string()
 %% }
 -type recovery_snapshot() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_replication_configuration_request() :: #{
@@ -1237,6 +1367,7 @@
 %% }
 -type update_replication_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% source_network_data() :: #{
 %%   <<"sourceNetworkID">> => string(),
@@ -1245,6 +1376,7 @@
 %%   <<"targetVpc">> => string()
 %% }
 -type source_network_data() :: #{binary() => any()}.
+
 
 %% Example:
 %% source_server() :: #{
@@ -1264,9 +1396,11 @@
 %%   <<"tags">> => map()
 %% }
 -type source_server() :: #{binary() => any()}.
+
 %% Example:
 %% delete_source_network_response() :: #{}
 -type delete_source_network_response() :: #{}.
+
 
 %% Example:
 %% stop_source_network_replication_request() :: #{
@@ -1274,11 +1408,13 @@
 %% }
 -type stop_source_network_replication_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_source_network_recovery_response() :: #{
 %%   <<"job">> => job()
 %% }
 -type start_source_network_recovery_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% life_cycle_last_launch() :: #{
@@ -1286,6 +1422,7 @@
 %%   <<"status">> => string()
 %% }
 -type life_cycle_last_launch() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_recovery_instances_request() :: #{
@@ -1295,17 +1432,21 @@
 %% }
 -type describe_recovery_instances_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_source_network_stack_response() :: #{
 %%   <<"job">> => job()
 %% }
 -type associate_source_network_stack_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_launch_configuration_template_response() :: #{}
 -type delete_launch_configuration_template_response() :: #{}.
+
 %% Example:
 %% delete_job_response() :: #{}
 -type delete_job_response() :: #{}.
+
 
 %% Example:
 %% describe_replication_configuration_templates_request() :: #{
@@ -1315,17 +1456,20 @@
 %% }
 -type describe_replication_configuration_templates_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% o_s() :: #{
 %%   <<"fullString">> => string()
 %% }
 -type o_s() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_extended_source_server_response() :: #{
 %%   <<"sourceServer">> => source_server()
 %% }
 -type create_extended_source_server_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_job_log_items_response() :: #{
@@ -1334,12 +1478,14 @@
 %% }
 -type describe_job_log_items_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% recovery_instance_data_replication_error() :: #{
 %%   <<"error">> => string(),
 %%   <<"rawError">> => string()
 %% }
 -type recovery_instance_data_replication_error() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_launch_configuration_template_request() :: #{
@@ -1355,11 +1501,13 @@
 %% }
 -type update_launch_configuration_template_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_launch_configuration_template_response() :: #{
 %%   <<"launchConfigurationTemplate">> => launch_configuration_template()
 %% }
 -type create_launch_configuration_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_extended_source_server_request() :: #{
@@ -1368,12 +1516,14 @@
 %% }
 -type create_extended_source_server_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_recovery_snapshots_response() :: #{
 %%   <<"items">> => list(recovery_snapshot()()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_recovery_snapshots_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_log() :: #{
@@ -1383,6 +1533,7 @@
 %% }
 -type job_log() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_recovery_snapshots_request_filters() :: #{
 %%   <<"fromDateTime">> => string(),
@@ -1390,17 +1541,381 @@
 %% }
 -type describe_recovery_snapshots_request_filters() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_source_network_response() :: #{
 %%   <<"sourceNetworkID">> => string()
 %% }
 -type create_source_network_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_launch_configuration_template_request() :: #{
 %%   <<"launchConfigurationTemplateID">> := string()
 %% }
 -type delete_launch_configuration_template_request() :: #{binary() => any()}.
+
+-type associate_source_network_stack_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_extended_source_server_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type create_launch_configuration_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    service_quota_exceeded_exception().
+
+-type create_replication_configuration_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    service_quota_exceeded_exception().
+
+-type create_source_network_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_job_errors() ::
+    throttling_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_launch_action_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception().
+
+-type delete_launch_configuration_template_errors() ::
+    throttling_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_recovery_instance_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    conflict_exception().
+
+-type delete_replication_configuration_template_errors() ::
+    throttling_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_source_network_errors() ::
+    throttling_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_source_server_errors() ::
+    throttling_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_job_log_items_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception().
+
+-type describe_jobs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception().
+
+-type describe_launch_configuration_templates_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception().
+
+-type describe_recovery_instances_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception().
+
+-type describe_recovery_snapshots_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception().
+
+-type describe_replication_configuration_templates_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception().
+
+-type describe_source_networks_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception().
+
+-type describe_source_servers_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception().
+
+-type disconnect_recovery_instance_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type disconnect_source_server_errors() ::
+    throttling_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type export_source_network_cfn_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_failback_replication_configuration_errors() ::
+    throttling_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception().
+
+-type get_launch_configuration_errors() ::
+    throttling_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception().
+
+-type get_replication_configuration_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception().
+
+-type initialize_service_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_extensible_source_servers_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception().
+
+-type list_launch_actions_errors() ::
+    throttling_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type list_staging_accounts_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type put_launch_action_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type retry_data_replication_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception().
+
+-type reverse_replication_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_failback_launch_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type start_recovery_errors() ::
+    throttling_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type start_replication_errors() ::
+    throttling_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_source_network_recovery_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type start_source_network_replication_errors() ::
+    throttling_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type stop_failback_errors() ::
+    throttling_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception().
+
+-type stop_replication_errors() ::
+    throttling_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type stop_source_network_replication_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type terminate_recovery_instances_errors() ::
+    throttling_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_failback_replication_configuration_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception().
+
+-type update_launch_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_launch_configuration_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception().
+
+-type update_replication_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_replication_configuration_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -1413,26 +1928,14 @@
 -spec associate_source_network_stack(map(), associate_source_network_stack_request()) ->
     {ok, associate_source_network_stack_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_source_network_stack_errors(), tuple()}.
 associate_source_network_stack(Client, Input) ->
     associate_source_network_stack(Client, Input, []).
 
 -spec associate_source_network_stack(map(), associate_source_network_stack_request(), proplists:proplist()) ->
     {ok, associate_source_network_stack_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_source_network_stack_errors(), tuple()}.
 associate_source_network_stack(Client, Input0, Options0) ->
     Method = post,
     Path = ["/AssociateSourceNetworkStack"],
@@ -1460,26 +1963,14 @@ associate_source_network_stack(Client, Input0, Options0) ->
 -spec create_extended_source_server(map(), create_extended_source_server_request()) ->
     {ok, create_extended_source_server_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_extended_source_server_errors(), tuple()}.
 create_extended_source_server(Client, Input) ->
     create_extended_source_server(Client, Input, []).
 
 -spec create_extended_source_server(map(), create_extended_source_server_request(), proplists:proplist()) ->
     {ok, create_extended_source_server_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_extended_source_server_errors(), tuple()}.
 create_extended_source_server(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateExtendedSourceServer"],
@@ -1506,24 +1997,14 @@ create_extended_source_server(Client, Input0, Options0) ->
 -spec create_launch_configuration_template(map(), create_launch_configuration_template_request()) ->
     {ok, create_launch_configuration_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_launch_configuration_template_errors(), tuple()}.
 create_launch_configuration_template(Client, Input) ->
     create_launch_configuration_template(Client, Input, []).
 
 -spec create_launch_configuration_template(map(), create_launch_configuration_template_request(), proplists:proplist()) ->
     {ok, create_launch_configuration_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_launch_configuration_template_errors(), tuple()}.
 create_launch_configuration_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateLaunchConfigurationTemplate"],
@@ -1550,24 +2031,14 @@ create_launch_configuration_template(Client, Input0, Options0) ->
 -spec create_replication_configuration_template(map(), create_replication_configuration_template_request()) ->
     {ok, replication_configuration_template(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_replication_configuration_template_errors(), tuple()}.
 create_replication_configuration_template(Client, Input) ->
     create_replication_configuration_template(Client, Input, []).
 
 -spec create_replication_configuration_template(map(), create_replication_configuration_template_request(), proplists:proplist()) ->
     {ok, replication_configuration_template(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_replication_configuration_template_errors(), tuple()}.
 create_replication_configuration_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateReplicationConfigurationTemplate"],
@@ -1594,26 +2065,14 @@ create_replication_configuration_template(Client, Input0, Options0) ->
 -spec create_source_network(map(), create_source_network_request()) ->
     {ok, create_source_network_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_source_network_errors(), tuple()}.
 create_source_network(Client, Input) ->
     create_source_network(Client, Input, []).
 
 -spec create_source_network(map(), create_source_network_request(), proplists:proplist()) ->
     {ok, create_source_network_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_source_network_errors(), tuple()}.
 create_source_network(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateSourceNetwork"],
@@ -1640,22 +2099,14 @@ create_source_network(Client, Input0, Options0) ->
 -spec delete_job(map(), delete_job_request()) ->
     {ok, delete_job_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, delete_job_errors(), tuple()}.
 delete_job(Client, Input) ->
     delete_job(Client, Input, []).
 
 -spec delete_job(map(), delete_job_request(), proplists:proplist()) ->
     {ok, delete_job_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, delete_job_errors(), tuple()}.
 delete_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteJob"],
@@ -1682,22 +2133,14 @@ delete_job(Client, Input0, Options0) ->
 -spec delete_launch_action(map(), delete_launch_action_request()) ->
     {ok, delete_launch_action_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_launch_action_errors(), tuple()}.
 delete_launch_action(Client, Input) ->
     delete_launch_action(Client, Input, []).
 
 -spec delete_launch_action(map(), delete_launch_action_request(), proplists:proplist()) ->
     {ok, delete_launch_action_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_launch_action_errors(), tuple()}.
 delete_launch_action(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteLaunchAction"],
@@ -1724,22 +2167,14 @@ delete_launch_action(Client, Input0, Options0) ->
 -spec delete_launch_configuration_template(map(), delete_launch_configuration_template_request()) ->
     {ok, delete_launch_configuration_template_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, delete_launch_configuration_template_errors(), tuple()}.
 delete_launch_configuration_template(Client, Input) ->
     delete_launch_configuration_template(Client, Input, []).
 
 -spec delete_launch_configuration_template(map(), delete_launch_configuration_template_request(), proplists:proplist()) ->
     {ok, delete_launch_configuration_template_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, delete_launch_configuration_template_errors(), tuple()}.
 delete_launch_configuration_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteLaunchConfigurationTemplate"],
@@ -1770,22 +2205,14 @@ delete_launch_configuration_template(Client, Input0, Options0) ->
 -spec delete_recovery_instance(map(), delete_recovery_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, delete_recovery_instance_errors(), tuple()}.
 delete_recovery_instance(Client, Input) ->
     delete_recovery_instance(Client, Input, []).
 
 -spec delete_recovery_instance(map(), delete_recovery_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, delete_recovery_instance_errors(), tuple()}.
 delete_recovery_instance(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteRecoveryInstance"],
@@ -1812,22 +2239,14 @@ delete_recovery_instance(Client, Input0, Options0) ->
 -spec delete_replication_configuration_template(map(), delete_replication_configuration_template_request()) ->
     {ok, delete_replication_configuration_template_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, delete_replication_configuration_template_errors(), tuple()}.
 delete_replication_configuration_template(Client, Input) ->
     delete_replication_configuration_template(Client, Input, []).
 
 -spec delete_replication_configuration_template(map(), delete_replication_configuration_template_request(), proplists:proplist()) ->
     {ok, delete_replication_configuration_template_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, delete_replication_configuration_template_errors(), tuple()}.
 delete_replication_configuration_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteReplicationConfigurationTemplate"],
@@ -1854,22 +2273,14 @@ delete_replication_configuration_template(Client, Input0, Options0) ->
 -spec delete_source_network(map(), delete_source_network_request()) ->
     {ok, delete_source_network_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, delete_source_network_errors(), tuple()}.
 delete_source_network(Client, Input) ->
     delete_source_network(Client, Input, []).
 
 -spec delete_source_network(map(), delete_source_network_request(), proplists:proplist()) ->
     {ok, delete_source_network_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, delete_source_network_errors(), tuple()}.
 delete_source_network(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteSourceNetwork"],
@@ -1898,22 +2309,14 @@ delete_source_network(Client, Input0, Options0) ->
 -spec delete_source_server(map(), delete_source_server_request()) ->
     {ok, delete_source_server_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, delete_source_server_errors(), tuple()}.
 delete_source_server(Client, Input) ->
     delete_source_server(Client, Input, []).
 
 -spec delete_source_server(map(), delete_source_server_request(), proplists:proplist()) ->
     {ok, delete_source_server_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, delete_source_server_errors(), tuple()}.
 delete_source_server(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteSourceServer"],
@@ -1940,20 +2343,14 @@ delete_source_server(Client, Input0, Options0) ->
 -spec describe_job_log_items(map(), describe_job_log_items_request()) ->
     {ok, describe_job_log_items_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_job_log_items_errors(), tuple()}.
 describe_job_log_items(Client, Input) ->
     describe_job_log_items(Client, Input, []).
 
 -spec describe_job_log_items(map(), describe_job_log_items_request(), proplists:proplist()) ->
     {ok, describe_job_log_items_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_job_log_items_errors(), tuple()}.
 describe_job_log_items(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DescribeJobLogItems"],
@@ -1987,20 +2384,14 @@ describe_job_log_items(Client, Input0, Options0) ->
 -spec describe_jobs(map(), describe_jobs_request()) ->
     {ok, describe_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_jobs_errors(), tuple()}.
 describe_jobs(Client, Input) ->
     describe_jobs(Client, Input, []).
 
 -spec describe_jobs(map(), describe_jobs_request(), proplists:proplist()) ->
     {ok, describe_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_jobs_errors(), tuple()}.
 describe_jobs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DescribeJobs"],
@@ -2028,22 +2419,14 @@ describe_jobs(Client, Input0, Options0) ->
 -spec describe_launch_configuration_templates(map(), describe_launch_configuration_templates_request()) ->
     {ok, describe_launch_configuration_templates_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_launch_configuration_templates_errors(), tuple()}.
 describe_launch_configuration_templates(Client, Input) ->
     describe_launch_configuration_templates(Client, Input, []).
 
 -spec describe_launch_configuration_templates(map(), describe_launch_configuration_templates_request(), proplists:proplist()) ->
     {ok, describe_launch_configuration_templates_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_launch_configuration_templates_errors(), tuple()}.
 describe_launch_configuration_templates(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DescribeLaunchConfigurationTemplates"],
@@ -2070,20 +2453,14 @@ describe_launch_configuration_templates(Client, Input0, Options0) ->
 -spec describe_recovery_instances(map(), describe_recovery_instances_request()) ->
     {ok, describe_recovery_instances_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, describe_recovery_instances_errors(), tuple()}.
 describe_recovery_instances(Client, Input) ->
     describe_recovery_instances(Client, Input, []).
 
 -spec describe_recovery_instances(map(), describe_recovery_instances_request(), proplists:proplist()) ->
     {ok, describe_recovery_instances_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, describe_recovery_instances_errors(), tuple()}.
 describe_recovery_instances(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DescribeRecoveryInstances"],
@@ -2110,22 +2487,14 @@ describe_recovery_instances(Client, Input0, Options0) ->
 -spec describe_recovery_snapshots(map(), describe_recovery_snapshots_request()) ->
     {ok, describe_recovery_snapshots_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_recovery_snapshots_errors(), tuple()}.
 describe_recovery_snapshots(Client, Input) ->
     describe_recovery_snapshots(Client, Input, []).
 
 -spec describe_recovery_snapshots(map(), describe_recovery_snapshots_request(), proplists:proplist()) ->
     {ok, describe_recovery_snapshots_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_recovery_snapshots_errors(), tuple()}.
 describe_recovery_snapshots(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DescribeRecoverySnapshots"],
@@ -2153,22 +2522,14 @@ describe_recovery_snapshots(Client, Input0, Options0) ->
 -spec describe_replication_configuration_templates(map(), describe_replication_configuration_templates_request()) ->
     {ok, describe_replication_configuration_templates_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_replication_configuration_templates_errors(), tuple()}.
 describe_replication_configuration_templates(Client, Input) ->
     describe_replication_configuration_templates(Client, Input, []).
 
 -spec describe_replication_configuration_templates(map(), describe_replication_configuration_templates_request(), proplists:proplist()) ->
     {ok, describe_replication_configuration_templates_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_replication_configuration_templates_errors(), tuple()}.
 describe_replication_configuration_templates(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DescribeReplicationConfigurationTemplates"],
@@ -2195,20 +2556,14 @@ describe_replication_configuration_templates(Client, Input0, Options0) ->
 -spec describe_source_networks(map(), describe_source_networks_request()) ->
     {ok, describe_source_networks_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_source_networks_errors(), tuple()}.
 describe_source_networks(Client, Input) ->
     describe_source_networks(Client, Input, []).
 
 -spec describe_source_networks(map(), describe_source_networks_request(), proplists:proplist()) ->
     {ok, describe_source_networks_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_source_networks_errors(), tuple()}.
 describe_source_networks(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DescribeSourceNetworks"],
@@ -2235,20 +2590,14 @@ describe_source_networks(Client, Input0, Options0) ->
 -spec describe_source_servers(map(), describe_source_servers_request()) ->
     {ok, describe_source_servers_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_source_servers_errors(), tuple()}.
 describe_source_servers(Client, Input) ->
     describe_source_servers(Client, Input, []).
 
 -spec describe_source_servers(map(), describe_source_servers_request(), proplists:proplist()) ->
     {ok, describe_source_servers_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_source_servers_errors(), tuple()}.
 describe_source_servers(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DescribeSourceServers"],
@@ -2287,24 +2636,14 @@ describe_source_servers(Client, Input0, Options0) ->
 -spec disconnect_recovery_instance(map(), disconnect_recovery_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, disconnect_recovery_instance_errors(), tuple()}.
 disconnect_recovery_instance(Client, Input) ->
     disconnect_recovery_instance(Client, Input, []).
 
 -spec disconnect_recovery_instance(map(), disconnect_recovery_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, disconnect_recovery_instance_errors(), tuple()}.
 disconnect_recovery_instance(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DisconnectRecoveryInstance"],
@@ -2344,22 +2683,14 @@ disconnect_recovery_instance(Client, Input0, Options0) ->
 -spec disconnect_source_server(map(), disconnect_source_server_request()) ->
     {ok, source_server(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, disconnect_source_server_errors(), tuple()}.
 disconnect_source_server(Client, Input) ->
     disconnect_source_server(Client, Input, []).
 
 -spec disconnect_source_server(map(), disconnect_source_server_request(), proplists:proplist()) ->
     {ok, source_server(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, disconnect_source_server_errors(), tuple()}.
 disconnect_source_server(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DisconnectSourceServer"],
@@ -2386,24 +2717,14 @@ disconnect_source_server(Client, Input0, Options0) ->
 -spec export_source_network_cfn_template(map(), export_source_network_cfn_template_request()) ->
     {ok, export_source_network_cfn_template_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, export_source_network_cfn_template_errors(), tuple()}.
 export_source_network_cfn_template(Client, Input) ->
     export_source_network_cfn_template(Client, Input, []).
 
 -spec export_source_network_cfn_template(map(), export_source_network_cfn_template_request(), proplists:proplist()) ->
     {ok, export_source_network_cfn_template_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, export_source_network_cfn_template_errors(), tuple()}.
 export_source_network_cfn_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ExportSourceNetworkCfnTemplate"],
@@ -2431,20 +2752,14 @@ export_source_network_cfn_template(Client, Input0, Options0) ->
 -spec get_failback_replication_configuration(map(), get_failback_replication_configuration_request()) ->
     {ok, get_failback_replication_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, get_failback_replication_configuration_errors(), tuple()}.
 get_failback_replication_configuration(Client, Input) ->
     get_failback_replication_configuration(Client, Input, []).
 
 -spec get_failback_replication_configuration(map(), get_failback_replication_configuration_request(), proplists:proplist()) ->
     {ok, get_failback_replication_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, get_failback_replication_configuration_errors(), tuple()}.
 get_failback_replication_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetFailbackReplicationConfiguration"],
@@ -2471,20 +2786,14 @@ get_failback_replication_configuration(Client, Input0, Options0) ->
 -spec get_launch_configuration(map(), get_launch_configuration_request()) ->
     {ok, launch_configuration(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, get_launch_configuration_errors(), tuple()}.
 get_launch_configuration(Client, Input) ->
     get_launch_configuration(Client, Input, []).
 
 -spec get_launch_configuration(map(), get_launch_configuration_request(), proplists:proplist()) ->
     {ok, launch_configuration(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, get_launch_configuration_errors(), tuple()}.
 get_launch_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetLaunchConfiguration"],
@@ -2511,22 +2820,14 @@ get_launch_configuration(Client, Input0, Options0) ->
 -spec get_replication_configuration(map(), get_replication_configuration_request()) ->
     {ok, replication_configuration(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, get_replication_configuration_errors(), tuple()}.
 get_replication_configuration(Client, Input) ->
     get_replication_configuration(Client, Input, []).
 
 -spec get_replication_configuration(map(), get_replication_configuration_request(), proplists:proplist()) ->
     {ok, replication_configuration(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, get_replication_configuration_errors(), tuple()}.
 get_replication_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetReplicationConfiguration"],
@@ -2553,20 +2854,14 @@ get_replication_configuration(Client, Input0, Options0) ->
 -spec initialize_service(map(), initialize_service_request()) ->
     {ok, initialize_service_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, initialize_service_errors(), tuple()}.
 initialize_service(Client, Input) ->
     initialize_service(Client, Input, []).
 
 -spec initialize_service(map(), initialize_service_request(), proplists:proplist()) ->
     {ok, initialize_service_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, initialize_service_errors(), tuple()}.
 initialize_service(Client, Input0, Options0) ->
     Method = post,
     Path = ["/InitializeService"],
@@ -2599,22 +2894,14 @@ initialize_service(Client, Input0, Options0) ->
 -spec list_extensible_source_servers(map(), list_extensible_source_servers_request()) ->
     {ok, list_extensible_source_servers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_extensible_source_servers_errors(), tuple()}.
 list_extensible_source_servers(Client, Input) ->
     list_extensible_source_servers(Client, Input, []).
 
 -spec list_extensible_source_servers(map(), list_extensible_source_servers_request(), proplists:proplist()) ->
     {ok, list_extensible_source_servers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_extensible_source_servers_errors(), tuple()}.
 list_extensible_source_servers(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListExtensibleSourceServers"],
@@ -2641,22 +2928,14 @@ list_extensible_source_servers(Client, Input0, Options0) ->
 -spec list_launch_actions(map(), list_launch_actions_request()) ->
     {ok, list_launch_actions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, list_launch_actions_errors(), tuple()}.
 list_launch_actions(Client, Input) ->
     list_launch_actions(Client, Input, []).
 
 -spec list_launch_actions(map(), list_launch_actions_request(), proplists:proplist()) ->
     {ok, list_launch_actions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, list_launch_actions_errors(), tuple()}.
 list_launch_actions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListLaunchActions"],
@@ -2684,11 +2963,7 @@ list_launch_actions(Client, Input0, Options0) ->
 -spec list_staging_accounts(map()) ->
     {ok, list_staging_accounts_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_staging_accounts_errors(), tuple()}.
 list_staging_accounts(Client)
   when is_map(Client) ->
     list_staging_accounts(Client, #{}, #{}).
@@ -2696,11 +2971,7 @@ list_staging_accounts(Client)
 -spec list_staging_accounts(map(), map(), map()) ->
     {ok, list_staging_accounts_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_staging_accounts_errors(), tuple()}.
 list_staging_accounts(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_staging_accounts(Client, QueryMap, HeadersMap, []).
@@ -2708,11 +2979,7 @@ list_staging_accounts(Client, QueryMap, HeadersMap)
 -spec list_staging_accounts(map(), map(), map(), proplists:proplist()) ->
     {ok, list_staging_accounts_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_staging_accounts_errors(), tuple()}.
 list_staging_accounts(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ListStagingAccounts"],
@@ -2738,11 +3005,7 @@ list_staging_accounts(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -2750,11 +3013,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -2762,11 +3021,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2787,24 +3042,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec put_launch_action(map(), put_launch_action_request()) ->
     {ok, put_launch_action_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_launch_action_errors(), tuple()}.
 put_launch_action(Client, Input) ->
     put_launch_action(Client, Input, []).
 
 -spec put_launch_action(map(), put_launch_action_request(), proplists:proplist()) ->
     {ok, put_launch_action_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_launch_action_errors(), tuple()}.
 put_launch_action(Client, Input0, Options0) ->
     Method = post,
     Path = ["/PutLaunchAction"],
@@ -2836,22 +3081,14 @@ put_launch_action(Client, Input0, Options0) ->
 -spec retry_data_replication(map(), retry_data_replication_request()) ->
     {ok, source_server(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, retry_data_replication_errors(), tuple()}.
 retry_data_replication(Client, Input) ->
     retry_data_replication(Client, Input, []).
 
 -spec retry_data_replication(map(), retry_data_replication_request(), proplists:proplist()) ->
     {ok, source_server(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, retry_data_replication_errors(), tuple()}.
 retry_data_replication(Client, Input0, Options0) ->
     Method = post,
     Path = ["/RetryDataReplication"],
@@ -2884,26 +3121,14 @@ retry_data_replication(Client, Input0, Options0) ->
 -spec reverse_replication(map(), reverse_replication_request()) ->
     {ok, reverse_replication_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, reverse_replication_errors(), tuple()}.
 reverse_replication(Client, Input) ->
     reverse_replication(Client, Input, []).
 
 -spec reverse_replication(map(), reverse_replication_request(), proplists:proplist()) ->
     {ok, reverse_replication_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, reverse_replication_errors(), tuple()}.
 reverse_replication(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ReverseReplication"],
@@ -2934,24 +3159,14 @@ reverse_replication(Client, Input0, Options0) ->
 -spec start_failback_launch(map(), start_failback_launch_request()) ->
     {ok, start_failback_launch_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_failback_launch_errors(), tuple()}.
 start_failback_launch(Client, Input) ->
     start_failback_launch(Client, Input, []).
 
 -spec start_failback_launch(map(), start_failback_launch_request(), proplists:proplist()) ->
     {ok, start_failback_launch_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_failback_launch_errors(), tuple()}.
 start_failback_launch(Client, Input0, Options0) ->
     Method = post,
     Path = ["/StartFailbackLaunch"],
@@ -2981,22 +3196,14 @@ start_failback_launch(Client, Input0, Options0) ->
 -spec start_recovery(map(), start_recovery_request()) ->
     {ok, start_recovery_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, start_recovery_errors(), tuple()}.
 start_recovery(Client, Input) ->
     start_recovery(Client, Input, []).
 
 -spec start_recovery(map(), start_recovery_request(), proplists:proplist()) ->
     {ok, start_recovery_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, start_recovery_errors(), tuple()}.
 start_recovery(Client, Input0, Options0) ->
     Method = post,
     Path = ["/StartRecovery"],
@@ -3026,22 +3233,14 @@ start_recovery(Client, Input0, Options0) ->
 -spec start_replication(map(), start_replication_request()) ->
     {ok, start_replication_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, start_replication_errors(), tuple()}.
 start_replication(Client, Input) ->
     start_replication(Client, Input, []).
 
 -spec start_replication(map(), start_replication_request(), proplists:proplist()) ->
     {ok, start_replication_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, start_replication_errors(), tuple()}.
 start_replication(Client, Input0, Options0) ->
     Method = post,
     Path = ["/StartReplication"],
@@ -3071,24 +3270,14 @@ start_replication(Client, Input0, Options0) ->
 -spec start_source_network_recovery(map(), start_source_network_recovery_request()) ->
     {ok, start_source_network_recovery_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_source_network_recovery_errors(), tuple()}.
 start_source_network_recovery(Client, Input) ->
     start_source_network_recovery(Client, Input, []).
 
 -spec start_source_network_recovery(map(), start_source_network_recovery_request(), proplists:proplist()) ->
     {ok, start_source_network_recovery_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_source_network_recovery_errors(), tuple()}.
 start_source_network_recovery(Client, Input0, Options0) ->
     Method = post,
     Path = ["/StartSourceNetworkRecovery"],
@@ -3117,22 +3306,14 @@ start_source_network_recovery(Client, Input0, Options0) ->
 -spec start_source_network_replication(map(), start_source_network_replication_request()) ->
     {ok, start_source_network_replication_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, start_source_network_replication_errors(), tuple()}.
 start_source_network_replication(Client, Input) ->
     start_source_network_replication(Client, Input, []).
 
 -spec start_source_network_replication(map(), start_source_network_replication_request(), proplists:proplist()) ->
     {ok, start_source_network_replication_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, start_source_network_replication_errors(), tuple()}.
 start_source_network_replication(Client, Input0, Options0) ->
     Method = post,
     Path = ["/StartSourceNetworkReplication"],
@@ -3162,20 +3343,14 @@ start_source_network_replication(Client, Input0, Options0) ->
 -spec stop_failback(map(), stop_failback_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, stop_failback_errors(), tuple()}.
 stop_failback(Client, Input) ->
     stop_failback(Client, Input, []).
 
 -spec stop_failback(map(), stop_failback_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, stop_failback_errors(), tuple()}.
 stop_failback(Client, Input0, Options0) ->
     Method = post,
     Path = ["/StopFailback"],
@@ -3205,22 +3380,14 @@ stop_failback(Client, Input0, Options0) ->
 -spec stop_replication(map(), stop_replication_request()) ->
     {ok, stop_replication_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, stop_replication_errors(), tuple()}.
 stop_replication(Client, Input) ->
     stop_replication(Client, Input, []).
 
 -spec stop_replication(map(), stop_replication_request(), proplists:proplist()) ->
     {ok, stop_replication_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, stop_replication_errors(), tuple()}.
 stop_replication(Client, Input0, Options0) ->
     Method = post,
     Path = ["/StopReplication"],
@@ -3249,24 +3416,14 @@ stop_replication(Client, Input0, Options0) ->
 -spec stop_source_network_replication(map(), stop_source_network_replication_request()) ->
     {ok, stop_source_network_replication_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_source_network_replication_errors(), tuple()}.
 stop_source_network_replication(Client, Input) ->
     stop_source_network_replication(Client, Input, []).
 
 -spec stop_source_network_replication(map(), stop_source_network_replication_request(), proplists:proplist()) ->
     {ok, stop_source_network_replication_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_source_network_replication_errors(), tuple()}.
 stop_source_network_replication(Client, Input0, Options0) ->
     Method = post,
     Path = ["/StopSourceNetworkReplication"],
@@ -3298,22 +3455,14 @@ stop_source_network_replication(Client, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -3342,22 +3491,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec terminate_recovery_instances(map(), terminate_recovery_instances_request()) ->
     {ok, terminate_recovery_instances_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, terminate_recovery_instances_errors(), tuple()}.
 terminate_recovery_instances(Client, Input) ->
     terminate_recovery_instances(Client, Input, []).
 
 -spec terminate_recovery_instances(map(), terminate_recovery_instances_request(), proplists:proplist()) ->
     {ok, terminate_recovery_instances_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, terminate_recovery_instances_errors(), tuple()}.
 terminate_recovery_instances(Client, Input0, Options0) ->
     Method = post,
     Path = ["/TerminateRecoveryInstances"],
@@ -3385,22 +3526,14 @@ terminate_recovery_instances(Client, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -3429,22 +3562,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_failback_replication_configuration(map(), update_failback_replication_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, update_failback_replication_configuration_errors(), tuple()}.
 update_failback_replication_configuration(Client, Input) ->
     update_failback_replication_configuration(Client, Input, []).
 
 -spec update_failback_replication_configuration(map(), update_failback_replication_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()}.
+    {error, update_failback_replication_configuration_errors(), tuple()}.
 update_failback_replication_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateFailbackReplicationConfiguration"],
@@ -3471,24 +3596,14 @@ update_failback_replication_configuration(Client, Input0, Options0) ->
 -spec update_launch_configuration(map(), update_launch_configuration_request()) ->
     {ok, launch_configuration(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_launch_configuration_errors(), tuple()}.
 update_launch_configuration(Client, Input) ->
     update_launch_configuration(Client, Input, []).
 
 -spec update_launch_configuration(map(), update_launch_configuration_request(), proplists:proplist()) ->
     {ok, launch_configuration(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_launch_configuration_errors(), tuple()}.
 update_launch_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateLaunchConfiguration"],
@@ -3515,24 +3630,14 @@ update_launch_configuration(Client, Input0, Options0) ->
 -spec update_launch_configuration_template(map(), update_launch_configuration_template_request()) ->
     {ok, update_launch_configuration_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_launch_configuration_template_errors(), tuple()}.
 update_launch_configuration_template(Client, Input) ->
     update_launch_configuration_template(Client, Input, []).
 
 -spec update_launch_configuration_template(map(), update_launch_configuration_template_request(), proplists:proplist()) ->
     {ok, update_launch_configuration_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_launch_configuration_template_errors(), tuple()}.
 update_launch_configuration_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateLaunchConfigurationTemplate"],
@@ -3559,26 +3664,14 @@ update_launch_configuration_template(Client, Input0, Options0) ->
 -spec update_replication_configuration(map(), update_replication_configuration_request()) ->
     {ok, replication_configuration(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_replication_configuration_errors(), tuple()}.
 update_replication_configuration(Client, Input) ->
     update_replication_configuration(Client, Input, []).
 
 -spec update_replication_configuration(map(), update_replication_configuration_request(), proplists:proplist()) ->
     {ok, replication_configuration(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_replication_configuration_errors(), tuple()}.
 update_replication_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateReplicationConfiguration"],
@@ -3605,24 +3698,14 @@ update_replication_configuration(Client, Input0, Options0) ->
 -spec update_replication_configuration_template(map(), update_replication_configuration_template_request()) ->
     {ok, replication_configuration_template(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_replication_configuration_template_errors(), tuple()}.
 update_replication_configuration_template(Client, Input) ->
     update_replication_configuration_template(Client, Input, []).
 
 -spec update_replication_configuration_template(map(), update_replication_configuration_template_request(), proplists:proplist()) ->
     {ok, replication_configuration_template(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, uninitialized_account_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_replication_configuration_template_errors(), tuple()}.
 update_replication_configuration_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateReplicationConfigurationTemplate"],

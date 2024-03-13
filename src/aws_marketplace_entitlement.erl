@@ -80,6 +80,10 @@
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+-type get_entitlements_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_error_exception().
 
 %%====================================================================
 %% API
@@ -92,9 +96,7 @@
 -spec get_entitlements(map(), get_entitlements_request()) ->
     {ok, get_entitlements_result(), tuple()} |
     {error, any()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_entitlements_errors(), tuple()}.
 get_entitlements(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_entitlements(Client, Input, []).
@@ -102,9 +104,7 @@ get_entitlements(Client, Input)
 -spec get_entitlements(map(), get_entitlements_request(), proplists:proplist()) ->
     {ok, get_entitlements_result(), tuple()} |
     {error, any()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_entitlements_errors(), tuple()}.
 get_entitlements(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEntitlements">>, Input, Options).

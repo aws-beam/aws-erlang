@@ -105,9 +105,11 @@
 %%   <<"vectorKnowledgeBaseConfiguration">> => vector_knowledge_base_configuration()
 %% }
 -type knowledge_base_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% prepare_agent_request() :: #{}
 -type prepare_agent_request() :: #{}.
+
 
 %% Example:
 %% ingestion_job_statistics() :: #{
@@ -118,6 +120,7 @@
 %%   <<"numberOfNewDocumentsIndexed">> => [float()]
 %% }
 -type ingestion_job_statistics() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_agent_action_group_request() :: #{
@@ -130,17 +133,20 @@
 %% }
 -type update_agent_action_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_agent_alias_response() :: #{
 %%   <<"agentAlias">> => agent_alias()
 %% }
 -type get_agent_alias_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_agents_request() :: #{
@@ -149,12 +155,14 @@
 %% }
 -type list_agents_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_agent_action_groups_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_agent_action_groups_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_data_source_request() :: #{
@@ -167,15 +175,18 @@
 %% }
 -type create_data_source_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_source_configuration() :: #{
 %%   <<"s3Configuration">> => s3_data_source_configuration(),
 %%   <<"type">> => list(any())
 %% }
 -type data_source_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% start_ingestion_job_request() :: #{
@@ -183,6 +194,7 @@
 %%   <<"description">> => string()
 %% }
 -type start_ingestion_job_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% inference_configuration() :: #{
@@ -194,6 +206,7 @@
 %% }
 -type inference_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% fixed_size_chunking_configuration() :: #{
 %%   <<"maxTokens">> => [integer()],
@@ -201,12 +214,14 @@
 %% }
 -type fixed_size_chunking_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_agents_response() :: #{
 %%   <<"agentSummaries">> => list(agent_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_agents_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_agent_request() :: #{
@@ -223,6 +238,7 @@
 %% }
 -type create_agent_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% open_search_serverless_field_mapping() :: #{
 %%   <<"metadataField">> => string(),
@@ -230,6 +246,7 @@
 %%   <<"vectorField">> => string()
 %% }
 -type open_search_serverless_field_mapping() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_agent_alias_request() :: #{
@@ -239,6 +256,7 @@
 %% }
 -type update_agent_alias_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% prompt_override_configuration() :: #{
 %%   <<"overrideLambda">> => string(),
@@ -246,11 +264,13 @@
 %% }
 -type prompt_override_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_agent_knowledge_base_response() :: #{
 %%   <<"agentKnowledgeBase">> => agent_knowledge_base()
 %% }
 -type update_agent_knowledge_base_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_knowledge_base_request() :: #{
@@ -262,12 +282,14 @@
 %% }
 -type update_knowledge_base_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_knowledge_base_response() :: #{
 %%   <<"knowledgeBaseId">> => string(),
 %%   <<"status">> => list(any())
 %% }
 -type delete_knowledge_base_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% open_search_serverless_configuration() :: #{
@@ -276,6 +298,7 @@
 %%   <<"vectorIndexName">> => string()
 %% }
 -type open_search_serverless_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% prepare_agent_response() :: #{
@@ -286,11 +309,13 @@
 %% }
 -type prepare_agent_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_data_source_response() :: #{
 %%   <<"dataSource">> => data_source()
 %% }
 -type update_data_source_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% rds_configuration() :: #{
@@ -302,20 +327,24 @@
 %% }
 -type rds_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_knowledge_base_response() :: #{
 %%   <<"knowledgeBase">> => knowledge_base()
 %% }
 -type create_knowledge_base_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_agent_knowledge_base_request() :: #{}
 -type get_agent_knowledge_base_request() :: #{}.
+
 
 %% Example:
 %% agent_version_summary() :: #{
@@ -328,6 +357,7 @@
 %% }
 -type agent_version_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% action_group_summary() :: #{
 %%   <<"actionGroupId">> => string(),
@@ -338,11 +368,13 @@
 %% }
 -type action_group_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_agent_version_request() :: #{
 %%   <<"skipResourceInUseCheck">> => [boolean()]
 %% }
 -type delete_agent_version_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_agent_versions_request() :: #{
@@ -350,6 +382,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_agent_versions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% ingestion_job() :: #{
@@ -365,20 +398,24 @@
 %% }
 -type ingestion_job() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_agent_action_group_response() :: #{
 %%   <<"agentActionGroup">> => agent_action_group()
 %% }
 -type get_agent_action_group_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_agent_action_group_response() :: #{}
 -type delete_agent_action_group_response() :: #{}.
+
 
 %% Example:
 %% create_agent_action_group_response() :: #{
 %%   <<"agentActionGroup">> => agent_action_group()
 %% }
 -type create_agent_action_group_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_agent_alias_response() :: #{
@@ -387,9 +424,11 @@
 %%   <<"agentId">> => string()
 %% }
 -type delete_agent_alias_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_agent_version_request() :: #{}
 -type get_agent_version_request() :: #{}.
+
 
 %% Example:
 %% create_agent_response() :: #{
@@ -397,12 +436,14 @@
 %% }
 -type create_agent_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_data_sources_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_data_sources_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_data_source_response() :: #{
@@ -412,12 +453,14 @@
 %% }
 -type delete_data_source_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_agent_aliases_response() :: #{
 %%   <<"agentAliasSummaries">> => list(agent_alias_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_agent_aliases_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_knowledge_base_request() :: #{
@@ -430,6 +473,7 @@
 %%   <<"tags">> => map()
 %% }
 -type create_knowledge_base_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% knowledge_base() :: #{
@@ -446,9 +490,11 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type knowledge_base() :: #{binary() => any()}.
+
 %% Example:
 %% get_ingestion_job_request() :: #{}
 -type get_ingestion_job_request() :: #{}.
+
 
 %% Example:
 %% knowledge_base_summary() :: #{
@@ -460,11 +506,13 @@
 %% }
 -type knowledge_base_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_agent_response() :: #{
 %%   <<"agent">> => agent()
 %% }
 -type update_agent_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_knowledge_bases_request() :: #{
@@ -473,11 +521,13 @@
 %% }
 -type list_knowledge_bases_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% agent_knowledge_base_summary() :: #{
@@ -488,11 +538,13 @@
 %% }
 -type agent_knowledge_base_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% ingestion_job_summary() :: #{
@@ -507,14 +559,17 @@
 %% }
 -type ingestion_job_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_ingestion_job_response() :: #{
 %%   <<"ingestionJob">> => ingestion_job()
 %% }
 -type get_ingestion_job_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_data_source_request() :: #{}
 -type get_data_source_request() :: #{}.
+
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
@@ -522,11 +577,13 @@
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_agent_alias_response() :: #{
 %%   <<"agentAlias">> => agent_alias()
 %% }
 -type update_agent_alias_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% redis_enterprise_cloud_configuration() :: #{
@@ -536,6 +593,7 @@
 %%   <<"vectorIndexName">> => string()
 %% }
 -type redis_enterprise_cloud_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% storage_configuration() :: #{
@@ -547,6 +605,7 @@
 %% }
 -type storage_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_agent_knowledge_bases_response() :: #{
 %%   <<"agentKnowledgeBaseSummaries">> => list(agent_knowledge_base_summary()()),
@@ -554,15 +613,18 @@
 %% }
 -type list_agent_knowledge_bases_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_data_sources_response() :: #{
 %%   <<"dataSourceSummaries">> => list(data_source_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_data_sources_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_data_source_request() :: #{}
 -type delete_data_source_request() :: #{}.
+
 
 %% Example:
 %% chunking_configuration() :: #{
@@ -570,6 +632,7 @@
 %%   <<"fixedSizeChunkingConfiguration">> => fixed_size_chunking_configuration()
 %% }
 -type chunking_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% agent() :: #{
@@ -594,11 +657,13 @@
 %% }
 -type agent() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_agent_action_group_request() :: #{
 %%   <<"skipResourceInUseCheck">> => [boolean()]
 %% }
 -type delete_agent_action_group_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_ingestion_jobs_response() :: #{
@@ -607,11 +672,13 @@
 %% }
 -type list_ingestion_jobs_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_ingestion_jobs_request() :: #{
@@ -621,6 +688,7 @@
 %%   <<"sortBy">> => ingestion_job_sort_by()
 %% }
 -type list_ingestion_jobs_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% agent_alias_summary() :: #{
@@ -633,9 +701,11 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type agent_alias_summary() :: #{binary() => any()}.
+
 %% Example:
 %% delete_knowledge_base_request() :: #{}
 -type delete_knowledge_base_request() :: #{}.
+
 
 %% Example:
 %% validation_exception_field() :: #{
@@ -643,9 +713,11 @@
 %%   <<"name">> => string()
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
+
 %% Example:
 %% get_agent_action_group_request() :: #{}
 -type get_agent_action_group_request() :: #{}.
+
 
 %% Example:
 %% delete_agent_response() :: #{
@@ -654,6 +726,7 @@
 %% }
 -type delete_agent_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_agent_aliases_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -661,20 +734,24 @@
 %% }
 -type list_agent_aliases_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_agent_action_group_response() :: #{
 %%   <<"agentActionGroup">> => agent_action_group()
 %% }
 -type update_agent_action_group_response() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_agent_knowledge_base_request() :: #{}
 -type disassociate_agent_knowledge_base_request() :: #{}.
+
 
 %% Example:
 %% server_side_encryption_configuration() :: #{
 %%   <<"kmsKeyArn">> => string()
 %% }
 -type server_side_encryption_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% agent_version() :: #{
@@ -697,11 +774,13 @@
 %% }
 -type agent_version() :: #{binary() => any()}.
 
+
 %% Example:
 %% agent_alias_routing_configuration_list_item() :: #{
 %%   <<"agentVersion">> => string()
 %% }
 -type agent_alias_routing_configuration_list_item() :: #{binary() => any()}.
+
 
 %% Example:
 %% pinecone_configuration() :: #{
@@ -711,6 +790,7 @@
 %%   <<"namespace">> => string()
 %% }
 -type pinecone_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% agent_alias() :: #{
@@ -728,6 +808,7 @@
 %% }
 -type agent_alias() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_identifier() :: #{
 %%   <<"s3BucketName">> => string(),
@@ -735,11 +816,13 @@
 %% }
 -type s3_identifier() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_agent_action_group_request() :: #{
@@ -753,6 +836,7 @@
 %% }
 -type create_agent_action_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_agent_action_groups_response() :: #{
 %%   <<"actionGroupSummaries">> => list(action_group_summary()()),
@@ -760,11 +844,13 @@
 %% }
 -type list_agent_action_groups_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_data_source_response() :: #{
 %%   <<"dataSource">> => data_source()
 %% }
 -type create_data_source_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% ingestion_job_filter() :: #{
@@ -774,11 +860,13 @@
 %% }
 -type ingestion_job_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_agent_alias_response() :: #{
 %%   <<"agentAlias">> => agent_alias()
 %% }
 -type create_agent_alias_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_source_summary() :: #{
@@ -790,6 +878,7 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type data_source_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% agent_action_group() :: #{
@@ -808,17 +897,20 @@
 %% }
 -type agent_action_group() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_agent_knowledge_base_response() :: #{
 %%   <<"agentKnowledgeBase">> => agent_knowledge_base()
 %% }
 -type get_agent_knowledge_base_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_agent_alias_request() :: #{
@@ -829,9 +921,11 @@
 %%   <<"tags">> => map()
 %% }
 -type create_agent_alias_request() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% update_agent_request() :: #{
@@ -846,14 +940,17 @@
 %% }
 -type update_agent_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_agent_request() :: #{
 %%   <<"skipResourceInUseCheck">> => [boolean()]
 %% }
 -type delete_agent_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_agent_alias_request() :: #{}
 -type delete_agent_alias_request() :: #{}.
+
 
 %% Example:
 %% validation_exception() :: #{
@@ -861,15 +958,18 @@
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% update_knowledge_base_response() :: #{
 %%   <<"knowledgeBase">> => knowledge_base()
 %% }
 -type update_knowledge_base_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% agent_alias_history_event() :: #{
@@ -878,6 +978,7 @@
 %%   <<"startDate">> => non_neg_integer()
 %% }
 -type agent_alias_history_event() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_data_source_request() :: #{
@@ -889,12 +990,14 @@
 %% }
 -type update_data_source_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_agent_knowledge_base_request() :: #{
 %%   <<"description">> => string(),
 %%   <<"knowledgeBaseState">> => list(any())
 %% }
 -type update_agent_knowledge_base_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% redis_enterprise_cloud_field_mapping() :: #{
@@ -904,6 +1007,7 @@
 %% }
 -type redis_enterprise_cloud_field_mapping() :: #{binary() => any()}.
 
+
 %% Example:
 %% ingestion_job_sort_by() :: #{
 %%   <<"attribute">> => list(any()),
@@ -911,17 +1015,20 @@
 %% }
 -type ingestion_job_sort_by() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_agent_response() :: #{
 %%   <<"agent">> => agent()
 %% }
 -type get_agent_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% agent_knowledge_base() :: #{
@@ -935,6 +1042,7 @@
 %% }
 -type agent_knowledge_base() :: #{binary() => any()}.
 
+
 %% Example:
 %% agent_summary() :: #{
 %%   <<"agentId">> => string(),
@@ -946,6 +1054,7 @@
 %% }
 -type agent_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_knowledge_bases_response() :: #{
 %%   <<"knowledgeBaseSummaries">> => list(knowledge_base_summary()()),
@@ -953,14 +1062,17 @@
 %% }
 -type list_knowledge_bases_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_knowledge_base_response() :: #{
 %%   <<"knowledgeBase">> => knowledge_base()
 %% }
 -type get_knowledge_base_response() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_agent_knowledge_base_response() :: #{}
 -type disassociate_agent_knowledge_base_response() :: #{}.
+
 
 %% Example:
 %% list_agent_versions_response() :: #{
@@ -969,20 +1081,24 @@
 %% }
 -type list_agent_versions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_agent_version_response() :: #{
 %%   <<"agentVersion">> => agent_version()
 %% }
 -type get_agent_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_ingestion_job_response() :: #{
 %%   <<"ingestionJob">> => ingestion_job()
 %% }
 -type start_ingestion_job_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_agent_request() :: #{}
 -type get_agent_request() :: #{}.
+
 
 %% Example:
 %% list_agent_knowledge_bases_request() :: #{
@@ -990,6 +1106,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_agent_knowledge_bases_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_source() :: #{
@@ -1005,9 +1122,11 @@
 %%   <<"vectorIngestionConfiguration">> => vector_ingestion_configuration()
 %% }
 -type data_source() :: #{binary() => any()}.
+
 %% Example:
 %% get_knowledge_base_request() :: #{}
 -type get_knowledge_base_request() :: #{}.
+
 
 %% Example:
 %% associate_agent_knowledge_base_request() :: #{
@@ -1017,11 +1136,13 @@
 %% }
 -type associate_agent_knowledge_base_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_agent_knowledge_base_response() :: #{
 %%   <<"agentKnowledgeBase">> => agent_knowledge_base()
 %% }
 -type associate_agent_knowledge_base_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% pinecone_field_mapping() :: #{
@@ -1030,11 +1151,13 @@
 %% }
 -type pinecone_field_mapping() :: #{binary() => any()}.
 
+
 %% Example:
 %% vector_ingestion_configuration() :: #{
 %%   <<"chunkingConfiguration">> => chunking_configuration()
 %% }
 -type vector_ingestion_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% vector_knowledge_base_configuration() :: #{
@@ -1042,11 +1165,13 @@
 %% }
 -type vector_knowledge_base_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_data_source_response() :: #{
 %%   <<"dataSource">> => data_source()
 %% }
 -type get_data_source_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_agent_version_response() :: #{
@@ -1055,9 +1180,11 @@
 %%   <<"agentVersion">> => string()
 %% }
 -type delete_agent_version_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_agent_alias_request() :: #{}
 -type get_agent_alias_request() :: #{}.
+
 
 %% Example:
 %% s3_data_source_configuration() :: #{
@@ -1065,6 +1192,7 @@
 %%   <<"inclusionPrefixes">> => list(string()())
 %% }
 -type s3_data_source_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% rds_field_mapping() :: #{
@@ -1074,6 +1202,7 @@
 %%   <<"vectorField">> => string()
 %% }
 -type rds_field_mapping() :: #{binary() => any()}.
+
 
 %% Example:
 %% prompt_configuration() :: #{
@@ -1086,6 +1215,314 @@
 %% }
 -type prompt_configuration() :: #{binary() => any()}.
 
+-type associate_agent_knowledge_base_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_agent_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_agent_action_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_agent_alias_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_data_source_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_knowledge_base_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_agent_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_agent_action_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_agent_alias_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_agent_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_data_source_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_knowledge_base_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type disassociate_agent_knowledge_base_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_agent_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_agent_action_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_agent_alias_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_agent_knowledge_base_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_agent_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_data_source_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_ingestion_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_knowledge_base_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_agent_action_groups_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_agent_aliases_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_agent_knowledge_bases_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_agent_versions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_agents_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_data_sources_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_ingestion_jobs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_knowledge_bases_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type prepare_agent_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_ingestion_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_agent_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_agent_action_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_agent_alias_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_agent_knowledge_base_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_data_source_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_knowledge_base_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -1094,26 +1531,14 @@
 -spec associate_agent_knowledge_base(map(), binary() | list(), binary() | list(), associate_agent_knowledge_base_request()) ->
     {ok, associate_agent_knowledge_base_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_agent_knowledge_base_errors(), tuple()}.
 associate_agent_knowledge_base(Client, AgentId, AgentVersion, Input) ->
     associate_agent_knowledge_base(Client, AgentId, AgentVersion, Input, []).
 
 -spec associate_agent_knowledge_base(map(), binary() | list(), binary() | list(), associate_agent_knowledge_base_request(), proplists:proplist()) ->
     {ok, associate_agent_knowledge_base_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_agent_knowledge_base_errors(), tuple()}.
 associate_agent_knowledge_base(Client, AgentId, AgentVersion, Input0, Options0) ->
     Method = put,
     Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentversions/", aws_util:encode_uri(AgentVersion), "/knowledgebases/"],
@@ -1140,24 +1565,14 @@ associate_agent_knowledge_base(Client, AgentId, AgentVersion, Input0, Options0) 
 -spec create_agent(map(), create_agent_request()) ->
     {ok, create_agent_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_agent_errors(), tuple()}.
 create_agent(Client, Input) ->
     create_agent(Client, Input, []).
 
 -spec create_agent(map(), create_agent_request(), proplists:proplist()) ->
     {ok, create_agent_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_agent_errors(), tuple()}.
 create_agent(Client, Input0, Options0) ->
     Method = put,
     Path = ["/agents/"],
@@ -1184,26 +1599,14 @@ create_agent(Client, Input0, Options0) ->
 -spec create_agent_action_group(map(), binary() | list(), binary() | list(), create_agent_action_group_request()) ->
     {ok, create_agent_action_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_agent_action_group_errors(), tuple()}.
 create_agent_action_group(Client, AgentId, AgentVersion, Input) ->
     create_agent_action_group(Client, AgentId, AgentVersion, Input, []).
 
 -spec create_agent_action_group(map(), binary() | list(), binary() | list(), create_agent_action_group_request(), proplists:proplist()) ->
     {ok, create_agent_action_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_agent_action_group_errors(), tuple()}.
 create_agent_action_group(Client, AgentId, AgentVersion, Input0, Options0) ->
     Method = put,
     Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentversions/", aws_util:encode_uri(AgentVersion), "/actiongroups/"],
@@ -1230,26 +1633,14 @@ create_agent_action_group(Client, AgentId, AgentVersion, Input0, Options0) ->
 -spec create_agent_alias(map(), binary() | list(), create_agent_alias_request()) ->
     {ok, create_agent_alias_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_agent_alias_errors(), tuple()}.
 create_agent_alias(Client, AgentId, Input) ->
     create_agent_alias(Client, AgentId, Input, []).
 
 -spec create_agent_alias(map(), binary() | list(), create_agent_alias_request(), proplists:proplist()) ->
     {ok, create_agent_alias_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_agent_alias_errors(), tuple()}.
 create_agent_alias(Client, AgentId, Input0, Options0) ->
     Method = put,
     Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentaliases/"],
@@ -1276,26 +1667,14 @@ create_agent_alias(Client, AgentId, Input0, Options0) ->
 -spec create_data_source(map(), binary() | list(), create_data_source_request()) ->
     {ok, create_data_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_data_source_errors(), tuple()}.
 create_data_source(Client, KnowledgeBaseId, Input) ->
     create_data_source(Client, KnowledgeBaseId, Input, []).
 
 -spec create_data_source(map(), binary() | list(), create_data_source_request(), proplists:proplist()) ->
     {ok, create_data_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_data_source_errors(), tuple()}.
 create_data_source(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = put,
     Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/datasources/"],
@@ -1322,24 +1701,14 @@ create_data_source(Client, KnowledgeBaseId, Input0, Options0) ->
 -spec create_knowledge_base(map(), create_knowledge_base_request()) ->
     {ok, create_knowledge_base_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_knowledge_base_errors(), tuple()}.
 create_knowledge_base(Client, Input) ->
     create_knowledge_base(Client, Input, []).
 
 -spec create_knowledge_base(map(), create_knowledge_base_request(), proplists:proplist()) ->
     {ok, create_knowledge_base_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_knowledge_base_errors(), tuple()}.
 create_knowledge_base(Client, Input0, Options0) ->
     Method = put,
     Path = ["/knowledgebases/"],
@@ -1366,24 +1735,14 @@ create_knowledge_base(Client, Input0, Options0) ->
 -spec delete_agent(map(), binary() | list(), delete_agent_request()) ->
     {ok, delete_agent_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_agent_errors(), tuple()}.
 delete_agent(Client, AgentId, Input) ->
     delete_agent(Client, AgentId, Input, []).
 
 -spec delete_agent(map(), binary() | list(), delete_agent_request(), proplists:proplist()) ->
     {ok, delete_agent_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_agent_errors(), tuple()}.
 delete_agent(Client, AgentId, Input0, Options0) ->
     Method = delete,
     Path = ["/agents/", aws_util:encode_uri(AgentId), "/"],
@@ -1411,24 +1770,14 @@ delete_agent(Client, AgentId, Input0, Options0) ->
 -spec delete_agent_action_group(map(), binary() | list(), binary() | list(), binary() | list(), delete_agent_action_group_request()) ->
     {ok, delete_agent_action_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_agent_action_group_errors(), tuple()}.
 delete_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, Input) ->
     delete_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, Input, []).
 
 -spec delete_agent_action_group(map(), binary() | list(), binary() | list(), binary() | list(), delete_agent_action_group_request(), proplists:proplist()) ->
     {ok, delete_agent_action_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_agent_action_group_errors(), tuple()}.
 delete_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, Input0, Options0) ->
     Method = delete,
     Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentversions/", aws_util:encode_uri(AgentVersion), "/actiongroups/", aws_util:encode_uri(ActionGroupId), "/"],
@@ -1456,22 +1805,14 @@ delete_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, Input0, 
 -spec delete_agent_alias(map(), binary() | list(), binary() | list(), delete_agent_alias_request()) ->
     {ok, delete_agent_alias_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_agent_alias_errors(), tuple()}.
 delete_agent_alias(Client, AgentAliasId, AgentId, Input) ->
     delete_agent_alias(Client, AgentAliasId, AgentId, Input, []).
 
 -spec delete_agent_alias(map(), binary() | list(), binary() | list(), delete_agent_alias_request(), proplists:proplist()) ->
     {ok, delete_agent_alias_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_agent_alias_errors(), tuple()}.
 delete_agent_alias(Client, AgentAliasId, AgentId, Input0, Options0) ->
     Method = delete,
     Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentaliases/", aws_util:encode_uri(AgentAliasId), "/"],
@@ -1498,24 +1839,14 @@ delete_agent_alias(Client, AgentAliasId, AgentId, Input0, Options0) ->
 -spec delete_agent_version(map(), binary() | list(), binary() | list(), delete_agent_version_request()) ->
     {ok, delete_agent_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_agent_version_errors(), tuple()}.
 delete_agent_version(Client, AgentId, AgentVersion, Input) ->
     delete_agent_version(Client, AgentId, AgentVersion, Input, []).
 
 -spec delete_agent_version(map(), binary() | list(), binary() | list(), delete_agent_version_request(), proplists:proplist()) ->
     {ok, delete_agent_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_agent_version_errors(), tuple()}.
 delete_agent_version(Client, AgentId, AgentVersion, Input0, Options0) ->
     Method = delete,
     Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentversions/", aws_util:encode_uri(AgentVersion), "/"],
@@ -1543,24 +1874,14 @@ delete_agent_version(Client, AgentId, AgentVersion, Input0, Options0) ->
 -spec delete_data_source(map(), binary() | list(), binary() | list(), delete_data_source_request()) ->
     {ok, delete_data_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_data_source_errors(), tuple()}.
 delete_data_source(Client, DataSourceId, KnowledgeBaseId, Input) ->
     delete_data_source(Client, DataSourceId, KnowledgeBaseId, Input, []).
 
 -spec delete_data_source(map(), binary() | list(), binary() | list(), delete_data_source_request(), proplists:proplist()) ->
     {ok, delete_data_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_data_source_errors(), tuple()}.
 delete_data_source(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
     Method = delete,
     Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/datasources/", aws_util:encode_uri(DataSourceId), ""],
@@ -1587,24 +1908,14 @@ delete_data_source(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
 -spec delete_knowledge_base(map(), binary() | list(), delete_knowledge_base_request()) ->
     {ok, delete_knowledge_base_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_knowledge_base_errors(), tuple()}.
 delete_knowledge_base(Client, KnowledgeBaseId, Input) ->
     delete_knowledge_base(Client, KnowledgeBaseId, Input, []).
 
 -spec delete_knowledge_base(map(), binary() | list(), delete_knowledge_base_request(), proplists:proplist()) ->
     {ok, delete_knowledge_base_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_knowledge_base_errors(), tuple()}.
 delete_knowledge_base(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = delete,
     Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), ""],
@@ -1631,24 +1942,14 @@ delete_knowledge_base(Client, KnowledgeBaseId, Input0, Options0) ->
 -spec disassociate_agent_knowledge_base(map(), binary() | list(), binary() | list(), binary() | list(), disassociate_agent_knowledge_base_request()) ->
     {ok, disassociate_agent_knowledge_base_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_agent_knowledge_base_errors(), tuple()}.
 disassociate_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, Input) ->
     disassociate_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, Input, []).
 
 -spec disassociate_agent_knowledge_base(map(), binary() | list(), binary() | list(), binary() | list(), disassociate_agent_knowledge_base_request(), proplists:proplist()) ->
     {ok, disassociate_agent_knowledge_base_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_agent_knowledge_base_errors(), tuple()}.
 disassociate_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, Input0, Options0) ->
     Method = delete,
     Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentversions/", aws_util:encode_uri(AgentVersion), "/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/"],
@@ -1675,11 +1976,7 @@ disassociate_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId
 -spec get_agent(map(), binary() | list()) ->
     {ok, get_agent_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_agent_errors(), tuple()}.
 get_agent(Client, AgentId)
   when is_map(Client) ->
     get_agent(Client, AgentId, #{}, #{}).
@@ -1687,11 +1984,7 @@ get_agent(Client, AgentId)
 -spec get_agent(map(), binary() | list(), map(), map()) ->
     {ok, get_agent_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_agent_errors(), tuple()}.
 get_agent(Client, AgentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_agent(Client, AgentId, QueryMap, HeadersMap, []).
@@ -1699,11 +1992,7 @@ get_agent(Client, AgentId, QueryMap, HeadersMap)
 -spec get_agent(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_agent_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_agent_errors(), tuple()}.
 get_agent(Client, AgentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/agents/", aws_util:encode_uri(AgentId), "/"],
@@ -1724,11 +2013,7 @@ get_agent(Client, AgentId, QueryMap, HeadersMap, Options0)
 -spec get_agent_action_group(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_agent_action_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_agent_action_group_errors(), tuple()}.
 get_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion)
   when is_map(Client) ->
     get_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, #{}, #{}).
@@ -1736,11 +2021,7 @@ get_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion)
 -spec get_agent_action_group(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_agent_action_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_agent_action_group_errors(), tuple()}.
 get_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, QueryMap, HeadersMap, []).
@@ -1748,11 +2029,7 @@ get_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, QueryMap, H
 -spec get_agent_action_group(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_agent_action_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_agent_action_group_errors(), tuple()}.
 get_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentversions/", aws_util:encode_uri(AgentVersion), "/actiongroups/", aws_util:encode_uri(ActionGroupId), "/"],
@@ -1773,11 +2050,7 @@ get_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, QueryMap, H
 -spec get_agent_alias(map(), binary() | list(), binary() | list()) ->
     {ok, get_agent_alias_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_agent_alias_errors(), tuple()}.
 get_agent_alias(Client, AgentAliasId, AgentId)
   when is_map(Client) ->
     get_agent_alias(Client, AgentAliasId, AgentId, #{}, #{}).
@@ -1785,11 +2058,7 @@ get_agent_alias(Client, AgentAliasId, AgentId)
 -spec get_agent_alias(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_agent_alias_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_agent_alias_errors(), tuple()}.
 get_agent_alias(Client, AgentAliasId, AgentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_agent_alias(Client, AgentAliasId, AgentId, QueryMap, HeadersMap, []).
@@ -1797,11 +2066,7 @@ get_agent_alias(Client, AgentAliasId, AgentId, QueryMap, HeadersMap)
 -spec get_agent_alias(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_agent_alias_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_agent_alias_errors(), tuple()}.
 get_agent_alias(Client, AgentAliasId, AgentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentaliases/", aws_util:encode_uri(AgentAliasId), "/"],
@@ -1823,11 +2088,7 @@ get_agent_alias(Client, AgentAliasId, AgentId, QueryMap, HeadersMap, Options0)
 -spec get_agent_knowledge_base(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_agent_knowledge_base_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_agent_knowledge_base_errors(), tuple()}.
 get_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId)
   when is_map(Client) ->
     get_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, #{}, #{}).
@@ -1835,11 +2096,7 @@ get_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId)
 -spec get_agent_knowledge_base(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_agent_knowledge_base_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_agent_knowledge_base_errors(), tuple()}.
 get_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, QueryMap, HeadersMap, []).
@@ -1847,11 +2104,7 @@ get_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, QueryMa
 -spec get_agent_knowledge_base(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_agent_knowledge_base_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_agent_knowledge_base_errors(), tuple()}.
 get_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentversions/", aws_util:encode_uri(AgentVersion), "/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/"],
@@ -1872,11 +2125,7 @@ get_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, QueryMa
 -spec get_agent_version(map(), binary() | list(), binary() | list()) ->
     {ok, get_agent_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_agent_version_errors(), tuple()}.
 get_agent_version(Client, AgentId, AgentVersion)
   when is_map(Client) ->
     get_agent_version(Client, AgentId, AgentVersion, #{}, #{}).
@@ -1884,11 +2133,7 @@ get_agent_version(Client, AgentId, AgentVersion)
 -spec get_agent_version(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_agent_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_agent_version_errors(), tuple()}.
 get_agent_version(Client, AgentId, AgentVersion, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_agent_version(Client, AgentId, AgentVersion, QueryMap, HeadersMap, []).
@@ -1896,11 +2141,7 @@ get_agent_version(Client, AgentId, AgentVersion, QueryMap, HeadersMap)
 -spec get_agent_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_agent_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_agent_version_errors(), tuple()}.
 get_agent_version(Client, AgentId, AgentVersion, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentversions/", aws_util:encode_uri(AgentVersion), "/"],
@@ -1921,11 +2162,7 @@ get_agent_version(Client, AgentId, AgentVersion, QueryMap, HeadersMap, Options0)
 -spec get_data_source(map(), binary() | list(), binary() | list()) ->
     {ok, get_data_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_data_source_errors(), tuple()}.
 get_data_source(Client, DataSourceId, KnowledgeBaseId)
   when is_map(Client) ->
     get_data_source(Client, DataSourceId, KnowledgeBaseId, #{}, #{}).
@@ -1933,11 +2170,7 @@ get_data_source(Client, DataSourceId, KnowledgeBaseId)
 -spec get_data_source(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_data_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_data_source_errors(), tuple()}.
 get_data_source(Client, DataSourceId, KnowledgeBaseId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_source(Client, DataSourceId, KnowledgeBaseId, QueryMap, HeadersMap, []).
@@ -1945,11 +2178,7 @@ get_data_source(Client, DataSourceId, KnowledgeBaseId, QueryMap, HeadersMap)
 -spec get_data_source(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_data_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_data_source_errors(), tuple()}.
 get_data_source(Client, DataSourceId, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/datasources/", aws_util:encode_uri(DataSourceId), ""],
@@ -1970,11 +2199,7 @@ get_data_source(Client, DataSourceId, KnowledgeBaseId, QueryMap, HeadersMap, Opt
 -spec get_ingestion_job(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_ingestion_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_ingestion_job_errors(), tuple()}.
 get_ingestion_job(Client, DataSourceId, IngestionJobId, KnowledgeBaseId)
   when is_map(Client) ->
     get_ingestion_job(Client, DataSourceId, IngestionJobId, KnowledgeBaseId, #{}, #{}).
@@ -1982,11 +2207,7 @@ get_ingestion_job(Client, DataSourceId, IngestionJobId, KnowledgeBaseId)
 -spec get_ingestion_job(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_ingestion_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_ingestion_job_errors(), tuple()}.
 get_ingestion_job(Client, DataSourceId, IngestionJobId, KnowledgeBaseId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_ingestion_job(Client, DataSourceId, IngestionJobId, KnowledgeBaseId, QueryMap, HeadersMap, []).
@@ -1994,11 +2215,7 @@ get_ingestion_job(Client, DataSourceId, IngestionJobId, KnowledgeBaseId, QueryMa
 -spec get_ingestion_job(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_ingestion_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_ingestion_job_errors(), tuple()}.
 get_ingestion_job(Client, DataSourceId, IngestionJobId, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/datasources/", aws_util:encode_uri(DataSourceId), "/ingestionjobs/", aws_util:encode_uri(IngestionJobId), ""],
@@ -2019,11 +2236,7 @@ get_ingestion_job(Client, DataSourceId, IngestionJobId, KnowledgeBaseId, QueryMa
 -spec get_knowledge_base(map(), binary() | list()) ->
     {ok, get_knowledge_base_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_knowledge_base_errors(), tuple()}.
 get_knowledge_base(Client, KnowledgeBaseId)
   when is_map(Client) ->
     get_knowledge_base(Client, KnowledgeBaseId, #{}, #{}).
@@ -2031,11 +2244,7 @@ get_knowledge_base(Client, KnowledgeBaseId)
 -spec get_knowledge_base(map(), binary() | list(), map(), map()) ->
     {ok, get_knowledge_base_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_knowledge_base_errors(), tuple()}.
 get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap, []).
@@ -2043,11 +2252,7 @@ get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap)
 -spec get_knowledge_base(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_knowledge_base_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_knowledge_base_errors(), tuple()}.
 get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), ""],
@@ -2068,22 +2273,14 @@ get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
 -spec list_agent_action_groups(map(), binary() | list(), binary() | list(), list_agent_action_groups_request()) ->
     {ok, list_agent_action_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_agent_action_groups_errors(), tuple()}.
 list_agent_action_groups(Client, AgentId, AgentVersion, Input) ->
     list_agent_action_groups(Client, AgentId, AgentVersion, Input, []).
 
 -spec list_agent_action_groups(map(), binary() | list(), binary() | list(), list_agent_action_groups_request(), proplists:proplist()) ->
     {ok, list_agent_action_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_agent_action_groups_errors(), tuple()}.
 list_agent_action_groups(Client, AgentId, AgentVersion, Input0, Options0) ->
     Method = post,
     Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentversions/", aws_util:encode_uri(AgentVersion), "/actiongroups/"],
@@ -2110,22 +2307,14 @@ list_agent_action_groups(Client, AgentId, AgentVersion, Input0, Options0) ->
 -spec list_agent_aliases(map(), binary() | list(), list_agent_aliases_request()) ->
     {ok, list_agent_aliases_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_agent_aliases_errors(), tuple()}.
 list_agent_aliases(Client, AgentId, Input) ->
     list_agent_aliases(Client, AgentId, Input, []).
 
 -spec list_agent_aliases(map(), binary() | list(), list_agent_aliases_request(), proplists:proplist()) ->
     {ok, list_agent_aliases_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_agent_aliases_errors(), tuple()}.
 list_agent_aliases(Client, AgentId, Input0, Options0) ->
     Method = post,
     Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentaliases/"],
@@ -2153,22 +2342,14 @@ list_agent_aliases(Client, AgentId, Input0, Options0) ->
 -spec list_agent_knowledge_bases(map(), binary() | list(), binary() | list(), list_agent_knowledge_bases_request()) ->
     {ok, list_agent_knowledge_bases_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_agent_knowledge_bases_errors(), tuple()}.
 list_agent_knowledge_bases(Client, AgentId, AgentVersion, Input) ->
     list_agent_knowledge_bases(Client, AgentId, AgentVersion, Input, []).
 
 -spec list_agent_knowledge_bases(map(), binary() | list(), binary() | list(), list_agent_knowledge_bases_request(), proplists:proplist()) ->
     {ok, list_agent_knowledge_bases_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_agent_knowledge_bases_errors(), tuple()}.
 list_agent_knowledge_bases(Client, AgentId, AgentVersion, Input0, Options0) ->
     Method = post,
     Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentversions/", aws_util:encode_uri(AgentVersion), "/knowledgebases/"],
@@ -2195,22 +2376,14 @@ list_agent_knowledge_bases(Client, AgentId, AgentVersion, Input0, Options0) ->
 -spec list_agent_versions(map(), binary() | list(), list_agent_versions_request()) ->
     {ok, list_agent_versions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_agent_versions_errors(), tuple()}.
 list_agent_versions(Client, AgentId, Input) ->
     list_agent_versions(Client, AgentId, Input, []).
 
 -spec list_agent_versions(map(), binary() | list(), list_agent_versions_request(), proplists:proplist()) ->
     {ok, list_agent_versions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_agent_versions_errors(), tuple()}.
 list_agent_versions(Client, AgentId, Input0, Options0) ->
     Method = post,
     Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentversions/"],
@@ -2237,20 +2410,14 @@ list_agent_versions(Client, AgentId, Input0, Options0) ->
 -spec list_agents(map(), list_agents_request()) ->
     {ok, list_agents_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_agents_errors(), tuple()}.
 list_agents(Client, Input) ->
     list_agents(Client, Input, []).
 
 -spec list_agents(map(), list_agents_request(), proplists:proplist()) ->
     {ok, list_agents_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_agents_errors(), tuple()}.
 list_agents(Client, Input0, Options0) ->
     Method = post,
     Path = ["/agents/"],
@@ -2277,22 +2444,14 @@ list_agents(Client, Input0, Options0) ->
 -spec list_data_sources(map(), binary() | list(), list_data_sources_request()) ->
     {ok, list_data_sources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_data_sources_errors(), tuple()}.
 list_data_sources(Client, KnowledgeBaseId, Input) ->
     list_data_sources(Client, KnowledgeBaseId, Input, []).
 
 -spec list_data_sources(map(), binary() | list(), list_data_sources_request(), proplists:proplist()) ->
     {ok, list_data_sources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_data_sources_errors(), tuple()}.
 list_data_sources(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/datasources/"],
@@ -2319,22 +2478,14 @@ list_data_sources(Client, KnowledgeBaseId, Input0, Options0) ->
 -spec list_ingestion_jobs(map(), binary() | list(), binary() | list(), list_ingestion_jobs_request()) ->
     {ok, list_ingestion_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_ingestion_jobs_errors(), tuple()}.
 list_ingestion_jobs(Client, DataSourceId, KnowledgeBaseId, Input) ->
     list_ingestion_jobs(Client, DataSourceId, KnowledgeBaseId, Input, []).
 
 -spec list_ingestion_jobs(map(), binary() | list(), binary() | list(), list_ingestion_jobs_request(), proplists:proplist()) ->
     {ok, list_ingestion_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_ingestion_jobs_errors(), tuple()}.
 list_ingestion_jobs(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/datasources/", aws_util:encode_uri(DataSourceId), "/ingestionjobs/"],
@@ -2361,20 +2512,14 @@ list_ingestion_jobs(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
 -spec list_knowledge_bases(map(), list_knowledge_bases_request()) ->
     {ok, list_knowledge_bases_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_knowledge_bases_errors(), tuple()}.
 list_knowledge_bases(Client, Input) ->
     list_knowledge_bases(Client, Input, []).
 
 -spec list_knowledge_bases(map(), list_knowledge_bases_request(), proplists:proplist()) ->
     {ok, list_knowledge_bases_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_knowledge_bases_errors(), tuple()}.
 list_knowledge_bases(Client, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgebases/"],
@@ -2401,11 +2546,7 @@ list_knowledge_bases(Client, Input0, Options0) ->
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -2413,11 +2554,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -2425,11 +2562,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2450,26 +2583,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec prepare_agent(map(), binary() | list(), prepare_agent_request()) ->
     {ok, prepare_agent_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, prepare_agent_errors(), tuple()}.
 prepare_agent(Client, AgentId, Input) ->
     prepare_agent(Client, AgentId, Input, []).
 
 -spec prepare_agent(map(), binary() | list(), prepare_agent_request(), proplists:proplist()) ->
     {ok, prepare_agent_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, prepare_agent_errors(), tuple()}.
 prepare_agent(Client, AgentId, Input0, Options0) ->
     Method = post,
     Path = ["/agents/", aws_util:encode_uri(AgentId), "/"],
@@ -2496,26 +2617,14 @@ prepare_agent(Client, AgentId, Input0, Options0) ->
 -spec start_ingestion_job(map(), binary() | list(), binary() | list(), start_ingestion_job_request()) ->
     {ok, start_ingestion_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_ingestion_job_errors(), tuple()}.
 start_ingestion_job(Client, DataSourceId, KnowledgeBaseId, Input) ->
     start_ingestion_job(Client, DataSourceId, KnowledgeBaseId, Input, []).
 
 -spec start_ingestion_job(map(), binary() | list(), binary() | list(), start_ingestion_job_request(), proplists:proplist()) ->
     {ok, start_ingestion_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_ingestion_job_errors(), tuple()}.
 start_ingestion_job(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
     Method = put,
     Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/datasources/", aws_util:encode_uri(DataSourceId), "/ingestionjobs/"],
@@ -2542,24 +2651,14 @@ start_ingestion_job(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2586,22 +2685,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2629,26 +2720,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_agent(map(), binary() | list(), update_agent_request()) ->
     {ok, update_agent_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_agent_errors(), tuple()}.
 update_agent(Client, AgentId, Input) ->
     update_agent(Client, AgentId, Input, []).
 
 -spec update_agent(map(), binary() | list(), update_agent_request(), proplists:proplist()) ->
     {ok, update_agent_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_agent_errors(), tuple()}.
 update_agent(Client, AgentId, Input0, Options0) ->
     Method = put,
     Path = ["/agents/", aws_util:encode_uri(AgentId), "/"],
@@ -2675,26 +2754,14 @@ update_agent(Client, AgentId, Input0, Options0) ->
 -spec update_agent_action_group(map(), binary() | list(), binary() | list(), binary() | list(), update_agent_action_group_request()) ->
     {ok, update_agent_action_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_agent_action_group_errors(), tuple()}.
 update_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, Input) ->
     update_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, Input, []).
 
 -spec update_agent_action_group(map(), binary() | list(), binary() | list(), binary() | list(), update_agent_action_group_request(), proplists:proplist()) ->
     {ok, update_agent_action_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_agent_action_group_errors(), tuple()}.
 update_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, Input0, Options0) ->
     Method = put,
     Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentversions/", aws_util:encode_uri(AgentVersion), "/actiongroups/", aws_util:encode_uri(ActionGroupId), "/"],
@@ -2721,26 +2788,14 @@ update_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, Input0, 
 -spec update_agent_alias(map(), binary() | list(), binary() | list(), update_agent_alias_request()) ->
     {ok, update_agent_alias_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_agent_alias_errors(), tuple()}.
 update_agent_alias(Client, AgentAliasId, AgentId, Input) ->
     update_agent_alias(Client, AgentAliasId, AgentId, Input, []).
 
 -spec update_agent_alias(map(), binary() | list(), binary() | list(), update_agent_alias_request(), proplists:proplist()) ->
     {ok, update_agent_alias_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_agent_alias_errors(), tuple()}.
 update_agent_alias(Client, AgentAliasId, AgentId, Input0, Options0) ->
     Method = put,
     Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentaliases/", aws_util:encode_uri(AgentAliasId), "/"],
@@ -2768,24 +2823,14 @@ update_agent_alias(Client, AgentAliasId, AgentId, Input0, Options0) ->
 -spec update_agent_knowledge_base(map(), binary() | list(), binary() | list(), binary() | list(), update_agent_knowledge_base_request()) ->
     {ok, update_agent_knowledge_base_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_agent_knowledge_base_errors(), tuple()}.
 update_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, Input) ->
     update_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, Input, []).
 
 -spec update_agent_knowledge_base(map(), binary() | list(), binary() | list(), binary() | list(), update_agent_knowledge_base_request(), proplists:proplist()) ->
     {ok, update_agent_knowledge_base_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_agent_knowledge_base_errors(), tuple()}.
 update_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, Input0, Options0) ->
     Method = put,
     Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentversions/", aws_util:encode_uri(AgentVersion), "/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/"],
@@ -2812,24 +2857,14 @@ update_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, Inpu
 -spec update_data_source(map(), binary() | list(), binary() | list(), update_data_source_request()) ->
     {ok, update_data_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_data_source_errors(), tuple()}.
 update_data_source(Client, DataSourceId, KnowledgeBaseId, Input) ->
     update_data_source(Client, DataSourceId, KnowledgeBaseId, Input, []).
 
 -spec update_data_source(map(), binary() | list(), binary() | list(), update_data_source_request(), proplists:proplist()) ->
     {ok, update_data_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_data_source_errors(), tuple()}.
 update_data_source(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
     Method = put,
     Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/datasources/", aws_util:encode_uri(DataSourceId), ""],
@@ -2856,24 +2891,14 @@ update_data_source(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
 -spec update_knowledge_base(map(), binary() | list(), update_knowledge_base_request()) ->
     {ok, update_knowledge_base_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_knowledge_base_errors(), tuple()}.
 update_knowledge_base(Client, KnowledgeBaseId, Input) ->
     update_knowledge_base(Client, KnowledgeBaseId, Input, []).
 
 -spec update_knowledge_base(map(), binary() | list(), update_knowledge_base_request(), proplists:proplist()) ->
     {ok, update_knowledge_base_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_knowledge_base_errors(), tuple()}.
 update_knowledge_base(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = put,
     Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), ""],

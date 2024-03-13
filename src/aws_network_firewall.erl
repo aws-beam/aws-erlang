@@ -1291,6 +1291,252 @@
 %% }
 -type describe_firewall_policy_response() :: #{binary() => any()}.
 
+-type associate_firewall_policy_errors() ::
+    invalid_token_exception() | 
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type associate_subnets_errors() ::
+    invalid_token_exception() | 
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    insufficient_capacity_exception() | 
+    invalid_operation_exception().
+
+-type create_firewall_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    insufficient_capacity_exception() | 
+    invalid_operation_exception().
+
+-type create_firewall_policy_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    insufficient_capacity_exception().
+
+-type create_rule_group_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    insufficient_capacity_exception().
+
+-type create_t_l_s_inspection_configuration_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    insufficient_capacity_exception().
+
+-type delete_firewall_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception() | 
+    unsupported_operation_exception().
+
+-type delete_firewall_policy_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception() | 
+    unsupported_operation_exception().
+
+-type delete_resource_policy_errors() ::
+    throttling_exception() | 
+    invalid_resource_policy_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type delete_rule_group_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception() | 
+    unsupported_operation_exception().
+
+-type delete_t_l_s_inspection_configuration_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type describe_firewall_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_firewall_policy_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_logging_configuration_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_resource_policy_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_rule_group_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_rule_group_metadata_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_t_l_s_inspection_configuration_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type disassociate_subnets_errors() ::
+    invalid_token_exception() | 
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type list_firewall_policies_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception().
+
+-type list_firewalls_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception().
+
+-type list_rule_groups_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception().
+
+-type list_t_l_s_inspection_configurations_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type put_resource_policy_errors() ::
+    throttling_exception() | 
+    invalid_resource_policy_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type update_firewall_delete_protection_errors() ::
+    invalid_token_exception() | 
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_owner_check_exception().
+
+-type update_firewall_description_errors() ::
+    invalid_token_exception() | 
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type update_firewall_encryption_configuration_errors() ::
+    invalid_token_exception() | 
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_owner_check_exception().
+
+-type update_firewall_policy_errors() ::
+    invalid_token_exception() | 
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type update_firewall_policy_change_protection_errors() ::
+    invalid_token_exception() | 
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_owner_check_exception().
+
+-type update_logging_configuration_errors() ::
+    invalid_token_exception() | 
+    log_destination_permission_exception() | 
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type update_rule_group_errors() ::
+    invalid_token_exception() | 
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type update_subnet_change_protection_errors() ::
+    invalid_token_exception() | 
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_owner_check_exception().
+
+-type update_t_l_s_inspection_configuration_errors() ::
+    invalid_token_exception() | 
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -1308,12 +1554,7 @@
 -spec associate_firewall_policy(map(), associate_firewall_policy_request()) ->
     {ok, associate_firewall_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_firewall_policy_errors(), tuple()}.
 associate_firewall_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_firewall_policy(Client, Input, []).
@@ -1321,12 +1562,7 @@ associate_firewall_policy(Client, Input)
 -spec associate_firewall_policy(map(), associate_firewall_policy_request(), proplists:proplist()) ->
     {ok, associate_firewall_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_firewall_policy_errors(), tuple()}.
 associate_firewall_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateFirewallPolicy">>, Input, Options).
@@ -1346,13 +1582,7 @@ associate_firewall_policy(Client, Input, Options)
 -spec associate_subnets(map(), associate_subnets_request()) ->
     {ok, associate_subnets_response(), tuple()} |
     {error, any()} |
-    {error, insufficient_capacity_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_subnets_errors(), tuple()}.
 associate_subnets(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_subnets(Client, Input, []).
@@ -1360,13 +1590,7 @@ associate_subnets(Client, Input)
 -spec associate_subnets(map(), associate_subnets_request(), proplists:proplist()) ->
     {ok, associate_subnets_response(), tuple()} |
     {error, any()} |
-    {error, insufficient_capacity_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_subnets_errors(), tuple()}.
 associate_subnets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateSubnets">>, Input, Options).
@@ -1397,12 +1621,7 @@ associate_subnets(Client, Input, Options)
 -spec create_firewall(map(), create_firewall_request()) ->
     {ok, create_firewall_response(), tuple()} |
     {error, any()} |
-    {error, insufficient_capacity_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_firewall_errors(), tuple()}.
 create_firewall(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_firewall(Client, Input, []).
@@ -1410,12 +1629,7 @@ create_firewall(Client, Input)
 -spec create_firewall(map(), create_firewall_request(), proplists:proplist()) ->
     {ok, create_firewall_response(), tuple()} |
     {error, any()} |
-    {error, insufficient_capacity_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_firewall_errors(), tuple()}.
 create_firewall(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFirewall">>, Input, Options).
@@ -1431,11 +1645,7 @@ create_firewall(Client, Input, Options)
 -spec create_firewall_policy(map(), create_firewall_policy_request()) ->
     {ok, create_firewall_policy_response(), tuple()} |
     {error, any()} |
-    {error, insufficient_capacity_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_firewall_policy_errors(), tuple()}.
 create_firewall_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_firewall_policy(Client, Input, []).
@@ -1443,11 +1653,7 @@ create_firewall_policy(Client, Input)
 -spec create_firewall_policy(map(), create_firewall_policy_request(), proplists:proplist()) ->
     {ok, create_firewall_policy_response(), tuple()} |
     {error, any()} |
-    {error, insufficient_capacity_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_firewall_policy_errors(), tuple()}.
 create_firewall_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFirewallPolicy">>, Input, Options).
@@ -1461,11 +1667,7 @@ create_firewall_policy(Client, Input, Options)
 -spec create_rule_group(map(), create_rule_group_request()) ->
     {ok, create_rule_group_response(), tuple()} |
     {error, any()} |
-    {error, insufficient_capacity_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_rule_group_errors(), tuple()}.
 create_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_rule_group(Client, Input, []).
@@ -1473,11 +1675,7 @@ create_rule_group(Client, Input)
 -spec create_rule_group(map(), create_rule_group_request(), proplists:proplist()) ->
     {ok, create_rule_group_response(), tuple()} |
     {error, any()} |
-    {error, insufficient_capacity_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_rule_group_errors(), tuple()}.
 create_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRuleGroup">>, Input, Options).
@@ -1510,11 +1708,7 @@ create_rule_group(Client, Input, Options)
 -spec create_t_l_s_inspection_configuration(map(), create_t_l_s_inspection_configuration_request()) ->
     {ok, create_t_l_s_inspection_configuration_response(), tuple()} |
     {error, any()} |
-    {error, insufficient_capacity_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_t_l_s_inspection_configuration_errors(), tuple()}.
 create_t_l_s_inspection_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_t_l_s_inspection_configuration(Client, Input, []).
@@ -1522,11 +1716,7 @@ create_t_l_s_inspection_configuration(Client, Input)
 -spec create_t_l_s_inspection_configuration(map(), create_t_l_s_inspection_configuration_request(), proplists:proplist()) ->
     {ok, create_t_l_s_inspection_configuration_response(), tuple()} |
     {error, any()} |
-    {error, insufficient_capacity_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_t_l_s_inspection_configuration_errors(), tuple()}.
 create_t_l_s_inspection_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTLSInspectionConfiguration">>, Input, Options).
@@ -1554,12 +1744,7 @@ create_t_l_s_inspection_configuration(Client, Input, Options)
 -spec delete_firewall(map(), delete_firewall_request()) ->
     {ok, delete_firewall_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, delete_firewall_errors(), tuple()}.
 delete_firewall(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_firewall(Client, Input, []).
@@ -1567,12 +1752,7 @@ delete_firewall(Client, Input)
 -spec delete_firewall(map(), delete_firewall_request(), proplists:proplist()) ->
     {ok, delete_firewall_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, delete_firewall_errors(), tuple()}.
 delete_firewall(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFirewall">>, Input, Options).
@@ -1581,12 +1761,7 @@ delete_firewall(Client, Input, Options)
 -spec delete_firewall_policy(map(), delete_firewall_policy_request()) ->
     {ok, delete_firewall_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, delete_firewall_policy_errors(), tuple()}.
 delete_firewall_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_firewall_policy(Client, Input, []).
@@ -1594,12 +1769,7 @@ delete_firewall_policy(Client, Input)
 -spec delete_firewall_policy(map(), delete_firewall_policy_request(), proplists:proplist()) ->
     {ok, delete_firewall_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, delete_firewall_policy_errors(), tuple()}.
 delete_firewall_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFirewallPolicy">>, Input, Options).
@@ -1609,11 +1779,7 @@ delete_firewall_policy(Client, Input, Options)
 -spec delete_resource_policy(map(), delete_resource_policy_request()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_resource_policy_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
@@ -1621,11 +1787,7 @@ delete_resource_policy(Client, Input)
 -spec delete_resource_policy(map(), delete_resource_policy_request(), proplists:proplist()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_resource_policy_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourcePolicy">>, Input, Options).
@@ -1634,12 +1796,7 @@ delete_resource_policy(Client, Input, Options)
 -spec delete_rule_group(map(), delete_rule_group_request()) ->
     {ok, delete_rule_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, delete_rule_group_errors(), tuple()}.
 delete_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rule_group(Client, Input, []).
@@ -1647,12 +1804,7 @@ delete_rule_group(Client, Input)
 -spec delete_rule_group(map(), delete_rule_group_request(), proplists:proplist()) ->
     {ok, delete_rule_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, delete_rule_group_errors(), tuple()}.
 delete_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRuleGroup">>, Input, Options).
@@ -1661,11 +1813,7 @@ delete_rule_group(Client, Input, Options)
 -spec delete_t_l_s_inspection_configuration(map(), delete_t_l_s_inspection_configuration_request()) ->
     {ok, delete_t_l_s_inspection_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_t_l_s_inspection_configuration_errors(), tuple()}.
 delete_t_l_s_inspection_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_t_l_s_inspection_configuration(Client, Input, []).
@@ -1673,11 +1821,7 @@ delete_t_l_s_inspection_configuration(Client, Input)
 -spec delete_t_l_s_inspection_configuration(map(), delete_t_l_s_inspection_configuration_request(), proplists:proplist()) ->
     {ok, delete_t_l_s_inspection_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_t_l_s_inspection_configuration_errors(), tuple()}.
 delete_t_l_s_inspection_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTLSInspectionConfiguration">>, Input, Options).
@@ -1686,10 +1830,7 @@ delete_t_l_s_inspection_configuration(Client, Input, Options)
 -spec describe_firewall(map(), describe_firewall_request()) ->
     {ok, describe_firewall_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_firewall_errors(), tuple()}.
 describe_firewall(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_firewall(Client, Input, []).
@@ -1697,10 +1838,7 @@ describe_firewall(Client, Input)
 -spec describe_firewall(map(), describe_firewall_request(), proplists:proplist()) ->
     {ok, describe_firewall_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_firewall_errors(), tuple()}.
 describe_firewall(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFirewall">>, Input, Options).
@@ -1709,10 +1847,7 @@ describe_firewall(Client, Input, Options)
 -spec describe_firewall_policy(map(), describe_firewall_policy_request()) ->
     {ok, describe_firewall_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_firewall_policy_errors(), tuple()}.
 describe_firewall_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_firewall_policy(Client, Input, []).
@@ -1720,10 +1855,7 @@ describe_firewall_policy(Client, Input)
 -spec describe_firewall_policy(map(), describe_firewall_policy_request(), proplists:proplist()) ->
     {ok, describe_firewall_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_firewall_policy_errors(), tuple()}.
 describe_firewall_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFirewallPolicy">>, Input, Options).
@@ -1732,10 +1864,7 @@ describe_firewall_policy(Client, Input, Options)
 -spec describe_logging_configuration(map(), describe_logging_configuration_request()) ->
     {ok, describe_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_logging_configuration_errors(), tuple()}.
 describe_logging_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_logging_configuration(Client, Input, []).
@@ -1743,10 +1872,7 @@ describe_logging_configuration(Client, Input)
 -spec describe_logging_configuration(map(), describe_logging_configuration_request(), proplists:proplist()) ->
     {ok, describe_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_logging_configuration_errors(), tuple()}.
 describe_logging_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLoggingConfiguration">>, Input, Options).
@@ -1756,10 +1882,7 @@ describe_logging_configuration(Client, Input, Options)
 -spec describe_resource_policy(map(), describe_resource_policy_request()) ->
     {ok, describe_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_resource_policy_errors(), tuple()}.
 describe_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_resource_policy(Client, Input, []).
@@ -1767,10 +1890,7 @@ describe_resource_policy(Client, Input)
 -spec describe_resource_policy(map(), describe_resource_policy_request(), proplists:proplist()) ->
     {ok, describe_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_resource_policy_errors(), tuple()}.
 describe_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeResourcePolicy">>, Input, Options).
@@ -1779,10 +1899,7 @@ describe_resource_policy(Client, Input, Options)
 -spec describe_rule_group(map(), describe_rule_group_request()) ->
     {ok, describe_rule_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_rule_group_errors(), tuple()}.
 describe_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_rule_group(Client, Input, []).
@@ -1790,10 +1907,7 @@ describe_rule_group(Client, Input)
 -spec describe_rule_group(map(), describe_rule_group_request(), proplists:proplist()) ->
     {ok, describe_rule_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_rule_group_errors(), tuple()}.
 describe_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRuleGroup">>, Input, Options).
@@ -1808,10 +1922,7 @@ describe_rule_group(Client, Input, Options)
 -spec describe_rule_group_metadata(map(), describe_rule_group_metadata_request()) ->
     {ok, describe_rule_group_metadata_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_rule_group_metadata_errors(), tuple()}.
 describe_rule_group_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_rule_group_metadata(Client, Input, []).
@@ -1819,10 +1930,7 @@ describe_rule_group_metadata(Client, Input)
 -spec describe_rule_group_metadata(map(), describe_rule_group_metadata_request(), proplists:proplist()) ->
     {ok, describe_rule_group_metadata_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_rule_group_metadata_errors(), tuple()}.
 describe_rule_group_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRuleGroupMetadata">>, Input, Options).
@@ -1832,10 +1940,7 @@ describe_rule_group_metadata(Client, Input, Options)
 -spec describe_t_l_s_inspection_configuration(map(), describe_t_l_s_inspection_configuration_request()) ->
     {ok, describe_t_l_s_inspection_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_t_l_s_inspection_configuration_errors(), tuple()}.
 describe_t_l_s_inspection_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_t_l_s_inspection_configuration(Client, Input, []).
@@ -1843,10 +1948,7 @@ describe_t_l_s_inspection_configuration(Client, Input)
 -spec describe_t_l_s_inspection_configuration(map(), describe_t_l_s_inspection_configuration_request(), proplists:proplist()) ->
     {ok, describe_t_l_s_inspection_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_t_l_s_inspection_configuration_errors(), tuple()}.
 describe_t_l_s_inspection_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTLSInspectionConfiguration">>, Input, Options).
@@ -1860,12 +1962,7 @@ describe_t_l_s_inspection_configuration(Client, Input, Options)
 -spec disassociate_subnets(map(), disassociate_subnets_request()) ->
     {ok, disassociate_subnets_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_subnets_errors(), tuple()}.
 disassociate_subnets(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_subnets(Client, Input, []).
@@ -1873,12 +1970,7 @@ disassociate_subnets(Client, Input)
 -spec disassociate_subnets(map(), disassociate_subnets_request(), proplists:proplist()) ->
     {ok, disassociate_subnets_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_subnets_errors(), tuple()}.
 disassociate_subnets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateSubnets">>, Input, Options).
@@ -1893,9 +1985,7 @@ disassociate_subnets(Client, Input, Options)
 -spec list_firewall_policies(map(), list_firewall_policies_request()) ->
     {ok, list_firewall_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_firewall_policies_errors(), tuple()}.
 list_firewall_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_firewall_policies(Client, Input, []).
@@ -1903,9 +1993,7 @@ list_firewall_policies(Client, Input)
 -spec list_firewall_policies(map(), list_firewall_policies_request(), proplists:proplist()) ->
     {ok, list_firewall_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_firewall_policies_errors(), tuple()}.
 list_firewall_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFirewallPolicies">>, Input, Options).
@@ -1922,9 +2010,7 @@ list_firewall_policies(Client, Input, Options)
 -spec list_firewalls(map(), list_firewalls_request()) ->
     {ok, list_firewalls_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_firewalls_errors(), tuple()}.
 list_firewalls(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_firewalls(Client, Input, []).
@@ -1932,9 +2018,7 @@ list_firewalls(Client, Input)
 -spec list_firewalls(map(), list_firewalls_request(), proplists:proplist()) ->
     {ok, list_firewalls_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_firewalls_errors(), tuple()}.
 list_firewalls(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFirewalls">>, Input, Options).
@@ -1948,9 +2032,7 @@ list_firewalls(Client, Input, Options)
 -spec list_rule_groups(map(), list_rule_groups_request()) ->
     {ok, list_rule_groups_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_rule_groups_errors(), tuple()}.
 list_rule_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rule_groups(Client, Input, []).
@@ -1958,9 +2040,7 @@ list_rule_groups(Client, Input)
 -spec list_rule_groups(map(), list_rule_groups_request(), proplists:proplist()) ->
     {ok, list_rule_groups_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_rule_groups_errors(), tuple()}.
 list_rule_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRuleGroups">>, Input, Options).
@@ -1973,9 +2053,7 @@ list_rule_groups(Client, Input, Options)
 -spec list_t_l_s_inspection_configurations(map(), list_t_l_s_inspection_configurations_request()) ->
     {ok, list_t_l_s_inspection_configurations_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_t_l_s_inspection_configurations_errors(), tuple()}.
 list_t_l_s_inspection_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_t_l_s_inspection_configurations(Client, Input, []).
@@ -1983,9 +2061,7 @@ list_t_l_s_inspection_configurations(Client, Input)
 -spec list_t_l_s_inspection_configurations(map(), list_t_l_s_inspection_configurations_request(), proplists:proplist()) ->
     {ok, list_t_l_s_inspection_configurations_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_t_l_s_inspection_configurations_errors(), tuple()}.
 list_t_l_s_inspection_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTLSInspectionConfigurations">>, Input, Options).
@@ -2007,10 +2083,7 @@ list_t_l_s_inspection_configurations(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -2018,10 +2091,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -2058,11 +2128,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec put_resource_policy(map(), put_resource_policy_request()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_resource_policy_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
@@ -2070,11 +2136,7 @@ put_resource_policy(Client, Input)
 -spec put_resource_policy(map(), put_resource_policy_request(), proplists:proplist()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_resource_policy_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResourcePolicy">>, Input, Options).
@@ -2095,10 +2157,7 @@ put_resource_policy(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -2106,10 +2165,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -2131,10 +2187,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -2142,10 +2195,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -2161,12 +2211,7 @@ untag_resource(Client, Input, Options)
 -spec update_firewall_delete_protection(map(), update_firewall_delete_protection_request()) ->
     {ok, update_firewall_delete_protection_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_owner_check_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_firewall_delete_protection_errors(), tuple()}.
 update_firewall_delete_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_firewall_delete_protection(Client, Input, []).
@@ -2174,12 +2219,7 @@ update_firewall_delete_protection(Client, Input)
 -spec update_firewall_delete_protection(map(), update_firewall_delete_protection_request(), proplists:proplist()) ->
     {ok, update_firewall_delete_protection_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_owner_check_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_firewall_delete_protection_errors(), tuple()}.
 update_firewall_delete_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFirewallDeleteProtection">>, Input, Options).
@@ -2191,11 +2231,7 @@ update_firewall_delete_protection(Client, Input, Options)
 -spec update_firewall_description(map(), update_firewall_description_request()) ->
     {ok, update_firewall_description_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_firewall_description_errors(), tuple()}.
 update_firewall_description(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_firewall_description(Client, Input, []).
@@ -2203,11 +2239,7 @@ update_firewall_description(Client, Input)
 -spec update_firewall_description(map(), update_firewall_description_request(), proplists:proplist()) ->
     {ok, update_firewall_description_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_firewall_description_errors(), tuple()}.
 update_firewall_description(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFirewallDescription">>, Input, Options).
@@ -2217,12 +2249,7 @@ update_firewall_description(Client, Input, Options)
 -spec update_firewall_encryption_configuration(map(), update_firewall_encryption_configuration_request()) ->
     {ok, update_firewall_encryption_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_owner_check_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_firewall_encryption_configuration_errors(), tuple()}.
 update_firewall_encryption_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_firewall_encryption_configuration(Client, Input, []).
@@ -2230,12 +2257,7 @@ update_firewall_encryption_configuration(Client, Input)
 -spec update_firewall_encryption_configuration(map(), update_firewall_encryption_configuration_request(), proplists:proplist()) ->
     {ok, update_firewall_encryption_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_owner_check_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_firewall_encryption_configuration_errors(), tuple()}.
 update_firewall_encryption_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFirewallEncryptionConfiguration">>, Input, Options).
@@ -2244,11 +2266,7 @@ update_firewall_encryption_configuration(Client, Input, Options)
 -spec update_firewall_policy(map(), update_firewall_policy_request()) ->
     {ok, update_firewall_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_firewall_policy_errors(), tuple()}.
 update_firewall_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_firewall_policy(Client, Input, []).
@@ -2256,11 +2274,7 @@ update_firewall_policy(Client, Input)
 -spec update_firewall_policy(map(), update_firewall_policy_request(), proplists:proplist()) ->
     {ok, update_firewall_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_firewall_policy_errors(), tuple()}.
 update_firewall_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFirewallPolicy">>, Input, Options).
@@ -2274,12 +2288,7 @@ update_firewall_policy(Client, Input, Options)
 -spec update_firewall_policy_change_protection(map(), update_firewall_policy_change_protection_request()) ->
     {ok, update_firewall_policy_change_protection_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_owner_check_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_firewall_policy_change_protection_errors(), tuple()}.
 update_firewall_policy_change_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_firewall_policy_change_protection(Client, Input, []).
@@ -2287,12 +2296,7 @@ update_firewall_policy_change_protection(Client, Input)
 -spec update_firewall_policy_change_protection(map(), update_firewall_policy_change_protection_request(), proplists:proplist()) ->
     {ok, update_firewall_policy_change_protection_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_owner_check_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_firewall_policy_change_protection_errors(), tuple()}.
 update_firewall_policy_change_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFirewallPolicyChangeProtection">>, Input, Options).
@@ -2329,12 +2333,7 @@ update_firewall_policy_change_protection(Client, Input, Options)
 -spec update_logging_configuration(map(), update_logging_configuration_request()) ->
     {ok, update_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_token_exception(), tuple()} |
-    {error, log_destination_permission_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_logging_configuration_errors(), tuple()}.
 update_logging_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_logging_configuration(Client, Input, []).
@@ -2342,12 +2341,7 @@ update_logging_configuration(Client, Input)
 -spec update_logging_configuration(map(), update_logging_configuration_request(), proplists:proplist()) ->
     {ok, update_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_token_exception(), tuple()} |
-    {error, log_destination_permission_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_logging_configuration_errors(), tuple()}.
 update_logging_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLoggingConfiguration">>, Input, Options).
@@ -2366,11 +2360,7 @@ update_logging_configuration(Client, Input, Options)
 -spec update_rule_group(map(), update_rule_group_request()) ->
     {ok, update_rule_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_rule_group_errors(), tuple()}.
 update_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rule_group(Client, Input, []).
@@ -2378,11 +2368,7 @@ update_rule_group(Client, Input)
 -spec update_rule_group(map(), update_rule_group_request(), proplists:proplist()) ->
     {ok, update_rule_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_rule_group_errors(), tuple()}.
 update_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRuleGroup">>, Input, Options).
@@ -2391,12 +2377,7 @@ update_rule_group(Client, Input, Options)
 -spec update_subnet_change_protection(map(), update_subnet_change_protection_request()) ->
     {ok, update_subnet_change_protection_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_owner_check_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_subnet_change_protection_errors(), tuple()}.
 update_subnet_change_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_subnet_change_protection(Client, Input, []).
@@ -2404,12 +2385,7 @@ update_subnet_change_protection(Client, Input)
 -spec update_subnet_change_protection(map(), update_subnet_change_protection_request(), proplists:proplist()) ->
     {ok, update_subnet_change_protection_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_owner_check_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_subnet_change_protection_errors(), tuple()}.
 update_subnet_change_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSubnetChangeProtection">>, Input, Options).
@@ -2430,11 +2406,7 @@ update_subnet_change_protection(Client, Input, Options)
 -spec update_t_l_s_inspection_configuration(map(), update_t_l_s_inspection_configuration_request()) ->
     {ok, update_t_l_s_inspection_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_t_l_s_inspection_configuration_errors(), tuple()}.
 update_t_l_s_inspection_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_t_l_s_inspection_configuration(Client, Input, []).
@@ -2442,11 +2414,7 @@ update_t_l_s_inspection_configuration(Client, Input)
 -spec update_t_l_s_inspection_configuration(map(), update_t_l_s_inspection_configuration_request(), proplists:proplist()) ->
     {ok, update_t_l_s_inspection_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_t_l_s_inspection_configuration_errors(), tuple()}.
 update_t_l_s_inspection_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTLSInspectionConfiguration">>, Input, Options).

@@ -81,6 +81,7 @@
 %% }
 -type external_url_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_integration_association_summary() :: #{
 %%   <<"ClientId">> => string(),
@@ -89,26 +90,32 @@
 %% }
 -type data_integration_association_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 %% Example:
 %% update_data_integration_response() :: #{}
 -type update_data_integration_response() :: #{}.
+
 
 %% Example:
 %% unsupported_operation_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type unsupported_operation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% get_event_integration_request() :: #{}
 -type get_event_integration_request() :: #{}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% list_data_integration_associations_request() :: #{
@@ -117,6 +124,7 @@
 %% }
 -type list_data_integration_associations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_data_integration_associations_response() :: #{
 %%   <<"DataIntegrationAssociations">> => list(data_integration_association_summary()()),
@@ -124,12 +132,14 @@
 %% }
 -type list_data_integration_associations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_data_integrations_response() :: #{
 %%   <<"DataIntegrations">> => list(data_integration_summary()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_data_integrations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_event_integration_response() :: #{
@@ -141,15 +151,18 @@
 %%   <<"Tags">> => map()
 %% }
 -type get_event_integration_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_data_integration_request() :: #{}
 -type get_data_integration_request() :: #{}.
+
 
 %% Example:
 %% application_source_config() :: #{
 %%   <<"ExternalUrlConfig">> => external_url_config()
 %% }
 -type application_source_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_data_integration_request() :: #{
@@ -165,11 +178,13 @@
 %% }
 -type create_data_integration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_event_integration_associations_response() :: #{
@@ -178,6 +193,7 @@
 %% }
 -type list_event_integration_associations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_event_integration_associations_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -185,11 +201,13 @@
 %% }
 -type list_event_integration_associations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% invalid_request_exception() :: #{
@@ -197,11 +215,13 @@
 %% }
 -type invalid_request_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_event_integration_response() :: #{
 %%   <<"EventIntegrationArn">> => string()
 %% }
 -type create_event_integration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% application_association_summary() :: #{
@@ -211,6 +231,7 @@
 %% }
 -type application_association_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_application_associations_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -218,12 +239,14 @@
 %% }
 -type list_application_associations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_data_integrations_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_data_integrations_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_event_integration_request() :: #{
@@ -236,11 +259,13 @@
 %% }
 -type create_event_integration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_application_request() :: #{
@@ -255,6 +280,7 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_application_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_data_integration_response() :: #{
@@ -271,11 +297,13 @@
 %% }
 -type get_data_integration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_quota_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type resource_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_application_response() :: #{
@@ -284,26 +312,32 @@
 %% }
 -type create_application_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% event_filter() :: #{
 %%   <<"Source">> => string()
 %% }
 -type event_filter() :: #{binary() => any()}.
+
 %% Example:
 %% update_event_integration_response() :: #{}
 -type update_event_integration_response() :: #{}.
+
 
 %% Example:
 %% update_event_integration_request() :: #{
 %%   <<"Description">> => string()
 %% }
 -type update_event_integration_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_application_response() :: #{}
 -type delete_application_response() :: #{}.
+
 %% Example:
 %% delete_event_integration_response() :: #{}
 -type delete_event_integration_response() :: #{}.
+
 
 %% Example:
 %% update_application_request() :: #{
@@ -315,9 +349,11 @@
 %%   <<"Subscriptions">> => list(subscription()())
 %% }
 -type update_application_request() :: #{binary() => any()}.
+
 %% Example:
 %% update_application_response() :: #{}
 -type update_application_response() :: #{}.
+
 
 %% Example:
 %% publication() :: #{
@@ -326,6 +362,7 @@
 %%   <<"Schema">> => string()
 %% }
 -type publication() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_application_response() :: #{
@@ -344,6 +381,7 @@
 %% }
 -type get_application_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_applications_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -351,14 +389,17 @@
 %% }
 -type list_applications_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% create_data_integration_response() :: #{
@@ -376,6 +417,7 @@
 %% }
 -type create_data_integration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_data_integration_request() :: #{
 %%   <<"Description">> => string(),
@@ -383,17 +425,21 @@
 %% }
 -type update_data_integration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_service_error() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_service_error() :: #{binary() => any()}.
+
 %% Example:
 %% delete_data_integration_request() :: #{}
 -type delete_data_integration_request() :: #{}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% schedule_configuration() :: #{
@@ -403,14 +449,17 @@
 %% }
 -type schedule_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_event_integration_request() :: #{}
 -type delete_event_integration_request() :: #{}.
+
 
 %% Example:
 %% subscription() :: #{
@@ -418,9 +467,11 @@
 %%   <<"Event">> => string()
 %% }
 -type subscription() :: #{binary() => any()}.
+
 %% Example:
 %% delete_data_integration_response() :: #{}
 -type delete_data_integration_response() :: #{}.
+
 
 %% Example:
 %% application_summary() :: #{
@@ -433,12 +484,14 @@
 %% }
 -type application_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_application_associations_response() :: #{
 %%   <<"ApplicationAssociations">> => list(application_association_summary()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_application_associations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_applications_response() :: #{
@@ -447,12 +500,14 @@
 %% }
 -type list_applications_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_event_integrations_response() :: #{
 %%   <<"EventIntegrations">> => list(event_integration()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_event_integrations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_event_integrations_request() :: #{
@@ -461,12 +516,14 @@
 %% }
 -type list_event_integrations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% file_configuration() :: #{
 %%   <<"Filters">> => map(),
 %%   <<"Folders">> => list(string()())
 %% }
 -type file_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% event_integration_association() :: #{
@@ -478,15 +535,18 @@
 %%   <<"EventIntegrationName">> => string()
 %% }
 -type event_integration_association() :: #{binary() => any()}.
+
 %% Example:
 %% get_application_request() :: #{}
 -type get_application_request() :: #{}.
+
 
 %% Example:
 %% duplicate_resource_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type duplicate_resource_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% event_integration() :: #{
@@ -499,6 +559,7 @@
 %% }
 -type event_integration() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_integration_summary() :: #{
 %%   <<"Arn">> => string(),
@@ -506,9 +567,156 @@
 %%   <<"SourceURI">> => string()
 %% }
 -type data_integration_summary() :: #{binary() => any()}.
+
 %% Example:
 %% delete_application_request() :: #{}
 -type delete_application_request() :: #{}.
+
+-type create_application_errors() ::
+    duplicate_resource_exception() | 
+    throttling_exception() | 
+    internal_service_error() | 
+    access_denied_exception() | 
+    resource_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    unsupported_operation_exception().
+
+-type create_data_integration_errors() ::
+    duplicate_resource_exception() | 
+    throttling_exception() | 
+    internal_service_error() | 
+    access_denied_exception() | 
+    resource_quota_exceeded_exception() | 
+    invalid_request_exception().
+
+-type create_event_integration_errors() ::
+    duplicate_resource_exception() | 
+    throttling_exception() | 
+    internal_service_error() | 
+    access_denied_exception() | 
+    resource_quota_exceeded_exception() | 
+    invalid_request_exception().
+
+-type delete_application_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type delete_data_integration_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type delete_event_integration_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type get_application_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type get_data_integration_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type get_event_integration_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_application_associations_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_applications_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    access_denied_exception() | 
+    invalid_request_exception().
+
+-type list_data_integration_associations_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_data_integrations_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    access_denied_exception() | 
+    invalid_request_exception().
+
+-type list_event_integration_associations_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_event_integrations_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    access_denied_exception() | 
+    invalid_request_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type update_application_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unsupported_operation_exception().
+
+-type update_data_integration_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type update_event_integration_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -520,26 +728,14 @@
 -spec create_application(map(), create_application_request()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, create_application_errors(), tuple()}.
 create_application(Client, Input) ->
     create_application(Client, Input, []).
 
 -spec create_application(map(), create_application_request(), proplists:proplist()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, create_application_errors(), tuple()}.
 create_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/applications"],
@@ -572,24 +768,14 @@ create_application(Client, Input0, Options0) ->
 -spec create_data_integration(map(), create_data_integration_request()) ->
     {ok, create_data_integration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_data_integration_errors(), tuple()}.
 create_data_integration(Client, Input) ->
     create_data_integration(Client, Input, []).
 
 -spec create_data_integration(map(), create_data_integration_request(), proplists:proplist()) ->
     {ok, create_data_integration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_data_integration_errors(), tuple()}.
 create_data_integration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/dataIntegrations"],
@@ -624,24 +810,14 @@ create_data_integration(Client, Input0, Options0) ->
 -spec create_event_integration(map(), create_event_integration_request()) ->
     {ok, create_event_integration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_event_integration_errors(), tuple()}.
 create_event_integration(Client, Input) ->
     create_event_integration(Client, Input, []).
 
 -spec create_event_integration(map(), create_event_integration_request(), proplists:proplist()) ->
     {ok, create_event_integration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_event_integration_errors(), tuple()}.
 create_event_integration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/eventIntegrations"],
@@ -671,22 +847,14 @@ create_event_integration(Client, Input0, Options0) ->
 -spec delete_application(map(), binary() | list(), delete_application_request()) ->
     {ok, delete_application_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_application_errors(), tuple()}.
 delete_application(Client, Arn, Input) ->
     delete_application(Client, Arn, Input, []).
 
 -spec delete_application(map(), binary() | list(), delete_application_request(), proplists:proplist()) ->
     {ok, delete_application_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_application_errors(), tuple()}.
 delete_application(Client, Arn, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(Arn), ""],
@@ -725,22 +893,14 @@ delete_application(Client, Arn, Input0, Options0) ->
 -spec delete_data_integration(map(), binary() | list(), delete_data_integration_request()) ->
     {ok, delete_data_integration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_data_integration_errors(), tuple()}.
 delete_data_integration(Client, DataIntegrationIdentifier, Input) ->
     delete_data_integration(Client, DataIntegrationIdentifier, Input, []).
 
 -spec delete_data_integration(map(), binary() | list(), delete_data_integration_request(), proplists:proplist()) ->
     {ok, delete_data_integration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_data_integration_errors(), tuple()}.
 delete_data_integration(Client, DataIntegrationIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/dataIntegrations/", aws_util:encode_uri(DataIntegrationIdentifier), ""],
@@ -770,22 +930,14 @@ delete_data_integration(Client, DataIntegrationIdentifier, Input0, Options0) ->
 -spec delete_event_integration(map(), binary() | list(), delete_event_integration_request()) ->
     {ok, delete_event_integration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_event_integration_errors(), tuple()}.
 delete_event_integration(Client, Name, Input) ->
     delete_event_integration(Client, Name, Input, []).
 
 -spec delete_event_integration(map(), binary() | list(), delete_event_integration_request(), proplists:proplist()) ->
     {ok, delete_event_integration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_event_integration_errors(), tuple()}.
 delete_event_integration(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/eventIntegrations/", aws_util:encode_uri(Name), ""],
@@ -814,11 +966,7 @@ delete_event_integration(Client, Name, Input0, Options0) ->
 -spec get_application(map(), binary() | list()) ->
     {ok, get_application_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_application_errors(), tuple()}.
 get_application(Client, Arn)
   when is_map(Client) ->
     get_application(Client, Arn, #{}, #{}).
@@ -826,11 +974,7 @@ get_application(Client, Arn)
 -spec get_application(map(), binary() | list(), map(), map()) ->
     {ok, get_application_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_application_errors(), tuple()}.
 get_application(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application(Client, Arn, QueryMap, HeadersMap, []).
@@ -838,11 +982,7 @@ get_application(Client, Arn, QueryMap, HeadersMap)
 -spec get_application(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_application_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_application_errors(), tuple()}.
 get_application(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(Arn), ""],
@@ -870,11 +1010,7 @@ get_application(Client, Arn, QueryMap, HeadersMap, Options0)
 -spec get_data_integration(map(), binary() | list()) ->
     {ok, get_data_integration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_data_integration_errors(), tuple()}.
 get_data_integration(Client, Identifier)
   when is_map(Client) ->
     get_data_integration(Client, Identifier, #{}, #{}).
@@ -882,11 +1018,7 @@ get_data_integration(Client, Identifier)
 -spec get_data_integration(map(), binary() | list(), map(), map()) ->
     {ok, get_data_integration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_data_integration_errors(), tuple()}.
 get_data_integration(Client, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_integration(Client, Identifier, QueryMap, HeadersMap, []).
@@ -894,11 +1026,7 @@ get_data_integration(Client, Identifier, QueryMap, HeadersMap)
 -spec get_data_integration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_data_integration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_data_integration_errors(), tuple()}.
 get_data_integration(Client, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/dataIntegrations/", aws_util:encode_uri(Identifier), ""],
@@ -919,11 +1047,7 @@ get_data_integration(Client, Identifier, QueryMap, HeadersMap, Options0)
 -spec get_event_integration(map(), binary() | list()) ->
     {ok, get_event_integration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_event_integration_errors(), tuple()}.
 get_event_integration(Client, Name)
   when is_map(Client) ->
     get_event_integration(Client, Name, #{}, #{}).
@@ -931,11 +1055,7 @@ get_event_integration(Client, Name)
 -spec get_event_integration(map(), binary() | list(), map(), map()) ->
     {ok, get_event_integration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_event_integration_errors(), tuple()}.
 get_event_integration(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_event_integration(Client, Name, QueryMap, HeadersMap, []).
@@ -943,11 +1063,7 @@ get_event_integration(Client, Name, QueryMap, HeadersMap)
 -spec get_event_integration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_event_integration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_event_integration_errors(), tuple()}.
 get_event_integration(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/eventIntegrations/", aws_util:encode_uri(Name), ""],
@@ -969,11 +1085,7 @@ get_event_integration(Client, Name, QueryMap, HeadersMap, Options0)
 -spec list_application_associations(map(), binary() | list()) ->
     {ok, list_application_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_application_associations_errors(), tuple()}.
 list_application_associations(Client, ApplicationId)
   when is_map(Client) ->
     list_application_associations(Client, ApplicationId, #{}, #{}).
@@ -981,11 +1093,7 @@ list_application_associations(Client, ApplicationId)
 -spec list_application_associations(map(), binary() | list(), map(), map()) ->
     {ok, list_application_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_application_associations_errors(), tuple()}.
 list_application_associations(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_application_associations(Client, ApplicationId, QueryMap, HeadersMap, []).
@@ -993,11 +1101,7 @@ list_application_associations(Client, ApplicationId, QueryMap, HeadersMap)
 -spec list_application_associations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_application_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_application_associations_errors(), tuple()}.
 list_application_associations(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/associations"],
@@ -1025,10 +1129,7 @@ list_application_associations(Client, ApplicationId, QueryMap, HeadersMap, Optio
 -spec list_applications(map()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client)
   when is_map(Client) ->
     list_applications(Client, #{}, #{}).
@@ -1036,10 +1137,7 @@ list_applications(Client)
 -spec list_applications(map(), map(), map()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_applications(Client, QueryMap, HeadersMap, []).
@@ -1047,10 +1145,7 @@ list_applications(Client, QueryMap, HeadersMap)
 -spec list_applications(map(), map(), map(), proplists:proplist()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications"],
@@ -1084,11 +1179,7 @@ list_applications(Client, QueryMap, HeadersMap, Options0)
 -spec list_data_integration_associations(map(), binary() | list()) ->
     {ok, list_data_integration_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_data_integration_associations_errors(), tuple()}.
 list_data_integration_associations(Client, DataIntegrationIdentifier)
   when is_map(Client) ->
     list_data_integration_associations(Client, DataIntegrationIdentifier, #{}, #{}).
@@ -1096,11 +1187,7 @@ list_data_integration_associations(Client, DataIntegrationIdentifier)
 -spec list_data_integration_associations(map(), binary() | list(), map(), map()) ->
     {ok, list_data_integration_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_data_integration_associations_errors(), tuple()}.
 list_data_integration_associations(Client, DataIntegrationIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_integration_associations(Client, DataIntegrationIdentifier, QueryMap, HeadersMap, []).
@@ -1108,11 +1195,7 @@ list_data_integration_associations(Client, DataIntegrationIdentifier, QueryMap, 
 -spec list_data_integration_associations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_data_integration_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_data_integration_associations_errors(), tuple()}.
 list_data_integration_associations(Client, DataIntegrationIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/dataIntegrations/", aws_util:encode_uri(DataIntegrationIdentifier), "/associations"],
@@ -1145,10 +1228,7 @@ list_data_integration_associations(Client, DataIntegrationIdentifier, QueryMap, 
 -spec list_data_integrations(map()) ->
     {ok, list_data_integrations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_data_integrations_errors(), tuple()}.
 list_data_integrations(Client)
   when is_map(Client) ->
     list_data_integrations(Client, #{}, #{}).
@@ -1156,10 +1236,7 @@ list_data_integrations(Client)
 -spec list_data_integrations(map(), map(), map()) ->
     {ok, list_data_integrations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_data_integrations_errors(), tuple()}.
 list_data_integrations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_integrations(Client, QueryMap, HeadersMap, []).
@@ -1167,10 +1244,7 @@ list_data_integrations(Client, QueryMap, HeadersMap)
 -spec list_data_integrations(map(), map(), map(), proplists:proplist()) ->
     {ok, list_data_integrations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_data_integrations_errors(), tuple()}.
 list_data_integrations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/dataIntegrations"],
@@ -1197,11 +1271,7 @@ list_data_integrations(Client, QueryMap, HeadersMap, Options0)
 -spec list_event_integration_associations(map(), binary() | list()) ->
     {ok, list_event_integration_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_event_integration_associations_errors(), tuple()}.
 list_event_integration_associations(Client, EventIntegrationName)
   when is_map(Client) ->
     list_event_integration_associations(Client, EventIntegrationName, #{}, #{}).
@@ -1209,11 +1279,7 @@ list_event_integration_associations(Client, EventIntegrationName)
 -spec list_event_integration_associations(map(), binary() | list(), map(), map()) ->
     {ok, list_event_integration_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_event_integration_associations_errors(), tuple()}.
 list_event_integration_associations(Client, EventIntegrationName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_event_integration_associations(Client, EventIntegrationName, QueryMap, HeadersMap, []).
@@ -1221,11 +1287,7 @@ list_event_integration_associations(Client, EventIntegrationName, QueryMap, Head
 -spec list_event_integration_associations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_event_integration_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_event_integration_associations_errors(), tuple()}.
 list_event_integration_associations(Client, EventIntegrationName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/eventIntegrations/", aws_util:encode_uri(EventIntegrationName), "/associations"],
@@ -1251,10 +1313,7 @@ list_event_integration_associations(Client, EventIntegrationName, QueryMap, Head
 -spec list_event_integrations(map()) ->
     {ok, list_event_integrations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_event_integrations_errors(), tuple()}.
 list_event_integrations(Client)
   when is_map(Client) ->
     list_event_integrations(Client, #{}, #{}).
@@ -1262,10 +1321,7 @@ list_event_integrations(Client)
 -spec list_event_integrations(map(), map(), map()) ->
     {ok, list_event_integrations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_event_integrations_errors(), tuple()}.
 list_event_integrations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_event_integrations(Client, QueryMap, HeadersMap, []).
@@ -1273,10 +1329,7 @@ list_event_integrations(Client, QueryMap, HeadersMap)
 -spec list_event_integrations(map(), map(), map(), proplists:proplist()) ->
     {ok, list_event_integrations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_event_integrations_errors(), tuple()}.
 list_event_integrations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/eventIntegrations"],
@@ -1302,10 +1355,7 @@ list_event_integrations(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1313,10 +1363,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1324,10 +1371,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1348,20 +1392,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1388,20 +1426,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1431,24 +1463,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_application(map(), binary() | list(), update_application_request()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, update_application_errors(), tuple()}.
 update_application(Client, Arn, Input) ->
     update_application(Client, Arn, Input, []).
 
 -spec update_application(map(), binary() | list(), update_application_request(), proplists:proplist()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, update_application_errors(), tuple()}.
 update_application(Client, Arn, Input0, Options0) ->
     Method = patch,
     Path = ["/applications/", aws_util:encode_uri(Arn), ""],
@@ -1482,22 +1504,14 @@ update_application(Client, Arn, Input0, Options0) ->
 -spec update_data_integration(map(), binary() | list(), update_data_integration_request()) ->
     {ok, update_data_integration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_data_integration_errors(), tuple()}.
 update_data_integration(Client, Identifier, Input) ->
     update_data_integration(Client, Identifier, Input, []).
 
 -spec update_data_integration(map(), binary() | list(), update_data_integration_request(), proplists:proplist()) ->
     {ok, update_data_integration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_data_integration_errors(), tuple()}.
 update_data_integration(Client, Identifier, Input0, Options0) ->
     Method = patch,
     Path = ["/dataIntegrations/", aws_util:encode_uri(Identifier), ""],
@@ -1524,22 +1538,14 @@ update_data_integration(Client, Identifier, Input0, Options0) ->
 -spec update_event_integration(map(), binary() | list(), update_event_integration_request()) ->
     {ok, update_event_integration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_event_integration_errors(), tuple()}.
 update_event_integration(Client, Name, Input) ->
     update_event_integration(Client, Name, Input, []).
 
 -spec update_event_integration(map(), binary() | list(), update_event_integration_request(), proplists:proplist()) ->
     {ok, update_event_integration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_event_integration_errors(), tuple()}.
 update_event_integration(Client, Name, Input0, Options0) ->
     Method = patch,
     Path = ["/eventIntegrations/", aws_util:encode_uri(Name), ""],

@@ -294,15 +294,18 @@
 %% }
 -type list_extensions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% applications() :: #{
 %%   <<"Items">> => list(application()()),
 %%   <<"NextToken">> => string()
 %% }
 -type applications() :: #{binary() => any()}.
+
 %% Example:
 %% stop_deployment_request() :: #{}
 -type stop_deployment_request() :: #{}.
+
 
 %% Example:
 %% tag_resource_request() :: #{
@@ -310,12 +313,14 @@
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_deployments_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_deployments_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% extension() :: #{
@@ -328,6 +333,7 @@
 %%   <<"VersionNumber">> => integer()
 %% }
 -type extension() :: #{binary() => any()}.
+
 
 %% Example:
 %% deployment_summary() :: #{
@@ -346,12 +352,14 @@
 %% }
 -type deployment_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% extension_associations() :: #{
 %%   <<"Items">> => list(extension_association_summary()()),
 %%   <<"NextToken">> => string()
 %% }
 -type extension_associations() :: #{binary() => any()}.
+
 
 %% Example:
 %% deployment() :: #{
@@ -380,6 +388,7 @@
 %% }
 -type deployment() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_configuration_detail() :: #{
 %%   <<"Constraint">> => string(),
@@ -389,9 +398,11 @@
 %%   <<"Value">> => string()
 %% }
 -type invalid_configuration_detail() :: #{binary() => any()}.
+
 %% Example:
 %% delete_deployment_strategy_request() :: #{}
 -type delete_deployment_strategy_request() :: #{}.
+
 
 %% Example:
 %% get_configuration_request() :: #{
@@ -400,17 +411,20 @@
 %% }
 -type get_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% validate_configuration_request() :: #{
 %%   <<"ConfigurationVersion">> := string()
 %% }
 -type validate_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_tags() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type resource_tags() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_hosted_configuration_version_request() :: #{
@@ -421,9 +435,11 @@
 %%   <<"VersionLabel">> => string()
 %% }
 -type create_hosted_configuration_version_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_environment_request() :: #{}
 -type get_environment_request() :: #{}.
+
 
 %% Example:
 %% update_configuration_profile_request() :: #{
@@ -435,6 +451,7 @@
 %% }
 -type update_configuration_profile_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_deployment_strategy_request() :: #{
 %%   <<"DeploymentDurationInMinutes">> => integer(),
@@ -444,6 +461,7 @@
 %%   <<"GrowthType">> => list(any())
 %% }
 -type update_deployment_strategy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% deployment_strategy() :: #{
@@ -458,6 +476,7 @@
 %% }
 -type deployment_strategy() :: #{binary() => any()}.
 
+
 %% Example:
 %% configuration() :: #{
 %%   <<"ConfigurationVersion">> => string(),
@@ -465,6 +484,7 @@
 %%   <<"ContentType">> => string()
 %% }
 -type configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% extension_association_summary() :: #{
@@ -474,12 +494,14 @@
 %% }
 -type extension_association_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% hosted_configuration_versions() :: #{
 %%   <<"Items">> => list(hosted_configuration_version_summary()()),
 %%   <<"NextToken">> => string()
 %% }
 -type hosted_configuration_versions() :: #{binary() => any()}.
+
 
 %% Example:
 %% applied_extension() :: #{
@@ -490,11 +512,13 @@
 %% }
 -type applied_extension() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% monitor() :: #{
@@ -502,6 +526,7 @@
 %%   <<"AlarmRoleArn">> => string()
 %% }
 -type monitor() :: #{binary() => any()}.
+
 
 %% Example:
 %% extension_summary() :: #{
@@ -512,9 +537,11 @@
 %%   <<"VersionNumber">> => integer()
 %% }
 -type extension_summary() :: #{binary() => any()}.
+
 %% Example:
 %% delete_hosted_configuration_version_request() :: #{}
 -type delete_hosted_configuration_version_request() :: #{}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -522,12 +549,14 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"ResourceName">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% payload_too_large_exception() :: #{
@@ -537,6 +566,7 @@
 %%   <<"Size">> => float()
 %% }
 -type payload_too_large_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% environment() :: #{
@@ -549,17 +579,21 @@
 %% }
 -type environment() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 %% Example:
 %% get_deployment_request() :: #{}
 -type get_deployment_request() :: #{}.
+
 %% Example:
 %% delete_configuration_profile_request() :: #{}
 -type delete_configuration_profile_request() :: #{}.
+
 
 %% Example:
 %% application() :: #{
@@ -569,11 +603,13 @@
 %% }
 -type application() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_extension_association_request() :: #{
 %%   <<"Parameters">> => map()
 %% }
 -type update_extension_association_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% parameter() :: #{
@@ -582,6 +618,7 @@
 %%   <<"Required">> => boolean()
 %% }
 -type parameter() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_deployment_strategy_request() :: #{
@@ -595,6 +632,7 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_deployment_strategy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% configuration_profile() :: #{
@@ -611,6 +649,7 @@
 %% }
 -type configuration_profile() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_application_request() :: #{
 %%   <<"Description">> => string(),
@@ -619,6 +658,7 @@
 %% }
 -type create_application_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_environments_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -626,14 +666,17 @@
 %% }
 -type list_environments_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_extension_request() :: #{
 %%   <<"VersionNumber">> => integer()
 %% }
 -type get_extension_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_hosted_configuration_version_request() :: #{}
 -type get_hosted_configuration_version_request() :: #{}.
+
 
 %% Example:
 %% action_invocation() :: #{
@@ -647,18 +690,22 @@
 %% }
 -type action_invocation() :: #{binary() => any()}.
 
+
 %% Example:
 %% environments() :: #{
 %%   <<"Items">> => list(environment()()),
 %%   <<"NextToken">> => string()
 %% }
 -type environments() :: #{binary() => any()}.
+
 %% Example:
 %% get_configuration_profile_request() :: #{}
 -type get_configuration_profile_request() :: #{}.
+
 %% Example:
 %% get_deployment_strategy_request() :: #{}
 -type get_deployment_strategy_request() :: #{}.
+
 
 %% Example:
 %% deployment_strategies() :: #{
@@ -666,6 +713,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type deployment_strategies() :: #{binary() => any()}.
+
 
 %% Example:
 %% hosted_configuration_version_summary() :: #{
@@ -679,6 +727,7 @@
 %% }
 -type hosted_configuration_version_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_application_request() :: #{
 %%   <<"Description">> => string(),
@@ -686,11 +735,13 @@
 %% }
 -type update_application_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_configuration_profiles_request() :: #{
@@ -699,9 +750,11 @@
 %%   <<"Type">> => string()
 %% }
 -type list_configuration_profiles_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_environment_request() :: #{}
 -type delete_environment_request() :: #{}.
+
 
 %% Example:
 %% create_extension_association_request() :: #{
@@ -713,12 +766,14 @@
 %% }
 -type create_extension_association_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% configuration_profiles() :: #{
 %%   <<"Items">> => list(configuration_profile_summary()()),
 %%   <<"NextToken">> => string()
 %% }
 -type configuration_profiles() :: #{binary() => any()}.
+
 
 %% Example:
 %% action() :: #{
@@ -729,6 +784,7 @@
 %% }
 -type action() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_applications_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -736,12 +792,14 @@
 %% }
 -type list_applications_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% extensions() :: #{
 %%   <<"Items">> => list(extension_summary()()),
 %%   <<"NextToken">> => string()
 %% }
 -type extensions() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_configuration_profile_request() :: #{
@@ -755,9 +813,11 @@
 %%   <<"Validators">> => list(validator()())
 %% }
 -type create_configuration_profile_request() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% list_extension_associations_request() :: #{
@@ -768,9 +828,11 @@
 %%   <<"ResourceIdentifier">> => string()
 %% }
 -type list_extension_associations_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_extension_association_request() :: #{}
 -type get_extension_association_request() :: #{}.
+
 
 %% Example:
 %% create_extension_request() :: #{
@@ -783,15 +845,18 @@
 %% }
 -type create_extension_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_deployment_strategies_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_deployment_strategies_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_extension_association_request() :: #{}
 -type delete_extension_association_request() :: #{}.
+
 
 %% Example:
 %% bad_request_exception() :: #{
@@ -800,6 +865,7 @@
 %%   <<"Reason">> => list(any())
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% hosted_configuration_version() :: #{
@@ -814,12 +880,14 @@
 %% }
 -type hosted_configuration_version() :: #{binary() => any()}.
 
+
 %% Example:
 %% validator() :: #{
 %%   <<"Content">> => string(),
 %%   <<"Type">> => list(any())
 %% }
 -type validator() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_extension_request() :: #{
@@ -830,6 +898,7 @@
 %% }
 -type update_extension_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_environment_request() :: #{
 %%   <<"Description">> => string(),
@@ -838,6 +907,7 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_environment_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% deployment_event() :: #{
@@ -849,6 +919,7 @@
 %% }
 -type deployment_event() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_environment_request() :: #{
 %%   <<"Description">> => string(),
@@ -857,11 +928,13 @@
 %% }
 -type update_environment_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_extension_request() :: #{
 %%   <<"VersionNumber">> => integer()
 %% }
 -type delete_extension_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% configuration_profile_summary() :: #{
@@ -874,15 +947,18 @@
 %% }
 -type configuration_profile_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% deployments() :: #{
 %%   <<"Items">> => list(deployment_summary()()),
 %%   <<"NextToken">> => string()
 %% }
 -type deployments() :: #{binary() => any()}.
+
 %% Example:
 %% get_application_request() :: #{}
 -type get_application_request() :: #{}.
+
 
 %% Example:
 %% start_deployment_request() :: #{
@@ -896,6 +972,7 @@
 %% }
 -type start_deployment_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_hosted_configuration_versions_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -903,6 +980,7 @@
 %%   <<"VersionLabel">> => string()
 %% }
 -type list_hosted_configuration_versions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% extension_association() :: #{
@@ -914,9 +992,232 @@
 %%   <<"ResourceArn">> => string()
 %% }
 -type extension_association() :: #{binary() => any()}.
+
 %% Example:
 %% delete_application_request() :: #{}
 -type delete_application_request() :: #{}.
+
+-type create_application_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type create_configuration_profile_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type create_deployment_strategy_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type create_environment_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type create_extension_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_extension_association_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type create_hosted_configuration_version_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    payload_too_large_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_application_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_configuration_profile_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_deployment_strategy_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_environment_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_extension_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_extension_association_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_hosted_configuration_version_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_application_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_configuration_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_configuration_profile_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_deployment_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_deployment_strategy_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_environment_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_extension_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_extension_association_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_hosted_configuration_version_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_applications_errors() ::
+    bad_request_exception() | 
+    internal_server_exception().
+
+-type list_configuration_profiles_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_deployment_strategies_errors() ::
+    bad_request_exception() | 
+    internal_server_exception().
+
+-type list_deployments_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_environments_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_extension_associations_errors() ::
+    bad_request_exception() | 
+    internal_server_exception().
+
+-type list_extensions_errors() ::
+    bad_request_exception() | 
+    internal_server_exception().
+
+-type list_hosted_configuration_versions_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type start_deployment_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type stop_deployment_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_application_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_configuration_profile_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_deployment_strategy_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_environment_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_extension_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_extension_association_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type validate_configuration_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -935,18 +1236,14 @@
 -spec create_application(map(), create_application_request()) ->
     {ok, application(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_application_errors(), tuple()}.
 create_application(Client, Input) ->
     create_application(Client, Input, []).
 
 -spec create_application(map(), create_application_request(), proplists:proplist()) ->
     {ok, application(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_application_errors(), tuple()}.
 create_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/applications"],
@@ -1012,20 +1309,14 @@ create_application(Client, Input0, Options0) ->
 -spec create_configuration_profile(map(), binary() | list(), create_configuration_profile_request()) ->
     {ok, configuration_profile(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_configuration_profile_errors(), tuple()}.
 create_configuration_profile(Client, ApplicationId, Input) ->
     create_configuration_profile(Client, ApplicationId, Input, []).
 
 -spec create_configuration_profile(map(), binary() | list(), create_configuration_profile_request(), proplists:proplist()) ->
     {ok, configuration_profile(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_configuration_profile_errors(), tuple()}.
 create_configuration_profile(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles"],
@@ -1059,18 +1350,14 @@ create_configuration_profile(Client, ApplicationId, Input0, Options0) ->
 -spec create_deployment_strategy(map(), create_deployment_strategy_request()) ->
     {ok, deployment_strategy(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_deployment_strategy_errors(), tuple()}.
 create_deployment_strategy(Client, Input) ->
     create_deployment_strategy(Client, Input, []).
 
 -spec create_deployment_strategy(map(), create_deployment_strategy_request(), proplists:proplist()) ->
     {ok, deployment_strategy(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_deployment_strategy_errors(), tuple()}.
 create_deployment_strategy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deploymentstrategies"],
@@ -1109,20 +1396,14 @@ create_deployment_strategy(Client, Input0, Options0) ->
 -spec create_environment(map(), binary() | list(), create_environment_request()) ->
     {ok, environment(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_environment_errors(), tuple()}.
 create_environment(Client, ApplicationId, Input) ->
     create_environment(Client, ApplicationId, Input, []).
 
 -spec create_environment(map(), binary() | list(), create_environment_request(), proplists:proplist()) ->
     {ok, environment(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_environment_errors(), tuple()}.
 create_environment(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments"],
@@ -1181,20 +1462,14 @@ create_environment(Client, ApplicationId, Input0, Options0) ->
 -spec create_extension(map(), create_extension_request()) ->
     {ok, extension(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_extension_errors(), tuple()}.
 create_extension(Client, Input) ->
     create_extension(Client, Input, []).
 
 -spec create_extension(map(), create_extension_request(), proplists:proplist()) ->
     {ok, extension(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_extension_errors(), tuple()}.
 create_extension(Client, Input0, Options0) ->
     Method = post,
     Path = ["/extensions"],
@@ -1243,20 +1518,14 @@ create_extension(Client, Input0, Options0) ->
 -spec create_extension_association(map(), create_extension_association_request()) ->
     {ok, extension_association(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_extension_association_errors(), tuple()}.
 create_extension_association(Client, Input) ->
     create_extension_association(Client, Input, []).
 
 -spec create_extension_association(map(), create_extension_association_request(), proplists:proplist()) ->
     {ok, extension_association(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_extension_association_errors(), tuple()}.
 create_extension_association(Client, Input0, Options0) ->
     Method = post,
     Path = ["/extensionassociations"],
@@ -1284,24 +1553,14 @@ create_extension_association(Client, Input0, Options0) ->
 -spec create_hosted_configuration_version(map(), binary() | list(), binary() | list(), create_hosted_configuration_version_request()) ->
     {ok, hosted_configuration_version(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_hosted_configuration_version_errors(), tuple()}.
 create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, Input) ->
     create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, Input, []).
 
 -spec create_hosted_configuration_version(map(), binary() | list(), binary() | list(), create_hosted_configuration_version_request(), proplists:proplist()) ->
     {ok, hosted_configuration_version(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, payload_too_large_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_hosted_configuration_version_errors(), tuple()}.
 create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/hostedconfigurationversions"],
@@ -1358,18 +1617,14 @@ create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileI
 -spec delete_application(map(), binary() | list(), delete_application_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_application_errors(), tuple()}.
 delete_application(Client, ApplicationId, Input) ->
     delete_application(Client, ApplicationId, Input, []).
 
 -spec delete_application(map(), binary() | list(), delete_application_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_application_errors(), tuple()}.
 delete_application(Client, ApplicationId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
@@ -1399,20 +1654,14 @@ delete_application(Client, ApplicationId, Input0, Options0) ->
 -spec delete_configuration_profile(map(), binary() | list(), binary() | list(), delete_configuration_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_configuration_profile_errors(), tuple()}.
 delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input) ->
     delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input, []).
 
 -spec delete_configuration_profile(map(), binary() | list(), binary() | list(), delete_configuration_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_configuration_profile_errors(), tuple()}.
 delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), ""],
@@ -1442,18 +1691,14 @@ delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Inpu
 -spec delete_deployment_strategy(map(), binary() | list(), delete_deployment_strategy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_deployment_strategy_errors(), tuple()}.
 delete_deployment_strategy(Client, DeploymentStrategyId, Input) ->
     delete_deployment_strategy(Client, DeploymentStrategyId, Input, []).
 
 -spec delete_deployment_strategy(map(), binary() | list(), delete_deployment_strategy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_deployment_strategy_errors(), tuple()}.
 delete_deployment_strategy(Client, DeploymentStrategyId, Input0, Options0) ->
     Method = delete,
     Path = ["/deployementstrategies/", aws_util:encode_uri(DeploymentStrategyId), ""],
@@ -1483,20 +1728,14 @@ delete_deployment_strategy(Client, DeploymentStrategyId, Input0, Options0) ->
 -spec delete_environment(map(), binary() | list(), binary() | list(), delete_environment_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_environment_errors(), tuple()}.
 delete_environment(Client, ApplicationId, EnvironmentId, Input) ->
     delete_environment(Client, ApplicationId, EnvironmentId, Input, []).
 
 -spec delete_environment(map(), binary() | list(), binary() | list(), delete_environment_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_environment_errors(), tuple()}.
 delete_environment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), ""],
@@ -1526,18 +1765,14 @@ delete_environment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
 -spec delete_extension(map(), binary() | list(), delete_extension_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_extension_errors(), tuple()}.
 delete_extension(Client, ExtensionIdentifier, Input) ->
     delete_extension(Client, ExtensionIdentifier, Input, []).
 
 -spec delete_extension(map(), binary() | list(), delete_extension_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_extension_errors(), tuple()}.
 delete_extension(Client, ExtensionIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/extensions/", aws_util:encode_uri(ExtensionIdentifier), ""],
@@ -1568,18 +1803,14 @@ delete_extension(Client, ExtensionIdentifier, Input0, Options0) ->
 -spec delete_extension_association(map(), binary() | list(), delete_extension_association_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_extension_association_errors(), tuple()}.
 delete_extension_association(Client, ExtensionAssociationId, Input) ->
     delete_extension_association(Client, ExtensionAssociationId, Input, []).
 
 -spec delete_extension_association(map(), binary() | list(), delete_extension_association_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_extension_association_errors(), tuple()}.
 delete_extension_association(Client, ExtensionAssociationId, Input0, Options0) ->
     Method = delete,
     Path = ["/extensionassociations/", aws_util:encode_uri(ExtensionAssociationId), ""],
@@ -1608,18 +1839,14 @@ delete_extension_association(Client, ExtensionAssociationId, Input0, Options0) -
 -spec delete_hosted_configuration_version(map(), binary() | list(), binary() | list(), binary() | list(), delete_hosted_configuration_version_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_hosted_configuration_version_errors(), tuple()}.
 delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, Input) ->
     delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, Input, []).
 
 -spec delete_hosted_configuration_version(map(), binary() | list(), binary() | list(), binary() | list(), delete_hosted_configuration_version_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_hosted_configuration_version_errors(), tuple()}.
 delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/hostedconfigurationversions/", aws_util:encode_uri(VersionNumber), ""],
@@ -1646,9 +1873,7 @@ delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileI
 -spec get_application(map(), binary() | list()) ->
     {ok, application(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_application_errors(), tuple()}.
 get_application(Client, ApplicationId)
   when is_map(Client) ->
     get_application(Client, ApplicationId, #{}, #{}).
@@ -1656,9 +1881,7 @@ get_application(Client, ApplicationId)
 -spec get_application(map(), binary() | list(), map(), map()) ->
     {ok, application(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_application_errors(), tuple()}.
 get_application(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application(Client, ApplicationId, QueryMap, HeadersMap, []).
@@ -1666,9 +1889,7 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap)
 -spec get_application(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, application(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_application_errors(), tuple()}.
 get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
@@ -1702,9 +1923,7 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 -spec get_configuration(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, configuration(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_configuration_errors(), tuple()}.
 get_configuration(Client, Application, Configuration, Environment, ClientId)
   when is_map(Client) ->
     get_configuration(Client, Application, Configuration, Environment, ClientId, #{}, #{}).
@@ -1712,9 +1931,7 @@ get_configuration(Client, Application, Configuration, Environment, ClientId)
 -spec get_configuration(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, configuration(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_configuration_errors(), tuple()}.
 get_configuration(Client, Application, Configuration, Environment, ClientId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_configuration(Client, Application, Configuration, Environment, ClientId, QueryMap, HeadersMap, []).
@@ -1722,9 +1939,7 @@ get_configuration(Client, Application, Configuration, Environment, ClientId, Que
 -spec get_configuration(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, configuration(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_configuration_errors(), tuple()}.
 get_configuration(Client, Application, Configuration, Environment, ClientId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(Application), "/environments/", aws_util:encode_uri(Environment), "/configurations/", aws_util:encode_uri(Configuration), ""],
@@ -1767,9 +1982,7 @@ get_configuration(Client, Application, Configuration, Environment, ClientId, Que
 -spec get_configuration_profile(map(), binary() | list(), binary() | list()) ->
     {ok, configuration_profile(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_configuration_profile_errors(), tuple()}.
 get_configuration_profile(Client, ApplicationId, ConfigurationProfileId)
   when is_map(Client) ->
     get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, #{}, #{}).
@@ -1777,9 +1990,7 @@ get_configuration_profile(Client, ApplicationId, ConfigurationProfileId)
 -spec get_configuration_profile(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, configuration_profile(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_configuration_profile_errors(), tuple()}.
 get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, QueryMap, HeadersMap, []).
@@ -1787,9 +1998,7 @@ get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, QueryMa
 -spec get_configuration_profile(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, configuration_profile(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_configuration_profile_errors(), tuple()}.
 get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), ""],
@@ -1810,9 +2019,7 @@ get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, QueryMa
 -spec get_deployment(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, deployment(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_deployment_errors(), tuple()}.
 get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId)
   when is_map(Client) ->
     get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, #{}, #{}).
@@ -1820,9 +2027,7 @@ get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId)
 -spec get_deployment(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, deployment(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_deployment_errors(), tuple()}.
 get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, QueryMap, HeadersMap, []).
@@ -1830,9 +2035,7 @@ get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, QueryMap,
 -spec get_deployment(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, deployment(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_deployment_errors(), tuple()}.
 get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), "/deployments/", aws_util:encode_uri(DeploymentNumber), ""],
@@ -1862,9 +2065,7 @@ get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, QueryMap,
 -spec get_deployment_strategy(map(), binary() | list()) ->
     {ok, deployment_strategy(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_deployment_strategy_errors(), tuple()}.
 get_deployment_strategy(Client, DeploymentStrategyId)
   when is_map(Client) ->
     get_deployment_strategy(Client, DeploymentStrategyId, #{}, #{}).
@@ -1872,9 +2073,7 @@ get_deployment_strategy(Client, DeploymentStrategyId)
 -spec get_deployment_strategy(map(), binary() | list(), map(), map()) ->
     {ok, deployment_strategy(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_deployment_strategy_errors(), tuple()}.
 get_deployment_strategy(Client, DeploymentStrategyId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_deployment_strategy(Client, DeploymentStrategyId, QueryMap, HeadersMap, []).
@@ -1882,9 +2081,7 @@ get_deployment_strategy(Client, DeploymentStrategyId, QueryMap, HeadersMap)
 -spec get_deployment_strategy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, deployment_strategy(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_deployment_strategy_errors(), tuple()}.
 get_deployment_strategy(Client, DeploymentStrategyId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/deploymentstrategies/", aws_util:encode_uri(DeploymentStrategyId), ""],
@@ -1914,9 +2111,7 @@ get_deployment_strategy(Client, DeploymentStrategyId, QueryMap, HeadersMap, Opti
 -spec get_environment(map(), binary() | list(), binary() | list()) ->
     {ok, environment(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_environment_errors(), tuple()}.
 get_environment(Client, ApplicationId, EnvironmentId)
   when is_map(Client) ->
     get_environment(Client, ApplicationId, EnvironmentId, #{}, #{}).
@@ -1924,9 +2119,7 @@ get_environment(Client, ApplicationId, EnvironmentId)
 -spec get_environment(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, environment(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_environment_errors(), tuple()}.
 get_environment(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_environment(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, []).
@@ -1934,9 +2127,7 @@ get_environment(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap)
 -spec get_environment(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, environment(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_environment_errors(), tuple()}.
 get_environment(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), ""],
@@ -1957,9 +2148,7 @@ get_environment(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, Opti
 -spec get_extension(map(), binary() | list()) ->
     {ok, extension(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_extension_errors(), tuple()}.
 get_extension(Client, ExtensionIdentifier)
   when is_map(Client) ->
     get_extension(Client, ExtensionIdentifier, #{}, #{}).
@@ -1967,9 +2156,7 @@ get_extension(Client, ExtensionIdentifier)
 -spec get_extension(map(), binary() | list(), map(), map()) ->
     {ok, extension(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_extension_errors(), tuple()}.
 get_extension(Client, ExtensionIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_extension(Client, ExtensionIdentifier, QueryMap, HeadersMap, []).
@@ -1977,9 +2164,7 @@ get_extension(Client, ExtensionIdentifier, QueryMap, HeadersMap)
 -spec get_extension(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, extension(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_extension_errors(), tuple()}.
 get_extension(Client, ExtensionIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/extensions/", aws_util:encode_uri(ExtensionIdentifier), ""],
@@ -2010,9 +2195,7 @@ get_extension(Client, ExtensionIdentifier, QueryMap, HeadersMap, Options0)
 -spec get_extension_association(map(), binary() | list()) ->
     {ok, extension_association(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_extension_association_errors(), tuple()}.
 get_extension_association(Client, ExtensionAssociationId)
   when is_map(Client) ->
     get_extension_association(Client, ExtensionAssociationId, #{}, #{}).
@@ -2020,9 +2203,7 @@ get_extension_association(Client, ExtensionAssociationId)
 -spec get_extension_association(map(), binary() | list(), map(), map()) ->
     {ok, extension_association(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_extension_association_errors(), tuple()}.
 get_extension_association(Client, ExtensionAssociationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_extension_association(Client, ExtensionAssociationId, QueryMap, HeadersMap, []).
@@ -2030,9 +2211,7 @@ get_extension_association(Client, ExtensionAssociationId, QueryMap, HeadersMap)
 -spec get_extension_association(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, extension_association(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_extension_association_errors(), tuple()}.
 get_extension_association(Client, ExtensionAssociationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/extensionassociations/", aws_util:encode_uri(ExtensionAssociationId), ""],
@@ -2053,9 +2232,7 @@ get_extension_association(Client, ExtensionAssociationId, QueryMap, HeadersMap, 
 -spec get_hosted_configuration_version(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, hosted_configuration_version(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_hosted_configuration_version_errors(), tuple()}.
 get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber)
   when is_map(Client) ->
     get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, #{}, #{}).
@@ -2063,9 +2240,7 @@ get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, 
 -spec get_hosted_configuration_version(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, hosted_configuration_version(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_hosted_configuration_version_errors(), tuple()}.
 get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, QueryMap, HeadersMap, []).
@@ -2073,9 +2248,7 @@ get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, 
 -spec get_hosted_configuration_version(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, hosted_configuration_version(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_hosted_configuration_version_errors(), tuple()}.
 get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/hostedconfigurationversions/", aws_util:encode_uri(VersionNumber), ""],
@@ -2118,8 +2291,7 @@ get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, 
 -spec list_applications(map()) ->
     {ok, applications(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client)
   when is_map(Client) ->
     list_applications(Client, #{}, #{}).
@@ -2127,8 +2299,7 @@ list_applications(Client)
 -spec list_applications(map(), map(), map()) ->
     {ok, applications(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_applications(Client, QueryMap, HeadersMap, []).
@@ -2136,8 +2307,7 @@ list_applications(Client, QueryMap, HeadersMap)
 -spec list_applications(map(), map(), map(), proplists:proplist()) ->
     {ok, applications(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications"],
@@ -2163,9 +2333,7 @@ list_applications(Client, QueryMap, HeadersMap, Options0)
 -spec list_configuration_profiles(map(), binary() | list()) ->
     {ok, configuration_profiles(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_configuration_profiles_errors(), tuple()}.
 list_configuration_profiles(Client, ApplicationId)
   when is_map(Client) ->
     list_configuration_profiles(Client, ApplicationId, #{}, #{}).
@@ -2173,9 +2341,7 @@ list_configuration_profiles(Client, ApplicationId)
 -spec list_configuration_profiles(map(), binary() | list(), map(), map()) ->
     {ok, configuration_profiles(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_configuration_profiles_errors(), tuple()}.
 list_configuration_profiles(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configuration_profiles(Client, ApplicationId, QueryMap, HeadersMap, []).
@@ -2183,9 +2349,7 @@ list_configuration_profiles(Client, ApplicationId, QueryMap, HeadersMap)
 -spec list_configuration_profiles(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, configuration_profiles(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_configuration_profiles_errors(), tuple()}.
 list_configuration_profiles(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles"],
@@ -2212,8 +2376,7 @@ list_configuration_profiles(Client, ApplicationId, QueryMap, HeadersMap, Options
 -spec list_deployment_strategies(map()) ->
     {ok, deployment_strategies(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, list_deployment_strategies_errors(), tuple()}.
 list_deployment_strategies(Client)
   when is_map(Client) ->
     list_deployment_strategies(Client, #{}, #{}).
@@ -2221,8 +2384,7 @@ list_deployment_strategies(Client)
 -spec list_deployment_strategies(map(), map(), map()) ->
     {ok, deployment_strategies(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, list_deployment_strategies_errors(), tuple()}.
 list_deployment_strategies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_deployment_strategies(Client, QueryMap, HeadersMap, []).
@@ -2230,8 +2392,7 @@ list_deployment_strategies(Client, QueryMap, HeadersMap)
 -spec list_deployment_strategies(map(), map(), map(), proplists:proplist()) ->
     {ok, deployment_strategies(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, list_deployment_strategies_errors(), tuple()}.
 list_deployment_strategies(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/deploymentstrategies"],
@@ -2258,9 +2419,7 @@ list_deployment_strategies(Client, QueryMap, HeadersMap, Options0)
 -spec list_deployments(map(), binary() | list(), binary() | list()) ->
     {ok, deployments(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_deployments_errors(), tuple()}.
 list_deployments(Client, ApplicationId, EnvironmentId)
   when is_map(Client) ->
     list_deployments(Client, ApplicationId, EnvironmentId, #{}, #{}).
@@ -2268,9 +2427,7 @@ list_deployments(Client, ApplicationId, EnvironmentId)
 -spec list_deployments(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, deployments(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_deployments_errors(), tuple()}.
 list_deployments(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_deployments(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, []).
@@ -2278,9 +2435,7 @@ list_deployments(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap)
 -spec list_deployments(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, deployments(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_deployments_errors(), tuple()}.
 list_deployments(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), "/deployments"],
@@ -2306,9 +2461,7 @@ list_deployments(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, Opt
 -spec list_environments(map(), binary() | list()) ->
     {ok, environments(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client, ApplicationId)
   when is_map(Client) ->
     list_environments(Client, ApplicationId, #{}, #{}).
@@ -2316,9 +2469,7 @@ list_environments(Client, ApplicationId)
 -spec list_environments(map(), binary() | list(), map(), map()) ->
     {ok, environments(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_environments(Client, ApplicationId, QueryMap, HeadersMap, []).
@@ -2326,9 +2477,7 @@ list_environments(Client, ApplicationId, QueryMap, HeadersMap)
 -spec list_environments(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, environments(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments"],
@@ -2360,8 +2509,7 @@ list_environments(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 -spec list_extension_associations(map()) ->
     {ok, extension_associations(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, list_extension_associations_errors(), tuple()}.
 list_extension_associations(Client)
   when is_map(Client) ->
     list_extension_associations(Client, #{}, #{}).
@@ -2369,8 +2517,7 @@ list_extension_associations(Client)
 -spec list_extension_associations(map(), map(), map()) ->
     {ok, extension_associations(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, list_extension_associations_errors(), tuple()}.
 list_extension_associations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_extension_associations(Client, QueryMap, HeadersMap, []).
@@ -2378,8 +2525,7 @@ list_extension_associations(Client, QueryMap, HeadersMap)
 -spec list_extension_associations(map(), map(), map(), proplists:proplist()) ->
     {ok, extension_associations(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, list_extension_associations_errors(), tuple()}.
 list_extension_associations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/extensionassociations"],
@@ -2415,8 +2561,7 @@ list_extension_associations(Client, QueryMap, HeadersMap, Options0)
 -spec list_extensions(map()) ->
     {ok, extensions(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, list_extensions_errors(), tuple()}.
 list_extensions(Client)
   when is_map(Client) ->
     list_extensions(Client, #{}, #{}).
@@ -2424,8 +2569,7 @@ list_extensions(Client)
 -spec list_extensions(map(), map(), map()) ->
     {ok, extensions(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, list_extensions_errors(), tuple()}.
 list_extensions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_extensions(Client, QueryMap, HeadersMap, []).
@@ -2433,8 +2577,7 @@ list_extensions(Client, QueryMap, HeadersMap)
 -spec list_extensions(map(), map(), map(), proplists:proplist()) ->
     {ok, extensions(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, list_extensions_errors(), tuple()}.
 list_extensions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/extensions"],
@@ -2463,9 +2606,7 @@ list_extensions(Client, QueryMap, HeadersMap, Options0)
 -spec list_hosted_configuration_versions(map(), binary() | list(), binary() | list()) ->
     {ok, hosted_configuration_versions(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_hosted_configuration_versions_errors(), tuple()}.
 list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId)
   when is_map(Client) ->
     list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId, #{}, #{}).
@@ -2473,9 +2614,7 @@ list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId
 -spec list_hosted_configuration_versions(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, hosted_configuration_versions(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_hosted_configuration_versions_errors(), tuple()}.
 list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId, QueryMap, HeadersMap, []).
@@ -2483,9 +2622,7 @@ list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId
 -spec list_hosted_configuration_versions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, hosted_configuration_versions(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_hosted_configuration_versions_errors(), tuple()}.
 list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/hostedconfigurationversions"],
@@ -2512,9 +2649,7 @@ list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, resource_tags(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -2522,9 +2657,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, resource_tags(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -2532,9 +2665,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, resource_tags(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2555,20 +2686,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec start_deployment(map(), binary() | list(), binary() | list(), start_deployment_request()) ->
     {ok, deployment(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_deployment_errors(), tuple()}.
 start_deployment(Client, ApplicationId, EnvironmentId, Input) ->
     start_deployment(Client, ApplicationId, EnvironmentId, Input, []).
 
 -spec start_deployment(map(), binary() | list(), binary() | list(), start_deployment_request(), proplists:proplist()) ->
     {ok, deployment(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_deployment_errors(), tuple()}.
 start_deployment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), "/deployments"],
@@ -2599,18 +2724,14 @@ start_deployment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
 -spec stop_deployment(map(), binary() | list(), binary() | list(), binary() | list(), stop_deployment_request()) ->
     {ok, deployment(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_deployment_errors(), tuple()}.
 stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input) ->
     stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input, []).
 
 -spec stop_deployment(map(), binary() | list(), binary() | list(), binary() | list(), stop_deployment_request(), proplists:proplist()) ->
     {ok, deployment(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_deployment_errors(), tuple()}.
 stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), "/deployments/", aws_util:encode_uri(DeploymentNumber), ""],
@@ -2642,18 +2763,14 @@ stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input0, 
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2680,18 +2797,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2719,18 +2832,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_application(map(), binary() | list(), update_application_request()) ->
     {ok, application(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_application_errors(), tuple()}.
 update_application(Client, ApplicationId, Input) ->
     update_application(Client, ApplicationId, Input, []).
 
 -spec update_application(map(), binary() | list(), update_application_request(), proplists:proplist()) ->
     {ok, application(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_application_errors(), tuple()}.
 update_application(Client, ApplicationId, Input0, Options0) ->
     Method = patch,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
@@ -2757,18 +2866,14 @@ update_application(Client, ApplicationId, Input0, Options0) ->
 -spec update_configuration_profile(map(), binary() | list(), binary() | list(), update_configuration_profile_request()) ->
     {ok, configuration_profile(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_configuration_profile_errors(), tuple()}.
 update_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input) ->
     update_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input, []).
 
 -spec update_configuration_profile(map(), binary() | list(), binary() | list(), update_configuration_profile_request(), proplists:proplist()) ->
     {ok, configuration_profile(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_configuration_profile_errors(), tuple()}.
 update_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input0, Options0) ->
     Method = patch,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), ""],
@@ -2795,18 +2900,14 @@ update_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Inpu
 -spec update_deployment_strategy(map(), binary() | list(), update_deployment_strategy_request()) ->
     {ok, deployment_strategy(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_deployment_strategy_errors(), tuple()}.
 update_deployment_strategy(Client, DeploymentStrategyId, Input) ->
     update_deployment_strategy(Client, DeploymentStrategyId, Input, []).
 
 -spec update_deployment_strategy(map(), binary() | list(), update_deployment_strategy_request(), proplists:proplist()) ->
     {ok, deployment_strategy(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_deployment_strategy_errors(), tuple()}.
 update_deployment_strategy(Client, DeploymentStrategyId, Input0, Options0) ->
     Method = patch,
     Path = ["/deploymentstrategies/", aws_util:encode_uri(DeploymentStrategyId), ""],
@@ -2833,18 +2934,14 @@ update_deployment_strategy(Client, DeploymentStrategyId, Input0, Options0) ->
 -spec update_environment(map(), binary() | list(), binary() | list(), update_environment_request()) ->
     {ok, environment(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_environment_errors(), tuple()}.
 update_environment(Client, ApplicationId, EnvironmentId, Input) ->
     update_environment(Client, ApplicationId, EnvironmentId, Input, []).
 
 -spec update_environment(map(), binary() | list(), binary() | list(), update_environment_request(), proplists:proplist()) ->
     {ok, environment(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_environment_errors(), tuple()}.
 update_environment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
     Method = patch,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), ""],
@@ -2877,20 +2974,14 @@ update_environment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
 -spec update_extension(map(), binary() | list(), update_extension_request()) ->
     {ok, extension(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_extension_errors(), tuple()}.
 update_extension(Client, ExtensionIdentifier, Input) ->
     update_extension(Client, ExtensionIdentifier, Input, []).
 
 -spec update_extension(map(), binary() | list(), update_extension_request(), proplists:proplist()) ->
     {ok, extension(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_extension_errors(), tuple()}.
 update_extension(Client, ExtensionIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/extensions/", aws_util:encode_uri(ExtensionIdentifier), ""],
@@ -2923,18 +3014,14 @@ update_extension(Client, ExtensionIdentifier, Input0, Options0) ->
 -spec update_extension_association(map(), binary() | list(), update_extension_association_request()) ->
     {ok, extension_association(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_extension_association_errors(), tuple()}.
 update_extension_association(Client, ExtensionAssociationId, Input) ->
     update_extension_association(Client, ExtensionAssociationId, Input, []).
 
 -spec update_extension_association(map(), binary() | list(), update_extension_association_request(), proplists:proplist()) ->
     {ok, extension_association(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_extension_association_errors(), tuple()}.
 update_extension_association(Client, ExtensionAssociationId, Input0, Options0) ->
     Method = patch,
     Path = ["/extensionassociations/", aws_util:encode_uri(ExtensionAssociationId), ""],
@@ -2962,18 +3049,14 @@ update_extension_association(Client, ExtensionAssociationId, Input0, Options0) -
 -spec validate_configuration(map(), binary() | list(), binary() | list(), validate_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, validate_configuration_errors(), tuple()}.
 validate_configuration(Client, ApplicationId, ConfigurationProfileId, Input) ->
     validate_configuration(Client, ApplicationId, ConfigurationProfileId, Input, []).
 
 -spec validate_configuration(map(), binary() | list(), binary() | list(), validate_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, validate_configuration_errors(), tuple()}.
 validate_configuration(Client, ApplicationId, ConfigurationProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/validators"],

@@ -1666,6 +1666,186 @@
 %% }
 -type get_cost_categories_response() :: #{binary() => any()}.
 
+-type create_anomaly_monitor_errors() ::
+    limit_exceeded_exception().
+
+-type create_anomaly_subscription_errors() ::
+    limit_exceeded_exception() | 
+    unknown_monitor_exception().
+
+-type create_cost_category_definition_errors() ::
+    limit_exceeded_exception() | 
+    service_quota_exceeded_exception().
+
+-type delete_anomaly_monitor_errors() ::
+    limit_exceeded_exception() | 
+    unknown_monitor_exception().
+
+-type delete_anomaly_subscription_errors() ::
+    unknown_subscription_exception() | 
+    limit_exceeded_exception().
+
+-type delete_cost_category_definition_errors() ::
+    limit_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type describe_cost_category_definition_errors() ::
+    limit_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type get_anomalies_errors() ::
+    limit_exceeded_exception() | 
+    invalid_next_token_exception().
+
+-type get_anomaly_monitors_errors() ::
+    limit_exceeded_exception() | 
+    unknown_monitor_exception() | 
+    invalid_next_token_exception().
+
+-type get_anomaly_subscriptions_errors() ::
+    unknown_subscription_exception() | 
+    limit_exceeded_exception() | 
+    invalid_next_token_exception().
+
+-type get_approximate_usage_records_errors() ::
+    limit_exceeded_exception() | 
+    data_unavailable_exception().
+
+-type get_cost_and_usage_errors() ::
+    limit_exceeded_exception() | 
+    bill_expiration_exception() | 
+    data_unavailable_exception() | 
+    invalid_next_token_exception() | 
+    request_changed_exception().
+
+-type get_cost_and_usage_with_resources_errors() ::
+    limit_exceeded_exception() | 
+    bill_expiration_exception() | 
+    data_unavailable_exception() | 
+    invalid_next_token_exception() | 
+    request_changed_exception().
+
+-type get_cost_categories_errors() ::
+    limit_exceeded_exception() | 
+    bill_expiration_exception() | 
+    data_unavailable_exception() | 
+    invalid_next_token_exception() | 
+    request_changed_exception().
+
+-type get_cost_forecast_errors() ::
+    limit_exceeded_exception() | 
+    data_unavailable_exception().
+
+-type get_dimension_values_errors() ::
+    limit_exceeded_exception() | 
+    bill_expiration_exception() | 
+    data_unavailable_exception() | 
+    invalid_next_token_exception() | 
+    request_changed_exception().
+
+-type get_reservation_coverage_errors() ::
+    limit_exceeded_exception() | 
+    data_unavailable_exception() | 
+    invalid_next_token_exception().
+
+-type get_reservation_purchase_recommendation_errors() ::
+    limit_exceeded_exception() | 
+    data_unavailable_exception() | 
+    invalid_next_token_exception().
+
+-type get_reservation_utilization_errors() ::
+    limit_exceeded_exception() | 
+    data_unavailable_exception() | 
+    invalid_next_token_exception().
+
+-type get_rightsizing_recommendation_errors() ::
+    limit_exceeded_exception() | 
+    invalid_next_token_exception().
+
+-type get_savings_plan_purchase_recommendation_details_errors() ::
+    limit_exceeded_exception() | 
+    data_unavailable_exception().
+
+-type get_savings_plans_coverage_errors() ::
+    limit_exceeded_exception() | 
+    data_unavailable_exception() | 
+    invalid_next_token_exception().
+
+-type get_savings_plans_purchase_recommendation_errors() ::
+    limit_exceeded_exception() | 
+    invalid_next_token_exception().
+
+-type get_savings_plans_utilization_errors() ::
+    limit_exceeded_exception() | 
+    data_unavailable_exception().
+
+-type get_savings_plans_utilization_details_errors() ::
+    limit_exceeded_exception() | 
+    data_unavailable_exception() | 
+    invalid_next_token_exception().
+
+-type get_tags_errors() ::
+    limit_exceeded_exception() | 
+    bill_expiration_exception() | 
+    data_unavailable_exception() | 
+    invalid_next_token_exception() | 
+    request_changed_exception().
+
+-type get_usage_forecast_errors() ::
+    limit_exceeded_exception() | 
+    unresolvable_usage_unit_exception() | 
+    data_unavailable_exception().
+
+-type list_cost_allocation_tags_errors() ::
+    limit_exceeded_exception() | 
+    invalid_next_token_exception().
+
+-type list_cost_category_definitions_errors() ::
+    limit_exceeded_exception().
+
+-type list_savings_plans_purchase_recommendation_generation_errors() ::
+    limit_exceeded_exception() | 
+    data_unavailable_exception() | 
+    invalid_next_token_exception().
+
+-type list_tags_for_resource_errors() ::
+    limit_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type provide_anomaly_feedback_errors() ::
+    limit_exceeded_exception().
+
+-type start_savings_plans_purchase_recommendation_generation_errors() ::
+    limit_exceeded_exception() | 
+    data_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    generation_exists_exception().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    limit_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    limit_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type update_anomaly_monitor_errors() ::
+    limit_exceeded_exception() | 
+    unknown_monitor_exception().
+
+-type update_anomaly_subscription_errors() ::
+    unknown_subscription_exception() | 
+    limit_exceeded_exception() | 
+    unknown_monitor_exception().
+
+-type update_cost_allocation_tags_status_errors() ::
+    limit_exceeded_exception().
+
+-type update_cost_category_definition_errors() ::
+    limit_exceeded_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -1677,7 +1857,7 @@
 -spec create_anomaly_monitor(map(), create_anomaly_monitor_request()) ->
     {ok, create_anomaly_monitor_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_anomaly_monitor_errors(), tuple()}.
 create_anomaly_monitor(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_anomaly_monitor(Client, Input, []).
@@ -1685,7 +1865,7 @@ create_anomaly_monitor(Client, Input)
 -spec create_anomaly_monitor(map(), create_anomaly_monitor_request(), proplists:proplist()) ->
     {ok, create_anomaly_monitor_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_anomaly_monitor_errors(), tuple()}.
 create_anomaly_monitor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAnomalyMonitor">>, Input, Options).
@@ -1700,8 +1880,7 @@ create_anomaly_monitor(Client, Input, Options)
 -spec create_anomaly_subscription(map(), create_anomaly_subscription_request()) ->
     {ok, create_anomaly_subscription_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, unknown_monitor_exception(), tuple()}.
+    {error, create_anomaly_subscription_errors(), tuple()}.
 create_anomaly_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_anomaly_subscription(Client, Input, []).
@@ -1709,8 +1888,7 @@ create_anomaly_subscription(Client, Input)
 -spec create_anomaly_subscription(map(), create_anomaly_subscription_request(), proplists:proplist()) ->
     {ok, create_anomaly_subscription_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, unknown_monitor_exception(), tuple()}.
+    {error, create_anomaly_subscription_errors(), tuple()}.
 create_anomaly_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAnomalySubscription">>, Input, Options).
@@ -1719,8 +1897,7 @@ create_anomaly_subscription(Client, Input, Options)
 -spec create_cost_category_definition(map(), create_cost_category_definition_request()) ->
     {ok, create_cost_category_definition_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_cost_category_definition_errors(), tuple()}.
 create_cost_category_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cost_category_definition(Client, Input, []).
@@ -1728,8 +1905,7 @@ create_cost_category_definition(Client, Input)
 -spec create_cost_category_definition(map(), create_cost_category_definition_request(), proplists:proplist()) ->
     {ok, create_cost_category_definition_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_cost_category_definition_errors(), tuple()}.
 create_cost_category_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCostCategoryDefinition">>, Input, Options).
@@ -1738,8 +1914,7 @@ create_cost_category_definition(Client, Input, Options)
 -spec delete_anomaly_monitor(map(), delete_anomaly_monitor_request()) ->
     {ok, delete_anomaly_monitor_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, unknown_monitor_exception(), tuple()}.
+    {error, delete_anomaly_monitor_errors(), tuple()}.
 delete_anomaly_monitor(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_anomaly_monitor(Client, Input, []).
@@ -1747,8 +1922,7 @@ delete_anomaly_monitor(Client, Input)
 -spec delete_anomaly_monitor(map(), delete_anomaly_monitor_request(), proplists:proplist()) ->
     {ok, delete_anomaly_monitor_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, unknown_monitor_exception(), tuple()}.
+    {error, delete_anomaly_monitor_errors(), tuple()}.
 delete_anomaly_monitor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAnomalyMonitor">>, Input, Options).
@@ -1757,8 +1931,7 @@ delete_anomaly_monitor(Client, Input, Options)
 -spec delete_anomaly_subscription(map(), delete_anomaly_subscription_request()) ->
     {ok, delete_anomaly_subscription_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, unknown_subscription_exception(), tuple()}.
+    {error, delete_anomaly_subscription_errors(), tuple()}.
 delete_anomaly_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_anomaly_subscription(Client, Input, []).
@@ -1766,8 +1939,7 @@ delete_anomaly_subscription(Client, Input)
 -spec delete_anomaly_subscription(map(), delete_anomaly_subscription_request(), proplists:proplist()) ->
     {ok, delete_anomaly_subscription_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, unknown_subscription_exception(), tuple()}.
+    {error, delete_anomaly_subscription_errors(), tuple()}.
 delete_anomaly_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAnomalySubscription">>, Input, Options).
@@ -1779,8 +1951,7 @@ delete_anomaly_subscription(Client, Input, Options)
 -spec delete_cost_category_definition(map(), delete_cost_category_definition_request()) ->
     {ok, delete_cost_category_definition_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_cost_category_definition_errors(), tuple()}.
 delete_cost_category_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cost_category_definition(Client, Input, []).
@@ -1788,8 +1959,7 @@ delete_cost_category_definition(Client, Input)
 -spec delete_cost_category_definition(map(), delete_cost_category_definition_request(), proplists:proplist()) ->
     {ok, delete_cost_category_definition_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_cost_category_definition_errors(), tuple()}.
 delete_cost_category_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCostCategoryDefinition">>, Input, Options).
@@ -1808,8 +1978,7 @@ delete_cost_category_definition(Client, Input, Options)
 -spec describe_cost_category_definition(map(), describe_cost_category_definition_request()) ->
     {ok, describe_cost_category_definition_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_cost_category_definition_errors(), tuple()}.
 describe_cost_category_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cost_category_definition(Client, Input, []).
@@ -1817,8 +1986,7 @@ describe_cost_category_definition(Client, Input)
 -spec describe_cost_category_definition(map(), describe_cost_category_definition_request(), proplists:proplist()) ->
     {ok, describe_cost_category_definition_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_cost_category_definition_errors(), tuple()}.
 describe_cost_category_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCostCategoryDefinition">>, Input, Options).
@@ -1832,8 +2000,7 @@ describe_cost_category_definition(Client, Input, Options)
 -spec get_anomalies(map(), get_anomalies_request()) ->
     {ok, get_anomalies_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_anomalies_errors(), tuple()}.
 get_anomalies(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_anomalies(Client, Input, []).
@@ -1841,8 +2008,7 @@ get_anomalies(Client, Input)
 -spec get_anomalies(map(), get_anomalies_request(), proplists:proplist()) ->
     {ok, get_anomalies_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_anomalies_errors(), tuple()}.
 get_anomalies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAnomalies">>, Input, Options).
@@ -1854,9 +2020,7 @@ get_anomalies(Client, Input, Options)
 -spec get_anomaly_monitors(map(), get_anomaly_monitors_request()) ->
     {ok, get_anomaly_monitors_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, unknown_monitor_exception(), tuple()}.
+    {error, get_anomaly_monitors_errors(), tuple()}.
 get_anomaly_monitors(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_anomaly_monitors(Client, Input, []).
@@ -1864,9 +2028,7 @@ get_anomaly_monitors(Client, Input)
 -spec get_anomaly_monitors(map(), get_anomaly_monitors_request(), proplists:proplist()) ->
     {ok, get_anomaly_monitors_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, unknown_monitor_exception(), tuple()}.
+    {error, get_anomaly_monitors_errors(), tuple()}.
 get_anomaly_monitors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAnomalyMonitors">>, Input, Options).
@@ -1878,9 +2040,7 @@ get_anomaly_monitors(Client, Input, Options)
 -spec get_anomaly_subscriptions(map(), get_anomaly_subscriptions_request()) ->
     {ok, get_anomaly_subscriptions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, unknown_subscription_exception(), tuple()}.
+    {error, get_anomaly_subscriptions_errors(), tuple()}.
 get_anomaly_subscriptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_anomaly_subscriptions(Client, Input, []).
@@ -1888,9 +2048,7 @@ get_anomaly_subscriptions(Client, Input)
 -spec get_anomaly_subscriptions(map(), get_anomaly_subscriptions_request(), proplists:proplist()) ->
     {ok, get_anomaly_subscriptions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, unknown_subscription_exception(), tuple()}.
+    {error, get_anomaly_subscriptions_errors(), tuple()}.
 get_anomaly_subscriptions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAnomalySubscriptions">>, Input, Options).
@@ -1901,8 +2059,7 @@ get_anomaly_subscriptions(Client, Input, Options)
 -spec get_approximate_usage_records(map(), get_approximate_usage_records_request()) ->
     {ok, get_approximate_usage_records_response(), tuple()} |
     {error, any()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_approximate_usage_records_errors(), tuple()}.
 get_approximate_usage_records(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_approximate_usage_records(Client, Input, []).
@@ -1910,8 +2067,7 @@ get_approximate_usage_records(Client, Input)
 -spec get_approximate_usage_records(map(), get_approximate_usage_records_request(), proplists:proplist()) ->
     {ok, get_approximate_usage_records_response(), tuple()} |
     {error, any()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_approximate_usage_records_errors(), tuple()}.
 get_approximate_usage_records(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetApproximateUsageRecords">>, Input, Options).
@@ -1937,11 +2093,7 @@ get_approximate_usage_records(Client, Input, Options)
 -spec get_cost_and_usage(map(), get_cost_and_usage_request()) ->
     {ok, get_cost_and_usage_response(), tuple()} |
     {error, any()} |
-    {error, bill_expiration_exception(), tuple()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, request_changed_exception(), tuple()}.
+    {error, get_cost_and_usage_errors(), tuple()}.
 get_cost_and_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_cost_and_usage(Client, Input, []).
@@ -1949,11 +2101,7 @@ get_cost_and_usage(Client, Input)
 -spec get_cost_and_usage(map(), get_cost_and_usage_request(), proplists:proplist()) ->
     {ok, get_cost_and_usage_response(), tuple()} |
     {error, any()} |
-    {error, bill_expiration_exception(), tuple()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, request_changed_exception(), tuple()}.
+    {error, get_cost_and_usage_errors(), tuple()}.
 get_cost_and_usage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCostAndUsage">>, Input, Options).
@@ -1983,11 +2131,7 @@ get_cost_and_usage(Client, Input, Options)
 -spec get_cost_and_usage_with_resources(map(), get_cost_and_usage_with_resources_request()) ->
     {ok, get_cost_and_usage_with_resources_response(), tuple()} |
     {error, any()} |
-    {error, bill_expiration_exception(), tuple()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, request_changed_exception(), tuple()}.
+    {error, get_cost_and_usage_with_resources_errors(), tuple()}.
 get_cost_and_usage_with_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_cost_and_usage_with_resources(Client, Input, []).
@@ -1995,11 +2139,7 @@ get_cost_and_usage_with_resources(Client, Input)
 -spec get_cost_and_usage_with_resources(map(), get_cost_and_usage_with_resources_request(), proplists:proplist()) ->
     {ok, get_cost_and_usage_with_resources_response(), tuple()} |
     {error, any()} |
-    {error, bill_expiration_exception(), tuple()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, request_changed_exception(), tuple()}.
+    {error, get_cost_and_usage_with_resources_errors(), tuple()}.
 get_cost_and_usage_with_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCostAndUsageWithResources">>, Input, Options).
@@ -2012,11 +2152,7 @@ get_cost_and_usage_with_resources(Client, Input, Options)
 -spec get_cost_categories(map(), get_cost_categories_request()) ->
     {ok, get_cost_categories_response(), tuple()} |
     {error, any()} |
-    {error, bill_expiration_exception(), tuple()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, request_changed_exception(), tuple()}.
+    {error, get_cost_categories_errors(), tuple()}.
 get_cost_categories(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_cost_categories(Client, Input, []).
@@ -2024,11 +2160,7 @@ get_cost_categories(Client, Input)
 -spec get_cost_categories(map(), get_cost_categories_request(), proplists:proplist()) ->
     {ok, get_cost_categories_response(), tuple()} |
     {error, any()} |
-    {error, bill_expiration_exception(), tuple()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, request_changed_exception(), tuple()}.
+    {error, get_cost_categories_errors(), tuple()}.
 get_cost_categories(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCostCategories">>, Input, Options).
@@ -2039,8 +2171,7 @@ get_cost_categories(Client, Input, Options)
 -spec get_cost_forecast(map(), get_cost_forecast_request()) ->
     {ok, get_cost_forecast_response(), tuple()} |
     {error, any()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_cost_forecast_errors(), tuple()}.
 get_cost_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_cost_forecast(Client, Input, []).
@@ -2048,8 +2179,7 @@ get_cost_forecast(Client, Input)
 -spec get_cost_forecast(map(), get_cost_forecast_request(), proplists:proplist()) ->
     {ok, get_cost_forecast_response(), tuple()} |
     {error, any()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_cost_forecast_errors(), tuple()}.
 get_cost_forecast(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCostForecast">>, Input, Options).
@@ -2062,11 +2192,7 @@ get_cost_forecast(Client, Input, Options)
 -spec get_dimension_values(map(), get_dimension_values_request()) ->
     {ok, get_dimension_values_response(), tuple()} |
     {error, any()} |
-    {error, bill_expiration_exception(), tuple()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, request_changed_exception(), tuple()}.
+    {error, get_dimension_values_errors(), tuple()}.
 get_dimension_values(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_dimension_values(Client, Input, []).
@@ -2074,11 +2200,7 @@ get_dimension_values(Client, Input)
 -spec get_dimension_values(map(), get_dimension_values_request(), proplists:proplist()) ->
     {ok, get_dimension_values_response(), tuple()} |
     {error, any()} |
-    {error, bill_expiration_exception(), tuple()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, request_changed_exception(), tuple()}.
+    {error, get_dimension_values_errors(), tuple()}.
 get_dimension_values(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDimensionValues">>, Input, Options).
@@ -2126,9 +2248,7 @@ get_dimension_values(Client, Input, Options)
 -spec get_reservation_coverage(map(), get_reservation_coverage_request()) ->
     {ok, get_reservation_coverage_response(), tuple()} |
     {error, any()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_reservation_coverage_errors(), tuple()}.
 get_reservation_coverage(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_reservation_coverage(Client, Input, []).
@@ -2136,9 +2256,7 @@ get_reservation_coverage(Client, Input)
 -spec get_reservation_coverage(map(), get_reservation_coverage_request(), proplists:proplist()) ->
     {ok, get_reservation_coverage_response(), tuple()} |
     {error, any()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_reservation_coverage_errors(), tuple()}.
 get_reservation_coverage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetReservationCoverage">>, Input, Options).
@@ -2178,9 +2296,7 @@ get_reservation_coverage(Client, Input, Options)
 -spec get_reservation_purchase_recommendation(map(), get_reservation_purchase_recommendation_request()) ->
     {ok, get_reservation_purchase_recommendation_response(), tuple()} |
     {error, any()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_reservation_purchase_recommendation_errors(), tuple()}.
 get_reservation_purchase_recommendation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_reservation_purchase_recommendation(Client, Input, []).
@@ -2188,9 +2304,7 @@ get_reservation_purchase_recommendation(Client, Input)
 -spec get_reservation_purchase_recommendation(map(), get_reservation_purchase_recommendation_request(), proplists:proplist()) ->
     {ok, get_reservation_purchase_recommendation_response(), tuple()} |
     {error, any()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_reservation_purchase_recommendation_errors(), tuple()}.
 get_reservation_purchase_recommendation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetReservationPurchaseRecommendation">>, Input, Options).
@@ -2206,9 +2320,7 @@ get_reservation_purchase_recommendation(Client, Input, Options)
 -spec get_reservation_utilization(map(), get_reservation_utilization_request()) ->
     {ok, get_reservation_utilization_response(), tuple()} |
     {error, any()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_reservation_utilization_errors(), tuple()}.
 get_reservation_utilization(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_reservation_utilization(Client, Input, []).
@@ -2216,9 +2328,7 @@ get_reservation_utilization(Client, Input)
 -spec get_reservation_utilization(map(), get_reservation_utilization_request(), proplists:proplist()) ->
     {ok, get_reservation_utilization_response(), tuple()} |
     {error, any()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_reservation_utilization_errors(), tuple()}.
 get_reservation_utilization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetReservationUtilization">>, Input, Options).
@@ -2237,8 +2347,7 @@ get_reservation_utilization(Client, Input, Options)
 -spec get_rightsizing_recommendation(map(), get_rightsizing_recommendation_request()) ->
     {ok, get_rightsizing_recommendation_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_rightsizing_recommendation_errors(), tuple()}.
 get_rightsizing_recommendation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_rightsizing_recommendation(Client, Input, []).
@@ -2246,8 +2355,7 @@ get_rightsizing_recommendation(Client, Input)
 -spec get_rightsizing_recommendation(map(), get_rightsizing_recommendation_request(), proplists:proplist()) ->
     {ok, get_rightsizing_recommendation_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_rightsizing_recommendation_errors(), tuple()}.
 get_rightsizing_recommendation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRightsizingRecommendation">>, Input, Options).
@@ -2259,8 +2367,7 @@ get_rightsizing_recommendation(Client, Input, Options)
 -spec get_savings_plan_purchase_recommendation_details(map(), get_savings_plan_purchase_recommendation_details_request()) ->
     {ok, get_savings_plan_purchase_recommendation_details_response(), tuple()} |
     {error, any()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_savings_plan_purchase_recommendation_details_errors(), tuple()}.
 get_savings_plan_purchase_recommendation_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_savings_plan_purchase_recommendation_details(Client, Input, []).
@@ -2268,8 +2375,7 @@ get_savings_plan_purchase_recommendation_details(Client, Input)
 -spec get_savings_plan_purchase_recommendation_details(map(), get_savings_plan_purchase_recommendation_details_request(), proplists:proplist()) ->
     {ok, get_savings_plan_purchase_recommendation_details_response(), tuple()} |
     {error, any()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_savings_plan_purchase_recommendation_details_errors(), tuple()}.
 get_savings_plan_purchase_recommendation_details(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSavingsPlanPurchaseRecommendationDetails">>, Input, Options).
@@ -2299,9 +2405,7 @@ get_savings_plan_purchase_recommendation_details(Client, Input, Options)
 -spec get_savings_plans_coverage(map(), get_savings_plans_coverage_request()) ->
     {ok, get_savings_plans_coverage_response(), tuple()} |
     {error, any()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_savings_plans_coverage_errors(), tuple()}.
 get_savings_plans_coverage(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_savings_plans_coverage(Client, Input, []).
@@ -2309,9 +2413,7 @@ get_savings_plans_coverage(Client, Input)
 -spec get_savings_plans_coverage(map(), get_savings_plans_coverage_request(), proplists:proplist()) ->
     {ok, get_savings_plans_coverage_response(), tuple()} |
     {error, any()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_savings_plans_coverage_errors(), tuple()}.
 get_savings_plans_coverage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSavingsPlansCoverage">>, Input, Options).
@@ -2327,8 +2429,7 @@ get_savings_plans_coverage(Client, Input, Options)
 -spec get_savings_plans_purchase_recommendation(map(), get_savings_plans_purchase_recommendation_request()) ->
     {ok, get_savings_plans_purchase_recommendation_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_savings_plans_purchase_recommendation_errors(), tuple()}.
 get_savings_plans_purchase_recommendation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_savings_plans_purchase_recommendation(Client, Input, []).
@@ -2336,8 +2437,7 @@ get_savings_plans_purchase_recommendation(Client, Input)
 -spec get_savings_plans_purchase_recommendation(map(), get_savings_plans_purchase_recommendation_request(), proplists:proplist()) ->
     {ok, get_savings_plans_purchase_recommendation_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_savings_plans_purchase_recommendation_errors(), tuple()}.
 get_savings_plans_purchase_recommendation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSavingsPlansPurchaseRecommendation">>, Input, Options).
@@ -2355,8 +2455,7 @@ get_savings_plans_purchase_recommendation(Client, Input, Options)
 -spec get_savings_plans_utilization(map(), get_savings_plans_utilization_request()) ->
     {ok, get_savings_plans_utilization_response(), tuple()} |
     {error, any()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_savings_plans_utilization_errors(), tuple()}.
 get_savings_plans_utilization(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_savings_plans_utilization(Client, Input, []).
@@ -2364,8 +2463,7 @@ get_savings_plans_utilization(Client, Input)
 -spec get_savings_plans_utilization(map(), get_savings_plans_utilization_request(), proplists:proplist()) ->
     {ok, get_savings_plans_utilization_response(), tuple()} |
     {error, any()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_savings_plans_utilization_errors(), tuple()}.
 get_savings_plans_utilization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSavingsPlansUtilization">>, Input, Options).
@@ -2389,9 +2487,7 @@ get_savings_plans_utilization(Client, Input, Options)
 -spec get_savings_plans_utilization_details(map(), get_savings_plans_utilization_details_request()) ->
     {ok, get_savings_plans_utilization_details_response(), tuple()} |
     {error, any()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_savings_plans_utilization_details_errors(), tuple()}.
 get_savings_plans_utilization_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_savings_plans_utilization_details(Client, Input, []).
@@ -2399,9 +2495,7 @@ get_savings_plans_utilization_details(Client, Input)
 -spec get_savings_plans_utilization_details(map(), get_savings_plans_utilization_details_request(), proplists:proplist()) ->
     {ok, get_savings_plans_utilization_details_response(), tuple()} |
     {error, any()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_savings_plans_utilization_details_errors(), tuple()}.
 get_savings_plans_utilization_details(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSavingsPlansUtilizationDetails">>, Input, Options).
@@ -2413,11 +2507,7 @@ get_savings_plans_utilization_details(Client, Input, Options)
 -spec get_tags(map(), get_tags_request()) ->
     {ok, get_tags_response(), tuple()} |
     {error, any()} |
-    {error, bill_expiration_exception(), tuple()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, request_changed_exception(), tuple()}.
+    {error, get_tags_errors(), tuple()}.
 get_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_tags(Client, Input, []).
@@ -2425,11 +2515,7 @@ get_tags(Client, Input)
 -spec get_tags(map(), get_tags_request(), proplists:proplist()) ->
     {ok, get_tags_response(), tuple()} |
     {error, any()} |
-    {error, bill_expiration_exception(), tuple()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, request_changed_exception(), tuple()}.
+    {error, get_tags_errors(), tuple()}.
 get_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTags">>, Input, Options).
@@ -2440,9 +2526,7 @@ get_tags(Client, Input, Options)
 -spec get_usage_forecast(map(), get_usage_forecast_request()) ->
     {ok, get_usage_forecast_response(), tuple()} |
     {error, any()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, unresolvable_usage_unit_exception(), tuple()}.
+    {error, get_usage_forecast_errors(), tuple()}.
 get_usage_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_usage_forecast(Client, Input, []).
@@ -2450,9 +2534,7 @@ get_usage_forecast(Client, Input)
 -spec get_usage_forecast(map(), get_usage_forecast_request(), proplists:proplist()) ->
     {ok, get_usage_forecast_response(), tuple()} |
     {error, any()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, unresolvable_usage_unit_exception(), tuple()}.
+    {error, get_usage_forecast_errors(), tuple()}.
 get_usage_forecast(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUsageForecast">>, Input, Options).
@@ -2464,8 +2546,7 @@ get_usage_forecast(Client, Input, Options)
 -spec list_cost_allocation_tags(map(), list_cost_allocation_tags_request()) ->
     {ok, list_cost_allocation_tags_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_cost_allocation_tags_errors(), tuple()}.
 list_cost_allocation_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_cost_allocation_tags(Client, Input, []).
@@ -2473,8 +2554,7 @@ list_cost_allocation_tags(Client, Input)
 -spec list_cost_allocation_tags(map(), list_cost_allocation_tags_request(), proplists:proplist()) ->
     {ok, list_cost_allocation_tags_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_cost_allocation_tags_errors(), tuple()}.
 list_cost_allocation_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCostAllocationTags">>, Input, Options).
@@ -2496,7 +2576,7 @@ list_cost_allocation_tags(Client, Input, Options)
 -spec list_cost_category_definitions(map(), list_cost_category_definitions_request()) ->
     {ok, list_cost_category_definitions_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_cost_category_definitions_errors(), tuple()}.
 list_cost_category_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_cost_category_definitions(Client, Input, []).
@@ -2504,7 +2584,7 @@ list_cost_category_definitions(Client, Input)
 -spec list_cost_category_definitions(map(), list_cost_category_definitions_request(), proplists:proplist()) ->
     {ok, list_cost_category_definitions_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_cost_category_definitions_errors(), tuple()}.
 list_cost_category_definitions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCostCategoryDefinitions">>, Input, Options).
@@ -2515,9 +2595,7 @@ list_cost_category_definitions(Client, Input, Options)
 -spec list_savings_plans_purchase_recommendation_generation(map(), list_savings_plans_purchase_recommendation_generation_request()) ->
     {ok, list_savings_plans_purchase_recommendation_generation_response(), tuple()} |
     {error, any()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_savings_plans_purchase_recommendation_generation_errors(), tuple()}.
 list_savings_plans_purchase_recommendation_generation(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_savings_plans_purchase_recommendation_generation(Client, Input, []).
@@ -2525,9 +2603,7 @@ list_savings_plans_purchase_recommendation_generation(Client, Input)
 -spec list_savings_plans_purchase_recommendation_generation(map(), list_savings_plans_purchase_recommendation_generation_request(), proplists:proplist()) ->
     {ok, list_savings_plans_purchase_recommendation_generation_response(), tuple()} |
     {error, any()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_savings_plans_purchase_recommendation_generation_errors(), tuple()}.
 list_savings_plans_purchase_recommendation_generation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSavingsPlansPurchaseRecommendationGeneration">>, Input, Options).
@@ -2538,8 +2614,7 @@ list_savings_plans_purchase_recommendation_generation(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -2547,8 +2622,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -2557,7 +2631,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec provide_anomaly_feedback(map(), provide_anomaly_feedback_request()) ->
     {ok, provide_anomaly_feedback_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, provide_anomaly_feedback_errors(), tuple()}.
 provide_anomaly_feedback(Client, Input)
   when is_map(Client), is_map(Input) ->
     provide_anomaly_feedback(Client, Input, []).
@@ -2565,7 +2639,7 @@ provide_anomaly_feedback(Client, Input)
 -spec provide_anomaly_feedback(map(), provide_anomaly_feedback_request(), proplists:proplist()) ->
     {ok, provide_anomaly_feedback_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, provide_anomaly_feedback_errors(), tuple()}.
 provide_anomaly_feedback(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ProvideAnomalyFeedback">>, Input, Options).
@@ -2585,10 +2659,7 @@ provide_anomaly_feedback(Client, Input, Options)
 -spec start_savings_plans_purchase_recommendation_generation(map(), start_savings_plans_purchase_recommendation_generation_request()) ->
     {ok, start_savings_plans_purchase_recommendation_generation_response(), tuple()} |
     {error, any()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, generation_exists_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, start_savings_plans_purchase_recommendation_generation_errors(), tuple()}.
 start_savings_plans_purchase_recommendation_generation(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_savings_plans_purchase_recommendation_generation(Client, Input, []).
@@ -2596,10 +2667,7 @@ start_savings_plans_purchase_recommendation_generation(Client, Input)
 -spec start_savings_plans_purchase_recommendation_generation(map(), start_savings_plans_purchase_recommendation_generation_request(), proplists:proplist()) ->
     {ok, start_savings_plans_purchase_recommendation_generation_response(), tuple()} |
     {error, any()} |
-    {error, data_unavailable_exception(), tuple()} |
-    {error, generation_exists_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, start_savings_plans_purchase_recommendation_generation_errors(), tuple()}.
 start_savings_plans_purchase_recommendation_generation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartSavingsPlansPurchaseRecommendationGeneration">>, Input, Options).
@@ -2622,9 +2690,7 @@ start_savings_plans_purchase_recommendation_generation(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -2632,9 +2698,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -2646,8 +2710,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -2655,8 +2718,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -2668,8 +2730,7 @@ untag_resource(Client, Input, Options)
 -spec update_anomaly_monitor(map(), update_anomaly_monitor_request()) ->
     {ok, update_anomaly_monitor_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, unknown_monitor_exception(), tuple()}.
+    {error, update_anomaly_monitor_errors(), tuple()}.
 update_anomaly_monitor(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_anomaly_monitor(Client, Input, []).
@@ -2677,8 +2738,7 @@ update_anomaly_monitor(Client, Input)
 -spec update_anomaly_monitor(map(), update_anomaly_monitor_request(), proplists:proplist()) ->
     {ok, update_anomaly_monitor_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, unknown_monitor_exception(), tuple()}.
+    {error, update_anomaly_monitor_errors(), tuple()}.
 update_anomaly_monitor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAnomalyMonitor">>, Input, Options).
@@ -2696,9 +2756,7 @@ update_anomaly_monitor(Client, Input, Options)
 -spec update_anomaly_subscription(map(), update_anomaly_subscription_request()) ->
     {ok, update_anomaly_subscription_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, unknown_monitor_exception(), tuple()} |
-    {error, unknown_subscription_exception(), tuple()}.
+    {error, update_anomaly_subscription_errors(), tuple()}.
 update_anomaly_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_anomaly_subscription(Client, Input, []).
@@ -2706,9 +2764,7 @@ update_anomaly_subscription(Client, Input)
 -spec update_anomaly_subscription(map(), update_anomaly_subscription_request(), proplists:proplist()) ->
     {ok, update_anomaly_subscription_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, unknown_monitor_exception(), tuple()} |
-    {error, unknown_subscription_exception(), tuple()}.
+    {error, update_anomaly_subscription_errors(), tuple()}.
 update_anomaly_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAnomalySubscription">>, Input, Options).
@@ -2725,7 +2781,7 @@ update_anomaly_subscription(Client, Input, Options)
 -spec update_cost_allocation_tags_status(map(), update_cost_allocation_tags_status_request()) ->
     {ok, update_cost_allocation_tags_status_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, update_cost_allocation_tags_status_errors(), tuple()}.
 update_cost_allocation_tags_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_cost_allocation_tags_status(Client, Input, []).
@@ -2733,7 +2789,7 @@ update_cost_allocation_tags_status(Client, Input)
 -spec update_cost_allocation_tags_status(map(), update_cost_allocation_tags_status_request(), proplists:proplist()) ->
     {ok, update_cost_allocation_tags_status_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, update_cost_allocation_tags_status_errors(), tuple()}.
 update_cost_allocation_tags_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCostAllocationTagsStatus">>, Input, Options).
@@ -2747,9 +2803,7 @@ update_cost_allocation_tags_status(Client, Input, Options)
 -spec update_cost_category_definition(map(), update_cost_category_definition_request()) ->
     {ok, update_cost_category_definition_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, update_cost_category_definition_errors(), tuple()}.
 update_cost_category_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_cost_category_definition(Client, Input, []).
@@ -2757,9 +2811,7 @@ update_cost_category_definition(Client, Input)
 -spec update_cost_category_definition(map(), update_cost_category_definition_request(), proplists:proplist()) ->
     {ok, update_cost_category_definition_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, update_cost_category_definition_errors(), tuple()}.
 update_cost_category_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCostCategoryDefinition">>, Input, Options).

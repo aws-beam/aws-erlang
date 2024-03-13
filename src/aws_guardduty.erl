@@ -209,15 +209,18 @@
 %%   <<"AuditLogs">> => organization_kubernetes_audit_logs_configuration()
 %% }
 -type organization_kubernetes_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_from_master_account_request() :: #{}
 -type disassociate_from_master_account_request() :: #{}.
+
 
 %% Example:
 %% cloud_trail_configuration_result() :: #{
 %%   <<"Status">> => list(any())
 %% }
 -type cloud_trail_configuration_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% organization() :: #{
@@ -227,6 +230,7 @@
 %%   <<"Org">> => string()
 %% }
 -type organization() :: #{binary() => any()}.
+
 
 %% Example:
 %% instance_details() :: #{
@@ -246,6 +250,7 @@
 %% }
 -type instance_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% member_data_source_configuration() :: #{
 %%   <<"AccountId">> => string(),
@@ -253,6 +258,7 @@
 %%   <<"Features">> => list(member_features_configuration_result()())
 %% }
 -type member_data_source_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_sources_free_trial() :: #{
@@ -265,6 +271,7 @@
 %% }
 -type data_sources_free_trial() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_usage_statistics_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -275,6 +282,7 @@
 %% }
 -type get_usage_statistics_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% usage_data_source_result() :: #{
 %%   <<"DataSource">> => list(any()),
@@ -282,11 +290,13 @@
 %% }
 -type usage_data_source_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"Tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% scan_resource_criteria() :: #{
@@ -295,11 +305,13 @@
 %% }
 -type scan_resource_criteria() :: #{binary() => any()}.
 
+
 %% Example:
 %% decline_invitations_response() :: #{
 %%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
 %% }
 -type decline_invitations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% container() :: #{
@@ -313,6 +325,7 @@
 %% }
 -type container() :: #{binary() => any()}.
 
+
 %% Example:
 %% remote_ip_details() :: #{
 %%   <<"City">> => city(),
@@ -322,9 +335,11 @@
 %%   <<"Organization">> => organization()
 %% }
 -type remote_ip_details() :: #{binary() => any()}.
+
 %% Example:
 %% disable_organization_admin_account_response() :: #{}
 -type disable_organization_admin_account_response() :: #{}.
+
 
 %% Example:
 %% kubernetes_data_source_free_trial() :: #{
@@ -332,11 +347,13 @@
 %% }
 -type kubernetes_data_source_free_trial() :: #{binary() => any()}.
 
+
 %% Example:
 %% organization_ebs_volumes_result() :: #{
 %%   <<"AutoEnable">> => boolean()
 %% }
 -type organization_ebs_volumes_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% administrator() :: #{
@@ -346,6 +363,7 @@
 %%   <<"RelationshipStatus">> => string()
 %% }
 -type administrator() :: #{binary() => any()}.
+
 
 %% Example:
 %% usage_statistics() :: #{
@@ -358,6 +376,7 @@
 %% }
 -type usage_statistics() :: #{binary() => any()}.
 
+
 %% Example:
 %% filter_condition() :: #{
 %%   <<"EqualsValue">> => string(),
@@ -366,12 +385,14 @@
 %% }
 -type filter_condition() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_organization_configuration_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_organization_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_bucket_detail() :: #{
@@ -386,6 +407,7 @@
 %% }
 -type s3_bucket_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_source_configurations_result() :: #{
 %%   <<"CloudTrail">> => cloud_trail_configuration_result(),
@@ -397,12 +419,14 @@
 %% }
 -type data_source_configurations_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_ip_sets_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_ip_sets_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_findings_statistics_request() :: #{
@@ -411,6 +435,7 @@
 %% }
 -type get_findings_statistics_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_members_response() :: #{
 %%   <<"Members">> => list(member()()),
@@ -418,11 +443,13 @@
 %% }
 -type get_members_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_member_detectors_request() :: #{
 %%   <<"AccountIds">> := list(string()())
 %% }
 -type get_member_detectors_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% admin_account() :: #{
@@ -430,9 +457,11 @@
 %%   <<"AdminStatus">> => list(any())
 %% }
 -type admin_account() :: #{binary() => any()}.
+
 %% Example:
 %% archive_findings_response() :: #{}
 -type archive_findings_response() :: #{}.
+
 
 %% Example:
 %% accept_administrator_invitation_request() :: #{
@@ -441,12 +470,14 @@
 %% }
 -type accept_administrator_invitation_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% scan_condition_pair() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Value">> => string()
 %% }
 -type scan_condition_pair() :: #{binary() => any()}.
+
 
 %% Example:
 %% destination_properties() :: #{
@@ -455,21 +486,25 @@
 %% }
 -type destination_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% ebs_volume_details() :: #{
 %%   <<"ScannedVolumeDetails">> => list(volume_detail()()),
 %%   <<"SkippedVolumeDetails">> => list(volume_detail()())
 %% }
 -type ebs_volume_details() :: #{binary() => any()}.
+
 %% Example:
 %% delete_threat_intel_set_response() :: #{}
 -type delete_threat_intel_set_response() :: #{}.
+
 
 %% Example:
 %% kubernetes_audit_logs_configuration() :: #{
 %%   <<"Enable">> => boolean()
 %% }
 -type kubernetes_audit_logs_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% kubernetes_workload_details() :: #{
@@ -485,9 +520,11 @@
 %%   <<"Volumes">> => list(volume()())
 %% }
 -type kubernetes_workload_details() :: #{binary() => any()}.
+
 %% Example:
 %% get_administrator_account_request() :: #{}
 -type get_administrator_account_request() :: #{}.
+
 
 %% Example:
 %% process_details() :: #{
@@ -506,9 +543,11 @@
 %%   <<"Uuid">> => string()
 %% }
 -type process_details() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% list_publishing_destinations_request() :: #{
@@ -517,11 +556,13 @@
 %% }
 -type list_publishing_destinations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% filter_criteria() :: #{
 %%   <<"FilterCriterion">> => list(filter_criterion()())
 %% }
 -type filter_criteria() :: #{binary() => any()}.
+
 
 %% Example:
 %% filter_criterion() :: #{
@@ -529,6 +570,7 @@
 %%   <<"FilterCondition">> => filter_condition()
 %% }
 -type filter_criterion() :: #{binary() => any()}.
+
 
 %% Example:
 %% network_connection_action() :: #{
@@ -542,11 +584,13 @@
 %% }
 -type network_connection_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% account_level_permissions() :: #{
 %%   <<"BlockPublicAccess">> => block_public_access()
 %% }
 -type account_level_permissions() :: #{binary() => any()}.
+
 
 %% Example:
 %% coverage_filter_condition() :: #{
@@ -555,11 +599,13 @@
 %% }
 -type coverage_filter_condition() :: #{binary() => any()}.
 
+
 %% Example:
 %% malware_protection_configuration() :: #{
 %%   <<"ScanEc2InstanceWithFindings">> => scan_ec2_instance_with_findings()
 %% }
 -type malware_protection_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% local_port_details() :: #{
@@ -568,11 +614,13 @@
 %% }
 -type local_port_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_monitoring_members_response() :: #{
 %%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
 %% }
 -type start_monitoring_members_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% malware_protection_configuration_result() :: #{
@@ -580,6 +628,7 @@
 %%   <<"ServiceRole">> => string()
 %% }
 -type malware_protection_configuration_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% kubernetes_api_call_action() :: #{
@@ -597,6 +646,7 @@
 %% }
 -type kubernetes_api_call_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% detector_feature_configuration_result() :: #{
 %%   <<"AdditionalConfiguration">> => list(detector_additional_configuration_result()()),
@@ -606,6 +656,7 @@
 %% }
 -type detector_feature_configuration_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% highest_severity_threat_details() :: #{
 %%   <<"Count">> => integer(),
@@ -614,6 +665,7 @@
 %% }
 -type highest_severity_threat_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% coverage_filter_criterion() :: #{
 %%   <<"CriterionKey">> => list(any()),
@@ -621,11 +673,13 @@
 %% }
 -type coverage_filter_criterion() :: #{binary() => any()}.
 
+
 %% Example:
 %% organization_malware_protection_configuration() :: #{
 %%   <<"ScanEc2InstanceWithFindings">> => organization_scan_ec2_instance_with_findings()
 %% }
 -type organization_malware_protection_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% rds_db_user_details() :: #{
@@ -637,11 +691,13 @@
 %% }
 -type rds_db_user_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% scan_ec2_instance_with_findings() :: #{
 %%   <<"EbsVolumes">> => boolean()
 %% }
 -type scan_ec2_instance_with_findings() :: #{binary() => any()}.
+
 
 %% Example:
 %% invitation() :: #{
@@ -651,9 +707,11 @@
 %%   <<"RelationshipStatus">> => string()
 %% }
 -type invitation() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_from_master_account_response() :: #{}
 -type disassociate_from_master_account_response() :: #{}.
+
 
 %% Example:
 %% lambda_details() :: #{
@@ -669,6 +727,7 @@
 %% }
 -type lambda_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_publishing_destination_response() :: #{
 %%   <<"DestinationId">> => string(),
@@ -679,6 +738,7 @@
 %% }
 -type describe_publishing_destination_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_malware_scans_request() :: #{
 %%   <<"FilterCriteria">> => filter_criteria(),
@@ -687,15 +747,18 @@
 %%   <<"SortCriteria">> => sort_criteria()
 %% }
 -type describe_malware_scans_request() :: #{binary() => any()}.
+
 %% Example:
 %% update_publishing_destination_response() :: #{}
 -type update_publishing_destination_response() :: #{}.
+
 
 %% Example:
 %% get_coverage_statistics_response() :: #{
 %%   <<"CoverageStatistics">> => coverage_statistics()
 %% }
 -type get_coverage_statistics_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% network_interface() :: #{
@@ -712,12 +775,14 @@
 %% }
 -type network_interface() :: #{binary() => any()}.
 
+
 %% Example:
 %% organization_additional_configuration() :: #{
 %%   <<"AutoEnable">> => list(any()),
 %%   <<"Name">> => list(any())
 %% }
 -type organization_additional_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_filter_response() :: #{
@@ -730,11 +795,13 @@
 %% }
 -type get_filter_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% organization_s3_logs_configuration() :: #{
 %%   <<"AutoEnable">> => boolean()
 %% }
 -type organization_s3_logs_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_findings_statistics_response() :: #{
@@ -742,15 +809,18 @@
 %% }
 -type get_findings_statistics_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% remote_port_details() :: #{
 %%   <<"Port">> => integer(),
 %%   <<"PortName">> => string()
 %% }
 -type remote_port_details() :: #{binary() => any()}.
+
 %% Example:
 %% update_ip_set_response() :: #{}
 -type update_ip_set_response() :: #{}.
+
 
 %% Example:
 %% list_findings_response() :: #{
@@ -759,6 +829,7 @@
 %% }
 -type list_findings_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% coverage_sort_criteria() :: #{
 %%   <<"AttributeName">> => list(any()),
@@ -766,14 +837,17 @@
 %% }
 -type coverage_sort_criteria() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_filter_response() :: #{
 %%   <<"Name">> => string()
 %% }
 -type create_filter_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_threat_intel_set_request() :: #{}
 -type delete_threat_intel_set_request() :: #{}.
+
 
 %% Example:
 %% update_malware_scan_settings_request() :: #{
@@ -781,9 +855,11 @@
 %%   <<"ScanResourceCriteria">> => scan_resource_criteria()
 %% }
 -type update_malware_scan_settings_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_ip_set_request() :: #{}
 -type delete_ip_set_request() :: #{}.
+
 
 %% Example:
 %% list_detectors_request() :: #{
@@ -792,11 +868,13 @@
 %% }
 -type list_detectors_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_logs_configuration_result() :: #{
 %%   <<"Status">> => list(any())
 %% }
 -type s3_logs_configuration_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% service() :: #{
@@ -818,6 +896,7 @@
 %% }
 -type service() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_findings_request() :: #{
 %%   <<"FindingIds">> := list(string()()),
@@ -825,11 +904,13 @@
 %% }
 -type get_findings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% agent_details() :: #{
 %%   <<"Version">> => string()
 %% }
 -type agent_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_publishing_destination_request() :: #{
@@ -839,6 +920,7 @@
 %% }
 -type create_publishing_destination_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% account_detail() :: #{
 %%   <<"AccountId">> => string(),
@@ -846,11 +928,13 @@
 %% }
 -type account_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% host_path() :: #{
 %%   <<"Path">> => string()
 %% }
 -type host_path() :: #{binary() => any()}.
+
 
 %% Example:
 %% volume_detail() :: #{
@@ -864,12 +948,14 @@
 %% }
 -type volume_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% public_access() :: #{
 %%   <<"EffectivePermission">> => string(),
 %%   <<"PermissionConfiguration">> => permission_configuration()
 %% }
 -type public_access() :: #{binary() => any()}.
+
 
 %% Example:
 %% country() :: #{
@@ -878,6 +964,7 @@
 %% }
 -type country() :: #{binary() => any()}.
 
+
 %% Example:
 %% total() :: #{
 %%   <<"Amount">> => string(),
@@ -885,11 +972,13 @@
 %% }
 -type total() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% detector_feature_configuration() :: #{
@@ -899,11 +988,13 @@
 %% }
 -type detector_feature_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% disable_organization_admin_account_request() :: #{
 %%   <<"AdminAccountId">> := string()
 %% }
 -type disable_organization_admin_account_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_ip_set_request() :: #{
@@ -913,21 +1004,25 @@
 %% }
 -type update_ip_set_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% impersonated_user() :: #{
 %%   <<"Groups">> => list(string()()),
 %%   <<"Username">> => string()
 %% }
 -type impersonated_user() :: #{binary() => any()}.
+
 %% Example:
 %% delete_publishing_destination_request() :: #{}
 -type delete_publishing_destination_request() :: #{}.
+
 
 %% Example:
 %% delete_members_response() :: #{
 %%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
 %% }
 -type delete_members_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% invite_members_request() :: #{
@@ -937,21 +1032,25 @@
 %% }
 -type invite_members_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% permission_configuration() :: #{
 %%   <<"AccountLevelPermissions">> => account_level_permissions(),
 %%   <<"BucketLevelPermissions">> => bucket_level_permissions()
 %% }
 -type permission_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% update_threat_intel_set_response() :: #{}
 -type update_threat_intel_set_response() :: #{}.
+
 
 %% Example:
 %% organization_kubernetes_audit_logs_configuration_result() :: #{
 %%   <<"AutoEnable">> => boolean()
 %% }
 -type organization_kubernetes_audit_logs_configuration_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% member_features_configuration_result() :: #{
@@ -962,11 +1061,13 @@
 %% }
 -type member_features_configuration_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% kubernetes_audit_logs_configuration_result() :: #{
 %%   <<"Status">> => list(any())
 %% }
 -type kubernetes_audit_logs_configuration_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_threat_intel_sets_response() :: #{
@@ -975,11 +1076,13 @@
 %% }
 -type list_threat_intel_sets_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% observations() :: #{
 %%   <<"Text">> => list(string()())
 %% }
 -type observations() :: #{binary() => any()}.
+
 
 %% Example:
 %% organization_data_source_configurations_result() :: #{
@@ -989,20 +1092,24 @@
 %% }
 -type organization_data_source_configurations_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% archive_findings_request() :: #{
 %%   <<"FindingIds">> := list(string()())
 %% }
 -type archive_findings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% scan_ec2_instance_with_findings_result() :: #{
 %%   <<"EbsVolumes">> => ebs_volumes_result()
 %% }
 -type scan_ec2_instance_with_findings_result() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_from_administrator_account_response() :: #{}
 -type disassociate_from_administrator_account_response() :: #{}.
+
 
 %% Example:
 %% coverage_resource() :: #{
@@ -1016,11 +1123,13 @@
 %% }
 -type coverage_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_filter_response() :: #{
 %%   <<"Name">> => string()
 %% }
 -type update_filter_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% kubernetes_user_details() :: #{
@@ -1032,17 +1141,20 @@
 %% }
 -type kubernetes_user_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% threats_detected_item_count() :: #{
 %%   <<"Files">> => integer()
 %% }
 -type threats_detected_item_count() :: #{binary() => any()}.
 
+
 %% Example:
 %% scan_result_details() :: #{
 %%   <<"ScanResult">> => list(any())
 %% }
 -type scan_result_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_organization_configuration_response() :: #{
@@ -1055,11 +1167,13 @@
 %% }
 -type describe_organization_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_malware_scan_request() :: #{
 %%   <<"ResourceArn">> := string()
 %% }
 -type start_malware_scan_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% organization_feature_configuration() :: #{
@@ -1069,12 +1183,14 @@
 %% }
 -type organization_feature_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_detector_response() :: #{
 %%   <<"DetectorId">> => string(),
 %%   <<"UnprocessedDataSources">> => unprocessed_data_sources_result()
 %% }
 -type create_detector_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% detector_additional_configuration_result() :: #{
@@ -1084,11 +1200,13 @@
 %% }
 -type detector_additional_configuration_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% unarchive_findings_request() :: #{
 %%   <<"FindingIds">> := list(string()())
 %% }
 -type unarchive_findings_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -1096,6 +1214,7 @@
 %%   <<"Type">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% dns_request_action() :: #{
@@ -1105,6 +1224,7 @@
 %%   <<"Protocol">> => string()
 %% }
 -type dns_request_action() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_filter_request() :: #{
@@ -1118,11 +1238,13 @@
 %% }
 -type create_filter_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_members_request() :: #{
 %%   <<"AccountIds">> := list(string()())
 %% }
 -type get_members_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_additional_info() :: #{
@@ -1130,18 +1252,22 @@
 %%   <<"Value">> => string()
 %% }
 -type service_additional_info() :: #{binary() => any()}.
+
 %% Example:
 %% delete_publishing_destination_response() :: #{}
 -type delete_publishing_destination_response() :: #{}.
+
 
 %% Example:
 %% create_members_request() :: #{
 %%   <<"AccountDetails">> := list(account_detail()())
 %% }
 -type create_members_request() :: #{binary() => any()}.
+
 %% Example:
 %% update_detector_response() :: #{}
 -type update_detector_response() :: #{}.
+
 
 %% Example:
 %% list_ip_sets_response() :: #{
@@ -1150,6 +1276,7 @@
 %% }
 -type list_ip_sets_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% usage_account_result() :: #{
 %%   <<"AccountId">> => string(),
@@ -1157,11 +1284,13 @@
 %% }
 -type usage_account_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_organization_statistics_response() :: #{
 %%   <<"OrganizationDetails">> => organization_details()
 %% }
 -type get_organization_statistics_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% container_instance_details() :: #{
@@ -1170,6 +1299,7 @@
 %% }
 -type container_instance_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag() :: #{
 %%   <<"Key">> => string(),
@@ -1177,11 +1307,13 @@
 %% }
 -type tag() :: #{binary() => any()}.
 
+
 %% Example:
 %% organization_scan_ec2_instance_with_findings() :: #{
 %%   <<"EbsVolumes">> => organization_ebs_volumes()
 %% }
 -type organization_scan_ec2_instance_with_findings() :: #{binary() => any()}.
+
 
 %% Example:
 %% master() :: #{
@@ -1191,6 +1323,7 @@
 %%   <<"RelationshipStatus">> => string()
 %% }
 -type master() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_detector_request() :: #{
@@ -1203,6 +1336,7 @@
 %% }
 -type create_detector_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% remote_account_details() :: #{
 %%   <<"AccountId">> => string(),
@@ -1210,17 +1344,20 @@
 %% }
 -type remote_account_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% disassociate_members_request() :: #{
 %%   <<"AccountIds">> := list(string()())
 %% }
 -type disassociate_members_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_findings_response() :: #{
 %%   <<"Findings">> => list(finding()())
 %% }
 -type get_findings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_threat_intel_set_response() :: #{
@@ -1232,11 +1369,13 @@
 %% }
 -type get_threat_intel_set_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% organization_kubernetes_audit_logs_configuration() :: #{
 %%   <<"AutoEnable">> => boolean()
 %% }
 -type organization_kubernetes_audit_logs_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% coverage_ec2_instance_details() :: #{
@@ -1248,6 +1387,7 @@
 %% }
 -type coverage_ec2_instance_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_threat_intel_set_request() :: #{
 %%   <<"Activate">> => boolean(),
@@ -1256,6 +1396,7 @@
 %% }
 -type update_threat_intel_set_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% bucket_policy() :: #{
 %%   <<"AllowsPublicReadAccess">> => boolean(),
@@ -1263,11 +1404,13 @@
 %% }
 -type bucket_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% flow_logs_configuration_result() :: #{
 %%   <<"Status">> => list(any())
 %% }
 -type flow_logs_configuration_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_members_request() :: #{
@@ -1275,11 +1418,13 @@
 %% }
 -type delete_members_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% invite_members_response() :: #{
 %%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
 %% }
 -type invite_members_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_malware_scan_settings_response() :: #{
@@ -1287,6 +1432,7 @@
 %%   <<"ScanResourceCriteria">> => scan_resource_criteria()
 %% }
 -type get_malware_scan_settings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% member_features_configuration() :: #{
@@ -1296,12 +1442,14 @@
 %% }
 -type member_features_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_malware_scans_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Scans">> => list(scan()())
 %% }
 -type describe_malware_scans_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% ecs_task_details() :: #{
@@ -1318,23 +1466,28 @@
 %% }
 -type ecs_task_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_logs_configuration() :: #{
 %%   <<"Enable">> => boolean()
 %% }
 -type s3_logs_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_publishing_destination_response() :: #{
 %%   <<"DestinationId">> => string()
 %% }
 -type create_publishing_destination_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_detector_response() :: #{}
 -type delete_detector_response() :: #{}.
+
 %% Example:
 %% describe_publishing_destination_request() :: #{}
 -type describe_publishing_destination_request() :: #{}.
+
 
 %% Example:
 %% vpc_config() :: #{
@@ -1344,12 +1497,14 @@
 %% }
 -type vpc_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% coverage_statistics() :: #{
 %%   <<"CountByCoverageStatus">> => map(),
 %%   <<"CountByResourceType">> => map()
 %% }
 -type coverage_statistics() :: #{binary() => any()}.
+
 
 %% Example:
 %% finding() :: #{
@@ -1371,6 +1526,7 @@
 %% }
 -type finding() :: #{binary() => any()}.
 
+
 %% Example:
 %% coverage_eks_cluster_details() :: #{
 %%   <<"AddonDetails">> => addon_details(),
@@ -1381,6 +1537,7 @@
 %% }
 -type coverage_eks_cluster_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% coverage_resource_details() :: #{
 %%   <<"Ec2InstanceDetails">> => coverage_ec2_instance_details(),
@@ -1390,6 +1547,7 @@
 %% }
 -type coverage_resource_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% volume_mount() :: #{
 %%   <<"MountPath">> => string(),
@@ -1397,11 +1555,13 @@
 %% }
 -type volume_mount() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_findings_request() :: #{
@@ -1412,11 +1572,13 @@
 %% }
 -type list_findings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% kubernetes_configuration() :: #{
 %%   <<"AuditLogs">> => kubernetes_audit_logs_configuration()
 %% }
 -type kubernetes_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_publishing_destinations_response() :: #{
@@ -1425,18 +1587,22 @@
 %% }
 -type list_publishing_destinations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% member_additional_configuration() :: #{
 %%   <<"Name">> => list(any()),
 %%   <<"Status">> => list(any())
 %% }
 -type member_additional_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% get_filter_request() :: #{}
 -type get_filter_request() :: #{}.
+
 %% Example:
 %% get_threat_intel_set_request() :: #{}
 -type get_threat_intel_set_request() :: #{}.
+
 
 %% Example:
 %% trigger_details() :: #{
@@ -1444,15 +1610,18 @@
 %%   <<"GuardDutyFindingId">> => string()
 %% }
 -type trigger_details() :: #{binary() => any()}.
+
 %% Example:
 %% delete_filter_response() :: #{}
 -type delete_filter_response() :: #{}.
+
 
 %% Example:
 %% disassociate_members_response() :: #{
 %%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
 %% }
 -type disassociate_members_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% security_group() :: #{
@@ -1461,12 +1630,14 @@
 %% }
 -type security_group() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_coverage_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Resources">> => list(coverage_resource()())
 %% }
 -type list_coverage_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% condition() :: #{
@@ -1485,18 +1656,22 @@
 %% }
 -type condition() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_threat_intel_sets_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_threat_intel_sets_request() :: #{binary() => any()}.
+
 %% Example:
 %% update_malware_scan_settings_response() :: #{}
 -type update_malware_scan_settings_response() :: #{}.
+
 %% Example:
 %% update_organization_configuration_response() :: #{}
 -type update_organization_configuration_response() :: #{}.
+
 
 %% Example:
 %% lineage_object() :: #{
@@ -1512,14 +1687,17 @@
 %% }
 -type lineage_object() :: #{binary() => any()}.
 
+
 %% Example:
 %% detection() :: #{
 %%   <<"Anomaly">> => anomaly()
 %% }
 -type detection() :: #{binary() => any()}.
+
 %% Example:
 %% update_findings_feedback_response() :: #{}
 -type update_findings_feedback_response() :: #{}.
+
 
 %% Example:
 %% ebs_volumes_result() :: #{
@@ -1528,15 +1706,18 @@
 %% }
 -type ebs_volumes_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% product_code() :: #{
 %%   <<"Code">> => string(),
 %%   <<"ProductType">> => string()
 %% }
 -type product_code() :: #{binary() => any()}.
+
 %% Example:
 %% accept_invitation_response() :: #{}
 -type accept_invitation_response() :: #{}.
+
 
 %% Example:
 %% create_sample_findings_request() :: #{
@@ -1544,17 +1725,20 @@
 %% }
 -type create_sample_findings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% decline_invitations_request() :: #{
 %%   <<"AccountIds">> := list(string()())
 %% }
 -type decline_invitations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% organization_s3_logs_configuration_result() :: #{
 %%   <<"AutoEnable">> => boolean()
 %% }
 -type organization_s3_logs_configuration_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% account_free_trial_info() :: #{
@@ -1564,11 +1748,13 @@
 %% }
 -type account_free_trial_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_master_account_response() :: #{
 %%   <<"Master">> => master()
 %% }
 -type get_master_account_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% unprocessed_data_sources_result() :: #{
@@ -1576,12 +1762,14 @@
 %% }
 -type unprocessed_data_sources_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_member_detectors_response() :: #{
 %%   <<"MemberDataSourceConfigurations">> => list(member_data_source_configuration()()),
 %%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
 %% }
 -type get_member_detectors_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_api_call_action() :: #{
@@ -1597,6 +1785,7 @@
 %% }
 -type aws_api_call_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% kubernetes_role_details() :: #{
 %%   <<"Kind">> => string(),
@@ -1604,6 +1793,7 @@
 %%   <<"Uid">> => string()
 %% }
 -type kubernetes_role_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% eks_cluster_details() :: #{
@@ -1616,11 +1806,13 @@
 %% }
 -type eks_cluster_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% organization_malware_protection_configuration_result() :: #{
 %%   <<"ScanEc2InstanceWithFindings">> => organization_scan_ec2_instance_with_findings_result()
 %% }
 -type organization_malware_protection_configuration_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_invitations_request() :: #{
@@ -1628,11 +1820,13 @@
 %% }
 -type delete_invitations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% organization_ebs_volumes() :: #{
 %%   <<"AutoEnable">> => boolean()
 %% }
 -type organization_ebs_volumes() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_detector_response() :: #{
@@ -1647,6 +1841,7 @@
 %% }
 -type get_detector_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_filter_request() :: #{
 %%   <<"Action">> => list(any()),
@@ -1656,12 +1851,14 @@
 %% }
 -type update_filter_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% kubernetes_details() :: #{
 %%   <<"KubernetesUserDetails">> => kubernetes_user_details(),
 %%   <<"KubernetesWorkloadDetails">> => kubernetes_workload_details()
 %% }
 -type kubernetes_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% anomaly_object() :: #{
@@ -1670,6 +1867,7 @@
 %%   <<"ProfileType">> => list(any())
 %% }
 -type anomaly_object() :: #{binary() => any()}.
+
 
 %% Example:
 %% scan_file_path() :: #{
@@ -1680,14 +1878,17 @@
 %% }
 -type scan_file_path() :: #{binary() => any()}.
 
+
 %% Example:
 %% organization_kubernetes_configuration_result() :: #{
 %%   <<"AuditLogs">> => organization_kubernetes_audit_logs_configuration_result()
 %% }
 -type organization_kubernetes_configuration_result() :: #{binary() => any()}.
+
 %% Example:
 %% get_detector_request() :: #{}
 -type get_detector_request() :: #{}.
+
 
 %% Example:
 %% anomaly() :: #{
@@ -1696,12 +1897,14 @@
 %% }
 -type anomaly() :: #{binary() => any()}.
 
+
 %% Example:
 %% organization_additional_configuration_result() :: #{
 %%   <<"AutoEnable">> => list(any()),
 %%   <<"Name">> => list(any())
 %% }
 -type organization_additional_configuration_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_organization_configuration_request() :: #{
@@ -1712,11 +1915,13 @@
 %% }
 -type update_organization_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% enable_organization_admin_account_request() :: #{
 %%   <<"AdminAccountId">> := string()
 %% }
 -type enable_organization_admin_account_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% addon_details() :: #{
@@ -1725,11 +1930,13 @@
 %% }
 -type addon_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% kubernetes_configuration_result() :: #{
 %%   <<"AuditLogs">> => kubernetes_audit_logs_configuration_result()
 %% }
 -type kubernetes_configuration_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% geo_location() :: #{
@@ -1737,6 +1944,7 @@
 %%   <<"Lon">> => float()
 %% }
 -type geo_location() :: #{binary() => any()}.
+
 
 %% Example:
 %% action() :: #{
@@ -1753,12 +1961,14 @@
 %% }
 -type action() :: #{binary() => any()}.
 
+
 %% Example:
 %% threat_intelligence_detail() :: #{
 %%   <<"ThreatListName">> => string(),
 %%   <<"ThreatNames">> => list(string()())
 %% }
 -type threat_intelligence_detail() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_threat_intel_set_request() :: #{
@@ -1771,6 +1981,7 @@
 %% }
 -type create_threat_intel_set_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% login_attribute() :: #{
 %%   <<"Application">> => string(),
@@ -1780,6 +1991,7 @@
 %% }
 -type login_attribute() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_member_detectors_request() :: #{
 %%   <<"AccountIds">> := list(string()()),
@@ -1787,6 +1999,7 @@
 %%   <<"Features">> => list(member_features_configuration()())
 %% }
 -type update_member_detectors_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% member_additional_configuration_result() :: #{
@@ -1796,11 +2009,13 @@
 %% }
 -type member_additional_configuration_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_invitations_response() :: #{
 %%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
 %% }
 -type delete_invitations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% port_probe_action() :: #{
@@ -1809,6 +2024,7 @@
 %% }
 -type port_probe_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_organization_admin_accounts_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -1816,12 +2032,14 @@
 %% }
 -type list_organization_admin_accounts_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% sort_criteria() :: #{
 %%   <<"AttributeName">> => string(),
 %%   <<"OrderBy">> => list(any())
 %% }
 -type sort_criteria() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_ip_set_request() :: #{
@@ -1834,12 +2052,14 @@
 %% }
 -type create_ip_set_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% volume() :: #{
 %%   <<"HostPath">> => host_path(),
 %%   <<"Name">> => string()
 %% }
 -type volume() :: #{binary() => any()}.
+
 
 %% Example:
 %% access_denied_exception() :: #{
@@ -1848,15 +2068,18 @@
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% usage_top_account_result() :: #{
 %%   <<"AccountId">> => string(),
 %%   <<"Total">> => total()
 %% }
 -type usage_top_account_result() :: #{binary() => any()}.
+
 %% Example:
 %% get_invitations_count_request() :: #{}
 -type get_invitations_count_request() :: #{}.
+
 
 %% Example:
 %% get_ip_set_response() :: #{
@@ -1868,11 +2091,13 @@
 %% }
 -type get_ip_set_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% city() :: #{
 %%   <<"CityName">> => string()
 %% }
 -type city() :: #{binary() => any()}.
+
 
 %% Example:
 %% accept_invitation_request() :: #{
@@ -1880,15 +2105,18 @@
 %%   <<"MasterId">> := string()
 %% }
 -type accept_invitation_request() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% anomaly_unusual() :: #{
 %%   <<"Behavior">> => map()
 %% }
 -type anomaly_unusual() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_members_request() :: #{
@@ -1898,6 +2126,7 @@
 %% }
 -type list_members_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% fargate_details() :: #{
 %%   <<"Issues">> => list(string()()),
@@ -1905,12 +2134,14 @@
 %% }
 -type fargate_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_members_response() :: #{
 %%   <<"Members">> => list(member()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_members_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% block_public_access() :: #{
@@ -1921,6 +2152,7 @@
 %% }
 -type block_public_access() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_detectors_response() :: #{
 %%   <<"DetectorIds">> => list(string()()),
@@ -1928,12 +2160,14 @@
 %% }
 -type list_detectors_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% free_trial_feature_configuration_result() :: #{
 %%   <<"FreeTrialDaysRemaining">> => integer(),
 %%   <<"Name">> => list(any())
 %% }
 -type free_trial_feature_configuration_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% organization_feature_statistics() :: #{
@@ -1943,17 +2177,20 @@
 %% }
 -type organization_feature_statistics() :: #{binary() => any()}.
 
+
 %% Example:
 %% local_ip_details() :: #{
 %%   <<"IpAddressV4">> => string()
 %% }
 -type local_ip_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_remaining_free_trial_days_request() :: #{
 %%   <<"AccountIds">> => list(string()())
 %% }
 -type get_remaining_free_trial_days_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% scanned_item_count() :: #{
@@ -1962,12 +2199,15 @@
 %%   <<"Volumes">> => integer()
 %% }
 -type scanned_item_count() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 %% Example:
 %% get_master_account_request() :: #{}
 -type get_master_account_request() :: #{}.
+
 
 %% Example:
 %% organization_feature_configuration_result() :: #{
@@ -1976,6 +2216,7 @@
 %%   <<"Name">> => list(any())
 %% }
 -type organization_feature_configuration_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_coverage_request() :: #{
@@ -1986,12 +2227,14 @@
 %% }
 -type list_coverage_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_remaining_free_trial_days_response() :: #{
 %%   <<"Accounts">> => list(account_free_trial_info()()),
 %%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
 %% }
 -type get_remaining_free_trial_days_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% destination() :: #{
@@ -2001,12 +2244,14 @@
 %% }
 -type destination() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_error_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Type">> => string()
 %% }
 -type internal_server_error_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% private_ip_address_details() :: #{
@@ -2015,11 +2260,13 @@
 %% }
 -type private_ip_address_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_invitations_count_response() :: #{
 %%   <<"InvitationsCount">> => integer()
 %% }
 -type get_invitations_count_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% runtime_context() :: #{
@@ -2046,11 +2293,13 @@
 %% }
 -type runtime_context() :: #{binary() => any()}.
 
+
 %% Example:
 %% evidence() :: #{
 %%   <<"ThreatIntelligenceDetails">> => list(threat_intelligence_detail()())
 %% }
 -type evidence() :: #{binary() => any()}.
+
 
 %% Example:
 %% scan_threat_name() :: #{
@@ -2061,6 +2310,7 @@
 %% }
 -type scan_threat_name() :: #{binary() => any()}.
 
+
 %% Example:
 %% usage_resource_result() :: #{
 %%   <<"Resource">> => string(),
@@ -2068,17 +2318,20 @@
 %% }
 -type usage_resource_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% coverage_filter_criteria() :: #{
 %%   <<"FilterCriterion">> => list(coverage_filter_criterion()())
 %% }
 -type coverage_filter_criteria() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_threat_intel_set_response() :: #{
 %%   <<"ThreatIntelSetId">> => string()
 %% }
 -type create_threat_intel_set_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% coverage_ecs_cluster_details() :: #{
@@ -2088,6 +2341,7 @@
 %% }
 -type coverage_ecs_cluster_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_invitations_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -2095,11 +2349,13 @@
 %% }
 -type list_invitations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% finding_criteria() :: #{
 %%   <<"Criterion">> => map()
 %% }
 -type finding_criteria() :: #{binary() => any()}.
+
 
 %% Example:
 %% scan_detections() :: #{
@@ -2110,6 +2366,7 @@
 %% }
 -type scan_detections() :: #{binary() => any()}.
 
+
 %% Example:
 %% kubernetes_permission_checked_details() :: #{
 %%   <<"Allowed">> => boolean(),
@@ -2119,14 +2376,17 @@
 %% }
 -type kubernetes_permission_checked_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_monitoring_members_request() :: #{
 %%   <<"AccountIds">> := list(string()())
 %% }
 -type start_monitoring_members_request() :: #{binary() => any()}.
+
 %% Example:
 %% create_sample_findings_response() :: #{}
 -type create_sample_findings_response() :: #{}.
+
 
 %% Example:
 %% update_findings_feedback_request() :: #{
@@ -2136,12 +2396,14 @@
 %% }
 -type update_findings_feedback_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% rds_login_attempt_action() :: #{
 %%   <<"LoginAttributes">> => list(login_attribute()()),
 %%   <<"RemoteIpDetails">> => remote_ip_details()
 %% }
 -type rds_login_attempt_action() :: #{binary() => any()}.
+
 
 %% Example:
 %% member() :: #{
@@ -2155,9 +2417,11 @@
 %%   <<"UpdatedAt">> => string()
 %% }
 -type member() :: #{binary() => any()}.
+
 %% Example:
 %% get_ip_set_request() :: #{}
 -type get_ip_set_request() :: #{}.
+
 
 %% Example:
 %% usage_feature_result() :: #{
@@ -2165,9 +2429,11 @@
 %%   <<"Total">> => total()
 %% }
 -type usage_feature_result() :: #{binary() => any()}.
+
 %% Example:
 %% enable_organization_admin_account_response() :: #{}
 -type enable_organization_admin_account_response() :: #{}.
+
 
 %% Example:
 %% finding_statistics() :: #{
@@ -2175,11 +2441,13 @@
 %% }
 -type finding_statistics() :: #{binary() => any()}.
 
+
 %% Example:
 %% organization_scan_ec2_instance_with_findings_result() :: #{
 %%   <<"EbsVolumes">> => organization_ebs_volumes_result()
 %% }
 -type organization_scan_ec2_instance_with_findings_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% ecs_cluster_details() :: #{
@@ -2193,6 +2461,7 @@
 %%   <<"TaskDetails">> => ecs_task_details()
 %% }
 -type ecs_cluster_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% scan() :: #{
@@ -2214,15 +2483,18 @@
 %% }
 -type scan() :: #{binary() => any()}.
 
+
 %% Example:
 %% bad_request_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Type">> => string()
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
+
 %% Example:
 %% get_malware_scan_settings_request() :: #{}
 -type get_malware_scan_settings_request() :: #{}.
+
 
 %% Example:
 %% organization_statistics() :: #{
@@ -2234,11 +2506,13 @@
 %% }
 -type organization_statistics() :: #{binary() => any()}.
 
+
 %% Example:
 %% domain_details() :: #{
 %%   <<"Domain">> => string()
 %% }
 -type domain_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% kubernetes_role_binding_details() :: #{
@@ -2250,11 +2524,13 @@
 %% }
 -type kubernetes_role_binding_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% malware_protection_data_source_free_trial() :: #{
 %%   <<"ScanEc2InstanceWithFindings">> => data_source_free_trial()
 %% }
 -type malware_protection_data_source_free_trial() :: #{binary() => any()}.
+
 
 %% Example:
 %% ebs_volume_scan_details() :: #{
@@ -2268,6 +2544,7 @@
 %% }
 -type ebs_volume_scan_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% organization_data_source_configurations() :: #{
 %%   <<"Kubernetes">> => organization_kubernetes_configuration(),
@@ -2276,6 +2553,7 @@
 %% }
 -type organization_data_source_configurations() :: #{binary() => any()}.
 
+
 %% Example:
 %% unprocessed_account() :: #{
 %%   <<"AccountId">> => string(),
@@ -2283,11 +2561,13 @@
 %% }
 -type unprocessed_account() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_member_detectors_response() :: #{
 %%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
 %% }
 -type update_member_detectors_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_details() :: #{
@@ -2295,20 +2575,24 @@
 %% }
 -type resource_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% dns_logs_configuration_result() :: #{
 %%   <<"Status">> => list(any())
 %% }
 -type dns_logs_configuration_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_publishing_destination_request() :: #{
 %%   <<"DestinationProperties">> => destination_properties()
 %% }
 -type update_publishing_destination_request() :: #{binary() => any()}.
+
 %% Example:
 %% accept_administrator_invitation_response() :: #{}
 -type accept_administrator_invitation_response() :: #{}.
+
 
 %% Example:
 %% create_ip_set_response() :: #{
@@ -2316,11 +2600,13 @@
 %% }
 -type create_ip_set_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% stop_monitoring_members_request() :: #{
 %%   <<"AccountIds">> := list(string()())
 %% }
 -type stop_monitoring_members_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% organization_feature_statistics_additional_configuration() :: #{
@@ -2328,6 +2614,7 @@
 %%   <<"Name">> => list(any())
 %% }
 -type organization_feature_statistics_additional_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% rds_db_instance_details() :: #{
@@ -2340,11 +2627,13 @@
 %% }
 -type rds_db_instance_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% scan_condition() :: #{
 %%   <<"MapEquals">> => list(scan_condition_pair()())
 %% }
 -type scan_condition() :: #{binary() => any()}.
+
 
 %% Example:
 %% threat_detected_by_name() :: #{
@@ -2355,6 +2644,7 @@
 %% }
 -type threat_detected_by_name() :: #{binary() => any()}.
 
+
 %% Example:
 %% bucket_level_permissions() :: #{
 %%   <<"AccessControlList">> => access_control_list(),
@@ -2363,6 +2653,7 @@
 %% }
 -type bucket_level_permissions() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_organization_admin_accounts_response() :: #{
 %%   <<"AdminAccounts">> => list(admin_account()()),
@@ -2370,12 +2661,14 @@
 %% }
 -type list_organization_admin_accounts_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% usage_top_accounts_result() :: #{
 %%   <<"Accounts">> => list(usage_top_account_result()()),
 %%   <<"Feature">> => list(any())
 %% }
 -type usage_top_accounts_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% port_probe_detail() :: #{
@@ -2385,6 +2678,7 @@
 %% }
 -type port_probe_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% iam_instance_profile() :: #{
 %%   <<"Arn">> => string(),
@@ -2392,14 +2686,17 @@
 %% }
 -type iam_instance_profile() :: #{binary() => any()}.
 
+
 %% Example:
 %% stop_monitoring_members_response() :: #{
 %%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
 %% }
 -type stop_monitoring_members_response() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_from_administrator_account_request() :: #{}
 -type disassociate_from_administrator_account_request() :: #{}.
+
 
 %% Example:
 %% update_detector_request() :: #{
@@ -2410,12 +2707,14 @@
 %% }
 -type update_detector_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% security_context() :: #{
 %%   <<"AllowPrivilegeEscalation">> => boolean(),
 %%   <<"Privileged">> => boolean()
 %% }
 -type security_context() :: #{binary() => any()}.
+
 
 %% Example:
 %% default_server_side_encryption() :: #{
@@ -2424,12 +2723,14 @@
 %% }
 -type default_server_side_encryption() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_control_list() :: #{
 %%   <<"AllowsPublicReadAccess">> => boolean(),
 %%   <<"AllowsPublicWriteAccess">> => boolean()
 %% }
 -type access_control_list() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_source_configurations() :: #{
@@ -2439,17 +2740,20 @@
 %% }
 -type data_source_configurations() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_administrator_account_response() :: #{
 %%   <<"Administrator">> => administrator()
 %% }
 -type get_administrator_account_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_source_free_trial() :: #{
 %%   <<"FreeTrialDaysRemaining">> => integer()
 %% }
 -type data_source_free_trial() :: #{binary() => any()}.
+
 
 %% Example:
 %% detector_additional_configuration() :: #{
@@ -2458,6 +2762,7 @@
 %% }
 -type detector_additional_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_filters_response() :: #{
 %%   <<"FilterNames">> => list(string()()),
@@ -2465,20 +2770,24 @@
 %% }
 -type list_filters_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_malware_scan_response() :: #{
 %%   <<"ScanId">> => string()
 %% }
 -type start_malware_scan_response() :: #{binary() => any()}.
+
 %% Example:
 %% unarchive_findings_response() :: #{}
 -type unarchive_findings_response() :: #{}.
+
 
 %% Example:
 %% create_members_response() :: #{
 %%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
 %% }
 -type create_members_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% access_key_details() :: #{
@@ -2488,9 +2797,11 @@
 %%   <<"UserType">> => string()
 %% }
 -type access_key_details() :: #{binary() => any()}.
+
 %% Example:
 %% delete_filter_request() :: #{}
 -type delete_filter_request() :: #{}.
+
 
 %% Example:
 %% owner() :: #{
@@ -2498,15 +2809,18 @@
 %% }
 -type owner() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_coverage_statistics_request() :: #{
 %%   <<"FilterCriteria">> => coverage_filter_criteria(),
 %%   <<"StatisticsType">> := list(list(any())())
 %% }
 -type get_coverage_statistics_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_ip_set_response() :: #{}
 -type delete_ip_set_response() :: #{}.
+
 
 %% Example:
 %% runtime_details() :: #{
@@ -2514,6 +2828,7 @@
 %%   <<"Process">> => process_details()
 %% }
 -type runtime_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% usage_criteria() :: #{
@@ -2524,6 +2839,7 @@
 %% }
 -type usage_criteria() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_usage_statistics_response() :: #{
 %%   <<"NextToken">> => string(),
@@ -2531,15 +2847,18 @@
 %% }
 -type get_usage_statistics_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_filters_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_filters_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_detector_request() :: #{}
 -type delete_detector_request() :: #{}.
+
 
 %% Example:
 %% list_invitations_response() :: #{
@@ -2547,6 +2866,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_invitations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource() :: #{
@@ -2565,12 +2885,293 @@
 %% }
 -type resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% organization_details() :: #{
 %%   <<"OrganizationStatistics">> => organization_statistics(),
 %%   <<"UpdatedAt">> => non_neg_integer()
 %% }
 -type organization_details() :: #{binary() => any()}.
+
+-type accept_administrator_invitation_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type accept_invitation_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type archive_findings_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type create_detector_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type create_filter_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type create_ip_set_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type create_members_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type create_publishing_destination_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type create_sample_findings_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type create_threat_intel_set_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type decline_invitations_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type delete_detector_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type delete_filter_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type delete_invitations_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type delete_ip_set_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type delete_members_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type delete_publishing_destination_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type delete_threat_intel_set_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type describe_malware_scans_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type describe_organization_configuration_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type describe_publishing_destination_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type disable_organization_admin_account_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type disassociate_from_administrator_account_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type disassociate_from_master_account_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type disassociate_members_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type enable_organization_admin_account_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type get_administrator_account_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type get_coverage_statistics_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type get_detector_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type get_filter_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type get_findings_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type get_findings_statistics_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type get_invitations_count_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type get_ip_set_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type get_malware_scan_settings_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type get_master_account_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type get_member_detectors_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type get_members_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type get_organization_statistics_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type get_remaining_free_trial_days_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type get_threat_intel_set_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type get_usage_statistics_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type invite_members_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type list_coverage_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type list_detectors_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type list_filters_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type list_findings_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type list_invitations_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type list_ip_sets_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type list_members_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type list_organization_admin_accounts_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type list_publishing_destinations_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type list_tags_for_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
+
+-type list_threat_intel_sets_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type start_malware_scan_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception().
+
+-type start_monitoring_members_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type stop_monitoring_members_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type tag_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
+
+-type unarchive_findings_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type untag_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
+
+-type update_detector_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type update_filter_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type update_findings_feedback_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type update_ip_set_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type update_malware_scan_settings_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type update_member_detectors_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type update_organization_configuration_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type update_publishing_destination_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type update_threat_intel_set_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
 
 %%====================================================================
 %% API
@@ -2582,16 +3183,14 @@
 -spec accept_administrator_invitation(map(), binary() | list(), accept_administrator_invitation_request()) ->
     {ok, accept_administrator_invitation_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, accept_administrator_invitation_errors(), tuple()}.
 accept_administrator_invitation(Client, DetectorId, Input) ->
     accept_administrator_invitation(Client, DetectorId, Input, []).
 
 -spec accept_administrator_invitation(map(), binary() | list(), accept_administrator_invitation_request(), proplists:proplist()) ->
     {ok, accept_administrator_invitation_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, accept_administrator_invitation_errors(), tuple()}.
 accept_administrator_invitation(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/administrator"],
@@ -2619,16 +3218,14 @@ accept_administrator_invitation(Client, DetectorId, Input0, Options0) ->
 -spec accept_invitation(map(), binary() | list(), accept_invitation_request()) ->
     {ok, accept_invitation_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, accept_invitation_errors(), tuple()}.
 accept_invitation(Client, DetectorId, Input) ->
     accept_invitation(Client, DetectorId, Input, []).
 
 -spec accept_invitation(map(), binary() | list(), accept_invitation_request(), proplists:proplist()) ->
     {ok, accept_invitation_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, accept_invitation_errors(), tuple()}.
 accept_invitation(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/master"],
@@ -2660,16 +3257,14 @@ accept_invitation(Client, DetectorId, Input0, Options0) ->
 -spec archive_findings(map(), binary() | list(), archive_findings_request()) ->
     {ok, archive_findings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, archive_findings_errors(), tuple()}.
 archive_findings(Client, DetectorId, Input) ->
     archive_findings(Client, DetectorId, Input, []).
 
 -spec archive_findings(map(), binary() | list(), archive_findings_request(), proplists:proplist()) ->
     {ok, archive_findings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, archive_findings_errors(), tuple()}.
 archive_findings(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/archive"],
@@ -2726,16 +3321,14 @@ archive_findings(Client, DetectorId, Input0, Options0) ->
 -spec create_detector(map(), create_detector_request()) ->
     {ok, create_detector_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, create_detector_errors(), tuple()}.
 create_detector(Client, Input) ->
     create_detector(Client, Input, []).
 
 -spec create_detector(map(), create_detector_request(), proplists:proplist()) ->
     {ok, create_detector_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, create_detector_errors(), tuple()}.
 create_detector(Client, Input0, Options0) ->
     Method = post,
     Path = ["/detector"],
@@ -2767,16 +3360,14 @@ create_detector(Client, Input0, Options0) ->
 -spec create_filter(map(), binary() | list(), create_filter_request()) ->
     {ok, create_filter_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, create_filter_errors(), tuple()}.
 create_filter(Client, DetectorId, Input) ->
     create_filter(Client, DetectorId, Input, []).
 
 -spec create_filter(map(), binary() | list(), create_filter_request(), proplists:proplist()) ->
     {ok, create_filter_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, create_filter_errors(), tuple()}.
 create_filter(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/filter"],
@@ -2812,16 +3403,14 @@ create_filter(Client, DetectorId, Input0, Options0) ->
 -spec create_ip_set(map(), binary() | list(), create_ip_set_request()) ->
     {ok, create_ip_set_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, create_ip_set_errors(), tuple()}.
 create_ip_set(Client, DetectorId, Input) ->
     create_ip_set(Client, DetectorId, Input, []).
 
 -spec create_ip_set(map(), binary() | list(), create_ip_set_request(), proplists:proplist()) ->
     {ok, create_ip_set_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, create_ip_set_errors(), tuple()}.
 create_ip_set(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset"],
@@ -2891,16 +3480,14 @@ create_ip_set(Client, DetectorId, Input0, Options0) ->
 -spec create_members(map(), binary() | list(), create_members_request()) ->
     {ok, create_members_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, create_members_errors(), tuple()}.
 create_members(Client, DetectorId, Input) ->
     create_members(Client, DetectorId, Input, []).
 
 -spec create_members(map(), binary() | list(), create_members_request(), proplists:proplist()) ->
     {ok, create_members_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, create_members_errors(), tuple()}.
 create_members(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member"],
@@ -2930,16 +3517,14 @@ create_members(Client, DetectorId, Input0, Options0) ->
 -spec create_publishing_destination(map(), binary() | list(), create_publishing_destination_request()) ->
     {ok, create_publishing_destination_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, create_publishing_destination_errors(), tuple()}.
 create_publishing_destination(Client, DetectorId, Input) ->
     create_publishing_destination(Client, DetectorId, Input, []).
 
 -spec create_publishing_destination(map(), binary() | list(), create_publishing_destination_request(), proplists:proplist()) ->
     {ok, create_publishing_destination_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, create_publishing_destination_errors(), tuple()}.
 create_publishing_destination(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/publishingDestination"],
@@ -2972,16 +3557,14 @@ create_publishing_destination(Client, DetectorId, Input0, Options0) ->
 -spec create_sample_findings(map(), binary() | list(), create_sample_findings_request()) ->
     {ok, create_sample_findings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, create_sample_findings_errors(), tuple()}.
 create_sample_findings(Client, DetectorId, Input) ->
     create_sample_findings(Client, DetectorId, Input, []).
 
 -spec create_sample_findings(map(), binary() | list(), create_sample_findings_request(), proplists:proplist()) ->
     {ok, create_sample_findings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, create_sample_findings_errors(), tuple()}.
 create_sample_findings(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/create"],
@@ -3013,16 +3596,14 @@ create_sample_findings(Client, DetectorId, Input0, Options0) ->
 -spec create_threat_intel_set(map(), binary() | list(), create_threat_intel_set_request()) ->
     {ok, create_threat_intel_set_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, create_threat_intel_set_errors(), tuple()}.
 create_threat_intel_set(Client, DetectorId, Input) ->
     create_threat_intel_set(Client, DetectorId, Input, []).
 
 -spec create_threat_intel_set(map(), binary() | list(), create_threat_intel_set_request(), proplists:proplist()) ->
     {ok, create_threat_intel_set_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, create_threat_intel_set_errors(), tuple()}.
 create_threat_intel_set(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset"],
@@ -3051,16 +3632,14 @@ create_threat_intel_set(Client, DetectorId, Input0, Options0) ->
 -spec decline_invitations(map(), decline_invitations_request()) ->
     {ok, decline_invitations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, decline_invitations_errors(), tuple()}.
 decline_invitations(Client, Input) ->
     decline_invitations(Client, Input, []).
 
 -spec decline_invitations(map(), decline_invitations_request(), proplists:proplist()) ->
     {ok, decline_invitations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, decline_invitations_errors(), tuple()}.
 decline_invitations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/invitation/decline"],
@@ -3088,16 +3667,14 @@ decline_invitations(Client, Input0, Options0) ->
 -spec delete_detector(map(), binary() | list(), delete_detector_request()) ->
     {ok, delete_detector_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, delete_detector_errors(), tuple()}.
 delete_detector(Client, DetectorId, Input) ->
     delete_detector(Client, DetectorId, Input, []).
 
 -spec delete_detector(map(), binary() | list(), delete_detector_request(), proplists:proplist()) ->
     {ok, delete_detector_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, delete_detector_errors(), tuple()}.
 delete_detector(Client, DetectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), ""],
@@ -3124,16 +3701,14 @@ delete_detector(Client, DetectorId, Input0, Options0) ->
 -spec delete_filter(map(), binary() | list(), binary() | list(), delete_filter_request()) ->
     {ok, delete_filter_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, delete_filter_errors(), tuple()}.
 delete_filter(Client, DetectorId, FilterName, Input) ->
     delete_filter(Client, DetectorId, FilterName, Input, []).
 
 -spec delete_filter(map(), binary() | list(), binary() | list(), delete_filter_request(), proplists:proplist()) ->
     {ok, delete_filter_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, delete_filter_errors(), tuple()}.
 delete_filter(Client, DetectorId, FilterName, Input0, Options0) ->
     Method = delete,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/filter/", aws_util:encode_uri(FilterName), ""],
@@ -3162,16 +3737,14 @@ delete_filter(Client, DetectorId, FilterName, Input0, Options0) ->
 -spec delete_invitations(map(), delete_invitations_request()) ->
     {ok, delete_invitations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, delete_invitations_errors(), tuple()}.
 delete_invitations(Client, Input) ->
     delete_invitations(Client, Input, []).
 
 -spec delete_invitations(map(), delete_invitations_request(), proplists:proplist()) ->
     {ok, delete_invitations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, delete_invitations_errors(), tuple()}.
 delete_invitations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/invitation/delete"],
@@ -3201,16 +3774,14 @@ delete_invitations(Client, Input0, Options0) ->
 -spec delete_ip_set(map(), binary() | list(), binary() | list(), delete_ip_set_request()) ->
     {ok, delete_ip_set_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, delete_ip_set_errors(), tuple()}.
 delete_ip_set(Client, DetectorId, IpSetId, Input) ->
     delete_ip_set(Client, DetectorId, IpSetId, Input, []).
 
 -spec delete_ip_set(map(), binary() | list(), binary() | list(), delete_ip_set_request(), proplists:proplist()) ->
     {ok, delete_ip_set_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, delete_ip_set_errors(), tuple()}.
 delete_ip_set(Client, DetectorId, IpSetId, Input0, Options0) ->
     Method = delete,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset/", aws_util:encode_uri(IpSetId), ""],
@@ -3245,16 +3816,14 @@ delete_ip_set(Client, DetectorId, IpSetId, Input0, Options0) ->
 -spec delete_members(map(), binary() | list(), delete_members_request()) ->
     {ok, delete_members_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, delete_members_errors(), tuple()}.
 delete_members(Client, DetectorId, Input) ->
     delete_members(Client, DetectorId, Input, []).
 
 -spec delete_members(map(), binary() | list(), delete_members_request(), proplists:proplist()) ->
     {ok, delete_members_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, delete_members_errors(), tuple()}.
 delete_members(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/delete"],
@@ -3282,16 +3851,14 @@ delete_members(Client, DetectorId, Input0, Options0) ->
 -spec delete_publishing_destination(map(), binary() | list(), binary() | list(), delete_publishing_destination_request()) ->
     {ok, delete_publishing_destination_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, delete_publishing_destination_errors(), tuple()}.
 delete_publishing_destination(Client, DestinationId, DetectorId, Input) ->
     delete_publishing_destination(Client, DestinationId, DetectorId, Input, []).
 
 -spec delete_publishing_destination(map(), binary() | list(), binary() | list(), delete_publishing_destination_request(), proplists:proplist()) ->
     {ok, delete_publishing_destination_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, delete_publishing_destination_errors(), tuple()}.
 delete_publishing_destination(Client, DestinationId, DetectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/publishingDestination/", aws_util:encode_uri(DestinationId), ""],
@@ -3318,16 +3885,14 @@ delete_publishing_destination(Client, DestinationId, DetectorId, Input0, Options
 -spec delete_threat_intel_set(map(), binary() | list(), binary() | list(), delete_threat_intel_set_request()) ->
     {ok, delete_threat_intel_set_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, delete_threat_intel_set_errors(), tuple()}.
 delete_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input) ->
     delete_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input, []).
 
 -spec delete_threat_intel_set(map(), binary() | list(), binary() | list(), delete_threat_intel_set_request(), proplists:proplist()) ->
     {ok, delete_threat_intel_set_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, delete_threat_intel_set_errors(), tuple()}.
 delete_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input0, Options0) ->
     Method = delete,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset/", aws_util:encode_uri(ThreatIntelSetId), ""],
@@ -3364,16 +3929,14 @@ delete_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input0, Options0) 
 -spec describe_malware_scans(map(), binary() | list(), describe_malware_scans_request()) ->
     {ok, describe_malware_scans_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, describe_malware_scans_errors(), tuple()}.
 describe_malware_scans(Client, DetectorId, Input) ->
     describe_malware_scans(Client, DetectorId, Input, []).
 
 -spec describe_malware_scans(map(), binary() | list(), describe_malware_scans_request(), proplists:proplist()) ->
     {ok, describe_malware_scans_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, describe_malware_scans_errors(), tuple()}.
 describe_malware_scans(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/malware-scans"],
@@ -3408,8 +3971,7 @@ describe_malware_scans(Client, DetectorId, Input0, Options0) ->
 -spec describe_organization_configuration(map(), binary() | list()) ->
     {ok, describe_organization_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, describe_organization_configuration_errors(), tuple()}.
 describe_organization_configuration(Client, DetectorId)
   when is_map(Client) ->
     describe_organization_configuration(Client, DetectorId, #{}, #{}).
@@ -3417,8 +3979,7 @@ describe_organization_configuration(Client, DetectorId)
 -spec describe_organization_configuration(map(), binary() | list(), map(), map()) ->
     {ok, describe_organization_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, describe_organization_configuration_errors(), tuple()}.
 describe_organization_configuration(Client, DetectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_organization_configuration(Client, DetectorId, QueryMap, HeadersMap, []).
@@ -3426,8 +3987,7 @@ describe_organization_configuration(Client, DetectorId, QueryMap, HeadersMap)
 -spec describe_organization_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_organization_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, describe_organization_configuration_errors(), tuple()}.
 describe_organization_configuration(Client, DetectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/admin"],
@@ -3455,8 +4015,7 @@ describe_organization_configuration(Client, DetectorId, QueryMap, HeadersMap, Op
 -spec describe_publishing_destination(map(), binary() | list(), binary() | list()) ->
     {ok, describe_publishing_destination_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, describe_publishing_destination_errors(), tuple()}.
 describe_publishing_destination(Client, DestinationId, DetectorId)
   when is_map(Client) ->
     describe_publishing_destination(Client, DestinationId, DetectorId, #{}, #{}).
@@ -3464,8 +4023,7 @@ describe_publishing_destination(Client, DestinationId, DetectorId)
 -spec describe_publishing_destination(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_publishing_destination_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, describe_publishing_destination_errors(), tuple()}.
 describe_publishing_destination(Client, DestinationId, DetectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_publishing_destination(Client, DestinationId, DetectorId, QueryMap, HeadersMap, []).
@@ -3473,8 +4031,7 @@ describe_publishing_destination(Client, DestinationId, DetectorId, QueryMap, Hea
 -spec describe_publishing_destination(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_publishing_destination_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, describe_publishing_destination_errors(), tuple()}.
 describe_publishing_destination(Client, DestinationId, DetectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/publishingDestination/", aws_util:encode_uri(DestinationId), ""],
@@ -3499,16 +4056,14 @@ describe_publishing_destination(Client, DestinationId, DetectorId, QueryMap, Hea
 -spec disable_organization_admin_account(map(), disable_organization_admin_account_request()) ->
     {ok, disable_organization_admin_account_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, disable_organization_admin_account_errors(), tuple()}.
 disable_organization_admin_account(Client, Input) ->
     disable_organization_admin_account(Client, Input, []).
 
 -spec disable_organization_admin_account(map(), disable_organization_admin_account_request(), proplists:proplist()) ->
     {ok, disable_organization_admin_account_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, disable_organization_admin_account_errors(), tuple()}.
 disable_organization_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/admin/disable"],
@@ -3557,16 +4112,14 @@ disable_organization_admin_account(Client, Input0, Options0) ->
 -spec disassociate_from_administrator_account(map(), binary() | list(), disassociate_from_administrator_account_request()) ->
     {ok, disassociate_from_administrator_account_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, disassociate_from_administrator_account_errors(), tuple()}.
 disassociate_from_administrator_account(Client, DetectorId, Input) ->
     disassociate_from_administrator_account(Client, DetectorId, Input, []).
 
 -spec disassociate_from_administrator_account(map(), binary() | list(), disassociate_from_administrator_account_request(), proplists:proplist()) ->
     {ok, disassociate_from_administrator_account_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, disassociate_from_administrator_account_errors(), tuple()}.
 disassociate_from_administrator_account(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/administrator/disassociate"],
@@ -3609,16 +4162,14 @@ disassociate_from_administrator_account(Client, DetectorId, Input0, Options0) ->
 -spec disassociate_from_master_account(map(), binary() | list(), disassociate_from_master_account_request()) ->
     {ok, disassociate_from_master_account_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, disassociate_from_master_account_errors(), tuple()}.
 disassociate_from_master_account(Client, DetectorId, Input) ->
     disassociate_from_master_account(Client, DetectorId, Input, []).
 
 -spec disassociate_from_master_account(map(), binary() | list(), disassociate_from_master_account_request(), proplists:proplist()) ->
     {ok, disassociate_from_master_account_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, disassociate_from_master_account_errors(), tuple()}.
 disassociate_from_master_account(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/master/disassociate"],
@@ -3668,16 +4219,14 @@ disassociate_from_master_account(Client, DetectorId, Input0, Options0) ->
 -spec disassociate_members(map(), binary() | list(), disassociate_members_request()) ->
     {ok, disassociate_members_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, disassociate_members_errors(), tuple()}.
 disassociate_members(Client, DetectorId, Input) ->
     disassociate_members(Client, DetectorId, Input, []).
 
 -spec disassociate_members(map(), binary() | list(), disassociate_members_request(), proplists:proplist()) ->
     {ok, disassociate_members_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, disassociate_members_errors(), tuple()}.
 disassociate_members(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/disassociate"],
@@ -3709,16 +4258,14 @@ disassociate_members(Client, DetectorId, Input0, Options0) ->
 -spec enable_organization_admin_account(map(), enable_organization_admin_account_request()) ->
     {ok, enable_organization_admin_account_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, enable_organization_admin_account_errors(), tuple()}.
 enable_organization_admin_account(Client, Input) ->
     enable_organization_admin_account(Client, Input, []).
 
 -spec enable_organization_admin_account(map(), enable_organization_admin_account_request(), proplists:proplist()) ->
     {ok, enable_organization_admin_account_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, enable_organization_admin_account_errors(), tuple()}.
 enable_organization_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/admin/enable"],
@@ -3751,8 +4298,7 @@ enable_organization_admin_account(Client, Input0, Options0) ->
 -spec get_administrator_account(map(), binary() | list()) ->
     {ok, get_administrator_account_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_administrator_account_errors(), tuple()}.
 get_administrator_account(Client, DetectorId)
   when is_map(Client) ->
     get_administrator_account(Client, DetectorId, #{}, #{}).
@@ -3760,8 +4306,7 @@ get_administrator_account(Client, DetectorId)
 -spec get_administrator_account(map(), binary() | list(), map(), map()) ->
     {ok, get_administrator_account_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_administrator_account_errors(), tuple()}.
 get_administrator_account(Client, DetectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_administrator_account(Client, DetectorId, QueryMap, HeadersMap, []).
@@ -3769,8 +4314,7 @@ get_administrator_account(Client, DetectorId, QueryMap, HeadersMap)
 -spec get_administrator_account(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_administrator_account_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_administrator_account_errors(), tuple()}.
 get_administrator_account(Client, DetectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/administrator"],
@@ -3798,16 +4342,14 @@ get_administrator_account(Client, DetectorId, QueryMap, HeadersMap, Options0)
 -spec get_coverage_statistics(map(), binary() | list(), get_coverage_statistics_request()) ->
     {ok, get_coverage_statistics_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_coverage_statistics_errors(), tuple()}.
 get_coverage_statistics(Client, DetectorId, Input) ->
     get_coverage_statistics(Client, DetectorId, Input, []).
 
 -spec get_coverage_statistics(map(), binary() | list(), get_coverage_statistics_request(), proplists:proplist()) ->
     {ok, get_coverage_statistics_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_coverage_statistics_errors(), tuple()}.
 get_coverage_statistics(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/coverage/statistics"],
@@ -3840,8 +4382,7 @@ get_coverage_statistics(Client, DetectorId, Input0, Options0) ->
 -spec get_detector(map(), binary() | list()) ->
     {ok, get_detector_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_detector_errors(), tuple()}.
 get_detector(Client, DetectorId)
   when is_map(Client) ->
     get_detector(Client, DetectorId, #{}, #{}).
@@ -3849,8 +4390,7 @@ get_detector(Client, DetectorId)
 -spec get_detector(map(), binary() | list(), map(), map()) ->
     {ok, get_detector_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_detector_errors(), tuple()}.
 get_detector(Client, DetectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_detector(Client, DetectorId, QueryMap, HeadersMap, []).
@@ -3858,8 +4398,7 @@ get_detector(Client, DetectorId, QueryMap, HeadersMap)
 -spec get_detector(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_detector_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_detector_errors(), tuple()}.
 get_detector(Client, DetectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), ""],
@@ -3880,8 +4419,7 @@ get_detector(Client, DetectorId, QueryMap, HeadersMap, Options0)
 -spec get_filter(map(), binary() | list(), binary() | list()) ->
     {ok, get_filter_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_filter_errors(), tuple()}.
 get_filter(Client, DetectorId, FilterName)
   when is_map(Client) ->
     get_filter(Client, DetectorId, FilterName, #{}, #{}).
@@ -3889,8 +4427,7 @@ get_filter(Client, DetectorId, FilterName)
 -spec get_filter(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_filter_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_filter_errors(), tuple()}.
 get_filter(Client, DetectorId, FilterName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_filter(Client, DetectorId, FilterName, QueryMap, HeadersMap, []).
@@ -3898,8 +4435,7 @@ get_filter(Client, DetectorId, FilterName, QueryMap, HeadersMap)
 -spec get_filter(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_filter_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_filter_errors(), tuple()}.
 get_filter(Client, DetectorId, FilterName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/filter/", aws_util:encode_uri(FilterName), ""],
@@ -3920,16 +4456,14 @@ get_filter(Client, DetectorId, FilterName, QueryMap, HeadersMap, Options0)
 -spec get_findings(map(), binary() | list(), get_findings_request()) ->
     {ok, get_findings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_findings_errors(), tuple()}.
 get_findings(Client, DetectorId, Input) ->
     get_findings(Client, DetectorId, Input, []).
 
 -spec get_findings(map(), binary() | list(), get_findings_request(), proplists:proplist()) ->
     {ok, get_findings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_findings_errors(), tuple()}.
 get_findings(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/get"],
@@ -3962,16 +4496,14 @@ get_findings(Client, DetectorId, Input0, Options0) ->
 -spec get_findings_statistics(map(), binary() | list(), get_findings_statistics_request()) ->
     {ok, get_findings_statistics_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_findings_statistics_errors(), tuple()}.
 get_findings_statistics(Client, DetectorId, Input) ->
     get_findings_statistics(Client, DetectorId, Input, []).
 
 -spec get_findings_statistics(map(), binary() | list(), get_findings_statistics_request(), proplists:proplist()) ->
     {ok, get_findings_statistics_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_findings_statistics_errors(), tuple()}.
 get_findings_statistics(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/statistics"],
@@ -4000,8 +4532,7 @@ get_findings_statistics(Client, DetectorId, Input0, Options0) ->
 -spec get_invitations_count(map()) ->
     {ok, get_invitations_count_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_invitations_count_errors(), tuple()}.
 get_invitations_count(Client)
   when is_map(Client) ->
     get_invitations_count(Client, #{}, #{}).
@@ -4009,8 +4540,7 @@ get_invitations_count(Client)
 -spec get_invitations_count(map(), map(), map()) ->
     {ok, get_invitations_count_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_invitations_count_errors(), tuple()}.
 get_invitations_count(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_invitations_count(Client, QueryMap, HeadersMap, []).
@@ -4018,8 +4548,7 @@ get_invitations_count(Client, QueryMap, HeadersMap)
 -spec get_invitations_count(map(), map(), map(), proplists:proplist()) ->
     {ok, get_invitations_count_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_invitations_count_errors(), tuple()}.
 get_invitations_count(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/invitation/count"],
@@ -4040,8 +4569,7 @@ get_invitations_count(Client, QueryMap, HeadersMap, Options0)
 -spec get_ip_set(map(), binary() | list(), binary() | list()) ->
     {ok, get_ip_set_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_ip_set_errors(), tuple()}.
 get_ip_set(Client, DetectorId, IpSetId)
   when is_map(Client) ->
     get_ip_set(Client, DetectorId, IpSetId, #{}, #{}).
@@ -4049,8 +4577,7 @@ get_ip_set(Client, DetectorId, IpSetId)
 -spec get_ip_set(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_ip_set_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_ip_set_errors(), tuple()}.
 get_ip_set(Client, DetectorId, IpSetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_ip_set(Client, DetectorId, IpSetId, QueryMap, HeadersMap, []).
@@ -4058,8 +4585,7 @@ get_ip_set(Client, DetectorId, IpSetId, QueryMap, HeadersMap)
 -spec get_ip_set(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_ip_set_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_ip_set_errors(), tuple()}.
 get_ip_set(Client, DetectorId, IpSetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset/", aws_util:encode_uri(IpSetId), ""],
@@ -4086,8 +4612,7 @@ get_ip_set(Client, DetectorId, IpSetId, QueryMap, HeadersMap, Options0)
 -spec get_malware_scan_settings(map(), binary() | list()) ->
     {ok, get_malware_scan_settings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_malware_scan_settings_errors(), tuple()}.
 get_malware_scan_settings(Client, DetectorId)
   when is_map(Client) ->
     get_malware_scan_settings(Client, DetectorId, #{}, #{}).
@@ -4095,8 +4620,7 @@ get_malware_scan_settings(Client, DetectorId)
 -spec get_malware_scan_settings(map(), binary() | list(), map(), map()) ->
     {ok, get_malware_scan_settings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_malware_scan_settings_errors(), tuple()}.
 get_malware_scan_settings(Client, DetectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_malware_scan_settings(Client, DetectorId, QueryMap, HeadersMap, []).
@@ -4104,8 +4628,7 @@ get_malware_scan_settings(Client, DetectorId, QueryMap, HeadersMap)
 -spec get_malware_scan_settings(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_malware_scan_settings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_malware_scan_settings_errors(), tuple()}.
 get_malware_scan_settings(Client, DetectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/malware-scan-settings"],
@@ -4128,8 +4651,7 @@ get_malware_scan_settings(Client, DetectorId, QueryMap, HeadersMap, Options0)
 -spec get_master_account(map(), binary() | list()) ->
     {ok, get_master_account_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_master_account_errors(), tuple()}.
 get_master_account(Client, DetectorId)
   when is_map(Client) ->
     get_master_account(Client, DetectorId, #{}, #{}).
@@ -4137,8 +4659,7 @@ get_master_account(Client, DetectorId)
 -spec get_master_account(map(), binary() | list(), map(), map()) ->
     {ok, get_master_account_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_master_account_errors(), tuple()}.
 get_master_account(Client, DetectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_master_account(Client, DetectorId, QueryMap, HeadersMap, []).
@@ -4146,8 +4667,7 @@ get_master_account(Client, DetectorId, QueryMap, HeadersMap)
 -spec get_master_account(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_master_account_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_master_account_errors(), tuple()}.
 get_master_account(Client, DetectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/master"],
@@ -4175,16 +4695,14 @@ get_master_account(Client, DetectorId, QueryMap, HeadersMap, Options0)
 -spec get_member_detectors(map(), binary() | list(), get_member_detectors_request()) ->
     {ok, get_member_detectors_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_member_detectors_errors(), tuple()}.
 get_member_detectors(Client, DetectorId, Input) ->
     get_member_detectors(Client, DetectorId, Input, []).
 
 -spec get_member_detectors(map(), binary() | list(), get_member_detectors_request(), proplists:proplist()) ->
     {ok, get_member_detectors_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_member_detectors_errors(), tuple()}.
 get_member_detectors(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/detector/get"],
@@ -4213,16 +4731,14 @@ get_member_detectors(Client, DetectorId, Input0, Options0) ->
 -spec get_members(map(), binary() | list(), get_members_request()) ->
     {ok, get_members_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_members_errors(), tuple()}.
 get_members(Client, DetectorId, Input) ->
     get_members(Client, DetectorId, Input, []).
 
 -spec get_members(map(), binary() | list(), get_members_request(), proplists:proplist()) ->
     {ok, get_members_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_members_errors(), tuple()}.
 get_members(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/get"],
@@ -4256,8 +4772,7 @@ get_members(Client, DetectorId, Input0, Options0) ->
 -spec get_organization_statistics(map()) ->
     {ok, get_organization_statistics_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_organization_statistics_errors(), tuple()}.
 get_organization_statistics(Client)
   when is_map(Client) ->
     get_organization_statistics(Client, #{}, #{}).
@@ -4265,8 +4780,7 @@ get_organization_statistics(Client)
 -spec get_organization_statistics(map(), map(), map()) ->
     {ok, get_organization_statistics_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_organization_statistics_errors(), tuple()}.
 get_organization_statistics(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_organization_statistics(Client, QueryMap, HeadersMap, []).
@@ -4274,8 +4788,7 @@ get_organization_statistics(Client, QueryMap, HeadersMap)
 -spec get_organization_statistics(map(), map(), map(), proplists:proplist()) ->
     {ok, get_organization_statistics_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_organization_statistics_errors(), tuple()}.
 get_organization_statistics(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/organization/statistics"],
@@ -4298,16 +4811,14 @@ get_organization_statistics(Client, QueryMap, HeadersMap, Options0)
 -spec get_remaining_free_trial_days(map(), binary() | list(), get_remaining_free_trial_days_request()) ->
     {ok, get_remaining_free_trial_days_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_remaining_free_trial_days_errors(), tuple()}.
 get_remaining_free_trial_days(Client, DetectorId, Input) ->
     get_remaining_free_trial_days(Client, DetectorId, Input, []).
 
 -spec get_remaining_free_trial_days(map(), binary() | list(), get_remaining_free_trial_days_request(), proplists:proplist()) ->
     {ok, get_remaining_free_trial_days_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_remaining_free_trial_days_errors(), tuple()}.
 get_remaining_free_trial_days(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/freeTrial/daysRemaining"],
@@ -4335,8 +4846,7 @@ get_remaining_free_trial_days(Client, DetectorId, Input0, Options0) ->
 -spec get_threat_intel_set(map(), binary() | list(), binary() | list()) ->
     {ok, get_threat_intel_set_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_threat_intel_set_errors(), tuple()}.
 get_threat_intel_set(Client, DetectorId, ThreatIntelSetId)
   when is_map(Client) ->
     get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, #{}, #{}).
@@ -4344,8 +4854,7 @@ get_threat_intel_set(Client, DetectorId, ThreatIntelSetId)
 -spec get_threat_intel_set(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_threat_intel_set_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_threat_intel_set_errors(), tuple()}.
 get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, QueryMap, HeadersMap, []).
@@ -4353,8 +4862,7 @@ get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, QueryMap, HeadersMap)
 -spec get_threat_intel_set(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_threat_intel_set_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_threat_intel_set_errors(), tuple()}.
 get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset/", aws_util:encode_uri(ThreatIntelSetId), ""],
@@ -4385,16 +4893,14 @@ get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, QueryMap, HeadersMap,
 -spec get_usage_statistics(map(), binary() | list(), get_usage_statistics_request()) ->
     {ok, get_usage_statistics_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_usage_statistics_errors(), tuple()}.
 get_usage_statistics(Client, DetectorId, Input) ->
     get_usage_statistics(Client, DetectorId, Input, []).
 
 -spec get_usage_statistics(map(), binary() | list(), get_usage_statistics_request(), proplists:proplist()) ->
     {ok, get_usage_statistics_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_usage_statistics_errors(), tuple()}.
 get_usage_statistics(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/usage/statistics"],
@@ -4458,16 +4964,14 @@ get_usage_statistics(Client, DetectorId, Input0, Options0) ->
 -spec invite_members(map(), binary() | list(), invite_members_request()) ->
     {ok, invite_members_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, invite_members_errors(), tuple()}.
 invite_members(Client, DetectorId, Input) ->
     invite_members(Client, DetectorId, Input, []).
 
 -spec invite_members(map(), binary() | list(), invite_members_request(), proplists:proplist()) ->
     {ok, invite_members_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, invite_members_errors(), tuple()}.
 invite_members(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/invite"],
@@ -4502,16 +5006,14 @@ invite_members(Client, DetectorId, Input0, Options0) ->
 -spec list_coverage(map(), binary() | list(), list_coverage_request()) ->
     {ok, list_coverage_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_coverage_errors(), tuple()}.
 list_coverage(Client, DetectorId, Input) ->
     list_coverage(Client, DetectorId, Input, []).
 
 -spec list_coverage(map(), binary() | list(), list_coverage_request(), proplists:proplist()) ->
     {ok, list_coverage_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_coverage_errors(), tuple()}.
 list_coverage(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/coverage"],
@@ -4539,8 +5041,7 @@ list_coverage(Client, DetectorId, Input0, Options0) ->
 -spec list_detectors(map()) ->
     {ok, list_detectors_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_detectors_errors(), tuple()}.
 list_detectors(Client)
   when is_map(Client) ->
     list_detectors(Client, #{}, #{}).
@@ -4548,8 +5049,7 @@ list_detectors(Client)
 -spec list_detectors(map(), map(), map()) ->
     {ok, list_detectors_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_detectors_errors(), tuple()}.
 list_detectors(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_detectors(Client, QueryMap, HeadersMap, []).
@@ -4557,8 +5057,7 @@ list_detectors(Client, QueryMap, HeadersMap)
 -spec list_detectors(map(), map(), map(), proplists:proplist()) ->
     {ok, list_detectors_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_detectors_errors(), tuple()}.
 list_detectors(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector"],
@@ -4584,8 +5083,7 @@ list_detectors(Client, QueryMap, HeadersMap, Options0)
 -spec list_filters(map(), binary() | list()) ->
     {ok, list_filters_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_filters_errors(), tuple()}.
 list_filters(Client, DetectorId)
   when is_map(Client) ->
     list_filters(Client, DetectorId, #{}, #{}).
@@ -4593,8 +5091,7 @@ list_filters(Client, DetectorId)
 -spec list_filters(map(), binary() | list(), map(), map()) ->
     {ok, list_filters_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_filters_errors(), tuple()}.
 list_filters(Client, DetectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_filters(Client, DetectorId, QueryMap, HeadersMap, []).
@@ -4602,8 +5099,7 @@ list_filters(Client, DetectorId, QueryMap, HeadersMap)
 -spec list_filters(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_filters_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_filters_errors(), tuple()}.
 list_filters(Client, DetectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/filter"],
@@ -4634,16 +5130,14 @@ list_filters(Client, DetectorId, QueryMap, HeadersMap, Options0)
 -spec list_findings(map(), binary() | list(), list_findings_request()) ->
     {ok, list_findings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_findings_errors(), tuple()}.
 list_findings(Client, DetectorId, Input) ->
     list_findings(Client, DetectorId, Input, []).
 
 -spec list_findings(map(), binary() | list(), list_findings_request(), proplists:proplist()) ->
     {ok, list_findings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_findings_errors(), tuple()}.
 list_findings(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings"],
@@ -4672,8 +5166,7 @@ list_findings(Client, DetectorId, Input0, Options0) ->
 -spec list_invitations(map()) ->
     {ok, list_invitations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_invitations_errors(), tuple()}.
 list_invitations(Client)
   when is_map(Client) ->
     list_invitations(Client, #{}, #{}).
@@ -4681,8 +5174,7 @@ list_invitations(Client)
 -spec list_invitations(map(), map(), map()) ->
     {ok, list_invitations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_invitations_errors(), tuple()}.
 list_invitations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_invitations(Client, QueryMap, HeadersMap, []).
@@ -4690,8 +5182,7 @@ list_invitations(Client, QueryMap, HeadersMap)
 -spec list_invitations(map(), map(), map(), proplists:proplist()) ->
     {ok, list_invitations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_invitations_errors(), tuple()}.
 list_invitations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/invitation"],
@@ -4723,8 +5214,7 @@ list_invitations(Client, QueryMap, HeadersMap, Options0)
 -spec list_ip_sets(map(), binary() | list()) ->
     {ok, list_ip_sets_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_ip_sets_errors(), tuple()}.
 list_ip_sets(Client, DetectorId)
   when is_map(Client) ->
     list_ip_sets(Client, DetectorId, #{}, #{}).
@@ -4732,8 +5222,7 @@ list_ip_sets(Client, DetectorId)
 -spec list_ip_sets(map(), binary() | list(), map(), map()) ->
     {ok, list_ip_sets_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_ip_sets_errors(), tuple()}.
 list_ip_sets(Client, DetectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ip_sets(Client, DetectorId, QueryMap, HeadersMap, []).
@@ -4741,8 +5230,7 @@ list_ip_sets(Client, DetectorId, QueryMap, HeadersMap)
 -spec list_ip_sets(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_ip_sets_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_ip_sets_errors(), tuple()}.
 list_ip_sets(Client, DetectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset"],
@@ -4770,8 +5258,7 @@ list_ip_sets(Client, DetectorId, QueryMap, HeadersMap, Options0)
 -spec list_members(map(), binary() | list()) ->
     {ok, list_members_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_members_errors(), tuple()}.
 list_members(Client, DetectorId)
   when is_map(Client) ->
     list_members(Client, DetectorId, #{}, #{}).
@@ -4779,8 +5266,7 @@ list_members(Client, DetectorId)
 -spec list_members(map(), binary() | list(), map(), map()) ->
     {ok, list_members_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_members_errors(), tuple()}.
 list_members(Client, DetectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_members(Client, DetectorId, QueryMap, HeadersMap, []).
@@ -4788,8 +5274,7 @@ list_members(Client, DetectorId, QueryMap, HeadersMap)
 -spec list_members(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_members_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_members_errors(), tuple()}.
 list_members(Client, DetectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member"],
@@ -4819,8 +5304,7 @@ list_members(Client, DetectorId, QueryMap, HeadersMap, Options0)
 -spec list_organization_admin_accounts(map()) ->
     {ok, list_organization_admin_accounts_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_organization_admin_accounts_errors(), tuple()}.
 list_organization_admin_accounts(Client)
   when is_map(Client) ->
     list_organization_admin_accounts(Client, #{}, #{}).
@@ -4828,8 +5312,7 @@ list_organization_admin_accounts(Client)
 -spec list_organization_admin_accounts(map(), map(), map()) ->
     {ok, list_organization_admin_accounts_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_organization_admin_accounts_errors(), tuple()}.
 list_organization_admin_accounts(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_organization_admin_accounts(Client, QueryMap, HeadersMap, []).
@@ -4837,8 +5320,7 @@ list_organization_admin_accounts(Client, QueryMap, HeadersMap)
 -spec list_organization_admin_accounts(map(), map(), map(), proplists:proplist()) ->
     {ok, list_organization_admin_accounts_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_organization_admin_accounts_errors(), tuple()}.
 list_organization_admin_accounts(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/admin"],
@@ -4866,8 +5348,7 @@ list_organization_admin_accounts(Client, QueryMap, HeadersMap, Options0)
 -spec list_publishing_destinations(map(), binary() | list()) ->
     {ok, list_publishing_destinations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_publishing_destinations_errors(), tuple()}.
 list_publishing_destinations(Client, DetectorId)
   when is_map(Client) ->
     list_publishing_destinations(Client, DetectorId, #{}, #{}).
@@ -4875,8 +5356,7 @@ list_publishing_destinations(Client, DetectorId)
 -spec list_publishing_destinations(map(), binary() | list(), map(), map()) ->
     {ok, list_publishing_destinations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_publishing_destinations_errors(), tuple()}.
 list_publishing_destinations(Client, DetectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_publishing_destinations(Client, DetectorId, QueryMap, HeadersMap, []).
@@ -4884,8 +5364,7 @@ list_publishing_destinations(Client, DetectorId, QueryMap, HeadersMap)
 -spec list_publishing_destinations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_publishing_destinations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_publishing_destinations_errors(), tuple()}.
 list_publishing_destinations(Client, DetectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/publishingDestination"],
@@ -4917,9 +5396,7 @@ list_publishing_destinations(Client, DetectorId, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -4927,9 +5404,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -4937,9 +5412,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -4966,8 +5439,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec list_threat_intel_sets(map(), binary() | list()) ->
     {ok, list_threat_intel_sets_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_threat_intel_sets_errors(), tuple()}.
 list_threat_intel_sets(Client, DetectorId)
   when is_map(Client) ->
     list_threat_intel_sets(Client, DetectorId, #{}, #{}).
@@ -4975,8 +5447,7 @@ list_threat_intel_sets(Client, DetectorId)
 -spec list_threat_intel_sets(map(), binary() | list(), map(), map()) ->
     {ok, list_threat_intel_sets_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_threat_intel_sets_errors(), tuple()}.
 list_threat_intel_sets(Client, DetectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_threat_intel_sets(Client, DetectorId, QueryMap, HeadersMap, []).
@@ -4984,8 +5455,7 @@ list_threat_intel_sets(Client, DetectorId, QueryMap, HeadersMap)
 -spec list_threat_intel_sets(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_threat_intel_sets_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_threat_intel_sets_errors(), tuple()}.
 list_threat_intel_sets(Client, DetectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset"],
@@ -5021,18 +5491,14 @@ list_threat_intel_sets(Client, DetectorId, QueryMap, HeadersMap, Options0)
 -spec start_malware_scan(map(), start_malware_scan_request()) ->
     {ok, start_malware_scan_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, start_malware_scan_errors(), tuple()}.
 start_malware_scan(Client, Input) ->
     start_malware_scan(Client, Input, []).
 
 -spec start_malware_scan(map(), start_malware_scan_request(), proplists:proplist()) ->
     {ok, start_malware_scan_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, start_malware_scan_errors(), tuple()}.
 start_malware_scan(Client, Input0, Options0) ->
     Method = post,
     Path = ["/malware-scan/start"],
@@ -5065,16 +5531,14 @@ start_malware_scan(Client, Input0, Options0) ->
 -spec start_monitoring_members(map(), binary() | list(), start_monitoring_members_request()) ->
     {ok, start_monitoring_members_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, start_monitoring_members_errors(), tuple()}.
 start_monitoring_members(Client, DetectorId, Input) ->
     start_monitoring_members(Client, DetectorId, Input, []).
 
 -spec start_monitoring_members(map(), binary() | list(), start_monitoring_members_request(), proplists:proplist()) ->
     {ok, start_monitoring_members_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, start_monitoring_members_errors(), tuple()}.
 start_monitoring_members(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/start"],
@@ -5111,16 +5575,14 @@ start_monitoring_members(Client, DetectorId, Input0, Options0) ->
 -spec stop_monitoring_members(map(), binary() | list(), stop_monitoring_members_request()) ->
     {ok, stop_monitoring_members_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, stop_monitoring_members_errors(), tuple()}.
 stop_monitoring_members(Client, DetectorId, Input) ->
     stop_monitoring_members(Client, DetectorId, Input, []).
 
 -spec stop_monitoring_members(map(), binary() | list(), stop_monitoring_members_request(), proplists:proplist()) ->
     {ok, stop_monitoring_members_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, stop_monitoring_members_errors(), tuple()}.
 stop_monitoring_members(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/stop"],
@@ -5147,18 +5609,14 @@ stop_monitoring_members(Client, DetectorId, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -5185,16 +5643,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec unarchive_findings(map(), binary() | list(), unarchive_findings_request()) ->
     {ok, unarchive_findings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, unarchive_findings_errors(), tuple()}.
 unarchive_findings(Client, DetectorId, Input) ->
     unarchive_findings(Client, DetectorId, Input, []).
 
 -spec unarchive_findings(map(), binary() | list(), unarchive_findings_request(), proplists:proplist()) ->
     {ok, unarchive_findings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, unarchive_findings_errors(), tuple()}.
 unarchive_findings(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/unarchive"],
@@ -5221,18 +5677,14 @@ unarchive_findings(Client, DetectorId, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -5274,16 +5726,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_detector(map(), binary() | list(), update_detector_request()) ->
     {ok, update_detector_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, update_detector_errors(), tuple()}.
 update_detector(Client, DetectorId, Input) ->
     update_detector(Client, DetectorId, Input, []).
 
 -spec update_detector(map(), binary() | list(), update_detector_request(), proplists:proplist()) ->
     {ok, update_detector_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, update_detector_errors(), tuple()}.
 update_detector(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), ""],
@@ -5310,16 +5760,14 @@ update_detector(Client, DetectorId, Input0, Options0) ->
 -spec update_filter(map(), binary() | list(), binary() | list(), update_filter_request()) ->
     {ok, update_filter_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, update_filter_errors(), tuple()}.
 update_filter(Client, DetectorId, FilterName, Input) ->
     update_filter(Client, DetectorId, FilterName, Input, []).
 
 -spec update_filter(map(), binary() | list(), binary() | list(), update_filter_request(), proplists:proplist()) ->
     {ok, update_filter_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, update_filter_errors(), tuple()}.
 update_filter(Client, DetectorId, FilterName, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/filter/", aws_util:encode_uri(FilterName), ""],
@@ -5346,16 +5794,14 @@ update_filter(Client, DetectorId, FilterName, Input0, Options0) ->
 -spec update_findings_feedback(map(), binary() | list(), update_findings_feedback_request()) ->
     {ok, update_findings_feedback_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, update_findings_feedback_errors(), tuple()}.
 update_findings_feedback(Client, DetectorId, Input) ->
     update_findings_feedback(Client, DetectorId, Input, []).
 
 -spec update_findings_feedback(map(), binary() | list(), update_findings_feedback_request(), proplists:proplist()) ->
     {ok, update_findings_feedback_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, update_findings_feedback_errors(), tuple()}.
 update_findings_feedback(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/feedback"],
@@ -5382,16 +5828,14 @@ update_findings_feedback(Client, DetectorId, Input0, Options0) ->
 -spec update_ip_set(map(), binary() | list(), binary() | list(), update_ip_set_request()) ->
     {ok, update_ip_set_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, update_ip_set_errors(), tuple()}.
 update_ip_set(Client, DetectorId, IpSetId, Input) ->
     update_ip_set(Client, DetectorId, IpSetId, Input, []).
 
 -spec update_ip_set(map(), binary() | list(), binary() | list(), update_ip_set_request(), proplists:proplist()) ->
     {ok, update_ip_set_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, update_ip_set_errors(), tuple()}.
 update_ip_set(Client, DetectorId, IpSetId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset/", aws_util:encode_uri(IpSetId), ""],
@@ -5424,16 +5868,14 @@ update_ip_set(Client, DetectorId, IpSetId, Input0, Options0) ->
 -spec update_malware_scan_settings(map(), binary() | list(), update_malware_scan_settings_request()) ->
     {ok, update_malware_scan_settings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, update_malware_scan_settings_errors(), tuple()}.
 update_malware_scan_settings(Client, DetectorId, Input) ->
     update_malware_scan_settings(Client, DetectorId, Input, []).
 
 -spec update_malware_scan_settings(map(), binary() | list(), update_malware_scan_settings_request(), proplists:proplist()) ->
     {ok, update_malware_scan_settings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, update_malware_scan_settings_errors(), tuple()}.
 update_malware_scan_settings(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/malware-scan-settings"],
@@ -5474,16 +5916,14 @@ update_malware_scan_settings(Client, DetectorId, Input0, Options0) ->
 -spec update_member_detectors(map(), binary() | list(), update_member_detectors_request()) ->
     {ok, update_member_detectors_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, update_member_detectors_errors(), tuple()}.
 update_member_detectors(Client, DetectorId, Input) ->
     update_member_detectors(Client, DetectorId, Input, []).
 
 -spec update_member_detectors(map(), binary() | list(), update_member_detectors_request(), proplists:proplist()) ->
     {ok, update_member_detectors_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, update_member_detectors_errors(), tuple()}.
 update_member_detectors(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/detector/update"],
@@ -5529,16 +5969,14 @@ update_member_detectors(Client, DetectorId, Input0, Options0) ->
 -spec update_organization_configuration(map(), binary() | list(), update_organization_configuration_request()) ->
     {ok, update_organization_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, update_organization_configuration_errors(), tuple()}.
 update_organization_configuration(Client, DetectorId, Input) ->
     update_organization_configuration(Client, DetectorId, Input, []).
 
 -spec update_organization_configuration(map(), binary() | list(), update_organization_configuration_request(), proplists:proplist()) ->
     {ok, update_organization_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, update_organization_configuration_errors(), tuple()}.
 update_organization_configuration(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/admin"],
@@ -5566,16 +6004,14 @@ update_organization_configuration(Client, DetectorId, Input0, Options0) ->
 -spec update_publishing_destination(map(), binary() | list(), binary() | list(), update_publishing_destination_request()) ->
     {ok, update_publishing_destination_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, update_publishing_destination_errors(), tuple()}.
 update_publishing_destination(Client, DestinationId, DetectorId, Input) ->
     update_publishing_destination(Client, DestinationId, DetectorId, Input, []).
 
 -spec update_publishing_destination(map(), binary() | list(), binary() | list(), update_publishing_destination_request(), proplists:proplist()) ->
     {ok, update_publishing_destination_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, update_publishing_destination_errors(), tuple()}.
 update_publishing_destination(Client, DestinationId, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/publishingDestination/", aws_util:encode_uri(DestinationId), ""],
@@ -5602,16 +6038,14 @@ update_publishing_destination(Client, DestinationId, DetectorId, Input0, Options
 -spec update_threat_intel_set(map(), binary() | list(), binary() | list(), update_threat_intel_set_request()) ->
     {ok, update_threat_intel_set_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, update_threat_intel_set_errors(), tuple()}.
 update_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input) ->
     update_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input, []).
 
 -spec update_threat_intel_set(map(), binary() | list(), binary() | list(), update_threat_intel_set_request(), proplists:proplist()) ->
     {ok, update_threat_intel_set_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, update_threat_intel_set_errors(), tuple()}.
 update_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset/", aws_util:encode_uri(ThreatIntelSetId), ""],

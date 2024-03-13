@@ -947,6 +947,247 @@
 %% }
 -type server_group() :: #{binary() => any()}.
 
+-type create_app_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    internal_error() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception().
+
+-type create_replication_job_errors() ::
+    invalid_parameter_exception() | 
+    temporarily_unavailable_exception() | 
+    replication_job_already_exists_exception() | 
+    operation_not_permitted_exception() | 
+    no_connectors_available_exception() | 
+    internal_error() | 
+    server_cannot_be_replicated_exception() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception().
+
+-type delete_app_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    internal_error() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception().
+
+-type delete_app_launch_configuration_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    internal_error() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception().
+
+-type delete_app_replication_configuration_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    internal_error() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception().
+
+-type delete_app_validation_configuration_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    internal_error() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception().
+
+-type delete_replication_job_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    missing_required_parameter_exception() | 
+    replication_job_not_found_exception() | 
+    unauthorized_operation_exception().
+
+-type delete_server_catalog_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception().
+
+-type disassociate_connector_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception().
+
+-type generate_change_set_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    internal_error() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception().
+
+-type generate_template_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    internal_error() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception().
+
+-type get_app_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    internal_error() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception().
+
+-type get_app_launch_configuration_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    internal_error() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception().
+
+-type get_app_replication_configuration_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    internal_error() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception().
+
+-type get_app_validation_configuration_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    internal_error() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception().
+
+-type get_app_validation_output_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    internal_error() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception().
+
+-type get_connectors_errors() ::
+    unauthorized_operation_exception().
+
+-type get_replication_jobs_errors() ::
+    invalid_parameter_exception() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception().
+
+-type get_replication_runs_errors() ::
+    invalid_parameter_exception() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception().
+
+-type get_servers_errors() ::
+    invalid_parameter_exception() | 
+    internal_error() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception().
+
+-type import_app_catalog_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    internal_error() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception().
+
+-type import_server_catalog_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    no_connectors_available_exception() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception().
+
+-type launch_app_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    internal_error() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception().
+
+-type list_apps_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    internal_error() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception().
+
+-type notify_app_validation_output_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    internal_error() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception().
+
+-type put_app_launch_configuration_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    internal_error() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception().
+
+-type put_app_replication_configuration_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    internal_error() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception().
+
+-type put_app_validation_configuration_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    internal_error() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception().
+
+-type start_app_replication_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    internal_error() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception().
+
+-type start_on_demand_app_replication_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    internal_error() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception().
+
+-type start_on_demand_replication_run_errors() ::
+    replication_run_limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception() | 
+    dry_run_operation_exception().
+
+-type stop_app_replication_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    internal_error() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception().
+
+-type terminate_app_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    internal_error() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception().
+
+-type update_app_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    internal_error() | 
+    missing_required_parameter_exception() | 
+    unauthorized_operation_exception().
+
+-type update_replication_job_errors() ::
+    invalid_parameter_exception() | 
+    temporarily_unavailable_exception() | 
+    operation_not_permitted_exception() | 
+    internal_error() | 
+    server_cannot_be_replicated_exception() | 
+    missing_required_parameter_exception() | 
+    replication_job_not_found_exception() | 
+    unauthorized_operation_exception().
 
 %%====================================================================
 %% API
@@ -959,11 +1200,7 @@
 -spec create_app(map(), create_app_request()) ->
     {ok, create_app_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, create_app_errors(), tuple()}.
 create_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_app(Client, Input, []).
@@ -971,11 +1208,7 @@ create_app(Client, Input)
 -spec create_app(map(), create_app_request(), proplists:proplist()) ->
     {ok, create_app_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, create_app_errors(), tuple()}.
 create_app(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateApp">>, Input, Options).
@@ -989,15 +1222,7 @@ create_app(Client, Input, Options)
 -spec create_replication_job(map(), create_replication_job_request()) ->
     {ok, create_replication_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, no_connectors_available_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, replication_job_already_exists_exception(), tuple()} |
-    {error, server_cannot_be_replicated_exception(), tuple()} |
-    {error, temporarily_unavailable_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, create_replication_job_errors(), tuple()}.
 create_replication_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_replication_job(Client, Input, []).
@@ -1005,15 +1230,7 @@ create_replication_job(Client, Input)
 -spec create_replication_job(map(), create_replication_job_request(), proplists:proplist()) ->
     {ok, create_replication_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, no_connectors_available_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, replication_job_already_exists_exception(), tuple()} |
-    {error, server_cannot_be_replicated_exception(), tuple()} |
-    {error, temporarily_unavailable_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, create_replication_job_errors(), tuple()}.
 create_replication_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateReplicationJob">>, Input, Options).
@@ -1026,11 +1243,7 @@ create_replication_job(Client, Input, Options)
 -spec delete_app(map(), delete_app_request()) ->
     {ok, delete_app_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, delete_app_errors(), tuple()}.
 delete_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_app(Client, Input, []).
@@ -1038,11 +1251,7 @@ delete_app(Client, Input)
 -spec delete_app(map(), delete_app_request(), proplists:proplist()) ->
     {ok, delete_app_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, delete_app_errors(), tuple()}.
 delete_app(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApp">>, Input, Options).
@@ -1051,11 +1260,7 @@ delete_app(Client, Input, Options)
 -spec delete_app_launch_configuration(map(), delete_app_launch_configuration_request()) ->
     {ok, delete_app_launch_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, delete_app_launch_configuration_errors(), tuple()}.
 delete_app_launch_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_app_launch_configuration(Client, Input, []).
@@ -1063,11 +1268,7 @@ delete_app_launch_configuration(Client, Input)
 -spec delete_app_launch_configuration(map(), delete_app_launch_configuration_request(), proplists:proplist()) ->
     {ok, delete_app_launch_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, delete_app_launch_configuration_errors(), tuple()}.
 delete_app_launch_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAppLaunchConfiguration">>, Input, Options).
@@ -1076,11 +1277,7 @@ delete_app_launch_configuration(Client, Input, Options)
 -spec delete_app_replication_configuration(map(), delete_app_replication_configuration_request()) ->
     {ok, delete_app_replication_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, delete_app_replication_configuration_errors(), tuple()}.
 delete_app_replication_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_app_replication_configuration(Client, Input, []).
@@ -1088,11 +1285,7 @@ delete_app_replication_configuration(Client, Input)
 -spec delete_app_replication_configuration(map(), delete_app_replication_configuration_request(), proplists:proplist()) ->
     {ok, delete_app_replication_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, delete_app_replication_configuration_errors(), tuple()}.
 delete_app_replication_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAppReplicationConfiguration">>, Input, Options).
@@ -1101,11 +1294,7 @@ delete_app_replication_configuration(Client, Input, Options)
 -spec delete_app_validation_configuration(map(), delete_app_validation_configuration_request()) ->
     {ok, delete_app_validation_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, delete_app_validation_configuration_errors(), tuple()}.
 delete_app_validation_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_app_validation_configuration(Client, Input, []).
@@ -1113,11 +1302,7 @@ delete_app_validation_configuration(Client, Input)
 -spec delete_app_validation_configuration(map(), delete_app_validation_configuration_request(), proplists:proplist()) ->
     {ok, delete_app_validation_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, delete_app_validation_configuration_errors(), tuple()}.
 delete_app_validation_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAppValidationConfiguration">>, Input, Options).
@@ -1132,11 +1317,7 @@ delete_app_validation_configuration(Client, Input, Options)
 -spec delete_replication_job(map(), delete_replication_job_request()) ->
     {ok, delete_replication_job_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, replication_job_not_found_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, delete_replication_job_errors(), tuple()}.
 delete_replication_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_replication_job(Client, Input, []).
@@ -1144,11 +1325,7 @@ delete_replication_job(Client, Input)
 -spec delete_replication_job(map(), delete_replication_job_request(), proplists:proplist()) ->
     {ok, delete_replication_job_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, replication_job_not_found_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, delete_replication_job_errors(), tuple()}.
 delete_replication_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteReplicationJob">>, Input, Options).
@@ -1157,10 +1334,7 @@ delete_replication_job(Client, Input, Options)
 -spec delete_server_catalog(map(), delete_server_catalog_request()) ->
     {ok, delete_server_catalog_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, delete_server_catalog_errors(), tuple()}.
 delete_server_catalog(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_server_catalog(Client, Input, []).
@@ -1168,10 +1342,7 @@ delete_server_catalog(Client, Input)
 -spec delete_server_catalog(map(), delete_server_catalog_request(), proplists:proplist()) ->
     {ok, delete_server_catalog_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, delete_server_catalog_errors(), tuple()}.
 delete_server_catalog(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteServerCatalog">>, Input, Options).
@@ -1183,10 +1354,7 @@ delete_server_catalog(Client, Input, Options)
 -spec disassociate_connector(map(), disassociate_connector_request()) ->
     {ok, disassociate_connector_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, disassociate_connector_errors(), tuple()}.
 disassociate_connector(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_connector(Client, Input, []).
@@ -1194,10 +1362,7 @@ disassociate_connector(Client, Input)
 -spec disassociate_connector(map(), disassociate_connector_request(), proplists:proplist()) ->
     {ok, disassociate_connector_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, disassociate_connector_errors(), tuple()}.
 disassociate_connector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateConnector">>, Input, Options).
@@ -1208,11 +1373,7 @@ disassociate_connector(Client, Input, Options)
 -spec generate_change_set(map(), generate_change_set_request()) ->
     {ok, generate_change_set_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, generate_change_set_errors(), tuple()}.
 generate_change_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_change_set(Client, Input, []).
@@ -1220,11 +1381,7 @@ generate_change_set(Client, Input)
 -spec generate_change_set(map(), generate_change_set_request(), proplists:proplist()) ->
     {ok, generate_change_set_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, generate_change_set_errors(), tuple()}.
 generate_change_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GenerateChangeSet">>, Input, Options).
@@ -1235,11 +1392,7 @@ generate_change_set(Client, Input, Options)
 -spec generate_template(map(), generate_template_request()) ->
     {ok, generate_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, generate_template_errors(), tuple()}.
 generate_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_template(Client, Input, []).
@@ -1247,11 +1400,7 @@ generate_template(Client, Input)
 -spec generate_template(map(), generate_template_request(), proplists:proplist()) ->
     {ok, generate_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, generate_template_errors(), tuple()}.
 generate_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GenerateTemplate">>, Input, Options).
@@ -1260,11 +1409,7 @@ generate_template(Client, Input, Options)
 -spec get_app(map(), get_app_request()) ->
     {ok, get_app_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, get_app_errors(), tuple()}.
 get_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_app(Client, Input, []).
@@ -1272,11 +1417,7 @@ get_app(Client, Input)
 -spec get_app(map(), get_app_request(), proplists:proplist()) ->
     {ok, get_app_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, get_app_errors(), tuple()}.
 get_app(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetApp">>, Input, Options).
@@ -1286,11 +1427,7 @@ get_app(Client, Input, Options)
 -spec get_app_launch_configuration(map(), get_app_launch_configuration_request()) ->
     {ok, get_app_launch_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, get_app_launch_configuration_errors(), tuple()}.
 get_app_launch_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_app_launch_configuration(Client, Input, []).
@@ -1298,11 +1435,7 @@ get_app_launch_configuration(Client, Input)
 -spec get_app_launch_configuration(map(), get_app_launch_configuration_request(), proplists:proplist()) ->
     {ok, get_app_launch_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, get_app_launch_configuration_errors(), tuple()}.
 get_app_launch_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAppLaunchConfiguration">>, Input, Options).
@@ -1313,11 +1446,7 @@ get_app_launch_configuration(Client, Input, Options)
 -spec get_app_replication_configuration(map(), get_app_replication_configuration_request()) ->
     {ok, get_app_replication_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, get_app_replication_configuration_errors(), tuple()}.
 get_app_replication_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_app_replication_configuration(Client, Input, []).
@@ -1325,11 +1454,7 @@ get_app_replication_configuration(Client, Input)
 -spec get_app_replication_configuration(map(), get_app_replication_configuration_request(), proplists:proplist()) ->
     {ok, get_app_replication_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, get_app_replication_configuration_errors(), tuple()}.
 get_app_replication_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAppReplicationConfiguration">>, Input, Options).
@@ -1339,11 +1464,7 @@ get_app_replication_configuration(Client, Input, Options)
 -spec get_app_validation_configuration(map(), get_app_validation_configuration_request()) ->
     {ok, get_app_validation_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, get_app_validation_configuration_errors(), tuple()}.
 get_app_validation_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_app_validation_configuration(Client, Input, []).
@@ -1351,11 +1472,7 @@ get_app_validation_configuration(Client, Input)
 -spec get_app_validation_configuration(map(), get_app_validation_configuration_request(), proplists:proplist()) ->
     {ok, get_app_validation_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, get_app_validation_configuration_errors(), tuple()}.
 get_app_validation_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAppValidationConfiguration">>, Input, Options).
@@ -1364,11 +1481,7 @@ get_app_validation_configuration(Client, Input, Options)
 -spec get_app_validation_output(map(), get_app_validation_output_request()) ->
     {ok, get_app_validation_output_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, get_app_validation_output_errors(), tuple()}.
 get_app_validation_output(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_app_validation_output(Client, Input, []).
@@ -1376,11 +1489,7 @@ get_app_validation_output(Client, Input)
 -spec get_app_validation_output(map(), get_app_validation_output_request(), proplists:proplist()) ->
     {ok, get_app_validation_output_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, get_app_validation_output_errors(), tuple()}.
 get_app_validation_output(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAppValidationOutput">>, Input, Options).
@@ -1390,7 +1499,7 @@ get_app_validation_output(Client, Input, Options)
 -spec get_connectors(map(), get_connectors_request()) ->
     {ok, get_connectors_response(), tuple()} |
     {error, any()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, get_connectors_errors(), tuple()}.
 get_connectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_connectors(Client, Input, []).
@@ -1398,7 +1507,7 @@ get_connectors(Client, Input)
 -spec get_connectors(map(), get_connectors_request(), proplists:proplist()) ->
     {ok, get_connectors_response(), tuple()} |
     {error, any()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, get_connectors_errors(), tuple()}.
 get_connectors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetConnectors">>, Input, Options).
@@ -1408,9 +1517,7 @@ get_connectors(Client, Input, Options)
 -spec get_replication_jobs(map(), get_replication_jobs_request()) ->
     {ok, get_replication_jobs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, get_replication_jobs_errors(), tuple()}.
 get_replication_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_replication_jobs(Client, Input, []).
@@ -1418,9 +1525,7 @@ get_replication_jobs(Client, Input)
 -spec get_replication_jobs(map(), get_replication_jobs_request(), proplists:proplist()) ->
     {ok, get_replication_jobs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, get_replication_jobs_errors(), tuple()}.
 get_replication_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetReplicationJobs">>, Input, Options).
@@ -1429,9 +1534,7 @@ get_replication_jobs(Client, Input, Options)
 -spec get_replication_runs(map(), get_replication_runs_request()) ->
     {ok, get_replication_runs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, get_replication_runs_errors(), tuple()}.
 get_replication_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_replication_runs(Client, Input, []).
@@ -1439,9 +1542,7 @@ get_replication_runs(Client, Input)
 -spec get_replication_runs(map(), get_replication_runs_request(), proplists:proplist()) ->
     {ok, get_replication_runs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, get_replication_runs_errors(), tuple()}.
 get_replication_runs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetReplicationRuns">>, Input, Options).
@@ -1453,10 +1554,7 @@ get_replication_runs(Client, Input, Options)
 -spec get_servers(map(), get_servers_request()) ->
     {ok, get_servers_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, get_servers_errors(), tuple()}.
 get_servers(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_servers(Client, Input, []).
@@ -1464,10 +1562,7 @@ get_servers(Client, Input)
 -spec get_servers(map(), get_servers_request(), proplists:proplist()) ->
     {ok, get_servers_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, get_servers_errors(), tuple()}.
 get_servers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServers">>, Input, Options).
@@ -1476,11 +1571,7 @@ get_servers(Client, Input, Options)
 -spec import_app_catalog(map(), import_app_catalog_request()) ->
     {ok, import_app_catalog_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, import_app_catalog_errors(), tuple()}.
 import_app_catalog(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_app_catalog(Client, Input, []).
@@ -1488,11 +1579,7 @@ import_app_catalog(Client, Input)
 -spec import_app_catalog(map(), import_app_catalog_request(), proplists:proplist()) ->
     {ok, import_app_catalog_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, import_app_catalog_errors(), tuple()}.
 import_app_catalog(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportAppCatalog">>, Input, Options).
@@ -1508,11 +1595,7 @@ import_app_catalog(Client, Input, Options)
 -spec import_server_catalog(map(), import_server_catalog_request()) ->
     {ok, import_server_catalog_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, no_connectors_available_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, import_server_catalog_errors(), tuple()}.
 import_server_catalog(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_server_catalog(Client, Input, []).
@@ -1520,11 +1603,7 @@ import_server_catalog(Client, Input)
 -spec import_server_catalog(map(), import_server_catalog_request(), proplists:proplist()) ->
     {ok, import_server_catalog_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, no_connectors_available_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, import_server_catalog_errors(), tuple()}.
 import_server_catalog(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportServerCatalog">>, Input, Options).
@@ -1533,11 +1612,7 @@ import_server_catalog(Client, Input, Options)
 -spec launch_app(map(), launch_app_request()) ->
     {ok, launch_app_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, launch_app_errors(), tuple()}.
 launch_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     launch_app(Client, Input, []).
@@ -1545,11 +1620,7 @@ launch_app(Client, Input)
 -spec launch_app(map(), launch_app_request(), proplists:proplist()) ->
     {ok, launch_app_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, launch_app_errors(), tuple()}.
 launch_app(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"LaunchApp">>, Input, Options).
@@ -1558,11 +1629,7 @@ launch_app(Client, Input, Options)
 -spec list_apps(map(), list_apps_request()) ->
     {ok, list_apps_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, list_apps_errors(), tuple()}.
 list_apps(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_apps(Client, Input, []).
@@ -1570,11 +1637,7 @@ list_apps(Client, Input)
 -spec list_apps(map(), list_apps_request(), proplists:proplist()) ->
     {ok, list_apps_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, list_apps_errors(), tuple()}.
 list_apps(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApps">>, Input, Options).
@@ -1584,11 +1647,7 @@ list_apps(Client, Input, Options)
 -spec notify_app_validation_output(map(), notify_app_validation_output_request()) ->
     {ok, notify_app_validation_output_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, notify_app_validation_output_errors(), tuple()}.
 notify_app_validation_output(Client, Input)
   when is_map(Client), is_map(Input) ->
     notify_app_validation_output(Client, Input, []).
@@ -1596,11 +1655,7 @@ notify_app_validation_output(Client, Input)
 -spec notify_app_validation_output(map(), notify_app_validation_output_request(), proplists:proplist()) ->
     {ok, notify_app_validation_output_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, notify_app_validation_output_errors(), tuple()}.
 notify_app_validation_output(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"NotifyAppValidationOutput">>, Input, Options).
@@ -1610,11 +1665,7 @@ notify_app_validation_output(Client, Input, Options)
 -spec put_app_launch_configuration(map(), put_app_launch_configuration_request()) ->
     {ok, put_app_launch_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, put_app_launch_configuration_errors(), tuple()}.
 put_app_launch_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_app_launch_configuration(Client, Input, []).
@@ -1622,11 +1673,7 @@ put_app_launch_configuration(Client, Input)
 -spec put_app_launch_configuration(map(), put_app_launch_configuration_request(), proplists:proplist()) ->
     {ok, put_app_launch_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, put_app_launch_configuration_errors(), tuple()}.
 put_app_launch_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAppLaunchConfiguration">>, Input, Options).
@@ -1636,11 +1683,7 @@ put_app_launch_configuration(Client, Input, Options)
 -spec put_app_replication_configuration(map(), put_app_replication_configuration_request()) ->
     {ok, put_app_replication_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, put_app_replication_configuration_errors(), tuple()}.
 put_app_replication_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_app_replication_configuration(Client, Input, []).
@@ -1648,11 +1691,7 @@ put_app_replication_configuration(Client, Input)
 -spec put_app_replication_configuration(map(), put_app_replication_configuration_request(), proplists:proplist()) ->
     {ok, put_app_replication_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, put_app_replication_configuration_errors(), tuple()}.
 put_app_replication_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAppReplicationConfiguration">>, Input, Options).
@@ -1662,11 +1701,7 @@ put_app_replication_configuration(Client, Input, Options)
 -spec put_app_validation_configuration(map(), put_app_validation_configuration_request()) ->
     {ok, put_app_validation_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, put_app_validation_configuration_errors(), tuple()}.
 put_app_validation_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_app_validation_configuration(Client, Input, []).
@@ -1674,11 +1709,7 @@ put_app_validation_configuration(Client, Input)
 -spec put_app_validation_configuration(map(), put_app_validation_configuration_request(), proplists:proplist()) ->
     {ok, put_app_validation_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, put_app_validation_configuration_errors(), tuple()}.
 put_app_validation_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAppValidationConfiguration">>, Input, Options).
@@ -1689,11 +1720,7 @@ put_app_validation_configuration(Client, Input, Options)
 -spec start_app_replication(map(), start_app_replication_request()) ->
     {ok, start_app_replication_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, start_app_replication_errors(), tuple()}.
 start_app_replication(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_app_replication(Client, Input, []).
@@ -1701,11 +1728,7 @@ start_app_replication(Client, Input)
 -spec start_app_replication(map(), start_app_replication_request(), proplists:proplist()) ->
     {ok, start_app_replication_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, start_app_replication_errors(), tuple()}.
 start_app_replication(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartAppReplication">>, Input, Options).
@@ -1714,11 +1737,7 @@ start_app_replication(Client, Input, Options)
 -spec start_on_demand_app_replication(map(), start_on_demand_app_replication_request()) ->
     {ok, start_on_demand_app_replication_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, start_on_demand_app_replication_errors(), tuple()}.
 start_on_demand_app_replication(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_on_demand_app_replication(Client, Input, []).
@@ -1726,11 +1745,7 @@ start_on_demand_app_replication(Client, Input)
 -spec start_on_demand_app_replication(map(), start_on_demand_app_replication_request(), proplists:proplist()) ->
     {ok, start_on_demand_app_replication_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, start_on_demand_app_replication_errors(), tuple()}.
 start_on_demand_app_replication(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartOnDemandAppReplication">>, Input, Options).
@@ -1749,12 +1764,7 @@ start_on_demand_app_replication(Client, Input, Options)
 -spec start_on_demand_replication_run(map(), start_on_demand_replication_run_request()) ->
     {ok, start_on_demand_replication_run_response(), tuple()} |
     {error, any()} |
-    {error, dry_run_operation_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, replication_run_limit_exceeded_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, start_on_demand_replication_run_errors(), tuple()}.
 start_on_demand_replication_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_on_demand_replication_run(Client, Input, []).
@@ -1762,12 +1772,7 @@ start_on_demand_replication_run(Client, Input)
 -spec start_on_demand_replication_run(map(), start_on_demand_replication_run_request(), proplists:proplist()) ->
     {ok, start_on_demand_replication_run_response(), tuple()} |
     {error, any()} |
-    {error, dry_run_operation_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, replication_run_limit_exceeded_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, start_on_demand_replication_run_errors(), tuple()}.
 start_on_demand_replication_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartOnDemandReplicationRun">>, Input, Options).
@@ -1778,11 +1783,7 @@ start_on_demand_replication_run(Client, Input, Options)
 -spec stop_app_replication(map(), stop_app_replication_request()) ->
     {ok, stop_app_replication_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, stop_app_replication_errors(), tuple()}.
 stop_app_replication(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_app_replication(Client, Input, []).
@@ -1790,11 +1791,7 @@ stop_app_replication(Client, Input)
 -spec stop_app_replication(map(), stop_app_replication_request(), proplists:proplist()) ->
     {ok, stop_app_replication_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, stop_app_replication_errors(), tuple()}.
 stop_app_replication(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopAppReplication">>, Input, Options).
@@ -1803,11 +1800,7 @@ stop_app_replication(Client, Input, Options)
 -spec terminate_app(map(), terminate_app_request()) ->
     {ok, terminate_app_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, terminate_app_errors(), tuple()}.
 terminate_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     terminate_app(Client, Input, []).
@@ -1815,11 +1808,7 @@ terminate_app(Client, Input)
 -spec terminate_app(map(), terminate_app_request(), proplists:proplist()) ->
     {ok, terminate_app_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, terminate_app_errors(), tuple()}.
 terminate_app(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TerminateApp">>, Input, Options).
@@ -1828,11 +1817,7 @@ terminate_app(Client, Input, Options)
 -spec update_app(map(), update_app_request()) ->
     {ok, update_app_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, update_app_errors(), tuple()}.
 update_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_app(Client, Input, []).
@@ -1840,11 +1825,7 @@ update_app(Client, Input)
 -spec update_app(map(), update_app_request(), proplists:proplist()) ->
     {ok, update_app_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, update_app_errors(), tuple()}.
 update_app(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateApp">>, Input, Options).
@@ -1853,14 +1834,7 @@ update_app(Client, Input, Options)
 -spec update_replication_job(map(), update_replication_job_request()) ->
     {ok, update_replication_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, replication_job_not_found_exception(), tuple()} |
-    {error, server_cannot_be_replicated_exception(), tuple()} |
-    {error, temporarily_unavailable_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, update_replication_job_errors(), tuple()}.
 update_replication_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_replication_job(Client, Input, []).
@@ -1868,14 +1842,7 @@ update_replication_job(Client, Input)
 -spec update_replication_job(map(), update_replication_job_request(), proplists:proplist()) ->
     {ok, update_replication_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, replication_job_not_found_exception(), tuple()} |
-    {error, server_cannot_be_replicated_exception(), tuple()} |
-    {error, temporarily_unavailable_exception(), tuple()} |
-    {error, unauthorized_operation_exception(), tuple()}.
+    {error, update_replication_job_errors(), tuple()}.
 update_replication_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateReplicationJob">>, Input, Options).

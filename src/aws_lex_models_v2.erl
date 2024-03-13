@@ -236,6 +236,7 @@
 %% describe_custom_vocabulary_metadata_request() :: #{}
 -type describe_custom_vocabulary_metadata_request() :: #{}.
 
+
 %% Example:
 %% s3_bucket_transcript_source() :: #{
 %%   <<"kmsKeyArn">> => string(),
@@ -246,6 +247,7 @@
 %% }
 -type s3_bucket_transcript_source() :: #{binary() => any()}.
 
+
 %% Example:
 %% import_sort_by() :: #{
 %%   <<"attribute">> => list(any()),
@@ -253,12 +255,14 @@
 %% }
 -type import_sort_by() :: #{binary() => any()}.
 
+
 %% Example:
 %% built_in_intent_summary() :: #{
 %%   <<"description">> => string(),
 %%   <<"intentSignature">> => string()
 %% }
 -type built_in_intent_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% fulfillment_updates_specification() :: #{
@@ -269,6 +273,7 @@
 %% }
 -type fulfillment_updates_specification() :: #{binary() => any()}.
 
+
 %% Example:
 %% analytics_intent_metric() :: #{
 %%   <<"name">> => list(any()),
@@ -277,11 +282,13 @@
 %% }
 -type analytics_intent_metric() :: #{binary() => any()}.
 
+
 %% Example:
 %% grammar_slot_type_setting() :: #{
 %%   <<"source">> => grammar_slot_type_source()
 %% }
 -type grammar_slot_type_setting() :: #{binary() => any()}.
+
 
 %% Example:
 %% bot_recommendation_results() :: #{
@@ -290,9 +297,11 @@
 %%   <<"statistics">> => bot_recommendation_result_statistics()
 %% }
 -type bot_recommendation_results() :: #{binary() => any()}.
+
 %% Example:
 %% delete_test_set_request() :: #{}
 -type delete_test_set_request() :: #{}.
+
 
 %% Example:
 %% bot_locale_import_specification() :: #{
@@ -304,11 +313,13 @@
 %% }
 -type bot_locale_import_specification() :: #{binary() => any()}.
 
+
 %% Example:
 %% test_execution_target() :: #{
 %%   <<"botAliasTarget">> => bot_alias_test_execution_target()
 %% }
 -type test_execution_target() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_bot_locales_response() :: #{
@@ -318,9 +329,11 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_bot_locales_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_bot_resource_generation_request() :: #{}
 -type describe_bot_resource_generation_request() :: #{}.
+
 
 %% Example:
 %% date_range_filter() :: #{
@@ -328,6 +341,7 @@
 %%   <<"startDateTime">> => non_neg_integer()
 %% }
 -type date_range_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_test_set_generation_request() :: #{
@@ -339,6 +353,7 @@
 %%   <<"testSetTags">> => map()
 %% }
 -type start_test_set_generation_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_slot_type_response() :: #{
@@ -358,6 +373,7 @@
 %% }
 -type update_slot_type_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_test_set_generation_response() :: #{
 %%   <<"creationDateTime">> => non_neg_integer(),
@@ -372,6 +388,7 @@
 %% }
 -type start_test_set_generation_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_test_execution_result_items_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -379,12 +396,14 @@
 %% }
 -type list_test_execution_result_items_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% default_conditional_branch() :: #{
 %%   <<"nextStep">> => dialog_state(),
 %%   <<"response">> => response_specification()
 %% }
 -type default_conditional_branch() :: #{binary() => any()}.
+
 
 %% Example:
 %% intent_level_slot_resolution_test_result_item() :: #{
@@ -394,12 +413,14 @@
 %% }
 -type intent_level_slot_resolution_test_result_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% bot_locale_history_event() :: #{
 %%   <<"event">> => string(),
 %%   <<"eventDate">> => non_neg_integer()
 %% }
 -type bot_locale_history_event() :: #{binary() => any()}.
+
 
 %% Example:
 %% analytics_utterance_result() :: #{
@@ -410,11 +431,13 @@
 %% }
 -type analytics_utterance_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% associated_transcript() :: #{
@@ -422,11 +445,13 @@
 %% }
 -type associated_transcript() :: #{binary() => any()}.
 
+
 %% Example:
 %% conversation_level_test_results_filter_by() :: #{
 %%   <<"endToEndResult">> => list(any())
 %% }
 -type conversation_level_test_results_filter_by() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_bot_version_replicas_response() :: #{
@@ -438,6 +463,7 @@
 %% }
 -type list_bot_version_replicas_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% conversation_level_test_result_item() :: #{
 %%   <<"conversationId">> => string(),
@@ -448,15 +474,18 @@
 %% }
 -type conversation_level_test_result_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_resource_policy_response() :: #{
 %%   <<"resourceArn">> => string(),
 %%   <<"revisionId">> => string()
 %% }
 -type delete_resource_policy_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_export_request() :: #{}
 -type describe_export_request() :: #{}.
+
 
 %% Example:
 %% conversation_logs_data_source_filter_by() :: #{
@@ -466,12 +495,14 @@
 %% }
 -type conversation_logs_data_source_filter_by() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_resource_policy_statement_response() :: #{
 %%   <<"resourceArn">> => string(),
 %%   <<"revisionId">> => string()
 %% }
 -type delete_resource_policy_statement_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% built_in_slot_type_sort_by() :: #{
@@ -480,6 +511,7 @@
 %% }
 -type built_in_slot_type_sort_by() :: #{binary() => any()}.
 
+
 %% Example:
 %% test_set_intent_discrepancy_item() :: #{
 %%   <<"errorMessage">> => string(),
@@ -487,12 +519,14 @@
 %% }
 -type test_set_intent_discrepancy_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% slot_sort_by() :: #{
 %%   <<"attribute">> => list(any()),
 %%   <<"order">> => list(any())
 %% }
 -type slot_sort_by() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_intent_request() :: #{
@@ -513,11 +547,13 @@
 %% }
 -type update_intent_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% analytics_utterance_group_by_specification() :: #{
 %%   <<"name">> => list(any())
 %% }
 -type analytics_utterance_group_by_specification() :: #{binary() => any()}.
+
 
 %% Example:
 %% slot_value_regex_filter() :: #{
@@ -525,11 +561,13 @@
 %% }
 -type slot_value_regex_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% obfuscation_setting() :: #{
 %%   <<"obfuscationSettingType">> => list(any())
 %% }
 -type obfuscation_setting() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_test_execution_request() :: #{
@@ -539,12 +577,14 @@
 %% }
 -type start_test_execution_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% specifications() :: #{
 %%   <<"slotTypeId">> => string(),
 %%   <<"valueElicitationSetting">> => sub_slot_value_elicitation_setting()
 %% }
 -type specifications() :: #{binary() => any()}.
+
 
 %% Example:
 %% bot_alias_history_event() :: #{
@@ -554,6 +594,7 @@
 %% }
 -type bot_alias_history_event() :: #{binary() => any()}.
 
+
 %% Example:
 %% fulfillment_update_response_specification() :: #{
 %%   <<"allowInterrupt">> => boolean(),
@@ -561,12 +602,15 @@
 %%   <<"messageGroups">> => list(message_group()())
 %% }
 -type fulfillment_update_response_specification() :: #{binary() => any()}.
+
 %% Example:
 %% list_bot_replicas_request() :: #{}
 -type list_bot_replicas_request() :: #{}.
+
 %% Example:
 %% describe_bot_alias_request() :: #{}
 -type describe_bot_alias_request() :: #{}.
+
 
 %% Example:
 %% agent_turn_result() :: #{
@@ -577,6 +621,7 @@
 %%   <<"expectedAgentPrompt">> => string()
 %% }
 -type agent_turn_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_bot_version_response() :: #{
@@ -595,9 +640,11 @@
 %%   <<"roleArn">> => string()
 %% }
 -type describe_bot_version_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_test_set_request() :: #{}
 -type describe_test_set_request() :: #{}.
+
 
 %% Example:
 %% utterance_data_sort_by() :: #{
@@ -605,6 +652,7 @@
 %%   <<"order">> => list(any())
 %% }
 -type utterance_data_sort_by() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_test_execution_response() :: #{
@@ -621,6 +669,7 @@
 %% }
 -type describe_test_execution_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_intents_response() :: #{
 %%   <<"botId">> => string(),
@@ -631,6 +680,7 @@
 %% }
 -type list_intents_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% analytics_utterance_filter() :: #{
 %%   <<"name">> => list(any()),
@@ -639,12 +689,14 @@
 %% }
 -type analytics_utterance_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% generative_a_i_settings() :: #{
 %%   <<"buildtimeSettings">> => buildtime_settings(),
 %%   <<"runtimeSettings">> => runtime_settings()
 %% }
 -type generative_a_i_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_source_configuration() :: #{
@@ -653,9 +705,11 @@
 %%   <<"opensearchConfiguration">> => opensearch_configuration()
 %% }
 -type data_source_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% analytics_session_metric() :: #{
@@ -664,6 +718,7 @@
 %%   <<"statistic">> => list(any())
 %% }
 -type analytics_session_metric() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_intent_stage_metrics_request() :: #{
@@ -678,12 +733,14 @@
 %% }
 -type list_intent_stage_metrics_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% message_group() :: #{
 %%   <<"message">> => message(),
 %%   <<"variations">> => list(message()())
 %% }
 -type message_group() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_bot_replica_response() :: #{
@@ -696,6 +753,7 @@
 %% }
 -type describe_bot_replica_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_recommended_intents_response() :: #{
 %%   <<"botId">> => string(),
@@ -706,6 +764,7 @@
 %%   <<"summaryList">> => list(recommended_intent_summary()())
 %% }
 -type list_recommended_intents_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_bot_alias_response() :: #{
@@ -723,12 +782,14 @@
 %% }
 -type update_bot_alias_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% elicitation_code_hook_invocation_setting() :: #{
 %%   <<"enableCodeHookInvocation">> => boolean(),
 %%   <<"invocationLabel">> => string()
 %% }
 -type elicitation_code_hook_invocation_setting() :: #{binary() => any()}.
+
 
 %% Example:
 %% intent_classification_test_result_item_counts() :: #{
@@ -738,17 +799,20 @@
 %% }
 -type intent_classification_test_result_item_counts() :: #{binary() => any()}.
 
+
 %% Example:
 %% lex_transcript_filter() :: #{
 %%   <<"dateRangeFilter">> => date_range_filter()
 %% }
 -type lex_transcript_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% analytics_utterance_attribute() :: #{
 %%   <<"name">> => list(any())
 %% }
 -type analytics_utterance_attribute() :: #{binary() => any()}.
+
 
 %% Example:
 %% intent_classification_test_result_item() :: #{
@@ -757,6 +821,7 @@
 %%   <<"resultCounts">> => intent_classification_test_result_item_counts()
 %% }
 -type intent_classification_test_result_item() :: #{binary() => any()}.
+
 
 %% Example:
 %% generate_bot_element_response() :: #{
@@ -768,6 +833,7 @@
 %% }
 -type generate_bot_element_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_export_request() :: #{
 %%   <<"fileFormat">> := list(any()),
@@ -776,11 +842,13 @@
 %% }
 -type create_export_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% path_format() :: #{
 %%   <<"objectPrefixes">> => list(string()())
 %% }
 -type path_format() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_resource_policy_statement_request() :: #{
@@ -788,11 +856,13 @@
 %% }
 -type delete_resource_policy_statement_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% runtime_settings() :: #{
 %%   <<"slotResolutionImprovement">> => slot_resolution_improvement_specification()
 %% }
 -type runtime_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_slot_request() :: #{
@@ -806,6 +876,7 @@
 %% }
 -type update_slot_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% opensearch_configuration() :: #{
 %%   <<"domainEndpoint">> => string(),
@@ -816,11 +887,13 @@
 %% }
 -type opensearch_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_bot_request() :: #{
 %%   <<"skipResourceInUseCheck">> => boolean()
 %% }
 -type delete_bot_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_slot_response() :: #{
@@ -841,6 +914,7 @@
 %% }
 -type update_slot_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% bot_member() :: #{
 %%   <<"botMemberAliasId">> => string(),
@@ -851,11 +925,13 @@
 %% }
 -type bot_member() :: #{binary() => any()}.
 
+
 %% Example:
 %% intent_statistics() :: #{
 %%   <<"discoveredIntentCount">> => integer()
 %% }
 -type intent_statistics() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_bot_recommendation_request() :: #{
@@ -863,6 +939,7 @@
 %%   <<"transcriptSourceSetting">> := transcript_source_setting()
 %% }
 -type start_bot_recommendation_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% output_context() :: #{
@@ -872,6 +949,7 @@
 %% }
 -type output_context() :: #{binary() => any()}.
 
+
 %% Example:
 %% bot_alias_test_execution_target() :: #{
 %%   <<"botAliasId">> => string(),
@@ -880,6 +958,7 @@
 %% }
 -type bot_alias_test_execution_target() :: #{binary() => any()}.
 
+
 %% Example:
 %% slot_priority() :: #{
 %%   <<"priority">> => integer(),
@@ -887,12 +966,14 @@
 %% }
 -type slot_priority() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_resource_policy_response() :: #{
 %%   <<"resourceArn">> => string(),
 %%   <<"revisionId">> => string()
 %% }
 -type create_resource_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% initial_response_setting() :: #{
@@ -903,11 +984,13 @@
 %% }
 -type initial_response_setting() :: #{binary() => any()}.
 
+
 %% Example:
 %% text_input_specification() :: #{
 %%   <<"startTimeoutMs">> => integer()
 %% }
 -type text_input_specification() :: #{binary() => any()}.
+
 
 %% Example:
 %% bot_import_specification() :: #{
@@ -920,12 +1003,14 @@
 %% }
 -type bot_import_specification() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_bot_version_request() :: #{
 %%   <<"botVersionLocaleSpecification">> := map(),
 %%   <<"description">> => string()
 %% }
 -type create_bot_version_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_bot_recommendation_response() :: #{
@@ -941,6 +1026,7 @@
 %% }
 -type update_bot_recommendation_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% analytics_path_filter() :: #{
 %%   <<"name">> => list(any()),
@@ -949,6 +1035,7 @@
 %% }
 -type analytics_path_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% test_set_discrepancy_errors() :: #{
 %%   <<"intentDiscrepancies">> => list(test_set_intent_discrepancy_item()()),
@@ -956,12 +1043,14 @@
 %% }
 -type test_set_discrepancy_errors() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_test_set_request() :: #{
 %%   <<"description">> => string(),
 %%   <<"testSetName">> := string()
 %% }
 -type update_test_set_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% export_filter() :: #{
@@ -971,17 +1060,20 @@
 %% }
 -type export_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% dialog_code_hook_settings() :: #{
 %%   <<"enabled">> => boolean()
 %% }
 -type dialog_code_hook_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% overall_test_results() :: #{
 %%   <<"items">> => list(overall_test_result_item()())
 %% }
 -type overall_test_results() :: #{binary() => any()}.
+
 
 %% Example:
 %% slot_resolution_improvement_specification() :: #{
@@ -990,17 +1082,20 @@
 %% }
 -type slot_resolution_improvement_specification() :: #{binary() => any()}.
 
+
 %% Example:
 %% s_s_ml_message() :: #{
 %%   <<"value">> => string()
 %% }
 -type s_s_ml_message() :: #{binary() => any()}.
 
+
 %% Example:
 %% invoked_intent_sample() :: #{
 %%   <<"intentName">> => string()
 %% }
 -type invoked_intent_sample() :: #{binary() => any()}.
+
 
 %% Example:
 %% bot_locale_summary() :: #{
@@ -1013,12 +1108,14 @@
 %% }
 -type bot_locale_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% audio_specification() :: #{
 %%   <<"endTimeoutMs">> => integer(),
 %%   <<"maxLengthMs">> => integer()
 %% }
 -type audio_specification() :: #{binary() => any()}.
+
 
 %% Example:
 %% import_summary() :: #{
@@ -1033,6 +1130,7 @@
 %% }
 -type import_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% grammar_slot_type_source() :: #{
 %%   <<"kmsKeyArn">> => string(),
@@ -1041,11 +1139,13 @@
 %% }
 -type grammar_slot_type_source() :: #{binary() => any()}.
 
+
 %% Example:
 %% slot_value() :: #{
 %%   <<"interpretedValue">> => string()
 %% }
 -type slot_value() :: #{binary() => any()}.
+
 
 %% Example:
 %% analytics_session_group_by_key() :: #{
@@ -1054,12 +1154,14 @@
 %% }
 -type analytics_session_group_by_key() :: #{binary() => any()}.
 
+
 %% Example:
 %% bot_locale_sort_by() :: #{
 %%   <<"attribute">> => list(any()),
 %%   <<"order">> => list(any())
 %% }
 -type bot_locale_sort_by() :: #{binary() => any()}.
+
 
 %% Example:
 %% conversation_level_intent_classification_result_item() :: #{
@@ -1068,12 +1170,14 @@
 %% }
 -type conversation_level_intent_classification_result_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% execution_error_details() :: #{
 %%   <<"errorCode">> => string(),
 %%   <<"errorMessage">> => string()
 %% }
 -type execution_error_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% prompt_specification() :: #{
@@ -1085,11 +1189,13 @@
 %% }
 -type prompt_specification() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_create_custom_vocabulary_item_request() :: #{
 %%   <<"customVocabularyItemList">> := list(new_custom_vocabulary_item()())
 %% }
 -type batch_create_custom_vocabulary_item_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_upload_url_response() :: #{
@@ -1097,6 +1203,7 @@
 %%   <<"uploadUrl">> => string()
 %% }
 -type create_upload_url_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% fulfillment_start_response_specification() :: #{
@@ -1106,15 +1213,18 @@
 %% }
 -type fulfillment_start_response_specification() :: #{binary() => any()}.
 
+
 %% Example:
 %% voice_settings() :: #{
 %%   <<"engine">> => list(any()),
 %%   <<"voiceId">> => string()
 %% }
 -type voice_settings() :: #{binary() => any()}.
+
 %% Example:
 %% delete_export_request() :: #{}
 -type delete_export_request() :: #{}.
+
 
 %% Example:
 %% conversation_level_result_detail() :: #{
@@ -1122,6 +1232,7 @@
 %%   <<"speechTranscriptionResult">> => list(any())
 %% }
 -type conversation_level_result_detail() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_aggregated_utterances_request() :: #{
@@ -1136,12 +1247,14 @@
 %% }
 -type list_aggregated_utterances_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% associated_transcript_filter() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"values">> => list(string()())
 %% }
 -type associated_transcript_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_slot_request() :: #{
@@ -1155,6 +1268,7 @@
 %% }
 -type create_slot_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_associated_transcripts_request() :: #{
 %%   <<"filters">> := list(associated_transcript_filter()()),
@@ -1163,9 +1277,11 @@
 %%   <<"searchOrder">> => list(any())
 %% }
 -type search_associated_transcripts_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_bot_version_request() :: #{}
 -type describe_bot_version_request() :: #{}.
+
 
 %% Example:
 %% principal() :: #{
@@ -1173,6 +1289,7 @@
 %%   <<"service">> => string()
 %% }
 -type principal() :: #{binary() => any()}.
+
 
 %% Example:
 %% intent_summary() :: #{
@@ -1186,6 +1303,7 @@
 %% }
 -type intent_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% sub_slot_type_composition() :: #{
 %%   <<"name">> => string(),
@@ -1193,12 +1311,14 @@
 %% }
 -type sub_slot_type_composition() :: #{binary() => any()}.
 
+
 %% Example:
 %% test_set_import_input_location() :: #{
 %%   <<"s3BucketName">> => string(),
 %%   <<"s3Path">> => string()
 %% }
 -type test_set_import_input_location() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_intents_request() :: #{
@@ -1209,6 +1329,7 @@
 %% }
 -type list_intents_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% analytics_bin_by_specification() :: #{
 %%   <<"interval">> => list(any()),
@@ -1217,11 +1338,13 @@
 %% }
 -type analytics_bin_by_specification() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% slot_resolution_test_result_item() :: #{
@@ -1229,6 +1352,7 @@
 %%   <<"slotName">> => string()
 %% }
 -type slot_resolution_test_result_item() :: #{binary() => any()}.
+
 
 %% Example:
 %% export_resource_specification() :: #{
@@ -1239,6 +1363,7 @@
 %% }
 -type export_resource_specification() :: #{binary() => any()}.
 
+
 %% Example:
 %% overall_test_result_item() :: #{
 %%   <<"endToEndResultCounts">> => map(),
@@ -1247,6 +1372,7 @@
 %%   <<"totalResultCount">> => integer()
 %% }
 -type overall_test_result_item() :: #{binary() => any()}.
+
 
 %% Example:
 %% user_turn_result() :: #{
@@ -1262,11 +1388,13 @@
 %% }
 -type user_turn_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% bot_version_locale_details() :: #{
 %%   <<"sourceBotVersion">> => string()
 %% }
 -type bot_version_locale_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_bot_alias_response() :: #{
@@ -1284,6 +1412,7 @@
 %% }
 -type create_bot_alias_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_bot_versions_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -1291,6 +1420,7 @@
 %%   <<"sortBy">> => bot_version_sort_by()
 %% }
 -type list_bot_versions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% image_response_card() :: #{
@@ -1301,12 +1431,14 @@
 %% }
 -type image_response_card() :: #{binary() => any()}.
 
+
 %% Example:
 %% qn_a_intent_configuration() :: #{
 %%   <<"bedrockModelConfiguration">> => bedrock_model_specification(),
 %%   <<"dataSourceConfiguration">> => data_source_configuration()
 %% }
 -type qn_a_intent_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_exports_request() :: #{
@@ -1320,12 +1452,14 @@
 %% }
 -type list_exports_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_test_set_records_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"testSetRecords">> => list(test_set_turn_record()())
 %% }
 -type list_test_set_records_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_bot_alias_response() :: #{
@@ -1334,6 +1468,7 @@
 %%   <<"botId">> => string()
 %% }
 -type delete_bot_alias_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_intent_paths_request() :: #{
@@ -1344,6 +1479,7 @@
 %% }
 -type list_intent_paths_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% dialog_state() :: #{
 %%   <<"dialogAction">> => dialog_action(),
@@ -1352,11 +1488,13 @@
 %% }
 -type dialog_state() :: #{binary() => any()}.
 
+
 %% Example:
 %% transcript_filter() :: #{
 %%   <<"lexTranscriptFilter">> => lex_transcript_filter()
 %% }
 -type transcript_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_intent_metrics_response() :: #{
@@ -1365,6 +1503,7 @@
 %%   <<"results">> => list(analytics_intent_result()())
 %% }
 -type list_intent_metrics_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% generation_summary() :: #{
@@ -1375,11 +1514,13 @@
 %% }
 -type generation_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_update_custom_vocabulary_item_request() :: #{
 %%   <<"customVocabularyItemList">> := list(custom_vocabulary_item()())
 %% }
 -type batch_update_custom_vocabulary_item_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_test_set_generation_response() :: #{
@@ -1397,6 +1538,7 @@
 %% }
 -type describe_test_set_generation_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_bot_replica_response() :: #{
 %%   <<"botId">> => string(),
@@ -1406,6 +1548,7 @@
 %%   <<"sourceRegion">> => string()
 %% }
 -type create_bot_replica_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% bot_alias_summary() :: #{
@@ -1419,12 +1562,14 @@
 %% }
 -type bot_alias_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_bot_recommendations_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_bot_recommendations_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_associated_transcripts_response() :: #{
@@ -1437,6 +1582,7 @@
 %%   <<"totalResults">> => integer()
 %% }
 -type search_associated_transcripts_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_bot_resource_generation_response() :: #{
@@ -1454,6 +1600,7 @@
 %% }
 -type describe_bot_resource_generation_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_test_set_response() :: #{
 %%   <<"creationDateTime">> => non_neg_integer(),
@@ -1469,6 +1616,7 @@
 %% }
 -type update_test_set_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% prompt_attempt_specification() :: #{
 %%   <<"allowInterrupt">> => boolean(),
@@ -1478,6 +1626,7 @@
 %% }
 -type prompt_attempt_specification() :: #{binary() => any()}.
 
+
 %% Example:
 %% kendra_configuration() :: #{
 %%   <<"kendraIndex">> => string(),
@@ -1485,9 +1634,11 @@
 %%   <<"queryFilterStringEnabled">> => boolean()
 %% }
 -type kendra_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% describe_import_request() :: #{}
 -type describe_import_request() :: #{}.
+
 
 %% Example:
 %% descriptive_bot_builder_specification() :: #{
@@ -1495,6 +1646,7 @@
 %%   <<"enabled">> => boolean()
 %% }
 -type descriptive_bot_builder_specification() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_imports_response() :: #{
@@ -1506,17 +1658,20 @@
 %% }
 -type list_imports_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% advanced_recognition_setting() :: #{
 %%   <<"audioRecognitionStrategy">> => list(any())
 %% }
 -type advanced_recognition_setting() :: #{binary() => any()}.
 
+
 %% Example:
 %% utterance_aggregation_duration() :: #{
 %%   <<"relativeAggregationDuration">> => relative_aggregation_duration()
 %% }
 -type utterance_aggregation_duration() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_intent_response() :: #{
@@ -1543,6 +1698,7 @@
 %% }
 -type update_intent_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% test_set_storage_location() :: #{
 %%   <<"kmsKeyArn">> => string(),
@@ -1550,9 +1706,11 @@
 %%   <<"s3Path">> => string()
 %% }
 -type test_set_storage_location() :: #{binary() => any()}.
+
 %% Example:
 %% describe_bot_locale_request() :: #{}
 -type describe_bot_locale_request() :: #{}.
+
 
 %% Example:
 %% list_slot_types_response() :: #{
@@ -1564,6 +1722,7 @@
 %% }
 -type list_slot_types_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% analytics_intent_stage_metric_result() :: #{
 %%   <<"name">> => list(any()),
@@ -1571,6 +1730,7 @@
 %%   <<"value">> => float()
 %% }
 -type analytics_intent_stage_metric_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_built_in_slot_types_request() :: #{
@@ -1580,6 +1740,7 @@
 %% }
 -type list_built_in_slot_types_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% test_set_turn_result() :: #{
 %%   <<"agent">> => agent_turn_result(),
@@ -1587,11 +1748,13 @@
 %% }
 -type test_set_turn_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% intent_level_slot_resolution_test_results() :: #{
 %%   <<"items">> => list(intent_level_slot_resolution_test_result_item()())
 %% }
 -type intent_level_slot_resolution_test_results() :: #{binary() => any()}.
+
 
 %% Example:
 %% bot_alias_locale_settings() :: #{
@@ -1599,6 +1762,7 @@
 %%   <<"enabled">> => boolean()
 %% }
 -type bot_alias_locale_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_bot_alias_request() :: #{
@@ -1612,12 +1776,14 @@
 %% }
 -type create_bot_alias_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% user_turn_specification() :: #{
 %%   <<"expected">> => user_turn_output_specification(),
 %%   <<"input">> => user_turn_input_specification()
 %% }
 -type user_turn_specification() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_bot_recommendation_response() :: #{
@@ -1632,11 +1798,13 @@
 %% }
 -type start_bot_recommendation_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% text_log_destination() :: #{
 %%   <<"cloudWatch">> => cloud_watch_log_group_log_destination()
 %% }
 -type text_log_destination() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_bot_version_response() :: #{
@@ -1645,6 +1813,7 @@
 %%   <<"botVersion">> => string()
 %% }
 -type delete_bot_version_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_bot_alias_request() :: #{
@@ -1656,9 +1825,11 @@
 %%   <<"sentimentAnalysisSettings">> => sentiment_analysis_settings()
 %% }
 -type update_bot_alias_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_bot_request() :: #{}
 -type describe_bot_request() :: #{}.
+
 
 %% Example:
 %% conversation_logs_data_source() :: #{
@@ -1669,11 +1840,13 @@
 %% }
 -type conversation_logs_data_source() :: #{binary() => any()}.
 
+
 %% Example:
 %% utterance_audio_input_specification() :: #{
 %%   <<"audioFileS3Location">> => string()
 %% }
 -type utterance_audio_input_specification() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_session_analytics_data_response() :: #{
@@ -1683,11 +1856,13 @@
 %% }
 -type list_session_analytics_data_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_bot_resource_generation_request() :: #{
 %%   <<"generationInputPrompt">> := string()
 %% }
 -type start_bot_resource_generation_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% slot_resolution_test_result_item_counts() :: #{
@@ -1696,6 +1871,7 @@
 %%   <<"totalResultCount">> => integer()
 %% }
 -type slot_resolution_test_result_item_counts() :: #{binary() => any()}.
+
 
 %% Example:
 %% bot_summary() :: #{
@@ -1709,6 +1885,7 @@
 %% }
 -type bot_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_bots_request() :: #{
 %%   <<"filters">> => list(bot_filter()()),
@@ -1718,17 +1895,20 @@
 %% }
 -type list_bots_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_custom_vocabulary_metadata_response() :: #{
@@ -1741,18 +1921,22 @@
 %% }
 -type describe_custom_vocabulary_metadata_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_resource_policy_statement_response() :: #{
 %%   <<"resourceArn">> => string(),
 %%   <<"revisionId">> => string()
 %% }
 -type create_resource_policy_statement_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_slot_request() :: #{}
 -type delete_slot_request() :: #{}.
+
 %% Example:
 %% delete_bot_replica_request() :: #{}
 -type delete_bot_replica_request() :: #{}.
+
 
 %% Example:
 %% list_slots_response() :: #{
@@ -1765,11 +1949,13 @@
 %% }
 -type list_slots_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_intent_paths_response() :: #{
 %%   <<"nodeSummaries">> => list(analytics_intent_node_summary()())
 %% }
 -type list_intent_paths_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% failed_custom_vocabulary_item() :: #{
@@ -1779,12 +1965,14 @@
 %% }
 -type failed_custom_vocabulary_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% buildtime_settings() :: #{
 %%   <<"descriptiveBotBuilder">> => descriptive_bot_builder_specification(),
 %%   <<"sampleUtteranceGeneration">> => sample_utterance_generation_specification()
 %% }
 -type buildtime_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% custom_vocabulary_import_specification() :: #{
@@ -1794,6 +1982,7 @@
 %% }
 -type custom_vocabulary_import_specification() :: #{binary() => any()}.
 
+
 %% Example:
 %% test_set_discrepancy_report_bot_alias_target() :: #{
 %%   <<"botAliasId">> => string(),
@@ -1802,12 +1991,14 @@
 %% }
 -type test_set_discrepancy_report_bot_alias_target() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_bot_response() :: #{
 %%   <<"botId">> => string(),
 %%   <<"botStatus">> => list(any())
 %% }
 -type delete_bot_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_intent_metrics_request() :: #{
@@ -1822,6 +2013,7 @@
 %% }
 -type list_intent_metrics_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_test_set_discrepancy_report_response() :: #{
 %%   <<"creationDateTime">> => non_neg_integer(),
@@ -1831,11 +2023,13 @@
 %% }
 -type create_test_set_discrepancy_report_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% analytics_utterance_attribute_result() :: #{
 %%   <<"lastUsedIntent">> => string()
 %% }
 -type analytics_utterance_attribute_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% bot_export_specification() :: #{
@@ -1843,6 +2037,7 @@
 %%   <<"botVersion">> => string()
 %% }
 -type bot_export_specification() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_bot_response() :: #{
@@ -1861,6 +2056,7 @@
 %% }
 -type describe_bot_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% analytics_intent_filter() :: #{
 %%   <<"name">> => list(any()),
@@ -1868,9 +2064,11 @@
 %%   <<"values">> => list(string()())
 %% }
 -type analytics_intent_filter() :: #{binary() => any()}.
+
 %% Example:
 %% delete_import_request() :: #{}
 -type delete_import_request() :: #{}.
+
 
 %% Example:
 %% analytics_session_metric_result() :: #{
@@ -1880,11 +2078,13 @@
 %% }
 -type analytics_session_metric_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_bot_version_request() :: #{
 %%   <<"skipResourceInUseCheck">> => boolean()
 %% }
 -type delete_bot_version_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% analytics_intent_group_by_specification() :: #{
@@ -1892,11 +2092,13 @@
 %% }
 -type analytics_intent_group_by_specification() :: #{binary() => any()}.
 
+
 %% Example:
 %% utterance_level_test_results() :: #{
 %%   <<"items">> => list(utterance_level_test_result_item()())
 %% }
 -type utterance_level_test_results() :: #{binary() => any()}.
+
 
 %% Example:
 %% session_specification() :: #{
@@ -1916,6 +2118,7 @@
 %% }
 -type session_specification() :: #{binary() => any()}.
 
+
 %% Example:
 %% bot_locale_export_specification() :: #{
 %%   <<"botId">> => string(),
@@ -1924,11 +2127,13 @@
 %% }
 -type bot_locale_export_specification() :: #{binary() => any()}.
 
+
 %% Example:
 %% active_context() :: #{
 %%   <<"name">> => string()
 %% }
 -type active_context() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_bot_recommendation_response() :: #{
@@ -1946,11 +2151,13 @@
 %% }
 -type describe_bot_recommendation_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_resource_policy_request() :: #{
@@ -1958,11 +2165,13 @@
 %% }
 -type create_resource_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% test_set_discrepancy_report_resource_target() :: #{
 %%   <<"botAliasTarget">> => test_set_discrepancy_report_bot_alias_target()
 %% }
 -type test_set_discrepancy_report_resource_target() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_bot_replica_request() :: #{
@@ -1970,12 +2179,14 @@
 %% }
 -type create_bot_replica_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% session_data_sort_by() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"order">> => list(any())
 %% }
 -type session_data_sort_by() :: #{binary() => any()}.
+
 
 %% Example:
 %% custom_vocabulary_item() :: #{
@@ -1985,6 +2196,7 @@
 %%   <<"weight">> => integer()
 %% }
 -type custom_vocabulary_item() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_resource_policy_statement_request() :: #{
@@ -1997,6 +2209,7 @@
 %% }
 -type create_resource_policy_statement_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% input_session_state_specification() :: #{
 %%   <<"activeContexts">> => list(active_context()()),
@@ -2004,6 +2217,7 @@
 %%   <<"sessionAttributes">> => map()
 %% }
 -type input_session_state_specification() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_intent_request() :: #{
@@ -2023,12 +2237,14 @@
 %% }
 -type create_intent_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% response_specification() :: #{
 %%   <<"allowInterrupt">> => boolean(),
 %%   <<"messageGroups">> => list(message_group()())
 %% }
 -type response_specification() :: #{binary() => any()}.
+
 
 %% Example:
 %% aggregated_utterances_summary() :: #{
@@ -2040,6 +2256,7 @@
 %%   <<"utteranceLastRecordedInAggregationDuration">> => non_neg_integer()
 %% }
 -type aggregated_utterances_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_import_response() :: #{
@@ -2055,6 +2272,7 @@
 %% }
 -type describe_import_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% export_summary() :: #{
 %%   <<"creationDateTime">> => non_neg_integer(),
@@ -2066,6 +2284,7 @@
 %% }
 -type export_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% bot_filter() :: #{
 %%   <<"name">> => list(any()),
@@ -2073,6 +2292,7 @@
 %%   <<"values">> => list(string()())
 %% }
 -type bot_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% intent_confirmation_setting() :: #{
@@ -2092,6 +2312,7 @@
 %% }
 -type intent_confirmation_setting() :: #{binary() => any()}.
 
+
 %% Example:
 %% bot_replica_summary() :: #{
 %%   <<"botReplicaStatus">> => list(any()),
@@ -2101,12 +2322,14 @@
 %% }
 -type bot_replica_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% bot_recommendation_result_statistics() :: #{
 %%   <<"intents">> => intent_statistics(),
 %%   <<"slotTypes">> => slot_type_statistics()
 %% }
 -type bot_recommendation_result_statistics() :: #{binary() => any()}.
+
 
 %% Example:
 %% slot_type_value() :: #{
@@ -2115,11 +2338,13 @@
 %% }
 -type slot_type_value() :: #{binary() => any()}.
 
+
 %% Example:
 %% conversation_level_test_results() :: #{
 %%   <<"items">> => list(conversation_level_test_result_item()())
 %% }
 -type conversation_level_test_results() :: #{binary() => any()}.
+
 
 %% Example:
 %% conversation_level_slot_resolution_result_item() :: #{
@@ -2129,6 +2354,7 @@
 %% }
 -type conversation_level_slot_resolution_result_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% custom_vocabulary_export_specification() :: #{
 %%   <<"botId">> => string(),
@@ -2136,6 +2362,7 @@
 %%   <<"localeId">> => string()
 %% }
 -type custom_vocabulary_export_specification() :: #{binary() => any()}.
+
 
 %% Example:
 %% slot_filter() :: #{
@@ -2145,17 +2372,20 @@
 %% }
 -type slot_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% slot_resolution_setting() :: #{
 %%   <<"slotResolutionStrategy">> => list(any())
 %% }
 -type slot_resolution_setting() :: #{binary() => any()}.
 
+
 %% Example:
 %% audio_log_destination() :: #{
 %%   <<"s3Bucket">> => s3_bucket_log_destination()
 %% }
 -type audio_log_destination() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_intent_stage_metrics_response() :: #{
@@ -2165,12 +2395,14 @@
 %% }
 -type list_intent_stage_metrics_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% built_in_slot_type_summary() :: #{
 %%   <<"description">> => string(),
 %%   <<"slotTypeSignature">> => string()
 %% }
 -type built_in_slot_type_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% slot_value_override() :: #{
@@ -2180,6 +2412,7 @@
 %% }
 -type slot_value_override() :: #{binary() => any()}.
 
+
 %% Example:
 %% analytics_intent_stage_filter() :: #{
 %%   <<"name">> => list(any()),
@@ -2187,6 +2420,7 @@
 %%   <<"values">> => list(string()())
 %% }
 -type analytics_intent_stage_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_session_metrics_request() :: #{
@@ -2201,11 +2435,13 @@
 %% }
 -type list_session_metrics_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% custom_vocabulary_entry_id() :: #{
 %%   <<"itemId">> => string()
 %% }
 -type custom_vocabulary_entry_id() :: #{binary() => any()}.
+
 
 %% Example:
 %% import_resource_specification() :: #{
@@ -2216,11 +2452,13 @@
 %% }
 -type import_resource_specification() :: #{binary() => any()}.
 
+
 %% Example:
 %% test_set_export_specification() :: #{
 %%   <<"testSetId">> => string()
 %% }
 -type test_set_export_specification() :: #{binary() => any()}.
+
 
 %% Example:
 %% analytics_intent_stage_metric() :: #{
@@ -2229,6 +2467,7 @@
 %%   <<"statistic">> => list(any())
 %% }
 -type analytics_intent_stage_metric() :: #{binary() => any()}.
+
 
 %% Example:
 %% sub_slot_value_elicitation_setting() :: #{
@@ -2239,6 +2478,7 @@
 %% }
 -type sub_slot_value_elicitation_setting() :: #{binary() => any()}.
 
+
 %% Example:
 %% analytics_session_result() :: #{
 %%   <<"binKeys">> => list(analytics_bin_key()()),
@@ -2246,6 +2486,7 @@
 %%   <<"metricsResults">> => list(analytics_session_metric_result()())
 %% }
 -type analytics_session_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% utterance_bot_response() :: #{
@@ -2255,6 +2496,7 @@
 %% }
 -type utterance_bot_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% analytics_intent_result() :: #{
 %%   <<"binKeys">> => list(analytics_bin_key()()),
@@ -2263,11 +2505,13 @@
 %% }
 -type analytics_intent_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% wait_and_continue_specification() :: #{
@@ -2278,11 +2522,13 @@
 %% }
 -type wait_and_continue_specification() :: #{binary() => any()}.
 
+
 %% Example:
 %% slot_default_value_specification() :: #{
 %%   <<"defaultValueList">> => list(slot_default_value()())
 %% }
 -type slot_default_value_specification() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_bot_version_replicas_request() :: #{
@@ -2292,12 +2538,14 @@
 %% }
 -type list_bot_version_replicas_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_export_response() :: #{
 %%   <<"exportId">> => string(),
 %%   <<"exportStatus">> => list(any())
 %% }
 -type delete_export_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% test_set_import_resource_specification() :: #{
@@ -2310,9 +2558,11 @@
 %%   <<"testSetTags">> => map()
 %% }
 -type test_set_import_resource_specification() :: #{binary() => any()}.
+
 %% Example:
 %% create_upload_url_request() :: #{}
 -type create_upload_url_request() :: #{}.
+
 
 %% Example:
 %% analytics_intent_group_by_key() :: #{
@@ -2321,12 +2571,14 @@
 %% }
 -type analytics_intent_group_by_key() :: #{binary() => any()}.
 
+
 %% Example:
 %% relative_aggregation_duration() :: #{
 %%   <<"timeDimension">> => list(any()),
 %%   <<"timeValue">> => integer()
 %% }
 -type relative_aggregation_duration() :: #{binary() => any()}.
+
 
 %% Example:
 %% test_set_slot_discrepancy_item() :: #{
@@ -2335,6 +2587,7 @@
 %%   <<"slotName">> => string()
 %% }
 -type test_set_slot_discrepancy_item() :: #{binary() => any()}.
+
 
 %% Example:
 %% fulfillment_code_hook_settings() :: #{
@@ -2345,12 +2598,14 @@
 %% }
 -type fulfillment_code_hook_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% bot_sort_by() :: #{
 %%   <<"attribute">> => list(any()),
 %%   <<"order">> => list(any())
 %% }
 -type bot_sort_by() :: #{binary() => any()}.
+
 
 %% Example:
 %% intent_filter() :: #{
@@ -2359,6 +2614,7 @@
 %%   <<"values">> => list(string()())
 %% }
 -type intent_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% slot_capture_setting() :: #{
@@ -2373,12 +2629,14 @@
 %% }
 -type slot_capture_setting() :: #{binary() => any()}.
 
+
 %% Example:
 %% test_set_sort_by() :: #{
 %%   <<"attribute">> => list(any()),
 %%   <<"order">> => list(any())
 %% }
 -type test_set_sort_by() :: #{binary() => any()}.
+
 
 %% Example:
 %% recommended_intent_summary() :: #{
@@ -2387,15 +2645,18 @@
 %%   <<"sampleUtterancesCount">> => integer()
 %% }
 -type recommended_intent_summary() :: #{binary() => any()}.
+
 %% Example:
 %% get_test_execution_artifacts_url_request() :: #{}
 -type get_test_execution_artifacts_url_request() :: #{}.
+
 
 %% Example:
 %% sample_utterance() :: #{
 %%   <<"utterance">> => string()
 %% }
 -type sample_utterance() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_slot_type_response() :: #{
@@ -2414,15 +2675,18 @@
 %% }
 -type create_slot_type_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% analytics_intent_stage_group_by_key() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"value">> => string()
 %% }
 -type analytics_intent_stage_group_by_key() :: #{binary() => any()}.
+
 %% Example:
 %% stop_bot_recommendation_request() :: #{}
 -type stop_bot_recommendation_request() :: #{}.
+
 
 %% Example:
 %% bot_version_replica_summary() :: #{
@@ -2433,11 +2697,13 @@
 %% }
 -type bot_version_replica_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% bedrock_model_specification() :: #{
 %%   <<"modelArn">> => string()
 %% }
 -type bedrock_model_specification() :: #{binary() => any()}.
+
 
 %% Example:
 %% condition() :: #{
@@ -2445,12 +2711,14 @@
 %% }
 -type condition() :: #{binary() => any()}.
 
+
 %% Example:
 %% analytics_utterance_group_by_key() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"value">> => string()
 %% }
 -type analytics_utterance_group_by_key() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_slots_request() :: #{
@@ -2461,6 +2729,7 @@
 %% }
 -type list_slots_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_built_in_slot_types_response() :: #{
 %%   <<"builtInSlotTypeSummaries">> => list(built_in_slot_type_summary()()),
@@ -2469,6 +2738,7 @@
 %% }
 -type list_built_in_slot_types_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% allowed_input_types() :: #{
 %%   <<"allowAudioInput">> => boolean(),
@@ -2476,12 +2746,14 @@
 %% }
 -type allowed_input_types() :: #{binary() => any()}.
 
+
 %% Example:
 %% test_execution_sort_by() :: #{
 %%   <<"attribute">> => list(any()),
 %%   <<"order">> => list(any())
 %% }
 -type test_execution_sort_by() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_bot_aliases_response() :: #{
@@ -2491,12 +2763,14 @@
 %% }
 -type list_bot_aliases_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% bot_version_replica_sort_by() :: #{
 %%   <<"attribute">> => list(any()),
 %%   <<"order">> => list(any())
 %% }
 -type bot_version_replica_sort_by() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_aggregated_utterances_response() :: #{
@@ -2513,6 +2787,7 @@
 %% }
 -type list_aggregated_utterances_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_slot_type_request() :: #{
 %%   <<"compositeSlotTypeSetting">> => composite_slot_type_setting(),
@@ -2525,17 +2800,20 @@
 %% }
 -type update_slot_type_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% runtime_hint_value() :: #{
 %%   <<"phrase">> => string()
 %% }
 -type runtime_hint_value() :: #{binary() => any()}.
 
+
 %% Example:
 %% bedrock_knowledge_store_configuration() :: #{
 %%   <<"bedrockKnowledgeBaseArn">> => string()
 %% }
 -type bedrock_knowledge_store_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% new_custom_vocabulary_item() :: #{
@@ -2545,12 +2823,14 @@
 %% }
 -type new_custom_vocabulary_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% analytics_bin_key() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"value">> => float()
 %% }
 -type analytics_bin_key() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_resource_policy_response() :: #{
@@ -2559,6 +2839,7 @@
 %% }
 -type update_resource_policy_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% analytics_intent_metric_result() :: #{
 %%   <<"name">> => list(any()),
@@ -2566,9 +2847,11 @@
 %%   <<"value">> => float()
 %% }
 -type analytics_intent_metric_result() :: #{binary() => any()}.
+
 %% Example:
 %% delete_utterances_response() :: #{}
 -type delete_utterances_response() :: #{}.
+
 
 %% Example:
 %% bot_version_sort_by() :: #{
@@ -2577,11 +2860,13 @@
 %% }
 -type bot_version_sort_by() :: #{binary() => any()}.
 
+
 %% Example:
 %% analytics_session_group_by_specification() :: #{
 %%   <<"name">> => list(any())
 %% }
 -type analytics_session_group_by_specification() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_bot_replica_response() :: #{
@@ -2591,11 +2876,13 @@
 %% }
 -type delete_bot_replica_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% slot_type_statistics() :: #{
 %%   <<"discoveredSlotTypeCount">> => integer()
 %% }
 -type slot_type_statistics() :: #{binary() => any()}.
+
 
 %% Example:
 %% slot_value_elicitation_setting() :: #{
@@ -2609,6 +2896,7 @@
 %% }
 -type slot_value_elicitation_setting() :: #{binary() => any()}.
 
+
 %% Example:
 %% conditional_branch() :: #{
 %%   <<"condition">> => condition(),
@@ -2618,6 +2906,7 @@
 %% }
 -type conditional_branch() :: #{binary() => any()}.
 
+
 %% Example:
 %% slot_type_sort_by() :: #{
 %%   <<"attribute">> => list(any()),
@@ -2625,11 +2914,13 @@
 %% }
 -type slot_type_sort_by() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_test_set_discrepancy_report_request() :: #{
 %%   <<"target">> := test_set_discrepancy_report_resource_target()
 %% }
 -type create_test_set_discrepancy_report_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% cloud_watch_log_group_log_destination() :: #{
@@ -2637,6 +2928,7 @@
 %%   <<"logPrefix">> => string()
 %% }
 -type cloud_watch_log_group_log_destination() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_bot_alias_replicas_response() :: #{
@@ -2648,6 +2940,7 @@
 %% }
 -type list_bot_alias_replicas_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% test_execution_result_items() :: #{
 %%   <<"conversationLevelTestResults">> => conversation_level_test_results(),
@@ -2658,6 +2951,7 @@
 %% }
 -type test_execution_result_items() :: #{binary() => any()}.
 
+
 %% Example:
 %% test_set_turn_record() :: #{
 %%   <<"conversationId">> => string(),
@@ -2667,6 +2961,7 @@
 %% }
 -type test_set_turn_record() :: #{binary() => any()}.
 
+
 %% Example:
 %% analytics_session_filter() :: #{
 %%   <<"name">> => list(any()),
@@ -2675,6 +2970,7 @@
 %% }
 -type analytics_session_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% lambda_code_hook() :: #{
 %%   <<"codeHookInterfaceVersion">> => string(),
@@ -2682,11 +2978,13 @@
 %% }
 -type lambda_code_hook() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_delete_custom_vocabulary_item_request() :: #{
 %%   <<"customVocabularyItemList">> := list(custom_vocabulary_entry_id()())
 %% }
 -type batch_delete_custom_vocabulary_item_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% internal_server_exception() :: #{
@@ -2694,12 +2992,14 @@
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_import_response() :: #{
 %%   <<"importId">> => string(),
 %%   <<"importStatus">> => list(any())
 %% }
 -type delete_import_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% bot_version_summary() :: #{
@@ -2711,11 +3011,13 @@
 %% }
 -type bot_version_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% intent_classification_test_results() :: #{
 %%   <<"items">> => list(intent_classification_test_result_item()())
 %% }
 -type intent_classification_test_results() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_bot_alias_request() :: #{
@@ -2723,11 +3025,13 @@
 %% }
 -type delete_bot_alias_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% analytics_intent_stage_group_by_specification() :: #{
 %%   <<"name">> => list(any())
 %% }
 -type analytics_intent_stage_group_by_specification() :: #{binary() => any()}.
+
 
 %% Example:
 %% slot_summary() :: #{
@@ -2741,12 +3045,14 @@
 %% }
 -type slot_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_bots_response() :: #{
 %%   <<"botSummaries">> => list(bot_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_bots_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_bot_versions_response() :: #{
@@ -2756,11 +3062,13 @@
 %% }
 -type list_bot_versions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% composite_slot_type_setting() :: #{
 %%   <<"subSlots">> => list(sub_slot_type_composition()())
 %% }
 -type composite_slot_type_setting() :: #{binary() => any()}.
+
 
 %% Example:
 %% sub_slot_setting() :: #{
@@ -2769,12 +3077,14 @@
 %% }
 -type sub_slot_setting() :: #{binary() => any()}.
 
+
 %% Example:
 %% export_sort_by() :: #{
 %%   <<"attribute">> => list(any()),
 %%   <<"order">> => list(any())
 %% }
 -type export_sort_by() :: #{binary() => any()}.
+
 
 %% Example:
 %% user_turn_input_specification() :: #{
@@ -2784,12 +3094,14 @@
 %% }
 -type user_turn_input_specification() :: #{binary() => any()}.
 
+
 %% Example:
 %% utterance_input_specification() :: #{
 %%   <<"audioInput">> => utterance_audio_input_specification(),
 %%   <<"textInput">> => string()
 %% }
 -type utterance_input_specification() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_bot_aliases_request() :: #{
@@ -2798,15 +3110,18 @@
 %% }
 -type list_bot_aliases_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_bot_alias_replicas_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_bot_alias_replicas_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_slot_request() :: #{}
 -type describe_slot_request() :: #{}.
+
 
 %% Example:
 %% describe_slot_type_response() :: #{
@@ -2826,6 +3141,7 @@
 %% }
 -type describe_slot_type_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_bot_locales_request() :: #{
 %%   <<"filters">> => list(bot_locale_filter()()),
@@ -2835,6 +3151,7 @@
 %% }
 -type list_bot_locales_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% slot_type_filter() :: #{
 %%   <<"name">> => list(any()),
@@ -2843,12 +3160,14 @@
 %% }
 -type slot_type_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_test_set_records_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_test_set_records_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_custom_vocabulary_response() :: #{
@@ -2858,6 +3177,7 @@
 %%   <<"localeId">> => string()
 %% }
 -type delete_custom_vocabulary_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_slot_type_request() :: #{
@@ -2871,14 +3191,17 @@
 %% }
 -type create_slot_type_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% test_set_generation_data_source() :: #{
 %%   <<"conversationLogsDataSource">> => conversation_logs_data_source()
 %% }
 -type test_set_generation_data_source() :: #{binary() => any()}.
+
 %% Example:
 %% describe_test_set_discrepancy_report_request() :: #{}
 -type describe_test_set_discrepancy_report_request() :: #{}.
+
 
 %% Example:
 %% conversation_log_settings() :: #{
@@ -2886,9 +3209,11 @@
 %%   <<"textLogSettings">> => list(text_log_setting()())
 %% }
 -type conversation_log_settings() :: #{binary() => any()}.
+
 %% Example:
 %% describe_slot_type_request() :: #{}
 -type describe_slot_type_request() :: #{}.
+
 
 %% Example:
 %% user_turn_intent_output() :: #{
@@ -2896,6 +3221,7 @@
 %%   <<"slots">> => map()
 %% }
 -type user_turn_intent_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_update_custom_vocabulary_item_response() :: #{
@@ -2907,12 +3233,14 @@
 %% }
 -type batch_update_custom_vocabulary_item_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% test_execution_result_filter_by() :: #{
 %%   <<"conversationLevelTestResultsFilterBy">> => conversation_level_test_results_filter_by(),
 %%   <<"resultTypeFilter">> => list(any())
 %% }
 -type test_execution_result_filter_by() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_test_set_discrepancy_report_response() :: #{
@@ -2928,6 +3256,7 @@
 %% }
 -type describe_test_set_discrepancy_report_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_create_custom_vocabulary_item_response() :: #{
 %%   <<"botId">> => string(),
@@ -2937,6 +3266,7 @@
 %%   <<"resources">> => list(custom_vocabulary_item()())
 %% }
 -type batch_create_custom_vocabulary_item_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_export_response() :: #{
@@ -2948,11 +3278,13 @@
 %% }
 -type create_export_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% agent_turn_specification() :: #{
 %%   <<"agentPrompt">> => string()
 %% }
 -type agent_turn_specification() :: #{binary() => any()}.
+
 
 %% Example:
 %% intent_override() :: #{
@@ -2961,6 +3293,7 @@
 %% }
 -type intent_override() :: #{binary() => any()}.
 
+
 %% Example:
 %% import_filter() :: #{
 %%   <<"name">> => list(any()),
@@ -2968,6 +3301,7 @@
 %%   <<"values">> => list(string()())
 %% }
 -type import_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% post_fulfillment_status_specification() :: #{
@@ -2983,6 +3317,7 @@
 %% }
 -type post_fulfillment_status_specification() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_bot_resource_generations_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -2990,9 +3325,11 @@
 %%   <<"sortBy">> => generation_sort_by()
 %% }
 -type list_bot_resource_generations_request() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% create_slot_response() :: #{
@@ -3012,6 +3349,7 @@
 %% }
 -type create_slot_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% intent_closing_setting() :: #{
 %%   <<"active">> => boolean(),
@@ -3020,6 +3358,7 @@
 %%   <<"nextStep">> => dialog_state()
 %% }
 -type intent_closing_setting() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_bot_resource_generation_response() :: #{
@@ -3033,6 +3372,7 @@
 %% }
 -type start_bot_resource_generation_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% analytics_intent_stage_result() :: #{
 %%   <<"binKeys">> => list(analytics_bin_key()()),
@@ -3040,6 +3380,7 @@
 %%   <<"metricsResults">> => list(analytics_intent_stage_metric_result()())
 %% }
 -type analytics_intent_stage_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_test_executions_request() :: #{
@@ -3049,6 +3390,7 @@
 %% }
 -type list_test_executions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% analytics_utterance_metric() :: #{
 %%   <<"name">> => list(any()),
@@ -3057,6 +3399,7 @@
 %% }
 -type analytics_utterance_metric() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_utterance_analytics_data_response() :: #{
 %%   <<"botId">> => string(),
@@ -3064,9 +3407,11 @@
 %%   <<"utterances">> => list(utterance_specification()())
 %% }
 -type list_utterance_analytics_data_response() :: #{binary() => any()}.
+
 %% Example:
 %% build_bot_locale_request() :: #{}
 -type build_bot_locale_request() :: #{}.
+
 
 %% Example:
 %% start_test_execution_response() :: #{
@@ -3079,17 +3424,20 @@
 %% }
 -type start_test_execution_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% input_context() :: #{
 %%   <<"name">> => string()
 %% }
 -type input_context() :: #{binary() => any()}.
 
+
 %% Example:
 %% plain_text_message() :: #{
 %%   <<"value">> => string()
 %% }
 -type plain_text_message() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_bot_request() :: #{
@@ -3102,6 +3450,7 @@
 %%   <<"roleArn">> := string()
 %% }
 -type update_bot_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_test_set_response() :: #{
@@ -3118,6 +3467,7 @@
 %% }
 -type describe_test_set_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% conditional_specification() :: #{
 %%   <<"active">> => boolean(),
@@ -3126,11 +3476,13 @@
 %% }
 -type conditional_specification() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_slot_type_request() :: #{
 %%   <<"skipResourceInUseCheck">> => boolean()
 %% }
 -type delete_slot_type_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_bot_resource_generations_response() :: #{
@@ -3142,11 +3494,13 @@
 %% }
 -type list_bot_resource_generations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% runtime_hints() :: #{
 %%   <<"slotHints">> => map()
 %% }
 -type runtime_hints() :: #{binary() => any()}.
+
 
 %% Example:
 %% audio_log_setting() :: #{
@@ -3155,6 +3509,7 @@
 %%   <<"selectiveLoggingEnabled">> => boolean()
 %% }
 -type audio_log_setting() :: #{binary() => any()}.
+
 
 %% Example:
 %% post_dialog_code_hook_invocation_specification() :: #{
@@ -3169,6 +3524,7 @@
 %%   <<"timeoutResponse">> => response_specification()
 %% }
 -type post_dialog_code_hook_invocation_specification() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_bot_alias_response() :: #{
@@ -3188,6 +3544,7 @@
 %% }
 -type describe_bot_alias_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_delete_custom_vocabulary_item_response() :: #{
 %%   <<"botId">> => string(),
@@ -3198,11 +3555,13 @@
 %% }
 -type batch_delete_custom_vocabulary_item_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_bot_replicas_response() :: #{
@@ -3211,9 +3570,11 @@
 %%   <<"sourceRegion">> => string()
 %% }
 -type list_bot_replicas_response() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% update_resource_policy_request() :: #{
@@ -3222,11 +3583,13 @@
 %% }
 -type update_resource_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_bot_recommendation_request() :: #{
 %%   <<"encryptionSetting">> := encryption_setting()
 %% }
 -type update_bot_recommendation_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_built_in_intents_response() :: #{
@@ -3236,12 +3599,14 @@
 %% }
 -type list_built_in_intents_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% intent_sort_by() :: #{
 %%   <<"attribute">> => list(any()),
 %%   <<"order">> => list(any())
 %% }
 -type intent_sort_by() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_bot_locale_response() :: #{
@@ -3265,12 +3630,14 @@
 %% }
 -type describe_bot_locale_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => string(),
 %%   <<"retryAfterSeconds">> => integer()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% aggregated_utterances_filter() :: #{
@@ -3279,6 +3646,7 @@
 %%   <<"values">> => list(string()())
 %% }
 -type aggregated_utterances_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_intent_response() :: #{
@@ -3303,12 +3671,14 @@
 %% }
 -type create_intent_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_custom_vocabulary_items_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_custom_vocabulary_items_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% exact_response_fields() :: #{
@@ -3317,11 +3687,13 @@
 %% }
 -type exact_response_fields() :: #{binary() => any()}.
 
+
 %% Example:
 %% generate_bot_element_request() :: #{
 %%   <<"intentId">> := string()
 %% }
 -type generate_bot_element_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_resource_policy_response() :: #{
@@ -3331,12 +3703,14 @@
 %% }
 -type describe_resource_policy_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_test_executions_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"testExecutions">> => list(test_execution_summary()())
 %% }
 -type list_test_executions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_bot_request() :: #{
@@ -3352,6 +3726,7 @@
 %% }
 -type create_bot_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_imports_request() :: #{
 %%   <<"botId">> => string(),
@@ -3364,12 +3739,14 @@
 %% }
 -type list_imports_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_recommended_intents_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_recommended_intents_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% slot_value_selection_setting() :: #{
@@ -3378,9 +3755,11 @@
 %%   <<"resolutionStrategy">> => list(any())
 %% }
 -type slot_value_selection_setting() :: #{binary() => any()}.
+
 %% Example:
 %% describe_intent_request() :: #{}
 -type describe_intent_request() :: #{}.
+
 
 %% Example:
 %% list_utterance_analytics_data_request() :: #{
@@ -3393,12 +3772,14 @@
 %% }
 -type list_utterance_analytics_data_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% button() :: #{
 %%   <<"text">> => string(),
 %%   <<"value">> => string()
 %% }
 -type button() :: #{binary() => any()}.
+
 
 %% Example:
 %% audio_and_d_t_m_f_input_specification() :: #{
@@ -3408,6 +3789,7 @@
 %% }
 -type audio_and_d_t_m_f_input_specification() :: #{binary() => any()}.
 
+
 %% Example:
 %% dialog_action() :: #{
 %%   <<"slotToElicit">> => string(),
@@ -3415,6 +3797,7 @@
 %%   <<"type">> => list(any())
 %% }
 -type dialog_action() :: #{binary() => any()}.
+
 
 %% Example:
 %% slot_type_summary() :: #{
@@ -3426,6 +3809,7 @@
 %%   <<"slotTypeName">> => string()
 %% }
 -type slot_type_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% utterance_specification() :: #{
@@ -3454,17 +3838,20 @@
 %% }
 -type utterance_specification() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_privacy() :: #{
 %%   <<"childDirected">> => boolean()
 %% }
 -type data_privacy() :: #{binary() => any()}.
 
+
 %% Example:
 %% external_source_setting() :: #{
 %%   <<"grammarSlotTypeSetting">> => grammar_slot_type_setting()
 %% }
 -type external_source_setting() :: #{binary() => any()}.
+
 
 %% Example:
 %% utterance_level_test_result_item() :: #{
@@ -3473,6 +3860,7 @@
 %%   <<"turnResult">> => test_set_turn_result()
 %% }
 -type utterance_level_test_result_item() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_bot_response() :: #{
@@ -3491,6 +3879,7 @@
 %% }
 -type create_bot_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_built_in_intents_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -3498,9 +3887,11 @@
 %%   <<"sortBy">> => built_in_intent_sort_by()
 %% }
 -type list_built_in_intents_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_test_execution_request() :: #{}
 -type describe_test_execution_request() :: #{}.
+
 
 %% Example:
 %% bot_locale_filter() :: #{
@@ -3510,6 +3901,7 @@
 %% }
 -type bot_locale_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% runtime_hint_details() :: #{
 %%   <<"runtimeHintValues">> => list(runtime_hint_value()()),
@@ -3517,11 +3909,13 @@
 %% }
 -type runtime_hint_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_resource_policy_request() :: #{
 %%   <<"expectedRevisionId">> => string()
 %% }
 -type delete_resource_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% analytics_utterance_metric_result() :: #{
@@ -3531,6 +3925,7 @@
 %% }
 -type analytics_utterance_metric_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% aggregated_utterances_sort_by() :: #{
 %%   <<"attribute">> => list(any()),
@@ -3538,11 +3933,13 @@
 %% }
 -type aggregated_utterances_sort_by() :: #{binary() => any()}.
 
+
 %% Example:
 %% slot_default_value() :: #{
 %%   <<"defaultValue">> => string()
 %% }
 -type slot_default_value() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_slot_response() :: #{
@@ -3563,6 +3960,7 @@
 %% }
 -type describe_slot_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% analytics_intent_node_summary() :: #{
 %%   <<"intentCount">> => integer(),
@@ -3572,6 +3970,7 @@
 %%   <<"nodeType">> => list(any())
 %% }
 -type analytics_intent_node_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% test_execution_summary() :: #{
@@ -3587,11 +3986,13 @@
 %% }
 -type test_execution_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% code_hook_specification() :: #{
 %%   <<"lambdaCodeHook">> => lambda_code_hook()
 %% }
 -type code_hook_specification() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_bot_locale_response() :: #{
@@ -3608,6 +4009,7 @@
 %% }
 -type create_bot_locale_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_bot_recommendations_response() :: #{
 %%   <<"botId">> => string(),
@@ -3618,6 +4020,7 @@
 %% }
 -type list_bot_recommendations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_bot_locale_request() :: #{
 %%   <<"description">> => string(),
@@ -3627,12 +4030,14 @@
 %% }
 -type update_bot_locale_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_test_sets_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"testSets">> => list(test_set_summary()())
 %% }
 -type list_test_sets_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% bot_recommendation_summary() :: #{
@@ -3643,6 +4048,7 @@
 %% }
 -type bot_recommendation_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% user_turn_output_specification() :: #{
 %%   <<"activeContexts">> => list(active_context()()),
@@ -3650,6 +4056,7 @@
 %%   <<"transcript">> => string()
 %% }
 -type user_turn_output_specification() :: #{binary() => any()}.
+
 
 %% Example:
 %% build_bot_locale_response() :: #{
@@ -3661,12 +4068,14 @@
 %% }
 -type build_bot_locale_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% generation_sort_by() :: #{
 %%   <<"attribute">> => list(any()),
 %%   <<"order">> => list(any())
 %% }
 -type generation_sort_by() :: #{binary() => any()}.
+
 
 %% Example:
 %% user_turn_slot_output() :: #{
@@ -3676,12 +4085,14 @@
 %% }
 -type user_turn_slot_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% turn_specification() :: #{
 %%   <<"agentTurn">> => agent_turn_specification(),
 %%   <<"userTurn">> => user_turn_specification()
 %% }
 -type turn_specification() :: #{binary() => any()}.
+
 
 %% Example:
 %% encryption_setting() :: #{
@@ -3691,11 +4102,13 @@
 %% }
 -type encryption_setting() :: #{binary() => any()}.
 
+
 %% Example:
 %% transcript_source_setting() :: #{
 %%   <<"s3BucketTranscriptSource">> => s3_bucket_transcript_source()
 %% }
 -type transcript_source_setting() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_utterances_request() :: #{
@@ -3703,6 +4116,7 @@
 %%   <<"sessionId">> => string()
 %% }
 -type delete_utterances_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_export_response() :: #{
@@ -3714,6 +4128,7 @@
 %%   <<"resourceSpecification">> => export_resource_specification()
 %% }
 -type update_export_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% test_set_summary() :: #{
@@ -3730,6 +4145,7 @@
 %% }
 -type test_set_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_test_execution_result_items_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -3738,17 +4154,20 @@
 %% }
 -type list_test_execution_result_items_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% custom_payload() :: #{
 %%   <<"value">> => string()
 %% }
 -type custom_payload() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_export_request() :: #{
 %%   <<"filePassword">> => string()
 %% }
 -type update_export_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_utterance_metrics_response() :: #{
@@ -3757,6 +4176,7 @@
 %%   <<"results">> => list(analytics_utterance_result()())
 %% }
 -type list_utterance_metrics_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% stop_bot_recommendation_response() :: #{
@@ -3768,6 +4188,7 @@
 %% }
 -type stop_bot_recommendation_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% dialog_code_hook_invocation_setting() :: #{
 %%   <<"active">> => boolean(),
@@ -3776,6 +4197,7 @@
 %%   <<"postCodeHookSpecification">> => post_dialog_code_hook_invocation_specification()
 %% }
 -type dialog_code_hook_invocation_setting() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_bot_locale_response() :: #{
@@ -3795,6 +4217,7 @@
 %% }
 -type update_bot_locale_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_utterance_metrics_request() :: #{
 %%   <<"attributes">> => list(analytics_utterance_attribute()()),
@@ -3809,12 +4232,14 @@
 %% }
 -type list_utterance_metrics_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% sample_utterance_generation_specification() :: #{
 %%   <<"bedrockModelSpecification">> => bedrock_model_specification(),
 %%   <<"enabled">> => boolean()
 %% }
 -type sample_utterance_generation_specification() :: #{binary() => any()}.
+
 
 %% Example:
 %% text_log_setting() :: #{
@@ -3824,11 +4249,13 @@
 %% }
 -type text_log_setting() :: #{binary() => any()}.
 
+
 %% Example:
 %% sentiment_analysis_settings() :: #{
 %%   <<"detectSentiment">> => boolean()
 %% }
 -type sentiment_analysis_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_session_metrics_response() :: #{
@@ -3837,6 +4264,7 @@
 %%   <<"results">> => list(analytics_session_result()())
 %% }
 -type list_session_metrics_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% still_waiting_response_specification() :: #{
@@ -3847,11 +4275,13 @@
 %% }
 -type still_waiting_response_specification() :: #{binary() => any()}.
 
+
 %% Example:
 %% precondition_failed_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type precondition_failed_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% bot_alias_replica_summary() :: #{
@@ -3864,6 +4294,7 @@
 %% }
 -type bot_alias_replica_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_slot_types_request() :: #{
 %%   <<"filters">> => list(slot_type_filter()()),
@@ -3873,6 +4304,7 @@
 %% }
 -type list_slot_types_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% qn_a_kendra_configuration() :: #{
 %%   <<"exactResponse">> => boolean(),
@@ -3881,6 +4313,7 @@
 %%   <<"queryFilterStringEnabled">> => boolean()
 %% }
 -type qn_a_kendra_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_bot_response() :: #{
@@ -3897,9 +4330,11 @@
 %%   <<"roleArn">> => string()
 %% }
 -type update_bot_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_intent_request() :: #{}
 -type delete_intent_request() :: #{}.
+
 
 %% Example:
 %% describe_export_response() :: #{
@@ -3914,12 +4349,14 @@
 %% }
 -type describe_export_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% parent_bot_network() :: #{
 %%   <<"botId">> => string(),
 %%   <<"botVersion">> => string()
 %% }
 -type parent_bot_network() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_import_request() :: #{
@@ -3929,6 +4366,7 @@
 %%   <<"resourceSpecification">> := import_resource_specification()
 %% }
 -type start_import_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_session_analytics_data_request() :: #{
@@ -3941,6 +4379,7 @@
 %% }
 -type list_session_analytics_data_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_test_sets_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -3948,6 +4387,7 @@
 %%   <<"sortBy">> => test_set_sort_by()
 %% }
 -type list_test_sets_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_import_response() :: #{
@@ -3959,6 +4399,7 @@
 %% }
 -type start_import_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_bot_locale_response() :: #{
 %%   <<"botId">> => string(),
@@ -3967,9 +4408,11 @@
 %%   <<"localeId">> => string()
 %% }
 -type delete_bot_locale_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_bot_replica_request() :: #{}
 -type describe_bot_replica_request() :: #{}.
+
 
 %% Example:
 %% describe_intent_response() :: #{
@@ -3996,11 +4439,13 @@
 %% }
 -type describe_intent_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% sample_value() :: #{
 %%   <<"value">> => string()
 %% }
 -type sample_value() :: #{binary() => any()}.
+
 
 %% Example:
 %% built_in_intent_sort_by() :: #{
@@ -4008,6 +4453,7 @@
 %%   <<"order">> => list(any())
 %% }
 -type built_in_intent_sort_by() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_bot_locale_request() :: #{
@@ -4018,15 +4464,19 @@
 %%   <<"voiceSettings">> => voice_settings()
 %% }
 -type create_bot_locale_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_bot_recommendation_request() :: #{}
 -type describe_bot_recommendation_request() :: #{}.
+
 %% Example:
 %% delete_custom_vocabulary_request() :: #{}
 -type delete_custom_vocabulary_request() :: #{}.
+
 %% Example:
 %% describe_resource_policy_request() :: #{}
 -type describe_resource_policy_request() :: #{}.
+
 
 %% Example:
 %% create_bot_version_response() :: #{
@@ -4039,6 +4489,7 @@
 %% }
 -type create_bot_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_exports_response() :: #{
 %%   <<"botId">> => string(),
@@ -4049,12 +4500,14 @@
 %% }
 -type list_exports_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_test_execution_artifacts_url_response() :: #{
 %%   <<"downloadArtifactsUrl">> => string(),
 %%   <<"testExecutionId">> => string()
 %% }
 -type get_test_execution_artifacts_url_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_custom_vocabulary_items_response() :: #{
@@ -4066,14 +4519,17 @@
 %% }
 -type list_custom_vocabulary_items_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% multiple_values_setting() :: #{
 %%   <<"allowMultipleValues">> => boolean()
 %% }
 -type multiple_values_setting() :: #{binary() => any()}.
+
 %% Example:
 %% delete_bot_locale_request() :: #{}
 -type delete_bot_locale_request() :: #{}.
+
 
 %% Example:
 %% d_t_m_f_specification() :: #{
@@ -4084,6 +4540,7 @@
 %% }
 -type d_t_m_f_specification() :: #{binary() => any()}.
 
+
 %% Example:
 %% message() :: #{
 %%   <<"customPayload">> => custom_payload(),
@@ -4092,9 +4549,11 @@
 %%   <<"ssmlMessage">> => s_s_ml_message()
 %% }
 -type message() :: #{binary() => any()}.
+
 %% Example:
 %% describe_test_set_generation_request() :: #{}
 -type describe_test_set_generation_request() :: #{}.
+
 
 %% Example:
 %% s3_bucket_log_destination() :: #{
@@ -4103,6 +4562,731 @@
 %%   <<"s3BucketArn">> => string()
 %% }
 -type s3_bucket_log_destination() :: #{binary() => any()}.
+
+-type batch_create_custom_vocabulary_item_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type batch_delete_custom_vocabulary_item_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type batch_update_custom_vocabulary_item_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type build_bot_locale_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_bot_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_bot_alias_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_bot_locale_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_bot_replica_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_bot_version_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_export_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_intent_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_resource_policy_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type create_resource_policy_statement_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_slot_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_slot_type_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_test_set_discrepancy_report_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_upload_url_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_bot_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_bot_alias_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_bot_locale_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_bot_replica_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_bot_version_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_custom_vocabulary_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_export_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type delete_import_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type delete_intent_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_resource_policy_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_resource_policy_statement_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_slot_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_slot_type_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_test_set_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_utterances_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception().
+
+-type describe_bot_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type describe_bot_alias_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type describe_bot_locale_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type describe_bot_recommendation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_bot_replica_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type describe_bot_resource_generation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_bot_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type describe_custom_vocabulary_metadata_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type describe_export_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_import_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_intent_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type describe_resource_policy_errors() ::
+    throttling_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_slot_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type describe_slot_type_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type describe_test_execution_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type describe_test_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type describe_test_set_discrepancy_report_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type describe_test_set_generation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type generate_bot_element_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_test_execution_artifacts_url_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type list_aggregated_utterances_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_bot_alias_replicas_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type list_bot_aliases_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type list_bot_locales_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type list_bot_recommendations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_bot_replicas_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type list_bot_resource_generations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_bot_version_replicas_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type list_bot_versions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type list_bots_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type list_built_in_intents_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type list_built_in_slot_types_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type list_custom_vocabulary_items_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type list_exports_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_imports_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_intent_metrics_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type list_intent_paths_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type list_intent_stage_metrics_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type list_intents_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type list_recommended_intents_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type list_session_analytics_data_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type list_session_metrics_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type list_slot_types_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type list_slots_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_test_execution_result_items_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type list_test_executions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type list_test_set_records_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type list_test_sets_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type list_utterance_analytics_data_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type list_utterance_metrics_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type search_associated_transcripts_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type start_bot_recommendation_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_bot_resource_generation_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type start_import_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_test_execution_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_test_set_generation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type stop_bot_recommendation_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_bot_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type update_bot_alias_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type update_bot_locale_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type update_bot_recommendation_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_export_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_intent_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type update_resource_policy_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type update_slot_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type update_slot_type_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type update_test_set_errors() ::
+    precondition_failed_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -4114,22 +5298,14 @@
 -spec batch_create_custom_vocabulary_item(map(), binary() | list(), binary() | list(), binary() | list(), batch_create_custom_vocabulary_item_request()) ->
     {ok, batch_create_custom_vocabulary_item_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_create_custom_vocabulary_item_errors(), tuple()}.
 batch_create_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input) ->
     batch_create_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input, []).
 
 -spec batch_create_custom_vocabulary_item(map(), binary() | list(), binary() | list(), binary() | list(), batch_create_custom_vocabulary_item_request(), proplists:proplist()) ->
     {ok, batch_create_custom_vocabulary_item_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_create_custom_vocabulary_item_errors(), tuple()}.
 batch_create_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/customvocabulary/DEFAULT/batchcreate"],
@@ -4158,22 +5334,14 @@ batch_create_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input0,
 -spec batch_delete_custom_vocabulary_item(map(), binary() | list(), binary() | list(), binary() | list(), batch_delete_custom_vocabulary_item_request()) ->
     {ok, batch_delete_custom_vocabulary_item_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_delete_custom_vocabulary_item_errors(), tuple()}.
 batch_delete_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input) ->
     batch_delete_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input, []).
 
 -spec batch_delete_custom_vocabulary_item(map(), binary() | list(), binary() | list(), binary() | list(), batch_delete_custom_vocabulary_item_request(), proplists:proplist()) ->
     {ok, batch_delete_custom_vocabulary_item_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_delete_custom_vocabulary_item_errors(), tuple()}.
 batch_delete_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/customvocabulary/DEFAULT/batchdelete"],
@@ -4202,22 +5370,14 @@ batch_delete_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input0,
 -spec batch_update_custom_vocabulary_item(map(), binary() | list(), binary() | list(), binary() | list(), batch_update_custom_vocabulary_item_request()) ->
     {ok, batch_update_custom_vocabulary_item_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_update_custom_vocabulary_item_errors(), tuple()}.
 batch_update_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input) ->
     batch_update_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input, []).
 
 -spec batch_update_custom_vocabulary_item(map(), binary() | list(), binary() | list(), binary() | list(), batch_update_custom_vocabulary_item_request(), proplists:proplist()) ->
     {ok, batch_update_custom_vocabulary_item_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_update_custom_vocabulary_item_errors(), tuple()}.
 batch_update_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/customvocabulary/DEFAULT/batchupdate"],
@@ -4248,24 +5408,14 @@ batch_update_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input0,
 -spec build_bot_locale(map(), binary() | list(), binary() | list(), binary() | list(), build_bot_locale_request()) ->
     {ok, build_bot_locale_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, build_bot_locale_errors(), tuple()}.
 build_bot_locale(Client, BotId, BotVersion, LocaleId, Input) ->
     build_bot_locale(Client, BotId, BotVersion, LocaleId, Input, []).
 
 -spec build_bot_locale(map(), binary() | list(), binary() | list(), binary() | list(), build_bot_locale_request(), proplists:proplist()) ->
     {ok, build_bot_locale_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, build_bot_locale_errors(), tuple()}.
 build_bot_locale(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), ""],
@@ -4292,24 +5442,14 @@ build_bot_locale(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
 -spec create_bot(map(), create_bot_request()) ->
     {ok, create_bot_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_bot_errors(), tuple()}.
 create_bot(Client, Input) ->
     create_bot(Client, Input, []).
 
 -spec create_bot(map(), create_bot_request(), proplists:proplist()) ->
     {ok, create_bot_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_bot_errors(), tuple()}.
 create_bot(Client, Input0, Options0) ->
     Method = put,
     Path = ["/bots"],
@@ -4343,24 +5483,14 @@ create_bot(Client, Input0, Options0) ->
 -spec create_bot_alias(map(), binary() | list(), create_bot_alias_request()) ->
     {ok, create_bot_alias_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_bot_alias_errors(), tuple()}.
 create_bot_alias(Client, BotId, Input) ->
     create_bot_alias(Client, BotId, Input, []).
 
 -spec create_bot_alias(map(), binary() | list(), create_bot_alias_request(), proplists:proplist()) ->
     {ok, create_bot_alias_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_bot_alias_errors(), tuple()}.
 create_bot_alias(Client, BotId, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botaliases"],
@@ -4392,24 +5522,14 @@ create_bot_alias(Client, BotId, Input0, Options0) ->
 -spec create_bot_locale(map(), binary() | list(), binary() | list(), create_bot_locale_request()) ->
     {ok, create_bot_locale_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_bot_locale_errors(), tuple()}.
 create_bot_locale(Client, BotId, BotVersion, Input) ->
     create_bot_locale(Client, BotId, BotVersion, Input, []).
 
 -spec create_bot_locale(map(), binary() | list(), binary() | list(), create_bot_locale_request(), proplists:proplist()) ->
     {ok, create_bot_locale_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_bot_locale_errors(), tuple()}.
 create_bot_locale(Client, BotId, BotVersion, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales"],
@@ -4437,24 +5557,14 @@ create_bot_locale(Client, BotId, BotVersion, Input0, Options0) ->
 -spec create_bot_replica(map(), binary() | list(), create_bot_replica_request()) ->
     {ok, create_bot_replica_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_bot_replica_errors(), tuple()}.
 create_bot_replica(Client, BotId, Input) ->
     create_bot_replica(Client, BotId, Input, []).
 
 -spec create_bot_replica(map(), binary() | list(), create_bot_replica_request(), proplists:proplist()) ->
     {ok, create_bot_replica_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_bot_replica_errors(), tuple()}.
 create_bot_replica(Client, BotId, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/replicas"],
@@ -4490,24 +5600,14 @@ create_bot_replica(Client, BotId, Input0, Options0) ->
 -spec create_bot_version(map(), binary() | list(), create_bot_version_request()) ->
     {ok, create_bot_version_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_bot_version_errors(), tuple()}.
 create_bot_version(Client, BotId, Input) ->
     create_bot_version(Client, BotId, Input, []).
 
 -spec create_bot_version(map(), binary() | list(), create_bot_version_request(), proplists:proplist()) ->
     {ok, create_bot_version_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_bot_version_errors(), tuple()}.
 create_bot_version(Client, BotId, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions"],
@@ -4547,24 +5647,14 @@ create_bot_version(Client, BotId, Input0, Options0) ->
 -spec create_export(map(), create_export_request()) ->
     {ok, create_export_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_export_errors(), tuple()}.
 create_export(Client, Input) ->
     create_export(Client, Input, []).
 
 -spec create_export(map(), create_export_request(), proplists:proplist()) ->
     {ok, create_export_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_export_errors(), tuple()}.
 create_export(Client, Input0, Options0) ->
     Method = put,
     Path = ["/exports"],
@@ -4623,24 +5713,14 @@ create_export(Client, Input0, Options0) ->
 -spec create_intent(map(), binary() | list(), binary() | list(), binary() | list(), create_intent_request()) ->
     {ok, create_intent_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_intent_errors(), tuple()}.
 create_intent(Client, BotId, BotVersion, LocaleId, Input) ->
     create_intent(Client, BotId, BotVersion, LocaleId, Input, []).
 
 -spec create_intent(map(), binary() | list(), binary() | list(), binary() | list(), create_intent_request(), proplists:proplist()) ->
     {ok, create_intent_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_intent_errors(), tuple()}.
 create_intent(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents"],
@@ -4668,24 +5748,14 @@ create_intent(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
 -spec create_resource_policy(map(), binary() | list(), create_resource_policy_request()) ->
     {ok, create_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_resource_policy_errors(), tuple()}.
 create_resource_policy(Client, ResourceArn, Input) ->
     create_resource_policy(Client, ResourceArn, Input, []).
 
 -spec create_resource_policy(map(), binary() | list(), create_resource_policy_request(), proplists:proplist()) ->
     {ok, create_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_resource_policy_errors(), tuple()}.
 create_resource_policy(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/policy/", aws_util:encode_uri(ResourceArn), ""],
@@ -4719,26 +5789,14 @@ create_resource_policy(Client, ResourceArn, Input0, Options0) ->
 -spec create_resource_policy_statement(map(), binary() | list(), create_resource_policy_statement_request()) ->
     {ok, create_resource_policy_statement_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_resource_policy_statement_errors(), tuple()}.
 create_resource_policy_statement(Client, ResourceArn, Input) ->
     create_resource_policy_statement(Client, ResourceArn, Input, []).
 
 -spec create_resource_policy_statement(map(), binary() | list(), create_resource_policy_statement_request(), proplists:proplist()) ->
     {ok, create_resource_policy_statement_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_resource_policy_statement_errors(), tuple()}.
 create_resource_policy_statement(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/policy/", aws_util:encode_uri(ResourceArn), "/statements"],
@@ -4772,24 +5830,14 @@ create_resource_policy_statement(Client, ResourceArn, Input0, Options0) ->
 -spec create_slot(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_slot_request()) ->
     {ok, create_slot_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_slot_errors(), tuple()}.
 create_slot(Client, BotId, BotVersion, IntentId, LocaleId, Input) ->
     create_slot(Client, BotId, BotVersion, IntentId, LocaleId, Input, []).
 
 -spec create_slot(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_slot_request(), proplists:proplist()) ->
     {ok, create_slot_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_slot_errors(), tuple()}.
 create_slot(Client, BotId, BotVersion, IntentId, LocaleId, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents/", aws_util:encode_uri(IntentId), "/slots"],
@@ -4820,24 +5868,14 @@ create_slot(Client, BotId, BotVersion, IntentId, LocaleId, Input0, Options0) ->
 -spec create_slot_type(map(), binary() | list(), binary() | list(), binary() | list(), create_slot_type_request()) ->
     {ok, create_slot_type_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_slot_type_errors(), tuple()}.
 create_slot_type(Client, BotId, BotVersion, LocaleId, Input) ->
     create_slot_type(Client, BotId, BotVersion, LocaleId, Input, []).
 
 -spec create_slot_type(map(), binary() | list(), binary() | list(), binary() | list(), create_slot_type_request(), proplists:proplist()) ->
     {ok, create_slot_type_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_slot_type_errors(), tuple()}.
 create_slot_type(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/slottypes"],
@@ -4865,24 +5903,14 @@ create_slot_type(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
 -spec create_test_set_discrepancy_report(map(), binary() | list(), create_test_set_discrepancy_report_request()) ->
     {ok, create_test_set_discrepancy_report_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_test_set_discrepancy_report_errors(), tuple()}.
 create_test_set_discrepancy_report(Client, TestSetId, Input) ->
     create_test_set_discrepancy_report(Client, TestSetId, Input, []).
 
 -spec create_test_set_discrepancy_report(map(), binary() | list(), create_test_set_discrepancy_report_request(), proplists:proplist()) ->
     {ok, create_test_set_discrepancy_report_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_test_set_discrepancy_report_errors(), tuple()}.
 create_test_set_discrepancy_report(Client, TestSetId, Input0, Options0) ->
     Method = post,
     Path = ["/testsets/", aws_util:encode_uri(TestSetId), "/testsetdiscrepancy"],
@@ -4910,22 +5938,14 @@ create_test_set_discrepancy_report(Client, TestSetId, Input0, Options0) ->
 -spec create_upload_url(map(), create_upload_url_request()) ->
     {ok, create_upload_url_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_upload_url_errors(), tuple()}.
 create_upload_url(Client, Input) ->
     create_upload_url(Client, Input, []).
 
 -spec create_upload_url(map(), create_upload_url_request(), proplists:proplist()) ->
     {ok, create_upload_url_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_upload_url_errors(), tuple()}.
 create_upload_url(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createuploadurl"],
@@ -4965,24 +5985,14 @@ create_upload_url(Client, Input0, Options0) ->
 -spec delete_bot(map(), binary() | list(), delete_bot_request()) ->
     {ok, delete_bot_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_bot_errors(), tuple()}.
 delete_bot(Client, BotId, Input) ->
     delete_bot(Client, BotId, Input, []).
 
 -spec delete_bot(map(), binary() | list(), delete_bot_request(), proplists:proplist()) ->
     {ok, delete_bot_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_bot_errors(), tuple()}.
 delete_bot(Client, BotId, Input0, Options0) ->
     Method = delete,
     Path = ["/bots/", aws_util:encode_uri(BotId), ""],
@@ -5010,24 +6020,14 @@ delete_bot(Client, BotId, Input0, Options0) ->
 -spec delete_bot_alias(map(), binary() | list(), binary() | list(), delete_bot_alias_request()) ->
     {ok, delete_bot_alias_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_bot_alias_errors(), tuple()}.
 delete_bot_alias(Client, BotAliasId, BotId, Input) ->
     delete_bot_alias(Client, BotAliasId, BotId, Input, []).
 
 -spec delete_bot_alias(map(), binary() | list(), binary() | list(), delete_bot_alias_request(), proplists:proplist()) ->
     {ok, delete_bot_alias_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_bot_alias_errors(), tuple()}.
 delete_bot_alias(Client, BotAliasId, BotId, Input0, Options0) ->
     Method = delete,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botaliases/", aws_util:encode_uri(BotAliasId), ""],
@@ -5058,24 +6058,14 @@ delete_bot_alias(Client, BotAliasId, BotId, Input0, Options0) ->
 -spec delete_bot_locale(map(), binary() | list(), binary() | list(), binary() | list(), delete_bot_locale_request()) ->
     {ok, delete_bot_locale_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_bot_locale_errors(), tuple()}.
 delete_bot_locale(Client, BotId, BotVersion, LocaleId, Input) ->
     delete_bot_locale(Client, BotId, BotVersion, LocaleId, Input, []).
 
 -spec delete_bot_locale(map(), binary() | list(), binary() | list(), binary() | list(), delete_bot_locale_request(), proplists:proplist()) ->
     {ok, delete_bot_locale_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_bot_locale_errors(), tuple()}.
 delete_bot_locale(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Method = delete,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), ""],
@@ -5102,24 +6092,14 @@ delete_bot_locale(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
 -spec delete_bot_replica(map(), binary() | list(), binary() | list(), delete_bot_replica_request()) ->
     {ok, delete_bot_replica_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_bot_replica_errors(), tuple()}.
 delete_bot_replica(Client, BotId, ReplicaRegion, Input) ->
     delete_bot_replica(Client, BotId, ReplicaRegion, Input, []).
 
 -spec delete_bot_replica(map(), binary() | list(), binary() | list(), delete_bot_replica_request(), proplists:proplist()) ->
     {ok, delete_bot_replica_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_bot_replica_errors(), tuple()}.
 delete_bot_replica(Client, BotId, ReplicaRegion, Input0, Options0) ->
     Method = delete,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/replicas/", aws_util:encode_uri(ReplicaRegion), ""],
@@ -5151,24 +6131,14 @@ delete_bot_replica(Client, BotId, ReplicaRegion, Input0, Options0) ->
 -spec delete_bot_version(map(), binary() | list(), binary() | list(), delete_bot_version_request()) ->
     {ok, delete_bot_version_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_bot_version_errors(), tuple()}.
 delete_bot_version(Client, BotId, BotVersion, Input) ->
     delete_bot_version(Client, BotId, BotVersion, Input, []).
 
 -spec delete_bot_version(map(), binary() | list(), binary() | list(), delete_bot_version_request(), proplists:proplist()) ->
     {ok, delete_bot_version_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_bot_version_errors(), tuple()}.
 delete_bot_version(Client, BotId, BotVersion, Input0, Options0) ->
     Method = delete,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), ""],
@@ -5197,24 +6167,14 @@ delete_bot_version(Client, BotId, BotVersion, Input0, Options0) ->
 -spec delete_custom_vocabulary(map(), binary() | list(), binary() | list(), binary() | list(), delete_custom_vocabulary_request()) ->
     {ok, delete_custom_vocabulary_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_custom_vocabulary_errors(), tuple()}.
 delete_custom_vocabulary(Client, BotId, BotVersion, LocaleId, Input) ->
     delete_custom_vocabulary(Client, BotId, BotVersion, LocaleId, Input, []).
 
 -spec delete_custom_vocabulary(map(), binary() | list(), binary() | list(), binary() | list(), delete_custom_vocabulary_request(), proplists:proplist()) ->
     {ok, delete_custom_vocabulary_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_custom_vocabulary_errors(), tuple()}.
 delete_custom_vocabulary(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Method = delete,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/customvocabulary"],
@@ -5242,22 +6202,14 @@ delete_custom_vocabulary(Client, BotId, BotVersion, LocaleId, Input0, Options0) 
 -spec delete_export(map(), binary() | list(), delete_export_request()) ->
     {ok, delete_export_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_export_errors(), tuple()}.
 delete_export(Client, ExportId, Input) ->
     delete_export(Client, ExportId, Input, []).
 
 -spec delete_export(map(), binary() | list(), delete_export_request(), proplists:proplist()) ->
     {ok, delete_export_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_export_errors(), tuple()}.
 delete_export(Client, ExportId, Input0, Options0) ->
     Method = delete,
     Path = ["/exports/", aws_util:encode_uri(ExportId), ""],
@@ -5285,22 +6237,14 @@ delete_export(Client, ExportId, Input0, Options0) ->
 -spec delete_import(map(), binary() | list(), delete_import_request()) ->
     {ok, delete_import_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_import_errors(), tuple()}.
 delete_import(Client, ImportId, Input) ->
     delete_import(Client, ImportId, Input, []).
 
 -spec delete_import(map(), binary() | list(), delete_import_request(), proplists:proplist()) ->
     {ok, delete_import_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_import_errors(), tuple()}.
 delete_import(Client, ImportId, Input0, Options0) ->
     Method = delete,
     Path = ["/imports/", aws_util:encode_uri(ImportId), ""],
@@ -5330,24 +6274,14 @@ delete_import(Client, ImportId, Input0, Options0) ->
 -spec delete_intent(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_intent_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_intent_errors(), tuple()}.
 delete_intent(Client, BotId, BotVersion, IntentId, LocaleId, Input) ->
     delete_intent(Client, BotId, BotVersion, IntentId, LocaleId, Input, []).
 
 -spec delete_intent(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_intent_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_intent_errors(), tuple()}.
 delete_intent(Client, BotId, BotVersion, IntentId, LocaleId, Input0, Options0) ->
     Method = delete,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents/", aws_util:encode_uri(IntentId), ""],
@@ -5377,20 +6311,14 @@ delete_intent(Client, BotId, BotVersion, IntentId, LocaleId, Input0, Options0) -
 -spec delete_resource_policy(map(), binary() | list(), delete_resource_policy_request()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, ResourceArn, Input) ->
     delete_resource_policy(Client, ResourceArn, Input, []).
 
 -spec delete_resource_policy(map(), binary() | list(), delete_resource_policy_request(), proplists:proplist()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/policy/", aws_util:encode_uri(ResourceArn), ""],
@@ -5424,20 +6352,14 @@ delete_resource_policy(Client, ResourceArn, Input0, Options0) ->
 -spec delete_resource_policy_statement(map(), binary() | list(), binary() | list(), delete_resource_policy_statement_request()) ->
     {ok, delete_resource_policy_statement_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_resource_policy_statement_errors(), tuple()}.
 delete_resource_policy_statement(Client, ResourceArn, StatementId, Input) ->
     delete_resource_policy_statement(Client, ResourceArn, StatementId, Input, []).
 
 -spec delete_resource_policy_statement(map(), binary() | list(), binary() | list(), delete_resource_policy_statement_request(), proplists:proplist()) ->
     {ok, delete_resource_policy_statement_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_resource_policy_statement_errors(), tuple()}.
 delete_resource_policy_statement(Client, ResourceArn, StatementId, Input0, Options0) ->
     Method = delete,
     Path = ["/policy/", aws_util:encode_uri(ResourceArn), "/statements/", aws_util:encode_uri(StatementId), ""],
@@ -5465,24 +6387,14 @@ delete_resource_policy_statement(Client, ResourceArn, StatementId, Input0, Optio
 -spec delete_slot(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_slot_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_slot_errors(), tuple()}.
 delete_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, Input) ->
     delete_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, Input, []).
 
 -spec delete_slot(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_slot_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_slot_errors(), tuple()}.
 delete_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, Input0, Options0) ->
     Method = delete,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents/", aws_util:encode_uri(IntentId), "/slots/", aws_util:encode_uri(SlotId), ""],
@@ -5514,24 +6426,14 @@ delete_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, Input0, Optio
 -spec delete_slot_type(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_slot_type_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_slot_type_errors(), tuple()}.
 delete_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, Input) ->
     delete_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, Input, []).
 
 -spec delete_slot_type(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_slot_type_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_slot_type_errors(), tuple()}.
 delete_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, Input0, Options0) ->
     Method = delete,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/slottypes/", aws_util:encode_uri(SlotTypeId), ""],
@@ -5559,24 +6461,14 @@ delete_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, Input0, Option
 -spec delete_test_set(map(), binary() | list(), delete_test_set_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_test_set_errors(), tuple()}.
 delete_test_set(Client, TestSetId, Input) ->
     delete_test_set(Client, TestSetId, Input, []).
 
 -spec delete_test_set(map(), binary() | list(), delete_test_set_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_test_set_errors(), tuple()}.
 delete_test_set(Client, TestSetId, Input0, Options0) ->
     Method = delete,
     Path = ["/testsets/", aws_util:encode_uri(TestSetId), ""],
@@ -5618,18 +6510,14 @@ delete_test_set(Client, TestSetId, Input0, Options0) ->
 -spec delete_utterances(map(), binary() | list(), delete_utterances_request()) ->
     {ok, delete_utterances_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_utterances_errors(), tuple()}.
 delete_utterances(Client, BotId, Input) ->
     delete_utterances(Client, BotId, Input, []).
 
 -spec delete_utterances(map(), binary() | list(), delete_utterances_request(), proplists:proplist()) ->
     {ok, delete_utterances_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_utterances_errors(), tuple()}.
 delete_utterances(Client, BotId, Input0, Options0) ->
     Method = delete,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/utterances"],
@@ -5658,11 +6546,7 @@ delete_utterances(Client, BotId, Input0, Options0) ->
 -spec describe_bot(map(), binary() | list()) ->
     {ok, describe_bot_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_bot_errors(), tuple()}.
 describe_bot(Client, BotId)
   when is_map(Client) ->
     describe_bot(Client, BotId, #{}, #{}).
@@ -5670,11 +6554,7 @@ describe_bot(Client, BotId)
 -spec describe_bot(map(), binary() | list(), map(), map()) ->
     {ok, describe_bot_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_bot_errors(), tuple()}.
 describe_bot(Client, BotId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_bot(Client, BotId, QueryMap, HeadersMap, []).
@@ -5682,11 +6562,7 @@ describe_bot(Client, BotId, QueryMap, HeadersMap)
 -spec describe_bot(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_bot_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_bot_errors(), tuple()}.
 describe_bot(Client, BotId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), ""],
@@ -5707,11 +6583,7 @@ describe_bot(Client, BotId, QueryMap, HeadersMap, Options0)
 -spec describe_bot_alias(map(), binary() | list(), binary() | list()) ->
     {ok, describe_bot_alias_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_bot_alias_errors(), tuple()}.
 describe_bot_alias(Client, BotAliasId, BotId)
   when is_map(Client) ->
     describe_bot_alias(Client, BotAliasId, BotId, #{}, #{}).
@@ -5719,11 +6591,7 @@ describe_bot_alias(Client, BotAliasId, BotId)
 -spec describe_bot_alias(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_bot_alias_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_bot_alias_errors(), tuple()}.
 describe_bot_alias(Client, BotAliasId, BotId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_bot_alias(Client, BotAliasId, BotId, QueryMap, HeadersMap, []).
@@ -5731,11 +6599,7 @@ describe_bot_alias(Client, BotAliasId, BotId, QueryMap, HeadersMap)
 -spec describe_bot_alias(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_bot_alias_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_bot_alias_errors(), tuple()}.
 describe_bot_alias(Client, BotAliasId, BotId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botaliases/", aws_util:encode_uri(BotAliasId), ""],
@@ -5756,11 +6620,7 @@ describe_bot_alias(Client, BotAliasId, BotId, QueryMap, HeadersMap, Options0)
 -spec describe_bot_locale(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_bot_locale_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_bot_locale_errors(), tuple()}.
 describe_bot_locale(Client, BotId, BotVersion, LocaleId)
   when is_map(Client) ->
     describe_bot_locale(Client, BotId, BotVersion, LocaleId, #{}, #{}).
@@ -5768,11 +6628,7 @@ describe_bot_locale(Client, BotId, BotVersion, LocaleId)
 -spec describe_bot_locale(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_bot_locale_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_bot_locale_errors(), tuple()}.
 describe_bot_locale(Client, BotId, BotVersion, LocaleId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_bot_locale(Client, BotId, BotVersion, LocaleId, QueryMap, HeadersMap, []).
@@ -5780,11 +6636,7 @@ describe_bot_locale(Client, BotId, BotVersion, LocaleId, QueryMap, HeadersMap)
 -spec describe_bot_locale(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_bot_locale_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_bot_locale_errors(), tuple()}.
 describe_bot_locale(Client, BotId, BotVersion, LocaleId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), ""],
@@ -5811,10 +6663,7 @@ describe_bot_locale(Client, BotId, BotVersion, LocaleId, QueryMap, HeadersMap, O
 -spec describe_bot_recommendation(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_bot_recommendation_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_bot_recommendation_errors(), tuple()}.
 describe_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId)
   when is_map(Client) ->
     describe_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId, #{}, #{}).
@@ -5822,10 +6671,7 @@ describe_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, Loca
 -spec describe_bot_recommendation(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_bot_recommendation_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_bot_recommendation_errors(), tuple()}.
 describe_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId, QueryMap, HeadersMap, []).
@@ -5833,10 +6679,7 @@ describe_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, Loca
 -spec describe_bot_recommendation(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_bot_recommendation_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_bot_recommendation_errors(), tuple()}.
 describe_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/botrecommendations/", aws_util:encode_uri(BotRecommendationId), ""],
@@ -5857,11 +6700,7 @@ describe_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, Loca
 -spec describe_bot_replica(map(), binary() | list(), binary() | list()) ->
     {ok, describe_bot_replica_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_bot_replica_errors(), tuple()}.
 describe_bot_replica(Client, BotId, ReplicaRegion)
   when is_map(Client) ->
     describe_bot_replica(Client, BotId, ReplicaRegion, #{}, #{}).
@@ -5869,11 +6708,7 @@ describe_bot_replica(Client, BotId, ReplicaRegion)
 -spec describe_bot_replica(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_bot_replica_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_bot_replica_errors(), tuple()}.
 describe_bot_replica(Client, BotId, ReplicaRegion, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_bot_replica(Client, BotId, ReplicaRegion, QueryMap, HeadersMap, []).
@@ -5881,11 +6716,7 @@ describe_bot_replica(Client, BotId, ReplicaRegion, QueryMap, HeadersMap)
 -spec describe_bot_replica(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_bot_replica_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_bot_replica_errors(), tuple()}.
 describe_bot_replica(Client, BotId, ReplicaRegion, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/replicas/", aws_util:encode_uri(ReplicaRegion), ""],
@@ -5913,10 +6744,7 @@ describe_bot_replica(Client, BotId, ReplicaRegion, QueryMap, HeadersMap, Options
 -spec describe_bot_resource_generation(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_bot_resource_generation_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_bot_resource_generation_errors(), tuple()}.
 describe_bot_resource_generation(Client, BotId, BotVersion, GenerationId, LocaleId)
   when is_map(Client) ->
     describe_bot_resource_generation(Client, BotId, BotVersion, GenerationId, LocaleId, #{}, #{}).
@@ -5924,10 +6752,7 @@ describe_bot_resource_generation(Client, BotId, BotVersion, GenerationId, Locale
 -spec describe_bot_resource_generation(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_bot_resource_generation_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_bot_resource_generation_errors(), tuple()}.
 describe_bot_resource_generation(Client, BotId, BotVersion, GenerationId, LocaleId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_bot_resource_generation(Client, BotId, BotVersion, GenerationId, LocaleId, QueryMap, HeadersMap, []).
@@ -5935,10 +6760,7 @@ describe_bot_resource_generation(Client, BotId, BotVersion, GenerationId, Locale
 -spec describe_bot_resource_generation(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_bot_resource_generation_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_bot_resource_generation_errors(), tuple()}.
 describe_bot_resource_generation(Client, BotId, BotVersion, GenerationId, LocaleId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/generations/", aws_util:encode_uri(GenerationId), ""],
@@ -5959,11 +6781,7 @@ describe_bot_resource_generation(Client, BotId, BotVersion, GenerationId, Locale
 -spec describe_bot_version(map(), binary() | list(), binary() | list()) ->
     {ok, describe_bot_version_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_bot_version_errors(), tuple()}.
 describe_bot_version(Client, BotId, BotVersion)
   when is_map(Client) ->
     describe_bot_version(Client, BotId, BotVersion, #{}, #{}).
@@ -5971,11 +6789,7 @@ describe_bot_version(Client, BotId, BotVersion)
 -spec describe_bot_version(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_bot_version_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_bot_version_errors(), tuple()}.
 describe_bot_version(Client, BotId, BotVersion, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_bot_version(Client, BotId, BotVersion, QueryMap, HeadersMap, []).
@@ -5983,11 +6797,7 @@ describe_bot_version(Client, BotId, BotVersion, QueryMap, HeadersMap)
 -spec describe_bot_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_bot_version_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_bot_version_errors(), tuple()}.
 describe_bot_version(Client, BotId, BotVersion, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), ""],
@@ -6008,11 +6818,7 @@ describe_bot_version(Client, BotId, BotVersion, QueryMap, HeadersMap, Options0)
 -spec describe_custom_vocabulary_metadata(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_custom_vocabulary_metadata_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_custom_vocabulary_metadata_errors(), tuple()}.
 describe_custom_vocabulary_metadata(Client, BotId, BotVersion, LocaleId)
   when is_map(Client) ->
     describe_custom_vocabulary_metadata(Client, BotId, BotVersion, LocaleId, #{}, #{}).
@@ -6020,11 +6826,7 @@ describe_custom_vocabulary_metadata(Client, BotId, BotVersion, LocaleId)
 -spec describe_custom_vocabulary_metadata(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_custom_vocabulary_metadata_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_custom_vocabulary_metadata_errors(), tuple()}.
 describe_custom_vocabulary_metadata(Client, BotId, BotVersion, LocaleId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_custom_vocabulary_metadata(Client, BotId, BotVersion, LocaleId, QueryMap, HeadersMap, []).
@@ -6032,11 +6834,7 @@ describe_custom_vocabulary_metadata(Client, BotId, BotVersion, LocaleId, QueryMa
 -spec describe_custom_vocabulary_metadata(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_custom_vocabulary_metadata_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_custom_vocabulary_metadata_errors(), tuple()}.
 describe_custom_vocabulary_metadata(Client, BotId, BotVersion, LocaleId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/customvocabulary/DEFAULT/metadata"],
@@ -6057,10 +6855,7 @@ describe_custom_vocabulary_metadata(Client, BotId, BotVersion, LocaleId, QueryMa
 -spec describe_export(map(), binary() | list()) ->
     {ok, describe_export_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_export_errors(), tuple()}.
 describe_export(Client, ExportId)
   when is_map(Client) ->
     describe_export(Client, ExportId, #{}, #{}).
@@ -6068,10 +6863,7 @@ describe_export(Client, ExportId)
 -spec describe_export(map(), binary() | list(), map(), map()) ->
     {ok, describe_export_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_export_errors(), tuple()}.
 describe_export(Client, ExportId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_export(Client, ExportId, QueryMap, HeadersMap, []).
@@ -6079,10 +6871,7 @@ describe_export(Client, ExportId, QueryMap, HeadersMap)
 -spec describe_export(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_export_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_export_errors(), tuple()}.
 describe_export(Client, ExportId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/exports/", aws_util:encode_uri(ExportId), ""],
@@ -6103,10 +6892,7 @@ describe_export(Client, ExportId, QueryMap, HeadersMap, Options0)
 -spec describe_import(map(), binary() | list()) ->
     {ok, describe_import_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_import_errors(), tuple()}.
 describe_import(Client, ImportId)
   when is_map(Client) ->
     describe_import(Client, ImportId, #{}, #{}).
@@ -6114,10 +6900,7 @@ describe_import(Client, ImportId)
 -spec describe_import(map(), binary() | list(), map(), map()) ->
     {ok, describe_import_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_import_errors(), tuple()}.
 describe_import(Client, ImportId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_import(Client, ImportId, QueryMap, HeadersMap, []).
@@ -6125,10 +6908,7 @@ describe_import(Client, ImportId, QueryMap, HeadersMap)
 -spec describe_import(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_import_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_import_errors(), tuple()}.
 describe_import(Client, ImportId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/imports/", aws_util:encode_uri(ImportId), ""],
@@ -6149,11 +6929,7 @@ describe_import(Client, ImportId, QueryMap, HeadersMap, Options0)
 -spec describe_intent(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_intent_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_intent_errors(), tuple()}.
 describe_intent(Client, BotId, BotVersion, IntentId, LocaleId)
   when is_map(Client) ->
     describe_intent(Client, BotId, BotVersion, IntentId, LocaleId, #{}, #{}).
@@ -6161,11 +6937,7 @@ describe_intent(Client, BotId, BotVersion, IntentId, LocaleId)
 -spec describe_intent(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_intent_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_intent_errors(), tuple()}.
 describe_intent(Client, BotId, BotVersion, IntentId, LocaleId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_intent(Client, BotId, BotVersion, IntentId, LocaleId, QueryMap, HeadersMap, []).
@@ -6173,11 +6945,7 @@ describe_intent(Client, BotId, BotVersion, IntentId, LocaleId, QueryMap, Headers
 -spec describe_intent(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_intent_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_intent_errors(), tuple()}.
 describe_intent(Client, BotId, BotVersion, IntentId, LocaleId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents/", aws_util:encode_uri(IntentId), ""],
@@ -6199,9 +6967,7 @@ describe_intent(Client, BotId, BotVersion, IntentId, LocaleId, QueryMap, Headers
 -spec describe_resource_policy(map(), binary() | list()) ->
     {ok, describe_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_resource_policy_errors(), tuple()}.
 describe_resource_policy(Client, ResourceArn)
   when is_map(Client) ->
     describe_resource_policy(Client, ResourceArn, #{}, #{}).
@@ -6209,9 +6975,7 @@ describe_resource_policy(Client, ResourceArn)
 -spec describe_resource_policy(map(), binary() | list(), map(), map()) ->
     {ok, describe_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_resource_policy_errors(), tuple()}.
 describe_resource_policy(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -6219,9 +6983,7 @@ describe_resource_policy(Client, ResourceArn, QueryMap, HeadersMap)
 -spec describe_resource_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_resource_policy_errors(), tuple()}.
 describe_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/policy/", aws_util:encode_uri(ResourceArn), ""],
@@ -6242,11 +7004,7 @@ describe_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec describe_slot(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_slot_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_slot_errors(), tuple()}.
 describe_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId)
   when is_map(Client) ->
     describe_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, #{}, #{}).
@@ -6254,11 +7012,7 @@ describe_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId)
 -spec describe_slot(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_slot_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_slot_errors(), tuple()}.
 describe_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, QueryMap, HeadersMap, []).
@@ -6266,11 +7020,7 @@ describe_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, QueryMap, H
 -spec describe_slot(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_slot_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_slot_errors(), tuple()}.
 describe_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents/", aws_util:encode_uri(IntentId), "/slots/", aws_util:encode_uri(SlotId), ""],
@@ -6291,11 +7041,7 @@ describe_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, QueryMap, H
 -spec describe_slot_type(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_slot_type_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_slot_type_errors(), tuple()}.
 describe_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId)
   when is_map(Client) ->
     describe_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, #{}, #{}).
@@ -6303,11 +7049,7 @@ describe_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId)
 -spec describe_slot_type(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_slot_type_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_slot_type_errors(), tuple()}.
 describe_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, QueryMap, HeadersMap, []).
@@ -6315,11 +7057,7 @@ describe_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, QueryMap, He
 -spec describe_slot_type(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_slot_type_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_slot_type_errors(), tuple()}.
 describe_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/slottypes/", aws_util:encode_uri(SlotTypeId), ""],
@@ -6340,11 +7078,7 @@ describe_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, QueryMap, He
 -spec describe_test_execution(map(), binary() | list()) ->
     {ok, describe_test_execution_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_test_execution_errors(), tuple()}.
 describe_test_execution(Client, TestExecutionId)
   when is_map(Client) ->
     describe_test_execution(Client, TestExecutionId, #{}, #{}).
@@ -6352,11 +7086,7 @@ describe_test_execution(Client, TestExecutionId)
 -spec describe_test_execution(map(), binary() | list(), map(), map()) ->
     {ok, describe_test_execution_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_test_execution_errors(), tuple()}.
 describe_test_execution(Client, TestExecutionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_test_execution(Client, TestExecutionId, QueryMap, HeadersMap, []).
@@ -6364,11 +7094,7 @@ describe_test_execution(Client, TestExecutionId, QueryMap, HeadersMap)
 -spec describe_test_execution(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_test_execution_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_test_execution_errors(), tuple()}.
 describe_test_execution(Client, TestExecutionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/testexecutions/", aws_util:encode_uri(TestExecutionId), ""],
@@ -6389,11 +7115,7 @@ describe_test_execution(Client, TestExecutionId, QueryMap, HeadersMap, Options0)
 -spec describe_test_set(map(), binary() | list()) ->
     {ok, describe_test_set_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_test_set_errors(), tuple()}.
 describe_test_set(Client, TestSetId)
   when is_map(Client) ->
     describe_test_set(Client, TestSetId, #{}, #{}).
@@ -6401,11 +7123,7 @@ describe_test_set(Client, TestSetId)
 -spec describe_test_set(map(), binary() | list(), map(), map()) ->
     {ok, describe_test_set_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_test_set_errors(), tuple()}.
 describe_test_set(Client, TestSetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_test_set(Client, TestSetId, QueryMap, HeadersMap, []).
@@ -6413,11 +7131,7 @@ describe_test_set(Client, TestSetId, QueryMap, HeadersMap)
 -spec describe_test_set(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_test_set_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_test_set_errors(), tuple()}.
 describe_test_set(Client, TestSetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/testsets/", aws_util:encode_uri(TestSetId), ""],
@@ -6438,11 +7152,7 @@ describe_test_set(Client, TestSetId, QueryMap, HeadersMap, Options0)
 -spec describe_test_set_discrepancy_report(map(), binary() | list()) ->
     {ok, describe_test_set_discrepancy_report_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_test_set_discrepancy_report_errors(), tuple()}.
 describe_test_set_discrepancy_report(Client, TestSetDiscrepancyReportId)
   when is_map(Client) ->
     describe_test_set_discrepancy_report(Client, TestSetDiscrepancyReportId, #{}, #{}).
@@ -6450,11 +7160,7 @@ describe_test_set_discrepancy_report(Client, TestSetDiscrepancyReportId)
 -spec describe_test_set_discrepancy_report(map(), binary() | list(), map(), map()) ->
     {ok, describe_test_set_discrepancy_report_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_test_set_discrepancy_report_errors(), tuple()}.
 describe_test_set_discrepancy_report(Client, TestSetDiscrepancyReportId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_test_set_discrepancy_report(Client, TestSetDiscrepancyReportId, QueryMap, HeadersMap, []).
@@ -6462,11 +7168,7 @@ describe_test_set_discrepancy_report(Client, TestSetDiscrepancyReportId, QueryMa
 -spec describe_test_set_discrepancy_report(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_test_set_discrepancy_report_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_test_set_discrepancy_report_errors(), tuple()}.
 describe_test_set_discrepancy_report(Client, TestSetDiscrepancyReportId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/testsetdiscrepancy/", aws_util:encode_uri(TestSetDiscrepancyReportId), ""],
@@ -6487,11 +7189,7 @@ describe_test_set_discrepancy_report(Client, TestSetDiscrepancyReportId, QueryMa
 -spec describe_test_set_generation(map(), binary() | list()) ->
     {ok, describe_test_set_generation_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_test_set_generation_errors(), tuple()}.
 describe_test_set_generation(Client, TestSetGenerationId)
   when is_map(Client) ->
     describe_test_set_generation(Client, TestSetGenerationId, #{}, #{}).
@@ -6499,11 +7197,7 @@ describe_test_set_generation(Client, TestSetGenerationId)
 -spec describe_test_set_generation(map(), binary() | list(), map(), map()) ->
     {ok, describe_test_set_generation_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_test_set_generation_errors(), tuple()}.
 describe_test_set_generation(Client, TestSetGenerationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_test_set_generation(Client, TestSetGenerationId, QueryMap, HeadersMap, []).
@@ -6511,11 +7205,7 @@ describe_test_set_generation(Client, TestSetGenerationId, QueryMap, HeadersMap)
 -spec describe_test_set_generation(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_test_set_generation_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_test_set_generation_errors(), tuple()}.
 describe_test_set_generation(Client, TestSetGenerationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/testsetgenerations/", aws_util:encode_uri(TestSetGenerationId), ""],
@@ -6536,26 +7226,14 @@ describe_test_set_generation(Client, TestSetGenerationId, QueryMap, HeadersMap, 
 -spec generate_bot_element(map(), binary() | list(), binary() | list(), binary() | list(), generate_bot_element_request()) ->
     {ok, generate_bot_element_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, generate_bot_element_errors(), tuple()}.
 generate_bot_element(Client, BotId, BotVersion, LocaleId, Input) ->
     generate_bot_element(Client, BotId, BotVersion, LocaleId, Input, []).
 
 -spec generate_bot_element(map(), binary() | list(), binary() | list(), binary() | list(), generate_bot_element_request(), proplists:proplist()) ->
     {ok, generate_bot_element_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, generate_bot_element_errors(), tuple()}.
 generate_bot_element(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/generate"],
@@ -6583,11 +7261,7 @@ generate_bot_element(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
 -spec get_test_execution_artifacts_url(map(), binary() | list()) ->
     {ok, get_test_execution_artifacts_url_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_test_execution_artifacts_url_errors(), tuple()}.
 get_test_execution_artifacts_url(Client, TestExecutionId)
   when is_map(Client) ->
     get_test_execution_artifacts_url(Client, TestExecutionId, #{}, #{}).
@@ -6595,11 +7269,7 @@ get_test_execution_artifacts_url(Client, TestExecutionId)
 -spec get_test_execution_artifacts_url(map(), binary() | list(), map(), map()) ->
     {ok, get_test_execution_artifacts_url_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_test_execution_artifacts_url_errors(), tuple()}.
 get_test_execution_artifacts_url(Client, TestExecutionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_test_execution_artifacts_url(Client, TestExecutionId, QueryMap, HeadersMap, []).
@@ -6607,11 +7277,7 @@ get_test_execution_artifacts_url(Client, TestExecutionId, QueryMap, HeadersMap)
 -spec get_test_execution_artifacts_url(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_test_execution_artifacts_url_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_test_execution_artifacts_url_errors(), tuple()}.
 get_test_execution_artifacts_url(Client, TestExecutionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/testexecutions/", aws_util:encode_uri(TestExecutionId), "/artifacturl"],
@@ -6656,20 +7322,14 @@ get_test_execution_artifacts_url(Client, TestExecutionId, QueryMap, HeadersMap, 
 -spec list_aggregated_utterances(map(), binary() | list(), list_aggregated_utterances_request()) ->
     {ok, list_aggregated_utterances_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_aggregated_utterances_errors(), tuple()}.
 list_aggregated_utterances(Client, BotId, Input) ->
     list_aggregated_utterances(Client, BotId, Input, []).
 
 -spec list_aggregated_utterances(map(), binary() | list(), list_aggregated_utterances_request(), proplists:proplist()) ->
     {ok, list_aggregated_utterances_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_aggregated_utterances_errors(), tuple()}.
 list_aggregated_utterances(Client, BotId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/aggregatedutterances"],
@@ -6697,20 +7357,14 @@ list_aggregated_utterances(Client, BotId, Input0, Options0) ->
 -spec list_bot_alias_replicas(map(), binary() | list(), binary() | list(), list_bot_alias_replicas_request()) ->
     {ok, list_bot_alias_replicas_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_bot_alias_replicas_errors(), tuple()}.
 list_bot_alias_replicas(Client, BotId, ReplicaRegion, Input) ->
     list_bot_alias_replicas(Client, BotId, ReplicaRegion, Input, []).
 
 -spec list_bot_alias_replicas(map(), binary() | list(), binary() | list(), list_bot_alias_replicas_request(), proplists:proplist()) ->
     {ok, list_bot_alias_replicas_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_bot_alias_replicas_errors(), tuple()}.
 list_bot_alias_replicas(Client, BotId, ReplicaRegion, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/replicas/", aws_util:encode_uri(ReplicaRegion), "/botaliases"],
@@ -6737,20 +7391,14 @@ list_bot_alias_replicas(Client, BotId, ReplicaRegion, Input0, Options0) ->
 -spec list_bot_aliases(map(), binary() | list(), list_bot_aliases_request()) ->
     {ok, list_bot_aliases_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_bot_aliases_errors(), tuple()}.
 list_bot_aliases(Client, BotId, Input) ->
     list_bot_aliases(Client, BotId, Input, []).
 
 -spec list_bot_aliases(map(), binary() | list(), list_bot_aliases_request(), proplists:proplist()) ->
     {ok, list_bot_aliases_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_bot_aliases_errors(), tuple()}.
 list_bot_aliases(Client, BotId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botaliases"],
@@ -6777,20 +7425,14 @@ list_bot_aliases(Client, BotId, Input0, Options0) ->
 -spec list_bot_locales(map(), binary() | list(), binary() | list(), list_bot_locales_request()) ->
     {ok, list_bot_locales_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_bot_locales_errors(), tuple()}.
 list_bot_locales(Client, BotId, BotVersion, Input) ->
     list_bot_locales(Client, BotId, BotVersion, Input, []).
 
 -spec list_bot_locales(map(), binary() | list(), binary() | list(), list_bot_locales_request(), proplists:proplist()) ->
     {ok, list_bot_locales_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_bot_locales_errors(), tuple()}.
 list_bot_locales(Client, BotId, BotVersion, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales"],
@@ -6818,20 +7460,14 @@ list_bot_locales(Client, BotId, BotVersion, Input0, Options0) ->
 -spec list_bot_recommendations(map(), binary() | list(), binary() | list(), binary() | list(), list_bot_recommendations_request()) ->
     {ok, list_bot_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_bot_recommendations_errors(), tuple()}.
 list_bot_recommendations(Client, BotId, BotVersion, LocaleId, Input) ->
     list_bot_recommendations(Client, BotId, BotVersion, LocaleId, Input, []).
 
 -spec list_bot_recommendations(map(), binary() | list(), binary() | list(), binary() | list(), list_bot_recommendations_request(), proplists:proplist()) ->
     {ok, list_bot_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_bot_recommendations_errors(), tuple()}.
 list_bot_recommendations(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/botrecommendations"],
@@ -6858,20 +7494,14 @@ list_bot_recommendations(Client, BotId, BotVersion, LocaleId, Input0, Options0) 
 -spec list_bot_replicas(map(), binary() | list(), list_bot_replicas_request()) ->
     {ok, list_bot_replicas_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_bot_replicas_errors(), tuple()}.
 list_bot_replicas(Client, BotId, Input) ->
     list_bot_replicas(Client, BotId, Input, []).
 
 -spec list_bot_replicas(map(), binary() | list(), list_bot_replicas_request(), proplists:proplist()) ->
     {ok, list_bot_replicas_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_bot_replicas_errors(), tuple()}.
 list_bot_replicas(Client, BotId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/replicas"],
@@ -6898,20 +7528,14 @@ list_bot_replicas(Client, BotId, Input0, Options0) ->
 -spec list_bot_resource_generations(map(), binary() | list(), binary() | list(), binary() | list(), list_bot_resource_generations_request()) ->
     {ok, list_bot_resource_generations_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_bot_resource_generations_errors(), tuple()}.
 list_bot_resource_generations(Client, BotId, BotVersion, LocaleId, Input) ->
     list_bot_resource_generations(Client, BotId, BotVersion, LocaleId, Input, []).
 
 -spec list_bot_resource_generations(map(), binary() | list(), binary() | list(), binary() | list(), list_bot_resource_generations_request(), proplists:proplist()) ->
     {ok, list_bot_resource_generations_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_bot_resource_generations_errors(), tuple()}.
 list_bot_resource_generations(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/generations"],
@@ -6939,20 +7563,14 @@ list_bot_resource_generations(Client, BotId, BotVersion, LocaleId, Input0, Optio
 -spec list_bot_version_replicas(map(), binary() | list(), binary() | list(), list_bot_version_replicas_request()) ->
     {ok, list_bot_version_replicas_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_bot_version_replicas_errors(), tuple()}.
 list_bot_version_replicas(Client, BotId, ReplicaRegion, Input) ->
     list_bot_version_replicas(Client, BotId, ReplicaRegion, Input, []).
 
 -spec list_bot_version_replicas(map(), binary() | list(), binary() | list(), list_bot_version_replicas_request(), proplists:proplist()) ->
     {ok, list_bot_version_replicas_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_bot_version_replicas_errors(), tuple()}.
 list_bot_version_replicas(Client, BotId, ReplicaRegion, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/replicas/", aws_util:encode_uri(ReplicaRegion), "/botversions"],
@@ -6988,20 +7606,14 @@ list_bot_version_replicas(Client, BotId, ReplicaRegion, Input0, Options0) ->
 -spec list_bot_versions(map(), binary() | list(), list_bot_versions_request()) ->
     {ok, list_bot_versions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_bot_versions_errors(), tuple()}.
 list_bot_versions(Client, BotId, Input) ->
     list_bot_versions(Client, BotId, Input, []).
 
 -spec list_bot_versions(map(), binary() | list(), list_bot_versions_request(), proplists:proplist()) ->
     {ok, list_bot_versions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_bot_versions_errors(), tuple()}.
 list_bot_versions(Client, BotId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions"],
@@ -7028,20 +7640,14 @@ list_bot_versions(Client, BotId, Input0, Options0) ->
 -spec list_bots(map(), list_bots_request()) ->
     {ok, list_bots_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_bots_errors(), tuple()}.
 list_bots(Client, Input) ->
     list_bots(Client, Input, []).
 
 -spec list_bots(map(), list_bots_request(), proplists:proplist()) ->
     {ok, list_bots_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_bots_errors(), tuple()}.
 list_bots(Client, Input0, Options0) ->
     Method = post,
     Path = ["/bots"],
@@ -7076,20 +7682,14 @@ list_bots(Client, Input0, Options0) ->
 -spec list_built_in_intents(map(), binary() | list(), list_built_in_intents_request()) ->
     {ok, list_built_in_intents_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_built_in_intents_errors(), tuple()}.
 list_built_in_intents(Client, LocaleId, Input) ->
     list_built_in_intents(Client, LocaleId, Input, []).
 
 -spec list_built_in_intents(map(), binary() | list(), list_built_in_intents_request(), proplists:proplist()) ->
     {ok, list_built_in_intents_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_built_in_intents_errors(), tuple()}.
 list_built_in_intents(Client, LocaleId, Input0, Options0) ->
     Method = post,
     Path = ["/builtins/locales/", aws_util:encode_uri(LocaleId), "/intents"],
@@ -7117,20 +7717,14 @@ list_built_in_intents(Client, LocaleId, Input0, Options0) ->
 -spec list_built_in_slot_types(map(), binary() | list(), list_built_in_slot_types_request()) ->
     {ok, list_built_in_slot_types_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_built_in_slot_types_errors(), tuple()}.
 list_built_in_slot_types(Client, LocaleId, Input) ->
     list_built_in_slot_types(Client, LocaleId, Input, []).
 
 -spec list_built_in_slot_types(map(), binary() | list(), list_built_in_slot_types_request(), proplists:proplist()) ->
     {ok, list_built_in_slot_types_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_built_in_slot_types_errors(), tuple()}.
 list_built_in_slot_types(Client, LocaleId, Input0, Options0) ->
     Method = post,
     Path = ["/builtins/locales/", aws_util:encode_uri(LocaleId), "/slottypes"],
@@ -7159,22 +7753,14 @@ list_built_in_slot_types(Client, LocaleId, Input0, Options0) ->
 -spec list_custom_vocabulary_items(map(), binary() | list(), binary() | list(), binary() | list(), list_custom_vocabulary_items_request()) ->
     {ok, list_custom_vocabulary_items_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_custom_vocabulary_items_errors(), tuple()}.
 list_custom_vocabulary_items(Client, BotId, BotVersion, LocaleId, Input) ->
     list_custom_vocabulary_items(Client, BotId, BotVersion, LocaleId, Input, []).
 
 -spec list_custom_vocabulary_items(map(), binary() | list(), binary() | list(), binary() | list(), list_custom_vocabulary_items_request(), proplists:proplist()) ->
     {ok, list_custom_vocabulary_items_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_custom_vocabulary_items_errors(), tuple()}.
 list_custom_vocabulary_items(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/customvocabulary/DEFAULT/list"],
@@ -7203,18 +7789,14 @@ list_custom_vocabulary_items(Client, BotId, BotVersion, LocaleId, Input0, Option
 -spec list_exports(map(), list_exports_request()) ->
     {ok, list_exports_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_exports_errors(), tuple()}.
 list_exports(Client, Input) ->
     list_exports(Client, Input, []).
 
 -spec list_exports(map(), list_exports_request(), proplists:proplist()) ->
     {ok, list_exports_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_exports_errors(), tuple()}.
 list_exports(Client, Input0, Options0) ->
     Method = post,
     Path = ["/exports"],
@@ -7243,18 +7825,14 @@ list_exports(Client, Input0, Options0) ->
 -spec list_imports(map(), list_imports_request()) ->
     {ok, list_imports_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_imports_errors(), tuple()}.
 list_imports(Client, Input) ->
     list_imports(Client, Input, []).
 
 -spec list_imports(map(), list_imports_request(), proplists:proplist()) ->
     {ok, list_imports_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_imports_errors(), tuple()}.
 list_imports(Client, Input0, Options0) ->
     Method = post,
     Path = ["/imports"],
@@ -7308,22 +7886,14 @@ list_imports(Client, Input0, Options0) ->
 -spec list_intent_metrics(map(), binary() | list(), list_intent_metrics_request()) ->
     {ok, list_intent_metrics_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_intent_metrics_errors(), tuple()}.
 list_intent_metrics(Client, BotId, Input) ->
     list_intent_metrics(Client, BotId, Input, []).
 
 -spec list_intent_metrics(map(), binary() | list(), list_intent_metrics_request(), proplists:proplist()) ->
     {ok, list_intent_metrics_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_intent_metrics_errors(), tuple()}.
 list_intent_metrics(Client, BotId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/analytics/intentmetrics"],
@@ -7364,22 +7934,14 @@ list_intent_metrics(Client, BotId, Input0, Options0) ->
 -spec list_intent_paths(map(), binary() | list(), list_intent_paths_request()) ->
     {ok, list_intent_paths_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_intent_paths_errors(), tuple()}.
 list_intent_paths(Client, BotId, Input) ->
     list_intent_paths(Client, BotId, Input, []).
 
 -spec list_intent_paths(map(), binary() | list(), list_intent_paths_request(), proplists:proplist()) ->
     {ok, list_intent_paths_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_intent_paths_errors(), tuple()}.
 list_intent_paths(Client, BotId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/analytics/intentpaths"],
@@ -7433,22 +7995,14 @@ list_intent_paths(Client, BotId, Input0, Options0) ->
 -spec list_intent_stage_metrics(map(), binary() | list(), list_intent_stage_metrics_request()) ->
     {ok, list_intent_stage_metrics_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_intent_stage_metrics_errors(), tuple()}.
 list_intent_stage_metrics(Client, BotId, Input) ->
     list_intent_stage_metrics(Client, BotId, Input, []).
 
 -spec list_intent_stage_metrics(map(), binary() | list(), list_intent_stage_metrics_request(), proplists:proplist()) ->
     {ok, list_intent_stage_metrics_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_intent_stage_metrics_errors(), tuple()}.
 list_intent_stage_metrics(Client, BotId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/analytics/intentstagemetrics"],
@@ -7475,20 +8029,14 @@ list_intent_stage_metrics(Client, BotId, Input0, Options0) ->
 -spec list_intents(map(), binary() | list(), binary() | list(), binary() | list(), list_intents_request()) ->
     {ok, list_intents_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_intents_errors(), tuple()}.
 list_intents(Client, BotId, BotVersion, LocaleId, Input) ->
     list_intents(Client, BotId, BotVersion, LocaleId, Input, []).
 
 -spec list_intents(map(), binary() | list(), binary() | list(), binary() | list(), list_intents_request(), proplists:proplist()) ->
     {ok, list_intents_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_intents_errors(), tuple()}.
 list_intents(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents"],
@@ -7519,22 +8067,14 @@ list_intents(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
 -spec list_recommended_intents(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), list_recommended_intents_request()) ->
     {ok, list_recommended_intents_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_recommended_intents_errors(), tuple()}.
 list_recommended_intents(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input) ->
     list_recommended_intents(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input, []).
 
 -spec list_recommended_intents(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), list_recommended_intents_request(), proplists:proplist()) ->
     {ok, list_recommended_intents_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_recommended_intents_errors(), tuple()}.
 list_recommended_intents(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/botrecommendations/", aws_util:encode_uri(BotRecommendationId), "/intents"],
@@ -7573,22 +8113,14 @@ list_recommended_intents(Client, BotId, BotRecommendationId, BotVersion, LocaleI
 -spec list_session_analytics_data(map(), binary() | list(), list_session_analytics_data_request()) ->
     {ok, list_session_analytics_data_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_session_analytics_data_errors(), tuple()}.
 list_session_analytics_data(Client, BotId, Input) ->
     list_session_analytics_data(Client, BotId, Input, []).
 
 -spec list_session_analytics_data(map(), binary() | list(), list_session_analytics_data_request(), proplists:proplist()) ->
     {ok, list_session_analytics_data_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_session_analytics_data_errors(), tuple()}.
 list_session_analytics_data(Client, BotId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/analytics/sessions"],
@@ -7643,22 +8175,14 @@ list_session_analytics_data(Client, BotId, Input0, Options0) ->
 -spec list_session_metrics(map(), binary() | list(), list_session_metrics_request()) ->
     {ok, list_session_metrics_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_session_metrics_errors(), tuple()}.
 list_session_metrics(Client, BotId, Input) ->
     list_session_metrics(Client, BotId, Input, []).
 
 -spec list_session_metrics(map(), binary() | list(), list_session_metrics_request(), proplists:proplist()) ->
     {ok, list_session_metrics_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_session_metrics_errors(), tuple()}.
 list_session_metrics(Client, BotId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/analytics/sessionmetrics"],
@@ -7685,20 +8209,14 @@ list_session_metrics(Client, BotId, Input0, Options0) ->
 -spec list_slot_types(map(), binary() | list(), binary() | list(), binary() | list(), list_slot_types_request()) ->
     {ok, list_slot_types_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_slot_types_errors(), tuple()}.
 list_slot_types(Client, BotId, BotVersion, LocaleId, Input) ->
     list_slot_types(Client, BotId, BotVersion, LocaleId, Input, []).
 
 -spec list_slot_types(map(), binary() | list(), binary() | list(), binary() | list(), list_slot_types_request(), proplists:proplist()) ->
     {ok, list_slot_types_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_slot_types_errors(), tuple()}.
 list_slot_types(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/slottypes"],
@@ -7725,20 +8243,14 @@ list_slot_types(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
 -spec list_slots(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), list_slots_request()) ->
     {ok, list_slots_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_slots_errors(), tuple()}.
 list_slots(Client, BotId, BotVersion, IntentId, LocaleId, Input) ->
     list_slots(Client, BotId, BotVersion, IntentId, LocaleId, Input, []).
 
 -spec list_slots(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), list_slots_request(), proplists:proplist()) ->
     {ok, list_slots_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_slots_errors(), tuple()}.
 list_slots(Client, BotId, BotVersion, IntentId, LocaleId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents/", aws_util:encode_uri(IntentId), "/slots"],
@@ -7768,10 +8280,7 @@ list_slots(Client, BotId, BotVersion, IntentId, LocaleId, Input0, Options0) ->
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceARN)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceARN, #{}, #{}).
@@ -7779,10 +8288,7 @@ list_tags_for_resource(Client, ResourceARN)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, []).
@@ -7790,10 +8296,7 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceARN), ""],
@@ -7814,22 +8317,14 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
 -spec list_test_execution_result_items(map(), binary() | list(), list_test_execution_result_items_request()) ->
     {ok, list_test_execution_result_items_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_test_execution_result_items_errors(), tuple()}.
 list_test_execution_result_items(Client, TestExecutionId, Input) ->
     list_test_execution_result_items(Client, TestExecutionId, Input, []).
 
 -spec list_test_execution_result_items(map(), binary() | list(), list_test_execution_result_items_request(), proplists:proplist()) ->
     {ok, list_test_execution_result_items_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_test_execution_result_items_errors(), tuple()}.
 list_test_execution_result_items(Client, TestExecutionId, Input0, Options0) ->
     Method = post,
     Path = ["/testexecutions/", aws_util:encode_uri(TestExecutionId), "/results"],
@@ -7856,20 +8351,14 @@ list_test_execution_result_items(Client, TestExecutionId, Input0, Options0) ->
 -spec list_test_executions(map(), list_test_executions_request()) ->
     {ok, list_test_executions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_test_executions_errors(), tuple()}.
 list_test_executions(Client, Input) ->
     list_test_executions(Client, Input, []).
 
 -spec list_test_executions(map(), list_test_executions_request(), proplists:proplist()) ->
     {ok, list_test_executions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_test_executions_errors(), tuple()}.
 list_test_executions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/testexecutions"],
@@ -7896,22 +8385,14 @@ list_test_executions(Client, Input0, Options0) ->
 -spec list_test_set_records(map(), binary() | list(), list_test_set_records_request()) ->
     {ok, list_test_set_records_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_test_set_records_errors(), tuple()}.
 list_test_set_records(Client, TestSetId, Input) ->
     list_test_set_records(Client, TestSetId, Input, []).
 
 -spec list_test_set_records(map(), binary() | list(), list_test_set_records_request(), proplists:proplist()) ->
     {ok, list_test_set_records_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_test_set_records_errors(), tuple()}.
 list_test_set_records(Client, TestSetId, Input0, Options0) ->
     Method = post,
     Path = ["/testsets/", aws_util:encode_uri(TestSetId), "/records"],
@@ -7938,20 +8419,14 @@ list_test_set_records(Client, TestSetId, Input0, Options0) ->
 -spec list_test_sets(map(), list_test_sets_request()) ->
     {ok, list_test_sets_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_test_sets_errors(), tuple()}.
 list_test_sets(Client, Input) ->
     list_test_sets(Client, Input, []).
 
 -spec list_test_sets(map(), list_test_sets_request(), proplists:proplist()) ->
     {ok, list_test_sets_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_test_sets_errors(), tuple()}.
 list_test_sets(Client, Input0, Options0) ->
     Method = post,
     Path = ["/testsets"],
@@ -8004,22 +8479,14 @@ list_test_sets(Client, Input0, Options0) ->
 -spec list_utterance_analytics_data(map(), binary() | list(), list_utterance_analytics_data_request()) ->
     {ok, list_utterance_analytics_data_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_utterance_analytics_data_errors(), tuple()}.
 list_utterance_analytics_data(Client, BotId, Input) ->
     list_utterance_analytics_data(Client, BotId, Input, []).
 
 -spec list_utterance_analytics_data(map(), binary() | list(), list_utterance_analytics_data_request(), proplists:proplist()) ->
     {ok, list_utterance_analytics_data_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_utterance_analytics_data_errors(), tuple()}.
 list_utterance_analytics_data(Client, BotId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/analytics/utterances"],
@@ -8085,22 +8552,14 @@ list_utterance_analytics_data(Client, BotId, Input0, Options0) ->
 -spec list_utterance_metrics(map(), binary() | list(), list_utterance_metrics_request()) ->
     {ok, list_utterance_metrics_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_utterance_metrics_errors(), tuple()}.
 list_utterance_metrics(Client, BotId, Input) ->
     list_utterance_metrics(Client, BotId, Input, []).
 
 -spec list_utterance_metrics(map(), binary() | list(), list_utterance_metrics_request(), proplists:proplist()) ->
     {ok, list_utterance_metrics_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_utterance_metrics_errors(), tuple()}.
 list_utterance_metrics(Client, BotId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/analytics/utterancemetrics"],
@@ -8128,22 +8587,14 @@ list_utterance_metrics(Client, BotId, Input0, Options0) ->
 -spec search_associated_transcripts(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), search_associated_transcripts_request()) ->
     {ok, search_associated_transcripts_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_associated_transcripts_errors(), tuple()}.
 search_associated_transcripts(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input) ->
     search_associated_transcripts(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input, []).
 
 -spec search_associated_transcripts(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), search_associated_transcripts_request(), proplists:proplist()) ->
     {ok, search_associated_transcripts_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_associated_transcripts_errors(), tuple()}.
 search_associated_transcripts(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/botrecommendations/", aws_util:encode_uri(BotRecommendationId), "/associatedtranscripts"],
@@ -8171,26 +8622,14 @@ search_associated_transcripts(Client, BotId, BotRecommendationId, BotVersion, Lo
 -spec start_bot_recommendation(map(), binary() | list(), binary() | list(), binary() | list(), start_bot_recommendation_request()) ->
     {ok, start_bot_recommendation_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_bot_recommendation_errors(), tuple()}.
 start_bot_recommendation(Client, BotId, BotVersion, LocaleId, Input) ->
     start_bot_recommendation(Client, BotId, BotVersion, LocaleId, Input, []).
 
 -spec start_bot_recommendation(map(), binary() | list(), binary() | list(), binary() | list(), start_bot_recommendation_request(), proplists:proplist()) ->
     {ok, start_bot_recommendation_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_bot_recommendation_errors(), tuple()}.
 start_bot_recommendation(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/botrecommendations"],
@@ -8226,24 +8665,14 @@ start_bot_recommendation(Client, BotId, BotVersion, LocaleId, Input0, Options0) 
 -spec start_bot_resource_generation(map(), binary() | list(), binary() | list(), binary() | list(), start_bot_resource_generation_request()) ->
     {ok, start_bot_resource_generation_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_bot_resource_generation_errors(), tuple()}.
 start_bot_resource_generation(Client, BotId, BotVersion, LocaleId, Input) ->
     start_bot_resource_generation(Client, BotId, BotVersion, LocaleId, Input, []).
 
 -spec start_bot_resource_generation(map(), binary() | list(), binary() | list(), binary() | list(), start_bot_resource_generation_request(), proplists:proplist()) ->
     {ok, start_bot_resource_generation_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_bot_resource_generation_errors(), tuple()}.
 start_bot_resource_generation(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/startgeneration"],
@@ -8271,24 +8700,14 @@ start_bot_resource_generation(Client, BotId, BotVersion, LocaleId, Input0, Optio
 -spec start_import(map(), start_import_request()) ->
     {ok, start_import_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_import_errors(), tuple()}.
 start_import(Client, Input) ->
     start_import(Client, Input, []).
 
 -spec start_import(map(), start_import_request(), proplists:proplist()) ->
     {ok, start_import_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_import_errors(), tuple()}.
 start_import(Client, Input0, Options0) ->
     Method = put,
     Path = ["/imports"],
@@ -8315,24 +8734,14 @@ start_import(Client, Input0, Options0) ->
 -spec start_test_execution(map(), binary() | list(), start_test_execution_request()) ->
     {ok, start_test_execution_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_test_execution_errors(), tuple()}.
 start_test_execution(Client, TestSetId, Input) ->
     start_test_execution(Client, TestSetId, Input, []).
 
 -spec start_test_execution(map(), binary() | list(), start_test_execution_request(), proplists:proplist()) ->
     {ok, start_test_execution_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_test_execution_errors(), tuple()}.
 start_test_execution(Client, TestSetId, Input0, Options0) ->
     Method = post,
     Path = ["/testsets/", aws_util:encode_uri(TestSetId), "/testexecutions"],
@@ -8359,24 +8768,14 @@ start_test_execution(Client, TestSetId, Input0, Options0) ->
 -spec start_test_set_generation(map(), start_test_set_generation_request()) ->
     {ok, start_test_set_generation_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_test_set_generation_errors(), tuple()}.
 start_test_set_generation(Client, Input) ->
     start_test_set_generation(Client, Input, []).
 
 -spec start_test_set_generation(map(), start_test_set_generation_request(), proplists:proplist()) ->
     {ok, start_test_set_generation_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_test_set_generation_errors(), tuple()}.
 start_test_set_generation(Client, Input0, Options0) ->
     Method = put,
     Path = ["/testsetgenerations"],
@@ -8403,26 +8802,14 @@ start_test_set_generation(Client, Input0, Options0) ->
 -spec stop_bot_recommendation(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), stop_bot_recommendation_request()) ->
     {ok, stop_bot_recommendation_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_bot_recommendation_errors(), tuple()}.
 stop_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input) ->
     stop_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input, []).
 
 -spec stop_bot_recommendation(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), stop_bot_recommendation_request(), proplists:proplist()) ->
     {ok, stop_bot_recommendation_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_bot_recommendation_errors(), tuple()}.
 stop_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/botrecommendations/", aws_util:encode_uri(BotRecommendationId), "/stopbotrecommendation"],
@@ -8453,20 +8840,14 @@ stop_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceARN, Input) ->
     tag_resource(Client, ResourceARN, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceARN, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceARN), ""],
@@ -8493,20 +8874,14 @@ tag_resource(Client, ResourceARN, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceARN, Input) ->
     untag_resource(Client, ResourceARN, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceARN, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceARN), ""],
@@ -8534,24 +8909,14 @@ untag_resource(Client, ResourceARN, Input0, Options0) ->
 -spec update_bot(map(), binary() | list(), update_bot_request()) ->
     {ok, update_bot_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_bot_errors(), tuple()}.
 update_bot(Client, BotId, Input) ->
     update_bot(Client, BotId, Input, []).
 
 -spec update_bot(map(), binary() | list(), update_bot_request(), proplists:proplist()) ->
     {ok, update_bot_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_bot_errors(), tuple()}.
 update_bot(Client, BotId, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), ""],
@@ -8578,24 +8943,14 @@ update_bot(Client, BotId, Input0, Options0) ->
 -spec update_bot_alias(map(), binary() | list(), binary() | list(), update_bot_alias_request()) ->
     {ok, update_bot_alias_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_bot_alias_errors(), tuple()}.
 update_bot_alias(Client, BotAliasId, BotId, Input) ->
     update_bot_alias(Client, BotAliasId, BotId, Input, []).
 
 -spec update_bot_alias(map(), binary() | list(), binary() | list(), update_bot_alias_request(), proplists:proplist()) ->
     {ok, update_bot_alias_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_bot_alias_errors(), tuple()}.
 update_bot_alias(Client, BotAliasId, BotId, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botaliases/", aws_util:encode_uri(BotAliasId), ""],
@@ -8622,24 +8977,14 @@ update_bot_alias(Client, BotAliasId, BotId, Input0, Options0) ->
 -spec update_bot_locale(map(), binary() | list(), binary() | list(), binary() | list(), update_bot_locale_request()) ->
     {ok, update_bot_locale_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_bot_locale_errors(), tuple()}.
 update_bot_locale(Client, BotId, BotVersion, LocaleId, Input) ->
     update_bot_locale(Client, BotId, BotVersion, LocaleId, Input, []).
 
 -spec update_bot_locale(map(), binary() | list(), binary() | list(), binary() | list(), update_bot_locale_request(), proplists:proplist()) ->
     {ok, update_bot_locale_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_bot_locale_errors(), tuple()}.
 update_bot_locale(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), ""],
@@ -8666,26 +9011,14 @@ update_bot_locale(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
 -spec update_bot_recommendation(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_bot_recommendation_request()) ->
     {ok, update_bot_recommendation_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_bot_recommendation_errors(), tuple()}.
 update_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input) ->
     update_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input, []).
 
 -spec update_bot_recommendation(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_bot_recommendation_request(), proplists:proplist()) ->
     {ok, update_bot_recommendation_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_bot_recommendation_errors(), tuple()}.
 update_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/botrecommendations/", aws_util:encode_uri(BotRecommendationId), ""],
@@ -8720,24 +9053,14 @@ update_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, Locale
 -spec update_export(map(), binary() | list(), update_export_request()) ->
     {ok, update_export_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_export_errors(), tuple()}.
 update_export(Client, ExportId, Input) ->
     update_export(Client, ExportId, Input, []).
 
 -spec update_export(map(), binary() | list(), update_export_request(), proplists:proplist()) ->
     {ok, update_export_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_export_errors(), tuple()}.
 update_export(Client, ExportId, Input0, Options0) ->
     Method = put,
     Path = ["/exports/", aws_util:encode_uri(ExportId), ""],
@@ -8764,24 +9087,14 @@ update_export(Client, ExportId, Input0, Options0) ->
 -spec update_intent(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_intent_request()) ->
     {ok, update_intent_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_intent_errors(), tuple()}.
 update_intent(Client, BotId, BotVersion, IntentId, LocaleId, Input) ->
     update_intent(Client, BotId, BotVersion, IntentId, LocaleId, Input, []).
 
 -spec update_intent(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_intent_request(), proplists:proplist()) ->
     {ok, update_intent_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_intent_errors(), tuple()}.
 update_intent(Client, BotId, BotVersion, IntentId, LocaleId, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents/", aws_util:encode_uri(IntentId), ""],
@@ -8812,24 +9125,14 @@ update_intent(Client, BotId, BotVersion, IntentId, LocaleId, Input0, Options0) -
 -spec update_resource_policy(map(), binary() | list(), update_resource_policy_request()) ->
     {ok, update_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_resource_policy_errors(), tuple()}.
 update_resource_policy(Client, ResourceArn, Input) ->
     update_resource_policy(Client, ResourceArn, Input, []).
 
 -spec update_resource_policy(map(), binary() | list(), update_resource_policy_request(), proplists:proplist()) ->
     {ok, update_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_resource_policy_errors(), tuple()}.
 update_resource_policy(Client, ResourceArn, Input0, Options0) ->
     Method = put,
     Path = ["/policy/", aws_util:encode_uri(ResourceArn), ""],
@@ -8857,24 +9160,14 @@ update_resource_policy(Client, ResourceArn, Input0, Options0) ->
 -spec update_slot(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_slot_request()) ->
     {ok, update_slot_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_slot_errors(), tuple()}.
 update_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, Input) ->
     update_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, Input, []).
 
 -spec update_slot(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_slot_request(), proplists:proplist()) ->
     {ok, update_slot_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_slot_errors(), tuple()}.
 update_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents/", aws_util:encode_uri(IntentId), "/slots/", aws_util:encode_uri(SlotId), ""],
@@ -8901,24 +9194,14 @@ update_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, Input0, Optio
 -spec update_slot_type(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_slot_type_request()) ->
     {ok, update_slot_type_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_slot_type_errors(), tuple()}.
 update_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, Input) ->
     update_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, Input, []).
 
 -spec update_slot_type(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_slot_type_request(), proplists:proplist()) ->
     {ok, update_slot_type_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_slot_type_errors(), tuple()}.
 update_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/slottypes/", aws_util:encode_uri(SlotTypeId), ""],
@@ -8945,24 +9228,14 @@ update_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, Input0, Option
 -spec update_test_set(map(), binary() | list(), update_test_set_request()) ->
     {ok, update_test_set_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_test_set_errors(), tuple()}.
 update_test_set(Client, TestSetId, Input) ->
     update_test_set(Client, TestSetId, Input, []).
 
 -spec update_test_set(map(), binary() | list(), update_test_set_request(), proplists:proplist()) ->
     {ok, update_test_set_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_test_set_errors(), tuple()}.
 update_test_set(Client, TestSetId, Input0, Options0) ->
     Method = put,
     Path = ["/testsets/", aws_util:encode_uri(TestSetId), ""],

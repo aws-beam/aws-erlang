@@ -102,11 +102,13 @@
 %% }
 -type list_configs_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% register_agent_response() :: #{
 %%   <<"agentId">> => string()
 %% }
 -type register_agent_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% antenna_downlink_demod_decode_config() :: #{
@@ -115,6 +117,7 @@
 %%   <<"spectrumConfig">> => spectrum_config()
 %% }
 -type antenna_downlink_demod_decode_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% component_status_data() :: #{
@@ -128,6 +131,7 @@
 %% }
 -type component_status_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_config_request() :: #{
 %%   <<"configData">> => list(),
@@ -136,12 +140,14 @@
 %% }
 -type create_config_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_minute_usage_request() :: #{
 %%   <<"month">> => integer(),
 %%   <<"year">> => integer()
 %% }
 -type get_minute_usage_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_configs_response() :: #{
@@ -150,6 +156,7 @@
 %% }
 -type list_configs_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% dependency_exception() :: #{
 %%   <<"message">> => [string()],
@@ -157,11 +164,13 @@
 %% }
 -type dependency_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> => map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% dataflow_endpoint_config() :: #{
@@ -169,12 +178,15 @@
 %%   <<"dataflowEndpointRegion">> => [string()]
 %% }
 -type dataflow_endpoint_config() :: #{binary() => any()}.
+
 %% Example:
 %% get_satellite_request() :: #{}
 -type get_satellite_request() :: #{}.
+
 %% Example:
 %% describe_contact_request() :: #{}
 -type describe_contact_request() :: #{}.
+
 
 %% Example:
 %% get_agent_configuration_response() :: #{
@@ -183,6 +195,7 @@
 %% }
 -type get_agent_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% dataflow_detail() :: #{
 %%   <<"destination">> => destination(),
@@ -190,12 +203,15 @@
 %%   <<"source">> => source()
 %% }
 -type dataflow_detail() :: #{binary() => any()}.
+
 %% Example:
 %% get_config_request() :: #{}
 -type get_config_request() :: #{}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% describe_contact_response() :: #{
@@ -216,12 +232,14 @@
 %% }
 -type describe_contact_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_config_request() :: #{
 %%   <<"configData">> => list(),
 %%   <<"name">> => string()
 %% }
 -type update_config_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% register_agent_request() :: #{
@@ -230,11 +248,13 @@
 %% }
 -type register_agent_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tracking_config() :: #{
 %%   <<"autotrack">> => string()
 %% }
 -type tracking_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% ephemeris_description() :: #{
@@ -242,6 +262,7 @@
 %%   <<"sourceS3Object">> => s3_object()
 %% }
 -type ephemeris_description() :: #{binary() => any()}.
+
 
 %% Example:
 %% spectrum_config() :: #{
@@ -251,12 +272,14 @@
 %% }
 -type spectrum_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% socket_address() :: #{
 %%   <<"name">> => [string()],
 %%   <<"port">> => [integer()]
 %% }
 -type socket_address() :: #{binary() => any()}.
+
 
 %% Example:
 %% endpoint_details() :: #{
@@ -268,6 +291,7 @@
 %% }
 -type endpoint_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_config_response() :: #{
 %%   <<"configArn">> => string(),
@@ -278,6 +302,7 @@
 %%   <<"tags">> => map()
 %% }
 -type get_config_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% ephemeris_item() :: #{
@@ -291,12 +316,14 @@
 %% }
 -type ephemeris_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% ranged_socket_address() :: #{
 %%   <<"name">> => string(),
 %%   <<"portRange">> => integer_range()
 %% }
 -type ranged_socket_address() :: #{binary() => any()}.
+
 
 %% Example:
 %% antenna_uplink_config() :: #{
@@ -305,6 +332,7 @@
 %%   <<"transmitDisabled">> => [boolean()]
 %% }
 -type antenna_uplink_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% ephemeris_meta_data() :: #{
@@ -315,6 +343,7 @@
 %% }
 -type ephemeris_meta_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% uplink_echo_config() :: #{
 %%   <<"antennaUplinkConfigArn">> => string(),
@@ -322,12 +351,14 @@
 %% }
 -type uplink_echo_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% ranged_connection_details() :: #{
 %%   <<"mtu">> => [integer()],
 %%   <<"socketAddress">> => ranged_socket_address()
 %% }
 -type ranged_connection_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_object() :: #{
@@ -337,6 +368,7 @@
 %% }
 -type s3_object() :: #{binary() => any()}.
 
+
 %% Example:
 %% config_list_item() :: #{
 %%   <<"configArn">> => string(),
@@ -345,9 +377,11 @@
 %%   <<"name">> => [string()]
 %% }
 -type config_list_item() :: #{binary() => any()}.
+
 %% Example:
 %% cancel_contact_request() :: #{}
 -type cancel_contact_request() :: #{}.
+
 
 %% Example:
 %% agent_details() :: #{
@@ -360,11 +394,13 @@
 %% }
 -type agent_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% decode_config() :: #{
 %%   <<"unvalidatedJSON">> => string()
 %% }
 -type decode_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% reserve_contact_request() :: #{
@@ -377,11 +413,13 @@
 %% }
 -type reserve_contact_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> => list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ground_station_agent_endpoint() :: #{
@@ -392,9 +430,11 @@
 %%   <<"name">> => string()
 %% }
 -type aws_ground_station_agent_endpoint() :: #{binary() => any()}.
+
 %% Example:
 %% delete_config_request() :: #{}
 -type delete_config_request() :: #{}.
+
 
 %% Example:
 %% list_dataflow_endpoint_groups_response() :: #{
@@ -402,6 +442,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_dataflow_endpoint_groups_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% satellite_list_item() :: #{
@@ -413,6 +454,7 @@
 %% }
 -type satellite_list_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% config_id_response() :: #{
 %%   <<"configArn">> => string(),
@@ -421,12 +463,14 @@
 %% }
 -type config_id_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% dataflow_endpoint_list_item() :: #{
 %%   <<"dataflowEndpointGroupArn">> => string(),
 %%   <<"dataflowEndpointGroupId">> => string()
 %% }
 -type dataflow_endpoint_list_item() :: #{binary() => any()}.
+
 
 %% Example:
 %% frequency() :: #{
@@ -435,6 +479,7 @@
 %% }
 -type frequency() :: #{binary() => any()}.
 
+
 %% Example:
 %% integer_range() :: #{
 %%   <<"maximum">> => [integer()],
@@ -442,17 +487,20 @@
 %% }
 -type integer_range() :: #{binary() => any()}.
 
+
 %% Example:
 %% mission_profile_id_response() :: #{
 %%   <<"missionProfileId">> => string()
 %% }
 -type mission_profile_id_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_mission_profiles_response() :: #{
@@ -461,6 +509,7 @@
 %% }
 -type list_mission_profiles_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_mission_profiles_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -468,11 +517,13 @@
 %% }
 -type list_mission_profiles_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_agent_status_response() :: #{
 %%   <<"agentId">> := string()
 %% }
 -type update_agent_status_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% contact_data() :: #{
@@ -492,6 +543,7 @@
 %% }
 -type contact_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% ground_station_data() :: #{
 %%   <<"groundStationId">> => string(),
@@ -499,9 +551,11 @@
 %%   <<"region">> => string()
 %% }
 -type ground_station_data() :: #{binary() => any()}.
+
 %% Example:
 %% get_mission_profile_request() :: #{}
 -type get_mission_profile_request() :: #{}.
+
 
 %% Example:
 %% resource_limit_exceeded_exception() :: #{
@@ -510,17 +564,20 @@
 %% }
 -type resource_limit_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% demodulation_config() :: #{
 %%   <<"unvalidatedJSON">> => string()
 %% }
 -type demodulation_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% contact_id_response() :: #{
 %%   <<"contactId">> => string()
 %% }
 -type contact_id_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_agent_status_request() :: #{
@@ -529,6 +586,7 @@
 %%   <<"taskId">> := string()
 %% }
 -type update_agent_status_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_dataflow_endpoint_group_response() :: #{
@@ -541,12 +599,14 @@
 %% }
 -type get_dataflow_endpoint_group_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% aggregate_status() :: #{
 %%   <<"signatureMap">> => map(),
 %%   <<"status">> => string()
 %% }
 -type aggregate_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_ephemeris_request() :: #{
@@ -556,11 +616,13 @@
 %% }
 -type update_ephemeris_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% ephemeris_id_response() :: #{
 %%   <<"ephemerisId">> => string()
 %% }
 -type ephemeris_id_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% dataflow_endpoint() :: #{
@@ -570,6 +632,7 @@
 %%   <<"status">> => string()
 %% }
 -type dataflow_endpoint() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_minute_usage_response() :: #{
@@ -581,11 +644,13 @@
 %% }
 -type get_minute_usage_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_ephemeris_request() :: #{
@@ -600,11 +665,13 @@
 %% }
 -type create_ephemeris_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% dataflow_endpoint_group_id_response() :: #{
 %%   <<"dataflowEndpointGroupId">> => string()
 %% }
 -type dataflow_endpoint_group_id_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% component_version() :: #{
@@ -612,6 +679,7 @@
 %%   <<"versions">> => list(string()())
 %% }
 -type component_version() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_ground_stations_request() :: #{
@@ -621,12 +689,14 @@
 %% }
 -type list_ground_stations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_ephemerides_response() :: #{
 %%   <<"ephemerides">> => list(ephemeris_item()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_ephemerides_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% source() :: #{
@@ -636,6 +706,7 @@
 %%   <<"dataflowSourceRegion">> => [string()]
 %% }
 -type source() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_contacts_request() :: #{
@@ -649,9 +720,11 @@
 %%   <<"statusList">> => list(string()())
 %% }
 -type list_contacts_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_ephemeris_request() :: #{}
 -type delete_ephemeris_request() :: #{}.
+
 
 %% Example:
 %% mission_profile_list_item() :: #{
@@ -662,6 +735,7 @@
 %% }
 -type mission_profile_list_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% o_e_m_ephemeris() :: #{
 %%   <<"oemData">> => string(),
@@ -669,15 +743,18 @@
 %% }
 -type o_e_m_ephemeris() :: #{binary() => any()}.
 
+
 %% Example:
 %% uplink_spectrum_config() :: #{
 %%   <<"centerFrequency">> => frequency(),
 %%   <<"polarization">> => string()
 %% }
 -type uplink_spectrum_config() :: #{binary() => any()}.
+
 %% Example:
 %% delete_mission_profile_request() :: #{}
 -type delete_mission_profile_request() :: #{}.
+
 
 %% Example:
 %% list_contacts_response() :: #{
@@ -685,9 +762,11 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_contacts_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_dataflow_endpoint_group_request() :: #{}
 -type delete_dataflow_endpoint_group_request() :: #{}.
+
 
 %% Example:
 %% time_range() :: #{
@@ -696,12 +775,14 @@
 %% }
 -type time_range() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_parameter_exception() :: #{
 %%   <<"message">> => [string()],
 %%   <<"parameterName">> => [string()]
 %% }
 -type invalid_parameter_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_satellite_response() :: #{
@@ -712,9 +793,11 @@
 %%   <<"satelliteId">> => string()
 %% }
 -type get_satellite_response() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% list_satellites_response() :: #{
@@ -722,12 +805,15 @@
 %%   <<"satellites">> => list(satellite_list_item()())
 %% }
 -type list_satellites_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_ephemeris_request() :: #{}
 -type describe_ephemeris_request() :: #{}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% destination() :: #{
@@ -738,12 +824,14 @@
 %% }
 -type destination() :: #{binary() => any()}.
 
+
 %% Example:
 %% t_l_e_ephemeris() :: #{
 %%   <<"s3Object">> => s3_object(),
 %%   <<"tleData">> => list(t_l_e_data()())
 %% }
 -type t_l_e_ephemeris() :: #{binary() => any()}.
+
 
 %% Example:
 %% security_details() :: #{
@@ -753,6 +841,7 @@
 %% }
 -type security_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_recording_config() :: #{
 %%   <<"bucketArn">> => string(),
@@ -760,6 +849,7 @@
 %%   <<"roleArn">> => string()
 %% }
 -type s3_recording_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_ephemerides_request() :: #{
@@ -772,6 +862,7 @@
 %% }
 -type list_ephemerides_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_recording_details() :: #{
 %%   <<"bucketArn">> => string(),
@@ -779,11 +870,13 @@
 %% }
 -type s3_recording_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% antenna_demod_decode_details() :: #{
 %%   <<"outputNode">> => [string()]
 %% }
 -type antenna_demod_decode_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% t_l_e_data() :: #{
@@ -793,6 +886,7 @@
 %% }
 -type t_l_e_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% frequency_bandwidth() :: #{
 %%   <<"units">> => string(),
@@ -800,11 +894,13 @@
 %% }
 -type frequency_bandwidth() :: #{binary() => any()}.
 
+
 %% Example:
 %% antenna_downlink_config() :: #{
 %%   <<"spectrumConfig">> => spectrum_config()
 %% }
 -type antenna_downlink_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_dataflow_endpoint_groups_request() :: #{
@@ -813,6 +909,7 @@
 %% }
 -type list_dataflow_endpoint_groups_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% eirp() :: #{
 %%   <<"units">> => string(),
@@ -820,12 +917,14 @@
 %% }
 -type eirp() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_ground_stations_response() :: #{
 %%   <<"groundStationList">> => list(ground_station_data()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_ground_stations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_mission_profile_response() :: #{
@@ -844,12 +943,14 @@
 %% }
 -type get_mission_profile_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% connection_details() :: #{
 %%   <<"mtu">> => [integer()],
 %%   <<"socketAddress">> => socket_address()
 %% }
 -type connection_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% discovery_data() :: #{
@@ -858,6 +959,7 @@
 %%   <<"publicIpAddresses">> => list(string()())
 %% }
 -type discovery_data() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_ephemeris_response() :: #{
@@ -874,12 +976,14 @@
 %% }
 -type describe_ephemeris_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_satellites_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_satellites_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_dataflow_endpoint_group_request() :: #{
@@ -890,18 +994,22 @@
 %% }
 -type create_dataflow_endpoint_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% elevation() :: #{
 %%   <<"unit">> => string(),
 %%   <<"value">> => [float()]
 %% }
 -type elevation() :: #{binary() => any()}.
+
 %% Example:
 %% get_dataflow_endpoint_group_request() :: #{}
 -type get_dataflow_endpoint_group_request() :: #{}.
+
 %% Example:
 %% get_agent_configuration_request() :: #{}
 -type get_agent_configuration_request() :: #{}.
+
 
 %% Example:
 %% create_mission_profile_request() :: #{
@@ -917,6 +1025,7 @@
 %% }
 -type create_mission_profile_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_mission_profile_request() :: #{
 %%   <<"contactPostPassDurationSeconds">> => integer(),
@@ -930,6 +1039,172 @@
 %% }
 -type update_mission_profile_request() :: #{binary() => any()}.
 
+-type cancel_contact_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type create_config_errors() ::
+    invalid_parameter_exception() | 
+    resource_limit_exceeded_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type create_dataflow_endpoint_group_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type create_ephemeris_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type create_mission_profile_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type delete_config_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type delete_dataflow_endpoint_group_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type delete_ephemeris_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type delete_mission_profile_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type describe_contact_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type describe_ephemeris_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type get_agent_configuration_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type get_config_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type get_dataflow_endpoint_group_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type get_minute_usage_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type get_mission_profile_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type get_satellite_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type list_configs_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type list_contacts_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type list_dataflow_endpoint_groups_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type list_ephemerides_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type list_ground_stations_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type list_mission_profiles_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type list_satellites_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type list_tags_for_resource_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type register_agent_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type reserve_contact_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type tag_resource_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type untag_resource_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type update_agent_status_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type update_config_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type update_ephemeris_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type update_mission_profile_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -938,18 +1213,14 @@
 -spec cancel_contact(map(), binary() | list(), cancel_contact_request()) ->
     {ok, contact_id_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, cancel_contact_errors(), tuple()}.
 cancel_contact(Client, ContactId, Input) ->
     cancel_contact(Client, ContactId, Input, []).
 
 -spec cancel_contact(map(), binary() | list(), cancel_contact_request(), proplists:proplist()) ->
     {ok, contact_id_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, cancel_contact_errors(), tuple()}.
 cancel_contact(Client, ContactId, Input0, Options0) ->
     Method = delete,
     Path = ["/contact/", aws_util:encode_uri(ContactId), ""],
@@ -979,20 +1250,14 @@ cancel_contact(Client, ContactId, Input0, Options0) ->
 -spec create_config(map(), create_config_request()) ->
     {ok, config_id_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_config_errors(), tuple()}.
 create_config(Client, Input) ->
     create_config(Client, Input, []).
 
 -spec create_config(map(), create_config_request(), proplists:proplist()) ->
     {ok, config_id_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_config_errors(), tuple()}.
 create_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/config"],
@@ -1028,18 +1293,14 @@ create_config(Client, Input0, Options0) ->
 -spec create_dataflow_endpoint_group(map(), create_dataflow_endpoint_group_request()) ->
     {ok, dataflow_endpoint_group_id_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_dataflow_endpoint_group_errors(), tuple()}.
 create_dataflow_endpoint_group(Client, Input) ->
     create_dataflow_endpoint_group(Client, Input, []).
 
 -spec create_dataflow_endpoint_group(map(), create_dataflow_endpoint_group_request(), proplists:proplist()) ->
     {ok, dataflow_endpoint_group_id_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_dataflow_endpoint_group_errors(), tuple()}.
 create_dataflow_endpoint_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/dataflowEndpointGroup"],
@@ -1066,18 +1327,14 @@ create_dataflow_endpoint_group(Client, Input0, Options0) ->
 -spec create_ephemeris(map(), create_ephemeris_request()) ->
     {ok, ephemeris_id_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_ephemeris_errors(), tuple()}.
 create_ephemeris(Client, Input) ->
     create_ephemeris(Client, Input, []).
 
 -spec create_ephemeris(map(), create_ephemeris_request(), proplists:proplist()) ->
     {ok, ephemeris_id_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_ephemeris_errors(), tuple()}.
 create_ephemeris(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ephemeris"],
@@ -1108,18 +1365,14 @@ create_ephemeris(Client, Input0, Options0) ->
 -spec create_mission_profile(map(), create_mission_profile_request()) ->
     {ok, mission_profile_id_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_mission_profile_errors(), tuple()}.
 create_mission_profile(Client, Input) ->
     create_mission_profile(Client, Input, []).
 
 -spec create_mission_profile(map(), create_mission_profile_request(), proplists:proplist()) ->
     {ok, mission_profile_id_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_mission_profile_errors(), tuple()}.
 create_mission_profile(Client, Input0, Options0) ->
     Method = post,
     Path = ["/missionprofile"],
@@ -1146,18 +1399,14 @@ create_mission_profile(Client, Input0, Options0) ->
 -spec delete_config(map(), binary() | list(), binary() | list(), delete_config_request()) ->
     {ok, config_id_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_config_errors(), tuple()}.
 delete_config(Client, ConfigId, ConfigType, Input) ->
     delete_config(Client, ConfigId, ConfigType, Input, []).
 
 -spec delete_config(map(), binary() | list(), binary() | list(), delete_config_request(), proplists:proplist()) ->
     {ok, config_id_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_config_errors(), tuple()}.
 delete_config(Client, ConfigId, ConfigType, Input0, Options0) ->
     Method = delete,
     Path = ["/config/", aws_util:encode_uri(ConfigType), "/", aws_util:encode_uri(ConfigId), ""],
@@ -1184,18 +1433,14 @@ delete_config(Client, ConfigId, ConfigType, Input0, Options0) ->
 -spec delete_dataflow_endpoint_group(map(), binary() | list(), delete_dataflow_endpoint_group_request()) ->
     {ok, dataflow_endpoint_group_id_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_dataflow_endpoint_group_errors(), tuple()}.
 delete_dataflow_endpoint_group(Client, DataflowEndpointGroupId, Input) ->
     delete_dataflow_endpoint_group(Client, DataflowEndpointGroupId, Input, []).
 
 -spec delete_dataflow_endpoint_group(map(), binary() | list(), delete_dataflow_endpoint_group_request(), proplists:proplist()) ->
     {ok, dataflow_endpoint_group_id_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_dataflow_endpoint_group_errors(), tuple()}.
 delete_dataflow_endpoint_group(Client, DataflowEndpointGroupId, Input0, Options0) ->
     Method = delete,
     Path = ["/dataflowEndpointGroup/", aws_util:encode_uri(DataflowEndpointGroupId), ""],
@@ -1222,18 +1467,14 @@ delete_dataflow_endpoint_group(Client, DataflowEndpointGroupId, Input0, Options0
 -spec delete_ephemeris(map(), binary() | list(), delete_ephemeris_request()) ->
     {ok, ephemeris_id_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_ephemeris_errors(), tuple()}.
 delete_ephemeris(Client, EphemerisId, Input) ->
     delete_ephemeris(Client, EphemerisId, Input, []).
 
 -spec delete_ephemeris(map(), binary() | list(), delete_ephemeris_request(), proplists:proplist()) ->
     {ok, ephemeris_id_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_ephemeris_errors(), tuple()}.
 delete_ephemeris(Client, EphemerisId, Input0, Options0) ->
     Method = delete,
     Path = ["/ephemeris/", aws_util:encode_uri(EphemerisId), ""],
@@ -1260,18 +1501,14 @@ delete_ephemeris(Client, EphemerisId, Input0, Options0) ->
 -spec delete_mission_profile(map(), binary() | list(), delete_mission_profile_request()) ->
     {ok, mission_profile_id_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_mission_profile_errors(), tuple()}.
 delete_mission_profile(Client, MissionProfileId, Input) ->
     delete_mission_profile(Client, MissionProfileId, Input, []).
 
 -spec delete_mission_profile(map(), binary() | list(), delete_mission_profile_request(), proplists:proplist()) ->
     {ok, mission_profile_id_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_mission_profile_errors(), tuple()}.
 delete_mission_profile(Client, MissionProfileId, Input0, Options0) ->
     Method = delete,
     Path = ["/missionprofile/", aws_util:encode_uri(MissionProfileId), ""],
@@ -1298,9 +1535,7 @@ delete_mission_profile(Client, MissionProfileId, Input0, Options0) ->
 -spec describe_contact(map(), binary() | list()) ->
     {ok, describe_contact_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_contact_errors(), tuple()}.
 describe_contact(Client, ContactId)
   when is_map(Client) ->
     describe_contact(Client, ContactId, #{}, #{}).
@@ -1308,9 +1543,7 @@ describe_contact(Client, ContactId)
 -spec describe_contact(map(), binary() | list(), map(), map()) ->
     {ok, describe_contact_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_contact_errors(), tuple()}.
 describe_contact(Client, ContactId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_contact(Client, ContactId, QueryMap, HeadersMap, []).
@@ -1318,9 +1551,7 @@ describe_contact(Client, ContactId, QueryMap, HeadersMap)
 -spec describe_contact(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_contact_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_contact_errors(), tuple()}.
 describe_contact(Client, ContactId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/contact/", aws_util:encode_uri(ContactId), ""],
@@ -1341,9 +1572,7 @@ describe_contact(Client, ContactId, QueryMap, HeadersMap, Options0)
 -spec describe_ephemeris(map(), binary() | list()) ->
     {ok, describe_ephemeris_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_ephemeris_errors(), tuple()}.
 describe_ephemeris(Client, EphemerisId)
   when is_map(Client) ->
     describe_ephemeris(Client, EphemerisId, #{}, #{}).
@@ -1351,9 +1580,7 @@ describe_ephemeris(Client, EphemerisId)
 -spec describe_ephemeris(map(), binary() | list(), map(), map()) ->
     {ok, describe_ephemeris_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_ephemeris_errors(), tuple()}.
 describe_ephemeris(Client, EphemerisId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_ephemeris(Client, EphemerisId, QueryMap, HeadersMap, []).
@@ -1361,9 +1588,7 @@ describe_ephemeris(Client, EphemerisId, QueryMap, HeadersMap)
 -spec describe_ephemeris(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_ephemeris_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_ephemeris_errors(), tuple()}.
 describe_ephemeris(Client, EphemerisId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ephemeris/", aws_util:encode_uri(EphemerisId), ""],
@@ -1387,9 +1612,7 @@ describe_ephemeris(Client, EphemerisId, QueryMap, HeadersMap, Options0)
 -spec get_agent_configuration(map(), binary() | list()) ->
     {ok, get_agent_configuration_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_agent_configuration_errors(), tuple()}.
 get_agent_configuration(Client, AgentId)
   when is_map(Client) ->
     get_agent_configuration(Client, AgentId, #{}, #{}).
@@ -1397,9 +1620,7 @@ get_agent_configuration(Client, AgentId)
 -spec get_agent_configuration(map(), binary() | list(), map(), map()) ->
     {ok, get_agent_configuration_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_agent_configuration_errors(), tuple()}.
 get_agent_configuration(Client, AgentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_agent_configuration(Client, AgentId, QueryMap, HeadersMap, []).
@@ -1407,9 +1628,7 @@ get_agent_configuration(Client, AgentId, QueryMap, HeadersMap)
 -spec get_agent_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_agent_configuration_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_agent_configuration_errors(), tuple()}.
 get_agent_configuration(Client, AgentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/agent/", aws_util:encode_uri(AgentId), "/configuration"],
@@ -1432,9 +1651,7 @@ get_agent_configuration(Client, AgentId, QueryMap, HeadersMap, Options0)
 -spec get_config(map(), binary() | list(), binary() | list()) ->
     {ok, get_config_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_config_errors(), tuple()}.
 get_config(Client, ConfigId, ConfigType)
   when is_map(Client) ->
     get_config(Client, ConfigId, ConfigType, #{}, #{}).
@@ -1442,9 +1659,7 @@ get_config(Client, ConfigId, ConfigType)
 -spec get_config(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_config_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_config_errors(), tuple()}.
 get_config(Client, ConfigId, ConfigType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_config(Client, ConfigId, ConfigType, QueryMap, HeadersMap, []).
@@ -1452,9 +1667,7 @@ get_config(Client, ConfigId, ConfigType, QueryMap, HeadersMap)
 -spec get_config(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_config_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_config_errors(), tuple()}.
 get_config(Client, ConfigId, ConfigType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/config/", aws_util:encode_uri(ConfigType), "/", aws_util:encode_uri(ConfigId), ""],
@@ -1475,9 +1688,7 @@ get_config(Client, ConfigId, ConfigType, QueryMap, HeadersMap, Options0)
 -spec get_dataflow_endpoint_group(map(), binary() | list()) ->
     {ok, get_dataflow_endpoint_group_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_dataflow_endpoint_group_errors(), tuple()}.
 get_dataflow_endpoint_group(Client, DataflowEndpointGroupId)
   when is_map(Client) ->
     get_dataflow_endpoint_group(Client, DataflowEndpointGroupId, #{}, #{}).
@@ -1485,9 +1696,7 @@ get_dataflow_endpoint_group(Client, DataflowEndpointGroupId)
 -spec get_dataflow_endpoint_group(map(), binary() | list(), map(), map()) ->
     {ok, get_dataflow_endpoint_group_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_dataflow_endpoint_group_errors(), tuple()}.
 get_dataflow_endpoint_group(Client, DataflowEndpointGroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_dataflow_endpoint_group(Client, DataflowEndpointGroupId, QueryMap, HeadersMap, []).
@@ -1495,9 +1704,7 @@ get_dataflow_endpoint_group(Client, DataflowEndpointGroupId, QueryMap, HeadersMa
 -spec get_dataflow_endpoint_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_dataflow_endpoint_group_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_dataflow_endpoint_group_errors(), tuple()}.
 get_dataflow_endpoint_group(Client, DataflowEndpointGroupId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/dataflowEndpointGroup/", aws_util:encode_uri(DataflowEndpointGroupId), ""],
@@ -1518,18 +1725,14 @@ get_dataflow_endpoint_group(Client, DataflowEndpointGroupId, QueryMap, HeadersMa
 -spec get_minute_usage(map(), get_minute_usage_request()) ->
     {ok, get_minute_usage_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_minute_usage_errors(), tuple()}.
 get_minute_usage(Client, Input) ->
     get_minute_usage(Client, Input, []).
 
 -spec get_minute_usage(map(), get_minute_usage_request(), proplists:proplist()) ->
     {ok, get_minute_usage_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_minute_usage_errors(), tuple()}.
 get_minute_usage(Client, Input0, Options0) ->
     Method = post,
     Path = ["/minute-usage"],
@@ -1556,9 +1759,7 @@ get_minute_usage(Client, Input0, Options0) ->
 -spec get_mission_profile(map(), binary() | list()) ->
     {ok, get_mission_profile_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_mission_profile_errors(), tuple()}.
 get_mission_profile(Client, MissionProfileId)
   when is_map(Client) ->
     get_mission_profile(Client, MissionProfileId, #{}, #{}).
@@ -1566,9 +1767,7 @@ get_mission_profile(Client, MissionProfileId)
 -spec get_mission_profile(map(), binary() | list(), map(), map()) ->
     {ok, get_mission_profile_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_mission_profile_errors(), tuple()}.
 get_mission_profile(Client, MissionProfileId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_mission_profile(Client, MissionProfileId, QueryMap, HeadersMap, []).
@@ -1576,9 +1775,7 @@ get_mission_profile(Client, MissionProfileId, QueryMap, HeadersMap)
 -spec get_mission_profile(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_mission_profile_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_mission_profile_errors(), tuple()}.
 get_mission_profile(Client, MissionProfileId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/missionprofile/", aws_util:encode_uri(MissionProfileId), ""],
@@ -1599,9 +1796,7 @@ get_mission_profile(Client, MissionProfileId, QueryMap, HeadersMap, Options0)
 -spec get_satellite(map(), binary() | list()) ->
     {ok, get_satellite_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_satellite_errors(), tuple()}.
 get_satellite(Client, SatelliteId)
   when is_map(Client) ->
     get_satellite(Client, SatelliteId, #{}, #{}).
@@ -1609,9 +1804,7 @@ get_satellite(Client, SatelliteId)
 -spec get_satellite(map(), binary() | list(), map(), map()) ->
     {ok, get_satellite_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_satellite_errors(), tuple()}.
 get_satellite(Client, SatelliteId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_satellite(Client, SatelliteId, QueryMap, HeadersMap, []).
@@ -1619,9 +1812,7 @@ get_satellite(Client, SatelliteId, QueryMap, HeadersMap)
 -spec get_satellite(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_satellite_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_satellite_errors(), tuple()}.
 get_satellite(Client, SatelliteId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/satellite/", aws_util:encode_uri(SatelliteId), ""],
@@ -1642,9 +1833,7 @@ get_satellite(Client, SatelliteId, QueryMap, HeadersMap, Options0)
 -spec list_configs(map()) ->
     {ok, list_configs_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_configs_errors(), tuple()}.
 list_configs(Client)
   when is_map(Client) ->
     list_configs(Client, #{}, #{}).
@@ -1652,9 +1841,7 @@ list_configs(Client)
 -spec list_configs(map(), map(), map()) ->
     {ok, list_configs_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_configs_errors(), tuple()}.
 list_configs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configs(Client, QueryMap, HeadersMap, []).
@@ -1662,9 +1849,7 @@ list_configs(Client, QueryMap, HeadersMap)
 -spec list_configs(map(), map(), map(), proplists:proplist()) ->
     {ok, list_configs_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_configs_errors(), tuple()}.
 list_configs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/config"],
@@ -1693,18 +1878,14 @@ list_configs(Client, QueryMap, HeadersMap, Options0)
 -spec list_contacts(map(), list_contacts_request()) ->
     {ok, list_contacts_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_contacts_errors(), tuple()}.
 list_contacts(Client, Input) ->
     list_contacts(Client, Input, []).
 
 -spec list_contacts(map(), list_contacts_request(), proplists:proplist()) ->
     {ok, list_contacts_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_contacts_errors(), tuple()}.
 list_contacts(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contacts"],
@@ -1731,9 +1912,7 @@ list_contacts(Client, Input0, Options0) ->
 -spec list_dataflow_endpoint_groups(map()) ->
     {ok, list_dataflow_endpoint_groups_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_dataflow_endpoint_groups_errors(), tuple()}.
 list_dataflow_endpoint_groups(Client)
   when is_map(Client) ->
     list_dataflow_endpoint_groups(Client, #{}, #{}).
@@ -1741,9 +1920,7 @@ list_dataflow_endpoint_groups(Client)
 -spec list_dataflow_endpoint_groups(map(), map(), map()) ->
     {ok, list_dataflow_endpoint_groups_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_dataflow_endpoint_groups_errors(), tuple()}.
 list_dataflow_endpoint_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_dataflow_endpoint_groups(Client, QueryMap, HeadersMap, []).
@@ -1751,9 +1928,7 @@ list_dataflow_endpoint_groups(Client, QueryMap, HeadersMap)
 -spec list_dataflow_endpoint_groups(map(), map(), map(), proplists:proplist()) ->
     {ok, list_dataflow_endpoint_groups_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_dataflow_endpoint_groups_errors(), tuple()}.
 list_dataflow_endpoint_groups(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/dataflowEndpointGroup"],
@@ -1779,18 +1954,14 @@ list_dataflow_endpoint_groups(Client, QueryMap, HeadersMap, Options0)
 -spec list_ephemerides(map(), list_ephemerides_request()) ->
     {ok, list_ephemerides_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_ephemerides_errors(), tuple()}.
 list_ephemerides(Client, Input) ->
     list_ephemerides(Client, Input, []).
 
 -spec list_ephemerides(map(), list_ephemerides_request(), proplists:proplist()) ->
     {ok, list_ephemerides_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_ephemerides_errors(), tuple()}.
 list_ephemerides(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ephemerides"],
@@ -1819,9 +1990,7 @@ list_ephemerides(Client, Input0, Options0) ->
 -spec list_ground_stations(map()) ->
     {ok, list_ground_stations_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_ground_stations_errors(), tuple()}.
 list_ground_stations(Client)
   when is_map(Client) ->
     list_ground_stations(Client, #{}, #{}).
@@ -1829,9 +1998,7 @@ list_ground_stations(Client)
 -spec list_ground_stations(map(), map(), map()) ->
     {ok, list_ground_stations_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_ground_stations_errors(), tuple()}.
 list_ground_stations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ground_stations(Client, QueryMap, HeadersMap, []).
@@ -1839,9 +2006,7 @@ list_ground_stations(Client, QueryMap, HeadersMap)
 -spec list_ground_stations(map(), map(), map(), proplists:proplist()) ->
     {ok, list_ground_stations_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_ground_stations_errors(), tuple()}.
 list_ground_stations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/groundstation"],
@@ -1868,9 +2033,7 @@ list_ground_stations(Client, QueryMap, HeadersMap, Options0)
 -spec list_mission_profiles(map()) ->
     {ok, list_mission_profiles_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_mission_profiles_errors(), tuple()}.
 list_mission_profiles(Client)
   when is_map(Client) ->
     list_mission_profiles(Client, #{}, #{}).
@@ -1878,9 +2041,7 @@ list_mission_profiles(Client)
 -spec list_mission_profiles(map(), map(), map()) ->
     {ok, list_mission_profiles_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_mission_profiles_errors(), tuple()}.
 list_mission_profiles(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_mission_profiles(Client, QueryMap, HeadersMap, []).
@@ -1888,9 +2049,7 @@ list_mission_profiles(Client, QueryMap, HeadersMap)
 -spec list_mission_profiles(map(), map(), map(), proplists:proplist()) ->
     {ok, list_mission_profiles_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_mission_profiles_errors(), tuple()}.
 list_mission_profiles(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/missionprofile"],
@@ -1916,9 +2075,7 @@ list_mission_profiles(Client, QueryMap, HeadersMap, Options0)
 -spec list_satellites(map()) ->
     {ok, list_satellites_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_satellites_errors(), tuple()}.
 list_satellites(Client)
   when is_map(Client) ->
     list_satellites(Client, #{}, #{}).
@@ -1926,9 +2083,7 @@ list_satellites(Client)
 -spec list_satellites(map(), map(), map()) ->
     {ok, list_satellites_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_satellites_errors(), tuple()}.
 list_satellites(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_satellites(Client, QueryMap, HeadersMap, []).
@@ -1936,9 +2091,7 @@ list_satellites(Client, QueryMap, HeadersMap)
 -spec list_satellites(map(), map(), map(), proplists:proplist()) ->
     {ok, list_satellites_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_satellites_errors(), tuple()}.
 list_satellites(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/satellite"],
@@ -1964,9 +2117,7 @@ list_satellites(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1974,9 +2125,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1984,9 +2133,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2010,18 +2157,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec register_agent(map(), register_agent_request()) ->
     {ok, register_agent_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, register_agent_errors(), tuple()}.
 register_agent(Client, Input) ->
     register_agent(Client, Input, []).
 
 -spec register_agent(map(), register_agent_request(), proplists:proplist()) ->
     {ok, register_agent_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, register_agent_errors(), tuple()}.
 register_agent(Client, Input0, Options0) ->
     Method = post,
     Path = ["/agent"],
@@ -2048,18 +2191,14 @@ register_agent(Client, Input0, Options0) ->
 -spec reserve_contact(map(), reserve_contact_request()) ->
     {ok, contact_id_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, reserve_contact_errors(), tuple()}.
 reserve_contact(Client, Input) ->
     reserve_contact(Client, Input, []).
 
 -spec reserve_contact(map(), reserve_contact_request(), proplists:proplist()) ->
     {ok, contact_id_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, reserve_contact_errors(), tuple()}.
 reserve_contact(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact"],
@@ -2086,18 +2225,14 @@ reserve_contact(Client, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2124,18 +2259,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2166,18 +2297,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_agent_status(map(), binary() | list(), update_agent_status_request()) ->
     {ok, update_agent_status_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_agent_status_errors(), tuple()}.
 update_agent_status(Client, AgentId, Input) ->
     update_agent_status(Client, AgentId, Input, []).
 
 -spec update_agent_status(map(), binary() | list(), update_agent_status_request(), proplists:proplist()) ->
     {ok, update_agent_status_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_agent_status_errors(), tuple()}.
 update_agent_status(Client, AgentId, Input0, Options0) ->
     Method = put,
     Path = ["/agent/", aws_util:encode_uri(AgentId), ""],
@@ -2207,18 +2334,14 @@ update_agent_status(Client, AgentId, Input0, Options0) ->
 -spec update_config(map(), binary() | list(), binary() | list(), update_config_request()) ->
     {ok, config_id_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_config_errors(), tuple()}.
 update_config(Client, ConfigId, ConfigType, Input) ->
     update_config(Client, ConfigId, ConfigType, Input, []).
 
 -spec update_config(map(), binary() | list(), binary() | list(), update_config_request(), proplists:proplist()) ->
     {ok, config_id_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_config_errors(), tuple()}.
 update_config(Client, ConfigId, ConfigType, Input0, Options0) ->
     Method = put,
     Path = ["/config/", aws_util:encode_uri(ConfigType), "/", aws_util:encode_uri(ConfigId), ""],
@@ -2245,18 +2368,14 @@ update_config(Client, ConfigId, ConfigType, Input0, Options0) ->
 -spec update_ephemeris(map(), binary() | list(), update_ephemeris_request()) ->
     {ok, ephemeris_id_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_ephemeris_errors(), tuple()}.
 update_ephemeris(Client, EphemerisId, Input) ->
     update_ephemeris(Client, EphemerisId, Input, []).
 
 -spec update_ephemeris(map(), binary() | list(), update_ephemeris_request(), proplists:proplist()) ->
     {ok, ephemeris_id_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_ephemeris_errors(), tuple()}.
 update_ephemeris(Client, EphemerisId, Input0, Options0) ->
     Method = put,
     Path = ["/ephemeris/", aws_util:encode_uri(EphemerisId), ""],
@@ -2286,18 +2405,14 @@ update_ephemeris(Client, EphemerisId, Input0, Options0) ->
 -spec update_mission_profile(map(), binary() | list(), update_mission_profile_request()) ->
     {ok, mission_profile_id_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_mission_profile_errors(), tuple()}.
 update_mission_profile(Client, MissionProfileId, Input) ->
     update_mission_profile(Client, MissionProfileId, Input, []).
 
 -spec update_mission_profile(map(), binary() | list(), update_mission_profile_request(), proplists:proplist()) ->
     {ok, mission_profile_id_response(), tuple()} |
     {error, any()} |
-    {error, dependency_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_mission_profile_errors(), tuple()}.
 update_mission_profile(Client, MissionProfileId, Input0, Options0) ->
     Method = put,
     Path = ["/missionprofile/", aws_util:encode_uri(MissionProfileId), ""],

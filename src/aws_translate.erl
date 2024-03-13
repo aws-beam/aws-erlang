@@ -606,6 +606,134 @@
 %% }
 -type applied_terminology() :: #{binary() => any()}.
 
+-type create_parallel_data_errors() ::
+    too_many_tags_exception() | 
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    internal_server_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception().
+
+-type delete_parallel_data_errors() ::
+    concurrent_modification_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_terminology_errors() ::
+    internal_server_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type describe_text_translation_job_errors() ::
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_parallel_data_errors() ::
+    internal_server_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_terminology_errors() ::
+    internal_server_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type import_terminology_errors() ::
+    too_many_tags_exception() | 
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    internal_server_exception() | 
+    invalid_parameter_value_exception() | 
+    too_many_requests_exception().
+
+-type list_languages_errors() ::
+    unsupported_display_language_code_exception() | 
+    internal_server_exception() | 
+    invalid_parameter_value_exception() | 
+    too_many_requests_exception().
+
+-type list_parallel_data_errors() ::
+    internal_server_exception() | 
+    invalid_parameter_value_exception() | 
+    too_many_requests_exception().
+
+-type list_tags_for_resource_errors() ::
+    internal_server_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception().
+
+-type list_terminologies_errors() ::
+    internal_server_exception() | 
+    invalid_parameter_value_exception() | 
+    too_many_requests_exception().
+
+-type list_text_translation_jobs_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    invalid_filter_exception() | 
+    too_many_requests_exception().
+
+-type start_text_translation_job_errors() ::
+    internal_server_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    unsupported_language_pair_exception().
+
+-type stop_text_translation_job_errors() ::
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    concurrent_modification_exception() | 
+    internal_server_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception().
+
+-type translate_document_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    unsupported_language_pair_exception().
+
+-type translate_text_errors() ::
+    text_size_limit_exceeded_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    detected_language_low_confidence_exception() | 
+    unsupported_language_pair_exception().
+
+-type untag_resource_errors() ::
+    concurrent_modification_exception() | 
+    internal_server_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception().
+
+-type update_parallel_data_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    internal_server_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception().
 
 %%====================================================================
 %% API
@@ -623,14 +751,7 @@
 -spec create_parallel_data(map(), create_parallel_data_request()) ->
     {ok, create_parallel_data_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_parallel_data_errors(), tuple()}.
 create_parallel_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_parallel_data(Client, Input, []).
@@ -638,14 +759,7 @@ create_parallel_data(Client, Input)
 -spec create_parallel_data(map(), create_parallel_data_request(), proplists:proplist()) ->
     {ok, create_parallel_data_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_parallel_data_errors(), tuple()}.
 create_parallel_data(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateParallelData">>, Input, Options).
@@ -654,10 +768,7 @@ create_parallel_data(Client, Input, Options)
 -spec delete_parallel_data(map(), delete_parallel_data_request()) ->
     {ok, delete_parallel_data_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_parallel_data_errors(), tuple()}.
 delete_parallel_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_parallel_data(Client, Input, []).
@@ -665,10 +776,7 @@ delete_parallel_data(Client, Input)
 -spec delete_parallel_data(map(), delete_parallel_data_request(), proplists:proplist()) ->
     {ok, delete_parallel_data_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_parallel_data_errors(), tuple()}.
 delete_parallel_data(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteParallelData">>, Input, Options).
@@ -677,10 +785,7 @@ delete_parallel_data(Client, Input, Options)
 -spec delete_terminology(map(), delete_terminology_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_terminology_errors(), tuple()}.
 delete_terminology(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_terminology(Client, Input, []).
@@ -688,10 +793,7 @@ delete_terminology(Client, Input)
 -spec delete_terminology(map(), delete_terminology_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_terminology_errors(), tuple()}.
 delete_terminology(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTerminology">>, Input, Options).
@@ -703,9 +805,7 @@ delete_terminology(Client, Input, Options)
 -spec describe_text_translation_job(map(), describe_text_translation_job_request()) ->
     {ok, describe_text_translation_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_text_translation_job_errors(), tuple()}.
 describe_text_translation_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_text_translation_job(Client, Input, []).
@@ -713,9 +813,7 @@ describe_text_translation_job(Client, Input)
 -spec describe_text_translation_job(map(), describe_text_translation_job_request(), proplists:proplist()) ->
     {ok, describe_text_translation_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_text_translation_job_errors(), tuple()}.
 describe_text_translation_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTextTranslationJob">>, Input, Options).
@@ -724,10 +822,7 @@ describe_text_translation_job(Client, Input, Options)
 -spec get_parallel_data(map(), get_parallel_data_request()) ->
     {ok, get_parallel_data_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_parallel_data_errors(), tuple()}.
 get_parallel_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_parallel_data(Client, Input, []).
@@ -735,10 +830,7 @@ get_parallel_data(Client, Input)
 -spec get_parallel_data(map(), get_parallel_data_request(), proplists:proplist()) ->
     {ok, get_parallel_data_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_parallel_data_errors(), tuple()}.
 get_parallel_data(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetParallelData">>, Input, Options).
@@ -747,10 +839,7 @@ get_parallel_data(Client, Input, Options)
 -spec get_terminology(map(), get_terminology_request()) ->
     {ok, get_terminology_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_terminology_errors(), tuple()}.
 get_terminology(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_terminology(Client, Input, []).
@@ -758,10 +847,7 @@ get_terminology(Client, Input)
 -spec get_terminology(map(), get_terminology_request(), proplists:proplist()) ->
     {ok, get_terminology_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_terminology_errors(), tuple()}.
 get_terminology(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTerminology">>, Input, Options).
@@ -785,12 +871,7 @@ get_terminology(Client, Input, Options)
 -spec import_terminology(map(), import_terminology_request()) ->
     {ok, import_terminology_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, import_terminology_errors(), tuple()}.
 import_terminology(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_terminology(Client, Input, []).
@@ -798,12 +879,7 @@ import_terminology(Client, Input)
 -spec import_terminology(map(), import_terminology_request(), proplists:proplist()) ->
     {ok, import_terminology_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, import_terminology_errors(), tuple()}.
 import_terminology(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportTerminology">>, Input, Options).
@@ -813,10 +889,7 @@ import_terminology(Client, Input, Options)
 -spec list_languages(map(), list_languages_request()) ->
     {ok, list_languages_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_display_language_code_exception(), tuple()}.
+    {error, list_languages_errors(), tuple()}.
 list_languages(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_languages(Client, Input, []).
@@ -824,10 +897,7 @@ list_languages(Client, Input)
 -spec list_languages(map(), list_languages_request(), proplists:proplist()) ->
     {ok, list_languages_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_display_language_code_exception(), tuple()}.
+    {error, list_languages_errors(), tuple()}.
 list_languages(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLanguages">>, Input, Options).
@@ -836,9 +906,7 @@ list_languages(Client, Input, Options)
 -spec list_parallel_data(map(), list_parallel_data_request()) ->
     {ok, list_parallel_data_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_parallel_data_errors(), tuple()}.
 list_parallel_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_parallel_data(Client, Input, []).
@@ -846,9 +914,7 @@ list_parallel_data(Client, Input)
 -spec list_parallel_data(map(), list_parallel_data_request(), proplists:proplist()) ->
     {ok, list_parallel_data_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_parallel_data_errors(), tuple()}.
 list_parallel_data(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListParallelData">>, Input, Options).
@@ -861,9 +927,7 @@ list_parallel_data(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -871,9 +935,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -882,9 +944,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec list_terminologies(map(), list_terminologies_request()) ->
     {ok, list_terminologies_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_terminologies_errors(), tuple()}.
 list_terminologies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_terminologies(Client, Input, []).
@@ -892,9 +952,7 @@ list_terminologies(Client, Input)
 -spec list_terminologies(map(), list_terminologies_request(), proplists:proplist()) ->
     {ok, list_terminologies_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_terminologies_errors(), tuple()}.
 list_terminologies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTerminologies">>, Input, Options).
@@ -903,10 +961,7 @@ list_terminologies(Client, Input, Options)
 -spec list_text_translation_jobs(map(), list_text_translation_jobs_request()) ->
     {ok, list_text_translation_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_filter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_text_translation_jobs_errors(), tuple()}.
 list_text_translation_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_text_translation_jobs(Client, Input, []).
@@ -914,10 +969,7 @@ list_text_translation_jobs(Client, Input)
 -spec list_text_translation_jobs(map(), list_text_translation_jobs_request(), proplists:proplist()) ->
     {ok, list_text_translation_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_filter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_text_translation_jobs_errors(), tuple()}.
 list_text_translation_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTextTranslationJobs">>, Input, Options).
@@ -942,12 +994,7 @@ list_text_translation_jobs(Client, Input, Options)
 -spec start_text_translation_job(map(), start_text_translation_job_request()) ->
     {ok, start_text_translation_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_language_pair_exception(), tuple()}.
+    {error, start_text_translation_job_errors(), tuple()}.
 start_text_translation_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_text_translation_job(Client, Input, []).
@@ -955,12 +1002,7 @@ start_text_translation_job(Client, Input)
 -spec start_text_translation_job(map(), start_text_translation_job_request(), proplists:proplist()) ->
     {ok, start_text_translation_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_language_pair_exception(), tuple()}.
+    {error, start_text_translation_job_errors(), tuple()}.
 start_text_translation_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartTextTranslationJob">>, Input, Options).
@@ -982,9 +1024,7 @@ start_text_translation_job(Client, Input, Options)
 -spec stop_text_translation_job(map(), stop_text_translation_job_request()) ->
     {ok, stop_text_translation_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, stop_text_translation_job_errors(), tuple()}.
 stop_text_translation_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_text_translation_job(Client, Input, []).
@@ -992,9 +1032,7 @@ stop_text_translation_job(Client, Input)
 -spec stop_text_translation_job(map(), stop_text_translation_job_request(), proplists:proplist()) ->
     {ok, stop_text_translation_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, stop_text_translation_job_errors(), tuple()}.
 stop_text_translation_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopTextTranslationJob">>, Input, Options).
@@ -1009,11 +1047,7 @@ stop_text_translation_job(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -1021,11 +1055,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -1051,13 +1081,7 @@ tag_resource(Client, Input, Options)
 -spec translate_document(map(), translate_document_request()) ->
     {ok, translate_document_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_language_pair_exception(), tuple()}.
+    {error, translate_document_errors(), tuple()}.
 translate_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     translate_document(Client, Input, []).
@@ -1065,13 +1089,7 @@ translate_document(Client, Input)
 -spec translate_document(map(), translate_document_request(), proplists:proplist()) ->
     {ok, translate_document_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_language_pair_exception(), tuple()}.
+    {error, translate_document_errors(), tuple()}.
 translate_document(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TranslateDocument">>, Input, Options).
@@ -1085,14 +1103,7 @@ translate_document(Client, Input, Options)
 -spec translate_text(map(), translate_text_request()) ->
     {ok, translate_text_response(), tuple()} |
     {error, any()} |
-    {error, detected_language_low_confidence_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_language_pair_exception(), tuple()}.
+    {error, translate_text_errors(), tuple()}.
 translate_text(Client, Input)
   when is_map(Client), is_map(Input) ->
     translate_text(Client, Input, []).
@@ -1100,14 +1111,7 @@ translate_text(Client, Input)
 -spec translate_text(map(), translate_text_request(), proplists:proplist()) ->
     {ok, translate_text_response(), tuple()} |
     {error, any()} |
-    {error, detected_language_low_confidence_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_language_pair_exception(), tuple()}.
+    {error, translate_text_errors(), tuple()}.
 translate_text(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TranslateText">>, Input, Options).
@@ -1120,10 +1124,7 @@ translate_text(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -1131,10 +1132,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -1145,14 +1143,7 @@ untag_resource(Client, Input, Options)
 -spec update_parallel_data(map(), update_parallel_data_request()) ->
     {ok, update_parallel_data_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_parallel_data_errors(), tuple()}.
 update_parallel_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_parallel_data(Client, Input, []).
@@ -1160,14 +1151,7 @@ update_parallel_data(Client, Input)
 -spec update_parallel_data(map(), update_parallel_data_request(), proplists:proplist()) ->
     {ok, update_parallel_data_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_parallel_data_errors(), tuple()}.
 update_parallel_data(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateParallelData">>, Input, Options).

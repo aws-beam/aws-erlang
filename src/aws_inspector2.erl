@@ -139,11 +139,13 @@
 %% }
 -type update_ec2_deep_inspection_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_encryption_key_response() :: #{
 %%   <<"kmsKeyId">> => string()
 %% }
 -type get_encryption_key_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% code_vulnerability_details() :: #{
@@ -158,12 +160,14 @@
 %% }
 -type code_vulnerability_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% disable_request() :: #{
 %%   <<"accountIds">> => list(string()()),
 %%   <<"resourceTypes">> => list(string()())
 %% }
 -type disable_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% code_file_path() :: #{
@@ -174,11 +178,13 @@
 %% }
 -type code_file_path() :: #{binary() => any()}.
 
+
 %% Example:
 %% network_path() :: #{
 %%   <<"steps">> => list(step()())
 %% }
 -type network_path() :: #{binary() => any()}.
+
 
 %% Example:
 %% state() :: #{
@@ -188,17 +194,20 @@
 %% }
 -type state() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_delegated_admin_account_response() :: #{
 %%   <<"delegatedAdmin">> => delegated_admin()
 %% }
 -type get_delegated_admin_account_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% repository_aggregation() :: #{
@@ -208,12 +217,14 @@
 %% }
 -type repository_aggregation() :: #{binary() => any()}.
 
+
 %% Example:
 %% suggested_fix() :: #{
 %%   <<"code">> => [string()],
 %%   <<"description">> => [string()]
 %% }
 -type suggested_fix() :: #{binary() => any()}.
+
 
 %% Example:
 %% cis_finding_status_filter() :: #{
@@ -222,6 +233,7 @@
 %% }
 -type cis_finding_status_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% enable_request() :: #{
 %%   <<"accountIds">> => list(string()()),
@@ -229,6 +241,7 @@
 %%   <<"resourceTypes">> := list(string()())
 %% }
 -type enable_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% vulnerability() :: #{
@@ -252,6 +265,7 @@
 %% }
 -type vulnerability() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_sbom_export_request() :: #{
 %%   <<"reportFormat">> := string(),
@@ -259,9 +273,11 @@
 %%   <<"s3Destination">> := destination()
 %% }
 -type create_sbom_export_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_organization_configuration_request() :: #{}
 -type describe_organization_configuration_request() :: #{}.
+
 
 %% Example:
 %% usage_total() :: #{
@@ -270,6 +286,7 @@
 %% }
 -type usage_total() :: #{binary() => any()}.
 
+
 %% Example:
 %% cis_targets() :: #{
 %%   <<"accountIds">> => list(string()()),
@@ -277,11 +294,13 @@
 %% }
 -type cis_targets() :: #{binary() => any()}.
 
+
 %% Example:
 %% remediation() :: #{
 %%   <<"recommendation">> => recommendation()
 %% }
 -type remediation() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_configuration_request() :: #{
@@ -289,11 +308,13 @@
 %% }
 -type update_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_findings_report_response() :: #{
 %%   <<"reportId">> => string()
 %% }
 -type create_findings_report_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% counts() :: #{
@@ -302,6 +323,7 @@
 %% }
 -type counts() :: #{binary() => any()}.
 
+
 %% Example:
 %% coverage_map_filter() :: #{
 %%   <<"comparison">> => string(),
@@ -309,9 +331,11 @@
 %%   <<"value">> => string()
 %% }
 -type coverage_map_filter() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% filter_criteria() :: #{
@@ -360,6 +384,7 @@
 %% }
 -type filter_criteria() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_sbom_export_response() :: #{
 %%   <<"errorCode">> => string(),
@@ -372,6 +397,7 @@
 %% }
 -type get_sbom_export_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% time() :: #{
 %%   <<"timeOfDay">> => string(),
@@ -379,20 +405,24 @@
 %% }
 -type time() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_cis_scan_configuration_request() :: #{
 %%   <<"scanConfigurationArn">> := string()
 %% }
 -type delete_cis_scan_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% disable_delegated_admin_account_response() :: #{
 %%   <<"delegatedAdminAccountId">> := string()
 %% }
 -type disable_delegated_admin_account_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_configuration_request() :: #{}
 -type get_configuration_request() :: #{}.
+
 
 %% Example:
 %% cvss3() :: #{
@@ -401,6 +431,7 @@
 %% }
 -type cvss3() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_cis_session_request() :: #{
 %%   <<"message">> := start_cis_session_message(),
@@ -408,11 +439,13 @@
 %% }
 -type start_cis_session_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_vulnerabilities_filter_criteria() :: #{
 %%   <<"vulnerabilityIds">> => list(string()())
 %% }
 -type search_vulnerabilities_filter_criteria() :: #{binary() => any()}.
+
 
 %% Example:
 %% member_account_ec2_deep_inspection_status() :: #{
@@ -421,12 +454,14 @@
 %% }
 -type member_account_ec2_deep_inspection_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_member_ec2_deep_inspection_status_response() :: #{
 %%   <<"accountIds">> => list(member_account_ec2_deep_inspection_status_state()()),
 %%   <<"failedAccountIds">> => list(failed_member_account_ec2_deep_inspection_status_state()())
 %% }
 -type batch_get_member_ec2_deep_inspection_status_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% ec2_metadata() :: #{
@@ -436,6 +471,7 @@
 %% }
 -type ec2_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% member_account_ec2_deep_inspection_status_state() :: #{
 %%   <<"accountId">> => string(),
@@ -443,6 +479,7 @@
 %%   <<"status">> => string()
 %% }
 -type member_account_ec2_deep_inspection_status_state() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_findings_report_status_response() :: #{
@@ -455,6 +492,7 @@
 %% }
 -type get_findings_report_status_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_state() :: #{
 %%   <<"ec2">> => state(),
@@ -464,6 +502,7 @@
 %% }
 -type resource_state() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_usage_totals_request() :: #{
 %%   <<"accountIds">> => list(string()()),
@@ -472,12 +511,14 @@
 %% }
 -type list_usage_totals_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delegated_admin() :: #{
 %%   <<"accountId">> => string(),
 %%   <<"relationshipStatus">> => string()
 %% }
 -type delegated_admin() :: #{binary() => any()}.
+
 
 %% Example:
 %% cis_scan_status_filter() :: #{
@@ -486,6 +527,7 @@
 %% }
 -type cis_scan_status_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_account_permissions_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -493,17 +535,20 @@
 %% }
 -type list_account_permissions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_findings_report_status_request() :: #{
 %%   <<"reportId">> => string()
 %% }
 -type get_findings_report_status_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% cancel_findings_report_response() :: #{
 %%   <<"reportId">> := string()
 %% }
 -type cancel_findings_report_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_cis_targets() :: #{
@@ -512,12 +557,14 @@
 %% }
 -type update_cis_targets() :: #{binary() => any()}.
 
+
 %% Example:
 %% coverage_string_filter() :: #{
 %%   <<"comparison">> => string(),
 %%   <<"value">> => string()
 %% }
 -type coverage_string_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_findings_response() :: #{
@@ -526,6 +573,7 @@
 %% }
 -type list_findings_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% disable_response() :: #{
 %%   <<"accounts">> := list(account()()),
@@ -533,12 +581,14 @@
 %% }
 -type disable_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% ecr_configuration() :: #{
 %%   <<"pullDateRescanDuration">> => string(),
 %%   <<"rescanDuration">> => string()
 %% }
 -type ecr_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% cis_target_resource_aggregation() :: #{
@@ -553,17 +603,20 @@
 %% }
 -type cis_target_resource_aggregation() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_filter_response() :: #{
 %%   <<"arn">> := string()
 %% }
 -type create_filter_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_member_response() :: #{
 %%   <<"accountId">> := string()
 %% }
 -type associate_member_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% cis_scan_results_aggregated_by_target_resource_filter_criteria() :: #{
@@ -579,6 +632,7 @@
 %% }
 -type cis_scan_results_aggregated_by_target_resource_filter_criteria() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_status() :: #{
 %%   <<"ec2">> => string(),
@@ -588,12 +642,14 @@
 %% }
 -type resource_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% delegated_admin_account() :: #{
 %%   <<"accountId">> => string(),
 %%   <<"status">> => string()
 %% }
 -type delegated_admin_account() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_scan_metadata() :: #{
@@ -604,6 +660,7 @@
 %% }
 -type resource_scan_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% monthly_schedule() :: #{
 %%   <<"day">> => list(any()),
@@ -611,11 +668,13 @@
 %% }
 -type monthly_schedule() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_member_request() :: #{
 %%   <<"accountId">> := string()
 %% }
 -type associate_member_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_cis_scan_configuration_request() :: #{
@@ -627,12 +686,14 @@
 %% }
 -type update_cis_scan_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% reset_encryption_key_request() :: #{
 %%   <<"resourceType">> := string(),
 %%   <<"scanType">> := string()
 %% }
 -type reset_encryption_key_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% cis_scan_configuration() :: #{
@@ -646,11 +707,13 @@
 %% }
 -type cis_scan_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_cis_scan_configurations_request() :: #{
@@ -662,12 +725,14 @@
 %% }
 -type list_cis_scan_configurations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_free_trial_info_response() :: #{
 %%   <<"accounts">> := list(free_trial_account_info()()),
 %%   <<"failedAccounts">> := list(free_trial_info_error()())
 %% }
 -type batch_get_free_trial_info_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_ec2_deep_inspection_configuration_response() :: #{
@@ -678,6 +743,7 @@
 %% }
 -type update_ec2_deep_inspection_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% failed_member_account_ec2_deep_inspection_status_state() :: #{
 %%   <<"accountId">> => string(),
@@ -685,6 +751,7 @@
 %%   <<"errorMessage">> => string()
 %% }
 -type failed_member_account_ec2_deep_inspection_status_state() :: #{binary() => any()}.
+
 
 %% Example:
 %% title_aggregation_response() :: #{
@@ -695,6 +762,7 @@
 %% }
 -type title_aggregation_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% severity_counts() :: #{
 %%   <<"all">> => [float()],
@@ -704,12 +772,14 @@
 %% }
 -type severity_counts() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_cis_scans_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"scans">> => list(cis_scan()())
 %% }
 -type list_cis_scans_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% finding_type_aggregation_response() :: #{
@@ -718,11 +788,13 @@
 %% }
 -type finding_type_aggregation_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% cancel_findings_report_request() :: #{
 %%   <<"reportId">> := string()
 %% }
 -type cancel_findings_report_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% usage() :: #{
@@ -733,6 +805,7 @@
 %% }
 -type usage() :: #{binary() => any()}.
 
+
 %% Example:
 %% stop_cis_session_request() :: #{
 %%   <<"message">> := stop_cis_session_message(),
@@ -740,6 +813,7 @@
 %%   <<"sessionToken">> := string()
 %% }
 -type stop_cis_session_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% failed_account() :: #{
@@ -750,6 +824,7 @@
 %%   <<"status">> => string()
 %% }
 -type failed_account() :: #{binary() => any()}.
+
 
 %% Example:
 %% ec2_instance_aggregation() :: #{
@@ -762,6 +837,7 @@
 %% }
 -type ec2_instance_aggregation() :: #{binary() => any()}.
 
+
 %% Example:
 %% code_snippet_result() :: #{
 %%   <<"codeSnippet">> => list(code_line()()),
@@ -772,11 +848,13 @@
 %% }
 -type code_snippet_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% cancel_sbom_export_request() :: #{
 %%   <<"reportId">> := string()
 %% }
 -type cancel_sbom_export_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_cis_scan_results_aggregated_by_checks_response() :: #{
@@ -785,6 +863,7 @@
 %% }
 -type list_cis_scan_results_aggregated_by_checks_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% cis_target_status_reason_filter() :: #{
 %%   <<"comparison">> => list(any()),
@@ -792,11 +871,13 @@
 %% }
 -type cis_target_status_reason_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_filter_response() :: #{
 %%   <<"arn">> := string()
 %% }
 -type update_filter_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_organization_configuration_response() :: #{
@@ -805,6 +886,7 @@
 %% }
 -type describe_organization_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_encryption_key_request() :: #{
 %%   <<"kmsKeyId">> := string(),
@@ -812,15 +894,18 @@
 %%   <<"scanType">> := string()
 %% }
 -type update_encryption_key_request() :: #{binary() => any()}.
+
 %% Example:
 %% update_encryption_key_response() :: #{}
 -type update_encryption_key_response() :: #{}.
+
 
 %% Example:
 %% create_cis_scan_configuration_response() :: #{
 %%   <<"scanConfigurationArn">> => string()
 %% }
 -type create_cis_scan_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_finding_aggregations_response() :: #{
@@ -830,6 +915,7 @@
 %% }
 -type list_finding_aggregations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_cis_scan_results_aggregated_by_target_resource_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -837,11 +923,13 @@
 %% }
 -type list_cis_scan_results_aggregated_by_target_resource_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_configuration_response() :: #{
 %%   <<"ecrConfiguration">> => ecr_configuration_state()
 %% }
 -type get_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% lambda_function_aggregation() :: #{
@@ -854,6 +942,7 @@
 %% }
 -type lambda_function_aggregation() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => [string()],
@@ -862,11 +951,13 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_filter_request() :: #{
@@ -879,12 +970,14 @@
 %% }
 -type create_filter_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% coverage_date_filter() :: #{
 %%   <<"endInclusive">> => non_neg_integer(),
 %%   <<"startInclusive">> => non_neg_integer()
 %% }
 -type coverage_date_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% compute_platform() :: #{
@@ -894,12 +987,14 @@
 %% }
 -type compute_platform() :: #{binary() => any()}.
 
+
 %% Example:
 %% send_cis_session_health_request() :: #{
 %%   <<"scanJobId">> := string(),
 %%   <<"sessionToken">> := string()
 %% }
 -type send_cis_session_health_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% ecr_repository_metadata() :: #{
@@ -908,11 +1003,13 @@
 %% }
 -type ecr_repository_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_sbom_export_request() :: #{
 %%   <<"reportId">> := string()
 %% }
 -type get_sbom_export_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_delegated_admin_accounts_response() :: #{
@@ -921,11 +1018,13 @@
 %% }
 -type list_delegated_admin_accounts_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% ecr_configuration_state() :: #{
 %%   <<"rescanDurationState">> => ecr_rescan_duration_state()
 %% }
 -type ecr_configuration_state() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_filter_criteria() :: #{
@@ -940,6 +1039,7 @@
 %% }
 -type resource_filter_criteria() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_cis_targets() :: #{
 %%   <<"accountIds">> => list(string()()),
@@ -947,17 +1047,20 @@
 %% }
 -type create_cis_targets() :: #{binary() => any()}.
 
+
 %% Example:
 %% enable_delegated_admin_account_response() :: #{
 %%   <<"delegatedAdminAccountId">> := string()
 %% }
 -type enable_delegated_admin_account_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_cis_scan_configuration_response() :: #{
 %%   <<"scanConfigurationArn">> => string()
 %% }
 -type delete_cis_scan_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
@@ -966,6 +1069,7 @@
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% code_line() :: #{
 %%   <<"content">> => [string()],
@@ -973,12 +1077,14 @@
 %% }
 -type code_line() :: #{binary() => any()}.
 
+
 %% Example:
 %% recommendation() :: #{
 %%   <<"Url">> => string(),
 %%   <<"text">> => string()
 %% }
 -type recommendation() :: #{binary() => any()}.
+
 
 %% Example:
 %% stop_cis_message_progress() :: #{
@@ -993,12 +1099,14 @@
 %% }
 -type stop_cis_message_progress() :: #{binary() => any()}.
 
+
 %% Example:
 %% cvss2() :: #{
 %%   <<"baseScore">> => float(),
 %%   <<"scoringVector">> => string()
 %% }
 -type cvss2() :: #{binary() => any()}.
+
 
 %% Example:
 %% cis_check_aggregation() :: #{
@@ -1013,17 +1121,20 @@
 %% }
 -type cis_check_aggregation() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_cis_session_message() :: #{
 %%   <<"sessionToken">> => string()
 %% }
 -type start_cis_session_message() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_finding_details_request() :: #{
 %%   <<"findingArns">> := list(string()())
 %% }
 -type batch_get_finding_details_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% code_snippet_error() :: #{
@@ -1033,6 +1144,7 @@
 %% }
 -type code_snippet_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% lambda_vpc_config() :: #{
 %%   <<"securityGroupIds">> => list(string()()),
@@ -1040,6 +1152,7 @@
 %%   <<"vpcId">> => string()
 %% }
 -type lambda_vpc_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% account() :: #{
@@ -1049,6 +1162,7 @@
 %% }
 -type account() :: #{binary() => any()}.
 
+
 %% Example:
 %% atig_data() :: #{
 %%   <<"firstSeen">> => non_neg_integer(),
@@ -1057,6 +1171,7 @@
 %%   <<"ttps">> => list(string()())
 %% }
 -type atig_data() :: #{binary() => any()}.
+
 
 %% Example:
 %% cvss_score_details() :: #{
@@ -1068,15 +1183,18 @@
 %%   <<"version">> => string()
 %% }
 -type cvss_score_details() :: #{binary() => any()}.
+
 %% Example:
 %% stop_cis_session_response() :: #{}
 -type stop_cis_session_response() :: #{}.
+
 
 %% Example:
 %% inspector_score_details() :: #{
 %%   <<"adjustedCvss">> => cvss_score_details()
 %% }
 -type inspector_score_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% finding() :: #{
@@ -1104,6 +1222,7 @@
 %% }
 -type finding() :: #{binary() => any()}.
 
+
 %% Example:
 %% free_trial_info_error() :: #{
 %%   <<"accountId">> => string(),
@@ -1111,6 +1230,7 @@
 %%   <<"message">> => [string()]
 %% }
 -type free_trial_info_error() :: #{binary() => any()}.
+
 
 %% Example:
 %% vulnerable_package() :: #{
@@ -1128,12 +1248,14 @@
 %% }
 -type vulnerable_package() :: #{binary() => any()}.
 
+
 %% Example:
 %% port_range_filter() :: #{
 %%   <<"beginInclusive">> => integer(),
 %%   <<"endInclusive">> => integer()
 %% }
 -type port_range_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% finding_type_aggregation() :: #{
@@ -1144,11 +1266,13 @@
 %% }
 -type finding_type_aggregation() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% date_filter() :: #{
@@ -1156,6 +1280,7 @@
 %%   <<"startInclusive">> => [non_neg_integer()]
 %% }
 -type date_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_findings_request() :: #{
@@ -1166,6 +1291,7 @@
 %% }
 -type list_findings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% cvss_score_adjustment() :: #{
 %%   <<"metric">> => string(),
@@ -1173,12 +1299,14 @@
 %% }
 -type cvss_score_adjustment() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_usage_totals_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"totals">> => list(usage_total()())
 %% }
 -type list_usage_totals_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% cisa_data() :: #{
@@ -1188,12 +1316,14 @@
 %% }
 -type cisa_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception_field() :: #{
 %%   <<"message">> => [string()],
 %%   <<"name">> => [string()]
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_map_filter() :: #{
@@ -1203,11 +1333,13 @@
 %% }
 -type resource_map_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_filter_response() :: #{
 %%   <<"arn">> := string()
 %% }
 -type delete_filter_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% repository_aggregation_response() :: #{
@@ -1217,6 +1349,7 @@
 %%   <<"severityCounts">> => severity_counts()
 %% }
 -type repository_aggregation_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% lambda_function_aggregation_response() :: #{
@@ -1230,6 +1363,7 @@
 %% }
 -type lambda_function_aggregation_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_coverage_response() :: #{
 %%   <<"coveredResources">> => list(covered_resource()()),
@@ -1237,17 +1371,20 @@
 %% }
 -type list_coverage_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_member_request() :: #{
 %%   <<"accountId">> := string()
 %% }
 -type get_member_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_organization_configuration_response() :: #{
 %%   <<"autoEnable">> := auto_enable()
 %% }
 -type update_organization_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_vulnerabilities_request() :: #{
@@ -1256,6 +1393,7 @@
 %% }
 -type search_vulnerabilities_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_cis_scan_configurations_filter_criteria() :: #{
 %%   <<"scanConfigurationArnFilters">> => list(cis_string_filter()()),
@@ -1263,9 +1401,11 @@
 %%   <<"targetResourceTagFilters">> => list(tag_filter()())
 %% }
 -type list_cis_scan_configurations_filter_criteria() :: #{binary() => any()}.
+
 %% Example:
 %% get_delegated_admin_account_request() :: #{}
 -type get_delegated_admin_account_request() :: #{}.
+
 
 %% Example:
 %% cis_security_level_filter() :: #{
@@ -1273,6 +1413,7 @@
 %%   <<"value">> => list(any())
 %% }
 -type cis_security_level_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% covered_resource() :: #{
@@ -1285,6 +1426,7 @@
 %%   <<"scanType">> => string()
 %% }
 -type covered_resource() :: #{binary() => any()}.
+
 
 %% Example:
 %% filter() :: #{
@@ -1301,11 +1443,13 @@
 %% }
 -type filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_sbom_export_response() :: #{
 %%   <<"reportId">> => string()
 %% }
 -type create_sbom_export_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_cis_scan_configurations_response() :: #{
@@ -1313,6 +1457,7 @@
 %%   <<"scanConfigurations">> => list(cis_scan_configuration()())
 %% }
 -type list_cis_scan_configurations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% finding_detail() :: #{
@@ -1329,6 +1474,7 @@
 %% }
 -type finding_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% lambda_function_metadata() :: #{
 %%   <<"functionName">> => [string()],
@@ -1338,6 +1484,7 @@
 %% }
 -type lambda_function_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_account_permissions_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -1345,6 +1492,7 @@
 %%   <<"service">> => string()
 %% }
 -type list_account_permissions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% cis_session_message() :: #{
@@ -1354,12 +1502,14 @@
 %% }
 -type cis_session_message() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_delegated_admin_accounts_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_delegated_admin_accounts_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% ecr_rescan_duration_state() :: #{
@@ -1370,12 +1520,14 @@
 %% }
 -type ecr_rescan_duration_state() :: #{binary() => any()}.
 
+
 %% Example:
 %% cis_number_filter() :: #{
 %%   <<"lowerInclusive">> => [integer()],
 %%   <<"upperInclusive">> => [integer()]
 %% }
 -type cis_number_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_findings_report_request() :: #{
@@ -1384,9 +1536,11 @@
 %%   <<"s3Destination">> := destination()
 %% }
 -type create_findings_report_request() :: #{binary() => any()}.
+
 %% Example:
 %% update_configuration_response() :: #{}
 -type update_configuration_response() :: #{}.
+
 
 %% Example:
 %% ecr_container_image_metadata() :: #{
@@ -1394,6 +1548,7 @@
 %%   <<"tags">> => list([string()]())
 %% }
 -type ecr_container_image_metadata() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_filter_request() :: #{
@@ -1406,6 +1561,7 @@
 %% }
 -type update_filter_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% account_aggregation_response() :: #{
 %%   <<"accountId">> => string(),
@@ -1413,15 +1569,18 @@
 %% }
 -type account_aggregation_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => [string()],
 %%   <<"retryAfterSeconds">> => [integer()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 %% Example:
 %% send_cis_session_health_response() :: #{}
 -type send_cis_session_health_response() :: #{}.
+
 
 %% Example:
 %% batch_get_account_status_response() :: #{
@@ -1430,11 +1589,13 @@
 %% }
 -type batch_get_account_status_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_free_trial_info_request() :: #{
 %%   <<"accountIds">> := list(string()())
 %% }
 -type batch_get_free_trial_info_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_member_response() :: #{
@@ -1442,11 +1603,13 @@
 %% }
 -type get_member_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% epss_details() :: #{
 %%   <<"score">> => float()
 %% }
 -type epss_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% port_range() :: #{
@@ -1455,11 +1618,13 @@
 %% }
 -type port_range() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_organization_configuration_request() :: #{
 %%   <<"autoEnable">> := auto_enable()
 %% }
 -type update_organization_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% enable_response() :: #{
@@ -1468,6 +1633,7 @@
 %% }
 -type enable_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% package_aggregation_response() :: #{
 %%   <<"accountId">> => string(),
@@ -1475,6 +1641,7 @@
 %%   <<"severityCounts">> => severity_counts()
 %% }
 -type package_aggregation_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_cis_scans_request() :: #{
@@ -1487,6 +1654,7 @@
 %% }
 -type list_cis_scans_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% image_layer_aggregation() :: #{
 %%   <<"layerHashes">> => list(string_filter()()),
@@ -1497,6 +1665,7 @@
 %% }
 -type image_layer_aggregation() :: #{binary() => any()}.
 
+
 %% Example:
 %% account_aggregation() :: #{
 %%   <<"findingType">> => string(),
@@ -1505,6 +1674,7 @@
 %%   <<"sortOrder">> => string()
 %% }
 -type account_aggregation() :: #{binary() => any()}.
+
 
 %% Example:
 %% lambda_layer_aggregation() :: #{
@@ -1516,6 +1686,7 @@
 %% }
 -type lambda_layer_aggregation() :: #{binary() => any()}.
 
+
 %% Example:
 %% network_reachability_details() :: #{
 %%   <<"networkPath">> => network_path(),
@@ -1524,11 +1695,13 @@
 %% }
 -type network_reachability_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_code_snippet_request() :: #{
 %%   <<"findingArns">> := list(string()())
 %% }
 -type batch_get_code_snippet_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% cis_scan() :: #{
@@ -1545,6 +1718,7 @@
 %% }
 -type cis_scan() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_cis_scan_configuration_request() :: #{
 %%   <<"scanName">> := string(),
@@ -1555,6 +1729,7 @@
 %% }
 -type create_cis_scan_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% finding_details_error() :: #{
 %%   <<"errorCode">> => string(),
@@ -1563,6 +1738,7 @@
 %% }
 -type finding_details_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% sort_criteria() :: #{
 %%   <<"field">> => string(),
@@ -1570,12 +1746,14 @@
 %% }
 -type sort_criteria() :: #{binary() => any()}.
 
+
 %% Example:
 %% weekly_schedule() :: #{
 %%   <<"days">> => list(list(any())()),
 %%   <<"startTime">> => time()
 %% }
 -type weekly_schedule() :: #{binary() => any()}.
+
 
 %% Example:
 %% package_vulnerability_details() :: #{
@@ -1592,6 +1770,7 @@
 %% }
 -type package_vulnerability_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% cvss_score() :: #{
 %%   <<"baseScore">> => [float()],
@@ -1600,6 +1779,7 @@
 %%   <<"version">> => string()
 %% }
 -type cvss_score() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_instance_details() :: #{
@@ -1616,20 +1796,24 @@
 %% }
 -type aws_ec2_instance_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_member_ec2_deep_inspection_status_request() :: #{
 %%   <<"accountIds">> => list(string()())
 %% }
 -type batch_get_member_ec2_deep_inspection_status_request() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% epss() :: #{
@@ -1637,12 +1821,14 @@
 %% }
 -type epss() :: #{binary() => any()}.
 
+
 %% Example:
 %% exploit_observed() :: #{
 %%   <<"firstSeen">> => non_neg_integer(),
 %%   <<"lastSeen">> => non_neg_integer()
 %% }
 -type exploit_observed() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_members_request() :: #{
@@ -1652,12 +1838,14 @@
 %% }
 -type list_members_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_members_response() :: #{
 %%   <<"members">> => list(member()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_members_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_ec2_deep_inspection_configuration_response() :: #{
@@ -1668,11 +1856,13 @@
 %% }
 -type get_ec2_deep_inspection_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% disable_delegated_admin_account_request() :: #{
 %%   <<"delegatedAdminAccountId">> := string()
 %% }
 -type disable_delegated_admin_account_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% cis_string_filter() :: #{
@@ -1680,6 +1870,7 @@
 %%   <<"value">> => [string()]
 %% }
 -type cis_string_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% free_trial_info() :: #{
@@ -1689,9 +1880,11 @@
 %%   <<"type">> => string()
 %% }
 -type free_trial_info() :: #{binary() => any()}.
+
 %% Example:
 %% start_cis_session_response() :: #{}
 -type start_cis_session_response() :: #{}.
+
 
 %% Example:
 %% get_cis_scan_report_request() :: #{
@@ -1700,11 +1893,13 @@
 %% }
 -type get_cis_scan_report_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_cis_scan_configuration_response() :: #{
 %%   <<"scanConfigurationArn">> => string()
 %% }
 -type update_cis_scan_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% validation_exception() :: #{
@@ -1713,9 +1908,11 @@
 %%   <<"reason">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% get_cis_scan_result_details_response() :: #{
@@ -1723,6 +1920,7 @@
 %%   <<"scanResultDetails">> => list(cis_scan_result_details()())
 %% }
 -type get_cis_scan_result_details_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_coverage_request() :: #{
@@ -1732,6 +1930,7 @@
 %% }
 -type list_coverage_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% destination() :: #{
 %%   <<"bucketName">> => [string()],
@@ -1740,12 +1939,14 @@
 %% }
 -type destination() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_string_filter() :: #{
 %%   <<"comparison">> => string(),
 %%   <<"value">> => string()
 %% }
 -type resource_string_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_coverage_statistics_response() :: #{
@@ -1755,12 +1956,14 @@
 %% }
 -type list_coverage_statistics_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% cis_target_status_filter() :: #{
 %%   <<"comparison">> => list(any()),
 %%   <<"value">> => list(any())
 %% }
 -type cis_target_status_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_coverage_statistics_request() :: #{
@@ -1770,14 +1973,17 @@
 %% }
 -type list_coverage_statistics_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% daily_schedule() :: #{
 %%   <<"startTime">> => time()
 %% }
 -type daily_schedule() :: #{binary() => any()}.
+
 %% Example:
 %% get_ec2_deep_inspection_configuration_request() :: #{}
 -type get_ec2_deep_inspection_configuration_request() :: #{}.
+
 
 %% Example:
 %% evidence() :: #{
@@ -1787,12 +1993,14 @@
 %% }
 -type evidence() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => [string()],
 %%   <<"retryAfterSeconds">> => [integer()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% coverage_filter_criteria() :: #{
@@ -1813,17 +2021,20 @@
 %% }
 -type coverage_filter_criteria() :: #{binary() => any()}.
 
+
 %% Example:
 %% cancel_sbom_export_response() :: #{
 %%   <<"reportId">> => string()
 %% }
 -type cancel_sbom_export_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_account_status_request() :: #{
 %%   <<"accountIds">> => list(string()())
 %% }
 -type batch_get_account_status_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% stop_cis_session_message() :: #{
@@ -1836,6 +2047,7 @@
 %% }
 -type stop_cis_session_message() :: #{binary() => any()}.
 
+
 %% Example:
 %% ami_aggregation() :: #{
 %%   <<"amis">> => list(string_filter()()),
@@ -1843,6 +2055,7 @@
 %%   <<"sortOrder">> => string()
 %% }
 -type ami_aggregation() :: #{binary() => any()}.
+
 
 %% Example:
 %% member() :: #{
@@ -1853,12 +2066,14 @@
 %% }
 -type member() :: #{binary() => any()}.
 
+
 %% Example:
 %% string_filter() :: #{
 %%   <<"comparison">> => string(),
 %%   <<"value">> => string()
 %% }
 -type string_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_cis_scan_results_aggregated_by_checks_request() :: #{
@@ -1871,6 +2086,7 @@
 %% }
 -type list_cis_scan_results_aggregated_by_checks_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% package_aggregation() :: #{
 %%   <<"packageNames">> => list(string_filter()()),
@@ -1879,6 +2095,7 @@
 %% }
 -type package_aggregation() :: #{binary() => any()}.
 
+
 %% Example:
 %% status_counts() :: #{
 %%   <<"failed">> => [integer()],
@@ -1886,6 +2103,7 @@
 %%   <<"skipped">> => [integer()]
 %% }
 -type status_counts() :: #{binary() => any()}.
+
 
 %% Example:
 %% cis_scan_results_aggregated_by_checks_filter_criteria() :: #{
@@ -1898,12 +2116,14 @@
 %% }
 -type cis_scan_results_aggregated_by_checks_filter_criteria() :: #{binary() => any()}.
 
+
 %% Example:
 %% scan_status() :: #{
 %%   <<"reason">> => string(),
 %%   <<"statusCode">> => string()
 %% }
 -type scan_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_encryption_key_request() :: #{
@@ -1912,12 +2132,14 @@
 %% }
 -type get_encryption_key_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% cis_result_status_filter() :: #{
 %%   <<"comparison">> => list(any()),
 %%   <<"value">> => list(any())
 %% }
 -type cis_result_status_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_finding_aggregations_request() :: #{
@@ -1928,15 +2150,18 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_finding_aggregations_request() :: #{binary() => any()}.
+
 %% Example:
 %% one_time_schedule() :: #{}
 -type one_time_schedule() :: #{}.
+
 
 %% Example:
 %% bad_request_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% ec2_instance_aggregation_response() :: #{
@@ -1950,6 +2175,7 @@
 %% }
 -type ec2_instance_aggregation_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_cis_scan_results_aggregated_by_target_resource_request() :: #{
 %%   <<"filterCriteria">> => cis_scan_results_aggregated_by_target_resource_filter_criteria(),
@@ -1960,6 +2186,7 @@
 %%   <<"sortOrder">> => list(any())
 %% }
 -type list_cis_scan_results_aggregated_by_target_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ecr_container_aggregation() :: #{
@@ -1973,6 +2200,7 @@
 %% }
 -type aws_ecr_container_aggregation() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_filter() :: #{
 %%   <<"comparison">> => list(any()),
@@ -1981,12 +2209,14 @@
 %% }
 -type tag_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_code_snippet_response() :: #{
 %%   <<"codeSnippetResults">> => list(code_snippet_result()()),
 %%   <<"errors">> => list(code_snippet_error()())
 %% }
 -type batch_get_code_snippet_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% package_filter() :: #{
@@ -2000,6 +2230,7 @@
 %% }
 -type package_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% step() :: #{
 %%   <<"componentId">> => string(),
@@ -2007,11 +2238,13 @@
 %% }
 -type step() :: #{binary() => any()}.
 
+
 %% Example:
 %% exploitability_details() :: #{
 %%   <<"lastKnownExploitAt">> => non_neg_integer()
 %% }
 -type exploitability_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_details() :: #{
@@ -2021,14 +2254,17 @@
 %% }
 -type resource_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_update_member_ec2_deep_inspection_status_request() :: #{
 %%   <<"accountIds">> := list(member_account_ec2_deep_inspection_status()())
 %% }
 -type batch_update_member_ec2_deep_inspection_status_request() :: #{binary() => any()}.
+
 %% Example:
 %% send_cis_session_telemetry_response() :: #{}
 -type send_cis_session_telemetry_response() :: #{}.
+
 
 %% Example:
 %% batch_update_member_ec2_deep_inspection_status_response() :: #{
@@ -2036,6 +2272,7 @@
 %%   <<"failedAccountIds">> => list(failed_member_account_ec2_deep_inspection_status_state()())
 %% }
 -type batch_update_member_ec2_deep_inspection_status_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% auto_enable() :: #{
@@ -2045,6 +2282,7 @@
 %%   <<"lambdaCode">> => [boolean()]
 %% }
 -type auto_enable() :: #{binary() => any()}.
+
 
 %% Example:
 %% cis_scan_result_details() :: #{
@@ -2063,12 +2301,14 @@
 %% }
 -type cis_scan_result_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_cis_scan_report_response() :: #{
 %%   <<"status">> => list(any()),
 %%   <<"url">> => [string()]
 %% }
 -type get_cis_scan_report_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% send_cis_session_telemetry_request() :: #{
@@ -2078,12 +2318,14 @@
 %% }
 -type send_cis_session_telemetry_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% enable_delegated_admin_account_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"delegatedAdminAccountId">> := string()
 %% }
 -type enable_delegated_admin_account_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% image_layer_aggregation_response() :: #{
@@ -2095,6 +2337,7 @@
 %% }
 -type image_layer_aggregation_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% lambda_layer_aggregation_response() :: #{
 %%   <<"accountId">> => string(),
@@ -2104,6 +2347,7 @@
 %%   <<"severityCounts">> => severity_counts()
 %% }
 -type lambda_layer_aggregation_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ecr_container_image_details() :: #{
@@ -2118,11 +2362,13 @@
 %% }
 -type aws_ecr_container_image_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% disassociate_member_response() :: #{
 %%   <<"accountId">> := string()
 %% }
 -type disassociate_member_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% title_aggregation() :: #{
@@ -2134,9 +2380,11 @@
 %%   <<"vulnerabilityIds">> => list(string_filter()())
 %% }
 -type title_aggregation() :: #{binary() => any()}.
+
 %% Example:
 %% update_org_ec2_deep_inspection_configuration_response() :: #{}
 -type update_org_ec2_deep_inspection_configuration_response() :: #{}.
+
 
 %% Example:
 %% get_cis_scan_result_details_request() :: #{
@@ -2150,9 +2398,11 @@
 %%   <<"targetResourceId">> := string()
 %% }
 -type get_cis_scan_result_details_request() :: #{binary() => any()}.
+
 %% Example:
 %% reset_encryption_key_response() :: #{}
 -type reset_encryption_key_response() :: #{}.
+
 
 %% Example:
 %% aws_lambda_function_details() :: #{
@@ -2169,12 +2419,14 @@
 %% }
 -type aws_lambda_function_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% cis_date_filter() :: #{
 %%   <<"earliestScanStartTime">> => [non_neg_integer()],
 %%   <<"latestScanStartTime">> => [non_neg_integer()]
 %% }
 -type cis_date_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% cis_scan_result_details_filter_criteria() :: #{
@@ -2186,12 +2438,14 @@
 %% }
 -type cis_scan_result_details_filter_criteria() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_filters_response() :: #{
 %%   <<"filters">> := list(filter()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_filters_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% permission() :: #{
@@ -2200,12 +2454,14 @@
 %% }
 -type permission() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_vulnerabilities_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"vulnerabilities">> => list(vulnerability()())
 %% }
 -type search_vulnerabilities_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% free_trial_account_info() :: #{
@@ -2214,17 +2470,20 @@
 %% }
 -type free_trial_account_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_org_ec2_deep_inspection_configuration_request() :: #{
 %%   <<"orgPackagePaths">> := list(string()())
 %% }
 -type update_org_ec2_deep_inspection_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_filter_request() :: #{
 %%   <<"arn">> := string()
 %% }
 -type delete_filter_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ecr_container_aggregation_response() :: #{
@@ -2238,6 +2497,7 @@
 %% }
 -type aws_ecr_container_aggregation_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% account_state() :: #{
 %%   <<"accountId">> => string(),
@@ -2246,12 +2506,14 @@
 %% }
 -type account_state() :: #{binary() => any()}.
 
+
 %% Example:
 %% number_filter() :: #{
 %%   <<"lowerInclusive">> => [float()],
 %%   <<"upperInclusive">> => [float()]
 %% }
 -type number_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_cis_scans_filter_criteria() :: #{
@@ -2268,6 +2530,7 @@
 %% }
 -type list_cis_scans_filter_criteria() :: #{binary() => any()}.
 
+
 %% Example:
 %% map_filter() :: #{
 %%   <<"comparison">> => string(),
@@ -2275,6 +2538,7 @@
 %%   <<"value">> => string()
 %% }
 -type map_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_filters_request() :: #{
@@ -2285,12 +2549,14 @@
 %% }
 -type list_filters_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_finding_details_response() :: #{
 %%   <<"errors">> => list(finding_details_error()()),
 %%   <<"findingDetails">> => list(finding_detail()())
 %% }
 -type batch_get_finding_details_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource() :: #{
@@ -2303,6 +2569,7 @@
 %% }
 -type resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% ami_aggregation_response() :: #{
 %%   <<"accountId">> => string(),
@@ -2312,11 +2579,390 @@
 %% }
 -type ami_aggregation_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% disassociate_member_request() :: #{
 %%   <<"accountId">> := string()
 %% }
 -type disassociate_member_request() :: #{binary() => any()}.
+
+-type associate_member_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type batch_get_account_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type batch_get_code_snippet_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type batch_get_finding_details_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type batch_get_free_trial_info_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type batch_get_member_ec2_deep_inspection_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type batch_update_member_ec2_deep_inspection_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type cancel_findings_report_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type cancel_sbom_export_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_cis_scan_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type create_filter_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type create_findings_report_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_sbom_export_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_cis_scan_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_filter_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_organization_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type disable_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type disable_delegated_admin_account_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type disassociate_member_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type enable_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type enable_delegated_admin_account_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_cis_scan_report_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type get_cis_scan_result_details_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type get_configuration_errors() ::
+    throttling_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_delegated_admin_account_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_ec2_deep_inspection_configuration_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_encryption_key_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_findings_report_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_member_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_sbom_export_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_account_permissions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_cis_scan_configurations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_cis_scan_results_aggregated_by_checks_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_cis_scan_results_aggregated_by_target_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_cis_scans_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_coverage_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_coverage_statistics_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_delegated_admin_accounts_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_filters_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_finding_aggregations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_findings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_members_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_usage_totals_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type reset_encryption_key_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type search_vulnerabilities_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type send_cis_session_health_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type send_cis_session_telemetry_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type start_cis_session_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type stop_cis_session_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_cis_scan_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type update_ec2_deep_inspection_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type update_encryption_key_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_filter_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_org_ec2_deep_inspection_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type update_organization_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 %%====================================================================
 %% API
@@ -2335,20 +2981,14 @@
 -spec associate_member(map(), associate_member_request()) ->
     {ok, associate_member_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_member_errors(), tuple()}.
 associate_member(Client, Input) ->
     associate_member(Client, Input, []).
 
 -spec associate_member(map(), associate_member_request(), proplists:proplist()) ->
     {ok, associate_member_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_member_errors(), tuple()}.
 associate_member(Client, Input0, Options0) ->
     Method = post,
     Path = ["/members/associate"],
@@ -2376,22 +3016,14 @@ associate_member(Client, Input0, Options0) ->
 -spec batch_get_account_status(map(), batch_get_account_status_request()) ->
     {ok, batch_get_account_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_account_status_errors(), tuple()}.
 batch_get_account_status(Client, Input) ->
     batch_get_account_status(Client, Input, []).
 
 -spec batch_get_account_status(map(), batch_get_account_status_request(), proplists:proplist()) ->
     {ok, batch_get_account_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_account_status_errors(), tuple()}.
 batch_get_account_status(Client, Input0, Options0) ->
     Method = post,
     Path = ["/status/batch/get"],
@@ -2419,20 +3051,14 @@ batch_get_account_status(Client, Input0, Options0) ->
 -spec batch_get_code_snippet(map(), batch_get_code_snippet_request()) ->
     {ok, batch_get_code_snippet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_code_snippet_errors(), tuple()}.
 batch_get_code_snippet(Client, Input) ->
     batch_get_code_snippet(Client, Input, []).
 
 -spec batch_get_code_snippet(map(), batch_get_code_snippet_request(), proplists:proplist()) ->
     {ok, batch_get_code_snippet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_code_snippet_errors(), tuple()}.
 batch_get_code_snippet(Client, Input0, Options0) ->
     Method = post,
     Path = ["/codesnippet/batchget"],
@@ -2459,20 +3085,14 @@ batch_get_code_snippet(Client, Input0, Options0) ->
 -spec batch_get_finding_details(map(), batch_get_finding_details_request()) ->
     {ok, batch_get_finding_details_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_finding_details_errors(), tuple()}.
 batch_get_finding_details(Client, Input) ->
     batch_get_finding_details(Client, Input, []).
 
 -spec batch_get_finding_details(map(), batch_get_finding_details_request(), proplists:proplist()) ->
     {ok, batch_get_finding_details_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_finding_details_errors(), tuple()}.
 batch_get_finding_details(Client, Input0, Options0) ->
     Method = post,
     Path = ["/findings/details/batch/get"],
@@ -2499,20 +3119,14 @@ batch_get_finding_details(Client, Input0, Options0) ->
 -spec batch_get_free_trial_info(map(), batch_get_free_trial_info_request()) ->
     {ok, batch_get_free_trial_info_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_free_trial_info_errors(), tuple()}.
 batch_get_free_trial_info(Client, Input) ->
     batch_get_free_trial_info(Client, Input, []).
 
 -spec batch_get_free_trial_info(map(), batch_get_free_trial_info_request(), proplists:proplist()) ->
     {ok, batch_get_free_trial_info_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_free_trial_info_errors(), tuple()}.
 batch_get_free_trial_info(Client, Input0, Options0) ->
     Method = post,
     Path = ["/freetrialinfo/batchget"],
@@ -2543,20 +3157,14 @@ batch_get_free_trial_info(Client, Input0, Options0) ->
 -spec batch_get_member_ec2_deep_inspection_status(map(), batch_get_member_ec2_deep_inspection_status_request()) ->
     {ok, batch_get_member_ec2_deep_inspection_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_member_ec2_deep_inspection_status_errors(), tuple()}.
 batch_get_member_ec2_deep_inspection_status(Client, Input) ->
     batch_get_member_ec2_deep_inspection_status(Client, Input, []).
 
 -spec batch_get_member_ec2_deep_inspection_status(map(), batch_get_member_ec2_deep_inspection_status_request(), proplists:proplist()) ->
     {ok, batch_get_member_ec2_deep_inspection_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_member_ec2_deep_inspection_status_errors(), tuple()}.
 batch_get_member_ec2_deep_inspection_status(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ec2deepinspectionstatus/member/batch/get"],
@@ -2587,20 +3195,14 @@ batch_get_member_ec2_deep_inspection_status(Client, Input0, Options0) ->
 -spec batch_update_member_ec2_deep_inspection_status(map(), batch_update_member_ec2_deep_inspection_status_request()) ->
     {ok, batch_update_member_ec2_deep_inspection_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_update_member_ec2_deep_inspection_status_errors(), tuple()}.
 batch_update_member_ec2_deep_inspection_status(Client, Input) ->
     batch_update_member_ec2_deep_inspection_status(Client, Input, []).
 
 -spec batch_update_member_ec2_deep_inspection_status(map(), batch_update_member_ec2_deep_inspection_status_request(), proplists:proplist()) ->
     {ok, batch_update_member_ec2_deep_inspection_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_update_member_ec2_deep_inspection_status_errors(), tuple()}.
 batch_update_member_ec2_deep_inspection_status(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ec2deepinspectionstatus/member/batch/update"],
@@ -2627,22 +3229,14 @@ batch_update_member_ec2_deep_inspection_status(Client, Input0, Options0) ->
 -spec cancel_findings_report(map(), cancel_findings_report_request()) ->
     {ok, cancel_findings_report_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_findings_report_errors(), tuple()}.
 cancel_findings_report(Client, Input) ->
     cancel_findings_report(Client, Input, []).
 
 -spec cancel_findings_report(map(), cancel_findings_report_request(), proplists:proplist()) ->
     {ok, cancel_findings_report_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_findings_report_errors(), tuple()}.
 cancel_findings_report(Client, Input0, Options0) ->
     Method = post,
     Path = ["/reporting/cancel"],
@@ -2669,22 +3263,14 @@ cancel_findings_report(Client, Input0, Options0) ->
 -spec cancel_sbom_export(map(), cancel_sbom_export_request()) ->
     {ok, cancel_sbom_export_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_sbom_export_errors(), tuple()}.
 cancel_sbom_export(Client, Input) ->
     cancel_sbom_export(Client, Input, []).
 
 -spec cancel_sbom_export(map(), cancel_sbom_export_request(), proplists:proplist()) ->
     {ok, cancel_sbom_export_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_sbom_export_errors(), tuple()}.
 cancel_sbom_export(Client, Input0, Options0) ->
     Method = post,
     Path = ["/sbomexport/cancel"],
@@ -2711,20 +3297,14 @@ cancel_sbom_export(Client, Input0, Options0) ->
 -spec create_cis_scan_configuration(map(), create_cis_scan_configuration_request()) ->
     {ok, create_cis_scan_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_cis_scan_configuration_errors(), tuple()}.
 create_cis_scan_configuration(Client, Input) ->
     create_cis_scan_configuration(Client, Input, []).
 
 -spec create_cis_scan_configuration(map(), create_cis_scan_configuration_request(), proplists:proplist()) ->
     {ok, create_cis_scan_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_cis_scan_configuration_errors(), tuple()}.
 create_cis_scan_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cis/scan-configuration/create"],
@@ -2754,24 +3334,14 @@ create_cis_scan_configuration(Client, Input0, Options0) ->
 -spec create_filter(map(), create_filter_request()) ->
     {ok, create_filter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_filter_errors(), tuple()}.
 create_filter(Client, Input) ->
     create_filter(Client, Input, []).
 
 -spec create_filter(map(), create_filter_request(), proplists:proplist()) ->
     {ok, create_filter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_filter_errors(), tuple()}.
 create_filter(Client, Input0, Options0) ->
     Method = post,
     Path = ["/filters/create"],
@@ -2802,22 +3372,14 @@ create_filter(Client, Input0, Options0) ->
 -spec create_findings_report(map(), create_findings_report_request()) ->
     {ok, create_findings_report_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_findings_report_errors(), tuple()}.
 create_findings_report(Client, Input) ->
     create_findings_report(Client, Input, []).
 
 -spec create_findings_report(map(), create_findings_report_request(), proplists:proplist()) ->
     {ok, create_findings_report_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_findings_report_errors(), tuple()}.
 create_findings_report(Client, Input0, Options0) ->
     Method = post,
     Path = ["/reporting/create"],
@@ -2844,22 +3406,14 @@ create_findings_report(Client, Input0, Options0) ->
 -spec create_sbom_export(map(), create_sbom_export_request()) ->
     {ok, create_sbom_export_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_sbom_export_errors(), tuple()}.
 create_sbom_export(Client, Input) ->
     create_sbom_export(Client, Input, []).
 
 -spec create_sbom_export(map(), create_sbom_export_request(), proplists:proplist()) ->
     {ok, create_sbom_export_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_sbom_export_errors(), tuple()}.
 create_sbom_export(Client, Input0, Options0) ->
     Method = post,
     Path = ["/sbomexport/create"],
@@ -2886,22 +3440,14 @@ create_sbom_export(Client, Input0, Options0) ->
 -spec delete_cis_scan_configuration(map(), delete_cis_scan_configuration_request()) ->
     {ok, delete_cis_scan_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_cis_scan_configuration_errors(), tuple()}.
 delete_cis_scan_configuration(Client, Input) ->
     delete_cis_scan_configuration(Client, Input, []).
 
 -spec delete_cis_scan_configuration(map(), delete_cis_scan_configuration_request(), proplists:proplist()) ->
     {ok, delete_cis_scan_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_cis_scan_configuration_errors(), tuple()}.
 delete_cis_scan_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cis/scan-configuration/delete"],
@@ -2928,22 +3474,14 @@ delete_cis_scan_configuration(Client, Input0, Options0) ->
 -spec delete_filter(map(), delete_filter_request()) ->
     {ok, delete_filter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_filter_errors(), tuple()}.
 delete_filter(Client, Input) ->
     delete_filter(Client, Input, []).
 
 -spec delete_filter(map(), delete_filter_request(), proplists:proplist()) ->
     {ok, delete_filter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_filter_errors(), tuple()}.
 delete_filter(Client, Input0, Options0) ->
     Method = post,
     Path = ["/filters/delete"],
@@ -2971,20 +3509,14 @@ delete_filter(Client, Input0, Options0) ->
 -spec describe_organization_configuration(map(), describe_organization_configuration_request()) ->
     {ok, describe_organization_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_organization_configuration_errors(), tuple()}.
 describe_organization_configuration(Client, Input) ->
     describe_organization_configuration(Client, Input, []).
 
 -spec describe_organization_configuration(map(), describe_organization_configuration_request(), proplists:proplist()) ->
     {ok, describe_organization_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_organization_configuration_errors(), tuple()}.
 describe_organization_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/organizationconfiguration/describe"],
@@ -3015,22 +3547,14 @@ describe_organization_configuration(Client, Input0, Options0) ->
 -spec disable(map(), disable_request()) ->
     {ok, disable_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disable_errors(), tuple()}.
 disable(Client, Input) ->
     disable(Client, Input, []).
 
 -spec disable(map(), disable_request(), proplists:proplist()) ->
     {ok, disable_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disable_errors(), tuple()}.
 disable(Client, Input0, Options0) ->
     Method = post,
     Path = ["/disable"],
@@ -3058,24 +3582,14 @@ disable(Client, Input0, Options0) ->
 -spec disable_delegated_admin_account(map(), disable_delegated_admin_account_request()) ->
     {ok, disable_delegated_admin_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disable_delegated_admin_account_errors(), tuple()}.
 disable_delegated_admin_account(Client, Input) ->
     disable_delegated_admin_account(Client, Input, []).
 
 -spec disable_delegated_admin_account(map(), disable_delegated_admin_account_request(), proplists:proplist()) ->
     {ok, disable_delegated_admin_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disable_delegated_admin_account_errors(), tuple()}.
 disable_delegated_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delegatedadminaccounts/disable"],
@@ -3103,20 +3617,14 @@ disable_delegated_admin_account(Client, Input0, Options0) ->
 -spec disassociate_member(map(), disassociate_member_request()) ->
     {ok, disassociate_member_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_member_errors(), tuple()}.
 disassociate_member(Client, Input) ->
     disassociate_member(Client, Input, []).
 
 -spec disassociate_member(map(), disassociate_member_request(), proplists:proplist()) ->
     {ok, disassociate_member_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_member_errors(), tuple()}.
 disassociate_member(Client, Input0, Options0) ->
     Method = post,
     Path = ["/members/disassociate"],
@@ -3144,22 +3652,14 @@ disassociate_member(Client, Input0, Options0) ->
 -spec enable(map(), enable_request()) ->
     {ok, enable_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, enable_errors(), tuple()}.
 enable(Client, Input) ->
     enable(Client, Input, []).
 
 -spec enable(map(), enable_request(), proplists:proplist()) ->
     {ok, enable_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, enable_errors(), tuple()}.
 enable(Client, Input0, Options0) ->
     Method = post,
     Path = ["/enable"],
@@ -3187,24 +3687,14 @@ enable(Client, Input0, Options0) ->
 -spec enable_delegated_admin_account(map(), enable_delegated_admin_account_request()) ->
     {ok, enable_delegated_admin_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, enable_delegated_admin_account_errors(), tuple()}.
 enable_delegated_admin_account(Client, Input) ->
     enable_delegated_admin_account(Client, Input, []).
 
 -spec enable_delegated_admin_account(map(), enable_delegated_admin_account_request(), proplists:proplist()) ->
     {ok, enable_delegated_admin_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, enable_delegated_admin_account_errors(), tuple()}.
 enable_delegated_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delegatedadminaccounts/enable"],
@@ -3231,20 +3721,14 @@ enable_delegated_admin_account(Client, Input0, Options0) ->
 -spec get_cis_scan_report(map(), get_cis_scan_report_request()) ->
     {ok, get_cis_scan_report_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_cis_scan_report_errors(), tuple()}.
 get_cis_scan_report(Client, Input) ->
     get_cis_scan_report(Client, Input, []).
 
 -spec get_cis_scan_report(map(), get_cis_scan_report_request(), proplists:proplist()) ->
     {ok, get_cis_scan_report_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_cis_scan_report_errors(), tuple()}.
 get_cis_scan_report(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cis/scan/report/get"],
@@ -3271,20 +3755,14 @@ get_cis_scan_report(Client, Input0, Options0) ->
 -spec get_cis_scan_result_details(map(), get_cis_scan_result_details_request()) ->
     {ok, get_cis_scan_result_details_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_cis_scan_result_details_errors(), tuple()}.
 get_cis_scan_result_details(Client, Input) ->
     get_cis_scan_result_details(Client, Input, []).
 
 -spec get_cis_scan_result_details(map(), get_cis_scan_result_details_request(), proplists:proplist()) ->
     {ok, get_cis_scan_result_details_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_cis_scan_result_details_errors(), tuple()}.
 get_cis_scan_result_details(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cis/scan-result/details/get"],
@@ -3311,18 +3789,14 @@ get_cis_scan_result_details(Client, Input0, Options0) ->
 -spec get_configuration(map(), get_configuration_request()) ->
     {ok, get_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_configuration_errors(), tuple()}.
 get_configuration(Client, Input) ->
     get_configuration(Client, Input, []).
 
 -spec get_configuration(map(), get_configuration_request(), proplists:proplist()) ->
     {ok, get_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_configuration_errors(), tuple()}.
 get_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/configuration/get"],
@@ -3351,22 +3825,14 @@ get_configuration(Client, Input0, Options0) ->
 -spec get_delegated_admin_account(map(), get_delegated_admin_account_request()) ->
     {ok, get_delegated_admin_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_delegated_admin_account_errors(), tuple()}.
 get_delegated_admin_account(Client, Input) ->
     get_delegated_admin_account(Client, Input, []).
 
 -spec get_delegated_admin_account(map(), get_delegated_admin_account_request(), proplists:proplist()) ->
     {ok, get_delegated_admin_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_delegated_admin_account_errors(), tuple()}.
 get_delegated_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delegatedadminaccounts/get"],
@@ -3394,20 +3860,14 @@ get_delegated_admin_account(Client, Input0, Options0) ->
 -spec get_ec2_deep_inspection_configuration(map(), get_ec2_deep_inspection_configuration_request()) ->
     {ok, get_ec2_deep_inspection_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_ec2_deep_inspection_configuration_errors(), tuple()}.
 get_ec2_deep_inspection_configuration(Client, Input) ->
     get_ec2_deep_inspection_configuration(Client, Input, []).
 
 -spec get_ec2_deep_inspection_configuration(map(), get_ec2_deep_inspection_configuration_request(), proplists:proplist()) ->
     {ok, get_ec2_deep_inspection_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_ec2_deep_inspection_configuration_errors(), tuple()}.
 get_ec2_deep_inspection_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ec2deepinspectionconfiguration/get"],
@@ -3434,11 +3894,7 @@ get_ec2_deep_inspection_configuration(Client, Input0, Options0) ->
 -spec get_encryption_key(map(), binary() | list(), binary() | list()) ->
     {ok, get_encryption_key_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_encryption_key_errors(), tuple()}.
 get_encryption_key(Client, ResourceType, ScanType)
   when is_map(Client) ->
     get_encryption_key(Client, ResourceType, ScanType, #{}, #{}).
@@ -3446,11 +3902,7 @@ get_encryption_key(Client, ResourceType, ScanType)
 -spec get_encryption_key(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_encryption_key_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_encryption_key_errors(), tuple()}.
 get_encryption_key(Client, ResourceType, ScanType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_encryption_key(Client, ResourceType, ScanType, QueryMap, HeadersMap, []).
@@ -3458,11 +3910,7 @@ get_encryption_key(Client, ResourceType, ScanType, QueryMap, HeadersMap)
 -spec get_encryption_key(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_encryption_key_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_encryption_key_errors(), tuple()}.
 get_encryption_key(Client, ResourceType, ScanType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/encryptionkey/get"],
@@ -3488,22 +3936,14 @@ get_encryption_key(Client, ResourceType, ScanType, QueryMap, HeadersMap, Options
 -spec get_findings_report_status(map(), get_findings_report_status_request()) ->
     {ok, get_findings_report_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_findings_report_status_errors(), tuple()}.
 get_findings_report_status(Client, Input) ->
     get_findings_report_status(Client, Input, []).
 
 -spec get_findings_report_status(map(), get_findings_report_status_request(), proplists:proplist()) ->
     {ok, get_findings_report_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_findings_report_status_errors(), tuple()}.
 get_findings_report_status(Client, Input0, Options0) ->
     Method = post,
     Path = ["/reporting/status/get"],
@@ -3530,22 +3970,14 @@ get_findings_report_status(Client, Input0, Options0) ->
 -spec get_member(map(), get_member_request()) ->
     {ok, get_member_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_member_errors(), tuple()}.
 get_member(Client, Input) ->
     get_member(Client, Input, []).
 
 -spec get_member(map(), get_member_request(), proplists:proplist()) ->
     {ok, get_member_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_member_errors(), tuple()}.
 get_member(Client, Input0, Options0) ->
     Method = post,
     Path = ["/members/get"],
@@ -3572,22 +4004,14 @@ get_member(Client, Input0, Options0) ->
 -spec get_sbom_export(map(), get_sbom_export_request()) ->
     {ok, get_sbom_export_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sbom_export_errors(), tuple()}.
 get_sbom_export(Client, Input) ->
     get_sbom_export(Client, Input, []).
 
 -spec get_sbom_export(map(), get_sbom_export_request(), proplists:proplist()) ->
     {ok, get_sbom_export_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sbom_export_errors(), tuple()}.
 get_sbom_export(Client, Input0, Options0) ->
     Method = post,
     Path = ["/sbomexport/get"],
@@ -3614,20 +4038,14 @@ get_sbom_export(Client, Input0, Options0) ->
 -spec list_account_permissions(map(), list_account_permissions_request()) ->
     {ok, list_account_permissions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_account_permissions_errors(), tuple()}.
 list_account_permissions(Client, Input) ->
     list_account_permissions(Client, Input, []).
 
 -spec list_account_permissions(map(), list_account_permissions_request(), proplists:proplist()) ->
     {ok, list_account_permissions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_account_permissions_errors(), tuple()}.
 list_account_permissions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/accountpermissions/list"],
@@ -3654,20 +4072,14 @@ list_account_permissions(Client, Input0, Options0) ->
 -spec list_cis_scan_configurations(map(), list_cis_scan_configurations_request()) ->
     {ok, list_cis_scan_configurations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_cis_scan_configurations_errors(), tuple()}.
 list_cis_scan_configurations(Client, Input) ->
     list_cis_scan_configurations(Client, Input, []).
 
 -spec list_cis_scan_configurations(map(), list_cis_scan_configurations_request(), proplists:proplist()) ->
     {ok, list_cis_scan_configurations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_cis_scan_configurations_errors(), tuple()}.
 list_cis_scan_configurations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cis/scan-configuration/list"],
@@ -3694,20 +4106,14 @@ list_cis_scan_configurations(Client, Input0, Options0) ->
 -spec list_cis_scan_results_aggregated_by_checks(map(), list_cis_scan_results_aggregated_by_checks_request()) ->
     {ok, list_cis_scan_results_aggregated_by_checks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_cis_scan_results_aggregated_by_checks_errors(), tuple()}.
 list_cis_scan_results_aggregated_by_checks(Client, Input) ->
     list_cis_scan_results_aggregated_by_checks(Client, Input, []).
 
 -spec list_cis_scan_results_aggregated_by_checks(map(), list_cis_scan_results_aggregated_by_checks_request(), proplists:proplist()) ->
     {ok, list_cis_scan_results_aggregated_by_checks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_cis_scan_results_aggregated_by_checks_errors(), tuple()}.
 list_cis_scan_results_aggregated_by_checks(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cis/scan-result/check/list"],
@@ -3734,20 +4140,14 @@ list_cis_scan_results_aggregated_by_checks(Client, Input0, Options0) ->
 -spec list_cis_scan_results_aggregated_by_target_resource(map(), list_cis_scan_results_aggregated_by_target_resource_request()) ->
     {ok, list_cis_scan_results_aggregated_by_target_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_cis_scan_results_aggregated_by_target_resource_errors(), tuple()}.
 list_cis_scan_results_aggregated_by_target_resource(Client, Input) ->
     list_cis_scan_results_aggregated_by_target_resource(Client, Input, []).
 
 -spec list_cis_scan_results_aggregated_by_target_resource(map(), list_cis_scan_results_aggregated_by_target_resource_request(), proplists:proplist()) ->
     {ok, list_cis_scan_results_aggregated_by_target_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_cis_scan_results_aggregated_by_target_resource_errors(), tuple()}.
 list_cis_scan_results_aggregated_by_target_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cis/scan-result/resource/list"],
@@ -3774,20 +4174,14 @@ list_cis_scan_results_aggregated_by_target_resource(Client, Input0, Options0) ->
 -spec list_cis_scans(map(), list_cis_scans_request()) ->
     {ok, list_cis_scans_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_cis_scans_errors(), tuple()}.
 list_cis_scans(Client, Input) ->
     list_cis_scans(Client, Input, []).
 
 -spec list_cis_scans(map(), list_cis_scans_request(), proplists:proplist()) ->
     {ok, list_cis_scans_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_cis_scans_errors(), tuple()}.
 list_cis_scans(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cis/scan/list"],
@@ -3814,18 +4208,14 @@ list_cis_scans(Client, Input0, Options0) ->
 -spec list_coverage(map(), list_coverage_request()) ->
     {ok, list_coverage_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_coverage_errors(), tuple()}.
 list_coverage(Client, Input) ->
     list_coverage(Client, Input, []).
 
 -spec list_coverage(map(), list_coverage_request(), proplists:proplist()) ->
     {ok, list_coverage_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_coverage_errors(), tuple()}.
 list_coverage(Client, Input0, Options0) ->
     Method = post,
     Path = ["/coverage/list"],
@@ -3852,18 +4242,14 @@ list_coverage(Client, Input0, Options0) ->
 -spec list_coverage_statistics(map(), list_coverage_statistics_request()) ->
     {ok, list_coverage_statistics_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_coverage_statistics_errors(), tuple()}.
 list_coverage_statistics(Client, Input) ->
     list_coverage_statistics(Client, Input, []).
 
 -spec list_coverage_statistics(map(), list_coverage_statistics_request(), proplists:proplist()) ->
     {ok, list_coverage_statistics_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_coverage_statistics_errors(), tuple()}.
 list_coverage_statistics(Client, Input0, Options0) ->
     Method = post,
     Path = ["/coverage/statistics/list"],
@@ -3892,20 +4278,14 @@ list_coverage_statistics(Client, Input0, Options0) ->
 -spec list_delegated_admin_accounts(map(), list_delegated_admin_accounts_request()) ->
     {ok, list_delegated_admin_accounts_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_delegated_admin_accounts_errors(), tuple()}.
 list_delegated_admin_accounts(Client, Input) ->
     list_delegated_admin_accounts(Client, Input, []).
 
 -spec list_delegated_admin_accounts(map(), list_delegated_admin_accounts_request(), proplists:proplist()) ->
     {ok, list_delegated_admin_accounts_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_delegated_admin_accounts_errors(), tuple()}.
 list_delegated_admin_accounts(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delegatedadminaccounts/list"],
@@ -3932,20 +4312,14 @@ list_delegated_admin_accounts(Client, Input0, Options0) ->
 -spec list_filters(map(), list_filters_request()) ->
     {ok, list_filters_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_filters_errors(), tuple()}.
 list_filters(Client, Input) ->
     list_filters(Client, Input, []).
 
 -spec list_filters(map(), list_filters_request(), proplists:proplist()) ->
     {ok, list_filters_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_filters_errors(), tuple()}.
 list_filters(Client, Input0, Options0) ->
     Method = post,
     Path = ["/filters/list"],
@@ -3973,18 +4347,14 @@ list_filters(Client, Input0, Options0) ->
 -spec list_finding_aggregations(map(), list_finding_aggregations_request()) ->
     {ok, list_finding_aggregations_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_finding_aggregations_errors(), tuple()}.
 list_finding_aggregations(Client, Input) ->
     list_finding_aggregations(Client, Input, []).
 
 -spec list_finding_aggregations(map(), list_finding_aggregations_request(), proplists:proplist()) ->
     {ok, list_finding_aggregations_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_finding_aggregations_errors(), tuple()}.
 list_finding_aggregations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/findings/aggregation/list"],
@@ -4011,18 +4381,14 @@ list_finding_aggregations(Client, Input0, Options0) ->
 -spec list_findings(map(), list_findings_request()) ->
     {ok, list_findings_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_findings_errors(), tuple()}.
 list_findings(Client, Input) ->
     list_findings(Client, Input, []).
 
 -spec list_findings(map(), list_findings_request(), proplists:proplist()) ->
     {ok, list_findings_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_findings_errors(), tuple()}.
 list_findings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/findings/list"],
@@ -4051,20 +4417,14 @@ list_findings(Client, Input0, Options0) ->
 -spec list_members(map(), list_members_request()) ->
     {ok, list_members_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_members_errors(), tuple()}.
 list_members(Client, Input) ->
     list_members(Client, Input, []).
 
 -spec list_members(map(), list_members_request(), proplists:proplist()) ->
     {ok, list_members_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_members_errors(), tuple()}.
 list_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/members/list"],
@@ -4091,10 +4451,7 @@ list_members(Client, Input0, Options0) ->
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -4102,10 +4459,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -4113,10 +4467,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -4137,20 +4488,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec list_usage_totals(map(), list_usage_totals_request()) ->
     {ok, list_usage_totals_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_usage_totals_errors(), tuple()}.
 list_usage_totals(Client, Input) ->
     list_usage_totals(Client, Input, []).
 
 -spec list_usage_totals(map(), list_usage_totals_request(), proplists:proplist()) ->
     {ok, list_usage_totals_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_usage_totals_errors(), tuple()}.
 list_usage_totals(Client, Input0, Options0) ->
     Method = post,
     Path = ["/usage/list"],
@@ -4180,22 +4525,14 @@ list_usage_totals(Client, Input0, Options0) ->
 -spec reset_encryption_key(map(), reset_encryption_key_request()) ->
     {ok, reset_encryption_key_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, reset_encryption_key_errors(), tuple()}.
 reset_encryption_key(Client, Input) ->
     reset_encryption_key(Client, Input, []).
 
 -spec reset_encryption_key(map(), reset_encryption_key_request(), proplists:proplist()) ->
     {ok, reset_encryption_key_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, reset_encryption_key_errors(), tuple()}.
 reset_encryption_key(Client, Input0, Options0) ->
     Method = put,
     Path = ["/encryptionkey/reset"],
@@ -4222,20 +4559,14 @@ reset_encryption_key(Client, Input0, Options0) ->
 -spec search_vulnerabilities(map(), search_vulnerabilities_request()) ->
     {ok, search_vulnerabilities_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_vulnerabilities_errors(), tuple()}.
 search_vulnerabilities(Client, Input) ->
     search_vulnerabilities(Client, Input, []).
 
 -spec search_vulnerabilities(map(), search_vulnerabilities_request(), proplists:proplist()) ->
     {ok, search_vulnerabilities_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_vulnerabilities_errors(), tuple()}.
 search_vulnerabilities(Client, Input0, Options0) ->
     Method = post,
     Path = ["/vulnerabilities/search"],
@@ -4268,22 +4599,14 @@ search_vulnerabilities(Client, Input0, Options0) ->
 -spec send_cis_session_health(map(), send_cis_session_health_request()) ->
     {ok, send_cis_session_health_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, send_cis_session_health_errors(), tuple()}.
 send_cis_session_health(Client, Input) ->
     send_cis_session_health(Client, Input, []).
 
 -spec send_cis_session_health(map(), send_cis_session_health_request(), proplists:proplist()) ->
     {ok, send_cis_session_health_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, send_cis_session_health_errors(), tuple()}.
 send_cis_session_health(Client, Input0, Options0) ->
     Method = put,
     Path = ["/cissession/health/send"],
@@ -4316,22 +4639,14 @@ send_cis_session_health(Client, Input0, Options0) ->
 -spec send_cis_session_telemetry(map(), send_cis_session_telemetry_request()) ->
     {ok, send_cis_session_telemetry_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, send_cis_session_telemetry_errors(), tuple()}.
 send_cis_session_telemetry(Client, Input) ->
     send_cis_session_telemetry(Client, Input, []).
 
 -spec send_cis_session_telemetry(map(), send_cis_session_telemetry_request(), proplists:proplist()) ->
     {ok, send_cis_session_telemetry_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, send_cis_session_telemetry_errors(), tuple()}.
 send_cis_session_telemetry(Client, Input0, Options0) ->
     Method = put,
     Path = ["/cissession/telemetry/send"],
@@ -4364,22 +4679,14 @@ send_cis_session_telemetry(Client, Input0, Options0) ->
 -spec start_cis_session(map(), start_cis_session_request()) ->
     {ok, start_cis_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_cis_session_errors(), tuple()}.
 start_cis_session(Client, Input) ->
     start_cis_session(Client, Input, []).
 
 -spec start_cis_session(map(), start_cis_session_request(), proplists:proplist()) ->
     {ok, start_cis_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_cis_session_errors(), tuple()}.
 start_cis_session(Client, Input0, Options0) ->
     Method = put,
     Path = ["/cissession/start"],
@@ -4412,22 +4719,14 @@ start_cis_session(Client, Input0, Options0) ->
 -spec stop_cis_session(map(), stop_cis_session_request()) ->
     {ok, stop_cis_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_cis_session_errors(), tuple()}.
 stop_cis_session(Client, Input) ->
     stop_cis_session(Client, Input, []).
 
 -spec stop_cis_session(map(), stop_cis_session_request(), proplists:proplist()) ->
     {ok, stop_cis_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_cis_session_errors(), tuple()}.
 stop_cis_session(Client, Input0, Options0) ->
     Method = put,
     Path = ["/cissession/stop"],
@@ -4454,22 +4753,14 @@ stop_cis_session(Client, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -4496,20 +4787,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -4537,22 +4822,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_cis_scan_configuration(map(), update_cis_scan_configuration_request()) ->
     {ok, update_cis_scan_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_cis_scan_configuration_errors(), tuple()}.
 update_cis_scan_configuration(Client, Input) ->
     update_cis_scan_configuration(Client, Input, []).
 
 -spec update_cis_scan_configuration(map(), update_cis_scan_configuration_request(), proplists:proplist()) ->
     {ok, update_cis_scan_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_cis_scan_configuration_errors(), tuple()}.
 update_cis_scan_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cis/scan-configuration/update"],
@@ -4583,20 +4860,14 @@ update_cis_scan_configuration(Client, Input0, Options0) ->
 -spec update_configuration(map(), update_configuration_request()) ->
     {ok, update_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_configuration_errors(), tuple()}.
 update_configuration(Client, Input) ->
     update_configuration(Client, Input, []).
 
 -spec update_configuration(map(), update_configuration_request(), proplists:proplist()) ->
     {ok, update_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_configuration_errors(), tuple()}.
 update_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/configuration/update"],
@@ -4624,20 +4895,14 @@ update_configuration(Client, Input0, Options0) ->
 -spec update_ec2_deep_inspection_configuration(map(), update_ec2_deep_inspection_configuration_request()) ->
     {ok, update_ec2_deep_inspection_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_ec2_deep_inspection_configuration_errors(), tuple()}.
 update_ec2_deep_inspection_configuration(Client, Input) ->
     update_ec2_deep_inspection_configuration(Client, Input, []).
 
 -spec update_ec2_deep_inspection_configuration(map(), update_ec2_deep_inspection_configuration_request(), proplists:proplist()) ->
     {ok, update_ec2_deep_inspection_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_ec2_deep_inspection_configuration_errors(), tuple()}.
 update_ec2_deep_inspection_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ec2deepinspectionconfiguration/update"],
@@ -4667,22 +4932,14 @@ update_ec2_deep_inspection_configuration(Client, Input0, Options0) ->
 -spec update_encryption_key(map(), update_encryption_key_request()) ->
     {ok, update_encryption_key_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_encryption_key_errors(), tuple()}.
 update_encryption_key(Client, Input) ->
     update_encryption_key(Client, Input, []).
 
 -spec update_encryption_key(map(), update_encryption_key_request(), proplists:proplist()) ->
     {ok, update_encryption_key_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_encryption_key_errors(), tuple()}.
 update_encryption_key(Client, Input0, Options0) ->
     Method = put,
     Path = ["/encryptionkey/update"],
@@ -4710,22 +4967,14 @@ update_encryption_key(Client, Input0, Options0) ->
 -spec update_filter(map(), update_filter_request()) ->
     {ok, update_filter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_filter_errors(), tuple()}.
 update_filter(Client, Input) ->
     update_filter(Client, Input, []).
 
 -spec update_filter(map(), update_filter_request(), proplists:proplist()) ->
     {ok, update_filter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_filter_errors(), tuple()}.
 update_filter(Client, Input0, Options0) ->
     Method = post,
     Path = ["/filters/update"],
@@ -4755,20 +5004,14 @@ update_filter(Client, Input0, Options0) ->
 -spec update_org_ec2_deep_inspection_configuration(map(), update_org_ec2_deep_inspection_configuration_request()) ->
     {ok, update_org_ec2_deep_inspection_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_org_ec2_deep_inspection_configuration_errors(), tuple()}.
 update_org_ec2_deep_inspection_configuration(Client, Input) ->
     update_org_ec2_deep_inspection_configuration(Client, Input, []).
 
 -spec update_org_ec2_deep_inspection_configuration(map(), update_org_ec2_deep_inspection_configuration_request(), proplists:proplist()) ->
     {ok, update_org_ec2_deep_inspection_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_org_ec2_deep_inspection_configuration_errors(), tuple()}.
 update_org_ec2_deep_inspection_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ec2deepinspectionconfiguration/org/update"],
@@ -4795,20 +5038,14 @@ update_org_ec2_deep_inspection_configuration(Client, Input0, Options0) ->
 -spec update_organization_configuration(map(), update_organization_configuration_request()) ->
     {ok, update_organization_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_organization_configuration_errors(), tuple()}.
 update_organization_configuration(Client, Input) ->
     update_organization_configuration(Client, Input, []).
 
 -spec update_organization_configuration(map(), update_organization_configuration_request(), proplists:proplist()) ->
     {ok, update_organization_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_organization_configuration_errors(), tuple()}.
 update_organization_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/organizationconfiguration/update"],

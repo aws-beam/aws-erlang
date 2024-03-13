@@ -134,11 +134,13 @@
 %% }
 -type parsing_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% manage_sparql_statistics_input() :: #{
 %%   <<"mode">> => list(any())
 %% }
 -type manage_sparql_statistics_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_ml_model_training_job_input() :: #{
@@ -146,12 +148,14 @@
 %% }
 -type get_ml_model_training_job_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% cancel_ml_data_processing_job_input() :: #{
 %%   <<"clean">> => [boolean()],
 %%   <<"neptuneIamRoleArn">> => [string()]
 %% }
 -type cancel_ml_data_processing_job_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% read_only_violation_exception() :: #{
@@ -161,6 +165,7 @@
 %% }
 -type read_only_violation_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% custom_model_training_parameters() :: #{
 %%   <<"sourceS3DirectoryPath">> => [string()],
@@ -168,6 +173,7 @@
 %%   <<"transformEntryPointScript">> => [string()]
 %% }
 -type custom_model_training_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% internal_failure_exception() :: #{
@@ -177,6 +183,7 @@
 %% }
 -type internal_failure_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_exception() :: #{
 %%   <<"code">> => [string()],
@@ -185,11 +192,13 @@
 %% }
 -type s3_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_r_d_f_graph_summary_input() :: #{
 %%   <<"mode">> => list(any())
 %% }
 -type get_r_d_f_graph_summary_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_propertygraph_stream_output() :: #{
@@ -201,6 +210,7 @@
 %% }
 -type get_propertygraph_stream_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% statistics_not_available_exception() :: #{
 %%   <<"code">> => [string()],
@@ -209,11 +219,13 @@
 %% }
 -type statistics_not_available_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% query_language_version() :: #{
 %%   <<"version">> => [string()]
 %% }
 -type query_language_version() :: #{binary() => any()}.
+
 
 %% Example:
 %% unsupported_operation_exception() :: #{
@@ -223,6 +235,7 @@
 %% }
 -type unsupported_operation_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_propertygraph_statistics_output() :: #{
 %%   <<"payload">> => delete_statistics_value_map(),
@@ -231,12 +244,14 @@
 %% }
 -type delete_propertygraph_statistics_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_propertygraph_statistics_output() :: #{
 %%   <<"payload">> => statistics(),
 %%   <<"status">> => [string()]
 %% }
 -type get_propertygraph_statistics_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% execute_gremlin_profile_query_input() :: #{
@@ -248,6 +263,7 @@
 %% }
 -type execute_gremlin_profile_query_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_ml_model_transform_jobs_input() :: #{
 %%   <<"maxItems">> => integer(),
@@ -255,11 +271,13 @@
 %% }
 -type list_ml_model_transform_jobs_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% cancel_ml_data_processing_job_output() :: #{
 %%   <<"status">> => [string()]
 %% }
 -type cancel_ml_data_processing_job_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% bulk_load_id_not_found_exception() :: #{
@@ -268,6 +286,7 @@
 %%   <<"requestId">> => [string()]
 %% }
 -type bulk_load_id_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% query_eval_stats() :: #{
@@ -278,12 +297,14 @@
 %% }
 -type query_eval_stats() :: #{binary() => any()}.
 
+
 %% Example:
 %% manage_propertygraph_statistics_output() :: #{
 %%   <<"payload">> => refresh_statistics_id_map(),
 %%   <<"status">> => [string()]
 %% }
 -type manage_propertygraph_statistics_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% cancel_open_cypher_query_output() :: #{
@@ -292,11 +313,13 @@
 %% }
 -type cancel_open_cypher_query_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% execute_open_cypher_query_output() :: #{
 %%   <<"results">> => [any()]
 %% }
 -type execute_open_cypher_query_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_ml_model_transform_job_output() :: #{
@@ -308,17 +331,20 @@
 %% }
 -type get_ml_model_transform_job_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% cancel_ml_model_transform_job_output() :: #{
 %%   <<"status">> => [string()]
 %% }
 -type cancel_ml_model_transform_job_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% execute_gremlin_explain_query_input() :: #{
 %%   <<"gremlinQuery">> := [string()]
 %% }
 -type execute_gremlin_explain_query_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% method_not_allowed_exception() :: #{
@@ -328,11 +354,13 @@
 %% }
 -type method_not_allowed_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_propertygraph_summary_input() :: #{
 %%   <<"mode">> => list(any())
 %% }
 -type get_propertygraph_summary_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% ml_config_definition() :: #{
@@ -341,11 +369,13 @@
 %% }
 -type ml_config_definition() :: #{binary() => any()}.
 
+
 %% Example:
 %% execute_gremlin_profile_query_output() :: #{
 %%   <<"output">> => binary()
 %% }
 -type execute_gremlin_profile_query_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_ml_model_training_jobs_input() :: #{
@@ -354,11 +384,13 @@
 %% }
 -type list_ml_model_training_jobs_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% cancel_gremlin_query_output() :: #{
 %%   <<"status">> => [string()]
 %% }
 -type cancel_gremlin_query_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% propertygraph_data() :: #{
@@ -370,9 +402,11 @@
 %%   <<"value">> => [any()]
 %% }
 -type propertygraph_data() :: #{binary() => any()}.
+
 %% Example:
 %% cancel_loader_job_input() :: #{}
 -type cancel_loader_job_input() :: #{}.
+
 
 %% Example:
 %% execute_open_cypher_explain_query_input() :: #{
@@ -382,6 +416,7 @@
 %% }
 -type execute_open_cypher_explain_query_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% failure_by_query_exception() :: #{
 %%   <<"code">> => [string()],
@@ -389,6 +424,7 @@
 %%   <<"requestId">> => [string()]
 %% }
 -type failure_by_query_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_sparql_stream_output() :: #{
@@ -400,6 +436,7 @@
 %% }
 -type get_sparql_stream_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% illegal_argument_exception() :: #{
 %%   <<"code">> => [string()],
@@ -407,6 +444,7 @@
 %%   <<"requestId">> => [string()]
 %% }
 -type illegal_argument_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_ml_model_training_job_output() :: #{
@@ -416,6 +454,7 @@
 %% }
 -type start_ml_model_training_job_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_requests_exception() :: #{
 %%   <<"code">> => [string()],
@@ -423,6 +462,7 @@
 %%   <<"requestId">> => [string()]
 %% }
 -type too_many_requests_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_loader_job_input() :: #{
@@ -440,9 +480,11 @@
 %%   <<"userProvidedEdgeIds">> => [boolean()]
 %% }
 -type start_loader_job_input() :: #{binary() => any()}.
+
 %% Example:
 %% get_gremlin_query_status_input() :: #{}
 -type get_gremlin_query_status_input() :: #{}.
+
 
 %% Example:
 %% start_ml_data_processing_job_output() :: #{
@@ -452,17 +494,20 @@
 %% }
 -type start_ml_data_processing_job_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_ml_model_transform_jobs_output() :: #{
 %%   <<"ids">> => list([string()]())
 %% }
 -type list_ml_model_transform_jobs_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_ml_data_processing_job_input() :: #{
 %%   <<"neptuneIamRoleArn">> => [string()]
 %% }
 -type get_ml_data_processing_job_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% subject_structure() :: #{
@@ -471,6 +516,7 @@
 %% }
 -type subject_structure() :: #{binary() => any()}.
 
+
 %% Example:
 %% ml_resource_not_found_exception() :: #{
 %%   <<"code">> => [string()],
@@ -478,6 +524,7 @@
 %%   <<"requestId">> => [string()]
 %% }
 -type ml_resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% ml_resource_definition() :: #{
@@ -490,6 +537,7 @@
 %% }
 -type ml_resource_definition() :: #{binary() => any()}.
 
+
 %% Example:
 %% query_limit_exceeded_exception() :: #{
 %%   <<"code">> => [string()],
@@ -498,11 +546,13 @@
 %% }
 -type query_limit_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_ml_data_processing_jobs_output() :: #{
 %%   <<"ids">> => list([string()]())
 %% }
 -type list_ml_data_processing_jobs_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% edge_structure() :: #{
@@ -510,6 +560,7 @@
 %%   <<"edgeProperties">> => list([string()]())
 %% }
 -type edge_structure() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_sparql_stream_input() :: #{
@@ -521,11 +572,13 @@
 %% }
 -type get_sparql_stream_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% cancel_ml_model_training_job_output() :: #{
 %%   <<"status">> => [string()]
 %% }
 -type cancel_ml_model_training_job_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% time_limit_exceeded_exception() :: #{
@@ -535,12 +588,14 @@
 %% }
 -type time_limit_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_loader_job_status_output() :: #{
 %%   <<"payload">> => [any()],
 %%   <<"status">> => [string()]
 %% }
 -type get_loader_job_status_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_ml_model_training_job_input() :: #{
@@ -565,6 +620,7 @@
 %% }
 -type start_ml_model_training_job_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% memory_limit_exceeded_exception() :: #{
 %%   <<"code">> => [string()],
@@ -572,6 +628,7 @@
 %%   <<"requestId">> => [string()]
 %% }
 -type memory_limit_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_ml_data_processing_job_input() :: #{
@@ -593,6 +650,7 @@
 %% }
 -type start_ml_data_processing_job_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% malformed_query_exception() :: #{
 %%   <<"code">> => [string()],
@@ -601,6 +659,7 @@
 %% }
 -type malformed_query_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% query_limit_exception() :: #{
 %%   <<"code">> => [string()],
@@ -608,6 +667,7 @@
 %%   <<"requestId">> => [string()]
 %% }
 -type query_limit_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% sparql_record() :: #{
@@ -619,6 +679,7 @@
 %% }
 -type sparql_record() :: #{binary() => any()}.
 
+
 %% Example:
 %% gremlin_query_status() :: #{
 %%   <<"queryEvalStats">> => query_eval_stats(),
@@ -627,6 +688,7 @@
 %% }
 -type gremlin_query_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_propertygraph_summary_output() :: #{
 %%   <<"payload">> => propertygraph_summary_value_map(),
@@ -634,11 +696,13 @@
 %% }
 -type get_propertygraph_summary_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_ml_endpoints_output() :: #{
 %%   <<"ids">> => list([string()]())
 %% }
 -type list_ml_endpoints_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% r_d_f_graph_summary_value_map() :: #{
@@ -648,12 +712,14 @@
 %% }
 -type r_d_f_graph_summary_value_map() :: #{binary() => any()}.
 
+
 %% Example:
 %% execute_open_cypher_query_input() :: #{
 %%   <<"openCypherQuery">> := [string()],
 %%   <<"parameters">> => [string()]
 %% }
 -type execute_open_cypher_query_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% cancel_ml_model_transform_job_input() :: #{
@@ -662,17 +728,20 @@
 %% }
 -type cancel_ml_model_transform_job_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% cancel_open_cypher_query_input() :: #{
 %%   <<"silent">> => [boolean()]
 %% }
 -type cancel_open_cypher_query_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_ml_model_training_jobs_output() :: #{
 %%   <<"ids">> => list([string()]())
 %% }
 -type list_ml_model_training_jobs_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_loader_job_status_input() :: #{
@@ -683,6 +752,7 @@
 %% }
 -type get_loader_job_status_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_open_cypher_query_status_output() :: #{
 %%   <<"queryEvalStats">> => query_eval_stats(),
@@ -691,6 +761,7 @@
 %% }
 -type get_open_cypher_query_status_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_ml_model_transform_job_output() :: #{
 %%   <<"arn">> => [string()],
@@ -698,6 +769,7 @@
 %%   <<"id">> => [string()]
 %% }
 -type start_ml_model_transform_job_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% propertygraph_summary() :: #{
@@ -718,11 +790,13 @@
 %% }
 -type propertygraph_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% fast_reset_token() :: #{
 %%   <<"token">> => [string()]
 %% }
 -type fast_reset_token() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_ml_endpoint_input() :: #{
@@ -738,11 +812,13 @@
 %% }
 -type create_ml_endpoint_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_ml_model_transform_job_input() :: #{
 %%   <<"neptuneIamRoleArn">> => [string()]
 %% }
 -type get_ml_model_transform_job_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_ml_endpoint_output() :: #{
@@ -752,6 +828,7 @@
 %%   <<"status">> => [string()]
 %% }
 -type get_ml_endpoint_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% r_d_f_graph_summary() :: #{
@@ -765,6 +842,7 @@
 %% }
 -type r_d_f_graph_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% statistics_summary() :: #{
 %%   <<"instanceCount">> => [integer()],
@@ -772,6 +850,7 @@
 %%   <<"signatureCount">> => [integer()]
 %% }
 -type statistics_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% missing_parameter_exception() :: #{
@@ -781,6 +860,7 @@
 %% }
 -type missing_parameter_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% server_shutdown_exception() :: #{
 %%   <<"code">> => [string()],
@@ -788,9 +868,11 @@
 %%   <<"requestId">> => [string()]
 %% }
 -type server_shutdown_exception() :: #{binary() => any()}.
+
 %% Example:
 %% get_open_cypher_query_status_input() :: #{}
 -type get_open_cypher_query_status_input() :: #{}.
+
 
 %% Example:
 %% list_ml_data_processing_jobs_input() :: #{
@@ -798,6 +880,7 @@
 %%   <<"neptuneIamRoleArn">> => [string()]
 %% }
 -type list_ml_data_processing_jobs_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_gremlin_query_status_output() :: #{
@@ -807,12 +890,14 @@
 %% }
 -type get_gremlin_query_status_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_ml_endpoints_input() :: #{
 %%   <<"maxItems">> => integer(),
 %%   <<"neptuneIamRoleArn">> => [string()]
 %% }
 -type list_ml_endpoints_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_gremlin_queries_output() :: #{
@@ -822,12 +907,14 @@
 %% }
 -type list_gremlin_queries_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% cancel_ml_model_training_job_input() :: #{
 %%   <<"clean">> => [boolean()],
 %%   <<"neptuneIamRoleArn">> => [string()]
 %% }
 -type cancel_ml_model_training_job_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% cancelled_by_user_exception() :: #{
@@ -837,6 +924,7 @@
 %% }
 -type cancelled_by_user_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_ml_data_processing_job_output() :: #{
 %%   <<"id">> => [string()],
@@ -845,6 +933,7 @@
 %% }
 -type get_ml_data_processing_job_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_sparql_statistics_output() :: #{
 %%   <<"payload">> => delete_statistics_value_map(),
@@ -852,6 +941,7 @@
 %%   <<"statusCode">> => [integer()]
 %% }
 -type delete_sparql_statistics_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_propertygraph_stream_input() :: #{
@@ -863,12 +953,14 @@
 %% }
 -type get_propertygraph_stream_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% execute_gremlin_query_input() :: #{
 %%   <<"gremlinQuery">> := [string()],
 %%   <<"serializer">> => [string()]
 %% }
 -type execute_gremlin_query_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_engine_status_output() :: #{
@@ -888,6 +980,7 @@
 %% }
 -type get_engine_status_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_ml_endpoint_output() :: #{
 %%   <<"arn">> => [string()],
@@ -895,6 +988,7 @@
 %%   <<"id">> => [string()]
 %% }
 -type create_ml_endpoint_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% propertygraph_record() :: #{
@@ -906,6 +1000,7 @@
 %% }
 -type propertygraph_record() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_loader_jobs_input() :: #{
 %%   <<"includeQueuedLoads">> => [boolean()],
@@ -913,11 +1008,13 @@
 %% }
 -type list_loader_jobs_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% refresh_statistics_id_map() :: #{
 %%   <<"statisticsId">> => [string()]
 %% }
 -type refresh_statistics_id_map() :: #{binary() => any()}.
+
 
 %% Example:
 %% access_denied_exception() :: #{
@@ -927,6 +1024,7 @@
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_parameter_exception() :: #{
 %%   <<"code">> => [string()],
@@ -935,12 +1033,14 @@
 %% }
 -type invalid_parameter_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% execute_fast_reset_output() :: #{
 %%   <<"payload">> => fast_reset_token(),
 %%   <<"status">> => [string()]
 %% }
 -type execute_fast_reset_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% propertygraph_summary_value_map() :: #{
@@ -950,6 +1050,7 @@
 %% }
 -type propertygraph_summary_value_map() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_argument_exception() :: #{
 %%   <<"code">> => [string()],
@@ -958,11 +1059,13 @@
 %% }
 -type invalid_argument_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_open_cypher_queries_input() :: #{
 %%   <<"includeWaiting">> => [boolean()]
 %% }
 -type list_open_cypher_queries_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% statistics() :: #{
@@ -975,6 +1078,7 @@
 %% }
 -type statistics() :: #{binary() => any()}.
 
+
 %% Example:
 %% concurrent_modification_exception() :: #{
 %%   <<"code">> => [string()],
@@ -983,12 +1087,14 @@
 %% }
 -type concurrent_modification_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% manage_sparql_statistics_output() :: #{
 %%   <<"payload">> => refresh_statistics_id_map(),
 %%   <<"status">> => [string()]
 %% }
 -type manage_sparql_statistics_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% node_structure() :: #{
@@ -998,6 +1104,7 @@
 %% }
 -type node_structure() :: #{binary() => any()}.
 
+
 %% Example:
 %% constraint_violation_exception() :: #{
 %%   <<"code">> => [string()],
@@ -1005,6 +1112,7 @@
 %%   <<"requestId">> => [string()]
 %% }
 -type constraint_violation_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% query_too_large_exception() :: #{
@@ -1014,17 +1122,20 @@
 %% }
 -type query_too_large_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% cancel_loader_job_output() :: #{
 %%   <<"status">> => [string()]
 %% }
 -type cancel_loader_job_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_gremlin_queries_input() :: #{
 %%   <<"includeWaiting">> => [boolean()]
 %% }
 -type list_gremlin_queries_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% throttling_exception() :: #{
@@ -1033,6 +1144,7 @@
 %%   <<"requestId">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% execute_gremlin_query_output() :: #{
@@ -1043,6 +1155,7 @@
 %% }
 -type execute_gremlin_query_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% stream_records_not_found_exception() :: #{
 %%   <<"code">> => [string()],
@@ -1051,6 +1164,7 @@
 %% }
 -type stream_records_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_r_d_f_graph_summary_output() :: #{
 %%   <<"payload">> => r_d_f_graph_summary_value_map(),
@@ -1058,11 +1172,13 @@
 %% }
 -type get_r_d_f_graph_summary_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% manage_propertygraph_statistics_input() :: #{
 %%   <<"mode">> => list(any())
 %% }
 -type manage_propertygraph_statistics_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% invalid_numeric_data_exception() :: #{
@@ -1072,17 +1188,20 @@
 %% }
 -type invalid_numeric_data_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% execute_gremlin_explain_query_output() :: #{
 %%   <<"output">> => binary()
 %% }
 -type execute_gremlin_explain_query_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_ml_endpoint_output() :: #{
 %%   <<"status">> => [string()]
 %% }
 -type delete_ml_endpoint_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% load_url_access_denied_exception() :: #{
@@ -1092,12 +1211,14 @@
 %% }
 -type load_url_access_denied_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_ml_endpoint_input() :: #{
 %%   <<"clean">> => [boolean()],
 %%   <<"neptuneIamRoleArn">> => [string()]
 %% }
 -type delete_ml_endpoint_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% expired_stream_exception() :: #{
@@ -1107,6 +1228,7 @@
 %% }
 -type expired_stream_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% bad_request_exception() :: #{
 %%   <<"code">> => [string()],
@@ -1114,6 +1236,7 @@
 %%   <<"requestId">> => [string()]
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% gremlin_query_status_attributes() :: #{
@@ -1123,12 +1246,14 @@
 %% }
 -type gremlin_query_status_attributes() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_loader_job_output() :: #{
 %%   <<"payload">> => map(),
 %%   <<"status">> => [string()]
 %% }
 -type start_loader_job_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_statistics_value_map() :: #{
@@ -1137,11 +1262,13 @@
 %% }
 -type delete_statistics_value_map() :: #{binary() => any()}.
 
+
 %% Example:
 %% execute_open_cypher_explain_query_output() :: #{
 %%   <<"results">> => [binary()]
 %% }
 -type execute_open_cypher_explain_query_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_open_cypher_queries_output() :: #{
@@ -1150,6 +1277,7 @@
 %%   <<"runningQueryCount">> => [integer()]
 %% }
 -type list_open_cypher_queries_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_ml_model_transform_job_input() :: #{
@@ -1170,6 +1298,7 @@
 %% }
 -type start_ml_model_transform_job_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% custom_model_transform_parameters() :: #{
 %%   <<"sourceS3DirectoryPath">> => [string()],
@@ -1177,11 +1306,13 @@
 %% }
 -type custom_model_transform_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% loader_id_result() :: #{
 %%   <<"loadIds">> => list([string()]())
 %% }
 -type loader_id_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_ml_model_training_job_output() :: #{
@@ -1194,6 +1325,7 @@
 %% }
 -type get_ml_model_training_job_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% preconditions_failed_exception() :: #{
 %%   <<"code">> => [string()],
@@ -1201,6 +1333,7 @@
 %%   <<"requestId">> => [string()]
 %% }
 -type preconditions_failed_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% client_timeout_exception() :: #{
@@ -1210,11 +1343,13 @@
 %% }
 -type client_timeout_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% sparql_data() :: #{
 %%   <<"stmt">> => [string()]
 %% }
 -type sparql_data() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_loader_jobs_output() :: #{
@@ -1222,15 +1357,18 @@
 %%   <<"status">> => [string()]
 %% }
 -type list_loader_jobs_output() :: #{binary() => any()}.
+
 %% Example:
 %% cancel_gremlin_query_input() :: #{}
 -type cancel_gremlin_query_input() :: #{}.
+
 
 %% Example:
 %% get_ml_endpoint_input() :: #{
 %%   <<"neptuneIamRoleArn">> => [string()]
 %% }
 -type get_ml_endpoint_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_sparql_statistics_output() :: #{
@@ -1239,12 +1377,673 @@
 %% }
 -type get_sparql_statistics_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% execute_fast_reset_input() :: #{
 %%   <<"action">> := list(any()),
 %%   <<"token">> => [string()]
 %% }
 -type execute_fast_reset_input() :: #{binary() => any()}.
+
+-type cancel_gremlin_query_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    missing_parameter_exception() | 
+    time_limit_exceeded_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    failure_by_query_exception() | 
+    unsupported_operation_exception() | 
+    parsing_exception().
+
+-type cancel_loader_job_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    load_url_access_denied_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    missing_parameter_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    bulk_load_id_not_found_exception() | 
+    unsupported_operation_exception() | 
+    internal_failure_exception().
+
+-type cancel_ml_data_processing_job_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    missing_parameter_exception() | 
+    ml_resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    unsupported_operation_exception().
+
+-type cancel_ml_model_training_job_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    missing_parameter_exception() | 
+    ml_resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    unsupported_operation_exception().
+
+-type cancel_ml_model_transform_job_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    missing_parameter_exception() | 
+    ml_resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    unsupported_operation_exception().
+
+-type cancel_open_cypher_query_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    invalid_numeric_data_exception() | 
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    missing_parameter_exception() | 
+    time_limit_exceeded_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    failure_by_query_exception() | 
+    unsupported_operation_exception() | 
+    parsing_exception().
+
+-type create_ml_endpoint_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    missing_parameter_exception() | 
+    ml_resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    unsupported_operation_exception().
+
+-type delete_ml_endpoint_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    missing_parameter_exception() | 
+    ml_resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    unsupported_operation_exception().
+
+-type delete_propertygraph_statistics_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    missing_parameter_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    unsupported_operation_exception() | 
+    statistics_not_available_exception() | 
+    read_only_violation_exception().
+
+-type delete_sparql_statistics_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    missing_parameter_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    unsupported_operation_exception() | 
+    statistics_not_available_exception() | 
+    read_only_violation_exception().
+
+-type execute_fast_reset_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    server_shutdown_exception() | 
+    missing_parameter_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    method_not_allowed_exception() | 
+    unsupported_operation_exception() | 
+    read_only_violation_exception().
+
+-type execute_gremlin_explain_query_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    query_too_large_exception() | 
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    cancelled_by_user_exception() | 
+    missing_parameter_exception() | 
+    query_limit_exception() | 
+    malformed_query_exception() | 
+    memory_limit_exceeded_exception() | 
+    time_limit_exceeded_exception() | 
+    query_limit_exceeded_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    failure_by_query_exception() | 
+    unsupported_operation_exception() | 
+    parsing_exception().
+
+-type execute_gremlin_profile_query_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    query_too_large_exception() | 
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    cancelled_by_user_exception() | 
+    missing_parameter_exception() | 
+    query_limit_exception() | 
+    malformed_query_exception() | 
+    memory_limit_exceeded_exception() | 
+    time_limit_exceeded_exception() | 
+    query_limit_exceeded_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    failure_by_query_exception() | 
+    unsupported_operation_exception() | 
+    parsing_exception().
+
+-type execute_gremlin_query_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    query_too_large_exception() | 
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    cancelled_by_user_exception() | 
+    missing_parameter_exception() | 
+    query_limit_exception() | 
+    malformed_query_exception() | 
+    memory_limit_exceeded_exception() | 
+    time_limit_exceeded_exception() | 
+    query_limit_exceeded_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    failure_by_query_exception() | 
+    unsupported_operation_exception() | 
+    parsing_exception().
+
+-type execute_open_cypher_explain_query_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    invalid_numeric_data_exception() | 
+    query_too_large_exception() | 
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    cancelled_by_user_exception() | 
+    missing_parameter_exception() | 
+    query_limit_exception() | 
+    malformed_query_exception() | 
+    memory_limit_exceeded_exception() | 
+    time_limit_exceeded_exception() | 
+    query_limit_exceeded_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    failure_by_query_exception() | 
+    unsupported_operation_exception() | 
+    parsing_exception().
+
+-type execute_open_cypher_query_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    invalid_numeric_data_exception() | 
+    query_too_large_exception() | 
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    cancelled_by_user_exception() | 
+    missing_parameter_exception() | 
+    query_limit_exception() | 
+    malformed_query_exception() | 
+    memory_limit_exceeded_exception() | 
+    time_limit_exceeded_exception() | 
+    query_limit_exceeded_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    failure_by_query_exception() | 
+    unsupported_operation_exception() | 
+    parsing_exception().
+
+-type get_engine_status_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    unsupported_operation_exception() | 
+    internal_failure_exception().
+
+-type get_gremlin_query_status_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    missing_parameter_exception() | 
+    time_limit_exceeded_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    failure_by_query_exception() | 
+    unsupported_operation_exception() | 
+    read_only_violation_exception() | 
+    parsing_exception().
+
+-type get_loader_job_status_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    load_url_access_denied_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    missing_parameter_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    bulk_load_id_not_found_exception() | 
+    unsupported_operation_exception() | 
+    internal_failure_exception().
+
+-type get_ml_data_processing_job_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    missing_parameter_exception() | 
+    ml_resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    unsupported_operation_exception().
+
+-type get_ml_endpoint_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    missing_parameter_exception() | 
+    ml_resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    unsupported_operation_exception().
+
+-type get_ml_model_training_job_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    missing_parameter_exception() | 
+    ml_resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    unsupported_operation_exception().
+
+-type get_ml_model_transform_job_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    missing_parameter_exception() | 
+    ml_resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    unsupported_operation_exception().
+
+-type get_open_cypher_query_status_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    invalid_numeric_data_exception() | 
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    missing_parameter_exception() | 
+    time_limit_exceeded_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    failure_by_query_exception() | 
+    unsupported_operation_exception() | 
+    read_only_violation_exception() | 
+    parsing_exception().
+
+-type get_propertygraph_statistics_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    missing_parameter_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    unsupported_operation_exception() | 
+    statistics_not_available_exception() | 
+    read_only_violation_exception().
+
+-type get_propertygraph_stream_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    expired_stream_exception() | 
+    stream_records_not_found_exception() | 
+    throttling_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    memory_limit_exceeded_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    unsupported_operation_exception().
+
+-type get_propertygraph_summary_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    missing_parameter_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    unsupported_operation_exception() | 
+    statistics_not_available_exception() | 
+    read_only_violation_exception().
+
+-type get_r_d_f_graph_summary_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    missing_parameter_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    unsupported_operation_exception() | 
+    statistics_not_available_exception() | 
+    read_only_violation_exception().
+
+-type get_sparql_statistics_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    missing_parameter_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    unsupported_operation_exception() | 
+    statistics_not_available_exception() | 
+    read_only_violation_exception().
+
+-type get_sparql_stream_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    expired_stream_exception() | 
+    stream_records_not_found_exception() | 
+    throttling_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    memory_limit_exceeded_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    unsupported_operation_exception().
+
+-type list_gremlin_queries_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    missing_parameter_exception() | 
+    time_limit_exceeded_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    failure_by_query_exception() | 
+    unsupported_operation_exception() | 
+    read_only_violation_exception() | 
+    parsing_exception().
+
+-type list_loader_jobs_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    load_url_access_denied_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    bulk_load_id_not_found_exception() | 
+    unsupported_operation_exception() | 
+    internal_failure_exception().
+
+-type list_ml_data_processing_jobs_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    missing_parameter_exception() | 
+    ml_resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    unsupported_operation_exception().
+
+-type list_ml_endpoints_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    missing_parameter_exception() | 
+    ml_resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    unsupported_operation_exception().
+
+-type list_ml_model_training_jobs_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    missing_parameter_exception() | 
+    ml_resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    unsupported_operation_exception().
+
+-type list_ml_model_transform_jobs_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    missing_parameter_exception() | 
+    ml_resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    unsupported_operation_exception().
+
+-type list_open_cypher_queries_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    invalid_numeric_data_exception() | 
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    missing_parameter_exception() | 
+    time_limit_exceeded_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    failure_by_query_exception() | 
+    unsupported_operation_exception() | 
+    read_only_violation_exception() | 
+    parsing_exception().
+
+-type manage_propertygraph_statistics_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    missing_parameter_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    unsupported_operation_exception() | 
+    statistics_not_available_exception() | 
+    read_only_violation_exception().
+
+-type manage_sparql_statistics_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    missing_parameter_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    unsupported_operation_exception() | 
+    statistics_not_available_exception() | 
+    read_only_violation_exception().
+
+-type start_loader_job_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    load_url_access_denied_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    missing_parameter_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    bulk_load_id_not_found_exception() | 
+    unsupported_operation_exception() | 
+    s3_exception() | 
+    internal_failure_exception().
+
+-type start_ml_data_processing_job_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    missing_parameter_exception() | 
+    ml_resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    unsupported_operation_exception().
+
+-type start_ml_model_training_job_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    missing_parameter_exception() | 
+    ml_resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    unsupported_operation_exception().
+
+-type start_ml_model_transform_job_errors() ::
+    client_timeout_exception() | 
+    preconditions_failed_exception() | 
+    bad_request_exception() | 
+    constraint_violation_exception() | 
+    invalid_argument_exception() | 
+    invalid_parameter_exception() | 
+    missing_parameter_exception() | 
+    ml_resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    unsupported_operation_exception().
 
 %%====================================================================
 %% API
@@ -1265,40 +2064,14 @@
 -spec cancel_gremlin_query(map(), binary() | list(), cancel_gremlin_query_input()) ->
     {ok, cancel_gremlin_query_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, failure_by_query_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, parsing_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, time_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, cancel_gremlin_query_errors(), tuple()}.
 cancel_gremlin_query(Client, QueryId, Input) ->
     cancel_gremlin_query(Client, QueryId, Input, []).
 
 -spec cancel_gremlin_query(map(), binary() | list(), cancel_gremlin_query_input(), proplists:proplist()) ->
     {ok, cancel_gremlin_query_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, failure_by_query_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, parsing_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, time_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, cancel_gremlin_query_errors(), tuple()}.
 cancel_gremlin_query(Client, QueryId, Input0, Options0) ->
     Method = delete,
     Path = ["/gremlin/status/", aws_util:encode_uri(QueryId), ""],
@@ -1337,38 +2110,14 @@ cancel_gremlin_query(Client, QueryId, Input0, Options0) ->
 -spec cancel_loader_job(map(), binary() | list(), cancel_loader_job_input()) ->
     {ok, cancel_loader_job_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, bulk_load_id_not_found_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, load_url_access_denied_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, cancel_loader_job_errors(), tuple()}.
 cancel_loader_job(Client, LoadId, Input) ->
     cancel_loader_job(Client, LoadId, Input, []).
 
 -spec cancel_loader_job(map(), binary() | list(), cancel_loader_job_input(), proplists:proplist()) ->
     {ok, cancel_loader_job_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, bulk_load_id_not_found_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, load_url_access_denied_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, cancel_loader_job_errors(), tuple()}.
 cancel_loader_job(Client, LoadId, Input0, Options0) ->
     Method = delete,
     Path = ["/loader/", aws_util:encode_uri(LoadId), ""],
@@ -1406,34 +2155,14 @@ cancel_loader_job(Client, LoadId, Input0, Options0) ->
 -spec cancel_ml_data_processing_job(map(), binary() | list(), cancel_ml_data_processing_job_input()) ->
     {ok, cancel_ml_data_processing_job_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, cancel_ml_data_processing_job_errors(), tuple()}.
 cancel_ml_data_processing_job(Client, Id, Input) ->
     cancel_ml_data_processing_job(Client, Id, Input, []).
 
 -spec cancel_ml_data_processing_job(map(), binary() | list(), cancel_ml_data_processing_job_input(), proplists:proplist()) ->
     {ok, cancel_ml_data_processing_job_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, cancel_ml_data_processing_job_errors(), tuple()}.
 cancel_ml_data_processing_job(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/ml/dataprocessing/", aws_util:encode_uri(Id), ""],
@@ -1473,34 +2202,14 @@ cancel_ml_data_processing_job(Client, Id, Input0, Options0) ->
 -spec cancel_ml_model_training_job(map(), binary() | list(), cancel_ml_model_training_job_input()) ->
     {ok, cancel_ml_model_training_job_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, cancel_ml_model_training_job_errors(), tuple()}.
 cancel_ml_model_training_job(Client, Id, Input) ->
     cancel_ml_model_training_job(Client, Id, Input, []).
 
 -spec cancel_ml_model_training_job(map(), binary() | list(), cancel_ml_model_training_job_input(), proplists:proplist()) ->
     {ok, cancel_ml_model_training_job_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, cancel_ml_model_training_job_errors(), tuple()}.
 cancel_ml_model_training_job(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/ml/modeltraining/", aws_util:encode_uri(Id), ""],
@@ -1540,34 +2249,14 @@ cancel_ml_model_training_job(Client, Id, Input0, Options0) ->
 -spec cancel_ml_model_transform_job(map(), binary() | list(), cancel_ml_model_transform_job_input()) ->
     {ok, cancel_ml_model_transform_job_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, cancel_ml_model_transform_job_errors(), tuple()}.
 cancel_ml_model_transform_job(Client, Id, Input) ->
     cancel_ml_model_transform_job(Client, Id, Input, []).
 
 -spec cancel_ml_model_transform_job(map(), binary() | list(), cancel_ml_model_transform_job_input(), proplists:proplist()) ->
     {ok, cancel_ml_model_transform_job_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, cancel_ml_model_transform_job_errors(), tuple()}.
 cancel_ml_model_transform_job(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/ml/modeltransform/", aws_util:encode_uri(Id), ""],
@@ -1607,42 +2296,14 @@ cancel_ml_model_transform_job(Client, Id, Input0, Options0) ->
 -spec cancel_open_cypher_query(map(), binary() | list(), cancel_open_cypher_query_input()) ->
     {ok, cancel_open_cypher_query_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, failure_by_query_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_numeric_data_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, parsing_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, time_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, cancel_open_cypher_query_errors(), tuple()}.
 cancel_open_cypher_query(Client, QueryId, Input) ->
     cancel_open_cypher_query(Client, QueryId, Input, []).
 
 -spec cancel_open_cypher_query(map(), binary() | list(), cancel_open_cypher_query_input(), proplists:proplist()) ->
     {ok, cancel_open_cypher_query_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, failure_by_query_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_numeric_data_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, parsing_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, time_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, cancel_open_cypher_query_errors(), tuple()}.
 cancel_open_cypher_query(Client, QueryId, Input0, Options0) ->
     Method = delete,
     Path = ["/opencypher/status/", aws_util:encode_uri(QueryId), ""],
@@ -1682,34 +2343,14 @@ cancel_open_cypher_query(Client, QueryId, Input0, Options0) ->
 -spec create_ml_endpoint(map(), create_ml_endpoint_input()) ->
     {ok, create_ml_endpoint_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, create_ml_endpoint_errors(), tuple()}.
 create_ml_endpoint(Client, Input) ->
     create_ml_endpoint(Client, Input, []).
 
 -spec create_ml_endpoint(map(), create_ml_endpoint_input(), proplists:proplist()) ->
     {ok, create_ml_endpoint_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, create_ml_endpoint_errors(), tuple()}.
 create_ml_endpoint(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ml/endpoints"],
@@ -1747,34 +2388,14 @@ create_ml_endpoint(Client, Input0, Options0) ->
 -spec delete_ml_endpoint(map(), binary() | list(), delete_ml_endpoint_input()) ->
     {ok, delete_ml_endpoint_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, delete_ml_endpoint_errors(), tuple()}.
 delete_ml_endpoint(Client, Id, Input) ->
     delete_ml_endpoint(Client, Id, Input, []).
 
 -spec delete_ml_endpoint(map(), binary() | list(), delete_ml_endpoint_input(), proplists:proplist()) ->
     {ok, delete_ml_endpoint_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, delete_ml_endpoint_errors(), tuple()}.
 delete_ml_endpoint(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/ml/endpoints/", aws_util:encode_uri(Id), ""],
@@ -1810,38 +2431,14 @@ delete_ml_endpoint(Client, Id, Input0, Options0) ->
 -spec delete_propertygraph_statistics(map(), #{}) ->
     {ok, delete_propertygraph_statistics_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, statistics_not_available_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, delete_propertygraph_statistics_errors(), tuple()}.
 delete_propertygraph_statistics(Client, Input) ->
     delete_propertygraph_statistics(Client, Input, []).
 
 -spec delete_propertygraph_statistics(map(), #{}, proplists:proplist()) ->
     {ok, delete_propertygraph_statistics_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, statistics_not_available_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, delete_propertygraph_statistics_errors(), tuple()}.
 delete_propertygraph_statistics(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/propertygraph/statistics"],
@@ -1874,38 +2471,14 @@ delete_propertygraph_statistics(Client, Input0, Options0) ->
 -spec delete_sparql_statistics(map(), #{}) ->
     {ok, delete_sparql_statistics_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, statistics_not_available_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, delete_sparql_statistics_errors(), tuple()}.
 delete_sparql_statistics(Client, Input) ->
     delete_sparql_statistics(Client, Input, []).
 
 -spec delete_sparql_statistics(map(), #{}, proplists:proplist()) ->
     {ok, delete_sparql_statistics_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, statistics_not_available_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, delete_sparql_statistics_errors(), tuple()}.
 delete_sparql_statistics(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/sparql/statistics"],
@@ -1949,38 +2522,14 @@ delete_sparql_statistics(Client, Input0, Options0) ->
 -spec execute_fast_reset(map(), execute_fast_reset_input()) ->
     {ok, execute_fast_reset_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, server_shutdown_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, execute_fast_reset_errors(), tuple()}.
 execute_fast_reset(Client, Input) ->
     execute_fast_reset(Client, Input, []).
 
 -spec execute_fast_reset(map(), execute_fast_reset_input(), proplists:proplist()) ->
     {ok, execute_fast_reset_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, server_shutdown_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, execute_fast_reset_errors(), tuple()}.
 execute_fast_reset(Client, Input0, Options0) ->
     Method = post,
     Path = ["/system"],
@@ -2044,52 +2593,14 @@ execute_fast_reset(Client, Input0, Options0) ->
 -spec execute_gremlin_explain_query(map(), execute_gremlin_explain_query_input()) ->
     {ok, execute_gremlin_explain_query_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, cancelled_by_user_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, failure_by_query_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_query_exception(), tuple()} |
-    {error, memory_limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, parsing_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, query_limit_exceeded_exception(), tuple()} |
-    {error, query_limit_exception(), tuple()} |
-    {error, query_too_large_exception(), tuple()} |
-    {error, time_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, execute_gremlin_explain_query_errors(), tuple()}.
 execute_gremlin_explain_query(Client, Input) ->
     execute_gremlin_explain_query(Client, Input, []).
 
 -spec execute_gremlin_explain_query(map(), execute_gremlin_explain_query_input(), proplists:proplist()) ->
     {ok, execute_gremlin_explain_query_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, cancelled_by_user_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, failure_by_query_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_query_exception(), tuple()} |
-    {error, memory_limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, parsing_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, query_limit_exceeded_exception(), tuple()} |
-    {error, query_limit_exception(), tuple()} |
-    {error, query_too_large_exception(), tuple()} |
-    {error, time_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, execute_gremlin_explain_query_errors(), tuple()}.
 execute_gremlin_explain_query(Client, Input0, Options0) ->
     Method = post,
     Path = ["/gremlin/explain"],
@@ -2137,52 +2648,14 @@ execute_gremlin_explain_query(Client, Input0, Options0) ->
 -spec execute_gremlin_profile_query(map(), execute_gremlin_profile_query_input()) ->
     {ok, execute_gremlin_profile_query_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, cancelled_by_user_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, failure_by_query_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_query_exception(), tuple()} |
-    {error, memory_limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, parsing_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, query_limit_exceeded_exception(), tuple()} |
-    {error, query_limit_exception(), tuple()} |
-    {error, query_too_large_exception(), tuple()} |
-    {error, time_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, execute_gremlin_profile_query_errors(), tuple()}.
 execute_gremlin_profile_query(Client, Input) ->
     execute_gremlin_profile_query(Client, Input, []).
 
 -spec execute_gremlin_profile_query(map(), execute_gremlin_profile_query_input(), proplists:proplist()) ->
     {ok, execute_gremlin_profile_query_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, cancelled_by_user_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, failure_by_query_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_query_exception(), tuple()} |
-    {error, memory_limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, parsing_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, query_limit_exceeded_exception(), tuple()} |
-    {error, query_limit_exception(), tuple()} |
-    {error, query_too_large_exception(), tuple()} |
-    {error, time_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, execute_gremlin_profile_query_errors(), tuple()}.
 execute_gremlin_profile_query(Client, Input0, Options0) ->
     Method = post,
     Path = ["/gremlin/profile"],
@@ -2240,52 +2713,14 @@ execute_gremlin_profile_query(Client, Input0, Options0) ->
 -spec execute_gremlin_query(map(), execute_gremlin_query_input()) ->
     {ok, execute_gremlin_query_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, cancelled_by_user_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, failure_by_query_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_query_exception(), tuple()} |
-    {error, memory_limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, parsing_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, query_limit_exceeded_exception(), tuple()} |
-    {error, query_limit_exception(), tuple()} |
-    {error, query_too_large_exception(), tuple()} |
-    {error, time_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, execute_gremlin_query_errors(), tuple()}.
 execute_gremlin_query(Client, Input) ->
     execute_gremlin_query(Client, Input, []).
 
 -spec execute_gremlin_query(map(), execute_gremlin_query_input(), proplists:proplist()) ->
     {ok, execute_gremlin_query_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, cancelled_by_user_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, failure_by_query_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_query_exception(), tuple()} |
-    {error, memory_limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, parsing_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, query_limit_exceeded_exception(), tuple()} |
-    {error, query_limit_exception(), tuple()} |
-    {error, query_too_large_exception(), tuple()} |
-    {error, time_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, execute_gremlin_query_errors(), tuple()}.
 execute_gremlin_query(Client, Input0, Options0) ->
     Method = post,
     Path = ["/gremlin"],
@@ -2334,54 +2769,14 @@ execute_gremlin_query(Client, Input0, Options0) ->
 -spec execute_open_cypher_explain_query(map(), execute_open_cypher_explain_query_input()) ->
     {ok, execute_open_cypher_explain_query_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, cancelled_by_user_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, failure_by_query_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_numeric_data_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_query_exception(), tuple()} |
-    {error, memory_limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, parsing_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, query_limit_exceeded_exception(), tuple()} |
-    {error, query_limit_exception(), tuple()} |
-    {error, query_too_large_exception(), tuple()} |
-    {error, time_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, execute_open_cypher_explain_query_errors(), tuple()}.
 execute_open_cypher_explain_query(Client, Input) ->
     execute_open_cypher_explain_query(Client, Input, []).
 
 -spec execute_open_cypher_explain_query(map(), execute_open_cypher_explain_query_input(), proplists:proplist()) ->
     {ok, execute_open_cypher_explain_query_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, cancelled_by_user_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, failure_by_query_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_numeric_data_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_query_exception(), tuple()} |
-    {error, memory_limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, parsing_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, query_limit_exceeded_exception(), tuple()} |
-    {error, query_limit_exception(), tuple()} |
-    {error, query_too_large_exception(), tuple()} |
-    {error, time_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, execute_open_cypher_explain_query_errors(), tuple()}.
 execute_open_cypher_explain_query(Client, Input0, Options0) ->
     Method = post,
     Path = ["/opencypher/explain"],
@@ -2447,54 +2842,14 @@ execute_open_cypher_explain_query(Client, Input0, Options0) ->
 -spec execute_open_cypher_query(map(), execute_open_cypher_query_input()) ->
     {ok, execute_open_cypher_query_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, cancelled_by_user_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, failure_by_query_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_numeric_data_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_query_exception(), tuple()} |
-    {error, memory_limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, parsing_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, query_limit_exceeded_exception(), tuple()} |
-    {error, query_limit_exception(), tuple()} |
-    {error, query_too_large_exception(), tuple()} |
-    {error, time_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, execute_open_cypher_query_errors(), tuple()}.
 execute_open_cypher_query(Client, Input) ->
     execute_open_cypher_query(Client, Input, []).
 
 -spec execute_open_cypher_query(map(), execute_open_cypher_query_input(), proplists:proplist()) ->
     {ok, execute_open_cypher_query_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, cancelled_by_user_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, failure_by_query_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_numeric_data_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, malformed_query_exception(), tuple()} |
-    {error, memory_limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, parsing_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, query_limit_exceeded_exception(), tuple()} |
-    {error, query_limit_exception(), tuple()} |
-    {error, query_too_large_exception(), tuple()} |
-    {error, time_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, execute_open_cypher_query_errors(), tuple()}.
 execute_open_cypher_query(Client, Input0, Options0) ->
     Method = post,
     Path = ["/opencypher"],
@@ -2527,14 +2882,7 @@ execute_open_cypher_query(Client, Input0, Options0) ->
 -spec get_engine_status(map()) ->
     {ok, get_engine_status_output(), tuple()} |
     {error, any()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_engine_status_errors(), tuple()}.
 get_engine_status(Client)
   when is_map(Client) ->
     get_engine_status(Client, #{}, #{}).
@@ -2542,14 +2890,7 @@ get_engine_status(Client)
 -spec get_engine_status(map(), map(), map()) ->
     {ok, get_engine_status_output(), tuple()} |
     {error, any()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_engine_status_errors(), tuple()}.
 get_engine_status(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_engine_status(Client, QueryMap, HeadersMap, []).
@@ -2557,14 +2898,7 @@ get_engine_status(Client, QueryMap, HeadersMap)
 -spec get_engine_status(map(), map(), map(), proplists:proplist()) ->
     {ok, get_engine_status_output(), tuple()} |
     {error, any()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_engine_status_errors(), tuple()}.
 get_engine_status(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/status"],
@@ -2599,22 +2933,7 @@ get_engine_status(Client, QueryMap, HeadersMap, Options0)
 -spec get_gremlin_query_status(map(), binary() | list()) ->
     {ok, get_gremlin_query_status_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, failure_by_query_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, parsing_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, time_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_gremlin_query_status_errors(), tuple()}.
 get_gremlin_query_status(Client, QueryId)
   when is_map(Client) ->
     get_gremlin_query_status(Client, QueryId, #{}, #{}).
@@ -2622,22 +2941,7 @@ get_gremlin_query_status(Client, QueryId)
 -spec get_gremlin_query_status(map(), binary() | list(), map(), map()) ->
     {ok, get_gremlin_query_status_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, failure_by_query_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, parsing_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, time_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_gremlin_query_status_errors(), tuple()}.
 get_gremlin_query_status(Client, QueryId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_gremlin_query_status(Client, QueryId, QueryMap, HeadersMap, []).
@@ -2645,22 +2949,7 @@ get_gremlin_query_status(Client, QueryId, QueryMap, HeadersMap)
 -spec get_gremlin_query_status(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_gremlin_query_status_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, failure_by_query_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, parsing_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, time_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_gremlin_query_status_errors(), tuple()}.
 get_gremlin_query_status(Client, QueryId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/gremlin/status/", aws_util:encode_uri(QueryId), ""],
@@ -2695,19 +2984,7 @@ get_gremlin_query_status(Client, QueryId, QueryMap, HeadersMap, Options0)
 -spec get_loader_job_status(map(), binary() | list()) ->
     {ok, get_loader_job_status_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, bulk_load_id_not_found_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, load_url_access_denied_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_loader_job_status_errors(), tuple()}.
 get_loader_job_status(Client, LoadId)
   when is_map(Client) ->
     get_loader_job_status(Client, LoadId, #{}, #{}).
@@ -2715,19 +2992,7 @@ get_loader_job_status(Client, LoadId)
 -spec get_loader_job_status(map(), binary() | list(), map(), map()) ->
     {ok, get_loader_job_status_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, bulk_load_id_not_found_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, load_url_access_denied_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_loader_job_status_errors(), tuple()}.
 get_loader_job_status(Client, LoadId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_loader_job_status(Client, LoadId, QueryMap, HeadersMap, []).
@@ -2735,19 +3000,7 @@ get_loader_job_status(Client, LoadId, QueryMap, HeadersMap)
 -spec get_loader_job_status(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_loader_job_status_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, bulk_load_id_not_found_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, load_url_access_denied_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_loader_job_status_errors(), tuple()}.
 get_loader_job_status(Client, LoadId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/loader/", aws_util:encode_uri(LoadId), ""],
@@ -2786,17 +3039,7 @@ get_loader_job_status(Client, LoadId, QueryMap, HeadersMap, Options0)
 -spec get_ml_data_processing_job(map(), binary() | list()) ->
     {ok, get_ml_data_processing_job_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_ml_data_processing_job_errors(), tuple()}.
 get_ml_data_processing_job(Client, Id)
   when is_map(Client) ->
     get_ml_data_processing_job(Client, Id, #{}, #{}).
@@ -2804,17 +3047,7 @@ get_ml_data_processing_job(Client, Id)
 -spec get_ml_data_processing_job(map(), binary() | list(), map(), map()) ->
     {ok, get_ml_data_processing_job_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_ml_data_processing_job_errors(), tuple()}.
 get_ml_data_processing_job(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_ml_data_processing_job(Client, Id, QueryMap, HeadersMap, []).
@@ -2822,17 +3055,7 @@ get_ml_data_processing_job(Client, Id, QueryMap, HeadersMap)
 -spec get_ml_data_processing_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_ml_data_processing_job_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_ml_data_processing_job_errors(), tuple()}.
 get_ml_data_processing_job(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ml/dataprocessing/", aws_util:encode_uri(Id), ""],
@@ -2867,17 +3090,7 @@ get_ml_data_processing_job(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_ml_endpoint(map(), binary() | list()) ->
     {ok, get_ml_endpoint_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_ml_endpoint_errors(), tuple()}.
 get_ml_endpoint(Client, Id)
   when is_map(Client) ->
     get_ml_endpoint(Client, Id, #{}, #{}).
@@ -2885,17 +3098,7 @@ get_ml_endpoint(Client, Id)
 -spec get_ml_endpoint(map(), binary() | list(), map(), map()) ->
     {ok, get_ml_endpoint_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_ml_endpoint_errors(), tuple()}.
 get_ml_endpoint(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_ml_endpoint(Client, Id, QueryMap, HeadersMap, []).
@@ -2903,17 +3106,7 @@ get_ml_endpoint(Client, Id, QueryMap, HeadersMap)
 -spec get_ml_endpoint(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_ml_endpoint_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_ml_endpoint_errors(), tuple()}.
 get_ml_endpoint(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ml/endpoints/", aws_util:encode_uri(Id), ""],
@@ -2949,17 +3142,7 @@ get_ml_endpoint(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_ml_model_training_job(map(), binary() | list()) ->
     {ok, get_ml_model_training_job_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_ml_model_training_job_errors(), tuple()}.
 get_ml_model_training_job(Client, Id)
   when is_map(Client) ->
     get_ml_model_training_job(Client, Id, #{}, #{}).
@@ -2967,17 +3150,7 @@ get_ml_model_training_job(Client, Id)
 -spec get_ml_model_training_job(map(), binary() | list(), map(), map()) ->
     {ok, get_ml_model_training_job_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_ml_model_training_job_errors(), tuple()}.
 get_ml_model_training_job(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_ml_model_training_job(Client, Id, QueryMap, HeadersMap, []).
@@ -2985,17 +3158,7 @@ get_ml_model_training_job(Client, Id, QueryMap, HeadersMap)
 -spec get_ml_model_training_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_ml_model_training_job_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_ml_model_training_job_errors(), tuple()}.
 get_ml_model_training_job(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ml/modeltraining/", aws_util:encode_uri(Id), ""],
@@ -3031,17 +3194,7 @@ get_ml_model_training_job(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_ml_model_transform_job(map(), binary() | list()) ->
     {ok, get_ml_model_transform_job_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_ml_model_transform_job_errors(), tuple()}.
 get_ml_model_transform_job(Client, Id)
   when is_map(Client) ->
     get_ml_model_transform_job(Client, Id, #{}, #{}).
@@ -3049,17 +3202,7 @@ get_ml_model_transform_job(Client, Id)
 -spec get_ml_model_transform_job(map(), binary() | list(), map(), map()) ->
     {ok, get_ml_model_transform_job_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_ml_model_transform_job_errors(), tuple()}.
 get_ml_model_transform_job(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_ml_model_transform_job(Client, Id, QueryMap, HeadersMap, []).
@@ -3067,17 +3210,7 @@ get_ml_model_transform_job(Client, Id, QueryMap, HeadersMap)
 -spec get_ml_model_transform_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_ml_model_transform_job_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_ml_model_transform_job_errors(), tuple()}.
 get_ml_model_transform_job(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ml/modeltransform/", aws_util:encode_uri(Id), ""],
@@ -3116,23 +3249,7 @@ get_ml_model_transform_job(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_open_cypher_query_status(map(), binary() | list()) ->
     {ok, get_open_cypher_query_status_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, failure_by_query_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_numeric_data_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, parsing_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, time_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_open_cypher_query_status_errors(), tuple()}.
 get_open_cypher_query_status(Client, QueryId)
   when is_map(Client) ->
     get_open_cypher_query_status(Client, QueryId, #{}, #{}).
@@ -3140,23 +3257,7 @@ get_open_cypher_query_status(Client, QueryId)
 -spec get_open_cypher_query_status(map(), binary() | list(), map(), map()) ->
     {ok, get_open_cypher_query_status_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, failure_by_query_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_numeric_data_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, parsing_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, time_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_open_cypher_query_status_errors(), tuple()}.
 get_open_cypher_query_status(Client, QueryId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_open_cypher_query_status(Client, QueryId, QueryMap, HeadersMap, []).
@@ -3164,23 +3265,7 @@ get_open_cypher_query_status(Client, QueryId, QueryMap, HeadersMap)
 -spec get_open_cypher_query_status(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_open_cypher_query_status_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, failure_by_query_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_numeric_data_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, parsing_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, time_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_open_cypher_query_status_errors(), tuple()}.
 get_open_cypher_query_status(Client, QueryId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/opencypher/status/", aws_util:encode_uri(QueryId), ""],
@@ -3207,19 +3292,7 @@ get_open_cypher_query_status(Client, QueryId, QueryMap, HeadersMap, Options0)
 -spec get_propertygraph_statistics(map()) ->
     {ok, get_propertygraph_statistics_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, statistics_not_available_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_propertygraph_statistics_errors(), tuple()}.
 get_propertygraph_statistics(Client)
   when is_map(Client) ->
     get_propertygraph_statistics(Client, #{}, #{}).
@@ -3227,19 +3300,7 @@ get_propertygraph_statistics(Client)
 -spec get_propertygraph_statistics(map(), map(), map()) ->
     {ok, get_propertygraph_statistics_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, statistics_not_available_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_propertygraph_statistics_errors(), tuple()}.
 get_propertygraph_statistics(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_propertygraph_statistics(Client, QueryMap, HeadersMap, []).
@@ -3247,19 +3308,7 @@ get_propertygraph_statistics(Client, QueryMap, HeadersMap)
 -spec get_propertygraph_statistics(map(), map(), map(), proplists:proplist()) ->
     {ok, get_propertygraph_statistics_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, statistics_not_available_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_propertygraph_statistics_errors(), tuple()}.
 get_propertygraph_statistics(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/propertygraph/statistics"],
@@ -3318,18 +3367,7 @@ get_propertygraph_statistics(Client, QueryMap, HeadersMap, Options0)
 -spec get_propertygraph_stream(map()) ->
     {ok, get_propertygraph_stream_output(), tuple()} |
     {error, any()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, expired_stream_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, memory_limit_exceeded_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, stream_records_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_propertygraph_stream_errors(), tuple()}.
 get_propertygraph_stream(Client)
   when is_map(Client) ->
     get_propertygraph_stream(Client, #{}, #{}).
@@ -3337,18 +3375,7 @@ get_propertygraph_stream(Client)
 -spec get_propertygraph_stream(map(), map(), map()) ->
     {ok, get_propertygraph_stream_output(), tuple()} |
     {error, any()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, expired_stream_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, memory_limit_exceeded_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, stream_records_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_propertygraph_stream_errors(), tuple()}.
 get_propertygraph_stream(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_propertygraph_stream(Client, QueryMap, HeadersMap, []).
@@ -3356,18 +3383,7 @@ get_propertygraph_stream(Client, QueryMap, HeadersMap)
 -spec get_propertygraph_stream(map(), map(), map(), proplists:proplist()) ->
     {ok, get_propertygraph_stream_output(), tuple()} |
     {error, any()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, expired_stream_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, memory_limit_exceeded_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, stream_records_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_propertygraph_stream_errors(), tuple()}.
 get_propertygraph_stream(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/propertygraph/stream"],
@@ -3405,19 +3421,7 @@ get_propertygraph_stream(Client, QueryMap, HeadersMap, Options0)
 -spec get_propertygraph_summary(map()) ->
     {ok, get_propertygraph_summary_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, statistics_not_available_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_propertygraph_summary_errors(), tuple()}.
 get_propertygraph_summary(Client)
   when is_map(Client) ->
     get_propertygraph_summary(Client, #{}, #{}).
@@ -3425,19 +3429,7 @@ get_propertygraph_summary(Client)
 -spec get_propertygraph_summary(map(), map(), map()) ->
     {ok, get_propertygraph_summary_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, statistics_not_available_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_propertygraph_summary_errors(), tuple()}.
 get_propertygraph_summary(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_propertygraph_summary(Client, QueryMap, HeadersMap, []).
@@ -3445,19 +3437,7 @@ get_propertygraph_summary(Client, QueryMap, HeadersMap)
 -spec get_propertygraph_summary(map(), map(), map(), proplists:proplist()) ->
     {ok, get_propertygraph_summary_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, statistics_not_available_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_propertygraph_summary_errors(), tuple()}.
 get_propertygraph_summary(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/propertygraph/statistics/summary"],
@@ -3488,19 +3468,7 @@ get_propertygraph_summary(Client, QueryMap, HeadersMap, Options0)
 -spec get_r_d_f_graph_summary(map()) ->
     {ok, get_r_d_f_graph_summary_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, statistics_not_available_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_r_d_f_graph_summary_errors(), tuple()}.
 get_r_d_f_graph_summary(Client)
   when is_map(Client) ->
     get_r_d_f_graph_summary(Client, #{}, #{}).
@@ -3508,19 +3476,7 @@ get_r_d_f_graph_summary(Client)
 -spec get_r_d_f_graph_summary(map(), map(), map()) ->
     {ok, get_r_d_f_graph_summary_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, statistics_not_available_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_r_d_f_graph_summary_errors(), tuple()}.
 get_r_d_f_graph_summary(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_r_d_f_graph_summary(Client, QueryMap, HeadersMap, []).
@@ -3528,19 +3484,7 @@ get_r_d_f_graph_summary(Client, QueryMap, HeadersMap)
 -spec get_r_d_f_graph_summary(map(), map(), map(), proplists:proplist()) ->
     {ok, get_r_d_f_graph_summary_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, statistics_not_available_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_r_d_f_graph_summary_errors(), tuple()}.
 get_r_d_f_graph_summary(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/rdf/statistics/summary"],
@@ -3565,19 +3509,7 @@ get_r_d_f_graph_summary(Client, QueryMap, HeadersMap, Options0)
 -spec get_sparql_statistics(map()) ->
     {ok, get_sparql_statistics_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, statistics_not_available_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_sparql_statistics_errors(), tuple()}.
 get_sparql_statistics(Client)
   when is_map(Client) ->
     get_sparql_statistics(Client, #{}, #{}).
@@ -3585,19 +3517,7 @@ get_sparql_statistics(Client)
 -spec get_sparql_statistics(map(), map(), map()) ->
     {ok, get_sparql_statistics_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, statistics_not_available_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_sparql_statistics_errors(), tuple()}.
 get_sparql_statistics(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sparql_statistics(Client, QueryMap, HeadersMap, []).
@@ -3605,19 +3525,7 @@ get_sparql_statistics(Client, QueryMap, HeadersMap)
 -spec get_sparql_statistics(map(), map(), map(), proplists:proplist()) ->
     {ok, get_sparql_statistics_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, statistics_not_available_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_sparql_statistics_errors(), tuple()}.
 get_sparql_statistics(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sparql/statistics"],
@@ -3666,18 +3574,7 @@ get_sparql_statistics(Client, QueryMap, HeadersMap, Options0)
 -spec get_sparql_stream(map()) ->
     {ok, get_sparql_stream_output(), tuple()} |
     {error, any()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, expired_stream_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, memory_limit_exceeded_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, stream_records_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_sparql_stream_errors(), tuple()}.
 get_sparql_stream(Client)
   when is_map(Client) ->
     get_sparql_stream(Client, #{}, #{}).
@@ -3685,18 +3582,7 @@ get_sparql_stream(Client)
 -spec get_sparql_stream(map(), map(), map()) ->
     {ok, get_sparql_stream_output(), tuple()} |
     {error, any()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, expired_stream_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, memory_limit_exceeded_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, stream_records_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_sparql_stream_errors(), tuple()}.
 get_sparql_stream(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sparql_stream(Client, QueryMap, HeadersMap, []).
@@ -3704,18 +3590,7 @@ get_sparql_stream(Client, QueryMap, HeadersMap)
 -spec get_sparql_stream(map(), map(), map(), proplists:proplist()) ->
     {ok, get_sparql_stream_output(), tuple()} |
     {error, any()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, expired_stream_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, memory_limit_exceeded_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, stream_records_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_sparql_stream_errors(), tuple()}.
 get_sparql_stream(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sparql/stream"],
@@ -3766,22 +3641,7 @@ get_sparql_stream(Client, QueryMap, HeadersMap, Options0)
 -spec list_gremlin_queries(map()) ->
     {ok, list_gremlin_queries_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, failure_by_query_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, parsing_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, time_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, list_gremlin_queries_errors(), tuple()}.
 list_gremlin_queries(Client)
   when is_map(Client) ->
     list_gremlin_queries(Client, #{}, #{}).
@@ -3789,22 +3649,7 @@ list_gremlin_queries(Client)
 -spec list_gremlin_queries(map(), map(), map()) ->
     {ok, list_gremlin_queries_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, failure_by_query_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, parsing_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, time_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, list_gremlin_queries_errors(), tuple()}.
 list_gremlin_queries(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_gremlin_queries(Client, QueryMap, HeadersMap, []).
@@ -3812,22 +3657,7 @@ list_gremlin_queries(Client, QueryMap, HeadersMap)
 -spec list_gremlin_queries(map(), map(), map(), proplists:proplist()) ->
     {ok, list_gremlin_queries_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, failure_by_query_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, parsing_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, time_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, list_gremlin_queries_errors(), tuple()}.
 list_gremlin_queries(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/gremlin/status"],
@@ -3859,18 +3689,7 @@ list_gremlin_queries(Client, QueryMap, HeadersMap, Options0)
 -spec list_loader_jobs(map()) ->
     {ok, list_loader_jobs_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, bulk_load_id_not_found_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, load_url_access_denied_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, list_loader_jobs_errors(), tuple()}.
 list_loader_jobs(Client)
   when is_map(Client) ->
     list_loader_jobs(Client, #{}, #{}).
@@ -3878,18 +3697,7 @@ list_loader_jobs(Client)
 -spec list_loader_jobs(map(), map(), map()) ->
     {ok, list_loader_jobs_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, bulk_load_id_not_found_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, load_url_access_denied_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, list_loader_jobs_errors(), tuple()}.
 list_loader_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_loader_jobs(Client, QueryMap, HeadersMap, []).
@@ -3897,18 +3705,7 @@ list_loader_jobs(Client, QueryMap, HeadersMap)
 -spec list_loader_jobs(map(), map(), map(), proplists:proplist()) ->
     {ok, list_loader_jobs_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, bulk_load_id_not_found_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, load_url_access_denied_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, list_loader_jobs_errors(), tuple()}.
 list_loader_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/loader"],
@@ -3945,17 +3742,7 @@ list_loader_jobs(Client, QueryMap, HeadersMap, Options0)
 -spec list_ml_data_processing_jobs(map()) ->
     {ok, list_ml_data_processing_jobs_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, list_ml_data_processing_jobs_errors(), tuple()}.
 list_ml_data_processing_jobs(Client)
   when is_map(Client) ->
     list_ml_data_processing_jobs(Client, #{}, #{}).
@@ -3963,17 +3750,7 @@ list_ml_data_processing_jobs(Client)
 -spec list_ml_data_processing_jobs(map(), map(), map()) ->
     {ok, list_ml_data_processing_jobs_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, list_ml_data_processing_jobs_errors(), tuple()}.
 list_ml_data_processing_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ml_data_processing_jobs(Client, QueryMap, HeadersMap, []).
@@ -3981,17 +3758,7 @@ list_ml_data_processing_jobs(Client, QueryMap, HeadersMap)
 -spec list_ml_data_processing_jobs(map(), map(), map(), proplists:proplist()) ->
     {ok, list_ml_data_processing_jobs_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, list_ml_data_processing_jobs_errors(), tuple()}.
 list_ml_data_processing_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ml/dataprocessing"],
@@ -4027,17 +3794,7 @@ list_ml_data_processing_jobs(Client, QueryMap, HeadersMap, Options0)
 -spec list_ml_endpoints(map()) ->
     {ok, list_ml_endpoints_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, list_ml_endpoints_errors(), tuple()}.
 list_ml_endpoints(Client)
   when is_map(Client) ->
     list_ml_endpoints(Client, #{}, #{}).
@@ -4045,17 +3802,7 @@ list_ml_endpoints(Client)
 -spec list_ml_endpoints(map(), map(), map()) ->
     {ok, list_ml_endpoints_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, list_ml_endpoints_errors(), tuple()}.
 list_ml_endpoints(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ml_endpoints(Client, QueryMap, HeadersMap, []).
@@ -4063,17 +3810,7 @@ list_ml_endpoints(Client, QueryMap, HeadersMap)
 -spec list_ml_endpoints(map(), map(), map(), proplists:proplist()) ->
     {ok, list_ml_endpoints_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, list_ml_endpoints_errors(), tuple()}.
 list_ml_endpoints(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ml/endpoints"],
@@ -4110,17 +3847,7 @@ list_ml_endpoints(Client, QueryMap, HeadersMap, Options0)
 -spec list_ml_model_training_jobs(map()) ->
     {ok, list_ml_model_training_jobs_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, list_ml_model_training_jobs_errors(), tuple()}.
 list_ml_model_training_jobs(Client)
   when is_map(Client) ->
     list_ml_model_training_jobs(Client, #{}, #{}).
@@ -4128,17 +3855,7 @@ list_ml_model_training_jobs(Client)
 -spec list_ml_model_training_jobs(map(), map(), map()) ->
     {ok, list_ml_model_training_jobs_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, list_ml_model_training_jobs_errors(), tuple()}.
 list_ml_model_training_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ml_model_training_jobs(Client, QueryMap, HeadersMap, []).
@@ -4146,17 +3863,7 @@ list_ml_model_training_jobs(Client, QueryMap, HeadersMap)
 -spec list_ml_model_training_jobs(map(), map(), map(), proplists:proplist()) ->
     {ok, list_ml_model_training_jobs_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, list_ml_model_training_jobs_errors(), tuple()}.
 list_ml_model_training_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ml/modeltraining"],
@@ -4193,17 +3900,7 @@ list_ml_model_training_jobs(Client, QueryMap, HeadersMap, Options0)
 -spec list_ml_model_transform_jobs(map()) ->
     {ok, list_ml_model_transform_jobs_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, list_ml_model_transform_jobs_errors(), tuple()}.
 list_ml_model_transform_jobs(Client)
   when is_map(Client) ->
     list_ml_model_transform_jobs(Client, #{}, #{}).
@@ -4211,17 +3908,7 @@ list_ml_model_transform_jobs(Client)
 -spec list_ml_model_transform_jobs(map(), map(), map()) ->
     {ok, list_ml_model_transform_jobs_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, list_ml_model_transform_jobs_errors(), tuple()}.
 list_ml_model_transform_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ml_model_transform_jobs(Client, QueryMap, HeadersMap, []).
@@ -4229,17 +3916,7 @@ list_ml_model_transform_jobs(Client, QueryMap, HeadersMap)
 -spec list_ml_model_transform_jobs(map(), map(), map(), proplists:proplist()) ->
     {ok, list_ml_model_transform_jobs_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, list_ml_model_transform_jobs_errors(), tuple()}.
 list_ml_model_transform_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ml/modeltransform"],
@@ -4284,23 +3961,7 @@ list_ml_model_transform_jobs(Client, QueryMap, HeadersMap, Options0)
 -spec list_open_cypher_queries(map()) ->
     {ok, list_open_cypher_queries_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, failure_by_query_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_numeric_data_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, parsing_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, time_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, list_open_cypher_queries_errors(), tuple()}.
 list_open_cypher_queries(Client)
   when is_map(Client) ->
     list_open_cypher_queries(Client, #{}, #{}).
@@ -4308,23 +3969,7 @@ list_open_cypher_queries(Client)
 -spec list_open_cypher_queries(map(), map(), map()) ->
     {ok, list_open_cypher_queries_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, failure_by_query_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_numeric_data_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, parsing_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, time_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, list_open_cypher_queries_errors(), tuple()}.
 list_open_cypher_queries(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_open_cypher_queries(Client, QueryMap, HeadersMap, []).
@@ -4332,23 +3977,7 @@ list_open_cypher_queries(Client, QueryMap, HeadersMap)
 -spec list_open_cypher_queries(map(), map(), map(), proplists:proplist()) ->
     {ok, list_open_cypher_queries_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, failure_by_query_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_numeric_data_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, parsing_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, time_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, list_open_cypher_queries_errors(), tuple()}.
 list_open_cypher_queries(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/opencypher/status"],
@@ -4379,38 +4008,14 @@ list_open_cypher_queries(Client, QueryMap, HeadersMap, Options0)
 -spec manage_propertygraph_statistics(map(), manage_propertygraph_statistics_input()) ->
     {ok, manage_propertygraph_statistics_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, statistics_not_available_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, manage_propertygraph_statistics_errors(), tuple()}.
 manage_propertygraph_statistics(Client, Input) ->
     manage_propertygraph_statistics(Client, Input, []).
 
 -spec manage_propertygraph_statistics(map(), manage_propertygraph_statistics_input(), proplists:proplist()) ->
     {ok, manage_propertygraph_statistics_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, statistics_not_available_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, manage_propertygraph_statistics_errors(), tuple()}.
 manage_propertygraph_statistics(Client, Input0, Options0) ->
     Method = post,
     Path = ["/propertygraph/statistics"],
@@ -4443,38 +4048,14 @@ manage_propertygraph_statistics(Client, Input0, Options0) ->
 -spec manage_sparql_statistics(map(), manage_sparql_statistics_input()) ->
     {ok, manage_sparql_statistics_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, statistics_not_available_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, manage_sparql_statistics_errors(), tuple()}.
 manage_sparql_statistics(Client, Input) ->
     manage_sparql_statistics(Client, Input, []).
 
 -spec manage_sparql_statistics(map(), manage_sparql_statistics_input(), proplists:proplist()) ->
     {ok, manage_sparql_statistics_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, read_only_violation_exception(), tuple()} |
-    {error, statistics_not_available_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, manage_sparql_statistics_errors(), tuple()}.
 manage_sparql_statistics(Client, Input0, Options0) ->
     Method = post,
     Path = ["/sparql/statistics"],
@@ -4512,40 +4093,14 @@ manage_sparql_statistics(Client, Input0, Options0) ->
 -spec start_loader_job(map(), start_loader_job_input()) ->
     {ok, start_loader_job_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, bulk_load_id_not_found_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, load_url_access_denied_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, s3_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, start_loader_job_errors(), tuple()}.
 start_loader_job(Client, Input) ->
     start_loader_job(Client, Input, []).
 
 -spec start_loader_job(map(), start_loader_job_input(), proplists:proplist()) ->
     {ok, start_loader_job_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, bulk_load_id_not_found_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, load_url_access_denied_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, s3_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, start_loader_job_errors(), tuple()}.
 start_loader_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/loader"],
@@ -4584,34 +4139,14 @@ start_loader_job(Client, Input0, Options0) ->
 -spec start_ml_data_processing_job(map(), start_ml_data_processing_job_input()) ->
     {ok, start_ml_data_processing_job_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, start_ml_data_processing_job_errors(), tuple()}.
 start_ml_data_processing_job(Client, Input) ->
     start_ml_data_processing_job(Client, Input, []).
 
 -spec start_ml_data_processing_job(map(), start_ml_data_processing_job_input(), proplists:proplist()) ->
     {ok, start_ml_data_processing_job_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, start_ml_data_processing_job_errors(), tuple()}.
 start_ml_data_processing_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ml/dataprocessing"],
@@ -4648,34 +4183,14 @@ start_ml_data_processing_job(Client, Input0, Options0) ->
 -spec start_ml_model_training_job(map(), start_ml_model_training_job_input()) ->
     {ok, start_ml_model_training_job_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, start_ml_model_training_job_errors(), tuple()}.
 start_ml_model_training_job(Client, Input) ->
     start_ml_model_training_job(Client, Input, []).
 
 -spec start_ml_model_training_job(map(), start_ml_model_training_job_input(), proplists:proplist()) ->
     {ok, start_ml_model_training_job_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, start_ml_model_training_job_errors(), tuple()}.
 start_ml_model_training_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ml/modeltraining"],
@@ -4713,34 +4228,14 @@ start_ml_model_training_job(Client, Input0, Options0) ->
 -spec start_ml_model_transform_job(map(), start_ml_model_transform_job_input()) ->
     {ok, start_ml_model_transform_job_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, start_ml_model_transform_job_errors(), tuple()}.
 start_ml_model_transform_job(Client, Input) ->
     start_ml_model_transform_job(Client, Input, []).
 
 -spec start_ml_model_transform_job(map(), start_ml_model_transform_job_input(), proplists:proplist()) ->
     {ok, start_ml_model_transform_job_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, client_timeout_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_parameter_exception(), tuple()} |
-    {error, ml_resource_not_found_exception(), tuple()} |
-    {error, preconditions_failed_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, start_ml_model_transform_job_errors(), tuple()}.
 start_ml_model_transform_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ml/modeltransform"],

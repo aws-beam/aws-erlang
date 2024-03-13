@@ -68,14 +68,17 @@
 %% }
 -type list_suite_definitions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_suite_run_request() :: #{}
 -type get_suite_run_request() :: #{}.
+
 
 %% Example:
 %% start_suite_run_response() :: #{
@@ -86,6 +89,7 @@
 %% }
 -type start_suite_run_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% suite_run_configuration() :: #{
 %%   <<"parallelRun">> => boolean(),
@@ -93,6 +97,7 @@
 %%   <<"selectedTestList">> => list(string()())
 %% }
 -type suite_run_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% suite_definition_information() :: #{
@@ -106,6 +111,7 @@
 %% }
 -type suite_definition_information() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_suite_definition_response() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
@@ -114,15 +120,18 @@
 %%   <<"suiteDefinitionName">> => string()
 %% }
 -type create_suite_definition_response() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% test_result() :: #{
 %%   <<"groups">> => list(group_result()())
 %% }
 -type test_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% suite_run_information() :: #{
@@ -139,6 +148,7 @@
 %% }
 -type suite_run_information() :: #{binary() => any()}.
 
+
 %% Example:
 %% device_under_test() :: #{
 %%   <<"certificateArn">> => string(),
@@ -147,14 +157,17 @@
 %% }
 -type device_under_test() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 %% Example:
 %% stop_suite_run_response() :: #{}
 -type stop_suite_run_response() :: #{}.
+
 
 %% Example:
 %% get_suite_run_report_response() :: #{
@@ -162,15 +175,18 @@
 %% }
 -type get_suite_run_report_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_suite_definitions_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_suite_definitions_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_suite_run_report_request() :: #{}
 -type get_suite_run_report_request() :: #{}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -178,17 +194,20 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_endpoint_response() :: #{
 %%   <<"endpoint">> => string()
 %% }
 -type get_endpoint_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_suite_run_response() :: #{
@@ -206,11 +225,13 @@
 %% }
 -type get_suite_run_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_suite_definition_request() :: #{
@@ -218,9 +239,11 @@
 %%   <<"tags">> => map()
 %% }
 -type create_suite_definition_request() :: #{binary() => any()}.
+
 %% Example:
 %% stop_suite_run_request() :: #{}
 -type stop_suite_run_request() :: #{}.
+
 
 %% Example:
 %% internal_server_exception() :: #{
@@ -228,11 +251,13 @@
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_suite_definition_request() :: #{
 %%   <<"suiteDefinitionVersion">> => string()
 %% }
 -type get_suite_definition_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_suite_runs_request() :: #{
@@ -242,9 +267,11 @@
 %%   <<"suiteDefinitionVersion">> => string()
 %% }
 -type list_suite_runs_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_suite_definition_request() :: #{}
 -type delete_suite_definition_request() :: #{}.
+
 
 %% Example:
 %% suite_definition_configuration() :: #{
@@ -258,6 +285,7 @@
 %% }
 -type suite_definition_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% test_case_scenario() :: #{
 %%   <<"failure">> => string(),
@@ -267,27 +295,33 @@
 %%   <<"testCaseScenarioType">> => list(any())
 %% }
 -type test_case_scenario() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 %% Example:
 %% delete_suite_definition_response() :: #{}
 -type delete_suite_definition_response() :: #{}.
+
 
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% update_suite_definition_request() :: #{
 %%   <<"suiteDefinitionConfiguration">> := suite_definition_configuration()
 %% }
 -type update_suite_definition_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_suite_definition_response() :: #{
@@ -302,12 +336,14 @@
 %% }
 -type get_suite_definition_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_suite_runs_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"suiteRunsList">> => list(suite_run_information()())
 %% }
 -type list_suite_runs_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% group_result() :: #{
@@ -317,6 +353,7 @@
 %% }
 -type group_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_suite_run_request() :: #{
 %%   <<"suiteDefinitionVersion">> => string(),
@@ -324,6 +361,7 @@
 %%   <<"tags">> => map()
 %% }
 -type start_suite_run_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% test_case_run() :: #{
@@ -340,6 +378,7 @@
 %% }
 -type test_case_run() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_endpoint_request() :: #{
 %%   <<"authenticationMethod">> => list(any()),
@@ -348,6 +387,7 @@
 %%   <<"thingArn">> => string()
 %% }
 -type get_endpoint_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_suite_definition_response() :: #{
@@ -359,6 +399,71 @@
 %%   <<"suiteDefinitionVersion">> => string()
 %% }
 -type update_suite_definition_response() :: #{binary() => any()}.
+
+-type create_suite_definition_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type delete_suite_definition_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type get_endpoint_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_suite_definition_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_suite_run_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_suite_run_report_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_suite_definitions_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_suite_runs_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type start_suite_run_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type stop_suite_run_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_suite_definition_errors() ::
+    validation_exception() | 
+    internal_server_exception().
 
 %%====================================================================
 %% API
@@ -372,16 +477,14 @@
 -spec create_suite_definition(map(), create_suite_definition_request()) ->
     {ok, create_suite_definition_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_suite_definition_errors(), tuple()}.
 create_suite_definition(Client, Input) ->
     create_suite_definition(Client, Input, []).
 
 -spec create_suite_definition(map(), create_suite_definition_request(), proplists:proplist()) ->
     {ok, create_suite_definition_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_suite_definition_errors(), tuple()}.
 create_suite_definition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/suiteDefinitions"],
@@ -412,16 +515,14 @@ create_suite_definition(Client, Input0, Options0) ->
 -spec delete_suite_definition(map(), binary() | list(), delete_suite_definition_request()) ->
     {ok, delete_suite_definition_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_suite_definition_errors(), tuple()}.
 delete_suite_definition(Client, SuiteDefinitionId, Input) ->
     delete_suite_definition(Client, SuiteDefinitionId, Input, []).
 
 -spec delete_suite_definition(map(), binary() | list(), delete_suite_definition_request(), proplists:proplist()) ->
     {ok, delete_suite_definition_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_suite_definition_errors(), tuple()}.
 delete_suite_definition(Client, SuiteDefinitionId, Input0, Options0) ->
     Method = delete,
     Path = ["/suiteDefinitions/", aws_util:encode_uri(SuiteDefinitionId), ""],
@@ -448,9 +549,7 @@ delete_suite_definition(Client, SuiteDefinitionId, Input0, Options0) ->
 -spec get_endpoint(map()) ->
     {ok, get_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_endpoint_errors(), tuple()}.
 get_endpoint(Client)
   when is_map(Client) ->
     get_endpoint(Client, #{}, #{}).
@@ -458,9 +557,7 @@ get_endpoint(Client)
 -spec get_endpoint(map(), map(), map()) ->
     {ok, get_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_endpoint_errors(), tuple()}.
 get_endpoint(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_endpoint(Client, QueryMap, HeadersMap, []).
@@ -468,9 +565,7 @@ get_endpoint(Client, QueryMap, HeadersMap)
 -spec get_endpoint(map(), map(), map(), proplists:proplist()) ->
     {ok, get_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_endpoint_errors(), tuple()}.
 get_endpoint(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/endpoint"],
@@ -502,9 +597,7 @@ get_endpoint(Client, QueryMap, HeadersMap, Options0)
 -spec get_suite_definition(map(), binary() | list()) ->
     {ok, get_suite_definition_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_suite_definition_errors(), tuple()}.
 get_suite_definition(Client, SuiteDefinitionId)
   when is_map(Client) ->
     get_suite_definition(Client, SuiteDefinitionId, #{}, #{}).
@@ -512,9 +605,7 @@ get_suite_definition(Client, SuiteDefinitionId)
 -spec get_suite_definition(map(), binary() | list(), map(), map()) ->
     {ok, get_suite_definition_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_suite_definition_errors(), tuple()}.
 get_suite_definition(Client, SuiteDefinitionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_suite_definition(Client, SuiteDefinitionId, QueryMap, HeadersMap, []).
@@ -522,9 +613,7 @@ get_suite_definition(Client, SuiteDefinitionId, QueryMap, HeadersMap)
 -spec get_suite_definition(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_suite_definition_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_suite_definition_errors(), tuple()}.
 get_suite_definition(Client, SuiteDefinitionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/suiteDefinitions/", aws_util:encode_uri(SuiteDefinitionId), ""],
@@ -553,9 +642,7 @@ get_suite_definition(Client, SuiteDefinitionId, QueryMap, HeadersMap, Options0)
 -spec get_suite_run(map(), binary() | list(), binary() | list()) ->
     {ok, get_suite_run_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_suite_run_errors(), tuple()}.
 get_suite_run(Client, SuiteDefinitionId, SuiteRunId)
   when is_map(Client) ->
     get_suite_run(Client, SuiteDefinitionId, SuiteRunId, #{}, #{}).
@@ -563,9 +650,7 @@ get_suite_run(Client, SuiteDefinitionId, SuiteRunId)
 -spec get_suite_run(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_suite_run_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_suite_run_errors(), tuple()}.
 get_suite_run(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_suite_run(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap, []).
@@ -573,9 +658,7 @@ get_suite_run(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap)
 -spec get_suite_run(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_suite_run_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_suite_run_errors(), tuple()}.
 get_suite_run(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/suiteDefinitions/", aws_util:encode_uri(SuiteDefinitionId), "/suiteRuns/", aws_util:encode_uri(SuiteRunId), ""],
@@ -601,9 +684,7 @@ get_suite_run(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap, Optio
 -spec get_suite_run_report(map(), binary() | list(), binary() | list()) ->
     {ok, get_suite_run_report_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_suite_run_report_errors(), tuple()}.
 get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId)
   when is_map(Client) ->
     get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId, #{}, #{}).
@@ -611,9 +692,7 @@ get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId)
 -spec get_suite_run_report(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_suite_run_report_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_suite_run_report_errors(), tuple()}.
 get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap, []).
@@ -621,9 +700,7 @@ get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap
 -spec get_suite_run_report(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_suite_run_report_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_suite_run_report_errors(), tuple()}.
 get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/suiteDefinitions/", aws_util:encode_uri(SuiteDefinitionId), "/suiteRuns/", aws_util:encode_uri(SuiteRunId), "/report"],
@@ -648,8 +725,7 @@ get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap
 -spec list_suite_definitions(map()) ->
     {ok, list_suite_definitions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_suite_definitions_errors(), tuple()}.
 list_suite_definitions(Client)
   when is_map(Client) ->
     list_suite_definitions(Client, #{}, #{}).
@@ -657,8 +733,7 @@ list_suite_definitions(Client)
 -spec list_suite_definitions(map(), map(), map()) ->
     {ok, list_suite_definitions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_suite_definitions_errors(), tuple()}.
 list_suite_definitions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_suite_definitions(Client, QueryMap, HeadersMap, []).
@@ -666,8 +741,7 @@ list_suite_definitions(Client, QueryMap, HeadersMap)
 -spec list_suite_definitions(map(), map(), map(), proplists:proplist()) ->
     {ok, list_suite_definitions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_suite_definitions_errors(), tuple()}.
 list_suite_definitions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/suiteDefinitions"],
@@ -700,8 +774,7 @@ list_suite_definitions(Client, QueryMap, HeadersMap, Options0)
 -spec list_suite_runs(map()) ->
     {ok, list_suite_runs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_suite_runs_errors(), tuple()}.
 list_suite_runs(Client)
   when is_map(Client) ->
     list_suite_runs(Client, #{}, #{}).
@@ -709,8 +782,7 @@ list_suite_runs(Client)
 -spec list_suite_runs(map(), map(), map()) ->
     {ok, list_suite_runs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_suite_runs_errors(), tuple()}.
 list_suite_runs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_suite_runs(Client, QueryMap, HeadersMap, []).
@@ -718,8 +790,7 @@ list_suite_runs(Client, QueryMap, HeadersMap)
 -spec list_suite_runs(map(), map(), map(), proplists:proplist()) ->
     {ok, list_suite_runs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_suite_runs_errors(), tuple()}.
 list_suite_runs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/suiteRuns"],
@@ -751,9 +822,7 @@ list_suite_runs(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -761,9 +830,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -771,9 +838,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -798,18 +863,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec start_suite_run(map(), binary() | list(), start_suite_run_request()) ->
     {ok, start_suite_run_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_suite_run_errors(), tuple()}.
 start_suite_run(Client, SuiteDefinitionId, Input) ->
     start_suite_run(Client, SuiteDefinitionId, Input, []).
 
 -spec start_suite_run(map(), binary() | list(), start_suite_run_request(), proplists:proplist()) ->
     {ok, start_suite_run_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_suite_run_errors(), tuple()}.
 start_suite_run(Client, SuiteDefinitionId, Input0, Options0) ->
     Method = post,
     Path = ["/suiteDefinitions/", aws_util:encode_uri(SuiteDefinitionId), "/suiteRuns"],
@@ -840,18 +901,14 @@ start_suite_run(Client, SuiteDefinitionId, Input0, Options0) ->
 -spec stop_suite_run(map(), binary() | list(), binary() | list(), stop_suite_run_request()) ->
     {ok, stop_suite_run_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_suite_run_errors(), tuple()}.
 stop_suite_run(Client, SuiteDefinitionId, SuiteRunId, Input) ->
     stop_suite_run(Client, SuiteDefinitionId, SuiteRunId, Input, []).
 
 -spec stop_suite_run(map(), binary() | list(), binary() | list(), stop_suite_run_request(), proplists:proplist()) ->
     {ok, stop_suite_run_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_suite_run_errors(), tuple()}.
 stop_suite_run(Client, SuiteDefinitionId, SuiteRunId, Input0, Options0) ->
     Method = post,
     Path = ["/suiteDefinitions/", aws_util:encode_uri(SuiteDefinitionId), "/suiteRuns/", aws_util:encode_uri(SuiteRunId), "/stop"],
@@ -882,18 +939,14 @@ stop_suite_run(Client, SuiteDefinitionId, SuiteRunId, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -924,18 +977,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -967,16 +1016,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_suite_definition(map(), binary() | list(), update_suite_definition_request()) ->
     {ok, update_suite_definition_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_suite_definition_errors(), tuple()}.
 update_suite_definition(Client, SuiteDefinitionId, Input) ->
     update_suite_definition(Client, SuiteDefinitionId, Input, []).
 
 -spec update_suite_definition(map(), binary() | list(), update_suite_definition_request(), proplists:proplist()) ->
     {ok, update_suite_definition_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_suite_definition_errors(), tuple()}.
 update_suite_definition(Client, SuiteDefinitionId, Input0, Options0) ->
     Method = patch,
     Path = ["/suiteDefinitions/", aws_util:encode_uri(SuiteDefinitionId), ""],

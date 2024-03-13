@@ -1410,6 +1410,291 @@
 %% }
 -type unsupported_upstream_registry_exception() :: #{binary() => any()}.
 
+-type batch_check_layer_availability_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception().
+
+-type batch_delete_image_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception().
+
+-type batch_get_image_errors() ::
+    limit_exceeded_exception() | 
+    repository_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    unable_to_get_upstream_image_exception().
+
+-type batch_get_repository_scanning_configuration_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception().
+
+-type complete_layer_upload_errors() ::
+    empty_upload_exception() | 
+    repository_not_found_exception() | 
+    server_exception() | 
+    kms_exception() | 
+    invalid_layer_exception() | 
+    invalid_parameter_exception() | 
+    layer_part_too_small_exception() | 
+    layer_already_exists_exception() | 
+    upload_not_found_exception().
+
+-type create_pull_through_cache_rule_errors() ::
+    unsupported_upstream_registry_exception() | 
+    unable_to_access_secret_exception() | 
+    limit_exceeded_exception() | 
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    secret_not_found_exception() | 
+    unable_to_decrypt_secret_value_exception() | 
+    pull_through_cache_rule_already_exists_exception().
+
+-type create_repository_errors() ::
+    too_many_tags_exception() | 
+    limit_exceeded_exception() | 
+    server_exception() | 
+    kms_exception() | 
+    invalid_parameter_exception() | 
+    repository_already_exists_exception() | 
+    invalid_tag_parameter_exception().
+
+-type delete_lifecycle_policy_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    lifecycle_policy_not_found_exception().
+
+-type delete_pull_through_cache_rule_errors() ::
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    pull_through_cache_rule_not_found_exception().
+
+-type delete_registry_policy_errors() ::
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    registry_policy_not_found_exception().
+
+-type delete_repository_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    kms_exception() | 
+    invalid_parameter_exception() | 
+    repository_not_empty_exception().
+
+-type delete_repository_policy_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    repository_policy_not_found_exception().
+
+-type describe_image_replication_status_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    image_not_found_exception().
+
+-type describe_image_scan_findings_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    scan_not_found_exception() | 
+    image_not_found_exception().
+
+-type describe_images_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    image_not_found_exception().
+
+-type describe_pull_through_cache_rules_errors() ::
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    pull_through_cache_rule_not_found_exception().
+
+-type describe_registry_errors() ::
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception().
+
+-type describe_repositories_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception().
+
+-type get_authorization_token_errors() ::
+    server_exception() | 
+    invalid_parameter_exception().
+
+-type get_download_url_for_layer_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    layer_inaccessible_exception() | 
+    unable_to_get_upstream_layer_exception() | 
+    layers_not_found_exception().
+
+-type get_lifecycle_policy_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    lifecycle_policy_not_found_exception().
+
+-type get_lifecycle_policy_preview_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    lifecycle_policy_preview_not_found_exception().
+
+-type get_registry_policy_errors() ::
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    registry_policy_not_found_exception().
+
+-type get_registry_scanning_configuration_errors() ::
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception().
+
+-type get_repository_policy_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    repository_policy_not_found_exception().
+
+-type initiate_layer_upload_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    kms_exception() | 
+    invalid_parameter_exception().
+
+-type list_images_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception().
+
+-type list_tags_for_resource_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception().
+
+-type put_image_errors() ::
+    limit_exceeded_exception() | 
+    repository_not_found_exception() | 
+    server_exception() | 
+    kms_exception() | 
+    invalid_parameter_exception() | 
+    referenced_images_not_found_exception() | 
+    image_tag_already_exists_exception() | 
+    layers_not_found_exception() | 
+    image_already_exists_exception() | 
+    image_digest_does_not_match_exception().
+
+-type put_image_scanning_configuration_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception().
+
+-type put_image_tag_mutability_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception().
+
+-type put_lifecycle_policy_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception().
+
+-type put_registry_policy_errors() ::
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception().
+
+-type put_registry_scanning_configuration_errors() ::
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception().
+
+-type put_replication_configuration_errors() ::
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception().
+
+-type set_repository_policy_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception().
+
+-type start_image_scan_errors() ::
+    limit_exceeded_exception() | 
+    repository_not_found_exception() | 
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    unsupported_image_type_exception() | 
+    image_not_found_exception().
+
+-type start_lifecycle_policy_preview_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    lifecycle_policy_not_found_exception() | 
+    lifecycle_policy_preview_in_progress_exception().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    repository_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    invalid_tag_parameter_exception().
+
+-type untag_resource_errors() ::
+    too_many_tags_exception() | 
+    repository_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    invalid_tag_parameter_exception().
+
+-type update_pull_through_cache_rule_errors() ::
+    unable_to_access_secret_exception() | 
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    secret_not_found_exception() | 
+    pull_through_cache_rule_not_found_exception() | 
+    unable_to_decrypt_secret_value_exception().
+
+-type upload_layer_part_errors() ::
+    limit_exceeded_exception() | 
+    repository_not_found_exception() | 
+    server_exception() | 
+    kms_exception() | 
+    invalid_parameter_exception() | 
+    invalid_layer_part_exception() | 
+    upload_not_found_exception().
+
+-type validate_pull_through_cache_rule_errors() ::
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    pull_through_cache_rule_not_found_exception().
 
 %%====================================================================
 %% API
@@ -1429,9 +1714,7 @@
 -spec batch_check_layer_availability(map(), batch_check_layer_availability_request()) ->
     {ok, batch_check_layer_availability_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, batch_check_layer_availability_errors(), tuple()}.
 batch_check_layer_availability(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_check_layer_availability(Client, Input, []).
@@ -1439,9 +1722,7 @@ batch_check_layer_availability(Client, Input)
 -spec batch_check_layer_availability(map(), batch_check_layer_availability_request(), proplists:proplist()) ->
     {ok, batch_check_layer_availability_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, batch_check_layer_availability_errors(), tuple()}.
 batch_check_layer_availability(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchCheckLayerAvailability">>, Input, Options).
@@ -1462,9 +1743,7 @@ batch_check_layer_availability(Client, Input, Options)
 -spec batch_delete_image(map(), batch_delete_image_request()) ->
     {ok, batch_delete_image_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, batch_delete_image_errors(), tuple()}.
 batch_delete_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_image(Client, Input, []).
@@ -1472,9 +1751,7 @@ batch_delete_image(Client, Input)
 -spec batch_delete_image(map(), batch_delete_image_request(), proplists:proplist()) ->
     {ok, batch_delete_image_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, batch_delete_image_errors(), tuple()}.
 batch_delete_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDeleteImage">>, Input, Options).
@@ -1490,11 +1767,7 @@ batch_delete_image(Client, Input, Options)
 -spec batch_get_image(map(), batch_get_image_request()) ->
     {ok, batch_get_image_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unable_to_get_upstream_image_exception(), tuple()}.
+    {error, batch_get_image_errors(), tuple()}.
 batch_get_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_image(Client, Input, []).
@@ -1502,11 +1775,7 @@ batch_get_image(Client, Input)
 -spec batch_get_image(map(), batch_get_image_request(), proplists:proplist()) ->
     {ok, batch_get_image_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unable_to_get_upstream_image_exception(), tuple()}.
+    {error, batch_get_image_errors(), tuple()}.
 batch_get_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetImage">>, Input, Options).
@@ -1515,10 +1784,7 @@ batch_get_image(Client, Input, Options)
 -spec batch_get_repository_scanning_configuration(map(), batch_get_repository_scanning_configuration_request()) ->
     {ok, batch_get_repository_scanning_configuration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_repository_scanning_configuration_errors(), tuple()}.
 batch_get_repository_scanning_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_repository_scanning_configuration(Client, Input, []).
@@ -1526,10 +1792,7 @@ batch_get_repository_scanning_configuration(Client, Input)
 -spec batch_get_repository_scanning_configuration(map(), batch_get_repository_scanning_configuration_request(), proplists:proplist()) ->
     {ok, batch_get_repository_scanning_configuration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_repository_scanning_configuration_errors(), tuple()}.
 batch_get_repository_scanning_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetRepositoryScanningConfiguration">>, Input, Options).
@@ -1552,15 +1815,7 @@ batch_get_repository_scanning_configuration(Client, Input, Options)
 -spec complete_layer_upload(map(), complete_layer_upload_request()) ->
     {ok, complete_layer_upload_response(), tuple()} |
     {error, any()} |
-    {error, empty_upload_exception(), tuple()} |
-    {error, invalid_layer_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, kms_exception(), tuple()} |
-    {error, layer_already_exists_exception(), tuple()} |
-    {error, layer_part_too_small_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, upload_not_found_exception(), tuple()}.
+    {error, complete_layer_upload_errors(), tuple()}.
 complete_layer_upload(Client, Input)
   when is_map(Client), is_map(Input) ->
     complete_layer_upload(Client, Input, []).
@@ -1568,15 +1823,7 @@ complete_layer_upload(Client, Input)
 -spec complete_layer_upload(map(), complete_layer_upload_request(), proplists:proplist()) ->
     {ok, complete_layer_upload_response(), tuple()} |
     {error, any()} |
-    {error, empty_upload_exception(), tuple()} |
-    {error, invalid_layer_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, kms_exception(), tuple()} |
-    {error, layer_already_exists_exception(), tuple()} |
-    {error, layer_part_too_small_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, upload_not_found_exception(), tuple()}.
+    {error, complete_layer_upload_errors(), tuple()}.
 complete_layer_upload(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CompleteLayerUpload">>, Input, Options).
@@ -1593,15 +1840,7 @@ complete_layer_upload(Client, Input, Options)
 -spec create_pull_through_cache_rule(map(), create_pull_through_cache_rule_request()) ->
     {ok, create_pull_through_cache_rule_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, pull_through_cache_rule_already_exists_exception(), tuple()} |
-    {error, secret_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unable_to_access_secret_exception(), tuple()} |
-    {error, unable_to_decrypt_secret_value_exception(), tuple()} |
-    {error, unsupported_upstream_registry_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_pull_through_cache_rule_errors(), tuple()}.
 create_pull_through_cache_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_pull_through_cache_rule(Client, Input, []).
@@ -1609,15 +1848,7 @@ create_pull_through_cache_rule(Client, Input)
 -spec create_pull_through_cache_rule(map(), create_pull_through_cache_rule_request(), proplists:proplist()) ->
     {ok, create_pull_through_cache_rule_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, pull_through_cache_rule_already_exists_exception(), tuple()} |
-    {error, secret_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unable_to_access_secret_exception(), tuple()} |
-    {error, unable_to_decrypt_secret_value_exception(), tuple()} |
-    {error, unsupported_upstream_registry_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_pull_through_cache_rule_errors(), tuple()}.
 create_pull_through_cache_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePullThroughCacheRule">>, Input, Options).
@@ -1631,13 +1862,7 @@ create_pull_through_cache_rule(Client, Input, Options)
 -spec create_repository(map(), create_repository_request()) ->
     {ok, create_repository_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_tag_parameter_exception(), tuple()} |
-    {error, kms_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, repository_already_exists_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_repository_errors(), tuple()}.
 create_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_repository(Client, Input, []).
@@ -1645,13 +1870,7 @@ create_repository(Client, Input)
 -spec create_repository(map(), create_repository_request(), proplists:proplist()) ->
     {ok, create_repository_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_tag_parameter_exception(), tuple()} |
-    {error, kms_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, repository_already_exists_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_repository_errors(), tuple()}.
 create_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRepository">>, Input, Options).
@@ -1661,11 +1880,7 @@ create_repository(Client, Input, Options)
 -spec delete_lifecycle_policy(map(), delete_lifecycle_policy_request()) ->
     {ok, delete_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, lifecycle_policy_not_found_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_lifecycle_policy_errors(), tuple()}.
 delete_lifecycle_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_lifecycle_policy(Client, Input, []).
@@ -1673,11 +1888,7 @@ delete_lifecycle_policy(Client, Input)
 -spec delete_lifecycle_policy(map(), delete_lifecycle_policy_request(), proplists:proplist()) ->
     {ok, delete_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, lifecycle_policy_not_found_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_lifecycle_policy_errors(), tuple()}.
 delete_lifecycle_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLifecyclePolicy">>, Input, Options).
@@ -1686,10 +1897,7 @@ delete_lifecycle_policy(Client, Input, Options)
 -spec delete_pull_through_cache_rule(map(), delete_pull_through_cache_rule_request()) ->
     {ok, delete_pull_through_cache_rule_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, pull_through_cache_rule_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_pull_through_cache_rule_errors(), tuple()}.
 delete_pull_through_cache_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_pull_through_cache_rule(Client, Input, []).
@@ -1697,10 +1905,7 @@ delete_pull_through_cache_rule(Client, Input)
 -spec delete_pull_through_cache_rule(map(), delete_pull_through_cache_rule_request(), proplists:proplist()) ->
     {ok, delete_pull_through_cache_rule_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, pull_through_cache_rule_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_pull_through_cache_rule_errors(), tuple()}.
 delete_pull_through_cache_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePullThroughCacheRule">>, Input, Options).
@@ -1709,10 +1914,7 @@ delete_pull_through_cache_rule(Client, Input, Options)
 -spec delete_registry_policy(map(), delete_registry_policy_request()) ->
     {ok, delete_registry_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, registry_policy_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_registry_policy_errors(), tuple()}.
 delete_registry_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_registry_policy(Client, Input, []).
@@ -1720,10 +1922,7 @@ delete_registry_policy(Client, Input)
 -spec delete_registry_policy(map(), delete_registry_policy_request(), proplists:proplist()) ->
     {ok, delete_registry_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, registry_policy_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_registry_policy_errors(), tuple()}.
 delete_registry_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRegistryPolicy">>, Input, Options).
@@ -1737,11 +1936,7 @@ delete_registry_policy(Client, Input, Options)
 -spec delete_repository(map(), delete_repository_request()) ->
     {ok, delete_repository_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, kms_exception(), tuple()} |
-    {error, repository_not_empty_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, delete_repository_errors(), tuple()}.
 delete_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_repository(Client, Input, []).
@@ -1749,11 +1944,7 @@ delete_repository(Client, Input)
 -spec delete_repository(map(), delete_repository_request(), proplists:proplist()) ->
     {ok, delete_repository_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, kms_exception(), tuple()} |
-    {error, repository_not_empty_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, delete_repository_errors(), tuple()}.
 delete_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRepository">>, Input, Options).
@@ -1763,10 +1954,7 @@ delete_repository(Client, Input, Options)
 -spec delete_repository_policy(map(), delete_repository_policy_request()) ->
     {ok, delete_repository_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, repository_policy_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, delete_repository_policy_errors(), tuple()}.
 delete_repository_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_repository_policy(Client, Input, []).
@@ -1774,10 +1962,7 @@ delete_repository_policy(Client, Input)
 -spec delete_repository_policy(map(), delete_repository_policy_request(), proplists:proplist()) ->
     {ok, delete_repository_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, repository_policy_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, delete_repository_policy_errors(), tuple()}.
 delete_repository_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRepositoryPolicy">>, Input, Options).
@@ -1786,11 +1971,7 @@ delete_repository_policy(Client, Input, Options)
 -spec describe_image_replication_status(map(), describe_image_replication_status_request()) ->
     {ok, describe_image_replication_status_response(), tuple()} |
     {error, any()} |
-    {error, image_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_image_replication_status_errors(), tuple()}.
 describe_image_replication_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_image_replication_status(Client, Input, []).
@@ -1798,11 +1979,7 @@ describe_image_replication_status(Client, Input)
 -spec describe_image_replication_status(map(), describe_image_replication_status_request(), proplists:proplist()) ->
     {ok, describe_image_replication_status_response(), tuple()} |
     {error, any()} |
-    {error, image_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_image_replication_status_errors(), tuple()}.
 describe_image_replication_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeImageReplicationStatus">>, Input, Options).
@@ -1811,12 +1988,7 @@ describe_image_replication_status(Client, Input, Options)
 -spec describe_image_scan_findings(map(), describe_image_scan_findings_request()) ->
     {ok, describe_image_scan_findings_response(), tuple()} |
     {error, any()} |
-    {error, image_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, scan_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_image_scan_findings_errors(), tuple()}.
 describe_image_scan_findings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_image_scan_findings(Client, Input, []).
@@ -1824,12 +1996,7 @@ describe_image_scan_findings(Client, Input)
 -spec describe_image_scan_findings(map(), describe_image_scan_findings_request(), proplists:proplist()) ->
     {ok, describe_image_scan_findings_response(), tuple()} |
     {error, any()} |
-    {error, image_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, scan_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_image_scan_findings_errors(), tuple()}.
 describe_image_scan_findings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeImageScanFindings">>, Input, Options).
@@ -1846,10 +2013,7 @@ describe_image_scan_findings(Client, Input, Options)
 -spec describe_images(map(), describe_images_request()) ->
     {ok, describe_images_response(), tuple()} |
     {error, any()} |
-    {error, image_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_images_errors(), tuple()}.
 describe_images(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_images(Client, Input, []).
@@ -1857,10 +2021,7 @@ describe_images(Client, Input)
 -spec describe_images(map(), describe_images_request(), proplists:proplist()) ->
     {ok, describe_images_response(), tuple()} |
     {error, any()} |
-    {error, image_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_images_errors(), tuple()}.
 describe_images(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeImages">>, Input, Options).
@@ -1869,10 +2030,7 @@ describe_images(Client, Input, Options)
 -spec describe_pull_through_cache_rules(map(), describe_pull_through_cache_rules_request()) ->
     {ok, describe_pull_through_cache_rules_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, pull_through_cache_rule_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_pull_through_cache_rules_errors(), tuple()}.
 describe_pull_through_cache_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_pull_through_cache_rules(Client, Input, []).
@@ -1880,10 +2038,7 @@ describe_pull_through_cache_rules(Client, Input)
 -spec describe_pull_through_cache_rules(map(), describe_pull_through_cache_rules_request(), proplists:proplist()) ->
     {ok, describe_pull_through_cache_rules_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, pull_through_cache_rule_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_pull_through_cache_rules_errors(), tuple()}.
 describe_pull_through_cache_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePullThroughCacheRules">>, Input, Options).
@@ -1896,9 +2051,7 @@ describe_pull_through_cache_rules(Client, Input, Options)
 -spec describe_registry(map(), describe_registry_request()) ->
     {ok, describe_registry_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_registry_errors(), tuple()}.
 describe_registry(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_registry(Client, Input, []).
@@ -1906,9 +2059,7 @@ describe_registry(Client, Input)
 -spec describe_registry(map(), describe_registry_request(), proplists:proplist()) ->
     {ok, describe_registry_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_registry_errors(), tuple()}.
 describe_registry(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRegistry">>, Input, Options).
@@ -1917,9 +2068,7 @@ describe_registry(Client, Input, Options)
 -spec describe_repositories(map(), describe_repositories_request()) ->
     {ok, describe_repositories_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_repositories_errors(), tuple()}.
 describe_repositories(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_repositories(Client, Input, []).
@@ -1927,9 +2076,7 @@ describe_repositories(Client, Input)
 -spec describe_repositories(map(), describe_repositories_request(), proplists:proplist()) ->
     {ok, describe_repositories_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_repositories_errors(), tuple()}.
 describe_repositories(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRepositories">>, Input, Options).
@@ -1954,8 +2101,7 @@ describe_repositories(Client, Input, Options)
 -spec get_authorization_token(map(), get_authorization_token_request()) ->
     {ok, get_authorization_token_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, get_authorization_token_errors(), tuple()}.
 get_authorization_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_authorization_token(Client, Input, []).
@@ -1963,8 +2109,7 @@ get_authorization_token(Client, Input)
 -spec get_authorization_token(map(), get_authorization_token_request(), proplists:proplist()) ->
     {ok, get_authorization_token_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, get_authorization_token_errors(), tuple()}.
 get_authorization_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAuthorizationToken">>, Input, Options).
@@ -1986,12 +2131,7 @@ get_authorization_token(Client, Input, Options)
 -spec get_download_url_for_layer(map(), get_download_url_for_layer_request()) ->
     {ok, get_download_url_for_layer_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, layer_inaccessible_exception(), tuple()} |
-    {error, layers_not_found_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unable_to_get_upstream_layer_exception(), tuple()}.
+    {error, get_download_url_for_layer_errors(), tuple()}.
 get_download_url_for_layer(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_download_url_for_layer(Client, Input, []).
@@ -1999,12 +2139,7 @@ get_download_url_for_layer(Client, Input)
 -spec get_download_url_for_layer(map(), get_download_url_for_layer_request(), proplists:proplist()) ->
     {ok, get_download_url_for_layer_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, layer_inaccessible_exception(), tuple()} |
-    {error, layers_not_found_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unable_to_get_upstream_layer_exception(), tuple()}.
+    {error, get_download_url_for_layer_errors(), tuple()}.
 get_download_url_for_layer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDownloadUrlForLayer">>, Input, Options).
@@ -2013,11 +2148,7 @@ get_download_url_for_layer(Client, Input, Options)
 -spec get_lifecycle_policy(map(), get_lifecycle_policy_request()) ->
     {ok, get_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, lifecycle_policy_not_found_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_lifecycle_policy_errors(), tuple()}.
 get_lifecycle_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_lifecycle_policy(Client, Input, []).
@@ -2025,11 +2156,7 @@ get_lifecycle_policy(Client, Input)
 -spec get_lifecycle_policy(map(), get_lifecycle_policy_request(), proplists:proplist()) ->
     {ok, get_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, lifecycle_policy_not_found_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_lifecycle_policy_errors(), tuple()}.
 get_lifecycle_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLifecyclePolicy">>, Input, Options).
@@ -2040,11 +2167,7 @@ get_lifecycle_policy(Client, Input, Options)
 -spec get_lifecycle_policy_preview(map(), get_lifecycle_policy_preview_request()) ->
     {ok, get_lifecycle_policy_preview_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, lifecycle_policy_preview_not_found_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_lifecycle_policy_preview_errors(), tuple()}.
 get_lifecycle_policy_preview(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_lifecycle_policy_preview(Client, Input, []).
@@ -2052,11 +2175,7 @@ get_lifecycle_policy_preview(Client, Input)
 -spec get_lifecycle_policy_preview(map(), get_lifecycle_policy_preview_request(), proplists:proplist()) ->
     {ok, get_lifecycle_policy_preview_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, lifecycle_policy_preview_not_found_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_lifecycle_policy_preview_errors(), tuple()}.
 get_lifecycle_policy_preview(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLifecyclePolicyPreview">>, Input, Options).
@@ -2065,10 +2184,7 @@ get_lifecycle_policy_preview(Client, Input, Options)
 -spec get_registry_policy(map(), get_registry_policy_request()) ->
     {ok, get_registry_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, registry_policy_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_registry_policy_errors(), tuple()}.
 get_registry_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_registry_policy(Client, Input, []).
@@ -2076,10 +2192,7 @@ get_registry_policy(Client, Input)
 -spec get_registry_policy(map(), get_registry_policy_request(), proplists:proplist()) ->
     {ok, get_registry_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, registry_policy_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_registry_policy_errors(), tuple()}.
 get_registry_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRegistryPolicy">>, Input, Options).
@@ -2088,9 +2201,7 @@ get_registry_policy(Client, Input, Options)
 -spec get_registry_scanning_configuration(map(), get_registry_scanning_configuration_request()) ->
     {ok, get_registry_scanning_configuration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_registry_scanning_configuration_errors(), tuple()}.
 get_registry_scanning_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_registry_scanning_configuration(Client, Input, []).
@@ -2098,9 +2209,7 @@ get_registry_scanning_configuration(Client, Input)
 -spec get_registry_scanning_configuration(map(), get_registry_scanning_configuration_request(), proplists:proplist()) ->
     {ok, get_registry_scanning_configuration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_registry_scanning_configuration_errors(), tuple()}.
 get_registry_scanning_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRegistryScanningConfiguration">>, Input, Options).
@@ -2109,10 +2218,7 @@ get_registry_scanning_configuration(Client, Input, Options)
 -spec get_repository_policy(map(), get_repository_policy_request()) ->
     {ok, get_repository_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, repository_policy_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, get_repository_policy_errors(), tuple()}.
 get_repository_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_repository_policy(Client, Input, []).
@@ -2120,10 +2226,7 @@ get_repository_policy(Client, Input)
 -spec get_repository_policy(map(), get_repository_policy_request(), proplists:proplist()) ->
     {ok, get_repository_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, repository_policy_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, get_repository_policy_errors(), tuple()}.
 get_repository_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRepositoryPolicy">>, Input, Options).
@@ -2143,10 +2246,7 @@ get_repository_policy(Client, Input, Options)
 -spec initiate_layer_upload(map(), initiate_layer_upload_request()) ->
     {ok, initiate_layer_upload_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, kms_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, initiate_layer_upload_errors(), tuple()}.
 initiate_layer_upload(Client, Input)
   when is_map(Client), is_map(Input) ->
     initiate_layer_upload(Client, Input, []).
@@ -2154,10 +2254,7 @@ initiate_layer_upload(Client, Input)
 -spec initiate_layer_upload(map(), initiate_layer_upload_request(), proplists:proplist()) ->
     {ok, initiate_layer_upload_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, kms_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, initiate_layer_upload_errors(), tuple()}.
 initiate_layer_upload(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"InitiateLayerUpload">>, Input, Options).
@@ -2174,9 +2271,7 @@ initiate_layer_upload(Client, Input, Options)
 -spec list_images(map(), list_images_request()) ->
     {ok, list_images_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_images_errors(), tuple()}.
 list_images(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_images(Client, Input, []).
@@ -2184,9 +2279,7 @@ list_images(Client, Input)
 -spec list_images(map(), list_images_request(), proplists:proplist()) ->
     {ok, list_images_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_images_errors(), tuple()}.
 list_images(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListImages">>, Input, Options).
@@ -2195,9 +2288,7 @@ list_images(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -2205,9 +2296,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -2228,16 +2317,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec put_image(map(), put_image_request()) ->
     {ok, put_image_response(), tuple()} |
     {error, any()} |
-    {error, image_already_exists_exception(), tuple()} |
-    {error, image_digest_does_not_match_exception(), tuple()} |
-    {error, image_tag_already_exists_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, kms_exception(), tuple()} |
-    {error, layers_not_found_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, referenced_images_not_found_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, put_image_errors(), tuple()}.
 put_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_image(Client, Input, []).
@@ -2245,16 +2325,7 @@ put_image(Client, Input)
 -spec put_image(map(), put_image_request(), proplists:proplist()) ->
     {ok, put_image_response(), tuple()} |
     {error, any()} |
-    {error, image_already_exists_exception(), tuple()} |
-    {error, image_digest_does_not_match_exception(), tuple()} |
-    {error, image_tag_already_exists_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, kms_exception(), tuple()} |
-    {error, layers_not_found_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, referenced_images_not_found_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, put_image_errors(), tuple()}.
 put_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutImage">>, Input, Options).
@@ -2270,10 +2341,7 @@ put_image(Client, Input, Options)
 -spec put_image_scanning_configuration(map(), put_image_scanning_configuration_request()) ->
     {ok, put_image_scanning_configuration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_image_scanning_configuration_errors(), tuple()}.
 put_image_scanning_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_image_scanning_configuration(Client, Input, []).
@@ -2281,10 +2349,7 @@ put_image_scanning_configuration(Client, Input)
 -spec put_image_scanning_configuration(map(), put_image_scanning_configuration_request(), proplists:proplist()) ->
     {ok, put_image_scanning_configuration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_image_scanning_configuration_errors(), tuple()}.
 put_image_scanning_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutImageScanningConfiguration">>, Input, Options).
@@ -2300,9 +2365,7 @@ put_image_scanning_configuration(Client, Input, Options)
 -spec put_image_tag_mutability(map(), put_image_tag_mutability_request()) ->
     {ok, put_image_tag_mutability_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, put_image_tag_mutability_errors(), tuple()}.
 put_image_tag_mutability(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_image_tag_mutability(Client, Input, []).
@@ -2310,9 +2373,7 @@ put_image_tag_mutability(Client, Input)
 -spec put_image_tag_mutability(map(), put_image_tag_mutability_request(), proplists:proplist()) ->
     {ok, put_image_tag_mutability_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, put_image_tag_mutability_errors(), tuple()}.
 put_image_tag_mutability(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutImageTagMutability">>, Input, Options).
@@ -2326,10 +2387,7 @@ put_image_tag_mutability(Client, Input, Options)
 -spec put_lifecycle_policy(map(), put_lifecycle_policy_request()) ->
     {ok, put_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_lifecycle_policy_errors(), tuple()}.
 put_lifecycle_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_lifecycle_policy(Client, Input, []).
@@ -2337,10 +2395,7 @@ put_lifecycle_policy(Client, Input)
 -spec put_lifecycle_policy(map(), put_lifecycle_policy_request(), proplists:proplist()) ->
     {ok, put_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_lifecycle_policy_errors(), tuple()}.
 put_lifecycle_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutLifecyclePolicy">>, Input, Options).
@@ -2356,9 +2411,7 @@ put_lifecycle_policy(Client, Input, Options)
 -spec put_registry_policy(map(), put_registry_policy_request()) ->
     {ok, put_registry_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_registry_policy_errors(), tuple()}.
 put_registry_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_registry_policy(Client, Input, []).
@@ -2366,9 +2419,7 @@ put_registry_policy(Client, Input)
 -spec put_registry_policy(map(), put_registry_policy_request(), proplists:proplist()) ->
     {ok, put_registry_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_registry_policy_errors(), tuple()}.
 put_registry_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRegistryPolicy">>, Input, Options).
@@ -2378,9 +2429,7 @@ put_registry_policy(Client, Input, Options)
 -spec put_registry_scanning_configuration(map(), put_registry_scanning_configuration_request()) ->
     {ok, put_registry_scanning_configuration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_registry_scanning_configuration_errors(), tuple()}.
 put_registry_scanning_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_registry_scanning_configuration(Client, Input, []).
@@ -2388,9 +2437,7 @@ put_registry_scanning_configuration(Client, Input)
 -spec put_registry_scanning_configuration(map(), put_registry_scanning_configuration_request(), proplists:proplist()) ->
     {ok, put_registry_scanning_configuration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_registry_scanning_configuration_errors(), tuple()}.
 put_registry_scanning_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRegistryScanningConfiguration">>, Input, Options).
@@ -2417,9 +2464,7 @@ put_registry_scanning_configuration(Client, Input, Options)
 -spec put_replication_configuration(map(), put_replication_configuration_request()) ->
     {ok, put_replication_configuration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_replication_configuration_errors(), tuple()}.
 put_replication_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_replication_configuration(Client, Input, []).
@@ -2427,9 +2472,7 @@ put_replication_configuration(Client, Input)
 -spec put_replication_configuration(map(), put_replication_configuration_request(), proplists:proplist()) ->
     {ok, put_replication_configuration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_replication_configuration_errors(), tuple()}.
 put_replication_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutReplicationConfiguration">>, Input, Options).
@@ -2444,9 +2487,7 @@ put_replication_configuration(Client, Input, Options)
 -spec set_repository_policy(map(), set_repository_policy_request()) ->
     {ok, set_repository_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, set_repository_policy_errors(), tuple()}.
 set_repository_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_repository_policy(Client, Input, []).
@@ -2454,9 +2495,7 @@ set_repository_policy(Client, Input)
 -spec set_repository_policy(map(), set_repository_policy_request(), proplists:proplist()) ->
     {ok, set_repository_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, set_repository_policy_errors(), tuple()}.
 set_repository_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetRepositoryPolicy">>, Input, Options).
@@ -2473,13 +2512,7 @@ set_repository_policy(Client, Input, Options)
 -spec start_image_scan(map(), start_image_scan_request()) ->
     {ok, start_image_scan_response(), tuple()} |
     {error, any()} |
-    {error, image_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_image_type_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_image_scan_errors(), tuple()}.
 start_image_scan(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_image_scan(Client, Input, []).
@@ -2487,13 +2520,7 @@ start_image_scan(Client, Input)
 -spec start_image_scan(map(), start_image_scan_request(), proplists:proplist()) ->
     {ok, start_image_scan_response(), tuple()} |
     {error, any()} |
-    {error, image_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_image_type_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_image_scan_errors(), tuple()}.
 start_image_scan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartImageScan">>, Input, Options).
@@ -2506,12 +2533,7 @@ start_image_scan(Client, Input, Options)
 -spec start_lifecycle_policy_preview(map(), start_lifecycle_policy_preview_request()) ->
     {ok, start_lifecycle_policy_preview_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, lifecycle_policy_not_found_exception(), tuple()} |
-    {error, lifecycle_policy_preview_in_progress_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_lifecycle_policy_preview_errors(), tuple()}.
 start_lifecycle_policy_preview(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_lifecycle_policy_preview(Client, Input, []).
@@ -2519,12 +2541,7 @@ start_lifecycle_policy_preview(Client, Input)
 -spec start_lifecycle_policy_preview(map(), start_lifecycle_policy_preview_request(), proplists:proplist()) ->
     {ok, start_lifecycle_policy_preview_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, lifecycle_policy_not_found_exception(), tuple()} |
-    {error, lifecycle_policy_preview_in_progress_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_lifecycle_policy_preview_errors(), tuple()}.
 start_lifecycle_policy_preview(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartLifecyclePolicyPreview">>, Input, Options).
@@ -2536,11 +2553,7 @@ start_lifecycle_policy_preview(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_tag_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -2548,11 +2561,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_tag_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -2561,11 +2570,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_tag_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -2573,11 +2578,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_tag_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -2586,13 +2587,7 @@ untag_resource(Client, Input, Options)
 -spec update_pull_through_cache_rule(map(), update_pull_through_cache_rule_request()) ->
     {ok, update_pull_through_cache_rule_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, pull_through_cache_rule_not_found_exception(), tuple()} |
-    {error, secret_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unable_to_access_secret_exception(), tuple()} |
-    {error, unable_to_decrypt_secret_value_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_pull_through_cache_rule_errors(), tuple()}.
 update_pull_through_cache_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_pull_through_cache_rule(Client, Input, []).
@@ -2600,13 +2595,7 @@ update_pull_through_cache_rule(Client, Input)
 -spec update_pull_through_cache_rule(map(), update_pull_through_cache_rule_request(), proplists:proplist()) ->
     {ok, update_pull_through_cache_rule_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, pull_through_cache_rule_not_found_exception(), tuple()} |
-    {error, secret_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unable_to_access_secret_exception(), tuple()} |
-    {error, unable_to_decrypt_secret_value_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_pull_through_cache_rule_errors(), tuple()}.
 update_pull_through_cache_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePullThroughCacheRule">>, Input, Options).
@@ -2626,13 +2615,7 @@ update_pull_through_cache_rule(Client, Input, Options)
 -spec upload_layer_part(map(), upload_layer_part_request()) ->
     {ok, upload_layer_part_response(), tuple()} |
     {error, any()} |
-    {error, invalid_layer_part_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, kms_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, upload_not_found_exception(), tuple()}.
+    {error, upload_layer_part_errors(), tuple()}.
 upload_layer_part(Client, Input)
   when is_map(Client), is_map(Input) ->
     upload_layer_part(Client, Input, []).
@@ -2640,13 +2623,7 @@ upload_layer_part(Client, Input)
 -spec upload_layer_part(map(), upload_layer_part_request(), proplists:proplist()) ->
     {ok, upload_layer_part_response(), tuple()} |
     {error, any()} |
-    {error, invalid_layer_part_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, kms_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, upload_not_found_exception(), tuple()}.
+    {error, upload_layer_part_errors(), tuple()}.
 upload_layer_part(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UploadLayerPart">>, Input, Options).
@@ -2662,10 +2639,7 @@ upload_layer_part(Client, Input, Options)
 -spec validate_pull_through_cache_rule(map(), validate_pull_through_cache_rule_request()) ->
     {ok, validate_pull_through_cache_rule_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, pull_through_cache_rule_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, validate_pull_through_cache_rule_errors(), tuple()}.
 validate_pull_through_cache_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     validate_pull_through_cache_rule(Client, Input, []).
@@ -2673,10 +2647,7 @@ validate_pull_through_cache_rule(Client, Input)
 -spec validate_pull_through_cache_rule(map(), validate_pull_through_cache_rule_request(), proplists:proplist()) ->
     {ok, validate_pull_through_cache_rule_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, pull_through_cache_rule_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, validate_pull_through_cache_rule_errors(), tuple()}.
 validate_pull_through_cache_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ValidatePullThroughCacheRule">>, Input, Options).

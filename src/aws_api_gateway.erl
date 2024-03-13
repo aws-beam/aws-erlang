@@ -308,6 +308,7 @@
 %% }
 -type update_stage_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% api_key_ids() :: #{
 %%   <<"ids">> => list(string()()),
@@ -315,12 +316,14 @@
 %% }
 -type api_key_ids() :: #{binary() => any()}.
 
+
 %% Example:
 %% endpoint_configuration() :: #{
 %%   <<"types">> => list(list(any())()),
 %%   <<"vpcEndpointIds">> => list(string()())
 %% }
 -type endpoint_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% import_api_keys_request() :: #{
@@ -330,11 +333,13 @@
 %% }
 -type import_api_keys_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_stages_request() :: #{
 %%   <<"deploymentId">> => string()
 %% }
 -type get_stages_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_sdk_types_request() :: #{
@@ -342,6 +347,7 @@
 %%   <<"position">> => string()
 %% }
 -type get_sdk_types_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% canary_settings() :: #{
@@ -351,6 +357,7 @@
 %%   <<"useStageCache">> => boolean()
 %% }
 -type canary_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% method_setting() :: #{
@@ -366,6 +373,7 @@
 %%   <<"unauthorizedCacheControlHeaderStrategy">> => list(any())
 %% }
 -type method_setting() :: #{binary() => any()}.
+
 
 %% Example:
 %% stage() :: #{
@@ -389,6 +397,7 @@
 %% }
 -type stage() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_deployments_request() :: #{
 %%   <<"limit">> => integer(),
@@ -396,11 +405,13 @@
 %% }
 -type get_deployments_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% authorizer() :: #{
@@ -417,6 +428,7 @@
 %% }
 -type authorizer() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_usage_request() :: #{
 %%   <<"endDate">> := string(),
@@ -427,6 +439,7 @@
 %% }
 -type get_usage_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% sdk_response() :: #{
 %%   <<"body">> => binary(),
@@ -435,11 +448,13 @@
 %% }
 -type sdk_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% unauthorized_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type unauthorized_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% export_response() :: #{
@@ -449,6 +464,7 @@
 %% }
 -type export_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_tags_request() :: #{
 %%   <<"limit">> => integer(),
@@ -456,21 +472,25 @@
 %% }
 -type get_tags_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttle_settings() :: #{
 %%   <<"burstLimit">> => integer(),
 %%   <<"rateLimit">> => float()
 %% }
 -type throttle_settings() :: #{binary() => any()}.
+
 %% Example:
 %% delete_resource_request() :: #{}
 -type delete_resource_request() :: #{}.
+
 
 %% Example:
 %% update_resource_request() :: #{
 %%   <<"patchOperations">> => list(patch_operation()())
 %% }
 -type update_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% deployment() :: #{
@@ -480,6 +500,7 @@
 %%   <<"id">> => string()
 %% }
 -type deployment() :: #{binary() => any()}.
+
 
 %% Example:
 %% integration() :: #{
@@ -500,15 +521,19 @@
 %%   <<"uri">> => string()
 %% }
 -type integration() :: #{binary() => any()}.
+
 %% Example:
 %% delete_client_certificate_request() :: #{}
 -type delete_client_certificate_request() :: #{}.
+
 %% Example:
 %% get_usage_plan_key_request() :: #{}
 -type get_usage_plan_key_request() :: #{}.
+
 %% Example:
 %% delete_documentation_part_request() :: #{}
 -type delete_documentation_part_request() :: #{}.
+
 
 %% Example:
 %% get_documentation_parts_request() :: #{
@@ -520,9 +545,11 @@
 %%   <<"type">> => list(any())
 %% }
 -type get_documentation_parts_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_method_response_request() :: #{}
 -type get_method_response_request() :: #{}.
+
 
 %% Example:
 %% test_invoke_authorizer_request() :: #{
@@ -535,14 +562,17 @@
 %% }
 -type test_invoke_authorizer_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_client_certificate_request() :: #{
 %%   <<"patchOperations">> => list(patch_operation()())
 %% }
 -type update_client_certificate_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_integration_response_request() :: #{}
 -type delete_integration_response_request() :: #{}.
+
 
 %% Example:
 %% patch_operation() :: #{
@@ -553,6 +583,7 @@
 %% }
 -type patch_operation() :: #{binary() => any()}.
 
+
 %% Example:
 %% mutual_tls_authentication() :: #{
 %%   <<"truststoreUri">> => string(),
@@ -560,6 +591,7 @@
 %%   <<"truststoreWarnings">> => list(string()())
 %% }
 -type mutual_tls_authentication() :: #{binary() => any()}.
+
 
 %% Example:
 %% base_path_mapping() :: #{
@@ -569,6 +601,7 @@
 %% }
 -type base_path_mapping() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_documentation_version_request() :: #{
 %%   <<"description">> => string(),
@@ -576,6 +609,7 @@
 %%   <<"stageName">> => string()
 %% }
 -type create_documentation_version_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% gateway_response() :: #{
@@ -587,6 +621,7 @@
 %% }
 -type gateway_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% import_rest_api_request() :: #{
 %%   <<"body">> := binary(),
@@ -595,6 +630,7 @@
 %% }
 -type import_rest_api_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% documentation_versions() :: #{
 %%   <<"items">> => list(documentation_version()()),
@@ -602,11 +638,13 @@
 %% }
 -type documentation_versions() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_api_key_request() :: #{
 %%   <<"patchOperations">> => list(patch_operation()())
 %% }
 -type update_api_key_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% vpc_links() :: #{
@@ -614,9 +652,11 @@
 %%   <<"position">> => string()
 %% }
 -type vpc_links() :: #{binary() => any()}.
+
 %% Example:
 %% get_usage_plan_request() :: #{}
 -type get_usage_plan_request() :: #{}.
+
 
 %% Example:
 %% usage_plans() :: #{
@@ -624,6 +664,7 @@
 %%   <<"position">> => string()
 %% }
 -type usage_plans() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_deployment_request() :: #{
@@ -637,9 +678,11 @@
 %%   <<"variables">> => map()
 %% }
 -type create_deployment_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_base_path_mapping_request() :: #{}
 -type get_base_path_mapping_request() :: #{}.
+
 
 %% Example:
 %% create_model_request() :: #{
@@ -649,6 +692,7 @@
 %%   <<"schema">> => string()
 %% }
 -type create_model_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_integration_request() :: #{
@@ -668,9 +712,11 @@
 %%   <<"uri">> => string()
 %% }
 -type put_integration_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_gateway_response_request() :: #{}
 -type get_gateway_response_request() :: #{}.
+
 
 %% Example:
 %% update_request_validator_request() :: #{
@@ -678,11 +724,13 @@
 %% }
 -type update_request_validator_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_model_request() :: #{
 %%   <<"patchOperations">> => list(patch_operation()())
 %% }
 -type update_model_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_domain_name_request() :: #{
@@ -702,11 +750,13 @@
 %% }
 -type create_domain_name_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_base_path_mapping_request() :: #{
 %%   <<"patchOperations">> => list(patch_operation()())
 %% }
 -type update_base_path_mapping_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% usage_plan_keys() :: #{
@@ -714,6 +764,7 @@
 %%   <<"position">> => string()
 %% }
 -type usage_plan_keys() :: #{binary() => any()}.
+
 
 %% Example:
 %% sdk_type() :: #{
@@ -723,6 +774,7 @@
 %%   <<"id">> => string()
 %% }
 -type sdk_type() :: #{binary() => any()}.
+
 
 %% Example:
 %% vpc_link() :: #{
@@ -736,23 +788,28 @@
 %% }
 -type vpc_link() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_documentation_part_request() :: #{
 %%   <<"patchOperations">> => list(patch_operation()())
 %% }
 -type update_documentation_part_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_model_template_request() :: #{}
 -type get_model_template_request() :: #{}.
+
 %% Example:
 %% delete_authorizer_request() :: #{}
 -type delete_authorizer_request() :: #{}.
+
 
 %% Example:
 %% too_many_requests_exception() :: #{
@@ -760,9 +817,11 @@
 %%   <<"retryAfterSeconds">> => string()
 %% }
 -type too_many_requests_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_request_validator_request() :: #{}
 -type delete_request_validator_request() :: #{}.
+
 
 %% Example:
 %% create_authorizer_request() :: #{
@@ -777,18 +836,22 @@
 %%   <<"type">> := list(any())
 %% }
 -type create_authorizer_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_stage_request() :: #{}
 -type get_stage_request() :: #{}.
+
 %% Example:
 %% get_authorizer_request() :: #{}
 -type get_authorizer_request() :: #{}.
+
 
 %% Example:
 %% stages() :: #{
 %%   <<"item">> => list(stage()())
 %% }
 -type stages() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_usage_plan_keys_request() :: #{
@@ -798,11 +861,13 @@
 %% }
 -type get_usage_plan_keys_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_gateway_response_request() :: #{
 %%   <<"patchOperations">> => list(patch_operation()())
 %% }
 -type update_gateway_response_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% usage() :: #{
@@ -814,12 +879,14 @@
 %% }
 -type usage() :: #{binary() => any()}.
 
+
 %% Example:
 %% gateway_responses() :: #{
 %%   <<"items">> => list(gateway_response()()),
 %%   <<"position">> => string()
 %% }
 -type gateway_responses() :: #{binary() => any()}.
+
 
 %% Example:
 %% stage_key() :: #{
@@ -828,11 +895,13 @@
 %% }
 -type stage_key() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_method_request() :: #{
 %%   <<"patchOperations">> => list(patch_operation()())
 %% }
 -type update_method_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% client_certificates() :: #{
@@ -840,9 +909,11 @@
 %%   <<"position">> => string()
 %% }
 -type client_certificates() :: #{binary() => any()}.
+
 %% Example:
 %% delete_usage_plan_key_request() :: #{}
 -type delete_usage_plan_key_request() :: #{}.
+
 
 %% Example:
 %% domain_names() :: #{
@@ -851,15 +922,18 @@
 %% }
 -type domain_names() :: #{binary() => any()}.
 
+
 %% Example:
 %% resources() :: #{
 %%   <<"items">> => list(resource()()),
 %%   <<"position">> => string()
 %% }
 -type resources() :: #{binary() => any()}.
+
 %% Example:
 %% delete_stage_request() :: #{}
 -type delete_stage_request() :: #{}.
+
 
 %% Example:
 %% get_authorizers_request() :: #{
@@ -867,12 +941,15 @@
 %%   <<"position">> => string()
 %% }
 -type get_authorizers_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_rest_api_request() :: #{}
 -type delete_rest_api_request() :: #{}.
+
 %% Example:
 %% delete_documentation_version_request() :: #{}
 -type delete_documentation_version_request() :: #{}.
+
 
 %% Example:
 %% create_documentation_part_request() :: #{
@@ -880,6 +957,7 @@
 %%   <<"properties">> := string()
 %% }
 -type create_documentation_part_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% request_validator() :: #{
@@ -889,9 +967,11 @@
 %%   <<"validateRequestParameters">> => boolean()
 %% }
 -type request_validator() :: #{binary() => any()}.
+
 %% Example:
 %% get_method_request() :: #{}
 -type get_method_request() :: #{}.
+
 
 %% Example:
 %% rest_api() :: #{
@@ -912,12 +992,14 @@
 %% }
 -type rest_api() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_client_certificates_request() :: #{
 %%   <<"limit">> => integer(),
 %%   <<"position">> => string()
 %% }
 -type get_client_certificates_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_resources_request() :: #{
@@ -927,11 +1009,13 @@
 %% }
 -type get_resources_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_gateway_responses_request() :: #{
@@ -939,15 +1023,18 @@
 %%   <<"position">> => string()
 %% }
 -type get_gateway_responses_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_integration_request() :: #{}
 -type delete_integration_request() :: #{}.
+
 
 %% Example:
 %% get_sdk_request() :: #{
 %%   <<"parameters">> => map()
 %% }
 -type get_sdk_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% import_documentation_parts_request() :: #{
@@ -957,6 +1044,7 @@
 %% }
 -type import_documentation_parts_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_request_validator_request() :: #{
 %%   <<"name">> => string(),
@@ -964,6 +1052,7 @@
 %%   <<"validateRequestParameters">> => boolean()
 %% }
 -type create_request_validator_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% sdk_configuration_property() :: #{
@@ -975,6 +1064,7 @@
 %% }
 -type sdk_configuration_property() :: #{binary() => any()}.
 
+
 %% Example:
 %% base_path_mappings() :: #{
 %%   <<"items">> => list(base_path_mapping()()),
@@ -982,11 +1072,13 @@
 %% }
 -type base_path_mappings() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_deployment_request() :: #{
 %%   <<"embed">> => list(string()())
 %% }
 -type get_deployment_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_vpc_link_request() :: #{
@@ -997,6 +1089,7 @@
 %% }
 -type create_vpc_link_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_request_validators_request() :: #{
 %%   <<"limit">> => integer(),
@@ -1004,11 +1097,13 @@
 %% }
 -type get_request_validators_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% generate_client_certificate_request() :: #{
@@ -1016,6 +1111,7 @@
 %%   <<"tags">> => map()
 %% }
 -type generate_client_certificate_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% account() :: #{
@@ -1025,15 +1121,18 @@
 %%   <<"throttleSettings">> => throttle_settings()
 %% }
 -type account() :: #{binary() => any()}.
+
 %% Example:
 %% flush_stage_authorizers_cache_request() :: #{}
 -type flush_stage_authorizers_cache_request() :: #{}.
+
 
 %% Example:
 %% tags() :: #{
 %%   <<"tags">> => map()
 %% }
 -type tags() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_domain_names_request() :: #{
@@ -1042,14 +1141,17 @@
 %% }
 -type get_domain_names_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_usage_request() :: #{
 %%   <<"patchOperations">> => list(patch_operation()())
 %% }
 -type update_usage_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_integration_request() :: #{}
 -type get_integration_request() :: #{}.
+
 
 %% Example:
 %% service_unavailable_exception() :: #{
@@ -1058,11 +1160,13 @@
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_integration_response_request() :: #{
 %%   <<"patchOperations">> => list(patch_operation()())
 %% }
 -type update_integration_response_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% documentation_part_location() :: #{
@@ -1074,17 +1178,20 @@
 %% }
 -type documentation_part_location() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_rest_api_request() :: #{
 %%   <<"patchOperations">> => list(patch_operation()())
 %% }
 -type update_rest_api_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_integration_request() :: #{
 %%   <<"patchOperations">> => list(patch_operation()())
 %% }
 -type update_integration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_method_request() :: #{
@@ -1099,11 +1206,13 @@
 %% }
 -type put_method_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_resource_request() :: #{
 %%   <<"pathPart">> := string()
 %% }
 -type create_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_domain_name_request() :: #{
@@ -1111,12 +1220,14 @@
 %% }
 -type update_domain_name_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% rest_apis() :: #{
 %%   <<"items">> => list(rest_api()()),
 %%   <<"position">> => string()
 %% }
 -type rest_apis() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_api_key_request() :: #{
@@ -1131,11 +1242,13 @@
 %% }
 -type create_api_key_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_account_request() :: #{
 %%   <<"patchOperations">> => list(patch_operation()())
 %% }
 -type update_account_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% domain_name() :: #{
@@ -1159,6 +1272,7 @@
 %% }
 -type domain_name() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_stage_request() :: #{
 %%   <<"cacheClusterEnabled">> => boolean(),
@@ -1174,17 +1288,21 @@
 %% }
 -type create_stage_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_method_response_request() :: #{
 %%   <<"patchOperations">> => list(patch_operation()())
 %% }
 -type update_method_response_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_deployment_request() :: #{}
 -type delete_deployment_request() :: #{}.
+
 %% Example:
 %% delete_method_response_request() :: #{}
 -type delete_method_response_request() :: #{}.
+
 
 %% Example:
 %% client_certificate() :: #{
@@ -1197,6 +1315,7 @@
 %% }
 -type client_certificate() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_api_keys_request() :: #{
 %%   <<"customerId">> => string(),
@@ -1207,6 +1326,7 @@
 %% }
 -type get_api_keys_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% mutual_tls_authentication_input() :: #{
 %%   <<"truststoreUri">> => string(),
@@ -1214,11 +1334,13 @@
 %% }
 -type mutual_tls_authentication_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_resource_request() :: #{
 %%   <<"embed">> => list(string()())
 %% }
 -type get_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% deployment_canary_settings() :: #{
@@ -1227,9 +1349,11 @@
 %%   <<"useStageCache">> => boolean()
 %% }
 -type deployment_canary_settings() :: #{binary() => any()}.
+
 %% Example:
 %% delete_method_request() :: #{}
 -type delete_method_request() :: #{}.
+
 
 %% Example:
 %% api_stage() :: #{
@@ -1239,24 +1363,29 @@
 %% }
 -type api_stage() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_export_request() :: #{
 %%   <<"accepts">> => string(),
 %%   <<"parameters">> => map()
 %% }
 -type get_export_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_model_request() :: #{}
 -type delete_model_request() :: #{}.
+
 
 %% Example:
 %% tls_config() :: #{
 %%   <<"insecureSkipVerification">> => boolean()
 %% }
 -type tls_config() :: #{binary() => any()}.
+
 %% Example:
 %% get_documentation_part_request() :: #{}
 -type get_documentation_part_request() :: #{}.
+
 
 %% Example:
 %% access_log_settings() :: #{
@@ -1265,6 +1394,7 @@
 %% }
 -type access_log_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% documentation_version() :: #{
 %%   <<"createdDate">> => non_neg_integer(),
@@ -1272,12 +1402,15 @@
 %%   <<"version">> => string()
 %% }
 -type documentation_version() :: #{binary() => any()}.
+
 %% Example:
 %% get_integration_response_request() :: #{}
 -type get_integration_response_request() :: #{}.
+
 %% Example:
 %% get_rest_api_request() :: #{}
 -type get_rest_api_request() :: #{}.
+
 
 %% Example:
 %% api_keys() :: #{
@@ -1287,12 +1420,14 @@
 %% }
 -type api_keys() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_models_request() :: #{
 %%   <<"limit">> => integer(),
 %%   <<"position">> => string()
 %% }
 -type get_models_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_base_path_mapping_request() :: #{
@@ -1302,6 +1437,7 @@
 %% }
 -type create_base_path_mapping_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% method_response() :: #{
 %%   <<"responseModels">> => map(),
@@ -1310,14 +1446,17 @@
 %% }
 -type method_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_vpc_link_request() :: #{
 %%   <<"patchOperations">> => list(patch_operation()())
 %% }
 -type update_vpc_link_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_sdk_type_request() :: #{}
 -type get_sdk_type_request() :: #{}.
+
 
 %% Example:
 %% usage_plan() :: #{
@@ -1331,9 +1470,11 @@
 %%   <<"throttle">> => throttle_settings()
 %% }
 -type usage_plan() :: #{binary() => any()}.
+
 %% Example:
 %% get_domain_name_request() :: #{}
 -type get_domain_name_request() :: #{}.
+
 
 %% Example:
 %% update_usage_plan_request() :: #{
@@ -1341,11 +1482,13 @@
 %% }
 -type update_usage_plan_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% sdk_types() :: #{
 %%   <<"items">> => list(sdk_type()())
 %% }
 -type sdk_types() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_usage_plan_key_request() :: #{
@@ -1353,18 +1496,22 @@
 %%   <<"keyType">> := string()
 %% }
 -type create_usage_plan_key_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_api_key_request() :: #{}
 -type delete_api_key_request() :: #{}.
+
 
 %% Example:
 %% get_model_request() :: #{
 %%   <<"flatten">> => boolean()
 %% }
 -type get_model_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_documentation_version_request() :: #{}
 -type get_documentation_version_request() :: #{}.
+
 
 %% Example:
 %% get_usage_plans_request() :: #{
@@ -1373,6 +1520,7 @@
 %%   <<"position">> => string()
 %% }
 -type get_usage_plans_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_usage_plan_request() :: #{
@@ -1385,15 +1533,18 @@
 %% }
 -type create_usage_plan_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_rest_apis_request() :: #{
 %%   <<"limit">> => integer(),
 %%   <<"position">> => string()
 %% }
 -type get_rest_apis_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_client_certificate_request() :: #{}
 -type get_client_certificate_request() :: #{}.
+
 
 %% Example:
 %% documentation_part() :: #{
@@ -1403,12 +1554,14 @@
 %% }
 -type documentation_part() :: #{binary() => any()}.
 
+
 %% Example:
 %% method_snapshot() :: #{
 %%   <<"apiKeyRequired">> => boolean(),
 %%   <<"authorizationType">> => string()
 %% }
 -type method_snapshot() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_method_response_request() :: #{
@@ -1417,12 +1570,14 @@
 %% }
 -type put_method_response_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% request_validators() :: #{
 %%   <<"items">> => list(request_validator()()),
 %%   <<"position">> => string()
 %% }
 -type request_validators() :: #{binary() => any()}.
+
 
 %% Example:
 %% limit_exceeded_exception() :: #{
@@ -1431,18 +1586,22 @@
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% models() :: #{
 %%   <<"items">> => list(model()()),
 %%   <<"position">> => string()
 %% }
 -type models() :: #{binary() => any()}.
+
 %% Example:
 %% delete_base_path_mapping_request() :: #{}
 -type delete_base_path_mapping_request() :: #{}.
+
 %% Example:
 %% delete_domain_name_request() :: #{}
 -type delete_domain_name_request() :: #{}.
+
 
 %% Example:
 %% documentation_parts() :: #{
@@ -1450,9 +1609,11 @@
 %%   <<"position">> => string()
 %% }
 -type documentation_parts() :: #{binary() => any()}.
+
 %% Example:
 %% get_vpc_link_request() :: #{}
 -type get_vpc_link_request() :: #{}.
+
 
 %% Example:
 %% test_invoke_authorizer_response() :: #{
@@ -1466,11 +1627,13 @@
 %% }
 -type test_invoke_authorizer_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% bad_request_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% documentation_part_ids() :: #{
@@ -1478,9 +1641,11 @@
 %%   <<"warnings">> => list(string()())
 %% }
 -type documentation_part_ids() :: #{binary() => any()}.
+
 %% Example:
 %% delete_usage_plan_request() :: #{}
 -type delete_usage_plan_request() :: #{}.
+
 
 %% Example:
 %% method() :: #{
@@ -1498,11 +1663,13 @@
 %% }
 -type method() :: #{binary() => any()}.
 
+
 %% Example:
 %% template() :: #{
 %%   <<"value">> => string()
 %% }
 -type template() :: #{binary() => any()}.
+
 
 %% Example:
 %% test_invoke_method_request() :: #{
@@ -1515,11 +1682,13 @@
 %% }
 -type test_invoke_method_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_api_key_request() :: #{
 %%   <<"includeValue">> => boolean()
 %% }
 -type get_api_key_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_vpc_links_request() :: #{
@@ -1528,6 +1697,7 @@
 %% }
 -type get_vpc_links_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% authorizers() :: #{
 %%   <<"items">> => list(authorizer()()),
@@ -1535,15 +1705,18 @@
 %% }
 -type authorizers() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_base_path_mappings_request() :: #{
 %%   <<"limit">> => integer(),
 %%   <<"position">> => string()
 %% }
 -type get_base_path_mappings_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_request_validator_request() :: #{}
 -type get_request_validator_request() :: #{}.
+
 
 %% Example:
 %% api_key() :: #{
@@ -1560,6 +1733,7 @@
 %% }
 -type api_key() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_integration_response_request() :: #{
 %%   <<"contentHandling">> => list(any()),
@@ -1568,9 +1742,11 @@
 %%   <<"selectionPattern">> => string()
 %% }
 -type put_integration_response_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_account_request() :: #{}
 -type get_account_request() :: #{}.
+
 
 %% Example:
 %% integration_response() :: #{
@@ -1582,6 +1758,7 @@
 %% }
 -type integration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% test_invoke_method_response() :: #{
 %%   <<"body">> => string(),
@@ -1592,9 +1769,11 @@
 %%   <<"status">> => integer()
 %% }
 -type test_invoke_method_response() :: #{binary() => any()}.
+
 %% Example:
 %% flush_stage_cache_request() :: #{}
 -type flush_stage_cache_request() :: #{}.
+
 
 %% Example:
 %% model() :: #{
@@ -1606,6 +1785,7 @@
 %% }
 -type model() :: #{binary() => any()}.
 
+
 %% Example:
 %% deployments() :: #{
 %%   <<"items">> => list(deployment()()),
@@ -1613,17 +1793,20 @@
 %% }
 -type deployments() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_documentation_version_request() :: #{
 %%   <<"patchOperations">> => list(patch_operation()())
 %% }
 -type update_documentation_version_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_deployment_request() :: #{
 %%   <<"patchOperations">> => list(patch_operation()())
 %% }
 -type update_deployment_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_rest_api_request() :: #{
@@ -1634,6 +1817,7 @@
 %% }
 -type put_rest_api_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% quota_settings() :: #{
 %%   <<"limit">> => integer(),
@@ -1641,9 +1825,11 @@
 %%   <<"period">> => list(any())
 %% }
 -type quota_settings() :: #{binary() => any()}.
+
 %% Example:
 %% delete_gateway_response_request() :: #{}
 -type delete_gateway_response_request() :: #{}.
+
 
 %% Example:
 %% get_documentation_versions_request() :: #{
@@ -1651,6 +1837,7 @@
 %%   <<"position">> => string()
 %% }
 -type get_documentation_versions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% usage_plan_key() :: #{
@@ -1660,15 +1847,18 @@
 %%   <<"value">> => string()
 %% }
 -type usage_plan_key() :: #{binary() => any()}.
+
 %% Example:
 %% delete_vpc_link_request() :: #{}
 -type delete_vpc_link_request() :: #{}.
+
 
 %% Example:
 %% update_authorizer_request() :: #{
 %%   <<"patchOperations">> => list(patch_operation()())
 %% }
 -type update_authorizer_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_gateway_response_request() :: #{
@@ -1677,6 +1867,7 @@
 %%   <<"statusCode">> => string()
 %% }
 -type put_gateway_response_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_rest_api_request() :: #{
@@ -1694,6 +1885,7 @@
 %% }
 -type create_rest_api_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource() :: #{
 %%   <<"id">> => string(),
@@ -1704,6 +1896,852 @@
 %% }
 -type resource() :: #{binary() => any()}.
 
+-type create_api_key_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type create_authorizer_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type create_base_path_mapping_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type create_deployment_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type create_documentation_part_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type create_documentation_version_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type create_domain_name_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type create_model_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type create_request_validator_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type create_resource_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type create_rest_api_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type create_stage_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type create_usage_plan_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type create_usage_plan_key_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type create_vpc_link_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type delete_api_key_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type delete_authorizer_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type delete_base_path_mapping_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type delete_client_certificate_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type delete_deployment_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type delete_documentation_part_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type delete_documentation_version_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type delete_domain_name_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type delete_gateway_response_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type delete_integration_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type delete_integration_response_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type delete_method_errors() ::
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type delete_method_response_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type delete_model_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type delete_request_validator_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type delete_resource_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type delete_rest_api_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type delete_stage_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type delete_usage_plan_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type delete_usage_plan_key_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type delete_vpc_link_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type flush_stage_authorizers_cache_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type flush_stage_cache_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type generate_client_certificate_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_account_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_api_key_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_api_keys_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_authorizer_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_authorizers_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_base_path_mapping_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_base_path_mappings_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_client_certificate_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_client_certificates_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_deployment_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_deployments_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_documentation_part_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_documentation_parts_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_documentation_version_errors() ::
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_documentation_versions_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_domain_name_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_domain_names_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_export_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_gateway_response_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_gateway_responses_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_integration_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_integration_response_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_method_errors() ::
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_method_response_errors() ::
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_model_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_model_template_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_models_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_request_validator_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_request_validators_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_resource_errors() ::
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_resources_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_rest_api_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_rest_apis_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_sdk_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_sdk_type_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_sdk_types_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_stage_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_stages_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_tags_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_usage_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_usage_plan_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_usage_plan_key_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_usage_plan_keys_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_usage_plans_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_vpc_link_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_vpc_links_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type import_api_keys_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type import_documentation_parts_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type import_rest_api_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type put_gateway_response_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type put_integration_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type put_integration_response_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type put_method_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type put_method_response_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type put_rest_api_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type tag_resource_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type test_invoke_authorizer_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type test_invoke_method_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type untag_resource_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type update_account_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type update_api_key_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type update_authorizer_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type update_base_path_mapping_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type update_client_certificate_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type update_deployment_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type update_documentation_part_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type update_documentation_version_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type update_domain_name_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type update_gateway_response_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type update_integration_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type update_integration_response_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type update_method_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type update_method_response_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type update_model_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type update_request_validator_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type update_resource_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type update_rest_api_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type update_stage_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type update_usage_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type update_usage_plan_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type update_vpc_link_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -1712,24 +2750,14 @@
 -spec create_api_key(map(), create_api_key_request()) ->
     {ok, api_key(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_api_key_errors(), tuple()}.
 create_api_key(Client, Input) ->
     create_api_key(Client, Input, []).
 
 -spec create_api_key(map(), create_api_key_request(), proplists:proplist()) ->
     {ok, api_key(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_api_key_errors(), tuple()}.
 create_api_key(Client, Input0, Options0) ->
     Method = post,
     Path = ["/apikeys"],
@@ -1756,24 +2784,14 @@ create_api_key(Client, Input0, Options0) ->
 -spec create_authorizer(map(), binary() | list(), create_authorizer_request()) ->
     {ok, authorizer(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_authorizer_errors(), tuple()}.
 create_authorizer(Client, RestApiId, Input) ->
     create_authorizer(Client, RestApiId, Input, []).
 
 -spec create_authorizer(map(), binary() | list(), create_authorizer_request(), proplists:proplist()) ->
     {ok, authorizer(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_authorizer_errors(), tuple()}.
 create_authorizer(Client, RestApiId, Input0, Options0) ->
     Method = post,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/authorizers"],
@@ -1800,24 +2818,14 @@ create_authorizer(Client, RestApiId, Input0, Options0) ->
 -spec create_base_path_mapping(map(), binary() | list(), create_base_path_mapping_request()) ->
     {ok, base_path_mapping(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_base_path_mapping_errors(), tuple()}.
 create_base_path_mapping(Client, DomainName, Input) ->
     create_base_path_mapping(Client, DomainName, Input, []).
 
 -spec create_base_path_mapping(map(), binary() | list(), create_base_path_mapping_request(), proplists:proplist()) ->
     {ok, base_path_mapping(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_base_path_mapping_errors(), tuple()}.
 create_base_path_mapping(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domainnames/", aws_util:encode_uri(DomainName), "/basepathmappings"],
@@ -1845,26 +2853,14 @@ create_base_path_mapping(Client, DomainName, Input0, Options0) ->
 -spec create_deployment(map(), binary() | list(), create_deployment_request()) ->
     {ok, deployment(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_deployment_errors(), tuple()}.
 create_deployment(Client, RestApiId, Input) ->
     create_deployment(Client, RestApiId, Input, []).
 
 -spec create_deployment(map(), binary() | list(), create_deployment_request(), proplists:proplist()) ->
     {ok, deployment(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_deployment_errors(), tuple()}.
 create_deployment(Client, RestApiId, Input0, Options0) ->
     Method = post,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/deployments"],
@@ -1891,24 +2887,14 @@ create_deployment(Client, RestApiId, Input0, Options0) ->
 -spec create_documentation_part(map(), binary() | list(), create_documentation_part_request()) ->
     {ok, documentation_part(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_documentation_part_errors(), tuple()}.
 create_documentation_part(Client, RestApiId, Input) ->
     create_documentation_part(Client, RestApiId, Input, []).
 
 -spec create_documentation_part(map(), binary() | list(), create_documentation_part_request(), proplists:proplist()) ->
     {ok, documentation_part(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_documentation_part_errors(), tuple()}.
 create_documentation_part(Client, RestApiId, Input0, Options0) ->
     Method = post,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/parts"],
@@ -1935,24 +2921,14 @@ create_documentation_part(Client, RestApiId, Input0, Options0) ->
 -spec create_documentation_version(map(), binary() | list(), create_documentation_version_request()) ->
     {ok, documentation_version(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_documentation_version_errors(), tuple()}.
 create_documentation_version(Client, RestApiId, Input) ->
     create_documentation_version(Client, RestApiId, Input, []).
 
 -spec create_documentation_version(map(), binary() | list(), create_documentation_version_request(), proplists:proplist()) ->
     {ok, documentation_version(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_documentation_version_errors(), tuple()}.
 create_documentation_version(Client, RestApiId, Input0, Options0) ->
     Method = post,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/versions"],
@@ -1979,22 +2955,14 @@ create_documentation_version(Client, RestApiId, Input0, Options0) ->
 -spec create_domain_name(map(), create_domain_name_request()) ->
     {ok, domain_name(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_domain_name_errors(), tuple()}.
 create_domain_name(Client, Input) ->
     create_domain_name(Client, Input, []).
 
 -spec create_domain_name(map(), create_domain_name_request(), proplists:proplist()) ->
     {ok, domain_name(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_domain_name_errors(), tuple()}.
 create_domain_name(Client, Input0, Options0) ->
     Method = post,
     Path = ["/domainnames"],
@@ -2021,24 +2989,14 @@ create_domain_name(Client, Input0, Options0) ->
 -spec create_model(map(), binary() | list(), create_model_request()) ->
     {ok, model(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_model_errors(), tuple()}.
 create_model(Client, RestApiId, Input) ->
     create_model(Client, RestApiId, Input, []).
 
 -spec create_model(map(), binary() | list(), create_model_request(), proplists:proplist()) ->
     {ok, model(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_model_errors(), tuple()}.
 create_model(Client, RestApiId, Input0, Options0) ->
     Method = post,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/models"],
@@ -2065,24 +3023,14 @@ create_model(Client, RestApiId, Input0, Options0) ->
 -spec create_request_validator(map(), binary() | list(), create_request_validator_request()) ->
     {ok, request_validator(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_request_validator_errors(), tuple()}.
 create_request_validator(Client, RestApiId, Input) ->
     create_request_validator(Client, RestApiId, Input, []).
 
 -spec create_request_validator(map(), binary() | list(), create_request_validator_request(), proplists:proplist()) ->
     {ok, request_validator(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_request_validator_errors(), tuple()}.
 create_request_validator(Client, RestApiId, Input0, Options0) ->
     Method = post,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/requestvalidators"],
@@ -2109,24 +3057,14 @@ create_request_validator(Client, RestApiId, Input0, Options0) ->
 -spec create_resource(map(), binary() | list(), binary() | list(), create_resource_request()) ->
     {ok, resource(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_resource_errors(), tuple()}.
 create_resource(Client, ParentId, RestApiId, Input) ->
     create_resource(Client, ParentId, RestApiId, Input, []).
 
 -spec create_resource(map(), binary() | list(), binary() | list(), create_resource_request(), proplists:proplist()) ->
     {ok, resource(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_resource_errors(), tuple()}.
 create_resource(Client, ParentId, RestApiId, Input0, Options0) ->
     Method = post,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ParentId), ""],
@@ -2153,22 +3091,14 @@ create_resource(Client, ParentId, RestApiId, Input0, Options0) ->
 -spec create_rest_api(map(), create_rest_api_request()) ->
     {ok, rest_api(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_rest_api_errors(), tuple()}.
 create_rest_api(Client, Input) ->
     create_rest_api(Client, Input, []).
 
 -spec create_rest_api(map(), create_rest_api_request(), proplists:proplist()) ->
     {ok, rest_api(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_rest_api_errors(), tuple()}.
 create_rest_api(Client, Input0, Options0) ->
     Method = post,
     Path = ["/restapis"],
@@ -2196,24 +3126,14 @@ create_rest_api(Client, Input0, Options0) ->
 -spec create_stage(map(), binary() | list(), create_stage_request()) ->
     {ok, stage(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_stage_errors(), tuple()}.
 create_stage(Client, RestApiId, Input) ->
     create_stage(Client, RestApiId, Input, []).
 
 -spec create_stage(map(), binary() | list(), create_stage_request(), proplists:proplist()) ->
     {ok, stage(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_stage_errors(), tuple()}.
 create_stage(Client, RestApiId, Input0, Options0) ->
     Method = post,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/stages"],
@@ -2241,24 +3161,14 @@ create_stage(Client, RestApiId, Input0, Options0) ->
 -spec create_usage_plan(map(), create_usage_plan_request()) ->
     {ok, usage_plan(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_usage_plan_errors(), tuple()}.
 create_usage_plan(Client, Input) ->
     create_usage_plan(Client, Input, []).
 
 -spec create_usage_plan(map(), create_usage_plan_request(), proplists:proplist()) ->
     {ok, usage_plan(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_usage_plan_errors(), tuple()}.
 create_usage_plan(Client, Input0, Options0) ->
     Method = post,
     Path = ["/usageplans"],
@@ -2286,24 +3196,14 @@ create_usage_plan(Client, Input0, Options0) ->
 -spec create_usage_plan_key(map(), binary() | list(), create_usage_plan_key_request()) ->
     {ok, usage_plan_key(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_usage_plan_key_errors(), tuple()}.
 create_usage_plan_key(Client, UsagePlanId, Input) ->
     create_usage_plan_key(Client, UsagePlanId, Input, []).
 
 -spec create_usage_plan_key(map(), binary() | list(), create_usage_plan_key_request(), proplists:proplist()) ->
     {ok, usage_plan_key(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_usage_plan_key_errors(), tuple()}.
 create_usage_plan_key(Client, UsagePlanId, Input0, Options0) ->
     Method = post,
     Path = ["/usageplans/", aws_util:encode_uri(UsagePlanId), "/keys"],
@@ -2335,22 +3235,14 @@ create_usage_plan_key(Client, UsagePlanId, Input0, Options0) ->
 -spec create_vpc_link(map(), create_vpc_link_request()) ->
     {ok, vpc_link(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_vpc_link_errors(), tuple()}.
 create_vpc_link(Client, Input) ->
     create_vpc_link(Client, Input, []).
 
 -spec create_vpc_link(map(), create_vpc_link_request(), proplists:proplist()) ->
     {ok, vpc_link(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_vpc_link_errors(), tuple()}.
 create_vpc_link(Client, Input0, Options0) ->
     Method = post,
     Path = ["/vpclinks"],
@@ -2377,22 +3269,14 @@ create_vpc_link(Client, Input0, Options0) ->
 -spec delete_api_key(map(), binary() | list(), delete_api_key_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_api_key_errors(), tuple()}.
 delete_api_key(Client, ApiKey, Input) ->
     delete_api_key(Client, ApiKey, Input, []).
 
 -spec delete_api_key(map(), binary() | list(), delete_api_key_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_api_key_errors(), tuple()}.
 delete_api_key(Client, ApiKey, Input0, Options0) ->
     Method = delete,
     Path = ["/apikeys/", aws_util:encode_uri(ApiKey), ""],
@@ -2419,22 +3303,14 @@ delete_api_key(Client, ApiKey, Input0, Options0) ->
 -spec delete_authorizer(map(), binary() | list(), binary() | list(), delete_authorizer_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_authorizer_errors(), tuple()}.
 delete_authorizer(Client, AuthorizerId, RestApiId, Input) ->
     delete_authorizer(Client, AuthorizerId, RestApiId, Input, []).
 
 -spec delete_authorizer(map(), binary() | list(), binary() | list(), delete_authorizer_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_authorizer_errors(), tuple()}.
 delete_authorizer(Client, AuthorizerId, RestApiId, Input0, Options0) ->
     Method = delete,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/authorizers/", aws_util:encode_uri(AuthorizerId), ""],
@@ -2461,22 +3337,14 @@ delete_authorizer(Client, AuthorizerId, RestApiId, Input0, Options0) ->
 -spec delete_base_path_mapping(map(), binary() | list(), binary() | list(), delete_base_path_mapping_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_base_path_mapping_errors(), tuple()}.
 delete_base_path_mapping(Client, BasePath, DomainName, Input) ->
     delete_base_path_mapping(Client, BasePath, DomainName, Input, []).
 
 -spec delete_base_path_mapping(map(), binary() | list(), binary() | list(), delete_base_path_mapping_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_base_path_mapping_errors(), tuple()}.
 delete_base_path_mapping(Client, BasePath, DomainName, Input0, Options0) ->
     Method = delete,
     Path = ["/domainnames/", aws_util:encode_uri(DomainName), "/basepathmappings/", aws_util:encode_uri(BasePath), ""],
@@ -2503,22 +3371,14 @@ delete_base_path_mapping(Client, BasePath, DomainName, Input0, Options0) ->
 -spec delete_client_certificate(map(), binary() | list(), delete_client_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_client_certificate_errors(), tuple()}.
 delete_client_certificate(Client, ClientCertificateId, Input) ->
     delete_client_certificate(Client, ClientCertificateId, Input, []).
 
 -spec delete_client_certificate(map(), binary() | list(), delete_client_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_client_certificate_errors(), tuple()}.
 delete_client_certificate(Client, ClientCertificateId, Input0, Options0) ->
     Method = delete,
     Path = ["/clientcertificates/", aws_util:encode_uri(ClientCertificateId), ""],
@@ -2548,24 +3408,14 @@ delete_client_certificate(Client, ClientCertificateId, Input0, Options0) ->
 -spec delete_deployment(map(), binary() | list(), binary() | list(), delete_deployment_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_deployment_errors(), tuple()}.
 delete_deployment(Client, DeploymentId, RestApiId, Input) ->
     delete_deployment(Client, DeploymentId, RestApiId, Input, []).
 
 -spec delete_deployment(map(), binary() | list(), binary() | list(), delete_deployment_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_deployment_errors(), tuple()}.
 delete_deployment(Client, DeploymentId, RestApiId, Input0, Options0) ->
     Method = delete,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/deployments/", aws_util:encode_uri(DeploymentId), ""],
@@ -2592,22 +3442,14 @@ delete_deployment(Client, DeploymentId, RestApiId, Input0, Options0) ->
 -spec delete_documentation_part(map(), binary() | list(), binary() | list(), delete_documentation_part_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_documentation_part_errors(), tuple()}.
 delete_documentation_part(Client, DocumentationPartId, RestApiId, Input) ->
     delete_documentation_part(Client, DocumentationPartId, RestApiId, Input, []).
 
 -spec delete_documentation_part(map(), binary() | list(), binary() | list(), delete_documentation_part_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_documentation_part_errors(), tuple()}.
 delete_documentation_part(Client, DocumentationPartId, RestApiId, Input0, Options0) ->
     Method = delete,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/parts/", aws_util:encode_uri(DocumentationPartId), ""],
@@ -2634,22 +3476,14 @@ delete_documentation_part(Client, DocumentationPartId, RestApiId, Input0, Option
 -spec delete_documentation_version(map(), binary() | list(), binary() | list(), delete_documentation_version_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_documentation_version_errors(), tuple()}.
 delete_documentation_version(Client, DocumentationVersion, RestApiId, Input) ->
     delete_documentation_version(Client, DocumentationVersion, RestApiId, Input, []).
 
 -spec delete_documentation_version(map(), binary() | list(), binary() | list(), delete_documentation_version_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_documentation_version_errors(), tuple()}.
 delete_documentation_version(Client, DocumentationVersion, RestApiId, Input0, Options0) ->
     Method = delete,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/versions/", aws_util:encode_uri(DocumentationVersion), ""],
@@ -2676,22 +3510,14 @@ delete_documentation_version(Client, DocumentationVersion, RestApiId, Input0, Op
 -spec delete_domain_name(map(), binary() | list(), delete_domain_name_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_domain_name_errors(), tuple()}.
 delete_domain_name(Client, DomainName, Input) ->
     delete_domain_name(Client, DomainName, Input, []).
 
 -spec delete_domain_name(map(), binary() | list(), delete_domain_name_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_domain_name_errors(), tuple()}.
 delete_domain_name(Client, DomainName, Input0, Options0) ->
     Method = delete,
     Path = ["/domainnames/", aws_util:encode_uri(DomainName), ""],
@@ -2719,22 +3545,14 @@ delete_domain_name(Client, DomainName, Input0, Options0) ->
 -spec delete_gateway_response(map(), binary() | list(), binary() | list(), delete_gateway_response_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_gateway_response_errors(), tuple()}.
 delete_gateway_response(Client, ResponseType, RestApiId, Input) ->
     delete_gateway_response(Client, ResponseType, RestApiId, Input, []).
 
 -spec delete_gateway_response(map(), binary() | list(), binary() | list(), delete_gateway_response_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_gateway_response_errors(), tuple()}.
 delete_gateway_response(Client, ResponseType, RestApiId, Input0, Options0) ->
     Method = delete,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/gatewayresponses/", aws_util:encode_uri(ResponseType), ""],
@@ -2761,22 +3579,14 @@ delete_gateway_response(Client, ResponseType, RestApiId, Input0, Options0) ->
 -spec delete_integration(map(), binary() | list(), binary() | list(), binary() | list(), delete_integration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_integration_errors(), tuple()}.
 delete_integration(Client, HttpMethod, ResourceId, RestApiId, Input) ->
     delete_integration(Client, HttpMethod, ResourceId, RestApiId, Input, []).
 
 -spec delete_integration(map(), binary() | list(), binary() | list(), binary() | list(), delete_integration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_integration_errors(), tuple()}.
 delete_integration(Client, HttpMethod, ResourceId, RestApiId, Input0, Options0) ->
     Method = delete,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/integration"],
@@ -2803,22 +3613,14 @@ delete_integration(Client, HttpMethod, ResourceId, RestApiId, Input0, Options0) 
 -spec delete_integration_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_integration_response_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_integration_response_errors(), tuple()}.
 delete_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input) ->
     delete_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input, []).
 
 -spec delete_integration_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_integration_response_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_integration_response_errors(), tuple()}.
 delete_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input0, Options0) ->
     Method = delete,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/integration/responses/", aws_util:encode_uri(StatusCode), ""],
@@ -2845,20 +3647,14 @@ delete_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCod
 -spec delete_method(map(), binary() | list(), binary() | list(), binary() | list(), delete_method_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_method_errors(), tuple()}.
 delete_method(Client, HttpMethod, ResourceId, RestApiId, Input) ->
     delete_method(Client, HttpMethod, ResourceId, RestApiId, Input, []).
 
 -spec delete_method(map(), binary() | list(), binary() | list(), binary() | list(), delete_method_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_method_errors(), tuple()}.
 delete_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options0) ->
     Method = delete,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), ""],
@@ -2885,22 +3681,14 @@ delete_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options0) ->
 -spec delete_method_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_method_response_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_method_response_errors(), tuple()}.
 delete_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input) ->
     delete_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input, []).
 
 -spec delete_method_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_method_response_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_method_response_errors(), tuple()}.
 delete_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input0, Options0) ->
     Method = delete,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/responses/", aws_util:encode_uri(StatusCode), ""],
@@ -2927,22 +3715,14 @@ delete_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, In
 -spec delete_model(map(), binary() | list(), binary() | list(), delete_model_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_model_errors(), tuple()}.
 delete_model(Client, ModelName, RestApiId, Input) ->
     delete_model(Client, ModelName, RestApiId, Input, []).
 
 -spec delete_model(map(), binary() | list(), binary() | list(), delete_model_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_model_errors(), tuple()}.
 delete_model(Client, ModelName, RestApiId, Input0, Options0) ->
     Method = delete,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/models/", aws_util:encode_uri(ModelName), ""],
@@ -2969,22 +3749,14 @@ delete_model(Client, ModelName, RestApiId, Input0, Options0) ->
 -spec delete_request_validator(map(), binary() | list(), binary() | list(), delete_request_validator_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_request_validator_errors(), tuple()}.
 delete_request_validator(Client, RequestValidatorId, RestApiId, Input) ->
     delete_request_validator(Client, RequestValidatorId, RestApiId, Input, []).
 
 -spec delete_request_validator(map(), binary() | list(), binary() | list(), delete_request_validator_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_request_validator_errors(), tuple()}.
 delete_request_validator(Client, RequestValidatorId, RestApiId, Input0, Options0) ->
     Method = delete,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/requestvalidators/", aws_util:encode_uri(RequestValidatorId), ""],
@@ -3011,22 +3783,14 @@ delete_request_validator(Client, RequestValidatorId, RestApiId, Input0, Options0
 -spec delete_resource(map(), binary() | list(), binary() | list(), delete_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_resource_errors(), tuple()}.
 delete_resource(Client, ResourceId, RestApiId, Input) ->
     delete_resource(Client, ResourceId, RestApiId, Input, []).
 
 -spec delete_resource(map(), binary() | list(), binary() | list(), delete_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_resource_errors(), tuple()}.
 delete_resource(Client, ResourceId, RestApiId, Input0, Options0) ->
     Method = delete,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), ""],
@@ -3053,22 +3817,14 @@ delete_resource(Client, ResourceId, RestApiId, Input0, Options0) ->
 -spec delete_rest_api(map(), binary() | list(), delete_rest_api_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_rest_api_errors(), tuple()}.
 delete_rest_api(Client, RestApiId, Input) ->
     delete_rest_api(Client, RestApiId, Input, []).
 
 -spec delete_rest_api(map(), binary() | list(), delete_rest_api_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_rest_api_errors(), tuple()}.
 delete_rest_api(Client, RestApiId, Input0, Options0) ->
     Method = delete,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), ""],
@@ -3095,24 +3851,14 @@ delete_rest_api(Client, RestApiId, Input0, Options0) ->
 -spec delete_stage(map(), binary() | list(), binary() | list(), delete_stage_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_stage_errors(), tuple()}.
 delete_stage(Client, RestApiId, StageName, Input) ->
     delete_stage(Client, RestApiId, StageName, Input, []).
 
 -spec delete_stage(map(), binary() | list(), binary() | list(), delete_stage_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_stage_errors(), tuple()}.
 delete_stage(Client, RestApiId, StageName, Input0, Options0) ->
     Method = delete,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/stages/", aws_util:encode_uri(StageName), ""],
@@ -3139,22 +3885,14 @@ delete_stage(Client, RestApiId, StageName, Input0, Options0) ->
 -spec delete_usage_plan(map(), binary() | list(), delete_usage_plan_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_usage_plan_errors(), tuple()}.
 delete_usage_plan(Client, UsagePlanId, Input) ->
     delete_usage_plan(Client, UsagePlanId, Input, []).
 
 -spec delete_usage_plan(map(), binary() | list(), delete_usage_plan_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_usage_plan_errors(), tuple()}.
 delete_usage_plan(Client, UsagePlanId, Input0, Options0) ->
     Method = delete,
     Path = ["/usageplans/", aws_util:encode_uri(UsagePlanId), ""],
@@ -3182,22 +3920,14 @@ delete_usage_plan(Client, UsagePlanId, Input0, Options0) ->
 -spec delete_usage_plan_key(map(), binary() | list(), binary() | list(), delete_usage_plan_key_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_usage_plan_key_errors(), tuple()}.
 delete_usage_plan_key(Client, KeyId, UsagePlanId, Input) ->
     delete_usage_plan_key(Client, KeyId, UsagePlanId, Input, []).
 
 -spec delete_usage_plan_key(map(), binary() | list(), binary() | list(), delete_usage_plan_key_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_usage_plan_key_errors(), tuple()}.
 delete_usage_plan_key(Client, KeyId, UsagePlanId, Input0, Options0) ->
     Method = delete,
     Path = ["/usageplans/", aws_util:encode_uri(UsagePlanId), "/keys/", aws_util:encode_uri(KeyId), ""],
@@ -3224,22 +3954,14 @@ delete_usage_plan_key(Client, KeyId, UsagePlanId, Input0, Options0) ->
 -spec delete_vpc_link(map(), binary() | list(), delete_vpc_link_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_vpc_link_errors(), tuple()}.
 delete_vpc_link(Client, VpcLinkId, Input) ->
     delete_vpc_link(Client, VpcLinkId, Input, []).
 
 -spec delete_vpc_link(map(), binary() | list(), delete_vpc_link_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_vpc_link_errors(), tuple()}.
 delete_vpc_link(Client, VpcLinkId, Input0, Options0) ->
     Method = delete,
     Path = ["/vpclinks/", aws_util:encode_uri(VpcLinkId), ""],
@@ -3266,24 +3988,14 @@ delete_vpc_link(Client, VpcLinkId, Input0, Options0) ->
 -spec flush_stage_authorizers_cache(map(), binary() | list(), binary() | list(), flush_stage_authorizers_cache_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, flush_stage_authorizers_cache_errors(), tuple()}.
 flush_stage_authorizers_cache(Client, RestApiId, StageName, Input) ->
     flush_stage_authorizers_cache(Client, RestApiId, StageName, Input, []).
 
 -spec flush_stage_authorizers_cache(map(), binary() | list(), binary() | list(), flush_stage_authorizers_cache_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, flush_stage_authorizers_cache_errors(), tuple()}.
 flush_stage_authorizers_cache(Client, RestApiId, StageName, Input0, Options0) ->
     Method = delete,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/stages/", aws_util:encode_uri(StageName), "/cache/authorizers"],
@@ -3310,24 +4022,14 @@ flush_stage_authorizers_cache(Client, RestApiId, StageName, Input0, Options0) ->
 -spec flush_stage_cache(map(), binary() | list(), binary() | list(), flush_stage_cache_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, flush_stage_cache_errors(), tuple()}.
 flush_stage_cache(Client, RestApiId, StageName, Input) ->
     flush_stage_cache(Client, RestApiId, StageName, Input, []).
 
 -spec flush_stage_cache(map(), binary() | list(), binary() | list(), flush_stage_cache_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, flush_stage_cache_errors(), tuple()}.
 flush_stage_cache(Client, RestApiId, StageName, Input0, Options0) ->
     Method = delete,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/stages/", aws_util:encode_uri(StageName), "/cache/data"],
@@ -3354,22 +4056,14 @@ flush_stage_cache(Client, RestApiId, StageName, Input0, Options0) ->
 -spec generate_client_certificate(map(), generate_client_certificate_request()) ->
     {ok, client_certificate(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, generate_client_certificate_errors(), tuple()}.
 generate_client_certificate(Client, Input) ->
     generate_client_certificate(Client, Input, []).
 
 -spec generate_client_certificate(map(), generate_client_certificate_request(), proplists:proplist()) ->
     {ok, client_certificate(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, generate_client_certificate_errors(), tuple()}.
 generate_client_certificate(Client, Input0, Options0) ->
     Method = post,
     Path = ["/clientcertificates"],
@@ -3396,10 +4090,7 @@ generate_client_certificate(Client, Input0, Options0) ->
 -spec get_account(map()) ->
     {ok, account(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_account_errors(), tuple()}.
 get_account(Client)
   when is_map(Client) ->
     get_account(Client, #{}, #{}).
@@ -3407,10 +4098,7 @@ get_account(Client)
 -spec get_account(map(), map(), map()) ->
     {ok, account(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_account_errors(), tuple()}.
 get_account(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_account(Client, QueryMap, HeadersMap, []).
@@ -3418,10 +4106,7 @@ get_account(Client, QueryMap, HeadersMap)
 -spec get_account(map(), map(), map(), proplists:proplist()) ->
     {ok, account(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_account_errors(), tuple()}.
 get_account(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/account"],
@@ -3442,10 +4127,7 @@ get_account(Client, QueryMap, HeadersMap, Options0)
 -spec get_api_key(map(), binary() | list()) ->
     {ok, api_key(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_api_key_errors(), tuple()}.
 get_api_key(Client, ApiKey)
   when is_map(Client) ->
     get_api_key(Client, ApiKey, #{}, #{}).
@@ -3453,10 +4135,7 @@ get_api_key(Client, ApiKey)
 -spec get_api_key(map(), binary() | list(), map(), map()) ->
     {ok, api_key(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_api_key_errors(), tuple()}.
 get_api_key(Client, ApiKey, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_api_key(Client, ApiKey, QueryMap, HeadersMap, []).
@@ -3464,10 +4143,7 @@ get_api_key(Client, ApiKey, QueryMap, HeadersMap)
 -spec get_api_key(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, api_key(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_api_key_errors(), tuple()}.
 get_api_key(Client, ApiKey, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/apikeys/", aws_util:encode_uri(ApiKey), ""],
@@ -3492,10 +4168,7 @@ get_api_key(Client, ApiKey, QueryMap, HeadersMap, Options0)
 -spec get_api_keys(map()) ->
     {ok, api_keys(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_api_keys_errors(), tuple()}.
 get_api_keys(Client)
   when is_map(Client) ->
     get_api_keys(Client, #{}, #{}).
@@ -3503,10 +4176,7 @@ get_api_keys(Client)
 -spec get_api_keys(map(), map(), map()) ->
     {ok, api_keys(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_api_keys_errors(), tuple()}.
 get_api_keys(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_api_keys(Client, QueryMap, HeadersMap, []).
@@ -3514,10 +4184,7 @@ get_api_keys(Client, QueryMap, HeadersMap)
 -spec get_api_keys(map(), map(), map(), proplists:proplist()) ->
     {ok, api_keys(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_api_keys_errors(), tuple()}.
 get_api_keys(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/apikeys"],
@@ -3546,10 +4213,7 @@ get_api_keys(Client, QueryMap, HeadersMap, Options0)
 -spec get_authorizer(map(), binary() | list(), binary() | list()) ->
     {ok, authorizer(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_authorizer_errors(), tuple()}.
 get_authorizer(Client, AuthorizerId, RestApiId)
   when is_map(Client) ->
     get_authorizer(Client, AuthorizerId, RestApiId, #{}, #{}).
@@ -3557,10 +4221,7 @@ get_authorizer(Client, AuthorizerId, RestApiId)
 -spec get_authorizer(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, authorizer(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_authorizer_errors(), tuple()}.
 get_authorizer(Client, AuthorizerId, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_authorizer(Client, AuthorizerId, RestApiId, QueryMap, HeadersMap, []).
@@ -3568,10 +4229,7 @@ get_authorizer(Client, AuthorizerId, RestApiId, QueryMap, HeadersMap)
 -spec get_authorizer(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, authorizer(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_authorizer_errors(), tuple()}.
 get_authorizer(Client, AuthorizerId, RestApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/authorizers/", aws_util:encode_uri(AuthorizerId), ""],
@@ -3592,10 +4250,7 @@ get_authorizer(Client, AuthorizerId, RestApiId, QueryMap, HeadersMap, Options0)
 -spec get_authorizers(map(), binary() | list()) ->
     {ok, authorizers(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_authorizers_errors(), tuple()}.
 get_authorizers(Client, RestApiId)
   when is_map(Client) ->
     get_authorizers(Client, RestApiId, #{}, #{}).
@@ -3603,10 +4258,7 @@ get_authorizers(Client, RestApiId)
 -spec get_authorizers(map(), binary() | list(), map(), map()) ->
     {ok, authorizers(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_authorizers_errors(), tuple()}.
 get_authorizers(Client, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_authorizers(Client, RestApiId, QueryMap, HeadersMap, []).
@@ -3614,10 +4266,7 @@ get_authorizers(Client, RestApiId, QueryMap, HeadersMap)
 -spec get_authorizers(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, authorizers(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_authorizers_errors(), tuple()}.
 get_authorizers(Client, RestApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/authorizers"],
@@ -3643,10 +4292,7 @@ get_authorizers(Client, RestApiId, QueryMap, HeadersMap, Options0)
 -spec get_base_path_mapping(map(), binary() | list(), binary() | list()) ->
     {ok, base_path_mapping(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_base_path_mapping_errors(), tuple()}.
 get_base_path_mapping(Client, BasePath, DomainName)
   when is_map(Client) ->
     get_base_path_mapping(Client, BasePath, DomainName, #{}, #{}).
@@ -3654,10 +4300,7 @@ get_base_path_mapping(Client, BasePath, DomainName)
 -spec get_base_path_mapping(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, base_path_mapping(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_base_path_mapping_errors(), tuple()}.
 get_base_path_mapping(Client, BasePath, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_base_path_mapping(Client, BasePath, DomainName, QueryMap, HeadersMap, []).
@@ -3665,10 +4308,7 @@ get_base_path_mapping(Client, BasePath, DomainName, QueryMap, HeadersMap)
 -spec get_base_path_mapping(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, base_path_mapping(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_base_path_mapping_errors(), tuple()}.
 get_base_path_mapping(Client, BasePath, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domainnames/", aws_util:encode_uri(DomainName), "/basepathmappings/", aws_util:encode_uri(BasePath), ""],
@@ -3689,10 +4329,7 @@ get_base_path_mapping(Client, BasePath, DomainName, QueryMap, HeadersMap, Option
 -spec get_base_path_mappings(map(), binary() | list()) ->
     {ok, base_path_mappings(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_base_path_mappings_errors(), tuple()}.
 get_base_path_mappings(Client, DomainName)
   when is_map(Client) ->
     get_base_path_mappings(Client, DomainName, #{}, #{}).
@@ -3700,10 +4337,7 @@ get_base_path_mappings(Client, DomainName)
 -spec get_base_path_mappings(map(), binary() | list(), map(), map()) ->
     {ok, base_path_mappings(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_base_path_mappings_errors(), tuple()}.
 get_base_path_mappings(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_base_path_mappings(Client, DomainName, QueryMap, HeadersMap, []).
@@ -3711,10 +4345,7 @@ get_base_path_mappings(Client, DomainName, QueryMap, HeadersMap)
 -spec get_base_path_mappings(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, base_path_mappings(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_base_path_mappings_errors(), tuple()}.
 get_base_path_mappings(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domainnames/", aws_util:encode_uri(DomainName), "/basepathmappings"],
@@ -3740,10 +4371,7 @@ get_base_path_mappings(Client, DomainName, QueryMap, HeadersMap, Options0)
 -spec get_client_certificate(map(), binary() | list()) ->
     {ok, client_certificate(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_client_certificate_errors(), tuple()}.
 get_client_certificate(Client, ClientCertificateId)
   when is_map(Client) ->
     get_client_certificate(Client, ClientCertificateId, #{}, #{}).
@@ -3751,10 +4379,7 @@ get_client_certificate(Client, ClientCertificateId)
 -spec get_client_certificate(map(), binary() | list(), map(), map()) ->
     {ok, client_certificate(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_client_certificate_errors(), tuple()}.
 get_client_certificate(Client, ClientCertificateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_client_certificate(Client, ClientCertificateId, QueryMap, HeadersMap, []).
@@ -3762,10 +4387,7 @@ get_client_certificate(Client, ClientCertificateId, QueryMap, HeadersMap)
 -spec get_client_certificate(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, client_certificate(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_client_certificate_errors(), tuple()}.
 get_client_certificate(Client, ClientCertificateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clientcertificates/", aws_util:encode_uri(ClientCertificateId), ""],
@@ -3786,10 +4408,7 @@ get_client_certificate(Client, ClientCertificateId, QueryMap, HeadersMap, Option
 -spec get_client_certificates(map()) ->
     {ok, client_certificates(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_client_certificates_errors(), tuple()}.
 get_client_certificates(Client)
   when is_map(Client) ->
     get_client_certificates(Client, #{}, #{}).
@@ -3797,10 +4416,7 @@ get_client_certificates(Client)
 -spec get_client_certificates(map(), map(), map()) ->
     {ok, client_certificates(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_client_certificates_errors(), tuple()}.
 get_client_certificates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_client_certificates(Client, QueryMap, HeadersMap, []).
@@ -3808,10 +4424,7 @@ get_client_certificates(Client, QueryMap, HeadersMap)
 -spec get_client_certificates(map(), map(), map(), proplists:proplist()) ->
     {ok, client_certificates(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_client_certificates_errors(), tuple()}.
 get_client_certificates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clientcertificates"],
@@ -3837,11 +4450,7 @@ get_client_certificates(Client, QueryMap, HeadersMap, Options0)
 -spec get_deployment(map(), binary() | list(), binary() | list()) ->
     {ok, deployment(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_deployment_errors(), tuple()}.
 get_deployment(Client, DeploymentId, RestApiId)
   when is_map(Client) ->
     get_deployment(Client, DeploymentId, RestApiId, #{}, #{}).
@@ -3849,11 +4458,7 @@ get_deployment(Client, DeploymentId, RestApiId)
 -spec get_deployment(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, deployment(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_deployment_errors(), tuple()}.
 get_deployment(Client, DeploymentId, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_deployment(Client, DeploymentId, RestApiId, QueryMap, HeadersMap, []).
@@ -3861,11 +4466,7 @@ get_deployment(Client, DeploymentId, RestApiId, QueryMap, HeadersMap)
 -spec get_deployment(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, deployment(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_deployment_errors(), tuple()}.
 get_deployment(Client, DeploymentId, RestApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/deployments/", aws_util:encode_uri(DeploymentId), ""],
@@ -3890,11 +4491,7 @@ get_deployment(Client, DeploymentId, RestApiId, QueryMap, HeadersMap, Options0)
 -spec get_deployments(map(), binary() | list()) ->
     {ok, deployments(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_deployments_errors(), tuple()}.
 get_deployments(Client, RestApiId)
   when is_map(Client) ->
     get_deployments(Client, RestApiId, #{}, #{}).
@@ -3902,11 +4499,7 @@ get_deployments(Client, RestApiId)
 -spec get_deployments(map(), binary() | list(), map(), map()) ->
     {ok, deployments(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_deployments_errors(), tuple()}.
 get_deployments(Client, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_deployments(Client, RestApiId, QueryMap, HeadersMap, []).
@@ -3914,11 +4507,7 @@ get_deployments(Client, RestApiId, QueryMap, HeadersMap)
 -spec get_deployments(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, deployments(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_deployments_errors(), tuple()}.
 get_deployments(Client, RestApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/deployments"],
@@ -3944,10 +4533,7 @@ get_deployments(Client, RestApiId, QueryMap, HeadersMap, Options0)
 -spec get_documentation_part(map(), binary() | list(), binary() | list()) ->
     {ok, documentation_part(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_documentation_part_errors(), tuple()}.
 get_documentation_part(Client, DocumentationPartId, RestApiId)
   when is_map(Client) ->
     get_documentation_part(Client, DocumentationPartId, RestApiId, #{}, #{}).
@@ -3955,10 +4541,7 @@ get_documentation_part(Client, DocumentationPartId, RestApiId)
 -spec get_documentation_part(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, documentation_part(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_documentation_part_errors(), tuple()}.
 get_documentation_part(Client, DocumentationPartId, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_documentation_part(Client, DocumentationPartId, RestApiId, QueryMap, HeadersMap, []).
@@ -3966,10 +4549,7 @@ get_documentation_part(Client, DocumentationPartId, RestApiId, QueryMap, Headers
 -spec get_documentation_part(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, documentation_part(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_documentation_part_errors(), tuple()}.
 get_documentation_part(Client, DocumentationPartId, RestApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/parts/", aws_util:encode_uri(DocumentationPartId), ""],
@@ -3990,10 +4570,7 @@ get_documentation_part(Client, DocumentationPartId, RestApiId, QueryMap, Headers
 -spec get_documentation_parts(map(), binary() | list()) ->
     {ok, documentation_parts(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_documentation_parts_errors(), tuple()}.
 get_documentation_parts(Client, RestApiId)
   when is_map(Client) ->
     get_documentation_parts(Client, RestApiId, #{}, #{}).
@@ -4001,10 +4578,7 @@ get_documentation_parts(Client, RestApiId)
 -spec get_documentation_parts(map(), binary() | list(), map(), map()) ->
     {ok, documentation_parts(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_documentation_parts_errors(), tuple()}.
 get_documentation_parts(Client, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_documentation_parts(Client, RestApiId, QueryMap, HeadersMap, []).
@@ -4012,10 +4586,7 @@ get_documentation_parts(Client, RestApiId, QueryMap, HeadersMap)
 -spec get_documentation_parts(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, documentation_parts(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_documentation_parts_errors(), tuple()}.
 get_documentation_parts(Client, RestApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/parts"],
@@ -4045,9 +4616,7 @@ get_documentation_parts(Client, RestApiId, QueryMap, HeadersMap, Options0)
 -spec get_documentation_version(map(), binary() | list(), binary() | list()) ->
     {ok, documentation_version(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_documentation_version_errors(), tuple()}.
 get_documentation_version(Client, DocumentationVersion, RestApiId)
   when is_map(Client) ->
     get_documentation_version(Client, DocumentationVersion, RestApiId, #{}, #{}).
@@ -4055,9 +4624,7 @@ get_documentation_version(Client, DocumentationVersion, RestApiId)
 -spec get_documentation_version(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, documentation_version(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_documentation_version_errors(), tuple()}.
 get_documentation_version(Client, DocumentationVersion, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_documentation_version(Client, DocumentationVersion, RestApiId, QueryMap, HeadersMap, []).
@@ -4065,9 +4632,7 @@ get_documentation_version(Client, DocumentationVersion, RestApiId, QueryMap, Hea
 -spec get_documentation_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, documentation_version(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_documentation_version_errors(), tuple()}.
 get_documentation_version(Client, DocumentationVersion, RestApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/versions/", aws_util:encode_uri(DocumentationVersion), ""],
@@ -4088,10 +4653,7 @@ get_documentation_version(Client, DocumentationVersion, RestApiId, QueryMap, Hea
 -spec get_documentation_versions(map(), binary() | list()) ->
     {ok, documentation_versions(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_documentation_versions_errors(), tuple()}.
 get_documentation_versions(Client, RestApiId)
   when is_map(Client) ->
     get_documentation_versions(Client, RestApiId, #{}, #{}).
@@ -4099,10 +4661,7 @@ get_documentation_versions(Client, RestApiId)
 -spec get_documentation_versions(map(), binary() | list(), map(), map()) ->
     {ok, documentation_versions(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_documentation_versions_errors(), tuple()}.
 get_documentation_versions(Client, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_documentation_versions(Client, RestApiId, QueryMap, HeadersMap, []).
@@ -4110,10 +4669,7 @@ get_documentation_versions(Client, RestApiId, QueryMap, HeadersMap)
 -spec get_documentation_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, documentation_versions(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_documentation_versions_errors(), tuple()}.
 get_documentation_versions(Client, RestApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/versions"],
@@ -4140,10 +4696,7 @@ get_documentation_versions(Client, RestApiId, QueryMap, HeadersMap, Options0)
 -spec get_domain_name(map(), binary() | list()) ->
     {ok, domain_name(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_domain_name_errors(), tuple()}.
 get_domain_name(Client, DomainName)
   when is_map(Client) ->
     get_domain_name(Client, DomainName, #{}, #{}).
@@ -4151,10 +4704,7 @@ get_domain_name(Client, DomainName)
 -spec get_domain_name(map(), binary() | list(), map(), map()) ->
     {ok, domain_name(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_domain_name_errors(), tuple()}.
 get_domain_name(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_domain_name(Client, DomainName, QueryMap, HeadersMap, []).
@@ -4162,10 +4712,7 @@ get_domain_name(Client, DomainName, QueryMap, HeadersMap)
 -spec get_domain_name(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, domain_name(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_domain_name_errors(), tuple()}.
 get_domain_name(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domainnames/", aws_util:encode_uri(DomainName), ""],
@@ -4186,10 +4733,7 @@ get_domain_name(Client, DomainName, QueryMap, HeadersMap, Options0)
 -spec get_domain_names(map()) ->
     {ok, domain_names(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_domain_names_errors(), tuple()}.
 get_domain_names(Client)
   when is_map(Client) ->
     get_domain_names(Client, #{}, #{}).
@@ -4197,10 +4741,7 @@ get_domain_names(Client)
 -spec get_domain_names(map(), map(), map()) ->
     {ok, domain_names(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_domain_names_errors(), tuple()}.
 get_domain_names(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_domain_names(Client, QueryMap, HeadersMap, []).
@@ -4208,10 +4749,7 @@ get_domain_names(Client, QueryMap, HeadersMap)
 -spec get_domain_names(map(), map(), map(), proplists:proplist()) ->
     {ok, domain_names(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_domain_names_errors(), tuple()}.
 get_domain_names(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domainnames"],
@@ -4237,12 +4775,7 @@ get_domain_names(Client, QueryMap, HeadersMap, Options0)
 -spec get_export(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, export_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_export_errors(), tuple()}.
 get_export(Client, ExportType, RestApiId, StageName)
   when is_map(Client) ->
     get_export(Client, ExportType, RestApiId, StageName, #{}, #{}).
@@ -4250,12 +4783,7 @@ get_export(Client, ExportType, RestApiId, StageName)
 -spec get_export(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, export_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_export_errors(), tuple()}.
 get_export(Client, ExportType, RestApiId, StageName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_export(Client, ExportType, RestApiId, StageName, QueryMap, HeadersMap, []).
@@ -4263,12 +4791,7 @@ get_export(Client, ExportType, RestApiId, StageName, QueryMap, HeadersMap)
 -spec get_export(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, export_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_export_errors(), tuple()}.
 get_export(Client, ExportType, RestApiId, StageName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/stages/", aws_util:encode_uri(StageName), "/exports/", aws_util:encode_uri(ExportType), ""],
@@ -4315,10 +4838,7 @@ get_export(Client, ExportType, RestApiId, StageName, QueryMap, HeadersMap, Optio
 -spec get_gateway_response(map(), binary() | list(), binary() | list()) ->
     {ok, gateway_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_gateway_response_errors(), tuple()}.
 get_gateway_response(Client, ResponseType, RestApiId)
   when is_map(Client) ->
     get_gateway_response(Client, ResponseType, RestApiId, #{}, #{}).
@@ -4326,10 +4846,7 @@ get_gateway_response(Client, ResponseType, RestApiId)
 -spec get_gateway_response(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, gateway_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_gateway_response_errors(), tuple()}.
 get_gateway_response(Client, ResponseType, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_gateway_response(Client, ResponseType, RestApiId, QueryMap, HeadersMap, []).
@@ -4337,10 +4854,7 @@ get_gateway_response(Client, ResponseType, RestApiId, QueryMap, HeadersMap)
 -spec get_gateway_response(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, gateway_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_gateway_response_errors(), tuple()}.
 get_gateway_response(Client, ResponseType, RestApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/gatewayresponses/", aws_util:encode_uri(ResponseType), ""],
@@ -4365,10 +4879,7 @@ get_gateway_response(Client, ResponseType, RestApiId, QueryMap, HeadersMap, Opti
 -spec get_gateway_responses(map(), binary() | list()) ->
     {ok, gateway_responses(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_gateway_responses_errors(), tuple()}.
 get_gateway_responses(Client, RestApiId)
   when is_map(Client) ->
     get_gateway_responses(Client, RestApiId, #{}, #{}).
@@ -4376,10 +4887,7 @@ get_gateway_responses(Client, RestApiId)
 -spec get_gateway_responses(map(), binary() | list(), map(), map()) ->
     {ok, gateway_responses(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_gateway_responses_errors(), tuple()}.
 get_gateway_responses(Client, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_gateway_responses(Client, RestApiId, QueryMap, HeadersMap, []).
@@ -4387,10 +4895,7 @@ get_gateway_responses(Client, RestApiId, QueryMap, HeadersMap)
 -spec get_gateway_responses(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, gateway_responses(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_gateway_responses_errors(), tuple()}.
 get_gateway_responses(Client, RestApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/gatewayresponses"],
@@ -4416,10 +4921,7 @@ get_gateway_responses(Client, RestApiId, QueryMap, HeadersMap, Options0)
 -spec get_integration(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, integration(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_integration_errors(), tuple()}.
 get_integration(Client, HttpMethod, ResourceId, RestApiId)
   when is_map(Client) ->
     get_integration(Client, HttpMethod, ResourceId, RestApiId, #{}, #{}).
@@ -4427,10 +4929,7 @@ get_integration(Client, HttpMethod, ResourceId, RestApiId)
 -spec get_integration(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, integration(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_integration_errors(), tuple()}.
 get_integration(Client, HttpMethod, ResourceId, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_integration(Client, HttpMethod, ResourceId, RestApiId, QueryMap, HeadersMap, []).
@@ -4438,10 +4937,7 @@ get_integration(Client, HttpMethod, ResourceId, RestApiId, QueryMap, HeadersMap)
 -spec get_integration(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, integration(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_integration_errors(), tuple()}.
 get_integration(Client, HttpMethod, ResourceId, RestApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/integration"],
@@ -4462,10 +4958,7 @@ get_integration(Client, HttpMethod, ResourceId, RestApiId, QueryMap, HeadersMap,
 -spec get_integration_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, integration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_integration_response_errors(), tuple()}.
 get_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode)
   when is_map(Client) ->
     get_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, #{}, #{}).
@@ -4473,10 +4966,7 @@ get_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode)
 -spec get_integration_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, integration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_integration_response_errors(), tuple()}.
 get_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, QueryMap, HeadersMap, []).
@@ -4484,10 +4974,7 @@ get_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, 
 -spec get_integration_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, integration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_integration_response_errors(), tuple()}.
 get_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/integration/responses/", aws_util:encode_uri(StatusCode), ""],
@@ -4508,9 +4995,7 @@ get_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, 
 -spec get_method(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, method(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_method_errors(), tuple()}.
 get_method(Client, HttpMethod, ResourceId, RestApiId)
   when is_map(Client) ->
     get_method(Client, HttpMethod, ResourceId, RestApiId, #{}, #{}).
@@ -4518,9 +5003,7 @@ get_method(Client, HttpMethod, ResourceId, RestApiId)
 -spec get_method(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, method(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_method_errors(), tuple()}.
 get_method(Client, HttpMethod, ResourceId, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_method(Client, HttpMethod, ResourceId, RestApiId, QueryMap, HeadersMap, []).
@@ -4528,9 +5011,7 @@ get_method(Client, HttpMethod, ResourceId, RestApiId, QueryMap, HeadersMap)
 -spec get_method(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, method(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_method_errors(), tuple()}.
 get_method(Client, HttpMethod, ResourceId, RestApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), ""],
@@ -4551,9 +5032,7 @@ get_method(Client, HttpMethod, ResourceId, RestApiId, QueryMap, HeadersMap, Opti
 -spec get_method_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, method_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_method_response_errors(), tuple()}.
 get_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode)
   when is_map(Client) ->
     get_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, #{}, #{}).
@@ -4561,9 +5040,7 @@ get_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode)
 -spec get_method_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, method_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_method_response_errors(), tuple()}.
 get_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, QueryMap, HeadersMap, []).
@@ -4571,9 +5048,7 @@ get_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Query
 -spec get_method_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, method_response(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_method_response_errors(), tuple()}.
 get_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/responses/", aws_util:encode_uri(StatusCode), ""],
@@ -4594,10 +5069,7 @@ get_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Query
 -spec get_model(map(), binary() | list(), binary() | list()) ->
     {ok, model(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_model_errors(), tuple()}.
 get_model(Client, ModelName, RestApiId)
   when is_map(Client) ->
     get_model(Client, ModelName, RestApiId, #{}, #{}).
@@ -4605,10 +5077,7 @@ get_model(Client, ModelName, RestApiId)
 -spec get_model(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, model(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_model_errors(), tuple()}.
 get_model(Client, ModelName, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_model(Client, ModelName, RestApiId, QueryMap, HeadersMap, []).
@@ -4616,10 +5085,7 @@ get_model(Client, ModelName, RestApiId, QueryMap, HeadersMap)
 -spec get_model(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, model(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_model_errors(), tuple()}.
 get_model(Client, ModelName, RestApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/models/", aws_util:encode_uri(ModelName), ""],
@@ -4645,10 +5111,7 @@ get_model(Client, ModelName, RestApiId, QueryMap, HeadersMap, Options0)
 -spec get_model_template(map(), binary() | list(), binary() | list()) ->
     {ok, template(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_model_template_errors(), tuple()}.
 get_model_template(Client, ModelName, RestApiId)
   when is_map(Client) ->
     get_model_template(Client, ModelName, RestApiId, #{}, #{}).
@@ -4656,10 +5119,7 @@ get_model_template(Client, ModelName, RestApiId)
 -spec get_model_template(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, template(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_model_template_errors(), tuple()}.
 get_model_template(Client, ModelName, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_model_template(Client, ModelName, RestApiId, QueryMap, HeadersMap, []).
@@ -4667,10 +5127,7 @@ get_model_template(Client, ModelName, RestApiId, QueryMap, HeadersMap)
 -spec get_model_template(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, template(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_model_template_errors(), tuple()}.
 get_model_template(Client, ModelName, RestApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/models/", aws_util:encode_uri(ModelName), "/default_template"],
@@ -4691,10 +5148,7 @@ get_model_template(Client, ModelName, RestApiId, QueryMap, HeadersMap, Options0)
 -spec get_models(map(), binary() | list()) ->
     {ok, models(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_models_errors(), tuple()}.
 get_models(Client, RestApiId)
   when is_map(Client) ->
     get_models(Client, RestApiId, #{}, #{}).
@@ -4702,10 +5156,7 @@ get_models(Client, RestApiId)
 -spec get_models(map(), binary() | list(), map(), map()) ->
     {ok, models(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_models_errors(), tuple()}.
 get_models(Client, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_models(Client, RestApiId, QueryMap, HeadersMap, []).
@@ -4713,10 +5164,7 @@ get_models(Client, RestApiId, QueryMap, HeadersMap)
 -spec get_models(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, models(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_models_errors(), tuple()}.
 get_models(Client, RestApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/models"],
@@ -4742,10 +5190,7 @@ get_models(Client, RestApiId, QueryMap, HeadersMap, Options0)
 -spec get_request_validator(map(), binary() | list(), binary() | list()) ->
     {ok, request_validator(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_request_validator_errors(), tuple()}.
 get_request_validator(Client, RequestValidatorId, RestApiId)
   when is_map(Client) ->
     get_request_validator(Client, RequestValidatorId, RestApiId, #{}, #{}).
@@ -4753,10 +5198,7 @@ get_request_validator(Client, RequestValidatorId, RestApiId)
 -spec get_request_validator(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, request_validator(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_request_validator_errors(), tuple()}.
 get_request_validator(Client, RequestValidatorId, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_request_validator(Client, RequestValidatorId, RestApiId, QueryMap, HeadersMap, []).
@@ -4764,10 +5206,7 @@ get_request_validator(Client, RequestValidatorId, RestApiId, QueryMap, HeadersMa
 -spec get_request_validator(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, request_validator(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_request_validator_errors(), tuple()}.
 get_request_validator(Client, RequestValidatorId, RestApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/requestvalidators/", aws_util:encode_uri(RequestValidatorId), ""],
@@ -4788,10 +5227,7 @@ get_request_validator(Client, RequestValidatorId, RestApiId, QueryMap, HeadersMa
 -spec get_request_validators(map(), binary() | list()) ->
     {ok, request_validators(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_request_validators_errors(), tuple()}.
 get_request_validators(Client, RestApiId)
   when is_map(Client) ->
     get_request_validators(Client, RestApiId, #{}, #{}).
@@ -4799,10 +5235,7 @@ get_request_validators(Client, RestApiId)
 -spec get_request_validators(map(), binary() | list(), map(), map()) ->
     {ok, request_validators(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_request_validators_errors(), tuple()}.
 get_request_validators(Client, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_request_validators(Client, RestApiId, QueryMap, HeadersMap, []).
@@ -4810,10 +5243,7 @@ get_request_validators(Client, RestApiId, QueryMap, HeadersMap)
 -spec get_request_validators(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, request_validators(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_request_validators_errors(), tuple()}.
 get_request_validators(Client, RestApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/requestvalidators"],
@@ -4839,9 +5269,7 @@ get_request_validators(Client, RestApiId, QueryMap, HeadersMap, Options0)
 -spec get_resource(map(), binary() | list(), binary() | list()) ->
     {ok, resource(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_resource_errors(), tuple()}.
 get_resource(Client, ResourceId, RestApiId)
   when is_map(Client) ->
     get_resource(Client, ResourceId, RestApiId, #{}, #{}).
@@ -4849,9 +5277,7 @@ get_resource(Client, ResourceId, RestApiId)
 -spec get_resource(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, resource(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_resource_errors(), tuple()}.
 get_resource(Client, ResourceId, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resource(Client, ResourceId, RestApiId, QueryMap, HeadersMap, []).
@@ -4859,9 +5285,7 @@ get_resource(Client, ResourceId, RestApiId, QueryMap, HeadersMap)
 -spec get_resource(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, resource(), tuple()} |
     {error, any()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_resource_errors(), tuple()}.
 get_resource(Client, ResourceId, RestApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), ""],
@@ -4886,10 +5310,7 @@ get_resource(Client, ResourceId, RestApiId, QueryMap, HeadersMap, Options0)
 -spec get_resources(map(), binary() | list()) ->
     {ok, resources(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_resources_errors(), tuple()}.
 get_resources(Client, RestApiId)
   when is_map(Client) ->
     get_resources(Client, RestApiId, #{}, #{}).
@@ -4897,10 +5318,7 @@ get_resources(Client, RestApiId)
 -spec get_resources(map(), binary() | list(), map(), map()) ->
     {ok, resources(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_resources_errors(), tuple()}.
 get_resources(Client, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resources(Client, RestApiId, QueryMap, HeadersMap, []).
@@ -4908,10 +5326,7 @@ get_resources(Client, RestApiId, QueryMap, HeadersMap)
 -spec get_resources(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, resources(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_resources_errors(), tuple()}.
 get_resources(Client, RestApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources"],
@@ -4938,10 +5353,7 @@ get_resources(Client, RestApiId, QueryMap, HeadersMap, Options0)
 -spec get_rest_api(map(), binary() | list()) ->
     {ok, rest_api(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_rest_api_errors(), tuple()}.
 get_rest_api(Client, RestApiId)
   when is_map(Client) ->
     get_rest_api(Client, RestApiId, #{}, #{}).
@@ -4949,10 +5361,7 @@ get_rest_api(Client, RestApiId)
 -spec get_rest_api(map(), binary() | list(), map(), map()) ->
     {ok, rest_api(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_rest_api_errors(), tuple()}.
 get_rest_api(Client, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_rest_api(Client, RestApiId, QueryMap, HeadersMap, []).
@@ -4960,10 +5369,7 @@ get_rest_api(Client, RestApiId, QueryMap, HeadersMap)
 -spec get_rest_api(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, rest_api(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_rest_api_errors(), tuple()}.
 get_rest_api(Client, RestApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), ""],
@@ -4984,10 +5390,7 @@ get_rest_api(Client, RestApiId, QueryMap, HeadersMap, Options0)
 -spec get_rest_apis(map()) ->
     {ok, rest_apis(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_rest_apis_errors(), tuple()}.
 get_rest_apis(Client)
   when is_map(Client) ->
     get_rest_apis(Client, #{}, #{}).
@@ -4995,10 +5398,7 @@ get_rest_apis(Client)
 -spec get_rest_apis(map(), map(), map()) ->
     {ok, rest_apis(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_rest_apis_errors(), tuple()}.
 get_rest_apis(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_rest_apis(Client, QueryMap, HeadersMap, []).
@@ -5006,10 +5406,7 @@ get_rest_apis(Client, QueryMap, HeadersMap)
 -spec get_rest_apis(map(), map(), map(), proplists:proplist()) ->
     {ok, rest_apis(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_rest_apis_errors(), tuple()}.
 get_rest_apis(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restapis"],
@@ -5035,12 +5432,7 @@ get_rest_apis(Client, QueryMap, HeadersMap, Options0)
 -spec get_sdk(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, sdk_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_sdk_errors(), tuple()}.
 get_sdk(Client, RestApiId, SdkType, StageName)
   when is_map(Client) ->
     get_sdk(Client, RestApiId, SdkType, StageName, #{}, #{}).
@@ -5048,12 +5440,7 @@ get_sdk(Client, RestApiId, SdkType, StageName)
 -spec get_sdk(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, sdk_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_sdk_errors(), tuple()}.
 get_sdk(Client, RestApiId, SdkType, StageName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sdk(Client, RestApiId, SdkType, StageName, QueryMap, HeadersMap, []).
@@ -5061,12 +5448,7 @@ get_sdk(Client, RestApiId, SdkType, StageName, QueryMap, HeadersMap)
 -spec get_sdk(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, sdk_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_sdk_errors(), tuple()}.
 get_sdk(Client, RestApiId, SdkType, StageName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/stages/", aws_util:encode_uri(StageName), "/sdks/", aws_util:encode_uri(SdkType), ""],
@@ -5108,10 +5490,7 @@ get_sdk(Client, RestApiId, SdkType, StageName, QueryMap, HeadersMap, Options0)
 -spec get_sdk_type(map(), binary() | list()) ->
     {ok, sdk_type(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_sdk_type_errors(), tuple()}.
 get_sdk_type(Client, Id)
   when is_map(Client) ->
     get_sdk_type(Client, Id, #{}, #{}).
@@ -5119,10 +5498,7 @@ get_sdk_type(Client, Id)
 -spec get_sdk_type(map(), binary() | list(), map(), map()) ->
     {ok, sdk_type(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_sdk_type_errors(), tuple()}.
 get_sdk_type(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sdk_type(Client, Id, QueryMap, HeadersMap, []).
@@ -5130,10 +5506,7 @@ get_sdk_type(Client, Id, QueryMap, HeadersMap)
 -spec get_sdk_type(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, sdk_type(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_sdk_type_errors(), tuple()}.
 get_sdk_type(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sdktypes/", aws_util:encode_uri(Id), ""],
@@ -5154,10 +5527,7 @@ get_sdk_type(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_sdk_types(map()) ->
     {ok, sdk_types(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_sdk_types_errors(), tuple()}.
 get_sdk_types(Client)
   when is_map(Client) ->
     get_sdk_types(Client, #{}, #{}).
@@ -5165,10 +5535,7 @@ get_sdk_types(Client)
 -spec get_sdk_types(map(), map(), map()) ->
     {ok, sdk_types(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_sdk_types_errors(), tuple()}.
 get_sdk_types(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sdk_types(Client, QueryMap, HeadersMap, []).
@@ -5176,10 +5543,7 @@ get_sdk_types(Client, QueryMap, HeadersMap)
 -spec get_sdk_types(map(), map(), map(), proplists:proplist()) ->
     {ok, sdk_types(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_sdk_types_errors(), tuple()}.
 get_sdk_types(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sdktypes"],
@@ -5205,12 +5569,7 @@ get_sdk_types(Client, QueryMap, HeadersMap, Options0)
 -spec get_stage(map(), binary() | list(), binary() | list()) ->
     {ok, stage(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_stage_errors(), tuple()}.
 get_stage(Client, RestApiId, StageName)
   when is_map(Client) ->
     get_stage(Client, RestApiId, StageName, #{}, #{}).
@@ -5218,12 +5577,7 @@ get_stage(Client, RestApiId, StageName)
 -spec get_stage(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, stage(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_stage_errors(), tuple()}.
 get_stage(Client, RestApiId, StageName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_stage(Client, RestApiId, StageName, QueryMap, HeadersMap, []).
@@ -5231,12 +5585,7 @@ get_stage(Client, RestApiId, StageName, QueryMap, HeadersMap)
 -spec get_stage(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, stage(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_stage_errors(), tuple()}.
 get_stage(Client, RestApiId, StageName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/stages/", aws_util:encode_uri(StageName), ""],
@@ -5257,12 +5606,7 @@ get_stage(Client, RestApiId, StageName, QueryMap, HeadersMap, Options0)
 -spec get_stages(map(), binary() | list()) ->
     {ok, stages(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_stages_errors(), tuple()}.
 get_stages(Client, RestApiId)
   when is_map(Client) ->
     get_stages(Client, RestApiId, #{}, #{}).
@@ -5270,12 +5614,7 @@ get_stages(Client, RestApiId)
 -spec get_stages(map(), binary() | list(), map(), map()) ->
     {ok, stages(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_stages_errors(), tuple()}.
 get_stages(Client, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_stages(Client, RestApiId, QueryMap, HeadersMap, []).
@@ -5283,12 +5622,7 @@ get_stages(Client, RestApiId, QueryMap, HeadersMap)
 -spec get_stages(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, stages(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_stages_errors(), tuple()}.
 get_stages(Client, RestApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/stages"],
@@ -5313,10 +5647,7 @@ get_stages(Client, RestApiId, QueryMap, HeadersMap, Options0)
 -spec get_tags(map(), binary() | list()) ->
     {ok, tags(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_tags_errors(), tuple()}.
 get_tags(Client, ResourceArn)
   when is_map(Client) ->
     get_tags(Client, ResourceArn, #{}, #{}).
@@ -5324,10 +5655,7 @@ get_tags(Client, ResourceArn)
 -spec get_tags(map(), binary() | list(), map(), map()) ->
     {ok, tags(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_tags_errors(), tuple()}.
 get_tags(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_tags(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -5335,10 +5663,7 @@ get_tags(Client, ResourceArn, QueryMap, HeadersMap)
 -spec get_tags(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, tags(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_tags_errors(), tuple()}.
 get_tags(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -5364,10 +5689,7 @@ get_tags(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec get_usage(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, usage(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_usage_errors(), tuple()}.
 get_usage(Client, UsagePlanId, EndDate, StartDate)
   when is_map(Client) ->
     get_usage(Client, UsagePlanId, EndDate, StartDate, #{}, #{}).
@@ -5375,10 +5697,7 @@ get_usage(Client, UsagePlanId, EndDate, StartDate)
 -spec get_usage(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, usage(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_usage_errors(), tuple()}.
 get_usage(Client, UsagePlanId, EndDate, StartDate, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_usage(Client, UsagePlanId, EndDate, StartDate, QueryMap, HeadersMap, []).
@@ -5386,10 +5705,7 @@ get_usage(Client, UsagePlanId, EndDate, StartDate, QueryMap, HeadersMap)
 -spec get_usage(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, usage(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_usage_errors(), tuple()}.
 get_usage(Client, UsagePlanId, EndDate, StartDate, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/usageplans/", aws_util:encode_uri(UsagePlanId), "/usage"],
@@ -5418,10 +5734,7 @@ get_usage(Client, UsagePlanId, EndDate, StartDate, QueryMap, HeadersMap, Options
 -spec get_usage_plan(map(), binary() | list()) ->
     {ok, usage_plan(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_usage_plan_errors(), tuple()}.
 get_usage_plan(Client, UsagePlanId)
   when is_map(Client) ->
     get_usage_plan(Client, UsagePlanId, #{}, #{}).
@@ -5429,10 +5742,7 @@ get_usage_plan(Client, UsagePlanId)
 -spec get_usage_plan(map(), binary() | list(), map(), map()) ->
     {ok, usage_plan(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_usage_plan_errors(), tuple()}.
 get_usage_plan(Client, UsagePlanId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_usage_plan(Client, UsagePlanId, QueryMap, HeadersMap, []).
@@ -5440,10 +5750,7 @@ get_usage_plan(Client, UsagePlanId, QueryMap, HeadersMap)
 -spec get_usage_plan(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, usage_plan(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_usage_plan_errors(), tuple()}.
 get_usage_plan(Client, UsagePlanId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/usageplans/", aws_util:encode_uri(UsagePlanId), ""],
@@ -5464,10 +5771,7 @@ get_usage_plan(Client, UsagePlanId, QueryMap, HeadersMap, Options0)
 -spec get_usage_plan_key(map(), binary() | list(), binary() | list()) ->
     {ok, usage_plan_key(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_usage_plan_key_errors(), tuple()}.
 get_usage_plan_key(Client, KeyId, UsagePlanId)
   when is_map(Client) ->
     get_usage_plan_key(Client, KeyId, UsagePlanId, #{}, #{}).
@@ -5475,10 +5779,7 @@ get_usage_plan_key(Client, KeyId, UsagePlanId)
 -spec get_usage_plan_key(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, usage_plan_key(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_usage_plan_key_errors(), tuple()}.
 get_usage_plan_key(Client, KeyId, UsagePlanId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_usage_plan_key(Client, KeyId, UsagePlanId, QueryMap, HeadersMap, []).
@@ -5486,10 +5787,7 @@ get_usage_plan_key(Client, KeyId, UsagePlanId, QueryMap, HeadersMap)
 -spec get_usage_plan_key(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, usage_plan_key(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_usage_plan_key_errors(), tuple()}.
 get_usage_plan_key(Client, KeyId, UsagePlanId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/usageplans/", aws_util:encode_uri(UsagePlanId), "/keys/", aws_util:encode_uri(KeyId), ""],
@@ -5511,10 +5809,7 @@ get_usage_plan_key(Client, KeyId, UsagePlanId, QueryMap, HeadersMap, Options0)
 -spec get_usage_plan_keys(map(), binary() | list()) ->
     {ok, usage_plan_keys(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_usage_plan_keys_errors(), tuple()}.
 get_usage_plan_keys(Client, UsagePlanId)
   when is_map(Client) ->
     get_usage_plan_keys(Client, UsagePlanId, #{}, #{}).
@@ -5522,10 +5817,7 @@ get_usage_plan_keys(Client, UsagePlanId)
 -spec get_usage_plan_keys(map(), binary() | list(), map(), map()) ->
     {ok, usage_plan_keys(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_usage_plan_keys_errors(), tuple()}.
 get_usage_plan_keys(Client, UsagePlanId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_usage_plan_keys(Client, UsagePlanId, QueryMap, HeadersMap, []).
@@ -5533,10 +5825,7 @@ get_usage_plan_keys(Client, UsagePlanId, QueryMap, HeadersMap)
 -spec get_usage_plan_keys(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, usage_plan_keys(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_usage_plan_keys_errors(), tuple()}.
 get_usage_plan_keys(Client, UsagePlanId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/usageplans/", aws_util:encode_uri(UsagePlanId), "/keys"],
@@ -5563,10 +5852,7 @@ get_usage_plan_keys(Client, UsagePlanId, QueryMap, HeadersMap, Options0)
 -spec get_usage_plans(map()) ->
     {ok, usage_plans(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_usage_plans_errors(), tuple()}.
 get_usage_plans(Client)
   when is_map(Client) ->
     get_usage_plans(Client, #{}, #{}).
@@ -5574,10 +5860,7 @@ get_usage_plans(Client)
 -spec get_usage_plans(map(), map(), map()) ->
     {ok, usage_plans(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_usage_plans_errors(), tuple()}.
 get_usage_plans(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_usage_plans(Client, QueryMap, HeadersMap, []).
@@ -5585,10 +5868,7 @@ get_usage_plans(Client, QueryMap, HeadersMap)
 -spec get_usage_plans(map(), map(), map(), proplists:proplist()) ->
     {ok, usage_plans(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_usage_plans_errors(), tuple()}.
 get_usage_plans(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/usageplans"],
@@ -5615,10 +5895,7 @@ get_usage_plans(Client, QueryMap, HeadersMap, Options0)
 -spec get_vpc_link(map(), binary() | list()) ->
     {ok, vpc_link(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_vpc_link_errors(), tuple()}.
 get_vpc_link(Client, VpcLinkId)
   when is_map(Client) ->
     get_vpc_link(Client, VpcLinkId, #{}, #{}).
@@ -5626,10 +5903,7 @@ get_vpc_link(Client, VpcLinkId)
 -spec get_vpc_link(map(), binary() | list(), map(), map()) ->
     {ok, vpc_link(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_vpc_link_errors(), tuple()}.
 get_vpc_link(Client, VpcLinkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_vpc_link(Client, VpcLinkId, QueryMap, HeadersMap, []).
@@ -5637,10 +5911,7 @@ get_vpc_link(Client, VpcLinkId, QueryMap, HeadersMap)
 -spec get_vpc_link(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, vpc_link(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_vpc_link_errors(), tuple()}.
 get_vpc_link(Client, VpcLinkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/vpclinks/", aws_util:encode_uri(VpcLinkId), ""],
@@ -5662,10 +5933,7 @@ get_vpc_link(Client, VpcLinkId, QueryMap, HeadersMap, Options0)
 -spec get_vpc_links(map()) ->
     {ok, vpc_links(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_vpc_links_errors(), tuple()}.
 get_vpc_links(Client)
   when is_map(Client) ->
     get_vpc_links(Client, #{}, #{}).
@@ -5673,10 +5941,7 @@ get_vpc_links(Client)
 -spec get_vpc_links(map(), map(), map()) ->
     {ok, vpc_links(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_vpc_links_errors(), tuple()}.
 get_vpc_links(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_vpc_links(Client, QueryMap, HeadersMap, []).
@@ -5684,10 +5949,7 @@ get_vpc_links(Client, QueryMap, HeadersMap)
 -spec get_vpc_links(map(), map(), map(), proplists:proplist()) ->
     {ok, vpc_links(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_vpc_links_errors(), tuple()}.
 get_vpc_links(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/vpclinks"],
@@ -5714,24 +5976,14 @@ get_vpc_links(Client, QueryMap, HeadersMap, Options0)
 -spec import_api_keys(map(), import_api_keys_request()) ->
     {ok, api_key_ids(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, import_api_keys_errors(), tuple()}.
 import_api_keys(Client, Input) ->
     import_api_keys(Client, Input, []).
 
 -spec import_api_keys(map(), import_api_keys_request(), proplists:proplist()) ->
     {ok, api_key_ids(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, import_api_keys_errors(), tuple()}.
 import_api_keys(Client, Input0, Options0) ->
     Method = post,
     Path = ["/apikeys?mode=import"],
@@ -5760,24 +6012,14 @@ import_api_keys(Client, Input0, Options0) ->
 -spec import_documentation_parts(map(), binary() | list(), import_documentation_parts_request()) ->
     {ok, documentation_part_ids(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, import_documentation_parts_errors(), tuple()}.
 import_documentation_parts(Client, RestApiId, Input) ->
     import_documentation_parts(Client, RestApiId, Input, []).
 
 -spec import_documentation_parts(map(), binary() | list(), import_documentation_parts_request(), proplists:proplist()) ->
     {ok, documentation_part_ids(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, import_documentation_parts_errors(), tuple()}.
 import_documentation_parts(Client, RestApiId, Input0, Options0) ->
     Method = put,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/parts"],
@@ -5807,24 +6049,14 @@ import_documentation_parts(Client, RestApiId, Input0, Options0) ->
 -spec import_rest_api(map(), import_rest_api_request()) ->
     {ok, rest_api(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, import_rest_api_errors(), tuple()}.
 import_rest_api(Client, Input) ->
     import_rest_api(Client, Input, []).
 
 -spec import_rest_api(map(), import_rest_api_request(), proplists:proplist()) ->
     {ok, rest_api(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, import_rest_api_errors(), tuple()}.
 import_rest_api(Client, Input0, Options0) ->
     Method = post,
     Path = ["/restapis?mode=import"],
@@ -5854,24 +6086,14 @@ import_rest_api(Client, Input0, Options0) ->
 -spec put_gateway_response(map(), binary() | list(), binary() | list(), put_gateway_response_request()) ->
     {ok, gateway_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, put_gateway_response_errors(), tuple()}.
 put_gateway_response(Client, ResponseType, RestApiId, Input) ->
     put_gateway_response(Client, ResponseType, RestApiId, Input, []).
 
 -spec put_gateway_response(map(), binary() | list(), binary() | list(), put_gateway_response_request(), proplists:proplist()) ->
     {ok, gateway_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, put_gateway_response_errors(), tuple()}.
 put_gateway_response(Client, ResponseType, RestApiId, Input0, Options0) ->
     Method = put,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/gatewayresponses/", aws_util:encode_uri(ResponseType), ""],
@@ -5898,24 +6120,14 @@ put_gateway_response(Client, ResponseType, RestApiId, Input0, Options0) ->
 -spec put_integration(map(), binary() | list(), binary() | list(), binary() | list(), put_integration_request()) ->
     {ok, integration(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, put_integration_errors(), tuple()}.
 put_integration(Client, HttpMethod, ResourceId, RestApiId, Input) ->
     put_integration(Client, HttpMethod, ResourceId, RestApiId, Input, []).
 
 -spec put_integration(map(), binary() | list(), binary() | list(), binary() | list(), put_integration_request(), proplists:proplist()) ->
     {ok, integration(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, put_integration_errors(), tuple()}.
 put_integration(Client, HttpMethod, ResourceId, RestApiId, Input0, Options0) ->
     Method = put,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/integration"],
@@ -5942,24 +6154,14 @@ put_integration(Client, HttpMethod, ResourceId, RestApiId, Input0, Options0) ->
 -spec put_integration_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), put_integration_response_request()) ->
     {ok, integration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, put_integration_response_errors(), tuple()}.
 put_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input) ->
     put_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input, []).
 
 -spec put_integration_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), put_integration_response_request(), proplists:proplist()) ->
     {ok, integration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, put_integration_response_errors(), tuple()}.
 put_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input0, Options0) ->
     Method = put,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/integration/responses/", aws_util:encode_uri(StatusCode), ""],
@@ -5986,24 +6188,14 @@ put_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, 
 -spec put_method(map(), binary() | list(), binary() | list(), binary() | list(), put_method_request()) ->
     {ok, method(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, put_method_errors(), tuple()}.
 put_method(Client, HttpMethod, ResourceId, RestApiId, Input) ->
     put_method(Client, HttpMethod, ResourceId, RestApiId, Input, []).
 
 -spec put_method(map(), binary() | list(), binary() | list(), binary() | list(), put_method_request(), proplists:proplist()) ->
     {ok, method(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, put_method_errors(), tuple()}.
 put_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options0) ->
     Method = put,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), ""],
@@ -6030,24 +6222,14 @@ put_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options0) ->
 -spec put_method_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), put_method_response_request()) ->
     {ok, method_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, put_method_response_errors(), tuple()}.
 put_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input) ->
     put_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input, []).
 
 -spec put_method_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), put_method_response_request(), proplists:proplist()) ->
     {ok, method_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, put_method_response_errors(), tuple()}.
 put_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input0, Options0) ->
     Method = put,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/responses/", aws_util:encode_uri(StatusCode), ""],
@@ -6078,24 +6260,14 @@ put_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input
 -spec put_rest_api(map(), binary() | list(), put_rest_api_request()) ->
     {ok, rest_api(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, put_rest_api_errors(), tuple()}.
 put_rest_api(Client, RestApiId, Input) ->
     put_rest_api(Client, RestApiId, Input, []).
 
 -spec put_rest_api(map(), binary() | list(), put_rest_api_request(), proplists:proplist()) ->
     {ok, rest_api(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, put_rest_api_errors(), tuple()}.
 put_rest_api(Client, RestApiId, Input0, Options0) ->
     Method = put,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), ""],
@@ -6125,24 +6297,14 @@ put_rest_api(Client, RestApiId, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = put,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -6170,20 +6332,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec test_invoke_authorizer(map(), binary() | list(), binary() | list(), test_invoke_authorizer_request()) ->
     {ok, test_invoke_authorizer_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, test_invoke_authorizer_errors(), tuple()}.
 test_invoke_authorizer(Client, AuthorizerId, RestApiId, Input) ->
     test_invoke_authorizer(Client, AuthorizerId, RestApiId, Input, []).
 
 -spec test_invoke_authorizer(map(), binary() | list(), binary() | list(), test_invoke_authorizer_request(), proplists:proplist()) ->
     {ok, test_invoke_authorizer_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, test_invoke_authorizer_errors(), tuple()}.
 test_invoke_authorizer(Client, AuthorizerId, RestApiId, Input0, Options0) ->
     Method = post,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/authorizers/", aws_util:encode_uri(AuthorizerId), ""],
@@ -6211,20 +6367,14 @@ test_invoke_authorizer(Client, AuthorizerId, RestApiId, Input0, Options0) ->
 -spec test_invoke_method(map(), binary() | list(), binary() | list(), binary() | list(), test_invoke_method_request()) ->
     {ok, test_invoke_method_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, test_invoke_method_errors(), tuple()}.
 test_invoke_method(Client, HttpMethod, ResourceId, RestApiId, Input) ->
     test_invoke_method(Client, HttpMethod, ResourceId, RestApiId, Input, []).
 
 -spec test_invoke_method(map(), binary() | list(), binary() | list(), binary() | list(), test_invoke_method_request(), proplists:proplist()) ->
     {ok, test_invoke_method_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, test_invoke_method_errors(), tuple()}.
 test_invoke_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options0) ->
     Method = post,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), ""],
@@ -6251,24 +6401,14 @@ test_invoke_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options0) 
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -6296,24 +6436,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_account(map(), update_account_request()) ->
     {ok, account(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_account_errors(), tuple()}.
 update_account(Client, Input) ->
     update_account(Client, Input, []).
 
 -spec update_account(map(), update_account_request(), proplists:proplist()) ->
     {ok, account(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_account_errors(), tuple()}.
 update_account(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/account"],
@@ -6340,24 +6470,14 @@ update_account(Client, Input0, Options0) ->
 -spec update_api_key(map(), binary() | list(), update_api_key_request()) ->
     {ok, api_key(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_api_key_errors(), tuple()}.
 update_api_key(Client, ApiKey, Input) ->
     update_api_key(Client, ApiKey, Input, []).
 
 -spec update_api_key(map(), binary() | list(), update_api_key_request(), proplists:proplist()) ->
     {ok, api_key(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_api_key_errors(), tuple()}.
 update_api_key(Client, ApiKey, Input0, Options0) ->
     Method = patch,
     Path = ["/apikeys/", aws_util:encode_uri(ApiKey), ""],
@@ -6384,24 +6504,14 @@ update_api_key(Client, ApiKey, Input0, Options0) ->
 -spec update_authorizer(map(), binary() | list(), binary() | list(), update_authorizer_request()) ->
     {ok, authorizer(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_authorizer_errors(), tuple()}.
 update_authorizer(Client, AuthorizerId, RestApiId, Input) ->
     update_authorizer(Client, AuthorizerId, RestApiId, Input, []).
 
 -spec update_authorizer(map(), binary() | list(), binary() | list(), update_authorizer_request(), proplists:proplist()) ->
     {ok, authorizer(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_authorizer_errors(), tuple()}.
 update_authorizer(Client, AuthorizerId, RestApiId, Input0, Options0) ->
     Method = patch,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/authorizers/", aws_util:encode_uri(AuthorizerId), ""],
@@ -6428,24 +6538,14 @@ update_authorizer(Client, AuthorizerId, RestApiId, Input0, Options0) ->
 -spec update_base_path_mapping(map(), binary() | list(), binary() | list(), update_base_path_mapping_request()) ->
     {ok, base_path_mapping(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_base_path_mapping_errors(), tuple()}.
 update_base_path_mapping(Client, BasePath, DomainName, Input) ->
     update_base_path_mapping(Client, BasePath, DomainName, Input, []).
 
 -spec update_base_path_mapping(map(), binary() | list(), binary() | list(), update_base_path_mapping_request(), proplists:proplist()) ->
     {ok, base_path_mapping(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_base_path_mapping_errors(), tuple()}.
 update_base_path_mapping(Client, BasePath, DomainName, Input0, Options0) ->
     Method = patch,
     Path = ["/domainnames/", aws_util:encode_uri(DomainName), "/basepathmappings/", aws_util:encode_uri(BasePath), ""],
@@ -6472,24 +6572,14 @@ update_base_path_mapping(Client, BasePath, DomainName, Input0, Options0) ->
 -spec update_client_certificate(map(), binary() | list(), update_client_certificate_request()) ->
     {ok, client_certificate(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_client_certificate_errors(), tuple()}.
 update_client_certificate(Client, ClientCertificateId, Input) ->
     update_client_certificate(Client, ClientCertificateId, Input, []).
 
 -spec update_client_certificate(map(), binary() | list(), update_client_certificate_request(), proplists:proplist()) ->
     {ok, client_certificate(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_client_certificate_errors(), tuple()}.
 update_client_certificate(Client, ClientCertificateId, Input0, Options0) ->
     Method = patch,
     Path = ["/clientcertificates/", aws_util:encode_uri(ClientCertificateId), ""],
@@ -6516,26 +6606,14 @@ update_client_certificate(Client, ClientCertificateId, Input0, Options0) ->
 -spec update_deployment(map(), binary() | list(), binary() | list(), update_deployment_request()) ->
     {ok, deployment(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_deployment_errors(), tuple()}.
 update_deployment(Client, DeploymentId, RestApiId, Input) ->
     update_deployment(Client, DeploymentId, RestApiId, Input, []).
 
 -spec update_deployment(map(), binary() | list(), binary() | list(), update_deployment_request(), proplists:proplist()) ->
     {ok, deployment(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_deployment_errors(), tuple()}.
 update_deployment(Client, DeploymentId, RestApiId, Input0, Options0) ->
     Method = patch,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/deployments/", aws_util:encode_uri(DeploymentId), ""],
@@ -6562,24 +6640,14 @@ update_deployment(Client, DeploymentId, RestApiId, Input0, Options0) ->
 -spec update_documentation_part(map(), binary() | list(), binary() | list(), update_documentation_part_request()) ->
     {ok, documentation_part(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_documentation_part_errors(), tuple()}.
 update_documentation_part(Client, DocumentationPartId, RestApiId, Input) ->
     update_documentation_part(Client, DocumentationPartId, RestApiId, Input, []).
 
 -spec update_documentation_part(map(), binary() | list(), binary() | list(), update_documentation_part_request(), proplists:proplist()) ->
     {ok, documentation_part(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_documentation_part_errors(), tuple()}.
 update_documentation_part(Client, DocumentationPartId, RestApiId, Input0, Options0) ->
     Method = patch,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/parts/", aws_util:encode_uri(DocumentationPartId), ""],
@@ -6606,24 +6674,14 @@ update_documentation_part(Client, DocumentationPartId, RestApiId, Input0, Option
 -spec update_documentation_version(map(), binary() | list(), binary() | list(), update_documentation_version_request()) ->
     {ok, documentation_version(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_documentation_version_errors(), tuple()}.
 update_documentation_version(Client, DocumentationVersion, RestApiId, Input) ->
     update_documentation_version(Client, DocumentationVersion, RestApiId, Input, []).
 
 -spec update_documentation_version(map(), binary() | list(), binary() | list(), update_documentation_version_request(), proplists:proplist()) ->
     {ok, documentation_version(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_documentation_version_errors(), tuple()}.
 update_documentation_version(Client, DocumentationVersion, RestApiId, Input0, Options0) ->
     Method = patch,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/versions/", aws_util:encode_uri(DocumentationVersion), ""],
@@ -6650,24 +6708,14 @@ update_documentation_version(Client, DocumentationVersion, RestApiId, Input0, Op
 -spec update_domain_name(map(), binary() | list(), update_domain_name_request()) ->
     {ok, domain_name(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_domain_name_errors(), tuple()}.
 update_domain_name(Client, DomainName, Input) ->
     update_domain_name(Client, DomainName, Input, []).
 
 -spec update_domain_name(map(), binary() | list(), update_domain_name_request(), proplists:proplist()) ->
     {ok, domain_name(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_domain_name_errors(), tuple()}.
 update_domain_name(Client, DomainName, Input0, Options0) ->
     Method = patch,
     Path = ["/domainnames/", aws_util:encode_uri(DomainName), ""],
@@ -6695,24 +6743,14 @@ update_domain_name(Client, DomainName, Input0, Options0) ->
 -spec update_gateway_response(map(), binary() | list(), binary() | list(), update_gateway_response_request()) ->
     {ok, gateway_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_gateway_response_errors(), tuple()}.
 update_gateway_response(Client, ResponseType, RestApiId, Input) ->
     update_gateway_response(Client, ResponseType, RestApiId, Input, []).
 
 -spec update_gateway_response(map(), binary() | list(), binary() | list(), update_gateway_response_request(), proplists:proplist()) ->
     {ok, gateway_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_gateway_response_errors(), tuple()}.
 update_gateway_response(Client, ResponseType, RestApiId, Input0, Options0) ->
     Method = patch,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/gatewayresponses/", aws_util:encode_uri(ResponseType), ""],
@@ -6739,24 +6777,14 @@ update_gateway_response(Client, ResponseType, RestApiId, Input0, Options0) ->
 -spec update_integration(map(), binary() | list(), binary() | list(), binary() | list(), update_integration_request()) ->
     {ok, integration(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_integration_errors(), tuple()}.
 update_integration(Client, HttpMethod, ResourceId, RestApiId, Input) ->
     update_integration(Client, HttpMethod, ResourceId, RestApiId, Input, []).
 
 -spec update_integration(map(), binary() | list(), binary() | list(), binary() | list(), update_integration_request(), proplists:proplist()) ->
     {ok, integration(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_integration_errors(), tuple()}.
 update_integration(Client, HttpMethod, ResourceId, RestApiId, Input0, Options0) ->
     Method = patch,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/integration"],
@@ -6783,24 +6811,14 @@ update_integration(Client, HttpMethod, ResourceId, RestApiId, Input0, Options0) 
 -spec update_integration_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_integration_response_request()) ->
     {ok, integration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_integration_response_errors(), tuple()}.
 update_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input) ->
     update_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input, []).
 
 -spec update_integration_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_integration_response_request(), proplists:proplist()) ->
     {ok, integration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_integration_response_errors(), tuple()}.
 update_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input0, Options0) ->
     Method = patch,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/integration/responses/", aws_util:encode_uri(StatusCode), ""],
@@ -6827,22 +6845,14 @@ update_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCod
 -spec update_method(map(), binary() | list(), binary() | list(), binary() | list(), update_method_request()) ->
     {ok, method(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_method_errors(), tuple()}.
 update_method(Client, HttpMethod, ResourceId, RestApiId, Input) ->
     update_method(Client, HttpMethod, ResourceId, RestApiId, Input, []).
 
 -spec update_method(map(), binary() | list(), binary() | list(), binary() | list(), update_method_request(), proplists:proplist()) ->
     {ok, method(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_method_errors(), tuple()}.
 update_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options0) ->
     Method = patch,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), ""],
@@ -6869,24 +6879,14 @@ update_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options0) ->
 -spec update_method_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_method_response_request()) ->
     {ok, method_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_method_response_errors(), tuple()}.
 update_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input) ->
     update_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input, []).
 
 -spec update_method_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_method_response_request(), proplists:proplist()) ->
     {ok, method_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_method_response_errors(), tuple()}.
 update_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input0, Options0) ->
     Method = patch,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/responses/", aws_util:encode_uri(StatusCode), ""],
@@ -6915,24 +6915,14 @@ update_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, In
 -spec update_model(map(), binary() | list(), binary() | list(), update_model_request()) ->
     {ok, model(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_model_errors(), tuple()}.
 update_model(Client, ModelName, RestApiId, Input) ->
     update_model(Client, ModelName, RestApiId, Input, []).
 
 -spec update_model(map(), binary() | list(), binary() | list(), update_model_request(), proplists:proplist()) ->
     {ok, model(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_model_errors(), tuple()}.
 update_model(Client, ModelName, RestApiId, Input0, Options0) ->
     Method = patch,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/models/", aws_util:encode_uri(ModelName), ""],
@@ -6959,24 +6949,14 @@ update_model(Client, ModelName, RestApiId, Input0, Options0) ->
 -spec update_request_validator(map(), binary() | list(), binary() | list(), update_request_validator_request()) ->
     {ok, request_validator(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_request_validator_errors(), tuple()}.
 update_request_validator(Client, RequestValidatorId, RestApiId, Input) ->
     update_request_validator(Client, RequestValidatorId, RestApiId, Input, []).
 
 -spec update_request_validator(map(), binary() | list(), binary() | list(), update_request_validator_request(), proplists:proplist()) ->
     {ok, request_validator(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_request_validator_errors(), tuple()}.
 update_request_validator(Client, RequestValidatorId, RestApiId, Input0, Options0) ->
     Method = patch,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/requestvalidators/", aws_util:encode_uri(RequestValidatorId), ""],
@@ -7003,22 +6983,14 @@ update_request_validator(Client, RequestValidatorId, RestApiId, Input0, Options0
 -spec update_resource(map(), binary() | list(), binary() | list(), update_resource_request()) ->
     {ok, resource(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_resource_errors(), tuple()}.
 update_resource(Client, ResourceId, RestApiId, Input) ->
     update_resource(Client, ResourceId, RestApiId, Input, []).
 
 -spec update_resource(map(), binary() | list(), binary() | list(), update_resource_request(), proplists:proplist()) ->
     {ok, resource(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_resource_errors(), tuple()}.
 update_resource(Client, ResourceId, RestApiId, Input0, Options0) ->
     Method = patch,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), ""],
@@ -7045,24 +7017,14 @@ update_resource(Client, ResourceId, RestApiId, Input0, Options0) ->
 -spec update_rest_api(map(), binary() | list(), update_rest_api_request()) ->
     {ok, rest_api(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_rest_api_errors(), tuple()}.
 update_rest_api(Client, RestApiId, Input) ->
     update_rest_api(Client, RestApiId, Input, []).
 
 -spec update_rest_api(map(), binary() | list(), update_rest_api_request(), proplists:proplist()) ->
     {ok, rest_api(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_rest_api_errors(), tuple()}.
 update_rest_api(Client, RestApiId, Input0, Options0) ->
     Method = patch,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), ""],
@@ -7089,24 +7051,14 @@ update_rest_api(Client, RestApiId, Input0, Options0) ->
 -spec update_stage(map(), binary() | list(), binary() | list(), update_stage_request()) ->
     {ok, stage(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_stage_errors(), tuple()}.
 update_stage(Client, RestApiId, StageName, Input) ->
     update_stage(Client, RestApiId, StageName, Input, []).
 
 -spec update_stage(map(), binary() | list(), binary() | list(), update_stage_request(), proplists:proplist()) ->
     {ok, stage(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_stage_errors(), tuple()}.
 update_stage(Client, RestApiId, StageName, Input0, Options0) ->
     Method = patch,
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/stages/", aws_util:encode_uri(StageName), ""],
@@ -7134,24 +7086,14 @@ update_stage(Client, RestApiId, StageName, Input0, Options0) ->
 -spec update_usage(map(), binary() | list(), binary() | list(), update_usage_request()) ->
     {ok, usage(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_usage_errors(), tuple()}.
 update_usage(Client, KeyId, UsagePlanId, Input) ->
     update_usage(Client, KeyId, UsagePlanId, Input, []).
 
 -spec update_usage(map(), binary() | list(), binary() | list(), update_usage_request(), proplists:proplist()) ->
     {ok, usage(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_usage_errors(), tuple()}.
 update_usage(Client, KeyId, UsagePlanId, Input0, Options0) ->
     Method = patch,
     Path = ["/usageplans/", aws_util:encode_uri(UsagePlanId), "/keys/", aws_util:encode_uri(KeyId), "/usage"],
@@ -7178,24 +7120,14 @@ update_usage(Client, KeyId, UsagePlanId, Input0, Options0) ->
 -spec update_usage_plan(map(), binary() | list(), update_usage_plan_request()) ->
     {ok, usage_plan(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_usage_plan_errors(), tuple()}.
 update_usage_plan(Client, UsagePlanId, Input) ->
     update_usage_plan(Client, UsagePlanId, Input, []).
 
 -spec update_usage_plan(map(), binary() | list(), update_usage_plan_request(), proplists:proplist()) ->
     {ok, usage_plan(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_usage_plan_errors(), tuple()}.
 update_usage_plan(Client, UsagePlanId, Input0, Options0) ->
     Method = patch,
     Path = ["/usageplans/", aws_util:encode_uri(UsagePlanId), ""],
@@ -7222,24 +7154,14 @@ update_usage_plan(Client, UsagePlanId, Input0, Options0) ->
 -spec update_vpc_link(map(), binary() | list(), update_vpc_link_request()) ->
     {ok, vpc_link(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_vpc_link_errors(), tuple()}.
 update_vpc_link(Client, VpcLinkId, Input) ->
     update_vpc_link(Client, VpcLinkId, Input, []).
 
 -spec update_vpc_link(map(), binary() | list(), update_vpc_link_request(), proplists:proplist()) ->
     {ok, vpc_link(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_vpc_link_errors(), tuple()}.
 update_vpc_link(Client, VpcLinkId, Input0, Options0) ->
     Method = patch,
     Path = ["/vpclinks/", aws_util:encode_uri(VpcLinkId), ""],

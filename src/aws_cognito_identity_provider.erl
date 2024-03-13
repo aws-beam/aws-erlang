@@ -2707,6 +2707,1027 @@
 %% }
 -type domain_description_type() :: #{binary() => any()}.
 
+-type add_custom_attributes_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    user_import_in_progress_exception().
+
+-type admin_add_user_to_group_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_not_found_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type admin_confirm_sign_up_errors() ::
+    unexpected_lambda_exception() | 
+    internal_error_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_lambda_validation_exception() | 
+    invalid_lambda_response_exception() | 
+    user_not_found_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    too_many_failed_attempts_exception().
+
+-type admin_create_user_errors() ::
+    unexpected_lambda_exception() | 
+    internal_error_exception() | 
+    invalid_password_exception() | 
+    precondition_not_met_exception() | 
+    invalid_sms_role_trust_relationship_exception() | 
+    code_delivery_failure_exception() | 
+    username_exists_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_lambda_validation_exception() | 
+    invalid_lambda_response_exception() | 
+    user_not_found_exception() | 
+    resource_not_found_exception() | 
+    invalid_sms_role_access_policy_exception() | 
+    too_many_requests_exception() | 
+    unsupported_user_state_exception().
+
+-type admin_delete_user_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_not_found_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type admin_delete_user_attributes_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_not_found_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type admin_disable_provider_for_user_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_not_found_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    alias_exists_exception().
+
+-type admin_disable_user_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_not_found_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type admin_enable_user_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_not_found_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type admin_forget_device_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    invalid_user_pool_configuration_exception() | 
+    not_authorized_exception() | 
+    user_not_found_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type admin_get_device_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    invalid_user_pool_configuration_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type admin_get_user_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_not_found_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type admin_initiate_auth_errors() ::
+    unexpected_lambda_exception() | 
+    internal_error_exception() | 
+    mfa_method_not_found_exception() | 
+    invalid_sms_role_trust_relationship_exception() | 
+    invalid_parameter_exception() | 
+    invalid_user_pool_configuration_exception() | 
+    not_authorized_exception() | 
+    user_lambda_validation_exception() | 
+    invalid_lambda_response_exception() | 
+    user_not_found_exception() | 
+    password_reset_required_exception() | 
+    resource_not_found_exception() | 
+    invalid_sms_role_access_policy_exception() | 
+    too_many_requests_exception() | 
+    user_not_confirmed_exception().
+
+-type admin_link_provider_for_user_errors() ::
+    internal_error_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_not_found_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    alias_exists_exception().
+
+-type admin_list_devices_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    invalid_user_pool_configuration_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type admin_list_groups_for_user_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_not_found_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type admin_list_user_auth_events_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    user_pool_add_on_not_enabled_exception() | 
+    not_authorized_exception() | 
+    user_not_found_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type admin_remove_user_from_group_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_not_found_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type admin_reset_user_password_errors() ::
+    unexpected_lambda_exception() | 
+    internal_error_exception() | 
+    invalid_sms_role_trust_relationship_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_lambda_validation_exception() | 
+    invalid_lambda_response_exception() | 
+    user_not_found_exception() | 
+    resource_not_found_exception() | 
+    invalid_sms_role_access_policy_exception() | 
+    too_many_requests_exception() | 
+    invalid_email_role_access_policy_exception().
+
+-type admin_respond_to_auth_challenge_errors() ::
+    unexpected_lambda_exception() | 
+    internal_error_exception() | 
+    mfa_method_not_found_exception() | 
+    invalid_password_exception() | 
+    invalid_sms_role_trust_relationship_exception() | 
+    software_token_mfa_not_found_exception() | 
+    invalid_parameter_exception() | 
+    invalid_user_pool_configuration_exception() | 
+    not_authorized_exception() | 
+    user_lambda_validation_exception() | 
+    expired_code_exception() | 
+    invalid_lambda_response_exception() | 
+    user_not_found_exception() | 
+    password_reset_required_exception() | 
+    resource_not_found_exception() | 
+    code_mismatch_exception() | 
+    invalid_sms_role_access_policy_exception() | 
+    too_many_requests_exception() | 
+    alias_exists_exception() | 
+    user_not_confirmed_exception().
+
+-type admin_set_user_mfa_preference_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_not_found_exception() | 
+    password_reset_required_exception() | 
+    resource_not_found_exception() | 
+    user_not_confirmed_exception().
+
+-type admin_set_user_password_errors() ::
+    internal_error_exception() | 
+    invalid_password_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_not_found_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type admin_set_user_settings_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_not_found_exception() | 
+    resource_not_found_exception().
+
+-type admin_update_auth_event_feedback_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    user_pool_add_on_not_enabled_exception() | 
+    not_authorized_exception() | 
+    user_not_found_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type admin_update_device_status_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    invalid_user_pool_configuration_exception() | 
+    not_authorized_exception() | 
+    user_not_found_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type admin_update_user_attributes_errors() ::
+    unexpected_lambda_exception() | 
+    internal_error_exception() | 
+    invalid_sms_role_trust_relationship_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_lambda_validation_exception() | 
+    invalid_lambda_response_exception() | 
+    user_not_found_exception() | 
+    resource_not_found_exception() | 
+    invalid_sms_role_access_policy_exception() | 
+    too_many_requests_exception() | 
+    alias_exists_exception() | 
+    invalid_email_role_access_policy_exception().
+
+-type admin_user_global_sign_out_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_not_found_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type associate_software_token_errors() ::
+    internal_error_exception() | 
+    concurrent_modification_exception() | 
+    software_token_mfa_not_found_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    forbidden_exception().
+
+-type change_password_errors() ::
+    internal_error_exception() | 
+    invalid_password_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_not_found_exception() | 
+    password_reset_required_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    user_not_confirmed_exception().
+
+-type confirm_device_errors() ::
+    internal_error_exception() | 
+    invalid_password_exception() | 
+    username_exists_exception() | 
+    invalid_parameter_exception() | 
+    invalid_user_pool_configuration_exception() | 
+    not_authorized_exception() | 
+    invalid_lambda_response_exception() | 
+    user_not_found_exception() | 
+    password_reset_required_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    user_not_confirmed_exception().
+
+-type confirm_forgot_password_errors() ::
+    unexpected_lambda_exception() | 
+    internal_error_exception() | 
+    invalid_password_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_lambda_validation_exception() | 
+    expired_code_exception() | 
+    invalid_lambda_response_exception() | 
+    user_not_found_exception() | 
+    resource_not_found_exception() | 
+    code_mismatch_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    user_not_confirmed_exception() | 
+    too_many_failed_attempts_exception().
+
+-type confirm_sign_up_errors() ::
+    unexpected_lambda_exception() | 
+    internal_error_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_lambda_validation_exception() | 
+    expired_code_exception() | 
+    invalid_lambda_response_exception() | 
+    user_not_found_exception() | 
+    resource_not_found_exception() | 
+    code_mismatch_exception() | 
+    too_many_requests_exception() | 
+    alias_exists_exception() | 
+    forbidden_exception() | 
+    too_many_failed_attempts_exception().
+
+-type create_group_errors() ::
+    internal_error_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    group_exists_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type create_identity_provider_errors() ::
+    internal_error_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    duplicate_provider_exception().
+
+-type create_resource_server_errors() ::
+    internal_error_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type create_user_import_job_errors() ::
+    internal_error_exception() | 
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type create_user_pool_errors() ::
+    internal_error_exception() | 
+    invalid_sms_role_trust_relationship_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_pool_tagging_exception() | 
+    invalid_sms_role_access_policy_exception() | 
+    too_many_requests_exception() | 
+    invalid_email_role_access_policy_exception().
+
+-type create_user_pool_client_errors() ::
+    internal_error_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    invalid_o_auth_flow_exception() | 
+    scope_does_not_exist_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type create_user_pool_domain_errors() ::
+    internal_error_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception().
+
+-type delete_group_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_identity_provider_errors() ::
+    internal_error_exception() | 
+    concurrent_modification_exception() | 
+    invalid_parameter_exception() | 
+    unsupported_identity_provider_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_resource_server_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_user_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_not_found_exception() | 
+    password_reset_required_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    user_not_confirmed_exception().
+
+-type delete_user_attributes_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_not_found_exception() | 
+    password_reset_required_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    user_not_confirmed_exception().
+
+-type delete_user_pool_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    user_import_in_progress_exception().
+
+-type delete_user_pool_client_errors() ::
+    internal_error_exception() | 
+    concurrent_modification_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_user_pool_domain_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception().
+
+-type describe_identity_provider_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type describe_resource_server_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type describe_risk_configuration_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    user_pool_add_on_not_enabled_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type describe_user_import_job_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type describe_user_pool_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_pool_tagging_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type describe_user_pool_client_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type describe_user_pool_domain_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception().
+
+-type forget_device_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    invalid_user_pool_configuration_exception() | 
+    not_authorized_exception() | 
+    user_not_found_exception() | 
+    password_reset_required_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    user_not_confirmed_exception().
+
+-type forgot_password_errors() ::
+    unexpected_lambda_exception() | 
+    internal_error_exception() | 
+    invalid_sms_role_trust_relationship_exception() | 
+    code_delivery_failure_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_lambda_validation_exception() | 
+    invalid_lambda_response_exception() | 
+    user_not_found_exception() | 
+    resource_not_found_exception() | 
+    invalid_sms_role_access_policy_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    invalid_email_role_access_policy_exception().
+
+-type get_csv_header_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_device_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    invalid_user_pool_configuration_exception() | 
+    not_authorized_exception() | 
+    user_not_found_exception() | 
+    password_reset_required_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    user_not_confirmed_exception().
+
+-type get_group_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_identity_provider_by_identifier_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_log_delivery_configuration_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_signing_certificate_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception().
+
+-type get_ui_customization_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_user_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_not_found_exception() | 
+    password_reset_required_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    user_not_confirmed_exception().
+
+-type get_user_attribute_verification_code_errors() ::
+    unexpected_lambda_exception() | 
+    internal_error_exception() | 
+    invalid_sms_role_trust_relationship_exception() | 
+    code_delivery_failure_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_lambda_validation_exception() | 
+    invalid_lambda_response_exception() | 
+    user_not_found_exception() | 
+    password_reset_required_exception() | 
+    resource_not_found_exception() | 
+    invalid_sms_role_access_policy_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    invalid_email_role_access_policy_exception() | 
+    user_not_confirmed_exception().
+
+-type get_user_pool_mfa_config_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type global_sign_out_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    password_reset_required_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    user_not_confirmed_exception().
+
+-type initiate_auth_errors() ::
+    unexpected_lambda_exception() | 
+    internal_error_exception() | 
+    invalid_sms_role_trust_relationship_exception() | 
+    invalid_parameter_exception() | 
+    invalid_user_pool_configuration_exception() | 
+    not_authorized_exception() | 
+    user_lambda_validation_exception() | 
+    invalid_lambda_response_exception() | 
+    user_not_found_exception() | 
+    password_reset_required_exception() | 
+    resource_not_found_exception() | 
+    invalid_sms_role_access_policy_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    user_not_confirmed_exception().
+
+-type list_devices_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    invalid_user_pool_configuration_exception() | 
+    not_authorized_exception() | 
+    user_not_found_exception() | 
+    password_reset_required_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    user_not_confirmed_exception().
+
+-type list_groups_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_identity_providers_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_resource_servers_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_tags_for_resource_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_user_import_jobs_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_user_pool_clients_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_user_pools_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    too_many_requests_exception().
+
+-type list_users_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_users_in_group_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type resend_confirmation_code_errors() ::
+    unexpected_lambda_exception() | 
+    internal_error_exception() | 
+    invalid_sms_role_trust_relationship_exception() | 
+    code_delivery_failure_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_lambda_validation_exception() | 
+    invalid_lambda_response_exception() | 
+    user_not_found_exception() | 
+    resource_not_found_exception() | 
+    invalid_sms_role_access_policy_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    invalid_email_role_access_policy_exception().
+
+-type respond_to_auth_challenge_errors() ::
+    unexpected_lambda_exception() | 
+    internal_error_exception() | 
+    mfa_method_not_found_exception() | 
+    invalid_password_exception() | 
+    invalid_sms_role_trust_relationship_exception() | 
+    software_token_mfa_not_found_exception() | 
+    invalid_parameter_exception() | 
+    invalid_user_pool_configuration_exception() | 
+    not_authorized_exception() | 
+    user_lambda_validation_exception() | 
+    expired_code_exception() | 
+    invalid_lambda_response_exception() | 
+    user_not_found_exception() | 
+    password_reset_required_exception() | 
+    resource_not_found_exception() | 
+    code_mismatch_exception() | 
+    invalid_sms_role_access_policy_exception() | 
+    too_many_requests_exception() | 
+    alias_exists_exception() | 
+    forbidden_exception() | 
+    user_not_confirmed_exception().
+
+-type revoke_token_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception() | 
+    unsupported_operation_exception() | 
+    unsupported_token_type_exception().
+
+-type set_log_delivery_configuration_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type set_risk_configuration_errors() ::
+    internal_error_exception() | 
+    code_delivery_failure_exception() | 
+    invalid_parameter_exception() | 
+    user_pool_add_on_not_enabled_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    invalid_email_role_access_policy_exception().
+
+-type set_ui_customization_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type set_user_mfa_preference_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_not_found_exception() | 
+    password_reset_required_exception() | 
+    resource_not_found_exception() | 
+    forbidden_exception() | 
+    user_not_confirmed_exception().
+
+-type set_user_pool_mfa_config_errors() ::
+    internal_error_exception() | 
+    invalid_sms_role_trust_relationship_exception() | 
+    concurrent_modification_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    invalid_sms_role_access_policy_exception() | 
+    too_many_requests_exception().
+
+-type set_user_settings_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_not_found_exception() | 
+    password_reset_required_exception() | 
+    resource_not_found_exception() | 
+    forbidden_exception() | 
+    user_not_confirmed_exception().
+
+-type sign_up_errors() ::
+    unexpected_lambda_exception() | 
+    internal_error_exception() | 
+    invalid_password_exception() | 
+    invalid_sms_role_trust_relationship_exception() | 
+    code_delivery_failure_exception() | 
+    username_exists_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_lambda_validation_exception() | 
+    invalid_lambda_response_exception() | 
+    resource_not_found_exception() | 
+    invalid_sms_role_access_policy_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    invalid_email_role_access_policy_exception().
+
+-type start_user_import_job_errors() ::
+    internal_error_exception() | 
+    precondition_not_met_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type stop_user_import_job_errors() ::
+    internal_error_exception() | 
+    precondition_not_met_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type tag_resource_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type untag_resource_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_auth_event_feedback_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    user_pool_add_on_not_enabled_exception() | 
+    not_authorized_exception() | 
+    user_not_found_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_device_status_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    invalid_user_pool_configuration_exception() | 
+    not_authorized_exception() | 
+    user_not_found_exception() | 
+    password_reset_required_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    user_not_confirmed_exception().
+
+-type update_group_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_identity_provider_errors() ::
+    internal_error_exception() | 
+    concurrent_modification_exception() | 
+    invalid_parameter_exception() | 
+    unsupported_identity_provider_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_resource_server_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_user_attributes_errors() ::
+    unexpected_lambda_exception() | 
+    internal_error_exception() | 
+    invalid_sms_role_trust_relationship_exception() | 
+    code_delivery_failure_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_lambda_validation_exception() | 
+    expired_code_exception() | 
+    invalid_lambda_response_exception() | 
+    user_not_found_exception() | 
+    password_reset_required_exception() | 
+    resource_not_found_exception() | 
+    code_mismatch_exception() | 
+    invalid_sms_role_access_policy_exception() | 
+    too_many_requests_exception() | 
+    alias_exists_exception() | 
+    forbidden_exception() | 
+    invalid_email_role_access_policy_exception() | 
+    user_not_confirmed_exception().
+
+-type update_user_pool_errors() ::
+    internal_error_exception() | 
+    invalid_sms_role_trust_relationship_exception() | 
+    concurrent_modification_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_pool_tagging_exception() | 
+    resource_not_found_exception() | 
+    invalid_sms_role_access_policy_exception() | 
+    too_many_requests_exception() | 
+    invalid_email_role_access_policy_exception() | 
+    user_import_in_progress_exception().
+
+-type update_user_pool_client_errors() ::
+    internal_error_exception() | 
+    concurrent_modification_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    invalid_o_auth_flow_exception() | 
+    scope_does_not_exist_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_user_pool_domain_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type verify_software_token_errors() ::
+    internal_error_exception() | 
+    enable_software_token_mfa_exception() | 
+    software_token_mfa_not_found_exception() | 
+    invalid_parameter_exception() | 
+    invalid_user_pool_configuration_exception() | 
+    not_authorized_exception() | 
+    user_not_found_exception() | 
+    password_reset_required_exception() | 
+    resource_not_found_exception() | 
+    code_mismatch_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    user_not_confirmed_exception().
+
+-type verify_user_attribute_errors() ::
+    internal_error_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    expired_code_exception() | 
+    user_not_found_exception() | 
+    password_reset_required_exception() | 
+    resource_not_found_exception() | 
+    code_mismatch_exception() | 
+    too_many_requests_exception() | 
+    alias_exists_exception() | 
+    forbidden_exception() | 
+    user_not_confirmed_exception().
 
 %%====================================================================
 %% API
@@ -2730,12 +3751,7 @@
 -spec add_custom_attributes(map(), add_custom_attributes_request()) ->
     {ok, add_custom_attributes_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_import_in_progress_exception(), tuple()}.
+    {error, add_custom_attributes_errors(), tuple()}.
 add_custom_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_custom_attributes(Client, Input, []).
@@ -2743,12 +3759,7 @@ add_custom_attributes(Client, Input)
 -spec add_custom_attributes(map(), add_custom_attributes_request(), proplists:proplist()) ->
     {ok, add_custom_attributes_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_import_in_progress_exception(), tuple()}.
+    {error, add_custom_attributes_errors(), tuple()}.
 add_custom_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddCustomAttributes">>, Input, Options).
@@ -2776,12 +3787,7 @@ add_custom_attributes(Client, Input, Options)
 -spec admin_add_user_to_group(map(), admin_add_user_to_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_add_user_to_group_errors(), tuple()}.
 admin_add_user_to_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_add_user_to_group(Client, Input, []).
@@ -2789,12 +3795,7 @@ admin_add_user_to_group(Client, Input)
 -spec admin_add_user_to_group(map(), admin_add_user_to_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_add_user_to_group_errors(), tuple()}.
 admin_add_user_to_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminAddUserToGroup">>, Input, Options).
@@ -2834,17 +3835,7 @@ admin_add_user_to_group(Client, Input, Options)
 -spec admin_confirm_sign_up(map(), admin_confirm_sign_up_request()) ->
     {ok, admin_confirm_sign_up_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_failed_attempts_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unexpected_lambda_exception(), tuple()} |
-    {error, user_lambda_validation_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_confirm_sign_up_errors(), tuple()}.
 admin_confirm_sign_up(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_confirm_sign_up(Client, Input, []).
@@ -2852,17 +3843,7 @@ admin_confirm_sign_up(Client, Input)
 -spec admin_confirm_sign_up(map(), admin_confirm_sign_up_request(), proplists:proplist()) ->
     {ok, admin_confirm_sign_up_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_failed_attempts_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unexpected_lambda_exception(), tuple()} |
-    {error, user_lambda_validation_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_confirm_sign_up_errors(), tuple()}.
 admin_confirm_sign_up(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminConfirmSignUp">>, Input, Options).
@@ -2932,22 +3913,7 @@ admin_confirm_sign_up(Client, Input, Options)
 -spec admin_create_user(map(), admin_create_user_request()) ->
     {ok, admin_create_user_response(), tuple()} |
     {error, any()} |
-    {error, code_delivery_failure_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_password_exception(), tuple()} |
-    {error, invalid_sms_role_access_policy_exception(), tuple()} |
-    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unexpected_lambda_exception(), tuple()} |
-    {error, unsupported_user_state_exception(), tuple()} |
-    {error, user_lambda_validation_exception(), tuple()} |
-    {error, username_exists_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_create_user_errors(), tuple()}.
 admin_create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_create_user(Client, Input, []).
@@ -2955,22 +3921,7 @@ admin_create_user(Client, Input)
 -spec admin_create_user(map(), admin_create_user_request(), proplists:proplist()) ->
     {ok, admin_create_user_response(), tuple()} |
     {error, any()} |
-    {error, code_delivery_failure_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_password_exception(), tuple()} |
-    {error, invalid_sms_role_access_policy_exception(), tuple()} |
-    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unexpected_lambda_exception(), tuple()} |
-    {error, unsupported_user_state_exception(), tuple()} |
-    {error, user_lambda_validation_exception(), tuple()} |
-    {error, username_exists_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_create_user_errors(), tuple()}.
 admin_create_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminCreateUser">>, Input, Options).
@@ -2995,12 +3946,7 @@ admin_create_user(Client, Input, Options)
 -spec admin_delete_user(map(), admin_delete_user_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_delete_user_errors(), tuple()}.
 admin_delete_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_delete_user(Client, Input, []).
@@ -3008,12 +3954,7 @@ admin_delete_user(Client, Input)
 -spec admin_delete_user(map(), admin_delete_user_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_delete_user_errors(), tuple()}.
 admin_delete_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminDeleteUser">>, Input, Options).
@@ -3039,12 +3980,7 @@ admin_delete_user(Client, Input, Options)
 -spec admin_delete_user_attributes(map(), admin_delete_user_attributes_request()) ->
     {ok, admin_delete_user_attributes_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_delete_user_attributes_errors(), tuple()}.
 admin_delete_user_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_delete_user_attributes(Client, Input, []).
@@ -3052,12 +3988,7 @@ admin_delete_user_attributes(Client, Input)
 -spec admin_delete_user_attributes(map(), admin_delete_user_attributes_request(), proplists:proplist()) ->
     {ok, admin_delete_user_attributes_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_delete_user_attributes_errors(), tuple()}.
 admin_delete_user_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminDeleteUserAttributes">>, Input, Options).
@@ -3124,13 +4055,7 @@ admin_delete_user_attributes(Client, Input, Options)
 -spec admin_disable_provider_for_user(map(), admin_disable_provider_for_user_request()) ->
     {ok, admin_disable_provider_for_user_response(), tuple()} |
     {error, any()} |
-    {error, alias_exists_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_disable_provider_for_user_errors(), tuple()}.
 admin_disable_provider_for_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_disable_provider_for_user(Client, Input, []).
@@ -3138,13 +4063,7 @@ admin_disable_provider_for_user(Client, Input)
 -spec admin_disable_provider_for_user(map(), admin_disable_provider_for_user_request(), proplists:proplist()) ->
     {ok, admin_disable_provider_for_user_response(), tuple()} |
     {error, any()} |
-    {error, alias_exists_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_disable_provider_for_user_errors(), tuple()}.
 admin_disable_provider_for_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminDisableProviderForUser">>, Input, Options).
@@ -3171,12 +4090,7 @@ admin_disable_provider_for_user(Client, Input, Options)
 -spec admin_disable_user(map(), admin_disable_user_request()) ->
     {ok, admin_disable_user_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_disable_user_errors(), tuple()}.
 admin_disable_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_disable_user(Client, Input, []).
@@ -3184,12 +4098,7 @@ admin_disable_user(Client, Input)
 -spec admin_disable_user(map(), admin_disable_user_request(), proplists:proplist()) ->
     {ok, admin_disable_user_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_disable_user_errors(), tuple()}.
 admin_disable_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminDisableUser">>, Input, Options).
@@ -3214,12 +4123,7 @@ admin_disable_user(Client, Input, Options)
 -spec admin_enable_user(map(), admin_enable_user_request()) ->
     {ok, admin_enable_user_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_enable_user_errors(), tuple()}.
 admin_enable_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_enable_user(Client, Input, []).
@@ -3227,12 +4131,7 @@ admin_enable_user(Client, Input)
 -spec admin_enable_user(map(), admin_enable_user_request(), proplists:proplist()) ->
     {ok, admin_enable_user_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_enable_user_errors(), tuple()}.
 admin_enable_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminEnableUser">>, Input, Options).
@@ -3255,13 +4154,7 @@ admin_enable_user(Client, Input, Options)
 -spec admin_forget_device(map(), admin_forget_device_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_user_pool_configuration_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_forget_device_errors(), tuple()}.
 admin_forget_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_forget_device(Client, Input, []).
@@ -3269,13 +4162,7 @@ admin_forget_device(Client, Input)
 -spec admin_forget_device(map(), admin_forget_device_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_user_pool_configuration_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_forget_device_errors(), tuple()}.
 admin_forget_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminForgetDevice">>, Input, Options).
@@ -3298,12 +4185,7 @@ admin_forget_device(Client, Input, Options)
 -spec admin_get_device(map(), admin_get_device_request()) ->
     {ok, admin_get_device_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_user_pool_configuration_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, admin_get_device_errors(), tuple()}.
 admin_get_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_get_device(Client, Input, []).
@@ -3311,12 +4193,7 @@ admin_get_device(Client, Input)
 -spec admin_get_device(map(), admin_get_device_request(), proplists:proplist()) ->
     {ok, admin_get_device_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_user_pool_configuration_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, admin_get_device_errors(), tuple()}.
 admin_get_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminGetDevice">>, Input, Options).
@@ -3343,12 +4220,7 @@ admin_get_device(Client, Input, Options)
 -spec admin_get_user(map(), admin_get_user_request()) ->
     {ok, admin_get_user_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_get_user_errors(), tuple()}.
 admin_get_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_get_user(Client, Input, []).
@@ -3356,12 +4228,7 @@ admin_get_user(Client, Input)
 -spec admin_get_user(map(), admin_get_user_request(), proplists:proplist()) ->
     {ok, admin_get_user_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_get_user_errors(), tuple()}.
 admin_get_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminGetUser">>, Input, Options).
@@ -3413,21 +4280,7 @@ admin_get_user(Client, Input, Options)
 -spec admin_initiate_auth(map(), admin_initiate_auth_request()) ->
     {ok, admin_initiate_auth_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_sms_role_access_policy_exception(), tuple()} |
-    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
-    {error, invalid_user_pool_configuration_exception(), tuple()} |
-    {error, mfa_method_not_found_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unexpected_lambda_exception(), tuple()} |
-    {error, user_lambda_validation_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_initiate_auth_errors(), tuple()}.
 admin_initiate_auth(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_initiate_auth(Client, Input, []).
@@ -3435,21 +4288,7 @@ admin_initiate_auth(Client, Input)
 -spec admin_initiate_auth(map(), admin_initiate_auth_request(), proplists:proplist()) ->
     {ok, admin_initiate_auth_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_sms_role_access_policy_exception(), tuple()} |
-    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
-    {error, invalid_user_pool_configuration_exception(), tuple()} |
-    {error, mfa_method_not_found_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unexpected_lambda_exception(), tuple()} |
-    {error, user_lambda_validation_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_initiate_auth_errors(), tuple()}.
 admin_initiate_auth(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminInitiateAuth">>, Input, Options).
@@ -3498,14 +4337,7 @@ admin_initiate_auth(Client, Input, Options)
 -spec admin_link_provider_for_user(map(), admin_link_provider_for_user_request()) ->
     {ok, admin_link_provider_for_user_response(), tuple()} |
     {error, any()} |
-    {error, alias_exists_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_link_provider_for_user_errors(), tuple()}.
 admin_link_provider_for_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_link_provider_for_user(Client, Input, []).
@@ -3513,14 +4345,7 @@ admin_link_provider_for_user(Client, Input)
 -spec admin_link_provider_for_user(map(), admin_link_provider_for_user_request(), proplists:proplist()) ->
     {ok, admin_link_provider_for_user_response(), tuple()} |
     {error, any()} |
-    {error, alias_exists_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_link_provider_for_user_errors(), tuple()}.
 admin_link_provider_for_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminLinkProviderForUser">>, Input, Options).
@@ -3543,12 +4368,7 @@ admin_link_provider_for_user(Client, Input, Options)
 -spec admin_list_devices(map(), admin_list_devices_request()) ->
     {ok, admin_list_devices_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_user_pool_configuration_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, admin_list_devices_errors(), tuple()}.
 admin_list_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_list_devices(Client, Input, []).
@@ -3556,12 +4376,7 @@ admin_list_devices(Client, Input)
 -spec admin_list_devices(map(), admin_list_devices_request(), proplists:proplist()) ->
     {ok, admin_list_devices_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_user_pool_configuration_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, admin_list_devices_errors(), tuple()}.
 admin_list_devices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminListDevices">>, Input, Options).
@@ -3584,12 +4399,7 @@ admin_list_devices(Client, Input, Options)
 -spec admin_list_groups_for_user(map(), admin_list_groups_for_user_request()) ->
     {ok, admin_list_groups_for_user_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_list_groups_for_user_errors(), tuple()}.
 admin_list_groups_for_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_list_groups_for_user(Client, Input, []).
@@ -3597,12 +4407,7 @@ admin_list_groups_for_user(Client, Input)
 -spec admin_list_groups_for_user(map(), admin_list_groups_for_user_request(), proplists:proplist()) ->
     {ok, admin_list_groups_for_user_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_list_groups_for_user_errors(), tuple()}.
 admin_list_groups_for_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminListGroupsForUser">>, Input, Options).
@@ -3627,13 +4432,7 @@ admin_list_groups_for_user(Client, Input, Options)
 -spec admin_list_user_auth_events(map(), admin_list_user_auth_events_request()) ->
     {ok, admin_list_user_auth_events_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()} |
-    {error, user_pool_add_on_not_enabled_exception(), tuple()}.
+    {error, admin_list_user_auth_events_errors(), tuple()}.
 admin_list_user_auth_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_list_user_auth_events(Client, Input, []).
@@ -3641,13 +4440,7 @@ admin_list_user_auth_events(Client, Input)
 -spec admin_list_user_auth_events(map(), admin_list_user_auth_events_request(), proplists:proplist()) ->
     {ok, admin_list_user_auth_events_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()} |
-    {error, user_pool_add_on_not_enabled_exception(), tuple()}.
+    {error, admin_list_user_auth_events_errors(), tuple()}.
 admin_list_user_auth_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminListUserAuthEvents">>, Input, Options).
@@ -3670,12 +4463,7 @@ admin_list_user_auth_events(Client, Input, Options)
 -spec admin_remove_user_from_group(map(), admin_remove_user_from_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_remove_user_from_group_errors(), tuple()}.
 admin_remove_user_from_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_remove_user_from_group(Client, Input, []).
@@ -3683,12 +4471,7 @@ admin_remove_user_from_group(Client, Input)
 -spec admin_remove_user_from_group(map(), admin_remove_user_from_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_remove_user_from_group_errors(), tuple()}.
 admin_remove_user_from_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminRemoveUserFromGroup">>, Input, Options).
@@ -3764,19 +4547,7 @@ admin_remove_user_from_group(Client, Input, Options)
 -spec admin_reset_user_password(map(), admin_reset_user_password_request()) ->
     {ok, admin_reset_user_password_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_email_role_access_policy_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_sms_role_access_policy_exception(), tuple()} |
-    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unexpected_lambda_exception(), tuple()} |
-    {error, user_lambda_validation_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_reset_user_password_errors(), tuple()}.
 admin_reset_user_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_reset_user_password(Client, Input, []).
@@ -3784,19 +4555,7 @@ admin_reset_user_password(Client, Input)
 -spec admin_reset_user_password(map(), admin_reset_user_password_request(), proplists:proplist()) ->
     {ok, admin_reset_user_password_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_email_role_access_policy_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_sms_role_access_policy_exception(), tuple()} |
-    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unexpected_lambda_exception(), tuple()} |
-    {error, user_lambda_validation_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_reset_user_password_errors(), tuple()}.
 admin_reset_user_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminResetUserPassword">>, Input, Options).
@@ -3861,26 +4620,7 @@ admin_reset_user_password(Client, Input, Options)
 -spec admin_respond_to_auth_challenge(map(), admin_respond_to_auth_challenge_request()) ->
     {ok, admin_respond_to_auth_challenge_response(), tuple()} |
     {error, any()} |
-    {error, alias_exists_exception(), tuple()} |
-    {error, code_mismatch_exception(), tuple()} |
-    {error, expired_code_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_password_exception(), tuple()} |
-    {error, invalid_sms_role_access_policy_exception(), tuple()} |
-    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
-    {error, invalid_user_pool_configuration_exception(), tuple()} |
-    {error, mfa_method_not_found_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, software_token_mfa_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unexpected_lambda_exception(), tuple()} |
-    {error, user_lambda_validation_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_respond_to_auth_challenge_errors(), tuple()}.
 admin_respond_to_auth_challenge(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_respond_to_auth_challenge(Client, Input, []).
@@ -3888,26 +4628,7 @@ admin_respond_to_auth_challenge(Client, Input)
 -spec admin_respond_to_auth_challenge(map(), admin_respond_to_auth_challenge_request(), proplists:proplist()) ->
     {ok, admin_respond_to_auth_challenge_response(), tuple()} |
     {error, any()} |
-    {error, alias_exists_exception(), tuple()} |
-    {error, code_mismatch_exception(), tuple()} |
-    {error, expired_code_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_password_exception(), tuple()} |
-    {error, invalid_sms_role_access_policy_exception(), tuple()} |
-    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
-    {error, invalid_user_pool_configuration_exception(), tuple()} |
-    {error, mfa_method_not_found_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, software_token_mfa_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unexpected_lambda_exception(), tuple()} |
-    {error, user_lambda_validation_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_respond_to_auth_challenge_errors(), tuple()}.
 admin_respond_to_auth_challenge(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminRespondToAuthChallenge">>, Input, Options).
@@ -3939,13 +4660,7 @@ admin_respond_to_auth_challenge(Client, Input, Options)
 -spec admin_set_user_mfa_preference(map(), admin_set_user_mfa_preference_request()) ->
     {ok, admin_set_user_mfa_preference_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_set_user_mfa_preference_errors(), tuple()}.
 admin_set_user_mfa_preference(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_set_user_mfa_preference(Client, Input, []).
@@ -3953,13 +4668,7 @@ admin_set_user_mfa_preference(Client, Input)
 -spec admin_set_user_mfa_preference(map(), admin_set_user_mfa_preference_request(), proplists:proplist()) ->
     {ok, admin_set_user_mfa_preference_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_set_user_mfa_preference_errors(), tuple()}.
 admin_set_user_mfa_preference(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminSetUserMFAPreference">>, Input, Options).
@@ -4020,13 +4729,7 @@ admin_set_user_mfa_preference(Client, Input, Options)
 -spec admin_set_user_password(map(), admin_set_user_password_request()) ->
     {ok, admin_set_user_password_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_password_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_set_user_password_errors(), tuple()}.
 admin_set_user_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_set_user_password(Client, Input, []).
@@ -4034,13 +4737,7 @@ admin_set_user_password(Client, Input)
 -spec admin_set_user_password(map(), admin_set_user_password_request(), proplists:proplist()) ->
     {ok, admin_set_user_password_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_password_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_set_user_password_errors(), tuple()}.
 admin_set_user_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminSetUserPassword">>, Input, Options).
@@ -4071,11 +4768,7 @@ admin_set_user_password(Client, Input, Options)
 -spec admin_set_user_settings(map(), admin_set_user_settings_request()) ->
     {ok, admin_set_user_settings_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_set_user_settings_errors(), tuple()}.
 admin_set_user_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_set_user_settings(Client, Input, []).
@@ -4083,11 +4776,7 @@ admin_set_user_settings(Client, Input)
 -spec admin_set_user_settings(map(), admin_set_user_settings_request(), proplists:proplist()) ->
     {ok, admin_set_user_settings_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_set_user_settings_errors(), tuple()}.
 admin_set_user_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminSetUserSettings">>, Input, Options).
@@ -4115,13 +4804,7 @@ admin_set_user_settings(Client, Input, Options)
 -spec admin_update_auth_event_feedback(map(), admin_update_auth_event_feedback_request()) ->
     {ok, admin_update_auth_event_feedback_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()} |
-    {error, user_pool_add_on_not_enabled_exception(), tuple()}.
+    {error, admin_update_auth_event_feedback_errors(), tuple()}.
 admin_update_auth_event_feedback(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_update_auth_event_feedback(Client, Input, []).
@@ -4129,13 +4812,7 @@ admin_update_auth_event_feedback(Client, Input)
 -spec admin_update_auth_event_feedback(map(), admin_update_auth_event_feedback_request(), proplists:proplist()) ->
     {ok, admin_update_auth_event_feedback_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()} |
-    {error, user_pool_add_on_not_enabled_exception(), tuple()}.
+    {error, admin_update_auth_event_feedback_errors(), tuple()}.
 admin_update_auth_event_feedback(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminUpdateAuthEventFeedback">>, Input, Options).
@@ -4158,13 +4835,7 @@ admin_update_auth_event_feedback(Client, Input, Options)
 -spec admin_update_device_status(map(), admin_update_device_status_request()) ->
     {ok, admin_update_device_status_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_user_pool_configuration_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_update_device_status_errors(), tuple()}.
 admin_update_device_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_update_device_status(Client, Input, []).
@@ -4172,13 +4843,7 @@ admin_update_device_status(Client, Input)
 -spec admin_update_device_status(map(), admin_update_device_status_request(), proplists:proplist()) ->
     {ok, admin_update_device_status_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_user_pool_configuration_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_update_device_status_errors(), tuple()}.
 admin_update_device_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminUpdateDeviceStatus">>, Input, Options).
@@ -4243,19 +4908,7 @@ admin_update_device_status(Client, Input, Options)
 -spec admin_update_user_attributes(map(), admin_update_user_attributes_request()) ->
     {ok, admin_update_user_attributes_response(), tuple()} |
     {error, any()} |
-    {error, alias_exists_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_email_role_access_policy_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_sms_role_access_policy_exception(), tuple()} |
-    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unexpected_lambda_exception(), tuple()} |
-    {error, user_lambda_validation_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_update_user_attributes_errors(), tuple()}.
 admin_update_user_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_update_user_attributes(Client, Input, []).
@@ -4263,19 +4916,7 @@ admin_update_user_attributes(Client, Input)
 -spec admin_update_user_attributes(map(), admin_update_user_attributes_request(), proplists:proplist()) ->
     {ok, admin_update_user_attributes_response(), tuple()} |
     {error, any()} |
-    {error, alias_exists_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_email_role_access_policy_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_sms_role_access_policy_exception(), tuple()} |
-    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unexpected_lambda_exception(), tuple()} |
-    {error, user_lambda_validation_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_update_user_attributes_errors(), tuple()}.
 admin_update_user_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminUpdateUserAttributes">>, Input, Options).
@@ -4331,12 +4972,7 @@ admin_update_user_attributes(Client, Input, Options)
 -spec admin_user_global_sign_out(map(), admin_user_global_sign_out_request()) ->
     {ok, admin_user_global_sign_out_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_user_global_sign_out_errors(), tuple()}.
 admin_user_global_sign_out(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_user_global_sign_out(Client, Input, []).
@@ -4344,12 +4980,7 @@ admin_user_global_sign_out(Client, Input)
 -spec admin_user_global_sign_out(map(), admin_user_global_sign_out_request(), proplists:proplist()) ->
     {ok, admin_user_global_sign_out_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, admin_user_global_sign_out_errors(), tuple()}.
 admin_user_global_sign_out(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminUserGlobalSignOut">>, Input, Options).
@@ -4396,13 +5027,7 @@ admin_user_global_sign_out(Client, Input, Options)
 -spec associate_software_token(map(), associate_software_token_request()) ->
     {ok, associate_software_token_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, software_token_mfa_not_found_exception(), tuple()}.
+    {error, associate_software_token_errors(), tuple()}.
 associate_software_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_software_token(Client, Input, []).
@@ -4410,13 +5035,7 @@ associate_software_token(Client, Input)
 -spec associate_software_token(map(), associate_software_token_request(), proplists:proplist()) ->
     {ok, associate_software_token_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, software_token_mfa_not_found_exception(), tuple()}.
+    {error, associate_software_token_errors(), tuple()}.
 associate_software_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateSoftwareToken">>, Input, Options).
@@ -4438,17 +5057,7 @@ associate_software_token(Client, Input, Options)
 -spec change_password(map(), change_password_request()) ->
     {ok, change_password_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_password_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, change_password_errors(), tuple()}.
 change_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     change_password(Client, Input, []).
@@ -4456,17 +5065,7 @@ change_password(Client, Input)
 -spec change_password(map(), change_password_request(), proplists:proplist()) ->
     {ok, change_password_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_password_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, change_password_errors(), tuple()}.
 change_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ChangePassword">>, Input, Options).
@@ -4493,19 +5092,7 @@ change_password(Client, Input, Options)
 -spec confirm_device(map(), confirm_device_request()) ->
     {ok, confirm_device_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_password_exception(), tuple()} |
-    {error, invalid_user_pool_configuration_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, username_exists_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, confirm_device_errors(), tuple()}.
 confirm_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     confirm_device(Client, Input, []).
@@ -4513,19 +5100,7 @@ confirm_device(Client, Input)
 -spec confirm_device(map(), confirm_device_request(), proplists:proplist()) ->
     {ok, confirm_device_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_password_exception(), tuple()} |
-    {error, invalid_user_pool_configuration_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, username_exists_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, confirm_device_errors(), tuple()}.
 confirm_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ConfirmDevice">>, Input, Options).
@@ -4545,22 +5120,7 @@ confirm_device(Client, Input, Options)
 -spec confirm_forgot_password(map(), confirm_forgot_password_request()) ->
     {ok, confirm_forgot_password_response(), tuple()} |
     {error, any()} |
-    {error, code_mismatch_exception(), tuple()} |
-    {error, expired_code_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_password_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_failed_attempts_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unexpected_lambda_exception(), tuple()} |
-    {error, user_lambda_validation_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, confirm_forgot_password_errors(), tuple()}.
 confirm_forgot_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     confirm_forgot_password(Client, Input, []).
@@ -4568,22 +5128,7 @@ confirm_forgot_password(Client, Input)
 -spec confirm_forgot_password(map(), confirm_forgot_password_request(), proplists:proplist()) ->
     {ok, confirm_forgot_password_response(), tuple()} |
     {error, any()} |
-    {error, code_mismatch_exception(), tuple()} |
-    {error, expired_code_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_password_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_failed_attempts_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unexpected_lambda_exception(), tuple()} |
-    {error, user_lambda_validation_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, confirm_forgot_password_errors(), tuple()}.
 confirm_forgot_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ConfirmForgotPassword">>, Input, Options).
@@ -4626,21 +5171,7 @@ confirm_forgot_password(Client, Input, Options)
 -spec confirm_sign_up(map(), confirm_sign_up_request()) ->
     {ok, confirm_sign_up_response(), tuple()} |
     {error, any()} |
-    {error, alias_exists_exception(), tuple()} |
-    {error, code_mismatch_exception(), tuple()} |
-    {error, expired_code_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_failed_attempts_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unexpected_lambda_exception(), tuple()} |
-    {error, user_lambda_validation_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, confirm_sign_up_errors(), tuple()}.
 confirm_sign_up(Client, Input)
   when is_map(Client), is_map(Input) ->
     confirm_sign_up(Client, Input, []).
@@ -4648,21 +5179,7 @@ confirm_sign_up(Client, Input)
 -spec confirm_sign_up(map(), confirm_sign_up_request(), proplists:proplist()) ->
     {ok, confirm_sign_up_response(), tuple()} |
     {error, any()} |
-    {error, alias_exists_exception(), tuple()} |
-    {error, code_mismatch_exception(), tuple()} |
-    {error, expired_code_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_failed_attempts_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unexpected_lambda_exception(), tuple()} |
-    {error, user_lambda_validation_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, confirm_sign_up_errors(), tuple()}.
 confirm_sign_up(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ConfirmSignUp">>, Input, Options).
@@ -4685,13 +5202,7 @@ confirm_sign_up(Client, Input, Options)
 -spec create_group(map(), create_group_request()) ->
     {ok, create_group_response(), tuple()} |
     {error, any()} |
-    {error, group_exists_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_group_errors(), tuple()}.
 create_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_group(Client, Input, []).
@@ -4699,13 +5210,7 @@ create_group(Client, Input)
 -spec create_group(map(), create_group_request(), proplists:proplist()) ->
     {ok, create_group_response(), tuple()} |
     {error, any()} |
-    {error, group_exists_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_group_errors(), tuple()}.
 create_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGroup">>, Input, Options).
@@ -4729,13 +5234,7 @@ create_group(Client, Input, Options)
 -spec create_identity_provider(map(), create_identity_provider_request()) ->
     {ok, create_identity_provider_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_provider_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_identity_provider_errors(), tuple()}.
 create_identity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_identity_provider(Client, Input, []).
@@ -4743,13 +5242,7 @@ create_identity_provider(Client, Input)
 -spec create_identity_provider(map(), create_identity_provider_request(), proplists:proplist()) ->
     {ok, create_identity_provider_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_provider_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_identity_provider_errors(), tuple()}.
 create_identity_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateIdentityProvider">>, Input, Options).
@@ -4773,12 +5266,7 @@ create_identity_provider(Client, Input, Options)
 -spec create_resource_server(map(), create_resource_server_request()) ->
     {ok, create_resource_server_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_resource_server_errors(), tuple()}.
 create_resource_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_resource_server(Client, Input, []).
@@ -4786,12 +5274,7 @@ create_resource_server(Client, Input)
 -spec create_resource_server(map(), create_resource_server_request(), proplists:proplist()) ->
     {ok, create_resource_server_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_resource_server_errors(), tuple()}.
 create_resource_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateResourceServer">>, Input, Options).
@@ -4814,13 +5297,7 @@ create_resource_server(Client, Input, Options)
 -spec create_user_import_job(map(), create_user_import_job_request()) ->
     {ok, create_user_import_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_user_import_job_errors(), tuple()}.
 create_user_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_import_job(Client, Input, []).
@@ -4828,13 +5305,7 @@ create_user_import_job(Client, Input)
 -spec create_user_import_job(map(), create_user_import_job_request(), proplists:proplist()) ->
     {ok, create_user_import_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_user_import_job_errors(), tuple()}.
 create_user_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUserImportJob">>, Input, Options).
@@ -4893,15 +5364,7 @@ create_user_import_job(Client, Input, Options)
 -spec create_user_pool(map(), create_user_pool_request()) ->
     {ok, create_user_pool_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_email_role_access_policy_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_sms_role_access_policy_exception(), tuple()} |
-    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_pool_tagging_exception(), tuple()}.
+    {error, create_user_pool_errors(), tuple()}.
 create_user_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_pool(Client, Input, []).
@@ -4909,15 +5372,7 @@ create_user_pool(Client, Input)
 -spec create_user_pool(map(), create_user_pool_request(), proplists:proplist()) ->
     {ok, create_user_pool_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_email_role_access_policy_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_sms_role_access_policy_exception(), tuple()} |
-    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_pool_tagging_exception(), tuple()}.
+    {error, create_user_pool_errors(), tuple()}.
 create_user_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUserPool">>, Input, Options).
@@ -4948,14 +5403,7 @@ create_user_pool(Client, Input, Options)
 -spec create_user_pool_client(map(), create_user_pool_client_request()) ->
     {ok, create_user_pool_client_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_o_auth_flow_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, scope_does_not_exist_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_user_pool_client_errors(), tuple()}.
 create_user_pool_client(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_pool_client(Client, Input, []).
@@ -4963,14 +5411,7 @@ create_user_pool_client(Client, Input)
 -spec create_user_pool_client(map(), create_user_pool_client_request(), proplists:proplist()) ->
     {ok, create_user_pool_client_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_o_auth_flow_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, scope_does_not_exist_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_user_pool_client_errors(), tuple()}.
 create_user_pool_client(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUserPoolClient">>, Input, Options).
@@ -4993,11 +5434,7 @@ create_user_pool_client(Client, Input, Options)
 -spec create_user_pool_domain(map(), create_user_pool_domain_request()) ->
     {ok, create_user_pool_domain_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_user_pool_domain_errors(), tuple()}.
 create_user_pool_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_pool_domain(Client, Input, []).
@@ -5005,11 +5442,7 @@ create_user_pool_domain(Client, Input)
 -spec create_user_pool_domain(map(), create_user_pool_domain_request(), proplists:proplist()) ->
     {ok, create_user_pool_domain_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_user_pool_domain_errors(), tuple()}.
 create_user_pool_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUserPoolDomain">>, Input, Options).
@@ -5020,11 +5453,7 @@ create_user_pool_domain(Client, Input, Options)
 -spec delete_group(map(), delete_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_group_errors(), tuple()}.
 delete_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_group(Client, Input, []).
@@ -5032,11 +5461,7 @@ delete_group(Client, Input)
 -spec delete_group(map(), delete_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_group_errors(), tuple()}.
 delete_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGroup">>, Input, Options).
@@ -5045,13 +5470,7 @@ delete_group(Client, Input, Options)
 -spec delete_identity_provider(map(), delete_identity_provider_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_identity_provider_exception(), tuple()}.
+    {error, delete_identity_provider_errors(), tuple()}.
 delete_identity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_identity_provider(Client, Input, []).
@@ -5059,13 +5478,7 @@ delete_identity_provider(Client, Input)
 -spec delete_identity_provider(map(), delete_identity_provider_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_identity_provider_exception(), tuple()}.
+    {error, delete_identity_provider_errors(), tuple()}.
 delete_identity_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIdentityProvider">>, Input, Options).
@@ -5074,11 +5487,7 @@ delete_identity_provider(Client, Input, Options)
 -spec delete_resource_server(map(), delete_resource_server_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_resource_server_errors(), tuple()}.
 delete_resource_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_server(Client, Input, []).
@@ -5086,11 +5495,7 @@ delete_resource_server(Client, Input)
 -spec delete_resource_server(map(), delete_resource_server_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_resource_server_errors(), tuple()}.
 delete_resource_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourceServer">>, Input, Options).
@@ -5112,15 +5517,7 @@ delete_resource_server(Client, Input, Options)
 -spec delete_user(map(), delete_user_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, delete_user_errors(), tuple()}.
 delete_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user(Client, Input, []).
@@ -5128,15 +5525,7 @@ delete_user(Client, Input)
 -spec delete_user(map(), delete_user_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, delete_user_errors(), tuple()}.
 delete_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUser">>, Input, Options).
@@ -5158,15 +5547,7 @@ delete_user(Client, Input, Options)
 -spec delete_user_attributes(map(), delete_user_attributes_request()) ->
     {ok, delete_user_attributes_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, delete_user_attributes_errors(), tuple()}.
 delete_user_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_attributes(Client, Input, []).
@@ -5174,15 +5555,7 @@ delete_user_attributes(Client, Input)
 -spec delete_user_attributes(map(), delete_user_attributes_request(), proplists:proplist()) ->
     {ok, delete_user_attributes_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, delete_user_attributes_errors(), tuple()}.
 delete_user_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUserAttributes">>, Input, Options).
@@ -5191,12 +5564,7 @@ delete_user_attributes(Client, Input, Options)
 -spec delete_user_pool(map(), delete_user_pool_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_import_in_progress_exception(), tuple()}.
+    {error, delete_user_pool_errors(), tuple()}.
 delete_user_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_pool(Client, Input, []).
@@ -5204,12 +5572,7 @@ delete_user_pool(Client, Input)
 -spec delete_user_pool(map(), delete_user_pool_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_import_in_progress_exception(), tuple()}.
+    {error, delete_user_pool_errors(), tuple()}.
 delete_user_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUserPool">>, Input, Options).
@@ -5218,12 +5581,7 @@ delete_user_pool(Client, Input, Options)
 -spec delete_user_pool_client(map(), delete_user_pool_client_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_user_pool_client_errors(), tuple()}.
 delete_user_pool_client(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_pool_client(Client, Input, []).
@@ -5231,12 +5589,7 @@ delete_user_pool_client(Client, Input)
 -spec delete_user_pool_client(map(), delete_user_pool_client_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_user_pool_client_errors(), tuple()}.
 delete_user_pool_client(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUserPoolClient">>, Input, Options).
@@ -5245,10 +5598,7 @@ delete_user_pool_client(Client, Input, Options)
 -spec delete_user_pool_domain(map(), delete_user_pool_domain_request()) ->
     {ok, delete_user_pool_domain_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_user_pool_domain_errors(), tuple()}.
 delete_user_pool_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_pool_domain(Client, Input, []).
@@ -5256,10 +5606,7 @@ delete_user_pool_domain(Client, Input)
 -spec delete_user_pool_domain(map(), delete_user_pool_domain_request(), proplists:proplist()) ->
     {ok, delete_user_pool_domain_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_user_pool_domain_errors(), tuple()}.
 delete_user_pool_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUserPoolDomain">>, Input, Options).
@@ -5268,11 +5615,7 @@ delete_user_pool_domain(Client, Input, Options)
 -spec describe_identity_provider(map(), describe_identity_provider_request()) ->
     {ok, describe_identity_provider_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_identity_provider_errors(), tuple()}.
 describe_identity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_identity_provider(Client, Input, []).
@@ -5280,11 +5623,7 @@ describe_identity_provider(Client, Input)
 -spec describe_identity_provider(map(), describe_identity_provider_request(), proplists:proplist()) ->
     {ok, describe_identity_provider_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_identity_provider_errors(), tuple()}.
 describe_identity_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeIdentityProvider">>, Input, Options).
@@ -5293,11 +5632,7 @@ describe_identity_provider(Client, Input, Options)
 -spec describe_resource_server(map(), describe_resource_server_request()) ->
     {ok, describe_resource_server_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_resource_server_errors(), tuple()}.
 describe_resource_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_resource_server(Client, Input, []).
@@ -5305,11 +5640,7 @@ describe_resource_server(Client, Input)
 -spec describe_resource_server(map(), describe_resource_server_request(), proplists:proplist()) ->
     {ok, describe_resource_server_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_resource_server_errors(), tuple()}.
 describe_resource_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeResourceServer">>, Input, Options).
@@ -5318,12 +5649,7 @@ describe_resource_server(Client, Input, Options)
 -spec describe_risk_configuration(map(), describe_risk_configuration_request()) ->
     {ok, describe_risk_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_pool_add_on_not_enabled_exception(), tuple()}.
+    {error, describe_risk_configuration_errors(), tuple()}.
 describe_risk_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_risk_configuration(Client, Input, []).
@@ -5331,12 +5657,7 @@ describe_risk_configuration(Client, Input)
 -spec describe_risk_configuration(map(), describe_risk_configuration_request(), proplists:proplist()) ->
     {ok, describe_risk_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_pool_add_on_not_enabled_exception(), tuple()}.
+    {error, describe_risk_configuration_errors(), tuple()}.
 describe_risk_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRiskConfiguration">>, Input, Options).
@@ -5345,11 +5666,7 @@ describe_risk_configuration(Client, Input, Options)
 -spec describe_user_import_job(map(), describe_user_import_job_request()) ->
     {ok, describe_user_import_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_user_import_job_errors(), tuple()}.
 describe_user_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user_import_job(Client, Input, []).
@@ -5357,11 +5674,7 @@ describe_user_import_job(Client, Input)
 -spec describe_user_import_job(map(), describe_user_import_job_request(), proplists:proplist()) ->
     {ok, describe_user_import_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_user_import_job_errors(), tuple()}.
 describe_user_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUserImportJob">>, Input, Options).
@@ -5385,12 +5698,7 @@ describe_user_import_job(Client, Input, Options)
 -spec describe_user_pool(map(), describe_user_pool_request()) ->
     {ok, describe_user_pool_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_pool_tagging_exception(), tuple()}.
+    {error, describe_user_pool_errors(), tuple()}.
 describe_user_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user_pool(Client, Input, []).
@@ -5398,12 +5706,7 @@ describe_user_pool(Client, Input)
 -spec describe_user_pool(map(), describe_user_pool_request(), proplists:proplist()) ->
     {ok, describe_user_pool_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_pool_tagging_exception(), tuple()}.
+    {error, describe_user_pool_errors(), tuple()}.
 describe_user_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUserPool">>, Input, Options).
@@ -5428,11 +5731,7 @@ describe_user_pool(Client, Input, Options)
 -spec describe_user_pool_client(map(), describe_user_pool_client_request()) ->
     {ok, describe_user_pool_client_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_user_pool_client_errors(), tuple()}.
 describe_user_pool_client(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user_pool_client(Client, Input, []).
@@ -5440,11 +5739,7 @@ describe_user_pool_client(Client, Input)
 -spec describe_user_pool_client(map(), describe_user_pool_client_request(), proplists:proplist()) ->
     {ok, describe_user_pool_client_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_user_pool_client_errors(), tuple()}.
 describe_user_pool_client(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUserPoolClient">>, Input, Options).
@@ -5453,10 +5748,7 @@ describe_user_pool_client(Client, Input, Options)
 -spec describe_user_pool_domain(map(), describe_user_pool_domain_request()) ->
     {ok, describe_user_pool_domain_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_user_pool_domain_errors(), tuple()}.
 describe_user_pool_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user_pool_domain(Client, Input, []).
@@ -5464,10 +5756,7 @@ describe_user_pool_domain(Client, Input)
 -spec describe_user_pool_domain(map(), describe_user_pool_domain_request(), proplists:proplist()) ->
     {ok, describe_user_pool_domain_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_user_pool_domain_errors(), tuple()}.
 describe_user_pool_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUserPoolDomain">>, Input, Options).
@@ -5493,16 +5782,7 @@ describe_user_pool_domain(Client, Input, Options)
 -spec forget_device(map(), forget_device_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_user_pool_configuration_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, forget_device_errors(), tuple()}.
 forget_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     forget_device(Client, Input, []).
@@ -5510,16 +5790,7 @@ forget_device(Client, Input)
 -spec forget_device(map(), forget_device_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_user_pool_configuration_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, forget_device_errors(), tuple()}.
 forget_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ForgetDevice">>, Input, Options).
@@ -5594,21 +5865,7 @@ forget_device(Client, Input, Options)
 -spec forgot_password(map(), forgot_password_request()) ->
     {ok, forgot_password_response(), tuple()} |
     {error, any()} |
-    {error, code_delivery_failure_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_email_role_access_policy_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_sms_role_access_policy_exception(), tuple()} |
-    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unexpected_lambda_exception(), tuple()} |
-    {error, user_lambda_validation_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, forgot_password_errors(), tuple()}.
 forgot_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     forgot_password(Client, Input, []).
@@ -5616,21 +5873,7 @@ forgot_password(Client, Input)
 -spec forgot_password(map(), forgot_password_request(), proplists:proplist()) ->
     {ok, forgot_password_response(), tuple()} |
     {error, any()} |
-    {error, code_delivery_failure_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_email_role_access_policy_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_sms_role_access_policy_exception(), tuple()} |
-    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unexpected_lambda_exception(), tuple()} |
-    {error, user_lambda_validation_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, forgot_password_errors(), tuple()}.
 forgot_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ForgotPassword">>, Input, Options).
@@ -5641,11 +5884,7 @@ forgot_password(Client, Input, Options)
 -spec get_csv_header(map(), get_csv_header_request()) ->
     {ok, get_csv_header_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_csv_header_errors(), tuple()}.
 get_csv_header(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_csv_header(Client, Input, []).
@@ -5653,11 +5892,7 @@ get_csv_header(Client, Input)
 -spec get_csv_header(map(), get_csv_header_request(), proplists:proplist()) ->
     {ok, get_csv_header_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_csv_header_errors(), tuple()}.
 get_csv_header(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCSVHeader">>, Input, Options).
@@ -5683,16 +5918,7 @@ get_csv_header(Client, Input, Options)
 -spec get_device(map(), get_device_request()) ->
     {ok, get_device_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_user_pool_configuration_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, get_device_errors(), tuple()}.
 get_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_device(Client, Input, []).
@@ -5700,16 +5926,7 @@ get_device(Client, Input)
 -spec get_device(map(), get_device_request(), proplists:proplist()) ->
     {ok, get_device_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_user_pool_configuration_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, get_device_errors(), tuple()}.
 get_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDevice">>, Input, Options).
@@ -5720,11 +5937,7 @@ get_device(Client, Input, Options)
 -spec get_group(map(), get_group_request()) ->
     {ok, get_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_group_errors(), tuple()}.
 get_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_group(Client, Input, []).
@@ -5732,11 +5945,7 @@ get_group(Client, Input)
 -spec get_group(map(), get_group_request(), proplists:proplist()) ->
     {ok, get_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_group_errors(), tuple()}.
 get_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetGroup">>, Input, Options).
@@ -5745,11 +5954,7 @@ get_group(Client, Input, Options)
 -spec get_identity_provider_by_identifier(map(), get_identity_provider_by_identifier_request()) ->
     {ok, get_identity_provider_by_identifier_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_identity_provider_by_identifier_errors(), tuple()}.
 get_identity_provider_by_identifier(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_identity_provider_by_identifier(Client, Input, []).
@@ -5757,11 +5962,7 @@ get_identity_provider_by_identifier(Client, Input)
 -spec get_identity_provider_by_identifier(map(), get_identity_provider_by_identifier_request(), proplists:proplist()) ->
     {ok, get_identity_provider_by_identifier_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_identity_provider_by_identifier_errors(), tuple()}.
 get_identity_provider_by_identifier(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetIdentityProviderByIdentifier">>, Input, Options).
@@ -5770,11 +5971,7 @@ get_identity_provider_by_identifier(Client, Input, Options)
 -spec get_log_delivery_configuration(map(), get_log_delivery_configuration_request()) ->
     {ok, get_log_delivery_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_log_delivery_configuration_errors(), tuple()}.
 get_log_delivery_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_log_delivery_configuration(Client, Input, []).
@@ -5782,11 +5979,7 @@ get_log_delivery_configuration(Client, Input)
 -spec get_log_delivery_configuration(map(), get_log_delivery_configuration_request(), proplists:proplist()) ->
     {ok, get_log_delivery_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_log_delivery_configuration_errors(), tuple()}.
 get_log_delivery_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLogDeliveryConfiguration">>, Input, Options).
@@ -5805,9 +5998,7 @@ get_log_delivery_configuration(Client, Input, Options)
 -spec get_signing_certificate(map(), get_signing_certificate_request()) ->
     {ok, get_signing_certificate_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_signing_certificate_errors(), tuple()}.
 get_signing_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_signing_certificate(Client, Input, []).
@@ -5815,9 +6006,7 @@ get_signing_certificate(Client, Input)
 -spec get_signing_certificate(map(), get_signing_certificate_request(), proplists:proplist()) ->
     {ok, get_signing_certificate_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_signing_certificate_errors(), tuple()}.
 get_signing_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSigningCertificate">>, Input, Options).
@@ -5834,11 +6023,7 @@ get_signing_certificate(Client, Input, Options)
 -spec get_ui_customization(map(), get_ui_customization_request()) ->
     {ok, get_ui_customization_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_ui_customization_errors(), tuple()}.
 get_ui_customization(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ui_customization(Client, Input, []).
@@ -5846,11 +6031,7 @@ get_ui_customization(Client, Input)
 -spec get_ui_customization(map(), get_ui_customization_request(), proplists:proplist()) ->
     {ok, get_ui_customization_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_ui_customization_errors(), tuple()}.
 get_ui_customization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUICustomization">>, Input, Options).
@@ -5872,15 +6053,7 @@ get_ui_customization(Client, Input, Options)
 -spec get_user(map(), get_user_request()) ->
     {ok, get_user_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, get_user_errors(), tuple()}.
 get_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_user(Client, Input, []).
@@ -5888,15 +6061,7 @@ get_user(Client, Input)
 -spec get_user(map(), get_user_request(), proplists:proplist()) ->
     {ok, get_user_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, get_user_errors(), tuple()}.
 get_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUser">>, Input, Options).
@@ -5953,23 +6118,7 @@ get_user(Client, Input, Options)
 -spec get_user_attribute_verification_code(map(), get_user_attribute_verification_code_request()) ->
     {ok, get_user_attribute_verification_code_response(), tuple()} |
     {error, any()} |
-    {error, code_delivery_failure_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_email_role_access_policy_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_sms_role_access_policy_exception(), tuple()} |
-    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unexpected_lambda_exception(), tuple()} |
-    {error, user_lambda_validation_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, get_user_attribute_verification_code_errors(), tuple()}.
 get_user_attribute_verification_code(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_user_attribute_verification_code(Client, Input, []).
@@ -5977,23 +6126,7 @@ get_user_attribute_verification_code(Client, Input)
 -spec get_user_attribute_verification_code(map(), get_user_attribute_verification_code_request(), proplists:proplist()) ->
     {ok, get_user_attribute_verification_code_response(), tuple()} |
     {error, any()} |
-    {error, code_delivery_failure_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_email_role_access_policy_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_sms_role_access_policy_exception(), tuple()} |
-    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unexpected_lambda_exception(), tuple()} |
-    {error, user_lambda_validation_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, get_user_attribute_verification_code_errors(), tuple()}.
 get_user_attribute_verification_code(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUserAttributeVerificationCode">>, Input, Options).
@@ -6002,11 +6135,7 @@ get_user_attribute_verification_code(Client, Input, Options)
 -spec get_user_pool_mfa_config(map(), get_user_pool_mfa_config_request()) ->
     {ok, get_user_pool_mfa_config_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_user_pool_mfa_config_errors(), tuple()}.
 get_user_pool_mfa_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_user_pool_mfa_config(Client, Input, []).
@@ -6014,11 +6143,7 @@ get_user_pool_mfa_config(Client, Input)
 -spec get_user_pool_mfa_config(map(), get_user_pool_mfa_config_request(), proplists:proplist()) ->
     {ok, get_user_pool_mfa_config_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_user_pool_mfa_config_errors(), tuple()}.
 get_user_pool_mfa_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUserPoolMfaConfig">>, Input, Options).
@@ -6073,14 +6198,7 @@ get_user_pool_mfa_config(Client, Input, Options)
 -spec global_sign_out(map(), global_sign_out_request()) ->
     {ok, global_sign_out_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()}.
+    {error, global_sign_out_errors(), tuple()}.
 global_sign_out(Client, Input)
   when is_map(Client), is_map(Input) ->
     global_sign_out(Client, Input, []).
@@ -6088,14 +6206,7 @@ global_sign_out(Client, Input)
 -spec global_sign_out(map(), global_sign_out_request(), proplists:proplist()) ->
     {ok, global_sign_out_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()}.
+    {error, global_sign_out_errors(), tuple()}.
 global_sign_out(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GlobalSignOut">>, Input, Options).
@@ -6148,21 +6259,7 @@ global_sign_out(Client, Input, Options)
 -spec initiate_auth(map(), initiate_auth_request()) ->
     {ok, initiate_auth_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_sms_role_access_policy_exception(), tuple()} |
-    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
-    {error, invalid_user_pool_configuration_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unexpected_lambda_exception(), tuple()} |
-    {error, user_lambda_validation_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, initiate_auth_errors(), tuple()}.
 initiate_auth(Client, Input)
   when is_map(Client), is_map(Input) ->
     initiate_auth(Client, Input, []).
@@ -6170,21 +6267,7 @@ initiate_auth(Client, Input)
 -spec initiate_auth(map(), initiate_auth_request(), proplists:proplist()) ->
     {ok, initiate_auth_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_sms_role_access_policy_exception(), tuple()} |
-    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
-    {error, invalid_user_pool_configuration_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unexpected_lambda_exception(), tuple()} |
-    {error, user_lambda_validation_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, initiate_auth_errors(), tuple()}.
 initiate_auth(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"InitiateAuth">>, Input, Options).
@@ -6212,16 +6295,7 @@ initiate_auth(Client, Input, Options)
 -spec list_devices(map(), list_devices_request()) ->
     {ok, list_devices_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_user_pool_configuration_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, list_devices_errors(), tuple()}.
 list_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_devices(Client, Input, []).
@@ -6229,16 +6303,7 @@ list_devices(Client, Input)
 -spec list_devices(map(), list_devices_request(), proplists:proplist()) ->
     {ok, list_devices_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_user_pool_configuration_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, list_devices_errors(), tuple()}.
 list_devices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDevices">>, Input, Options).
@@ -6261,11 +6326,7 @@ list_devices(Client, Input, Options)
 -spec list_groups(map(), list_groups_request()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_groups_errors(), tuple()}.
 list_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_groups(Client, Input, []).
@@ -6273,11 +6334,7 @@ list_groups(Client, Input)
 -spec list_groups(map(), list_groups_request(), proplists:proplist()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_groups_errors(), tuple()}.
 list_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGroups">>, Input, Options).
@@ -6300,11 +6357,7 @@ list_groups(Client, Input, Options)
 -spec list_identity_providers(map(), list_identity_providers_request()) ->
     {ok, list_identity_providers_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_identity_providers_errors(), tuple()}.
 list_identity_providers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_identity_providers(Client, Input, []).
@@ -6312,11 +6365,7 @@ list_identity_providers(Client, Input)
 -spec list_identity_providers(map(), list_identity_providers_request(), proplists:proplist()) ->
     {ok, list_identity_providers_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_identity_providers_errors(), tuple()}.
 list_identity_providers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListIdentityProviders">>, Input, Options).
@@ -6339,11 +6388,7 @@ list_identity_providers(Client, Input, Options)
 -spec list_resource_servers(map(), list_resource_servers_request()) ->
     {ok, list_resource_servers_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_resource_servers_errors(), tuple()}.
 list_resource_servers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_servers(Client, Input, []).
@@ -6351,11 +6396,7 @@ list_resource_servers(Client, Input)
 -spec list_resource_servers(map(), list_resource_servers_request(), proplists:proplist()) ->
     {ok, list_resource_servers_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_resource_servers_errors(), tuple()}.
 list_resource_servers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResourceServers">>, Input, Options).
@@ -6370,11 +6411,7 @@ list_resource_servers(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -6382,11 +6419,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -6409,11 +6442,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec list_user_import_jobs(map(), list_user_import_jobs_request()) ->
     {ok, list_user_import_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_user_import_jobs_errors(), tuple()}.
 list_user_import_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_user_import_jobs(Client, Input, []).
@@ -6421,11 +6450,7 @@ list_user_import_jobs(Client, Input)
 -spec list_user_import_jobs(map(), list_user_import_jobs_request(), proplists:proplist()) ->
     {ok, list_user_import_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_user_import_jobs_errors(), tuple()}.
 list_user_import_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUserImportJobs">>, Input, Options).
@@ -6448,11 +6473,7 @@ list_user_import_jobs(Client, Input, Options)
 -spec list_user_pool_clients(map(), list_user_pool_clients_request()) ->
     {ok, list_user_pool_clients_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_user_pool_clients_errors(), tuple()}.
 list_user_pool_clients(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_user_pool_clients(Client, Input, []).
@@ -6460,11 +6481,7 @@ list_user_pool_clients(Client, Input)
 -spec list_user_pool_clients(map(), list_user_pool_clients_request(), proplists:proplist()) ->
     {ok, list_user_pool_clients_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_user_pool_clients_errors(), tuple()}.
 list_user_pool_clients(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUserPoolClients">>, Input, Options).
@@ -6487,10 +6504,7 @@ list_user_pool_clients(Client, Input, Options)
 -spec list_user_pools(map(), list_user_pools_request()) ->
     {ok, list_user_pools_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_user_pools_errors(), tuple()}.
 list_user_pools(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_user_pools(Client, Input, []).
@@ -6498,10 +6512,7 @@ list_user_pools(Client, Input)
 -spec list_user_pools(map(), list_user_pools_request(), proplists:proplist()) ->
     {ok, list_user_pools_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_user_pools_errors(), tuple()}.
 list_user_pools(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUserPools">>, Input, Options).
@@ -6524,11 +6535,7 @@ list_user_pools(Client, Input, Options)
 -spec list_users(map(), list_users_request()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_users_errors(), tuple()}.
 list_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_users(Client, Input, []).
@@ -6536,11 +6543,7 @@ list_users(Client, Input)
 -spec list_users(map(), list_users_request(), proplists:proplist()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_users_errors(), tuple()}.
 list_users(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUsers">>, Input, Options).
@@ -6563,11 +6566,7 @@ list_users(Client, Input, Options)
 -spec list_users_in_group(map(), list_users_in_group_request()) ->
     {ok, list_users_in_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_users_in_group_errors(), tuple()}.
 list_users_in_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_users_in_group(Client, Input, []).
@@ -6575,11 +6574,7 @@ list_users_in_group(Client, Input)
 -spec list_users_in_group(map(), list_users_in_group_request(), proplists:proplist()) ->
     {ok, list_users_in_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_users_in_group_errors(), tuple()}.
 list_users_in_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUsersInGroup">>, Input, Options).
@@ -6629,21 +6624,7 @@ list_users_in_group(Client, Input, Options)
 -spec resend_confirmation_code(map(), resend_confirmation_code_request()) ->
     {ok, resend_confirmation_code_response(), tuple()} |
     {error, any()} |
-    {error, code_delivery_failure_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_email_role_access_policy_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_sms_role_access_policy_exception(), tuple()} |
-    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unexpected_lambda_exception(), tuple()} |
-    {error, user_lambda_validation_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, resend_confirmation_code_errors(), tuple()}.
 resend_confirmation_code(Client, Input)
   when is_map(Client), is_map(Input) ->
     resend_confirmation_code(Client, Input, []).
@@ -6651,21 +6632,7 @@ resend_confirmation_code(Client, Input)
 -spec resend_confirmation_code(map(), resend_confirmation_code_request(), proplists:proplist()) ->
     {ok, resend_confirmation_code_response(), tuple()} |
     {error, any()} |
-    {error, code_delivery_failure_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_email_role_access_policy_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_sms_role_access_policy_exception(), tuple()} |
-    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unexpected_lambda_exception(), tuple()} |
-    {error, user_lambda_validation_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, resend_confirmation_code_errors(), tuple()}.
 resend_confirmation_code(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResendConfirmationCode">>, Input, Options).
@@ -6726,27 +6693,7 @@ resend_confirmation_code(Client, Input, Options)
 -spec respond_to_auth_challenge(map(), respond_to_auth_challenge_request()) ->
     {ok, respond_to_auth_challenge_response(), tuple()} |
     {error, any()} |
-    {error, alias_exists_exception(), tuple()} |
-    {error, code_mismatch_exception(), tuple()} |
-    {error, expired_code_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_password_exception(), tuple()} |
-    {error, invalid_sms_role_access_policy_exception(), tuple()} |
-    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
-    {error, invalid_user_pool_configuration_exception(), tuple()} |
-    {error, mfa_method_not_found_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, software_token_mfa_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unexpected_lambda_exception(), tuple()} |
-    {error, user_lambda_validation_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, respond_to_auth_challenge_errors(), tuple()}.
 respond_to_auth_challenge(Client, Input)
   when is_map(Client), is_map(Input) ->
     respond_to_auth_challenge(Client, Input, []).
@@ -6754,27 +6701,7 @@ respond_to_auth_challenge(Client, Input)
 -spec respond_to_auth_challenge(map(), respond_to_auth_challenge_request(), proplists:proplist()) ->
     {ok, respond_to_auth_challenge_response(), tuple()} |
     {error, any()} |
-    {error, alias_exists_exception(), tuple()} |
-    {error, code_mismatch_exception(), tuple()} |
-    {error, expired_code_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_password_exception(), tuple()} |
-    {error, invalid_sms_role_access_policy_exception(), tuple()} |
-    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
-    {error, invalid_user_pool_configuration_exception(), tuple()} |
-    {error, mfa_method_not_found_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, software_token_mfa_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unexpected_lambda_exception(), tuple()} |
-    {error, user_lambda_validation_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, respond_to_auth_challenge_errors(), tuple()}.
 respond_to_auth_challenge(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RespondToAuthChallenge">>, Input, Options).
@@ -6799,13 +6726,7 @@ respond_to_auth_challenge(Client, Input, Options)
 -spec revoke_token(map(), revoke_token_request()) ->
     {ok, revoke_token_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()} |
-    {error, unsupported_token_type_exception(), tuple()}.
+    {error, revoke_token_errors(), tuple()}.
 revoke_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     revoke_token(Client, Input, []).
@@ -6813,13 +6734,7 @@ revoke_token(Client, Input)
 -spec revoke_token(map(), revoke_token_request(), proplists:proplist()) ->
     {ok, revoke_token_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()} |
-    {error, unsupported_token_type_exception(), tuple()}.
+    {error, revoke_token_errors(), tuple()}.
 revoke_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RevokeToken">>, Input, Options).
@@ -6829,11 +6744,7 @@ revoke_token(Client, Input, Options)
 -spec set_log_delivery_configuration(map(), set_log_delivery_configuration_request()) ->
     {ok, set_log_delivery_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, set_log_delivery_configuration_errors(), tuple()}.
 set_log_delivery_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_log_delivery_configuration(Client, Input, []).
@@ -6841,11 +6752,7 @@ set_log_delivery_configuration(Client, Input)
 -spec set_log_delivery_configuration(map(), set_log_delivery_configuration_request(), proplists:proplist()) ->
     {ok, set_log_delivery_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, set_log_delivery_configuration_errors(), tuple()}.
 set_log_delivery_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetLogDeliveryConfiguration">>, Input, Options).
@@ -6862,14 +6769,7 @@ set_log_delivery_configuration(Client, Input, Options)
 -spec set_risk_configuration(map(), set_risk_configuration_request()) ->
     {ok, set_risk_configuration_response(), tuple()} |
     {error, any()} |
-    {error, code_delivery_failure_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_email_role_access_policy_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_pool_add_on_not_enabled_exception(), tuple()}.
+    {error, set_risk_configuration_errors(), tuple()}.
 set_risk_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_risk_configuration(Client, Input, []).
@@ -6877,14 +6777,7 @@ set_risk_configuration(Client, Input)
 -spec set_risk_configuration(map(), set_risk_configuration_request(), proplists:proplist()) ->
     {ok, set_risk_configuration_response(), tuple()} |
     {error, any()} |
-    {error, code_delivery_failure_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_email_role_access_policy_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_pool_add_on_not_enabled_exception(), tuple()}.
+    {error, set_risk_configuration_errors(), tuple()}.
 set_risk_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetRiskConfiguration">>, Input, Options).
@@ -6911,11 +6804,7 @@ set_risk_configuration(Client, Input, Options)
 -spec set_ui_customization(map(), set_ui_customization_request()) ->
     {ok, set_ui_customization_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, set_ui_customization_errors(), tuple()}.
 set_ui_customization(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_ui_customization(Client, Input, []).
@@ -6923,11 +6812,7 @@ set_ui_customization(Client, Input)
 -spec set_ui_customization(map(), set_ui_customization_request(), proplists:proplist()) ->
     {ok, set_ui_customization_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, set_ui_customization_errors(), tuple()}.
 set_ui_customization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetUICustomization">>, Input, Options).
@@ -6966,14 +6851,7 @@ set_ui_customization(Client, Input, Options)
 -spec set_user_mfa_preference(map(), set_user_mfa_preference_request()) ->
     {ok, set_user_mfa_preference_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, set_user_mfa_preference_errors(), tuple()}.
 set_user_mfa_preference(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_user_mfa_preference(Client, Input, []).
@@ -6981,14 +6859,7 @@ set_user_mfa_preference(Client, Input)
 -spec set_user_mfa_preference(map(), set_user_mfa_preference_request(), proplists:proplist()) ->
     {ok, set_user_mfa_preference_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, set_user_mfa_preference_errors(), tuple()}.
 set_user_mfa_preference(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetUserMFAPreference">>, Input, Options).
@@ -7026,14 +6897,7 @@ set_user_mfa_preference(Client, Input, Options)
 -spec set_user_pool_mfa_config(map(), set_user_pool_mfa_config_request()) ->
     {ok, set_user_pool_mfa_config_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_sms_role_access_policy_exception(), tuple()} |
-    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, set_user_pool_mfa_config_errors(), tuple()}.
 set_user_pool_mfa_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_user_pool_mfa_config(Client, Input, []).
@@ -7041,14 +6905,7 @@ set_user_pool_mfa_config(Client, Input)
 -spec set_user_pool_mfa_config(map(), set_user_pool_mfa_config_request(), proplists:proplist()) ->
     {ok, set_user_pool_mfa_config_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_sms_role_access_policy_exception(), tuple()} |
-    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, set_user_pool_mfa_config_errors(), tuple()}.
 set_user_pool_mfa_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetUserPoolMfaConfig">>, Input, Options).
@@ -7078,14 +6935,7 @@ set_user_pool_mfa_config(Client, Input, Options)
 -spec set_user_settings(map(), set_user_settings_request()) ->
     {ok, set_user_settings_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, set_user_settings_errors(), tuple()}.
 set_user_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_user_settings(Client, Input, []).
@@ -7093,14 +6943,7 @@ set_user_settings(Client, Input)
 -spec set_user_settings(map(), set_user_settings_request(), proplists:proplist()) ->
     {ok, set_user_settings_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, set_user_settings_errors(), tuple()}.
 set_user_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetUserSettings">>, Input, Options).
@@ -7150,21 +6993,7 @@ set_user_settings(Client, Input, Options)
 -spec sign_up(map(), sign_up_request()) ->
     {ok, sign_up_response(), tuple()} |
     {error, any()} |
-    {error, code_delivery_failure_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_email_role_access_policy_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_password_exception(), tuple()} |
-    {error, invalid_sms_role_access_policy_exception(), tuple()} |
-    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unexpected_lambda_exception(), tuple()} |
-    {error, user_lambda_validation_exception(), tuple()} |
-    {error, username_exists_exception(), tuple()}.
+    {error, sign_up_errors(), tuple()}.
 sign_up(Client, Input)
   when is_map(Client), is_map(Input) ->
     sign_up(Client, Input, []).
@@ -7172,21 +7001,7 @@ sign_up(Client, Input)
 -spec sign_up(map(), sign_up_request(), proplists:proplist()) ->
     {ok, sign_up_response(), tuple()} |
     {error, any()} |
-    {error, code_delivery_failure_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_email_role_access_policy_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_password_exception(), tuple()} |
-    {error, invalid_sms_role_access_policy_exception(), tuple()} |
-    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unexpected_lambda_exception(), tuple()} |
-    {error, user_lambda_validation_exception(), tuple()} |
-    {error, username_exists_exception(), tuple()}.
+    {error, sign_up_errors(), tuple()}.
 sign_up(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SignUp">>, Input, Options).
@@ -7195,12 +7010,7 @@ sign_up(Client, Input, Options)
 -spec start_user_import_job(map(), start_user_import_job_request()) ->
     {ok, start_user_import_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, start_user_import_job_errors(), tuple()}.
 start_user_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_user_import_job(Client, Input, []).
@@ -7208,12 +7018,7 @@ start_user_import_job(Client, Input)
 -spec start_user_import_job(map(), start_user_import_job_request(), proplists:proplist()) ->
     {ok, start_user_import_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, start_user_import_job_errors(), tuple()}.
 start_user_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartUserImportJob">>, Input, Options).
@@ -7222,12 +7027,7 @@ start_user_import_job(Client, Input, Options)
 -spec stop_user_import_job(map(), stop_user_import_job_request()) ->
     {ok, stop_user_import_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, stop_user_import_job_errors(), tuple()}.
 stop_user_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_user_import_job(Client, Input, []).
@@ -7235,12 +7035,7 @@ stop_user_import_job(Client, Input)
 -spec stop_user_import_job(map(), stop_user_import_job_request(), proplists:proplist()) ->
     {ok, stop_user_import_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, stop_user_import_job_errors(), tuple()}.
 stop_user_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopUserImportJob">>, Input, Options).
@@ -7276,11 +7071,7 @@ stop_user_import_job(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -7288,11 +7079,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -7304,11 +7091,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -7316,11 +7099,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -7345,13 +7124,7 @@ untag_resource(Client, Input, Options)
 -spec update_auth_event_feedback(map(), update_auth_event_feedback_request()) ->
     {ok, update_auth_event_feedback_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()} |
-    {error, user_pool_add_on_not_enabled_exception(), tuple()}.
+    {error, update_auth_event_feedback_errors(), tuple()}.
 update_auth_event_feedback(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_auth_event_feedback(Client, Input, []).
@@ -7359,13 +7132,7 @@ update_auth_event_feedback(Client, Input)
 -spec update_auth_event_feedback(map(), update_auth_event_feedback_request(), proplists:proplist()) ->
     {ok, update_auth_event_feedback_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()} |
-    {error, user_pool_add_on_not_enabled_exception(), tuple()}.
+    {error, update_auth_event_feedback_errors(), tuple()}.
 update_auth_event_feedback(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAuthEventFeedback">>, Input, Options).
@@ -7391,16 +7158,7 @@ update_auth_event_feedback(Client, Input, Options)
 -spec update_device_status(map(), update_device_status_request()) ->
     {ok, update_device_status_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_user_pool_configuration_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, update_device_status_errors(), tuple()}.
 update_device_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_device_status(Client, Input, []).
@@ -7408,16 +7166,7 @@ update_device_status(Client, Input)
 -spec update_device_status(map(), update_device_status_request(), proplists:proplist()) ->
     {ok, update_device_status_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_user_pool_configuration_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, update_device_status_errors(), tuple()}.
 update_device_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDeviceStatus">>, Input, Options).
@@ -7440,11 +7189,7 @@ update_device_status(Client, Input, Options)
 -spec update_group(map(), update_group_request()) ->
     {ok, update_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_group_errors(), tuple()}.
 update_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_group(Client, Input, []).
@@ -7452,11 +7197,7 @@ update_group(Client, Input)
 -spec update_group(map(), update_group_request(), proplists:proplist()) ->
     {ok, update_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_group_errors(), tuple()}.
 update_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGroup">>, Input, Options).
@@ -7479,13 +7220,7 @@ update_group(Client, Input, Options)
 -spec update_identity_provider(map(), update_identity_provider_request()) ->
     {ok, update_identity_provider_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_identity_provider_exception(), tuple()}.
+    {error, update_identity_provider_errors(), tuple()}.
 update_identity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_identity_provider(Client, Input, []).
@@ -7493,13 +7228,7 @@ update_identity_provider(Client, Input)
 -spec update_identity_provider(map(), update_identity_provider_request(), proplists:proplist()) ->
     {ok, update_identity_provider_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_identity_provider_exception(), tuple()}.
+    {error, update_identity_provider_errors(), tuple()}.
 update_identity_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateIdentityProvider">>, Input, Options).
@@ -7528,11 +7257,7 @@ update_identity_provider(Client, Input, Options)
 -spec update_resource_server(map(), update_resource_server_request()) ->
     {ok, update_resource_server_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_resource_server_errors(), tuple()}.
 update_resource_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_resource_server(Client, Input, []).
@@ -7540,11 +7265,7 @@ update_resource_server(Client, Input)
 -spec update_resource_server(map(), update_resource_server_request(), proplists:proplist()) ->
     {ok, update_resource_server_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_resource_server_errors(), tuple()}.
 update_resource_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateResourceServer">>, Input, Options).
@@ -7604,25 +7325,7 @@ update_resource_server(Client, Input, Options)
 -spec update_user_attributes(map(), update_user_attributes_request()) ->
     {ok, update_user_attributes_response(), tuple()} |
     {error, any()} |
-    {error, alias_exists_exception(), tuple()} |
-    {error, code_delivery_failure_exception(), tuple()} |
-    {error, code_mismatch_exception(), tuple()} |
-    {error, expired_code_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_email_role_access_policy_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_sms_role_access_policy_exception(), tuple()} |
-    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unexpected_lambda_exception(), tuple()} |
-    {error, user_lambda_validation_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, update_user_attributes_errors(), tuple()}.
 update_user_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_attributes(Client, Input, []).
@@ -7630,25 +7333,7 @@ update_user_attributes(Client, Input)
 -spec update_user_attributes(map(), update_user_attributes_request(), proplists:proplist()) ->
     {ok, update_user_attributes_response(), tuple()} |
     {error, any()} |
-    {error, alias_exists_exception(), tuple()} |
-    {error, code_delivery_failure_exception(), tuple()} |
-    {error, code_mismatch_exception(), tuple()} |
-    {error, expired_code_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_email_role_access_policy_exception(), tuple()} |
-    {error, invalid_lambda_response_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_sms_role_access_policy_exception(), tuple()} |
-    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unexpected_lambda_exception(), tuple()} |
-    {error, user_lambda_validation_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, update_user_attributes_errors(), tuple()}.
 update_user_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUserAttributes">>, Input, Options).
@@ -7708,17 +7393,7 @@ update_user_attributes(Client, Input, Options)
 -spec update_user_pool(map(), update_user_pool_request()) ->
     {ok, update_user_pool_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_email_role_access_policy_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_sms_role_access_policy_exception(), tuple()} |
-    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_import_in_progress_exception(), tuple()} |
-    {error, user_pool_tagging_exception(), tuple()}.
+    {error, update_user_pool_errors(), tuple()}.
 update_user_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_pool(Client, Input, []).
@@ -7726,17 +7401,7 @@ update_user_pool(Client, Input)
 -spec update_user_pool(map(), update_user_pool_request(), proplists:proplist()) ->
     {ok, update_user_pool_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_email_role_access_policy_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_sms_role_access_policy_exception(), tuple()} |
-    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_import_in_progress_exception(), tuple()} |
-    {error, user_pool_tagging_exception(), tuple()}.
+    {error, update_user_pool_errors(), tuple()}.
 update_user_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUserPool">>, Input, Options).
@@ -7773,14 +7438,7 @@ update_user_pool(Client, Input, Options)
 -spec update_user_pool_client(map(), update_user_pool_client_request()) ->
     {ok, update_user_pool_client_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_o_auth_flow_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, scope_does_not_exist_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_user_pool_client_errors(), tuple()}.
 update_user_pool_client(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_pool_client(Client, Input, []).
@@ -7788,14 +7446,7 @@ update_user_pool_client(Client, Input)
 -spec update_user_pool_client(map(), update_user_pool_client_request(), proplists:proplist()) ->
     {ok, update_user_pool_client_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_o_auth_flow_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, scope_does_not_exist_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_user_pool_client_errors(), tuple()}.
 update_user_pool_client(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUserPoolClient">>, Input, Options).
@@ -7858,11 +7509,7 @@ update_user_pool_client(Client, Input, Options)
 -spec update_user_pool_domain(map(), update_user_pool_domain_request()) ->
     {ok, update_user_pool_domain_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_user_pool_domain_errors(), tuple()}.
 update_user_pool_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_pool_domain(Client, Input, []).
@@ -7870,11 +7517,7 @@ update_user_pool_domain(Client, Input)
 -spec update_user_pool_domain(map(), update_user_pool_domain_request(), proplists:proplist()) ->
     {ok, update_user_pool_domain_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_user_pool_domain_errors(), tuple()}.
 update_user_pool_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUserPoolDomain">>, Input, Options).
@@ -7899,19 +7542,7 @@ update_user_pool_domain(Client, Input, Options)
 -spec verify_software_token(map(), verify_software_token_request()) ->
     {ok, verify_software_token_response(), tuple()} |
     {error, any()} |
-    {error, code_mismatch_exception(), tuple()} |
-    {error, enable_software_token_mfa_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_user_pool_configuration_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, software_token_mfa_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, verify_software_token_errors(), tuple()}.
 verify_software_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify_software_token(Client, Input, []).
@@ -7919,19 +7550,7 @@ verify_software_token(Client, Input)
 -spec verify_software_token(map(), verify_software_token_request(), proplists:proplist()) ->
     {ok, verify_software_token_response(), tuple()} |
     {error, any()} |
-    {error, code_mismatch_exception(), tuple()} |
-    {error, enable_software_token_mfa_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_user_pool_configuration_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, software_token_mfa_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, verify_software_token_errors(), tuple()}.
 verify_software_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"VerifySoftwareToken">>, Input, Options).
@@ -7960,19 +7579,7 @@ verify_software_token(Client, Input, Options)
 -spec verify_user_attribute(map(), verify_user_attribute_request()) ->
     {ok, verify_user_attribute_response(), tuple()} |
     {error, any()} |
-    {error, alias_exists_exception(), tuple()} |
-    {error, code_mismatch_exception(), tuple()} |
-    {error, expired_code_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, verify_user_attribute_errors(), tuple()}.
 verify_user_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify_user_attribute(Client, Input, []).
@@ -7980,19 +7587,7 @@ verify_user_attribute(Client, Input)
 -spec verify_user_attribute(map(), verify_user_attribute_request(), proplists:proplist()) ->
     {ok, verify_user_attribute_response(), tuple()} |
     {error, any()} |
-    {error, alias_exists_exception(), tuple()} |
-    {error, code_mismatch_exception(), tuple()} |
-    {error, expired_code_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, password_reset_required_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, user_not_confirmed_exception(), tuple()} |
-    {error, user_not_found_exception(), tuple()}.
+    {error, verify_user_attribute_errors(), tuple()}.
 verify_user_attribute(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"VerifyUserAttribute">>, Input, Options).

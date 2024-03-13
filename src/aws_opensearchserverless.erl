@@ -1004,6 +1004,198 @@
 %% }
 -type create_security_policy_request() :: #{binary() => any()}.
 
+-type batch_get_collection_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type batch_get_effective_lifecycle_policy_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type batch_get_lifecycle_policy_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type batch_get_vpc_endpoint_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type create_access_policy_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_collection_errors() ::
+    ocu_limit_exceeded_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_lifecycle_policy_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_security_config_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_security_policy_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_vpc_endpoint_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_access_policy_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_collection_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_lifecycle_policy_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_security_config_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_security_policy_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_vpc_endpoint_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_access_policy_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_account_settings_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type get_policies_stats_errors() ::
+    internal_server_exception().
+
+-type get_security_config_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_security_policy_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_access_policies_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_collections_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_lifecycle_policies_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_security_configs_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_security_policies_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_vpc_endpoints_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_access_policy_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_account_settings_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type update_collection_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type update_lifecycle_policy_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_security_config_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_security_policy_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_vpc_endpoint_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -1019,8 +1211,7 @@
 -spec batch_get_collection(map(), batch_get_collection_request()) ->
     {ok, batch_get_collection_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_collection_errors(), tuple()}.
 batch_get_collection(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_collection(Client, Input, []).
@@ -1028,8 +1219,7 @@ batch_get_collection(Client, Input)
 -spec batch_get_collection(map(), batch_get_collection_request(), proplists:proplist()) ->
     {ok, batch_get_collection_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_collection_errors(), tuple()}.
 batch_get_collection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetCollection">>, Input, Options).
@@ -1042,8 +1232,7 @@ batch_get_collection(Client, Input, Options)
 -spec batch_get_effective_lifecycle_policy(map(), batch_get_effective_lifecycle_policy_request()) ->
     {ok, batch_get_effective_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_effective_lifecycle_policy_errors(), tuple()}.
 batch_get_effective_lifecycle_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_effective_lifecycle_policy(Client, Input, []).
@@ -1051,8 +1240,7 @@ batch_get_effective_lifecycle_policy(Client, Input)
 -spec batch_get_effective_lifecycle_policy(map(), batch_get_effective_lifecycle_policy_request(), proplists:proplist()) ->
     {ok, batch_get_effective_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_effective_lifecycle_policy_errors(), tuple()}.
 batch_get_effective_lifecycle_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetEffectiveLifecyclePolicy">>, Input, Options).
@@ -1065,8 +1253,7 @@ batch_get_effective_lifecycle_policy(Client, Input, Options)
 -spec batch_get_lifecycle_policy(map(), batch_get_lifecycle_policy_request()) ->
     {ok, batch_get_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_lifecycle_policy_errors(), tuple()}.
 batch_get_lifecycle_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_lifecycle_policy(Client, Input, []).
@@ -1074,8 +1261,7 @@ batch_get_lifecycle_policy(Client, Input)
 -spec batch_get_lifecycle_policy(map(), batch_get_lifecycle_policy_request(), proplists:proplist()) ->
     {ok, batch_get_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_lifecycle_policy_errors(), tuple()}.
 batch_get_lifecycle_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetLifecyclePolicy">>, Input, Options).
@@ -1089,8 +1275,7 @@ batch_get_lifecycle_policy(Client, Input, Options)
 -spec batch_get_vpc_endpoint(map(), batch_get_vpc_endpoint_request()) ->
     {ok, batch_get_vpc_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_vpc_endpoint_errors(), tuple()}.
 batch_get_vpc_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_vpc_endpoint(Client, Input, []).
@@ -1098,8 +1283,7 @@ batch_get_vpc_endpoint(Client, Input)
 -spec batch_get_vpc_endpoint(map(), batch_get_vpc_endpoint_request(), proplists:proplist()) ->
     {ok, batch_get_vpc_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_vpc_endpoint_errors(), tuple()}.
 batch_get_vpc_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetVpcEndpoint">>, Input, Options).
@@ -1115,10 +1299,7 @@ batch_get_vpc_endpoint(Client, Input, Options)
 -spec create_access_policy(map(), create_access_policy_request()) ->
     {ok, create_access_policy_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_access_policy_errors(), tuple()}.
 create_access_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_access_policy(Client, Input, []).
@@ -1126,10 +1307,7 @@ create_access_policy(Client, Input)
 -spec create_access_policy(map(), create_access_policy_request(), proplists:proplist()) ->
     {ok, create_access_policy_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_access_policy_errors(), tuple()}.
 create_access_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAccessPolicy">>, Input, Options).
@@ -1142,11 +1320,7 @@ create_access_policy(Client, Input, Options)
 -spec create_collection(map(), create_collection_request()) ->
     {ok, create_collection_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, ocu_limit_exceeded_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_collection_errors(), tuple()}.
 create_collection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_collection(Client, Input, []).
@@ -1154,11 +1328,7 @@ create_collection(Client, Input)
 -spec create_collection(map(), create_collection_request(), proplists:proplist()) ->
     {ok, create_collection_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, ocu_limit_exceeded_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_collection_errors(), tuple()}.
 create_collection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCollection">>, Input, Options).
@@ -1173,10 +1343,7 @@ create_collection(Client, Input, Options)
 -spec create_lifecycle_policy(map(), create_lifecycle_policy_request()) ->
     {ok, create_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_lifecycle_policy_errors(), tuple()}.
 create_lifecycle_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_lifecycle_policy(Client, Input, []).
@@ -1184,10 +1351,7 @@ create_lifecycle_policy(Client, Input)
 -spec create_lifecycle_policy(map(), create_lifecycle_policy_request(), proplists:proplist()) ->
     {ok, create_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_lifecycle_policy_errors(), tuple()}.
 create_lifecycle_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLifecyclePolicy">>, Input, Options).
@@ -1201,10 +1365,7 @@ create_lifecycle_policy(Client, Input, Options)
 -spec create_security_config(map(), create_security_config_request()) ->
     {ok, create_security_config_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_security_config_errors(), tuple()}.
 create_security_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_security_config(Client, Input, []).
@@ -1212,10 +1373,7 @@ create_security_config(Client, Input)
 -spec create_security_config(map(), create_security_config_request(), proplists:proplist()) ->
     {ok, create_security_config_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_security_config_errors(), tuple()}.
 create_security_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSecurityConfig">>, Input, Options).
@@ -1237,10 +1395,7 @@ create_security_config(Client, Input, Options)
 -spec create_security_policy(map(), create_security_policy_request()) ->
     {ok, create_security_policy_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_security_policy_errors(), tuple()}.
 create_security_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_security_policy(Client, Input, []).
@@ -1248,10 +1403,7 @@ create_security_policy(Client, Input)
 -spec create_security_policy(map(), create_security_policy_request(), proplists:proplist()) ->
     {ok, create_security_policy_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_security_policy_errors(), tuple()}.
 create_security_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSecurityPolicy">>, Input, Options).
@@ -1264,10 +1416,7 @@ create_security_policy(Client, Input, Options)
 -spec create_vpc_endpoint(map(), create_vpc_endpoint_request()) ->
     {ok, create_vpc_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_vpc_endpoint_errors(), tuple()}.
 create_vpc_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vpc_endpoint(Client, Input, []).
@@ -1275,10 +1424,7 @@ create_vpc_endpoint(Client, Input)
 -spec create_vpc_endpoint(map(), create_vpc_endpoint_request(), proplists:proplist()) ->
     {ok, create_vpc_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_vpc_endpoint_errors(), tuple()}.
 create_vpc_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateVpcEndpoint">>, Input, Options).
@@ -1291,10 +1437,7 @@ create_vpc_endpoint(Client, Input, Options)
 -spec delete_access_policy(map(), delete_access_policy_request()) ->
     {ok, delete_access_policy_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_access_policy_errors(), tuple()}.
 delete_access_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_access_policy(Client, Input, []).
@@ -1302,10 +1445,7 @@ delete_access_policy(Client, Input)
 -spec delete_access_policy(map(), delete_access_policy_request(), proplists:proplist()) ->
     {ok, delete_access_policy_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_access_policy_errors(), tuple()}.
 delete_access_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAccessPolicy">>, Input, Options).
@@ -1318,10 +1458,7 @@ delete_access_policy(Client, Input, Options)
 -spec delete_collection(map(), delete_collection_request()) ->
     {ok, delete_collection_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_collection_errors(), tuple()}.
 delete_collection(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_collection(Client, Input, []).
@@ -1329,10 +1466,7 @@ delete_collection(Client, Input)
 -spec delete_collection(map(), delete_collection_request(), proplists:proplist()) ->
     {ok, delete_collection_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_collection_errors(), tuple()}.
 delete_collection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCollection">>, Input, Options).
@@ -1344,10 +1478,7 @@ delete_collection(Client, Input, Options)
 -spec delete_lifecycle_policy(map(), delete_lifecycle_policy_request()) ->
     {ok, delete_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_lifecycle_policy_errors(), tuple()}.
 delete_lifecycle_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_lifecycle_policy(Client, Input, []).
@@ -1355,10 +1486,7 @@ delete_lifecycle_policy(Client, Input)
 -spec delete_lifecycle_policy(map(), delete_lifecycle_policy_request(), proplists:proplist()) ->
     {ok, delete_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_lifecycle_policy_errors(), tuple()}.
 delete_lifecycle_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLifecyclePolicy">>, Input, Options).
@@ -1372,10 +1500,7 @@ delete_lifecycle_policy(Client, Input, Options)
 -spec delete_security_config(map(), delete_security_config_request()) ->
     {ok, delete_security_config_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_security_config_errors(), tuple()}.
 delete_security_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_security_config(Client, Input, []).
@@ -1383,10 +1508,7 @@ delete_security_config(Client, Input)
 -spec delete_security_config(map(), delete_security_config_request(), proplists:proplist()) ->
     {ok, delete_security_config_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_security_config_errors(), tuple()}.
 delete_security_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSecurityConfig">>, Input, Options).
@@ -1395,10 +1517,7 @@ delete_security_config(Client, Input, Options)
 -spec delete_security_policy(map(), delete_security_policy_request()) ->
     {ok, delete_security_policy_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_security_policy_errors(), tuple()}.
 delete_security_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_security_policy(Client, Input, []).
@@ -1406,10 +1525,7 @@ delete_security_policy(Client, Input)
 -spec delete_security_policy(map(), delete_security_policy_request(), proplists:proplist()) ->
     {ok, delete_security_policy_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_security_policy_errors(), tuple()}.
 delete_security_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSecurityPolicy">>, Input, Options).
@@ -1422,10 +1538,7 @@ delete_security_policy(Client, Input, Options)
 -spec delete_vpc_endpoint(map(), delete_vpc_endpoint_request()) ->
     {ok, delete_vpc_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_vpc_endpoint_errors(), tuple()}.
 delete_vpc_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_vpc_endpoint(Client, Input, []).
@@ -1433,10 +1546,7 @@ delete_vpc_endpoint(Client, Input)
 -spec delete_vpc_endpoint(map(), delete_vpc_endpoint_request(), proplists:proplist()) ->
     {ok, delete_vpc_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_vpc_endpoint_errors(), tuple()}.
 delete_vpc_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteVpcEndpoint">>, Input, Options).
@@ -1449,9 +1559,7 @@ delete_vpc_endpoint(Client, Input, Options)
 -spec get_access_policy(map(), get_access_policy_request()) ->
     {ok, get_access_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_access_policy_errors(), tuple()}.
 get_access_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_access_policy(Client, Input, []).
@@ -1459,9 +1567,7 @@ get_access_policy(Client, Input)
 -spec get_access_policy(map(), get_access_policy_request(), proplists:proplist()) ->
     {ok, get_access_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_access_policy_errors(), tuple()}.
 get_access_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAccessPolicy">>, Input, Options).
@@ -1470,8 +1576,7 @@ get_access_policy(Client, Input, Options)
 -spec get_account_settings(map(), get_account_settings_request()) ->
     {ok, get_account_settings_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_account_settings_errors(), tuple()}.
 get_account_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_account_settings(Client, Input, []).
@@ -1479,8 +1584,7 @@ get_account_settings(Client, Input)
 -spec get_account_settings(map(), get_account_settings_request(), proplists:proplist()) ->
     {ok, get_account_settings_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_account_settings_errors(), tuple()}.
 get_account_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAccountSettings">>, Input, Options).
@@ -1491,7 +1595,7 @@ get_account_settings(Client, Input, Options)
 -spec get_policies_stats(map(), get_policies_stats_request()) ->
     {ok, get_policies_stats_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, get_policies_stats_errors(), tuple()}.
 get_policies_stats(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_policies_stats(Client, Input, []).
@@ -1499,7 +1603,7 @@ get_policies_stats(Client, Input)
 -spec get_policies_stats(map(), get_policies_stats_request(), proplists:proplist()) ->
     {ok, get_policies_stats_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, get_policies_stats_errors(), tuple()}.
 get_policies_stats(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPoliciesStats">>, Input, Options).
@@ -1514,9 +1618,7 @@ get_policies_stats(Client, Input, Options)
 -spec get_security_config(map(), get_security_config_request()) ->
     {ok, get_security_config_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_security_config_errors(), tuple()}.
 get_security_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_security_config(Client, Input, []).
@@ -1524,9 +1626,7 @@ get_security_config(Client, Input)
 -spec get_security_config(map(), get_security_config_request(), proplists:proplist()) ->
     {ok, get_security_config_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_security_config_errors(), tuple()}.
 get_security_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSecurityConfig">>, Input, Options).
@@ -1543,9 +1643,7 @@ get_security_config(Client, Input, Options)
 -spec get_security_policy(map(), get_security_policy_request()) ->
     {ok, get_security_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_security_policy_errors(), tuple()}.
 get_security_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_security_policy(Client, Input, []).
@@ -1553,9 +1651,7 @@ get_security_policy(Client, Input)
 -spec get_security_policy(map(), get_security_policy_request(), proplists:proplist()) ->
     {ok, get_security_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_security_policy_errors(), tuple()}.
 get_security_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSecurityPolicy">>, Input, Options).
@@ -1565,8 +1661,7 @@ get_security_policy(Client, Input, Options)
 -spec list_access_policies(map(), list_access_policies_request()) ->
     {ok, list_access_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_access_policies_errors(), tuple()}.
 list_access_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_access_policies(Client, Input, []).
@@ -1574,8 +1669,7 @@ list_access_policies(Client, Input)
 -spec list_access_policies(map(), list_access_policies_request(), proplists:proplist()) ->
     {ok, list_access_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_access_policies_errors(), tuple()}.
 list_access_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAccessPolicies">>, Input, Options).
@@ -1592,8 +1686,7 @@ list_access_policies(Client, Input, Options)
 -spec list_collections(map(), list_collections_request()) ->
     {ok, list_collections_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_collections_errors(), tuple()}.
 list_collections(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_collections(Client, Input, []).
@@ -1601,8 +1694,7 @@ list_collections(Client, Input)
 -spec list_collections(map(), list_collections_request(), proplists:proplist()) ->
     {ok, list_collections_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_collections_errors(), tuple()}.
 list_collections(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCollections">>, Input, Options).
@@ -1614,8 +1706,7 @@ list_collections(Client, Input, Options)
 -spec list_lifecycle_policies(map(), list_lifecycle_policies_request()) ->
     {ok, list_lifecycle_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_lifecycle_policies_errors(), tuple()}.
 list_lifecycle_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_lifecycle_policies(Client, Input, []).
@@ -1623,8 +1714,7 @@ list_lifecycle_policies(Client, Input)
 -spec list_lifecycle_policies(map(), list_lifecycle_policies_request(), proplists:proplist()) ->
     {ok, list_lifecycle_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_lifecycle_policies_errors(), tuple()}.
 list_lifecycle_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLifecyclePolicies">>, Input, Options).
@@ -1639,8 +1729,7 @@ list_lifecycle_policies(Client, Input, Options)
 -spec list_security_configs(map(), list_security_configs_request()) ->
     {ok, list_security_configs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_security_configs_errors(), tuple()}.
 list_security_configs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_security_configs(Client, Input, []).
@@ -1648,8 +1737,7 @@ list_security_configs(Client, Input)
 -spec list_security_configs(map(), list_security_configs_request(), proplists:proplist()) ->
     {ok, list_security_configs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_security_configs_errors(), tuple()}.
 list_security_configs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSecurityConfigs">>, Input, Options).
@@ -1659,8 +1747,7 @@ list_security_configs(Client, Input, Options)
 -spec list_security_policies(map(), list_security_policies_request()) ->
     {ok, list_security_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_security_policies_errors(), tuple()}.
 list_security_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_security_policies(Client, Input, []).
@@ -1668,8 +1755,7 @@ list_security_policies(Client, Input)
 -spec list_security_policies(map(), list_security_policies_request(), proplists:proplist()) ->
     {ok, list_security_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_security_policies_errors(), tuple()}.
 list_security_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSecurityPolicies">>, Input, Options).
@@ -1682,9 +1768,7 @@ list_security_policies(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -1692,9 +1776,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -1709,8 +1791,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec list_vpc_endpoints(map(), list_vpc_endpoints_request()) ->
     {ok, list_vpc_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_vpc_endpoints_errors(), tuple()}.
 list_vpc_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_vpc_endpoints(Client, Input, []).
@@ -1718,8 +1799,7 @@ list_vpc_endpoints(Client, Input)
 -spec list_vpc_endpoints(map(), list_vpc_endpoints_request(), proplists:proplist()) ->
     {ok, list_vpc_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_vpc_endpoints_errors(), tuple()}.
 list_vpc_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListVpcEndpoints">>, Input, Options).
@@ -1732,11 +1812,7 @@ list_vpc_endpoints(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -1744,11 +1820,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -1761,10 +1833,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -1772,10 +1841,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -1788,10 +1854,7 @@ untag_resource(Client, Input, Options)
 -spec update_access_policy(map(), update_access_policy_request()) ->
     {ok, update_access_policy_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_access_policy_errors(), tuple()}.
 update_access_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_access_policy(Client, Input, []).
@@ -1799,10 +1862,7 @@ update_access_policy(Client, Input)
 -spec update_access_policy(map(), update_access_policy_request(), proplists:proplist()) ->
     {ok, update_access_policy_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_access_policy_errors(), tuple()}.
 update_access_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAccessPolicy">>, Input, Options).
@@ -1817,8 +1877,7 @@ update_access_policy(Client, Input, Options)
 -spec update_account_settings(map(), update_account_settings_request()) ->
     {ok, update_account_settings_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_account_settings_errors(), tuple()}.
 update_account_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_account_settings(Client, Input, []).
@@ -1826,8 +1885,7 @@ update_account_settings(Client, Input)
 -spec update_account_settings(map(), update_account_settings_request(), proplists:proplist()) ->
     {ok, update_account_settings_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_account_settings_errors(), tuple()}.
 update_account_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAccountSettings">>, Input, Options).
@@ -1836,9 +1894,7 @@ update_account_settings(Client, Input, Options)
 -spec update_collection(map(), update_collection_request()) ->
     {ok, update_collection_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_collection_errors(), tuple()}.
 update_collection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_collection(Client, Input, []).
@@ -1846,9 +1902,7 @@ update_collection(Client, Input)
 -spec update_collection(map(), update_collection_request(), proplists:proplist()) ->
     {ok, update_collection_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_collection_errors(), tuple()}.
 update_collection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCollection">>, Input, Options).
@@ -1860,11 +1914,7 @@ update_collection(Client, Input, Options)
 -spec update_lifecycle_policy(map(), update_lifecycle_policy_request()) ->
     {ok, update_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_lifecycle_policy_errors(), tuple()}.
 update_lifecycle_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_lifecycle_policy(Client, Input, []).
@@ -1872,11 +1922,7 @@ update_lifecycle_policy(Client, Input)
 -spec update_lifecycle_policy(map(), update_lifecycle_policy_request(), proplists:proplist()) ->
     {ok, update_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_lifecycle_policy_errors(), tuple()}.
 update_lifecycle_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLifecyclePolicy">>, Input, Options).
@@ -1890,10 +1936,7 @@ update_lifecycle_policy(Client, Input, Options)
 -spec update_security_config(map(), update_security_config_request()) ->
     {ok, update_security_config_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_security_config_errors(), tuple()}.
 update_security_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_security_config(Client, Input, []).
@@ -1901,10 +1944,7 @@ update_security_config(Client, Input)
 -spec update_security_config(map(), update_security_config_request(), proplists:proplist()) ->
     {ok, update_security_config_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_security_config_errors(), tuple()}.
 update_security_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSecurityConfig">>, Input, Options).
@@ -1920,11 +1960,7 @@ update_security_config(Client, Input, Options)
 -spec update_security_policy(map(), update_security_policy_request()) ->
     {ok, update_security_policy_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_security_policy_errors(), tuple()}.
 update_security_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_security_policy(Client, Input, []).
@@ -1932,11 +1968,7 @@ update_security_policy(Client, Input)
 -spec update_security_policy(map(), update_security_policy_request(), proplists:proplist()) ->
     {ok, update_security_policy_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_security_policy_errors(), tuple()}.
 update_security_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSecurityPolicy">>, Input, Options).
@@ -1949,9 +1981,7 @@ update_security_policy(Client, Input, Options)
 -spec update_vpc_endpoint(map(), update_vpc_endpoint_request()) ->
     {ok, update_vpc_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_vpc_endpoint_errors(), tuple()}.
 update_vpc_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_vpc_endpoint(Client, Input, []).
@@ -1959,9 +1989,7 @@ update_vpc_endpoint(Client, Input)
 -spec update_vpc_endpoint(map(), update_vpc_endpoint_request(), proplists:proplist()) ->
     {ok, update_vpc_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_vpc_endpoint_errors(), tuple()}.
 update_vpc_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateVpcEndpoint">>, Input, Options).

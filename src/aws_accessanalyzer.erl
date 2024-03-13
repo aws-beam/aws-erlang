@@ -137,6 +137,7 @@
 %% }
 -type trail_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% cloud_trail_details() :: #{
 %%   <<"accessRole">> => string(),
@@ -146,11 +147,13 @@
 %% }
 -type cloud_trail_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> => map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% reason_summary() :: #{
@@ -160,11 +163,13 @@
 %% }
 -type reason_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% status_reason() :: #{
 %%   <<"code">> => string()
 %% }
 -type status_reason() :: #{binary() => any()}.
+
 
 %% Example:
 %% vpc_configuration() :: #{
@@ -172,14 +177,17 @@
 %% }
 -type vpc_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_archive_rule_request() :: #{
 %%   <<"clientToken">> => [string()]
 %% }
 -type delete_archive_rule_request() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% list_access_previews_response() :: #{
@@ -188,12 +196,14 @@
 %% }
 -type list_access_previews_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% unused_iam_user_access_key_details() :: #{
 %%   <<"accessKeyId">> => [string()],
 %%   <<"lastAccessed">> => non_neg_integer()
 %% }
 -type unused_iam_user_access_key_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% kms_grant_constraints() :: #{
@@ -202,6 +212,7 @@
 %% }
 -type kms_grant_constraints() :: #{binary() => any()}.
 
+
 %% Example:
 %% generated_policy_properties() :: #{
 %%   <<"cloudTrailProperties">> => cloud_trail_properties(),
@@ -209,6 +220,7 @@
 %%   <<"principalArn">> => string()
 %% }
 -type generated_policy_properties() :: #{binary() => any()}.
+
 
 %% Example:
 %% finding_summary() :: #{
@@ -229,6 +241,7 @@
 %% }
 -type finding_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_access_previews_request() :: #{
 %%   <<"analyzerArn">> := string(),
@@ -237,11 +250,13 @@
 %% }
 -type list_access_previews_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% sns_topic_configuration() :: #{
 %%   <<"topicPolicy">> => string()
 %% }
 -type sns_topic_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% unused_access_configuration() :: #{
@@ -249,12 +264,14 @@
 %% }
 -type unused_access_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_bucket_acl_grant_configuration() :: #{
 %%   <<"grantee">> => list(),
 %%   <<"permission">> => string()
 %% }
 -type s3_bucket_acl_grant_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% analyzed_resource() :: #{
@@ -272,11 +289,13 @@
 %% }
 -type analyzed_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_analyzer_response() :: #{
 %%   <<"analyzer">> => analyzer_summary()
 %% }
 -type get_analyzer_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_findings_response() :: #{
@@ -284,6 +303,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_findings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_analyzer_request() :: #{
@@ -296,17 +316,20 @@
 %% }
 -type create_analyzer_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% unused_iam_user_password_details() :: #{
 %%   <<"lastAccessed">> => non_neg_integer()
 %% }
 -type unused_iam_user_password_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% unused_iam_role_details() :: #{
 %%   <<"lastAccessed">> => non_neg_integer()
 %% }
 -type unused_iam_role_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% unused_permission_details() :: #{
@@ -316,17 +339,20 @@
 %% }
 -type unused_permission_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> => list([string()]())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_analyzed_resource_response() :: #{
 %%   <<"resource">> => analyzed_resource()
 %% }
 -type get_analyzed_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_finding_v2_request() :: #{
@@ -336,6 +362,7 @@
 %% }
 -type get_finding_v2_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% check_no_new_access_request() :: #{
 %%   <<"existingPolicyDocument">> := string(),
@@ -343,6 +370,7 @@
 %%   <<"policyType">> := string()
 %% }
 -type check_no_new_access_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% position() :: #{
@@ -352,11 +380,13 @@
 %% }
 -type position() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_analyzer_request() :: #{
 %%   <<"clientToken">> => [string()]
 %% }
 -type delete_analyzer_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_analyzers_response() :: #{
@@ -365,6 +395,7 @@
 %% }
 -type list_analyzers_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% check_access_not_granted_response() :: #{
 %%   <<"message">> => [string()],
@@ -372,9 +403,11 @@
 %%   <<"result">> => string()
 %% }
 -type check_access_not_granted_response() :: #{binary() => any()}.
+
 %% Example:
 %% cancel_policy_generation_response() :: #{}
 -type cancel_policy_generation_response() :: #{}.
+
 
 %% Example:
 %% list_findings_v2_request() :: #{
@@ -386,6 +419,7 @@
 %% }
 -type list_findings_v2_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_analyzed_resources_request() :: #{
 %%   <<"analyzerArn">> => string(),
@@ -395,11 +429,13 @@
 %% }
 -type list_analyzed_resources_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_preview_status_reason() :: #{
 %%   <<"code">> => string()
 %% }
 -type access_preview_status_reason() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_archive_rules_request() :: #{
@@ -408,12 +444,14 @@
 %% }
 -type list_archive_rules_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% span() :: #{
 %%   <<"end">> => position(),
 %%   <<"start">> => position()
 %% }
 -type span() :: #{binary() => any()}.
+
 
 %% Example:
 %% finding_source() :: #{
@@ -422,12 +460,14 @@
 %% }
 -type finding_source() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_analyzed_resources_response() :: #{
 %%   <<"analyzedResources">> => list(analyzed_resource_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_analyzed_resources_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% access_preview_finding() :: #{
@@ -449,6 +489,7 @@
 %% }
 -type access_preview_finding() :: #{binary() => any()}.
 
+
 %% Example:
 %% archive_rule_summary() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
@@ -458,6 +499,7 @@
 %% }
 -type archive_rule_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => [string()],
@@ -465,6 +507,7 @@
 %%   <<"resourceType">> => [string()]
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -474,6 +517,7 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_access_preview_request() :: #{
 %%   <<"analyzerArn">> := string(),
@@ -482,17 +526,20 @@
 %% }
 -type create_access_preview_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% policy_generation_details() :: #{
 %%   <<"principalArn">> => string()
 %% }
 -type policy_generation_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% ecr_repository_configuration() :: #{
 %%   <<"repositoryPolicy">> => string()
 %% }
 -type ecr_repository_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_generated_policy_response() :: #{
@@ -501,6 +548,7 @@
 %% }
 -type get_generated_policy_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => [string()],
@@ -508,6 +556,7 @@
 %%   <<"resourceType">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% validate_policy_finding() :: #{
@@ -519,12 +568,14 @@
 %% }
 -type validate_policy_finding() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_archive_rules_response() :: #{
 %%   <<"archiveRules">> => list(archive_rule_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_archive_rules_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_generated_policy_request() :: #{
@@ -533,6 +584,7 @@
 %% }
 -type get_generated_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% analyzed_resource_summary() :: #{
 %%   <<"resourceArn">> => string(),
@@ -540,6 +592,7 @@
 %%   <<"resourceType">> => string()
 %% }
 -type analyzed_resource_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% finding() :: #{
@@ -560,6 +613,7 @@
 %% }
 -type finding() :: #{binary() => any()}.
 
+
 %% Example:
 %% kms_grant_configuration() :: #{
 %%   <<"constraints">> => kms_grant_constraints(),
@@ -570,6 +624,7 @@
 %% }
 -type kms_grant_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% check_no_new_access_response() :: #{
 %%   <<"message">> => [string()],
@@ -578,11 +633,13 @@
 %% }
 -type check_no_new_access_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_findings_request() :: #{
@@ -594,6 +651,7 @@
 %% }
 -type list_findings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_policy_generations_request() :: #{
 %%   <<"maxResults">> => [integer()],
@@ -602,6 +660,7 @@
 %% }
 -type list_policy_generations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% generated_policy_result() :: #{
 %%   <<"generatedPolicies">> => list(generated_policy()()),
@@ -609,11 +668,13 @@
 %% }
 -type generated_policy_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% iam_role_configuration() :: #{
 %%   <<"trustPolicy">> => string()
 %% }
 -type iam_role_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% validation_exception_field() :: #{
@@ -622,12 +683,14 @@
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
 
+
 %% Example:
 %% location() :: #{
 %%   <<"path">> => list(list()()),
 %%   <<"span">> => span()
 %% }
 -type location() :: #{binary() => any()}.
+
 
 %% Example:
 %% policy_generation() :: #{
@@ -639,6 +702,7 @@
 %% }
 -type policy_generation() :: #{binary() => any()}.
 
+
 %% Example:
 %% apply_archive_rule_request() :: #{
 %%   <<"analyzerArn">> => string(),
@@ -647,6 +711,7 @@
 %% }
 -type apply_archive_rule_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_policy_generations_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -654,12 +719,14 @@
 %% }
 -type list_policy_generations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% kms_key_configuration() :: #{
 %%   <<"grants">> => list(kms_grant_configuration()()),
 %%   <<"keyPolicies">> => map()
 %% }
 -type kms_key_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_details() :: #{
@@ -671,12 +738,14 @@
 %% }
 -type job_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% inline_archive_rule() :: #{
 %%   <<"filter">> => map(),
 %%   <<"ruleName">> => string()
 %% }
 -type inline_archive_rule() :: #{binary() => any()}.
+
 
 %% Example:
 %% ebs_snapshot_configuration() :: #{
@@ -686,6 +755,7 @@
 %% }
 -type ebs_snapshot_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => [string()],
@@ -693,17 +763,20 @@
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% efs_file_system_configuration() :: #{
 %%   <<"fileSystemPolicy">> => string()
 %% }
 -type efs_file_system_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_finding_request() :: #{
 %%   <<"analyzerArn">> => string()
 %% }
 -type get_finding_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% validate_policy_response() :: #{
@@ -712,17 +785,20 @@
 %% }
 -type validate_policy_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_express_directory_bucket_configuration() :: #{
 %%   <<"bucketPolicy">> => string()
 %% }
 -type s3_express_directory_bucket_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_access_preview_response() :: #{
 %%   <<"id">> := string()
 %% }
 -type create_access_preview_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_policy_generation_request() :: #{
@@ -731,6 +807,7 @@
 %%   <<"policyGenerationDetails">> := policy_generation_details()
 %% }
 -type start_policy_generation_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% external_access_details() :: #{
@@ -742,11 +819,13 @@
 %% }
 -type external_access_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_finding_response() :: #{
 %%   <<"finding">> => finding()
 %% }
 -type get_finding_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% sort_criteria() :: #{
@@ -755,6 +834,7 @@
 %% }
 -type sort_criteria() :: #{binary() => any()}.
 
+
 %% Example:
 %% cloud_trail_properties() :: #{
 %%   <<"endTime">> => non_neg_integer(),
@@ -762,6 +842,7 @@
 %%   <<"trailProperties">> => list(trail_properties()())
 %% }
 -type cloud_trail_properties() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_access_preview_findings_request() :: #{
@@ -772,11 +853,13 @@
 %% }
 -type list_access_preview_findings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% unprocessable_entity_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type unprocessable_entity_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% substring() :: #{
@@ -785,11 +868,13 @@
 %% }
 -type substring() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_analyzer_response() :: #{
@@ -797,14 +882,17 @@
 %% }
 -type create_analyzer_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_parameter_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type invalid_parameter_exception() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% validate_policy_request() :: #{
@@ -816,9 +904,11 @@
 %%   <<"validatePolicyResourceType">> => string()
 %% }
 -type validate_policy_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_analyzer_request() :: #{}
 -type get_analyzer_request() :: #{}.
+
 
 %% Example:
 %% get_analyzed_resource_request() :: #{
@@ -826,6 +916,7 @@
 %%   <<"resourceArn">> => string()
 %% }
 -type get_analyzed_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_bucket_configuration() :: #{
@@ -836,6 +927,7 @@
 %% }
 -type s3_bucket_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"fieldList">> => list(validation_exception_field()()),
@@ -843,9 +935,11 @@
 %%   <<"reason">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% update_findings_request() :: #{
@@ -857,11 +951,13 @@
 %% }
 -type update_findings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_access_preview_request() :: #{
 %%   <<"analyzerArn">> := string()
 %% }
 -type get_access_preview_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% throttling_exception() :: #{
@@ -870,6 +966,7 @@
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% finding_source_detail() :: #{
 %%   <<"accessPointAccount">> => [string()],
@@ -877,11 +974,13 @@
 %% }
 -type finding_source_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% access() :: #{
 %%   <<"actions">> => list(string()())
 %% }
 -type access() :: #{binary() => any()}.
+
 
 %% Example:
 %% rds_db_snapshot_configuration() :: #{
@@ -889,6 +988,7 @@
 %%   <<"kmsKeyId">> => string()
 %% }
 -type rds_db_snapshot_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_finding_v2_response() :: #{
@@ -907,6 +1007,7 @@
 %% }
 -type get_finding_v2_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% finding_summary_v2() :: #{
 %%   <<"analyzedAt">> => non_neg_integer(),
@@ -921,12 +1022,15 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type finding_summary_v2() :: #{binary() => any()}.
+
 %% Example:
 %% cancel_policy_generation_request() :: #{}
 -type cancel_policy_generation_request() :: #{}.
+
 %% Example:
 %% get_archive_rule_request() :: #{}
 -type get_archive_rule_request() :: #{}.
+
 
 %% Example:
 %% analyzer_summary() :: #{
@@ -943,6 +1047,7 @@
 %% }
 -type analyzer_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% trail() :: #{
 %%   <<"allRegions">> => [boolean()],
@@ -951,11 +1056,13 @@
 %% }
 -type trail() :: #{binary() => any()}.
 
+
 %% Example:
 %% generated_policy() :: #{
 %%   <<"policy">> => [string()]
 %% }
 -type generated_policy() :: #{binary() => any()}.
+
 
 %% Example:
 %% check_access_not_granted_request() :: #{
@@ -965,12 +1072,14 @@
 %% }
 -type check_access_not_granted_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% rds_db_cluster_snapshot_configuration() :: #{
 %%   <<"attributes">> => map(),
 %%   <<"kmsKeyId">> => string()
 %% }
 -type rds_db_cluster_snapshot_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% access_preview_summary() :: #{
@@ -982,6 +1091,7 @@
 %% }
 -type access_preview_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_analyzers_request() :: #{
 %%   <<"maxResults">> => [integer()],
@@ -990,6 +1100,7 @@
 %% }
 -type list_analyzers_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_findings_v2_response() :: #{
 %%   <<"findings">> => list(finding_summary_v2()()),
@@ -997,20 +1108,24 @@
 %% }
 -type list_findings_v2_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_policy_generation_response() :: #{
 %%   <<"jobId">> := string()
 %% }
 -type start_policy_generation_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_access_preview_response() :: #{
 %%   <<"accessPreview">> := access_preview()
 %% }
 -type get_access_preview_response() :: #{binary() => any()}.
+
 %% Example:
 %% internet_configuration() :: #{}
 -type internet_configuration() :: #{}.
+
 
 %% Example:
 %% criterion() :: #{
@@ -1021,6 +1136,7 @@
 %% }
 -type criterion() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_archive_rule_request() :: #{
 %%   <<"clientToken">> => [string()],
@@ -1028,6 +1144,7 @@
 %%   <<"ruleName">> => string()
 %% }
 -type create_archive_rule_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_resource_scan_request() :: #{
@@ -1037,12 +1154,14 @@
 %% }
 -type start_resource_scan_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% secrets_manager_secret_configuration() :: #{
 %%   <<"kmsKeyId">> => string(),
 %%   <<"secretPolicy">> => string()
 %% }
 -type secrets_manager_secret_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_error() :: #{
@@ -1051,12 +1170,14 @@
 %% }
 -type job_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_public_access_block_configuration() :: #{
 %%   <<"ignorePublicAcls">> => [boolean()],
 %%   <<"restrictPublicBuckets">> => [boolean()]
 %% }
 -type s3_public_access_block_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% access_preview() :: #{
@@ -1069,17 +1190,20 @@
 %% }
 -type access_preview() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_archive_rule_response() :: #{
 %%   <<"archiveRule">> => archive_rule_summary()
 %% }
 -type get_archive_rule_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% sqs_queue_configuration() :: #{
 %%   <<"queuePolicy">> => string()
 %% }
 -type sqs_queue_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_access_point_configuration() :: #{
@@ -1089,12 +1213,14 @@
 %% }
 -type s3_access_point_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_archive_rule_request() :: #{
 %%   <<"clientToken">> => [string()],
 %%   <<"filter">> => map()
 %% }
 -type update_archive_rule_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_access_preview_findings_response() :: #{
@@ -1103,12 +1229,240 @@
 %% }
 -type list_access_preview_findings_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% unused_action() :: #{
 %%   <<"action">> => [string()],
 %%   <<"lastAccessed">> => non_neg_integer()
 %% }
 -type unused_action() :: #{binary() => any()}.
+
+-type apply_archive_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type cancel_policy_generation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type check_access_not_granted_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    unprocessable_entity_exception() | 
+    internal_server_exception().
+
+-type check_no_new_access_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    unprocessable_entity_exception() | 
+    internal_server_exception().
+
+-type create_access_preview_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_analyzer_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_archive_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_analyzer_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_archive_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_access_preview_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_analyzed_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_analyzer_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_archive_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_finding_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_finding_v2_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_generated_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_access_preview_findings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_access_previews_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_analyzed_resources_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_analyzers_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_archive_rules_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_findings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_findings_v2_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_policy_generations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type start_policy_generation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type start_resource_scan_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_archive_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_findings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type validate_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 %%====================================================================
 %% API
@@ -1120,22 +1474,14 @@
 -spec apply_archive_rule(map(), apply_archive_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, apply_archive_rule_errors(), tuple()}.
 apply_archive_rule(Client, Input) ->
     apply_archive_rule(Client, Input, []).
 
 -spec apply_archive_rule(map(), apply_archive_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, apply_archive_rule_errors(), tuple()}.
 apply_archive_rule(Client, Input0, Options0) ->
     Method = put,
     Path = ["/archive-rule"],
@@ -1162,20 +1508,14 @@ apply_archive_rule(Client, Input0, Options0) ->
 -spec cancel_policy_generation(map(), binary() | list(), cancel_policy_generation_request()) ->
     {ok, cancel_policy_generation_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_policy_generation_errors(), tuple()}.
 cancel_policy_generation(Client, JobId, Input) ->
     cancel_policy_generation(Client, JobId, Input, []).
 
 -spec cancel_policy_generation(map(), binary() | list(), cancel_policy_generation_request(), proplists:proplist()) ->
     {ok, cancel_policy_generation_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_policy_generation_errors(), tuple()}.
 cancel_policy_generation(Client, JobId, Input0, Options0) ->
     Method = put,
     Path = ["/policy/generation/", aws_util:encode_uri(JobId), ""],
@@ -1202,24 +1542,14 @@ cancel_policy_generation(Client, JobId, Input0, Options0) ->
 -spec check_access_not_granted(map(), check_access_not_granted_request()) ->
     {ok, check_access_not_granted_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, check_access_not_granted_errors(), tuple()}.
 check_access_not_granted(Client, Input) ->
     check_access_not_granted(Client, Input, []).
 
 -spec check_access_not_granted(map(), check_access_not_granted_request(), proplists:proplist()) ->
     {ok, check_access_not_granted_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, check_access_not_granted_errors(), tuple()}.
 check_access_not_granted(Client, Input0, Options0) ->
     Method = post,
     Path = ["/policy/check-access-not-granted"],
@@ -1257,24 +1587,14 @@ check_access_not_granted(Client, Input0, Options0) ->
 -spec check_no_new_access(map(), check_no_new_access_request()) ->
     {ok, check_no_new_access_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, check_no_new_access_errors(), tuple()}.
 check_no_new_access(Client, Input) ->
     check_no_new_access(Client, Input, []).
 
 -spec check_no_new_access(map(), check_no_new_access_request(), proplists:proplist()) ->
     {ok, check_no_new_access_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, check_no_new_access_errors(), tuple()}.
 check_no_new_access(Client, Input0, Options0) ->
     Method = post,
     Path = ["/policy/check-no-new-access"],
@@ -1303,26 +1623,14 @@ check_no_new_access(Client, Input0, Options0) ->
 -spec create_access_preview(map(), create_access_preview_request()) ->
     {ok, create_access_preview_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_access_preview_errors(), tuple()}.
 create_access_preview(Client, Input) ->
     create_access_preview(Client, Input, []).
 
 -spec create_access_preview(map(), create_access_preview_request(), proplists:proplist()) ->
     {ok, create_access_preview_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_access_preview_errors(), tuple()}.
 create_access_preview(Client, Input0, Options0) ->
     Method = put,
     Path = ["/access-preview"],
@@ -1349,24 +1657,14 @@ create_access_preview(Client, Input0, Options0) ->
 -spec create_analyzer(map(), create_analyzer_request()) ->
     {ok, create_analyzer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_analyzer_errors(), tuple()}.
 create_analyzer(Client, Input) ->
     create_analyzer(Client, Input, []).
 
 -spec create_analyzer(map(), create_analyzer_request(), proplists:proplist()) ->
     {ok, create_analyzer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_analyzer_errors(), tuple()}.
 create_analyzer(Client, Input0, Options0) ->
     Method = put,
     Path = ["/analyzer"],
@@ -1401,26 +1699,14 @@ create_analyzer(Client, Input0, Options0) ->
 -spec create_archive_rule(map(), binary() | list(), create_archive_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_archive_rule_errors(), tuple()}.
 create_archive_rule(Client, AnalyzerName, Input) ->
     create_archive_rule(Client, AnalyzerName, Input, []).
 
 -spec create_archive_rule(map(), binary() | list(), create_archive_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_archive_rule_errors(), tuple()}.
 create_archive_rule(Client, AnalyzerName, Input0, Options0) ->
     Method = put,
     Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), "/archive-rule"],
@@ -1452,22 +1738,14 @@ create_archive_rule(Client, AnalyzerName, Input0, Options0) ->
 -spec delete_analyzer(map(), binary() | list(), delete_analyzer_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_analyzer_errors(), tuple()}.
 delete_analyzer(Client, AnalyzerName, Input) ->
     delete_analyzer(Client, AnalyzerName, Input, []).
 
 -spec delete_analyzer(map(), binary() | list(), delete_analyzer_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_analyzer_errors(), tuple()}.
 delete_analyzer(Client, AnalyzerName, Input0, Options0) ->
     Method = delete,
     Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), ""],
@@ -1495,22 +1773,14 @@ delete_analyzer(Client, AnalyzerName, Input0, Options0) ->
 -spec delete_archive_rule(map(), binary() | list(), binary() | list(), delete_archive_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_archive_rule_errors(), tuple()}.
 delete_archive_rule(Client, AnalyzerName, RuleName, Input) ->
     delete_archive_rule(Client, AnalyzerName, RuleName, Input, []).
 
 -spec delete_archive_rule(map(), binary() | list(), binary() | list(), delete_archive_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_archive_rule_errors(), tuple()}.
 delete_archive_rule(Client, AnalyzerName, RuleName, Input0, Options0) ->
     Method = delete,
     Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), "/archive-rule/", aws_util:encode_uri(RuleName), ""],
@@ -1539,11 +1809,7 @@ delete_archive_rule(Client, AnalyzerName, RuleName, Input0, Options0) ->
 -spec get_access_preview(map(), binary() | list(), binary() | list()) ->
     {ok, get_access_preview_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_access_preview_errors(), tuple()}.
 get_access_preview(Client, AccessPreviewId, AnalyzerArn)
   when is_map(Client) ->
     get_access_preview(Client, AccessPreviewId, AnalyzerArn, #{}, #{}).
@@ -1551,11 +1817,7 @@ get_access_preview(Client, AccessPreviewId, AnalyzerArn)
 -spec get_access_preview(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_access_preview_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_access_preview_errors(), tuple()}.
 get_access_preview(Client, AccessPreviewId, AnalyzerArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_preview(Client, AccessPreviewId, AnalyzerArn, QueryMap, HeadersMap, []).
@@ -1563,11 +1825,7 @@ get_access_preview(Client, AccessPreviewId, AnalyzerArn, QueryMap, HeadersMap)
 -spec get_access_preview(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_access_preview_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_access_preview_errors(), tuple()}.
 get_access_preview(Client, AccessPreviewId, AnalyzerArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/access-preview/", aws_util:encode_uri(AccessPreviewId), ""],
@@ -1592,11 +1850,7 @@ get_access_preview(Client, AccessPreviewId, AnalyzerArn, QueryMap, HeadersMap, O
 -spec get_analyzed_resource(map(), binary() | list(), binary() | list()) ->
     {ok, get_analyzed_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_analyzed_resource_errors(), tuple()}.
 get_analyzed_resource(Client, AnalyzerArn, ResourceArn)
   when is_map(Client) ->
     get_analyzed_resource(Client, AnalyzerArn, ResourceArn, #{}, #{}).
@@ -1604,11 +1858,7 @@ get_analyzed_resource(Client, AnalyzerArn, ResourceArn)
 -spec get_analyzed_resource(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_analyzed_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_analyzed_resource_errors(), tuple()}.
 get_analyzed_resource(Client, AnalyzerArn, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_analyzed_resource(Client, AnalyzerArn, ResourceArn, QueryMap, HeadersMap, []).
@@ -1616,11 +1866,7 @@ get_analyzed_resource(Client, AnalyzerArn, ResourceArn, QueryMap, HeadersMap)
 -spec get_analyzed_resource(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_analyzed_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_analyzed_resource_errors(), tuple()}.
 get_analyzed_resource(Client, AnalyzerArn, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/analyzed-resource"],
@@ -1646,11 +1892,7 @@ get_analyzed_resource(Client, AnalyzerArn, ResourceArn, QueryMap, HeadersMap, Op
 -spec get_analyzer(map(), binary() | list()) ->
     {ok, get_analyzer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_analyzer_errors(), tuple()}.
 get_analyzer(Client, AnalyzerName)
   when is_map(Client) ->
     get_analyzer(Client, AnalyzerName, #{}, #{}).
@@ -1658,11 +1900,7 @@ get_analyzer(Client, AnalyzerName)
 -spec get_analyzer(map(), binary() | list(), map(), map()) ->
     {ok, get_analyzer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_analyzer_errors(), tuple()}.
 get_analyzer(Client, AnalyzerName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_analyzer(Client, AnalyzerName, QueryMap, HeadersMap, []).
@@ -1670,11 +1908,7 @@ get_analyzer(Client, AnalyzerName, QueryMap, HeadersMap)
 -spec get_analyzer(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_analyzer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_analyzer_errors(), tuple()}.
 get_analyzer(Client, AnalyzerName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), ""],
@@ -1700,11 +1934,7 @@ get_analyzer(Client, AnalyzerName, QueryMap, HeadersMap, Options0)
 -spec get_archive_rule(map(), binary() | list(), binary() | list()) ->
     {ok, get_archive_rule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_archive_rule_errors(), tuple()}.
 get_archive_rule(Client, AnalyzerName, RuleName)
   when is_map(Client) ->
     get_archive_rule(Client, AnalyzerName, RuleName, #{}, #{}).
@@ -1712,11 +1942,7 @@ get_archive_rule(Client, AnalyzerName, RuleName)
 -spec get_archive_rule(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_archive_rule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_archive_rule_errors(), tuple()}.
 get_archive_rule(Client, AnalyzerName, RuleName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_archive_rule(Client, AnalyzerName, RuleName, QueryMap, HeadersMap, []).
@@ -1724,11 +1950,7 @@ get_archive_rule(Client, AnalyzerName, RuleName, QueryMap, HeadersMap)
 -spec get_archive_rule(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_archive_rule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_archive_rule_errors(), tuple()}.
 get_archive_rule(Client, AnalyzerName, RuleName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), "/archive-rule/", aws_util:encode_uri(RuleName), ""],
@@ -1754,11 +1976,7 @@ get_archive_rule(Client, AnalyzerName, RuleName, QueryMap, HeadersMap, Options0)
 -spec get_finding(map(), binary() | list(), binary() | list()) ->
     {ok, get_finding_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_finding_errors(), tuple()}.
 get_finding(Client, Id, AnalyzerArn)
   when is_map(Client) ->
     get_finding(Client, Id, AnalyzerArn, #{}, #{}).
@@ -1766,11 +1984,7 @@ get_finding(Client, Id, AnalyzerArn)
 -spec get_finding(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_finding_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_finding_errors(), tuple()}.
 get_finding(Client, Id, AnalyzerArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_finding(Client, Id, AnalyzerArn, QueryMap, HeadersMap, []).
@@ -1778,11 +1992,7 @@ get_finding(Client, Id, AnalyzerArn, QueryMap, HeadersMap)
 -spec get_finding(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_finding_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_finding_errors(), tuple()}.
 get_finding(Client, Id, AnalyzerArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/finding/", aws_util:encode_uri(Id), ""],
@@ -1812,11 +2022,7 @@ get_finding(Client, Id, AnalyzerArn, QueryMap, HeadersMap, Options0)
 -spec get_finding_v2(map(), binary() | list(), binary() | list()) ->
     {ok, get_finding_v2_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_finding_v2_errors(), tuple()}.
 get_finding_v2(Client, Id, AnalyzerArn)
   when is_map(Client) ->
     get_finding_v2(Client, Id, AnalyzerArn, #{}, #{}).
@@ -1824,11 +2030,7 @@ get_finding_v2(Client, Id, AnalyzerArn)
 -spec get_finding_v2(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_finding_v2_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_finding_v2_errors(), tuple()}.
 get_finding_v2(Client, Id, AnalyzerArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_finding_v2(Client, Id, AnalyzerArn, QueryMap, HeadersMap, []).
@@ -1836,11 +2038,7 @@ get_finding_v2(Client, Id, AnalyzerArn, QueryMap, HeadersMap)
 -spec get_finding_v2(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_finding_v2_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_finding_v2_errors(), tuple()}.
 get_finding_v2(Client, Id, AnalyzerArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/findingv2/", aws_util:encode_uri(Id), ""],
@@ -1868,10 +2066,7 @@ get_finding_v2(Client, Id, AnalyzerArn, QueryMap, HeadersMap, Options0)
 -spec get_generated_policy(map(), binary() | list()) ->
     {ok, get_generated_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_generated_policy_errors(), tuple()}.
 get_generated_policy(Client, JobId)
   when is_map(Client) ->
     get_generated_policy(Client, JobId, #{}, #{}).
@@ -1879,10 +2074,7 @@ get_generated_policy(Client, JobId)
 -spec get_generated_policy(map(), binary() | list(), map(), map()) ->
     {ok, get_generated_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_generated_policy_errors(), tuple()}.
 get_generated_policy(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_generated_policy(Client, JobId, QueryMap, HeadersMap, []).
@@ -1890,10 +2082,7 @@ get_generated_policy(Client, JobId, QueryMap, HeadersMap)
 -spec get_generated_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_generated_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_generated_policy_errors(), tuple()}.
 get_generated_policy(Client, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/policy/generation/", aws_util:encode_uri(JobId), ""],
@@ -1921,24 +2110,14 @@ get_generated_policy(Client, JobId, QueryMap, HeadersMap, Options0)
 -spec list_access_preview_findings(map(), binary() | list(), list_access_preview_findings_request()) ->
     {ok, list_access_preview_findings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_access_preview_findings_errors(), tuple()}.
 list_access_preview_findings(Client, AccessPreviewId, Input) ->
     list_access_preview_findings(Client, AccessPreviewId, Input, []).
 
 -spec list_access_preview_findings(map(), binary() | list(), list_access_preview_findings_request(), proplists:proplist()) ->
     {ok, list_access_preview_findings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_access_preview_findings_errors(), tuple()}.
 list_access_preview_findings(Client, AccessPreviewId, Input0, Options0) ->
     Method = post,
     Path = ["/access-preview/", aws_util:encode_uri(AccessPreviewId), ""],
@@ -1965,11 +2144,7 @@ list_access_preview_findings(Client, AccessPreviewId, Input0, Options0) ->
 -spec list_access_previews(map(), binary() | list()) ->
     {ok, list_access_previews_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_access_previews_errors(), tuple()}.
 list_access_previews(Client, AnalyzerArn)
   when is_map(Client) ->
     list_access_previews(Client, AnalyzerArn, #{}, #{}).
@@ -1977,11 +2152,7 @@ list_access_previews(Client, AnalyzerArn)
 -spec list_access_previews(map(), binary() | list(), map(), map()) ->
     {ok, list_access_previews_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_access_previews_errors(), tuple()}.
 list_access_previews(Client, AnalyzerArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_access_previews(Client, AnalyzerArn, QueryMap, HeadersMap, []).
@@ -1989,11 +2160,7 @@ list_access_previews(Client, AnalyzerArn, QueryMap, HeadersMap)
 -spec list_access_previews(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_access_previews_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_access_previews_errors(), tuple()}.
 list_access_previews(Client, AnalyzerArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/access-preview"],
@@ -2025,22 +2192,14 @@ list_access_previews(Client, AnalyzerArn, QueryMap, HeadersMap, Options0)
 -spec list_analyzed_resources(map(), list_analyzed_resources_request()) ->
     {ok, list_analyzed_resources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_analyzed_resources_errors(), tuple()}.
 list_analyzed_resources(Client, Input) ->
     list_analyzed_resources(Client, Input, []).
 
 -spec list_analyzed_resources(map(), list_analyzed_resources_request(), proplists:proplist()) ->
     {ok, list_analyzed_resources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_analyzed_resources_errors(), tuple()}.
 list_analyzed_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/analyzed-resource"],
@@ -2067,10 +2226,7 @@ list_analyzed_resources(Client, Input0, Options0) ->
 -spec list_analyzers(map()) ->
     {ok, list_analyzers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_analyzers_errors(), tuple()}.
 list_analyzers(Client)
   when is_map(Client) ->
     list_analyzers(Client, #{}, #{}).
@@ -2078,10 +2234,7 @@ list_analyzers(Client)
 -spec list_analyzers(map(), map(), map()) ->
     {ok, list_analyzers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_analyzers_errors(), tuple()}.
 list_analyzers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_analyzers(Client, QueryMap, HeadersMap, []).
@@ -2089,10 +2242,7 @@ list_analyzers(Client, QueryMap, HeadersMap)
 -spec list_analyzers(map(), map(), map(), proplists:proplist()) ->
     {ok, list_analyzers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_analyzers_errors(), tuple()}.
 list_analyzers(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/analyzer"],
@@ -2119,10 +2269,7 @@ list_analyzers(Client, QueryMap, HeadersMap, Options0)
 -spec list_archive_rules(map(), binary() | list()) ->
     {ok, list_archive_rules_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_archive_rules_errors(), tuple()}.
 list_archive_rules(Client, AnalyzerName)
   when is_map(Client) ->
     list_archive_rules(Client, AnalyzerName, #{}, #{}).
@@ -2130,10 +2277,7 @@ list_archive_rules(Client, AnalyzerName)
 -spec list_archive_rules(map(), binary() | list(), map(), map()) ->
     {ok, list_archive_rules_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_archive_rules_errors(), tuple()}.
 list_archive_rules(Client, AnalyzerName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_archive_rules(Client, AnalyzerName, QueryMap, HeadersMap, []).
@@ -2141,10 +2285,7 @@ list_archive_rules(Client, AnalyzerName, QueryMap, HeadersMap)
 -spec list_archive_rules(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_archive_rules_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_archive_rules_errors(), tuple()}.
 list_archive_rules(Client, AnalyzerName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), "/archive-rule"],
@@ -2181,22 +2322,14 @@ list_archive_rules(Client, AnalyzerName, QueryMap, HeadersMap, Options0)
 -spec list_findings(map(), list_findings_request()) ->
     {ok, list_findings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_findings_errors(), tuple()}.
 list_findings(Client, Input) ->
     list_findings(Client, Input, []).
 
 -spec list_findings(map(), list_findings_request(), proplists:proplist()) ->
     {ok, list_findings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_findings_errors(), tuple()}.
 list_findings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/finding"],
@@ -2234,22 +2367,14 @@ list_findings(Client, Input0, Options0) ->
 -spec list_findings_v2(map(), list_findings_v2_request()) ->
     {ok, list_findings_v2_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_findings_v2_errors(), tuple()}.
 list_findings_v2(Client, Input) ->
     list_findings_v2(Client, Input, []).
 
 -spec list_findings_v2(map(), list_findings_v2_request(), proplists:proplist()) ->
     {ok, list_findings_v2_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_findings_v2_errors(), tuple()}.
 list_findings_v2(Client, Input0, Options0) ->
     Method = post,
     Path = ["/findingv2"],
@@ -2276,10 +2401,7 @@ list_findings_v2(Client, Input0, Options0) ->
 -spec list_policy_generations(map()) ->
     {ok, list_policy_generations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_policy_generations_errors(), tuple()}.
 list_policy_generations(Client)
   when is_map(Client) ->
     list_policy_generations(Client, #{}, #{}).
@@ -2287,10 +2409,7 @@ list_policy_generations(Client)
 -spec list_policy_generations(map(), map(), map()) ->
     {ok, list_policy_generations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_policy_generations_errors(), tuple()}.
 list_policy_generations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_policy_generations(Client, QueryMap, HeadersMap, []).
@@ -2298,10 +2417,7 @@ list_policy_generations(Client, QueryMap, HeadersMap)
 -spec list_policy_generations(map(), map(), map(), proplists:proplist()) ->
     {ok, list_policy_generations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_policy_generations_errors(), tuple()}.
 list_policy_generations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/policy/generation"],
@@ -2328,11 +2444,7 @@ list_policy_generations(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -2340,11 +2452,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -2352,11 +2460,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2377,24 +2481,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec start_policy_generation(map(), start_policy_generation_request()) ->
     {ok, start_policy_generation_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_policy_generation_errors(), tuple()}.
 start_policy_generation(Client, Input) ->
     start_policy_generation(Client, Input, []).
 
 -spec start_policy_generation(map(), start_policy_generation_request(), proplists:proplist()) ->
     {ok, start_policy_generation_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_policy_generation_errors(), tuple()}.
 start_policy_generation(Client, Input0, Options0) ->
     Method = put,
     Path = ["/policy/generation"],
@@ -2422,22 +2516,14 @@ start_policy_generation(Client, Input0, Options0) ->
 -spec start_resource_scan(map(), start_resource_scan_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_resource_scan_errors(), tuple()}.
 start_resource_scan(Client, Input) ->
     start_resource_scan(Client, Input, []).
 
 -spec start_resource_scan(map(), start_resource_scan_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_resource_scan_errors(), tuple()}.
 start_resource_scan(Client, Input0, Options0) ->
     Method = post,
     Path = ["/resource/scan"],
@@ -2464,22 +2550,14 @@ start_resource_scan(Client, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2506,22 +2584,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2549,22 +2619,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_archive_rule(map(), binary() | list(), binary() | list(), update_archive_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_archive_rule_errors(), tuple()}.
 update_archive_rule(Client, AnalyzerName, RuleName, Input) ->
     update_archive_rule(Client, AnalyzerName, RuleName, Input, []).
 
 -spec update_archive_rule(map(), binary() | list(), binary() | list(), update_archive_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_archive_rule_errors(), tuple()}.
 update_archive_rule(Client, AnalyzerName, RuleName, Input0, Options0) ->
     Method = put,
     Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), "/archive-rule/", aws_util:encode_uri(RuleName), ""],
@@ -2591,22 +2653,14 @@ update_archive_rule(Client, AnalyzerName, RuleName, Input0, Options0) ->
 -spec update_findings(map(), update_findings_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_findings_errors(), tuple()}.
 update_findings(Client, Input) ->
     update_findings(Client, Input, []).
 
 -spec update_findings(map(), update_findings_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_findings_errors(), tuple()}.
 update_findings(Client, Input0, Options0) ->
     Method = put,
     Path = ["/finding"],
@@ -2638,20 +2692,14 @@ update_findings(Client, Input0, Options0) ->
 -spec validate_policy(map(), validate_policy_request()) ->
     {ok, validate_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, validate_policy_errors(), tuple()}.
 validate_policy(Client, Input) ->
     validate_policy(Client, Input, []).
 
 -spec validate_policy(map(), validate_policy_request(), proplists:proplist()) ->
     {ok, validate_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, validate_policy_errors(), tuple()}.
 validate_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/policy/validation"],

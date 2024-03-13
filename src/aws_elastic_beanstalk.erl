@@ -1348,6 +1348,136 @@
 %% }
 -type create_environment_message() :: #{binary() => any()}.
 
+-type abort_environment_update_errors() ::
+    insufficient_privileges_exception().
+
+-type apply_environment_managed_action_errors() ::
+    elastic_beanstalk_service_exception() | 
+    managed_action_invalid_state_exception().
+
+-type associate_environment_operations_role_errors() ::
+    insufficient_privileges_exception().
+
+-type compose_environments_errors() ::
+    insufficient_privileges_exception() | 
+    too_many_environments_exception().
+
+-type create_application_errors() ::
+    too_many_applications_exception().
+
+-type create_application_version_errors() ::
+    code_build_not_in_service_region_exception() | 
+    insufficient_privileges_exception() | 
+    too_many_application_versions_exception() | 
+    s3_location_not_in_service_region_exception() | 
+    too_many_applications_exception().
+
+-type create_configuration_template_errors() ::
+    too_many_configuration_templates_exception() | 
+    insufficient_privileges_exception() | 
+    too_many_buckets_exception().
+
+-type create_environment_errors() ::
+    insufficient_privileges_exception() | 
+    too_many_environments_exception().
+
+-type create_platform_version_errors() ::
+    insufficient_privileges_exception() | 
+    elastic_beanstalk_service_exception() | 
+    too_many_platforms_exception().
+
+-type create_storage_location_errors() ::
+    insufficient_privileges_exception() | 
+    s3_subscription_required_exception() | 
+    too_many_buckets_exception().
+
+-type delete_application_errors() ::
+    operation_in_progress_exception().
+
+-type delete_application_version_errors() ::
+    source_bundle_deletion_exception() | 
+    insufficient_privileges_exception() | 
+    s3_location_not_in_service_region_exception() | 
+    operation_in_progress_exception().
+
+-type delete_configuration_template_errors() ::
+    operation_in_progress_exception().
+
+-type delete_platform_version_errors() ::
+    insufficient_privileges_exception() | 
+    operation_in_progress_exception() | 
+    elastic_beanstalk_service_exception() | 
+    platform_version_still_referenced_exception().
+
+-type describe_account_attributes_errors() ::
+    insufficient_privileges_exception().
+
+-type describe_configuration_options_errors() ::
+    too_many_buckets_exception().
+
+-type describe_configuration_settings_errors() ::
+    too_many_buckets_exception().
+
+-type describe_environment_health_errors() ::
+    invalid_request_exception() | 
+    elastic_beanstalk_service_exception().
+
+-type describe_environment_managed_action_history_errors() ::
+    elastic_beanstalk_service_exception().
+
+-type describe_environment_managed_actions_errors() ::
+    elastic_beanstalk_service_exception().
+
+-type describe_environment_resources_errors() ::
+    insufficient_privileges_exception().
+
+-type describe_instances_health_errors() ::
+    invalid_request_exception() | 
+    elastic_beanstalk_service_exception().
+
+-type describe_platform_version_errors() ::
+    insufficient_privileges_exception() | 
+    elastic_beanstalk_service_exception().
+
+-type disassociate_environment_operations_role_errors() ::
+    insufficient_privileges_exception().
+
+-type list_platform_versions_errors() ::
+    insufficient_privileges_exception() | 
+    elastic_beanstalk_service_exception().
+
+-type list_tags_for_resource_errors() ::
+    insufficient_privileges_exception() | 
+    resource_not_found_exception() | 
+    resource_type_not_supported_exception().
+
+-type rebuild_environment_errors() ::
+    insufficient_privileges_exception().
+
+-type terminate_environment_errors() ::
+    insufficient_privileges_exception().
+
+-type update_application_resource_lifecycle_errors() ::
+    insufficient_privileges_exception().
+
+-type update_configuration_template_errors() ::
+    insufficient_privileges_exception() | 
+    too_many_buckets_exception().
+
+-type update_environment_errors() ::
+    insufficient_privileges_exception() | 
+    too_many_buckets_exception().
+
+-type update_tags_for_resource_errors() ::
+    too_many_tags_exception() | 
+    insufficient_privileges_exception() | 
+    operation_in_progress_exception() | 
+    resource_not_found_exception() | 
+    resource_type_not_supported_exception().
+
+-type validate_configuration_settings_errors() ::
+    insufficient_privileges_exception() | 
+    too_many_buckets_exception().
 
 %%====================================================================
 %% API
@@ -1359,7 +1489,7 @@
 -spec abort_environment_update(map(), abort_environment_update_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()}.
+    {error, abort_environment_update_errors(), tuple()}.
 abort_environment_update(Client, Input)
   when is_map(Client), is_map(Input) ->
     abort_environment_update(Client, Input, []).
@@ -1367,7 +1497,7 @@ abort_environment_update(Client, Input)
 -spec abort_environment_update(map(), abort_environment_update_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()}.
+    {error, abort_environment_update_errors(), tuple()}.
 abort_environment_update(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AbortEnvironmentUpdate">>, Input, Options).
@@ -1381,8 +1511,7 @@ abort_environment_update(Client, Input, Options)
 -spec apply_environment_managed_action(map(), apply_environment_managed_action_request()) ->
     {ok, apply_environment_managed_action_result(), tuple()} |
     {error, any()} |
-    {error, elastic_beanstalk_service_exception(), tuple()} |
-    {error, managed_action_invalid_state_exception(), tuple()}.
+    {error, apply_environment_managed_action_errors(), tuple()}.
 apply_environment_managed_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     apply_environment_managed_action(Client, Input, []).
@@ -1390,8 +1519,7 @@ apply_environment_managed_action(Client, Input)
 -spec apply_environment_managed_action(map(), apply_environment_managed_action_request(), proplists:proplist()) ->
     {ok, apply_environment_managed_action_result(), tuple()} |
     {error, any()} |
-    {error, elastic_beanstalk_service_exception(), tuple()} |
-    {error, managed_action_invalid_state_exception(), tuple()}.
+    {error, apply_environment_managed_action_errors(), tuple()}.
 apply_environment_managed_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ApplyEnvironmentManagedAction">>, Input, Options).
@@ -1409,7 +1537,7 @@ apply_environment_managed_action(Client, Input, Options)
 -spec associate_environment_operations_role(map(), associate_environment_operations_role_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()}.
+    {error, associate_environment_operations_role_errors(), tuple()}.
 associate_environment_operations_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_environment_operations_role(Client, Input, []).
@@ -1417,7 +1545,7 @@ associate_environment_operations_role(Client, Input)
 -spec associate_environment_operations_role(map(), associate_environment_operations_role_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()}.
+    {error, associate_environment_operations_role_errors(), tuple()}.
 associate_environment_operations_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateEnvironmentOperationsRole">>, Input, Options).
@@ -1453,8 +1581,7 @@ check_dns_availability(Client, Input, Options)
 -spec compose_environments(map(), compose_environments_message()) ->
     {ok, environment_descriptions_message(), tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()} |
-    {error, too_many_environments_exception(), tuple()}.
+    {error, compose_environments_errors(), tuple()}.
 compose_environments(Client, Input)
   when is_map(Client), is_map(Input) ->
     compose_environments(Client, Input, []).
@@ -1462,8 +1589,7 @@ compose_environments(Client, Input)
 -spec compose_environments(map(), compose_environments_message(), proplists:proplist()) ->
     {ok, environment_descriptions_message(), tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()} |
-    {error, too_many_environments_exception(), tuple()}.
+    {error, compose_environments_errors(), tuple()}.
 compose_environments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ComposeEnvironments">>, Input, Options).
@@ -1474,7 +1600,7 @@ compose_environments(Client, Input, Options)
 -spec create_application(map(), create_application_message()) ->
     {ok, application_description_message(), tuple()} |
     {error, any()} |
-    {error, too_many_applications_exception(), tuple()}.
+    {error, create_application_errors(), tuple()}.
 create_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_application(Client, Input, []).
@@ -1482,7 +1608,7 @@ create_application(Client, Input)
 -spec create_application(map(), create_application_message(), proplists:proplist()) ->
     {ok, application_description_message(), tuple()} |
     {error, any()} |
-    {error, too_many_applications_exception(), tuple()}.
+    {error, create_application_errors(), tuple()}.
 create_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateApplication">>, Input, Options).
@@ -1515,11 +1641,7 @@ create_application(Client, Input, Options)
 -spec create_application_version(map(), create_application_version_message()) ->
     {ok, application_version_description_message(), tuple()} |
     {error, any()} |
-    {error, code_build_not_in_service_region_exception(), tuple()} |
-    {error, insufficient_privileges_exception(), tuple()} |
-    {error, s3_location_not_in_service_region_exception(), tuple()} |
-    {error, too_many_applications_exception(), tuple()} |
-    {error, too_many_application_versions_exception(), tuple()}.
+    {error, create_application_version_errors(), tuple()}.
 create_application_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_application_version(Client, Input, []).
@@ -1527,11 +1649,7 @@ create_application_version(Client, Input)
 -spec create_application_version(map(), create_application_version_message(), proplists:proplist()) ->
     {ok, application_version_description_message(), tuple()} |
     {error, any()} |
-    {error, code_build_not_in_service_region_exception(), tuple()} |
-    {error, insufficient_privileges_exception(), tuple()} |
-    {error, s3_location_not_in_service_region_exception(), tuple()} |
-    {error, too_many_applications_exception(), tuple()} |
-    {error, too_many_application_versions_exception(), tuple()}.
+    {error, create_application_version_errors(), tuple()}.
 create_application_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateApplicationVersion">>, Input, Options).
@@ -1560,9 +1678,7 @@ create_application_version(Client, Input, Options)
 -spec create_configuration_template(map(), create_configuration_template_message()) ->
     {ok, configuration_settings_description(), tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()} |
-    {error, too_many_buckets_exception(), tuple()} |
-    {error, too_many_configuration_templates_exception(), tuple()}.
+    {error, create_configuration_template_errors(), tuple()}.
 create_configuration_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_configuration_template(Client, Input, []).
@@ -1570,9 +1686,7 @@ create_configuration_template(Client, Input)
 -spec create_configuration_template(map(), create_configuration_template_message(), proplists:proplist()) ->
     {ok, configuration_settings_description(), tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()} |
-    {error, too_many_buckets_exception(), tuple()} |
-    {error, too_many_configuration_templates_exception(), tuple()}.
+    {error, create_configuration_template_errors(), tuple()}.
 create_configuration_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateConfigurationTemplate">>, Input, Options).
@@ -1583,8 +1697,7 @@ create_configuration_template(Client, Input, Options)
 -spec create_environment(map(), create_environment_message()) ->
     {ok, environment_description(), tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()} |
-    {error, too_many_environments_exception(), tuple()}.
+    {error, create_environment_errors(), tuple()}.
 create_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_environment(Client, Input, []).
@@ -1592,8 +1705,7 @@ create_environment(Client, Input)
 -spec create_environment(map(), create_environment_message(), proplists:proplist()) ->
     {ok, environment_description(), tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()} |
-    {error, too_many_environments_exception(), tuple()}.
+    {error, create_environment_errors(), tuple()}.
 create_environment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEnvironment">>, Input, Options).
@@ -1602,9 +1714,7 @@ create_environment(Client, Input, Options)
 -spec create_platform_version(map(), create_platform_version_request()) ->
     {ok, create_platform_version_result(), tuple()} |
     {error, any()} |
-    {error, elastic_beanstalk_service_exception(), tuple()} |
-    {error, insufficient_privileges_exception(), tuple()} |
-    {error, too_many_platforms_exception(), tuple()}.
+    {error, create_platform_version_errors(), tuple()}.
 create_platform_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_platform_version(Client, Input, []).
@@ -1612,9 +1722,7 @@ create_platform_version(Client, Input)
 -spec create_platform_version(map(), create_platform_version_request(), proplists:proplist()) ->
     {ok, create_platform_version_result(), tuple()} |
     {error, any()} |
-    {error, elastic_beanstalk_service_exception(), tuple()} |
-    {error, insufficient_privileges_exception(), tuple()} |
-    {error, too_many_platforms_exception(), tuple()}.
+    {error, create_platform_version_errors(), tuple()}.
 create_platform_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePlatformVersion">>, Input, Options).
@@ -1632,9 +1740,7 @@ create_platform_version(Client, Input, Options)
 -spec create_storage_location(map(), #{}) ->
     {ok, create_storage_location_result_message(), tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()} |
-    {error, s3_subscription_required_exception(), tuple()} |
-    {error, too_many_buckets_exception(), tuple()}.
+    {error, create_storage_location_errors(), tuple()}.
 create_storage_location(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_storage_location(Client, Input, []).
@@ -1642,9 +1748,7 @@ create_storage_location(Client, Input)
 -spec create_storage_location(map(), #{}, proplists:proplist()) ->
     {ok, create_storage_location_result_message(), tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()} |
-    {error, s3_subscription_required_exception(), tuple()} |
-    {error, too_many_buckets_exception(), tuple()}.
+    {error, create_storage_location_errors(), tuple()}.
 create_storage_location(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStorageLocation">>, Input, Options).
@@ -1660,7 +1764,7 @@ create_storage_location(Client, Input, Options)
 -spec delete_application(map(), delete_application_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, operation_in_progress_exception(), tuple()}.
+    {error, delete_application_errors(), tuple()}.
 delete_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application(Client, Input, []).
@@ -1668,7 +1772,7 @@ delete_application(Client, Input)
 -spec delete_application(map(), delete_application_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, operation_in_progress_exception(), tuple()}.
+    {error, delete_application_errors(), tuple()}.
 delete_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApplication">>, Input, Options).
@@ -1680,10 +1784,7 @@ delete_application(Client, Input, Options)
 -spec delete_application_version(map(), delete_application_version_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()} |
-    {error, operation_in_progress_exception(), tuple()} |
-    {error, s3_location_not_in_service_region_exception(), tuple()} |
-    {error, source_bundle_deletion_exception(), tuple()}.
+    {error, delete_application_version_errors(), tuple()}.
 delete_application_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application_version(Client, Input, []).
@@ -1691,10 +1792,7 @@ delete_application_version(Client, Input)
 -spec delete_application_version(map(), delete_application_version_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()} |
-    {error, operation_in_progress_exception(), tuple()} |
-    {error, s3_location_not_in_service_region_exception(), tuple()} |
-    {error, source_bundle_deletion_exception(), tuple()}.
+    {error, delete_application_version_errors(), tuple()}.
 delete_application_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApplicationVersion">>, Input, Options).
@@ -1709,7 +1807,7 @@ delete_application_version(Client, Input, Options)
 -spec delete_configuration_template(map(), delete_configuration_template_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, operation_in_progress_exception(), tuple()}.
+    {error, delete_configuration_template_errors(), tuple()}.
 delete_configuration_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_configuration_template(Client, Input, []).
@@ -1717,7 +1815,7 @@ delete_configuration_template(Client, Input)
 -spec delete_configuration_template(map(), delete_configuration_template_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, operation_in_progress_exception(), tuple()}.
+    {error, delete_configuration_template_errors(), tuple()}.
 delete_configuration_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConfigurationTemplate">>, Input, Options).
@@ -1753,10 +1851,7 @@ delete_environment_configuration(Client, Input, Options)
 -spec delete_platform_version(map(), delete_platform_version_request()) ->
     {ok, delete_platform_version_result(), tuple()} |
     {error, any()} |
-    {error, elastic_beanstalk_service_exception(), tuple()} |
-    {error, insufficient_privileges_exception(), tuple()} |
-    {error, operation_in_progress_exception(), tuple()} |
-    {error, platform_version_still_referenced_exception(), tuple()}.
+    {error, delete_platform_version_errors(), tuple()}.
 delete_platform_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_platform_version(Client, Input, []).
@@ -1764,10 +1859,7 @@ delete_platform_version(Client, Input)
 -spec delete_platform_version(map(), delete_platform_version_request(), proplists:proplist()) ->
     {ok, delete_platform_version_result(), tuple()} |
     {error, any()} |
-    {error, elastic_beanstalk_service_exception(), tuple()} |
-    {error, insufficient_privileges_exception(), tuple()} |
-    {error, operation_in_progress_exception(), tuple()} |
-    {error, platform_version_still_referenced_exception(), tuple()}.
+    {error, delete_platform_version_errors(), tuple()}.
 delete_platform_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePlatformVersion">>, Input, Options).
@@ -1780,7 +1872,7 @@ delete_platform_version(Client, Input, Options)
 -spec describe_account_attributes(map(), #{}) ->
     {ok, describe_account_attributes_result(), tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()}.
+    {error, describe_account_attributes_errors(), tuple()}.
 describe_account_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_attributes(Client, Input, []).
@@ -1788,7 +1880,7 @@ describe_account_attributes(Client, Input)
 -spec describe_account_attributes(map(), #{}, proplists:proplist()) ->
     {ok, describe_account_attributes_result(), tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()}.
+    {error, describe_account_attributes_errors(), tuple()}.
 describe_account_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountAttributes">>, Input, Options).
@@ -1834,7 +1926,7 @@ describe_applications(Client, Input, Options)
 -spec describe_configuration_options(map(), describe_configuration_options_message()) ->
     {ok, configuration_options_description(), tuple()} |
     {error, any()} |
-    {error, too_many_buckets_exception(), tuple()}.
+    {error, describe_configuration_options_errors(), tuple()}.
 describe_configuration_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_configuration_options(Client, Input, []).
@@ -1842,7 +1934,7 @@ describe_configuration_options(Client, Input)
 -spec describe_configuration_options(map(), describe_configuration_options_message(), proplists:proplist()) ->
     {ok, configuration_options_description(), tuple()} |
     {error, any()} |
-    {error, too_many_buckets_exception(), tuple()}.
+    {error, describe_configuration_options_errors(), tuple()}.
 describe_configuration_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConfigurationOptions">>, Input, Options).
@@ -1867,7 +1959,7 @@ describe_configuration_options(Client, Input, Options)
 -spec describe_configuration_settings(map(), describe_configuration_settings_message()) ->
     {ok, configuration_settings_descriptions(), tuple()} |
     {error, any()} |
-    {error, too_many_buckets_exception(), tuple()}.
+    {error, describe_configuration_settings_errors(), tuple()}.
 describe_configuration_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_configuration_settings(Client, Input, []).
@@ -1875,7 +1967,7 @@ describe_configuration_settings(Client, Input)
 -spec describe_configuration_settings(map(), describe_configuration_settings_message(), proplists:proplist()) ->
     {ok, configuration_settings_descriptions(), tuple()} |
     {error, any()} |
-    {error, too_many_buckets_exception(), tuple()}.
+    {error, describe_configuration_settings_errors(), tuple()}.
 describe_configuration_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConfigurationSettings">>, Input, Options).
@@ -1889,8 +1981,7 @@ describe_configuration_settings(Client, Input, Options)
 -spec describe_environment_health(map(), describe_environment_health_request()) ->
     {ok, describe_environment_health_result(), tuple()} |
     {error, any()} |
-    {error, elastic_beanstalk_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_environment_health_errors(), tuple()}.
 describe_environment_health(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_environment_health(Client, Input, []).
@@ -1898,8 +1989,7 @@ describe_environment_health(Client, Input)
 -spec describe_environment_health(map(), describe_environment_health_request(), proplists:proplist()) ->
     {ok, describe_environment_health_result(), tuple()} |
     {error, any()} |
-    {error, elastic_beanstalk_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_environment_health_errors(), tuple()}.
 describe_environment_health(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEnvironmentHealth">>, Input, Options).
@@ -1908,7 +1998,7 @@ describe_environment_health(Client, Input, Options)
 -spec describe_environment_managed_action_history(map(), describe_environment_managed_action_history_request()) ->
     {ok, describe_environment_managed_action_history_result(), tuple()} |
     {error, any()} |
-    {error, elastic_beanstalk_service_exception(), tuple()}.
+    {error, describe_environment_managed_action_history_errors(), tuple()}.
 describe_environment_managed_action_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_environment_managed_action_history(Client, Input, []).
@@ -1916,7 +2006,7 @@ describe_environment_managed_action_history(Client, Input)
 -spec describe_environment_managed_action_history(map(), describe_environment_managed_action_history_request(), proplists:proplist()) ->
     {ok, describe_environment_managed_action_history_result(), tuple()} |
     {error, any()} |
-    {error, elastic_beanstalk_service_exception(), tuple()}.
+    {error, describe_environment_managed_action_history_errors(), tuple()}.
 describe_environment_managed_action_history(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEnvironmentManagedActionHistory">>, Input, Options).
@@ -1925,7 +2015,7 @@ describe_environment_managed_action_history(Client, Input, Options)
 -spec describe_environment_managed_actions(map(), describe_environment_managed_actions_request()) ->
     {ok, describe_environment_managed_actions_result(), tuple()} |
     {error, any()} |
-    {error, elastic_beanstalk_service_exception(), tuple()}.
+    {error, describe_environment_managed_actions_errors(), tuple()}.
 describe_environment_managed_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_environment_managed_actions(Client, Input, []).
@@ -1933,7 +2023,7 @@ describe_environment_managed_actions(Client, Input)
 -spec describe_environment_managed_actions(map(), describe_environment_managed_actions_request(), proplists:proplist()) ->
     {ok, describe_environment_managed_actions_result(), tuple()} |
     {error, any()} |
-    {error, elastic_beanstalk_service_exception(), tuple()}.
+    {error, describe_environment_managed_actions_errors(), tuple()}.
 describe_environment_managed_actions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEnvironmentManagedActions">>, Input, Options).
@@ -1942,7 +2032,7 @@ describe_environment_managed_actions(Client, Input, Options)
 -spec describe_environment_resources(map(), describe_environment_resources_message()) ->
     {ok, environment_resource_descriptions_message(), tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()}.
+    {error, describe_environment_resources_errors(), tuple()}.
 describe_environment_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_environment_resources(Client, Input, []).
@@ -1950,7 +2040,7 @@ describe_environment_resources(Client, Input)
 -spec describe_environment_resources(map(), describe_environment_resources_message(), proplists:proplist()) ->
     {ok, environment_resource_descriptions_message(), tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()}.
+    {error, describe_environment_resources_errors(), tuple()}.
 describe_environment_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEnvironmentResources">>, Input, Options).
@@ -1999,8 +2089,7 @@ describe_events(Client, Input, Options)
 -spec describe_instances_health(map(), describe_instances_health_request()) ->
     {ok, describe_instances_health_result(), tuple()} |
     {error, any()} |
-    {error, elastic_beanstalk_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_instances_health_errors(), tuple()}.
 describe_instances_health(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instances_health(Client, Input, []).
@@ -2008,8 +2097,7 @@ describe_instances_health(Client, Input)
 -spec describe_instances_health(map(), describe_instances_health_request(), proplists:proplist()) ->
     {ok, describe_instances_health_result(), tuple()} |
     {error, any()} |
-    {error, elastic_beanstalk_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_instances_health_errors(), tuple()}.
 describe_instances_health(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInstancesHealth">>, Input, Options).
@@ -2027,8 +2115,7 @@ describe_instances_health(Client, Input, Options)
 -spec describe_platform_version(map(), describe_platform_version_request()) ->
     {ok, describe_platform_version_result(), tuple()} |
     {error, any()} |
-    {error, elastic_beanstalk_service_exception(), tuple()} |
-    {error, insufficient_privileges_exception(), tuple()}.
+    {error, describe_platform_version_errors(), tuple()}.
 describe_platform_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_platform_version(Client, Input, []).
@@ -2036,8 +2123,7 @@ describe_platform_version(Client, Input)
 -spec describe_platform_version(map(), describe_platform_version_request(), proplists:proplist()) ->
     {ok, describe_platform_version_result(), tuple()} |
     {error, any()} |
-    {error, elastic_beanstalk_service_exception(), tuple()} |
-    {error, insufficient_privileges_exception(), tuple()}.
+    {error, describe_platform_version_errors(), tuple()}.
 describe_platform_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePlatformVersion">>, Input, Options).
@@ -2054,7 +2140,7 @@ describe_platform_version(Client, Input, Options)
 -spec disassociate_environment_operations_role(map(), disassociate_environment_operations_role_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()}.
+    {error, disassociate_environment_operations_role_errors(), tuple()}.
 disassociate_environment_operations_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_environment_operations_role(Client, Input, []).
@@ -2062,7 +2148,7 @@ disassociate_environment_operations_role(Client, Input)
 -spec disassociate_environment_operations_role(map(), disassociate_environment_operations_role_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()}.
+    {error, disassociate_environment_operations_role_errors(), tuple()}.
 disassociate_environment_operations_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateEnvironmentOperationsRole">>, Input, Options).
@@ -2124,8 +2210,7 @@ list_platform_branches(Client, Input, Options)
 -spec list_platform_versions(map(), list_platform_versions_request()) ->
     {ok, list_platform_versions_result(), tuple()} |
     {error, any()} |
-    {error, elastic_beanstalk_service_exception(), tuple()} |
-    {error, insufficient_privileges_exception(), tuple()}.
+    {error, list_platform_versions_errors(), tuple()}.
 list_platform_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_platform_versions(Client, Input, []).
@@ -2133,8 +2218,7 @@ list_platform_versions(Client, Input)
 -spec list_platform_versions(map(), list_platform_versions_request(), proplists:proplist()) ->
     {ok, list_platform_versions_result(), tuple()} |
     {error, any()} |
-    {error, elastic_beanstalk_service_exception(), tuple()} |
-    {error, insufficient_privileges_exception(), tuple()}.
+    {error, list_platform_versions_errors(), tuple()}.
 list_platform_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPlatformVersions">>, Input, Options).
@@ -2151,9 +2235,7 @@ list_platform_versions(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_message()) ->
     {ok, resource_tags_description_message(), tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_type_not_supported_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -2161,9 +2243,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_message(), proplists:proplist()) ->
     {ok, resource_tags_description_message(), tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_type_not_supported_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -2174,7 +2254,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec rebuild_environment(map(), rebuild_environment_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()}.
+    {error, rebuild_environment_errors(), tuple()}.
 rebuild_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     rebuild_environment(Client, Input, []).
@@ -2182,7 +2262,7 @@ rebuild_environment(Client, Input)
 -spec rebuild_environment(map(), rebuild_environment_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()}.
+    {error, rebuild_environment_errors(), tuple()}.
 rebuild_environment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RebuildEnvironment">>, Input, Options).
@@ -2276,7 +2356,7 @@ swap_environment_cnames(Client, Input, Options)
 -spec terminate_environment(map(), terminate_environment_message()) ->
     {ok, environment_description(), tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()}.
+    {error, terminate_environment_errors(), tuple()}.
 terminate_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     terminate_environment(Client, Input, []).
@@ -2284,7 +2364,7 @@ terminate_environment(Client, Input)
 -spec terminate_environment(map(), terminate_environment_message(), proplists:proplist()) ->
     {ok, environment_description(), tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()}.
+    {error, terminate_environment_errors(), tuple()}.
 terminate_environment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TerminateEnvironment">>, Input, Options).
@@ -2311,7 +2391,7 @@ update_application(Client, Input, Options)
 -spec update_application_resource_lifecycle(map(), update_application_resource_lifecycle_message()) ->
     {ok, application_resource_lifecycle_description_message(), tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()}.
+    {error, update_application_resource_lifecycle_errors(), tuple()}.
 update_application_resource_lifecycle(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_application_resource_lifecycle(Client, Input, []).
@@ -2319,7 +2399,7 @@ update_application_resource_lifecycle(Client, Input)
 -spec update_application_resource_lifecycle(map(), update_application_resource_lifecycle_message(), proplists:proplist()) ->
     {ok, application_resource_lifecycle_description_message(), tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()}.
+    {error, update_application_resource_lifecycle_errors(), tuple()}.
 update_application_resource_lifecycle(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateApplicationResourceLifecycle">>, Input, Options).
@@ -2357,8 +2437,7 @@ update_application_version(Client, Input, Options)
 -spec update_configuration_template(map(), update_configuration_template_message()) ->
     {ok, configuration_settings_description(), tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()} |
-    {error, too_many_buckets_exception(), tuple()}.
+    {error, update_configuration_template_errors(), tuple()}.
 update_configuration_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_configuration_template(Client, Input, []).
@@ -2366,8 +2445,7 @@ update_configuration_template(Client, Input)
 -spec update_configuration_template(map(), update_configuration_template_message(), proplists:proplist()) ->
     {ok, configuration_settings_description(), tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()} |
-    {error, too_many_buckets_exception(), tuple()}.
+    {error, update_configuration_template_errors(), tuple()}.
 update_configuration_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateConfigurationTemplate">>, Input, Options).
@@ -2392,8 +2470,7 @@ update_configuration_template(Client, Input, Options)
 -spec update_environment(map(), update_environment_message()) ->
     {ok, environment_description(), tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()} |
-    {error, too_many_buckets_exception(), tuple()}.
+    {error, update_environment_errors(), tuple()}.
 update_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_environment(Client, Input, []).
@@ -2401,8 +2478,7 @@ update_environment(Client, Input)
 -spec update_environment(map(), update_environment_message(), proplists:proplist()) ->
     {ok, environment_description(), tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()} |
-    {error, too_many_buckets_exception(), tuple()}.
+    {error, update_environment_errors(), tuple()}.
 update_environment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEnvironment">>, Input, Options).
@@ -2441,11 +2517,7 @@ update_environment(Client, Input, Options)
 -spec update_tags_for_resource(map(), update_tags_for_resource_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()} |
-    {error, operation_in_progress_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_type_not_supported_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, update_tags_for_resource_errors(), tuple()}.
 update_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_tags_for_resource(Client, Input, []).
@@ -2453,11 +2525,7 @@ update_tags_for_resource(Client, Input)
 -spec update_tags_for_resource(map(), update_tags_for_resource_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()} |
-    {error, operation_in_progress_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_type_not_supported_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, update_tags_for_resource_errors(), tuple()}.
 update_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTagsForResource">>, Input, Options).
@@ -2472,8 +2540,7 @@ update_tags_for_resource(Client, Input, Options)
 -spec validate_configuration_settings(map(), validate_configuration_settings_message()) ->
     {ok, configuration_settings_validation_messages(), tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()} |
-    {error, too_many_buckets_exception(), tuple()}.
+    {error, validate_configuration_settings_errors(), tuple()}.
 validate_configuration_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     validate_configuration_settings(Client, Input, []).
@@ -2481,8 +2548,7 @@ validate_configuration_settings(Client, Input)
 -spec validate_configuration_settings(map(), validate_configuration_settings_message(), proplists:proplist()) ->
     {ok, configuration_settings_validation_messages(), tuple()} |
     {error, any()} |
-    {error, insufficient_privileges_exception(), tuple()} |
-    {error, too_many_buckets_exception(), tuple()}.
+    {error, validate_configuration_settings_errors(), tuple()}.
 validate_configuration_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ValidateConfigurationSettings">>, Input, Options).

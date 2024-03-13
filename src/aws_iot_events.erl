@@ -85,6 +85,7 @@
 %% }
 -type get_detector_model_analysis_results_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% state() :: #{
 %%   <<"onEnter">> => on_enter_lifecycle(),
@@ -93,6 +94,7 @@
 %%   <<"stateName">> => string()
 %% }
 -type state() :: #{binary() => any()}.
+
 
 %% Example:
 %% analysis_result() :: #{
@@ -103,6 +105,7 @@
 %% }
 -type analysis_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
@@ -110,11 +113,13 @@
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_failure_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type internal_failure_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% firehose_action() :: #{
@@ -123,9 +128,11 @@
 %%   <<"separator">> => string()
 %% }
 -type firehose_action() :: #{binary() => any()}.
+
 %% Example:
 %% delete_alarm_model_request() :: #{}
 -type delete_alarm_model_request() :: #{}.
+
 
 %% Example:
 %% payload() :: #{
@@ -133,9 +140,11 @@
 %%   <<"type">> => list(any())
 %% }
 -type payload() :: #{binary() => any()}.
+
 %% Example:
 %% describe_input_request() :: #{}
 -type describe_input_request() :: #{}.
+
 
 %% Example:
 %% unsupported_operation_exception() :: #{
@@ -143,11 +152,13 @@
 %% }
 -type unsupported_operation_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_detector_model_analysis_response() :: #{
 %%   <<"status">> => list(any())
 %% }
 -type describe_detector_model_analysis_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% input_summary() :: #{
@@ -160,6 +171,7 @@
 %% }
 -type input_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% set_timer_action() :: #{
 %%   <<"durationExpression">> => string(),
@@ -168,14 +180,17 @@
 %% }
 -type set_timer_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_detector_model_analysis_request() :: #{
 %%   <<"detectorModelDefinition">> := detector_model_definition()
 %% }
 -type start_detector_model_analysis_request() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% alarm_event_actions() :: #{
@@ -183,17 +198,20 @@
 %% }
 -type alarm_event_actions() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_detector_model_response() :: #{
 %%   <<"detectorModelConfiguration">> => detector_model_configuration()
 %% }
 -type create_detector_model_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_in_use_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_in_use_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% dynamo_dbv2_action() :: #{
@@ -202,6 +220,7 @@
 %% }
 -type dynamo_dbv2_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_property_value() :: #{
 %%   <<"quality">> => string(),
@@ -209,6 +228,7 @@
 %%   <<"value">> => asset_property_variant()
 %% }
 -type asset_property_value() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_alarm_model_request() :: #{
@@ -222,6 +242,7 @@
 %% }
 -type update_alarm_model_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_detector_model_request() :: #{
 %%   <<"detectorModelDefinition">> := detector_model_definition(),
@@ -231,6 +252,7 @@
 %% }
 -type update_detector_model_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% detector_model_definition() :: #{
 %%   <<"initialStateName">> => string(),
@@ -238,11 +260,13 @@
 %% }
 -type detector_model_definition() :: #{binary() => any()}.
 
+
 %% Example:
 %% notification_target_actions() :: #{
 %%   <<"lambdaAction">> => lambda_action()
 %% }
 -type notification_target_actions() :: #{binary() => any()}.
+
 
 %% Example:
 %% dynamo_db_action() :: #{
@@ -259,6 +283,7 @@
 %% }
 -type dynamo_db_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% alarm_model_summary() :: #{
 %%   <<"alarmModelDescription">> => string(),
@@ -267,17 +292,20 @@
 %% }
 -type alarm_model_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% clear_timer_action() :: #{
 %%   <<"timerName">> => string()
 %% }
 -type clear_timer_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_detector_model_analysis_response() :: #{
 %%   <<"analysisId">> => string()
 %% }
 -type start_detector_model_analysis_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% email_content() :: #{
@@ -286,11 +314,13 @@
 %% }
 -type email_content() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_logging_options_response() :: #{
 %%   <<"loggingOptions">> => logging_options()
 %% }
 -type describe_logging_options_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_alarm_models_response() :: #{
@@ -299,6 +329,7 @@
 %% }
 -type list_alarm_models_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% s_s_o_identity() :: #{
 %%   <<"identityStoreId">> => string(),
@@ -306,11 +337,13 @@
 %% }
 -type s_s_o_identity() :: #{binary() => any()}.
 
+
 %% Example:
 %% on_exit_lifecycle() :: #{
 %%   <<"events">> => list(event()())
 %% }
 -type on_exit_lifecycle() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_alarm_model_response() :: #{
@@ -332,12 +365,14 @@
 %% }
 -type describe_alarm_model_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% detector_model() :: #{
 %%   <<"detectorModelConfiguration">> => detector_model_configuration(),
 %%   <<"detectorModelDefinition">> => detector_model_definition()
 %% }
 -type detector_model() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_alarm_model_response() :: #{
@@ -349,12 +384,14 @@
 %% }
 -type update_alarm_model_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% alarm_action() :: #{
@@ -370,12 +407,14 @@
 %% }
 -type alarm_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_alarm_model_versions_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_alarm_model_versions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_input_routings_request() :: #{
@@ -385,11 +424,13 @@
 %% }
 -type list_input_routings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_alarm_model_request() :: #{
 %%   <<"alarmModelVersion">> => string()
 %% }
 -type describe_alarm_model_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% simple_rule() :: #{
@@ -399,11 +440,13 @@
 %% }
 -type simple_rule() :: #{binary() => any()}.
 
+
 %% Example:
 %% iot_site_wise_input_identifier() :: #{
 %%   <<"iotSiteWiseAssetModelPropertyIdentifier">> => iot_site_wise_asset_model_property_identifier()
 %% }
 -type iot_site_wise_input_identifier() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_detector_models_response() :: #{
@@ -412,11 +455,13 @@
 %% }
 -type list_detector_models_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% acknowledge_flow() :: #{
 %%   <<"enabled">> => boolean()
 %% }
 -type acknowledge_flow() :: #{binary() => any()}.
+
 
 %% Example:
 %% alarm_capabilities() :: #{
@@ -425,11 +470,13 @@
 %% }
 -type alarm_capabilities() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_detector_model_response() :: #{
 %%   <<"detectorModelConfiguration">> => detector_model_configuration()
 %% }
 -type update_detector_model_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% sms_configuration() :: #{
@@ -439,11 +486,13 @@
 %% }
 -type sms_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_input_response() :: #{
 %%   <<"inputConfiguration">> => input_configuration()
 %% }
 -type create_input_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_input_request() :: #{
@@ -454,12 +503,14 @@
 %% }
 -type create_input_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% set_variable_action() :: #{
 %%   <<"value">> => string(),
 %%   <<"variableName">> => string()
 %% }
 -type set_variable_action() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_input_routings_response() :: #{
@@ -468,21 +519,25 @@
 %% }
 -type list_input_routings_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% input() :: #{
 %%   <<"inputConfiguration">> => input_configuration(),
 %%   <<"inputDefinition">> => input_definition()
 %% }
 -type input() :: #{binary() => any()}.
+
 %% Example:
 %% delete_input_request() :: #{}
 -type delete_input_request() :: #{}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% detector_model_version_summary() :: #{
@@ -497,12 +552,14 @@
 %% }
 -type detector_model_version_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_input_request() :: #{
 %%   <<"inputDefinition">> := input_definition(),
 %%   <<"inputDescription">> => string()
 %% }
 -type update_input_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% lambda_action() :: #{
@@ -511,6 +568,7 @@
 %% }
 -type lambda_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag() :: #{
 %%   <<"key">> => string(),
@@ -518,11 +576,13 @@
 %% }
 -type tag() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_detector_model_request() :: #{
 %%   <<"detectorModelVersion">> => string()
 %% }
 -type describe_detector_model_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% invalid_request_exception() :: #{
@@ -530,14 +590,17 @@
 %% }
 -type invalid_request_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_detector_model_response() :: #{
 %%   <<"detectorModel">> => detector_model()
 %% }
 -type describe_detector_model_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_alarm_model_response() :: #{}
 -type delete_alarm_model_response() :: #{}.
+
 
 %% Example:
 %% list_inputs_request() :: #{
@@ -546,15 +609,18 @@
 %% }
 -type list_inputs_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% on_input_lifecycle() :: #{
 %%   <<"events">> => list(event()()),
 %%   <<"transitionEvents">> => list(transition_event()())
 %% }
 -type on_input_lifecycle() :: #{binary() => any()}.
+
 %% Example:
 %% delete_detector_model_response() :: #{}
 -type delete_detector_model_response() :: #{}.
+
 
 %% Example:
 %% list_alarm_model_versions_response() :: #{
@@ -563,11 +629,13 @@
 %% }
 -type list_alarm_model_versions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_input_response() :: #{
 %%   <<"input">> => input()
 %% }
 -type describe_input_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% alarm_rule() :: #{
@@ -575,12 +643,14 @@
 %% }
 -type alarm_rule() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_detector_model_versions_response() :: #{
 %%   <<"detectorModelVersionSummaries">> => list(detector_model_version_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_detector_model_versions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_alarm_model_request() :: #{
@@ -597,11 +667,13 @@
 %% }
 -type create_alarm_model_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => list(tag()())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% s_n_s_topic_publish_action() :: #{
@@ -610,17 +682,20 @@
 %% }
 -type s_n_s_topic_publish_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_unavailable_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% input_definition() :: #{
 %%   <<"attributes">> => list(attribute()())
 %% }
 -type input_definition() :: #{binary() => any()}.
+
 
 %% Example:
 %% input_configuration() :: #{
@@ -633,12 +708,14 @@
 %% }
 -type input_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_inputs_response() :: #{
 %%   <<"inputSummaries">> => list(input_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_inputs_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% input_identifier() :: #{
@@ -647,11 +724,13 @@
 %% }
 -type input_identifier() :: #{binary() => any()}.
 
+
 %% Example:
 %% on_enter_lifecycle() :: #{
 %%   <<"events">> => list(event()())
 %% }
 -type on_enter_lifecycle() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_alarm_models_request() :: #{
@@ -659,9 +738,11 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_alarm_models_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_logging_options_request() :: #{}
 -type describe_logging_options_request() :: #{}.
+
 
 %% Example:
 %% iot_site_wise_asset_model_property_identifier() :: #{
@@ -669,9 +750,11 @@
 %%   <<"propertyId">> => string()
 %% }
 -type iot_site_wise_asset_model_property_identifier() :: #{binary() => any()}.
+
 %% Example:
 %% delete_input_response() :: #{}
 -type delete_input_response() :: #{}.
+
 
 %% Example:
 %% analysis_result_location() :: #{
@@ -679,12 +762,14 @@
 %% }
 -type analysis_result_location() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_property_timestamp() :: #{
 %%   <<"offsetInNanos">> => string(),
 %%   <<"timeInSeconds">> => string()
 %% }
 -type asset_property_timestamp() :: #{binary() => any()}.
+
 
 %% Example:
 %% event() :: #{
@@ -694,11 +779,13 @@
 %% }
 -type event() :: #{binary() => any()}.
 
+
 %% Example:
 %% iot_events_input_identifier() :: #{
 %%   <<"inputName">> => string()
 %% }
 -type iot_events_input_identifier() :: #{binary() => any()}.
+
 
 %% Example:
 %% action() :: #{
@@ -718,12 +805,14 @@
 %% }
 -type action() :: #{binary() => any()}.
 
+
 %% Example:
 %% routed_resource() :: #{
 %%   <<"arn">> => string(),
 %%   <<"name">> => string()
 %% }
 -type routed_resource() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_detector_model_analysis_results_request() :: #{
@@ -732,12 +821,14 @@
 %% }
 -type get_detector_model_analysis_results_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% detector_debug_option() :: #{
 %%   <<"detectorModelName">> => string(),
 %%   <<"keyValue">> => string()
 %% }
 -type detector_debug_option() :: #{binary() => any()}.
+
 
 %% Example:
 %% detector_model_configuration() :: #{
@@ -754,6 +845,7 @@
 %% }
 -type detector_model_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_detector_model_request() :: #{
 %%   <<"detectorModelDefinition">> := detector_model_definition(),
@@ -766,21 +858,25 @@
 %% }
 -type create_detector_model_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_detector_model_versions_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_detector_model_versions_request() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% put_logging_options_request() :: #{
 %%   <<"loggingOptions">> := logging_options()
 %% }
 -type put_logging_options_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% transition_event() :: #{
@@ -791,6 +887,7 @@
 %% }
 -type transition_event() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_detector_models_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -798,11 +895,13 @@
 %% }
 -type list_detector_models_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_request() :: #{
 %%   <<"resourceArn">> := string()
 %% }
 -type list_tags_for_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% email_recipients() :: #{
@@ -810,11 +909,13 @@
 %% }
 -type email_recipients() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% alarm_notification() :: #{
@@ -822,11 +923,13 @@
 %% }
 -type alarm_notification() :: #{binary() => any()}.
 
+
 %% Example:
 %% reset_timer_action() :: #{
 %%   <<"timerName">> => string()
 %% }
 -type reset_timer_action() :: #{binary() => any()}.
+
 
 %% Example:
 %% iot_topic_publish_action() :: #{
@@ -835,11 +938,13 @@
 %% }
 -type iot_topic_publish_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% attribute() :: #{
 %%   <<"jsonPath">> => string()
 %% }
 -type attribute() :: #{binary() => any()}.
+
 
 %% Example:
 %% detector_model_summary() :: #{
@@ -849,17 +954,20 @@
 %% }
 -type detector_model_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_input_response() :: #{
 %%   <<"inputConfiguration">> => input_configuration()
 %% }
 -type update_input_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% iot_site_wise_action() :: #{
@@ -871,6 +979,7 @@
 %% }
 -type iot_site_wise_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% logging_options() :: #{
 %%   <<"detectorDebugOptions">> => list(detector_debug_option()()),
@@ -880,6 +989,7 @@
 %% }
 -type logging_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% notification_action() :: #{
 %%   <<"action">> => notification_target_actions(),
@@ -887,6 +997,7 @@
 %%   <<"smsConfigurations">> => list(sms_configuration()())
 %% }
 -type notification_action() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_property_variant() :: #{
@@ -896,6 +1007,7 @@
 %%   <<"stringValue">> => string()
 %% }
 -type asset_property_variant() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_alarm_model_response() :: #{
@@ -907,6 +1019,7 @@
 %% }
 -type create_alarm_model_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_already_exists_exception() :: #{
 %%   <<"message">> => string(),
@@ -914,18 +1027,22 @@
 %%   <<"resourceId">> => string()
 %% }
 -type resource_already_exists_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_detector_model_request() :: #{}
 -type delete_detector_model_request() :: #{}.
+
 
 %% Example:
 %% recipient_detail() :: #{
 %%   <<"ssoIdentity">> => s_s_o_identity()
 %% }
 -type recipient_detail() :: #{binary() => any()}.
+
 %% Example:
 %% describe_detector_model_analysis_request() :: #{}
 -type describe_detector_model_analysis_request() :: #{}.
+
 
 %% Example:
 %% alarm_model_version_summary() :: #{
@@ -940,11 +1057,13 @@
 %% }
 -type alarm_model_version_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% initialization_configuration() :: #{
 %%   <<"disabledOnInitialization">> => boolean()
 %% }
 -type initialization_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% email_configuration() :: #{
@@ -954,6 +1073,7 @@
 %% }
 -type email_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% sqs_action() :: #{
 %%   <<"payload">> => payload(),
@@ -962,12 +1082,205 @@
 %% }
 -type sqs_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% iot_events_action() :: #{
 %%   <<"inputName">> => string(),
 %%   <<"payload">> => payload()
 %% }
 -type iot_events_action() :: #{binary() => any()}.
+
+-type create_alarm_model_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_in_use_exception() | 
+    internal_failure_exception().
+
+-type create_detector_model_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_in_use_exception() | 
+    internal_failure_exception().
+
+-type create_input_errors() ::
+    resource_already_exists_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type delete_alarm_model_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    internal_failure_exception().
+
+-type delete_detector_model_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    internal_failure_exception().
+
+-type delete_input_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    internal_failure_exception().
+
+-type describe_alarm_model_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_detector_model_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_detector_model_analysis_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_input_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_logging_options_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unsupported_operation_exception() | 
+    internal_failure_exception().
+
+-type get_detector_model_analysis_results_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_alarm_model_versions_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_alarm_models_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_detector_model_versions_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_detector_models_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_input_routings_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_inputs_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    internal_failure_exception().
+
+-type put_logging_options_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_in_use_exception() | 
+    unsupported_operation_exception() | 
+    internal_failure_exception().
+
+-type start_detector_model_analysis_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type tag_resource_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    internal_failure_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    internal_failure_exception().
+
+-type update_alarm_model_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    internal_failure_exception().
+
+-type update_detector_model_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    internal_failure_exception().
+
+-type update_input_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    internal_failure_exception().
 
 %%====================================================================
 %% API
@@ -984,26 +1297,14 @@
 -spec create_alarm_model(map(), create_alarm_model_request()) ->
     {ok, create_alarm_model_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_alarm_model_errors(), tuple()}.
 create_alarm_model(Client, Input) ->
     create_alarm_model(Client, Input, []).
 
 -spec create_alarm_model(map(), create_alarm_model_request(), proplists:proplist()) ->
     {ok, create_alarm_model_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_alarm_model_errors(), tuple()}.
 create_alarm_model(Client, Input0, Options0) ->
     Method = post,
     Path = ["/alarm-models"],
@@ -1030,26 +1331,14 @@ create_alarm_model(Client, Input0, Options0) ->
 -spec create_detector_model(map(), create_detector_model_request()) ->
     {ok, create_detector_model_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_detector_model_errors(), tuple()}.
 create_detector_model(Client, Input) ->
     create_detector_model(Client, Input, []).
 
 -spec create_detector_model(map(), create_detector_model_request(), proplists:proplist()) ->
     {ok, create_detector_model_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_detector_model_errors(), tuple()}.
 create_detector_model(Client, Input0, Options0) ->
     Method = post,
     Path = ["/detector-models"],
@@ -1076,22 +1365,14 @@ create_detector_model(Client, Input0, Options0) ->
 -spec create_input(map(), create_input_request()) ->
     {ok, create_input_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_input_errors(), tuple()}.
 create_input(Client, Input) ->
     create_input(Client, Input, []).
 
 -spec create_input(map(), create_input_request(), proplists:proplist()) ->
     {ok, create_input_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_input_errors(), tuple()}.
 create_input(Client, Input0, Options0) ->
     Method = post,
     Path = ["/inputs"],
@@ -1121,24 +1402,14 @@ create_input(Client, Input0, Options0) ->
 -spec delete_alarm_model(map(), binary() | list(), delete_alarm_model_request()) ->
     {ok, delete_alarm_model_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_alarm_model_errors(), tuple()}.
 delete_alarm_model(Client, AlarmModelName, Input) ->
     delete_alarm_model(Client, AlarmModelName, Input, []).
 
 -spec delete_alarm_model(map(), binary() | list(), delete_alarm_model_request(), proplists:proplist()) ->
     {ok, delete_alarm_model_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_alarm_model_errors(), tuple()}.
 delete_alarm_model(Client, AlarmModelName, Input0, Options0) ->
     Method = delete,
     Path = ["/alarm-models/", aws_util:encode_uri(AlarmModelName), ""],
@@ -1168,24 +1439,14 @@ delete_alarm_model(Client, AlarmModelName, Input0, Options0) ->
 -spec delete_detector_model(map(), binary() | list(), delete_detector_model_request()) ->
     {ok, delete_detector_model_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_detector_model_errors(), tuple()}.
 delete_detector_model(Client, DetectorModelName, Input) ->
     delete_detector_model(Client, DetectorModelName, Input, []).
 
 -spec delete_detector_model(map(), binary() | list(), delete_detector_model_request(), proplists:proplist()) ->
     {ok, delete_detector_model_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_detector_model_errors(), tuple()}.
 delete_detector_model(Client, DetectorModelName, Input0, Options0) ->
     Method = delete,
     Path = ["/detector-models/", aws_util:encode_uri(DetectorModelName), ""],
@@ -1212,24 +1473,14 @@ delete_detector_model(Client, DetectorModelName, Input0, Options0) ->
 -spec delete_input(map(), binary() | list(), delete_input_request()) ->
     {ok, delete_input_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_input_errors(), tuple()}.
 delete_input(Client, InputName, Input) ->
     delete_input(Client, InputName, Input, []).
 
 -spec delete_input(map(), binary() | list(), delete_input_request(), proplists:proplist()) ->
     {ok, delete_input_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_input_errors(), tuple()}.
 delete_input(Client, InputName, Input0, Options0) ->
     Method = delete,
     Path = ["/inputs/", aws_util:encode_uri(InputName), ""],
@@ -1259,11 +1510,7 @@ delete_input(Client, InputName, Input0, Options0) ->
 -spec describe_alarm_model(map(), binary() | list()) ->
     {ok, describe_alarm_model_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_alarm_model_errors(), tuple()}.
 describe_alarm_model(Client, AlarmModelName)
   when is_map(Client) ->
     describe_alarm_model(Client, AlarmModelName, #{}, #{}).
@@ -1271,11 +1518,7 @@ describe_alarm_model(Client, AlarmModelName)
 -spec describe_alarm_model(map(), binary() | list(), map(), map()) ->
     {ok, describe_alarm_model_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_alarm_model_errors(), tuple()}.
 describe_alarm_model(Client, AlarmModelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_alarm_model(Client, AlarmModelName, QueryMap, HeadersMap, []).
@@ -1283,11 +1526,7 @@ describe_alarm_model(Client, AlarmModelName, QueryMap, HeadersMap)
 -spec describe_alarm_model(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_alarm_model_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_alarm_model_errors(), tuple()}.
 describe_alarm_model(Client, AlarmModelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/alarm-models/", aws_util:encode_uri(AlarmModelName), ""],
@@ -1315,11 +1554,7 @@ describe_alarm_model(Client, AlarmModelName, QueryMap, HeadersMap, Options0)
 -spec describe_detector_model(map(), binary() | list()) ->
     {ok, describe_detector_model_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_detector_model_errors(), tuple()}.
 describe_detector_model(Client, DetectorModelName)
   when is_map(Client) ->
     describe_detector_model(Client, DetectorModelName, #{}, #{}).
@@ -1327,11 +1562,7 @@ describe_detector_model(Client, DetectorModelName)
 -spec describe_detector_model(map(), binary() | list(), map(), map()) ->
     {ok, describe_detector_model_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_detector_model_errors(), tuple()}.
 describe_detector_model(Client, DetectorModelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_detector_model(Client, DetectorModelName, QueryMap, HeadersMap, []).
@@ -1339,11 +1570,7 @@ describe_detector_model(Client, DetectorModelName, QueryMap, HeadersMap)
 -spec describe_detector_model(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_detector_model_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_detector_model_errors(), tuple()}.
 describe_detector_model(Client, DetectorModelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector-models/", aws_util:encode_uri(DetectorModelName), ""],
@@ -1371,11 +1598,7 @@ describe_detector_model(Client, DetectorModelName, QueryMap, HeadersMap, Options
 -spec describe_detector_model_analysis(map(), binary() | list()) ->
     {ok, describe_detector_model_analysis_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_detector_model_analysis_errors(), tuple()}.
 describe_detector_model_analysis(Client, AnalysisId)
   when is_map(Client) ->
     describe_detector_model_analysis(Client, AnalysisId, #{}, #{}).
@@ -1383,11 +1606,7 @@ describe_detector_model_analysis(Client, AnalysisId)
 -spec describe_detector_model_analysis(map(), binary() | list(), map(), map()) ->
     {ok, describe_detector_model_analysis_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_detector_model_analysis_errors(), tuple()}.
 describe_detector_model_analysis(Client, AnalysisId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_detector_model_analysis(Client, AnalysisId, QueryMap, HeadersMap, []).
@@ -1395,11 +1614,7 @@ describe_detector_model_analysis(Client, AnalysisId, QueryMap, HeadersMap)
 -spec describe_detector_model_analysis(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_detector_model_analysis_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_detector_model_analysis_errors(), tuple()}.
 describe_detector_model_analysis(Client, AnalysisId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/analysis/detector-models/", aws_util:encode_uri(AnalysisId), ""],
@@ -1420,11 +1635,7 @@ describe_detector_model_analysis(Client, AnalysisId, QueryMap, HeadersMap, Optio
 -spec describe_input(map(), binary() | list()) ->
     {ok, describe_input_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_input_errors(), tuple()}.
 describe_input(Client, InputName)
   when is_map(Client) ->
     describe_input(Client, InputName, #{}, #{}).
@@ -1432,11 +1643,7 @@ describe_input(Client, InputName)
 -spec describe_input(map(), binary() | list(), map(), map()) ->
     {ok, describe_input_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_input_errors(), tuple()}.
 describe_input(Client, InputName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_input(Client, InputName, QueryMap, HeadersMap, []).
@@ -1444,11 +1651,7 @@ describe_input(Client, InputName, QueryMap, HeadersMap)
 -spec describe_input(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_input_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_input_errors(), tuple()}.
 describe_input(Client, InputName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/inputs/", aws_util:encode_uri(InputName), ""],
@@ -1469,12 +1672,7 @@ describe_input(Client, InputName, QueryMap, HeadersMap, Options0)
 -spec describe_logging_options(map()) ->
     {ok, describe_logging_options_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, describe_logging_options_errors(), tuple()}.
 describe_logging_options(Client)
   when is_map(Client) ->
     describe_logging_options(Client, #{}, #{}).
@@ -1482,12 +1680,7 @@ describe_logging_options(Client)
 -spec describe_logging_options(map(), map(), map()) ->
     {ok, describe_logging_options_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, describe_logging_options_errors(), tuple()}.
 describe_logging_options(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_logging_options(Client, QueryMap, HeadersMap, []).
@@ -1495,12 +1688,7 @@ describe_logging_options(Client, QueryMap, HeadersMap)
 -spec describe_logging_options(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_logging_options_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, describe_logging_options_errors(), tuple()}.
 describe_logging_options(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/logging"],
@@ -1524,11 +1712,7 @@ describe_logging_options(Client, QueryMap, HeadersMap, Options0)
 -spec get_detector_model_analysis_results(map(), binary() | list()) ->
     {ok, get_detector_model_analysis_results_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_detector_model_analysis_results_errors(), tuple()}.
 get_detector_model_analysis_results(Client, AnalysisId)
   when is_map(Client) ->
     get_detector_model_analysis_results(Client, AnalysisId, #{}, #{}).
@@ -1536,11 +1720,7 @@ get_detector_model_analysis_results(Client, AnalysisId)
 -spec get_detector_model_analysis_results(map(), binary() | list(), map(), map()) ->
     {ok, get_detector_model_analysis_results_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_detector_model_analysis_results_errors(), tuple()}.
 get_detector_model_analysis_results(Client, AnalysisId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_detector_model_analysis_results(Client, AnalysisId, QueryMap, HeadersMap, []).
@@ -1548,11 +1728,7 @@ get_detector_model_analysis_results(Client, AnalysisId, QueryMap, HeadersMap)
 -spec get_detector_model_analysis_results(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_detector_model_analysis_results_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_detector_model_analysis_results_errors(), tuple()}.
 get_detector_model_analysis_results(Client, AnalysisId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/analysis/detector-models/", aws_util:encode_uri(AnalysisId), "/results"],
@@ -1581,11 +1757,7 @@ get_detector_model_analysis_results(Client, AnalysisId, QueryMap, HeadersMap, Op
 -spec list_alarm_model_versions(map(), binary() | list()) ->
     {ok, list_alarm_model_versions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_alarm_model_versions_errors(), tuple()}.
 list_alarm_model_versions(Client, AlarmModelName)
   when is_map(Client) ->
     list_alarm_model_versions(Client, AlarmModelName, #{}, #{}).
@@ -1593,11 +1765,7 @@ list_alarm_model_versions(Client, AlarmModelName)
 -spec list_alarm_model_versions(map(), binary() | list(), map(), map()) ->
     {ok, list_alarm_model_versions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_alarm_model_versions_errors(), tuple()}.
 list_alarm_model_versions(Client, AlarmModelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_alarm_model_versions(Client, AlarmModelName, QueryMap, HeadersMap, []).
@@ -1605,11 +1773,7 @@ list_alarm_model_versions(Client, AlarmModelName, QueryMap, HeadersMap)
 -spec list_alarm_model_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_alarm_model_versions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_alarm_model_versions_errors(), tuple()}.
 list_alarm_model_versions(Client, AlarmModelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/alarm-models/", aws_util:encode_uri(AlarmModelName), "/versions"],
@@ -1638,10 +1802,7 @@ list_alarm_model_versions(Client, AlarmModelName, QueryMap, HeadersMap, Options0
 -spec list_alarm_models(map()) ->
     {ok, list_alarm_models_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_alarm_models_errors(), tuple()}.
 list_alarm_models(Client)
   when is_map(Client) ->
     list_alarm_models(Client, #{}, #{}).
@@ -1649,10 +1810,7 @@ list_alarm_models(Client)
 -spec list_alarm_models(map(), map(), map()) ->
     {ok, list_alarm_models_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_alarm_models_errors(), tuple()}.
 list_alarm_models(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_alarm_models(Client, QueryMap, HeadersMap, []).
@@ -1660,10 +1818,7 @@ list_alarm_models(Client, QueryMap, HeadersMap)
 -spec list_alarm_models(map(), map(), map(), proplists:proplist()) ->
     {ok, list_alarm_models_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_alarm_models_errors(), tuple()}.
 list_alarm_models(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/alarm-models"],
@@ -1692,11 +1847,7 @@ list_alarm_models(Client, QueryMap, HeadersMap, Options0)
 -spec list_detector_model_versions(map(), binary() | list()) ->
     {ok, list_detector_model_versions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_detector_model_versions_errors(), tuple()}.
 list_detector_model_versions(Client, DetectorModelName)
   when is_map(Client) ->
     list_detector_model_versions(Client, DetectorModelName, #{}, #{}).
@@ -1704,11 +1855,7 @@ list_detector_model_versions(Client, DetectorModelName)
 -spec list_detector_model_versions(map(), binary() | list(), map(), map()) ->
     {ok, list_detector_model_versions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_detector_model_versions_errors(), tuple()}.
 list_detector_model_versions(Client, DetectorModelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_detector_model_versions(Client, DetectorModelName, QueryMap, HeadersMap, []).
@@ -1716,11 +1863,7 @@ list_detector_model_versions(Client, DetectorModelName, QueryMap, HeadersMap)
 -spec list_detector_model_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_detector_model_versions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_detector_model_versions_errors(), tuple()}.
 list_detector_model_versions(Client, DetectorModelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector-models/", aws_util:encode_uri(DetectorModelName), "/versions"],
@@ -1749,10 +1892,7 @@ list_detector_model_versions(Client, DetectorModelName, QueryMap, HeadersMap, Op
 -spec list_detector_models(map()) ->
     {ok, list_detector_models_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_detector_models_errors(), tuple()}.
 list_detector_models(Client)
   when is_map(Client) ->
     list_detector_models(Client, #{}, #{}).
@@ -1760,10 +1900,7 @@ list_detector_models(Client)
 -spec list_detector_models(map(), map(), map()) ->
     {ok, list_detector_models_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_detector_models_errors(), tuple()}.
 list_detector_models(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_detector_models(Client, QueryMap, HeadersMap, []).
@@ -1771,10 +1908,7 @@ list_detector_models(Client, QueryMap, HeadersMap)
 -spec list_detector_models(map(), map(), map(), proplists:proplist()) ->
     {ok, list_detector_models_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_detector_models_errors(), tuple()}.
 list_detector_models(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector-models"],
@@ -1801,22 +1935,14 @@ list_detector_models(Client, QueryMap, HeadersMap, Options0)
 -spec list_input_routings(map(), list_input_routings_request()) ->
     {ok, list_input_routings_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_input_routings_errors(), tuple()}.
 list_input_routings(Client, Input) ->
     list_input_routings(Client, Input, []).
 
 -spec list_input_routings(map(), list_input_routings_request(), proplists:proplist()) ->
     {ok, list_input_routings_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_input_routings_errors(), tuple()}.
 list_input_routings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/input-routings"],
@@ -1843,10 +1969,7 @@ list_input_routings(Client, Input0, Options0) ->
 -spec list_inputs(map()) ->
     {ok, list_inputs_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_inputs_errors(), tuple()}.
 list_inputs(Client)
   when is_map(Client) ->
     list_inputs(Client, #{}, #{}).
@@ -1854,10 +1977,7 @@ list_inputs(Client)
 -spec list_inputs(map(), map(), map()) ->
     {ok, list_inputs_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_inputs_errors(), tuple()}.
 list_inputs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_inputs(Client, QueryMap, HeadersMap, []).
@@ -1865,10 +1985,7 @@ list_inputs(Client, QueryMap, HeadersMap)
 -spec list_inputs(map(), map(), map(), proplists:proplist()) ->
     {ok, list_inputs_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_inputs_errors(), tuple()}.
 list_inputs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/inputs"],
@@ -1894,11 +2011,7 @@ list_inputs(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1906,11 +2019,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1918,11 +2027,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags"],
@@ -1955,24 +2060,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec put_logging_options(map(), put_logging_options_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, put_logging_options_errors(), tuple()}.
 put_logging_options(Client, Input) ->
     put_logging_options(Client, Input, []).
 
 -spec put_logging_options(map(), put_logging_options_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, put_logging_options_errors(), tuple()}.
 put_logging_options(Client, Input0, Options0) ->
     Method = put,
     Path = ["/logging"],
@@ -2004,22 +2099,14 @@ put_logging_options(Client, Input0, Options0) ->
 -spec start_detector_model_analysis(map(), start_detector_model_analysis_request()) ->
     {ok, start_detector_model_analysis_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, start_detector_model_analysis_errors(), tuple()}.
 start_detector_model_analysis(Client, Input) ->
     start_detector_model_analysis(Client, Input, []).
 
 -spec start_detector_model_analysis(map(), start_detector_model_analysis_request(), proplists:proplist()) ->
     {ok, start_detector_model_analysis_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, start_detector_model_analysis_errors(), tuple()}.
 start_detector_model_analysis(Client, Input0, Options0) ->
     Method = post,
     Path = ["/analysis/detector-models"],
@@ -2049,24 +2136,14 @@ start_detector_model_analysis(Client, Input0, Options0) ->
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags"],
@@ -2094,22 +2171,14 @@ tag_resource(Client, Input0, Options0) ->
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/tags"],
@@ -2141,24 +2210,14 @@ untag_resource(Client, Input0, Options0) ->
 -spec update_alarm_model(map(), binary() | list(), update_alarm_model_request()) ->
     {ok, update_alarm_model_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_alarm_model_errors(), tuple()}.
 update_alarm_model(Client, AlarmModelName, Input) ->
     update_alarm_model(Client, AlarmModelName, Input, []).
 
 -spec update_alarm_model(map(), binary() | list(), update_alarm_model_request(), proplists:proplist()) ->
     {ok, update_alarm_model_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_alarm_model_errors(), tuple()}.
 update_alarm_model(Client, AlarmModelName, Input0, Options0) ->
     Method = post,
     Path = ["/alarm-models/", aws_util:encode_uri(AlarmModelName), ""],
@@ -2188,24 +2247,14 @@ update_alarm_model(Client, AlarmModelName, Input0, Options0) ->
 -spec update_detector_model(map(), binary() | list(), update_detector_model_request()) ->
     {ok, update_detector_model_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_detector_model_errors(), tuple()}.
 update_detector_model(Client, DetectorModelName, Input) ->
     update_detector_model(Client, DetectorModelName, Input, []).
 
 -spec update_detector_model(map(), binary() | list(), update_detector_model_request(), proplists:proplist()) ->
     {ok, update_detector_model_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_detector_model_errors(), tuple()}.
 update_detector_model(Client, DetectorModelName, Input0, Options0) ->
     Method = post,
     Path = ["/detector-models/", aws_util:encode_uri(DetectorModelName), ""],
@@ -2232,24 +2281,14 @@ update_detector_model(Client, DetectorModelName, Input0, Options0) ->
 -spec update_input(map(), binary() | list(), update_input_request()) ->
     {ok, update_input_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_input_errors(), tuple()}.
 update_input(Client, InputName, Input) ->
     update_input(Client, InputName, Input, []).
 
 -spec update_input(map(), binary() | list(), update_input_request(), proplists:proplist()) ->
     {ok, update_input_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_input_errors(), tuple()}.
 update_input(Client, InputName, Input0, Options0) ->
     Method = put,
     Path = ["/inputs/", aws_util:encode_uri(InputName), ""],

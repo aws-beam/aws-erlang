@@ -43,11 +43,13 @@
 %% }
 -type account_action_required_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% bad_request_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% bundle_details() :: #{
@@ -60,6 +62,7 @@
 %% }
 -type bundle_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_project_request() :: #{
 %%   <<"contents">> => binary(),
@@ -69,14 +72,17 @@
 %% }
 -type create_project_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_project_result() :: #{
 %%   <<"details">> => project_details()
 %% }
 -type create_project_result() :: #{binary() => any()}.
+
 %% Example:
 %% delete_project_request() :: #{}
 -type delete_project_request() :: #{}.
+
 
 %% Example:
 %% delete_project_result() :: #{
@@ -84,15 +90,18 @@
 %%   <<"orphanedResources">> => list(resource()())
 %% }
 -type delete_project_result() :: #{binary() => any()}.
+
 %% Example:
 %% describe_bundle_request() :: #{}
 -type describe_bundle_request() :: #{}.
+
 
 %% Example:
 %% describe_bundle_result() :: #{
 %%   <<"details">> => bundle_details()
 %% }
 -type describe_bundle_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_project_request() :: #{
@@ -101,11 +110,13 @@
 %% }
 -type describe_project_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_project_result() :: #{
 %%   <<"details">> => project_details()
 %% }
 -type describe_project_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% export_bundle_request() :: #{
@@ -114,14 +125,17 @@
 %% }
 -type export_bundle_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% export_bundle_result() :: #{
 %%   <<"downloadUrl">> => string()
 %% }
 -type export_bundle_result() :: #{binary() => any()}.
+
 %% Example:
 %% export_project_request() :: #{}
 -type export_project_request() :: #{}.
+
 
 %% Example:
 %% export_project_result() :: #{
@@ -131,11 +145,13 @@
 %% }
 -type export_project_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_failure_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type internal_failure_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% limit_exceeded_exception() :: #{
@@ -144,12 +160,14 @@
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_bundles_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_bundles_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_bundles_result() :: #{
@@ -158,12 +176,14 @@
 %% }
 -type list_bundles_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_projects_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_projects_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_projects_result() :: #{
@@ -172,11 +192,13 @@
 %% }
 -type list_projects_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% project_details() :: #{
@@ -191,12 +213,14 @@
 %% }
 -type project_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% project_summary() :: #{
 %%   <<"name">> => string(),
 %%   <<"projectId">> => string()
 %% }
 -type project_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource() :: #{
@@ -208,12 +232,14 @@
 %% }
 -type resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_unavailable_exception() :: #{
 %%   <<"message">> => string(),
 %%   <<"retryAfterSeconds">> => string()
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% too_many_requests_exception() :: #{
@@ -222,11 +248,13 @@
 %% }
 -type too_many_requests_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% unauthorized_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type unauthorized_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_project_request() :: #{
@@ -235,11 +263,84 @@
 %% }
 -type update_project_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_project_result() :: #{
 %%   <<"details">> => project_details()
 %% }
 -type update_project_result() :: #{binary() => any()}.
+
+-type create_project_errors() ::
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
+
+-type delete_project_errors() ::
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_bundle_errors() ::
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
+
+-type describe_project_errors() ::
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
+
+-type export_bundle_errors() ::
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
+
+-type export_project_errors() ::
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
+
+-type list_bundles_errors() ::
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
+
+-type list_projects_errors() ::
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
+
+-type update_project_errors() ::
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception() | 
+    account_action_required_exception().
 
 %%====================================================================
 %% API
@@ -250,26 +351,14 @@
 -spec create_project(map(), create_project_request()) ->
     {ok, create_project_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_project_errors(), tuple()}.
 create_project(Client, Input) ->
     create_project(Client, Input, []).
 
 -spec create_project(map(), create_project_request(), proplists:proplist()) ->
     {ok, create_project_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_project_errors(), tuple()}.
 create_project(Client, Input0, Options0) ->
     Method = post,
     Path = ["/projects"],
@@ -300,22 +389,14 @@ create_project(Client, Input0, Options0) ->
 -spec delete_project(map(), binary() | list(), delete_project_request()) ->
     {ok, delete_project_result(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_project_errors(), tuple()}.
 delete_project(Client, ProjectId, Input) ->
     delete_project(Client, ProjectId, Input, []).
 
 -spec delete_project(map(), binary() | list(), delete_project_request(), proplists:proplist()) ->
     {ok, delete_project_result(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_project_errors(), tuple()}.
 delete_project(Client, ProjectId, Input0, Options0) ->
     Method = delete,
     Path = ["/projects/", aws_util:encode_uri(ProjectId), ""],
@@ -343,12 +424,7 @@ delete_project(Client, ProjectId, Input0, Options0) ->
 -spec describe_bundle(map(), binary() | list()) ->
     {ok, describe_bundle_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_bundle_errors(), tuple()}.
 describe_bundle(Client, BundleId)
   when is_map(Client) ->
     describe_bundle(Client, BundleId, #{}, #{}).
@@ -356,12 +432,7 @@ describe_bundle(Client, BundleId)
 -spec describe_bundle(map(), binary() | list(), map(), map()) ->
     {ok, describe_bundle_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_bundle_errors(), tuple()}.
 describe_bundle(Client, BundleId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_bundle(Client, BundleId, QueryMap, HeadersMap, []).
@@ -369,12 +440,7 @@ describe_bundle(Client, BundleId, QueryMap, HeadersMap)
 -spec describe_bundle(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_bundle_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_bundle_errors(), tuple()}.
 describe_bundle(Client, BundleId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bundles/", aws_util:encode_uri(BundleId), ""],
@@ -396,12 +462,7 @@ describe_bundle(Client, BundleId, QueryMap, HeadersMap, Options0)
 -spec describe_project(map(), binary() | list()) ->
     {ok, describe_project_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_project_errors(), tuple()}.
 describe_project(Client, ProjectId)
   when is_map(Client) ->
     describe_project(Client, ProjectId, #{}, #{}).
@@ -409,12 +470,7 @@ describe_project(Client, ProjectId)
 -spec describe_project(map(), binary() | list(), map(), map()) ->
     {ok, describe_project_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_project_errors(), tuple()}.
 describe_project(Client, ProjectId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_project(Client, ProjectId, QueryMap, HeadersMap, []).
@@ -422,12 +478,7 @@ describe_project(Client, ProjectId, QueryMap, HeadersMap)
 -spec describe_project(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_project_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_project_errors(), tuple()}.
 describe_project(Client, ProjectId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/project"],
@@ -456,24 +507,14 @@ describe_project(Client, ProjectId, QueryMap, HeadersMap, Options0)
 -spec export_bundle(map(), binary() | list(), export_bundle_request()) ->
     {ok, export_bundle_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, export_bundle_errors(), tuple()}.
 export_bundle(Client, BundleId, Input) ->
     export_bundle(Client, BundleId, Input, []).
 
 -spec export_bundle(map(), binary() | list(), export_bundle_request(), proplists:proplist()) ->
     {ok, export_bundle_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, export_bundle_errors(), tuple()}.
 export_bundle(Client, BundleId, Input0, Options0) ->
     Method = post,
     Path = ["/bundles/", aws_util:encode_uri(BundleId), ""],
@@ -508,24 +549,14 @@ export_bundle(Client, BundleId, Input0, Options0) ->
 -spec export_project(map(), binary() | list(), export_project_request()) ->
     {ok, export_project_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, export_project_errors(), tuple()}.
 export_project(Client, ProjectId, Input) ->
     export_project(Client, ProjectId, Input, []).
 
 -spec export_project(map(), binary() | list(), export_project_request(), proplists:proplist()) ->
     {ok, export_project_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, export_project_errors(), tuple()}.
 export_project(Client, ProjectId, Input0, Options0) ->
     Method = post,
     Path = ["/exports/", aws_util:encode_uri(ProjectId), ""],
@@ -553,11 +584,7 @@ export_project(Client, ProjectId, Input0, Options0) ->
 -spec list_bundles(map()) ->
     {ok, list_bundles_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_bundles_errors(), tuple()}.
 list_bundles(Client)
   when is_map(Client) ->
     list_bundles(Client, #{}, #{}).
@@ -565,11 +592,7 @@ list_bundles(Client)
 -spec list_bundles(map(), map(), map()) ->
     {ok, list_bundles_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_bundles_errors(), tuple()}.
 list_bundles(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_bundles(Client, QueryMap, HeadersMap, []).
@@ -577,11 +600,7 @@ list_bundles(Client, QueryMap, HeadersMap)
 -spec list_bundles(map(), map(), map(), proplists:proplist()) ->
     {ok, list_bundles_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_bundles_errors(), tuple()}.
 list_bundles(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bundles"],
@@ -608,11 +627,7 @@ list_bundles(Client, QueryMap, HeadersMap, Options0)
 -spec list_projects(map()) ->
     {ok, list_projects_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_projects_errors(), tuple()}.
 list_projects(Client)
   when is_map(Client) ->
     list_projects(Client, #{}, #{}).
@@ -620,11 +635,7 @@ list_projects(Client)
 -spec list_projects(map(), map(), map()) ->
     {ok, list_projects_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_projects_errors(), tuple()}.
 list_projects(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_projects(Client, QueryMap, HeadersMap, []).
@@ -632,11 +643,7 @@ list_projects(Client, QueryMap, HeadersMap)
 -spec list_projects(map(), map(), map(), proplists:proplist()) ->
     {ok, list_projects_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_projects_errors(), tuple()}.
 list_projects(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects"],
@@ -663,28 +670,14 @@ list_projects(Client, QueryMap, HeadersMap, Options0)
 -spec update_project(map(), update_project_request()) ->
     {ok, update_project_result(), tuple()} |
     {error, any()} |
-    {error, account_action_required_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_project_errors(), tuple()}.
 update_project(Client, Input) ->
     update_project(Client, Input, []).
 
 -spec update_project(map(), update_project_request(), proplists:proplist()) ->
     {ok, update_project_result(), tuple()} |
     {error, any()} |
-    {error, account_action_required_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_project_errors(), tuple()}.
 update_project(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update"],

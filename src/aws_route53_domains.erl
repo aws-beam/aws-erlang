@@ -763,6 +763,184 @@
 %% }
 -type sort_condition() :: #{binary() => any()}.
 
+-type accept_domain_transfer_from_another_aws_account_errors() ::
+    domain_limit_exceeded() | 
+    unsupported_t_l_d() | 
+    operation_limit_exceeded() | 
+    invalid_input().
+
+-type associate_delegation_signer_to_domain_errors() ::
+    dnssec_limit_exceeded() | 
+    t_l_d_rules_violation() | 
+    duplicate_request() | 
+    unsupported_t_l_d() | 
+    operation_limit_exceeded() | 
+    invalid_input().
+
+-type cancel_domain_transfer_to_another_aws_account_errors() ::
+    unsupported_t_l_d() | 
+    operation_limit_exceeded() | 
+    invalid_input().
+
+-type check_domain_availability_errors() ::
+    unsupported_t_l_d() | 
+    invalid_input().
+
+-type check_domain_transferability_errors() ::
+    unsupported_t_l_d() | 
+    invalid_input().
+
+-type delete_domain_errors() ::
+    t_l_d_rules_violation() | 
+    duplicate_request() | 
+    unsupported_t_l_d() | 
+    invalid_input().
+
+-type delete_tags_for_domain_errors() ::
+    unsupported_t_l_d() | 
+    operation_limit_exceeded() | 
+    invalid_input().
+
+-type disable_domain_auto_renew_errors() ::
+    unsupported_t_l_d() | 
+    invalid_input().
+
+-type disable_domain_transfer_lock_errors() ::
+    t_l_d_rules_violation() | 
+    duplicate_request() | 
+    unsupported_t_l_d() | 
+    operation_limit_exceeded() | 
+    invalid_input().
+
+-type disassociate_delegation_signer_from_domain_errors() ::
+    t_l_d_rules_violation() | 
+    duplicate_request() | 
+    unsupported_t_l_d() | 
+    operation_limit_exceeded() | 
+    invalid_input().
+
+-type enable_domain_auto_renew_errors() ::
+    t_l_d_rules_violation() | 
+    unsupported_t_l_d() | 
+    invalid_input().
+
+-type enable_domain_transfer_lock_errors() ::
+    t_l_d_rules_violation() | 
+    duplicate_request() | 
+    unsupported_t_l_d() | 
+    operation_limit_exceeded() | 
+    invalid_input().
+
+-type get_contact_reachability_status_errors() ::
+    unsupported_t_l_d() | 
+    operation_limit_exceeded() | 
+    invalid_input().
+
+-type get_domain_detail_errors() ::
+    unsupported_t_l_d() | 
+    invalid_input().
+
+-type get_domain_suggestions_errors() ::
+    unsupported_t_l_d() | 
+    invalid_input().
+
+-type get_operation_detail_errors() ::
+    invalid_input().
+
+-type list_domains_errors() ::
+    invalid_input().
+
+-type list_operations_errors() ::
+    invalid_input().
+
+-type list_prices_errors() ::
+    unsupported_t_l_d() | 
+    invalid_input().
+
+-type list_tags_for_domain_errors() ::
+    unsupported_t_l_d() | 
+    operation_limit_exceeded() | 
+    invalid_input().
+
+-type push_domain_errors() ::
+    unsupported_t_l_d() | 
+    operation_limit_exceeded() | 
+    invalid_input().
+
+-type register_domain_errors() ::
+    domain_limit_exceeded() | 
+    t_l_d_rules_violation() | 
+    duplicate_request() | 
+    unsupported_t_l_d() | 
+    operation_limit_exceeded() | 
+    invalid_input().
+
+-type reject_domain_transfer_from_another_aws_account_errors() ::
+    unsupported_t_l_d() | 
+    operation_limit_exceeded() | 
+    invalid_input().
+
+-type renew_domain_errors() ::
+    t_l_d_rules_violation() | 
+    duplicate_request() | 
+    unsupported_t_l_d() | 
+    operation_limit_exceeded() | 
+    invalid_input().
+
+-type resend_contact_reachability_email_errors() ::
+    unsupported_t_l_d() | 
+    operation_limit_exceeded() | 
+    invalid_input().
+
+-type resend_operation_authorization_errors() ::
+    invalid_input().
+
+-type retrieve_domain_auth_code_errors() ::
+    unsupported_t_l_d() | 
+    invalid_input().
+
+-type transfer_domain_errors() ::
+    domain_limit_exceeded() | 
+    t_l_d_rules_violation() | 
+    duplicate_request() | 
+    unsupported_t_l_d() | 
+    operation_limit_exceeded() | 
+    invalid_input().
+
+-type transfer_domain_to_another_aws_account_errors() ::
+    duplicate_request() | 
+    unsupported_t_l_d() | 
+    operation_limit_exceeded() | 
+    invalid_input().
+
+-type update_domain_contact_errors() ::
+    t_l_d_rules_violation() | 
+    duplicate_request() | 
+    unsupported_t_l_d() | 
+    operation_limit_exceeded() | 
+    invalid_input().
+
+-type update_domain_contact_privacy_errors() ::
+    t_l_d_rules_violation() | 
+    duplicate_request() | 
+    unsupported_t_l_d() | 
+    operation_limit_exceeded() | 
+    invalid_input().
+
+-type update_domain_nameservers_errors() ::
+    t_l_d_rules_violation() | 
+    duplicate_request() | 
+    unsupported_t_l_d() | 
+    operation_limit_exceeded() | 
+    invalid_input().
+
+-type update_tags_for_domain_errors() ::
+    unsupported_t_l_d() | 
+    operation_limit_exceeded() | 
+    invalid_input().
+
+-type view_billing_errors() ::
+    invalid_input().
 
 %%====================================================================
 %% API
@@ -794,10 +972,7 @@
 -spec accept_domain_transfer_from_another_aws_account(map(), accept_domain_transfer_from_another_aws_account_request()) ->
     {ok, accept_domain_transfer_from_another_aws_account_response(), tuple()} |
     {error, any()} |
-    {error, domain_limit_exceeded(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, accept_domain_transfer_from_another_aws_account_errors(), tuple()}.
 accept_domain_transfer_from_another_aws_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_domain_transfer_from_another_aws_account(Client, Input, []).
@@ -805,10 +980,7 @@ accept_domain_transfer_from_another_aws_account(Client, Input)
 -spec accept_domain_transfer_from_another_aws_account(map(), accept_domain_transfer_from_another_aws_account_request(), proplists:proplist()) ->
     {ok, accept_domain_transfer_from_another_aws_account_response(), tuple()} |
     {error, any()} |
-    {error, domain_limit_exceeded(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, accept_domain_transfer_from_another_aws_account_errors(), tuple()}.
 accept_domain_transfer_from_another_aws_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcceptDomainTransferFromAnotherAwsAccount">>, Input, Options).
@@ -831,12 +1003,7 @@ accept_domain_transfer_from_another_aws_account(Client, Input, Options)
 -spec associate_delegation_signer_to_domain(map(), associate_delegation_signer_to_domain_request()) ->
     {ok, associate_delegation_signer_to_domain_response(), tuple()} |
     {error, any()} |
-    {error, dnssec_limit_exceeded(), tuple()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, t_l_d_rules_violation(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, associate_delegation_signer_to_domain_errors(), tuple()}.
 associate_delegation_signer_to_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_delegation_signer_to_domain(Client, Input, []).
@@ -844,12 +1011,7 @@ associate_delegation_signer_to_domain(Client, Input)
 -spec associate_delegation_signer_to_domain(map(), associate_delegation_signer_to_domain_request(), proplists:proplist()) ->
     {ok, associate_delegation_signer_to_domain_response(), tuple()} |
     {error, any()} |
-    {error, dnssec_limit_exceeded(), tuple()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, t_l_d_rules_violation(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, associate_delegation_signer_to_domain_errors(), tuple()}.
 associate_delegation_signer_to_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateDelegationSignerToDomain">>, Input, Options).
@@ -878,9 +1040,7 @@ associate_delegation_signer_to_domain(Client, Input, Options)
 -spec cancel_domain_transfer_to_another_aws_account(map(), cancel_domain_transfer_to_another_aws_account_request()) ->
     {ok, cancel_domain_transfer_to_another_aws_account_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, cancel_domain_transfer_to_another_aws_account_errors(), tuple()}.
 cancel_domain_transfer_to_another_aws_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_domain_transfer_to_another_aws_account(Client, Input, []).
@@ -888,9 +1048,7 @@ cancel_domain_transfer_to_another_aws_account(Client, Input)
 -spec cancel_domain_transfer_to_another_aws_account(map(), cancel_domain_transfer_to_another_aws_account_request(), proplists:proplist()) ->
     {ok, cancel_domain_transfer_to_another_aws_account_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, cancel_domain_transfer_to_another_aws_account_errors(), tuple()}.
 cancel_domain_transfer_to_another_aws_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelDomainTransferToAnotherAwsAccount">>, Input, Options).
@@ -904,8 +1062,7 @@ cancel_domain_transfer_to_another_aws_account(Client, Input, Options)
 -spec check_domain_availability(map(), check_domain_availability_request()) ->
     {ok, check_domain_availability_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, check_domain_availability_errors(), tuple()}.
 check_domain_availability(Client, Input)
   when is_map(Client), is_map(Input) ->
     check_domain_availability(Client, Input, []).
@@ -913,8 +1070,7 @@ check_domain_availability(Client, Input)
 -spec check_domain_availability(map(), check_domain_availability_request(), proplists:proplist()) ->
     {ok, check_domain_availability_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, check_domain_availability_errors(), tuple()}.
 check_domain_availability(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CheckDomainAvailability">>, Input, Options).
@@ -923,8 +1079,7 @@ check_domain_availability(Client, Input, Options)
 -spec check_domain_transferability(map(), check_domain_transferability_request()) ->
     {ok, check_domain_transferability_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, check_domain_transferability_errors(), tuple()}.
 check_domain_transferability(Client, Input)
   when is_map(Client), is_map(Input) ->
     check_domain_transferability(Client, Input, []).
@@ -932,8 +1087,7 @@ check_domain_transferability(Client, Input)
 -spec check_domain_transferability(map(), check_domain_transferability_request(), proplists:proplist()) ->
     {ok, check_domain_transferability_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, check_domain_transferability_errors(), tuple()}.
 check_domain_transferability(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CheckDomainTransferability">>, Input, Options).
@@ -965,10 +1119,7 @@ check_domain_transferability(Client, Input, Options)
 -spec delete_domain(map(), delete_domain_request()) ->
     {ok, delete_domain_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, t_l_d_rules_violation(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, delete_domain_errors(), tuple()}.
 delete_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_domain(Client, Input, []).
@@ -976,10 +1127,7 @@ delete_domain(Client, Input)
 -spec delete_domain(map(), delete_domain_request(), proplists:proplist()) ->
     {ok, delete_domain_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, t_l_d_rules_violation(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, delete_domain_errors(), tuple()}.
 delete_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDomain">>, Input, Options).
@@ -992,9 +1140,7 @@ delete_domain(Client, Input, Options)
 -spec delete_tags_for_domain(map(), delete_tags_for_domain_request()) ->
     {ok, delete_tags_for_domain_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, delete_tags_for_domain_errors(), tuple()}.
 delete_tags_for_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tags_for_domain(Client, Input, []).
@@ -1002,9 +1148,7 @@ delete_tags_for_domain(Client, Input)
 -spec delete_tags_for_domain(map(), delete_tags_for_domain_request(), proplists:proplist()) ->
     {ok, delete_tags_for_domain_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, delete_tags_for_domain_errors(), tuple()}.
 delete_tags_for_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTagsForDomain">>, Input, Options).
@@ -1015,8 +1159,7 @@ delete_tags_for_domain(Client, Input, Options)
 -spec disable_domain_auto_renew(map(), disable_domain_auto_renew_request()) ->
     {ok, disable_domain_auto_renew_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, disable_domain_auto_renew_errors(), tuple()}.
 disable_domain_auto_renew(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_domain_auto_renew(Client, Input, []).
@@ -1024,8 +1167,7 @@ disable_domain_auto_renew(Client, Input)
 -spec disable_domain_auto_renew(map(), disable_domain_auto_renew_request(), proplists:proplist()) ->
     {ok, disable_domain_auto_renew_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, disable_domain_auto_renew_errors(), tuple()}.
 disable_domain_auto_renew(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableDomainAutoRenew">>, Input, Options).
@@ -1045,11 +1187,7 @@ disable_domain_auto_renew(Client, Input, Options)
 -spec disable_domain_transfer_lock(map(), disable_domain_transfer_lock_request()) ->
     {ok, disable_domain_transfer_lock_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, t_l_d_rules_violation(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, disable_domain_transfer_lock_errors(), tuple()}.
 disable_domain_transfer_lock(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_domain_transfer_lock(Client, Input, []).
@@ -1057,11 +1195,7 @@ disable_domain_transfer_lock(Client, Input)
 -spec disable_domain_transfer_lock(map(), disable_domain_transfer_lock_request(), proplists:proplist()) ->
     {ok, disable_domain_transfer_lock_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, t_l_d_rules_violation(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, disable_domain_transfer_lock_errors(), tuple()}.
 disable_domain_transfer_lock(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableDomainTransferLock">>, Input, Options).
@@ -1072,11 +1206,7 @@ disable_domain_transfer_lock(Client, Input, Options)
 -spec disassociate_delegation_signer_from_domain(map(), disassociate_delegation_signer_from_domain_request()) ->
     {ok, disassociate_delegation_signer_from_domain_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, t_l_d_rules_violation(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, disassociate_delegation_signer_from_domain_errors(), tuple()}.
 disassociate_delegation_signer_from_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_delegation_signer_from_domain(Client, Input, []).
@@ -1084,11 +1214,7 @@ disassociate_delegation_signer_from_domain(Client, Input)
 -spec disassociate_delegation_signer_from_domain(map(), disassociate_delegation_signer_from_domain_request(), proplists:proplist()) ->
     {ok, disassociate_delegation_signer_from_domain_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, t_l_d_rules_violation(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, disassociate_delegation_signer_from_domain_errors(), tuple()}.
 disassociate_delegation_signer_from_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateDelegationSignerFromDomain">>, Input, Options).
@@ -1111,9 +1237,7 @@ disassociate_delegation_signer_from_domain(Client, Input, Options)
 -spec enable_domain_auto_renew(map(), enable_domain_auto_renew_request()) ->
     {ok, enable_domain_auto_renew_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, t_l_d_rules_violation(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, enable_domain_auto_renew_errors(), tuple()}.
 enable_domain_auto_renew(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_domain_auto_renew(Client, Input, []).
@@ -1121,9 +1245,7 @@ enable_domain_auto_renew(Client, Input)
 -spec enable_domain_auto_renew(map(), enable_domain_auto_renew_request(), proplists:proplist()) ->
     {ok, enable_domain_auto_renew_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, t_l_d_rules_violation(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, enable_domain_auto_renew_errors(), tuple()}.
 enable_domain_auto_renew(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableDomainAutoRenew">>, Input, Options).
@@ -1139,11 +1261,7 @@ enable_domain_auto_renew(Client, Input, Options)
 -spec enable_domain_transfer_lock(map(), enable_domain_transfer_lock_request()) ->
     {ok, enable_domain_transfer_lock_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, t_l_d_rules_violation(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, enable_domain_transfer_lock_errors(), tuple()}.
 enable_domain_transfer_lock(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_domain_transfer_lock(Client, Input, []).
@@ -1151,11 +1269,7 @@ enable_domain_transfer_lock(Client, Input)
 -spec enable_domain_transfer_lock(map(), enable_domain_transfer_lock_request(), proplists:proplist()) ->
     {ok, enable_domain_transfer_lock_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, t_l_d_rules_violation(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, enable_domain_transfer_lock_errors(), tuple()}.
 enable_domain_transfer_lock(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableDomainTransferLock">>, Input, Options).
@@ -1171,9 +1285,7 @@ enable_domain_transfer_lock(Client, Input, Options)
 -spec get_contact_reachability_status(map(), get_contact_reachability_status_request()) ->
     {ok, get_contact_reachability_status_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, get_contact_reachability_status_errors(), tuple()}.
 get_contact_reachability_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_contact_reachability_status(Client, Input, []).
@@ -1181,9 +1293,7 @@ get_contact_reachability_status(Client, Input)
 -spec get_contact_reachability_status(map(), get_contact_reachability_status_request(), proplists:proplist()) ->
     {ok, get_contact_reachability_status_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, get_contact_reachability_status_errors(), tuple()}.
 get_contact_reachability_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetContactReachabilityStatus">>, Input, Options).
@@ -1197,8 +1307,7 @@ get_contact_reachability_status(Client, Input, Options)
 -spec get_domain_detail(map(), get_domain_detail_request()) ->
     {ok, get_domain_detail_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, get_domain_detail_errors(), tuple()}.
 get_domain_detail(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_domain_detail(Client, Input, []).
@@ -1206,8 +1315,7 @@ get_domain_detail(Client, Input)
 -spec get_domain_detail(map(), get_domain_detail_request(), proplists:proplist()) ->
     {ok, get_domain_detail_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, get_domain_detail_errors(), tuple()}.
 get_domain_detail(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDomainDetail">>, Input, Options).
@@ -1217,8 +1325,7 @@ get_domain_detail(Client, Input, Options)
 -spec get_domain_suggestions(map(), get_domain_suggestions_request()) ->
     {ok, get_domain_suggestions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, get_domain_suggestions_errors(), tuple()}.
 get_domain_suggestions(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_domain_suggestions(Client, Input, []).
@@ -1226,8 +1333,7 @@ get_domain_suggestions(Client, Input)
 -spec get_domain_suggestions(map(), get_domain_suggestions_request(), proplists:proplist()) ->
     {ok, get_domain_suggestions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, get_domain_suggestions_errors(), tuple()}.
 get_domain_suggestions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDomainSuggestions">>, Input, Options).
@@ -1237,7 +1343,7 @@ get_domain_suggestions(Client, Input, Options)
 -spec get_operation_detail(map(), get_operation_detail_request()) ->
     {ok, get_operation_detail_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()}.
+    {error, get_operation_detail_errors(), tuple()}.
 get_operation_detail(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_operation_detail(Client, Input, []).
@@ -1245,7 +1351,7 @@ get_operation_detail(Client, Input)
 -spec get_operation_detail(map(), get_operation_detail_request(), proplists:proplist()) ->
     {ok, get_operation_detail_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()}.
+    {error, get_operation_detail_errors(), tuple()}.
 get_operation_detail(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOperationDetail">>, Input, Options).
@@ -1256,7 +1362,7 @@ get_operation_detail(Client, Input, Options)
 -spec list_domains(map(), list_domains_request()) ->
     {ok, list_domains_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()}.
+    {error, list_domains_errors(), tuple()}.
 list_domains(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_domains(Client, Input, []).
@@ -1264,7 +1370,7 @@ list_domains(Client, Input)
 -spec list_domains(map(), list_domains_request(), proplists:proplist()) ->
     {ok, list_domains_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()}.
+    {error, list_domains_errors(), tuple()}.
 list_domains(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDomains">>, Input, Options).
@@ -1278,7 +1384,7 @@ list_domains(Client, Input, Options)
 -spec list_operations(map(), list_operations_request()) ->
     {ok, list_operations_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()}.
+    {error, list_operations_errors(), tuple()}.
 list_operations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_operations(Client, Input, []).
@@ -1286,7 +1392,7 @@ list_operations(Client, Input)
 -spec list_operations(map(), list_operations_request(), proplists:proplist()) ->
     {ok, list_operations_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()}.
+    {error, list_operations_errors(), tuple()}.
 list_operations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOperations">>, Input, Options).
@@ -1307,8 +1413,7 @@ list_operations(Client, Input, Options)
 -spec list_prices(map(), list_prices_request()) ->
     {ok, list_prices_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, list_prices_errors(), tuple()}.
 list_prices(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_prices(Client, Input, []).
@@ -1316,8 +1421,7 @@ list_prices(Client, Input)
 -spec list_prices(map(), list_prices_request(), proplists:proplist()) ->
     {ok, list_prices_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, list_prices_errors(), tuple()}.
 list_prices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPrices">>, Input, Options).
@@ -1332,9 +1436,7 @@ list_prices(Client, Input, Options)
 -spec list_tags_for_domain(map(), list_tags_for_domain_request()) ->
     {ok, list_tags_for_domain_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, list_tags_for_domain_errors(), tuple()}.
 list_tags_for_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_domain(Client, Input, []).
@@ -1342,9 +1444,7 @@ list_tags_for_domain(Client, Input)
 -spec list_tags_for_domain(map(), list_tags_for_domain_request(), proplists:proplist()) ->
     {ok, list_tags_for_domain_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, list_tags_for_domain_errors(), tuple()}.
 list_tags_for_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForDomain">>, Input, Options).
@@ -1359,9 +1459,7 @@ list_tags_for_domain(Client, Input, Options)
 -spec push_domain(map(), push_domain_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, push_domain_errors(), tuple()}.
 push_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     push_domain(Client, Input, []).
@@ -1369,9 +1467,7 @@ push_domain(Client, Input)
 -spec push_domain(map(), push_domain_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, push_domain_errors(), tuple()}.
 push_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PushDomain">>, Input, Options).
@@ -1419,12 +1515,7 @@ push_domain(Client, Input, Options)
 -spec register_domain(map(), register_domain_request()) ->
     {ok, register_domain_response(), tuple()} |
     {error, any()} |
-    {error, domain_limit_exceeded(), tuple()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, t_l_d_rules_violation(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, register_domain_errors(), tuple()}.
 register_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_domain(Client, Input, []).
@@ -1432,12 +1523,7 @@ register_domain(Client, Input)
 -spec register_domain(map(), register_domain_request(), proplists:proplist()) ->
     {ok, register_domain_response(), tuple()} |
     {error, any()} |
-    {error, domain_limit_exceeded(), tuple()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, t_l_d_rules_violation(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, register_domain_errors(), tuple()}.
 register_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterDomain">>, Input, Options).
@@ -1461,9 +1547,7 @@ register_domain(Client, Input, Options)
 -spec reject_domain_transfer_from_another_aws_account(map(), reject_domain_transfer_from_another_aws_account_request()) ->
     {ok, reject_domain_transfer_from_another_aws_account_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, reject_domain_transfer_from_another_aws_account_errors(), tuple()}.
 reject_domain_transfer_from_another_aws_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     reject_domain_transfer_from_another_aws_account(Client, Input, []).
@@ -1471,9 +1555,7 @@ reject_domain_transfer_from_another_aws_account(Client, Input)
 -spec reject_domain_transfer_from_another_aws_account(map(), reject_domain_transfer_from_another_aws_account_request(), proplists:proplist()) ->
     {ok, reject_domain_transfer_from_another_aws_account_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, reject_domain_transfer_from_another_aws_account_errors(), tuple()}.
 reject_domain_transfer_from_another_aws_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RejectDomainTransferFromAnotherAwsAccount">>, Input, Options).
@@ -1496,11 +1578,7 @@ reject_domain_transfer_from_another_aws_account(Client, Input, Options)
 -spec renew_domain(map(), renew_domain_request()) ->
     {ok, renew_domain_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, t_l_d_rules_violation(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, renew_domain_errors(), tuple()}.
 renew_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     renew_domain(Client, Input, []).
@@ -1508,11 +1586,7 @@ renew_domain(Client, Input)
 -spec renew_domain(map(), renew_domain_request(), proplists:proplist()) ->
     {ok, renew_domain_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, t_l_d_rules_violation(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, renew_domain_errors(), tuple()}.
 renew_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RenewDomain">>, Input, Options).
@@ -1526,9 +1600,7 @@ renew_domain(Client, Input, Options)
 -spec resend_contact_reachability_email(map(), resend_contact_reachability_email_request()) ->
     {ok, resend_contact_reachability_email_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, resend_contact_reachability_email_errors(), tuple()}.
 resend_contact_reachability_email(Client, Input)
   when is_map(Client), is_map(Input) ->
     resend_contact_reachability_email(Client, Input, []).
@@ -1536,9 +1608,7 @@ resend_contact_reachability_email(Client, Input)
 -spec resend_contact_reachability_email(map(), resend_contact_reachability_email_request(), proplists:proplist()) ->
     {ok, resend_contact_reachability_email_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, resend_contact_reachability_email_errors(), tuple()}.
 resend_contact_reachability_email(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResendContactReachabilityEmail">>, Input, Options).
@@ -1547,7 +1617,7 @@ resend_contact_reachability_email(Client, Input, Options)
 -spec resend_operation_authorization(map(), resend_operation_authorization_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()}.
+    {error, resend_operation_authorization_errors(), tuple()}.
 resend_operation_authorization(Client, Input)
   when is_map(Client), is_map(Input) ->
     resend_operation_authorization(Client, Input, []).
@@ -1555,7 +1625,7 @@ resend_operation_authorization(Client, Input)
 -spec resend_operation_authorization(map(), resend_operation_authorization_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()}.
+    {error, resend_operation_authorization_errors(), tuple()}.
 resend_operation_authorization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResendOperationAuthorization">>, Input, Options).
@@ -1567,8 +1637,7 @@ resend_operation_authorization(Client, Input, Options)
 -spec retrieve_domain_auth_code(map(), retrieve_domain_auth_code_request()) ->
     {ok, retrieve_domain_auth_code_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, retrieve_domain_auth_code_errors(), tuple()}.
 retrieve_domain_auth_code(Client, Input)
   when is_map(Client), is_map(Input) ->
     retrieve_domain_auth_code(Client, Input, []).
@@ -1576,8 +1645,7 @@ retrieve_domain_auth_code(Client, Input)
 -spec retrieve_domain_auth_code(map(), retrieve_domain_auth_code_request(), proplists:proplist()) ->
     {ok, retrieve_domain_auth_code_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, retrieve_domain_auth_code_errors(), tuple()}.
 retrieve_domain_auth_code(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RetrieveDomainAuthCode">>, Input, Options).
@@ -1641,12 +1709,7 @@ retrieve_domain_auth_code(Client, Input, Options)
 -spec transfer_domain(map(), transfer_domain_request()) ->
     {ok, transfer_domain_response(), tuple()} |
     {error, any()} |
-    {error, domain_limit_exceeded(), tuple()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, t_l_d_rules_violation(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, transfer_domain_errors(), tuple()}.
 transfer_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     transfer_domain(Client, Input, []).
@@ -1654,12 +1717,7 @@ transfer_domain(Client, Input)
 -spec transfer_domain(map(), transfer_domain_request(), proplists:proplist()) ->
     {ok, transfer_domain_response(), tuple()} |
     {error, any()} |
-    {error, domain_limit_exceeded(), tuple()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, t_l_d_rules_violation(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, transfer_domain_errors(), tuple()}.
 transfer_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TransferDomain">>, Input, Options).
@@ -1711,10 +1769,7 @@ transfer_domain(Client, Input, Options)
 -spec transfer_domain_to_another_aws_account(map(), transfer_domain_to_another_aws_account_request()) ->
     {ok, transfer_domain_to_another_aws_account_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, transfer_domain_to_another_aws_account_errors(), tuple()}.
 transfer_domain_to_another_aws_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     transfer_domain_to_another_aws_account(Client, Input, []).
@@ -1722,10 +1777,7 @@ transfer_domain_to_another_aws_account(Client, Input)
 -spec transfer_domain_to_another_aws_account(map(), transfer_domain_to_another_aws_account_request(), proplists:proplist()) ->
     {ok, transfer_domain_to_another_aws_account_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, transfer_domain_to_another_aws_account_errors(), tuple()}.
 transfer_domain_to_another_aws_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TransferDomainToAnotherAwsAccount">>, Input, Options).
@@ -1746,11 +1798,7 @@ transfer_domain_to_another_aws_account(Client, Input, Options)
 -spec update_domain_contact(map(), update_domain_contact_request()) ->
     {ok, update_domain_contact_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, t_l_d_rules_violation(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, update_domain_contact_errors(), tuple()}.
 update_domain_contact(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_domain_contact(Client, Input, []).
@@ -1758,11 +1806,7 @@ update_domain_contact(Client, Input)
 -spec update_domain_contact(map(), update_domain_contact_request(), proplists:proplist()) ->
     {ok, update_domain_contact_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, t_l_d_rules_violation(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, update_domain_contact_errors(), tuple()}.
 update_domain_contact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDomainContact">>, Input, Options).
@@ -1808,11 +1852,7 @@ update_domain_contact(Client, Input, Options)
 -spec update_domain_contact_privacy(map(), update_domain_contact_privacy_request()) ->
     {ok, update_domain_contact_privacy_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, t_l_d_rules_violation(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, update_domain_contact_privacy_errors(), tuple()}.
 update_domain_contact_privacy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_domain_contact_privacy(Client, Input, []).
@@ -1820,11 +1860,7 @@ update_domain_contact_privacy(Client, Input)
 -spec update_domain_contact_privacy(map(), update_domain_contact_privacy_request(), proplists:proplist()) ->
     {ok, update_domain_contact_privacy_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, t_l_d_rules_violation(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, update_domain_contact_privacy_errors(), tuple()}.
 update_domain_contact_privacy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDomainContactPrivacy">>, Input, Options).
@@ -1845,11 +1881,7 @@ update_domain_contact_privacy(Client, Input, Options)
 -spec update_domain_nameservers(map(), update_domain_nameservers_request()) ->
     {ok, update_domain_nameservers_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, t_l_d_rules_violation(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, update_domain_nameservers_errors(), tuple()}.
 update_domain_nameservers(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_domain_nameservers(Client, Input, []).
@@ -1857,11 +1889,7 @@ update_domain_nameservers(Client, Input)
 -spec update_domain_nameservers(map(), update_domain_nameservers_request(), proplists:proplist()) ->
     {ok, update_domain_nameservers_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, t_l_d_rules_violation(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, update_domain_nameservers_errors(), tuple()}.
 update_domain_nameservers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDomainNameservers">>, Input, Options).
@@ -1874,9 +1902,7 @@ update_domain_nameservers(Client, Input, Options)
 -spec update_tags_for_domain(map(), update_tags_for_domain_request()) ->
     {ok, update_tags_for_domain_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, update_tags_for_domain_errors(), tuple()}.
 update_tags_for_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_tags_for_domain(Client, Input, []).
@@ -1884,9 +1910,7 @@ update_tags_for_domain(Client, Input)
 -spec update_tags_for_domain(map(), update_tags_for_domain_request(), proplists:proplist()) ->
     {ok, update_tags_for_domain_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_limit_exceeded(), tuple()} |
-    {error, unsupported_t_l_d(), tuple()}.
+    {error, update_tags_for_domain_errors(), tuple()}.
 update_tags_for_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTagsForDomain">>, Input, Options).
@@ -1896,7 +1920,7 @@ update_tags_for_domain(Client, Input, Options)
 -spec view_billing(map(), view_billing_request()) ->
     {ok, view_billing_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()}.
+    {error, view_billing_errors(), tuple()}.
 view_billing(Client, Input)
   when is_map(Client), is_map(Input) ->
     view_billing(Client, Input, []).
@@ -1904,7 +1928,7 @@ view_billing(Client, Input)
 -spec view_billing(map(), view_billing_request(), proplists:proplist()) ->
     {ok, view_billing_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()}.
+    {error, view_billing_errors(), tuple()}.
 view_billing(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ViewBilling">>, Input, Options).

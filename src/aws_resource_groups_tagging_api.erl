@@ -228,6 +228,52 @@
 %% }
 -type untag_resources_output() :: #{binary() => any()}.
 
+-type describe_report_creation_errors() ::
+    throttled_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    constraint_violation_exception().
+
+-type get_compliance_summary_errors() ::
+    throttled_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    constraint_violation_exception().
+
+-type get_resources_errors() ::
+    throttled_exception() | 
+    pagination_token_expired_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception().
+
+-type get_tag_keys_errors() ::
+    throttled_exception() | 
+    pagination_token_expired_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception().
+
+-type get_tag_values_errors() ::
+    throttled_exception() | 
+    pagination_token_expired_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception().
+
+-type start_report_creation_errors() ::
+    throttled_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    constraint_violation_exception() | 
+    concurrent_modification_exception().
+
+-type tag_resources_errors() ::
+    throttled_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception().
+
+-type untag_resources_errors() ::
+    throttled_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception().
 
 %%====================================================================
 %% API
@@ -240,10 +286,7 @@
 -spec describe_report_creation(map(), describe_report_creation_input()) ->
     {ok, describe_report_creation_output(), tuple()} |
     {error, any()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, describe_report_creation_errors(), tuple()}.
 describe_report_creation(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_report_creation(Client, Input, []).
@@ -251,10 +294,7 @@ describe_report_creation(Client, Input)
 -spec describe_report_creation(map(), describe_report_creation_input(), proplists:proplist()) ->
     {ok, describe_report_creation_output(), tuple()} |
     {error, any()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, describe_report_creation_errors(), tuple()}.
 describe_report_creation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReportCreation">>, Input, Options).
@@ -284,10 +324,7 @@ describe_report_creation(Client, Input, Options)
 -spec get_compliance_summary(map(), get_compliance_summary_input()) ->
     {ok, get_compliance_summary_output(), tuple()} |
     {error, any()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_compliance_summary_errors(), tuple()}.
 get_compliance_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_compliance_summary(Client, Input, []).
@@ -295,10 +332,7 @@ get_compliance_summary(Client, Input)
 -spec get_compliance_summary(map(), get_compliance_summary_input(), proplists:proplist()) ->
     {ok, get_compliance_summary_output(), tuple()} |
     {error, any()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_compliance_summary_errors(), tuple()}.
 get_compliance_summary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetComplianceSummary">>, Input, Options).
@@ -334,10 +368,7 @@ get_compliance_summary(Client, Input, Options)
 -spec get_resources(map(), get_resources_input()) ->
     {ok, get_resources_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, pagination_token_expired_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_resources_errors(), tuple()}.
 get_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resources(Client, Input, []).
@@ -345,10 +376,7 @@ get_resources(Client, Input)
 -spec get_resources(map(), get_resources_input(), proplists:proplist()) ->
     {ok, get_resources_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, pagination_token_expired_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_resources_errors(), tuple()}.
 get_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResources">>, Input, Options).
@@ -370,10 +398,7 @@ get_resources(Client, Input, Options)
 -spec get_tag_keys(map(), get_tag_keys_input()) ->
     {ok, get_tag_keys_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, pagination_token_expired_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_tag_keys_errors(), tuple()}.
 get_tag_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_tag_keys(Client, Input, []).
@@ -381,10 +406,7 @@ get_tag_keys(Client, Input)
 -spec get_tag_keys(map(), get_tag_keys_input(), proplists:proplist()) ->
     {ok, get_tag_keys_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, pagination_token_expired_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_tag_keys_errors(), tuple()}.
 get_tag_keys(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTagKeys">>, Input, Options).
@@ -406,10 +428,7 @@ get_tag_keys(Client, Input, Options)
 -spec get_tag_values(map(), get_tag_values_input()) ->
     {ok, get_tag_values_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, pagination_token_expired_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_tag_values_errors(), tuple()}.
 get_tag_values(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_tag_values(Client, Input, []).
@@ -417,10 +436,7 @@ get_tag_values(Client, Input)
 -spec get_tag_values(map(), get_tag_values_input(), proplists:proplist()) ->
     {ok, get_tag_values_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, pagination_token_expired_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_tag_values_errors(), tuple()}.
 get_tag_values(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTagValues">>, Input, Options).
@@ -442,11 +458,7 @@ get_tag_values(Client, Input, Options)
 -spec start_report_creation(map(), start_report_creation_input()) ->
     {ok, start_report_creation_output(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, start_report_creation_errors(), tuple()}.
 start_report_creation(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_report_creation(Client, Input, []).
@@ -454,11 +466,7 @@ start_report_creation(Client, Input)
 -spec start_report_creation(map(), start_report_creation_input(), proplists:proplist()) ->
     {ok, start_report_creation_output(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, start_report_creation_errors(), tuple()}.
 start_report_creation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartReportCreation">>, Input, Options).
@@ -516,9 +524,7 @@ start_report_creation(Client, Input, Options)
 -spec tag_resources(map(), tag_resources_input()) ->
     {ok, tag_resources_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, tag_resources_errors(), tuple()}.
 tag_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resources(Client, Input, []).
@@ -526,9 +532,7 @@ tag_resources(Client, Input)
 -spec tag_resources(map(), tag_resources_input(), proplists:proplist()) ->
     {ok, tag_resources_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, tag_resources_errors(), tuple()}.
 tag_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResources">>, Input, Options).
@@ -569,9 +573,7 @@ tag_resources(Client, Input, Options)
 -spec untag_resources(map(), untag_resources_input()) ->
     {ok, untag_resources_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, untag_resources_errors(), tuple()}.
 untag_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resources(Client, Input, []).
@@ -579,9 +581,7 @@ untag_resources(Client, Input)
 -spec untag_resources(map(), untag_resources_input(), proplists:proplist()) ->
     {ok, untag_resources_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, untag_resources_errors(), tuple()}.
 untag_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResources">>, Input, Options).

@@ -168,6 +168,7 @@
 %% }
 -type create_ip_access_settings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% ip_rule() :: #{
 %%   <<"description">> => string(),
@@ -175,11 +176,13 @@
 %% }
 -type ip_rule() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_browser_settings_response() :: #{
 %%   <<"browserSettingsArn">> => string()
 %% }
 -type create_browser_settings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_trust_store_certificate_request() :: #{
@@ -187,11 +190,13 @@
 %% }
 -type get_trust_store_certificate_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_ip_access_settings_response() :: #{
 %%   <<"ipAccessSettingsArn">> => string()
 %% }
 -type create_ip_access_settings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% ip_access_settings_summary() :: #{
@@ -202,12 +207,14 @@
 %% }
 -type ip_access_settings_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_user_settings_response() :: #{
 %%   <<"portalArn">> => string(),
 %%   <<"userSettingsArn">> => string()
 %% }
 -type associate_user_settings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% cookie_synchronization_configuration() :: #{
@@ -216,6 +223,7 @@
 %% }
 -type cookie_synchronization_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"clientToken">> => string(),
@@ -223,11 +231,13 @@
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% trust_store_summary() :: #{
 %%   <<"trustStoreArn">> => string()
 %% }
 -type trust_store_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_ip_access_settings_response() :: #{
@@ -235,12 +245,15 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_ip_access_settings_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_portal_request() :: #{}
 -type get_portal_request() :: #{}.
+
 %% Example:
 %% get_network_settings_request() :: #{}
 -type get_network_settings_request() :: #{}.
+
 
 %% Example:
 %% create_user_access_logging_settings_response() :: #{
@@ -248,15 +261,18 @@
 %% }
 -type create_user_access_logging_settings_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_identity_providers_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_identity_providers_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_portal_service_provider_metadata_request() :: #{}
 -type get_portal_service_provider_metadata_request() :: #{}.
+
 
 %% Example:
 %% list_trust_store_certificates_request() :: #{
@@ -265,17 +281,20 @@
 %% }
 -type list_trust_store_certificates_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_identity_provider_response() :: #{
 %%   <<"identityProvider">> => identity_provider()
 %% }
 -type update_identity_provider_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_identity_provider_response() :: #{
 %%   <<"identityProvider">> => identity_provider()
 %% }
 -type get_identity_provider_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_browser_settings_request() :: #{
@@ -284,6 +303,7 @@
 %% }
 -type update_browser_settings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_user_access_logging_settings_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -291,14 +311,17 @@
 %% }
 -type list_user_access_logging_settings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_network_settings_response() :: #{
 %%   <<"networkSettings">> => network_settings()
 %% }
 -type update_network_settings_response() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% create_network_settings_request() :: #{
@@ -309,15 +332,18 @@
 %%   <<"vpcId">> := string()
 %% }
 -type create_network_settings_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_trust_store_request() :: #{}
 -type get_trust_store_request() :: #{}.
+
 
 %% Example:
 %% associate_trust_store_request() :: #{
 %%   <<"trustStoreArn">> := string()
 %% }
 -type associate_trust_store_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% cookie_specification() :: #{
@@ -326,9 +352,11 @@
 %%   <<"path">> => string()
 %% }
 -type cookie_specification() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_trust_store_response() :: #{}
 -type disassociate_trust_store_response() :: #{}.
+
 
 %% Example:
 %% associate_user_access_logging_settings_request() :: #{
@@ -336,11 +364,13 @@
 %% }
 -type associate_user_access_logging_settings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_user_settings_request() :: #{
 %%   <<"userSettingsArn">> := string()
 %% }
 -type associate_user_settings_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_identity_provider_response() :: #{
@@ -348,15 +378,18 @@
 %% }
 -type create_identity_provider_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_browser_settings_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_browser_settings_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_user_access_logging_settings_request() :: #{}
 -type delete_user_access_logging_settings_request() :: #{}.
+
 
 %% Example:
 %% create_portal_response() :: #{
@@ -365,12 +398,14 @@
 %% }
 -type create_portal_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_ip_access_settings_response() :: #{
 %%   <<"ipAccessSettingsArn">> => string(),
 %%   <<"portalArn">> => string()
 %% }
 -type associate_ip_access_settings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_user_settings_response() :: #{
@@ -379,11 +414,13 @@
 %% }
 -type list_user_settings_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_trust_store_response() :: #{
 %%   <<"trustStore">> => trust_store()
 %% }
 -type get_trust_store_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% user_access_logging_settings() :: #{
@@ -392,15 +429,19 @@
 %%   <<"userAccessLoggingSettingsArn">> => string()
 %% }
 -type user_access_logging_settings() :: #{binary() => any()}.
+
 %% Example:
 %% get_user_access_logging_settings_request() :: #{}
 -type get_user_access_logging_settings_request() :: #{}.
+
 %% Example:
 %% delete_identity_provider_request() :: #{}
 -type delete_identity_provider_request() :: #{}.
+
 %% Example:
 %% disassociate_browser_settings_response() :: #{}
 -type disassociate_browser_settings_response() :: #{}.
+
 
 %% Example:
 %% list_ip_access_settings_request() :: #{
@@ -409,17 +450,20 @@
 %% }
 -type list_ip_access_settings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_user_settings_response() :: #{
 %%   <<"userSettings">> => user_settings()
 %% }
 -type get_user_settings_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_ip_access_settings_response() :: #{
 %%   <<"ipAccessSettings">> => ip_access_settings()
 %% }
 -type update_ip_access_settings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% associate_trust_store_response() :: #{
@@ -428,6 +472,7 @@
 %% }
 -type associate_trust_store_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_trust_store_request() :: #{
 %%   <<"certificatesToAdd">> => list(binary()()),
@@ -435,6 +480,7 @@
 %%   <<"clientToken">> => string()
 %% }
 -type update_trust_store_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% user_settings_summary() :: #{
@@ -450,11 +496,13 @@
 %% }
 -type user_settings_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% user_access_logging_settings_summary() :: #{
@@ -462,9 +510,11 @@
 %%   <<"userAccessLoggingSettingsArn">> => string()
 %% }
 -type user_access_logging_settings_summary() :: #{binary() => any()}.
+
 %% Example:
 %% delete_user_settings_response() :: #{}
 -type delete_user_settings_response() :: #{}.
+
 
 %% Example:
 %% associate_network_settings_request() :: #{
@@ -472,11 +522,13 @@
 %% }
 -type associate_network_settings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_browser_settings_request() :: #{
 %%   <<"browserSettingsArn">> := string()
 %% }
 -type associate_browser_settings_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_trust_stores_request() :: #{
@@ -484,12 +536,15 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_trust_stores_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_trust_store_request() :: #{}
 -type delete_trust_store_request() :: #{}.
+
 %% Example:
 %% delete_browser_settings_request() :: #{}
 -type delete_browser_settings_request() :: #{}.
+
 
 %% Example:
 %% certificate_summary() :: #{
@@ -500,15 +555,18 @@
 %%   <<"thumbprint">> => string()
 %% }
 -type certificate_summary() :: #{binary() => any()}.
+
 %% Example:
 %% get_browser_settings_request() :: #{}
 -type get_browser_settings_request() :: #{}.
+
 
 %% Example:
 %% get_ip_access_settings_response() :: #{
 %%   <<"ipAccessSettings">> => ip_access_settings()
 %% }
 -type get_ip_access_settings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% network_settings() :: #{
@@ -520,24 +578,29 @@
 %% }
 -type network_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_portals_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_portals_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_ip_access_settings_request() :: #{}
 -type delete_ip_access_settings_request() :: #{}.
+
 %% Example:
 %% delete_portal_request() :: #{}
 -type delete_portal_request() :: #{}.
+
 
 %% Example:
 %% update_user_settings_response() :: #{
 %%   <<"userSettings">> => user_settings()
 %% }
 -type update_user_settings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_trust_store_request() :: #{
@@ -547,6 +610,7 @@
 %% }
 -type create_trust_store_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string(),
@@ -554,6 +618,7 @@
 %%   <<"resourceType">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -563,12 +628,14 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_network_settings_response() :: #{
 %%   <<"networkSettingsArn">> => string(),
 %%   <<"portalArn">> => string()
 %% }
 -type associate_network_settings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_user_access_logging_settings_request() :: #{
@@ -577,21 +644,25 @@
 %% }
 -type update_user_access_logging_settings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Value">> => string()
 %% }
 -type tag() :: #{binary() => any()}.
+
 %% Example:
 %% get_user_settings_request() :: #{}
 -type get_user_settings_request() :: #{}.
+
 
 %% Example:
 %% create_network_settings_response() :: #{
 %%   <<"networkSettingsArn">> => string()
 %% }
 -type create_network_settings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_browser_settings_request() :: #{
@@ -602,12 +673,15 @@
 %%   <<"tags">> => list(tag()())
 %% }
 -type create_browser_settings_request() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_network_settings_request() :: #{}
 -type disassociate_network_settings_request() :: #{}.
+
 %% Example:
 %% delete_portal_response() :: #{}
 -type delete_portal_response() :: #{}.
+
 
 %% Example:
 %% list_network_settings_request() :: #{
@@ -615,6 +689,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_network_settings_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_portal_request() :: #{
@@ -627,6 +702,7 @@
 %% }
 -type create_portal_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => string(),
@@ -637,6 +713,7 @@
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_network_settings_request() :: #{
 %%   <<"clientToken">> => string(),
@@ -646,20 +723,24 @@
 %% }
 -type update_network_settings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_portal_response() :: #{
 %%   <<"portal">> => portal()
 %% }
 -type update_portal_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_network_settings_response() :: #{
 %%   <<"networkSettings">> => network_settings()
 %% }
 -type get_network_settings_response() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_user_settings_response() :: #{}
 -type disassociate_user_settings_response() :: #{}.
+
 
 %% Example:
 %% browser_settings_summary() :: #{
@@ -667,11 +748,13 @@
 %% }
 -type browser_settings_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_user_settings_response() :: #{
 %%   <<"userSettingsArn">> => string()
 %% }
 -type create_user_settings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
@@ -679,18 +762,22 @@
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_trust_stores_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"trustStores">> => list(trust_store_summary()())
 %% }
 -type list_trust_stores_response() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_browser_settings_request() :: #{}
 -type disassociate_browser_settings_request() :: #{}.
+
 %% Example:
 %% delete_network_settings_request() :: #{}
 -type delete_network_settings_request() :: #{}.
+
 
 %% Example:
 %% identity_provider_summary() :: #{
@@ -700,11 +787,13 @@
 %% }
 -type identity_provider_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_ip_access_settings_request() :: #{
 %%   <<"ipAccessSettingsArn">> := string()
 %% }
 -type associate_ip_access_settings_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% validation_exception_field() :: #{
@@ -713,15 +802,18 @@
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
 
+
 %% Example:
 %% network_settings_summary() :: #{
 %%   <<"networkSettingsArn">> => string(),
 %%   <<"vpcId">> => string()
 %% }
 -type network_settings_summary() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_user_access_logging_settings_response() :: #{}
 -type disassociate_user_access_logging_settings_response() :: #{}.
+
 
 %% Example:
 %% get_portal_service_provider_metadata_response() :: #{
@@ -729,6 +821,7 @@
 %%   <<"serviceProviderSamlMetadata">> => string()
 %% }
 -type get_portal_service_provider_metadata_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_user_settings_request() :: #{
@@ -743,9 +836,11 @@
 %%   <<"uploadAllowed">> => string()
 %% }
 -type update_user_settings_request() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_ip_access_settings_response() :: #{}
 -type disassociate_ip_access_settings_response() :: #{}.
+
 
 %% Example:
 %% list_network_settings_response() :: #{
@@ -753,6 +848,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_network_settings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% identity_provider() :: #{
@@ -762,15 +858,18 @@
 %%   <<"identityProviderType">> => string()
 %% }
 -type identity_provider() :: #{binary() => any()}.
+
 %% Example:
 %% delete_ip_access_settings_response() :: #{}
 -type delete_ip_access_settings_response() :: #{}.
+
 
 %% Example:
 %% get_browser_settings_response() :: #{
 %%   <<"browserSettings">> => browser_settings()
 %% }
 -type get_browser_settings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_trust_store_certificates_response() :: #{
@@ -780,6 +879,7 @@
 %% }
 -type list_trust_store_certificates_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_portals_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -787,12 +887,14 @@
 %% }
 -type list_portals_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => string(),
 %%   <<"retryAfterSeconds">> => integer()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% certificate() :: #{
@@ -804,9 +906,11 @@
 %%   <<"thumbprint">> => string()
 %% }
 -type certificate() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_ip_access_settings_request() :: #{}
 -type disassociate_ip_access_settings_request() :: #{}.
+
 
 %% Example:
 %% get_trust_store_certificate_response() :: #{
@@ -814,6 +918,7 @@
 %%   <<"trustStoreArn">> => string()
 %% }
 -type get_trust_store_certificate_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_identity_provider_request() :: #{
@@ -825,14 +930,17 @@
 %% }
 -type create_identity_provider_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_browser_settings_response() :: #{
 %%   <<"browserSettings">> => browser_settings()
 %% }
 -type update_browser_settings_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_network_settings_response() :: #{}
 -type delete_network_settings_response() :: #{}.
+
 
 %% Example:
 %% access_denied_exception() :: #{
@@ -840,17 +948,21 @@
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_trust_store_response() :: #{
 %%   <<"trustStoreArn">> => string()
 %% }
 -type create_trust_store_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_identity_provider_response() :: #{}
 -type delete_identity_provider_response() :: #{}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% create_user_settings_request() :: #{
@@ -868,9 +980,11 @@
 %%   <<"uploadAllowed">> := string()
 %% }
 -type create_user_settings_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_user_settings_request() :: #{}
 -type delete_user_settings_request() :: #{}.
+
 
 %% Example:
 %% update_portal_request() :: #{
@@ -878,6 +992,7 @@
 %%   <<"displayName">> => string()
 %% }
 -type update_portal_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% ip_access_settings() :: #{
@@ -890,6 +1005,7 @@
 %% }
 -type ip_access_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"fieldList">> => list(validation_exception_field()()),
@@ -897,12 +1013,15 @@
 %%   <<"reason">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 %% Example:
 %% get_ip_access_settings_request() :: #{}
 -type get_ip_access_settings_request() :: #{}.
+
 
 %% Example:
 %% list_identity_providers_response() :: #{
@@ -910,9 +1029,11 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_identity_providers_response() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_user_access_logging_settings_request() :: #{}
 -type disassociate_user_access_logging_settings_request() :: #{}.
+
 
 %% Example:
 %% throttling_exception() :: #{
@@ -923,6 +1044,7 @@
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_browser_settings_response() :: #{
 %%   <<"browserSettings">> => list(browser_settings_summary()()),
@@ -930,12 +1052,14 @@
 %% }
 -type list_browser_settings_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_user_access_logging_settings_response() :: #{
 %%   <<"portalArn">> => string(),
 %%   <<"userAccessLoggingSettingsArn">> => string()
 %% }
 -type associate_user_access_logging_settings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% portal_summary() :: #{
@@ -955,9 +1079,11 @@
 %%   <<"userSettingsArn">> => string()
 %% }
 -type portal_summary() :: #{binary() => any()}.
+
 %% Example:
 %% get_identity_provider_request() :: #{}
 -type get_identity_provider_request() :: #{}.
+
 
 %% Example:
 %% associate_browser_settings_response() :: #{
@@ -965,6 +1091,7 @@
 %%   <<"portalArn">> => string()
 %% }
 -type associate_browser_settings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% user_settings() :: #{
@@ -981,11 +1108,13 @@
 %% }
 -type user_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_portal_response() :: #{
 %%   <<"portal">> => portal()
 %% }
 -type get_portal_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_user_access_logging_settings_request() :: #{
@@ -994,6 +1123,7 @@
 %%   <<"tags">> => list(tag()())
 %% }
 -type create_user_access_logging_settings_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_identity_provider_request() :: #{
@@ -1004,15 +1134,18 @@
 %% }
 -type update_identity_provider_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_user_access_logging_settings_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"userAccessLoggingSettings">> => list(user_access_logging_settings_summary()())
 %% }
 -type list_user_access_logging_settings_response() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_user_settings_request() :: #{}
 -type disassociate_user_settings_request() :: #{}.
+
 
 %% Example:
 %% update_ip_access_settings_request() :: #{
@@ -1023,6 +1156,7 @@
 %% }
 -type update_ip_access_settings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% browser_settings() :: #{
 %%   <<"associatedPortalArns">> => list(string()()),
@@ -1031,11 +1165,13 @@
 %% }
 -type browser_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_user_access_logging_settings_response() :: #{
 %%   <<"userAccessLoggingSettings">> => user_access_logging_settings()
 %% }
 -type update_user_access_logging_settings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_user_settings_request() :: #{
@@ -1044,30 +1180,37 @@
 %% }
 -type list_user_settings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_tags_exception() :: #{
 %%   <<"message">> => string(),
 %%   <<"resourceName">> => string()
 %% }
 -type too_many_tags_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_browser_settings_response() :: #{}
 -type delete_browser_settings_response() :: #{}.
+
 %% Example:
 %% disassociate_network_settings_response() :: #{}
 -type disassociate_network_settings_response() :: #{}.
+
 %% Example:
 %% delete_user_access_logging_settings_response() :: #{}
 -type delete_user_access_logging_settings_response() :: #{}.
+
 %% Example:
 %% delete_trust_store_response() :: #{}
 -type delete_trust_store_response() :: #{}.
+
 
 %% Example:
 %% get_user_access_logging_settings_response() :: #{
 %%   <<"userAccessLoggingSettings">> => user_access_logging_settings()
 %% }
 -type get_user_access_logging_settings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% portal() :: #{
@@ -1089,6 +1232,7 @@
 %% }
 -type portal() :: #{binary() => any()}.
 
+
 %% Example:
 %% trust_store() :: #{
 %%   <<"associatedPortalArns">> => list(string()()),
@@ -1096,14 +1240,433 @@
 %% }
 -type trust_store() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_trust_store_response() :: #{
 %%   <<"trustStoreArn">> => string()
 %% }
 -type update_trust_store_response() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_trust_store_request() :: #{}
 -type disassociate_trust_store_request() :: #{}.
+
+-type associate_browser_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type associate_ip_access_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type associate_network_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type associate_trust_store_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type associate_user_access_logging_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type associate_user_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_browser_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_identity_provider_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_ip_access_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_network_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_portal_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_trust_store_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_user_access_logging_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_user_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_browser_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_identity_provider_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_ip_access_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_network_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_portal_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_trust_store_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_user_access_logging_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_user_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type disassociate_browser_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type disassociate_ip_access_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type disassociate_network_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type disassociate_trust_store_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type disassociate_user_access_logging_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type disassociate_user_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_browser_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_identity_provider_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_ip_access_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_network_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_portal_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_portal_service_provider_metadata_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_trust_store_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_trust_store_certificate_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_user_access_logging_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_user_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_browser_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_identity_providers_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_ip_access_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_network_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_portals_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_trust_store_certificates_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_trust_stores_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_user_access_logging_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_user_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_browser_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_identity_provider_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_ip_access_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_network_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_portal_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_trust_store_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type update_user_access_logging_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_user_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -1113,24 +1676,14 @@
 -spec associate_browser_settings(map(), binary() | list(), associate_browser_settings_request()) ->
     {ok, associate_browser_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_browser_settings_errors(), tuple()}.
 associate_browser_settings(Client, PortalArn, Input) ->
     associate_browser_settings(Client, PortalArn, Input, []).
 
 -spec associate_browser_settings(map(), binary() | list(), associate_browser_settings_request(), proplists:proplist()) ->
     {ok, associate_browser_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_browser_settings_errors(), tuple()}.
 associate_browser_settings(Client, PortalArn, Input0, Options0) ->
     Method = put,
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/browserSettings"],
@@ -1158,24 +1711,14 @@ associate_browser_settings(Client, PortalArn, Input0, Options0) ->
 -spec associate_ip_access_settings(map(), binary() | list(), associate_ip_access_settings_request()) ->
     {ok, associate_ip_access_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_ip_access_settings_errors(), tuple()}.
 associate_ip_access_settings(Client, PortalArn, Input) ->
     associate_ip_access_settings(Client, PortalArn, Input, []).
 
 -spec associate_ip_access_settings(map(), binary() | list(), associate_ip_access_settings_request(), proplists:proplist()) ->
     {ok, associate_ip_access_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_ip_access_settings_errors(), tuple()}.
 associate_ip_access_settings(Client, PortalArn, Input0, Options0) ->
     Method = put,
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/ipAccessSettings"],
@@ -1203,24 +1746,14 @@ associate_ip_access_settings(Client, PortalArn, Input0, Options0) ->
 -spec associate_network_settings(map(), binary() | list(), associate_network_settings_request()) ->
     {ok, associate_network_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_network_settings_errors(), tuple()}.
 associate_network_settings(Client, PortalArn, Input) ->
     associate_network_settings(Client, PortalArn, Input, []).
 
 -spec associate_network_settings(map(), binary() | list(), associate_network_settings_request(), proplists:proplist()) ->
     {ok, associate_network_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_network_settings_errors(), tuple()}.
 associate_network_settings(Client, PortalArn, Input0, Options0) ->
     Method = put,
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/networkSettings"],
@@ -1248,22 +1781,14 @@ associate_network_settings(Client, PortalArn, Input0, Options0) ->
 -spec associate_trust_store(map(), binary() | list(), associate_trust_store_request()) ->
     {ok, associate_trust_store_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_trust_store_errors(), tuple()}.
 associate_trust_store(Client, PortalArn, Input) ->
     associate_trust_store(Client, PortalArn, Input, []).
 
 -spec associate_trust_store(map(), binary() | list(), associate_trust_store_request(), proplists:proplist()) ->
     {ok, associate_trust_store_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_trust_store_errors(), tuple()}.
 associate_trust_store(Client, PortalArn, Input0, Options0) ->
     Method = put,
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/trustStores"],
@@ -1291,24 +1816,14 @@ associate_trust_store(Client, PortalArn, Input0, Options0) ->
 -spec associate_user_access_logging_settings(map(), binary() | list(), associate_user_access_logging_settings_request()) ->
     {ok, associate_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_user_access_logging_settings_errors(), tuple()}.
 associate_user_access_logging_settings(Client, PortalArn, Input) ->
     associate_user_access_logging_settings(Client, PortalArn, Input, []).
 
 -spec associate_user_access_logging_settings(map(), binary() | list(), associate_user_access_logging_settings_request(), proplists:proplist()) ->
     {ok, associate_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_user_access_logging_settings_errors(), tuple()}.
 associate_user_access_logging_settings(Client, PortalArn, Input0, Options0) ->
     Method = put,
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/userAccessLoggingSettings"],
@@ -1336,24 +1851,14 @@ associate_user_access_logging_settings(Client, PortalArn, Input0, Options0) ->
 -spec associate_user_settings(map(), binary() | list(), associate_user_settings_request()) ->
     {ok, associate_user_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_user_settings_errors(), tuple()}.
 associate_user_settings(Client, PortalArn, Input) ->
     associate_user_settings(Client, PortalArn, Input, []).
 
 -spec associate_user_settings(map(), binary() | list(), associate_user_settings_request(), proplists:proplist()) ->
     {ok, associate_user_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_user_settings_errors(), tuple()}.
 associate_user_settings(Client, PortalArn, Input0, Options0) ->
     Method = put,
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/userSettings"],
@@ -1387,26 +1892,14 @@ associate_user_settings(Client, PortalArn, Input0, Options0) ->
 -spec create_browser_settings(map(), create_browser_settings_request()) ->
     {ok, create_browser_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_browser_settings_errors(), tuple()}.
 create_browser_settings(Client, Input) ->
     create_browser_settings(Client, Input, []).
 
 -spec create_browser_settings(map(), create_browser_settings_request(), proplists:proplist()) ->
     {ok, create_browser_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_browser_settings_errors(), tuple()}.
 create_browser_settings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/browserSettings"],
@@ -1434,26 +1927,14 @@ create_browser_settings(Client, Input0, Options0) ->
 -spec create_identity_provider(map(), create_identity_provider_request()) ->
     {ok, create_identity_provider_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_identity_provider_errors(), tuple()}.
 create_identity_provider(Client, Input) ->
     create_identity_provider(Client, Input, []).
 
 -spec create_identity_provider(map(), create_identity_provider_request(), proplists:proplist()) ->
     {ok, create_identity_provider_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_identity_provider_errors(), tuple()}.
 create_identity_provider(Client, Input0, Options0) ->
     Method = post,
     Path = ["/identityProviders"],
@@ -1481,24 +1962,14 @@ create_identity_provider(Client, Input0, Options0) ->
 -spec create_ip_access_settings(map(), create_ip_access_settings_request()) ->
     {ok, create_ip_access_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_ip_access_settings_errors(), tuple()}.
 create_ip_access_settings(Client, Input) ->
     create_ip_access_settings(Client, Input, []).
 
 -spec create_ip_access_settings(map(), create_ip_access_settings_request(), proplists:proplist()) ->
     {ok, create_ip_access_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_ip_access_settings_errors(), tuple()}.
 create_ip_access_settings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ipAccessSettings"],
@@ -1531,24 +2002,14 @@ create_ip_access_settings(Client, Input0, Options0) ->
 -spec create_network_settings(map(), create_network_settings_request()) ->
     {ok, create_network_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_network_settings_errors(), tuple()}.
 create_network_settings(Client, Input) ->
     create_network_settings(Client, Input, []).
 
 -spec create_network_settings(map(), create_network_settings_request(), proplists:proplist()) ->
     {ok, create_network_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_network_settings_errors(), tuple()}.
 create_network_settings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/networkSettings"],
@@ -1575,26 +2036,14 @@ create_network_settings(Client, Input0, Options0) ->
 -spec create_portal(map(), create_portal_request()) ->
     {ok, create_portal_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_portal_errors(), tuple()}.
 create_portal(Client, Input) ->
     create_portal(Client, Input, []).
 
 -spec create_portal(map(), create_portal_request(), proplists:proplist()) ->
     {ok, create_portal_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_portal_errors(), tuple()}.
 create_portal(Client, Input0, Options0) ->
     Method = post,
     Path = ["/portals"],
@@ -1631,24 +2080,14 @@ create_portal(Client, Input0, Options0) ->
 -spec create_trust_store(map(), create_trust_store_request()) ->
     {ok, create_trust_store_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_trust_store_errors(), tuple()}.
 create_trust_store(Client, Input) ->
     create_trust_store(Client, Input, []).
 
 -spec create_trust_store(map(), create_trust_store_request(), proplists:proplist()) ->
     {ok, create_trust_store_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_trust_store_errors(), tuple()}.
 create_trust_store(Client, Input0, Options0) ->
     Method = post,
     Path = ["/trustStores"],
@@ -1676,24 +2115,14 @@ create_trust_store(Client, Input0, Options0) ->
 -spec create_user_access_logging_settings(map(), create_user_access_logging_settings_request()) ->
     {ok, create_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_user_access_logging_settings_errors(), tuple()}.
 create_user_access_logging_settings(Client, Input) ->
     create_user_access_logging_settings(Client, Input, []).
 
 -spec create_user_access_logging_settings(map(), create_user_access_logging_settings_request(), proplists:proplist()) ->
     {ok, create_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_user_access_logging_settings_errors(), tuple()}.
 create_user_access_logging_settings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/userAccessLoggingSettings"],
@@ -1726,24 +2155,14 @@ create_user_access_logging_settings(Client, Input0, Options0) ->
 -spec create_user_settings(map(), create_user_settings_request()) ->
     {ok, create_user_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_user_settings_errors(), tuple()}.
 create_user_settings(Client, Input) ->
     create_user_settings(Client, Input, []).
 
 -spec create_user_settings(map(), create_user_settings_request(), proplists:proplist()) ->
     {ok, create_user_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_user_settings_errors(), tuple()}.
 create_user_settings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/userSettings"],
@@ -1770,22 +2189,14 @@ create_user_settings(Client, Input0, Options0) ->
 -spec delete_browser_settings(map(), binary() | list(), delete_browser_settings_request()) ->
     {ok, delete_browser_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_browser_settings_errors(), tuple()}.
 delete_browser_settings(Client, BrowserSettingsArn, Input) ->
     delete_browser_settings(Client, BrowserSettingsArn, Input, []).
 
 -spec delete_browser_settings(map(), binary() | list(), delete_browser_settings_request(), proplists:proplist()) ->
     {ok, delete_browser_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_browser_settings_errors(), tuple()}.
 delete_browser_settings(Client, BrowserSettingsArn, Input0, Options0) ->
     Method = delete,
     Path = ["/browserSettings/", aws_util:encode_multi_segment_uri(BrowserSettingsArn), ""],
@@ -1812,22 +2223,14 @@ delete_browser_settings(Client, BrowserSettingsArn, Input0, Options0) ->
 -spec delete_identity_provider(map(), binary() | list(), delete_identity_provider_request()) ->
     {ok, delete_identity_provider_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_identity_provider_errors(), tuple()}.
 delete_identity_provider(Client, IdentityProviderArn, Input) ->
     delete_identity_provider(Client, IdentityProviderArn, Input, []).
 
 -spec delete_identity_provider(map(), binary() | list(), delete_identity_provider_request(), proplists:proplist()) ->
     {ok, delete_identity_provider_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_identity_provider_errors(), tuple()}.
 delete_identity_provider(Client, IdentityProviderArn, Input0, Options0) ->
     Method = delete,
     Path = ["/identityProviders/", aws_util:encode_multi_segment_uri(IdentityProviderArn), ""],
@@ -1854,22 +2257,14 @@ delete_identity_provider(Client, IdentityProviderArn, Input0, Options0) ->
 -spec delete_ip_access_settings(map(), binary() | list(), delete_ip_access_settings_request()) ->
     {ok, delete_ip_access_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_ip_access_settings_errors(), tuple()}.
 delete_ip_access_settings(Client, IpAccessSettingsArn, Input) ->
     delete_ip_access_settings(Client, IpAccessSettingsArn, Input, []).
 
 -spec delete_ip_access_settings(map(), binary() | list(), delete_ip_access_settings_request(), proplists:proplist()) ->
     {ok, delete_ip_access_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_ip_access_settings_errors(), tuple()}.
 delete_ip_access_settings(Client, IpAccessSettingsArn, Input0, Options0) ->
     Method = delete,
     Path = ["/ipAccessSettings/", aws_util:encode_multi_segment_uri(IpAccessSettingsArn), ""],
@@ -1896,22 +2291,14 @@ delete_ip_access_settings(Client, IpAccessSettingsArn, Input0, Options0) ->
 -spec delete_network_settings(map(), binary() | list(), delete_network_settings_request()) ->
     {ok, delete_network_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_network_settings_errors(), tuple()}.
 delete_network_settings(Client, NetworkSettingsArn, Input) ->
     delete_network_settings(Client, NetworkSettingsArn, Input, []).
 
 -spec delete_network_settings(map(), binary() | list(), delete_network_settings_request(), proplists:proplist()) ->
     {ok, delete_network_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_network_settings_errors(), tuple()}.
 delete_network_settings(Client, NetworkSettingsArn, Input0, Options0) ->
     Method = delete,
     Path = ["/networkSettings/", aws_util:encode_multi_segment_uri(NetworkSettingsArn), ""],
@@ -1938,22 +2325,14 @@ delete_network_settings(Client, NetworkSettingsArn, Input0, Options0) ->
 -spec delete_portal(map(), binary() | list(), delete_portal_request()) ->
     {ok, delete_portal_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_portal_errors(), tuple()}.
 delete_portal(Client, PortalArn, Input) ->
     delete_portal(Client, PortalArn, Input, []).
 
 -spec delete_portal(map(), binary() | list(), delete_portal_request(), proplists:proplist()) ->
     {ok, delete_portal_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_portal_errors(), tuple()}.
 delete_portal(Client, PortalArn, Input0, Options0) ->
     Method = delete,
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), ""],
@@ -1980,22 +2359,14 @@ delete_portal(Client, PortalArn, Input0, Options0) ->
 -spec delete_trust_store(map(), binary() | list(), delete_trust_store_request()) ->
     {ok, delete_trust_store_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_trust_store_errors(), tuple()}.
 delete_trust_store(Client, TrustStoreArn, Input) ->
     delete_trust_store(Client, TrustStoreArn, Input, []).
 
 -spec delete_trust_store(map(), binary() | list(), delete_trust_store_request(), proplists:proplist()) ->
     {ok, delete_trust_store_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_trust_store_errors(), tuple()}.
 delete_trust_store(Client, TrustStoreArn, Input0, Options0) ->
     Method = delete,
     Path = ["/trustStores/", aws_util:encode_multi_segment_uri(TrustStoreArn), ""],
@@ -2022,22 +2393,14 @@ delete_trust_store(Client, TrustStoreArn, Input0, Options0) ->
 -spec delete_user_access_logging_settings(map(), binary() | list(), delete_user_access_logging_settings_request()) ->
     {ok, delete_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_user_access_logging_settings_errors(), tuple()}.
 delete_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, Input) ->
     delete_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, Input, []).
 
 -spec delete_user_access_logging_settings(map(), binary() | list(), delete_user_access_logging_settings_request(), proplists:proplist()) ->
     {ok, delete_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_user_access_logging_settings_errors(), tuple()}.
 delete_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, Input0, Options0) ->
     Method = delete,
     Path = ["/userAccessLoggingSettings/", aws_util:encode_multi_segment_uri(UserAccessLoggingSettingsArn), ""],
@@ -2064,22 +2427,14 @@ delete_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, Input0
 -spec delete_user_settings(map(), binary() | list(), delete_user_settings_request()) ->
     {ok, delete_user_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_user_settings_errors(), tuple()}.
 delete_user_settings(Client, UserSettingsArn, Input) ->
     delete_user_settings(Client, UserSettingsArn, Input, []).
 
 -spec delete_user_settings(map(), binary() | list(), delete_user_settings_request(), proplists:proplist()) ->
     {ok, delete_user_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_user_settings_errors(), tuple()}.
 delete_user_settings(Client, UserSettingsArn, Input0, Options0) ->
     Method = delete,
     Path = ["/userSettings/", aws_util:encode_multi_segment_uri(UserSettingsArn), ""],
@@ -2106,22 +2461,14 @@ delete_user_settings(Client, UserSettingsArn, Input0, Options0) ->
 -spec disassociate_browser_settings(map(), binary() | list(), disassociate_browser_settings_request()) ->
     {ok, disassociate_browser_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_browser_settings_errors(), tuple()}.
 disassociate_browser_settings(Client, PortalArn, Input) ->
     disassociate_browser_settings(Client, PortalArn, Input, []).
 
 -spec disassociate_browser_settings(map(), binary() | list(), disassociate_browser_settings_request(), proplists:proplist()) ->
     {ok, disassociate_browser_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_browser_settings_errors(), tuple()}.
 disassociate_browser_settings(Client, PortalArn, Input0, Options0) ->
     Method = delete,
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/browserSettings"],
@@ -2148,22 +2495,14 @@ disassociate_browser_settings(Client, PortalArn, Input0, Options0) ->
 -spec disassociate_ip_access_settings(map(), binary() | list(), disassociate_ip_access_settings_request()) ->
     {ok, disassociate_ip_access_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_ip_access_settings_errors(), tuple()}.
 disassociate_ip_access_settings(Client, PortalArn, Input) ->
     disassociate_ip_access_settings(Client, PortalArn, Input, []).
 
 -spec disassociate_ip_access_settings(map(), binary() | list(), disassociate_ip_access_settings_request(), proplists:proplist()) ->
     {ok, disassociate_ip_access_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_ip_access_settings_errors(), tuple()}.
 disassociate_ip_access_settings(Client, PortalArn, Input0, Options0) ->
     Method = delete,
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/ipAccessSettings"],
@@ -2190,22 +2529,14 @@ disassociate_ip_access_settings(Client, PortalArn, Input0, Options0) ->
 -spec disassociate_network_settings(map(), binary() | list(), disassociate_network_settings_request()) ->
     {ok, disassociate_network_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_network_settings_errors(), tuple()}.
 disassociate_network_settings(Client, PortalArn, Input) ->
     disassociate_network_settings(Client, PortalArn, Input, []).
 
 -spec disassociate_network_settings(map(), binary() | list(), disassociate_network_settings_request(), proplists:proplist()) ->
     {ok, disassociate_network_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_network_settings_errors(), tuple()}.
 disassociate_network_settings(Client, PortalArn, Input0, Options0) ->
     Method = delete,
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/networkSettings"],
@@ -2232,22 +2563,14 @@ disassociate_network_settings(Client, PortalArn, Input0, Options0) ->
 -spec disassociate_trust_store(map(), binary() | list(), disassociate_trust_store_request()) ->
     {ok, disassociate_trust_store_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_trust_store_errors(), tuple()}.
 disassociate_trust_store(Client, PortalArn, Input) ->
     disassociate_trust_store(Client, PortalArn, Input, []).
 
 -spec disassociate_trust_store(map(), binary() | list(), disassociate_trust_store_request(), proplists:proplist()) ->
     {ok, disassociate_trust_store_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_trust_store_errors(), tuple()}.
 disassociate_trust_store(Client, PortalArn, Input0, Options0) ->
     Method = delete,
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/trustStores"],
@@ -2274,22 +2597,14 @@ disassociate_trust_store(Client, PortalArn, Input0, Options0) ->
 -spec disassociate_user_access_logging_settings(map(), binary() | list(), disassociate_user_access_logging_settings_request()) ->
     {ok, disassociate_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_user_access_logging_settings_errors(), tuple()}.
 disassociate_user_access_logging_settings(Client, PortalArn, Input) ->
     disassociate_user_access_logging_settings(Client, PortalArn, Input, []).
 
 -spec disassociate_user_access_logging_settings(map(), binary() | list(), disassociate_user_access_logging_settings_request(), proplists:proplist()) ->
     {ok, disassociate_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_user_access_logging_settings_errors(), tuple()}.
 disassociate_user_access_logging_settings(Client, PortalArn, Input0, Options0) ->
     Method = delete,
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/userAccessLoggingSettings"],
@@ -2316,22 +2631,14 @@ disassociate_user_access_logging_settings(Client, PortalArn, Input0, Options0) -
 -spec disassociate_user_settings(map(), binary() | list(), disassociate_user_settings_request()) ->
     {ok, disassociate_user_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_user_settings_errors(), tuple()}.
 disassociate_user_settings(Client, PortalArn, Input) ->
     disassociate_user_settings(Client, PortalArn, Input, []).
 
 -spec disassociate_user_settings(map(), binary() | list(), disassociate_user_settings_request(), proplists:proplist()) ->
     {ok, disassociate_user_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_user_settings_errors(), tuple()}.
 disassociate_user_settings(Client, PortalArn, Input0, Options0) ->
     Method = delete,
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/userSettings"],
@@ -2358,11 +2665,7 @@ disassociate_user_settings(Client, PortalArn, Input0, Options0) ->
 -spec get_browser_settings(map(), binary() | list()) ->
     {ok, get_browser_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_browser_settings_errors(), tuple()}.
 get_browser_settings(Client, BrowserSettingsArn)
   when is_map(Client) ->
     get_browser_settings(Client, BrowserSettingsArn, #{}, #{}).
@@ -2370,11 +2673,7 @@ get_browser_settings(Client, BrowserSettingsArn)
 -spec get_browser_settings(map(), binary() | list(), map(), map()) ->
     {ok, get_browser_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_browser_settings_errors(), tuple()}.
 get_browser_settings(Client, BrowserSettingsArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_browser_settings(Client, BrowserSettingsArn, QueryMap, HeadersMap, []).
@@ -2382,11 +2681,7 @@ get_browser_settings(Client, BrowserSettingsArn, QueryMap, HeadersMap)
 -spec get_browser_settings(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_browser_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_browser_settings_errors(), tuple()}.
 get_browser_settings(Client, BrowserSettingsArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/browserSettings/", aws_util:encode_multi_segment_uri(BrowserSettingsArn), ""],
@@ -2407,11 +2702,7 @@ get_browser_settings(Client, BrowserSettingsArn, QueryMap, HeadersMap, Options0)
 -spec get_identity_provider(map(), binary() | list()) ->
     {ok, get_identity_provider_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_identity_provider_errors(), tuple()}.
 get_identity_provider(Client, IdentityProviderArn)
   when is_map(Client) ->
     get_identity_provider(Client, IdentityProviderArn, #{}, #{}).
@@ -2419,11 +2710,7 @@ get_identity_provider(Client, IdentityProviderArn)
 -spec get_identity_provider(map(), binary() | list(), map(), map()) ->
     {ok, get_identity_provider_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_identity_provider_errors(), tuple()}.
 get_identity_provider(Client, IdentityProviderArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_identity_provider(Client, IdentityProviderArn, QueryMap, HeadersMap, []).
@@ -2431,11 +2718,7 @@ get_identity_provider(Client, IdentityProviderArn, QueryMap, HeadersMap)
 -spec get_identity_provider(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_identity_provider_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_identity_provider_errors(), tuple()}.
 get_identity_provider(Client, IdentityProviderArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/identityProviders/", aws_util:encode_multi_segment_uri(IdentityProviderArn), ""],
@@ -2456,11 +2739,7 @@ get_identity_provider(Client, IdentityProviderArn, QueryMap, HeadersMap, Options
 -spec get_ip_access_settings(map(), binary() | list()) ->
     {ok, get_ip_access_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_ip_access_settings_errors(), tuple()}.
 get_ip_access_settings(Client, IpAccessSettingsArn)
   when is_map(Client) ->
     get_ip_access_settings(Client, IpAccessSettingsArn, #{}, #{}).
@@ -2468,11 +2747,7 @@ get_ip_access_settings(Client, IpAccessSettingsArn)
 -spec get_ip_access_settings(map(), binary() | list(), map(), map()) ->
     {ok, get_ip_access_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_ip_access_settings_errors(), tuple()}.
 get_ip_access_settings(Client, IpAccessSettingsArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_ip_access_settings(Client, IpAccessSettingsArn, QueryMap, HeadersMap, []).
@@ -2480,11 +2755,7 @@ get_ip_access_settings(Client, IpAccessSettingsArn, QueryMap, HeadersMap)
 -spec get_ip_access_settings(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_ip_access_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_ip_access_settings_errors(), tuple()}.
 get_ip_access_settings(Client, IpAccessSettingsArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ipAccessSettings/", aws_util:encode_multi_segment_uri(IpAccessSettingsArn), ""],
@@ -2505,11 +2776,7 @@ get_ip_access_settings(Client, IpAccessSettingsArn, QueryMap, HeadersMap, Option
 -spec get_network_settings(map(), binary() | list()) ->
     {ok, get_network_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_network_settings_errors(), tuple()}.
 get_network_settings(Client, NetworkSettingsArn)
   when is_map(Client) ->
     get_network_settings(Client, NetworkSettingsArn, #{}, #{}).
@@ -2517,11 +2784,7 @@ get_network_settings(Client, NetworkSettingsArn)
 -spec get_network_settings(map(), binary() | list(), map(), map()) ->
     {ok, get_network_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_network_settings_errors(), tuple()}.
 get_network_settings(Client, NetworkSettingsArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_network_settings(Client, NetworkSettingsArn, QueryMap, HeadersMap, []).
@@ -2529,11 +2792,7 @@ get_network_settings(Client, NetworkSettingsArn, QueryMap, HeadersMap)
 -spec get_network_settings(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_network_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_network_settings_errors(), tuple()}.
 get_network_settings(Client, NetworkSettingsArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/networkSettings/", aws_util:encode_multi_segment_uri(NetworkSettingsArn), ""],
@@ -2554,11 +2813,7 @@ get_network_settings(Client, NetworkSettingsArn, QueryMap, HeadersMap, Options0)
 -spec get_portal(map(), binary() | list()) ->
     {ok, get_portal_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_portal_errors(), tuple()}.
 get_portal(Client, PortalArn)
   when is_map(Client) ->
     get_portal(Client, PortalArn, #{}, #{}).
@@ -2566,11 +2821,7 @@ get_portal(Client, PortalArn)
 -spec get_portal(map(), binary() | list(), map(), map()) ->
     {ok, get_portal_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_portal_errors(), tuple()}.
 get_portal(Client, PortalArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_portal(Client, PortalArn, QueryMap, HeadersMap, []).
@@ -2578,11 +2829,7 @@ get_portal(Client, PortalArn, QueryMap, HeadersMap)
 -spec get_portal(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_portal_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_portal_errors(), tuple()}.
 get_portal(Client, PortalArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), ""],
@@ -2603,11 +2850,7 @@ get_portal(Client, PortalArn, QueryMap, HeadersMap, Options0)
 -spec get_portal_service_provider_metadata(map(), binary() | list()) ->
     {ok, get_portal_service_provider_metadata_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_portal_service_provider_metadata_errors(), tuple()}.
 get_portal_service_provider_metadata(Client, PortalArn)
   when is_map(Client) ->
     get_portal_service_provider_metadata(Client, PortalArn, #{}, #{}).
@@ -2615,11 +2858,7 @@ get_portal_service_provider_metadata(Client, PortalArn)
 -spec get_portal_service_provider_metadata(map(), binary() | list(), map(), map()) ->
     {ok, get_portal_service_provider_metadata_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_portal_service_provider_metadata_errors(), tuple()}.
 get_portal_service_provider_metadata(Client, PortalArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_portal_service_provider_metadata(Client, PortalArn, QueryMap, HeadersMap, []).
@@ -2627,11 +2866,7 @@ get_portal_service_provider_metadata(Client, PortalArn, QueryMap, HeadersMap)
 -spec get_portal_service_provider_metadata(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_portal_service_provider_metadata_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_portal_service_provider_metadata_errors(), tuple()}.
 get_portal_service_provider_metadata(Client, PortalArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/portalIdp/", aws_util:encode_multi_segment_uri(PortalArn), ""],
@@ -2652,11 +2887,7 @@ get_portal_service_provider_metadata(Client, PortalArn, QueryMap, HeadersMap, Op
 -spec get_trust_store(map(), binary() | list()) ->
     {ok, get_trust_store_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_trust_store_errors(), tuple()}.
 get_trust_store(Client, TrustStoreArn)
   when is_map(Client) ->
     get_trust_store(Client, TrustStoreArn, #{}, #{}).
@@ -2664,11 +2895,7 @@ get_trust_store(Client, TrustStoreArn)
 -spec get_trust_store(map(), binary() | list(), map(), map()) ->
     {ok, get_trust_store_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_trust_store_errors(), tuple()}.
 get_trust_store(Client, TrustStoreArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_trust_store(Client, TrustStoreArn, QueryMap, HeadersMap, []).
@@ -2676,11 +2903,7 @@ get_trust_store(Client, TrustStoreArn, QueryMap, HeadersMap)
 -spec get_trust_store(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_trust_store_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_trust_store_errors(), tuple()}.
 get_trust_store(Client, TrustStoreArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/trustStores/", aws_util:encode_multi_segment_uri(TrustStoreArn), ""],
@@ -2701,11 +2924,7 @@ get_trust_store(Client, TrustStoreArn, QueryMap, HeadersMap, Options0)
 -spec get_trust_store_certificate(map(), binary() | list(), binary() | list()) ->
     {ok, get_trust_store_certificate_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_trust_store_certificate_errors(), tuple()}.
 get_trust_store_certificate(Client, TrustStoreArn, Thumbprint)
   when is_map(Client) ->
     get_trust_store_certificate(Client, TrustStoreArn, Thumbprint, #{}, #{}).
@@ -2713,11 +2932,7 @@ get_trust_store_certificate(Client, TrustStoreArn, Thumbprint)
 -spec get_trust_store_certificate(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_trust_store_certificate_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_trust_store_certificate_errors(), tuple()}.
 get_trust_store_certificate(Client, TrustStoreArn, Thumbprint, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_trust_store_certificate(Client, TrustStoreArn, Thumbprint, QueryMap, HeadersMap, []).
@@ -2725,11 +2940,7 @@ get_trust_store_certificate(Client, TrustStoreArn, Thumbprint, QueryMap, Headers
 -spec get_trust_store_certificate(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_trust_store_certificate_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_trust_store_certificate_errors(), tuple()}.
 get_trust_store_certificate(Client, TrustStoreArn, Thumbprint, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/trustStores/", aws_util:encode_multi_segment_uri(TrustStoreArn), "/certificate"],
@@ -2754,11 +2965,7 @@ get_trust_store_certificate(Client, TrustStoreArn, Thumbprint, QueryMap, Headers
 -spec get_user_access_logging_settings(map(), binary() | list()) ->
     {ok, get_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_user_access_logging_settings_errors(), tuple()}.
 get_user_access_logging_settings(Client, UserAccessLoggingSettingsArn)
   when is_map(Client) ->
     get_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, #{}, #{}).
@@ -2766,11 +2973,7 @@ get_user_access_logging_settings(Client, UserAccessLoggingSettingsArn)
 -spec get_user_access_logging_settings(map(), binary() | list(), map(), map()) ->
     {ok, get_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_user_access_logging_settings_errors(), tuple()}.
 get_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, QueryMap, HeadersMap, []).
@@ -2778,11 +2981,7 @@ get_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, QueryMap,
 -spec get_user_access_logging_settings(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_user_access_logging_settings_errors(), tuple()}.
 get_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/userAccessLoggingSettings/", aws_util:encode_multi_segment_uri(UserAccessLoggingSettingsArn), ""],
@@ -2803,11 +3002,7 @@ get_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, QueryMap,
 -spec get_user_settings(map(), binary() | list()) ->
     {ok, get_user_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_user_settings_errors(), tuple()}.
 get_user_settings(Client, UserSettingsArn)
   when is_map(Client) ->
     get_user_settings(Client, UserSettingsArn, #{}, #{}).
@@ -2815,11 +3010,7 @@ get_user_settings(Client, UserSettingsArn)
 -spec get_user_settings(map(), binary() | list(), map(), map()) ->
     {ok, get_user_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_user_settings_errors(), tuple()}.
 get_user_settings(Client, UserSettingsArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_user_settings(Client, UserSettingsArn, QueryMap, HeadersMap, []).
@@ -2827,11 +3018,7 @@ get_user_settings(Client, UserSettingsArn, QueryMap, HeadersMap)
 -spec get_user_settings(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_user_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_user_settings_errors(), tuple()}.
 get_user_settings(Client, UserSettingsArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/userSettings/", aws_util:encode_multi_segment_uri(UserSettingsArn), ""],
@@ -2852,10 +3039,7 @@ get_user_settings(Client, UserSettingsArn, QueryMap, HeadersMap, Options0)
 -spec list_browser_settings(map()) ->
     {ok, list_browser_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_browser_settings_errors(), tuple()}.
 list_browser_settings(Client)
   when is_map(Client) ->
     list_browser_settings(Client, #{}, #{}).
@@ -2863,10 +3047,7 @@ list_browser_settings(Client)
 -spec list_browser_settings(map(), map(), map()) ->
     {ok, list_browser_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_browser_settings_errors(), tuple()}.
 list_browser_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_browser_settings(Client, QueryMap, HeadersMap, []).
@@ -2874,10 +3055,7 @@ list_browser_settings(Client, QueryMap, HeadersMap)
 -spec list_browser_settings(map(), map(), map(), proplists:proplist()) ->
     {ok, list_browser_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_browser_settings_errors(), tuple()}.
 list_browser_settings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/browserSettings"],
@@ -2903,10 +3081,7 @@ list_browser_settings(Client, QueryMap, HeadersMap, Options0)
 -spec list_identity_providers(map(), binary() | list()) ->
     {ok, list_identity_providers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_identity_providers_errors(), tuple()}.
 list_identity_providers(Client, PortalArn)
   when is_map(Client) ->
     list_identity_providers(Client, PortalArn, #{}, #{}).
@@ -2914,10 +3089,7 @@ list_identity_providers(Client, PortalArn)
 -spec list_identity_providers(map(), binary() | list(), map(), map()) ->
     {ok, list_identity_providers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_identity_providers_errors(), tuple()}.
 list_identity_providers(Client, PortalArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_identity_providers(Client, PortalArn, QueryMap, HeadersMap, []).
@@ -2925,10 +3097,7 @@ list_identity_providers(Client, PortalArn, QueryMap, HeadersMap)
 -spec list_identity_providers(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_identity_providers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_identity_providers_errors(), tuple()}.
 list_identity_providers(Client, PortalArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/identityProviders"],
@@ -2954,10 +3123,7 @@ list_identity_providers(Client, PortalArn, QueryMap, HeadersMap, Options0)
 -spec list_ip_access_settings(map()) ->
     {ok, list_ip_access_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_ip_access_settings_errors(), tuple()}.
 list_ip_access_settings(Client)
   when is_map(Client) ->
     list_ip_access_settings(Client, #{}, #{}).
@@ -2965,10 +3131,7 @@ list_ip_access_settings(Client)
 -spec list_ip_access_settings(map(), map(), map()) ->
     {ok, list_ip_access_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_ip_access_settings_errors(), tuple()}.
 list_ip_access_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ip_access_settings(Client, QueryMap, HeadersMap, []).
@@ -2976,10 +3139,7 @@ list_ip_access_settings(Client, QueryMap, HeadersMap)
 -spec list_ip_access_settings(map(), map(), map(), proplists:proplist()) ->
     {ok, list_ip_access_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_ip_access_settings_errors(), tuple()}.
 list_ip_access_settings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ipAccessSettings"],
@@ -3005,10 +3165,7 @@ list_ip_access_settings(Client, QueryMap, HeadersMap, Options0)
 -spec list_network_settings(map()) ->
     {ok, list_network_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_network_settings_errors(), tuple()}.
 list_network_settings(Client)
   when is_map(Client) ->
     list_network_settings(Client, #{}, #{}).
@@ -3016,10 +3173,7 @@ list_network_settings(Client)
 -spec list_network_settings(map(), map(), map()) ->
     {ok, list_network_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_network_settings_errors(), tuple()}.
 list_network_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_network_settings(Client, QueryMap, HeadersMap, []).
@@ -3027,10 +3181,7 @@ list_network_settings(Client, QueryMap, HeadersMap)
 -spec list_network_settings(map(), map(), map(), proplists:proplist()) ->
     {ok, list_network_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_network_settings_errors(), tuple()}.
 list_network_settings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/networkSettings"],
@@ -3056,10 +3207,7 @@ list_network_settings(Client, QueryMap, HeadersMap, Options0)
 -spec list_portals(map()) ->
     {ok, list_portals_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_portals_errors(), tuple()}.
 list_portals(Client)
   when is_map(Client) ->
     list_portals(Client, #{}, #{}).
@@ -3067,10 +3215,7 @@ list_portals(Client)
 -spec list_portals(map(), map(), map()) ->
     {ok, list_portals_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_portals_errors(), tuple()}.
 list_portals(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_portals(Client, QueryMap, HeadersMap, []).
@@ -3078,10 +3223,7 @@ list_portals(Client, QueryMap, HeadersMap)
 -spec list_portals(map(), map(), map(), proplists:proplist()) ->
     {ok, list_portals_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_portals_errors(), tuple()}.
 list_portals(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/portals"],
@@ -3107,11 +3249,7 @@ list_portals(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -3119,11 +3257,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -3131,11 +3265,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_multi_segment_uri(ResourceArn), ""],
@@ -3156,11 +3286,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec list_trust_store_certificates(map(), binary() | list()) ->
     {ok, list_trust_store_certificates_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_trust_store_certificates_errors(), tuple()}.
 list_trust_store_certificates(Client, TrustStoreArn)
   when is_map(Client) ->
     list_trust_store_certificates(Client, TrustStoreArn, #{}, #{}).
@@ -3168,11 +3294,7 @@ list_trust_store_certificates(Client, TrustStoreArn)
 -spec list_trust_store_certificates(map(), binary() | list(), map(), map()) ->
     {ok, list_trust_store_certificates_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_trust_store_certificates_errors(), tuple()}.
 list_trust_store_certificates(Client, TrustStoreArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_trust_store_certificates(Client, TrustStoreArn, QueryMap, HeadersMap, []).
@@ -3180,11 +3302,7 @@ list_trust_store_certificates(Client, TrustStoreArn, QueryMap, HeadersMap)
 -spec list_trust_store_certificates(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_trust_store_certificates_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_trust_store_certificates_errors(), tuple()}.
 list_trust_store_certificates(Client, TrustStoreArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/trustStores/", aws_util:encode_multi_segment_uri(TrustStoreArn), "/certificates"],
@@ -3210,10 +3328,7 @@ list_trust_store_certificates(Client, TrustStoreArn, QueryMap, HeadersMap, Optio
 -spec list_trust_stores(map()) ->
     {ok, list_trust_stores_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_trust_stores_errors(), tuple()}.
 list_trust_stores(Client)
   when is_map(Client) ->
     list_trust_stores(Client, #{}, #{}).
@@ -3221,10 +3336,7 @@ list_trust_stores(Client)
 -spec list_trust_stores(map(), map(), map()) ->
     {ok, list_trust_stores_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_trust_stores_errors(), tuple()}.
 list_trust_stores(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_trust_stores(Client, QueryMap, HeadersMap, []).
@@ -3232,10 +3344,7 @@ list_trust_stores(Client, QueryMap, HeadersMap)
 -spec list_trust_stores(map(), map(), map(), proplists:proplist()) ->
     {ok, list_trust_stores_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_trust_stores_errors(), tuple()}.
 list_trust_stores(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/trustStores"],
@@ -3261,10 +3370,7 @@ list_trust_stores(Client, QueryMap, HeadersMap, Options0)
 -spec list_user_access_logging_settings(map()) ->
     {ok, list_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_user_access_logging_settings_errors(), tuple()}.
 list_user_access_logging_settings(Client)
   when is_map(Client) ->
     list_user_access_logging_settings(Client, #{}, #{}).
@@ -3272,10 +3378,7 @@ list_user_access_logging_settings(Client)
 -spec list_user_access_logging_settings(map(), map(), map()) ->
     {ok, list_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_user_access_logging_settings_errors(), tuple()}.
 list_user_access_logging_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_user_access_logging_settings(Client, QueryMap, HeadersMap, []).
@@ -3283,10 +3386,7 @@ list_user_access_logging_settings(Client, QueryMap, HeadersMap)
 -spec list_user_access_logging_settings(map(), map(), map(), proplists:proplist()) ->
     {ok, list_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_user_access_logging_settings_errors(), tuple()}.
 list_user_access_logging_settings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/userAccessLoggingSettings"],
@@ -3312,10 +3412,7 @@ list_user_access_logging_settings(Client, QueryMap, HeadersMap, Options0)
 -spec list_user_settings(map()) ->
     {ok, list_user_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_user_settings_errors(), tuple()}.
 list_user_settings(Client)
   when is_map(Client) ->
     list_user_settings(Client, #{}, #{}).
@@ -3323,10 +3420,7 @@ list_user_settings(Client)
 -spec list_user_settings(map(), map(), map()) ->
     {ok, list_user_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_user_settings_errors(), tuple()}.
 list_user_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_user_settings(Client, QueryMap, HeadersMap, []).
@@ -3334,10 +3428,7 @@ list_user_settings(Client, QueryMap, HeadersMap)
 -spec list_user_settings(map(), map(), map(), proplists:proplist()) ->
     {ok, list_user_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_user_settings_errors(), tuple()}.
 list_user_settings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/userSettings"],
@@ -3363,24 +3454,14 @@ list_user_settings(Client, QueryMap, HeadersMap, Options0)
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_multi_segment_uri(ResourceArn), ""],
@@ -3407,22 +3488,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_multi_segment_uri(ResourceArn), ""],
@@ -3450,22 +3523,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_browser_settings(map(), binary() | list(), update_browser_settings_request()) ->
     {ok, update_browser_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_browser_settings_errors(), tuple()}.
 update_browser_settings(Client, BrowserSettingsArn, Input) ->
     update_browser_settings(Client, BrowserSettingsArn, Input, []).
 
 -spec update_browser_settings(map(), binary() | list(), update_browser_settings_request(), proplists:proplist()) ->
     {ok, update_browser_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_browser_settings_errors(), tuple()}.
 update_browser_settings(Client, BrowserSettingsArn, Input0, Options0) ->
     Method = patch,
     Path = ["/browserSettings/", aws_util:encode_multi_segment_uri(BrowserSettingsArn), ""],
@@ -3492,22 +3557,14 @@ update_browser_settings(Client, BrowserSettingsArn, Input0, Options0) ->
 -spec update_identity_provider(map(), binary() | list(), update_identity_provider_request()) ->
     {ok, update_identity_provider_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_identity_provider_errors(), tuple()}.
 update_identity_provider(Client, IdentityProviderArn, Input) ->
     update_identity_provider(Client, IdentityProviderArn, Input, []).
 
 -spec update_identity_provider(map(), binary() | list(), update_identity_provider_request(), proplists:proplist()) ->
     {ok, update_identity_provider_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_identity_provider_errors(), tuple()}.
 update_identity_provider(Client, IdentityProviderArn, Input0, Options0) ->
     Method = patch,
     Path = ["/identityProviders/", aws_util:encode_multi_segment_uri(IdentityProviderArn), ""],
@@ -3534,22 +3591,14 @@ update_identity_provider(Client, IdentityProviderArn, Input0, Options0) ->
 -spec update_ip_access_settings(map(), binary() | list(), update_ip_access_settings_request()) ->
     {ok, update_ip_access_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_ip_access_settings_errors(), tuple()}.
 update_ip_access_settings(Client, IpAccessSettingsArn, Input) ->
     update_ip_access_settings(Client, IpAccessSettingsArn, Input, []).
 
 -spec update_ip_access_settings(map(), binary() | list(), update_ip_access_settings_request(), proplists:proplist()) ->
     {ok, update_ip_access_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_ip_access_settings_errors(), tuple()}.
 update_ip_access_settings(Client, IpAccessSettingsArn, Input0, Options0) ->
     Method = patch,
     Path = ["/ipAccessSettings/", aws_util:encode_multi_segment_uri(IpAccessSettingsArn), ""],
@@ -3576,22 +3625,14 @@ update_ip_access_settings(Client, IpAccessSettingsArn, Input0, Options0) ->
 -spec update_network_settings(map(), binary() | list(), update_network_settings_request()) ->
     {ok, update_network_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_network_settings_errors(), tuple()}.
 update_network_settings(Client, NetworkSettingsArn, Input) ->
     update_network_settings(Client, NetworkSettingsArn, Input, []).
 
 -spec update_network_settings(map(), binary() | list(), update_network_settings_request(), proplists:proplist()) ->
     {ok, update_network_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_network_settings_errors(), tuple()}.
 update_network_settings(Client, NetworkSettingsArn, Input0, Options0) ->
     Method = patch,
     Path = ["/networkSettings/", aws_util:encode_multi_segment_uri(NetworkSettingsArn), ""],
@@ -3618,24 +3659,14 @@ update_network_settings(Client, NetworkSettingsArn, Input0, Options0) ->
 -spec update_portal(map(), binary() | list(), update_portal_request()) ->
     {ok, update_portal_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_portal_errors(), tuple()}.
 update_portal(Client, PortalArn, Input) ->
     update_portal(Client, PortalArn, Input, []).
 
 -spec update_portal(map(), binary() | list(), update_portal_request(), proplists:proplist()) ->
     {ok, update_portal_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_portal_errors(), tuple()}.
 update_portal(Client, PortalArn, Input0, Options0) ->
     Method = put,
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), ""],
@@ -3662,24 +3693,14 @@ update_portal(Client, PortalArn, Input0, Options0) ->
 -spec update_trust_store(map(), binary() | list(), update_trust_store_request()) ->
     {ok, update_trust_store_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_trust_store_errors(), tuple()}.
 update_trust_store(Client, TrustStoreArn, Input) ->
     update_trust_store(Client, TrustStoreArn, Input, []).
 
 -spec update_trust_store(map(), binary() | list(), update_trust_store_request(), proplists:proplist()) ->
     {ok, update_trust_store_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_trust_store_errors(), tuple()}.
 update_trust_store(Client, TrustStoreArn, Input0, Options0) ->
     Method = patch,
     Path = ["/trustStores/", aws_util:encode_multi_segment_uri(TrustStoreArn), ""],
@@ -3706,22 +3727,14 @@ update_trust_store(Client, TrustStoreArn, Input0, Options0) ->
 -spec update_user_access_logging_settings(map(), binary() | list(), update_user_access_logging_settings_request()) ->
     {ok, update_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_user_access_logging_settings_errors(), tuple()}.
 update_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, Input) ->
     update_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, Input, []).
 
 -spec update_user_access_logging_settings(map(), binary() | list(), update_user_access_logging_settings_request(), proplists:proplist()) ->
     {ok, update_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_user_access_logging_settings_errors(), tuple()}.
 update_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, Input0, Options0) ->
     Method = patch,
     Path = ["/userAccessLoggingSettings/", aws_util:encode_multi_segment_uri(UserAccessLoggingSettingsArn), ""],
@@ -3748,22 +3761,14 @@ update_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, Input0
 -spec update_user_settings(map(), binary() | list(), update_user_settings_request()) ->
     {ok, update_user_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_user_settings_errors(), tuple()}.
 update_user_settings(Client, UserSettingsArn, Input) ->
     update_user_settings(Client, UserSettingsArn, Input, []).
 
 -spec update_user_settings(map(), binary() | list(), update_user_settings_request(), proplists:proplist()) ->
     {ok, update_user_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_user_settings_errors(), tuple()}.
 update_user_settings(Client, UserSettingsArn, Input0, Options0) ->
     Method = patch,
     Path = ["/userSettings/", aws_util:encode_multi_segment_uri(UserSettingsArn), ""],

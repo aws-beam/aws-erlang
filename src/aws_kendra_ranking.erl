@@ -235,6 +235,72 @@
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
+-type create_rescore_execution_plan_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_rescore_execution_plan_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type describe_rescore_execution_plan_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_rescore_execution_plans_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_unavailable_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type rescore_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_unavailable_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_unavailable_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type update_rescore_execution_plan_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -257,12 +323,7 @@
 -spec create_rescore_execution_plan(map(), create_rescore_execution_plan_request()) ->
     {ok, create_rescore_execution_plan_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_rescore_execution_plan_errors(), tuple()}.
 create_rescore_execution_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_rescore_execution_plan(Client, Input, []).
@@ -270,12 +331,7 @@ create_rescore_execution_plan(Client, Input)
 -spec create_rescore_execution_plan(map(), create_rescore_execution_plan_request(), proplists:proplist()) ->
     {ok, create_rescore_execution_plan_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_rescore_execution_plan_errors(), tuple()}.
 create_rescore_execution_plan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRescoreExecutionPlan">>, Input, Options).
@@ -288,12 +344,7 @@ create_rescore_execution_plan(Client, Input, Options)
 -spec delete_rescore_execution_plan(map(), delete_rescore_execution_plan_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_rescore_execution_plan_errors(), tuple()}.
 delete_rescore_execution_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rescore_execution_plan(Client, Input, []).
@@ -301,12 +352,7 @@ delete_rescore_execution_plan(Client, Input)
 -spec delete_rescore_execution_plan(map(), delete_rescore_execution_plan_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_rescore_execution_plan_errors(), tuple()}.
 delete_rescore_execution_plan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRescoreExecutionPlan">>, Input, Options).
@@ -319,11 +365,7 @@ delete_rescore_execution_plan(Client, Input, Options)
 -spec describe_rescore_execution_plan(map(), describe_rescore_execution_plan_request()) ->
     {ok, describe_rescore_execution_plan_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_rescore_execution_plan_errors(), tuple()}.
 describe_rescore_execution_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_rescore_execution_plan(Client, Input, []).
@@ -331,11 +373,7 @@ describe_rescore_execution_plan(Client, Input)
 -spec describe_rescore_execution_plan(map(), describe_rescore_execution_plan_request(), proplists:proplist()) ->
     {ok, describe_rescore_execution_plan_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_rescore_execution_plan_errors(), tuple()}.
 describe_rescore_execution_plan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRescoreExecutionPlan">>, Input, Options).
@@ -348,10 +386,7 @@ describe_rescore_execution_plan(Client, Input, Options)
 -spec list_rescore_execution_plans(map(), list_rescore_execution_plans_request()) ->
     {ok, list_rescore_execution_plans_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_rescore_execution_plans_errors(), tuple()}.
 list_rescore_execution_plans(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rescore_execution_plans(Client, Input, []).
@@ -359,10 +394,7 @@ list_rescore_execution_plans(Client, Input)
 -spec list_rescore_execution_plans(map(), list_rescore_execution_plans_request(), proplists:proplist()) ->
     {ok, list_rescore_execution_plans_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_rescore_execution_plans_errors(), tuple()}.
 list_rescore_execution_plans(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRescoreExecutionPlans">>, Input, Options).
@@ -374,11 +406,7 @@ list_rescore_execution_plans(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -386,11 +414,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -404,12 +428,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec rescore(map(), rescore_request()) ->
     {ok, rescore_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, rescore_errors(), tuple()}.
 rescore(Client, Input)
   when is_map(Client), is_map(Input) ->
     rescore(Client, Input, []).
@@ -417,12 +436,7 @@ rescore(Client, Input)
 -spec rescore(map(), rescore_request(), proplists:proplist()) ->
     {ok, rescore_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, rescore_errors(), tuple()}.
 rescore(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Rescore">>, Input, Options).
@@ -437,11 +451,7 @@ rescore(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -449,11 +459,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -467,11 +473,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -479,11 +481,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -499,13 +497,7 @@ untag_resource(Client, Input, Options)
 -spec update_rescore_execution_plan(map(), update_rescore_execution_plan_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_rescore_execution_plan_errors(), tuple()}.
 update_rescore_execution_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rescore_execution_plan(Client, Input, []).
@@ -513,13 +505,7 @@ update_rescore_execution_plan(Client, Input)
 -spec update_rescore_execution_plan(map(), update_rescore_execution_plan_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_rescore_execution_plan_errors(), tuple()}.
 update_rescore_execution_plan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRescoreExecutionPlan">>, Input, Options).

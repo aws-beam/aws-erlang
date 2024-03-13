@@ -510,6 +510,43 @@
 %% }
 -type describe_affected_entities_request() :: #{binary() => any()}.
 
+-type describe_affected_accounts_for_organization_errors() ::
+    invalid_pagination_token().
+
+-type describe_affected_entities_errors() ::
+    invalid_pagination_token() | 
+    unsupported_locale().
+
+-type describe_affected_entities_for_organization_errors() ::
+    invalid_pagination_token() | 
+    unsupported_locale().
+
+-type describe_event_aggregates_errors() ::
+    invalid_pagination_token().
+
+-type describe_event_details_errors() ::
+    unsupported_locale().
+
+-type describe_event_details_for_organization_errors() ::
+    unsupported_locale().
+
+-type describe_event_types_errors() ::
+    invalid_pagination_token() | 
+    unsupported_locale().
+
+-type describe_events_errors() ::
+    invalid_pagination_token() | 
+    unsupported_locale().
+
+-type describe_events_for_organization_errors() ::
+    invalid_pagination_token() | 
+    unsupported_locale().
+
+-type disable_health_service_access_for_organization_errors() ::
+    concurrent_modification_exception().
+
+-type enable_health_service_access_for_organization_errors() ::
+    concurrent_modification_exception().
 
 %%====================================================================
 %% API
@@ -536,7 +573,7 @@
 -spec describe_affected_accounts_for_organization(map(), describe_affected_accounts_for_organization_request()) ->
     {ok, describe_affected_accounts_for_organization_response(), tuple()} |
     {error, any()} |
-    {error, invalid_pagination_token(), tuple()}.
+    {error, describe_affected_accounts_for_organization_errors(), tuple()}.
 describe_affected_accounts_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_affected_accounts_for_organization(Client, Input, []).
@@ -544,7 +581,7 @@ describe_affected_accounts_for_organization(Client, Input)
 -spec describe_affected_accounts_for_organization(map(), describe_affected_accounts_for_organization_request(), proplists:proplist()) ->
     {ok, describe_affected_accounts_for_organization_response(), tuple()} |
     {error, any()} |
-    {error, invalid_pagination_token(), tuple()}.
+    {error, describe_affected_accounts_for_organization_errors(), tuple()}.
 describe_affected_accounts_for_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAffectedAccountsForOrganization">>, Input, Options).
@@ -573,8 +610,7 @@ describe_affected_accounts_for_organization(Client, Input, Options)
 -spec describe_affected_entities(map(), describe_affected_entities_request()) ->
     {ok, describe_affected_entities_response(), tuple()} |
     {error, any()} |
-    {error, invalid_pagination_token(), tuple()} |
-    {error, unsupported_locale(), tuple()}.
+    {error, describe_affected_entities_errors(), tuple()}.
 describe_affected_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_affected_entities(Client, Input, []).
@@ -582,8 +618,7 @@ describe_affected_entities(Client, Input)
 -spec describe_affected_entities(map(), describe_affected_entities_request(), proplists:proplist()) ->
     {ok, describe_affected_entities_response(), tuple()} |
     {error, any()} |
-    {error, invalid_pagination_token(), tuple()} |
-    {error, unsupported_locale(), tuple()}.
+    {error, describe_affected_entities_errors(), tuple()}.
 describe_affected_entities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAffectedEntities">>, Input, Options).
@@ -620,8 +655,7 @@ describe_affected_entities(Client, Input, Options)
 -spec describe_affected_entities_for_organization(map(), describe_affected_entities_for_organization_request()) ->
     {ok, describe_affected_entities_for_organization_response(), tuple()} |
     {error, any()} |
-    {error, invalid_pagination_token(), tuple()} |
-    {error, unsupported_locale(), tuple()}.
+    {error, describe_affected_entities_for_organization_errors(), tuple()}.
 describe_affected_entities_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_affected_entities_for_organization(Client, Input, []).
@@ -629,8 +663,7 @@ describe_affected_entities_for_organization(Client, Input)
 -spec describe_affected_entities_for_organization(map(), describe_affected_entities_for_organization_request(), proplists:proplist()) ->
     {ok, describe_affected_entities_for_organization_response(), tuple()} |
     {error, any()} |
-    {error, invalid_pagination_token(), tuple()} |
-    {error, unsupported_locale(), tuple()}.
+    {error, describe_affected_entities_for_organization_errors(), tuple()}.
 describe_affected_entities_for_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAffectedEntitiesForOrganization">>, Input, Options).
@@ -679,7 +712,7 @@ describe_entity_aggregates_for_organization(Client, Input, Options)
 -spec describe_event_aggregates(map(), describe_event_aggregates_request()) ->
     {ok, describe_event_aggregates_response(), tuple()} |
     {error, any()} |
-    {error, invalid_pagination_token(), tuple()}.
+    {error, describe_event_aggregates_errors(), tuple()}.
 describe_event_aggregates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_aggregates(Client, Input, []).
@@ -687,7 +720,7 @@ describe_event_aggregates(Client, Input)
 -spec describe_event_aggregates(map(), describe_event_aggregates_request(), proplists:proplist()) ->
     {ok, describe_event_aggregates_response(), tuple()} |
     {error, any()} |
-    {error, invalid_pagination_token(), tuple()}.
+    {error, describe_event_aggregates_errors(), tuple()}.
 describe_event_aggregates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEventAggregates">>, Input, Options).
@@ -717,7 +750,7 @@ describe_event_aggregates(Client, Input, Options)
 -spec describe_event_details(map(), describe_event_details_request()) ->
     {ok, describe_event_details_response(), tuple()} |
     {error, any()} |
-    {error, unsupported_locale(), tuple()}.
+    {error, describe_event_details_errors(), tuple()}.
 describe_event_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_details(Client, Input, []).
@@ -725,7 +758,7 @@ describe_event_details(Client, Input)
 -spec describe_event_details(map(), describe_event_details_request(), proplists:proplist()) ->
     {ok, describe_event_details_response(), tuple()} |
     {error, any()} |
-    {error, unsupported_locale(), tuple()}.
+    {error, describe_event_details_errors(), tuple()}.
 describe_event_details(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEventDetails">>, Input, Options).
@@ -784,7 +817,7 @@ describe_event_details(Client, Input, Options)
 -spec describe_event_details_for_organization(map(), describe_event_details_for_organization_request()) ->
     {ok, describe_event_details_for_organization_response(), tuple()} |
     {error, any()} |
-    {error, unsupported_locale(), tuple()}.
+    {error, describe_event_details_for_organization_errors(), tuple()}.
 describe_event_details_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_details_for_organization(Client, Input, []).
@@ -792,7 +825,7 @@ describe_event_details_for_organization(Client, Input)
 -spec describe_event_details_for_organization(map(), describe_event_details_for_organization_request(), proplists:proplist()) ->
     {ok, describe_event_details_for_organization_response(), tuple()} |
     {error, any()} |
-    {error, unsupported_locale(), tuple()}.
+    {error, describe_event_details_for_organization_errors(), tuple()}.
 describe_event_details_for_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEventDetailsForOrganization">>, Input, Options).
@@ -815,8 +848,7 @@ describe_event_details_for_organization(Client, Input, Options)
 -spec describe_event_types(map(), describe_event_types_request()) ->
     {ok, describe_event_types_response(), tuple()} |
     {error, any()} |
-    {error, invalid_pagination_token(), tuple()} |
-    {error, unsupported_locale(), tuple()}.
+    {error, describe_event_types_errors(), tuple()}.
 describe_event_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_types(Client, Input, []).
@@ -824,8 +856,7 @@ describe_event_types(Client, Input)
 -spec describe_event_types(map(), describe_event_types_request(), proplists:proplist()) ->
     {ok, describe_event_types_response(), tuple()} |
     {error, any()} |
-    {error, invalid_pagination_token(), tuple()} |
-    {error, unsupported_locale(), tuple()}.
+    {error, describe_event_types_errors(), tuple()}.
 describe_event_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEventTypes">>, Input, Options).
@@ -865,8 +896,7 @@ describe_event_types(Client, Input, Options)
 -spec describe_events(map(), describe_events_request()) ->
     {ok, describe_events_response(), tuple()} |
     {error, any()} |
-    {error, invalid_pagination_token(), tuple()} |
-    {error, unsupported_locale(), tuple()}.
+    {error, describe_events_errors(), tuple()}.
 describe_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events(Client, Input, []).
@@ -874,8 +904,7 @@ describe_events(Client, Input)
 -spec describe_events(map(), describe_events_request(), proplists:proplist()) ->
     {ok, describe_events_response(), tuple()} |
     {error, any()} |
-    {error, invalid_pagination_token(), tuple()} |
-    {error, unsupported_locale(), tuple()}.
+    {error, describe_events_errors(), tuple()}.
 describe_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEvents">>, Input, Options).
@@ -924,8 +953,7 @@ describe_events(Client, Input, Options)
 -spec describe_events_for_organization(map(), describe_events_for_organization_request()) ->
     {ok, describe_events_for_organization_response(), tuple()} |
     {error, any()} |
-    {error, invalid_pagination_token(), tuple()} |
-    {error, unsupported_locale(), tuple()}.
+    {error, describe_events_for_organization_errors(), tuple()}.
 describe_events_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events_for_organization(Client, Input, []).
@@ -933,8 +961,7 @@ describe_events_for_organization(Client, Input)
 -spec describe_events_for_organization(map(), describe_events_for_organization_request(), proplists:proplist()) ->
     {ok, describe_events_for_organization_response(), tuple()} |
     {error, any()} |
-    {error, invalid_pagination_token(), tuple()} |
-    {error, unsupported_locale(), tuple()}.
+    {error, describe_events_for_organization_errors(), tuple()}.
 describe_events_for_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEventsForOrganization">>, Input, Options).
@@ -991,7 +1018,7 @@ describe_health_service_status_for_organization(Client, Input, Options)
 -spec disable_health_service_access_for_organization(map(), #{}) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()}.
+    {error, disable_health_service_access_for_organization_errors(), tuple()}.
 disable_health_service_access_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_health_service_access_for_organization(Client, Input, []).
@@ -999,7 +1026,7 @@ disable_health_service_access_for_organization(Client, Input)
 -spec disable_health_service_access_for_organization(map(), #{}, proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()}.
+    {error, disable_health_service_access_for_organization_errors(), tuple()}.
 disable_health_service_access_for_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableHealthServiceAccessForOrganization">>, Input, Options).
@@ -1040,7 +1067,7 @@ disable_health_service_access_for_organization(Client, Input, Options)
 -spec enable_health_service_access_for_organization(map(), #{}) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()}.
+    {error, enable_health_service_access_for_organization_errors(), tuple()}.
 enable_health_service_access_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_health_service_access_for_organization(Client, Input, []).
@@ -1048,7 +1075,7 @@ enable_health_service_access_for_organization(Client, Input)
 -spec enable_health_service_access_for_organization(map(), #{}, proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()}.
+    {error, enable_health_service_access_for_organization_errors(), tuple()}.
 enable_health_service_access_for_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableHealthServiceAccessForOrganization">>, Input, Options).

@@ -2539,6 +2539,692 @@
 %% }
 -type terminal_routing_strategy_exception() :: #{binary() => any()}.
 
+-type accept_match_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception().
+
+-type claim_game_server_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    out_of_capacity_exception() | 
+    unauthorized_exception().
+
+-type create_alias_errors() ::
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    tagging_failed_exception().
+
+-type create_build_errors() ::
+    invalid_request_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    tagging_failed_exception().
+
+-type create_fleet_errors() ::
+    limit_exceeded_exception() | 
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    tagging_failed_exception().
+
+-type create_fleet_locations_errors() ::
+    limit_exceeded_exception() | 
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    invalid_fleet_status_exception().
+
+-type create_game_server_group_errors() ::
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type create_game_session_errors() ::
+    terminal_routing_strategy_exception() | 
+    limit_exceeded_exception() | 
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    invalid_request_exception() | 
+    conflict_exception() | 
+    fleet_capacity_exceeded_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    invalid_fleet_status_exception().
+
+-type create_game_session_queue_errors() ::
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    tagging_failed_exception().
+
+-type create_location_errors() ::
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    tagging_failed_exception().
+
+-type create_matchmaking_configuration_errors() ::
+    limit_exceeded_exception() | 
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    tagging_failed_exception().
+
+-type create_matchmaking_rule_set_errors() ::
+    limit_exceeded_exception() | 
+    unsupported_region_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    tagging_failed_exception().
+
+-type create_player_session_errors() ::
+    terminal_routing_strategy_exception() | 
+    invalid_game_session_status_exception() | 
+    game_session_full_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type create_player_sessions_errors() ::
+    terminal_routing_strategy_exception() | 
+    invalid_game_session_status_exception() | 
+    game_session_full_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type create_script_errors() ::
+    invalid_request_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    tagging_failed_exception().
+
+-type create_vpc_peering_authorization_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type create_vpc_peering_connection_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type delete_alias_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    tagging_failed_exception().
+
+-type delete_build_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    tagging_failed_exception().
+
+-type delete_fleet_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    tagging_failed_exception() | 
+    invalid_fleet_status_exception().
+
+-type delete_fleet_locations_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type delete_game_server_group_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type delete_game_session_queue_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    tagging_failed_exception().
+
+-type delete_location_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type delete_matchmaking_configuration_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    tagging_failed_exception().
+
+-type delete_matchmaking_rule_set_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    tagging_failed_exception().
+
+-type delete_scaling_policy_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type delete_script_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    tagging_failed_exception().
+
+-type delete_vpc_peering_authorization_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type delete_vpc_peering_connection_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type deregister_compute_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type deregister_game_server_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_alias_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_build_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_compute_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_ec2_instance_limits_errors() ::
+    unsupported_region_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_fleet_attributes_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_fleet_capacity_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_fleet_events_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_fleet_location_attributes_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_fleet_location_capacity_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_fleet_location_utilization_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_fleet_port_settings_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_fleet_utilization_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_game_server_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_game_server_group_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_game_server_instances_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_game_session_details_errors() ::
+    terminal_routing_strategy_exception() | 
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_game_session_placement_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_game_session_queues_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_game_sessions_errors() ::
+    terminal_routing_strategy_exception() | 
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_instances_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_matchmaking_errors() ::
+    unsupported_region_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception().
+
+-type describe_matchmaking_configurations_errors() ::
+    unsupported_region_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception().
+
+-type describe_matchmaking_rule_sets_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception().
+
+-type describe_player_sessions_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_runtime_configuration_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_scaling_policies_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_script_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_vpc_peering_authorizations_errors() ::
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_vpc_peering_connections_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type get_compute_access_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type get_compute_auth_token_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type get_game_session_log_url_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type get_instance_access_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type list_aliases_errors() ::
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type list_builds_errors() ::
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type list_compute_errors() ::
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type list_fleets_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type list_game_server_groups_errors() ::
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type list_game_servers_errors() ::
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type list_locations_errors() ::
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type list_scripts_errors() ::
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type list_tags_for_resource_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    tagging_failed_exception().
+
+-type put_scaling_policy_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type register_compute_errors() ::
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type register_game_server_errors() ::
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type request_upload_credentials_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type resolve_alias_errors() ::
+    terminal_routing_strategy_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type resume_game_server_group_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type search_game_sessions_errors() ::
+    terminal_routing_strategy_exception() | 
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type start_fleet_actions_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type start_game_session_placement_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type start_match_backfill_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception().
+
+-type start_matchmaking_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception().
+
+-type stop_fleet_actions_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type stop_game_session_placement_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type stop_matchmaking_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception().
+
+-type suspend_game_server_group_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type tag_resource_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    tagging_failed_exception().
+
+-type untag_resource_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    tagging_failed_exception().
+
+-type update_alias_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type update_build_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type update_fleet_attributes_errors() ::
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    invalid_fleet_status_exception().
+
+-type update_fleet_capacity_errors() ::
+    limit_exceeded_exception() | 
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    invalid_fleet_status_exception().
+
+-type update_fleet_port_settings_errors() ::
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    invalid_fleet_status_exception().
+
+-type update_game_server_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type update_game_server_group_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type update_game_session_errors() ::
+    invalid_game_session_status_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type update_game_session_queue_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type update_matchmaking_configuration_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception().
+
+-type update_runtime_configuration_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    invalid_fleet_status_exception().
+
+-type update_script_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type validate_matchmaking_rule_set_errors() ::
+    unsupported_region_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception().
 
 %%====================================================================
 %% API
@@ -2593,10 +3279,7 @@
 -spec accept_match(map(), accept_match_input()) ->
     {ok, accept_match_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, accept_match_errors(), tuple()}.
 accept_match(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_match(Client, Input, []).
@@ -2604,10 +3287,7 @@ accept_match(Client, Input)
 -spec accept_match(map(), accept_match_input(), proplists:proplist()) ->
     {ok, accept_match_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, accept_match_errors(), tuple()}.
 accept_match(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcceptMatch">>, Input, Options).
@@ -2673,12 +3353,7 @@ accept_match(Client, Input, Options)
 -spec claim_game_server(map(), claim_game_server_input()) ->
     {ok, claim_game_server_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, out_of_capacity_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, claim_game_server_errors(), tuple()}.
 claim_game_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     claim_game_server(Client, Input, []).
@@ -2686,12 +3361,7 @@ claim_game_server(Client, Input)
 -spec claim_game_server(map(), claim_game_server_input(), proplists:proplist()) ->
     {ok, claim_game_server_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, out_of_capacity_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, claim_game_server_errors(), tuple()}.
 claim_game_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ClaimGameServer">>, Input, Options).
@@ -2731,12 +3401,7 @@ claim_game_server(Client, Input, Options)
 -spec create_alias(map(), create_alias_input()) ->
     {ok, create_alias_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_alias_errors(), tuple()}.
 create_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_alias(Client, Input, []).
@@ -2744,12 +3409,7 @@ create_alias(Client, Input)
 -spec create_alias(map(), create_alias_input(), proplists:proplist()) ->
     {ok, create_alias_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_alias_errors(), tuple()}.
 create_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAlias">>, Input, Options).
@@ -2811,11 +3471,7 @@ create_alias(Client, Input, Options)
 -spec create_build(map(), create_build_input()) ->
     {ok, create_build_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_build_errors(), tuple()}.
 create_build(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_build(Client, Input, []).
@@ -2823,11 +3479,7 @@ create_build(Client, Input)
 -spec create_build(map(), create_build_input(), proplists:proplist()) ->
     {ok, create_build_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_build_errors(), tuple()}.
 create_build(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBuild">>, Input, Options).
@@ -2906,14 +3558,7 @@ create_build(Client, Input, Options)
 -spec create_fleet(map(), create_fleet_input()) ->
     {ok, create_fleet_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, create_fleet_errors(), tuple()}.
 create_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_fleet(Client, Input, []).
@@ -2921,14 +3566,7 @@ create_fleet(Client, Input)
 -spec create_fleet(map(), create_fleet_input(), proplists:proplist()) ->
     {ok, create_fleet_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, create_fleet_errors(), tuple()}.
 create_fleet(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFleet">>, Input, Options).
@@ -2972,14 +3610,7 @@ create_fleet(Client, Input, Options)
 -spec create_fleet_locations(map(), create_fleet_locations_input()) ->
     {ok, create_fleet_locations_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_fleet_status_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, create_fleet_locations_errors(), tuple()}.
 create_fleet_locations(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_fleet_locations(Client, Input, []).
@@ -2987,14 +3618,7 @@ create_fleet_locations(Client, Input)
 -spec create_fleet_locations(map(), create_fleet_locations_input(), proplists:proplist()) ->
     {ok, create_fleet_locations_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_fleet_status_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, create_fleet_locations_errors(), tuple()}.
 create_fleet_locations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFleetLocations">>, Input, Options).
@@ -3065,11 +3689,7 @@ create_fleet_locations(Client, Input, Options)
 -spec create_game_server_group(map(), create_game_server_group_input()) ->
     {ok, create_game_server_group_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_game_server_group_errors(), tuple()}.
 create_game_server_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_game_server_group(Client, Input, []).
@@ -3077,11 +3697,7 @@ create_game_server_group(Client, Input)
 -spec create_game_server_group(map(), create_game_server_group_input(), proplists:proplist()) ->
     {ok, create_game_server_group_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_game_server_group_errors(), tuple()}.
 create_game_server_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGameServerGroup">>, Input, Options).
@@ -3150,17 +3766,7 @@ create_game_server_group(Client, Input, Options)
 -spec create_game_session(map(), create_game_session_input()) ->
     {ok, create_game_session_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, fleet_capacity_exceeded_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_fleet_status_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, terminal_routing_strategy_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, create_game_session_errors(), tuple()}.
 create_game_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_game_session(Client, Input, []).
@@ -3168,17 +3774,7 @@ create_game_session(Client, Input)
 -spec create_game_session(map(), create_game_session_input(), proplists:proplist()) ->
     {ok, create_game_session_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, fleet_capacity_exceeded_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_fleet_status_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, terminal_routing_strategy_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, create_game_session_errors(), tuple()}.
 create_game_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGameSession">>, Input, Options).
@@ -3261,12 +3857,7 @@ create_game_session(Client, Input, Options)
 -spec create_game_session_queue(map(), create_game_session_queue_input()) ->
     {ok, create_game_session_queue_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_game_session_queue_errors(), tuple()}.
 create_game_session_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_game_session_queue(Client, Input, []).
@@ -3274,12 +3865,7 @@ create_game_session_queue(Client, Input)
 -spec create_game_session_queue(map(), create_game_session_queue_input(), proplists:proplist()) ->
     {ok, create_game_session_queue_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_game_session_queue_errors(), tuple()}.
 create_game_session_queue(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGameSessionQueue">>, Input, Options).
@@ -3288,12 +3874,7 @@ create_game_session_queue(Client, Input, Options)
 -spec create_location(map(), create_location_input()) ->
     {ok, create_location_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_location_errors(), tuple()}.
 create_location(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location(Client, Input, []).
@@ -3301,12 +3882,7 @@ create_location(Client, Input)
 -spec create_location(map(), create_location_input(), proplists:proplist()) ->
     {ok, create_location_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_location_errors(), tuple()}.
 create_location(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocation">>, Input, Options).
@@ -3354,12 +3930,7 @@ create_location(Client, Input, Options)
 -spec create_matchmaking_configuration(map(), create_matchmaking_configuration_input()) ->
     {ok, create_matchmaking_configuration_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, create_matchmaking_configuration_errors(), tuple()}.
 create_matchmaking_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_matchmaking_configuration(Client, Input, []).
@@ -3367,12 +3938,7 @@ create_matchmaking_configuration(Client, Input)
 -spec create_matchmaking_configuration(map(), create_matchmaking_configuration_input(), proplists:proplist()) ->
     {ok, create_matchmaking_configuration_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, create_matchmaking_configuration_errors(), tuple()}.
 create_matchmaking_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateMatchmakingConfiguration">>, Input, Options).
@@ -3412,11 +3978,7 @@ create_matchmaking_configuration(Client, Input, Options)
 -spec create_matchmaking_rule_set(map(), create_matchmaking_rule_set_input()) ->
     {ok, create_matchmaking_rule_set_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, create_matchmaking_rule_set_errors(), tuple()}.
 create_matchmaking_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_matchmaking_rule_set(Client, Input, []).
@@ -3424,11 +3986,7 @@ create_matchmaking_rule_set(Client, Input)
 -spec create_matchmaking_rule_set(map(), create_matchmaking_rule_set_input(), proplists:proplist()) ->
     {ok, create_matchmaking_rule_set_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, create_matchmaking_rule_set_errors(), tuple()}.
 create_matchmaking_rule_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateMatchmakingRuleSet">>, Input, Options).
@@ -3468,13 +4026,7 @@ create_matchmaking_rule_set(Client, Input, Options)
 -spec create_player_session(map(), create_player_session_input()) ->
     {ok, create_player_session_output(), tuple()} |
     {error, any()} |
-    {error, game_session_full_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_game_session_status_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, terminal_routing_strategy_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_player_session_errors(), tuple()}.
 create_player_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_player_session(Client, Input, []).
@@ -3482,13 +4034,7 @@ create_player_session(Client, Input)
 -spec create_player_session(map(), create_player_session_input(), proplists:proplist()) ->
     {ok, create_player_session_output(), tuple()} |
     {error, any()} |
-    {error, game_session_full_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_game_session_status_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, terminal_routing_strategy_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_player_session_errors(), tuple()}.
 create_player_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePlayerSession">>, Input, Options).
@@ -3527,13 +4073,7 @@ create_player_session(Client, Input, Options)
 -spec create_player_sessions(map(), create_player_sessions_input()) ->
     {ok, create_player_sessions_output(), tuple()} |
     {error, any()} |
-    {error, game_session_full_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_game_session_status_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, terminal_routing_strategy_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_player_sessions_errors(), tuple()}.
 create_player_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_player_sessions(Client, Input, []).
@@ -3541,13 +4081,7 @@ create_player_sessions(Client, Input)
 -spec create_player_sessions(map(), create_player_sessions_input(), proplists:proplist()) ->
     {ok, create_player_sessions_output(), tuple()} |
     {error, any()} |
-    {error, game_session_full_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_game_session_status_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, terminal_routing_strategy_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_player_sessions_errors(), tuple()}.
 create_player_sessions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePlayerSessions">>, Input, Options).
@@ -3602,11 +4136,7 @@ create_player_sessions(Client, Input, Options)
 -spec create_script(map(), create_script_input()) ->
     {ok, create_script_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_script_errors(), tuple()}.
 create_script(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_script(Client, Input, []).
@@ -3614,11 +4144,7 @@ create_script(Client, Input)
 -spec create_script(map(), create_script_input(), proplists:proplist()) ->
     {ok, create_script_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_script_errors(), tuple()}.
 create_script(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateScript">>, Input, Options).
@@ -3675,10 +4201,7 @@ create_script(Client, Input, Options)
 -spec create_vpc_peering_authorization(map(), create_vpc_peering_authorization_input()) ->
     {ok, create_vpc_peering_authorization_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_vpc_peering_authorization_errors(), tuple()}.
 create_vpc_peering_authorization(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vpc_peering_authorization(Client, Input, []).
@@ -3686,10 +4209,7 @@ create_vpc_peering_authorization(Client, Input)
 -spec create_vpc_peering_authorization(map(), create_vpc_peering_authorization_input(), proplists:proplist()) ->
     {ok, create_vpc_peering_authorization_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_vpc_peering_authorization_errors(), tuple()}.
 create_vpc_peering_authorization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateVpcPeeringAuthorization">>, Input, Options).
@@ -3744,10 +4264,7 @@ create_vpc_peering_authorization(Client, Input, Options)
 -spec create_vpc_peering_connection(map(), create_vpc_peering_connection_input()) ->
     {ok, create_vpc_peering_connection_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_vpc_peering_connection_errors(), tuple()}.
 create_vpc_peering_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vpc_peering_connection(Client, Input, []).
@@ -3755,10 +4272,7 @@ create_vpc_peering_connection(Client, Input)
 -spec create_vpc_peering_connection(map(), create_vpc_peering_connection_input(), proplists:proplist()) ->
     {ok, create_vpc_peering_connection_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_vpc_peering_connection_errors(), tuple()}.
 create_vpc_peering_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateVpcPeeringConnection">>, Input, Options).
@@ -3777,11 +4291,7 @@ create_vpc_peering_connection(Client, Input, Options)
 -spec delete_alias(map(), delete_alias_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_alias_errors(), tuple()}.
 delete_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_alias(Client, Input, []).
@@ -3789,11 +4299,7 @@ delete_alias(Client, Input)
 -spec delete_alias(map(), delete_alias_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_alias_errors(), tuple()}.
 delete_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAlias">>, Input, Options).
@@ -3819,11 +4325,7 @@ delete_alias(Client, Input, Options)
 -spec delete_build(map(), delete_build_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_build_errors(), tuple()}.
 delete_build(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_build(Client, Input, []).
@@ -3831,11 +4333,7 @@ delete_build(Client, Input)
 -spec delete_build(map(), delete_build_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_build_errors(), tuple()}.
 delete_build(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBuild">>, Input, Options).
@@ -3869,12 +4367,7 @@ delete_build(Client, Input, Options)
 -spec delete_fleet(map(), delete_fleet_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_fleet_status_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_fleet_errors(), tuple()}.
 delete_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_fleet(Client, Input, []).
@@ -3882,12 +4375,7 @@ delete_fleet(Client, Input)
 -spec delete_fleet(map(), delete_fleet_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_fleet_status_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_fleet_errors(), tuple()}.
 delete_fleet(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFleet">>, Input, Options).
@@ -3916,11 +4404,7 @@ delete_fleet(Client, Input, Options)
 -spec delete_fleet_locations(map(), delete_fleet_locations_input()) ->
     {ok, delete_fleet_locations_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, delete_fleet_locations_errors(), tuple()}.
 delete_fleet_locations(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_fleet_locations(Client, Input, []).
@@ -3928,11 +4412,7 @@ delete_fleet_locations(Client, Input)
 -spec delete_fleet_locations(map(), delete_fleet_locations_input(), proplists:proplist()) ->
     {ok, delete_fleet_locations_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, delete_fleet_locations_errors(), tuple()}.
 delete_fleet_locations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFleetLocations">>, Input, Options).
@@ -3981,10 +4461,7 @@ delete_fleet_locations(Client, Input, Options)
 -spec delete_game_server_group(map(), delete_game_server_group_input()) ->
     {ok, delete_game_server_group_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_game_server_group_errors(), tuple()}.
 delete_game_server_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_game_server_group(Client, Input, []).
@@ -3992,10 +4469,7 @@ delete_game_server_group(Client, Input)
 -spec delete_game_server_group(map(), delete_game_server_group_input(), proplists:proplist()) ->
     {ok, delete_game_server_group_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_game_server_group_errors(), tuple()}.
 delete_game_server_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGameServerGroup">>, Input, Options).
@@ -4010,11 +4484,7 @@ delete_game_server_group(Client, Input, Options)
 -spec delete_game_session_queue(map(), delete_game_session_queue_input()) ->
     {ok, delete_game_session_queue_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_game_session_queue_errors(), tuple()}.
 delete_game_session_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_game_session_queue(Client, Input, []).
@@ -4022,11 +4492,7 @@ delete_game_session_queue(Client, Input)
 -spec delete_game_session_queue(map(), delete_game_session_queue_input(), proplists:proplist()) ->
     {ok, delete_game_session_queue_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_game_session_queue_errors(), tuple()}.
 delete_game_session_queue(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGameSessionQueue">>, Input, Options).
@@ -4041,10 +4507,7 @@ delete_game_session_queue(Client, Input, Options)
 -spec delete_location(map(), delete_location_input()) ->
     {ok, delete_location_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_location_errors(), tuple()}.
 delete_location(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_location(Client, Input, []).
@@ -4052,10 +4515,7 @@ delete_location(Client, Input)
 -spec delete_location(map(), delete_location_input(), proplists:proplist()) ->
     {ok, delete_location_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_location_errors(), tuple()}.
 delete_location(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLocation">>, Input, Options).
@@ -4069,11 +4529,7 @@ delete_location(Client, Input, Options)
 -spec delete_matchmaking_configuration(map(), delete_matchmaking_configuration_input()) ->
     {ok, delete_matchmaking_configuration_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, delete_matchmaking_configuration_errors(), tuple()}.
 delete_matchmaking_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_matchmaking_configuration(Client, Input, []).
@@ -4081,11 +4537,7 @@ delete_matchmaking_configuration(Client, Input)
 -spec delete_matchmaking_configuration(map(), delete_matchmaking_configuration_input(), proplists:proplist()) ->
     {ok, delete_matchmaking_configuration_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, delete_matchmaking_configuration_errors(), tuple()}.
 delete_matchmaking_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMatchmakingConfiguration">>, Input, Options).
@@ -4105,11 +4557,7 @@ delete_matchmaking_configuration(Client, Input, Options)
 -spec delete_matchmaking_rule_set(map(), delete_matchmaking_rule_set_input()) ->
     {ok, delete_matchmaking_rule_set_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, delete_matchmaking_rule_set_errors(), tuple()}.
 delete_matchmaking_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_matchmaking_rule_set(Client, Input, []).
@@ -4117,11 +4565,7 @@ delete_matchmaking_rule_set(Client, Input)
 -spec delete_matchmaking_rule_set(map(), delete_matchmaking_rule_set_input(), proplists:proplist()) ->
     {ok, delete_matchmaking_rule_set_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, delete_matchmaking_rule_set_errors(), tuple()}.
 delete_matchmaking_rule_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMatchmakingRuleSet">>, Input, Options).
@@ -4140,10 +4584,7 @@ delete_matchmaking_rule_set(Client, Input, Options)
 -spec delete_scaling_policy(map(), delete_scaling_policy_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_scaling_policy_errors(), tuple()}.
 delete_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_scaling_policy(Client, Input, []).
@@ -4151,10 +4592,7 @@ delete_scaling_policy(Client, Input)
 -spec delete_scaling_policy(map(), delete_scaling_policy_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_scaling_policy_errors(), tuple()}.
 delete_scaling_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteScalingPolicy">>, Input, Options).
@@ -4186,11 +4624,7 @@ delete_scaling_policy(Client, Input, Options)
 -spec delete_script(map(), delete_script_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_script_errors(), tuple()}.
 delete_script(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_script(Client, Input, []).
@@ -4198,11 +4632,7 @@ delete_script(Client, Input)
 -spec delete_script(map(), delete_script_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_script_errors(), tuple()}.
 delete_script(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteScript">>, Input, Options).
@@ -4220,10 +4650,7 @@ delete_script(Client, Input, Options)
 -spec delete_vpc_peering_authorization(map(), delete_vpc_peering_authorization_input()) ->
     {ok, delete_vpc_peering_authorization_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_vpc_peering_authorization_errors(), tuple()}.
 delete_vpc_peering_authorization(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_vpc_peering_authorization(Client, Input, []).
@@ -4231,10 +4658,7 @@ delete_vpc_peering_authorization(Client, Input)
 -spec delete_vpc_peering_authorization(map(), delete_vpc_peering_authorization_input(), proplists:proplist()) ->
     {ok, delete_vpc_peering_authorization_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_vpc_peering_authorization_errors(), tuple()}.
 delete_vpc_peering_authorization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteVpcPeeringAuthorization">>, Input, Options).
@@ -4257,10 +4681,7 @@ delete_vpc_peering_authorization(Client, Input, Options)
 -spec delete_vpc_peering_connection(map(), delete_vpc_peering_connection_input()) ->
     {ok, delete_vpc_peering_connection_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_vpc_peering_connection_errors(), tuple()}.
 delete_vpc_peering_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_vpc_peering_connection(Client, Input, []).
@@ -4268,10 +4689,7 @@ delete_vpc_peering_connection(Client, Input)
 -spec delete_vpc_peering_connection(map(), delete_vpc_peering_connection_input(), proplists:proplist()) ->
     {ok, delete_vpc_peering_connection_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_vpc_peering_connection_errors(), tuple()}.
 delete_vpc_peering_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteVpcPeeringConnection">>, Input, Options).
@@ -4283,10 +4701,7 @@ delete_vpc_peering_connection(Client, Input, Options)
 -spec deregister_compute(map(), deregister_compute_input()) ->
     {ok, deregister_compute_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, deregister_compute_errors(), tuple()}.
 deregister_compute(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_compute(Client, Input, []).
@@ -4294,10 +4709,7 @@ deregister_compute(Client, Input)
 -spec deregister_compute(map(), deregister_compute_input(), proplists:proplist()) ->
     {ok, deregister_compute_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, deregister_compute_errors(), tuple()}.
 deregister_compute(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterCompute">>, Input, Options).
@@ -4326,10 +4738,7 @@ deregister_compute(Client, Input, Options)
 -spec deregister_game_server(map(), deregister_game_server_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, deregister_game_server_errors(), tuple()}.
 deregister_game_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_game_server(Client, Input, []).
@@ -4337,10 +4746,7 @@ deregister_game_server(Client, Input)
 -spec deregister_game_server(map(), deregister_game_server_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, deregister_game_server_errors(), tuple()}.
 deregister_game_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterGameServer">>, Input, Options).
@@ -4362,10 +4768,7 @@ deregister_game_server(Client, Input, Options)
 -spec describe_alias(map(), describe_alias_input()) ->
     {ok, describe_alias_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_alias_errors(), tuple()}.
 describe_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_alias(Client, Input, []).
@@ -4373,10 +4776,7 @@ describe_alias(Client, Input)
 -spec describe_alias(map(), describe_alias_input(), proplists:proplist()) ->
     {ok, describe_alias_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_alias_errors(), tuple()}.
 describe_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAlias">>, Input, Options).
@@ -4398,10 +4798,7 @@ describe_alias(Client, Input, Options)
 -spec describe_build(map(), describe_build_input()) ->
     {ok, describe_build_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_build_errors(), tuple()}.
 describe_build(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_build(Client, Input, []).
@@ -4409,10 +4806,7 @@ describe_build(Client, Input)
 -spec describe_build(map(), describe_build_input(), proplists:proplist()) ->
     {ok, describe_build_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_build_errors(), tuple()}.
 describe_build(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBuild">>, Input, Options).
@@ -4435,10 +4829,7 @@ describe_build(Client, Input, Options)
 -spec describe_compute(map(), describe_compute_input()) ->
     {ok, describe_compute_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_compute_errors(), tuple()}.
 describe_compute(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_compute(Client, Input, []).
@@ -4446,10 +4837,7 @@ describe_compute(Client, Input)
 -spec describe_compute(map(), describe_compute_input(), proplists:proplist()) ->
     {ok, describe_compute_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_compute_errors(), tuple()}.
 describe_compute(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCompute">>, Input, Options).
@@ -4521,10 +4909,7 @@ describe_compute(Client, Input, Options)
 -spec describe_ec2_instance_limits(map(), describe_ec2_instance_limits_input()) ->
     {ok, describe_ec2_instance_limits_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, describe_ec2_instance_limits_errors(), tuple()}.
 describe_ec2_instance_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_ec2_instance_limits(Client, Input, []).
@@ -4532,10 +4917,7 @@ describe_ec2_instance_limits(Client, Input)
 -spec describe_ec2_instance_limits(map(), describe_ec2_instance_limits_input(), proplists:proplist()) ->
     {ok, describe_ec2_instance_limits_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, describe_ec2_instance_limits_errors(), tuple()}.
 describe_ec2_instance_limits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEC2InstanceLimits">>, Input, Options).
@@ -4573,10 +4955,7 @@ describe_ec2_instance_limits(Client, Input, Options)
 -spec describe_fleet_attributes(map(), describe_fleet_attributes_input()) ->
     {ok, describe_fleet_attributes_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_fleet_attributes_errors(), tuple()}.
 describe_fleet_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_attributes(Client, Input, []).
@@ -4584,10 +4963,7 @@ describe_fleet_attributes(Client, Input)
 -spec describe_fleet_attributes(map(), describe_fleet_attributes_input(), proplists:proplist()) ->
     {ok, describe_fleet_attributes_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_fleet_attributes_errors(), tuple()}.
 describe_fleet_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFleetAttributes">>, Input, Options).
@@ -4637,10 +5013,7 @@ describe_fleet_attributes(Client, Input, Options)
 -spec describe_fleet_capacity(map(), describe_fleet_capacity_input()) ->
     {ok, describe_fleet_capacity_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_fleet_capacity_errors(), tuple()}.
 describe_fleet_capacity(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_capacity(Client, Input, []).
@@ -4648,10 +5021,7 @@ describe_fleet_capacity(Client, Input)
 -spec describe_fleet_capacity(map(), describe_fleet_capacity_input(), proplists:proplist()) ->
     {ok, describe_fleet_capacity_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_fleet_capacity_errors(), tuple()}.
 describe_fleet_capacity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFleetCapacity">>, Input, Options).
@@ -4680,10 +5050,7 @@ describe_fleet_capacity(Client, Input, Options)
 -spec describe_fleet_events(map(), describe_fleet_events_input()) ->
     {ok, describe_fleet_events_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_fleet_events_errors(), tuple()}.
 describe_fleet_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_events(Client, Input, []).
@@ -4691,10 +5058,7 @@ describe_fleet_events(Client, Input)
 -spec describe_fleet_events(map(), describe_fleet_events_input(), proplists:proplist()) ->
     {ok, describe_fleet_events_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_fleet_events_errors(), tuple()}.
 describe_fleet_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFleetEvents">>, Input, Options).
@@ -4733,11 +5097,7 @@ describe_fleet_events(Client, Input, Options)
 -spec describe_fleet_location_attributes(map(), describe_fleet_location_attributes_input()) ->
     {ok, describe_fleet_location_attributes_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, describe_fleet_location_attributes_errors(), tuple()}.
 describe_fleet_location_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_location_attributes(Client, Input, []).
@@ -4745,11 +5105,7 @@ describe_fleet_location_attributes(Client, Input)
 -spec describe_fleet_location_attributes(map(), describe_fleet_location_attributes_input(), proplists:proplist()) ->
     {ok, describe_fleet_location_attributes_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, describe_fleet_location_attributes_errors(), tuple()}.
 describe_fleet_location_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFleetLocationAttributes">>, Input, Options).
@@ -4782,11 +5138,7 @@ describe_fleet_location_attributes(Client, Input, Options)
 -spec describe_fleet_location_capacity(map(), describe_fleet_location_capacity_input()) ->
     {ok, describe_fleet_location_capacity_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, describe_fleet_location_capacity_errors(), tuple()}.
 describe_fleet_location_capacity(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_location_capacity(Client, Input, []).
@@ -4794,11 +5146,7 @@ describe_fleet_location_capacity(Client, Input)
 -spec describe_fleet_location_capacity(map(), describe_fleet_location_capacity_input(), proplists:proplist()) ->
     {ok, describe_fleet_location_capacity_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, describe_fleet_location_capacity_errors(), tuple()}.
 describe_fleet_location_capacity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFleetLocationCapacity">>, Input, Options).
@@ -4830,11 +5178,7 @@ describe_fleet_location_capacity(Client, Input, Options)
 -spec describe_fleet_location_utilization(map(), describe_fleet_location_utilization_input()) ->
     {ok, describe_fleet_location_utilization_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, describe_fleet_location_utilization_errors(), tuple()}.
 describe_fleet_location_utilization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_location_utilization(Client, Input, []).
@@ -4842,11 +5186,7 @@ describe_fleet_location_utilization(Client, Input)
 -spec describe_fleet_location_utilization(map(), describe_fleet_location_utilization_input(), proplists:proplist()) ->
     {ok, describe_fleet_location_utilization_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, describe_fleet_location_utilization_errors(), tuple()}.
 describe_fleet_location_utilization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFleetLocationUtilization">>, Input, Options).
@@ -4884,11 +5224,7 @@ describe_fleet_location_utilization(Client, Input, Options)
 -spec describe_fleet_port_settings(map(), describe_fleet_port_settings_input()) ->
     {ok, describe_fleet_port_settings_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, describe_fleet_port_settings_errors(), tuple()}.
 describe_fleet_port_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_port_settings(Client, Input, []).
@@ -4896,11 +5232,7 @@ describe_fleet_port_settings(Client, Input)
 -spec describe_fleet_port_settings(map(), describe_fleet_port_settings_input(), proplists:proplist()) ->
     {ok, describe_fleet_port_settings_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, describe_fleet_port_settings_errors(), tuple()}.
 describe_fleet_port_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFleetPortSettings">>, Input, Options).
@@ -4951,10 +5283,7 @@ describe_fleet_port_settings(Client, Input, Options)
 -spec describe_fleet_utilization(map(), describe_fleet_utilization_input()) ->
     {ok, describe_fleet_utilization_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_fleet_utilization_errors(), tuple()}.
 describe_fleet_utilization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_utilization(Client, Input, []).
@@ -4962,10 +5291,7 @@ describe_fleet_utilization(Client, Input)
 -spec describe_fleet_utilization(map(), describe_fleet_utilization_input(), proplists:proplist()) ->
     {ok, describe_fleet_utilization_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_fleet_utilization_errors(), tuple()}.
 describe_fleet_utilization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFleetUtilization">>, Input, Options).
@@ -4991,10 +5317,7 @@ describe_fleet_utilization(Client, Input, Options)
 -spec describe_game_server(map(), describe_game_server_input()) ->
     {ok, describe_game_server_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_game_server_errors(), tuple()}.
 describe_game_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_game_server(Client, Input, []).
@@ -5002,10 +5325,7 @@ describe_game_server(Client, Input)
 -spec describe_game_server(map(), describe_game_server_input(), proplists:proplist()) ->
     {ok, describe_game_server_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_game_server_errors(), tuple()}.
 describe_game_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGameServer">>, Input, Options).
@@ -5035,10 +5355,7 @@ describe_game_server(Client, Input, Options)
 -spec describe_game_server_group(map(), describe_game_server_group_input()) ->
     {ok, describe_game_server_group_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_game_server_group_errors(), tuple()}.
 describe_game_server_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_game_server_group(Client, Input, []).
@@ -5046,10 +5363,7 @@ describe_game_server_group(Client, Input)
 -spec describe_game_server_group(map(), describe_game_server_group_input(), proplists:proplist()) ->
     {ok, describe_game_server_group_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_game_server_group_errors(), tuple()}.
 describe_game_server_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGameServerGroup">>, Input, Options).
@@ -5091,10 +5405,7 @@ describe_game_server_group(Client, Input, Options)
 -spec describe_game_server_instances(map(), describe_game_server_instances_input()) ->
     {ok, describe_game_server_instances_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_game_server_instances_errors(), tuple()}.
 describe_game_server_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_game_server_instances(Client, Input, []).
@@ -5102,10 +5413,7 @@ describe_game_server_instances(Client, Input)
 -spec describe_game_server_instances(map(), describe_game_server_instances_input(), proplists:proplist()) ->
     {ok, describe_game_server_instances_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_game_server_instances_errors(), tuple()}.
 describe_game_server_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGameServerInstances">>, Input, Options).
@@ -5156,12 +5464,7 @@ describe_game_server_instances(Client, Input, Options)
 -spec describe_game_session_details(map(), describe_game_session_details_input()) ->
     {ok, describe_game_session_details_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, terminal_routing_strategy_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, describe_game_session_details_errors(), tuple()}.
 describe_game_session_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_game_session_details(Client, Input, []).
@@ -5169,12 +5472,7 @@ describe_game_session_details(Client, Input)
 -spec describe_game_session_details(map(), describe_game_session_details_input(), proplists:proplist()) ->
     {ok, describe_game_session_details_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, terminal_routing_strategy_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, describe_game_session_details_errors(), tuple()}.
 describe_game_session_details(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGameSessionDetails">>, Input, Options).
@@ -5197,10 +5495,7 @@ describe_game_session_details(Client, Input, Options)
 -spec describe_game_session_placement(map(), describe_game_session_placement_input()) ->
     {ok, describe_game_session_placement_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_game_session_placement_errors(), tuple()}.
 describe_game_session_placement(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_game_session_placement(Client, Input, []).
@@ -5208,10 +5503,7 @@ describe_game_session_placement(Client, Input)
 -spec describe_game_session_placement(map(), describe_game_session_placement_input(), proplists:proplist()) ->
     {ok, describe_game_session_placement_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_game_session_placement_errors(), tuple()}.
 describe_game_session_placement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGameSessionPlacement">>, Input, Options).
@@ -5232,10 +5524,7 @@ describe_game_session_placement(Client, Input, Options)
 -spec describe_game_session_queues(map(), describe_game_session_queues_input()) ->
     {ok, describe_game_session_queues_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_game_session_queues_errors(), tuple()}.
 describe_game_session_queues(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_game_session_queues(Client, Input, []).
@@ -5243,10 +5532,7 @@ describe_game_session_queues(Client, Input)
 -spec describe_game_session_queues(map(), describe_game_session_queues_input(), proplists:proplist()) ->
     {ok, describe_game_session_queues_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_game_session_queues_errors(), tuple()}.
 describe_game_session_queues(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGameSessionQueues">>, Input, Options).
@@ -5307,12 +5593,7 @@ describe_game_session_queues(Client, Input, Options)
 -spec describe_game_sessions(map(), describe_game_sessions_input()) ->
     {ok, describe_game_sessions_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, terminal_routing_strategy_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, describe_game_sessions_errors(), tuple()}.
 describe_game_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_game_sessions(Client, Input, []).
@@ -5320,12 +5601,7 @@ describe_game_sessions(Client, Input)
 -spec describe_game_sessions(map(), describe_game_sessions_input(), proplists:proplist()) ->
     {ok, describe_game_sessions_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, terminal_routing_strategy_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, describe_game_sessions_errors(), tuple()}.
 describe_game_sessions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGameSessions">>, Input, Options).
@@ -5381,11 +5657,7 @@ describe_game_sessions(Client, Input, Options)
 -spec describe_instances(map(), describe_instances_input()) ->
     {ok, describe_instances_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, describe_instances_errors(), tuple()}.
 describe_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instances(Client, Input, []).
@@ -5393,11 +5665,7 @@ describe_instances(Client, Input)
 -spec describe_instances(map(), describe_instances_input(), proplists:proplist()) ->
     {ok, describe_instances_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, describe_instances_errors(), tuple()}.
 describe_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInstances">>, Input, Options).
@@ -5434,9 +5702,7 @@ describe_instances(Client, Input, Options)
 -spec describe_matchmaking(map(), describe_matchmaking_input()) ->
     {ok, describe_matchmaking_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, describe_matchmaking_errors(), tuple()}.
 describe_matchmaking(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_matchmaking(Client, Input, []).
@@ -5444,9 +5710,7 @@ describe_matchmaking(Client, Input)
 -spec describe_matchmaking(map(), describe_matchmaking_input(), proplists:proplist()) ->
     {ok, describe_matchmaking_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, describe_matchmaking_errors(), tuple()}.
 describe_matchmaking(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMatchmaking">>, Input, Options).
@@ -5472,9 +5736,7 @@ describe_matchmaking(Client, Input, Options)
 -spec describe_matchmaking_configurations(map(), describe_matchmaking_configurations_input()) ->
     {ok, describe_matchmaking_configurations_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, describe_matchmaking_configurations_errors(), tuple()}.
 describe_matchmaking_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_matchmaking_configurations(Client, Input, []).
@@ -5482,9 +5744,7 @@ describe_matchmaking_configurations(Client, Input)
 -spec describe_matchmaking_configurations(map(), describe_matchmaking_configurations_input(), proplists:proplist()) ->
     {ok, describe_matchmaking_configurations_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, describe_matchmaking_configurations_errors(), tuple()}.
 describe_matchmaking_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMatchmakingConfigurations">>, Input, Options).
@@ -5507,10 +5767,7 @@ describe_matchmaking_configurations(Client, Input, Options)
 -spec describe_matchmaking_rule_sets(map(), describe_matchmaking_rule_sets_input()) ->
     {ok, describe_matchmaking_rule_sets_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, describe_matchmaking_rule_sets_errors(), tuple()}.
 describe_matchmaking_rule_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_matchmaking_rule_sets(Client, Input, []).
@@ -5518,10 +5775,7 @@ describe_matchmaking_rule_sets(Client, Input)
 -spec describe_matchmaking_rule_sets(map(), describe_matchmaking_rule_sets_input(), proplists:proplist()) ->
     {ok, describe_matchmaking_rule_sets_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, describe_matchmaking_rule_sets_errors(), tuple()}.
 describe_matchmaking_rule_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMatchmakingRuleSets">>, Input, Options).
@@ -5560,10 +5814,7 @@ describe_matchmaking_rule_sets(Client, Input, Options)
 -spec describe_player_sessions(map(), describe_player_sessions_input()) ->
     {ok, describe_player_sessions_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_player_sessions_errors(), tuple()}.
 describe_player_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_player_sessions(Client, Input, []).
@@ -5571,10 +5822,7 @@ describe_player_sessions(Client, Input)
 -spec describe_player_sessions(map(), describe_player_sessions_input(), proplists:proplist()) ->
     {ok, describe_player_sessions_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_player_sessions_errors(), tuple()}.
 describe_player_sessions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePlayerSessions">>, Input, Options).
@@ -5606,10 +5854,7 @@ describe_player_sessions(Client, Input, Options)
 -spec describe_runtime_configuration(map(), describe_runtime_configuration_input()) ->
     {ok, describe_runtime_configuration_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_runtime_configuration_errors(), tuple()}.
 describe_runtime_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_runtime_configuration(Client, Input, []).
@@ -5617,10 +5862,7 @@ describe_runtime_configuration(Client, Input)
 -spec describe_runtime_configuration(map(), describe_runtime_configuration_input(), proplists:proplist()) ->
     {ok, describe_runtime_configuration_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_runtime_configuration_errors(), tuple()}.
 describe_runtime_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRuntimeConfiguration">>, Input, Options).
@@ -5641,11 +5883,7 @@ describe_runtime_configuration(Client, Input, Options)
 -spec describe_scaling_policies(map(), describe_scaling_policies_input()) ->
     {ok, describe_scaling_policies_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, describe_scaling_policies_errors(), tuple()}.
 describe_scaling_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_policies(Client, Input, []).
@@ -5653,11 +5891,7 @@ describe_scaling_policies(Client, Input)
 -spec describe_scaling_policies(map(), describe_scaling_policies_input(), proplists:proplist()) ->
     {ok, describe_scaling_policies_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, describe_scaling_policies_errors(), tuple()}.
 describe_scaling_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScalingPolicies">>, Input, Options).
@@ -5680,10 +5914,7 @@ describe_scaling_policies(Client, Input, Options)
 -spec describe_script(map(), describe_script_input()) ->
     {ok, describe_script_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_script_errors(), tuple()}.
 describe_script(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_script(Client, Input, []).
@@ -5691,10 +5922,7 @@ describe_script(Client, Input)
 -spec describe_script(map(), describe_script_input(), proplists:proplist()) ->
     {ok, describe_script_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_script_errors(), tuple()}.
 describe_script(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScript">>, Input, Options).
@@ -5713,9 +5941,7 @@ describe_script(Client, Input, Options)
 -spec describe_vpc_peering_authorizations(map(), describe_vpc_peering_authorizations_input()) ->
     {ok, describe_vpc_peering_authorizations_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_vpc_peering_authorizations_errors(), tuple()}.
 describe_vpc_peering_authorizations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_vpc_peering_authorizations(Client, Input, []).
@@ -5723,9 +5949,7 @@ describe_vpc_peering_authorizations(Client, Input)
 -spec describe_vpc_peering_authorizations(map(), describe_vpc_peering_authorizations_input(), proplists:proplist()) ->
     {ok, describe_vpc_peering_authorizations_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_vpc_peering_authorizations_errors(), tuple()}.
 describe_vpc_peering_authorizations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeVpcPeeringAuthorizations">>, Input, Options).
@@ -5752,10 +5976,7 @@ describe_vpc_peering_authorizations(Client, Input, Options)
 -spec describe_vpc_peering_connections(map(), describe_vpc_peering_connections_input()) ->
     {ok, describe_vpc_peering_connections_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_vpc_peering_connections_errors(), tuple()}.
 describe_vpc_peering_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_vpc_peering_connections(Client, Input, []).
@@ -5763,10 +5984,7 @@ describe_vpc_peering_connections(Client, Input)
 -spec describe_vpc_peering_connections(map(), describe_vpc_peering_connections_input(), proplists:proplist()) ->
     {ok, describe_vpc_peering_connections_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_vpc_peering_connections_errors(), tuple()}.
 describe_vpc_peering_connections(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeVpcPeeringConnections">>, Input, Options).
@@ -5806,10 +6024,7 @@ describe_vpc_peering_connections(Client, Input, Options)
 -spec get_compute_access(map(), get_compute_access_input()) ->
     {ok, get_compute_access_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_compute_access_errors(), tuple()}.
 get_compute_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_compute_access(Client, Input, []).
@@ -5817,10 +6032,7 @@ get_compute_access(Client, Input)
 -spec get_compute_access(map(), get_compute_access_input(), proplists:proplist()) ->
     {ok, get_compute_access_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_compute_access_errors(), tuple()}.
 get_compute_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetComputeAccess">>, Input, Options).
@@ -5856,10 +6068,7 @@ get_compute_access(Client, Input, Options)
 -spec get_compute_auth_token(map(), get_compute_auth_token_input()) ->
     {ok, get_compute_auth_token_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_compute_auth_token_errors(), tuple()}.
 get_compute_auth_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_compute_auth_token(Client, Input, []).
@@ -5867,10 +6076,7 @@ get_compute_auth_token(Client, Input)
 -spec get_compute_auth_token(map(), get_compute_auth_token_input(), proplists:proplist()) ->
     {ok, get_compute_auth_token_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_compute_auth_token_errors(), tuple()}.
 get_compute_auth_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetComputeAuthToken">>, Input, Options).
@@ -5894,10 +6100,7 @@ get_compute_auth_token(Client, Input, Options)
 -spec get_game_session_log_url(map(), get_game_session_log_url_input()) ->
     {ok, get_game_session_log_url_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_game_session_log_url_errors(), tuple()}.
 get_game_session_log_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_game_session_log_url(Client, Input, []).
@@ -5905,10 +6108,7 @@ get_game_session_log_url(Client, Input)
 -spec get_game_session_log_url(map(), get_game_session_log_url_input(), proplists:proplist()) ->
     {ok, get_game_session_log_url_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_game_session_log_url_errors(), tuple()}.
 get_game_session_log_url(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetGameSessionLogUrl">>, Input, Options).
@@ -5963,10 +6163,7 @@ get_game_session_log_url(Client, Input, Options)
 -spec get_instance_access(map(), get_instance_access_input()) ->
     {ok, get_instance_access_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_instance_access_errors(), tuple()}.
 get_instance_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instance_access(Client, Input, []).
@@ -5974,10 +6171,7 @@ get_instance_access(Client, Input)
 -spec get_instance_access(map(), get_instance_access_input(), proplists:proplist()) ->
     {ok, get_instance_access_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_instance_access_errors(), tuple()}.
 get_instance_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInstanceAccess">>, Input, Options).
@@ -5998,9 +6192,7 @@ get_instance_access(Client, Input, Options)
 -spec list_aliases(map(), list_aliases_input()) ->
     {ok, list_aliases_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_aliases_errors(), tuple()}.
 list_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_aliases(Client, Input, []).
@@ -6008,9 +6200,7 @@ list_aliases(Client, Input)
 -spec list_aliases(map(), list_aliases_input(), proplists:proplist()) ->
     {ok, list_aliases_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_aliases_errors(), tuple()}.
 list_aliases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAliases">>, Input, Options).
@@ -6037,9 +6227,7 @@ list_aliases(Client, Input, Options)
 -spec list_builds(map(), list_builds_input()) ->
     {ok, list_builds_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_builds_errors(), tuple()}.
 list_builds(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_builds(Client, Input, []).
@@ -6047,9 +6235,7 @@ list_builds(Client, Input)
 -spec list_builds(map(), list_builds_input(), proplists:proplist()) ->
     {ok, list_builds_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_builds_errors(), tuple()}.
 list_builds(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBuilds">>, Input, Options).
@@ -6073,9 +6259,7 @@ list_builds(Client, Input, Options)
 -spec list_compute(map(), list_compute_input()) ->
     {ok, list_compute_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_compute_errors(), tuple()}.
 list_compute(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_compute(Client, Input, []).
@@ -6083,9 +6267,7 @@ list_compute(Client, Input)
 -spec list_compute(map(), list_compute_input(), proplists:proplist()) ->
     {ok, list_compute_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_compute_errors(), tuple()}.
 list_compute(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCompute">>, Input, Options).
@@ -6135,10 +6317,7 @@ list_compute(Client, Input, Options)
 -spec list_fleets(map(), list_fleets_input()) ->
     {ok, list_fleets_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_fleets_errors(), tuple()}.
 list_fleets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_fleets(Client, Input, []).
@@ -6146,10 +6325,7 @@ list_fleets(Client, Input)
 -spec list_fleets(map(), list_fleets_input(), proplists:proplist()) ->
     {ok, list_fleets_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_fleets_errors(), tuple()}.
 list_fleets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFleets">>, Input, Options).
@@ -6158,9 +6334,7 @@ list_fleets(Client, Input, Options)
 -spec list_game_server_groups(map(), list_game_server_groups_input()) ->
     {ok, list_game_server_groups_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_game_server_groups_errors(), tuple()}.
 list_game_server_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_game_server_groups(Client, Input, []).
@@ -6168,9 +6342,7 @@ list_game_server_groups(Client, Input)
 -spec list_game_server_groups(map(), list_game_server_groups_input(), proplists:proplist()) ->
     {ok, list_game_server_groups_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_game_server_groups_errors(), tuple()}.
 list_game_server_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGameServerGroups">>, Input, Options).
@@ -6194,9 +6366,7 @@ list_game_server_groups(Client, Input, Options)
 -spec list_game_servers(map(), list_game_servers_input()) ->
     {ok, list_game_servers_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_game_servers_errors(), tuple()}.
 list_game_servers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_game_servers(Client, Input, []).
@@ -6204,9 +6374,7 @@ list_game_servers(Client, Input)
 -spec list_game_servers(map(), list_game_servers_input(), proplists:proplist()) ->
     {ok, list_game_servers_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_game_servers_errors(), tuple()}.
 list_game_servers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGameServers">>, Input, Options).
@@ -6215,9 +6383,7 @@ list_game_servers(Client, Input, Options)
 -spec list_locations(map(), list_locations_input()) ->
     {ok, list_locations_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_locations_errors(), tuple()}.
 list_locations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_locations(Client, Input, []).
@@ -6225,9 +6391,7 @@ list_locations(Client, Input)
 -spec list_locations(map(), list_locations_input(), proplists:proplist()) ->
     {ok, list_locations_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_locations_errors(), tuple()}.
 list_locations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLocations">>, Input, Options).
@@ -6248,9 +6412,7 @@ list_locations(Client, Input, Options)
 -spec list_scripts(map(), list_scripts_input()) ->
     {ok, list_scripts_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_scripts_errors(), tuple()}.
 list_scripts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_scripts(Client, Input, []).
@@ -6258,9 +6420,7 @@ list_scripts(Client, Input)
 -spec list_scripts(map(), list_scripts_input(), proplists:proplist()) ->
     {ok, list_scripts_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_scripts_errors(), tuple()}.
 list_scripts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListScripts">>, Input, Options).
@@ -6291,10 +6451,7 @@ list_scripts(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -6302,10 +6459,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -6418,10 +6572,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec put_scaling_policy(map(), put_scaling_policy_input()) ->
     {ok, put_scaling_policy_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, put_scaling_policy_errors(), tuple()}.
 put_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_scaling_policy(Client, Input, []).
@@ -6429,10 +6580,7 @@ put_scaling_policy(Client, Input)
 -spec put_scaling_policy(map(), put_scaling_policy_input(), proplists:proplist()) ->
     {ok, put_scaling_policy_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, put_scaling_policy_errors(), tuple()}.
 put_scaling_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutScalingPolicy">>, Input, Options).
@@ -6476,11 +6624,7 @@ put_scaling_policy(Client, Input, Options)
 -spec register_compute(map(), register_compute_input()) ->
     {ok, register_compute_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, register_compute_errors(), tuple()}.
 register_compute(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_compute(Client, Input, []).
@@ -6488,11 +6632,7 @@ register_compute(Client, Input)
 -spec register_compute(map(), register_compute_input(), proplists:proplist()) ->
     {ok, register_compute_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, register_compute_errors(), tuple()}.
 register_compute(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterCompute">>, Input, Options).
@@ -6533,11 +6673,7 @@ register_compute(Client, Input, Options)
 -spec register_game_server(map(), register_game_server_input()) ->
     {ok, register_game_server_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, register_game_server_errors(), tuple()}.
 register_game_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_game_server(Client, Input, []).
@@ -6545,11 +6681,7 @@ register_game_server(Client, Input)
 -spec register_game_server(map(), register_game_server_input(), proplists:proplist()) ->
     {ok, register_game_server_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, register_game_server_errors(), tuple()}.
 register_game_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterGameServer">>, Input, Options).
@@ -6577,10 +6709,7 @@ register_game_server(Client, Input, Options)
 -spec request_upload_credentials(map(), request_upload_credentials_input()) ->
     {ok, request_upload_credentials_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, request_upload_credentials_errors(), tuple()}.
 request_upload_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     request_upload_credentials(Client, Input, []).
@@ -6588,10 +6717,7 @@ request_upload_credentials(Client, Input)
 -spec request_upload_credentials(map(), request_upload_credentials_input(), proplists:proplist()) ->
     {ok, request_upload_credentials_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, request_upload_credentials_errors(), tuple()}.
 request_upload_credentials(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RequestUploadCredentials">>, Input, Options).
@@ -6605,11 +6731,7 @@ request_upload_credentials(Client, Input, Options)
 -spec resolve_alias(map(), resolve_alias_input()) ->
     {ok, resolve_alias_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, terminal_routing_strategy_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, resolve_alias_errors(), tuple()}.
 resolve_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     resolve_alias(Client, Input, []).
@@ -6617,11 +6739,7 @@ resolve_alias(Client, Input)
 -spec resolve_alias(map(), resolve_alias_input(), proplists:proplist()) ->
     {ok, resolve_alias_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, terminal_routing_strategy_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, resolve_alias_errors(), tuple()}.
 resolve_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResolveAlias">>, Input, Options).
@@ -6658,10 +6776,7 @@ resolve_alias(Client, Input, Options)
 -spec resume_game_server_group(map(), resume_game_server_group_input()) ->
     {ok, resume_game_server_group_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, resume_game_server_group_errors(), tuple()}.
 resume_game_server_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     resume_game_server_group(Client, Input, []).
@@ -6669,10 +6784,7 @@ resume_game_server_group(Client, Input)
 -spec resume_game_server_group(map(), resume_game_server_group_input(), proplists:proplist()) ->
     {ok, resume_game_server_group_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, resume_game_server_group_errors(), tuple()}.
 resume_game_server_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResumeGameServerGroup">>, Input, Options).
@@ -6778,12 +6890,7 @@ resume_game_server_group(Client, Input, Options)
 -spec search_game_sessions(map(), search_game_sessions_input()) ->
     {ok, search_game_sessions_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, terminal_routing_strategy_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, search_game_sessions_errors(), tuple()}.
 search_game_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_game_sessions(Client, Input, []).
@@ -6791,12 +6898,7 @@ search_game_sessions(Client, Input)
 -spec search_game_sessions(map(), search_game_sessions_input(), proplists:proplist()) ->
     {ok, search_game_sessions_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, terminal_routing_strategy_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, search_game_sessions_errors(), tuple()}.
 search_game_sessions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SearchGameSessions">>, Input, Options).
@@ -6834,11 +6936,7 @@ search_game_sessions(Client, Input, Options)
 -spec start_fleet_actions(map(), start_fleet_actions_input()) ->
     {ok, start_fleet_actions_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, start_fleet_actions_errors(), tuple()}.
 start_fleet_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_fleet_actions(Client, Input, []).
@@ -6846,11 +6944,7 @@ start_fleet_actions(Client, Input)
 -spec start_fleet_actions(map(), start_fleet_actions_input(), proplists:proplist()) ->
     {ok, start_fleet_actions_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, start_fleet_actions_errors(), tuple()}.
 start_fleet_actions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartFleetActions">>, Input, Options).
@@ -6919,10 +7013,7 @@ start_fleet_actions(Client, Input, Options)
 -spec start_game_session_placement(map(), start_game_session_placement_input()) ->
     {ok, start_game_session_placement_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, start_game_session_placement_errors(), tuple()}.
 start_game_session_placement(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_game_session_placement(Client, Input, []).
@@ -6930,10 +7021,7 @@ start_game_session_placement(Client, Input)
 -spec start_game_session_placement(map(), start_game_session_placement_input(), proplists:proplist()) ->
     {ok, start_game_session_placement_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, start_game_session_placement_errors(), tuple()}.
 start_game_session_placement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartGameSessionPlacement">>, Input, Options).
@@ -7002,10 +7090,7 @@ start_game_session_placement(Client, Input, Options)
 -spec start_match_backfill(map(), start_match_backfill_input()) ->
     {ok, start_match_backfill_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, start_match_backfill_errors(), tuple()}.
 start_match_backfill(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_match_backfill(Client, Input, []).
@@ -7013,10 +7098,7 @@ start_match_backfill(Client, Input)
 -spec start_match_backfill(map(), start_match_backfill_input(), proplists:proplist()) ->
     {ok, start_match_backfill_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, start_match_backfill_errors(), tuple()}.
 start_match_backfill(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMatchBackfill">>, Input, Options).
@@ -7067,10 +7149,7 @@ start_match_backfill(Client, Input, Options)
 -spec start_matchmaking(map(), start_matchmaking_input()) ->
     {ok, start_matchmaking_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, start_matchmaking_errors(), tuple()}.
 start_matchmaking(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_matchmaking(Client, Input, []).
@@ -7078,10 +7157,7 @@ start_matchmaking(Client, Input)
 -spec start_matchmaking(map(), start_matchmaking_input(), proplists:proplist()) ->
     {ok, start_matchmaking_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, start_matchmaking_errors(), tuple()}.
 start_matchmaking(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMatchmaking">>, Input, Options).
@@ -7124,11 +7200,7 @@ start_matchmaking(Client, Input, Options)
 -spec stop_fleet_actions(map(), stop_fleet_actions_input()) ->
     {ok, stop_fleet_actions_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, stop_fleet_actions_errors(), tuple()}.
 stop_fleet_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_fleet_actions(Client, Input, []).
@@ -7136,11 +7208,7 @@ stop_fleet_actions(Client, Input)
 -spec stop_fleet_actions(map(), stop_fleet_actions_input(), proplists:proplist()) ->
     {ok, stop_fleet_actions_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, stop_fleet_actions_errors(), tuple()}.
 stop_fleet_actions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopFleetActions">>, Input, Options).
@@ -7154,10 +7222,7 @@ stop_fleet_actions(Client, Input, Options)
 -spec stop_game_session_placement(map(), stop_game_session_placement_input()) ->
     {ok, stop_game_session_placement_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, stop_game_session_placement_errors(), tuple()}.
 stop_game_session_placement(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_game_session_placement(Client, Input, []).
@@ -7165,10 +7230,7 @@ stop_game_session_placement(Client, Input)
 -spec stop_game_session_placement(map(), stop_game_session_placement_input(), proplists:proplist()) ->
     {ok, stop_game_session_placement_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, stop_game_session_placement_errors(), tuple()}.
 stop_game_session_placement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopGameSessionPlacement">>, Input, Options).
@@ -7201,10 +7263,7 @@ stop_game_session_placement(Client, Input, Options)
 -spec stop_matchmaking(map(), stop_matchmaking_input()) ->
     {ok, stop_matchmaking_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, stop_matchmaking_errors(), tuple()}.
 stop_matchmaking(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_matchmaking(Client, Input, []).
@@ -7212,10 +7271,7 @@ stop_matchmaking(Client, Input)
 -spec stop_matchmaking(map(), stop_matchmaking_input(), proplists:proplist()) ->
     {ok, stop_matchmaking_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, stop_matchmaking_errors(), tuple()}.
 stop_matchmaking(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopMatchmaking">>, Input, Options).
@@ -7258,10 +7314,7 @@ stop_matchmaking(Client, Input, Options)
 -spec suspend_game_server_group(map(), suspend_game_server_group_input()) ->
     {ok, suspend_game_server_group_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, suspend_game_server_group_errors(), tuple()}.
 suspend_game_server_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     suspend_game_server_group(Client, Input, []).
@@ -7269,10 +7322,7 @@ suspend_game_server_group(Client, Input)
 -spec suspend_game_server_group(map(), suspend_game_server_group_input(), proplists:proplist()) ->
     {ok, suspend_game_server_group_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, suspend_game_server_group_errors(), tuple()}.
 suspend_game_server_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SuspendGameServerGroup">>, Input, Options).
@@ -7308,10 +7358,7 @@ suspend_game_server_group(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -7319,10 +7366,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -7357,10 +7401,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -7368,10 +7409,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tagging_failed_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -7392,10 +7430,7 @@ untag_resource(Client, Input, Options)
 -spec update_alias(map(), update_alias_input()) ->
     {ok, update_alias_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_alias_errors(), tuple()}.
 update_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_alias(Client, Input, []).
@@ -7403,10 +7438,7 @@ update_alias(Client, Input)
 -spec update_alias(map(), update_alias_input(), proplists:proplist()) ->
     {ok, update_alias_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_alias_errors(), tuple()}.
 update_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAlias">>, Input, Options).
@@ -7430,10 +7462,7 @@ update_alias(Client, Input, Options)
 -spec update_build(map(), update_build_input()) ->
     {ok, update_build_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_build_errors(), tuple()}.
 update_build(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_build(Client, Input, []).
@@ -7441,10 +7470,7 @@ update_build(Client, Input)
 -spec update_build(map(), update_build_input(), proplists:proplist()) ->
     {ok, update_build_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_build_errors(), tuple()}.
 update_build(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateBuild">>, Input, Options).
@@ -7467,13 +7493,7 @@ update_build(Client, Input, Options)
 -spec update_fleet_attributes(map(), update_fleet_attributes_input()) ->
     {ok, update_fleet_attributes_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_fleet_status_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_fleet_attributes_errors(), tuple()}.
 update_fleet_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_fleet_attributes(Client, Input, []).
@@ -7481,13 +7501,7 @@ update_fleet_attributes(Client, Input)
 -spec update_fleet_attributes(map(), update_fleet_attributes_input(), proplists:proplist()) ->
     {ok, update_fleet_attributes_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_fleet_status_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_fleet_attributes_errors(), tuple()}.
 update_fleet_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFleetAttributes">>, Input, Options).
@@ -7555,14 +7569,7 @@ update_fleet_attributes(Client, Input, Options)
 -spec update_fleet_capacity(map(), update_fleet_capacity_input()) ->
     {ok, update_fleet_capacity_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_fleet_status_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, update_fleet_capacity_errors(), tuple()}.
 update_fleet_capacity(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_fleet_capacity(Client, Input, []).
@@ -7570,14 +7577,7 @@ update_fleet_capacity(Client, Input)
 -spec update_fleet_capacity(map(), update_fleet_capacity_input(), proplists:proplist()) ->
     {ok, update_fleet_capacity_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_fleet_status_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, update_fleet_capacity_errors(), tuple()}.
 update_fleet_capacity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFleetCapacity">>, Input, Options).
@@ -7609,13 +7609,7 @@ update_fleet_capacity(Client, Input, Options)
 -spec update_fleet_port_settings(map(), update_fleet_port_settings_input()) ->
     {ok, update_fleet_port_settings_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_fleet_status_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_fleet_port_settings_errors(), tuple()}.
 update_fleet_port_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_fleet_port_settings(Client, Input, []).
@@ -7623,13 +7617,7 @@ update_fleet_port_settings(Client, Input)
 -spec update_fleet_port_settings(map(), update_fleet_port_settings_input(), proplists:proplist()) ->
     {ok, update_fleet_port_settings_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_fleet_status_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_fleet_port_settings_errors(), tuple()}.
 update_fleet_port_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFleetPortSettings">>, Input, Options).
@@ -7680,10 +7668,7 @@ update_fleet_port_settings(Client, Input, Options)
 -spec update_game_server(map(), update_game_server_input()) ->
     {ok, update_game_server_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_game_server_errors(), tuple()}.
 update_game_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_game_server(Client, Input, []).
@@ -7691,10 +7676,7 @@ update_game_server(Client, Input)
 -spec update_game_server(map(), update_game_server_input(), proplists:proplist()) ->
     {ok, update_game_server_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_game_server_errors(), tuple()}.
 update_game_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGameServer">>, Input, Options).
@@ -7726,10 +7708,7 @@ update_game_server(Client, Input, Options)
 -spec update_game_server_group(map(), update_game_server_group_input()) ->
     {ok, update_game_server_group_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_game_server_group_errors(), tuple()}.
 update_game_server_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_game_server_group(Client, Input, []).
@@ -7737,10 +7716,7 @@ update_game_server_group(Client, Input)
 -spec update_game_server_group(map(), update_game_server_group_input(), proplists:proplist()) ->
     {ok, update_game_server_group_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_game_server_group_errors(), tuple()}.
 update_game_server_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGameServerGroup">>, Input, Options).
@@ -7758,12 +7734,7 @@ update_game_server_group(Client, Input, Options)
 -spec update_game_session(map(), update_game_session_input()) ->
     {ok, update_game_session_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_game_session_status_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_game_session_errors(), tuple()}.
 update_game_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_game_session(Client, Input, []).
@@ -7771,12 +7742,7 @@ update_game_session(Client, Input)
 -spec update_game_session(map(), update_game_session_input(), proplists:proplist()) ->
     {ok, update_game_session_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_game_session_status_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_game_session_errors(), tuple()}.
 update_game_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGameSession">>, Input, Options).
@@ -7797,10 +7763,7 @@ update_game_session(Client, Input, Options)
 -spec update_game_session_queue(map(), update_game_session_queue_input()) ->
     {ok, update_game_session_queue_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_game_session_queue_errors(), tuple()}.
 update_game_session_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_game_session_queue(Client, Input, []).
@@ -7808,10 +7771,7 @@ update_game_session_queue(Client, Input)
 -spec update_game_session_queue(map(), update_game_session_queue_input(), proplists:proplist()) ->
     {ok, update_game_session_queue_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_game_session_queue_errors(), tuple()}.
 update_game_session_queue(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGameSessionQueue">>, Input, Options).
@@ -7831,10 +7791,7 @@ update_game_session_queue(Client, Input, Options)
 -spec update_matchmaking_configuration(map(), update_matchmaking_configuration_input()) ->
     {ok, update_matchmaking_configuration_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, update_matchmaking_configuration_errors(), tuple()}.
 update_matchmaking_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_matchmaking_configuration(Client, Input, []).
@@ -7842,10 +7799,7 @@ update_matchmaking_configuration(Client, Input)
 -spec update_matchmaking_configuration(map(), update_matchmaking_configuration_input(), proplists:proplist()) ->
     {ok, update_matchmaking_configuration_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, update_matchmaking_configuration_errors(), tuple()}.
 update_matchmaking_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMatchmakingConfiguration">>, Input, Options).
@@ -7881,11 +7835,7 @@ update_matchmaking_configuration(Client, Input, Options)
 -spec update_runtime_configuration(map(), update_runtime_configuration_input()) ->
     {ok, update_runtime_configuration_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_fleet_status_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_runtime_configuration_errors(), tuple()}.
 update_runtime_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_runtime_configuration(Client, Input, []).
@@ -7893,11 +7843,7 @@ update_runtime_configuration(Client, Input)
 -spec update_runtime_configuration(map(), update_runtime_configuration_input(), proplists:proplist()) ->
     {ok, update_runtime_configuration_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_fleet_status_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_runtime_configuration_errors(), tuple()}.
 update_runtime_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRuntimeConfiguration">>, Input, Options).
@@ -7934,10 +7880,7 @@ update_runtime_configuration(Client, Input, Options)
 -spec update_script(map(), update_script_input()) ->
     {ok, update_script_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_script_errors(), tuple()}.
 update_script(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_script(Client, Input, []).
@@ -7945,10 +7888,7 @@ update_script(Client, Input)
 -spec update_script(map(), update_script_input(), proplists:proplist()) ->
     {ok, update_script_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_script_errors(), tuple()}.
 update_script(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateScript">>, Input, Options).
@@ -7968,9 +7908,7 @@ update_script(Client, Input, Options)
 -spec validate_matchmaking_rule_set(map(), validate_matchmaking_rule_set_input()) ->
     {ok, validate_matchmaking_rule_set_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, validate_matchmaking_rule_set_errors(), tuple()}.
 validate_matchmaking_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     validate_matchmaking_rule_set(Client, Input, []).
@@ -7978,9 +7916,7 @@ validate_matchmaking_rule_set(Client, Input)
 -spec validate_matchmaking_rule_set(map(), validate_matchmaking_rule_set_input(), proplists:proplist()) ->
     {ok, validate_matchmaking_rule_set_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, unsupported_region_exception(), tuple()}.
+    {error, validate_matchmaking_rule_set_errors(), tuple()}.
 validate_matchmaking_rule_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ValidateMatchmakingRuleSet">>, Input, Options).

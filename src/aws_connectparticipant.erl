@@ -54,9 +54,11 @@
 %%   <<"Version">> => integer()
 %% }
 -type view() :: #{binary() => any()}.
+
 %% Example:
 %% disconnect_participant_response() :: #{}
 -type disconnect_participant_response() :: #{}.
+
 
 %% Example:
 %% receipt() :: #{
@@ -66,6 +68,7 @@
 %% }
 -type receipt() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_position() :: #{
 %%   <<"AbsoluteTime">> => string(),
@@ -74,12 +77,14 @@
 %% }
 -type start_position() :: #{binary() => any()}.
 
+
 %% Example:
 %% websocket() :: #{
 %%   <<"ConnectionExpiry">> => string(),
 %%   <<"Url">> => string()
 %% }
 -type websocket() :: #{binary() => any()}.
+
 
 %% Example:
 %% complete_attachment_upload_request() :: #{
@@ -88,6 +93,7 @@
 %%   <<"ConnectionToken">> := string()
 %% }
 -type complete_attachment_upload_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% send_event_request() :: #{
@@ -98,11 +104,13 @@
 %% }
 -type send_event_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_view_response() :: #{
 %%   <<"View">> => view()
 %% }
 -type describe_view_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% item() :: #{
@@ -121,12 +129,14 @@
 %% }
 -type item() :: #{binary() => any()}.
 
+
 %% Example:
 %% disconnect_participant_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"ConnectionToken">> := string()
 %% }
 -type disconnect_participant_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% view_content() :: #{
@@ -136,6 +146,7 @@
 %% }
 -type view_content() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_participant_connection_request() :: #{
 %%   <<"ConnectParticipant">> => boolean(),
@@ -144,11 +155,13 @@
 %% }
 -type create_participant_connection_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -158,6 +171,7 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% send_event_response() :: #{
 %%   <<"AbsoluteTime">> => string(),
@@ -165,11 +179,13 @@
 %% }
 -type send_event_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% attachment_item() :: #{
@@ -180,11 +196,13 @@
 %% }
 -type attachment_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_view_request() :: #{
 %%   <<"ConnectionToken">> := string()
 %% }
 -type describe_view_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_attachment_response() :: #{
@@ -193,6 +211,7 @@
 %% }
 -type get_attachment_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% message_metadata() :: #{
 %%   <<"MessageId">> => string(),
@@ -200,12 +219,14 @@
 %% }
 -type message_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_attachment_upload_response() :: #{
 %%   <<"AttachmentId">> => string(),
 %%   <<"UploadMetadata">> => upload_metadata()
 %% }
 -type start_attachment_upload_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_transcript_request() :: #{
@@ -219,12 +240,14 @@
 %% }
 -type get_transcript_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_attachment_request() :: #{
 %%   <<"AttachmentId">> := string(),
 %%   <<"ConnectionToken">> := string()
 %% }
 -type get_attachment_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% connection_credentials() :: #{
@@ -233,11 +256,13 @@
 %% }
 -type connection_credentials() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_attachment_upload_request() :: #{
@@ -249,14 +274,17 @@
 %% }
 -type start_attachment_upload_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 %% Example:
 %% complete_attachment_upload_response() :: #{}
 -type complete_attachment_upload_response() :: #{}.
+
 
 %% Example:
 %% validation_exception() :: #{
@@ -264,11 +292,13 @@
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_transcript_response() :: #{
@@ -277,6 +307,7 @@
 %%   <<"Transcript">> => list(item()())
 %% }
 -type get_transcript_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% send_message_request() :: #{
@@ -287,12 +318,14 @@
 %% }
 -type send_message_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% send_message_response() :: #{
 %%   <<"AbsoluteTime">> => string(),
 %%   <<"Id">> => string()
 %% }
 -type send_message_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% upload_metadata() :: #{
@@ -302,12 +335,72 @@
 %% }
 -type upload_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_participant_connection_response() :: #{
 %%   <<"ConnectionCredentials">> => connection_credentials(),
 %%   <<"Websocket">> => websocket()
 %% }
 -type create_participant_connection_response() :: #{binary() => any()}.
+
+-type complete_attachment_upload_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_participant_connection_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type describe_view_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type disconnect_participant_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type get_attachment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type get_transcript_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type send_event_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type send_message_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type start_attachment_upload_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
 
 %%====================================================================
 %% API
@@ -329,24 +422,14 @@
 -spec complete_attachment_upload(map(), complete_attachment_upload_request()) ->
     {ok, complete_attachment_upload_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, complete_attachment_upload_errors(), tuple()}.
 complete_attachment_upload(Client, Input) ->
     complete_attachment_upload(Client, Input, []).
 
 -spec complete_attachment_upload(map(), complete_attachment_upload_request(), proplists:proplist()) ->
     {ok, complete_attachment_upload_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, complete_attachment_upload_errors(), tuple()}.
 complete_attachment_upload(Client, Input0, Options0) ->
     Method = post,
     Path = ["/participant/complete-attachment-upload"],
@@ -423,20 +506,14 @@ complete_attachment_upload(Client, Input0, Options0) ->
 -spec create_participant_connection(map(), create_participant_connection_request()) ->
     {ok, create_participant_connection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_participant_connection_errors(), tuple()}.
 create_participant_connection(Client, Input) ->
     create_participant_connection(Client, Input, []).
 
 -spec create_participant_connection(map(), create_participant_connection_request(), proplists:proplist()) ->
     {ok, create_participant_connection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_participant_connection_errors(), tuple()}.
 create_participant_connection(Client, Input0, Options0) ->
     Method = post,
     Path = ["/participant/connection"],
@@ -465,11 +542,7 @@ create_participant_connection(Client, Input0, Options0) ->
 -spec describe_view(map(), binary() | list(), binary() | list()) ->
     {ok, describe_view_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_view_errors(), tuple()}.
 describe_view(Client, ViewToken, ConnectionToken)
   when is_map(Client) ->
     describe_view(Client, ViewToken, ConnectionToken, #{}, #{}).
@@ -477,11 +550,7 @@ describe_view(Client, ViewToken, ConnectionToken)
 -spec describe_view(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_view_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_view_errors(), tuple()}.
 describe_view(Client, ViewToken, ConnectionToken, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_view(Client, ViewToken, ConnectionToken, QueryMap, HeadersMap, []).
@@ -489,11 +558,7 @@ describe_view(Client, ViewToken, ConnectionToken, QueryMap, HeadersMap)
 -spec describe_view(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_view_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_view_errors(), tuple()}.
 describe_view(Client, ViewToken, ConnectionToken, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/participant/views/", aws_util:encode_uri(ViewToken), ""],
@@ -525,20 +590,14 @@ describe_view(Client, ViewToken, ConnectionToken, QueryMap, HeadersMap, Options0
 -spec disconnect_participant(map(), disconnect_participant_request()) ->
     {ok, disconnect_participant_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disconnect_participant_errors(), tuple()}.
 disconnect_participant(Client, Input) ->
     disconnect_participant(Client, Input, []).
 
 -spec disconnect_participant(map(), disconnect_participant_request(), proplists:proplist()) ->
     {ok, disconnect_participant_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disconnect_participant_errors(), tuple()}.
 disconnect_participant(Client, Input0, Options0) ->
     Method = post,
     Path = ["/participant/disconnect"],
@@ -577,20 +636,14 @@ disconnect_participant(Client, Input0, Options0) ->
 -spec get_attachment(map(), get_attachment_request()) ->
     {ok, get_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_attachment_errors(), tuple()}.
 get_attachment(Client, Input) ->
     get_attachment(Client, Input, []).
 
 -spec get_attachment(map(), get_attachment_request(), proplists:proplist()) ->
     {ok, get_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_attachment_errors(), tuple()}.
 get_attachment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/participant/attachment"],
@@ -649,20 +702,14 @@ get_attachment(Client, Input0, Options0) ->
 -spec get_transcript(map(), get_transcript_request()) ->
     {ok, get_transcript_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_transcript_errors(), tuple()}.
 get_transcript(Client, Input) ->
     get_transcript(Client, Input, []).
 
 -spec get_transcript(map(), get_transcript_request(), proplists:proplist()) ->
     {ok, get_transcript_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_transcript_errors(), tuple()}.
 get_transcript(Client, Input0, Options0) ->
     Method = post,
     Path = ["/participant/transcript"],
@@ -712,22 +759,14 @@ get_transcript(Client, Input0, Options0) ->
 -spec send_event(map(), send_event_request()) ->
     {ok, send_event_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, send_event_errors(), tuple()}.
 send_event(Client, Input) ->
     send_event(Client, Input, []).
 
 -spec send_event(map(), send_event_request(), proplists:proplist()) ->
     {ok, send_event_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, send_event_errors(), tuple()}.
 send_event(Client, Input0, Options0) ->
     Method = post,
     Path = ["/participant/event"],
@@ -763,20 +802,14 @@ send_event(Client, Input0, Options0) ->
 -spec send_message(map(), send_message_request()) ->
     {ok, send_message_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, send_message_errors(), tuple()}.
 send_message(Client, Input) ->
     send_message(Client, Input, []).
 
 -spec send_message(map(), send_message_request(), proplists:proplist()) ->
     {ok, send_message_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, send_message_errors(), tuple()}.
 send_message(Client, Input0, Options0) ->
     Method = post,
     Path = ["/participant/message"],
@@ -814,22 +847,14 @@ send_message(Client, Input0, Options0) ->
 -spec start_attachment_upload(map(), start_attachment_upload_request()) ->
     {ok, start_attachment_upload_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_attachment_upload_errors(), tuple()}.
 start_attachment_upload(Client, Input) ->
     start_attachment_upload(Client, Input, []).
 
 -spec start_attachment_upload(map(), start_attachment_upload_request(), proplists:proplist()) ->
     {ok, start_attachment_upload_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_attachment_upload_errors(), tuple()}.
 start_attachment_upload(Client, Input0, Options0) ->
     Method = post,
     Path = ["/participant/start-attachment-upload"],

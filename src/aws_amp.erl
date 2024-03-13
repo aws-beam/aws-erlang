@@ -106,6 +106,7 @@
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_alert_manager_definition_request() :: #{
 %%   <<"clientToken">> => string(),
@@ -113,15 +114,18 @@
 %% }
 -type put_alert_manager_definition_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_rule_groups_namespaces_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"ruleGroupsNamespaces">> => list(rule_groups_namespace_summary()())
 %% }
 -type list_rule_groups_namespaces_response() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% list_scrapers_request() :: #{
@@ -131,12 +135,14 @@
 %% }
 -type list_scrapers_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% rule_groups_namespace_status() :: #{
 %%   <<"statusCode">> => string(),
 %%   <<"statusReason">> => [string()]
 %% }
 -type rule_groups_namespace_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% rule_groups_namespace_description() :: #{
@@ -150,17 +156,20 @@
 %% }
 -type rule_groups_namespace_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% workspace_status() :: #{
 %%   <<"statusCode">> => string()
 %% }
 -type workspace_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% scraper_status() :: #{
 %%   <<"statusCode">> => string()
 %% }
 -type scraper_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% workspace_summary() :: #{
@@ -174,6 +183,7 @@
 %% }
 -type workspace_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_scraper_response() :: #{
 %%   <<"arn">> => string(),
@@ -182,6 +192,7 @@
 %%   <<"tags">> => map()
 %% }
 -type create_scraper_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% logging_configuration_metadata() :: #{
@@ -193,12 +204,14 @@
 %% }
 -type logging_configuration_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_logging_configuration_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"logGroupArn">> => string()
 %% }
 -type update_logging_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_rule_groups_namespace_response() :: #{
@@ -209,11 +222,13 @@
 %% }
 -type create_rule_groups_namespace_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_alert_manager_definition_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
 -type delete_alert_manager_definition_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_logging_configuration_request() :: #{
@@ -222,17 +237,20 @@
 %% }
 -type create_logging_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_rule_groups_namespace_response() :: #{
 %%   <<"ruleGroupsNamespace">> => rule_groups_namespace_description()
 %% }
 -type describe_rule_groups_namespace_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_rule_groups_namespace_response() :: #{
@@ -243,6 +261,7 @@
 %% }
 -type put_rule_groups_namespace_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_workspace_alias_request() :: #{
 %%   <<"alias">> => string(),
@@ -250,23 +269,28 @@
 %% }
 -type update_workspace_alias_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_workspace_response() :: #{
 %%   <<"workspace">> => workspace_description()
 %% }
 -type describe_workspace_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_default_scraper_configuration_request() :: #{}
 -type get_default_scraper_configuration_request() :: #{}.
+
 
 %% Example:
 %% delete_rule_groups_namespace_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
 -type delete_rule_groups_namespace_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_rule_groups_namespace_request() :: #{}
 -type describe_rule_groups_namespace_request() :: #{}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -276,11 +300,13 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_logging_configuration_response() :: #{
 %%   <<"status">> => logging_configuration_status()
 %% }
 -type create_logging_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -289,9 +315,11 @@
 %%   <<"resourceType">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 %% Example:
 %% describe_logging_configuration_request() :: #{}
 -type describe_logging_configuration_request() :: #{}.
+
 
 %% Example:
 %% logging_configuration_status() :: #{
@@ -299,6 +327,7 @@
 %%   <<"statusReason">> => [string()]
 %% }
 -type logging_configuration_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
@@ -310,17 +339,20 @@
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_scraper_response() :: #{
 %%   <<"scraper">> => scraper_description()
 %% }
 -type describe_scraper_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_scraper_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
 -type delete_scraper_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% eks_configuration() :: #{
@@ -329,15 +361,18 @@
 %%   <<"subnetIds">> => list(string()())
 %% }
 -type eks_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% describe_workspace_request() :: #{}
 -type describe_workspace_request() :: #{}.
+
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% validation_exception_field() :: #{
@@ -346,11 +381,13 @@
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_workspace_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
 -type delete_workspace_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% rule_groups_namespace_summary() :: #{
@@ -363,6 +400,7 @@
 %% }
 -type rule_groups_namespace_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_rule_groups_namespace_request() :: #{
 %%   <<"clientToken">> => string(),
@@ -372,12 +410,14 @@
 %% }
 -type create_rule_groups_namespace_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_alert_manager_definition_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"data">> => binary()
 %% }
 -type create_alert_manager_definition_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% workspace_description() :: #{
@@ -392,12 +432,14 @@
 %% }
 -type workspace_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => [string()],
 %%   <<"retryAfterSeconds">> => [integer()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_workspace_response() :: #{
@@ -409,6 +451,7 @@
 %% }
 -type create_workspace_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_workspaces_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -416,11 +459,13 @@
 %% }
 -type list_workspaces_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_default_scraper_configuration_response() :: #{
 %%   <<"configuration">> => [binary()]
 %% }
 -type get_default_scraper_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% scraper_description() :: #{
@@ -439,20 +484,24 @@
 %% }
 -type scraper_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% put_alert_manager_definition_response() :: #{
 %%   <<"status">> => alert_manager_definition_status()
 %% }
 -type put_alert_manager_definition_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% alert_manager_definition_description() :: #{
@@ -463,12 +512,14 @@
 %% }
 -type alert_manager_definition_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_scraper_response() :: #{
 %%   <<"scraperId">> => string(),
 %%   <<"status">> => scraper_status()
 %% }
 -type delete_scraper_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% validation_exception() :: #{
@@ -477,9 +528,11 @@
 %%   <<"reason">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% list_workspaces_request() :: #{
@@ -488,6 +541,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_workspaces_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% throttling_exception() :: #{
@@ -498,17 +552,20 @@
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_logging_configuration_response() :: #{
 %%   <<"loggingConfiguration">> => logging_configuration_metadata()
 %% }
 -type describe_logging_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% amp_configuration() :: #{
 %%   <<"workspaceArn">> => string()
 %% }
 -type amp_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_scraper_request() :: #{
@@ -521,29 +578,35 @@
 %% }
 -type create_scraper_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_alert_manager_definition_response() :: #{
 %%   <<"status">> => alert_manager_definition_status()
 %% }
 -type create_alert_manager_definition_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_alert_manager_definition_request() :: #{}
 -type describe_alert_manager_definition_request() :: #{}.
+
 
 %% Example:
 %% describe_alert_manager_definition_response() :: #{
 %%   <<"alertManagerDefinition">> => alert_manager_definition_description()
 %% }
 -type describe_alert_manager_definition_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_scraper_request() :: #{}
 -type describe_scraper_request() :: #{}.
+
 
 %% Example:
 %% delete_logging_configuration_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
 -type delete_logging_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_rule_groups_namespace_request() :: #{
@@ -552,6 +615,7 @@
 %% }
 -type put_rule_groups_namespace_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_scrapers_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -559,11 +623,13 @@
 %% }
 -type list_scrapers_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_logging_configuration_response() :: #{
 %%   <<"status">> => logging_configuration_status()
 %% }
 -type update_logging_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_rule_groups_namespaces_request() :: #{
@@ -573,12 +639,14 @@
 %% }
 -type list_rule_groups_namespaces_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% alert_manager_definition_status() :: #{
 %%   <<"statusCode">> => string(),
 %%   <<"statusReason">> => [string()]
 %% }
 -type alert_manager_definition_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_workspace_request() :: #{
@@ -588,6 +656,7 @@
 %%   <<"tags">> => map()
 %% }
 -type create_workspace_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% scraper_summary() :: #{
@@ -605,6 +674,199 @@
 %% }
 -type scraper_summary() :: #{binary() => any()}.
 
+-type create_alert_manager_definition_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_logging_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_rule_groups_namespace_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_scraper_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_workspace_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_alert_manager_definition_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_logging_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_rule_groups_namespace_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_scraper_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_workspace_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_alert_manager_definition_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_logging_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_rule_groups_namespace_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_scraper_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_workspace_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_default_scraper_configuration_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_rule_groups_namespaces_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_scrapers_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_workspaces_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type put_alert_manager_definition_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type put_rule_groups_namespace_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_logging_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_workspace_alias_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -619,26 +881,14 @@
 -spec create_alert_manager_definition(map(), binary() | list(), create_alert_manager_definition_request()) ->
     {ok, create_alert_manager_definition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_alert_manager_definition_errors(), tuple()}.
 create_alert_manager_definition(Client, WorkspaceId, Input) ->
     create_alert_manager_definition(Client, WorkspaceId, Input, []).
 
 -spec create_alert_manager_definition(map(), binary() | list(), create_alert_manager_definition_request(), proplists:proplist()) ->
     {ok, create_alert_manager_definition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_alert_manager_definition_errors(), tuple()}.
 create_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/alertmanager/definition"],
@@ -670,20 +920,14 @@ create_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
 -spec create_logging_configuration(map(), binary() | list(), create_logging_configuration_request()) ->
     {ok, create_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_logging_configuration_errors(), tuple()}.
 create_logging_configuration(Client, WorkspaceId, Input) ->
     create_logging_configuration(Client, WorkspaceId, Input, []).
 
 -spec create_logging_configuration(map(), binary() | list(), create_logging_configuration_request(), proplists:proplist()) ->
     {ok, create_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_logging_configuration_errors(), tuple()}.
 create_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/logging"],
@@ -719,26 +963,14 @@ create_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
 -spec create_rule_groups_namespace(map(), binary() | list(), create_rule_groups_namespace_request()) ->
     {ok, create_rule_groups_namespace_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_rule_groups_namespace_errors(), tuple()}.
 create_rule_groups_namespace(Client, WorkspaceId, Input) ->
     create_rule_groups_namespace(Client, WorkspaceId, Input, []).
 
 -spec create_rule_groups_namespace(map(), binary() | list(), create_rule_groups_namespace_request(), proplists:proplist()) ->
     {ok, create_rule_groups_namespace_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_rule_groups_namespace_errors(), tuple()}.
 create_rule_groups_namespace(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/rulegroupsnamespaces"],
@@ -799,26 +1031,14 @@ create_rule_groups_namespace(Client, WorkspaceId, Input0, Options0) ->
 -spec create_scraper(map(), create_scraper_request()) ->
     {ok, create_scraper_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_scraper_errors(), tuple()}.
 create_scraper(Client, Input) ->
     create_scraper(Client, Input, []).
 
 -spec create_scraper(map(), create_scraper_request(), proplists:proplist()) ->
     {ok, create_scraper_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_scraper_errors(), tuple()}.
 create_scraper(Client, Input0, Options0) ->
     Method = post,
     Path = ["/scrapers"],
@@ -850,24 +1070,14 @@ create_scraper(Client, Input0, Options0) ->
 -spec create_workspace(map(), create_workspace_request()) ->
     {ok, create_workspace_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_workspace_errors(), tuple()}.
 create_workspace(Client, Input) ->
     create_workspace(Client, Input, []).
 
 -spec create_workspace(map(), create_workspace_request(), proplists:proplist()) ->
     {ok, create_workspace_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_workspace_errors(), tuple()}.
 create_workspace(Client, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces"],
@@ -894,24 +1104,14 @@ create_workspace(Client, Input0, Options0) ->
 -spec delete_alert_manager_definition(map(), binary() | list(), delete_alert_manager_definition_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_alert_manager_definition_errors(), tuple()}.
 delete_alert_manager_definition(Client, WorkspaceId, Input) ->
     delete_alert_manager_definition(Client, WorkspaceId, Input, []).
 
 -spec delete_alert_manager_definition(map(), binary() | list(), delete_alert_manager_definition_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_alert_manager_definition_errors(), tuple()}.
 delete_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
     Method = delete,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/alertmanager/definition"],
@@ -939,22 +1139,14 @@ delete_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
 -spec delete_logging_configuration(map(), binary() | list(), delete_logging_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_logging_configuration_errors(), tuple()}.
 delete_logging_configuration(Client, WorkspaceId, Input) ->
     delete_logging_configuration(Client, WorkspaceId, Input, []).
 
 -spec delete_logging_configuration(map(), binary() | list(), delete_logging_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_logging_configuration_errors(), tuple()}.
 delete_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
     Method = delete,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/logging"],
@@ -983,24 +1175,14 @@ delete_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
 -spec delete_rule_groups_namespace(map(), binary() | list(), binary() | list(), delete_rule_groups_namespace_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_rule_groups_namespace_errors(), tuple()}.
 delete_rule_groups_namespace(Client, Name, WorkspaceId, Input) ->
     delete_rule_groups_namespace(Client, Name, WorkspaceId, Input, []).
 
 -spec delete_rule_groups_namespace(map(), binary() | list(), binary() | list(), delete_rule_groups_namespace_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_rule_groups_namespace_errors(), tuple()}.
 delete_rule_groups_namespace(Client, Name, WorkspaceId, Input0, Options0) ->
     Method = delete,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/rulegroupsnamespaces/", aws_util:encode_uri(Name), ""],
@@ -1030,24 +1212,14 @@ delete_rule_groups_namespace(Client, Name, WorkspaceId, Input0, Options0) ->
 -spec delete_scraper(map(), binary() | list(), delete_scraper_request()) ->
     {ok, delete_scraper_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_scraper_errors(), tuple()}.
 delete_scraper(Client, ScraperId, Input) ->
     delete_scraper(Client, ScraperId, Input, []).
 
 -spec delete_scraper(map(), binary() | list(), delete_scraper_request(), proplists:proplist()) ->
     {ok, delete_scraper_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_scraper_errors(), tuple()}.
 delete_scraper(Client, ScraperId, Input0, Options0) ->
     Method = delete,
     Path = ["/scrapers/", aws_util:encode_uri(ScraperId), ""],
@@ -1079,24 +1251,14 @@ delete_scraper(Client, ScraperId, Input0, Options0) ->
 -spec delete_workspace(map(), binary() | list(), delete_workspace_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_workspace_errors(), tuple()}.
 delete_workspace(Client, WorkspaceId, Input) ->
     delete_workspace(Client, WorkspaceId, Input, []).
 
 -spec delete_workspace(map(), binary() | list(), delete_workspace_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_workspace_errors(), tuple()}.
 delete_workspace(Client, WorkspaceId, Input0, Options0) ->
     Method = delete,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), ""],
@@ -1126,11 +1288,7 @@ delete_workspace(Client, WorkspaceId, Input0, Options0) ->
 -spec describe_alert_manager_definition(map(), binary() | list()) ->
     {ok, describe_alert_manager_definition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_alert_manager_definition_errors(), tuple()}.
 describe_alert_manager_definition(Client, WorkspaceId)
   when is_map(Client) ->
     describe_alert_manager_definition(Client, WorkspaceId, #{}, #{}).
@@ -1138,11 +1296,7 @@ describe_alert_manager_definition(Client, WorkspaceId)
 -spec describe_alert_manager_definition(map(), binary() | list(), map(), map()) ->
     {ok, describe_alert_manager_definition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_alert_manager_definition_errors(), tuple()}.
 describe_alert_manager_definition(Client, WorkspaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_alert_manager_definition(Client, WorkspaceId, QueryMap, HeadersMap, []).
@@ -1150,11 +1304,7 @@ describe_alert_manager_definition(Client, WorkspaceId, QueryMap, HeadersMap)
 -spec describe_alert_manager_definition(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_alert_manager_definition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_alert_manager_definition_errors(), tuple()}.
 describe_alert_manager_definition(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/alertmanager/definition"],
@@ -1177,10 +1327,7 @@ describe_alert_manager_definition(Client, WorkspaceId, QueryMap, HeadersMap, Opt
 -spec describe_logging_configuration(map(), binary() | list()) ->
     {ok, describe_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_logging_configuration_errors(), tuple()}.
 describe_logging_configuration(Client, WorkspaceId)
   when is_map(Client) ->
     describe_logging_configuration(Client, WorkspaceId, #{}, #{}).
@@ -1188,10 +1335,7 @@ describe_logging_configuration(Client, WorkspaceId)
 -spec describe_logging_configuration(map(), binary() | list(), map(), map()) ->
     {ok, describe_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_logging_configuration_errors(), tuple()}.
 describe_logging_configuration(Client, WorkspaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_logging_configuration(Client, WorkspaceId, QueryMap, HeadersMap, []).
@@ -1199,10 +1343,7 @@ describe_logging_configuration(Client, WorkspaceId, QueryMap, HeadersMap)
 -spec describe_logging_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_logging_configuration_errors(), tuple()}.
 describe_logging_configuration(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/logging"],
@@ -1226,11 +1367,7 @@ describe_logging_configuration(Client, WorkspaceId, QueryMap, HeadersMap, Option
 -spec describe_rule_groups_namespace(map(), binary() | list(), binary() | list()) ->
     {ok, describe_rule_groups_namespace_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_rule_groups_namespace_errors(), tuple()}.
 describe_rule_groups_namespace(Client, Name, WorkspaceId)
   when is_map(Client) ->
     describe_rule_groups_namespace(Client, Name, WorkspaceId, #{}, #{}).
@@ -1238,11 +1375,7 @@ describe_rule_groups_namespace(Client, Name, WorkspaceId)
 -spec describe_rule_groups_namespace(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_rule_groups_namespace_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_rule_groups_namespace_errors(), tuple()}.
 describe_rule_groups_namespace(Client, Name, WorkspaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_rule_groups_namespace(Client, Name, WorkspaceId, QueryMap, HeadersMap, []).
@@ -1250,11 +1383,7 @@ describe_rule_groups_namespace(Client, Name, WorkspaceId, QueryMap, HeadersMap)
 -spec describe_rule_groups_namespace(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_rule_groups_namespace_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_rule_groups_namespace_errors(), tuple()}.
 describe_rule_groups_namespace(Client, Name, WorkspaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/rulegroupsnamespaces/", aws_util:encode_uri(Name), ""],
@@ -1277,11 +1406,7 @@ describe_rule_groups_namespace(Client, Name, WorkspaceId, QueryMap, HeadersMap, 
 -spec describe_scraper(map(), binary() | list()) ->
     {ok, describe_scraper_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_scraper_errors(), tuple()}.
 describe_scraper(Client, ScraperId)
   when is_map(Client) ->
     describe_scraper(Client, ScraperId, #{}, #{}).
@@ -1289,11 +1414,7 @@ describe_scraper(Client, ScraperId)
 -spec describe_scraper(map(), binary() | list(), map(), map()) ->
     {ok, describe_scraper_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_scraper_errors(), tuple()}.
 describe_scraper(Client, ScraperId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_scraper(Client, ScraperId, QueryMap, HeadersMap, []).
@@ -1301,11 +1422,7 @@ describe_scraper(Client, ScraperId, QueryMap, HeadersMap)
 -spec describe_scraper(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_scraper_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_scraper_errors(), tuple()}.
 describe_scraper(Client, ScraperId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/scrapers/", aws_util:encode_uri(ScraperId), ""],
@@ -1326,11 +1443,7 @@ describe_scraper(Client, ScraperId, QueryMap, HeadersMap, Options0)
 -spec describe_workspace(map(), binary() | list()) ->
     {ok, describe_workspace_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_workspace_errors(), tuple()}.
 describe_workspace(Client, WorkspaceId)
   when is_map(Client) ->
     describe_workspace(Client, WorkspaceId, #{}, #{}).
@@ -1338,11 +1451,7 @@ describe_workspace(Client, WorkspaceId)
 -spec describe_workspace(map(), binary() | list(), map(), map()) ->
     {ok, describe_workspace_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_workspace_errors(), tuple()}.
 describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap, []).
@@ -1350,11 +1459,7 @@ describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap)
 -spec describe_workspace(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_workspace_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_workspace_errors(), tuple()}.
 describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), ""],
@@ -1377,9 +1482,7 @@ describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
 -spec get_default_scraper_configuration(map()) ->
     {ok, get_default_scraper_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_default_scraper_configuration_errors(), tuple()}.
 get_default_scraper_configuration(Client)
   when is_map(Client) ->
     get_default_scraper_configuration(Client, #{}, #{}).
@@ -1387,9 +1490,7 @@ get_default_scraper_configuration(Client)
 -spec get_default_scraper_configuration(map(), map(), map()) ->
     {ok, get_default_scraper_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_default_scraper_configuration_errors(), tuple()}.
 get_default_scraper_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_default_scraper_configuration(Client, QueryMap, HeadersMap, []).
@@ -1397,9 +1498,7 @@ get_default_scraper_configuration(Client, QueryMap, HeadersMap)
 -spec get_default_scraper_configuration(map(), map(), map(), proplists:proplist()) ->
     {ok, get_default_scraper_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_default_scraper_configuration_errors(), tuple()}.
 get_default_scraper_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/scraperconfiguration"],
@@ -1420,11 +1519,7 @@ get_default_scraper_configuration(Client, QueryMap, HeadersMap, Options0)
 -spec list_rule_groups_namespaces(map(), binary() | list()) ->
     {ok, list_rule_groups_namespaces_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_rule_groups_namespaces_errors(), tuple()}.
 list_rule_groups_namespaces(Client, WorkspaceId)
   when is_map(Client) ->
     list_rule_groups_namespaces(Client, WorkspaceId, #{}, #{}).
@@ -1432,11 +1527,7 @@ list_rule_groups_namespaces(Client, WorkspaceId)
 -spec list_rule_groups_namespaces(map(), binary() | list(), map(), map()) ->
     {ok, list_rule_groups_namespaces_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_rule_groups_namespaces_errors(), tuple()}.
 list_rule_groups_namespaces(Client, WorkspaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_rule_groups_namespaces(Client, WorkspaceId, QueryMap, HeadersMap, []).
@@ -1444,11 +1535,7 @@ list_rule_groups_namespaces(Client, WorkspaceId, QueryMap, HeadersMap)
 -spec list_rule_groups_namespaces(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_rule_groups_namespaces_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_rule_groups_namespaces_errors(), tuple()}.
 list_rule_groups_namespaces(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/rulegroupsnamespaces"],
@@ -1479,10 +1566,7 @@ list_rule_groups_namespaces(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
 -spec list_scrapers(map()) ->
     {ok, list_scrapers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_scrapers_errors(), tuple()}.
 list_scrapers(Client)
   when is_map(Client) ->
     list_scrapers(Client, #{}, #{}).
@@ -1490,10 +1574,7 @@ list_scrapers(Client)
 -spec list_scrapers(map(), map(), map()) ->
     {ok, list_scrapers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_scrapers_errors(), tuple()}.
 list_scrapers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_scrapers(Client, QueryMap, HeadersMap, []).
@@ -1501,10 +1582,7 @@ list_scrapers(Client, QueryMap, HeadersMap)
 -spec list_scrapers(map(), map(), map(), proplists:proplist()) ->
     {ok, list_scrapers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_scrapers_errors(), tuple()}.
 list_scrapers(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/scrapers"],
@@ -1536,11 +1614,7 @@ list_scrapers(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1548,11 +1622,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1560,11 +1630,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1589,10 +1655,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec list_workspaces(map()) ->
     {ok, list_workspaces_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_workspaces_errors(), tuple()}.
 list_workspaces(Client)
   when is_map(Client) ->
     list_workspaces(Client, #{}, #{}).
@@ -1600,10 +1663,7 @@ list_workspaces(Client)
 -spec list_workspaces(map(), map(), map()) ->
     {ok, list_workspaces_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_workspaces_errors(), tuple()}.
 list_workspaces(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_workspaces(Client, QueryMap, HeadersMap, []).
@@ -1611,10 +1671,7 @@ list_workspaces(Client, QueryMap, HeadersMap)
 -spec list_workspaces(map(), map(), map(), proplists:proplist()) ->
     {ok, list_workspaces_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_workspaces_errors(), tuple()}.
 list_workspaces(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces"],
@@ -1646,26 +1703,14 @@ list_workspaces(Client, QueryMap, HeadersMap, Options0)
 -spec put_alert_manager_definition(map(), binary() | list(), put_alert_manager_definition_request()) ->
     {ok, put_alert_manager_definition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_alert_manager_definition_errors(), tuple()}.
 put_alert_manager_definition(Client, WorkspaceId, Input) ->
     put_alert_manager_definition(Client, WorkspaceId, Input, []).
 
 -spec put_alert_manager_definition(map(), binary() | list(), put_alert_manager_definition_request(), proplists:proplist()) ->
     {ok, put_alert_manager_definition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_alert_manager_definition_errors(), tuple()}.
 put_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
     Method = put,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/alertmanager/definition"],
@@ -1705,26 +1750,14 @@ put_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
 -spec put_rule_groups_namespace(map(), binary() | list(), binary() | list(), put_rule_groups_namespace_request()) ->
     {ok, put_rule_groups_namespace_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_rule_groups_namespace_errors(), tuple()}.
 put_rule_groups_namespace(Client, Name, WorkspaceId, Input) ->
     put_rule_groups_namespace(Client, Name, WorkspaceId, Input, []).
 
 -spec put_rule_groups_namespace(map(), binary() | list(), binary() | list(), put_rule_groups_namespace_request(), proplists:proplist()) ->
     {ok, put_rule_groups_namespace_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_rule_groups_namespace_errors(), tuple()}.
 put_rule_groups_namespace(Client, Name, WorkspaceId, Input0, Options0) ->
     Method = put,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/rulegroupsnamespaces/", aws_util:encode_uri(Name), ""],
@@ -1764,22 +1797,14 @@ put_rule_groups_namespace(Client, Name, WorkspaceId, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1810,22 +1835,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1854,22 +1871,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_logging_configuration(map(), binary() | list(), update_logging_configuration_request()) ->
     {ok, update_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_logging_configuration_errors(), tuple()}.
 update_logging_configuration(Client, WorkspaceId, Input) ->
     update_logging_configuration(Client, WorkspaceId, Input, []).
 
 -spec update_logging_configuration(map(), binary() | list(), update_logging_configuration_request(), proplists:proplist()) ->
     {ok, update_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_logging_configuration_errors(), tuple()}.
 update_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
     Method = put,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/logging"],
@@ -1896,26 +1905,14 @@ update_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
 -spec update_workspace_alias(map(), binary() | list(), update_workspace_alias_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_workspace_alias_errors(), tuple()}.
 update_workspace_alias(Client, WorkspaceId, Input) ->
     update_workspace_alias(Client, WorkspaceId, Input, []).
 
 -spec update_workspace_alias(map(), binary() | list(), update_workspace_alias_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_workspace_alias_errors(), tuple()}.
 update_workspace_alias(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/alias"],

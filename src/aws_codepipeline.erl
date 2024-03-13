@@ -1664,6 +1664,226 @@
 %% }
 -type invalid_job_state_exception() :: #{binary() => any()}.
 
+-type acknowledge_job_errors() ::
+    job_not_found_exception() | 
+    invalid_nonce_exception() | 
+    validation_exception().
+
+-type acknowledge_third_party_job_errors() ::
+    job_not_found_exception() | 
+    invalid_client_token_exception() | 
+    invalid_nonce_exception() | 
+    validation_exception().
+
+-type create_custom_action_type_errors() ::
+    too_many_tags_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    concurrent_modification_exception() | 
+    invalid_tags_exception().
+
+-type create_pipeline_errors() ::
+    too_many_tags_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    concurrent_modification_exception() | 
+    invalid_structure_exception() | 
+    invalid_stage_declaration_exception() | 
+    invalid_tags_exception() | 
+    pipeline_name_in_use_exception() | 
+    invalid_action_declaration_exception() | 
+    invalid_blocker_declaration_exception().
+
+-type delete_custom_action_type_errors() ::
+    validation_exception() | 
+    concurrent_modification_exception().
+
+-type delete_pipeline_errors() ::
+    validation_exception() | 
+    concurrent_modification_exception().
+
+-type delete_webhook_errors() ::
+    validation_exception() | 
+    concurrent_modification_exception().
+
+-type deregister_webhook_with_third_party_errors() ::
+    webhook_not_found_exception() | 
+    validation_exception().
+
+-type disable_stage_transition_errors() ::
+    pipeline_not_found_exception() | 
+    validation_exception() | 
+    stage_not_found_exception().
+
+-type enable_stage_transition_errors() ::
+    pipeline_not_found_exception() | 
+    validation_exception() | 
+    stage_not_found_exception().
+
+-type get_action_type_errors() ::
+    validation_exception() | 
+    action_type_not_found_exception().
+
+-type get_job_details_errors() ::
+    job_not_found_exception() | 
+    validation_exception().
+
+-type get_pipeline_errors() ::
+    pipeline_version_not_found_exception() | 
+    pipeline_not_found_exception() | 
+    validation_exception().
+
+-type get_pipeline_execution_errors() ::
+    pipeline_not_found_exception() | 
+    validation_exception() | 
+    pipeline_execution_not_found_exception().
+
+-type get_pipeline_state_errors() ::
+    pipeline_not_found_exception() | 
+    validation_exception().
+
+-type get_third_party_job_details_errors() ::
+    invalid_job_exception() | 
+    job_not_found_exception() | 
+    invalid_client_token_exception() | 
+    validation_exception().
+
+-type list_action_executions_errors() ::
+    pipeline_not_found_exception() | 
+    validation_exception() | 
+    pipeline_execution_not_found_exception() | 
+    invalid_next_token_exception().
+
+-type list_action_types_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception().
+
+-type list_pipeline_executions_errors() ::
+    pipeline_not_found_exception() | 
+    validation_exception() | 
+    invalid_next_token_exception().
+
+-type list_pipelines_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception().
+
+-type list_webhooks_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception().
+
+-type poll_for_jobs_errors() ::
+    validation_exception() | 
+    action_type_not_found_exception().
+
+-type poll_for_third_party_jobs_errors() ::
+    validation_exception() | 
+    action_type_not_found_exception().
+
+-type put_action_revision_errors() ::
+    pipeline_not_found_exception() | 
+    action_not_found_exception() | 
+    validation_exception() | 
+    stage_not_found_exception().
+
+-type put_approval_result_errors() ::
+    pipeline_not_found_exception() | 
+    action_not_found_exception() | 
+    validation_exception() | 
+    invalid_approval_token_exception() | 
+    approval_already_completed_exception() | 
+    stage_not_found_exception().
+
+-type put_job_failure_result_errors() ::
+    invalid_job_state_exception() | 
+    job_not_found_exception() | 
+    validation_exception().
+
+-type put_job_success_result_errors() ::
+    invalid_job_state_exception() | 
+    job_not_found_exception() | 
+    validation_exception() | 
+    output_variables_size_exceeded_exception().
+
+-type put_third_party_job_failure_result_errors() ::
+    invalid_job_state_exception() | 
+    job_not_found_exception() | 
+    invalid_client_token_exception() | 
+    validation_exception().
+
+-type put_third_party_job_success_result_errors() ::
+    invalid_job_state_exception() | 
+    job_not_found_exception() | 
+    invalid_client_token_exception() | 
+    validation_exception().
+
+-type put_webhook_errors() ::
+    invalid_webhook_authentication_parameters_exception() | 
+    too_many_tags_exception() | 
+    limit_exceeded_exception() | 
+    pipeline_not_found_exception() | 
+    validation_exception() | 
+    concurrent_modification_exception() | 
+    invalid_webhook_filter_pattern_exception() | 
+    invalid_tags_exception().
+
+-type register_webhook_with_third_party_errors() ::
+    webhook_not_found_exception() | 
+    validation_exception().
+
+-type retry_stage_execution_errors() ::
+    pipeline_not_found_exception() | 
+    validation_exception() | 
+    stage_not_retryable_exception() | 
+    conflict_exception() | 
+    not_latest_pipeline_execution_exception() | 
+    stage_not_found_exception().
+
+-type start_pipeline_execution_errors() ::
+    pipeline_not_found_exception() | 
+    concurrent_pipeline_executions_limit_exceeded_exception() | 
+    validation_exception() | 
+    conflict_exception().
+
+-type stop_pipeline_execution_errors() ::
+    duplicated_stop_request_exception() | 
+    pipeline_not_found_exception() | 
+    validation_exception() | 
+    conflict_exception() | 
+    pipeline_execution_not_stoppable_exception().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    validation_exception() | 
+    concurrent_modification_exception() | 
+    resource_not_found_exception() | 
+    invalid_tags_exception() | 
+    invalid_arn_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    concurrent_modification_exception() | 
+    resource_not_found_exception() | 
+    invalid_tags_exception() | 
+    invalid_arn_exception().
+
+-type update_action_type_errors() ::
+    validation_exception() | 
+    action_type_not_found_exception() | 
+    request_failed_exception().
+
+-type update_pipeline_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    invalid_structure_exception() | 
+    invalid_stage_declaration_exception() | 
+    invalid_action_declaration_exception() | 
+    invalid_blocker_declaration_exception().
 
 %%====================================================================
 %% API
@@ -1677,9 +1897,7 @@
 -spec acknowledge_job(map(), acknowledge_job_input()) ->
     {ok, acknowledge_job_output(), tuple()} |
     {error, any()} |
-    {error, invalid_nonce_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, acknowledge_job_errors(), tuple()}.
 acknowledge_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     acknowledge_job(Client, Input, []).
@@ -1687,9 +1905,7 @@ acknowledge_job(Client, Input)
 -spec acknowledge_job(map(), acknowledge_job_input(), proplists:proplist()) ->
     {ok, acknowledge_job_output(), tuple()} |
     {error, any()} |
-    {error, invalid_nonce_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, acknowledge_job_errors(), tuple()}.
 acknowledge_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcknowledgeJob">>, Input, Options).
@@ -1701,10 +1917,7 @@ acknowledge_job(Client, Input, Options)
 -spec acknowledge_third_party_job(map(), acknowledge_third_party_job_input()) ->
     {ok, acknowledge_third_party_job_output(), tuple()} |
     {error, any()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_nonce_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, acknowledge_third_party_job_errors(), tuple()}.
 acknowledge_third_party_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     acknowledge_third_party_job(Client, Input, []).
@@ -1712,10 +1925,7 @@ acknowledge_third_party_job(Client, Input)
 -spec acknowledge_third_party_job(map(), acknowledge_third_party_job_input(), proplists:proplist()) ->
     {ok, acknowledge_third_party_job_output(), tuple()} |
     {error, any()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_nonce_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, acknowledge_third_party_job_errors(), tuple()}.
 acknowledge_third_party_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcknowledgeThirdPartyJob">>, Input, Options).
@@ -1728,11 +1938,7 @@ acknowledge_third_party_job(Client, Input, Options)
 -spec create_custom_action_type(map(), create_custom_action_type_input()) ->
     {ok, create_custom_action_type_output(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_tags_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_custom_action_type_errors(), tuple()}.
 create_custom_action_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_custom_action_type(Client, Input, []).
@@ -1740,11 +1946,7 @@ create_custom_action_type(Client, Input)
 -spec create_custom_action_type(map(), create_custom_action_type_input(), proplists:proplist()) ->
     {ok, create_custom_action_type_output(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_tags_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_custom_action_type_errors(), tuple()}.
 create_custom_action_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCustomActionType">>, Input, Options).
@@ -1758,16 +1960,7 @@ create_custom_action_type(Client, Input, Options)
 -spec create_pipeline(map(), create_pipeline_input()) ->
     {ok, create_pipeline_output(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_action_declaration_exception(), tuple()} |
-    {error, invalid_blocker_declaration_exception(), tuple()} |
-    {error, invalid_stage_declaration_exception(), tuple()} |
-    {error, invalid_structure_exception(), tuple()} |
-    {error, invalid_tags_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, pipeline_name_in_use_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_pipeline_errors(), tuple()}.
 create_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_pipeline(Client, Input, []).
@@ -1775,16 +1968,7 @@ create_pipeline(Client, Input)
 -spec create_pipeline(map(), create_pipeline_input(), proplists:proplist()) ->
     {ok, create_pipeline_output(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_action_declaration_exception(), tuple()} |
-    {error, invalid_blocker_declaration_exception(), tuple()} |
-    {error, invalid_stage_declaration_exception(), tuple()} |
-    {error, invalid_structure_exception(), tuple()} |
-    {error, invalid_tags_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, pipeline_name_in_use_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_pipeline_errors(), tuple()}.
 create_pipeline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePipeline">>, Input, Options).
@@ -1807,8 +1991,7 @@ create_pipeline(Client, Input, Options)
 -spec delete_custom_action_type(map(), delete_custom_action_type_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_custom_action_type_errors(), tuple()}.
 delete_custom_action_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_custom_action_type(Client, Input, []).
@@ -1816,8 +1999,7 @@ delete_custom_action_type(Client, Input)
 -spec delete_custom_action_type(map(), delete_custom_action_type_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_custom_action_type_errors(), tuple()}.
 delete_custom_action_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCustomActionType">>, Input, Options).
@@ -1826,8 +2008,7 @@ delete_custom_action_type(Client, Input, Options)
 -spec delete_pipeline(map(), delete_pipeline_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_pipeline_errors(), tuple()}.
 delete_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_pipeline(Client, Input, []).
@@ -1835,8 +2016,7 @@ delete_pipeline(Client, Input)
 -spec delete_pipeline(map(), delete_pipeline_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_pipeline_errors(), tuple()}.
 delete_pipeline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePipeline">>, Input, Options).
@@ -1853,8 +2033,7 @@ delete_pipeline(Client, Input, Options)
 -spec delete_webhook(map(), delete_webhook_input()) ->
     {ok, delete_webhook_output(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_webhook_errors(), tuple()}.
 delete_webhook(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_webhook(Client, Input, []).
@@ -1862,8 +2041,7 @@ delete_webhook(Client, Input)
 -spec delete_webhook(map(), delete_webhook_input(), proplists:proplist()) ->
     {ok, delete_webhook_output(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_webhook_errors(), tuple()}.
 delete_webhook(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWebhook">>, Input, Options).
@@ -1877,8 +2055,7 @@ delete_webhook(Client, Input, Options)
 -spec deregister_webhook_with_third_party(map(), deregister_webhook_with_third_party_input()) ->
     {ok, deregister_webhook_with_third_party_output(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()} |
-    {error, webhook_not_found_exception(), tuple()}.
+    {error, deregister_webhook_with_third_party_errors(), tuple()}.
 deregister_webhook_with_third_party(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_webhook_with_third_party(Client, Input, []).
@@ -1886,8 +2063,7 @@ deregister_webhook_with_third_party(Client, Input)
 -spec deregister_webhook_with_third_party(map(), deregister_webhook_with_third_party_input(), proplists:proplist()) ->
     {ok, deregister_webhook_with_third_party_output(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()} |
-    {error, webhook_not_found_exception(), tuple()}.
+    {error, deregister_webhook_with_third_party_errors(), tuple()}.
 deregister_webhook_with_third_party(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterWebhookWithThirdParty">>, Input, Options).
@@ -1898,9 +2074,7 @@ deregister_webhook_with_third_party(Client, Input, Options)
 -spec disable_stage_transition(map(), disable_stage_transition_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, stage_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disable_stage_transition_errors(), tuple()}.
 disable_stage_transition(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_stage_transition(Client, Input, []).
@@ -1908,9 +2082,7 @@ disable_stage_transition(Client, Input)
 -spec disable_stage_transition(map(), disable_stage_transition_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, stage_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disable_stage_transition_errors(), tuple()}.
 disable_stage_transition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableStageTransition">>, Input, Options).
@@ -1920,9 +2092,7 @@ disable_stage_transition(Client, Input, Options)
 -spec enable_stage_transition(map(), enable_stage_transition_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, stage_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, enable_stage_transition_errors(), tuple()}.
 enable_stage_transition(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_stage_transition(Client, Input, []).
@@ -1930,9 +2100,7 @@ enable_stage_transition(Client, Input)
 -spec enable_stage_transition(map(), enable_stage_transition_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, stage_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, enable_stage_transition_errors(), tuple()}.
 enable_stage_transition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableStageTransition">>, Input, Options).
@@ -1946,8 +2114,7 @@ enable_stage_transition(Client, Input, Options)
 -spec get_action_type(map(), get_action_type_input()) ->
     {ok, get_action_type_output(), tuple()} |
     {error, any()} |
-    {error, action_type_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_action_type_errors(), tuple()}.
 get_action_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_action_type(Client, Input, []).
@@ -1955,8 +2122,7 @@ get_action_type(Client, Input)
 -spec get_action_type(map(), get_action_type_input(), proplists:proplist()) ->
     {ok, get_action_type_output(), tuple()} |
     {error, any()} |
-    {error, action_type_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_action_type_errors(), tuple()}.
 get_action_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetActionType">>, Input, Options).
@@ -1974,8 +2140,7 @@ get_action_type(Client, Input, Options)
 -spec get_job_details(map(), get_job_details_input()) ->
     {ok, get_job_details_output(), tuple()} |
     {error, any()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_job_details_errors(), tuple()}.
 get_job_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_job_details(Client, Input, []).
@@ -1983,8 +2148,7 @@ get_job_details(Client, Input)
 -spec get_job_details(map(), get_job_details_input(), proplists:proplist()) ->
     {ok, get_job_details_output(), tuple()} |
     {error, any()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_job_details_errors(), tuple()}.
 get_job_details(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetJobDetails">>, Input, Options).
@@ -1998,9 +2162,7 @@ get_job_details(Client, Input, Options)
 -spec get_pipeline(map(), get_pipeline_input()) ->
     {ok, get_pipeline_output(), tuple()} |
     {error, any()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, pipeline_version_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_pipeline_errors(), tuple()}.
 get_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_pipeline(Client, Input, []).
@@ -2008,9 +2170,7 @@ get_pipeline(Client, Input)
 -spec get_pipeline(map(), get_pipeline_input(), proplists:proplist()) ->
     {ok, get_pipeline_output(), tuple()} |
     {error, any()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, pipeline_version_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_pipeline_errors(), tuple()}.
 get_pipeline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPipeline">>, Input, Options).
@@ -2023,9 +2183,7 @@ get_pipeline(Client, Input, Options)
 -spec get_pipeline_execution(map(), get_pipeline_execution_input()) ->
     {ok, get_pipeline_execution_output(), tuple()} |
     {error, any()} |
-    {error, pipeline_execution_not_found_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_pipeline_execution_errors(), tuple()}.
 get_pipeline_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_pipeline_execution(Client, Input, []).
@@ -2033,9 +2191,7 @@ get_pipeline_execution(Client, Input)
 -spec get_pipeline_execution(map(), get_pipeline_execution_input(), proplists:proplist()) ->
     {ok, get_pipeline_execution_output(), tuple()} |
     {error, any()} |
-    {error, pipeline_execution_not_found_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_pipeline_execution_errors(), tuple()}.
 get_pipeline_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPipelineExecution">>, Input, Options).
@@ -2051,8 +2207,7 @@ get_pipeline_execution(Client, Input, Options)
 -spec get_pipeline_state(map(), get_pipeline_state_input()) ->
     {ok, get_pipeline_state_output(), tuple()} |
     {error, any()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_pipeline_state_errors(), tuple()}.
 get_pipeline_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_pipeline_state(Client, Input, []).
@@ -2060,8 +2215,7 @@ get_pipeline_state(Client, Input)
 -spec get_pipeline_state(map(), get_pipeline_state_input(), proplists:proplist()) ->
     {ok, get_pipeline_state_output(), tuple()} |
     {error, any()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_pipeline_state_errors(), tuple()}.
 get_pipeline_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPipelineState">>, Input, Options).
@@ -2080,10 +2234,7 @@ get_pipeline_state(Client, Input, Options)
 -spec get_third_party_job_details(map(), get_third_party_job_details_input()) ->
     {ok, get_third_party_job_details_output(), tuple()} |
     {error, any()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_job_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_third_party_job_details_errors(), tuple()}.
 get_third_party_job_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_third_party_job_details(Client, Input, []).
@@ -2091,10 +2242,7 @@ get_third_party_job_details(Client, Input)
 -spec get_third_party_job_details(map(), get_third_party_job_details_input(), proplists:proplist()) ->
     {ok, get_third_party_job_details_output(), tuple()} |
     {error, any()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_job_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_third_party_job_details_errors(), tuple()}.
 get_third_party_job_details(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetThirdPartyJobDetails">>, Input, Options).
@@ -2103,10 +2251,7 @@ get_third_party_job_details(Client, Input, Options)
 -spec list_action_executions(map(), list_action_executions_input()) ->
     {ok, list_action_executions_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, pipeline_execution_not_found_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_action_executions_errors(), tuple()}.
 list_action_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_action_executions(Client, Input, []).
@@ -2114,10 +2259,7 @@ list_action_executions(Client, Input)
 -spec list_action_executions(map(), list_action_executions_input(), proplists:proplist()) ->
     {ok, list_action_executions_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, pipeline_execution_not_found_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_action_executions_errors(), tuple()}.
 list_action_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListActionExecutions">>, Input, Options).
@@ -2127,8 +2269,7 @@ list_action_executions(Client, Input, Options)
 -spec list_action_types(map(), list_action_types_input()) ->
     {ok, list_action_types_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_action_types_errors(), tuple()}.
 list_action_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_action_types(Client, Input, []).
@@ -2136,8 +2277,7 @@ list_action_types(Client, Input)
 -spec list_action_types(map(), list_action_types_input(), proplists:proplist()) ->
     {ok, list_action_types_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_action_types_errors(), tuple()}.
 list_action_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListActionTypes">>, Input, Options).
@@ -2146,9 +2286,7 @@ list_action_types(Client, Input, Options)
 -spec list_pipeline_executions(map(), list_pipeline_executions_input()) ->
     {ok, list_pipeline_executions_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_pipeline_executions_errors(), tuple()}.
 list_pipeline_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pipeline_executions(Client, Input, []).
@@ -2156,9 +2294,7 @@ list_pipeline_executions(Client, Input)
 -spec list_pipeline_executions(map(), list_pipeline_executions_input(), proplists:proplist()) ->
     {ok, list_pipeline_executions_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_pipeline_executions_errors(), tuple()}.
 list_pipeline_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPipelineExecutions">>, Input, Options).
@@ -2167,8 +2303,7 @@ list_pipeline_executions(Client, Input, Options)
 -spec list_pipelines(map(), list_pipelines_input()) ->
     {ok, list_pipelines_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_pipelines_errors(), tuple()}.
 list_pipelines(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pipelines(Client, Input, []).
@@ -2176,8 +2311,7 @@ list_pipelines(Client, Input)
 -spec list_pipelines(map(), list_pipelines_input(), proplists:proplist()) ->
     {ok, list_pipelines_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_pipelines_errors(), tuple()}.
 list_pipelines(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPipelines">>, Input, Options).
@@ -2188,10 +2322,7 @@ list_pipelines(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -2199,10 +2330,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_input(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -2216,8 +2344,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec list_webhooks(map(), list_webhooks_input()) ->
     {ok, list_webhooks_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_webhooks_errors(), tuple()}.
 list_webhooks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_webhooks(Client, Input, []).
@@ -2225,8 +2352,7 @@ list_webhooks(Client, Input)
 -spec list_webhooks(map(), list_webhooks_input(), proplists:proplist()) ->
     {ok, list_webhooks_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_webhooks_errors(), tuple()}.
 list_webhooks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWebhooks">>, Input, Options).
@@ -2247,8 +2373,7 @@ list_webhooks(Client, Input, Options)
 -spec poll_for_jobs(map(), poll_for_jobs_input()) ->
     {ok, poll_for_jobs_output(), tuple()} |
     {error, any()} |
-    {error, action_type_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, poll_for_jobs_errors(), tuple()}.
 poll_for_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     poll_for_jobs(Client, Input, []).
@@ -2256,8 +2381,7 @@ poll_for_jobs(Client, Input)
 -spec poll_for_jobs(map(), poll_for_jobs_input(), proplists:proplist()) ->
     {ok, poll_for_jobs_output(), tuple()} |
     {error, any()} |
-    {error, action_type_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, poll_for_jobs_errors(), tuple()}.
 poll_for_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PollForJobs">>, Input, Options).
@@ -2275,8 +2399,7 @@ poll_for_jobs(Client, Input, Options)
 -spec poll_for_third_party_jobs(map(), poll_for_third_party_jobs_input()) ->
     {ok, poll_for_third_party_jobs_output(), tuple()} |
     {error, any()} |
-    {error, action_type_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, poll_for_third_party_jobs_errors(), tuple()}.
 poll_for_third_party_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     poll_for_third_party_jobs(Client, Input, []).
@@ -2284,8 +2407,7 @@ poll_for_third_party_jobs(Client, Input)
 -spec poll_for_third_party_jobs(map(), poll_for_third_party_jobs_input(), proplists:proplist()) ->
     {ok, poll_for_third_party_jobs_output(), tuple()} |
     {error, any()} |
-    {error, action_type_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, poll_for_third_party_jobs_errors(), tuple()}.
 poll_for_third_party_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PollForThirdPartyJobs">>, Input, Options).
@@ -2295,10 +2417,7 @@ poll_for_third_party_jobs(Client, Input, Options)
 -spec put_action_revision(map(), put_action_revision_input()) ->
     {ok, put_action_revision_output(), tuple()} |
     {error, any()} |
-    {error, action_not_found_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, stage_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_action_revision_errors(), tuple()}.
 put_action_revision(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_action_revision(Client, Input, []).
@@ -2306,10 +2425,7 @@ put_action_revision(Client, Input)
 -spec put_action_revision(map(), put_action_revision_input(), proplists:proplist()) ->
     {ok, put_action_revision_output(), tuple()} |
     {error, any()} |
-    {error, action_not_found_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, stage_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_action_revision_errors(), tuple()}.
 put_action_revision(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutActionRevision">>, Input, Options).
@@ -2321,12 +2437,7 @@ put_action_revision(Client, Input, Options)
 -spec put_approval_result(map(), put_approval_result_input()) ->
     {ok, put_approval_result_output(), tuple()} |
     {error, any()} |
-    {error, action_not_found_exception(), tuple()} |
-    {error, approval_already_completed_exception(), tuple()} |
-    {error, invalid_approval_token_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, stage_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_approval_result_errors(), tuple()}.
 put_approval_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_approval_result(Client, Input, []).
@@ -2334,12 +2445,7 @@ put_approval_result(Client, Input)
 -spec put_approval_result(map(), put_approval_result_input(), proplists:proplist()) ->
     {ok, put_approval_result_output(), tuple()} |
     {error, any()} |
-    {error, action_not_found_exception(), tuple()} |
-    {error, approval_already_completed_exception(), tuple()} |
-    {error, invalid_approval_token_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, stage_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_approval_result_errors(), tuple()}.
 put_approval_result(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutApprovalResult">>, Input, Options).
@@ -2352,9 +2458,7 @@ put_approval_result(Client, Input, Options)
 -spec put_job_failure_result(map(), put_job_failure_result_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_job_state_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_job_failure_result_errors(), tuple()}.
 put_job_failure_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_job_failure_result(Client, Input, []).
@@ -2362,9 +2466,7 @@ put_job_failure_result(Client, Input)
 -spec put_job_failure_result(map(), put_job_failure_result_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_job_state_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_job_failure_result_errors(), tuple()}.
 put_job_failure_result(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutJobFailureResult">>, Input, Options).
@@ -2377,10 +2479,7 @@ put_job_failure_result(Client, Input, Options)
 -spec put_job_success_result(map(), put_job_success_result_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_job_state_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, output_variables_size_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_job_success_result_errors(), tuple()}.
 put_job_success_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_job_success_result(Client, Input, []).
@@ -2388,10 +2487,7 @@ put_job_success_result(Client, Input)
 -spec put_job_success_result(map(), put_job_success_result_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_job_state_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, output_variables_size_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_job_success_result_errors(), tuple()}.
 put_job_success_result(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutJobSuccessResult">>, Input, Options).
@@ -2404,10 +2500,7 @@ put_job_success_result(Client, Input, Options)
 -spec put_third_party_job_failure_result(map(), put_third_party_job_failure_result_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_job_state_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_third_party_job_failure_result_errors(), tuple()}.
 put_third_party_job_failure_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_third_party_job_failure_result(Client, Input, []).
@@ -2415,10 +2508,7 @@ put_third_party_job_failure_result(Client, Input)
 -spec put_third_party_job_failure_result(map(), put_third_party_job_failure_result_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_job_state_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_third_party_job_failure_result_errors(), tuple()}.
 put_third_party_job_failure_result(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutThirdPartyJobFailureResult">>, Input, Options).
@@ -2431,10 +2521,7 @@ put_third_party_job_failure_result(Client, Input, Options)
 -spec put_third_party_job_success_result(map(), put_third_party_job_success_result_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_job_state_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_third_party_job_success_result_errors(), tuple()}.
 put_third_party_job_success_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_third_party_job_success_result(Client, Input, []).
@@ -2442,10 +2529,7 @@ put_third_party_job_success_result(Client, Input)
 -spec put_third_party_job_success_result(map(), put_third_party_job_success_result_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_client_token_exception(), tuple()} |
-    {error, invalid_job_state_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_third_party_job_success_result_errors(), tuple()}.
 put_third_party_job_success_result(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutThirdPartyJobSuccessResult">>, Input, Options).
@@ -2469,14 +2553,7 @@ put_third_party_job_success_result(Client, Input, Options)
 -spec put_webhook(map(), put_webhook_input()) ->
     {ok, put_webhook_output(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_tags_exception(), tuple()} |
-    {error, invalid_webhook_authentication_parameters_exception(), tuple()} |
-    {error, invalid_webhook_filter_pattern_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_webhook_errors(), tuple()}.
 put_webhook(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_webhook(Client, Input, []).
@@ -2484,14 +2561,7 @@ put_webhook(Client, Input)
 -spec put_webhook(map(), put_webhook_input(), proplists:proplist()) ->
     {ok, put_webhook_output(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_tags_exception(), tuple()} |
-    {error, invalid_webhook_authentication_parameters_exception(), tuple()} |
-    {error, invalid_webhook_filter_pattern_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_webhook_errors(), tuple()}.
 put_webhook(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutWebhook">>, Input, Options).
@@ -2502,8 +2572,7 @@ put_webhook(Client, Input, Options)
 -spec register_webhook_with_third_party(map(), register_webhook_with_third_party_input()) ->
     {ok, register_webhook_with_third_party_output(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()} |
-    {error, webhook_not_found_exception(), tuple()}.
+    {error, register_webhook_with_third_party_errors(), tuple()}.
 register_webhook_with_third_party(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_webhook_with_third_party(Client, Input, []).
@@ -2511,8 +2580,7 @@ register_webhook_with_third_party(Client, Input)
 -spec register_webhook_with_third_party(map(), register_webhook_with_third_party_input(), proplists:proplist()) ->
     {ok, register_webhook_with_third_party_output(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()} |
-    {error, webhook_not_found_exception(), tuple()}.
+    {error, register_webhook_with_third_party_errors(), tuple()}.
 register_webhook_with_third_party(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterWebhookWithThirdParty">>, Input, Options).
@@ -2536,12 +2604,7 @@ register_webhook_with_third_party(Client, Input, Options)
 -spec retry_stage_execution(map(), retry_stage_execution_input()) ->
     {ok, retry_stage_execution_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_latest_pipeline_execution_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, stage_not_found_exception(), tuple()} |
-    {error, stage_not_retryable_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, retry_stage_execution_errors(), tuple()}.
 retry_stage_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     retry_stage_execution(Client, Input, []).
@@ -2549,12 +2612,7 @@ retry_stage_execution(Client, Input)
 -spec retry_stage_execution(map(), retry_stage_execution_input(), proplists:proplist()) ->
     {ok, retry_stage_execution_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, not_latest_pipeline_execution_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, stage_not_found_exception(), tuple()} |
-    {error, stage_not_retryable_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, retry_stage_execution_errors(), tuple()}.
 retry_stage_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RetryStageExecution">>, Input, Options).
@@ -2566,10 +2624,7 @@ retry_stage_execution(Client, Input, Options)
 -spec start_pipeline_execution(map(), start_pipeline_execution_input()) ->
     {ok, start_pipeline_execution_output(), tuple()} |
     {error, any()} |
-    {error, concurrent_pipeline_executions_limit_exceeded_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_pipeline_execution_errors(), tuple()}.
 start_pipeline_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_pipeline_execution(Client, Input, []).
@@ -2577,10 +2632,7 @@ start_pipeline_execution(Client, Input)
 -spec start_pipeline_execution(map(), start_pipeline_execution_input(), proplists:proplist()) ->
     {ok, start_pipeline_execution_output(), tuple()} |
     {error, any()} |
-    {error, concurrent_pipeline_executions_limit_exceeded_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_pipeline_execution_errors(), tuple()}.
 start_pipeline_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartPipelineExecution">>, Input, Options).
@@ -2599,11 +2651,7 @@ start_pipeline_execution(Client, Input, Options)
 -spec stop_pipeline_execution(map(), stop_pipeline_execution_input()) ->
     {ok, stop_pipeline_execution_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, duplicated_stop_request_exception(), tuple()} |
-    {error, pipeline_execution_not_stoppable_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_pipeline_execution_errors(), tuple()}.
 stop_pipeline_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_pipeline_execution(Client, Input, []).
@@ -2611,11 +2659,7 @@ stop_pipeline_execution(Client, Input)
 -spec stop_pipeline_execution(map(), stop_pipeline_execution_input(), proplists:proplist()) ->
     {ok, stop_pipeline_execution_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, duplicated_stop_request_exception(), tuple()} |
-    {error, pipeline_execution_not_stoppable_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_pipeline_execution_errors(), tuple()}.
 stop_pipeline_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopPipelineExecution">>, Input, Options).
@@ -2627,12 +2671,7 @@ stop_pipeline_execution(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_tags_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -2640,12 +2679,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_tags_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -2654,11 +2688,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_tags_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -2666,11 +2696,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_tags_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -2685,9 +2711,7 @@ untag_resource(Client, Input, Options)
 -spec update_action_type(map(), update_action_type_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, action_type_not_found_exception(), tuple()} |
-    {error, request_failed_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_action_type_errors(), tuple()}.
 update_action_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_action_type(Client, Input, []).
@@ -2695,9 +2719,7 @@ update_action_type(Client, Input)
 -spec update_action_type(map(), update_action_type_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, action_type_not_found_exception(), tuple()} |
-    {error, request_failed_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_action_type_errors(), tuple()}.
 update_action_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateActionType">>, Input, Options).
@@ -2713,12 +2735,7 @@ update_action_type(Client, Input, Options)
 -spec update_pipeline(map(), update_pipeline_input()) ->
     {ok, update_pipeline_output(), tuple()} |
     {error, any()} |
-    {error, invalid_action_declaration_exception(), tuple()} |
-    {error, invalid_blocker_declaration_exception(), tuple()} |
-    {error, invalid_stage_declaration_exception(), tuple()} |
-    {error, invalid_structure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_pipeline_errors(), tuple()}.
 update_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_pipeline(Client, Input, []).
@@ -2726,12 +2743,7 @@ update_pipeline(Client, Input)
 -spec update_pipeline(map(), update_pipeline_input(), proplists:proplist()) ->
     {ok, update_pipeline_output(), tuple()} |
     {error, any()} |
-    {error, invalid_action_declaration_exception(), tuple()} |
-    {error, invalid_blocker_declaration_exception(), tuple()} |
-    {error, invalid_stage_declaration_exception(), tuple()} |
-    {error, invalid_structure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_pipeline_errors(), tuple()}.
 update_pipeline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePipeline">>, Input, Options).

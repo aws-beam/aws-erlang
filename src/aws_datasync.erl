@@ -1608,6 +1608,245 @@
 %% }
 -type create_location_fsx_ontap_response() :: #{binary() => any()}.
 
+-type add_storage_system_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type cancel_task_execution_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type create_agent_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type create_location_azure_blob_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type create_location_efs_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type create_location_fsx_lustre_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type create_location_fsx_ontap_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type create_location_fsx_open_zfs_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type create_location_fsx_windows_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type create_location_hdfs_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type create_location_nfs_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type create_location_object_storage_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type create_location_s3_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type create_location_smb_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type create_task_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type delete_agent_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type delete_location_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type delete_task_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type describe_agent_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type describe_discovery_job_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type describe_location_azure_blob_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type describe_location_efs_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type describe_location_fsx_lustre_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type describe_location_fsx_ontap_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type describe_location_fsx_open_zfs_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type describe_location_fsx_windows_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type describe_location_hdfs_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type describe_location_nfs_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type describe_location_object_storage_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type describe_location_s3_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type describe_location_smb_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type describe_storage_system_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type describe_storage_system_resource_metrics_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type describe_storage_system_resources_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type describe_task_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type describe_task_execution_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type generate_recommendations_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type list_agents_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type list_discovery_jobs_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type list_locations_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type list_storage_systems_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type list_tags_for_resource_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type list_task_executions_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type list_tasks_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type remove_storage_system_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type start_discovery_job_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type start_task_execution_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type stop_discovery_job_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type tag_resource_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type untag_resource_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type update_agent_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type update_discovery_job_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type update_location_azure_blob_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type update_location_hdfs_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type update_location_nfs_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type update_location_object_storage_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type update_location_smb_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type update_storage_system_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type update_task_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type update_task_execution_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
 
 %%====================================================================
 %% API
@@ -1619,8 +1858,7 @@
 -spec add_storage_system(map(), add_storage_system_request()) ->
     {ok, add_storage_system_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, add_storage_system_errors(), tuple()}.
 add_storage_system(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_storage_system(Client, Input, []).
@@ -1628,8 +1866,7 @@ add_storage_system(Client, Input)
 -spec add_storage_system(map(), add_storage_system_request(), proplists:proplist()) ->
     {ok, add_storage_system_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, add_storage_system_errors(), tuple()}.
 add_storage_system(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddStorageSystem">>, Input, Options).
@@ -1652,8 +1889,7 @@ add_storage_system(Client, Input, Options)
 -spec cancel_task_execution(map(), cancel_task_execution_request()) ->
     {ok, cancel_task_execution_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, cancel_task_execution_errors(), tuple()}.
 cancel_task_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_task_execution(Client, Input, []).
@@ -1661,8 +1897,7 @@ cancel_task_execution(Client, Input)
 -spec cancel_task_execution(map(), cancel_task_execution_request(), proplists:proplist()) ->
     {ok, cancel_task_execution_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, cancel_task_execution_errors(), tuple()}.
 cancel_task_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelTaskExecution">>, Input, Options).
@@ -1688,8 +1923,7 @@ cancel_task_execution(Client, Input, Options)
 -spec create_agent(map(), create_agent_request()) ->
     {ok, create_agent_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_agent_errors(), tuple()}.
 create_agent(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_agent(Client, Input, []).
@@ -1697,8 +1931,7 @@ create_agent(Client, Input)
 -spec create_agent(map(), create_agent_request(), proplists:proplist()) ->
     {ok, create_agent_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_agent_errors(), tuple()}.
 create_agent(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAgent">>, Input, Options).
@@ -1723,8 +1956,7 @@ create_agent(Client, Input, Options)
 -spec create_location_azure_blob(map(), create_location_azure_blob_request()) ->
     {ok, create_location_azure_blob_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_location_azure_blob_errors(), tuple()}.
 create_location_azure_blob(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_azure_blob(Client, Input, []).
@@ -1732,8 +1964,7 @@ create_location_azure_blob(Client, Input)
 -spec create_location_azure_blob(map(), create_location_azure_blob_request(), proplists:proplist()) ->
     {ok, create_location_azure_blob_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_location_azure_blob_errors(), tuple()}.
 create_location_azure_blob(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationAzureBlob">>, Input, Options).
@@ -1750,8 +1981,7 @@ create_location_azure_blob(Client, Input, Options)
 -spec create_location_efs(map(), create_location_efs_request()) ->
     {ok, create_location_efs_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_location_efs_errors(), tuple()}.
 create_location_efs(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_efs(Client, Input, []).
@@ -1759,8 +1989,7 @@ create_location_efs(Client, Input)
 -spec create_location_efs(map(), create_location_efs_request(), proplists:proplist()) ->
     {ok, create_location_efs_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_location_efs_errors(), tuple()}.
 create_location_efs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationEfs">>, Input, Options).
@@ -1776,8 +2005,7 @@ create_location_efs(Client, Input, Options)
 -spec create_location_fsx_lustre(map(), create_location_fsx_lustre_request()) ->
     {ok, create_location_fsx_lustre_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_location_fsx_lustre_errors(), tuple()}.
 create_location_fsx_lustre(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_fsx_lustre(Client, Input, []).
@@ -1785,8 +2013,7 @@ create_location_fsx_lustre(Client, Input)
 -spec create_location_fsx_lustre(map(), create_location_fsx_lustre_request(), proplists:proplist()) ->
     {ok, create_location_fsx_lustre_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_location_fsx_lustre_errors(), tuple()}.
 create_location_fsx_lustre(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationFsxLustre">>, Input, Options).
@@ -1803,8 +2030,7 @@ create_location_fsx_lustre(Client, Input, Options)
 -spec create_location_fsx_ontap(map(), create_location_fsx_ontap_request()) ->
     {ok, create_location_fsx_ontap_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_location_fsx_ontap_errors(), tuple()}.
 create_location_fsx_ontap(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_fsx_ontap(Client, Input, []).
@@ -1812,8 +2038,7 @@ create_location_fsx_ontap(Client, Input)
 -spec create_location_fsx_ontap(map(), create_location_fsx_ontap_request(), proplists:proplist()) ->
     {ok, create_location_fsx_ontap_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_location_fsx_ontap_errors(), tuple()}.
 create_location_fsx_ontap(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationFsxOntap">>, Input, Options).
@@ -1833,8 +2058,7 @@ create_location_fsx_ontap(Client, Input, Options)
 -spec create_location_fsx_open_zfs(map(), create_location_fsx_open_zfs_request()) ->
     {ok, create_location_fsx_open_zfs_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_location_fsx_open_zfs_errors(), tuple()}.
 create_location_fsx_open_zfs(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_fsx_open_zfs(Client, Input, []).
@@ -1842,8 +2066,7 @@ create_location_fsx_open_zfs(Client, Input)
 -spec create_location_fsx_open_zfs(map(), create_location_fsx_open_zfs_request(), proplists:proplist()) ->
     {ok, create_location_fsx_open_zfs_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_location_fsx_open_zfs_errors(), tuple()}.
 create_location_fsx_open_zfs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationFsxOpenZfs">>, Input, Options).
@@ -1862,8 +2085,7 @@ create_location_fsx_open_zfs(Client, Input, Options)
 -spec create_location_fsx_windows(map(), create_location_fsx_windows_request()) ->
     {ok, create_location_fsx_windows_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_location_fsx_windows_errors(), tuple()}.
 create_location_fsx_windows(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_fsx_windows(Client, Input, []).
@@ -1871,8 +2093,7 @@ create_location_fsx_windows(Client, Input)
 -spec create_location_fsx_windows(map(), create_location_fsx_windows_request(), proplists:proplist()) ->
     {ok, create_location_fsx_windows_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_location_fsx_windows_errors(), tuple()}.
 create_location_fsx_windows(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationFsxWindows">>, Input, Options).
@@ -1890,8 +2111,7 @@ create_location_fsx_windows(Client, Input, Options)
 -spec create_location_hdfs(map(), create_location_hdfs_request()) ->
     {ok, create_location_hdfs_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_location_hdfs_errors(), tuple()}.
 create_location_hdfs(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_hdfs(Client, Input, []).
@@ -1899,8 +2119,7 @@ create_location_hdfs(Client, Input)
 -spec create_location_hdfs(map(), create_location_hdfs_request(), proplists:proplist()) ->
     {ok, create_location_hdfs_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_location_hdfs_errors(), tuple()}.
 create_location_hdfs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationHdfs">>, Input, Options).
@@ -1924,8 +2143,7 @@ create_location_hdfs(Client, Input, Options)
 -spec create_location_nfs(map(), create_location_nfs_request()) ->
     {ok, create_location_nfs_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_location_nfs_errors(), tuple()}.
 create_location_nfs(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_nfs(Client, Input, []).
@@ -1933,8 +2151,7 @@ create_location_nfs(Client, Input)
 -spec create_location_nfs(map(), create_location_nfs_request(), proplists:proplist()) ->
     {ok, create_location_nfs_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_location_nfs_errors(), tuple()}.
 create_location_nfs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationNfs">>, Input, Options).
@@ -1950,8 +2167,7 @@ create_location_nfs(Client, Input, Options)
 -spec create_location_object_storage(map(), create_location_object_storage_request()) ->
     {ok, create_location_object_storage_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_location_object_storage_errors(), tuple()}.
 create_location_object_storage(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_object_storage(Client, Input, []).
@@ -1959,8 +2175,7 @@ create_location_object_storage(Client, Input)
 -spec create_location_object_storage(map(), create_location_object_storage_request(), proplists:proplist()) ->
     {ok, create_location_object_storage_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_location_object_storage_errors(), tuple()}.
 create_location_object_storage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationObjectStorage">>, Input, Options).
@@ -1984,8 +2199,7 @@ create_location_object_storage(Client, Input, Options)
 -spec create_location_s3(map(), create_location_s3_request()) ->
     {ok, create_location_s3_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_location_s3_errors(), tuple()}.
 create_location_s3(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_s3(Client, Input, []).
@@ -1993,8 +2207,7 @@ create_location_s3(Client, Input)
 -spec create_location_s3(map(), create_location_s3_request(), proplists:proplist()) ->
     {ok, create_location_s3_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_location_s3_errors(), tuple()}.
 create_location_s3(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationS3">>, Input, Options).
@@ -2012,8 +2225,7 @@ create_location_s3(Client, Input, Options)
 -spec create_location_smb(map(), create_location_smb_request()) ->
     {ok, create_location_smb_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_location_smb_errors(), tuple()}.
 create_location_smb(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_smb(Client, Input, []).
@@ -2021,8 +2233,7 @@ create_location_smb(Client, Input)
 -spec create_location_smb(map(), create_location_smb_request(), proplists:proplist()) ->
     {ok, create_location_smb_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_location_smb_errors(), tuple()}.
 create_location_smb(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationSmb">>, Input, Options).
@@ -2048,8 +2259,7 @@ create_location_smb(Client, Input, Options)
 -spec create_task(map(), create_task_request()) ->
     {ok, create_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_task_errors(), tuple()}.
 create_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_task(Client, Input, []).
@@ -2057,8 +2267,7 @@ create_task(Client, Input)
 -spec create_task(map(), create_task_request(), proplists:proplist()) ->
     {ok, create_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_task_errors(), tuple()}.
 create_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTask">>, Input, Options).
@@ -2077,8 +2286,7 @@ create_task(Client, Input, Options)
 -spec delete_agent(map(), delete_agent_request()) ->
     {ok, delete_agent_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, delete_agent_errors(), tuple()}.
 delete_agent(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_agent(Client, Input, []).
@@ -2086,8 +2294,7 @@ delete_agent(Client, Input)
 -spec delete_agent(map(), delete_agent_request(), proplists:proplist()) ->
     {ok, delete_agent_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, delete_agent_errors(), tuple()}.
 delete_agent(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAgent">>, Input, Options).
@@ -2096,8 +2303,7 @@ delete_agent(Client, Input, Options)
 -spec delete_location(map(), delete_location_request()) ->
     {ok, delete_location_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, delete_location_errors(), tuple()}.
 delete_location(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_location(Client, Input, []).
@@ -2105,8 +2311,7 @@ delete_location(Client, Input)
 -spec delete_location(map(), delete_location_request(), proplists:proplist()) ->
     {ok, delete_location_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, delete_location_errors(), tuple()}.
 delete_location(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLocation">>, Input, Options).
@@ -2115,8 +2320,7 @@ delete_location(Client, Input, Options)
 -spec delete_task(map(), delete_task_request()) ->
     {ok, delete_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, delete_task_errors(), tuple()}.
 delete_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_task(Client, Input, []).
@@ -2124,8 +2328,7 @@ delete_task(Client, Input)
 -spec delete_task(map(), delete_task_request(), proplists:proplist()) ->
     {ok, delete_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, delete_task_errors(), tuple()}.
 delete_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTask">>, Input, Options).
@@ -2136,8 +2339,7 @@ delete_task(Client, Input, Options)
 -spec describe_agent(map(), describe_agent_request()) ->
     {ok, describe_agent_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_agent_errors(), tuple()}.
 describe_agent(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_agent(Client, Input, []).
@@ -2145,8 +2347,7 @@ describe_agent(Client, Input)
 -spec describe_agent(map(), describe_agent_request(), proplists:proplist()) ->
     {ok, describe_agent_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_agent_errors(), tuple()}.
 describe_agent(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAgent">>, Input, Options).
@@ -2155,8 +2356,7 @@ describe_agent(Client, Input, Options)
 -spec describe_discovery_job(map(), describe_discovery_job_request()) ->
     {ok, describe_discovery_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_discovery_job_errors(), tuple()}.
 describe_discovery_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_discovery_job(Client, Input, []).
@@ -2164,8 +2364,7 @@ describe_discovery_job(Client, Input)
 -spec describe_discovery_job(map(), describe_discovery_job_request(), proplists:proplist()) ->
     {ok, describe_discovery_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_discovery_job_errors(), tuple()}.
 describe_discovery_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDiscoveryJob">>, Input, Options).
@@ -2175,8 +2374,7 @@ describe_discovery_job(Client, Input, Options)
 -spec describe_location_azure_blob(map(), describe_location_azure_blob_request()) ->
     {ok, describe_location_azure_blob_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_location_azure_blob_errors(), tuple()}.
 describe_location_azure_blob(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_azure_blob(Client, Input, []).
@@ -2184,8 +2382,7 @@ describe_location_azure_blob(Client, Input)
 -spec describe_location_azure_blob(map(), describe_location_azure_blob_request(), proplists:proplist()) ->
     {ok, describe_location_azure_blob_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_location_azure_blob_errors(), tuple()}.
 describe_location_azure_blob(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLocationAzureBlob">>, Input, Options).
@@ -2195,8 +2392,7 @@ describe_location_azure_blob(Client, Input, Options)
 -spec describe_location_efs(map(), describe_location_efs_request()) ->
     {ok, describe_location_efs_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_location_efs_errors(), tuple()}.
 describe_location_efs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_efs(Client, Input, []).
@@ -2204,8 +2400,7 @@ describe_location_efs(Client, Input)
 -spec describe_location_efs(map(), describe_location_efs_request(), proplists:proplist()) ->
     {ok, describe_location_efs_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_location_efs_errors(), tuple()}.
 describe_location_efs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLocationEfs">>, Input, Options).
@@ -2215,8 +2410,7 @@ describe_location_efs(Client, Input, Options)
 -spec describe_location_fsx_lustre(map(), describe_location_fsx_lustre_request()) ->
     {ok, describe_location_fsx_lustre_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_location_fsx_lustre_errors(), tuple()}.
 describe_location_fsx_lustre(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_fsx_lustre(Client, Input, []).
@@ -2224,8 +2418,7 @@ describe_location_fsx_lustre(Client, Input)
 -spec describe_location_fsx_lustre(map(), describe_location_fsx_lustre_request(), proplists:proplist()) ->
     {ok, describe_location_fsx_lustre_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_location_fsx_lustre_errors(), tuple()}.
 describe_location_fsx_lustre(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLocationFsxLustre">>, Input, Options).
@@ -2239,8 +2432,7 @@ describe_location_fsx_lustre(Client, Input, Options)
 -spec describe_location_fsx_ontap(map(), describe_location_fsx_ontap_request()) ->
     {ok, describe_location_fsx_ontap_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_location_fsx_ontap_errors(), tuple()}.
 describe_location_fsx_ontap(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_fsx_ontap(Client, Input, []).
@@ -2248,8 +2440,7 @@ describe_location_fsx_ontap(Client, Input)
 -spec describe_location_fsx_ontap(map(), describe_location_fsx_ontap_request(), proplists:proplist()) ->
     {ok, describe_location_fsx_ontap_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_location_fsx_ontap_errors(), tuple()}.
 describe_location_fsx_ontap(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLocationFsxOntap">>, Input, Options).
@@ -2262,8 +2453,7 @@ describe_location_fsx_ontap(Client, Input, Options)
 -spec describe_location_fsx_open_zfs(map(), describe_location_fsx_open_zfs_request()) ->
     {ok, describe_location_fsx_open_zfs_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_location_fsx_open_zfs_errors(), tuple()}.
 describe_location_fsx_open_zfs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_fsx_open_zfs(Client, Input, []).
@@ -2271,8 +2461,7 @@ describe_location_fsx_open_zfs(Client, Input)
 -spec describe_location_fsx_open_zfs(map(), describe_location_fsx_open_zfs_request(), proplists:proplist()) ->
     {ok, describe_location_fsx_open_zfs_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_location_fsx_open_zfs_errors(), tuple()}.
 describe_location_fsx_open_zfs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLocationFsxOpenZfs">>, Input, Options).
@@ -2282,8 +2471,7 @@ describe_location_fsx_open_zfs(Client, Input, Options)
 -spec describe_location_fsx_windows(map(), describe_location_fsx_windows_request()) ->
     {ok, describe_location_fsx_windows_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_location_fsx_windows_errors(), tuple()}.
 describe_location_fsx_windows(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_fsx_windows(Client, Input, []).
@@ -2291,8 +2479,7 @@ describe_location_fsx_windows(Client, Input)
 -spec describe_location_fsx_windows(map(), describe_location_fsx_windows_request(), proplists:proplist()) ->
     {ok, describe_location_fsx_windows_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_location_fsx_windows_errors(), tuple()}.
 describe_location_fsx_windows(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLocationFsxWindows">>, Input, Options).
@@ -2302,8 +2489,7 @@ describe_location_fsx_windows(Client, Input, Options)
 -spec describe_location_hdfs(map(), describe_location_hdfs_request()) ->
     {ok, describe_location_hdfs_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_location_hdfs_errors(), tuple()}.
 describe_location_hdfs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_hdfs(Client, Input, []).
@@ -2311,8 +2497,7 @@ describe_location_hdfs(Client, Input)
 -spec describe_location_hdfs(map(), describe_location_hdfs_request(), proplists:proplist()) ->
     {ok, describe_location_hdfs_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_location_hdfs_errors(), tuple()}.
 describe_location_hdfs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLocationHdfs">>, Input, Options).
@@ -2323,8 +2508,7 @@ describe_location_hdfs(Client, Input, Options)
 -spec describe_location_nfs(map(), describe_location_nfs_request()) ->
     {ok, describe_location_nfs_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_location_nfs_errors(), tuple()}.
 describe_location_nfs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_nfs(Client, Input, []).
@@ -2332,8 +2516,7 @@ describe_location_nfs(Client, Input)
 -spec describe_location_nfs(map(), describe_location_nfs_request(), proplists:proplist()) ->
     {ok, describe_location_nfs_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_location_nfs_errors(), tuple()}.
 describe_location_nfs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLocationNfs">>, Input, Options).
@@ -2344,8 +2527,7 @@ describe_location_nfs(Client, Input, Options)
 -spec describe_location_object_storage(map(), describe_location_object_storage_request()) ->
     {ok, describe_location_object_storage_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_location_object_storage_errors(), tuple()}.
 describe_location_object_storage(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_object_storage(Client, Input, []).
@@ -2353,8 +2535,7 @@ describe_location_object_storage(Client, Input)
 -spec describe_location_object_storage(map(), describe_location_object_storage_request(), proplists:proplist()) ->
     {ok, describe_location_object_storage_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_location_object_storage_errors(), tuple()}.
 describe_location_object_storage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLocationObjectStorage">>, Input, Options).
@@ -2365,8 +2546,7 @@ describe_location_object_storage(Client, Input, Options)
 -spec describe_location_s3(map(), describe_location_s3_request()) ->
     {ok, describe_location_s3_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_location_s3_errors(), tuple()}.
 describe_location_s3(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_s3(Client, Input, []).
@@ -2374,8 +2554,7 @@ describe_location_s3(Client, Input)
 -spec describe_location_s3(map(), describe_location_s3_request(), proplists:proplist()) ->
     {ok, describe_location_s3_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_location_s3_errors(), tuple()}.
 describe_location_s3(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLocationS3">>, Input, Options).
@@ -2385,8 +2564,7 @@ describe_location_s3(Client, Input, Options)
 -spec describe_location_smb(map(), describe_location_smb_request()) ->
     {ok, describe_location_smb_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_location_smb_errors(), tuple()}.
 describe_location_smb(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_smb(Client, Input, []).
@@ -2394,8 +2572,7 @@ describe_location_smb(Client, Input)
 -spec describe_location_smb(map(), describe_location_smb_request(), proplists:proplist()) ->
     {ok, describe_location_smb_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_location_smb_errors(), tuple()}.
 describe_location_smb(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLocationSmb">>, Input, Options).
@@ -2406,8 +2583,7 @@ describe_location_smb(Client, Input, Options)
 -spec describe_storage_system(map(), describe_storage_system_request()) ->
     {ok, describe_storage_system_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_storage_system_errors(), tuple()}.
 describe_storage_system(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_storage_system(Client, Input, []).
@@ -2415,8 +2591,7 @@ describe_storage_system(Client, Input)
 -spec describe_storage_system(map(), describe_storage_system_request(), proplists:proplist()) ->
     {ok, describe_storage_system_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_storage_system_errors(), tuple()}.
 describe_storage_system(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStorageSystem">>, Input, Options).
@@ -2427,8 +2602,7 @@ describe_storage_system(Client, Input, Options)
 -spec describe_storage_system_resource_metrics(map(), describe_storage_system_resource_metrics_request()) ->
     {ok, describe_storage_system_resource_metrics_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_storage_system_resource_metrics_errors(), tuple()}.
 describe_storage_system_resource_metrics(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_storage_system_resource_metrics(Client, Input, []).
@@ -2436,8 +2610,7 @@ describe_storage_system_resource_metrics(Client, Input)
 -spec describe_storage_system_resource_metrics(map(), describe_storage_system_resource_metrics_request(), proplists:proplist()) ->
     {ok, describe_storage_system_resource_metrics_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_storage_system_resource_metrics_errors(), tuple()}.
 describe_storage_system_resource_metrics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStorageSystemResourceMetrics">>, Input, Options).
@@ -2448,8 +2621,7 @@ describe_storage_system_resource_metrics(Client, Input, Options)
 -spec describe_storage_system_resources(map(), describe_storage_system_resources_request()) ->
     {ok, describe_storage_system_resources_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_storage_system_resources_errors(), tuple()}.
 describe_storage_system_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_storage_system_resources(Client, Input, []).
@@ -2457,8 +2629,7 @@ describe_storage_system_resources(Client, Input)
 -spec describe_storage_system_resources(map(), describe_storage_system_resources_request(), proplists:proplist()) ->
     {ok, describe_storage_system_resources_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_storage_system_resources_errors(), tuple()}.
 describe_storage_system_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStorageSystemResources">>, Input, Options).
@@ -2467,8 +2638,7 @@ describe_storage_system_resources(Client, Input, Options)
 -spec describe_task(map(), describe_task_request()) ->
     {ok, describe_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_task_errors(), tuple()}.
 describe_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_task(Client, Input, []).
@@ -2476,8 +2646,7 @@ describe_task(Client, Input)
 -spec describe_task(map(), describe_task_request(), proplists:proplist()) ->
     {ok, describe_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_task_errors(), tuple()}.
 describe_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTask">>, Input, Options).
@@ -2491,8 +2660,7 @@ describe_task(Client, Input, Options)
 -spec describe_task_execution(map(), describe_task_execution_request()) ->
     {ok, describe_task_execution_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_task_execution_errors(), tuple()}.
 describe_task_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_task_execution(Client, Input, []).
@@ -2500,8 +2668,7 @@ describe_task_execution(Client, Input)
 -spec describe_task_execution(map(), describe_task_execution_request(), proplists:proplist()) ->
     {ok, describe_task_execution_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_task_execution_errors(), tuple()}.
 describe_task_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTaskExecution">>, Input, Options).
@@ -2523,8 +2690,7 @@ describe_task_execution(Client, Input, Options)
 -spec generate_recommendations(map(), generate_recommendations_request()) ->
     {ok, generate_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, generate_recommendations_errors(), tuple()}.
 generate_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_recommendations(Client, Input, []).
@@ -2532,8 +2698,7 @@ generate_recommendations(Client, Input)
 -spec generate_recommendations(map(), generate_recommendations_request(), proplists:proplist()) ->
     {ok, generate_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, generate_recommendations_errors(), tuple()}.
 generate_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GenerateRecommendations">>, Input, Options).
@@ -2564,8 +2729,7 @@ generate_recommendations(Client, Input, Options)
 -spec list_agents(map(), list_agents_request()) ->
     {ok, list_agents_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_agents_errors(), tuple()}.
 list_agents(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_agents(Client, Input, []).
@@ -2573,8 +2737,7 @@ list_agents(Client, Input)
 -spec list_agents(map(), list_agents_request(), proplists:proplist()) ->
     {ok, list_agents_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_agents_errors(), tuple()}.
 list_agents(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAgents">>, Input, Options).
@@ -2585,8 +2748,7 @@ list_agents(Client, Input, Options)
 -spec list_discovery_jobs(map(), list_discovery_jobs_request()) ->
     {ok, list_discovery_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_discovery_jobs_errors(), tuple()}.
 list_discovery_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_discovery_jobs(Client, Input, []).
@@ -2594,8 +2756,7 @@ list_discovery_jobs(Client, Input)
 -spec list_discovery_jobs(map(), list_discovery_jobs_request(), proplists:proplist()) ->
     {ok, list_discovery_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_discovery_jobs_errors(), tuple()}.
 list_discovery_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDiscoveryJobs">>, Input, Options).
@@ -2610,8 +2771,7 @@ list_discovery_jobs(Client, Input, Options)
 -spec list_locations(map(), list_locations_request()) ->
     {ok, list_locations_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_locations_errors(), tuple()}.
 list_locations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_locations(Client, Input, []).
@@ -2619,8 +2779,7 @@ list_locations(Client, Input)
 -spec list_locations(map(), list_locations_request(), proplists:proplist()) ->
     {ok, list_locations_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_locations_errors(), tuple()}.
 list_locations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLocations">>, Input, Options).
@@ -2630,8 +2789,7 @@ list_locations(Client, Input, Options)
 -spec list_storage_systems(map(), list_storage_systems_request()) ->
     {ok, list_storage_systems_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_storage_systems_errors(), tuple()}.
 list_storage_systems(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_storage_systems(Client, Input, []).
@@ -2639,8 +2797,7 @@ list_storage_systems(Client, Input)
 -spec list_storage_systems(map(), list_storage_systems_request(), proplists:proplist()) ->
     {ok, list_storage_systems_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_storage_systems_errors(), tuple()}.
 list_storage_systems(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStorageSystems">>, Input, Options).
@@ -2649,8 +2806,7 @@ list_storage_systems(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -2658,8 +2814,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -2668,8 +2823,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec list_task_executions(map(), list_task_executions_request()) ->
     {ok, list_task_executions_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_task_executions_errors(), tuple()}.
 list_task_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_task_executions(Client, Input, []).
@@ -2677,8 +2831,7 @@ list_task_executions(Client, Input)
 -spec list_task_executions(map(), list_task_executions_request(), proplists:proplist()) ->
     {ok, list_task_executions_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_task_executions_errors(), tuple()}.
 list_task_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTaskExecutions">>, Input, Options).
@@ -2687,8 +2840,7 @@ list_task_executions(Client, Input, Options)
 -spec list_tasks(map(), list_tasks_request()) ->
     {ok, list_tasks_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_tasks_errors(), tuple()}.
 list_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tasks(Client, Input, []).
@@ -2696,8 +2848,7 @@ list_tasks(Client, Input)
 -spec list_tasks(map(), list_tasks_request(), proplists:proplist()) ->
     {ok, list_tasks_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_tasks_errors(), tuple()}.
 list_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTasks">>, Input, Options).
@@ -2708,8 +2859,7 @@ list_tasks(Client, Input, Options)
 -spec remove_storage_system(map(), remove_storage_system_request()) ->
     {ok, remove_storage_system_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, remove_storage_system_errors(), tuple()}.
 remove_storage_system(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_storage_system(Client, Input, []).
@@ -2717,8 +2867,7 @@ remove_storage_system(Client, Input)
 -spec remove_storage_system(map(), remove_storage_system_request(), proplists:proplist()) ->
     {ok, remove_storage_system_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, remove_storage_system_errors(), tuple()}.
 remove_storage_system(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveStorageSystem">>, Input, Options).
@@ -2733,8 +2882,7 @@ remove_storage_system(Client, Input, Options)
 -spec start_discovery_job(map(), start_discovery_job_request()) ->
     {ok, start_discovery_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, start_discovery_job_errors(), tuple()}.
 start_discovery_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_discovery_job(Client, Input, []).
@@ -2742,8 +2890,7 @@ start_discovery_job(Client, Input)
 -spec start_discovery_job(map(), start_discovery_job_request(), proplists:proplist()) ->
     {ok, start_discovery_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, start_discovery_job_errors(), tuple()}.
 start_discovery_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDiscoveryJob">>, Input, Options).
@@ -2768,8 +2915,7 @@ start_discovery_job(Client, Input, Options)
 -spec start_task_execution(map(), start_task_execution_request()) ->
     {ok, start_task_execution_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, start_task_execution_errors(), tuple()}.
 start_task_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_task_execution(Client, Input, []).
@@ -2777,8 +2923,7 @@ start_task_execution(Client, Input)
 -spec start_task_execution(map(), start_task_execution_request(), proplists:proplist()) ->
     {ok, start_task_execution_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, start_task_execution_errors(), tuple()}.
 start_task_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartTaskExecution">>, Input, Options).
@@ -2796,8 +2941,7 @@ start_task_execution(Client, Input, Options)
 -spec stop_discovery_job(map(), stop_discovery_job_request()) ->
     {ok, stop_discovery_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, stop_discovery_job_errors(), tuple()}.
 stop_discovery_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_discovery_job(Client, Input, []).
@@ -2805,8 +2949,7 @@ stop_discovery_job(Client, Input)
 -spec stop_discovery_job(map(), stop_discovery_job_request(), proplists:proplist()) ->
     {ok, stop_discovery_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, stop_discovery_job_errors(), tuple()}.
 stop_discovery_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopDiscoveryJob">>, Input, Options).
@@ -2822,8 +2965,7 @@ stop_discovery_job(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -2831,8 +2973,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -2841,8 +2982,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -2850,8 +2990,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -2860,8 +2999,7 @@ untag_resource(Client, Input, Options)
 -spec update_agent(map(), update_agent_request()) ->
     {ok, update_agent_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_agent_errors(), tuple()}.
 update_agent(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_agent(Client, Input, []).
@@ -2869,8 +3007,7 @@ update_agent(Client, Input)
 -spec update_agent(map(), update_agent_request(), proplists:proplist()) ->
     {ok, update_agent_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_agent_errors(), tuple()}.
 update_agent(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAgent">>, Input, Options).
@@ -2879,8 +3016,7 @@ update_agent(Client, Input, Options)
 -spec update_discovery_job(map(), update_discovery_job_request()) ->
     {ok, update_discovery_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_discovery_job_errors(), tuple()}.
 update_discovery_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_discovery_job(Client, Input, []).
@@ -2888,8 +3024,7 @@ update_discovery_job(Client, Input)
 -spec update_discovery_job(map(), update_discovery_job_request(), proplists:proplist()) ->
     {ok, update_discovery_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_discovery_job_errors(), tuple()}.
 update_discovery_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDiscoveryJob">>, Input, Options).
@@ -2899,8 +3034,7 @@ update_discovery_job(Client, Input, Options)
 -spec update_location_azure_blob(map(), update_location_azure_blob_request()) ->
     {ok, update_location_azure_blob_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_location_azure_blob_errors(), tuple()}.
 update_location_azure_blob(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_location_azure_blob(Client, Input, []).
@@ -2908,8 +3042,7 @@ update_location_azure_blob(Client, Input)
 -spec update_location_azure_blob(map(), update_location_azure_blob_request(), proplists:proplist()) ->
     {ok, update_location_azure_blob_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_location_azure_blob_errors(), tuple()}.
 update_location_azure_blob(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLocationAzureBlob">>, Input, Options).
@@ -2920,8 +3053,7 @@ update_location_azure_blob(Client, Input, Options)
 -spec update_location_hdfs(map(), update_location_hdfs_request()) ->
     {ok, update_location_hdfs_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_location_hdfs_errors(), tuple()}.
 update_location_hdfs(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_location_hdfs(Client, Input, []).
@@ -2929,8 +3061,7 @@ update_location_hdfs(Client, Input)
 -spec update_location_hdfs(map(), update_location_hdfs_request(), proplists:proplist()) ->
     {ok, update_location_hdfs_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_location_hdfs_errors(), tuple()}.
 update_location_hdfs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLocationHdfs">>, Input, Options).
@@ -2945,8 +3076,7 @@ update_location_hdfs(Client, Input, Options)
 -spec update_location_nfs(map(), update_location_nfs_request()) ->
     {ok, update_location_nfs_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_location_nfs_errors(), tuple()}.
 update_location_nfs(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_location_nfs(Client, Input, []).
@@ -2954,8 +3084,7 @@ update_location_nfs(Client, Input)
 -spec update_location_nfs(map(), update_location_nfs_request(), proplists:proplist()) ->
     {ok, update_location_nfs_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_location_nfs_errors(), tuple()}.
 update_location_nfs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLocationNfs">>, Input, Options).
@@ -2971,8 +3100,7 @@ update_location_nfs(Client, Input, Options)
 -spec update_location_object_storage(map(), update_location_object_storage_request()) ->
     {ok, update_location_object_storage_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_location_object_storage_errors(), tuple()}.
 update_location_object_storage(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_location_object_storage(Client, Input, []).
@@ -2980,8 +3108,7 @@ update_location_object_storage(Client, Input)
 -spec update_location_object_storage(map(), update_location_object_storage_request(), proplists:proplist()) ->
     {ok, update_location_object_storage_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_location_object_storage_errors(), tuple()}.
 update_location_object_storage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLocationObjectStorage">>, Input, Options).
@@ -2991,8 +3118,7 @@ update_location_object_storage(Client, Input, Options)
 -spec update_location_smb(map(), update_location_smb_request()) ->
     {ok, update_location_smb_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_location_smb_errors(), tuple()}.
 update_location_smb(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_location_smb(Client, Input, []).
@@ -3000,8 +3126,7 @@ update_location_smb(Client, Input)
 -spec update_location_smb(map(), update_location_smb_request(), proplists:proplist()) ->
     {ok, update_location_smb_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_location_smb_errors(), tuple()}.
 update_location_smb(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLocationSmb">>, Input, Options).
@@ -3012,8 +3137,7 @@ update_location_smb(Client, Input, Options)
 -spec update_storage_system(map(), update_storage_system_request()) ->
     {ok, update_storage_system_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_storage_system_errors(), tuple()}.
 update_storage_system(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_storage_system(Client, Input, []).
@@ -3021,8 +3145,7 @@ update_storage_system(Client, Input)
 -spec update_storage_system(map(), update_storage_system_request(), proplists:proplist()) ->
     {ok, update_storage_system_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_storage_system_errors(), tuple()}.
 update_storage_system(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateStorageSystem">>, Input, Options).
@@ -3031,8 +3154,7 @@ update_storage_system(Client, Input, Options)
 -spec update_task(map(), update_task_request()) ->
     {ok, update_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_task_errors(), tuple()}.
 update_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_task(Client, Input, []).
@@ -3040,8 +3162,7 @@ update_task(Client, Input)
 -spec update_task(map(), update_task_request(), proplists:proplist()) ->
     {ok, update_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_task_errors(), tuple()}.
 update_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTask">>, Input, Options).
@@ -3058,8 +3179,7 @@ update_task(Client, Input, Options)
 -spec update_task_execution(map(), update_task_execution_request()) ->
     {ok, update_task_execution_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_task_execution_errors(), tuple()}.
 update_task_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_task_execution(Client, Input, []).
@@ -3067,8 +3187,7 @@ update_task_execution(Client, Input)
 -spec update_task_execution(map(), update_task_execution_request(), proplists:proplist()) ->
     {ok, update_task_execution_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_task_execution_errors(), tuple()}.
 update_task_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTaskExecution">>, Input, Options).

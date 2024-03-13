@@ -1146,6 +1146,68 @@
 %% }
 -type http_endpoint_destination_update() :: #{binary() => any()}.
 
+-type create_delivery_stream_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    resource_in_use_exception() | 
+    invalid_kms_resource_exception().
+
+-type delete_delivery_stream_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type describe_delivery_stream_errors() ::
+    resource_not_found_exception().
+
+-type list_tags_for_delivery_stream_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    resource_not_found_exception().
+
+-type put_record_errors() ::
+    invalid_argument_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    invalid_source_exception() | 
+    invalid_kms_resource_exception().
+
+-type put_record_batch_errors() ::
+    invalid_argument_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    invalid_source_exception() | 
+    invalid_kms_resource_exception().
+
+-type start_delivery_stream_encryption_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_kms_resource_exception().
+
+-type stop_delivery_stream_encryption_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type tag_delivery_stream_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type untag_delivery_stream_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type update_destination_errors() ::
+    concurrent_modification_exception() | 
+    invalid_argument_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
 
 %%====================================================================
 %% API
@@ -1255,10 +1317,7 @@
 -spec create_delivery_stream(map(), create_delivery_stream_input()) ->
     {ok, create_delivery_stream_output(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_kms_resource_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, create_delivery_stream_errors(), tuple()}.
 create_delivery_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_delivery_stream(Client, Input, []).
@@ -1266,10 +1325,7 @@ create_delivery_stream(Client, Input)
 -spec create_delivery_stream(map(), create_delivery_stream_input(), proplists:proplist()) ->
     {ok, create_delivery_stream_output(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_kms_resource_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, create_delivery_stream_errors(), tuple()}.
 create_delivery_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDeliveryStream">>, Input, Options).
@@ -1303,8 +1359,7 @@ create_delivery_stream(Client, Input, Options)
 -spec delete_delivery_stream(map(), delete_delivery_stream_input()) ->
     {ok, delete_delivery_stream_output(), tuple()} |
     {error, any()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_delivery_stream_errors(), tuple()}.
 delete_delivery_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_delivery_stream(Client, Input, []).
@@ -1312,8 +1367,7 @@ delete_delivery_stream(Client, Input)
 -spec delete_delivery_stream(map(), delete_delivery_stream_input(), proplists:proplist()) ->
     {ok, delete_delivery_stream_output(), tuple()} |
     {error, any()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_delivery_stream_errors(), tuple()}.
 delete_delivery_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDeliveryStream">>, Input, Options).
@@ -1337,7 +1391,7 @@ delete_delivery_stream(Client, Input, Options)
 -spec describe_delivery_stream(map(), describe_delivery_stream_input()) ->
     {ok, describe_delivery_stream_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_delivery_stream_errors(), tuple()}.
 describe_delivery_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_delivery_stream(Client, Input, []).
@@ -1345,7 +1399,7 @@ describe_delivery_stream(Client, Input)
 -spec describe_delivery_stream(map(), describe_delivery_stream_input(), proplists:proplist()) ->
     {ok, describe_delivery_stream_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_delivery_stream_errors(), tuple()}.
 describe_delivery_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDeliveryStream">>, Input, Options).
@@ -1386,9 +1440,7 @@ list_delivery_streams(Client, Input, Options)
 -spec list_tags_for_delivery_stream(map(), list_tags_for_delivery_stream_input()) ->
     {ok, list_tags_for_delivery_stream_output(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_delivery_stream_errors(), tuple()}.
 list_tags_for_delivery_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_delivery_stream(Client, Input, []).
@@ -1396,9 +1448,7 @@ list_tags_for_delivery_stream(Client, Input)
 -spec list_tags_for_delivery_stream(map(), list_tags_for_delivery_stream_input(), proplists:proplist()) ->
     {ok, list_tags_for_delivery_stream_output(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_delivery_stream_errors(), tuple()}.
 list_tags_for_delivery_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForDeliveryStream">>, Input, Options).
@@ -1473,11 +1523,7 @@ list_tags_for_delivery_stream(Client, Input, Options)
 -spec put_record(map(), put_record_input()) ->
     {ok, put_record_output(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_kms_resource_exception(), tuple()} |
-    {error, invalid_source_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_record_errors(), tuple()}.
 put_record(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_record(Client, Input, []).
@@ -1485,11 +1531,7 @@ put_record(Client, Input)
 -spec put_record(map(), put_record_input(), proplists:proplist()) ->
     {ok, put_record_output(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_kms_resource_exception(), tuple()} |
-    {error, invalid_source_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_record_errors(), tuple()}.
 put_record(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRecord">>, Input, Options).
@@ -1596,11 +1638,7 @@ put_record(Client, Input, Options)
 -spec put_record_batch(map(), put_record_batch_input()) ->
     {ok, put_record_batch_output(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_kms_resource_exception(), tuple()} |
-    {error, invalid_source_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_record_batch_errors(), tuple()}.
 put_record_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_record_batch(Client, Input, []).
@@ -1608,11 +1646,7 @@ put_record_batch(Client, Input)
 -spec put_record_batch(map(), put_record_batch_input(), proplists:proplist()) ->
     {ok, put_record_batch_output(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_kms_resource_exception(), tuple()} |
-    {error, invalid_source_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_record_batch_errors(), tuple()}.
 put_record_batch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRecordBatch">>, Input, Options).
@@ -1688,11 +1722,7 @@ put_record_batch(Client, Input, Options)
 -spec start_delivery_stream_encryption(map(), start_delivery_stream_encryption_input()) ->
     {ok, start_delivery_stream_encryption_output(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_kms_resource_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_delivery_stream_encryption_errors(), tuple()}.
 start_delivery_stream_encryption(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_delivery_stream_encryption(Client, Input, []).
@@ -1700,11 +1730,7 @@ start_delivery_stream_encryption(Client, Input)
 -spec start_delivery_stream_encryption(map(), start_delivery_stream_encryption_input(), proplists:proplist()) ->
     {ok, start_delivery_stream_encryption_output(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_kms_resource_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_delivery_stream_encryption_errors(), tuple()}.
 start_delivery_stream_encryption(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDeliveryStreamEncryption">>, Input, Options).
@@ -1746,10 +1772,7 @@ start_delivery_stream_encryption(Client, Input, Options)
 -spec stop_delivery_stream_encryption(map(), stop_delivery_stream_encryption_input()) ->
     {ok, stop_delivery_stream_encryption_output(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_delivery_stream_encryption_errors(), tuple()}.
 stop_delivery_stream_encryption(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_delivery_stream_encryption(Client, Input, []).
@@ -1757,10 +1780,7 @@ stop_delivery_stream_encryption(Client, Input)
 -spec stop_delivery_stream_encryption(map(), stop_delivery_stream_encryption_input(), proplists:proplist()) ->
     {ok, stop_delivery_stream_encryption_output(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_delivery_stream_encryption_errors(), tuple()}.
 stop_delivery_stream_encryption(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopDeliveryStreamEncryption">>, Input, Options).
@@ -1788,10 +1808,7 @@ stop_delivery_stream_encryption(Client, Input, Options)
 -spec tag_delivery_stream(map(), tag_delivery_stream_input()) ->
     {ok, tag_delivery_stream_output(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_delivery_stream_errors(), tuple()}.
 tag_delivery_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_delivery_stream(Client, Input, []).
@@ -1799,10 +1816,7 @@ tag_delivery_stream(Client, Input)
 -spec tag_delivery_stream(map(), tag_delivery_stream_input(), proplists:proplist()) ->
     {ok, tag_delivery_stream_output(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_delivery_stream_errors(), tuple()}.
 tag_delivery_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagDeliveryStream">>, Input, Options).
@@ -1818,10 +1832,7 @@ tag_delivery_stream(Client, Input, Options)
 -spec untag_delivery_stream(map(), untag_delivery_stream_input()) ->
     {ok, untag_delivery_stream_output(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_delivery_stream_errors(), tuple()}.
 untag_delivery_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_delivery_stream(Client, Input, []).
@@ -1829,10 +1840,7 @@ untag_delivery_stream(Client, Input)
 -spec untag_delivery_stream(map(), untag_delivery_stream_input(), proplists:proplist()) ->
     {ok, untag_delivery_stream_output(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_delivery_stream_errors(), tuple()}.
 untag_delivery_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagDeliveryStream">>, Input, Options).
@@ -1884,10 +1892,7 @@ untag_delivery_stream(Client, Input, Options)
 -spec update_destination(map(), update_destination_input()) ->
     {ok, update_destination_output(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_destination_errors(), tuple()}.
 update_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_destination(Client, Input, []).
@@ -1895,10 +1900,7 @@ update_destination(Client, Input)
 -spec update_destination(map(), update_destination_input(), proplists:proplist()) ->
     {ok, update_destination_output(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_destination_errors(), tuple()}.
 update_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDestination">>, Input, Options).

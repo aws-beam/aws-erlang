@@ -1577,6 +1577,554 @@
 %% }
 -type detach_managed_policy_from_permission_set_response() :: #{binary() => any()}.
 
+-type attach_customer_managed_policy_reference_to_permission_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type attach_managed_policy_to_permission_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_account_assignment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_application_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_application_assignment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_instance_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_instance_access_control_attribute_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_permission_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_trusted_token_issuer_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_account_assignment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_application_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_application_access_scope_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_application_assignment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_application_authentication_method_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_application_grant_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_inline_policy_from_permission_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_instance_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_instance_access_control_attribute_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_permission_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_permissions_boundary_from_permission_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_trusted_token_issuer_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_account_assignment_creation_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_account_assignment_deletion_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_application_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_application_assignment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_application_provider_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_instance_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type describe_instance_access_control_attribute_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_permission_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_permission_set_provisioning_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_trusted_token_issuer_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type detach_customer_managed_policy_reference_from_permission_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type detach_managed_policy_from_permission_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_application_access_scope_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_application_assignment_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_application_authentication_method_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_application_grant_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_inline_policy_for_permission_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_permissions_boundary_for_permission_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_account_assignment_creation_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_account_assignment_deletion_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_account_assignments_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_account_assignments_for_principal_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_accounts_for_provisioned_permission_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_application_access_scopes_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_application_assignments_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_application_assignments_for_principal_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_application_authentication_methods_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_application_grants_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_application_providers_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_applications_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_customer_managed_policy_references_in_permission_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_instances_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_managed_policies_in_permission_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_permission_set_provisioning_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_permission_sets_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_permission_sets_provisioned_to_account_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_trusted_token_issuers_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type provision_permission_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type put_application_access_scope_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type put_application_assignment_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type put_application_authentication_method_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type put_application_grant_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type put_inline_policy_to_permission_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type put_permissions_boundary_to_permission_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_application_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_instance_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type update_instance_access_control_attribute_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_permission_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_trusted_token_issuer_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -1587,13 +2135,7 @@
 -spec attach_customer_managed_policy_reference_to_permission_set(map(), attach_customer_managed_policy_reference_to_permission_set_request()) ->
     {ok, attach_customer_managed_policy_reference_to_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, attach_customer_managed_policy_reference_to_permission_set_errors(), tuple()}.
 attach_customer_managed_policy_reference_to_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_customer_managed_policy_reference_to_permission_set(Client, Input, []).
@@ -1601,13 +2143,7 @@ attach_customer_managed_policy_reference_to_permission_set(Client, Input)
 -spec attach_customer_managed_policy_reference_to_permission_set(map(), attach_customer_managed_policy_reference_to_permission_set_request(), proplists:proplist()) ->
     {ok, attach_customer_managed_policy_reference_to_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, attach_customer_managed_policy_reference_to_permission_set_errors(), tuple()}.
 attach_customer_managed_policy_reference_to_permission_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachCustomerManagedPolicyReferenceToPermissionSet">>, Input, Options).
@@ -1625,13 +2161,7 @@ attach_customer_managed_policy_reference_to_permission_set(Client, Input, Option
 -spec attach_managed_policy_to_permission_set(map(), attach_managed_policy_to_permission_set_request()) ->
     {ok, attach_managed_policy_to_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, attach_managed_policy_to_permission_set_errors(), tuple()}.
 attach_managed_policy_to_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_managed_policy_to_permission_set(Client, Input, []).
@@ -1639,13 +2169,7 @@ attach_managed_policy_to_permission_set(Client, Input)
 -spec attach_managed_policy_to_permission_set(map(), attach_managed_policy_to_permission_set_request(), proplists:proplist()) ->
     {ok, attach_managed_policy_to_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, attach_managed_policy_to_permission_set_errors(), tuple()}.
 attach_managed_policy_to_permission_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachManagedPolicyToPermissionSet">>, Input, Options).
@@ -1677,13 +2201,7 @@ attach_managed_policy_to_permission_set(Client, Input, Options)
 -spec create_account_assignment(map(), create_account_assignment_request()) ->
     {ok, create_account_assignment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_account_assignment_errors(), tuple()}.
 create_account_assignment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_account_assignment(Client, Input, []).
@@ -1691,13 +2209,7 @@ create_account_assignment(Client, Input)
 -spec create_account_assignment(map(), create_account_assignment_request(), proplists:proplist()) ->
     {ok, create_account_assignment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_account_assignment_errors(), tuple()}.
 create_account_assignment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAccountAssignment">>, Input, Options).
@@ -1707,13 +2219,7 @@ create_account_assignment(Client, Input, Options)
 -spec create_application(map(), create_application_request()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_application_errors(), tuple()}.
 create_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_application(Client, Input, []).
@@ -1721,13 +2227,7 @@ create_application(Client, Input)
 -spec create_application(map(), create_application_request(), proplists:proplist()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_application_errors(), tuple()}.
 create_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateApplication">>, Input, Options).
@@ -1736,13 +2236,7 @@ create_application(Client, Input, Options)
 -spec create_application_assignment(map(), create_application_assignment_request()) ->
     {ok, create_application_assignment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_application_assignment_errors(), tuple()}.
 create_application_assignment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_application_assignment(Client, Input, []).
@@ -1750,13 +2244,7 @@ create_application_assignment(Client, Input)
 -spec create_application_assignment(map(), create_application_assignment_request(), proplists:proplist()) ->
     {ok, create_application_assignment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_application_assignment_errors(), tuple()}.
 create_application_assignment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateApplicationAssignment">>, Input, Options).
@@ -1778,12 +2266,7 @@ create_application_assignment(Client, Input, Options)
 -spec create_instance(map(), create_instance_request()) ->
     {ok, create_instance_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_instance_errors(), tuple()}.
 create_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_instance(Client, Input, []).
@@ -1791,12 +2274,7 @@ create_instance(Client, Input)
 -spec create_instance(map(), create_instance_request(), proplists:proplist()) ->
     {ok, create_instance_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_instance_errors(), tuple()}.
 create_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateInstance">>, Input, Options).
@@ -1817,12 +2295,7 @@ create_instance(Client, Input, Options)
 -spec create_instance_access_control_attribute_configuration(map(), create_instance_access_control_attribute_configuration_request()) ->
     {ok, create_instance_access_control_attribute_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_instance_access_control_attribute_configuration_errors(), tuple()}.
 create_instance_access_control_attribute_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_instance_access_control_attribute_configuration(Client, Input, []).
@@ -1830,12 +2303,7 @@ create_instance_access_control_attribute_configuration(Client, Input)
 -spec create_instance_access_control_attribute_configuration(map(), create_instance_access_control_attribute_configuration_request(), proplists:proplist()) ->
     {ok, create_instance_access_control_attribute_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_instance_access_control_attribute_configuration_errors(), tuple()}.
 create_instance_access_control_attribute_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateInstanceAccessControlAttributeConfiguration">>, Input, Options).
@@ -1850,13 +2318,7 @@ create_instance_access_control_attribute_configuration(Client, Input, Options)
 -spec create_permission_set(map(), create_permission_set_request()) ->
     {ok, create_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_permission_set_errors(), tuple()}.
 create_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_permission_set(Client, Input, []).
@@ -1864,13 +2326,7 @@ create_permission_set(Client, Input)
 -spec create_permission_set(map(), create_permission_set_request(), proplists:proplist()) ->
     {ok, create_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_permission_set_errors(), tuple()}.
 create_permission_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePermissionSet">>, Input, Options).
@@ -1889,12 +2345,7 @@ create_permission_set(Client, Input, Options)
 -spec create_trusted_token_issuer(map(), create_trusted_token_issuer_request()) ->
     {ok, create_trusted_token_issuer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_trusted_token_issuer_errors(), tuple()}.
 create_trusted_token_issuer(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_trusted_token_issuer(Client, Input, []).
@@ -1902,12 +2353,7 @@ create_trusted_token_issuer(Client, Input)
 -spec create_trusted_token_issuer(map(), create_trusted_token_issuer_request(), proplists:proplist()) ->
     {ok, create_trusted_token_issuer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_trusted_token_issuer_errors(), tuple()}.
 create_trusted_token_issuer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTrustedTokenIssuer">>, Input, Options).
@@ -1922,12 +2368,7 @@ create_trusted_token_issuer(Client, Input, Options)
 -spec delete_account_assignment(map(), delete_account_assignment_request()) ->
     {ok, delete_account_assignment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_account_assignment_errors(), tuple()}.
 delete_account_assignment(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_account_assignment(Client, Input, []).
@@ -1935,12 +2376,7 @@ delete_account_assignment(Client, Input)
 -spec delete_account_assignment(map(), delete_account_assignment_request(), proplists:proplist()) ->
     {ok, delete_account_assignment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_account_assignment_errors(), tuple()}.
 delete_account_assignment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAccountAssignment">>, Input, Options).
@@ -1952,12 +2388,7 @@ delete_account_assignment(Client, Input, Options)
 -spec delete_application(map(), delete_application_request()) ->
     {ok, delete_application_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_application_errors(), tuple()}.
 delete_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application(Client, Input, []).
@@ -1965,12 +2396,7 @@ delete_application(Client, Input)
 -spec delete_application(map(), delete_application_request(), proplists:proplist()) ->
     {ok, delete_application_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_application_errors(), tuple()}.
 delete_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApplication">>, Input, Options).
@@ -1979,12 +2405,7 @@ delete_application(Client, Input, Options)
 -spec delete_application_access_scope(map(), delete_application_access_scope_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_application_access_scope_errors(), tuple()}.
 delete_application_access_scope(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application_access_scope(Client, Input, []).
@@ -1992,12 +2413,7 @@ delete_application_access_scope(Client, Input)
 -spec delete_application_access_scope(map(), delete_application_access_scope_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_application_access_scope_errors(), tuple()}.
 delete_application_access_scope(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApplicationAccessScope">>, Input, Options).
@@ -2008,12 +2424,7 @@ delete_application_access_scope(Client, Input, Options)
 -spec delete_application_assignment(map(), delete_application_assignment_request()) ->
     {ok, delete_application_assignment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_application_assignment_errors(), tuple()}.
 delete_application_assignment(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application_assignment(Client, Input, []).
@@ -2021,12 +2432,7 @@ delete_application_assignment(Client, Input)
 -spec delete_application_assignment(map(), delete_application_assignment_request(), proplists:proplist()) ->
     {ok, delete_application_assignment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_application_assignment_errors(), tuple()}.
 delete_application_assignment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApplicationAssignment">>, Input, Options).
@@ -2035,12 +2441,7 @@ delete_application_assignment(Client, Input, Options)
 -spec delete_application_authentication_method(map(), delete_application_authentication_method_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_application_authentication_method_errors(), tuple()}.
 delete_application_authentication_method(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application_authentication_method(Client, Input, []).
@@ -2048,12 +2449,7 @@ delete_application_authentication_method(Client, Input)
 -spec delete_application_authentication_method(map(), delete_application_authentication_method_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_application_authentication_method_errors(), tuple()}.
 delete_application_authentication_method(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApplicationAuthenticationMethod">>, Input, Options).
@@ -2062,12 +2458,7 @@ delete_application_authentication_method(Client, Input, Options)
 -spec delete_application_grant(map(), delete_application_grant_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_application_grant_errors(), tuple()}.
 delete_application_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application_grant(Client, Input, []).
@@ -2075,12 +2466,7 @@ delete_application_grant(Client, Input)
 -spec delete_application_grant(map(), delete_application_grant_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_application_grant_errors(), tuple()}.
 delete_application_grant(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApplicationGrant">>, Input, Options).
@@ -2089,12 +2475,7 @@ delete_application_grant(Client, Input, Options)
 -spec delete_inline_policy_from_permission_set(map(), delete_inline_policy_from_permission_set_request()) ->
     {ok, delete_inline_policy_from_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_inline_policy_from_permission_set_errors(), tuple()}.
 delete_inline_policy_from_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_inline_policy_from_permission_set(Client, Input, []).
@@ -2102,12 +2483,7 @@ delete_inline_policy_from_permission_set(Client, Input)
 -spec delete_inline_policy_from_permission_set(map(), delete_inline_policy_from_permission_set_request(), proplists:proplist()) ->
     {ok, delete_inline_policy_from_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_inline_policy_from_permission_set_errors(), tuple()}.
 delete_inline_policy_from_permission_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInlinePolicyFromPermissionSet">>, Input, Options).
@@ -2121,11 +2497,7 @@ delete_inline_policy_from_permission_set(Client, Input, Options)
 -spec delete_instance(map(), delete_instance_request()) ->
     {ok, delete_instance_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_instance_errors(), tuple()}.
 delete_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_instance(Client, Input, []).
@@ -2133,11 +2505,7 @@ delete_instance(Client, Input)
 -spec delete_instance(map(), delete_instance_request(), proplists:proplist()) ->
     {ok, delete_instance_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_instance_errors(), tuple()}.
 delete_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInstance">>, Input, Options).
@@ -2157,12 +2525,7 @@ delete_instance(Client, Input, Options)
 -spec delete_instance_access_control_attribute_configuration(map(), delete_instance_access_control_attribute_configuration_request()) ->
     {ok, delete_instance_access_control_attribute_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_instance_access_control_attribute_configuration_errors(), tuple()}.
 delete_instance_access_control_attribute_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_instance_access_control_attribute_configuration(Client, Input, []).
@@ -2170,12 +2533,7 @@ delete_instance_access_control_attribute_configuration(Client, Input)
 -spec delete_instance_access_control_attribute_configuration(map(), delete_instance_access_control_attribute_configuration_request(), proplists:proplist()) ->
     {ok, delete_instance_access_control_attribute_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_instance_access_control_attribute_configuration_errors(), tuple()}.
 delete_instance_access_control_attribute_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInstanceAccessControlAttributeConfiguration">>, Input, Options).
@@ -2184,12 +2542,7 @@ delete_instance_access_control_attribute_configuration(Client, Input, Options)
 -spec delete_permission_set(map(), delete_permission_set_request()) ->
     {ok, delete_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_permission_set_errors(), tuple()}.
 delete_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_permission_set(Client, Input, []).
@@ -2197,12 +2550,7 @@ delete_permission_set(Client, Input)
 -spec delete_permission_set(map(), delete_permission_set_request(), proplists:proplist()) ->
     {ok, delete_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_permission_set_errors(), tuple()}.
 delete_permission_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePermissionSet">>, Input, Options).
@@ -2212,12 +2560,7 @@ delete_permission_set(Client, Input, Options)
 -spec delete_permissions_boundary_from_permission_set(map(), delete_permissions_boundary_from_permission_set_request()) ->
     {ok, delete_permissions_boundary_from_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_permissions_boundary_from_permission_set_errors(), tuple()}.
 delete_permissions_boundary_from_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_permissions_boundary_from_permission_set(Client, Input, []).
@@ -2225,12 +2568,7 @@ delete_permissions_boundary_from_permission_set(Client, Input)
 -spec delete_permissions_boundary_from_permission_set(map(), delete_permissions_boundary_from_permission_set_request(), proplists:proplist()) ->
     {ok, delete_permissions_boundary_from_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_permissions_boundary_from_permission_set_errors(), tuple()}.
 delete_permissions_boundary_from_permission_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePermissionsBoundaryFromPermissionSet">>, Input, Options).
@@ -2244,12 +2582,7 @@ delete_permissions_boundary_from_permission_set(Client, Input, Options)
 -spec delete_trusted_token_issuer(map(), delete_trusted_token_issuer_request()) ->
     {ok, delete_trusted_token_issuer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_trusted_token_issuer_errors(), tuple()}.
 delete_trusted_token_issuer(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_trusted_token_issuer(Client, Input, []).
@@ -2257,12 +2590,7 @@ delete_trusted_token_issuer(Client, Input)
 -spec delete_trusted_token_issuer(map(), delete_trusted_token_issuer_request(), proplists:proplist()) ->
     {ok, delete_trusted_token_issuer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_trusted_token_issuer_errors(), tuple()}.
 delete_trusted_token_issuer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTrustedTokenIssuer">>, Input, Options).
@@ -2271,11 +2599,7 @@ delete_trusted_token_issuer(Client, Input, Options)
 -spec describe_account_assignment_creation_status(map(), describe_account_assignment_creation_status_request()) ->
     {ok, describe_account_assignment_creation_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_account_assignment_creation_status_errors(), tuple()}.
 describe_account_assignment_creation_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_assignment_creation_status(Client, Input, []).
@@ -2283,11 +2607,7 @@ describe_account_assignment_creation_status(Client, Input)
 -spec describe_account_assignment_creation_status(map(), describe_account_assignment_creation_status_request(), proplists:proplist()) ->
     {ok, describe_account_assignment_creation_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_account_assignment_creation_status_errors(), tuple()}.
 describe_account_assignment_creation_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountAssignmentCreationStatus">>, Input, Options).
@@ -2296,11 +2616,7 @@ describe_account_assignment_creation_status(Client, Input, Options)
 -spec describe_account_assignment_deletion_status(map(), describe_account_assignment_deletion_status_request()) ->
     {ok, describe_account_assignment_deletion_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_account_assignment_deletion_status_errors(), tuple()}.
 describe_account_assignment_deletion_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_assignment_deletion_status(Client, Input, []).
@@ -2308,11 +2624,7 @@ describe_account_assignment_deletion_status(Client, Input)
 -spec describe_account_assignment_deletion_status(map(), describe_account_assignment_deletion_status_request(), proplists:proplist()) ->
     {ok, describe_account_assignment_deletion_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_account_assignment_deletion_status_errors(), tuple()}.
 describe_account_assignment_deletion_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountAssignmentDeletionStatus">>, Input, Options).
@@ -2322,11 +2634,7 @@ describe_account_assignment_deletion_status(Client, Input, Options)
 -spec describe_application(map(), describe_application_request()) ->
     {ok, describe_application_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_application_errors(), tuple()}.
 describe_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_application(Client, Input, []).
@@ -2334,11 +2642,7 @@ describe_application(Client, Input)
 -spec describe_application(map(), describe_application_request(), proplists:proplist()) ->
     {ok, describe_application_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_application_errors(), tuple()}.
 describe_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeApplication">>, Input, Options).
@@ -2352,11 +2656,7 @@ describe_application(Client, Input, Options)
 -spec describe_application_assignment(map(), describe_application_assignment_request()) ->
     {ok, describe_application_assignment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_application_assignment_errors(), tuple()}.
 describe_application_assignment(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_application_assignment(Client, Input, []).
@@ -2364,11 +2664,7 @@ describe_application_assignment(Client, Input)
 -spec describe_application_assignment(map(), describe_application_assignment_request(), proplists:proplist()) ->
     {ok, describe_application_assignment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_application_assignment_errors(), tuple()}.
 describe_application_assignment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeApplicationAssignment">>, Input, Options).
@@ -2379,11 +2675,7 @@ describe_application_assignment(Client, Input, Options)
 -spec describe_application_provider(map(), describe_application_provider_request()) ->
     {ok, describe_application_provider_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_application_provider_errors(), tuple()}.
 describe_application_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_application_provider(Client, Input, []).
@@ -2391,11 +2683,7 @@ describe_application_provider(Client, Input)
 -spec describe_application_provider(map(), describe_application_provider_request(), proplists:proplist()) ->
     {ok, describe_application_provider_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_application_provider_errors(), tuple()}.
 describe_application_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeApplicationProvider">>, Input, Options).
@@ -2418,10 +2706,7 @@ describe_application_provider(Client, Input, Options)
 -spec describe_instance(map(), describe_instance_request()) ->
     {ok, describe_instance_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_instance_errors(), tuple()}.
 describe_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance(Client, Input, []).
@@ -2429,10 +2714,7 @@ describe_instance(Client, Input)
 -spec describe_instance(map(), describe_instance_request(), proplists:proplist()) ->
     {ok, describe_instance_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_instance_errors(), tuple()}.
 describe_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInstance">>, Input, Options).
@@ -2451,11 +2733,7 @@ describe_instance(Client, Input, Options)
 -spec describe_instance_access_control_attribute_configuration(map(), describe_instance_access_control_attribute_configuration_request()) ->
     {ok, describe_instance_access_control_attribute_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_instance_access_control_attribute_configuration_errors(), tuple()}.
 describe_instance_access_control_attribute_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_access_control_attribute_configuration(Client, Input, []).
@@ -2463,11 +2741,7 @@ describe_instance_access_control_attribute_configuration(Client, Input)
 -spec describe_instance_access_control_attribute_configuration(map(), describe_instance_access_control_attribute_configuration_request(), proplists:proplist()) ->
     {ok, describe_instance_access_control_attribute_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_instance_access_control_attribute_configuration_errors(), tuple()}.
 describe_instance_access_control_attribute_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInstanceAccessControlAttributeConfiguration">>, Input, Options).
@@ -2476,11 +2750,7 @@ describe_instance_access_control_attribute_configuration(Client, Input, Options)
 -spec describe_permission_set(map(), describe_permission_set_request()) ->
     {ok, describe_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_permission_set_errors(), tuple()}.
 describe_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_permission_set(Client, Input, []).
@@ -2488,11 +2758,7 @@ describe_permission_set(Client, Input)
 -spec describe_permission_set(map(), describe_permission_set_request(), proplists:proplist()) ->
     {ok, describe_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_permission_set_errors(), tuple()}.
 describe_permission_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePermissionSet">>, Input, Options).
@@ -2502,11 +2768,7 @@ describe_permission_set(Client, Input, Options)
 -spec describe_permission_set_provisioning_status(map(), describe_permission_set_provisioning_status_request()) ->
     {ok, describe_permission_set_provisioning_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_permission_set_provisioning_status_errors(), tuple()}.
 describe_permission_set_provisioning_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_permission_set_provisioning_status(Client, Input, []).
@@ -2514,11 +2776,7 @@ describe_permission_set_provisioning_status(Client, Input)
 -spec describe_permission_set_provisioning_status(map(), describe_permission_set_provisioning_status_request(), proplists:proplist()) ->
     {ok, describe_permission_set_provisioning_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_permission_set_provisioning_status_errors(), tuple()}.
 describe_permission_set_provisioning_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePermissionSetProvisioningStatus">>, Input, Options).
@@ -2532,11 +2790,7 @@ describe_permission_set_provisioning_status(Client, Input, Options)
 -spec describe_trusted_token_issuer(map(), describe_trusted_token_issuer_request()) ->
     {ok, describe_trusted_token_issuer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_trusted_token_issuer_errors(), tuple()}.
 describe_trusted_token_issuer(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trusted_token_issuer(Client, Input, []).
@@ -2544,11 +2798,7 @@ describe_trusted_token_issuer(Client, Input)
 -spec describe_trusted_token_issuer(map(), describe_trusted_token_issuer_request(), proplists:proplist()) ->
     {ok, describe_trusted_token_issuer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_trusted_token_issuer_errors(), tuple()}.
 describe_trusted_token_issuer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrustedTokenIssuer">>, Input, Options).
@@ -2558,12 +2808,7 @@ describe_trusted_token_issuer(Client, Input, Options)
 -spec detach_customer_managed_policy_reference_from_permission_set(map(), detach_customer_managed_policy_reference_from_permission_set_request()) ->
     {ok, detach_customer_managed_policy_reference_from_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, detach_customer_managed_policy_reference_from_permission_set_errors(), tuple()}.
 detach_customer_managed_policy_reference_from_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_customer_managed_policy_reference_from_permission_set(Client, Input, []).
@@ -2571,12 +2816,7 @@ detach_customer_managed_policy_reference_from_permission_set(Client, Input)
 -spec detach_customer_managed_policy_reference_from_permission_set(map(), detach_customer_managed_policy_reference_from_permission_set_request(), proplists:proplist()) ->
     {ok, detach_customer_managed_policy_reference_from_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, detach_customer_managed_policy_reference_from_permission_set_errors(), tuple()}.
 detach_customer_managed_policy_reference_from_permission_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachCustomerManagedPolicyReferenceFromPermissionSet">>, Input, Options).
@@ -2587,12 +2827,7 @@ detach_customer_managed_policy_reference_from_permission_set(Client, Input, Opti
 -spec detach_managed_policy_from_permission_set(map(), detach_managed_policy_from_permission_set_request()) ->
     {ok, detach_managed_policy_from_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, detach_managed_policy_from_permission_set_errors(), tuple()}.
 detach_managed_policy_from_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_managed_policy_from_permission_set(Client, Input, []).
@@ -2600,12 +2835,7 @@ detach_managed_policy_from_permission_set(Client, Input)
 -spec detach_managed_policy_from_permission_set(map(), detach_managed_policy_from_permission_set_request(), proplists:proplist()) ->
     {ok, detach_managed_policy_from_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, detach_managed_policy_from_permission_set_errors(), tuple()}.
 detach_managed_policy_from_permission_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachManagedPolicyFromPermissionSet">>, Input, Options).
@@ -2615,11 +2845,7 @@ detach_managed_policy_from_permission_set(Client, Input, Options)
 -spec get_application_access_scope(map(), get_application_access_scope_request()) ->
     {ok, get_application_access_scope_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_application_access_scope_errors(), tuple()}.
 get_application_access_scope(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_application_access_scope(Client, Input, []).
@@ -2627,11 +2853,7 @@ get_application_access_scope(Client, Input)
 -spec get_application_access_scope(map(), get_application_access_scope_request(), proplists:proplist()) ->
     {ok, get_application_access_scope_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_application_access_scope_errors(), tuple()}.
 get_application_access_scope(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetApplicationAccessScope">>, Input, Options).
@@ -2641,11 +2863,7 @@ get_application_access_scope(Client, Input, Options)
 -spec get_application_assignment_configuration(map(), get_application_assignment_configuration_request()) ->
     {ok, get_application_assignment_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_application_assignment_configuration_errors(), tuple()}.
 get_application_assignment_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_application_assignment_configuration(Client, Input, []).
@@ -2653,11 +2871,7 @@ get_application_assignment_configuration(Client, Input)
 -spec get_application_assignment_configuration(map(), get_application_assignment_configuration_request(), proplists:proplist()) ->
     {ok, get_application_assignment_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_application_assignment_configuration_errors(), tuple()}.
 get_application_assignment_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetApplicationAssignmentConfiguration">>, Input, Options).
@@ -2667,11 +2881,7 @@ get_application_assignment_configuration(Client, Input, Options)
 -spec get_application_authentication_method(map(), get_application_authentication_method_request()) ->
     {ok, get_application_authentication_method_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_application_authentication_method_errors(), tuple()}.
 get_application_authentication_method(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_application_authentication_method(Client, Input, []).
@@ -2679,11 +2889,7 @@ get_application_authentication_method(Client, Input)
 -spec get_application_authentication_method(map(), get_application_authentication_method_request(), proplists:proplist()) ->
     {ok, get_application_authentication_method_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_application_authentication_method_errors(), tuple()}.
 get_application_authentication_method(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetApplicationAuthenticationMethod">>, Input, Options).
@@ -2692,11 +2898,7 @@ get_application_authentication_method(Client, Input, Options)
 -spec get_application_grant(map(), get_application_grant_request()) ->
     {ok, get_application_grant_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_application_grant_errors(), tuple()}.
 get_application_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_application_grant(Client, Input, []).
@@ -2704,11 +2906,7 @@ get_application_grant(Client, Input)
 -spec get_application_grant(map(), get_application_grant_request(), proplists:proplist()) ->
     {ok, get_application_grant_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_application_grant_errors(), tuple()}.
 get_application_grant(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetApplicationGrant">>, Input, Options).
@@ -2717,11 +2915,7 @@ get_application_grant(Client, Input, Options)
 -spec get_inline_policy_for_permission_set(map(), get_inline_policy_for_permission_set_request()) ->
     {ok, get_inline_policy_for_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_inline_policy_for_permission_set_errors(), tuple()}.
 get_inline_policy_for_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_inline_policy_for_permission_set(Client, Input, []).
@@ -2729,11 +2923,7 @@ get_inline_policy_for_permission_set(Client, Input)
 -spec get_inline_policy_for_permission_set(map(), get_inline_policy_for_permission_set_request(), proplists:proplist()) ->
     {ok, get_inline_policy_for_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_inline_policy_for_permission_set_errors(), tuple()}.
 get_inline_policy_for_permission_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInlinePolicyForPermissionSet">>, Input, Options).
@@ -2742,11 +2932,7 @@ get_inline_policy_for_permission_set(Client, Input, Options)
 -spec get_permissions_boundary_for_permission_set(map(), get_permissions_boundary_for_permission_set_request()) ->
     {ok, get_permissions_boundary_for_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_permissions_boundary_for_permission_set_errors(), tuple()}.
 get_permissions_boundary_for_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_permissions_boundary_for_permission_set(Client, Input, []).
@@ -2754,11 +2940,7 @@ get_permissions_boundary_for_permission_set(Client, Input)
 -spec get_permissions_boundary_for_permission_set(map(), get_permissions_boundary_for_permission_set_request(), proplists:proplist()) ->
     {ok, get_permissions_boundary_for_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_permissions_boundary_for_permission_set_errors(), tuple()}.
 get_permissions_boundary_for_permission_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPermissionsBoundaryForPermissionSet">>, Input, Options).
@@ -2769,11 +2951,7 @@ get_permissions_boundary_for_permission_set(Client, Input, Options)
 -spec list_account_assignment_creation_status(map(), list_account_assignment_creation_status_request()) ->
     {ok, list_account_assignment_creation_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_account_assignment_creation_status_errors(), tuple()}.
 list_account_assignment_creation_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_account_assignment_creation_status(Client, Input, []).
@@ -2781,11 +2959,7 @@ list_account_assignment_creation_status(Client, Input)
 -spec list_account_assignment_creation_status(map(), list_account_assignment_creation_status_request(), proplists:proplist()) ->
     {ok, list_account_assignment_creation_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_account_assignment_creation_status_errors(), tuple()}.
 list_account_assignment_creation_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAccountAssignmentCreationStatus">>, Input, Options).
@@ -2796,11 +2970,7 @@ list_account_assignment_creation_status(Client, Input, Options)
 -spec list_account_assignment_deletion_status(map(), list_account_assignment_deletion_status_request()) ->
     {ok, list_account_assignment_deletion_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_account_assignment_deletion_status_errors(), tuple()}.
 list_account_assignment_deletion_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_account_assignment_deletion_status(Client, Input, []).
@@ -2808,11 +2978,7 @@ list_account_assignment_deletion_status(Client, Input)
 -spec list_account_assignment_deletion_status(map(), list_account_assignment_deletion_status_request(), proplists:proplist()) ->
     {ok, list_account_assignment_deletion_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_account_assignment_deletion_status_errors(), tuple()}.
 list_account_assignment_deletion_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAccountAssignmentDeletionStatus">>, Input, Options).
@@ -2823,11 +2989,7 @@ list_account_assignment_deletion_status(Client, Input, Options)
 -spec list_account_assignments(map(), list_account_assignments_request()) ->
     {ok, list_account_assignments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_account_assignments_errors(), tuple()}.
 list_account_assignments(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_account_assignments(Client, Input, []).
@@ -2835,11 +2997,7 @@ list_account_assignments(Client, Input)
 -spec list_account_assignments(map(), list_account_assignments_request(), proplists:proplist()) ->
     {ok, list_account_assignments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_account_assignments_errors(), tuple()}.
 list_account_assignments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAccountAssignments">>, Input, Options).
@@ -2850,11 +3008,7 @@ list_account_assignments(Client, Input, Options)
 -spec list_account_assignments_for_principal(map(), list_account_assignments_for_principal_request()) ->
     {ok, list_account_assignments_for_principal_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_account_assignments_for_principal_errors(), tuple()}.
 list_account_assignments_for_principal(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_account_assignments_for_principal(Client, Input, []).
@@ -2862,11 +3016,7 @@ list_account_assignments_for_principal(Client, Input)
 -spec list_account_assignments_for_principal(map(), list_account_assignments_for_principal_request(), proplists:proplist()) ->
     {ok, list_account_assignments_for_principal_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_account_assignments_for_principal_errors(), tuple()}.
 list_account_assignments_for_principal(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAccountAssignmentsForPrincipal">>, Input, Options).
@@ -2876,11 +3026,7 @@ list_account_assignments_for_principal(Client, Input, Options)
 -spec list_accounts_for_provisioned_permission_set(map(), list_accounts_for_provisioned_permission_set_request()) ->
     {ok, list_accounts_for_provisioned_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_accounts_for_provisioned_permission_set_errors(), tuple()}.
 list_accounts_for_provisioned_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_accounts_for_provisioned_permission_set(Client, Input, []).
@@ -2888,11 +3034,7 @@ list_accounts_for_provisioned_permission_set(Client, Input)
 -spec list_accounts_for_provisioned_permission_set(map(), list_accounts_for_provisioned_permission_set_request(), proplists:proplist()) ->
     {ok, list_accounts_for_provisioned_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_accounts_for_provisioned_permission_set_errors(), tuple()}.
 list_accounts_for_provisioned_permission_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAccountsForProvisionedPermissionSet">>, Input, Options).
@@ -2902,11 +3044,7 @@ list_accounts_for_provisioned_permission_set(Client, Input, Options)
 -spec list_application_access_scopes(map(), list_application_access_scopes_request()) ->
     {ok, list_application_access_scopes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_application_access_scopes_errors(), tuple()}.
 list_application_access_scopes(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_application_access_scopes(Client, Input, []).
@@ -2914,11 +3052,7 @@ list_application_access_scopes(Client, Input)
 -spec list_application_access_scopes(map(), list_application_access_scopes_request(), proplists:proplist()) ->
     {ok, list_application_access_scopes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_application_access_scopes_errors(), tuple()}.
 list_application_access_scopes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApplicationAccessScopes">>, Input, Options).
@@ -2928,11 +3062,7 @@ list_application_access_scopes(Client, Input, Options)
 -spec list_application_assignments(map(), list_application_assignments_request()) ->
     {ok, list_application_assignments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_application_assignments_errors(), tuple()}.
 list_application_assignments(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_application_assignments(Client, Input, []).
@@ -2940,11 +3070,7 @@ list_application_assignments(Client, Input)
 -spec list_application_assignments(map(), list_application_assignments_request(), proplists:proplist()) ->
     {ok, list_application_assignments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_application_assignments_errors(), tuple()}.
 list_application_assignments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApplicationAssignments">>, Input, Options).
@@ -2953,11 +3079,7 @@ list_application_assignments(Client, Input, Options)
 -spec list_application_assignments_for_principal(map(), list_application_assignments_for_principal_request()) ->
     {ok, list_application_assignments_for_principal_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_application_assignments_for_principal_errors(), tuple()}.
 list_application_assignments_for_principal(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_application_assignments_for_principal(Client, Input, []).
@@ -2965,11 +3087,7 @@ list_application_assignments_for_principal(Client, Input)
 -spec list_application_assignments_for_principal(map(), list_application_assignments_for_principal_request(), proplists:proplist()) ->
     {ok, list_application_assignments_for_principal_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_application_assignments_for_principal_errors(), tuple()}.
 list_application_assignments_for_principal(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApplicationAssignmentsForPrincipal">>, Input, Options).
@@ -2979,11 +3097,7 @@ list_application_assignments_for_principal(Client, Input, Options)
 -spec list_application_authentication_methods(map(), list_application_authentication_methods_request()) ->
     {ok, list_application_authentication_methods_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_application_authentication_methods_errors(), tuple()}.
 list_application_authentication_methods(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_application_authentication_methods(Client, Input, []).
@@ -2991,11 +3105,7 @@ list_application_authentication_methods(Client, Input)
 -spec list_application_authentication_methods(map(), list_application_authentication_methods_request(), proplists:proplist()) ->
     {ok, list_application_authentication_methods_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_application_authentication_methods_errors(), tuple()}.
 list_application_authentication_methods(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApplicationAuthenticationMethods">>, Input, Options).
@@ -3004,11 +3114,7 @@ list_application_authentication_methods(Client, Input, Options)
 -spec list_application_grants(map(), list_application_grants_request()) ->
     {ok, list_application_grants_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_application_grants_errors(), tuple()}.
 list_application_grants(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_application_grants(Client, Input, []).
@@ -3016,11 +3122,7 @@ list_application_grants(Client, Input)
 -spec list_application_grants(map(), list_application_grants_request(), proplists:proplist()) ->
     {ok, list_application_grants_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_application_grants_errors(), tuple()}.
 list_application_grants(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApplicationGrants">>, Input, Options).
@@ -3030,10 +3132,7 @@ list_application_grants(Client, Input, Options)
 -spec list_application_providers(map(), list_application_providers_request()) ->
     {ok, list_application_providers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_application_providers_errors(), tuple()}.
 list_application_providers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_application_providers(Client, Input, []).
@@ -3041,10 +3140,7 @@ list_application_providers(Client, Input)
 -spec list_application_providers(map(), list_application_providers_request(), proplists:proplist()) ->
     {ok, list_application_providers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_application_providers_errors(), tuple()}.
 list_application_providers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApplicationProviders">>, Input, Options).
@@ -3060,10 +3156,7 @@ list_application_providers(Client, Input, Options)
 -spec list_applications(map(), list_applications_request()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_applications(Client, Input, []).
@@ -3071,10 +3164,7 @@ list_applications(Client, Input)
 -spec list_applications(map(), list_applications_request(), proplists:proplist()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApplications">>, Input, Options).
@@ -3084,11 +3174,7 @@ list_applications(Client, Input, Options)
 -spec list_customer_managed_policy_references_in_permission_set(map(), list_customer_managed_policy_references_in_permission_set_request()) ->
     {ok, list_customer_managed_policy_references_in_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_customer_managed_policy_references_in_permission_set_errors(), tuple()}.
 list_customer_managed_policy_references_in_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_customer_managed_policy_references_in_permission_set(Client, Input, []).
@@ -3096,11 +3182,7 @@ list_customer_managed_policy_references_in_permission_set(Client, Input)
 -spec list_customer_managed_policy_references_in_permission_set(map(), list_customer_managed_policy_references_in_permission_set_request(), proplists:proplist()) ->
     {ok, list_customer_managed_policy_references_in_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_customer_managed_policy_references_in_permission_set_errors(), tuple()}.
 list_customer_managed_policy_references_in_permission_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCustomerManagedPolicyReferencesInPermissionSet">>, Input, Options).
@@ -3111,10 +3193,7 @@ list_customer_managed_policy_references_in_permission_set(Client, Input, Options
 -spec list_instances(map(), list_instances_request()) ->
     {ok, list_instances_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_instances_errors(), tuple()}.
 list_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_instances(Client, Input, []).
@@ -3122,10 +3201,7 @@ list_instances(Client, Input)
 -spec list_instances(map(), list_instances_request(), proplists:proplist()) ->
     {ok, list_instances_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_instances_errors(), tuple()}.
 list_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInstances">>, Input, Options).
@@ -3135,11 +3211,7 @@ list_instances(Client, Input, Options)
 -spec list_managed_policies_in_permission_set(map(), list_managed_policies_in_permission_set_request()) ->
     {ok, list_managed_policies_in_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_managed_policies_in_permission_set_errors(), tuple()}.
 list_managed_policies_in_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_managed_policies_in_permission_set(Client, Input, []).
@@ -3147,11 +3219,7 @@ list_managed_policies_in_permission_set(Client, Input)
 -spec list_managed_policies_in_permission_set(map(), list_managed_policies_in_permission_set_request(), proplists:proplist()) ->
     {ok, list_managed_policies_in_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_managed_policies_in_permission_set_errors(), tuple()}.
 list_managed_policies_in_permission_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListManagedPoliciesInPermissionSet">>, Input, Options).
@@ -3162,11 +3230,7 @@ list_managed_policies_in_permission_set(Client, Input, Options)
 -spec list_permission_set_provisioning_status(map(), list_permission_set_provisioning_status_request()) ->
     {ok, list_permission_set_provisioning_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_permission_set_provisioning_status_errors(), tuple()}.
 list_permission_set_provisioning_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_permission_set_provisioning_status(Client, Input, []).
@@ -3174,11 +3238,7 @@ list_permission_set_provisioning_status(Client, Input)
 -spec list_permission_set_provisioning_status(map(), list_permission_set_provisioning_status_request(), proplists:proplist()) ->
     {ok, list_permission_set_provisioning_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_permission_set_provisioning_status_errors(), tuple()}.
 list_permission_set_provisioning_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPermissionSetProvisioningStatus">>, Input, Options).
@@ -3187,11 +3247,7 @@ list_permission_set_provisioning_status(Client, Input, Options)
 -spec list_permission_sets(map(), list_permission_sets_request()) ->
     {ok, list_permission_sets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_permission_sets_errors(), tuple()}.
 list_permission_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_permission_sets(Client, Input, []).
@@ -3199,11 +3255,7 @@ list_permission_sets(Client, Input)
 -spec list_permission_sets(map(), list_permission_sets_request(), proplists:proplist()) ->
     {ok, list_permission_sets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_permission_sets_errors(), tuple()}.
 list_permission_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPermissionSets">>, Input, Options).
@@ -3214,11 +3266,7 @@ list_permission_sets(Client, Input, Options)
 -spec list_permission_sets_provisioned_to_account(map(), list_permission_sets_provisioned_to_account_request()) ->
     {ok, list_permission_sets_provisioned_to_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_permission_sets_provisioned_to_account_errors(), tuple()}.
 list_permission_sets_provisioned_to_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_permission_sets_provisioned_to_account(Client, Input, []).
@@ -3226,11 +3274,7 @@ list_permission_sets_provisioned_to_account(Client, Input)
 -spec list_permission_sets_provisioned_to_account(map(), list_permission_sets_provisioned_to_account_request(), proplists:proplist()) ->
     {ok, list_permission_sets_provisioned_to_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_permission_sets_provisioned_to_account_errors(), tuple()}.
 list_permission_sets_provisioned_to_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPermissionSetsProvisionedToAccount">>, Input, Options).
@@ -3239,11 +3283,7 @@ list_permission_sets_provisioned_to_account(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -3251,11 +3291,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -3265,10 +3301,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec list_trusted_token_issuers(map(), list_trusted_token_issuers_request()) ->
     {ok, list_trusted_token_issuers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_trusted_token_issuers_errors(), tuple()}.
 list_trusted_token_issuers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_trusted_token_issuers(Client, Input, []).
@@ -3276,10 +3309,7 @@ list_trusted_token_issuers(Client, Input)
 -spec list_trusted_token_issuers(map(), list_trusted_token_issuers_request(), proplists:proplist()) ->
     {ok, list_trusted_token_issuers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_trusted_token_issuers_errors(), tuple()}.
 list_trusted_token_issuers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTrustedTokenIssuers">>, Input, Options).
@@ -3290,12 +3320,7 @@ list_trusted_token_issuers(Client, Input, Options)
 -spec provision_permission_set(map(), provision_permission_set_request()) ->
     {ok, provision_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, provision_permission_set_errors(), tuple()}.
 provision_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     provision_permission_set(Client, Input, []).
@@ -3303,12 +3328,7 @@ provision_permission_set(Client, Input)
 -spec provision_permission_set(map(), provision_permission_set_request(), proplists:proplist()) ->
     {ok, provision_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, provision_permission_set_errors(), tuple()}.
 provision_permission_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ProvisionPermissionSet">>, Input, Options).
@@ -3319,12 +3339,7 @@ provision_permission_set(Client, Input, Options)
 -spec put_application_access_scope(map(), put_application_access_scope_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_application_access_scope_errors(), tuple()}.
 put_application_access_scope(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_application_access_scope(Client, Input, []).
@@ -3332,12 +3347,7 @@ put_application_access_scope(Client, Input)
 -spec put_application_access_scope(map(), put_application_access_scope_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_application_access_scope_errors(), tuple()}.
 put_application_access_scope(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutApplicationAccessScope">>, Input, Options).
@@ -3355,12 +3365,7 @@ put_application_access_scope(Client, Input, Options)
 -spec put_application_assignment_configuration(map(), put_application_assignment_configuration_request()) ->
     {ok, put_application_assignment_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_application_assignment_configuration_errors(), tuple()}.
 put_application_assignment_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_application_assignment_configuration(Client, Input, []).
@@ -3368,12 +3373,7 @@ put_application_assignment_configuration(Client, Input)
 -spec put_application_assignment_configuration(map(), put_application_assignment_configuration_request(), proplists:proplist()) ->
     {ok, put_application_assignment_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_application_assignment_configuration_errors(), tuple()}.
 put_application_assignment_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutApplicationAssignmentConfiguration">>, Input, Options).
@@ -3382,12 +3382,7 @@ put_application_assignment_configuration(Client, Input, Options)
 -spec put_application_authentication_method(map(), put_application_authentication_method_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_application_authentication_method_errors(), tuple()}.
 put_application_authentication_method(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_application_authentication_method(Client, Input, []).
@@ -3395,12 +3390,7 @@ put_application_authentication_method(Client, Input)
 -spec put_application_authentication_method(map(), put_application_authentication_method_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_application_authentication_method_errors(), tuple()}.
 put_application_authentication_method(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutApplicationAuthenticationMethod">>, Input, Options).
@@ -3409,12 +3399,7 @@ put_application_authentication_method(Client, Input, Options)
 -spec put_application_grant(map(), put_application_grant_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_application_grant_errors(), tuple()}.
 put_application_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_application_grant(Client, Input, []).
@@ -3422,12 +3407,7 @@ put_application_grant(Client, Input)
 -spec put_application_grant(map(), put_application_grant_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_application_grant_errors(), tuple()}.
 put_application_grant(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutApplicationGrant">>, Input, Options).
@@ -3444,13 +3424,7 @@ put_application_grant(Client, Input, Options)
 -spec put_inline_policy_to_permission_set(map(), put_inline_policy_to_permission_set_request()) ->
     {ok, put_inline_policy_to_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_inline_policy_to_permission_set_errors(), tuple()}.
 put_inline_policy_to_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_inline_policy_to_permission_set(Client, Input, []).
@@ -3458,13 +3432,7 @@ put_inline_policy_to_permission_set(Client, Input)
 -spec put_inline_policy_to_permission_set(map(), put_inline_policy_to_permission_set_request(), proplists:proplist()) ->
     {ok, put_inline_policy_to_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_inline_policy_to_permission_set_errors(), tuple()}.
 put_inline_policy_to_permission_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutInlinePolicyToPermissionSet">>, Input, Options).
@@ -3474,12 +3442,7 @@ put_inline_policy_to_permission_set(Client, Input, Options)
 -spec put_permissions_boundary_to_permission_set(map(), put_permissions_boundary_to_permission_set_request()) ->
     {ok, put_permissions_boundary_to_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_permissions_boundary_to_permission_set_errors(), tuple()}.
 put_permissions_boundary_to_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_permissions_boundary_to_permission_set(Client, Input, []).
@@ -3487,12 +3450,7 @@ put_permissions_boundary_to_permission_set(Client, Input)
 -spec put_permissions_boundary_to_permission_set(map(), put_permissions_boundary_to_permission_set_request(), proplists:proplist()) ->
     {ok, put_permissions_boundary_to_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_permissions_boundary_to_permission_set_errors(), tuple()}.
 put_permissions_boundary_to_permission_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutPermissionsBoundaryToPermissionSet">>, Input, Options).
@@ -3501,13 +3459,7 @@ put_permissions_boundary_to_permission_set(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -3515,13 +3467,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -3530,12 +3476,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -3543,12 +3484,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -3557,12 +3493,7 @@ untag_resource(Client, Input, Options)
 -spec update_application(map(), update_application_request()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_application_errors(), tuple()}.
 update_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_application(Client, Input, []).
@@ -3570,12 +3501,7 @@ update_application(Client, Input)
 -spec update_application(map(), update_application_request(), proplists:proplist()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_application_errors(), tuple()}.
 update_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateApplication">>, Input, Options).
@@ -3586,11 +3512,7 @@ update_application(Client, Input, Options)
 -spec update_instance(map(), update_instance_request()) ->
     {ok, update_instance_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_instance_errors(), tuple()}.
 update_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_instance(Client, Input, []).
@@ -3598,11 +3520,7 @@ update_instance(Client, Input)
 -spec update_instance(map(), update_instance_request(), proplists:proplist()) ->
     {ok, update_instance_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_instance_errors(), tuple()}.
 update_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateInstance">>, Input, Options).
@@ -3624,12 +3542,7 @@ update_instance(Client, Input, Options)
 -spec update_instance_access_control_attribute_configuration(map(), update_instance_access_control_attribute_configuration_request()) ->
     {ok, update_instance_access_control_attribute_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_instance_access_control_attribute_configuration_errors(), tuple()}.
 update_instance_access_control_attribute_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_instance_access_control_attribute_configuration(Client, Input, []).
@@ -3637,12 +3550,7 @@ update_instance_access_control_attribute_configuration(Client, Input)
 -spec update_instance_access_control_attribute_configuration(map(), update_instance_access_control_attribute_configuration_request(), proplists:proplist()) ->
     {ok, update_instance_access_control_attribute_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_instance_access_control_attribute_configuration_errors(), tuple()}.
 update_instance_access_control_attribute_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateInstanceAccessControlAttributeConfiguration">>, Input, Options).
@@ -3651,12 +3559,7 @@ update_instance_access_control_attribute_configuration(Client, Input, Options)
 -spec update_permission_set(map(), update_permission_set_request()) ->
     {ok, update_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_permission_set_errors(), tuple()}.
 update_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_permission_set(Client, Input, []).
@@ -3664,12 +3567,7 @@ update_permission_set(Client, Input)
 -spec update_permission_set(map(), update_permission_set_request(), proplists:proplist()) ->
     {ok, update_permission_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_permission_set_errors(), tuple()}.
 update_permission_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePermissionSet">>, Input, Options).
@@ -3684,12 +3582,7 @@ update_permission_set(Client, Input, Options)
 -spec update_trusted_token_issuer(map(), update_trusted_token_issuer_request()) ->
     {ok, update_trusted_token_issuer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_trusted_token_issuer_errors(), tuple()}.
 update_trusted_token_issuer(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_trusted_token_issuer(Client, Input, []).
@@ -3697,12 +3590,7 @@ update_trusted_token_issuer(Client, Input)
 -spec update_trusted_token_issuer(map(), update_trusted_token_issuer_request(), proplists:proplist()) ->
     {ok, update_trusted_token_issuer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_trusted_token_issuer_errors(), tuple()}.
 update_trusted_token_issuer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTrustedTokenIssuer">>, Input, Options).

@@ -640,6 +640,154 @@
 %% }
 -type delete_database_request() :: #{binary() => any()}.
 
+-type create_batch_load_task_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    invalid_endpoint_exception().
+
+-type create_database_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception() | 
+    invalid_endpoint_exception().
+
+-type create_table_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    invalid_endpoint_exception().
+
+-type delete_database_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type delete_table_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type describe_batch_load_task_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type describe_database_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type describe_endpoints_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception().
+
+-type describe_table_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type list_batch_load_tasks_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_endpoint_exception().
+
+-type list_databases_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_endpoint_exception().
+
+-type list_tables_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type resume_batch_load_task_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type update_database_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type update_table_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type write_records_errors() ::
+    rejected_records_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
 
 %%====================================================================
 %% API
@@ -668,14 +816,7 @@
 -spec create_batch_load_task(map(), create_batch_load_task_request()) ->
     {ok, create_batch_load_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_batch_load_task_errors(), tuple()}.
 create_batch_load_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_batch_load_task(Client, Input, []).
@@ -683,14 +824,7 @@ create_batch_load_task(Client, Input)
 -spec create_batch_load_task(map(), create_batch_load_task_request(), proplists:proplist()) ->
     {ok, create_batch_load_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_batch_load_task_errors(), tuple()}.
 create_batch_load_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBatchLoadTask">>, Input, Options).
@@ -710,13 +844,7 @@ create_batch_load_task(Client, Input, Options)
 -spec create_database(map(), create_database_request()) ->
     {ok, create_database_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_database_errors(), tuple()}.
 create_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_database(Client, Input, []).
@@ -724,13 +852,7 @@ create_database(Client, Input)
 -spec create_database(map(), create_database_request(), proplists:proplist()) ->
     {ok, create_database_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_database_errors(), tuple()}.
 create_database(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDatabase">>, Input, Options).
@@ -753,14 +875,7 @@ create_database(Client, Input, Options)
 -spec create_table(map(), create_table_request()) ->
     {ok, create_table_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_table_errors(), tuple()}.
 create_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_table(Client, Input, []).
@@ -768,14 +883,7 @@ create_table(Client, Input)
 -spec create_table(map(), create_table_request(), proplists:proplist()) ->
     {ok, create_table_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_table_errors(), tuple()}.
 create_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTable">>, Input, Options).
@@ -801,12 +909,7 @@ create_table(Client, Input, Options)
 -spec delete_database(map(), delete_database_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_database_errors(), tuple()}.
 delete_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_database(Client, Input, []).
@@ -814,12 +917,7 @@ delete_database(Client, Input)
 -spec delete_database(map(), delete_database_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_database_errors(), tuple()}.
 delete_database(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDatabase">>, Input, Options).
@@ -842,12 +940,7 @@ delete_database(Client, Input, Options)
 -spec delete_table(map(), delete_table_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_table_errors(), tuple()}.
 delete_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_table(Client, Input, []).
@@ -855,12 +948,7 @@ delete_table(Client, Input)
 -spec delete_table(map(), delete_table_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_table_errors(), tuple()}.
 delete_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTable">>, Input, Options).
@@ -879,11 +967,7 @@ delete_table(Client, Input, Options)
 -spec describe_batch_load_task(map(), describe_batch_load_task_request()) ->
     {ok, describe_batch_load_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_batch_load_task_errors(), tuple()}.
 describe_batch_load_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_batch_load_task(Client, Input, []).
@@ -891,11 +975,7 @@ describe_batch_load_task(Client, Input)
 -spec describe_batch_load_task(map(), describe_batch_load_task_request(), proplists:proplist()) ->
     {ok, describe_batch_load_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_batch_load_task_errors(), tuple()}.
 describe_batch_load_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBatchLoadTask">>, Input, Options).
@@ -914,12 +994,7 @@ describe_batch_load_task(Client, Input, Options)
 -spec describe_database(map(), describe_database_request()) ->
     {ok, describe_database_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_database_errors(), tuple()}.
 describe_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_database(Client, Input, []).
@@ -927,12 +1002,7 @@ describe_database(Client, Input)
 -spec describe_database(map(), describe_database_request(), proplists:proplist()) ->
     {ok, describe_database_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_database_errors(), tuple()}.
 describe_database(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDatabase">>, Input, Options).
@@ -964,9 +1034,7 @@ describe_database(Client, Input, Options)
 -spec describe_endpoints(map(), describe_endpoints_request()) ->
     {ok, describe_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_endpoints_errors(), tuple()}.
 describe_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoints(Client, Input, []).
@@ -974,9 +1042,7 @@ describe_endpoints(Client, Input)
 -spec describe_endpoints(map(), describe_endpoints_request(), proplists:proplist()) ->
     {ok, describe_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_endpoints_errors(), tuple()}.
 describe_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEndpoints">>, Input, Options).
@@ -995,12 +1061,7 @@ describe_endpoints(Client, Input, Options)
 -spec describe_table(map(), describe_table_request()) ->
     {ok, describe_table_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_table_errors(), tuple()}.
 describe_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_table(Client, Input, []).
@@ -1008,12 +1069,7 @@ describe_table(Client, Input)
 -spec describe_table(map(), describe_table_request(), proplists:proplist()) ->
     {ok, describe_table_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_table_errors(), tuple()}.
 describe_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTable">>, Input, Options).
@@ -1029,11 +1085,7 @@ describe_table(Client, Input, Options)
 -spec list_batch_load_tasks(map(), list_batch_load_tasks_request()) ->
     {ok, list_batch_load_tasks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_batch_load_tasks_errors(), tuple()}.
 list_batch_load_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_batch_load_tasks(Client, Input, []).
@@ -1041,11 +1093,7 @@ list_batch_load_tasks(Client, Input)
 -spec list_batch_load_tasks(map(), list_batch_load_tasks_request(), proplists:proplist()) ->
     {ok, list_batch_load_tasks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_batch_load_tasks_errors(), tuple()}.
 list_batch_load_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBatchLoadTasks">>, Input, Options).
@@ -1062,11 +1110,7 @@ list_batch_load_tasks(Client, Input, Options)
 -spec list_databases(map(), list_databases_request()) ->
     {ok, list_databases_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_databases_errors(), tuple()}.
 list_databases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_databases(Client, Input, []).
@@ -1074,11 +1118,7 @@ list_databases(Client, Input)
 -spec list_databases(map(), list_databases_request(), proplists:proplist()) ->
     {ok, list_databases_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_databases_errors(), tuple()}.
 list_databases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDatabases">>, Input, Options).
@@ -1093,12 +1133,7 @@ list_databases(Client, Input, Options)
 -spec list_tables(map(), list_tables_request()) ->
     {ok, list_tables_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tables_errors(), tuple()}.
 list_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tables(Client, Input, []).
@@ -1106,12 +1141,7 @@ list_tables(Client, Input)
 -spec list_tables(map(), list_tables_request(), proplists:proplist()) ->
     {ok, list_tables_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tables_errors(), tuple()}.
 list_tables(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTables">>, Input, Options).
@@ -1120,10 +1150,7 @@ list_tables(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -1131,10 +1158,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -1143,12 +1167,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec resume_batch_load_task(map(), resume_batch_load_task_request()) ->
     {ok, resume_batch_load_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, resume_batch_load_task_errors(), tuple()}.
 resume_batch_load_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     resume_batch_load_task(Client, Input, []).
@@ -1156,12 +1175,7 @@ resume_batch_load_task(Client, Input)
 -spec resume_batch_load_task(map(), resume_batch_load_task_request(), proplists:proplist()) ->
     {ok, resume_batch_load_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, resume_batch_load_task_errors(), tuple()}.
 resume_batch_load_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResumeBatchLoadTask">>, Input, Options).
@@ -1175,11 +1189,7 @@ resume_batch_load_task(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -1187,11 +1197,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -1200,11 +1206,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -1212,11 +1214,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -1234,13 +1232,7 @@ untag_resource(Client, Input, Options)
 -spec update_database(map(), update_database_request()) ->
     {ok, update_database_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_database_errors(), tuple()}.
 update_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_database(Client, Input, []).
@@ -1248,13 +1240,7 @@ update_database(Client, Input)
 -spec update_database(map(), update_database_request(), proplists:proplist()) ->
     {ok, update_database_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_database_errors(), tuple()}.
 update_database(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDatabase">>, Input, Options).
@@ -1278,12 +1264,7 @@ update_database(Client, Input, Options)
 -spec update_table(map(), update_table_request()) ->
     {ok, update_table_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_table_errors(), tuple()}.
 update_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_table(Client, Input, []).
@@ -1291,12 +1272,7 @@ update_table(Client, Input)
 -spec update_table(map(), update_table_request(), proplists:proplist()) ->
     {ok, update_table_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_table_errors(), tuple()}.
 update_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTable">>, Input, Options).
@@ -1371,13 +1347,7 @@ update_table(Client, Input, Options)
 -spec write_records(map(), write_records_request()) ->
     {ok, write_records_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, rejected_records_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, write_records_errors(), tuple()}.
 write_records(Client, Input)
   when is_map(Client), is_map(Input) ->
     write_records(Client, Input, []).
@@ -1385,13 +1355,7 @@ write_records(Client, Input)
 -spec write_records(map(), write_records_request(), proplists:proplist()) ->
     {ok, write_records_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, rejected_records_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, write_records_errors(), tuple()}.
 write_records(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"WriteRecords">>, Input, Options).

@@ -91,6 +91,10 @@
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
+-type get_free_tier_usage_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception().
 
 %%====================================================================
 %% API
@@ -101,9 +105,7 @@
 -spec get_free_tier_usage(map(), get_free_tier_usage_request()) ->
     {ok, get_free_tier_usage_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_free_tier_usage_errors(), tuple()}.
 get_free_tier_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_free_tier_usage(Client, Input, []).
@@ -111,9 +113,7 @@ get_free_tier_usage(Client, Input)
 -spec get_free_tier_usage(map(), get_free_tier_usage_request(), proplists:proplist()) ->
     {ok, get_free_tier_usage_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_free_tier_usage_errors(), tuple()}.
 get_free_tier_usage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetFreeTierUsage">>, Input, Options).

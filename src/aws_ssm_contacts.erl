@@ -977,6 +977,298 @@
 %% }
 -type plan() :: #{binary() => any()}.
 
+-type accept_page_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type activate_contact_channel_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_contact_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception() | 
+    data_encryption_exception().
+
+-type create_contact_channel_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    data_encryption_exception().
+
+-type create_rotation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type create_rotation_override_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type deactivate_contact_channel_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_contact_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_contact_channel_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_rotation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_rotation_override_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_engagement_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    data_encryption_exception().
+
+-type describe_page_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    data_encryption_exception().
+
+-type get_contact_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    data_encryption_exception().
+
+-type get_contact_channel_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    data_encryption_exception().
+
+-type get_contact_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_rotation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_rotation_override_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_contact_channels_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    data_encryption_exception().
+
+-type list_contacts_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_engagements_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_page_receipts_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_page_resolutions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_pages_by_contact_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_pages_by_engagement_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_preview_rotation_shifts_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_rotation_overrides_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_rotation_shifts_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_rotations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type put_contact_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type send_activation_code_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    data_encryption_exception().
+
+-type start_engagement_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    data_encryption_exception().
+
+-type stop_engagement_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_contact_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    data_encryption_exception().
+
+-type update_contact_channel_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    data_encryption_exception().
+
+-type update_rotation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -987,11 +1279,7 @@
 -spec accept_page(map(), accept_page_request()) ->
     {ok, accept_page_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, accept_page_errors(), tuple()}.
 accept_page(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_page(Client, Input, []).
@@ -999,11 +1287,7 @@ accept_page(Client, Input)
 -spec accept_page(map(), accept_page_request(), proplists:proplist()) ->
     {ok, accept_page_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, accept_page_errors(), tuple()}.
 accept_page(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcceptPage">>, Input, Options).
@@ -1015,11 +1299,7 @@ accept_page(Client, Input, Options)
 -spec activate_contact_channel(map(), activate_contact_channel_request()) ->
     {ok, activate_contact_channel_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, activate_contact_channel_errors(), tuple()}.
 activate_contact_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     activate_contact_channel(Client, Input, []).
@@ -1027,11 +1307,7 @@ activate_contact_channel(Client, Input)
 -spec activate_contact_channel(map(), activate_contact_channel_request(), proplists:proplist()) ->
     {ok, activate_contact_channel_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, activate_contact_channel_errors(), tuple()}.
 activate_contact_channel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ActivateContactChannel">>, Input, Options).
@@ -1044,13 +1320,7 @@ activate_contact_channel(Client, Input, Options)
 -spec create_contact(map(), create_contact_request()) ->
     {ok, create_contact_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, data_encryption_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_contact_errors(), tuple()}.
 create_contact(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_contact(Client, Input, []).
@@ -1058,13 +1328,7 @@ create_contact(Client, Input)
 -spec create_contact(map(), create_contact_request(), proplists:proplist()) ->
     {ok, create_contact_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, data_encryption_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_contact_errors(), tuple()}.
 create_contact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateContact">>, Input, Options).
@@ -1074,12 +1338,7 @@ create_contact(Client, Input, Options)
 -spec create_contact_channel(map(), create_contact_channel_request()) ->
     {ok, create_contact_channel_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, data_encryption_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_contact_channel_errors(), tuple()}.
 create_contact_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_contact_channel(Client, Input, []).
@@ -1087,12 +1346,7 @@ create_contact_channel(Client, Input)
 -spec create_contact_channel(map(), create_contact_channel_request(), proplists:proplist()) ->
     {ok, create_contact_channel_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, data_encryption_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_contact_channel_errors(), tuple()}.
 create_contact_channel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateContactChannel">>, Input, Options).
@@ -1101,12 +1355,7 @@ create_contact_channel(Client, Input, Options)
 -spec create_rotation(map(), create_rotation_request()) ->
     {ok, create_rotation_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_rotation_errors(), tuple()}.
 create_rotation(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_rotation(Client, Input, []).
@@ -1114,12 +1363,7 @@ create_rotation(Client, Input)
 -spec create_rotation(map(), create_rotation_request(), proplists:proplist()) ->
     {ok, create_rotation_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_rotation_errors(), tuple()}.
 create_rotation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRotation">>, Input, Options).
@@ -1128,12 +1372,7 @@ create_rotation(Client, Input, Options)
 -spec create_rotation_override(map(), create_rotation_override_request()) ->
     {ok, create_rotation_override_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_rotation_override_errors(), tuple()}.
 create_rotation_override(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_rotation_override(Client, Input, []).
@@ -1141,12 +1380,7 @@ create_rotation_override(Client, Input)
 -spec create_rotation_override(map(), create_rotation_override_request(), proplists:proplist()) ->
     {ok, create_rotation_override_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_rotation_override_errors(), tuple()}.
 create_rotation_override(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRotationOverride">>, Input, Options).
@@ -1157,11 +1391,7 @@ create_rotation_override(Client, Input, Options)
 -spec deactivate_contact_channel(map(), deactivate_contact_channel_request()) ->
     {ok, deactivate_contact_channel_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, deactivate_contact_channel_errors(), tuple()}.
 deactivate_contact_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     deactivate_contact_channel(Client, Input, []).
@@ -1169,11 +1399,7 @@ deactivate_contact_channel(Client, Input)
 -spec deactivate_contact_channel(map(), deactivate_contact_channel_request(), proplists:proplist()) ->
     {ok, deactivate_contact_channel_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, deactivate_contact_channel_errors(), tuple()}.
 deactivate_contact_channel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeactivateContactChannel">>, Input, Options).
@@ -1190,12 +1416,7 @@ deactivate_contact_channel(Client, Input, Options)
 -spec delete_contact(map(), delete_contact_request()) ->
     {ok, delete_contact_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_contact_errors(), tuple()}.
 delete_contact(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_contact(Client, Input, []).
@@ -1203,12 +1424,7 @@ delete_contact(Client, Input)
 -spec delete_contact(map(), delete_contact_request(), proplists:proplist()) ->
     {ok, delete_contact_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_contact_errors(), tuple()}.
 delete_contact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteContact">>, Input, Options).
@@ -1225,11 +1441,7 @@ delete_contact(Client, Input, Options)
 -spec delete_contact_channel(map(), delete_contact_channel_request()) ->
     {ok, delete_contact_channel_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_contact_channel_errors(), tuple()}.
 delete_contact_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_contact_channel(Client, Input, []).
@@ -1237,11 +1449,7 @@ delete_contact_channel(Client, Input)
 -spec delete_contact_channel(map(), delete_contact_channel_request(), proplists:proplist()) ->
     {ok, delete_contact_channel_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_contact_channel_errors(), tuple()}.
 delete_contact_channel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteContactChannel">>, Input, Options).
@@ -1253,12 +1461,7 @@ delete_contact_channel(Client, Input, Options)
 -spec delete_rotation(map(), delete_rotation_request()) ->
     {ok, delete_rotation_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_rotation_errors(), tuple()}.
 delete_rotation(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rotation(Client, Input, []).
@@ -1266,12 +1469,7 @@ delete_rotation(Client, Input)
 -spec delete_rotation(map(), delete_rotation_request(), proplists:proplist()) ->
     {ok, delete_rotation_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_rotation_errors(), tuple()}.
 delete_rotation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRotation">>, Input, Options).
@@ -1280,11 +1478,7 @@ delete_rotation(Client, Input, Options)
 -spec delete_rotation_override(map(), delete_rotation_override_request()) ->
     {ok, delete_rotation_override_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_rotation_override_errors(), tuple()}.
 delete_rotation_override(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rotation_override(Client, Input, []).
@@ -1292,11 +1486,7 @@ delete_rotation_override(Client, Input)
 -spec delete_rotation_override(map(), delete_rotation_override_request(), proplists:proplist()) ->
     {ok, delete_rotation_override_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_rotation_override_errors(), tuple()}.
 delete_rotation_override(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRotationOverride">>, Input, Options).
@@ -1309,12 +1499,7 @@ delete_rotation_override(Client, Input, Options)
 -spec describe_engagement(map(), describe_engagement_request()) ->
     {ok, describe_engagement_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, data_encryption_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_engagement_errors(), tuple()}.
 describe_engagement(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_engagement(Client, Input, []).
@@ -1322,12 +1507,7 @@ describe_engagement(Client, Input)
 -spec describe_engagement(map(), describe_engagement_request(), proplists:proplist()) ->
     {ok, describe_engagement_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, data_encryption_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_engagement_errors(), tuple()}.
 describe_engagement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEngagement">>, Input, Options).
@@ -1336,12 +1516,7 @@ describe_engagement(Client, Input, Options)
 -spec describe_page(map(), describe_page_request()) ->
     {ok, describe_page_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, data_encryption_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_page_errors(), tuple()}.
 describe_page(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_page(Client, Input, []).
@@ -1349,12 +1524,7 @@ describe_page(Client, Input)
 -spec describe_page(map(), describe_page_request(), proplists:proplist()) ->
     {ok, describe_page_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, data_encryption_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_page_errors(), tuple()}.
 describe_page(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePage">>, Input, Options).
@@ -1363,12 +1533,7 @@ describe_page(Client, Input, Options)
 -spec get_contact(map(), get_contact_request()) ->
     {ok, get_contact_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, data_encryption_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_contact_errors(), tuple()}.
 get_contact(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_contact(Client, Input, []).
@@ -1376,12 +1541,7 @@ get_contact(Client, Input)
 -spec get_contact(map(), get_contact_request(), proplists:proplist()) ->
     {ok, get_contact_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, data_encryption_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_contact_errors(), tuple()}.
 get_contact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetContact">>, Input, Options).
@@ -1390,12 +1550,7 @@ get_contact(Client, Input, Options)
 -spec get_contact_channel(map(), get_contact_channel_request()) ->
     {ok, get_contact_channel_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, data_encryption_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_contact_channel_errors(), tuple()}.
 get_contact_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_contact_channel(Client, Input, []).
@@ -1403,12 +1558,7 @@ get_contact_channel(Client, Input)
 -spec get_contact_channel(map(), get_contact_channel_request(), proplists:proplist()) ->
     {ok, get_contact_channel_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, data_encryption_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_contact_channel_errors(), tuple()}.
 get_contact_channel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetContactChannel">>, Input, Options).
@@ -1419,11 +1569,7 @@ get_contact_channel(Client, Input, Options)
 -spec get_contact_policy(map(), get_contact_policy_request()) ->
     {ok, get_contact_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_contact_policy_errors(), tuple()}.
 get_contact_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_contact_policy(Client, Input, []).
@@ -1431,11 +1577,7 @@ get_contact_policy(Client, Input)
 -spec get_contact_policy(map(), get_contact_policy_request(), proplists:proplist()) ->
     {ok, get_contact_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_contact_policy_errors(), tuple()}.
 get_contact_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetContactPolicy">>, Input, Options).
@@ -1444,11 +1586,7 @@ get_contact_policy(Client, Input, Options)
 -spec get_rotation(map(), get_rotation_request()) ->
     {ok, get_rotation_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_rotation_errors(), tuple()}.
 get_rotation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_rotation(Client, Input, []).
@@ -1456,11 +1594,7 @@ get_rotation(Client, Input)
 -spec get_rotation(map(), get_rotation_request(), proplists:proplist()) ->
     {ok, get_rotation_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_rotation_errors(), tuple()}.
 get_rotation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRotation">>, Input, Options).
@@ -1469,11 +1603,7 @@ get_rotation(Client, Input, Options)
 -spec get_rotation_override(map(), get_rotation_override_request()) ->
     {ok, get_rotation_override_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_rotation_override_errors(), tuple()}.
 get_rotation_override(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_rotation_override(Client, Input, []).
@@ -1481,11 +1611,7 @@ get_rotation_override(Client, Input)
 -spec get_rotation_override(map(), get_rotation_override_request(), proplists:proplist()) ->
     {ok, get_rotation_override_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_rotation_override_errors(), tuple()}.
 get_rotation_override(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRotationOverride">>, Input, Options).
@@ -1494,12 +1620,7 @@ get_rotation_override(Client, Input, Options)
 -spec list_contact_channels(map(), list_contact_channels_request()) ->
     {ok, list_contact_channels_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, data_encryption_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_contact_channels_errors(), tuple()}.
 list_contact_channels(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_contact_channels(Client, Input, []).
@@ -1507,12 +1628,7 @@ list_contact_channels(Client, Input)
 -spec list_contact_channels(map(), list_contact_channels_request(), proplists:proplist()) ->
     {ok, list_contact_channels_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, data_encryption_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_contact_channels_errors(), tuple()}.
 list_contact_channels(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListContactChannels">>, Input, Options).
@@ -1521,10 +1637,7 @@ list_contact_channels(Client, Input, Options)
 -spec list_contacts(map(), list_contacts_request()) ->
     {ok, list_contacts_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_contacts_errors(), tuple()}.
 list_contacts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_contacts(Client, Input, []).
@@ -1532,10 +1645,7 @@ list_contacts(Client, Input)
 -spec list_contacts(map(), list_contacts_request(), proplists:proplist()) ->
     {ok, list_contacts_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_contacts_errors(), tuple()}.
 list_contacts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListContacts">>, Input, Options).
@@ -1544,10 +1654,7 @@ list_contacts(Client, Input, Options)
 -spec list_engagements(map(), list_engagements_request()) ->
     {ok, list_engagements_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_engagements_errors(), tuple()}.
 list_engagements(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_engagements(Client, Input, []).
@@ -1555,10 +1662,7 @@ list_engagements(Client, Input)
 -spec list_engagements(map(), list_engagements_request(), proplists:proplist()) ->
     {ok, list_engagements_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_engagements_errors(), tuple()}.
 list_engagements(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEngagements">>, Input, Options).
@@ -1568,11 +1672,7 @@ list_engagements(Client, Input, Options)
 -spec list_page_receipts(map(), list_page_receipts_request()) ->
     {ok, list_page_receipts_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_page_receipts_errors(), tuple()}.
 list_page_receipts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_page_receipts(Client, Input, []).
@@ -1580,11 +1680,7 @@ list_page_receipts(Client, Input)
 -spec list_page_receipts(map(), list_page_receipts_request(), proplists:proplist()) ->
     {ok, list_page_receipts_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_page_receipts_errors(), tuple()}.
 list_page_receipts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPageReceipts">>, Input, Options).
@@ -1601,11 +1697,7 @@ list_page_receipts(Client, Input, Options)
 -spec list_page_resolutions(map(), list_page_resolutions_request()) ->
     {ok, list_page_resolutions_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_page_resolutions_errors(), tuple()}.
 list_page_resolutions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_page_resolutions(Client, Input, []).
@@ -1613,11 +1705,7 @@ list_page_resolutions(Client, Input)
 -spec list_page_resolutions(map(), list_page_resolutions_request(), proplists:proplist()) ->
     {ok, list_page_resolutions_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_page_resolutions_errors(), tuple()}.
 list_page_resolutions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPageResolutions">>, Input, Options).
@@ -1626,11 +1714,7 @@ list_page_resolutions(Client, Input, Options)
 -spec list_pages_by_contact(map(), list_pages_by_contact_request()) ->
     {ok, list_pages_by_contact_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_pages_by_contact_errors(), tuple()}.
 list_pages_by_contact(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pages_by_contact(Client, Input, []).
@@ -1638,11 +1722,7 @@ list_pages_by_contact(Client, Input)
 -spec list_pages_by_contact(map(), list_pages_by_contact_request(), proplists:proplist()) ->
     {ok, list_pages_by_contact_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_pages_by_contact_errors(), tuple()}.
 list_pages_by_contact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPagesByContact">>, Input, Options).
@@ -1652,11 +1732,7 @@ list_pages_by_contact(Client, Input, Options)
 -spec list_pages_by_engagement(map(), list_pages_by_engagement_request()) ->
     {ok, list_pages_by_engagement_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_pages_by_engagement_errors(), tuple()}.
 list_pages_by_engagement(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pages_by_engagement(Client, Input, []).
@@ -1664,11 +1740,7 @@ list_pages_by_engagement(Client, Input)
 -spec list_pages_by_engagement(map(), list_pages_by_engagement_request(), proplists:proplist()) ->
     {ok, list_pages_by_engagement_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_pages_by_engagement_errors(), tuple()}.
 list_pages_by_engagement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPagesByEngagement">>, Input, Options).
@@ -1680,10 +1752,7 @@ list_pages_by_engagement(Client, Input, Options)
 -spec list_preview_rotation_shifts(map(), list_preview_rotation_shifts_request()) ->
     {ok, list_preview_rotation_shifts_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_preview_rotation_shifts_errors(), tuple()}.
 list_preview_rotation_shifts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_preview_rotation_shifts(Client, Input, []).
@@ -1691,10 +1760,7 @@ list_preview_rotation_shifts(Client, Input)
 -spec list_preview_rotation_shifts(map(), list_preview_rotation_shifts_request(), proplists:proplist()) ->
     {ok, list_preview_rotation_shifts_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_preview_rotation_shifts_errors(), tuple()}.
 list_preview_rotation_shifts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPreviewRotationShifts">>, Input, Options).
@@ -1704,11 +1770,7 @@ list_preview_rotation_shifts(Client, Input, Options)
 -spec list_rotation_overrides(map(), list_rotation_overrides_request()) ->
     {ok, list_rotation_overrides_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_rotation_overrides_errors(), tuple()}.
 list_rotation_overrides(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rotation_overrides(Client, Input, []).
@@ -1716,11 +1778,7 @@ list_rotation_overrides(Client, Input)
 -spec list_rotation_overrides(map(), list_rotation_overrides_request(), proplists:proplist()) ->
     {ok, list_rotation_overrides_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_rotation_overrides_errors(), tuple()}.
 list_rotation_overrides(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRotationOverrides">>, Input, Options).
@@ -1730,12 +1788,7 @@ list_rotation_overrides(Client, Input, Options)
 -spec list_rotation_shifts(map(), list_rotation_shifts_request()) ->
     {ok, list_rotation_shifts_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_rotation_shifts_errors(), tuple()}.
 list_rotation_shifts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rotation_shifts(Client, Input, []).
@@ -1743,12 +1796,7 @@ list_rotation_shifts(Client, Input)
 -spec list_rotation_shifts(map(), list_rotation_shifts_request(), proplists:proplist()) ->
     {ok, list_rotation_shifts_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_rotation_shifts_errors(), tuple()}.
 list_rotation_shifts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRotationShifts">>, Input, Options).
@@ -1757,11 +1805,7 @@ list_rotation_shifts(Client, Input, Options)
 -spec list_rotations(map(), list_rotations_request()) ->
     {ok, list_rotations_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_rotations_errors(), tuple()}.
 list_rotations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rotations(Client, Input, []).
@@ -1769,11 +1813,7 @@ list_rotations(Client, Input)
 -spec list_rotations(map(), list_rotations_request(), proplists:proplist()) ->
     {ok, list_rotations_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_rotations_errors(), tuple()}.
 list_rotations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRotations">>, Input, Options).
@@ -1782,11 +1822,7 @@ list_rotations(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -1794,11 +1830,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -1814,12 +1846,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec put_contact_policy(map(), put_contact_policy_request()) ->
     {ok, put_contact_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_contact_policy_errors(), tuple()}.
 put_contact_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_contact_policy(Client, Input, []).
@@ -1827,12 +1854,7 @@ put_contact_policy(Client, Input)
 -spec put_contact_policy(map(), put_contact_policy_request(), proplists:proplist()) ->
     {ok, put_contact_policy_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_contact_policy_errors(), tuple()}.
 put_contact_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutContactPolicy">>, Input, Options).
@@ -1847,13 +1869,7 @@ put_contact_policy(Client, Input, Options)
 -spec send_activation_code(map(), send_activation_code_request()) ->
     {ok, send_activation_code_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, data_encryption_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, send_activation_code_errors(), tuple()}.
 send_activation_code(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_activation_code(Client, Input, []).
@@ -1861,13 +1877,7 @@ send_activation_code(Client, Input)
 -spec send_activation_code(map(), send_activation_code_request(), proplists:proplist()) ->
     {ok, send_activation_code_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, data_encryption_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, send_activation_code_errors(), tuple()}.
 send_activation_code(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendActivationCode">>, Input, Options).
@@ -1879,12 +1889,7 @@ send_activation_code(Client, Input, Options)
 -spec start_engagement(map(), start_engagement_request()) ->
     {ok, start_engagement_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, data_encryption_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_engagement_errors(), tuple()}.
 start_engagement(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_engagement(Client, Input, []).
@@ -1892,12 +1897,7 @@ start_engagement(Client, Input)
 -spec start_engagement(map(), start_engagement_request(), proplists:proplist()) ->
     {ok, start_engagement_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, data_encryption_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_engagement_errors(), tuple()}.
 start_engagement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartEngagement">>, Input, Options).
@@ -1910,11 +1910,7 @@ start_engagement(Client, Input, Options)
 -spec stop_engagement(map(), stop_engagement_request()) ->
     {ok, stop_engagement_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_engagement_errors(), tuple()}.
 stop_engagement(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_engagement(Client, Input, []).
@@ -1922,11 +1918,7 @@ stop_engagement(Client, Input)
 -spec stop_engagement(map(), stop_engagement_request(), proplists:proplist()) ->
     {ok, stop_engagement_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_engagement_errors(), tuple()}.
 stop_engagement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopEngagement">>, Input, Options).
@@ -1938,12 +1930,7 @@ stop_engagement(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -1951,12 +1938,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -1965,11 +1947,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -1977,11 +1955,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -1990,13 +1964,7 @@ untag_resource(Client, Input, Options)
 -spec update_contact(map(), update_contact_request()) ->
     {ok, update_contact_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, data_encryption_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_contact_errors(), tuple()}.
 update_contact(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_contact(Client, Input, []).
@@ -2004,13 +1972,7 @@ update_contact(Client, Input)
 -spec update_contact(map(), update_contact_request(), proplists:proplist()) ->
     {ok, update_contact_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, data_encryption_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_contact_errors(), tuple()}.
 update_contact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateContact">>, Input, Options).
@@ -2019,13 +1981,7 @@ update_contact(Client, Input, Options)
 -spec update_contact_channel(map(), update_contact_channel_request()) ->
     {ok, update_contact_channel_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, data_encryption_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_contact_channel_errors(), tuple()}.
 update_contact_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_contact_channel(Client, Input, []).
@@ -2033,13 +1989,7 @@ update_contact_channel(Client, Input)
 -spec update_contact_channel(map(), update_contact_channel_request(), proplists:proplist()) ->
     {ok, update_contact_channel_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, data_encryption_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_contact_channel_errors(), tuple()}.
 update_contact_channel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateContactChannel">>, Input, Options).
@@ -2048,12 +1998,7 @@ update_contact_channel(Client, Input, Options)
 -spec update_rotation(map(), update_rotation_request()) ->
     {ok, update_rotation_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_rotation_errors(), tuple()}.
 update_rotation(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rotation(Client, Input, []).
@@ -2061,12 +2006,7 @@ update_rotation(Client, Input)
 -spec update_rotation(map(), update_rotation_request(), proplists:proplist()) ->
     {ok, update_rotation_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_rotation_errors(), tuple()}.
 update_rotation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRotation">>, Input, Options).

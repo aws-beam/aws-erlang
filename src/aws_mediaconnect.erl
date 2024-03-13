@@ -133,12 +133,14 @@
 %% }
 -type deregister_gateway_instance_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_flow_request() :: #{
 %%   <<"Maintenance">> => update_maintenance(),
 %%   <<"SourceFailoverConfig">> => update_failover_config()
 %% }
 -type update_flow_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% remove_flow_vpc_interface_response() :: #{
@@ -147,6 +149,7 @@
 %%   <<"VpcInterfaceName">> => string()
 %% }
 -type remove_flow_vpc_interface_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% media_stream_output_configuration_request() :: #{
@@ -157,12 +160,14 @@
 %% }
 -type media_stream_output_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% add_flow_sources_response() :: #{
 %%   <<"FlowArn">> => string(),
 %%   <<"Sources">> => list(source()())
 %% }
 -type add_flow_sources_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% listed_entitlement() :: #{
@@ -172,11 +177,13 @@
 %% }
 -type listed_entitlement() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"Tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% transport_stream_program() :: #{
@@ -188,6 +195,7 @@
 %% }
 -type transport_stream_program() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_flow_source_metadata_response() :: #{
 %%   <<"FlowArn">> => string(),
@@ -197,17 +205,21 @@
 %% }
 -type describe_flow_source_metadata_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% grant_flow_entitlements_request() :: #{
 %%   <<"Entitlements">> := list(grant_entitlement_request()())
 %% }
 -type grant_flow_entitlements_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_gateway_instance_request() :: #{}
 -type describe_gateway_instance_request() :: #{}.
+
 %% Example:
 %% describe_flow_source_metadata_request() :: #{}
 -type describe_flow_source_metadata_request() :: #{}.
+
 
 %% Example:
 %% fmtp_request() :: #{
@@ -220,6 +232,7 @@
 %%   <<"Tcs">> => list(any())
 %% }
 -type fmtp_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_flow_request() :: #{
@@ -236,11 +249,13 @@
 %% }
 -type create_flow_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_bridge_state_request() :: #{
 %%   <<"DesiredState">> := list(any())
 %% }
 -type update_bridge_state_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_gateway_instances_response() :: #{
@@ -248,6 +263,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_gateway_instances_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% media_stream_source_configuration_request() :: #{
@@ -257,11 +273,13 @@
 %% }
 -type media_stream_source_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_egress_gateway_bridge_request() :: #{
 %%   <<"MaxBitrate">> => integer()
 %% }
 -type update_egress_gateway_bridge_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% add_bridge_sources_response() :: #{
@@ -270,11 +288,13 @@
 %% }
 -type add_bridge_sources_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_gateway_response() :: #{
 %%   <<"Gateway">> => gateway()
 %% }
 -type create_gateway_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_gateways_request() :: #{
@@ -283,12 +303,14 @@
 %% }
 -type list_gateways_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% add_flow_media_streams_response() :: #{
 %%   <<"FlowArn">> => string(),
 %%   <<"MediaStreams">> => list(media_stream()())
 %% }
 -type add_flow_media_streams_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% add_flow_outputs_response() :: #{
@@ -297,6 +319,7 @@
 %% }
 -type add_flow_outputs_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_flow_source_response() :: #{
 %%   <<"FlowArn">> => string(),
@@ -304,11 +327,13 @@
 %% }
 -type update_flow_source_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% forbidden_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type forbidden_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_reservations_request() :: #{
@@ -317,11 +342,13 @@
 %% }
 -type list_reservations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_bridge_output_request() :: #{
 %%   <<"NetworkOutput">> => update_bridge_network_output_request()
 %% }
 -type update_bridge_output_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_offerings_request() :: #{
@@ -329,6 +356,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_offerings_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_bridges_request() :: #{
@@ -338,11 +366,13 @@
 %% }
 -type list_bridges_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% interface_request() :: #{
 %%   <<"Name">> => string()
 %% }
 -type interface_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% bridge_flow_source() :: #{
@@ -353,21 +383,25 @@
 %% }
 -type bridge_flow_source() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_offerings_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Offerings">> => list(offering()())
 %% }
 -type list_offerings_response() :: #{binary() => any()}.
+
 %% Example:
 %% remove_bridge_source_request() :: #{}
 -type remove_bridge_source_request() :: #{}.
+
 
 %% Example:
 %% describe_gateway_instance_response() :: #{
 %%   <<"GatewayInstance">> => gateway_instance()
 %% }
 -type describe_gateway_instance_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_maintenance() :: #{
@@ -377,12 +411,14 @@
 %% }
 -type update_maintenance() :: #{binary() => any()}.
 
+
 %% Example:
 %% add_bridge_source_request() :: #{
 %%   <<"FlowSource">> => add_bridge_flow_source_request(),
 %%   <<"NetworkSource">> => add_bridge_network_source_request()
 %% }
 -type add_bridge_source_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_ingress_gateway_bridge_request() :: #{
@@ -391,20 +427,24 @@
 %% }
 -type update_ingress_gateway_bridge_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_gateway_response() :: #{
 %%   <<"GatewayArn">> => string()
 %% }
 -type delete_gateway_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_flow_request() :: #{}
 -type delete_flow_request() :: #{}.
+
 
 %% Example:
 %% create_flow420_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type create_flow420_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% listed_flow() :: #{
@@ -418,11 +458,13 @@
 %% }
 -type listed_flow() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_gateway_instance_request() :: #{
 %%   <<"BridgePlacement">> => list(any())
 %% }
 -type update_gateway_instance_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% media_stream() :: #{
@@ -437,11 +479,13 @@
 %% }
 -type media_stream() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_flow_response() :: #{
 %%   <<"Flow">> => flow()
 %% }
 -type create_flow_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_flow_response() :: #{
@@ -450,6 +494,7 @@
 %% }
 -type delete_flow_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% remove_flow_media_stream_response() :: #{
 %%   <<"FlowArn">> => string(),
@@ -457,17 +502,20 @@
 %% }
 -type remove_flow_media_stream_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_requests_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_requests_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% remove_bridge_source_response() :: #{
@@ -476,12 +524,14 @@
 %% }
 -type remove_bridge_source_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_bridge_flow_source_request() :: #{
 %%   <<"FlowArn">> => string(),
 %%   <<"FlowVpcInterfaceAttachment">> => vpc_interface_attachment()
 %% }
 -type update_bridge_flow_source_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% encoding_parameters_request() :: #{
@@ -490,11 +540,13 @@
 %% }
 -type encoding_parameters_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_bridge_response() :: #{
 %%   <<"Bridge">> => bridge()
 %% }
 -type create_bridge_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% gateway() :: #{
@@ -507,6 +559,7 @@
 %% }
 -type gateway() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_flow_media_stream_request() :: #{
 %%   <<"Attributes">> => media_stream_attributes_request(),
@@ -516,6 +569,7 @@
 %%   <<"VideoFormat">> => string()
 %% }
 -type update_flow_media_stream_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% add_media_stream_request() :: #{
@@ -529,6 +583,7 @@
 %% }
 -type add_media_stream_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% ingress_gateway_bridge() :: #{
 %%   <<"InstanceId">> => string(),
@@ -536,6 +591,7 @@
 %%   <<"MaxOutputs">> := integer()
 %% }
 -type ingress_gateway_bridge() :: #{binary() => any()}.
+
 
 %% Example:
 %% bridge_network_output() :: #{
@@ -548,6 +604,7 @@
 %% }
 -type bridge_network_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% message_detail() :: #{
 %%   <<"Code">> := string(),
@@ -556,6 +613,7 @@
 %% }
 -type message_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% media_stream_attributes_request() :: #{
 %%   <<"Fmtp">> => fmtp_request(),
@@ -563,11 +621,13 @@
 %% }
 -type media_stream_attributes_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_bridge420_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type create_bridge420_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% gateway_network() :: #{
@@ -575,6 +635,7 @@
 %%   <<"Name">> => string()
 %% }
 -type gateway_network() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_bridge_request() :: #{
@@ -584,12 +645,14 @@
 %% }
 -type update_bridge_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% egress_gateway_bridge() :: #{
 %%   <<"InstanceId">> => string(),
 %%   <<"MaxBitrate">> := integer()
 %% }
 -type egress_gateway_bridge() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_flow_source_request() :: #{
@@ -614,6 +677,7 @@
 %% }
 -type update_flow_source_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_flows_response() :: #{
 %%   <<"Flows">> => list(listed_flow()()),
@@ -621,11 +685,13 @@
 %% }
 -type list_flows_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% add_egress_gateway_bridge_request() :: #{
 %%   <<"MaxBitrate">> := integer()
 %% }
 -type add_egress_gateway_bridge_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% listed_gateway() :: #{
@@ -635,14 +701,17 @@
 %% }
 -type listed_gateway() :: #{binary() => any()}.
 
+
 %% Example:
 %% add_flow_outputs420_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type add_flow_outputs420_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_bridge_request() :: #{}
 -type delete_bridge_request() :: #{}.
+
 
 %% Example:
 %% bridge_output() :: #{
@@ -651,17 +720,20 @@
 %% }
 -type bridge_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_bridge_response() :: #{
 %%   <<"BridgeArn">> => string()
 %% }
 -type delete_bridge_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% transport() :: #{
@@ -680,9 +752,11 @@
 %%   <<"StreamId">> => string()
 %% }
 -type transport() :: #{binary() => any()}.
+
 %% Example:
 %% start_flow_request() :: #{}
 -type start_flow_request() :: #{}.
+
 
 %% Example:
 %% create_bridge_request() :: #{
@@ -696,11 +770,13 @@
 %% }
 -type create_bridge_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% add_flow_vpc_interfaces_request() :: #{
 %%   <<"VpcInterfaces">> := list(vpc_interface_request()())
 %% }
 -type add_flow_vpc_interfaces_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% maintenance() :: #{
@@ -710,6 +786,7 @@
 %%   <<"MaintenanceStartHour">> => string()
 %% }
 -type maintenance() :: #{binary() => any()}.
+
 
 %% Example:
 %% vpc_interface() :: #{
@@ -722,12 +799,14 @@
 %% }
 -type vpc_interface() :: #{binary() => any()}.
 
+
 %% Example:
 %% remove_bridge_output_response() :: #{
 %%   <<"BridgeArn">> => string(),
 %%   <<"OutputName">> => string()
 %% }
 -type remove_bridge_output_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% fmtp() :: #{
@@ -741,17 +820,20 @@
 %% }
 -type fmtp() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_gateway420_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type create_gateway420_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% source_priority() :: #{
 %%   <<"PrimarySource">> => string()
 %% }
 -type source_priority() :: #{binary() => any()}.
+
 
 %% Example:
 %% set_gateway_bridge_source_request() :: #{
@@ -760,11 +842,13 @@
 %% }
 -type set_gateway_bridge_source_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% add_bridge_network_source_request() :: #{
@@ -775,9 +859,11 @@
 %%   <<"Protocol">> => list(any())
 %% }
 -type add_bridge_network_source_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_flow_request() :: #{}
 -type describe_flow_request() :: #{}.
+
 
 %% Example:
 %% start_flow_response() :: #{
@@ -786,12 +872,14 @@
 %% }
 -type start_flow_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% stop_flow_response() :: #{
 %%   <<"FlowArn">> => string(),
 %%   <<"Status">> => list(any())
 %% }
 -type stop_flow_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% encryption() :: #{
@@ -806,6 +894,7 @@
 %%   <<"Url">> => string()
 %% }
 -type encryption() :: #{binary() => any()}.
+
 
 %% Example:
 %% bridge() :: #{
@@ -822,6 +911,7 @@
 %% }
 -type bridge() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_bridge_network_output_request() :: #{
 %%   <<"IpAddress">> => string(),
@@ -832,11 +922,13 @@
 %% }
 -type update_bridge_network_output_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% grant_flow_entitlements420_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type grant_flow_entitlements420_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% encoding_parameters() :: #{
@@ -845,11 +937,13 @@
 %% }
 -type encoding_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_specification() :: #{
@@ -857,9 +951,11 @@
 %%   <<"ResourceType">> => list(any())
 %% }
 -type resource_specification() :: #{binary() => any()}.
+
 %% Example:
 %% remove_bridge_output_request() :: #{}
 -type remove_bridge_output_request() :: #{}.
+
 
 %% Example:
 %% update_bridge_state_response() :: #{
@@ -867,6 +963,7 @@
 %%   <<"DesiredState">> => list(any())
 %% }
 -type update_bridge_state_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% reservation() :: #{
@@ -886,11 +983,13 @@
 %% }
 -type reservation() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_unavailable_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% input_configuration() :: #{
@@ -900,6 +999,7 @@
 %% }
 -type input_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_entitlements_response() :: #{
 %%   <<"Entitlements">> => list(listed_entitlement()()),
@@ -907,11 +1007,13 @@
 %% }
 -type list_entitlements_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% add_flow_sources_request() :: #{
 %%   <<"Sources">> := list(set_source_request()())
 %% }
 -type add_flow_sources_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% media_stream_attributes() :: #{
@@ -920,12 +1022,14 @@
 %% }
 -type media_stream_attributes() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_flows_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_flows_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_bridge_source_response() :: #{
@@ -934,18 +1038,22 @@
 %% }
 -type update_bridge_source_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% add_bridge_outputs_response() :: #{
 %%   <<"BridgeArn">> => string(),
 %%   <<"Outputs">> => list(bridge_output()())
 %% }
 -type add_bridge_outputs_response() :: #{binary() => any()}.
+
 %% Example:
 %% remove_flow_source_request() :: #{}
 -type remove_flow_source_request() :: #{}.
+
 %% Example:
 %% describe_bridge_request() :: #{}
 -type describe_bridge_request() :: #{}.
+
 
 %% Example:
 %% remove_flow_source_response() :: #{
@@ -953,6 +1061,7 @@
 %%   <<"SourceArn">> => string()
 %% }
 -type remove_flow_source_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% bridge_network_source() :: #{
@@ -964,6 +1073,7 @@
 %% }
 -type bridge_network_source() :: #{binary() => any()}.
 
+
 %% Example:
 %% media_stream_output_configuration() :: #{
 %%   <<"DestinationConfigurations">> => list(destination_configuration()()),
@@ -973,12 +1083,14 @@
 %% }
 -type media_stream_output_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% add_ingress_gateway_bridge_request() :: #{
 %%   <<"MaxBitrate">> := integer(),
 %%   <<"MaxOutputs">> := integer()
 %% }
 -type add_ingress_gateway_bridge_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% source() :: #{
@@ -1000,6 +1112,7 @@
 %% }
 -type source() :: #{binary() => any()}.
 
+
 %% Example:
 %% add_bridge_flow_source_request() :: #{
 %%   <<"FlowArn">> => string(),
@@ -1008,12 +1121,14 @@
 %% }
 -type add_bridge_flow_source_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_gateway_instance_response() :: #{
 %%   <<"BridgePlacement">> => list(any()),
 %%   <<"GatewayInstanceArn">> => string()
 %% }
 -type update_gateway_instance_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_failover_config() :: #{
@@ -1024,6 +1139,7 @@
 %% }
 -type update_failover_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% remove_flow_output_response() :: #{
 %%   <<"FlowArn">> => string(),
@@ -1031,11 +1147,13 @@
 %% }
 -type remove_flow_output_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_bridge_response() :: #{
 %%   <<"Bridge">> => bridge()
 %% }
 -type update_bridge_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_gateway_request() :: #{
@@ -1045,6 +1163,7 @@
 %% }
 -type create_gateway_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% grant_flow_entitlements_response() :: #{
 %%   <<"Entitlements">> => list(entitlement()()),
@@ -1052,11 +1171,13 @@
 %% }
 -type grant_flow_entitlements_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% add_bridge_outputs_request() :: #{
 %%   <<"Outputs">> := list(add_bridge_output_request()())
 %% }
 -type add_bridge_outputs_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% add_maintenance() :: #{
@@ -1064,6 +1185,7 @@
 %%   <<"MaintenanceStartHour">> => string()
 %% }
 -type add_maintenance() :: #{binary() => any()}.
+
 
 %% Example:
 %% entitlement() :: #{
@@ -1076,6 +1198,7 @@
 %%   <<"Subscribers">> => list(string()())
 %% }
 -type entitlement() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_encryption() :: #{
@@ -1091,6 +1214,7 @@
 %% }
 -type update_encryption() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_bridge_network_source_request() :: #{
 %%   <<"MulticastIp">> => string(),
@@ -1100,12 +1224,14 @@
 %% }
 -type update_bridge_network_source_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_reservations_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Reservations">> => list(reservation()())
 %% }
 -type list_reservations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% input_configuration_request() :: #{
@@ -1114,17 +1240,20 @@
 %% }
 -type input_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% messages() :: #{
 %%   <<"Errors">> => list(string()())
 %% }
 -type messages() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_reservation_response() :: #{
 %%   <<"Reservation">> => reservation()
 %% }
 -type describe_reservation_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% destination_configuration_request() :: #{
@@ -1134,17 +1263,20 @@
 %% }
 -type destination_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% interface() :: #{
 %%   <<"Name">> => string()
 %% }
 -type interface() :: #{binary() => any()}.
 
+
 %% Example:
 %% transport_media_info() :: #{
 %%   <<"Programs">> => list(transport_stream_program()())
 %% }
 -type transport_media_info() :: #{binary() => any()}.
+
 
 %% Example:
 %% vpc_interface_request() :: #{
@@ -1155,12 +1287,15 @@
 %%   <<"SubnetId">> => string()
 %% }
 -type vpc_interface_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_gateway_request() :: #{}
 -type delete_gateway_request() :: #{}.
+
 %% Example:
 %% describe_gateway_request() :: #{}
 -type describe_gateway_request() :: #{}.
+
 
 %% Example:
 %% list_entitlements_request() :: #{
@@ -1168,21 +1303,26 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_entitlements_request() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 %% Example:
 %% describe_reservation_request() :: #{}
 -type describe_reservation_request() :: #{}.
+
 
 %% Example:
 %% internal_server_error_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_server_error_exception() :: #{binary() => any()}.
+
 %% Example:
 %% remove_flow_vpc_interface_request() :: #{}
 -type remove_flow_vpc_interface_request() :: #{}.
+
 
 %% Example:
 %% frame_resolution() :: #{
@@ -1191,15 +1331,18 @@
 %% }
 -type frame_resolution() :: #{binary() => any()}.
 
+
 %% Example:
 %% gateway_bridge_source() :: #{
 %%   <<"BridgeArn">> => string(),
 %%   <<"VpcInterfaceAttachment">> => vpc_interface_attachment()
 %% }
 -type gateway_bridge_source() :: #{binary() => any()}.
+
 %% Example:
 %% revoke_flow_entitlement_request() :: #{}
 -type revoke_flow_entitlement_request() :: #{}.
+
 
 %% Example:
 %% describe_gateway_response() :: #{
@@ -1207,11 +1350,13 @@
 %% }
 -type describe_gateway_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% add_bridge_output_request() :: #{
 %%   <<"NetworkOutput">> => add_bridge_network_output_request()
 %% }
 -type add_bridge_output_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_gateway_instances_request() :: #{
@@ -1221,12 +1366,14 @@
 %% }
 -type list_gateway_instances_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_bridge_source_request() :: #{
 %%   <<"FlowSource">> => update_bridge_flow_source_request(),
 %%   <<"NetworkSource">> => update_bridge_network_source_request()
 %% }
 -type update_bridge_source_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% offering() :: #{
@@ -1240,9 +1387,11 @@
 %%   <<"ResourceSpecification">> => resource_specification()
 %% }
 -type offering() :: #{binary() => any()}.
+
 %% Example:
 %% remove_flow_media_stream_request() :: #{}
 -type remove_flow_media_stream_request() :: #{}.
+
 
 %% Example:
 %% grant_entitlement_request() :: #{
@@ -1255,11 +1404,13 @@
 %% }
 -type grant_entitlement_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_bridge_response() :: #{
 %%   <<"Bridge">> => bridge()
 %% }
 -type describe_bridge_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_flow_output_request() :: #{
@@ -1281,6 +1432,7 @@
 %% }
 -type update_flow_output_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% gateway_instance() :: #{
 %%   <<"BridgePlacement">> => list(any()),
@@ -1294,6 +1446,7 @@
 %% }
 -type gateway_instance() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_flow_output_response() :: #{
 %%   <<"FlowArn">> => string(),
@@ -1301,17 +1454,20 @@
 %% }
 -type update_flow_output_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% bad_request_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% add_bridge_sources_request() :: #{
 %%   <<"Sources">> := list(add_bridge_source_request()())
 %% }
 -type add_bridge_sources_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_gateway_bridge_source_request() :: #{
@@ -1320,12 +1476,14 @@
 %% }
 -type update_gateway_bridge_source_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_flow_entitlement_response() :: #{
 %%   <<"Entitlement">> => entitlement(),
 %%   <<"FlowArn">> => string()
 %% }
 -type update_flow_entitlement_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% listed_bridge() :: #{
@@ -1337,11 +1495,13 @@
 %% }
 -type listed_bridge() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_flow_response() :: #{
 %%   <<"Flow">> => flow()
 %% }
 -type update_flow_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% transport_stream() :: #{
@@ -1356,12 +1516,14 @@
 %% }
 -type transport_stream() :: #{binary() => any()}.
 
+
 %% Example:
 %% revoke_flow_entitlement_response() :: #{
 %%   <<"EntitlementArn">> => string(),
 %%   <<"FlowArn">> => string()
 %% }
 -type revoke_flow_entitlement_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% bridge_flow_output() :: #{
@@ -1371,6 +1533,7 @@
 %% }
 -type bridge_flow_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_flow_media_stream_response() :: #{
 %%   <<"FlowArn">> => string(),
@@ -1378,11 +1541,13 @@
 %% }
 -type update_flow_media_stream_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% add_flow_outputs_request() :: #{
 %%   <<"Outputs">> := list(add_output_request()())
 %% }
 -type add_flow_outputs_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_flow_response() :: #{
@@ -1390,6 +1555,7 @@
 %%   <<"Messages">> => messages()
 %% }
 -type describe_flow_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% flow() :: #{
@@ -1409,6 +1575,7 @@
 %%   <<"VpcInterfaces">> => list(vpc_interface()())
 %% }
 -type flow() :: #{binary() => any()}.
+
 
 %% Example:
 %% set_source_request() :: #{
@@ -1434,6 +1601,7 @@
 %% }
 -type set_source_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% listed_gateway_instance() :: #{
 %%   <<"GatewayArn">> => string(),
@@ -1443,6 +1611,7 @@
 %% }
 -type listed_gateway_instance() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_gateways_response() :: #{
 %%   <<"Gateways">> => list(listed_gateway()()),
@@ -1450,11 +1619,13 @@
 %% }
 -type list_gateways_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% deregister_gateway_instance_request() :: #{
 %%   <<"Force">> => boolean()
 %% }
 -type deregister_gateway_instance_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% failover_config() :: #{
@@ -1464,6 +1635,7 @@
 %%   <<"State">> => list(any())
 %% }
 -type failover_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% add_bridge_network_output_request() :: #{
@@ -1476,11 +1648,13 @@
 %% }
 -type add_bridge_network_output_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_offering_response() :: #{
 %%   <<"Offering">> => offering()
 %% }
 -type describe_offering_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% add_flow_vpc_interfaces_response() :: #{
@@ -1489,18 +1663,22 @@
 %% }
 -type add_flow_vpc_interfaces_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_bridges_response() :: #{
 %%   <<"Bridges">> => list(listed_bridge()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_bridges_response() :: #{binary() => any()}.
+
 %% Example:
 %% stop_flow_request() :: #{}
 -type stop_flow_request() :: #{}.
+
 %% Example:
 %% remove_flow_output_request() :: #{}
 -type remove_flow_output_request() :: #{}.
+
 
 %% Example:
 %% update_flow_entitlement_request() :: #{
@@ -1511,20 +1689,24 @@
 %% }
 -type update_flow_entitlement_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% add_flow_media_streams_request() :: #{
 %%   <<"MediaStreams">> := list(add_media_stream_request()())
 %% }
 -type add_flow_media_streams_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_offering_request() :: #{}
 -type describe_offering_request() :: #{}.
+
 
 %% Example:
 %% vpc_interface_attachment() :: #{
 %%   <<"VpcInterfaceName">> => string()
 %% }
 -type vpc_interface_attachment() :: #{binary() => any()}.
+
 
 %% Example:
 %% output() :: #{
@@ -1546,11 +1728,13 @@
 %% }
 -type output() :: #{binary() => any()}.
 
+
 %% Example:
 %% purchase_offering_response() :: #{
 %%   <<"Reservation">> => reservation()
 %% }
 -type purchase_offering_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% destination_configuration() :: #{
@@ -1561,6 +1745,7 @@
 %% }
 -type destination_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% purchase_offering_request() :: #{
 %%   <<"ReservationName">> := string(),
@@ -1568,12 +1753,14 @@
 %% }
 -type purchase_offering_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_bridge_output_response() :: #{
 %%   <<"BridgeArn">> => string(),
 %%   <<"Output">> => bridge_output()
 %% }
 -type update_bridge_output_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% media_stream_source_configuration() :: #{
@@ -1583,12 +1770,14 @@
 %% }
 -type media_stream_source_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% bridge_source() :: #{
 %%   <<"FlowSource">> => bridge_flow_source(),
 %%   <<"NetworkSource">> => bridge_network_source()
 %% }
 -type bridge_source() :: #{binary() => any()}.
+
 
 %% Example:
 %% add_output_request() :: #{
@@ -1610,6 +1799,411 @@
 %% }
 -type add_output_request() :: #{binary() => any()}.
 
+-type add_bridge_outputs_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type add_bridge_sources_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type add_flow_media_streams_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type add_flow_outputs_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    add_flow_outputs420_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type add_flow_sources_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type add_flow_vpc_interfaces_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type create_bridge_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    create_bridge420_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type create_flow_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    too_many_requests_exception() | 
+    create_flow420_exception() | 
+    forbidden_exception().
+
+-type create_gateway_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    create_gateway420_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type delete_bridge_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type delete_flow_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type delete_gateway_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type deregister_gateway_instance_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type describe_bridge_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type describe_flow_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type describe_flow_source_metadata_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type describe_gateway_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type describe_gateway_instance_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type describe_offering_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type describe_reservation_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type grant_flow_entitlements_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    grant_flow_entitlements420_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type list_bridges_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception().
+
+-type list_entitlements_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    too_many_requests_exception().
+
+-type list_flows_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    too_many_requests_exception().
+
+-type list_gateway_instances_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception().
+
+-type list_gateways_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception().
+
+-type list_offerings_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    too_many_requests_exception().
+
+-type list_reservations_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    too_many_requests_exception().
+
+-type list_tags_for_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception().
+
+-type purchase_offering_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type remove_bridge_output_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type remove_bridge_source_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type remove_flow_media_stream_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type remove_flow_output_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type remove_flow_source_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type remove_flow_vpc_interface_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type revoke_flow_entitlement_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type start_flow_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type stop_flow_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type tag_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception().
+
+-type untag_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception().
+
+-type update_bridge_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type update_bridge_output_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type update_bridge_source_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type update_bridge_state_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type update_flow_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type update_flow_entitlement_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type update_flow_media_stream_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type update_flow_output_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type update_flow_source_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type update_gateway_instance_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -1618,26 +2212,14 @@
 -spec add_bridge_outputs(map(), binary() | list(), add_bridge_outputs_request()) ->
     {ok, add_bridge_outputs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, add_bridge_outputs_errors(), tuple()}.
 add_bridge_outputs(Client, BridgeArn, Input) ->
     add_bridge_outputs(Client, BridgeArn, Input, []).
 
 -spec add_bridge_outputs(map(), binary() | list(), add_bridge_outputs_request(), proplists:proplist()) ->
     {ok, add_bridge_outputs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, add_bridge_outputs_errors(), tuple()}.
 add_bridge_outputs(Client, BridgeArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/bridges/", aws_util:encode_uri(BridgeArn), "/outputs"],
@@ -1664,26 +2246,14 @@ add_bridge_outputs(Client, BridgeArn, Input0, Options0) ->
 -spec add_bridge_sources(map(), binary() | list(), add_bridge_sources_request()) ->
     {ok, add_bridge_sources_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, add_bridge_sources_errors(), tuple()}.
 add_bridge_sources(Client, BridgeArn, Input) ->
     add_bridge_sources(Client, BridgeArn, Input, []).
 
 -spec add_bridge_sources(map(), binary() | list(), add_bridge_sources_request(), proplists:proplist()) ->
     {ok, add_bridge_sources_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, add_bridge_sources_errors(), tuple()}.
 add_bridge_sources(Client, BridgeArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/bridges/", aws_util:encode_uri(BridgeArn), "/sources"],
@@ -1713,24 +2283,14 @@ add_bridge_sources(Client, BridgeArn, Input0, Options0) ->
 -spec add_flow_media_streams(map(), binary() | list(), add_flow_media_streams_request()) ->
     {ok, add_flow_media_streams_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, add_flow_media_streams_errors(), tuple()}.
 add_flow_media_streams(Client, FlowArn, Input) ->
     add_flow_media_streams(Client, FlowArn, Input, []).
 
 -spec add_flow_media_streams(map(), binary() | list(), add_flow_media_streams_request(), proplists:proplist()) ->
     {ok, add_flow_media_streams_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, add_flow_media_streams_errors(), tuple()}.
 add_flow_media_streams(Client, FlowArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/mediaStreams"],
@@ -1759,26 +2319,14 @@ add_flow_media_streams(Client, FlowArn, Input0, Options0) ->
 -spec add_flow_outputs(map(), binary() | list(), add_flow_outputs_request()) ->
     {ok, add_flow_outputs_response(), tuple()} |
     {error, any()} |
-    {error, add_flow_outputs420_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, add_flow_outputs_errors(), tuple()}.
 add_flow_outputs(Client, FlowArn, Input) ->
     add_flow_outputs(Client, FlowArn, Input, []).
 
 -spec add_flow_outputs(map(), binary() | list(), add_flow_outputs_request(), proplists:proplist()) ->
     {ok, add_flow_outputs_response(), tuple()} |
     {error, any()} |
-    {error, add_flow_outputs420_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, add_flow_outputs_errors(), tuple()}.
 add_flow_outputs(Client, FlowArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/outputs"],
@@ -1805,24 +2353,14 @@ add_flow_outputs(Client, FlowArn, Input0, Options0) ->
 -spec add_flow_sources(map(), binary() | list(), add_flow_sources_request()) ->
     {ok, add_flow_sources_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, add_flow_sources_errors(), tuple()}.
 add_flow_sources(Client, FlowArn, Input) ->
     add_flow_sources(Client, FlowArn, Input, []).
 
 -spec add_flow_sources(map(), binary() | list(), add_flow_sources_request(), proplists:proplist()) ->
     {ok, add_flow_sources_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, add_flow_sources_errors(), tuple()}.
 add_flow_sources(Client, FlowArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/source"],
@@ -1849,24 +2387,14 @@ add_flow_sources(Client, FlowArn, Input0, Options0) ->
 -spec add_flow_vpc_interfaces(map(), binary() | list(), add_flow_vpc_interfaces_request()) ->
     {ok, add_flow_vpc_interfaces_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, add_flow_vpc_interfaces_errors(), tuple()}.
 add_flow_vpc_interfaces(Client, FlowArn, Input) ->
     add_flow_vpc_interfaces(Client, FlowArn, Input, []).
 
 -spec add_flow_vpc_interfaces(map(), binary() | list(), add_flow_vpc_interfaces_request(), proplists:proplist()) ->
     {ok, add_flow_vpc_interfaces_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, add_flow_vpc_interfaces_errors(), tuple()}.
 add_flow_vpc_interfaces(Client, FlowArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/vpcInterfaces"],
@@ -1895,26 +2423,14 @@ add_flow_vpc_interfaces(Client, FlowArn, Input0, Options0) ->
 -spec create_bridge(map(), create_bridge_request()) ->
     {ok, create_bridge_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, create_bridge420_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_bridge_errors(), tuple()}.
 create_bridge(Client, Input) ->
     create_bridge(Client, Input, []).
 
 -spec create_bridge(map(), create_bridge_request(), proplists:proplist()) ->
     {ok, create_bridge_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, create_bridge420_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_bridge_errors(), tuple()}.
 create_bridge(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/bridges"],
@@ -1944,24 +2460,14 @@ create_bridge(Client, Input0, Options0) ->
 -spec create_flow(map(), create_flow_request()) ->
     {ok, create_flow_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, create_flow420_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_flow_errors(), tuple()}.
 create_flow(Client, Input) ->
     create_flow(Client, Input, []).
 
 -spec create_flow(map(), create_flow_request(), proplists:proplist()) ->
     {ok, create_flow_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, create_flow420_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_flow_errors(), tuple()}.
 create_flow(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/flows"],
@@ -1990,26 +2496,14 @@ create_flow(Client, Input0, Options0) ->
 -spec create_gateway(map(), create_gateway_request()) ->
     {ok, create_gateway_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, create_gateway420_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_gateway_errors(), tuple()}.
 create_gateway(Client, Input) ->
     create_gateway(Client, Input, []).
 
 -spec create_gateway(map(), create_gateway_request(), proplists:proplist()) ->
     {ok, create_gateway_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, create_gateway420_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_gateway_errors(), tuple()}.
 create_gateway(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/gateways"],
@@ -2038,26 +2532,14 @@ create_gateway(Client, Input0, Options0) ->
 -spec delete_bridge(map(), binary() | list(), delete_bridge_request()) ->
     {ok, delete_bridge_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_bridge_errors(), tuple()}.
 delete_bridge(Client, BridgeArn, Input) ->
     delete_bridge(Client, BridgeArn, Input, []).
 
 -spec delete_bridge(map(), binary() | list(), delete_bridge_request(), proplists:proplist()) ->
     {ok, delete_bridge_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_bridge_errors(), tuple()}.
 delete_bridge(Client, BridgeArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/bridges/", aws_util:encode_uri(BridgeArn), ""],
@@ -2086,24 +2568,14 @@ delete_bridge(Client, BridgeArn, Input0, Options0) ->
 -spec delete_flow(map(), binary() | list(), delete_flow_request()) ->
     {ok, delete_flow_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_flow_errors(), tuple()}.
 delete_flow(Client, FlowArn, Input) ->
     delete_flow(Client, FlowArn, Input, []).
 
 -spec delete_flow(map(), binary() | list(), delete_flow_request(), proplists:proplist()) ->
     {ok, delete_flow_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_flow_errors(), tuple()}.
 delete_flow(Client, FlowArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), ""],
@@ -2133,26 +2605,14 @@ delete_flow(Client, FlowArn, Input0, Options0) ->
 -spec delete_gateway(map(), binary() | list(), delete_gateway_request()) ->
     {ok, delete_gateway_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_gateway_errors(), tuple()}.
 delete_gateway(Client, GatewayArn, Input) ->
     delete_gateway(Client, GatewayArn, Input, []).
 
 -spec delete_gateway(map(), binary() | list(), delete_gateway_request(), proplists:proplist()) ->
     {ok, delete_gateway_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_gateway_errors(), tuple()}.
 delete_gateway(Client, GatewayArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/gateways/", aws_util:encode_uri(GatewayArn), ""],
@@ -2183,26 +2643,14 @@ delete_gateway(Client, GatewayArn, Input0, Options0) ->
 -spec deregister_gateway_instance(map(), binary() | list(), deregister_gateway_instance_request()) ->
     {ok, deregister_gateway_instance_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, deregister_gateway_instance_errors(), tuple()}.
 deregister_gateway_instance(Client, GatewayInstanceArn, Input) ->
     deregister_gateway_instance(Client, GatewayInstanceArn, Input, []).
 
 -spec deregister_gateway_instance(map(), binary() | list(), deregister_gateway_instance_request(), proplists:proplist()) ->
     {ok, deregister_gateway_instance_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, deregister_gateway_instance_errors(), tuple()}.
 deregister_gateway_instance(Client, GatewayInstanceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/gateway-instances/", aws_util:encode_uri(GatewayInstanceArn), ""],
@@ -2230,13 +2678,7 @@ deregister_gateway_instance(Client, GatewayInstanceArn, Input0, Options0) ->
 -spec describe_bridge(map(), binary() | list()) ->
     {ok, describe_bridge_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_bridge_errors(), tuple()}.
 describe_bridge(Client, BridgeArn)
   when is_map(Client) ->
     describe_bridge(Client, BridgeArn, #{}, #{}).
@@ -2244,13 +2686,7 @@ describe_bridge(Client, BridgeArn)
 -spec describe_bridge(map(), binary() | list(), map(), map()) ->
     {ok, describe_bridge_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_bridge_errors(), tuple()}.
 describe_bridge(Client, BridgeArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_bridge(Client, BridgeArn, QueryMap, HeadersMap, []).
@@ -2258,13 +2694,7 @@ describe_bridge(Client, BridgeArn, QueryMap, HeadersMap)
 -spec describe_bridge(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_bridge_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_bridge_errors(), tuple()}.
 describe_bridge(Client, BridgeArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/bridges/", aws_util:encode_uri(BridgeArn), ""],
@@ -2288,12 +2718,7 @@ describe_bridge(Client, BridgeArn, QueryMap, HeadersMap, Options0)
 -spec describe_flow(map(), binary() | list()) ->
     {ok, describe_flow_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_flow_errors(), tuple()}.
 describe_flow(Client, FlowArn)
   when is_map(Client) ->
     describe_flow(Client, FlowArn, #{}, #{}).
@@ -2301,12 +2726,7 @@ describe_flow(Client, FlowArn)
 -spec describe_flow(map(), binary() | list(), map(), map()) ->
     {ok, describe_flow_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_flow_errors(), tuple()}.
 describe_flow(Client, FlowArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_flow(Client, FlowArn, QueryMap, HeadersMap, []).
@@ -2314,12 +2734,7 @@ describe_flow(Client, FlowArn, QueryMap, HeadersMap)
 -spec describe_flow(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_flow_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_flow_errors(), tuple()}.
 describe_flow(Client, FlowArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), ""],
@@ -2343,12 +2758,7 @@ describe_flow(Client, FlowArn, QueryMap, HeadersMap, Options0)
 -spec describe_flow_source_metadata(map(), binary() | list()) ->
     {ok, describe_flow_source_metadata_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_flow_source_metadata_errors(), tuple()}.
 describe_flow_source_metadata(Client, FlowArn)
   when is_map(Client) ->
     describe_flow_source_metadata(Client, FlowArn, #{}, #{}).
@@ -2356,12 +2766,7 @@ describe_flow_source_metadata(Client, FlowArn)
 -spec describe_flow_source_metadata(map(), binary() | list(), map(), map()) ->
     {ok, describe_flow_source_metadata_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_flow_source_metadata_errors(), tuple()}.
 describe_flow_source_metadata(Client, FlowArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_flow_source_metadata(Client, FlowArn, QueryMap, HeadersMap, []).
@@ -2369,12 +2774,7 @@ describe_flow_source_metadata(Client, FlowArn, QueryMap, HeadersMap)
 -spec describe_flow_source_metadata(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_flow_source_metadata_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_flow_source_metadata_errors(), tuple()}.
 describe_flow_source_metadata(Client, FlowArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/source-metadata"],
@@ -2398,13 +2798,7 @@ describe_flow_source_metadata(Client, FlowArn, QueryMap, HeadersMap, Options0)
 -spec describe_gateway(map(), binary() | list()) ->
     {ok, describe_gateway_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_gateway_errors(), tuple()}.
 describe_gateway(Client, GatewayArn)
   when is_map(Client) ->
     describe_gateway(Client, GatewayArn, #{}, #{}).
@@ -2412,13 +2806,7 @@ describe_gateway(Client, GatewayArn)
 -spec describe_gateway(map(), binary() | list(), map(), map()) ->
     {ok, describe_gateway_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_gateway_errors(), tuple()}.
 describe_gateway(Client, GatewayArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_gateway(Client, GatewayArn, QueryMap, HeadersMap, []).
@@ -2426,13 +2814,7 @@ describe_gateway(Client, GatewayArn, QueryMap, HeadersMap)
 -spec describe_gateway(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_gateway_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_gateway_errors(), tuple()}.
 describe_gateway(Client, GatewayArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/gateways/", aws_util:encode_uri(GatewayArn), ""],
@@ -2453,13 +2835,7 @@ describe_gateway(Client, GatewayArn, QueryMap, HeadersMap, Options0)
 -spec describe_gateway_instance(map(), binary() | list()) ->
     {ok, describe_gateway_instance_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_gateway_instance_errors(), tuple()}.
 describe_gateway_instance(Client, GatewayInstanceArn)
   when is_map(Client) ->
     describe_gateway_instance(Client, GatewayInstanceArn, #{}, #{}).
@@ -2467,13 +2843,7 @@ describe_gateway_instance(Client, GatewayInstanceArn)
 -spec describe_gateway_instance(map(), binary() | list(), map(), map()) ->
     {ok, describe_gateway_instance_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_gateway_instance_errors(), tuple()}.
 describe_gateway_instance(Client, GatewayInstanceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_gateway_instance(Client, GatewayInstanceArn, QueryMap, HeadersMap, []).
@@ -2481,13 +2851,7 @@ describe_gateway_instance(Client, GatewayInstanceArn, QueryMap, HeadersMap)
 -spec describe_gateway_instance(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_gateway_instance_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_gateway_instance_errors(), tuple()}.
 describe_gateway_instance(Client, GatewayInstanceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/gateway-instances/", aws_util:encode_uri(GatewayInstanceArn), ""],
@@ -2511,11 +2875,7 @@ describe_gateway_instance(Client, GatewayInstanceArn, QueryMap, HeadersMap, Opti
 -spec describe_offering(map(), binary() | list()) ->
     {ok, describe_offering_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_offering_errors(), tuple()}.
 describe_offering(Client, OfferingArn)
   when is_map(Client) ->
     describe_offering(Client, OfferingArn, #{}, #{}).
@@ -2523,11 +2883,7 @@ describe_offering(Client, OfferingArn)
 -spec describe_offering(map(), binary() | list(), map(), map()) ->
     {ok, describe_offering_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_offering_errors(), tuple()}.
 describe_offering(Client, OfferingArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_offering(Client, OfferingArn, QueryMap, HeadersMap, []).
@@ -2535,11 +2891,7 @@ describe_offering(Client, OfferingArn, QueryMap, HeadersMap)
 -spec describe_offering(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_offering_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_offering_errors(), tuple()}.
 describe_offering(Client, OfferingArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/offerings/", aws_util:encode_uri(OfferingArn), ""],
@@ -2564,11 +2916,7 @@ describe_offering(Client, OfferingArn, QueryMap, HeadersMap, Options0)
 -spec describe_reservation(map(), binary() | list()) ->
     {ok, describe_reservation_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_reservation_errors(), tuple()}.
 describe_reservation(Client, ReservationArn)
   when is_map(Client) ->
     describe_reservation(Client, ReservationArn, #{}, #{}).
@@ -2576,11 +2924,7 @@ describe_reservation(Client, ReservationArn)
 -spec describe_reservation(map(), binary() | list(), map(), map()) ->
     {ok, describe_reservation_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_reservation_errors(), tuple()}.
 describe_reservation(Client, ReservationArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_reservation(Client, ReservationArn, QueryMap, HeadersMap, []).
@@ -2588,11 +2932,7 @@ describe_reservation(Client, ReservationArn, QueryMap, HeadersMap)
 -spec describe_reservation(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_reservation_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_reservation_errors(), tuple()}.
 describe_reservation(Client, ReservationArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/reservations/", aws_util:encode_uri(ReservationArn), ""],
@@ -2613,26 +2953,14 @@ describe_reservation(Client, ReservationArn, QueryMap, HeadersMap, Options0)
 -spec grant_flow_entitlements(map(), binary() | list(), grant_flow_entitlements_request()) ->
     {ok, grant_flow_entitlements_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, grant_flow_entitlements420_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, grant_flow_entitlements_errors(), tuple()}.
 grant_flow_entitlements(Client, FlowArn, Input) ->
     grant_flow_entitlements(Client, FlowArn, Input, []).
 
 -spec grant_flow_entitlements(map(), binary() | list(), grant_flow_entitlements_request(), proplists:proplist()) ->
     {ok, grant_flow_entitlements_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, grant_flow_entitlements420_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, grant_flow_entitlements_errors(), tuple()}.
 grant_flow_entitlements(Client, FlowArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/entitlements"],
@@ -2662,11 +2990,7 @@ grant_flow_entitlements(Client, FlowArn, Input0, Options0) ->
 -spec list_bridges(map()) ->
     {ok, list_bridges_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_bridges_errors(), tuple()}.
 list_bridges(Client)
   when is_map(Client) ->
     list_bridges(Client, #{}, #{}).
@@ -2674,11 +2998,7 @@ list_bridges(Client)
 -spec list_bridges(map(), map(), map()) ->
     {ok, list_bridges_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_bridges_errors(), tuple()}.
 list_bridges(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_bridges(Client, QueryMap, HeadersMap, []).
@@ -2686,11 +3006,7 @@ list_bridges(Client, QueryMap, HeadersMap)
 -spec list_bridges(map(), map(), map(), proplists:proplist()) ->
     {ok, list_bridges_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_bridges_errors(), tuple()}.
 list_bridges(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/bridges"],
@@ -2720,10 +3036,7 @@ list_bridges(Client, QueryMap, HeadersMap, Options0)
 -spec list_entitlements(map()) ->
     {ok, list_entitlements_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_entitlements_errors(), tuple()}.
 list_entitlements(Client)
   when is_map(Client) ->
     list_entitlements(Client, #{}, #{}).
@@ -2731,10 +3044,7 @@ list_entitlements(Client)
 -spec list_entitlements(map(), map(), map()) ->
     {ok, list_entitlements_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_entitlements_errors(), tuple()}.
 list_entitlements(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_entitlements(Client, QueryMap, HeadersMap, []).
@@ -2742,10 +3052,7 @@ list_entitlements(Client, QueryMap, HeadersMap)
 -spec list_entitlements(map(), map(), map(), proplists:proplist()) ->
     {ok, list_entitlements_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_entitlements_errors(), tuple()}.
 list_entitlements(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/entitlements"],
@@ -2773,10 +3080,7 @@ list_entitlements(Client, QueryMap, HeadersMap, Options0)
 -spec list_flows(map()) ->
     {ok, list_flows_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_flows_errors(), tuple()}.
 list_flows(Client)
   when is_map(Client) ->
     list_flows(Client, #{}, #{}).
@@ -2784,10 +3088,7 @@ list_flows(Client)
 -spec list_flows(map(), map(), map()) ->
     {ok, list_flows_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_flows_errors(), tuple()}.
 list_flows(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_flows(Client, QueryMap, HeadersMap, []).
@@ -2795,10 +3096,7 @@ list_flows(Client, QueryMap, HeadersMap)
 -spec list_flows(map(), map(), map(), proplists:proplist()) ->
     {ok, list_flows_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_flows_errors(), tuple()}.
 list_flows(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/flows"],
@@ -2828,11 +3126,7 @@ list_flows(Client, QueryMap, HeadersMap, Options0)
 -spec list_gateway_instances(map()) ->
     {ok, list_gateway_instances_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_gateway_instances_errors(), tuple()}.
 list_gateway_instances(Client)
   when is_map(Client) ->
     list_gateway_instances(Client, #{}, #{}).
@@ -2840,11 +3134,7 @@ list_gateway_instances(Client)
 -spec list_gateway_instances(map(), map(), map()) ->
     {ok, list_gateway_instances_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_gateway_instances_errors(), tuple()}.
 list_gateway_instances(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_gateway_instances(Client, QueryMap, HeadersMap, []).
@@ -2852,11 +3142,7 @@ list_gateway_instances(Client, QueryMap, HeadersMap)
 -spec list_gateway_instances(map(), map(), map(), proplists:proplist()) ->
     {ok, list_gateway_instances_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_gateway_instances_errors(), tuple()}.
 list_gateway_instances(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/gateway-instances"],
@@ -2885,11 +3171,7 @@ list_gateway_instances(Client, QueryMap, HeadersMap, Options0)
 -spec list_gateways(map()) ->
     {ok, list_gateways_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_gateways_errors(), tuple()}.
 list_gateways(Client)
   when is_map(Client) ->
     list_gateways(Client, #{}, #{}).
@@ -2897,11 +3179,7 @@ list_gateways(Client)
 -spec list_gateways(map(), map(), map()) ->
     {ok, list_gateways_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_gateways_errors(), tuple()}.
 list_gateways(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_gateways(Client, QueryMap, HeadersMap, []).
@@ -2909,11 +3187,7 @@ list_gateways(Client, QueryMap, HeadersMap)
 -spec list_gateways(map(), map(), map(), proplists:proplist()) ->
     {ok, list_gateways_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_gateways_errors(), tuple()}.
 list_gateways(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/gateways"],
@@ -2944,10 +3218,7 @@ list_gateways(Client, QueryMap, HeadersMap, Options0)
 -spec list_offerings(map()) ->
     {ok, list_offerings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_offerings_errors(), tuple()}.
 list_offerings(Client)
   when is_map(Client) ->
     list_offerings(Client, #{}, #{}).
@@ -2955,10 +3226,7 @@ list_offerings(Client)
 -spec list_offerings(map(), map(), map()) ->
     {ok, list_offerings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_offerings_errors(), tuple()}.
 list_offerings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_offerings(Client, QueryMap, HeadersMap, []).
@@ -2966,10 +3234,7 @@ list_offerings(Client, QueryMap, HeadersMap)
 -spec list_offerings(map(), map(), map(), proplists:proplist()) ->
     {ok, list_offerings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_offerings_errors(), tuple()}.
 list_offerings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/offerings"],
@@ -2999,10 +3264,7 @@ list_offerings(Client, QueryMap, HeadersMap, Options0)
 -spec list_reservations(map()) ->
     {ok, list_reservations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_reservations_errors(), tuple()}.
 list_reservations(Client)
   when is_map(Client) ->
     list_reservations(Client, #{}, #{}).
@@ -3010,10 +3272,7 @@ list_reservations(Client)
 -spec list_reservations(map(), map(), map()) ->
     {ok, list_reservations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_reservations_errors(), tuple()}.
 list_reservations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_reservations(Client, QueryMap, HeadersMap, []).
@@ -3021,10 +3280,7 @@ list_reservations(Client, QueryMap, HeadersMap)
 -spec list_reservations(map(), map(), map(), proplists:proplist()) ->
     {ok, list_reservations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_reservations_errors(), tuple()}.
 list_reservations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/reservations"],
@@ -3050,9 +3306,7 @@ list_reservations(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -3060,9 +3314,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -3070,9 +3322,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -3096,24 +3346,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec purchase_offering(map(), binary() | list(), purchase_offering_request()) ->
     {ok, purchase_offering_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, purchase_offering_errors(), tuple()}.
 purchase_offering(Client, OfferingArn, Input) ->
     purchase_offering(Client, OfferingArn, Input, []).
 
 -spec purchase_offering(map(), binary() | list(), purchase_offering_request(), proplists:proplist()) ->
     {ok, purchase_offering_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, purchase_offering_errors(), tuple()}.
 purchase_offering(Client, OfferingArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/offerings/", aws_util:encode_uri(OfferingArn), ""],
@@ -3140,26 +3380,14 @@ purchase_offering(Client, OfferingArn, Input0, Options0) ->
 -spec remove_bridge_output(map(), binary() | list(), binary() | list(), remove_bridge_output_request()) ->
     {ok, remove_bridge_output_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, remove_bridge_output_errors(), tuple()}.
 remove_bridge_output(Client, BridgeArn, OutputName, Input) ->
     remove_bridge_output(Client, BridgeArn, OutputName, Input, []).
 
 -spec remove_bridge_output(map(), binary() | list(), binary() | list(), remove_bridge_output_request(), proplists:proplist()) ->
     {ok, remove_bridge_output_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, remove_bridge_output_errors(), tuple()}.
 remove_bridge_output(Client, BridgeArn, OutputName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/bridges/", aws_util:encode_uri(BridgeArn), "/outputs/", aws_util:encode_uri(OutputName), ""],
@@ -3186,26 +3414,14 @@ remove_bridge_output(Client, BridgeArn, OutputName, Input0, Options0) ->
 -spec remove_bridge_source(map(), binary() | list(), binary() | list(), remove_bridge_source_request()) ->
     {ok, remove_bridge_source_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, remove_bridge_source_errors(), tuple()}.
 remove_bridge_source(Client, BridgeArn, SourceName, Input) ->
     remove_bridge_source(Client, BridgeArn, SourceName, Input, []).
 
 -spec remove_bridge_source(map(), binary() | list(), binary() | list(), remove_bridge_source_request(), proplists:proplist()) ->
     {ok, remove_bridge_source_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, remove_bridge_source_errors(), tuple()}.
 remove_bridge_source(Client, BridgeArn, SourceName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/bridges/", aws_util:encode_uri(BridgeArn), "/sources/", aws_util:encode_uri(SourceName), ""],
@@ -3235,24 +3451,14 @@ remove_bridge_source(Client, BridgeArn, SourceName, Input0, Options0) ->
 -spec remove_flow_media_stream(map(), binary() | list(), binary() | list(), remove_flow_media_stream_request()) ->
     {ok, remove_flow_media_stream_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, remove_flow_media_stream_errors(), tuple()}.
 remove_flow_media_stream(Client, FlowArn, MediaStreamName, Input) ->
     remove_flow_media_stream(Client, FlowArn, MediaStreamName, Input, []).
 
 -spec remove_flow_media_stream(map(), binary() | list(), binary() | list(), remove_flow_media_stream_request(), proplists:proplist()) ->
     {ok, remove_flow_media_stream_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, remove_flow_media_stream_errors(), tuple()}.
 remove_flow_media_stream(Client, FlowArn, MediaStreamName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/mediaStreams/", aws_util:encode_uri(MediaStreamName), ""],
@@ -3284,24 +3490,14 @@ remove_flow_media_stream(Client, FlowArn, MediaStreamName, Input0, Options0) ->
 -spec remove_flow_output(map(), binary() | list(), binary() | list(), remove_flow_output_request()) ->
     {ok, remove_flow_output_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, remove_flow_output_errors(), tuple()}.
 remove_flow_output(Client, FlowArn, OutputArn, Input) ->
     remove_flow_output(Client, FlowArn, OutputArn, Input, []).
 
 -spec remove_flow_output(map(), binary() | list(), binary() | list(), remove_flow_output_request(), proplists:proplist()) ->
     {ok, remove_flow_output_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, remove_flow_output_errors(), tuple()}.
 remove_flow_output(Client, FlowArn, OutputArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/outputs/", aws_util:encode_uri(OutputArn), ""],
@@ -3331,24 +3527,14 @@ remove_flow_output(Client, FlowArn, OutputArn, Input0, Options0) ->
 -spec remove_flow_source(map(), binary() | list(), binary() | list(), remove_flow_source_request()) ->
     {ok, remove_flow_source_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, remove_flow_source_errors(), tuple()}.
 remove_flow_source(Client, FlowArn, SourceArn, Input) ->
     remove_flow_source(Client, FlowArn, SourceArn, Input, []).
 
 -spec remove_flow_source(map(), binary() | list(), binary() | list(), remove_flow_source_request(), proplists:proplist()) ->
     {ok, remove_flow_source_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, remove_flow_source_errors(), tuple()}.
 remove_flow_source(Client, FlowArn, SourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/source/", aws_util:encode_uri(SourceArn), ""],
@@ -3380,24 +3566,14 @@ remove_flow_source(Client, FlowArn, SourceArn, Input0, Options0) ->
 -spec remove_flow_vpc_interface(map(), binary() | list(), binary() | list(), remove_flow_vpc_interface_request()) ->
     {ok, remove_flow_vpc_interface_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, remove_flow_vpc_interface_errors(), tuple()}.
 remove_flow_vpc_interface(Client, FlowArn, VpcInterfaceName, Input) ->
     remove_flow_vpc_interface(Client, FlowArn, VpcInterfaceName, Input, []).
 
 -spec remove_flow_vpc_interface(map(), binary() | list(), binary() | list(), remove_flow_vpc_interface_request(), proplists:proplist()) ->
     {ok, remove_flow_vpc_interface_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, remove_flow_vpc_interface_errors(), tuple()}.
 remove_flow_vpc_interface(Client, FlowArn, VpcInterfaceName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/vpcInterfaces/", aws_util:encode_uri(VpcInterfaceName), ""],
@@ -3427,24 +3603,14 @@ remove_flow_vpc_interface(Client, FlowArn, VpcInterfaceName, Input0, Options0) -
 -spec revoke_flow_entitlement(map(), binary() | list(), binary() | list(), revoke_flow_entitlement_request()) ->
     {ok, revoke_flow_entitlement_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, revoke_flow_entitlement_errors(), tuple()}.
 revoke_flow_entitlement(Client, EntitlementArn, FlowArn, Input) ->
     revoke_flow_entitlement(Client, EntitlementArn, FlowArn, Input, []).
 
 -spec revoke_flow_entitlement(map(), binary() | list(), binary() | list(), revoke_flow_entitlement_request(), proplists:proplist()) ->
     {ok, revoke_flow_entitlement_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, revoke_flow_entitlement_errors(), tuple()}.
 revoke_flow_entitlement(Client, EntitlementArn, FlowArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/entitlements/", aws_util:encode_uri(EntitlementArn), ""],
@@ -3471,24 +3637,14 @@ revoke_flow_entitlement(Client, EntitlementArn, FlowArn, Input0, Options0) ->
 -spec start_flow(map(), binary() | list(), start_flow_request()) ->
     {ok, start_flow_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, start_flow_errors(), tuple()}.
 start_flow(Client, FlowArn, Input) ->
     start_flow(Client, FlowArn, Input, []).
 
 -spec start_flow(map(), binary() | list(), start_flow_request(), proplists:proplist()) ->
     {ok, start_flow_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, start_flow_errors(), tuple()}.
 start_flow(Client, FlowArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/flows/start/", aws_util:encode_uri(FlowArn), ""],
@@ -3515,24 +3671,14 @@ start_flow(Client, FlowArn, Input0, Options0) ->
 -spec stop_flow(map(), binary() | list(), stop_flow_request()) ->
     {ok, stop_flow_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, stop_flow_errors(), tuple()}.
 stop_flow(Client, FlowArn, Input) ->
     stop_flow(Client, FlowArn, Input, []).
 
 -spec stop_flow(map(), binary() | list(), stop_flow_request(), proplists:proplist()) ->
     {ok, stop_flow_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, stop_flow_errors(), tuple()}.
 stop_flow(Client, FlowArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/flows/stop/", aws_util:encode_uri(FlowArn), ""],
@@ -3564,18 +3710,14 @@ stop_flow(Client, FlowArn, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -3602,18 +3744,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -3641,26 +3779,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_bridge(map(), binary() | list(), update_bridge_request()) ->
     {ok, update_bridge_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_bridge_errors(), tuple()}.
 update_bridge(Client, BridgeArn, Input) ->
     update_bridge(Client, BridgeArn, Input, []).
 
 -spec update_bridge(map(), binary() | list(), update_bridge_request(), proplists:proplist()) ->
     {ok, update_bridge_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_bridge_errors(), tuple()}.
 update_bridge(Client, BridgeArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/bridges/", aws_util:encode_uri(BridgeArn), ""],
@@ -3687,26 +3813,14 @@ update_bridge(Client, BridgeArn, Input0, Options0) ->
 -spec update_bridge_output(map(), binary() | list(), binary() | list(), update_bridge_output_request()) ->
     {ok, update_bridge_output_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_bridge_output_errors(), tuple()}.
 update_bridge_output(Client, BridgeArn, OutputName, Input) ->
     update_bridge_output(Client, BridgeArn, OutputName, Input, []).
 
 -spec update_bridge_output(map(), binary() | list(), binary() | list(), update_bridge_output_request(), proplists:proplist()) ->
     {ok, update_bridge_output_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_bridge_output_errors(), tuple()}.
 update_bridge_output(Client, BridgeArn, OutputName, Input0, Options0) ->
     Method = put,
     Path = ["/v1/bridges/", aws_util:encode_uri(BridgeArn), "/outputs/", aws_util:encode_uri(OutputName), ""],
@@ -3733,26 +3847,14 @@ update_bridge_output(Client, BridgeArn, OutputName, Input0, Options0) ->
 -spec update_bridge_source(map(), binary() | list(), binary() | list(), update_bridge_source_request()) ->
     {ok, update_bridge_source_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_bridge_source_errors(), tuple()}.
 update_bridge_source(Client, BridgeArn, SourceName, Input) ->
     update_bridge_source(Client, BridgeArn, SourceName, Input, []).
 
 -spec update_bridge_source(map(), binary() | list(), binary() | list(), update_bridge_source_request(), proplists:proplist()) ->
     {ok, update_bridge_source_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_bridge_source_errors(), tuple()}.
 update_bridge_source(Client, BridgeArn, SourceName, Input0, Options0) ->
     Method = put,
     Path = ["/v1/bridges/", aws_util:encode_uri(BridgeArn), "/sources/", aws_util:encode_uri(SourceName), ""],
@@ -3779,26 +3881,14 @@ update_bridge_source(Client, BridgeArn, SourceName, Input0, Options0) ->
 -spec update_bridge_state(map(), binary() | list(), update_bridge_state_request()) ->
     {ok, update_bridge_state_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_bridge_state_errors(), tuple()}.
 update_bridge_state(Client, BridgeArn, Input) ->
     update_bridge_state(Client, BridgeArn, Input, []).
 
 -spec update_bridge_state(map(), binary() | list(), update_bridge_state_request(), proplists:proplist()) ->
     {ok, update_bridge_state_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_bridge_state_errors(), tuple()}.
 update_bridge_state(Client, BridgeArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/bridges/", aws_util:encode_uri(BridgeArn), "/state"],
@@ -3825,24 +3915,14 @@ update_bridge_state(Client, BridgeArn, Input0, Options0) ->
 -spec update_flow(map(), binary() | list(), update_flow_request()) ->
     {ok, update_flow_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_flow_errors(), tuple()}.
 update_flow(Client, FlowArn, Input) ->
     update_flow(Client, FlowArn, Input, []).
 
 -spec update_flow(map(), binary() | list(), update_flow_request(), proplists:proplist()) ->
     {ok, update_flow_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_flow_errors(), tuple()}.
 update_flow(Client, FlowArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), ""],
@@ -3873,24 +3953,14 @@ update_flow(Client, FlowArn, Input0, Options0) ->
 -spec update_flow_entitlement(map(), binary() | list(), binary() | list(), update_flow_entitlement_request()) ->
     {ok, update_flow_entitlement_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_flow_entitlement_errors(), tuple()}.
 update_flow_entitlement(Client, EntitlementArn, FlowArn, Input) ->
     update_flow_entitlement(Client, EntitlementArn, FlowArn, Input, []).
 
 -spec update_flow_entitlement(map(), binary() | list(), binary() | list(), update_flow_entitlement_request(), proplists:proplist()) ->
     {ok, update_flow_entitlement_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_flow_entitlement_errors(), tuple()}.
 update_flow_entitlement(Client, EntitlementArn, FlowArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/entitlements/", aws_util:encode_uri(EntitlementArn), ""],
@@ -3917,24 +3987,14 @@ update_flow_entitlement(Client, EntitlementArn, FlowArn, Input0, Options0) ->
 -spec update_flow_media_stream(map(), binary() | list(), binary() | list(), update_flow_media_stream_request()) ->
     {ok, update_flow_media_stream_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_flow_media_stream_errors(), tuple()}.
 update_flow_media_stream(Client, FlowArn, MediaStreamName, Input) ->
     update_flow_media_stream(Client, FlowArn, MediaStreamName, Input, []).
 
 -spec update_flow_media_stream(map(), binary() | list(), binary() | list(), update_flow_media_stream_request(), proplists:proplist()) ->
     {ok, update_flow_media_stream_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_flow_media_stream_errors(), tuple()}.
 update_flow_media_stream(Client, FlowArn, MediaStreamName, Input0, Options0) ->
     Method = put,
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/mediaStreams/", aws_util:encode_uri(MediaStreamName), ""],
@@ -3961,24 +4021,14 @@ update_flow_media_stream(Client, FlowArn, MediaStreamName, Input0, Options0) ->
 -spec update_flow_output(map(), binary() | list(), binary() | list(), update_flow_output_request()) ->
     {ok, update_flow_output_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_flow_output_errors(), tuple()}.
 update_flow_output(Client, FlowArn, OutputArn, Input) ->
     update_flow_output(Client, FlowArn, OutputArn, Input, []).
 
 -spec update_flow_output(map(), binary() | list(), binary() | list(), update_flow_output_request(), proplists:proplist()) ->
     {ok, update_flow_output_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_flow_output_errors(), tuple()}.
 update_flow_output(Client, FlowArn, OutputArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/outputs/", aws_util:encode_uri(OutputArn), ""],
@@ -4005,24 +4055,14 @@ update_flow_output(Client, FlowArn, OutputArn, Input0, Options0) ->
 -spec update_flow_source(map(), binary() | list(), binary() | list(), update_flow_source_request()) ->
     {ok, update_flow_source_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_flow_source_errors(), tuple()}.
 update_flow_source(Client, FlowArn, SourceArn, Input) ->
     update_flow_source(Client, FlowArn, SourceArn, Input, []).
 
 -spec update_flow_source(map(), binary() | list(), binary() | list(), update_flow_source_request(), proplists:proplist()) ->
     {ok, update_flow_source_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_flow_source_errors(), tuple()}.
 update_flow_source(Client, FlowArn, SourceArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/source/", aws_util:encode_uri(SourceArn), ""],
@@ -4049,26 +4089,14 @@ update_flow_source(Client, FlowArn, SourceArn, Input0, Options0) ->
 -spec update_gateway_instance(map(), binary() | list(), update_gateway_instance_request()) ->
     {ok, update_gateway_instance_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_gateway_instance_errors(), tuple()}.
 update_gateway_instance(Client, GatewayInstanceArn, Input) ->
     update_gateway_instance(Client, GatewayInstanceArn, Input, []).
 
 -spec update_gateway_instance(map(), binary() | list(), update_gateway_instance_request(), proplists:proplist()) ->
     {ok, update_gateway_instance_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_gateway_instance_errors(), tuple()}.
 update_gateway_instance(Client, GatewayInstanceArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/gateway-instances/", aws_util:encode_uri(GatewayInstanceArn), ""],

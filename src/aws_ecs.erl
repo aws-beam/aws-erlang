@@ -2226,6 +2226,388 @@
 %% }
 -type resource() :: #{binary() => any()}.
 
+-type create_capacity_provider_errors() ::
+    limit_exceeded_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception() | 
+    update_in_progress_exception().
+
+-type create_cluster_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception() | 
+    namespace_not_found_exception().
+
+-type create_service_errors() ::
+    server_exception() | 
+    platform_task_definition_incompatibility_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    platform_unknown_exception() | 
+    client_exception() | 
+    unsupported_feature_exception() | 
+    namespace_not_found_exception() | 
+    cluster_not_found_exception().
+
+-type create_task_set_errors() ::
+    server_exception() | 
+    platform_task_definition_incompatibility_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    platform_unknown_exception() | 
+    service_not_active_exception() | 
+    client_exception() | 
+    unsupported_feature_exception() | 
+    namespace_not_found_exception() | 
+    service_not_found_exception() | 
+    cluster_not_found_exception().
+
+-type delete_account_setting_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception().
+
+-type delete_attributes_errors() ::
+    target_not_found_exception() | 
+    invalid_parameter_exception() | 
+    cluster_not_found_exception().
+
+-type delete_capacity_provider_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception().
+
+-type delete_cluster_errors() ::
+    cluster_contains_services_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    cluster_contains_container_instances_exception() | 
+    cluster_contains_tasks_exception() | 
+    client_exception() | 
+    cluster_not_found_exception() | 
+    update_in_progress_exception().
+
+-type delete_service_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception() | 
+    service_not_found_exception() | 
+    cluster_not_found_exception().
+
+-type delete_task_definitions_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    client_exception().
+
+-type delete_task_set_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    task_set_not_found_exception() | 
+    service_not_active_exception() | 
+    client_exception() | 
+    unsupported_feature_exception() | 
+    service_not_found_exception() | 
+    cluster_not_found_exception().
+
+-type deregister_container_instance_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception() | 
+    cluster_not_found_exception().
+
+-type deregister_task_definition_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception().
+
+-type describe_capacity_providers_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception().
+
+-type describe_clusters_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception().
+
+-type describe_container_instances_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception() | 
+    cluster_not_found_exception().
+
+-type describe_services_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception() | 
+    cluster_not_found_exception().
+
+-type describe_task_definition_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception().
+
+-type describe_task_sets_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_not_active_exception() | 
+    client_exception() | 
+    unsupported_feature_exception() | 
+    service_not_found_exception() | 
+    cluster_not_found_exception().
+
+-type describe_tasks_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception() | 
+    cluster_not_found_exception().
+
+-type discover_poll_endpoint_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type execute_command_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    client_exception() | 
+    target_not_connected_exception() | 
+    cluster_not_found_exception().
+
+-type get_task_protection_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    client_exception() | 
+    unsupported_feature_exception() | 
+    cluster_not_found_exception().
+
+-type list_account_settings_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception().
+
+-type list_attributes_errors() ::
+    invalid_parameter_exception() | 
+    cluster_not_found_exception().
+
+-type list_clusters_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception().
+
+-type list_container_instances_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception() | 
+    cluster_not_found_exception().
+
+-type list_services_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception() | 
+    cluster_not_found_exception().
+
+-type list_services_by_namespace_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception() | 
+    namespace_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception() | 
+    cluster_not_found_exception().
+
+-type list_task_definition_families_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception().
+
+-type list_task_definitions_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception().
+
+-type list_tasks_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception() | 
+    service_not_found_exception() | 
+    cluster_not_found_exception().
+
+-type put_account_setting_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception().
+
+-type put_account_setting_default_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception().
+
+-type put_attributes_errors() ::
+    target_not_found_exception() | 
+    invalid_parameter_exception() | 
+    cluster_not_found_exception() | 
+    attribute_limit_exceeded_exception().
+
+-type put_cluster_capacity_providers_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception() | 
+    cluster_not_found_exception() | 
+    resource_in_use_exception() | 
+    update_in_progress_exception().
+
+-type register_container_instance_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception().
+
+-type register_task_definition_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception().
+
+-type run_task_errors() ::
+    blocked_exception() | 
+    server_exception() | 
+    platform_task_definition_incompatibility_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    platform_unknown_exception() | 
+    conflict_exception() | 
+    client_exception() | 
+    unsupported_feature_exception() | 
+    cluster_not_found_exception().
+
+-type start_task_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception() | 
+    unsupported_feature_exception() | 
+    cluster_not_found_exception().
+
+-type stop_task_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception() | 
+    cluster_not_found_exception().
+
+-type submit_attachment_state_changes_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    client_exception().
+
+-type submit_container_state_change_errors() ::
+    server_exception() | 
+    access_denied_exception() | 
+    client_exception().
+
+-type submit_task_state_change_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    client_exception().
+
+-type tag_resource_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    client_exception() | 
+    cluster_not_found_exception().
+
+-type untag_resource_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    client_exception() | 
+    cluster_not_found_exception().
+
+-type update_capacity_provider_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception().
+
+-type update_cluster_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception() | 
+    namespace_not_found_exception() | 
+    cluster_not_found_exception().
+
+-type update_cluster_settings_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception() | 
+    cluster_not_found_exception().
+
+-type update_container_agent_errors() ::
+    server_exception() | 
+    missing_version_exception() | 
+    invalid_parameter_exception() | 
+    no_update_available_exception() | 
+    client_exception() | 
+    cluster_not_found_exception() | 
+    update_in_progress_exception().
+
+-type update_container_instances_state_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception() | 
+    cluster_not_found_exception().
+
+-type update_service_errors() ::
+    server_exception() | 
+    platform_task_definition_incompatibility_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    platform_unknown_exception() | 
+    service_not_active_exception() | 
+    client_exception() | 
+    unsupported_feature_exception() | 
+    namespace_not_found_exception() | 
+    service_not_found_exception() | 
+    cluster_not_found_exception().
+
+-type update_service_primary_task_set_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    task_set_not_found_exception() | 
+    service_not_active_exception() | 
+    client_exception() | 
+    unsupported_feature_exception() | 
+    service_not_found_exception() | 
+    cluster_not_found_exception().
+
+-type update_task_protection_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    client_exception() | 
+    unsupported_feature_exception() | 
+    cluster_not_found_exception().
+
+-type update_task_set_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    task_set_not_found_exception() | 
+    service_not_active_exception() | 
+    client_exception() | 
+    unsupported_feature_exception() | 
+    service_not_found_exception() | 
+    cluster_not_found_exception().
 
 %%====================================================================
 %% API
@@ -2247,11 +2629,7 @@
 -spec create_capacity_provider(map(), create_capacity_provider_request()) ->
     {ok, create_capacity_provider_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, update_in_progress_exception(), tuple()}.
+    {error, create_capacity_provider_errors(), tuple()}.
 create_capacity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_capacity_provider(Client, Input, []).
@@ -2259,11 +2637,7 @@ create_capacity_provider(Client, Input)
 -spec create_capacity_provider(map(), create_capacity_provider_request(), proplists:proplist()) ->
     {ok, create_capacity_provider_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, update_in_progress_exception(), tuple()}.
+    {error, create_capacity_provider_errors(), tuple()}.
 create_capacity_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCapacityProvider">>, Input, Options).
@@ -2290,10 +2664,7 @@ create_capacity_provider(Client, Input, Options)
 -spec create_cluster(map(), create_cluster_request()) ->
     {ok, create_cluster_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, namespace_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, create_cluster_errors(), tuple()}.
 create_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cluster(Client, Input, []).
@@ -2301,10 +2672,7 @@ create_cluster(Client, Input)
 -spec create_cluster(map(), create_cluster_request(), proplists:proplist()) ->
     {ok, create_cluster_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, namespace_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, create_cluster_errors(), tuple()}.
 create_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCluster">>, Input, Options).
@@ -2471,15 +2839,7 @@ create_cluster(Client, Input, Options)
 -spec create_service(map(), create_service_request()) ->
     {ok, create_service_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, namespace_not_found_exception(), tuple()} |
-    {error, platform_task_definition_incompatibility_exception(), tuple()} |
-    {error, platform_unknown_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_feature_exception(), tuple()}.
+    {error, create_service_errors(), tuple()}.
 create_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service(Client, Input, []).
@@ -2487,15 +2847,7 @@ create_service(Client, Input)
 -spec create_service(map(), create_service_request(), proplists:proplist()) ->
     {ok, create_service_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, namespace_not_found_exception(), tuple()} |
-    {error, platform_task_definition_incompatibility_exception(), tuple()} |
-    {error, platform_unknown_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_feature_exception(), tuple()}.
+    {error, create_service_errors(), tuple()}.
 create_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateService">>, Input, Options).
@@ -2518,17 +2870,7 @@ create_service(Client, Input, Options)
 -spec create_task_set(map(), create_task_set_request()) ->
     {ok, create_task_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, namespace_not_found_exception(), tuple()} |
-    {error, platform_task_definition_incompatibility_exception(), tuple()} |
-    {error, platform_unknown_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_not_active_exception(), tuple()} |
-    {error, service_not_found_exception(), tuple()} |
-    {error, unsupported_feature_exception(), tuple()}.
+    {error, create_task_set_errors(), tuple()}.
 create_task_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_task_set(Client, Input, []).
@@ -2536,17 +2878,7 @@ create_task_set(Client, Input)
 -spec create_task_set(map(), create_task_set_request(), proplists:proplist()) ->
     {ok, create_task_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, namespace_not_found_exception(), tuple()} |
-    {error, platform_task_definition_incompatibility_exception(), tuple()} |
-    {error, platform_unknown_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_not_active_exception(), tuple()} |
-    {error, service_not_found_exception(), tuple()} |
-    {error, unsupported_feature_exception(), tuple()}.
+    {error, create_task_set_errors(), tuple()}.
 create_task_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTaskSet">>, Input, Options).
@@ -2557,9 +2889,7 @@ create_task_set(Client, Input, Options)
 -spec delete_account_setting(map(), delete_account_setting_request()) ->
     {ok, delete_account_setting_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, delete_account_setting_errors(), tuple()}.
 delete_account_setting(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_account_setting(Client, Input, []).
@@ -2567,9 +2897,7 @@ delete_account_setting(Client, Input)
 -spec delete_account_setting(map(), delete_account_setting_request(), proplists:proplist()) ->
     {ok, delete_account_setting_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, delete_account_setting_errors(), tuple()}.
 delete_account_setting(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAccountSetting">>, Input, Options).
@@ -2578,9 +2906,7 @@ delete_account_setting(Client, Input, Options)
 -spec delete_attributes(map(), delete_attributes_request()) ->
     {ok, delete_attributes_response(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, target_not_found_exception(), tuple()}.
+    {error, delete_attributes_errors(), tuple()}.
 delete_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_attributes(Client, Input, []).
@@ -2588,9 +2914,7 @@ delete_attributes(Client, Input)
 -spec delete_attributes(map(), delete_attributes_request(), proplists:proplist()) ->
     {ok, delete_attributes_response(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, target_not_found_exception(), tuple()}.
+    {error, delete_attributes_errors(), tuple()}.
 delete_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAttributes">>, Input, Options).
@@ -2621,9 +2945,7 @@ delete_attributes(Client, Input, Options)
 -spec delete_capacity_provider(map(), delete_capacity_provider_request()) ->
     {ok, delete_capacity_provider_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, delete_capacity_provider_errors(), tuple()}.
 delete_capacity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_capacity_provider(Client, Input, []).
@@ -2631,9 +2953,7 @@ delete_capacity_provider(Client, Input)
 -spec delete_capacity_provider(map(), delete_capacity_provider_request(), proplists:proplist()) ->
     {ok, delete_capacity_provider_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, delete_capacity_provider_errors(), tuple()}.
 delete_capacity_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCapacityProvider">>, Input, Options).
@@ -2656,14 +2976,7 @@ delete_capacity_provider(Client, Input, Options)
 -spec delete_cluster(map(), delete_cluster_request()) ->
     {ok, delete_cluster_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_contains_container_instances_exception(), tuple()} |
-    {error, cluster_contains_services_exception(), tuple()} |
-    {error, cluster_contains_tasks_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, update_in_progress_exception(), tuple()}.
+    {error, delete_cluster_errors(), tuple()}.
 delete_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cluster(Client, Input, []).
@@ -2671,14 +2984,7 @@ delete_cluster(Client, Input)
 -spec delete_cluster(map(), delete_cluster_request(), proplists:proplist()) ->
     {ok, delete_cluster_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_contains_container_instances_exception(), tuple()} |
-    {error, cluster_contains_services_exception(), tuple()} |
-    {error, cluster_contains_tasks_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, update_in_progress_exception(), tuple()}.
+    {error, delete_cluster_errors(), tuple()}.
 delete_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCluster">>, Input, Options).
@@ -2714,11 +3020,7 @@ delete_cluster(Client, Input, Options)
 -spec delete_service(map(), delete_service_request()) ->
     {ok, delete_service_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_not_found_exception(), tuple()}.
+    {error, delete_service_errors(), tuple()}.
 delete_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service(Client, Input, []).
@@ -2726,11 +3028,7 @@ delete_service(Client, Input)
 -spec delete_service(map(), delete_service_request(), proplists:proplist()) ->
     {ok, delete_service_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_not_found_exception(), tuple()}.
+    {error, delete_service_errors(), tuple()}.
 delete_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteService">>, Input, Options).
@@ -2774,10 +3072,7 @@ delete_service(Client, Input, Options)
 -spec delete_task_definitions(map(), delete_task_definitions_request()) ->
     {ok, delete_task_definitions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, delete_task_definitions_errors(), tuple()}.
 delete_task_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_task_definitions(Client, Input, []).
@@ -2785,10 +3080,7 @@ delete_task_definitions(Client, Input)
 -spec delete_task_definitions(map(), delete_task_definitions_request(), proplists:proplist()) ->
     {ok, delete_task_definitions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, delete_task_definitions_errors(), tuple()}.
 delete_task_definitions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTaskDefinitions">>, Input, Options).
@@ -2803,15 +3095,7 @@ delete_task_definitions(Client, Input, Options)
 -spec delete_task_set(map(), delete_task_set_request()) ->
     {ok, delete_task_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_not_active_exception(), tuple()} |
-    {error, service_not_found_exception(), tuple()} |
-    {error, task_set_not_found_exception(), tuple()} |
-    {error, unsupported_feature_exception(), tuple()}.
+    {error, delete_task_set_errors(), tuple()}.
 delete_task_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_task_set(Client, Input, []).
@@ -2819,15 +3103,7 @@ delete_task_set(Client, Input)
 -spec delete_task_set(map(), delete_task_set_request(), proplists:proplist()) ->
     {ok, delete_task_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_not_active_exception(), tuple()} |
-    {error, service_not_found_exception(), tuple()} |
-    {error, task_set_not_found_exception(), tuple()} |
-    {error, unsupported_feature_exception(), tuple()}.
+    {error, delete_task_set_errors(), tuple()}.
 delete_task_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTaskSet">>, Input, Options).
@@ -2859,10 +3135,7 @@ delete_task_set(Client, Input, Options)
 -spec deregister_container_instance(map(), deregister_container_instance_request()) ->
     {ok, deregister_container_instance_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, deregister_container_instance_errors(), tuple()}.
 deregister_container_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_container_instance(Client, Input, []).
@@ -2870,10 +3143,7 @@ deregister_container_instance(Client, Input)
 -spec deregister_container_instance(map(), deregister_container_instance_request(), proplists:proplist()) ->
     {ok, deregister_container_instance_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, deregister_container_instance_errors(), tuple()}.
 deregister_container_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterContainerInstance">>, Input, Options).
@@ -2914,9 +3184,7 @@ deregister_container_instance(Client, Input, Options)
 -spec deregister_task_definition(map(), deregister_task_definition_request()) ->
     {ok, deregister_task_definition_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, deregister_task_definition_errors(), tuple()}.
 deregister_task_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_task_definition(Client, Input, []).
@@ -2924,9 +3192,7 @@ deregister_task_definition(Client, Input)
 -spec deregister_task_definition(map(), deregister_task_definition_request(), proplists:proplist()) ->
     {ok, deregister_task_definition_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, deregister_task_definition_errors(), tuple()}.
 deregister_task_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterTaskDefinition">>, Input, Options).
@@ -2935,9 +3201,7 @@ deregister_task_definition(Client, Input, Options)
 -spec describe_capacity_providers(map(), describe_capacity_providers_request()) ->
     {ok, describe_capacity_providers_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_capacity_providers_errors(), tuple()}.
 describe_capacity_providers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_capacity_providers(Client, Input, []).
@@ -2945,9 +3209,7 @@ describe_capacity_providers(Client, Input)
 -spec describe_capacity_providers(map(), describe_capacity_providers_request(), proplists:proplist()) ->
     {ok, describe_capacity_providers_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_capacity_providers_errors(), tuple()}.
 describe_capacity_providers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCapacityProviders">>, Input, Options).
@@ -2956,9 +3218,7 @@ describe_capacity_providers(Client, Input, Options)
 -spec describe_clusters(map(), describe_clusters_request()) ->
     {ok, describe_clusters_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_clusters_errors(), tuple()}.
 describe_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_clusters(Client, Input, []).
@@ -2966,9 +3226,7 @@ describe_clusters(Client, Input)
 -spec describe_clusters(map(), describe_clusters_request(), proplists:proplist()) ->
     {ok, describe_clusters_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_clusters_errors(), tuple()}.
 describe_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClusters">>, Input, Options).
@@ -2980,10 +3238,7 @@ describe_clusters(Client, Input, Options)
 -spec describe_container_instances(map(), describe_container_instances_request()) ->
     {ok, describe_container_instances_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_container_instances_errors(), tuple()}.
 describe_container_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_container_instances(Client, Input, []).
@@ -2991,10 +3246,7 @@ describe_container_instances(Client, Input)
 -spec describe_container_instances(map(), describe_container_instances_request(), proplists:proplist()) ->
     {ok, describe_container_instances_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_container_instances_errors(), tuple()}.
 describe_container_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeContainerInstances">>, Input, Options).
@@ -3003,10 +3255,7 @@ describe_container_instances(Client, Input, Options)
 -spec describe_services(map(), describe_services_request()) ->
     {ok, describe_services_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_services_errors(), tuple()}.
 describe_services(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_services(Client, Input, []).
@@ -3014,10 +3263,7 @@ describe_services(Client, Input)
 -spec describe_services(map(), describe_services_request(), proplists:proplist()) ->
     {ok, describe_services_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_services_errors(), tuple()}.
 describe_services(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeServices">>, Input, Options).
@@ -3036,9 +3282,7 @@ describe_services(Client, Input, Options)
 -spec describe_task_definition(map(), describe_task_definition_request()) ->
     {ok, describe_task_definition_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_task_definition_errors(), tuple()}.
 describe_task_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_task_definition(Client, Input, []).
@@ -3046,9 +3290,7 @@ describe_task_definition(Client, Input)
 -spec describe_task_definition(map(), describe_task_definition_request(), proplists:proplist()) ->
     {ok, describe_task_definition_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_task_definition_errors(), tuple()}.
 describe_task_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTaskDefinition">>, Input, Options).
@@ -3065,14 +3307,7 @@ describe_task_definition(Client, Input, Options)
 -spec describe_task_sets(map(), describe_task_sets_request()) ->
     {ok, describe_task_sets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_not_active_exception(), tuple()} |
-    {error, service_not_found_exception(), tuple()} |
-    {error, unsupported_feature_exception(), tuple()}.
+    {error, describe_task_sets_errors(), tuple()}.
 describe_task_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_task_sets(Client, Input, []).
@@ -3080,14 +3315,7 @@ describe_task_sets(Client, Input)
 -spec describe_task_sets(map(), describe_task_sets_request(), proplists:proplist()) ->
     {ok, describe_task_sets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_not_active_exception(), tuple()} |
-    {error, service_not_found_exception(), tuple()} |
-    {error, unsupported_feature_exception(), tuple()}.
+    {error, describe_task_sets_errors(), tuple()}.
 describe_task_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTaskSets">>, Input, Options).
@@ -3105,10 +3333,7 @@ describe_task_sets(Client, Input, Options)
 -spec describe_tasks(map(), describe_tasks_request()) ->
     {ok, describe_tasks_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_tasks_errors(), tuple()}.
 describe_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tasks(Client, Input, []).
@@ -3116,10 +3341,7 @@ describe_tasks(Client, Input)
 -spec describe_tasks(map(), describe_tasks_request(), proplists:proplist()) ->
     {ok, describe_tasks_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_tasks_errors(), tuple()}.
 describe_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTasks">>, Input, Options).
@@ -3132,8 +3354,7 @@ describe_tasks(Client, Input, Options)
 -spec discover_poll_endpoint(map(), discover_poll_endpoint_request()) ->
     {ok, discover_poll_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, discover_poll_endpoint_errors(), tuple()}.
 discover_poll_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     discover_poll_endpoint(Client, Input, []).
@@ -3141,8 +3362,7 @@ discover_poll_endpoint(Client, Input)
 -spec discover_poll_endpoint(map(), discover_poll_endpoint_request(), proplists:proplist()) ->
     {ok, discover_poll_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, discover_poll_endpoint_errors(), tuple()}.
 discover_poll_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DiscoverPollEndpoint">>, Input, Options).
@@ -3164,12 +3384,7 @@ discover_poll_endpoint(Client, Input, Options)
 -spec execute_command(map(), execute_command_request()) ->
     {ok, execute_command_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, target_not_connected_exception(), tuple()}.
+    {error, execute_command_errors(), tuple()}.
 execute_command(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_command(Client, Input, []).
@@ -3177,12 +3392,7 @@ execute_command(Client, Input)
 -spec execute_command(map(), execute_command_request(), proplists:proplist()) ->
     {ok, execute_command_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, target_not_connected_exception(), tuple()}.
+    {error, execute_command_errors(), tuple()}.
 execute_command(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExecuteCommand">>, Input, Options).
@@ -3191,13 +3401,7 @@ execute_command(Client, Input, Options)
 -spec get_task_protection(map(), get_task_protection_request()) ->
     {ok, get_task_protection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_feature_exception(), tuple()}.
+    {error, get_task_protection_errors(), tuple()}.
 get_task_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_task_protection(Client, Input, []).
@@ -3205,13 +3409,7 @@ get_task_protection(Client, Input)
 -spec get_task_protection(map(), get_task_protection_request(), proplists:proplist()) ->
     {ok, get_task_protection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_feature_exception(), tuple()}.
+    {error, get_task_protection_errors(), tuple()}.
 get_task_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTaskProtection">>, Input, Options).
@@ -3220,9 +3418,7 @@ get_task_protection(Client, Input, Options)
 -spec list_account_settings(map(), list_account_settings_request()) ->
     {ok, list_account_settings_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_account_settings_errors(), tuple()}.
 list_account_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_account_settings(Client, Input, []).
@@ -3230,9 +3426,7 @@ list_account_settings(Client, Input)
 -spec list_account_settings(map(), list_account_settings_request(), proplists:proplist()) ->
     {ok, list_account_settings_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_account_settings_errors(), tuple()}.
 list_account_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAccountSettings">>, Input, Options).
@@ -3253,8 +3447,7 @@ list_account_settings(Client, Input, Options)
 -spec list_attributes(map(), list_attributes_request()) ->
     {ok, list_attributes_response(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, list_attributes_errors(), tuple()}.
 list_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_attributes(Client, Input, []).
@@ -3262,8 +3455,7 @@ list_attributes(Client, Input)
 -spec list_attributes(map(), list_attributes_request(), proplists:proplist()) ->
     {ok, list_attributes_response(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, list_attributes_errors(), tuple()}.
 list_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAttributes">>, Input, Options).
@@ -3272,9 +3464,7 @@ list_attributes(Client, Input, Options)
 -spec list_clusters(map(), list_clusters_request()) ->
     {ok, list_clusters_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_clusters_errors(), tuple()}.
 list_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_clusters(Client, Input, []).
@@ -3282,9 +3472,7 @@ list_clusters(Client, Input)
 -spec list_clusters(map(), list_clusters_request(), proplists:proplist()) ->
     {ok, list_clusters_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_clusters_errors(), tuple()}.
 list_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListClusters">>, Input, Options).
@@ -3301,10 +3489,7 @@ list_clusters(Client, Input, Options)
 -spec list_container_instances(map(), list_container_instances_request()) ->
     {ok, list_container_instances_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_container_instances_errors(), tuple()}.
 list_container_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_container_instances(Client, Input, []).
@@ -3312,10 +3497,7 @@ list_container_instances(Client, Input)
 -spec list_container_instances(map(), list_container_instances_request(), proplists:proplist()) ->
     {ok, list_container_instances_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_container_instances_errors(), tuple()}.
 list_container_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListContainerInstances">>, Input, Options).
@@ -3327,10 +3509,7 @@ list_container_instances(Client, Input, Options)
 -spec list_services(map(), list_services_request()) ->
     {ok, list_services_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_services_errors(), tuple()}.
 list_services(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_services(Client, Input, []).
@@ -3338,10 +3517,7 @@ list_services(Client, Input)
 -spec list_services(map(), list_services_request(), proplists:proplist()) ->
     {ok, list_services_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_services_errors(), tuple()}.
 list_services(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServices">>, Input, Options).
@@ -3360,10 +3536,7 @@ list_services(Client, Input, Options)
 -spec list_services_by_namespace(map(), list_services_by_namespace_request()) ->
     {ok, list_services_by_namespace_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, namespace_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_services_by_namespace_errors(), tuple()}.
 list_services_by_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_services_by_namespace(Client, Input, []).
@@ -3371,10 +3544,7 @@ list_services_by_namespace(Client, Input)
 -spec list_services_by_namespace(map(), list_services_by_namespace_request(), proplists:proplist()) ->
     {ok, list_services_by_namespace_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, namespace_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_services_by_namespace_errors(), tuple()}.
 list_services_by_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServicesByNamespace">>, Input, Options).
@@ -3383,10 +3553,7 @@ list_services_by_namespace(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -3394,10 +3561,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -3418,9 +3582,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec list_task_definition_families(map(), list_task_definition_families_request()) ->
     {ok, list_task_definition_families_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_task_definition_families_errors(), tuple()}.
 list_task_definition_families(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_task_definition_families(Client, Input, []).
@@ -3428,9 +3590,7 @@ list_task_definition_families(Client, Input)
 -spec list_task_definition_families(map(), list_task_definition_families_request(), proplists:proplist()) ->
     {ok, list_task_definition_families_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_task_definition_families_errors(), tuple()}.
 list_task_definition_families(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTaskDefinitionFamilies">>, Input, Options).
@@ -3445,9 +3605,7 @@ list_task_definition_families(Client, Input, Options)
 -spec list_task_definitions(map(), list_task_definitions_request()) ->
     {ok, list_task_definitions_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_task_definitions_errors(), tuple()}.
 list_task_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_task_definitions(Client, Input, []).
@@ -3455,9 +3613,7 @@ list_task_definitions(Client, Input)
 -spec list_task_definitions(map(), list_task_definitions_request(), proplists:proplist()) ->
     {ok, list_task_definitions_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_task_definitions_errors(), tuple()}.
 list_task_definitions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTaskDefinitions">>, Input, Options).
@@ -3473,11 +3629,7 @@ list_task_definitions(Client, Input, Options)
 -spec list_tasks(map(), list_tasks_request()) ->
     {ok, list_tasks_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_not_found_exception(), tuple()}.
+    {error, list_tasks_errors(), tuple()}.
 list_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tasks(Client, Input, []).
@@ -3485,11 +3637,7 @@ list_tasks(Client, Input)
 -spec list_tasks(map(), list_tasks_request(), proplists:proplist()) ->
     {ok, list_tasks_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_not_found_exception(), tuple()}.
+    {error, list_tasks_errors(), tuple()}.
 list_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTasks">>, Input, Options).
@@ -3509,9 +3657,7 @@ list_tasks(Client, Input, Options)
 -spec put_account_setting(map(), put_account_setting_request()) ->
     {ok, put_account_setting_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, put_account_setting_errors(), tuple()}.
 put_account_setting(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_account_setting(Client, Input, []).
@@ -3519,9 +3665,7 @@ put_account_setting(Client, Input)
 -spec put_account_setting(map(), put_account_setting_request(), proplists:proplist()) ->
     {ok, put_account_setting_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, put_account_setting_errors(), tuple()}.
 put_account_setting(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAccountSetting">>, Input, Options).
@@ -3534,9 +3678,7 @@ put_account_setting(Client, Input, Options)
 -spec put_account_setting_default(map(), put_account_setting_default_request()) ->
     {ok, put_account_setting_default_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, put_account_setting_default_errors(), tuple()}.
 put_account_setting_default(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_account_setting_default(Client, Input, []).
@@ -3544,9 +3686,7 @@ put_account_setting_default(Client, Input)
 -spec put_account_setting_default(map(), put_account_setting_default_request(), proplists:proplist()) ->
     {ok, put_account_setting_default_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, put_account_setting_default_errors(), tuple()}.
 put_account_setting_default(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAccountSettingDefault">>, Input, Options).
@@ -3563,10 +3703,7 @@ put_account_setting_default(Client, Input, Options)
 -spec put_attributes(map(), put_attributes_request()) ->
     {ok, put_attributes_response(), tuple()} |
     {error, any()} |
-    {error, attribute_limit_exceeded_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, target_not_found_exception(), tuple()}.
+    {error, put_attributes_errors(), tuple()}.
 put_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_attributes(Client, Input, []).
@@ -3574,10 +3711,7 @@ put_attributes(Client, Input)
 -spec put_attributes(map(), put_attributes_request(), proplists:proplist()) ->
     {ok, put_attributes_response(), tuple()} |
     {error, any()} |
-    {error, attribute_limit_exceeded_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, target_not_found_exception(), tuple()}.
+    {error, put_attributes_errors(), tuple()}.
 put_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAttributes">>, Input, Options).
@@ -3611,12 +3745,7 @@ put_attributes(Client, Input, Options)
 -spec put_cluster_capacity_providers(map(), put_cluster_capacity_providers_request()) ->
     {ok, put_cluster_capacity_providers_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, update_in_progress_exception(), tuple()}.
+    {error, put_cluster_capacity_providers_errors(), tuple()}.
 put_cluster_capacity_providers(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_cluster_capacity_providers(Client, Input, []).
@@ -3624,12 +3753,7 @@ put_cluster_capacity_providers(Client, Input)
 -spec put_cluster_capacity_providers(map(), put_cluster_capacity_providers_request(), proplists:proplist()) ->
     {ok, put_cluster_capacity_providers_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, update_in_progress_exception(), tuple()}.
+    {error, put_cluster_capacity_providers_errors(), tuple()}.
 put_cluster_capacity_providers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutClusterCapacityProviders">>, Input, Options).
@@ -3644,9 +3768,7 @@ put_cluster_capacity_providers(Client, Input, Options)
 -spec register_container_instance(map(), register_container_instance_request()) ->
     {ok, register_container_instance_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, register_container_instance_errors(), tuple()}.
 register_container_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_container_instance(Client, Input, []).
@@ -3654,9 +3776,7 @@ register_container_instance(Client, Input)
 -spec register_container_instance(map(), register_container_instance_request(), proplists:proplist()) ->
     {ok, register_container_instance_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, register_container_instance_errors(), tuple()}.
 register_container_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterContainerInstance">>, Input, Options).
@@ -3699,9 +3819,7 @@ register_container_instance(Client, Input, Options)
 -spec register_task_definition(map(), register_task_definition_request()) ->
     {ok, register_task_definition_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, register_task_definition_errors(), tuple()}.
 register_task_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_task_definition(Client, Input, []).
@@ -3709,9 +3827,7 @@ register_task_definition(Client, Input)
 -spec register_task_definition(map(), register_task_definition_request(), proplists:proplist()) ->
     {ok, register_task_definition_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, register_task_definition_errors(), tuple()}.
 register_task_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterTaskDefinition">>, Input, Options).
@@ -3777,16 +3893,7 @@ register_task_definition(Client, Input, Options)
 -spec run_task(map(), run_task_request()) ->
     {ok, run_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, blocked_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, platform_task_definition_incompatibility_exception(), tuple()} |
-    {error, platform_unknown_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_feature_exception(), tuple()}.
+    {error, run_task_errors(), tuple()}.
 run_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     run_task(Client, Input, []).
@@ -3794,16 +3901,7 @@ run_task(Client, Input)
 -spec run_task(map(), run_task_request(), proplists:proplist()) ->
     {ok, run_task_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, blocked_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, platform_task_definition_incompatibility_exception(), tuple()} |
-    {error, platform_unknown_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_feature_exception(), tuple()}.
+    {error, run_task_errors(), tuple()}.
 run_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RunTask">>, Input, Options).
@@ -3834,11 +3932,7 @@ run_task(Client, Input, Options)
 -spec start_task(map(), start_task_request()) ->
     {ok, start_task_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_feature_exception(), tuple()}.
+    {error, start_task_errors(), tuple()}.
 start_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_task(Client, Input, []).
@@ -3846,11 +3940,7 @@ start_task(Client, Input)
 -spec start_task(map(), start_task_request(), proplists:proplist()) ->
     {ok, start_task_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_feature_exception(), tuple()}.
+    {error, start_task_errors(), tuple()}.
 start_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartTask">>, Input, Options).
@@ -3880,10 +3970,7 @@ start_task(Client, Input, Options)
 -spec stop_task(map(), stop_task_request()) ->
     {ok, stop_task_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, stop_task_errors(), tuple()}.
 stop_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_task(Client, Input, []).
@@ -3891,10 +3978,7 @@ stop_task(Client, Input)
 -spec stop_task(map(), stop_task_request(), proplists:proplist()) ->
     {ok, stop_task_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, stop_task_errors(), tuple()}.
 stop_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopTask">>, Input, Options).
@@ -3907,10 +3991,7 @@ stop_task(Client, Input, Options)
 -spec submit_attachment_state_changes(map(), submit_attachment_state_changes_request()) ->
     {ok, submit_attachment_state_changes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, submit_attachment_state_changes_errors(), tuple()}.
 submit_attachment_state_changes(Client, Input)
   when is_map(Client), is_map(Input) ->
     submit_attachment_state_changes(Client, Input, []).
@@ -3918,10 +3999,7 @@ submit_attachment_state_changes(Client, Input)
 -spec submit_attachment_state_changes(map(), submit_attachment_state_changes_request(), proplists:proplist()) ->
     {ok, submit_attachment_state_changes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, submit_attachment_state_changes_errors(), tuple()}.
 submit_attachment_state_changes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SubmitAttachmentStateChanges">>, Input, Options).
@@ -3934,9 +4012,7 @@ submit_attachment_state_changes(Client, Input, Options)
 -spec submit_container_state_change(map(), submit_container_state_change_request()) ->
     {ok, submit_container_state_change_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, submit_container_state_change_errors(), tuple()}.
 submit_container_state_change(Client, Input)
   when is_map(Client), is_map(Input) ->
     submit_container_state_change(Client, Input, []).
@@ -3944,9 +4020,7 @@ submit_container_state_change(Client, Input)
 -spec submit_container_state_change(map(), submit_container_state_change_request(), proplists:proplist()) ->
     {ok, submit_container_state_change_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, submit_container_state_change_errors(), tuple()}.
 submit_container_state_change(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SubmitContainerStateChange">>, Input, Options).
@@ -3959,10 +4033,7 @@ submit_container_state_change(Client, Input, Options)
 -spec submit_task_state_change(map(), submit_task_state_change_request()) ->
     {ok, submit_task_state_change_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, submit_task_state_change_errors(), tuple()}.
 submit_task_state_change(Client, Input)
   when is_map(Client), is_map(Input) ->
     submit_task_state_change(Client, Input, []).
@@ -3970,10 +4041,7 @@ submit_task_state_change(Client, Input)
 -spec submit_task_state_change(map(), submit_task_state_change_request(), proplists:proplist()) ->
     {ok, submit_task_state_change_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, submit_task_state_change_errors(), tuple()}.
 submit_task_state_change(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SubmitTaskStateChange">>, Input, Options).
@@ -3988,11 +4056,7 @@ submit_task_state_change(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -4000,11 +4064,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -4013,11 +4073,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -4025,11 +4081,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -4038,9 +4090,7 @@ untag_resource(Client, Input, Options)
 -spec update_capacity_provider(map(), update_capacity_provider_request()) ->
     {ok, update_capacity_provider_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, update_capacity_provider_errors(), tuple()}.
 update_capacity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_capacity_provider(Client, Input, []).
@@ -4048,9 +4098,7 @@ update_capacity_provider(Client, Input)
 -spec update_capacity_provider(map(), update_capacity_provider_request(), proplists:proplist()) ->
     {ok, update_capacity_provider_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, update_capacity_provider_errors(), tuple()}.
 update_capacity_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCapacityProvider">>, Input, Options).
@@ -4059,11 +4107,7 @@ update_capacity_provider(Client, Input, Options)
 -spec update_cluster(map(), update_cluster_request()) ->
     {ok, update_cluster_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, namespace_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, update_cluster_errors(), tuple()}.
 update_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_cluster(Client, Input, []).
@@ -4071,11 +4115,7 @@ update_cluster(Client, Input)
 -spec update_cluster(map(), update_cluster_request(), proplists:proplist()) ->
     {ok, update_cluster_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, namespace_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, update_cluster_errors(), tuple()}.
 update_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCluster">>, Input, Options).
@@ -4084,10 +4124,7 @@ update_cluster(Client, Input, Options)
 -spec update_cluster_settings(map(), update_cluster_settings_request()) ->
     {ok, update_cluster_settings_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, update_cluster_settings_errors(), tuple()}.
 update_cluster_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_cluster_settings(Client, Input, []).
@@ -4095,10 +4132,7 @@ update_cluster_settings(Client, Input)
 -spec update_cluster_settings(map(), update_cluster_settings_request(), proplists:proplist()) ->
     {ok, update_cluster_settings_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, update_cluster_settings_errors(), tuple()}.
 update_cluster_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateClusterSettings">>, Input, Options).
@@ -4140,13 +4174,7 @@ update_cluster_settings(Client, Input, Options)
 -spec update_container_agent(map(), update_container_agent_request()) ->
     {ok, update_container_agent_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_version_exception(), tuple()} |
-    {error, no_update_available_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, update_in_progress_exception(), tuple()}.
+    {error, update_container_agent_errors(), tuple()}.
 update_container_agent(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_container_agent(Client, Input, []).
@@ -4154,13 +4182,7 @@ update_container_agent(Client, Input)
 -spec update_container_agent(map(), update_container_agent_request(), proplists:proplist()) ->
     {ok, update_container_agent_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_version_exception(), tuple()} |
-    {error, no_update_available_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, update_in_progress_exception(), tuple()}.
+    {error, update_container_agent_errors(), tuple()}.
 update_container_agent(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateContainerAgent">>, Input, Options).
@@ -4238,10 +4260,7 @@ update_container_agent(Client, Input, Options)
 -spec update_container_instances_state(map(), update_container_instances_state_request()) ->
     {ok, update_container_instances_state_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, update_container_instances_state_errors(), tuple()}.
 update_container_instances_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_container_instances_state(Client, Input, []).
@@ -4249,10 +4268,7 @@ update_container_instances_state(Client, Input)
 -spec update_container_instances_state(map(), update_container_instances_state_request(), proplists:proplist()) ->
     {ok, update_container_instances_state_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, update_container_instances_state_errors(), tuple()}.
 update_container_instances_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateContainerInstancesState">>, Input, Options).
@@ -4432,17 +4448,7 @@ update_container_instances_state(Client, Input, Options)
 -spec update_service(map(), update_service_request()) ->
     {ok, update_service_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, namespace_not_found_exception(), tuple()} |
-    {error, platform_task_definition_incompatibility_exception(), tuple()} |
-    {error, platform_unknown_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_not_active_exception(), tuple()} |
-    {error, service_not_found_exception(), tuple()} |
-    {error, unsupported_feature_exception(), tuple()}.
+    {error, update_service_errors(), tuple()}.
 update_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service(Client, Input, []).
@@ -4450,17 +4456,7 @@ update_service(Client, Input)
 -spec update_service(map(), update_service_request(), proplists:proplist()) ->
     {ok, update_service_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, namespace_not_found_exception(), tuple()} |
-    {error, platform_task_definition_incompatibility_exception(), tuple()} |
-    {error, platform_unknown_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_not_active_exception(), tuple()} |
-    {error, service_not_found_exception(), tuple()} |
-    {error, unsupported_feature_exception(), tuple()}.
+    {error, update_service_errors(), tuple()}.
 update_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateService">>, Input, Options).
@@ -4479,15 +4475,7 @@ update_service(Client, Input, Options)
 -spec update_service_primary_task_set(map(), update_service_primary_task_set_request()) ->
     {ok, update_service_primary_task_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_not_active_exception(), tuple()} |
-    {error, service_not_found_exception(), tuple()} |
-    {error, task_set_not_found_exception(), tuple()} |
-    {error, unsupported_feature_exception(), tuple()}.
+    {error, update_service_primary_task_set_errors(), tuple()}.
 update_service_primary_task_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service_primary_task_set(Client, Input, []).
@@ -4495,15 +4483,7 @@ update_service_primary_task_set(Client, Input)
 -spec update_service_primary_task_set(map(), update_service_primary_task_set_request(), proplists:proplist()) ->
     {ok, update_service_primary_task_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_not_active_exception(), tuple()} |
-    {error, service_not_found_exception(), tuple()} |
-    {error, task_set_not_found_exception(), tuple()} |
-    {error, unsupported_feature_exception(), tuple()}.
+    {error, update_service_primary_task_set_errors(), tuple()}.
 update_service_primary_task_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateServicePrimaryTaskSet">>, Input, Options).
@@ -4556,13 +4536,7 @@ update_service_primary_task_set(Client, Input, Options)
 -spec update_task_protection(map(), update_task_protection_request()) ->
     {ok, update_task_protection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_feature_exception(), tuple()}.
+    {error, update_task_protection_errors(), tuple()}.
 update_task_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_task_protection(Client, Input, []).
@@ -4570,13 +4544,7 @@ update_task_protection(Client, Input)
 -spec update_task_protection(map(), update_task_protection_request(), proplists:proplist()) ->
     {ok, update_task_protection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_feature_exception(), tuple()}.
+    {error, update_task_protection_errors(), tuple()}.
 update_task_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTaskProtection">>, Input, Options).
@@ -4592,15 +4560,7 @@ update_task_protection(Client, Input, Options)
 -spec update_task_set(map(), update_task_set_request()) ->
     {ok, update_task_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_not_active_exception(), tuple()} |
-    {error, service_not_found_exception(), tuple()} |
-    {error, task_set_not_found_exception(), tuple()} |
-    {error, unsupported_feature_exception(), tuple()}.
+    {error, update_task_set_errors(), tuple()}.
 update_task_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_task_set(Client, Input, []).
@@ -4608,15 +4568,7 @@ update_task_set(Client, Input)
 -spec update_task_set(map(), update_task_set_request(), proplists:proplist()) ->
     {ok, update_task_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, cluster_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, service_not_active_exception(), tuple()} |
-    {error, service_not_found_exception(), tuple()} |
-    {error, task_set_not_found_exception(), tuple()} |
-    {error, unsupported_feature_exception(), tuple()}.
+    {error, update_task_set_errors(), tuple()}.
 update_task_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTaskSet">>, Input, Options).

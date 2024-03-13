@@ -220,6 +220,40 @@
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
 
+-type get_routing_control_state_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    endpoint_temporarily_unavailable_exception() | 
+    access_denied_exception().
+
+-type list_routing_controls_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    endpoint_temporarily_unavailable_exception() | 
+    access_denied_exception().
+
+-type update_routing_control_state_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    endpoint_temporarily_unavailable_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_routing_control_states_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_limit_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    endpoint_temporarily_unavailable_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -265,12 +299,7 @@
 -spec get_routing_control_state(map(), get_routing_control_state_request()) ->
     {ok, get_routing_control_state_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, endpoint_temporarily_unavailable_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_routing_control_state_errors(), tuple()}.
 get_routing_control_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_routing_control_state(Client, Input, []).
@@ -278,12 +307,7 @@ get_routing_control_state(Client, Input)
 -spec get_routing_control_state(map(), get_routing_control_state_request(), proplists:proplist()) ->
     {ok, get_routing_control_state_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, endpoint_temporarily_unavailable_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_routing_control_state_errors(), tuple()}.
 get_routing_control_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRoutingControlState">>, Input, Options).
@@ -329,12 +353,7 @@ get_routing_control_state(Client, Input, Options)
 -spec list_routing_controls(map(), list_routing_controls_request()) ->
     {ok, list_routing_controls_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, endpoint_temporarily_unavailable_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_routing_controls_errors(), tuple()}.
 list_routing_controls(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_routing_controls(Client, Input, []).
@@ -342,12 +361,7 @@ list_routing_controls(Client, Input)
 -spec list_routing_controls(map(), list_routing_controls_request(), proplists:proplist()) ->
     {ok, list_routing_controls_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, endpoint_temporarily_unavailable_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_routing_controls_errors(), tuple()}.
 list_routing_controls(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRoutingControls">>, Input, Options).
@@ -399,13 +413,7 @@ list_routing_controls(Client, Input, Options)
 -spec update_routing_control_state(map(), update_routing_control_state_request()) ->
     {ok, update_routing_control_state_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, endpoint_temporarily_unavailable_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_routing_control_state_errors(), tuple()}.
 update_routing_control_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_routing_control_state(Client, Input, []).
@@ -413,13 +421,7 @@ update_routing_control_state(Client, Input)
 -spec update_routing_control_state(map(), update_routing_control_state_request(), proplists:proplist()) ->
     {ok, update_routing_control_state_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, endpoint_temporarily_unavailable_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_routing_control_state_errors(), tuple()}.
 update_routing_control_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRoutingControlState">>, Input, Options).
@@ -471,14 +473,7 @@ update_routing_control_state(Client, Input, Options)
 -spec update_routing_control_states(map(), update_routing_control_states_request()) ->
     {ok, update_routing_control_states_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, endpoint_temporarily_unavailable_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_routing_control_states_errors(), tuple()}.
 update_routing_control_states(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_routing_control_states(Client, Input, []).
@@ -486,14 +481,7 @@ update_routing_control_states(Client, Input)
 -spec update_routing_control_states(map(), update_routing_control_states_request(), proplists:proplist()) ->
     {ok, update_routing_control_states_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, endpoint_temporarily_unavailable_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_routing_control_states_errors(), tuple()}.
 update_routing_control_states(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRoutingControlStates">>, Input, Options).

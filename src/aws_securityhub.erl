@@ -296,6 +296,7 @@
 %% }
 -type describe_hub_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_api_gateway_method_settings() :: #{
 %%   <<"CacheDataEncrypted">> => boolean(),
@@ -312,9 +313,11 @@
 %%   <<"UnauthorizedCacheControlHeaderStrategy">> => string()
 %% }
 -type aws_api_gateway_method_settings() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_from_master_account_request() :: #{}
 -type disassociate_from_master_account_request() :: #{}.
+
 
 %% Example:
 %% update_standards_control_request() :: #{
@@ -323,6 +326,7 @@
 %% }
 -type update_standards_control_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% standards_managed_by() :: #{
 %%   <<"Company">> => string(),
@@ -330,11 +334,13 @@
 %% }
 -type standards_managed_by() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_open_search_service_domain_cluster_config_zone_awareness_config_details() :: #{
 %%   <<"AvailabilityZoneCount">> => integer()
 %% }
 -type aws_open_search_service_domain_cluster_config_zone_awareness_config_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_security_finding_filters() :: #{
@@ -445,6 +451,7 @@
 %% }
 -type aws_security_finding_filters() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_finding_aggregator_response() :: #{
 %%   <<"FindingAggregationRegion">> => string(),
@@ -454,6 +461,7 @@
 %% }
 -type get_finding_aggregator_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ecs_cluster_configuration_execute_command_configuration_details() :: #{
 %%   <<"KmsKeyId">> => string(),
@@ -462,11 +470,13 @@
 %% }
 -type aws_ecs_cluster_configuration_execute_command_configuration_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_launch_template_data_elastic_gpu_specification_set_details() :: #{
 %%   <<"Type">> => string()
 %% }
 -type aws_ec2_launch_template_data_elastic_gpu_specification_set_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_dynamo_db_table_local_secondary_index() :: #{
@@ -477,6 +487,7 @@
 %% }
 -type aws_dynamo_db_table_local_secondary_index() :: #{binary() => any()}.
 
+
 %% Example:
 %% import_findings_error() :: #{
 %%   <<"ErrorCode">> => string(),
@@ -485,11 +496,13 @@
 %% }
 -type import_findings_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_elasticsearch_domain_elasticsearch_cluster_config_zone_awareness_config_details() :: #{
 %%   <<"AvailabilityZoneCount">> => integer()
 %% }
 -type aws_elasticsearch_domain_elasticsearch_cluster_config_zone_awareness_config_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% rule_group_source() :: #{
@@ -500,11 +513,13 @@
 %% }
 -type rule_group_source() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_client_vpn_endpoint_authentication_options_mutual_authentication_details() :: #{
 %%   <<"ClientRootCertificateChain">> => string()
 %% }
 -type aws_ec2_client_vpn_endpoint_authentication_options_mutual_authentication_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_api_gateway_access_log_settings() :: #{
@@ -512,6 +527,7 @@
 %%   <<"Format">> => string()
 %% }
 -type aws_api_gateway_access_log_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_redshift_cluster_cluster_node() :: #{
@@ -521,12 +537,14 @@
 %% }
 -type aws_redshift_cluster_cluster_node() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_redshift_cluster_resize_info() :: #{
 %%   <<"AllowCancelResize">> => boolean(),
 %%   <<"ResizeType">> => string()
 %% }
 -type aws_redshift_cluster_resize_info() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ecs_task_definition_container_definitions_linux_parameters_capabilities_details() :: #{
@@ -535,14 +553,17 @@
 %% }
 -type aws_ecs_task_definition_container_definitions_linux_parameters_capabilities_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_lambda_function_dead_letter_config() :: #{
 %%   <<"TargetArn">> => string()
 %% }
 -type aws_lambda_function_dead_letter_config() :: #{binary() => any()}.
+
 %% Example:
 %% delete_configuration_policy_response() :: #{}
 -type delete_configuration_policy_response() :: #{}.
+
 
 %% Example:
 %% boolean_configuration_options() :: #{
@@ -550,12 +571,14 @@
 %% }
 -type boolean_configuration_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% record() :: #{
 %%   <<"JsonPath">> => string(),
 %%   <<"RecordIndex">> => float()
 %% }
 -type record() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_route53_hosted_zone_details() :: #{
@@ -565,6 +588,7 @@
 %%   <<"Vpcs">> => list(aws_route53_hosted_zone_vpc_details()())
 %% }
 -type aws_route53_hosted_zone_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_wafv2_rules_details() :: #{
@@ -576,6 +600,7 @@
 %% }
 -type aws_wafv2_rules_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% integer_list_configuration_options() :: #{
 %%   <<"DefaultValue">> => list(integer()()),
@@ -584,6 +609,7 @@
 %%   <<"Min">> => integer()
 %% }
 -type integer_list_configuration_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_iam_user_details() :: #{
@@ -598,6 +624,7 @@
 %% }
 -type aws_iam_user_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% container_details() :: #{
 %%   <<"ContainerRuntime">> => string(),
@@ -610,11 +637,13 @@
 %% }
 -type container_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"Tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_iam_instance_profile_role() :: #{
@@ -626,6 +655,7 @@
 %%   <<"RoleName">> => string()
 %% }
 -type aws_iam_instance_profile_role() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_rds_db_security_group_details() :: #{
@@ -639,6 +669,7 @@
 %% }
 -type aws_rds_db_security_group_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_standards_controls_response() :: #{
 %%   <<"Controls">> => list(standards_control()()),
@@ -646,12 +677,14 @@
 %% }
 -type describe_standards_controls_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ecs_service_placement_constraints_details() :: #{
 %%   <<"Expression">> => string(),
 %%   <<"Type">> => string()
 %% }
 -type aws_ecs_service_placement_constraints_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% range() :: #{
@@ -661,12 +694,14 @@
 %% }
 -type range() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_rds_db_security_group_ip_range() :: #{
 %%   <<"CidrIp">> => string(),
 %%   <<"Status">> => string()
 %% }
 -type aws_rds_db_security_group_ip_range() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_lambda_layer_version_details() :: #{
@@ -675,6 +710,7 @@
 %%   <<"Version">> => float()
 %% }
 -type aws_lambda_layer_version_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_api_gateway_v2_api_details() :: #{
@@ -691,11 +727,13 @@
 %% }
 -type aws_api_gateway_v2_api_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% decline_invitations_response() :: #{
 %%   <<"UnprocessedAccounts">> => list(result()())
 %% }
 -type decline_invitations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% configuration_policy_association_summary() :: #{
@@ -709,6 +747,7 @@
 %% }
 -type configuration_policy_association_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_redshift_cluster_endpoint() :: #{
 %%   <<"Address">> => string(),
@@ -716,11 +755,13 @@
 %% }
 -type aws_redshift_cluster_endpoint() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_dynamo_db_table_provisioned_throughput_override() :: #{
 %%   <<"ReadCapacityUnits">> => integer()
 %% }
 -type aws_dynamo_db_table_provisioned_throughput_override() :: #{binary() => any()}.
+
 
 %% Example:
 %% firewall_policy_details() :: #{
@@ -732,15 +773,18 @@
 %% }
 -type firewall_policy_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_iam_access_key_session_context_attributes() :: #{
 %%   <<"CreationDate">> => string(),
 %%   <<"MfaAuthenticated">> => boolean()
 %% }
 -type aws_iam_access_key_session_context_attributes() :: #{binary() => any()}.
+
 %% Example:
 %% disable_organization_admin_account_response() :: #{}
 -type disable_organization_admin_account_response() :: #{}.
+
 
 %% Example:
 %% aws_cloud_front_distribution_default_cache_behavior() :: #{
@@ -748,12 +792,14 @@
 %% }
 -type aws_cloud_front_distribution_default_cache_behavior() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_elbv2_load_balancer_attribute() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Value">> => string()
 %% }
 -type aws_elbv2_load_balancer_attribute() :: #{binary() => any()}.
+
 
 %% Example:
 %% security_control() :: #{
@@ -770,6 +816,7 @@
 %% }
 -type security_control() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_s3_account_public_access_block_details() :: #{
 %%   <<"BlockPublicAcls">> => boolean(),
@@ -778,9 +825,11 @@
 %%   <<"RestrictPublicBuckets">> => boolean()
 %% }
 -type aws_s3_account_public_access_block_details() :: #{binary() => any()}.
+
 %% Example:
 %% disable_security_hub_response() :: #{}
 -type disable_security_hub_response() :: #{}.
+
 
 %% Example:
 %% classification_status() :: #{
@@ -788,6 +837,7 @@
 %%   <<"Reason">> => string()
 %% }
 -type classification_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% vulnerability() :: #{
@@ -804,12 +854,14 @@
 %% }
 -type vulnerability() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_elastic_beanstalk_environment_environment_link() :: #{
 %%   <<"EnvironmentName">> => string(),
 %%   <<"LinkName">> => string()
 %% }
 -type aws_elastic_beanstalk_environment_environment_link() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ecr_repository_details() :: #{
@@ -822,6 +874,7 @@
 %% }
 -type aws_ecr_repository_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% network_header() :: #{
 %%   <<"Destination">> => network_path_component_details(),
@@ -829,6 +882,7 @@
 %%   <<"Source">> => network_path_component_details()
 %% }
 -type network_header() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_insights_request() :: #{
@@ -838,15 +892,18 @@
 %% }
 -type get_insights_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% availability_zone() :: #{
 %%   <<"SubnetId">> => string(),
 %%   <<"ZoneName">> => string()
 %% }
 -type availability_zone() :: #{binary() => any()}.
+
 %% Example:
 %% describe_organization_configuration_request() :: #{}
 -type describe_organization_configuration_request() :: #{}.
+
 
 %% Example:
 %% aws_guard_duty_detector_data_sources_malware_protection_details() :: #{
@@ -855,6 +912,7 @@
 %% }
 -type aws_guard_duty_detector_data_sources_malware_protection_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_s3_bucket_bucket_lifecycle_configuration_rules_filter_predicate_operands_details() :: #{
 %%   <<"Prefix">> => string(),
@@ -862,6 +920,7 @@
 %%   <<"Type">> => string()
 %% }
 -type aws_s3_bucket_bucket_lifecycle_configuration_rules_filter_predicate_operands_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_open_search_service_domain_cluster_config_details() :: #{
@@ -878,6 +937,7 @@
 %% }
 -type aws_open_search_service_domain_cluster_config_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% network_path_component() :: #{
 %%   <<"ComponentId">> => string(),
@@ -887,6 +947,7 @@
 %% }
 -type network_path_component() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_redshift_cluster_cluster_parameter_group() :: #{
 %%   <<"ClusterParameterStatusList">> => list(aws_redshift_cluster_cluster_parameter_status()()),
@@ -895,11 +956,13 @@
 %% }
 -type aws_redshift_cluster_cluster_parameter_group() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_waf_regional_web_acl_rules_list_action_details() :: #{
 %%   <<"Type">> => string()
 %% }
 -type aws_waf_regional_web_acl_rules_list_action_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% association_state_details() :: #{
@@ -908,12 +971,14 @@
 %% }
 -type association_state_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_launch_template_data_instance_requirements_v_cpu_count_details() :: #{
 %%   <<"Max">> => integer(),
 %%   <<"Min">> => integer()
 %% }
 -type aws_ec2_launch_template_data_instance_requirements_v_cpu_count_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_members_response() :: #{
@@ -922,11 +987,13 @@
 %% }
 -type get_members_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% waf_action() :: #{
 %%   <<"Type">> => string()
 %% }
 -type waf_action() :: #{binary() => any()}.
+
 
 %% Example:
 %% status_reason() :: #{
@@ -935,12 +1002,14 @@
 %% }
 -type status_reason() :: #{binary() => any()}.
 
+
 %% Example:
 %% action_local_port_details() :: #{
 %%   <<"Port">> => integer(),
 %%   <<"PortName">> => string()
 %% }
 -type action_local_port_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_msk_cluster_cluster_info_client_authentication_details() :: #{
@@ -950,11 +1019,13 @@
 %% }
 -type aws_msk_cluster_cluster_info_client_authentication_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% waf_excluded_rule() :: #{
 %%   <<"RuleId">> => string()
 %% }
 -type waf_excluded_rule() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_mount_point() :: #{
@@ -963,12 +1034,14 @@
 %% }
 -type aws_mount_point() :: #{binary() => any()}.
 
+
 %% Example:
 %% rule_group_source_stateless_rule_match_attributes_destination_ports() :: #{
 %%   <<"FromPort">> => integer(),
 %%   <<"ToPort">> => integer()
 %% }
 -type rule_group_source_stateless_rule_match_attributes_destination_ports() :: #{binary() => any()}.
+
 
 %% Example:
 %% admin_account() :: #{
@@ -977,11 +1050,13 @@
 %% }
 -type admin_account() :: #{binary() => any()}.
 
+
 %% Example:
 %% remediation() :: #{
 %%   <<"Recommendation">> => recommendation()
 %% }
 -type remediation() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_s3_bucket_bucket_lifecycle_configuration_rules_filter_predicate_details() :: #{
@@ -992,11 +1067,13 @@
 %% }
 -type aws_s3_bucket_bucket_lifecycle_configuration_rules_filter_predicate_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_certificate_manager_certificate_options() :: #{
 %%   <<"CertificateTransparencyLoggingPreference">> => string()
 %% }
 -type aws_certificate_manager_certificate_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_msk_cluster_cluster_info_details() :: #{
@@ -1008,9 +1085,11 @@
 %%   <<"NumberOfBrokerNodes">> => integer()
 %% }
 -type aws_msk_cluster_cluster_info_details() :: #{binary() => any()}.
+
 %% Example:
 %% disable_import_findings_for_product_response() :: #{}
 -type disable_import_findings_for_product_response() :: #{}.
+
 
 %% Example:
 %% aws_ecs_task_definition_container_definitions_volumes_from_details() :: #{
@@ -1019,12 +1098,14 @@
 %% }
 -type aws_ecs_task_definition_container_definitions_volumes_from_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% accept_administrator_invitation_request() :: #{
 %%   <<"AdministratorId">> := string(),
 %%   <<"InvitationId">> := string()
 %% }
 -type accept_administrator_invitation_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% rule_group_source_stateful_rules_header_details() :: #{
@@ -1037,11 +1118,13 @@
 %% }
 -type rule_group_source_stateful_rules_header_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_update_standards_control_associations_response() :: #{
 %%   <<"UnprocessedAssociationUpdates">> => list(unprocessed_standards_control_association_update()())
 %% }
 -type batch_update_standards_control_associations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% classification_result() :: #{
@@ -1054,12 +1137,14 @@
 %% }
 -type classification_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_certificate_manager_certificate_extended_key_usage() :: #{
 %%   <<"Name">> => string(),
 %%   <<"OId">> => string()
 %% }
 -type aws_certificate_manager_certificate_extended_key_usage() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ecs_task_definition_container_definitions_mount_points_details() :: #{
@@ -1069,6 +1154,7 @@
 %% }
 -type aws_ecs_task_definition_container_definitions_mount_points_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% ipv6_cidr_block_association() :: #{
 %%   <<"AssociationId">> => string(),
@@ -1076,6 +1162,7 @@
 %%   <<"Ipv6CidrBlock">> => string()
 %% }
 -type ipv6_cidr_block_association() :: #{binary() => any()}.
+
 
 %% Example:
 %% severity_update() :: #{
@@ -1085,6 +1172,7 @@
 %% }
 -type severity_update() :: #{binary() => any()}.
 
+
 %% Example:
 %% action_remote_port_details() :: #{
 %%   <<"Port">> => integer(),
@@ -1092,12 +1180,14 @@
 %% }
 -type action_remote_port_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_s3_bucket_bucket_lifecycle_configuration_rules_noncurrent_version_transitions_details() :: #{
 %%   <<"Days">> => integer(),
 %%   <<"StorageClass">> => string()
 %% }
 -type aws_s3_bucket_bucket_lifecycle_configuration_rules_noncurrent_version_transitions_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_waf_regional_rule_group_details() :: #{
@@ -1108,11 +1198,13 @@
 %% }
 -type aws_waf_regional_rule_group_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_guard_duty_detector_data_sources_kubernetes_details() :: #{
 %%   <<"AuditLogs">> => aws_guard_duty_detector_data_sources_kubernetes_audit_logs_details()
 %% }
 -type aws_guard_duty_detector_data_sources_kubernetes_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_kinesis_stream_details() :: #{
@@ -1124,11 +1216,13 @@
 %% }
 -type aws_kinesis_stream_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ecs_task_volume_host_details() :: #{
 %%   <<"SourcePath">> => string()
 %% }
 -type aws_ecs_task_volume_host_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_auto_scaling_launch_configuration_details() :: #{
@@ -1153,9 +1247,11 @@
 %%   <<"UserData">> => string()
 %% }
 -type aws_auto_scaling_launch_configuration_details() :: #{binary() => any()}.
+
 %% Example:
 %% get_administrator_account_request() :: #{}
 -type get_administrator_account_request() :: #{}.
+
 
 %% Example:
 %% process_details() :: #{
@@ -1167,15 +1263,18 @@
 %%   <<"TerminatedAt">> => string()
 %% }
 -type process_details() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% aws_auto_scaling_auto_scaling_group_availability_zones_list_details() :: #{
 %%   <<"Value">> => string()
 %% }
 -type aws_auto_scaling_auto_scaling_group_availability_zones_list_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% sensitive_data_result() :: #{
@@ -1184,9 +1283,11 @@
 %%   <<"TotalCount">> => float()
 %% }
 -type sensitive_data_result() :: #{binary() => any()}.
+
 %% Example:
 %% update_security_hub_configuration_response() :: #{}
 -type update_security_hub_configuration_response() :: #{}.
+
 
 %% Example:
 %% aws_ec2_launch_template_data_block_device_mapping_set_details() :: #{
@@ -1197,11 +1298,13 @@
 %% }
 -type aws_ec2_launch_template_data_block_device_mapping_set_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_cloud_formation_stack_drift_information_details() :: #{
 %%   <<"StackDriftStatus">> => string()
 %% }
 -type aws_cloud_formation_stack_drift_information_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% network_connection_action() :: #{
@@ -1214,6 +1317,7 @@
 %% }
 -type network_connection_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_s3_bucket_website_configuration_routing_rule_redirect() :: #{
 %%   <<"Hostname">> => string(),
@@ -1224,11 +1328,13 @@
 %% }
 -type aws_s3_bucket_website_configuration_routing_rule_redirect() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_action_target_response() :: #{
 %%   <<"ActionTargetArn">> => string()
 %% }
 -type create_action_target_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_kinesis_stream_stream_encryption_details() :: #{
@@ -1236,6 +1342,7 @@
 %%   <<"KeyId">> => string()
 %% }
 -type aws_kinesis_stream_stream_encryption_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_rds_db_snapshot_details() :: #{
@@ -1269,11 +1376,13 @@
 %% }
 -type aws_rds_db_snapshot_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_enable_standards_response() :: #{
 %%   <<"StandardsSubscriptions">> => list(standards_subscription()())
 %% }
 -type batch_enable_standards_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_elasticsearch_domain_domain_endpoint_options() :: #{
@@ -1281,6 +1390,7 @@
 %%   <<"TLSSecurityPolicy">> => string()
 %% }
 -type aws_elasticsearch_domain_domain_endpoint_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% compliance() :: #{
@@ -1293,6 +1403,7 @@
 %% }
 -type compliance() :: #{binary() => any()}.
 
+
 %% Example:
 %% file_paths() :: #{
 %%   <<"FileName">> => string(),
@@ -1302,6 +1413,7 @@
 %% }
 -type file_paths() :: #{binary() => any()}.
 
+
 %% Example:
 %% sensitive_data_detections() :: #{
 %%   <<"Count">> => float(),
@@ -1309,9 +1421,11 @@
 %%   <<"Type">> => string()
 %% }
 -type sensitive_data_detections() :: #{binary() => any()}.
+
 %% Example:
 %% delete_action_target_request() :: #{}
 -type delete_action_target_request() :: #{}.
+
 
 %% Example:
 %% aws_ecs_task_details() :: #{
@@ -1327,12 +1441,14 @@
 %% }
 -type aws_ecs_task_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_in_use_exception() :: #{
 %%   <<"Code">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type resource_in_use_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_rds_db_instance_associated_role() :: #{
@@ -1341,6 +1457,7 @@
 %%   <<"Status">> => string()
 %% }
 -type aws_rds_db_instance_associated_role() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_configuration_policy_response() :: #{
@@ -1354,11 +1471,13 @@
 %% }
 -type create_configuration_policy_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_s3_access_point_vpc_configuration_details() :: #{
 %%   <<"VpcId">> => string()
 %% }
 -type aws_s3_access_point_vpc_configuration_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_iam_attached_managed_policy() :: #{
@@ -1366,6 +1485,7 @@
 %%   <<"PolicyName">> => string()
 %% }
 -type aws_iam_attached_managed_policy() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_sqs_queue_details() :: #{
@@ -1375,6 +1495,7 @@
 %%   <<"QueueName">> => string()
 %% }
 -type aws_sqs_queue_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% automation_rules_finding_filters() :: #{
@@ -1419,12 +1540,14 @@
 %% }
 -type automation_rules_finding_filters() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_network_interface_private_ip_address_detail() :: #{
 %%   <<"PrivateDnsName">> => string(),
 %%   <<"PrivateIpAddress">> => string()
 %% }
 -type aws_ec2_network_interface_private_ip_address_detail() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_app_sync_graph_ql_api_details() :: #{
@@ -1443,17 +1566,20 @@
 %% }
 -type aws_app_sync_graph_ql_api_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% rule_group_variables_ip_sets_details() :: #{
 %%   <<"Definition">> => list(string()())
 %% }
 -type rule_group_variables_ip_sets_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_update_standards_control_associations_request() :: #{
 %%   <<"StandardsControlAssociationUpdates">> := list(standards_control_association_update()())
 %% }
 -type batch_update_standards_control_associations_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_rds_pending_cloud_watch_logs_exports() :: #{
@@ -1462,12 +1588,14 @@
 %% }
 -type aws_rds_pending_cloud_watch_logs_exports() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_configuration_policy_associations_response() :: #{
 %%   <<"ConfigurationPolicyAssociations">> => list(configuration_policy_association_summary()()),
 %%   <<"UnprocessedConfigurationPolicyAssociations">> => list(unprocessed_configuration_policy_association()())
 %% }
 -type batch_get_configuration_policy_associations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_certificate_manager_certificate_domain_validation_option() :: #{
@@ -1480,6 +1608,7 @@
 %% }
 -type aws_certificate_manager_certificate_domain_validation_option() :: #{binary() => any()}.
 
+
 %% Example:
 %% organization_configuration() :: #{
 %%   <<"ConfigurationType">> => list(any()),
@@ -1488,6 +1617,7 @@
 %% }
 -type organization_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_wafv2_web_acl_action_details() :: #{
 %%   <<"Allow">> => aws_wafv2_action_allow_details(),
@@ -1495,11 +1625,13 @@
 %% }
 -type aws_wafv2_web_acl_action_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_s3_bucket_bucket_lifecycle_configuration_rules_filter_details() :: #{
 %%   <<"Predicate">> => aws_s3_bucket_bucket_lifecycle_configuration_rules_filter_predicate_details()
 %% }
 -type aws_s3_bucket_bucket_lifecycle_configuration_rules_filter_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_iam_group_details() :: #{
@@ -1511,9 +1643,11 @@
 %%   <<"Path">> => string()
 %% }
 -type aws_iam_group_details() :: #{binary() => any()}.
+
 %% Example:
 %% update_standards_control_response() :: #{}
 -type update_standards_control_response() :: #{}.
+
 
 %% Example:
 %% automation_rules_metadata() :: #{
@@ -1529,11 +1663,13 @@
 %% }
 -type automation_rules_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_step_function_state_machine_logging_configuration_destinations_cloud_watch_logs_log_group_details() :: #{
 %%   <<"LogGroupArn">> => string()
 %% }
 -type aws_step_function_state_machine_logging_configuration_destinations_cloud_watch_logs_log_group_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_rds_db_instance_endpoint() :: #{
@@ -1542,6 +1678,7 @@
 %%   <<"Port">> => integer()
 %% }
 -type aws_rds_db_instance_endpoint() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_rds_event_subscription_details() :: #{
@@ -1557,6 +1694,7 @@
 %%   <<"SubscriptionCreationTime">> => string()
 %% }
 -type aws_rds_event_subscription_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_subnet_details() :: #{
@@ -1576,6 +1714,7 @@
 %% }
 -type aws_ec2_subnet_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_launch_template_details() :: #{
 %%   <<"DefaultVersionNumber">> => float(),
@@ -1586,6 +1725,7 @@
 %% }
 -type aws_ec2_launch_template_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_launch_template_data_metadata_options_details() :: #{
 %%   <<"HttpEndpoint">> => string(),
@@ -1595,6 +1735,7 @@
 %%   <<"InstanceMetadataTags">> => string()
 %% }
 -type aws_ec2_launch_template_data_metadata_options_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_rds_db_cluster_details() :: #{
@@ -1639,6 +1780,7 @@
 %% }
 -type aws_rds_db_cluster_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_standards_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -1646,11 +1788,13 @@
 %% }
 -type describe_standards_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_wafv2_action_block_details() :: #{
 %%   <<"CustomResponse">> => aws_wafv2_custom_response_details()
 %% }
 -type aws_wafv2_action_block_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% invitation() :: #{
@@ -1660,9 +1804,11 @@
 %%   <<"MemberStatus">> => string()
 %% }
 -type invitation() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_from_master_account_response() :: #{}
 -type disassociate_from_master_account_response() :: #{}.
+
 
 %% Example:
 %% aws_iam_access_key_details() :: #{
@@ -1678,12 +1824,14 @@
 %% }
 -type aws_iam_access_key_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_dynamo_db_table_key_schema() :: #{
 %%   <<"AttributeName">> => string(),
 %%   <<"KeyType">> => string()
 %% }
 -type aws_dynamo_db_table_key_schema() :: #{binary() => any()}.
+
 
 %% Example:
 %% related_finding() :: #{
@@ -1692,12 +1840,14 @@
 %% }
 -type related_finding() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_update_automation_rules_response() :: #{
 %%   <<"ProcessedAutomationRules">> => list(string()()),
 %%   <<"UnprocessedAutomationRules">> => list(unprocessed_automation_rule()())
 %% }
 -type batch_update_automation_rules_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_products_request() :: #{
@@ -1707,6 +1857,7 @@
 %% }
 -type describe_products_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_iam_access_key_session_context() :: #{
 %%   <<"Attributes">> => aws_iam_access_key_session_context_attributes(),
@@ -1714,12 +1865,14 @@
 %% }
 -type aws_iam_access_key_session_context() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ecs_task_definition_proxy_configuration_proxy_configuration_properties_details() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Value">> => string()
 %% }
 -type aws_ecs_task_definition_proxy_configuration_proxy_configuration_properties_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_launch_template_data_network_interface_set_details() :: #{
@@ -1745,6 +1898,7 @@
 %% }
 -type aws_ec2_launch_template_data_network_interface_set_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_rds_db_status_info() :: #{
 %%   <<"Message">> => string(),
@@ -1753,6 +1907,7 @@
 %%   <<"StatusType">> => string()
 %% }
 -type aws_rds_db_status_info() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_backup_recovery_point_details() :: #{
@@ -1778,6 +1933,7 @@
 %% }
 -type aws_backup_recovery_point_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_cloud_front_distribution_origin_item() :: #{
 %%   <<"CustomOriginConfig">> => aws_cloud_front_distribution_origin_custom_origin_config(),
@@ -1787,6 +1943,7 @@
 %%   <<"S3OriginConfig">> => aws_cloud_front_distribution_origin_s3_origin_config()
 %% }
 -type aws_cloud_front_distribution_origin_item() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ecs_task_definition_container_definitions_health_check_details() :: #{
@@ -1798,6 +1955,7 @@
 %% }
 -type aws_ecs_task_definition_container_definitions_health_check_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_elb_load_balancer_access_log() :: #{
 %%   <<"EmitInterval">> => integer(),
@@ -1807,6 +1965,7 @@
 %% }
 -type aws_elb_load_balancer_access_log() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_standards_control_associations_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -1814,6 +1973,7 @@
 %%   <<"SecurityControlId">> := string()
 %% }
 -type list_standards_control_associations_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_network_acl_association() :: #{
@@ -1823,6 +1983,7 @@
 %% }
 -type aws_ec2_network_acl_association() :: #{binary() => any()}.
 
+
 %% Example:
 %% insight_result_value() :: #{
 %%   <<"Count">> => integer(),
@@ -1830,17 +1991,20 @@
 %% }
 -type insight_result_value() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_disable_standards_response() :: #{
 %%   <<"StandardsSubscriptions">> => list(standards_subscription()())
 %% }
 -type batch_disable_standards_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_iam_user_policy() :: #{
 %%   <<"PolicyName">> => string()
 %% }
 -type aws_iam_user_policy() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_security_finding_identifier() :: #{
@@ -1849,11 +2013,13 @@
 %% }
 -type aws_security_finding_identifier() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_cloud_front_distribution_origin_groups() :: #{
 %%   <<"Items">> => list(aws_cloud_front_distribution_origin_group()())
 %% }
 -type aws_cloud_front_distribution_origin_groups() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_rds_db_cluster_option_group_membership() :: #{
@@ -1861,6 +2027,7 @@
 %%   <<"Status">> => string()
 %% }
 -type aws_rds_db_cluster_option_group_membership() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_network_acl_details() :: #{
@@ -1873,11 +2040,13 @@
 %% }
 -type aws_ec2_network_acl_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_instance_network_interfaces_details() :: #{
 %%   <<"NetworkInterfaceId">> => string()
 %% }
 -type aws_ec2_instance_network_interfaces_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_events_endpoint_replication_config_details() :: #{
@@ -1885,11 +2054,13 @@
 %% }
 -type aws_events_endpoint_replication_config_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_cloud_front_distribution_origin_group() :: #{
 %%   <<"FailoverCriteria">> => aws_cloud_front_distribution_origin_group_failover()
 %% }
 -type aws_cloud_front_distribution_origin_group() :: #{binary() => any()}.
+
 
 %% Example:
 %% parameter_definition() :: #{
@@ -1897,6 +2068,7 @@
 %%   <<"Description">> => string()
 %% }
 -type parameter_definition() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_dynamo_db_table_global_secondary_index() :: #{
@@ -1912,6 +2084,7 @@
 %% }
 -type aws_dynamo_db_table_global_secondary_index() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_finding_history_request() :: #{
 %%   <<"EndTime">> => non_neg_integer(),
@@ -1921,6 +2094,7 @@
 %%   <<"StartTime">> => non_neg_integer()
 %% }
 -type get_finding_history_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_eks_cluster_details() :: #{
@@ -1936,6 +2110,7 @@
 %% }
 -type aws_eks_cluster_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_redshift_cluster_deferred_maintenance_window() :: #{
 %%   <<"DeferMaintenanceEndTime">> => string(),
@@ -1943,6 +2118,7 @@
 %%   <<"DeferMaintenanceStartTime">> => string()
 %% }
 -type aws_redshift_cluster_deferred_maintenance_window() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_vpc_endpoint_service_details() :: #{
@@ -1960,14 +2136,17 @@
 %% }
 -type aws_ec2_vpc_endpoint_service_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_elb_load_balancer_connection_settings() :: #{
 %%   <<"IdleTimeout">> => integer()
 %% }
 -type aws_elb_load_balancer_connection_settings() :: #{binary() => any()}.
+
 %% Example:
 %% delete_finding_aggregator_request() :: #{}
 -type delete_finding_aggregator_request() :: #{}.
+
 
 %% Example:
 %% automation_rules_finding_fields_update() :: #{
@@ -1983,11 +2162,13 @@
 %% }
 -type automation_rules_finding_fields_update() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_s3_bucket_notification_configuration_filter() :: #{
 %%   <<"S3KeyFilter">> => aws_s3_bucket_notification_configuration_s3_key_filter()
 %% }
 -type aws_s3_bucket_notification_configuration_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ecs_service_deployment_configuration_details() :: #{
@@ -1997,20 +2178,24 @@
 %% }
 -type aws_ecs_service_deployment_configuration_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_launch_template_data_enclave_options_details() :: #{
 %%   <<"Enabled">> => boolean()
 %% }
 -type aws_ec2_launch_template_data_enclave_options_details() :: #{binary() => any()}.
+
 %% Example:
 %% enable_security_hub_response() :: #{}
 -type enable_security_hub_response() :: #{}.
+
 
 %% Example:
 %% stateless_custom_publish_metric_action_dimension() :: #{
 %%   <<"Value">> => string()
 %% }
 -type stateless_custom_publish_metric_action_dimension() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_redshift_cluster_cluster_security_group() :: #{
@@ -2019,11 +2204,13 @@
 %% }
 -type aws_redshift_cluster_cluster_security_group() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_client_vpn_endpoint_authentication_options_active_directory_details() :: #{
 %%   <<"DirectoryId">> => string()
 %% }
 -type aws_ec2_client_vpn_endpoint_authentication_options_active_directory_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% cell() :: #{
@@ -2034,12 +2221,14 @@
 %% }
 -type cell() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_launch_template_data_instance_requirements_memory_gi_b_per_v_cpu_details() :: #{
 %%   <<"Max">> => float(),
 %%   <<"Min">> => float()
 %% }
 -type aws_ec2_launch_template_data_instance_requirements_memory_gi_b_per_v_cpu_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_backup_backup_vault_notifications_details() :: #{
@@ -2048,12 +2237,14 @@
 %% }
 -type aws_backup_backup_vault_notifications_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% standards_control_association_id() :: #{
 %%   <<"SecurityControlId">> => string(),
 %%   <<"StandardsArn">> => string()
 %% }
 -type standards_control_association_id() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_s3_bucket_logging_configuration() :: #{
@@ -2062,12 +2253,14 @@
 %% }
 -type aws_s3_bucket_logging_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_action_targets_response() :: #{
 %%   <<"ActionTargets">> => list(action_target()()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_action_targets_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_rds_db_option_group_membership() :: #{
@@ -2076,11 +2269,13 @@
 %% }
 -type aws_rds_db_option_group_membership() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ecs_cluster_configuration_details() :: #{
 %%   <<"ExecuteCommandConfiguration">> => aws_ecs_cluster_configuration_execute_command_configuration_details()
 %% }
 -type aws_ecs_cluster_configuration_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_insight_results_response() :: #{
@@ -2088,11 +2283,13 @@
 %% }
 -type get_insight_results_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_s3_bucket_notification_configuration() :: #{
 %%   <<"Configurations">> => list(aws_s3_bucket_notification_configuration_detail()())
 %% }
 -type aws_s3_bucket_notification_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_instance_metadata_options() :: #{
@@ -2104,6 +2301,7 @@
 %% }
 -type aws_ec2_instance_metadata_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ecs_cluster_configuration_execute_command_configuration_log_configuration_details() :: #{
 %%   <<"CloudWatchEncryptionEnabled">> => boolean(),
@@ -2114,6 +2312,7 @@
 %% }
 -type aws_ecs_cluster_configuration_execute_command_configuration_log_configuration_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% firewall_policy_stateless_custom_actions_details() :: #{
 %%   <<"ActionDefinition">> => stateless_custom_action_definition(),
@@ -2121,17 +2320,20 @@
 %% }
 -type firewall_policy_stateless_custom_actions_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_msk_cluster_details() :: #{
 %%   <<"ClusterInfo">> => aws_msk_cluster_cluster_info_details()
 %% }
 -type aws_msk_cluster_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_launch_template_data_license_set_details() :: #{
 %%   <<"LicenseConfigurationArn">> => string()
 %% }
 -type aws_ec2_launch_template_data_license_set_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% rule_group_source_list_details() :: #{
@@ -2140,6 +2342,7 @@
 %%   <<"Targets">> => list(string()())
 %% }
 -type rule_group_source_list_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_redshift_cluster_pending_modified_values() :: #{
@@ -2157,12 +2360,14 @@
 %% }
 -type aws_redshift_cluster_pending_modified_values() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ecs_task_definition_container_definitions_resource_requirements_details() :: #{
 %%   <<"Type">> => string(),
 %%   <<"Value">> => string()
 %% }
 -type aws_ecs_task_definition_container_definitions_resource_requirements_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_code_build_project_logs_config_details() :: #{
@@ -2171,12 +2376,14 @@
 %% }
 -type aws_code_build_project_logs_config_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_elb_load_balancer_connection_draining() :: #{
 %%   <<"Enabled">> => boolean(),
 %%   <<"Timeout">> => integer()
 %% }
 -type aws_elb_load_balancer_connection_draining() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ecs_task_definition_volumes_docker_volume_configuration_details() :: #{
@@ -2188,11 +2395,13 @@
 %% }
 -type aws_ecs_task_definition_volumes_docker_volume_configuration_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_waf_regional_rule_group_rules_action_details() :: #{
 %%   <<"Type">> => string()
 %% }
 -type aws_waf_regional_rule_group_rules_action_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_action_target_request() :: #{
@@ -2200,6 +2409,7 @@
 %%   <<"Name">> => string()
 %% }
 -type update_action_target_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_findings_request() :: #{
@@ -2210,6 +2420,7 @@
 %% }
 -type get_findings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_launch_template_data_network_interface_set_private_ip_addresses_details() :: #{
 %%   <<"Primary">> => boolean(),
@@ -2217,12 +2428,14 @@
 %% }
 -type aws_ec2_launch_template_data_network_interface_set_private_ip_addresses_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_vpn_connection_routes_details() :: #{
 %%   <<"DestinationCidrBlock">> => string(),
 %%   <<"State">> => string()
 %% }
 -type aws_ec2_vpn_connection_routes_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_app_sync_graph_ql_api_log_config_details() :: #{
@@ -2232,6 +2445,7 @@
 %% }
 -type aws_app_sync_graph_ql_api_log_config_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_backup_backup_plan_backup_plan_details() :: #{
 %%   <<"AdvancedBackupSettings">> => list(aws_backup_backup_plan_advanced_backup_settings_details()()),
@@ -2240,6 +2454,7 @@
 %% }
 -type aws_backup_backup_plan_backup_plan_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_waf_regional_rule_predicate_list_details() :: #{
 %%   <<"DataId">> => string(),
@@ -2247,6 +2462,7 @@
 %%   <<"Type">> => string()
 %% }
 -type aws_waf_regional_rule_predicate_list_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_sns_topic_details() :: #{
@@ -2264,6 +2480,7 @@
 %% }
 -type aws_sns_topic_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% country() :: #{
 %%   <<"CountryCode">> => string(),
@@ -2271,12 +2488,14 @@
 %% }
 -type country() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_standards_controls_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_standards_controls_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% security_control_definition() :: #{
@@ -2291,6 +2510,7 @@
 %% }
 -type security_control_definition() :: #{binary() => any()}.
 
+
 %% Example:
 %% action_remote_ip_details() :: #{
 %%   <<"City">> => city(),
@@ -2300,6 +2520,7 @@
 %%   <<"Organization">> => ip_organization_details()
 %% }
 -type action_remote_ip_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_transit_gateway_details() :: #{
@@ -2318,6 +2539,7 @@
 %% }
 -type aws_ec2_transit_gateway_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_auto_scaling_auto_scaling_group_launch_template_launch_template_specification() :: #{
 %%   <<"LaunchTemplateId">> => string(),
@@ -2325,6 +2547,7 @@
 %%   <<"Version">> => string()
 %% }
 -type aws_auto_scaling_auto_scaling_group_launch_template_launch_template_specification() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_s3_access_point_details() :: #{
@@ -2339,11 +2562,13 @@
 %% }
 -type aws_s3_access_point_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% code_vulnerabilities_file_path() :: #{
@@ -2354,11 +2579,13 @@
 %% }
 -type code_vulnerabilities_file_path() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_guard_duty_detector_data_sources_flow_logs_details() :: #{
 %%   <<"Status">> => string()
 %% }
 -type aws_guard_duty_detector_data_sources_flow_logs_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ecr_repository_lifecycle_policy_details() :: #{
@@ -2366,6 +2593,7 @@
 %%   <<"RegistryId">> => string()
 %% }
 -type aws_ecr_repository_lifecycle_policy_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_wafv2_web_acl_details() :: #{
@@ -2382,6 +2610,7 @@
 %% }
 -type aws_wafv2_web_acl_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_iam_role_details() :: #{
 %%   <<"AssumeRolePolicyDocument">> => string(),
@@ -2397,6 +2626,7 @@
 %% }
 -type aws_iam_role_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_elastic_beanstalk_environment_option_setting() :: #{
 %%   <<"Namespace">> => string(),
@@ -2405,6 +2635,7 @@
 %%   <<"Value">> => string()
 %% }
 -type aws_elastic_beanstalk_environment_option_setting() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_backup_recovery_point_created_by_details() :: #{
@@ -2415,6 +2646,7 @@
 %% }
 -type aws_backup_recovery_point_created_by_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% finding_history_update_source() :: #{
 %%   <<"Identity">> => string(),
@@ -2422,11 +2654,13 @@
 %% }
 -type finding_history_update_source() :: #{binary() => any()}.
 
+
 %% Example:
 %% disable_organization_admin_account_request() :: #{
 %%   <<"AdminAccountId">> := string()
 %% }
 -type disable_organization_admin_account_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_eip_details() :: #{
@@ -2443,6 +2677,7 @@
 %% }
 -type aws_ec2_eip_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_security_control_definitions_response() :: #{
 %%   <<"NextToken">> => string(),
@@ -2450,11 +2685,13 @@
 %% }
 -type list_security_control_definitions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_update_automation_rules_request() :: #{
 %%   <<"UpdateAutomationRulesRequestItems">> := list(update_automation_rules_request_item()())
 %% }
 -type batch_update_automation_rules_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_launch_template_data_instance_requirements_total_local_storage_g_b_details() :: #{
@@ -2462,6 +2699,7 @@
 %%   <<"Min">> => float()
 %% }
 -type aws_ec2_launch_template_data_instance_requirements_total_local_storage_g_b_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% unprocessed_standards_control_association() :: #{
@@ -2471,6 +2709,7 @@
 %% }
 -type unprocessed_standards_control_association() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_client_vpn_endpoint_connection_log_options_details() :: #{
 %%   <<"CloudwatchLogGroup">> => string(),
@@ -2479,6 +2718,7 @@
 %% }
 -type aws_ec2_client_vpn_endpoint_connection_log_options_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% rule_group_source_stateless_rule_match_attributes_source_ports() :: #{
 %%   <<"FromPort">> => integer(),
@@ -2486,11 +2726,13 @@
 %% }
 -type rule_group_source_stateless_rule_match_attributes_source_ports() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_members_response() :: #{
 %%   <<"UnprocessedAccounts">> => list(result()())
 %% }
 -type delete_members_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% finding_history_update() :: #{
@@ -2499,6 +2741,7 @@
 %%   <<"UpdatedField">> => string()
 %% }
 -type finding_history_update() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_dynamo_db_table_restore_summary() :: #{
@@ -2509,6 +2752,7 @@
 %% }
 -type aws_dynamo_db_table_restore_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% parameter_configuration() :: #{
 %%   <<"Value">> => list(),
@@ -2516,11 +2760,13 @@
 %% }
 -type parameter_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% invite_members_request() :: #{
 %%   <<"AccountIds">> := list(string()())
 %% }
 -type invite_members_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% insight_results() :: #{
@@ -2530,12 +2776,14 @@
 %% }
 -type insight_results() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_msk_cluster_cluster_info_encryption_info_details() :: #{
 %%   <<"EncryptionAtRest">> => aws_msk_cluster_cluster_info_encryption_info_encryption_at_rest_details(),
 %%   <<"EncryptionInTransit">> => aws_msk_cluster_cluster_info_encryption_info_encryption_in_transit_details()
 %% }
 -type aws_msk_cluster_cluster_info_encryption_info_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ecs_service_details() :: #{
@@ -2564,12 +2812,14 @@
 %% }
 -type aws_ecs_service_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_standards_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Standards">> => list(standard()())
 %% }
 -type describe_standards_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% ip_organization_details() :: #{
@@ -2580,12 +2830,14 @@
 %% }
 -type ip_organization_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_cloud_front_distribution_origin_group_failover_status_codes() :: #{
 %%   <<"Items">> => list(integer()()),
 %%   <<"Quantity">> => integer()
 %% }
 -type aws_cloud_front_distribution_origin_group_failover_status_codes() :: #{binary() => any()}.
+
 
 %% Example:
 %% rule_group_source_stateless_rule_definition() :: #{
@@ -2594,11 +2846,13 @@
 %% }
 -type rule_group_source_stateless_rule_definition() :: #{binary() => any()}.
 
+
 %% Example:
 %% standards_status_reason() :: #{
 %%   <<"StatusReasonCode">> => list(any())
 %% }
 -type standards_status_reason() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_cors_configuration() :: #{
@@ -2610,6 +2864,7 @@
 %%   <<"MaxAge">> => integer()
 %% }
 -type aws_cors_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_cloud_formation_stack_details() :: #{
@@ -2631,11 +2886,13 @@
 %% }
 -type aws_cloud_formation_stack_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% associated_standard() :: #{
 %%   <<"StandardsId">> => string()
 %% }
 -type associated_standard() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_redshift_cluster_cluster_snapshot_copy_status() :: #{
@@ -2646,6 +2903,7 @@
 %% }
 -type aws_redshift_cluster_cluster_snapshot_copy_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% severity() :: #{
 %%   <<"Label">> => list(any()),
@@ -2655,6 +2913,7 @@
 %% }
 -type severity() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_redshift_cluster_iam_role() :: #{
 %%   <<"ApplyStatus">> => string(),
@@ -2662,12 +2921,14 @@
 %% }
 -type aws_redshift_cluster_iam_role() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_amazon_mq_broker_users_details() :: #{
 %%   <<"PendingChange">> => string(),
 %%   <<"Username">> => string()
 %% }
 -type aws_amazon_mq_broker_users_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_s3_bucket_bucket_lifecycle_configuration_rules_details() :: #{
@@ -2685,12 +2946,14 @@
 %% }
 -type aws_s3_bucket_bucket_lifecycle_configuration_rules_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_lambda_function_environment() :: #{
 %%   <<"Error">> => aws_lambda_function_environment_error(),
 %%   <<"Variables">> => map()
 %% }
 -type aws_lambda_function_environment() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_backup_backup_plan_details() :: #{
@@ -2700,6 +2963,7 @@
 %%   <<"VersionId">> => string()
 %% }
 -type aws_backup_backup_plan_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_configuration_policy_response() :: #{
@@ -2713,6 +2977,7 @@
 %% }
 -type get_configuration_policy_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% standard() :: #{
 %%   <<"Description">> => string(),
@@ -2723,17 +2988,20 @@
 %% }
 -type standard() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_launch_template_data_hibernation_options_details() :: #{
 %%   <<"Configured">> => boolean()
 %% }
 -type aws_ec2_launch_template_data_hibernation_options_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_delete_automation_rules_request() :: #{
 %%   <<"AutomationRulesArns">> := list(string()())
 %% }
 -type batch_delete_automation_rules_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_elb_load_balancer_health_check() :: #{
@@ -2745,6 +3013,7 @@
 %% }
 -type aws_elb_load_balancer_health_check() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_waf_regional_web_acl_details() :: #{
 %%   <<"DefaultAction">> => string(),
@@ -2755,11 +3024,13 @@
 %% }
 -type aws_waf_regional_web_acl_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_standards_control_associations_request() :: #{
 %%   <<"StandardsControlAssociationIds">> := list(standards_control_association_id()())
 %% }
 -type batch_get_standards_control_associations_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_elasticsearch_domain_vpc_options() :: #{
@@ -2770,12 +3041,14 @@
 %% }
 -type aws_elasticsearch_domain_vpc_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_wafv2_custom_http_header() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Value">> => string()
 %% }
 -type aws_wafv2_custom_http_header() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_amazon_mq_broker_logs_details() :: #{
@@ -2787,6 +3060,7 @@
 %% }
 -type aws_amazon_mq_broker_logs_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% double_configuration_options() :: #{
 %%   <<"DefaultValue">> => float(),
@@ -2794,6 +3068,7 @@
 %%   <<"Min">> => float()
 %% }
 -type double_configuration_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% vulnerability_vendor() :: #{
@@ -2805,12 +3080,14 @@
 %% }
 -type vulnerability_vendor() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_eks_cluster_logging_cluster_logging_details() :: #{
 %%   <<"Enabled">> => boolean(),
 %%   <<"Types">> => list(string()())
 %% }
 -type aws_eks_cluster_logging_cluster_logging_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_code_build_project_source() :: #{
@@ -2820,6 +3097,7 @@
 %%   <<"Type">> => string()
 %% }
 -type aws_code_build_project_source() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_launch_template_data_placement_details() :: #{
@@ -2834,11 +3112,13 @@
 %% }
 -type aws_ec2_launch_template_data_placement_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% rule_group_source_stateless_rule_match_attributes_sources() :: #{
 %%   <<"AddressDefinition">> => string()
 %% }
 -type rule_group_source_stateless_rule_match_attributes_sources() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_launch_template_data_instance_requirements_accelerator_total_memory_mi_b_details() :: #{
@@ -2846,6 +3126,7 @@
 %%   <<"Min">> => integer()
 %% }
 -type aws_ec2_launch_template_data_instance_requirements_accelerator_total_memory_mi_b_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_elastic_beanstalk_environment_details() :: #{
@@ -2868,6 +3149,7 @@
 %% }
 -type aws_elastic_beanstalk_environment_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% rule_group_source_stateful_rules_details() :: #{
 %%   <<"Action">> => string(),
@@ -2875,15 +3157,18 @@
 %%   <<"RuleOptions">> => list(rule_group_source_stateful_rules_options_details()())
 %% }
 -type rule_group_source_stateful_rules_details() :: #{binary() => any()}.
+
 %% Example:
 %% update_insight_response() :: #{}
 -type update_insight_response() :: #{}.
+
 
 %% Example:
 %% batch_enable_standards_request() :: #{
 %%   <<"StandardsSubscriptionRequests">> := list(standards_subscription_request()())
 %% }
 -type batch_enable_standards_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_elasticsearch_domain_log_publishing_options() :: #{
@@ -2892,6 +3177,7 @@
 %%   <<"SearchSlowLogs">> => aws_elasticsearch_domain_log_publishing_options_log_config()
 %% }
 -type aws_elasticsearch_domain_log_publishing_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% standards_control_association_summary() :: #{
@@ -2907,11 +3193,13 @@
 %% }
 -type standards_control_association_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ecs_service_network_configuration_details() :: #{
 %%   <<"AwsVpcConfiguration">> => aws_ecs_service_network_configuration_aws_vpc_configuration_details()
 %% }
 -type aws_ecs_service_network_configuration_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% rule_group_source_stateful_rules_options_details() :: #{
@@ -2919,6 +3207,7 @@
 %%   <<"Settings">> => list(string()())
 %% }
 -type rule_group_source_stateful_rules_options_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_cloud_front_distribution_logging() :: #{
@@ -2928,6 +3217,7 @@
 %%   <<"Prefix">> => string()
 %% }
 -type aws_cloud_front_distribution_logging() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_auto_scaling_launch_configuration_block_device_mappings_ebs_details() :: #{
@@ -2940,6 +3230,7 @@
 %% }
 -type aws_auto_scaling_launch_configuration_block_device_mappings_ebs_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_rds_db_subnet_group() :: #{
 %%   <<"DbSubnetGroupArn">> => string(),
@@ -2951,6 +3242,7 @@
 %% }
 -type aws_rds_db_subnet_group() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_classification_details() :: #{
 %%   <<"DetailedResultsLocation">> => string(),
@@ -2958,12 +3250,14 @@
 %% }
 -type data_classification_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% rule_group_source_stateless_rules_details() :: #{
 %%   <<"Priority">> => integer(),
 %%   <<"RuleDefinition">> => rule_group_source_stateless_rule_definition()
 %% }
 -type rule_group_source_stateless_rules_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ecs_task_definition_volumes_efs_volume_configuration_details() :: #{
@@ -2974,9 +3268,11 @@
 %%   <<"TransitEncryptionPort">> => integer()
 %% }
 -type aws_ecs_task_definition_volumes_efs_volume_configuration_details() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_from_administrator_account_response() :: #{}
 -type disassociate_from_administrator_account_response() :: #{}.
+
 
 %% Example:
 %% aws_s3_bucket_website_configuration_routing_rule_condition() :: #{
@@ -2984,6 +3280,7 @@
 %%   <<"KeyPrefixEquals">> => string()
 %% }
 -type aws_s3_bucket_website_configuration_routing_rule_condition() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_redshift_cluster_hsm_status() :: #{
@@ -2993,12 +3290,14 @@
 %% }
 -type aws_redshift_cluster_hsm_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_launch_template_data_elastic_inference_accelerator_set_details() :: #{
 %%   <<"Count">> => integer(),
 %%   <<"Type">> => string()
 %% }
 -type aws_ec2_launch_template_data_elastic_inference_accelerator_set_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ecs_service_network_configuration_aws_vpc_configuration_details() :: #{
@@ -3007,6 +3306,7 @@
 %%   <<"Subnets">> => list(string()())
 %% }
 -type aws_ecs_service_network_configuration_aws_vpc_configuration_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% occurrences() :: #{
@@ -3018,6 +3318,7 @@
 %% }
 -type occurrences() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_waf_regional_rule_details() :: #{
 %%   <<"MetricName">> => string(),
@@ -3027,11 +3328,13 @@
 %% }
 -type aws_waf_regional_rule_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_security_group_ip_range() :: #{
 %%   <<"CidrIp">> => string()
 %% }
 -type aws_ec2_security_group_ip_range() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_waf_web_acl_details() :: #{
@@ -3041,6 +3344,7 @@
 %%   <<"WebAclId">> => string()
 %% }
 -type aws_waf_web_acl_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_code_build_project_artifacts_details() :: #{
@@ -3056,14 +3360,17 @@
 %% }
 -type aws_code_build_project_artifacts_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% boolean_filter() :: #{
 %%   <<"Value">> => boolean()
 %% }
 -type boolean_filter() :: #{binary() => any()}.
+
 %% Example:
 %% start_configuration_policy_disassociation_response() :: #{}
 -type start_configuration_policy_disassociation_response() :: #{}.
+
 
 %% Example:
 %% aws_ec2_client_vpn_endpoint_client_connect_options_status_details() :: #{
@@ -3071,6 +3378,7 @@
 %%   <<"Message">> => string()
 %% }
 -type aws_ec2_client_vpn_endpoint_client_connect_options_status_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_organization_configuration_response() :: #{
@@ -3081,12 +3389,14 @@
 %% }
 -type describe_organization_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_rds_db_cluster_associated_role() :: #{
 %%   <<"RoleArn">> => string(),
 %%   <<"Status">> => string()
 %% }
 -type aws_rds_db_cluster_associated_role() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_backup_backup_plan_rule_copy_actions_details() :: #{
@@ -3095,6 +3405,7 @@
 %% }
 -type aws_backup_backup_plan_rule_copy_actions_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_auto_scaling_auto_scaling_group_mixed_instances_policy_launch_template_launch_template_specification() :: #{
 %%   <<"LaunchTemplateId">> => string(),
@@ -3102,6 +3413,7 @@
 %%   <<"Version">> => string()
 %% }
 -type aws_auto_scaling_auto_scaling_group_mixed_instances_policy_launch_template_launch_template_specification() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_api_gateway_stage_details() :: #{
@@ -3124,6 +3436,7 @@
 %% }
 -type aws_api_gateway_stage_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% standards_control() :: #{
 %%   <<"ControlId">> => string(),
@@ -3139,6 +3452,7 @@
 %% }
 -type standards_control() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_rds_db_domain_membership() :: #{
 %%   <<"Domain">> => string(),
@@ -3147,6 +3461,7 @@
 %%   <<"Status">> => string()
 %% }
 -type aws_rds_db_domain_membership() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_certificate_manager_certificate_renewal_summary() :: #{
@@ -3157,14 +3472,17 @@
 %% }
 -type aws_certificate_manager_certificate_renewal_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_s3_bucket_bucket_lifecycle_configuration_rules_abort_incomplete_multipart_upload_details() :: #{
 %%   <<"DaysAfterInitiation">> => integer()
 %% }
 -type aws_s3_bucket_bucket_lifecycle_configuration_rules_abort_incomplete_multipart_upload_details() :: #{binary() => any()}.
+
 %% Example:
 %% update_security_control_response() :: #{}
 -type update_security_control_response() :: #{}.
+
 
 %% Example:
 %% aws_dynamo_db_table_replica() :: #{
@@ -3176,6 +3494,7 @@
 %%   <<"ReplicaStatusDescription">> => string()
 %% }
 -type aws_dynamo_db_table_replica() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_dms_replication_instance_details() :: #{
@@ -3194,12 +3513,14 @@
 %% }
 -type aws_dms_replication_instance_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_access_exception() :: #{
 %%   <<"Code">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type invalid_access_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_elb_lb_cookie_stickiness_policy() :: #{
@@ -3208,11 +3529,13 @@
 %% }
 -type aws_elb_lb_cookie_stickiness_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_launch_template_data_network_interface_set_ipv6_prefixes_details() :: #{
 %%   <<"Ipv6Prefix">> => string()
 %% }
 -type aws_ec2_launch_template_data_network_interface_set_ipv6_prefixes_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_launch_template_data_network_interface_set_ipv4_prefixes_details() :: #{
@@ -3220,11 +3543,13 @@
 %% }
 -type aws_ec2_launch_template_data_network_interface_set_ipv4_prefixes_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_step_function_state_machine_logging_configuration_destinations_details() :: #{
 %%   <<"CloudWatchLogsLogGroup">> => aws_step_function_state_machine_logging_configuration_destinations_cloud_watch_logs_log_group_details()
 %% }
 -type aws_step_function_state_machine_logging_configuration_destinations_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_elasticsearch_domain_elasticsearch_cluster_config_details() :: #{
@@ -3238,6 +3563,7 @@
 %% }
 -type aws_elasticsearch_domain_elasticsearch_cluster_config_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% rule_group_source_stateless_rules_and_custom_actions_details() :: #{
 %%   <<"CustomActions">> => list(rule_group_source_custom_actions_details()()),
@@ -3245,11 +3571,13 @@
 %% }
 -type rule_group_source_stateless_rules_and_custom_actions_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_s3_bucket_server_side_encryption_rule() :: #{
 %%   <<"ApplyServerSideEncryptionByDefault">> => aws_s3_bucket_server_side_encryption_by_default()
 %% }
 -type aws_s3_bucket_server_side_encryption_rule() :: #{binary() => any()}.
+
 
 %% Example:
 %% configuration_policy_summary() :: #{
@@ -3261,6 +3589,7 @@
 %%   <<"UpdatedAt">> => non_neg_integer()
 %% }
 -type configuration_policy_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_certificate_manager_certificate_details() :: #{
@@ -3290,6 +3619,7 @@
 %% }
 -type aws_certificate_manager_certificate_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_enabled_standards_response() :: #{
 %%   <<"NextToken">> => string(),
@@ -3297,12 +3627,14 @@
 %% }
 -type get_enabled_standards_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_route53_hosted_zone_vpc_details() :: #{
 %%   <<"Id">> => string(),
 %%   <<"Region">> => string()
 %% }
 -type aws_route53_hosted_zone_vpc_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_iam_instance_profile() :: #{
@@ -3315,12 +3647,14 @@
 %% }
 -type aws_iam_instance_profile() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Code">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% dns_request_action() :: #{
@@ -3330,6 +3664,7 @@
 %% }
 -type dns_request_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% security_controls_configuration() :: #{
 %%   <<"DisabledSecurityControlIdentifiers">> => list(string()()),
@@ -3338,11 +3673,13 @@
 %% }
 -type security_controls_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_guard_duty_detector_data_sources_malware_protection_scan_ec2_instance_with_findings_details() :: #{
 %%   <<"EbsVolumes">> => aws_guard_duty_detector_data_sources_malware_protection_scan_ec2_instance_with_findings_ebs_volumes_details()
 %% }
 -type aws_guard_duty_detector_data_sources_malware_protection_scan_ec2_instance_with_findings_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_security_hub_configuration_request() :: #{
@@ -3351,17 +3688,20 @@
 %% }
 -type update_security_hub_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_members_request() :: #{
 %%   <<"AccountIds">> := list(string()())
 %% }
 -type get_members_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% rule_group_variables_port_sets_details() :: #{
 %%   <<"Definition">> => list(string()())
 %% }
 -type rule_group_variables_port_sets_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_launch_template_data_capacity_reservation_specification_capacity_reservation_target_details() :: #{
@@ -3370,17 +3710,20 @@
 %% }
 -type aws_ec2_launch_template_data_capacity_reservation_specification_capacity_reservation_target_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_members_request() :: #{
 %%   <<"AccountDetails">> := list(account_details()())
 %% }
 -type create_members_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_events_endpoint_routing_config_failover_config_primary_details() :: #{
 %%   <<"HealthCheck">> => string()
 %% }
 -type aws_events_endpoint_routing_config_failover_config_primary_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_elb_load_balancer_policies() :: #{
@@ -3390,12 +3733,14 @@
 %% }
 -type aws_elb_load_balancer_policies() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_dynamo_db_table_replica_global_secondary_index() :: #{
 %%   <<"IndexName">> => string(),
 %%   <<"ProvisionedThroughputOverride">> => aws_dynamo_db_table_provisioned_throughput_override()
 %% }
 -type aws_dynamo_db_table_replica_global_secondary_index() :: #{binary() => any()}.
+
 
 %% Example:
 %% icmp_type_code() :: #{
@@ -3404,12 +3749,14 @@
 %% }
 -type icmp_type_code() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_backup_recovery_point_lifecycle_details() :: #{
 %%   <<"DeleteAfterDays">> => float(),
 %%   <<"MoveToColdStorageAfterDays">> => float()
 %% }
 -type aws_backup_recovery_point_lifecycle_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_launch_template_data_instance_market_options_details() :: #{
@@ -3418,12 +3765,14 @@
 %% }
 -type aws_ec2_launch_template_data_instance_market_options_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_athena_work_group_configuration_result_configuration_encryption_configuration_details() :: #{
 %%   <<"EncryptionOption">> => string(),
 %%   <<"KmsKey">> => string()
 %% }
 -type aws_athena_work_group_configuration_result_configuration_encryption_configuration_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_network_interface_attachment() :: #{
@@ -3437,12 +3786,14 @@
 %% }
 -type aws_ec2_network_interface_attachment() :: #{binary() => any()}.
 
+
 %% Example:
 %% rule_group_variables() :: #{
 %%   <<"IpSets">> => rule_group_variables_ip_sets_details(),
 %%   <<"PortSets">> => rule_group_variables_port_sets_details()
 %% }
 -type rule_group_variables() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_iam_access_key_session_context_session_issuer() :: #{
@@ -3454,11 +3805,13 @@
 %% }
 -type aws_iam_access_key_session_context_session_issuer() :: #{binary() => any()}.
 
+
 %% Example:
 %% disassociate_members_request() :: #{
 %%   <<"AccountIds">> := list(string()())
 %% }
 -type disassociate_members_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_api_gateway_v2_route_settings() :: #{
@@ -3469,6 +3822,7 @@
 %%   <<"ThrottlingRateLimit">> => float()
 %% }
 -type aws_api_gateway_v2_route_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_volume_details() :: #{
@@ -3486,6 +3840,7 @@
 %% }
 -type aws_ec2_volume_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_findings_response() :: #{
 %%   <<"Findings">> => list(aws_security_finding()()),
@@ -3493,12 +3848,14 @@
 %% }
 -type get_findings_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_launch_template_data_instance_requirements_network_interface_count_details() :: #{
 %%   <<"Max">> => integer(),
 %%   <<"Min">> => integer()
 %% }
 -type aws_ec2_launch_template_data_instance_requirements_network_interface_count_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_waf_rule_group_details() :: #{
@@ -3508,6 +3865,7 @@
 %%   <<"Rules">> => list(aws_waf_rule_group_rules_details()())
 %% }
 -type aws_waf_rule_group_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_cloud_front_distribution_details() :: #{
@@ -3526,11 +3884,13 @@
 %% }
 -type aws_cloud_front_distribution_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_cloud_front_distribution_cache_behavior() :: #{
 %%   <<"ViewerProtocolPolicy">> => string()
 %% }
 -type aws_cloud_front_distribution_cache_behavior() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_security_group_details() :: #{
@@ -3543,6 +3903,7 @@
 %% }
 -type aws_ec2_security_group_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ecs_container_details() :: #{
 %%   <<"Image">> => string(),
@@ -3551,6 +3912,7 @@
 %%   <<"Privileged">> => boolean()
 %% }
 -type aws_ecs_container_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ecs_service_service_registries_details() :: #{
@@ -3561,12 +3923,14 @@
 %% }
 -type aws_ecs_service_service_registries_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ecs_task_definition_container_definitions_environment_details() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Value">> => string()
 %% }
 -type aws_ecs_task_definition_container_definitions_environment_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% vulnerability_code_vulnerabilities() :: #{
@@ -3575,9 +3939,11 @@
 %%   <<"SourceArn">> => string()
 %% }
 -type vulnerability_code_vulnerabilities() :: #{binary() => any()}.
+
 %% Example:
 %% update_action_target_response() :: #{}
 -type update_action_target_response() :: #{}.
+
 
 %% Example:
 %% aws_dms_endpoint_details() :: #{
@@ -3597,6 +3963,7 @@
 %% }
 -type aws_dms_endpoint_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% recommendation() :: #{
 %%   <<"Text">> => string(),
@@ -3604,11 +3971,13 @@
 %% }
 -type recommendation() :: #{binary() => any()}.
 
+
 %% Example:
 %% finding_aggregator() :: #{
 %%   <<"FindingAggregatorArn">> => string()
 %% }
 -type finding_aggregator() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_members_request() :: #{
@@ -3616,11 +3985,13 @@
 %% }
 -type delete_members_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_guard_duty_detector_data_sources_dns_logs_details() :: #{
 %%   <<"Status">> => string()
 %% }
 -type aws_guard_duty_detector_data_sources_dns_logs_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% invite_members_response() :: #{
@@ -3628,11 +3999,13 @@
 %% }
 -type invite_members_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_s3_bucket_notification_configuration_s3_key_filter() :: #{
 %%   <<"FilterRules">> => list(aws_s3_bucket_notification_configuration_s3_key_filter_rule()())
 %% }
 -type aws_s3_bucket_notification_configuration_s3_key_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_redshift_cluster_vpc_security_group() :: #{
@@ -3641,11 +4014,13 @@
 %% }
 -type aws_redshift_cluster_vpc_security_group() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_sage_maker_notebook_instance_metadata_service_configuration_details() :: #{
 %%   <<"MinimumInstanceMetadataServiceVersion">> => string()
 %% }
 -type aws_sage_maker_notebook_instance_metadata_service_configuration_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_vpn_connection_vgw_telemetry_details() :: #{
@@ -3658,17 +4033,20 @@
 %% }
 -type aws_ec2_vpn_connection_vgw_telemetry_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_guard_duty_detector_data_sources_kubernetes_audit_logs_details() :: #{
 %%   <<"Status">> => string()
 %% }
 -type aws_guard_duty_detector_data_sources_kubernetes_audit_logs_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% vpc_info_cidr_block_set_details() :: #{
 %%   <<"CidrBlock">> => string()
 %% }
 -type vpc_info_cidr_block_set_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_dynamo_db_table_billing_mode_summary() :: #{
@@ -3677,12 +4055,14 @@
 %% }
 -type aws_dynamo_db_table_billing_mode_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_s3_bucket_bucket_lifecycle_configuration_rules_filter_predicate_tag_details() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Value">> => string()
 %% }
 -type aws_s3_bucket_bucket_lifecycle_configuration_rules_filter_predicate_tag_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% account_details() :: #{
@@ -3691,12 +4071,14 @@
 %% }
 -type account_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_launch_template_data_instance_requirements_memory_mi_b_details() :: #{
 %%   <<"Max">> => integer(),
 %%   <<"Min">> => integer()
 %% }
 -type aws_ec2_launch_template_data_instance_requirements_memory_mi_b_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_wafv2_custom_response_details() :: #{
@@ -3706,11 +4088,13 @@
 %% }
 -type aws_wafv2_custom_response_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_events_endpoint_routing_config_failover_config_secondary_details() :: #{
 %%   <<"Route">> => string()
 %% }
 -type aws_events_endpoint_routing_config_failover_config_secondary_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_waf_rule_group_rules_details() :: #{
@@ -3721,6 +4105,7 @@
 %% }
 -type aws_waf_rule_group_rules_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_guard_duty_detector_data_sources_malware_protection_scan_ec2_instance_with_findings_ebs_volumes_details() :: #{
 %%   <<"Reason">> => string(),
@@ -3728,17 +4113,20 @@
 %% }
 -type aws_guard_duty_detector_data_sources_malware_protection_scan_ec2_instance_with_findings_ebs_volumes_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_guard_duty_detector_data_sources_cloud_trail_details() :: #{
 %%   <<"Status">> => string()
 %% }
 -type aws_guard_duty_detector_data_sources_cloud_trail_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_cloud_front_distribution_origin_s3_origin_config() :: #{
 %%   <<"OriginAccessIdentity">> => string()
 %% }
 -type aws_cloud_front_distribution_origin_s3_origin_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_get_automation_rules_response() :: #{
@@ -3747,12 +4135,14 @@
 %% }
 -type batch_get_automation_rules_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% load_balancer_state() :: #{
 %%   <<"Code">> => string(),
 %%   <<"Reason">> => string()
 %% }
 -type load_balancer_state() :: #{binary() => any()}.
+
 
 %% Example:
 %% string_list_configuration_options() :: #{
@@ -3763,6 +4153,7 @@
 %% }
 -type string_list_configuration_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_event_schemas_registry_details() :: #{
 %%   <<"Description">> => string(),
@@ -3771,6 +4162,7 @@
 %% }
 -type aws_event_schemas_registry_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_rds_db_cluster_snapshot_db_cluster_snapshot_attribute() :: #{
 %%   <<"AttributeName">> => string(),
@@ -3778,11 +4170,13 @@
 %% }
 -type aws_rds_db_cluster_snapshot_db_cluster_snapshot_attribute() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_automation_rules_request() :: #{
 %%   <<"AutomationRulesArns">> := list(string()())
 %% }
 -type batch_get_automation_rules_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% result() :: #{
@@ -3790,6 +4184,7 @@
 %%   <<"ProcessingResult">> => string()
 %% }
 -type result() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_guard_duty_detector_data_sources_details() :: #{
@@ -3802,11 +4197,13 @@
 %% }
 -type aws_guard_duty_detector_data_sources_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% workflow() :: #{
 %%   <<"Status">> => list(any())
 %% }
 -type workflow() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_insight_response() :: #{
@@ -3814,12 +4211,14 @@
 %% }
 -type create_insight_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% sort_criterion() :: #{
 %%   <<"Field">> => string(),
 %%   <<"SortOrder">> => list(any())
 %% }
 -type sort_criterion() :: #{binary() => any()}.
+
 
 %% Example:
 %% automation_rules_config() :: #{
@@ -3837,12 +4236,14 @@
 %% }
 -type automation_rules_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_code_build_project_environment_registry_credential() :: #{
 %%   <<"Credential">> => string(),
 %%   <<"CredentialProvider">> => string()
 %% }
 -type aws_code_build_project_environment_registry_credential() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_backup_backup_plan_rule_details() :: #{
@@ -3858,11 +4259,13 @@
 %% }
 -type aws_backup_backup_plan_rule_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% keyword_filter() :: #{
 %%   <<"Value">> => string()
 %% }
 -type keyword_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% product() :: #{
@@ -3878,11 +4281,13 @@
 %% }
 -type product() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_route53_query_logging_config_details() :: #{
 %%   <<"CloudWatchLogsLogGroupArn">> => cloud_watch_logs_log_group_arn_config_details()
 %% }
 -type aws_route53_query_logging_config_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_s3_bucket_object_lock_configuration() :: #{
@@ -3890,6 +4295,7 @@
 %%   <<"Rule">> => aws_s3_bucket_object_lock_configuration_rule_details()
 %% }
 -type aws_s3_bucket_object_lock_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_route53_hosted_zone_object_details() :: #{
@@ -3899,12 +4305,14 @@
 %% }
 -type aws_route53_hosted_zone_object_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_launch_template_data_capacity_reservation_specification_details() :: #{
 %%   <<"CapacityReservationPreference">> => string(),
 %%   <<"CapacityReservationTarget">> => aws_ec2_launch_template_data_capacity_reservation_specification_capacity_reservation_target_details()
 %% }
 -type aws_ec2_launch_template_data_capacity_reservation_specification_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_rds_db_cluster_snapshot_details() :: #{
@@ -3930,6 +4338,7 @@
 %% }
 -type aws_rds_db_cluster_snapshot_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% software_package() :: #{
 %%   <<"Architecture">> => string(),
@@ -3946,12 +4355,14 @@
 %% }
 -type software_package() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_input_exception() :: #{
 %%   <<"Code">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type invalid_input_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% port_range_from_to() :: #{
@@ -3960,6 +4371,7 @@
 %% }
 -type port_range_from_to() :: #{binary() => any()}.
 
+
 %% Example:
 %% volume_mount() :: #{
 %%   <<"MountPath">> => string(),
@@ -3967,12 +4379,14 @@
 %% }
 -type volume_mount() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_launch_template_data_instance_requirements_baseline_ebs_bandwidth_mbps_details() :: #{
 %%   <<"Max">> => integer(),
 %%   <<"Min">> => integer()
 %% }
 -type aws_ec2_launch_template_data_instance_requirements_baseline_ebs_bandwidth_mbps_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_redshift_cluster_restore_status() :: #{
@@ -3985,12 +4399,14 @@
 %% }
 -type aws_redshift_cluster_restore_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_configuration_policy_disassociation_request() :: #{
 %%   <<"ConfigurationPolicyIdentifier">> := string(),
 %%   <<"Target">> => list()
 %% }
 -type start_configuration_policy_disassociation_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% unprocessed_standards_control_association_update() :: #{
@@ -4000,6 +4416,7 @@
 %% }
 -type unprocessed_standards_control_association_update() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_finding_aggregator_request() :: #{
 %%   <<"FindingAggregatorArn">> := string(),
@@ -4008,11 +4425,13 @@
 %% }
 -type update_finding_aggregator_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_lambda_function_code() :: #{
@@ -4023,6 +4442,7 @@
 %% }
 -type aws_lambda_function_code() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_certificate_manager_certificate_resource_record() :: #{
 %%   <<"Name">> => string(),
@@ -4031,12 +4451,14 @@
 %% }
 -type aws_certificate_manager_certificate_resource_record() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_cloud_front_distribution_origin_ssl_protocols() :: #{
 %%   <<"Items">> => list(string()()),
 %%   <<"Quantity">> => integer()
 %% }
 -type aws_cloud_front_distribution_origin_ssl_protocols() :: #{binary() => any()}.
+
 
 %% Example:
 %% date_filter() :: #{
@@ -4046,12 +4468,14 @@
 %% }
 -type date_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_auto_scaling_auto_scaling_group_mixed_instances_policy_details() :: #{
 %%   <<"InstancesDistribution">> => aws_auto_scaling_auto_scaling_group_mixed_instances_policy_instances_distribution_details(),
 %%   <<"LaunchTemplate">> => aws_auto_scaling_auto_scaling_group_mixed_instances_policy_launch_template_details()
 %% }
 -type aws_auto_scaling_auto_scaling_group_mixed_instances_policy_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_launch_template_data_private_dns_name_options_details() :: #{
@@ -4061,12 +4485,14 @@
 %% }
 -type aws_ec2_launch_template_data_private_dns_name_options_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_configuration_policy_associations_response() :: #{
 %%   <<"ConfigurationPolicyAssociationSummaries">> => list(configuration_policy_association_summary()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_configuration_policy_associations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ecs_task_definition_container_definitions_linux_parameters_tmpfs_details() :: #{
@@ -4075,6 +4501,7 @@
 %%   <<"Size">> => integer()
 %% }
 -type aws_ecs_task_definition_container_definitions_linux_parameters_tmpfs_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_sage_maker_notebook_instance_details() :: #{
@@ -4101,11 +4528,13 @@
 %% }
 -type aws_sage_maker_notebook_instance_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_configuration_policy_association_request() :: #{
 %%   <<"Target">> := list()
 %% }
 -type get_configuration_policy_association_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_cloud_trail_trail_details() :: #{
@@ -4126,6 +4555,7 @@
 %%   <<"TrailArn">> => string()
 %% }
 -type aws_cloud_trail_trail_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_vpn_connection_options_tunnel_options_details() :: #{
@@ -4148,6 +4578,7 @@
 %% }
 -type aws_ec2_vpn_connection_options_tunnel_options_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ecs_task_definition_container_definitions_system_controls_details() :: #{
 %%   <<"Namespace">> => string(),
@@ -4155,11 +4586,13 @@
 %% }
 -type aws_ecs_task_definition_container_definitions_system_controls_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_security_group_prefix_list_id() :: #{
 %%   <<"PrefixListId">> => string()
 %% }
 -type aws_ec2_security_group_prefix_list_id() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_client_vpn_endpoint_details() :: #{
@@ -4182,11 +4615,13 @@
 %% }
 -type aws_ec2_client_vpn_endpoint_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_cloud_front_distribution_origin_group_failover() :: #{
 %%   <<"StatusCodes">> => aws_cloud_front_distribution_origin_group_failover_status_codes()
 %% }
 -type aws_cloud_front_distribution_origin_group_failover() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_secrets_manager_secret_details() :: #{
@@ -4201,6 +4636,7 @@
 %% }
 -type aws_secrets_manager_secret_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_network_firewall_rule_group_details() :: #{
 %%   <<"Capacity">> => integer(),
@@ -4212,6 +4648,7 @@
 %%   <<"Type">> => string()
 %% }
 -type aws_network_firewall_rule_group_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ecs_task_definition_container_definitions_linux_parameters_details() :: #{
@@ -4225,6 +4662,7 @@
 %% }
 -type aws_ecs_task_definition_container_definitions_linux_parameters_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_finding_aggregator_request() :: #{
 %%   <<"RegionLinkingMode">> := string(),
@@ -4232,12 +4670,14 @@
 %% }
 -type create_finding_aggregator_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_finding_history_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Records">> => list(finding_history_record()())
 %% }
 -type get_finding_history_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_automation_rules_request_item() :: #{
@@ -4252,6 +4692,7 @@
 %% }
 -type update_automation_rules_request_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_s3_object_details() :: #{
 %%   <<"ContentType">> => string(),
@@ -4263,12 +4704,14 @@
 %% }
 -type aws_s3_object_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_elasticsearch_domain_encryption_at_rest_options() :: #{
 %%   <<"Enabled">> => boolean(),
 %%   <<"KmsKeyId">> => string()
 %% }
 -type aws_elasticsearch_domain_encryption_at_rest_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_code_build_project_logs_config_cloud_watch_logs_details() :: #{
@@ -4277,9 +4720,11 @@
 %%   <<"StreamName">> => string()
 %% }
 -type aws_code_build_project_logs_config_cloud_watch_logs_details() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_members_response() :: #{}
 -type disassociate_members_response() :: #{}.
+
 
 %% Example:
 %% aws_ecs_task_definition_container_definitions_log_configuration_details() :: #{
@@ -4288,12 +4733,15 @@
 %%   <<"SecretOptions">> => list(aws_ecs_task_definition_container_definitions_log_configuration_secret_options_details()())
 %% }
 -type aws_ecs_task_definition_container_definitions_log_configuration_details() :: #{binary() => any()}.
+
 %% Example:
 %% disable_import_findings_for_product_request() :: #{}
 -type disable_import_findings_for_product_request() :: #{}.
+
 %% Example:
 %% update_organization_configuration_response() :: #{}
 -type update_organization_configuration_response() :: #{}.
+
 
 %% Example:
 %% unprocessed_security_control() :: #{
@@ -4303,12 +4751,14 @@
 %% }
 -type unprocessed_security_control() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_elb_load_balancer_listener_description() :: #{
 %%   <<"Listener">> => aws_elb_load_balancer_listener(),
 %%   <<"PolicyNames">> => list(string()())
 %% }
 -type aws_elb_load_balancer_listener_description() :: #{binary() => any()}.
+
 
 %% Example:
 %% action_target() :: #{
@@ -4318,6 +4768,7 @@
 %% }
 -type action_target() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_volume_attachment() :: #{
 %%   <<"AttachTime">> => string(),
@@ -4326,6 +4777,7 @@
 %%   <<"Status">> => string()
 %% }
 -type aws_ec2_volume_attachment() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_update_findings_request() :: #{
@@ -4342,6 +4794,7 @@
 %% }
 -type batch_update_findings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% generator_details() :: #{
 %%   <<"Description">> => string(),
@@ -4350,6 +4803,7 @@
 %% }
 -type generator_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_elb_app_cookie_stickiness_policy() :: #{
 %%   <<"CookieName">> => string(),
@@ -4357,11 +4811,13 @@
 %% }
 -type aws_elb_app_cookie_stickiness_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% vpc_info_ipv6_cidr_block_set_details() :: #{
 %%   <<"Ipv6CidrBlock">> => string()
 %% }
 -type vpc_info_ipv6_cidr_block_set_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_automation_rule_request() :: #{
@@ -4376,12 +4832,14 @@
 %% }
 -type create_automation_rule_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_vpc_peering_connection_status_details() :: #{
 %%   <<"Code">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type aws_ec2_vpc_peering_connection_status_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_step_function_state_machine_details() :: #{
@@ -4396,11 +4854,13 @@
 %% }
 -type aws_step_function_state_machine_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% rule_group_source_stateless_rule_match_attributes_destinations() :: #{
 %%   <<"AddressDefinition">> => string()
 %% }
 -type rule_group_source_stateless_rule_match_attributes_destinations() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_insights_response() :: #{
@@ -4408,6 +4868,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type get_insights_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_auto_scaling_launch_configuration_metadata_options() :: #{
@@ -4417,11 +4878,13 @@
 %% }
 -type aws_auto_scaling_launch_configuration_metadata_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% waf_override_action() :: #{
 %%   <<"Type">> => string()
 %% }
 -type waf_override_action() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_api_gateway_rest_api_details() :: #{
@@ -4437,11 +4900,13 @@
 %% }
 -type aws_api_gateway_rest_api_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_iam_group_policy() :: #{
 %%   <<"PolicyName">> => string()
 %% }
 -type aws_iam_group_policy() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_waf_rate_based_rule_match_predicate() :: #{
@@ -4451,11 +4916,13 @@
 %% }
 -type aws_waf_rate_based_rule_match_predicate() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_eks_cluster_logging_details() :: #{
 %%   <<"ClusterLogging">> => list(aws_eks_cluster_logging_cluster_logging_details()())
 %% }
 -type aws_eks_cluster_logging_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_waf_regional_rule_group_rules_details() :: #{
@@ -4465,6 +4932,7 @@
 %%   <<"Type">> => string()
 %% }
 -type aws_waf_regional_rule_group_rules_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% standards_control_association_detail() :: #{
@@ -4481,6 +4949,7 @@
 %% }
 -type standards_control_association_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_efs_access_point_root_directory_creation_info_details() :: #{
 %%   <<"OwnerGid">> => string(),
@@ -4488,15 +4957,18 @@
 %%   <<"Permissions">> => string()
 %% }
 -type aws_efs_access_point_root_directory_creation_info_details() :: #{binary() => any()}.
+
 %% Example:
 %% accept_invitation_response() :: #{}
 -type accept_invitation_response() :: #{}.
+
 
 %% Example:
 %% decline_invitations_request() :: #{
 %%   <<"AccountIds">> := list(string()())
 %% }
 -type decline_invitations_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_code_build_project_vpc_config() :: #{
@@ -4505,6 +4977,7 @@
 %%   <<"VpcId">> => string()
 %% }
 -type aws_code_build_project_vpc_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_rds_db_cluster_member() :: #{
@@ -4515,6 +4988,7 @@
 %% }
 -type aws_rds_db_cluster_member() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_action_target_request() :: #{
 %%   <<"Description">> := string(),
@@ -4523,12 +4997,14 @@
 %% }
 -type create_action_target_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ecs_service_placement_strategies_details() :: #{
 %%   <<"Field">> => string(),
 %%   <<"Type">> => string()
 %% }
 -type aws_ecs_service_placement_strategies_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_waf_rate_based_rule_details() :: #{
@@ -4541,11 +5017,13 @@
 %% }
 -type aws_waf_rate_based_rule_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_master_account_response() :: #{
 %%   <<"Master">> => invitation()
 %% }
 -type get_master_account_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_automation_rules_request() :: #{
@@ -4554,11 +5032,13 @@
 %% }
 -type list_automation_rules_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_step_function_state_machine_tracing_configuration_details() :: #{
 %%   <<"Enabled">> => boolean()
 %% }
 -type aws_step_function_state_machine_tracing_configuration_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ecs_task_definition_container_definitions_environment_files_details() :: #{
@@ -4566,6 +5046,7 @@
 %%   <<"Value">> => string()
 %% }
 -type aws_ecs_task_definition_container_definitions_environment_files_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_api_gateway_canary_settings() :: #{
@@ -4576,11 +5057,13 @@
 %% }
 -type aws_api_gateway_canary_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_wafv2_web_acl_captcha_config_immunity_time_property_details() :: #{
 %%   <<"ImmunityTime">> => float()
 %% }
 -type aws_wafv2_web_acl_captcha_config_immunity_time_property_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_enabled_products_for_import_request() :: #{
@@ -4589,12 +5072,14 @@
 %% }
 -type list_enabled_products_for_import_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_products_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Products">> => list(product()())
 %% }
 -type describe_products_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_waf_web_acl_rule() :: #{
@@ -4607,6 +5092,7 @@
 %% }
 -type aws_waf_web_acl_rule() :: #{binary() => any()}.
 
+
 %% Example:
 %% cidr_block_association() :: #{
 %%   <<"AssociationId">> => string(),
@@ -4614,6 +5100,7 @@
 %%   <<"CidrBlockState">> => string()
 %% }
 -type cidr_block_association() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_vpc_peering_connection_vpc_info_details() :: #{
@@ -4626,6 +5113,7 @@
 %%   <<"VpcId">> => string()
 %% }
 -type aws_ec2_vpc_peering_connection_vpc_info_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_api_call_action() :: #{
@@ -4640,12 +5128,14 @@
 %% }
 -type aws_api_call_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_rds_db_instance_vpc_security_group() :: #{
 %%   <<"Status">> => string(),
 %%   <<"VpcSecurityGroupId">> => string()
 %% }
 -type aws_rds_db_instance_vpc_security_group() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_rds_db_instance_details() :: #{
@@ -4709,11 +5199,13 @@
 %% }
 -type aws_rds_db_instance_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_security_control_definition_response() :: #{
 %%   <<"SecurityControlDefinition">> => security_control_definition()
 %% }
 -type get_security_control_definition_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ecs_task_definition_inference_accelerators_details() :: #{
@@ -4722,11 +5214,13 @@
 %% }
 -type aws_ecs_task_definition_inference_accelerators_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_invitations_request() :: #{
 %%   <<"AccountIds">> := list(string()())
 %% }
 -type delete_invitations_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_auto_scaling_auto_scaling_group_mixed_instances_policy_instances_distribution_details() :: #{
@@ -4738,6 +5232,7 @@
 %%   <<"SpotMaxPrice">> => string()
 %% }
 -type aws_auto_scaling_auto_scaling_group_mixed_instances_policy_instances_distribution_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_kms_key_details() :: #{
@@ -4752,6 +5247,7 @@
 %% }
 -type aws_kms_key_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_auto_scaling_auto_scaling_group_mixed_instances_policy_launch_template_details() :: #{
 %%   <<"LaunchTemplateSpecification">> => aws_auto_scaling_auto_scaling_group_mixed_instances_policy_launch_template_launch_template_specification(),
@@ -4759,15 +5255,18 @@
 %% }
 -type aws_auto_scaling_auto_scaling_group_mixed_instances_policy_launch_template_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_msk_cluster_cluster_info_client_authentication_tls_details() :: #{
 %%   <<"CertificateAuthorityArnList">> => list(string()()),
 %%   <<"Enabled">> => boolean()
 %% }
 -type aws_msk_cluster_cluster_info_client_authentication_tls_details() :: #{binary() => any()}.
+
 %% Example:
 %% update_findings_response() :: #{}
 -type update_findings_response() :: #{}.
+
 
 %% Example:
 %% aws_s3_bucket_details() :: #{
@@ -4788,6 +5287,7 @@
 %% }
 -type aws_s3_bucket_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_network_firewall_firewall_policy_details() :: #{
 %%   <<"Description">> => string(),
@@ -4798,6 +5298,7 @@
 %% }
 -type aws_network_firewall_firewall_policy_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_eks_cluster_resources_vpc_config_details() :: #{
 %%   <<"EndpointPublicAccess">> => boolean(),
@@ -4806,12 +5307,14 @@
 %% }
 -type aws_eks_cluster_resources_vpc_config_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_enabled_products_for_import_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"ProductSubscriptions">> => list(string()())
 %% }
 -type list_enabled_products_for_import_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_open_search_service_domain_domain_endpoint_options_details() :: #{
@@ -4823,12 +5326,14 @@
 %% }
 -type aws_open_search_service_domain_domain_endpoint_options_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ecs_task_definition_volumes_efs_volume_configuration_authorization_config_details() :: #{
 %%   <<"AccessPointId">> => string(),
 %%   <<"Iam">> => string()
 %% }
 -type aws_ecs_task_definition_volumes_efs_volume_configuration_authorization_config_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_waf_regional_rate_based_rule_match_predicate() :: #{
@@ -4838,6 +5343,7 @@
 %% }
 -type aws_waf_regional_rate_based_rule_match_predicate() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_efs_access_point_posix_user_details() :: #{
 %%   <<"Gid">> => string(),
@@ -4845,6 +5351,7 @@
 %%   <<"Uid">> => string()
 %% }
 -type aws_efs_access_point_posix_user_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_waf_rule_predicate_list_details() :: #{
@@ -4854,6 +5361,7 @@
 %% }
 -type aws_waf_rule_predicate_list_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% port_range() :: #{
 %%   <<"Begin">> => integer(),
@@ -4861,12 +5369,14 @@
 %% }
 -type port_range() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_configuration_policies_response() :: #{
 %%   <<"ConfigurationPolicySummaries">> => list(configuration_policy_summary()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_configuration_policies_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_amazon_mq_broker_ldap_server_metadata_details() :: #{
@@ -4883,6 +5393,7 @@
 %% }
 -type aws_amazon_mq_broker_ldap_server_metadata_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% finding_provider_fields() :: #{
 %%   <<"Confidence">> => integer(),
@@ -4893,6 +5404,7 @@
 %% }
 -type finding_provider_fields() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_organization_configuration_request() :: #{
 %%   <<"AutoEnable">> := boolean(),
@@ -4901,17 +5413,20 @@
 %% }
 -type update_organization_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% enable_organization_admin_account_request() :: #{
 %%   <<"AdminAccountId">> := string()
 %% }
 -type enable_organization_admin_account_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_dms_replication_instance_replication_subnet_group_details() :: #{
 %%   <<"ReplicationSubnetGroupIdentifier">> => string()
 %% }
 -type aws_dms_replication_instance_replication_subnet_group_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_sns_topic_subscription() :: #{
@@ -4920,11 +5435,13 @@
 %% }
 -type aws_sns_topic_subscription() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_route53_hosted_zone_config_details() :: #{
 %%   <<"Comment">> => string()
 %% }
 -type aws_route53_hosted_zone_config_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_cloud_formation_stack_outputs_details() :: #{
@@ -4933,6 +5450,7 @@
 %%   <<"OutputValue">> => string()
 %% }
 -type aws_cloud_formation_stack_outputs_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% threat_intel_indicator() :: #{
@@ -4945,6 +5463,7 @@
 %% }
 -type threat_intel_indicator() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_update_findings_response() :: #{
 %%   <<"ProcessedFindings">> => list(aws_security_finding_identifier()()),
@@ -4952,12 +5471,14 @@
 %% }
 -type batch_update_findings_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% geo_location() :: #{
 %%   <<"Lat">> => float(),
 %%   <<"Lon">> => float()
 %% }
 -type geo_location() :: #{binary() => any()}.
+
 
 %% Example:
 %% action() :: #{
@@ -4969,12 +5490,14 @@
 %% }
 -type action() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_open_search_service_domain_log_publishing_option() :: #{
 %%   <<"CloudWatchLogsLogGroupArn">> => string(),
 %%   <<"Enabled">> => boolean()
 %% }
 -type aws_open_search_service_domain_log_publishing_option() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_app_sync_graph_ql_api_additional_authentication_providers_details() :: #{
@@ -4985,6 +5508,7 @@
 %% }
 -type aws_app_sync_graph_ql_api_additional_authentication_providers_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% custom_data_identifiers_detections() :: #{
 %%   <<"Arn">> => string(),
@@ -4993,6 +5517,7 @@
 %%   <<"Occurrences">> => occurrences()
 %% }
 -type custom_data_identifiers_detections() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_finding_aggregator_response() :: #{
@@ -5003,6 +5528,7 @@
 %% }
 -type create_finding_aggregator_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_guard_duty_detector_details() :: #{
 %%   <<"DataSources">> => aws_guard_duty_detector_data_sources_details(),
@@ -5012,6 +5538,7 @@
 %%   <<"Status">> => string()
 %% }
 -type aws_guard_duty_detector_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_elasticsearch_domain_service_software_options() :: #{
@@ -5025,11 +5552,13 @@
 %% }
 -type aws_elasticsearch_domain_service_software_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% firewall_policy_stateful_rule_group_references_details() :: #{
 %%   <<"ResourceArn">> => string()
 %% }
 -type firewall_policy_stateful_rule_group_references_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_iam_permissions_boundary() :: #{
@@ -5037,6 +5566,7 @@
 %%   <<"PermissionsBoundaryType">> => string()
 %% }
 -type aws_iam_permissions_boundary() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_backup_backup_vault_details() :: #{
@@ -5048,6 +5578,7 @@
 %% }
 -type aws_backup_backup_vault_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_client_vpn_endpoint_authentication_options_federated_authentication_details() :: #{
 %%   <<"SamlProviderArn">> => string(),
@@ -5055,17 +5586,20 @@
 %% }
 -type aws_ec2_client_vpn_endpoint_authentication_options_federated_authentication_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% propagating_vgw_set_details() :: #{
 %%   <<"GatewayId">> => string()
 %% }
 -type propagating_vgw_set_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_invitations_response() :: #{
 %%   <<"UnprocessedAccounts">> => list(result()())
 %% }
 -type delete_invitations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_import_findings_response() :: #{
@@ -5075,6 +5609,7 @@
 %% }
 -type batch_import_findings_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% port_probe_action() :: #{
 %%   <<"Blocked">> => boolean(),
@@ -5082,11 +5617,13 @@
 %% }
 -type port_probe_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_wafv2_rules_action_count_details() :: #{
 %%   <<"CustomRequestHandling">> => aws_wafv2_custom_request_handling_details()
 %% }
 -type aws_wafv2_rules_action_count_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_xray_encryption_config_details() :: #{
@@ -5096,12 +5633,14 @@
 %% }
 -type aws_xray_encryption_config_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_organization_admin_accounts_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_organization_admin_accounts_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_elb_load_balancer_attributes() :: #{
@@ -5113,11 +5652,13 @@
 %% }
 -type aws_elb_load_balancer_attributes() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_msk_cluster_cluster_info_client_authentication_sasl_iam_details() :: #{
 %%   <<"Enabled">> => boolean()
 %% }
 -type aws_msk_cluster_cluster_info_client_authentication_sasl_iam_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% standards_control_association_update() :: #{
@@ -5128,11 +5669,13 @@
 %% }
 -type standards_control_association_update() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_msk_cluster_cluster_info_client_authentication_unauthenticated_details() :: #{
 %%   <<"Enabled">> => boolean()
 %% }
 -type aws_msk_cluster_cluster_info_client_authentication_unauthenticated_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% rule_group_details() :: #{
@@ -5140,6 +5683,7 @@
 %%   <<"RulesSource">> => rule_group_source()
 %% }
 -type rule_group_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_configuration_policy_request() :: #{
@@ -5149,6 +5693,7 @@
 %%   <<"UpdatedReason">> => string()
 %% }
 -type update_configuration_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_elb_load_balancer_details() :: #{
@@ -5172,6 +5717,7 @@
 %% }
 -type aws_elb_load_balancer_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% threat() :: #{
 %%   <<"FilePaths">> => list(file_paths()()),
@@ -5181,11 +5727,13 @@
 %% }
 -type threat() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ssm_patch_compliance_details() :: #{
 %%   <<"Patch">> => aws_ssm_patch()
 %% }
 -type aws_ssm_patch_compliance_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_hub_response() :: #{
@@ -5196,11 +5744,13 @@
 %% }
 -type describe_hub_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ecs_service_deployment_controller_details() :: #{
 %%   <<"Type">> => string()
 %% }
 -type aws_ecs_service_deployment_controller_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% internal_exception() :: #{
@@ -5208,6 +5758,7 @@
 %%   <<"Message">> => string()
 %% }
 -type internal_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_instance_details() :: #{
@@ -5227,6 +5778,7 @@
 %% }
 -type aws_ec2_instance_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_security_group_user_id_group_pair() :: #{
 %%   <<"GroupId">> => string(),
@@ -5238,11 +5790,13 @@
 %% }
 -type aws_ec2_security_group_user_id_group_pair() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_import_findings_request() :: #{
 %%   <<"Findings">> := list(aws_security_finding()())
 %% }
 -type batch_import_findings_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_dynamo_db_table_projection() :: #{
@@ -5251,12 +5805,14 @@
 %% }
 -type aws_dynamo_db_table_projection() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"Code">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_open_search_service_domain_vpc_options_details() :: #{
@@ -5265,14 +5821,17 @@
 %% }
 -type aws_open_search_service_domain_vpc_options_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_insight_response() :: #{
 %%   <<"InsightArn">> => string()
 %% }
 -type delete_insight_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_invitations_count_request() :: #{}
 -type get_invitations_count_request() :: #{}.
+
 
 %% Example:
 %% aws_wafv2_rules_action_details() :: #{
@@ -5283,12 +5842,14 @@
 %% }
 -type aws_wafv2_rules_action_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_security_controls_response() :: #{
 %%   <<"SecurityControls">> => list(security_control()()),
 %%   <<"UnprocessedIds">> => list(unprocessed_security_control()())
 %% }
 -type batch_get_security_controls_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ecs_task_definition_volumes_details() :: #{
@@ -5299,6 +5860,7 @@
 %% }
 -type aws_ecs_task_definition_volumes_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_app_sync_graph_ql_api_user_pool_config_details() :: #{
 %%   <<"AppIdClientRegex">> => string(),
@@ -5308,6 +5870,7 @@
 %% }
 -type aws_app_sync_graph_ql_api_user_pool_config_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_backup_backup_plan_lifecycle_details() :: #{
 %%   <<"DeleteAfterDays">> => float(),
@@ -5315,12 +5878,14 @@
 %% }
 -type aws_backup_backup_plan_lifecycle_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_rds_db_processor_feature() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Value">> => string()
 %% }
 -type aws_rds_db_processor_feature() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ecs_task_definition_container_definitions_details() :: #{
@@ -5366,11 +5931,13 @@
 %% }
 -type aws_ecs_task_definition_container_definitions_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_open_search_service_domain_node_to_node_encryption_options_details() :: #{
 %%   <<"Enabled">> => boolean()
 %% }
 -type aws_open_search_service_domain_node_to_node_encryption_options_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% city() :: #{
@@ -5378,15 +5945,18 @@
 %% }
 -type city() :: #{binary() => any()}.
 
+
 %% Example:
 %% accept_invitation_request() :: #{
 %%   <<"InvitationId">> := string(),
 %%   <<"MasterId">> := string()
 %% }
 -type accept_invitation_request() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% association_filters() :: #{
@@ -5395,6 +5965,7 @@
 %%   <<"ConfigurationPolicyId">> => string()
 %% }
 -type association_filters() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_launch_template_data_instance_market_options_spot_options_details() :: #{
@@ -5405,6 +5976,7 @@
 %%   <<"ValidUntil">> => string()
 %% }
 -type aws_ec2_launch_template_data_instance_market_options_spot_options_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_launch_template_data_instance_requirements_details() :: #{
@@ -5432,6 +6004,7 @@
 %% }
 -type aws_ec2_launch_template_data_instance_requirements_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_members_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -5440,12 +6013,14 @@
 %% }
 -type list_members_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_members_response() :: #{
 %%   <<"Members">> => list(member()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_members_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_security_group_ip_permission() :: #{
@@ -5459,6 +6034,7 @@
 %% }
 -type aws_ec2_security_group_ip_permission() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_step_function_state_machine_logging_configuration_details() :: #{
 %%   <<"Destinations">> => list(aws_step_function_state_machine_logging_configuration_destinations_details()()),
@@ -5466,6 +6042,7 @@
 %%   <<"Level">> => string()
 %% }
 -type aws_step_function_state_machine_logging_configuration_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_vpn_connection_details() :: #{
@@ -5483,12 +6060,14 @@
 %% }
 -type aws_ec2_vpn_connection_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% firewall_policy_stateless_rule_group_references_details() :: #{
 %%   <<"Priority">> => integer(),
 %%   <<"ResourceArn">> => string()
 %% }
 -type firewall_policy_stateless_rule_group_references_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ecs_service_deployment_configuration_deployment_circuit_breaker_details() :: #{
@@ -5497,6 +6076,7 @@
 %% }
 -type aws_ecs_service_deployment_configuration_deployment_circuit_breaker_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_enabled_standards_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -5504,6 +6084,7 @@
 %%   <<"StandardsSubscriptionArns">> => list(string()())
 %% }
 -type get_enabled_standards_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% finding_history_record() :: #{
@@ -5516,6 +6097,7 @@
 %% }
 -type finding_history_record() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ecs_cluster_default_capacity_provider_strategy_details() :: #{
 %%   <<"Base">> => integer(),
@@ -5524,11 +6106,13 @@
 %% }
 -type aws_ecs_cluster_default_capacity_provider_strategy_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_waf_rule_group_rules_action_details() :: #{
 %%   <<"Type">> => string()
 %% }
 -type aws_waf_rule_group_rules_action_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_code_build_project_details() :: #{
@@ -5544,11 +6128,13 @@
 %% }
 -type aws_code_build_project_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_auto_scaling_launch_configuration_instance_monitoring_details() :: #{
 %%   <<"Enabled">> => boolean()
 %% }
 -type aws_auto_scaling_launch_configuration_instance_monitoring_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% standards_subscription_request() :: #{
@@ -5556,6 +6142,7 @@
 %%   <<"StandardsInput">> => map()
 %% }
 -type standards_subscription_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_elasticsearch_domain_details() :: #{
@@ -5575,17 +6162,20 @@
 %% }
 -type aws_elasticsearch_domain_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_launch_template_data_monitoring_details() :: #{
 %%   <<"Enabled">> => boolean()
 %% }
 -type aws_ec2_launch_template_data_monitoring_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_vpc_endpoint_service_service_type_details() :: #{
 %%   <<"ServiceType">> => string()
 %% }
 -type aws_ec2_vpc_endpoint_service_service_type_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_network_interface_security_group() :: #{
@@ -5594,11 +6184,13 @@
 %% }
 -type aws_ec2_network_interface_security_group() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_secrets_manager_secret_rotation_rules() :: #{
 %%   <<"AutomaticallyAfterDays">> => integer()
 %% }
 -type aws_secrets_manager_secret_rotation_rules() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_client_vpn_endpoint_authentication_options_details() :: #{
@@ -5609,12 +6201,14 @@
 %% }
 -type aws_ec2_client_vpn_endpoint_authentication_options_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_s3_bucket_server_side_encryption_by_default() :: #{
 %%   <<"KMSMasterKeyID">> => string(),
 %%   <<"SSEAlgorithm">> => string()
 %% }
 -type aws_s3_bucket_server_side_encryption_by_default() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_wafv2_rule_group_details() :: #{
@@ -5629,6 +6223,7 @@
 %% }
 -type aws_wafv2_rule_group_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_configuration_policy_association_response() :: #{
 %%   <<"AssociationStatus">> => list(any()),
@@ -5641,11 +6236,13 @@
 %% }
 -type start_configuration_policy_association_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% stateless_custom_publish_metric_action() :: #{
 %%   <<"Dimensions">> => list(stateless_custom_publish_metric_action_dimension()())
 %% }
 -type stateless_custom_publish_metric_action() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_cloud_front_distribution_origins() :: #{
@@ -5653,12 +6250,14 @@
 %% }
 -type aws_cloud_front_distribution_origins() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_finding_aggregators_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_finding_aggregators_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% network() :: #{
@@ -5677,12 +6276,14 @@
 %% }
 -type network() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_dynamo_db_table_stream_specification() :: #{
 %%   <<"StreamEnabled">> => boolean(),
 %%   <<"StreamViewType">> => string()
 %% }
 -type aws_dynamo_db_table_stream_specification() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_rds_db_subnet_group_subnet() :: #{
@@ -5692,6 +6293,7 @@
 %% }
 -type aws_rds_db_subnet_group_subnet() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_s3_bucket_notification_configuration_detail() :: #{
 %%   <<"Destination">> => string(),
@@ -5700,12 +6302,15 @@
 %%   <<"Type">> => string()
 %% }
 -type aws_s3_bucket_notification_configuration_detail() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 %% Example:
 %% get_master_account_request() :: #{}
 -type get_master_account_request() :: #{}.
+
 
 %% Example:
 %% aws_api_gateway_endpoint_configuration() :: #{
@@ -5713,14 +6318,17 @@
 %% }
 -type aws_api_gateway_endpoint_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ecr_repository_image_scanning_configuration_details() :: #{
 %%   <<"ScanOnPush">> => boolean()
 %% }
 -type aws_ecr_repository_image_scanning_configuration_details() :: #{binary() => any()}.
+
 %% Example:
 %% delete_insight_request() :: #{}
 -type delete_insight_request() :: #{}.
+
 
 %% Example:
 %% aws_ec2_vpc_peering_connection_details() :: #{
@@ -5732,11 +6340,13 @@
 %% }
 -type aws_ec2_vpc_peering_connection_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_iam_role_policy() :: #{
 %%   <<"PolicyName">> => string()
 %% }
 -type aws_iam_role_policy() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_launch_template_data_iam_instance_profile_details() :: #{
@@ -5744,6 +6354,7 @@
 %%   <<"Name">> => string()
 %% }
 -type aws_ec2_launch_template_data_iam_instance_profile_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_open_search_service_domain_service_software_options_details() :: #{
@@ -5758,6 +6369,7 @@
 %% }
 -type aws_open_search_service_domain_service_software_options_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_open_search_service_domain_master_user_options_details() :: #{
 %%   <<"MasterUserArn">> => string(),
@@ -5765,6 +6377,7 @@
 %%   <<"MasterUserPassword">> => string()
 %% }
 -type aws_open_search_service_domain_master_user_options_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_code_build_project_logs_config_s3_logs_details() :: #{
@@ -5774,6 +6387,7 @@
 %% }
 -type aws_code_build_project_logs_config_s3_logs_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% automation_rules_action() :: #{
 %%   <<"FindingFieldsUpdate">> => automation_rules_finding_fields_update(),
@@ -5781,11 +6395,13 @@
 %% }
 -type automation_rules_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_msk_cluster_cluster_info_client_authentication_sasl_scram_details() :: #{
 %%   <<"Enabled">> => boolean()
 %% }
 -type aws_msk_cluster_cluster_info_client_authentication_sasl_scram_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_network_firewall_firewall_details() :: #{
@@ -5802,6 +6418,7 @@
 %% }
 -type aws_network_firewall_firewall_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ecs_task_definition_container_definitions_ulimits_details() :: #{
 %%   <<"HardLimit">> => integer(),
@@ -5809,6 +6426,7 @@
 %%   <<"SoftLimit">> => integer()
 %% }
 -type aws_ecs_task_definition_container_definitions_ulimits_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_findings_request() :: #{
@@ -5818,12 +6436,14 @@
 %% }
 -type update_findings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_standards_control_associations_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"StandardsControlAssociationSummaries">> => list(standards_control_association_summary()())
 %% }
 -type list_standards_control_associations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% rule_group_source_stateless_rule_match_attributes() :: #{
@@ -5835,6 +6455,7 @@
 %%   <<"TcpFlags">> => list(rule_group_source_stateless_rule_match_attributes_tcp_flags()())
 %% }
 -type rule_group_source_stateless_rule_match_attributes() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ssm_compliance_summary() :: #{
@@ -5859,6 +6480,7 @@
 %% }
 -type aws_ssm_compliance_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_s3_bucket_notification_configuration_s3_key_filter_rule() :: #{
 %%   <<"Name">> => list(any()),
@@ -5866,11 +6488,13 @@
 %% }
 -type aws_s3_bucket_notification_configuration_s3_key_filter_rule() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_certificate_manager_certificate_key_usage() :: #{
 %%   <<"Name">> => string()
 %% }
 -type aws_certificate_manager_certificate_key_usage() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_security_control_request() :: #{
@@ -5880,6 +6504,7 @@
 %% }
 -type update_security_control_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_rds_db_security_group_ec2_security_group() :: #{
 %%   <<"Ec2SecurityGroupId">> => string(),
@@ -5888,6 +6513,7 @@
 %%   <<"Status">> => string()
 %% }
 -type aws_rds_db_security_group_ec2_security_group() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_configuration_policy_response() :: #{
@@ -5900,6 +6526,7 @@
 %%   <<"UpdatedAt">> => non_neg_integer()
 %% }
 -type update_configuration_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_redshift_cluster_details() :: #{
@@ -5950,11 +6577,13 @@
 %% }
 -type aws_redshift_cluster_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_action_target_response() :: #{
 %%   <<"ActionTargetArn">> => string()
 %% }
 -type delete_action_target_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_s3_bucket_server_side_encryption_configuration() :: #{
@@ -5962,11 +6591,13 @@
 %% }
 -type aws_s3_bucket_server_side_encryption_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_invitations_count_response() :: #{
 %%   <<"InvitationsCount">> => integer()
 %% }
 -type get_invitations_count_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_wafv2_action_allow_details() :: #{
@@ -5974,11 +6605,13 @@
 %% }
 -type aws_wafv2_action_allow_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_athena_work_group_configuration_details() :: #{
 %%   <<"ResultConfiguration">> => aws_athena_work_group_configuration_result_configuration_details()
 %% }
 -type aws_athena_work_group_configuration_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_wafv2_visibility_config_details() :: #{
@@ -5988,6 +6621,7 @@
 %% }
 -type aws_wafv2_visibility_config_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_events_eventbus_details() :: #{
 %%   <<"Arn">> => string(),
@@ -5996,12 +6630,14 @@
 %% }
 -type aws_events_eventbus_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_lambda_function_layer() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CodeSize">> => integer()
 %% }
 -type aws_lambda_function_layer() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_invitations_request() :: #{
@@ -6010,11 +6646,13 @@
 %% }
 -type list_invitations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_cloud_front_distribution_cache_behaviors() :: #{
 %%   <<"Items">> => list(aws_cloud_front_distribution_cache_behavior()())
 %% }
 -type aws_cloud_front_distribution_cache_behaviors() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_configuration_policy_association_request() :: #{
@@ -6023,12 +6661,14 @@
 %% }
 -type start_configuration_policy_association_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% security_control_parameter() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Value">> => list(string()())
 %% }
 -type security_control_parameter() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ecs_task_definition_container_definitions_port_mappings_details() :: #{
@@ -6038,17 +6678,20 @@
 %% }
 -type aws_ecs_task_definition_container_definitions_port_mappings_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_waf_regional_web_acl_rules_list_override_action_details() :: #{
 %%   <<"Type">> => string()
 %% }
 -type aws_waf_regional_web_acl_rules_list_override_action_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_events_endpoint_event_buses_details() :: #{
 %%   <<"EventBusArn">> => string()
 %% }
 -type aws_events_endpoint_event_buses_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_auto_scaling_launch_configuration_block_device_mappings_details() :: #{
@@ -6059,11 +6702,13 @@
 %% }
 -type aws_auto_scaling_launch_configuration_block_device_mappings_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_network_interface_ip_v6_address_detail() :: #{
 %%   <<"IpV6Address">> => string()
 %% }
 -type aws_ec2_network_interface_ip_v6_address_detail() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_elb_load_balancer_instance() :: #{
@@ -6071,12 +6716,14 @@
 %% }
 -type aws_elb_load_balancer_instance() :: #{binary() => any()}.
 
+
 %% Example:
 %% enum_configuration_options() :: #{
 %%   <<"AllowedValues">> => list(string()()),
 %%   <<"DefaultValue">> => string()
 %% }
 -type enum_configuration_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_s3_bucket_bucket_lifecycle_configuration_rules_transitions_details() :: #{
@@ -6086,12 +6733,14 @@
 %% }
 -type aws_s3_bucket_bucket_lifecycle_configuration_rules_transitions_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% custom_data_identifiers_result() :: #{
 %%   <<"Detections">> => list(custom_data_identifiers_detections()()),
 %%   <<"TotalCount">> => float()
 %% }
 -type custom_data_identifiers_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_amazon_mq_broker_encryption_options_details() :: #{
@@ -6100,11 +6749,13 @@
 %% }
 -type aws_amazon_mq_broker_encryption_options_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_msk_cluster_cluster_info_encryption_info_encryption_at_rest_details() :: #{
 %%   <<"DataVolumeKMSKeyId">> => string()
 %% }
 -type aws_msk_cluster_cluster_info_encryption_info_encryption_at_rest_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_redshift_cluster_elastic_ip_status() :: #{
@@ -6112,6 +6763,7 @@
 %%   <<"Status">> => string()
 %% }
 -type aws_redshift_cluster_elastic_ip_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% route_set_details() :: #{
@@ -6134,11 +6786,13 @@
 %% }
 -type route_set_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_athena_work_group_configuration_result_configuration_details() :: #{
 %%   <<"EncryptionConfiguration">> => aws_athena_work_group_configuration_result_configuration_encryption_configuration_details()
 %% }
 -type aws_athena_work_group_configuration_result_configuration_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% member() :: #{
@@ -6152,12 +6806,14 @@
 %% }
 -type member() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_s3_bucket_website_configuration_routing_rule() :: #{
 %%   <<"Condition">> => aws_s3_bucket_website_configuration_routing_rule_condition(),
 %%   <<"Redirect">> => aws_s3_bucket_website_configuration_routing_rule_redirect()
 %% }
 -type aws_s3_bucket_website_configuration_routing_rule() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_dms_replication_task_details() :: #{
@@ -6177,12 +6833,14 @@
 %% }
 -type aws_dms_replication_task_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_s3_bucket_bucket_lifecycle_configuration_rules_filter_predicate_operands_tag_details() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Value">> => string()
 %% }
 -type aws_s3_bucket_bucket_lifecycle_configuration_rules_filter_predicate_operands_tag_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% string_filter() :: #{
@@ -6191,6 +6849,7 @@
 %% }
 -type string_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_finding_aggregators_response() :: #{
 %%   <<"FindingAggregators">> => list(finding_aggregator()()),
@@ -6198,12 +6857,14 @@
 %% }
 -type list_finding_aggregators_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% limit_exceeded_exception() :: #{
 %%   <<"Code">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_iam_policy_details() :: #{
@@ -6221,14 +6882,17 @@
 %% }
 -type aws_iam_policy_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_security_controls_request() :: #{
 %%   <<"SecurityControlIds">> := list(string()())
 %% }
 -type batch_get_security_controls_request() :: #{binary() => any()}.
+
 %% Example:
 %% enable_organization_admin_account_response() :: #{}
 -type enable_organization_admin_account_response() :: #{}.
+
 
 %% Example:
 %% unprocessed_automation_rule() :: #{
@@ -6238,11 +6902,13 @@
 %% }
 -type unprocessed_automation_rule() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_automation_rule_response() :: #{
 %%   <<"RuleArn">> => string()
 %% }
 -type create_automation_rule_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ecs_task_volume_details() :: #{
@@ -6251,6 +6917,7 @@
 %% }
 -type aws_ecs_task_volume_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_redshift_cluster_cluster_parameter_status() :: #{
 %%   <<"ParameterApplyErrorDescription">> => string(),
@@ -6258,6 +6925,7 @@
 %%   <<"ParameterName">> => string()
 %% }
 -type aws_redshift_cluster_cluster_parameter_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_dynamo_db_table_sse_description() :: #{
@@ -6268,11 +6936,13 @@
 %% }
 -type aws_dynamo_db_table_sse_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% configuration_policy_association() :: #{
 %%   <<"Target">> => list()
 %% }
 -type configuration_policy_association() :: #{binary() => any()}.
+
 
 %% Example:
 %% adjustment() :: #{
@@ -6280,6 +6950,7 @@
 %%   <<"Reason">> => string()
 %% }
 -type adjustment() :: #{binary() => any()}.
+
 
 %% Example:
 %% cloud_watch_logs_log_group_arn_config_details() :: #{
@@ -6289,12 +6960,14 @@
 %% }
 -type cloud_watch_logs_log_group_arn_config_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_amazon_mq_broker_logs_pending_details() :: #{
 %%   <<"Audit">> => boolean(),
 %%   <<"General">> => boolean()
 %% }
 -type aws_amazon_mq_broker_logs_pending_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% note_update() :: #{
@@ -6303,12 +6976,14 @@
 %% }
 -type note_update() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_efs_access_point_root_directory_details() :: #{
 %%   <<"CreationInfo">> => aws_efs_access_point_root_directory_creation_info_details(),
 %%   <<"Path">> => string()
 %% }
 -type aws_efs_access_point_root_directory_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% vpc_info_peering_options_details() :: #{
@@ -6318,6 +6993,7 @@
 %% }
 -type vpc_info_peering_options_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_launch_template_data_instance_requirements_accelerator_count_details() :: #{
 %%   <<"Max">> => integer(),
@@ -6325,17 +7001,20 @@
 %% }
 -type aws_ec2_launch_template_data_instance_requirements_accelerator_count_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_launch_template_data_maintenance_options_details() :: #{
 %%   <<"AutoRecovery">> => string()
 %% }
 -type aws_ec2_launch_template_data_maintenance_options_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% workflow_update() :: #{
 %%   <<"Status">> => list(any())
 %% }
 -type workflow_update() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_action_targets_request() :: #{
@@ -6344,6 +7023,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_action_targets_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_network_acl_entry() :: #{
@@ -6357,6 +7037,7 @@
 %%   <<"RuleNumber">> => integer()
 %% }
 -type aws_ec2_network_acl_entry() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_launch_template_data_details() :: #{
@@ -6393,6 +7074,7 @@
 %% }
 -type aws_ec2_launch_template_data_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% association_set_details() :: #{
 %%   <<"AssociationState">> => association_state_details(),
@@ -6404,12 +7086,14 @@
 %% }
 -type association_set_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_s3_bucket_bucket_versioning_configuration() :: #{
 %%   <<"IsMfaDeleteEnabled">> => boolean(),
 %%   <<"Status">> => string()
 %% }
 -type aws_s3_bucket_bucket_versioning_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_cloud_front_distribution_origin_custom_origin_config() :: #{
@@ -6421,6 +7105,7 @@
 %%   <<"OriginSslProtocols">> => aws_cloud_front_distribution_origin_ssl_protocols()
 %% }
 -type aws_cloud_front_distribution_origin_custom_origin_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_open_search_service_domain_details() :: #{
@@ -6442,11 +7127,13 @@
 %% }
 -type aws_open_search_service_domain_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_launch_template_data_credit_specification_details() :: #{
 %%   <<"CpuCredits">> => string()
 %% }
 -type aws_ec2_launch_template_data_credit_specification_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_msk_cluster_cluster_info_client_authentication_sasl_details() :: #{
@@ -6455,12 +7142,14 @@
 %% }
 -type aws_msk_cluster_cluster_info_client_authentication_sasl_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_cloud_watch_alarm_dimensions_details() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Value">> => string()
 %% }
 -type aws_cloud_watch_alarm_dimensions_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% patch_summary() :: #{
@@ -6478,12 +7167,14 @@
 %% }
 -type patch_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ecs_cluster_cluster_settings_details() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Value">> => string()
 %% }
 -type aws_ecs_cluster_cluster_settings_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ecs_task_definition_container_definitions_linux_parameters_devices_details() :: #{
@@ -6493,11 +7184,13 @@
 %% }
 -type aws_ecs_task_definition_container_definitions_linux_parameters_devices_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_security_group_ipv6_range() :: #{
 %%   <<"CidrIpv6">> => string()
 %% }
 -type aws_ec2_security_group_ipv6_range() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ecs_task_definition_container_definitions_extra_hosts_details() :: #{
@@ -6506,20 +7199,24 @@
 %% }
 -type aws_ecs_task_definition_container_definitions_extra_hosts_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_network_firewall_firewall_subnet_mappings_details() :: #{
 %%   <<"SubnetId">> => string()
 %% }
 -type aws_network_firewall_firewall_subnet_mappings_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_s3_bucket_object_lock_configuration_rule_details() :: #{
 %%   <<"DefaultRetention">> => aws_s3_bucket_object_lock_configuration_rule_default_retention_details()
 %% }
 -type aws_s3_bucket_object_lock_configuration_rule_details() :: #{binary() => any()}.
+
 %% Example:
 %% delete_finding_aggregator_response() :: #{}
 -type delete_finding_aggregator_response() :: #{}.
+
 
 %% Example:
 %% batch_update_findings_unprocessed_finding() :: #{
@@ -6529,6 +7226,7 @@
 %% }
 -type batch_update_findings_unprocessed_finding() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_configuration_policy_associations_request() :: #{
 %%   <<"Filters">> => association_filters(),
@@ -6537,11 +7235,13 @@
 %% }
 -type list_configuration_policy_associations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% enable_import_findings_for_product_response() :: #{
 %%   <<"ProductSubscriptionArn">> => string()
 %% }
 -type enable_import_findings_for_product_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_open_search_service_domain_log_publishing_options_details() :: #{
@@ -6551,6 +7251,7 @@
 %% }
 -type aws_open_search_service_domain_log_publishing_options_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_security_control_definitions_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -6558,6 +7259,7 @@
 %%   <<"StandardsArn">> => string()
 %% }
 -type list_security_control_definitions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_waf_regional_web_acl_rules_list_details() :: #{
@@ -6569,11 +7271,13 @@
 %% }
 -type aws_waf_regional_web_acl_rules_list_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_s3_bucket_bucket_lifecycle_configuration_details() :: #{
 %%   <<"Rules">> => list(aws_s3_bucket_bucket_lifecycle_configuration_rules_details()())
 %% }
 -type aws_s3_bucket_bucket_lifecycle_configuration_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% malware() :: #{
@@ -6584,17 +7288,20 @@
 %% }
 -type malware() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_elb_load_balancer_cross_zone_load_balancing() :: #{
 %%   <<"Enabled">> => boolean()
 %% }
 -type aws_elb_load_balancer_cross_zone_load_balancing() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_wafv2_web_acl_captcha_config_details() :: #{
 %%   <<"ImmunityTimeProperty">> => aws_wafv2_web_acl_captcha_config_immunity_time_property_details()
 %% }
 -type aws_wafv2_web_acl_captcha_config_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_open_search_service_domain_advanced_security_options_details() :: #{
@@ -6604,12 +7311,14 @@
 %% }
 -type aws_open_search_service_domain_advanced_security_options_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_msk_cluster_cluster_info_encryption_info_encryption_in_transit_details() :: #{
 %%   <<"ClientBroker">> => string(),
 %%   <<"InCluster">> => boolean()
 %% }
 -type aws_msk_cluster_cluster_info_encryption_info_encryption_in_transit_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_athena_work_group_details() :: #{
@@ -6619,6 +7328,7 @@
 %%   <<"State">> => string()
 %% }
 -type aws_athena_work_group_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% cvss() :: #{
@@ -6630,12 +7340,14 @@
 %% }
 -type cvss() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_open_search_service_domain_encryption_at_rest_options_details() :: #{
 %%   <<"Enabled">> => boolean(),
 %%   <<"KmsKeyId">> => string()
 %% }
 -type aws_open_search_service_domain_encryption_at_rest_options_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_security_finding() :: #{
@@ -6686,6 +7398,7 @@
 %% }
 -type aws_security_finding() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_events_endpoint_routing_config_failover_config_details() :: #{
 %%   <<"Primary">> => aws_events_endpoint_routing_config_failover_config_primary_details(),
@@ -6693,20 +7406,24 @@
 %% }
 -type aws_events_endpoint_routing_config_failover_config_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_instance_monitoring_details() :: #{
 %%   <<"State">> => string()
 %% }
 -type aws_ec2_instance_monitoring_details() :: #{binary() => any()}.
+
 %% Example:
 %% get_finding_aggregator_request() :: #{}
 -type get_finding_aggregator_request() :: #{}.
+
 
 %% Example:
 %% aws_lambda_function_tracing_config() :: #{
 %%   <<"Mode">> => string()
 %% }
 -type aws_lambda_function_tracing_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_auto_scaling_auto_scaling_group_details() :: #{
@@ -6722,12 +7439,14 @@
 %% }
 -type aws_auto_scaling_auto_scaling_group_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_elb_load_balancer_source_security_group() :: #{
 %%   <<"GroupName">> => string(),
 %%   <<"OwnerAlias">> => string()
 %% }
 -type aws_elb_load_balancer_source_security_group() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_app_sync_graph_ql_api_lambda_authorizer_config_details() :: #{
@@ -6737,6 +7456,7 @@
 %% }
 -type aws_app_sync_graph_ql_api_lambda_authorizer_config_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_iam_policy_version() :: #{
 %%   <<"CreateDate">> => string(),
@@ -6745,6 +7465,7 @@
 %% }
 -type aws_iam_policy_version() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_backup_backup_plan_advanced_backup_settings_details() :: #{
 %%   <<"BackupOptions">> => map(),
@@ -6752,12 +7473,14 @@
 %% }
 -type aws_backup_backup_plan_advanced_backup_settings_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_auto_scaling_auto_scaling_group_mixed_instances_policy_launch_template_overrides_list_details() :: #{
 %%   <<"InstanceType">> => string(),
 %%   <<"WeightedCapacity">> => string()
 %% }
 -type aws_auto_scaling_auto_scaling_group_mixed_instances_policy_launch_template_overrides_list_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_s3_bucket_object_lock_configuration_rule_default_retention_details() :: #{
@@ -6767,6 +7490,7 @@
 %% }
 -type aws_s3_bucket_object_lock_configuration_rule_default_retention_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_s3_bucket_website_configuration_redirect_to() :: #{
 %%   <<"Hostname">> => string(),
@@ -6774,11 +7498,13 @@
 %% }
 -type aws_s3_bucket_website_configuration_redirect_to() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_api_call_action_domain_details() :: #{
 %%   <<"Domain">> => string()
 %% }
 -type aws_api_call_action_domain_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% enable_import_findings_for_product_request() :: #{
@@ -6786,12 +7512,14 @@
 %% }
 -type enable_import_findings_for_product_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% date_range() :: #{
 %%   <<"Unit">> => list(any()),
 %%   <<"Value">> => integer()
 %% }
 -type date_range() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_details() :: #{
@@ -6897,6 +7625,7 @@
 %% }
 -type resource_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_insight_request() :: #{
 %%   <<"Filters">> := aws_security_finding_filters(),
@@ -6905,6 +7634,7 @@
 %% }
 -type create_insight_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ecs_task_definition_proxy_configuration_details() :: #{
 %%   <<"ContainerName">> => string(),
@@ -6912,6 +7642,7 @@
 %%   <<"Type">> => string()
 %% }
 -type aws_ecs_task_definition_proxy_configuration_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% insight() :: #{
@@ -6922,6 +7653,7 @@
 %% }
 -type insight() :: #{binary() => any()}.
 
+
 %% Example:
 %% network_path_component_details() :: #{
 %%   <<"Address">> => list(string()()),
@@ -6929,12 +7661,14 @@
 %% }
 -type network_path_component_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ecs_task_definition_placement_constraints_details() :: #{
 %%   <<"Expression">> => string(),
 %%   <<"Type">> => string()
 %% }
 -type aws_ecs_task_definition_placement_constraints_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_configuration_policy_request() :: #{
@@ -6945,12 +7679,14 @@
 %% }
 -type create_configuration_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_elb_load_balancer_backend_server_description() :: #{
 %%   <<"InstancePort">> => integer(),
 %%   <<"PolicyNames">> => list(string()())
 %% }
 -type aws_elb_load_balancer_backend_server_description() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ecs_cluster_details() :: #{
@@ -6966,9 +7702,11 @@
 %%   <<"Status">> => string()
 %% }
 -type aws_ecs_cluster_details() :: #{binary() => any()}.
+
 %% Example:
 %% accept_administrator_invitation_response() :: #{}
 -type accept_administrator_invitation_response() :: #{}.
+
 
 %% Example:
 %% aws_ecs_task_definition_details() :: #{
@@ -6990,11 +7728,13 @@
 %% }
 -type aws_ecs_task_definition_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% stateless_custom_action_definition() :: #{
 %%   <<"PublishMetricAction">> => stateless_custom_publish_metric_action()
 %% }
 -type stateless_custom_action_definition() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_guard_duty_detector_features_details() :: #{
@@ -7002,15 +7742,18 @@
 %%   <<"Status">> => string()
 %% }
 -type aws_guard_duty_detector_features_details() :: #{binary() => any()}.
+
 %% Example:
 %% get_insight_results_request() :: #{}
 -type get_insight_results_request() :: #{}.
+
 
 %% Example:
 %% aws_events_endpoint_routing_config_details() :: #{
 %%   <<"FailoverConfig">> => aws_events_endpoint_routing_config_failover_config_details()
 %% }
 -type aws_events_endpoint_routing_config_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% security_hub_policy() :: #{
@@ -7020,6 +7763,7 @@
 %% }
 -type security_hub_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% enable_security_hub_request() :: #{
 %%   <<"ControlFindingGenerator">> => list(any()),
@@ -7028,12 +7772,14 @@
 %% }
 -type enable_security_hub_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_elb_load_balancer_additional_attribute() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Value">> => string()
 %% }
 -type aws_elb_load_balancer_additional_attribute() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_dynamo_db_table_provisioned_throughput() :: #{
@@ -7045,6 +7791,7 @@
 %% }
 -type aws_dynamo_db_table_provisioned_throughput() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ecs_task_definition_container_definitions_secrets_details() :: #{
 %%   <<"Name">> => string(),
@@ -7052,14 +7799,17 @@
 %% }
 -type aws_ecs_task_definition_container_definitions_secrets_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_rds_db_subnet_group_subnet_availability_zone() :: #{
 %%   <<"Name">> => string()
 %% }
 -type aws_rds_db_subnet_group_subnet_availability_zone() :: #{binary() => any()}.
+
 %% Example:
 %% delete_configuration_policy_request() :: #{}
 -type delete_configuration_policy_request() :: #{}.
+
 
 %% Example:
 %% aws_ecr_container_image_details() :: #{
@@ -7071,6 +7821,7 @@
 %%   <<"RepositoryName">> => string()
 %% }
 -type aws_ecr_container_image_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_network_interface_details() :: #{
@@ -7085,6 +7836,7 @@
 %% }
 -type aws_ec2_network_interface_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_redshift_cluster_logging_status() :: #{
 %%   <<"BucketName">> => string(),
@@ -7096,6 +7848,7 @@
 %% }
 -type aws_redshift_cluster_logging_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ecs_task_definition_container_definitions_log_configuration_secret_options_details() :: #{
 %%   <<"Name">> => string(),
@@ -7103,12 +7856,14 @@
 %% }
 -type aws_ecs_task_definition_container_definitions_log_configuration_secret_options_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% security_control_custom_parameter() :: #{
 %%   <<"Parameters">> => map(),
 %%   <<"SecurityControlId">> => string()
 %% }
 -type security_control_custom_parameter() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_amazon_mq_broker_maintenance_window_start_time_details() :: #{
@@ -7118,6 +7873,7 @@
 %% }
 -type aws_amazon_mq_broker_maintenance_window_start_time_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ecs_service_capacity_provider_strategy_details() :: #{
 %%   <<"Base">> => integer(),
@@ -7126,17 +7882,20 @@
 %% }
 -type aws_ecs_service_capacity_provider_strategy_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_wafv2_custom_request_handling_details() :: #{
 %%   <<"InsertHeaders">> => list(aws_wafv2_custom_http_header()())
 %% }
 -type aws_wafv2_custom_request_handling_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_guard_duty_detector_data_sources_s3_logs_details() :: #{
 %%   <<"Status">> => string()
 %% }
 -type aws_guard_duty_detector_data_sources_s3_logs_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_waf_rule_details() :: #{
@@ -7147,6 +7906,7 @@
 %% }
 -type aws_waf_rule_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_organization_admin_accounts_response() :: #{
 %%   <<"AdminAccounts">> => list(admin_account()()),
@@ -7154,11 +7914,13 @@
 %% }
 -type list_organization_admin_accounts_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_disable_standards_request() :: #{
 %%   <<"StandardsSubscriptionArns">> := list(string()())
 %% }
 -type batch_disable_standards_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% port_probe_detail() :: #{
@@ -7167,9 +7929,11 @@
 %%   <<"RemoteIpDetails">> => action_remote_ip_details()
 %% }
 -type port_probe_detail() :: #{binary() => any()}.
+
 %% Example:
 %% get_configuration_policy_request() :: #{}
 -type get_configuration_policy_request() :: #{}.
+
 
 %% Example:
 %% aws_waf_regional_rate_based_rule_details() :: #{
@@ -7182,6 +7946,7 @@
 %% }
 -type aws_waf_regional_rate_based_rule_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_s3_bucket_website_configuration() :: #{
 %%   <<"ErrorDocument">> => string(),
@@ -7190,6 +7955,7 @@
 %%   <<"RoutingRules">> => list(aws_s3_bucket_website_configuration_routing_rule()())
 %% }
 -type aws_s3_bucket_website_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_vpc_details() :: #{
@@ -7200,6 +7966,7 @@
 %% }
 -type aws_ec2_vpc_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% enum_list_configuration_options() :: #{
 %%   <<"AllowedValues">> => list(string()()),
@@ -7207,9 +7974,11 @@
 %%   <<"MaxItems">> => integer()
 %% }
 -type enum_list_configuration_options() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_from_administrator_account_request() :: #{}
 -type disassociate_from_administrator_account_request() :: #{}.
+
 
 %% Example:
 %% aws_ecs_task_definition_container_definitions_depends_on_details() :: #{
@@ -7218,12 +7987,14 @@
 %% }
 -type aws_ecs_task_definition_container_definitions_depends_on_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_dynamo_db_table_attribute_definition() :: #{
 %%   <<"AttributeName">> => string(),
 %%   <<"AttributeType">> => string()
 %% }
 -type aws_dynamo_db_table_attribute_definition() :: #{binary() => any()}.
+
 
 %% Example:
 %% rule_group_source_custom_actions_details() :: #{
@@ -7232,6 +8003,7 @@
 %% }
 -type rule_group_source_custom_actions_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_code_build_project_environment_environment_variables_details() :: #{
 %%   <<"Name">> => string(),
@@ -7239,6 +8011,7 @@
 %%   <<"Value">> => string()
 %% }
 -type aws_code_build_project_environment_environment_variables_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% standards_subscription() :: #{
@@ -7250,11 +8023,13 @@
 %% }
 -type standards_subscription() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ecs_task_definition_container_definitions_repository_credentials_details() :: #{
 %%   <<"CredentialsParameter">> => string()
 %% }
 -type aws_ecs_task_definition_container_definitions_repository_credentials_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_lambda_function_details() :: #{
@@ -7281,11 +8056,13 @@
 %% }
 -type aws_lambda_function_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ecs_task_definition_volumes_host_details() :: #{
 %%   <<"SourcePath">> => string()
 %% }
 -type aws_ecs_task_definition_volumes_host_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_events_endpoint_details() :: #{
@@ -7303,17 +8080,20 @@
 %% }
 -type aws_events_endpoint_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_launch_template_data_network_interface_set_ipv6_addresses_details() :: #{
 %%   <<"Ipv6Address">> => string()
 %% }
 -type aws_ec2_launch_template_data_network_interface_set_ipv6_addresses_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_administrator_account_response() :: #{
 %%   <<"Administrator">> => invitation()
 %% }
 -type get_administrator_account_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_app_sync_graph_ql_api_open_id_connect_config_details() :: #{
@@ -7324,11 +8104,13 @@
 %% }
 -type aws_app_sync_graph_ql_api_open_id_connect_config_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_configuration_policy_associations_request() :: #{
 %%   <<"ConfigurationPolicyAssociationIdentifiers">> := list(configuration_policy_association()())
 %% }
 -type batch_get_configuration_policy_associations_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_get_standards_control_associations_response() :: #{
@@ -7337,12 +8119,14 @@
 %% }
 -type batch_get_standards_control_associations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% finding_provider_severity() :: #{
 %%   <<"Label">> => list(any()),
 %%   <<"Original">> => string()
 %% }
 -type finding_provider_severity() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_delete_automation_rules_response() :: #{
@@ -7351,12 +8135,14 @@
 %% }
 -type batch_delete_automation_rules_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_rds_db_parameter_group() :: #{
 %%   <<"DbParameterGroupName">> => string(),
 %%   <<"ParameterApplyStatus">> => string()
 %% }
 -type aws_rds_db_parameter_group() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_client_vpn_endpoint_client_connect_options_details() :: #{
@@ -7366,11 +8152,13 @@
 %% }
 -type aws_ec2_client_vpn_endpoint_client_connect_options_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_security_control_definition_request() :: #{
 %%   <<"SecurityControlId">> := string()
 %% }
 -type get_security_control_definition_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% note() :: #{
@@ -7380,12 +8168,14 @@
 %% }
 -type note() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_configuration_policies_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_configuration_policies_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_conflict_exception() :: #{
@@ -7394,11 +8184,13 @@
 %% }
 -type resource_conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_elasticsearch_domain_node_to_node_encryption_options() :: #{
 %%   <<"Enabled">> => boolean()
 %% }
 -type aws_elasticsearch_domain_node_to_node_encryption_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_dynamo_db_table_details() :: #{
@@ -7425,6 +8217,7 @@
 %% }
 -type aws_dynamo_db_table_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% page() :: #{
 %%   <<"LineRange">> => range(),
@@ -7433,6 +8226,7 @@
 %% }
 -type page() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_elasticsearch_domain_log_publishing_options_log_config() :: #{
 %%   <<"CloudWatchLogsLogGroupArn">> => string(),
@@ -7440,11 +8234,13 @@
 %% }
 -type aws_elasticsearch_domain_log_publishing_options_log_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_members_response() :: #{
 %%   <<"UnprocessedAccounts">> => list(result()())
 %% }
 -type create_members_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_automation_rules_response() :: #{
@@ -7452,6 +8248,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_automation_rules_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_code_build_project_environment() :: #{
@@ -7463,6 +8260,7 @@
 %%   <<"Type">> => string()
 %% }
 -type aws_code_build_project_environment() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_configuration_policy_association_response() :: #{
@@ -7476,6 +8274,7 @@
 %% }
 -type get_configuration_policy_association_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_launch_template_data_cpu_options_details() :: #{
 %%   <<"CoreCount">> => integer(),
@@ -7483,12 +8282,14 @@
 %% }
 -type aws_ec2_launch_template_data_cpu_options_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% rule_group_source_stateless_rule_match_attributes_tcp_flags() :: #{
 %%   <<"Flags">> => list(string()()),
 %%   <<"Masks">> => list(string()())
 %% }
 -type rule_group_source_stateless_rule_match_attributes_tcp_flags() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_insight_request() :: #{
@@ -7498,12 +8299,14 @@
 %% }
 -type update_insight_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_vpn_connection_options_details() :: #{
 %%   <<"StaticRoutesOnly">> => boolean(),
 %%   <<"TunnelOptions">> => list(aws_ec2_vpn_connection_options_tunnel_options_details()())
 %% }
 -type aws_ec2_vpn_connection_options_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_elb_load_balancer_listener() :: #{
@@ -7515,6 +8318,7 @@
 %% }
 -type aws_elb_load_balancer_listener() :: #{binary() => any()}.
 
+
 %% Example:
 %% integer_configuration_options() :: #{
 %%   <<"DefaultValue">> => integer(),
@@ -7523,12 +8327,14 @@
 %% }
 -type integer_configuration_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_backup_recovery_point_calculated_lifecycle_details() :: #{
 %%   <<"DeleteAt">> => string(),
 %%   <<"MoveToColdStorageAt">> => string()
 %% }
 -type aws_backup_recovery_point_calculated_lifecycle_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% string_configuration_options() :: #{
@@ -7537,6 +8343,7 @@
 %%   <<"Re2Expression">> => string()
 %% }
 -type string_configuration_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_elbv2_load_balancer_details() :: #{
@@ -7554,11 +8361,13 @@
 %% }
 -type aws_elbv2_load_balancer_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ssm_patch() :: #{
 %%   <<"ComplianceSummary">> => aws_ssm_compliance_summary()
 %% }
 -type aws_ssm_patch() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_route_table_details() :: #{
@@ -7571,17 +8380,20 @@
 %% }
 -type aws_ec2_route_table_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% ip_filter() :: #{
 %%   <<"Cidr">> => string()
 %% }
 -type ip_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_dms_replication_instance_vpc_security_groups_details() :: #{
 %%   <<"VpcSecurityGroupId">> => string()
 %% }
 -type aws_dms_replication_instance_vpc_security_groups_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_cloud_watch_alarm_details() :: #{
@@ -7610,6 +8422,7 @@
 %% }
 -type aws_cloud_watch_alarm_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% number_filter() :: #{
 %%   <<"Eq">> => float(),
@@ -7620,6 +8433,7 @@
 %% }
 -type number_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_lambda_function_environment_error() :: #{
 %%   <<"ErrorCode">> => string(),
@@ -7627,17 +8441,20 @@
 %% }
 -type aws_lambda_function_environment_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_wafv2_rules_action_captcha_details() :: #{
 %%   <<"CustomRequestHandling">> => aws_wafv2_custom_request_handling_details()
 %% }
 -type aws_wafv2_rules_action_captcha_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% action_local_ip_details() :: #{
 %%   <<"IpAddressV4">> => string()
 %% }
 -type action_local_ip_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_efs_access_point_details() :: #{
@@ -7649,6 +8466,7 @@
 %%   <<"RootDirectory">> => aws_efs_access_point_root_directory_details()
 %% }
 -type aws_efs_access_point_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_rds_db_pending_modified_values() :: #{
@@ -7670,6 +8488,7 @@
 %% }
 -type aws_rds_db_pending_modified_values() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_elastic_beanstalk_environment_tier() :: #{
 %%   <<"Name">> => string(),
@@ -7678,6 +8497,7 @@
 %% }
 -type aws_elastic_beanstalk_environment_tier() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_lambda_function_vpc_config() :: #{
 %%   <<"SecurityGroupIds">> => list(string()()),
@@ -7685,6 +8505,7 @@
 %%   <<"VpcId">> => string()
 %% }
 -type aws_lambda_function_vpc_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_cloud_front_distribution_viewer_certificate() :: #{
@@ -7697,6 +8518,7 @@
 %%   <<"SslSupportMethod">> => string()
 %% }
 -type aws_cloud_front_distribution_viewer_certificate() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_api_gateway_v2_stage_details() :: #{
@@ -7715,6 +8537,7 @@
 %%   <<"StageVariables">> => map()
 %% }
 -type aws_api_gateway_v2_stage_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_amazon_mq_broker_details() :: #{
@@ -7739,6 +8562,7 @@
 %% }
 -type aws_amazon_mq_broker_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_finding_aggregator_response() :: #{
 %%   <<"FindingAggregationRegion">> => string(),
@@ -7748,6 +8572,7 @@
 %% }
 -type update_finding_aggregator_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% map_filter() :: #{
 %%   <<"Comparison">> => list(any()),
@@ -7755,9 +8580,11 @@
 %%   <<"Value">> => string()
 %% }
 -type map_filter() :: #{binary() => any()}.
+
 %% Example:
 %% disable_security_hub_request() :: #{}
 -type disable_security_hub_request() :: #{}.
+
 
 %% Example:
 %% aws_ecs_service_load_balancers_details() :: #{
@@ -7768,6 +8595,7 @@
 %% }
 -type aws_ecs_service_load_balancers_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% unprocessed_configuration_policy_association() :: #{
 %%   <<"ConfigurationPolicyAssociationIdentifiers">> => configuration_policy_association(),
@@ -7776,6 +8604,7 @@
 %% }
 -type unprocessed_configuration_policy_association() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_invitations_response() :: #{
 %%   <<"Invitations">> => list(invitation()()),
@@ -7783,12 +8612,14 @@
 %% }
 -type list_invitations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ecs_task_definition_container_definitions_firelens_configuration_details() :: #{
 %%   <<"Options">> => map(),
 %%   <<"Type">> => string()
 %% }
 -type aws_ecs_task_definition_container_definitions_firelens_configuration_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource() :: #{
@@ -7805,12 +8636,14 @@
 %% }
 -type resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_ec2_client_vpn_endpoint_client_login_banner_options_details() :: #{
 %%   <<"BannerText">> => string(),
 %%   <<"Enabled">> => boolean()
 %% }
 -type aws_ec2_client_vpn_endpoint_client_login_banner_options_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_ec2_launch_template_data_block_device_mapping_set_ebs_details() :: #{
@@ -7824,6 +8657,550 @@
 %%   <<"VolumeType">> => string()
 %% }
 -type aws_ec2_launch_template_data_block_device_mapping_set_ebs_details() :: #{binary() => any()}.
+
+-type accept_administrator_invitation_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type accept_invitation_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type batch_delete_automation_rules_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type batch_disable_standards_errors() ::
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type batch_enable_standards_errors() ::
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type batch_get_automation_rules_errors() ::
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type batch_get_configuration_policy_associations_errors() ::
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type batch_get_security_controls_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type batch_get_standards_control_associations_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type batch_import_findings_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type batch_update_automation_rules_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type batch_update_findings_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type batch_update_standards_control_associations_errors() ::
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type create_action_target_errors() ::
+    resource_conflict_exception() | 
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type create_automation_rule_errors() ::
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type create_configuration_policy_errors() ::
+    resource_conflict_exception() | 
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type create_finding_aggregator_errors() ::
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type create_insight_errors() ::
+    resource_conflict_exception() | 
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type create_members_errors() ::
+    resource_conflict_exception() | 
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type decline_invitations_errors() ::
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type delete_action_target_errors() ::
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type delete_configuration_policy_errors() ::
+    resource_conflict_exception() | 
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type delete_finding_aggregator_errors() ::
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type delete_insight_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type delete_invitations_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type delete_members_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type describe_action_targets_errors() ::
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type describe_hub_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type describe_organization_configuration_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type describe_products_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type describe_standards_errors() ::
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type describe_standards_controls_errors() ::
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type disable_import_findings_for_product_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type disable_organization_admin_account_errors() ::
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type disable_security_hub_errors() ::
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type disassociate_from_administrator_account_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type disassociate_from_master_account_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type disassociate_members_errors() ::
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type enable_import_findings_for_product_errors() ::
+    resource_conflict_exception() | 
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type enable_organization_admin_account_errors() ::
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type enable_security_hub_errors() ::
+    resource_conflict_exception() | 
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_access_exception().
+
+-type get_administrator_account_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type get_configuration_policy_errors() ::
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type get_configuration_policy_association_errors() ::
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type get_enabled_standards_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type get_finding_aggregator_errors() ::
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type get_finding_history_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type get_findings_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type get_insight_results_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type get_insights_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type get_invitations_count_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type get_master_account_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type get_members_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type get_security_control_definition_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type invite_members_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type list_automation_rules_errors() ::
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type list_configuration_policies_errors() ::
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type list_configuration_policy_associations_errors() ::
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type list_enabled_products_for_import_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_access_exception().
+
+-type list_finding_aggregators_errors() ::
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type list_invitations_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type list_members_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type list_organization_admin_accounts_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type list_security_control_definitions_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type list_standards_control_associations_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    invalid_access_exception().
+
+-type list_tags_for_resource_errors() ::
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type start_configuration_policy_association_errors() ::
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type start_configuration_policy_disassociation_errors() ::
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type tag_resource_errors() ::
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type update_action_target_errors() ::
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type update_configuration_policy_errors() ::
+    resource_conflict_exception() | 
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type update_finding_aggregator_errors() ::
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type update_findings_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type update_insight_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type update_organization_configuration_errors() ::
+    resource_conflict_exception() | 
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type update_security_control_errors() ::
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception() | 
+    resource_in_use_exception().
+
+-type update_security_hub_configuration_errors() ::
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
+
+-type update_standards_control_errors() ::
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_access_exception().
 
 %%====================================================================
 %% API
@@ -7842,22 +9219,14 @@
 -spec accept_administrator_invitation(map(), accept_administrator_invitation_request()) ->
     {ok, accept_administrator_invitation_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, accept_administrator_invitation_errors(), tuple()}.
 accept_administrator_invitation(Client, Input) ->
     accept_administrator_invitation(Client, Input, []).
 
 -spec accept_administrator_invitation(map(), accept_administrator_invitation_request(), proplists:proplist()) ->
     {ok, accept_administrator_invitation_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, accept_administrator_invitation_errors(), tuple()}.
 accept_administrator_invitation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/administrator"],
@@ -7905,22 +9274,14 @@ accept_administrator_invitation(Client, Input0, Options0) ->
 -spec accept_invitation(map(), accept_invitation_request()) ->
     {ok, accept_invitation_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, accept_invitation_errors(), tuple()}.
 accept_invitation(Client, Input) ->
     accept_invitation(Client, Input, []).
 
 -spec accept_invitation(map(), accept_invitation_request(), proplists:proplist()) ->
     {ok, accept_invitation_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, accept_invitation_errors(), tuple()}.
 accept_invitation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/master"],
@@ -7948,22 +9309,14 @@ accept_invitation(Client, Input0, Options0) ->
 -spec batch_delete_automation_rules(map(), batch_delete_automation_rules_request()) ->
     {ok, batch_delete_automation_rules_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, batch_delete_automation_rules_errors(), tuple()}.
 batch_delete_automation_rules(Client, Input) ->
     batch_delete_automation_rules(Client, Input, []).
 
 -spec batch_delete_automation_rules(map(), batch_delete_automation_rules_request(), proplists:proplist()) ->
     {ok, batch_delete_automation_rules_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, batch_delete_automation_rules_errors(), tuple()}.
 batch_delete_automation_rules(Client, Input0, Options0) ->
     Method = post,
     Path = ["/automationrules/delete"],
@@ -7996,22 +9349,14 @@ batch_delete_automation_rules(Client, Input0, Options0) ->
 -spec batch_disable_standards(map(), batch_disable_standards_request()) ->
     {ok, batch_disable_standards_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, batch_disable_standards_errors(), tuple()}.
 batch_disable_standards(Client, Input) ->
     batch_disable_standards(Client, Input, []).
 
 -spec batch_disable_standards(map(), batch_disable_standards_request(), proplists:proplist()) ->
     {ok, batch_disable_standards_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, batch_disable_standards_errors(), tuple()}.
 batch_disable_standards(Client, Input0, Options0) ->
     Method = post,
     Path = ["/standards/deregister"],
@@ -8046,22 +9391,14 @@ batch_disable_standards(Client, Input0, Options0) ->
 -spec batch_enable_standards(map(), batch_enable_standards_request()) ->
     {ok, batch_enable_standards_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, batch_enable_standards_errors(), tuple()}.
 batch_enable_standards(Client, Input) ->
     batch_enable_standards(Client, Input, []).
 
 -spec batch_enable_standards(map(), batch_enable_standards_request(), proplists:proplist()) ->
     {ok, batch_enable_standards_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, batch_enable_standards_errors(), tuple()}.
 batch_enable_standards(Client, Input0, Options0) ->
     Method = post,
     Path = ["/standards/register"],
@@ -8091,24 +9428,14 @@ batch_enable_standards(Client, Input0, Options0) ->
 -spec batch_get_automation_rules(map(), batch_get_automation_rules_request()) ->
     {ok, batch_get_automation_rules_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, batch_get_automation_rules_errors(), tuple()}.
 batch_get_automation_rules(Client, Input) ->
     batch_get_automation_rules(Client, Input, []).
 
 -spec batch_get_automation_rules(map(), batch_get_automation_rules_request(), proplists:proplist()) ->
     {ok, batch_get_automation_rules_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, batch_get_automation_rules_errors(), tuple()}.
 batch_get_automation_rules(Client, Input0, Options0) ->
     Method = post,
     Path = ["/automationrules/get"],
@@ -8141,24 +9468,14 @@ batch_get_automation_rules(Client, Input0, Options0) ->
 -spec batch_get_configuration_policy_associations(map(), batch_get_configuration_policy_associations_request()) ->
     {ok, batch_get_configuration_policy_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, batch_get_configuration_policy_associations_errors(), tuple()}.
 batch_get_configuration_policy_associations(Client, Input) ->
     batch_get_configuration_policy_associations(Client, Input, []).
 
 -spec batch_get_configuration_policy_associations(map(), batch_get_configuration_policy_associations_request(), proplists:proplist()) ->
     {ok, batch_get_configuration_policy_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, batch_get_configuration_policy_associations_errors(), tuple()}.
 batch_get_configuration_policy_associations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/configurationPolicyAssociation/batchget"],
@@ -8187,20 +9504,14 @@ batch_get_configuration_policy_associations(Client, Input0, Options0) ->
 -spec batch_get_security_controls(map(), batch_get_security_controls_request()) ->
     {ok, batch_get_security_controls_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, batch_get_security_controls_errors(), tuple()}.
 batch_get_security_controls(Client, Input) ->
     batch_get_security_controls(Client, Input, []).
 
 -spec batch_get_security_controls(map(), batch_get_security_controls_request(), proplists:proplist()) ->
     {ok, batch_get_security_controls_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, batch_get_security_controls_errors(), tuple()}.
 batch_get_security_controls(Client, Input0, Options0) ->
     Method = post,
     Path = ["/securityControls/batchGet"],
@@ -8229,20 +9540,14 @@ batch_get_security_controls(Client, Input0, Options0) ->
 -spec batch_get_standards_control_associations(map(), batch_get_standards_control_associations_request()) ->
     {ok, batch_get_standards_control_associations_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, batch_get_standards_control_associations_errors(), tuple()}.
 batch_get_standards_control_associations(Client, Input) ->
     batch_get_standards_control_associations(Client, Input, []).
 
 -spec batch_get_standards_control_associations(map(), batch_get_standards_control_associations_request(), proplists:proplist()) ->
     {ok, batch_get_standards_control_associations_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, batch_get_standards_control_associations_errors(), tuple()}.
 batch_get_standards_control_associations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/associations/batchGet"],
@@ -8328,20 +9633,14 @@ batch_get_standards_control_associations(Client, Input0, Options0) ->
 -spec batch_import_findings(map(), batch_import_findings_request()) ->
     {ok, batch_import_findings_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, batch_import_findings_errors(), tuple()}.
 batch_import_findings(Client, Input) ->
     batch_import_findings(Client, Input, []).
 
 -spec batch_import_findings(map(), batch_import_findings_request(), proplists:proplist()) ->
     {ok, batch_import_findings_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, batch_import_findings_errors(), tuple()}.
 batch_import_findings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/findings/import"],
@@ -8371,22 +9670,14 @@ batch_import_findings(Client, Input0, Options0) ->
 -spec batch_update_automation_rules(map(), batch_update_automation_rules_request()) ->
     {ok, batch_update_automation_rules_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, batch_update_automation_rules_errors(), tuple()}.
 batch_update_automation_rules(Client, Input) ->
     batch_update_automation_rules(Client, Input, []).
 
 -spec batch_update_automation_rules(map(), batch_update_automation_rules_request(), proplists:proplist()) ->
     {ok, batch_update_automation_rules_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, batch_update_automation_rules_errors(), tuple()}.
 batch_update_automation_rules(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/automationrules/update"],
@@ -8454,20 +9745,14 @@ batch_update_automation_rules(Client, Input0, Options0) ->
 -spec batch_update_findings(map(), batch_update_findings_request()) ->
     {ok, batch_update_findings_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, batch_update_findings_errors(), tuple()}.
 batch_update_findings(Client, Input) ->
     batch_update_findings(Client, Input, []).
 
 -spec batch_update_findings(map(), batch_update_findings_request(), proplists:proplist()) ->
     {ok, batch_update_findings_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, batch_update_findings_errors(), tuple()}.
 batch_update_findings(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/findings/batchupdate"],
@@ -8496,22 +9781,14 @@ batch_update_findings(Client, Input0, Options0) ->
 -spec batch_update_standards_control_associations(map(), batch_update_standards_control_associations_request()) ->
     {ok, batch_update_standards_control_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, batch_update_standards_control_associations_errors(), tuple()}.
 batch_update_standards_control_associations(Client, Input) ->
     batch_update_standards_control_associations(Client, Input, []).
 
 -spec batch_update_standards_control_associations(map(), batch_update_standards_control_associations_request(), proplists:proplist()) ->
     {ok, batch_update_standards_control_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, batch_update_standards_control_associations_errors(), tuple()}.
 batch_update_standards_control_associations(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/associations"],
@@ -8542,22 +9819,14 @@ batch_update_standards_control_associations(Client, Input0, Options0) ->
 -spec create_action_target(map(), create_action_target_request()) ->
     {ok, create_action_target_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()}.
+    {error, create_action_target_errors(), tuple()}.
 create_action_target(Client, Input) ->
     create_action_target(Client, Input, []).
 
 -spec create_action_target(map(), create_action_target_request(), proplists:proplist()) ->
     {ok, create_action_target_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()}.
+    {error, create_action_target_errors(), tuple()}.
 create_action_target(Client, Input0, Options0) ->
     Method = post,
     Path = ["/actionTargets"],
@@ -8585,22 +9854,14 @@ create_action_target(Client, Input0, Options0) ->
 -spec create_automation_rule(map(), create_automation_rule_request()) ->
     {ok, create_automation_rule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_automation_rule_errors(), tuple()}.
 create_automation_rule(Client, Input) ->
     create_automation_rule(Client, Input, []).
 
 -spec create_automation_rule(map(), create_automation_rule_request(), proplists:proplist()) ->
     {ok, create_automation_rule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_automation_rule_errors(), tuple()}.
 create_automation_rule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/automationrules/create"],
@@ -8631,24 +9892,14 @@ create_automation_rule(Client, Input0, Options0) ->
 -spec create_configuration_policy(map(), create_configuration_policy_request()) ->
     {ok, create_configuration_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()}.
+    {error, create_configuration_policy_errors(), tuple()}.
 create_configuration_policy(Client, Input) ->
     create_configuration_policy(Client, Input, []).
 
 -spec create_configuration_policy(map(), create_configuration_policy_request(), proplists:proplist()) ->
     {ok, create_configuration_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()}.
+    {error, create_configuration_policy_errors(), tuple()}.
 create_configuration_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/configurationPolicy/create"],
@@ -8682,22 +9933,14 @@ create_configuration_policy(Client, Input0, Options0) ->
 -spec create_finding_aggregator(map(), create_finding_aggregator_request()) ->
     {ok, create_finding_aggregator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_finding_aggregator_errors(), tuple()}.
 create_finding_aggregator(Client, Input) ->
     create_finding_aggregator(Client, Input, []).
 
 -spec create_finding_aggregator(map(), create_finding_aggregator_request(), proplists:proplist()) ->
     {ok, create_finding_aggregator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_finding_aggregator_errors(), tuple()}.
 create_finding_aggregator(Client, Input0, Options0) ->
     Method = post,
     Path = ["/findingAggregator/create"],
@@ -8730,22 +9973,14 @@ create_finding_aggregator(Client, Input0, Options0) ->
 -spec create_insight(map(), create_insight_request()) ->
     {ok, create_insight_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()}.
+    {error, create_insight_errors(), tuple()}.
 create_insight(Client, Input) ->
     create_insight(Client, Input, []).
 
 -spec create_insight(map(), create_insight_request(), proplists:proplist()) ->
     {ok, create_insight_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()}.
+    {error, create_insight_errors(), tuple()}.
 create_insight(Client, Input0, Options0) ->
     Method = post,
     Path = ["/insights"],
@@ -8825,24 +10060,14 @@ create_insight(Client, Input0, Options0) ->
 -spec create_members(map(), create_members_request()) ->
     {ok, create_members_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()}.
+    {error, create_members_errors(), tuple()}.
 create_members(Client, Input) ->
     create_members(Client, Input, []).
 
 -spec create_members(map(), create_members_request(), proplists:proplist()) ->
     {ok, create_members_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()}.
+    {error, create_members_errors(), tuple()}.
 create_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/members"],
@@ -8876,20 +10101,14 @@ create_members(Client, Input0, Options0) ->
 -spec decline_invitations(map(), decline_invitations_request()) ->
     {ok, decline_invitations_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, decline_invitations_errors(), tuple()}.
 decline_invitations(Client, Input) ->
     decline_invitations(Client, Input, []).
 
 -spec decline_invitations(map(), decline_invitations_request(), proplists:proplist()) ->
     {ok, decline_invitations_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, decline_invitations_errors(), tuple()}.
 decline_invitations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/invitations/decline"],
@@ -8920,20 +10139,14 @@ decline_invitations(Client, Input0, Options0) ->
 -spec delete_action_target(map(), binary() | list(), delete_action_target_request()) ->
     {ok, delete_action_target_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_action_target_errors(), tuple()}.
 delete_action_target(Client, ActionTargetArn, Input) ->
     delete_action_target(Client, ActionTargetArn, Input, []).
 
 -spec delete_action_target(map(), binary() | list(), delete_action_target_request(), proplists:proplist()) ->
     {ok, delete_action_target_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_action_target_errors(), tuple()}.
 delete_action_target(Client, ActionTargetArn, Input0, Options0) ->
     Method = delete,
     Path = ["/actionTargets/", aws_util:encode_multi_segment_uri(ActionTargetArn), ""],
@@ -8967,26 +10180,14 @@ delete_action_target(Client, ActionTargetArn, Input0, Options0) ->
 -spec delete_configuration_policy(map(), binary() | list(), delete_configuration_policy_request()) ->
     {ok, delete_configuration_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_configuration_policy_errors(), tuple()}.
 delete_configuration_policy(Client, Identifier, Input) ->
     delete_configuration_policy(Client, Identifier, Input, []).
 
 -spec delete_configuration_policy(map(), binary() | list(), delete_configuration_policy_request(), proplists:proplist()) ->
     {ok, delete_configuration_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_configuration_policy_errors(), tuple()}.
 delete_configuration_policy(Client, Identifier, Input0, Options0) ->
     Method = delete,
     Path = ["/configurationPolicy/", aws_util:encode_uri(Identifier), ""],
@@ -9019,24 +10220,14 @@ delete_configuration_policy(Client, Identifier, Input0, Options0) ->
 -spec delete_finding_aggregator(map(), binary() | list(), delete_finding_aggregator_request()) ->
     {ok, delete_finding_aggregator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_finding_aggregator_errors(), tuple()}.
 delete_finding_aggregator(Client, FindingAggregatorArn, Input) ->
     delete_finding_aggregator(Client, FindingAggregatorArn, Input, []).
 
 -spec delete_finding_aggregator(map(), binary() | list(), delete_finding_aggregator_request(), proplists:proplist()) ->
     {ok, delete_finding_aggregator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_finding_aggregator_errors(), tuple()}.
 delete_finding_aggregator(Client, FindingAggregatorArn, Input0, Options0) ->
     Method = delete,
     Path = ["/findingAggregator/delete/", aws_util:encode_multi_segment_uri(FindingAggregatorArn), ""],
@@ -9063,22 +10254,14 @@ delete_finding_aggregator(Client, FindingAggregatorArn, Input0, Options0) ->
 -spec delete_insight(map(), binary() | list(), delete_insight_request()) ->
     {ok, delete_insight_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_insight_errors(), tuple()}.
 delete_insight(Client, InsightArn, Input) ->
     delete_insight(Client, InsightArn, Input, []).
 
 -spec delete_insight(map(), binary() | list(), delete_insight_request(), proplists:proplist()) ->
     {ok, delete_insight_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_insight_errors(), tuple()}.
 delete_insight(Client, InsightArn, Input0, Options0) ->
     Method = delete,
     Path = ["/insights/", aws_util:encode_multi_segment_uri(InsightArn), ""],
@@ -9113,22 +10296,14 @@ delete_insight(Client, InsightArn, Input0, Options0) ->
 -spec delete_invitations(map(), delete_invitations_request()) ->
     {ok, delete_invitations_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_invitations_errors(), tuple()}.
 delete_invitations(Client, Input) ->
     delete_invitations(Client, Input, []).
 
 -spec delete_invitations(map(), delete_invitations_request(), proplists:proplist()) ->
     {ok, delete_invitations_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_invitations_errors(), tuple()}.
 delete_invitations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/invitations/delete"],
@@ -9159,22 +10334,14 @@ delete_invitations(Client, Input0, Options0) ->
 -spec delete_members(map(), delete_members_request()) ->
     {ok, delete_members_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_members_errors(), tuple()}.
 delete_members(Client, Input) ->
     delete_members(Client, Input, []).
 
 -spec delete_members(map(), delete_members_request(), proplists:proplist()) ->
     {ok, delete_members_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_members_errors(), tuple()}.
 delete_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/members/delete"],
@@ -9202,20 +10369,14 @@ delete_members(Client, Input0, Options0) ->
 -spec describe_action_targets(map(), describe_action_targets_request()) ->
     {ok, describe_action_targets_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_action_targets_errors(), tuple()}.
 describe_action_targets(Client, Input) ->
     describe_action_targets(Client, Input, []).
 
 -spec describe_action_targets(map(), describe_action_targets_request(), proplists:proplist()) ->
     {ok, describe_action_targets_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_action_targets_errors(), tuple()}.
 describe_action_targets(Client, Input0, Options0) ->
     Method = post,
     Path = ["/actionTargets/get"],
@@ -9243,11 +10404,7 @@ describe_action_targets(Client, Input0, Options0) ->
 -spec describe_hub(map()) ->
     {ok, describe_hub_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_hub_errors(), tuple()}.
 describe_hub(Client)
   when is_map(Client) ->
     describe_hub(Client, #{}, #{}).
@@ -9255,11 +10412,7 @@ describe_hub(Client)
 -spec describe_hub(map(), map(), map()) ->
     {ok, describe_hub_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_hub_errors(), tuple()}.
 describe_hub(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_hub(Client, QueryMap, HeadersMap, []).
@@ -9267,11 +10420,7 @@ describe_hub(Client, QueryMap, HeadersMap)
 -spec describe_hub(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_hub_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_hub_errors(), tuple()}.
 describe_hub(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts"],
@@ -9300,10 +10449,7 @@ describe_hub(Client, QueryMap, HeadersMap, Options0)
 -spec describe_organization_configuration(map()) ->
     {ok, describe_organization_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, describe_organization_configuration_errors(), tuple()}.
 describe_organization_configuration(Client)
   when is_map(Client) ->
     describe_organization_configuration(Client, #{}, #{}).
@@ -9311,10 +10457,7 @@ describe_organization_configuration(Client)
 -spec describe_organization_configuration(map(), map(), map()) ->
     {ok, describe_organization_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, describe_organization_configuration_errors(), tuple()}.
 describe_organization_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_organization_configuration(Client, QueryMap, HeadersMap, []).
@@ -9322,10 +10465,7 @@ describe_organization_configuration(Client, QueryMap, HeadersMap)
 -spec describe_organization_configuration(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_organization_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, describe_organization_configuration_errors(), tuple()}.
 describe_organization_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/organization/configuration"],
@@ -9354,10 +10494,7 @@ describe_organization_configuration(Client, QueryMap, HeadersMap, Options0)
 -spec describe_products(map()) ->
     {ok, describe_products_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, describe_products_errors(), tuple()}.
 describe_products(Client)
   when is_map(Client) ->
     describe_products(Client, #{}, #{}).
@@ -9365,10 +10502,7 @@ describe_products(Client)
 -spec describe_products(map(), map(), map()) ->
     {ok, describe_products_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, describe_products_errors(), tuple()}.
 describe_products(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_products(Client, QueryMap, HeadersMap, []).
@@ -9376,10 +10510,7 @@ describe_products(Client, QueryMap, HeadersMap)
 -spec describe_products(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_products_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, describe_products_errors(), tuple()}.
 describe_products(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/products"],
@@ -9409,9 +10540,7 @@ describe_products(Client, QueryMap, HeadersMap, Options0)
 -spec describe_standards(map()) ->
     {ok, describe_standards_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, describe_standards_errors(), tuple()}.
 describe_standards(Client)
   when is_map(Client) ->
     describe_standards(Client, #{}, #{}).
@@ -9419,9 +10548,7 @@ describe_standards(Client)
 -spec describe_standards(map(), map(), map()) ->
     {ok, describe_standards_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, describe_standards_errors(), tuple()}.
 describe_standards(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_standards(Client, QueryMap, HeadersMap, []).
@@ -9429,9 +10556,7 @@ describe_standards(Client, QueryMap, HeadersMap)
 -spec describe_standards(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_standards_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, describe_standards_errors(), tuple()}.
 describe_standards(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/standards"],
@@ -9461,10 +10586,7 @@ describe_standards(Client, QueryMap, HeadersMap, Options0)
 -spec describe_standards_controls(map(), binary() | list()) ->
     {ok, describe_standards_controls_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_standards_controls_errors(), tuple()}.
 describe_standards_controls(Client, StandardsSubscriptionArn)
   when is_map(Client) ->
     describe_standards_controls(Client, StandardsSubscriptionArn, #{}, #{}).
@@ -9472,10 +10594,7 @@ describe_standards_controls(Client, StandardsSubscriptionArn)
 -spec describe_standards_controls(map(), binary() | list(), map(), map()) ->
     {ok, describe_standards_controls_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_standards_controls_errors(), tuple()}.
 describe_standards_controls(Client, StandardsSubscriptionArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_standards_controls(Client, StandardsSubscriptionArn, QueryMap, HeadersMap, []).
@@ -9483,10 +10602,7 @@ describe_standards_controls(Client, StandardsSubscriptionArn, QueryMap, HeadersM
 -spec describe_standards_controls(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_standards_controls_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_standards_controls_errors(), tuple()}.
 describe_standards_controls(Client, StandardsSubscriptionArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/standards/controls/", aws_util:encode_multi_segment_uri(StandardsSubscriptionArn), ""],
@@ -9515,22 +10631,14 @@ describe_standards_controls(Client, StandardsSubscriptionArn, QueryMap, HeadersM
 -spec disable_import_findings_for_product(map(), binary() | list(), disable_import_findings_for_product_request()) ->
     {ok, disable_import_findings_for_product_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disable_import_findings_for_product_errors(), tuple()}.
 disable_import_findings_for_product(Client, ProductSubscriptionArn, Input) ->
     disable_import_findings_for_product(Client, ProductSubscriptionArn, Input, []).
 
 -spec disable_import_findings_for_product(map(), binary() | list(), disable_import_findings_for_product_request(), proplists:proplist()) ->
     {ok, disable_import_findings_for_product_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disable_import_findings_for_product_errors(), tuple()}.
 disable_import_findings_for_product(Client, ProductSubscriptionArn, Input0, Options0) ->
     Method = delete,
     Path = ["/productSubscriptions/", aws_util:encode_multi_segment_uri(ProductSubscriptionArn), ""],
@@ -9560,22 +10668,14 @@ disable_import_findings_for_product(Client, ProductSubscriptionArn, Input0, Opti
 -spec disable_organization_admin_account(map(), disable_organization_admin_account_request()) ->
     {ok, disable_organization_admin_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, disable_organization_admin_account_errors(), tuple()}.
 disable_organization_admin_account(Client, Input) ->
     disable_organization_admin_account(Client, Input, []).
 
 -spec disable_organization_admin_account(map(), disable_organization_admin_account_request(), proplists:proplist()) ->
     {ok, disable_organization_admin_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, disable_organization_admin_account_errors(), tuple()}.
 disable_organization_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/organization/admin/disable"],
@@ -9621,22 +10721,14 @@ disable_organization_admin_account(Client, Input0, Options0) ->
 -spec disable_security_hub(map(), disable_security_hub_request()) ->
     {ok, disable_security_hub_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disable_security_hub_errors(), tuple()}.
 disable_security_hub(Client, Input) ->
     disable_security_hub(Client, Input, []).
 
 -spec disable_security_hub(map(), disable_security_hub_request(), proplists:proplist()) ->
     {ok, disable_security_hub_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disable_security_hub_errors(), tuple()}.
 disable_security_hub(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts"],
@@ -9670,22 +10762,14 @@ disable_security_hub(Client, Input0, Options0) ->
 -spec disassociate_from_administrator_account(map(), disassociate_from_administrator_account_request()) ->
     {ok, disassociate_from_administrator_account_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_from_administrator_account_errors(), tuple()}.
 disassociate_from_administrator_account(Client, Input) ->
     disassociate_from_administrator_account(Client, Input, []).
 
 -spec disassociate_from_administrator_account(map(), disassociate_from_administrator_account_request(), proplists:proplist()) ->
     {ok, disassociate_from_administrator_account_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_from_administrator_account_errors(), tuple()}.
 disassociate_from_administrator_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/administrator/disassociate"],
@@ -9732,22 +10816,14 @@ disassociate_from_administrator_account(Client, Input0, Options0) ->
 -spec disassociate_from_master_account(map(), disassociate_from_master_account_request()) ->
     {ok, disassociate_from_master_account_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_from_master_account_errors(), tuple()}.
 disassociate_from_master_account(Client, Input) ->
     disassociate_from_master_account(Client, Input, []).
 
 -spec disassociate_from_master_account(map(), disassociate_from_master_account_request(), proplists:proplist()) ->
     {ok, disassociate_from_master_account_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_from_master_account_errors(), tuple()}.
 disassociate_from_master_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/master/disassociate"],
@@ -9779,24 +10855,14 @@ disassociate_from_master_account(Client, Input0, Options0) ->
 -spec disassociate_members(map(), disassociate_members_request()) ->
     {ok, disassociate_members_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_members_errors(), tuple()}.
 disassociate_members(Client, Input) ->
     disassociate_members(Client, Input, []).
 
 -spec disassociate_members(map(), disassociate_members_request(), proplists:proplist()) ->
     {ok, disassociate_members_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_members_errors(), tuple()}.
 disassociate_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/members/disassociate"],
@@ -9830,22 +10896,14 @@ disassociate_members(Client, Input0, Options0) ->
 -spec enable_import_findings_for_product(map(), enable_import_findings_for_product_request()) ->
     {ok, enable_import_findings_for_product_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()}.
+    {error, enable_import_findings_for_product_errors(), tuple()}.
 enable_import_findings_for_product(Client, Input) ->
     enable_import_findings_for_product(Client, Input, []).
 
 -spec enable_import_findings_for_product(map(), enable_import_findings_for_product_request(), proplists:proplist()) ->
     {ok, enable_import_findings_for_product_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()}.
+    {error, enable_import_findings_for_product_errors(), tuple()}.
 enable_import_findings_for_product(Client, Input0, Options0) ->
     Method = post,
     Path = ["/productSubscriptions"],
@@ -9876,22 +10934,14 @@ enable_import_findings_for_product(Client, Input0, Options0) ->
 -spec enable_organization_admin_account(map(), enable_organization_admin_account_request()) ->
     {ok, enable_organization_admin_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, enable_organization_admin_account_errors(), tuple()}.
 enable_organization_admin_account(Client, Input) ->
     enable_organization_admin_account(Client, Input, []).
 
 -spec enable_organization_admin_account(map(), enable_organization_admin_account_request(), proplists:proplist()) ->
     {ok, enable_organization_admin_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, enable_organization_admin_account_errors(), tuple()}.
 enable_organization_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/organization/admin/enable"],
@@ -9946,22 +10996,14 @@ enable_organization_admin_account(Client, Input0, Options0) ->
 -spec enable_security_hub(map(), enable_security_hub_request()) ->
     {ok, enable_security_hub_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()}.
+    {error, enable_security_hub_errors(), tuple()}.
 enable_security_hub(Client, Input) ->
     enable_security_hub(Client, Input, []).
 
 -spec enable_security_hub(map(), enable_security_hub_request(), proplists:proplist()) ->
     {ok, enable_security_hub_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()}.
+    {error, enable_security_hub_errors(), tuple()}.
 enable_security_hub(Client, Input0, Options0) ->
     Method = post,
     Path = ["/accounts"],
@@ -9993,11 +11035,7 @@ enable_security_hub(Client, Input0, Options0) ->
 -spec get_administrator_account(map()) ->
     {ok, get_administrator_account_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_administrator_account_errors(), tuple()}.
 get_administrator_account(Client)
   when is_map(Client) ->
     get_administrator_account(Client, #{}, #{}).
@@ -10005,11 +11043,7 @@ get_administrator_account(Client)
 -spec get_administrator_account(map(), map(), map()) ->
     {ok, get_administrator_account_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_administrator_account_errors(), tuple()}.
 get_administrator_account(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_administrator_account(Client, QueryMap, HeadersMap, []).
@@ -10017,11 +11051,7 @@ get_administrator_account(Client, QueryMap, HeadersMap)
 -spec get_administrator_account(map(), map(), map(), proplists:proplist()) ->
     {ok, get_administrator_account_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_administrator_account_errors(), tuple()}.
 get_administrator_account(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/administrator"],
@@ -10046,12 +11076,7 @@ get_administrator_account(Client, QueryMap, HeadersMap, Options0)
 -spec get_configuration_policy(map(), binary() | list()) ->
     {ok, get_configuration_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_configuration_policy_errors(), tuple()}.
 get_configuration_policy(Client, Identifier)
   when is_map(Client) ->
     get_configuration_policy(Client, Identifier, #{}, #{}).
@@ -10059,12 +11084,7 @@ get_configuration_policy(Client, Identifier)
 -spec get_configuration_policy(map(), binary() | list(), map(), map()) ->
     {ok, get_configuration_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_configuration_policy_errors(), tuple()}.
 get_configuration_policy(Client, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_configuration_policy(Client, Identifier, QueryMap, HeadersMap, []).
@@ -10072,12 +11092,7 @@ get_configuration_policy(Client, Identifier, QueryMap, HeadersMap)
 -spec get_configuration_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_configuration_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_configuration_policy_errors(), tuple()}.
 get_configuration_policy(Client, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/configurationPolicy/get/", aws_util:encode_uri(Identifier), ""],
@@ -10105,24 +11120,14 @@ get_configuration_policy(Client, Identifier, QueryMap, HeadersMap, Options0)
 -spec get_configuration_policy_association(map(), get_configuration_policy_association_request()) ->
     {ok, get_configuration_policy_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_configuration_policy_association_errors(), tuple()}.
 get_configuration_policy_association(Client, Input) ->
     get_configuration_policy_association(Client, Input, []).
 
 -spec get_configuration_policy_association(map(), get_configuration_policy_association_request(), proplists:proplist()) ->
     {ok, get_configuration_policy_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_configuration_policy_association_errors(), tuple()}.
 get_configuration_policy_association(Client, Input0, Options0) ->
     Method = post,
     Path = ["/configurationPolicyAssociation/get"],
@@ -10149,20 +11154,14 @@ get_configuration_policy_association(Client, Input0, Options0) ->
 -spec get_enabled_standards(map(), get_enabled_standards_request()) ->
     {ok, get_enabled_standards_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_enabled_standards_errors(), tuple()}.
 get_enabled_standards(Client, Input) ->
     get_enabled_standards(Client, Input, []).
 
 -spec get_enabled_standards(map(), get_enabled_standards_request(), proplists:proplist()) ->
     {ok, get_enabled_standards_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_enabled_standards_errors(), tuple()}.
 get_enabled_standards(Client, Input0, Options0) ->
     Method = post,
     Path = ["/standards/get"],
@@ -10189,12 +11188,7 @@ get_enabled_standards(Client, Input0, Options0) ->
 -spec get_finding_aggregator(map(), binary() | list()) ->
     {ok, get_finding_aggregator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_finding_aggregator_errors(), tuple()}.
 get_finding_aggregator(Client, FindingAggregatorArn)
   when is_map(Client) ->
     get_finding_aggregator(Client, FindingAggregatorArn, #{}, #{}).
@@ -10202,12 +11196,7 @@ get_finding_aggregator(Client, FindingAggregatorArn)
 -spec get_finding_aggregator(map(), binary() | list(), map(), map()) ->
     {ok, get_finding_aggregator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_finding_aggregator_errors(), tuple()}.
 get_finding_aggregator(Client, FindingAggregatorArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_finding_aggregator(Client, FindingAggregatorArn, QueryMap, HeadersMap, []).
@@ -10215,12 +11204,7 @@ get_finding_aggregator(Client, FindingAggregatorArn, QueryMap, HeadersMap)
 -spec get_finding_aggregator(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_finding_aggregator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_finding_aggregator_errors(), tuple()}.
 get_finding_aggregator(Client, FindingAggregatorArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/findingAggregator/get/", aws_util:encode_multi_segment_uri(FindingAggregatorArn), ""],
@@ -10245,20 +11229,14 @@ get_finding_aggregator(Client, FindingAggregatorArn, QueryMap, HeadersMap, Optio
 -spec get_finding_history(map(), get_finding_history_request()) ->
     {ok, get_finding_history_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_finding_history_errors(), tuple()}.
 get_finding_history(Client, Input) ->
     get_finding_history(Client, Input, []).
 
 -spec get_finding_history(map(), get_finding_history_request(), proplists:proplist()) ->
     {ok, get_finding_history_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_finding_history_errors(), tuple()}.
 get_finding_history(Client, Input0, Options0) ->
     Method = post,
     Path = ["/findingHistory/get"],
@@ -10289,20 +11267,14 @@ get_finding_history(Client, Input0, Options0) ->
 -spec get_findings(map(), get_findings_request()) ->
     {ok, get_findings_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_findings_errors(), tuple()}.
 get_findings(Client, Input) ->
     get_findings(Client, Input, []).
 
 -spec get_findings(map(), get_findings_request(), proplists:proplist()) ->
     {ok, get_findings_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_findings_errors(), tuple()}.
 get_findings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/findings"],
@@ -10330,11 +11302,7 @@ get_findings(Client, Input0, Options0) ->
 -spec get_insight_results(map(), binary() | list()) ->
     {ok, get_insight_results_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_insight_results_errors(), tuple()}.
 get_insight_results(Client, InsightArn)
   when is_map(Client) ->
     get_insight_results(Client, InsightArn, #{}, #{}).
@@ -10342,11 +11310,7 @@ get_insight_results(Client, InsightArn)
 -spec get_insight_results(map(), binary() | list(), map(), map()) ->
     {ok, get_insight_results_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_insight_results_errors(), tuple()}.
 get_insight_results(Client, InsightArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_insight_results(Client, InsightArn, QueryMap, HeadersMap, []).
@@ -10354,11 +11318,7 @@ get_insight_results(Client, InsightArn, QueryMap, HeadersMap)
 -spec get_insight_results(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_insight_results_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_insight_results_errors(), tuple()}.
 get_insight_results(Client, InsightArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/insights/results/", aws_util:encode_multi_segment_uri(InsightArn), ""],
@@ -10379,22 +11339,14 @@ get_insight_results(Client, InsightArn, QueryMap, HeadersMap, Options0)
 -spec get_insights(map(), get_insights_request()) ->
     {ok, get_insights_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_insights_errors(), tuple()}.
 get_insights(Client, Input) ->
     get_insights(Client, Input, []).
 
 -spec get_insights(map(), get_insights_request(), proplists:proplist()) ->
     {ok, get_insights_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_insights_errors(), tuple()}.
 get_insights(Client, Input0, Options0) ->
     Method = post,
     Path = ["/insights/get"],
@@ -10423,10 +11375,7 @@ get_insights(Client, Input0, Options0) ->
 -spec get_invitations_count(map()) ->
     {ok, get_invitations_count_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_invitations_count_errors(), tuple()}.
 get_invitations_count(Client)
   when is_map(Client) ->
     get_invitations_count(Client, #{}, #{}).
@@ -10434,10 +11383,7 @@ get_invitations_count(Client)
 -spec get_invitations_count(map(), map(), map()) ->
     {ok, get_invitations_count_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_invitations_count_errors(), tuple()}.
 get_invitations_count(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_invitations_count(Client, QueryMap, HeadersMap, []).
@@ -10445,10 +11391,7 @@ get_invitations_count(Client, QueryMap, HeadersMap)
 -spec get_invitations_count(map(), map(), map(), proplists:proplist()) ->
     {ok, get_invitations_count_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_invitations_count_errors(), tuple()}.
 get_invitations_count(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/invitations/count"],
@@ -10485,11 +11428,7 @@ get_invitations_count(Client, QueryMap, HeadersMap, Options0)
 -spec get_master_account(map()) ->
     {ok, get_master_account_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_master_account_errors(), tuple()}.
 get_master_account(Client)
   when is_map(Client) ->
     get_master_account(Client, #{}, #{}).
@@ -10497,11 +11436,7 @@ get_master_account(Client)
 -spec get_master_account(map(), map(), map()) ->
     {ok, get_master_account_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_master_account_errors(), tuple()}.
 get_master_account(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_master_account(Client, QueryMap, HeadersMap, []).
@@ -10509,11 +11444,7 @@ get_master_account(Client, QueryMap, HeadersMap)
 -spec get_master_account(map(), map(), map(), proplists:proplist()) ->
     {ok, get_master_account_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_master_account_errors(), tuple()}.
 get_master_account(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/master"],
@@ -10544,22 +11475,14 @@ get_master_account(Client, QueryMap, HeadersMap, Options0)
 -spec get_members(map(), get_members_request()) ->
     {ok, get_members_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_members_errors(), tuple()}.
 get_members(Client, Input) ->
     get_members(Client, Input, []).
 
 -spec get_members(map(), get_members_request(), proplists:proplist()) ->
     {ok, get_members_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_members_errors(), tuple()}.
 get_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/members/get"],
@@ -10590,11 +11513,7 @@ get_members(Client, Input0, Options0) ->
 -spec get_security_control_definition(map(), binary() | list()) ->
     {ok, get_security_control_definition_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_security_control_definition_errors(), tuple()}.
 get_security_control_definition(Client, SecurityControlId)
   when is_map(Client) ->
     get_security_control_definition(Client, SecurityControlId, #{}, #{}).
@@ -10602,11 +11521,7 @@ get_security_control_definition(Client, SecurityControlId)
 -spec get_security_control_definition(map(), binary() | list(), map(), map()) ->
     {ok, get_security_control_definition_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_security_control_definition_errors(), tuple()}.
 get_security_control_definition(Client, SecurityControlId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_security_control_definition(Client, SecurityControlId, QueryMap, HeadersMap, []).
@@ -10614,11 +11529,7 @@ get_security_control_definition(Client, SecurityControlId, QueryMap, HeadersMap)
 -spec get_security_control_definition(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_security_control_definition_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_security_control_definition_errors(), tuple()}.
 get_security_control_definition(Client, SecurityControlId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/securityControl/definition"],
@@ -10657,22 +11568,14 @@ get_security_control_definition(Client, SecurityControlId, QueryMap, HeadersMap,
 -spec invite_members(map(), invite_members_request()) ->
     {ok, invite_members_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, invite_members_errors(), tuple()}.
 invite_members(Client, Input) ->
     invite_members(Client, Input, []).
 
 -spec invite_members(map(), invite_members_request(), proplists:proplist()) ->
     {ok, invite_members_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, invite_members_errors(), tuple()}.
 invite_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/members/invite"],
@@ -10700,11 +11603,7 @@ invite_members(Client, Input0, Options0) ->
 -spec list_automation_rules(map()) ->
     {ok, list_automation_rules_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_automation_rules_errors(), tuple()}.
 list_automation_rules(Client)
   when is_map(Client) ->
     list_automation_rules(Client, #{}, #{}).
@@ -10712,11 +11611,7 @@ list_automation_rules(Client)
 -spec list_automation_rules(map(), map(), map()) ->
     {ok, list_automation_rules_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_automation_rules_errors(), tuple()}.
 list_automation_rules(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_automation_rules(Client, QueryMap, HeadersMap, []).
@@ -10724,11 +11619,7 @@ list_automation_rules(Client, QueryMap, HeadersMap)
 -spec list_automation_rules(map(), map(), map(), proplists:proplist()) ->
     {ok, list_automation_rules_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_automation_rules_errors(), tuple()}.
 list_automation_rules(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/automationrules/list"],
@@ -10760,11 +11651,7 @@ list_automation_rules(Client, QueryMap, HeadersMap, Options0)
 -spec list_configuration_policies(map()) ->
     {ok, list_configuration_policies_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_configuration_policies_errors(), tuple()}.
 list_configuration_policies(Client)
   when is_map(Client) ->
     list_configuration_policies(Client, #{}, #{}).
@@ -10772,11 +11659,7 @@ list_configuration_policies(Client)
 -spec list_configuration_policies(map(), map(), map()) ->
     {ok, list_configuration_policies_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_configuration_policies_errors(), tuple()}.
 list_configuration_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configuration_policies(Client, QueryMap, HeadersMap, []).
@@ -10784,11 +11667,7 @@ list_configuration_policies(Client, QueryMap, HeadersMap)
 -spec list_configuration_policies(map(), map(), map(), proplists:proplist()) ->
     {ok, list_configuration_policies_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_configuration_policies_errors(), tuple()}.
 list_configuration_policies(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/configurationPolicy/list"],
@@ -10820,22 +11699,14 @@ list_configuration_policies(Client, QueryMap, HeadersMap, Options0)
 -spec list_configuration_policy_associations(map(), list_configuration_policy_associations_request()) ->
     {ok, list_configuration_policy_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_configuration_policy_associations_errors(), tuple()}.
 list_configuration_policy_associations(Client, Input) ->
     list_configuration_policy_associations(Client, Input, []).
 
 -spec list_configuration_policy_associations(map(), list_configuration_policy_associations_request(), proplists:proplist()) ->
     {ok, list_configuration_policy_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_configuration_policy_associations_errors(), tuple()}.
 list_configuration_policy_associations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/configurationPolicyAssociation/list"],
@@ -10864,9 +11735,7 @@ list_configuration_policy_associations(Client, Input0, Options0) ->
 -spec list_enabled_products_for_import(map()) ->
     {ok, list_enabled_products_for_import_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_enabled_products_for_import_errors(), tuple()}.
 list_enabled_products_for_import(Client)
   when is_map(Client) ->
     list_enabled_products_for_import(Client, #{}, #{}).
@@ -10874,9 +11743,7 @@ list_enabled_products_for_import(Client)
 -spec list_enabled_products_for_import(map(), map(), map()) ->
     {ok, list_enabled_products_for_import_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_enabled_products_for_import_errors(), tuple()}.
 list_enabled_products_for_import(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_enabled_products_for_import(Client, QueryMap, HeadersMap, []).
@@ -10884,9 +11751,7 @@ list_enabled_products_for_import(Client, QueryMap, HeadersMap)
 -spec list_enabled_products_for_import(map(), map(), map(), proplists:proplist()) ->
     {ok, list_enabled_products_for_import_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_enabled_products_for_import_errors(), tuple()}.
 list_enabled_products_for_import(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/productSubscriptions"],
@@ -10915,11 +11780,7 @@ list_enabled_products_for_import(Client, QueryMap, HeadersMap, Options0)
 -spec list_finding_aggregators(map()) ->
     {ok, list_finding_aggregators_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_finding_aggregators_errors(), tuple()}.
 list_finding_aggregators(Client)
   when is_map(Client) ->
     list_finding_aggregators(Client, #{}, #{}).
@@ -10927,11 +11788,7 @@ list_finding_aggregators(Client)
 -spec list_finding_aggregators(map(), map(), map()) ->
     {ok, list_finding_aggregators_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_finding_aggregators_errors(), tuple()}.
 list_finding_aggregators(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_finding_aggregators(Client, QueryMap, HeadersMap, []).
@@ -10939,11 +11796,7 @@ list_finding_aggregators(Client, QueryMap, HeadersMap)
 -spec list_finding_aggregators(map(), map(), map(), proplists:proplist()) ->
     {ok, list_finding_aggregators_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_finding_aggregators_errors(), tuple()}.
 list_finding_aggregators(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/findingAggregator/list"],
@@ -10974,10 +11827,7 @@ list_finding_aggregators(Client, QueryMap, HeadersMap, Options0)
 -spec list_invitations(map()) ->
     {ok, list_invitations_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_invitations_errors(), tuple()}.
 list_invitations(Client)
   when is_map(Client) ->
     list_invitations(Client, #{}, #{}).
@@ -10985,10 +11835,7 @@ list_invitations(Client)
 -spec list_invitations(map(), map(), map()) ->
     {ok, list_invitations_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_invitations_errors(), tuple()}.
 list_invitations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_invitations(Client, QueryMap, HeadersMap, []).
@@ -10996,10 +11843,7 @@ list_invitations(Client, QueryMap, HeadersMap)
 -spec list_invitations(map(), map(), map(), proplists:proplist()) ->
     {ok, list_invitations_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_invitations_errors(), tuple()}.
 list_invitations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/invitations"],
@@ -11031,10 +11875,7 @@ list_invitations(Client, QueryMap, HeadersMap, Options0)
 -spec list_members(map()) ->
     {ok, list_members_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_members_errors(), tuple()}.
 list_members(Client)
   when is_map(Client) ->
     list_members(Client, #{}, #{}).
@@ -11042,10 +11883,7 @@ list_members(Client)
 -spec list_members(map(), map(), map()) ->
     {ok, list_members_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_members_errors(), tuple()}.
 list_members(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_members(Client, QueryMap, HeadersMap, []).
@@ -11053,10 +11891,7 @@ list_members(Client, QueryMap, HeadersMap)
 -spec list_members(map(), map(), map(), proplists:proplist()) ->
     {ok, list_members_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_members_errors(), tuple()}.
 list_members(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/members"],
@@ -11086,10 +11921,7 @@ list_members(Client, QueryMap, HeadersMap, Options0)
 -spec list_organization_admin_accounts(map()) ->
     {ok, list_organization_admin_accounts_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_organization_admin_accounts_errors(), tuple()}.
 list_organization_admin_accounts(Client)
   when is_map(Client) ->
     list_organization_admin_accounts(Client, #{}, #{}).
@@ -11097,10 +11929,7 @@ list_organization_admin_accounts(Client)
 -spec list_organization_admin_accounts(map(), map(), map()) ->
     {ok, list_organization_admin_accounts_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_organization_admin_accounts_errors(), tuple()}.
 list_organization_admin_accounts(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_organization_admin_accounts(Client, QueryMap, HeadersMap, []).
@@ -11108,10 +11937,7 @@ list_organization_admin_accounts(Client, QueryMap, HeadersMap)
 -spec list_organization_admin_accounts(map(), map(), map(), proplists:proplist()) ->
     {ok, list_organization_admin_accounts_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_organization_admin_accounts_errors(), tuple()}.
 list_organization_admin_accounts(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/organization/admin"],
@@ -11138,10 +11964,7 @@ list_organization_admin_accounts(Client, QueryMap, HeadersMap, Options0)
 -spec list_security_control_definitions(map()) ->
     {ok, list_security_control_definitions_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_security_control_definitions_errors(), tuple()}.
 list_security_control_definitions(Client)
   when is_map(Client) ->
     list_security_control_definitions(Client, #{}, #{}).
@@ -11149,10 +11972,7 @@ list_security_control_definitions(Client)
 -spec list_security_control_definitions(map(), map(), map()) ->
     {ok, list_security_control_definitions_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_security_control_definitions_errors(), tuple()}.
 list_security_control_definitions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_security_control_definitions(Client, QueryMap, HeadersMap, []).
@@ -11160,10 +11980,7 @@ list_security_control_definitions(Client, QueryMap, HeadersMap)
 -spec list_security_control_definitions(map(), map(), map(), proplists:proplist()) ->
     {ok, list_security_control_definitions_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_security_control_definitions_errors(), tuple()}.
 list_security_control_definitions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/securityControls/definitions"],
@@ -11192,10 +12009,7 @@ list_security_control_definitions(Client, QueryMap, HeadersMap, Options0)
 -spec list_standards_control_associations(map(), binary() | list()) ->
     {ok, list_standards_control_associations_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_standards_control_associations_errors(), tuple()}.
 list_standards_control_associations(Client, SecurityControlId)
   when is_map(Client) ->
     list_standards_control_associations(Client, SecurityControlId, #{}, #{}).
@@ -11203,10 +12017,7 @@ list_standards_control_associations(Client, SecurityControlId)
 -spec list_standards_control_associations(map(), binary() | list(), map(), map()) ->
     {ok, list_standards_control_associations_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_standards_control_associations_errors(), tuple()}.
 list_standards_control_associations(Client, SecurityControlId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_standards_control_associations(Client, SecurityControlId, QueryMap, HeadersMap, []).
@@ -11214,10 +12025,7 @@ list_standards_control_associations(Client, SecurityControlId, QueryMap, Headers
 -spec list_standards_control_associations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_standards_control_associations_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_standards_control_associations_errors(), tuple()}.
 list_standards_control_associations(Client, SecurityControlId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/associations"],
@@ -11244,9 +12052,7 @@ list_standards_control_associations(Client, SecurityControlId, QueryMap, Headers
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -11254,9 +12060,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -11264,9 +12068,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -11294,24 +12096,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec start_configuration_policy_association(map(), start_configuration_policy_association_request()) ->
     {ok, start_configuration_policy_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_configuration_policy_association_errors(), tuple()}.
 start_configuration_policy_association(Client, Input) ->
     start_configuration_policy_association(Client, Input, []).
 
 -spec start_configuration_policy_association(map(), start_configuration_policy_association_request(), proplists:proplist()) ->
     {ok, start_configuration_policy_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_configuration_policy_association_errors(), tuple()}.
 start_configuration_policy_association(Client, Input0, Options0) ->
     Method = post,
     Path = ["/configurationPolicyAssociation/associate"],
@@ -11349,24 +12141,14 @@ start_configuration_policy_association(Client, Input0, Options0) ->
 -spec start_configuration_policy_disassociation(map(), start_configuration_policy_disassociation_request()) ->
     {ok, start_configuration_policy_disassociation_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_configuration_policy_disassociation_errors(), tuple()}.
 start_configuration_policy_disassociation(Client, Input) ->
     start_configuration_policy_disassociation(Client, Input, []).
 
 -spec start_configuration_policy_disassociation(map(), start_configuration_policy_disassociation_request(), proplists:proplist()) ->
     {ok, start_configuration_policy_disassociation_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_configuration_policy_disassociation_errors(), tuple()}.
 start_configuration_policy_disassociation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/configurationPolicyAssociation/disassociate"],
@@ -11393,18 +12175,14 @@ start_configuration_policy_disassociation(Client, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -11431,18 +12209,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -11471,20 +12245,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_action_target(map(), binary() | list(), update_action_target_request()) ->
     {ok, update_action_target_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_action_target_errors(), tuple()}.
 update_action_target(Client, ActionTargetArn, Input) ->
     update_action_target(Client, ActionTargetArn, Input, []).
 
 -spec update_action_target(map(), binary() | list(), update_action_target_request(), proplists:proplist()) ->
     {ok, update_action_target_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_action_target_errors(), tuple()}.
 update_action_target(Client, ActionTargetArn, Input0, Options0) ->
     Method = patch,
     Path = ["/actionTargets/", aws_util:encode_multi_segment_uri(ActionTargetArn), ""],
@@ -11515,26 +12283,14 @@ update_action_target(Client, ActionTargetArn, Input0, Options0) ->
 -spec update_configuration_policy(map(), binary() | list(), update_configuration_policy_request()) ->
     {ok, update_configuration_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_configuration_policy_errors(), tuple()}.
 update_configuration_policy(Client, Identifier, Input) ->
     update_configuration_policy(Client, Identifier, Input, []).
 
 -spec update_configuration_policy(map(), binary() | list(), update_configuration_policy_request(), proplists:proplist()) ->
     {ok, update_configuration_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_configuration_policy_errors(), tuple()}.
 update_configuration_policy(Client, Identifier, Input0, Options0) ->
     Method = patch,
     Path = ["/configurationPolicy/", aws_util:encode_uri(Identifier), ""],
@@ -11568,24 +12324,14 @@ update_configuration_policy(Client, Identifier, Input0, Options0) ->
 -spec update_finding_aggregator(map(), update_finding_aggregator_request()) ->
     {ok, update_finding_aggregator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_finding_aggregator_errors(), tuple()}.
 update_finding_aggregator(Client, Input) ->
     update_finding_aggregator(Client, Input, []).
 
 -spec update_finding_aggregator(map(), update_finding_aggregator_request(), proplists:proplist()) ->
     {ok, update_finding_aggregator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_finding_aggregator_errors(), tuple()}.
 update_finding_aggregator(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/findingAggregator/update"],
@@ -11622,22 +12368,14 @@ update_finding_aggregator(Client, Input0, Options0) ->
 -spec update_findings(map(), update_findings_request()) ->
     {ok, update_findings_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_findings_errors(), tuple()}.
 update_findings(Client, Input) ->
     update_findings(Client, Input, []).
 
 -spec update_findings(map(), update_findings_request(), proplists:proplist()) ->
     {ok, update_findings_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_findings_errors(), tuple()}.
 update_findings(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/findings"],
@@ -11665,22 +12403,14 @@ update_findings(Client, Input0, Options0) ->
 -spec update_insight(map(), binary() | list(), update_insight_request()) ->
     {ok, update_insight_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_insight_errors(), tuple()}.
 update_insight(Client, InsightArn, Input) ->
     update_insight(Client, InsightArn, Input, []).
 
 -spec update_insight(map(), binary() | list(), update_insight_request(), proplists:proplist()) ->
     {ok, update_insight_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_insight_errors(), tuple()}.
 update_insight(Client, InsightArn, Input0, Options0) ->
     Method = patch,
     Path = ["/insights/", aws_util:encode_multi_segment_uri(InsightArn), ""],
@@ -11710,26 +12440,14 @@ update_insight(Client, InsightArn, Input0, Options0) ->
 -spec update_organization_configuration(map(), update_organization_configuration_request()) ->
     {ok, update_organization_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_organization_configuration_errors(), tuple()}.
 update_organization_configuration(Client, Input) ->
     update_organization_configuration(Client, Input, []).
 
 -spec update_organization_configuration(map(), update_organization_configuration_request(), proplists:proplist()) ->
     {ok, update_organization_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_organization_configuration_errors(), tuple()}.
 update_organization_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/organization/configuration"],
@@ -11757,26 +12475,14 @@ update_organization_configuration(Client, Input0, Options0) ->
 -spec update_security_control(map(), update_security_control_request()) ->
     {ok, update_security_control_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_security_control_errors(), tuple()}.
 update_security_control(Client, Input) ->
     update_security_control(Client, Input, []).
 
 -spec update_security_control(map(), update_security_control_request(), proplists:proplist()) ->
     {ok, update_security_control_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_security_control_errors(), tuple()}.
 update_security_control(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/securityControl/update"],
@@ -11803,24 +12509,14 @@ update_security_control(Client, Input0, Options0) ->
 -spec update_security_hub_configuration(map(), update_security_hub_configuration_request()) ->
     {ok, update_security_hub_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_security_hub_configuration_errors(), tuple()}.
 update_security_hub_configuration(Client, Input) ->
     update_security_hub_configuration(Client, Input, []).
 
 -spec update_security_hub_configuration(map(), update_security_hub_configuration_request(), proplists:proplist()) ->
     {ok, update_security_hub_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_security_hub_configuration_errors(), tuple()}.
 update_security_hub_configuration(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/accounts"],
@@ -11849,22 +12545,14 @@ update_security_hub_configuration(Client, Input0, Options0) ->
 -spec update_standards_control(map(), binary() | list(), update_standards_control_request()) ->
     {ok, update_standards_control_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_standards_control_errors(), tuple()}.
 update_standards_control(Client, StandardsControlArn, Input) ->
     update_standards_control(Client, StandardsControlArn, Input, []).
 
 -spec update_standards_control(map(), binary() | list(), update_standards_control_request(), proplists:proplist()) ->
     {ok, update_standards_control_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_access_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_standards_control_errors(), tuple()}.
 update_standards_control(Client, StandardsControlArn, Input0, Options0) ->
     Method = patch,
     Path = ["/standards/control/", aws_util:encode_multi_segment_uri(StandardsControlArn), ""],

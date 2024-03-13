@@ -45,12 +45,14 @@
 %% }
 -type get_asset_contract_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_asset_contracts_output() :: #{
 %%   <<"contracts">> => list(asset_contract()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_asset_contracts_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_get_token_balance_input_item() :: #{
@@ -59,6 +61,7 @@
 %%   <<"tokenIdentifier">> => token_identifier()
 %% }
 -type batch_get_token_balance_input_item() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_asset_contract_output() :: #{
@@ -69,6 +72,7 @@
 %% }
 -type get_asset_contract_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% contract_filter() :: #{
 %%   <<"deployerAddress">> => string(),
@@ -77,17 +81,20 @@
 %% }
 -type contract_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% owner_filter() :: #{
 %%   <<"address">> => string()
 %% }
 -type owner_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% blockchain_instant() :: #{
 %%   <<"time">> => [non_neg_integer()]
 %% }
 -type blockchain_instant() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -96,6 +103,7 @@
 %%   <<"resourceType">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_get_token_balance_output_item() :: #{
@@ -107,6 +115,7 @@
 %% }
 -type batch_get_token_balance_output_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_token_balances_input() :: #{
 %%   <<"maxResults">> => [integer()],
@@ -115,6 +124,7 @@
 %%   <<"tokenFilter">> := token_filter()
 %% }
 -type list_token_balances_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_transactions_input() :: #{
@@ -129,6 +139,7 @@
 %% }
 -type list_transactions_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => string(),
@@ -139,6 +150,7 @@
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% transaction_output_item() :: #{
 %%   <<"confirmationStatus">> => string(),
@@ -148,6 +160,7 @@
 %% }
 -type transaction_output_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_contract() :: #{
 %%   <<"contractIdentifier">> => contract_identifier(),
@@ -156,12 +169,14 @@
 %% }
 -type asset_contract() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception_field() :: #{
 %%   <<"message">> => [string()],
 %%   <<"name">> => [string()]
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_get_token_balance_output() :: #{
@@ -170,12 +185,14 @@
 %% }
 -type batch_get_token_balance_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => string(),
 %%   <<"retryAfterSeconds">> => [integer()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_token_balance_output() :: #{
@@ -187,6 +204,7 @@
 %% }
 -type get_token_balance_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% contract_metadata() :: #{
 %%   <<"decimals">> => [integer()],
@@ -194,6 +212,7 @@
 %%   <<"symbol">> => [string()]
 %% }
 -type contract_metadata() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_get_token_balance_error_item() :: #{
@@ -206,17 +225,20 @@
 %% }
 -type batch_get_token_balance_error_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_transaction_output() :: #{
 %%   <<"transaction">> => transaction()
 %% }
 -type get_transaction_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_transactions_sort() :: #{
@@ -225,12 +247,14 @@
 %% }
 -type list_transactions_sort() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_transaction_input() :: #{
 %%   <<"network">> := string(),
 %%   <<"transactionHash">> := string()
 %% }
 -type get_transaction_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% token_identifier() :: #{
@@ -240,11 +264,13 @@
 %% }
 -type token_identifier() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_token_balance_input() :: #{
 %%   <<"getTokenBalanceInputs">> => list(batch_get_token_balance_input_item()())
 %% }
 -type batch_get_token_balance_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_transaction_events_input() :: #{
@@ -255,6 +281,7 @@
 %% }
 -type list_transaction_events_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"fieldList">> => list(validation_exception_field()()),
@@ -263,11 +290,13 @@
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% confirmation_status_filter() :: #{
 %%   <<"include">> => list(string()())
 %% }
 -type confirmation_status_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% throttling_exception() :: #{
@@ -277,6 +306,7 @@
 %%   <<"serviceCode">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% token_balance() :: #{
@@ -288,6 +318,7 @@
 %% }
 -type token_balance() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_asset_contracts_input() :: #{
 %%   <<"contractFilter">> := contract_filter(),
@@ -296,11 +327,13 @@
 %% }
 -type list_asset_contracts_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% owner_identifier() :: #{
 %%   <<"address">> => string()
 %% }
 -type owner_identifier() :: #{binary() => any()}.
+
 
 %% Example:
 %% contract_identifier() :: #{
@@ -308,6 +341,7 @@
 %%   <<"network">> => string()
 %% }
 -type contract_identifier() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_token_balance_input() :: #{
@@ -317,6 +351,7 @@
 %% }
 -type get_token_balance_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_token_balances_output() :: #{
 %%   <<"nextToken">> => string(),
@@ -324,12 +359,14 @@
 %% }
 -type list_token_balances_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_transaction_events_output() :: #{
 %%   <<"events">> => list(transaction_event()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_transaction_events_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% transaction_event() :: #{
@@ -345,6 +382,7 @@
 %%   <<"voutIndex">> => [integer()]
 %% }
 -type transaction_event() :: #{binary() => any()}.
+
 
 %% Example:
 %% transaction() :: #{
@@ -371,12 +409,14 @@
 %% }
 -type transaction() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_transactions_output() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"transactions">> => list(transaction_output_item()())
 %% }
 -type list_transactions_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% token_filter() :: #{
@@ -385,6 +425,66 @@
 %%   <<"tokenId">> => string()
 %% }
 -type token_filter() :: #{binary() => any()}.
+
+-type batch_get_token_balance_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type get_asset_contract_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type get_token_balance_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type get_transaction_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type list_asset_contracts_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type list_token_balances_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type list_transaction_events_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type list_transactions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
 
 %%====================================================================
 %% API
@@ -399,24 +499,14 @@
 -spec batch_get_token_balance(map(), batch_get_token_balance_input()) ->
     {ok, batch_get_token_balance_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_token_balance_errors(), tuple()}.
 batch_get_token_balance(Client, Input) ->
     batch_get_token_balance(Client, Input, []).
 
 -spec batch_get_token_balance(map(), batch_get_token_balance_input(), proplists:proplist()) ->
     {ok, batch_get_token_balance_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_token_balance_errors(), tuple()}.
 batch_get_token_balance(Client, Input0, Options0) ->
     Method = post,
     Path = ["/batch-get-token-balance"],
@@ -450,24 +540,14 @@ batch_get_token_balance(Client, Input0, Options0) ->
 -spec get_asset_contract(map(), get_asset_contract_input()) ->
     {ok, get_asset_contract_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_asset_contract_errors(), tuple()}.
 get_asset_contract(Client, Input) ->
     get_asset_contract(Client, Input, []).
 
 -spec get_asset_contract(map(), get_asset_contract_input(), proplists:proplist()) ->
     {ok, get_asset_contract_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_asset_contract_errors(), tuple()}.
 get_asset_contract(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-asset-contract"],
@@ -498,24 +578,14 @@ get_asset_contract(Client, Input0, Options0) ->
 -spec get_token_balance(map(), get_token_balance_input()) ->
     {ok, get_token_balance_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_token_balance_errors(), tuple()}.
 get_token_balance(Client, Input) ->
     get_token_balance(Client, Input, []).
 
 -spec get_token_balance(map(), get_token_balance_input(), proplists:proplist()) ->
     {ok, get_token_balance_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_token_balance_errors(), tuple()}.
 get_token_balance(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-token-balance"],
@@ -547,24 +617,14 @@ get_token_balance(Client, Input0, Options0) ->
 -spec get_transaction(map(), get_transaction_input()) ->
     {ok, get_transaction_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_transaction_errors(), tuple()}.
 get_transaction(Client, Input) ->
     get_transaction(Client, Input, []).
 
 -spec get_transaction(map(), get_transaction_input(), proplists:proplist()) ->
     {ok, get_transaction_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_transaction_errors(), tuple()}.
 get_transaction(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-transaction"],
@@ -596,22 +656,14 @@ get_transaction(Client, Input0, Options0) ->
 -spec list_asset_contracts(map(), list_asset_contracts_input()) ->
     {ok, list_asset_contracts_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_asset_contracts_errors(), tuple()}.
 list_asset_contracts(Client, Input) ->
     list_asset_contracts(Client, Input, []).
 
 -spec list_asset_contracts(map(), list_asset_contracts_input(), proplists:proplist()) ->
     {ok, list_asset_contracts_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_asset_contracts_errors(), tuple()}.
 list_asset_contracts(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-asset-contracts"],
@@ -648,22 +700,14 @@ list_asset_contracts(Client, Input0, Options0) ->
 -spec list_token_balances(map(), list_token_balances_input()) ->
     {ok, list_token_balances_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_token_balances_errors(), tuple()}.
 list_token_balances(Client, Input) ->
     list_token_balances(Client, Input, []).
 
 -spec list_token_balances(map(), list_token_balances_input(), proplists:proplist()) ->
     {ok, list_token_balances_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_token_balances_errors(), tuple()}.
 list_token_balances(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-token-balances"],
@@ -698,22 +742,14 @@ list_token_balances(Client, Input0, Options0) ->
 -spec list_transaction_events(map(), list_transaction_events_input()) ->
     {ok, list_transaction_events_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_transaction_events_errors(), tuple()}.
 list_transaction_events(Client, Input) ->
     list_transaction_events(Client, Input, []).
 
 -spec list_transaction_events(map(), list_transaction_events_input(), proplists:proplist()) ->
     {ok, list_transaction_events_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_transaction_events_errors(), tuple()}.
 list_transaction_events(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-transaction-events"],
@@ -741,22 +777,14 @@ list_transaction_events(Client, Input0, Options0) ->
 -spec list_transactions(map(), list_transactions_input()) ->
     {ok, list_transactions_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_transactions_errors(), tuple()}.
 list_transactions(Client, Input) ->
     list_transactions(Client, Input, []).
 
 -spec list_transactions(map(), list_transactions_input(), proplists:proplist()) ->
     {ok, list_transactions_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_transactions_errors(), tuple()}.
 list_transactions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-transactions"],

@@ -265,12 +265,14 @@
 %% }
 -type list_functions_by_code_signing_config_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% account_usage() :: #{
 %%   <<"FunctionCount">> => float(),
 %%   <<"TotalCodeSize">> => float()
 %% }
 -type account_usage() :: #{binary() => any()}.
+
 
 %% Example:
 %% function_event_invoke_config() :: #{
@@ -282,12 +284,14 @@
 %% }
 -type function_event_invoke_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_aliases_response() :: #{
 %%   <<"Aliases">> => list(alias_configuration()()),
 %%   <<"NextMarker">> => string()
 %% }
 -type list_aliases_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% unsupported_media_type_exception() :: #{
@@ -296,12 +300,14 @@
 %% }
 -type unsupported_media_type_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% kms_disabled_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Type">> => string()
 %% }
 -type kms_disabled_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_aliases_request() :: #{
@@ -310,6 +316,7 @@
 %%   <<"MaxItems">> => integer()
 %% }
 -type list_aliases_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% function_code() :: #{
@@ -321,12 +328,14 @@
 %% }
 -type function_code() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_security_group_id_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Type">> => string()
 %% }
 -type invalid_security_group_id_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_event_source_mapping_request() :: #{
@@ -348,6 +357,7 @@
 %% }
 -type update_event_source_mapping_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% runtime_version_config() :: #{
 %%   <<"Error">> => runtime_version_error(),
@@ -355,29 +365,35 @@
 %% }
 -type runtime_version_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% snap_start() :: #{
 %%   <<"ApplyOn">> => list(any())
 %% }
 -type snap_start() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"Tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_code_signing_config_request() :: #{}
 -type get_code_signing_config_request() :: #{}.
+
 
 %% Example:
 %% remove_layer_version_permission_request() :: #{
 %%   <<"RevisionId">> => string()
 %% }
 -type remove_layer_version_permission_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_function_code_signing_config_request() :: #{}
 -type delete_function_code_signing_config_request() :: #{}.
+
 
 %% Example:
 %% environment_response() :: #{
@@ -385,6 +401,7 @@
 %%   <<"Variables">> => map()
 %% }
 -type environment_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% provisioned_concurrency_config_list_item() :: #{
@@ -398,6 +415,7 @@
 %% }
 -type provisioned_concurrency_config_list_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_alias_request() :: #{
 %%   <<"Description">> => string(),
@@ -407,6 +425,7 @@
 %% }
 -type update_alias_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_functions_response() :: #{
 %%   <<"Functions">> => list(function_configuration()()),
@@ -414,11 +433,13 @@
 %% }
 -type list_functions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_function_concurrency_request() :: #{
 %%   <<"ReservedConcurrentExecutions">> := integer()
 %% }
 -type put_function_concurrency_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% policy_length_exceeded_exception() :: #{
@@ -427,12 +448,14 @@
 %% }
 -type policy_length_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_provisioned_concurrency_configs_response() :: #{
 %%   <<"NextMarker">> => string(),
 %%   <<"ProvisionedConcurrencyConfigs">> => list(provisioned_concurrency_config_list_item()())
 %% }
 -type list_provisioned_concurrency_configs_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_code_signing_configs_response() :: #{
@@ -441,11 +464,13 @@
 %% }
 -type list_code_signing_configs_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% amazon_managed_kafka_event_source_config() :: #{
 %%   <<"ConsumerGroupId">> => string()
 %% }
 -type amazon_managed_kafka_event_source_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% invoke_with_response_stream_response() :: #{
@@ -456,11 +481,13 @@
 %% }
 -type invoke_with_response_stream_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% filter_criteria() :: #{
 %%   <<"Filters">> => list(filter()())
 %% }
 -type filter_criteria() :: #{binary() => any()}.
+
 
 %% Example:
 %% function_code_location() :: #{
@@ -470,9 +497,11 @@
 %%   <<"ResolvedImageUri">> => string()
 %% }
 -type function_code_location() :: #{binary() => any()}.
+
 %% Example:
 %% get_account_settings_request() :: #{}
 -type get_account_settings_request() :: #{}.
+
 
 %% Example:
 %% create_alias_request() :: #{
@@ -483,12 +512,14 @@
 %% }
 -type create_alias_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_in_use_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Type">> => string()
 %% }
 -type resource_in_use_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_layer_version_policy_response() :: #{
@@ -497,6 +528,7 @@
 %% }
 -type get_layer_version_policy_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_account_settings_response() :: #{
 %%   <<"AccountLimit">> => account_limit(),
@@ -504,11 +536,13 @@
 %% }
 -type get_account_settings_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_policy_request() :: #{
 %%   <<"Qualifier">> => string()
 %% }
 -type get_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_layer_version_response() :: #{
@@ -524,6 +558,7 @@
 %% }
 -type get_layer_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_function_event_invoke_config_request() :: #{
 %%   <<"DestinationConfig">> => destination_config(),
@@ -533,11 +568,13 @@
 %% }
 -type put_function_event_invoke_config_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% invoke_async_request() :: #{
 %%   <<"InvokeArgs">> := binary()
 %% }
 -type invoke_async_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_layers_response() :: #{
@@ -546,15 +583,18 @@
 %% }
 -type list_layers_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% source_access_configuration() :: #{
 %%   <<"Type">> => list(any()),
 %%   <<"URI">> => string()
 %% }
 -type source_access_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% get_layer_version_policy_request() :: #{}
 -type get_layer_version_policy_request() :: #{}.
+
 
 %% Example:
 %% list_code_signing_configs_request() :: #{
@@ -562,6 +602,7 @@
 %%   <<"MaxItems">> => integer()
 %% }
 -type list_code_signing_configs_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% layer_version_content_output() :: #{
@@ -573,11 +614,13 @@
 %% }
 -type layer_version_content_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_response() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type list_tags_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% invocation_response() :: #{
@@ -589,11 +632,13 @@
 %% }
 -type invocation_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_function_url_config_request() :: #{
 %%   <<"Qualifier">> => string()
 %% }
 -type delete_function_url_config_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% ec2_access_denied_exception() :: #{
@@ -601,6 +646,7 @@
 %%   <<"Type">> => string()
 %% }
 -type ec2_access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_function_url_config_request() :: #{
@@ -611,11 +657,13 @@
 %% }
 -type update_function_url_config_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% self_managed_kafka_event_source_config() :: #{
 %%   <<"ConsumerGroupId">> => string()
 %% }
 -type self_managed_kafka_event_source_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% snap_start_not_ready_exception() :: #{
@@ -624,11 +672,13 @@
 %% }
 -type snap_start_not_ready_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_function_configuration_request() :: #{
 %%   <<"Qualifier">> => string()
 %% }
 -type get_function_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_function_response() :: #{
@@ -639,6 +689,7 @@
 %% }
 -type get_function_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% logging_config() :: #{
 %%   <<"ApplicationLogLevel">> => list(any()),
@@ -648,14 +699,17 @@
 %% }
 -type logging_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_function_concurrency_request() :: #{}
 -type delete_function_concurrency_request() :: #{}.
+
 
 %% Example:
 %% image_config() :: #{
@@ -664,6 +718,7 @@
 %%   <<"WorkingDirectory">> => string()
 %% }
 -type image_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_function_url_config_response() :: #{
@@ -677,6 +732,7 @@
 %% }
 -type update_function_url_config_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_requests_exception() :: #{
 %%   <<"Reason">> => list(any()),
@@ -685,9 +741,11 @@
 %%   <<"retryAfterSeconds">> => string()
 %% }
 -type too_many_requests_exception() :: #{binary() => any()}.
+
 %% Example:
 %% get_function_code_signing_config_request() :: #{}
 -type get_function_code_signing_config_request() :: #{}.
+
 
 %% Example:
 %% destination_config() :: #{
@@ -696,6 +754,7 @@
 %% }
 -type destination_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% snap_start_timeout_exception() :: #{
 %%   <<"Message">> => string(),
@@ -703,15 +762,18 @@
 %% }
 -type snap_start_timeout_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_provisioned_concurrency_config_request() :: #{
 %%   <<"ProvisionedConcurrentExecutions">> := integer(),
 %%   <<"Qualifier">> := string()
 %% }
 -type put_provisioned_concurrency_config_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_layer_version_request() :: #{}
 -type delete_layer_version_request() :: #{}.
+
 
 %% Example:
 %% create_code_signing_config_response() :: #{
@@ -719,11 +781,13 @@
 %% }
 -type create_code_signing_config_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% invoke_response_stream_update() :: #{
 %%   <<"Payload">> => binary()
 %% }
 -type invoke_response_stream_update() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_function_event_invoke_configs_response() :: #{
@@ -732,14 +796,17 @@
 %% }
 -type list_function_event_invoke_configs_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_function_concurrency_response() :: #{
 %%   <<"ReservedConcurrentExecutions">> => integer()
 %% }
 -type get_function_concurrency_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_event_source_mapping_request() :: #{}
 -type delete_event_source_mapping_request() :: #{}.
+
 
 %% Example:
 %% recursive_invocation_exception() :: #{
@@ -748,24 +815,29 @@
 %% }
 -type recursive_invocation_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_runtime_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Type">> => string()
 %% }
 -type invalid_runtime_exception() :: #{binary() => any()}.
+
 %% Example:
 %% get_function_concurrency_request() :: #{}
 -type get_function_concurrency_request() :: #{}.
+
 %% Example:
 %% get_alias_request() :: #{}
 -type get_alias_request() :: #{}.
+
 
 %% Example:
 %% on_failure() :: #{
 %%   <<"Destination">> => string()
 %% }
 -type on_failure() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_event_source_mappings_response() :: #{
@@ -774,11 +846,13 @@
 %% }
 -type list_event_source_mappings_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_runtime_management_config_request() :: #{
 %%   <<"Qualifier">> => string()
 %% }
 -type get_runtime_management_config_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% invalid_request_content_exception() :: #{
@@ -786,6 +860,7 @@
 %%   <<"message">> => string()
 %% }
 -type invalid_request_content_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_runtime_management_config_request() :: #{
@@ -795,11 +870,13 @@
 %% }
 -type put_runtime_management_config_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_function_request() :: #{
 %%   <<"Qualifier">> => string()
 %% }
 -type get_function_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -807,6 +884,7 @@
 %%   <<"Type">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% publish_layer_version_response() :: #{
@@ -822,6 +900,7 @@
 %% }
 -type publish_layer_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% document_db_event_source_config() :: #{
 %%   <<"CollectionName">> => string(),
@@ -829,9 +908,11 @@
 %%   <<"FullDocument">> => list(any())
 %% }
 -type document_db_event_source_config() :: #{binary() => any()}.
+
 %% Example:
 %% delete_code_signing_config_request() :: #{}
 -type delete_code_signing_config_request() :: #{}.
+
 
 %% Example:
 %% create_function_url_config_response() :: #{
@@ -844,6 +925,7 @@
 %% }
 -type create_function_url_config_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% code_signing_config_not_found_exception() :: #{
 %%   <<"Message">> => string(),
@@ -851,17 +933,20 @@
 %% }
 -type code_signing_config_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% environment() :: #{
 %%   <<"Variables">> => map()
 %% }
 -type environment() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_function_request() :: #{
 %%   <<"Qualifier">> => string()
 %% }
 -type delete_function_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% publish_version_request() :: #{
@@ -871,12 +956,14 @@
 %% }
 -type publish_version_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_function_code_signing_config_response() :: #{
 %%   <<"CodeSigningConfigArn">> => string(),
 %%   <<"FunctionName">> => string()
 %% }
 -type put_function_code_signing_config_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% alias_configuration() :: #{
@@ -888,6 +975,7 @@
 %%   <<"RoutingConfig">> => alias_routing_configuration()
 %% }
 -type alias_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_function_code_request() :: #{
@@ -903,6 +991,7 @@
 %% }
 -type update_function_code_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_code_signing_config_request() :: #{
 %%   <<"AllowedPublishers">> := allowed_publishers(),
@@ -911,12 +1000,14 @@
 %% }
 -type create_code_signing_config_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_parameter_value_exception() :: #{
 %%   <<"Type">> => string(),
 %%   <<"message">> => string()
 %% }
 -type invalid_parameter_value_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% event_source_mapping_configuration() :: #{
@@ -950,6 +1041,7 @@
 %% }
 -type event_source_mapping_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_event_source_mapping_request() :: #{
 %%   <<"AmazonManagedKafkaEventSourceConfig">> => amazon_managed_kafka_event_source_config(),
@@ -978,6 +1070,7 @@
 %% }
 -type create_event_source_mapping_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_function_url_config_request() :: #{
 %%   <<"AuthType">> := list(any()),
@@ -987,6 +1080,7 @@
 %% }
 -type create_function_url_config_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% layer() :: #{
 %%   <<"Arn">> => string(),
@@ -995,6 +1089,7 @@
 %%   <<"SigningProfileVersionArn">> => string()
 %% }
 -type layer() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_provisioned_concurrency_config_response() :: #{
@@ -1007,6 +1102,7 @@
 %% }
 -type get_provisioned_concurrency_config_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% vpc_config() :: #{
 %%   <<"Ipv6AllowedForDualStack">> => boolean(),
@@ -1015,12 +1111,14 @@
 %% }
 -type vpc_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Type">> => string()
 %% }
 -type service_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% publish_layer_version_request() :: #{
@@ -1032,6 +1130,7 @@
 %% }
 -type publish_layer_version_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% subnet_ip_address_limit_reached_exception() :: #{
 %%   <<"Message">> => string(),
@@ -1039,12 +1138,14 @@
 %% }
 -type subnet_ip_address_limit_reached_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% remove_permission_request() :: #{
 %%   <<"Qualifier">> => string(),
 %%   <<"RevisionId">> => string()
 %% }
 -type remove_permission_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% account_limit() :: #{
@@ -1056,6 +1157,7 @@
 %% }
 -type account_limit() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_function_event_invoke_config_request() :: #{
 %%   <<"DestinationConfig">> => destination_config(),
@@ -1064,9 +1166,11 @@
 %%   <<"Qualifier">> => string()
 %% }
 -type update_function_event_invoke_config_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_code_signing_config_response() :: #{}
 -type delete_code_signing_config_response() :: #{}.
+
 
 %% Example:
 %% file_system_config() :: #{
@@ -1075,17 +1179,20 @@
 %% }
 -type file_system_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% tracing_config() :: #{
 %%   <<"Mode">> => list(any())
 %% }
 -type tracing_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_layer_version_by_arn_request() :: #{
 %%   <<"Arn">> := string()
 %% }
 -type get_layer_version_by_arn_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% code_verification_failed_exception() :: #{
@@ -1094,11 +1201,13 @@
 %% }
 -type code_verification_failed_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% ephemeral_storage() :: #{
 %%   <<"Size">> => integer()
 %% }
 -type ephemeral_storage() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_provisioned_concurrency_config_response() :: #{
@@ -1111,11 +1220,13 @@
 %% }
 -type put_provisioned_concurrency_config_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% filter() :: #{
 %%   <<"Pattern">> => string()
 %% }
 -type filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% layer_versions_list_item() :: #{
@@ -1129,6 +1240,7 @@
 %% }
 -type layer_versions_list_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_layer_versions_response() :: #{
 %%   <<"LayerVersions">> => list(layer_versions_list_item()()),
@@ -1136,11 +1248,13 @@
 %% }
 -type list_layer_versions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% invoke_async_response() :: #{
 %%   <<"Status">> => integer()
 %% }
 -type invoke_async_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_versions_by_function_request() :: #{
@@ -1149,6 +1263,7 @@
 %% }
 -type list_versions_by_function_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% request_too_large_exception() :: #{
 %%   <<"Type">> => string(),
@@ -1156,11 +1271,13 @@
 %% }
 -type request_too_large_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% scaling_config() :: #{
 %%   <<"MaximumConcurrency">> => integer()
 %% }
 -type scaling_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_policy_response() :: #{
@@ -1169,11 +1286,13 @@
 %% }
 -type get_policy_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_provisioned_concurrency_config_request() :: #{
 %%   <<"Qualifier">> := string()
 %% }
 -type get_provisioned_concurrency_config_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_functions_request() :: #{
@@ -1183,6 +1302,7 @@
 %%   <<"MaxItems">> => integer()
 %% }
 -type list_functions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% add_layer_version_permission_request() :: #{
@@ -1194,12 +1314,14 @@
 %% }
 -type add_layer_version_permission_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_functions_by_code_signing_config_request() :: #{
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => integer()
 %% }
 -type list_functions_by_code_signing_config_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_event_source_mappings_request() :: #{
@@ -1210,12 +1332,14 @@
 %% }
 -type list_event_source_mappings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% kms_access_denied_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Type">> => string()
 %% }
 -type kms_access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_code_signing_config_request() :: #{
@@ -1225,11 +1349,13 @@
 %% }
 -type update_code_signing_config_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_function_code_signing_config_request() :: #{
 %%   <<"CodeSigningConfigArn">> := string()
 %% }
 -type put_function_code_signing_config_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% add_layer_version_permission_response() :: #{
@@ -1237,9 +1363,11 @@
 %%   <<"Statement">> => string()
 %% }
 -type add_layer_version_permission_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_event_source_mapping_request() :: #{}
 -type get_event_source_mapping_request() :: #{}.
+
 
 %% Example:
 %% invocation_request() :: #{
@@ -1251,12 +1379,14 @@
 %% }
 -type invocation_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_zip_file_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Type">> => string()
 %% }
 -type invalid_zip_file_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% invoke_with_response_stream_complete_event() :: #{
@@ -1266,12 +1396,14 @@
 %% }
 -type invoke_with_response_stream_complete_event() :: #{binary() => any()}.
 
+
 %% Example:
 %% kms_not_found_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Type">> => string()
 %% }
 -type kms_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% invoke_with_response_stream_request() :: #{
@@ -1283,11 +1415,13 @@
 %% }
 -type invoke_with_response_stream_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_function_url_config_request() :: #{
 %%   <<"Qualifier">> => string()
 %% }
 -type get_function_url_config_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_code_signing_config_response() :: #{
@@ -1295,11 +1429,13 @@
 %% }
 -type update_code_signing_config_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% dead_letter_config() :: #{
 %%   <<"TargetArn">> => string()
 %% }
 -type dead_letter_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% e_f_s_mount_timeout_exception() :: #{
@@ -1308,11 +1444,13 @@
 %% }
 -type e_f_s_mount_timeout_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_provisioned_concurrency_config_request() :: #{
 %%   <<"Qualifier">> := string()
 %% }
 -type delete_provisioned_concurrency_config_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% image_config_error() :: #{
@@ -1320,6 +1458,7 @@
 %%   <<"Message">> => string()
 %% }
 -type image_config_error() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_layers_request() :: #{
@@ -1330,6 +1469,7 @@
 %% }
 -type list_layers_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% provisioned_concurrency_config_not_found_exception() :: #{
 %%   <<"Type">> => string(),
@@ -1337,11 +1477,13 @@
 %% }
 -type provisioned_concurrency_config_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_code_signing_config_response() :: #{
 %%   <<"CodeSigningConfig">> => code_signing_config()
 %% }
 -type get_code_signing_config_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% runtime_version_error() :: #{
@@ -1349,9 +1491,11 @@
 %%   <<"Message">> => string()
 %% }
 -type runtime_version_error() :: #{binary() => any()}.
+
 %% Example:
 %% get_layer_version_request() :: #{}
 -type get_layer_version_request() :: #{}.
+
 
 %% Example:
 %% function_configuration() :: #{
@@ -1394,12 +1538,14 @@
 %% }
 -type function_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% e_f_s_mount_connectivity_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Type">> => string()
 %% }
 -type e_f_s_mount_connectivity_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_runtime_management_config_response() :: #{
@@ -1409,6 +1555,7 @@
 %% }
 -type get_runtime_management_config_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_runtime_management_config_response() :: #{
 %%   <<"FunctionArn">> => string(),
@@ -1417,6 +1564,7 @@
 %% }
 -type put_runtime_management_config_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% e_n_i_limit_reached_exception() :: #{
 %%   <<"Message">> => string(),
@@ -1424,12 +1572,14 @@
 %% }
 -type e_n_i_limit_reached_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_function_url_configs_request() :: #{
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => integer()
 %% }
 -type list_function_url_configs_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_layer_versions_request() :: #{
@@ -1440,11 +1590,13 @@
 %% }
 -type list_layer_versions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_function_event_invoke_config_request() :: #{
 %%   <<"Qualifier">> => string()
 %% }
 -type delete_function_event_invoke_config_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% e_f_s_mount_failure_exception() :: #{
@@ -1452,6 +1604,7 @@
 %%   <<"Type">> => string()
 %% }
 -type e_f_s_mount_failure_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% cors() :: #{
@@ -1463,6 +1616,7 @@
 %%   <<"MaxAge">> => integer()
 %% }
 -type cors() :: #{binary() => any()}.
+
 
 %% Example:
 %% function_url_config() :: #{
@@ -1476,17 +1630,20 @@
 %% }
 -type function_url_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% on_success() :: #{
 %%   <<"Destination">> => string()
 %% }
 -type on_success() :: #{binary() => any()}.
 
+
 %% Example:
 %% self_managed_event_source() :: #{
 %%   <<"Endpoints">> => map()
 %% }
 -type self_managed_event_source() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_function_configuration_request() :: #{
@@ -1511,12 +1668,14 @@
 %% }
 -type update_function_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_function_code_signing_config_response() :: #{
 %%   <<"CodeSigningConfigArn">> => string(),
 %%   <<"FunctionName">> => string()
 %% }
 -type get_function_code_signing_config_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% invalid_code_signature_exception() :: #{
@@ -1525,6 +1684,7 @@
 %% }
 -type invalid_code_signature_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_function_url_configs_response() :: #{
 %%   <<"FunctionUrlConfigs">> => list(function_url_config()()),
@@ -1532,11 +1692,13 @@
 %% }
 -type list_function_url_configs_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% allowed_publishers() :: #{
 %%   <<"SigningProfileVersionArns">> => list(string()())
 %% }
 -type allowed_publishers() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_versions_by_function_response() :: #{
@@ -1544,6 +1706,7 @@
 %%   <<"Versions">> => list(function_configuration()())
 %% }
 -type list_versions_by_function_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% vpc_config_response() :: #{
@@ -1554,6 +1717,7 @@
 %% }
 -type vpc_config_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% ec2_unexpected_exception() :: #{
 %%   <<"EC2ErrorCode">> => string(),
@@ -1561,6 +1725,7 @@
 %%   <<"Type">> => string()
 %% }
 -type ec2_unexpected_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_function_url_config_response() :: #{
@@ -1574,11 +1739,13 @@
 %% }
 -type get_function_url_config_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_function_event_invoke_config_request() :: #{
 %%   <<"Qualifier">> => string()
 %% }
 -type get_function_event_invoke_config_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_function_request() :: #{
@@ -1609,6 +1776,7 @@
 %% }
 -type create_function_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% environment_error() :: #{
 %%   <<"ErrorCode">> => string(),
@@ -1616,15 +1784,18 @@
 %% }
 -type environment_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% ec2_throttled_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Type">> => string()
 %% }
 -type ec2_throttled_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_request() :: #{}
 -type list_tags_request() :: #{}.
+
 
 %% Example:
 %% e_f_s_i_o_exception() :: #{
@@ -1633,12 +1804,14 @@
 %% }
 -type e_f_s_i_o_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% kms_invalid_state_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Type">> => string()
 %% }
 -type kms_invalid_state_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% layers_list_item() :: #{
@@ -1648,11 +1821,13 @@
 %% }
 -type layers_list_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% alias_routing_configuration() :: #{
 %%   <<"AdditionalVersionWeights">> => map()
 %% }
 -type alias_routing_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% image_config_response() :: #{
@@ -1661,12 +1836,14 @@
 %% }
 -type image_config_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_subnet_id_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Type">> => string()
 %% }
 -type invalid_subnet_id_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% snap_start_response() :: #{
@@ -1675,12 +1852,14 @@
 %% }
 -type snap_start_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% code_storage_exceeded_exception() :: #{
 %%   <<"Type">> => string(),
 %%   <<"message">> => string()
 %% }
 -type code_storage_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% layer_version_content_input() :: #{
@@ -1691,6 +1870,7 @@
 %% }
 -type layer_version_content_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_ready_exception() :: #{
 %%   <<"Type">> => string(),
@@ -1698,11 +1878,13 @@
 %% }
 -type resource_not_ready_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% code_signing_policies() :: #{
 %%   <<"UntrustedArtifactOnDeployment">> => list(any())
 %% }
 -type code_signing_policies() :: #{binary() => any()}.
+
 
 %% Example:
 %% precondition_failed_exception() :: #{
@@ -1711,12 +1893,14 @@
 %% }
 -type precondition_failed_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_function_event_invoke_configs_request() :: #{
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => integer()
 %% }
 -type list_function_event_invoke_configs_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_conflict_exception() :: #{
@@ -1725,14 +1909,17 @@
 %% }
 -type resource_conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% concurrency() :: #{
 %%   <<"ReservedConcurrentExecutions">> => integer()
 %% }
 -type concurrency() :: #{binary() => any()}.
+
 %% Example:
 %% delete_alias_request() :: #{}
 -type delete_alias_request() :: #{}.
+
 
 %% Example:
 %% list_provisioned_concurrency_configs_request() :: #{
@@ -1740,6 +1927,7 @@
 %%   <<"MaxItems">> => integer()
 %% }
 -type list_provisioned_concurrency_configs_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% add_permission_request() :: #{
@@ -1756,11 +1944,13 @@
 %% }
 -type add_permission_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tracing_config_response() :: #{
 %%   <<"Mode">> => list(any())
 %% }
 -type tracing_config_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% snap_start_exception() :: #{
@@ -1769,11 +1959,13 @@
 %% }
 -type snap_start_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% add_permission_response() :: #{
 %%   <<"Statement">> => string()
 %% }
 -type add_permission_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% code_signing_config() :: #{
@@ -1785,6 +1977,496 @@
 %%   <<"LastModified">> => string()
 %% }
 -type code_signing_config() :: #{binary() => any()}.
+
+-type add_layer_version_permission_errors() ::
+    resource_conflict_exception() | 
+    precondition_failed_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    policy_length_exceeded_exception().
+
+-type add_permission_errors() ::
+    resource_conflict_exception() | 
+    precondition_failed_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    policy_length_exceeded_exception().
+
+-type create_alias_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type create_code_signing_config_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception().
+
+-type create_event_source_mapping_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type create_function_errors() ::
+    resource_conflict_exception() | 
+    code_storage_exceeded_exception() | 
+    invalid_code_signature_exception() | 
+    code_verification_failed_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    code_signing_config_not_found_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type create_function_url_config_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_alias_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    too_many_requests_exception().
+
+-type delete_code_signing_config_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception().
+
+-type delete_event_source_mapping_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    resource_in_use_exception().
+
+-type delete_function_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_function_code_signing_config_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    code_signing_config_not_found_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_function_concurrency_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_function_event_invoke_config_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_function_url_config_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_layer_version_errors() ::
+    service_exception() | 
+    too_many_requests_exception().
+
+-type delete_provisioned_concurrency_config_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_account_settings_errors() ::
+    service_exception() | 
+    too_many_requests_exception().
+
+-type get_alias_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_code_signing_config_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception().
+
+-type get_event_source_mapping_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_function_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_function_code_signing_config_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_function_concurrency_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_function_configuration_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_function_event_invoke_config_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_function_url_config_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_layer_version_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_layer_version_by_arn_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_layer_version_policy_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_policy_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_provisioned_concurrency_config_errors() ::
+    provisioned_concurrency_config_not_found_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_runtime_management_config_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type invoke_errors() ::
+    snap_start_exception() | 
+    resource_conflict_exception() | 
+    resource_not_ready_exception() | 
+    invalid_subnet_id_exception() | 
+    kms_invalid_state_exception() | 
+    e_f_s_i_o_exception() | 
+    ec2_throttled_exception() | 
+    ec2_unexpected_exception() | 
+    e_f_s_mount_failure_exception() | 
+    e_n_i_limit_reached_exception() | 
+    e_f_s_mount_connectivity_exception() | 
+    e_f_s_mount_timeout_exception() | 
+    kms_not_found_exception() | 
+    invalid_zip_file_exception() | 
+    kms_access_denied_exception() | 
+    request_too_large_exception() | 
+    subnet_ip_address_limit_reached_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_content_exception() | 
+    invalid_runtime_exception() | 
+    recursive_invocation_exception() | 
+    snap_start_timeout_exception() | 
+    too_many_requests_exception() | 
+    snap_start_not_ready_exception() | 
+    ec2_access_denied_exception() | 
+    invalid_security_group_id_exception() | 
+    kms_disabled_exception() | 
+    unsupported_media_type_exception().
+
+-type invoke_async_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_content_exception() | 
+    invalid_runtime_exception().
+
+-type invoke_with_response_stream_errors() ::
+    snap_start_exception() | 
+    resource_conflict_exception() | 
+    resource_not_ready_exception() | 
+    invalid_subnet_id_exception() | 
+    kms_invalid_state_exception() | 
+    e_f_s_i_o_exception() | 
+    ec2_throttled_exception() | 
+    ec2_unexpected_exception() | 
+    e_f_s_mount_failure_exception() | 
+    e_n_i_limit_reached_exception() | 
+    e_f_s_mount_connectivity_exception() | 
+    e_f_s_mount_timeout_exception() | 
+    kms_not_found_exception() | 
+    invalid_zip_file_exception() | 
+    kms_access_denied_exception() | 
+    request_too_large_exception() | 
+    subnet_ip_address_limit_reached_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_content_exception() | 
+    invalid_runtime_exception() | 
+    recursive_invocation_exception() | 
+    snap_start_timeout_exception() | 
+    too_many_requests_exception() | 
+    snap_start_not_ready_exception() | 
+    ec2_access_denied_exception() | 
+    invalid_security_group_id_exception() | 
+    kms_disabled_exception() | 
+    unsupported_media_type_exception().
+
+-type list_aliases_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_code_signing_configs_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception().
+
+-type list_event_source_mappings_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_function_event_invoke_configs_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_function_url_configs_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_functions_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    too_many_requests_exception().
+
+-type list_functions_by_code_signing_config_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception().
+
+-type list_layer_versions_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_layers_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    too_many_requests_exception().
+
+-type list_provisioned_concurrency_configs_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_tags_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_versions_by_function_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type publish_layer_version_errors() ::
+    code_storage_exceeded_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type publish_version_errors() ::
+    resource_conflict_exception() | 
+    precondition_failed_exception() | 
+    code_storage_exceeded_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type put_function_code_signing_config_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    code_signing_config_not_found_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type put_function_concurrency_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type put_function_event_invoke_config_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type put_provisioned_concurrency_config_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type put_runtime_management_config_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type remove_layer_version_permission_errors() ::
+    precondition_failed_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type remove_permission_errors() ::
+    precondition_failed_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type tag_resource_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type untag_resource_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_alias_errors() ::
+    resource_conflict_exception() | 
+    precondition_failed_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_code_signing_config_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception().
+
+-type update_event_source_mapping_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    resource_in_use_exception().
+
+-type update_function_code_errors() ::
+    resource_conflict_exception() | 
+    precondition_failed_exception() | 
+    code_storage_exceeded_exception() | 
+    invalid_code_signature_exception() | 
+    code_verification_failed_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    code_signing_config_not_found_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_function_configuration_errors() ::
+    resource_conflict_exception() | 
+    precondition_failed_exception() | 
+    invalid_code_signature_exception() | 
+    code_verification_failed_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    code_signing_config_not_found_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_function_event_invoke_config_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_function_url_config_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
 
 %%====================================================================
 %% API
@@ -1806,26 +2488,14 @@
 -spec add_layer_version_permission(map(), binary() | list(), binary() | list(), add_layer_version_permission_request()) ->
     {ok, add_layer_version_permission_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, policy_length_exceeded_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, add_layer_version_permission_errors(), tuple()}.
 add_layer_version_permission(Client, LayerName, VersionNumber, Input) ->
     add_layer_version_permission(Client, LayerName, VersionNumber, Input, []).
 
 -spec add_layer_version_permission(map(), binary() | list(), binary() | list(), add_layer_version_permission_request(), proplists:proplist()) ->
     {ok, add_layer_version_permission_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, policy_length_exceeded_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, add_layer_version_permission_errors(), tuple()}.
 add_layer_version_permission(Client, LayerName, VersionNumber, Input0, Options0) ->
     Method = post,
     Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions/", aws_util:encode_uri(VersionNumber), "/policy"],
@@ -1881,26 +2551,14 @@ add_layer_version_permission(Client, LayerName, VersionNumber, Input0, Options0)
 -spec add_permission(map(), binary() | list(), add_permission_request()) ->
     {ok, add_permission_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, policy_length_exceeded_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, add_permission_errors(), tuple()}.
 add_permission(Client, FunctionName, Input) ->
     add_permission(Client, FunctionName, Input, []).
 
 -spec add_permission(map(), binary() | list(), add_permission_request(), proplists:proplist()) ->
     {ok, add_permission_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, policy_length_exceeded_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, add_permission_errors(), tuple()}.
 add_permission(Client, FunctionName, Input0, Options0) ->
     Method = post,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/policy"],
@@ -1941,22 +2599,14 @@ add_permission(Client, FunctionName, Input0, Options0) ->
 -spec create_alias(map(), binary() | list(), create_alias_request()) ->
     {ok, alias_configuration(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_alias_errors(), tuple()}.
 create_alias(Client, FunctionName, Input) ->
     create_alias(Client, FunctionName, Input, []).
 
 -spec create_alias(map(), binary() | list(), create_alias_request(), proplists:proplist()) ->
     {ok, alias_configuration(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_alias_errors(), tuple()}.
 create_alias(Client, FunctionName, Input0, Options0) ->
     Method = post,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/aliases"],
@@ -1990,16 +2640,14 @@ create_alias(Client, FunctionName, Input0, Options0) ->
 -spec create_code_signing_config(map(), create_code_signing_config_request()) ->
     {ok, create_code_signing_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, create_code_signing_config_errors(), tuple()}.
 create_code_signing_config(Client, Input) ->
     create_code_signing_config(Client, Input, []).
 
 -spec create_code_signing_config(map(), create_code_signing_config_request(), proplists:proplist()) ->
     {ok, create_code_signing_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, create_code_signing_config_errors(), tuple()}.
 create_code_signing_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-04-22/code-signing-configs"],
@@ -2094,22 +2742,14 @@ create_code_signing_config(Client, Input0, Options0) ->
 -spec create_event_source_mapping(map(), create_event_source_mapping_request()) ->
     {ok, event_source_mapping_configuration(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_event_source_mapping_errors(), tuple()}.
 create_event_source_mapping(Client, Input) ->
     create_event_source_mapping(Client, Input, []).
 
 -spec create_event_source_mapping(map(), create_event_source_mapping_request(), proplists:proplist()) ->
     {ok, event_source_mapping_configuration(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_event_source_mapping_errors(), tuple()}.
 create_event_source_mapping(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-03-31/event-source-mappings"],
@@ -2221,30 +2861,14 @@ create_event_source_mapping(Client, Input0, Options0) ->
 -spec create_function(map(), create_function_request()) ->
     {ok, function_configuration(), tuple()} |
     {error, any()} |
-    {error, code_signing_config_not_found_exception(), tuple()} |
-    {error, code_storage_exceeded_exception(), tuple()} |
-    {error, code_verification_failed_exception(), tuple()} |
-    {error, invalid_code_signature_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_function_errors(), tuple()}.
 create_function(Client, Input) ->
     create_function(Client, Input, []).
 
 -spec create_function(map(), create_function_request(), proplists:proplist()) ->
     {ok, function_configuration(), tuple()} |
     {error, any()} |
-    {error, code_signing_config_not_found_exception(), tuple()} |
-    {error, code_storage_exceeded_exception(), tuple()} |
-    {error, code_verification_failed_exception(), tuple()} |
-    {error, invalid_code_signature_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_function_errors(), tuple()}.
 create_function(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-03-31/functions"],
@@ -2275,22 +2899,14 @@ create_function(Client, Input0, Options0) ->
 -spec create_function_url_config(map(), binary() | list(), create_function_url_config_request()) ->
     {ok, create_function_url_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_function_url_config_errors(), tuple()}.
 create_function_url_config(Client, FunctionName, Input) ->
     create_function_url_config(Client, FunctionName, Input, []).
 
 -spec create_function_url_config(map(), binary() | list(), create_function_url_config_request(), proplists:proplist()) ->
     {ok, create_function_url_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_function_url_config_errors(), tuple()}.
 create_function_url_config(Client, FunctionName, Input0, Options0) ->
     Method = post,
     Path = ["/2021-10-31/functions/", aws_util:encode_uri(FunctionName), "/url"],
@@ -2319,20 +2935,14 @@ create_function_url_config(Client, FunctionName, Input0, Options0) ->
 -spec delete_alias(map(), binary() | list(), binary() | list(), delete_alias_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_alias_errors(), tuple()}.
 delete_alias(Client, FunctionName, Name, Input) ->
     delete_alias(Client, FunctionName, Name, Input, []).
 
 -spec delete_alias(map(), binary() | list(), binary() | list(), delete_alias_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_alias_errors(), tuple()}.
 delete_alias(Client, FunctionName, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/aliases/", aws_util:encode_uri(Name), ""],
@@ -2362,20 +2972,14 @@ delete_alias(Client, FunctionName, Name, Input0, Options0) ->
 -spec delete_code_signing_config(map(), binary() | list(), delete_code_signing_config_request()) ->
     {ok, delete_code_signing_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, delete_code_signing_config_errors(), tuple()}.
 delete_code_signing_config(Client, CodeSigningConfigArn, Input) ->
     delete_code_signing_config(Client, CodeSigningConfigArn, Input, []).
 
 -spec delete_code_signing_config(map(), binary() | list(), delete_code_signing_config_request(), proplists:proplist()) ->
     {ok, delete_code_signing_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, delete_code_signing_config_errors(), tuple()}.
 delete_code_signing_config(Client, CodeSigningConfigArn, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-04-22/code-signing-configs/", aws_util:encode_uri(CodeSigningConfigArn), ""],
@@ -2411,24 +3015,14 @@ delete_code_signing_config(Client, CodeSigningConfigArn, Input0, Options0) ->
 -spec delete_event_source_mapping(map(), binary() | list(), delete_event_source_mapping_request()) ->
     {ok, event_source_mapping_configuration(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_event_source_mapping_errors(), tuple()}.
 delete_event_source_mapping(Client, UUID, Input) ->
     delete_event_source_mapping(Client, UUID, Input, []).
 
 -spec delete_event_source_mapping(map(), binary() | list(), delete_event_source_mapping_request(), proplists:proplist()) ->
     {ok, event_source_mapping_configuration(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_event_source_mapping_errors(), tuple()}.
 delete_event_source_mapping(Client, UUID, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-03-31/event-source-mappings/", aws_util:encode_uri(UUID), ""],
@@ -2466,22 +3060,14 @@ delete_event_source_mapping(Client, UUID, Input0, Options0) ->
 -spec delete_function(map(), binary() | list(), delete_function_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_function_errors(), tuple()}.
 delete_function(Client, FunctionName, Input) ->
     delete_function(Client, FunctionName, Input, []).
 
 -spec delete_function(map(), binary() | list(), delete_function_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_function_errors(), tuple()}.
 delete_function(Client, FunctionName, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), ""],
@@ -2509,24 +3095,14 @@ delete_function(Client, FunctionName, Input0, Options0) ->
 -spec delete_function_code_signing_config(map(), binary() | list(), delete_function_code_signing_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, code_signing_config_not_found_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_function_code_signing_config_errors(), tuple()}.
 delete_function_code_signing_config(Client, FunctionName, Input) ->
     delete_function_code_signing_config(Client, FunctionName, Input, []).
 
 -spec delete_function_code_signing_config(map(), binary() | list(), delete_function_code_signing_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, code_signing_config_not_found_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_function_code_signing_config_errors(), tuple()}.
 delete_function_code_signing_config(Client, FunctionName, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-06-30/functions/", aws_util:encode_uri(FunctionName), "/code-signing-config"],
@@ -2553,22 +3129,14 @@ delete_function_code_signing_config(Client, FunctionName, Input0, Options0) ->
 -spec delete_function_concurrency(map(), binary() | list(), delete_function_concurrency_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_function_concurrency_errors(), tuple()}.
 delete_function_concurrency(Client, FunctionName, Input) ->
     delete_function_concurrency(Client, FunctionName, Input, []).
 
 -spec delete_function_concurrency(map(), binary() | list(), delete_function_concurrency_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_function_concurrency_errors(), tuple()}.
 delete_function_concurrency(Client, FunctionName, Input0, Options0) ->
     Method = delete,
     Path = ["/2017-10-31/functions/", aws_util:encode_uri(FunctionName), "/concurrency"],
@@ -2599,22 +3167,14 @@ delete_function_concurrency(Client, FunctionName, Input0, Options0) ->
 -spec delete_function_event_invoke_config(map(), binary() | list(), delete_function_event_invoke_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_function_event_invoke_config_errors(), tuple()}.
 delete_function_event_invoke_config(Client, FunctionName, Input) ->
     delete_function_event_invoke_config(Client, FunctionName, Input, []).
 
 -spec delete_function_event_invoke_config(map(), binary() | list(), delete_function_event_invoke_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_function_event_invoke_config_errors(), tuple()}.
 delete_function_event_invoke_config(Client, FunctionName, Input0, Options0) ->
     Method = delete,
     Path = ["/2019-09-25/functions/", aws_util:encode_uri(FunctionName), "/event-invoke-config"],
@@ -2646,20 +3206,14 @@ delete_function_event_invoke_config(Client, FunctionName, Input0, Options0) ->
 -spec delete_function_url_config(map(), binary() | list(), delete_function_url_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_function_url_config_errors(), tuple()}.
 delete_function_url_config(Client, FunctionName, Input) ->
     delete_function_url_config(Client, FunctionName, Input, []).
 
 -spec delete_function_url_config(map(), binary() | list(), delete_function_url_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_function_url_config_errors(), tuple()}.
 delete_function_url_config(Client, FunctionName, Input0, Options0) ->
     Method = delete,
     Path = ["/2021-10-31/functions/", aws_util:encode_uri(FunctionName), "/url"],
@@ -2693,16 +3247,14 @@ delete_function_url_config(Client, FunctionName, Input0, Options0) ->
 -spec delete_layer_version(map(), binary() | list(), binary() | list(), delete_layer_version_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_layer_version_errors(), tuple()}.
 delete_layer_version(Client, LayerName, VersionNumber, Input) ->
     delete_layer_version(Client, LayerName, VersionNumber, Input, []).
 
 -spec delete_layer_version(map(), binary() | list(), binary() | list(), delete_layer_version_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_layer_version_errors(), tuple()}.
 delete_layer_version(Client, LayerName, VersionNumber, Input0, Options0) ->
     Method = delete,
     Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions/", aws_util:encode_uri(VersionNumber), ""],
@@ -2729,22 +3281,14 @@ delete_layer_version(Client, LayerName, VersionNumber, Input0, Options0) ->
 -spec delete_provisioned_concurrency_config(map(), binary() | list(), delete_provisioned_concurrency_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_provisioned_concurrency_config_errors(), tuple()}.
 delete_provisioned_concurrency_config(Client, FunctionName, Input) ->
     delete_provisioned_concurrency_config(Client, FunctionName, Input, []).
 
 -spec delete_provisioned_concurrency_config(map(), binary() | list(), delete_provisioned_concurrency_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_provisioned_concurrency_config_errors(), tuple()}.
 delete_provisioned_concurrency_config(Client, FunctionName, Input0, Options0) ->
     Method = delete,
     Path = ["/2019-09-30/functions/", aws_util:encode_uri(FunctionName), "/provisioned-concurrency"],
@@ -2774,8 +3318,7 @@ delete_provisioned_concurrency_config(Client, FunctionName, Input0, Options0) ->
 -spec get_account_settings(map()) ->
     {ok, get_account_settings_response(), tuple()} |
     {error, any()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_account_settings_errors(), tuple()}.
 get_account_settings(Client)
   when is_map(Client) ->
     get_account_settings(Client, #{}, #{}).
@@ -2783,8 +3326,7 @@ get_account_settings(Client)
 -spec get_account_settings(map(), map(), map()) ->
     {ok, get_account_settings_response(), tuple()} |
     {error, any()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_account_settings_errors(), tuple()}.
 get_account_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_account_settings(Client, QueryMap, HeadersMap, []).
@@ -2792,8 +3334,7 @@ get_account_settings(Client, QueryMap, HeadersMap)
 -spec get_account_settings(map(), map(), map(), proplists:proplist()) ->
     {ok, get_account_settings_response(), tuple()} |
     {error, any()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_account_settings_errors(), tuple()}.
 get_account_settings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2016-08-19/account-settings"],
@@ -2815,10 +3356,7 @@ get_account_settings(Client, QueryMap, HeadersMap, Options0)
 -spec get_alias(map(), binary() | list(), binary() | list()) ->
     {ok, alias_configuration(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_alias_errors(), tuple()}.
 get_alias(Client, FunctionName, Name)
   when is_map(Client) ->
     get_alias(Client, FunctionName, Name, #{}, #{}).
@@ -2826,10 +3364,7 @@ get_alias(Client, FunctionName, Name)
 -spec get_alias(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, alias_configuration(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_alias_errors(), tuple()}.
 get_alias(Client, FunctionName, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_alias(Client, FunctionName, Name, QueryMap, HeadersMap, []).
@@ -2837,10 +3372,7 @@ get_alias(Client, FunctionName, Name, QueryMap, HeadersMap)
 -spec get_alias(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, alias_configuration(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_alias_errors(), tuple()}.
 get_alias(Client, FunctionName, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/aliases/", aws_util:encode_uri(Name), ""],
@@ -2861,9 +3393,7 @@ get_alias(Client, FunctionName, Name, QueryMap, HeadersMap, Options0)
 -spec get_code_signing_config(map(), binary() | list()) ->
     {ok, get_code_signing_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, get_code_signing_config_errors(), tuple()}.
 get_code_signing_config(Client, CodeSigningConfigArn)
   when is_map(Client) ->
     get_code_signing_config(Client, CodeSigningConfigArn, #{}, #{}).
@@ -2871,9 +3401,7 @@ get_code_signing_config(Client, CodeSigningConfigArn)
 -spec get_code_signing_config(map(), binary() | list(), map(), map()) ->
     {ok, get_code_signing_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, get_code_signing_config_errors(), tuple()}.
 get_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap, []).
@@ -2881,9 +3409,7 @@ get_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap)
 -spec get_code_signing_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_code_signing_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, get_code_signing_config_errors(), tuple()}.
 get_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-04-22/code-signing-configs/", aws_util:encode_uri(CodeSigningConfigArn), ""],
@@ -2907,10 +3433,7 @@ get_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap, Opti
 -spec get_event_source_mapping(map(), binary() | list()) ->
     {ok, event_source_mapping_configuration(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_event_source_mapping_errors(), tuple()}.
 get_event_source_mapping(Client, UUID)
   when is_map(Client) ->
     get_event_source_mapping(Client, UUID, #{}, #{}).
@@ -2918,10 +3441,7 @@ get_event_source_mapping(Client, UUID)
 -spec get_event_source_mapping(map(), binary() | list(), map(), map()) ->
     {ok, event_source_mapping_configuration(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_event_source_mapping_errors(), tuple()}.
 get_event_source_mapping(Client, UUID, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_event_source_mapping(Client, UUID, QueryMap, HeadersMap, []).
@@ -2929,10 +3449,7 @@ get_event_source_mapping(Client, UUID, QueryMap, HeadersMap)
 -spec get_event_source_mapping(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, event_source_mapping_configuration(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_event_source_mapping_errors(), tuple()}.
 get_event_source_mapping(Client, UUID, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-03-31/event-source-mappings/", aws_util:encode_uri(UUID), ""],
@@ -2959,10 +3476,7 @@ get_event_source_mapping(Client, UUID, QueryMap, HeadersMap, Options0)
 -spec get_function(map(), binary() | list()) ->
     {ok, get_function_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_function_errors(), tuple()}.
 get_function(Client, FunctionName)
   when is_map(Client) ->
     get_function(Client, FunctionName, #{}, #{}).
@@ -2970,10 +3484,7 @@ get_function(Client, FunctionName)
 -spec get_function(map(), binary() | list(), map(), map()) ->
     {ok, get_function_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_function_errors(), tuple()}.
 get_function(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function(Client, FunctionName, QueryMap, HeadersMap, []).
@@ -2981,10 +3492,7 @@ get_function(Client, FunctionName, QueryMap, HeadersMap)
 -spec get_function(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_function_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_function_errors(), tuple()}.
 get_function(Client, FunctionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), ""],
@@ -3009,10 +3517,7 @@ get_function(Client, FunctionName, QueryMap, HeadersMap, Options0)
 -spec get_function_code_signing_config(map(), binary() | list()) ->
     {ok, get_function_code_signing_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_function_code_signing_config_errors(), tuple()}.
 get_function_code_signing_config(Client, FunctionName)
   when is_map(Client) ->
     get_function_code_signing_config(Client, FunctionName, #{}, #{}).
@@ -3020,10 +3525,7 @@ get_function_code_signing_config(Client, FunctionName)
 -spec get_function_code_signing_config(map(), binary() | list(), map(), map()) ->
     {ok, get_function_code_signing_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_function_code_signing_config_errors(), tuple()}.
 get_function_code_signing_config(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function_code_signing_config(Client, FunctionName, QueryMap, HeadersMap, []).
@@ -3031,10 +3533,7 @@ get_function_code_signing_config(Client, FunctionName, QueryMap, HeadersMap)
 -spec get_function_code_signing_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_function_code_signing_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_function_code_signing_config_errors(), tuple()}.
 get_function_code_signing_config(Client, FunctionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-06-30/functions/", aws_util:encode_uri(FunctionName), "/code-signing-config"],
@@ -3059,10 +3558,7 @@ get_function_code_signing_config(Client, FunctionName, QueryMap, HeadersMap, Opt
 -spec get_function_concurrency(map(), binary() | list()) ->
     {ok, get_function_concurrency_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_function_concurrency_errors(), tuple()}.
 get_function_concurrency(Client, FunctionName)
   when is_map(Client) ->
     get_function_concurrency(Client, FunctionName, #{}, #{}).
@@ -3070,10 +3566,7 @@ get_function_concurrency(Client, FunctionName)
 -spec get_function_concurrency(map(), binary() | list(), map(), map()) ->
     {ok, get_function_concurrency_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_function_concurrency_errors(), tuple()}.
 get_function_concurrency(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function_concurrency(Client, FunctionName, QueryMap, HeadersMap, []).
@@ -3081,10 +3574,7 @@ get_function_concurrency(Client, FunctionName, QueryMap, HeadersMap)
 -spec get_function_concurrency(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_function_concurrency_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_function_concurrency_errors(), tuple()}.
 get_function_concurrency(Client, FunctionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2019-09-30/functions/", aws_util:encode_uri(FunctionName), "/concurrency"],
@@ -3113,10 +3603,7 @@ get_function_concurrency(Client, FunctionName, QueryMap, HeadersMap, Options0)
 -spec get_function_configuration(map(), binary() | list()) ->
     {ok, function_configuration(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_function_configuration_errors(), tuple()}.
 get_function_configuration(Client, FunctionName)
   when is_map(Client) ->
     get_function_configuration(Client, FunctionName, #{}, #{}).
@@ -3124,10 +3611,7 @@ get_function_configuration(Client, FunctionName)
 -spec get_function_configuration(map(), binary() | list(), map(), map()) ->
     {ok, function_configuration(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_function_configuration_errors(), tuple()}.
 get_function_configuration(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function_configuration(Client, FunctionName, QueryMap, HeadersMap, []).
@@ -3135,10 +3619,7 @@ get_function_configuration(Client, FunctionName, QueryMap, HeadersMap)
 -spec get_function_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, function_configuration(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_function_configuration_errors(), tuple()}.
 get_function_configuration(Client, FunctionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/configuration"],
@@ -3167,10 +3648,7 @@ get_function_configuration(Client, FunctionName, QueryMap, HeadersMap, Options0)
 -spec get_function_event_invoke_config(map(), binary() | list()) ->
     {ok, function_event_invoke_config(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_function_event_invoke_config_errors(), tuple()}.
 get_function_event_invoke_config(Client, FunctionName)
   when is_map(Client) ->
     get_function_event_invoke_config(Client, FunctionName, #{}, #{}).
@@ -3178,10 +3656,7 @@ get_function_event_invoke_config(Client, FunctionName)
 -spec get_function_event_invoke_config(map(), binary() | list(), map(), map()) ->
     {ok, function_event_invoke_config(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_function_event_invoke_config_errors(), tuple()}.
 get_function_event_invoke_config(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function_event_invoke_config(Client, FunctionName, QueryMap, HeadersMap, []).
@@ -3189,10 +3664,7 @@ get_function_event_invoke_config(Client, FunctionName, QueryMap, HeadersMap)
 -spec get_function_event_invoke_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, function_event_invoke_config(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_function_event_invoke_config_errors(), tuple()}.
 get_function_event_invoke_config(Client, FunctionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2019-09-25/functions/", aws_util:encode_uri(FunctionName), "/event-invoke-config"],
@@ -3217,10 +3689,7 @@ get_function_event_invoke_config(Client, FunctionName, QueryMap, HeadersMap, Opt
 -spec get_function_url_config(map(), binary() | list()) ->
     {ok, get_function_url_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_function_url_config_errors(), tuple()}.
 get_function_url_config(Client, FunctionName)
   when is_map(Client) ->
     get_function_url_config(Client, FunctionName, #{}, #{}).
@@ -3228,10 +3697,7 @@ get_function_url_config(Client, FunctionName)
 -spec get_function_url_config(map(), binary() | list(), map(), map()) ->
     {ok, get_function_url_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_function_url_config_errors(), tuple()}.
 get_function_url_config(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function_url_config(Client, FunctionName, QueryMap, HeadersMap, []).
@@ -3239,10 +3705,7 @@ get_function_url_config(Client, FunctionName, QueryMap, HeadersMap)
 -spec get_function_url_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_function_url_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_function_url_config_errors(), tuple()}.
 get_function_url_config(Client, FunctionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-10-31/functions/", aws_util:encode_uri(FunctionName), "/url"],
@@ -3271,10 +3734,7 @@ get_function_url_config(Client, FunctionName, QueryMap, HeadersMap, Options0)
 -spec get_layer_version(map(), binary() | list(), binary() | list()) ->
     {ok, get_layer_version_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_layer_version_errors(), tuple()}.
 get_layer_version(Client, LayerName, VersionNumber)
   when is_map(Client) ->
     get_layer_version(Client, LayerName, VersionNumber, #{}, #{}).
@@ -3282,10 +3742,7 @@ get_layer_version(Client, LayerName, VersionNumber)
 -spec get_layer_version(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_layer_version_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_layer_version_errors(), tuple()}.
 get_layer_version(Client, LayerName, VersionNumber, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_layer_version(Client, LayerName, VersionNumber, QueryMap, HeadersMap, []).
@@ -3293,10 +3750,7 @@ get_layer_version(Client, LayerName, VersionNumber, QueryMap, HeadersMap)
 -spec get_layer_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_layer_version_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_layer_version_errors(), tuple()}.
 get_layer_version(Client, LayerName, VersionNumber, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions/", aws_util:encode_uri(VersionNumber), ""],
@@ -3321,10 +3775,7 @@ get_layer_version(Client, LayerName, VersionNumber, QueryMap, HeadersMap, Option
 -spec get_layer_version_by_arn(map(), binary() | list()) ->
     {ok, get_layer_version_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_layer_version_by_arn_errors(), tuple()}.
 get_layer_version_by_arn(Client, Arn)
   when is_map(Client) ->
     get_layer_version_by_arn(Client, Arn, #{}, #{}).
@@ -3332,10 +3783,7 @@ get_layer_version_by_arn(Client, Arn)
 -spec get_layer_version_by_arn(map(), binary() | list(), map(), map()) ->
     {ok, get_layer_version_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_layer_version_by_arn_errors(), tuple()}.
 get_layer_version_by_arn(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_layer_version_by_arn(Client, Arn, QueryMap, HeadersMap, []).
@@ -3343,10 +3791,7 @@ get_layer_version_by_arn(Client, Arn, QueryMap, HeadersMap)
 -spec get_layer_version_by_arn(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_layer_version_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_layer_version_by_arn_errors(), tuple()}.
 get_layer_version_by_arn(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2018-10-31/layers?find=LayerVersion"],
@@ -3375,10 +3820,7 @@ get_layer_version_by_arn(Client, Arn, QueryMap, HeadersMap, Options0)
 -spec get_layer_version_policy(map(), binary() | list(), binary() | list()) ->
     {ok, get_layer_version_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_layer_version_policy_errors(), tuple()}.
 get_layer_version_policy(Client, LayerName, VersionNumber)
   when is_map(Client) ->
     get_layer_version_policy(Client, LayerName, VersionNumber, #{}, #{}).
@@ -3386,10 +3828,7 @@ get_layer_version_policy(Client, LayerName, VersionNumber)
 -spec get_layer_version_policy(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_layer_version_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_layer_version_policy_errors(), tuple()}.
 get_layer_version_policy(Client, LayerName, VersionNumber, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_layer_version_policy(Client, LayerName, VersionNumber, QueryMap, HeadersMap, []).
@@ -3397,10 +3836,7 @@ get_layer_version_policy(Client, LayerName, VersionNumber, QueryMap, HeadersMap)
 -spec get_layer_version_policy(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_layer_version_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_layer_version_policy_errors(), tuple()}.
 get_layer_version_policy(Client, LayerName, VersionNumber, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions/", aws_util:encode_uri(VersionNumber), "/policy"],
@@ -3423,10 +3859,7 @@ get_layer_version_policy(Client, LayerName, VersionNumber, QueryMap, HeadersMap,
 -spec get_policy(map(), binary() | list()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_policy_errors(), tuple()}.
 get_policy(Client, FunctionName)
   when is_map(Client) ->
     get_policy(Client, FunctionName, #{}, #{}).
@@ -3434,10 +3867,7 @@ get_policy(Client, FunctionName)
 -spec get_policy(map(), binary() | list(), map(), map()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_policy_errors(), tuple()}.
 get_policy(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_policy(Client, FunctionName, QueryMap, HeadersMap, []).
@@ -3445,10 +3875,7 @@ get_policy(Client, FunctionName, QueryMap, HeadersMap)
 -spec get_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_policy_errors(), tuple()}.
 get_policy(Client, FunctionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/policy"],
@@ -3474,11 +3901,7 @@ get_policy(Client, FunctionName, QueryMap, HeadersMap, Options0)
 -spec get_provisioned_concurrency_config(map(), binary() | list(), binary() | list()) ->
     {ok, get_provisioned_concurrency_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, provisioned_concurrency_config_not_found_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_provisioned_concurrency_config_errors(), tuple()}.
 get_provisioned_concurrency_config(Client, FunctionName, Qualifier)
   when is_map(Client) ->
     get_provisioned_concurrency_config(Client, FunctionName, Qualifier, #{}, #{}).
@@ -3486,11 +3909,7 @@ get_provisioned_concurrency_config(Client, FunctionName, Qualifier)
 -spec get_provisioned_concurrency_config(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_provisioned_concurrency_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, provisioned_concurrency_config_not_found_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_provisioned_concurrency_config_errors(), tuple()}.
 get_provisioned_concurrency_config(Client, FunctionName, Qualifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_provisioned_concurrency_config(Client, FunctionName, Qualifier, QueryMap, HeadersMap, []).
@@ -3498,11 +3917,7 @@ get_provisioned_concurrency_config(Client, FunctionName, Qualifier, QueryMap, He
 -spec get_provisioned_concurrency_config(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_provisioned_concurrency_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, provisioned_concurrency_config_not_found_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_provisioned_concurrency_config_errors(), tuple()}.
 get_provisioned_concurrency_config(Client, FunctionName, Qualifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2019-09-30/functions/", aws_util:encode_uri(FunctionName), "/provisioned-concurrency"],
@@ -3535,10 +3950,7 @@ get_provisioned_concurrency_config(Client, FunctionName, Qualifier, QueryMap, He
 -spec get_runtime_management_config(map(), binary() | list()) ->
     {ok, get_runtime_management_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_runtime_management_config_errors(), tuple()}.
 get_runtime_management_config(Client, FunctionName)
   when is_map(Client) ->
     get_runtime_management_config(Client, FunctionName, #{}, #{}).
@@ -3546,10 +3958,7 @@ get_runtime_management_config(Client, FunctionName)
 -spec get_runtime_management_config(map(), binary() | list(), map(), map()) ->
     {ok, get_runtime_management_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_runtime_management_config_errors(), tuple()}.
 get_runtime_management_config(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_runtime_management_config(Client, FunctionName, QueryMap, HeadersMap, []).
@@ -3557,10 +3966,7 @@ get_runtime_management_config(Client, FunctionName, QueryMap, HeadersMap)
 -spec get_runtime_management_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_runtime_management_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_runtime_management_config_errors(), tuple()}.
 get_runtime_management_config(Client, FunctionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-07-20/functions/", aws_util:encode_uri(FunctionName), "/runtime-management-config"],
@@ -3646,72 +4052,14 @@ get_runtime_management_config(Client, FunctionName, QueryMap, HeadersMap, Option
 -spec invoke(map(), binary() | list(), invocation_request()) ->
     {ok, invocation_response(), tuple()} |
     {error, any()} |
-    {error, ec2_access_denied_exception(), tuple()} |
-    {error, ec2_throttled_exception(), tuple()} |
-    {error, ec2_unexpected_exception(), tuple()} |
-    {error, e_f_s_i_o_exception(), tuple()} |
-    {error, e_f_s_mount_connectivity_exception(), tuple()} |
-    {error, e_f_s_mount_failure_exception(), tuple()} |
-    {error, e_f_s_mount_timeout_exception(), tuple()} |
-    {error, e_n_i_limit_reached_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_content_exception(), tuple()} |
-    {error, invalid_runtime_exception(), tuple()} |
-    {error, invalid_security_group_id_exception(), tuple()} |
-    {error, invalid_subnet_id_exception(), tuple()} |
-    {error, invalid_zip_file_exception(), tuple()} |
-    {error, kms_access_denied_exception(), tuple()} |
-    {error, kms_disabled_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, kms_not_found_exception(), tuple()} |
-    {error, recursive_invocation_exception(), tuple()} |
-    {error, request_too_large_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, snap_start_exception(), tuple()} |
-    {error, snap_start_not_ready_exception(), tuple()} |
-    {error, snap_start_timeout_exception(), tuple()} |
-    {error, subnet_ip_address_limit_reached_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_media_type_exception(), tuple()}.
+    {error, invoke_errors(), tuple()}.
 invoke(Client, FunctionName, Input) ->
     invoke(Client, FunctionName, Input, []).
 
 -spec invoke(map(), binary() | list(), invocation_request(), proplists:proplist()) ->
     {ok, invocation_response(), tuple()} |
     {error, any()} |
-    {error, ec2_access_denied_exception(), tuple()} |
-    {error, ec2_throttled_exception(), tuple()} |
-    {error, ec2_unexpected_exception(), tuple()} |
-    {error, e_f_s_i_o_exception(), tuple()} |
-    {error, e_f_s_mount_connectivity_exception(), tuple()} |
-    {error, e_f_s_mount_failure_exception(), tuple()} |
-    {error, e_f_s_mount_timeout_exception(), tuple()} |
-    {error, e_n_i_limit_reached_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_content_exception(), tuple()} |
-    {error, invalid_runtime_exception(), tuple()} |
-    {error, invalid_security_group_id_exception(), tuple()} |
-    {error, invalid_subnet_id_exception(), tuple()} |
-    {error, invalid_zip_file_exception(), tuple()} |
-    {error, kms_access_denied_exception(), tuple()} |
-    {error, kms_disabled_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, kms_not_found_exception(), tuple()} |
-    {error, recursive_invocation_exception(), tuple()} |
-    {error, request_too_large_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, snap_start_exception(), tuple()} |
-    {error, snap_start_not_ready_exception(), tuple()} |
-    {error, snap_start_timeout_exception(), tuple()} |
-    {error, subnet_ip_address_limit_reached_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_media_type_exception(), tuple()}.
+    {error, invoke_errors(), tuple()}.
 invoke(Client, FunctionName, Input0, Options0) ->
     Method = post,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/invocations"],
@@ -3768,22 +4116,14 @@ invoke(Client, FunctionName, Input0, Options0) ->
 -spec invoke_async(map(), binary() | list(), invoke_async_request()) ->
     {ok, invoke_async_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_content_exception(), tuple()} |
-    {error, invalid_runtime_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, invoke_async_errors(), tuple()}.
 invoke_async(Client, FunctionName, Input) ->
     invoke_async(Client, FunctionName, Input, []).
 
 -spec invoke_async(map(), binary() | list(), invoke_async_request(), proplists:proplist()) ->
     {ok, invoke_async_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_content_exception(), tuple()} |
-    {error, invalid_runtime_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, invoke_async_errors(), tuple()}.
 invoke_async(Client, FunctionName, Input0, Options0) ->
     Method = post,
     Path = ["/2014-11-13/functions/", aws_util:encode_uri(FunctionName), "/invoke-async"],
@@ -3822,72 +4162,14 @@ invoke_async(Client, FunctionName, Input0, Options0) ->
 -spec invoke_with_response_stream(map(), binary() | list(), invoke_with_response_stream_request()) ->
     {ok, invoke_with_response_stream_response(), tuple()} |
     {error, any()} |
-    {error, ec2_access_denied_exception(), tuple()} |
-    {error, ec2_throttled_exception(), tuple()} |
-    {error, ec2_unexpected_exception(), tuple()} |
-    {error, e_f_s_i_o_exception(), tuple()} |
-    {error, e_f_s_mount_connectivity_exception(), tuple()} |
-    {error, e_f_s_mount_failure_exception(), tuple()} |
-    {error, e_f_s_mount_timeout_exception(), tuple()} |
-    {error, e_n_i_limit_reached_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_content_exception(), tuple()} |
-    {error, invalid_runtime_exception(), tuple()} |
-    {error, invalid_security_group_id_exception(), tuple()} |
-    {error, invalid_subnet_id_exception(), tuple()} |
-    {error, invalid_zip_file_exception(), tuple()} |
-    {error, kms_access_denied_exception(), tuple()} |
-    {error, kms_disabled_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, kms_not_found_exception(), tuple()} |
-    {error, recursive_invocation_exception(), tuple()} |
-    {error, request_too_large_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, snap_start_exception(), tuple()} |
-    {error, snap_start_not_ready_exception(), tuple()} |
-    {error, snap_start_timeout_exception(), tuple()} |
-    {error, subnet_ip_address_limit_reached_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_media_type_exception(), tuple()}.
+    {error, invoke_with_response_stream_errors(), tuple()}.
 invoke_with_response_stream(Client, FunctionName, Input) ->
     invoke_with_response_stream(Client, FunctionName, Input, []).
 
 -spec invoke_with_response_stream(map(), binary() | list(), invoke_with_response_stream_request(), proplists:proplist()) ->
     {ok, invoke_with_response_stream_response(), tuple()} |
     {error, any()} |
-    {error, ec2_access_denied_exception(), tuple()} |
-    {error, ec2_throttled_exception(), tuple()} |
-    {error, ec2_unexpected_exception(), tuple()} |
-    {error, e_f_s_i_o_exception(), tuple()} |
-    {error, e_f_s_mount_connectivity_exception(), tuple()} |
-    {error, e_f_s_mount_failure_exception(), tuple()} |
-    {error, e_f_s_mount_timeout_exception(), tuple()} |
-    {error, e_n_i_limit_reached_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_content_exception(), tuple()} |
-    {error, invalid_runtime_exception(), tuple()} |
-    {error, invalid_security_group_id_exception(), tuple()} |
-    {error, invalid_subnet_id_exception(), tuple()} |
-    {error, invalid_zip_file_exception(), tuple()} |
-    {error, kms_access_denied_exception(), tuple()} |
-    {error, kms_disabled_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, kms_not_found_exception(), tuple()} |
-    {error, recursive_invocation_exception(), tuple()} |
-    {error, request_too_large_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, snap_start_exception(), tuple()} |
-    {error, snap_start_not_ready_exception(), tuple()} |
-    {error, snap_start_timeout_exception(), tuple()} |
-    {error, subnet_ip_address_limit_reached_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_media_type_exception(), tuple()}.
+    {error, invoke_with_response_stream_errors(), tuple()}.
 invoke_with_response_stream(Client, FunctionName, Input0, Options0) ->
     Method = post,
     Path = ["/2021-11-15/functions/", aws_util:encode_uri(FunctionName), "/response-streaming-invocations"],
@@ -3938,10 +4220,7 @@ invoke_with_response_stream(Client, FunctionName, Input0, Options0) ->
 -spec list_aliases(map(), binary() | list()) ->
     {ok, list_aliases_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_aliases_errors(), tuple()}.
 list_aliases(Client, FunctionName)
   when is_map(Client) ->
     list_aliases(Client, FunctionName, #{}, #{}).
@@ -3949,10 +4228,7 @@ list_aliases(Client, FunctionName)
 -spec list_aliases(map(), binary() | list(), map(), map()) ->
     {ok, list_aliases_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_aliases_errors(), tuple()}.
 list_aliases(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_aliases(Client, FunctionName, QueryMap, HeadersMap, []).
@@ -3960,10 +4236,7 @@ list_aliases(Client, FunctionName, QueryMap, HeadersMap)
 -spec list_aliases(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_aliases_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_aliases_errors(), tuple()}.
 list_aliases(Client, FunctionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/aliases"],
@@ -3996,8 +4269,7 @@ list_aliases(Client, FunctionName, QueryMap, HeadersMap, Options0)
 -spec list_code_signing_configs(map()) ->
     {ok, list_code_signing_configs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, list_code_signing_configs_errors(), tuple()}.
 list_code_signing_configs(Client)
   when is_map(Client) ->
     list_code_signing_configs(Client, #{}, #{}).
@@ -4005,8 +4277,7 @@ list_code_signing_configs(Client)
 -spec list_code_signing_configs(map(), map(), map()) ->
     {ok, list_code_signing_configs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, list_code_signing_configs_errors(), tuple()}.
 list_code_signing_configs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_code_signing_configs(Client, QueryMap, HeadersMap, []).
@@ -4014,8 +4285,7 @@ list_code_signing_configs(Client, QueryMap, HeadersMap)
 -spec list_code_signing_configs(map(), map(), map(), proplists:proplist()) ->
     {ok, list_code_signing_configs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, list_code_signing_configs_errors(), tuple()}.
 list_code_signing_configs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-04-22/code-signing-configs"],
@@ -4044,10 +4314,7 @@ list_code_signing_configs(Client, QueryMap, HeadersMap, Options0)
 -spec list_event_source_mappings(map()) ->
     {ok, list_event_source_mappings_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_event_source_mappings_errors(), tuple()}.
 list_event_source_mappings(Client)
   when is_map(Client) ->
     list_event_source_mappings(Client, #{}, #{}).
@@ -4055,10 +4322,7 @@ list_event_source_mappings(Client)
 -spec list_event_source_mappings(map(), map(), map()) ->
     {ok, list_event_source_mappings_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_event_source_mappings_errors(), tuple()}.
 list_event_source_mappings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_event_source_mappings(Client, QueryMap, HeadersMap, []).
@@ -4066,10 +4330,7 @@ list_event_source_mappings(Client, QueryMap, HeadersMap)
 -spec list_event_source_mappings(map(), map(), map(), proplists:proplist()) ->
     {ok, list_event_source_mappings_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_event_source_mappings_errors(), tuple()}.
 list_event_source_mappings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-03-31/event-source-mappings"],
@@ -4101,10 +4362,7 @@ list_event_source_mappings(Client, QueryMap, HeadersMap, Options0)
 -spec list_function_event_invoke_configs(map(), binary() | list()) ->
     {ok, list_function_event_invoke_configs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_function_event_invoke_configs_errors(), tuple()}.
 list_function_event_invoke_configs(Client, FunctionName)
   when is_map(Client) ->
     list_function_event_invoke_configs(Client, FunctionName, #{}, #{}).
@@ -4112,10 +4370,7 @@ list_function_event_invoke_configs(Client, FunctionName)
 -spec list_function_event_invoke_configs(map(), binary() | list(), map(), map()) ->
     {ok, list_function_event_invoke_configs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_function_event_invoke_configs_errors(), tuple()}.
 list_function_event_invoke_configs(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_function_event_invoke_configs(Client, FunctionName, QueryMap, HeadersMap, []).
@@ -4123,10 +4378,7 @@ list_function_event_invoke_configs(Client, FunctionName, QueryMap, HeadersMap)
 -spec list_function_event_invoke_configs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_function_event_invoke_configs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_function_event_invoke_configs_errors(), tuple()}.
 list_function_event_invoke_configs(Client, FunctionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2019-09-25/functions/", aws_util:encode_uri(FunctionName), "/event-invoke-config/list"],
@@ -4152,10 +4404,7 @@ list_function_event_invoke_configs(Client, FunctionName, QueryMap, HeadersMap, O
 -spec list_function_url_configs(map(), binary() | list()) ->
     {ok, list_function_url_configs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_function_url_configs_errors(), tuple()}.
 list_function_url_configs(Client, FunctionName)
   when is_map(Client) ->
     list_function_url_configs(Client, FunctionName, #{}, #{}).
@@ -4163,10 +4412,7 @@ list_function_url_configs(Client, FunctionName)
 -spec list_function_url_configs(map(), binary() | list(), map(), map()) ->
     {ok, list_function_url_configs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_function_url_configs_errors(), tuple()}.
 list_function_url_configs(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_function_url_configs(Client, FunctionName, QueryMap, HeadersMap, []).
@@ -4174,10 +4420,7 @@ list_function_url_configs(Client, FunctionName, QueryMap, HeadersMap)
 -spec list_function_url_configs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_function_url_configs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_function_url_configs_errors(), tuple()}.
 list_function_url_configs(Client, FunctionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-10-31/functions/", aws_util:encode_uri(FunctionName), "/urls"],
@@ -4218,9 +4461,7 @@ list_function_url_configs(Client, FunctionName, QueryMap, HeadersMap, Options0)
 -spec list_functions(map()) ->
     {ok, list_functions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_functions_errors(), tuple()}.
 list_functions(Client)
   when is_map(Client) ->
     list_functions(Client, #{}, #{}).
@@ -4228,9 +4469,7 @@ list_functions(Client)
 -spec list_functions(map(), map(), map()) ->
     {ok, list_functions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_functions_errors(), tuple()}.
 list_functions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_functions(Client, QueryMap, HeadersMap, []).
@@ -4238,9 +4477,7 @@ list_functions(Client, QueryMap, HeadersMap)
 -spec list_functions(map(), map(), map(), proplists:proplist()) ->
     {ok, list_functions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_functions_errors(), tuple()}.
 list_functions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-03-31/functions"],
@@ -4271,9 +4508,7 @@ list_functions(Client, QueryMap, HeadersMap, Options0)
 -spec list_functions_by_code_signing_config(map(), binary() | list()) ->
     {ok, list_functions_by_code_signing_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, list_functions_by_code_signing_config_errors(), tuple()}.
 list_functions_by_code_signing_config(Client, CodeSigningConfigArn)
   when is_map(Client) ->
     list_functions_by_code_signing_config(Client, CodeSigningConfigArn, #{}, #{}).
@@ -4281,9 +4516,7 @@ list_functions_by_code_signing_config(Client, CodeSigningConfigArn)
 -spec list_functions_by_code_signing_config(map(), binary() | list(), map(), map()) ->
     {ok, list_functions_by_code_signing_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, list_functions_by_code_signing_config_errors(), tuple()}.
 list_functions_by_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_functions_by_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap, []).
@@ -4291,9 +4524,7 @@ list_functions_by_code_signing_config(Client, CodeSigningConfigArn, QueryMap, He
 -spec list_functions_by_code_signing_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_functions_by_code_signing_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, list_functions_by_code_signing_config_errors(), tuple()}.
 list_functions_by_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-04-22/code-signing-configs/", aws_util:encode_uri(CodeSigningConfigArn), "/functions"],
@@ -4329,10 +4560,7 @@ list_functions_by_code_signing_config(Client, CodeSigningConfigArn, QueryMap, He
 -spec list_layer_versions(map(), binary() | list()) ->
     {ok, list_layer_versions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_layer_versions_errors(), tuple()}.
 list_layer_versions(Client, LayerName)
   when is_map(Client) ->
     list_layer_versions(Client, LayerName, #{}, #{}).
@@ -4340,10 +4568,7 @@ list_layer_versions(Client, LayerName)
 -spec list_layer_versions(map(), binary() | list(), map(), map()) ->
     {ok, list_layer_versions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_layer_versions_errors(), tuple()}.
 list_layer_versions(Client, LayerName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_layer_versions(Client, LayerName, QueryMap, HeadersMap, []).
@@ -4351,10 +4576,7 @@ list_layer_versions(Client, LayerName, QueryMap, HeadersMap)
 -spec list_layer_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_layer_versions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_layer_versions_errors(), tuple()}.
 list_layer_versions(Client, LayerName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions"],
@@ -4395,9 +4617,7 @@ list_layer_versions(Client, LayerName, QueryMap, HeadersMap, Options0)
 -spec list_layers(map()) ->
     {ok, list_layers_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_layers_errors(), tuple()}.
 list_layers(Client)
   when is_map(Client) ->
     list_layers(Client, #{}, #{}).
@@ -4405,9 +4625,7 @@ list_layers(Client)
 -spec list_layers(map(), map(), map()) ->
     {ok, list_layers_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_layers_errors(), tuple()}.
 list_layers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_layers(Client, QueryMap, HeadersMap, []).
@@ -4415,9 +4633,7 @@ list_layers(Client, QueryMap, HeadersMap)
 -spec list_layers(map(), map(), map(), proplists:proplist()) ->
     {ok, list_layers_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_layers_errors(), tuple()}.
 list_layers(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2018-10-31/layers"],
@@ -4446,10 +4662,7 @@ list_layers(Client, QueryMap, HeadersMap, Options0)
 -spec list_provisioned_concurrency_configs(map(), binary() | list()) ->
     {ok, list_provisioned_concurrency_configs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_provisioned_concurrency_configs_errors(), tuple()}.
 list_provisioned_concurrency_configs(Client, FunctionName)
   when is_map(Client) ->
     list_provisioned_concurrency_configs(Client, FunctionName, #{}, #{}).
@@ -4457,10 +4670,7 @@ list_provisioned_concurrency_configs(Client, FunctionName)
 -spec list_provisioned_concurrency_configs(map(), binary() | list(), map(), map()) ->
     {ok, list_provisioned_concurrency_configs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_provisioned_concurrency_configs_errors(), tuple()}.
 list_provisioned_concurrency_configs(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_provisioned_concurrency_configs(Client, FunctionName, QueryMap, HeadersMap, []).
@@ -4468,10 +4678,7 @@ list_provisioned_concurrency_configs(Client, FunctionName, QueryMap, HeadersMap)
 -spec list_provisioned_concurrency_configs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_provisioned_concurrency_configs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_provisioned_concurrency_configs_errors(), tuple()}.
 list_provisioned_concurrency_configs(Client, FunctionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2019-09-30/functions/", aws_util:encode_uri(FunctionName), "/provisioned-concurrency?List=ALL"],
@@ -4501,10 +4708,7 @@ list_provisioned_concurrency_configs(Client, FunctionName, QueryMap, HeadersMap,
 -spec list_tags(map(), binary() | list()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, Resource)
   when is_map(Client) ->
     list_tags(Client, Resource, #{}, #{}).
@@ -4512,10 +4716,7 @@ list_tags(Client, Resource)
 -spec list_tags(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, Resource, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags(Client, Resource, QueryMap, HeadersMap, []).
@@ -4523,10 +4724,7 @@ list_tags(Client, Resource, QueryMap, HeadersMap)
 -spec list_tags(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, Resource, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2017-03-31/tags/", aws_util:encode_uri(Resource), ""],
@@ -4551,10 +4749,7 @@ list_tags(Client, Resource, QueryMap, HeadersMap, Options0)
 -spec list_versions_by_function(map(), binary() | list()) ->
     {ok, list_versions_by_function_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_versions_by_function_errors(), tuple()}.
 list_versions_by_function(Client, FunctionName)
   when is_map(Client) ->
     list_versions_by_function(Client, FunctionName, #{}, #{}).
@@ -4562,10 +4757,7 @@ list_versions_by_function(Client, FunctionName)
 -spec list_versions_by_function(map(), binary() | list(), map(), map()) ->
     {ok, list_versions_by_function_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_versions_by_function_errors(), tuple()}.
 list_versions_by_function(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_versions_by_function(Client, FunctionName, QueryMap, HeadersMap, []).
@@ -4573,10 +4765,7 @@ list_versions_by_function(Client, FunctionName, QueryMap, HeadersMap)
 -spec list_versions_by_function(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_versions_by_function_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_versions_by_function_errors(), tuple()}.
 list_versions_by_function(Client, FunctionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/versions"],
@@ -4611,22 +4800,14 @@ list_versions_by_function(Client, FunctionName, QueryMap, HeadersMap, Options0)
 -spec publish_layer_version(map(), binary() | list(), publish_layer_version_request()) ->
     {ok, publish_layer_version_response(), tuple()} |
     {error, any()} |
-    {error, code_storage_exceeded_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, publish_layer_version_errors(), tuple()}.
 publish_layer_version(Client, LayerName, Input) ->
     publish_layer_version(Client, LayerName, Input, []).
 
 -spec publish_layer_version(map(), binary() | list(), publish_layer_version_request(), proplists:proplist()) ->
     {ok, publish_layer_version_response(), tuple()} |
     {error, any()} |
-    {error, code_storage_exceeded_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, publish_layer_version_errors(), tuple()}.
 publish_layer_version(Client, LayerName, Input0, Options0) ->
     Method = post,
     Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions"],
@@ -4668,26 +4849,14 @@ publish_layer_version(Client, LayerName, Input0, Options0) ->
 -spec publish_version(map(), binary() | list(), publish_version_request()) ->
     {ok, function_configuration(), tuple()} |
     {error, any()} |
-    {error, code_storage_exceeded_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, publish_version_errors(), tuple()}.
 publish_version(Client, FunctionName, Input) ->
     publish_version(Client, FunctionName, Input, []).
 
 -spec publish_version(map(), binary() | list(), publish_version_request(), proplists:proplist()) ->
     {ok, function_configuration(), tuple()} |
     {error, any()} |
-    {error, code_storage_exceeded_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, publish_version_errors(), tuple()}.
 publish_version(Client, FunctionName, Input0, Options0) ->
     Method = post,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/versions"],
@@ -4717,24 +4886,14 @@ publish_version(Client, FunctionName, Input0, Options0) ->
 -spec put_function_code_signing_config(map(), binary() | list(), put_function_code_signing_config_request()) ->
     {ok, put_function_code_signing_config_response(), tuple()} |
     {error, any()} |
-    {error, code_signing_config_not_found_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_function_code_signing_config_errors(), tuple()}.
 put_function_code_signing_config(Client, FunctionName, Input) ->
     put_function_code_signing_config(Client, FunctionName, Input, []).
 
 -spec put_function_code_signing_config(map(), binary() | list(), put_function_code_signing_config_request(), proplists:proplist()) ->
     {ok, put_function_code_signing_config_response(), tuple()} |
     {error, any()} |
-    {error, code_signing_config_not_found_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_function_code_signing_config_errors(), tuple()}.
 put_function_code_signing_config(Client, FunctionName, Input0, Options0) ->
     Method = put,
     Path = ["/2020-06-30/functions/", aws_util:encode_uri(FunctionName), "/code-signing-config"],
@@ -4779,22 +4938,14 @@ put_function_code_signing_config(Client, FunctionName, Input0, Options0) ->
 -spec put_function_concurrency(map(), binary() | list(), put_function_concurrency_request()) ->
     {ok, concurrency(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_function_concurrency_errors(), tuple()}.
 put_function_concurrency(Client, FunctionName, Input) ->
     put_function_concurrency(Client, FunctionName, Input, []).
 
 -spec put_function_concurrency(map(), binary() | list(), put_function_concurrency_request(), proplists:proplist()) ->
     {ok, concurrency(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_function_concurrency_errors(), tuple()}.
 put_function_concurrency(Client, FunctionName, Input0, Options0) ->
     Method = put,
     Path = ["/2017-10-31/functions/", aws_util:encode_uri(FunctionName), "/concurrency"],
@@ -4847,22 +4998,14 @@ put_function_concurrency(Client, FunctionName, Input0, Options0) ->
 -spec put_function_event_invoke_config(map(), binary() | list(), put_function_event_invoke_config_request()) ->
     {ok, function_event_invoke_config(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_function_event_invoke_config_errors(), tuple()}.
 put_function_event_invoke_config(Client, FunctionName, Input) ->
     put_function_event_invoke_config(Client, FunctionName, Input, []).
 
 -spec put_function_event_invoke_config(map(), binary() | list(), put_function_event_invoke_config_request(), proplists:proplist()) ->
     {ok, function_event_invoke_config(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_function_event_invoke_config_errors(), tuple()}.
 put_function_event_invoke_config(Client, FunctionName, Input0, Options0) ->
     Method = put,
     Path = ["/2019-09-25/functions/", aws_util:encode_uri(FunctionName), "/event-invoke-config"],
@@ -4891,22 +5034,14 @@ put_function_event_invoke_config(Client, FunctionName, Input0, Options0) ->
 -spec put_provisioned_concurrency_config(map(), binary() | list(), put_provisioned_concurrency_config_request()) ->
     {ok, put_provisioned_concurrency_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_provisioned_concurrency_config_errors(), tuple()}.
 put_provisioned_concurrency_config(Client, FunctionName, Input) ->
     put_provisioned_concurrency_config(Client, FunctionName, Input, []).
 
 -spec put_provisioned_concurrency_config(map(), binary() | list(), put_provisioned_concurrency_config_request(), proplists:proplist()) ->
     {ok, put_provisioned_concurrency_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_provisioned_concurrency_config_errors(), tuple()}.
 put_provisioned_concurrency_config(Client, FunctionName, Input0, Options0) ->
     Method = put,
     Path = ["/2019-09-30/functions/", aws_util:encode_uri(FunctionName), "/provisioned-concurrency"],
@@ -4939,22 +5074,14 @@ put_provisioned_concurrency_config(Client, FunctionName, Input0, Options0) ->
 -spec put_runtime_management_config(map(), binary() | list(), put_runtime_management_config_request()) ->
     {ok, put_runtime_management_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_runtime_management_config_errors(), tuple()}.
 put_runtime_management_config(Client, FunctionName, Input) ->
     put_runtime_management_config(Client, FunctionName, Input, []).
 
 -spec put_runtime_management_config(map(), binary() | list(), put_runtime_management_config_request(), proplists:proplist()) ->
     {ok, put_runtime_management_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_runtime_management_config_errors(), tuple()}.
 put_runtime_management_config(Client, FunctionName, Input0, Options0) ->
     Method = put,
     Path = ["/2021-07-20/functions/", aws_util:encode_uri(FunctionName), "/runtime-management-config"],
@@ -4988,22 +5115,14 @@ put_runtime_management_config(Client, FunctionName, Input0, Options0) ->
 -spec remove_layer_version_permission(map(), binary() | list(), binary() | list(), binary() | list(), remove_layer_version_permission_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, remove_layer_version_permission_errors(), tuple()}.
 remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, Input) ->
     remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, Input, []).
 
 -spec remove_layer_version_permission(map(), binary() | list(), binary() | list(), binary() | list(), remove_layer_version_permission_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, remove_layer_version_permission_errors(), tuple()}.
 remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, Input0, Options0) ->
     Method = delete,
     Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions/", aws_util:encode_uri(VersionNumber), "/policy/", aws_util:encode_uri(StatementId), ""],
@@ -5035,22 +5154,14 @@ remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, I
 -spec remove_permission(map(), binary() | list(), binary() | list(), remove_permission_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, remove_permission_errors(), tuple()}.
 remove_permission(Client, FunctionName, StatementId, Input) ->
     remove_permission(Client, FunctionName, StatementId, Input, []).
 
 -spec remove_permission(map(), binary() | list(), binary() | list(), remove_permission_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, remove_permission_errors(), tuple()}.
 remove_permission(Client, FunctionName, StatementId, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/policy/", aws_util:encode_uri(StatementId), ""],
@@ -5080,22 +5191,14 @@ remove_permission(Client, FunctionName, StatementId, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Resource, Input) ->
     tag_resource(Client, Resource, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Resource, Input0, Options0) ->
     Method = post,
     Path = ["/2017-03-31/tags/", aws_util:encode_uri(Resource), ""],
@@ -5123,22 +5226,14 @@ tag_resource(Client, Resource, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Resource, Input) ->
     untag_resource(Client, Resource, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Resource, Input0, Options0) ->
     Method = delete,
     Path = ["/2017-03-31/tags/", aws_util:encode_uri(Resource), ""],
@@ -5167,24 +5262,14 @@ untag_resource(Client, Resource, Input0, Options0) ->
 -spec update_alias(map(), binary() | list(), binary() | list(), update_alias_request()) ->
     {ok, alias_configuration(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_alias_errors(), tuple()}.
 update_alias(Client, FunctionName, Name, Input) ->
     update_alias(Client, FunctionName, Name, Input, []).
 
 -spec update_alias(map(), binary() | list(), binary() | list(), update_alias_request(), proplists:proplist()) ->
     {ok, alias_configuration(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_alias_errors(), tuple()}.
 update_alias(Client, FunctionName, Name, Input0, Options0) ->
     Method = put,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/aliases/", aws_util:encode_uri(Name), ""],
@@ -5214,18 +5299,14 @@ update_alias(Client, FunctionName, Name, Input0, Options0) ->
 -spec update_code_signing_config(map(), binary() | list(), update_code_signing_config_request()) ->
     {ok, update_code_signing_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, update_code_signing_config_errors(), tuple()}.
 update_code_signing_config(Client, CodeSigningConfigArn, Input) ->
     update_code_signing_config(Client, CodeSigningConfigArn, Input, []).
 
 -spec update_code_signing_config(map(), binary() | list(), update_code_signing_config_request(), proplists:proplist()) ->
     {ok, update_code_signing_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, update_code_signing_config_errors(), tuple()}.
 update_code_signing_config(Client, CodeSigningConfigArn, Input0, Options0) ->
     Method = put,
     Path = ["/2020-04-22/code-signing-configs/", aws_util:encode_uri(CodeSigningConfigArn), ""],
@@ -5321,24 +5402,14 @@ update_code_signing_config(Client, CodeSigningConfigArn, Input0, Options0) ->
 -spec update_event_source_mapping(map(), binary() | list(), update_event_source_mapping_request()) ->
     {ok, event_source_mapping_configuration(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_event_source_mapping_errors(), tuple()}.
 update_event_source_mapping(Client, UUID, Input) ->
     update_event_source_mapping(Client, UUID, Input, []).
 
 -spec update_event_source_mapping(map(), binary() | list(), update_event_source_mapping_request(), proplists:proplist()) ->
     {ok, event_source_mapping_configuration(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_event_source_mapping_errors(), tuple()}.
 update_event_source_mapping(Client, UUID, Input0, Options0) ->
     Method = put,
     Path = ["/2015-03-31/event-source-mappings/", aws_util:encode_uri(UUID), ""],
@@ -5398,32 +5469,14 @@ update_event_source_mapping(Client, UUID, Input0, Options0) ->
 -spec update_function_code(map(), binary() | list(), update_function_code_request()) ->
     {ok, function_configuration(), tuple()} |
     {error, any()} |
-    {error, code_signing_config_not_found_exception(), tuple()} |
-    {error, code_storage_exceeded_exception(), tuple()} |
-    {error, code_verification_failed_exception(), tuple()} |
-    {error, invalid_code_signature_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_function_code_errors(), tuple()}.
 update_function_code(Client, FunctionName, Input) ->
     update_function_code(Client, FunctionName, Input, []).
 
 -spec update_function_code(map(), binary() | list(), update_function_code_request(), proplists:proplist()) ->
     {ok, function_configuration(), tuple()} |
     {error, any()} |
-    {error, code_signing_config_not_found_exception(), tuple()} |
-    {error, code_storage_exceeded_exception(), tuple()} |
-    {error, code_verification_failed_exception(), tuple()} |
-    {error, invalid_code_signature_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_function_code_errors(), tuple()}.
 update_function_code(Client, FunctionName, Input0, Options0) ->
     Method = put,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/code"],
@@ -5474,30 +5527,14 @@ update_function_code(Client, FunctionName, Input0, Options0) ->
 -spec update_function_configuration(map(), binary() | list(), update_function_configuration_request()) ->
     {ok, function_configuration(), tuple()} |
     {error, any()} |
-    {error, code_signing_config_not_found_exception(), tuple()} |
-    {error, code_verification_failed_exception(), tuple()} |
-    {error, invalid_code_signature_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_function_configuration_errors(), tuple()}.
 update_function_configuration(Client, FunctionName, Input) ->
     update_function_configuration(Client, FunctionName, Input, []).
 
 -spec update_function_configuration(map(), binary() | list(), update_function_configuration_request(), proplists:proplist()) ->
     {ok, function_configuration(), tuple()} |
     {error, any()} |
-    {error, code_signing_config_not_found_exception(), tuple()} |
-    {error, code_verification_failed_exception(), tuple()} |
-    {error, invalid_code_signature_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_function_configuration_errors(), tuple()}.
 update_function_configuration(Client, FunctionName, Input0, Options0) ->
     Method = put,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/configuration"],
@@ -5528,22 +5565,14 @@ update_function_configuration(Client, FunctionName, Input0, Options0) ->
 -spec update_function_event_invoke_config(map(), binary() | list(), update_function_event_invoke_config_request()) ->
     {ok, function_event_invoke_config(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_function_event_invoke_config_errors(), tuple()}.
 update_function_event_invoke_config(Client, FunctionName, Input) ->
     update_function_event_invoke_config(Client, FunctionName, Input, []).
 
 -spec update_function_event_invoke_config(map(), binary() | list(), update_function_event_invoke_config_request(), proplists:proplist()) ->
     {ok, function_event_invoke_config(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_function_event_invoke_config_errors(), tuple()}.
 update_function_event_invoke_config(Client, FunctionName, Input0, Options0) ->
     Method = post,
     Path = ["/2019-09-25/functions/", aws_util:encode_uri(FunctionName), "/event-invoke-config"],
@@ -5571,22 +5600,14 @@ update_function_event_invoke_config(Client, FunctionName, Input0, Options0) ->
 -spec update_function_url_config(map(), binary() | list(), update_function_url_config_request()) ->
     {ok, update_function_url_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_function_url_config_errors(), tuple()}.
 update_function_url_config(Client, FunctionName, Input) ->
     update_function_url_config(Client, FunctionName, Input, []).
 
 -spec update_function_url_config(map(), binary() | list(), update_function_url_config_request(), proplists:proplist()) ->
     {ok, update_function_url_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_function_url_config_errors(), tuple()}.
 update_function_url_config(Client, FunctionName, Input0, Options0) ->
     Method = put,
     Path = ["/2021-10-31/functions/", aws_util:encode_uri(FunctionName), "/url"],

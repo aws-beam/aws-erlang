@@ -90,6 +90,7 @@
 %% }
 -type get_environment_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_environment_input() :: #{
 %%   <<"AirflowConfigurationOptions">> => map(),
@@ -116,9 +117,11 @@
 %%   <<"WeeklyMaintenanceWindowStart">> => string()
 %% }
 -type create_environment_input() :: #{binary() => any()}.
+
 %% Example:
 %% delete_environment_input() :: #{}
 -type delete_environment_input() :: #{}.
+
 
 %% Example:
 %% module_logging_configuration() :: #{
@@ -127,6 +130,7 @@
 %%   <<"LogLevel">> => string()
 %% }
 -type module_logging_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% logging_configuration_input() :: #{
@@ -138,6 +142,7 @@
 %% }
 -type logging_configuration_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_environments_input() :: #{
 %%   <<"MaxResults">> => [integer()],
@@ -145,17 +150,20 @@
 %% }
 -type list_environments_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_output() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type list_tags_for_resource_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_network_configuration_input() :: #{
 %%   <<"SecurityGroupIds">> => list(string()())
 %% }
 -type update_network_configuration_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% logging_configuration() :: #{
@@ -167,11 +175,13 @@
 %% }
 -type logging_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_environment_output() :: #{
 %%   <<"Arn">> => string()
 %% }
 -type create_environment_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_error() :: #{
@@ -179,6 +189,7 @@
 %%   <<"ErrorMessage">> => string()
 %% }
 -type update_error() :: #{binary() => any()}.
+
 
 %% Example:
 %% metric_datum() :: #{
@@ -191,17 +202,20 @@
 %% }
 -type metric_datum() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_environment_output() :: #{
 %%   <<"Arn">> => string()
 %% }
 -type update_environment_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% last_update() :: #{
@@ -211,6 +225,7 @@
 %%   <<"Status">> => string()
 %% }
 -type last_update() :: #{binary() => any()}.
+
 
 %% Example:
 %% environment() :: #{
@@ -248,9 +263,11 @@
 %%   <<"WeeklyMaintenanceWindowStart">> => string()
 %% }
 -type environment() :: #{binary() => any()}.
+
 %% Example:
 %% get_environment_input() :: #{}
 -type get_environment_input() :: #{}.
+
 
 %% Example:
 %% list_environments_output() :: #{
@@ -258,6 +275,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_environments_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_environment_input() :: #{
@@ -282,27 +300,33 @@
 %%   <<"WeeklyMaintenanceWindowStart">> => string()
 %% }
 -type update_environment_input() :: #{binary() => any()}.
+
 %% Example:
 %% create_web_login_token_request() :: #{}
 -type create_web_login_token_request() :: #{}.
+
 
 %% Example:
 %% tag_resource_input() :: #{
 %%   <<"Tags">> := map()
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_output() :: #{}
 -type tag_resource_output() :: #{}.
+
 
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_environment_output() :: #{}
 -type delete_environment_output() :: #{}.
+
 
 %% Example:
 %% create_cli_token_response() :: #{
@@ -311,6 +335,7 @@
 %% }
 -type create_cli_token_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% network_configuration() :: #{
 %%   <<"SecurityGroupIds">> => list(string()()),
@@ -318,32 +343,39 @@
 %% }
 -type network_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_input() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
+
 %% Example:
 %% create_cli_token_request() :: #{}
 -type create_cli_token_request() :: #{}.
+
 
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_input() :: #{}
 -type list_tags_for_resource_input() :: #{}.
+
 %% Example:
 %% untag_resource_output() :: #{}
 -type untag_resource_output() :: #{}.
+
 
 %% Example:
 %% create_web_login_token_response() :: #{
@@ -354,6 +386,7 @@
 %% }
 -type create_web_login_token_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% dimension() :: #{
 %%   <<"Name">> => [string()],
@@ -361,14 +394,17 @@
 %% }
 -type dimension() :: #{binary() => any()}.
 
+
 %% Example:
 %% publish_metrics_input() :: #{
 %%   <<"MetricData">> => list(metric_datum()())
 %% }
 -type publish_metrics_input() :: #{binary() => any()}.
+
 %% Example:
 %% publish_metrics_output() :: #{}
 -type publish_metrics_output() :: #{}.
+
 
 %% Example:
 %% module_logging_configuration_input() :: #{
@@ -376,6 +412,7 @@
 %%   <<"LogLevel">> => string()
 %% }
 -type module_logging_configuration_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% statistic_set() :: #{
@@ -385,6 +422,57 @@
 %%   <<"Sum">> => [float()]
 %% }
 -type statistic_set() :: #{binary() => any()}.
+
+-type create_cli_token_errors() ::
+    resource_not_found_exception().
+
+-type create_environment_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type create_web_login_token_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_environment_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_environment_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_environments_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type publish_metrics_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_environment_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -397,14 +485,14 @@
 -spec create_cli_token(map(), binary() | list(), create_cli_token_request()) ->
     {ok, create_cli_token_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_cli_token_errors(), tuple()}.
 create_cli_token(Client, Name, Input) ->
     create_cli_token(Client, Name, Input, []).
 
 -spec create_cli_token(map(), binary() | list(), create_cli_token_request(), proplists:proplist()) ->
     {ok, create_cli_token_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_cli_token_errors(), tuple()}.
 create_cli_token(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/clitoken/", aws_util:encode_uri(Name), ""],
@@ -432,16 +520,14 @@ create_cli_token(Client, Name, Input0, Options0) ->
 -spec create_environment(map(), binary() | list(), create_environment_input()) ->
     {ok, create_environment_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_environment_errors(), tuple()}.
 create_environment(Client, Name, Input) ->
     create_environment(Client, Name, Input, []).
 
 -spec create_environment(map(), binary() | list(), create_environment_input(), proplists:proplist()) ->
     {ok, create_environment_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_environment_errors(), tuple()}.
 create_environment(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/environments/", aws_util:encode_uri(Name), ""],
@@ -471,20 +557,14 @@ create_environment(Client, Name, Input0, Options0) ->
 -spec create_web_login_token(map(), binary() | list(), create_web_login_token_request()) ->
     {ok, create_web_login_token_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_web_login_token_errors(), tuple()}.
 create_web_login_token(Client, Name, Input) ->
     create_web_login_token(Client, Name, Input, []).
 
 -spec create_web_login_token(map(), binary() | list(), create_web_login_token_request(), proplists:proplist()) ->
     {ok, create_web_login_token_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_web_login_token_errors(), tuple()}.
 create_web_login_token(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/webtoken/", aws_util:encode_uri(Name), ""],
@@ -512,18 +592,14 @@ create_web_login_token(Client, Name, Input0, Options0) ->
 -spec delete_environment(map(), binary() | list(), delete_environment_input()) ->
     {ok, delete_environment_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_environment_errors(), tuple()}.
 delete_environment(Client, Name, Input) ->
     delete_environment(Client, Name, Input, []).
 
 -spec delete_environment(map(), binary() | list(), delete_environment_input(), proplists:proplist()) ->
     {ok, delete_environment_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_environment_errors(), tuple()}.
 delete_environment(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/environments/", aws_util:encode_uri(Name), ""],
@@ -551,9 +627,7 @@ delete_environment(Client, Name, Input0, Options0) ->
 -spec get_environment(map(), binary() | list()) ->
     {ok, get_environment_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_environment_errors(), tuple()}.
 get_environment(Client, Name)
   when is_map(Client) ->
     get_environment(Client, Name, #{}, #{}).
@@ -561,9 +635,7 @@ get_environment(Client, Name)
 -spec get_environment(map(), binary() | list(), map(), map()) ->
     {ok, get_environment_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_environment_errors(), tuple()}.
 get_environment(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_environment(Client, Name, QueryMap, HeadersMap, []).
@@ -571,9 +643,7 @@ get_environment(Client, Name, QueryMap, HeadersMap)
 -spec get_environment(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_environment_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_environment_errors(), tuple()}.
 get_environment(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environments/", aws_util:encode_uri(Name), ""],
@@ -595,8 +665,7 @@ get_environment(Client, Name, QueryMap, HeadersMap, Options0)
 -spec list_environments(map()) ->
     {ok, list_environments_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client)
   when is_map(Client) ->
     list_environments(Client, #{}, #{}).
@@ -604,8 +673,7 @@ list_environments(Client)
 -spec list_environments(map(), map(), map()) ->
     {ok, list_environments_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_environments(Client, QueryMap, HeadersMap, []).
@@ -613,8 +681,7 @@ list_environments(Client, QueryMap, HeadersMap)
 -spec list_environments(map(), map(), map(), proplists:proplist()) ->
     {ok, list_environments_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environments"],
@@ -643,9 +710,7 @@ list_environments(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -653,9 +718,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -663,9 +726,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -689,16 +750,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec publish_metrics(map(), binary() | list(), publish_metrics_input()) ->
     {ok, publish_metrics_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, publish_metrics_errors(), tuple()}.
 publish_metrics(Client, EnvironmentName, Input) ->
     publish_metrics(Client, EnvironmentName, Input, []).
 
 -spec publish_metrics(map(), binary() | list(), publish_metrics_input(), proplists:proplist()) ->
     {ok, publish_metrics_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, publish_metrics_errors(), tuple()}.
 publish_metrics(Client, EnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/metrics/environments/", aws_util:encode_uri(EnvironmentName), ""],
@@ -726,18 +785,14 @@ publish_metrics(Client, EnvironmentName, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -767,18 +822,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -807,18 +858,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_environment(map(), binary() | list(), update_environment_input()) ->
     {ok, update_environment_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_environment_errors(), tuple()}.
 update_environment(Client, Name, Input) ->
     update_environment(Client, Name, Input, []).
 
 -spec update_environment(map(), binary() | list(), update_environment_input(), proplists:proplist()) ->
     {ok, update_environment_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_environment_errors(), tuple()}.
 update_environment(Client, Name, Input0, Options0) ->
     Method = patch,
     Path = ["/environments/", aws_util:encode_uri(Name), ""],

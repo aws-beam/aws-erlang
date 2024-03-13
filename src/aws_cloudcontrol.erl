@@ -305,6 +305,113 @@
 %% }
 -type resource_request_status_filter() :: #{binary() => any()}.
 
+-type cancel_resource_request_errors() ::
+    request_token_not_found_exception() | 
+    concurrent_modification_exception().
+
+-type create_resource_errors() ::
+    service_internal_error_exception() | 
+    resource_conflict_exception() | 
+    invalid_credentials_exception() | 
+    handler_failure_exception() | 
+    throttling_exception() | 
+    service_limit_exceeded_exception() | 
+    not_stabilized_exception() | 
+    not_updatable_exception() | 
+    client_token_conflict_exception() | 
+    type_not_found_exception() | 
+    invalid_request_exception() | 
+    concurrent_operation_exception() | 
+    resource_not_found_exception() | 
+    unsupported_action_exception() | 
+    private_type_exception() | 
+    network_failure_exception() | 
+    already_exists_exception() | 
+    general_service_exception() | 
+    handler_internal_failure_exception().
+
+-type delete_resource_errors() ::
+    service_internal_error_exception() | 
+    resource_conflict_exception() | 
+    invalid_credentials_exception() | 
+    handler_failure_exception() | 
+    throttling_exception() | 
+    service_limit_exceeded_exception() | 
+    not_stabilized_exception() | 
+    not_updatable_exception() | 
+    client_token_conflict_exception() | 
+    type_not_found_exception() | 
+    invalid_request_exception() | 
+    concurrent_operation_exception() | 
+    resource_not_found_exception() | 
+    unsupported_action_exception() | 
+    private_type_exception() | 
+    network_failure_exception() | 
+    already_exists_exception() | 
+    general_service_exception() | 
+    handler_internal_failure_exception().
+
+-type get_resource_errors() ::
+    service_internal_error_exception() | 
+    resource_conflict_exception() | 
+    invalid_credentials_exception() | 
+    handler_failure_exception() | 
+    throttling_exception() | 
+    service_limit_exceeded_exception() | 
+    not_stabilized_exception() | 
+    not_updatable_exception() | 
+    type_not_found_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unsupported_action_exception() | 
+    private_type_exception() | 
+    network_failure_exception() | 
+    already_exists_exception() | 
+    general_service_exception() | 
+    handler_internal_failure_exception().
+
+-type get_resource_request_status_errors() ::
+    request_token_not_found_exception().
+
+-type list_resources_errors() ::
+    service_internal_error_exception() | 
+    resource_conflict_exception() | 
+    invalid_credentials_exception() | 
+    handler_failure_exception() | 
+    throttling_exception() | 
+    service_limit_exceeded_exception() | 
+    not_stabilized_exception() | 
+    not_updatable_exception() | 
+    type_not_found_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unsupported_action_exception() | 
+    private_type_exception() | 
+    network_failure_exception() | 
+    already_exists_exception() | 
+    general_service_exception() | 
+    handler_internal_failure_exception().
+
+-type update_resource_errors() ::
+    service_internal_error_exception() | 
+    resource_conflict_exception() | 
+    invalid_credentials_exception() | 
+    handler_failure_exception() | 
+    throttling_exception() | 
+    service_limit_exceeded_exception() | 
+    not_stabilized_exception() | 
+    not_updatable_exception() | 
+    client_token_conflict_exception() | 
+    type_not_found_exception() | 
+    invalid_request_exception() | 
+    concurrent_operation_exception() | 
+    resource_not_found_exception() | 
+    unsupported_action_exception() | 
+    private_type_exception() | 
+    network_failure_exception() | 
+    already_exists_exception() | 
+    general_service_exception() | 
+    handler_internal_failure_exception().
 
 %%====================================================================
 %% API
@@ -322,8 +429,7 @@
 -spec cancel_resource_request(map(), cancel_resource_request_input()) ->
     {ok, cancel_resource_request_output(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, request_token_not_found_exception(), tuple()}.
+    {error, cancel_resource_request_errors(), tuple()}.
 cancel_resource_request(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_resource_request(Client, Input, []).
@@ -331,8 +437,7 @@ cancel_resource_request(Client, Input)
 -spec cancel_resource_request(map(), cancel_resource_request_input(), proplists:proplist()) ->
     {ok, cancel_resource_request_output(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, request_token_not_found_exception(), tuple()}.
+    {error, cancel_resource_request_errors(), tuple()}.
 cancel_resource_request(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelResourceRequest">>, Input, Options).
@@ -353,25 +458,7 @@ cancel_resource_request(Client, Input, Options)
 -spec create_resource(map(), create_resource_input()) ->
     {ok, create_resource_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, client_token_conflict_exception(), tuple()} |
-    {error, concurrent_operation_exception(), tuple()} |
-    {error, general_service_exception(), tuple()} |
-    {error, handler_failure_exception(), tuple()} |
-    {error, handler_internal_failure_exception(), tuple()} |
-    {error, invalid_credentials_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, network_failure_exception(), tuple()} |
-    {error, not_stabilized_exception(), tuple()} |
-    {error, not_updatable_exception(), tuple()} |
-    {error, private_type_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_internal_error_exception(), tuple()} |
-    {error, service_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, type_not_found_exception(), tuple()} |
-    {error, unsupported_action_exception(), tuple()}.
+    {error, create_resource_errors(), tuple()}.
 create_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_resource(Client, Input, []).
@@ -379,25 +466,7 @@ create_resource(Client, Input)
 -spec create_resource(map(), create_resource_input(), proplists:proplist()) ->
     {ok, create_resource_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, client_token_conflict_exception(), tuple()} |
-    {error, concurrent_operation_exception(), tuple()} |
-    {error, general_service_exception(), tuple()} |
-    {error, handler_failure_exception(), tuple()} |
-    {error, handler_internal_failure_exception(), tuple()} |
-    {error, invalid_credentials_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, network_failure_exception(), tuple()} |
-    {error, not_stabilized_exception(), tuple()} |
-    {error, not_updatable_exception(), tuple()} |
-    {error, private_type_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_internal_error_exception(), tuple()} |
-    {error, service_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, type_not_found_exception(), tuple()} |
-    {error, unsupported_action_exception(), tuple()}.
+    {error, create_resource_errors(), tuple()}.
 create_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateResource">>, Input, Options).
@@ -418,25 +487,7 @@ create_resource(Client, Input, Options)
 -spec delete_resource(map(), delete_resource_input()) ->
     {ok, delete_resource_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, client_token_conflict_exception(), tuple()} |
-    {error, concurrent_operation_exception(), tuple()} |
-    {error, general_service_exception(), tuple()} |
-    {error, handler_failure_exception(), tuple()} |
-    {error, handler_internal_failure_exception(), tuple()} |
-    {error, invalid_credentials_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, network_failure_exception(), tuple()} |
-    {error, not_stabilized_exception(), tuple()} |
-    {error, not_updatable_exception(), tuple()} |
-    {error, private_type_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_internal_error_exception(), tuple()} |
-    {error, service_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, type_not_found_exception(), tuple()} |
-    {error, unsupported_action_exception(), tuple()}.
+    {error, delete_resource_errors(), tuple()}.
 delete_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource(Client, Input, []).
@@ -444,25 +495,7 @@ delete_resource(Client, Input)
 -spec delete_resource(map(), delete_resource_input(), proplists:proplist()) ->
     {ok, delete_resource_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, client_token_conflict_exception(), tuple()} |
-    {error, concurrent_operation_exception(), tuple()} |
-    {error, general_service_exception(), tuple()} |
-    {error, handler_failure_exception(), tuple()} |
-    {error, handler_internal_failure_exception(), tuple()} |
-    {error, invalid_credentials_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, network_failure_exception(), tuple()} |
-    {error, not_stabilized_exception(), tuple()} |
-    {error, not_updatable_exception(), tuple()} |
-    {error, private_type_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_internal_error_exception(), tuple()} |
-    {error, service_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, type_not_found_exception(), tuple()} |
-    {error, unsupported_action_exception(), tuple()}.
+    {error, delete_resource_errors(), tuple()}.
 delete_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResource">>, Input, Options).
@@ -481,23 +514,7 @@ delete_resource(Client, Input, Options)
 -spec get_resource(map(), get_resource_input()) ->
     {ok, get_resource_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, general_service_exception(), tuple()} |
-    {error, handler_failure_exception(), tuple()} |
-    {error, handler_internal_failure_exception(), tuple()} |
-    {error, invalid_credentials_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, network_failure_exception(), tuple()} |
-    {error, not_stabilized_exception(), tuple()} |
-    {error, not_updatable_exception(), tuple()} |
-    {error, private_type_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_internal_error_exception(), tuple()} |
-    {error, service_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, type_not_found_exception(), tuple()} |
-    {error, unsupported_action_exception(), tuple()}.
+    {error, get_resource_errors(), tuple()}.
 get_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource(Client, Input, []).
@@ -505,23 +522,7 @@ get_resource(Client, Input)
 -spec get_resource(map(), get_resource_input(), proplists:proplist()) ->
     {ok, get_resource_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, general_service_exception(), tuple()} |
-    {error, handler_failure_exception(), tuple()} |
-    {error, handler_internal_failure_exception(), tuple()} |
-    {error, invalid_credentials_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, network_failure_exception(), tuple()} |
-    {error, not_stabilized_exception(), tuple()} |
-    {error, not_updatable_exception(), tuple()} |
-    {error, private_type_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_internal_error_exception(), tuple()} |
-    {error, service_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, type_not_found_exception(), tuple()} |
-    {error, unsupported_action_exception(), tuple()}.
+    {error, get_resource_errors(), tuple()}.
 get_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResource">>, Input, Options).
@@ -536,7 +537,7 @@ get_resource(Client, Input, Options)
 -spec get_resource_request_status(map(), get_resource_request_status_input()) ->
     {ok, get_resource_request_status_output(), tuple()} |
     {error, any()} |
-    {error, request_token_not_found_exception(), tuple()}.
+    {error, get_resource_request_status_errors(), tuple()}.
 get_resource_request_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_request_status(Client, Input, []).
@@ -544,7 +545,7 @@ get_resource_request_status(Client, Input)
 -spec get_resource_request_status(map(), get_resource_request_status_input(), proplists:proplist()) ->
     {ok, get_resource_request_status_output(), tuple()} |
     {error, any()} |
-    {error, request_token_not_found_exception(), tuple()}.
+    {error, get_resource_request_status_errors(), tuple()}.
 get_resource_request_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourceRequestStatus">>, Input, Options).
@@ -585,23 +586,7 @@ list_resource_requests(Client, Input, Options)
 -spec list_resources(map(), list_resources_input()) ->
     {ok, list_resources_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, general_service_exception(), tuple()} |
-    {error, handler_failure_exception(), tuple()} |
-    {error, handler_internal_failure_exception(), tuple()} |
-    {error, invalid_credentials_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, network_failure_exception(), tuple()} |
-    {error, not_stabilized_exception(), tuple()} |
-    {error, not_updatable_exception(), tuple()} |
-    {error, private_type_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_internal_error_exception(), tuple()} |
-    {error, service_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, type_not_found_exception(), tuple()} |
-    {error, unsupported_action_exception(), tuple()}.
+    {error, list_resources_errors(), tuple()}.
 list_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resources(Client, Input, []).
@@ -609,23 +594,7 @@ list_resources(Client, Input)
 -spec list_resources(map(), list_resources_input(), proplists:proplist()) ->
     {ok, list_resources_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, general_service_exception(), tuple()} |
-    {error, handler_failure_exception(), tuple()} |
-    {error, handler_internal_failure_exception(), tuple()} |
-    {error, invalid_credentials_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, network_failure_exception(), tuple()} |
-    {error, not_stabilized_exception(), tuple()} |
-    {error, not_updatable_exception(), tuple()} |
-    {error, private_type_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_internal_error_exception(), tuple()} |
-    {error, service_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, type_not_found_exception(), tuple()} |
-    {error, unsupported_action_exception(), tuple()}.
+    {error, list_resources_errors(), tuple()}.
 list_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResources">>, Input, Options).
@@ -659,25 +628,7 @@ list_resources(Client, Input, Options)
 -spec update_resource(map(), update_resource_input()) ->
     {ok, update_resource_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, client_token_conflict_exception(), tuple()} |
-    {error, concurrent_operation_exception(), tuple()} |
-    {error, general_service_exception(), tuple()} |
-    {error, handler_failure_exception(), tuple()} |
-    {error, handler_internal_failure_exception(), tuple()} |
-    {error, invalid_credentials_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, network_failure_exception(), tuple()} |
-    {error, not_stabilized_exception(), tuple()} |
-    {error, not_updatable_exception(), tuple()} |
-    {error, private_type_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_internal_error_exception(), tuple()} |
-    {error, service_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, type_not_found_exception(), tuple()} |
-    {error, unsupported_action_exception(), tuple()}.
+    {error, update_resource_errors(), tuple()}.
 update_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_resource(Client, Input, []).
@@ -685,25 +636,7 @@ update_resource(Client, Input)
 -spec update_resource(map(), update_resource_input(), proplists:proplist()) ->
     {ok, update_resource_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, client_token_conflict_exception(), tuple()} |
-    {error, concurrent_operation_exception(), tuple()} |
-    {error, general_service_exception(), tuple()} |
-    {error, handler_failure_exception(), tuple()} |
-    {error, handler_internal_failure_exception(), tuple()} |
-    {error, invalid_credentials_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, network_failure_exception(), tuple()} |
-    {error, not_stabilized_exception(), tuple()} |
-    {error, not_updatable_exception(), tuple()} |
-    {error, private_type_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_internal_error_exception(), tuple()} |
-    {error, service_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, type_not_found_exception(), tuple()} |
-    {error, unsupported_action_exception(), tuple()}.
+    {error, update_resource_errors(), tuple()}.
 update_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateResource">>, Input, Options).

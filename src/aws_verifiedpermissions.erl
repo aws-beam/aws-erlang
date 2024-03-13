@@ -838,6 +838,91 @@
 %% }
 -type get_policy_output() :: #{binary() => any()}.
 
+-type batch_is_authorized_errors() ::
+    resource_not_found_exception().
+
+-type create_identity_source_errors() ::
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_policy_errors() ::
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_policy_store_errors() ::
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_policy_template_errors() ::
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_identity_source_errors() ::
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_policy_errors() ::
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_policy_template_errors() ::
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_identity_source_errors() ::
+    resource_not_found_exception().
+
+-type get_policy_errors() ::
+    resource_not_found_exception().
+
+-type get_policy_store_errors() ::
+    resource_not_found_exception().
+
+-type get_policy_template_errors() ::
+    resource_not_found_exception().
+
+-type get_schema_errors() ::
+    resource_not_found_exception().
+
+-type is_authorized_errors() ::
+    resource_not_found_exception().
+
+-type is_authorized_with_token_errors() ::
+    resource_not_found_exception().
+
+-type list_identity_sources_errors() ::
+    resource_not_found_exception().
+
+-type list_policies_errors() ::
+    resource_not_found_exception().
+
+-type list_policy_templates_errors() ::
+    resource_not_found_exception().
+
+-type put_schema_errors() ::
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_identity_source_errors() ::
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_policy_errors() ::
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_policy_store_errors() ::
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_policy_template_errors() ::
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -878,7 +963,7 @@
 -spec batch_is_authorized(map(), batch_is_authorized_input()) ->
     {ok, batch_is_authorized_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, batch_is_authorized_errors(), tuple()}.
 batch_is_authorized(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_is_authorized(Client, Input, []).
@@ -886,7 +971,7 @@ batch_is_authorized(Client, Input)
 -spec batch_is_authorized(map(), batch_is_authorized_input(), proplists:proplist()) ->
     {ok, batch_is_authorized_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, batch_is_authorized_errors(), tuple()}.
 batch_is_authorized(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchIsAuthorized">>, Input, Options).
@@ -938,9 +1023,7 @@ batch_is_authorized(Client, Input, Options)
 -spec create_identity_source(map(), create_identity_source_input()) ->
     {ok, create_identity_source_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_identity_source_errors(), tuple()}.
 create_identity_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_identity_source(Client, Input, []).
@@ -948,9 +1031,7 @@ create_identity_source(Client, Input)
 -spec create_identity_source(map(), create_identity_source_input(), proplists:proplist()) ->
     {ok, create_identity_source_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_identity_source_errors(), tuple()}.
 create_identity_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateIdentitySource">>, Input, Options).
@@ -987,9 +1068,7 @@ create_identity_source(Client, Input, Options)
 -spec create_policy(map(), create_policy_input()) ->
     {ok, create_policy_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_policy_errors(), tuple()}.
 create_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_policy(Client, Input, []).
@@ -997,9 +1076,7 @@ create_policy(Client, Input)
 -spec create_policy(map(), create_policy_input(), proplists:proplist()) ->
     {ok, create_policy_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_policy_errors(), tuple()}.
 create_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePolicy">>, Input, Options).
@@ -1022,8 +1099,7 @@ create_policy(Client, Input, Options)
 -spec create_policy_store(map(), create_policy_store_input()) ->
     {ok, create_policy_store_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_policy_store_errors(), tuple()}.
 create_policy_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_policy_store(Client, Input, []).
@@ -1031,8 +1107,7 @@ create_policy_store(Client, Input)
 -spec create_policy_store(map(), create_policy_store_input(), proplists:proplist()) ->
     {ok, create_policy_store_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_policy_store_errors(), tuple()}.
 create_policy_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePolicyStore">>, Input, Options).
@@ -1061,9 +1136,7 @@ create_policy_store(Client, Input, Options)
 -spec create_policy_template(map(), create_policy_template_input()) ->
     {ok, create_policy_template_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_policy_template_errors(), tuple()}.
 create_policy_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_policy_template(Client, Input, []).
@@ -1071,9 +1144,7 @@ create_policy_template(Client, Input)
 -spec create_policy_template(map(), create_policy_template_input(), proplists:proplist()) ->
     {ok, create_policy_template_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_policy_template_errors(), tuple()}.
 create_policy_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePolicyTemplate">>, Input, Options).
@@ -1091,8 +1162,7 @@ create_policy_template(Client, Input, Options)
 -spec delete_identity_source(map(), delete_identity_source_input()) ->
     {ok, delete_identity_source_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_identity_source_errors(), tuple()}.
 delete_identity_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_identity_source(Client, Input, []).
@@ -1100,8 +1170,7 @@ delete_identity_source(Client, Input)
 -spec delete_identity_source(map(), delete_identity_source_input(), proplists:proplist()) ->
     {ok, delete_identity_source_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_identity_source_errors(), tuple()}.
 delete_identity_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIdentitySource">>, Input, Options).
@@ -1114,8 +1183,7 @@ delete_identity_source(Client, Input, Options)
 -spec delete_policy(map(), delete_policy_input()) ->
     {ok, delete_policy_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_policy_errors(), tuple()}.
 delete_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_policy(Client, Input, []).
@@ -1123,8 +1191,7 @@ delete_policy(Client, Input)
 -spec delete_policy(map(), delete_policy_input(), proplists:proplist()) ->
     {ok, delete_policy_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_policy_errors(), tuple()}.
 delete_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePolicy">>, Input, Options).
@@ -1158,8 +1225,7 @@ delete_policy_store(Client, Input, Options)
 -spec delete_policy_template(map(), delete_policy_template_input()) ->
     {ok, delete_policy_template_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_policy_template_errors(), tuple()}.
 delete_policy_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_policy_template(Client, Input, []).
@@ -1167,8 +1233,7 @@ delete_policy_template(Client, Input)
 -spec delete_policy_template(map(), delete_policy_template_input(), proplists:proplist()) ->
     {ok, delete_policy_template_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_policy_template_errors(), tuple()}.
 delete_policy_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePolicyTemplate">>, Input, Options).
@@ -1177,7 +1242,7 @@ delete_policy_template(Client, Input, Options)
 -spec get_identity_source(map(), get_identity_source_input()) ->
     {ok, get_identity_source_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_identity_source_errors(), tuple()}.
 get_identity_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_identity_source(Client, Input, []).
@@ -1185,7 +1250,7 @@ get_identity_source(Client, Input)
 -spec get_identity_source(map(), get_identity_source_input(), proplists:proplist()) ->
     {ok, get_identity_source_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_identity_source_errors(), tuple()}.
 get_identity_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetIdentitySource">>, Input, Options).
@@ -1194,7 +1259,7 @@ get_identity_source(Client, Input, Options)
 -spec get_policy(map(), get_policy_input()) ->
     {ok, get_policy_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_policy_errors(), tuple()}.
 get_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_policy(Client, Input, []).
@@ -1202,7 +1267,7 @@ get_policy(Client, Input)
 -spec get_policy(map(), get_policy_input(), proplists:proplist()) ->
     {ok, get_policy_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_policy_errors(), tuple()}.
 get_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPolicy">>, Input, Options).
@@ -1211,7 +1276,7 @@ get_policy(Client, Input, Options)
 -spec get_policy_store(map(), get_policy_store_input()) ->
     {ok, get_policy_store_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_policy_store_errors(), tuple()}.
 get_policy_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_policy_store(Client, Input, []).
@@ -1219,7 +1284,7 @@ get_policy_store(Client, Input)
 -spec get_policy_store(map(), get_policy_store_input(), proplists:proplist()) ->
     {ok, get_policy_store_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_policy_store_errors(), tuple()}.
 get_policy_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPolicyStore">>, Input, Options).
@@ -1229,7 +1294,7 @@ get_policy_store(Client, Input, Options)
 -spec get_policy_template(map(), get_policy_template_input()) ->
     {ok, get_policy_template_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_policy_template_errors(), tuple()}.
 get_policy_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_policy_template(Client, Input, []).
@@ -1237,7 +1302,7 @@ get_policy_template(Client, Input)
 -spec get_policy_template(map(), get_policy_template_input(), proplists:proplist()) ->
     {ok, get_policy_template_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_policy_template_errors(), tuple()}.
 get_policy_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPolicyTemplate">>, Input, Options).
@@ -1247,7 +1312,7 @@ get_policy_template(Client, Input, Options)
 -spec get_schema(map(), get_schema_input()) ->
     {ok, get_schema_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_schema_errors(), tuple()}.
 get_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_schema(Client, Input, []).
@@ -1255,7 +1320,7 @@ get_schema(Client, Input)
 -spec get_schema(map(), get_schema_input(), proplists:proplist()) ->
     {ok, get_schema_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_schema_errors(), tuple()}.
 get_schema(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSchema">>, Input, Options).
@@ -1274,7 +1339,7 @@ get_schema(Client, Input, Options)
 -spec is_authorized(map(), is_authorized_input()) ->
     {ok, is_authorized_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, is_authorized_errors(), tuple()}.
 is_authorized(Client, Input)
   when is_map(Client), is_map(Input) ->
     is_authorized(Client, Input, []).
@@ -1282,7 +1347,7 @@ is_authorized(Client, Input)
 -spec is_authorized(map(), is_authorized_input(), proplists:proplist()) ->
     {ok, is_authorized_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, is_authorized_errors(), tuple()}.
 is_authorized(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"IsAuthorized">>, Input, Options).
@@ -1324,7 +1389,7 @@ is_authorized(Client, Input, Options)
 -spec is_authorized_with_token(map(), is_authorized_with_token_input()) ->
     {ok, is_authorized_with_token_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, is_authorized_with_token_errors(), tuple()}.
 is_authorized_with_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     is_authorized_with_token(Client, Input, []).
@@ -1332,7 +1397,7 @@ is_authorized_with_token(Client, Input)
 -spec is_authorized_with_token(map(), is_authorized_with_token_input(), proplists:proplist()) ->
     {ok, is_authorized_with_token_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, is_authorized_with_token_errors(), tuple()}.
 is_authorized_with_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"IsAuthorizedWithToken">>, Input, Options).
@@ -1342,7 +1407,7 @@ is_authorized_with_token(Client, Input, Options)
 -spec list_identity_sources(map(), list_identity_sources_input()) ->
     {ok, list_identity_sources_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_identity_sources_errors(), tuple()}.
 list_identity_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_identity_sources(Client, Input, []).
@@ -1350,7 +1415,7 @@ list_identity_sources(Client, Input)
 -spec list_identity_sources(map(), list_identity_sources_input(), proplists:proplist()) ->
     {ok, list_identity_sources_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_identity_sources_errors(), tuple()}.
 list_identity_sources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListIdentitySources">>, Input, Options).
@@ -1360,7 +1425,7 @@ list_identity_sources(Client, Input, Options)
 -spec list_policies(map(), list_policies_input()) ->
     {ok, list_policies_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_policies_errors(), tuple()}.
 list_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_policies(Client, Input, []).
@@ -1368,7 +1433,7 @@ list_policies(Client, Input)
 -spec list_policies(map(), list_policies_input(), proplists:proplist()) ->
     {ok, list_policies_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_policies_errors(), tuple()}.
 list_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPolicies">>, Input, Options).
@@ -1394,7 +1459,7 @@ list_policy_stores(Client, Input, Options)
 -spec list_policy_templates(map(), list_policy_templates_input()) ->
     {ok, list_policy_templates_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_policy_templates_errors(), tuple()}.
 list_policy_templates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_policy_templates(Client, Input, []).
@@ -1402,7 +1467,7 @@ list_policy_templates(Client, Input)
 -spec list_policy_templates(map(), list_policy_templates_input(), proplists:proplist()) ->
     {ok, list_policy_templates_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_policy_templates_errors(), tuple()}.
 list_policy_templates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPolicyTemplates">>, Input, Options).
@@ -1427,9 +1492,7 @@ list_policy_templates(Client, Input, Options)
 -spec put_schema(map(), put_schema_input()) ->
     {ok, put_schema_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, put_schema_errors(), tuple()}.
 put_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_schema(Client, Input, []).
@@ -1437,9 +1500,7 @@ put_schema(Client, Input)
 -spec put_schema(map(), put_schema_input(), proplists:proplist()) ->
     {ok, put_schema_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, put_schema_errors(), tuple()}.
 put_schema(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutSchema">>, Input, Options).
@@ -1458,8 +1519,7 @@ put_schema(Client, Input, Options)
 -spec update_identity_source(map(), update_identity_source_input()) ->
     {ok, update_identity_source_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_identity_source_errors(), tuple()}.
 update_identity_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_identity_source(Client, Input, []).
@@ -1467,8 +1527,7 @@ update_identity_source(Client, Input)
 -spec update_identity_source(map(), update_identity_source_input(), proplists:proplist()) ->
     {ok, update_identity_source_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_identity_source_errors(), tuple()}.
 update_identity_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateIdentitySource">>, Input, Options).
@@ -1521,9 +1580,7 @@ update_identity_source(Client, Input, Options)
 -spec update_policy(map(), update_policy_input()) ->
     {ok, update_policy_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, update_policy_errors(), tuple()}.
 update_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_policy(Client, Input, []).
@@ -1531,9 +1588,7 @@ update_policy(Client, Input)
 -spec update_policy(map(), update_policy_input(), proplists:proplist()) ->
     {ok, update_policy_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, update_policy_errors(), tuple()}.
 update_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePolicy">>, Input, Options).
@@ -1549,8 +1604,7 @@ update_policy(Client, Input, Options)
 -spec update_policy_store(map(), update_policy_store_input()) ->
     {ok, update_policy_store_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_policy_store_errors(), tuple()}.
 update_policy_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_policy_store(Client, Input, []).
@@ -1558,8 +1612,7 @@ update_policy_store(Client, Input)
 -spec update_policy_store(map(), update_policy_store_input(), proplists:proplist()) ->
     {ok, update_policy_store_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_policy_store_errors(), tuple()}.
 update_policy_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePolicyStore">>, Input, Options).
@@ -1585,8 +1638,7 @@ update_policy_store(Client, Input, Options)
 -spec update_policy_template(map(), update_policy_template_input()) ->
     {ok, update_policy_template_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_policy_template_errors(), tuple()}.
 update_policy_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_policy_template(Client, Input, []).
@@ -1594,8 +1646,7 @@ update_policy_template(Client, Input)
 -spec update_policy_template(map(), update_policy_template_input(), proplists:proplist()) ->
     {ok, update_policy_template_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_policy_template_errors(), tuple()}.
 update_policy_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePolicyTemplate">>, Input, Options).

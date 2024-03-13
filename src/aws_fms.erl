@@ -1391,6 +1391,247 @@
 %% }
 -type resource() :: #{binary() => any()}.
 
+-type associate_admin_account_errors() ::
+    internal_error_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type associate_third_party_firewall_errors() ::
+    internal_error_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type batch_associate_resource_errors() ::
+    internal_error_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type batch_disassociate_resource_errors() ::
+    internal_error_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type delete_apps_list_errors() ::
+    internal_error_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type delete_notification_channel_errors() ::
+    internal_error_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type delete_policy_errors() ::
+    internal_error_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type delete_protocols_list_errors() ::
+    internal_error_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type delete_resource_set_errors() ::
+    internal_error_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type disassociate_admin_account_errors() ::
+    internal_error_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type disassociate_third_party_firewall_errors() ::
+    internal_error_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type get_admin_account_errors() ::
+    internal_error_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type get_admin_scope_errors() ::
+    internal_error_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type get_apps_list_errors() ::
+    internal_error_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type get_compliance_detail_errors() ::
+    internal_error_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type get_notification_channel_errors() ::
+    internal_error_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type get_policy_errors() ::
+    internal_error_exception() | 
+    invalid_type_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type get_protection_status_errors() ::
+    internal_error_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type get_protocols_list_errors() ::
+    internal_error_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type get_resource_set_errors() ::
+    internal_error_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type get_third_party_firewall_association_status_errors() ::
+    internal_error_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type get_violation_details_errors() ::
+    internal_error_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type list_admin_accounts_for_organization_errors() ::
+    internal_error_exception() | 
+    limit_exceeded_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type list_admins_managing_account_errors() ::
+    internal_error_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type list_apps_lists_errors() ::
+    internal_error_exception() | 
+    limit_exceeded_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type list_compliance_status_errors() ::
+    internal_error_exception() | 
+    resource_not_found_exception().
+
+-type list_discovered_resources_errors() ::
+    internal_error_exception() | 
+    invalid_input_exception() | 
+    invalid_operation_exception().
+
+-type list_member_accounts_errors() ::
+    internal_error_exception() | 
+    resource_not_found_exception().
+
+-type list_policies_errors() ::
+    internal_error_exception() | 
+    limit_exceeded_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type list_protocols_lists_errors() ::
+    internal_error_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type list_resource_set_resources_errors() ::
+    internal_error_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type list_resource_sets_errors() ::
+    internal_error_exception() | 
+    invalid_input_exception() | 
+    invalid_operation_exception().
+
+-type list_tags_for_resource_errors() ::
+    internal_error_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type list_third_party_firewall_firewall_policies_errors() ::
+    internal_error_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type put_admin_account_errors() ::
+    internal_error_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    invalid_operation_exception().
+
+-type put_apps_list_errors() ::
+    internal_error_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type put_notification_channel_errors() ::
+    internal_error_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type put_policy_errors() ::
+    internal_error_exception() | 
+    limit_exceeded_exception() | 
+    invalid_type_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type put_protocols_list_errors() ::
+    internal_error_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type put_resource_set_errors() ::
+    internal_error_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    invalid_operation_exception().
+
+-type tag_resource_errors() ::
+    internal_error_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type untag_resource_errors() ::
+    internal_error_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
 
 %%====================================================================
 %% API
@@ -1411,11 +1652,7 @@
 -spec associate_admin_account(map(), associate_admin_account_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, associate_admin_account_errors(), tuple()}.
 associate_admin_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_admin_account(Client, Input, []).
@@ -1423,11 +1660,7 @@ associate_admin_account(Client, Input)
 -spec associate_admin_account(map(), associate_admin_account_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, associate_admin_account_errors(), tuple()}.
 associate_admin_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateAdminAccount">>, Input, Options).
@@ -1440,10 +1673,7 @@ associate_admin_account(Client, Input, Options)
 -spec associate_third_party_firewall(map(), associate_third_party_firewall_request()) ->
     {ok, associate_third_party_firewall_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, associate_third_party_firewall_errors(), tuple()}.
 associate_third_party_firewall(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_third_party_firewall(Client, Input, []).
@@ -1451,10 +1681,7 @@ associate_third_party_firewall(Client, Input)
 -spec associate_third_party_firewall(map(), associate_third_party_firewall_request(), proplists:proplist()) ->
     {ok, associate_third_party_firewall_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, associate_third_party_firewall_errors(), tuple()}.
 associate_third_party_firewall(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateThirdPartyFirewall">>, Input, Options).
@@ -1463,11 +1690,7 @@ associate_third_party_firewall(Client, Input, Options)
 -spec batch_associate_resource(map(), batch_associate_resource_request()) ->
     {ok, batch_associate_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, batch_associate_resource_errors(), tuple()}.
 batch_associate_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_associate_resource(Client, Input, []).
@@ -1475,11 +1698,7 @@ batch_associate_resource(Client, Input)
 -spec batch_associate_resource(map(), batch_associate_resource_request(), proplists:proplist()) ->
     {ok, batch_associate_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, batch_associate_resource_errors(), tuple()}.
 batch_associate_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchAssociateResource">>, Input, Options).
@@ -1488,10 +1707,7 @@ batch_associate_resource(Client, Input, Options)
 -spec batch_disassociate_resource(map(), batch_disassociate_resource_request()) ->
     {ok, batch_disassociate_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, batch_disassociate_resource_errors(), tuple()}.
 batch_disassociate_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_disassociate_resource(Client, Input, []).
@@ -1499,10 +1715,7 @@ batch_disassociate_resource(Client, Input)
 -spec batch_disassociate_resource(map(), batch_disassociate_resource_request(), proplists:proplist()) ->
     {ok, batch_disassociate_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, batch_disassociate_resource_errors(), tuple()}.
 batch_disassociate_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDisassociateResource">>, Input, Options).
@@ -1511,9 +1724,7 @@ batch_disassociate_resource(Client, Input, Options)
 -spec delete_apps_list(map(), delete_apps_list_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_apps_list_errors(), tuple()}.
 delete_apps_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_apps_list(Client, Input, []).
@@ -1521,9 +1732,7 @@ delete_apps_list(Client, Input)
 -spec delete_apps_list(map(), delete_apps_list_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_apps_list_errors(), tuple()}.
 delete_apps_list(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAppsList">>, Input, Options).
@@ -1535,9 +1744,7 @@ delete_apps_list(Client, Input, Options)
 -spec delete_notification_channel(map(), delete_notification_channel_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_notification_channel_errors(), tuple()}.
 delete_notification_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_notification_channel(Client, Input, []).
@@ -1545,9 +1752,7 @@ delete_notification_channel(Client, Input)
 -spec delete_notification_channel(map(), delete_notification_channel_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_notification_channel_errors(), tuple()}.
 delete_notification_channel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteNotificationChannel">>, Input, Options).
@@ -1556,11 +1761,7 @@ delete_notification_channel(Client, Input, Options)
 -spec delete_policy(map(), delete_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_policy_errors(), tuple()}.
 delete_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_policy(Client, Input, []).
@@ -1568,11 +1769,7 @@ delete_policy(Client, Input)
 -spec delete_policy(map(), delete_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_policy_errors(), tuple()}.
 delete_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePolicy">>, Input, Options).
@@ -1581,9 +1778,7 @@ delete_policy(Client, Input, Options)
 -spec delete_protocols_list(map(), delete_protocols_list_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_protocols_list_errors(), tuple()}.
 delete_protocols_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_protocols_list(Client, Input, []).
@@ -1591,9 +1786,7 @@ delete_protocols_list(Client, Input)
 -spec delete_protocols_list(map(), delete_protocols_list_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_protocols_list_errors(), tuple()}.
 delete_protocols_list(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProtocolsList">>, Input, Options).
@@ -1602,10 +1795,7 @@ delete_protocols_list(Client, Input, Options)
 -spec delete_resource_set(map(), delete_resource_set_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_resource_set_errors(), tuple()}.
 delete_resource_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_set(Client, Input, []).
@@ -1613,10 +1803,7 @@ delete_resource_set(Client, Input)
 -spec delete_resource_set(map(), delete_resource_set_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_resource_set_errors(), tuple()}.
 delete_resource_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourceSet">>, Input, Options).
@@ -1635,9 +1822,7 @@ delete_resource_set(Client, Input, Options)
 -spec disassociate_admin_account(map(), disassociate_admin_account_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_admin_account_errors(), tuple()}.
 disassociate_admin_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_admin_account(Client, Input, []).
@@ -1645,9 +1830,7 @@ disassociate_admin_account(Client, Input)
 -spec disassociate_admin_account(map(), disassociate_admin_account_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_admin_account_errors(), tuple()}.
 disassociate_admin_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateAdminAccount">>, Input, Options).
@@ -1661,10 +1844,7 @@ disassociate_admin_account(Client, Input, Options)
 -spec disassociate_third_party_firewall(map(), disassociate_third_party_firewall_request()) ->
     {ok, disassociate_third_party_firewall_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_third_party_firewall_errors(), tuple()}.
 disassociate_third_party_firewall(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_third_party_firewall(Client, Input, []).
@@ -1672,10 +1852,7 @@ disassociate_third_party_firewall(Client, Input)
 -spec disassociate_third_party_firewall(map(), disassociate_third_party_firewall_request(), proplists:proplist()) ->
     {ok, disassociate_third_party_firewall_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_third_party_firewall_errors(), tuple()}.
 disassociate_third_party_firewall(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateThirdPartyFirewall">>, Input, Options).
@@ -1686,9 +1863,7 @@ disassociate_third_party_firewall(Client, Input, Options)
 -spec get_admin_account(map(), get_admin_account_request()) ->
     {ok, get_admin_account_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_admin_account_errors(), tuple()}.
 get_admin_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_admin_account(Client, Input, []).
@@ -1696,9 +1871,7 @@ get_admin_account(Client, Input)
 -spec get_admin_account(map(), get_admin_account_request(), proplists:proplist()) ->
     {ok, get_admin_account_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_admin_account_errors(), tuple()}.
 get_admin_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAdminAccount">>, Input, Options).
@@ -1711,11 +1884,7 @@ get_admin_account(Client, Input, Options)
 -spec get_admin_scope(map(), get_admin_scope_request()) ->
     {ok, get_admin_scope_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_admin_scope_errors(), tuple()}.
 get_admin_scope(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_admin_scope(Client, Input, []).
@@ -1723,11 +1892,7 @@ get_admin_scope(Client, Input)
 -spec get_admin_scope(map(), get_admin_scope_request(), proplists:proplist()) ->
     {ok, get_admin_scope_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_admin_scope_errors(), tuple()}.
 get_admin_scope(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAdminScope">>, Input, Options).
@@ -1737,9 +1902,7 @@ get_admin_scope(Client, Input, Options)
 -spec get_apps_list(map(), get_apps_list_request()) ->
     {ok, get_apps_list_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_apps_list_errors(), tuple()}.
 get_apps_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_apps_list(Client, Input, []).
@@ -1747,9 +1910,7 @@ get_apps_list(Client, Input)
 -spec get_apps_list(map(), get_apps_list_request(), proplists:proplist()) ->
     {ok, get_apps_list_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_apps_list_errors(), tuple()}.
 get_apps_list(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAppsList">>, Input, Options).
@@ -1785,10 +1946,7 @@ get_apps_list(Client, Input, Options)
 -spec get_compliance_detail(map(), get_compliance_detail_request()) ->
     {ok, get_compliance_detail_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_compliance_detail_errors(), tuple()}.
 get_compliance_detail(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_compliance_detail(Client, Input, []).
@@ -1796,10 +1954,7 @@ get_compliance_detail(Client, Input)
 -spec get_compliance_detail(map(), get_compliance_detail_request(), proplists:proplist()) ->
     {ok, get_compliance_detail_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_compliance_detail_errors(), tuple()}.
 get_compliance_detail(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetComplianceDetail">>, Input, Options).
@@ -1810,9 +1965,7 @@ get_compliance_detail(Client, Input, Options)
 -spec get_notification_channel(map(), get_notification_channel_request()) ->
     {ok, get_notification_channel_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_notification_channel_errors(), tuple()}.
 get_notification_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_notification_channel(Client, Input, []).
@@ -1820,9 +1973,7 @@ get_notification_channel(Client, Input)
 -spec get_notification_channel(map(), get_notification_channel_request(), proplists:proplist()) ->
     {ok, get_notification_channel_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_notification_channel_errors(), tuple()}.
 get_notification_channel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetNotificationChannel">>, Input, Options).
@@ -1831,10 +1982,7 @@ get_notification_channel(Client, Input, Options)
 -spec get_policy(map(), get_policy_request()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_policy_errors(), tuple()}.
 get_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_policy(Client, Input, []).
@@ -1842,10 +1990,7 @@ get_policy(Client, Input)
 -spec get_policy(map(), get_policy_request(), proplists:proplist()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_policy_errors(), tuple()}.
 get_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPolicy">>, Input, Options).
@@ -1858,9 +2003,7 @@ get_policy(Client, Input, Options)
 -spec get_protection_status(map(), get_protection_status_request()) ->
     {ok, get_protection_status_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_protection_status_errors(), tuple()}.
 get_protection_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_protection_status(Client, Input, []).
@@ -1868,9 +2011,7 @@ get_protection_status(Client, Input)
 -spec get_protection_status(map(), get_protection_status_request(), proplists:proplist()) ->
     {ok, get_protection_status_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_protection_status_errors(), tuple()}.
 get_protection_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetProtectionStatus">>, Input, Options).
@@ -1880,9 +2021,7 @@ get_protection_status(Client, Input, Options)
 -spec get_protocols_list(map(), get_protocols_list_request()) ->
     {ok, get_protocols_list_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_protocols_list_errors(), tuple()}.
 get_protocols_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_protocols_list(Client, Input, []).
@@ -1890,9 +2029,7 @@ get_protocols_list(Client, Input)
 -spec get_protocols_list(map(), get_protocols_list_request(), proplists:proplist()) ->
     {ok, get_protocols_list_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_protocols_list_errors(), tuple()}.
 get_protocols_list(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetProtocolsList">>, Input, Options).
@@ -1901,10 +2038,7 @@ get_protocols_list(Client, Input, Options)
 -spec get_resource_set(map(), get_resource_set_request()) ->
     {ok, get_resource_set_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_resource_set_errors(), tuple()}.
 get_resource_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_set(Client, Input, []).
@@ -1912,10 +2046,7 @@ get_resource_set(Client, Input)
 -spec get_resource_set(map(), get_resource_set_request(), proplists:proplist()) ->
     {ok, get_resource_set_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_resource_set_errors(), tuple()}.
 get_resource_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourceSet">>, Input, Options).
@@ -1925,10 +2056,7 @@ get_resource_set(Client, Input, Options)
 -spec get_third_party_firewall_association_status(map(), get_third_party_firewall_association_status_request()) ->
     {ok, get_third_party_firewall_association_status_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_third_party_firewall_association_status_errors(), tuple()}.
 get_third_party_firewall_association_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_third_party_firewall_association_status(Client, Input, []).
@@ -1936,10 +2064,7 @@ get_third_party_firewall_association_status(Client, Input)
 -spec get_third_party_firewall_association_status(map(), get_third_party_firewall_association_status_request(), proplists:proplist()) ->
     {ok, get_third_party_firewall_association_status_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_third_party_firewall_association_status_errors(), tuple()}.
 get_third_party_firewall_association_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetThirdPartyFirewallAssociationStatus">>, Input, Options).
@@ -1949,9 +2074,7 @@ get_third_party_firewall_association_status(Client, Input, Options)
 -spec get_violation_details(map(), get_violation_details_request()) ->
     {ok, get_violation_details_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_violation_details_errors(), tuple()}.
 get_violation_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_violation_details(Client, Input, []).
@@ -1959,9 +2082,7 @@ get_violation_details(Client, Input)
 -spec get_violation_details(map(), get_violation_details_request(), proplists:proplist()) ->
     {ok, get_violation_details_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_violation_details_errors(), tuple()}.
 get_violation_details(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetViolationDetails">>, Input, Options).
@@ -1975,10 +2096,7 @@ get_violation_details(Client, Input, Options)
 -spec list_admin_accounts_for_organization(map(), list_admin_accounts_for_organization_request()) ->
     {ok, list_admin_accounts_for_organization_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_admin_accounts_for_organization_errors(), tuple()}.
 list_admin_accounts_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_admin_accounts_for_organization(Client, Input, []).
@@ -1986,10 +2104,7 @@ list_admin_accounts_for_organization(Client, Input)
 -spec list_admin_accounts_for_organization(map(), list_admin_accounts_for_organization_request(), proplists:proplist()) ->
     {ok, list_admin_accounts_for_organization_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_admin_accounts_for_organization_errors(), tuple()}.
 list_admin_accounts_for_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAdminAccountsForOrganization">>, Input, Options).
@@ -2004,9 +2119,7 @@ list_admin_accounts_for_organization(Client, Input, Options)
 -spec list_admins_managing_account(map(), list_admins_managing_account_request()) ->
     {ok, list_admins_managing_account_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_admins_managing_account_errors(), tuple()}.
 list_admins_managing_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_admins_managing_account(Client, Input, []).
@@ -2014,9 +2127,7 @@ list_admins_managing_account(Client, Input)
 -spec list_admins_managing_account(map(), list_admins_managing_account_request(), proplists:proplist()) ->
     {ok, list_admins_managing_account_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_admins_managing_account_errors(), tuple()}.
 list_admins_managing_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAdminsManagingAccount">>, Input, Options).
@@ -2025,10 +2136,7 @@ list_admins_managing_account(Client, Input, Options)
 -spec list_apps_lists(map(), list_apps_lists_request()) ->
     {ok, list_apps_lists_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_apps_lists_errors(), tuple()}.
 list_apps_lists(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_apps_lists(Client, Input, []).
@@ -2036,10 +2144,7 @@ list_apps_lists(Client, Input)
 -spec list_apps_lists(map(), list_apps_lists_request(), proplists:proplist()) ->
     {ok, list_apps_lists_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_apps_lists_errors(), tuple()}.
 list_apps_lists(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAppsLists">>, Input, Options).
@@ -2053,8 +2158,7 @@ list_apps_lists(Client, Input, Options)
 -spec list_compliance_status(map(), list_compliance_status_request()) ->
     {ok, list_compliance_status_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_compliance_status_errors(), tuple()}.
 list_compliance_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_compliance_status(Client, Input, []).
@@ -2062,8 +2166,7 @@ list_compliance_status(Client, Input)
 -spec list_compliance_status(map(), list_compliance_status_request(), proplists:proplist()) ->
     {ok, list_compliance_status_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_compliance_status_errors(), tuple()}.
 list_compliance_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListComplianceStatus">>, Input, Options).
@@ -2073,9 +2176,7 @@ list_compliance_status(Client, Input, Options)
 -spec list_discovered_resources(map(), list_discovered_resources_request()) ->
     {ok, list_discovered_resources_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()}.
+    {error, list_discovered_resources_errors(), tuple()}.
 list_discovered_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_discovered_resources(Client, Input, []).
@@ -2083,9 +2184,7 @@ list_discovered_resources(Client, Input)
 -spec list_discovered_resources(map(), list_discovered_resources_request(), proplists:proplist()) ->
     {ok, list_discovered_resources_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()}.
+    {error, list_discovered_resources_errors(), tuple()}.
 list_discovered_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDiscoveredResources">>, Input, Options).
@@ -2099,8 +2198,7 @@ list_discovered_resources(Client, Input, Options)
 -spec list_member_accounts(map(), list_member_accounts_request()) ->
     {ok, list_member_accounts_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_member_accounts_errors(), tuple()}.
 list_member_accounts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_member_accounts(Client, Input, []).
@@ -2108,8 +2206,7 @@ list_member_accounts(Client, Input)
 -spec list_member_accounts(map(), list_member_accounts_request(), proplists:proplist()) ->
     {ok, list_member_accounts_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_member_accounts_errors(), tuple()}.
 list_member_accounts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMemberAccounts">>, Input, Options).
@@ -2118,10 +2215,7 @@ list_member_accounts(Client, Input, Options)
 -spec list_policies(map(), list_policies_request()) ->
     {ok, list_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_policies_errors(), tuple()}.
 list_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_policies(Client, Input, []).
@@ -2129,10 +2223,7 @@ list_policies(Client, Input)
 -spec list_policies(map(), list_policies_request(), proplists:proplist()) ->
     {ok, list_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_policies_errors(), tuple()}.
 list_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPolicies">>, Input, Options).
@@ -2141,9 +2232,7 @@ list_policies(Client, Input, Options)
 -spec list_protocols_lists(map(), list_protocols_lists_request()) ->
     {ok, list_protocols_lists_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_protocols_lists_errors(), tuple()}.
 list_protocols_lists(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_protocols_lists(Client, Input, []).
@@ -2151,9 +2240,7 @@ list_protocols_lists(Client, Input)
 -spec list_protocols_lists(map(), list_protocols_lists_request(), proplists:proplist()) ->
     {ok, list_protocols_lists_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_protocols_lists_errors(), tuple()}.
 list_protocols_lists(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProtocolsLists">>, Input, Options).
@@ -2163,10 +2250,7 @@ list_protocols_lists(Client, Input, Options)
 -spec list_resource_set_resources(map(), list_resource_set_resources_request()) ->
     {ok, list_resource_set_resources_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_resource_set_resources_errors(), tuple()}.
 list_resource_set_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_set_resources(Client, Input, []).
@@ -2174,10 +2258,7 @@ list_resource_set_resources(Client, Input)
 -spec list_resource_set_resources(map(), list_resource_set_resources_request(), proplists:proplist()) ->
     {ok, list_resource_set_resources_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_resource_set_resources_errors(), tuple()}.
 list_resource_set_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResourceSetResources">>, Input, Options).
@@ -2186,9 +2267,7 @@ list_resource_set_resources(Client, Input, Options)
 -spec list_resource_sets(map(), list_resource_sets_request()) ->
     {ok, list_resource_sets_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()}.
+    {error, list_resource_sets_errors(), tuple()}.
 list_resource_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_sets(Client, Input, []).
@@ -2196,9 +2275,7 @@ list_resource_sets(Client, Input)
 -spec list_resource_sets(map(), list_resource_sets_request(), proplists:proplist()) ->
     {ok, list_resource_sets_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()}.
+    {error, list_resource_sets_errors(), tuple()}.
 list_resource_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResourceSets">>, Input, Options).
@@ -2208,10 +2285,7 @@ list_resource_sets(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -2219,10 +2293,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -2232,10 +2303,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec list_third_party_firewall_firewall_policies(map(), list_third_party_firewall_firewall_policies_request()) ->
     {ok, list_third_party_firewall_firewall_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_third_party_firewall_firewall_policies_errors(), tuple()}.
 list_third_party_firewall_firewall_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_third_party_firewall_firewall_policies(Client, Input, []).
@@ -2243,10 +2311,7 @@ list_third_party_firewall_firewall_policies(Client, Input)
 -spec list_third_party_firewall_firewall_policies(map(), list_third_party_firewall_firewall_policies_request(), proplists:proplist()) ->
     {ok, list_third_party_firewall_firewall_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_third_party_firewall_firewall_policies_errors(), tuple()}.
 list_third_party_firewall_firewall_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListThirdPartyFirewallFirewallPolicies">>, Input, Options).
@@ -2267,10 +2332,7 @@ list_third_party_firewall_firewall_policies(Client, Input, Options)
 -spec put_admin_account(map(), put_admin_account_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, put_admin_account_errors(), tuple()}.
 put_admin_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_admin_account(Client, Input, []).
@@ -2278,10 +2340,7 @@ put_admin_account(Client, Input)
 -spec put_admin_account(map(), put_admin_account_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, put_admin_account_errors(), tuple()}.
 put_admin_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAdminAccount">>, Input, Options).
@@ -2290,11 +2349,7 @@ put_admin_account(Client, Input, Options)
 -spec put_apps_list(map(), put_apps_list_request()) ->
     {ok, put_apps_list_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_apps_list_errors(), tuple()}.
 put_apps_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_apps_list(Client, Input, []).
@@ -2302,11 +2357,7 @@ put_apps_list(Client, Input)
 -spec put_apps_list(map(), put_apps_list_request(), proplists:proplist()) ->
     {ok, put_apps_list_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_apps_list_errors(), tuple()}.
 put_apps_list(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAppsList">>, Input, Options).
@@ -2328,9 +2379,7 @@ put_apps_list(Client, Input, Options)
 -spec put_notification_channel(map(), put_notification_channel_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_notification_channel_errors(), tuple()}.
 put_notification_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_notification_channel(Client, Input, []).
@@ -2338,9 +2387,7 @@ put_notification_channel(Client, Input)
 -spec put_notification_channel(map(), put_notification_channel_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_notification_channel_errors(), tuple()}.
 put_notification_channel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutNotificationChannel">>, Input, Options).
@@ -2394,12 +2441,7 @@ put_notification_channel(Client, Input, Options)
 -spec put_policy(map(), put_policy_request()) ->
     {ok, put_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_policy_errors(), tuple()}.
 put_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_policy(Client, Input, []).
@@ -2407,12 +2449,7 @@ put_policy(Client, Input)
 -spec put_policy(map(), put_policy_request(), proplists:proplist()) ->
     {ok, put_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_policy_errors(), tuple()}.
 put_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutPolicy">>, Input, Options).
@@ -2421,11 +2458,7 @@ put_policy(Client, Input, Options)
 -spec put_protocols_list(map(), put_protocols_list_request()) ->
     {ok, put_protocols_list_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_protocols_list_errors(), tuple()}.
 put_protocols_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_protocols_list(Client, Input, []).
@@ -2433,11 +2466,7 @@ put_protocols_list(Client, Input)
 -spec put_protocols_list(map(), put_protocols_list_request(), proplists:proplist()) ->
     {ok, put_protocols_list_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_protocols_list_errors(), tuple()}.
 put_protocols_list(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutProtocolsList">>, Input, Options).
@@ -2449,10 +2478,7 @@ put_protocols_list(Client, Input, Options)
 -spec put_resource_set(map(), put_resource_set_request()) ->
     {ok, put_resource_set_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, put_resource_set_errors(), tuple()}.
 put_resource_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_set(Client, Input, []).
@@ -2460,10 +2486,7 @@ put_resource_set(Client, Input)
 -spec put_resource_set(map(), put_resource_set_request(), proplists:proplist()) ->
     {ok, put_resource_set_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, put_resource_set_errors(), tuple()}.
 put_resource_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResourceSet">>, Input, Options).
@@ -2472,11 +2495,7 @@ put_resource_set(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -2484,11 +2503,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -2497,10 +2512,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -2508,10 +2520,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).

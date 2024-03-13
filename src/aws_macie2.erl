@@ -203,9 +203,11 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_resource_profile_artifacts_response() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_from_master_account_request() :: #{}
 -type disassociate_from_master_account_request() :: #{}.
+
 
 %% Example:
 %% tag_value_pair() :: #{
@@ -213,6 +215,7 @@
 %%   <<"value">> => string()
 %% }
 -type tag_value_pair() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_resources_request() :: #{
@@ -222,6 +225,7 @@
 %%   <<"sortCriteria">> => search_resources_sort_criteria()
 %% }
 -type search_resources_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_findings_filter_response() :: #{
@@ -236,6 +240,7 @@
 %% }
 -type get_findings_filter_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_buckets_request() :: #{
 %%   <<"criteria">> => map(),
@@ -244,6 +249,7 @@
 %%   <<"sortCriteria">> => bucket_sort_criteria()
 %% }
 -type describe_buckets_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% object_count_by_encryption_type() :: #{
@@ -255,12 +261,14 @@
 %% }
 -type object_count_by_encryption_type() :: #{binary() => any()}.
 
+
 %% Example:
 %% session_context() :: #{
 %%   <<"attributes">> => session_context_attributes(),
 %%   <<"sessionIssuer">> => session_issuer()
 %% }
 -type session_context() :: #{binary() => any()}.
+
 
 %% Example:
 %% bucket_statistics_by_sensitivity() :: #{
@@ -271,6 +279,7 @@
 %% }
 -type bucket_statistics_by_sensitivity() :: #{binary() => any()}.
 
+
 %% Example:
 %% ip_country() :: #{
 %%   <<"code">> => string(),
@@ -278,14 +287,17 @@
 %% }
 -type ip_country() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_member_response() :: #{
 %%   <<"arn">> => string()
 %% }
 -type create_member_response() :: #{binary() => any()}.
+
 %% Example:
 %% update_resource_profile_response() :: #{}
 -type update_resource_profile_response() :: #{}.
+
 
 %% Example:
 %% get_usage_statistics_request() :: #{
@@ -297,6 +309,7 @@
 %% }
 -type get_usage_statistics_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% record() :: #{
 %%   <<"jsonPath">> => string(),
@@ -304,11 +317,13 @@
 %% }
 -type record() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_classification_job_response() :: #{
@@ -336,6 +351,7 @@
 %% }
 -type describe_classification_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% usage_statistics_filter() :: #{
 %%   <<"comparator">> => list(any()),
@@ -343,9 +359,11 @@
 %%   <<"values">> => list(string()())
 %% }
 -type usage_statistics_filter() :: #{binary() => any()}.
+
 %% Example:
 %% delete_findings_filter_response() :: #{}
 -type delete_findings_filter_response() :: #{}.
+
 
 %% Example:
 %% ip_city() :: #{
@@ -353,12 +371,14 @@
 %% }
 -type ip_city() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_member_request() :: #{
 %%   <<"account">> := account_detail(),
 %%   <<"tags">> => map()
 %% }
 -type create_member_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% range() :: #{
@@ -368,6 +388,7 @@
 %% }
 -type range() :: #{binary() => any()}.
 
+
 %% Example:
 %% bucket_count_policy_allows_unencrypted_object_uploads() :: #{
 %%   <<"allowsUnencryptedObjectUploads">> => float(),
@@ -376,11 +397,13 @@
 %% }
 -type bucket_count_policy_allows_unencrypted_object_uploads() :: #{binary() => any()}.
 
+
 %% Example:
 %% decline_invitations_response() :: #{
 %%   <<"unprocessedAccounts">> => list(unprocessed_account()())
 %% }
 -type decline_invitations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% retrieval_configuration() :: #{
@@ -390,18 +413,22 @@
 %% }
 -type retrieval_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_bucket_definition_for_job() :: #{
 %%   <<"accountId">> => string(),
 %%   <<"buckets">> => list(string()())
 %% }
 -type s3_bucket_definition_for_job() :: #{binary() => any()}.
+
 %% Example:
 %% update_classification_scope_response() :: #{}
 -type update_classification_scope_response() :: #{}.
+
 %% Example:
 %% disable_organization_admin_account_response() :: #{}
 -type disable_organization_admin_account_response() :: #{}.
+
 
 %% Example:
 %% list_jobs_filter_term() :: #{
@@ -410,9 +437,11 @@
 %%   <<"values">> => list(string()())
 %% }
 -type list_jobs_filter_term() :: #{binary() => any()}.
+
 %% Example:
 %% describe_organization_configuration_request() :: #{}
 -type describe_organization_configuration_request() :: #{}.
+
 
 %% Example:
 %% aws_account() :: #{
@@ -421,6 +450,7 @@
 %% }
 -type aws_account() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_reveal_configuration_response() :: #{
 %%   <<"configuration">> => reveal_configuration(),
@@ -428,11 +458,13 @@
 %% }
 -type get_reveal_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_allow_list_request() :: #{
 %%   <<"ignoreJobChecks">> => string()
 %% }
 -type delete_allow_list_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% resources_affected() :: #{
@@ -440,6 +472,7 @@
 %%   <<"s3Object">> => s3_object()
 %% }
 -type resources_affected() :: #{binary() => any()}.
+
 
 %% Example:
 %% usage_total() :: #{
@@ -449,12 +482,14 @@
 %% }
 -type usage_total() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_sensitivity_inspection_templates_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_sensitivity_inspection_templates_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% admin_account() :: #{
@@ -463,11 +498,13 @@
 %% }
 -type admin_account() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_classification_scope_exclusion() :: #{
 %%   <<"bucketNames">> => list(string()())
 %% }
 -type s3_classification_scope_exclusion() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_sensitivity_inspection_template_response() :: #{
@@ -479,6 +516,7 @@
 %% }
 -type get_sensitivity_inspection_template_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% sensitivity_aggregations() :: #{
 %%   <<"classifiableSizeInBytes">> => float(),
@@ -487,6 +525,7 @@
 %%   <<"totalSizeInBytes">> => float()
 %% }
 -type sensitivity_aggregations() :: #{binary() => any()}.
+
 
 %% Example:
 %% classification_result() :: #{
@@ -499,15 +538,18 @@
 %% }
 -type classification_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% classification_result_status() :: #{
 %%   <<"code">> => string(),
 %%   <<"reason">> => string()
 %% }
 -type classification_result_status() :: #{binary() => any()}.
+
 %% Example:
 %% delete_custom_data_identifier_request() :: #{}
 -type delete_custom_data_identifier_request() :: #{}.
+
 
 %% Example:
 %% bucket_count_by_shared_access_type() :: #{
@@ -517,12 +559,15 @@
 %%   <<"unknown">> => float()
 %% }
 -type bucket_count_by_shared_access_type() :: #{binary() => any()}.
+
 %% Example:
 %% get_administrator_account_request() :: #{}
 -type get_administrator_account_request() :: #{}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% managed_data_identifier_summary() :: #{
@@ -531,6 +576,7 @@
 %% }
 -type managed_data_identifier_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% bucket_sort_criteria() :: #{
 %%   <<"attributeName">> => string(),
@@ -538,11 +584,13 @@
 %% }
 -type bucket_sort_criteria() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_member_session_request() :: #{
 %%   <<"status">> := list(any())
 %% }
 -type update_member_session_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% bucket_criteria_additional_properties() :: #{
@@ -556,17 +604,21 @@
 %% }
 -type bucket_criteria_additional_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% account_level_permissions() :: #{
 %%   <<"blockPublicAccess">> => block_public_access()
 %% }
 -type account_level_permissions() :: #{binary() => any()}.
+
 %% Example:
 %% update_macie_session_response() :: #{}
 -type update_macie_session_response() :: #{}.
+
 %% Example:
 %% get_findings_publication_configuration_request() :: #{}
 -type get_findings_publication_configuration_request() :: #{}.
+
 
 %% Example:
 %% bucket_metadata() :: #{
@@ -599,11 +651,13 @@
 %% }
 -type bucket_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_custom_data_identifiers_request() :: #{
 %%   <<"ids">> => list(string()())
 %% }
 -type batch_get_custom_data_identifiers_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% tag_scope_term() :: #{
@@ -613,9 +667,11 @@
 %%   <<"target">> => list(any())
 %% }
 -type tag_scope_term() :: #{binary() => any()}.
+
 %% Example:
 %% get_sensitivity_inspection_template_request() :: #{}
 -type get_sensitivity_inspection_template_request() :: #{}.
+
 
 %% Example:
 %% suppress_data_identifier() :: #{
@@ -624,11 +680,13 @@
 %% }
 -type suppress_data_identifier() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bucket_statistics_request() :: #{
 %%   <<"accountId">> => string()
 %% }
 -type get_bucket_statistics_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% invitation() :: #{
@@ -638,12 +696,15 @@
 %%   <<"relationshipStatus">> => list(any())
 %% }
 -type invitation() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_from_master_account_response() :: #{}
 -type disassociate_from_master_account_response() :: #{}.
+
 %% Example:
 %% delete_member_request() :: #{}
 -type delete_member_request() :: #{}.
+
 
 %% Example:
 %% update_allow_list_response() :: #{
@@ -651,6 +712,7 @@
 %%   <<"id">> => string()
 %% }
 -type update_allow_list_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% usage_by_account() :: #{
@@ -661,12 +723,14 @@
 %% }
 -type usage_by_account() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_custom_data_identifiers_response() :: #{
 %%   <<"items">> => list(custom_data_identifier_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_custom_data_identifiers_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% server_side_encryption() :: #{
@@ -675,11 +739,13 @@
 %% }
 -type server_side_encryption() :: #{binary() => any()}.
 
+
 %% Example:
 %% sensitivity_inspection_template_excludes() :: #{
 %%   <<"managedDataIdentifierIds">> => list(string()())
 %% }
 -type sensitivity_inspection_template_excludes() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_object() :: #{
@@ -698,12 +764,14 @@
 %% }
 -type s3_object() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_findings_response() :: #{
 %%   <<"findingIds">> => list(string()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_findings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% security_hub_configuration() :: #{
@@ -712,12 +780,14 @@
 %% }
 -type security_hub_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% usage_statistics_sort_by() :: #{
 %%   <<"key">> => list(any()),
 %%   <<"orderBy">> => list(any())
 %% }
 -type usage_statistics_sort_by() :: #{binary() => any()}.
+
 
 %% Example:
 %% cell() :: #{
@@ -727,6 +797,7 @@
 %%   <<"row">> => float()
 %% }
 -type cell() :: #{binary() => any()}.
+
 
 %% Example:
 %% user_identity() :: #{
@@ -740,12 +811,14 @@
 %% }
 -type user_identity() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_jobs_sort_criteria() :: #{
 %%   <<"attributeName">> => list(any()),
 %%   <<"orderBy">> => list(any())
 %% }
 -type list_jobs_sort_criteria() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_findings_request() :: #{
@@ -754,11 +827,13 @@
 %% }
 -type get_findings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% monthly_schedule() :: #{
 %%   <<"dayOfMonth">> => integer()
 %% }
 -type monthly_schedule() :: #{binary() => any()}.
+
 
 %% Example:
 %% criteria_block_for_job() :: #{
@@ -766,12 +841,14 @@
 %% }
 -type criteria_block_for_job() :: #{binary() => any()}.
 
+
 %% Example:
 %% account_detail() :: #{
 %%   <<"accountId">> => string(),
 %%   <<"email">> => string()
 %% }
 -type account_detail() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_classification_jobs_request() :: #{
@@ -782,11 +859,13 @@
 %% }
 -type list_classification_jobs_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_automated_discovery_configuration_response() :: #{
@@ -799,12 +878,14 @@
 %% }
 -type get_automated_discovery_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_resource_profile_detections_response() :: #{
 %%   <<"detections">> => list(detection()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_resource_profile_detections_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_bucket_criteria_for_job() :: #{
@@ -813,15 +894,18 @@
 %% }
 -type s3_bucket_criteria_for_job() :: #{binary() => any()}.
 
+
 %% Example:
 %% bucket_public_access() :: #{
 %%   <<"effectivePermission">> => list(any()),
 %%   <<"permissionConfiguration">> => bucket_permission_configuration()
 %% }
 -type bucket_public_access() :: #{binary() => any()}.
+
 %% Example:
 %% get_classification_scope_request() :: #{}
 -type get_classification_scope_request() :: #{}.
+
 
 %% Example:
 %% disable_organization_admin_account_request() :: #{
@@ -829,12 +913,14 @@
 %% }
 -type disable_organization_admin_account_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_resources_sort_criteria() :: #{
 %%   <<"attributeName">> => list(any()),
 %%   <<"orderBy">> => list(any())
 %% }
 -type search_resources_sort_criteria() :: #{binary() => any()}.
+
 
 %% Example:
 %% custom_detection() :: #{
@@ -845,6 +931,7 @@
 %% }
 -type custom_detection() :: #{binary() => any()}.
 
+
 %% Example:
 %% scoping() :: #{
 %%   <<"excludes">> => job_scoping_block(),
@@ -852,12 +939,14 @@
 %% }
 -type scoping() :: #{binary() => any()}.
 
+
 %% Example:
 %% allow_list_status() :: #{
 %%   <<"code">> => list(any()),
 %%   <<"description">> => string()
 %% }
 -type allow_list_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% iam_user() :: #{
@@ -867,6 +956,7 @@
 %%   <<"userName">> => string()
 %% }
 -type iam_user() :: #{binary() => any()}.
+
 
 %% Example:
 %% custom_data_identifier_summary() :: #{
@@ -878,12 +968,14 @@
 %% }
 -type custom_data_identifier_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% finding_statistics_sort_criteria() :: #{
 %%   <<"attributeName">> => list(any()),
 %%   <<"orderBy">> => list(any())
 %% }
 -type finding_statistics_sort_criteria() :: #{binary() => any()}.
+
 
 %% Example:
 %% finding_actor() :: #{
@@ -893,6 +985,7 @@
 %% }
 -type finding_actor() :: #{binary() => any()}.
 
+
 %% Example:
 %% session_context_attributes() :: #{
 %%   <<"creationDate">> => non_neg_integer(),
@@ -900,11 +993,13 @@
 %% }
 -type session_context_attributes() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_custom_data_identifier_response() :: #{
 %%   <<"customDataIdentifierId">> => string()
 %% }
 -type create_custom_data_identifier_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% severity() :: #{
@@ -913,6 +1008,7 @@
 %% }
 -type severity() :: #{binary() => any()}.
 
+
 %% Example:
 %% enable_macie_request() :: #{
 %%   <<"clientToken">> => string(),
@@ -920,9 +1016,11 @@
 %%   <<"status">> => list(any())
 %% }
 -type enable_macie_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_findings_filter_request() :: #{}
 -type delete_findings_filter_request() :: #{}.
+
 
 %% Example:
 %% create_allow_list_response() :: #{
@@ -931,11 +1029,13 @@
 %% }
 -type create_allow_list_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% classification_export_configuration() :: #{
 %%   <<"s3Destination">> => s3_destination()
 %% }
 -type classification_export_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% bucket_count_by_encryption_type() :: #{
@@ -946,6 +1046,7 @@
 %% }
 -type bucket_count_by_encryption_type() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_resources_response() :: #{
 %%   <<"matchingResources">> => list(matching_resource()()),
@@ -953,14 +1054,17 @@
 %% }
 -type search_resources_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_classification_scope_request() :: #{
 %%   <<"s3">> => s3_classification_scope_update()
 %% }
 -type update_classification_scope_request() :: #{binary() => any()}.
+
 %% Example:
 %% update_classification_job_response() :: #{}
 -type update_classification_job_response() :: #{}.
+
 
 %% Example:
 %% api_call_details() :: #{
@@ -971,6 +1075,7 @@
 %% }
 -type api_call_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_resource_profile_response() :: #{
 %%   <<"profileUpdatedAt">> => non_neg_integer(),
@@ -980,6 +1085,7 @@
 %% }
 -type get_resource_profile_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% simple_scope_term() :: #{
 %%   <<"comparator">> => list(any()),
@@ -987,6 +1093,7 @@
 %%   <<"values">> => list(string()())
 %% }
 -type simple_scope_term() :: #{binary() => any()}.
+
 
 %% Example:
 %% test_custom_data_identifier_request() :: #{
@@ -997,12 +1104,15 @@
 %%   <<"sampleText">> := string()
 %% }
 -type test_custom_data_identifier_request() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_from_administrator_account_response() :: #{}
 -type disassociate_from_administrator_account_response() :: #{}.
+
 %% Example:
 %% get_custom_data_identifier_request() :: #{}
 -type get_custom_data_identifier_request() :: #{}.
+
 
 %% Example:
 %% job_summary() :: #{
@@ -1017,9 +1127,11 @@
 %%   <<"userPausedDetails">> => user_paused_details()
 %% }
 -type job_summary() :: #{binary() => any()}.
+
 %% Example:
 %% update_sensitivity_inspection_template_response() :: #{}
 -type update_sensitivity_inspection_template_response() :: #{}.
+
 
 %% Example:
 %% create_custom_data_identifier_request() :: #{
@@ -1035,6 +1147,7 @@
 %% }
 -type create_custom_data_identifier_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% occurrences() :: #{
 %%   <<"cells">> => list(cell()()),
@@ -1044,9 +1157,11 @@
 %%   <<"records">> => list(record()())
 %% }
 -type occurrences() :: #{binary() => any()}.
+
 %% Example:
 %% get_allow_list_request() :: #{}
 -type get_allow_list_request() :: #{}.
+
 
 %% Example:
 %% job_scope_term() :: #{
@@ -1055,21 +1170,25 @@
 %% }
 -type job_scope_term() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_organization_configuration_response() :: #{
 %%   <<"autoEnable">> => boolean(),
 %%   <<"maxAccountLimitReached">> => boolean()
 %% }
 -type describe_organization_configuration_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_sensitive_data_occurrences_request() :: #{}
 -type get_sensitive_data_occurrences_request() :: #{}.
+
 
 %% Example:
 %% s3_classification_scope() :: #{
 %%   <<"excludes">> => s3_classification_scope_exclusion()
 %% }
 -type s3_classification_scope() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_findings_filters_response() :: #{
@@ -1078,17 +1197,20 @@
 %% }
 -type list_findings_filters_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_classification_export_configuration_response() :: #{
 %%   <<"configuration">> => classification_export_configuration()
 %% }
 -type get_classification_export_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_classification_scopes_request() :: #{
@@ -1097,17 +1219,20 @@
 %% }
 -type list_classification_scopes_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_managed_data_identifiers_request() :: #{
 %%   <<"nextToken">> => string()
 %% }
 -type list_managed_data_identifiers_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_findings_filter_request() :: #{
@@ -1119,12 +1244,15 @@
 %%   <<"position">> => integer()
 %% }
 -type update_findings_filter_request() :: #{binary() => any()}.
+
 %% Example:
 %% disable_macie_request() :: #{}
 -type disable_macie_request() :: #{}.
+
 %% Example:
 %% get_macie_session_request() :: #{}
 -type get_macie_session_request() :: #{}.
+
 
 %% Example:
 %% create_findings_filter_response() :: #{
@@ -1133,15 +1261,18 @@
 %% }
 -type create_findings_filter_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_resources_tag_criterion() :: #{
 %%   <<"comparator">> => list(any()),
 %%   <<"tagValues">> => list(search_resources_tag_criterion_pair()())
 %% }
 -type search_resources_tag_criterion() :: #{binary() => any()}.
+
 %% Example:
 %% delete_allow_list_response() :: #{}
 -type delete_allow_list_response() :: #{}.
+
 
 %% Example:
 %% s3_bucket() :: #{
@@ -1156,6 +1287,7 @@
 %% }
 -type s3_bucket() :: #{binary() => any()}.
 
+
 %% Example:
 %% object_level_statistics() :: #{
 %%   <<"fileType">> => float(),
@@ -1164,12 +1296,14 @@
 %% }
 -type object_level_statistics() :: #{binary() => any()}.
 
+
 %% Example:
 %% bucket_server_side_encryption() :: #{
 %%   <<"kmsMasterKeyId">> => string(),
 %%   <<"type">> => list(any())
 %% }
 -type bucket_server_side_encryption() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_macie_session_response() :: #{
@@ -1181,11 +1315,13 @@
 %% }
 -type get_macie_session_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_service() :: #{
 %%   <<"invokedBy">> => string()
 %% }
 -type aws_service() :: #{binary() => any()}.
+
 
 %% Example:
 %% sensitivity_inspection_templates_entry() :: #{
@@ -1193,6 +1329,7 @@
 %%   <<"name">> => string()
 %% }
 -type sensitivity_inspection_templates_entry() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_get_custom_data_identifier_summary() :: #{
@@ -1205,12 +1342,14 @@
 %% }
 -type batch_get_custom_data_identifier_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_resources_bucket_criteria() :: #{
 %%   <<"excludes">> => search_resources_criteria_block(),
 %%   <<"includes">> => search_resources_criteria_block()
 %% }
 -type search_resources_bucket_criteria() :: #{binary() => any()}.
+
 
 %% Example:
 %% federated_user() :: #{
@@ -1222,6 +1361,7 @@
 %% }
 -type federated_user() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_resource_profile_detections_request() :: #{
 %%   <<"resourceArn">> := string(),
@@ -1229,11 +1369,13 @@
 %% }
 -type update_resource_profile_detections_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_findings_response() :: #{
 %%   <<"findings">> => list(finding()())
 %% }
 -type get_findings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_findings_publication_configuration_request() :: #{
@@ -1242,6 +1384,7 @@
 %% }
 -type put_findings_publication_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% bucket_policy() :: #{
 %%   <<"allowsPublicReadAccess">> => boolean(),
@@ -1249,11 +1392,13 @@
 %% }
 -type bucket_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% findings_filter_list_item() :: #{
@@ -1265,12 +1410,14 @@
 %% }
 -type findings_filter_list_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_allow_lists_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_allow_lists_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% user_identity_root() :: #{
@@ -1280,12 +1427,14 @@
 %% }
 -type user_identity_root() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_jobs_filter_criteria() :: #{
 %%   <<"excludes">> => list(list_jobs_filter_term()()),
 %%   <<"includes">> => list(list_jobs_filter_term()())
 %% }
 -type list_jobs_filter_criteria() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_findings_filter_request() :: #{
@@ -1299,6 +1448,7 @@
 %% }
 -type create_findings_filter_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_sensitive_data_occurrences_response() :: #{
 %%   <<"error">> => string(),
@@ -1307,12 +1457,14 @@
 %% }
 -type get_sensitive_data_occurrences_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_findings_filter_response() :: #{
 %%   <<"arn">> => string(),
 %%   <<"id">> => string()
 %% }
 -type update_findings_filter_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_resources_tag_criterion_pair() :: #{
@@ -1321,12 +1473,14 @@
 %% }
 -type search_resources_tag_criterion_pair() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_managed_data_identifiers_response() :: #{
 %%   <<"items">> => list(managed_data_identifier_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_managed_data_identifiers_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% allow_list_summary() :: #{
@@ -1339,6 +1493,7 @@
 %% }
 -type allow_list_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% classification_details() :: #{
 %%   <<"detailedResultsLocation">> => string(),
@@ -1348,6 +1503,7 @@
 %%   <<"result">> => classification_result()
 %% }
 -type classification_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% finding() :: #{
@@ -1371,12 +1527,15 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type finding() :: #{binary() => any()}.
+
 %% Example:
 %% describe_classification_job_request() :: #{}
 -type describe_classification_job_request() :: #{}.
+
 %% Example:
 %% update_automated_discovery_configuration_response() :: #{}
 -type update_automated_discovery_configuration_response() :: #{}.
+
 
 %% Example:
 %% update_macie_session_request() :: #{
@@ -1385,12 +1544,14 @@
 %% }
 -type update_macie_session_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% ip_geo_location() :: #{
 %%   <<"lat">> => float(),
 %%   <<"lon">> => float()
 %% }
 -type ip_geo_location() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_profile_artifact() :: #{
@@ -1399,9 +1560,11 @@
 %%   <<"sensitive">> => boolean()
 %% }
 -type resource_profile_artifact() :: #{binary() => any()}.
+
 %% Example:
 %% update_member_session_response() :: #{}
 -type update_member_session_response() :: #{}.
+
 
 %% Example:
 %% get_finding_statistics_request() :: #{
@@ -1412,6 +1575,7 @@
 %% }
 -type get_finding_statistics_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_resource_profile_artifacts_request() :: #{
 %%   <<"nextToken">> => string(),
@@ -1419,11 +1583,13 @@
 %% }
 -type list_resource_profile_artifacts_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_findings_request() :: #{
@@ -1434,12 +1600,14 @@
 %% }
 -type list_findings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_buckets_response() :: #{
 %%   <<"buckets">> => list(bucket_metadata()()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_buckets_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_custom_data_identifiers_request() :: #{
@@ -1448,6 +1616,7 @@
 %% }
 -type list_custom_data_identifiers_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_retrieval_configuration() :: #{
 %%   <<"retrievalMode">> => list(any()),
@@ -1455,17 +1624,21 @@
 %% }
 -type update_retrieval_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% test_custom_data_identifier_response() :: #{
 %%   <<"matchCount">> => integer()
 %% }
 -type test_custom_data_identifier_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_findings_filter_request() :: #{}
 -type get_findings_filter_request() :: #{}.
+
 %% Example:
 %% get_member_request() :: #{}
 -type get_member_request() :: #{}.
+
 
 %% Example:
 %% s3_bucket_owner() :: #{
@@ -1473,9 +1646,11 @@
 %%   <<"id">> => string()
 %% }
 -type s3_bucket_owner() :: #{binary() => any()}.
+
 %% Example:
 %% update_organization_configuration_response() :: #{}
 -type update_organization_configuration_response() :: #{}.
+
 
 %% Example:
 %% get_finding_statistics_response() :: #{
@@ -1483,11 +1658,13 @@
 %% }
 -type get_finding_statistics_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_usage_totals_request() :: #{
 %%   <<"timeRange">> => string()
 %% }
 -type get_usage_totals_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% detection() :: #{
@@ -1500,12 +1677,14 @@
 %% }
 -type detection() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_classification_scope_exclusion_update() :: #{
 %%   <<"bucketNames">> => list(string()()),
 %%   <<"operation">> => list(any())
 %% }
 -type s3_classification_scope_exclusion_update() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_destination() :: #{
@@ -1514,9 +1693,11 @@
 %%   <<"kmsKeyArn">> => string()
 %% }
 -type s3_destination() :: #{binary() => any()}.
+
 %% Example:
 %% accept_invitation_response() :: #{}
 -type accept_invitation_response() :: #{}.
+
 
 %% Example:
 %% resource_statistics() :: #{
@@ -1532,17 +1713,20 @@
 %% }
 -type resource_statistics() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_sample_findings_request() :: #{
 %%   <<"findingTypes">> => list(list(any())())
 %% }
 -type create_sample_findings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% decline_invitations_request() :: #{
 %%   <<"accountIds">> := list(string()())
 %% }
 -type decline_invitations_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% sensitive_data_item() :: #{
@@ -1551,6 +1735,7 @@
 %%   <<"totalCount">> => float()
 %% }
 -type sensitive_data_item() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_bucket_statistics_response() :: #{
@@ -1571,17 +1756,20 @@
 %% }
 -type get_bucket_statistics_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_automated_discovery_configuration_request() :: #{
 %%   <<"status">> := list(any())
 %% }
 -type update_automated_discovery_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_master_account_response() :: #{
 %%   <<"master">> => invitation()
 %% }
 -type get_master_account_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_schedule_frequency() :: #{
@@ -1590,6 +1778,7 @@
 %%   <<"weeklySchedule">> => weekly_schedule()
 %% }
 -type job_schedule_frequency() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_details() :: #{
@@ -1600,11 +1789,13 @@
 %% }
 -type job_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_classification_export_configuration_response() :: #{
 %%   <<"configuration">> => classification_export_configuration()
 %% }
 -type put_classification_export_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_classification_job_response() :: #{
@@ -1613,6 +1804,7 @@
 %% }
 -type create_classification_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% allow_list_criteria() :: #{
 %%   <<"regex">> => string(),
@@ -1620,11 +1812,13 @@
 %% }
 -type allow_list_criteria() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_invitations_request() :: #{
 %%   <<"accountIds">> := list(string()())
 %% }
 -type delete_invitations_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% classification_scope_summary() :: #{
@@ -1633,11 +1827,13 @@
 %% }
 -type classification_scope_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_member_response() :: #{
@@ -1653,6 +1849,7 @@
 %% }
 -type get_member_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_reveal_configuration_request() :: #{
 %%   <<"configuration">> := reveal_configuration(),
@@ -1660,11 +1857,13 @@
 %% }
 -type update_reveal_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_organization_configuration_request() :: #{
 %%   <<"autoEnable">> := boolean()
 %% }
 -type update_organization_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% enable_organization_admin_account_request() :: #{
@@ -1673,6 +1872,7 @@
 %% }
 -type enable_organization_admin_account_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% sensitivity_inspection_template_includes() :: #{
 %%   <<"allowListIds">> => list(string()()),
@@ -1680,15 +1880,18 @@
 %%   <<"managedDataIdentifierIds">> => list(string()())
 %% }
 -type sensitivity_inspection_template_includes() :: #{binary() => any()}.
+
 %% Example:
 %% delete_member_response() :: #{}
 -type delete_member_response() :: #{}.
+
 
 %% Example:
 %% s3_classification_scope_update() :: #{
 %%   <<"excludes">> => s3_classification_scope_exclusion_update()
 %% }
 -type s3_classification_scope_update() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_resources_criteria() :: #{
@@ -1697,11 +1900,13 @@
 %% }
 -type search_resources_criteria() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_invitations_response() :: #{
 %%   <<"unprocessedAccounts">> => list(unprocessed_account()())
 %% }
 -type delete_invitations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_reveal_configuration_response() :: #{
@@ -1710,12 +1915,14 @@
 %% }
 -type update_reveal_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_organization_admin_accounts_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_organization_admin_accounts_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_get_custom_data_identifiers_response() :: #{
@@ -1724,12 +1931,14 @@
 %% }
 -type batch_get_custom_data_identifiers_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% sort_criteria() :: #{
 %%   <<"attributeName">> => string(),
 %%   <<"orderBy">> => list(any())
 %% }
 -type sort_criteria() :: #{binary() => any()}.
+
 
 %% Example:
 %% ip_owner() :: #{
@@ -1740,15 +1949,18 @@
 %% }
 -type ip_owner() :: #{binary() => any()}.
 
+
 %% Example:
 %% criteria_for_job() :: #{
 %%   <<"simpleCriterion">> => simple_criterion_for_job(),
 %%   <<"tagCriterion">> => tag_criterion_for_job()
 %% }
 -type criteria_for_job() :: #{binary() => any()}.
+
 %% Example:
 %% get_sensitive_data_occurrences_availability_request() :: #{}
 -type get_sensitive_data_occurrences_availability_request() :: #{}.
+
 
 %% Example:
 %% weekly_schedule() :: #{
@@ -1756,23 +1968,28 @@
 %% }
 -type weekly_schedule() :: #{binary() => any()}.
 
+
 %% Example:
 %% unprocessable_entity_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type unprocessable_entity_exception() :: #{binary() => any()}.
+
 %% Example:
 %% get_classification_export_configuration_request() :: #{}
 -type get_classification_export_configuration_request() :: #{}.
+
 
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 %% Example:
 %% get_invitations_count_request() :: #{}
 -type get_invitations_count_request() :: #{}.
+
 
 %% Example:
 %% default_detection() :: #{
@@ -1782,12 +1999,14 @@
 %% }
 -type default_detection() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_words_list() :: #{
 %%   <<"bucketName">> => string(),
 %%   <<"objectKey">> => string()
 %% }
 -type s3_words_list() :: #{binary() => any()}.
+
 
 %% Example:
 %% accept_invitation_request() :: #{
@@ -1796,9 +2015,11 @@
 %%   <<"masterAccount">> => string()
 %% }
 -type accept_invitation_request() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% list_members_request() :: #{
@@ -1808,12 +2029,14 @@
 %% }
 -type list_members_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_members_response() :: #{
 %%   <<"members">> => list(member()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_members_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% block_public_access() :: #{
@@ -1824,11 +2047,13 @@
 %% }
 -type block_public_access() :: #{binary() => any()}.
 
+
 %% Example:
 %% last_run_error_status() :: #{
 %%   <<"code">> => list(any())
 %% }
 -type last_run_error_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% statistics() :: #{
@@ -1837,12 +2062,14 @@
 %% }
 -type statistics() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_findings_filters_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_findings_filters_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_sensitivity_inspection_template_request() :: #{
@@ -1852,11 +2079,13 @@
 %% }
 -type update_sensitivity_inspection_template_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_resources_criteria_block() :: #{
 %%   <<"and">> => list(search_resources_criteria()())
 %% }
 -type search_resources_criteria_block() :: #{binary() => any()}.
+
 
 %% Example:
 %% key_value_pair() :: #{
@@ -1864,6 +2093,7 @@
 %%   <<"value">> => string()
 %% }
 -type key_value_pair() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_resource_profile_detections_request() :: #{
@@ -1873,17 +2103,21 @@
 %% }
 -type list_resource_profile_detections_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 %% Example:
 %% get_master_account_request() :: #{}
 -type get_master_account_request() :: #{}.
+
 
 %% Example:
 %% s3_job_definition() :: #{
@@ -1893,6 +2127,7 @@
 %% }
 -type s3_job_definition() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_limit() :: #{
 %%   <<"isServiceLimited">> => boolean(),
@@ -1900,9 +2135,11 @@
 %%   <<"value">> => float()
 %% }
 -type service_limit() :: #{binary() => any()}.
+
 %% Example:
 %% daily_schedule() :: #{}
 -type daily_schedule() :: #{}.
+
 
 %% Example:
 %% get_invitations_count_response() :: #{
@@ -1910,15 +2147,18 @@
 %% }
 -type get_invitations_count_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_sensitive_data_occurrences_availability_response() :: #{
 %%   <<"code">> => list(any()),
 %%   <<"reasons">> => list(list(any())())
 %% }
 -type get_sensitive_data_occurrences_availability_response() :: #{binary() => any()}.
+
 %% Example:
 %% update_resource_profile_detections_response() :: #{}
 -type update_resource_profile_detections_response() :: #{}.
+
 
 %% Example:
 %% throttling_exception() :: #{
@@ -1926,11 +2166,13 @@
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_findings_publication_configuration_response() :: #{
 %%   <<"securityHubConfiguration">> => security_hub_configuration()
 %% }
 -type get_findings_publication_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% severity_level() :: #{
@@ -1939,12 +2181,14 @@
 %% }
 -type severity_level() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_invitations_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_invitations_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_classification_scope_response() :: #{
@@ -1954,11 +2198,13 @@
 %% }
 -type get_classification_scope_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% finding_criteria() :: #{
 %%   <<"criterion">> => map()
 %% }
 -type finding_criteria() :: #{binary() => any()}.
+
 
 %% Example:
 %% replication_details() :: #{
@@ -1967,9 +2213,11 @@
 %%   <<"replicationAccounts">> => list(string()())
 %% }
 -type replication_details() :: #{binary() => any()}.
+
 %% Example:
 %% create_sample_findings_response() :: #{}
 -type create_sample_findings_response() :: #{}.
+
 
 %% Example:
 %% update_resource_profile_request() :: #{
@@ -1978,12 +2226,14 @@
 %% }
 -type update_resource_profile_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_usage_totals_response() :: #{
 %%   <<"timeRange">> => list(any()),
 %%   <<"usageTotals">> => list(usage_total()())
 %% }
 -type get_usage_totals_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% member() :: #{
@@ -1998,9 +2248,11 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type member() :: #{binary() => any()}.
+
 %% Example:
 %% enable_organization_admin_account_response() :: #{}
 -type enable_organization_admin_account_response() :: #{}.
+
 
 %% Example:
 %% update_allow_list_request() :: #{
@@ -2010,12 +2262,14 @@
 %% }
 -type update_allow_list_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% finding_action() :: #{
 %%   <<"actionType">> => list(any()),
 %%   <<"apiCallDetails">> => api_call_details()
 %% }
 -type finding_action() :: #{binary() => any()}.
+
 
 %% Example:
 %% ip_address_details() :: #{
@@ -2027,11 +2281,13 @@
 %% }
 -type ip_address_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_classification_export_configuration_request() :: #{
 %%   <<"configuration">> := classification_export_configuration()
 %% }
 -type put_classification_export_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_resources_simple_criterion() :: #{
@@ -2041,6 +2297,7 @@
 %% }
 -type search_resources_simple_criterion() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_criterion_for_job() :: #{
 %%   <<"comparator">> => list(any()),
@@ -2048,11 +2305,13 @@
 %% }
 -type tag_criterion_for_job() :: #{binary() => any()}.
 
+
 %% Example:
 %% domain_details() :: #{
 %%   <<"domainName">> => string()
 %% }
 -type domain_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% criterion_additional_properties() :: #{
@@ -2066,6 +2325,7 @@
 %% }
 -type criterion_additional_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% session_issuer() :: #{
 %%   <<"accountId">> => string(),
@@ -2075,9 +2335,11 @@
 %%   <<"userName">> => string()
 %% }
 -type session_issuer() :: #{binary() => any()}.
+
 %% Example:
 %% get_reveal_configuration_request() :: #{}
 -type get_reveal_configuration_request() :: #{}.
+
 
 %% Example:
 %% assumed_role() :: #{
@@ -2089,6 +2351,7 @@
 %% }
 -type assumed_role() :: #{binary() => any()}.
 
+
 %% Example:
 %% unprocessed_account() :: #{
 %%   <<"accountId">> => string(),
@@ -2097,6 +2360,7 @@
 %% }
 -type unprocessed_account() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_classification_scopes_response() :: #{
 %%   <<"classificationScopes">> => list(classification_scope_summary()()),
@@ -2104,12 +2368,14 @@
 %% }
 -type list_classification_scopes_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% bucket_permission_configuration() :: #{
 %%   <<"accountLevelPermissions">> => account_level_permissions(),
 %%   <<"bucketLevelPermissions">> => bucket_level_permissions()
 %% }
 -type bucket_permission_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% user_paused_details() :: #{
@@ -2119,11 +2385,13 @@
 %% }
 -type user_paused_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_invitations_response() :: #{
 %%   <<"unprocessedAccounts">> => list(unprocessed_account()())
 %% }
 -type create_invitations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_allow_list_response() :: #{
@@ -2139,6 +2407,7 @@
 %% }
 -type get_allow_list_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% reveal_configuration() :: #{
 %%   <<"kmsKeyId">> => string(),
@@ -2146,14 +2415,17 @@
 %% }
 -type reveal_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_resource_profile_request() :: #{
 %%   <<"resourceArn">> := string()
 %% }
 -type get_resource_profile_request() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_member_response() :: #{}
 -type disassociate_member_response() :: #{}.
+
 
 %% Example:
 %% bucket_level_permissions() :: #{
@@ -2163,6 +2435,7 @@
 %% }
 -type bucket_level_permissions() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_organization_admin_accounts_response() :: #{
 %%   <<"adminAccounts">> => list(admin_account()()),
@@ -2170,12 +2443,14 @@
 %% }
 -type list_organization_admin_accounts_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_allow_lists_response() :: #{
 %%   <<"allowLists">> => list(allow_list_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_allow_lists_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% matching_bucket() :: #{
@@ -2196,9 +2471,11 @@
 %%   <<"unclassifiableObjectSizeInBytes">> => object_level_statistics()
 %% }
 -type matching_bucket() :: #{binary() => any()}.
+
 %% Example:
 %% get_automated_discovery_configuration_request() :: #{}
 -type get_automated_discovery_configuration_request() :: #{}.
+
 
 %% Example:
 %% get_custom_data_identifier_response() :: #{
@@ -2217,6 +2494,7 @@
 %% }
 -type get_custom_data_identifier_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_sensitivity_inspection_templates_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -2224,15 +2502,18 @@
 %% }
 -type list_sensitivity_inspection_templates_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% custom_data_identifiers() :: #{
 %%   <<"detections">> => list(custom_detection()()),
 %%   <<"totalCount">> => float()
 %% }
 -type custom_data_identifiers() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_from_administrator_account_request() :: #{}
 -type disassociate_from_administrator_account_request() :: #{}.
+
 
 %% Example:
 %% access_control_list() :: #{
@@ -2240,6 +2521,7 @@
 %%   <<"allowsPublicWriteAccess">> => boolean()
 %% }
 -type access_control_list() :: #{binary() => any()}.
+
 
 %% Example:
 %% usage_record() :: #{
@@ -2250,23 +2532,28 @@
 %% }
 -type usage_record() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_administrator_account_response() :: #{
 %%   <<"administrator">> => invitation()
 %% }
 -type get_administrator_account_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_custom_data_identifier_response() :: #{}
 -type delete_custom_data_identifier_response() :: #{}.
+
 
 %% Example:
 %% job_scoping_block() :: #{
 %%   <<"and">> => list(job_scope_term()())
 %% }
 -type job_scoping_block() :: #{binary() => any()}.
+
 %% Example:
 %% enable_macie_response() :: #{}
 -type enable_macie_response() :: #{}.
+
 
 %% Example:
 %% tag_criterion_pair_for_job() :: #{
@@ -2275,6 +2562,7 @@
 %% }
 -type tag_criterion_pair_for_job() :: #{binary() => any()}.
 
+
 %% Example:
 %% group_count() :: #{
 %%   <<"count">> => float(),
@@ -2282,11 +2570,13 @@
 %% }
 -type group_count() :: #{binary() => any()}.
 
+
 %% Example:
 %% matching_resource() :: #{
 %%   <<"matchingBucket">> => matching_bucket()
 %% }
 -type matching_resource() :: #{binary() => any()}.
+
 
 %% Example:
 %% page() :: #{
@@ -2296,12 +2586,14 @@
 %% }
 -type page() :: #{binary() => any()}.
 
+
 %% Example:
 %% policy_details() :: #{
 %%   <<"action">> => finding_action(),
 %%   <<"actor">> => finding_actor()
 %% }
 -type policy_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_classification_job_request() :: #{
@@ -2321,6 +2613,7 @@
 %% }
 -type create_classification_job_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% bucket_count_by_effective_permission() :: #{
 %%   <<"publiclyAccessible">> => float(),
@@ -2330,6 +2623,7 @@
 %% }
 -type bucket_count_by_effective_permission() :: #{binary() => any()}.
 
+
 %% Example:
 %% simple_criterion_for_job() :: #{
 %%   <<"comparator">> => list(any()),
@@ -2338,17 +2632,20 @@
 %% }
 -type simple_criterion_for_job() :: #{binary() => any()}.
 
+
 %% Example:
 %% detected_data_details() :: #{
 %%   <<"value">> => string()
 %% }
 -type detected_data_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_classification_job_request() :: #{
 %%   <<"jobStatus">> := list(any())
 %% }
 -type update_classification_job_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_usage_statistics_response() :: #{
@@ -2358,6 +2655,7 @@
 %% }
 -type get_usage_statistics_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_invitations_request() :: #{
 %%   <<"accountIds">> := list(string()()),
@@ -2365,6 +2663,7 @@
 %%   <<"message">> => string()
 %% }
 -type create_invitations_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_allow_list_request() :: #{
@@ -2375,9 +2674,11 @@
 %%   <<"tags">> => map()
 %% }
 -type create_allow_list_request() :: #{binary() => any()}.
+
 %% Example:
 %% put_findings_publication_configuration_response() :: #{}
 -type put_findings_publication_configuration_response() :: #{}.
+
 
 %% Example:
 %% list_classification_jobs_response() :: #{
@@ -2386,18 +2687,652 @@
 %% }
 -type list_classification_jobs_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_invitations_response() :: #{
 %%   <<"invitations">> => list(invitation()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_invitations_response() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_member_request() :: #{}
 -type disassociate_member_request() :: #{}.
+
 %% Example:
 %% disable_macie_response() :: #{}
 -type disable_macie_response() :: #{}.
+
+-type accept_invitation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type batch_get_custom_data_identifiers_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_allow_list_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_classification_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_custom_data_identifier_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_findings_filter_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_invitations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_member_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_sample_findings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type decline_invitations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_allow_list_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_custom_data_identifier_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_findings_filter_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_invitations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_member_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_buckets_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_classification_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_organization_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type disable_macie_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type disable_organization_admin_account_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type disassociate_from_administrator_account_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type disassociate_from_master_account_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type disassociate_member_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type enable_macie_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type enable_organization_admin_account_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_administrator_account_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_allow_list_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_automated_discovery_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type get_bucket_statistics_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_classification_export_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_classification_scope_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_custom_data_identifier_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_finding_statistics_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_findings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_findings_filter_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_findings_publication_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_invitations_count_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_macie_session_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_master_account_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_member_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_resource_profile_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type get_reveal_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type get_sensitive_data_occurrences_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    unprocessable_entity_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type get_sensitive_data_occurrences_availability_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_sensitivity_inspection_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_usage_statistics_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_usage_totals_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_allow_lists_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_classification_jobs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_classification_scopes_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_custom_data_identifiers_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_findings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_findings_filters_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_invitations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_members_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_organization_admin_accounts_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_resource_profile_artifacts_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_resource_profile_detections_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type list_sensitivity_inspection_templates_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type put_classification_export_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type put_findings_publication_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type search_resources_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type test_custom_data_identifier_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_allow_list_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_automated_discovery_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type update_classification_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_classification_scope_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_findings_filter_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_macie_session_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_member_session_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_organization_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_resource_profile_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type update_resource_profile_detections_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type update_reveal_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type update_sensitivity_inspection_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -2408,26 +3343,14 @@
 -spec accept_invitation(map(), accept_invitation_request()) ->
     {ok, accept_invitation_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, accept_invitation_errors(), tuple()}.
 accept_invitation(Client, Input) ->
     accept_invitation(Client, Input, []).
 
 -spec accept_invitation(map(), accept_invitation_request(), proplists:proplist()) ->
     {ok, accept_invitation_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, accept_invitation_errors(), tuple()}.
 accept_invitation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/invitations/accept"],
@@ -2454,26 +3377,14 @@ accept_invitation(Client, Input0, Options0) ->
 -spec batch_get_custom_data_identifiers(map(), batch_get_custom_data_identifiers_request()) ->
     {ok, batch_get_custom_data_identifiers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_custom_data_identifiers_errors(), tuple()}.
 batch_get_custom_data_identifiers(Client, Input) ->
     batch_get_custom_data_identifiers(Client, Input, []).
 
 -spec batch_get_custom_data_identifiers(map(), batch_get_custom_data_identifiers_request(), proplists:proplist()) ->
     {ok, batch_get_custom_data_identifiers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_custom_data_identifiers_errors(), tuple()}.
 batch_get_custom_data_identifiers(Client, Input0, Options0) ->
     Method = post,
     Path = ["/custom-data-identifiers/get"],
@@ -2500,26 +3411,14 @@ batch_get_custom_data_identifiers(Client, Input0, Options0) ->
 -spec create_allow_list(map(), create_allow_list_request()) ->
     {ok, create_allow_list_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_allow_list_errors(), tuple()}.
 create_allow_list(Client, Input) ->
     create_allow_list(Client, Input, []).
 
 -spec create_allow_list(map(), create_allow_list_request(), proplists:proplist()) ->
     {ok, create_allow_list_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_allow_list_errors(), tuple()}.
 create_allow_list(Client, Input0, Options0) ->
     Method = post,
     Path = ["/allow-lists"],
@@ -2546,26 +3445,14 @@ create_allow_list(Client, Input0, Options0) ->
 -spec create_classification_job(map(), create_classification_job_request()) ->
     {ok, create_classification_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_classification_job_errors(), tuple()}.
 create_classification_job(Client, Input) ->
     create_classification_job(Client, Input, []).
 
 -spec create_classification_job(map(), create_classification_job_request(), proplists:proplist()) ->
     {ok, create_classification_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_classification_job_errors(), tuple()}.
 create_classification_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/jobs"],
@@ -2593,26 +3480,14 @@ create_classification_job(Client, Input0, Options0) ->
 -spec create_custom_data_identifier(map(), create_custom_data_identifier_request()) ->
     {ok, create_custom_data_identifier_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_custom_data_identifier_errors(), tuple()}.
 create_custom_data_identifier(Client, Input) ->
     create_custom_data_identifier(Client, Input, []).
 
 -spec create_custom_data_identifier(map(), create_custom_data_identifier_request(), proplists:proplist()) ->
     {ok, create_custom_data_identifier_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_custom_data_identifier_errors(), tuple()}.
 create_custom_data_identifier(Client, Input0, Options0) ->
     Method = post,
     Path = ["/custom-data-identifiers"],
@@ -2640,26 +3515,14 @@ create_custom_data_identifier(Client, Input0, Options0) ->
 -spec create_findings_filter(map(), create_findings_filter_request()) ->
     {ok, create_findings_filter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_findings_filter_errors(), tuple()}.
 create_findings_filter(Client, Input) ->
     create_findings_filter(Client, Input, []).
 
 -spec create_findings_filter(map(), create_findings_filter_request(), proplists:proplist()) ->
     {ok, create_findings_filter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_findings_filter_errors(), tuple()}.
 create_findings_filter(Client, Input0, Options0) ->
     Method = post,
     Path = ["/findingsfilters"],
@@ -2686,26 +3549,14 @@ create_findings_filter(Client, Input0, Options0) ->
 -spec create_invitations(map(), create_invitations_request()) ->
     {ok, create_invitations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_invitations_errors(), tuple()}.
 create_invitations(Client, Input) ->
     create_invitations(Client, Input, []).
 
 -spec create_invitations(map(), create_invitations_request(), proplists:proplist()) ->
     {ok, create_invitations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_invitations_errors(), tuple()}.
 create_invitations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/invitations"],
@@ -2732,26 +3583,14 @@ create_invitations(Client, Input0, Options0) ->
 -spec create_member(map(), create_member_request()) ->
     {ok, create_member_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_member_errors(), tuple()}.
 create_member(Client, Input) ->
     create_member(Client, Input, []).
 
 -spec create_member(map(), create_member_request(), proplists:proplist()) ->
     {ok, create_member_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_member_errors(), tuple()}.
 create_member(Client, Input0, Options0) ->
     Method = post,
     Path = ["/members"],
@@ -2778,26 +3617,14 @@ create_member(Client, Input0, Options0) ->
 -spec create_sample_findings(map(), create_sample_findings_request()) ->
     {ok, create_sample_findings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_sample_findings_errors(), tuple()}.
 create_sample_findings(Client, Input) ->
     create_sample_findings(Client, Input, []).
 
 -spec create_sample_findings(map(), create_sample_findings_request(), proplists:proplist()) ->
     {ok, create_sample_findings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_sample_findings_errors(), tuple()}.
 create_sample_findings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/findings/sample"],
@@ -2825,26 +3652,14 @@ create_sample_findings(Client, Input0, Options0) ->
 -spec decline_invitations(map(), decline_invitations_request()) ->
     {ok, decline_invitations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, decline_invitations_errors(), tuple()}.
 decline_invitations(Client, Input) ->
     decline_invitations(Client, Input, []).
 
 -spec decline_invitations(map(), decline_invitations_request(), proplists:proplist()) ->
     {ok, decline_invitations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, decline_invitations_errors(), tuple()}.
 decline_invitations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/invitations/decline"],
@@ -2871,22 +3686,14 @@ decline_invitations(Client, Input0, Options0) ->
 -spec delete_allow_list(map(), binary() | list(), delete_allow_list_request()) ->
     {ok, delete_allow_list_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_allow_list_errors(), tuple()}.
 delete_allow_list(Client, Id, Input) ->
     delete_allow_list(Client, Id, Input, []).
 
 -spec delete_allow_list(map(), binary() | list(), delete_allow_list_request(), proplists:proplist()) ->
     {ok, delete_allow_list_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_allow_list_errors(), tuple()}.
 delete_allow_list(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/allow-lists/", aws_util:encode_uri(Id), ""],
@@ -2914,26 +3721,14 @@ delete_allow_list(Client, Id, Input0, Options0) ->
 -spec delete_custom_data_identifier(map(), binary() | list(), delete_custom_data_identifier_request()) ->
     {ok, delete_custom_data_identifier_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_custom_data_identifier_errors(), tuple()}.
 delete_custom_data_identifier(Client, Id, Input) ->
     delete_custom_data_identifier(Client, Id, Input, []).
 
 -spec delete_custom_data_identifier(map(), binary() | list(), delete_custom_data_identifier_request(), proplists:proplist()) ->
     {ok, delete_custom_data_identifier_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_custom_data_identifier_errors(), tuple()}.
 delete_custom_data_identifier(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/custom-data-identifiers/", aws_util:encode_uri(Id), ""],
@@ -2960,26 +3755,14 @@ delete_custom_data_identifier(Client, Id, Input0, Options0) ->
 -spec delete_findings_filter(map(), binary() | list(), delete_findings_filter_request()) ->
     {ok, delete_findings_filter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_findings_filter_errors(), tuple()}.
 delete_findings_filter(Client, Id, Input) ->
     delete_findings_filter(Client, Id, Input, []).
 
 -spec delete_findings_filter(map(), binary() | list(), delete_findings_filter_request(), proplists:proplist()) ->
     {ok, delete_findings_filter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_findings_filter_errors(), tuple()}.
 delete_findings_filter(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/findingsfilters/", aws_util:encode_uri(Id), ""],
@@ -3007,26 +3790,14 @@ delete_findings_filter(Client, Id, Input0, Options0) ->
 -spec delete_invitations(map(), delete_invitations_request()) ->
     {ok, delete_invitations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_invitations_errors(), tuple()}.
 delete_invitations(Client, Input) ->
     delete_invitations(Client, Input, []).
 
 -spec delete_invitations(map(), delete_invitations_request(), proplists:proplist()) ->
     {ok, delete_invitations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_invitations_errors(), tuple()}.
 delete_invitations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/invitations/delete"],
@@ -3054,26 +3825,14 @@ delete_invitations(Client, Input0, Options0) ->
 -spec delete_member(map(), binary() | list(), delete_member_request()) ->
     {ok, delete_member_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_member_errors(), tuple()}.
 delete_member(Client, Id, Input) ->
     delete_member(Client, Id, Input, []).
 
 -spec delete_member(map(), binary() | list(), delete_member_request(), proplists:proplist()) ->
     {ok, delete_member_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_member_errors(), tuple()}.
 delete_member(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/members/", aws_util:encode_uri(Id), ""],
@@ -3101,26 +3860,14 @@ delete_member(Client, Id, Input0, Options0) ->
 -spec describe_buckets(map(), describe_buckets_request()) ->
     {ok, describe_buckets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_buckets_errors(), tuple()}.
 describe_buckets(Client, Input) ->
     describe_buckets(Client, Input, []).
 
 -spec describe_buckets(map(), describe_buckets_request(), proplists:proplist()) ->
     {ok, describe_buckets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_buckets_errors(), tuple()}.
 describe_buckets(Client, Input0, Options0) ->
     Method = post,
     Path = ["/datasources/s3"],
@@ -3147,13 +3894,7 @@ describe_buckets(Client, Input0, Options0) ->
 -spec describe_classification_job(map(), binary() | list()) ->
     {ok, describe_classification_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_classification_job_errors(), tuple()}.
 describe_classification_job(Client, JobId)
   when is_map(Client) ->
     describe_classification_job(Client, JobId, #{}, #{}).
@@ -3161,13 +3902,7 @@ describe_classification_job(Client, JobId)
 -spec describe_classification_job(map(), binary() | list(), map(), map()) ->
     {ok, describe_classification_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_classification_job_errors(), tuple()}.
 describe_classification_job(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_classification_job(Client, JobId, QueryMap, HeadersMap, []).
@@ -3175,13 +3910,7 @@ describe_classification_job(Client, JobId, QueryMap, HeadersMap)
 -spec describe_classification_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_classification_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_classification_job_errors(), tuple()}.
 describe_classification_job(Client, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
@@ -3203,13 +3932,7 @@ describe_classification_job(Client, JobId, QueryMap, HeadersMap, Options0)
 -spec describe_organization_configuration(map()) ->
     {ok, describe_organization_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_organization_configuration_errors(), tuple()}.
 describe_organization_configuration(Client)
   when is_map(Client) ->
     describe_organization_configuration(Client, #{}, #{}).
@@ -3217,13 +3940,7 @@ describe_organization_configuration(Client)
 -spec describe_organization_configuration(map(), map(), map()) ->
     {ok, describe_organization_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_organization_configuration_errors(), tuple()}.
 describe_organization_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_organization_configuration(Client, QueryMap, HeadersMap, []).
@@ -3231,13 +3948,7 @@ describe_organization_configuration(Client, QueryMap, HeadersMap)
 -spec describe_organization_configuration(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_organization_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_organization_configuration_errors(), tuple()}.
 describe_organization_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/admin/configuration"],
@@ -3259,26 +3970,14 @@ describe_organization_configuration(Client, QueryMap, HeadersMap, Options0)
 -spec disable_macie(map(), disable_macie_request()) ->
     {ok, disable_macie_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disable_macie_errors(), tuple()}.
 disable_macie(Client, Input) ->
     disable_macie(Client, Input, []).
 
 -spec disable_macie(map(), disable_macie_request(), proplists:proplist()) ->
     {ok, disable_macie_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disable_macie_errors(), tuple()}.
 disable_macie(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/macie"],
@@ -3306,26 +4005,14 @@ disable_macie(Client, Input0, Options0) ->
 -spec disable_organization_admin_account(map(), disable_organization_admin_account_request()) ->
     {ok, disable_organization_admin_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disable_organization_admin_account_errors(), tuple()}.
 disable_organization_admin_account(Client, Input) ->
     disable_organization_admin_account(Client, Input, []).
 
 -spec disable_organization_admin_account(map(), disable_organization_admin_account_request(), proplists:proplist()) ->
     {ok, disable_organization_admin_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disable_organization_admin_account_errors(), tuple()}.
 disable_organization_admin_account(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/admin"],
@@ -3354,26 +4041,14 @@ disable_organization_admin_account(Client, Input0, Options0) ->
 -spec disassociate_from_administrator_account(map(), disassociate_from_administrator_account_request()) ->
     {ok, disassociate_from_administrator_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_from_administrator_account_errors(), tuple()}.
 disassociate_from_administrator_account(Client, Input) ->
     disassociate_from_administrator_account(Client, Input, []).
 
 -spec disassociate_from_administrator_account(map(), disassociate_from_administrator_account_request(), proplists:proplist()) ->
     {ok, disassociate_from_administrator_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_from_administrator_account_errors(), tuple()}.
 disassociate_from_administrator_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/administrator/disassociate"],
@@ -3404,26 +4079,14 @@ disassociate_from_administrator_account(Client, Input0, Options0) ->
 -spec disassociate_from_master_account(map(), disassociate_from_master_account_request()) ->
     {ok, disassociate_from_master_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_from_master_account_errors(), tuple()}.
 disassociate_from_master_account(Client, Input) ->
     disassociate_from_master_account(Client, Input, []).
 
 -spec disassociate_from_master_account(map(), disassociate_from_master_account_request(), proplists:proplist()) ->
     {ok, disassociate_from_master_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_from_master_account_errors(), tuple()}.
 disassociate_from_master_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/master/disassociate"],
@@ -3451,26 +4114,14 @@ disassociate_from_master_account(Client, Input0, Options0) ->
 -spec disassociate_member(map(), binary() | list(), disassociate_member_request()) ->
     {ok, disassociate_member_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_member_errors(), tuple()}.
 disassociate_member(Client, Id, Input) ->
     disassociate_member(Client, Id, Input, []).
 
 -spec disassociate_member(map(), binary() | list(), disassociate_member_request(), proplists:proplist()) ->
     {ok, disassociate_member_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_member_errors(), tuple()}.
 disassociate_member(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/members/disassociate/", aws_util:encode_uri(Id), ""],
@@ -3498,26 +4149,14 @@ disassociate_member(Client, Id, Input0, Options0) ->
 -spec enable_macie(map(), enable_macie_request()) ->
     {ok, enable_macie_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, enable_macie_errors(), tuple()}.
 enable_macie(Client, Input) ->
     enable_macie(Client, Input, []).
 
 -spec enable_macie(map(), enable_macie_request(), proplists:proplist()) ->
     {ok, enable_macie_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, enable_macie_errors(), tuple()}.
 enable_macie(Client, Input0, Options0) ->
     Method = post,
     Path = ["/macie"],
@@ -3545,26 +4184,14 @@ enable_macie(Client, Input0, Options0) ->
 -spec enable_organization_admin_account(map(), enable_organization_admin_account_request()) ->
     {ok, enable_organization_admin_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, enable_organization_admin_account_errors(), tuple()}.
 enable_organization_admin_account(Client, Input) ->
     enable_organization_admin_account(Client, Input, []).
 
 -spec enable_organization_admin_account(map(), enable_organization_admin_account_request(), proplists:proplist()) ->
     {ok, enable_organization_admin_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, enable_organization_admin_account_errors(), tuple()}.
 enable_organization_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/admin"],
@@ -3592,13 +4219,7 @@ enable_organization_admin_account(Client, Input0, Options0) ->
 -spec get_administrator_account(map()) ->
     {ok, get_administrator_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_administrator_account_errors(), tuple()}.
 get_administrator_account(Client)
   when is_map(Client) ->
     get_administrator_account(Client, #{}, #{}).
@@ -3606,13 +4227,7 @@ get_administrator_account(Client)
 -spec get_administrator_account(map(), map(), map()) ->
     {ok, get_administrator_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_administrator_account_errors(), tuple()}.
 get_administrator_account(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_administrator_account(Client, QueryMap, HeadersMap, []).
@@ -3620,13 +4235,7 @@ get_administrator_account(Client, QueryMap, HeadersMap)
 -spec get_administrator_account(map(), map(), map(), proplists:proplist()) ->
     {ok, get_administrator_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_administrator_account_errors(), tuple()}.
 get_administrator_account(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/administrator"],
@@ -3647,11 +4256,7 @@ get_administrator_account(Client, QueryMap, HeadersMap, Options0)
 -spec get_allow_list(map(), binary() | list()) ->
     {ok, get_allow_list_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_allow_list_errors(), tuple()}.
 get_allow_list(Client, Id)
   when is_map(Client) ->
     get_allow_list(Client, Id, #{}, #{}).
@@ -3659,11 +4264,7 @@ get_allow_list(Client, Id)
 -spec get_allow_list(map(), binary() | list(), map(), map()) ->
     {ok, get_allow_list_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_allow_list_errors(), tuple()}.
 get_allow_list(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_allow_list(Client, Id, QueryMap, HeadersMap, []).
@@ -3671,11 +4272,7 @@ get_allow_list(Client, Id, QueryMap, HeadersMap)
 -spec get_allow_list(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_allow_list_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_allow_list_errors(), tuple()}.
 get_allow_list(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/allow-lists/", aws_util:encode_uri(Id), ""],
@@ -3697,10 +4294,7 @@ get_allow_list(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_automated_discovery_configuration(map()) ->
     {ok, get_automated_discovery_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_automated_discovery_configuration_errors(), tuple()}.
 get_automated_discovery_configuration(Client)
   when is_map(Client) ->
     get_automated_discovery_configuration(Client, #{}, #{}).
@@ -3708,10 +4302,7 @@ get_automated_discovery_configuration(Client)
 -spec get_automated_discovery_configuration(map(), map(), map()) ->
     {ok, get_automated_discovery_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_automated_discovery_configuration_errors(), tuple()}.
 get_automated_discovery_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_automated_discovery_configuration(Client, QueryMap, HeadersMap, []).
@@ -3719,10 +4310,7 @@ get_automated_discovery_configuration(Client, QueryMap, HeadersMap)
 -spec get_automated_discovery_configuration(map(), map(), map(), proplists:proplist()) ->
     {ok, get_automated_discovery_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_automated_discovery_configuration_errors(), tuple()}.
 get_automated_discovery_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/automated-discovery/configuration"],
@@ -3744,26 +4332,14 @@ get_automated_discovery_configuration(Client, QueryMap, HeadersMap, Options0)
 -spec get_bucket_statistics(map(), get_bucket_statistics_request()) ->
     {ok, get_bucket_statistics_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_bucket_statistics_errors(), tuple()}.
 get_bucket_statistics(Client, Input) ->
     get_bucket_statistics(Client, Input, []).
 
 -spec get_bucket_statistics(map(), get_bucket_statistics_request(), proplists:proplist()) ->
     {ok, get_bucket_statistics_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_bucket_statistics_errors(), tuple()}.
 get_bucket_statistics(Client, Input0, Options0) ->
     Method = post,
     Path = ["/datasources/s3/statistics"],
@@ -3791,13 +4367,7 @@ get_bucket_statistics(Client, Input0, Options0) ->
 -spec get_classification_export_configuration(map()) ->
     {ok, get_classification_export_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_classification_export_configuration_errors(), tuple()}.
 get_classification_export_configuration(Client)
   when is_map(Client) ->
     get_classification_export_configuration(Client, #{}, #{}).
@@ -3805,13 +4375,7 @@ get_classification_export_configuration(Client)
 -spec get_classification_export_configuration(map(), map(), map()) ->
     {ok, get_classification_export_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_classification_export_configuration_errors(), tuple()}.
 get_classification_export_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_classification_export_configuration(Client, QueryMap, HeadersMap, []).
@@ -3819,13 +4383,7 @@ get_classification_export_configuration(Client, QueryMap, HeadersMap)
 -spec get_classification_export_configuration(map(), map(), map(), proplists:proplist()) ->
     {ok, get_classification_export_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_classification_export_configuration_errors(), tuple()}.
 get_classification_export_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/classification-export-configuration"],
@@ -3846,11 +4404,7 @@ get_classification_export_configuration(Client, QueryMap, HeadersMap, Options0)
 -spec get_classification_scope(map(), binary() | list()) ->
     {ok, get_classification_scope_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_classification_scope_errors(), tuple()}.
 get_classification_scope(Client, Id)
   when is_map(Client) ->
     get_classification_scope(Client, Id, #{}, #{}).
@@ -3858,11 +4412,7 @@ get_classification_scope(Client, Id)
 -spec get_classification_scope(map(), binary() | list(), map(), map()) ->
     {ok, get_classification_scope_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_classification_scope_errors(), tuple()}.
 get_classification_scope(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_classification_scope(Client, Id, QueryMap, HeadersMap, []).
@@ -3870,11 +4420,7 @@ get_classification_scope(Client, Id, QueryMap, HeadersMap)
 -spec get_classification_scope(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_classification_scope_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_classification_scope_errors(), tuple()}.
 get_classification_scope(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/classification-scopes/", aws_util:encode_uri(Id), ""],
@@ -3896,13 +4442,7 @@ get_classification_scope(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_custom_data_identifier(map(), binary() | list()) ->
     {ok, get_custom_data_identifier_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_custom_data_identifier_errors(), tuple()}.
 get_custom_data_identifier(Client, Id)
   when is_map(Client) ->
     get_custom_data_identifier(Client, Id, #{}, #{}).
@@ -3910,13 +4450,7 @@ get_custom_data_identifier(Client, Id)
 -spec get_custom_data_identifier(map(), binary() | list(), map(), map()) ->
     {ok, get_custom_data_identifier_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_custom_data_identifier_errors(), tuple()}.
 get_custom_data_identifier(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_custom_data_identifier(Client, Id, QueryMap, HeadersMap, []).
@@ -3924,13 +4458,7 @@ get_custom_data_identifier(Client, Id, QueryMap, HeadersMap)
 -spec get_custom_data_identifier(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_custom_data_identifier_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_custom_data_identifier_errors(), tuple()}.
 get_custom_data_identifier(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/custom-data-identifiers/", aws_util:encode_uri(Id), ""],
@@ -3951,26 +4479,14 @@ get_custom_data_identifier(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_finding_statistics(map(), get_finding_statistics_request()) ->
     {ok, get_finding_statistics_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_finding_statistics_errors(), tuple()}.
 get_finding_statistics(Client, Input) ->
     get_finding_statistics(Client, Input, []).
 
 -spec get_finding_statistics(map(), get_finding_statistics_request(), proplists:proplist()) ->
     {ok, get_finding_statistics_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_finding_statistics_errors(), tuple()}.
 get_finding_statistics(Client, Input0, Options0) ->
     Method = post,
     Path = ["/findings/statistics"],
@@ -3997,26 +4513,14 @@ get_finding_statistics(Client, Input0, Options0) ->
 -spec get_findings(map(), get_findings_request()) ->
     {ok, get_findings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_findings_errors(), tuple()}.
 get_findings(Client, Input) ->
     get_findings(Client, Input, []).
 
 -spec get_findings(map(), get_findings_request(), proplists:proplist()) ->
     {ok, get_findings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_findings_errors(), tuple()}.
 get_findings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/findings/describe"],
@@ -4043,13 +4547,7 @@ get_findings(Client, Input0, Options0) ->
 -spec get_findings_filter(map(), binary() | list()) ->
     {ok, get_findings_filter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_findings_filter_errors(), tuple()}.
 get_findings_filter(Client, Id)
   when is_map(Client) ->
     get_findings_filter(Client, Id, #{}, #{}).
@@ -4057,13 +4555,7 @@ get_findings_filter(Client, Id)
 -spec get_findings_filter(map(), binary() | list(), map(), map()) ->
     {ok, get_findings_filter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_findings_filter_errors(), tuple()}.
 get_findings_filter(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_findings_filter(Client, Id, QueryMap, HeadersMap, []).
@@ -4071,13 +4563,7 @@ get_findings_filter(Client, Id, QueryMap, HeadersMap)
 -spec get_findings_filter(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_findings_filter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_findings_filter_errors(), tuple()}.
 get_findings_filter(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/findingsfilters/", aws_util:encode_uri(Id), ""],
@@ -4099,13 +4585,7 @@ get_findings_filter(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_findings_publication_configuration(map()) ->
     {ok, get_findings_publication_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_findings_publication_configuration_errors(), tuple()}.
 get_findings_publication_configuration(Client)
   when is_map(Client) ->
     get_findings_publication_configuration(Client, #{}, #{}).
@@ -4113,13 +4593,7 @@ get_findings_publication_configuration(Client)
 -spec get_findings_publication_configuration(map(), map(), map()) ->
     {ok, get_findings_publication_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_findings_publication_configuration_errors(), tuple()}.
 get_findings_publication_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_findings_publication_configuration(Client, QueryMap, HeadersMap, []).
@@ -4127,13 +4601,7 @@ get_findings_publication_configuration(Client, QueryMap, HeadersMap)
 -spec get_findings_publication_configuration(map(), map(), map(), proplists:proplist()) ->
     {ok, get_findings_publication_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_findings_publication_configuration_errors(), tuple()}.
 get_findings_publication_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/findings-publication-configuration"],
@@ -4155,13 +4623,7 @@ get_findings_publication_configuration(Client, QueryMap, HeadersMap, Options0)
 -spec get_invitations_count(map()) ->
     {ok, get_invitations_count_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_invitations_count_errors(), tuple()}.
 get_invitations_count(Client)
   when is_map(Client) ->
     get_invitations_count(Client, #{}, #{}).
@@ -4169,13 +4631,7 @@ get_invitations_count(Client)
 -spec get_invitations_count(map(), map(), map()) ->
     {ok, get_invitations_count_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_invitations_count_errors(), tuple()}.
 get_invitations_count(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_invitations_count(Client, QueryMap, HeadersMap, []).
@@ -4183,13 +4639,7 @@ get_invitations_count(Client, QueryMap, HeadersMap)
 -spec get_invitations_count(map(), map(), map(), proplists:proplist()) ->
     {ok, get_invitations_count_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_invitations_count_errors(), tuple()}.
 get_invitations_count(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/invitations/count"],
@@ -4211,13 +4661,7 @@ get_invitations_count(Client, QueryMap, HeadersMap, Options0)
 -spec get_macie_session(map()) ->
     {ok, get_macie_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_macie_session_errors(), tuple()}.
 get_macie_session(Client)
   when is_map(Client) ->
     get_macie_session(Client, #{}, #{}).
@@ -4225,13 +4669,7 @@ get_macie_session(Client)
 -spec get_macie_session(map(), map(), map()) ->
     {ok, get_macie_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_macie_session_errors(), tuple()}.
 get_macie_session(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_macie_session(Client, QueryMap, HeadersMap, []).
@@ -4239,13 +4677,7 @@ get_macie_session(Client, QueryMap, HeadersMap)
 -spec get_macie_session(map(), map(), map(), proplists:proplist()) ->
     {ok, get_macie_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_macie_session_errors(), tuple()}.
 get_macie_session(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/macie"],
@@ -4269,13 +4701,7 @@ get_macie_session(Client, QueryMap, HeadersMap, Options0)
 -spec get_master_account(map()) ->
     {ok, get_master_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_master_account_errors(), tuple()}.
 get_master_account(Client)
   when is_map(Client) ->
     get_master_account(Client, #{}, #{}).
@@ -4283,13 +4709,7 @@ get_master_account(Client)
 -spec get_master_account(map(), map(), map()) ->
     {ok, get_master_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_master_account_errors(), tuple()}.
 get_master_account(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_master_account(Client, QueryMap, HeadersMap, []).
@@ -4297,13 +4717,7 @@ get_master_account(Client, QueryMap, HeadersMap)
 -spec get_master_account(map(), map(), map(), proplists:proplist()) ->
     {ok, get_master_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_master_account_errors(), tuple()}.
 get_master_account(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/master"],
@@ -4325,13 +4739,7 @@ get_master_account(Client, QueryMap, HeadersMap, Options0)
 -spec get_member(map(), binary() | list()) ->
     {ok, get_member_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_member_errors(), tuple()}.
 get_member(Client, Id)
   when is_map(Client) ->
     get_member(Client, Id, #{}, #{}).
@@ -4339,13 +4747,7 @@ get_member(Client, Id)
 -spec get_member(map(), binary() | list(), map(), map()) ->
     {ok, get_member_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_member_errors(), tuple()}.
 get_member(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_member(Client, Id, QueryMap, HeadersMap, []).
@@ -4353,13 +4755,7 @@ get_member(Client, Id, QueryMap, HeadersMap)
 -spec get_member(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_member_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_member_errors(), tuple()}.
 get_member(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/members/", aws_util:encode_uri(Id), ""],
@@ -4381,12 +4777,7 @@ get_member(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_resource_profile(map(), binary() | list()) ->
     {ok, get_resource_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_resource_profile_errors(), tuple()}.
 get_resource_profile(Client, ResourceArn)
   when is_map(Client) ->
     get_resource_profile(Client, ResourceArn, #{}, #{}).
@@ -4394,12 +4785,7 @@ get_resource_profile(Client, ResourceArn)
 -spec get_resource_profile(map(), binary() | list(), map(), map()) ->
     {ok, get_resource_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_resource_profile_errors(), tuple()}.
 get_resource_profile(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resource_profile(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -4407,12 +4793,7 @@ get_resource_profile(Client, ResourceArn, QueryMap, HeadersMap)
 -spec get_resource_profile(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_resource_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_resource_profile_errors(), tuple()}.
 get_resource_profile(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resource-profiles"],
@@ -4438,10 +4819,7 @@ get_resource_profile(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec get_reveal_configuration(map()) ->
     {ok, get_reveal_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_reveal_configuration_errors(), tuple()}.
 get_reveal_configuration(Client)
   when is_map(Client) ->
     get_reveal_configuration(Client, #{}, #{}).
@@ -4449,10 +4827,7 @@ get_reveal_configuration(Client)
 -spec get_reveal_configuration(map(), map(), map()) ->
     {ok, get_reveal_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_reveal_configuration_errors(), tuple()}.
 get_reveal_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_reveal_configuration(Client, QueryMap, HeadersMap, []).
@@ -4460,10 +4835,7 @@ get_reveal_configuration(Client, QueryMap, HeadersMap)
 -spec get_reveal_configuration(map(), map(), map(), proplists:proplist()) ->
     {ok, get_reveal_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_reveal_configuration_errors(), tuple()}.
 get_reveal_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/reveal-configuration"],
@@ -4484,12 +4856,7 @@ get_reveal_configuration(Client, QueryMap, HeadersMap, Options0)
 -spec get_sensitive_data_occurrences(map(), binary() | list()) ->
     {ok, get_sensitive_data_occurrences_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, get_sensitive_data_occurrences_errors(), tuple()}.
 get_sensitive_data_occurrences(Client, FindingId)
   when is_map(Client) ->
     get_sensitive_data_occurrences(Client, FindingId, #{}, #{}).
@@ -4497,12 +4864,7 @@ get_sensitive_data_occurrences(Client, FindingId)
 -spec get_sensitive_data_occurrences(map(), binary() | list(), map(), map()) ->
     {ok, get_sensitive_data_occurrences_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, get_sensitive_data_occurrences_errors(), tuple()}.
 get_sensitive_data_occurrences(Client, FindingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sensitive_data_occurrences(Client, FindingId, QueryMap, HeadersMap, []).
@@ -4510,12 +4872,7 @@ get_sensitive_data_occurrences(Client, FindingId, QueryMap, HeadersMap)
 -spec get_sensitive_data_occurrences(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sensitive_data_occurrences_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, get_sensitive_data_occurrences_errors(), tuple()}.
 get_sensitive_data_occurrences(Client, FindingId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/findings/", aws_util:encode_uri(FindingId), "/reveal"],
@@ -4537,10 +4894,7 @@ get_sensitive_data_occurrences(Client, FindingId, QueryMap, HeadersMap, Options0
 -spec get_sensitive_data_occurrences_availability(map(), binary() | list()) ->
     {ok, get_sensitive_data_occurrences_availability_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_sensitive_data_occurrences_availability_errors(), tuple()}.
 get_sensitive_data_occurrences_availability(Client, FindingId)
   when is_map(Client) ->
     get_sensitive_data_occurrences_availability(Client, FindingId, #{}, #{}).
@@ -4548,10 +4902,7 @@ get_sensitive_data_occurrences_availability(Client, FindingId)
 -spec get_sensitive_data_occurrences_availability(map(), binary() | list(), map(), map()) ->
     {ok, get_sensitive_data_occurrences_availability_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_sensitive_data_occurrences_availability_errors(), tuple()}.
 get_sensitive_data_occurrences_availability(Client, FindingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sensitive_data_occurrences_availability(Client, FindingId, QueryMap, HeadersMap, []).
@@ -4559,10 +4910,7 @@ get_sensitive_data_occurrences_availability(Client, FindingId, QueryMap, Headers
 -spec get_sensitive_data_occurrences_availability(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sensitive_data_occurrences_availability_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_sensitive_data_occurrences_availability_errors(), tuple()}.
 get_sensitive_data_occurrences_availability(Client, FindingId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/findings/", aws_util:encode_uri(FindingId), "/reveal/availability"],
@@ -4584,11 +4932,7 @@ get_sensitive_data_occurrences_availability(Client, FindingId, QueryMap, Headers
 -spec get_sensitivity_inspection_template(map(), binary() | list()) ->
     {ok, get_sensitivity_inspection_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sensitivity_inspection_template_errors(), tuple()}.
 get_sensitivity_inspection_template(Client, Id)
   when is_map(Client) ->
     get_sensitivity_inspection_template(Client, Id, #{}, #{}).
@@ -4596,11 +4940,7 @@ get_sensitivity_inspection_template(Client, Id)
 -spec get_sensitivity_inspection_template(map(), binary() | list(), map(), map()) ->
     {ok, get_sensitivity_inspection_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sensitivity_inspection_template_errors(), tuple()}.
 get_sensitivity_inspection_template(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sensitivity_inspection_template(Client, Id, QueryMap, HeadersMap, []).
@@ -4608,11 +4948,7 @@ get_sensitivity_inspection_template(Client, Id, QueryMap, HeadersMap)
 -spec get_sensitivity_inspection_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sensitivity_inspection_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sensitivity_inspection_template_errors(), tuple()}.
 get_sensitivity_inspection_template(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/templates/sensitivity-inspections/", aws_util:encode_uri(Id), ""],
@@ -4634,26 +4970,14 @@ get_sensitivity_inspection_template(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_usage_statistics(map(), get_usage_statistics_request()) ->
     {ok, get_usage_statistics_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_usage_statistics_errors(), tuple()}.
 get_usage_statistics(Client, Input) ->
     get_usage_statistics(Client, Input, []).
 
 -spec get_usage_statistics(map(), get_usage_statistics_request(), proplists:proplist()) ->
     {ok, get_usage_statistics_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_usage_statistics_errors(), tuple()}.
 get_usage_statistics(Client, Input0, Options0) ->
     Method = post,
     Path = ["/usage/statistics"],
@@ -4680,13 +5004,7 @@ get_usage_statistics(Client, Input0, Options0) ->
 -spec get_usage_totals(map()) ->
     {ok, get_usage_totals_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_usage_totals_errors(), tuple()}.
 get_usage_totals(Client)
   when is_map(Client) ->
     get_usage_totals(Client, #{}, #{}).
@@ -4694,13 +5012,7 @@ get_usage_totals(Client)
 -spec get_usage_totals(map(), map(), map()) ->
     {ok, get_usage_totals_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_usage_totals_errors(), tuple()}.
 get_usage_totals(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_usage_totals(Client, QueryMap, HeadersMap, []).
@@ -4708,13 +5020,7 @@ get_usage_totals(Client, QueryMap, HeadersMap)
 -spec get_usage_totals(map(), map(), map(), proplists:proplist()) ->
     {ok, get_usage_totals_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_usage_totals_errors(), tuple()}.
 get_usage_totals(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/usage"],
@@ -4740,10 +5046,7 @@ get_usage_totals(Client, QueryMap, HeadersMap, Options0)
 -spec list_allow_lists(map()) ->
     {ok, list_allow_lists_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_allow_lists_errors(), tuple()}.
 list_allow_lists(Client)
   when is_map(Client) ->
     list_allow_lists(Client, #{}, #{}).
@@ -4751,10 +5054,7 @@ list_allow_lists(Client)
 -spec list_allow_lists(map(), map(), map()) ->
     {ok, list_allow_lists_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_allow_lists_errors(), tuple()}.
 list_allow_lists(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_allow_lists(Client, QueryMap, HeadersMap, []).
@@ -4762,10 +5062,7 @@ list_allow_lists(Client, QueryMap, HeadersMap)
 -spec list_allow_lists(map(), map(), map(), proplists:proplist()) ->
     {ok, list_allow_lists_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_allow_lists_errors(), tuple()}.
 list_allow_lists(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/allow-lists"],
@@ -4792,26 +5089,14 @@ list_allow_lists(Client, QueryMap, HeadersMap, Options0)
 -spec list_classification_jobs(map(), list_classification_jobs_request()) ->
     {ok, list_classification_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_classification_jobs_errors(), tuple()}.
 list_classification_jobs(Client, Input) ->
     list_classification_jobs(Client, Input, []).
 
 -spec list_classification_jobs(map(), list_classification_jobs_request(), proplists:proplist()) ->
     {ok, list_classification_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_classification_jobs_errors(), tuple()}.
 list_classification_jobs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/jobs/list"],
@@ -4839,10 +5124,7 @@ list_classification_jobs(Client, Input0, Options0) ->
 -spec list_classification_scopes(map()) ->
     {ok, list_classification_scopes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_classification_scopes_errors(), tuple()}.
 list_classification_scopes(Client)
   when is_map(Client) ->
     list_classification_scopes(Client, #{}, #{}).
@@ -4850,10 +5132,7 @@ list_classification_scopes(Client)
 -spec list_classification_scopes(map(), map(), map()) ->
     {ok, list_classification_scopes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_classification_scopes_errors(), tuple()}.
 list_classification_scopes(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_classification_scopes(Client, QueryMap, HeadersMap, []).
@@ -4861,10 +5140,7 @@ list_classification_scopes(Client, QueryMap, HeadersMap)
 -spec list_classification_scopes(map(), map(), map(), proplists:proplist()) ->
     {ok, list_classification_scopes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_classification_scopes_errors(), tuple()}.
 list_classification_scopes(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/classification-scopes"],
@@ -4891,26 +5167,14 @@ list_classification_scopes(Client, QueryMap, HeadersMap, Options0)
 -spec list_custom_data_identifiers(map(), list_custom_data_identifiers_request()) ->
     {ok, list_custom_data_identifiers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_custom_data_identifiers_errors(), tuple()}.
 list_custom_data_identifiers(Client, Input) ->
     list_custom_data_identifiers(Client, Input, []).
 
 -spec list_custom_data_identifiers(map(), list_custom_data_identifiers_request(), proplists:proplist()) ->
     {ok, list_custom_data_identifiers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_custom_data_identifiers_errors(), tuple()}.
 list_custom_data_identifiers(Client, Input0, Options0) ->
     Method = post,
     Path = ["/custom-data-identifiers/list"],
@@ -4937,26 +5201,14 @@ list_custom_data_identifiers(Client, Input0, Options0) ->
 -spec list_findings(map(), list_findings_request()) ->
     {ok, list_findings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_findings_errors(), tuple()}.
 list_findings(Client, Input) ->
     list_findings(Client, Input, []).
 
 -spec list_findings(map(), list_findings_request(), proplists:proplist()) ->
     {ok, list_findings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_findings_errors(), tuple()}.
 list_findings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/findings"],
@@ -4984,13 +5236,7 @@ list_findings(Client, Input0, Options0) ->
 -spec list_findings_filters(map()) ->
     {ok, list_findings_filters_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_findings_filters_errors(), tuple()}.
 list_findings_filters(Client)
   when is_map(Client) ->
     list_findings_filters(Client, #{}, #{}).
@@ -4998,13 +5244,7 @@ list_findings_filters(Client)
 -spec list_findings_filters(map(), map(), map()) ->
     {ok, list_findings_filters_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_findings_filters_errors(), tuple()}.
 list_findings_filters(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_findings_filters(Client, QueryMap, HeadersMap, []).
@@ -5012,13 +5252,7 @@ list_findings_filters(Client, QueryMap, HeadersMap)
 -spec list_findings_filters(map(), map(), map(), proplists:proplist()) ->
     {ok, list_findings_filters_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_findings_filters_errors(), tuple()}.
 list_findings_filters(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/findingsfilters"],
@@ -5045,13 +5279,7 @@ list_findings_filters(Client, QueryMap, HeadersMap, Options0)
 -spec list_invitations(map()) ->
     {ok, list_invitations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_invitations_errors(), tuple()}.
 list_invitations(Client)
   when is_map(Client) ->
     list_invitations(Client, #{}, #{}).
@@ -5059,13 +5287,7 @@ list_invitations(Client)
 -spec list_invitations(map(), map(), map()) ->
     {ok, list_invitations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_invitations_errors(), tuple()}.
 list_invitations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_invitations(Client, QueryMap, HeadersMap, []).
@@ -5073,13 +5295,7 @@ list_invitations(Client, QueryMap, HeadersMap)
 -spec list_invitations(map(), map(), map(), proplists:proplist()) ->
     {ok, list_invitations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_invitations_errors(), tuple()}.
 list_invitations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/invitations"],
@@ -5139,13 +5355,7 @@ list_managed_data_identifiers(Client, Input0, Options0) ->
 -spec list_members(map()) ->
     {ok, list_members_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_members_errors(), tuple()}.
 list_members(Client)
   when is_map(Client) ->
     list_members(Client, #{}, #{}).
@@ -5153,13 +5363,7 @@ list_members(Client)
 -spec list_members(map(), map(), map()) ->
     {ok, list_members_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_members_errors(), tuple()}.
 list_members(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_members(Client, QueryMap, HeadersMap, []).
@@ -5167,13 +5371,7 @@ list_members(Client, QueryMap, HeadersMap)
 -spec list_members(map(), map(), map(), proplists:proplist()) ->
     {ok, list_members_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_members_errors(), tuple()}.
 list_members(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/members"],
@@ -5201,13 +5399,7 @@ list_members(Client, QueryMap, HeadersMap, Options0)
 -spec list_organization_admin_accounts(map()) ->
     {ok, list_organization_admin_accounts_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_organization_admin_accounts_errors(), tuple()}.
 list_organization_admin_accounts(Client)
   when is_map(Client) ->
     list_organization_admin_accounts(Client, #{}, #{}).
@@ -5215,13 +5407,7 @@ list_organization_admin_accounts(Client)
 -spec list_organization_admin_accounts(map(), map(), map()) ->
     {ok, list_organization_admin_accounts_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_organization_admin_accounts_errors(), tuple()}.
 list_organization_admin_accounts(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_organization_admin_accounts(Client, QueryMap, HeadersMap, []).
@@ -5229,13 +5415,7 @@ list_organization_admin_accounts(Client, QueryMap, HeadersMap)
 -spec list_organization_admin_accounts(map(), map(), map(), proplists:proplist()) ->
     {ok, list_organization_admin_accounts_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_organization_admin_accounts_errors(), tuple()}.
 list_organization_admin_accounts(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/admin"],
@@ -5262,11 +5442,7 @@ list_organization_admin_accounts(Client, QueryMap, HeadersMap, Options0)
 -spec list_resource_profile_artifacts(map(), binary() | list()) ->
     {ok, list_resource_profile_artifacts_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_resource_profile_artifacts_errors(), tuple()}.
 list_resource_profile_artifacts(Client, ResourceArn)
   when is_map(Client) ->
     list_resource_profile_artifacts(Client, ResourceArn, #{}, #{}).
@@ -5274,11 +5450,7 @@ list_resource_profile_artifacts(Client, ResourceArn)
 -spec list_resource_profile_artifacts(map(), binary() | list(), map(), map()) ->
     {ok, list_resource_profile_artifacts_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_resource_profile_artifacts_errors(), tuple()}.
 list_resource_profile_artifacts(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_resource_profile_artifacts(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -5286,11 +5458,7 @@ list_resource_profile_artifacts(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_resource_profile_artifacts(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_resource_profile_artifacts_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_resource_profile_artifacts_errors(), tuple()}.
 list_resource_profile_artifacts(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resource-profiles/artifacts"],
@@ -5317,12 +5485,7 @@ list_resource_profile_artifacts(Client, ResourceArn, QueryMap, HeadersMap, Optio
 -spec list_resource_profile_detections(map(), binary() | list()) ->
     {ok, list_resource_profile_detections_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_resource_profile_detections_errors(), tuple()}.
 list_resource_profile_detections(Client, ResourceArn)
   when is_map(Client) ->
     list_resource_profile_detections(Client, ResourceArn, #{}, #{}).
@@ -5330,12 +5493,7 @@ list_resource_profile_detections(Client, ResourceArn)
 -spec list_resource_profile_detections(map(), binary() | list(), map(), map()) ->
     {ok, list_resource_profile_detections_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_resource_profile_detections_errors(), tuple()}.
 list_resource_profile_detections(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_resource_profile_detections(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -5343,12 +5501,7 @@ list_resource_profile_detections(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_resource_profile_detections(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_resource_profile_detections_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_resource_profile_detections_errors(), tuple()}.
 list_resource_profile_detections(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resource-profiles/detections"],
@@ -5376,11 +5529,7 @@ list_resource_profile_detections(Client, ResourceArn, QueryMap, HeadersMap, Opti
 -spec list_sensitivity_inspection_templates(map()) ->
     {ok, list_sensitivity_inspection_templates_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_sensitivity_inspection_templates_errors(), tuple()}.
 list_sensitivity_inspection_templates(Client)
   when is_map(Client) ->
     list_sensitivity_inspection_templates(Client, #{}, #{}).
@@ -5388,11 +5537,7 @@ list_sensitivity_inspection_templates(Client)
 -spec list_sensitivity_inspection_templates(map(), map(), map()) ->
     {ok, list_sensitivity_inspection_templates_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_sensitivity_inspection_templates_errors(), tuple()}.
 list_sensitivity_inspection_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sensitivity_inspection_templates(Client, QueryMap, HeadersMap, []).
@@ -5400,11 +5545,7 @@ list_sensitivity_inspection_templates(Client, QueryMap, HeadersMap)
 -spec list_sensitivity_inspection_templates(map(), map(), map(), proplists:proplist()) ->
     {ok, list_sensitivity_inspection_templates_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_sensitivity_inspection_templates_errors(), tuple()}.
 list_sensitivity_inspection_templates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/templates/sensitivity-inspections"],
@@ -5466,26 +5607,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec put_classification_export_configuration(map(), put_classification_export_configuration_request()) ->
     {ok, put_classification_export_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_classification_export_configuration_errors(), tuple()}.
 put_classification_export_configuration(Client, Input) ->
     put_classification_export_configuration(Client, Input, []).
 
 -spec put_classification_export_configuration(map(), put_classification_export_configuration_request(), proplists:proplist()) ->
     {ok, put_classification_export_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_classification_export_configuration_errors(), tuple()}.
 put_classification_export_configuration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/classification-export-configuration"],
@@ -5513,26 +5642,14 @@ put_classification_export_configuration(Client, Input0, Options0) ->
 -spec put_findings_publication_configuration(map(), put_findings_publication_configuration_request()) ->
     {ok, put_findings_publication_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_findings_publication_configuration_errors(), tuple()}.
 put_findings_publication_configuration(Client, Input) ->
     put_findings_publication_configuration(Client, Input, []).
 
 -spec put_findings_publication_configuration(map(), put_findings_publication_configuration_request(), proplists:proplist()) ->
     {ok, put_findings_publication_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_findings_publication_configuration_errors(), tuple()}.
 put_findings_publication_configuration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/findings-publication-configuration"],
@@ -5560,26 +5677,14 @@ put_findings_publication_configuration(Client, Input0, Options0) ->
 -spec search_resources(map(), search_resources_request()) ->
     {ok, search_resources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_resources_errors(), tuple()}.
 search_resources(Client, Input) ->
     search_resources(Client, Input, []).
 
 -spec search_resources(map(), search_resources_request(), proplists:proplist()) ->
     {ok, search_resources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_resources_errors(), tuple()}.
 search_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/datasources/search-resources"],
@@ -5639,26 +5744,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec test_custom_data_identifier(map(), test_custom_data_identifier_request()) ->
     {ok, test_custom_data_identifier_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, test_custom_data_identifier_errors(), tuple()}.
 test_custom_data_identifier(Client, Input) ->
     test_custom_data_identifier(Client, Input, []).
 
 -spec test_custom_data_identifier(map(), test_custom_data_identifier_request(), proplists:proplist()) ->
     {ok, test_custom_data_identifier_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, test_custom_data_identifier_errors(), tuple()}.
 test_custom_data_identifier(Client, Input0, Options0) ->
     Method = post,
     Path = ["/custom-data-identifiers/test"],
@@ -5719,22 +5812,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_allow_list(map(), binary() | list(), update_allow_list_request()) ->
     {ok, update_allow_list_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_allow_list_errors(), tuple()}.
 update_allow_list(Client, Id, Input) ->
     update_allow_list(Client, Id, Input, []).
 
 -spec update_allow_list(map(), binary() | list(), update_allow_list_request(), proplists:proplist()) ->
     {ok, update_allow_list_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_allow_list_errors(), tuple()}.
 update_allow_list(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/allow-lists/", aws_util:encode_uri(Id), ""],
@@ -5762,20 +5847,14 @@ update_allow_list(Client, Id, Input0, Options0) ->
 -spec update_automated_discovery_configuration(map(), update_automated_discovery_configuration_request()) ->
     {ok, update_automated_discovery_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_automated_discovery_configuration_errors(), tuple()}.
 update_automated_discovery_configuration(Client, Input) ->
     update_automated_discovery_configuration(Client, Input, []).
 
 -spec update_automated_discovery_configuration(map(), update_automated_discovery_configuration_request(), proplists:proplist()) ->
     {ok, update_automated_discovery_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_automated_discovery_configuration_errors(), tuple()}.
 update_automated_discovery_configuration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/automated-discovery/configuration"],
@@ -5802,26 +5881,14 @@ update_automated_discovery_configuration(Client, Input0, Options0) ->
 -spec update_classification_job(map(), binary() | list(), update_classification_job_request()) ->
     {ok, update_classification_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_classification_job_errors(), tuple()}.
 update_classification_job(Client, JobId, Input) ->
     update_classification_job(Client, JobId, Input, []).
 
 -spec update_classification_job(map(), binary() | list(), update_classification_job_request(), proplists:proplist()) ->
     {ok, update_classification_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_classification_job_errors(), tuple()}.
 update_classification_job(Client, JobId, Input0, Options0) ->
     Method = patch,
     Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
@@ -5848,22 +5915,14 @@ update_classification_job(Client, JobId, Input0, Options0) ->
 -spec update_classification_scope(map(), binary() | list(), update_classification_scope_request()) ->
     {ok, update_classification_scope_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_classification_scope_errors(), tuple()}.
 update_classification_scope(Client, Id, Input) ->
     update_classification_scope(Client, Id, Input, []).
 
 -spec update_classification_scope(map(), binary() | list(), update_classification_scope_request(), proplists:proplist()) ->
     {ok, update_classification_scope_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_classification_scope_errors(), tuple()}.
 update_classification_scope(Client, Id, Input0, Options0) ->
     Method = patch,
     Path = ["/classification-scopes/", aws_util:encode_uri(Id), ""],
@@ -5890,26 +5949,14 @@ update_classification_scope(Client, Id, Input0, Options0) ->
 -spec update_findings_filter(map(), binary() | list(), update_findings_filter_request()) ->
     {ok, update_findings_filter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_findings_filter_errors(), tuple()}.
 update_findings_filter(Client, Id, Input) ->
     update_findings_filter(Client, Id, Input, []).
 
 -spec update_findings_filter(map(), binary() | list(), update_findings_filter_request(), proplists:proplist()) ->
     {ok, update_findings_filter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_findings_filter_errors(), tuple()}.
 update_findings_filter(Client, Id, Input0, Options0) ->
     Method = patch,
     Path = ["/findingsfilters/", aws_util:encode_uri(Id), ""],
@@ -5937,26 +5984,14 @@ update_findings_filter(Client, Id, Input0, Options0) ->
 -spec update_macie_session(map(), update_macie_session_request()) ->
     {ok, update_macie_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_macie_session_errors(), tuple()}.
 update_macie_session(Client, Input) ->
     update_macie_session(Client, Input, []).
 
 -spec update_macie_session(map(), update_macie_session_request(), proplists:proplist()) ->
     {ok, update_macie_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_macie_session_errors(), tuple()}.
 update_macie_session(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/macie"],
@@ -5984,26 +6019,14 @@ update_macie_session(Client, Input0, Options0) ->
 -spec update_member_session(map(), binary() | list(), update_member_session_request()) ->
     {ok, update_member_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_member_session_errors(), tuple()}.
 update_member_session(Client, Id, Input) ->
     update_member_session(Client, Id, Input, []).
 
 -spec update_member_session(map(), binary() | list(), update_member_session_request(), proplists:proplist()) ->
     {ok, update_member_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_member_session_errors(), tuple()}.
 update_member_session(Client, Id, Input0, Options0) ->
     Method = patch,
     Path = ["/macie/members/", aws_util:encode_uri(Id), ""],
@@ -6031,26 +6054,14 @@ update_member_session(Client, Id, Input0, Options0) ->
 -spec update_organization_configuration(map(), update_organization_configuration_request()) ->
     {ok, update_organization_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_organization_configuration_errors(), tuple()}.
 update_organization_configuration(Client, Input) ->
     update_organization_configuration(Client, Input, []).
 
 -spec update_organization_configuration(map(), update_organization_configuration_request(), proplists:proplist()) ->
     {ok, update_organization_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_organization_configuration_errors(), tuple()}.
 update_organization_configuration(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/admin/configuration"],
@@ -6077,24 +6088,14 @@ update_organization_configuration(Client, Input0, Options0) ->
 -spec update_resource_profile(map(), update_resource_profile_request()) ->
     {ok, update_resource_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_resource_profile_errors(), tuple()}.
 update_resource_profile(Client, Input) ->
     update_resource_profile(Client, Input, []).
 
 -spec update_resource_profile(map(), update_resource_profile_request(), proplists:proplist()) ->
     {ok, update_resource_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_resource_profile_errors(), tuple()}.
 update_resource_profile(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/resource-profiles"],
@@ -6122,24 +6123,14 @@ update_resource_profile(Client, Input0, Options0) ->
 -spec update_resource_profile_detections(map(), update_resource_profile_detections_request()) ->
     {ok, update_resource_profile_detections_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_resource_profile_detections_errors(), tuple()}.
 update_resource_profile_detections(Client, Input) ->
     update_resource_profile_detections(Client, Input, []).
 
 -spec update_resource_profile_detections(map(), update_resource_profile_detections_request(), proplists:proplist()) ->
     {ok, update_resource_profile_detections_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_resource_profile_detections_errors(), tuple()}.
 update_resource_profile_detections(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/resource-profiles/detections"],
@@ -6168,20 +6159,14 @@ update_resource_profile_detections(Client, Input0, Options0) ->
 -spec update_reveal_configuration(map(), update_reveal_configuration_request()) ->
     {ok, update_reveal_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_reveal_configuration_errors(), tuple()}.
 update_reveal_configuration(Client, Input) ->
     update_reveal_configuration(Client, Input, []).
 
 -spec update_reveal_configuration(map(), update_reveal_configuration_request(), proplists:proplist()) ->
     {ok, update_reveal_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_reveal_configuration_errors(), tuple()}.
 update_reveal_configuration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/reveal-configuration"],
@@ -6209,22 +6194,14 @@ update_reveal_configuration(Client, Input0, Options0) ->
 -spec update_sensitivity_inspection_template(map(), binary() | list(), update_sensitivity_inspection_template_request()) ->
     {ok, update_sensitivity_inspection_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_sensitivity_inspection_template_errors(), tuple()}.
 update_sensitivity_inspection_template(Client, Id, Input) ->
     update_sensitivity_inspection_template(Client, Id, Input, []).
 
 -spec update_sensitivity_inspection_template(map(), binary() | list(), update_sensitivity_inspection_template_request(), proplists:proplist()) ->
     {ok, update_sensitivity_inspection_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_sensitivity_inspection_template_errors(), tuple()}.
 update_sensitivity_inspection_template(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/templates/sensitivity-inspections/", aws_util:encode_uri(Id), ""],

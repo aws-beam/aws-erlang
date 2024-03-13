@@ -3951,6 +3951,1357 @@
 %% }
 -type register_container_image_result() :: #{binary() => any()}.
 
+-type allocate_static_ip_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type attach_certificate_to_distribution_errors() ::
+    operation_failure_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type attach_disk_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type attach_instances_to_load_balancer_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type attach_load_balancer_tls_certificate_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type attach_static_ip_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type close_instance_public_ports_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type copy_snapshot_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type create_bucket_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    unauthenticated_exception().
+
+-type create_bucket_access_key_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type create_certificate_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type create_cloud_formation_stack_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type create_contact_method_errors() ::
+    operation_failure_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type create_container_service_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type create_container_service_deployment_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type create_container_service_registry_login_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type create_disk_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type create_disk_from_snapshot_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type create_disk_snapshot_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type create_distribution_errors() ::
+    operation_failure_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type create_domain_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type create_domain_entry_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type create_g_ui_session_access_details_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type create_instance_snapshot_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type create_instances_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type create_instances_from_snapshot_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type create_key_pair_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type create_load_balancer_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type create_load_balancer_tls_certificate_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type create_relational_database_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type create_relational_database_from_snapshot_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type create_relational_database_snapshot_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type delete_alarm_errors() ::
+    operation_failure_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type delete_auto_snapshot_errors() ::
+    operation_failure_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type delete_bucket_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type delete_bucket_access_key_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type delete_certificate_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type delete_contact_method_errors() ::
+    operation_failure_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type delete_container_image_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type delete_container_service_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type delete_disk_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type delete_disk_snapshot_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type delete_distribution_errors() ::
+    operation_failure_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type delete_domain_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type delete_domain_entry_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type delete_instance_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type delete_instance_snapshot_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type delete_key_pair_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type delete_known_host_keys_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type delete_load_balancer_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type delete_load_balancer_tls_certificate_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type delete_relational_database_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type delete_relational_database_snapshot_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type detach_certificate_from_distribution_errors() ::
+    operation_failure_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type detach_disk_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type detach_instances_from_load_balancer_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type detach_static_ip_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type disable_add_on_errors() ::
+    operation_failure_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type download_default_key_pair_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type enable_add_on_errors() ::
+    operation_failure_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type export_snapshot_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_active_names_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_alarms_errors() ::
+    operation_failure_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_auto_snapshots_errors() ::
+    operation_failure_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_blueprints_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_bucket_access_keys_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_bucket_bundles_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    unauthenticated_exception().
+
+-type get_bucket_metric_data_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_buckets_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_bundles_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_certificates_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_cloud_formation_stack_records_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_contact_methods_errors() ::
+    operation_failure_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_container_api_metadata_errors() ::
+    access_denied_exception() | 
+    service_exception() | 
+    unauthenticated_exception().
+
+-type get_container_images_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_container_log_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_container_service_deployments_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_container_service_metric_data_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_container_service_powers_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_container_services_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_cost_estimate_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_disk_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_disk_snapshot_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_disk_snapshots_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_disks_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_distribution_bundles_errors() ::
+    operation_failure_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_distribution_latest_cache_reset_errors() ::
+    operation_failure_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_distribution_metric_data_errors() ::
+    operation_failure_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_distributions_errors() ::
+    operation_failure_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_domain_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_domains_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_export_snapshot_records_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_instance_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_instance_access_details_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_instance_metric_data_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_instance_port_states_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_instance_snapshot_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_instance_snapshots_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_instance_state_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_instances_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_key_pair_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_key_pairs_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_load_balancer_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_load_balancer_metric_data_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_load_balancer_tls_certificates_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_load_balancer_tls_policies_errors() ::
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    unauthenticated_exception().
+
+-type get_load_balancers_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_operation_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_operations_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_operations_for_resource_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_regions_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_relational_database_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_relational_database_blueprints_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_relational_database_bundles_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_relational_database_events_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_relational_database_log_events_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_relational_database_log_streams_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_relational_database_master_user_password_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_relational_database_metric_data_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_relational_database_parameters_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_relational_database_snapshot_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_relational_database_snapshots_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_relational_databases_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_setup_history_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_static_ip_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type get_static_ips_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type import_key_pair_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type is_vpc_peered_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type open_instance_public_ports_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type peer_vpc_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type put_alarm_errors() ::
+    operation_failure_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type put_instance_public_ports_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type reboot_instance_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type reboot_relational_database_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type register_container_image_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type release_static_ip_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type reset_distribution_cache_errors() ::
+    operation_failure_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type send_contact_method_verification_errors() ::
+    operation_failure_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type set_ip_address_type_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type set_resource_access_for_bucket_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type setup_instance_https_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type start_g_ui_session_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type start_instance_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type start_relational_database_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type stop_g_ui_session_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type stop_instance_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type stop_relational_database_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type tag_resource_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type test_alarm_errors() ::
+    operation_failure_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type unpeer_vpc_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type untag_resource_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type update_bucket_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type update_bucket_bundle_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type update_container_service_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type update_distribution_errors() ::
+    operation_failure_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type update_distribution_bundle_errors() ::
+    operation_failure_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type update_domain_entry_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type update_instance_metadata_options_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type update_load_balancer_attribute_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type update_relational_database_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
+
+-type update_relational_database_parameters_errors() ::
+    operation_failure_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    unauthenticated_exception().
 
 %%====================================================================
 %% API
@@ -3960,13 +5311,7 @@
 -spec allocate_static_ip(map(), allocate_static_ip_request()) ->
     {ok, allocate_static_ip_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, allocate_static_ip_errors(), tuple()}.
 allocate_static_ip(Client, Input)
   when is_map(Client), is_map(Input) ->
     allocate_static_ip(Client, Input, []).
@@ -3974,13 +5319,7 @@ allocate_static_ip(Client, Input)
 -spec allocate_static_ip(map(), allocate_static_ip_request(), proplists:proplist()) ->
     {ok, allocate_static_ip_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, allocate_static_ip_errors(), tuple()}.
 allocate_static_ip(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AllocateStaticIp">>, Input, Options).
@@ -4008,12 +5347,7 @@ allocate_static_ip(Client, Input, Options)
 -spec attach_certificate_to_distribution(map(), attach_certificate_to_distribution_request()) ->
     {ok, attach_certificate_to_distribution_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, attach_certificate_to_distribution_errors(), tuple()}.
 attach_certificate_to_distribution(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_certificate_to_distribution(Client, Input, []).
@@ -4021,12 +5355,7 @@ attach_certificate_to_distribution(Client, Input)
 -spec attach_certificate_to_distribution(map(), attach_certificate_to_distribution_request(), proplists:proplist()) ->
     {ok, attach_certificate_to_distribution_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, attach_certificate_to_distribution_errors(), tuple()}.
 attach_certificate_to_distribution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachCertificateToDistribution">>, Input, Options).
@@ -4044,13 +5373,7 @@ attach_certificate_to_distribution(Client, Input, Options)
 -spec attach_disk(map(), attach_disk_request()) ->
     {ok, attach_disk_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, attach_disk_errors(), tuple()}.
 attach_disk(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_disk(Client, Input, []).
@@ -4058,13 +5381,7 @@ attach_disk(Client, Input)
 -spec attach_disk(map(), attach_disk_request(), proplists:proplist()) ->
     {ok, attach_disk_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, attach_disk_errors(), tuple()}.
 attach_disk(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachDisk">>, Input, Options).
@@ -4085,13 +5402,7 @@ attach_disk(Client, Input, Options)
 -spec attach_instances_to_load_balancer(map(), attach_instances_to_load_balancer_request()) ->
     {ok, attach_instances_to_load_balancer_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, attach_instances_to_load_balancer_errors(), tuple()}.
 attach_instances_to_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_instances_to_load_balancer(Client, Input, []).
@@ -4099,13 +5410,7 @@ attach_instances_to_load_balancer(Client, Input)
 -spec attach_instances_to_load_balancer(map(), attach_instances_to_load_balancer_request(), proplists:proplist()) ->
     {ok, attach_instances_to_load_balancer_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, attach_instances_to_load_balancer_errors(), tuple()}.
 attach_instances_to_load_balancer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachInstancesToLoadBalancer">>, Input, Options).
@@ -4134,13 +5439,7 @@ attach_instances_to_load_balancer(Client, Input, Options)
 -spec attach_load_balancer_tls_certificate(map(), attach_load_balancer_tls_certificate_request()) ->
     {ok, attach_load_balancer_tls_certificate_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, attach_load_balancer_tls_certificate_errors(), tuple()}.
 attach_load_balancer_tls_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_load_balancer_tls_certificate(Client, Input, []).
@@ -4148,13 +5447,7 @@ attach_load_balancer_tls_certificate(Client, Input)
 -spec attach_load_balancer_tls_certificate(map(), attach_load_balancer_tls_certificate_request(), proplists:proplist()) ->
     {ok, attach_load_balancer_tls_certificate_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, attach_load_balancer_tls_certificate_errors(), tuple()}.
 attach_load_balancer_tls_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachLoadBalancerTlsCertificate">>, Input, Options).
@@ -4163,13 +5456,7 @@ attach_load_balancer_tls_certificate(Client, Input, Options)
 -spec attach_static_ip(map(), attach_static_ip_request()) ->
     {ok, attach_static_ip_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, attach_static_ip_errors(), tuple()}.
 attach_static_ip(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_static_ip(Client, Input, []).
@@ -4177,13 +5464,7 @@ attach_static_ip(Client, Input)
 -spec attach_static_ip(map(), attach_static_ip_request(), proplists:proplist()) ->
     {ok, attach_static_ip_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, attach_static_ip_errors(), tuple()}.
 attach_static_ip(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachStaticIp">>, Input, Options).
@@ -4199,13 +5480,7 @@ attach_static_ip(Client, Input, Options)
 -spec close_instance_public_ports(map(), close_instance_public_ports_request()) ->
     {ok, close_instance_public_ports_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, close_instance_public_ports_errors(), tuple()}.
 close_instance_public_ports(Client, Input)
   when is_map(Client), is_map(Input) ->
     close_instance_public_ports(Client, Input, []).
@@ -4213,13 +5488,7 @@ close_instance_public_ports(Client, Input)
 -spec close_instance_public_ports(map(), close_instance_public_ports_request(), proplists:proplist()) ->
     {ok, close_instance_public_ports_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, close_instance_public_ports_errors(), tuple()}.
 close_instance_public_ports(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CloseInstancePublicPorts">>, Input, Options).
@@ -4248,13 +5517,7 @@ close_instance_public_ports(Client, Input, Options)
 -spec copy_snapshot(map(), copy_snapshot_request()) ->
     {ok, copy_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, copy_snapshot_errors(), tuple()}.
 copy_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_snapshot(Client, Input, []).
@@ -4262,13 +5525,7 @@ copy_snapshot(Client, Input)
 -spec copy_snapshot(map(), copy_snapshot_request(), proplists:proplist()) ->
     {ok, copy_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, copy_snapshot_errors(), tuple()}.
 copy_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopySnapshot">>, Input, Options).
@@ -4286,10 +5543,7 @@ copy_snapshot(Client, Input, Options)
 -spec create_bucket(map(), create_bucket_request()) ->
     {ok, create_bucket_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_bucket_errors(), tuple()}.
 create_bucket(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_bucket(Client, Input, []).
@@ -4297,10 +5551,7 @@ create_bucket(Client, Input)
 -spec create_bucket(map(), create_bucket_request(), proplists:proplist()) ->
     {ok, create_bucket_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_bucket_errors(), tuple()}.
 create_bucket(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBucket">>, Input, Options).
@@ -4332,11 +5583,7 @@ create_bucket(Client, Input, Options)
 -spec create_bucket_access_key(map(), create_bucket_access_key_request()) ->
     {ok, create_bucket_access_key_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_bucket_access_key_errors(), tuple()}.
 create_bucket_access_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_bucket_access_key(Client, Input, []).
@@ -4344,11 +5591,7 @@ create_bucket_access_key(Client, Input)
 -spec create_bucket_access_key(map(), create_bucket_access_key_request(), proplists:proplist()) ->
     {ok, create_bucket_access_key_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_bucket_access_key_errors(), tuple()}.
 create_bucket_access_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBucketAccessKey">>, Input, Options).
@@ -4376,11 +5619,7 @@ create_bucket_access_key(Client, Input, Options)
 -spec create_certificate(map(), create_certificate_request()) ->
     {ok, create_certificate_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_certificate_errors(), tuple()}.
 create_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_certificate(Client, Input, []).
@@ -4388,11 +5627,7 @@ create_certificate(Client, Input)
 -spec create_certificate(map(), create_certificate_request(), proplists:proplist()) ->
     {ok, create_certificate_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_certificate_errors(), tuple()}.
 create_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCertificate">>, Input, Options).
@@ -4415,13 +5650,7 @@ create_certificate(Client, Input, Options)
 -spec create_cloud_formation_stack(map(), create_cloud_formation_stack_request()) ->
     {ok, create_cloud_formation_stack_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_cloud_formation_stack_errors(), tuple()}.
 create_cloud_formation_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cloud_formation_stack(Client, Input, []).
@@ -4429,13 +5658,7 @@ create_cloud_formation_stack(Client, Input)
 -spec create_cloud_formation_stack(map(), create_cloud_formation_stack_request(), proplists:proplist()) ->
     {ok, create_cloud_formation_stack_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_cloud_formation_stack_errors(), tuple()}.
 create_cloud_formation_stack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCloudFormationStack">>, Input, Options).
@@ -4454,12 +5677,7 @@ create_cloud_formation_stack(Client, Input, Options)
 -spec create_contact_method(map(), create_contact_method_request()) ->
     {ok, create_contact_method_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_contact_method_errors(), tuple()}.
 create_contact_method(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_contact_method(Client, Input, []).
@@ -4467,12 +5685,7 @@ create_contact_method(Client, Input)
 -spec create_contact_method(map(), create_contact_method_request(), proplists:proplist()) ->
     {ok, create_contact_method_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_contact_method_errors(), tuple()}.
 create_contact_method(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateContactMethod">>, Input, Options).
@@ -4488,11 +5701,7 @@ create_contact_method(Client, Input, Options)
 -spec create_container_service(map(), create_container_service_request()) ->
     {ok, create_container_service_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_container_service_errors(), tuple()}.
 create_container_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_container_service(Client, Input, []).
@@ -4500,11 +5709,7 @@ create_container_service(Client, Input)
 -spec create_container_service(map(), create_container_service_request(), proplists:proplist()) ->
     {ok, create_container_service_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_container_service_errors(), tuple()}.
 create_container_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateContainerService">>, Input, Options).
@@ -4532,11 +5737,7 @@ create_container_service(Client, Input, Options)
 -spec create_container_service_deployment(map(), create_container_service_deployment_request()) ->
     {ok, create_container_service_deployment_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_container_service_deployment_errors(), tuple()}.
 create_container_service_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_container_service_deployment(Client, Input, []).
@@ -4544,11 +5745,7 @@ create_container_service_deployment(Client, Input)
 -spec create_container_service_deployment(map(), create_container_service_deployment_request(), proplists:proplist()) ->
     {ok, create_container_service_deployment_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_container_service_deployment_errors(), tuple()}.
 create_container_service_deployment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateContainerServiceDeployment">>, Input, Options).
@@ -4588,11 +5785,7 @@ create_container_service_deployment(Client, Input, Options)
 -spec create_container_service_registry_login(map(), create_container_service_registry_login_request()) ->
     {ok, create_container_service_registry_login_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_container_service_registry_login_errors(), tuple()}.
 create_container_service_registry_login(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_container_service_registry_login(Client, Input, []).
@@ -4600,11 +5793,7 @@ create_container_service_registry_login(Client, Input)
 -spec create_container_service_registry_login(map(), create_container_service_registry_login_request(), proplists:proplist()) ->
     {ok, create_container_service_registry_login_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_container_service_registry_login_errors(), tuple()}.
 create_container_service_registry_login(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateContainerServiceRegistryLogin">>, Input, Options).
@@ -4620,13 +5809,7 @@ create_container_service_registry_login(Client, Input, Options)
 -spec create_disk(map(), create_disk_request()) ->
     {ok, create_disk_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_disk_errors(), tuple()}.
 create_disk(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_disk(Client, Input, []).
@@ -4634,13 +5817,7 @@ create_disk(Client, Input)
 -spec create_disk(map(), create_disk_request(), proplists:proplist()) ->
     {ok, create_disk_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_disk_errors(), tuple()}.
 create_disk(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDisk">>, Input, Options).
@@ -4662,13 +5839,7 @@ create_disk(Client, Input, Options)
 -spec create_disk_from_snapshot(map(), create_disk_from_snapshot_request()) ->
     {ok, create_disk_from_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_disk_from_snapshot_errors(), tuple()}.
 create_disk_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_disk_from_snapshot(Client, Input, []).
@@ -4676,13 +5847,7 @@ create_disk_from_snapshot(Client, Input)
 -spec create_disk_from_snapshot(map(), create_disk_from_snapshot_request(), proplists:proplist()) ->
     {ok, create_disk_from_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_disk_from_snapshot_errors(), tuple()}.
 create_disk_from_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDiskFromSnapshot">>, Input, Options).
@@ -4732,13 +5897,7 @@ create_disk_from_snapshot(Client, Input, Options)
 -spec create_disk_snapshot(map(), create_disk_snapshot_request()) ->
     {ok, create_disk_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_disk_snapshot_errors(), tuple()}.
 create_disk_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_disk_snapshot(Client, Input, []).
@@ -4746,13 +5905,7 @@ create_disk_snapshot(Client, Input)
 -spec create_disk_snapshot(map(), create_disk_snapshot_request(), proplists:proplist()) ->
     {ok, create_disk_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_disk_snapshot_errors(), tuple()}.
 create_disk_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDiskSnapshot">>, Input, Options).
@@ -4769,12 +5922,7 @@ create_disk_snapshot(Client, Input, Options)
 -spec create_distribution(map(), create_distribution_request()) ->
     {ok, create_distribution_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_distribution_errors(), tuple()}.
 create_distribution(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_distribution(Client, Input, []).
@@ -4782,12 +5930,7 @@ create_distribution(Client, Input)
 -spec create_distribution(map(), create_distribution_request(), proplists:proplist()) ->
     {ok, create_distribution_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_distribution_errors(), tuple()}.
 create_distribution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDistribution">>, Input, Options).
@@ -4801,13 +5944,7 @@ create_distribution(Client, Input, Options)
 -spec create_domain(map(), create_domain_request()) ->
     {ok, create_domain_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_domain_errors(), tuple()}.
 create_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_domain(Client, Input, []).
@@ -4815,13 +5952,7 @@ create_domain(Client, Input)
 -spec create_domain(map(), create_domain_request(), proplists:proplist()) ->
     {ok, create_domain_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_domain_errors(), tuple()}.
 create_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDomain">>, Input, Options).
@@ -4841,13 +5972,7 @@ create_domain(Client, Input, Options)
 -spec create_domain_entry(map(), create_domain_entry_request()) ->
     {ok, create_domain_entry_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_domain_entry_errors(), tuple()}.
 create_domain_entry(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_domain_entry(Client, Input, []).
@@ -4855,13 +5980,7 @@ create_domain_entry(Client, Input)
 -spec create_domain_entry(map(), create_domain_entry_request(), proplists:proplist()) ->
     {ok, create_domain_entry_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_domain_entry_errors(), tuple()}.
 create_domain_entry(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDomainEntry">>, Input, Options).
@@ -4879,11 +5998,7 @@ create_domain_entry(Client, Input, Options)
 -spec create_g_ui_session_access_details(map(), create_g_ui_session_access_details_request()) ->
     {ok, create_g_ui_session_access_details_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_g_ui_session_access_details_errors(), tuple()}.
 create_g_ui_session_access_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_g_ui_session_access_details(Client, Input, []).
@@ -4891,11 +6006,7 @@ create_g_ui_session_access_details(Client, Input)
 -spec create_g_ui_session_access_details(map(), create_g_ui_session_access_details_request(), proplists:proplist()) ->
     {ok, create_g_ui_session_access_details_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_g_ui_session_access_details_errors(), tuple()}.
 create_g_ui_session_access_details(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGUISessionAccessDetails">>, Input, Options).
@@ -4913,13 +6024,7 @@ create_g_ui_session_access_details(Client, Input, Options)
 -spec create_instance_snapshot(map(), create_instance_snapshot_request()) ->
     {ok, create_instance_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_instance_snapshot_errors(), tuple()}.
 create_instance_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_instance_snapshot(Client, Input, []).
@@ -4927,13 +6032,7 @@ create_instance_snapshot(Client, Input)
 -spec create_instance_snapshot(map(), create_instance_snapshot_request(), proplists:proplist()) ->
     {ok, create_instance_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_instance_snapshot_errors(), tuple()}.
 create_instance_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateInstanceSnapshot">>, Input, Options).
@@ -4947,13 +6046,7 @@ create_instance_snapshot(Client, Input, Options)
 -spec create_instances(map(), create_instances_request()) ->
     {ok, create_instances_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_instances_errors(), tuple()}.
 create_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_instances(Client, Input, []).
@@ -4961,13 +6054,7 @@ create_instances(Client, Input)
 -spec create_instances(map(), create_instances_request(), proplists:proplist()) ->
     {ok, create_instances_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_instances_errors(), tuple()}.
 create_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateInstances">>, Input, Options).
@@ -4986,13 +6073,7 @@ create_instances(Client, Input, Options)
 -spec create_instances_from_snapshot(map(), create_instances_from_snapshot_request()) ->
     {ok, create_instances_from_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_instances_from_snapshot_errors(), tuple()}.
 create_instances_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_instances_from_snapshot(Client, Input, []).
@@ -5000,13 +6081,7 @@ create_instances_from_snapshot(Client, Input)
 -spec create_instances_from_snapshot(map(), create_instances_from_snapshot_request(), proplists:proplist()) ->
     {ok, create_instances_from_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_instances_from_snapshot_errors(), tuple()}.
 create_instances_from_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateInstancesFromSnapshot">>, Input, Options).
@@ -5029,13 +6104,7 @@ create_instances_from_snapshot(Client, Input, Options)
 -spec create_key_pair(map(), create_key_pair_request()) ->
     {ok, create_key_pair_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_key_pair_errors(), tuple()}.
 create_key_pair(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_key_pair(Client, Input, []).
@@ -5043,13 +6112,7 @@ create_key_pair(Client, Input)
 -spec create_key_pair(map(), create_key_pair_request(), proplists:proplist()) ->
     {ok, create_key_pair_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_key_pair_errors(), tuple()}.
 create_key_pair(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateKeyPair">>, Input, Options).
@@ -5077,13 +6140,7 @@ create_key_pair(Client, Input, Options)
 -spec create_load_balancer(map(), create_load_balancer_request()) ->
     {ok, create_load_balancer_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_load_balancer_errors(), tuple()}.
 create_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_load_balancer(Client, Input, []).
@@ -5091,13 +6148,7 @@ create_load_balancer(Client, Input)
 -spec create_load_balancer(map(), create_load_balancer_request(), proplists:proplist()) ->
     {ok, create_load_balancer_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_load_balancer_errors(), tuple()}.
 create_load_balancer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLoadBalancer">>, Input, Options).
@@ -5116,13 +6167,7 @@ create_load_balancer(Client, Input, Options)
 -spec create_load_balancer_tls_certificate(map(), create_load_balancer_tls_certificate_request()) ->
     {ok, create_load_balancer_tls_certificate_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_load_balancer_tls_certificate_errors(), tuple()}.
 create_load_balancer_tls_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_load_balancer_tls_certificate(Client, Input, []).
@@ -5130,13 +6175,7 @@ create_load_balancer_tls_certificate(Client, Input)
 -spec create_load_balancer_tls_certificate(map(), create_load_balancer_tls_certificate_request(), proplists:proplist()) ->
     {ok, create_load_balancer_tls_certificate_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_load_balancer_tls_certificate_errors(), tuple()}.
 create_load_balancer_tls_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLoadBalancerTlsCertificate">>, Input, Options).
@@ -5151,13 +6190,7 @@ create_load_balancer_tls_certificate(Client, Input, Options)
 -spec create_relational_database(map(), create_relational_database_request()) ->
     {ok, create_relational_database_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_relational_database_errors(), tuple()}.
 create_relational_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_relational_database(Client, Input, []).
@@ -5165,13 +6198,7 @@ create_relational_database(Client, Input)
 -spec create_relational_database(map(), create_relational_database_request(), proplists:proplist()) ->
     {ok, create_relational_database_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_relational_database_errors(), tuple()}.
 create_relational_database(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRelationalDatabase">>, Input, Options).
@@ -5195,13 +6222,7 @@ create_relational_database(Client, Input, Options)
 -spec create_relational_database_from_snapshot(map(), create_relational_database_from_snapshot_request()) ->
     {ok, create_relational_database_from_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_relational_database_from_snapshot_errors(), tuple()}.
 create_relational_database_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_relational_database_from_snapshot(Client, Input, []).
@@ -5209,13 +6230,7 @@ create_relational_database_from_snapshot(Client, Input)
 -spec create_relational_database_from_snapshot(map(), create_relational_database_from_snapshot_request(), proplists:proplist()) ->
     {ok, create_relational_database_from_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_relational_database_from_snapshot_errors(), tuple()}.
 create_relational_database_from_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRelationalDatabaseFromSnapshot">>, Input, Options).
@@ -5233,13 +6248,7 @@ create_relational_database_from_snapshot(Client, Input, Options)
 -spec create_relational_database_snapshot(map(), create_relational_database_snapshot_request()) ->
     {ok, create_relational_database_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_relational_database_snapshot_errors(), tuple()}.
 create_relational_database_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_relational_database_snapshot(Client, Input, []).
@@ -5247,13 +6256,7 @@ create_relational_database_snapshot(Client, Input)
 -spec create_relational_database_snapshot(map(), create_relational_database_snapshot_request(), proplists:proplist()) ->
     {ok, create_relational_database_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, create_relational_database_snapshot_errors(), tuple()}.
 create_relational_database_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRelationalDatabaseSnapshot">>, Input, Options).
@@ -5270,12 +6273,7 @@ create_relational_database_snapshot(Client, Input, Options)
 -spec delete_alarm(map(), delete_alarm_request()) ->
     {ok, delete_alarm_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_alarm_errors(), tuple()}.
 delete_alarm(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_alarm(Client, Input, []).
@@ -5283,12 +6281,7 @@ delete_alarm(Client, Input)
 -spec delete_alarm(map(), delete_alarm_request(), proplists:proplist()) ->
     {ok, delete_alarm_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_alarm_errors(), tuple()}.
 delete_alarm(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAlarm">>, Input, Options).
@@ -5300,12 +6293,7 @@ delete_alarm(Client, Input, Options)
 -spec delete_auto_snapshot(map(), delete_auto_snapshot_request()) ->
     {ok, delete_auto_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_auto_snapshot_errors(), tuple()}.
 delete_auto_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_auto_snapshot(Client, Input, []).
@@ -5313,12 +6301,7 @@ delete_auto_snapshot(Client, Input)
 -spec delete_auto_snapshot(map(), delete_auto_snapshot_request(), proplists:proplist()) ->
     {ok, delete_auto_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_auto_snapshot_errors(), tuple()}.
 delete_auto_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAutoSnapshot">>, Input, Options).
@@ -5331,11 +6314,7 @@ delete_auto_snapshot(Client, Input, Options)
 -spec delete_bucket(map(), delete_bucket_request()) ->
     {ok, delete_bucket_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_bucket_errors(), tuple()}.
 delete_bucket(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_bucket(Client, Input, []).
@@ -5343,11 +6322,7 @@ delete_bucket(Client, Input)
 -spec delete_bucket(map(), delete_bucket_request(), proplists:proplist()) ->
     {ok, delete_bucket_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_bucket_errors(), tuple()}.
 delete_bucket(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBucket">>, Input, Options).
@@ -5365,11 +6340,7 @@ delete_bucket(Client, Input, Options)
 -spec delete_bucket_access_key(map(), delete_bucket_access_key_request()) ->
     {ok, delete_bucket_access_key_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_bucket_access_key_errors(), tuple()}.
 delete_bucket_access_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_bucket_access_key(Client, Input, []).
@@ -5377,11 +6348,7 @@ delete_bucket_access_key(Client, Input)
 -spec delete_bucket_access_key(map(), delete_bucket_access_key_request(), proplists:proplist()) ->
     {ok, delete_bucket_access_key_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_bucket_access_key_errors(), tuple()}.
 delete_bucket_access_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBucketAccessKey">>, Input, Options).
@@ -5398,11 +6365,7 @@ delete_bucket_access_key(Client, Input, Options)
 -spec delete_certificate(map(), delete_certificate_request()) ->
     {ok, delete_certificate_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_certificate_errors(), tuple()}.
 delete_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_certificate(Client, Input, []).
@@ -5410,11 +6373,7 @@ delete_certificate(Client, Input)
 -spec delete_certificate(map(), delete_certificate_request(), proplists:proplist()) ->
     {ok, delete_certificate_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_certificate_errors(), tuple()}.
 delete_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCertificate">>, Input, Options).
@@ -5433,12 +6392,7 @@ delete_certificate(Client, Input, Options)
 -spec delete_contact_method(map(), delete_contact_method_request()) ->
     {ok, delete_contact_method_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_contact_method_errors(), tuple()}.
 delete_contact_method(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_contact_method(Client, Input, []).
@@ -5446,12 +6400,7 @@ delete_contact_method(Client, Input)
 -spec delete_contact_method(map(), delete_contact_method_request(), proplists:proplist()) ->
     {ok, delete_contact_method_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_contact_method_errors(), tuple()}.
 delete_contact_method(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteContactMethod">>, Input, Options).
@@ -5462,11 +6411,7 @@ delete_contact_method(Client, Input, Options)
 -spec delete_container_image(map(), delete_container_image_request()) ->
     {ok, delete_container_image_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_container_image_errors(), tuple()}.
 delete_container_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_container_image(Client, Input, []).
@@ -5474,11 +6419,7 @@ delete_container_image(Client, Input)
 -spec delete_container_image(map(), delete_container_image_request(), proplists:proplist()) ->
     {ok, delete_container_image_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_container_image_errors(), tuple()}.
 delete_container_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteContainerImage">>, Input, Options).
@@ -5487,11 +6428,7 @@ delete_container_image(Client, Input, Options)
 -spec delete_container_service(map(), delete_container_service_request()) ->
     {ok, delete_container_service_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_container_service_errors(), tuple()}.
 delete_container_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_container_service(Client, Input, []).
@@ -5499,11 +6436,7 @@ delete_container_service(Client, Input)
 -spec delete_container_service(map(), delete_container_service_request(), proplists:proplist()) ->
     {ok, delete_container_service_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_container_service_errors(), tuple()}.
 delete_container_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteContainerService">>, Input, Options).
@@ -5524,13 +6457,7 @@ delete_container_service(Client, Input, Options)
 -spec delete_disk(map(), delete_disk_request()) ->
     {ok, delete_disk_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_disk_errors(), tuple()}.
 delete_disk(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_disk(Client, Input, []).
@@ -5538,13 +6465,7 @@ delete_disk(Client, Input)
 -spec delete_disk(map(), delete_disk_request(), proplists:proplist()) ->
     {ok, delete_disk_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_disk_errors(), tuple()}.
 delete_disk(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDisk">>, Input, Options).
@@ -5570,13 +6491,7 @@ delete_disk(Client, Input, Options)
 -spec delete_disk_snapshot(map(), delete_disk_snapshot_request()) ->
     {ok, delete_disk_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_disk_snapshot_errors(), tuple()}.
 delete_disk_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_disk_snapshot(Client, Input, []).
@@ -5584,13 +6499,7 @@ delete_disk_snapshot(Client, Input)
 -spec delete_disk_snapshot(map(), delete_disk_snapshot_request(), proplists:proplist()) ->
     {ok, delete_disk_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_disk_snapshot_errors(), tuple()}.
 delete_disk_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDiskSnapshot">>, Input, Options).
@@ -5600,12 +6509,7 @@ delete_disk_snapshot(Client, Input, Options)
 -spec delete_distribution(map(), delete_distribution_request()) ->
     {ok, delete_distribution_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_distribution_errors(), tuple()}.
 delete_distribution(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_distribution(Client, Input, []).
@@ -5613,12 +6517,7 @@ delete_distribution(Client, Input)
 -spec delete_distribution(map(), delete_distribution_request(), proplists:proplist()) ->
     {ok, delete_distribution_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_distribution_errors(), tuple()}.
 delete_distribution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDistribution">>, Input, Options).
@@ -5634,13 +6533,7 @@ delete_distribution(Client, Input, Options)
 -spec delete_domain(map(), delete_domain_request()) ->
     {ok, delete_domain_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_domain_errors(), tuple()}.
 delete_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_domain(Client, Input, []).
@@ -5648,13 +6541,7 @@ delete_domain(Client, Input)
 -spec delete_domain(map(), delete_domain_request(), proplists:proplist()) ->
     {ok, delete_domain_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_domain_errors(), tuple()}.
 delete_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDomain">>, Input, Options).
@@ -5670,13 +6557,7 @@ delete_domain(Client, Input, Options)
 -spec delete_domain_entry(map(), delete_domain_entry_request()) ->
     {ok, delete_domain_entry_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_domain_entry_errors(), tuple()}.
 delete_domain_entry(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_domain_entry(Client, Input, []).
@@ -5684,13 +6565,7 @@ delete_domain_entry(Client, Input)
 -spec delete_domain_entry(map(), delete_domain_entry_request(), proplists:proplist()) ->
     {ok, delete_domain_entry_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_domain_entry_errors(), tuple()}.
 delete_domain_entry(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDomainEntry">>, Input, Options).
@@ -5706,13 +6581,7 @@ delete_domain_entry(Client, Input, Options)
 -spec delete_instance(map(), delete_instance_request()) ->
     {ok, delete_instance_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_instance_errors(), tuple()}.
 delete_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_instance(Client, Input, []).
@@ -5720,13 +6589,7 @@ delete_instance(Client, Input)
 -spec delete_instance(map(), delete_instance_request(), proplists:proplist()) ->
     {ok, delete_instance_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_instance_errors(), tuple()}.
 delete_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInstance">>, Input, Options).
@@ -5743,13 +6606,7 @@ delete_instance(Client, Input, Options)
 -spec delete_instance_snapshot(map(), delete_instance_snapshot_request()) ->
     {ok, delete_instance_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_instance_snapshot_errors(), tuple()}.
 delete_instance_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_instance_snapshot(Client, Input, []).
@@ -5757,13 +6614,7 @@ delete_instance_snapshot(Client, Input)
 -spec delete_instance_snapshot(map(), delete_instance_snapshot_request(), proplists:proplist()) ->
     {ok, delete_instance_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_instance_snapshot_errors(), tuple()}.
 delete_instance_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInstanceSnapshot">>, Input, Options).
@@ -5792,13 +6643,7 @@ delete_instance_snapshot(Client, Input, Options)
 -spec delete_key_pair(map(), delete_key_pair_request()) ->
     {ok, delete_key_pair_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_key_pair_errors(), tuple()}.
 delete_key_pair(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_key_pair(Client, Input, []).
@@ -5806,13 +6651,7 @@ delete_key_pair(Client, Input)
 -spec delete_key_pair(map(), delete_key_pair_request(), proplists:proplist()) ->
     {ok, delete_key_pair_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_key_pair_errors(), tuple()}.
 delete_key_pair(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteKeyPair">>, Input, Options).
@@ -5835,13 +6674,7 @@ delete_key_pair(Client, Input, Options)
 -spec delete_known_host_keys(map(), delete_known_host_keys_request()) ->
     {ok, delete_known_host_keys_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_known_host_keys_errors(), tuple()}.
 delete_known_host_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_known_host_keys(Client, Input, []).
@@ -5849,13 +6682,7 @@ delete_known_host_keys(Client, Input)
 -spec delete_known_host_keys(map(), delete_known_host_keys_request(), proplists:proplist()) ->
     {ok, delete_known_host_keys_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_known_host_keys_errors(), tuple()}.
 delete_known_host_keys(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteKnownHostKeys">>, Input, Options).
@@ -5877,13 +6704,7 @@ delete_known_host_keys(Client, Input, Options)
 -spec delete_load_balancer(map(), delete_load_balancer_request()) ->
     {ok, delete_load_balancer_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_load_balancer_errors(), tuple()}.
 delete_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_load_balancer(Client, Input, []).
@@ -5891,13 +6712,7 @@ delete_load_balancer(Client, Input)
 -spec delete_load_balancer(map(), delete_load_balancer_request(), proplists:proplist()) ->
     {ok, delete_load_balancer_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_load_balancer_errors(), tuple()}.
 delete_load_balancer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLoadBalancer">>, Input, Options).
@@ -5915,13 +6730,7 @@ delete_load_balancer(Client, Input, Options)
 -spec delete_load_balancer_tls_certificate(map(), delete_load_balancer_tls_certificate_request()) ->
     {ok, delete_load_balancer_tls_certificate_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_load_balancer_tls_certificate_errors(), tuple()}.
 delete_load_balancer_tls_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_load_balancer_tls_certificate(Client, Input, []).
@@ -5929,13 +6738,7 @@ delete_load_balancer_tls_certificate(Client, Input)
 -spec delete_load_balancer_tls_certificate(map(), delete_load_balancer_tls_certificate_request(), proplists:proplist()) ->
     {ok, delete_load_balancer_tls_certificate_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_load_balancer_tls_certificate_errors(), tuple()}.
 delete_load_balancer_tls_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLoadBalancerTlsCertificate">>, Input, Options).
@@ -5951,13 +6754,7 @@ delete_load_balancer_tls_certificate(Client, Input, Options)
 -spec delete_relational_database(map(), delete_relational_database_request()) ->
     {ok, delete_relational_database_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_relational_database_errors(), tuple()}.
 delete_relational_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_relational_database(Client, Input, []).
@@ -5965,13 +6762,7 @@ delete_relational_database(Client, Input)
 -spec delete_relational_database(map(), delete_relational_database_request(), proplists:proplist()) ->
     {ok, delete_relational_database_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_relational_database_errors(), tuple()}.
 delete_relational_database(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRelationalDatabase">>, Input, Options).
@@ -5987,13 +6778,7 @@ delete_relational_database(Client, Input, Options)
 -spec delete_relational_database_snapshot(map(), delete_relational_database_snapshot_request()) ->
     {ok, delete_relational_database_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_relational_database_snapshot_errors(), tuple()}.
 delete_relational_database_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_relational_database_snapshot(Client, Input, []).
@@ -6001,13 +6786,7 @@ delete_relational_database_snapshot(Client, Input)
 -spec delete_relational_database_snapshot(map(), delete_relational_database_snapshot_request(), proplists:proplist()) ->
     {ok, delete_relational_database_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, delete_relational_database_snapshot_errors(), tuple()}.
 delete_relational_database_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRelationalDatabaseSnapshot">>, Input, Options).
@@ -6022,12 +6801,7 @@ delete_relational_database_snapshot(Client, Input, Options)
 -spec detach_certificate_from_distribution(map(), detach_certificate_from_distribution_request()) ->
     {ok, detach_certificate_from_distribution_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, detach_certificate_from_distribution_errors(), tuple()}.
 detach_certificate_from_distribution(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_certificate_from_distribution(Client, Input, []).
@@ -6035,12 +6809,7 @@ detach_certificate_from_distribution(Client, Input)
 -spec detach_certificate_from_distribution(map(), detach_certificate_from_distribution_request(), proplists:proplist()) ->
     {ok, detach_certificate_from_distribution_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, detach_certificate_from_distribution_errors(), tuple()}.
 detach_certificate_from_distribution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachCertificateFromDistribution">>, Input, Options).
@@ -6061,13 +6830,7 @@ detach_certificate_from_distribution(Client, Input, Options)
 -spec detach_disk(map(), detach_disk_request()) ->
     {ok, detach_disk_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, detach_disk_errors(), tuple()}.
 detach_disk(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_disk(Client, Input, []).
@@ -6075,13 +6838,7 @@ detach_disk(Client, Input)
 -spec detach_disk(map(), detach_disk_request(), proplists:proplist()) ->
     {ok, detach_disk_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, detach_disk_errors(), tuple()}.
 detach_disk(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachDisk">>, Input, Options).
@@ -6102,13 +6859,7 @@ detach_disk(Client, Input, Options)
 -spec detach_instances_from_load_balancer(map(), detach_instances_from_load_balancer_request()) ->
     {ok, detach_instances_from_load_balancer_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, detach_instances_from_load_balancer_errors(), tuple()}.
 detach_instances_from_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_instances_from_load_balancer(Client, Input, []).
@@ -6116,13 +6867,7 @@ detach_instances_from_load_balancer(Client, Input)
 -spec detach_instances_from_load_balancer(map(), detach_instances_from_load_balancer_request(), proplists:proplist()) ->
     {ok, detach_instances_from_load_balancer_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, detach_instances_from_load_balancer_errors(), tuple()}.
 detach_instances_from_load_balancer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachInstancesFromLoadBalancer">>, Input, Options).
@@ -6132,13 +6877,7 @@ detach_instances_from_load_balancer(Client, Input, Options)
 -spec detach_static_ip(map(), detach_static_ip_request()) ->
     {ok, detach_static_ip_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, detach_static_ip_errors(), tuple()}.
 detach_static_ip(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_static_ip(Client, Input, []).
@@ -6146,13 +6885,7 @@ detach_static_ip(Client, Input)
 -spec detach_static_ip(map(), detach_static_ip_request(), proplists:proplist()) ->
     {ok, detach_static_ip_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, detach_static_ip_errors(), tuple()}.
 detach_static_ip(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachStaticIp">>, Input, Options).
@@ -6164,12 +6897,7 @@ detach_static_ip(Client, Input, Options)
 -spec disable_add_on(map(), disable_add_on_request()) ->
     {ok, disable_add_on_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, disable_add_on_errors(), tuple()}.
 disable_add_on(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_add_on(Client, Input, []).
@@ -6177,12 +6905,7 @@ disable_add_on(Client, Input)
 -spec disable_add_on(map(), disable_add_on_request(), proplists:proplist()) ->
     {ok, disable_add_on_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, disable_add_on_errors(), tuple()}.
 disable_add_on(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableAddOn">>, Input, Options).
@@ -6195,13 +6918,7 @@ disable_add_on(Client, Input, Options)
 -spec download_default_key_pair(map(), download_default_key_pair_request()) ->
     {ok, download_default_key_pair_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, download_default_key_pair_errors(), tuple()}.
 download_default_key_pair(Client, Input)
   when is_map(Client), is_map(Input) ->
     download_default_key_pair(Client, Input, []).
@@ -6209,13 +6926,7 @@ download_default_key_pair(Client, Input)
 -spec download_default_key_pair(map(), download_default_key_pair_request(), proplists:proplist()) ->
     {ok, download_default_key_pair_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, download_default_key_pair_errors(), tuple()}.
 download_default_key_pair(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DownloadDefaultKeyPair">>, Input, Options).
@@ -6228,12 +6939,7 @@ download_default_key_pair(Client, Input, Options)
 -spec enable_add_on(map(), enable_add_on_request()) ->
     {ok, enable_add_on_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, enable_add_on_errors(), tuple()}.
 enable_add_on(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_add_on(Client, Input, []).
@@ -6241,12 +6947,7 @@ enable_add_on(Client, Input)
 -spec enable_add_on(map(), enable_add_on_request(), proplists:proplist()) ->
     {ok, enable_add_on_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, enable_add_on_errors(), tuple()}.
 enable_add_on(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableAddOn">>, Input, Options).
@@ -6280,13 +6981,7 @@ enable_add_on(Client, Input, Options)
 -spec export_snapshot(map(), export_snapshot_request()) ->
     {ok, export_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, export_snapshot_errors(), tuple()}.
 export_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_snapshot(Client, Input, []).
@@ -6294,13 +6989,7 @@ export_snapshot(Client, Input)
 -spec export_snapshot(map(), export_snapshot_request(), proplists:proplist()) ->
     {ok, export_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, export_snapshot_errors(), tuple()}.
 export_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportSnapshot">>, Input, Options).
@@ -6309,13 +6998,7 @@ export_snapshot(Client, Input, Options)
 -spec get_active_names(map(), get_active_names_request()) ->
     {ok, get_active_names_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_active_names_errors(), tuple()}.
 get_active_names(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_active_names(Client, Input, []).
@@ -6323,13 +7006,7 @@ get_active_names(Client, Input)
 -spec get_active_names(map(), get_active_names_request(), proplists:proplist()) ->
     {ok, get_active_names_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_active_names_errors(), tuple()}.
 get_active_names(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetActiveNames">>, Input, Options).
@@ -6351,12 +7028,7 @@ get_active_names(Client, Input, Options)
 -spec get_alarms(map(), get_alarms_request()) ->
     {ok, get_alarms_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_alarms_errors(), tuple()}.
 get_alarms(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_alarms(Client, Input, []).
@@ -6364,12 +7036,7 @@ get_alarms(Client, Input)
 -spec get_alarms(map(), get_alarms_request(), proplists:proplist()) ->
     {ok, get_alarms_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_alarms_errors(), tuple()}.
 get_alarms(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAlarms">>, Input, Options).
@@ -6382,12 +7049,7 @@ get_alarms(Client, Input, Options)
 -spec get_auto_snapshots(map(), get_auto_snapshots_request()) ->
     {ok, get_auto_snapshots_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_auto_snapshots_errors(), tuple()}.
 get_auto_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_auto_snapshots(Client, Input, []).
@@ -6395,12 +7057,7 @@ get_auto_snapshots(Client, Input)
 -spec get_auto_snapshots(map(), get_auto_snapshots_request(), proplists:proplist()) ->
     {ok, get_auto_snapshots_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_auto_snapshots_errors(), tuple()}.
 get_auto_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAutoSnapshots">>, Input, Options).
@@ -6424,13 +7081,7 @@ get_auto_snapshots(Client, Input, Options)
 -spec get_blueprints(map(), get_blueprints_request()) ->
     {ok, get_blueprints_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_blueprints_errors(), tuple()}.
 get_blueprints(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_blueprints(Client, Input, []).
@@ -6438,13 +7089,7 @@ get_blueprints(Client, Input)
 -spec get_blueprints(map(), get_blueprints_request(), proplists:proplist()) ->
     {ok, get_blueprints_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_blueprints_errors(), tuple()}.
 get_blueprints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetBlueprints">>, Input, Options).
@@ -6462,11 +7107,7 @@ get_blueprints(Client, Input, Options)
 -spec get_bucket_access_keys(map(), get_bucket_access_keys_request()) ->
     {ok, get_bucket_access_keys_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_bucket_access_keys_errors(), tuple()}.
 get_bucket_access_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_bucket_access_keys(Client, Input, []).
@@ -6474,11 +7115,7 @@ get_bucket_access_keys(Client, Input)
 -spec get_bucket_access_keys(map(), get_bucket_access_keys_request(), proplists:proplist()) ->
     {ok, get_bucket_access_keys_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_bucket_access_keys_errors(), tuple()}.
 get_bucket_access_keys(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetBucketAccessKeys">>, Input, Options).
@@ -6496,10 +7133,7 @@ get_bucket_access_keys(Client, Input, Options)
 -spec get_bucket_bundles(map(), get_bucket_bundles_request()) ->
     {ok, get_bucket_bundles_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_bucket_bundles_errors(), tuple()}.
 get_bucket_bundles(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_bucket_bundles(Client, Input, []).
@@ -6507,10 +7141,7 @@ get_bucket_bundles(Client, Input)
 -spec get_bucket_bundles(map(), get_bucket_bundles_request(), proplists:proplist()) ->
     {ok, get_bucket_bundles_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_bucket_bundles_errors(), tuple()}.
 get_bucket_bundles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetBucketBundles">>, Input, Options).
@@ -6526,11 +7157,7 @@ get_bucket_bundles(Client, Input, Options)
 -spec get_bucket_metric_data(map(), get_bucket_metric_data_request()) ->
     {ok, get_bucket_metric_data_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_bucket_metric_data_errors(), tuple()}.
 get_bucket_metric_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_bucket_metric_data(Client, Input, []).
@@ -6538,11 +7165,7 @@ get_bucket_metric_data(Client, Input)
 -spec get_bucket_metric_data(map(), get_bucket_metric_data_request(), proplists:proplist()) ->
     {ok, get_bucket_metric_data_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_bucket_metric_data_errors(), tuple()}.
 get_bucket_metric_data(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetBucketMetricData">>, Input, Options).
@@ -6561,11 +7184,7 @@ get_bucket_metric_data(Client, Input, Options)
 -spec get_buckets(map(), get_buckets_request()) ->
     {ok, get_buckets_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_buckets_errors(), tuple()}.
 get_buckets(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_buckets(Client, Input, []).
@@ -6573,11 +7192,7 @@ get_buckets(Client, Input)
 -spec get_buckets(map(), get_buckets_request(), proplists:proplist()) ->
     {ok, get_buckets_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_buckets_errors(), tuple()}.
 get_buckets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetBuckets">>, Input, Options).
@@ -6597,13 +7212,7 @@ get_buckets(Client, Input, Options)
 -spec get_bundles(map(), get_bundles_request()) ->
     {ok, get_bundles_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_bundles_errors(), tuple()}.
 get_bundles(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_bundles(Client, Input, []).
@@ -6611,13 +7220,7 @@ get_bundles(Client, Input)
 -spec get_bundles(map(), get_bundles_request(), proplists:proplist()) ->
     {ok, get_bundles_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_bundles_errors(), tuple()}.
 get_bundles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetBundles">>, Input, Options).
@@ -6633,11 +7236,7 @@ get_bundles(Client, Input, Options)
 -spec get_certificates(map(), get_certificates_request()) ->
     {ok, get_certificates_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_certificates_errors(), tuple()}.
 get_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_certificates(Client, Input, []).
@@ -6645,11 +7244,7 @@ get_certificates(Client, Input)
 -spec get_certificates(map(), get_certificates_request(), proplists:proplist()) ->
     {ok, get_certificates_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_certificates_errors(), tuple()}.
 get_certificates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCertificates">>, Input, Options).
@@ -6664,13 +7259,7 @@ get_certificates(Client, Input, Options)
 -spec get_cloud_formation_stack_records(map(), get_cloud_formation_stack_records_request()) ->
     {ok, get_cloud_formation_stack_records_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_cloud_formation_stack_records_errors(), tuple()}.
 get_cloud_formation_stack_records(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_cloud_formation_stack_records(Client, Input, []).
@@ -6678,13 +7267,7 @@ get_cloud_formation_stack_records(Client, Input)
 -spec get_cloud_formation_stack_records(map(), get_cloud_formation_stack_records_request(), proplists:proplist()) ->
     {ok, get_cloud_formation_stack_records_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_cloud_formation_stack_records_errors(), tuple()}.
 get_cloud_formation_stack_records(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCloudFormationStackRecords">>, Input, Options).
@@ -6706,12 +7289,7 @@ get_cloud_formation_stack_records(Client, Input, Options)
 -spec get_contact_methods(map(), get_contact_methods_request()) ->
     {ok, get_contact_methods_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_contact_methods_errors(), tuple()}.
 get_contact_methods(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_contact_methods(Client, Input, []).
@@ -6719,12 +7297,7 @@ get_contact_methods(Client, Input)
 -spec get_contact_methods(map(), get_contact_methods_request(), proplists:proplist()) ->
     {ok, get_contact_methods_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_contact_methods_errors(), tuple()}.
 get_contact_methods(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetContactMethods">>, Input, Options).
@@ -6735,9 +7308,7 @@ get_contact_methods(Client, Input, Options)
 -spec get_container_api_metadata(map(), get_container_api_metadata_request()) ->
     {ok, get_container_api_metadata_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_container_api_metadata_errors(), tuple()}.
 get_container_api_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_container_api_metadata(Client, Input, []).
@@ -6745,9 +7316,7 @@ get_container_api_metadata(Client, Input)
 -spec get_container_api_metadata(map(), get_container_api_metadata_request(), proplists:proplist()) ->
     {ok, get_container_api_metadata_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_container_api_metadata_errors(), tuple()}.
 get_container_api_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetContainerAPIMetadata">>, Input, Options).
@@ -6765,11 +7334,7 @@ get_container_api_metadata(Client, Input, Options)
 -spec get_container_images(map(), get_container_images_request()) ->
     {ok, get_container_images_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_container_images_errors(), tuple()}.
 get_container_images(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_container_images(Client, Input, []).
@@ -6777,11 +7342,7 @@ get_container_images(Client, Input)
 -spec get_container_images(map(), get_container_images_request(), proplists:proplist()) ->
     {ok, get_container_images_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_container_images_errors(), tuple()}.
 get_container_images(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetContainerImages">>, Input, Options).
@@ -6805,11 +7366,7 @@ get_container_images(Client, Input, Options)
 -spec get_container_log(map(), get_container_log_request()) ->
     {ok, get_container_log_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_container_log_errors(), tuple()}.
 get_container_log(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_container_log(Client, Input, []).
@@ -6817,11 +7374,7 @@ get_container_log(Client, Input)
 -spec get_container_log(map(), get_container_log_request(), proplists:proplist()) ->
     {ok, get_container_log_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_container_log_errors(), tuple()}.
 get_container_log(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetContainerLog">>, Input, Options).
@@ -6846,11 +7399,7 @@ get_container_log(Client, Input, Options)
 -spec get_container_service_deployments(map(), get_container_service_deployments_request()) ->
     {ok, get_container_service_deployments_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_container_service_deployments_errors(), tuple()}.
 get_container_service_deployments(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_container_service_deployments(Client, Input, []).
@@ -6858,11 +7407,7 @@ get_container_service_deployments(Client, Input)
 -spec get_container_service_deployments(map(), get_container_service_deployments_request(), proplists:proplist()) ->
     {ok, get_container_service_deployments_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_container_service_deployments_errors(), tuple()}.
 get_container_service_deployments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetContainerServiceDeployments">>, Input, Options).
@@ -6878,11 +7423,7 @@ get_container_service_deployments(Client, Input, Options)
 -spec get_container_service_metric_data(map(), get_container_service_metric_data_request()) ->
     {ok, get_container_service_metric_data_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_container_service_metric_data_errors(), tuple()}.
 get_container_service_metric_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_container_service_metric_data(Client, Input, []).
@@ -6890,11 +7431,7 @@ get_container_service_metric_data(Client, Input)
 -spec get_container_service_metric_data(map(), get_container_service_metric_data_request(), proplists:proplist()) ->
     {ok, get_container_service_metric_data_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_container_service_metric_data_errors(), tuple()}.
 get_container_service_metric_data(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetContainerServiceMetricData">>, Input, Options).
@@ -6909,11 +7446,7 @@ get_container_service_metric_data(Client, Input, Options)
 -spec get_container_service_powers(map(), get_container_service_powers_request()) ->
     {ok, get_container_service_powers_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_container_service_powers_errors(), tuple()}.
 get_container_service_powers(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_container_service_powers(Client, Input, []).
@@ -6921,11 +7454,7 @@ get_container_service_powers(Client, Input)
 -spec get_container_service_powers(map(), get_container_service_powers_request(), proplists:proplist()) ->
     {ok, get_container_service_powers_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_container_service_powers_errors(), tuple()}.
 get_container_service_powers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetContainerServicePowers">>, Input, Options).
@@ -6935,11 +7464,7 @@ get_container_service_powers(Client, Input, Options)
 -spec get_container_services(map(), get_container_services_request()) ->
     {ok, container_services_list_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_container_services_errors(), tuple()}.
 get_container_services(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_container_services(Client, Input, []).
@@ -6947,11 +7472,7 @@ get_container_services(Client, Input)
 -spec get_container_services(map(), get_container_services_request(), proplists:proplist()) ->
     {ok, container_services_list_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_container_services_errors(), tuple()}.
 get_container_services(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetContainerServices">>, Input, Options).
@@ -6964,11 +7485,7 @@ get_container_services(Client, Input, Options)
 -spec get_cost_estimate(map(), get_cost_estimate_request()) ->
     {ok, get_cost_estimate_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_cost_estimate_errors(), tuple()}.
 get_cost_estimate(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_cost_estimate(Client, Input, []).
@@ -6976,11 +7493,7 @@ get_cost_estimate(Client, Input)
 -spec get_cost_estimate(map(), get_cost_estimate_request(), proplists:proplist()) ->
     {ok, get_cost_estimate_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_cost_estimate_errors(), tuple()}.
 get_cost_estimate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCostEstimate">>, Input, Options).
@@ -6989,13 +7502,7 @@ get_cost_estimate(Client, Input, Options)
 -spec get_disk(map(), get_disk_request()) ->
     {ok, get_disk_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_disk_errors(), tuple()}.
 get_disk(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_disk(Client, Input, []).
@@ -7003,13 +7510,7 @@ get_disk(Client, Input)
 -spec get_disk(map(), get_disk_request(), proplists:proplist()) ->
     {ok, get_disk_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_disk_errors(), tuple()}.
 get_disk(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDisk">>, Input, Options).
@@ -7018,13 +7519,7 @@ get_disk(Client, Input, Options)
 -spec get_disk_snapshot(map(), get_disk_snapshot_request()) ->
     {ok, get_disk_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_disk_snapshot_errors(), tuple()}.
 get_disk_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_disk_snapshot(Client, Input, []).
@@ -7032,13 +7527,7 @@ get_disk_snapshot(Client, Input)
 -spec get_disk_snapshot(map(), get_disk_snapshot_request(), proplists:proplist()) ->
     {ok, get_disk_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_disk_snapshot_errors(), tuple()}.
 get_disk_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDiskSnapshot">>, Input, Options).
@@ -7049,13 +7538,7 @@ get_disk_snapshot(Client, Input, Options)
 -spec get_disk_snapshots(map(), get_disk_snapshots_request()) ->
     {ok, get_disk_snapshots_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_disk_snapshots_errors(), tuple()}.
 get_disk_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_disk_snapshots(Client, Input, []).
@@ -7063,13 +7546,7 @@ get_disk_snapshots(Client, Input)
 -spec get_disk_snapshots(map(), get_disk_snapshots_request(), proplists:proplist()) ->
     {ok, get_disk_snapshots_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_disk_snapshots_errors(), tuple()}.
 get_disk_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDiskSnapshots">>, Input, Options).
@@ -7079,13 +7556,7 @@ get_disk_snapshots(Client, Input, Options)
 -spec get_disks(map(), get_disks_request()) ->
     {ok, get_disks_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_disks_errors(), tuple()}.
 get_disks(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_disks(Client, Input, []).
@@ -7093,13 +7564,7 @@ get_disks(Client, Input)
 -spec get_disks(map(), get_disks_request(), proplists:proplist()) ->
     {ok, get_disks_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_disks_errors(), tuple()}.
 get_disks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDisks">>, Input, Options).
@@ -7114,12 +7579,7 @@ get_disks(Client, Input, Options)
 -spec get_distribution_bundles(map(), get_distribution_bundles_request()) ->
     {ok, get_distribution_bundles_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_distribution_bundles_errors(), tuple()}.
 get_distribution_bundles(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_distribution_bundles(Client, Input, []).
@@ -7127,12 +7587,7 @@ get_distribution_bundles(Client, Input)
 -spec get_distribution_bundles(map(), get_distribution_bundles_request(), proplists:proplist()) ->
     {ok, get_distribution_bundles_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_distribution_bundles_errors(), tuple()}.
 get_distribution_bundles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDistributionBundles">>, Input, Options).
@@ -7143,12 +7598,7 @@ get_distribution_bundles(Client, Input, Options)
 -spec get_distribution_latest_cache_reset(map(), get_distribution_latest_cache_reset_request()) ->
     {ok, get_distribution_latest_cache_reset_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_distribution_latest_cache_reset_errors(), tuple()}.
 get_distribution_latest_cache_reset(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_distribution_latest_cache_reset(Client, Input, []).
@@ -7156,12 +7606,7 @@ get_distribution_latest_cache_reset(Client, Input)
 -spec get_distribution_latest_cache_reset(map(), get_distribution_latest_cache_reset_request(), proplists:proplist()) ->
     {ok, get_distribution_latest_cache_reset_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_distribution_latest_cache_reset_errors(), tuple()}.
 get_distribution_latest_cache_reset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDistributionLatestCacheReset">>, Input, Options).
@@ -7178,12 +7623,7 @@ get_distribution_latest_cache_reset(Client, Input, Options)
 -spec get_distribution_metric_data(map(), get_distribution_metric_data_request()) ->
     {ok, get_distribution_metric_data_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_distribution_metric_data_errors(), tuple()}.
 get_distribution_metric_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_distribution_metric_data(Client, Input, []).
@@ -7191,12 +7631,7 @@ get_distribution_metric_data(Client, Input)
 -spec get_distribution_metric_data(map(), get_distribution_metric_data_request(), proplists:proplist()) ->
     {ok, get_distribution_metric_data_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_distribution_metric_data_errors(), tuple()}.
 get_distribution_metric_data(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDistributionMetricData">>, Input, Options).
@@ -7207,12 +7642,7 @@ get_distribution_metric_data(Client, Input, Options)
 -spec get_distributions(map(), get_distributions_request()) ->
     {ok, get_distributions_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_distributions_errors(), tuple()}.
 get_distributions(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_distributions(Client, Input, []).
@@ -7220,12 +7650,7 @@ get_distributions(Client, Input)
 -spec get_distributions(map(), get_distributions_request(), proplists:proplist()) ->
     {ok, get_distributions_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_distributions_errors(), tuple()}.
 get_distributions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDistributions">>, Input, Options).
@@ -7234,13 +7659,7 @@ get_distributions(Client, Input, Options)
 -spec get_domain(map(), get_domain_request()) ->
     {ok, get_domain_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_domain_errors(), tuple()}.
 get_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_domain(Client, Input, []).
@@ -7248,13 +7667,7 @@ get_domain(Client, Input)
 -spec get_domain(map(), get_domain_request(), proplists:proplist()) ->
     {ok, get_domain_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_domain_errors(), tuple()}.
 get_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDomain">>, Input, Options).
@@ -7263,13 +7676,7 @@ get_domain(Client, Input, Options)
 -spec get_domains(map(), get_domains_request()) ->
     {ok, get_domains_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_domains_errors(), tuple()}.
 get_domains(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_domains(Client, Input, []).
@@ -7277,13 +7684,7 @@ get_domains(Client, Input)
 -spec get_domains(map(), get_domains_request(), proplists:proplist()) ->
     {ok, get_domains_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_domains_errors(), tuple()}.
 get_domains(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDomains">>, Input, Options).
@@ -7300,13 +7701,7 @@ get_domains(Client, Input, Options)
 -spec get_export_snapshot_records(map(), get_export_snapshot_records_request()) ->
     {ok, get_export_snapshot_records_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_export_snapshot_records_errors(), tuple()}.
 get_export_snapshot_records(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_export_snapshot_records(Client, Input, []).
@@ -7314,13 +7709,7 @@ get_export_snapshot_records(Client, Input)
 -spec get_export_snapshot_records(map(), get_export_snapshot_records_request(), proplists:proplist()) ->
     {ok, get_export_snapshot_records_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_export_snapshot_records_errors(), tuple()}.
 get_export_snapshot_records(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetExportSnapshotRecords">>, Input, Options).
@@ -7331,13 +7720,7 @@ get_export_snapshot_records(Client, Input, Options)
 -spec get_instance(map(), get_instance_request()) ->
     {ok, get_instance_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_instance_errors(), tuple()}.
 get_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instance(Client, Input, []).
@@ -7345,13 +7728,7 @@ get_instance(Client, Input)
 -spec get_instance(map(), get_instance_request(), proplists:proplist()) ->
     {ok, get_instance_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_instance_errors(), tuple()}.
 get_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInstance">>, Input, Options).
@@ -7369,13 +7746,7 @@ get_instance(Client, Input, Options)
 -spec get_instance_access_details(map(), get_instance_access_details_request()) ->
     {ok, get_instance_access_details_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_instance_access_details_errors(), tuple()}.
 get_instance_access_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instance_access_details(Client, Input, []).
@@ -7383,13 +7754,7 @@ get_instance_access_details(Client, Input)
 -spec get_instance_access_details(map(), get_instance_access_details_request(), proplists:proplist()) ->
     {ok, get_instance_access_details_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_instance_access_details_errors(), tuple()}.
 get_instance_access_details(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInstanceAccessDetails">>, Input, Options).
@@ -7406,13 +7771,7 @@ get_instance_access_details(Client, Input, Options)
 -spec get_instance_metric_data(map(), get_instance_metric_data_request()) ->
     {ok, get_instance_metric_data_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_instance_metric_data_errors(), tuple()}.
 get_instance_metric_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instance_metric_data(Client, Input, []).
@@ -7420,13 +7779,7 @@ get_instance_metric_data(Client, Input)
 -spec get_instance_metric_data(map(), get_instance_metric_data_request(), proplists:proplist()) ->
     {ok, get_instance_metric_data_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_instance_metric_data_errors(), tuple()}.
 get_instance_metric_data(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInstanceMetricData">>, Input, Options).
@@ -7437,13 +7790,7 @@ get_instance_metric_data(Client, Input, Options)
 -spec get_instance_port_states(map(), get_instance_port_states_request()) ->
     {ok, get_instance_port_states_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_instance_port_states_errors(), tuple()}.
 get_instance_port_states(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instance_port_states(Client, Input, []).
@@ -7451,13 +7798,7 @@ get_instance_port_states(Client, Input)
 -spec get_instance_port_states(map(), get_instance_port_states_request(), proplists:proplist()) ->
     {ok, get_instance_port_states_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_instance_port_states_errors(), tuple()}.
 get_instance_port_states(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInstancePortStates">>, Input, Options).
@@ -7466,13 +7807,7 @@ get_instance_port_states(Client, Input, Options)
 -spec get_instance_snapshot(map(), get_instance_snapshot_request()) ->
     {ok, get_instance_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_instance_snapshot_errors(), tuple()}.
 get_instance_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instance_snapshot(Client, Input, []).
@@ -7480,13 +7815,7 @@ get_instance_snapshot(Client, Input)
 -spec get_instance_snapshot(map(), get_instance_snapshot_request(), proplists:proplist()) ->
     {ok, get_instance_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_instance_snapshot_errors(), tuple()}.
 get_instance_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInstanceSnapshot">>, Input, Options).
@@ -7495,13 +7824,7 @@ get_instance_snapshot(Client, Input, Options)
 -spec get_instance_snapshots(map(), get_instance_snapshots_request()) ->
     {ok, get_instance_snapshots_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_instance_snapshots_errors(), tuple()}.
 get_instance_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instance_snapshots(Client, Input, []).
@@ -7509,13 +7832,7 @@ get_instance_snapshots(Client, Input)
 -spec get_instance_snapshots(map(), get_instance_snapshots_request(), proplists:proplist()) ->
     {ok, get_instance_snapshots_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_instance_snapshots_errors(), tuple()}.
 get_instance_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInstanceSnapshots">>, Input, Options).
@@ -7526,13 +7843,7 @@ get_instance_snapshots(Client, Input, Options)
 -spec get_instance_state(map(), get_instance_state_request()) ->
     {ok, get_instance_state_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_instance_state_errors(), tuple()}.
 get_instance_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instance_state(Client, Input, []).
@@ -7540,13 +7851,7 @@ get_instance_state(Client, Input)
 -spec get_instance_state(map(), get_instance_state_request(), proplists:proplist()) ->
     {ok, get_instance_state_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_instance_state_errors(), tuple()}.
 get_instance_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInstanceState">>, Input, Options).
@@ -7557,13 +7862,7 @@ get_instance_state(Client, Input, Options)
 -spec get_instances(map(), get_instances_request()) ->
     {ok, get_instances_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_instances_errors(), tuple()}.
 get_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instances(Client, Input, []).
@@ -7571,13 +7870,7 @@ get_instances(Client, Input)
 -spec get_instances(map(), get_instances_request(), proplists:proplist()) ->
     {ok, get_instances_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_instances_errors(), tuple()}.
 get_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInstances">>, Input, Options).
@@ -7586,13 +7879,7 @@ get_instances(Client, Input, Options)
 -spec get_key_pair(map(), get_key_pair_request()) ->
     {ok, get_key_pair_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_key_pair_errors(), tuple()}.
 get_key_pair(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_key_pair(Client, Input, []).
@@ -7600,13 +7887,7 @@ get_key_pair(Client, Input)
 -spec get_key_pair(map(), get_key_pair_request(), proplists:proplist()) ->
     {ok, get_key_pair_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_key_pair_errors(), tuple()}.
 get_key_pair(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetKeyPair">>, Input, Options).
@@ -7615,13 +7896,7 @@ get_key_pair(Client, Input, Options)
 -spec get_key_pairs(map(), get_key_pairs_request()) ->
     {ok, get_key_pairs_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_key_pairs_errors(), tuple()}.
 get_key_pairs(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_key_pairs(Client, Input, []).
@@ -7629,13 +7904,7 @@ get_key_pairs(Client, Input)
 -spec get_key_pairs(map(), get_key_pairs_request(), proplists:proplist()) ->
     {ok, get_key_pairs_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_key_pairs_errors(), tuple()}.
 get_key_pairs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetKeyPairs">>, Input, Options).
@@ -7644,13 +7913,7 @@ get_key_pairs(Client, Input, Options)
 -spec get_load_balancer(map(), get_load_balancer_request()) ->
     {ok, get_load_balancer_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_load_balancer_errors(), tuple()}.
 get_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_load_balancer(Client, Input, []).
@@ -7658,13 +7921,7 @@ get_load_balancer(Client, Input)
 -spec get_load_balancer(map(), get_load_balancer_request(), proplists:proplist()) ->
     {ok, get_load_balancer_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_load_balancer_errors(), tuple()}.
 get_load_balancer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLoadBalancer">>, Input, Options).
@@ -7680,13 +7937,7 @@ get_load_balancer(Client, Input, Options)
 -spec get_load_balancer_metric_data(map(), get_load_balancer_metric_data_request()) ->
     {ok, get_load_balancer_metric_data_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_load_balancer_metric_data_errors(), tuple()}.
 get_load_balancer_metric_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_load_balancer_metric_data(Client, Input, []).
@@ -7694,13 +7945,7 @@ get_load_balancer_metric_data(Client, Input)
 -spec get_load_balancer_metric_data(map(), get_load_balancer_metric_data_request(), proplists:proplist()) ->
     {ok, get_load_balancer_metric_data_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_load_balancer_metric_data_errors(), tuple()}.
 get_load_balancer_metric_data(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLoadBalancerMetricData">>, Input, Options).
@@ -7717,13 +7962,7 @@ get_load_balancer_metric_data(Client, Input, Options)
 -spec get_load_balancer_tls_certificates(map(), get_load_balancer_tls_certificates_request()) ->
     {ok, get_load_balancer_tls_certificates_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_load_balancer_tls_certificates_errors(), tuple()}.
 get_load_balancer_tls_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_load_balancer_tls_certificates(Client, Input, []).
@@ -7731,13 +7970,7 @@ get_load_balancer_tls_certificates(Client, Input)
 -spec get_load_balancer_tls_certificates(map(), get_load_balancer_tls_certificates_request(), proplists:proplist()) ->
     {ok, get_load_balancer_tls_certificates_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_load_balancer_tls_certificates_errors(), tuple()}.
 get_load_balancer_tls_certificates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLoadBalancerTlsCertificates">>, Input, Options).
@@ -7754,11 +7987,7 @@ get_load_balancer_tls_certificates(Client, Input, Options)
 -spec get_load_balancer_tls_policies(map(), get_load_balancer_tls_policies_request()) ->
     {ok, get_load_balancer_tls_policies_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_load_balancer_tls_policies_errors(), tuple()}.
 get_load_balancer_tls_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_load_balancer_tls_policies(Client, Input, []).
@@ -7766,11 +7995,7 @@ get_load_balancer_tls_policies(Client, Input)
 -spec get_load_balancer_tls_policies(map(), get_load_balancer_tls_policies_request(), proplists:proplist()) ->
     {ok, get_load_balancer_tls_policies_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_load_balancer_tls_policies_errors(), tuple()}.
 get_load_balancer_tls_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLoadBalancerTlsPolicies">>, Input, Options).
@@ -7779,13 +8004,7 @@ get_load_balancer_tls_policies(Client, Input, Options)
 -spec get_load_balancers(map(), get_load_balancers_request()) ->
     {ok, get_load_balancers_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_load_balancers_errors(), tuple()}.
 get_load_balancers(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_load_balancers(Client, Input, []).
@@ -7793,13 +8012,7 @@ get_load_balancers(Client, Input)
 -spec get_load_balancers(map(), get_load_balancers_request(), proplists:proplist()) ->
     {ok, get_load_balancers_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_load_balancers_errors(), tuple()}.
 get_load_balancers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLoadBalancers">>, Input, Options).
@@ -7811,13 +8024,7 @@ get_load_balancers(Client, Input, Options)
 -spec get_operation(map(), get_operation_request()) ->
     {ok, get_operation_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_operation_errors(), tuple()}.
 get_operation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_operation(Client, Input, []).
@@ -7825,13 +8032,7 @@ get_operation(Client, Input)
 -spec get_operation(map(), get_operation_request(), proplists:proplist()) ->
     {ok, get_operation_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_operation_errors(), tuple()}.
 get_operation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOperation">>, Input, Options).
@@ -7846,13 +8047,7 @@ get_operation(Client, Input, Options)
 -spec get_operations(map(), get_operations_request()) ->
     {ok, get_operations_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_operations_errors(), tuple()}.
 get_operations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_operations(Client, Input, []).
@@ -7860,13 +8055,7 @@ get_operations(Client, Input)
 -spec get_operations(map(), get_operations_request(), proplists:proplist()) ->
     {ok, get_operations_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_operations_errors(), tuple()}.
 get_operations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOperations">>, Input, Options).
@@ -7875,13 +8064,7 @@ get_operations(Client, Input, Options)
 -spec get_operations_for_resource(map(), get_operations_for_resource_request()) ->
     {ok, get_operations_for_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_operations_for_resource_errors(), tuple()}.
 get_operations_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_operations_for_resource(Client, Input, []).
@@ -7889,13 +8072,7 @@ get_operations_for_resource(Client, Input)
 -spec get_operations_for_resource(map(), get_operations_for_resource_request(), proplists:proplist()) ->
     {ok, get_operations_for_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_operations_for_resource_errors(), tuple()}.
 get_operations_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOperationsForResource">>, Input, Options).
@@ -7910,13 +8087,7 @@ get_operations_for_resource(Client, Input, Options)
 -spec get_regions(map(), get_regions_request()) ->
     {ok, get_regions_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_regions_errors(), tuple()}.
 get_regions(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_regions(Client, Input, []).
@@ -7924,13 +8095,7 @@ get_regions(Client, Input)
 -spec get_regions(map(), get_regions_request(), proplists:proplist()) ->
     {ok, get_regions_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_regions_errors(), tuple()}.
 get_regions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRegions">>, Input, Options).
@@ -7939,13 +8104,7 @@ get_regions(Client, Input, Options)
 -spec get_relational_database(map(), get_relational_database_request()) ->
     {ok, get_relational_database_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_relational_database_errors(), tuple()}.
 get_relational_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_relational_database(Client, Input, []).
@@ -7953,13 +8112,7 @@ get_relational_database(Client, Input)
 -spec get_relational_database(map(), get_relational_database_request(), proplists:proplist()) ->
     {ok, get_relational_database_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_relational_database_errors(), tuple()}.
 get_relational_database(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRelationalDatabase">>, Input, Options).
@@ -7975,13 +8128,7 @@ get_relational_database(Client, Input, Options)
 -spec get_relational_database_blueprints(map(), get_relational_database_blueprints_request()) ->
     {ok, get_relational_database_blueprints_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_relational_database_blueprints_errors(), tuple()}.
 get_relational_database_blueprints(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_relational_database_blueprints(Client, Input, []).
@@ -7989,13 +8136,7 @@ get_relational_database_blueprints(Client, Input)
 -spec get_relational_database_blueprints(map(), get_relational_database_blueprints_request(), proplists:proplist()) ->
     {ok, get_relational_database_blueprints_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_relational_database_blueprints_errors(), tuple()}.
 get_relational_database_blueprints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRelationalDatabaseBlueprints">>, Input, Options).
@@ -8010,13 +8151,7 @@ get_relational_database_blueprints(Client, Input, Options)
 -spec get_relational_database_bundles(map(), get_relational_database_bundles_request()) ->
     {ok, get_relational_database_bundles_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_relational_database_bundles_errors(), tuple()}.
 get_relational_database_bundles(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_relational_database_bundles(Client, Input, []).
@@ -8024,13 +8159,7 @@ get_relational_database_bundles(Client, Input)
 -spec get_relational_database_bundles(map(), get_relational_database_bundles_request(), proplists:proplist()) ->
     {ok, get_relational_database_bundles_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_relational_database_bundles_errors(), tuple()}.
 get_relational_database_bundles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRelationalDatabaseBundles">>, Input, Options).
@@ -8039,13 +8168,7 @@ get_relational_database_bundles(Client, Input, Options)
 -spec get_relational_database_events(map(), get_relational_database_events_request()) ->
     {ok, get_relational_database_events_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_relational_database_events_errors(), tuple()}.
 get_relational_database_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_relational_database_events(Client, Input, []).
@@ -8053,13 +8176,7 @@ get_relational_database_events(Client, Input)
 -spec get_relational_database_events(map(), get_relational_database_events_request(), proplists:proplist()) ->
     {ok, get_relational_database_events_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_relational_database_events_errors(), tuple()}.
 get_relational_database_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRelationalDatabaseEvents">>, Input, Options).
@@ -8068,13 +8185,7 @@ get_relational_database_events(Client, Input, Options)
 -spec get_relational_database_log_events(map(), get_relational_database_log_events_request()) ->
     {ok, get_relational_database_log_events_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_relational_database_log_events_errors(), tuple()}.
 get_relational_database_log_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_relational_database_log_events(Client, Input, []).
@@ -8082,13 +8193,7 @@ get_relational_database_log_events(Client, Input)
 -spec get_relational_database_log_events(map(), get_relational_database_log_events_request(), proplists:proplist()) ->
     {ok, get_relational_database_log_events_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_relational_database_log_events_errors(), tuple()}.
 get_relational_database_log_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRelationalDatabaseLogEvents">>, Input, Options).
@@ -8098,13 +8203,7 @@ get_relational_database_log_events(Client, Input, Options)
 -spec get_relational_database_log_streams(map(), get_relational_database_log_streams_request()) ->
     {ok, get_relational_database_log_streams_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_relational_database_log_streams_errors(), tuple()}.
 get_relational_database_log_streams(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_relational_database_log_streams(Client, Input, []).
@@ -8112,13 +8211,7 @@ get_relational_database_log_streams(Client, Input)
 -spec get_relational_database_log_streams(map(), get_relational_database_log_streams_request(), proplists:proplist()) ->
     {ok, get_relational_database_log_streams_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_relational_database_log_streams_errors(), tuple()}.
 get_relational_database_log_streams(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRelationalDatabaseLogStreams">>, Input, Options).
@@ -8134,13 +8227,7 @@ get_relational_database_log_streams(Client, Input, Options)
 -spec get_relational_database_master_user_password(map(), get_relational_database_master_user_password_request()) ->
     {ok, get_relational_database_master_user_password_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_relational_database_master_user_password_errors(), tuple()}.
 get_relational_database_master_user_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_relational_database_master_user_password(Client, Input, []).
@@ -8148,13 +8235,7 @@ get_relational_database_master_user_password(Client, Input)
 -spec get_relational_database_master_user_password(map(), get_relational_database_master_user_password_request(), proplists:proplist()) ->
     {ok, get_relational_database_master_user_password_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_relational_database_master_user_password_errors(), tuple()}.
 get_relational_database_master_user_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRelationalDatabaseMasterUserPassword">>, Input, Options).
@@ -8170,13 +8251,7 @@ get_relational_database_master_user_password(Client, Input, Options)
 -spec get_relational_database_metric_data(map(), get_relational_database_metric_data_request()) ->
     {ok, get_relational_database_metric_data_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_relational_database_metric_data_errors(), tuple()}.
 get_relational_database_metric_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_relational_database_metric_data(Client, Input, []).
@@ -8184,13 +8259,7 @@ get_relational_database_metric_data(Client, Input)
 -spec get_relational_database_metric_data(map(), get_relational_database_metric_data_request(), proplists:proplist()) ->
     {ok, get_relational_database_metric_data_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_relational_database_metric_data_errors(), tuple()}.
 get_relational_database_metric_data(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRelationalDatabaseMetricData">>, Input, Options).
@@ -8207,13 +8276,7 @@ get_relational_database_metric_data(Client, Input, Options)
 -spec get_relational_database_parameters(map(), get_relational_database_parameters_request()) ->
     {ok, get_relational_database_parameters_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_relational_database_parameters_errors(), tuple()}.
 get_relational_database_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_relational_database_parameters(Client, Input, []).
@@ -8221,13 +8284,7 @@ get_relational_database_parameters(Client, Input)
 -spec get_relational_database_parameters(map(), get_relational_database_parameters_request(), proplists:proplist()) ->
     {ok, get_relational_database_parameters_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_relational_database_parameters_errors(), tuple()}.
 get_relational_database_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRelationalDatabaseParameters">>, Input, Options).
@@ -8237,13 +8294,7 @@ get_relational_database_parameters(Client, Input, Options)
 -spec get_relational_database_snapshot(map(), get_relational_database_snapshot_request()) ->
     {ok, get_relational_database_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_relational_database_snapshot_errors(), tuple()}.
 get_relational_database_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_relational_database_snapshot(Client, Input, []).
@@ -8251,13 +8302,7 @@ get_relational_database_snapshot(Client, Input)
 -spec get_relational_database_snapshot(map(), get_relational_database_snapshot_request(), proplists:proplist()) ->
     {ok, get_relational_database_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_relational_database_snapshot_errors(), tuple()}.
 get_relational_database_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRelationalDatabaseSnapshot">>, Input, Options).
@@ -8267,13 +8312,7 @@ get_relational_database_snapshot(Client, Input, Options)
 -spec get_relational_database_snapshots(map(), get_relational_database_snapshots_request()) ->
     {ok, get_relational_database_snapshots_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_relational_database_snapshots_errors(), tuple()}.
 get_relational_database_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_relational_database_snapshots(Client, Input, []).
@@ -8281,13 +8320,7 @@ get_relational_database_snapshots(Client, Input)
 -spec get_relational_database_snapshots(map(), get_relational_database_snapshots_request(), proplists:proplist()) ->
     {ok, get_relational_database_snapshots_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_relational_database_snapshots_errors(), tuple()}.
 get_relational_database_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRelationalDatabaseSnapshots">>, Input, Options).
@@ -8296,13 +8329,7 @@ get_relational_database_snapshots(Client, Input, Options)
 -spec get_relational_databases(map(), get_relational_databases_request()) ->
     {ok, get_relational_databases_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_relational_databases_errors(), tuple()}.
 get_relational_databases(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_relational_databases(Client, Input, []).
@@ -8310,13 +8337,7 @@ get_relational_databases(Client, Input)
 -spec get_relational_databases(map(), get_relational_databases_request(), proplists:proplist()) ->
     {ok, get_relational_databases_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_relational_databases_errors(), tuple()}.
 get_relational_databases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRelationalDatabases">>, Input, Options).
@@ -8326,11 +8347,7 @@ get_relational_databases(Client, Input, Options)
 -spec get_setup_history(map(), get_setup_history_request()) ->
     {ok, get_setup_history_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_setup_history_errors(), tuple()}.
 get_setup_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_setup_history(Client, Input, []).
@@ -8338,11 +8355,7 @@ get_setup_history(Client, Input)
 -spec get_setup_history(map(), get_setup_history_request(), proplists:proplist()) ->
     {ok, get_setup_history_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_setup_history_errors(), tuple()}.
 get_setup_history(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSetupHistory">>, Input, Options).
@@ -8351,13 +8364,7 @@ get_setup_history(Client, Input, Options)
 -spec get_static_ip(map(), get_static_ip_request()) ->
     {ok, get_static_ip_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_static_ip_errors(), tuple()}.
 get_static_ip(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_static_ip(Client, Input, []).
@@ -8365,13 +8372,7 @@ get_static_ip(Client, Input)
 -spec get_static_ip(map(), get_static_ip_request(), proplists:proplist()) ->
     {ok, get_static_ip_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_static_ip_errors(), tuple()}.
 get_static_ip(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetStaticIp">>, Input, Options).
@@ -8380,13 +8381,7 @@ get_static_ip(Client, Input, Options)
 -spec get_static_ips(map(), get_static_ips_request()) ->
     {ok, get_static_ips_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_static_ips_errors(), tuple()}.
 get_static_ips(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_static_ips(Client, Input, []).
@@ -8394,13 +8389,7 @@ get_static_ips(Client, Input)
 -spec get_static_ips(map(), get_static_ips_request(), proplists:proplist()) ->
     {ok, get_static_ips_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, get_static_ips_errors(), tuple()}.
 get_static_ips(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetStaticIps">>, Input, Options).
@@ -8409,13 +8398,7 @@ get_static_ips(Client, Input, Options)
 -spec import_key_pair(map(), import_key_pair_request()) ->
     {ok, import_key_pair_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, import_key_pair_errors(), tuple()}.
 import_key_pair(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_key_pair(Client, Input, []).
@@ -8423,13 +8406,7 @@ import_key_pair(Client, Input)
 -spec import_key_pair(map(), import_key_pair_request(), proplists:proplist()) ->
     {ok, import_key_pair_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, import_key_pair_errors(), tuple()}.
 import_key_pair(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportKeyPair">>, Input, Options).
@@ -8439,13 +8416,7 @@ import_key_pair(Client, Input, Options)
 -spec is_vpc_peered(map(), is_vpc_peered_request()) ->
     {ok, is_vpc_peered_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, is_vpc_peered_errors(), tuple()}.
 is_vpc_peered(Client, Input)
   when is_map(Client), is_map(Input) ->
     is_vpc_peered(Client, Input, []).
@@ -8453,13 +8424,7 @@ is_vpc_peered(Client, Input)
 -spec is_vpc_peered(map(), is_vpc_peered_request(), proplists:proplist()) ->
     {ok, is_vpc_peered_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, is_vpc_peered_errors(), tuple()}.
 is_vpc_peered(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"IsVpcPeered">>, Input, Options).
@@ -8477,13 +8442,7 @@ is_vpc_peered(Client, Input, Options)
 -spec open_instance_public_ports(map(), open_instance_public_ports_request()) ->
     {ok, open_instance_public_ports_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, open_instance_public_ports_errors(), tuple()}.
 open_instance_public_ports(Client, Input)
   when is_map(Client), is_map(Input) ->
     open_instance_public_ports(Client, Input, []).
@@ -8491,13 +8450,7 @@ open_instance_public_ports(Client, Input)
 -spec open_instance_public_ports(map(), open_instance_public_ports_request(), proplists:proplist()) ->
     {ok, open_instance_public_ports_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, open_instance_public_ports_errors(), tuple()}.
 open_instance_public_ports(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"OpenInstancePublicPorts">>, Input, Options).
@@ -8506,13 +8459,7 @@ open_instance_public_ports(Client, Input, Options)
 -spec peer_vpc(map(), peer_vpc_request()) ->
     {ok, peer_vpc_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, peer_vpc_errors(), tuple()}.
 peer_vpc(Client, Input)
   when is_map(Client), is_map(Input) ->
     peer_vpc(Client, Input, []).
@@ -8520,13 +8467,7 @@ peer_vpc(Client, Input)
 -spec peer_vpc(map(), peer_vpc_request(), proplists:proplist()) ->
     {ok, peer_vpc_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, peer_vpc_errors(), tuple()}.
 peer_vpc(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PeerVpc">>, Input, Options).
@@ -8555,12 +8496,7 @@ peer_vpc(Client, Input, Options)
 -spec put_alarm(map(), put_alarm_request()) ->
     {ok, put_alarm_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, put_alarm_errors(), tuple()}.
 put_alarm(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_alarm(Client, Input, []).
@@ -8568,12 +8504,7 @@ put_alarm(Client, Input)
 -spec put_alarm(map(), put_alarm_request(), proplists:proplist()) ->
     {ok, put_alarm_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, put_alarm_errors(), tuple()}.
 put_alarm(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAlarm">>, Input, Options).
@@ -8600,13 +8531,7 @@ put_alarm(Client, Input, Options)
 -spec put_instance_public_ports(map(), put_instance_public_ports_request()) ->
     {ok, put_instance_public_ports_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, put_instance_public_ports_errors(), tuple()}.
 put_instance_public_ports(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_instance_public_ports(Client, Input, []).
@@ -8614,13 +8539,7 @@ put_instance_public_ports(Client, Input)
 -spec put_instance_public_ports(map(), put_instance_public_ports_request(), proplists:proplist()) ->
     {ok, put_instance_public_ports_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, put_instance_public_ports_errors(), tuple()}.
 put_instance_public_ports(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutInstancePublicPorts">>, Input, Options).
@@ -8636,13 +8555,7 @@ put_instance_public_ports(Client, Input, Options)
 -spec reboot_instance(map(), reboot_instance_request()) ->
     {ok, reboot_instance_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, reboot_instance_errors(), tuple()}.
 reboot_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_instance(Client, Input, []).
@@ -8650,13 +8563,7 @@ reboot_instance(Client, Input)
 -spec reboot_instance(map(), reboot_instance_request(), proplists:proplist()) ->
     {ok, reboot_instance_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, reboot_instance_errors(), tuple()}.
 reboot_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RebootInstance">>, Input, Options).
@@ -8672,13 +8579,7 @@ reboot_instance(Client, Input, Options)
 -spec reboot_relational_database(map(), reboot_relational_database_request()) ->
     {ok, reboot_relational_database_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, reboot_relational_database_errors(), tuple()}.
 reboot_relational_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_relational_database(Client, Input, []).
@@ -8686,13 +8587,7 @@ reboot_relational_database(Client, Input)
 -spec reboot_relational_database(map(), reboot_relational_database_request(), proplists:proplist()) ->
     {ok, reboot_relational_database_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, reboot_relational_database_errors(), tuple()}.
 reboot_relational_database(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RebootRelationalDatabase">>, Input, Options).
@@ -8710,11 +8605,7 @@ reboot_relational_database(Client, Input, Options)
 -spec register_container_image(map(), register_container_image_request()) ->
     {ok, register_container_image_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, register_container_image_errors(), tuple()}.
 register_container_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_container_image(Client, Input, []).
@@ -8722,11 +8613,7 @@ register_container_image(Client, Input)
 -spec register_container_image(map(), register_container_image_request(), proplists:proplist()) ->
     {ok, register_container_image_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, register_container_image_errors(), tuple()}.
 register_container_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterContainerImage">>, Input, Options).
@@ -8735,13 +8622,7 @@ register_container_image(Client, Input, Options)
 -spec release_static_ip(map(), release_static_ip_request()) ->
     {ok, release_static_ip_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, release_static_ip_errors(), tuple()}.
 release_static_ip(Client, Input)
   when is_map(Client), is_map(Input) ->
     release_static_ip(Client, Input, []).
@@ -8749,13 +8630,7 @@ release_static_ip(Client, Input)
 -spec release_static_ip(map(), release_static_ip_request(), proplists:proplist()) ->
     {ok, release_static_ip_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, release_static_ip_errors(), tuple()}.
 release_static_ip(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ReleaseStaticIp">>, Input, Options).
@@ -8770,12 +8645,7 @@ release_static_ip(Client, Input, Options)
 -spec reset_distribution_cache(map(), reset_distribution_cache_request()) ->
     {ok, reset_distribution_cache_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, reset_distribution_cache_errors(), tuple()}.
 reset_distribution_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_distribution_cache(Client, Input, []).
@@ -8783,12 +8653,7 @@ reset_distribution_cache(Client, Input)
 -spec reset_distribution_cache(map(), reset_distribution_cache_request(), proplists:proplist()) ->
     {ok, reset_distribution_cache_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, reset_distribution_cache_errors(), tuple()}.
 reset_distribution_cache(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResetDistributionCache">>, Input, Options).
@@ -8821,12 +8686,7 @@ reset_distribution_cache(Client, Input, Options)
 -spec send_contact_method_verification(map(), send_contact_method_verification_request()) ->
     {ok, send_contact_method_verification_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, send_contact_method_verification_errors(), tuple()}.
 send_contact_method_verification(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_contact_method_verification(Client, Input, []).
@@ -8834,12 +8694,7 @@ send_contact_method_verification(Client, Input)
 -spec send_contact_method_verification(map(), send_contact_method_verification_request(), proplists:proplist()) ->
     {ok, send_contact_method_verification_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, send_contact_method_verification_errors(), tuple()}.
 send_contact_method_verification(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendContactMethodVerification">>, Input, Options).
@@ -8854,13 +8709,7 @@ send_contact_method_verification(Client, Input, Options)
 -spec set_ip_address_type(map(), set_ip_address_type_request()) ->
     {ok, set_ip_address_type_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, set_ip_address_type_errors(), tuple()}.
 set_ip_address_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_ip_address_type(Client, Input, []).
@@ -8868,13 +8717,7 @@ set_ip_address_type(Client, Input)
 -spec set_ip_address_type(map(), set_ip_address_type_request(), proplists:proplist()) ->
     {ok, set_ip_address_type_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, set_ip_address_type_errors(), tuple()}.
 set_ip_address_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetIpAddressType">>, Input, Options).
@@ -8889,11 +8732,7 @@ set_ip_address_type(Client, Input, Options)
 -spec set_resource_access_for_bucket(map(), set_resource_access_for_bucket_request()) ->
     {ok, set_resource_access_for_bucket_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, set_resource_access_for_bucket_errors(), tuple()}.
 set_resource_access_for_bucket(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_resource_access_for_bucket(Client, Input, []).
@@ -8901,11 +8740,7 @@ set_resource_access_for_bucket(Client, Input)
 -spec set_resource_access_for_bucket(map(), set_resource_access_for_bucket_request(), proplists:proplist()) ->
     {ok, set_resource_access_for_bucket_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, set_resource_access_for_bucket_errors(), tuple()}.
 set_resource_access_for_bucket(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetResourceAccessForBucket">>, Input, Options).
@@ -8921,11 +8756,7 @@ set_resource_access_for_bucket(Client, Input, Options)
 -spec setup_instance_https(map(), setup_instance_https_request()) ->
     {ok, setup_instance_https_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, setup_instance_https_errors(), tuple()}.
 setup_instance_https(Client, Input)
   when is_map(Client), is_map(Input) ->
     setup_instance_https(Client, Input, []).
@@ -8933,11 +8764,7 @@ setup_instance_https(Client, Input)
 -spec setup_instance_https(map(), setup_instance_https_request(), proplists:proplist()) ->
     {ok, setup_instance_https_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, setup_instance_https_errors(), tuple()}.
 setup_instance_https(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetupInstanceHttps">>, Input, Options).
@@ -8951,11 +8778,7 @@ setup_instance_https(Client, Input, Options)
 -spec start_g_ui_session(map(), start_g_ui_session_request()) ->
     {ok, start_g_ui_session_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, start_g_ui_session_errors(), tuple()}.
 start_g_ui_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_g_ui_session(Client, Input, []).
@@ -8963,11 +8786,7 @@ start_g_ui_session(Client, Input)
 -spec start_g_ui_session(map(), start_g_ui_session_request(), proplists:proplist()) ->
     {ok, start_g_ui_session_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, start_g_ui_session_errors(), tuple()}.
 start_g_ui_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartGUISession">>, Input, Options).
@@ -8994,13 +8813,7 @@ start_g_ui_session(Client, Input, Options)
 -spec start_instance(map(), start_instance_request()) ->
     {ok, start_instance_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, start_instance_errors(), tuple()}.
 start_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_instance(Client, Input, []).
@@ -9008,13 +8821,7 @@ start_instance(Client, Input)
 -spec start_instance(map(), start_instance_request(), proplists:proplist()) ->
     {ok, start_instance_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, start_instance_errors(), tuple()}.
 start_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartInstance">>, Input, Options).
@@ -9033,13 +8840,7 @@ start_instance(Client, Input, Options)
 -spec start_relational_database(map(), start_relational_database_request()) ->
     {ok, start_relational_database_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, start_relational_database_errors(), tuple()}.
 start_relational_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_relational_database(Client, Input, []).
@@ -9047,13 +8848,7 @@ start_relational_database(Client, Input)
 -spec start_relational_database(map(), start_relational_database_request(), proplists:proplist()) ->
     {ok, start_relational_database_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, start_relational_database_errors(), tuple()}.
 start_relational_database(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartRelationalDatabase">>, Input, Options).
@@ -9067,11 +8862,7 @@ start_relational_database(Client, Input, Options)
 -spec stop_g_ui_session(map(), stop_g_ui_session_request()) ->
     {ok, stop_g_ui_session_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, stop_g_ui_session_errors(), tuple()}.
 stop_g_ui_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_g_ui_session(Client, Input, []).
@@ -9079,11 +8870,7 @@ stop_g_ui_session(Client, Input)
 -spec stop_g_ui_session(map(), stop_g_ui_session_request(), proplists:proplist()) ->
     {ok, stop_g_ui_session_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, stop_g_ui_session_errors(), tuple()}.
 stop_g_ui_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopGUISession">>, Input, Options).
@@ -9107,13 +8894,7 @@ stop_g_ui_session(Client, Input, Options)
 -spec stop_instance(map(), stop_instance_request()) ->
     {ok, stop_instance_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, stop_instance_errors(), tuple()}.
 stop_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_instance(Client, Input, []).
@@ -9121,13 +8902,7 @@ stop_instance(Client, Input)
 -spec stop_instance(map(), stop_instance_request(), proplists:proplist()) ->
     {ok, stop_instance_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, stop_instance_errors(), tuple()}.
 stop_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopInstance">>, Input, Options).
@@ -9144,13 +8919,7 @@ stop_instance(Client, Input, Options)
 -spec stop_relational_database(map(), stop_relational_database_request()) ->
     {ok, stop_relational_database_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, stop_relational_database_errors(), tuple()}.
 stop_relational_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_relational_database(Client, Input, []).
@@ -9158,13 +8927,7 @@ stop_relational_database(Client, Input)
 -spec stop_relational_database(map(), stop_relational_database_request(), proplists:proplist()) ->
     {ok, stop_relational_database_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, stop_relational_database_errors(), tuple()}.
 stop_relational_database(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopRelationalDatabase">>, Input, Options).
@@ -9187,13 +8950,7 @@ stop_relational_database(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -9201,13 +8958,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -9231,12 +8982,7 @@ tag_resource(Client, Input, Options)
 -spec test_alarm(map(), test_alarm_request()) ->
     {ok, test_alarm_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, test_alarm_errors(), tuple()}.
 test_alarm(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_alarm(Client, Input, []).
@@ -9244,12 +8990,7 @@ test_alarm(Client, Input)
 -spec test_alarm(map(), test_alarm_request(), proplists:proplist()) ->
     {ok, test_alarm_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, test_alarm_errors(), tuple()}.
 test_alarm(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TestAlarm">>, Input, Options).
@@ -9258,13 +8999,7 @@ test_alarm(Client, Input, Options)
 -spec unpeer_vpc(map(), unpeer_vpc_request()) ->
     {ok, unpeer_vpc_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, unpeer_vpc_errors(), tuple()}.
 unpeer_vpc(Client, Input)
   when is_map(Client), is_map(Input) ->
     unpeer_vpc(Client, Input, []).
@@ -9272,13 +9007,7 @@ unpeer_vpc(Client, Input)
 -spec unpeer_vpc(map(), unpeer_vpc_request(), proplists:proplist()) ->
     {ok, unpeer_vpc_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, unpeer_vpc_errors(), tuple()}.
 unpeer_vpc(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UnpeerVpc">>, Input, Options).
@@ -9296,13 +9025,7 @@ unpeer_vpc(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -9310,13 +9033,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -9330,11 +9047,7 @@ untag_resource(Client, Input, Options)
 -spec update_bucket(map(), update_bucket_request()) ->
     {ok, update_bucket_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, update_bucket_errors(), tuple()}.
 update_bucket(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_bucket(Client, Input, []).
@@ -9342,11 +9055,7 @@ update_bucket(Client, Input)
 -spec update_bucket(map(), update_bucket_request(), proplists:proplist()) ->
     {ok, update_bucket_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, update_bucket_errors(), tuple()}.
 update_bucket(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateBucket">>, Input, Options).
@@ -9382,11 +9091,7 @@ update_bucket(Client, Input, Options)
 -spec update_bucket_bundle(map(), update_bucket_bundle_request()) ->
     {ok, update_bucket_bundle_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, update_bucket_bundle_errors(), tuple()}.
 update_bucket_bundle(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_bucket_bundle(Client, Input, []).
@@ -9394,11 +9099,7 @@ update_bucket_bundle(Client, Input)
 -spec update_bucket_bundle(map(), update_bucket_bundle_request(), proplists:proplist()) ->
     {ok, update_bucket_bundle_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, update_bucket_bundle_errors(), tuple()}.
 update_bucket_bundle(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateBucketBundle">>, Input, Options).
@@ -9409,11 +9110,7 @@ update_bucket_bundle(Client, Input, Options)
 -spec update_container_service(map(), update_container_service_request()) ->
     {ok, update_container_service_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, update_container_service_errors(), tuple()}.
 update_container_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_container_service(Client, Input, []).
@@ -9421,11 +9118,7 @@ update_container_service(Client, Input)
 -spec update_container_service(map(), update_container_service_request(), proplists:proplist()) ->
     {ok, update_container_service_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, update_container_service_errors(), tuple()}.
 update_container_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateContainerService">>, Input, Options).
@@ -9437,12 +9130,7 @@ update_container_service(Client, Input, Options)
 -spec update_distribution(map(), update_distribution_request()) ->
     {ok, update_distribution_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, update_distribution_errors(), tuple()}.
 update_distribution(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_distribution(Client, Input, []).
@@ -9450,12 +9138,7 @@ update_distribution(Client, Input)
 -spec update_distribution(map(), update_distribution_request(), proplists:proplist()) ->
     {ok, update_distribution_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, update_distribution_errors(), tuple()}.
 update_distribution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDistribution">>, Input, Options).
@@ -9482,12 +9165,7 @@ update_distribution(Client, Input, Options)
 -spec update_distribution_bundle(map(), update_distribution_bundle_request()) ->
     {ok, update_distribution_bundle_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, update_distribution_bundle_errors(), tuple()}.
 update_distribution_bundle(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_distribution_bundle(Client, Input, []).
@@ -9495,12 +9173,7 @@ update_distribution_bundle(Client, Input)
 -spec update_distribution_bundle(map(), update_distribution_bundle_request(), proplists:proplist()) ->
     {ok, update_distribution_bundle_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, update_distribution_bundle_errors(), tuple()}.
 update_distribution_bundle(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDistributionBundle">>, Input, Options).
@@ -9516,13 +9189,7 @@ update_distribution_bundle(Client, Input, Options)
 -spec update_domain_entry(map(), update_domain_entry_request()) ->
     {ok, update_domain_entry_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, update_domain_entry_errors(), tuple()}.
 update_domain_entry(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_domain_entry(Client, Input, []).
@@ -9530,13 +9197,7 @@ update_domain_entry(Client, Input)
 -spec update_domain_entry(map(), update_domain_entry_request(), proplists:proplist()) ->
     {ok, update_domain_entry_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, update_domain_entry_errors(), tuple()}.
 update_domain_entry(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDomainEntry">>, Input, Options).
@@ -9558,13 +9219,7 @@ update_domain_entry(Client, Input, Options)
 -spec update_instance_metadata_options(map(), update_instance_metadata_options_request()) ->
     {ok, update_instance_metadata_options_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, update_instance_metadata_options_errors(), tuple()}.
 update_instance_metadata_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_instance_metadata_options(Client, Input, []).
@@ -9572,13 +9227,7 @@ update_instance_metadata_options(Client, Input)
 -spec update_instance_metadata_options(map(), update_instance_metadata_options_request(), proplists:proplist()) ->
     {ok, update_instance_metadata_options_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, update_instance_metadata_options_errors(), tuple()}.
 update_instance_metadata_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateInstanceMetadataOptions">>, Input, Options).
@@ -9598,13 +9247,7 @@ update_instance_metadata_options(Client, Input, Options)
 -spec update_load_balancer_attribute(map(), update_load_balancer_attribute_request()) ->
     {ok, update_load_balancer_attribute_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, update_load_balancer_attribute_errors(), tuple()}.
 update_load_balancer_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_load_balancer_attribute(Client, Input, []).
@@ -9612,13 +9255,7 @@ update_load_balancer_attribute(Client, Input)
 -spec update_load_balancer_attribute(map(), update_load_balancer_attribute_request(), proplists:proplist()) ->
     {ok, update_load_balancer_attribute_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, update_load_balancer_attribute_errors(), tuple()}.
 update_load_balancer_attribute(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLoadBalancerAttribute">>, Input, Options).
@@ -9639,13 +9276,7 @@ update_load_balancer_attribute(Client, Input, Options)
 -spec update_relational_database(map(), update_relational_database_request()) ->
     {ok, update_relational_database_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, update_relational_database_errors(), tuple()}.
 update_relational_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_relational_database(Client, Input, []).
@@ -9653,13 +9284,7 @@ update_relational_database(Client, Input)
 -spec update_relational_database(map(), update_relational_database_request(), proplists:proplist()) ->
     {ok, update_relational_database_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, update_relational_database_errors(), tuple()}.
 update_relational_database(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRelationalDatabase">>, Input, Options).
@@ -9686,13 +9311,7 @@ update_relational_database(Client, Input, Options)
 -spec update_relational_database_parameters(map(), update_relational_database_parameters_request()) ->
     {ok, update_relational_database_parameters_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, update_relational_database_parameters_errors(), tuple()}.
 update_relational_database_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_relational_database_parameters(Client, Input, []).
@@ -9700,13 +9319,7 @@ update_relational_database_parameters(Client, Input)
 -spec update_relational_database_parameters(map(), update_relational_database_parameters_request(), proplists:proplist()) ->
     {ok, update_relational_database_parameters_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_setup_in_progress_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, operation_failure_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unauthenticated_exception(), tuple()}.
+    {error, update_relational_database_parameters_errors(), tuple()}.
 update_relational_database_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRelationalDatabaseParameters">>, Input, Options).

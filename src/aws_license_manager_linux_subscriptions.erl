@@ -26,9 +26,11 @@
 %%   <<"Values">> => list([string()]())
 %% }
 -type filter() :: #{binary() => any()}.
+
 %% Example:
 %% get_service_settings_request() :: #{}
 -type get_service_settings_request() :: #{}.
+
 
 %% Example:
 %% get_service_settings_response() :: #{
@@ -39,6 +41,7 @@
 %%   <<"StatusMessage">> => map()
 %% }
 -type get_service_settings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% instance() :: #{
@@ -55,11 +58,13 @@
 %% }
 -type instance() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% linux_subscriptions_discovery_settings() :: #{
@@ -67,6 +72,7 @@
 %%   <<"SourceRegions">> => list([string()]())
 %% }
 -type linux_subscriptions_discovery_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_linux_subscription_instances_request() :: #{
@@ -76,12 +82,14 @@
 %% }
 -type list_linux_subscription_instances_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_linux_subscription_instances_response() :: #{
 %%   <<"Instances">> => list(instance()()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_linux_subscription_instances_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_linux_subscriptions_request() :: #{
@@ -91,12 +99,14 @@
 %% }
 -type list_linux_subscriptions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_linux_subscriptions_response() :: #{
 %%   <<"NextToken">> => [string()],
 %%   <<"Subscriptions">> => list(subscription()())
 %% }
 -type list_linux_subscriptions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% subscription() :: #{
@@ -106,11 +116,13 @@
 %% }
 -type subscription() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_service_settings_request() :: #{
@@ -119,6 +131,7 @@
 %%   <<"LinuxSubscriptionsDiscoverySettings">> := linux_subscriptions_discovery_settings()
 %% }
 -type update_service_settings_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_service_settings_response() :: #{
@@ -130,11 +143,32 @@
 %% }
 -type update_service_settings_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
+-type get_service_settings_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception().
+
+-type list_linux_subscription_instances_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception().
+
+-type list_linux_subscriptions_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception().
+
+-type update_service_settings_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception().
 
 %%====================================================================
 %% API
@@ -144,18 +178,14 @@
 -spec get_service_settings(map(), get_service_settings_request()) ->
     {ok, get_service_settings_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_service_settings_errors(), tuple()}.
 get_service_settings(Client, Input) ->
     get_service_settings(Client, Input, []).
 
 -spec get_service_settings(map(), get_service_settings_request(), proplists:proplist()) ->
     {ok, get_service_settings_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_service_settings_errors(), tuple()}.
 get_service_settings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/subscription/GetServiceSettings"],
@@ -184,18 +214,14 @@ get_service_settings(Client, Input0, Options0) ->
 -spec list_linux_subscription_instances(map(), list_linux_subscription_instances_request()) ->
     {ok, list_linux_subscription_instances_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_linux_subscription_instances_errors(), tuple()}.
 list_linux_subscription_instances(Client, Input) ->
     list_linux_subscription_instances(Client, Input, []).
 
 -spec list_linux_subscription_instances(map(), list_linux_subscription_instances_request(), proplists:proplist()) ->
     {ok, list_linux_subscription_instances_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_linux_subscription_instances_errors(), tuple()}.
 list_linux_subscription_instances(Client, Input0, Options0) ->
     Method = post,
     Path = ["/subscription/ListLinuxSubscriptionInstances"],
@@ -227,18 +253,14 @@ list_linux_subscription_instances(Client, Input0, Options0) ->
 -spec list_linux_subscriptions(map(), list_linux_subscriptions_request()) ->
     {ok, list_linux_subscriptions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_linux_subscriptions_errors(), tuple()}.
 list_linux_subscriptions(Client, Input) ->
     list_linux_subscriptions(Client, Input, []).
 
 -spec list_linux_subscriptions(map(), list_linux_subscriptions_request(), proplists:proplist()) ->
     {ok, list_linux_subscriptions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_linux_subscriptions_errors(), tuple()}.
 list_linux_subscriptions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/subscription/ListLinuxSubscriptions"],
@@ -265,18 +287,14 @@ list_linux_subscriptions(Client, Input0, Options0) ->
 -spec update_service_settings(map(), update_service_settings_request()) ->
     {ok, update_service_settings_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_service_settings_errors(), tuple()}.
 update_service_settings(Client, Input) ->
     update_service_settings(Client, Input, []).
 
 -spec update_service_settings(map(), update_service_settings_request(), proplists:proplist()) ->
     {ok, update_service_settings_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_service_settings_errors(), tuple()}.
 update_service_settings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/subscription/UpdateServiceSettings"],

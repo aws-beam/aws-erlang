@@ -31,15 +31,19 @@
 %%   <<"Message">> => string()
 %% }
 -type container_not_found_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_object_request() :: #{}
 -type delete_object_request() :: #{}.
+
 %% Example:
 %% delete_object_response() :: #{}
 -type delete_object_response() :: #{}.
+
 %% Example:
 %% describe_object_request() :: #{}
 -type describe_object_request() :: #{}.
+
 
 %% Example:
 %% describe_object_response() :: #{
@@ -51,11 +55,13 @@
 %% }
 -type describe_object_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_object_request() :: #{
 %%   <<"Range">> => string()
 %% }
 -type get_object_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_object_response() :: #{
@@ -70,11 +76,13 @@
 %% }
 -type get_object_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_error() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_server_error() :: #{binary() => any()}.
+
 
 %% Example:
 %% item() :: #{
@@ -87,6 +95,7 @@
 %% }
 -type item() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_items_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -95,6 +104,7 @@
 %% }
 -type list_items_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_items_response() :: #{
 %%   <<"Items">> => list(item()()),
@@ -102,11 +112,13 @@
 %% }
 -type list_items_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% object_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type object_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_object_request() :: #{
@@ -118,6 +130,7 @@
 %% }
 -type put_object_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_object_response() :: #{
 %%   <<"ContentSHA256">> => string(),
@@ -126,11 +139,36 @@
 %% }
 -type put_object_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% requested_range_not_satisfiable_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type requested_range_not_satisfiable_exception() :: #{binary() => any()}.
+
+-type delete_object_errors() ::
+    object_not_found_exception() | 
+    internal_server_error() | 
+    container_not_found_exception().
+
+-type describe_object_errors() ::
+    object_not_found_exception() | 
+    internal_server_error() | 
+    container_not_found_exception().
+
+-type get_object_errors() ::
+    requested_range_not_satisfiable_exception() | 
+    object_not_found_exception() | 
+    internal_server_error() | 
+    container_not_found_exception().
+
+-type list_items_errors() ::
+    internal_server_error() | 
+    container_not_found_exception().
+
+-type put_object_errors() ::
+    internal_server_error() | 
+    container_not_found_exception().
 
 %%====================================================================
 %% API
@@ -140,18 +178,14 @@
 -spec delete_object(map(), binary() | list(), delete_object_request()) ->
     {ok, delete_object_response(), tuple()} |
     {error, any()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, object_not_found_exception(), tuple()}.
+    {error, delete_object_errors(), tuple()}.
 delete_object(Client, Path, Input) ->
     delete_object(Client, Path, Input, []).
 
 -spec delete_object(map(), binary() | list(), delete_object_request(), proplists:proplist()) ->
     {ok, delete_object_response(), tuple()} |
     {error, any()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, object_not_found_exception(), tuple()}.
+    {error, delete_object_errors(), tuple()}.
 delete_object(Client, Path, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_multi_segment_uri(Path), ""],
@@ -178,18 +212,14 @@ delete_object(Client, Path, Input0, Options0) ->
 -spec describe_object(map(), binary() | list(), describe_object_request()) ->
     {ok, describe_object_response(), tuple()} |
     {error, any()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, object_not_found_exception(), tuple()}.
+    {error, describe_object_errors(), tuple()}.
 describe_object(Client, Path, Input) ->
     describe_object(Client, Path, Input, []).
 
 -spec describe_object(map(), binary() | list(), describe_object_request(), proplists:proplist()) ->
     {ok, describe_object_response(), tuple()} |
     {error, any()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, object_not_found_exception(), tuple()}.
+    {error, describe_object_errors(), tuple()}.
 describe_object(Client, Path, Input0, Options0) ->
     Method = head,
     Path = ["/", aws_util:encode_multi_segment_uri(Path), ""],
@@ -241,10 +271,7 @@ describe_object(Client, Path, Input0, Options0) ->
 -spec get_object(map(), binary() | list()) ->
     {ok, get_object_response(), tuple()} |
     {error, any()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, object_not_found_exception(), tuple()} |
-    {error, requested_range_not_satisfiable_exception(), tuple()}.
+    {error, get_object_errors(), tuple()}.
 get_object(Client, Path)
   when is_map(Client) ->
     get_object(Client, Path, #{}, #{}).
@@ -252,10 +279,7 @@ get_object(Client, Path)
 -spec get_object(map(), binary() | list(), map(), map()) ->
     {ok, get_object_response(), tuple()} |
     {error, any()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, object_not_found_exception(), tuple()} |
-    {error, requested_range_not_satisfiable_exception(), tuple()}.
+    {error, get_object_errors(), tuple()}.
 get_object(Client, Path, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_object(Client, Path, QueryMap, HeadersMap, []).
@@ -263,10 +287,7 @@ get_object(Client, Path, QueryMap, HeadersMap)
 -spec get_object(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_object_response(), tuple()} |
     {error, any()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, object_not_found_exception(), tuple()} |
-    {error, requested_range_not_satisfiable_exception(), tuple()}.
+    {error, get_object_errors(), tuple()}.
 get_object(Client, Path, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_multi_segment_uri(Path), ""],
@@ -314,8 +335,7 @@ get_object(Client, Path, QueryMap, HeadersMap, Options0)
 -spec list_items(map()) ->
     {ok, list_items_response(), tuple()} |
     {error, any()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, list_items_errors(), tuple()}.
 list_items(Client)
   when is_map(Client) ->
     list_items(Client, #{}, #{}).
@@ -323,8 +343,7 @@ list_items(Client)
 -spec list_items(map(), map(), map()) ->
     {ok, list_items_response(), tuple()} |
     {error, any()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, list_items_errors(), tuple()}.
 list_items(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_items(Client, QueryMap, HeadersMap, []).
@@ -332,8 +351,7 @@ list_items(Client, QueryMap, HeadersMap)
 -spec list_items(map(), map(), map(), proplists:proplist()) ->
     {ok, list_items_response(), tuple()} |
     {error, any()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, list_items_errors(), tuple()}.
 list_items(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/"],
@@ -363,16 +381,14 @@ list_items(Client, QueryMap, HeadersMap, Options0)
 -spec put_object(map(), binary() | list(), put_object_request()) ->
     {ok, put_object_response(), tuple()} |
     {error, any()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, put_object_errors(), tuple()}.
 put_object(Client, Path, Input) ->
     put_object(Client, Path, Input, []).
 
 -spec put_object(map(), binary() | list(), put_object_request(), proplists:proplist()) ->
     {ok, put_object_response(), tuple()} |
     {error, any()} |
-    {error, container_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, put_object_errors(), tuple()}.
 put_object(Client, Path, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_multi_segment_uri(Path), ""],

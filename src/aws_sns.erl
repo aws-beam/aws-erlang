@@ -907,6 +907,315 @@
 %% }
 -type delete_platform_application_input() :: #{binary() => any()}.
 
+-type add_permission_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception().
+
+-type check_if_phone_number_is_opted_out_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    throttled_exception().
+
+-type confirm_subscription_errors() ::
+    internal_error_exception() | 
+    subscription_limit_exceeded_exception() | 
+    filter_policy_limit_exceeded_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception() | 
+    replay_limit_exceeded_exception().
+
+-type create_platform_application_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception().
+
+-type create_platform_endpoint_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception().
+
+-type create_sms_sandbox_phone_number_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    opted_out_exception() | 
+    throttled_exception() | 
+    user_error_exception().
+
+-type create_topic_errors() ::
+    internal_error_exception() | 
+    stale_tag_exception() | 
+    concurrent_access_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    tag_limit_exceeded_exception() | 
+    invalid_security_exception() | 
+    topic_limit_exceeded_exception() | 
+    tag_policy_exception().
+
+-type delete_endpoint_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception().
+
+-type delete_platform_application_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception().
+
+-type delete_sms_sandbox_phone_number_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    throttled_exception() | 
+    user_error_exception().
+
+-type delete_topic_errors() ::
+    internal_error_exception() | 
+    stale_tag_exception() | 
+    concurrent_access_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception() | 
+    invalid_state_exception() | 
+    tag_policy_exception().
+
+-type get_data_protection_policy_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception() | 
+    invalid_security_exception().
+
+-type get_endpoint_attributes_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception().
+
+-type get_platform_application_attributes_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception().
+
+-type get_sms_attributes_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    throttled_exception().
+
+-type get_sms_sandbox_account_status_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    throttled_exception().
+
+-type get_subscription_attributes_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception().
+
+-type get_topic_attributes_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception() | 
+    invalid_security_exception().
+
+-type list_endpoints_by_platform_application_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception().
+
+-type list_origination_numbers_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    throttled_exception().
+
+-type list_phone_numbers_opted_out_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    throttled_exception().
+
+-type list_platform_applications_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception().
+
+-type list_sms_sandbox_phone_numbers_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    throttled_exception().
+
+-type list_subscriptions_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception().
+
+-type list_subscriptions_by_topic_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    concurrent_access_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    tag_policy_exception().
+
+-type list_topics_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception().
+
+-type opt_in_phone_number_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    throttled_exception().
+
+-type publish_errors() ::
+    internal_error_exception() | 
+    kms_invalid_state_exception() | 
+    authorization_error_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    kms_not_found_exception() | 
+    kms_access_denied_exception() | 
+    endpoint_disabled_exception() | 
+    not_found_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_security_exception() | 
+    kms_throttling_exception() | 
+    kms_opt_in_required() | 
+    platform_application_disabled_exception() | 
+    kms_disabled_exception().
+
+-type publish_batch_errors() ::
+    batch_request_too_long_exception() | 
+    internal_error_exception() | 
+    too_many_entries_in_batch_request_exception() | 
+    kms_invalid_state_exception() | 
+    authorization_error_exception() | 
+    validation_exception() | 
+    batch_entry_ids_not_distinct_exception() | 
+    invalid_parameter_exception() | 
+    kms_not_found_exception() | 
+    kms_access_denied_exception() | 
+    empty_batch_request_exception() | 
+    endpoint_disabled_exception() | 
+    not_found_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_security_exception() | 
+    invalid_batch_entry_id_exception() | 
+    kms_throttling_exception() | 
+    kms_opt_in_required() | 
+    platform_application_disabled_exception() | 
+    kms_disabled_exception().
+
+-type put_data_protection_policy_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception() | 
+    invalid_security_exception().
+
+-type remove_permission_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception().
+
+-type set_endpoint_attributes_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception().
+
+-type set_platform_application_attributes_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception().
+
+-type set_sms_attributes_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    throttled_exception().
+
+-type set_subscription_attributes_errors() ::
+    internal_error_exception() | 
+    filter_policy_limit_exceeded_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception() | 
+    replay_limit_exceeded_exception().
+
+-type set_topic_attributes_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception() | 
+    invalid_security_exception().
+
+-type subscribe_errors() ::
+    internal_error_exception() | 
+    subscription_limit_exceeded_exception() | 
+    filter_policy_limit_exceeded_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception() | 
+    invalid_security_exception() | 
+    replay_limit_exceeded_exception().
+
+-type tag_resource_errors() ::
+    stale_tag_exception() | 
+    concurrent_access_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    tag_limit_exceeded_exception() | 
+    resource_not_found_exception() | 
+    tag_policy_exception().
+
+-type unsubscribe_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception() | 
+    invalid_security_exception().
+
+-type untag_resource_errors() ::
+    stale_tag_exception() | 
+    concurrent_access_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    tag_limit_exceeded_exception() | 
+    resource_not_found_exception() | 
+    tag_policy_exception().
+
+-type verify_sms_sandbox_phone_number_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    verification_exception() | 
+    resource_not_found_exception() | 
+    throttled_exception().
 
 %%====================================================================
 %% API
@@ -923,10 +1232,7 @@
 -spec add_permission(map(), add_permission_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, add_permission_errors(), tuple()}.
 add_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_permission(Client, Input, []).
@@ -934,10 +1240,7 @@ add_permission(Client, Input)
 -spec add_permission(map(), add_permission_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, add_permission_errors(), tuple()}.
 add_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddPermission">>, Input, Options).
@@ -954,10 +1257,7 @@ add_permission(Client, Input, Options)
 -spec check_if_phone_number_is_opted_out(map(), check_if_phone_number_is_opted_out_input()) ->
     {ok, check_if_phone_number_is_opted_out_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, check_if_phone_number_is_opted_out_errors(), tuple()}.
 check_if_phone_number_is_opted_out(Client, Input)
   when is_map(Client), is_map(Input) ->
     check_if_phone_number_is_opted_out(Client, Input, []).
@@ -965,10 +1265,7 @@ check_if_phone_number_is_opted_out(Client, Input)
 -spec check_if_phone_number_is_opted_out(map(), check_if_phone_number_is_opted_out_input(), proplists:proplist()) ->
     {ok, check_if_phone_number_is_opted_out_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, check_if_phone_number_is_opted_out_errors(), tuple()}.
 check_if_phone_number_is_opted_out(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CheckIfPhoneNumberIsOptedOut">>, Input, Options).
@@ -986,13 +1283,7 @@ check_if_phone_number_is_opted_out(Client, Input, Options)
 -spec confirm_subscription(map(), confirm_subscription_input()) ->
     {ok, confirm_subscription_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, filter_policy_limit_exceeded_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, replay_limit_exceeded_exception(), tuple()} |
-    {error, subscription_limit_exceeded_exception(), tuple()}.
+    {error, confirm_subscription_errors(), tuple()}.
 confirm_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     confirm_subscription(Client, Input, []).
@@ -1000,13 +1291,7 @@ confirm_subscription(Client, Input)
 -spec confirm_subscription(map(), confirm_subscription_input(), proplists:proplist()) ->
     {ok, confirm_subscription_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, filter_policy_limit_exceeded_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, replay_limit_exceeded_exception(), tuple()} |
-    {error, subscription_limit_exceeded_exception(), tuple()}.
+    {error, confirm_subscription_errors(), tuple()}.
 confirm_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ConfirmSubscription">>, Input, Options).
@@ -1069,9 +1354,7 @@ confirm_subscription(Client, Input, Options)
 -spec create_platform_application(map(), create_platform_application_input()) ->
     {ok, create_platform_application_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, create_platform_application_errors(), tuple()}.
 create_platform_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_platform_application(Client, Input, []).
@@ -1079,9 +1362,7 @@ create_platform_application(Client, Input)
 -spec create_platform_application(map(), create_platform_application_input(), proplists:proplist()) ->
     {ok, create_platform_application_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, create_platform_application_errors(), tuple()}.
 create_platform_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePlatformApplication">>, Input, Options).
@@ -1112,10 +1393,7 @@ create_platform_application(Client, Input, Options)
 -spec create_platform_endpoint(map(), create_platform_endpoint_input()) ->
     {ok, create_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, create_platform_endpoint_errors(), tuple()}.
 create_platform_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_platform_endpoint(Client, Input, []).
@@ -1123,10 +1401,7 @@ create_platform_endpoint(Client, Input)
 -spec create_platform_endpoint(map(), create_platform_endpoint_input(), proplists:proplist()) ->
     {ok, create_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, create_platform_endpoint_errors(), tuple()}.
 create_platform_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePlatformEndpoint">>, Input, Options).
@@ -1151,12 +1426,7 @@ create_platform_endpoint(Client, Input, Options)
 -spec create_sms_sandbox_phone_number(map(), create_sms_sandbox_phone_number_input()) ->
     {ok, create_sms_sandbox_phone_number_result(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, opted_out_exception(), tuple()} |
-    {error, throttled_exception(), tuple()} |
-    {error, user_error_exception(), tuple()}.
+    {error, create_sms_sandbox_phone_number_errors(), tuple()}.
 create_sms_sandbox_phone_number(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_sms_sandbox_phone_number(Client, Input, []).
@@ -1164,12 +1434,7 @@ create_sms_sandbox_phone_number(Client, Input)
 -spec create_sms_sandbox_phone_number(map(), create_sms_sandbox_phone_number_input(), proplists:proplist()) ->
     {ok, create_sms_sandbox_phone_number_result(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, opted_out_exception(), tuple()} |
-    {error, throttled_exception(), tuple()} |
-    {error, user_error_exception(), tuple()}.
+    {error, create_sms_sandbox_phone_number_errors(), tuple()}.
 create_sms_sandbox_phone_number(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSMSSandboxPhoneNumber">>, Input, Options).
@@ -1187,15 +1452,7 @@ create_sms_sandbox_phone_number(Client, Input, Options)
 -spec create_topic(map(), create_topic_input()) ->
     {ok, create_topic_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, concurrent_access_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_security_exception(), tuple()} |
-    {error, stale_tag_exception(), tuple()} |
-    {error, tag_limit_exceeded_exception(), tuple()} |
-    {error, tag_policy_exception(), tuple()} |
-    {error, topic_limit_exceeded_exception(), tuple()}.
+    {error, create_topic_errors(), tuple()}.
 create_topic(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_topic(Client, Input, []).
@@ -1203,15 +1460,7 @@ create_topic(Client, Input)
 -spec create_topic(map(), create_topic_input(), proplists:proplist()) ->
     {ok, create_topic_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, concurrent_access_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_security_exception(), tuple()} |
-    {error, stale_tag_exception(), tuple()} |
-    {error, tag_limit_exceeded_exception(), tuple()} |
-    {error, tag_policy_exception(), tuple()} |
-    {error, topic_limit_exceeded_exception(), tuple()}.
+    {error, create_topic_errors(), tuple()}.
 create_topic(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTopic">>, Input, Options).
@@ -1229,9 +1478,7 @@ create_topic(Client, Input, Options)
 -spec delete_endpoint(map(), delete_endpoint_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, delete_endpoint_errors(), tuple()}.
 delete_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_endpoint(Client, Input, []).
@@ -1239,9 +1486,7 @@ delete_endpoint(Client, Input)
 -spec delete_endpoint(map(), delete_endpoint_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, delete_endpoint_errors(), tuple()}.
 delete_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEndpoint">>, Input, Options).
@@ -1257,9 +1502,7 @@ delete_endpoint(Client, Input, Options)
 -spec delete_platform_application(map(), delete_platform_application_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, delete_platform_application_errors(), tuple()}.
 delete_platform_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_platform_application(Client, Input, []).
@@ -1267,9 +1510,7 @@ delete_platform_application(Client, Input)
 -spec delete_platform_application(map(), delete_platform_application_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, delete_platform_application_errors(), tuple()}.
 delete_platform_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePlatformApplication">>, Input, Options).
@@ -1294,12 +1535,7 @@ delete_platform_application(Client, Input, Options)
 -spec delete_sms_sandbox_phone_number(map(), delete_sms_sandbox_phone_number_input()) ->
     {ok, delete_sms_sandbox_phone_number_result(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttled_exception(), tuple()} |
-    {error, user_error_exception(), tuple()}.
+    {error, delete_sms_sandbox_phone_number_errors(), tuple()}.
 delete_sms_sandbox_phone_number(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_sms_sandbox_phone_number(Client, Input, []).
@@ -1307,12 +1543,7 @@ delete_sms_sandbox_phone_number(Client, Input)
 -spec delete_sms_sandbox_phone_number(map(), delete_sms_sandbox_phone_number_input(), proplists:proplist()) ->
     {ok, delete_sms_sandbox_phone_number_result(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttled_exception(), tuple()} |
-    {error, user_error_exception(), tuple()}.
+    {error, delete_sms_sandbox_phone_number_errors(), tuple()}.
 delete_sms_sandbox_phone_number(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSMSSandboxPhoneNumber">>, Input, Options).
@@ -1328,14 +1559,7 @@ delete_sms_sandbox_phone_number(Client, Input, Options)
 -spec delete_topic(map(), delete_topic_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, concurrent_access_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, stale_tag_exception(), tuple()} |
-    {error, tag_policy_exception(), tuple()}.
+    {error, delete_topic_errors(), tuple()}.
 delete_topic(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_topic(Client, Input, []).
@@ -1343,14 +1567,7 @@ delete_topic(Client, Input)
 -spec delete_topic(map(), delete_topic_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, concurrent_access_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, stale_tag_exception(), tuple()} |
-    {error, tag_policy_exception(), tuple()}.
+    {error, delete_topic_errors(), tuple()}.
 delete_topic(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTopic">>, Input, Options).
@@ -1361,11 +1578,7 @@ delete_topic(Client, Input, Options)
 -spec get_data_protection_policy(map(), get_data_protection_policy_input()) ->
     {ok, get_data_protection_policy_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_security_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_data_protection_policy_errors(), tuple()}.
 get_data_protection_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_data_protection_policy(Client, Input, []).
@@ -1373,11 +1586,7 @@ get_data_protection_policy(Client, Input)
 -spec get_data_protection_policy(map(), get_data_protection_policy_input(), proplists:proplist()) ->
     {ok, get_data_protection_policy_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_security_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_data_protection_policy_errors(), tuple()}.
 get_data_protection_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDataProtectionPolicy">>, Input, Options).
@@ -1392,10 +1601,7 @@ get_data_protection_policy(Client, Input, Options)
 -spec get_endpoint_attributes(map(), get_endpoint_attributes_input()) ->
     {ok, get_endpoint_attributes_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_endpoint_attributes_errors(), tuple()}.
 get_endpoint_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_endpoint_attributes(Client, Input, []).
@@ -1403,10 +1609,7 @@ get_endpoint_attributes(Client, Input)
 -spec get_endpoint_attributes(map(), get_endpoint_attributes_input(), proplists:proplist()) ->
     {ok, get_endpoint_attributes_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_endpoint_attributes_errors(), tuple()}.
 get_endpoint_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEndpointAttributes">>, Input, Options).
@@ -1421,10 +1624,7 @@ get_endpoint_attributes(Client, Input, Options)
 -spec get_platform_application_attributes(map(), get_platform_application_attributes_input()) ->
     {ok, get_platform_application_attributes_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_platform_application_attributes_errors(), tuple()}.
 get_platform_application_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_platform_application_attributes(Client, Input, []).
@@ -1432,10 +1632,7 @@ get_platform_application_attributes(Client, Input)
 -spec get_platform_application_attributes(map(), get_platform_application_attributes_input(), proplists:proplist()) ->
     {ok, get_platform_application_attributes_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_platform_application_attributes_errors(), tuple()}.
 get_platform_application_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPlatformApplicationAttributes">>, Input, Options).
@@ -1447,10 +1644,7 @@ get_platform_application_attributes(Client, Input, Options)
 -spec get_sms_attributes(map(), get_sms_attributes_input()) ->
     {ok, get_sms_attributes_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_sms_attributes_errors(), tuple()}.
 get_sms_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_sms_attributes(Client, Input, []).
@@ -1458,10 +1652,7 @@ get_sms_attributes(Client, Input)
 -spec get_sms_attributes(map(), get_sms_attributes_input(), proplists:proplist()) ->
     {ok, get_sms_attributes_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_sms_attributes_errors(), tuple()}.
 get_sms_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSMSAttributes">>, Input, Options).
@@ -1486,9 +1677,7 @@ get_sms_attributes(Client, Input, Options)
 -spec get_sms_sandbox_account_status(map(), get_sms_sandbox_account_status_input()) ->
     {ok, get_sms_sandbox_account_status_result(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_sms_sandbox_account_status_errors(), tuple()}.
 get_sms_sandbox_account_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_sms_sandbox_account_status(Client, Input, []).
@@ -1496,9 +1685,7 @@ get_sms_sandbox_account_status(Client, Input)
 -spec get_sms_sandbox_account_status(map(), get_sms_sandbox_account_status_input(), proplists:proplist()) ->
     {ok, get_sms_sandbox_account_status_result(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, get_sms_sandbox_account_status_errors(), tuple()}.
 get_sms_sandbox_account_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSMSSandboxAccountStatus">>, Input, Options).
@@ -1507,10 +1694,7 @@ get_sms_sandbox_account_status(Client, Input, Options)
 -spec get_subscription_attributes(map(), get_subscription_attributes_input()) ->
     {ok, get_subscription_attributes_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_subscription_attributes_errors(), tuple()}.
 get_subscription_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_subscription_attributes(Client, Input, []).
@@ -1518,10 +1702,7 @@ get_subscription_attributes(Client, Input)
 -spec get_subscription_attributes(map(), get_subscription_attributes_input(), proplists:proplist()) ->
     {ok, get_subscription_attributes_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_subscription_attributes_errors(), tuple()}.
 get_subscription_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSubscriptionAttributes">>, Input, Options).
@@ -1533,11 +1714,7 @@ get_subscription_attributes(Client, Input, Options)
 -spec get_topic_attributes(map(), get_topic_attributes_input()) ->
     {ok, get_topic_attributes_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_security_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_topic_attributes_errors(), tuple()}.
 get_topic_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_topic_attributes(Client, Input, []).
@@ -1545,11 +1722,7 @@ get_topic_attributes(Client, Input)
 -spec get_topic_attributes(map(), get_topic_attributes_input(), proplists:proplist()) ->
     {ok, get_topic_attributes_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_security_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_topic_attributes_errors(), tuple()}.
 get_topic_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTopicAttributes">>, Input, Options).
@@ -1576,10 +1749,7 @@ get_topic_attributes(Client, Input, Options)
 -spec list_endpoints_by_platform_application(map(), list_endpoints_by_platform_application_input()) ->
     {ok, list_endpoints_by_platform_application_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_endpoints_by_platform_application_errors(), tuple()}.
 list_endpoints_by_platform_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_endpoints_by_platform_application(Client, Input, []).
@@ -1587,10 +1757,7 @@ list_endpoints_by_platform_application(Client, Input)
 -spec list_endpoints_by_platform_application(map(), list_endpoints_by_platform_application_input(), proplists:proplist()) ->
     {ok, list_endpoints_by_platform_application_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_endpoints_by_platform_application_errors(), tuple()}.
 list_endpoints_by_platform_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEndpointsByPlatformApplication">>, Input, Options).
@@ -1605,11 +1772,7 @@ list_endpoints_by_platform_application(Client, Input, Options)
 -spec list_origination_numbers(map(), list_origination_numbers_request()) ->
     {ok, list_origination_numbers_result(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttled_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_origination_numbers_errors(), tuple()}.
 list_origination_numbers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_origination_numbers(Client, Input, []).
@@ -1617,11 +1780,7 @@ list_origination_numbers(Client, Input)
 -spec list_origination_numbers(map(), list_origination_numbers_request(), proplists:proplist()) ->
     {ok, list_origination_numbers_result(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttled_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_origination_numbers_errors(), tuple()}.
 list_origination_numbers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOriginationNumbers">>, Input, Options).
@@ -1642,10 +1801,7 @@ list_origination_numbers(Client, Input, Options)
 -spec list_phone_numbers_opted_out(map(), list_phone_numbers_opted_out_input()) ->
     {ok, list_phone_numbers_opted_out_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, list_phone_numbers_opted_out_errors(), tuple()}.
 list_phone_numbers_opted_out(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_phone_numbers_opted_out(Client, Input, []).
@@ -1653,10 +1809,7 @@ list_phone_numbers_opted_out(Client, Input)
 -spec list_phone_numbers_opted_out(map(), list_phone_numbers_opted_out_input(), proplists:proplist()) ->
     {ok, list_phone_numbers_opted_out_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, list_phone_numbers_opted_out_errors(), tuple()}.
 list_phone_numbers_opted_out(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPhoneNumbersOptedOut">>, Input, Options).
@@ -1683,9 +1836,7 @@ list_phone_numbers_opted_out(Client, Input, Options)
 -spec list_platform_applications(map(), list_platform_applications_input()) ->
     {ok, list_platform_applications_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, list_platform_applications_errors(), tuple()}.
 list_platform_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_platform_applications(Client, Input, []).
@@ -1693,9 +1844,7 @@ list_platform_applications(Client, Input)
 -spec list_platform_applications(map(), list_platform_applications_input(), proplists:proplist()) ->
     {ok, list_platform_applications_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, list_platform_applications_errors(), tuple()}.
 list_platform_applications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPlatformApplications">>, Input, Options).
@@ -1720,11 +1869,7 @@ list_platform_applications(Client, Input, Options)
 -spec list_sms_sandbox_phone_numbers(map(), list_sms_sandbox_phone_numbers_input()) ->
     {ok, list_sms_sandbox_phone_numbers_result(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, list_sms_sandbox_phone_numbers_errors(), tuple()}.
 list_sms_sandbox_phone_numbers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_sms_sandbox_phone_numbers(Client, Input, []).
@@ -1732,11 +1877,7 @@ list_sms_sandbox_phone_numbers(Client, Input)
 -spec list_sms_sandbox_phone_numbers(map(), list_sms_sandbox_phone_numbers_input(), proplists:proplist()) ->
     {ok, list_sms_sandbox_phone_numbers_result(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, list_sms_sandbox_phone_numbers_errors(), tuple()}.
 list_sms_sandbox_phone_numbers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSMSSandboxPhoneNumbers">>, Input, Options).
@@ -1753,9 +1894,7 @@ list_sms_sandbox_phone_numbers(Client, Input, Options)
 -spec list_subscriptions(map(), list_subscriptions_input()) ->
     {ok, list_subscriptions_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, list_subscriptions_errors(), tuple()}.
 list_subscriptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_subscriptions(Client, Input, []).
@@ -1763,9 +1902,7 @@ list_subscriptions(Client, Input)
 -spec list_subscriptions(map(), list_subscriptions_input(), proplists:proplist()) ->
     {ok, list_subscriptions_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, list_subscriptions_errors(), tuple()}.
 list_subscriptions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSubscriptions">>, Input, Options).
@@ -1781,10 +1918,7 @@ list_subscriptions(Client, Input, Options)
 -spec list_subscriptions_by_topic(map(), list_subscriptions_by_topic_input()) ->
     {ok, list_subscriptions_by_topic_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_subscriptions_by_topic_errors(), tuple()}.
 list_subscriptions_by_topic(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_subscriptions_by_topic(Client, Input, []).
@@ -1792,10 +1926,7 @@ list_subscriptions_by_topic(Client, Input)
 -spec list_subscriptions_by_topic(map(), list_subscriptions_by_topic_input(), proplists:proplist()) ->
     {ok, list_subscriptions_by_topic_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_subscriptions_by_topic_errors(), tuple()}.
 list_subscriptions_by_topic(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSubscriptionsByTopic">>, Input, Options).
@@ -1808,11 +1939,7 @@ list_subscriptions_by_topic(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, concurrent_access_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, tag_policy_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -1820,11 +1947,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, concurrent_access_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, tag_policy_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -1841,9 +1964,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec list_topics(map(), list_topics_input()) ->
     {ok, list_topics_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, list_topics_errors(), tuple()}.
 list_topics(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_topics(Client, Input, []).
@@ -1851,9 +1972,7 @@ list_topics(Client, Input)
 -spec list_topics(map(), list_topics_input(), proplists:proplist()) ->
     {ok, list_topics_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()}.
+    {error, list_topics_errors(), tuple()}.
 list_topics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTopics">>, Input, Options).
@@ -1866,10 +1985,7 @@ list_topics(Client, Input, Options)
 -spec opt_in_phone_number(map(), opt_in_phone_number_input()) ->
     {ok, opt_in_phone_number_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, opt_in_phone_number_errors(), tuple()}.
 opt_in_phone_number(Client, Input)
   when is_map(Client), is_map(Input) ->
     opt_in_phone_number(Client, Input, []).
@@ -1877,10 +1993,7 @@ opt_in_phone_number(Client, Input)
 -spec opt_in_phone_number(map(), opt_in_phone_number_input(), proplists:proplist()) ->
     {ok, opt_in_phone_number_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, opt_in_phone_number_errors(), tuple()}.
 opt_in_phone_number(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"OptInPhoneNumber">>, Input, Options).
@@ -1917,21 +2030,7 @@ opt_in_phone_number(Client, Input, Options)
 -spec publish(map(), publish_input()) ->
     {ok, publish_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, endpoint_disabled_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_security_exception(), tuple()} |
-    {error, kms_access_denied_exception(), tuple()} |
-    {error, kms_disabled_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, kms_not_found_exception(), tuple()} |
-    {error, kms_opt_in_required(), tuple()} |
-    {error, kms_throttling_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, platform_application_disabled_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, publish_errors(), tuple()}.
 publish(Client, Input)
   when is_map(Client), is_map(Input) ->
     publish(Client, Input, []).
@@ -1939,21 +2038,7 @@ publish(Client, Input)
 -spec publish(map(), publish_input(), proplists:proplist()) ->
     {ok, publish_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, endpoint_disabled_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_security_exception(), tuple()} |
-    {error, kms_access_denied_exception(), tuple()} |
-    {error, kms_disabled_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, kms_not_found_exception(), tuple()} |
-    {error, kms_opt_in_required(), tuple()} |
-    {error, kms_throttling_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, platform_application_disabled_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, publish_errors(), tuple()}.
 publish(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Publish">>, Input, Options).
@@ -2001,26 +2086,7 @@ publish(Client, Input, Options)
 -spec publish_batch(map(), publish_batch_input()) ->
     {ok, publish_batch_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, batch_entry_ids_not_distinct_exception(), tuple()} |
-    {error, batch_request_too_long_exception(), tuple()} |
-    {error, empty_batch_request_exception(), tuple()} |
-    {error, endpoint_disabled_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_batch_entry_id_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_security_exception(), tuple()} |
-    {error, kms_access_denied_exception(), tuple()} |
-    {error, kms_disabled_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, kms_not_found_exception(), tuple()} |
-    {error, kms_opt_in_required(), tuple()} |
-    {error, kms_throttling_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, platform_application_disabled_exception(), tuple()} |
-    {error, too_many_entries_in_batch_request_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, publish_batch_errors(), tuple()}.
 publish_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     publish_batch(Client, Input, []).
@@ -2028,26 +2094,7 @@ publish_batch(Client, Input)
 -spec publish_batch(map(), publish_batch_input(), proplists:proplist()) ->
     {ok, publish_batch_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, batch_entry_ids_not_distinct_exception(), tuple()} |
-    {error, batch_request_too_long_exception(), tuple()} |
-    {error, empty_batch_request_exception(), tuple()} |
-    {error, endpoint_disabled_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_batch_entry_id_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_security_exception(), tuple()} |
-    {error, kms_access_denied_exception(), tuple()} |
-    {error, kms_disabled_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, kms_not_found_exception(), tuple()} |
-    {error, kms_opt_in_required(), tuple()} |
-    {error, kms_throttling_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, platform_application_disabled_exception(), tuple()} |
-    {error, too_many_entries_in_batch_request_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, publish_batch_errors(), tuple()}.
 publish_batch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PublishBatch">>, Input, Options).
@@ -2058,11 +2105,7 @@ publish_batch(Client, Input, Options)
 -spec put_data_protection_policy(map(), put_data_protection_policy_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_security_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, put_data_protection_policy_errors(), tuple()}.
 put_data_protection_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_data_protection_policy(Client, Input, []).
@@ -2070,11 +2113,7 @@ put_data_protection_policy(Client, Input)
 -spec put_data_protection_policy(map(), put_data_protection_policy_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_security_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, put_data_protection_policy_errors(), tuple()}.
 put_data_protection_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutDataProtectionPolicy">>, Input, Options).
@@ -2088,10 +2127,7 @@ put_data_protection_policy(Client, Input, Options)
 -spec remove_permission(map(), remove_permission_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, remove_permission_errors(), tuple()}.
 remove_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_permission(Client, Input, []).
@@ -2099,10 +2135,7 @@ remove_permission(Client, Input)
 -spec remove_permission(map(), remove_permission_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, remove_permission_errors(), tuple()}.
 remove_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemovePermission">>, Input, Options).
@@ -2117,10 +2150,7 @@ remove_permission(Client, Input, Options)
 -spec set_endpoint_attributes(map(), set_endpoint_attributes_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, set_endpoint_attributes_errors(), tuple()}.
 set_endpoint_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_endpoint_attributes(Client, Input, []).
@@ -2128,10 +2158,7 @@ set_endpoint_attributes(Client, Input)
 -spec set_endpoint_attributes(map(), set_endpoint_attributes_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, set_endpoint_attributes_errors(), tuple()}.
 set_endpoint_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetEndpointAttributes">>, Input, Options).
@@ -2151,10 +2178,7 @@ set_endpoint_attributes(Client, Input, Options)
 -spec set_platform_application_attributes(map(), set_platform_application_attributes_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, set_platform_application_attributes_errors(), tuple()}.
 set_platform_application_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_platform_application_attributes(Client, Input, []).
@@ -2162,10 +2186,7 @@ set_platform_application_attributes(Client, Input)
 -spec set_platform_application_attributes(map(), set_platform_application_attributes_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, set_platform_application_attributes_errors(), tuple()}.
 set_platform_application_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetPlatformApplicationAttributes">>, Input, Options).
@@ -2187,10 +2208,7 @@ set_platform_application_attributes(Client, Input, Options)
 -spec set_sms_attributes(map(), set_sms_attributes_input()) ->
     {ok, set_sms_attributes_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, set_sms_attributes_errors(), tuple()}.
 set_sms_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_sms_attributes(Client, Input, []).
@@ -2198,10 +2216,7 @@ set_sms_attributes(Client, Input)
 -spec set_sms_attributes(map(), set_sms_attributes_input(), proplists:proplist()) ->
     {ok, set_sms_attributes_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, throttled_exception(), tuple()}.
+    {error, set_sms_attributes_errors(), tuple()}.
 set_sms_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetSMSAttributes">>, Input, Options).
@@ -2212,12 +2227,7 @@ set_sms_attributes(Client, Input, Options)
 -spec set_subscription_attributes(map(), set_subscription_attributes_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, filter_policy_limit_exceeded_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, replay_limit_exceeded_exception(), tuple()}.
+    {error, set_subscription_attributes_errors(), tuple()}.
 set_subscription_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_subscription_attributes(Client, Input, []).
@@ -2225,12 +2235,7 @@ set_subscription_attributes(Client, Input)
 -spec set_subscription_attributes(map(), set_subscription_attributes_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, filter_policy_limit_exceeded_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, replay_limit_exceeded_exception(), tuple()}.
+    {error, set_subscription_attributes_errors(), tuple()}.
 set_subscription_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetSubscriptionAttributes">>, Input, Options).
@@ -2244,11 +2249,7 @@ set_subscription_attributes(Client, Input, Options)
 -spec set_topic_attributes(map(), set_topic_attributes_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_security_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, set_topic_attributes_errors(), tuple()}.
 set_topic_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_topic_attributes(Client, Input, []).
@@ -2256,11 +2257,7 @@ set_topic_attributes(Client, Input)
 -spec set_topic_attributes(map(), set_topic_attributes_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_security_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, set_topic_attributes_errors(), tuple()}.
 set_topic_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetTopicAttributes">>, Input, Options).
@@ -2279,14 +2276,7 @@ set_topic_attributes(Client, Input, Options)
 -spec subscribe(map(), subscribe_input()) ->
     {ok, subscribe_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, filter_policy_limit_exceeded_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_security_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, replay_limit_exceeded_exception(), tuple()} |
-    {error, subscription_limit_exceeded_exception(), tuple()}.
+    {error, subscribe_errors(), tuple()}.
 subscribe(Client, Input)
   when is_map(Client), is_map(Input) ->
     subscribe(Client, Input, []).
@@ -2294,14 +2284,7 @@ subscribe(Client, Input)
 -spec subscribe(map(), subscribe_input(), proplists:proplist()) ->
     {ok, subscribe_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, filter_policy_limit_exceeded_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_security_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, replay_limit_exceeded_exception(), tuple()} |
-    {error, subscription_limit_exceeded_exception(), tuple()}.
+    {error, subscribe_errors(), tuple()}.
 subscribe(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Subscribe">>, Input, Options).
@@ -2333,13 +2316,7 @@ subscribe(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, concurrent_access_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, stale_tag_exception(), tuple()} |
-    {error, tag_limit_exceeded_exception(), tuple()} |
-    {error, tag_policy_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -2347,13 +2324,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, concurrent_access_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, stale_tag_exception(), tuple()} |
-    {error, tag_limit_exceeded_exception(), tuple()} |
-    {error, tag_policy_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -2380,11 +2351,7 @@ tag_resource(Client, Input, Options)
 -spec unsubscribe(map(), unsubscribe_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_security_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, unsubscribe_errors(), tuple()}.
 unsubscribe(Client, Input)
   when is_map(Client), is_map(Input) ->
     unsubscribe(Client, Input, []).
@@ -2392,11 +2359,7 @@ unsubscribe(Client, Input)
 -spec unsubscribe(map(), unsubscribe_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_security_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, unsubscribe_errors(), tuple()}.
 unsubscribe(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Unsubscribe">>, Input, Options).
@@ -2409,13 +2372,7 @@ unsubscribe(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, concurrent_access_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, stale_tag_exception(), tuple()} |
-    {error, tag_limit_exceeded_exception(), tuple()} |
-    {error, tag_policy_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -2423,13 +2380,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, concurrent_access_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, stale_tag_exception(), tuple()} |
-    {error, tag_limit_exceeded_exception(), tuple()} |
-    {error, tag_policy_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -2454,12 +2405,7 @@ untag_resource(Client, Input, Options)
 -spec verify_sms_sandbox_phone_number(map(), verify_sms_sandbox_phone_number_input()) ->
     {ok, verify_sms_sandbox_phone_number_result(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttled_exception(), tuple()} |
-    {error, verification_exception(), tuple()}.
+    {error, verify_sms_sandbox_phone_number_errors(), tuple()}.
 verify_sms_sandbox_phone_number(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify_sms_sandbox_phone_number(Client, Input, []).
@@ -2467,12 +2413,7 @@ verify_sms_sandbox_phone_number(Client, Input)
 -spec verify_sms_sandbox_phone_number(map(), verify_sms_sandbox_phone_number_input(), proplists:proplist()) ->
     {ok, verify_sms_sandbox_phone_number_result(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttled_exception(), tuple()} |
-    {error, verification_exception(), tuple()}.
+    {error, verify_sms_sandbox_phone_number_errors(), tuple()}.
 verify_sms_sandbox_phone_number(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"VerifySMSSandboxPhoneNumber">>, Input, Options).

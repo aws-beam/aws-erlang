@@ -1328,6 +1328,375 @@
 %% }
 -type list_model_versions_request() :: #{binary() => any()}.
 
+-type create_dataset_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_inference_scheduler_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_label_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_label_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_model_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_retraining_scheduler_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_dataset_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_inference_scheduler_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_label_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_label_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_model_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_resource_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_retraining_scheduler_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_data_ingestion_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_dataset_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_inference_scheduler_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_label_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_label_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_model_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_model_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_resource_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_retraining_scheduler_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type import_dataset_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type import_model_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_data_ingestion_jobs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_datasets_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_inference_events_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_inference_executions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_inference_schedulers_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_label_groups_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_labels_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_model_versions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_models_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_retraining_schedulers_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_sensor_statistics_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type put_resource_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_data_ingestion_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_inference_scheduler_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_retraining_scheduler_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type stop_inference_scheduler_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type stop_retraining_scheduler_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_active_model_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_inference_scheduler_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_label_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_model_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_retraining_scheduler_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -1346,12 +1715,7 @@
 -spec create_dataset(map(), create_dataset_request()) ->
     {ok, create_dataset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_dataset_errors(), tuple()}.
 create_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset(Client, Input, []).
@@ -1359,12 +1723,7 @@ create_dataset(Client, Input)
 -spec create_dataset(map(), create_dataset_request(), proplists:proplist()) ->
     {ok, create_dataset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_dataset_errors(), tuple()}.
 create_dataset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDataset">>, Input, Options).
@@ -1382,13 +1741,7 @@ create_dataset(Client, Input, Options)
 -spec create_inference_scheduler(map(), create_inference_scheduler_request()) ->
     {ok, create_inference_scheduler_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_inference_scheduler_errors(), tuple()}.
 create_inference_scheduler(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_inference_scheduler(Client, Input, []).
@@ -1396,13 +1749,7 @@ create_inference_scheduler(Client, Input)
 -spec create_inference_scheduler(map(), create_inference_scheduler_request(), proplists:proplist()) ->
     {ok, create_inference_scheduler_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_inference_scheduler_errors(), tuple()}.
 create_inference_scheduler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateInferenceScheduler">>, Input, Options).
@@ -1411,13 +1758,7 @@ create_inference_scheduler(Client, Input, Options)
 -spec create_label(map(), create_label_request()) ->
     {ok, create_label_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_label_errors(), tuple()}.
 create_label(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_label(Client, Input, []).
@@ -1425,13 +1766,7 @@ create_label(Client, Input)
 -spec create_label(map(), create_label_request(), proplists:proplist()) ->
     {ok, create_label_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_label_errors(), tuple()}.
 create_label(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLabel">>, Input, Options).
@@ -1440,12 +1775,7 @@ create_label(Client, Input, Options)
 -spec create_label_group(map(), create_label_group_request()) ->
     {ok, create_label_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_label_group_errors(), tuple()}.
 create_label_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_label_group(Client, Input, []).
@@ -1453,12 +1783,7 @@ create_label_group(Client, Input)
 -spec create_label_group(map(), create_label_group_request(), proplists:proplist()) ->
     {ok, create_label_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_label_group_errors(), tuple()}.
 create_label_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLabelGroup">>, Input, Options).
@@ -1483,13 +1808,7 @@ create_label_group(Client, Input, Options)
 -spec create_model(map(), create_model_request()) ->
     {ok, create_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_model_errors(), tuple()}.
 create_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model(Client, Input, []).
@@ -1497,13 +1816,7 @@ create_model(Client, Input)
 -spec create_model(map(), create_model_request(), proplists:proplist()) ->
     {ok, create_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_model_errors(), tuple()}.
 create_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateModel">>, Input, Options).
@@ -1512,12 +1825,7 @@ create_model(Client, Input, Options)
 -spec create_retraining_scheduler(map(), create_retraining_scheduler_request()) ->
     {ok, create_retraining_scheduler_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_retraining_scheduler_errors(), tuple()}.
 create_retraining_scheduler(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_retraining_scheduler(Client, Input, []).
@@ -1525,12 +1833,7 @@ create_retraining_scheduler(Client, Input)
 -spec create_retraining_scheduler(map(), create_retraining_scheduler_request(), proplists:proplist()) ->
     {ok, create_retraining_scheduler_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_retraining_scheduler_errors(), tuple()}.
 create_retraining_scheduler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRetrainingScheduler">>, Input, Options).
@@ -1548,12 +1851,7 @@ create_retraining_scheduler(Client, Input, Options)
 -spec delete_dataset(map(), delete_dataset_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_dataset_errors(), tuple()}.
 delete_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_dataset(Client, Input, []).
@@ -1561,12 +1859,7 @@ delete_dataset(Client, Input)
 -spec delete_dataset(map(), delete_dataset_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_dataset_errors(), tuple()}.
 delete_dataset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDataset">>, Input, Options).
@@ -1578,12 +1871,7 @@ delete_dataset(Client, Input, Options)
 -spec delete_inference_scheduler(map(), delete_inference_scheduler_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_inference_scheduler_errors(), tuple()}.
 delete_inference_scheduler(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_inference_scheduler(Client, Input, []).
@@ -1591,12 +1879,7 @@ delete_inference_scheduler(Client, Input)
 -spec delete_inference_scheduler(map(), delete_inference_scheduler_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_inference_scheduler_errors(), tuple()}.
 delete_inference_scheduler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInferenceScheduler">>, Input, Options).
@@ -1605,12 +1888,7 @@ delete_inference_scheduler(Client, Input, Options)
 -spec delete_label(map(), delete_label_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_label_errors(), tuple()}.
 delete_label(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_label(Client, Input, []).
@@ -1618,12 +1896,7 @@ delete_label(Client, Input)
 -spec delete_label(map(), delete_label_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_label_errors(), tuple()}.
 delete_label(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLabel">>, Input, Options).
@@ -1632,12 +1905,7 @@ delete_label(Client, Input, Options)
 -spec delete_label_group(map(), delete_label_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_label_group_errors(), tuple()}.
 delete_label_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_label_group(Client, Input, []).
@@ -1645,12 +1913,7 @@ delete_label_group(Client, Input)
 -spec delete_label_group(map(), delete_label_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_label_group_errors(), tuple()}.
 delete_label_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLabelGroup">>, Input, Options).
@@ -1664,12 +1927,7 @@ delete_label_group(Client, Input, Options)
 -spec delete_model(map(), delete_model_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_model_errors(), tuple()}.
 delete_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model(Client, Input, []).
@@ -1677,12 +1935,7 @@ delete_model(Client, Input)
 -spec delete_model(map(), delete_model_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_model_errors(), tuple()}.
 delete_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteModel">>, Input, Options).
@@ -1691,12 +1944,7 @@ delete_model(Client, Input, Options)
 -spec delete_resource_policy(map(), delete_resource_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
@@ -1704,12 +1952,7 @@ delete_resource_policy(Client, Input)
 -spec delete_resource_policy(map(), delete_resource_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourcePolicy">>, Input, Options).
@@ -1721,12 +1964,7 @@ delete_resource_policy(Client, Input, Options)
 -spec delete_retraining_scheduler(map(), delete_retraining_scheduler_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_retraining_scheduler_errors(), tuple()}.
 delete_retraining_scheduler(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_retraining_scheduler(Client, Input, []).
@@ -1734,12 +1972,7 @@ delete_retraining_scheduler(Client, Input)
 -spec delete_retraining_scheduler(map(), delete_retraining_scheduler_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_retraining_scheduler_errors(), tuple()}.
 delete_retraining_scheduler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRetrainingScheduler">>, Input, Options).
@@ -1750,11 +1983,7 @@ delete_retraining_scheduler(Client, Input, Options)
 -spec describe_data_ingestion_job(map(), describe_data_ingestion_job_request()) ->
     {ok, describe_data_ingestion_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_data_ingestion_job_errors(), tuple()}.
 describe_data_ingestion_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_data_ingestion_job(Client, Input, []).
@@ -1762,11 +1991,7 @@ describe_data_ingestion_job(Client, Input)
 -spec describe_data_ingestion_job(map(), describe_data_ingestion_job_request(), proplists:proplist()) ->
     {ok, describe_data_ingestion_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_data_ingestion_job_errors(), tuple()}.
 describe_data_ingestion_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDataIngestionJob">>, Input, Options).
@@ -1777,11 +2002,7 @@ describe_data_ingestion_job(Client, Input, Options)
 -spec describe_dataset(map(), describe_dataset_request()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_dataset_errors(), tuple()}.
 describe_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dataset(Client, Input, []).
@@ -1789,11 +2010,7 @@ describe_dataset(Client, Input)
 -spec describe_dataset(map(), describe_dataset_request(), proplists:proplist()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_dataset_errors(), tuple()}.
 describe_dataset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDataset">>, Input, Options).
@@ -1804,11 +2021,7 @@ describe_dataset(Client, Input, Options)
 -spec describe_inference_scheduler(map(), describe_inference_scheduler_request()) ->
     {ok, describe_inference_scheduler_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_inference_scheduler_errors(), tuple()}.
 describe_inference_scheduler(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_inference_scheduler(Client, Input, []).
@@ -1816,11 +2029,7 @@ describe_inference_scheduler(Client, Input)
 -spec describe_inference_scheduler(map(), describe_inference_scheduler_request(), proplists:proplist()) ->
     {ok, describe_inference_scheduler_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_inference_scheduler_errors(), tuple()}.
 describe_inference_scheduler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInferenceScheduler">>, Input, Options).
@@ -1829,11 +2038,7 @@ describe_inference_scheduler(Client, Input, Options)
 -spec describe_label(map(), describe_label_request()) ->
     {ok, describe_label_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_label_errors(), tuple()}.
 describe_label(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_label(Client, Input, []).
@@ -1841,11 +2046,7 @@ describe_label(Client, Input)
 -spec describe_label(map(), describe_label_request(), proplists:proplist()) ->
     {ok, describe_label_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_label_errors(), tuple()}.
 describe_label(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLabel">>, Input, Options).
@@ -1854,11 +2055,7 @@ describe_label(Client, Input, Options)
 -spec describe_label_group(map(), describe_label_group_request()) ->
     {ok, describe_label_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_label_group_errors(), tuple()}.
 describe_label_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_label_group(Client, Input, []).
@@ -1866,11 +2063,7 @@ describe_label_group(Client, Input)
 -spec describe_label_group(map(), describe_label_group_request(), proplists:proplist()) ->
     {ok, describe_label_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_label_group_errors(), tuple()}.
 describe_label_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLabelGroup">>, Input, Options).
@@ -1883,11 +2076,7 @@ describe_label_group(Client, Input, Options)
 -spec describe_model(map(), describe_model_request()) ->
     {ok, describe_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_model_errors(), tuple()}.
 describe_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_model(Client, Input, []).
@@ -1895,11 +2084,7 @@ describe_model(Client, Input)
 -spec describe_model(map(), describe_model_request(), proplists:proplist()) ->
     {ok, describe_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_model_errors(), tuple()}.
 describe_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeModel">>, Input, Options).
@@ -1909,11 +2094,7 @@ describe_model(Client, Input, Options)
 -spec describe_model_version(map(), describe_model_version_request()) ->
     {ok, describe_model_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_model_version_errors(), tuple()}.
 describe_model_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_model_version(Client, Input, []).
@@ -1921,11 +2102,7 @@ describe_model_version(Client, Input)
 -spec describe_model_version(map(), describe_model_version_request(), proplists:proplist()) ->
     {ok, describe_model_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_model_version_errors(), tuple()}.
 describe_model_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeModelVersion">>, Input, Options).
@@ -1934,11 +2111,7 @@ describe_model_version(Client, Input, Options)
 -spec describe_resource_policy(map(), describe_resource_policy_request()) ->
     {ok, describe_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_resource_policy_errors(), tuple()}.
 describe_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_resource_policy(Client, Input, []).
@@ -1946,11 +2119,7 @@ describe_resource_policy(Client, Input)
 -spec describe_resource_policy(map(), describe_resource_policy_request(), proplists:proplist()) ->
     {ok, describe_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_resource_policy_errors(), tuple()}.
 describe_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeResourcePolicy">>, Input, Options).
@@ -1961,11 +2130,7 @@ describe_resource_policy(Client, Input, Options)
 -spec describe_retraining_scheduler(map(), describe_retraining_scheduler_request()) ->
     {ok, describe_retraining_scheduler_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_retraining_scheduler_errors(), tuple()}.
 describe_retraining_scheduler(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_retraining_scheduler(Client, Input, []).
@@ -1973,11 +2138,7 @@ describe_retraining_scheduler(Client, Input)
 -spec describe_retraining_scheduler(map(), describe_retraining_scheduler_request(), proplists:proplist()) ->
     {ok, describe_retraining_scheduler_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_retraining_scheduler_errors(), tuple()}.
 describe_retraining_scheduler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRetrainingScheduler">>, Input, Options).
@@ -1986,13 +2147,7 @@ describe_retraining_scheduler(Client, Input, Options)
 -spec import_dataset(map(), import_dataset_request()) ->
     {ok, import_dataset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, import_dataset_errors(), tuple()}.
 import_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_dataset(Client, Input, []).
@@ -2000,13 +2155,7 @@ import_dataset(Client, Input)
 -spec import_dataset(map(), import_dataset_request(), proplists:proplist()) ->
     {ok, import_dataset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, import_dataset_errors(), tuple()}.
 import_dataset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportDataset">>, Input, Options).
@@ -2015,13 +2164,7 @@ import_dataset(Client, Input, Options)
 -spec import_model_version(map(), import_model_version_request()) ->
     {ok, import_model_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, import_model_version_errors(), tuple()}.
 import_model_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_model_version(Client, Input, []).
@@ -2029,13 +2172,7 @@ import_model_version(Client, Input)
 -spec import_model_version(map(), import_model_version_request(), proplists:proplist()) ->
     {ok, import_model_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, import_model_version_errors(), tuple()}.
 import_model_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportModelVersion">>, Input, Options).
@@ -2046,10 +2183,7 @@ import_model_version(Client, Input, Options)
 -spec list_data_ingestion_jobs(map(), list_data_ingestion_jobs_request()) ->
     {ok, list_data_ingestion_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_data_ingestion_jobs_errors(), tuple()}.
 list_data_ingestion_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_data_ingestion_jobs(Client, Input, []).
@@ -2057,10 +2191,7 @@ list_data_ingestion_jobs(Client, Input)
 -spec list_data_ingestion_jobs(map(), list_data_ingestion_jobs_request(), proplists:proplist()) ->
     {ok, list_data_ingestion_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_data_ingestion_jobs_errors(), tuple()}.
 list_data_ingestion_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDataIngestionJobs">>, Input, Options).
@@ -2070,10 +2201,7 @@ list_data_ingestion_jobs(Client, Input, Options)
 -spec list_datasets(map(), list_datasets_request()) ->
     {ok, list_datasets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_datasets_errors(), tuple()}.
 list_datasets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_datasets(Client, Input, []).
@@ -2081,10 +2209,7 @@ list_datasets(Client, Input)
 -spec list_datasets(map(), list_datasets_request(), proplists:proplist()) ->
     {ok, list_datasets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_datasets_errors(), tuple()}.
 list_datasets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDatasets">>, Input, Options).
@@ -2094,11 +2219,7 @@ list_datasets(Client, Input, Options)
 -spec list_inference_events(map(), list_inference_events_request()) ->
     {ok, list_inference_events_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_inference_events_errors(), tuple()}.
 list_inference_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_inference_events(Client, Input, []).
@@ -2106,11 +2227,7 @@ list_inference_events(Client, Input)
 -spec list_inference_events(map(), list_inference_events_request(), proplists:proplist()) ->
     {ok, list_inference_events_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_inference_events_errors(), tuple()}.
 list_inference_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInferenceEvents">>, Input, Options).
@@ -2121,11 +2238,7 @@ list_inference_events(Client, Input, Options)
 -spec list_inference_executions(map(), list_inference_executions_request()) ->
     {ok, list_inference_executions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_inference_executions_errors(), tuple()}.
 list_inference_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_inference_executions(Client, Input, []).
@@ -2133,11 +2246,7 @@ list_inference_executions(Client, Input)
 -spec list_inference_executions(map(), list_inference_executions_request(), proplists:proplist()) ->
     {ok, list_inference_executions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_inference_executions_errors(), tuple()}.
 list_inference_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInferenceExecutions">>, Input, Options).
@@ -2147,10 +2256,7 @@ list_inference_executions(Client, Input, Options)
 -spec list_inference_schedulers(map(), list_inference_schedulers_request()) ->
     {ok, list_inference_schedulers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_inference_schedulers_errors(), tuple()}.
 list_inference_schedulers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_inference_schedulers(Client, Input, []).
@@ -2158,10 +2264,7 @@ list_inference_schedulers(Client, Input)
 -spec list_inference_schedulers(map(), list_inference_schedulers_request(), proplists:proplist()) ->
     {ok, list_inference_schedulers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_inference_schedulers_errors(), tuple()}.
 list_inference_schedulers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInferenceSchedulers">>, Input, Options).
@@ -2170,10 +2273,7 @@ list_inference_schedulers(Client, Input, Options)
 -spec list_label_groups(map(), list_label_groups_request()) ->
     {ok, list_label_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_label_groups_errors(), tuple()}.
 list_label_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_label_groups(Client, Input, []).
@@ -2181,10 +2281,7 @@ list_label_groups(Client, Input)
 -spec list_label_groups(map(), list_label_groups_request(), proplists:proplist()) ->
     {ok, list_label_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_label_groups_errors(), tuple()}.
 list_label_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLabelGroups">>, Input, Options).
@@ -2193,10 +2290,7 @@ list_label_groups(Client, Input, Options)
 -spec list_labels(map(), list_labels_request()) ->
     {ok, list_labels_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_labels_errors(), tuple()}.
 list_labels(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_labels(Client, Input, []).
@@ -2204,10 +2298,7 @@ list_labels(Client, Input)
 -spec list_labels(map(), list_labels_request(), proplists:proplist()) ->
     {ok, list_labels_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_labels_errors(), tuple()}.
 list_labels(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLabels">>, Input, Options).
@@ -2221,11 +2312,7 @@ list_labels(Client, Input, Options)
 -spec list_model_versions(map(), list_model_versions_request()) ->
     {ok, list_model_versions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_model_versions_errors(), tuple()}.
 list_model_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_model_versions(Client, Input, []).
@@ -2233,11 +2320,7 @@ list_model_versions(Client, Input)
 -spec list_model_versions(map(), list_model_versions_request(), proplists:proplist()) ->
     {ok, list_model_versions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_model_versions_errors(), tuple()}.
 list_model_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListModelVersions">>, Input, Options).
@@ -2248,10 +2331,7 @@ list_model_versions(Client, Input, Options)
 -spec list_models(map(), list_models_request()) ->
     {ok, list_models_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_models_errors(), tuple()}.
 list_models(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_models(Client, Input, []).
@@ -2259,10 +2339,7 @@ list_models(Client, Input)
 -spec list_models(map(), list_models_request(), proplists:proplist()) ->
     {ok, list_models_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_models_errors(), tuple()}.
 list_models(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListModels">>, Input, Options).
@@ -2273,10 +2350,7 @@ list_models(Client, Input, Options)
 -spec list_retraining_schedulers(map(), list_retraining_schedulers_request()) ->
     {ok, list_retraining_schedulers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_retraining_schedulers_errors(), tuple()}.
 list_retraining_schedulers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_retraining_schedulers(Client, Input, []).
@@ -2284,10 +2358,7 @@ list_retraining_schedulers(Client, Input)
 -spec list_retraining_schedulers(map(), list_retraining_schedulers_request(), proplists:proplist()) ->
     {ok, list_retraining_schedulers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_retraining_schedulers_errors(), tuple()}.
 list_retraining_schedulers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRetrainingSchedulers">>, Input, Options).
@@ -2301,11 +2372,7 @@ list_retraining_schedulers(Client, Input, Options)
 -spec list_sensor_statistics(map(), list_sensor_statistics_request()) ->
     {ok, list_sensor_statistics_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_sensor_statistics_errors(), tuple()}.
 list_sensor_statistics(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_sensor_statistics(Client, Input, []).
@@ -2313,11 +2380,7 @@ list_sensor_statistics(Client, Input)
 -spec list_sensor_statistics(map(), list_sensor_statistics_request(), proplists:proplist()) ->
     {ok, list_sensor_statistics_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_sensor_statistics_errors(), tuple()}.
 list_sensor_statistics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSensorStatistics">>, Input, Options).
@@ -2326,11 +2389,7 @@ list_sensor_statistics(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -2338,11 +2397,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -2351,13 +2406,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec put_resource_policy(map(), put_resource_policy_request()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
@@ -2365,13 +2414,7 @@ put_resource_policy(Client, Input)
 -spec put_resource_policy(map(), put_resource_policy_request(), proplists:proplist()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResourcePolicy">>, Input, Options).
@@ -2382,13 +2425,7 @@ put_resource_policy(Client, Input, Options)
 -spec start_data_ingestion_job(map(), start_data_ingestion_job_request()) ->
     {ok, start_data_ingestion_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_data_ingestion_job_errors(), tuple()}.
 start_data_ingestion_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_data_ingestion_job(Client, Input, []).
@@ -2396,13 +2433,7 @@ start_data_ingestion_job(Client, Input)
 -spec start_data_ingestion_job(map(), start_data_ingestion_job_request(), proplists:proplist()) ->
     {ok, start_data_ingestion_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_data_ingestion_job_errors(), tuple()}.
 start_data_ingestion_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDataIngestionJob">>, Input, Options).
@@ -2411,12 +2442,7 @@ start_data_ingestion_job(Client, Input, Options)
 -spec start_inference_scheduler(map(), start_inference_scheduler_request()) ->
     {ok, start_inference_scheduler_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_inference_scheduler_errors(), tuple()}.
 start_inference_scheduler(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_inference_scheduler(Client, Input, []).
@@ -2424,12 +2450,7 @@ start_inference_scheduler(Client, Input)
 -spec start_inference_scheduler(map(), start_inference_scheduler_request(), proplists:proplist()) ->
     {ok, start_inference_scheduler_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_inference_scheduler_errors(), tuple()}.
 start_inference_scheduler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartInferenceScheduler">>, Input, Options).
@@ -2438,12 +2459,7 @@ start_inference_scheduler(Client, Input, Options)
 -spec start_retraining_scheduler(map(), start_retraining_scheduler_request()) ->
     {ok, start_retraining_scheduler_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_retraining_scheduler_errors(), tuple()}.
 start_retraining_scheduler(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_retraining_scheduler(Client, Input, []).
@@ -2451,12 +2467,7 @@ start_retraining_scheduler(Client, Input)
 -spec start_retraining_scheduler(map(), start_retraining_scheduler_request(), proplists:proplist()) ->
     {ok, start_retraining_scheduler_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_retraining_scheduler_errors(), tuple()}.
 start_retraining_scheduler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartRetrainingScheduler">>, Input, Options).
@@ -2465,12 +2476,7 @@ start_retraining_scheduler(Client, Input, Options)
 -spec stop_inference_scheduler(map(), stop_inference_scheduler_request()) ->
     {ok, stop_inference_scheduler_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_inference_scheduler_errors(), tuple()}.
 stop_inference_scheduler(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_inference_scheduler(Client, Input, []).
@@ -2478,12 +2484,7 @@ stop_inference_scheduler(Client, Input)
 -spec stop_inference_scheduler(map(), stop_inference_scheduler_request(), proplists:proplist()) ->
     {ok, stop_inference_scheduler_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_inference_scheduler_errors(), tuple()}.
 stop_inference_scheduler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopInferenceScheduler">>, Input, Options).
@@ -2492,12 +2493,7 @@ stop_inference_scheduler(Client, Input, Options)
 -spec stop_retraining_scheduler(map(), stop_retraining_scheduler_request()) ->
     {ok, stop_retraining_scheduler_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_retraining_scheduler_errors(), tuple()}.
 stop_retraining_scheduler(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_retraining_scheduler(Client, Input, []).
@@ -2505,12 +2501,7 @@ stop_retraining_scheduler(Client, Input)
 -spec stop_retraining_scheduler(map(), stop_retraining_scheduler_request(), proplists:proplist()) ->
     {ok, stop_retraining_scheduler_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_retraining_scheduler_errors(), tuple()}.
 stop_retraining_scheduler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopRetrainingScheduler">>, Input, Options).
@@ -2528,12 +2519,7 @@ stop_retraining_scheduler(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -2541,12 +2527,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -2557,11 +2538,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -2569,11 +2546,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -2582,12 +2555,7 @@ untag_resource(Client, Input, Options)
 -spec update_active_model_version(map(), update_active_model_version_request()) ->
     {ok, update_active_model_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_active_model_version_errors(), tuple()}.
 update_active_model_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_active_model_version(Client, Input, []).
@@ -2595,12 +2563,7 @@ update_active_model_version(Client, Input)
 -spec update_active_model_version(map(), update_active_model_version_request(), proplists:proplist()) ->
     {ok, update_active_model_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_active_model_version_errors(), tuple()}.
 update_active_model_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateActiveModelVersion">>, Input, Options).
@@ -2609,12 +2572,7 @@ update_active_model_version(Client, Input, Options)
 -spec update_inference_scheduler(map(), update_inference_scheduler_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_inference_scheduler_errors(), tuple()}.
 update_inference_scheduler(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_inference_scheduler(Client, Input, []).
@@ -2622,12 +2580,7 @@ update_inference_scheduler(Client, Input)
 -spec update_inference_scheduler(map(), update_inference_scheduler_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_inference_scheduler_errors(), tuple()}.
 update_inference_scheduler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateInferenceScheduler">>, Input, Options).
@@ -2636,12 +2589,7 @@ update_inference_scheduler(Client, Input, Options)
 -spec update_label_group(map(), update_label_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_label_group_errors(), tuple()}.
 update_label_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_label_group(Client, Input, []).
@@ -2649,12 +2597,7 @@ update_label_group(Client, Input)
 -spec update_label_group(map(), update_label_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_label_group_errors(), tuple()}.
 update_label_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLabelGroup">>, Input, Options).
@@ -2663,12 +2606,7 @@ update_label_group(Client, Input, Options)
 -spec update_model(map(), update_model_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_model_errors(), tuple()}.
 update_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_model(Client, Input, []).
@@ -2676,12 +2614,7 @@ update_model(Client, Input)
 -spec update_model(map(), update_model_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_model_errors(), tuple()}.
 update_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateModel">>, Input, Options).
@@ -2690,12 +2623,7 @@ update_model(Client, Input, Options)
 -spec update_retraining_scheduler(map(), update_retraining_scheduler_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_retraining_scheduler_errors(), tuple()}.
 update_retraining_scheduler(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_retraining_scheduler(Client, Input, []).
@@ -2703,12 +2631,7 @@ update_retraining_scheduler(Client, Input)
 -spec update_retraining_scheduler(map(), update_retraining_scheduler_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_retraining_scheduler_errors(), tuple()}.
 update_retraining_scheduler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRetrainingScheduler">>, Input, Options).

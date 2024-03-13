@@ -234,6 +234,7 @@
 %% }
 -type video() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_stage_request() :: #{
 %%   <<"arn">> := string(),
@@ -241,11 +242,13 @@
 %% }
 -type update_stage_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_composition_response() :: #{
 %%   <<"composition">> => composition()
 %% }
 -type get_composition_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% stage() :: #{
@@ -256,11 +259,13 @@
 %% }
 -type stage() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_stages_request() :: #{
@@ -268,6 +273,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_stages_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% composition() :: #{
@@ -282,11 +288,13 @@
 %% }
 -type composition() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_storage_configuration_response() :: #{
 %%   <<"storageConfiguration">> => storage_configuration()
 %% }
 -type get_storage_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_stage_response() :: #{
@@ -295,11 +303,13 @@
 %% }
 -type create_stage_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% recording_configuration() :: #{
 %%   <<"format">> => string()
 %% }
 -type recording_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% participant() :: #{
@@ -318,20 +328,24 @@
 %% }
 -type participant() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_stage_response() :: #{
 %%   <<"stage">> => stage()
 %% }
 -type get_stage_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% stop_composition_request() :: #{
 %%   <<"arn">> := string()
 %% }
 -type stop_composition_request() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% list_compositions_response() :: #{
@@ -340,17 +354,20 @@
 %% }
 -type list_compositions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_encoder_configuration_request() :: #{
 %%   <<"arn">> := string()
 %% }
 -type delete_encoder_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_storage_configuration_request() :: #{
 %%   <<"arn">> := string()
 %% }
 -type get_storage_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_compositions_request() :: #{
@@ -361,6 +378,7 @@
 %% }
 -type list_compositions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% participant_summary() :: #{
 %%   <<"firstJoinTime">> => non_neg_integer(),
@@ -370,9 +388,11 @@
 %%   <<"userId">> => string()
 %% }
 -type participant_summary() :: #{binary() => any()}.
+
 %% Example:
 %% disconnect_participant_response() :: #{}
 -type disconnect_participant_response() :: #{}.
+
 
 %% Example:
 %% get_stage_session_request() :: #{
@@ -381,17 +401,20 @@
 %% }
 -type get_stage_session_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_stage_session_response() :: #{
 %%   <<"stageSession">> => stage_session()
 %% }
 -type get_stage_session_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_stage_response() :: #{
 %%   <<"stage">> => stage()
 %% }
 -type update_stage_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% participant_token_configuration() :: #{
@@ -402,6 +425,7 @@
 %% }
 -type participant_token_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% storage_configuration_summary() :: #{
 %%   <<"arn">> => string(),
@@ -411,11 +435,13 @@
 %% }
 -type storage_configuration_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_encoder_configurations_request() :: #{
@@ -424,17 +450,20 @@
 %% }
 -type list_encoder_configurations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_stage_request() :: #{
 %%   <<"arn">> := string()
 %% }
 -type get_stage_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_composition_response() :: #{
 %%   <<"composition">> => composition()
 %% }
 -type start_composition_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_composition_request() :: #{
@@ -446,11 +475,13 @@
 %% }
 -type start_composition_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_stage_request() :: #{
 %%   <<"arn">> := string()
 %% }
 -type delete_stage_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_composition_request() :: #{
@@ -458,11 +489,13 @@
 %% }
 -type get_composition_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_encoder_configuration_response() :: #{
 %%   <<"encoderConfiguration">> => encoder_configuration()
 %% }
 -type get_encoder_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_storage_configurations_request() :: #{
@@ -470,6 +503,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_storage_configurations_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% disconnect_participant_request() :: #{
@@ -479,6 +513,7 @@
 %% }
 -type disconnect_participant_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_storage_configurations_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -486,17 +521,20 @@
 %% }
 -type list_storage_configurations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"exceptionMessage">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"exceptionMessage">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_participants_response() :: #{
@@ -505,6 +543,7 @@
 %% }
 -type list_participants_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% channel_destination_configuration() :: #{
 %%   <<"channelArn">> => string(),
@@ -512,11 +551,13 @@
 %% }
 -type channel_destination_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_participant_response() :: #{
 %%   <<"participant">> => participant()
 %% }
 -type get_participant_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_participants_request() :: #{
@@ -530,11 +571,13 @@
 %% }
 -type list_participants_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"exceptionMessage">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_stage_sessions_request() :: #{
@@ -544,17 +587,20 @@
 %% }
 -type list_stage_sessions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_storage_configuration_response() :: #{
 %%   <<"storageConfiguration">> => storage_configuration()
 %% }
 -type create_storage_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_participant_token_response() :: #{
 %%   <<"participantToken">> => participant_token()
 %% }
 -type create_participant_token_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_destination_configuration() :: #{
@@ -563,6 +609,7 @@
 %%   <<"storageConfigurationArn">> => string()
 %% }
 -type s3_destination_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% destination_summary() :: #{
@@ -573,6 +620,7 @@
 %% }
 -type destination_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% storage_configuration() :: #{
 %%   <<"arn">> => string(),
@@ -582,6 +630,7 @@
 %% }
 -type storage_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_stage_sessions_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -589,11 +638,13 @@
 %% }
 -type list_stage_sessions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> := map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% encoder_configuration() :: #{
@@ -604,6 +655,7 @@
 %% }
 -type encoder_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% encoder_configuration_summary() :: #{
 %%   <<"arn">> => string(),
@@ -612,6 +664,7 @@
 %% }
 -type encoder_configuration_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% stage_session_summary() :: #{
 %%   <<"endTime">> => non_neg_integer(),
@@ -619,9 +672,11 @@
 %%   <<"startTime">> => non_neg_integer()
 %% }
 -type stage_session_summary() :: #{binary() => any()}.
+
 %% Example:
 %% delete_stage_response() :: #{}
 -type delete_stage_response() :: #{}.
+
 
 %% Example:
 %% create_stage_request() :: #{
@@ -631,17 +686,20 @@
 %% }
 -type create_stage_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_detail() :: #{
 %%   <<"recordingPrefix">> => string()
 %% }
 -type s3_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"exceptionMessage">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_participant_token_request() :: #{
@@ -653,12 +711,14 @@
 %% }
 -type create_participant_token_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_stages_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"stages">> := list(stage_summary()())
 %% }
 -type list_stages_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% event() :: #{
@@ -670,12 +730,14 @@
 %% }
 -type event() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_encoder_configurations_response() :: #{
 %%   <<"encoderConfigurations">> => list(encoder_configuration_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_encoder_configurations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_participant_request() :: #{
@@ -685,17 +747,21 @@
 %% }
 -type get_participant_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"exceptionMessage">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 %% Example:
 %% delete_storage_configuration_response() :: #{}
 -type delete_storage_configuration_response() :: #{}.
+
 
 %% Example:
 %% list_participant_events_request() :: #{
@@ -707,20 +773,24 @@
 %% }
 -type list_participant_events_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% grid_configuration() :: #{
 %%   <<"featuredParticipantAttribute">> => string()
 %% }
 -type grid_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"exceptionMessage">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% destination() :: #{
@@ -733,6 +803,7 @@
 %% }
 -type destination() :: #{binary() => any()}.
 
+
 %% Example:
 %% participant_token() :: #{
 %%   <<"attributes">> => map(),
@@ -744,9 +815,11 @@
 %%   <<"userId">> => string()
 %% }
 -type participant_token() :: #{binary() => any()}.
+
 %% Example:
 %% stop_composition_response() :: #{}
 -type stop_composition_response() :: #{}.
+
 
 %% Example:
 %% create_storage_configuration_request() :: #{
@@ -756,17 +829,20 @@
 %% }
 -type create_storage_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% destination_detail() :: #{
 %%   <<"s3">> => s3_detail()
 %% }
 -type destination_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_encoder_configuration_request() :: #{
 %%   <<"arn">> := string()
 %% }
 -type get_encoder_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_encoder_configuration_request() :: #{
@@ -776,11 +852,13 @@
 %% }
 -type create_encoder_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_storage_configuration() :: #{
 %%   <<"bucketName">> => string()
 %% }
 -type s3_storage_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% stage_session() :: #{
@@ -789,6 +867,7 @@
 %%   <<"startTime">> => non_neg_integer()
 %% }
 -type stage_session() :: #{binary() => any()}.
+
 
 %% Example:
 %% stage_summary() :: #{
@@ -799,11 +878,13 @@
 %% }
 -type stage_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_storage_configuration_request() :: #{
 %%   <<"arn">> := string()
 %% }
 -type delete_storage_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% composition_summary() :: #{
@@ -816,9 +897,11 @@
 %%   <<"tags">> => map()
 %% }
 -type composition_summary() :: #{binary() => any()}.
+
 %% Example:
 %% delete_encoder_configuration_response() :: #{}
 -type delete_encoder_configuration_response() :: #{}.
+
 
 %% Example:
 %% create_encoder_configuration_response() :: #{
@@ -826,17 +909,20 @@
 %% }
 -type create_encoder_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% layout_configuration() :: #{
 %%   <<"grid">> => grid_configuration()
 %% }
 -type layout_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% pending_verification() :: #{
 %%   <<"exceptionMessage">> => string()
 %% }
 -type pending_verification() :: #{binary() => any()}.
+
 
 %% Example:
 %% destination_configuration() :: #{
@@ -846,12 +932,189 @@
 %% }
 -type destination_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_participant_events_response() :: #{
 %%   <<"events">> => list(event()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_participant_events_response() :: #{binary() => any()}.
+
+-type create_encoder_configuration_errors() ::
+    pending_verification() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_participant_token_errors() ::
+    pending_verification() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type create_stage_errors() ::
+    pending_verification() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception().
+
+-type create_storage_configuration_errors() ::
+    pending_verification() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_encoder_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_stage_errors() ::
+    pending_verification() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_storage_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type disconnect_participant_errors() ::
+    pending_verification() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_composition_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_encoder_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_participant_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_stage_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_stage_session_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_storage_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_compositions_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type list_encoder_configurations_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type list_participant_events_errors() ::
+    validation_exception() | 
+    access_denied_exception().
+
+-type list_participants_errors() ::
+    validation_exception() | 
+    access_denied_exception().
+
+-type list_stage_sessions_errors() ::
+    validation_exception() | 
+    access_denied_exception().
+
+-type list_stages_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    conflict_exception().
+
+-type list_storage_configurations_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type start_composition_errors() ::
+    pending_verification() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type stop_composition_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_stage_errors() ::
+    pending_verification() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -861,26 +1124,14 @@
 -spec create_encoder_configuration(map(), create_encoder_configuration_request()) ->
     {ok, create_encoder_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_encoder_configuration_errors(), tuple()}.
 create_encoder_configuration(Client, Input) ->
     create_encoder_configuration(Client, Input, []).
 
 -spec create_encoder_configuration(map(), create_encoder_configuration_request(), proplists:proplist()) ->
     {ok, create_encoder_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_encoder_configuration_errors(), tuple()}.
 create_encoder_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateEncoderConfiguration"],
@@ -915,22 +1166,14 @@ create_encoder_configuration(Client, Input0, Options0) ->
 -spec create_participant_token(map(), create_participant_token_request()) ->
     {ok, create_participant_token_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_participant_token_errors(), tuple()}.
 create_participant_token(Client, Input) ->
     create_participant_token(Client, Input, []).
 
 -spec create_participant_token(map(), create_participant_token_request(), proplists:proplist()) ->
     {ok, create_participant_token_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_participant_token_errors(), tuple()}.
 create_participant_token(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateParticipantToken"],
@@ -957,20 +1200,14 @@ create_participant_token(Client, Input0, Options0) ->
 -spec create_stage(map(), create_stage_request()) ->
     {ok, create_stage_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_stage_errors(), tuple()}.
 create_stage(Client, Input) ->
     create_stage(Client, Input, []).
 
 -spec create_stage(map(), create_stage_request(), proplists:proplist()) ->
     {ok, create_stage_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_stage_errors(), tuple()}.
 create_stage(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateStage"],
@@ -1003,26 +1240,14 @@ create_stage(Client, Input0, Options0) ->
 -spec create_storage_configuration(map(), create_storage_configuration_request()) ->
     {ok, create_storage_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_storage_configuration_errors(), tuple()}.
 create_storage_configuration(Client, Input) ->
     create_storage_configuration(Client, Input, []).
 
 -spec create_storage_configuration(map(), create_storage_configuration_request(), proplists:proplist()) ->
     {ok, create_storage_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_storage_configuration_errors(), tuple()}.
 create_storage_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateStorageConfiguration"],
@@ -1052,24 +1277,14 @@ create_storage_configuration(Client, Input0, Options0) ->
 -spec delete_encoder_configuration(map(), delete_encoder_configuration_request()) ->
     {ok, delete_encoder_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_encoder_configuration_errors(), tuple()}.
 delete_encoder_configuration(Client, Input) ->
     delete_encoder_configuration(Client, Input, []).
 
 -spec delete_encoder_configuration(map(), delete_encoder_configuration_request(), proplists:proplist()) ->
     {ok, delete_encoder_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_encoder_configuration_errors(), tuple()}.
 delete_encoder_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteEncoderConfiguration"],
@@ -1097,22 +1312,14 @@ delete_encoder_configuration(Client, Input0, Options0) ->
 -spec delete_stage(map(), delete_stage_request()) ->
     {ok, delete_stage_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_stage_errors(), tuple()}.
 delete_stage(Client, Input) ->
     delete_stage(Client, Input, []).
 
 -spec delete_stage(map(), delete_stage_request(), proplists:proplist()) ->
     {ok, delete_stage_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_stage_errors(), tuple()}.
 delete_stage(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteStage"],
@@ -1146,24 +1353,14 @@ delete_stage(Client, Input0, Options0) ->
 -spec delete_storage_configuration(map(), delete_storage_configuration_request()) ->
     {ok, delete_storage_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_storage_configuration_errors(), tuple()}.
 delete_storage_configuration(Client, Input) ->
     delete_storage_configuration(Client, Input, []).
 
 -spec delete_storage_configuration(map(), delete_storage_configuration_request(), proplists:proplist()) ->
     {ok, delete_storage_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_storage_configuration_errors(), tuple()}.
 delete_storage_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteStorageConfiguration"],
@@ -1192,20 +1389,14 @@ delete_storage_configuration(Client, Input0, Options0) ->
 -spec disconnect_participant(map(), disconnect_participant_request()) ->
     {ok, disconnect_participant_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disconnect_participant_errors(), tuple()}.
 disconnect_participant(Client, Input) ->
     disconnect_participant(Client, Input, []).
 
 -spec disconnect_participant(map(), disconnect_participant_request(), proplists:proplist()) ->
     {ok, disconnect_participant_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disconnect_participant_errors(), tuple()}.
 disconnect_participant(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DisconnectParticipant"],
@@ -1232,24 +1423,14 @@ disconnect_participant(Client, Input0, Options0) ->
 -spec get_composition(map(), get_composition_request()) ->
     {ok, get_composition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_composition_errors(), tuple()}.
 get_composition(Client, Input) ->
     get_composition(Client, Input, []).
 
 -spec get_composition(map(), get_composition_request(), proplists:proplist()) ->
     {ok, get_composition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_composition_errors(), tuple()}.
 get_composition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetComposition"],
@@ -1276,24 +1457,14 @@ get_composition(Client, Input0, Options0) ->
 -spec get_encoder_configuration(map(), get_encoder_configuration_request()) ->
     {ok, get_encoder_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_encoder_configuration_errors(), tuple()}.
 get_encoder_configuration(Client, Input) ->
     get_encoder_configuration(Client, Input, []).
 
 -spec get_encoder_configuration(map(), get_encoder_configuration_request(), proplists:proplist()) ->
     {ok, get_encoder_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_encoder_configuration_errors(), tuple()}.
 get_encoder_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetEncoderConfiguration"],
@@ -1320,18 +1491,14 @@ get_encoder_configuration(Client, Input0, Options0) ->
 -spec get_participant(map(), get_participant_request()) ->
     {ok, get_participant_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_participant_errors(), tuple()}.
 get_participant(Client, Input) ->
     get_participant(Client, Input, []).
 
 -spec get_participant(map(), get_participant_request(), proplists:proplist()) ->
     {ok, get_participant_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_participant_errors(), tuple()}.
 get_participant(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetParticipant"],
@@ -1358,18 +1525,14 @@ get_participant(Client, Input0, Options0) ->
 -spec get_stage(map(), get_stage_request()) ->
     {ok, get_stage_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_stage_errors(), tuple()}.
 get_stage(Client, Input) ->
     get_stage(Client, Input, []).
 
 -spec get_stage(map(), get_stage_request(), proplists:proplist()) ->
     {ok, get_stage_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_stage_errors(), tuple()}.
 get_stage(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetStage"],
@@ -1396,18 +1559,14 @@ get_stage(Client, Input0, Options0) ->
 -spec get_stage_session(map(), get_stage_session_request()) ->
     {ok, get_stage_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_stage_session_errors(), tuple()}.
 get_stage_session(Client, Input) ->
     get_stage_session(Client, Input, []).
 
 -spec get_stage_session(map(), get_stage_session_request(), proplists:proplist()) ->
     {ok, get_stage_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_stage_session_errors(), tuple()}.
 get_stage_session(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetStageSession"],
@@ -1434,24 +1593,14 @@ get_stage_session(Client, Input0, Options0) ->
 -spec get_storage_configuration(map(), get_storage_configuration_request()) ->
     {ok, get_storage_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_storage_configuration_errors(), tuple()}.
 get_storage_configuration(Client, Input) ->
     get_storage_configuration(Client, Input, []).
 
 -spec get_storage_configuration(map(), get_storage_configuration_request(), proplists:proplist()) ->
     {ok, get_storage_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_storage_configuration_errors(), tuple()}.
 get_storage_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetStorageConfiguration"],
@@ -1480,22 +1629,14 @@ get_storage_configuration(Client, Input0, Options0) ->
 -spec list_compositions(map(), list_compositions_request()) ->
     {ok, list_compositions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_compositions_errors(), tuple()}.
 list_compositions(Client, Input) ->
     list_compositions(Client, Input, []).
 
 -spec list_compositions(map(), list_compositions_request(), proplists:proplist()) ->
     {ok, list_compositions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_compositions_errors(), tuple()}.
 list_compositions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListCompositions"],
@@ -1524,22 +1665,14 @@ list_compositions(Client, Input0, Options0) ->
 -spec list_encoder_configurations(map(), list_encoder_configurations_request()) ->
     {ok, list_encoder_configurations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_encoder_configurations_errors(), tuple()}.
 list_encoder_configurations(Client, Input) ->
     list_encoder_configurations(Client, Input, []).
 
 -spec list_encoder_configurations(map(), list_encoder_configurations_request(), proplists:proplist()) ->
     {ok, list_encoder_configurations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_encoder_configurations_errors(), tuple()}.
 list_encoder_configurations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListEncoderConfigurations"],
@@ -1568,16 +1701,14 @@ list_encoder_configurations(Client, Input0, Options0) ->
 -spec list_participant_events(map(), list_participant_events_request()) ->
     {ok, list_participant_events_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_participant_events_errors(), tuple()}.
 list_participant_events(Client, Input) ->
     list_participant_events(Client, Input, []).
 
 -spec list_participant_events(map(), list_participant_events_request(), proplists:proplist()) ->
     {ok, list_participant_events_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_participant_events_errors(), tuple()}.
 list_participant_events(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListParticipantEvents"],
@@ -1604,16 +1735,14 @@ list_participant_events(Client, Input0, Options0) ->
 -spec list_participants(map(), list_participants_request()) ->
     {ok, list_participants_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_participants_errors(), tuple()}.
 list_participants(Client, Input) ->
     list_participants(Client, Input, []).
 
 -spec list_participants(map(), list_participants_request(), proplists:proplist()) ->
     {ok, list_participants_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_participants_errors(), tuple()}.
 list_participants(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListParticipants"],
@@ -1640,16 +1769,14 @@ list_participants(Client, Input0, Options0) ->
 -spec list_stage_sessions(map(), list_stage_sessions_request()) ->
     {ok, list_stage_sessions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_stage_sessions_errors(), tuple()}.
 list_stage_sessions(Client, Input) ->
     list_stage_sessions(Client, Input, []).
 
 -spec list_stage_sessions(map(), list_stage_sessions_request(), proplists:proplist()) ->
     {ok, list_stage_sessions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_stage_sessions_errors(), tuple()}.
 list_stage_sessions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListStageSessions"],
@@ -1678,18 +1805,14 @@ list_stage_sessions(Client, Input0, Options0) ->
 -spec list_stages(map(), list_stages_request()) ->
     {ok, list_stages_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_stages_errors(), tuple()}.
 list_stages(Client, Input) ->
     list_stages(Client, Input, []).
 
 -spec list_stages(map(), list_stages_request(), proplists:proplist()) ->
     {ok, list_stages_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_stages_errors(), tuple()}.
 list_stages(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListStages"],
@@ -1718,22 +1841,14 @@ list_stages(Client, Input0, Options0) ->
 -spec list_storage_configurations(map(), list_storage_configurations_request()) ->
     {ok, list_storage_configurations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_storage_configurations_errors(), tuple()}.
 list_storage_configurations(Client, Input) ->
     list_storage_configurations(Client, Input, []).
 
 -spec list_storage_configurations(map(), list_storage_configurations_request(), proplists:proplist()) ->
     {ok, list_storage_configurations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_storage_configurations_errors(), tuple()}.
 list_storage_configurations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListStorageConfigurations"],
@@ -1760,9 +1875,7 @@ list_storage_configurations(Client, Input0, Options0) ->
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1770,9 +1883,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1780,9 +1891,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1822,26 +1931,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec start_composition(map(), start_composition_request()) ->
     {ok, start_composition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_composition_errors(), tuple()}.
 start_composition(Client, Input) ->
     start_composition(Client, Input, []).
 
 -spec start_composition(map(), start_composition_request(), proplists:proplist()) ->
     {ok, start_composition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_composition_errors(), tuple()}.
 start_composition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/StartComposition"],
@@ -1871,24 +1968,14 @@ start_composition(Client, Input0, Options0) ->
 -spec stop_composition(map(), stop_composition_request()) ->
     {ok, stop_composition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_composition_errors(), tuple()}.
 stop_composition(Client, Input) ->
     stop_composition(Client, Input, []).
 
 -spec stop_composition(map(), stop_composition_request(), proplists:proplist()) ->
     {ok, stop_composition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_composition_errors(), tuple()}.
 stop_composition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/StopComposition"],
@@ -1915,18 +2002,14 @@ stop_composition(Client, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1953,18 +2036,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1992,22 +2071,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_stage(map(), update_stage_request()) ->
     {ok, update_stage_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_stage_errors(), tuple()}.
 update_stage(Client, Input) ->
     update_stage(Client, Input, []).
 
 -spec update_stage(map(), update_stage_request(), proplists:proplist()) ->
     {ok, update_stage_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, pending_verification(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_stage_errors(), tuple()}.
 update_stage(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateStage"],

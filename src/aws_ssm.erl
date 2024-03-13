@@ -5209,6 +5209,808 @@
 %% }
 -type get_inventory_schema_request() :: #{binary() => any()}.
 
+-type add_tags_to_resource_errors() ::
+    too_many_updates() | 
+    internal_server_error() | 
+    too_many_tags_error() | 
+    invalid_resource_id() | 
+    invalid_resource_type().
+
+-type associate_ops_item_related_item_errors() ::
+    ops_item_limit_exceeded_exception() | 
+    ops_item_invalid_parameter_exception() | 
+    internal_server_error() | 
+    ops_item_related_item_already_exists_exception() | 
+    ops_item_conflict_exception() | 
+    ops_item_not_found_exception().
+
+-type cancel_command_errors() ::
+    invalid_instance_id() | 
+    internal_server_error() | 
+    invalid_command_id() | 
+    duplicate_instance_id().
+
+-type cancel_maintenance_window_execution_errors() ::
+    does_not_exist_exception() | 
+    internal_server_error().
+
+-type create_activation_errors() ::
+    internal_server_error() | 
+    invalid_parameters().
+
+-type create_association_errors() ::
+    unsupported_platform_type() | 
+    association_already_exists() | 
+    invalid_instance_id() | 
+    invalid_target_maps() | 
+    internal_server_error() | 
+    invalid_output_location() | 
+    invalid_schedule() | 
+    invalid_document_version() | 
+    invalid_parameters() | 
+    invalid_document() | 
+    association_limit_exceeded() | 
+    invalid_tag() | 
+    invalid_target().
+
+-type create_association_batch_errors() ::
+    unsupported_platform_type() | 
+    invalid_instance_id() | 
+    invalid_target_maps() | 
+    internal_server_error() | 
+    invalid_output_location() | 
+    duplicate_instance_id() | 
+    invalid_schedule() | 
+    invalid_document_version() | 
+    invalid_parameters() | 
+    invalid_document() | 
+    association_limit_exceeded() | 
+    invalid_target().
+
+-type create_document_errors() ::
+    document_limit_exceeded() | 
+    internal_server_error() | 
+    document_already_exists() | 
+    invalid_document_schema_version() | 
+    invalid_document_content() | 
+    max_document_size_exceeded().
+
+-type create_maintenance_window_errors() ::
+    internal_server_error() | 
+    resource_limit_exceeded_exception() | 
+    idempotent_parameter_mismatch().
+
+-type create_ops_item_errors() ::
+    ops_item_limit_exceeded_exception() | 
+    ops_item_invalid_parameter_exception() | 
+    internal_server_error() | 
+    ops_item_already_exists_exception() | 
+    ops_item_access_denied_exception().
+
+-type create_ops_metadata_errors() ::
+    ops_metadata_limit_exceeded_exception() | 
+    internal_server_error() | 
+    ops_metadata_too_many_updates_exception() | 
+    ops_metadata_already_exists_exception() | 
+    ops_metadata_invalid_argument_exception().
+
+-type create_patch_baseline_errors() ::
+    internal_server_error() | 
+    resource_limit_exceeded_exception() | 
+    idempotent_parameter_mismatch().
+
+-type create_resource_data_sync_errors() ::
+    internal_server_error() | 
+    resource_data_sync_count_exceeded_exception() | 
+    resource_data_sync_invalid_configuration_exception() | 
+    resource_data_sync_already_exists_exception().
+
+-type delete_activation_errors() ::
+    too_many_updates() | 
+    internal_server_error() | 
+    invalid_activation() | 
+    invalid_activation_id().
+
+-type delete_association_errors() ::
+    association_does_not_exist() | 
+    invalid_instance_id() | 
+    too_many_updates() | 
+    internal_server_error() | 
+    invalid_document().
+
+-type delete_document_errors() ::
+    invalid_document_operation() | 
+    associated_instances() | 
+    internal_server_error() | 
+    invalid_document().
+
+-type delete_inventory_errors() ::
+    internal_server_error() | 
+    invalid_inventory_request_exception() | 
+    invalid_option_exception() | 
+    invalid_delete_inventory_parameters_exception() | 
+    invalid_type_name_exception().
+
+-type delete_maintenance_window_errors() ::
+    internal_server_error().
+
+-type delete_ops_item_errors() ::
+    ops_item_invalid_parameter_exception() | 
+    internal_server_error().
+
+-type delete_ops_metadata_errors() ::
+    internal_server_error() | 
+    ops_metadata_invalid_argument_exception() | 
+    ops_metadata_not_found_exception().
+
+-type delete_parameter_errors() ::
+    internal_server_error() | 
+    parameter_not_found().
+
+-type delete_parameters_errors() ::
+    internal_server_error().
+
+-type delete_patch_baseline_errors() ::
+    internal_server_error() | 
+    resource_in_use_exception().
+
+-type delete_resource_data_sync_errors() ::
+    resource_data_sync_not_found_exception() | 
+    internal_server_error() | 
+    resource_data_sync_invalid_configuration_exception().
+
+-type delete_resource_policy_errors() ::
+    resource_policy_not_found_exception() | 
+    internal_server_error() | 
+    resource_policy_conflict_exception() | 
+    resource_not_found_exception() | 
+    resource_policy_invalid_parameter_exception() | 
+    malformed_resource_policy_document_exception().
+
+-type deregister_managed_instance_errors() ::
+    invalid_instance_id() | 
+    internal_server_error().
+
+-type deregister_patch_baseline_for_patch_group_errors() ::
+    internal_server_error() | 
+    invalid_resource_id().
+
+-type deregister_target_from_maintenance_window_errors() ::
+    target_in_use_exception() | 
+    does_not_exist_exception() | 
+    internal_server_error().
+
+-type deregister_task_from_maintenance_window_errors() ::
+    does_not_exist_exception() | 
+    internal_server_error().
+
+-type describe_activations_errors() ::
+    invalid_next_token() | 
+    invalid_filter() | 
+    internal_server_error().
+
+-type describe_association_errors() ::
+    invalid_association_version() | 
+    association_does_not_exist() | 
+    invalid_instance_id() | 
+    internal_server_error() | 
+    invalid_document().
+
+-type describe_association_execution_targets_errors() ::
+    invalid_next_token() | 
+    association_does_not_exist() | 
+    internal_server_error() | 
+    association_execution_does_not_exist().
+
+-type describe_association_executions_errors() ::
+    invalid_next_token() | 
+    association_does_not_exist() | 
+    internal_server_error().
+
+-type describe_automation_executions_errors() ::
+    invalid_next_token() | 
+    invalid_filter_key() | 
+    internal_server_error() | 
+    invalid_filter_value().
+
+-type describe_automation_step_executions_errors() ::
+    invalid_next_token() | 
+    invalid_filter_key() | 
+    internal_server_error() | 
+    invalid_filter_value() | 
+    automation_execution_not_found_exception().
+
+-type describe_available_patches_errors() ::
+    internal_server_error().
+
+-type describe_document_errors() ::
+    internal_server_error() | 
+    invalid_document_version() | 
+    invalid_document().
+
+-type describe_document_permission_errors() ::
+    invalid_document_operation() | 
+    invalid_next_token() | 
+    internal_server_error() | 
+    invalid_permission_type() | 
+    invalid_document().
+
+-type describe_effective_instance_associations_errors() ::
+    invalid_next_token() | 
+    invalid_instance_id() | 
+    internal_server_error().
+
+-type describe_effective_patches_for_patch_baseline_errors() ::
+    unsupported_operating_system() | 
+    does_not_exist_exception() | 
+    internal_server_error() | 
+    invalid_resource_id().
+
+-type describe_instance_associations_status_errors() ::
+    invalid_next_token() | 
+    invalid_instance_id() | 
+    internal_server_error().
+
+-type describe_instance_information_errors() ::
+    invalid_next_token() | 
+    invalid_instance_information_filter_value() | 
+    invalid_filter_key() | 
+    invalid_instance_id() | 
+    internal_server_error().
+
+-type describe_instance_patch_states_errors() ::
+    invalid_next_token() | 
+    internal_server_error().
+
+-type describe_instance_patch_states_for_patch_group_errors() ::
+    invalid_next_token() | 
+    invalid_filter() | 
+    internal_server_error().
+
+-type describe_instance_patches_errors() ::
+    invalid_next_token() | 
+    invalid_filter() | 
+    invalid_instance_id() | 
+    internal_server_error().
+
+-type describe_inventory_deletions_errors() ::
+    invalid_next_token() | 
+    internal_server_error() | 
+    invalid_deletion_id_exception().
+
+-type describe_maintenance_window_execution_task_invocations_errors() ::
+    does_not_exist_exception() | 
+    internal_server_error().
+
+-type describe_maintenance_window_execution_tasks_errors() ::
+    does_not_exist_exception() | 
+    internal_server_error().
+
+-type describe_maintenance_window_executions_errors() ::
+    internal_server_error().
+
+-type describe_maintenance_window_schedule_errors() ::
+    does_not_exist_exception() | 
+    internal_server_error().
+
+-type describe_maintenance_window_targets_errors() ::
+    does_not_exist_exception() | 
+    internal_server_error().
+
+-type describe_maintenance_window_tasks_errors() ::
+    does_not_exist_exception() | 
+    internal_server_error().
+
+-type describe_maintenance_windows_errors() ::
+    internal_server_error().
+
+-type describe_maintenance_windows_for_target_errors() ::
+    internal_server_error().
+
+-type describe_ops_items_errors() ::
+    internal_server_error().
+
+-type describe_parameters_errors() ::
+    invalid_next_token() | 
+    invalid_filter_key() | 
+    internal_server_error() | 
+    invalid_filter_option() | 
+    invalid_filter_value().
+
+-type describe_patch_baselines_errors() ::
+    internal_server_error().
+
+-type describe_patch_group_state_errors() ::
+    invalid_next_token() | 
+    internal_server_error().
+
+-type describe_patch_groups_errors() ::
+    internal_server_error().
+
+-type describe_patch_properties_errors() ::
+    internal_server_error().
+
+-type describe_sessions_errors() ::
+    invalid_next_token() | 
+    invalid_filter_key() | 
+    internal_server_error().
+
+-type disassociate_ops_item_related_item_errors() ::
+    ops_item_invalid_parameter_exception() | 
+    internal_server_error() | 
+    ops_item_related_item_association_not_found_exception() | 
+    ops_item_conflict_exception() | 
+    ops_item_not_found_exception().
+
+-type get_automation_execution_errors() ::
+    internal_server_error() | 
+    automation_execution_not_found_exception().
+
+-type get_calendar_state_errors() ::
+    internal_server_error() | 
+    invalid_document_type() | 
+    unsupported_calendar_exception() | 
+    invalid_document().
+
+-type get_command_invocation_errors() ::
+    invalid_instance_id() | 
+    internal_server_error() | 
+    invalid_command_id() | 
+    invocation_does_not_exist() | 
+    invalid_plugin_name().
+
+-type get_connection_status_errors() ::
+    internal_server_error().
+
+-type get_default_patch_baseline_errors() ::
+    internal_server_error().
+
+-type get_deployable_patch_snapshot_for_instance_errors() ::
+    unsupported_operating_system() | 
+    internal_server_error() | 
+    unsupported_feature_required_exception().
+
+-type get_document_errors() ::
+    internal_server_error() | 
+    invalid_document_version() | 
+    invalid_document().
+
+-type get_inventory_errors() ::
+    invalid_next_token() | 
+    invalid_filter() | 
+    internal_server_error() | 
+    invalid_inventory_group_exception() | 
+    invalid_aggregator_exception() | 
+    invalid_result_attribute_exception() | 
+    invalid_type_name_exception().
+
+-type get_inventory_schema_errors() ::
+    invalid_next_token() | 
+    internal_server_error() | 
+    invalid_type_name_exception().
+
+-type get_maintenance_window_errors() ::
+    does_not_exist_exception() | 
+    internal_server_error().
+
+-type get_maintenance_window_execution_errors() ::
+    does_not_exist_exception() | 
+    internal_server_error().
+
+-type get_maintenance_window_execution_task_errors() ::
+    does_not_exist_exception() | 
+    internal_server_error().
+
+-type get_maintenance_window_execution_task_invocation_errors() ::
+    does_not_exist_exception() | 
+    internal_server_error().
+
+-type get_maintenance_window_task_errors() ::
+    does_not_exist_exception() | 
+    internal_server_error().
+
+-type get_ops_item_errors() ::
+    internal_server_error() | 
+    ops_item_not_found_exception() | 
+    ops_item_access_denied_exception().
+
+-type get_ops_metadata_errors() ::
+    internal_server_error() | 
+    ops_metadata_invalid_argument_exception() | 
+    ops_metadata_not_found_exception().
+
+-type get_ops_summary_errors() ::
+    invalid_next_token() | 
+    resource_data_sync_not_found_exception() | 
+    invalid_filter() | 
+    internal_server_error() | 
+    invalid_aggregator_exception() | 
+    invalid_type_name_exception().
+
+-type get_parameter_errors() ::
+    internal_server_error() | 
+    invalid_key_id() | 
+    parameter_version_not_found() | 
+    parameter_not_found().
+
+-type get_parameter_history_errors() ::
+    invalid_next_token() | 
+    internal_server_error() | 
+    invalid_key_id() | 
+    parameter_not_found().
+
+-type get_parameters_errors() ::
+    internal_server_error() | 
+    invalid_key_id().
+
+-type get_parameters_by_path_errors() ::
+    invalid_next_token() | 
+    invalid_filter_key() | 
+    internal_server_error() | 
+    invalid_key_id() | 
+    invalid_filter_option() | 
+    invalid_filter_value().
+
+-type get_patch_baseline_errors() ::
+    does_not_exist_exception() | 
+    internal_server_error() | 
+    invalid_resource_id().
+
+-type get_patch_baseline_for_patch_group_errors() ::
+    internal_server_error().
+
+-type get_resource_policies_errors() ::
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    resource_policy_invalid_parameter_exception().
+
+-type get_service_setting_errors() ::
+    internal_server_error() | 
+    service_setting_not_found().
+
+-type label_parameter_version_errors() ::
+    parameter_version_label_limit_exceeded() | 
+    too_many_updates() | 
+    internal_server_error() | 
+    parameter_version_not_found() | 
+    parameter_not_found().
+
+-type list_association_versions_errors() ::
+    invalid_next_token() | 
+    association_does_not_exist() | 
+    internal_server_error().
+
+-type list_associations_errors() ::
+    invalid_next_token() | 
+    internal_server_error().
+
+-type list_command_invocations_errors() ::
+    invalid_next_token() | 
+    invalid_filter_key() | 
+    invalid_instance_id() | 
+    internal_server_error() | 
+    invalid_command_id().
+
+-type list_commands_errors() ::
+    invalid_next_token() | 
+    invalid_filter_key() | 
+    invalid_instance_id() | 
+    internal_server_error() | 
+    invalid_command_id().
+
+-type list_compliance_items_errors() ::
+    invalid_next_token() | 
+    invalid_filter() | 
+    internal_server_error() | 
+    invalid_resource_id() | 
+    invalid_resource_type().
+
+-type list_compliance_summaries_errors() ::
+    invalid_next_token() | 
+    invalid_filter() | 
+    internal_server_error().
+
+-type list_document_metadata_history_errors() ::
+    invalid_next_token() | 
+    internal_server_error() | 
+    invalid_document_version() | 
+    invalid_document().
+
+-type list_document_versions_errors() ::
+    invalid_next_token() | 
+    internal_server_error() | 
+    invalid_document().
+
+-type list_documents_errors() ::
+    invalid_next_token() | 
+    invalid_filter_key() | 
+    internal_server_error().
+
+-type list_inventory_entries_errors() ::
+    invalid_next_token() | 
+    invalid_filter() | 
+    invalid_instance_id() | 
+    internal_server_error() | 
+    invalid_type_name_exception().
+
+-type list_ops_item_events_errors() ::
+    ops_item_limit_exceeded_exception() | 
+    ops_item_invalid_parameter_exception() | 
+    internal_server_error() | 
+    ops_item_not_found_exception().
+
+-type list_ops_item_related_items_errors() ::
+    ops_item_invalid_parameter_exception() | 
+    internal_server_error().
+
+-type list_ops_metadata_errors() ::
+    internal_server_error() | 
+    ops_metadata_invalid_argument_exception().
+
+-type list_resource_compliance_summaries_errors() ::
+    invalid_next_token() | 
+    invalid_filter() | 
+    internal_server_error().
+
+-type list_resource_data_sync_errors() ::
+    invalid_next_token() | 
+    internal_server_error() | 
+    resource_data_sync_invalid_configuration_exception().
+
+-type list_tags_for_resource_errors() ::
+    internal_server_error() | 
+    invalid_resource_id() | 
+    invalid_resource_type().
+
+-type modify_document_permission_errors() ::
+    document_limit_exceeded() | 
+    internal_server_error() | 
+    invalid_permission_type() | 
+    invalid_document() | 
+    document_permission_limit().
+
+-type put_compliance_items_errors() ::
+    compliance_type_count_limit_exceeded_exception() | 
+    internal_server_error() | 
+    item_size_limit_exceeded_exception() | 
+    invalid_resource_id() | 
+    invalid_resource_type() | 
+    total_size_limit_exceeded_exception() | 
+    invalid_item_content_exception().
+
+-type put_inventory_errors() ::
+    item_content_mismatch_exception() | 
+    sub_type_count_limit_exceeded_exception() | 
+    invalid_instance_id() | 
+    internal_server_error() | 
+    item_size_limit_exceeded_exception() | 
+    invalid_inventory_item_context_exception() | 
+    unsupported_inventory_schema_version_exception() | 
+    custom_schema_count_limit_exceeded_exception() | 
+    total_size_limit_exceeded_exception() | 
+    unsupported_inventory_item_context_exception() | 
+    invalid_item_content_exception() | 
+    invalid_type_name_exception().
+
+-type put_parameter_errors() ::
+    parameter_max_version_limit_exceeded() | 
+    hierarchy_type_mismatch_exception() | 
+    invalid_policy_type_exception() | 
+    parameter_limit_exceeded() | 
+    parameter_pattern_mismatch_exception() | 
+    too_many_updates() | 
+    internal_server_error() | 
+    hierarchy_level_limit_exceeded_exception() | 
+    invalid_allowed_pattern_exception() | 
+    invalid_key_id() | 
+    parameter_already_exists() | 
+    policies_limit_exceeded_exception() | 
+    unsupported_parameter_type() | 
+    incompatible_policy_exception() | 
+    invalid_policy_attribute_exception().
+
+-type put_resource_policy_errors() ::
+    resource_policy_not_found_exception() | 
+    internal_server_error() | 
+    resource_policy_conflict_exception() | 
+    resource_not_found_exception() | 
+    resource_policy_invalid_parameter_exception() | 
+    resource_policy_limit_exceeded_exception() | 
+    malformed_resource_policy_document_exception().
+
+-type register_default_patch_baseline_errors() ::
+    does_not_exist_exception() | 
+    internal_server_error() | 
+    invalid_resource_id().
+
+-type register_patch_baseline_for_patch_group_errors() ::
+    does_not_exist_exception() | 
+    internal_server_error() | 
+    resource_limit_exceeded_exception() | 
+    invalid_resource_id() | 
+    already_exists_exception().
+
+-type register_target_with_maintenance_window_errors() ::
+    does_not_exist_exception() | 
+    internal_server_error() | 
+    resource_limit_exceeded_exception() | 
+    idempotent_parameter_mismatch().
+
+-type register_task_with_maintenance_window_errors() ::
+    does_not_exist_exception() | 
+    feature_not_available_exception() | 
+    internal_server_error() | 
+    resource_limit_exceeded_exception() | 
+    idempotent_parameter_mismatch().
+
+-type remove_tags_from_resource_errors() ::
+    too_many_updates() | 
+    internal_server_error() | 
+    invalid_resource_id() | 
+    invalid_resource_type().
+
+-type reset_service_setting_errors() ::
+    too_many_updates() | 
+    internal_server_error() | 
+    service_setting_not_found().
+
+-type resume_session_errors() ::
+    does_not_exist_exception() | 
+    internal_server_error().
+
+-type send_automation_signal_errors() ::
+    invalid_automation_signal_exception() | 
+    internal_server_error() | 
+    automation_step_not_found_exception() | 
+    automation_execution_not_found_exception().
+
+-type send_command_errors() ::
+    unsupported_platform_type() | 
+    invalid_instance_id() | 
+    internal_server_error() | 
+    invalid_output_folder() | 
+    invalid_notification_config() | 
+    duplicate_instance_id() | 
+    invalid_role() | 
+    invalid_document_version() | 
+    invalid_parameters() | 
+    invalid_document() | 
+    max_document_size_exceeded().
+
+-type start_associations_once_errors() ::
+    association_does_not_exist() | 
+    invalid_association().
+
+-type start_automation_execution_errors() ::
+    automation_definition_not_found_exception() | 
+    automation_execution_limit_exceeded_exception() | 
+    automation_definition_version_not_found_exception() | 
+    internal_server_error() | 
+    invalid_automation_execution_parameters_exception() | 
+    idempotent_parameter_mismatch() | 
+    invalid_target().
+
+-type start_change_request_execution_errors() ::
+    automation_definition_not_approved_exception() | 
+    automation_definition_not_found_exception() | 
+    automation_execution_limit_exceeded_exception() | 
+    automation_definition_version_not_found_exception() | 
+    internal_server_error() | 
+    invalid_automation_execution_parameters_exception() | 
+    idempotent_parameter_mismatch().
+
+-type start_session_errors() ::
+    target_not_connected() | 
+    internal_server_error() | 
+    invalid_document().
+
+-type stop_automation_execution_errors() ::
+    invalid_automation_status_update_exception() | 
+    internal_server_error() | 
+    automation_execution_not_found_exception().
+
+-type terminate_session_errors() ::
+    internal_server_error().
+
+-type unlabel_parameter_version_errors() ::
+    too_many_updates() | 
+    internal_server_error() | 
+    parameter_version_not_found() | 
+    parameter_not_found().
+
+-type update_association_errors() ::
+    invalid_association_version() | 
+    association_does_not_exist() | 
+    invalid_update() | 
+    too_many_updates() | 
+    invalid_target_maps() | 
+    internal_server_error() | 
+    invalid_output_location() | 
+    invalid_schedule() | 
+    association_version_limit_exceeded() | 
+    invalid_document_version() | 
+    invalid_parameters() | 
+    invalid_document() | 
+    invalid_target().
+
+-type update_association_status_errors() ::
+    association_does_not_exist() | 
+    invalid_instance_id() | 
+    too_many_updates() | 
+    internal_server_error() | 
+    status_unchanged() | 
+    invalid_document().
+
+-type update_document_errors() ::
+    invalid_document_operation() | 
+    internal_server_error() | 
+    duplicate_document_version_name() | 
+    invalid_document_schema_version() | 
+    duplicate_document_content() | 
+    invalid_document_version() | 
+    invalid_document_content() | 
+    invalid_document() | 
+    document_version_limit_exceeded() | 
+    max_document_size_exceeded().
+
+-type update_document_default_version_errors() ::
+    internal_server_error() | 
+    invalid_document_schema_version() | 
+    invalid_document_version() | 
+    invalid_document().
+
+-type update_document_metadata_errors() ::
+    invalid_document_operation() | 
+    internal_server_error() | 
+    invalid_document_version() | 
+    invalid_document().
+
+-type update_maintenance_window_errors() ::
+    does_not_exist_exception() | 
+    internal_server_error().
+
+-type update_maintenance_window_target_errors() ::
+    does_not_exist_exception() | 
+    internal_server_error().
+
+-type update_maintenance_window_task_errors() ::
+    does_not_exist_exception() | 
+    internal_server_error().
+
+-type update_managed_instance_role_errors() ::
+    invalid_instance_id() | 
+    internal_server_error().
+
+-type update_ops_item_errors() ::
+    ops_item_limit_exceeded_exception() | 
+    ops_item_invalid_parameter_exception() | 
+    internal_server_error() | 
+    ops_item_already_exists_exception() | 
+    ops_item_conflict_exception() | 
+    ops_item_not_found_exception() | 
+    ops_item_access_denied_exception().
+
+-type update_ops_metadata_errors() ::
+    internal_server_error() | 
+    ops_metadata_too_many_updates_exception() | 
+    ops_metadata_key_limit_exceeded_exception() | 
+    ops_metadata_invalid_argument_exception() | 
+    ops_metadata_not_found_exception().
+
+-type update_patch_baseline_errors() ::
+    does_not_exist_exception() | 
+    internal_server_error().
+
+-type update_resource_data_sync_errors() ::
+    resource_data_sync_not_found_exception() | 
+    internal_server_error() | 
+    resource_data_sync_invalid_configuration_exception() | 
+    resource_data_sync_conflict_exception().
+
+-type update_service_setting_errors() ::
+    too_many_updates() | 
+    internal_server_error() | 
+    service_setting_not_found().
 
 %%====================================================================
 %% API
@@ -5261,11 +6063,7 @@
 -spec add_tags_to_resource(map(), add_tags_to_resource_request()) ->
     {ok, add_tags_to_resource_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_resource_id(), tuple()} |
-    {error, invalid_resource_type(), tuple()} |
-    {error, too_many_tags_error(), tuple()} |
-    {error, too_many_updates(), tuple()}.
+    {error, add_tags_to_resource_errors(), tuple()}.
 add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_resource(Client, Input, []).
@@ -5273,11 +6071,7 @@ add_tags_to_resource(Client, Input)
 -spec add_tags_to_resource(map(), add_tags_to_resource_request(), proplists:proplist()) ->
     {ok, add_tags_to_resource_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_resource_id(), tuple()} |
-    {error, invalid_resource_type(), tuple()} |
-    {error, too_many_tags_error(), tuple()} |
-    {error, too_many_updates(), tuple()}.
+    {error, add_tags_to_resource_errors(), tuple()}.
 add_tags_to_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTagsToResource">>, Input, Options).
@@ -5291,12 +6085,7 @@ add_tags_to_resource(Client, Input, Options)
 -spec associate_ops_item_related_item(map(), associate_ops_item_related_item_request()) ->
     {ok, associate_ops_item_related_item_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, ops_item_conflict_exception(), tuple()} |
-    {error, ops_item_invalid_parameter_exception(), tuple()} |
-    {error, ops_item_limit_exceeded_exception(), tuple()} |
-    {error, ops_item_not_found_exception(), tuple()} |
-    {error, ops_item_related_item_already_exists_exception(), tuple()}.
+    {error, associate_ops_item_related_item_errors(), tuple()}.
 associate_ops_item_related_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_ops_item_related_item(Client, Input, []).
@@ -5304,12 +6093,7 @@ associate_ops_item_related_item(Client, Input)
 -spec associate_ops_item_related_item(map(), associate_ops_item_related_item_request(), proplists:proplist()) ->
     {ok, associate_ops_item_related_item_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, ops_item_conflict_exception(), tuple()} |
-    {error, ops_item_invalid_parameter_exception(), tuple()} |
-    {error, ops_item_limit_exceeded_exception(), tuple()} |
-    {error, ops_item_not_found_exception(), tuple()} |
-    {error, ops_item_related_item_already_exists_exception(), tuple()}.
+    {error, associate_ops_item_related_item_errors(), tuple()}.
 associate_ops_item_related_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateOpsItemRelatedItem">>, Input, Options).
@@ -5321,10 +6105,7 @@ associate_ops_item_related_item(Client, Input, Options)
 -spec cancel_command(map(), cancel_command_request()) ->
     {ok, cancel_command_result(), tuple()} |
     {error, any()} |
-    {error, duplicate_instance_id(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_command_id(), tuple()} |
-    {error, invalid_instance_id(), tuple()}.
+    {error, cancel_command_errors(), tuple()}.
 cancel_command(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_command(Client, Input, []).
@@ -5332,10 +6113,7 @@ cancel_command(Client, Input)
 -spec cancel_command(map(), cancel_command_request(), proplists:proplist()) ->
     {ok, cancel_command_result(), tuple()} |
     {error, any()} |
-    {error, duplicate_instance_id(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_command_id(), tuple()} |
-    {error, invalid_instance_id(), tuple()}.
+    {error, cancel_command_errors(), tuple()}.
 cancel_command(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelCommand">>, Input, Options).
@@ -5349,8 +6127,7 @@ cancel_command(Client, Input, Options)
 -spec cancel_maintenance_window_execution(map(), cancel_maintenance_window_execution_request()) ->
     {ok, cancel_maintenance_window_execution_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, cancel_maintenance_window_execution_errors(), tuple()}.
 cancel_maintenance_window_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_maintenance_window_execution(Client, Input, []).
@@ -5358,8 +6135,7 @@ cancel_maintenance_window_execution(Client, Input)
 -spec cancel_maintenance_window_execution(map(), cancel_maintenance_window_execution_request(), proplists:proplist()) ->
     {ok, cancel_maintenance_window_execution_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, cancel_maintenance_window_execution_errors(), tuple()}.
 cancel_maintenance_window_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelMaintenanceWindowExecution">>, Input, Options).
@@ -5386,8 +6162,7 @@ cancel_maintenance_window_execution(Client, Input, Options)
 -spec create_activation(map(), create_activation_request()) ->
     {ok, create_activation_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameters(), tuple()}.
+    {error, create_activation_errors(), tuple()}.
 create_activation(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_activation(Client, Input, []).
@@ -5395,8 +6170,7 @@ create_activation(Client, Input)
 -spec create_activation(map(), create_activation_request(), proplists:proplist()) ->
     {ok, create_activation_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameters(), tuple()}.
+    {error, create_activation_errors(), tuple()}.
 create_activation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateActivation">>, Input, Options).
@@ -5425,19 +6199,7 @@ create_activation(Client, Input, Options)
 -spec create_association(map(), create_association_request()) ->
     {ok, create_association_result(), tuple()} |
     {error, any()} |
-    {error, association_already_exists(), tuple()} |
-    {error, association_limit_exceeded(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_document_version(), tuple()} |
-    {error, invalid_instance_id(), tuple()} |
-    {error, invalid_output_location(), tuple()} |
-    {error, invalid_parameters(), tuple()} |
-    {error, invalid_schedule(), tuple()} |
-    {error, invalid_tag(), tuple()} |
-    {error, invalid_target(), tuple()} |
-    {error, invalid_target_maps(), tuple()} |
-    {error, unsupported_platform_type(), tuple()}.
+    {error, create_association_errors(), tuple()}.
 create_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_association(Client, Input, []).
@@ -5445,19 +6207,7 @@ create_association(Client, Input)
 -spec create_association(map(), create_association_request(), proplists:proplist()) ->
     {ok, create_association_result(), tuple()} |
     {error, any()} |
-    {error, association_already_exists(), tuple()} |
-    {error, association_limit_exceeded(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_document_version(), tuple()} |
-    {error, invalid_instance_id(), tuple()} |
-    {error, invalid_output_location(), tuple()} |
-    {error, invalid_parameters(), tuple()} |
-    {error, invalid_schedule(), tuple()} |
-    {error, invalid_tag(), tuple()} |
-    {error, invalid_target(), tuple()} |
-    {error, invalid_target_maps(), tuple()} |
-    {error, unsupported_platform_type(), tuple()}.
+    {error, create_association_errors(), tuple()}.
 create_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAssociation">>, Input, Options).
@@ -5478,18 +6228,7 @@ create_association(Client, Input, Options)
 -spec create_association_batch(map(), create_association_batch_request()) ->
     {ok, create_association_batch_result(), tuple()} |
     {error, any()} |
-    {error, association_limit_exceeded(), tuple()} |
-    {error, duplicate_instance_id(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_document_version(), tuple()} |
-    {error, invalid_instance_id(), tuple()} |
-    {error, invalid_output_location(), tuple()} |
-    {error, invalid_parameters(), tuple()} |
-    {error, invalid_schedule(), tuple()} |
-    {error, invalid_target(), tuple()} |
-    {error, invalid_target_maps(), tuple()} |
-    {error, unsupported_platform_type(), tuple()}.
+    {error, create_association_batch_errors(), tuple()}.
 create_association_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_association_batch(Client, Input, []).
@@ -5497,18 +6236,7 @@ create_association_batch(Client, Input)
 -spec create_association_batch(map(), create_association_batch_request(), proplists:proplist()) ->
     {ok, create_association_batch_result(), tuple()} |
     {error, any()} |
-    {error, association_limit_exceeded(), tuple()} |
-    {error, duplicate_instance_id(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_document_version(), tuple()} |
-    {error, invalid_instance_id(), tuple()} |
-    {error, invalid_output_location(), tuple()} |
-    {error, invalid_parameters(), tuple()} |
-    {error, invalid_schedule(), tuple()} |
-    {error, invalid_target(), tuple()} |
-    {error, invalid_target_maps(), tuple()} |
-    {error, unsupported_platform_type(), tuple()}.
+    {error, create_association_batch_errors(), tuple()}.
 create_association_batch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAssociationBatch">>, Input, Options).
@@ -5526,12 +6254,7 @@ create_association_batch(Client, Input, Options)
 -spec create_document(map(), create_document_request()) ->
     {ok, create_document_result(), tuple()} |
     {error, any()} |
-    {error, document_already_exists(), tuple()} |
-    {error, document_limit_exceeded(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document_content(), tuple()} |
-    {error, invalid_document_schema_version(), tuple()} |
-    {error, max_document_size_exceeded(), tuple()}.
+    {error, create_document_errors(), tuple()}.
 create_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_document(Client, Input, []).
@@ -5539,12 +6262,7 @@ create_document(Client, Input)
 -spec create_document(map(), create_document_request(), proplists:proplist()) ->
     {ok, create_document_result(), tuple()} |
     {error, any()} |
-    {error, document_already_exists(), tuple()} |
-    {error, document_limit_exceeded(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document_content(), tuple()} |
-    {error, invalid_document_schema_version(), tuple()} |
-    {error, max_document_size_exceeded(), tuple()}.
+    {error, create_document_errors(), tuple()}.
 create_document(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDocument">>, Input, Options).
@@ -5565,9 +6283,7 @@ create_document(Client, Input, Options)
 -spec create_maintenance_window(map(), create_maintenance_window_request()) ->
     {ok, create_maintenance_window_result(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()}.
+    {error, create_maintenance_window_errors(), tuple()}.
 create_maintenance_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_maintenance_window(Client, Input, []).
@@ -5575,9 +6291,7 @@ create_maintenance_window(Client, Input)
 -spec create_maintenance_window(map(), create_maintenance_window_request(), proplists:proplist()) ->
     {ok, create_maintenance_window_result(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()}.
+    {error, create_maintenance_window_errors(), tuple()}.
 create_maintenance_window(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateMaintenanceWindow">>, Input, Options).
@@ -5601,11 +6315,7 @@ create_maintenance_window(Client, Input, Options)
 -spec create_ops_item(map(), create_ops_item_request()) ->
     {ok, create_ops_item_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, ops_item_access_denied_exception(), tuple()} |
-    {error, ops_item_already_exists_exception(), tuple()} |
-    {error, ops_item_invalid_parameter_exception(), tuple()} |
-    {error, ops_item_limit_exceeded_exception(), tuple()}.
+    {error, create_ops_item_errors(), tuple()}.
 create_ops_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_ops_item(Client, Input, []).
@@ -5613,11 +6323,7 @@ create_ops_item(Client, Input)
 -spec create_ops_item(map(), create_ops_item_request(), proplists:proplist()) ->
     {ok, create_ops_item_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, ops_item_access_denied_exception(), tuple()} |
-    {error, ops_item_already_exists_exception(), tuple()} |
-    {error, ops_item_invalid_parameter_exception(), tuple()} |
-    {error, ops_item_limit_exceeded_exception(), tuple()}.
+    {error, create_ops_item_errors(), tuple()}.
 create_ops_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateOpsItem">>, Input, Options).
@@ -5628,11 +6334,7 @@ create_ops_item(Client, Input, Options)
 -spec create_ops_metadata(map(), create_ops_metadata_request()) ->
     {ok, create_ops_metadata_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, ops_metadata_already_exists_exception(), tuple()} |
-    {error, ops_metadata_invalid_argument_exception(), tuple()} |
-    {error, ops_metadata_limit_exceeded_exception(), tuple()} |
-    {error, ops_metadata_too_many_updates_exception(), tuple()}.
+    {error, create_ops_metadata_errors(), tuple()}.
 create_ops_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_ops_metadata(Client, Input, []).
@@ -5640,11 +6342,7 @@ create_ops_metadata(Client, Input)
 -spec create_ops_metadata(map(), create_ops_metadata_request(), proplists:proplist()) ->
     {ok, create_ops_metadata_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, ops_metadata_already_exists_exception(), tuple()} |
-    {error, ops_metadata_invalid_argument_exception(), tuple()} |
-    {error, ops_metadata_limit_exceeded_exception(), tuple()} |
-    {error, ops_metadata_too_many_updates_exception(), tuple()}.
+    {error, create_ops_metadata_errors(), tuple()}.
 create_ops_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateOpsMetadata">>, Input, Options).
@@ -5657,9 +6355,7 @@ create_ops_metadata(Client, Input, Options)
 -spec create_patch_baseline(map(), create_patch_baseline_request()) ->
     {ok, create_patch_baseline_result(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()}.
+    {error, create_patch_baseline_errors(), tuple()}.
 create_patch_baseline(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_patch_baseline(Client, Input, []).
@@ -5667,9 +6363,7 @@ create_patch_baseline(Client, Input)
 -spec create_patch_baseline(map(), create_patch_baseline_request(), proplists:proplist()) ->
     {ok, create_patch_baseline_result(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()}.
+    {error, create_patch_baseline_errors(), tuple()}.
 create_patch_baseline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePatchBaseline">>, Input, Options).
@@ -5719,10 +6413,7 @@ create_patch_baseline(Client, Input, Options)
 -spec create_resource_data_sync(map(), create_resource_data_sync_request()) ->
     {ok, create_resource_data_sync_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_data_sync_already_exists_exception(), tuple()} |
-    {error, resource_data_sync_count_exceeded_exception(), tuple()} |
-    {error, resource_data_sync_invalid_configuration_exception(), tuple()}.
+    {error, create_resource_data_sync_errors(), tuple()}.
 create_resource_data_sync(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_resource_data_sync(Client, Input, []).
@@ -5730,10 +6421,7 @@ create_resource_data_sync(Client, Input)
 -spec create_resource_data_sync(map(), create_resource_data_sync_request(), proplists:proplist()) ->
     {ok, create_resource_data_sync_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_data_sync_already_exists_exception(), tuple()} |
-    {error, resource_data_sync_count_exceeded_exception(), tuple()} |
-    {error, resource_data_sync_invalid_configuration_exception(), tuple()}.
+    {error, create_resource_data_sync_errors(), tuple()}.
 create_resource_data_sync(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateResourceDataSync">>, Input, Options).
@@ -5748,10 +6436,7 @@ create_resource_data_sync(Client, Input, Options)
 -spec delete_activation(map(), delete_activation_request()) ->
     {ok, delete_activation_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_activation(), tuple()} |
-    {error, invalid_activation_id(), tuple()} |
-    {error, too_many_updates(), tuple()}.
+    {error, delete_activation_errors(), tuple()}.
 delete_activation(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_activation(Client, Input, []).
@@ -5759,10 +6444,7 @@ delete_activation(Client, Input)
 -spec delete_activation(map(), delete_activation_request(), proplists:proplist()) ->
     {ok, delete_activation_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_activation(), tuple()} |
-    {error, invalid_activation_id(), tuple()} |
-    {error, too_many_updates(), tuple()}.
+    {error, delete_activation_errors(), tuple()}.
 delete_activation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteActivation">>, Input, Options).
@@ -5785,11 +6467,7 @@ delete_activation(Client, Input, Options)
 -spec delete_association(map(), delete_association_request()) ->
     {ok, delete_association_result(), tuple()} |
     {error, any()} |
-    {error, association_does_not_exist(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_instance_id(), tuple()} |
-    {error, too_many_updates(), tuple()}.
+    {error, delete_association_errors(), tuple()}.
 delete_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_association(Client, Input, []).
@@ -5797,11 +6475,7 @@ delete_association(Client, Input)
 -spec delete_association(map(), delete_association_request(), proplists:proplist()) ->
     {ok, delete_association_result(), tuple()} |
     {error, any()} |
-    {error, association_does_not_exist(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_instance_id(), tuple()} |
-    {error, too_many_updates(), tuple()}.
+    {error, delete_association_errors(), tuple()}.
 delete_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAssociation">>, Input, Options).
@@ -5816,10 +6490,7 @@ delete_association(Client, Input, Options)
 -spec delete_document(map(), delete_document_request()) ->
     {ok, delete_document_result(), tuple()} |
     {error, any()} |
-    {error, associated_instances(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_document_operation(), tuple()}.
+    {error, delete_document_errors(), tuple()}.
 delete_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_document(Client, Input, []).
@@ -5827,10 +6498,7 @@ delete_document(Client, Input)
 -spec delete_document(map(), delete_document_request(), proplists:proplist()) ->
     {ok, delete_document_result(), tuple()} |
     {error, any()} |
-    {error, associated_instances(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_document_operation(), tuple()}.
+    {error, delete_document_errors(), tuple()}.
 delete_document(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDocument">>, Input, Options).
@@ -5844,11 +6512,7 @@ delete_document(Client, Input, Options)
 -spec delete_inventory(map(), delete_inventory_request()) ->
     {ok, delete_inventory_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_delete_inventory_parameters_exception(), tuple()} |
-    {error, invalid_inventory_request_exception(), tuple()} |
-    {error, invalid_option_exception(), tuple()} |
-    {error, invalid_type_name_exception(), tuple()}.
+    {error, delete_inventory_errors(), tuple()}.
 delete_inventory(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_inventory(Client, Input, []).
@@ -5856,11 +6520,7 @@ delete_inventory(Client, Input)
 -spec delete_inventory(map(), delete_inventory_request(), proplists:proplist()) ->
     {ok, delete_inventory_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_delete_inventory_parameters_exception(), tuple()} |
-    {error, invalid_inventory_request_exception(), tuple()} |
-    {error, invalid_option_exception(), tuple()} |
-    {error, invalid_type_name_exception(), tuple()}.
+    {error, delete_inventory_errors(), tuple()}.
 delete_inventory(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInventory">>, Input, Options).
@@ -5869,7 +6529,7 @@ delete_inventory(Client, Input, Options)
 -spec delete_maintenance_window(map(), delete_maintenance_window_request()) ->
     {ok, delete_maintenance_window_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, delete_maintenance_window_errors(), tuple()}.
 delete_maintenance_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_maintenance_window(Client, Input, []).
@@ -5877,7 +6537,7 @@ delete_maintenance_window(Client, Input)
 -spec delete_maintenance_window(map(), delete_maintenance_window_request(), proplists:proplist()) ->
     {ok, delete_maintenance_window_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, delete_maintenance_window_errors(), tuple()}.
 delete_maintenance_window(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMaintenanceWindow">>, Input, Options).
@@ -5918,8 +6578,7 @@ delete_maintenance_window(Client, Input, Options)
 -spec delete_ops_item(map(), delete_ops_item_request()) ->
     {ok, delete_ops_item_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, ops_item_invalid_parameter_exception(), tuple()}.
+    {error, delete_ops_item_errors(), tuple()}.
 delete_ops_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_ops_item(Client, Input, []).
@@ -5927,8 +6586,7 @@ delete_ops_item(Client, Input)
 -spec delete_ops_item(map(), delete_ops_item_request(), proplists:proplist()) ->
     {ok, delete_ops_item_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, ops_item_invalid_parameter_exception(), tuple()}.
+    {error, delete_ops_item_errors(), tuple()}.
 delete_ops_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteOpsItem">>, Input, Options).
@@ -5937,9 +6595,7 @@ delete_ops_item(Client, Input, Options)
 -spec delete_ops_metadata(map(), delete_ops_metadata_request()) ->
     {ok, delete_ops_metadata_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, ops_metadata_invalid_argument_exception(), tuple()} |
-    {error, ops_metadata_not_found_exception(), tuple()}.
+    {error, delete_ops_metadata_errors(), tuple()}.
 delete_ops_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_ops_metadata(Client, Input, []).
@@ -5947,9 +6603,7 @@ delete_ops_metadata(Client, Input)
 -spec delete_ops_metadata(map(), delete_ops_metadata_request(), proplists:proplist()) ->
     {ok, delete_ops_metadata_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, ops_metadata_invalid_argument_exception(), tuple()} |
-    {error, ops_metadata_not_found_exception(), tuple()}.
+    {error, delete_ops_metadata_errors(), tuple()}.
 delete_ops_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteOpsMetadata">>, Input, Options).
@@ -5961,8 +6615,7 @@ delete_ops_metadata(Client, Input, Options)
 -spec delete_parameter(map(), delete_parameter_request()) ->
     {ok, delete_parameter_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, parameter_not_found(), tuple()}.
+    {error, delete_parameter_errors(), tuple()}.
 delete_parameter(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_parameter(Client, Input, []).
@@ -5970,8 +6623,7 @@ delete_parameter(Client, Input)
 -spec delete_parameter(map(), delete_parameter_request(), proplists:proplist()) ->
     {ok, delete_parameter_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, parameter_not_found(), tuple()}.
+    {error, delete_parameter_errors(), tuple()}.
 delete_parameter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteParameter">>, Input, Options).
@@ -5983,7 +6635,7 @@ delete_parameter(Client, Input, Options)
 -spec delete_parameters(map(), delete_parameters_request()) ->
     {ok, delete_parameters_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, delete_parameters_errors(), tuple()}.
 delete_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_parameters(Client, Input, []).
@@ -5991,7 +6643,7 @@ delete_parameters(Client, Input)
 -spec delete_parameters(map(), delete_parameters_request(), proplists:proplist()) ->
     {ok, delete_parameters_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, delete_parameters_errors(), tuple()}.
 delete_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteParameters">>, Input, Options).
@@ -6000,8 +6652,7 @@ delete_parameters(Client, Input, Options)
 -spec delete_patch_baseline(map(), delete_patch_baseline_request()) ->
     {ok, delete_patch_baseline_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_patch_baseline_errors(), tuple()}.
 delete_patch_baseline(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_patch_baseline(Client, Input, []).
@@ -6009,8 +6660,7 @@ delete_patch_baseline(Client, Input)
 -spec delete_patch_baseline(map(), delete_patch_baseline_request(), proplists:proplist()) ->
     {ok, delete_patch_baseline_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_patch_baseline_errors(), tuple()}.
 delete_patch_baseline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePatchBaseline">>, Input, Options).
@@ -6024,9 +6674,7 @@ delete_patch_baseline(Client, Input, Options)
 -spec delete_resource_data_sync(map(), delete_resource_data_sync_request()) ->
     {ok, delete_resource_data_sync_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_data_sync_invalid_configuration_exception(), tuple()} |
-    {error, resource_data_sync_not_found_exception(), tuple()}.
+    {error, delete_resource_data_sync_errors(), tuple()}.
 delete_resource_data_sync(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_data_sync(Client, Input, []).
@@ -6034,9 +6682,7 @@ delete_resource_data_sync(Client, Input)
 -spec delete_resource_data_sync(map(), delete_resource_data_sync_request(), proplists:proplist()) ->
     {ok, delete_resource_data_sync_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_data_sync_invalid_configuration_exception(), tuple()} |
-    {error, resource_data_sync_not_found_exception(), tuple()}.
+    {error, delete_resource_data_sync_errors(), tuple()}.
 delete_resource_data_sync(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourceDataSync">>, Input, Options).
@@ -6062,12 +6708,7 @@ delete_resource_data_sync(Client, Input, Options)
 -spec delete_resource_policy(map(), delete_resource_policy_request()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, malformed_resource_policy_document_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_policy_conflict_exception(), tuple()} |
-    {error, resource_policy_invalid_parameter_exception(), tuple()} |
-    {error, resource_policy_not_found_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
@@ -6075,12 +6716,7 @@ delete_resource_policy(Client, Input)
 -spec delete_resource_policy(map(), delete_resource_policy_request(), proplists:proplist()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, malformed_resource_policy_document_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_policy_conflict_exception(), tuple()} |
-    {error, resource_policy_invalid_parameter_exception(), tuple()} |
-    {error, resource_policy_not_found_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourcePolicy">>, Input, Options).
@@ -6095,8 +6731,7 @@ delete_resource_policy(Client, Input, Options)
 -spec deregister_managed_instance(map(), deregister_managed_instance_request()) ->
     {ok, deregister_managed_instance_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_instance_id(), tuple()}.
+    {error, deregister_managed_instance_errors(), tuple()}.
 deregister_managed_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_managed_instance(Client, Input, []).
@@ -6104,8 +6739,7 @@ deregister_managed_instance(Client, Input)
 -spec deregister_managed_instance(map(), deregister_managed_instance_request(), proplists:proplist()) ->
     {ok, deregister_managed_instance_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_instance_id(), tuple()}.
+    {error, deregister_managed_instance_errors(), tuple()}.
 deregister_managed_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterManagedInstance">>, Input, Options).
@@ -6114,8 +6748,7 @@ deregister_managed_instance(Client, Input, Options)
 -spec deregister_patch_baseline_for_patch_group(map(), deregister_patch_baseline_for_patch_group_request()) ->
     {ok, deregister_patch_baseline_for_patch_group_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_resource_id(), tuple()}.
+    {error, deregister_patch_baseline_for_patch_group_errors(), tuple()}.
 deregister_patch_baseline_for_patch_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_patch_baseline_for_patch_group(Client, Input, []).
@@ -6123,8 +6756,7 @@ deregister_patch_baseline_for_patch_group(Client, Input)
 -spec deregister_patch_baseline_for_patch_group(map(), deregister_patch_baseline_for_patch_group_request(), proplists:proplist()) ->
     {ok, deregister_patch_baseline_for_patch_group_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_resource_id(), tuple()}.
+    {error, deregister_patch_baseline_for_patch_group_errors(), tuple()}.
 deregister_patch_baseline_for_patch_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterPatchBaselineForPatchGroup">>, Input, Options).
@@ -6133,9 +6765,7 @@ deregister_patch_baseline_for_patch_group(Client, Input, Options)
 -spec deregister_target_from_maintenance_window(map(), deregister_target_from_maintenance_window_request()) ->
     {ok, deregister_target_from_maintenance_window_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, target_in_use_exception(), tuple()}.
+    {error, deregister_target_from_maintenance_window_errors(), tuple()}.
 deregister_target_from_maintenance_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_target_from_maintenance_window(Client, Input, []).
@@ -6143,9 +6773,7 @@ deregister_target_from_maintenance_window(Client, Input)
 -spec deregister_target_from_maintenance_window(map(), deregister_target_from_maintenance_window_request(), proplists:proplist()) ->
     {ok, deregister_target_from_maintenance_window_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, target_in_use_exception(), tuple()}.
+    {error, deregister_target_from_maintenance_window_errors(), tuple()}.
 deregister_target_from_maintenance_window(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterTargetFromMaintenanceWindow">>, Input, Options).
@@ -6154,8 +6782,7 @@ deregister_target_from_maintenance_window(Client, Input, Options)
 -spec deregister_task_from_maintenance_window(map(), deregister_task_from_maintenance_window_request()) ->
     {ok, deregister_task_from_maintenance_window_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, deregister_task_from_maintenance_window_errors(), tuple()}.
 deregister_task_from_maintenance_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_task_from_maintenance_window(Client, Input, []).
@@ -6163,8 +6790,7 @@ deregister_task_from_maintenance_window(Client, Input)
 -spec deregister_task_from_maintenance_window(map(), deregister_task_from_maintenance_window_request(), proplists:proplist()) ->
     {ok, deregister_task_from_maintenance_window_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, deregister_task_from_maintenance_window_errors(), tuple()}.
 deregister_task_from_maintenance_window(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterTaskFromMaintenanceWindow">>, Input, Options).
@@ -6179,9 +6805,7 @@ deregister_task_from_maintenance_window(Client, Input, Options)
 -spec describe_activations(map(), describe_activations_request()) ->
     {ok, describe_activations_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_filter(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_activations_errors(), tuple()}.
 describe_activations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_activations(Client, Input, []).
@@ -6189,9 +6813,7 @@ describe_activations(Client, Input)
 -spec describe_activations(map(), describe_activations_request(), proplists:proplist()) ->
     {ok, describe_activations_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_filter(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_activations_errors(), tuple()}.
 describe_activations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeActivations">>, Input, Options).
@@ -6205,11 +6827,7 @@ describe_activations(Client, Input, Options)
 -spec describe_association(map(), describe_association_request()) ->
     {ok, describe_association_result(), tuple()} |
     {error, any()} |
-    {error, association_does_not_exist(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_association_version(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_instance_id(), tuple()}.
+    {error, describe_association_errors(), tuple()}.
 describe_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_association(Client, Input, []).
@@ -6217,11 +6835,7 @@ describe_association(Client, Input)
 -spec describe_association(map(), describe_association_request(), proplists:proplist()) ->
     {ok, describe_association_result(), tuple()} |
     {error, any()} |
-    {error, association_does_not_exist(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_association_version(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_instance_id(), tuple()}.
+    {error, describe_association_errors(), tuple()}.
 describe_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAssociation">>, Input, Options).
@@ -6231,10 +6845,7 @@ describe_association(Client, Input, Options)
 -spec describe_association_execution_targets(map(), describe_association_execution_targets_request()) ->
     {ok, describe_association_execution_targets_result(), tuple()} |
     {error, any()} |
-    {error, association_does_not_exist(), tuple()} |
-    {error, association_execution_does_not_exist(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_association_execution_targets_errors(), tuple()}.
 describe_association_execution_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_association_execution_targets(Client, Input, []).
@@ -6242,10 +6853,7 @@ describe_association_execution_targets(Client, Input)
 -spec describe_association_execution_targets(map(), describe_association_execution_targets_request(), proplists:proplist()) ->
     {ok, describe_association_execution_targets_result(), tuple()} |
     {error, any()} |
-    {error, association_does_not_exist(), tuple()} |
-    {error, association_execution_does_not_exist(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_association_execution_targets_errors(), tuple()}.
 describe_association_execution_targets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAssociationExecutionTargets">>, Input, Options).
@@ -6254,9 +6862,7 @@ describe_association_execution_targets(Client, Input, Options)
 -spec describe_association_executions(map(), describe_association_executions_request()) ->
     {ok, describe_association_executions_result(), tuple()} |
     {error, any()} |
-    {error, association_does_not_exist(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_association_executions_errors(), tuple()}.
 describe_association_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_association_executions(Client, Input, []).
@@ -6264,9 +6870,7 @@ describe_association_executions(Client, Input)
 -spec describe_association_executions(map(), describe_association_executions_request(), proplists:proplist()) ->
     {ok, describe_association_executions_result(), tuple()} |
     {error, any()} |
-    {error, association_does_not_exist(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_association_executions_errors(), tuple()}.
 describe_association_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAssociationExecutions">>, Input, Options).
@@ -6276,10 +6880,7 @@ describe_association_executions(Client, Input, Options)
 -spec describe_automation_executions(map(), describe_automation_executions_request()) ->
     {ok, describe_automation_executions_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_filter_key(), tuple()} |
-    {error, invalid_filter_value(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_automation_executions_errors(), tuple()}.
 describe_automation_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_automation_executions(Client, Input, []).
@@ -6287,10 +6888,7 @@ describe_automation_executions(Client, Input)
 -spec describe_automation_executions(map(), describe_automation_executions_request(), proplists:proplist()) ->
     {ok, describe_automation_executions_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_filter_key(), tuple()} |
-    {error, invalid_filter_value(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_automation_executions_errors(), tuple()}.
 describe_automation_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAutomationExecutions">>, Input, Options).
@@ -6301,11 +6899,7 @@ describe_automation_executions(Client, Input, Options)
 -spec describe_automation_step_executions(map(), describe_automation_step_executions_request()) ->
     {ok, describe_automation_step_executions_result(), tuple()} |
     {error, any()} |
-    {error, automation_execution_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_filter_key(), tuple()} |
-    {error, invalid_filter_value(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_automation_step_executions_errors(), tuple()}.
 describe_automation_step_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_automation_step_executions(Client, Input, []).
@@ -6313,11 +6907,7 @@ describe_automation_step_executions(Client, Input)
 -spec describe_automation_step_executions(map(), describe_automation_step_executions_request(), proplists:proplist()) ->
     {ok, describe_automation_step_executions_result(), tuple()} |
     {error, any()} |
-    {error, automation_execution_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_filter_key(), tuple()} |
-    {error, invalid_filter_value(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_automation_step_executions_errors(), tuple()}.
 describe_automation_step_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAutomationStepExecutions">>, Input, Options).
@@ -6330,7 +6920,7 @@ describe_automation_step_executions(Client, Input, Options)
 -spec describe_available_patches(map(), describe_available_patches_request()) ->
     {ok, describe_available_patches_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_available_patches_errors(), tuple()}.
 describe_available_patches(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_available_patches(Client, Input, []).
@@ -6338,7 +6928,7 @@ describe_available_patches(Client, Input)
 -spec describe_available_patches(map(), describe_available_patches_request(), proplists:proplist()) ->
     {ok, describe_available_patches_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_available_patches_errors(), tuple()}.
 describe_available_patches(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAvailablePatches">>, Input, Options).
@@ -6348,9 +6938,7 @@ describe_available_patches(Client, Input, Options)
 -spec describe_document(map(), describe_document_request()) ->
     {ok, describe_document_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_document_version(), tuple()}.
+    {error, describe_document_errors(), tuple()}.
 describe_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_document(Client, Input, []).
@@ -6358,9 +6946,7 @@ describe_document(Client, Input)
 -spec describe_document(map(), describe_document_request(), proplists:proplist()) ->
     {ok, describe_document_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_document_version(), tuple()}.
+    {error, describe_document_errors(), tuple()}.
 describe_document(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDocument">>, Input, Options).
@@ -6375,11 +6961,7 @@ describe_document(Client, Input, Options)
 -spec describe_document_permission(map(), describe_document_permission_request()) ->
     {ok, describe_document_permission_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_document_operation(), tuple()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, invalid_permission_type(), tuple()}.
+    {error, describe_document_permission_errors(), tuple()}.
 describe_document_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_document_permission(Client, Input, []).
@@ -6387,11 +6969,7 @@ describe_document_permission(Client, Input)
 -spec describe_document_permission(map(), describe_document_permission_request(), proplists:proplist()) ->
     {ok, describe_document_permission_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_document_operation(), tuple()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, invalid_permission_type(), tuple()}.
+    {error, describe_document_permission_errors(), tuple()}.
 describe_document_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDocumentPermission">>, Input, Options).
@@ -6400,9 +6978,7 @@ describe_document_permission(Client, Input, Options)
 -spec describe_effective_instance_associations(map(), describe_effective_instance_associations_request()) ->
     {ok, describe_effective_instance_associations_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_instance_id(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_effective_instance_associations_errors(), tuple()}.
 describe_effective_instance_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_effective_instance_associations(Client, Input, []).
@@ -6410,9 +6986,7 @@ describe_effective_instance_associations(Client, Input)
 -spec describe_effective_instance_associations(map(), describe_effective_instance_associations_request(), proplists:proplist()) ->
     {ok, describe_effective_instance_associations_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_instance_id(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_effective_instance_associations_errors(), tuple()}.
 describe_effective_instance_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEffectiveInstanceAssociations">>, Input, Options).
@@ -6425,10 +6999,7 @@ describe_effective_instance_associations(Client, Input, Options)
 -spec describe_effective_patches_for_patch_baseline(map(), describe_effective_patches_for_patch_baseline_request()) ->
     {ok, describe_effective_patches_for_patch_baseline_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_resource_id(), tuple()} |
-    {error, unsupported_operating_system(), tuple()}.
+    {error, describe_effective_patches_for_patch_baseline_errors(), tuple()}.
 describe_effective_patches_for_patch_baseline(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_effective_patches_for_patch_baseline(Client, Input, []).
@@ -6436,10 +7007,7 @@ describe_effective_patches_for_patch_baseline(Client, Input)
 -spec describe_effective_patches_for_patch_baseline(map(), describe_effective_patches_for_patch_baseline_request(), proplists:proplist()) ->
     {ok, describe_effective_patches_for_patch_baseline_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_resource_id(), tuple()} |
-    {error, unsupported_operating_system(), tuple()}.
+    {error, describe_effective_patches_for_patch_baseline_errors(), tuple()}.
 describe_effective_patches_for_patch_baseline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEffectivePatchesForPatchBaseline">>, Input, Options).
@@ -6448,9 +7016,7 @@ describe_effective_patches_for_patch_baseline(Client, Input, Options)
 -spec describe_instance_associations_status(map(), describe_instance_associations_status_request()) ->
     {ok, describe_instance_associations_status_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_instance_id(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_instance_associations_status_errors(), tuple()}.
 describe_instance_associations_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_associations_status(Client, Input, []).
@@ -6458,9 +7024,7 @@ describe_instance_associations_status(Client, Input)
 -spec describe_instance_associations_status(map(), describe_instance_associations_status_request(), proplists:proplist()) ->
     {ok, describe_instance_associations_status_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_instance_id(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_instance_associations_status_errors(), tuple()}.
 describe_instance_associations_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInstanceAssociationsStatus">>, Input, Options).
@@ -6486,11 +7050,7 @@ describe_instance_associations_status(Client, Input, Options)
 -spec describe_instance_information(map(), describe_instance_information_request()) ->
     {ok, describe_instance_information_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_filter_key(), tuple()} |
-    {error, invalid_instance_id(), tuple()} |
-    {error, invalid_instance_information_filter_value(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_instance_information_errors(), tuple()}.
 describe_instance_information(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_information(Client, Input, []).
@@ -6498,11 +7058,7 @@ describe_instance_information(Client, Input)
 -spec describe_instance_information(map(), describe_instance_information_request(), proplists:proplist()) ->
     {ok, describe_instance_information_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_filter_key(), tuple()} |
-    {error, invalid_instance_id(), tuple()} |
-    {error, invalid_instance_information_filter_value(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_instance_information_errors(), tuple()}.
 describe_instance_information(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInstanceInformation">>, Input, Options).
@@ -6511,8 +7067,7 @@ describe_instance_information(Client, Input, Options)
 -spec describe_instance_patch_states(map(), describe_instance_patch_states_request()) ->
     {ok, describe_instance_patch_states_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_instance_patch_states_errors(), tuple()}.
 describe_instance_patch_states(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_patch_states(Client, Input, []).
@@ -6520,8 +7075,7 @@ describe_instance_patch_states(Client, Input)
 -spec describe_instance_patch_states(map(), describe_instance_patch_states_request(), proplists:proplist()) ->
     {ok, describe_instance_patch_states_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_instance_patch_states_errors(), tuple()}.
 describe_instance_patch_states(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInstancePatchStates">>, Input, Options).
@@ -6532,9 +7086,7 @@ describe_instance_patch_states(Client, Input, Options)
 -spec describe_instance_patch_states_for_patch_group(map(), describe_instance_patch_states_for_patch_group_request()) ->
     {ok, describe_instance_patch_states_for_patch_group_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_filter(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_instance_patch_states_for_patch_group_errors(), tuple()}.
 describe_instance_patch_states_for_patch_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_patch_states_for_patch_group(Client, Input, []).
@@ -6542,9 +7094,7 @@ describe_instance_patch_states_for_patch_group(Client, Input)
 -spec describe_instance_patch_states_for_patch_group(map(), describe_instance_patch_states_for_patch_group_request(), proplists:proplist()) ->
     {ok, describe_instance_patch_states_for_patch_group_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_filter(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_instance_patch_states_for_patch_group_errors(), tuple()}.
 describe_instance_patch_states_for_patch_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInstancePatchStatesForPatchGroup">>, Input, Options).
@@ -6555,10 +7105,7 @@ describe_instance_patch_states_for_patch_group(Client, Input, Options)
 -spec describe_instance_patches(map(), describe_instance_patches_request()) ->
     {ok, describe_instance_patches_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_filter(), tuple()} |
-    {error, invalid_instance_id(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_instance_patches_errors(), tuple()}.
 describe_instance_patches(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_patches(Client, Input, []).
@@ -6566,10 +7113,7 @@ describe_instance_patches(Client, Input)
 -spec describe_instance_patches(map(), describe_instance_patches_request(), proplists:proplist()) ->
     {ok, describe_instance_patches_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_filter(), tuple()} |
-    {error, invalid_instance_id(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_instance_patches_errors(), tuple()}.
 describe_instance_patches(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInstancePatches">>, Input, Options).
@@ -6578,9 +7122,7 @@ describe_instance_patches(Client, Input, Options)
 -spec describe_inventory_deletions(map(), describe_inventory_deletions_request()) ->
     {ok, describe_inventory_deletions_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_deletion_id_exception(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_inventory_deletions_errors(), tuple()}.
 describe_inventory_deletions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_inventory_deletions(Client, Input, []).
@@ -6588,9 +7130,7 @@ describe_inventory_deletions(Client, Input)
 -spec describe_inventory_deletions(map(), describe_inventory_deletions_request(), proplists:proplist()) ->
     {ok, describe_inventory_deletions_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_deletion_id_exception(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_inventory_deletions_errors(), tuple()}.
 describe_inventory_deletions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInventoryDeletions">>, Input, Options).
@@ -6601,8 +7141,7 @@ describe_inventory_deletions(Client, Input, Options)
 -spec describe_maintenance_window_execution_task_invocations(map(), describe_maintenance_window_execution_task_invocations_request()) ->
     {ok, describe_maintenance_window_execution_task_invocations_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_maintenance_window_execution_task_invocations_errors(), tuple()}.
 describe_maintenance_window_execution_task_invocations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_maintenance_window_execution_task_invocations(Client, Input, []).
@@ -6610,8 +7149,7 @@ describe_maintenance_window_execution_task_invocations(Client, Input)
 -spec describe_maintenance_window_execution_task_invocations(map(), describe_maintenance_window_execution_task_invocations_request(), proplists:proplist()) ->
     {ok, describe_maintenance_window_execution_task_invocations_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_maintenance_window_execution_task_invocations_errors(), tuple()}.
 describe_maintenance_window_execution_task_invocations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMaintenanceWindowExecutionTaskInvocations">>, Input, Options).
@@ -6621,8 +7159,7 @@ describe_maintenance_window_execution_task_invocations(Client, Input, Options)
 -spec describe_maintenance_window_execution_tasks(map(), describe_maintenance_window_execution_tasks_request()) ->
     {ok, describe_maintenance_window_execution_tasks_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_maintenance_window_execution_tasks_errors(), tuple()}.
 describe_maintenance_window_execution_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_maintenance_window_execution_tasks(Client, Input, []).
@@ -6630,8 +7167,7 @@ describe_maintenance_window_execution_tasks(Client, Input)
 -spec describe_maintenance_window_execution_tasks(map(), describe_maintenance_window_execution_tasks_request(), proplists:proplist()) ->
     {ok, describe_maintenance_window_execution_tasks_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_maintenance_window_execution_tasks_errors(), tuple()}.
 describe_maintenance_window_execution_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMaintenanceWindowExecutionTasks">>, Input, Options).
@@ -6645,7 +7181,7 @@ describe_maintenance_window_execution_tasks(Client, Input, Options)
 -spec describe_maintenance_window_executions(map(), describe_maintenance_window_executions_request()) ->
     {ok, describe_maintenance_window_executions_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_maintenance_window_executions_errors(), tuple()}.
 describe_maintenance_window_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_maintenance_window_executions(Client, Input, []).
@@ -6653,7 +7189,7 @@ describe_maintenance_window_executions(Client, Input)
 -spec describe_maintenance_window_executions(map(), describe_maintenance_window_executions_request(), proplists:proplist()) ->
     {ok, describe_maintenance_window_executions_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_maintenance_window_executions_errors(), tuple()}.
 describe_maintenance_window_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMaintenanceWindowExecutions">>, Input, Options).
@@ -6663,8 +7199,7 @@ describe_maintenance_window_executions(Client, Input, Options)
 -spec describe_maintenance_window_schedule(map(), describe_maintenance_window_schedule_request()) ->
     {ok, describe_maintenance_window_schedule_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_maintenance_window_schedule_errors(), tuple()}.
 describe_maintenance_window_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_maintenance_window_schedule(Client, Input, []).
@@ -6672,8 +7207,7 @@ describe_maintenance_window_schedule(Client, Input)
 -spec describe_maintenance_window_schedule(map(), describe_maintenance_window_schedule_request(), proplists:proplist()) ->
     {ok, describe_maintenance_window_schedule_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_maintenance_window_schedule_errors(), tuple()}.
 describe_maintenance_window_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMaintenanceWindowSchedule">>, Input, Options).
@@ -6682,8 +7216,7 @@ describe_maintenance_window_schedule(Client, Input, Options)
 -spec describe_maintenance_window_targets(map(), describe_maintenance_window_targets_request()) ->
     {ok, describe_maintenance_window_targets_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_maintenance_window_targets_errors(), tuple()}.
 describe_maintenance_window_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_maintenance_window_targets(Client, Input, []).
@@ -6691,8 +7224,7 @@ describe_maintenance_window_targets(Client, Input)
 -spec describe_maintenance_window_targets(map(), describe_maintenance_window_targets_request(), proplists:proplist()) ->
     {ok, describe_maintenance_window_targets_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_maintenance_window_targets_errors(), tuple()}.
 describe_maintenance_window_targets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMaintenanceWindowTargets">>, Input, Options).
@@ -6709,8 +7241,7 @@ describe_maintenance_window_targets(Client, Input, Options)
 -spec describe_maintenance_window_tasks(map(), describe_maintenance_window_tasks_request()) ->
     {ok, describe_maintenance_window_tasks_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_maintenance_window_tasks_errors(), tuple()}.
 describe_maintenance_window_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_maintenance_window_tasks(Client, Input, []).
@@ -6718,8 +7249,7 @@ describe_maintenance_window_tasks(Client, Input)
 -spec describe_maintenance_window_tasks(map(), describe_maintenance_window_tasks_request(), proplists:proplist()) ->
     {ok, describe_maintenance_window_tasks_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_maintenance_window_tasks_errors(), tuple()}.
 describe_maintenance_window_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMaintenanceWindowTasks">>, Input, Options).
@@ -6728,7 +7258,7 @@ describe_maintenance_window_tasks(Client, Input, Options)
 -spec describe_maintenance_windows(map(), describe_maintenance_windows_request()) ->
     {ok, describe_maintenance_windows_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_maintenance_windows_errors(), tuple()}.
 describe_maintenance_windows(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_maintenance_windows(Client, Input, []).
@@ -6736,7 +7266,7 @@ describe_maintenance_windows(Client, Input)
 -spec describe_maintenance_windows(map(), describe_maintenance_windows_request(), proplists:proplist()) ->
     {ok, describe_maintenance_windows_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_maintenance_windows_errors(), tuple()}.
 describe_maintenance_windows(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMaintenanceWindows">>, Input, Options).
@@ -6747,7 +7277,7 @@ describe_maintenance_windows(Client, Input, Options)
 -spec describe_maintenance_windows_for_target(map(), describe_maintenance_windows_for_target_request()) ->
     {ok, describe_maintenance_windows_for_target_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_maintenance_windows_for_target_errors(), tuple()}.
 describe_maintenance_windows_for_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_maintenance_windows_for_target(Client, Input, []).
@@ -6755,7 +7285,7 @@ describe_maintenance_windows_for_target(Client, Input)
 -spec describe_maintenance_windows_for_target(map(), describe_maintenance_windows_for_target_request(), proplists:proplist()) ->
     {ok, describe_maintenance_windows_for_target_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_maintenance_windows_for_target_errors(), tuple()}.
 describe_maintenance_windows_for_target(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMaintenanceWindowsForTarget">>, Input, Options).
@@ -6779,7 +7309,7 @@ describe_maintenance_windows_for_target(Client, Input, Options)
 -spec describe_ops_items(map(), describe_ops_items_request()) ->
     {ok, describe_ops_items_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_ops_items_errors(), tuple()}.
 describe_ops_items(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_ops_items(Client, Input, []).
@@ -6787,7 +7317,7 @@ describe_ops_items(Client, Input)
 -spec describe_ops_items(map(), describe_ops_items_request(), proplists:proplist()) ->
     {ok, describe_ops_items_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_ops_items_errors(), tuple()}.
 describe_ops_items(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeOpsItems">>, Input, Options).
@@ -6819,11 +7349,7 @@ describe_ops_items(Client, Input, Options)
 -spec describe_parameters(map(), describe_parameters_request()) ->
     {ok, describe_parameters_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_filter_key(), tuple()} |
-    {error, invalid_filter_option(), tuple()} |
-    {error, invalid_filter_value(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_parameters_errors(), tuple()}.
 describe_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_parameters(Client, Input, []).
@@ -6831,11 +7357,7 @@ describe_parameters(Client, Input)
 -spec describe_parameters(map(), describe_parameters_request(), proplists:proplist()) ->
     {ok, describe_parameters_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_filter_key(), tuple()} |
-    {error, invalid_filter_option(), tuple()} |
-    {error, invalid_filter_value(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_parameters_errors(), tuple()}.
 describe_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeParameters">>, Input, Options).
@@ -6844,7 +7366,7 @@ describe_parameters(Client, Input, Options)
 -spec describe_patch_baselines(map(), describe_patch_baselines_request()) ->
     {ok, describe_patch_baselines_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_patch_baselines_errors(), tuple()}.
 describe_patch_baselines(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_patch_baselines(Client, Input, []).
@@ -6852,7 +7374,7 @@ describe_patch_baselines(Client, Input)
 -spec describe_patch_baselines(map(), describe_patch_baselines_request(), proplists:proplist()) ->
     {ok, describe_patch_baselines_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_patch_baselines_errors(), tuple()}.
 describe_patch_baselines(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePatchBaselines">>, Input, Options).
@@ -6862,8 +7384,7 @@ describe_patch_baselines(Client, Input, Options)
 -spec describe_patch_group_state(map(), describe_patch_group_state_request()) ->
     {ok, describe_patch_group_state_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_patch_group_state_errors(), tuple()}.
 describe_patch_group_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_patch_group_state(Client, Input, []).
@@ -6871,8 +7392,7 @@ describe_patch_group_state(Client, Input)
 -spec describe_patch_group_state(map(), describe_patch_group_state_request(), proplists:proplist()) ->
     {ok, describe_patch_group_state_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_patch_group_state_errors(), tuple()}.
 describe_patch_group_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePatchGroupState">>, Input, Options).
@@ -6882,7 +7402,7 @@ describe_patch_group_state(Client, Input, Options)
 -spec describe_patch_groups(map(), describe_patch_groups_request()) ->
     {ok, describe_patch_groups_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_patch_groups_errors(), tuple()}.
 describe_patch_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_patch_groups(Client, Input, []).
@@ -6890,7 +7410,7 @@ describe_patch_groups(Client, Input)
 -spec describe_patch_groups(map(), describe_patch_groups_request(), proplists:proplist()) ->
     {ok, describe_patch_groups_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_patch_groups_errors(), tuple()}.
 describe_patch_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePatchGroups">>, Input, Options).
@@ -6957,7 +7477,7 @@ describe_patch_groups(Client, Input, Options)
 -spec describe_patch_properties(map(), describe_patch_properties_request()) ->
     {ok, describe_patch_properties_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_patch_properties_errors(), tuple()}.
 describe_patch_properties(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_patch_properties(Client, Input, []).
@@ -6965,7 +7485,7 @@ describe_patch_properties(Client, Input)
 -spec describe_patch_properties(map(), describe_patch_properties_request(), proplists:proplist()) ->
     {ok, describe_patch_properties_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_patch_properties_errors(), tuple()}.
 describe_patch_properties(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePatchProperties">>, Input, Options).
@@ -6976,9 +7496,7 @@ describe_patch_properties(Client, Input, Options)
 -spec describe_sessions(map(), describe_sessions_request()) ->
     {ok, describe_sessions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_filter_key(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_sessions_errors(), tuple()}.
 describe_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_sessions(Client, Input, []).
@@ -6986,9 +7504,7 @@ describe_sessions(Client, Input)
 -spec describe_sessions(map(), describe_sessions_request(), proplists:proplist()) ->
     {ok, describe_sessions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_filter_key(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, describe_sessions_errors(), tuple()}.
 describe_sessions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSessions">>, Input, Options).
@@ -7002,11 +7518,7 @@ describe_sessions(Client, Input, Options)
 -spec disassociate_ops_item_related_item(map(), disassociate_ops_item_related_item_request()) ->
     {ok, disassociate_ops_item_related_item_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, ops_item_conflict_exception(), tuple()} |
-    {error, ops_item_invalid_parameter_exception(), tuple()} |
-    {error, ops_item_not_found_exception(), tuple()} |
-    {error, ops_item_related_item_association_not_found_exception(), tuple()}.
+    {error, disassociate_ops_item_related_item_errors(), tuple()}.
 disassociate_ops_item_related_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_ops_item_related_item(Client, Input, []).
@@ -7014,11 +7526,7 @@ disassociate_ops_item_related_item(Client, Input)
 -spec disassociate_ops_item_related_item(map(), disassociate_ops_item_related_item_request(), proplists:proplist()) ->
     {ok, disassociate_ops_item_related_item_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, ops_item_conflict_exception(), tuple()} |
-    {error, ops_item_invalid_parameter_exception(), tuple()} |
-    {error, ops_item_not_found_exception(), tuple()} |
-    {error, ops_item_related_item_association_not_found_exception(), tuple()}.
+    {error, disassociate_ops_item_related_item_errors(), tuple()}.
 disassociate_ops_item_related_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateOpsItemRelatedItem">>, Input, Options).
@@ -7027,8 +7535,7 @@ disassociate_ops_item_related_item(Client, Input, Options)
 -spec get_automation_execution(map(), get_automation_execution_request()) ->
     {ok, get_automation_execution_result(), tuple()} |
     {error, any()} |
-    {error, automation_execution_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, get_automation_execution_errors(), tuple()}.
 get_automation_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_automation_execution(Client, Input, []).
@@ -7036,8 +7543,7 @@ get_automation_execution(Client, Input)
 -spec get_automation_execution(map(), get_automation_execution_request(), proplists:proplist()) ->
     {ok, get_automation_execution_result(), tuple()} |
     {error, any()} |
-    {error, automation_execution_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, get_automation_execution_errors(), tuple()}.
 get_automation_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAutomationExecution">>, Input, Options).
@@ -7068,10 +7574,7 @@ get_automation_execution(Client, Input, Options)
 -spec get_calendar_state(map(), get_calendar_state_request()) ->
     {ok, get_calendar_state_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_document_type(), tuple()} |
-    {error, unsupported_calendar_exception(), tuple()}.
+    {error, get_calendar_state_errors(), tuple()}.
 get_calendar_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_calendar_state(Client, Input, []).
@@ -7079,10 +7582,7 @@ get_calendar_state(Client, Input)
 -spec get_calendar_state(map(), get_calendar_state_request(), proplists:proplist()) ->
     {ok, get_calendar_state_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_document_type(), tuple()} |
-    {error, unsupported_calendar_exception(), tuple()}.
+    {error, get_calendar_state_errors(), tuple()}.
 get_calendar_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCalendarState">>, Input, Options).
@@ -7099,11 +7599,7 @@ get_calendar_state(Client, Input, Options)
 -spec get_command_invocation(map(), get_command_invocation_request()) ->
     {ok, get_command_invocation_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_command_id(), tuple()} |
-    {error, invalid_instance_id(), tuple()} |
-    {error, invalid_plugin_name(), tuple()} |
-    {error, invocation_does_not_exist(), tuple()}.
+    {error, get_command_invocation_errors(), tuple()}.
 get_command_invocation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_command_invocation(Client, Input, []).
@@ -7111,11 +7607,7 @@ get_command_invocation(Client, Input)
 -spec get_command_invocation(map(), get_command_invocation_request(), proplists:proplist()) ->
     {ok, get_command_invocation_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_command_id(), tuple()} |
-    {error, invalid_instance_id(), tuple()} |
-    {error, invalid_plugin_name(), tuple()} |
-    {error, invocation_does_not_exist(), tuple()}.
+    {error, get_command_invocation_errors(), tuple()}.
 get_command_invocation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCommandInvocation">>, Input, Options).
@@ -7126,7 +7618,7 @@ get_command_invocation(Client, Input, Options)
 -spec get_connection_status(map(), get_connection_status_request()) ->
     {ok, get_connection_status_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, get_connection_status_errors(), tuple()}.
 get_connection_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_connection_status(Client, Input, []).
@@ -7134,7 +7626,7 @@ get_connection_status(Client, Input)
 -spec get_connection_status(map(), get_connection_status_request(), proplists:proplist()) ->
     {ok, get_connection_status_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, get_connection_status_errors(), tuple()}.
 get_connection_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetConnectionStatus">>, Input, Options).
@@ -7152,7 +7644,7 @@ get_connection_status(Client, Input, Options)
 -spec get_default_patch_baseline(map(), get_default_patch_baseline_request()) ->
     {ok, get_default_patch_baseline_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, get_default_patch_baseline_errors(), tuple()}.
 get_default_patch_baseline(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_default_patch_baseline(Client, Input, []).
@@ -7160,7 +7652,7 @@ get_default_patch_baseline(Client, Input)
 -spec get_default_patch_baseline(map(), get_default_patch_baseline_request(), proplists:proplist()) ->
     {ok, get_default_patch_baseline_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, get_default_patch_baseline_errors(), tuple()}.
 get_default_patch_baseline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDefaultPatchBaseline">>, Input, Options).
@@ -7185,9 +7677,7 @@ get_default_patch_baseline(Client, Input, Options)
 -spec get_deployable_patch_snapshot_for_instance(map(), get_deployable_patch_snapshot_for_instance_request()) ->
     {ok, get_deployable_patch_snapshot_for_instance_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, unsupported_feature_required_exception(), tuple()} |
-    {error, unsupported_operating_system(), tuple()}.
+    {error, get_deployable_patch_snapshot_for_instance_errors(), tuple()}.
 get_deployable_patch_snapshot_for_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_deployable_patch_snapshot_for_instance(Client, Input, []).
@@ -7195,9 +7685,7 @@ get_deployable_patch_snapshot_for_instance(Client, Input)
 -spec get_deployable_patch_snapshot_for_instance(map(), get_deployable_patch_snapshot_for_instance_request(), proplists:proplist()) ->
     {ok, get_deployable_patch_snapshot_for_instance_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, unsupported_feature_required_exception(), tuple()} |
-    {error, unsupported_operating_system(), tuple()}.
+    {error, get_deployable_patch_snapshot_for_instance_errors(), tuple()}.
 get_deployable_patch_snapshot_for_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDeployablePatchSnapshotForInstance">>, Input, Options).
@@ -7207,9 +7695,7 @@ get_deployable_patch_snapshot_for_instance(Client, Input, Options)
 -spec get_document(map(), get_document_request()) ->
     {ok, get_document_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_document_version(), tuple()}.
+    {error, get_document_errors(), tuple()}.
 get_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_document(Client, Input, []).
@@ -7217,9 +7703,7 @@ get_document(Client, Input)
 -spec get_document(map(), get_document_request(), proplists:proplist()) ->
     {ok, get_document_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_document_version(), tuple()}.
+    {error, get_document_errors(), tuple()}.
 get_document(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDocument">>, Input, Options).
@@ -7231,13 +7715,7 @@ get_document(Client, Input, Options)
 -spec get_inventory(map(), get_inventory_request()) ->
     {ok, get_inventory_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_aggregator_exception(), tuple()} |
-    {error, invalid_filter(), tuple()} |
-    {error, invalid_inventory_group_exception(), tuple()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, invalid_result_attribute_exception(), tuple()} |
-    {error, invalid_type_name_exception(), tuple()}.
+    {error, get_inventory_errors(), tuple()}.
 get_inventory(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_inventory(Client, Input, []).
@@ -7245,13 +7723,7 @@ get_inventory(Client, Input)
 -spec get_inventory(map(), get_inventory_request(), proplists:proplist()) ->
     {ok, get_inventory_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_aggregator_exception(), tuple()} |
-    {error, invalid_filter(), tuple()} |
-    {error, invalid_inventory_group_exception(), tuple()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, invalid_result_attribute_exception(), tuple()} |
-    {error, invalid_type_name_exception(), tuple()}.
+    {error, get_inventory_errors(), tuple()}.
 get_inventory(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInventory">>, Input, Options).
@@ -7262,9 +7734,7 @@ get_inventory(Client, Input, Options)
 -spec get_inventory_schema(map(), get_inventory_schema_request()) ->
     {ok, get_inventory_schema_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, invalid_type_name_exception(), tuple()}.
+    {error, get_inventory_schema_errors(), tuple()}.
 get_inventory_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_inventory_schema(Client, Input, []).
@@ -7272,9 +7742,7 @@ get_inventory_schema(Client, Input)
 -spec get_inventory_schema(map(), get_inventory_schema_request(), proplists:proplist()) ->
     {ok, get_inventory_schema_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, invalid_type_name_exception(), tuple()}.
+    {error, get_inventory_schema_errors(), tuple()}.
 get_inventory_schema(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInventorySchema">>, Input, Options).
@@ -7283,8 +7751,7 @@ get_inventory_schema(Client, Input, Options)
 -spec get_maintenance_window(map(), get_maintenance_window_request()) ->
     {ok, get_maintenance_window_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, get_maintenance_window_errors(), tuple()}.
 get_maintenance_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_maintenance_window(Client, Input, []).
@@ -7292,8 +7759,7 @@ get_maintenance_window(Client, Input)
 -spec get_maintenance_window(map(), get_maintenance_window_request(), proplists:proplist()) ->
     {ok, get_maintenance_window_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, get_maintenance_window_errors(), tuple()}.
 get_maintenance_window(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMaintenanceWindow">>, Input, Options).
@@ -7302,8 +7768,7 @@ get_maintenance_window(Client, Input, Options)
 -spec get_maintenance_window_execution(map(), get_maintenance_window_execution_request()) ->
     {ok, get_maintenance_window_execution_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, get_maintenance_window_execution_errors(), tuple()}.
 get_maintenance_window_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_maintenance_window_execution(Client, Input, []).
@@ -7311,8 +7776,7 @@ get_maintenance_window_execution(Client, Input)
 -spec get_maintenance_window_execution(map(), get_maintenance_window_execution_request(), proplists:proplist()) ->
     {ok, get_maintenance_window_execution_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, get_maintenance_window_execution_errors(), tuple()}.
 get_maintenance_window_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMaintenanceWindowExecution">>, Input, Options).
@@ -7323,8 +7787,7 @@ get_maintenance_window_execution(Client, Input, Options)
 -spec get_maintenance_window_execution_task(map(), get_maintenance_window_execution_task_request()) ->
     {ok, get_maintenance_window_execution_task_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, get_maintenance_window_execution_task_errors(), tuple()}.
 get_maintenance_window_execution_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_maintenance_window_execution_task(Client, Input, []).
@@ -7332,8 +7795,7 @@ get_maintenance_window_execution_task(Client, Input)
 -spec get_maintenance_window_execution_task(map(), get_maintenance_window_execution_task_request(), proplists:proplist()) ->
     {ok, get_maintenance_window_execution_task_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, get_maintenance_window_execution_task_errors(), tuple()}.
 get_maintenance_window_execution_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMaintenanceWindowExecutionTask">>, Input, Options).
@@ -7343,8 +7805,7 @@ get_maintenance_window_execution_task(Client, Input, Options)
 -spec get_maintenance_window_execution_task_invocation(map(), get_maintenance_window_execution_task_invocation_request()) ->
     {ok, get_maintenance_window_execution_task_invocation_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, get_maintenance_window_execution_task_invocation_errors(), tuple()}.
 get_maintenance_window_execution_task_invocation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_maintenance_window_execution_task_invocation(Client, Input, []).
@@ -7352,8 +7813,7 @@ get_maintenance_window_execution_task_invocation(Client, Input)
 -spec get_maintenance_window_execution_task_invocation(map(), get_maintenance_window_execution_task_invocation_request(), proplists:proplist()) ->
     {ok, get_maintenance_window_execution_task_invocation_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, get_maintenance_window_execution_task_invocation_errors(), tuple()}.
 get_maintenance_window_execution_task_invocation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMaintenanceWindowExecutionTaskInvocation">>, Input, Options).
@@ -7373,8 +7833,7 @@ get_maintenance_window_execution_task_invocation(Client, Input, Options)
 -spec get_maintenance_window_task(map(), get_maintenance_window_task_request()) ->
     {ok, get_maintenance_window_task_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, get_maintenance_window_task_errors(), tuple()}.
 get_maintenance_window_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_maintenance_window_task(Client, Input, []).
@@ -7382,8 +7841,7 @@ get_maintenance_window_task(Client, Input)
 -spec get_maintenance_window_task(map(), get_maintenance_window_task_request(), proplists:proplist()) ->
     {ok, get_maintenance_window_task_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, get_maintenance_window_task_errors(), tuple()}.
 get_maintenance_window_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMaintenanceWindowTask">>, Input, Options).
@@ -7408,9 +7866,7 @@ get_maintenance_window_task(Client, Input, Options)
 -spec get_ops_item(map(), get_ops_item_request()) ->
     {ok, get_ops_item_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, ops_item_access_denied_exception(), tuple()} |
-    {error, ops_item_not_found_exception(), tuple()}.
+    {error, get_ops_item_errors(), tuple()}.
 get_ops_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ops_item(Client, Input, []).
@@ -7418,9 +7874,7 @@ get_ops_item(Client, Input)
 -spec get_ops_item(map(), get_ops_item_request(), proplists:proplist()) ->
     {ok, get_ops_item_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, ops_item_access_denied_exception(), tuple()} |
-    {error, ops_item_not_found_exception(), tuple()}.
+    {error, get_ops_item_errors(), tuple()}.
 get_ops_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOpsItem">>, Input, Options).
@@ -7430,9 +7884,7 @@ get_ops_item(Client, Input, Options)
 -spec get_ops_metadata(map(), get_ops_metadata_request()) ->
     {ok, get_ops_metadata_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, ops_metadata_invalid_argument_exception(), tuple()} |
-    {error, ops_metadata_not_found_exception(), tuple()}.
+    {error, get_ops_metadata_errors(), tuple()}.
 get_ops_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ops_metadata(Client, Input, []).
@@ -7440,9 +7892,7 @@ get_ops_metadata(Client, Input)
 -spec get_ops_metadata(map(), get_ops_metadata_request(), proplists:proplist()) ->
     {ok, get_ops_metadata_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, ops_metadata_invalid_argument_exception(), tuple()} |
-    {error, ops_metadata_not_found_exception(), tuple()}.
+    {error, get_ops_metadata_errors(), tuple()}.
 get_ops_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOpsMetadata">>, Input, Options).
@@ -7458,12 +7908,7 @@ get_ops_metadata(Client, Input, Options)
 -spec get_ops_summary(map(), get_ops_summary_request()) ->
     {ok, get_ops_summary_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_aggregator_exception(), tuple()} |
-    {error, invalid_filter(), tuple()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, invalid_type_name_exception(), tuple()} |
-    {error, resource_data_sync_not_found_exception(), tuple()}.
+    {error, get_ops_summary_errors(), tuple()}.
 get_ops_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ops_summary(Client, Input, []).
@@ -7471,12 +7916,7 @@ get_ops_summary(Client, Input)
 -spec get_ops_summary(map(), get_ops_summary_request(), proplists:proplist()) ->
     {ok, get_ops_summary_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_aggregator_exception(), tuple()} |
-    {error, invalid_filter(), tuple()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, invalid_type_name_exception(), tuple()} |
-    {error, resource_data_sync_not_found_exception(), tuple()}.
+    {error, get_ops_summary_errors(), tuple()}.
 get_ops_summary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOpsSummary">>, Input, Options).
@@ -7489,10 +7929,7 @@ get_ops_summary(Client, Input, Options)
 -spec get_parameter(map(), get_parameter_request()) ->
     {ok, get_parameter_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_key_id(), tuple()} |
-    {error, parameter_not_found(), tuple()} |
-    {error, parameter_version_not_found(), tuple()}.
+    {error, get_parameter_errors(), tuple()}.
 get_parameter(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_parameter(Client, Input, []).
@@ -7500,10 +7937,7 @@ get_parameter(Client, Input)
 -spec get_parameter(map(), get_parameter_request(), proplists:proplist()) ->
     {ok, get_parameter_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_key_id(), tuple()} |
-    {error, parameter_not_found(), tuple()} |
-    {error, parameter_version_not_found(), tuple()}.
+    {error, get_parameter_errors(), tuple()}.
 get_parameter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetParameter">>, Input, Options).
@@ -7519,10 +7953,7 @@ get_parameter(Client, Input, Options)
 -spec get_parameter_history(map(), get_parameter_history_request()) ->
     {ok, get_parameter_history_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_key_id(), tuple()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, parameter_not_found(), tuple()}.
+    {error, get_parameter_history_errors(), tuple()}.
 get_parameter_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_parameter_history(Client, Input, []).
@@ -7530,10 +7961,7 @@ get_parameter_history(Client, Input)
 -spec get_parameter_history(map(), get_parameter_history_request(), proplists:proplist()) ->
     {ok, get_parameter_history_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_key_id(), tuple()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, parameter_not_found(), tuple()}.
+    {error, get_parameter_history_errors(), tuple()}.
 get_parameter_history(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetParameterHistory">>, Input, Options).
@@ -7547,8 +7975,7 @@ get_parameter_history(Client, Input, Options)
 -spec get_parameters(map(), get_parameters_request()) ->
     {ok, get_parameters_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_key_id(), tuple()}.
+    {error, get_parameters_errors(), tuple()}.
 get_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_parameters(Client, Input, []).
@@ -7556,8 +7983,7 @@ get_parameters(Client, Input)
 -spec get_parameters(map(), get_parameters_request(), proplists:proplist()) ->
     {ok, get_parameters_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_key_id(), tuple()}.
+    {error, get_parameters_errors(), tuple()}.
 get_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetParameters">>, Input, Options).
@@ -7579,12 +8005,7 @@ get_parameters(Client, Input, Options)
 -spec get_parameters_by_path(map(), get_parameters_by_path_request()) ->
     {ok, get_parameters_by_path_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_filter_key(), tuple()} |
-    {error, invalid_filter_option(), tuple()} |
-    {error, invalid_filter_value(), tuple()} |
-    {error, invalid_key_id(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, get_parameters_by_path_errors(), tuple()}.
 get_parameters_by_path(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_parameters_by_path(Client, Input, []).
@@ -7592,12 +8013,7 @@ get_parameters_by_path(Client, Input)
 -spec get_parameters_by_path(map(), get_parameters_by_path_request(), proplists:proplist()) ->
     {ok, get_parameters_by_path_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_filter_key(), tuple()} |
-    {error, invalid_filter_option(), tuple()} |
-    {error, invalid_filter_value(), tuple()} |
-    {error, invalid_key_id(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, get_parameters_by_path_errors(), tuple()}.
 get_parameters_by_path(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetParametersByPath">>, Input, Options).
@@ -7606,9 +8022,7 @@ get_parameters_by_path(Client, Input, Options)
 -spec get_patch_baseline(map(), get_patch_baseline_request()) ->
     {ok, get_patch_baseline_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_resource_id(), tuple()}.
+    {error, get_patch_baseline_errors(), tuple()}.
 get_patch_baseline(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_patch_baseline(Client, Input, []).
@@ -7616,9 +8030,7 @@ get_patch_baseline(Client, Input)
 -spec get_patch_baseline(map(), get_patch_baseline_request(), proplists:proplist()) ->
     {ok, get_patch_baseline_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_resource_id(), tuple()}.
+    {error, get_patch_baseline_errors(), tuple()}.
 get_patch_baseline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPatchBaseline">>, Input, Options).
@@ -7628,7 +8040,7 @@ get_patch_baseline(Client, Input, Options)
 -spec get_patch_baseline_for_patch_group(map(), get_patch_baseline_for_patch_group_request()) ->
     {ok, get_patch_baseline_for_patch_group_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, get_patch_baseline_for_patch_group_errors(), tuple()}.
 get_patch_baseline_for_patch_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_patch_baseline_for_patch_group(Client, Input, []).
@@ -7636,7 +8048,7 @@ get_patch_baseline_for_patch_group(Client, Input)
 -spec get_patch_baseline_for_patch_group(map(), get_patch_baseline_for_patch_group_request(), proplists:proplist()) ->
     {ok, get_patch_baseline_for_patch_group_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, get_patch_baseline_for_patch_group_errors(), tuple()}.
 get_patch_baseline_for_patch_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPatchBaselineForPatchGroup">>, Input, Options).
@@ -7645,9 +8057,7 @@ get_patch_baseline_for_patch_group(Client, Input, Options)
 -spec get_resource_policies(map(), get_resource_policies_request()) ->
     {ok, get_resource_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_policy_invalid_parameter_exception(), tuple()}.
+    {error, get_resource_policies_errors(), tuple()}.
 get_resource_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_policies(Client, Input, []).
@@ -7655,9 +8065,7 @@ get_resource_policies(Client, Input)
 -spec get_resource_policies(map(), get_resource_policies_request(), proplists:proplist()) ->
     {ok, get_resource_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_policy_invalid_parameter_exception(), tuple()}.
+    {error, get_resource_policies_errors(), tuple()}.
 get_resource_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourcePolicies">>, Input, Options).
@@ -7694,8 +8102,7 @@ get_resource_policies(Client, Input, Options)
 -spec get_service_setting(map(), get_service_setting_request()) ->
     {ok, get_service_setting_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, service_setting_not_found(), tuple()}.
+    {error, get_service_setting_errors(), tuple()}.
 get_service_setting(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_setting(Client, Input, []).
@@ -7703,8 +8110,7 @@ get_service_setting(Client, Input)
 -spec get_service_setting(map(), get_service_setting_request(), proplists:proplist()) ->
     {ok, get_service_setting_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, service_setting_not_found(), tuple()}.
+    {error, get_service_setting_errors(), tuple()}.
 get_service_setting(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServiceSetting">>, Input, Options).
@@ -7752,11 +8158,7 @@ get_service_setting(Client, Input, Options)
 -spec label_parameter_version(map(), label_parameter_version_request()) ->
     {ok, label_parameter_version_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, parameter_not_found(), tuple()} |
-    {error, parameter_version_label_limit_exceeded(), tuple()} |
-    {error, parameter_version_not_found(), tuple()} |
-    {error, too_many_updates(), tuple()}.
+    {error, label_parameter_version_errors(), tuple()}.
 label_parameter_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     label_parameter_version(Client, Input, []).
@@ -7764,11 +8166,7 @@ label_parameter_version(Client, Input)
 -spec label_parameter_version(map(), label_parameter_version_request(), proplists:proplist()) ->
     {ok, label_parameter_version_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, parameter_not_found(), tuple()} |
-    {error, parameter_version_label_limit_exceeded(), tuple()} |
-    {error, parameter_version_not_found(), tuple()} |
-    {error, too_many_updates(), tuple()}.
+    {error, label_parameter_version_errors(), tuple()}.
 label_parameter_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"LabelParameterVersion">>, Input, Options).
@@ -7778,9 +8176,7 @@ label_parameter_version(Client, Input, Options)
 -spec list_association_versions(map(), list_association_versions_request()) ->
     {ok, list_association_versions_result(), tuple()} |
     {error, any()} |
-    {error, association_does_not_exist(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, list_association_versions_errors(), tuple()}.
 list_association_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_association_versions(Client, Input, []).
@@ -7788,9 +8184,7 @@ list_association_versions(Client, Input)
 -spec list_association_versions(map(), list_association_versions_request(), proplists:proplist()) ->
     {ok, list_association_versions_result(), tuple()} |
     {error, any()} |
-    {error, association_does_not_exist(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, list_association_versions_errors(), tuple()}.
 list_association_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAssociationVersions">>, Input, Options).
@@ -7806,8 +8200,7 @@ list_association_versions(Client, Input, Options)
 -spec list_associations(map(), list_associations_request()) ->
     {ok, list_associations_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, list_associations_errors(), tuple()}.
 list_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_associations(Client, Input, []).
@@ -7815,8 +8208,7 @@ list_associations(Client, Input)
 -spec list_associations(map(), list_associations_request(), proplists:proplist()) ->
     {ok, list_associations_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, list_associations_errors(), tuple()}.
 list_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAssociations">>, Input, Options).
@@ -7834,11 +8226,7 @@ list_associations(Client, Input, Options)
 -spec list_command_invocations(map(), list_command_invocations_request()) ->
     {ok, list_command_invocations_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_command_id(), tuple()} |
-    {error, invalid_filter_key(), tuple()} |
-    {error, invalid_instance_id(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, list_command_invocations_errors(), tuple()}.
 list_command_invocations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_command_invocations(Client, Input, []).
@@ -7846,11 +8234,7 @@ list_command_invocations(Client, Input)
 -spec list_command_invocations(map(), list_command_invocations_request(), proplists:proplist()) ->
     {ok, list_command_invocations_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_command_id(), tuple()} |
-    {error, invalid_filter_key(), tuple()} |
-    {error, invalid_instance_id(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, list_command_invocations_errors(), tuple()}.
 list_command_invocations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCommandInvocations">>, Input, Options).
@@ -7860,11 +8244,7 @@ list_command_invocations(Client, Input, Options)
 -spec list_commands(map(), list_commands_request()) ->
     {ok, list_commands_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_command_id(), tuple()} |
-    {error, invalid_filter_key(), tuple()} |
-    {error, invalid_instance_id(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, list_commands_errors(), tuple()}.
 list_commands(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_commands(Client, Input, []).
@@ -7872,11 +8252,7 @@ list_commands(Client, Input)
 -spec list_commands(map(), list_commands_request(), proplists:proplist()) ->
     {ok, list_commands_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_command_id(), tuple()} |
-    {error, invalid_filter_key(), tuple()} |
-    {error, invalid_instance_id(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, list_commands_errors(), tuple()}.
 list_commands(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCommands">>, Input, Options).
@@ -7890,11 +8266,7 @@ list_commands(Client, Input, Options)
 -spec list_compliance_items(map(), list_compliance_items_request()) ->
     {ok, list_compliance_items_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_filter(), tuple()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, invalid_resource_id(), tuple()} |
-    {error, invalid_resource_type(), tuple()}.
+    {error, list_compliance_items_errors(), tuple()}.
 list_compliance_items(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_compliance_items(Client, Input, []).
@@ -7902,11 +8274,7 @@ list_compliance_items(Client, Input)
 -spec list_compliance_items(map(), list_compliance_items_request(), proplists:proplist()) ->
     {ok, list_compliance_items_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_filter(), tuple()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, invalid_resource_id(), tuple()} |
-    {error, invalid_resource_type(), tuple()}.
+    {error, list_compliance_items_errors(), tuple()}.
 list_compliance_items(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListComplianceItems">>, Input, Options).
@@ -7921,9 +8289,7 @@ list_compliance_items(Client, Input, Options)
 -spec list_compliance_summaries(map(), list_compliance_summaries_request()) ->
     {ok, list_compliance_summaries_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_filter(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, list_compliance_summaries_errors(), tuple()}.
 list_compliance_summaries(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_compliance_summaries(Client, Input, []).
@@ -7931,9 +8297,7 @@ list_compliance_summaries(Client, Input)
 -spec list_compliance_summaries(map(), list_compliance_summaries_request(), proplists:proplist()) ->
     {ok, list_compliance_summaries_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_filter(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, list_compliance_summaries_errors(), tuple()}.
 list_compliance_summaries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListComplianceSummaries">>, Input, Options).
@@ -7943,10 +8307,7 @@ list_compliance_summaries(Client, Input, Options)
 -spec list_document_metadata_history(map(), list_document_metadata_history_request()) ->
     {ok, list_document_metadata_history_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_document_version(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, list_document_metadata_history_errors(), tuple()}.
 list_document_metadata_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_document_metadata_history(Client, Input, []).
@@ -7954,10 +8315,7 @@ list_document_metadata_history(Client, Input)
 -spec list_document_metadata_history(map(), list_document_metadata_history_request(), proplists:proplist()) ->
     {ok, list_document_metadata_history_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_document_version(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, list_document_metadata_history_errors(), tuple()}.
 list_document_metadata_history(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDocumentMetadataHistory">>, Input, Options).
@@ -7966,9 +8324,7 @@ list_document_metadata_history(Client, Input, Options)
 -spec list_document_versions(map(), list_document_versions_request()) ->
     {ok, list_document_versions_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, list_document_versions_errors(), tuple()}.
 list_document_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_document_versions(Client, Input, []).
@@ -7976,9 +8332,7 @@ list_document_versions(Client, Input)
 -spec list_document_versions(map(), list_document_versions_request(), proplists:proplist()) ->
     {ok, list_document_versions_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, list_document_versions_errors(), tuple()}.
 list_document_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDocumentVersions">>, Input, Options).
@@ -7991,9 +8345,7 @@ list_document_versions(Client, Input, Options)
 -spec list_documents(map(), list_documents_request()) ->
     {ok, list_documents_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_filter_key(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, list_documents_errors(), tuple()}.
 list_documents(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_documents(Client, Input, []).
@@ -8001,9 +8353,7 @@ list_documents(Client, Input)
 -spec list_documents(map(), list_documents_request(), proplists:proplist()) ->
     {ok, list_documents_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_filter_key(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, list_documents_errors(), tuple()}.
 list_documents(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDocuments">>, Input, Options).
@@ -8012,11 +8362,7 @@ list_documents(Client, Input, Options)
 -spec list_inventory_entries(map(), list_inventory_entries_request()) ->
     {ok, list_inventory_entries_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_filter(), tuple()} |
-    {error, invalid_instance_id(), tuple()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, invalid_type_name_exception(), tuple()}.
+    {error, list_inventory_entries_errors(), tuple()}.
 list_inventory_entries(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_inventory_entries(Client, Input, []).
@@ -8024,11 +8370,7 @@ list_inventory_entries(Client, Input)
 -spec list_inventory_entries(map(), list_inventory_entries_request(), proplists:proplist()) ->
     {ok, list_inventory_entries_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_filter(), tuple()} |
-    {error, invalid_instance_id(), tuple()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, invalid_type_name_exception(), tuple()}.
+    {error, list_inventory_entries_errors(), tuple()}.
 list_inventory_entries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInventoryEntries">>, Input, Options).
@@ -8042,10 +8384,7 @@ list_inventory_entries(Client, Input, Options)
 -spec list_ops_item_events(map(), list_ops_item_events_request()) ->
     {ok, list_ops_item_events_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, ops_item_invalid_parameter_exception(), tuple()} |
-    {error, ops_item_limit_exceeded_exception(), tuple()} |
-    {error, ops_item_not_found_exception(), tuple()}.
+    {error, list_ops_item_events_errors(), tuple()}.
 list_ops_item_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_ops_item_events(Client, Input, []).
@@ -8053,10 +8392,7 @@ list_ops_item_events(Client, Input)
 -spec list_ops_item_events(map(), list_ops_item_events_request(), proplists:proplist()) ->
     {ok, list_ops_item_events_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, ops_item_invalid_parameter_exception(), tuple()} |
-    {error, ops_item_limit_exceeded_exception(), tuple()} |
-    {error, ops_item_not_found_exception(), tuple()}.
+    {error, list_ops_item_events_errors(), tuple()}.
 list_ops_item_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOpsItemEvents">>, Input, Options).
@@ -8069,8 +8405,7 @@ list_ops_item_events(Client, Input, Options)
 -spec list_ops_item_related_items(map(), list_ops_item_related_items_request()) ->
     {ok, list_ops_item_related_items_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, ops_item_invalid_parameter_exception(), tuple()}.
+    {error, list_ops_item_related_items_errors(), tuple()}.
 list_ops_item_related_items(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_ops_item_related_items(Client, Input, []).
@@ -8078,8 +8413,7 @@ list_ops_item_related_items(Client, Input)
 -spec list_ops_item_related_items(map(), list_ops_item_related_items_request(), proplists:proplist()) ->
     {ok, list_ops_item_related_items_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, ops_item_invalid_parameter_exception(), tuple()}.
+    {error, list_ops_item_related_items_errors(), tuple()}.
 list_ops_item_related_items(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOpsItemRelatedItems">>, Input, Options).
@@ -8090,8 +8424,7 @@ list_ops_item_related_items(Client, Input, Options)
 -spec list_ops_metadata(map(), list_ops_metadata_request()) ->
     {ok, list_ops_metadata_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, ops_metadata_invalid_argument_exception(), tuple()}.
+    {error, list_ops_metadata_errors(), tuple()}.
 list_ops_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_ops_metadata(Client, Input, []).
@@ -8099,8 +8432,7 @@ list_ops_metadata(Client, Input)
 -spec list_ops_metadata(map(), list_ops_metadata_request(), proplists:proplist()) ->
     {ok, list_ops_metadata_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, ops_metadata_invalid_argument_exception(), tuple()}.
+    {error, list_ops_metadata_errors(), tuple()}.
 list_ops_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOpsMetadata">>, Input, Options).
@@ -8114,9 +8446,7 @@ list_ops_metadata(Client, Input, Options)
 -spec list_resource_compliance_summaries(map(), list_resource_compliance_summaries_request()) ->
     {ok, list_resource_compliance_summaries_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_filter(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, list_resource_compliance_summaries_errors(), tuple()}.
 list_resource_compliance_summaries(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_compliance_summaries(Client, Input, []).
@@ -8124,9 +8454,7 @@ list_resource_compliance_summaries(Client, Input)
 -spec list_resource_compliance_summaries(map(), list_resource_compliance_summaries_request(), proplists:proplist()) ->
     {ok, list_resource_compliance_summaries_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_filter(), tuple()} |
-    {error, invalid_next_token(), tuple()}.
+    {error, list_resource_compliance_summaries_errors(), tuple()}.
 list_resource_compliance_summaries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResourceComplianceSummaries">>, Input, Options).
@@ -8152,9 +8480,7 @@ list_resource_compliance_summaries(Client, Input, Options)
 -spec list_resource_data_sync(map(), list_resource_data_sync_request()) ->
     {ok, list_resource_data_sync_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, resource_data_sync_invalid_configuration_exception(), tuple()}.
+    {error, list_resource_data_sync_errors(), tuple()}.
 list_resource_data_sync(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_data_sync(Client, Input, []).
@@ -8162,9 +8488,7 @@ list_resource_data_sync(Client, Input)
 -spec list_resource_data_sync(map(), list_resource_data_sync_request(), proplists:proplist()) ->
     {ok, list_resource_data_sync_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_next_token(), tuple()} |
-    {error, resource_data_sync_invalid_configuration_exception(), tuple()}.
+    {error, list_resource_data_sync_errors(), tuple()}.
 list_resource_data_sync(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResourceDataSync">>, Input, Options).
@@ -8176,9 +8500,7 @@ list_resource_data_sync(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_resource_id(), tuple()} |
-    {error, invalid_resource_type(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -8186,9 +8508,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_resource_id(), tuple()} |
-    {error, invalid_resource_type(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -8204,11 +8524,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec modify_document_permission(map(), modify_document_permission_request()) ->
     {ok, modify_document_permission_response(), tuple()} |
     {error, any()} |
-    {error, document_limit_exceeded(), tuple()} |
-    {error, document_permission_limit(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_permission_type(), tuple()}.
+    {error, modify_document_permission_errors(), tuple()}.
 modify_document_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_document_permission(Client, Input, []).
@@ -8216,11 +8532,7 @@ modify_document_permission(Client, Input)
 -spec modify_document_permission(map(), modify_document_permission_request(), proplists:proplist()) ->
     {ok, modify_document_permission_response(), tuple()} |
     {error, any()} |
-    {error, document_limit_exceeded(), tuple()} |
-    {error, document_permission_limit(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_permission_type(), tuple()}.
+    {error, modify_document_permission_errors(), tuple()}.
 modify_document_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDocumentPermission">>, Input, Options).
@@ -8280,13 +8592,7 @@ modify_document_permission(Client, Input, Options)
 -spec put_compliance_items(map(), put_compliance_items_request()) ->
     {ok, put_compliance_items_result(), tuple()} |
     {error, any()} |
-    {error, compliance_type_count_limit_exceeded_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_item_content_exception(), tuple()} |
-    {error, invalid_resource_id(), tuple()} |
-    {error, invalid_resource_type(), tuple()} |
-    {error, item_size_limit_exceeded_exception(), tuple()} |
-    {error, total_size_limit_exceeded_exception(), tuple()}.
+    {error, put_compliance_items_errors(), tuple()}.
 put_compliance_items(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_compliance_items(Client, Input, []).
@@ -8294,13 +8600,7 @@ put_compliance_items(Client, Input)
 -spec put_compliance_items(map(), put_compliance_items_request(), proplists:proplist()) ->
     {ok, put_compliance_items_result(), tuple()} |
     {error, any()} |
-    {error, compliance_type_count_limit_exceeded_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_item_content_exception(), tuple()} |
-    {error, invalid_resource_id(), tuple()} |
-    {error, invalid_resource_type(), tuple()} |
-    {error, item_size_limit_exceeded_exception(), tuple()} |
-    {error, total_size_limit_exceeded_exception(), tuple()}.
+    {error, put_compliance_items_errors(), tuple()}.
 put_compliance_items(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutComplianceItems">>, Input, Options).
@@ -8314,18 +8614,7 @@ put_compliance_items(Client, Input, Options)
 -spec put_inventory(map(), put_inventory_request()) ->
     {ok, put_inventory_result(), tuple()} |
     {error, any()} |
-    {error, custom_schema_count_limit_exceeded_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_instance_id(), tuple()} |
-    {error, invalid_inventory_item_context_exception(), tuple()} |
-    {error, invalid_item_content_exception(), tuple()} |
-    {error, invalid_type_name_exception(), tuple()} |
-    {error, item_content_mismatch_exception(), tuple()} |
-    {error, item_size_limit_exceeded_exception(), tuple()} |
-    {error, sub_type_count_limit_exceeded_exception(), tuple()} |
-    {error, total_size_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_inventory_item_context_exception(), tuple()} |
-    {error, unsupported_inventory_schema_version_exception(), tuple()}.
+    {error, put_inventory_errors(), tuple()}.
 put_inventory(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_inventory(Client, Input, []).
@@ -8333,18 +8622,7 @@ put_inventory(Client, Input)
 -spec put_inventory(map(), put_inventory_request(), proplists:proplist()) ->
     {ok, put_inventory_result(), tuple()} |
     {error, any()} |
-    {error, custom_schema_count_limit_exceeded_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_instance_id(), tuple()} |
-    {error, invalid_inventory_item_context_exception(), tuple()} |
-    {error, invalid_item_content_exception(), tuple()} |
-    {error, invalid_type_name_exception(), tuple()} |
-    {error, item_content_mismatch_exception(), tuple()} |
-    {error, item_size_limit_exceeded_exception(), tuple()} |
-    {error, sub_type_count_limit_exceeded_exception(), tuple()} |
-    {error, total_size_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_inventory_item_context_exception(), tuple()} |
-    {error, unsupported_inventory_schema_version_exception(), tuple()}.
+    {error, put_inventory_errors(), tuple()}.
 put_inventory(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutInventory">>, Input, Options).
@@ -8353,21 +8631,7 @@ put_inventory(Client, Input, Options)
 -spec put_parameter(map(), put_parameter_request()) ->
     {ok, put_parameter_result(), tuple()} |
     {error, any()} |
-    {error, hierarchy_level_limit_exceeded_exception(), tuple()} |
-    {error, hierarchy_type_mismatch_exception(), tuple()} |
-    {error, incompatible_policy_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_allowed_pattern_exception(), tuple()} |
-    {error, invalid_key_id(), tuple()} |
-    {error, invalid_policy_attribute_exception(), tuple()} |
-    {error, invalid_policy_type_exception(), tuple()} |
-    {error, parameter_already_exists(), tuple()} |
-    {error, parameter_limit_exceeded(), tuple()} |
-    {error, parameter_max_version_limit_exceeded(), tuple()} |
-    {error, parameter_pattern_mismatch_exception(), tuple()} |
-    {error, policies_limit_exceeded_exception(), tuple()} |
-    {error, too_many_updates(), tuple()} |
-    {error, unsupported_parameter_type(), tuple()}.
+    {error, put_parameter_errors(), tuple()}.
 put_parameter(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_parameter(Client, Input, []).
@@ -8375,21 +8639,7 @@ put_parameter(Client, Input)
 -spec put_parameter(map(), put_parameter_request(), proplists:proplist()) ->
     {ok, put_parameter_result(), tuple()} |
     {error, any()} |
-    {error, hierarchy_level_limit_exceeded_exception(), tuple()} |
-    {error, hierarchy_type_mismatch_exception(), tuple()} |
-    {error, incompatible_policy_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_allowed_pattern_exception(), tuple()} |
-    {error, invalid_key_id(), tuple()} |
-    {error, invalid_policy_attribute_exception(), tuple()} |
-    {error, invalid_policy_type_exception(), tuple()} |
-    {error, parameter_already_exists(), tuple()} |
-    {error, parameter_limit_exceeded(), tuple()} |
-    {error, parameter_max_version_limit_exceeded(), tuple()} |
-    {error, parameter_pattern_mismatch_exception(), tuple()} |
-    {error, policies_limit_exceeded_exception(), tuple()} |
-    {error, too_many_updates(), tuple()} |
-    {error, unsupported_parameter_type(), tuple()}.
+    {error, put_parameter_errors(), tuple()}.
 put_parameter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutParameter">>, Input, Options).
@@ -8451,13 +8701,7 @@ put_parameter(Client, Input, Options)
 -spec put_resource_policy(map(), put_resource_policy_request()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, malformed_resource_policy_document_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_policy_conflict_exception(), tuple()} |
-    {error, resource_policy_invalid_parameter_exception(), tuple()} |
-    {error, resource_policy_limit_exceeded_exception(), tuple()} |
-    {error, resource_policy_not_found_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
@@ -8465,13 +8709,7 @@ put_resource_policy(Client, Input)
 -spec put_resource_policy(map(), put_resource_policy_request(), proplists:proplist()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, malformed_resource_policy_document_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_policy_conflict_exception(), tuple()} |
-    {error, resource_policy_invalid_parameter_exception(), tuple()} |
-    {error, resource_policy_limit_exceeded_exception(), tuple()} |
-    {error, resource_policy_not_found_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResourcePolicy">>, Input, Options).
@@ -8488,9 +8726,7 @@ put_resource_policy(Client, Input, Options)
 -spec register_default_patch_baseline(map(), register_default_patch_baseline_request()) ->
     {ok, register_default_patch_baseline_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_resource_id(), tuple()}.
+    {error, register_default_patch_baseline_errors(), tuple()}.
 register_default_patch_baseline(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_default_patch_baseline(Client, Input, []).
@@ -8498,9 +8734,7 @@ register_default_patch_baseline(Client, Input)
 -spec register_default_patch_baseline(map(), register_default_patch_baseline_request(), proplists:proplist()) ->
     {ok, register_default_patch_baseline_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_resource_id(), tuple()}.
+    {error, register_default_patch_baseline_errors(), tuple()}.
 register_default_patch_baseline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterDefaultPatchBaseline">>, Input, Options).
@@ -8509,11 +8743,7 @@ register_default_patch_baseline(Client, Input, Options)
 -spec register_patch_baseline_for_patch_group(map(), register_patch_baseline_for_patch_group_request()) ->
     {ok, register_patch_baseline_for_patch_group_result(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_resource_id(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()}.
+    {error, register_patch_baseline_for_patch_group_errors(), tuple()}.
 register_patch_baseline_for_patch_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_patch_baseline_for_patch_group(Client, Input, []).
@@ -8521,11 +8751,7 @@ register_patch_baseline_for_patch_group(Client, Input)
 -spec register_patch_baseline_for_patch_group(map(), register_patch_baseline_for_patch_group_request(), proplists:proplist()) ->
     {ok, register_patch_baseline_for_patch_group_result(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_resource_id(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()}.
+    {error, register_patch_baseline_for_patch_group_errors(), tuple()}.
 register_patch_baseline_for_patch_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterPatchBaselineForPatchGroup">>, Input, Options).
@@ -8534,10 +8760,7 @@ register_patch_baseline_for_patch_group(Client, Input, Options)
 -spec register_target_with_maintenance_window(map(), register_target_with_maintenance_window_request()) ->
     {ok, register_target_with_maintenance_window_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()}.
+    {error, register_target_with_maintenance_window_errors(), tuple()}.
 register_target_with_maintenance_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_target_with_maintenance_window(Client, Input, []).
@@ -8545,10 +8768,7 @@ register_target_with_maintenance_window(Client, Input)
 -spec register_target_with_maintenance_window(map(), register_target_with_maintenance_window_request(), proplists:proplist()) ->
     {ok, register_target_with_maintenance_window_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()}.
+    {error, register_target_with_maintenance_window_errors(), tuple()}.
 register_target_with_maintenance_window(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterTargetWithMaintenanceWindow">>, Input, Options).
@@ -8557,11 +8777,7 @@ register_target_with_maintenance_window(Client, Input, Options)
 -spec register_task_with_maintenance_window(map(), register_task_with_maintenance_window_request()) ->
     {ok, register_task_with_maintenance_window_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, feature_not_available_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()}.
+    {error, register_task_with_maintenance_window_errors(), tuple()}.
 register_task_with_maintenance_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_task_with_maintenance_window(Client, Input, []).
@@ -8569,11 +8785,7 @@ register_task_with_maintenance_window(Client, Input)
 -spec register_task_with_maintenance_window(map(), register_task_with_maintenance_window_request(), proplists:proplist()) ->
     {ok, register_task_with_maintenance_window_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, feature_not_available_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()}.
+    {error, register_task_with_maintenance_window_errors(), tuple()}.
 register_task_with_maintenance_window(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterTaskWithMaintenanceWindow">>, Input, Options).
@@ -8582,10 +8794,7 @@ register_task_with_maintenance_window(Client, Input, Options)
 -spec remove_tags_from_resource(map(), remove_tags_from_resource_request()) ->
     {ok, remove_tags_from_resource_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_resource_id(), tuple()} |
-    {error, invalid_resource_type(), tuple()} |
-    {error, too_many_updates(), tuple()}.
+    {error, remove_tags_from_resource_errors(), tuple()}.
 remove_tags_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_resource(Client, Input, []).
@@ -8593,10 +8802,7 @@ remove_tags_from_resource(Client, Input)
 -spec remove_tags_from_resource(map(), remove_tags_from_resource_request(), proplists:proplist()) ->
     {ok, remove_tags_from_resource_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_resource_id(), tuple()} |
-    {error, invalid_resource_type(), tuple()} |
-    {error, too_many_updates(), tuple()}.
+    {error, remove_tags_from_resource_errors(), tuple()}.
 remove_tags_from_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTagsFromResource">>, Input, Options).
@@ -8634,9 +8840,7 @@ remove_tags_from_resource(Client, Input, Options)
 -spec reset_service_setting(map(), reset_service_setting_request()) ->
     {ok, reset_service_setting_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, service_setting_not_found(), tuple()} |
-    {error, too_many_updates(), tuple()}.
+    {error, reset_service_setting_errors(), tuple()}.
 reset_service_setting(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_service_setting(Client, Input, []).
@@ -8644,9 +8848,7 @@ reset_service_setting(Client, Input)
 -spec reset_service_setting(map(), reset_service_setting_request(), proplists:proplist()) ->
     {ok, reset_service_setting_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, service_setting_not_found(), tuple()} |
-    {error, too_many_updates(), tuple()}.
+    {error, reset_service_setting_errors(), tuple()}.
 reset_service_setting(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResetServiceSetting">>, Input, Options).
@@ -8663,8 +8865,7 @@ reset_service_setting(Client, Input, Options)
 -spec resume_session(map(), resume_session_request()) ->
     {ok, resume_session_response(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, resume_session_errors(), tuple()}.
 resume_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     resume_session(Client, Input, []).
@@ -8672,8 +8873,7 @@ resume_session(Client, Input)
 -spec resume_session(map(), resume_session_request(), proplists:proplist()) ->
     {ok, resume_session_response(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, resume_session_errors(), tuple()}.
 resume_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResumeSession">>, Input, Options).
@@ -8684,10 +8884,7 @@ resume_session(Client, Input, Options)
 -spec send_automation_signal(map(), send_automation_signal_request()) ->
     {ok, send_automation_signal_result(), tuple()} |
     {error, any()} |
-    {error, automation_execution_not_found_exception(), tuple()} |
-    {error, automation_step_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_automation_signal_exception(), tuple()}.
+    {error, send_automation_signal_errors(), tuple()}.
 send_automation_signal(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_automation_signal(Client, Input, []).
@@ -8695,10 +8892,7 @@ send_automation_signal(Client, Input)
 -spec send_automation_signal(map(), send_automation_signal_request(), proplists:proplist()) ->
     {ok, send_automation_signal_result(), tuple()} |
     {error, any()} |
-    {error, automation_execution_not_found_exception(), tuple()} |
-    {error, automation_step_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_automation_signal_exception(), tuple()}.
+    {error, send_automation_signal_errors(), tuple()}.
 send_automation_signal(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendAutomationSignal">>, Input, Options).
@@ -8707,17 +8901,7 @@ send_automation_signal(Client, Input, Options)
 -spec send_command(map(), send_command_request()) ->
     {ok, send_command_result(), tuple()} |
     {error, any()} |
-    {error, duplicate_instance_id(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_document_version(), tuple()} |
-    {error, invalid_instance_id(), tuple()} |
-    {error, invalid_notification_config(), tuple()} |
-    {error, invalid_output_folder(), tuple()} |
-    {error, invalid_parameters(), tuple()} |
-    {error, invalid_role(), tuple()} |
-    {error, max_document_size_exceeded(), tuple()} |
-    {error, unsupported_platform_type(), tuple()}.
+    {error, send_command_errors(), tuple()}.
 send_command(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_command(Client, Input, []).
@@ -8725,17 +8909,7 @@ send_command(Client, Input)
 -spec send_command(map(), send_command_request(), proplists:proplist()) ->
     {ok, send_command_result(), tuple()} |
     {error, any()} |
-    {error, duplicate_instance_id(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_document_version(), tuple()} |
-    {error, invalid_instance_id(), tuple()} |
-    {error, invalid_notification_config(), tuple()} |
-    {error, invalid_output_folder(), tuple()} |
-    {error, invalid_parameters(), tuple()} |
-    {error, invalid_role(), tuple()} |
-    {error, max_document_size_exceeded(), tuple()} |
-    {error, unsupported_platform_type(), tuple()}.
+    {error, send_command_errors(), tuple()}.
 send_command(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendCommand">>, Input, Options).
@@ -8747,8 +8921,7 @@ send_command(Client, Input, Options)
 -spec start_associations_once(map(), start_associations_once_request()) ->
     {ok, start_associations_once_result(), tuple()} |
     {error, any()} |
-    {error, association_does_not_exist(), tuple()} |
-    {error, invalid_association(), tuple()}.
+    {error, start_associations_once_errors(), tuple()}.
 start_associations_once(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_associations_once(Client, Input, []).
@@ -8756,8 +8929,7 @@ start_associations_once(Client, Input)
 -spec start_associations_once(map(), start_associations_once_request(), proplists:proplist()) ->
     {ok, start_associations_once_result(), tuple()} |
     {error, any()} |
-    {error, association_does_not_exist(), tuple()} |
-    {error, invalid_association(), tuple()}.
+    {error, start_associations_once_errors(), tuple()}.
 start_associations_once(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartAssociationsOnce">>, Input, Options).
@@ -8766,13 +8938,7 @@ start_associations_once(Client, Input, Options)
 -spec start_automation_execution(map(), start_automation_execution_request()) ->
     {ok, start_automation_execution_result(), tuple()} |
     {error, any()} |
-    {error, automation_definition_not_found_exception(), tuple()} |
-    {error, automation_definition_version_not_found_exception(), tuple()} |
-    {error, automation_execution_limit_exceeded_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_automation_execution_parameters_exception(), tuple()} |
-    {error, invalid_target(), tuple()}.
+    {error, start_automation_execution_errors(), tuple()}.
 start_automation_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_automation_execution(Client, Input, []).
@@ -8780,13 +8946,7 @@ start_automation_execution(Client, Input)
 -spec start_automation_execution(map(), start_automation_execution_request(), proplists:proplist()) ->
     {ok, start_automation_execution_result(), tuple()} |
     {error, any()} |
-    {error, automation_definition_not_found_exception(), tuple()} |
-    {error, automation_definition_version_not_found_exception(), tuple()} |
-    {error, automation_execution_limit_exceeded_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_automation_execution_parameters_exception(), tuple()} |
-    {error, invalid_target(), tuple()}.
+    {error, start_automation_execution_errors(), tuple()}.
 start_automation_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartAutomationExecution">>, Input, Options).
@@ -8800,13 +8960,7 @@ start_automation_execution(Client, Input, Options)
 -spec start_change_request_execution(map(), start_change_request_execution_request()) ->
     {ok, start_change_request_execution_result(), tuple()} |
     {error, any()} |
-    {error, automation_definition_not_approved_exception(), tuple()} |
-    {error, automation_definition_not_found_exception(), tuple()} |
-    {error, automation_definition_version_not_found_exception(), tuple()} |
-    {error, automation_execution_limit_exceeded_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_automation_execution_parameters_exception(), tuple()}.
+    {error, start_change_request_execution_errors(), tuple()}.
 start_change_request_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_change_request_execution(Client, Input, []).
@@ -8814,13 +8968,7 @@ start_change_request_execution(Client, Input)
 -spec start_change_request_execution(map(), start_change_request_execution_request(), proplists:proplist()) ->
     {ok, start_change_request_execution_result(), tuple()} |
     {error, any()} |
-    {error, automation_definition_not_approved_exception(), tuple()} |
-    {error, automation_definition_not_found_exception(), tuple()} |
-    {error, automation_definition_version_not_found_exception(), tuple()} |
-    {error, automation_execution_limit_exceeded_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_automation_execution_parameters_exception(), tuple()}.
+    {error, start_change_request_execution_errors(), tuple()}.
 start_change_request_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartChangeRequestExecution">>, Input, Options).
@@ -8846,9 +8994,7 @@ start_change_request_execution(Client, Input, Options)
 -spec start_session(map(), start_session_request()) ->
     {ok, start_session_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, target_not_connected(), tuple()}.
+    {error, start_session_errors(), tuple()}.
 start_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_session(Client, Input, []).
@@ -8856,9 +9002,7 @@ start_session(Client, Input)
 -spec start_session(map(), start_session_request(), proplists:proplist()) ->
     {ok, start_session_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, target_not_connected(), tuple()}.
+    {error, start_session_errors(), tuple()}.
 start_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartSession">>, Input, Options).
@@ -8867,9 +9011,7 @@ start_session(Client, Input, Options)
 -spec stop_automation_execution(map(), stop_automation_execution_request()) ->
     {ok, stop_automation_execution_result(), tuple()} |
     {error, any()} |
-    {error, automation_execution_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_automation_status_update_exception(), tuple()}.
+    {error, stop_automation_execution_errors(), tuple()}.
 stop_automation_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_automation_execution(Client, Input, []).
@@ -8877,9 +9019,7 @@ stop_automation_execution(Client, Input)
 -spec stop_automation_execution(map(), stop_automation_execution_request(), proplists:proplist()) ->
     {ok, stop_automation_execution_result(), tuple()} |
     {error, any()} |
-    {error, automation_execution_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_automation_status_update_exception(), tuple()}.
+    {error, stop_automation_execution_errors(), tuple()}.
 stop_automation_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopAutomationExecution">>, Input, Options).
@@ -8892,7 +9032,7 @@ stop_automation_execution(Client, Input, Options)
 -spec terminate_session(map(), terminate_session_request()) ->
     {ok, terminate_session_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, terminate_session_errors(), tuple()}.
 terminate_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     terminate_session(Client, Input, []).
@@ -8900,7 +9040,7 @@ terminate_session(Client, Input)
 -spec terminate_session(map(), terminate_session_request(), proplists:proplist()) ->
     {ok, terminate_session_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, terminate_session_errors(), tuple()}.
 terminate_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TerminateSession">>, Input, Options).
@@ -8909,10 +9049,7 @@ terminate_session(Client, Input, Options)
 -spec unlabel_parameter_version(map(), unlabel_parameter_version_request()) ->
     {ok, unlabel_parameter_version_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, parameter_not_found(), tuple()} |
-    {error, parameter_version_not_found(), tuple()} |
-    {error, too_many_updates(), tuple()}.
+    {error, unlabel_parameter_version_errors(), tuple()}.
 unlabel_parameter_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     unlabel_parameter_version(Client, Input, []).
@@ -8920,10 +9057,7 @@ unlabel_parameter_version(Client, Input)
 -spec unlabel_parameter_version(map(), unlabel_parameter_version_request(), proplists:proplist()) ->
     {ok, unlabel_parameter_version_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, parameter_not_found(), tuple()} |
-    {error, parameter_version_not_found(), tuple()} |
-    {error, too_many_updates(), tuple()}.
+    {error, unlabel_parameter_version_errors(), tuple()}.
 unlabel_parameter_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UnlabelParameterVersion">>, Input, Options).
@@ -8963,19 +9097,7 @@ unlabel_parameter_version(Client, Input, Options)
 -spec update_association(map(), update_association_request()) ->
     {ok, update_association_result(), tuple()} |
     {error, any()} |
-    {error, association_does_not_exist(), tuple()} |
-    {error, association_version_limit_exceeded(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_association_version(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_document_version(), tuple()} |
-    {error, invalid_output_location(), tuple()} |
-    {error, invalid_parameters(), tuple()} |
-    {error, invalid_schedule(), tuple()} |
-    {error, invalid_target(), tuple()} |
-    {error, invalid_target_maps(), tuple()} |
-    {error, invalid_update(), tuple()} |
-    {error, too_many_updates(), tuple()}.
+    {error, update_association_errors(), tuple()}.
 update_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_association(Client, Input, []).
@@ -8983,19 +9105,7 @@ update_association(Client, Input)
 -spec update_association(map(), update_association_request(), proplists:proplist()) ->
     {ok, update_association_result(), tuple()} |
     {error, any()} |
-    {error, association_does_not_exist(), tuple()} |
-    {error, association_version_limit_exceeded(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_association_version(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_document_version(), tuple()} |
-    {error, invalid_output_location(), tuple()} |
-    {error, invalid_parameters(), tuple()} |
-    {error, invalid_schedule(), tuple()} |
-    {error, invalid_target(), tuple()} |
-    {error, invalid_target_maps(), tuple()} |
-    {error, invalid_update(), tuple()} |
-    {error, too_many_updates(), tuple()}.
+    {error, update_association_errors(), tuple()}.
 update_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAssociation">>, Input, Options).
@@ -9012,12 +9122,7 @@ update_association(Client, Input, Options)
 -spec update_association_status(map(), update_association_status_request()) ->
     {ok, update_association_status_result(), tuple()} |
     {error, any()} |
-    {error, association_does_not_exist(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_instance_id(), tuple()} |
-    {error, status_unchanged(), tuple()} |
-    {error, too_many_updates(), tuple()}.
+    {error, update_association_status_errors(), tuple()}.
 update_association_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_association_status(Client, Input, []).
@@ -9025,12 +9130,7 @@ update_association_status(Client, Input)
 -spec update_association_status(map(), update_association_status_request(), proplists:proplist()) ->
     {ok, update_association_status_result(), tuple()} |
     {error, any()} |
-    {error, association_does_not_exist(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_instance_id(), tuple()} |
-    {error, status_unchanged(), tuple()} |
-    {error, too_many_updates(), tuple()}.
+    {error, update_association_status_errors(), tuple()}.
 update_association_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAssociationStatus">>, Input, Options).
@@ -9039,16 +9139,7 @@ update_association_status(Client, Input, Options)
 -spec update_document(map(), update_document_request()) ->
     {ok, update_document_result(), tuple()} |
     {error, any()} |
-    {error, document_version_limit_exceeded(), tuple()} |
-    {error, duplicate_document_content(), tuple()} |
-    {error, duplicate_document_version_name(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_document_content(), tuple()} |
-    {error, invalid_document_operation(), tuple()} |
-    {error, invalid_document_schema_version(), tuple()} |
-    {error, invalid_document_version(), tuple()} |
-    {error, max_document_size_exceeded(), tuple()}.
+    {error, update_document_errors(), tuple()}.
 update_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_document(Client, Input, []).
@@ -9056,16 +9147,7 @@ update_document(Client, Input)
 -spec update_document(map(), update_document_request(), proplists:proplist()) ->
     {ok, update_document_result(), tuple()} |
     {error, any()} |
-    {error, document_version_limit_exceeded(), tuple()} |
-    {error, duplicate_document_content(), tuple()} |
-    {error, duplicate_document_version_name(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_document_content(), tuple()} |
-    {error, invalid_document_operation(), tuple()} |
-    {error, invalid_document_schema_version(), tuple()} |
-    {error, invalid_document_version(), tuple()} |
-    {error, max_document_size_exceeded(), tuple()}.
+    {error, update_document_errors(), tuple()}.
 update_document(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDocument">>, Input, Options).
@@ -9080,10 +9162,7 @@ update_document(Client, Input, Options)
 -spec update_document_default_version(map(), update_document_default_version_request()) ->
     {ok, update_document_default_version_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_document_schema_version(), tuple()} |
-    {error, invalid_document_version(), tuple()}.
+    {error, update_document_default_version_errors(), tuple()}.
 update_document_default_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_document_default_version(Client, Input, []).
@@ -9091,10 +9170,7 @@ update_document_default_version(Client, Input)
 -spec update_document_default_version(map(), update_document_default_version_request(), proplists:proplist()) ->
     {ok, update_document_default_version_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_document_schema_version(), tuple()} |
-    {error, invalid_document_version(), tuple()}.
+    {error, update_document_default_version_errors(), tuple()}.
 update_document_default_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDocumentDefaultVersion">>, Input, Options).
@@ -9105,10 +9181,7 @@ update_document_default_version(Client, Input, Options)
 -spec update_document_metadata(map(), update_document_metadata_request()) ->
     {ok, update_document_metadata_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_document_operation(), tuple()} |
-    {error, invalid_document_version(), tuple()}.
+    {error, update_document_metadata_errors(), tuple()}.
 update_document_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_document_metadata(Client, Input, []).
@@ -9116,10 +9189,7 @@ update_document_metadata(Client, Input)
 -spec update_document_metadata(map(), update_document_metadata_request(), proplists:proplist()) ->
     {ok, update_document_metadata_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_document(), tuple()} |
-    {error, invalid_document_operation(), tuple()} |
-    {error, invalid_document_version(), tuple()}.
+    {error, update_document_metadata_errors(), tuple()}.
 update_document_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDocumentMetadata">>, Input, Options).
@@ -9142,8 +9212,7 @@ update_document_metadata(Client, Input, Options)
 -spec update_maintenance_window(map(), update_maintenance_window_request()) ->
     {ok, update_maintenance_window_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, update_maintenance_window_errors(), tuple()}.
 update_maintenance_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_maintenance_window(Client, Input, []).
@@ -9151,8 +9220,7 @@ update_maintenance_window(Client, Input)
 -spec update_maintenance_window(map(), update_maintenance_window_request(), proplists:proplist()) ->
     {ok, update_maintenance_window_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, update_maintenance_window_errors(), tuple()}.
 update_maintenance_window(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMaintenanceWindow">>, Input, Options).
@@ -9180,8 +9248,7 @@ update_maintenance_window(Client, Input, Options)
 -spec update_maintenance_window_target(map(), update_maintenance_window_target_request()) ->
     {ok, update_maintenance_window_target_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, update_maintenance_window_target_errors(), tuple()}.
 update_maintenance_window_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_maintenance_window_target(Client, Input, []).
@@ -9189,8 +9256,7 @@ update_maintenance_window_target(Client, Input)
 -spec update_maintenance_window_target(map(), update_maintenance_window_target_request(), proplists:proplist()) ->
     {ok, update_maintenance_window_target_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, update_maintenance_window_target_errors(), tuple()}.
 update_maintenance_window_target(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMaintenanceWindowTarget">>, Input, Options).
@@ -9246,8 +9312,7 @@ update_maintenance_window_target(Client, Input, Options)
 -spec update_maintenance_window_task(map(), update_maintenance_window_task_request()) ->
     {ok, update_maintenance_window_task_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, update_maintenance_window_task_errors(), tuple()}.
 update_maintenance_window_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_maintenance_window_task(Client, Input, []).
@@ -9255,8 +9320,7 @@ update_maintenance_window_task(Client, Input)
 -spec update_maintenance_window_task(map(), update_maintenance_window_task_request(), proplists:proplist()) ->
     {ok, update_maintenance_window_task_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, update_maintenance_window_task_errors(), tuple()}.
 update_maintenance_window_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMaintenanceWindowTask">>, Input, Options).
@@ -9271,8 +9335,7 @@ update_maintenance_window_task(Client, Input, Options)
 -spec update_managed_instance_role(map(), update_managed_instance_role_request()) ->
     {ok, update_managed_instance_role_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_instance_id(), tuple()}.
+    {error, update_managed_instance_role_errors(), tuple()}.
 update_managed_instance_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_managed_instance_role(Client, Input, []).
@@ -9280,8 +9343,7 @@ update_managed_instance_role(Client, Input)
 -spec update_managed_instance_role(map(), update_managed_instance_role_request(), proplists:proplist()) ->
     {ok, update_managed_instance_role_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_instance_id(), tuple()}.
+    {error, update_managed_instance_role_errors(), tuple()}.
 update_managed_instance_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateManagedInstanceRole">>, Input, Options).
@@ -9305,13 +9367,7 @@ update_managed_instance_role(Client, Input, Options)
 -spec update_ops_item(map(), update_ops_item_request()) ->
     {ok, update_ops_item_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, ops_item_access_denied_exception(), tuple()} |
-    {error, ops_item_already_exists_exception(), tuple()} |
-    {error, ops_item_conflict_exception(), tuple()} |
-    {error, ops_item_invalid_parameter_exception(), tuple()} |
-    {error, ops_item_limit_exceeded_exception(), tuple()} |
-    {error, ops_item_not_found_exception(), tuple()}.
+    {error, update_ops_item_errors(), tuple()}.
 update_ops_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_ops_item(Client, Input, []).
@@ -9319,13 +9375,7 @@ update_ops_item(Client, Input)
 -spec update_ops_item(map(), update_ops_item_request(), proplists:proplist()) ->
     {ok, update_ops_item_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, ops_item_access_denied_exception(), tuple()} |
-    {error, ops_item_already_exists_exception(), tuple()} |
-    {error, ops_item_conflict_exception(), tuple()} |
-    {error, ops_item_invalid_parameter_exception(), tuple()} |
-    {error, ops_item_limit_exceeded_exception(), tuple()} |
-    {error, ops_item_not_found_exception(), tuple()}.
+    {error, update_ops_item_errors(), tuple()}.
 update_ops_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateOpsItem">>, Input, Options).
@@ -9335,11 +9385,7 @@ update_ops_item(Client, Input, Options)
 -spec update_ops_metadata(map(), update_ops_metadata_request()) ->
     {ok, update_ops_metadata_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, ops_metadata_invalid_argument_exception(), tuple()} |
-    {error, ops_metadata_key_limit_exceeded_exception(), tuple()} |
-    {error, ops_metadata_not_found_exception(), tuple()} |
-    {error, ops_metadata_too_many_updates_exception(), tuple()}.
+    {error, update_ops_metadata_errors(), tuple()}.
 update_ops_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_ops_metadata(Client, Input, []).
@@ -9347,11 +9393,7 @@ update_ops_metadata(Client, Input)
 -spec update_ops_metadata(map(), update_ops_metadata_request(), proplists:proplist()) ->
     {ok, update_ops_metadata_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, ops_metadata_invalid_argument_exception(), tuple()} |
-    {error, ops_metadata_key_limit_exceeded_exception(), tuple()} |
-    {error, ops_metadata_not_found_exception(), tuple()} |
-    {error, ops_metadata_too_many_updates_exception(), tuple()}.
+    {error, update_ops_metadata_errors(), tuple()}.
 update_ops_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateOpsMetadata">>, Input, Options).
@@ -9367,8 +9409,7 @@ update_ops_metadata(Client, Input, Options)
 -spec update_patch_baseline(map(), update_patch_baseline_request()) ->
     {ok, update_patch_baseline_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, update_patch_baseline_errors(), tuple()}.
 update_patch_baseline(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_patch_baseline(Client, Input, []).
@@ -9376,8 +9417,7 @@ update_patch_baseline(Client, Input)
 -spec update_patch_baseline(map(), update_patch_baseline_request(), proplists:proplist()) ->
     {ok, update_patch_baseline_result(), tuple()} |
     {error, any()} |
-    {error, does_not_exist_exception(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, update_patch_baseline_errors(), tuple()}.
 update_patch_baseline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePatchBaseline">>, Input, Options).
@@ -9402,10 +9442,7 @@ update_patch_baseline(Client, Input, Options)
 -spec update_resource_data_sync(map(), update_resource_data_sync_request()) ->
     {ok, update_resource_data_sync_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_data_sync_conflict_exception(), tuple()} |
-    {error, resource_data_sync_invalid_configuration_exception(), tuple()} |
-    {error, resource_data_sync_not_found_exception(), tuple()}.
+    {error, update_resource_data_sync_errors(), tuple()}.
 update_resource_data_sync(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_resource_data_sync(Client, Input, []).
@@ -9413,10 +9450,7 @@ update_resource_data_sync(Client, Input)
 -spec update_resource_data_sync(map(), update_resource_data_sync_request(), proplists:proplist()) ->
     {ok, update_resource_data_sync_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_data_sync_conflict_exception(), tuple()} |
-    {error, resource_data_sync_invalid_configuration_exception(), tuple()} |
-    {error, resource_data_sync_not_found_exception(), tuple()}.
+    {error, update_resource_data_sync_errors(), tuple()}.
 update_resource_data_sync(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateResourceDataSync">>, Input, Options).
@@ -9452,9 +9486,7 @@ update_resource_data_sync(Client, Input, Options)
 -spec update_service_setting(map(), update_service_setting_request()) ->
     {ok, update_service_setting_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, service_setting_not_found(), tuple()} |
-    {error, too_many_updates(), tuple()}.
+    {error, update_service_setting_errors(), tuple()}.
 update_service_setting(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service_setting(Client, Input, []).
@@ -9462,9 +9494,7 @@ update_service_setting(Client, Input)
 -spec update_service_setting(map(), update_service_setting_request(), proplists:proplist()) ->
     {ok, update_service_setting_result(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, service_setting_not_found(), tuple()} |
-    {error, too_many_updates(), tuple()}.
+    {error, update_service_setting_errors(), tuple()}.
 update_service_setting(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateServiceSetting">>, Input, Options).

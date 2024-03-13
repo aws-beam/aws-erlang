@@ -1258,6 +1258,346 @@
 %% }
 -type delete_snapshot_response() :: #{binary() => any()}.
 
+-type convert_recovery_point_to_snapshot_errors() ::
+    too_many_tags_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_custom_domain_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_endpoint_access_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_namespace_errors() ::
+    too_many_tags_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type create_scheduled_action_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_snapshot_errors() ::
+    too_many_tags_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_snapshot_copy_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_usage_limit_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_workgroup_errors() ::
+    too_many_tags_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    insufficient_capacity_exception().
+
+-type delete_custom_domain_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_endpoint_access_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_namespace_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_resource_policy_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_scheduled_action_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_snapshot_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_snapshot_copy_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_usage_limit_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_workgroup_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_credentials_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_custom_domain_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_endpoint_access_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_namespace_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_recovery_point_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_resource_policy_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_scheduled_action_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_snapshot_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_table_restore_status_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type get_usage_limit_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_workgroup_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_custom_domain_associations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_pagination_exception().
+
+-type list_endpoint_access_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_namespaces_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_recovery_points_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_scheduled_actions_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    invalid_pagination_exception().
+
+-type list_snapshot_copy_configurations_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    invalid_pagination_exception().
+
+-type list_snapshots_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_table_restore_status_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    invalid_pagination_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_usage_limits_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    invalid_pagination_exception().
+
+-type list_workgroups_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type put_resource_policy_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type restore_from_recovery_point_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type restore_from_snapshot_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type restore_table_from_recovery_point_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type restore_table_from_snapshot_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_custom_domain_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_endpoint_access_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_namespace_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_scheduled_action_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_snapshot_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_snapshot_copy_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_usage_limit_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_workgroup_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    insufficient_capacity_exception().
 
 %%====================================================================
 %% API
@@ -1271,12 +1611,7 @@
 -spec convert_recovery_point_to_snapshot(map(), convert_recovery_point_to_snapshot_request()) ->
     {ok, convert_recovery_point_to_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, convert_recovery_point_to_snapshot_errors(), tuple()}.
 convert_recovery_point_to_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     convert_recovery_point_to_snapshot(Client, Input, []).
@@ -1284,12 +1619,7 @@ convert_recovery_point_to_snapshot(Client, Input)
 -spec convert_recovery_point_to_snapshot(map(), convert_recovery_point_to_snapshot_request(), proplists:proplist()) ->
     {ok, convert_recovery_point_to_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, convert_recovery_point_to_snapshot_errors(), tuple()}.
 convert_recovery_point_to_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ConvertRecoveryPointToSnapshot">>, Input, Options).
@@ -1298,12 +1628,7 @@ convert_recovery_point_to_snapshot(Client, Input, Options)
 -spec create_custom_domain_association(map(), create_custom_domain_association_request()) ->
     {ok, create_custom_domain_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_custom_domain_association_errors(), tuple()}.
 create_custom_domain_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_custom_domain_association(Client, Input, []).
@@ -1311,12 +1636,7 @@ create_custom_domain_association(Client, Input)
 -spec create_custom_domain_association(map(), create_custom_domain_association_request(), proplists:proplist()) ->
     {ok, create_custom_domain_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_custom_domain_association_errors(), tuple()}.
 create_custom_domain_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCustomDomainAssociation">>, Input, Options).
@@ -1325,12 +1645,7 @@ create_custom_domain_association(Client, Input, Options)
 -spec create_endpoint_access(map(), create_endpoint_access_request()) ->
     {ok, create_endpoint_access_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_endpoint_access_errors(), tuple()}.
 create_endpoint_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_endpoint_access(Client, Input, []).
@@ -1338,12 +1653,7 @@ create_endpoint_access(Client, Input)
 -spec create_endpoint_access(map(), create_endpoint_access_request(), proplists:proplist()) ->
     {ok, create_endpoint_access_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_endpoint_access_errors(), tuple()}.
 create_endpoint_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEndpointAccess">>, Input, Options).
@@ -1352,10 +1662,7 @@ create_endpoint_access(Client, Input, Options)
 -spec create_namespace(map(), create_namespace_request()) ->
     {ok, create_namespace_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_namespace_errors(), tuple()}.
 create_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_namespace(Client, Input, []).
@@ -1363,10 +1670,7 @@ create_namespace(Client, Input)
 -spec create_namespace(map(), create_namespace_request(), proplists:proplist()) ->
     {ok, create_namespace_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_namespace_errors(), tuple()}.
 create_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateNamespace">>, Input, Options).
@@ -1379,10 +1683,7 @@ create_namespace(Client, Input, Options)
 -spec create_scheduled_action(map(), create_scheduled_action_request()) ->
     {ok, create_scheduled_action_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_scheduled_action_errors(), tuple()}.
 create_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_scheduled_action(Client, Input, []).
@@ -1390,10 +1691,7 @@ create_scheduled_action(Client, Input)
 -spec create_scheduled_action(map(), create_scheduled_action_request(), proplists:proplist()) ->
     {ok, create_scheduled_action_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_scheduled_action_errors(), tuple()}.
 create_scheduled_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateScheduledAction">>, Input, Options).
@@ -1407,12 +1705,7 @@ create_scheduled_action(Client, Input, Options)
 -spec create_snapshot(map(), create_snapshot_request()) ->
     {ok, create_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_snapshot_errors(), tuple()}.
 create_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot(Client, Input, []).
@@ -1420,12 +1713,7 @@ create_snapshot(Client, Input)
 -spec create_snapshot(map(), create_snapshot_request(), proplists:proplist()) ->
     {ok, create_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_snapshot_errors(), tuple()}.
 create_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSnapshot">>, Input, Options).
@@ -1435,12 +1723,7 @@ create_snapshot(Client, Input, Options)
 -spec create_snapshot_copy_configuration(map(), create_snapshot_copy_configuration_request()) ->
     {ok, create_snapshot_copy_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_snapshot_copy_configuration_errors(), tuple()}.
 create_snapshot_copy_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot_copy_configuration(Client, Input, []).
@@ -1448,12 +1731,7 @@ create_snapshot_copy_configuration(Client, Input)
 -spec create_snapshot_copy_configuration(map(), create_snapshot_copy_configuration_request(), proplists:proplist()) ->
     {ok, create_snapshot_copy_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_snapshot_copy_configuration_errors(), tuple()}.
 create_snapshot_copy_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSnapshotCopyConfiguration">>, Input, Options).
@@ -1465,11 +1743,7 @@ create_snapshot_copy_configuration(Client, Input, Options)
 -spec create_usage_limit(map(), create_usage_limit_request()) ->
     {ok, create_usage_limit_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_usage_limit_errors(), tuple()}.
 create_usage_limit(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_usage_limit(Client, Input, []).
@@ -1477,11 +1751,7 @@ create_usage_limit(Client, Input)
 -spec create_usage_limit(map(), create_usage_limit_request(), proplists:proplist()) ->
     {ok, create_usage_limit_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_usage_limit_errors(), tuple()}.
 create_usage_limit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUsageLimit">>, Input, Options).
@@ -1490,12 +1760,7 @@ create_usage_limit(Client, Input, Options)
 -spec create_workgroup(map(), create_workgroup_request()) ->
     {ok, create_workgroup_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, insufficient_capacity_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_workgroup_errors(), tuple()}.
 create_workgroup(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_workgroup(Client, Input, []).
@@ -1503,12 +1768,7 @@ create_workgroup(Client, Input)
 -spec create_workgroup(map(), create_workgroup_request(), proplists:proplist()) ->
     {ok, create_workgroup_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, insufficient_capacity_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_workgroup_errors(), tuple()}.
 create_workgroup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWorkgroup">>, Input, Options).
@@ -1517,12 +1777,7 @@ create_workgroup(Client, Input, Options)
 -spec delete_custom_domain_association(map(), delete_custom_domain_association_request()) ->
     {ok, delete_custom_domain_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_custom_domain_association_errors(), tuple()}.
 delete_custom_domain_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_custom_domain_association(Client, Input, []).
@@ -1530,12 +1785,7 @@ delete_custom_domain_association(Client, Input)
 -spec delete_custom_domain_association(map(), delete_custom_domain_association_request(), proplists:proplist()) ->
     {ok, delete_custom_domain_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_custom_domain_association_errors(), tuple()}.
 delete_custom_domain_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCustomDomainAssociation">>, Input, Options).
@@ -1544,10 +1794,7 @@ delete_custom_domain_association(Client, Input, Options)
 -spec delete_endpoint_access(map(), delete_endpoint_access_request()) ->
     {ok, delete_endpoint_access_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_endpoint_access_errors(), tuple()}.
 delete_endpoint_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_endpoint_access(Client, Input, []).
@@ -1555,10 +1802,7 @@ delete_endpoint_access(Client, Input)
 -spec delete_endpoint_access(map(), delete_endpoint_access_request(), proplists:proplist()) ->
     {ok, delete_endpoint_access_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_endpoint_access_errors(), tuple()}.
 delete_endpoint_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEndpointAccess">>, Input, Options).
@@ -1570,10 +1814,7 @@ delete_endpoint_access(Client, Input, Options)
 -spec delete_namespace(map(), delete_namespace_request()) ->
     {ok, delete_namespace_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_namespace_errors(), tuple()}.
 delete_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_namespace(Client, Input, []).
@@ -1581,10 +1822,7 @@ delete_namespace(Client, Input)
 -spec delete_namespace(map(), delete_namespace_request(), proplists:proplist()) ->
     {ok, delete_namespace_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_namespace_errors(), tuple()}.
 delete_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteNamespace">>, Input, Options).
@@ -1593,9 +1831,7 @@ delete_namespace(Client, Input, Options)
 -spec delete_resource_policy(map(), delete_resource_policy_request()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
@@ -1603,9 +1839,7 @@ delete_resource_policy(Client, Input)
 -spec delete_resource_policy(map(), delete_resource_policy_request(), proplists:proplist()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourcePolicy">>, Input, Options).
@@ -1614,9 +1848,7 @@ delete_resource_policy(Client, Input, Options)
 -spec delete_scheduled_action(map(), delete_scheduled_action_request()) ->
     {ok, delete_scheduled_action_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_scheduled_action_errors(), tuple()}.
 delete_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_scheduled_action(Client, Input, []).
@@ -1624,9 +1856,7 @@ delete_scheduled_action(Client, Input)
 -spec delete_scheduled_action(map(), delete_scheduled_action_request(), proplists:proplist()) ->
     {ok, delete_scheduled_action_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_scheduled_action_errors(), tuple()}.
 delete_scheduled_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteScheduledAction">>, Input, Options).
@@ -1635,10 +1865,7 @@ delete_scheduled_action(Client, Input, Options)
 -spec delete_snapshot(map(), delete_snapshot_request()) ->
     {ok, delete_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_snapshot_errors(), tuple()}.
 delete_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_snapshot(Client, Input, []).
@@ -1646,10 +1873,7 @@ delete_snapshot(Client, Input)
 -spec delete_snapshot(map(), delete_snapshot_request(), proplists:proplist()) ->
     {ok, delete_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_snapshot_errors(), tuple()}.
 delete_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSnapshot">>, Input, Options).
@@ -1658,11 +1882,7 @@ delete_snapshot(Client, Input, Options)
 -spec delete_snapshot_copy_configuration(map(), delete_snapshot_copy_configuration_request()) ->
     {ok, delete_snapshot_copy_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_snapshot_copy_configuration_errors(), tuple()}.
 delete_snapshot_copy_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_snapshot_copy_configuration(Client, Input, []).
@@ -1670,11 +1890,7 @@ delete_snapshot_copy_configuration(Client, Input)
 -spec delete_snapshot_copy_configuration(map(), delete_snapshot_copy_configuration_request(), proplists:proplist()) ->
     {ok, delete_snapshot_copy_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_snapshot_copy_configuration_errors(), tuple()}.
 delete_snapshot_copy_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSnapshotCopyConfiguration">>, Input, Options).
@@ -1683,10 +1899,7 @@ delete_snapshot_copy_configuration(Client, Input, Options)
 -spec delete_usage_limit(map(), delete_usage_limit_request()) ->
     {ok, delete_usage_limit_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_usage_limit_errors(), tuple()}.
 delete_usage_limit(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_usage_limit(Client, Input, []).
@@ -1694,10 +1907,7 @@ delete_usage_limit(Client, Input)
 -spec delete_usage_limit(map(), delete_usage_limit_request(), proplists:proplist()) ->
     {ok, delete_usage_limit_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_usage_limit_errors(), tuple()}.
 delete_usage_limit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUsageLimit">>, Input, Options).
@@ -1706,10 +1916,7 @@ delete_usage_limit(Client, Input, Options)
 -spec delete_workgroup(map(), delete_workgroup_request()) ->
     {ok, delete_workgroup_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_workgroup_errors(), tuple()}.
 delete_workgroup(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_workgroup(Client, Input, []).
@@ -1717,10 +1924,7 @@ delete_workgroup(Client, Input)
 -spec delete_workgroup(map(), delete_workgroup_request(), proplists:proplist()) ->
     {ok, delete_workgroup_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_workgroup_errors(), tuple()}.
 delete_workgroup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWorkgroup">>, Input, Options).
@@ -1741,9 +1945,7 @@ delete_workgroup(Client, Input, Options)
 -spec get_credentials(map(), get_credentials_request()) ->
     {ok, get_credentials_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_credentials_errors(), tuple()}.
 get_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_credentials(Client, Input, []).
@@ -1751,9 +1953,7 @@ get_credentials(Client, Input)
 -spec get_credentials(map(), get_credentials_request(), proplists:proplist()) ->
     {ok, get_credentials_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_credentials_errors(), tuple()}.
 get_credentials(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCredentials">>, Input, Options).
@@ -1762,12 +1962,7 @@ get_credentials(Client, Input, Options)
 -spec get_custom_domain_association(map(), get_custom_domain_association_request()) ->
     {ok, get_custom_domain_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_custom_domain_association_errors(), tuple()}.
 get_custom_domain_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_custom_domain_association(Client, Input, []).
@@ -1775,12 +1970,7 @@ get_custom_domain_association(Client, Input)
 -spec get_custom_domain_association(map(), get_custom_domain_association_request(), proplists:proplist()) ->
     {ok, get_custom_domain_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_custom_domain_association_errors(), tuple()}.
 get_custom_domain_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCustomDomainAssociation">>, Input, Options).
@@ -1789,10 +1979,7 @@ get_custom_domain_association(Client, Input, Options)
 -spec get_endpoint_access(map(), get_endpoint_access_request()) ->
     {ok, get_endpoint_access_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_endpoint_access_errors(), tuple()}.
 get_endpoint_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_endpoint_access(Client, Input, []).
@@ -1800,10 +1987,7 @@ get_endpoint_access(Client, Input)
 -spec get_endpoint_access(map(), get_endpoint_access_request(), proplists:proplist()) ->
     {ok, get_endpoint_access_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_endpoint_access_errors(), tuple()}.
 get_endpoint_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEndpointAccess">>, Input, Options).
@@ -1812,9 +1996,7 @@ get_endpoint_access(Client, Input, Options)
 -spec get_namespace(map(), get_namespace_request()) ->
     {ok, get_namespace_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_namespace_errors(), tuple()}.
 get_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_namespace(Client, Input, []).
@@ -1822,9 +2004,7 @@ get_namespace(Client, Input)
 -spec get_namespace(map(), get_namespace_request(), proplists:proplist()) ->
     {ok, get_namespace_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_namespace_errors(), tuple()}.
 get_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetNamespace">>, Input, Options).
@@ -1833,10 +2013,7 @@ get_namespace(Client, Input, Options)
 -spec get_recovery_point(map(), get_recovery_point_request()) ->
     {ok, get_recovery_point_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_recovery_point_errors(), tuple()}.
 get_recovery_point(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_recovery_point(Client, Input, []).
@@ -1844,10 +2021,7 @@ get_recovery_point(Client, Input)
 -spec get_recovery_point(map(), get_recovery_point_request(), proplists:proplist()) ->
     {ok, get_recovery_point_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_recovery_point_errors(), tuple()}.
 get_recovery_point(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRecoveryPoint">>, Input, Options).
@@ -1856,9 +2030,7 @@ get_recovery_point(Client, Input, Options)
 -spec get_resource_policy(map(), get_resource_policy_request()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_resource_policy_errors(), tuple()}.
 get_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_policy(Client, Input, []).
@@ -1866,9 +2038,7 @@ get_resource_policy(Client, Input)
 -spec get_resource_policy(map(), get_resource_policy_request(), proplists:proplist()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_resource_policy_errors(), tuple()}.
 get_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourcePolicy">>, Input, Options).
@@ -1877,9 +2047,7 @@ get_resource_policy(Client, Input, Options)
 -spec get_scheduled_action(map(), get_scheduled_action_request()) ->
     {ok, get_scheduled_action_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_scheduled_action_errors(), tuple()}.
 get_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_scheduled_action(Client, Input, []).
@@ -1887,9 +2055,7 @@ get_scheduled_action(Client, Input)
 -spec get_scheduled_action(map(), get_scheduled_action_request(), proplists:proplist()) ->
     {ok, get_scheduled_action_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_scheduled_action_errors(), tuple()}.
 get_scheduled_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetScheduledAction">>, Input, Options).
@@ -1898,9 +2064,7 @@ get_scheduled_action(Client, Input, Options)
 -spec get_snapshot(map(), get_snapshot_request()) ->
     {ok, get_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_snapshot_errors(), tuple()}.
 get_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_snapshot(Client, Input, []).
@@ -1908,9 +2072,7 @@ get_snapshot(Client, Input)
 -spec get_snapshot(map(), get_snapshot_request(), proplists:proplist()) ->
     {ok, get_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_snapshot_errors(), tuple()}.
 get_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSnapshot">>, Input, Options).
@@ -1919,8 +2081,7 @@ get_snapshot(Client, Input, Options)
 -spec get_table_restore_status(map(), get_table_restore_status_request()) ->
     {ok, get_table_restore_status_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_table_restore_status_errors(), tuple()}.
 get_table_restore_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_table_restore_status(Client, Input, []).
@@ -1928,8 +2089,7 @@ get_table_restore_status(Client, Input)
 -spec get_table_restore_status(map(), get_table_restore_status_request(), proplists:proplist()) ->
     {ok, get_table_restore_status_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_table_restore_status_errors(), tuple()}.
 get_table_restore_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTableRestoreStatus">>, Input, Options).
@@ -1938,10 +2098,7 @@ get_table_restore_status(Client, Input, Options)
 -spec get_usage_limit(map(), get_usage_limit_request()) ->
     {ok, get_usage_limit_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_usage_limit_errors(), tuple()}.
 get_usage_limit(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_usage_limit(Client, Input, []).
@@ -1949,10 +2106,7 @@ get_usage_limit(Client, Input)
 -spec get_usage_limit(map(), get_usage_limit_request(), proplists:proplist()) ->
     {ok, get_usage_limit_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_usage_limit_errors(), tuple()}.
 get_usage_limit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUsageLimit">>, Input, Options).
@@ -1961,9 +2115,7 @@ get_usage_limit(Client, Input, Options)
 -spec get_workgroup(map(), get_workgroup_request()) ->
     {ok, get_workgroup_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_workgroup_errors(), tuple()}.
 get_workgroup(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_workgroup(Client, Input, []).
@@ -1971,9 +2123,7 @@ get_workgroup(Client, Input)
 -spec get_workgroup(map(), get_workgroup_request(), proplists:proplist()) ->
     {ok, get_workgroup_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_workgroup_errors(), tuple()}.
 get_workgroup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetWorkgroup">>, Input, Options).
@@ -1982,11 +2132,7 @@ get_workgroup(Client, Input, Options)
 -spec list_custom_domain_associations(map(), list_custom_domain_associations_request()) ->
     {ok, list_custom_domain_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_pagination_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_custom_domain_associations_errors(), tuple()}.
 list_custom_domain_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_custom_domain_associations(Client, Input, []).
@@ -1994,11 +2140,7 @@ list_custom_domain_associations(Client, Input)
 -spec list_custom_domain_associations(map(), list_custom_domain_associations_request(), proplists:proplist()) ->
     {ok, list_custom_domain_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_pagination_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_custom_domain_associations_errors(), tuple()}.
 list_custom_domain_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCustomDomainAssociations">>, Input, Options).
@@ -2008,10 +2150,7 @@ list_custom_domain_associations(Client, Input, Options)
 -spec list_endpoint_access(map(), list_endpoint_access_request()) ->
     {ok, list_endpoint_access_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_endpoint_access_errors(), tuple()}.
 list_endpoint_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_endpoint_access(Client, Input, []).
@@ -2019,10 +2158,7 @@ list_endpoint_access(Client, Input)
 -spec list_endpoint_access(map(), list_endpoint_access_request(), proplists:proplist()) ->
     {ok, list_endpoint_access_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_endpoint_access_errors(), tuple()}.
 list_endpoint_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEndpointAccess">>, Input, Options).
@@ -2031,8 +2167,7 @@ list_endpoint_access(Client, Input, Options)
 -spec list_namespaces(map(), list_namespaces_request()) ->
     {ok, list_namespaces_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_namespaces_errors(), tuple()}.
 list_namespaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_namespaces(Client, Input, []).
@@ -2040,8 +2175,7 @@ list_namespaces(Client, Input)
 -spec list_namespaces(map(), list_namespaces_request(), proplists:proplist()) ->
     {ok, list_namespaces_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_namespaces_errors(), tuple()}.
 list_namespaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListNamespaces">>, Input, Options).
@@ -2050,8 +2184,7 @@ list_namespaces(Client, Input, Options)
 -spec list_recovery_points(map(), list_recovery_points_request()) ->
     {ok, list_recovery_points_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_recovery_points_errors(), tuple()}.
 list_recovery_points(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_recovery_points(Client, Input, []).
@@ -2059,8 +2192,7 @@ list_recovery_points(Client, Input)
 -spec list_recovery_points(map(), list_recovery_points_request(), proplists:proplist()) ->
     {ok, list_recovery_points_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_recovery_points_errors(), tuple()}.
 list_recovery_points(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRecoveryPoints">>, Input, Options).
@@ -2071,10 +2203,7 @@ list_recovery_points(Client, Input, Options)
 -spec list_scheduled_actions(map(), list_scheduled_actions_request()) ->
     {ok, list_scheduled_actions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_pagination_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_scheduled_actions_errors(), tuple()}.
 list_scheduled_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_scheduled_actions(Client, Input, []).
@@ -2082,10 +2211,7 @@ list_scheduled_actions(Client, Input)
 -spec list_scheduled_actions(map(), list_scheduled_actions_request(), proplists:proplist()) ->
     {ok, list_scheduled_actions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_pagination_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_scheduled_actions_errors(), tuple()}.
 list_scheduled_actions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListScheduledActions">>, Input, Options).
@@ -2094,11 +2220,7 @@ list_scheduled_actions(Client, Input, Options)
 -spec list_snapshot_copy_configurations(map(), list_snapshot_copy_configurations_request()) ->
     {ok, list_snapshot_copy_configurations_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_pagination_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_snapshot_copy_configurations_errors(), tuple()}.
 list_snapshot_copy_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_snapshot_copy_configurations(Client, Input, []).
@@ -2106,11 +2228,7 @@ list_snapshot_copy_configurations(Client, Input)
 -spec list_snapshot_copy_configurations(map(), list_snapshot_copy_configurations_request(), proplists:proplist()) ->
     {ok, list_snapshot_copy_configurations_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_pagination_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_snapshot_copy_configurations_errors(), tuple()}.
 list_snapshot_copy_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSnapshotCopyConfigurations">>, Input, Options).
@@ -2119,9 +2237,7 @@ list_snapshot_copy_configurations(Client, Input, Options)
 -spec list_snapshots(map(), list_snapshots_request()) ->
     {ok, list_snapshots_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_snapshots_errors(), tuple()}.
 list_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_snapshots(Client, Input, []).
@@ -2129,9 +2245,7 @@ list_snapshots(Client, Input)
 -spec list_snapshots(map(), list_snapshots_request(), proplists:proplist()) ->
     {ok, list_snapshots_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_snapshots_errors(), tuple()}.
 list_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSnapshots">>, Input, Options).
@@ -2141,9 +2255,7 @@ list_snapshots(Client, Input, Options)
 -spec list_table_restore_status(map(), list_table_restore_status_request()) ->
     {ok, list_table_restore_status_response(), tuple()} |
     {error, any()} |
-    {error, invalid_pagination_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_table_restore_status_errors(), tuple()}.
 list_table_restore_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_table_restore_status(Client, Input, []).
@@ -2151,9 +2263,7 @@ list_table_restore_status(Client, Input)
 -spec list_table_restore_status(map(), list_table_restore_status_request(), proplists:proplist()) ->
     {ok, list_table_restore_status_response(), tuple()} |
     {error, any()} |
-    {error, invalid_pagination_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_table_restore_status_errors(), tuple()}.
 list_table_restore_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTableRestoreStatus">>, Input, Options).
@@ -2162,10 +2272,7 @@ list_table_restore_status(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -2173,10 +2280,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -2185,11 +2289,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec list_usage_limits(map(), list_usage_limits_request()) ->
     {ok, list_usage_limits_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_pagination_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_usage_limits_errors(), tuple()}.
 list_usage_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_usage_limits(Client, Input, []).
@@ -2197,11 +2297,7 @@ list_usage_limits(Client, Input)
 -spec list_usage_limits(map(), list_usage_limits_request(), proplists:proplist()) ->
     {ok, list_usage_limits_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_pagination_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_usage_limits_errors(), tuple()}.
 list_usage_limits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUsageLimits">>, Input, Options).
@@ -2210,8 +2306,7 @@ list_usage_limits(Client, Input, Options)
 -spec list_workgroups(map(), list_workgroups_request()) ->
     {ok, list_workgroups_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_workgroups_errors(), tuple()}.
 list_workgroups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_workgroups(Client, Input, []).
@@ -2219,8 +2314,7 @@ list_workgroups(Client, Input)
 -spec list_workgroups(map(), list_workgroups_request(), proplists:proplist()) ->
     {ok, list_workgroups_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_workgroups_errors(), tuple()}.
 list_workgroups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWorkgroups">>, Input, Options).
@@ -2232,11 +2326,7 @@ list_workgroups(Client, Input, Options)
 -spec put_resource_policy(map(), put_resource_policy_request()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
@@ -2244,11 +2334,7 @@ put_resource_policy(Client, Input)
 -spec put_resource_policy(map(), put_resource_policy_request(), proplists:proplist()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResourcePolicy">>, Input, Options).
@@ -2257,10 +2343,7 @@ put_resource_policy(Client, Input, Options)
 -spec restore_from_recovery_point(map(), restore_from_recovery_point_request()) ->
     {ok, restore_from_recovery_point_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, restore_from_recovery_point_errors(), tuple()}.
 restore_from_recovery_point(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_from_recovery_point(Client, Input, []).
@@ -2268,10 +2351,7 @@ restore_from_recovery_point(Client, Input)
 -spec restore_from_recovery_point(map(), restore_from_recovery_point_request(), proplists:proplist()) ->
     {ok, restore_from_recovery_point_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, restore_from_recovery_point_errors(), tuple()}.
 restore_from_recovery_point(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreFromRecoveryPoint">>, Input, Options).
@@ -2280,11 +2360,7 @@ restore_from_recovery_point(Client, Input, Options)
 -spec restore_from_snapshot(map(), restore_from_snapshot_request()) ->
     {ok, restore_from_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, restore_from_snapshot_errors(), tuple()}.
 restore_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_from_snapshot(Client, Input, []).
@@ -2292,11 +2368,7 @@ restore_from_snapshot(Client, Input)
 -spec restore_from_snapshot(map(), restore_from_snapshot_request(), proplists:proplist()) ->
     {ok, restore_from_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, restore_from_snapshot_errors(), tuple()}.
 restore_from_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreFromSnapshot">>, Input, Options).
@@ -2309,10 +2381,7 @@ restore_from_snapshot(Client, Input, Options)
 -spec restore_table_from_recovery_point(map(), restore_table_from_recovery_point_request()) ->
     {ok, restore_table_from_recovery_point_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, restore_table_from_recovery_point_errors(), tuple()}.
 restore_table_from_recovery_point(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_table_from_recovery_point(Client, Input, []).
@@ -2320,10 +2389,7 @@ restore_table_from_recovery_point(Client, Input)
 -spec restore_table_from_recovery_point(map(), restore_table_from_recovery_point_request(), proplists:proplist()) ->
     {ok, restore_table_from_recovery_point_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, restore_table_from_recovery_point_errors(), tuple()}.
 restore_table_from_recovery_point(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreTableFromRecoveryPoint">>, Input, Options).
@@ -2337,10 +2403,7 @@ restore_table_from_recovery_point(Client, Input, Options)
 -spec restore_table_from_snapshot(map(), restore_table_from_snapshot_request()) ->
     {ok, restore_table_from_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, restore_table_from_snapshot_errors(), tuple()}.
 restore_table_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_table_from_snapshot(Client, Input, []).
@@ -2348,10 +2411,7 @@ restore_table_from_snapshot(Client, Input)
 -spec restore_table_from_snapshot(map(), restore_table_from_snapshot_request(), proplists:proplist()) ->
     {ok, restore_table_from_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, restore_table_from_snapshot_errors(), tuple()}.
 restore_table_from_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreTableFromSnapshot">>, Input, Options).
@@ -2360,11 +2420,7 @@ restore_table_from_snapshot(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -2372,11 +2428,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -2385,10 +2437,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -2396,10 +2445,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -2409,12 +2455,7 @@ untag_resource(Client, Input, Options)
 -spec update_custom_domain_association(map(), update_custom_domain_association_request()) ->
     {ok, update_custom_domain_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_custom_domain_association_errors(), tuple()}.
 update_custom_domain_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_custom_domain_association(Client, Input, []).
@@ -2422,12 +2463,7 @@ update_custom_domain_association(Client, Input)
 -spec update_custom_domain_association(map(), update_custom_domain_association_request(), proplists:proplist()) ->
     {ok, update_custom_domain_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_custom_domain_association_errors(), tuple()}.
 update_custom_domain_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCustomDomainAssociation">>, Input, Options).
@@ -2436,11 +2472,7 @@ update_custom_domain_association(Client, Input, Options)
 -spec update_endpoint_access(map(), update_endpoint_access_request()) ->
     {ok, update_endpoint_access_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_endpoint_access_errors(), tuple()}.
 update_endpoint_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_endpoint_access(Client, Input, []).
@@ -2448,11 +2480,7 @@ update_endpoint_access(Client, Input)
 -spec update_endpoint_access(map(), update_endpoint_access_request(), proplists:proplist()) ->
     {ok, update_endpoint_access_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_endpoint_access_errors(), tuple()}.
 update_endpoint_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEndpointAccess">>, Input, Options).
@@ -2467,10 +2495,7 @@ update_endpoint_access(Client, Input, Options)
 -spec update_namespace(map(), update_namespace_request()) ->
     {ok, update_namespace_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_namespace_errors(), tuple()}.
 update_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_namespace(Client, Input, []).
@@ -2478,10 +2503,7 @@ update_namespace(Client, Input)
 -spec update_namespace(map(), update_namespace_request(), proplists:proplist()) ->
     {ok, update_namespace_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_namespace_errors(), tuple()}.
 update_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateNamespace">>, Input, Options).
@@ -2490,10 +2512,7 @@ update_namespace(Client, Input, Options)
 -spec update_scheduled_action(map(), update_scheduled_action_request()) ->
     {ok, update_scheduled_action_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_scheduled_action_errors(), tuple()}.
 update_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_scheduled_action(Client, Input, []).
@@ -2501,10 +2520,7 @@ update_scheduled_action(Client, Input)
 -spec update_scheduled_action(map(), update_scheduled_action_request(), proplists:proplist()) ->
     {ok, update_scheduled_action_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_scheduled_action_errors(), tuple()}.
 update_scheduled_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateScheduledAction">>, Input, Options).
@@ -2513,10 +2529,7 @@ update_scheduled_action(Client, Input, Options)
 -spec update_snapshot(map(), update_snapshot_request()) ->
     {ok, update_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_snapshot_errors(), tuple()}.
 update_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_snapshot(Client, Input, []).
@@ -2524,10 +2537,7 @@ update_snapshot(Client, Input)
 -spec update_snapshot(map(), update_snapshot_request(), proplists:proplist()) ->
     {ok, update_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_snapshot_errors(), tuple()}.
 update_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSnapshot">>, Input, Options).
@@ -2536,11 +2546,7 @@ update_snapshot(Client, Input, Options)
 -spec update_snapshot_copy_configuration(map(), update_snapshot_copy_configuration_request()) ->
     {ok, update_snapshot_copy_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_snapshot_copy_configuration_errors(), tuple()}.
 update_snapshot_copy_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_snapshot_copy_configuration(Client, Input, []).
@@ -2548,11 +2554,7 @@ update_snapshot_copy_configuration(Client, Input)
 -spec update_snapshot_copy_configuration(map(), update_snapshot_copy_configuration_request(), proplists:proplist()) ->
     {ok, update_snapshot_copy_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_snapshot_copy_configuration_errors(), tuple()}.
 update_snapshot_copy_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSnapshotCopyConfiguration">>, Input, Options).
@@ -2563,10 +2565,7 @@ update_snapshot_copy_configuration(Client, Input, Options)
 -spec update_usage_limit(map(), update_usage_limit_request()) ->
     {ok, update_usage_limit_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_usage_limit_errors(), tuple()}.
 update_usage_limit(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_usage_limit(Client, Input, []).
@@ -2574,10 +2573,7 @@ update_usage_limit(Client, Input)
 -spec update_usage_limit(map(), update_usage_limit_request(), proplists:proplist()) ->
     {ok, update_usage_limit_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_usage_limit_errors(), tuple()}.
 update_usage_limit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUsageLimit">>, Input, Options).
@@ -2590,11 +2586,7 @@ update_usage_limit(Client, Input, Options)
 -spec update_workgroup(map(), update_workgroup_request()) ->
     {ok, update_workgroup_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, insufficient_capacity_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_workgroup_errors(), tuple()}.
 update_workgroup(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_workgroup(Client, Input, []).
@@ -2602,11 +2594,7 @@ update_workgroup(Client, Input)
 -spec update_workgroup(map(), update_workgroup_request(), proplists:proplist()) ->
     {ok, update_workgroup_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, insufficient_capacity_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_workgroup_errors(), tuple()}.
 update_workgroup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateWorkgroup">>, Input, Options).

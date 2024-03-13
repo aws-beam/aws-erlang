@@ -87,18 +87,22 @@
 %%   <<"contactArn">> => string()
 %% }
 -type contact_filter() :: #{binary() => any()}.
+
 %% Example:
 %% get_domain_request() :: #{}
 -type get_domain_request() :: #{}.
+
 %% Example:
 %% delete_domain_response() :: #{}
 -type delete_domain_response() :: #{}.
+
 
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_layout_request() :: #{
@@ -107,12 +111,14 @@
 %% }
 -type update_layout_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_case_audit_events_response() :: #{
 %%   <<"auditEvents">> => list(audit_event()()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_case_audit_events_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_related_items_response() :: #{
@@ -121,12 +127,14 @@
 %% }
 -type search_related_items_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_fields_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_fields_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_cases_request() :: #{
@@ -139,12 +147,14 @@
 %% }
 -type search_cases_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_case_audit_events_request() :: #{
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => string()
 %% }
 -type get_case_audit_events_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_templates_request() :: #{
@@ -153,6 +163,7 @@
 %%   <<"status">> => list(string()())
 %% }
 -type list_templates_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_case_request() :: #{
@@ -163,6 +174,7 @@
 %% }
 -type create_case_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% field_option_error() :: #{
 %%   <<"errorCode">> => [string()],
@@ -171,12 +183,14 @@
 %% }
 -type field_option_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_layouts_response() :: #{
 %%   <<"layouts">> := list(layout_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_layouts_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% domain_summary() :: #{
@@ -185,6 +199,7 @@
 %%   <<"name">> => string()
 %% }
 -type domain_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_template_request() :: #{
@@ -195,6 +210,7 @@
 %%   <<"status">> => string()
 %% }
 -type create_template_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_template_response() :: #{
@@ -209,11 +225,13 @@
 %% }
 -type get_template_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_put_field_options_request() :: #{
 %%   <<"options">> := list(field_option()())
 %% }
 -type batch_put_field_options_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_case_response() :: #{
@@ -221,9 +239,11 @@
 %%   <<"caseId">> := string()
 %% }
 -type create_case_response() :: #{binary() => any()}.
+
 %% Example:
 %% comment_filter() :: #{}
 -type comment_filter() :: #{}.
+
 
 %% Example:
 %% list_field_options_request() :: #{
@@ -233,12 +253,14 @@
 %% }
 -type list_field_options_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_layout_request() :: #{
 %%   <<"content">> := list(),
 %%   <<"name">> := string()
 %% }
 -type create_layout_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_template_request() :: #{
@@ -250,6 +272,7 @@
 %% }
 -type update_template_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_cases_for_contact_response() :: #{
 %%   <<"cases">> := list(case_summary()()),
@@ -257,11 +280,13 @@
 %% }
 -type list_cases_for_contact_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_field_response() :: #{
@@ -269,6 +294,7 @@
 %%   <<"fieldId">> := string()
 %% }
 -type create_field_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_case_response() :: #{
@@ -279,6 +305,7 @@
 %% }
 -type get_case_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% comment_content() :: #{
 %%   <<"body">> => string(),
@@ -286,11 +313,13 @@
 %% }
 -type comment_content() :: #{binary() => any()}.
 
+
 %% Example:
 %% required_field() :: #{
 %%   <<"fieldId">> => string()
 %% }
 -type required_field() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_cases_response_item() :: #{
@@ -301,6 +330,7 @@
 %% }
 -type search_cases_response_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_related_items_request() :: #{
 %%   <<"filters">> => list(list()()),
@@ -308,9 +338,11 @@
 %%   <<"nextToken">> => string()
 %% }
 -type search_related_items_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_domain_request() :: #{}
 -type delete_domain_request() :: #{}.
+
 
 %% Example:
 %% basic_layout() :: #{
@@ -318,18 +350,22 @@
 %%   <<"topPanel">> => layout_sections()
 %% }
 -type basic_layout() :: #{binary() => any()}.
+
 %% Example:
 %% empty_field_value() :: #{}
 -type empty_field_value() :: #{}.
+
 %% Example:
 %% get_case_event_configuration_request() :: #{}
 -type get_case_event_configuration_request() :: #{}.
+
 
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -339,11 +375,13 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_domain_request() :: #{
 %%   <<"name">> := string()
 %% }
 -type create_domain_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_get_field_request() :: #{
@@ -351,11 +389,13 @@
 %% }
 -type batch_get_field_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_case_event_configuration_response() :: #{
 %%   <<"eventBridge">> := event_bridge_configuration()
 %% }
 -type get_case_event_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% audit_event_field() :: #{
@@ -365,6 +405,7 @@
 %% }
 -type audit_event_field() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_case_request() :: #{
 %%   <<"fields">> := list(field_identifier()()),
@@ -372,11 +413,13 @@
 %% }
 -type get_case_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_related_items_response_item() :: #{
@@ -389,15 +432,18 @@
 %% }
 -type search_related_items_response_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_domains_response() :: #{
 %%   <<"domains">> := list(domain_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_domains_response() :: #{binary() => any()}.
+
 %% Example:
 %% update_field_response() :: #{}
 -type update_field_response() :: #{}.
+
 
 %% Example:
 %% template_summary() :: #{
@@ -408,6 +454,7 @@
 %% }
 -type template_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_field_request() :: #{
 %%   <<"description">> => string(),
@@ -416,6 +463,7 @@
 %% }
 -type create_field_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_field_response() :: #{
 %%   <<"errors">> := list(field_error()()),
@@ -423,11 +471,13 @@
 %% }
 -type batch_get_field_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_layout_response() :: #{
@@ -435,9 +485,11 @@
 %%   <<"layoutId">> := string()
 %% }
 -type create_layout_response() :: #{binary() => any()}.
+
 %% Example:
 %% put_case_event_configuration_response() :: #{}
 -type put_case_event_configuration_response() :: #{}.
+
 
 %% Example:
 %% list_fields_response() :: #{
@@ -446,6 +498,7 @@
 %% }
 -type list_fields_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% sort() :: #{
 %%   <<"fieldId">> => string(),
@@ -453,11 +506,13 @@
 %% }
 -type sort() :: #{binary() => any()}.
 
+
 %% Example:
 %% contact() :: #{
 %%   <<"contactArn">> => string()
 %% }
 -type contact() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_related_item_response() :: #{
@@ -465,6 +520,7 @@
 %%   <<"relatedItemId">> := string()
 %% }
 -type create_related_item_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_domain_response() :: #{
@@ -477,11 +533,13 @@
 %% }
 -type get_domain_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% field_item() :: #{
 %%   <<"id">> => string()
 %% }
 -type field_item() :: #{binary() => any()}.
+
 
 %% Example:
 %% field_error() :: #{
@@ -490,6 +548,7 @@
 %%   <<"message">> => [string()]
 %% }
 -type field_error() :: #{binary() => any()}.
+
 
 %% Example:
 %% field_summary() :: #{
@@ -501,15 +560,18 @@
 %% }
 -type field_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_layouts_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_layouts_request() :: #{binary() => any()}.
+
 %% Example:
 %% update_template_response() :: #{}
 -type update_template_response() :: #{}.
+
 
 %% Example:
 %% list_domains_request() :: #{
@@ -518,12 +580,14 @@
 %% }
 -type list_domains_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => [string()],
 %%   <<"retryAfterSeconds">> => [integer()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% event_included_data() :: #{
@@ -532,6 +596,7 @@
 %% }
 -type event_included_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_case_request() :: #{
 %%   <<"fields">> := list(field_value()()),
@@ -539,21 +604,25 @@
 %% }
 -type update_case_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% event_bridge_configuration() :: #{
 %%   <<"enabled">> => [boolean()],
 %%   <<"includedData">> => event_included_data()
 %% }
 -type event_bridge_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% get_layout_request() :: #{}
 -type get_layout_request() :: #{}.
+
 
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% field_value() :: #{
@@ -562,12 +631,14 @@
 %% }
 -type field_value() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_field_request() :: #{
 %%   <<"description">> => string(),
 %%   <<"name">> => string()
 %% }
 -type update_field_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% field_option() :: #{
@@ -577,6 +648,7 @@
 %% }
 -type field_option() :: #{binary() => any()}.
 
+
 %% Example:
 %% layout_summary() :: #{
 %%   <<"layoutArn">> => string(),
@@ -585,6 +657,7 @@
 %% }
 -type layout_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_templates_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -592,35 +665,42 @@
 %% }
 -type list_templates_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_case_event_configuration_request() :: #{
 %%   <<"eventBridge">> := event_bridge_configuration()
 %% }
 -type put_case_event_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% layout_sections() :: #{
 %%   <<"sections">> => list(list()())
 %% }
 -type layout_sections() :: #{binary() => any()}.
+
 %% Example:
 %% get_template_request() :: #{}
 -type get_template_request() :: #{}.
+
 
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_domain_response() :: #{
@@ -629,6 +709,7 @@
 %%   <<"domainStatus">> := string()
 %% }
 -type create_domain_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_layout_response() :: #{
@@ -640,6 +721,7 @@
 %% }
 -type get_layout_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_cases_response() :: #{
 %%   <<"cases">> := list(search_cases_response_item()()),
@@ -647,14 +729,17 @@
 %% }
 -type search_cases_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_put_field_options_response() :: #{
 %%   <<"errors">> => list(field_option_error()())
 %% }
 -type batch_put_field_options_response() :: #{binary() => any()}.
+
 %% Example:
 %% update_case_response() :: #{}
 -type update_case_response() :: #{}.
+
 
 %% Example:
 %% create_template_response() :: #{
@@ -662,9 +747,11 @@
 %%   <<"templateId">> := string()
 %% }
 -type create_template_response() :: #{binary() => any()}.
+
 %% Example:
 %% update_layout_response() :: #{}
 -type update_layout_response() :: #{}.
+
 
 %% Example:
 %% field_identifier() :: #{
@@ -672,12 +759,14 @@
 %% }
 -type field_identifier() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_field_options_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"options">> := list(field_option()())
 %% }
 -type list_field_options_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_cases_for_contact_request() :: #{
@@ -687,6 +776,7 @@
 %% }
 -type list_cases_for_contact_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_related_item_request() :: #{
 %%   <<"content">> := list(),
@@ -694,6 +784,7 @@
 %%   <<"type">> := string()
 %% }
 -type create_related_item_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_field_response() :: #{
@@ -707,6 +798,7 @@
 %% }
 -type get_field_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% case_summary() :: #{
 %%   <<"caseId">> => string(),
@@ -714,12 +806,14 @@
 %% }
 -type case_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% field_group() :: #{
 %%   <<"fields">> => list(field_item()()),
 %%   <<"name">> => [string()]
 %% }
 -type field_group() :: #{binary() => any()}.
+
 
 %% Example:
 %% audit_event() :: #{
@@ -732,11 +826,13 @@
 %% }
 -type audit_event() :: #{binary() => any()}.
 
+
 %% Example:
 %% case_event_included_data() :: #{
 %%   <<"fields">> => list(field_identifier()())
 %% }
 -type case_event_included_data() :: #{binary() => any()}.
+
 
 %% Example:
 %% layout_configuration() :: #{
@@ -744,11 +840,13 @@
 %% }
 -type layout_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% related_item_event_included_data() :: #{
 %%   <<"includeContent">> => [boolean()]
 %% }
 -type related_item_event_included_data() :: #{binary() => any()}.
+
 
 %% Example:
 %% contact_content() :: #{
@@ -758,12 +856,244 @@
 %% }
 -type contact_content() :: #{binary() => any()}.
 
+
 %% Example:
 %% audit_event_performed_by() :: #{
 %%   <<"iamPrincipalArn">> => string(),
 %%   <<"user">> => list()
 %% }
 -type audit_event_performed_by() :: #{binary() => any()}.
+
+-type batch_get_field_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type batch_put_field_options_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type create_case_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_domain_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_field_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_layout_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_related_item_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type create_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_domain_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_case_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_case_audit_events_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_case_event_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_domain_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_layout_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_cases_for_contact_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_domains_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_field_options_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_fields_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_layouts_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_templates_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type put_case_event_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type search_cases_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type search_related_items_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_case_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_field_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_layout_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -774,22 +1104,14 @@
 -spec batch_get_field(map(), binary() | list(), batch_get_field_request()) ->
     {ok, batch_get_field_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_field_errors(), tuple()}.
 batch_get_field(Client, DomainId, Input) ->
     batch_get_field(Client, DomainId, Input, []).
 
 -spec batch_get_field(map(), binary() | list(), batch_get_field_request(), proplists:proplist()) ->
     {ok, batch_get_field_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_field_errors(), tuple()}.
 batch_get_field(Client, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/fields-batch"],
@@ -818,24 +1140,14 @@ batch_get_field(Client, DomainId, Input0, Options0) ->
 -spec batch_put_field_options(map(), binary() | list(), binary() | list(), batch_put_field_options_request()) ->
     {ok, batch_put_field_options_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_put_field_options_errors(), tuple()}.
 batch_put_field_options(Client, DomainId, FieldId, Input) ->
     batch_put_field_options(Client, DomainId, FieldId, Input, []).
 
 -spec batch_put_field_options(map(), binary() | list(), binary() | list(), batch_put_field_options_request(), proplists:proplist()) ->
     {ok, batch_put_field_options_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_put_field_options_errors(), tuple()}.
 batch_put_field_options(Client, DomainId, FieldId, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/fields/", aws_util:encode_uri(FieldId), "/options"],
@@ -882,24 +1194,14 @@ batch_put_field_options(Client, DomainId, FieldId, Input0, Options0) ->
 -spec create_case(map(), binary() | list(), create_case_request()) ->
     {ok, create_case_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_case_errors(), tuple()}.
 create_case(Client, DomainId, Input) ->
     create_case(Client, DomainId, Input, []).
 
 -spec create_case(map(), binary() | list(), create_case_request(), proplists:proplist()) ->
     {ok, create_case_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_case_errors(), tuple()}.
 create_case(Client, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/cases"],
@@ -942,24 +1244,14 @@ create_case(Client, DomainId, Input0, Options0) ->
 -spec create_domain(map(), create_domain_request()) ->
     {ok, create_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_domain_errors(), tuple()}.
 create_domain(Client, Input) ->
     create_domain(Client, Input, []).
 
 -spec create_domain(map(), create_domain_request(), proplists:proplist()) ->
     {ok, create_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_domain_errors(), tuple()}.
 create_domain(Client, Input0, Options0) ->
     Method = post,
     Path = ["/domains"],
@@ -990,26 +1282,14 @@ create_domain(Client, Input0, Options0) ->
 -spec create_field(map(), binary() | list(), create_field_request()) ->
     {ok, create_field_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_field_errors(), tuple()}.
 create_field(Client, DomainId, Input) ->
     create_field(Client, DomainId, Input, []).
 
 -spec create_field(map(), binary() | list(), create_field_request(), proplists:proplist()) ->
     {ok, create_field_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_field_errors(), tuple()}.
 create_field(Client, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/fields"],
@@ -1046,26 +1326,14 @@ create_field(Client, DomainId, Input0, Options0) ->
 -spec create_layout(map(), binary() | list(), create_layout_request()) ->
     {ok, create_layout_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_layout_errors(), tuple()}.
 create_layout(Client, DomainId, Input) ->
     create_layout(Client, DomainId, Input, []).
 
 -spec create_layout(map(), binary() | list(), create_layout_request(), proplists:proplist()) ->
     {ok, create_layout_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_layout_errors(), tuple()}.
 create_layout(Client, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/layouts"],
@@ -1107,24 +1375,14 @@ create_layout(Client, DomainId, Input0, Options0) ->
 -spec create_related_item(map(), binary() | list(), binary() | list(), create_related_item_request()) ->
     {ok, create_related_item_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_related_item_errors(), tuple()}.
 create_related_item(Client, CaseId, DomainId, Input) ->
     create_related_item(Client, CaseId, DomainId, Input, []).
 
 -spec create_related_item(map(), binary() | list(), binary() | list(), create_related_item_request(), proplists:proplist()) ->
     {ok, create_related_item_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_related_item_errors(), tuple()}.
 create_related_item(Client, CaseId, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/cases/", aws_util:encode_uri(CaseId), "/related-items/"],
@@ -1162,26 +1420,14 @@ create_related_item(Client, CaseId, DomainId, Input0, Options0) ->
 -spec create_template(map(), binary() | list(), create_template_request()) ->
     {ok, create_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_template_errors(), tuple()}.
 create_template(Client, DomainId, Input) ->
     create_template(Client, DomainId, Input, []).
 
 -spec create_template(map(), binary() | list(), create_template_request(), proplists:proplist()) ->
     {ok, create_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_template_errors(), tuple()}.
 create_template(Client, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/templates"],
@@ -1214,24 +1460,14 @@ create_template(Client, DomainId, Input0, Options0) ->
 -spec delete_domain(map(), binary() | list(), delete_domain_request()) ->
     {ok, delete_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_domain_errors(), tuple()}.
 delete_domain(Client, DomainId, Input) ->
     delete_domain(Client, DomainId, Input, []).
 
 -spec delete_domain(map(), binary() | list(), delete_domain_request(), proplists:proplist()) ->
     {ok, delete_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_domain_errors(), tuple()}.
 delete_domain(Client, DomainId, Input0, Options0) ->
     Method = delete,
     Path = ["/domains/", aws_util:encode_uri(DomainId), ""],
@@ -1258,22 +1494,14 @@ delete_domain(Client, DomainId, Input0, Options0) ->
 -spec get_case(map(), binary() | list(), binary() | list(), get_case_request()) ->
     {ok, get_case_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_case_errors(), tuple()}.
 get_case(Client, CaseId, DomainId, Input) ->
     get_case(Client, CaseId, DomainId, Input, []).
 
 -spec get_case(map(), binary() | list(), binary() | list(), get_case_request(), proplists:proplist()) ->
     {ok, get_case_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_case_errors(), tuple()}.
 get_case(Client, CaseId, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/cases/", aws_util:encode_uri(CaseId), ""],
@@ -1300,22 +1528,14 @@ get_case(Client, CaseId, DomainId, Input0, Options0) ->
 -spec get_case_audit_events(map(), binary() | list(), binary() | list(), get_case_audit_events_request()) ->
     {ok, get_case_audit_events_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_case_audit_events_errors(), tuple()}.
 get_case_audit_events(Client, CaseId, DomainId, Input) ->
     get_case_audit_events(Client, CaseId, DomainId, Input, []).
 
 -spec get_case_audit_events(map(), binary() | list(), binary() | list(), get_case_audit_events_request(), proplists:proplist()) ->
     {ok, get_case_audit_events_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_case_audit_events_errors(), tuple()}.
 get_case_audit_events(Client, CaseId, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/cases/", aws_util:encode_uri(CaseId), "/audit-history"],
@@ -1342,22 +1562,14 @@ get_case_audit_events(Client, CaseId, DomainId, Input0, Options0) ->
 -spec get_case_event_configuration(map(), binary() | list(), get_case_event_configuration_request()) ->
     {ok, get_case_event_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_case_event_configuration_errors(), tuple()}.
 get_case_event_configuration(Client, DomainId, Input) ->
     get_case_event_configuration(Client, DomainId, Input, []).
 
 -spec get_case_event_configuration(map(), binary() | list(), get_case_event_configuration_request(), proplists:proplist()) ->
     {ok, get_case_event_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_case_event_configuration_errors(), tuple()}.
 get_case_event_configuration(Client, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/case-event-configuration"],
@@ -1384,22 +1596,14 @@ get_case_event_configuration(Client, DomainId, Input0, Options0) ->
 -spec get_domain(map(), binary() | list(), get_domain_request()) ->
     {ok, get_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_domain_errors(), tuple()}.
 get_domain(Client, DomainId, Input) ->
     get_domain(Client, DomainId, Input, []).
 
 -spec get_domain(map(), binary() | list(), get_domain_request(), proplists:proplist()) ->
     {ok, get_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_domain_errors(), tuple()}.
 get_domain(Client, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), ""],
@@ -1426,22 +1630,14 @@ get_domain(Client, DomainId, Input0, Options0) ->
 -spec get_layout(map(), binary() | list(), binary() | list(), get_layout_request()) ->
     {ok, get_layout_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_layout_errors(), tuple()}.
 get_layout(Client, DomainId, LayoutId, Input) ->
     get_layout(Client, DomainId, LayoutId, Input, []).
 
 -spec get_layout(map(), binary() | list(), binary() | list(), get_layout_request(), proplists:proplist()) ->
     {ok, get_layout_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_layout_errors(), tuple()}.
 get_layout(Client, DomainId, LayoutId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/layouts/", aws_util:encode_uri(LayoutId), ""],
@@ -1468,22 +1664,14 @@ get_layout(Client, DomainId, LayoutId, Input0, Options0) ->
 -spec get_template(map(), binary() | list(), binary() | list(), get_template_request()) ->
     {ok, get_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_template_errors(), tuple()}.
 get_template(Client, DomainId, TemplateId, Input) ->
     get_template(Client, DomainId, TemplateId, Input, []).
 
 -spec get_template(map(), binary() | list(), binary() | list(), get_template_request(), proplists:proplist()) ->
     {ok, get_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_template_errors(), tuple()}.
 get_template(Client, DomainId, TemplateId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/templates/", aws_util:encode_uri(TemplateId), ""],
@@ -1510,22 +1698,14 @@ get_template(Client, DomainId, TemplateId, Input0, Options0) ->
 -spec list_cases_for_contact(map(), binary() | list(), list_cases_for_contact_request()) ->
     {ok, list_cases_for_contact_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_cases_for_contact_errors(), tuple()}.
 list_cases_for_contact(Client, DomainId, Input) ->
     list_cases_for_contact(Client, DomainId, Input, []).
 
 -spec list_cases_for_contact(map(), binary() | list(), list_cases_for_contact_request(), proplists:proplist()) ->
     {ok, list_cases_for_contact_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_cases_for_contact_errors(), tuple()}.
 list_cases_for_contact(Client, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/list-cases-for-contact"],
@@ -1555,20 +1735,14 @@ list_cases_for_contact(Client, DomainId, Input0, Options0) ->
 -spec list_domains(map(), list_domains_request()) ->
     {ok, list_domains_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_domains_errors(), tuple()}.
 list_domains(Client, Input) ->
     list_domains(Client, Input, []).
 
 -spec list_domains(map(), list_domains_request(), proplists:proplist()) ->
     {ok, list_domains_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_domains_errors(), tuple()}.
 list_domains(Client, Input0, Options0) ->
     Method = post,
     Path = ["/domains-list"],
@@ -1597,22 +1771,14 @@ list_domains(Client, Input0, Options0) ->
 -spec list_field_options(map(), binary() | list(), binary() | list(), list_field_options_request()) ->
     {ok, list_field_options_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_field_options_errors(), tuple()}.
 list_field_options(Client, DomainId, FieldId, Input) ->
     list_field_options(Client, DomainId, FieldId, Input, []).
 
 -spec list_field_options(map(), binary() | list(), binary() | list(), list_field_options_request(), proplists:proplist()) ->
     {ok, list_field_options_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_field_options_errors(), tuple()}.
 list_field_options(Client, DomainId, FieldId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/fields/", aws_util:encode_uri(FieldId), "/options-list"],
@@ -1642,22 +1808,14 @@ list_field_options(Client, DomainId, FieldId, Input0, Options0) ->
 -spec list_fields(map(), binary() | list(), list_fields_request()) ->
     {ok, list_fields_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_fields_errors(), tuple()}.
 list_fields(Client, DomainId, Input) ->
     list_fields(Client, DomainId, Input, []).
 
 -spec list_fields(map(), binary() | list(), list_fields_request(), proplists:proplist()) ->
     {ok, list_fields_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_fields_errors(), tuple()}.
 list_fields(Client, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/fields-list"],
@@ -1689,22 +1847,14 @@ list_fields(Client, DomainId, Input0, Options0) ->
 -spec list_layouts(map(), binary() | list(), list_layouts_request()) ->
     {ok, list_layouts_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_layouts_errors(), tuple()}.
 list_layouts(Client, DomainId, Input) ->
     list_layouts(Client, DomainId, Input, []).
 
 -spec list_layouts(map(), binary() | list(), list_layouts_request(), proplists:proplist()) ->
     {ok, list_layouts_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_layouts_errors(), tuple()}.
 list_layouts(Client, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/layouts-list"],
@@ -1733,11 +1883,7 @@ list_layouts(Client, DomainId, Input0, Options0) ->
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Arn)
   when is_map(Client) ->
     list_tags_for_resource(Client, Arn, #{}, #{}).
@@ -1745,11 +1891,7 @@ list_tags_for_resource(Client, Arn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, []).
@@ -1757,11 +1899,7 @@ list_tags_for_resource(Client, Arn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(Arn), ""],
@@ -1785,22 +1923,14 @@ list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, Options0)
 -spec list_templates(map(), binary() | list(), list_templates_request()) ->
     {ok, list_templates_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_templates_errors(), tuple()}.
 list_templates(Client, DomainId, Input) ->
     list_templates(Client, DomainId, Input, []).
 
 -spec list_templates(map(), binary() | list(), list_templates_request(), proplists:proplist()) ->
     {ok, list_templates_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_templates_errors(), tuple()}.
 list_templates(Client, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/templates-list"],
@@ -1836,22 +1966,14 @@ list_templates(Client, DomainId, Input0, Options0) ->
 -spec put_case_event_configuration(map(), binary() | list(), put_case_event_configuration_request()) ->
     {ok, put_case_event_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_case_event_configuration_errors(), tuple()}.
 put_case_event_configuration(Client, DomainId, Input) ->
     put_case_event_configuration(Client, DomainId, Input, []).
 
 -spec put_case_event_configuration(map(), binary() | list(), put_case_event_configuration_request(), proplists:proplist()) ->
     {ok, put_case_event_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_case_event_configuration_errors(), tuple()}.
 put_case_event_configuration(Client, DomainId, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/case-event-configuration"],
@@ -1888,22 +2010,14 @@ put_case_event_configuration(Client, DomainId, Input0, Options0) ->
 -spec search_cases(map(), binary() | list(), search_cases_request()) ->
     {ok, search_cases_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_cases_errors(), tuple()}.
 search_cases(Client, DomainId, Input) ->
     search_cases(Client, DomainId, Input, []).
 
 -spec search_cases(map(), binary() | list(), search_cases_request(), proplists:proplist()) ->
     {ok, search_cases_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_cases_errors(), tuple()}.
 search_cases(Client, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/cases-search"],
@@ -1934,22 +2048,14 @@ search_cases(Client, DomainId, Input0, Options0) ->
 -spec search_related_items(map(), binary() | list(), binary() | list(), search_related_items_request()) ->
     {ok, search_related_items_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_related_items_errors(), tuple()}.
 search_related_items(Client, CaseId, DomainId, Input) ->
     search_related_items(Client, CaseId, DomainId, Input, []).
 
 -spec search_related_items(map(), binary() | list(), binary() | list(), search_related_items_request(), proplists:proplist()) ->
     {ok, search_related_items_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_related_items_errors(), tuple()}.
 search_related_items(Client, CaseId, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/cases/", aws_util:encode_uri(CaseId), "/related-items-search"],
@@ -1976,22 +2082,14 @@ search_related_items(Client, CaseId, DomainId, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Arn, Input) ->
     tag_resource(Client, Arn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Arn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(Arn), ""],
@@ -2018,22 +2116,14 @@ tag_resource(Client, Arn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Arn, Input) ->
     untag_resource(Client, Arn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Arn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(Arn), ""],
@@ -2074,22 +2164,14 @@ untag_resource(Client, Arn, Input0, Options0) ->
 -spec update_case(map(), binary() | list(), binary() | list(), update_case_request()) ->
     {ok, update_case_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_case_errors(), tuple()}.
 update_case(Client, CaseId, DomainId, Input) ->
     update_case(Client, CaseId, DomainId, Input, []).
 
 -spec update_case(map(), binary() | list(), binary() | list(), update_case_request(), proplists:proplist()) ->
     {ok, update_case_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_case_errors(), tuple()}.
 update_case(Client, CaseId, DomainId, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/cases/", aws_util:encode_uri(CaseId), ""],
@@ -2116,24 +2198,14 @@ update_case(Client, CaseId, DomainId, Input0, Options0) ->
 -spec update_field(map(), binary() | list(), binary() | list(), update_field_request()) ->
     {ok, update_field_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_field_errors(), tuple()}.
 update_field(Client, DomainId, FieldId, Input) ->
     update_field(Client, DomainId, FieldId, Input, []).
 
 -spec update_field(map(), binary() | list(), binary() | list(), update_field_request(), proplists:proplist()) ->
     {ok, update_field_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_field_errors(), tuple()}.
 update_field(Client, DomainId, FieldId, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/fields/", aws_util:encode_uri(FieldId), ""],
@@ -2170,26 +2242,14 @@ update_field(Client, DomainId, FieldId, Input0, Options0) ->
 -spec update_layout(map(), binary() | list(), binary() | list(), update_layout_request()) ->
     {ok, update_layout_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_layout_errors(), tuple()}.
 update_layout(Client, DomainId, LayoutId, Input) ->
     update_layout(Client, DomainId, LayoutId, Input, []).
 
 -spec update_layout(map(), binary() | list(), binary() | list(), update_layout_request(), proplists:proplist()) ->
     {ok, update_layout_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_layout_errors(), tuple()}.
 update_layout(Client, DomainId, LayoutId, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/layouts/", aws_util:encode_uri(LayoutId), ""],
@@ -2223,24 +2283,14 @@ update_layout(Client, DomainId, LayoutId, Input0, Options0) ->
 -spec update_template(map(), binary() | list(), binary() | list(), update_template_request()) ->
     {ok, update_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_template_errors(), tuple()}.
 update_template(Client, DomainId, TemplateId, Input) ->
     update_template(Client, DomainId, TemplateId, Input, []).
 
 -spec update_template(map(), binary() | list(), binary() | list(), update_template_request(), proplists:proplist()) ->
     {ok, update_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_template_errors(), tuple()}.
 update_template(Client, DomainId, TemplateId, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/templates/", aws_util:encode_uri(TemplateId), ""],

@@ -101,6 +101,7 @@
 %% }
 -type list_workflow_steps_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_workflow_steps_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -108,11 +109,13 @@
 %% }
 -type list_workflow_steps_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_workflow_step_request() :: #{
@@ -129,6 +132,7 @@
 %% }
 -type create_workflow_step_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% stop_migration_workflow_response() :: #{
 %%   <<"arn">> => [string()],
@@ -138,6 +142,7 @@
 %%   <<"statusMessage">> => [string()]
 %% }
 -type stop_migration_workflow_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_migration_workflow_request() :: #{
@@ -150,12 +155,15 @@
 %%   <<"templateId">> := [string()]
 %% }
 -type create_migration_workflow_request() :: #{binary() => any()}.
+
 %% Example:
 %% start_migration_workflow_request() :: #{}
 -type start_migration_workflow_request() :: #{}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% update_workflow_step_group_request() :: #{
@@ -167,6 +175,7 @@
 %% }
 -type update_workflow_step_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_template_request() :: #{
 %%   <<"clientToken">> => string(),
@@ -177,6 +186,7 @@
 %% }
 -type create_template_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% step_output() :: #{
 %%   <<"dataType">> => string(),
@@ -184,6 +194,7 @@
 %%   <<"required">> => [boolean()]
 %% }
 -type step_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% migration_workflow_summary() :: #{
@@ -199,6 +210,7 @@
 %%   <<"totalSteps">> => [integer()]
 %% }
 -type migration_workflow_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_workflow_step_request() :: #{
@@ -216,6 +228,7 @@
 %% }
 -type update_workflow_step_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_migration_workflow_request() :: #{
 %%   <<"description">> => [string()],
@@ -225,12 +238,14 @@
 %% }
 -type update_migration_workflow_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_migration_workflows_response() :: #{
 %%   <<"migrationWorkflowSummary">> := list(migration_workflow_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_migration_workflows_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_template_request() :: #{
@@ -240,11 +255,13 @@
 %% }
 -type update_template_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_workflow_step_group_request() :: #{
 %%   <<"workflowId">> := string()
 %% }
 -type get_workflow_step_group_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% plugin_summary() :: #{
@@ -257,11 +274,13 @@
 %% }
 -type plugin_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% platform_command() :: #{
@@ -269,6 +288,7 @@
 %%   <<"windows">> => [string()]
 %% }
 -type platform_command() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_workflow_step_response() :: #{
@@ -296,6 +316,7 @@
 %% }
 -type get_workflow_step_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_workflow_step_request() :: #{
 %%   <<"stepGroupId">> := string(),
@@ -303,12 +324,14 @@
 %% }
 -type get_workflow_step_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_template_step_request() :: #{
 %%   <<"stepGroupId">> := string(),
 %%   <<"templateId">> := string()
 %% }
 -type get_template_step_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_migration_workflow_template_response() :: #{
@@ -327,6 +350,7 @@
 %% }
 -type get_migration_workflow_template_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_migration_workflow_response() :: #{
 %%   <<"arn">> => [string()],
@@ -334,9 +358,11 @@
 %%   <<"status">> => string()
 %% }
 -type delete_migration_workflow_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_template_request() :: #{}
 -type delete_template_request() :: #{}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -344,11 +370,13 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_migration_workflow_response() :: #{
@@ -359,6 +387,7 @@
 %%   <<"statusMessage">> => [string()]
 %% }
 -type start_migration_workflow_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_migration_workflow_response() :: #{
@@ -376,6 +405,7 @@
 %% }
 -type create_migration_workflow_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% template_step_group_summary() :: #{
 %%   <<"id">> => [string()],
@@ -385,6 +415,7 @@
 %% }
 -type template_step_group_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% template_summary() :: #{
 %%   <<"arn">> => [string()],
@@ -393,6 +424,7 @@
 %%   <<"name">> => [string()]
 %% }
 -type template_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_workflow_step_group_request() :: #{
@@ -404,6 +436,7 @@
 %% }
 -type create_workflow_step_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% step_automation_configuration() :: #{
 %%   <<"command">> => platform_command(),
@@ -413,6 +446,7 @@
 %%   <<"targetType">> => string()
 %% }
 -type step_automation_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_template_step_group_response() :: #{
@@ -428,6 +462,7 @@
 %%   <<"tools">> => list(tool()())
 %% }
 -type get_template_step_group_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_migration_workflow_response() :: #{
@@ -453,9 +488,11 @@
 %%   <<"workflowInputs">> => map()
 %% }
 -type get_migration_workflow_response() :: #{binary() => any()}.
+
 %% Example:
 %% stop_migration_workflow_request() :: #{}
 -type stop_migration_workflow_request() :: #{}.
+
 
 %% Example:
 %% platform_script_key() :: #{
@@ -464,11 +501,13 @@
 %% }
 -type platform_script_key() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_plugins_response() :: #{
@@ -476,6 +515,7 @@
 %%   <<"plugins">> => list(plugin_summary()())
 %% }
 -type list_plugins_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% workflow_step_summary() :: #{
@@ -495,6 +535,7 @@
 %% }
 -type workflow_step_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% workflow_step_group_summary() :: #{
 %%   <<"id">> => [string()],
@@ -505,9 +546,11 @@
 %%   <<"status">> => string()
 %% }
 -type workflow_step_group_summary() :: #{binary() => any()}.
+
 %% Example:
 %% delete_migration_workflow_request() :: #{}
 -type delete_migration_workflow_request() :: #{}.
+
 
 %% Example:
 %% list_plugins_request() :: #{
@@ -515,6 +558,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_plugins_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% retry_workflow_step_response() :: #{
@@ -525,6 +569,7 @@
 %% }
 -type retry_workflow_step_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_template_response() :: #{
 %%   <<"tags">> => map(),
@@ -533,11 +578,13 @@
 %% }
 -type update_template_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% template_input() :: #{
@@ -547,12 +594,14 @@
 %% }
 -type template_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_workflow_step_request() :: #{
 %%   <<"stepGroupId">> := string(),
 %%   <<"workflowId">> := string()
 %% }
 -type delete_workflow_step_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_workflow_step_group_response() :: #{
@@ -566,6 +615,7 @@
 %%   <<"workflowId">> => [string()]
 %% }
 -type create_workflow_step_group_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_migration_workflow_response() :: #{
@@ -584,11 +634,13 @@
 %% }
 -type update_migration_workflow_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% workflow_step_output() :: #{
@@ -599,21 +651,26 @@
 %% }
 -type workflow_step_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% retry_workflow_step_request() :: #{
 %%   <<"stepGroupId">> := string(),
 %%   <<"workflowId">> := string()
 %% }
 -type retry_workflow_step_request() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 %% Example:
 %% get_migration_workflow_template_request() :: #{}
 -type get_migration_workflow_template_request() :: #{}.
+
 %% Example:
 %% delete_workflow_step_response() :: #{}
 -type delete_workflow_step_response() :: #{}.
+
 
 %% Example:
 %% list_workflow_step_groups_response() :: #{
@@ -621,6 +678,7 @@
 %%   <<"workflowStepGroupsSummary">> := list(workflow_step_group_summary()())
 %% }
 -type list_workflow_step_groups_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_workflow_step_response() :: #{
@@ -630,6 +688,7 @@
 %%   <<"workflowId">> => [string()]
 %% }
 -type create_workflow_step_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_workflow_step_group_response() :: #{
@@ -644,6 +703,7 @@
 %% }
 -type update_workflow_step_group_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_template_step_groups_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -651,23 +711,28 @@
 %% }
 -type list_template_step_groups_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 %% Example:
 %% get_migration_workflow_request() :: #{}
 -type get_migration_workflow_request() :: #{}.
+
 
 %% Example:
 %% template_step_summary() :: #{
@@ -683,6 +748,7 @@
 %% }
 -type template_step_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_workflow_step_groups_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -690,6 +756,7 @@
 %%   <<"workflowId">> := string()
 %% }
 -type list_workflow_step_groups_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_template_steps_request() :: #{
@@ -700,6 +767,7 @@
 %% }
 -type list_template_steps_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_workflow_step_response() :: #{
 %%   <<"id">> => string(),
@@ -709,6 +777,7 @@
 %% }
 -type update_workflow_step_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_template_response() :: #{
 %%   <<"tags">> => map(),
@@ -716,6 +785,7 @@
 %%   <<"templateId">> => [string()]
 %% }
 -type create_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_workflow_step_group_response() :: #{
@@ -733,9 +803,11 @@
 %%   <<"workflowId">> => [string()]
 %% }
 -type get_workflow_step_group_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_template_response() :: #{}
 -type delete_template_response() :: #{}.
+
 
 %% Example:
 %% get_template_step_response() :: #{
@@ -753,6 +825,7 @@
 %% }
 -type get_template_step_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_migration_workflow_templates_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -760,9 +833,11 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_migration_workflow_templates_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_template_step_group_request() :: #{}
 -type get_template_step_group_request() :: #{}.
+
 
 %% Example:
 %% workflow_step_automation_configuration() :: #{
@@ -774,12 +849,14 @@
 %% }
 -type workflow_step_automation_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_migration_workflow_templates_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"templateSummary">> := list(template_summary()())
 %% }
 -type list_migration_workflow_templates_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_template_steps_response() :: #{
@@ -788,6 +865,7 @@
 %% }
 -type list_template_steps_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% tool() :: #{
 %%   <<"name">> => [string()],
@@ -795,21 +873,25 @@
 %% }
 -type tool() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_template_step_groups_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"templateStepGroupSummary">> := list(template_step_group_summary()())
 %% }
 -type list_template_step_groups_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_workflow_step_group_response() :: #{}
 -type delete_workflow_step_group_response() :: #{}.
+
 
 %% Example:
 %% delete_workflow_step_group_request() :: #{
 %%   <<"workflowId">> := string()
 %% }
 -type delete_workflow_step_group_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_migration_workflows_request() :: #{
@@ -822,6 +904,201 @@
 %% }
 -type list_migration_workflows_request() :: #{binary() => any()}.
 
+-type create_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type create_workflow_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type create_workflow_step_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type create_workflow_step_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type delete_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_workflow_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_workflow_step_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_workflow_step_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_template_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_template_step_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_template_step_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_workflow_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_workflow_step_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_workflow_step_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_plugins_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type list_template_step_groups_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_template_steps_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_templates_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_workflow_step_groups_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_workflow_steps_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_workflows_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type retry_workflow_step_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type start_workflow_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type stop_workflow_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type update_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_workflow_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_workflow_step_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type update_workflow_step_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -830,22 +1107,14 @@
 -spec create_template(map(), create_template_request()) ->
     {ok, create_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_template_errors(), tuple()}.
 create_template(Client, Input) ->
     create_template(Client, Input, []).
 
 -spec create_template(map(), create_template_request(), proplists:proplist()) ->
     {ok, create_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_template_errors(), tuple()}.
 create_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/template"],
@@ -872,20 +1141,14 @@ create_template(Client, Input0, Options0) ->
 -spec create_workflow(map(), create_migration_workflow_request()) ->
     {ok, create_migration_workflow_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_workflow_errors(), tuple()}.
 create_workflow(Client, Input) ->
     create_workflow(Client, Input, []).
 
 -spec create_workflow(map(), create_migration_workflow_request(), proplists:proplist()) ->
     {ok, create_migration_workflow_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_workflow_errors(), tuple()}.
 create_workflow(Client, Input0, Options0) ->
     Method = post,
     Path = ["/migrationworkflow/"],
@@ -912,20 +1175,14 @@ create_workflow(Client, Input0, Options0) ->
 -spec create_workflow_step(map(), create_workflow_step_request()) ->
     {ok, create_workflow_step_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_workflow_step_errors(), tuple()}.
 create_workflow_step(Client, Input) ->
     create_workflow_step(Client, Input, []).
 
 -spec create_workflow_step(map(), create_workflow_step_request(), proplists:proplist()) ->
     {ok, create_workflow_step_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_workflow_step_errors(), tuple()}.
 create_workflow_step(Client, Input0, Options0) ->
     Method = post,
     Path = ["/workflowstep"],
@@ -952,20 +1209,14 @@ create_workflow_step(Client, Input0, Options0) ->
 -spec create_workflow_step_group(map(), create_workflow_step_group_request()) ->
     {ok, create_workflow_step_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_workflow_step_group_errors(), tuple()}.
 create_workflow_step_group(Client, Input) ->
     create_workflow_step_group(Client, Input, []).
 
 -spec create_workflow_step_group(map(), create_workflow_step_group_request(), proplists:proplist()) ->
     {ok, create_workflow_step_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_workflow_step_group_errors(), tuple()}.
 create_workflow_step_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/workflowstepgroups"],
@@ -992,22 +1243,14 @@ create_workflow_step_group(Client, Input0, Options0) ->
 -spec delete_template(map(), binary() | list(), delete_template_request()) ->
     {ok, delete_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_template_errors(), tuple()}.
 delete_template(Client, Id, Input) ->
     delete_template(Client, Id, Input, []).
 
 -spec delete_template(map(), binary() | list(), delete_template_request(), proplists:proplist()) ->
     {ok, delete_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_template_errors(), tuple()}.
 delete_template(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/template/", aws_util:encode_uri(Id), ""],
@@ -1037,22 +1280,14 @@ delete_template(Client, Id, Input0, Options0) ->
 -spec delete_workflow(map(), binary() | list(), delete_migration_workflow_request()) ->
     {ok, delete_migration_workflow_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_workflow_errors(), tuple()}.
 delete_workflow(Client, Id, Input) ->
     delete_workflow(Client, Id, Input, []).
 
 -spec delete_workflow(map(), binary() | list(), delete_migration_workflow_request(), proplists:proplist()) ->
     {ok, delete_migration_workflow_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_workflow_errors(), tuple()}.
 delete_workflow(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/migrationworkflow/", aws_util:encode_uri(Id), ""],
@@ -1082,22 +1317,14 @@ delete_workflow(Client, Id, Input0, Options0) ->
 -spec delete_workflow_step(map(), binary() | list(), delete_workflow_step_request()) ->
     {ok, delete_workflow_step_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_workflow_step_errors(), tuple()}.
 delete_workflow_step(Client, Id, Input) ->
     delete_workflow_step(Client, Id, Input, []).
 
 -spec delete_workflow_step(map(), binary() | list(), delete_workflow_step_request(), proplists:proplist()) ->
     {ok, delete_workflow_step_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_workflow_step_errors(), tuple()}.
 delete_workflow_step(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/workflowstep/", aws_util:encode_uri(Id), ""],
@@ -1126,22 +1353,14 @@ delete_workflow_step(Client, Id, Input0, Options0) ->
 -spec delete_workflow_step_group(map(), binary() | list(), delete_workflow_step_group_request()) ->
     {ok, delete_workflow_step_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_workflow_step_group_errors(), tuple()}.
 delete_workflow_step_group(Client, Id, Input) ->
     delete_workflow_step_group(Client, Id, Input, []).
 
 -spec delete_workflow_step_group(map(), binary() | list(), delete_workflow_step_group_request(), proplists:proplist()) ->
     {ok, delete_workflow_step_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_workflow_step_group_errors(), tuple()}.
 delete_workflow_step_group(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/workflowstepgroup/", aws_util:encode_uri(Id), ""],
@@ -1169,10 +1388,7 @@ delete_workflow_step_group(Client, Id, Input0, Options0) ->
 -spec get_template(map(), binary() | list()) ->
     {ok, get_migration_workflow_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_template_errors(), tuple()}.
 get_template(Client, Id)
   when is_map(Client) ->
     get_template(Client, Id, #{}, #{}).
@@ -1180,10 +1396,7 @@ get_template(Client, Id)
 -spec get_template(map(), binary() | list(), map(), map()) ->
     {ok, get_migration_workflow_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_template_errors(), tuple()}.
 get_template(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_template(Client, Id, QueryMap, HeadersMap, []).
@@ -1191,10 +1404,7 @@ get_template(Client, Id, QueryMap, HeadersMap)
 -spec get_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_migration_workflow_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_template_errors(), tuple()}.
 get_template(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/migrationworkflowtemplate/", aws_util:encode_uri(Id), ""],
@@ -1215,11 +1425,7 @@ get_template(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_template_step(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_template_step_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_template_step_errors(), tuple()}.
 get_template_step(Client, Id, StepGroupId, TemplateId)
   when is_map(Client) ->
     get_template_step(Client, Id, StepGroupId, TemplateId, #{}, #{}).
@@ -1227,11 +1433,7 @@ get_template_step(Client, Id, StepGroupId, TemplateId)
 -spec get_template_step(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_template_step_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_template_step_errors(), tuple()}.
 get_template_step(Client, Id, StepGroupId, TemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_template_step(Client, Id, StepGroupId, TemplateId, QueryMap, HeadersMap, []).
@@ -1239,11 +1441,7 @@ get_template_step(Client, Id, StepGroupId, TemplateId, QueryMap, HeadersMap)
 -spec get_template_step(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_template_step_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_template_step_errors(), tuple()}.
 get_template_step(Client, Id, StepGroupId, TemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/templatestep/", aws_util:encode_uri(Id), ""],
@@ -1269,11 +1467,7 @@ get_template_step(Client, Id, StepGroupId, TemplateId, QueryMap, HeadersMap, Opt
 -spec get_template_step_group(map(), binary() | list(), binary() | list()) ->
     {ok, get_template_step_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_template_step_group_errors(), tuple()}.
 get_template_step_group(Client, Id, TemplateId)
   when is_map(Client) ->
     get_template_step_group(Client, Id, TemplateId, #{}, #{}).
@@ -1281,11 +1475,7 @@ get_template_step_group(Client, Id, TemplateId)
 -spec get_template_step_group(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_template_step_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_template_step_group_errors(), tuple()}.
 get_template_step_group(Client, Id, TemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_template_step_group(Client, Id, TemplateId, QueryMap, HeadersMap, []).
@@ -1293,11 +1483,7 @@ get_template_step_group(Client, Id, TemplateId, QueryMap, HeadersMap)
 -spec get_template_step_group(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_template_step_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_template_step_group_errors(), tuple()}.
 get_template_step_group(Client, Id, TemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/templates/", aws_util:encode_uri(TemplateId), "/stepgroups/", aws_util:encode_uri(Id), ""],
@@ -1318,11 +1504,7 @@ get_template_step_group(Client, Id, TemplateId, QueryMap, HeadersMap, Options0)
 -spec get_workflow(map(), binary() | list()) ->
     {ok, get_migration_workflow_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_workflow_errors(), tuple()}.
 get_workflow(Client, Id)
   when is_map(Client) ->
     get_workflow(Client, Id, #{}, #{}).
@@ -1330,11 +1512,7 @@ get_workflow(Client, Id)
 -spec get_workflow(map(), binary() | list(), map(), map()) ->
     {ok, get_migration_workflow_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_workflow_errors(), tuple()}.
 get_workflow(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_workflow(Client, Id, QueryMap, HeadersMap, []).
@@ -1342,11 +1520,7 @@ get_workflow(Client, Id, QueryMap, HeadersMap)
 -spec get_workflow(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_migration_workflow_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_workflow_errors(), tuple()}.
 get_workflow(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/migrationworkflow/", aws_util:encode_uri(Id), ""],
@@ -1367,10 +1541,7 @@ get_workflow(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_workflow_step(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_workflow_step_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_workflow_step_errors(), tuple()}.
 get_workflow_step(Client, Id, StepGroupId, WorkflowId)
   when is_map(Client) ->
     get_workflow_step(Client, Id, StepGroupId, WorkflowId, #{}, #{}).
@@ -1378,10 +1549,7 @@ get_workflow_step(Client, Id, StepGroupId, WorkflowId)
 -spec get_workflow_step(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_workflow_step_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_workflow_step_errors(), tuple()}.
 get_workflow_step(Client, Id, StepGroupId, WorkflowId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_workflow_step(Client, Id, StepGroupId, WorkflowId, QueryMap, HeadersMap, []).
@@ -1389,10 +1557,7 @@ get_workflow_step(Client, Id, StepGroupId, WorkflowId, QueryMap, HeadersMap)
 -spec get_workflow_step(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_workflow_step_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_workflow_step_errors(), tuple()}.
 get_workflow_step(Client, Id, StepGroupId, WorkflowId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workflowstep/", aws_util:encode_uri(Id), ""],
@@ -1418,11 +1583,7 @@ get_workflow_step(Client, Id, StepGroupId, WorkflowId, QueryMap, HeadersMap, Opt
 -spec get_workflow_step_group(map(), binary() | list(), binary() | list()) ->
     {ok, get_workflow_step_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_workflow_step_group_errors(), tuple()}.
 get_workflow_step_group(Client, Id, WorkflowId)
   when is_map(Client) ->
     get_workflow_step_group(Client, Id, WorkflowId, #{}, #{}).
@@ -1430,11 +1591,7 @@ get_workflow_step_group(Client, Id, WorkflowId)
 -spec get_workflow_step_group(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_workflow_step_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_workflow_step_group_errors(), tuple()}.
 get_workflow_step_group(Client, Id, WorkflowId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_workflow_step_group(Client, Id, WorkflowId, QueryMap, HeadersMap, []).
@@ -1442,11 +1599,7 @@ get_workflow_step_group(Client, Id, WorkflowId, QueryMap, HeadersMap)
 -spec get_workflow_step_group(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_workflow_step_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_workflow_step_group_errors(), tuple()}.
 get_workflow_step_group(Client, Id, WorkflowId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workflowstepgroup/", aws_util:encode_uri(Id), ""],
@@ -1471,9 +1624,7 @@ get_workflow_step_group(Client, Id, WorkflowId, QueryMap, HeadersMap, Options0)
 -spec list_plugins(map()) ->
     {ok, list_plugins_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_plugins_errors(), tuple()}.
 list_plugins(Client)
   when is_map(Client) ->
     list_plugins(Client, #{}, #{}).
@@ -1481,9 +1632,7 @@ list_plugins(Client)
 -spec list_plugins(map(), map(), map()) ->
     {ok, list_plugins_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_plugins_errors(), tuple()}.
 list_plugins(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_plugins(Client, QueryMap, HeadersMap, []).
@@ -1491,9 +1640,7 @@ list_plugins(Client, QueryMap, HeadersMap)
 -spec list_plugins(map(), map(), map(), proplists:proplist()) ->
     {ok, list_plugins_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_plugins_errors(), tuple()}.
 list_plugins(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/plugins"],
@@ -1519,8 +1666,7 @@ list_plugins(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1528,8 +1674,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1537,8 +1682,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1559,10 +1703,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec list_template_step_groups(map(), binary() | list()) ->
     {ok, list_template_step_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_template_step_groups_errors(), tuple()}.
 list_template_step_groups(Client, TemplateId)
   when is_map(Client) ->
     list_template_step_groups(Client, TemplateId, #{}, #{}).
@@ -1570,10 +1711,7 @@ list_template_step_groups(Client, TemplateId)
 -spec list_template_step_groups(map(), binary() | list(), map(), map()) ->
     {ok, list_template_step_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_template_step_groups_errors(), tuple()}.
 list_template_step_groups(Client, TemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_template_step_groups(Client, TemplateId, QueryMap, HeadersMap, []).
@@ -1581,10 +1719,7 @@ list_template_step_groups(Client, TemplateId, QueryMap, HeadersMap)
 -spec list_template_step_groups(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_template_step_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_template_step_groups_errors(), tuple()}.
 list_template_step_groups(Client, TemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/templatestepgroups/", aws_util:encode_uri(TemplateId), ""],
@@ -1610,11 +1745,7 @@ list_template_step_groups(Client, TemplateId, QueryMap, HeadersMap, Options0)
 -spec list_template_steps(map(), binary() | list(), binary() | list()) ->
     {ok, list_template_steps_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_template_steps_errors(), tuple()}.
 list_template_steps(Client, StepGroupId, TemplateId)
   when is_map(Client) ->
     list_template_steps(Client, StepGroupId, TemplateId, #{}, #{}).
@@ -1622,11 +1753,7 @@ list_template_steps(Client, StepGroupId, TemplateId)
 -spec list_template_steps(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_template_steps_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_template_steps_errors(), tuple()}.
 list_template_steps(Client, StepGroupId, TemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_template_steps(Client, StepGroupId, TemplateId, QueryMap, HeadersMap, []).
@@ -1634,11 +1761,7 @@ list_template_steps(Client, StepGroupId, TemplateId, QueryMap, HeadersMap)
 -spec list_template_steps(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_template_steps_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_template_steps_errors(), tuple()}.
 list_template_steps(Client, StepGroupId, TemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/templatesteps"],
@@ -1667,9 +1790,7 @@ list_template_steps(Client, StepGroupId, TemplateId, QueryMap, HeadersMap, Optio
 -spec list_templates(map()) ->
     {ok, list_migration_workflow_templates_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_templates_errors(), tuple()}.
 list_templates(Client)
   when is_map(Client) ->
     list_templates(Client, #{}, #{}).
@@ -1677,9 +1798,7 @@ list_templates(Client)
 -spec list_templates(map(), map(), map()) ->
     {ok, list_migration_workflow_templates_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_templates_errors(), tuple()}.
 list_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_templates(Client, QueryMap, HeadersMap, []).
@@ -1687,9 +1806,7 @@ list_templates(Client, QueryMap, HeadersMap)
 -spec list_templates(map(), map(), map(), proplists:proplist()) ->
     {ok, list_migration_workflow_templates_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_templates_errors(), tuple()}.
 list_templates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/migrationworkflowtemplates"],
@@ -1716,11 +1833,7 @@ list_templates(Client, QueryMap, HeadersMap, Options0)
 -spec list_workflow_step_groups(map(), binary() | list()) ->
     {ok, list_workflow_step_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_workflow_step_groups_errors(), tuple()}.
 list_workflow_step_groups(Client, WorkflowId)
   when is_map(Client) ->
     list_workflow_step_groups(Client, WorkflowId, #{}, #{}).
@@ -1728,11 +1841,7 @@ list_workflow_step_groups(Client, WorkflowId)
 -spec list_workflow_step_groups(map(), binary() | list(), map(), map()) ->
     {ok, list_workflow_step_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_workflow_step_groups_errors(), tuple()}.
 list_workflow_step_groups(Client, WorkflowId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_workflow_step_groups(Client, WorkflowId, QueryMap, HeadersMap, []).
@@ -1740,11 +1849,7 @@ list_workflow_step_groups(Client, WorkflowId, QueryMap, HeadersMap)
 -spec list_workflow_step_groups(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_workflow_step_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_workflow_step_groups_errors(), tuple()}.
 list_workflow_step_groups(Client, WorkflowId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workflowstepgroups"],
@@ -1771,10 +1876,7 @@ list_workflow_step_groups(Client, WorkflowId, QueryMap, HeadersMap, Options0)
 -spec list_workflow_steps(map(), binary() | list(), binary() | list()) ->
     {ok, list_workflow_steps_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_workflow_steps_errors(), tuple()}.
 list_workflow_steps(Client, StepGroupId, WorkflowId)
   when is_map(Client) ->
     list_workflow_steps(Client, StepGroupId, WorkflowId, #{}, #{}).
@@ -1782,10 +1884,7 @@ list_workflow_steps(Client, StepGroupId, WorkflowId)
 -spec list_workflow_steps(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_workflow_steps_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_workflow_steps_errors(), tuple()}.
 list_workflow_steps(Client, StepGroupId, WorkflowId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_workflow_steps(Client, StepGroupId, WorkflowId, QueryMap, HeadersMap, []).
@@ -1793,10 +1892,7 @@ list_workflow_steps(Client, StepGroupId, WorkflowId, QueryMap, HeadersMap)
 -spec list_workflow_steps(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_workflow_steps_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_workflow_steps_errors(), tuple()}.
 list_workflow_steps(Client, StepGroupId, WorkflowId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workflow/", aws_util:encode_uri(WorkflowId), "/workflowstepgroups/", aws_util:encode_uri(StepGroupId), "/workflowsteps"],
@@ -1822,11 +1918,7 @@ list_workflow_steps(Client, StepGroupId, WorkflowId, QueryMap, HeadersMap, Optio
 -spec list_workflows(map()) ->
     {ok, list_migration_workflows_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_workflows_errors(), tuple()}.
 list_workflows(Client)
   when is_map(Client) ->
     list_workflows(Client, #{}, #{}).
@@ -1834,11 +1926,7 @@ list_workflows(Client)
 -spec list_workflows(map(), map(), map()) ->
     {ok, list_migration_workflows_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_workflows_errors(), tuple()}.
 list_workflows(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_workflows(Client, QueryMap, HeadersMap, []).
@@ -1846,11 +1934,7 @@ list_workflows(Client, QueryMap, HeadersMap)
 -spec list_workflows(map(), map(), map(), proplists:proplist()) ->
     {ok, list_migration_workflows_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_workflows_errors(), tuple()}.
 list_workflows(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/migrationworkflows"],
@@ -1880,20 +1964,14 @@ list_workflows(Client, QueryMap, HeadersMap, Options0)
 -spec retry_workflow_step(map(), binary() | list(), retry_workflow_step_request()) ->
     {ok, retry_workflow_step_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, retry_workflow_step_errors(), tuple()}.
 retry_workflow_step(Client, Id, Input) ->
     retry_workflow_step(Client, Id, Input, []).
 
 -spec retry_workflow_step(map(), binary() | list(), retry_workflow_step_request(), proplists:proplist()) ->
     {ok, retry_workflow_step_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, retry_workflow_step_errors(), tuple()}.
 retry_workflow_step(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/retryworkflowstep/", aws_util:encode_uri(Id), ""],
@@ -1922,22 +2000,14 @@ retry_workflow_step(Client, Id, Input0, Options0) ->
 -spec start_workflow(map(), binary() | list(), start_migration_workflow_request()) ->
     {ok, start_migration_workflow_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_workflow_errors(), tuple()}.
 start_workflow(Client, Id, Input) ->
     start_workflow(Client, Id, Input, []).
 
 -spec start_workflow(map(), binary() | list(), start_migration_workflow_request(), proplists:proplist()) ->
     {ok, start_migration_workflow_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_workflow_errors(), tuple()}.
 start_workflow(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/migrationworkflow/", aws_util:encode_uri(Id), "/start"],
@@ -1964,22 +2034,14 @@ start_workflow(Client, Id, Input0, Options0) ->
 -spec stop_workflow(map(), binary() | list(), stop_migration_workflow_request()) ->
     {ok, stop_migration_workflow_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_workflow_errors(), tuple()}.
 stop_workflow(Client, Id, Input) ->
     stop_workflow(Client, Id, Input, []).
 
 -spec stop_workflow(map(), binary() | list(), stop_migration_workflow_request(), proplists:proplist()) ->
     {ok, stop_migration_workflow_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_workflow_errors(), tuple()}.
 stop_workflow(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/migrationworkflow/", aws_util:encode_uri(Id), "/stop"],
@@ -2006,16 +2068,14 @@ stop_workflow(Client, Id, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2042,16 +2102,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2079,22 +2137,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_template(map(), binary() | list(), update_template_request()) ->
     {ok, update_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_template_errors(), tuple()}.
 update_template(Client, Id, Input) ->
     update_template(Client, Id, Input, []).
 
 -spec update_template(map(), binary() | list(), update_template_request(), proplists:proplist()) ->
     {ok, update_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_template_errors(), tuple()}.
 update_template(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/template/", aws_util:encode_uri(Id), ""],
@@ -2121,22 +2171,14 @@ update_template(Client, Id, Input0, Options0) ->
 -spec update_workflow(map(), binary() | list(), update_migration_workflow_request()) ->
     {ok, update_migration_workflow_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_workflow_errors(), tuple()}.
 update_workflow(Client, Id, Input) ->
     update_workflow(Client, Id, Input, []).
 
 -spec update_workflow(map(), binary() | list(), update_migration_workflow_request(), proplists:proplist()) ->
     {ok, update_migration_workflow_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_workflow_errors(), tuple()}.
 update_workflow(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/migrationworkflow/", aws_util:encode_uri(Id), ""],
@@ -2163,20 +2205,14 @@ update_workflow(Client, Id, Input0, Options0) ->
 -spec update_workflow_step(map(), binary() | list(), update_workflow_step_request()) ->
     {ok, update_workflow_step_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_workflow_step_errors(), tuple()}.
 update_workflow_step(Client, Id, Input) ->
     update_workflow_step(Client, Id, Input, []).
 
 -spec update_workflow_step(map(), binary() | list(), update_workflow_step_request(), proplists:proplist()) ->
     {ok, update_workflow_step_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_workflow_step_errors(), tuple()}.
 update_workflow_step(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/workflowstep/", aws_util:encode_uri(Id), ""],
@@ -2203,22 +2239,14 @@ update_workflow_step(Client, Id, Input0, Options0) ->
 -spec update_workflow_step_group(map(), binary() | list(), update_workflow_step_group_request()) ->
     {ok, update_workflow_step_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_workflow_step_group_errors(), tuple()}.
 update_workflow_step_group(Client, Id, Input) ->
     update_workflow_step_group(Client, Id, Input, []).
 
 -spec update_workflow_step_group(map(), binary() | list(), update_workflow_step_group_request(), proplists:proplist()) ->
     {ok, update_workflow_step_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_workflow_step_group_errors(), tuple()}.
 update_workflow_step_group(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/workflowstepgroup/", aws_util:encode_uri(Id), ""],

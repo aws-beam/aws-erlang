@@ -127,6 +127,7 @@
 %% }
 -type batch_delete_recipe_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_project_response() :: #{
 %%   <<"CreateDate">> => non_neg_integer(),
@@ -146,6 +147,7 @@
 %% }
 -type describe_project_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% database_output() :: #{
 %%   <<"DatabaseOptions">> => database_table_output_options(),
@@ -153,6 +155,7 @@
 %%   <<"GlueConnectionName">> => string()
 %% }
 -type database_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_ruleset_request() :: #{
@@ -164,6 +167,7 @@
 %% }
 -type create_ruleset_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% recipe_reference() :: #{
 %%   <<"Name">> => string(),
@@ -171,11 +175,13 @@
 %% }
 -type recipe_reference() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_ruleset_response() :: #{
 %%   <<"Name">> => string()
 %% }
 -type update_ruleset_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_schedule_response() :: #{
@@ -183,11 +189,13 @@
 %% }
 -type update_schedule_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"Tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_recipe_request() :: #{
@@ -198,11 +206,13 @@
 %% }
 -type create_recipe_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_table_output_options() :: #{
 %%   <<"Location">> => s3_location()
 %% }
 -type s3_table_output_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_recipes_response() :: #{
@@ -210,6 +220,7 @@
 %%   <<"Recipes">> => list(recipe()())
 %% }
 -type list_recipes_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_profile_job_request() :: #{
@@ -229,6 +240,7 @@
 %%   <<"ValidationConfigurations">> => list(validation_configuration()())
 %% }
 -type create_profile_job_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_job_response() :: #{
@@ -259,6 +271,7 @@
 %% }
 -type describe_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% view_frame() :: #{
 %%   <<"Analytics">> => list(any()),
@@ -270,11 +283,13 @@
 %% }
 -type view_frame() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_dataset_response() :: #{
 %%   <<"Name">> => string()
 %% }
 -type delete_dataset_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_dataset_response() :: #{
@@ -282,12 +297,14 @@
 %% }
 -type update_dataset_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% statistics_configuration() :: #{
 %%   <<"IncludedStatistics">> => list(string()()),
 %%   <<"Overrides">> => list(statistic_override()())
 %% }
 -type statistics_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_run() :: #{
@@ -311,15 +328,18 @@
 %%   <<"ValidationConfigurations">> => list(validation_configuration()())
 %% }
 -type job_run() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% publish_recipe_response() :: #{
 %%   <<"Name">> => string()
 %% }
 -type publish_recipe_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% datetime_options() :: #{
@@ -329,6 +349,7 @@
 %% }
 -type datetime_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% path_options() :: #{
 %%   <<"FilesLimit">> => files_limit(),
@@ -336,6 +357,7 @@
 %%   <<"Parameters">> => map()
 %% }
 -type path_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_jobs_request() :: #{
@@ -345,18 +367,22 @@
 %%   <<"ProjectName">> => string()
 %% }
 -type list_jobs_request() :: #{binary() => any()}.
+
 %% Example:
 %% stop_job_run_request() :: #{}
 -type stop_job_run_request() :: #{}.
+
 %% Example:
 %% describe_project_request() :: #{}
 -type describe_project_request() :: #{}.
+
 
 %% Example:
 %% batch_delete_recipe_version_request() :: #{
 %%   <<"RecipeVersions">> := list(string()())
 %% }
 -type batch_delete_recipe_version_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_job_run_response() :: #{
@@ -382,6 +408,7 @@
 %% }
 -type describe_job_run_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_job_runs_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -389,17 +416,20 @@
 %% }
 -type list_job_runs_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_recipe_response() :: #{
 %%   <<"Name">> => string()
 %% }
 -type create_recipe_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% metadata() :: #{
 %%   <<"SourceArn">> => string()
 %% }
 -type metadata() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_datasets_request() :: #{
@@ -408,12 +438,14 @@
 %% }
 -type list_datasets_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_project_session_response() :: #{
 %%   <<"ClientSessionId">> => string(),
 %%   <<"Name">> => string()
 %% }
 -type start_project_session_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_ruleset_response() :: #{
@@ -430,12 +462,14 @@
 %% }
 -type describe_ruleset_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% entity_detector_configuration() :: #{
 %%   <<"AllowedStatistics">> => list(allowed_statistics()()),
 %%   <<"EntityTypes">> => list(string()())
 %% }
 -type entity_detector_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_recipe_job_request() :: #{
@@ -456,9 +490,11 @@
 %%   <<"Timeout">> => integer()
 %% }
 -type create_recipe_job_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_ruleset_request() :: #{}
 -type describe_ruleset_request() :: #{}.
+
 
 %% Example:
 %% update_recipe_job_response() :: #{
@@ -466,12 +502,14 @@
 %% }
 -type update_recipe_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_jobs_response() :: #{
 %%   <<"Jobs">> => list(job()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_jobs_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_catalog_output() :: #{
@@ -484,17 +522,20 @@
 %% }
 -type data_catalog_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_schedule_response() :: #{
 %%   <<"Name">> => string()
 %% }
 -type delete_schedule_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_project_response() :: #{
@@ -503,12 +544,14 @@
 %% }
 -type update_project_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_schedules_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Schedules">> => list(schedule()())
 %% }
 -type list_schedules_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_profile_job_request() :: #{
@@ -526,11 +569,13 @@
 %% }
 -type update_profile_job_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_ruleset_response() :: #{
 %%   <<"Name">> => string()
 %% }
 -type delete_ruleset_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% dataset() :: #{
@@ -550,6 +595,7 @@
 %% }
 -type dataset() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_schedule_response() :: #{
 %%   <<"CreateDate">> => non_neg_integer(),
@@ -564,11 +610,13 @@
 %% }
 -type describe_schedule_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% output_format_options() :: #{
 %%   <<"Csv">> => csv_output_options()
 %% }
 -type output_format_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_dataset_response() :: #{
@@ -576,12 +624,14 @@
 %% }
 -type create_dataset_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% job_sample() :: #{
 %%   <<"Mode">> => list(any()),
 %%   <<"Size">> => float()
 %% }
 -type job_sample() :: #{binary() => any()}.
+
 
 %% Example:
 %% files_limit() :: #{
@@ -591,15 +641,18 @@
 %% }
 -type files_limit() :: #{binary() => any()}.
 
+
 %% Example:
 %% csv_options() :: #{
 %%   <<"Delimiter">> => string(),
 %%   <<"HeaderRow">> => boolean()
 %% }
 -type csv_options() :: #{binary() => any()}.
+
 %% Example:
 %% describe_job_run_request() :: #{}
 -type describe_job_run_request() :: #{}.
+
 
 %% Example:
 %% input() :: #{
@@ -610,11 +663,13 @@
 %% }
 -type input() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_project_response() :: #{
 %%   <<"Name">> => string()
 %% }
 -type create_project_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -622,17 +677,20 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_job_run_response() :: #{
 %%   <<"RunId">> => string()
 %% }
 -type start_job_run_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% project() :: #{
@@ -653,6 +711,7 @@
 %% }
 -type project() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_configuration() :: #{
 %%   <<"RulesetArn">> => string(),
@@ -660,11 +719,13 @@
 %% }
 -type validation_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% publish_recipe_request() :: #{
 %%   <<"Description">> => string()
 %% }
 -type publish_recipe_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_rulesets_response() :: #{
@@ -673,11 +734,13 @@
 %% }
 -type list_rulesets_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_project_session_request() :: #{
@@ -685,11 +748,13 @@
 %% }
 -type start_project_session_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% csv_output_options() :: #{
 %%   <<"Delimiter">> => string()
 %% }
 -type csv_output_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_recipe_versions_request() :: #{
@@ -699,12 +764,14 @@
 %% }
 -type list_recipe_versions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% recipe_action() :: #{
 %%   <<"Operation">> => string(),
 %%   <<"Parameters">> => map()
 %% }
 -type recipe_action() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_recipe_response() :: #{
@@ -724,12 +791,14 @@
 %% }
 -type describe_recipe_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_job_runs_response() :: #{
 %%   <<"JobRuns">> => list(job_run()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_job_runs_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% format_options() :: #{
@@ -739,6 +808,7 @@
 %% }
 -type format_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_rulesets_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -746,6 +816,7 @@
 %%   <<"TargetArn">> => string()
 %% }
 -type list_rulesets_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% recipe() :: #{
@@ -765,12 +836,14 @@
 %% }
 -type recipe() :: #{binary() => any()}.
 
+
 %% Example:
 %% sample() :: #{
 %%   <<"Size">> => integer(),
 %%   <<"Type">> => list(any())
 %% }
 -type sample() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_projects_response() :: #{
@@ -779,21 +852,25 @@
 %% }
 -type list_projects_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_recipe_versions_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Recipes">> => list(recipe()())
 %% }
 -type list_recipe_versions_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_job_request() :: #{}
 -type describe_job_request() :: #{}.
+
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_catalog_input_definition() :: #{
@@ -803,6 +880,7 @@
 %%   <<"TempDirectory">> => s3_location()
 %% }
 -type data_catalog_input_definition() :: #{binary() => any()}.
+
 
 %% Example:
 %% ruleset_item() :: #{
@@ -820,12 +898,14 @@
 %% }
 -type ruleset_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% filter_expression() :: #{
 %%   <<"Expression">> => string(),
 %%   <<"ValuesMap">> => map()
 %% }
 -type filter_expression() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_location() :: #{
@@ -834,6 +914,7 @@
 %%   <<"Key">> => string()
 %% }
 -type s3_location() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_dataset_request() :: #{
@@ -844,12 +925,14 @@
 %% }
 -type update_dataset_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% database_table_output_options() :: #{
 %%   <<"TableName">> => string(),
 %%   <<"TempDirectory">> => s3_location()
 %% }
 -type database_table_output_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% rule() :: #{
@@ -862,11 +945,13 @@
 %% }
 -type rule() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_recipe_job_response() :: #{
 %%   <<"Name">> => string()
 %% }
 -type create_recipe_job_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% dataset_parameter() :: #{
@@ -878,17 +963,20 @@
 %% }
 -type dataset_parameter() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_recipe_request() :: #{
 %%   <<"RecipeVersion">> => string()
 %% }
 -type describe_recipe_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% schedule() :: #{
@@ -905,20 +993,24 @@
 %% }
 -type schedule() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_project_response() :: #{
 %%   <<"Name">> => string()
 %% }
 -type delete_project_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% stop_job_run_response() :: #{
 %%   <<"RunId">> => string()
 %% }
 -type stop_job_run_response() :: #{binary() => any()}.
+
 %% Example:
 %% start_job_run_request() :: #{}
 -type start_job_run_request() :: #{}.
+
 
 %% Example:
 %% update_project_request() :: #{
@@ -926,6 +1018,7 @@
 %%   <<"Sample">> => sample()
 %% }
 -type update_project_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% profile_configuration() :: #{
@@ -936,6 +1029,7 @@
 %% }
 -type profile_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_ruleset_request() :: #{
 %%   <<"Description">> => string(),
@@ -943,12 +1037,14 @@
 %% }
 -type update_ruleset_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% recipe_step() :: #{
 %%   <<"Action">> => recipe_action(),
 %%   <<"ConditionExpressions">> => list(condition_expression()())
 %% }
 -type recipe_step() :: #{binary() => any()}.
+
 
 %% Example:
 %% database_input_definition() :: #{
@@ -959,17 +1055,21 @@
 %% }
 -type database_input_definition() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 %% Example:
 %% delete_recipe_version_request() :: #{}
 -type delete_recipe_version_request() :: #{}.
+
 
 %% Example:
 %% column_selector() :: #{
@@ -978,11 +1078,13 @@
 %% }
 -type column_selector() :: #{binary() => any()}.
 
+
 %% Example:
 %% json_options() :: #{
 %%   <<"MultiLine">> => boolean()
 %% }
 -type json_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_schedule_request() :: #{
@@ -990,9 +1092,11 @@
 %%   <<"JobNames">> => list(string()())
 %% }
 -type update_schedule_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_job_request() :: #{}
 -type delete_job_request() :: #{}.
+
 
 %% Example:
 %% recipe_version_error_detail() :: #{
@@ -1002,6 +1106,7 @@
 %% }
 -type recipe_version_error_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% column_statistics_configuration() :: #{
 %%   <<"Selectors">> => list(column_selector()()),
@@ -1009,11 +1114,13 @@
 %% }
 -type column_statistics_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_ruleset_response() :: #{
 %%   <<"Name">> => string()
 %% }
 -type create_ruleset_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_recipe_request() :: #{
@@ -1021,6 +1128,7 @@
 %%   <<"Steps">> => list(recipe_step()())
 %% }
 -type update_recipe_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_dataset_response() :: #{
@@ -1039,14 +1147,17 @@
 %% }
 -type describe_dataset_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% job() :: #{
@@ -1077,6 +1188,7 @@
 %% }
 -type job() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_dataset_request() :: #{
 %%   <<"Format">> => list(any()),
@@ -1087,6 +1199,7 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_dataset_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_recipe_job_request() :: #{
@@ -1103,6 +1216,7 @@
 %% }
 -type update_recipe_job_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_schedule_request() :: #{
 %%   <<"CronExpression">> := string(),
@@ -1111,6 +1225,7 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_schedule_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_project_request() :: #{
@@ -1123,6 +1238,7 @@
 %% }
 -type create_project_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% condition_expression() :: #{
 %%   <<"Condition">> => string(),
@@ -1131,12 +1247,14 @@
 %% }
 -type condition_expression() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_projects_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_projects_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% threshold() :: #{
@@ -1146,14 +1264,17 @@
 %% }
 -type threshold() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_schedule_response() :: #{
 %%   <<"Name">> => string()
 %% }
 -type create_schedule_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_schedule_request() :: #{}
 -type delete_schedule_request() :: #{}.
+
 
 %% Example:
 %% list_schedules_request() :: #{
@@ -1163,6 +1284,7 @@
 %% }
 -type list_schedules_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% excel_options() :: #{
 %%   <<"HeaderRow">> => boolean(),
@@ -1171,17 +1293,21 @@
 %% }
 -type excel_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% allowed_statistics() :: #{
 %%   <<"Statistics">> => list(string()())
 %% }
 -type allowed_statistics() :: #{binary() => any()}.
+
 %% Example:
 %% describe_dataset_request() :: #{}
 -type describe_dataset_request() :: #{}.
+
 %% Example:
 %% delete_dataset_request() :: #{}
 -type delete_dataset_request() :: #{}.
+
 
 %% Example:
 %% list_datasets_response() :: #{
@@ -1189,9 +1315,11 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_datasets_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_project_request() :: #{}
 -type delete_project_request() :: #{}.
+
 
 %% Example:
 %% update_profile_job_response() :: #{
@@ -1199,11 +1327,13 @@
 %% }
 -type update_profile_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_job_response() :: #{
 %%   <<"Name">> => string()
 %% }
 -type delete_job_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_recipe_version_response() :: #{
@@ -1212,6 +1342,7 @@
 %% }
 -type delete_recipe_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% statistic_override() :: #{
 %%   <<"Parameters">> => map(),
@@ -1219,14 +1350,17 @@
 %% }
 -type statistic_override() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_profile_job_response() :: #{
 %%   <<"Name">> => string()
 %% }
 -type create_profile_job_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_schedule_request() :: #{}
 -type describe_schedule_request() :: #{}.
+
 
 %% Example:
 %% list_recipes_request() :: #{
@@ -1235,6 +1369,7 @@
 %%   <<"RecipeVersion">> => string()
 %% }
 -type list_recipes_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% send_project_session_action_request() :: #{
@@ -1246,6 +1381,7 @@
 %% }
 -type send_project_session_action_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% send_project_session_action_response() :: #{
 %%   <<"ActionId">> => integer(),
@@ -1253,6 +1389,7 @@
 %%   <<"Result">> => string()
 %% }
 -type send_project_session_action_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% output() :: #{
@@ -1265,15 +1402,219 @@
 %%   <<"PartitionColumns">> => list(string()())
 %% }
 -type output() :: #{binary() => any()}.
+
 %% Example:
 %% delete_ruleset_request() :: #{}
 -type delete_ruleset_request() :: #{}.
+
 
 %% Example:
 %% update_recipe_response() :: #{
 %%   <<"Name">> => string()
 %% }
 -type update_recipe_response() :: #{binary() => any()}.
+
+-type batch_delete_recipe_version_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_dataset_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_profile_job_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_project_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_recipe_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_recipe_job_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_ruleset_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_schedule_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_dataset_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_job_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_project_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_recipe_version_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_ruleset_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_schedule_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_dataset_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_job_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_job_run_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_project_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_recipe_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_ruleset_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_schedule_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type list_datasets_errors() ::
+    validation_exception().
+
+-type list_job_runs_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type list_jobs_errors() ::
+    validation_exception().
+
+-type list_projects_errors() ::
+    validation_exception().
+
+-type list_recipe_versions_errors() ::
+    validation_exception().
+
+-type list_recipes_errors() ::
+    validation_exception().
+
+-type list_rulesets_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type list_schedules_errors() ::
+    validation_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type publish_recipe_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type send_project_session_action_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_job_run_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_project_session_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type stop_job_run_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_dataset_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type update_profile_job_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type update_project_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type update_recipe_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type update_recipe_job_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type update_ruleset_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type update_schedule_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -1313,18 +1654,14 @@
 -spec batch_delete_recipe_version(map(), binary() | list(), batch_delete_recipe_version_request()) ->
     {ok, batch_delete_recipe_version_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_delete_recipe_version_errors(), tuple()}.
 batch_delete_recipe_version(Client, Name, Input) ->
     batch_delete_recipe_version(Client, Name, Input, []).
 
 -spec batch_delete_recipe_version(map(), binary() | list(), batch_delete_recipe_version_request(), proplists:proplist()) ->
     {ok, batch_delete_recipe_version_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_delete_recipe_version_errors(), tuple()}.
 batch_delete_recipe_version(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/recipes/", aws_util:encode_uri(Name), "/batchDeleteRecipeVersion"],
@@ -1351,20 +1688,14 @@ batch_delete_recipe_version(Client, Name, Input0, Options0) ->
 -spec create_dataset(map(), create_dataset_request()) ->
     {ok, create_dataset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_dataset_errors(), tuple()}.
 create_dataset(Client, Input) ->
     create_dataset(Client, Input, []).
 
 -spec create_dataset(map(), create_dataset_request(), proplists:proplist()) ->
     {ok, create_dataset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_dataset_errors(), tuple()}.
 create_dataset(Client, Input0, Options0) ->
     Method = post,
     Path = ["/datasets"],
@@ -1391,22 +1722,14 @@ create_dataset(Client, Input0, Options0) ->
 -spec create_profile_job(map(), create_profile_job_request()) ->
     {ok, create_profile_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_profile_job_errors(), tuple()}.
 create_profile_job(Client, Input) ->
     create_profile_job(Client, Input, []).
 
 -spec create_profile_job(map(), create_profile_job_request(), proplists:proplist()) ->
     {ok, create_profile_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_profile_job_errors(), tuple()}.
 create_profile_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/profileJobs"],
@@ -1433,20 +1756,14 @@ create_profile_job(Client, Input0, Options0) ->
 -spec create_project(map(), create_project_request()) ->
     {ok, create_project_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_project_errors(), tuple()}.
 create_project(Client, Input) ->
     create_project(Client, Input, []).
 
 -spec create_project(map(), create_project_request(), proplists:proplist()) ->
     {ok, create_project_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_project_errors(), tuple()}.
 create_project(Client, Input0, Options0) ->
     Method = post,
     Path = ["/projects"],
@@ -1473,18 +1790,14 @@ create_project(Client, Input0, Options0) ->
 -spec create_recipe(map(), create_recipe_request()) ->
     {ok, create_recipe_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_recipe_errors(), tuple()}.
 create_recipe(Client, Input) ->
     create_recipe(Client, Input, []).
 
 -spec create_recipe(map(), create_recipe_request(), proplists:proplist()) ->
     {ok, create_recipe_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_recipe_errors(), tuple()}.
 create_recipe(Client, Input0, Options0) ->
     Method = post,
     Path = ["/recipes"],
@@ -1512,22 +1825,14 @@ create_recipe(Client, Input0, Options0) ->
 -spec create_recipe_job(map(), create_recipe_job_request()) ->
     {ok, create_recipe_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_recipe_job_errors(), tuple()}.
 create_recipe_job(Client, Input) ->
     create_recipe_job(Client, Input, []).
 
 -spec create_recipe_job(map(), create_recipe_job_request(), proplists:proplist()) ->
     {ok, create_recipe_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_recipe_job_errors(), tuple()}.
 create_recipe_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/recipeJobs"],
@@ -1555,18 +1860,14 @@ create_recipe_job(Client, Input0, Options0) ->
 -spec create_ruleset(map(), create_ruleset_request()) ->
     {ok, create_ruleset_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_ruleset_errors(), tuple()}.
 create_ruleset(Client, Input) ->
     create_ruleset(Client, Input, []).
 
 -spec create_ruleset(map(), create_ruleset_request(), proplists:proplist()) ->
     {ok, create_ruleset_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_ruleset_errors(), tuple()}.
 create_ruleset(Client, Input0, Options0) ->
     Method = post,
     Path = ["/rulesets"],
@@ -1596,18 +1897,14 @@ create_ruleset(Client, Input0, Options0) ->
 -spec create_schedule(map(), create_schedule_request()) ->
     {ok, create_schedule_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_schedule_errors(), tuple()}.
 create_schedule(Client, Input) ->
     create_schedule(Client, Input, []).
 
 -spec create_schedule(map(), create_schedule_request(), proplists:proplist()) ->
     {ok, create_schedule_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_schedule_errors(), tuple()}.
 create_schedule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/schedules"],
@@ -1634,18 +1931,14 @@ create_schedule(Client, Input0, Options0) ->
 -spec delete_dataset(map(), binary() | list(), delete_dataset_request()) ->
     {ok, delete_dataset_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_dataset_errors(), tuple()}.
 delete_dataset(Client, Name, Input) ->
     delete_dataset(Client, Name, Input, []).
 
 -spec delete_dataset(map(), binary() | list(), delete_dataset_request(), proplists:proplist()) ->
     {ok, delete_dataset_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_dataset_errors(), tuple()}.
 delete_dataset(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/datasets/", aws_util:encode_uri(Name), ""],
@@ -1672,18 +1965,14 @@ delete_dataset(Client, Name, Input0, Options0) ->
 -spec delete_job(map(), binary() | list(), delete_job_request()) ->
     {ok, delete_job_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_job_errors(), tuple()}.
 delete_job(Client, Name, Input) ->
     delete_job(Client, Name, Input, []).
 
 -spec delete_job(map(), binary() | list(), delete_job_request(), proplists:proplist()) ->
     {ok, delete_job_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_job_errors(), tuple()}.
 delete_job(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/jobs/", aws_util:encode_uri(Name), ""],
@@ -1710,18 +1999,14 @@ delete_job(Client, Name, Input0, Options0) ->
 -spec delete_project(map(), binary() | list(), delete_project_request()) ->
     {ok, delete_project_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_project_errors(), tuple()}.
 delete_project(Client, Name, Input) ->
     delete_project(Client, Name, Input, []).
 
 -spec delete_project(map(), binary() | list(), delete_project_request(), proplists:proplist()) ->
     {ok, delete_project_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_project_errors(), tuple()}.
 delete_project(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/projects/", aws_util:encode_uri(Name), ""],
@@ -1748,18 +2033,14 @@ delete_project(Client, Name, Input0, Options0) ->
 -spec delete_recipe_version(map(), binary() | list(), binary() | list(), delete_recipe_version_request()) ->
     {ok, delete_recipe_version_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_recipe_version_errors(), tuple()}.
 delete_recipe_version(Client, Name, RecipeVersion, Input) ->
     delete_recipe_version(Client, Name, RecipeVersion, Input, []).
 
 -spec delete_recipe_version(map(), binary() | list(), binary() | list(), delete_recipe_version_request(), proplists:proplist()) ->
     {ok, delete_recipe_version_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_recipe_version_errors(), tuple()}.
 delete_recipe_version(Client, Name, RecipeVersion, Input0, Options0) ->
     Method = delete,
     Path = ["/recipes/", aws_util:encode_uri(Name), "/recipeVersion/", aws_util:encode_uri(RecipeVersion), ""],
@@ -1786,18 +2067,14 @@ delete_recipe_version(Client, Name, RecipeVersion, Input0, Options0) ->
 -spec delete_ruleset(map(), binary() | list(), delete_ruleset_request()) ->
     {ok, delete_ruleset_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_ruleset_errors(), tuple()}.
 delete_ruleset(Client, Name, Input) ->
     delete_ruleset(Client, Name, Input, []).
 
 -spec delete_ruleset(map(), binary() | list(), delete_ruleset_request(), proplists:proplist()) ->
     {ok, delete_ruleset_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_ruleset_errors(), tuple()}.
 delete_ruleset(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/rulesets/", aws_util:encode_uri(Name), ""],
@@ -1824,16 +2101,14 @@ delete_ruleset(Client, Name, Input0, Options0) ->
 -spec delete_schedule(map(), binary() | list(), delete_schedule_request()) ->
     {ok, delete_schedule_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_schedule_errors(), tuple()}.
 delete_schedule(Client, Name, Input) ->
     delete_schedule(Client, Name, Input, []).
 
 -spec delete_schedule(map(), binary() | list(), delete_schedule_request(), proplists:proplist()) ->
     {ok, delete_schedule_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_schedule_errors(), tuple()}.
 delete_schedule(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/schedules/", aws_util:encode_uri(Name), ""],
@@ -1860,8 +2135,7 @@ delete_schedule(Client, Name, Input0, Options0) ->
 -spec describe_dataset(map(), binary() | list()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_dataset_errors(), tuple()}.
 describe_dataset(Client, Name)
   when is_map(Client) ->
     describe_dataset(Client, Name, #{}, #{}).
@@ -1869,8 +2143,7 @@ describe_dataset(Client, Name)
 -spec describe_dataset(map(), binary() | list(), map(), map()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_dataset_errors(), tuple()}.
 describe_dataset(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dataset(Client, Name, QueryMap, HeadersMap, []).
@@ -1878,8 +2151,7 @@ describe_dataset(Client, Name, QueryMap, HeadersMap)
 -spec describe_dataset(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_dataset_errors(), tuple()}.
 describe_dataset(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/datasets/", aws_util:encode_uri(Name), ""],
@@ -1900,8 +2172,7 @@ describe_dataset(Client, Name, QueryMap, HeadersMap, Options0)
 -spec describe_job(map(), binary() | list()) ->
     {ok, describe_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_job_errors(), tuple()}.
 describe_job(Client, Name)
   when is_map(Client) ->
     describe_job(Client, Name, #{}, #{}).
@@ -1909,8 +2180,7 @@ describe_job(Client, Name)
 -spec describe_job(map(), binary() | list(), map(), map()) ->
     {ok, describe_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_job_errors(), tuple()}.
 describe_job(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_job(Client, Name, QueryMap, HeadersMap, []).
@@ -1918,8 +2188,7 @@ describe_job(Client, Name, QueryMap, HeadersMap)
 -spec describe_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_job_errors(), tuple()}.
 describe_job(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobs/", aws_util:encode_uri(Name), ""],
@@ -1940,8 +2209,7 @@ describe_job(Client, Name, QueryMap, HeadersMap, Options0)
 -spec describe_job_run(map(), binary() | list(), binary() | list()) ->
     {ok, describe_job_run_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_job_run_errors(), tuple()}.
 describe_job_run(Client, Name, RunId)
   when is_map(Client) ->
     describe_job_run(Client, Name, RunId, #{}, #{}).
@@ -1949,8 +2217,7 @@ describe_job_run(Client, Name, RunId)
 -spec describe_job_run(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_job_run_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_job_run_errors(), tuple()}.
 describe_job_run(Client, Name, RunId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_job_run(Client, Name, RunId, QueryMap, HeadersMap, []).
@@ -1958,8 +2225,7 @@ describe_job_run(Client, Name, RunId, QueryMap, HeadersMap)
 -spec describe_job_run(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_job_run_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_job_run_errors(), tuple()}.
 describe_job_run(Client, Name, RunId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobs/", aws_util:encode_uri(Name), "/jobRun/", aws_util:encode_uri(RunId), ""],
@@ -1980,8 +2246,7 @@ describe_job_run(Client, Name, RunId, QueryMap, HeadersMap, Options0)
 -spec describe_project(map(), binary() | list()) ->
     {ok, describe_project_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_project_errors(), tuple()}.
 describe_project(Client, Name)
   when is_map(Client) ->
     describe_project(Client, Name, #{}, #{}).
@@ -1989,8 +2254,7 @@ describe_project(Client, Name)
 -spec describe_project(map(), binary() | list(), map(), map()) ->
     {ok, describe_project_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_project_errors(), tuple()}.
 describe_project(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_project(Client, Name, QueryMap, HeadersMap, []).
@@ -1998,8 +2262,7 @@ describe_project(Client, Name, QueryMap, HeadersMap)
 -spec describe_project(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_project_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_project_errors(), tuple()}.
 describe_project(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Name), ""],
@@ -2022,8 +2285,7 @@ describe_project(Client, Name, QueryMap, HeadersMap, Options0)
 -spec describe_recipe(map(), binary() | list()) ->
     {ok, describe_recipe_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_recipe_errors(), tuple()}.
 describe_recipe(Client, Name)
   when is_map(Client) ->
     describe_recipe(Client, Name, #{}, #{}).
@@ -2031,8 +2293,7 @@ describe_recipe(Client, Name)
 -spec describe_recipe(map(), binary() | list(), map(), map()) ->
     {ok, describe_recipe_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_recipe_errors(), tuple()}.
 describe_recipe(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_recipe(Client, Name, QueryMap, HeadersMap, []).
@@ -2040,8 +2301,7 @@ describe_recipe(Client, Name, QueryMap, HeadersMap)
 -spec describe_recipe(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_recipe_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_recipe_errors(), tuple()}.
 describe_recipe(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/recipes/", aws_util:encode_uri(Name), ""],
@@ -2066,8 +2326,7 @@ describe_recipe(Client, Name, QueryMap, HeadersMap, Options0)
 -spec describe_ruleset(map(), binary() | list()) ->
     {ok, describe_ruleset_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_ruleset_errors(), tuple()}.
 describe_ruleset(Client, Name)
   when is_map(Client) ->
     describe_ruleset(Client, Name, #{}, #{}).
@@ -2075,8 +2334,7 @@ describe_ruleset(Client, Name)
 -spec describe_ruleset(map(), binary() | list(), map(), map()) ->
     {ok, describe_ruleset_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_ruleset_errors(), tuple()}.
 describe_ruleset(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_ruleset(Client, Name, QueryMap, HeadersMap, []).
@@ -2084,8 +2342,7 @@ describe_ruleset(Client, Name, QueryMap, HeadersMap)
 -spec describe_ruleset(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_ruleset_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_ruleset_errors(), tuple()}.
 describe_ruleset(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/rulesets/", aws_util:encode_uri(Name), ""],
@@ -2106,8 +2363,7 @@ describe_ruleset(Client, Name, QueryMap, HeadersMap, Options0)
 -spec describe_schedule(map(), binary() | list()) ->
     {ok, describe_schedule_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_schedule_errors(), tuple()}.
 describe_schedule(Client, Name)
   when is_map(Client) ->
     describe_schedule(Client, Name, #{}, #{}).
@@ -2115,8 +2371,7 @@ describe_schedule(Client, Name)
 -spec describe_schedule(map(), binary() | list(), map(), map()) ->
     {ok, describe_schedule_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_schedule_errors(), tuple()}.
 describe_schedule(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_schedule(Client, Name, QueryMap, HeadersMap, []).
@@ -2124,8 +2379,7 @@ describe_schedule(Client, Name, QueryMap, HeadersMap)
 -spec describe_schedule(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_schedule_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_schedule_errors(), tuple()}.
 describe_schedule(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/schedules/", aws_util:encode_uri(Name), ""],
@@ -2146,7 +2400,7 @@ describe_schedule(Client, Name, QueryMap, HeadersMap, Options0)
 -spec list_datasets(map()) ->
     {ok, list_datasets_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_datasets_errors(), tuple()}.
 list_datasets(Client)
   when is_map(Client) ->
     list_datasets(Client, #{}, #{}).
@@ -2154,7 +2408,7 @@ list_datasets(Client)
 -spec list_datasets(map(), map(), map()) ->
     {ok, list_datasets_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_datasets_errors(), tuple()}.
 list_datasets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_datasets(Client, QueryMap, HeadersMap, []).
@@ -2162,7 +2416,7 @@ list_datasets(Client, QueryMap, HeadersMap)
 -spec list_datasets(map(), map(), map(), proplists:proplist()) ->
     {ok, list_datasets_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_datasets_errors(), tuple()}.
 list_datasets(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/datasets"],
@@ -2188,8 +2442,7 @@ list_datasets(Client, QueryMap, HeadersMap, Options0)
 -spec list_job_runs(map(), binary() | list()) ->
     {ok, list_job_runs_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_job_runs_errors(), tuple()}.
 list_job_runs(Client, Name)
   when is_map(Client) ->
     list_job_runs(Client, Name, #{}, #{}).
@@ -2197,8 +2450,7 @@ list_job_runs(Client, Name)
 -spec list_job_runs(map(), binary() | list(), map(), map()) ->
     {ok, list_job_runs_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_job_runs_errors(), tuple()}.
 list_job_runs(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_job_runs(Client, Name, QueryMap, HeadersMap, []).
@@ -2206,8 +2458,7 @@ list_job_runs(Client, Name, QueryMap, HeadersMap)
 -spec list_job_runs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_job_runs_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_job_runs_errors(), tuple()}.
 list_job_runs(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobs/", aws_util:encode_uri(Name), "/jobRuns"],
@@ -2233,7 +2484,7 @@ list_job_runs(Client, Name, QueryMap, HeadersMap, Options0)
 -spec list_jobs(map()) ->
     {ok, list_jobs_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_jobs_errors(), tuple()}.
 list_jobs(Client)
   when is_map(Client) ->
     list_jobs(Client, #{}, #{}).
@@ -2241,7 +2492,7 @@ list_jobs(Client)
 -spec list_jobs(map(), map(), map()) ->
     {ok, list_jobs_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_jobs_errors(), tuple()}.
 list_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_jobs(Client, QueryMap, HeadersMap, []).
@@ -2249,7 +2500,7 @@ list_jobs(Client, QueryMap, HeadersMap)
 -spec list_jobs(map(), map(), map(), proplists:proplist()) ->
     {ok, list_jobs_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_jobs_errors(), tuple()}.
 list_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobs"],
@@ -2277,7 +2528,7 @@ list_jobs(Client, QueryMap, HeadersMap, Options0)
 -spec list_projects(map()) ->
     {ok, list_projects_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_projects_errors(), tuple()}.
 list_projects(Client)
   when is_map(Client) ->
     list_projects(Client, #{}, #{}).
@@ -2285,7 +2536,7 @@ list_projects(Client)
 -spec list_projects(map(), map(), map()) ->
     {ok, list_projects_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_projects_errors(), tuple()}.
 list_projects(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_projects(Client, QueryMap, HeadersMap, []).
@@ -2293,7 +2544,7 @@ list_projects(Client, QueryMap, HeadersMap)
 -spec list_projects(map(), map(), map(), proplists:proplist()) ->
     {ok, list_projects_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_projects_errors(), tuple()}.
 list_projects(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects"],
@@ -2320,7 +2571,7 @@ list_projects(Client, QueryMap, HeadersMap, Options0)
 -spec list_recipe_versions(map(), binary() | list()) ->
     {ok, list_recipe_versions_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_recipe_versions_errors(), tuple()}.
 list_recipe_versions(Client, Name)
   when is_map(Client) ->
     list_recipe_versions(Client, Name, #{}, #{}).
@@ -2328,7 +2579,7 @@ list_recipe_versions(Client, Name)
 -spec list_recipe_versions(map(), binary() | list(), map(), map()) ->
     {ok, list_recipe_versions_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_recipe_versions_errors(), tuple()}.
 list_recipe_versions(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_recipe_versions(Client, Name, QueryMap, HeadersMap, []).
@@ -2336,7 +2587,7 @@ list_recipe_versions(Client, Name, QueryMap, HeadersMap)
 -spec list_recipe_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_recipe_versions_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_recipe_versions_errors(), tuple()}.
 list_recipe_versions(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/recipeVersions"],
@@ -2363,7 +2614,7 @@ list_recipe_versions(Client, Name, QueryMap, HeadersMap, Options0)
 -spec list_recipes(map()) ->
     {ok, list_recipes_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_recipes_errors(), tuple()}.
 list_recipes(Client)
   when is_map(Client) ->
     list_recipes(Client, #{}, #{}).
@@ -2371,7 +2622,7 @@ list_recipes(Client)
 -spec list_recipes(map(), map(), map()) ->
     {ok, list_recipes_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_recipes_errors(), tuple()}.
 list_recipes(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_recipes(Client, QueryMap, HeadersMap, []).
@@ -2379,7 +2630,7 @@ list_recipes(Client, QueryMap, HeadersMap)
 -spec list_recipes(map(), map(), map(), proplists:proplist()) ->
     {ok, list_recipes_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_recipes_errors(), tuple()}.
 list_recipes(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/recipes"],
@@ -2408,8 +2659,7 @@ list_recipes(Client, QueryMap, HeadersMap, Options0)
 -spec list_rulesets(map()) ->
     {ok, list_rulesets_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_rulesets_errors(), tuple()}.
 list_rulesets(Client)
   when is_map(Client) ->
     list_rulesets(Client, #{}, #{}).
@@ -2417,8 +2667,7 @@ list_rulesets(Client)
 -spec list_rulesets(map(), map(), map()) ->
     {ok, list_rulesets_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_rulesets_errors(), tuple()}.
 list_rulesets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_rulesets(Client, QueryMap, HeadersMap, []).
@@ -2426,8 +2675,7 @@ list_rulesets(Client, QueryMap, HeadersMap)
 -spec list_rulesets(map(), map(), map(), proplists:proplist()) ->
     {ok, list_rulesets_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_rulesets_errors(), tuple()}.
 list_rulesets(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/rulesets"],
@@ -2454,7 +2702,7 @@ list_rulesets(Client, QueryMap, HeadersMap, Options0)
 -spec list_schedules(map()) ->
     {ok, list_schedules_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_schedules_errors(), tuple()}.
 list_schedules(Client)
   when is_map(Client) ->
     list_schedules(Client, #{}, #{}).
@@ -2462,7 +2710,7 @@ list_schedules(Client)
 -spec list_schedules(map(), map(), map()) ->
     {ok, list_schedules_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_schedules_errors(), tuple()}.
 list_schedules(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_schedules(Client, QueryMap, HeadersMap, []).
@@ -2470,7 +2718,7 @@ list_schedules(Client, QueryMap, HeadersMap)
 -spec list_schedules(map(), map(), map(), proplists:proplist()) ->
     {ok, list_schedules_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_schedules_errors(), tuple()}.
 list_schedules(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/schedules"],
@@ -2497,9 +2745,7 @@ list_schedules(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -2507,9 +2753,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -2517,9 +2761,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2540,18 +2782,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec publish_recipe(map(), binary() | list(), publish_recipe_request()) ->
     {ok, publish_recipe_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, publish_recipe_errors(), tuple()}.
 publish_recipe(Client, Name, Input) ->
     publish_recipe(Client, Name, Input, []).
 
 -spec publish_recipe(map(), binary() | list(), publish_recipe_request(), proplists:proplist()) ->
     {ok, publish_recipe_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, publish_recipe_errors(), tuple()}.
 publish_recipe(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/recipes/", aws_util:encode_uri(Name), "/publishRecipe"],
@@ -2580,18 +2818,14 @@ publish_recipe(Client, Name, Input0, Options0) ->
 -spec send_project_session_action(map(), binary() | list(), send_project_session_action_request()) ->
     {ok, send_project_session_action_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, send_project_session_action_errors(), tuple()}.
 send_project_session_action(Client, Name, Input) ->
     send_project_session_action(Client, Name, Input, []).
 
 -spec send_project_session_action(map(), binary() | list(), send_project_session_action_request(), proplists:proplist()) ->
     {ok, send_project_session_action_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, send_project_session_action_errors(), tuple()}.
 send_project_session_action(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/projects/", aws_util:encode_uri(Name), "/sendProjectSessionAction"],
@@ -2618,20 +2852,14 @@ send_project_session_action(Client, Name, Input0, Options0) ->
 -spec start_job_run(map(), binary() | list(), start_job_run_request()) ->
     {ok, start_job_run_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_job_run_errors(), tuple()}.
 start_job_run(Client, Name, Input) ->
     start_job_run(Client, Name, Input, []).
 
 -spec start_job_run(map(), binary() | list(), start_job_run_request(), proplists:proplist()) ->
     {ok, start_job_run_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_job_run_errors(), tuple()}.
 start_job_run(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/jobs/", aws_util:encode_uri(Name), "/startJobRun"],
@@ -2660,20 +2888,14 @@ start_job_run(Client, Name, Input0, Options0) ->
 -spec start_project_session(map(), binary() | list(), start_project_session_request()) ->
     {ok, start_project_session_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_project_session_errors(), tuple()}.
 start_project_session(Client, Name, Input) ->
     start_project_session(Client, Name, Input, []).
 
 -spec start_project_session(map(), binary() | list(), start_project_session_request(), proplists:proplist()) ->
     {ok, start_project_session_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_project_session_errors(), tuple()}.
 start_project_session(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/projects/", aws_util:encode_uri(Name), "/startProjectSession"],
@@ -2700,16 +2922,14 @@ start_project_session(Client, Name, Input0, Options0) ->
 -spec stop_job_run(map(), binary() | list(), binary() | list(), stop_job_run_request()) ->
     {ok, stop_job_run_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_job_run_errors(), tuple()}.
 stop_job_run(Client, Name, RunId, Input) ->
     stop_job_run(Client, Name, RunId, Input, []).
 
 -spec stop_job_run(map(), binary() | list(), binary() | list(), stop_job_run_request(), proplists:proplist()) ->
     {ok, stop_job_run_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_job_run_errors(), tuple()}.
 stop_job_run(Client, Name, RunId, Input0, Options0) ->
     Method = post,
     Path = ["/jobs/", aws_util:encode_uri(Name), "/jobRun/", aws_util:encode_uri(RunId), "/stopJobRun"],
@@ -2738,18 +2958,14 @@ stop_job_run(Client, Name, RunId, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2776,18 +2992,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2815,18 +3027,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_dataset(map(), binary() | list(), update_dataset_request()) ->
     {ok, update_dataset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_dataset_errors(), tuple()}.
 update_dataset(Client, Name, Input) ->
     update_dataset(Client, Name, Input, []).
 
 -spec update_dataset(map(), binary() | list(), update_dataset_request(), proplists:proplist()) ->
     {ok, update_dataset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_dataset_errors(), tuple()}.
 update_dataset(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/datasets/", aws_util:encode_uri(Name), ""],
@@ -2853,18 +3061,14 @@ update_dataset(Client, Name, Input0, Options0) ->
 -spec update_profile_job(map(), binary() | list(), update_profile_job_request()) ->
     {ok, update_profile_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_profile_job_errors(), tuple()}.
 update_profile_job(Client, Name, Input) ->
     update_profile_job(Client, Name, Input, []).
 
 -spec update_profile_job(map(), binary() | list(), update_profile_job_request(), proplists:proplist()) ->
     {ok, update_profile_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_profile_job_errors(), tuple()}.
 update_profile_job(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/profileJobs/", aws_util:encode_uri(Name), ""],
@@ -2891,16 +3095,14 @@ update_profile_job(Client, Name, Input0, Options0) ->
 -spec update_project(map(), binary() | list(), update_project_request()) ->
     {ok, update_project_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_project_errors(), tuple()}.
 update_project(Client, Name, Input) ->
     update_project(Client, Name, Input, []).
 
 -spec update_project(map(), binary() | list(), update_project_request(), proplists:proplist()) ->
     {ok, update_project_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_project_errors(), tuple()}.
 update_project(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/projects/", aws_util:encode_uri(Name), ""],
@@ -2929,16 +3131,14 @@ update_project(Client, Name, Input0, Options0) ->
 -spec update_recipe(map(), binary() | list(), update_recipe_request()) ->
     {ok, update_recipe_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_recipe_errors(), tuple()}.
 update_recipe(Client, Name, Input) ->
     update_recipe(Client, Name, Input, []).
 
 -spec update_recipe(map(), binary() | list(), update_recipe_request(), proplists:proplist()) ->
     {ok, update_recipe_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_recipe_errors(), tuple()}.
 update_recipe(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/recipes/", aws_util:encode_uri(Name), ""],
@@ -2965,18 +3165,14 @@ update_recipe(Client, Name, Input0, Options0) ->
 -spec update_recipe_job(map(), binary() | list(), update_recipe_job_request()) ->
     {ok, update_recipe_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_recipe_job_errors(), tuple()}.
 update_recipe_job(Client, Name, Input) ->
     update_recipe_job(Client, Name, Input, []).
 
 -spec update_recipe_job(map(), binary() | list(), update_recipe_job_request(), proplists:proplist()) ->
     {ok, update_recipe_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_recipe_job_errors(), tuple()}.
 update_recipe_job(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/recipeJobs/", aws_util:encode_uri(Name), ""],
@@ -3003,16 +3199,14 @@ update_recipe_job(Client, Name, Input0, Options0) ->
 -spec update_ruleset(map(), binary() | list(), update_ruleset_request()) ->
     {ok, update_ruleset_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_ruleset_errors(), tuple()}.
 update_ruleset(Client, Name, Input) ->
     update_ruleset(Client, Name, Input, []).
 
 -spec update_ruleset(map(), binary() | list(), update_ruleset_request(), proplists:proplist()) ->
     {ok, update_ruleset_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_ruleset_errors(), tuple()}.
 update_ruleset(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/rulesets/", aws_util:encode_uri(Name), ""],
@@ -3039,18 +3233,14 @@ update_ruleset(Client, Name, Input0, Options0) ->
 -spec update_schedule(map(), binary() | list(), update_schedule_request()) ->
     {ok, update_schedule_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_schedule_errors(), tuple()}.
 update_schedule(Client, Name, Input) ->
     update_schedule(Client, Name, Input, []).
 
 -spec update_schedule(map(), binary() | list(), update_schedule_request(), proplists:proplist()) ->
     {ok, update_schedule_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_schedule_errors(), tuple()}.
 update_schedule(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/schedules/", aws_util:encode_uri(Name), ""],

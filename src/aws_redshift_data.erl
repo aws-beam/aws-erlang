@@ -360,6 +360,55 @@
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
+-type batch_execute_statement_errors() ::
+    validation_exception() | 
+    batch_execute_statement_exception() | 
+    active_statements_exceeded_exception().
+
+-type cancel_statement_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    database_connection_exception().
+
+-type describe_statement_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
+
+-type describe_table_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    database_connection_exception().
+
+-type execute_statement_errors() ::
+    validation_exception() | 
+    execute_statement_exception() | 
+    active_statements_exceeded_exception().
+
+-type get_statement_result_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
+
+-type list_databases_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    database_connection_exception().
+
+-type list_schemas_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    database_connection_exception().
+
+-type list_statements_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_tables_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    database_connection_exception().
 
 %%====================================================================
 %% API
@@ -415,9 +464,7 @@
 -spec batch_execute_statement(map(), batch_execute_statement_input()) ->
     {ok, batch_execute_statement_output(), tuple()} |
     {error, any()} |
-    {error, active_statements_exceeded_exception(), tuple()} |
-    {error, batch_execute_statement_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_execute_statement_errors(), tuple()}.
 batch_execute_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_execute_statement(Client, Input, []).
@@ -425,9 +472,7 @@ batch_execute_statement(Client, Input)
 -spec batch_execute_statement(map(), batch_execute_statement_input(), proplists:proplist()) ->
     {ok, batch_execute_statement_output(), tuple()} |
     {error, any()} |
-    {error, active_statements_exceeded_exception(), tuple()} |
-    {error, batch_execute_statement_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_execute_statement_errors(), tuple()}.
 batch_execute_statement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchExecuteStatement">>, Input, Options).
@@ -444,10 +489,7 @@ batch_execute_statement(Client, Input, Options)
 -spec cancel_statement(map(), cancel_statement_request()) ->
     {ok, cancel_statement_response(), tuple()} |
     {error, any()} |
-    {error, database_connection_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_statement_errors(), tuple()}.
 cancel_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_statement(Client, Input, []).
@@ -455,10 +497,7 @@ cancel_statement(Client, Input)
 -spec cancel_statement(map(), cancel_statement_request(), proplists:proplist()) ->
     {ok, cancel_statement_response(), tuple()} |
     {error, any()} |
-    {error, database_connection_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_statement_errors(), tuple()}.
 cancel_statement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelStatement">>, Input, Options).
@@ -479,9 +518,7 @@ cancel_statement(Client, Input, Options)
 -spec describe_statement(map(), describe_statement_request()) ->
     {ok, describe_statement_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_statement_errors(), tuple()}.
 describe_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_statement(Client, Input, []).
@@ -489,9 +526,7 @@ describe_statement(Client, Input)
 -spec describe_statement(map(), describe_statement_request(), proplists:proplist()) ->
     {ok, describe_statement_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_statement_errors(), tuple()}.
 describe_statement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStatement">>, Input, Options).
@@ -548,9 +583,7 @@ describe_statement(Client, Input, Options)
 -spec describe_table(map(), describe_table_request()) ->
     {ok, describe_table_response(), tuple()} |
     {error, any()} |
-    {error, database_connection_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_table_errors(), tuple()}.
 describe_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_table(Client, Input, []).
@@ -558,9 +591,7 @@ describe_table(Client, Input)
 -spec describe_table(map(), describe_table_request(), proplists:proplist()) ->
     {ok, describe_table_response(), tuple()} |
     {error, any()} |
-    {error, database_connection_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_table_errors(), tuple()}.
 describe_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTable">>, Input, Options).
@@ -616,9 +647,7 @@ describe_table(Client, Input, Options)
 -spec execute_statement(map(), execute_statement_input()) ->
     {ok, execute_statement_output(), tuple()} |
     {error, any()} |
-    {error, active_statements_exceeded_exception(), tuple()} |
-    {error, execute_statement_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, execute_statement_errors(), tuple()}.
 execute_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_statement(Client, Input, []).
@@ -626,9 +655,7 @@ execute_statement(Client, Input)
 -spec execute_statement(map(), execute_statement_input(), proplists:proplist()) ->
     {ok, execute_statement_output(), tuple()} |
     {error, any()} |
-    {error, active_statements_exceeded_exception(), tuple()} |
-    {error, execute_statement_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, execute_statement_errors(), tuple()}.
 execute_statement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExecuteStatement">>, Input, Options).
@@ -645,9 +672,7 @@ execute_statement(Client, Input, Options)
 -spec get_statement_result(map(), get_statement_result_request()) ->
     {ok, get_statement_result_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_statement_result_errors(), tuple()}.
 get_statement_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_statement_result(Client, Input, []).
@@ -655,9 +680,7 @@ get_statement_result(Client, Input)
 -spec get_statement_result(map(), get_statement_result_request(), proplists:proplist()) ->
     {ok, get_statement_result_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_statement_result_errors(), tuple()}.
 get_statement_result(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetStatementResult">>, Input, Options).
@@ -711,9 +734,7 @@ get_statement_result(Client, Input, Options)
 -spec list_databases(map(), list_databases_request()) ->
     {ok, list_databases_response(), tuple()} |
     {error, any()} |
-    {error, database_connection_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_databases_errors(), tuple()}.
 list_databases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_databases(Client, Input, []).
@@ -721,9 +742,7 @@ list_databases(Client, Input)
 -spec list_databases(map(), list_databases_request(), proplists:proplist()) ->
     {ok, list_databases_response(), tuple()} |
     {error, any()} |
-    {error, database_connection_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_databases_errors(), tuple()}.
 list_databases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDatabases">>, Input, Options).
@@ -777,9 +796,7 @@ list_databases(Client, Input, Options)
 -spec list_schemas(map(), list_schemas_request()) ->
     {ok, list_schemas_response(), tuple()} |
     {error, any()} |
-    {error, database_connection_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_schemas_errors(), tuple()}.
 list_schemas(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_schemas(Client, Input, []).
@@ -787,9 +804,7 @@ list_schemas(Client, Input)
 -spec list_schemas(map(), list_schemas_request(), proplists:proplist()) ->
     {ok, list_schemas_response(), tuple()} |
     {error, any()} |
-    {error, database_connection_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_schemas_errors(), tuple()}.
 list_schemas(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSchemas">>, Input, Options).
@@ -807,8 +822,7 @@ list_schemas(Client, Input, Options)
 -spec list_statements(map(), list_statements_request()) ->
     {ok, list_statements_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_statements_errors(), tuple()}.
 list_statements(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_statements(Client, Input, []).
@@ -816,8 +830,7 @@ list_statements(Client, Input)
 -spec list_statements(map(), list_statements_request(), proplists:proplist()) ->
     {ok, list_statements_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_statements_errors(), tuple()}.
 list_statements(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStatements">>, Input, Options).
@@ -873,9 +886,7 @@ list_statements(Client, Input, Options)
 -spec list_tables(map(), list_tables_request()) ->
     {ok, list_tables_response(), tuple()} |
     {error, any()} |
-    {error, database_connection_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tables_errors(), tuple()}.
 list_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tables(Client, Input, []).
@@ -883,9 +894,7 @@ list_tables(Client, Input)
 -spec list_tables(map(), list_tables_request(), proplists:proplist()) ->
     {ok, list_tables_response(), tuple()} |
     {error, any()} |
-    {error, database_connection_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tables_errors(), tuple()}.
 list_tables(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTables">>, Input, Options).

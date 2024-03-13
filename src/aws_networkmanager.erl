@@ -221,6 +221,7 @@
 %% }
 -type get_core_network_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% core_network_policy_version() :: #{
 %%   <<"Alias">> => list(any()),
@@ -231,6 +232,7 @@
 %%   <<"PolicyVersionId">> => integer()
 %% }
 -type core_network_policy_version() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_network_telemetry_request() :: #{
@@ -245,17 +247,20 @@
 %% }
 -type get_network_telemetry_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% deregister_transit_gateway_response() :: #{
 %%   <<"TransitGatewayRegistration">> => transit_gateway_registration()
 %% }
 -type deregister_transit_gateway_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_link_response() :: #{
 %%   <<"Link">> => link()
 %% }
 -type delete_link_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_connection_request() :: #{
@@ -264,9 +269,11 @@
 %%   <<"LinkId">> => string()
 %% }
 -type update_connection_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_peering_request() :: #{}
 -type delete_peering_request() :: #{}.
+
 
 %% Example:
 %% get_network_resource_counts_request() :: #{
@@ -276,11 +283,13 @@
 %% }
 -type get_network_resource_counts_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_customer_gateway_response() :: #{
 %%   <<"CustomerGatewayAssociation">> => customer_gateway_association()
 %% }
 -type associate_customer_gateway_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% transit_gateway_peering() :: #{
@@ -290,11 +299,13 @@
 %% }
 -type transit_gateway_peering() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"Tags">> := list(tag()())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_transit_gateway_peering_response() :: #{
@@ -302,11 +313,13 @@
 %% }
 -type create_transit_gateway_peering_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_device_response() :: #{
 %%   <<"Device">> => device()
 %% }
 -type update_device_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_devices_request() :: #{
@@ -316,9 +329,11 @@
 %%   <<"SiteId">> => string()
 %% }
 -type get_devices_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_resource_policy_response() :: #{}
 -type delete_resource_policy_response() :: #{}.
+
 
 %% Example:
 %% list_core_network_policy_versions_request() :: #{
@@ -327,12 +342,14 @@
 %% }
 -type list_core_network_policy_versions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_transit_gateway_connect_peer_associations_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"TransitGatewayConnectPeerAssociations">> => list(transit_gateway_connect_peer_association()())
 %% }
 -type get_transit_gateway_connect_peer_associations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_transit_gateway_connect_peer_associations_request() :: #{
@@ -342,11 +359,13 @@
 %% }
 -type get_transit_gateway_connect_peer_associations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_core_network_policy_response() :: #{
 %%   <<"CoreNetworkPolicy">> => core_network_policy()
 %% }
 -type get_core_network_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% path_component() :: #{
@@ -356,6 +375,7 @@
 %% }
 -type path_component() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_network_resource_counts_response() :: #{
 %%   <<"NetworkResourceCounts">> => list(network_resource_count()()),
@@ -363,15 +383,18 @@
 %% }
 -type get_network_resource_counts_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_link_request() :: #{
 %%   <<"DeviceId">> := string(),
 %%   <<"LinkId">> := string()
 %% }
 -type associate_link_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_transit_gateway_peering_request() :: #{}
 -type get_transit_gateway_peering_request() :: #{}.
+
 
 %% Example:
 %% delete_core_network_response() :: #{
@@ -379,20 +402,24 @@
 %% }
 -type delete_core_network_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% connect_attachment_options() :: #{
 %%   <<"Protocol">> => list(any())
 %% }
 -type connect_attachment_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_device_response() :: #{
 %%   <<"Device">> => device()
 %% }
 -type create_device_response() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_transit_gateway_connect_peer_request() :: #{}
 -type disassociate_transit_gateway_connect_peer_request() :: #{}.
+
 
 %% Example:
 %% route_analysis() :: #{
@@ -410,6 +437,7 @@
 %% }
 -type route_analysis() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_network_resources_response() :: #{
 %%   <<"NetworkResources">> => list(network_resource()()),
@@ -417,11 +445,13 @@
 %% }
 -type get_network_resources_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_global_network_request() :: #{
 %%   <<"Description">> => string()
 %% }
 -type update_global_network_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_connect_peer_associations_request() :: #{
@@ -431,6 +461,7 @@
 %% }
 -type get_connect_peer_associations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_global_network_request() :: #{
 %%   <<"Description">> => string(),
@@ -438,11 +469,13 @@
 %% }
 -type create_global_network_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_site_to_site_vpn_attachment_response() :: #{
 %%   <<"SiteToSiteVpnAttachment">> => site_to_site_vpn_attachment()
 %% }
 -type create_site_to_site_vpn_attachment_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% vpc_attachment() :: #{
@@ -451,9 +484,11 @@
 %%   <<"SubnetArns">> => list(string()())
 %% }
 -type vpc_attachment() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% update_device_request() :: #{
@@ -468,12 +503,14 @@
 %% }
 -type update_device_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_core_network_change_events_response() :: #{
 %%   <<"CoreNetworkChangeEvents">> => list(core_network_change_event()()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_core_network_change_events_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_core_network_change_set_response() :: #{
@@ -482,6 +519,7 @@
 %% }
 -type get_core_network_change_set_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_network_resource_relationships_response() :: #{
 %%   <<"NextToken">> => string(),
@@ -489,15 +527,18 @@
 %% }
 -type get_network_resource_relationships_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% site_to_site_vpn_attachment() :: #{
 %%   <<"Attachment">> => attachment(),
 %%   <<"VpnConnectionArn">> => string()
 %% }
 -type site_to_site_vpn_attachment() :: #{binary() => any()}.
+
 %% Example:
 %% accept_attachment_request() :: #{}
 -type accept_attachment_request() :: #{}.
+
 
 %% Example:
 %% relationship() :: #{
@@ -506,6 +547,7 @@
 %% }
 -type relationship() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_global_networks_response() :: #{
 %%   <<"GlobalNetworks">> => list(global_network()()),
@@ -513,12 +555,14 @@
 %% }
 -type describe_global_networks_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_network_telemetry_response() :: #{
 %%   <<"NetworkTelemetry">> => list(network_telemetry()()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_network_telemetry_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% transit_gateway_connect_peer_association() :: #{
@@ -530,6 +574,7 @@
 %% }
 -type transit_gateway_connect_peer_association() :: #{binary() => any()}.
 
+
 %% Example:
 %% connect_peer_configuration() :: #{
 %%   <<"BgpConfigurations">> => list(connect_peer_bgp_configuration()()),
@@ -540,6 +585,7 @@
 %% }
 -type connect_peer_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_transit_gateway_route_table_attachment_request() :: #{
 %%   <<"ClientToken">> => string(),
@@ -548,6 +594,7 @@
 %%   <<"TransitGatewayRouteTableArn">> := string()
 %% }
 -type create_transit_gateway_route_table_attachment_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_connections_request() :: #{
@@ -558,11 +605,13 @@
 %% }
 -type get_connections_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_site_to_site_vpn_attachment_response() :: #{
 %%   <<"SiteToSiteVpnAttachment">> => site_to_site_vpn_attachment()
 %% }
 -type get_site_to_site_vpn_attachment_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_site_to_site_vpn_attachment_request() :: #{
@@ -573,6 +622,7 @@
 %% }
 -type create_site_to_site_vpn_attachment_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_core_network_request() :: #{
 %%   <<"ClientToken">> => string(),
@@ -582,6 +632,7 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type create_core_network_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% attachment() :: #{
@@ -602,17 +653,20 @@
 %% }
 -type attachment() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_site_response() :: #{
 %%   <<"Site">> => site()
 %% }
 -type delete_site_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_resource_policy_response() :: #{
 %%   <<"PolicyDocument">> => string()
 %% }
 -type get_resource_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% link() :: #{
@@ -629,9 +683,11 @@
 %%   <<"Type">> => string()
 %% }
 -type link() :: #{binary() => any()}.
+
 %% Example:
 %% delete_device_request() :: #{}
 -type delete_device_request() :: #{}.
+
 
 %% Example:
 %% put_core_network_policy_request() :: #{
@@ -641,6 +697,7 @@
 %%   <<"PolicyDocument">> := string()
 %% }
 -type put_core_network_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% network_route_destination() :: #{
@@ -652,12 +709,15 @@
 %%   <<"TransitGatewayAttachmentId">> => string()
 %% }
 -type network_route_destination() :: #{binary() => any()}.
+
 %% Example:
 %% delete_link_request() :: #{}
 -type delete_link_request() :: #{}.
+
 %% Example:
 %% get_connect_peer_request() :: #{}
 -type get_connect_peer_request() :: #{}.
+
 
 %% Example:
 %% update_vpc_attachment_request() :: #{
@@ -667,11 +727,13 @@
 %% }
 -type update_vpc_attachment_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_connect_peer_response() :: #{
 %%   <<"ConnectPeer">> => connect_peer()
 %% }
 -type delete_connect_peer_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_global_networks_request() :: #{
@@ -681,6 +743,7 @@
 %% }
 -type describe_global_networks_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% route_analysis_path() :: #{
 %%   <<"CompletionStatus">> => route_analysis_completion(),
@@ -688,12 +751,14 @@
 %% }
 -type route_analysis_path() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_connections_response() :: #{
 %%   <<"Connections">> => list(connection()()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_connections_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_network_routes_request() :: #{
@@ -709,17 +774,20 @@
 %% }
 -type get_network_routes_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_link_response() :: #{
 %%   <<"Link">> => link()
 %% }
 -type create_link_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_network_routes_response() :: #{
@@ -730,9 +798,11 @@
 %%   <<"RouteTableType">> => list(any())
 %% }
 -type get_network_routes_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_core_network_request() :: #{}
 -type get_core_network_request() :: #{}.
+
 
 %% Example:
 %% account_status() :: #{
@@ -741,14 +811,17 @@
 %% }
 -type account_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% register_transit_gateway_response() :: #{
 %%   <<"TransitGatewayRegistration">> => transit_gateway_registration()
 %% }
 -type register_transit_gateway_response() :: #{binary() => any()}.
+
 %% Example:
 %% execute_core_network_change_set_request() :: #{}
 -type execute_core_network_change_set_request() :: #{}.
+
 
 %% Example:
 %% create_site_request() :: #{
@@ -758,17 +831,20 @@
 %% }
 -type create_site_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_route_analysis_response() :: #{
 %%   <<"RouteAnalysis">> => route_analysis()
 %% }
 -type start_route_analysis_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_organization_service_access_update_response() :: #{
 %%   <<"OrganizationStatus">> => organization_status()
 %% }
 -type start_organization_service_access_update_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_transit_gateway_registrations_request() :: #{
@@ -778,11 +854,13 @@
 %% }
 -type get_transit_gateway_registrations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_organization_service_access_update_request() :: #{
 %%   <<"Action">> := string()
 %% }
 -type start_organization_service_access_update_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% connect_peer_association() :: #{
@@ -793,9 +871,11 @@
 %%   <<"State">> => list(any())
 %% }
 -type connect_peer_association() :: #{binary() => any()}.
+
 %% Example:
 %% get_site_to_site_vpn_attachment_request() :: #{}
 -type get_site_to_site_vpn_attachment_request() :: #{}.
+
 
 %% Example:
 %% core_network_edge() :: #{
@@ -804,9 +884,11 @@
 %%   <<"InsideCidrBlocks">> => list(string()())
 %% }
 -type core_network_edge() :: #{binary() => any()}.
+
 %% Example:
 %% get_route_analysis_request() :: #{}
 -type get_route_analysis_request() :: #{}.
+
 
 %% Example:
 %% link_association() :: #{
@@ -817,6 +899,7 @@
 %% }
 -type link_association() :: #{binary() => any()}.
 
+
 %% Example:
 %% route_analysis_endpoint_options() :: #{
 %%   <<"IpAddress">> => string(),
@@ -825,14 +908,17 @@
 %% }
 -type route_analysis_endpoint_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_connect_peer_response() :: #{
 %%   <<"ConnectPeer">> => connect_peer()
 %% }
 -type create_connect_peer_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_connect_attachment_request() :: #{}
 -type get_connect_attachment_request() :: #{}.
+
 
 %% Example:
 %% create_connect_attachment_request() :: #{
@@ -844,9 +930,11 @@
 %%   <<"TransportAttachmentId">> := string()
 %% }
 -type create_connect_attachment_request() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_connect_peer_request() :: #{}
 -type disassociate_connect_peer_request() :: #{}.
+
 
 %% Example:
 %% list_peerings_request() :: #{
@@ -859,6 +947,7 @@
 %% }
 -type list_peerings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% disassociate_link_request() :: #{
 %%   <<"DeviceId">> := string(),
@@ -866,11 +955,13 @@
 %% }
 -type disassociate_link_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_site_response() :: #{
 %%   <<"Site">> => site()
 %% }
 -type update_site_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_transit_gateway_peering_request() :: #{
@@ -881,6 +972,7 @@
 %% }
 -type create_transit_gateway_peering_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_customer_gateway_request() :: #{
 %%   <<"CustomerGatewayArn">> := string(),
@@ -889,11 +981,13 @@
 %% }
 -type associate_customer_gateway_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_transit_gateway_route_table_attachment_response() :: #{
 %%   <<"TransitGatewayRouteTableAttachment">> => transit_gateway_route_table_attachment()
 %% }
 -type create_transit_gateway_route_table_attachment_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% core_network_change_values() :: #{
@@ -907,11 +1001,13 @@
 %% }
 -type core_network_change_values() :: #{binary() => any()}.
 
+
 %% Example:
 %% disassociate_connect_peer_response() :: #{
 %%   <<"ConnectPeerAssociation">> => connect_peer_association()
 %% }
 -type disassociate_connect_peer_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_network_resources_request() :: #{
@@ -926,6 +1022,7 @@
 %% }
 -type get_network_resources_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_link_associations_request() :: #{
 %%   <<"DeviceId">> => string(),
@@ -935,17 +1032,20 @@
 %% }
 -type get_link_associations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_core_network_response() :: #{
 %%   <<"CoreNetwork">> => core_network()
 %% }
 -type create_core_network_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_core_network_policy_response() :: #{
 %%   <<"CoreNetworkPolicy">> => core_network_policy()
 %% }
 -type put_core_network_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_link_request() :: #{
@@ -958,11 +1058,13 @@
 %% }
 -type create_link_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_connect_peer_response() :: #{
 %%   <<"ConnectPeerAssociation">> => connect_peer_association()
 %% }
 -type associate_connect_peer_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% network_route() :: #{
@@ -973,9 +1075,11 @@
 %%   <<"Type">> => list(any())
 %% }
 -type network_route() :: #{binary() => any()}.
+
 %% Example:
 %% execute_core_network_change_set_response() :: #{}
 -type execute_core_network_change_set_response() :: #{}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -984,6 +1088,7 @@
 %%   <<"ResourceType">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -994,17 +1099,20 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% bgp_options() :: #{
 %%   <<"PeerAsn">> => float()
 %% }
 -type bgp_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% reject_attachment_response() :: #{
 %%   <<"Attachment">> => attachment()
 %% }
 -type reject_attachment_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% route_analysis_completion() :: #{
@@ -1014,12 +1122,14 @@
 %% }
 -type route_analysis_completion() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Value">> => string()
 %% }
 -type tag() :: #{binary() => any()}.
+
 
 %% Example:
 %% connection() :: #{
@@ -1037,20 +1147,24 @@
 %% }
 -type connection() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_network_resource_metadata_request() :: #{
 %%   <<"Metadata">> := map()
 %% }
 -type update_network_resource_metadata_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% restore_core_network_policy_version_response() :: #{
 %%   <<"CoreNetworkPolicy">> => core_network_policy()
 %% }
 -type restore_core_network_policy_version_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_attachment_request() :: #{}
 -type delete_attachment_request() :: #{}.
+
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
@@ -1062,6 +1176,7 @@
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_sites_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -1070,11 +1185,13 @@
 %% }
 -type get_sites_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_connect_attachment_response() :: #{
 %%   <<"ConnectAttachment">> => connect_attachment()
 %% }
 -type get_connect_attachment_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% connect_peer_bgp_configuration() :: #{
@@ -1085,12 +1202,14 @@
 %% }
 -type connect_peer_bgp_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_connect_peer_associations_response() :: #{
 %%   <<"ConnectPeerAssociations">> => list(connect_peer_association()()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_connect_peer_associations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% peering() :: #{
@@ -1107,6 +1226,7 @@
 %% }
 -type peering() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_organization_service_access_status_response() :: #{
 %%   <<"NextToken">> => string(),
@@ -1114,11 +1234,13 @@
 %% }
 -type list_organization_service_access_status_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_vpc_attachment_response() :: #{
 %%   <<"VpcAttachment">> => vpc_attachment()
 %% }
 -type update_vpc_attachment_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% customer_gateway_association() :: #{
@@ -1129,9 +1251,11 @@
 %%   <<"State">> => list(any())
 %% }
 -type customer_gateway_association() :: #{binary() => any()}.
+
 %% Example:
 %% delete_site_request() :: #{}
 -type delete_site_request() :: #{}.
+
 
 %% Example:
 %% site() :: #{
@@ -1145,6 +1269,7 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type site() :: #{binary() => any()}.
+
 
 %% Example:
 %% core_network() :: #{
@@ -1160,6 +1285,7 @@
 %% }
 -type core_network() :: #{binary() => any()}.
 
+
 %% Example:
 %% network_resource_summary() :: #{
 %%   <<"Definition">> => string(),
@@ -1171,6 +1297,7 @@
 %% }
 -type network_resource_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% transit_gateway_registration() :: #{
 %%   <<"GlobalNetworkId">> => string(),
@@ -1179,11 +1306,13 @@
 %% }
 -type transit_gateway_registration() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"TagList">> => list(tag()())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_connect_peers_request() :: #{
@@ -1194,17 +1323,20 @@
 %% }
 -type list_connect_peers_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_core_network_policy_version_response() :: #{
 %%   <<"CoreNetworkPolicy">> => core_network_policy()
 %% }
 -type delete_core_network_policy_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_connection_response() :: #{
 %%   <<"Connection">> => connection()
 %% }
 -type update_connection_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% core_network_change() :: #{
@@ -1216,9 +1348,11 @@
 %%   <<"Type">> => list(any())
 %% }
 -type core_network_change() :: #{binary() => any()}.
+
 %% Example:
 %% deregister_transit_gateway_request() :: #{}
 -type deregister_transit_gateway_request() :: #{}.
+
 
 %% Example:
 %% validation_exception_field() :: #{
@@ -1227,11 +1361,13 @@
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_link_response() :: #{
 %%   <<"Link">> => link()
 %% }
 -type update_link_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% location() :: #{
@@ -1241,11 +1377,13 @@
 %% }
 -type location() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_connect_peer_response() :: #{
 %%   <<"ConnectPeer">> => connect_peer()
 %% }
 -type get_connect_peer_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_core_networks_response() :: #{
@@ -1253,6 +1391,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_core_networks_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% connect_peer_summary() :: #{
@@ -1266,15 +1405,18 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type connect_peer_summary() :: #{binary() => any()}.
+
 %% Example:
 %% get_resource_policy_request() :: #{}
 -type get_resource_policy_request() :: #{}.
+
 
 %% Example:
 %% delete_global_network_response() :: #{
 %%   <<"GlobalNetwork">> => global_network()
 %% }
 -type delete_global_network_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_attachments_request() :: #{
@@ -1287,15 +1429,18 @@
 %% }
 -type list_attachments_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% core_network_policy_exception() :: #{
 %%   <<"Errors">> => list(core_network_policy_error()()),
 %%   <<"Message">> => string()
 %% }
 -type core_network_policy_exception() :: #{binary() => any()}.
+
 %% Example:
 %% restore_core_network_policy_version_request() :: #{}
 -type restore_core_network_policy_version_request() :: #{}.
+
 
 %% Example:
 %% global_network() :: #{
@@ -1308,11 +1453,13 @@
 %% }
 -type global_network() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_device_response() :: #{
 %%   <<"Device">> => device()
 %% }
 -type delete_device_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_links_response() :: #{
@@ -1321,12 +1468,14 @@
 %% }
 -type get_links_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RetryAfterSeconds">> => integer()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_vpc_attachment_request() :: #{
@@ -1338,6 +1487,7 @@
 %%   <<"VpcArn">> := string()
 %% }
 -type create_vpc_attachment_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% core_network_policy() :: #{
@@ -1352,11 +1502,13 @@
 %% }
 -type core_network_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% register_transit_gateway_request() :: #{
 %%   <<"TransitGatewayArn">> := string()
 %% }
 -type register_transit_gateway_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_site_request() :: #{
@@ -1365,6 +1517,7 @@
 %% }
 -type update_site_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_connect_peer_request() :: #{
 %%   <<"ConnectPeerId">> := string(),
@@ -1372,9 +1525,11 @@
 %%   <<"LinkId">> => string()
 %% }
 -type associate_connect_peer_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_connect_peer_request() :: #{}
 -type delete_connect_peer_request() :: #{}.
+
 
 %% Example:
 %% get_link_associations_response() :: #{
@@ -1383,6 +1538,7 @@
 %% }
 -type get_link_associations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% transit_gateway_route_table_attachment() :: #{
 %%   <<"Attachment">> => attachment(),
@@ -1390,6 +1546,7 @@
 %%   <<"TransitGatewayRouteTableArn">> => string()
 %% }
 -type transit_gateway_route_table_attachment() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_device_request() :: #{
@@ -1405,11 +1562,13 @@
 %% }
 -type create_device_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% disassociate_customer_gateway_response() :: #{
 %%   <<"CustomerGatewayAssociation">> => customer_gateway_association()
 %% }
 -type disassociate_customer_gateway_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_peering_response() :: #{
@@ -1417,11 +1576,13 @@
 %% }
 -type delete_peering_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_vpc_attachment_response() :: #{
 %%   <<"VpcAttachment">> => vpc_attachment()
 %% }
 -type create_vpc_attachment_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_resource_policy_request() :: #{
@@ -1429,11 +1590,13 @@
 %% }
 -type put_resource_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_transit_gateway_peering_response() :: #{
 %%   <<"TransitGatewayPeering">> => transit_gateway_peering()
 %% }
 -type get_transit_gateway_peering_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% core_network_change_event_values() :: #{
@@ -1443,21 +1606,26 @@
 %%   <<"SegmentName">> => string()
 %% }
 -type core_network_change_event_values() :: #{binary() => any()}.
+
 %% Example:
 %% get_transit_gateway_route_table_attachment_request() :: #{}
 -type get_transit_gateway_route_table_attachment_request() :: #{}.
+
 
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_core_network_request() :: #{}
 -type delete_core_network_request() :: #{}.
+
 %% Example:
 %% delete_global_network_request() :: #{}
 -type delete_global_network_request() :: #{}.
+
 
 %% Example:
 %% list_core_networks_request() :: #{
@@ -1466,12 +1634,14 @@
 %% }
 -type list_core_networks_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_devices_response() :: #{
 %%   <<"Devices">> => list(device()()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_devices_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% network_resource_count() :: #{
@@ -1480,11 +1650,13 @@
 %% }
 -type network_resource_count() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_global_network_response() :: #{
 %%   <<"GlobalNetwork">> => global_network()
 %% }
 -type create_global_network_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% disassociate_link_response() :: #{
@@ -1492,15 +1664,18 @@
 %% }
 -type disassociate_link_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% bandwidth() :: #{
 %%   <<"DownloadSpeed">> => integer(),
 %%   <<"UploadSpeed">> => integer()
 %% }
 -type bandwidth() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% create_connect_attachment_response() :: #{
@@ -1508,11 +1683,13 @@
 %% }
 -type create_connect_attachment_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_transit_gateway_connect_peer_response() :: #{
 %%   <<"TransitGatewayConnectPeerAssociation">> => transit_gateway_connect_peer_association()
 %% }
 -type associate_transit_gateway_connect_peer_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% connect_attachment() :: #{
@@ -1522,17 +1699,20 @@
 %% }
 -type connect_attachment() :: #{binary() => any()}.
 
+
 %% Example:
 %% disassociate_transit_gateway_connect_peer_response() :: #{
 %%   <<"TransitGatewayConnectPeerAssociation">> => transit_gateway_connect_peer_association()
 %% }
 -type disassociate_transit_gateway_connect_peer_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% accept_attachment_response() :: #{
 %%   <<"Attachment">> => attachment()
 %% }
 -type accept_attachment_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% core_network_policy_error() :: #{
@@ -1542,11 +1722,13 @@
 %% }
 -type core_network_policy_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_connection_response() :: #{
 %%   <<"Connection">> => connection()
 %% }
 -type delete_connection_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% validation_exception() :: #{
@@ -1555,15 +1737,18 @@
 %%   <<"Reason">> => list(any())
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% get_transit_gateway_route_table_attachment_response() :: #{
 %%   <<"TransitGatewayRouteTableAttachment">> => transit_gateway_route_table_attachment()
 %% }
 -type get_transit_gateway_route_table_attachment_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% core_network_segment() :: #{
@@ -1573,12 +1758,14 @@
 %% }
 -type core_network_segment() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_core_network_change_events_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type get_core_network_change_events_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% proposed_segment_change() :: #{
@@ -1587,9 +1774,11 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type proposed_segment_change() :: #{binary() => any()}.
+
 %% Example:
 %% reject_attachment_request() :: #{}
 -type reject_attachment_request() :: #{}.
+
 
 %% Example:
 %% transit_gateway_registration_state_reason() :: #{
@@ -1598,12 +1787,14 @@
 %% }
 -type transit_gateway_registration_state_reason() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RetryAfterSeconds">> => integer()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_customer_gateway_associations_request() :: #{
@@ -1613,11 +1804,13 @@
 %% }
 -type get_customer_gateway_associations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_global_network_response() :: #{
 %%   <<"GlobalNetwork">> => global_network()
 %% }
 -type update_global_network_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_customer_gateway_associations_response() :: #{
@@ -1626,12 +1819,14 @@
 %% }
 -type get_customer_gateway_associations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% vpc_options() :: #{
 %%   <<"ApplianceModeSupport">> => boolean(),
 %%   <<"Ipv6Support">> => boolean()
 %% }
 -type vpc_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% network_resource() :: #{
@@ -1648,9 +1843,11 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type network_resource() :: #{binary() => any()}.
+
 %% Example:
 %% put_resource_policy_response() :: #{}
 -type put_resource_policy_response() :: #{}.
+
 
 %% Example:
 %% route_table_identifier() :: #{
@@ -1658,6 +1855,7 @@
 %%   <<"TransitGatewayRouteTableArn">> => string()
 %% }
 -type route_table_identifier() :: #{binary() => any()}.
+
 
 %% Example:
 %% network_telemetry() :: #{
@@ -1673,6 +1871,7 @@
 %% }
 -type network_telemetry() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_route_analysis_request() :: #{
 %%   <<"Destination">> := route_analysis_endpoint_options_specification(),
@@ -1682,11 +1881,13 @@
 %% }
 -type start_route_analysis_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_connection_response() :: #{
 %%   <<"Connection">> => connection()
 %% }
 -type create_connection_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% associate_transit_gateway_connect_peer_request() :: #{
@@ -1696,6 +1897,7 @@
 %% }
 -type associate_transit_gateway_connect_peer_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% core_network_segment_edge_identifier() :: #{
 %%   <<"CoreNetworkId">> => string(),
@@ -1703,9 +1905,11 @@
 %%   <<"SegmentName">> => string()
 %% }
 -type core_network_segment_edge_identifier() :: #{binary() => any()}.
+
 %% Example:
 %% delete_resource_policy_request() :: #{}
 -type delete_resource_policy_request() :: #{}.
+
 
 %% Example:
 %% get_core_network_change_set_request() :: #{
@@ -1713,6 +1917,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type get_core_network_change_set_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% connect_peer() :: #{
@@ -1728,6 +1933,7 @@
 %% }
 -type connect_peer() :: #{binary() => any()}.
 
+
 %% Example:
 %% connection_health() :: #{
 %%   <<"Status">> => list(any()),
@@ -1735,6 +1941,7 @@
 %%   <<"Type">> => list(any())
 %% }
 -type connection_health() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_links_request() :: #{
@@ -1747,12 +1954,14 @@
 %% }
 -type get_links_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_network_resource_metadata_response() :: #{
 %%   <<"Metadata">> => map(),
 %%   <<"ResourceArn">> => string()
 %% }
 -type update_network_resource_metadata_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_location() :: #{
@@ -1761,12 +1970,14 @@
 %% }
 -type aws_location() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_organization_service_access_status_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_organization_service_access_status_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% device() :: #{
@@ -1787,6 +1998,7 @@
 %% }
 -type device() :: #{binary() => any()}.
 
+
 %% Example:
 %% core_network_change_event() :: #{
 %%   <<"Action">> => list(any()),
@@ -1797,9 +2009,11 @@
 %%   <<"Values">> => core_network_change_event_values()
 %% }
 -type core_network_change_event() :: #{binary() => any()}.
+
 %% Example:
 %% get_vpc_attachment_request() :: #{}
 -type get_vpc_attachment_request() :: #{}.
+
 
 %% Example:
 %% get_core_network_response() :: #{
@@ -1807,11 +2021,13 @@
 %% }
 -type get_core_network_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_site_response() :: #{
 %%   <<"Site">> => site()
 %% }
 -type create_site_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% core_network_summary() :: #{
@@ -1824,9 +2040,11 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type core_network_summary() :: #{binary() => any()}.
+
 %% Example:
 %% delete_connection_request() :: #{}
 -type delete_connection_request() :: #{}.
+
 
 %% Example:
 %% list_core_network_policy_versions_response() :: #{
@@ -1835,6 +2053,7 @@
 %% }
 -type list_core_network_policy_versions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_connect_peers_response() :: #{
 %%   <<"ConnectPeers">> => list(connect_peer_summary()()),
@@ -1842,12 +2061,14 @@
 %% }
 -type list_connect_peers_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_peerings_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Peerings">> => list(peering()())
 %% }
 -type list_peerings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_network_resource_relationships_request() :: #{
@@ -1862,11 +2083,13 @@
 %% }
 -type get_network_resource_relationships_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_route_analysis_response() :: #{
 %%   <<"RouteAnalysis">> => route_analysis()
 %% }
 -type get_route_analysis_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_core_network_response() :: #{
@@ -1874,21 +2097,25 @@
 %% }
 -type update_core_network_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_sites_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Sites">> => list(site()())
 %% }
 -type get_sites_response() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_customer_gateway_request() :: #{}
 -type disassociate_customer_gateway_request() :: #{}.
+
 
 %% Example:
 %% update_core_network_request() :: #{
 %%   <<"Description">> => string()
 %% }
 -type update_core_network_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_transit_gateway_registrations_response() :: #{
@@ -1897,17 +2124,20 @@
 %% }
 -type get_transit_gateway_registrations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_attachment_response() :: #{
 %%   <<"Attachment">> => attachment()
 %% }
 -type delete_attachment_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_link_response() :: #{
 %%   <<"LinkAssociation">> => link_association()
 %% }
 -type associate_link_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_connection_request() :: #{
@@ -1920,12 +2150,14 @@
 %% }
 -type create_connection_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_attachments_response() :: #{
 %%   <<"Attachments">> => list(attachment()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_attachments_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% route_analysis_endpoint_options_specification() :: #{
@@ -1934,11 +2166,13 @@
 %% }
 -type route_analysis_endpoint_options_specification() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_vpc_attachment_response() :: #{
 %%   <<"VpcAttachment">> => vpc_attachment()
 %% }
 -type get_vpc_attachment_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_link_request() :: #{
@@ -1949,6 +2183,7 @@
 %% }
 -type update_link_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% organization_status() :: #{
 %%   <<"AccountStatusList">> => list(account_status()()),
@@ -1957,6 +2192,7 @@
 %%   <<"SLRDeploymentStatus">> => string()
 %% }
 -type organization_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_connect_peer_request() :: #{
@@ -1970,9 +2206,656 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type create_connect_peer_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_core_network_policy_version_request() :: #{}
 -type delete_core_network_policy_version_request() :: #{}.
+
+-type accept_attachment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type associate_connect_peer_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type associate_customer_gateway_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type associate_link_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type associate_transit_gateway_connect_peer_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_connect_attachment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_connect_peer_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_connection_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_core_network_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    core_network_policy_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_device_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_global_network_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_link_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_site_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_site_to_site_vpn_attachment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_transit_gateway_peering_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_transit_gateway_route_table_attachment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_vpc_attachment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_attachment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_connect_peer_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_connection_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_core_network_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_core_network_policy_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_device_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_global_network_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_link_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_peering_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_resource_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_site_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type deregister_transit_gateway_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_global_networks_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type disassociate_connect_peer_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type disassociate_customer_gateway_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type disassociate_link_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type disassociate_transit_gateway_connect_peer_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type execute_core_network_change_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_connect_attachment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_connect_peer_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_connect_peer_associations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_connections_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_core_network_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_core_network_change_events_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_core_network_change_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_core_network_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_customer_gateway_associations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_devices_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_link_associations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_links_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_network_resource_counts_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type get_network_resource_relationships_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_network_resources_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_network_routes_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_network_telemetry_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_resource_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type get_route_analysis_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_site_to_site_vpn_attachment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_sites_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_transit_gateway_connect_peer_associations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_transit_gateway_peering_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_transit_gateway_registrations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_transit_gateway_route_table_attachment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_vpc_attachment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_attachments_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_connect_peers_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_core_network_policy_versions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_core_networks_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_peerings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type put_core_network_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    core_network_policy_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type put_resource_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type register_transit_gateway_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type reject_attachment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type restore_core_network_policy_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_organization_service_access_update_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type start_route_analysis_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_connection_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_core_network_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_device_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_global_network_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_link_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_network_resource_metadata_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_site_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_vpc_attachment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -1986,24 +2869,14 @@
 -spec accept_attachment(map(), binary() | list(), accept_attachment_request()) ->
     {ok, accept_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, accept_attachment_errors(), tuple()}.
 accept_attachment(Client, AttachmentId, Input) ->
     accept_attachment(Client, AttachmentId, Input, []).
 
 -spec accept_attachment(map(), binary() | list(), accept_attachment_request(), proplists:proplist()) ->
     {ok, accept_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, accept_attachment_errors(), tuple()}.
 accept_attachment(Client, AttachmentId, Input0, Options0) ->
     Method = post,
     Path = ["/attachments/", aws_util:encode_uri(AttachmentId), "/accept"],
@@ -2037,26 +2910,14 @@ accept_attachment(Client, AttachmentId, Input0, Options0) ->
 -spec associate_connect_peer(map(), binary() | list(), associate_connect_peer_request()) ->
     {ok, associate_connect_peer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_connect_peer_errors(), tuple()}.
 associate_connect_peer(Client, GlobalNetworkId, Input) ->
     associate_connect_peer(Client, GlobalNetworkId, Input, []).
 
 -spec associate_connect_peer(map(), binary() | list(), associate_connect_peer_request(), proplists:proplist()) ->
     {ok, associate_connect_peer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_connect_peer_errors(), tuple()}.
 associate_connect_peer(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connect-peer-associations"],
@@ -2103,26 +2964,14 @@ associate_connect_peer(Client, GlobalNetworkId, Input0, Options0) ->
 -spec associate_customer_gateway(map(), binary() | list(), associate_customer_gateway_request()) ->
     {ok, associate_customer_gateway_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_customer_gateway_errors(), tuple()}.
 associate_customer_gateway(Client, GlobalNetworkId, Input) ->
     associate_customer_gateway(Client, GlobalNetworkId, Input, []).
 
 -spec associate_customer_gateway(map(), binary() | list(), associate_customer_gateway_request(), proplists:proplist()) ->
     {ok, associate_customer_gateway_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_customer_gateway_errors(), tuple()}.
 associate_customer_gateway(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/customer-gateway-associations"],
@@ -2153,26 +3002,14 @@ associate_customer_gateway(Client, GlobalNetworkId, Input0, Options0) ->
 -spec associate_link(map(), binary() | list(), associate_link_request()) ->
     {ok, associate_link_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_link_errors(), tuple()}.
 associate_link(Client, GlobalNetworkId, Input) ->
     associate_link(Client, GlobalNetworkId, Input, []).
 
 -spec associate_link(map(), binary() | list(), associate_link_request(), proplists:proplist()) ->
     {ok, associate_link_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_link_errors(), tuple()}.
 associate_link(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/link-associations"],
@@ -2210,26 +3047,14 @@ associate_link(Client, GlobalNetworkId, Input0, Options0) ->
 -spec associate_transit_gateway_connect_peer(map(), binary() | list(), associate_transit_gateway_connect_peer_request()) ->
     {ok, associate_transit_gateway_connect_peer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_transit_gateway_connect_peer_errors(), tuple()}.
 associate_transit_gateway_connect_peer(Client, GlobalNetworkId, Input) ->
     associate_transit_gateway_connect_peer(Client, GlobalNetworkId, Input, []).
 
 -spec associate_transit_gateway_connect_peer(map(), binary() | list(), associate_transit_gateway_connect_peer_request(), proplists:proplist()) ->
     {ok, associate_transit_gateway_connect_peer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_transit_gateway_connect_peer_errors(), tuple()}.
 associate_transit_gateway_connect_peer(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-connect-peer-associations"],
@@ -2264,24 +3089,14 @@ associate_transit_gateway_connect_peer(Client, GlobalNetworkId, Input0, Options0
 -spec create_connect_attachment(map(), create_connect_attachment_request()) ->
     {ok, create_connect_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_connect_attachment_errors(), tuple()}.
 create_connect_attachment(Client, Input) ->
     create_connect_attachment(Client, Input, []).
 
 -spec create_connect_attachment(map(), create_connect_attachment_request(), proplists:proplist()) ->
     {ok, create_connect_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_connect_attachment_errors(), tuple()}.
 create_connect_attachment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/connect-attachments"],
@@ -2312,24 +3127,14 @@ create_connect_attachment(Client, Input0, Options0) ->
 -spec create_connect_peer(map(), create_connect_peer_request()) ->
     {ok, create_connect_peer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_connect_peer_errors(), tuple()}.
 create_connect_peer(Client, Input) ->
     create_connect_peer(Client, Input, []).
 
 -spec create_connect_peer(map(), create_connect_peer_request(), proplists:proplist()) ->
     {ok, create_connect_peer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_connect_peer_errors(), tuple()}.
 create_connect_peer(Client, Input0, Options0) ->
     Method = post,
     Path = ["/connect-peers"],
@@ -2360,24 +3165,14 @@ create_connect_peer(Client, Input0, Options0) ->
 -spec create_connection(map(), binary() | list(), create_connection_request()) ->
     {ok, create_connection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_connection_errors(), tuple()}.
 create_connection(Client, GlobalNetworkId, Input) ->
     create_connection(Client, GlobalNetworkId, Input, []).
 
 -spec create_connection(map(), binary() | list(), create_connection_request(), proplists:proplist()) ->
     {ok, create_connection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_connection_errors(), tuple()}.
 create_connection(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connections"],
@@ -2405,26 +3200,14 @@ create_connection(Client, GlobalNetworkId, Input0, Options0) ->
 -spec create_core_network(map(), create_core_network_request()) ->
     {ok, create_core_network_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, core_network_policy_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_core_network_errors(), tuple()}.
 create_core_network(Client, Input) ->
     create_core_network(Client, Input, []).
 
 -spec create_core_network(map(), create_core_network_request(), proplists:proplist()) ->
     {ok, create_core_network_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, core_network_policy_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_core_network_errors(), tuple()}.
 create_core_network(Client, Input0, Options0) ->
     Method = post,
     Path = ["/core-networks"],
@@ -2455,26 +3238,14 @@ create_core_network(Client, Input0, Options0) ->
 -spec create_device(map(), binary() | list(), create_device_request()) ->
     {ok, create_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_device_errors(), tuple()}.
 create_device(Client, GlobalNetworkId, Input) ->
     create_device(Client, GlobalNetworkId, Input, []).
 
 -spec create_device(map(), binary() | list(), create_device_request(), proplists:proplist()) ->
     {ok, create_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_device_errors(), tuple()}.
 create_device(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/devices"],
@@ -2501,24 +3272,14 @@ create_device(Client, GlobalNetworkId, Input0, Options0) ->
 -spec create_global_network(map(), create_global_network_request()) ->
     {ok, create_global_network_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_global_network_errors(), tuple()}.
 create_global_network(Client, Input) ->
     create_global_network(Client, Input, []).
 
 -spec create_global_network(map(), create_global_network_request(), proplists:proplist()) ->
     {ok, create_global_network_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_global_network_errors(), tuple()}.
 create_global_network(Client, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks"],
@@ -2545,26 +3306,14 @@ create_global_network(Client, Input0, Options0) ->
 -spec create_link(map(), binary() | list(), create_link_request()) ->
     {ok, create_link_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_link_errors(), tuple()}.
 create_link(Client, GlobalNetworkId, Input) ->
     create_link(Client, GlobalNetworkId, Input, []).
 
 -spec create_link(map(), binary() | list(), create_link_request(), proplists:proplist()) ->
     {ok, create_link_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_link_errors(), tuple()}.
 create_link(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/links"],
@@ -2591,26 +3340,14 @@ create_link(Client, GlobalNetworkId, Input0, Options0) ->
 -spec create_site(map(), binary() | list(), create_site_request()) ->
     {ok, create_site_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_site_errors(), tuple()}.
 create_site(Client, GlobalNetworkId, Input) ->
     create_site(Client, GlobalNetworkId, Input, []).
 
 -spec create_site(map(), binary() | list(), create_site_request(), proplists:proplist()) ->
     {ok, create_site_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_site_errors(), tuple()}.
 create_site(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/sites"],
@@ -2638,24 +3375,14 @@ create_site(Client, GlobalNetworkId, Input0, Options0) ->
 -spec create_site_to_site_vpn_attachment(map(), create_site_to_site_vpn_attachment_request()) ->
     {ok, create_site_to_site_vpn_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_site_to_site_vpn_attachment_errors(), tuple()}.
 create_site_to_site_vpn_attachment(Client, Input) ->
     create_site_to_site_vpn_attachment(Client, Input, []).
 
 -spec create_site_to_site_vpn_attachment(map(), create_site_to_site_vpn_attachment_request(), proplists:proplist()) ->
     {ok, create_site_to_site_vpn_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_site_to_site_vpn_attachment_errors(), tuple()}.
 create_site_to_site_vpn_attachment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/site-to-site-vpn-attachments"],
@@ -2682,24 +3409,14 @@ create_site_to_site_vpn_attachment(Client, Input0, Options0) ->
 -spec create_transit_gateway_peering(map(), create_transit_gateway_peering_request()) ->
     {ok, create_transit_gateway_peering_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_transit_gateway_peering_errors(), tuple()}.
 create_transit_gateway_peering(Client, Input) ->
     create_transit_gateway_peering(Client, Input, []).
 
 -spec create_transit_gateway_peering(map(), create_transit_gateway_peering_request(), proplists:proplist()) ->
     {ok, create_transit_gateway_peering_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_transit_gateway_peering_errors(), tuple()}.
 create_transit_gateway_peering(Client, Input0, Options0) ->
     Method = post,
     Path = ["/transit-gateway-peerings"],
@@ -2726,24 +3443,14 @@ create_transit_gateway_peering(Client, Input0, Options0) ->
 -spec create_transit_gateway_route_table_attachment(map(), create_transit_gateway_route_table_attachment_request()) ->
     {ok, create_transit_gateway_route_table_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_transit_gateway_route_table_attachment_errors(), tuple()}.
 create_transit_gateway_route_table_attachment(Client, Input) ->
     create_transit_gateway_route_table_attachment(Client, Input, []).
 
 -spec create_transit_gateway_route_table_attachment(map(), create_transit_gateway_route_table_attachment_request(), proplists:proplist()) ->
     {ok, create_transit_gateway_route_table_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_transit_gateway_route_table_attachment_errors(), tuple()}.
 create_transit_gateway_route_table_attachment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/transit-gateway-route-table-attachments"],
@@ -2770,24 +3477,14 @@ create_transit_gateway_route_table_attachment(Client, Input0, Options0) ->
 -spec create_vpc_attachment(map(), create_vpc_attachment_request()) ->
     {ok, create_vpc_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_vpc_attachment_errors(), tuple()}.
 create_vpc_attachment(Client, Input) ->
     create_vpc_attachment(Client, Input, []).
 
 -spec create_vpc_attachment(map(), create_vpc_attachment_request(), proplists:proplist()) ->
     {ok, create_vpc_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_vpc_attachment_errors(), tuple()}.
 create_vpc_attachment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/vpc-attachments"],
@@ -2816,24 +3513,14 @@ create_vpc_attachment(Client, Input0, Options0) ->
 -spec delete_attachment(map(), binary() | list(), delete_attachment_request()) ->
     {ok, delete_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_attachment_errors(), tuple()}.
 delete_attachment(Client, AttachmentId, Input) ->
     delete_attachment(Client, AttachmentId, Input, []).
 
 -spec delete_attachment(map(), binary() | list(), delete_attachment_request(), proplists:proplist()) ->
     {ok, delete_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_attachment_errors(), tuple()}.
 delete_attachment(Client, AttachmentId, Input0, Options0) ->
     Method = delete,
     Path = ["/attachments/", aws_util:encode_uri(AttachmentId), ""],
@@ -2860,24 +3547,14 @@ delete_attachment(Client, AttachmentId, Input0, Options0) ->
 -spec delete_connect_peer(map(), binary() | list(), delete_connect_peer_request()) ->
     {ok, delete_connect_peer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_connect_peer_errors(), tuple()}.
 delete_connect_peer(Client, ConnectPeerId, Input) ->
     delete_connect_peer(Client, ConnectPeerId, Input, []).
 
 -spec delete_connect_peer(map(), binary() | list(), delete_connect_peer_request(), proplists:proplist()) ->
     {ok, delete_connect_peer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_connect_peer_errors(), tuple()}.
 delete_connect_peer(Client, ConnectPeerId, Input0, Options0) ->
     Method = delete,
     Path = ["/connect-peers/", aws_util:encode_uri(ConnectPeerId), ""],
@@ -2904,24 +3581,14 @@ delete_connect_peer(Client, ConnectPeerId, Input0, Options0) ->
 -spec delete_connection(map(), binary() | list(), binary() | list(), delete_connection_request()) ->
     {ok, delete_connection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_connection_errors(), tuple()}.
 delete_connection(Client, ConnectionId, GlobalNetworkId, Input) ->
     delete_connection(Client, ConnectionId, GlobalNetworkId, Input, []).
 
 -spec delete_connection(map(), binary() | list(), binary() | list(), delete_connection_request(), proplists:proplist()) ->
     {ok, delete_connection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_connection_errors(), tuple()}.
 delete_connection(Client, ConnectionId, GlobalNetworkId, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connections/", aws_util:encode_uri(ConnectionId), ""],
@@ -2950,24 +3617,14 @@ delete_connection(Client, ConnectionId, GlobalNetworkId, Input0, Options0) ->
 -spec delete_core_network(map(), binary() | list(), delete_core_network_request()) ->
     {ok, delete_core_network_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_core_network_errors(), tuple()}.
 delete_core_network(Client, CoreNetworkId, Input) ->
     delete_core_network(Client, CoreNetworkId, Input, []).
 
 -spec delete_core_network(map(), binary() | list(), delete_core_network_request(), proplists:proplist()) ->
     {ok, delete_core_network_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_core_network_errors(), tuple()}.
 delete_core_network(Client, CoreNetworkId, Input0, Options0) ->
     Method = delete,
     Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), ""],
@@ -2996,24 +3653,14 @@ delete_core_network(Client, CoreNetworkId, Input0, Options0) ->
 -spec delete_core_network_policy_version(map(), binary() | list(), binary() | list(), delete_core_network_policy_version_request()) ->
     {ok, delete_core_network_policy_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_core_network_policy_version_errors(), tuple()}.
 delete_core_network_policy_version(Client, CoreNetworkId, PolicyVersionId, Input) ->
     delete_core_network_policy_version(Client, CoreNetworkId, PolicyVersionId, Input, []).
 
 -spec delete_core_network_policy_version(map(), binary() | list(), binary() | list(), delete_core_network_policy_version_request(), proplists:proplist()) ->
     {ok, delete_core_network_policy_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_core_network_policy_version_errors(), tuple()}.
 delete_core_network_policy_version(Client, CoreNetworkId, PolicyVersionId, Input0, Options0) ->
     Method = delete,
     Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), "/core-network-policy-versions/", aws_util:encode_uri(PolicyVersionId), ""],
@@ -3043,24 +3690,14 @@ delete_core_network_policy_version(Client, CoreNetworkId, PolicyVersionId, Input
 -spec delete_device(map(), binary() | list(), binary() | list(), delete_device_request()) ->
     {ok, delete_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_device_errors(), tuple()}.
 delete_device(Client, DeviceId, GlobalNetworkId, Input) ->
     delete_device(Client, DeviceId, GlobalNetworkId, Input, []).
 
 -spec delete_device(map(), binary() | list(), binary() | list(), delete_device_request(), proplists:proplist()) ->
     {ok, delete_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_device_errors(), tuple()}.
 delete_device(Client, DeviceId, GlobalNetworkId, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/devices/", aws_util:encode_uri(DeviceId), ""],
@@ -3091,24 +3728,14 @@ delete_device(Client, DeviceId, GlobalNetworkId, Input0, Options0) ->
 -spec delete_global_network(map(), binary() | list(), delete_global_network_request()) ->
     {ok, delete_global_network_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_global_network_errors(), tuple()}.
 delete_global_network(Client, GlobalNetworkId, Input) ->
     delete_global_network(Client, GlobalNetworkId, Input, []).
 
 -spec delete_global_network(map(), binary() | list(), delete_global_network_request(), proplists:proplist()) ->
     {ok, delete_global_network_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_global_network_errors(), tuple()}.
 delete_global_network(Client, GlobalNetworkId, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), ""],
@@ -3138,24 +3765,14 @@ delete_global_network(Client, GlobalNetworkId, Input0, Options0) ->
 -spec delete_link(map(), binary() | list(), binary() | list(), delete_link_request()) ->
     {ok, delete_link_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_link_errors(), tuple()}.
 delete_link(Client, GlobalNetworkId, LinkId, Input) ->
     delete_link(Client, GlobalNetworkId, LinkId, Input, []).
 
 -spec delete_link(map(), binary() | list(), binary() | list(), delete_link_request(), proplists:proplist()) ->
     {ok, delete_link_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_link_errors(), tuple()}.
 delete_link(Client, GlobalNetworkId, LinkId, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/links/", aws_util:encode_uri(LinkId), ""],
@@ -3182,24 +3799,14 @@ delete_link(Client, GlobalNetworkId, LinkId, Input0, Options0) ->
 -spec delete_peering(map(), binary() | list(), delete_peering_request()) ->
     {ok, delete_peering_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_peering_errors(), tuple()}.
 delete_peering(Client, PeeringId, Input) ->
     delete_peering(Client, PeeringId, Input, []).
 
 -spec delete_peering(map(), binary() | list(), delete_peering_request(), proplists:proplist()) ->
     {ok, delete_peering_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_peering_errors(), tuple()}.
 delete_peering(Client, PeeringId, Input0, Options0) ->
     Method = delete,
     Path = ["/peerings/", aws_util:encode_uri(PeeringId), ""],
@@ -3229,22 +3836,14 @@ delete_peering(Client, PeeringId, Input0, Options0) ->
 -spec delete_resource_policy(map(), binary() | list(), delete_resource_policy_request()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, ResourceArn, Input) ->
     delete_resource_policy(Client, ResourceArn, Input, []).
 
 -spec delete_resource_policy(map(), binary() | list(), delete_resource_policy_request(), proplists:proplist()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/resource-policy/", aws_util:encode_uri(ResourceArn), ""],
@@ -3273,24 +3872,14 @@ delete_resource_policy(Client, ResourceArn, Input0, Options0) ->
 -spec delete_site(map(), binary() | list(), binary() | list(), delete_site_request()) ->
     {ok, delete_site_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_site_errors(), tuple()}.
 delete_site(Client, GlobalNetworkId, SiteId, Input) ->
     delete_site(Client, GlobalNetworkId, SiteId, Input, []).
 
 -spec delete_site(map(), binary() | list(), binary() | list(), delete_site_request(), proplists:proplist()) ->
     {ok, delete_site_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_site_errors(), tuple()}.
 delete_site(Client, GlobalNetworkId, SiteId, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/sites/", aws_util:encode_uri(SiteId), ""],
@@ -3321,24 +3910,14 @@ delete_site(Client, GlobalNetworkId, SiteId, Input0, Options0) ->
 -spec deregister_transit_gateway(map(), binary() | list(), binary() | list(), deregister_transit_gateway_request()) ->
     {ok, deregister_transit_gateway_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, deregister_transit_gateway_errors(), tuple()}.
 deregister_transit_gateway(Client, GlobalNetworkId, TransitGatewayArn, Input) ->
     deregister_transit_gateway(Client, GlobalNetworkId, TransitGatewayArn, Input, []).
 
 -spec deregister_transit_gateway(map(), binary() | list(), binary() | list(), deregister_transit_gateway_request(), proplists:proplist()) ->
     {ok, deregister_transit_gateway_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, deregister_transit_gateway_errors(), tuple()}.
 deregister_transit_gateway(Client, GlobalNetworkId, TransitGatewayArn, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-registrations/", aws_util:encode_uri(TransitGatewayArn), ""],
@@ -3372,11 +3951,7 @@ deregister_transit_gateway(Client, GlobalNetworkId, TransitGatewayArn, Input0, O
 -spec describe_global_networks(map()) ->
     {ok, describe_global_networks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_global_networks_errors(), tuple()}.
 describe_global_networks(Client)
   when is_map(Client) ->
     describe_global_networks(Client, #{}, #{}).
@@ -3384,11 +3959,7 @@ describe_global_networks(Client)
 -spec describe_global_networks(map(), map(), map()) ->
     {ok, describe_global_networks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_global_networks_errors(), tuple()}.
 describe_global_networks(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_global_networks(Client, QueryMap, HeadersMap, []).
@@ -3396,11 +3967,7 @@ describe_global_networks(Client, QueryMap, HeadersMap)
 -spec describe_global_networks(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_global_networks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_global_networks_errors(), tuple()}.
 describe_global_networks(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks"],
@@ -3427,24 +3994,14 @@ describe_global_networks(Client, QueryMap, HeadersMap, Options0)
 -spec disassociate_connect_peer(map(), binary() | list(), binary() | list(), disassociate_connect_peer_request()) ->
     {ok, disassociate_connect_peer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_connect_peer_errors(), tuple()}.
 disassociate_connect_peer(Client, ConnectPeerId, GlobalNetworkId, Input) ->
     disassociate_connect_peer(Client, ConnectPeerId, GlobalNetworkId, Input, []).
 
 -spec disassociate_connect_peer(map(), binary() | list(), binary() | list(), disassociate_connect_peer_request(), proplists:proplist()) ->
     {ok, disassociate_connect_peer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_connect_peer_errors(), tuple()}.
 disassociate_connect_peer(Client, ConnectPeerId, GlobalNetworkId, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connect-peer-associations/", aws_util:encode_uri(ConnectPeerId), ""],
@@ -3471,24 +4028,14 @@ disassociate_connect_peer(Client, ConnectPeerId, GlobalNetworkId, Input0, Option
 -spec disassociate_customer_gateway(map(), binary() | list(), binary() | list(), disassociate_customer_gateway_request()) ->
     {ok, disassociate_customer_gateway_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_customer_gateway_errors(), tuple()}.
 disassociate_customer_gateway(Client, CustomerGatewayArn, GlobalNetworkId, Input) ->
     disassociate_customer_gateway(Client, CustomerGatewayArn, GlobalNetworkId, Input, []).
 
 -spec disassociate_customer_gateway(map(), binary() | list(), binary() | list(), disassociate_customer_gateway_request(), proplists:proplist()) ->
     {ok, disassociate_customer_gateway_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_customer_gateway_errors(), tuple()}.
 disassociate_customer_gateway(Client, CustomerGatewayArn, GlobalNetworkId, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/customer-gateway-associations/", aws_util:encode_uri(CustomerGatewayArn), ""],
@@ -3518,24 +4065,14 @@ disassociate_customer_gateway(Client, CustomerGatewayArn, GlobalNetworkId, Input
 -spec disassociate_link(map(), binary() | list(), disassociate_link_request()) ->
     {ok, disassociate_link_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_link_errors(), tuple()}.
 disassociate_link(Client, GlobalNetworkId, Input) ->
     disassociate_link(Client, GlobalNetworkId, Input, []).
 
 -spec disassociate_link(map(), binary() | list(), disassociate_link_request(), proplists:proplist()) ->
     {ok, disassociate_link_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_link_errors(), tuple()}.
 disassociate_link(Client, GlobalNetworkId, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/link-associations"],
@@ -3564,24 +4101,14 @@ disassociate_link(Client, GlobalNetworkId, Input0, Options0) ->
 -spec disassociate_transit_gateway_connect_peer(map(), binary() | list(), binary() | list(), disassociate_transit_gateway_connect_peer_request()) ->
     {ok, disassociate_transit_gateway_connect_peer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_transit_gateway_connect_peer_errors(), tuple()}.
 disassociate_transit_gateway_connect_peer(Client, GlobalNetworkId, TransitGatewayConnectPeerArn, Input) ->
     disassociate_transit_gateway_connect_peer(Client, GlobalNetworkId, TransitGatewayConnectPeerArn, Input, []).
 
 -spec disassociate_transit_gateway_connect_peer(map(), binary() | list(), binary() | list(), disassociate_transit_gateway_connect_peer_request(), proplists:proplist()) ->
     {ok, disassociate_transit_gateway_connect_peer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_transit_gateway_connect_peer_errors(), tuple()}.
 disassociate_transit_gateway_connect_peer(Client, GlobalNetworkId, TransitGatewayConnectPeerArn, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-connect-peer-associations/", aws_util:encode_uri(TransitGatewayConnectPeerArn), ""],
@@ -3610,24 +4137,14 @@ disassociate_transit_gateway_connect_peer(Client, GlobalNetworkId, TransitGatewa
 -spec execute_core_network_change_set(map(), binary() | list(), binary() | list(), execute_core_network_change_set_request()) ->
     {ok, execute_core_network_change_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, execute_core_network_change_set_errors(), tuple()}.
 execute_core_network_change_set(Client, CoreNetworkId, PolicyVersionId, Input) ->
     execute_core_network_change_set(Client, CoreNetworkId, PolicyVersionId, Input, []).
 
 -spec execute_core_network_change_set(map(), binary() | list(), binary() | list(), execute_core_network_change_set_request(), proplists:proplist()) ->
     {ok, execute_core_network_change_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, execute_core_network_change_set_errors(), tuple()}.
 execute_core_network_change_set(Client, CoreNetworkId, PolicyVersionId, Input0, Options0) ->
     Method = post,
     Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), "/core-network-change-sets/", aws_util:encode_uri(PolicyVersionId), "/execute"],
@@ -3654,11 +4171,7 @@ execute_core_network_change_set(Client, CoreNetworkId, PolicyVersionId, Input0, 
 -spec get_connect_attachment(map(), binary() | list()) ->
     {ok, get_connect_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_connect_attachment_errors(), tuple()}.
 get_connect_attachment(Client, AttachmentId)
   when is_map(Client) ->
     get_connect_attachment(Client, AttachmentId, #{}, #{}).
@@ -3666,11 +4179,7 @@ get_connect_attachment(Client, AttachmentId)
 -spec get_connect_attachment(map(), binary() | list(), map(), map()) ->
     {ok, get_connect_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_connect_attachment_errors(), tuple()}.
 get_connect_attachment(Client, AttachmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_connect_attachment(Client, AttachmentId, QueryMap, HeadersMap, []).
@@ -3678,11 +4187,7 @@ get_connect_attachment(Client, AttachmentId, QueryMap, HeadersMap)
 -spec get_connect_attachment(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_connect_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_connect_attachment_errors(), tuple()}.
 get_connect_attachment(Client, AttachmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/connect-attachments/", aws_util:encode_uri(AttachmentId), ""],
@@ -3703,11 +4208,7 @@ get_connect_attachment(Client, AttachmentId, QueryMap, HeadersMap, Options0)
 -spec get_connect_peer(map(), binary() | list()) ->
     {ok, get_connect_peer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_connect_peer_errors(), tuple()}.
 get_connect_peer(Client, ConnectPeerId)
   when is_map(Client) ->
     get_connect_peer(Client, ConnectPeerId, #{}, #{}).
@@ -3715,11 +4216,7 @@ get_connect_peer(Client, ConnectPeerId)
 -spec get_connect_peer(map(), binary() | list(), map(), map()) ->
     {ok, get_connect_peer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_connect_peer_errors(), tuple()}.
 get_connect_peer(Client, ConnectPeerId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_connect_peer(Client, ConnectPeerId, QueryMap, HeadersMap, []).
@@ -3727,11 +4224,7 @@ get_connect_peer(Client, ConnectPeerId, QueryMap, HeadersMap)
 -spec get_connect_peer(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_connect_peer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_connect_peer_errors(), tuple()}.
 get_connect_peer(Client, ConnectPeerId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/connect-peers/", aws_util:encode_uri(ConnectPeerId), ""],
@@ -3752,12 +4245,7 @@ get_connect_peer(Client, ConnectPeerId, QueryMap, HeadersMap, Options0)
 -spec get_connect_peer_associations(map(), binary() | list()) ->
     {ok, get_connect_peer_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_connect_peer_associations_errors(), tuple()}.
 get_connect_peer_associations(Client, GlobalNetworkId)
   when is_map(Client) ->
     get_connect_peer_associations(Client, GlobalNetworkId, #{}, #{}).
@@ -3765,12 +4253,7 @@ get_connect_peer_associations(Client, GlobalNetworkId)
 -spec get_connect_peer_associations(map(), binary() | list(), map(), map()) ->
     {ok, get_connect_peer_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_connect_peer_associations_errors(), tuple()}.
 get_connect_peer_associations(Client, GlobalNetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_connect_peer_associations(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
@@ -3778,12 +4261,7 @@ get_connect_peer_associations(Client, GlobalNetworkId, QueryMap, HeadersMap)
 -spec get_connect_peer_associations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_connect_peer_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_connect_peer_associations_errors(), tuple()}.
 get_connect_peer_associations(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connect-peer-associations"],
@@ -3811,11 +4289,7 @@ get_connect_peer_associations(Client, GlobalNetworkId, QueryMap, HeadersMap, Opt
 -spec get_connections(map(), binary() | list()) ->
     {ok, get_connections_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_connections_errors(), tuple()}.
 get_connections(Client, GlobalNetworkId)
   when is_map(Client) ->
     get_connections(Client, GlobalNetworkId, #{}, #{}).
@@ -3823,11 +4297,7 @@ get_connections(Client, GlobalNetworkId)
 -spec get_connections(map(), binary() | list(), map(), map()) ->
     {ok, get_connections_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_connections_errors(), tuple()}.
 get_connections(Client, GlobalNetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_connections(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
@@ -3835,11 +4305,7 @@ get_connections(Client, GlobalNetworkId, QueryMap, HeadersMap)
 -spec get_connections(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_connections_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_connections_errors(), tuple()}.
 get_connections(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connections"],
@@ -3867,11 +4333,7 @@ get_connections(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
 -spec get_core_network(map(), binary() | list()) ->
     {ok, get_core_network_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_core_network_errors(), tuple()}.
 get_core_network(Client, CoreNetworkId)
   when is_map(Client) ->
     get_core_network(Client, CoreNetworkId, #{}, #{}).
@@ -3879,11 +4341,7 @@ get_core_network(Client, CoreNetworkId)
 -spec get_core_network(map(), binary() | list(), map(), map()) ->
     {ok, get_core_network_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_core_network_errors(), tuple()}.
 get_core_network(Client, CoreNetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_core_network(Client, CoreNetworkId, QueryMap, HeadersMap, []).
@@ -3891,11 +4349,7 @@ get_core_network(Client, CoreNetworkId, QueryMap, HeadersMap)
 -spec get_core_network(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_core_network_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_core_network_errors(), tuple()}.
 get_core_network(Client, CoreNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), ""],
@@ -3916,11 +4370,7 @@ get_core_network(Client, CoreNetworkId, QueryMap, HeadersMap, Options0)
 -spec get_core_network_change_events(map(), binary() | list(), binary() | list()) ->
     {ok, get_core_network_change_events_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_core_network_change_events_errors(), tuple()}.
 get_core_network_change_events(Client, CoreNetworkId, PolicyVersionId)
   when is_map(Client) ->
     get_core_network_change_events(Client, CoreNetworkId, PolicyVersionId, #{}, #{}).
@@ -3928,11 +4378,7 @@ get_core_network_change_events(Client, CoreNetworkId, PolicyVersionId)
 -spec get_core_network_change_events(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_core_network_change_events_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_core_network_change_events_errors(), tuple()}.
 get_core_network_change_events(Client, CoreNetworkId, PolicyVersionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_core_network_change_events(Client, CoreNetworkId, PolicyVersionId, QueryMap, HeadersMap, []).
@@ -3940,11 +4386,7 @@ get_core_network_change_events(Client, CoreNetworkId, PolicyVersionId, QueryMap,
 -spec get_core_network_change_events(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_core_network_change_events_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_core_network_change_events_errors(), tuple()}.
 get_core_network_change_events(Client, CoreNetworkId, PolicyVersionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), "/core-network-change-events/", aws_util:encode_uri(PolicyVersionId), ""],
@@ -3971,11 +4413,7 @@ get_core_network_change_events(Client, CoreNetworkId, PolicyVersionId, QueryMap,
 -spec get_core_network_change_set(map(), binary() | list(), binary() | list()) ->
     {ok, get_core_network_change_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_core_network_change_set_errors(), tuple()}.
 get_core_network_change_set(Client, CoreNetworkId, PolicyVersionId)
   when is_map(Client) ->
     get_core_network_change_set(Client, CoreNetworkId, PolicyVersionId, #{}, #{}).
@@ -3983,11 +4421,7 @@ get_core_network_change_set(Client, CoreNetworkId, PolicyVersionId)
 -spec get_core_network_change_set(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_core_network_change_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_core_network_change_set_errors(), tuple()}.
 get_core_network_change_set(Client, CoreNetworkId, PolicyVersionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_core_network_change_set(Client, CoreNetworkId, PolicyVersionId, QueryMap, HeadersMap, []).
@@ -3995,11 +4429,7 @@ get_core_network_change_set(Client, CoreNetworkId, PolicyVersionId, QueryMap, He
 -spec get_core_network_change_set(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_core_network_change_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_core_network_change_set_errors(), tuple()}.
 get_core_network_change_set(Client, CoreNetworkId, PolicyVersionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), "/core-network-change-sets/", aws_util:encode_uri(PolicyVersionId), ""],
@@ -4028,11 +4458,7 @@ get_core_network_change_set(Client, CoreNetworkId, PolicyVersionId, QueryMap, He
 -spec get_core_network_policy(map(), binary() | list()) ->
     {ok, get_core_network_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_core_network_policy_errors(), tuple()}.
 get_core_network_policy(Client, CoreNetworkId)
   when is_map(Client) ->
     get_core_network_policy(Client, CoreNetworkId, #{}, #{}).
@@ -4040,11 +4466,7 @@ get_core_network_policy(Client, CoreNetworkId)
 -spec get_core_network_policy(map(), binary() | list(), map(), map()) ->
     {ok, get_core_network_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_core_network_policy_errors(), tuple()}.
 get_core_network_policy(Client, CoreNetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_core_network_policy(Client, CoreNetworkId, QueryMap, HeadersMap, []).
@@ -4052,11 +4474,7 @@ get_core_network_policy(Client, CoreNetworkId, QueryMap, HeadersMap)
 -spec get_core_network_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_core_network_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_core_network_policy_errors(), tuple()}.
 get_core_network_policy(Client, CoreNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), "/core-network-policy"],
@@ -4084,12 +4502,7 @@ get_core_network_policy(Client, CoreNetworkId, QueryMap, HeadersMap, Options0)
 -spec get_customer_gateway_associations(map(), binary() | list()) ->
     {ok, get_customer_gateway_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_customer_gateway_associations_errors(), tuple()}.
 get_customer_gateway_associations(Client, GlobalNetworkId)
   when is_map(Client) ->
     get_customer_gateway_associations(Client, GlobalNetworkId, #{}, #{}).
@@ -4097,12 +4510,7 @@ get_customer_gateway_associations(Client, GlobalNetworkId)
 -spec get_customer_gateway_associations(map(), binary() | list(), map(), map()) ->
     {ok, get_customer_gateway_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_customer_gateway_associations_errors(), tuple()}.
 get_customer_gateway_associations(Client, GlobalNetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_customer_gateway_associations(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
@@ -4110,12 +4518,7 @@ get_customer_gateway_associations(Client, GlobalNetworkId, QueryMap, HeadersMap)
 -spec get_customer_gateway_associations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_customer_gateway_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_customer_gateway_associations_errors(), tuple()}.
 get_customer_gateway_associations(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/customer-gateway-associations"],
@@ -4143,11 +4546,7 @@ get_customer_gateway_associations(Client, GlobalNetworkId, QueryMap, HeadersMap,
 -spec get_devices(map(), binary() | list()) ->
     {ok, get_devices_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_devices_errors(), tuple()}.
 get_devices(Client, GlobalNetworkId)
   when is_map(Client) ->
     get_devices(Client, GlobalNetworkId, #{}, #{}).
@@ -4155,11 +4554,7 @@ get_devices(Client, GlobalNetworkId)
 -spec get_devices(map(), binary() | list(), map(), map()) ->
     {ok, get_devices_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_devices_errors(), tuple()}.
 get_devices(Client, GlobalNetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_devices(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
@@ -4167,11 +4562,7 @@ get_devices(Client, GlobalNetworkId, QueryMap, HeadersMap)
 -spec get_devices(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_devices_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_devices_errors(), tuple()}.
 get_devices(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/devices"],
@@ -4202,11 +4593,7 @@ get_devices(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
 -spec get_link_associations(map(), binary() | list()) ->
     {ok, get_link_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_link_associations_errors(), tuple()}.
 get_link_associations(Client, GlobalNetworkId)
   when is_map(Client) ->
     get_link_associations(Client, GlobalNetworkId, #{}, #{}).
@@ -4214,11 +4601,7 @@ get_link_associations(Client, GlobalNetworkId)
 -spec get_link_associations(map(), binary() | list(), map(), map()) ->
     {ok, get_link_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_link_associations_errors(), tuple()}.
 get_link_associations(Client, GlobalNetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_link_associations(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
@@ -4226,11 +4609,7 @@ get_link_associations(Client, GlobalNetworkId, QueryMap, HeadersMap)
 -spec get_link_associations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_link_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_link_associations_errors(), tuple()}.
 get_link_associations(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/link-associations"],
@@ -4262,11 +4641,7 @@ get_link_associations(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
 -spec get_links(map(), binary() | list()) ->
     {ok, get_links_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_links_errors(), tuple()}.
 get_links(Client, GlobalNetworkId)
   when is_map(Client) ->
     get_links(Client, GlobalNetworkId, #{}, #{}).
@@ -4274,11 +4649,7 @@ get_links(Client, GlobalNetworkId)
 -spec get_links(map(), binary() | list(), map(), map()) ->
     {ok, get_links_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_links_errors(), tuple()}.
 get_links(Client, GlobalNetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_links(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
@@ -4286,11 +4657,7 @@ get_links(Client, GlobalNetworkId, QueryMap, HeadersMap)
 -spec get_links(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_links_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_links_errors(), tuple()}.
 get_links(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/links"],
@@ -4321,10 +4688,7 @@ get_links(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
 -spec get_network_resource_counts(map(), binary() | list()) ->
     {ok, get_network_resource_counts_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_network_resource_counts_errors(), tuple()}.
 get_network_resource_counts(Client, GlobalNetworkId)
   when is_map(Client) ->
     get_network_resource_counts(Client, GlobalNetworkId, #{}, #{}).
@@ -4332,10 +4696,7 @@ get_network_resource_counts(Client, GlobalNetworkId)
 -spec get_network_resource_counts(map(), binary() | list(), map(), map()) ->
     {ok, get_network_resource_counts_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_network_resource_counts_errors(), tuple()}.
 get_network_resource_counts(Client, GlobalNetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_network_resource_counts(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
@@ -4343,10 +4704,7 @@ get_network_resource_counts(Client, GlobalNetworkId, QueryMap, HeadersMap)
 -spec get_network_resource_counts(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_network_resource_counts_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_network_resource_counts_errors(), tuple()}.
 get_network_resource_counts(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/network-resource-count"],
@@ -4374,11 +4732,7 @@ get_network_resource_counts(Client, GlobalNetworkId, QueryMap, HeadersMap, Optio
 -spec get_network_resource_relationships(map(), binary() | list()) ->
     {ok, get_network_resource_relationships_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_network_resource_relationships_errors(), tuple()}.
 get_network_resource_relationships(Client, GlobalNetworkId)
   when is_map(Client) ->
     get_network_resource_relationships(Client, GlobalNetworkId, #{}, #{}).
@@ -4386,11 +4740,7 @@ get_network_resource_relationships(Client, GlobalNetworkId)
 -spec get_network_resource_relationships(map(), binary() | list(), map(), map()) ->
     {ok, get_network_resource_relationships_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_network_resource_relationships_errors(), tuple()}.
 get_network_resource_relationships(Client, GlobalNetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_network_resource_relationships(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
@@ -4398,11 +4748,7 @@ get_network_resource_relationships(Client, GlobalNetworkId, QueryMap, HeadersMap
 -spec get_network_resource_relationships(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_network_resource_relationships_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_network_resource_relationships_errors(), tuple()}.
 get_network_resource_relationships(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/network-resource-relationships"],
@@ -4437,11 +4783,7 @@ get_network_resource_relationships(Client, GlobalNetworkId, QueryMap, HeadersMap
 -spec get_network_resources(map(), binary() | list()) ->
     {ok, get_network_resources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_network_resources_errors(), tuple()}.
 get_network_resources(Client, GlobalNetworkId)
   when is_map(Client) ->
     get_network_resources(Client, GlobalNetworkId, #{}, #{}).
@@ -4449,11 +4791,7 @@ get_network_resources(Client, GlobalNetworkId)
 -spec get_network_resources(map(), binary() | list(), map(), map()) ->
     {ok, get_network_resources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_network_resources_errors(), tuple()}.
 get_network_resources(Client, GlobalNetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_network_resources(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
@@ -4461,11 +4799,7 @@ get_network_resources(Client, GlobalNetworkId, QueryMap, HeadersMap)
 -spec get_network_resources(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_network_resources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_network_resources_errors(), tuple()}.
 get_network_resources(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/network-resources"],
@@ -4497,22 +4831,14 @@ get_network_resources(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
 -spec get_network_routes(map(), binary() | list(), get_network_routes_request()) ->
     {ok, get_network_routes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_network_routes_errors(), tuple()}.
 get_network_routes(Client, GlobalNetworkId, Input) ->
     get_network_routes(Client, GlobalNetworkId, Input, []).
 
 -spec get_network_routes(map(), binary() | list(), get_network_routes_request(), proplists:proplist()) ->
     {ok, get_network_routes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_network_routes_errors(), tuple()}.
 get_network_routes(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/network-routes"],
@@ -4539,11 +4865,7 @@ get_network_routes(Client, GlobalNetworkId, Input0, Options0) ->
 -spec get_network_telemetry(map(), binary() | list()) ->
     {ok, get_network_telemetry_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_network_telemetry_errors(), tuple()}.
 get_network_telemetry(Client, GlobalNetworkId)
   when is_map(Client) ->
     get_network_telemetry(Client, GlobalNetworkId, #{}, #{}).
@@ -4551,11 +4873,7 @@ get_network_telemetry(Client, GlobalNetworkId)
 -spec get_network_telemetry(map(), binary() | list(), map(), map()) ->
     {ok, get_network_telemetry_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_network_telemetry_errors(), tuple()}.
 get_network_telemetry(Client, GlobalNetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_network_telemetry(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
@@ -4563,11 +4881,7 @@ get_network_telemetry(Client, GlobalNetworkId, QueryMap, HeadersMap)
 -spec get_network_telemetry(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_network_telemetry_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_network_telemetry_errors(), tuple()}.
 get_network_telemetry(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/network-telemetry"],
@@ -4599,10 +4913,7 @@ get_network_telemetry(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
 -spec get_resource_policy(map(), binary() | list()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_resource_policy_errors(), tuple()}.
 get_resource_policy(Client, ResourceArn)
   when is_map(Client) ->
     get_resource_policy(Client, ResourceArn, #{}, #{}).
@@ -4610,10 +4921,7 @@ get_resource_policy(Client, ResourceArn)
 -spec get_resource_policy(map(), binary() | list(), map(), map()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_resource_policy_errors(), tuple()}.
 get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -4621,10 +4929,7 @@ get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap)
 -spec get_resource_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_resource_policy_errors(), tuple()}.
 get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resource-policy/", aws_util:encode_uri(ResourceArn), ""],
@@ -4645,11 +4950,7 @@ get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec get_route_analysis(map(), binary() | list(), binary() | list()) ->
     {ok, get_route_analysis_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_route_analysis_errors(), tuple()}.
 get_route_analysis(Client, GlobalNetworkId, RouteAnalysisId)
   when is_map(Client) ->
     get_route_analysis(Client, GlobalNetworkId, RouteAnalysisId, #{}, #{}).
@@ -4657,11 +4958,7 @@ get_route_analysis(Client, GlobalNetworkId, RouteAnalysisId)
 -spec get_route_analysis(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_route_analysis_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_route_analysis_errors(), tuple()}.
 get_route_analysis(Client, GlobalNetworkId, RouteAnalysisId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_route_analysis(Client, GlobalNetworkId, RouteAnalysisId, QueryMap, HeadersMap, []).
@@ -4669,11 +4966,7 @@ get_route_analysis(Client, GlobalNetworkId, RouteAnalysisId, QueryMap, HeadersMa
 -spec get_route_analysis(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_route_analysis_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_route_analysis_errors(), tuple()}.
 get_route_analysis(Client, GlobalNetworkId, RouteAnalysisId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/route-analyses/", aws_util:encode_uri(RouteAnalysisId), ""],
@@ -4694,11 +4987,7 @@ get_route_analysis(Client, GlobalNetworkId, RouteAnalysisId, QueryMap, HeadersMa
 -spec get_site_to_site_vpn_attachment(map(), binary() | list()) ->
     {ok, get_site_to_site_vpn_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_site_to_site_vpn_attachment_errors(), tuple()}.
 get_site_to_site_vpn_attachment(Client, AttachmentId)
   when is_map(Client) ->
     get_site_to_site_vpn_attachment(Client, AttachmentId, #{}, #{}).
@@ -4706,11 +4995,7 @@ get_site_to_site_vpn_attachment(Client, AttachmentId)
 -spec get_site_to_site_vpn_attachment(map(), binary() | list(), map(), map()) ->
     {ok, get_site_to_site_vpn_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_site_to_site_vpn_attachment_errors(), tuple()}.
 get_site_to_site_vpn_attachment(Client, AttachmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_site_to_site_vpn_attachment(Client, AttachmentId, QueryMap, HeadersMap, []).
@@ -4718,11 +5003,7 @@ get_site_to_site_vpn_attachment(Client, AttachmentId, QueryMap, HeadersMap)
 -spec get_site_to_site_vpn_attachment(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_site_to_site_vpn_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_site_to_site_vpn_attachment_errors(), tuple()}.
 get_site_to_site_vpn_attachment(Client, AttachmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/site-to-site-vpn-attachments/", aws_util:encode_uri(AttachmentId), ""],
@@ -4743,11 +5024,7 @@ get_site_to_site_vpn_attachment(Client, AttachmentId, QueryMap, HeadersMap, Opti
 -spec get_sites(map(), binary() | list()) ->
     {ok, get_sites_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sites_errors(), tuple()}.
 get_sites(Client, GlobalNetworkId)
   when is_map(Client) ->
     get_sites(Client, GlobalNetworkId, #{}, #{}).
@@ -4755,11 +5032,7 @@ get_sites(Client, GlobalNetworkId)
 -spec get_sites(map(), binary() | list(), map(), map()) ->
     {ok, get_sites_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sites_errors(), tuple()}.
 get_sites(Client, GlobalNetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sites(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
@@ -4767,11 +5040,7 @@ get_sites(Client, GlobalNetworkId, QueryMap, HeadersMap)
 -spec get_sites(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sites_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_sites_errors(), tuple()}.
 get_sites(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/sites"],
@@ -4799,12 +5068,7 @@ get_sites(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
 -spec get_transit_gateway_connect_peer_associations(map(), binary() | list()) ->
     {ok, get_transit_gateway_connect_peer_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_transit_gateway_connect_peer_associations_errors(), tuple()}.
 get_transit_gateway_connect_peer_associations(Client, GlobalNetworkId)
   when is_map(Client) ->
     get_transit_gateway_connect_peer_associations(Client, GlobalNetworkId, #{}, #{}).
@@ -4812,12 +5076,7 @@ get_transit_gateway_connect_peer_associations(Client, GlobalNetworkId)
 -spec get_transit_gateway_connect_peer_associations(map(), binary() | list(), map(), map()) ->
     {ok, get_transit_gateway_connect_peer_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_transit_gateway_connect_peer_associations_errors(), tuple()}.
 get_transit_gateway_connect_peer_associations(Client, GlobalNetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_transit_gateway_connect_peer_associations(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
@@ -4825,12 +5084,7 @@ get_transit_gateway_connect_peer_associations(Client, GlobalNetworkId, QueryMap,
 -spec get_transit_gateway_connect_peer_associations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_transit_gateway_connect_peer_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_transit_gateway_connect_peer_associations_errors(), tuple()}.
 get_transit_gateway_connect_peer_associations(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-connect-peer-associations"],
@@ -4857,11 +5111,7 @@ get_transit_gateway_connect_peer_associations(Client, GlobalNetworkId, QueryMap,
 -spec get_transit_gateway_peering(map(), binary() | list()) ->
     {ok, get_transit_gateway_peering_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_transit_gateway_peering_errors(), tuple()}.
 get_transit_gateway_peering(Client, PeeringId)
   when is_map(Client) ->
     get_transit_gateway_peering(Client, PeeringId, #{}, #{}).
@@ -4869,11 +5119,7 @@ get_transit_gateway_peering(Client, PeeringId)
 -spec get_transit_gateway_peering(map(), binary() | list(), map(), map()) ->
     {ok, get_transit_gateway_peering_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_transit_gateway_peering_errors(), tuple()}.
 get_transit_gateway_peering(Client, PeeringId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_transit_gateway_peering(Client, PeeringId, QueryMap, HeadersMap, []).
@@ -4881,11 +5127,7 @@ get_transit_gateway_peering(Client, PeeringId, QueryMap, HeadersMap)
 -spec get_transit_gateway_peering(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_transit_gateway_peering_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_transit_gateway_peering_errors(), tuple()}.
 get_transit_gateway_peering(Client, PeeringId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/transit-gateway-peerings/", aws_util:encode_uri(PeeringId), ""],
@@ -4908,11 +5150,7 @@ get_transit_gateway_peering(Client, PeeringId, QueryMap, HeadersMap, Options0)
 -spec get_transit_gateway_registrations(map(), binary() | list()) ->
     {ok, get_transit_gateway_registrations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_transit_gateway_registrations_errors(), tuple()}.
 get_transit_gateway_registrations(Client, GlobalNetworkId)
   when is_map(Client) ->
     get_transit_gateway_registrations(Client, GlobalNetworkId, #{}, #{}).
@@ -4920,11 +5158,7 @@ get_transit_gateway_registrations(Client, GlobalNetworkId)
 -spec get_transit_gateway_registrations(map(), binary() | list(), map(), map()) ->
     {ok, get_transit_gateway_registrations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_transit_gateway_registrations_errors(), tuple()}.
 get_transit_gateway_registrations(Client, GlobalNetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_transit_gateway_registrations(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
@@ -4932,11 +5166,7 @@ get_transit_gateway_registrations(Client, GlobalNetworkId, QueryMap, HeadersMap)
 -spec get_transit_gateway_registrations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_transit_gateway_registrations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_transit_gateway_registrations_errors(), tuple()}.
 get_transit_gateway_registrations(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-registrations"],
@@ -4963,11 +5193,7 @@ get_transit_gateway_registrations(Client, GlobalNetworkId, QueryMap, HeadersMap,
 -spec get_transit_gateway_route_table_attachment(map(), binary() | list()) ->
     {ok, get_transit_gateway_route_table_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_transit_gateway_route_table_attachment_errors(), tuple()}.
 get_transit_gateway_route_table_attachment(Client, AttachmentId)
   when is_map(Client) ->
     get_transit_gateway_route_table_attachment(Client, AttachmentId, #{}, #{}).
@@ -4975,11 +5201,7 @@ get_transit_gateway_route_table_attachment(Client, AttachmentId)
 -spec get_transit_gateway_route_table_attachment(map(), binary() | list(), map(), map()) ->
     {ok, get_transit_gateway_route_table_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_transit_gateway_route_table_attachment_errors(), tuple()}.
 get_transit_gateway_route_table_attachment(Client, AttachmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_transit_gateway_route_table_attachment(Client, AttachmentId, QueryMap, HeadersMap, []).
@@ -4987,11 +5209,7 @@ get_transit_gateway_route_table_attachment(Client, AttachmentId, QueryMap, Heade
 -spec get_transit_gateway_route_table_attachment(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_transit_gateway_route_table_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_transit_gateway_route_table_attachment_errors(), tuple()}.
 get_transit_gateway_route_table_attachment(Client, AttachmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/transit-gateway-route-table-attachments/", aws_util:encode_uri(AttachmentId), ""],
@@ -5012,11 +5230,7 @@ get_transit_gateway_route_table_attachment(Client, AttachmentId, QueryMap, Heade
 -spec get_vpc_attachment(map(), binary() | list()) ->
     {ok, get_vpc_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_vpc_attachment_errors(), tuple()}.
 get_vpc_attachment(Client, AttachmentId)
   when is_map(Client) ->
     get_vpc_attachment(Client, AttachmentId, #{}, #{}).
@@ -5024,11 +5238,7 @@ get_vpc_attachment(Client, AttachmentId)
 -spec get_vpc_attachment(map(), binary() | list(), map(), map()) ->
     {ok, get_vpc_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_vpc_attachment_errors(), tuple()}.
 get_vpc_attachment(Client, AttachmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_vpc_attachment(Client, AttachmentId, QueryMap, HeadersMap, []).
@@ -5036,11 +5246,7 @@ get_vpc_attachment(Client, AttachmentId, QueryMap, HeadersMap)
 -spec get_vpc_attachment(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_vpc_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_vpc_attachment_errors(), tuple()}.
 get_vpc_attachment(Client, AttachmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/vpc-attachments/", aws_util:encode_uri(AttachmentId), ""],
@@ -5061,10 +5267,7 @@ get_vpc_attachment(Client, AttachmentId, QueryMap, HeadersMap, Options0)
 -spec list_attachments(map()) ->
     {ok, list_attachments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_attachments_errors(), tuple()}.
 list_attachments(Client)
   when is_map(Client) ->
     list_attachments(Client, #{}, #{}).
@@ -5072,10 +5275,7 @@ list_attachments(Client)
 -spec list_attachments(map(), map(), map()) ->
     {ok, list_attachments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_attachments_errors(), tuple()}.
 list_attachments(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_attachments(Client, QueryMap, HeadersMap, []).
@@ -5083,10 +5283,7 @@ list_attachments(Client, QueryMap, HeadersMap)
 -spec list_attachments(map(), map(), map(), proplists:proplist()) ->
     {ok, list_attachments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_attachments_errors(), tuple()}.
 list_attachments(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/attachments"],
@@ -5116,10 +5313,7 @@ list_attachments(Client, QueryMap, HeadersMap, Options0)
 -spec list_connect_peers(map()) ->
     {ok, list_connect_peers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_connect_peers_errors(), tuple()}.
 list_connect_peers(Client)
   when is_map(Client) ->
     list_connect_peers(Client, #{}, #{}).
@@ -5127,10 +5321,7 @@ list_connect_peers(Client)
 -spec list_connect_peers(map(), map(), map()) ->
     {ok, list_connect_peers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_connect_peers_errors(), tuple()}.
 list_connect_peers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_connect_peers(Client, QueryMap, HeadersMap, []).
@@ -5138,10 +5329,7 @@ list_connect_peers(Client, QueryMap, HeadersMap)
 -spec list_connect_peers(map(), map(), map(), proplists:proplist()) ->
     {ok, list_connect_peers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_connect_peers_errors(), tuple()}.
 list_connect_peers(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/connect-peers"],
@@ -5169,11 +5357,7 @@ list_connect_peers(Client, QueryMap, HeadersMap, Options0)
 -spec list_core_network_policy_versions(map(), binary() | list()) ->
     {ok, list_core_network_policy_versions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_core_network_policy_versions_errors(), tuple()}.
 list_core_network_policy_versions(Client, CoreNetworkId)
   when is_map(Client) ->
     list_core_network_policy_versions(Client, CoreNetworkId, #{}, #{}).
@@ -5181,11 +5365,7 @@ list_core_network_policy_versions(Client, CoreNetworkId)
 -spec list_core_network_policy_versions(map(), binary() | list(), map(), map()) ->
     {ok, list_core_network_policy_versions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_core_network_policy_versions_errors(), tuple()}.
 list_core_network_policy_versions(Client, CoreNetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_core_network_policy_versions(Client, CoreNetworkId, QueryMap, HeadersMap, []).
@@ -5193,11 +5373,7 @@ list_core_network_policy_versions(Client, CoreNetworkId, QueryMap, HeadersMap)
 -spec list_core_network_policy_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_core_network_policy_versions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_core_network_policy_versions_errors(), tuple()}.
 list_core_network_policy_versions(Client, CoreNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), "/core-network-policy-versions"],
@@ -5223,10 +5399,7 @@ list_core_network_policy_versions(Client, CoreNetworkId, QueryMap, HeadersMap, O
 -spec list_core_networks(map()) ->
     {ok, list_core_networks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_core_networks_errors(), tuple()}.
 list_core_networks(Client)
   when is_map(Client) ->
     list_core_networks(Client, #{}, #{}).
@@ -5234,10 +5407,7 @@ list_core_networks(Client)
 -spec list_core_networks(map(), map(), map()) ->
     {ok, list_core_networks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_core_networks_errors(), tuple()}.
 list_core_networks(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_core_networks(Client, QueryMap, HeadersMap, []).
@@ -5245,10 +5415,7 @@ list_core_networks(Client, QueryMap, HeadersMap)
 -spec list_core_networks(map(), map(), map(), proplists:proplist()) ->
     {ok, list_core_networks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_core_networks_errors(), tuple()}.
 list_core_networks(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/core-networks"],
@@ -5314,10 +5481,7 @@ list_organization_service_access_status(Client, QueryMap, HeadersMap, Options0)
 -spec list_peerings(map()) ->
     {ok, list_peerings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_peerings_errors(), tuple()}.
 list_peerings(Client)
   when is_map(Client) ->
     list_peerings(Client, #{}, #{}).
@@ -5325,10 +5489,7 @@ list_peerings(Client)
 -spec list_peerings(map(), map(), map()) ->
     {ok, list_peerings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_peerings_errors(), tuple()}.
 list_peerings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_peerings(Client, QueryMap, HeadersMap, []).
@@ -5336,10 +5497,7 @@ list_peerings(Client, QueryMap, HeadersMap)
 -spec list_peerings(map(), map(), map(), proplists:proplist()) ->
     {ok, list_peerings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_peerings_errors(), tuple()}.
 list_peerings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/peerings"],
@@ -5369,11 +5527,7 @@ list_peerings(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -5381,11 +5535,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -5393,11 +5543,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -5421,26 +5567,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec put_core_network_policy(map(), binary() | list(), put_core_network_policy_request()) ->
     {ok, put_core_network_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, core_network_policy_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_core_network_policy_errors(), tuple()}.
 put_core_network_policy(Client, CoreNetworkId, Input) ->
     put_core_network_policy(Client, CoreNetworkId, Input, []).
 
 -spec put_core_network_policy(map(), binary() | list(), put_core_network_policy_request(), proplists:proplist()) ->
     {ok, put_core_network_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, core_network_policy_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_core_network_policy_errors(), tuple()}.
 put_core_network_policy(Client, CoreNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), "/core-network-policy"],
@@ -5467,24 +5601,14 @@ put_core_network_policy(Client, CoreNetworkId, Input0, Options0) ->
 -spec put_resource_policy(map(), binary() | list(), put_resource_policy_request()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, ResourceArn, Input) ->
     put_resource_policy(Client, ResourceArn, Input, []).
 
 -spec put_resource_policy(map(), binary() | list(), put_resource_policy_request(), proplists:proplist()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/resource-policy/", aws_util:encode_uri(ResourceArn), ""],
@@ -5522,24 +5646,14 @@ put_resource_policy(Client, ResourceArn, Input0, Options0) ->
 -spec register_transit_gateway(map(), binary() | list(), register_transit_gateway_request()) ->
     {ok, register_transit_gateway_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, register_transit_gateway_errors(), tuple()}.
 register_transit_gateway(Client, GlobalNetworkId, Input) ->
     register_transit_gateway(Client, GlobalNetworkId, Input, []).
 
 -spec register_transit_gateway(map(), binary() | list(), register_transit_gateway_request(), proplists:proplist()) ->
     {ok, register_transit_gateway_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, register_transit_gateway_errors(), tuple()}.
 register_transit_gateway(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-registrations"],
@@ -5566,24 +5680,14 @@ register_transit_gateway(Client, GlobalNetworkId, Input0, Options0) ->
 -spec reject_attachment(map(), binary() | list(), reject_attachment_request()) ->
     {ok, reject_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, reject_attachment_errors(), tuple()}.
 reject_attachment(Client, AttachmentId, Input) ->
     reject_attachment(Client, AttachmentId, Input, []).
 
 -spec reject_attachment(map(), binary() | list(), reject_attachment_request(), proplists:proplist()) ->
     {ok, reject_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, reject_attachment_errors(), tuple()}.
 reject_attachment(Client, AttachmentId, Input0, Options0) ->
     Method = post,
     Path = ["/attachments/", aws_util:encode_uri(AttachmentId), "/reject"],
@@ -5614,24 +5718,14 @@ reject_attachment(Client, AttachmentId, Input0, Options0) ->
 -spec restore_core_network_policy_version(map(), binary() | list(), binary() | list(), restore_core_network_policy_version_request()) ->
     {ok, restore_core_network_policy_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, restore_core_network_policy_version_errors(), tuple()}.
 restore_core_network_policy_version(Client, CoreNetworkId, PolicyVersionId, Input) ->
     restore_core_network_policy_version(Client, CoreNetworkId, PolicyVersionId, Input, []).
 
 -spec restore_core_network_policy_version(map(), binary() | list(), binary() | list(), restore_core_network_policy_version_request(), proplists:proplist()) ->
     {ok, restore_core_network_policy_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, restore_core_network_policy_version_errors(), tuple()}.
 restore_core_network_policy_version(Client, CoreNetworkId, PolicyVersionId, Input0, Options0) ->
     Method = post,
     Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), "/core-network-policy-versions/", aws_util:encode_uri(PolicyVersionId), "/restore"],
@@ -5661,24 +5755,14 @@ restore_core_network_policy_version(Client, CoreNetworkId, PolicyVersionId, Inpu
 -spec start_organization_service_access_update(map(), start_organization_service_access_update_request()) ->
     {ok, start_organization_service_access_update_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_organization_service_access_update_errors(), tuple()}.
 start_organization_service_access_update(Client, Input) ->
     start_organization_service_access_update(Client, Input, []).
 
 -spec start_organization_service_access_update(map(), start_organization_service_access_update_request(), proplists:proplist()) ->
     {ok, start_organization_service_access_update_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_organization_service_access_update_errors(), tuple()}.
 start_organization_service_access_update(Client, Input0, Options0) ->
     Method = post,
     Path = ["/organizations/service-access"],
@@ -5710,24 +5794,14 @@ start_organization_service_access_update(Client, Input0, Options0) ->
 -spec start_route_analysis(map(), binary() | list(), start_route_analysis_request()) ->
     {ok, start_route_analysis_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_route_analysis_errors(), tuple()}.
 start_route_analysis(Client, GlobalNetworkId, Input) ->
     start_route_analysis(Client, GlobalNetworkId, Input, []).
 
 -spec start_route_analysis(map(), binary() | list(), start_route_analysis_request(), proplists:proplist()) ->
     {ok, start_route_analysis_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_route_analysis_errors(), tuple()}.
 start_route_analysis(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/route-analyses"],
@@ -5754,26 +5828,14 @@ start_route_analysis(Client, GlobalNetworkId, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -5800,24 +5862,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -5848,24 +5900,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_connection(map(), binary() | list(), binary() | list(), update_connection_request()) ->
     {ok, update_connection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_connection_errors(), tuple()}.
 update_connection(Client, ConnectionId, GlobalNetworkId, Input) ->
     update_connection(Client, ConnectionId, GlobalNetworkId, Input, []).
 
 -spec update_connection(map(), binary() | list(), binary() | list(), update_connection_request(), proplists:proplist()) ->
     {ok, update_connection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_connection_errors(), tuple()}.
 update_connection(Client, ConnectionId, GlobalNetworkId, Input0, Options0) ->
     Method = patch,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connections/", aws_util:encode_uri(ConnectionId), ""],
@@ -5892,24 +5934,14 @@ update_connection(Client, ConnectionId, GlobalNetworkId, Input0, Options0) ->
 -spec update_core_network(map(), binary() | list(), update_core_network_request()) ->
     {ok, update_core_network_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_core_network_errors(), tuple()}.
 update_core_network(Client, CoreNetworkId, Input) ->
     update_core_network(Client, CoreNetworkId, Input, []).
 
 -spec update_core_network(map(), binary() | list(), update_core_network_request(), proplists:proplist()) ->
     {ok, update_core_network_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_core_network_errors(), tuple()}.
 update_core_network(Client, CoreNetworkId, Input0, Options0) ->
     Method = patch,
     Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), ""],
@@ -5939,24 +5971,14 @@ update_core_network(Client, CoreNetworkId, Input0, Options0) ->
 -spec update_device(map(), binary() | list(), binary() | list(), update_device_request()) ->
     {ok, update_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_device_errors(), tuple()}.
 update_device(Client, DeviceId, GlobalNetworkId, Input) ->
     update_device(Client, DeviceId, GlobalNetworkId, Input, []).
 
 -spec update_device(map(), binary() | list(), binary() | list(), update_device_request(), proplists:proplist()) ->
     {ok, update_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_device_errors(), tuple()}.
 update_device(Client, DeviceId, GlobalNetworkId, Input0, Options0) ->
     Method = patch,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/devices/", aws_util:encode_uri(DeviceId), ""],
@@ -5986,24 +6008,14 @@ update_device(Client, DeviceId, GlobalNetworkId, Input0, Options0) ->
 -spec update_global_network(map(), binary() | list(), update_global_network_request()) ->
     {ok, update_global_network_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_global_network_errors(), tuple()}.
 update_global_network(Client, GlobalNetworkId, Input) ->
     update_global_network(Client, GlobalNetworkId, Input, []).
 
 -spec update_global_network(map(), binary() | list(), update_global_network_request(), proplists:proplist()) ->
     {ok, update_global_network_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_global_network_errors(), tuple()}.
 update_global_network(Client, GlobalNetworkId, Input0, Options0) ->
     Method = patch,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), ""],
@@ -6033,26 +6045,14 @@ update_global_network(Client, GlobalNetworkId, Input0, Options0) ->
 -spec update_link(map(), binary() | list(), binary() | list(), update_link_request()) ->
     {ok, update_link_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_link_errors(), tuple()}.
 update_link(Client, GlobalNetworkId, LinkId, Input) ->
     update_link(Client, GlobalNetworkId, LinkId, Input, []).
 
 -spec update_link(map(), binary() | list(), binary() | list(), update_link_request(), proplists:proplist()) ->
     {ok, update_link_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_link_errors(), tuple()}.
 update_link(Client, GlobalNetworkId, LinkId, Input0, Options0) ->
     Method = patch,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/links/", aws_util:encode_uri(LinkId), ""],
@@ -6079,24 +6079,14 @@ update_link(Client, GlobalNetworkId, LinkId, Input0, Options0) ->
 -spec update_network_resource_metadata(map(), binary() | list(), binary() | list(), update_network_resource_metadata_request()) ->
     {ok, update_network_resource_metadata_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_network_resource_metadata_errors(), tuple()}.
 update_network_resource_metadata(Client, GlobalNetworkId, ResourceArn, Input) ->
     update_network_resource_metadata(Client, GlobalNetworkId, ResourceArn, Input, []).
 
 -spec update_network_resource_metadata(map(), binary() | list(), binary() | list(), update_network_resource_metadata_request(), proplists:proplist()) ->
     {ok, update_network_resource_metadata_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_network_resource_metadata_errors(), tuple()}.
 update_network_resource_metadata(Client, GlobalNetworkId, ResourceArn, Input0, Options0) ->
     Method = patch,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/network-resources/", aws_util:encode_uri(ResourceArn), "/metadata"],
@@ -6126,24 +6116,14 @@ update_network_resource_metadata(Client, GlobalNetworkId, ResourceArn, Input0, O
 -spec update_site(map(), binary() | list(), binary() | list(), update_site_request()) ->
     {ok, update_site_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_site_errors(), tuple()}.
 update_site(Client, GlobalNetworkId, SiteId, Input) ->
     update_site(Client, GlobalNetworkId, SiteId, Input, []).
 
 -spec update_site(map(), binary() | list(), binary() | list(), update_site_request(), proplists:proplist()) ->
     {ok, update_site_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_site_errors(), tuple()}.
 update_site(Client, GlobalNetworkId, SiteId, Input0, Options0) ->
     Method = patch,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/sites/", aws_util:encode_uri(SiteId), ""],
@@ -6170,24 +6150,14 @@ update_site(Client, GlobalNetworkId, SiteId, Input0, Options0) ->
 -spec update_vpc_attachment(map(), binary() | list(), update_vpc_attachment_request()) ->
     {ok, update_vpc_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_vpc_attachment_errors(), tuple()}.
 update_vpc_attachment(Client, AttachmentId, Input) ->
     update_vpc_attachment(Client, AttachmentId, Input, []).
 
 -spec update_vpc_attachment(map(), binary() | list(), update_vpc_attachment_request(), proplists:proplist()) ->
     {ok, update_vpc_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_vpc_attachment_errors(), tuple()}.
 update_vpc_attachment(Client, AttachmentId, Input0, Options0) ->
     Method = patch,
     Path = ["/vpc-attachments/", aws_util:encode_uri(AttachmentId), ""],

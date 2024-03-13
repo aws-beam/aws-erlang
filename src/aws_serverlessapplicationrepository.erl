@@ -90,6 +90,7 @@
 %% }
 -type list_application_dependencies_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_cloud_formation_template_response() :: #{
 %%   <<"ApplicationId">> => string(),
@@ -102,6 +103,7 @@
 %% }
 -type get_cloud_formation_template_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% application_dependency_summary() :: #{
 %%   <<"ApplicationId">> => string(),
@@ -109,15 +111,18 @@
 %% }
 -type application_dependency_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% forbidden_exception() :: #{
 %%   <<"ErrorCode">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type forbidden_exception() :: #{binary() => any()}.
+
 %% Example:
 %% get_cloud_formation_template_request() :: #{}
 -type get_cloud_formation_template_request() :: #{}.
+
 
 %% Example:
 %% parameter_definition() :: #{
@@ -137,6 +142,7 @@
 %% }
 -type parameter_definition() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_application_version_request() :: #{
 %%   <<"SourceCodeArchiveUrl">> => string(),
@@ -145,6 +151,7 @@
 %%   <<"TemplateUrl">> => string()
 %% }
 -type create_application_version_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_application_version_response() :: #{
@@ -160,11 +167,13 @@
 %% }
 -type create_application_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_application_policy_response() :: #{
 %%   <<"Statements">> => list(application_policy_statement()())
 %% }
 -type get_application_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% too_many_requests_exception() :: #{
@@ -172,6 +181,7 @@
 %%   <<"Message">> => string()
 %% }
 -type too_many_requests_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% version_summary() :: #{
@@ -182,12 +192,14 @@
 %% }
 -type version_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% parameter_value() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Value">> => string()
 %% }
 -type parameter_value() :: #{binary() => any()}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -196,6 +208,7 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag() :: #{
 %%   <<"Key">> => string(),
@@ -203,11 +216,13 @@
 %% }
 -type tag() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_application_policy_request() :: #{
 %%   <<"Statements">> := list(application_policy_statement()())
 %% }
 -type put_application_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% not_found_exception() :: #{
@@ -215,6 +230,7 @@
 %%   <<"Message">> => string()
 %% }
 -type not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_application_request() :: #{
@@ -236,6 +252,7 @@
 %% }
 -type create_application_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_cloud_formation_template_response() :: #{
 %%   <<"ApplicationId">> => string(),
@@ -247,6 +264,7 @@
 %%   <<"TemplateUrl">> => string()
 %% }
 -type create_cloud_formation_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_application_response() :: #{
@@ -266,6 +284,7 @@
 %% }
 -type create_application_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_application_dependencies_request() :: #{
 %%   <<"MaxItems">> => integer(),
@@ -273,6 +292,7 @@
 %%   <<"SemanticVersion">> => string()
 %% }
 -type list_application_dependencies_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% version() :: #{
@@ -288,6 +308,7 @@
 %% }
 -type version() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_application_request() :: #{
 %%   <<"Author">> => string(),
@@ -298,6 +319,7 @@
 %%   <<"ReadmeUrl">> => string()
 %% }
 -type update_application_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_application_response() :: #{
@@ -317,6 +339,7 @@
 %% }
 -type update_application_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_application_response() :: #{
 %%   <<"ApplicationId">> => string(),
@@ -335,15 +358,18 @@
 %% }
 -type get_application_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_applications_request() :: #{
 %%   <<"MaxItems">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_applications_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_application_policy_request() :: #{}
 -type get_application_policy_request() :: #{}.
+
 
 %% Example:
 %% create_cloud_formation_change_set_request() :: #{
@@ -362,12 +388,14 @@
 %% }
 -type create_cloud_formation_change_set_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_error_exception() :: #{
 %%   <<"ErrorCode">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type internal_server_error_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% application_policy_statement() :: #{
@@ -378,12 +406,14 @@
 %% }
 -type application_policy_statement() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_application_versions_request() :: #{
 %%   <<"MaxItems">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_application_versions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% application_summary() :: #{
@@ -398,11 +428,13 @@
 %% }
 -type application_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% unshare_application_request() :: #{
 %%   <<"OrganizationId">> := string()
 %% }
 -type unshare_application_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_applications_response() :: #{
@@ -411,12 +443,14 @@
 %% }
 -type list_applications_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_application_versions_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Versions">> => list(version_summary()())
 %% }
 -type list_application_versions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% bad_request_exception() :: #{
@@ -425,12 +459,14 @@
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% rollback_configuration() :: #{
 %%   <<"MonitoringTimeInMinutes">> => integer(),
 %%   <<"RollbackTriggers">> => list(rollback_trigger()())
 %% }
 -type rollback_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% rollback_trigger() :: #{
@@ -439,11 +475,13 @@
 %% }
 -type rollback_trigger() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_application_policy_response() :: #{
 %%   <<"Statements">> => list(application_policy_statement()())
 %% }
 -type put_application_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_application_request() :: #{
@@ -451,14 +489,17 @@
 %% }
 -type get_application_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_cloud_formation_template_request() :: #{
 %%   <<"SemanticVersion">> => string()
 %% }
 -type create_cloud_formation_template_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_application_request() :: #{}
 -type delete_application_request() :: #{}.
+
 
 %% Example:
 %% create_cloud_formation_change_set_response() :: #{
@@ -469,6 +510,104 @@
 %% }
 -type create_cloud_formation_change_set_response() :: #{binary() => any()}.
 
+-type create_application_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type create_application_version_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type create_cloud_formation_change_set_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type create_cloud_formation_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type delete_application_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type get_application_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type get_application_policy_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type get_cloud_formation_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type list_application_dependencies_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type list_application_versions_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type list_applications_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    forbidden_exception().
+
+-type put_application_policy_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type unshare_application_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type update_application_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -478,22 +617,14 @@
 -spec create_application(map(), create_application_request()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_application_errors(), tuple()}.
 create_application(Client, Input) ->
     create_application(Client, Input, []).
 
 -spec create_application(map(), create_application_request(), proplists:proplist()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_application_errors(), tuple()}.
 create_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/applications"],
@@ -520,22 +651,14 @@ create_application(Client, Input0, Options0) ->
 -spec create_application_version(map(), binary() | list(), binary() | list(), create_application_version_request()) ->
     {ok, create_application_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_application_version_errors(), tuple()}.
 create_application_version(Client, ApplicationId, SemanticVersion, Input) ->
     create_application_version(Client, ApplicationId, SemanticVersion, Input, []).
 
 -spec create_application_version(map(), binary() | list(), binary() | list(), create_application_version_request(), proplists:proplist()) ->
     {ok, create_application_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_application_version_errors(), tuple()}.
 create_application_version(Client, ApplicationId, SemanticVersion, Input0, Options0) ->
     Method = put,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/versions/", aws_util:encode_uri(SemanticVersion), ""],
@@ -562,20 +685,14 @@ create_application_version(Client, ApplicationId, SemanticVersion, Input0, Optio
 -spec create_cloud_formation_change_set(map(), binary() | list(), create_cloud_formation_change_set_request()) ->
     {ok, create_cloud_formation_change_set_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_cloud_formation_change_set_errors(), tuple()}.
 create_cloud_formation_change_set(Client, ApplicationId, Input) ->
     create_cloud_formation_change_set(Client, ApplicationId, Input, []).
 
 -spec create_cloud_formation_change_set(map(), binary() | list(), create_cloud_formation_change_set_request(), proplists:proplist()) ->
     {ok, create_cloud_formation_change_set_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_cloud_formation_change_set_errors(), tuple()}.
 create_cloud_formation_change_set(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/changesets"],
@@ -602,22 +719,14 @@ create_cloud_formation_change_set(Client, ApplicationId, Input0, Options0) ->
 -spec create_cloud_formation_template(map(), binary() | list(), create_cloud_formation_template_request()) ->
     {ok, create_cloud_formation_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_cloud_formation_template_errors(), tuple()}.
 create_cloud_formation_template(Client, ApplicationId, Input) ->
     create_cloud_formation_template(Client, ApplicationId, Input, []).
 
 -spec create_cloud_formation_template(map(), binary() | list(), create_cloud_formation_template_request(), proplists:proplist()) ->
     {ok, create_cloud_formation_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_cloud_formation_template_errors(), tuple()}.
 create_cloud_formation_template(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/templates"],
@@ -644,24 +753,14 @@ create_cloud_formation_template(Client, ApplicationId, Input0, Options0) ->
 -spec delete_application(map(), binary() | list(), delete_application_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_application_errors(), tuple()}.
 delete_application(Client, ApplicationId, Input) ->
     delete_application(Client, ApplicationId, Input, []).
 
 -spec delete_application(map(), binary() | list(), delete_application_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_application_errors(), tuple()}.
 delete_application(Client, ApplicationId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
@@ -688,11 +787,7 @@ delete_application(Client, ApplicationId, Input0, Options0) ->
 -spec get_application(map(), binary() | list()) ->
     {ok, get_application_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_application_errors(), tuple()}.
 get_application(Client, ApplicationId)
   when is_map(Client) ->
     get_application(Client, ApplicationId, #{}, #{}).
@@ -700,11 +795,7 @@ get_application(Client, ApplicationId)
 -spec get_application(map(), binary() | list(), map(), map()) ->
     {ok, get_application_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_application_errors(), tuple()}.
 get_application(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application(Client, ApplicationId, QueryMap, HeadersMap, []).
@@ -712,11 +803,7 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap)
 -spec get_application(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_application_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_application_errors(), tuple()}.
 get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
@@ -741,11 +828,7 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 -spec get_application_policy(map(), binary() | list()) ->
     {ok, get_application_policy_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_application_policy_errors(), tuple()}.
 get_application_policy(Client, ApplicationId)
   when is_map(Client) ->
     get_application_policy(Client, ApplicationId, #{}, #{}).
@@ -753,11 +836,7 @@ get_application_policy(Client, ApplicationId)
 -spec get_application_policy(map(), binary() | list(), map(), map()) ->
     {ok, get_application_policy_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_application_policy_errors(), tuple()}.
 get_application_policy(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application_policy(Client, ApplicationId, QueryMap, HeadersMap, []).
@@ -765,11 +844,7 @@ get_application_policy(Client, ApplicationId, QueryMap, HeadersMap)
 -spec get_application_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_application_policy_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_application_policy_errors(), tuple()}.
 get_application_policy(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/policy"],
@@ -790,11 +865,7 @@ get_application_policy(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 -spec get_cloud_formation_template(map(), binary() | list(), binary() | list()) ->
     {ok, get_cloud_formation_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_cloud_formation_template_errors(), tuple()}.
 get_cloud_formation_template(Client, ApplicationId, TemplateId)
   when is_map(Client) ->
     get_cloud_formation_template(Client, ApplicationId, TemplateId, #{}, #{}).
@@ -802,11 +873,7 @@ get_cloud_formation_template(Client, ApplicationId, TemplateId)
 -spec get_cloud_formation_template(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_cloud_formation_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_cloud_formation_template_errors(), tuple()}.
 get_cloud_formation_template(Client, ApplicationId, TemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cloud_formation_template(Client, ApplicationId, TemplateId, QueryMap, HeadersMap, []).
@@ -814,11 +881,7 @@ get_cloud_formation_template(Client, ApplicationId, TemplateId, QueryMap, Header
 -spec get_cloud_formation_template(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_cloud_formation_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_cloud_formation_template_errors(), tuple()}.
 get_cloud_formation_template(Client, ApplicationId, TemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/templates/", aws_util:encode_uri(TemplateId), ""],
@@ -840,11 +903,7 @@ get_cloud_formation_template(Client, ApplicationId, TemplateId, QueryMap, Header
 -spec list_application_dependencies(map(), binary() | list()) ->
     {ok, list_application_dependencies_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_application_dependencies_errors(), tuple()}.
 list_application_dependencies(Client, ApplicationId)
   when is_map(Client) ->
     list_application_dependencies(Client, ApplicationId, #{}, #{}).
@@ -852,11 +911,7 @@ list_application_dependencies(Client, ApplicationId)
 -spec list_application_dependencies(map(), binary() | list(), map(), map()) ->
     {ok, list_application_dependencies_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_application_dependencies_errors(), tuple()}.
 list_application_dependencies(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_application_dependencies(Client, ApplicationId, QueryMap, HeadersMap, []).
@@ -864,11 +919,7 @@ list_application_dependencies(Client, ApplicationId, QueryMap, HeadersMap)
 -spec list_application_dependencies(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_application_dependencies_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_application_dependencies_errors(), tuple()}.
 list_application_dependencies(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/dependencies"],
@@ -895,11 +946,7 @@ list_application_dependencies(Client, ApplicationId, QueryMap, HeadersMap, Optio
 -spec list_application_versions(map(), binary() | list()) ->
     {ok, list_application_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_application_versions_errors(), tuple()}.
 list_application_versions(Client, ApplicationId)
   when is_map(Client) ->
     list_application_versions(Client, ApplicationId, #{}, #{}).
@@ -907,11 +954,7 @@ list_application_versions(Client, ApplicationId)
 -spec list_application_versions(map(), binary() | list(), map(), map()) ->
     {ok, list_application_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_application_versions_errors(), tuple()}.
 list_application_versions(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_application_versions(Client, ApplicationId, QueryMap, HeadersMap, []).
@@ -919,11 +962,7 @@ list_application_versions(Client, ApplicationId, QueryMap, HeadersMap)
 -spec list_application_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_application_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_application_versions_errors(), tuple()}.
 list_application_versions(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/versions"],
@@ -949,10 +988,7 @@ list_application_versions(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 -spec list_applications(map()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client)
   when is_map(Client) ->
     list_applications(Client, #{}, #{}).
@@ -960,10 +996,7 @@ list_applications(Client)
 -spec list_applications(map(), map(), map()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_applications(Client, QueryMap, HeadersMap, []).
@@ -971,10 +1004,7 @@ list_applications(Client, QueryMap, HeadersMap)
 -spec list_applications(map(), map(), map(), proplists:proplist()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications"],
@@ -1006,22 +1036,14 @@ list_applications(Client, QueryMap, HeadersMap, Options0)
 -spec put_application_policy(map(), binary() | list(), put_application_policy_request()) ->
     {ok, put_application_policy_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_application_policy_errors(), tuple()}.
 put_application_policy(Client, ApplicationId, Input) ->
     put_application_policy(Client, ApplicationId, Input, []).
 
 -spec put_application_policy(map(), binary() | list(), put_application_policy_request(), proplists:proplist()) ->
     {ok, put_application_policy_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_application_policy_errors(), tuple()}.
 put_application_policy(Client, ApplicationId, Input0, Options0) ->
     Method = put,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/policy"],
@@ -1051,22 +1073,14 @@ put_application_policy(Client, ApplicationId, Input0, Options0) ->
 -spec unshare_application(map(), binary() | list(), unshare_application_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, unshare_application_errors(), tuple()}.
 unshare_application(Client, ApplicationId, Input) ->
     unshare_application(Client, ApplicationId, Input, []).
 
 -spec unshare_application(map(), binary() | list(), unshare_application_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, unshare_application_errors(), tuple()}.
 unshare_application(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/unshare"],
@@ -1093,24 +1107,14 @@ unshare_application(Client, ApplicationId, Input0, Options0) ->
 -spec update_application(map(), binary() | list(), update_application_request()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_application_errors(), tuple()}.
 update_application(Client, ApplicationId, Input) ->
     update_application(Client, ApplicationId, Input, []).
 
 -spec update_application(map(), binary() | list(), update_application_request(), proplists:proplist()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_application_errors(), tuple()}.
 update_application(Client, ApplicationId, Input0, Options0) ->
     Method = patch,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],

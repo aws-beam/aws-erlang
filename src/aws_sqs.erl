@@ -642,6 +642,214 @@
 %% }
 -type message() :: #{binary() => any()}.
 
+-type add_permission_errors() ::
+    invalid_address() | 
+    over_limit() | 
+    request_throttled() | 
+    unsupported_operation() | 
+    invalid_security() | 
+    queue_does_not_exist().
+
+-type cancel_message_move_task_errors() ::
+    invalid_address() | 
+    request_throttled() | 
+    resource_not_found_exception() | 
+    unsupported_operation() | 
+    invalid_security().
+
+-type change_message_visibility_errors() ::
+    receipt_handle_is_invalid() | 
+    invalid_address() | 
+    message_not_inflight() | 
+    request_throttled() | 
+    unsupported_operation() | 
+    invalid_security() | 
+    queue_does_not_exist().
+
+-type change_message_visibility_batch_errors() ::
+    invalid_address() | 
+    batch_entry_ids_not_distinct() | 
+    invalid_batch_entry_id() | 
+    request_throttled() | 
+    empty_batch_request() | 
+    unsupported_operation() | 
+    too_many_entries_in_batch_request() | 
+    invalid_security() | 
+    queue_does_not_exist().
+
+-type create_queue_errors() ::
+    invalid_address() | 
+    queue_deleted_recently() | 
+    request_throttled() | 
+    invalid_attribute_value() | 
+    unsupported_operation() | 
+    invalid_security() | 
+    invalid_attribute_name() | 
+    queue_name_exists().
+
+-type delete_message_errors() ::
+    receipt_handle_is_invalid() | 
+    invalid_address() | 
+    invalid_id_format() | 
+    request_throttled() | 
+    unsupported_operation() | 
+    invalid_security() | 
+    queue_does_not_exist().
+
+-type delete_message_batch_errors() ::
+    invalid_address() | 
+    batch_entry_ids_not_distinct() | 
+    invalid_batch_entry_id() | 
+    request_throttled() | 
+    empty_batch_request() | 
+    unsupported_operation() | 
+    too_many_entries_in_batch_request() | 
+    invalid_security() | 
+    queue_does_not_exist().
+
+-type delete_queue_errors() ::
+    invalid_address() | 
+    request_throttled() | 
+    unsupported_operation() | 
+    invalid_security() | 
+    queue_does_not_exist().
+
+-type get_queue_attributes_errors() ::
+    invalid_address() | 
+    request_throttled() | 
+    unsupported_operation() | 
+    invalid_security() | 
+    queue_does_not_exist() | 
+    invalid_attribute_name().
+
+-type get_queue_url_errors() ::
+    invalid_address() | 
+    request_throttled() | 
+    unsupported_operation() | 
+    invalid_security() | 
+    queue_does_not_exist().
+
+-type list_dead_letter_source_queues_errors() ::
+    invalid_address() | 
+    request_throttled() | 
+    unsupported_operation() | 
+    invalid_security() | 
+    queue_does_not_exist().
+
+-type list_message_move_tasks_errors() ::
+    invalid_address() | 
+    request_throttled() | 
+    resource_not_found_exception() | 
+    unsupported_operation() | 
+    invalid_security().
+
+-type list_queue_tags_errors() ::
+    invalid_address() | 
+    request_throttled() | 
+    unsupported_operation() | 
+    invalid_security() | 
+    queue_does_not_exist().
+
+-type list_queues_errors() ::
+    invalid_address() | 
+    request_throttled() | 
+    unsupported_operation() | 
+    invalid_security().
+
+-type purge_queue_errors() ::
+    invalid_address() | 
+    request_throttled() | 
+    unsupported_operation() | 
+    invalid_security() | 
+    queue_does_not_exist() | 
+    purge_queue_in_progress().
+
+-type receive_message_errors() ::
+    invalid_address() | 
+    over_limit() | 
+    kms_invalid_key_usage() | 
+    kms_invalid_state() | 
+    kms_not_found() | 
+    request_throttled() | 
+    unsupported_operation() | 
+    kms_disabled() | 
+    kms_throttled() | 
+    invalid_security() | 
+    queue_does_not_exist() | 
+    kms_opt_in_required() | 
+    kms_access_denied().
+
+-type remove_permission_errors() ::
+    invalid_address() | 
+    request_throttled() | 
+    unsupported_operation() | 
+    invalid_security() | 
+    queue_does_not_exist().
+
+-type send_message_errors() ::
+    invalid_address() | 
+    kms_invalid_key_usage() | 
+    kms_invalid_state() | 
+    kms_not_found() | 
+    request_throttled() | 
+    unsupported_operation() | 
+    kms_disabled() | 
+    kms_throttled() | 
+    invalid_security() | 
+    queue_does_not_exist() | 
+    kms_opt_in_required() | 
+    invalid_message_contents() | 
+    kms_access_denied().
+
+-type send_message_batch_errors() ::
+    invalid_address() | 
+    batch_request_too_long() | 
+    kms_invalid_key_usage() | 
+    batch_entry_ids_not_distinct() | 
+    invalid_batch_entry_id() | 
+    kms_invalid_state() | 
+    kms_not_found() | 
+    request_throttled() | 
+    empty_batch_request() | 
+    unsupported_operation() | 
+    kms_disabled() | 
+    kms_throttled() | 
+    too_many_entries_in_batch_request() | 
+    invalid_security() | 
+    queue_does_not_exist() | 
+    kms_opt_in_required() | 
+    kms_access_denied().
+
+-type set_queue_attributes_errors() ::
+    invalid_address() | 
+    over_limit() | 
+    request_throttled() | 
+    invalid_attribute_value() | 
+    unsupported_operation() | 
+    invalid_security() | 
+    queue_does_not_exist() | 
+    invalid_attribute_name().
+
+-type start_message_move_task_errors() ::
+    invalid_address() | 
+    request_throttled() | 
+    resource_not_found_exception() | 
+    unsupported_operation() | 
+    invalid_security().
+
+-type tag_queue_errors() ::
+    invalid_address() | 
+    request_throttled() | 
+    unsupported_operation() | 
+    invalid_security() | 
+    queue_does_not_exist().
+
+-type untag_queue_errors() ::
+    invalid_address() | 
+    request_throttled() | 
+    unsupported_operation() | 
+    invalid_security() | 
+    queue_does_not_exist().
 
 %%====================================================================
 %% API
@@ -693,12 +901,7 @@
 -spec add_permission(map(), add_permission_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, over_limit(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, add_permission_errors(), tuple()}.
 add_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_permission(Client, Input, []).
@@ -706,12 +909,7 @@ add_permission(Client, Input)
 -spec add_permission(map(), add_permission_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, over_limit(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, add_permission_errors(), tuple()}.
 add_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddPermission">>, Input, Options).
@@ -741,11 +939,7 @@ add_permission(Client, Input, Options)
 -spec cancel_message_move_task(map(), cancel_message_move_task_request()) ->
     {ok, cancel_message_move_task_result(), tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, cancel_message_move_task_errors(), tuple()}.
 cancel_message_move_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_message_move_task(Client, Input, []).
@@ -753,11 +947,7 @@ cancel_message_move_task(Client, Input)
 -spec cancel_message_move_task(map(), cancel_message_move_task_request(), proplists:proplist()) ->
     {ok, cancel_message_move_task_result(), tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, cancel_message_move_task_errors(), tuple()}.
 cancel_message_move_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelMessageMoveTask">>, Input, Options).
@@ -846,13 +1036,7 @@ cancel_message_move_task(Client, Input, Options)
 -spec change_message_visibility(map(), change_message_visibility_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, message_not_inflight(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, receipt_handle_is_invalid(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, change_message_visibility_errors(), tuple()}.
 change_message_visibility(Client, Input)
   when is_map(Client), is_map(Input) ->
     change_message_visibility(Client, Input, []).
@@ -860,13 +1044,7 @@ change_message_visibility(Client, Input)
 -spec change_message_visibility(map(), change_message_visibility_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, message_not_inflight(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, receipt_handle_is_invalid(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, change_message_visibility_errors(), tuple()}.
 change_message_visibility(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ChangeMessageVisibility">>, Input, Options).
@@ -891,15 +1069,7 @@ change_message_visibility(Client, Input, Options)
 -spec change_message_visibility_batch(map(), change_message_visibility_batch_request()) ->
     {ok, change_message_visibility_batch_result(), tuple()} |
     {error, any()} |
-    {error, batch_entry_ids_not_distinct(), tuple()} |
-    {error, empty_batch_request(), tuple()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_batch_entry_id(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, too_many_entries_in_batch_request(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, change_message_visibility_batch_errors(), tuple()}.
 change_message_visibility_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     change_message_visibility_batch(Client, Input, []).
@@ -907,15 +1077,7 @@ change_message_visibility_batch(Client, Input)
 -spec change_message_visibility_batch(map(), change_message_visibility_batch_request(), proplists:proplist()) ->
     {ok, change_message_visibility_batch_result(), tuple()} |
     {error, any()} |
-    {error, batch_entry_ids_not_distinct(), tuple()} |
-    {error, empty_batch_request(), tuple()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_batch_entry_id(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, too_many_entries_in_batch_request(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, change_message_visibility_batch_errors(), tuple()}.
 change_message_visibility_batch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ChangeMessageVisibilityBatch">>, Input, Options).
@@ -982,14 +1144,7 @@ change_message_visibility_batch(Client, Input, Options)
 -spec create_queue(map(), create_queue_request()) ->
     {ok, create_queue_result(), tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_attribute_name(), tuple()} |
-    {error, invalid_attribute_value(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, queue_deleted_recently(), tuple()} |
-    {error, queue_name_exists(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, create_queue_errors(), tuple()}.
 create_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_queue(Client, Input, []).
@@ -997,14 +1152,7 @@ create_queue(Client, Input)
 -spec create_queue(map(), create_queue_request(), proplists:proplist()) ->
     {ok, create_queue_result(), tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_attribute_name(), tuple()} |
-    {error, invalid_attribute_value(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, queue_deleted_recently(), tuple()} |
-    {error, queue_name_exists(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, create_queue_errors(), tuple()}.
 create_queue(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateQueue">>, Input, Options).
@@ -1044,13 +1192,7 @@ create_queue(Client, Input, Options)
 -spec delete_message(map(), delete_message_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_id_format(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, receipt_handle_is_invalid(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, delete_message_errors(), tuple()}.
 delete_message(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_message(Client, Input, []).
@@ -1058,13 +1200,7 @@ delete_message(Client, Input)
 -spec delete_message(map(), delete_message_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_id_format(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, receipt_handle_is_invalid(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, delete_message_errors(), tuple()}.
 delete_message(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMessage">>, Input, Options).
@@ -1084,15 +1220,7 @@ delete_message(Client, Input, Options)
 -spec delete_message_batch(map(), delete_message_batch_request()) ->
     {ok, delete_message_batch_result(), tuple()} |
     {error, any()} |
-    {error, batch_entry_ids_not_distinct(), tuple()} |
-    {error, empty_batch_request(), tuple()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_batch_entry_id(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, too_many_entries_in_batch_request(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, delete_message_batch_errors(), tuple()}.
 delete_message_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_message_batch(Client, Input, []).
@@ -1100,15 +1228,7 @@ delete_message_batch(Client, Input)
 -spec delete_message_batch(map(), delete_message_batch_request(), proplists:proplist()) ->
     {ok, delete_message_batch_result(), tuple()} |
     {error, any()} |
-    {error, batch_entry_ids_not_distinct(), tuple()} |
-    {error, empty_batch_request(), tuple()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_batch_entry_id(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, too_many_entries_in_batch_request(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, delete_message_batch_errors(), tuple()}.
 delete_message_batch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMessageBatch">>, Input, Options).
@@ -1144,11 +1264,7 @@ delete_message_batch(Client, Input, Options)
 -spec delete_queue(map(), delete_queue_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, delete_queue_errors(), tuple()}.
 delete_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_queue(Client, Input, []).
@@ -1156,11 +1272,7 @@ delete_queue(Client, Input)
 -spec delete_queue(map(), delete_queue_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, delete_queue_errors(), tuple()}.
 delete_queue(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteQueue">>, Input, Options).
@@ -1174,12 +1286,7 @@ delete_queue(Client, Input, Options)
 -spec get_queue_attributes(map(), get_queue_attributes_request()) ->
     {ok, get_queue_attributes_result(), tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_attribute_name(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, get_queue_attributes_errors(), tuple()}.
 get_queue_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_queue_attributes(Client, Input, []).
@@ -1187,12 +1294,7 @@ get_queue_attributes(Client, Input)
 -spec get_queue_attributes(map(), get_queue_attributes_request(), proplists:proplist()) ->
     {ok, get_queue_attributes_result(), tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_attribute_name(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, get_queue_attributes_errors(), tuple()}.
 get_queue_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetQueueAttributes">>, Input, Options).
@@ -1213,11 +1315,7 @@ get_queue_attributes(Client, Input, Options)
 -spec get_queue_url(map(), get_queue_url_request()) ->
     {ok, get_queue_url_result(), tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, get_queue_url_errors(), tuple()}.
 get_queue_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_queue_url(Client, Input, []).
@@ -1225,11 +1323,7 @@ get_queue_url(Client, Input)
 -spec get_queue_url(map(), get_queue_url_request(), proplists:proplist()) ->
     {ok, get_queue_url_result(), tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, get_queue_url_errors(), tuple()}.
 get_queue_url(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetQueueUrl">>, Input, Options).
@@ -1257,11 +1351,7 @@ get_queue_url(Client, Input, Options)
 -spec list_dead_letter_source_queues(map(), list_dead_letter_source_queues_request()) ->
     {ok, list_dead_letter_source_queues_result(), tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, list_dead_letter_source_queues_errors(), tuple()}.
 list_dead_letter_source_queues(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dead_letter_source_queues(Client, Input, []).
@@ -1269,11 +1359,7 @@ list_dead_letter_source_queues(Client, Input)
 -spec list_dead_letter_source_queues(map(), list_dead_letter_source_queues_request(), proplists:proplist()) ->
     {ok, list_dead_letter_source_queues_result(), tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, list_dead_letter_source_queues_errors(), tuple()}.
 list_dead_letter_source_queues(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDeadLetterSourceQueues">>, Input, Options).
@@ -1298,11 +1384,7 @@ list_dead_letter_source_queues(Client, Input, Options)
 -spec list_message_move_tasks(map(), list_message_move_tasks_request()) ->
     {ok, list_message_move_tasks_result(), tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, list_message_move_tasks_errors(), tuple()}.
 list_message_move_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_message_move_tasks(Client, Input, []).
@@ -1310,11 +1392,7 @@ list_message_move_tasks(Client, Input)
 -spec list_message_move_tasks(map(), list_message_move_tasks_request(), proplists:proplist()) ->
     {ok, list_message_move_tasks_result(), tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, list_message_move_tasks_errors(), tuple()}.
 list_message_move_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMessageMoveTasks">>, Input, Options).
@@ -1338,11 +1416,7 @@ list_message_move_tasks(Client, Input, Options)
 -spec list_queue_tags(map(), list_queue_tags_request()) ->
     {ok, list_queue_tags_result(), tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, list_queue_tags_errors(), tuple()}.
 list_queue_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_queue_tags(Client, Input, []).
@@ -1350,11 +1424,7 @@ list_queue_tags(Client, Input)
 -spec list_queue_tags(map(), list_queue_tags_request(), proplists:proplist()) ->
     {ok, list_queue_tags_result(), tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, list_queue_tags_errors(), tuple()}.
 list_queue_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListQueueTags">>, Input, Options).
@@ -1389,10 +1459,7 @@ list_queue_tags(Client, Input, Options)
 -spec list_queues(map(), list_queues_request()) ->
     {ok, list_queues_result(), tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, list_queues_errors(), tuple()}.
 list_queues(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_queues(Client, Input, []).
@@ -1400,10 +1467,7 @@ list_queues(Client, Input)
 -spec list_queues(map(), list_queues_request(), proplists:proplist()) ->
     {ok, list_queues_result(), tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, list_queues_errors(), tuple()}.
 list_queues(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListQueues">>, Input, Options).
@@ -1429,12 +1493,7 @@ list_queues(Client, Input, Options)
 -spec purge_queue(map(), purge_queue_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, purge_queue_in_progress(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, purge_queue_errors(), tuple()}.
 purge_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     purge_queue(Client, Input, []).
@@ -1442,12 +1501,7 @@ purge_queue(Client, Input)
 -spec purge_queue(map(), purge_queue_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, purge_queue_in_progress(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, purge_queue_errors(), tuple()}.
 purge_queue(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PurgeQueue">>, Input, Options).
@@ -1522,19 +1576,7 @@ purge_queue(Client, Input, Options)
 -spec receive_message(map(), receive_message_request()) ->
     {ok, receive_message_result(), tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, kms_access_denied(), tuple()} |
-    {error, kms_disabled(), tuple()} |
-    {error, kms_invalid_key_usage(), tuple()} |
-    {error, kms_invalid_state(), tuple()} |
-    {error, kms_not_found(), tuple()} |
-    {error, kms_opt_in_required(), tuple()} |
-    {error, kms_throttled(), tuple()} |
-    {error, over_limit(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, receive_message_errors(), tuple()}.
 receive_message(Client, Input)
   when is_map(Client), is_map(Input) ->
     receive_message(Client, Input, []).
@@ -1542,19 +1584,7 @@ receive_message(Client, Input)
 -spec receive_message(map(), receive_message_request(), proplists:proplist()) ->
     {ok, receive_message_result(), tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, kms_access_denied(), tuple()} |
-    {error, kms_disabled(), tuple()} |
-    {error, kms_invalid_key_usage(), tuple()} |
-    {error, kms_invalid_state(), tuple()} |
-    {error, kms_not_found(), tuple()} |
-    {error, kms_opt_in_required(), tuple()} |
-    {error, kms_throttled(), tuple()} |
-    {error, over_limit(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, receive_message_errors(), tuple()}.
 receive_message(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ReceiveMessage">>, Input, Options).
@@ -1577,11 +1607,7 @@ receive_message(Client, Input, Options)
 -spec remove_permission(map(), remove_permission_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, remove_permission_errors(), tuple()}.
 remove_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_permission(Client, Input, []).
@@ -1589,11 +1615,7 @@ remove_permission(Client, Input)
 -spec remove_permission(map(), remove_permission_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, remove_permission_errors(), tuple()}.
 remove_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemovePermission">>, Input, Options).
@@ -1615,19 +1637,7 @@ remove_permission(Client, Input, Options)
 -spec send_message(map(), send_message_request()) ->
     {ok, send_message_result(), tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_message_contents(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, kms_access_denied(), tuple()} |
-    {error, kms_disabled(), tuple()} |
-    {error, kms_invalid_key_usage(), tuple()} |
-    {error, kms_invalid_state(), tuple()} |
-    {error, kms_not_found(), tuple()} |
-    {error, kms_opt_in_required(), tuple()} |
-    {error, kms_throttled(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, send_message_errors(), tuple()}.
 send_message(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_message(Client, Input, []).
@@ -1635,19 +1645,7 @@ send_message(Client, Input)
 -spec send_message(map(), send_message_request(), proplists:proplist()) ->
     {ok, send_message_result(), tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_message_contents(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, kms_access_denied(), tuple()} |
-    {error, kms_disabled(), tuple()} |
-    {error, kms_invalid_key_usage(), tuple()} |
-    {error, kms_invalid_state(), tuple()} |
-    {error, kms_not_found(), tuple()} |
-    {error, kms_opt_in_required(), tuple()} |
-    {error, kms_throttled(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, send_message_errors(), tuple()}.
 send_message(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendMessage">>, Input, Options).
@@ -1697,23 +1695,7 @@ send_message(Client, Input, Options)
 -spec send_message_batch(map(), send_message_batch_request()) ->
     {ok, send_message_batch_result(), tuple()} |
     {error, any()} |
-    {error, batch_entry_ids_not_distinct(), tuple()} |
-    {error, batch_request_too_long(), tuple()} |
-    {error, empty_batch_request(), tuple()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_batch_entry_id(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, kms_access_denied(), tuple()} |
-    {error, kms_disabled(), tuple()} |
-    {error, kms_invalid_key_usage(), tuple()} |
-    {error, kms_invalid_state(), tuple()} |
-    {error, kms_not_found(), tuple()} |
-    {error, kms_opt_in_required(), tuple()} |
-    {error, kms_throttled(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, too_many_entries_in_batch_request(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, send_message_batch_errors(), tuple()}.
 send_message_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_message_batch(Client, Input, []).
@@ -1721,23 +1703,7 @@ send_message_batch(Client, Input)
 -spec send_message_batch(map(), send_message_batch_request(), proplists:proplist()) ->
     {ok, send_message_batch_result(), tuple()} |
     {error, any()} |
-    {error, batch_entry_ids_not_distinct(), tuple()} |
-    {error, batch_request_too_long(), tuple()} |
-    {error, empty_batch_request(), tuple()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_batch_entry_id(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, kms_access_denied(), tuple()} |
-    {error, kms_disabled(), tuple()} |
-    {error, kms_invalid_key_usage(), tuple()} |
-    {error, kms_invalid_state(), tuple()} |
-    {error, kms_not_found(), tuple()} |
-    {error, kms_opt_in_required(), tuple()} |
-    {error, kms_throttled(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, too_many_entries_in_batch_request(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, send_message_batch_errors(), tuple()}.
 send_message_batch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendMessageBatch">>, Input, Options).
@@ -1772,14 +1738,7 @@ send_message_batch(Client, Input, Options)
 -spec set_queue_attributes(map(), set_queue_attributes_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_attribute_name(), tuple()} |
-    {error, invalid_attribute_value(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, over_limit(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, set_queue_attributes_errors(), tuple()}.
 set_queue_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_queue_attributes(Client, Input, []).
@@ -1787,14 +1746,7 @@ set_queue_attributes(Client, Input)
 -spec set_queue_attributes(map(), set_queue_attributes_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_attribute_name(), tuple()} |
-    {error, invalid_attribute_value(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, over_limit(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, set_queue_attributes_errors(), tuple()}.
 set_queue_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetQueueAttributes">>, Input, Options).
@@ -1826,11 +1778,7 @@ set_queue_attributes(Client, Input, Options)
 -spec start_message_move_task(map(), start_message_move_task_request()) ->
     {ok, start_message_move_task_result(), tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, start_message_move_task_errors(), tuple()}.
 start_message_move_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_message_move_task(Client, Input, []).
@@ -1838,11 +1786,7 @@ start_message_move_task(Client, Input)
 -spec start_message_move_task(map(), start_message_move_task_request(), proplists:proplist()) ->
     {ok, start_message_move_task_result(), tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, start_message_move_task_errors(), tuple()}.
 start_message_move_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMessageMoveTask">>, Input, Options).
@@ -1883,11 +1827,7 @@ start_message_move_task(Client, Input, Options)
 -spec tag_queue(map(), tag_queue_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, tag_queue_errors(), tuple()}.
 tag_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_queue(Client, Input, []).
@@ -1895,11 +1835,7 @@ tag_queue(Client, Input)
 -spec tag_queue(map(), tag_queue_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, tag_queue_errors(), tuple()}.
 tag_queue(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagQueue">>, Input, Options).
@@ -1922,11 +1858,7 @@ tag_queue(Client, Input, Options)
 -spec untag_queue(map(), untag_queue_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, untag_queue_errors(), tuple()}.
 untag_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_queue(Client, Input, []).
@@ -1934,11 +1866,7 @@ untag_queue(Client, Input)
 -spec untag_queue(map(), untag_queue_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_address(), tuple()} |
-    {error, invalid_security(), tuple()} |
-    {error, queue_does_not_exist(), tuple()} |
-    {error, request_throttled(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, untag_queue_errors(), tuple()}.
 untag_queue(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagQueue">>, Input, Options).

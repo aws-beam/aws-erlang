@@ -54,6 +54,7 @@
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% custom_plugin_summary() :: #{
 %%   <<"creationTime">> => non_neg_integer(),
@@ -65,11 +66,13 @@
 %% }
 -type custom_plugin_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% kafka_cluster_client_authentication() :: #{
 %%   <<"authenticationType">> => string()
 %% }
 -type kafka_cluster_client_authentication() :: #{binary() => any()}.
+
 
 %% Example:
 %% kafka_cluster_client_authentication_description() :: #{
@@ -77,17 +80,20 @@
 %% }
 -type kafka_cluster_client_authentication_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% scale_in_policy() :: #{
 %%   <<"cpuUtilizationPercentage">> => integer()
 %% }
 -type scale_in_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% unauthorized_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type unauthorized_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_worker_configuration_response() :: #{
@@ -100,6 +106,7 @@
 %% }
 -type describe_worker_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_connectors_response() :: #{
 %%   <<"connectors">> => list(connector_summary()()),
@@ -107,11 +114,13 @@
 %% }
 -type list_connectors_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% plugin() :: #{
 %%   <<"customPlugin">> => custom_plugin()
 %% }
 -type plugin() :: #{binary() => any()}.
+
 
 %% Example:
 %% capacity_description() :: #{
@@ -119,6 +128,7 @@
 %%   <<"provisionedCapacity">> => provisioned_capacity_description()
 %% }
 -type capacity_description() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_custom_plugin_response() :: #{
@@ -131,9 +141,11 @@
 %%   <<"stateDescription">> => state_description()
 %% }
 -type describe_custom_plugin_response() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% worker_configuration_description() :: #{
@@ -142,12 +154,14 @@
 %% }
 -type worker_configuration_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% vpc() :: #{
 %%   <<"securityGroups">> => list(string()()),
 %%   <<"subnets">> => list(string()())
 %% }
 -type vpc() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_connector_response() :: #{
@@ -171,11 +185,13 @@
 %% }
 -type describe_connector_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% forbidden_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type forbidden_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_connector_request() :: #{
@@ -184,12 +200,14 @@
 %% }
 -type update_connector_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% worker_configuration() :: #{
 %%   <<"revision">> => float(),
 %%   <<"workerConfigurationArn">> => string()
 %% }
 -type worker_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% worker_configuration_summary() :: #{
@@ -202,11 +220,13 @@
 %% }
 -type worker_configuration_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% scale_in_policy_description() :: #{
 %%   <<"cpuUtilizationPercentage">> => integer()
 %% }
 -type scale_in_policy_description() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_custom_plugin_response() :: #{
@@ -214,6 +234,7 @@
 %%   <<"customPluginState">> => string()
 %% }
 -type delete_custom_plugin_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_connectors_request() :: #{
@@ -223,11 +244,13 @@
 %% }
 -type list_connectors_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% too_many_requests_exception() :: #{
@@ -235,12 +258,14 @@
 %% }
 -type too_many_requests_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% capacity() :: #{
 %%   <<"autoScaling">> => auto_scaling(),
 %%   <<"provisionedCapacity">> => provisioned_capacity()
 %% }
 -type capacity() :: #{binary() => any()}.
+
 
 %% Example:
 %% auto_scaling_update() :: #{
@@ -252,11 +277,13 @@
 %% }
 -type auto_scaling_update() :: #{binary() => any()}.
 
+
 %% Example:
 %% kafka_cluster() :: #{
 %%   <<"apacheKafkaCluster">> => apache_kafka_cluster()
 %% }
 -type kafka_cluster() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_worker_configurations_response() :: #{
@@ -265,17 +292,20 @@
 %% }
 -type list_worker_configurations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% kafka_cluster_encryption_in_transit_description() :: #{
 %%   <<"encryptionType">> => string()
 %% }
 -type kafka_cluster_encryption_in_transit_description() :: #{binary() => any()}.
+
 
 %% Example:
 %% provisioned_capacity_description() :: #{
@@ -284,17 +314,20 @@
 %% }
 -type provisioned_capacity_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% kafka_cluster_encryption_in_transit() :: #{
 %%   <<"encryptionType">> => string()
 %% }
 -type kafka_cluster_encryption_in_transit() :: #{binary() => any()}.
 
+
 %% Example:
 %% scale_out_policy_description() :: #{
 %%   <<"cpuUtilizationPercentage">> => integer()
 %% }
 -type scale_out_policy_description() :: #{binary() => any()}.
+
 
 %% Example:
 %% vpc_description() :: #{
@@ -303,12 +336,14 @@
 %% }
 -type vpc_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_custom_plugins_response() :: #{
 %%   <<"customPlugins">> => list(custom_plugin_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_custom_plugins_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% auto_scaling_description() :: #{
@@ -320,12 +355,14 @@
 %% }
 -type auto_scaling_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% cloud_watch_logs_log_delivery_description() :: #{
 %%   <<"enabled">> => boolean(),
 %%   <<"logGroup">> => string()
 %% }
 -type cloud_watch_logs_log_delivery_description() :: #{binary() => any()}.
+
 
 %% Example:
 %% apache_kafka_cluster() :: #{
@@ -334,17 +371,20 @@
 %% }
 -type apache_kafka_cluster() :: #{binary() => any()}.
 
+
 %% Example:
 %% not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% scale_out_policy_update() :: #{
 %%   <<"cpuUtilizationPercentage">> => integer()
 %% }
 -type scale_out_policy_update() :: #{binary() => any()}.
+
 
 %% Example:
 %% firehose_log_delivery_description() :: #{
@@ -353,6 +393,7 @@
 %% }
 -type firehose_log_delivery_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% provisioned_capacity() :: #{
 %%   <<"mcuCount">> => integer(),
@@ -360,12 +401,14 @@
 %% }
 -type provisioned_capacity() :: #{binary() => any()}.
 
+
 %% Example:
 %% state_description() :: #{
 %%   <<"code">> => string(),
 %%   <<"message">> => string()
 %% }
 -type state_description() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_connector_response() :: #{
@@ -375,11 +418,13 @@
 %% }
 -type create_connector_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% capacity_update() :: #{
@@ -388,11 +433,13 @@
 %% }
 -type capacity_update() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_unavailable_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% worker_configuration_revision_description() :: #{
@@ -403,6 +450,7 @@
 %% }
 -type worker_configuration_revision_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_location() :: #{
 %%   <<"bucketArn">> => string(),
@@ -411,14 +459,17 @@
 %% }
 -type s3_location() :: #{binary() => any()}.
 
+
 %% Example:
 %% log_delivery_description() :: #{
 %%   <<"workerLogDelivery">> => worker_log_delivery_description()
 %% }
 -type log_delivery_description() :: #{binary() => any()}.
+
 %% Example:
 %% describe_connector_request() :: #{}
 -type describe_connector_request() :: #{}.
+
 
 %% Example:
 %% custom_plugin_description() :: #{
@@ -426,6 +477,7 @@
 %%   <<"revision">> => float()
 %% }
 -type custom_plugin_description() :: #{binary() => any()}.
+
 
 %% Example:
 %% auto_scaling() :: #{
@@ -436,9 +488,11 @@
 %%   <<"scaleOutPolicy">> => scale_out_policy()
 %% }
 -type auto_scaling() :: #{binary() => any()}.
+
 %% Example:
 %% delete_custom_plugin_request() :: #{}
 -type delete_custom_plugin_request() :: #{}.
+
 
 %% Example:
 %% provisioned_capacity_update() :: #{
@@ -447,11 +501,13 @@
 %% }
 -type provisioned_capacity_update() :: #{binary() => any()}.
 
+
 %% Example:
 %% scale_in_policy_update() :: #{
 %%   <<"cpuUtilizationPercentage">> => integer()
 %% }
 -type scale_in_policy_update() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_log_delivery() :: #{
@@ -461,6 +517,7 @@
 %% }
 -type s3_log_delivery() :: #{binary() => any()}.
 
+
 %% Example:
 %% worker_configuration_revision_summary() :: #{
 %%   <<"creationTime">> => non_neg_integer(),
@@ -468,6 +525,7 @@
 %%   <<"revision">> => float()
 %% }
 -type worker_configuration_revision_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_connector_request() :: #{
@@ -487,12 +545,14 @@
 %% }
 -type create_connector_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_worker_configuration_response() :: #{
 %%   <<"workerConfigurationArn">> => string(),
 %%   <<"workerConfigurationState">> => string()
 %% }
 -type delete_worker_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% worker_log_delivery() :: #{
@@ -502,14 +562,17 @@
 %% }
 -type worker_log_delivery() :: #{binary() => any()}.
 
+
 %% Example:
 %% plugin_description() :: #{
 %%   <<"customPlugin">> => custom_plugin_description()
 %% }
 -type plugin_description() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% delete_connector_response() :: #{
@@ -517,6 +580,7 @@
 %%   <<"connectorState">> => string()
 %% }
 -type delete_connector_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% connector_summary() :: #{
@@ -538,15 +602,18 @@
 %% }
 -type connector_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% cloud_watch_logs_log_delivery() :: #{
 %%   <<"enabled">> => boolean(),
 %%   <<"logGroup">> => string()
 %% }
 -type cloud_watch_logs_log_delivery() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% worker_log_delivery_description() :: #{
@@ -556,11 +623,13 @@
 %% }
 -type worker_log_delivery_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_error_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type internal_server_error_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% log_delivery() :: #{
@@ -568,15 +637,18 @@
 %% }
 -type log_delivery() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_connector_response() :: #{
 %%   <<"connectorArn">> => string(),
 %%   <<"connectorState">> => string()
 %% }
 -type update_connector_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_custom_plugin_request() :: #{}
 -type describe_custom_plugin_request() :: #{}.
+
 
 %% Example:
 %% create_worker_configuration_request() :: #{
@@ -587,11 +659,13 @@
 %% }
 -type create_worker_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% kafka_cluster_description() :: #{
 %%   <<"apacheKafkaCluster">> => apache_kafka_cluster_description()
 %% }
 -type kafka_cluster_description() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_custom_plugin_response() :: #{
@@ -602,11 +676,13 @@
 %% }
 -type create_custom_plugin_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% custom_plugin_location_description() :: #{
 %%   <<"s3Location">> => s3_location_description()
 %% }
 -type custom_plugin_location_description() :: #{binary() => any()}.
+
 
 %% Example:
 %% custom_plugin() :: #{
@@ -615,11 +691,13 @@
 %% }
 -type custom_plugin() :: #{binary() => any()}.
 
+
 %% Example:
 %% bad_request_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_connector_request() :: #{
@@ -627,12 +705,14 @@
 %% }
 -type delete_connector_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% firehose_log_delivery() :: #{
 %%   <<"deliveryStream">> => string(),
 %%   <<"enabled">> => boolean()
 %% }
 -type firehose_log_delivery() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_worker_configuration_response() :: #{
@@ -643,9 +723,11 @@
 %%   <<"workerConfigurationState">> => string()
 %% }
 -type create_worker_configuration_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_worker_configuration_request() :: #{}
 -type delete_worker_configuration_request() :: #{}.
+
 
 %% Example:
 %% s3_log_delivery_description() :: #{
@@ -655,6 +737,7 @@
 %% }
 -type s3_log_delivery_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_custom_plugins_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -663,12 +746,14 @@
 %% }
 -type list_custom_plugins_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% apache_kafka_cluster_description() :: #{
 %%   <<"bootstrapServers">> => string(),
 %%   <<"vpc">> => vpc_description()
 %% }
 -type apache_kafka_cluster_description() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_location_description() :: #{
@@ -678,6 +763,7 @@
 %% }
 -type s3_location_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_worker_configurations_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -686,11 +772,13 @@
 %% }
 -type list_worker_configurations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% custom_plugin_location() :: #{
 %%   <<"s3Location">> => s3_location()
 %% }
 -type custom_plugin_location() :: #{binary() => any()}.
+
 
 %% Example:
 %% scale_out_policy() :: #{
@@ -698,12 +786,14 @@
 %% }
 -type scale_out_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% custom_plugin_file_description() :: #{
 %%   <<"fileMd5">> => string(),
 %%   <<"fileSize">> => float()
 %% }
 -type custom_plugin_file_description() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_custom_plugin_request() :: #{
@@ -714,9 +804,11 @@
 %%   <<"tags">> => map()
 %% }
 -type create_custom_plugin_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_worker_configuration_request() :: #{}
 -type describe_worker_configuration_request() :: #{}.
+
 
 %% Example:
 %% custom_plugin_revision_summary() :: #{
@@ -729,6 +821,154 @@
 %% }
 -type custom_plugin_revision_summary() :: #{binary() => any()}.
 
+-type create_connector_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type create_custom_plugin_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type create_worker_configuration_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type delete_connector_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type delete_custom_plugin_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type delete_worker_configuration_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type describe_connector_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type describe_custom_plugin_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type describe_worker_configuration_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type list_connectors_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type list_custom_plugins_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type list_tags_for_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type list_worker_configurations_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type tag_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type untag_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type update_connector_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -737,28 +977,14 @@
 -spec create_connector(map(), create_connector_request()) ->
     {ok, create_connector_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_connector_errors(), tuple()}.
 create_connector(Client, Input) ->
     create_connector(Client, Input, []).
 
 -spec create_connector(map(), create_connector_request(), proplists:proplist()) ->
     {ok, create_connector_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_connector_errors(), tuple()}.
 create_connector(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/connectors"],
@@ -785,28 +1011,14 @@ create_connector(Client, Input0, Options0) ->
 -spec create_custom_plugin(map(), create_custom_plugin_request()) ->
     {ok, create_custom_plugin_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_custom_plugin_errors(), tuple()}.
 create_custom_plugin(Client, Input) ->
     create_custom_plugin(Client, Input, []).
 
 -spec create_custom_plugin(map(), create_custom_plugin_request(), proplists:proplist()) ->
     {ok, create_custom_plugin_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_custom_plugin_errors(), tuple()}.
 create_custom_plugin(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/custom-plugins"],
@@ -833,28 +1045,14 @@ create_custom_plugin(Client, Input0, Options0) ->
 -spec create_worker_configuration(map(), create_worker_configuration_request()) ->
     {ok, create_worker_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_worker_configuration_errors(), tuple()}.
 create_worker_configuration(Client, Input) ->
     create_worker_configuration(Client, Input, []).
 
 -spec create_worker_configuration(map(), create_worker_configuration_request(), proplists:proplist()) ->
     {ok, create_worker_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_worker_configuration_errors(), tuple()}.
 create_worker_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/worker-configurations"],
@@ -881,26 +1079,14 @@ create_worker_configuration(Client, Input0, Options0) ->
 -spec delete_connector(map(), binary() | list(), delete_connector_request()) ->
     {ok, delete_connector_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_connector_errors(), tuple()}.
 delete_connector(Client, ConnectorArn, Input) ->
     delete_connector(Client, ConnectorArn, Input, []).
 
 -spec delete_connector(map(), binary() | list(), delete_connector_request(), proplists:proplist()) ->
     {ok, delete_connector_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_connector_errors(), tuple()}.
 delete_connector(Client, ConnectorArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/connectors/", aws_util:encode_uri(ConnectorArn), ""],
@@ -928,26 +1114,14 @@ delete_connector(Client, ConnectorArn, Input0, Options0) ->
 -spec delete_custom_plugin(map(), binary() | list(), delete_custom_plugin_request()) ->
     {ok, delete_custom_plugin_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_custom_plugin_errors(), tuple()}.
 delete_custom_plugin(Client, CustomPluginArn, Input) ->
     delete_custom_plugin(Client, CustomPluginArn, Input, []).
 
 -spec delete_custom_plugin(map(), binary() | list(), delete_custom_plugin_request(), proplists:proplist()) ->
     {ok, delete_custom_plugin_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_custom_plugin_errors(), tuple()}.
 delete_custom_plugin(Client, CustomPluginArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/custom-plugins/", aws_util:encode_uri(CustomPluginArn), ""],
@@ -974,26 +1148,14 @@ delete_custom_plugin(Client, CustomPluginArn, Input0, Options0) ->
 -spec delete_worker_configuration(map(), binary() | list(), delete_worker_configuration_request()) ->
     {ok, delete_worker_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_worker_configuration_errors(), tuple()}.
 delete_worker_configuration(Client, WorkerConfigurationArn, Input) ->
     delete_worker_configuration(Client, WorkerConfigurationArn, Input, []).
 
 -spec delete_worker_configuration(map(), binary() | list(), delete_worker_configuration_request(), proplists:proplist()) ->
     {ok, delete_worker_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_worker_configuration_errors(), tuple()}.
 delete_worker_configuration(Client, WorkerConfigurationArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/worker-configurations/", aws_util:encode_uri(WorkerConfigurationArn), ""],
@@ -1020,13 +1182,7 @@ delete_worker_configuration(Client, WorkerConfigurationArn, Input0, Options0) ->
 -spec describe_connector(map(), binary() | list()) ->
     {ok, describe_connector_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_connector_errors(), tuple()}.
 describe_connector(Client, ConnectorArn)
   when is_map(Client) ->
     describe_connector(Client, ConnectorArn, #{}, #{}).
@@ -1034,13 +1190,7 @@ describe_connector(Client, ConnectorArn)
 -spec describe_connector(map(), binary() | list(), map(), map()) ->
     {ok, describe_connector_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_connector_errors(), tuple()}.
 describe_connector(Client, ConnectorArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_connector(Client, ConnectorArn, QueryMap, HeadersMap, []).
@@ -1048,13 +1198,7 @@ describe_connector(Client, ConnectorArn, QueryMap, HeadersMap)
 -spec describe_connector(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_connector_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_connector_errors(), tuple()}.
 describe_connector(Client, ConnectorArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/connectors/", aws_util:encode_uri(ConnectorArn), ""],
@@ -1075,13 +1219,7 @@ describe_connector(Client, ConnectorArn, QueryMap, HeadersMap, Options0)
 -spec describe_custom_plugin(map(), binary() | list()) ->
     {ok, describe_custom_plugin_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_custom_plugin_errors(), tuple()}.
 describe_custom_plugin(Client, CustomPluginArn)
   when is_map(Client) ->
     describe_custom_plugin(Client, CustomPluginArn, #{}, #{}).
@@ -1089,13 +1227,7 @@ describe_custom_plugin(Client, CustomPluginArn)
 -spec describe_custom_plugin(map(), binary() | list(), map(), map()) ->
     {ok, describe_custom_plugin_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_custom_plugin_errors(), tuple()}.
 describe_custom_plugin(Client, CustomPluginArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_custom_plugin(Client, CustomPluginArn, QueryMap, HeadersMap, []).
@@ -1103,13 +1235,7 @@ describe_custom_plugin(Client, CustomPluginArn, QueryMap, HeadersMap)
 -spec describe_custom_plugin(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_custom_plugin_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_custom_plugin_errors(), tuple()}.
 describe_custom_plugin(Client, CustomPluginArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/custom-plugins/", aws_util:encode_uri(CustomPluginArn), ""],
@@ -1130,13 +1256,7 @@ describe_custom_plugin(Client, CustomPluginArn, QueryMap, HeadersMap, Options0)
 -spec describe_worker_configuration(map(), binary() | list()) ->
     {ok, describe_worker_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_worker_configuration_errors(), tuple()}.
 describe_worker_configuration(Client, WorkerConfigurationArn)
   when is_map(Client) ->
     describe_worker_configuration(Client, WorkerConfigurationArn, #{}, #{}).
@@ -1144,13 +1264,7 @@ describe_worker_configuration(Client, WorkerConfigurationArn)
 -spec describe_worker_configuration(map(), binary() | list(), map(), map()) ->
     {ok, describe_worker_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_worker_configuration_errors(), tuple()}.
 describe_worker_configuration(Client, WorkerConfigurationArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_worker_configuration(Client, WorkerConfigurationArn, QueryMap, HeadersMap, []).
@@ -1158,13 +1272,7 @@ describe_worker_configuration(Client, WorkerConfigurationArn, QueryMap, HeadersM
 -spec describe_worker_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_worker_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_worker_configuration_errors(), tuple()}.
 describe_worker_configuration(Client, WorkerConfigurationArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/worker-configurations/", aws_util:encode_uri(WorkerConfigurationArn), ""],
@@ -1190,13 +1298,7 @@ describe_worker_configuration(Client, WorkerConfigurationArn, QueryMap, HeadersM
 -spec list_connectors(map()) ->
     {ok, list_connectors_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_connectors_errors(), tuple()}.
 list_connectors(Client)
   when is_map(Client) ->
     list_connectors(Client, #{}, #{}).
@@ -1204,13 +1306,7 @@ list_connectors(Client)
 -spec list_connectors(map(), map(), map()) ->
     {ok, list_connectors_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_connectors_errors(), tuple()}.
 list_connectors(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_connectors(Client, QueryMap, HeadersMap, []).
@@ -1218,13 +1314,7 @@ list_connectors(Client, QueryMap, HeadersMap)
 -spec list_connectors(map(), map(), map(), proplists:proplist()) ->
     {ok, list_connectors_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_connectors_errors(), tuple()}.
 list_connectors(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/connectors"],
@@ -1252,13 +1342,7 @@ list_connectors(Client, QueryMap, HeadersMap, Options0)
 -spec list_custom_plugins(map()) ->
     {ok, list_custom_plugins_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_custom_plugins_errors(), tuple()}.
 list_custom_plugins(Client)
   when is_map(Client) ->
     list_custom_plugins(Client, #{}, #{}).
@@ -1266,13 +1350,7 @@ list_custom_plugins(Client)
 -spec list_custom_plugins(map(), map(), map()) ->
     {ok, list_custom_plugins_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_custom_plugins_errors(), tuple()}.
 list_custom_plugins(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_custom_plugins(Client, QueryMap, HeadersMap, []).
@@ -1280,13 +1358,7 @@ list_custom_plugins(Client, QueryMap, HeadersMap)
 -spec list_custom_plugins(map(), map(), map(), proplists:proplist()) ->
     {ok, list_custom_plugins_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_custom_plugins_errors(), tuple()}.
 list_custom_plugins(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/custom-plugins"],
@@ -1313,13 +1385,7 @@ list_custom_plugins(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1327,13 +1393,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1341,13 +1401,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1369,13 +1423,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec list_worker_configurations(map()) ->
     {ok, list_worker_configurations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_worker_configurations_errors(), tuple()}.
 list_worker_configurations(Client)
   when is_map(Client) ->
     list_worker_configurations(Client, #{}, #{}).
@@ -1383,13 +1431,7 @@ list_worker_configurations(Client)
 -spec list_worker_configurations(map(), map(), map()) ->
     {ok, list_worker_configurations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_worker_configurations_errors(), tuple()}.
 list_worker_configurations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_worker_configurations(Client, QueryMap, HeadersMap, []).
@@ -1397,13 +1439,7 @@ list_worker_configurations(Client, QueryMap, HeadersMap)
 -spec list_worker_configurations(map(), map(), map(), proplists:proplist()) ->
     {ok, list_worker_configurations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_worker_configurations_errors(), tuple()}.
 list_worker_configurations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/worker-configurations"],
@@ -1430,28 +1466,14 @@ list_worker_configurations(Client, QueryMap, HeadersMap, Options0)
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1478,26 +1500,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1525,26 +1535,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_connector(map(), binary() | list(), update_connector_request()) ->
     {ok, update_connector_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_connector_errors(), tuple()}.
 update_connector(Client, ConnectorArn, Input) ->
     update_connector(Client, ConnectorArn, Input, []).
 
 -spec update_connector(map(), binary() | list(), update_connector_request(), proplists:proplist()) ->
     {ok, update_connector_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_connector_errors(), tuple()}.
 update_connector(Client, ConnectorArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/connectors/", aws_util:encode_uri(ConnectorArn), ""],

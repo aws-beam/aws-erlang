@@ -131,6 +131,7 @@
 %% }
 -type create_virtual_gateway_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% http_timeout() :: #{
 %%   <<"idle">> => duration(),
@@ -138,11 +139,13 @@
 %% }
 -type http_timeout() :: #{binary() => any()}.
 
+
 %% Example:
 %% subject_alternative_names() :: #{
 %%   <<"match">> => subject_alternative_name_matchers()
 %% }
 -type subject_alternative_names() :: #{binary() => any()}.
+
 
 %% Example:
 %% virtual_gateway_ref() :: #{
@@ -157,6 +160,7 @@
 %% }
 -type virtual_gateway_ref() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_route_input() :: #{
 %%   <<"clientToken">> => [string()],
@@ -165,11 +169,13 @@
 %% }
 -type update_route_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_virtual_router_output() :: #{
 %%   <<"virtualRouter">> => virtual_router_data()
 %% }
 -type describe_virtual_router_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_virtual_service_output() :: #{
@@ -177,17 +183,20 @@
 %% }
 -type create_virtual_service_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_virtual_service_input() :: #{
 %%   <<"meshOwner">> => string()
 %% }
 -type delete_virtual_service_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% tls_validation_context_sds_trust() :: #{
 %%   <<"secretName">> => string()
 %% }
 -type tls_validation_context_sds_trust() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_metadata() :: #{
@@ -201,6 +210,7 @@
 %% }
 -type resource_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% mesh_ref() :: #{
 %%   <<"arn">> => string(),
@@ -213,6 +223,7 @@
 %% }
 -type mesh_ref() :: #{binary() => any()}.
 
+
 %% Example:
 %% outlier_detection() :: #{
 %%   <<"baseEjectionDuration">> => duration(),
@@ -222,11 +233,13 @@
 %% }
 -type outlier_detection() :: #{binary() => any()}.
 
+
 %% Example:
 %% grpc_gateway_route_rewrite() :: #{
 %%   <<"hostname">> => gateway_route_hostname_rewrite()
 %% }
 -type grpc_gateway_route_rewrite() :: #{binary() => any()}.
+
 
 %% Example:
 %% http_gateway_route_prefix_rewrite() :: #{
@@ -235,11 +248,13 @@
 %% }
 -type http_gateway_route_prefix_rewrite() :: #{binary() => any()}.
 
+
 %% Example:
 %% virtual_node_grpc_connection_pool() :: #{
 %%   <<"maxRequests">> => integer()
 %% }
 -type virtual_node_grpc_connection_pool() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_mesh_input() :: #{
@@ -247,6 +262,7 @@
 %%   <<"spec">> => mesh_spec()
 %% }
 -type update_mesh_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_virtual_gateways_input() :: #{
@@ -256,6 +272,7 @@
 %% }
 -type list_virtual_gateways_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% gateway_route_hostname_match() :: #{
 %%   <<"exact">> => string(),
@@ -263,11 +280,13 @@
 %% }
 -type gateway_route_hostname_match() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_virtual_router_output() :: #{
 %%   <<"virtualRouter">> => virtual_router_data()
 %% }
 -type update_virtual_router_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_virtual_router_output() :: #{
@@ -275,11 +294,13 @@
 %% }
 -type create_virtual_router_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_route_output() :: #{
 %%   <<"route">> => route_data()
 %% }
 -type create_route_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_virtual_gateway_output() :: #{
@@ -287,11 +308,13 @@
 %% }
 -type delete_virtual_gateway_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_mesh_output() :: #{
 %%   <<"mesh">> => mesh_data()
 %% }
 -type create_mesh_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% grpc_route_match() :: #{
@@ -302,11 +325,13 @@
 %% }
 -type grpc_route_match() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_route_input() :: #{
 %%   <<"meshOwner">> => string()
 %% }
 -type describe_route_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% listener() :: #{
@@ -319,11 +344,13 @@
 %% }
 -type listener() :: #{binary() => any()}.
 
+
 %% Example:
 %% tls_validation_context_acm_trust() :: #{
 %%   <<"certificateAuthorityArns">> => list(string()())
 %% }
 -type tls_validation_context_acm_trust() :: #{binary() => any()}.
+
 
 %% Example:
 %% match_range() :: #{
@@ -331,6 +358,7 @@
 %%   <<"start">> => [float()]
 %% }
 -type match_range() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_route_input() :: #{
@@ -342,11 +370,13 @@
 %% }
 -type create_route_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_in_use_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type resource_in_use_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_virtual_node_output() :: #{
@@ -354,17 +384,20 @@
 %% }
 -type update_virtual_node_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_virtual_service_output() :: #{
 %%   <<"virtualService">> => virtual_service_data()
 %% }
 -type delete_virtual_service_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% tcp_route_action() :: #{
 %%   <<"weightedTargets">> => list(weighted_target()())
 %% }
 -type tcp_route_action() :: #{binary() => any()}.
+
 
 %% Example:
 %% weighted_target() :: #{
@@ -374,11 +407,13 @@
 %% }
 -type weighted_target() :: #{binary() => any()}.
 
+
 %% Example:
 %% forbidden_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type forbidden_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% tag_ref() :: #{
@@ -387,17 +422,20 @@
 %% }
 -type tag_ref() :: #{binary() => any()}.
 
+
 %% Example:
 %% virtual_gateway_client_policy() :: #{
 %%   <<"tls">> => virtual_gateway_client_policy_tls()
 %% }
 -type virtual_gateway_client_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% virtual_service_status() :: #{
 %%   <<"status">> => string()
 %% }
 -type virtual_service_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_virtual_gateway_input() :: #{
@@ -407,11 +445,13 @@
 %% }
 -type update_virtual_gateway_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_gateway_route_input() :: #{
 %%   <<"meshOwner">> => string()
 %% }
 -type describe_gateway_route_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_routes_output() :: #{
@@ -420,6 +460,7 @@
 %% }
 -type list_routes_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% mesh_spec() :: #{
 %%   <<"egressFilter">> => egress_filter(),
@@ -427,11 +468,13 @@
 %% }
 -type mesh_spec() :: #{binary() => any()}.
 
+
 %% Example:
 %% virtual_node_http2_connection_pool() :: #{
 %%   <<"maxRequests">> => integer()
 %% }
 -type virtual_node_http2_connection_pool() :: #{binary() => any()}.
+
 
 %% Example:
 %% http_retry_policy() :: #{
@@ -442,6 +485,7 @@
 %% }
 -type http_retry_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% virtual_gateway_spec() :: #{
 %%   <<"backendDefaults">> => virtual_gateway_backend_defaults(),
@@ -450,11 +494,13 @@
 %% }
 -type virtual_gateway_spec() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_virtual_gateway_input() :: #{
 %%   <<"meshOwner">> => string()
 %% }
 -type describe_virtual_gateway_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% listener_tls_validation_context() :: #{
@@ -463,17 +509,20 @@
 %% }
 -type listener_tls_validation_context() :: #{binary() => any()}.
 
+
 %% Example:
 %% virtual_router_listener() :: #{
 %%   <<"portMapping">> => port_mapping()
 %% }
 -type virtual_router_listener() :: #{binary() => any()}.
 
+
 %% Example:
 %% mesh_status() :: #{
 %%   <<"status">> => string()
 %% }
 -type mesh_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_cloud_map_service_discovery() :: #{
@@ -484,11 +533,13 @@
 %% }
 -type aws_cloud_map_service_discovery() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_requests_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type too_many_requests_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_virtual_router_input() :: #{
@@ -498,11 +549,13 @@
 %% }
 -type update_virtual_router_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% mesh_service_discovery() :: #{
 %%   <<"ipPreference">> => string()
 %% }
 -type mesh_service_discovery() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_meshes_input() :: #{
@@ -511,6 +564,7 @@
 %% }
 -type list_meshes_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_output() :: #{
 %%   <<"nextToken">> => [string()],
@@ -518,11 +572,13 @@
 %% }
 -type list_tags_for_resource_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% virtual_service_spec() :: #{
 %%   <<"provider">> => list()
 %% }
 -type virtual_service_spec() :: #{binary() => any()}.
+
 
 %% Example:
 %% mesh_data() :: #{
@@ -533,11 +589,13 @@
 %% }
 -type mesh_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% virtual_gateway_grpc_connection_pool() :: #{
 %%   <<"maxRequests">> => integer()
 %% }
 -type virtual_gateway_grpc_connection_pool() :: #{binary() => any()}.
+
 
 %% Example:
 %% http_gateway_route_rewrite() :: #{
@@ -547,11 +605,13 @@
 %% }
 -type http_gateway_route_rewrite() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_route_output() :: #{
 %%   <<"route">> => route_data()
 %% }
 -type delete_route_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_virtual_nodes_output() :: #{
@@ -560,11 +620,13 @@
 %% }
 -type list_virtual_nodes_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% route_status() :: #{
 %%   <<"status">> => string()
 %% }
 -type route_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% virtual_gateway_listener_tls_validation_context() :: #{
@@ -573,11 +635,13 @@
 %% }
 -type virtual_gateway_listener_tls_validation_context() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_virtual_router_input() :: #{
 %%   <<"meshOwner">> => string()
 %% }
 -type describe_virtual_router_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_meshes_output() :: #{
@@ -586,11 +650,13 @@
 %% }
 -type list_meshes_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% virtual_gateway_listener_tls_sds_certificate() :: #{
 %%   <<"secretName">> => string()
 %% }
 -type virtual_gateway_listener_tls_sds_certificate() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_virtual_routers_input() :: #{
@@ -600,6 +666,7 @@
 %% }
 -type list_virtual_routers_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% gateway_route_target() :: #{
 %%   <<"port">> => integer(),
@@ -607,11 +674,13 @@
 %% }
 -type gateway_route_target() :: #{binary() => any()}.
 
+
 %% Example:
 %% virtual_node_tcp_connection_pool() :: #{
 %%   <<"maxConnections">> => integer()
 %% }
 -type virtual_node_tcp_connection_pool() :: #{binary() => any()}.
+
 
 %% Example:
 %% gateway_route_spec() :: #{
@@ -622,6 +691,7 @@
 %% }
 -type gateway_route_spec() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_virtual_nodes_input() :: #{
 %%   <<"limit">> => integer(),
@@ -630,11 +700,13 @@
 %% }
 -type list_virtual_nodes_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% virtual_router_service_provider() :: #{
 %%   <<"virtualRouterName">> => string()
 %% }
 -type virtual_router_service_provider() :: #{binary() => any()}.
+
 
 %% Example:
 %% grpc_route_metadata() :: #{
@@ -643,6 +715,7 @@
 %%   <<"name">> => string()
 %% }
 -type grpc_route_metadata() :: #{binary() => any()}.
+
 
 %% Example:
 %% virtual_node_ref() :: #{
@@ -657,6 +730,7 @@
 %% }
 -type virtual_node_ref() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_gateway_route_input() :: #{
 %%   <<"clientToken">> => [string()],
@@ -665,11 +739,13 @@
 %% }
 -type update_gateway_route_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_gateway_route_input() :: #{
 %%   <<"meshOwner">> => string()
 %% }
 -type delete_gateway_route_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% route_ref() :: #{
@@ -685,11 +761,13 @@
 %% }
 -type route_ref() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% tls_validation_context() :: #{
@@ -697,6 +775,7 @@
 %%   <<"trust">> => list()
 %% }
 -type tls_validation_context() :: #{binary() => any()}.
+
 
 %% Example:
 %% http_gateway_route_header() :: #{
@@ -706,11 +785,13 @@
 %% }
 -type http_gateway_route_header() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_route_output() :: #{
 %%   <<"route">> => route_data()
 %% }
 -type describe_route_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% grpc_timeout() :: #{
@@ -719,11 +800,13 @@
 %% }
 -type grpc_timeout() :: #{binary() => any()}.
 
+
 %% Example:
 %% client_policy() :: #{
 %%   <<"tls">> => client_policy_tls()
 %% }
 -type client_policy() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_virtual_router_input() :: #{
@@ -735,11 +818,13 @@
 %% }
 -type create_virtual_router_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% tcp_route_match() :: #{
 %%   <<"port">> => integer()
 %% }
 -type tcp_route_match() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_virtual_service_output() :: #{
@@ -747,17 +832,20 @@
 %% }
 -type update_virtual_service_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% subject_alternative_name_matchers() :: #{
 %%   <<"exact">> => list(string()())
 %% }
 -type subject_alternative_name_matchers() :: #{binary() => any()}.
 
+
 %% Example:
 %% virtual_gateway_backend_defaults() :: #{
 %%   <<"clientPolicy">> => virtual_gateway_client_policy()
 %% }
 -type virtual_gateway_backend_defaults() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_virtual_gateways_output() :: #{
@@ -766,17 +854,20 @@
 %% }
 -type list_virtual_gateways_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_virtual_node_output() :: #{
 %%   <<"virtualNode">> => virtual_node_data()
 %% }
 -type describe_virtual_node_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% not_found_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% virtual_gateway_file_access_log() :: #{
@@ -785,11 +876,13 @@
 %% }
 -type virtual_gateway_file_access_log() :: #{binary() => any()}.
 
+
 %% Example:
 %% virtual_gateway_logging() :: #{
 %%   <<"accessLog">> => list()
 %% }
 -type virtual_gateway_logging() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_gateway_routes_input() :: #{
@@ -799,11 +892,13 @@
 %% }
 -type list_gateway_routes_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% virtual_node_status() :: #{
 %%   <<"status">> => string()
 %% }
 -type virtual_node_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% gateway_route_virtual_service() :: #{
@@ -811,17 +906,20 @@
 %% }
 -type gateway_route_virtual_service() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_virtual_gateway_output() :: #{
 %%   <<"virtualGateway">> := virtual_gateway_data()
 %% }
 -type describe_virtual_gateway_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_route_input() :: #{
 %%   <<"meshOwner">> => string()
 %% }
 -type delete_route_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% virtual_node_data() :: #{
@@ -832,6 +930,7 @@
 %%   <<"virtualNodeName">> => string()
 %% }
 -type virtual_node_data() :: #{binary() => any()}.
+
 
 %% Example:
 %% virtual_service_ref() :: #{
@@ -846,6 +945,7 @@
 %% }
 -type virtual_service_ref() :: #{binary() => any()}.
 
+
 %% Example:
 %% listener_tls_file_certificate() :: #{
 %%   <<"certificateChain">> => string(),
@@ -853,20 +953,24 @@
 %% }
 -type listener_tls_file_certificate() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_unavailable_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% virtual_gateway_status() :: #{
 %%   <<"status">> => string()
 %% }
 -type virtual_gateway_status() :: #{binary() => any()}.
+
 %% Example:
 %% delete_mesh_input() :: #{}
 -type delete_mesh_input() :: #{}.
+
 
 %% Example:
 %% virtual_node_service_provider() :: #{
@@ -874,11 +978,13 @@
 %% }
 -type virtual_node_service_provider() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_virtual_router_input() :: #{
 %%   <<"meshOwner">> => string()
 %% }
 -type delete_virtual_router_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% virtual_gateway_listener_tls_acm_certificate() :: #{
@@ -886,11 +992,13 @@
 %% }
 -type virtual_gateway_listener_tls_acm_certificate() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_gateway_route_output() :: #{
 %%   <<"gatewayRoute">> := gateway_route_data()
 %% }
 -type describe_gateway_route_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_virtual_node_input() :: #{
@@ -902,11 +1010,13 @@
 %% }
 -type create_virtual_node_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% virtual_router_spec() :: #{
 %%   <<"listeners">> => list(virtual_router_listener()())
 %% }
 -type virtual_router_spec() :: #{binary() => any()}.
+
 
 %% Example:
 %% virtual_gateway_listener() :: #{
@@ -917,12 +1027,14 @@
 %% }
 -type virtual_gateway_listener() :: #{binary() => any()}.
 
+
 %% Example:
 %% json_format_ref() :: #{
 %%   <<"key">> => string(),
 %%   <<"value">> => string()
 %% }
 -type json_format_ref() :: #{binary() => any()}.
+
 
 %% Example:
 %% tag_resource_input() :: #{
@@ -931,17 +1043,20 @@
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% virtual_gateway_tls_validation_context_sds_trust() :: #{
 %%   <<"secretName">> => string()
 %% }
 -type virtual_gateway_tls_validation_context_sds_trust() :: #{binary() => any()}.
 
+
 %% Example:
 %% listener_tls_acm_certificate() :: #{
 %%   <<"certificateArn">> => string()
 %% }
 -type listener_tls_acm_certificate() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_virtual_service_input() :: #{
@@ -953,6 +1068,7 @@
 %% }
 -type create_virtual_service_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_virtual_routers_output() :: #{
 %%   <<"nextToken">> => [string()],
@@ -960,11 +1076,13 @@
 %% }
 -type list_virtual_routers_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% grpc_route_action() :: #{
 %%   <<"weightedTargets">> => list(weighted_target()())
 %% }
 -type grpc_route_action() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_virtual_router_output() :: #{
@@ -972,15 +1090,18 @@
 %% }
 -type delete_virtual_router_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_virtual_services_output() :: #{
 %%   <<"nextToken">> => [string()],
 %%   <<"virtualServices">> => list(virtual_service_ref()())
 %% }
 -type list_virtual_services_output() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_output() :: #{}
 -type tag_resource_output() :: #{}.
+
 
 %% Example:
 %% virtual_gateway_health_check_policy() :: #{
@@ -994,12 +1115,14 @@
 %% }
 -type virtual_gateway_health_check_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% virtual_gateway_port_mapping() :: #{
 %%   <<"port">> => integer(),
 %%   <<"protocol">> => string()
 %% }
 -type virtual_gateway_port_mapping() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_routes_input() :: #{
@@ -1009,11 +1132,13 @@
 %% }
 -type list_routes_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_virtual_node_input() :: #{
 %%   <<"meshOwner">> => string()
 %% }
 -type describe_virtual_node_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_gateway_route_output() :: #{
@@ -1021,11 +1146,13 @@
 %% }
 -type create_gateway_route_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% http_route_action() :: #{
 %%   <<"weightedTargets">> => list(weighted_target()())
 %% }
 -type http_route_action() :: #{binary() => any()}.
+
 
 %% Example:
 %% tcp_timeout() :: #{
@@ -1033,11 +1160,13 @@
 %% }
 -type tcp_timeout() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_gateway_route_output() :: #{
 %%   <<"gatewayRoute">> := gateway_route_data()
 %% }
 -type update_gateway_route_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_route_output() :: #{
@@ -1045,11 +1174,13 @@
 %% }
 -type update_route_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% tls_validation_context_file_trust() :: #{
 %%   <<"certificateChain">> => string()
 %% }
 -type tls_validation_context_file_trust() :: #{binary() => any()}.
+
 
 %% Example:
 %% virtual_gateway_http_connection_pool() :: #{
@@ -1058,12 +1189,14 @@
 %% }
 -type virtual_gateway_http_connection_pool() :: #{binary() => any()}.
 
+
 %% Example:
 %% virtual_gateway_tls_validation_context() :: #{
 %%   <<"subjectAlternativeNames">> => subject_alternative_names(),
 %%   <<"trust">> => list()
 %% }
 -type virtual_gateway_tls_validation_context() :: #{binary() => any()}.
+
 
 %% Example:
 %% route_data() :: #{
@@ -1076,11 +1209,13 @@
 %% }
 -type route_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_gateway_route_output() :: #{
 %%   <<"gatewayRoute">> := gateway_route_data()
 %% }
 -type delete_gateway_route_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% virtual_node_http_connection_pool() :: #{
@@ -1088,6 +1223,7 @@
 %%   <<"maxPendingRequests">> => integer()
 %% }
 -type virtual_node_http_connection_pool() :: #{binary() => any()}.
+
 
 %% Example:
 %% virtual_gateway_client_policy_tls() :: #{
@@ -1098,6 +1234,7 @@
 %% }
 -type virtual_gateway_client_policy_tls() :: #{binary() => any()}.
 
+
 %% Example:
 %% tcp_route() :: #{
 %%   <<"action">> => tcp_route_action(),
@@ -1106,12 +1243,14 @@
 %% }
 -type tcp_route() :: #{binary() => any()}.
 
+
 %% Example:
 %% grpc_gateway_route() :: #{
 %%   <<"action">> => grpc_gateway_route_action(),
 %%   <<"match">> => grpc_gateway_route_match()
 %% }
 -type grpc_gateway_route() :: #{binary() => any()}.
+
 
 %% Example:
 %% grpc_gateway_route_metadata() :: #{
@@ -1121,6 +1260,7 @@
 %% }
 -type grpc_gateway_route_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_input() :: #{
 %%   <<"resourceArn">> => string(),
@@ -1128,11 +1268,13 @@
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_mesh_output() :: #{
 %%   <<"mesh">> => mesh_data()
 %% }
 -type describe_mesh_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% virtual_gateway_tls_validation_context_file_trust() :: #{
@@ -1140,11 +1282,13 @@
 %% }
 -type virtual_gateway_tls_validation_context_file_trust() :: #{binary() => any()}.
 
+
 %% Example:
 %% backend_defaults() :: #{
 %%   <<"clientPolicy">> => client_policy()
 %% }
 -type backend_defaults() :: #{binary() => any()}.
+
 
 %% Example:
 %% port_mapping() :: #{
@@ -1153,12 +1297,14 @@
 %% }
 -type port_mapping() :: #{binary() => any()}.
 
+
 %% Example:
 %% duration() :: #{
 %%   <<"unit">> => string(),
 %%   <<"value">> => float()
 %% }
 -type duration() :: #{binary() => any()}.
+
 
 %% Example:
 %% gateway_route_ref() :: #{
@@ -1174,6 +1320,7 @@
 %% }
 -type gateway_route_ref() :: #{binary() => any()}.
 
+
 %% Example:
 %% virtual_node_spec() :: #{
 %%   <<"backendDefaults">> => backend_defaults(),
@@ -1184,17 +1331,20 @@
 %% }
 -type virtual_node_spec() :: #{binary() => any()}.
 
+
 %% Example:
 %% gateway_route_hostname_rewrite() :: #{
 %%   <<"defaultTargetHostname">> => string()
 %% }
 -type gateway_route_hostname_rewrite() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_mesh_output() :: #{
 %%   <<"mesh">> => mesh_data()
 %% }
 -type delete_mesh_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% route_spec() :: #{
@@ -1206,12 +1356,14 @@
 %% }
 -type route_spec() :: #{binary() => any()}.
 
+
 %% Example:
 %% virtual_service_backend() :: #{
 %%   <<"clientPolicy">> => client_policy(),
 %%   <<"virtualServiceName">> => string()
 %% }
 -type virtual_service_backend() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_tags_for_resource_input() :: #{
@@ -1221,6 +1373,7 @@
 %% }
 -type list_tags_for_resource_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% dns_service_discovery() :: #{
 %%   <<"hostname">> => string(),
@@ -1228,15 +1381,18 @@
 %%   <<"responseType">> => string()
 %% }
 -type dns_service_discovery() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_output() :: #{}
 -type untag_resource_output() :: #{}.
+
 
 %% Example:
 %% internal_server_error_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type internal_server_error_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% grpc_gateway_route_action() :: #{
@@ -1245,11 +1401,13 @@
 %% }
 -type grpc_gateway_route_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_virtual_gateway_input() :: #{
 %%   <<"meshOwner">> => string()
 %% }
 -type delete_virtual_gateway_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_virtual_node_input() :: #{
@@ -1258,6 +1416,7 @@
 %%   <<"spec">> => virtual_node_spec()
 %% }
 -type update_virtual_node_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% grpc_gateway_route_match() :: #{
@@ -1268,11 +1427,13 @@
 %% }
 -type grpc_gateway_route_match() :: #{binary() => any()}.
 
+
 %% Example:
 %% http_gateway_route_path_rewrite() :: #{
 %%   <<"exact">> => string()
 %% }
 -type http_gateway_route_path_rewrite() :: #{binary() => any()}.
+
 
 %% Example:
 %% client_policy_tls() :: #{
@@ -1283,6 +1444,7 @@
 %% }
 -type client_policy_tls() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_virtual_service_input() :: #{
 %%   <<"clientToken">> => [string()],
@@ -1290,6 +1452,7 @@
 %%   <<"spec">> => virtual_service_spec()
 %% }
 -type update_virtual_service_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_gateway_route_input() :: #{
@@ -1301,11 +1464,13 @@
 %% }
 -type create_gateway_route_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_virtual_node_input() :: #{
 %%   <<"meshOwner">> => string()
 %% }
 -type delete_virtual_node_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% limit_exceeded_exception() :: #{
@@ -1313,11 +1478,13 @@
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% virtual_router_status() :: #{
 %%   <<"status">> => string()
 %% }
 -type virtual_router_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_cloud_map_instance_attribute() :: #{
@@ -1326,12 +1493,14 @@
 %% }
 -type aws_cloud_map_instance_attribute() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_gateway_routes_output() :: #{
 %%   <<"gatewayRoutes">> := list(gateway_route_ref()()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_gateway_routes_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% health_check_policy() :: #{
@@ -1345,11 +1514,13 @@
 %% }
 -type health_check_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% listener_tls_sds_certificate() :: #{
 %%   <<"secretName">> => string()
 %% }
 -type listener_tls_sds_certificate() :: #{binary() => any()}.
+
 
 %% Example:
 %% http_gateway_route_action() :: #{
@@ -1358,11 +1529,13 @@
 %% }
 -type http_gateway_route_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% bad_request_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% http_path_match() :: #{
@@ -1370,6 +1543,7 @@
 %%   <<"regex">> => string()
 %% }
 -type http_path_match() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_virtual_gateway_input() :: #{
@@ -1381,11 +1555,13 @@
 %% }
 -type create_virtual_gateway_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% virtual_gateway_http2_connection_pool() :: #{
 %%   <<"maxRequests">> => integer()
 %% }
 -type virtual_gateway_http2_connection_pool() :: #{binary() => any()}.
+
 
 %% Example:
 %% http_route_header() :: #{
@@ -1395,6 +1571,7 @@
 %% }
 -type http_route_header() :: #{binary() => any()}.
 
+
 %% Example:
 %% file_access_log() :: #{
 %%   <<"format">> => list(),
@@ -1402,11 +1579,13 @@
 %% }
 -type file_access_log() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_mesh_input() :: #{
 %%   <<"meshOwner">> => string()
 %% }
 -type describe_mesh_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% gateway_route_data() :: #{
@@ -1419,11 +1598,13 @@
 %% }
 -type gateway_route_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% virtual_gateway_tls_validation_context_acm_trust() :: #{
 %%   <<"certificateAuthorityArns">> => list(string()())
 %% }
 -type virtual_gateway_tls_validation_context_acm_trust() :: #{binary() => any()}.
+
 
 %% Example:
 %% virtual_gateway_listener_tls_file_certificate() :: #{
@@ -1432,11 +1613,13 @@
 %% }
 -type virtual_gateway_listener_tls_file_certificate() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_virtual_service_output() :: #{
 %%   <<"virtualService">> => virtual_service_data()
 %% }
 -type describe_virtual_service_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% grpc_retry_policy() :: #{
@@ -1448,6 +1631,7 @@
 %% }
 -type grpc_retry_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_virtual_services_input() :: #{
 %%   <<"limit">> => integer(),
@@ -1456,6 +1640,7 @@
 %% }
 -type list_virtual_services_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% virtual_gateway_listener_tls() :: #{
 %%   <<"certificate">> => list(),
@@ -1463,6 +1648,7 @@
 %%   <<"validation">> => virtual_gateway_listener_tls_validation_context()
 %% }
 -type virtual_gateway_listener_tls() :: #{binary() => any()}.
+
 
 %% Example:
 %% http_route_match() :: #{
@@ -1476,11 +1662,13 @@
 %% }
 -type http_route_match() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_mesh_output() :: #{
 %%   <<"mesh">> => mesh_data()
 %% }
 -type update_mesh_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_virtual_service_input() :: #{
@@ -1488,11 +1676,13 @@
 %% }
 -type describe_virtual_service_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_virtual_gateway_output() :: #{
 %%   <<"virtualGateway">> := virtual_gateway_data()
 %% }
 -type update_virtual_gateway_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% egress_filter() :: #{
@@ -1500,17 +1690,20 @@
 %% }
 -type egress_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% query_parameter_match() :: #{
 %%   <<"exact">> => [string()]
 %% }
 -type query_parameter_match() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_virtual_node_output() :: #{
 %%   <<"virtualNode">> => virtual_node_data()
 %% }
 -type create_virtual_node_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% virtual_service_data() :: #{
@@ -1522,6 +1715,7 @@
 %% }
 -type virtual_service_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% http_gateway_route() :: #{
 %%   <<"action">> => http_gateway_route_action(),
@@ -1529,11 +1723,13 @@
 %% }
 -type http_gateway_route() :: #{binary() => any()}.
 
+
 %% Example:
 %% gateway_route_status() :: #{
 %%   <<"status">> => string()
 %% }
 -type gateway_route_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% http_query_parameter() :: #{
@@ -1541,6 +1737,7 @@
 %%   <<"name">> => string()
 %% }
 -type http_query_parameter() :: #{binary() => any()}.
+
 
 %% Example:
 %% http_route() :: #{
@@ -1550,6 +1747,7 @@
 %%   <<"timeout">> => http_timeout()
 %% }
 -type http_route() :: #{binary() => any()}.
+
 
 %% Example:
 %% virtual_router_ref() :: #{
@@ -1564,6 +1762,7 @@
 %% }
 -type virtual_router_ref() :: #{binary() => any()}.
 
+
 %% Example:
 %% http_gateway_route_match() :: #{
 %%   <<"headers">> => list(http_gateway_route_header()()),
@@ -1576,6 +1775,7 @@
 %% }
 -type http_gateway_route_match() :: #{binary() => any()}.
 
+
 %% Example:
 %% listener_tls() :: #{
 %%   <<"certificate">> => list(),
@@ -1584,11 +1784,13 @@
 %% }
 -type listener_tls() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_virtual_node_output() :: #{
 %%   <<"virtualNode">> => virtual_node_data()
 %% }
 -type delete_virtual_node_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% logging() :: #{
@@ -1596,11 +1798,13 @@
 %% }
 -type logging() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_tags_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type too_many_tags_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% grpc_route() :: #{
@@ -1610,6 +1814,7 @@
 %%   <<"timeout">> => grpc_timeout()
 %% }
 -type grpc_route() :: #{binary() => any()}.
+
 
 %% Example:
 %% virtual_gateway_data() :: #{
@@ -1621,6 +1826,7 @@
 %% }
 -type virtual_gateway_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% virtual_router_data() :: #{
 %%   <<"meshName">> => string(),
@@ -1631,6 +1837,7 @@
 %% }
 -type virtual_router_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_mesh_input() :: #{
 %%   <<"clientToken">> => [string()],
@@ -1639,6 +1846,345 @@
 %%   <<"tags">> => list(tag_ref()())
 %% }
 -type create_mesh_input() :: #{binary() => any()}.
+
+-type create_gateway_route_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type create_mesh_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type create_route_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type create_virtual_gateway_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type create_virtual_node_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type create_virtual_router_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type create_virtual_service_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type delete_gateway_route_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    resource_in_use_exception().
+
+-type delete_mesh_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    resource_in_use_exception().
+
+-type delete_route_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    resource_in_use_exception().
+
+-type delete_virtual_gateway_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    resource_in_use_exception().
+
+-type delete_virtual_node_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    resource_in_use_exception().
+
+-type delete_virtual_router_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    resource_in_use_exception().
+
+-type delete_virtual_service_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    resource_in_use_exception().
+
+-type describe_gateway_route_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type describe_mesh_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type describe_route_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type describe_virtual_gateway_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type describe_virtual_node_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type describe_virtual_router_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type describe_virtual_service_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type list_gateway_routes_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type list_meshes_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type list_routes_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type list_tags_for_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type list_virtual_gateways_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type list_virtual_nodes_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type list_virtual_routers_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type list_virtual_services_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type untag_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type update_gateway_route_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type update_mesh_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type update_route_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type update_virtual_gateway_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type update_virtual_node_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type update_virtual_router_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type update_virtual_service_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
 
 %%====================================================================
 %% API
@@ -1657,28 +2203,14 @@
 -spec create_gateway_route(map(), binary() | list(), binary() | list(), create_gateway_route_input()) ->
     {ok, create_gateway_route_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_gateway_route_errors(), tuple()}.
 create_gateway_route(Client, MeshName, VirtualGatewayName, Input) ->
     create_gateway_route(Client, MeshName, VirtualGatewayName, Input, []).
 
 -spec create_gateway_route(map(), binary() | list(), binary() | list(), create_gateway_route_input(), proplists:proplist()) ->
     {ok, create_gateway_route_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_gateway_route_errors(), tuple()}.
 create_gateway_route(Client, MeshName, VirtualGatewayName, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateway/", aws_util:encode_uri(VirtualGatewayName), "/gatewayRoutes"],
@@ -1717,28 +2249,14 @@ create_gateway_route(Client, MeshName, VirtualGatewayName, Input0, Options0) ->
 -spec create_mesh(map(), create_mesh_input()) ->
     {ok, create_mesh_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_mesh_errors(), tuple()}.
 create_mesh(Client, Input) ->
     create_mesh(Client, Input, []).
 
 -spec create_mesh(map(), create_mesh_input(), proplists:proplist()) ->
     {ok, create_mesh_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_mesh_errors(), tuple()}.
 create_mesh(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/meshes"],
@@ -1772,28 +2290,14 @@ create_mesh(Client, Input0, Options0) ->
 -spec create_route(map(), binary() | list(), binary() | list(), create_route_input()) ->
     {ok, create_route_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_route_errors(), tuple()}.
 create_route(Client, MeshName, VirtualRouterName, Input) ->
     create_route(Client, MeshName, VirtualRouterName, Input, []).
 
 -spec create_route(map(), binary() | list(), binary() | list(), create_route_input(), proplists:proplist()) ->
     {ok, create_route_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_route_errors(), tuple()}.
 create_route(Client, MeshName, VirtualRouterName, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouter/", aws_util:encode_uri(VirtualRouterName), "/routes"],
@@ -1833,28 +2337,14 @@ create_route(Client, MeshName, VirtualRouterName, Input0, Options0) ->
 -spec create_virtual_gateway(map(), binary() | list(), create_virtual_gateway_input()) ->
     {ok, create_virtual_gateway_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_virtual_gateway_errors(), tuple()}.
 create_virtual_gateway(Client, MeshName, Input) ->
     create_virtual_gateway(Client, MeshName, Input, []).
 
 -spec create_virtual_gateway(map(), binary() | list(), create_virtual_gateway_input(), proplists:proplist()) ->
     {ok, create_virtual_gateway_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_virtual_gateway_errors(), tuple()}.
 create_virtual_gateway(Client, MeshName, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateways"],
@@ -1923,28 +2413,14 @@ create_virtual_gateway(Client, MeshName, Input0, Options0) ->
 -spec create_virtual_node(map(), binary() | list(), create_virtual_node_input()) ->
     {ok, create_virtual_node_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_virtual_node_errors(), tuple()}.
 create_virtual_node(Client, MeshName, Input) ->
     create_virtual_node(Client, MeshName, Input, []).
 
 -spec create_virtual_node(map(), binary() | list(), create_virtual_node_input(), proplists:proplist()) ->
     {ok, create_virtual_node_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_virtual_node_errors(), tuple()}.
 create_virtual_node(Client, MeshName, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualNodes"],
@@ -1984,28 +2460,14 @@ create_virtual_node(Client, MeshName, Input0, Options0) ->
 -spec create_virtual_router(map(), binary() | list(), create_virtual_router_input()) ->
     {ok, create_virtual_router_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_virtual_router_errors(), tuple()}.
 create_virtual_router(Client, MeshName, Input) ->
     create_virtual_router(Client, MeshName, Input, []).
 
 -spec create_virtual_router(map(), binary() | list(), create_virtual_router_input(), proplists:proplist()) ->
     {ok, create_virtual_router_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_virtual_router_errors(), tuple()}.
 create_virtual_router(Client, MeshName, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouters"],
@@ -2046,28 +2508,14 @@ create_virtual_router(Client, MeshName, Input0, Options0) ->
 -spec create_virtual_service(map(), binary() | list(), create_virtual_service_input()) ->
     {ok, create_virtual_service_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_virtual_service_errors(), tuple()}.
 create_virtual_service(Client, MeshName, Input) ->
     create_virtual_service(Client, MeshName, Input, []).
 
 -spec create_virtual_service(map(), binary() | list(), create_virtual_service_input(), proplists:proplist()) ->
     {ok, create_virtual_service_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_virtual_service_errors(), tuple()}.
 create_virtual_service(Client, MeshName, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualServices"],
@@ -2095,26 +2543,14 @@ create_virtual_service(Client, MeshName, Input0, Options0) ->
 -spec delete_gateway_route(map(), binary() | list(), binary() | list(), binary() | list(), delete_gateway_route_input()) ->
     {ok, delete_gateway_route_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_gateway_route_errors(), tuple()}.
 delete_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Input) ->
     delete_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Input, []).
 
 -spec delete_gateway_route(map(), binary() | list(), binary() | list(), binary() | list(), delete_gateway_route_input(), proplists:proplist()) ->
     {ok, delete_gateway_route_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_gateway_route_errors(), tuple()}.
 delete_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Input0, Options0) ->
     Method = delete,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateway/", aws_util:encode_uri(VirtualGatewayName), "/gatewayRoutes/", aws_util:encode_uri(GatewayRouteName), ""],
@@ -2146,26 +2582,14 @@ delete_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Inp
 -spec delete_mesh(map(), binary() | list(), delete_mesh_input()) ->
     {ok, delete_mesh_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_mesh_errors(), tuple()}.
 delete_mesh(Client, MeshName, Input) ->
     delete_mesh(Client, MeshName, Input, []).
 
 -spec delete_mesh(map(), binary() | list(), delete_mesh_input(), proplists:proplist()) ->
     {ok, delete_mesh_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_mesh_errors(), tuple()}.
 delete_mesh(Client, MeshName, Input0, Options0) ->
     Method = delete,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), ""],
@@ -2192,26 +2616,14 @@ delete_mesh(Client, MeshName, Input0, Options0) ->
 -spec delete_route(map(), binary() | list(), binary() | list(), binary() | list(), delete_route_input()) ->
     {ok, delete_route_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_route_errors(), tuple()}.
 delete_route(Client, MeshName, RouteName, VirtualRouterName, Input) ->
     delete_route(Client, MeshName, RouteName, VirtualRouterName, Input, []).
 
 -spec delete_route(map(), binary() | list(), binary() | list(), binary() | list(), delete_route_input(), proplists:proplist()) ->
     {ok, delete_route_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_route_errors(), tuple()}.
 delete_route(Client, MeshName, RouteName, VirtualRouterName, Input0, Options0) ->
     Method = delete,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouter/", aws_util:encode_uri(VirtualRouterName), "/routes/", aws_util:encode_uri(RouteName), ""],
@@ -2242,26 +2654,14 @@ delete_route(Client, MeshName, RouteName, VirtualRouterName, Input0, Options0) -
 -spec delete_virtual_gateway(map(), binary() | list(), binary() | list(), delete_virtual_gateway_input()) ->
     {ok, delete_virtual_gateway_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_virtual_gateway_errors(), tuple()}.
 delete_virtual_gateway(Client, MeshName, VirtualGatewayName, Input) ->
     delete_virtual_gateway(Client, MeshName, VirtualGatewayName, Input, []).
 
 -spec delete_virtual_gateway(map(), binary() | list(), binary() | list(), delete_virtual_gateway_input(), proplists:proplist()) ->
     {ok, delete_virtual_gateway_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_virtual_gateway_errors(), tuple()}.
 delete_virtual_gateway(Client, MeshName, VirtualGatewayName, Input0, Options0) ->
     Method = delete,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateways/", aws_util:encode_uri(VirtualGatewayName), ""],
@@ -2293,26 +2693,14 @@ delete_virtual_gateway(Client, MeshName, VirtualGatewayName, Input0, Options0) -
 -spec delete_virtual_node(map(), binary() | list(), binary() | list(), delete_virtual_node_input()) ->
     {ok, delete_virtual_node_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_virtual_node_errors(), tuple()}.
 delete_virtual_node(Client, MeshName, VirtualNodeName, Input) ->
     delete_virtual_node(Client, MeshName, VirtualNodeName, Input, []).
 
 -spec delete_virtual_node(map(), binary() | list(), binary() | list(), delete_virtual_node_input(), proplists:proplist()) ->
     {ok, delete_virtual_node_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_virtual_node_errors(), tuple()}.
 delete_virtual_node(Client, MeshName, VirtualNodeName, Input0, Options0) ->
     Method = delete,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualNodes/", aws_util:encode_uri(VirtualNodeName), ""],
@@ -2344,26 +2732,14 @@ delete_virtual_node(Client, MeshName, VirtualNodeName, Input0, Options0) ->
 -spec delete_virtual_router(map(), binary() | list(), binary() | list(), delete_virtual_router_input()) ->
     {ok, delete_virtual_router_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_virtual_router_errors(), tuple()}.
 delete_virtual_router(Client, MeshName, VirtualRouterName, Input) ->
     delete_virtual_router(Client, MeshName, VirtualRouterName, Input, []).
 
 -spec delete_virtual_router(map(), binary() | list(), binary() | list(), delete_virtual_router_input(), proplists:proplist()) ->
     {ok, delete_virtual_router_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_virtual_router_errors(), tuple()}.
 delete_virtual_router(Client, MeshName, VirtualRouterName, Input0, Options0) ->
     Method = delete,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouters/", aws_util:encode_uri(VirtualRouterName), ""],
@@ -2391,26 +2767,14 @@ delete_virtual_router(Client, MeshName, VirtualRouterName, Input0, Options0) ->
 -spec delete_virtual_service(map(), binary() | list(), binary() | list(), delete_virtual_service_input()) ->
     {ok, delete_virtual_service_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_virtual_service_errors(), tuple()}.
 delete_virtual_service(Client, MeshName, VirtualServiceName, Input) ->
     delete_virtual_service(Client, MeshName, VirtualServiceName, Input, []).
 
 -spec delete_virtual_service(map(), binary() | list(), binary() | list(), delete_virtual_service_input(), proplists:proplist()) ->
     {ok, delete_virtual_service_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_virtual_service_errors(), tuple()}.
 delete_virtual_service(Client, MeshName, VirtualServiceName, Input0, Options0) ->
     Method = delete,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualServices/", aws_util:encode_uri(VirtualServiceName), ""],
@@ -2438,12 +2802,7 @@ delete_virtual_service(Client, MeshName, VirtualServiceName, Input0, Options0) -
 -spec describe_gateway_route(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_gateway_route_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_gateway_route_errors(), tuple()}.
 describe_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName)
   when is_map(Client) ->
     describe_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, #{}, #{}).
@@ -2451,12 +2810,7 @@ describe_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName)
 -spec describe_gateway_route(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_gateway_route_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_gateway_route_errors(), tuple()}.
 describe_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, QueryMap, HeadersMap, []).
@@ -2464,12 +2818,7 @@ describe_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Q
 -spec describe_gateway_route(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_gateway_route_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_gateway_route_errors(), tuple()}.
 describe_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateway/", aws_util:encode_uri(VirtualGatewayName), "/gatewayRoutes/", aws_util:encode_uri(GatewayRouteName), ""],
@@ -2494,12 +2843,7 @@ describe_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Q
 -spec describe_mesh(map(), binary() | list()) ->
     {ok, describe_mesh_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_mesh_errors(), tuple()}.
 describe_mesh(Client, MeshName)
   when is_map(Client) ->
     describe_mesh(Client, MeshName, #{}, #{}).
@@ -2507,12 +2851,7 @@ describe_mesh(Client, MeshName)
 -spec describe_mesh(map(), binary() | list(), map(), map()) ->
     {ok, describe_mesh_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_mesh_errors(), tuple()}.
 describe_mesh(Client, MeshName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_mesh(Client, MeshName, QueryMap, HeadersMap, []).
@@ -2520,12 +2859,7 @@ describe_mesh(Client, MeshName, QueryMap, HeadersMap)
 -spec describe_mesh(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_mesh_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_mesh_errors(), tuple()}.
 describe_mesh(Client, MeshName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), ""],
@@ -2550,12 +2884,7 @@ describe_mesh(Client, MeshName, QueryMap, HeadersMap, Options0)
 -spec describe_route(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_route_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_route_errors(), tuple()}.
 describe_route(Client, MeshName, RouteName, VirtualRouterName)
   when is_map(Client) ->
     describe_route(Client, MeshName, RouteName, VirtualRouterName, #{}, #{}).
@@ -2563,12 +2892,7 @@ describe_route(Client, MeshName, RouteName, VirtualRouterName)
 -spec describe_route(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_route_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_route_errors(), tuple()}.
 describe_route(Client, MeshName, RouteName, VirtualRouterName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_route(Client, MeshName, RouteName, VirtualRouterName, QueryMap, HeadersMap, []).
@@ -2576,12 +2900,7 @@ describe_route(Client, MeshName, RouteName, VirtualRouterName, QueryMap, Headers
 -spec describe_route(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_route_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_route_errors(), tuple()}.
 describe_route(Client, MeshName, RouteName, VirtualRouterName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouter/", aws_util:encode_uri(VirtualRouterName), "/routes/", aws_util:encode_uri(RouteName), ""],
@@ -2606,12 +2925,7 @@ describe_route(Client, MeshName, RouteName, VirtualRouterName, QueryMap, Headers
 -spec describe_virtual_gateway(map(), binary() | list(), binary() | list()) ->
     {ok, describe_virtual_gateway_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_virtual_gateway_errors(), tuple()}.
 describe_virtual_gateway(Client, MeshName, VirtualGatewayName)
   when is_map(Client) ->
     describe_virtual_gateway(Client, MeshName, VirtualGatewayName, #{}, #{}).
@@ -2619,12 +2933,7 @@ describe_virtual_gateway(Client, MeshName, VirtualGatewayName)
 -spec describe_virtual_gateway(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_virtual_gateway_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_virtual_gateway_errors(), tuple()}.
 describe_virtual_gateway(Client, MeshName, VirtualGatewayName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_virtual_gateway(Client, MeshName, VirtualGatewayName, QueryMap, HeadersMap, []).
@@ -2632,12 +2941,7 @@ describe_virtual_gateway(Client, MeshName, VirtualGatewayName, QueryMap, Headers
 -spec describe_virtual_gateway(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_virtual_gateway_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_virtual_gateway_errors(), tuple()}.
 describe_virtual_gateway(Client, MeshName, VirtualGatewayName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateways/", aws_util:encode_uri(VirtualGatewayName), ""],
@@ -2662,12 +2966,7 @@ describe_virtual_gateway(Client, MeshName, VirtualGatewayName, QueryMap, Headers
 -spec describe_virtual_node(map(), binary() | list(), binary() | list()) ->
     {ok, describe_virtual_node_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_virtual_node_errors(), tuple()}.
 describe_virtual_node(Client, MeshName, VirtualNodeName)
   when is_map(Client) ->
     describe_virtual_node(Client, MeshName, VirtualNodeName, #{}, #{}).
@@ -2675,12 +2974,7 @@ describe_virtual_node(Client, MeshName, VirtualNodeName)
 -spec describe_virtual_node(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_virtual_node_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_virtual_node_errors(), tuple()}.
 describe_virtual_node(Client, MeshName, VirtualNodeName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_virtual_node(Client, MeshName, VirtualNodeName, QueryMap, HeadersMap, []).
@@ -2688,12 +2982,7 @@ describe_virtual_node(Client, MeshName, VirtualNodeName, QueryMap, HeadersMap)
 -spec describe_virtual_node(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_virtual_node_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_virtual_node_errors(), tuple()}.
 describe_virtual_node(Client, MeshName, VirtualNodeName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualNodes/", aws_util:encode_uri(VirtualNodeName), ""],
@@ -2718,12 +3007,7 @@ describe_virtual_node(Client, MeshName, VirtualNodeName, QueryMap, HeadersMap, O
 -spec describe_virtual_router(map(), binary() | list(), binary() | list()) ->
     {ok, describe_virtual_router_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_virtual_router_errors(), tuple()}.
 describe_virtual_router(Client, MeshName, VirtualRouterName)
   when is_map(Client) ->
     describe_virtual_router(Client, MeshName, VirtualRouterName, #{}, #{}).
@@ -2731,12 +3015,7 @@ describe_virtual_router(Client, MeshName, VirtualRouterName)
 -spec describe_virtual_router(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_virtual_router_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_virtual_router_errors(), tuple()}.
 describe_virtual_router(Client, MeshName, VirtualRouterName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_virtual_router(Client, MeshName, VirtualRouterName, QueryMap, HeadersMap, []).
@@ -2744,12 +3023,7 @@ describe_virtual_router(Client, MeshName, VirtualRouterName, QueryMap, HeadersMa
 -spec describe_virtual_router(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_virtual_router_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_virtual_router_errors(), tuple()}.
 describe_virtual_router(Client, MeshName, VirtualRouterName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouters/", aws_util:encode_uri(VirtualRouterName), ""],
@@ -2774,12 +3048,7 @@ describe_virtual_router(Client, MeshName, VirtualRouterName, QueryMap, HeadersMa
 -spec describe_virtual_service(map(), binary() | list(), binary() | list()) ->
     {ok, describe_virtual_service_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_virtual_service_errors(), tuple()}.
 describe_virtual_service(Client, MeshName, VirtualServiceName)
   when is_map(Client) ->
     describe_virtual_service(Client, MeshName, VirtualServiceName, #{}, #{}).
@@ -2787,12 +3056,7 @@ describe_virtual_service(Client, MeshName, VirtualServiceName)
 -spec describe_virtual_service(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_virtual_service_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_virtual_service_errors(), tuple()}.
 describe_virtual_service(Client, MeshName, VirtualServiceName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_virtual_service(Client, MeshName, VirtualServiceName, QueryMap, HeadersMap, []).
@@ -2800,12 +3064,7 @@ describe_virtual_service(Client, MeshName, VirtualServiceName, QueryMap, Headers
 -spec describe_virtual_service(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_virtual_service_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_virtual_service_errors(), tuple()}.
 describe_virtual_service(Client, MeshName, VirtualServiceName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualServices/", aws_util:encode_uri(VirtualServiceName), ""],
@@ -2832,12 +3091,7 @@ describe_virtual_service(Client, MeshName, VirtualServiceName, QueryMap, Headers
 -spec list_gateway_routes(map(), binary() | list(), binary() | list()) ->
     {ok, list_gateway_routes_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_gateway_routes_errors(), tuple()}.
 list_gateway_routes(Client, MeshName, VirtualGatewayName)
   when is_map(Client) ->
     list_gateway_routes(Client, MeshName, VirtualGatewayName, #{}, #{}).
@@ -2845,12 +3099,7 @@ list_gateway_routes(Client, MeshName, VirtualGatewayName)
 -spec list_gateway_routes(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_gateway_routes_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_gateway_routes_errors(), tuple()}.
 list_gateway_routes(Client, MeshName, VirtualGatewayName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_gateway_routes(Client, MeshName, VirtualGatewayName, QueryMap, HeadersMap, []).
@@ -2858,12 +3107,7 @@ list_gateway_routes(Client, MeshName, VirtualGatewayName, QueryMap, HeadersMap)
 -spec list_gateway_routes(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_gateway_routes_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_gateway_routes_errors(), tuple()}.
 list_gateway_routes(Client, MeshName, VirtualGatewayName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateway/", aws_util:encode_uri(VirtualGatewayName), "/gatewayRoutes"],
@@ -2890,12 +3134,7 @@ list_gateway_routes(Client, MeshName, VirtualGatewayName, QueryMap, HeadersMap, 
 -spec list_meshes(map()) ->
     {ok, list_meshes_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_meshes_errors(), tuple()}.
 list_meshes(Client)
   when is_map(Client) ->
     list_meshes(Client, #{}, #{}).
@@ -2903,12 +3142,7 @@ list_meshes(Client)
 -spec list_meshes(map(), map(), map()) ->
     {ok, list_meshes_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_meshes_errors(), tuple()}.
 list_meshes(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_meshes(Client, QueryMap, HeadersMap, []).
@@ -2916,12 +3150,7 @@ list_meshes(Client, QueryMap, HeadersMap)
 -spec list_meshes(map(), map(), map(), proplists:proplist()) ->
     {ok, list_meshes_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_meshes_errors(), tuple()}.
 list_meshes(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20190125/meshes"],
@@ -2947,12 +3176,7 @@ list_meshes(Client, QueryMap, HeadersMap, Options0)
 -spec list_routes(map(), binary() | list(), binary() | list()) ->
     {ok, list_routes_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_routes_errors(), tuple()}.
 list_routes(Client, MeshName, VirtualRouterName)
   when is_map(Client) ->
     list_routes(Client, MeshName, VirtualRouterName, #{}, #{}).
@@ -2960,12 +3184,7 @@ list_routes(Client, MeshName, VirtualRouterName)
 -spec list_routes(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_routes_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_routes_errors(), tuple()}.
 list_routes(Client, MeshName, VirtualRouterName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_routes(Client, MeshName, VirtualRouterName, QueryMap, HeadersMap, []).
@@ -2973,12 +3192,7 @@ list_routes(Client, MeshName, VirtualRouterName, QueryMap, HeadersMap)
 -spec list_routes(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_routes_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_routes_errors(), tuple()}.
 list_routes(Client, MeshName, VirtualRouterName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouter/", aws_util:encode_uri(VirtualRouterName), "/routes"],
@@ -3005,12 +3219,7 @@ list_routes(Client, MeshName, VirtualRouterName, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -3018,12 +3227,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -3031,12 +3235,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20190125/tags"],
@@ -3063,12 +3262,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec list_virtual_gateways(map(), binary() | list()) ->
     {ok, list_virtual_gateways_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_virtual_gateways_errors(), tuple()}.
 list_virtual_gateways(Client, MeshName)
   when is_map(Client) ->
     list_virtual_gateways(Client, MeshName, #{}, #{}).
@@ -3076,12 +3270,7 @@ list_virtual_gateways(Client, MeshName)
 -spec list_virtual_gateways(map(), binary() | list(), map(), map()) ->
     {ok, list_virtual_gateways_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_virtual_gateways_errors(), tuple()}.
 list_virtual_gateways(Client, MeshName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_virtual_gateways(Client, MeshName, QueryMap, HeadersMap, []).
@@ -3089,12 +3278,7 @@ list_virtual_gateways(Client, MeshName, QueryMap, HeadersMap)
 -spec list_virtual_gateways(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_virtual_gateways_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_virtual_gateways_errors(), tuple()}.
 list_virtual_gateways(Client, MeshName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateways"],
@@ -3121,12 +3305,7 @@ list_virtual_gateways(Client, MeshName, QueryMap, HeadersMap, Options0)
 -spec list_virtual_nodes(map(), binary() | list()) ->
     {ok, list_virtual_nodes_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_virtual_nodes_errors(), tuple()}.
 list_virtual_nodes(Client, MeshName)
   when is_map(Client) ->
     list_virtual_nodes(Client, MeshName, #{}, #{}).
@@ -3134,12 +3313,7 @@ list_virtual_nodes(Client, MeshName)
 -spec list_virtual_nodes(map(), binary() | list(), map(), map()) ->
     {ok, list_virtual_nodes_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_virtual_nodes_errors(), tuple()}.
 list_virtual_nodes(Client, MeshName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_virtual_nodes(Client, MeshName, QueryMap, HeadersMap, []).
@@ -3147,12 +3321,7 @@ list_virtual_nodes(Client, MeshName, QueryMap, HeadersMap)
 -spec list_virtual_nodes(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_virtual_nodes_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_virtual_nodes_errors(), tuple()}.
 list_virtual_nodes(Client, MeshName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualNodes"],
@@ -3179,12 +3348,7 @@ list_virtual_nodes(Client, MeshName, QueryMap, HeadersMap, Options0)
 -spec list_virtual_routers(map(), binary() | list()) ->
     {ok, list_virtual_routers_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_virtual_routers_errors(), tuple()}.
 list_virtual_routers(Client, MeshName)
   when is_map(Client) ->
     list_virtual_routers(Client, MeshName, #{}, #{}).
@@ -3192,12 +3356,7 @@ list_virtual_routers(Client, MeshName)
 -spec list_virtual_routers(map(), binary() | list(), map(), map()) ->
     {ok, list_virtual_routers_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_virtual_routers_errors(), tuple()}.
 list_virtual_routers(Client, MeshName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_virtual_routers(Client, MeshName, QueryMap, HeadersMap, []).
@@ -3205,12 +3364,7 @@ list_virtual_routers(Client, MeshName, QueryMap, HeadersMap)
 -spec list_virtual_routers(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_virtual_routers_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_virtual_routers_errors(), tuple()}.
 list_virtual_routers(Client, MeshName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouters"],
@@ -3237,12 +3391,7 @@ list_virtual_routers(Client, MeshName, QueryMap, HeadersMap, Options0)
 -spec list_virtual_services(map(), binary() | list()) ->
     {ok, list_virtual_services_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_virtual_services_errors(), tuple()}.
 list_virtual_services(Client, MeshName)
   when is_map(Client) ->
     list_virtual_services(Client, MeshName, #{}, #{}).
@@ -3250,12 +3399,7 @@ list_virtual_services(Client, MeshName)
 -spec list_virtual_services(map(), binary() | list(), map(), map()) ->
     {ok, list_virtual_services_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_virtual_services_errors(), tuple()}.
 list_virtual_services(Client, MeshName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_virtual_services(Client, MeshName, QueryMap, HeadersMap, []).
@@ -3263,12 +3407,7 @@ list_virtual_services(Client, MeshName, QueryMap, HeadersMap)
 -spec list_virtual_services(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_virtual_services_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_virtual_services_errors(), tuple()}.
 list_virtual_services(Client, MeshName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualServices"],
@@ -3302,26 +3441,14 @@ list_virtual_services(Client, MeshName, QueryMap, HeadersMap, Options0)
 -spec tag_resource(map(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
 -spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/tag"],
@@ -3349,24 +3476,14 @@ tag_resource(Client, Input0, Options0) ->
 -spec untag_resource(map(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
 -spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/untag"],
@@ -3396,28 +3513,14 @@ untag_resource(Client, Input0, Options0) ->
 -spec update_gateway_route(map(), binary() | list(), binary() | list(), binary() | list(), update_gateway_route_input()) ->
     {ok, update_gateway_route_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_gateway_route_errors(), tuple()}.
 update_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Input) ->
     update_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Input, []).
 
 -spec update_gateway_route(map(), binary() | list(), binary() | list(), binary() | list(), update_gateway_route_input(), proplists:proplist()) ->
     {ok, update_gateway_route_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_gateway_route_errors(), tuple()}.
 update_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateway/", aws_util:encode_uri(VirtualGatewayName), "/gatewayRoutes/", aws_util:encode_uri(GatewayRouteName), ""],
@@ -3445,26 +3548,14 @@ update_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Inp
 -spec update_mesh(map(), binary() | list(), update_mesh_input()) ->
     {ok, update_mesh_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_mesh_errors(), tuple()}.
 update_mesh(Client, MeshName, Input) ->
     update_mesh(Client, MeshName, Input, []).
 
 -spec update_mesh(map(), binary() | list(), update_mesh_input(), proplists:proplist()) ->
     {ok, update_mesh_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_mesh_errors(), tuple()}.
 update_mesh(Client, MeshName, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), ""],
@@ -3492,28 +3583,14 @@ update_mesh(Client, MeshName, Input0, Options0) ->
 -spec update_route(map(), binary() | list(), binary() | list(), binary() | list(), update_route_input()) ->
     {ok, update_route_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_route_errors(), tuple()}.
 update_route(Client, MeshName, RouteName, VirtualRouterName, Input) ->
     update_route(Client, MeshName, RouteName, VirtualRouterName, Input, []).
 
 -spec update_route(map(), binary() | list(), binary() | list(), binary() | list(), update_route_input(), proplists:proplist()) ->
     {ok, update_route_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_route_errors(), tuple()}.
 update_route(Client, MeshName, RouteName, VirtualRouterName, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouter/", aws_util:encode_uri(VirtualRouterName), "/routes/", aws_util:encode_uri(RouteName), ""],
@@ -3541,28 +3618,14 @@ update_route(Client, MeshName, RouteName, VirtualRouterName, Input0, Options0) -
 -spec update_virtual_gateway(map(), binary() | list(), binary() | list(), update_virtual_gateway_input()) ->
     {ok, update_virtual_gateway_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_virtual_gateway_errors(), tuple()}.
 update_virtual_gateway(Client, MeshName, VirtualGatewayName, Input) ->
     update_virtual_gateway(Client, MeshName, VirtualGatewayName, Input, []).
 
 -spec update_virtual_gateway(map(), binary() | list(), binary() | list(), update_virtual_gateway_input(), proplists:proplist()) ->
     {ok, update_virtual_gateway_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_virtual_gateway_errors(), tuple()}.
 update_virtual_gateway(Client, MeshName, VirtualGatewayName, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateways/", aws_util:encode_uri(VirtualGatewayName), ""],
@@ -3590,28 +3653,14 @@ update_virtual_gateway(Client, MeshName, VirtualGatewayName, Input0, Options0) -
 -spec update_virtual_node(map(), binary() | list(), binary() | list(), update_virtual_node_input()) ->
     {ok, update_virtual_node_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_virtual_node_errors(), tuple()}.
 update_virtual_node(Client, MeshName, VirtualNodeName, Input) ->
     update_virtual_node(Client, MeshName, VirtualNodeName, Input, []).
 
 -spec update_virtual_node(map(), binary() | list(), binary() | list(), update_virtual_node_input(), proplists:proplist()) ->
     {ok, update_virtual_node_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_virtual_node_errors(), tuple()}.
 update_virtual_node(Client, MeshName, VirtualNodeName, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualNodes/", aws_util:encode_uri(VirtualNodeName), ""],
@@ -3639,28 +3688,14 @@ update_virtual_node(Client, MeshName, VirtualNodeName, Input0, Options0) ->
 -spec update_virtual_router(map(), binary() | list(), binary() | list(), update_virtual_router_input()) ->
     {ok, update_virtual_router_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_virtual_router_errors(), tuple()}.
 update_virtual_router(Client, MeshName, VirtualRouterName, Input) ->
     update_virtual_router(Client, MeshName, VirtualRouterName, Input, []).
 
 -spec update_virtual_router(map(), binary() | list(), binary() | list(), update_virtual_router_input(), proplists:proplist()) ->
     {ok, update_virtual_router_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_virtual_router_errors(), tuple()}.
 update_virtual_router(Client, MeshName, VirtualRouterName, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouters/", aws_util:encode_uri(VirtualRouterName), ""],
@@ -3688,28 +3723,14 @@ update_virtual_router(Client, MeshName, VirtualRouterName, Input0, Options0) ->
 -spec update_virtual_service(map(), binary() | list(), binary() | list(), update_virtual_service_input()) ->
     {ok, update_virtual_service_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_virtual_service_errors(), tuple()}.
 update_virtual_service(Client, MeshName, VirtualServiceName, Input) ->
     update_virtual_service(Client, MeshName, VirtualServiceName, Input, []).
 
 -spec update_virtual_service(map(), binary() | list(), binary() | list(), update_virtual_service_input(), proplists:proplist()) ->
     {ok, update_virtual_service_output(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_virtual_service_errors(), tuple()}.
 update_virtual_service(Client, MeshName, VirtualServiceName, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualServices/", aws_util:encode_uri(VirtualServiceName), ""],

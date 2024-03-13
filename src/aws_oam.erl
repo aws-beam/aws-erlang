@@ -70,6 +70,7 @@
 %% }
 -type create_sink_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_link_output() :: #{
 %%   <<"Arn">> => [string()],
@@ -82,11 +83,13 @@
 %% }
 -type get_link_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_link_input() :: #{
 %%   <<"Identifier">> := string()
 %% }
 -type delete_link_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% missing_required_parameter_exception() :: #{
@@ -94,9 +97,11 @@
 %%   <<"message">> => [string()]
 %% }
 -type missing_required_parameter_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_sink_output() :: #{}
 -type delete_sink_output() :: #{}.
+
 
 %% Example:
 %% list_links_output() :: #{
@@ -104,6 +109,7 @@
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_links_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_sink_policy_output() :: #{
@@ -113,6 +119,7 @@
 %% }
 -type put_sink_policy_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_attached_links_output() :: #{
 %%   <<"Items">> => list(list_attached_links_item()()),
@@ -120,11 +127,13 @@
 %% }
 -type list_attached_links_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_output() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type list_tags_for_resource_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_sink_input() :: #{
@@ -132,11 +141,13 @@
 %% }
 -type delete_sink_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_sink_policy_input() :: #{
 %%   <<"SinkIdentifier">> := string()
 %% }
 -type get_sink_policy_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_sink_policy_output() :: #{
@@ -146,6 +157,7 @@
 %% }
 -type get_sink_policy_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_attached_links_input() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -153,6 +165,7 @@
 %%   <<"SinkIdentifier">> := string()
 %% }
 -type list_attached_links_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_link_input() :: #{
@@ -163,6 +176,7 @@
 %% }
 -type create_link_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"Message">> => [string()],
@@ -170,12 +184,14 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => [string()],
 %%   <<"amznErrorType">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_attached_links_item() :: #{
@@ -185,12 +201,14 @@
 %% }
 -type list_attached_links_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_links_input() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_links_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
@@ -199,12 +217,14 @@
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_link_input() :: #{
 %%   <<"Identifier">> := string(),
 %%   <<"ResourceTypes">> := list(list(any())())
 %% }
 -type update_link_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_sink_output() :: #{
@@ -215,17 +235,20 @@
 %% }
 -type create_sink_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_sink_input() :: #{
 %%   <<"Identifier">> := string()
 %% }
 -type get_sink_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_input() :: #{
 %%   <<"Tags">> := map()
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_link_output() :: #{
@@ -238,9 +261,11 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_link_output() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_output() :: #{}
 -type tag_resource_output() :: #{}.
+
 
 %% Example:
 %% list_links_item() :: #{
@@ -252,12 +277,14 @@
 %% }
 -type list_links_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_sinks_input() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_sinks_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% invalid_parameter_exception() :: #{
@@ -266,6 +293,7 @@
 %% }
 -type invalid_parameter_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_sinks_output() :: #{
 %%   <<"Items">> => list(list_sinks_item()()),
@@ -273,32 +301,39 @@
 %% }
 -type list_sinks_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_input() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_input() :: #{}
 -type list_tags_for_resource_input() :: #{}.
+
 %% Example:
 %% untag_resource_output() :: #{}
 -type untag_resource_output() :: #{}.
+
 
 %% Example:
 %% get_link_input() :: #{
 %%   <<"Identifier">> := string()
 %% }
 -type get_link_input() :: #{binary() => any()}.
+
 %% Example:
 %% delete_link_output() :: #{}
 -type delete_link_output() :: #{}.
+
 
 %% Example:
 %% internal_service_fault() :: #{
@@ -306,6 +341,7 @@
 %%   <<"amznErrorType">> => [string()]
 %% }
 -type internal_service_fault() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_sinks_item() :: #{
@@ -315,6 +351,7 @@
 %% }
 -type list_sinks_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_sink_output() :: #{
 %%   <<"Arn">> => [string()],
@@ -323,6 +360,7 @@
 %%   <<"Tags">> => map()
 %% }
 -type get_sink_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_link_output() :: #{
@@ -336,11 +374,13 @@
 %% }
 -type update_link_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_tags_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type too_many_tags_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_sink_policy_input() :: #{
@@ -348,6 +388,92 @@
 %%   <<"SinkIdentifier">> := string()
 %% }
 -type put_sink_policy_input() :: #{binary() => any()}.
+
+-type create_link_errors() ::
+    internal_service_fault() | 
+    invalid_parameter_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception() | 
+    missing_required_parameter_exception().
+
+-type create_sink_errors() ::
+    internal_service_fault() | 
+    invalid_parameter_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception() | 
+    missing_required_parameter_exception().
+
+-type delete_link_errors() ::
+    internal_service_fault() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    missing_required_parameter_exception().
+
+-type delete_sink_errors() ::
+    internal_service_fault() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    missing_required_parameter_exception().
+
+-type get_link_errors() ::
+    internal_service_fault() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    missing_required_parameter_exception().
+
+-type get_sink_errors() ::
+    internal_service_fault() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    missing_required_parameter_exception().
+
+-type get_sink_policy_errors() ::
+    internal_service_fault() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    missing_required_parameter_exception().
+
+-type list_attached_links_errors() ::
+    internal_service_fault() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    missing_required_parameter_exception().
+
+-type list_links_errors() ::
+    internal_service_fault() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception().
+
+-type list_sinks_errors() ::
+    internal_service_fault() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type put_sink_policy_errors() ::
+    internal_service_fault() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    missing_required_parameter_exception().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type update_link_errors() ::
+    internal_service_fault() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    missing_required_parameter_exception().
 
 %%====================================================================
 %% API
@@ -378,22 +504,14 @@
 -spec create_link(map(), create_link_input()) ->
     {ok, create_link_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_link_errors(), tuple()}.
 create_link(Client, Input) ->
     create_link(Client, Input, []).
 
 -spec create_link(map(), create_link_input(), proplists:proplist()) ->
     {ok, create_link_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_link_errors(), tuple()}.
 create_link(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateLink"],
@@ -434,22 +552,14 @@ create_link(Client, Input0, Options0) ->
 -spec create_sink(map(), create_sink_input()) ->
     {ok, create_sink_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_sink_errors(), tuple()}.
 create_sink(Client, Input) ->
     create_sink(Client, Input, []).
 
 -spec create_sink(map(), create_sink_input(), proplists:proplist()) ->
     {ok, create_sink_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_sink_errors(), tuple()}.
 create_sink(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateSink"],
@@ -480,20 +590,14 @@ create_sink(Client, Input0, Options0) ->
 -spec delete_link(map(), delete_link_input()) ->
     {ok, delete_link_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_link_errors(), tuple()}.
 delete_link(Client, Input) ->
     delete_link(Client, Input, []).
 
 -spec delete_link(map(), delete_link_input(), proplists:proplist()) ->
     {ok, delete_link_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_link_errors(), tuple()}.
 delete_link(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteLink"],
@@ -522,22 +626,14 @@ delete_link(Client, Input0, Options0) ->
 -spec delete_sink(map(), delete_sink_input()) ->
     {ok, delete_sink_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_sink_errors(), tuple()}.
 delete_sink(Client, Input) ->
     delete_sink(Client, Input, []).
 
 -spec delete_sink(map(), delete_sink_input(), proplists:proplist()) ->
     {ok, delete_sink_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_sink_errors(), tuple()}.
 delete_sink(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteSink"],
@@ -568,20 +664,14 @@ delete_sink(Client, Input0, Options0) ->
 -spec get_link(map(), get_link_input()) ->
     {ok, get_link_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_link_errors(), tuple()}.
 get_link(Client, Input) ->
     get_link(Client, Input, []).
 
 -spec get_link(map(), get_link_input(), proplists:proplist()) ->
     {ok, get_link_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_link_errors(), tuple()}.
 get_link(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetLink"],
@@ -612,20 +702,14 @@ get_link(Client, Input0, Options0) ->
 -spec get_sink(map(), get_sink_input()) ->
     {ok, get_sink_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_sink_errors(), tuple()}.
 get_sink(Client, Input) ->
     get_sink(Client, Input, []).
 
 -spec get_sink(map(), get_sink_input(), proplists:proplist()) ->
     {ok, get_sink_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_sink_errors(), tuple()}.
 get_sink(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetSink"],
@@ -656,20 +740,14 @@ get_sink(Client, Input0, Options0) ->
 -spec get_sink_policy(map(), get_sink_policy_input()) ->
     {ok, get_sink_policy_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_sink_policy_errors(), tuple()}.
 get_sink_policy(Client, Input) ->
     get_sink_policy(Client, Input, []).
 
 -spec get_sink_policy(map(), get_sink_policy_input(), proplists:proplist()) ->
     {ok, get_sink_policy_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_sink_policy_errors(), tuple()}.
 get_sink_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetSinkPolicy"],
@@ -704,20 +782,14 @@ get_sink_policy(Client, Input0, Options0) ->
 -spec list_attached_links(map(), list_attached_links_input()) ->
     {ok, list_attached_links_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_attached_links_errors(), tuple()}.
 list_attached_links(Client, Input) ->
     list_attached_links(Client, Input, []).
 
 -spec list_attached_links(map(), list_attached_links_input(), proplists:proplist()) ->
     {ok, list_attached_links_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_attached_links_errors(), tuple()}.
 list_attached_links(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListAttachedLinks"],
@@ -751,18 +823,14 @@ list_attached_links(Client, Input0, Options0) ->
 -spec list_links(map(), list_links_input()) ->
     {ok, list_links_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_links_errors(), tuple()}.
 list_links(Client, Input) ->
     list_links(Client, Input, []).
 
 -spec list_links(map(), list_links_input(), proplists:proplist()) ->
     {ok, list_links_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_links_errors(), tuple()}.
 list_links(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListLinks"],
@@ -790,18 +858,14 @@ list_links(Client, Input0, Options0) ->
 -spec list_sinks(map(), list_sinks_input()) ->
     {ok, list_sinks_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_sinks_errors(), tuple()}.
 list_sinks(Client, Input) ->
     list_sinks(Client, Input, []).
 
 -spec list_sinks(map(), list_sinks_input(), proplists:proplist()) ->
     {ok, list_sinks_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_sinks_errors(), tuple()}.
 list_sinks(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListSinks"],
@@ -830,8 +894,7 @@ list_sinks(Client, Input0, Options0) ->
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -839,8 +902,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -848,8 +910,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -892,20 +953,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec put_sink_policy(map(), put_sink_policy_input()) ->
     {ok, put_sink_policy_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_sink_policy_errors(), tuple()}.
 put_sink_policy(Client, Input) ->
     put_sink_policy(Client, Input, []).
 
 -spec put_sink_policy(map(), put_sink_policy_input(), proplists:proplist()) ->
     {ok, put_sink_policy_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_sink_policy_errors(), tuple()}.
 put_sink_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/PutSinkPolicy"],
@@ -958,18 +1013,14 @@ put_sink_policy(Client, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = put,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1003,16 +1054,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1049,20 +1098,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_link(map(), update_link_input()) ->
     {ok, update_link_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_link_errors(), tuple()}.
 update_link(Client, Input) ->
     update_link(Client, Input, []).
 
 -spec update_link(map(), update_link_input(), proplists:proplist()) ->
     {ok, update_link_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_fault(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, missing_required_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_link_errors(), tuple()}.
 update_link(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateLink"],

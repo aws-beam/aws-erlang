@@ -1658,6 +1658,289 @@
 %% }
 -type deregister_rds_db_instance_request() :: #{binary() => any()}.
 
+-type assign_instance_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type assign_volume_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type associate_elastic_ip_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type attach_elastic_load_balancer_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type clone_stack_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type create_app_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type create_deployment_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type create_instance_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type create_layer_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type create_stack_errors() ::
+    validation_exception().
+
+-type create_user_profile_errors() ::
+    validation_exception().
+
+-type delete_app_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type delete_instance_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type delete_layer_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type delete_stack_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type delete_user_profile_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type deregister_ecs_cluster_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type deregister_elastic_ip_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type deregister_instance_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type deregister_rds_db_instance_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type deregister_volume_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_agent_versions_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_apps_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_commands_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_deployments_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_ecs_clusters_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_elastic_ips_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_elastic_load_balancers_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_instances_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_layers_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_load_based_auto_scaling_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_permissions_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_raid_arrays_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_rds_db_instances_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_service_errors_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_stack_provisioning_parameters_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_stack_summary_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_stacks_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_time_based_auto_scaling_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_user_profiles_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_volumes_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type detach_elastic_load_balancer_errors() ::
+    resource_not_found_exception().
+
+-type disassociate_elastic_ip_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type get_hostname_suggestion_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type grant_access_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type reboot_instance_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type register_ecs_cluster_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type register_elastic_ip_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type register_instance_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type register_rds_db_instance_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type register_volume_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type set_load_based_auto_scaling_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type set_permission_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type set_time_based_auto_scaling_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type start_instance_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type start_stack_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type stop_instance_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type stop_stack_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type unassign_instance_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type unassign_volume_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type update_app_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type update_elastic_ip_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type update_instance_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type update_layer_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type update_my_user_profile_errors() ::
+    validation_exception().
+
+-type update_rds_db_instance_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type update_stack_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type update_user_profile_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type update_volume_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -1683,8 +1966,7 @@
 -spec assign_instance(map(), assign_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, assign_instance_errors(), tuple()}.
 assign_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     assign_instance(Client, Input, []).
@@ -1692,8 +1974,7 @@ assign_instance(Client, Input)
 -spec assign_instance(map(), assign_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, assign_instance_errors(), tuple()}.
 assign_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssignInstance">>, Input, Options).
@@ -1719,8 +2000,7 @@ assign_instance(Client, Input, Options)
 -spec assign_volume(map(), assign_volume_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, assign_volume_errors(), tuple()}.
 assign_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     assign_volume(Client, Input, []).
@@ -1728,8 +2008,7 @@ assign_volume(Client, Input)
 -spec assign_volume(map(), assign_volume_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, assign_volume_errors(), tuple()}.
 assign_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssignVolume">>, Input, Options).
@@ -1754,8 +2033,7 @@ assign_volume(Client, Input, Options)
 -spec associate_elastic_ip(map(), associate_elastic_ip_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_elastic_ip_errors(), tuple()}.
 associate_elastic_ip(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_elastic_ip(Client, Input, []).
@@ -1763,8 +2041,7 @@ associate_elastic_ip(Client, Input)
 -spec associate_elastic_ip(map(), associate_elastic_ip_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_elastic_ip_errors(), tuple()}.
 associate_elastic_ip(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateElasticIp">>, Input, Options).
@@ -1795,8 +2072,7 @@ associate_elastic_ip(Client, Input, Options)
 -spec attach_elastic_load_balancer(map(), attach_elastic_load_balancer_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, attach_elastic_load_balancer_errors(), tuple()}.
 attach_elastic_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_elastic_load_balancer(Client, Input, []).
@@ -1804,8 +2080,7 @@ attach_elastic_load_balancer(Client, Input)
 -spec attach_elastic_load_balancer(map(), attach_elastic_load_balancer_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, attach_elastic_load_balancer_errors(), tuple()}.
 attach_elastic_load_balancer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachElasticLoadBalancer">>, Input, Options).
@@ -1826,8 +2101,7 @@ attach_elastic_load_balancer(Client, Input, Options)
 -spec clone_stack(map(), clone_stack_request()) ->
     {ok, clone_stack_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, clone_stack_errors(), tuple()}.
 clone_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     clone_stack(Client, Input, []).
@@ -1835,8 +2109,7 @@ clone_stack(Client, Input)
 -spec clone_stack(map(), clone_stack_request(), proplists:proplist()) ->
     {ok, clone_stack_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, clone_stack_errors(), tuple()}.
 clone_stack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CloneStack">>, Input, Options).
@@ -1857,8 +2130,7 @@ clone_stack(Client, Input, Options)
 -spec create_app(map(), create_app_request()) ->
     {ok, create_app_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_app_errors(), tuple()}.
 create_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_app(Client, Input, []).
@@ -1866,8 +2138,7 @@ create_app(Client, Input)
 -spec create_app(map(), create_app_request(), proplists:proplist()) ->
     {ok, create_app_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_app_errors(), tuple()}.
 create_app(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateApp">>, Input, Options).
@@ -1890,8 +2161,7 @@ create_app(Client, Input, Options)
 -spec create_deployment(map(), create_deployment_request()) ->
     {ok, create_deployment_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_deployment_errors(), tuple()}.
 create_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_deployment(Client, Input, []).
@@ -1899,8 +2169,7 @@ create_deployment(Client, Input)
 -spec create_deployment(map(), create_deployment_request(), proplists:proplist()) ->
     {ok, create_deployment_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_deployment_errors(), tuple()}.
 create_deployment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDeployment">>, Input, Options).
@@ -1921,8 +2190,7 @@ create_deployment(Client, Input, Options)
 -spec create_instance(map(), create_instance_request()) ->
     {ok, create_instance_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_instance_errors(), tuple()}.
 create_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_instance(Client, Input, []).
@@ -1930,8 +2198,7 @@ create_instance(Client, Input)
 -spec create_instance(map(), create_instance_request(), proplists:proplist()) ->
     {ok, create_instance_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_instance_errors(), tuple()}.
 create_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateInstance">>, Input, Options).
@@ -1962,8 +2229,7 @@ create_instance(Client, Input, Options)
 -spec create_layer(map(), create_layer_request()) ->
     {ok, create_layer_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_layer_errors(), tuple()}.
 create_layer(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_layer(Client, Input, []).
@@ -1971,8 +2237,7 @@ create_layer(Client, Input)
 -spec create_layer(map(), create_layer_request(), proplists:proplist()) ->
     {ok, create_layer_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_layer_errors(), tuple()}.
 create_layer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLayer">>, Input, Options).
@@ -1992,7 +2257,7 @@ create_layer(Client, Input, Options)
 -spec create_stack(map(), create_stack_request()) ->
     {ok, create_stack_result(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_stack_errors(), tuple()}.
 create_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_stack(Client, Input, []).
@@ -2000,7 +2265,7 @@ create_stack(Client, Input)
 -spec create_stack(map(), create_stack_request(), proplists:proplist()) ->
     {ok, create_stack_result(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_stack_errors(), tuple()}.
 create_stack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStack">>, Input, Options).
@@ -2016,7 +2281,7 @@ create_stack(Client, Input, Options)
 -spec create_user_profile(map(), create_user_profile_request()) ->
     {ok, create_user_profile_result(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_user_profile_errors(), tuple()}.
 create_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_profile(Client, Input, []).
@@ -2024,7 +2289,7 @@ create_user_profile(Client, Input)
 -spec create_user_profile(map(), create_user_profile_request(), proplists:proplist()) ->
     {ok, create_user_profile_result(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_user_profile_errors(), tuple()}.
 create_user_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUserProfile">>, Input, Options).
@@ -2041,8 +2306,7 @@ create_user_profile(Client, Input, Options)
 -spec delete_app(map(), delete_app_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_app_errors(), tuple()}.
 delete_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_app(Client, Input, []).
@@ -2050,8 +2314,7 @@ delete_app(Client, Input)
 -spec delete_app(map(), delete_app_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_app_errors(), tuple()}.
 delete_app(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApp">>, Input, Options).
@@ -2075,8 +2338,7 @@ delete_app(Client, Input, Options)
 -spec delete_instance(map(), delete_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_instance_errors(), tuple()}.
 delete_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_instance(Client, Input, []).
@@ -2084,8 +2346,7 @@ delete_instance(Client, Input)
 -spec delete_instance(map(), delete_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_instance_errors(), tuple()}.
 delete_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInstance">>, Input, Options).
@@ -2107,8 +2368,7 @@ delete_instance(Client, Input, Options)
 -spec delete_layer(map(), delete_layer_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_layer_errors(), tuple()}.
 delete_layer(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_layer(Client, Input, []).
@@ -2116,8 +2376,7 @@ delete_layer(Client, Input)
 -spec delete_layer(map(), delete_layer_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_layer_errors(), tuple()}.
 delete_layer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLayer">>, Input, Options).
@@ -2139,8 +2398,7 @@ delete_layer(Client, Input, Options)
 -spec delete_stack(map(), delete_stack_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_stack_errors(), tuple()}.
 delete_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_stack(Client, Input, []).
@@ -2148,8 +2406,7 @@ delete_stack(Client, Input)
 -spec delete_stack(map(), delete_stack_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_stack_errors(), tuple()}.
 delete_stack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteStack">>, Input, Options).
@@ -2165,8 +2422,7 @@ delete_stack(Client, Input, Options)
 -spec delete_user_profile(map(), delete_user_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_user_profile_errors(), tuple()}.
 delete_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_profile(Client, Input, []).
@@ -2174,8 +2430,7 @@ delete_user_profile(Client, Input)
 -spec delete_user_profile(map(), delete_user_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_user_profile_errors(), tuple()}.
 delete_user_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUserProfile">>, Input, Options).
@@ -2196,8 +2451,7 @@ delete_user_profile(Client, Input, Options)
 -spec deregister_ecs_cluster(map(), deregister_ecs_cluster_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, deregister_ecs_cluster_errors(), tuple()}.
 deregister_ecs_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_ecs_cluster(Client, Input, []).
@@ -2205,8 +2459,7 @@ deregister_ecs_cluster(Client, Input)
 -spec deregister_ecs_cluster(map(), deregister_ecs_cluster_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, deregister_ecs_cluster_errors(), tuple()}.
 deregister_ecs_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterEcsCluster">>, Input, Options).
@@ -2227,8 +2480,7 @@ deregister_ecs_cluster(Client, Input, Options)
 -spec deregister_elastic_ip(map(), deregister_elastic_ip_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, deregister_elastic_ip_errors(), tuple()}.
 deregister_elastic_ip(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_elastic_ip(Client, Input, []).
@@ -2236,8 +2488,7 @@ deregister_elastic_ip(Client, Input)
 -spec deregister_elastic_ip(map(), deregister_elastic_ip_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, deregister_elastic_ip_errors(), tuple()}.
 deregister_elastic_ip(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterElasticIp">>, Input, Options).
@@ -2259,8 +2510,7 @@ deregister_elastic_ip(Client, Input, Options)
 -spec deregister_instance(map(), deregister_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, deregister_instance_errors(), tuple()}.
 deregister_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_instance(Client, Input, []).
@@ -2268,8 +2518,7 @@ deregister_instance(Client, Input)
 -spec deregister_instance(map(), deregister_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, deregister_instance_errors(), tuple()}.
 deregister_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterInstance">>, Input, Options).
@@ -2286,8 +2535,7 @@ deregister_instance(Client, Input, Options)
 -spec deregister_rds_db_instance(map(), deregister_rds_db_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, deregister_rds_db_instance_errors(), tuple()}.
 deregister_rds_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_rds_db_instance(Client, Input, []).
@@ -2295,8 +2543,7 @@ deregister_rds_db_instance(Client, Input)
 -spec deregister_rds_db_instance(map(), deregister_rds_db_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, deregister_rds_db_instance_errors(), tuple()}.
 deregister_rds_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterRdsDbInstance">>, Input, Options).
@@ -2318,8 +2565,7 @@ deregister_rds_db_instance(Client, Input, Options)
 -spec deregister_volume(map(), deregister_volume_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, deregister_volume_errors(), tuple()}.
 deregister_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_volume(Client, Input, []).
@@ -2327,8 +2573,7 @@ deregister_volume(Client, Input)
 -spec deregister_volume(map(), deregister_volume_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, deregister_volume_errors(), tuple()}.
 deregister_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterVolume">>, Input, Options).
@@ -2342,8 +2587,7 @@ deregister_volume(Client, Input, Options)
 -spec describe_agent_versions(map(), describe_agent_versions_request()) ->
     {ok, describe_agent_versions_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_agent_versions_errors(), tuple()}.
 describe_agent_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_agent_versions(Client, Input, []).
@@ -2351,8 +2595,7 @@ describe_agent_versions(Client, Input)
 -spec describe_agent_versions(map(), describe_agent_versions_request(), proplists:proplist()) ->
     {ok, describe_agent_versions_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_agent_versions_errors(), tuple()}.
 describe_agent_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAgentVersions">>, Input, Options).
@@ -2372,8 +2615,7 @@ describe_agent_versions(Client, Input, Options)
 -spec describe_apps(map(), describe_apps_request()) ->
     {ok, describe_apps_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_apps_errors(), tuple()}.
 describe_apps(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_apps(Client, Input, []).
@@ -2381,8 +2623,7 @@ describe_apps(Client, Input)
 -spec describe_apps(map(), describe_apps_request(), proplists:proplist()) ->
     {ok, describe_apps_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_apps_errors(), tuple()}.
 describe_apps(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeApps">>, Input, Options).
@@ -2402,8 +2643,7 @@ describe_apps(Client, Input, Options)
 -spec describe_commands(map(), describe_commands_request()) ->
     {ok, describe_commands_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_commands_errors(), tuple()}.
 describe_commands(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_commands(Client, Input, []).
@@ -2411,8 +2651,7 @@ describe_commands(Client, Input)
 -spec describe_commands(map(), describe_commands_request(), proplists:proplist()) ->
     {ok, describe_commands_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_commands_errors(), tuple()}.
 describe_commands(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCommands">>, Input, Options).
@@ -2432,8 +2671,7 @@ describe_commands(Client, Input, Options)
 -spec describe_deployments(map(), describe_deployments_request()) ->
     {ok, describe_deployments_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_deployments_errors(), tuple()}.
 describe_deployments(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_deployments(Client, Input, []).
@@ -2441,8 +2679,7 @@ describe_deployments(Client, Input)
 -spec describe_deployments(map(), describe_deployments_request(), proplists:proplist()) ->
     {ok, describe_deployments_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_deployments_errors(), tuple()}.
 describe_deployments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDeployments">>, Input, Options).
@@ -2468,8 +2705,7 @@ describe_deployments(Client, Input, Options)
 -spec describe_ecs_clusters(map(), describe_ecs_clusters_request()) ->
     {ok, describe_ecs_clusters_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_ecs_clusters_errors(), tuple()}.
 describe_ecs_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_ecs_clusters(Client, Input, []).
@@ -2477,8 +2713,7 @@ describe_ecs_clusters(Client, Input)
 -spec describe_ecs_clusters(map(), describe_ecs_clusters_request(), proplists:proplist()) ->
     {ok, describe_ecs_clusters_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_ecs_clusters_errors(), tuple()}.
 describe_ecs_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEcsClusters">>, Input, Options).
@@ -2499,8 +2734,7 @@ describe_ecs_clusters(Client, Input, Options)
 -spec describe_elastic_ips(map(), describe_elastic_ips_request()) ->
     {ok, describe_elastic_ips_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_elastic_ips_errors(), tuple()}.
 describe_elastic_ips(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_elastic_ips(Client, Input, []).
@@ -2508,8 +2742,7 @@ describe_elastic_ips(Client, Input)
 -spec describe_elastic_ips(map(), describe_elastic_ips_request(), proplists:proplist()) ->
     {ok, describe_elastic_ips_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_elastic_ips_errors(), tuple()}.
 describe_elastic_ips(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeElasticIps">>, Input, Options).
@@ -2529,8 +2762,7 @@ describe_elastic_ips(Client, Input, Options)
 -spec describe_elastic_load_balancers(map(), describe_elastic_load_balancers_request()) ->
     {ok, describe_elastic_load_balancers_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_elastic_load_balancers_errors(), tuple()}.
 describe_elastic_load_balancers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_elastic_load_balancers(Client, Input, []).
@@ -2538,8 +2770,7 @@ describe_elastic_load_balancers(Client, Input)
 -spec describe_elastic_load_balancers(map(), describe_elastic_load_balancers_request(), proplists:proplist()) ->
     {ok, describe_elastic_load_balancers_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_elastic_load_balancers_errors(), tuple()}.
 describe_elastic_load_balancers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeElasticLoadBalancers">>, Input, Options).
@@ -2559,8 +2790,7 @@ describe_elastic_load_balancers(Client, Input, Options)
 -spec describe_instances(map(), describe_instances_request()) ->
     {ok, describe_instances_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_instances_errors(), tuple()}.
 describe_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instances(Client, Input, []).
@@ -2568,8 +2798,7 @@ describe_instances(Client, Input)
 -spec describe_instances(map(), describe_instances_request(), proplists:proplist()) ->
     {ok, describe_instances_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_instances_errors(), tuple()}.
 describe_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInstances">>, Input, Options).
@@ -2589,8 +2818,7 @@ describe_instances(Client, Input, Options)
 -spec describe_layers(map(), describe_layers_request()) ->
     {ok, describe_layers_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_layers_errors(), tuple()}.
 describe_layers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_layers(Client, Input, []).
@@ -2598,8 +2826,7 @@ describe_layers(Client, Input)
 -spec describe_layers(map(), describe_layers_request(), proplists:proplist()) ->
     {ok, describe_layers_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_layers_errors(), tuple()}.
 describe_layers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLayers">>, Input, Options).
@@ -2620,8 +2847,7 @@ describe_layers(Client, Input, Options)
 -spec describe_load_based_auto_scaling(map(), describe_load_based_auto_scaling_request()) ->
     {ok, describe_load_based_auto_scaling_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_load_based_auto_scaling_errors(), tuple()}.
 describe_load_based_auto_scaling(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_load_based_auto_scaling(Client, Input, []).
@@ -2629,8 +2855,7 @@ describe_load_based_auto_scaling(Client, Input)
 -spec describe_load_based_auto_scaling(map(), describe_load_based_auto_scaling_request(), proplists:proplist()) ->
     {ok, describe_load_based_auto_scaling_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_load_based_auto_scaling_errors(), tuple()}.
 describe_load_based_auto_scaling(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLoadBasedAutoScaling">>, Input, Options).
@@ -2686,8 +2911,7 @@ describe_operating_systems(Client, Input, Options)
 -spec describe_permissions(map(), describe_permissions_request()) ->
     {ok, describe_permissions_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_permissions_errors(), tuple()}.
 describe_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_permissions(Client, Input, []).
@@ -2695,8 +2919,7 @@ describe_permissions(Client, Input)
 -spec describe_permissions(map(), describe_permissions_request(), proplists:proplist()) ->
     {ok, describe_permissions_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_permissions_errors(), tuple()}.
 describe_permissions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePermissions">>, Input, Options).
@@ -2716,8 +2939,7 @@ describe_permissions(Client, Input, Options)
 -spec describe_raid_arrays(map(), describe_raid_arrays_request()) ->
     {ok, describe_raid_arrays_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_raid_arrays_errors(), tuple()}.
 describe_raid_arrays(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_raid_arrays(Client, Input, []).
@@ -2725,8 +2947,7 @@ describe_raid_arrays(Client, Input)
 -spec describe_raid_arrays(map(), describe_raid_arrays_request(), proplists:proplist()) ->
     {ok, describe_raid_arrays_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_raid_arrays_errors(), tuple()}.
 describe_raid_arrays(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRaidArrays">>, Input, Options).
@@ -2746,8 +2967,7 @@ describe_raid_arrays(Client, Input, Options)
 -spec describe_rds_db_instances(map(), describe_rds_db_instances_request()) ->
     {ok, describe_rds_db_instances_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_rds_db_instances_errors(), tuple()}.
 describe_rds_db_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_rds_db_instances(Client, Input, []).
@@ -2755,8 +2975,7 @@ describe_rds_db_instances(Client, Input)
 -spec describe_rds_db_instances(map(), describe_rds_db_instances_request(), proplists:proplist()) ->
     {ok, describe_rds_db_instances_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_rds_db_instances_errors(), tuple()}.
 describe_rds_db_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRdsDbInstances">>, Input, Options).
@@ -2776,8 +2995,7 @@ describe_rds_db_instances(Client, Input, Options)
 -spec describe_service_errors(map(), describe_service_errors_request()) ->
     {ok, describe_service_errors_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_service_errors_errors(), tuple()}.
 describe_service_errors(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_service_errors(Client, Input, []).
@@ -2785,8 +3003,7 @@ describe_service_errors(Client, Input)
 -spec describe_service_errors(map(), describe_service_errors_request(), proplists:proplist()) ->
     {ok, describe_service_errors_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_service_errors_errors(), tuple()}.
 describe_service_errors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeServiceErrors">>, Input, Options).
@@ -2804,8 +3021,7 @@ describe_service_errors(Client, Input, Options)
 -spec describe_stack_provisioning_parameters(map(), describe_stack_provisioning_parameters_request()) ->
     {ok, describe_stack_provisioning_parameters_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_stack_provisioning_parameters_errors(), tuple()}.
 describe_stack_provisioning_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stack_provisioning_parameters(Client, Input, []).
@@ -2813,8 +3029,7 @@ describe_stack_provisioning_parameters(Client, Input)
 -spec describe_stack_provisioning_parameters(map(), describe_stack_provisioning_parameters_request(), proplists:proplist()) ->
     {ok, describe_stack_provisioning_parameters_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_stack_provisioning_parameters_errors(), tuple()}.
 describe_stack_provisioning_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStackProvisioningParameters">>, Input, Options).
@@ -2834,8 +3049,7 @@ describe_stack_provisioning_parameters(Client, Input, Options)
 -spec describe_stack_summary(map(), describe_stack_summary_request()) ->
     {ok, describe_stack_summary_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_stack_summary_errors(), tuple()}.
 describe_stack_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stack_summary(Client, Input, []).
@@ -2843,8 +3057,7 @@ describe_stack_summary(Client, Input)
 -spec describe_stack_summary(map(), describe_stack_summary_request(), proplists:proplist()) ->
     {ok, describe_stack_summary_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_stack_summary_errors(), tuple()}.
 describe_stack_summary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStackSummary">>, Input, Options).
@@ -2862,8 +3075,7 @@ describe_stack_summary(Client, Input, Options)
 -spec describe_stacks(map(), describe_stacks_request()) ->
     {ok, describe_stacks_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_stacks_errors(), tuple()}.
 describe_stacks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stacks(Client, Input, []).
@@ -2871,8 +3083,7 @@ describe_stacks(Client, Input)
 -spec describe_stacks(map(), describe_stacks_request(), proplists:proplist()) ->
     {ok, describe_stacks_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_stacks_errors(), tuple()}.
 describe_stacks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStacks">>, Input, Options).
@@ -2893,8 +3104,7 @@ describe_stacks(Client, Input, Options)
 -spec describe_time_based_auto_scaling(map(), describe_time_based_auto_scaling_request()) ->
     {ok, describe_time_based_auto_scaling_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_time_based_auto_scaling_errors(), tuple()}.
 describe_time_based_auto_scaling(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_time_based_auto_scaling(Client, Input, []).
@@ -2902,8 +3112,7 @@ describe_time_based_auto_scaling(Client, Input)
 -spec describe_time_based_auto_scaling(map(), describe_time_based_auto_scaling_request(), proplists:proplist()) ->
     {ok, describe_time_based_auto_scaling_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_time_based_auto_scaling_errors(), tuple()}.
 describe_time_based_auto_scaling(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTimeBasedAutoScaling">>, Input, Options).
@@ -2919,8 +3128,7 @@ describe_time_based_auto_scaling(Client, Input, Options)
 -spec describe_user_profiles(map(), describe_user_profiles_request()) ->
     {ok, describe_user_profiles_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_user_profiles_errors(), tuple()}.
 describe_user_profiles(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user_profiles(Client, Input, []).
@@ -2928,8 +3136,7 @@ describe_user_profiles(Client, Input)
 -spec describe_user_profiles(map(), describe_user_profiles_request(), proplists:proplist()) ->
     {ok, describe_user_profiles_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_user_profiles_errors(), tuple()}.
 describe_user_profiles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUserProfiles">>, Input, Options).
@@ -2949,8 +3156,7 @@ describe_user_profiles(Client, Input, Options)
 -spec describe_volumes(map(), describe_volumes_request()) ->
     {ok, describe_volumes_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_volumes_errors(), tuple()}.
 describe_volumes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_volumes(Client, Input, []).
@@ -2958,8 +3164,7 @@ describe_volumes(Client, Input)
 -spec describe_volumes(map(), describe_volumes_request(), proplists:proplist()) ->
     {ok, describe_volumes_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_volumes_errors(), tuple()}.
 describe_volumes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeVolumes">>, Input, Options).
@@ -2976,7 +3181,7 @@ describe_volumes(Client, Input, Options)
 -spec detach_elastic_load_balancer(map(), detach_elastic_load_balancer_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, detach_elastic_load_balancer_errors(), tuple()}.
 detach_elastic_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_elastic_load_balancer(Client, Input, []).
@@ -2984,7 +3189,7 @@ detach_elastic_load_balancer(Client, Input)
 -spec detach_elastic_load_balancer(map(), detach_elastic_load_balancer_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, detach_elastic_load_balancer_errors(), tuple()}.
 detach_elastic_load_balancer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachElasticLoadBalancer">>, Input, Options).
@@ -3005,8 +3210,7 @@ detach_elastic_load_balancer(Client, Input, Options)
 -spec disassociate_elastic_ip(map(), disassociate_elastic_ip_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_elastic_ip_errors(), tuple()}.
 disassociate_elastic_ip(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_elastic_ip(Client, Input, []).
@@ -3014,8 +3218,7 @@ disassociate_elastic_ip(Client, Input)
 -spec disassociate_elastic_ip(map(), disassociate_elastic_ip_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_elastic_ip_errors(), tuple()}.
 disassociate_elastic_ip(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateElasticIp">>, Input, Options).
@@ -3033,8 +3236,7 @@ disassociate_elastic_ip(Client, Input, Options)
 -spec get_hostname_suggestion(map(), get_hostname_suggestion_request()) ->
     {ok, get_hostname_suggestion_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_hostname_suggestion_errors(), tuple()}.
 get_hostname_suggestion(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_hostname_suggestion(Client, Input, []).
@@ -3042,8 +3244,7 @@ get_hostname_suggestion(Client, Input)
 -spec get_hostname_suggestion(map(), get_hostname_suggestion_request(), proplists:proplist()) ->
     {ok, get_hostname_suggestion_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_hostname_suggestion_errors(), tuple()}.
 get_hostname_suggestion(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetHostnameSuggestion">>, Input, Options).
@@ -3055,8 +3256,7 @@ get_hostname_suggestion(Client, Input, Options)
 -spec grant_access(map(), grant_access_request()) ->
     {ok, grant_access_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, grant_access_errors(), tuple()}.
 grant_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     grant_access(Client, Input, []).
@@ -3064,8 +3264,7 @@ grant_access(Client, Input)
 -spec grant_access(map(), grant_access_request(), proplists:proplist()) ->
     {ok, grant_access_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, grant_access_errors(), tuple()}.
 grant_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GrantAccess">>, Input, Options).
@@ -3075,8 +3274,7 @@ grant_access(Client, Input, Options)
 -spec list_tags(map(), list_tags_request()) ->
     {ok, list_tags_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags(Client, Input, []).
@@ -3084,8 +3282,7 @@ list_tags(Client, Input)
 -spec list_tags(map(), list_tags_request(), proplists:proplist()) ->
     {ok, list_tags_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTags">>, Input, Options).
@@ -3106,8 +3303,7 @@ list_tags(Client, Input, Options)
 -spec reboot_instance(map(), reboot_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, reboot_instance_errors(), tuple()}.
 reboot_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_instance(Client, Input, []).
@@ -3115,8 +3311,7 @@ reboot_instance(Client, Input)
 -spec reboot_instance(map(), reboot_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, reboot_instance_errors(), tuple()}.
 reboot_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RebootInstance">>, Input, Options).
@@ -3141,8 +3336,7 @@ reboot_instance(Client, Input, Options)
 -spec register_ecs_cluster(map(), register_ecs_cluster_request()) ->
     {ok, register_ecs_cluster_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, register_ecs_cluster_errors(), tuple()}.
 register_ecs_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_ecs_cluster(Client, Input, []).
@@ -3150,8 +3344,7 @@ register_ecs_cluster(Client, Input)
 -spec register_ecs_cluster(map(), register_ecs_cluster_request(), proplists:proplist()) ->
     {ok, register_ecs_cluster_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, register_ecs_cluster_errors(), tuple()}.
 register_ecs_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterEcsCluster">>, Input, Options).
@@ -3175,8 +3368,7 @@ register_ecs_cluster(Client, Input, Options)
 -spec register_elastic_ip(map(), register_elastic_ip_request()) ->
     {ok, register_elastic_ip_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, register_elastic_ip_errors(), tuple()}.
 register_elastic_ip(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_elastic_ip(Client, Input, []).
@@ -3184,8 +3376,7 @@ register_elastic_ip(Client, Input)
 -spec register_elastic_ip(map(), register_elastic_ip_request(), proplists:proplist()) ->
     {ok, register_elastic_ip_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, register_elastic_ip_errors(), tuple()}.
 register_elastic_ip(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterElasticIp">>, Input, Options).
@@ -3225,8 +3416,7 @@ register_elastic_ip(Client, Input, Options)
 -spec register_instance(map(), register_instance_request()) ->
     {ok, register_instance_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, register_instance_errors(), tuple()}.
 register_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_instance(Client, Input, []).
@@ -3234,8 +3424,7 @@ register_instance(Client, Input)
 -spec register_instance(map(), register_instance_request(), proplists:proplist()) ->
     {ok, register_instance_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, register_instance_errors(), tuple()}.
 register_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterInstance">>, Input, Options).
@@ -3252,8 +3441,7 @@ register_instance(Client, Input, Options)
 -spec register_rds_db_instance(map(), register_rds_db_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, register_rds_db_instance_errors(), tuple()}.
 register_rds_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_rds_db_instance(Client, Input, []).
@@ -3261,8 +3449,7 @@ register_rds_db_instance(Client, Input)
 -spec register_rds_db_instance(map(), register_rds_db_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, register_rds_db_instance_errors(), tuple()}.
 register_rds_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterRdsDbInstance">>, Input, Options).
@@ -3285,8 +3472,7 @@ register_rds_db_instance(Client, Input, Options)
 -spec register_volume(map(), register_volume_request()) ->
     {ok, register_volume_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, register_volume_errors(), tuple()}.
 register_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_volume(Client, Input, []).
@@ -3294,8 +3480,7 @@ register_volume(Client, Input)
 -spec register_volume(map(), register_volume_request(), proplists:proplist()) ->
     {ok, register_volume_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, register_volume_errors(), tuple()}.
 register_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterVolume">>, Input, Options).
@@ -3323,8 +3508,7 @@ register_volume(Client, Input, Options)
 -spec set_load_based_auto_scaling(map(), set_load_based_auto_scaling_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, set_load_based_auto_scaling_errors(), tuple()}.
 set_load_based_auto_scaling(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_load_based_auto_scaling(Client, Input, []).
@@ -3332,8 +3516,7 @@ set_load_based_auto_scaling(Client, Input)
 -spec set_load_based_auto_scaling(map(), set_load_based_auto_scaling_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, set_load_based_auto_scaling_errors(), tuple()}.
 set_load_based_auto_scaling(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetLoadBasedAutoScaling">>, Input, Options).
@@ -3354,8 +3537,7 @@ set_load_based_auto_scaling(Client, Input, Options)
 -spec set_permission(map(), set_permission_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, set_permission_errors(), tuple()}.
 set_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_permission(Client, Input, []).
@@ -3363,8 +3545,7 @@ set_permission(Client, Input)
 -spec set_permission(map(), set_permission_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, set_permission_errors(), tuple()}.
 set_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetPermission">>, Input, Options).
@@ -3387,8 +3568,7 @@ set_permission(Client, Input, Options)
 -spec set_time_based_auto_scaling(map(), set_time_based_auto_scaling_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, set_time_based_auto_scaling_errors(), tuple()}.
 set_time_based_auto_scaling(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_time_based_auto_scaling(Client, Input, []).
@@ -3396,8 +3576,7 @@ set_time_based_auto_scaling(Client, Input)
 -spec set_time_based_auto_scaling(map(), set_time_based_auto_scaling_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, set_time_based_auto_scaling_errors(), tuple()}.
 set_time_based_auto_scaling(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetTimeBasedAutoScaling">>, Input, Options).
@@ -3418,8 +3597,7 @@ set_time_based_auto_scaling(Client, Input, Options)
 -spec start_instance(map(), start_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_instance_errors(), tuple()}.
 start_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_instance(Client, Input, []).
@@ -3427,8 +3605,7 @@ start_instance(Client, Input)
 -spec start_instance(map(), start_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_instance_errors(), tuple()}.
 start_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartInstance">>, Input, Options).
@@ -3445,8 +3622,7 @@ start_instance(Client, Input, Options)
 -spec start_stack(map(), start_stack_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_stack_errors(), tuple()}.
 start_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_stack(Client, Input, []).
@@ -3454,8 +3630,7 @@ start_stack(Client, Input)
 -spec start_stack(map(), start_stack_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_stack_errors(), tuple()}.
 start_stack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartStack">>, Input, Options).
@@ -3479,8 +3654,7 @@ start_stack(Client, Input, Options)
 -spec stop_instance(map(), stop_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_instance_errors(), tuple()}.
 stop_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_instance(Client, Input, []).
@@ -3488,8 +3662,7 @@ stop_instance(Client, Input)
 -spec stop_instance(map(), stop_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_instance_errors(), tuple()}.
 stop_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopInstance">>, Input, Options).
@@ -3506,8 +3679,7 @@ stop_instance(Client, Input, Options)
 -spec stop_stack(map(), stop_stack_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_stack_errors(), tuple()}.
 stop_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_stack(Client, Input, []).
@@ -3515,8 +3687,7 @@ stop_stack(Client, Input)
 -spec stop_stack(map(), stop_stack_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_stack_errors(), tuple()}.
 stop_stack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopStack">>, Input, Options).
@@ -3530,8 +3701,7 @@ stop_stack(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -3539,8 +3709,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -3564,8 +3733,7 @@ tag_resource(Client, Input, Options)
 -spec unassign_instance(map(), unassign_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, unassign_instance_errors(), tuple()}.
 unassign_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     unassign_instance(Client, Input, []).
@@ -3573,8 +3741,7 @@ unassign_instance(Client, Input)
 -spec unassign_instance(map(), unassign_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, unassign_instance_errors(), tuple()}.
 unassign_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UnassignInstance">>, Input, Options).
@@ -3596,8 +3763,7 @@ unassign_instance(Client, Input, Options)
 -spec unassign_volume(map(), unassign_volume_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, unassign_volume_errors(), tuple()}.
 unassign_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     unassign_volume(Client, Input, []).
@@ -3605,8 +3771,7 @@ unassign_volume(Client, Input)
 -spec unassign_volume(map(), unassign_volume_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, unassign_volume_errors(), tuple()}.
 unassign_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UnassignVolume">>, Input, Options).
@@ -3615,8 +3780,7 @@ unassign_volume(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -3624,8 +3788,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -3642,8 +3805,7 @@ untag_resource(Client, Input, Options)
 -spec update_app(map(), update_app_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_app_errors(), tuple()}.
 update_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_app(Client, Input, []).
@@ -3651,8 +3813,7 @@ update_app(Client, Input)
 -spec update_app(map(), update_app_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_app_errors(), tuple()}.
 update_app(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateApp">>, Input, Options).
@@ -3672,8 +3833,7 @@ update_app(Client, Input, Options)
 -spec update_elastic_ip(map(), update_elastic_ip_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_elastic_ip_errors(), tuple()}.
 update_elastic_ip(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_elastic_ip(Client, Input, []).
@@ -3681,8 +3841,7 @@ update_elastic_ip(Client, Input)
 -spec update_elastic_ip(map(), update_elastic_ip_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_elastic_ip_errors(), tuple()}.
 update_elastic_ip(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateElasticIp">>, Input, Options).
@@ -3699,8 +3858,7 @@ update_elastic_ip(Client, Input, Options)
 -spec update_instance(map(), update_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_instance_errors(), tuple()}.
 update_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_instance(Client, Input, []).
@@ -3708,8 +3866,7 @@ update_instance(Client, Input)
 -spec update_instance(map(), update_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_instance_errors(), tuple()}.
 update_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateInstance">>, Input, Options).
@@ -3726,8 +3883,7 @@ update_instance(Client, Input, Options)
 -spec update_layer(map(), update_layer_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_layer_errors(), tuple()}.
 update_layer(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_layer(Client, Input, []).
@@ -3735,8 +3891,7 @@ update_layer(Client, Input)
 -spec update_layer(map(), update_layer_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_layer_errors(), tuple()}.
 update_layer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLayer">>, Input, Options).
@@ -3753,7 +3908,7 @@ update_layer(Client, Input, Options)
 -spec update_my_user_profile(map(), update_my_user_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_my_user_profile_errors(), tuple()}.
 update_my_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_my_user_profile(Client, Input, []).
@@ -3761,7 +3916,7 @@ update_my_user_profile(Client, Input)
 -spec update_my_user_profile(map(), update_my_user_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_my_user_profile_errors(), tuple()}.
 update_my_user_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMyUserProfile">>, Input, Options).
@@ -3778,8 +3933,7 @@ update_my_user_profile(Client, Input, Options)
 -spec update_rds_db_instance(map(), update_rds_db_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_rds_db_instance_errors(), tuple()}.
 update_rds_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rds_db_instance(Client, Input, []).
@@ -3787,8 +3941,7 @@ update_rds_db_instance(Client, Input)
 -spec update_rds_db_instance(map(), update_rds_db_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_rds_db_instance_errors(), tuple()}.
 update_rds_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRdsDbInstance">>, Input, Options).
@@ -3805,8 +3958,7 @@ update_rds_db_instance(Client, Input, Options)
 -spec update_stack(map(), update_stack_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_stack_errors(), tuple()}.
 update_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_stack(Client, Input, []).
@@ -3814,8 +3966,7 @@ update_stack(Client, Input)
 -spec update_stack(map(), update_stack_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_stack_errors(), tuple()}.
 update_stack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateStack">>, Input, Options).
@@ -3831,8 +3982,7 @@ update_stack(Client, Input, Options)
 -spec update_user_profile(map(), update_user_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_user_profile_errors(), tuple()}.
 update_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_profile(Client, Input, []).
@@ -3840,8 +3990,7 @@ update_user_profile(Client, Input)
 -spec update_user_profile(map(), update_user_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_user_profile_errors(), tuple()}.
 update_user_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUserProfile">>, Input, Options).
@@ -3861,8 +4010,7 @@ update_user_profile(Client, Input, Options)
 -spec update_volume(map(), update_volume_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_volume_errors(), tuple()}.
 update_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_volume(Client, Input, []).
@@ -3870,8 +4018,7 @@ update_volume(Client, Input)
 -spec update_volume(map(), update_volume_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_volume_errors(), tuple()}.
 update_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateVolume">>, Input, Options).

@@ -64,17 +64,20 @@
 %% }
 -type answer_machine_detection_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_campaign_response() :: #{
 %%   <<"campaign">> => campaign()
 %% }
 -type describe_campaign_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> => map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% encryption_config() :: #{
@@ -83,6 +86,7 @@
 %%   <<"keyArn">> => string()
 %% }
 -type encryption_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% campaign() :: #{
@@ -96,18 +100,22 @@
 %% }
 -type campaign() :: #{binary() => any()}.
 
+
 %% Example:
 %% successful_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"id">> => string()
 %% }
 -type successful_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_instance_onboarding_job_request() :: #{}
 -type delete_instance_onboarding_job_request() :: #{}.
+
 %% Example:
 %% delete_connect_instance_config_request() :: #{}
 -type delete_connect_instance_config_request() :: #{}.
+
 
 %% Example:
 %% get_campaign_state_batch_response() :: #{
@@ -115,6 +123,7 @@
 %%   <<"successfulRequests">> => list(successful_campaign_state_response()())
 %% }
 -type get_campaign_state_batch_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% instance_onboarding_job_status() :: #{
@@ -124,6 +133,7 @@
 %% }
 -type instance_onboarding_job_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_campaigns_response() :: #{
 %%   <<"campaignSummaryList">> => list(campaign_summary()()),
@@ -131,23 +141,28 @@
 %% }
 -type list_campaigns_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_campaign_state_response() :: #{
 %%   <<"state">> => string()
 %% }
 -type get_campaign_state_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_campaign_request() :: #{}
 -type delete_campaign_request() :: #{}.
+
 %% Example:
 %% describe_campaign_request() :: #{}
 -type describe_campaign_request() :: #{}.
+
 
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> => list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% invalid_state_exception() :: #{
@@ -156,12 +171,14 @@
 %% }
 -type invalid_state_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% instance_id_filter() :: #{
 %%   <<"operator">> => string(),
 %%   <<"value">> => string()
 %% }
 -type instance_id_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% invalid_campaign_state_exception() :: #{
@@ -171,6 +188,7 @@
 %% }
 -type invalid_campaign_state_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_campaigns_request() :: #{
 %%   <<"filters">> => campaign_filters(),
@@ -178,6 +196,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_campaigns_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% dial_request() :: #{
@@ -188,17 +207,20 @@
 %% }
 -type dial_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_campaign_name_request() :: #{
 %%   <<"name">> => string()
 %% }
 -type update_campaign_name_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_instance_onboarding_job_response() :: #{
 %%   <<"connectInstanceOnboardingJobStatus">> => instance_onboarding_job_status()
 %% }
 -type start_instance_onboarding_job_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -207,21 +229,25 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => [string()],
 %%   <<"xAmzErrorType">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 %% Example:
 %% get_campaign_state_request() :: #{}
 -type get_campaign_state_request() :: #{}.
+
 
 %% Example:
 %% agentless_dialer_config() :: #{
 %%   <<"dialingCapacity">> => float()
 %% }
 -type agentless_dialer_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_dial_request_batch_response() :: #{
@@ -230,18 +256,22 @@
 %% }
 -type put_dial_request_batch_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => [string()],
 %%   <<"xAmzErrorType">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 %% Example:
 %% resume_campaign_request() :: #{}
 -type resume_campaign_request() :: #{}.
+
 %% Example:
 %% get_connect_instance_config_request() :: #{}
 -type get_connect_instance_config_request() :: #{}.
+
 
 %% Example:
 %% get_campaign_state_batch_request() :: #{
@@ -249,11 +279,13 @@
 %% }
 -type get_campaign_state_batch_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_campaign_dialer_config_request() :: #{
 %%   <<"dialerConfig">> => list()
 %% }
 -type update_campaign_dialer_config_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
@@ -261,11 +293,13 @@
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_dial_request_batch_request() :: #{
 %%   <<"dialRequests">> => list(dial_request()())
 %% }
 -type put_dial_request_batch_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% internal_server_exception() :: #{
@@ -274,18 +308,22 @@
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% progressive_dialer_config() :: #{
 %%   <<"bandwidthAllocation">> => float(),
 %%   <<"dialingCapacity">> => float()
 %% }
 -type progressive_dialer_config() :: #{binary() => any()}.
+
 %% Example:
 %% stop_campaign_request() :: #{}
 -type stop_campaign_request() :: #{}.
+
 %% Example:
 %% pause_campaign_request() :: #{}
 -type pause_campaign_request() :: #{}.
+
 
 %% Example:
 %% access_denied_exception() :: #{
@@ -293,9 +331,11 @@
 %%   <<"xAmzErrorType">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 %% Example:
 %% start_campaign_request() :: #{}
 -type start_campaign_request() :: #{}.
+
 
 %% Example:
 %% create_campaign_request() :: #{
@@ -307,11 +347,13 @@
 %% }
 -type create_campaign_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_instance_onboarding_job_status_response() :: #{
 %%   <<"connectInstanceOnboardingJobStatus">> => instance_onboarding_job_status()
 %% }
 -type get_instance_onboarding_job_status_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% validation_exception() :: #{
@@ -319,15 +361,18 @@
 %%   <<"xAmzErrorType">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% get_connect_instance_config_response() :: #{
 %%   <<"connectInstanceConfig">> => instance_config()
 %% }
 -type get_connect_instance_config_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% instance_config() :: #{
@@ -337,12 +382,14 @@
 %% }
 -type instance_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => [string()],
 %%   <<"xAmzErrorType">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% outbound_call_config() :: #{
@@ -353,6 +400,7 @@
 %% }
 -type outbound_call_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_campaign_outbound_call_config_request() :: #{
 %%   <<"answerMachineDetectionConfig">> => answer_machine_detection_config(),
@@ -360,6 +408,7 @@
 %%   <<"connectSourcePhoneNumber">> => string()
 %% }
 -type update_campaign_outbound_call_config_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% failed_request() :: #{
@@ -369,12 +418,14 @@
 %% }
 -type failed_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% predictive_dialer_config() :: #{
 %%   <<"bandwidthAllocation">> => float(),
 %%   <<"dialingCapacity">> => float()
 %% }
 -type predictive_dialer_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_campaign_response() :: #{
@@ -384,12 +435,14 @@
 %% }
 -type create_campaign_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% successful_campaign_state_response() :: #{
 %%   <<"campaignId">> => string(),
 %%   <<"state">> => string()
 %% }
 -type successful_campaign_state_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% campaign_summary() :: #{
@@ -399,9 +452,11 @@
 %%   <<"name">> => string()
 %% }
 -type campaign_summary() :: #{binary() => any()}.
+
 %% Example:
 %% get_instance_onboarding_job_status_request() :: #{}
 -type get_instance_onboarding_job_status_request() :: #{}.
+
 
 %% Example:
 %% failed_campaign_state_response() :: #{
@@ -410,17 +465,181 @@
 %% }
 -type failed_campaign_state_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_instance_onboarding_job_request() :: #{
 %%   <<"encryptionConfig">> => encryption_config()
 %% }
 -type start_instance_onboarding_job_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% campaign_filters() :: #{
 %%   <<"instanceIdFilter">> => instance_id_filter()
 %% }
 -type campaign_filters() :: #{binary() => any()}.
+
+-type create_campaign_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_campaign_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_connect_instance_config_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type delete_instance_onboarding_job_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type describe_campaign_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_campaign_state_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_campaign_state_batch_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type get_connect_instance_config_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_instance_onboarding_job_status_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_campaigns_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type pause_campaign_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    invalid_campaign_state_exception().
+
+-type put_dial_request_batch_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    invalid_campaign_state_exception().
+
+-type resume_campaign_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    invalid_campaign_state_exception().
+
+-type start_campaign_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    invalid_campaign_state_exception().
+
+-type start_instance_onboarding_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type stop_campaign_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    invalid_campaign_state_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_campaign_dialer_config_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_campaign_name_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_campaign_outbound_call_config_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -432,26 +651,14 @@
 -spec create_campaign(map(), create_campaign_request()) ->
     {ok, create_campaign_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_campaign_errors(), tuple()}.
 create_campaign(Client, Input) ->
     create_campaign(Client, Input, []).
 
 -spec create_campaign(map(), create_campaign_request(), proplists:proplist()) ->
     {ok, create_campaign_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_campaign_errors(), tuple()}.
 create_campaign(Client, Input0, Options0) ->
     Method = put,
     Path = ["/campaigns"],
@@ -478,20 +685,14 @@ create_campaign(Client, Input0, Options0) ->
 -spec delete_campaign(map(), binary() | list(), delete_campaign_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_campaign_errors(), tuple()}.
 delete_campaign(Client, Id, Input) ->
     delete_campaign(Client, Id, Input, []).
 
 -spec delete_campaign(map(), binary() | list(), delete_campaign_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_campaign_errors(), tuple()}.
 delete_campaign(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/campaigns/", aws_util:encode_uri(Id), ""],
@@ -518,24 +719,14 @@ delete_campaign(Client, Id, Input0, Options0) ->
 -spec delete_connect_instance_config(map(), binary() | list(), delete_connect_instance_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_connect_instance_config_errors(), tuple()}.
 delete_connect_instance_config(Client, ConnectInstanceId, Input) ->
     delete_connect_instance_config(Client, ConnectInstanceId, Input, []).
 
 -spec delete_connect_instance_config(map(), binary() | list(), delete_connect_instance_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_connect_instance_config_errors(), tuple()}.
 delete_connect_instance_config(Client, ConnectInstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/connect-instance/", aws_util:encode_uri(ConnectInstanceId), "/config"],
@@ -563,22 +754,14 @@ delete_connect_instance_config(Client, ConnectInstanceId, Input0, Options0) ->
 -spec delete_instance_onboarding_job(map(), binary() | list(), delete_instance_onboarding_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_instance_onboarding_job_errors(), tuple()}.
 delete_instance_onboarding_job(Client, ConnectInstanceId, Input) ->
     delete_instance_onboarding_job(Client, ConnectInstanceId, Input, []).
 
 -spec delete_instance_onboarding_job(map(), binary() | list(), delete_instance_onboarding_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_instance_onboarding_job_errors(), tuple()}.
 delete_instance_onboarding_job(Client, ConnectInstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/connect-instance/", aws_util:encode_uri(ConnectInstanceId), "/onboarding"],
@@ -605,10 +788,7 @@ delete_instance_onboarding_job(Client, ConnectInstanceId, Input0, Options0) ->
 -spec describe_campaign(map(), binary() | list()) ->
     {ok, describe_campaign_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_campaign_errors(), tuple()}.
 describe_campaign(Client, Id)
   when is_map(Client) ->
     describe_campaign(Client, Id, #{}, #{}).
@@ -616,10 +796,7 @@ describe_campaign(Client, Id)
 -spec describe_campaign(map(), binary() | list(), map(), map()) ->
     {ok, describe_campaign_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_campaign_errors(), tuple()}.
 describe_campaign(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_campaign(Client, Id, QueryMap, HeadersMap, []).
@@ -627,10 +804,7 @@ describe_campaign(Client, Id, QueryMap, HeadersMap)
 -spec describe_campaign(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_campaign_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_campaign_errors(), tuple()}.
 describe_campaign(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/campaigns/", aws_util:encode_uri(Id), ""],
@@ -651,11 +825,7 @@ describe_campaign(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_campaign_state(map(), binary() | list()) ->
     {ok, get_campaign_state_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_campaign_state_errors(), tuple()}.
 get_campaign_state(Client, Id)
   when is_map(Client) ->
     get_campaign_state(Client, Id, #{}, #{}).
@@ -663,11 +833,7 @@ get_campaign_state(Client, Id)
 -spec get_campaign_state(map(), binary() | list(), map(), map()) ->
     {ok, get_campaign_state_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_campaign_state_errors(), tuple()}.
 get_campaign_state(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_campaign_state(Client, Id, QueryMap, HeadersMap, []).
@@ -675,11 +841,7 @@ get_campaign_state(Client, Id, QueryMap, HeadersMap)
 -spec get_campaign_state(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_campaign_state_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_campaign_state_errors(), tuple()}.
 get_campaign_state(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/campaigns/", aws_util:encode_uri(Id), "/state"],
@@ -700,20 +862,14 @@ get_campaign_state(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_campaign_state_batch(map(), get_campaign_state_batch_request()) ->
     {ok, get_campaign_state_batch_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_campaign_state_batch_errors(), tuple()}.
 get_campaign_state_batch(Client, Input) ->
     get_campaign_state_batch(Client, Input, []).
 
 -spec get_campaign_state_batch(map(), get_campaign_state_batch_request(), proplists:proplist()) ->
     {ok, get_campaign_state_batch_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_campaign_state_batch_errors(), tuple()}.
 get_campaign_state_batch(Client, Input0, Options0) ->
     Method = post,
     Path = ["/campaigns-state"],
@@ -740,10 +896,7 @@ get_campaign_state_batch(Client, Input0, Options0) ->
 -spec get_connect_instance_config(map(), binary() | list()) ->
     {ok, get_connect_instance_config_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_connect_instance_config_errors(), tuple()}.
 get_connect_instance_config(Client, ConnectInstanceId)
   when is_map(Client) ->
     get_connect_instance_config(Client, ConnectInstanceId, #{}, #{}).
@@ -751,10 +904,7 @@ get_connect_instance_config(Client, ConnectInstanceId)
 -spec get_connect_instance_config(map(), binary() | list(), map(), map()) ->
     {ok, get_connect_instance_config_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_connect_instance_config_errors(), tuple()}.
 get_connect_instance_config(Client, ConnectInstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_connect_instance_config(Client, ConnectInstanceId, QueryMap, HeadersMap, []).
@@ -762,10 +912,7 @@ get_connect_instance_config(Client, ConnectInstanceId, QueryMap, HeadersMap)
 -spec get_connect_instance_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_connect_instance_config_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_connect_instance_config_errors(), tuple()}.
 get_connect_instance_config(Client, ConnectInstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/connect-instance/", aws_util:encode_uri(ConnectInstanceId), "/config"],
@@ -786,10 +933,7 @@ get_connect_instance_config(Client, ConnectInstanceId, QueryMap, HeadersMap, Opt
 -spec get_instance_onboarding_job_status(map(), binary() | list()) ->
     {ok, get_instance_onboarding_job_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_instance_onboarding_job_status_errors(), tuple()}.
 get_instance_onboarding_job_status(Client, ConnectInstanceId)
   when is_map(Client) ->
     get_instance_onboarding_job_status(Client, ConnectInstanceId, #{}, #{}).
@@ -797,10 +941,7 @@ get_instance_onboarding_job_status(Client, ConnectInstanceId)
 -spec get_instance_onboarding_job_status(map(), binary() | list(), map(), map()) ->
     {ok, get_instance_onboarding_job_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_instance_onboarding_job_status_errors(), tuple()}.
 get_instance_onboarding_job_status(Client, ConnectInstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_instance_onboarding_job_status(Client, ConnectInstanceId, QueryMap, HeadersMap, []).
@@ -808,10 +949,7 @@ get_instance_onboarding_job_status(Client, ConnectInstanceId, QueryMap, HeadersM
 -spec get_instance_onboarding_job_status(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_instance_onboarding_job_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_instance_onboarding_job_status_errors(), tuple()}.
 get_instance_onboarding_job_status(Client, ConnectInstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/connect-instance/", aws_util:encode_uri(ConnectInstanceId), "/onboarding"],
@@ -833,18 +971,14 @@ get_instance_onboarding_job_status(Client, ConnectInstanceId, QueryMap, HeadersM
 -spec list_campaigns(map(), list_campaigns_request()) ->
     {ok, list_campaigns_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_campaigns_errors(), tuple()}.
 list_campaigns(Client, Input) ->
     list_campaigns(Client, Input, []).
 
 -spec list_campaigns(map(), list_campaigns_request(), proplists:proplist()) ->
     {ok, list_campaigns_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_campaigns_errors(), tuple()}.
 list_campaigns(Client, Input0, Options0) ->
     Method = post,
     Path = ["/campaigns-summary"],
@@ -871,11 +1005,7 @@ list_campaigns(Client, Input0, Options0) ->
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Arn)
   when is_map(Client) ->
     list_tags_for_resource(Client, Arn, #{}, #{}).
@@ -883,11 +1013,7 @@ list_tags_for_resource(Client, Arn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, []).
@@ -895,11 +1021,7 @@ list_tags_for_resource(Client, Arn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(Arn), ""],
@@ -920,26 +1042,14 @@ list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, Options0)
 -spec pause_campaign(map(), binary() | list(), pause_campaign_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_campaign_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, pause_campaign_errors(), tuple()}.
 pause_campaign(Client, Id, Input) ->
     pause_campaign(Client, Id, Input, []).
 
 -spec pause_campaign(map(), binary() | list(), pause_campaign_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_campaign_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, pause_campaign_errors(), tuple()}.
 pause_campaign(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/campaigns/", aws_util:encode_uri(Id), "/pause"],
@@ -969,26 +1079,14 @@ pause_campaign(Client, Id, Input0, Options0) ->
 -spec put_dial_request_batch(map(), binary() | list(), put_dial_request_batch_request()) ->
     {ok, put_dial_request_batch_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_campaign_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_dial_request_batch_errors(), tuple()}.
 put_dial_request_batch(Client, Id, Input) ->
     put_dial_request_batch(Client, Id, Input, []).
 
 -spec put_dial_request_batch(map(), binary() | list(), put_dial_request_batch_request(), proplists:proplist()) ->
     {ok, put_dial_request_batch_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_campaign_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_dial_request_batch_errors(), tuple()}.
 put_dial_request_batch(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/campaigns/", aws_util:encode_uri(Id), "/dial-requests"],
@@ -1015,26 +1113,14 @@ put_dial_request_batch(Client, Id, Input0, Options0) ->
 -spec resume_campaign(map(), binary() | list(), resume_campaign_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_campaign_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, resume_campaign_errors(), tuple()}.
 resume_campaign(Client, Id, Input) ->
     resume_campaign(Client, Id, Input, []).
 
 -spec resume_campaign(map(), binary() | list(), resume_campaign_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_campaign_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, resume_campaign_errors(), tuple()}.
 resume_campaign(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/campaigns/", aws_util:encode_uri(Id), "/resume"],
@@ -1061,26 +1147,14 @@ resume_campaign(Client, Id, Input0, Options0) ->
 -spec start_campaign(map(), binary() | list(), start_campaign_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_campaign_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_campaign_errors(), tuple()}.
 start_campaign(Client, Id, Input) ->
     start_campaign(Client, Id, Input, []).
 
 -spec start_campaign(map(), binary() | list(), start_campaign_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_campaign_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_campaign_errors(), tuple()}.
 start_campaign(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/campaigns/", aws_util:encode_uri(Id), "/start"],
@@ -1107,24 +1181,14 @@ start_campaign(Client, Id, Input0, Options0) ->
 -spec start_instance_onboarding_job(map(), binary() | list(), start_instance_onboarding_job_request()) ->
     {ok, start_instance_onboarding_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_instance_onboarding_job_errors(), tuple()}.
 start_instance_onboarding_job(Client, ConnectInstanceId, Input) ->
     start_instance_onboarding_job(Client, ConnectInstanceId, Input, []).
 
 -spec start_instance_onboarding_job(map(), binary() | list(), start_instance_onboarding_job_request(), proplists:proplist()) ->
     {ok, start_instance_onboarding_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_instance_onboarding_job_errors(), tuple()}.
 start_instance_onboarding_job(Client, ConnectInstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/connect-instance/", aws_util:encode_uri(ConnectInstanceId), "/onboarding"],
@@ -1151,26 +1215,14 @@ start_instance_onboarding_job(Client, ConnectInstanceId, Input0, Options0) ->
 -spec stop_campaign(map(), binary() | list(), stop_campaign_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_campaign_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_campaign_errors(), tuple()}.
 stop_campaign(Client, Id, Input) ->
     stop_campaign(Client, Id, Input, []).
 
 -spec stop_campaign(map(), binary() | list(), stop_campaign_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_campaign_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_campaign_errors(), tuple()}.
 stop_campaign(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/campaigns/", aws_util:encode_uri(Id), "/stop"],
@@ -1197,22 +1249,14 @@ stop_campaign(Client, Id, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Arn, Input) ->
     tag_resource(Client, Arn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Arn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(Arn), ""],
@@ -1239,22 +1283,14 @@ tag_resource(Client, Arn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Arn, Input) ->
     untag_resource(Client, Arn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Arn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(Arn), ""],
@@ -1284,22 +1320,14 @@ untag_resource(Client, Arn, Input0, Options0) ->
 -spec update_campaign_dialer_config(map(), binary() | list(), update_campaign_dialer_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_campaign_dialer_config_errors(), tuple()}.
 update_campaign_dialer_config(Client, Id, Input) ->
     update_campaign_dialer_config(Client, Id, Input, []).
 
 -spec update_campaign_dialer_config(map(), binary() | list(), update_campaign_dialer_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_campaign_dialer_config_errors(), tuple()}.
 update_campaign_dialer_config(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/campaigns/", aws_util:encode_uri(Id), "/dialer-config"],
@@ -1328,22 +1356,14 @@ update_campaign_dialer_config(Client, Id, Input0, Options0) ->
 -spec update_campaign_name(map(), binary() | list(), update_campaign_name_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_campaign_name_errors(), tuple()}.
 update_campaign_name(Client, Id, Input) ->
     update_campaign_name(Client, Id, Input, []).
 
 -spec update_campaign_name(map(), binary() | list(), update_campaign_name_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_campaign_name_errors(), tuple()}.
 update_campaign_name(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/campaigns/", aws_util:encode_uri(Id), "/name"],
@@ -1372,24 +1392,14 @@ update_campaign_name(Client, Id, Input0, Options0) ->
 -spec update_campaign_outbound_call_config(map(), binary() | list(), update_campaign_outbound_call_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_campaign_outbound_call_config_errors(), tuple()}.
 update_campaign_outbound_call_config(Client, Id, Input) ->
     update_campaign_outbound_call_config(Client, Id, Input, []).
 
 -spec update_campaign_outbound_call_config(map(), binary() | list(), update_campaign_outbound_call_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_campaign_outbound_call_config_errors(), tuple()}.
 update_campaign_outbound_call_config(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/campaigns/", aws_util:encode_uri(Id), "/outbound-call-config"],

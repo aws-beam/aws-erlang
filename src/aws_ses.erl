@@ -1628,6 +1628,187 @@
 %% }
 -type identity_mail_from_domain_attributes() :: #{binary() => any()}.
 
+-type clone_receipt_rule_set_errors() ::
+    limit_exceeded_exception() | 
+    already_exists_exception() | 
+    rule_set_does_not_exist_exception().
+
+-type create_configuration_set_errors() ::
+    configuration_set_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_configuration_set_exception().
+
+-type create_configuration_set_event_destination_errors() ::
+    invalid_firehose_destination_exception() | 
+    limit_exceeded_exception() | 
+    configuration_set_does_not_exist_exception() | 
+    event_destination_already_exists_exception() | 
+    invalid_s_n_s_destination_exception() | 
+    invalid_cloud_watch_destination_exception().
+
+-type create_configuration_set_tracking_options_errors() ::
+    tracking_options_already_exists_exception() | 
+    configuration_set_does_not_exist_exception() | 
+    invalid_tracking_options_exception().
+
+-type create_custom_verification_email_template_errors() ::
+    limit_exceeded_exception() | 
+    from_email_address_not_verified_exception() | 
+    custom_verification_email_template_already_exists_exception() | 
+    custom_verification_email_invalid_content_exception().
+
+-type create_receipt_filter_errors() ::
+    limit_exceeded_exception() | 
+    already_exists_exception().
+
+-type create_receipt_rule_errors() ::
+    limit_exceeded_exception() | 
+    rule_does_not_exist_exception() | 
+    invalid_s3_configuration_exception() | 
+    invalid_sns_topic_exception() | 
+    invalid_lambda_function_exception() | 
+    already_exists_exception() | 
+    rule_set_does_not_exist_exception().
+
+-type create_receipt_rule_set_errors() ::
+    limit_exceeded_exception() | 
+    already_exists_exception().
+
+-type create_template_errors() ::
+    limit_exceeded_exception() | 
+    invalid_template_exception() | 
+    already_exists_exception().
+
+-type delete_configuration_set_errors() ::
+    configuration_set_does_not_exist_exception().
+
+-type delete_configuration_set_event_destination_errors() ::
+    event_destination_does_not_exist_exception() | 
+    configuration_set_does_not_exist_exception().
+
+-type delete_configuration_set_tracking_options_errors() ::
+    tracking_options_does_not_exist_exception() | 
+    configuration_set_does_not_exist_exception().
+
+-type delete_receipt_rule_errors() ::
+    rule_set_does_not_exist_exception().
+
+-type delete_receipt_rule_set_errors() ::
+    cannot_delete_exception().
+
+-type describe_configuration_set_errors() ::
+    configuration_set_does_not_exist_exception().
+
+-type describe_receipt_rule_errors() ::
+    rule_does_not_exist_exception() | 
+    rule_set_does_not_exist_exception().
+
+-type describe_receipt_rule_set_errors() ::
+    rule_set_does_not_exist_exception().
+
+-type get_custom_verification_email_template_errors() ::
+    custom_verification_email_template_does_not_exist_exception().
+
+-type get_template_errors() ::
+    template_does_not_exist_exception().
+
+-type put_configuration_set_delivery_options_errors() ::
+    invalid_delivery_options_exception() | 
+    configuration_set_does_not_exist_exception().
+
+-type put_identity_policy_errors() ::
+    invalid_policy_exception().
+
+-type reorder_receipt_rule_set_errors() ::
+    rule_does_not_exist_exception() | 
+    rule_set_does_not_exist_exception().
+
+-type send_bounce_errors() ::
+    message_rejected().
+
+-type send_bulk_templated_email_errors() ::
+    template_does_not_exist_exception() | 
+    message_rejected() | 
+    account_sending_paused_exception() | 
+    configuration_set_does_not_exist_exception() | 
+    mail_from_domain_not_verified_exception() | 
+    configuration_set_sending_paused_exception().
+
+-type send_custom_verification_email_errors() ::
+    message_rejected() | 
+    configuration_set_does_not_exist_exception() | 
+    production_access_not_granted_exception() | 
+    from_email_address_not_verified_exception() | 
+    custom_verification_email_template_does_not_exist_exception().
+
+-type send_email_errors() ::
+    message_rejected() | 
+    account_sending_paused_exception() | 
+    configuration_set_does_not_exist_exception() | 
+    mail_from_domain_not_verified_exception() | 
+    configuration_set_sending_paused_exception().
+
+-type send_raw_email_errors() ::
+    message_rejected() | 
+    account_sending_paused_exception() | 
+    configuration_set_does_not_exist_exception() | 
+    mail_from_domain_not_verified_exception() | 
+    configuration_set_sending_paused_exception().
+
+-type send_templated_email_errors() ::
+    template_does_not_exist_exception() | 
+    message_rejected() | 
+    account_sending_paused_exception() | 
+    configuration_set_does_not_exist_exception() | 
+    mail_from_domain_not_verified_exception() | 
+    configuration_set_sending_paused_exception().
+
+-type set_active_receipt_rule_set_errors() ::
+    rule_set_does_not_exist_exception().
+
+-type set_receipt_rule_position_errors() ::
+    rule_does_not_exist_exception() | 
+    rule_set_does_not_exist_exception().
+
+-type test_render_template_errors() ::
+    template_does_not_exist_exception() | 
+    missing_rendering_attribute_exception() | 
+    invalid_rendering_parameter_exception().
+
+-type update_configuration_set_event_destination_errors() ::
+    invalid_firehose_destination_exception() | 
+    event_destination_does_not_exist_exception() | 
+    configuration_set_does_not_exist_exception() | 
+    invalid_s_n_s_destination_exception() | 
+    invalid_cloud_watch_destination_exception().
+
+-type update_configuration_set_reputation_metrics_enabled_errors() ::
+    configuration_set_does_not_exist_exception().
+
+-type update_configuration_set_sending_enabled_errors() ::
+    configuration_set_does_not_exist_exception().
+
+-type update_configuration_set_tracking_options_errors() ::
+    tracking_options_does_not_exist_exception() | 
+    configuration_set_does_not_exist_exception() | 
+    invalid_tracking_options_exception().
+
+-type update_custom_verification_email_template_errors() ::
+    from_email_address_not_verified_exception() | 
+    custom_verification_email_template_does_not_exist_exception() | 
+    custom_verification_email_invalid_content_exception().
+
+-type update_receipt_rule_errors() ::
+    limit_exceeded_exception() | 
+    rule_does_not_exist_exception() | 
+    invalid_s3_configuration_exception() | 
+    invalid_sns_topic_exception() | 
+    invalid_lambda_function_exception() | 
+    rule_set_does_not_exist_exception().
+
+-type update_template_errors() ::
+    template_does_not_exist_exception() | 
+    invalid_template_exception().
 
 %%====================================================================
 %% API
@@ -1648,9 +1829,7 @@
 -spec clone_receipt_rule_set(map(), clone_receipt_rule_set_request()) ->
     {ok, clone_receipt_rule_set_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, rule_set_does_not_exist_exception(), tuple()}.
+    {error, clone_receipt_rule_set_errors(), tuple()}.
 clone_receipt_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     clone_receipt_rule_set(Client, Input, []).
@@ -1658,9 +1837,7 @@ clone_receipt_rule_set(Client, Input)
 -spec clone_receipt_rule_set(map(), clone_receipt_rule_set_request(), proplists:proplist()) ->
     {ok, clone_receipt_rule_set_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, rule_set_does_not_exist_exception(), tuple()}.
+    {error, clone_receipt_rule_set_errors(), tuple()}.
 clone_receipt_rule_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CloneReceiptRuleSet">>, Input, Options).
@@ -1677,9 +1854,7 @@ clone_receipt_rule_set(Client, Input, Options)
 -spec create_configuration_set(map(), create_configuration_set_request()) ->
     {ok, create_configuration_set_response(), tuple()} |
     {error, any()} |
-    {error, configuration_set_already_exists_exception(), tuple()} |
-    {error, invalid_configuration_set_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_configuration_set_errors(), tuple()}.
 create_configuration_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_configuration_set(Client, Input, []).
@@ -1687,9 +1862,7 @@ create_configuration_set(Client, Input)
 -spec create_configuration_set(map(), create_configuration_set_request(), proplists:proplist()) ->
     {ok, create_configuration_set_response(), tuple()} |
     {error, any()} |
-    {error, configuration_set_already_exists_exception(), tuple()} |
-    {error, invalid_configuration_set_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_configuration_set_errors(), tuple()}.
 create_configuration_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateConfigurationSet">>, Input, Options).
@@ -1713,12 +1886,7 @@ create_configuration_set(Client, Input, Options)
 -spec create_configuration_set_event_destination(map(), create_configuration_set_event_destination_request()) ->
     {ok, create_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()} |
-    {error, event_destination_already_exists_exception(), tuple()} |
-    {error, invalid_cloud_watch_destination_exception(), tuple()} |
-    {error, invalid_firehose_destination_exception(), tuple()} |
-    {error, invalid_s_n_s_destination_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_configuration_set_event_destination_errors(), tuple()}.
 create_configuration_set_event_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_configuration_set_event_destination(Client, Input, []).
@@ -1726,12 +1894,7 @@ create_configuration_set_event_destination(Client, Input)
 -spec create_configuration_set_event_destination(map(), create_configuration_set_event_destination_request(), proplists:proplist()) ->
     {ok, create_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()} |
-    {error, event_destination_already_exists_exception(), tuple()} |
-    {error, invalid_cloud_watch_destination_exception(), tuple()} |
-    {error, invalid_firehose_destination_exception(), tuple()} |
-    {error, invalid_s_n_s_destination_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_configuration_set_event_destination_errors(), tuple()}.
 create_configuration_set_event_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateConfigurationSetEventDestination">>, Input, Options).
@@ -1750,9 +1913,7 @@ create_configuration_set_event_destination(Client, Input, Options)
 -spec create_configuration_set_tracking_options(map(), create_configuration_set_tracking_options_request()) ->
     {ok, create_configuration_set_tracking_options_response(), tuple()} |
     {error, any()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()} |
-    {error, invalid_tracking_options_exception(), tuple()} |
-    {error, tracking_options_already_exists_exception(), tuple()}.
+    {error, create_configuration_set_tracking_options_errors(), tuple()}.
 create_configuration_set_tracking_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_configuration_set_tracking_options(Client, Input, []).
@@ -1760,9 +1921,7 @@ create_configuration_set_tracking_options(Client, Input)
 -spec create_configuration_set_tracking_options(map(), create_configuration_set_tracking_options_request(), proplists:proplist()) ->
     {ok, create_configuration_set_tracking_options_response(), tuple()} |
     {error, any()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()} |
-    {error, invalid_tracking_options_exception(), tuple()} |
-    {error, tracking_options_already_exists_exception(), tuple()}.
+    {error, create_configuration_set_tracking_options_errors(), tuple()}.
 create_configuration_set_tracking_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateConfigurationSetTrackingOptions">>, Input, Options).
@@ -1779,10 +1938,7 @@ create_configuration_set_tracking_options(Client, Input, Options)
 -spec create_custom_verification_email_template(map(), create_custom_verification_email_template_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, custom_verification_email_invalid_content_exception(), tuple()} |
-    {error, custom_verification_email_template_already_exists_exception(), tuple()} |
-    {error, from_email_address_not_verified_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_custom_verification_email_template_errors(), tuple()}.
 create_custom_verification_email_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_custom_verification_email_template(Client, Input, []).
@@ -1790,10 +1946,7 @@ create_custom_verification_email_template(Client, Input)
 -spec create_custom_verification_email_template(map(), create_custom_verification_email_template_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, custom_verification_email_invalid_content_exception(), tuple()} |
-    {error, custom_verification_email_template_already_exists_exception(), tuple()} |
-    {error, from_email_address_not_verified_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_custom_verification_email_template_errors(), tuple()}.
 create_custom_verification_email_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCustomVerificationEmailTemplate">>, Input, Options).
@@ -1808,8 +1961,7 @@ create_custom_verification_email_template(Client, Input, Options)
 -spec create_receipt_filter(map(), create_receipt_filter_request()) ->
     {ok, create_receipt_filter_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_receipt_filter_errors(), tuple()}.
 create_receipt_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_receipt_filter(Client, Input, []).
@@ -1817,8 +1969,7 @@ create_receipt_filter(Client, Input)
 -spec create_receipt_filter(map(), create_receipt_filter_request(), proplists:proplist()) ->
     {ok, create_receipt_filter_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_receipt_filter_errors(), tuple()}.
 create_receipt_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateReceiptFilter">>, Input, Options).
@@ -1833,13 +1984,7 @@ create_receipt_filter(Client, Input, Options)
 -spec create_receipt_rule(map(), create_receipt_rule_request()) ->
     {ok, create_receipt_rule_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, invalid_lambda_function_exception(), tuple()} |
-    {error, invalid_s3_configuration_exception(), tuple()} |
-    {error, invalid_sns_topic_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, rule_does_not_exist_exception(), tuple()} |
-    {error, rule_set_does_not_exist_exception(), tuple()}.
+    {error, create_receipt_rule_errors(), tuple()}.
 create_receipt_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_receipt_rule(Client, Input, []).
@@ -1847,13 +1992,7 @@ create_receipt_rule(Client, Input)
 -spec create_receipt_rule(map(), create_receipt_rule_request(), proplists:proplist()) ->
     {ok, create_receipt_rule_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, invalid_lambda_function_exception(), tuple()} |
-    {error, invalid_s3_configuration_exception(), tuple()} |
-    {error, invalid_sns_topic_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, rule_does_not_exist_exception(), tuple()} |
-    {error, rule_set_does_not_exist_exception(), tuple()}.
+    {error, create_receipt_rule_errors(), tuple()}.
 create_receipt_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateReceiptRule">>, Input, Options).
@@ -1868,8 +2007,7 @@ create_receipt_rule(Client, Input, Options)
 -spec create_receipt_rule_set(map(), create_receipt_rule_set_request()) ->
     {ok, create_receipt_rule_set_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_receipt_rule_set_errors(), tuple()}.
 create_receipt_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_receipt_rule_set(Client, Input, []).
@@ -1877,8 +2015,7 @@ create_receipt_rule_set(Client, Input)
 -spec create_receipt_rule_set(map(), create_receipt_rule_set_request(), proplists:proplist()) ->
     {ok, create_receipt_rule_set_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_receipt_rule_set_errors(), tuple()}.
 create_receipt_rule_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateReceiptRuleSet">>, Input, Options).
@@ -1895,9 +2032,7 @@ create_receipt_rule_set(Client, Input, Options)
 -spec create_template(map(), create_template_request()) ->
     {ok, create_template_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, invalid_template_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_template_errors(), tuple()}.
 create_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_template(Client, Input, []).
@@ -1905,9 +2040,7 @@ create_template(Client, Input)
 -spec create_template(map(), create_template_request(), proplists:proplist()) ->
     {ok, create_template_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, invalid_template_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_template_errors(), tuple()}.
 create_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTemplate">>, Input, Options).
@@ -1923,7 +2056,7 @@ create_template(Client, Input, Options)
 -spec delete_configuration_set(map(), delete_configuration_set_request()) ->
     {ok, delete_configuration_set_response(), tuple()} |
     {error, any()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()}.
+    {error, delete_configuration_set_errors(), tuple()}.
 delete_configuration_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_configuration_set(Client, Input, []).
@@ -1931,7 +2064,7 @@ delete_configuration_set(Client, Input)
 -spec delete_configuration_set(map(), delete_configuration_set_request(), proplists:proplist()) ->
     {ok, delete_configuration_set_response(), tuple()} |
     {error, any()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()}.
+    {error, delete_configuration_set_errors(), tuple()}.
 delete_configuration_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConfigurationSet">>, Input, Options).
@@ -1949,8 +2082,7 @@ delete_configuration_set(Client, Input, Options)
 -spec delete_configuration_set_event_destination(map(), delete_configuration_set_event_destination_request()) ->
     {ok, delete_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()} |
-    {error, event_destination_does_not_exist_exception(), tuple()}.
+    {error, delete_configuration_set_event_destination_errors(), tuple()}.
 delete_configuration_set_event_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_configuration_set_event_destination(Client, Input, []).
@@ -1958,8 +2090,7 @@ delete_configuration_set_event_destination(Client, Input)
 -spec delete_configuration_set_event_destination(map(), delete_configuration_set_event_destination_request(), proplists:proplist()) ->
     {ok, delete_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()} |
-    {error, event_destination_does_not_exist_exception(), tuple()}.
+    {error, delete_configuration_set_event_destination_errors(), tuple()}.
 delete_configuration_set_event_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConfigurationSetEventDestination">>, Input, Options).
@@ -1983,8 +2114,7 @@ delete_configuration_set_event_destination(Client, Input, Options)
 -spec delete_configuration_set_tracking_options(map(), delete_configuration_set_tracking_options_request()) ->
     {ok, delete_configuration_set_tracking_options_response(), tuple()} |
     {error, any()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()} |
-    {error, tracking_options_does_not_exist_exception(), tuple()}.
+    {error, delete_configuration_set_tracking_options_errors(), tuple()}.
 delete_configuration_set_tracking_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_configuration_set_tracking_options(Client, Input, []).
@@ -1992,8 +2122,7 @@ delete_configuration_set_tracking_options(Client, Input)
 -spec delete_configuration_set_tracking_options(map(), delete_configuration_set_tracking_options_request(), proplists:proplist()) ->
     {ok, delete_configuration_set_tracking_options_response(), tuple()} |
     {error, any()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()} |
-    {error, tracking_options_does_not_exist_exception(), tuple()}.
+    {error, delete_configuration_set_tracking_options_errors(), tuple()}.
 delete_configuration_set_tracking_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConfigurationSetTrackingOptions">>, Input, Options).
@@ -2105,7 +2234,7 @@ delete_receipt_filter(Client, Input, Options)
 -spec delete_receipt_rule(map(), delete_receipt_rule_request()) ->
     {ok, delete_receipt_rule_response(), tuple()} |
     {error, any()} |
-    {error, rule_set_does_not_exist_exception(), tuple()}.
+    {error, delete_receipt_rule_errors(), tuple()}.
 delete_receipt_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_receipt_rule(Client, Input, []).
@@ -2113,7 +2242,7 @@ delete_receipt_rule(Client, Input)
 -spec delete_receipt_rule(map(), delete_receipt_rule_request(), proplists:proplist()) ->
     {ok, delete_receipt_rule_response(), tuple()} |
     {error, any()} |
-    {error, rule_set_does_not_exist_exception(), tuple()}.
+    {error, delete_receipt_rule_errors(), tuple()}.
 delete_receipt_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteReceiptRule">>, Input, Options).
@@ -2132,7 +2261,7 @@ delete_receipt_rule(Client, Input, Options)
 -spec delete_receipt_rule_set(map(), delete_receipt_rule_set_request()) ->
     {ok, delete_receipt_rule_set_response(), tuple()} |
     {error, any()} |
-    {error, cannot_delete_exception(), tuple()}.
+    {error, delete_receipt_rule_set_errors(), tuple()}.
 delete_receipt_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_receipt_rule_set(Client, Input, []).
@@ -2140,7 +2269,7 @@ delete_receipt_rule_set(Client, Input)
 -spec delete_receipt_rule_set(map(), delete_receipt_rule_set_request(), proplists:proplist()) ->
     {ok, delete_receipt_rule_set_response(), tuple()} |
     {error, any()} |
-    {error, cannot_delete_exception(), tuple()}.
+    {error, delete_receipt_rule_set_errors(), tuple()}.
 delete_receipt_rule_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteReceiptRuleSet">>, Input, Options).
@@ -2214,7 +2343,7 @@ describe_active_receipt_rule_set(Client, Input, Options)
 -spec describe_configuration_set(map(), describe_configuration_set_request()) ->
     {ok, describe_configuration_set_response(), tuple()} |
     {error, any()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()}.
+    {error, describe_configuration_set_errors(), tuple()}.
 describe_configuration_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_configuration_set(Client, Input, []).
@@ -2222,7 +2351,7 @@ describe_configuration_set(Client, Input)
 -spec describe_configuration_set(map(), describe_configuration_set_request(), proplists:proplist()) ->
     {ok, describe_configuration_set_response(), tuple()} |
     {error, any()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()}.
+    {error, describe_configuration_set_errors(), tuple()}.
 describe_configuration_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConfigurationSet">>, Input, Options).
@@ -2237,8 +2366,7 @@ describe_configuration_set(Client, Input, Options)
 -spec describe_receipt_rule(map(), describe_receipt_rule_request()) ->
     {ok, describe_receipt_rule_response(), tuple()} |
     {error, any()} |
-    {error, rule_does_not_exist_exception(), tuple()} |
-    {error, rule_set_does_not_exist_exception(), tuple()}.
+    {error, describe_receipt_rule_errors(), tuple()}.
 describe_receipt_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_receipt_rule(Client, Input, []).
@@ -2246,8 +2374,7 @@ describe_receipt_rule(Client, Input)
 -spec describe_receipt_rule(map(), describe_receipt_rule_request(), proplists:proplist()) ->
     {ok, describe_receipt_rule_response(), tuple()} |
     {error, any()} |
-    {error, rule_does_not_exist_exception(), tuple()} |
-    {error, rule_set_does_not_exist_exception(), tuple()}.
+    {error, describe_receipt_rule_errors(), tuple()}.
 describe_receipt_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReceiptRule">>, Input, Options).
@@ -2262,7 +2389,7 @@ describe_receipt_rule(Client, Input, Options)
 -spec describe_receipt_rule_set(map(), describe_receipt_rule_set_request()) ->
     {ok, describe_receipt_rule_set_response(), tuple()} |
     {error, any()} |
-    {error, rule_set_does_not_exist_exception(), tuple()}.
+    {error, describe_receipt_rule_set_errors(), tuple()}.
 describe_receipt_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_receipt_rule_set(Client, Input, []).
@@ -2270,7 +2397,7 @@ describe_receipt_rule_set(Client, Input)
 -spec describe_receipt_rule_set(map(), describe_receipt_rule_set_request(), proplists:proplist()) ->
     {ok, describe_receipt_rule_set_response(), tuple()} |
     {error, any()} |
-    {error, rule_set_does_not_exist_exception(), tuple()}.
+    {error, describe_receipt_rule_set_errors(), tuple()}.
 describe_receipt_rule_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReceiptRuleSet">>, Input, Options).
@@ -2307,7 +2434,7 @@ get_account_sending_enabled(Client, Input, Options)
 -spec get_custom_verification_email_template(map(), get_custom_verification_email_template_request()) ->
     {ok, get_custom_verification_email_template_response(), tuple()} |
     {error, any()} |
-    {error, custom_verification_email_template_does_not_exist_exception(), tuple()}.
+    {error, get_custom_verification_email_template_errors(), tuple()}.
 get_custom_verification_email_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_custom_verification_email_template(Client, Input, []).
@@ -2315,7 +2442,7 @@ get_custom_verification_email_template(Client, Input)
 -spec get_custom_verification_email_template(map(), get_custom_verification_email_template_request(), proplists:proplist()) ->
     {ok, get_custom_verification_email_template_response(), tuple()} |
     {error, any()} |
-    {error, custom_verification_email_template_does_not_exist_exception(), tuple()}.
+    {error, get_custom_verification_email_template_errors(), tuple()}.
 get_custom_verification_email_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCustomVerificationEmailTemplate">>, Input, Options).
@@ -2542,7 +2669,7 @@ get_send_statistics(Client, Input, Options)
 -spec get_template(map(), get_template_request()) ->
     {ok, get_template_response(), tuple()} |
     {error, any()} |
-    {error, template_does_not_exist_exception(), tuple()}.
+    {error, get_template_errors(), tuple()}.
 get_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_template(Client, Input, []).
@@ -2550,7 +2677,7 @@ get_template(Client, Input)
 -spec get_template(map(), get_template_request(), proplists:proplist()) ->
     {ok, get_template_response(), tuple()} |
     {error, any()} |
-    {error, template_does_not_exist_exception(), tuple()}.
+    {error, get_template_errors(), tuple()}.
 get_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTemplate">>, Input, Options).
@@ -2772,8 +2899,7 @@ list_verified_email_addresses(Client, Input, Options)
 -spec put_configuration_set_delivery_options(map(), put_configuration_set_delivery_options_request()) ->
     {ok, put_configuration_set_delivery_options_response(), tuple()} |
     {error, any()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()} |
-    {error, invalid_delivery_options_exception(), tuple()}.
+    {error, put_configuration_set_delivery_options_errors(), tuple()}.
 put_configuration_set_delivery_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_configuration_set_delivery_options(Client, Input, []).
@@ -2781,8 +2907,7 @@ put_configuration_set_delivery_options(Client, Input)
 -spec put_configuration_set_delivery_options(map(), put_configuration_set_delivery_options_request(), proplists:proplist()) ->
     {ok, put_configuration_set_delivery_options_response(), tuple()} |
     {error, any()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()} |
-    {error, invalid_delivery_options_exception(), tuple()}.
+    {error, put_configuration_set_delivery_options_errors(), tuple()}.
 put_configuration_set_delivery_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutConfigurationSetDeliveryOptions">>, Input, Options).
@@ -2807,7 +2932,7 @@ put_configuration_set_delivery_options(Client, Input, Options)
 -spec put_identity_policy(map(), put_identity_policy_request()) ->
     {ok, put_identity_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_policy_exception(), tuple()}.
+    {error, put_identity_policy_errors(), tuple()}.
 put_identity_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_identity_policy(Client, Input, []).
@@ -2815,7 +2940,7 @@ put_identity_policy(Client, Input)
 -spec put_identity_policy(map(), put_identity_policy_request(), proplists:proplist()) ->
     {ok, put_identity_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_policy_exception(), tuple()}.
+    {error, put_identity_policy_errors(), tuple()}.
 put_identity_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutIdentityPolicy">>, Input, Options).
@@ -2835,8 +2960,7 @@ put_identity_policy(Client, Input, Options)
 -spec reorder_receipt_rule_set(map(), reorder_receipt_rule_set_request()) ->
     {ok, reorder_receipt_rule_set_response(), tuple()} |
     {error, any()} |
-    {error, rule_does_not_exist_exception(), tuple()} |
-    {error, rule_set_does_not_exist_exception(), tuple()}.
+    {error, reorder_receipt_rule_set_errors(), tuple()}.
 reorder_receipt_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     reorder_receipt_rule_set(Client, Input, []).
@@ -2844,8 +2968,7 @@ reorder_receipt_rule_set(Client, Input)
 -spec reorder_receipt_rule_set(map(), reorder_receipt_rule_set_request(), proplists:proplist()) ->
     {ok, reorder_receipt_rule_set_response(), tuple()} |
     {error, any()} |
-    {error, rule_does_not_exist_exception(), tuple()} |
-    {error, rule_set_does_not_exist_exception(), tuple()}.
+    {error, reorder_receipt_rule_set_errors(), tuple()}.
 reorder_receipt_rule_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ReorderReceiptRuleSet">>, Input, Options).
@@ -2870,7 +2993,7 @@ reorder_receipt_rule_set(Client, Input, Options)
 -spec send_bounce(map(), send_bounce_request()) ->
     {ok, send_bounce_response(), tuple()} |
     {error, any()} |
-    {error, message_rejected(), tuple()}.
+    {error, send_bounce_errors(), tuple()}.
 send_bounce(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_bounce(Client, Input, []).
@@ -2878,7 +3001,7 @@ send_bounce(Client, Input)
 -spec send_bounce(map(), send_bounce_request(), proplists:proplist()) ->
     {ok, send_bounce_response(), tuple()} |
     {error, any()} |
-    {error, message_rejected(), tuple()}.
+    {error, send_bounce_errors(), tuple()}.
 send_bounce(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendBounce">>, Input, Options).
@@ -2932,12 +3055,7 @@ send_bounce(Client, Input, Options)
 -spec send_bulk_templated_email(map(), send_bulk_templated_email_request()) ->
     {ok, send_bulk_templated_email_response(), tuple()} |
     {error, any()} |
-    {error, account_sending_paused_exception(), tuple()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()} |
-    {error, configuration_set_sending_paused_exception(), tuple()} |
-    {error, mail_from_domain_not_verified_exception(), tuple()} |
-    {error, message_rejected(), tuple()} |
-    {error, template_does_not_exist_exception(), tuple()}.
+    {error, send_bulk_templated_email_errors(), tuple()}.
 send_bulk_templated_email(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_bulk_templated_email(Client, Input, []).
@@ -2945,12 +3063,7 @@ send_bulk_templated_email(Client, Input)
 -spec send_bulk_templated_email(map(), send_bulk_templated_email_request(), proplists:proplist()) ->
     {ok, send_bulk_templated_email_response(), tuple()} |
     {error, any()} |
-    {error, account_sending_paused_exception(), tuple()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()} |
-    {error, configuration_set_sending_paused_exception(), tuple()} |
-    {error, mail_from_domain_not_verified_exception(), tuple()} |
-    {error, message_rejected(), tuple()} |
-    {error, template_does_not_exist_exception(), tuple()}.
+    {error, send_bulk_templated_email_errors(), tuple()}.
 send_bulk_templated_email(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendBulkTemplatedEmail">>, Input, Options).
@@ -2976,11 +3089,7 @@ send_bulk_templated_email(Client, Input, Options)
 -spec send_custom_verification_email(map(), send_custom_verification_email_request()) ->
     {ok, send_custom_verification_email_response(), tuple()} |
     {error, any()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()} |
-    {error, custom_verification_email_template_does_not_exist_exception(), tuple()} |
-    {error, from_email_address_not_verified_exception(), tuple()} |
-    {error, message_rejected(), tuple()} |
-    {error, production_access_not_granted_exception(), tuple()}.
+    {error, send_custom_verification_email_errors(), tuple()}.
 send_custom_verification_email(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_custom_verification_email(Client, Input, []).
@@ -2988,11 +3097,7 @@ send_custom_verification_email(Client, Input)
 -spec send_custom_verification_email(map(), send_custom_verification_email_request(), proplists:proplist()) ->
     {ok, send_custom_verification_email_response(), tuple()} |
     {error, any()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()} |
-    {error, custom_verification_email_template_does_not_exist_exception(), tuple()} |
-    {error, from_email_address_not_verified_exception(), tuple()} |
-    {error, message_rejected(), tuple()} |
-    {error, production_access_not_granted_exception(), tuple()}.
+    {error, send_custom_verification_email_errors(), tuple()}.
 send_custom_verification_email(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendCustomVerificationEmail">>, Input, Options).
@@ -3050,11 +3155,7 @@ send_custom_verification_email(Client, Input, Options)
 -spec send_email(map(), send_email_request()) ->
     {ok, send_email_response(), tuple()} |
     {error, any()} |
-    {error, account_sending_paused_exception(), tuple()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()} |
-    {error, configuration_set_sending_paused_exception(), tuple()} |
-    {error, mail_from_domain_not_verified_exception(), tuple()} |
-    {error, message_rejected(), tuple()}.
+    {error, send_email_errors(), tuple()}.
 send_email(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_email(Client, Input, []).
@@ -3062,11 +3163,7 @@ send_email(Client, Input)
 -spec send_email(map(), send_email_request(), proplists:proplist()) ->
     {ok, send_email_response(), tuple()} |
     {error, any()} |
-    {error, account_sending_paused_exception(), tuple()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()} |
-    {error, configuration_set_sending_paused_exception(), tuple()} |
-    {error, mail_from_domain_not_verified_exception(), tuple()} |
-    {error, message_rejected(), tuple()}.
+    {error, send_email_errors(), tuple()}.
 send_email(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendEmail">>, Input, Options).
@@ -3181,11 +3278,7 @@ send_email(Client, Input, Options)
 -spec send_raw_email(map(), send_raw_email_request()) ->
     {ok, send_raw_email_response(), tuple()} |
     {error, any()} |
-    {error, account_sending_paused_exception(), tuple()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()} |
-    {error, configuration_set_sending_paused_exception(), tuple()} |
-    {error, mail_from_domain_not_verified_exception(), tuple()} |
-    {error, message_rejected(), tuple()}.
+    {error, send_raw_email_errors(), tuple()}.
 send_raw_email(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_raw_email(Client, Input, []).
@@ -3193,11 +3286,7 @@ send_raw_email(Client, Input)
 -spec send_raw_email(map(), send_raw_email_request(), proplists:proplist()) ->
     {ok, send_raw_email_response(), tuple()} |
     {error, any()} |
-    {error, account_sending_paused_exception(), tuple()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()} |
-    {error, configuration_set_sending_paused_exception(), tuple()} |
-    {error, mail_from_domain_not_verified_exception(), tuple()} |
-    {error, message_rejected(), tuple()}.
+    {error, send_raw_email_errors(), tuple()}.
 send_raw_email(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendRawEmail">>, Input, Options).
@@ -3261,12 +3350,7 @@ send_raw_email(Client, Input, Options)
 -spec send_templated_email(map(), send_templated_email_request()) ->
     {ok, send_templated_email_response(), tuple()} |
     {error, any()} |
-    {error, account_sending_paused_exception(), tuple()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()} |
-    {error, configuration_set_sending_paused_exception(), tuple()} |
-    {error, mail_from_domain_not_verified_exception(), tuple()} |
-    {error, message_rejected(), tuple()} |
-    {error, template_does_not_exist_exception(), tuple()}.
+    {error, send_templated_email_errors(), tuple()}.
 send_templated_email(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_templated_email(Client, Input, []).
@@ -3274,12 +3358,7 @@ send_templated_email(Client, Input)
 -spec send_templated_email(map(), send_templated_email_request(), proplists:proplist()) ->
     {ok, send_templated_email_response(), tuple()} |
     {error, any()} |
-    {error, account_sending_paused_exception(), tuple()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()} |
-    {error, configuration_set_sending_paused_exception(), tuple()} |
-    {error, mail_from_domain_not_verified_exception(), tuple()} |
-    {error, message_rejected(), tuple()} |
-    {error, template_does_not_exist_exception(), tuple()}.
+    {error, send_templated_email_errors(), tuple()}.
 send_templated_email(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendTemplatedEmail">>, Input, Options).
@@ -3298,7 +3377,7 @@ send_templated_email(Client, Input, Options)
 -spec set_active_receipt_rule_set(map(), set_active_receipt_rule_set_request()) ->
     {ok, set_active_receipt_rule_set_response(), tuple()} |
     {error, any()} |
-    {error, rule_set_does_not_exist_exception(), tuple()}.
+    {error, set_active_receipt_rule_set_errors(), tuple()}.
 set_active_receipt_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_active_receipt_rule_set(Client, Input, []).
@@ -3306,7 +3385,7 @@ set_active_receipt_rule_set(Client, Input)
 -spec set_active_receipt_rule_set(map(), set_active_receipt_rule_set_request(), proplists:proplist()) ->
     {ok, set_active_receipt_rule_set_response(), tuple()} |
     {error, any()} |
-    {error, rule_set_does_not_exist_exception(), tuple()}.
+    {error, set_active_receipt_rule_set_errors(), tuple()}.
 set_active_receipt_rule_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetActiveReceiptRuleSet">>, Input, Options).
@@ -3479,8 +3558,7 @@ set_identity_notification_topic(Client, Input, Options)
 -spec set_receipt_rule_position(map(), set_receipt_rule_position_request()) ->
     {ok, set_receipt_rule_position_response(), tuple()} |
     {error, any()} |
-    {error, rule_does_not_exist_exception(), tuple()} |
-    {error, rule_set_does_not_exist_exception(), tuple()}.
+    {error, set_receipt_rule_position_errors(), tuple()}.
 set_receipt_rule_position(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_receipt_rule_position(Client, Input, []).
@@ -3488,8 +3566,7 @@ set_receipt_rule_position(Client, Input)
 -spec set_receipt_rule_position(map(), set_receipt_rule_position_request(), proplists:proplist()) ->
     {ok, set_receipt_rule_position_response(), tuple()} |
     {error, any()} |
-    {error, rule_does_not_exist_exception(), tuple()} |
-    {error, rule_set_does_not_exist_exception(), tuple()}.
+    {error, set_receipt_rule_position_errors(), tuple()}.
 set_receipt_rule_position(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetReceiptRulePosition">>, Input, Options).
@@ -3502,9 +3579,7 @@ set_receipt_rule_position(Client, Input, Options)
 -spec test_render_template(map(), test_render_template_request()) ->
     {ok, test_render_template_response(), tuple()} |
     {error, any()} |
-    {error, invalid_rendering_parameter_exception(), tuple()} |
-    {error, missing_rendering_attribute_exception(), tuple()} |
-    {error, template_does_not_exist_exception(), tuple()}.
+    {error, test_render_template_errors(), tuple()}.
 test_render_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_render_template(Client, Input, []).
@@ -3512,9 +3587,7 @@ test_render_template(Client, Input)
 -spec test_render_template(map(), test_render_template_request(), proplists:proplist()) ->
     {ok, test_render_template_response(), tuple()} |
     {error, any()} |
-    {error, invalid_rendering_parameter_exception(), tuple()} |
-    {error, missing_rendering_attribute_exception(), tuple()} |
-    {error, template_does_not_exist_exception(), tuple()}.
+    {error, test_render_template_errors(), tuple()}.
 test_render_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TestRenderTemplate">>, Input, Options).
@@ -3566,11 +3639,7 @@ update_account_sending_enabled(Client, Input, Options)
 -spec update_configuration_set_event_destination(map(), update_configuration_set_event_destination_request()) ->
     {ok, update_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()} |
-    {error, event_destination_does_not_exist_exception(), tuple()} |
-    {error, invalid_cloud_watch_destination_exception(), tuple()} |
-    {error, invalid_firehose_destination_exception(), tuple()} |
-    {error, invalid_s_n_s_destination_exception(), tuple()}.
+    {error, update_configuration_set_event_destination_errors(), tuple()}.
 update_configuration_set_event_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_configuration_set_event_destination(Client, Input, []).
@@ -3578,11 +3647,7 @@ update_configuration_set_event_destination(Client, Input)
 -spec update_configuration_set_event_destination(map(), update_configuration_set_event_destination_request(), proplists:proplist()) ->
     {ok, update_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()} |
-    {error, event_destination_does_not_exist_exception(), tuple()} |
-    {error, invalid_cloud_watch_destination_exception(), tuple()} |
-    {error, invalid_firehose_destination_exception(), tuple()} |
-    {error, invalid_s_n_s_destination_exception(), tuple()}.
+    {error, update_configuration_set_event_destination_errors(), tuple()}.
 update_configuration_set_event_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateConfigurationSetEventDestination">>, Input, Options).
@@ -3600,7 +3665,7 @@ update_configuration_set_event_destination(Client, Input, Options)
 -spec update_configuration_set_reputation_metrics_enabled(map(), update_configuration_set_reputation_metrics_enabled_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()}.
+    {error, update_configuration_set_reputation_metrics_enabled_errors(), tuple()}.
 update_configuration_set_reputation_metrics_enabled(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_configuration_set_reputation_metrics_enabled(Client, Input, []).
@@ -3608,7 +3673,7 @@ update_configuration_set_reputation_metrics_enabled(Client, Input)
 -spec update_configuration_set_reputation_metrics_enabled(map(), update_configuration_set_reputation_metrics_enabled_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()}.
+    {error, update_configuration_set_reputation_metrics_enabled_errors(), tuple()}.
 update_configuration_set_reputation_metrics_enabled(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateConfigurationSetReputationMetricsEnabled">>, Input, Options).
@@ -3628,7 +3693,7 @@ update_configuration_set_reputation_metrics_enabled(Client, Input, Options)
 -spec update_configuration_set_sending_enabled(map(), update_configuration_set_sending_enabled_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()}.
+    {error, update_configuration_set_sending_enabled_errors(), tuple()}.
 update_configuration_set_sending_enabled(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_configuration_set_sending_enabled(Client, Input, []).
@@ -3636,7 +3701,7 @@ update_configuration_set_sending_enabled(Client, Input)
 -spec update_configuration_set_sending_enabled(map(), update_configuration_set_sending_enabled_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()}.
+    {error, update_configuration_set_sending_enabled_errors(), tuple()}.
 update_configuration_set_sending_enabled(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateConfigurationSetSendingEnabled">>, Input, Options).
@@ -3655,9 +3720,7 @@ update_configuration_set_sending_enabled(Client, Input, Options)
 -spec update_configuration_set_tracking_options(map(), update_configuration_set_tracking_options_request()) ->
     {ok, update_configuration_set_tracking_options_response(), tuple()} |
     {error, any()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()} |
-    {error, invalid_tracking_options_exception(), tuple()} |
-    {error, tracking_options_does_not_exist_exception(), tuple()}.
+    {error, update_configuration_set_tracking_options_errors(), tuple()}.
 update_configuration_set_tracking_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_configuration_set_tracking_options(Client, Input, []).
@@ -3665,9 +3728,7 @@ update_configuration_set_tracking_options(Client, Input)
 -spec update_configuration_set_tracking_options(map(), update_configuration_set_tracking_options_request(), proplists:proplist()) ->
     {ok, update_configuration_set_tracking_options_response(), tuple()} |
     {error, any()} |
-    {error, configuration_set_does_not_exist_exception(), tuple()} |
-    {error, invalid_tracking_options_exception(), tuple()} |
-    {error, tracking_options_does_not_exist_exception(), tuple()}.
+    {error, update_configuration_set_tracking_options_errors(), tuple()}.
 update_configuration_set_tracking_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateConfigurationSetTrackingOptions">>, Input, Options).
@@ -3684,9 +3745,7 @@ update_configuration_set_tracking_options(Client, Input, Options)
 -spec update_custom_verification_email_template(map(), update_custom_verification_email_template_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, custom_verification_email_invalid_content_exception(), tuple()} |
-    {error, custom_verification_email_template_does_not_exist_exception(), tuple()} |
-    {error, from_email_address_not_verified_exception(), tuple()}.
+    {error, update_custom_verification_email_template_errors(), tuple()}.
 update_custom_verification_email_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_custom_verification_email_template(Client, Input, []).
@@ -3694,9 +3753,7 @@ update_custom_verification_email_template(Client, Input)
 -spec update_custom_verification_email_template(map(), update_custom_verification_email_template_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, custom_verification_email_invalid_content_exception(), tuple()} |
-    {error, custom_verification_email_template_does_not_exist_exception(), tuple()} |
-    {error, from_email_address_not_verified_exception(), tuple()}.
+    {error, update_custom_verification_email_template_errors(), tuple()}.
 update_custom_verification_email_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCustomVerificationEmailTemplate">>, Input, Options).
@@ -3711,12 +3768,7 @@ update_custom_verification_email_template(Client, Input, Options)
 -spec update_receipt_rule(map(), update_receipt_rule_request()) ->
     {ok, update_receipt_rule_response(), tuple()} |
     {error, any()} |
-    {error, invalid_lambda_function_exception(), tuple()} |
-    {error, invalid_s3_configuration_exception(), tuple()} |
-    {error, invalid_sns_topic_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, rule_does_not_exist_exception(), tuple()} |
-    {error, rule_set_does_not_exist_exception(), tuple()}.
+    {error, update_receipt_rule_errors(), tuple()}.
 update_receipt_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_receipt_rule(Client, Input, []).
@@ -3724,12 +3776,7 @@ update_receipt_rule(Client, Input)
 -spec update_receipt_rule(map(), update_receipt_rule_request(), proplists:proplist()) ->
     {ok, update_receipt_rule_response(), tuple()} |
     {error, any()} |
-    {error, invalid_lambda_function_exception(), tuple()} |
-    {error, invalid_s3_configuration_exception(), tuple()} |
-    {error, invalid_sns_topic_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, rule_does_not_exist_exception(), tuple()} |
-    {error, rule_set_does_not_exist_exception(), tuple()}.
+    {error, update_receipt_rule_errors(), tuple()}.
 update_receipt_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateReceiptRule">>, Input, Options).
@@ -3746,8 +3793,7 @@ update_receipt_rule(Client, Input, Options)
 -spec update_template(map(), update_template_request()) ->
     {ok, update_template_response(), tuple()} |
     {error, any()} |
-    {error, invalid_template_exception(), tuple()} |
-    {error, template_does_not_exist_exception(), tuple()}.
+    {error, update_template_errors(), tuple()}.
 update_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_template(Client, Input, []).
@@ -3755,8 +3801,7 @@ update_template(Client, Input)
 -spec update_template(map(), update_template_request(), proplists:proplist()) ->
     {ok, update_template_response(), tuple()} |
     {error, any()} |
-    {error, invalid_template_exception(), tuple()} |
-    {error, template_does_not_exist_exception(), tuple()}.
+    {error, update_template_errors(), tuple()}.
 update_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTemplate">>, Input, Options).

@@ -1887,6 +1887,461 @@
 %% }
 -type update_project_result() :: #{binary() => any()}.
 
+-type create_device_pool_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type create_instance_profile_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type create_network_profile_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type create_project_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception() | 
+    tag_operation_exception().
+
+-type create_remote_access_session_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type create_test_grid_project_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    internal_service_exception().
+
+-type create_test_grid_url_errors() ::
+    argument_exception() | 
+    not_found_exception() | 
+    internal_service_exception().
+
+-type create_upload_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type create_vpce_configuration_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception().
+
+-type delete_device_pool_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type delete_instance_profile_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type delete_network_profile_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type delete_project_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type delete_remote_access_session_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type delete_run_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type delete_test_grid_project_errors() ::
+    argument_exception() | 
+    not_found_exception() | 
+    cannot_delete_exception() | 
+    internal_service_exception().
+
+-type delete_upload_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type delete_vpce_configuration_errors() ::
+    argument_exception() | 
+    service_account_exception() | 
+    not_found_exception() | 
+    invalid_operation_exception().
+
+-type get_account_settings_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type get_device_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type get_device_instance_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type get_device_pool_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type get_device_pool_compatibility_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type get_instance_profile_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type get_job_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type get_network_profile_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type get_offering_status_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception() | 
+    not_eligible_exception().
+
+-type get_project_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type get_remote_access_session_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type get_run_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type get_suite_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type get_test_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type get_test_grid_project_errors() ::
+    argument_exception() | 
+    not_found_exception() | 
+    internal_service_exception().
+
+-type get_test_grid_session_errors() ::
+    argument_exception() | 
+    not_found_exception() | 
+    internal_service_exception().
+
+-type get_upload_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type get_vpce_configuration_errors() ::
+    argument_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type install_to_remote_access_session_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type list_artifacts_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type list_device_instances_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type list_device_pools_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type list_devices_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type list_instance_profiles_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type list_jobs_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type list_network_profiles_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type list_offering_promotions_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception() | 
+    not_eligible_exception().
+
+-type list_offering_transactions_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception() | 
+    not_eligible_exception().
+
+-type list_offerings_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception() | 
+    not_eligible_exception().
+
+-type list_projects_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type list_remote_access_sessions_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type list_runs_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type list_samples_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type list_suites_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    argument_exception() | 
+    not_found_exception() | 
+    tag_operation_exception().
+
+-type list_test_grid_projects_errors() ::
+    argument_exception() | 
+    internal_service_exception().
+
+-type list_test_grid_session_actions_errors() ::
+    argument_exception() | 
+    not_found_exception() | 
+    internal_service_exception().
+
+-type list_test_grid_session_artifacts_errors() ::
+    argument_exception() | 
+    not_found_exception() | 
+    internal_service_exception().
+
+-type list_test_grid_sessions_errors() ::
+    argument_exception() | 
+    not_found_exception() | 
+    internal_service_exception().
+
+-type list_tests_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type list_unique_problems_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type list_uploads_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type list_vpce_configurations_errors() ::
+    argument_exception() | 
+    service_account_exception().
+
+-type purchase_offering_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception() | 
+    not_eligible_exception().
+
+-type renew_offering_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception() | 
+    not_eligible_exception().
+
+-type schedule_run_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    idempotency_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type stop_job_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type stop_remote_access_session_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type stop_run_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type tag_resource_errors() ::
+    argument_exception() | 
+    too_many_tags_exception() | 
+    not_found_exception() | 
+    tag_policy_exception() | 
+    tag_operation_exception().
+
+-type untag_resource_errors() ::
+    argument_exception() | 
+    not_found_exception() | 
+    tag_operation_exception().
+
+-type update_device_instance_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type update_device_pool_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type update_instance_profile_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type update_network_profile_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type update_project_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type update_test_grid_project_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_service_exception().
+
+-type update_upload_errors() ::
+    argument_exception() | 
+    limit_exceeded_exception() | 
+    service_account_exception() | 
+    not_found_exception().
+
+-type update_vpce_configuration_errors() ::
+    argument_exception() | 
+    service_account_exception() | 
+    not_found_exception() | 
+    invalid_operation_exception().
 
 %%====================================================================
 %% API
@@ -1896,10 +2351,7 @@
 -spec create_device_pool(map(), create_device_pool_request()) ->
     {ok, create_device_pool_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, create_device_pool_errors(), tuple()}.
 create_device_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_device_pool(Client, Input, []).
@@ -1907,10 +2359,7 @@ create_device_pool(Client, Input)
 -spec create_device_pool(map(), create_device_pool_request(), proplists:proplist()) ->
     {ok, create_device_pool_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, create_device_pool_errors(), tuple()}.
 create_device_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDevicePool">>, Input, Options).
@@ -1921,10 +2370,7 @@ create_device_pool(Client, Input, Options)
 -spec create_instance_profile(map(), create_instance_profile_request()) ->
     {ok, create_instance_profile_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, create_instance_profile_errors(), tuple()}.
 create_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_instance_profile(Client, Input, []).
@@ -1932,10 +2378,7 @@ create_instance_profile(Client, Input)
 -spec create_instance_profile(map(), create_instance_profile_request(), proplists:proplist()) ->
     {ok, create_instance_profile_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, create_instance_profile_errors(), tuple()}.
 create_instance_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateInstanceProfile">>, Input, Options).
@@ -1944,10 +2387,7 @@ create_instance_profile(Client, Input, Options)
 -spec create_network_profile(map(), create_network_profile_request()) ->
     {ok, create_network_profile_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, create_network_profile_errors(), tuple()}.
 create_network_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_network_profile(Client, Input, []).
@@ -1955,10 +2395,7 @@ create_network_profile(Client, Input)
 -spec create_network_profile(map(), create_network_profile_request(), proplists:proplist()) ->
     {ok, create_network_profile_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, create_network_profile_errors(), tuple()}.
 create_network_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateNetworkProfile">>, Input, Options).
@@ -1967,11 +2404,7 @@ create_network_profile(Client, Input, Options)
 -spec create_project(map(), create_project_request()) ->
     {ok, create_project_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()} |
-    {error, tag_operation_exception(), tuple()}.
+    {error, create_project_errors(), tuple()}.
 create_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_project(Client, Input, []).
@@ -1979,11 +2412,7 @@ create_project(Client, Input)
 -spec create_project(map(), create_project_request(), proplists:proplist()) ->
     {ok, create_project_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()} |
-    {error, tag_operation_exception(), tuple()}.
+    {error, create_project_errors(), tuple()}.
 create_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateProject">>, Input, Options).
@@ -1992,10 +2421,7 @@ create_project(Client, Input, Options)
 -spec create_remote_access_session(map(), create_remote_access_session_request()) ->
     {ok, create_remote_access_session_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, create_remote_access_session_errors(), tuple()}.
 create_remote_access_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_remote_access_session(Client, Input, []).
@@ -2003,10 +2429,7 @@ create_remote_access_session(Client, Input)
 -spec create_remote_access_session(map(), create_remote_access_session_request(), proplists:proplist()) ->
     {ok, create_remote_access_session_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, create_remote_access_session_errors(), tuple()}.
 create_remote_access_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRemoteAccessSession">>, Input, Options).
@@ -2018,9 +2441,7 @@ create_remote_access_session(Client, Input, Options)
 -spec create_test_grid_project(map(), create_test_grid_project_request()) ->
     {ok, create_test_grid_project_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_test_grid_project_errors(), tuple()}.
 create_test_grid_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_test_grid_project(Client, Input, []).
@@ -2028,9 +2449,7 @@ create_test_grid_project(Client, Input)
 -spec create_test_grid_project(map(), create_test_grid_project_request(), proplists:proplist()) ->
     {ok, create_test_grid_project_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_test_grid_project_errors(), tuple()}.
 create_test_grid_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTestGridProject">>, Input, Options).
@@ -2041,9 +2460,7 @@ create_test_grid_project(Client, Input, Options)
 -spec create_test_grid_url(map(), create_test_grid_url_request()) ->
     {ok, create_test_grid_url_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, create_test_grid_url_errors(), tuple()}.
 create_test_grid_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_test_grid_url(Client, Input, []).
@@ -2051,9 +2468,7 @@ create_test_grid_url(Client, Input)
 -spec create_test_grid_url(map(), create_test_grid_url_request(), proplists:proplist()) ->
     {ok, create_test_grid_url_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, create_test_grid_url_errors(), tuple()}.
 create_test_grid_url(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTestGridUrl">>, Input, Options).
@@ -2062,10 +2477,7 @@ create_test_grid_url(Client, Input, Options)
 -spec create_upload(map(), create_upload_request()) ->
     {ok, create_upload_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, create_upload_errors(), tuple()}.
 create_upload(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_upload(Client, Input, []).
@@ -2073,10 +2485,7 @@ create_upload(Client, Input)
 -spec create_upload(map(), create_upload_request(), proplists:proplist()) ->
     {ok, create_upload_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, create_upload_errors(), tuple()}.
 create_upload(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUpload">>, Input, Options).
@@ -2087,9 +2496,7 @@ create_upload(Client, Input, Options)
 -spec create_vpce_configuration(map(), create_vpce_configuration_request()) ->
     {ok, create_vpce_configuration_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, create_vpce_configuration_errors(), tuple()}.
 create_vpce_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vpce_configuration(Client, Input, []).
@@ -2097,9 +2504,7 @@ create_vpce_configuration(Client, Input)
 -spec create_vpce_configuration(map(), create_vpce_configuration_request(), proplists:proplist()) ->
     {ok, create_vpce_configuration_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, create_vpce_configuration_errors(), tuple()}.
 create_vpce_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateVPCEConfiguration">>, Input, Options).
@@ -2111,10 +2516,7 @@ create_vpce_configuration(Client, Input, Options)
 -spec delete_device_pool(map(), delete_device_pool_request()) ->
     {ok, delete_device_pool_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, delete_device_pool_errors(), tuple()}.
 delete_device_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_device_pool(Client, Input, []).
@@ -2122,10 +2524,7 @@ delete_device_pool(Client, Input)
 -spec delete_device_pool(map(), delete_device_pool_request(), proplists:proplist()) ->
     {ok, delete_device_pool_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, delete_device_pool_errors(), tuple()}.
 delete_device_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDevicePool">>, Input, Options).
@@ -2135,10 +2534,7 @@ delete_device_pool(Client, Input, Options)
 -spec delete_instance_profile(map(), delete_instance_profile_request()) ->
     {ok, delete_instance_profile_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, delete_instance_profile_errors(), tuple()}.
 delete_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_instance_profile(Client, Input, []).
@@ -2146,10 +2542,7 @@ delete_instance_profile(Client, Input)
 -spec delete_instance_profile(map(), delete_instance_profile_request(), proplists:proplist()) ->
     {ok, delete_instance_profile_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, delete_instance_profile_errors(), tuple()}.
 delete_instance_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInstanceProfile">>, Input, Options).
@@ -2158,10 +2551,7 @@ delete_instance_profile(Client, Input, Options)
 -spec delete_network_profile(map(), delete_network_profile_request()) ->
     {ok, delete_network_profile_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, delete_network_profile_errors(), tuple()}.
 delete_network_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_network_profile(Client, Input, []).
@@ -2169,10 +2559,7 @@ delete_network_profile(Client, Input)
 -spec delete_network_profile(map(), delete_network_profile_request(), proplists:proplist()) ->
     {ok, delete_network_profile_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, delete_network_profile_errors(), tuple()}.
 delete_network_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteNetworkProfile">>, Input, Options).
@@ -2183,10 +2570,7 @@ delete_network_profile(Client, Input, Options)
 -spec delete_project(map(), delete_project_request()) ->
     {ok, delete_project_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, delete_project_errors(), tuple()}.
 delete_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_project(Client, Input, []).
@@ -2194,10 +2578,7 @@ delete_project(Client, Input)
 -spec delete_project(map(), delete_project_request(), proplists:proplist()) ->
     {ok, delete_project_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, delete_project_errors(), tuple()}.
 delete_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProject">>, Input, Options).
@@ -2206,10 +2587,7 @@ delete_project(Client, Input, Options)
 -spec delete_remote_access_session(map(), delete_remote_access_session_request()) ->
     {ok, delete_remote_access_session_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, delete_remote_access_session_errors(), tuple()}.
 delete_remote_access_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_remote_access_session(Client, Input, []).
@@ -2217,10 +2595,7 @@ delete_remote_access_session(Client, Input)
 -spec delete_remote_access_session(map(), delete_remote_access_session_request(), proplists:proplist()) ->
     {ok, delete_remote_access_session_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, delete_remote_access_session_errors(), tuple()}.
 delete_remote_access_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRemoteAccessSession">>, Input, Options).
@@ -2231,10 +2606,7 @@ delete_remote_access_session(Client, Input, Options)
 -spec delete_run(map(), delete_run_request()) ->
     {ok, delete_run_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, delete_run_errors(), tuple()}.
 delete_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_run(Client, Input, []).
@@ -2242,10 +2614,7 @@ delete_run(Client, Input)
 -spec delete_run(map(), delete_run_request(), proplists:proplist()) ->
     {ok, delete_run_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, delete_run_errors(), tuple()}.
 delete_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRun">>, Input, Options).
@@ -2259,10 +2628,7 @@ delete_run(Client, Input, Options)
 -spec delete_test_grid_project(map(), delete_test_grid_project_request()) ->
     {ok, delete_test_grid_project_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, cannot_delete_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_test_grid_project_errors(), tuple()}.
 delete_test_grid_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_test_grid_project(Client, Input, []).
@@ -2270,10 +2636,7 @@ delete_test_grid_project(Client, Input)
 -spec delete_test_grid_project(map(), delete_test_grid_project_request(), proplists:proplist()) ->
     {ok, delete_test_grid_project_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, cannot_delete_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_test_grid_project_errors(), tuple()}.
 delete_test_grid_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTestGridProject">>, Input, Options).
@@ -2282,10 +2645,7 @@ delete_test_grid_project(Client, Input, Options)
 -spec delete_upload(map(), delete_upload_request()) ->
     {ok, delete_upload_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, delete_upload_errors(), tuple()}.
 delete_upload(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_upload(Client, Input, []).
@@ -2293,10 +2653,7 @@ delete_upload(Client, Input)
 -spec delete_upload(map(), delete_upload_request(), proplists:proplist()) ->
     {ok, delete_upload_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, delete_upload_errors(), tuple()}.
 delete_upload(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUpload">>, Input, Options).
@@ -2306,10 +2663,7 @@ delete_upload(Client, Input, Options)
 -spec delete_vpce_configuration(map(), delete_vpce_configuration_request()) ->
     {ok, delete_vpce_configuration_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, delete_vpce_configuration_errors(), tuple()}.
 delete_vpce_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_vpce_configuration(Client, Input, []).
@@ -2317,10 +2671,7 @@ delete_vpce_configuration(Client, Input)
 -spec delete_vpce_configuration(map(), delete_vpce_configuration_request(), proplists:proplist()) ->
     {ok, delete_vpce_configuration_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, delete_vpce_configuration_errors(), tuple()}.
 delete_vpce_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteVPCEConfiguration">>, Input, Options).
@@ -2331,10 +2682,7 @@ delete_vpce_configuration(Client, Input, Options)
 -spec get_account_settings(map(), get_account_settings_request()) ->
     {ok, get_account_settings_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_account_settings_errors(), tuple()}.
 get_account_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_account_settings(Client, Input, []).
@@ -2342,10 +2690,7 @@ get_account_settings(Client, Input)
 -spec get_account_settings(map(), get_account_settings_request(), proplists:proplist()) ->
     {ok, get_account_settings_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_account_settings_errors(), tuple()}.
 get_account_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAccountSettings">>, Input, Options).
@@ -2354,10 +2699,7 @@ get_account_settings(Client, Input, Options)
 -spec get_device(map(), get_device_request()) ->
     {ok, get_device_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_device_errors(), tuple()}.
 get_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_device(Client, Input, []).
@@ -2365,10 +2707,7 @@ get_device(Client, Input)
 -spec get_device(map(), get_device_request(), proplists:proplist()) ->
     {ok, get_device_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_device_errors(), tuple()}.
 get_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDevice">>, Input, Options).
@@ -2378,10 +2717,7 @@ get_device(Client, Input, Options)
 -spec get_device_instance(map(), get_device_instance_request()) ->
     {ok, get_device_instance_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_device_instance_errors(), tuple()}.
 get_device_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_device_instance(Client, Input, []).
@@ -2389,10 +2725,7 @@ get_device_instance(Client, Input)
 -spec get_device_instance(map(), get_device_instance_request(), proplists:proplist()) ->
     {ok, get_device_instance_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_device_instance_errors(), tuple()}.
 get_device_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDeviceInstance">>, Input, Options).
@@ -2401,10 +2734,7 @@ get_device_instance(Client, Input, Options)
 -spec get_device_pool(map(), get_device_pool_request()) ->
     {ok, get_device_pool_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_device_pool_errors(), tuple()}.
 get_device_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_device_pool(Client, Input, []).
@@ -2412,10 +2742,7 @@ get_device_pool(Client, Input)
 -spec get_device_pool(map(), get_device_pool_request(), proplists:proplist()) ->
     {ok, get_device_pool_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_device_pool_errors(), tuple()}.
 get_device_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDevicePool">>, Input, Options).
@@ -2424,10 +2751,7 @@ get_device_pool(Client, Input, Options)
 -spec get_device_pool_compatibility(map(), get_device_pool_compatibility_request()) ->
     {ok, get_device_pool_compatibility_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_device_pool_compatibility_errors(), tuple()}.
 get_device_pool_compatibility(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_device_pool_compatibility(Client, Input, []).
@@ -2435,10 +2759,7 @@ get_device_pool_compatibility(Client, Input)
 -spec get_device_pool_compatibility(map(), get_device_pool_compatibility_request(), proplists:proplist()) ->
     {ok, get_device_pool_compatibility_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_device_pool_compatibility_errors(), tuple()}.
 get_device_pool_compatibility(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDevicePoolCompatibility">>, Input, Options).
@@ -2447,10 +2768,7 @@ get_device_pool_compatibility(Client, Input, Options)
 -spec get_instance_profile(map(), get_instance_profile_request()) ->
     {ok, get_instance_profile_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_instance_profile_errors(), tuple()}.
 get_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instance_profile(Client, Input, []).
@@ -2458,10 +2776,7 @@ get_instance_profile(Client, Input)
 -spec get_instance_profile(map(), get_instance_profile_request(), proplists:proplist()) ->
     {ok, get_instance_profile_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_instance_profile_errors(), tuple()}.
 get_instance_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInstanceProfile">>, Input, Options).
@@ -2470,10 +2785,7 @@ get_instance_profile(Client, Input, Options)
 -spec get_job(map(), get_job_request()) ->
     {ok, get_job_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_job_errors(), tuple()}.
 get_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_job(Client, Input, []).
@@ -2481,10 +2793,7 @@ get_job(Client, Input)
 -spec get_job(map(), get_job_request(), proplists:proplist()) ->
     {ok, get_job_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_job_errors(), tuple()}.
 get_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetJob">>, Input, Options).
@@ -2493,10 +2802,7 @@ get_job(Client, Input, Options)
 -spec get_network_profile(map(), get_network_profile_request()) ->
     {ok, get_network_profile_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_network_profile_errors(), tuple()}.
 get_network_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_network_profile(Client, Input, []).
@@ -2504,10 +2810,7 @@ get_network_profile(Client, Input)
 -spec get_network_profile(map(), get_network_profile_request(), proplists:proplist()) ->
     {ok, get_network_profile_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_network_profile_errors(), tuple()}.
 get_network_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetNetworkProfile">>, Input, Options).
@@ -2526,11 +2829,7 @@ get_network_profile(Client, Input, Options)
 -spec get_offering_status(map(), get_offering_status_request()) ->
     {ok, get_offering_status_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_eligible_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_offering_status_errors(), tuple()}.
 get_offering_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_offering_status(Client, Input, []).
@@ -2538,11 +2837,7 @@ get_offering_status(Client, Input)
 -spec get_offering_status(map(), get_offering_status_request(), proplists:proplist()) ->
     {ok, get_offering_status_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_eligible_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_offering_status_errors(), tuple()}.
 get_offering_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOfferingStatus">>, Input, Options).
@@ -2551,10 +2846,7 @@ get_offering_status(Client, Input, Options)
 -spec get_project(map(), get_project_request()) ->
     {ok, get_project_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_project_errors(), tuple()}.
 get_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_project(Client, Input, []).
@@ -2562,10 +2854,7 @@ get_project(Client, Input)
 -spec get_project(map(), get_project_request(), proplists:proplist()) ->
     {ok, get_project_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_project_errors(), tuple()}.
 get_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetProject">>, Input, Options).
@@ -2574,10 +2863,7 @@ get_project(Client, Input, Options)
 -spec get_remote_access_session(map(), get_remote_access_session_request()) ->
     {ok, get_remote_access_session_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_remote_access_session_errors(), tuple()}.
 get_remote_access_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_remote_access_session(Client, Input, []).
@@ -2585,10 +2871,7 @@ get_remote_access_session(Client, Input)
 -spec get_remote_access_session(map(), get_remote_access_session_request(), proplists:proplist()) ->
     {ok, get_remote_access_session_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_remote_access_session_errors(), tuple()}.
 get_remote_access_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRemoteAccessSession">>, Input, Options).
@@ -2597,10 +2880,7 @@ get_remote_access_session(Client, Input, Options)
 -spec get_run(map(), get_run_request()) ->
     {ok, get_run_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_run_errors(), tuple()}.
 get_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_run(Client, Input, []).
@@ -2608,10 +2888,7 @@ get_run(Client, Input)
 -spec get_run(map(), get_run_request(), proplists:proplist()) ->
     {ok, get_run_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_run_errors(), tuple()}.
 get_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRun">>, Input, Options).
@@ -2620,10 +2897,7 @@ get_run(Client, Input, Options)
 -spec get_suite(map(), get_suite_request()) ->
     {ok, get_suite_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_suite_errors(), tuple()}.
 get_suite(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_suite(Client, Input, []).
@@ -2631,10 +2905,7 @@ get_suite(Client, Input)
 -spec get_suite(map(), get_suite_request(), proplists:proplist()) ->
     {ok, get_suite_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_suite_errors(), tuple()}.
 get_suite(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSuite">>, Input, Options).
@@ -2643,10 +2914,7 @@ get_suite(Client, Input, Options)
 -spec get_test(map(), get_test_request()) ->
     {ok, get_test_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_test_errors(), tuple()}.
 get_test(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_test(Client, Input, []).
@@ -2654,10 +2922,7 @@ get_test(Client, Input)
 -spec get_test(map(), get_test_request(), proplists:proplist()) ->
     {ok, get_test_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_test_errors(), tuple()}.
 get_test(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTest">>, Input, Options).
@@ -2666,9 +2931,7 @@ get_test(Client, Input, Options)
 -spec get_test_grid_project(map(), get_test_grid_project_request()) ->
     {ok, get_test_grid_project_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_test_grid_project_errors(), tuple()}.
 get_test_grid_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_test_grid_project(Client, Input, []).
@@ -2676,9 +2939,7 @@ get_test_grid_project(Client, Input)
 -spec get_test_grid_project(map(), get_test_grid_project_request(), proplists:proplist()) ->
     {ok, get_test_grid_project_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_test_grid_project_errors(), tuple()}.
 get_test_grid_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTestGridProject">>, Input, Options).
@@ -2696,9 +2957,7 @@ get_test_grid_project(Client, Input, Options)
 -spec get_test_grid_session(map(), get_test_grid_session_request()) ->
     {ok, get_test_grid_session_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_test_grid_session_errors(), tuple()}.
 get_test_grid_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_test_grid_session(Client, Input, []).
@@ -2706,9 +2965,7 @@ get_test_grid_session(Client, Input)
 -spec get_test_grid_session(map(), get_test_grid_session_request(), proplists:proplist()) ->
     {ok, get_test_grid_session_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_test_grid_session_errors(), tuple()}.
 get_test_grid_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTestGridSession">>, Input, Options).
@@ -2717,10 +2974,7 @@ get_test_grid_session(Client, Input, Options)
 -spec get_upload(map(), get_upload_request()) ->
     {ok, get_upload_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_upload_errors(), tuple()}.
 get_upload(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_upload(Client, Input, []).
@@ -2728,10 +2982,7 @@ get_upload(Client, Input)
 -spec get_upload(map(), get_upload_request(), proplists:proplist()) ->
     {ok, get_upload_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_upload_errors(), tuple()}.
 get_upload(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUpload">>, Input, Options).
@@ -2742,9 +2993,7 @@ get_upload(Client, Input, Options)
 -spec get_vpce_configuration(map(), get_vpce_configuration_request()) ->
     {ok, get_vpce_configuration_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_vpce_configuration_errors(), tuple()}.
 get_vpce_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_vpce_configuration(Client, Input, []).
@@ -2752,9 +3001,7 @@ get_vpce_configuration(Client, Input)
 -spec get_vpce_configuration(map(), get_vpce_configuration_request(), proplists:proplist()) ->
     {ok, get_vpce_configuration_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, get_vpce_configuration_errors(), tuple()}.
 get_vpce_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetVPCEConfiguration">>, Input, Options).
@@ -2768,10 +3015,7 @@ get_vpce_configuration(Client, Input, Options)
 -spec install_to_remote_access_session(map(), install_to_remote_access_session_request()) ->
     {ok, install_to_remote_access_session_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, install_to_remote_access_session_errors(), tuple()}.
 install_to_remote_access_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     install_to_remote_access_session(Client, Input, []).
@@ -2779,10 +3023,7 @@ install_to_remote_access_session(Client, Input)
 -spec install_to_remote_access_session(map(), install_to_remote_access_session_request(), proplists:proplist()) ->
     {ok, install_to_remote_access_session_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, install_to_remote_access_session_errors(), tuple()}.
 install_to_remote_access_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"InstallToRemoteAccessSession">>, Input, Options).
@@ -2791,10 +3032,7 @@ install_to_remote_access_session(Client, Input, Options)
 -spec list_artifacts(map(), list_artifacts_request()) ->
     {ok, list_artifacts_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_artifacts_errors(), tuple()}.
 list_artifacts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_artifacts(Client, Input, []).
@@ -2802,10 +3040,7 @@ list_artifacts(Client, Input)
 -spec list_artifacts(map(), list_artifacts_request(), proplists:proplist()) ->
     {ok, list_artifacts_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_artifacts_errors(), tuple()}.
 list_artifacts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListArtifacts">>, Input, Options).
@@ -2816,10 +3051,7 @@ list_artifacts(Client, Input, Options)
 -spec list_device_instances(map(), list_device_instances_request()) ->
     {ok, list_device_instances_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_device_instances_errors(), tuple()}.
 list_device_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_device_instances(Client, Input, []).
@@ -2827,10 +3059,7 @@ list_device_instances(Client, Input)
 -spec list_device_instances(map(), list_device_instances_request(), proplists:proplist()) ->
     {ok, list_device_instances_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_device_instances_errors(), tuple()}.
 list_device_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDeviceInstances">>, Input, Options).
@@ -2839,10 +3068,7 @@ list_device_instances(Client, Input, Options)
 -spec list_device_pools(map(), list_device_pools_request()) ->
     {ok, list_device_pools_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_device_pools_errors(), tuple()}.
 list_device_pools(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_device_pools(Client, Input, []).
@@ -2850,10 +3076,7 @@ list_device_pools(Client, Input)
 -spec list_device_pools(map(), list_device_pools_request(), proplists:proplist()) ->
     {ok, list_device_pools_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_device_pools_errors(), tuple()}.
 list_device_pools(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDevicePools">>, Input, Options).
@@ -2862,10 +3085,7 @@ list_device_pools(Client, Input, Options)
 -spec list_devices(map(), list_devices_request()) ->
     {ok, list_devices_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_devices_errors(), tuple()}.
 list_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_devices(Client, Input, []).
@@ -2873,10 +3093,7 @@ list_devices(Client, Input)
 -spec list_devices(map(), list_devices_request(), proplists:proplist()) ->
     {ok, list_devices_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_devices_errors(), tuple()}.
 list_devices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDevices">>, Input, Options).
@@ -2886,10 +3103,7 @@ list_devices(Client, Input, Options)
 -spec list_instance_profiles(map(), list_instance_profiles_request()) ->
     {ok, list_instance_profiles_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_instance_profiles_errors(), tuple()}.
 list_instance_profiles(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_instance_profiles(Client, Input, []).
@@ -2897,10 +3111,7 @@ list_instance_profiles(Client, Input)
 -spec list_instance_profiles(map(), list_instance_profiles_request(), proplists:proplist()) ->
     {ok, list_instance_profiles_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_instance_profiles_errors(), tuple()}.
 list_instance_profiles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInstanceProfiles">>, Input, Options).
@@ -2909,10 +3120,7 @@ list_instance_profiles(Client, Input, Options)
 -spec list_jobs(map(), list_jobs_request()) ->
     {ok, list_jobs_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_jobs_errors(), tuple()}.
 list_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_jobs(Client, Input, []).
@@ -2920,10 +3128,7 @@ list_jobs(Client, Input)
 -spec list_jobs(map(), list_jobs_request(), proplists:proplist()) ->
     {ok, list_jobs_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_jobs_errors(), tuple()}.
 list_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListJobs">>, Input, Options).
@@ -2932,10 +3137,7 @@ list_jobs(Client, Input, Options)
 -spec list_network_profiles(map(), list_network_profiles_request()) ->
     {ok, list_network_profiles_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_network_profiles_errors(), tuple()}.
 list_network_profiles(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_network_profiles(Client, Input, []).
@@ -2943,10 +3145,7 @@ list_network_profiles(Client, Input)
 -spec list_network_profiles(map(), list_network_profiles_request(), proplists:proplist()) ->
     {ok, list_network_profiles_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_network_profiles_errors(), tuple()}.
 list_network_profiles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListNetworkProfiles">>, Input, Options).
@@ -2962,11 +3161,7 @@ list_network_profiles(Client, Input, Options)
 -spec list_offering_promotions(map(), list_offering_promotions_request()) ->
     {ok, list_offering_promotions_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_eligible_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_offering_promotions_errors(), tuple()}.
 list_offering_promotions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_offering_promotions(Client, Input, []).
@@ -2974,11 +3169,7 @@ list_offering_promotions(Client, Input)
 -spec list_offering_promotions(map(), list_offering_promotions_request(), proplists:proplist()) ->
     {ok, list_offering_promotions_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_eligible_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_offering_promotions_errors(), tuple()}.
 list_offering_promotions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOfferingPromotions">>, Input, Options).
@@ -2997,11 +3188,7 @@ list_offering_promotions(Client, Input, Options)
 -spec list_offering_transactions(map(), list_offering_transactions_request()) ->
     {ok, list_offering_transactions_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_eligible_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_offering_transactions_errors(), tuple()}.
 list_offering_transactions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_offering_transactions(Client, Input, []).
@@ -3009,11 +3196,7 @@ list_offering_transactions(Client, Input)
 -spec list_offering_transactions(map(), list_offering_transactions_request(), proplists:proplist()) ->
     {ok, list_offering_transactions_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_eligible_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_offering_transactions_errors(), tuple()}.
 list_offering_transactions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOfferingTransactions">>, Input, Options).
@@ -3031,11 +3214,7 @@ list_offering_transactions(Client, Input, Options)
 -spec list_offerings(map(), list_offerings_request()) ->
     {ok, list_offerings_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_eligible_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_offerings_errors(), tuple()}.
 list_offerings(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_offerings(Client, Input, []).
@@ -3043,11 +3222,7 @@ list_offerings(Client, Input)
 -spec list_offerings(map(), list_offerings_request(), proplists:proplist()) ->
     {ok, list_offerings_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_eligible_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_offerings_errors(), tuple()}.
 list_offerings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOfferings">>, Input, Options).
@@ -3056,10 +3231,7 @@ list_offerings(Client, Input, Options)
 -spec list_projects(map(), list_projects_request()) ->
     {ok, list_projects_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_projects_errors(), tuple()}.
 list_projects(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_projects(Client, Input, []).
@@ -3067,10 +3239,7 @@ list_projects(Client, Input)
 -spec list_projects(map(), list_projects_request(), proplists:proplist()) ->
     {ok, list_projects_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_projects_errors(), tuple()}.
 list_projects(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProjects">>, Input, Options).
@@ -3079,10 +3248,7 @@ list_projects(Client, Input, Options)
 -spec list_remote_access_sessions(map(), list_remote_access_sessions_request()) ->
     {ok, list_remote_access_sessions_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_remote_access_sessions_errors(), tuple()}.
 list_remote_access_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_remote_access_sessions(Client, Input, []).
@@ -3090,10 +3256,7 @@ list_remote_access_sessions(Client, Input)
 -spec list_remote_access_sessions(map(), list_remote_access_sessions_request(), proplists:proplist()) ->
     {ok, list_remote_access_sessions_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_remote_access_sessions_errors(), tuple()}.
 list_remote_access_sessions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRemoteAccessSessions">>, Input, Options).
@@ -3102,10 +3265,7 @@ list_remote_access_sessions(Client, Input, Options)
 -spec list_runs(map(), list_runs_request()) ->
     {ok, list_runs_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_runs_errors(), tuple()}.
 list_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_runs(Client, Input, []).
@@ -3113,10 +3273,7 @@ list_runs(Client, Input)
 -spec list_runs(map(), list_runs_request(), proplists:proplist()) ->
     {ok, list_runs_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_runs_errors(), tuple()}.
 list_runs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRuns">>, Input, Options).
@@ -3125,10 +3282,7 @@ list_runs(Client, Input, Options)
 -spec list_samples(map(), list_samples_request()) ->
     {ok, list_samples_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_samples_errors(), tuple()}.
 list_samples(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_samples(Client, Input, []).
@@ -3136,10 +3290,7 @@ list_samples(Client, Input)
 -spec list_samples(map(), list_samples_request(), proplists:proplist()) ->
     {ok, list_samples_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_samples_errors(), tuple()}.
 list_samples(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSamples">>, Input, Options).
@@ -3148,10 +3299,7 @@ list_samples(Client, Input, Options)
 -spec list_suites(map(), list_suites_request()) ->
     {ok, list_suites_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_suites_errors(), tuple()}.
 list_suites(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_suites(Client, Input, []).
@@ -3159,10 +3307,7 @@ list_suites(Client, Input)
 -spec list_suites(map(), list_suites_request(), proplists:proplist()) ->
     {ok, list_suites_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_suites_errors(), tuple()}.
 list_suites(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSuites">>, Input, Options).
@@ -3171,9 +3316,7 @@ list_suites(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tag_operation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -3181,9 +3324,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tag_operation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -3192,8 +3333,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec list_test_grid_projects(map(), list_test_grid_projects_request()) ->
     {ok, list_test_grid_projects_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()}.
+    {error, list_test_grid_projects_errors(), tuple()}.
 list_test_grid_projects(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_test_grid_projects(Client, Input, []).
@@ -3201,8 +3341,7 @@ list_test_grid_projects(Client, Input)
 -spec list_test_grid_projects(map(), list_test_grid_projects_request(), proplists:proplist()) ->
     {ok, list_test_grid_projects_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()}.
+    {error, list_test_grid_projects_errors(), tuple()}.
 list_test_grid_projects(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTestGridProjects">>, Input, Options).
@@ -3211,9 +3350,7 @@ list_test_grid_projects(Client, Input, Options)
 -spec list_test_grid_session_actions(map(), list_test_grid_session_actions_request()) ->
     {ok, list_test_grid_session_actions_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_test_grid_session_actions_errors(), tuple()}.
 list_test_grid_session_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_test_grid_session_actions(Client, Input, []).
@@ -3221,9 +3358,7 @@ list_test_grid_session_actions(Client, Input)
 -spec list_test_grid_session_actions(map(), list_test_grid_session_actions_request(), proplists:proplist()) ->
     {ok, list_test_grid_session_actions_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_test_grid_session_actions_errors(), tuple()}.
 list_test_grid_session_actions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTestGridSessionActions">>, Input, Options).
@@ -3232,9 +3367,7 @@ list_test_grid_session_actions(Client, Input, Options)
 -spec list_test_grid_session_artifacts(map(), list_test_grid_session_artifacts_request()) ->
     {ok, list_test_grid_session_artifacts_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_test_grid_session_artifacts_errors(), tuple()}.
 list_test_grid_session_artifacts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_test_grid_session_artifacts(Client, Input, []).
@@ -3242,9 +3375,7 @@ list_test_grid_session_artifacts(Client, Input)
 -spec list_test_grid_session_artifacts(map(), list_test_grid_session_artifacts_request(), proplists:proplist()) ->
     {ok, list_test_grid_session_artifacts_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_test_grid_session_artifacts_errors(), tuple()}.
 list_test_grid_session_artifacts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTestGridSessionArtifacts">>, Input, Options).
@@ -3253,9 +3384,7 @@ list_test_grid_session_artifacts(Client, Input, Options)
 -spec list_test_grid_sessions(map(), list_test_grid_sessions_request()) ->
     {ok, list_test_grid_sessions_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_test_grid_sessions_errors(), tuple()}.
 list_test_grid_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_test_grid_sessions(Client, Input, []).
@@ -3263,9 +3392,7 @@ list_test_grid_sessions(Client, Input)
 -spec list_test_grid_sessions(map(), list_test_grid_sessions_request(), proplists:proplist()) ->
     {ok, list_test_grid_sessions_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_test_grid_sessions_errors(), tuple()}.
 list_test_grid_sessions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTestGridSessions">>, Input, Options).
@@ -3274,10 +3401,7 @@ list_test_grid_sessions(Client, Input, Options)
 -spec list_tests(map(), list_tests_request()) ->
     {ok, list_tests_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_tests_errors(), tuple()}.
 list_tests(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tests(Client, Input, []).
@@ -3285,10 +3409,7 @@ list_tests(Client, Input)
 -spec list_tests(map(), list_tests_request(), proplists:proplist()) ->
     {ok, list_tests_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_tests_errors(), tuple()}.
 list_tests(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTests">>, Input, Options).
@@ -3306,10 +3427,7 @@ list_tests(Client, Input, Options)
 -spec list_unique_problems(map(), list_unique_problems_request()) ->
     {ok, list_unique_problems_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_unique_problems_errors(), tuple()}.
 list_unique_problems(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_unique_problems(Client, Input, []).
@@ -3317,10 +3435,7 @@ list_unique_problems(Client, Input)
 -spec list_unique_problems(map(), list_unique_problems_request(), proplists:proplist()) ->
     {ok, list_unique_problems_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_unique_problems_errors(), tuple()}.
 list_unique_problems(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUniqueProblems">>, Input, Options).
@@ -3329,10 +3444,7 @@ list_unique_problems(Client, Input, Options)
 -spec list_uploads(map(), list_uploads_request()) ->
     {ok, list_uploads_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_uploads_errors(), tuple()}.
 list_uploads(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_uploads(Client, Input, []).
@@ -3340,10 +3452,7 @@ list_uploads(Client, Input)
 -spec list_uploads(map(), list_uploads_request(), proplists:proplist()) ->
     {ok, list_uploads_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_uploads_errors(), tuple()}.
 list_uploads(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUploads">>, Input, Options).
@@ -3354,8 +3463,7 @@ list_uploads(Client, Input, Options)
 -spec list_vpce_configurations(map(), list_vpce_configurations_request()) ->
     {ok, list_vpce_configurations_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_vpce_configurations_errors(), tuple()}.
 list_vpce_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_vpce_configurations(Client, Input, []).
@@ -3363,8 +3471,7 @@ list_vpce_configurations(Client, Input)
 -spec list_vpce_configurations(map(), list_vpce_configurations_request(), proplists:proplist()) ->
     {ok, list_vpce_configurations_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, list_vpce_configurations_errors(), tuple()}.
 list_vpce_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListVPCEConfigurations">>, Input, Options).
@@ -3381,11 +3488,7 @@ list_vpce_configurations(Client, Input, Options)
 -spec purchase_offering(map(), purchase_offering_request()) ->
     {ok, purchase_offering_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_eligible_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, purchase_offering_errors(), tuple()}.
 purchase_offering(Client, Input)
   when is_map(Client), is_map(Input) ->
     purchase_offering(Client, Input, []).
@@ -3393,11 +3496,7 @@ purchase_offering(Client, Input)
 -spec purchase_offering(map(), purchase_offering_request(), proplists:proplist()) ->
     {ok, purchase_offering_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_eligible_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, purchase_offering_errors(), tuple()}.
 purchase_offering(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PurchaseOffering">>, Input, Options).
@@ -3413,11 +3512,7 @@ purchase_offering(Client, Input, Options)
 -spec renew_offering(map(), renew_offering_request()) ->
     {ok, renew_offering_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_eligible_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, renew_offering_errors(), tuple()}.
 renew_offering(Client, Input)
   when is_map(Client), is_map(Input) ->
     renew_offering(Client, Input, []).
@@ -3425,11 +3520,7 @@ renew_offering(Client, Input)
 -spec renew_offering(map(), renew_offering_request(), proplists:proplist()) ->
     {ok, renew_offering_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_eligible_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, renew_offering_errors(), tuple()}.
 renew_offering(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RenewOffering">>, Input, Options).
@@ -3438,11 +3529,7 @@ renew_offering(Client, Input, Options)
 -spec schedule_run(map(), schedule_run_request()) ->
     {ok, schedule_run_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, idempotency_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, schedule_run_errors(), tuple()}.
 schedule_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     schedule_run(Client, Input, []).
@@ -3450,11 +3537,7 @@ schedule_run(Client, Input)
 -spec schedule_run(map(), schedule_run_request(), proplists:proplist()) ->
     {ok, schedule_run_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, idempotency_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, schedule_run_errors(), tuple()}.
 schedule_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ScheduleRun">>, Input, Options).
@@ -3470,10 +3553,7 @@ schedule_run(Client, Input, Options)
 -spec stop_job(map(), stop_job_request()) ->
     {ok, stop_job_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, stop_job_errors(), tuple()}.
 stop_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_job(Client, Input, []).
@@ -3481,10 +3561,7 @@ stop_job(Client, Input)
 -spec stop_job(map(), stop_job_request(), proplists:proplist()) ->
     {ok, stop_job_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, stop_job_errors(), tuple()}.
 stop_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopJob">>, Input, Options).
@@ -3493,10 +3570,7 @@ stop_job(Client, Input, Options)
 -spec stop_remote_access_session(map(), stop_remote_access_session_request()) ->
     {ok, stop_remote_access_session_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, stop_remote_access_session_errors(), tuple()}.
 stop_remote_access_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_remote_access_session(Client, Input, []).
@@ -3504,10 +3578,7 @@ stop_remote_access_session(Client, Input)
 -spec stop_remote_access_session(map(), stop_remote_access_session_request(), proplists:proplist()) ->
     {ok, stop_remote_access_session_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, stop_remote_access_session_errors(), tuple()}.
 stop_remote_access_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopRemoteAccessSession">>, Input, Options).
@@ -3523,10 +3594,7 @@ stop_remote_access_session(Client, Input, Options)
 -spec stop_run(map(), stop_run_request()) ->
     {ok, stop_run_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, stop_run_errors(), tuple()}.
 stop_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_run(Client, Input, []).
@@ -3534,10 +3602,7 @@ stop_run(Client, Input)
 -spec stop_run(map(), stop_run_request(), proplists:proplist()) ->
     {ok, stop_run_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, stop_run_errors(), tuple()}.
 stop_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopRun">>, Input, Options).
@@ -3552,11 +3617,7 @@ stop_run(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tag_operation_exception(), tuple()} |
-    {error, tag_policy_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -3564,11 +3625,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tag_operation_exception(), tuple()} |
-    {error, tag_policy_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -3577,9 +3634,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tag_operation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -3587,9 +3642,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tag_operation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -3598,10 +3651,7 @@ untag_resource(Client, Input, Options)
 -spec update_device_instance(map(), update_device_instance_request()) ->
     {ok, update_device_instance_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, update_device_instance_errors(), tuple()}.
 update_device_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_device_instance(Client, Input, []).
@@ -3609,10 +3659,7 @@ update_device_instance(Client, Input)
 -spec update_device_instance(map(), update_device_instance_request(), proplists:proplist()) ->
     {ok, update_device_instance_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, update_device_instance_errors(), tuple()}.
 update_device_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDeviceInstance">>, Input, Options).
@@ -3626,10 +3673,7 @@ update_device_instance(Client, Input, Options)
 -spec update_device_pool(map(), update_device_pool_request()) ->
     {ok, update_device_pool_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, update_device_pool_errors(), tuple()}.
 update_device_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_device_pool(Client, Input, []).
@@ -3637,10 +3681,7 @@ update_device_pool(Client, Input)
 -spec update_device_pool(map(), update_device_pool_request(), proplists:proplist()) ->
     {ok, update_device_pool_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, update_device_pool_errors(), tuple()}.
 update_device_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDevicePool">>, Input, Options).
@@ -3650,10 +3691,7 @@ update_device_pool(Client, Input, Options)
 -spec update_instance_profile(map(), update_instance_profile_request()) ->
     {ok, update_instance_profile_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, update_instance_profile_errors(), tuple()}.
 update_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_instance_profile(Client, Input, []).
@@ -3661,10 +3699,7 @@ update_instance_profile(Client, Input)
 -spec update_instance_profile(map(), update_instance_profile_request(), proplists:proplist()) ->
     {ok, update_instance_profile_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, update_instance_profile_errors(), tuple()}.
 update_instance_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateInstanceProfile">>, Input, Options).
@@ -3673,10 +3708,7 @@ update_instance_profile(Client, Input, Options)
 -spec update_network_profile(map(), update_network_profile_request()) ->
     {ok, update_network_profile_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, update_network_profile_errors(), tuple()}.
 update_network_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_network_profile(Client, Input, []).
@@ -3684,10 +3716,7 @@ update_network_profile(Client, Input)
 -spec update_network_profile(map(), update_network_profile_request(), proplists:proplist()) ->
     {ok, update_network_profile_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, update_network_profile_errors(), tuple()}.
 update_network_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateNetworkProfile">>, Input, Options).
@@ -3697,10 +3726,7 @@ update_network_profile(Client, Input, Options)
 -spec update_project(map(), update_project_request()) ->
     {ok, update_project_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, update_project_errors(), tuple()}.
 update_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_project(Client, Input, []).
@@ -3708,10 +3734,7 @@ update_project(Client, Input)
 -spec update_project(map(), update_project_request(), proplists:proplist()) ->
     {ok, update_project_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, update_project_errors(), tuple()}.
 update_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateProject">>, Input, Options).
@@ -3720,10 +3743,7 @@ update_project(Client, Input, Options)
 -spec update_test_grid_project(map(), update_test_grid_project_request()) ->
     {ok, update_test_grid_project_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_test_grid_project_errors(), tuple()}.
 update_test_grid_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_test_grid_project(Client, Input, []).
@@ -3731,10 +3751,7 @@ update_test_grid_project(Client, Input)
 -spec update_test_grid_project(map(), update_test_grid_project_request(), proplists:proplist()) ->
     {ok, update_test_grid_project_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_test_grid_project_errors(), tuple()}.
 update_test_grid_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTestGridProject">>, Input, Options).
@@ -3743,10 +3760,7 @@ update_test_grid_project(Client, Input, Options)
 -spec update_upload(map(), update_upload_request()) ->
     {ok, update_upload_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, update_upload_errors(), tuple()}.
 update_upload(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_upload(Client, Input, []).
@@ -3754,10 +3768,7 @@ update_upload(Client, Input)
 -spec update_upload(map(), update_upload_request(), proplists:proplist()) ->
     {ok, update_upload_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, update_upload_errors(), tuple()}.
 update_upload(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUpload">>, Input, Options).
@@ -3767,10 +3778,7 @@ update_upload(Client, Input, Options)
 -spec update_vpce_configuration(map(), update_vpce_configuration_request()) ->
     {ok, update_vpce_configuration_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, update_vpce_configuration_errors(), tuple()}.
 update_vpce_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_vpce_configuration(Client, Input, []).
@@ -3778,10 +3786,7 @@ update_vpce_configuration(Client, Input)
 -spec update_vpce_configuration(map(), update_vpce_configuration_request(), proplists:proplist()) ->
     {ok, update_vpce_configuration_result(), tuple()} |
     {error, any()} |
-    {error, argument_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_account_exception(), tuple()}.
+    {error, update_vpce_configuration_errors(), tuple()}.
 update_vpce_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateVPCEConfiguration">>, Input, Options).

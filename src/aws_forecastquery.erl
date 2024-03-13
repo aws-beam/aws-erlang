@@ -87,6 +87,19 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+-type query_forecast_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
+    invalid_next_token_exception() | 
+    invalid_input_exception().
+
+-type query_what_if_forecast_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
+    invalid_next_token_exception() | 
+    invalid_input_exception().
 
 %%====================================================================
 %% API
@@ -116,11 +129,7 @@
 -spec query_forecast(map(), query_forecast_request()) ->
     {ok, query_forecast_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, query_forecast_errors(), tuple()}.
 query_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     query_forecast(Client, Input, []).
@@ -128,11 +137,7 @@ query_forecast(Client, Input)
 -spec query_forecast(map(), query_forecast_request(), proplists:proplist()) ->
     {ok, query_forecast_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, query_forecast_errors(), tuple()}.
 query_forecast(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"QueryForecast">>, Input, Options).
@@ -141,11 +146,7 @@ query_forecast(Client, Input, Options)
 -spec query_what_if_forecast(map(), query_what_if_forecast_request()) ->
     {ok, query_what_if_forecast_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, query_what_if_forecast_errors(), tuple()}.
 query_what_if_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     query_what_if_forecast(Client, Input, []).
@@ -153,11 +154,7 @@ query_what_if_forecast(Client, Input)
 -spec query_what_if_forecast(map(), query_what_if_forecast_request(), proplists:proplist()) ->
     {ok, query_what_if_forecast_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, query_what_if_forecast_errors(), tuple()}.
 query_what_if_forecast(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"QueryWhatIfForecast">>, Input, Options).

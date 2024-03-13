@@ -2943,6 +2943,729 @@
 %% }
 -type get_person_tracking_request() :: #{binary() => any()}.
 
+-type associate_faces_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    idempotent_parameter_mismatch_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type compare_faces_errors() ::
+    invalid_s3_object_exception() | 
+    throttling_exception() | 
+    invalid_image_format_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    provisioned_throughput_exceeded_exception() | 
+    image_too_large_exception().
+
+-type copy_project_version_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    resource_in_use_exception().
+
+-type create_collection_errors() ::
+    resource_already_exists_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    service_quota_exceeded_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type create_dataset_errors() ::
+    invalid_s3_object_exception() | 
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type create_face_liveness_session_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    provisioned_throughput_exceeded_exception().
+
+-type create_project_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    provisioned_throughput_exceeded_exception() | 
+    resource_in_use_exception().
+
+-type create_project_version_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    resource_in_use_exception().
+
+-type create_stream_processor_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    service_quota_exceeded_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    resource_in_use_exception().
+
+-type create_user_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    idempotent_parameter_mismatch_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type delete_collection_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type delete_dataset_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    resource_in_use_exception().
+
+-type delete_faces_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type delete_project_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    resource_in_use_exception().
+
+-type delete_project_policy_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    invalid_policy_revision_id_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type delete_project_version_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    resource_in_use_exception().
+
+-type delete_stream_processor_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    resource_in_use_exception().
+
+-type delete_user_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    idempotent_parameter_mismatch_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type describe_collection_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type describe_dataset_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type describe_project_versions_errors() ::
+    invalid_pagination_token_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type describe_projects_errors() ::
+    invalid_pagination_token_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    provisioned_throughput_exceeded_exception().
+
+-type describe_stream_processor_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type detect_custom_labels_errors() ::
+    resource_not_ready_exception() | 
+    invalid_s3_object_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_image_format_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    image_too_large_exception().
+
+-type detect_faces_errors() ::
+    invalid_s3_object_exception() | 
+    throttling_exception() | 
+    invalid_image_format_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    provisioned_throughput_exceeded_exception() | 
+    image_too_large_exception().
+
+-type detect_labels_errors() ::
+    invalid_s3_object_exception() | 
+    throttling_exception() | 
+    invalid_image_format_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    provisioned_throughput_exceeded_exception() | 
+    image_too_large_exception().
+
+-type detect_moderation_labels_errors() ::
+    resource_not_ready_exception() | 
+    invalid_s3_object_exception() | 
+    human_loop_quota_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_image_format_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    image_too_large_exception().
+
+-type detect_protective_equipment_errors() ::
+    invalid_s3_object_exception() | 
+    throttling_exception() | 
+    invalid_image_format_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    provisioned_throughput_exceeded_exception() | 
+    image_too_large_exception().
+
+-type detect_text_errors() ::
+    invalid_s3_object_exception() | 
+    throttling_exception() | 
+    invalid_image_format_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    provisioned_throughput_exceeded_exception() | 
+    image_too_large_exception().
+
+-type disassociate_faces_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    idempotent_parameter_mismatch_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type distribute_dataset_entries_errors() ::
+    resource_not_ready_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type get_celebrity_info_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type get_celebrity_recognition_errors() ::
+    invalid_pagination_token_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type get_content_moderation_errors() ::
+    invalid_pagination_token_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type get_face_detection_errors() ::
+    invalid_pagination_token_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type get_face_liveness_session_results_errors() ::
+    session_not_found_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    provisioned_throughput_exceeded_exception().
+
+-type get_face_search_errors() ::
+    invalid_pagination_token_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type get_label_detection_errors() ::
+    invalid_pagination_token_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type get_media_analysis_job_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type get_person_tracking_errors() ::
+    invalid_pagination_token_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type get_segment_detection_errors() ::
+    invalid_pagination_token_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type get_text_detection_errors() ::
+    invalid_pagination_token_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type index_faces_errors() ::
+    invalid_s3_object_exception() | 
+    throttling_exception() | 
+    invalid_image_format_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    image_too_large_exception().
+
+-type list_collections_errors() ::
+    invalid_pagination_token_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type list_dataset_entries_errors() ::
+    invalid_pagination_token_exception() | 
+    resource_not_ready_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    resource_in_use_exception().
+
+-type list_dataset_labels_errors() ::
+    invalid_pagination_token_exception() | 
+    resource_not_ready_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    resource_in_use_exception().
+
+-type list_faces_errors() ::
+    invalid_pagination_token_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type list_media_analysis_jobs_errors() ::
+    invalid_pagination_token_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    provisioned_throughput_exceeded_exception().
+
+-type list_project_policies_errors() ::
+    invalid_pagination_token_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type list_stream_processors_errors() ::
+    invalid_pagination_token_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    provisioned_throughput_exceeded_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type list_users_errors() ::
+    invalid_pagination_token_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type put_project_policy_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    malformed_policy_document_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    invalid_policy_revision_id_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type recognize_celebrities_errors() ::
+    invalid_s3_object_exception() | 
+    throttling_exception() | 
+    invalid_image_format_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    provisioned_throughput_exceeded_exception() | 
+    image_too_large_exception().
+
+-type search_faces_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type search_faces_by_image_errors() ::
+    invalid_s3_object_exception() | 
+    throttling_exception() | 
+    invalid_image_format_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    image_too_large_exception().
+
+-type search_users_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type search_users_by_image_errors() ::
+    invalid_s3_object_exception() | 
+    throttling_exception() | 
+    invalid_image_format_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    image_too_large_exception().
+
+-type start_celebrity_recognition_errors() ::
+    invalid_s3_object_exception() | 
+    video_too_large_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    idempotent_parameter_mismatch_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type start_content_moderation_errors() ::
+    invalid_s3_object_exception() | 
+    video_too_large_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    idempotent_parameter_mismatch_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type start_face_detection_errors() ::
+    invalid_s3_object_exception() | 
+    video_too_large_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    idempotent_parameter_mismatch_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type start_face_search_errors() ::
+    invalid_s3_object_exception() | 
+    video_too_large_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    idempotent_parameter_mismatch_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type start_label_detection_errors() ::
+    invalid_s3_object_exception() | 
+    video_too_large_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    idempotent_parameter_mismatch_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type start_media_analysis_job_errors() ::
+    resource_not_ready_exception() | 
+    invalid_s3_object_exception() | 
+    invalid_manifest_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    idempotent_parameter_mismatch_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type start_person_tracking_errors() ::
+    invalid_s3_object_exception() | 
+    video_too_large_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    idempotent_parameter_mismatch_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type start_project_version_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    resource_in_use_exception().
+
+-type start_segment_detection_errors() ::
+    invalid_s3_object_exception() | 
+    video_too_large_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    idempotent_parameter_mismatch_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type start_stream_processor_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    resource_in_use_exception().
+
+-type start_text_detection_errors() ::
+    invalid_s3_object_exception() | 
+    video_too_large_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    idempotent_parameter_mismatch_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type stop_project_version_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    resource_in_use_exception().
+
+-type stop_stream_processor_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    resource_in_use_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type update_dataset_entries_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    resource_in_use_exception().
+
+-type update_stream_processor_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    resource_in_use_exception().
 
 %%====================================================================
 %% API
@@ -2992,15 +3715,7 @@
 -spec associate_faces(map(), associate_faces_request()) ->
     {ok, associate_faces_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_faces_errors(), tuple()}.
 associate_faces(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_faces(Client, Input, []).
@@ -3008,15 +3723,7 @@ associate_faces(Client, Input)
 -spec associate_faces(map(), associate_faces_request(), proplists:proplist()) ->
     {ok, associate_faces_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_faces_errors(), tuple()}.
 associate_faces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateFaces">>, Input, Options).
@@ -3104,14 +3811,7 @@ associate_faces(Client, Input, Options)
 -spec compare_faces(map(), compare_faces_request()) ->
     {ok, compare_faces_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, image_too_large_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_image_format_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, compare_faces_errors(), tuple()}.
 compare_faces(Client, Input)
   when is_map(Client), is_map(Input) ->
     compare_faces(Client, Input, []).
@@ -3119,14 +3819,7 @@ compare_faces(Client, Input)
 -spec compare_faces(map(), compare_faces_request(), proplists:proplist()) ->
     {ok, compare_faces_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, image_too_large_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_image_format_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, compare_faces_errors(), tuple()}.
 compare_faces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CompareFaces">>, Input, Options).
@@ -3172,15 +3865,7 @@ compare_faces(Client, Input, Options)
 -spec copy_project_version(map(), copy_project_version_request()) ->
     {ok, copy_project_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, copy_project_version_errors(), tuple()}.
 copy_project_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_project_version(Client, Input, []).
@@ -3188,15 +3873,7 @@ copy_project_version(Client, Input)
 -spec copy_project_version(map(), copy_project_version_request(), proplists:proplist()) ->
     {ok, copy_project_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, copy_project_version_errors(), tuple()}.
 copy_project_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopyProjectVersion">>, Input, Options).
@@ -3228,13 +3905,7 @@ copy_project_version(Client, Input, Options)
 -spec create_collection(map(), create_collection_request()) ->
     {ok, create_collection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_collection_errors(), tuple()}.
 create_collection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_collection(Client, Input, []).
@@ -3242,13 +3913,7 @@ create_collection(Client, Input)
 -spec create_collection(map(), create_collection_request(), proplists:proplist()) ->
     {ok, create_collection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_collection_errors(), tuple()}.
 create_collection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCollection">>, Input, Options).
@@ -3292,15 +3957,7 @@ create_collection(Client, Input, Options)
 -spec create_dataset(map(), create_dataset_request()) ->
     {ok, create_dataset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_dataset_errors(), tuple()}.
 create_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset(Client, Input, []).
@@ -3308,15 +3965,7 @@ create_dataset(Client, Input)
 -spec create_dataset(map(), create_dataset_request(), proplists:proplist()) ->
     {ok, create_dataset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_dataset_errors(), tuple()}.
 create_dataset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDataset">>, Input, Options).
@@ -3344,11 +3993,7 @@ create_dataset(Client, Input, Options)
 -spec create_face_liveness_session(map(), create_face_liveness_session_request()) ->
     {ok, create_face_liveness_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_face_liveness_session_errors(), tuple()}.
 create_face_liveness_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_face_liveness_session(Client, Input, []).
@@ -3356,11 +4001,7 @@ create_face_liveness_session(Client, Input)
 -spec create_face_liveness_session(map(), create_face_liveness_session_request(), proplists:proplist()) ->
     {ok, create_face_liveness_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_face_liveness_session_errors(), tuple()}.
 create_face_liveness_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFaceLivenessSession">>, Input, Options).
@@ -3380,13 +4021,7 @@ create_face_liveness_session(Client, Input, Options)
 -spec create_project(map(), create_project_request()) ->
     {ok, create_project_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_project_errors(), tuple()}.
 create_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_project(Client, Input, []).
@@ -3394,13 +4029,7 @@ create_project(Client, Input)
 -spec create_project(map(), create_project_request(), proplists:proplist()) ->
     {ok, create_project_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_project_errors(), tuple()}.
 create_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateProject">>, Input, Options).
@@ -3449,15 +4078,7 @@ create_project(Client, Input, Options)
 -spec create_project_version(map(), create_project_version_request()) ->
     {ok, create_project_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_project_version_errors(), tuple()}.
 create_project_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_project_version(Client, Input, []).
@@ -3465,15 +4086,7 @@ create_project_version(Client, Input)
 -spec create_project_version(map(), create_project_version_request(), proplists:proplist()) ->
     {ok, create_project_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_project_version_errors(), tuple()}.
 create_project_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateProjectVersion">>, Input, Options).
@@ -3525,14 +4138,7 @@ create_project_version(Client, Input, Options)
 -spec create_stream_processor(map(), create_stream_processor_request()) ->
     {ok, create_stream_processor_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_stream_processor_errors(), tuple()}.
 create_stream_processor(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_stream_processor(Client, Input, []).
@@ -3540,14 +4146,7 @@ create_stream_processor(Client, Input)
 -spec create_stream_processor(map(), create_stream_processor_request(), proplists:proplist()) ->
     {ok, create_stream_processor_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_stream_processor_errors(), tuple()}.
 create_stream_processor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStreamProcessor">>, Input, Options).
@@ -3571,15 +4170,7 @@ create_stream_processor(Client, Input, Options)
 -spec create_user(map(), create_user_request()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_user_errors(), tuple()}.
 create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user(Client, Input, []).
@@ -3587,15 +4178,7 @@ create_user(Client, Input)
 -spec create_user(map(), create_user_request(), proplists:proplist()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_user_errors(), tuple()}.
 create_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUser">>, Input, Options).
@@ -3612,12 +4195,7 @@ create_user(Client, Input, Options)
 -spec delete_collection(map(), delete_collection_request()) ->
     {ok, delete_collection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_collection_errors(), tuple()}.
 delete_collection(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_collection(Client, Input, []).
@@ -3625,12 +4203,7 @@ delete_collection(Client, Input)
 -spec delete_collection(map(), delete_collection_request(), proplists:proplist()) ->
     {ok, delete_collection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_collection_errors(), tuple()}.
 delete_collection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCollection">>, Input, Options).
@@ -3656,14 +4229,7 @@ delete_collection(Client, Input, Options)
 -spec delete_dataset(map(), delete_dataset_request()) ->
     {ok, delete_dataset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_dataset_errors(), tuple()}.
 delete_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_dataset(Client, Input, []).
@@ -3671,14 +4237,7 @@ delete_dataset(Client, Input)
 -spec delete_dataset(map(), delete_dataset_request(), proplists:proplist()) ->
     {ok, delete_dataset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_dataset_errors(), tuple()}.
 delete_dataset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDataset">>, Input, Options).
@@ -3694,12 +4253,7 @@ delete_dataset(Client, Input, Options)
 -spec delete_faces(map(), delete_faces_request()) ->
     {ok, delete_faces_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_faces_errors(), tuple()}.
 delete_faces(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_faces(Client, Input, []).
@@ -3707,12 +4261,7 @@ delete_faces(Client, Input)
 -spec delete_faces(map(), delete_faces_request(), proplists:proplist()) ->
     {ok, delete_faces_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_faces_errors(), tuple()}.
 delete_faces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFaces">>, Input, Options).
@@ -3736,13 +4285,7 @@ delete_faces(Client, Input, Options)
 -spec delete_project(map(), delete_project_request()) ->
     {ok, delete_project_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_project_errors(), tuple()}.
 delete_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_project(Client, Input, []).
@@ -3750,13 +4293,7 @@ delete_project(Client, Input)
 -spec delete_project(map(), delete_project_request(), proplists:proplist()) ->
     {ok, delete_project_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_project_errors(), tuple()}.
 delete_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProject">>, Input, Options).
@@ -3775,13 +4312,7 @@ delete_project(Client, Input, Options)
 -spec delete_project_policy(map(), delete_project_policy_request()) ->
     {ok, delete_project_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_policy_revision_id_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_project_policy_errors(), tuple()}.
 delete_project_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_project_policy(Client, Input, []).
@@ -3789,13 +4320,7 @@ delete_project_policy(Client, Input)
 -spec delete_project_policy(map(), delete_project_policy_request(), proplists:proplist()) ->
     {ok, delete_project_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_policy_revision_id_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_project_policy_errors(), tuple()}.
 delete_project_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProjectPolicy">>, Input, Options).
@@ -3817,13 +4342,7 @@ delete_project_policy(Client, Input, Options)
 -spec delete_project_version(map(), delete_project_version_request()) ->
     {ok, delete_project_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_project_version_errors(), tuple()}.
 delete_project_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_project_version(Client, Input, []).
@@ -3831,13 +4350,7 @@ delete_project_version(Client, Input)
 -spec delete_project_version(map(), delete_project_version_request(), proplists:proplist()) ->
     {ok, delete_project_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_project_version_errors(), tuple()}.
 delete_project_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProjectVersion">>, Input, Options).
@@ -3852,13 +4365,7 @@ delete_project_version(Client, Input, Options)
 -spec delete_stream_processor(map(), delete_stream_processor_request()) ->
     {ok, delete_stream_processor_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_stream_processor_errors(), tuple()}.
 delete_stream_processor(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_stream_processor(Client, Input, []).
@@ -3866,13 +4373,7 @@ delete_stream_processor(Client, Input)
 -spec delete_stream_processor(map(), delete_stream_processor_request(), proplists:proplist()) ->
     {ok, delete_stream_processor_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_stream_processor_errors(), tuple()}.
 delete_stream_processor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteStreamProcessor">>, Input, Options).
@@ -3890,14 +4391,7 @@ delete_stream_processor(Client, Input, Options)
 -spec delete_user(map(), delete_user_request()) ->
     {ok, delete_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_user_errors(), tuple()}.
 delete_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user(Client, Input, []).
@@ -3905,14 +4399,7 @@ delete_user(Client, Input)
 -spec delete_user(map(), delete_user_request(), proplists:proplist()) ->
     {ok, delete_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_user_errors(), tuple()}.
 delete_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUser">>, Input, Options).
@@ -3929,12 +4416,7 @@ delete_user(Client, Input, Options)
 -spec describe_collection(map(), describe_collection_request()) ->
     {ok, describe_collection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_collection_errors(), tuple()}.
 describe_collection(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_collection(Client, Input, []).
@@ -3942,12 +4424,7 @@ describe_collection(Client, Input)
 -spec describe_collection(map(), describe_collection_request(), proplists:proplist()) ->
     {ok, describe_collection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_collection_errors(), tuple()}.
 describe_collection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCollection">>, Input, Options).
@@ -3964,12 +4441,7 @@ describe_collection(Client, Input, Options)
 -spec describe_dataset(map(), describe_dataset_request()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_dataset_errors(), tuple()}.
 describe_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dataset(Client, Input, []).
@@ -3977,12 +4449,7 @@ describe_dataset(Client, Input)
 -spec describe_dataset(map(), describe_dataset_request(), proplists:proplist()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_dataset_errors(), tuple()}.
 describe_dataset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDataset">>, Input, Options).
@@ -4000,13 +4467,7 @@ describe_dataset(Client, Input, Options)
 -spec describe_project_versions(map(), describe_project_versions_request()) ->
     {ok, describe_project_versions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_project_versions_errors(), tuple()}.
 describe_project_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_project_versions(Client, Input, []).
@@ -4014,13 +4475,7 @@ describe_project_versions(Client, Input)
 -spec describe_project_versions(map(), describe_project_versions_request(), proplists:proplist()) ->
     {ok, describe_project_versions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_project_versions_errors(), tuple()}.
 describe_project_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeProjectVersions">>, Input, Options).
@@ -4032,12 +4487,7 @@ describe_project_versions(Client, Input, Options)
 -spec describe_projects(map(), describe_projects_request()) ->
     {ok, describe_projects_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_projects_errors(), tuple()}.
 describe_projects(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_projects(Client, Input, []).
@@ -4045,12 +4495,7 @@ describe_projects(Client, Input)
 -spec describe_projects(map(), describe_projects_request(), proplists:proplist()) ->
     {ok, describe_projects_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_projects_errors(), tuple()}.
 describe_projects(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeProjects">>, Input, Options).
@@ -4064,12 +4509,7 @@ describe_projects(Client, Input, Options)
 -spec describe_stream_processor(map(), describe_stream_processor_request()) ->
     {ok, describe_stream_processor_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_stream_processor_errors(), tuple()}.
 describe_stream_processor(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stream_processor(Client, Input, []).
@@ -4077,12 +4517,7 @@ describe_stream_processor(Client, Input)
 -spec describe_stream_processor(map(), describe_stream_processor_request(), proplists:proplist()) ->
     {ok, describe_stream_processor_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_stream_processor_errors(), tuple()}.
 describe_stream_processor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStreamProcessor">>, Input, Options).
@@ -4152,17 +4587,7 @@ describe_stream_processor(Client, Input, Options)
 -spec detect_custom_labels(map(), detect_custom_labels_request()) ->
     {ok, detect_custom_labels_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, image_too_large_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_image_format_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, detect_custom_labels_errors(), tuple()}.
 detect_custom_labels(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_custom_labels(Client, Input, []).
@@ -4170,17 +4595,7 @@ detect_custom_labels(Client, Input)
 -spec detect_custom_labels(map(), detect_custom_labels_request(), proplists:proplist()) ->
     {ok, detect_custom_labels_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, image_too_large_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_image_format_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, detect_custom_labels_errors(), tuple()}.
 detect_custom_labels(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetectCustomLabels">>, Input, Options).
@@ -4220,14 +4635,7 @@ detect_custom_labels(Client, Input, Options)
 -spec detect_faces(map(), detect_faces_request()) ->
     {ok, detect_faces_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, image_too_large_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_image_format_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, detect_faces_errors(), tuple()}.
 detect_faces(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_faces(Client, Input, []).
@@ -4235,14 +4643,7 @@ detect_faces(Client, Input)
 -spec detect_faces(map(), detect_faces_request(), proplists:proplist()) ->
     {ok, detect_faces_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, image_too_large_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_image_format_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, detect_faces_errors(), tuple()}.
 detect_faces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetectFaces">>, Input, Options).
@@ -4390,14 +4791,7 @@ detect_faces(Client, Input, Options)
 -spec detect_labels(map(), detect_labels_request()) ->
     {ok, detect_labels_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, image_too_large_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_image_format_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, detect_labels_errors(), tuple()}.
 detect_labels(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_labels(Client, Input, []).
@@ -4405,14 +4799,7 @@ detect_labels(Client, Input)
 -spec detect_labels(map(), detect_labels_request(), proplists:proplist()) ->
     {ok, detect_labels_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, image_too_large_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_image_format_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, detect_labels_errors(), tuple()}.
 detect_labels(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetectLabels">>, Input, Options).
@@ -4447,17 +4834,7 @@ detect_labels(Client, Input, Options)
 -spec detect_moderation_labels(map(), detect_moderation_labels_request()) ->
     {ok, detect_moderation_labels_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, human_loop_quota_exceeded_exception(), tuple()} |
-    {error, image_too_large_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_image_format_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, detect_moderation_labels_errors(), tuple()}.
 detect_moderation_labels(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_moderation_labels(Client, Input, []).
@@ -4465,17 +4842,7 @@ detect_moderation_labels(Client, Input)
 -spec detect_moderation_labels(map(), detect_moderation_labels_request(), proplists:proplist()) ->
     {ok, detect_moderation_labels_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, human_loop_quota_exceeded_exception(), tuple()} |
-    {error, image_too_large_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_image_format_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, detect_moderation_labels_errors(), tuple()}.
 detect_moderation_labels(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetectModerationLabels">>, Input, Options).
@@ -4527,14 +4894,7 @@ detect_moderation_labels(Client, Input, Options)
 -spec detect_protective_equipment(map(), detect_protective_equipment_request()) ->
     {ok, detect_protective_equipment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, image_too_large_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_image_format_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, detect_protective_equipment_errors(), tuple()}.
 detect_protective_equipment(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_protective_equipment(Client, Input, []).
@@ -4542,14 +4902,7 @@ detect_protective_equipment(Client, Input)
 -spec detect_protective_equipment(map(), detect_protective_equipment_request(), proplists:proplist()) ->
     {ok, detect_protective_equipment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, image_too_large_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_image_format_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, detect_protective_equipment_errors(), tuple()}.
 detect_protective_equipment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetectProtectiveEquipment">>, Input, Options).
@@ -4602,14 +4955,7 @@ detect_protective_equipment(Client, Input, Options)
 -spec detect_text(map(), detect_text_request()) ->
     {ok, detect_text_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, image_too_large_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_image_format_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, detect_text_errors(), tuple()}.
 detect_text(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_text(Client, Input, []).
@@ -4617,14 +4963,7 @@ detect_text(Client, Input)
 -spec detect_text(map(), detect_text_request(), proplists:proplist()) ->
     {ok, detect_text_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, image_too_large_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_image_format_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, detect_text_errors(), tuple()}.
 detect_text(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetectText">>, Input, Options).
@@ -4647,14 +4986,7 @@ detect_text(Client, Input, Options)
 -spec disassociate_faces(map(), disassociate_faces_request()) ->
     {ok, disassociate_faces_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_faces_errors(), tuple()}.
 disassociate_faces(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_faces(Client, Input, []).
@@ -4662,14 +4994,7 @@ disassociate_faces(Client, Input)
 -spec disassociate_faces(map(), disassociate_faces_request(), proplists:proplist()) ->
     {ok, disassociate_faces_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, disassociate_faces_errors(), tuple()}.
 disassociate_faces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateFaces">>, Input, Options).
@@ -4702,13 +5027,7 @@ disassociate_faces(Client, Input, Options)
 -spec distribute_dataset_entries(map(), distribute_dataset_entries_request()) ->
     {ok, distribute_dataset_entries_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, distribute_dataset_entries_errors(), tuple()}.
 distribute_dataset_entries(Client, Input)
   when is_map(Client), is_map(Input) ->
     distribute_dataset_entries(Client, Input, []).
@@ -4716,13 +5035,7 @@ distribute_dataset_entries(Client, Input)
 -spec distribute_dataset_entries(map(), distribute_dataset_entries_request(), proplists:proplist()) ->
     {ok, distribute_dataset_entries_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, distribute_dataset_entries_errors(), tuple()}.
 distribute_dataset_entries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DistributeDatasetEntries">>, Input, Options).
@@ -4742,12 +5055,7 @@ distribute_dataset_entries(Client, Input, Options)
 -spec get_celebrity_info(map(), get_celebrity_info_request()) ->
     {ok, get_celebrity_info_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_celebrity_info_errors(), tuple()}.
 get_celebrity_info(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_celebrity_info(Client, Input, []).
@@ -4755,12 +5063,7 @@ get_celebrity_info(Client, Input)
 -spec get_celebrity_info(map(), get_celebrity_info_request(), proplists:proplist()) ->
     {ok, get_celebrity_info_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_celebrity_info_errors(), tuple()}.
 get_celebrity_info(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCelebrityInfo">>, Input, Options).
@@ -4834,13 +5137,7 @@ get_celebrity_info(Client, Input, Options)
 -spec get_celebrity_recognition(map(), get_celebrity_recognition_request()) ->
     {ok, get_celebrity_recognition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_celebrity_recognition_errors(), tuple()}.
 get_celebrity_recognition(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_celebrity_recognition(Client, Input, []).
@@ -4848,13 +5145,7 @@ get_celebrity_recognition(Client, Input)
 -spec get_celebrity_recognition(map(), get_celebrity_recognition_request(), proplists:proplist()) ->
     {ok, get_celebrity_recognition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_celebrity_recognition_errors(), tuple()}.
 get_celebrity_recognition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCelebrityRecognition">>, Input, Options).
@@ -4910,13 +5201,7 @@ get_celebrity_recognition(Client, Input, Options)
 -spec get_content_moderation(map(), get_content_moderation_request()) ->
     {ok, get_content_moderation_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_content_moderation_errors(), tuple()}.
 get_content_moderation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_content_moderation(Client, Input, []).
@@ -4924,13 +5209,7 @@ get_content_moderation(Client, Input)
 -spec get_content_moderation(map(), get_content_moderation_request(), proplists:proplist()) ->
     {ok, get_content_moderation_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_content_moderation_errors(), tuple()}.
 get_content_moderation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetContentModeration">>, Input, Options).
@@ -4967,13 +5246,7 @@ get_content_moderation(Client, Input, Options)
 -spec get_face_detection(map(), get_face_detection_request()) ->
     {ok, get_face_detection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_face_detection_errors(), tuple()}.
 get_face_detection(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_face_detection(Client, Input, []).
@@ -4981,13 +5254,7 @@ get_face_detection(Client, Input)
 -spec get_face_detection(map(), get_face_detection_request(), proplists:proplist()) ->
     {ok, get_face_detection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_face_detection_errors(), tuple()}.
 get_face_detection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetFaceDetection">>, Input, Options).
@@ -5011,12 +5278,7 @@ get_face_detection(Client, Input, Options)
 -spec get_face_liveness_session_results(map(), get_face_liveness_session_results_request()) ->
     {ok, get_face_liveness_session_results_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, session_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_face_liveness_session_results_errors(), tuple()}.
 get_face_liveness_session_results(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_face_liveness_session_results(Client, Input, []).
@@ -5024,12 +5286,7 @@ get_face_liveness_session_results(Client, Input)
 -spec get_face_liveness_session_results(map(), get_face_liveness_session_results_request(), proplists:proplist()) ->
     {ok, get_face_liveness_session_results_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, session_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_face_liveness_session_results_errors(), tuple()}.
 get_face_liveness_session_results(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetFaceLivenessSessionResults">>, Input, Options).
@@ -5081,13 +5338,7 @@ get_face_liveness_session_results(Client, Input, Options)
 -spec get_face_search(map(), get_face_search_request()) ->
     {ok, get_face_search_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_face_search_errors(), tuple()}.
 get_face_search(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_face_search(Client, Input, []).
@@ -5095,13 +5346,7 @@ get_face_search(Client, Input)
 -spec get_face_search(map(), get_face_search_request(), proplists:proplist()) ->
     {ok, get_face_search_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_face_search_errors(), tuple()}.
 get_face_search(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetFaceSearch">>, Input, Options).
@@ -5199,13 +5444,7 @@ get_face_search(Client, Input, Options)
 -spec get_label_detection(map(), get_label_detection_request()) ->
     {ok, get_label_detection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_label_detection_errors(), tuple()}.
 get_label_detection(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_label_detection(Client, Input, []).
@@ -5213,13 +5452,7 @@ get_label_detection(Client, Input)
 -spec get_label_detection(map(), get_label_detection_request(), proplists:proplist()) ->
     {ok, get_label_detection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_label_detection_errors(), tuple()}.
 get_label_detection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLabelDetection">>, Input, Options).
@@ -5230,12 +5463,7 @@ get_label_detection(Client, Input, Options)
 -spec get_media_analysis_job(map(), get_media_analysis_job_request()) ->
     {ok, get_media_analysis_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_media_analysis_job_errors(), tuple()}.
 get_media_analysis_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_media_analysis_job(Client, Input, []).
@@ -5243,12 +5471,7 @@ get_media_analysis_job(Client, Input)
 -spec get_media_analysis_job(map(), get_media_analysis_job_request(), proplists:proplist()) ->
     {ok, get_media_analysis_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_media_analysis_job_errors(), tuple()}.
 get_media_analysis_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMediaAnalysisJob">>, Input, Options).
@@ -5298,13 +5521,7 @@ get_media_analysis_job(Client, Input, Options)
 -spec get_person_tracking(map(), get_person_tracking_request()) ->
     {ok, get_person_tracking_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_person_tracking_errors(), tuple()}.
 get_person_tracking(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_person_tracking(Client, Input, []).
@@ -5312,13 +5529,7 @@ get_person_tracking(Client, Input)
 -spec get_person_tracking(map(), get_person_tracking_request(), proplists:proplist()) ->
     {ok, get_person_tracking_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_person_tracking_errors(), tuple()}.
 get_person_tracking(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPersonTracking">>, Input, Options).
@@ -5370,13 +5581,7 @@ get_person_tracking(Client, Input, Options)
 -spec get_segment_detection(map(), get_segment_detection_request()) ->
     {ok, get_segment_detection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_segment_detection_errors(), tuple()}.
 get_segment_detection(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_segment_detection(Client, Input, []).
@@ -5384,13 +5589,7 @@ get_segment_detection(Client, Input)
 -spec get_segment_detection(map(), get_segment_detection_request(), proplists:proplist()) ->
     {ok, get_segment_detection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_segment_detection_errors(), tuple()}.
 get_segment_detection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSegmentDetection">>, Input, Options).
@@ -5434,13 +5633,7 @@ get_segment_detection(Client, Input, Options)
 -spec get_text_detection(map(), get_text_detection_request()) ->
     {ok, get_text_detection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_text_detection_errors(), tuple()}.
 get_text_detection(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_text_detection(Client, Input, []).
@@ -5448,13 +5641,7 @@ get_text_detection(Client, Input)
 -spec get_text_detection(map(), get_text_detection_request(), proplists:proplist()) ->
     {ok, get_text_detection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_text_detection_errors(), tuple()}.
 get_text_detection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTextDetection">>, Input, Options).
@@ -5592,16 +5779,7 @@ get_text_detection(Client, Input, Options)
 -spec index_faces(map(), index_faces_request()) ->
     {ok, index_faces_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, image_too_large_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_image_format_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, index_faces_errors(), tuple()}.
 index_faces(Client, Input)
   when is_map(Client), is_map(Input) ->
     index_faces(Client, Input, []).
@@ -5609,16 +5787,7 @@ index_faces(Client, Input)
 -spec index_faces(map(), index_faces_request(), proplists:proplist()) ->
     {ok, index_faces_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, image_too_large_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_image_format_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, index_faces_errors(), tuple()}.
 index_faces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"IndexFaces">>, Input, Options).
@@ -5639,13 +5808,7 @@ index_faces(Client, Input, Options)
 -spec list_collections(map(), list_collections_request()) ->
     {ok, list_collections_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_collections_errors(), tuple()}.
 list_collections(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_collections(Client, Input, []).
@@ -5653,13 +5816,7 @@ list_collections(Client, Input)
 -spec list_collections(map(), list_collections_request(), proplists:proplist()) ->
     {ok, list_collections_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_collections_errors(), tuple()}.
 list_collections(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCollections">>, Input, Options).
@@ -5690,15 +5847,7 @@ list_collections(Client, Input, Options)
 -spec list_dataset_entries(map(), list_dataset_entries_request()) ->
     {ok, list_dataset_entries_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_dataset_entries_errors(), tuple()}.
 list_dataset_entries(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dataset_entries(Client, Input, []).
@@ -5706,15 +5855,7 @@ list_dataset_entries(Client, Input)
 -spec list_dataset_entries(map(), list_dataset_entries_request(), proplists:proplist()) ->
     {ok, list_dataset_entries_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_dataset_entries_errors(), tuple()}.
 list_dataset_entries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDatasetEntries">>, Input, Options).
@@ -5733,15 +5874,7 @@ list_dataset_entries(Client, Input, Options)
 -spec list_dataset_labels(map(), list_dataset_labels_request()) ->
     {ok, list_dataset_labels_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_dataset_labels_errors(), tuple()}.
 list_dataset_labels(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dataset_labels(Client, Input, []).
@@ -5749,15 +5882,7 @@ list_dataset_labels(Client, Input)
 -spec list_dataset_labels(map(), list_dataset_labels_request(), proplists:proplist()) ->
     {ok, list_dataset_labels_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_dataset_labels_errors(), tuple()}.
 list_dataset_labels(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDatasetLabels">>, Input, Options).
@@ -5777,13 +5902,7 @@ list_dataset_labels(Client, Input, Options)
 -spec list_faces(map(), list_faces_request()) ->
     {ok, list_faces_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_faces_errors(), tuple()}.
 list_faces(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_faces(Client, Input, []).
@@ -5791,13 +5910,7 @@ list_faces(Client, Input)
 -spec list_faces(map(), list_faces_request(), proplists:proplist()) ->
     {ok, list_faces_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_faces_errors(), tuple()}.
 list_faces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFaces">>, Input, Options).
@@ -5808,12 +5921,7 @@ list_faces(Client, Input, Options)
 -spec list_media_analysis_jobs(map(), list_media_analysis_jobs_request()) ->
     {ok, list_media_analysis_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_media_analysis_jobs_errors(), tuple()}.
 list_media_analysis_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_media_analysis_jobs(Client, Input, []).
@@ -5821,12 +5929,7 @@ list_media_analysis_jobs(Client, Input)
 -spec list_media_analysis_jobs(map(), list_media_analysis_jobs_request(), proplists:proplist()) ->
     {ok, list_media_analysis_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_media_analysis_jobs_errors(), tuple()}.
 list_media_analysis_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMediaAnalysisJobs">>, Input, Options).
@@ -5844,13 +5947,7 @@ list_media_analysis_jobs(Client, Input, Options)
 -spec list_project_policies(map(), list_project_policies_request()) ->
     {ok, list_project_policies_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_project_policies_errors(), tuple()}.
 list_project_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_project_policies(Client, Input, []).
@@ -5858,13 +5955,7 @@ list_project_policies(Client, Input)
 -spec list_project_policies(map(), list_project_policies_request(), proplists:proplist()) ->
     {ok, list_project_policies_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_project_policies_errors(), tuple()}.
 list_project_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProjectPolicies">>, Input, Options).
@@ -5874,12 +5965,7 @@ list_project_policies(Client, Input, Options)
 -spec list_stream_processors(map(), list_stream_processors_request()) ->
     {ok, list_stream_processors_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_stream_processors_errors(), tuple()}.
 list_stream_processors(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_stream_processors(Client, Input, []).
@@ -5887,12 +5973,7 @@ list_stream_processors(Client, Input)
 -spec list_stream_processors(map(), list_stream_processors_request(), proplists:proplist()) ->
     {ok, list_stream_processors_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_stream_processors_errors(), tuple()}.
 list_stream_processors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStreamProcessors">>, Input, Options).
@@ -5906,12 +5987,7 @@ list_stream_processors(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -5919,12 +5995,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -5942,13 +6013,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec list_users(map(), list_users_request()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_users_errors(), tuple()}.
 list_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_users(Client, Input, []).
@@ -5956,13 +6021,7 @@ list_users(Client, Input)
 -spec list_users(map(), list_users_request(), proplists:proplist()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_users_errors(), tuple()}.
 list_users(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUsers">>, Input, Options).
@@ -6002,17 +6061,7 @@ list_users(Client, Input, Options)
 -spec put_project_policy(map(), put_project_policy_request()) ->
     {ok, put_project_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_policy_revision_id_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, put_project_policy_errors(), tuple()}.
 put_project_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_project_policy(Client, Input, []).
@@ -6020,17 +6069,7 @@ put_project_policy(Client, Input)
 -spec put_project_policy(map(), put_project_policy_request(), proplists:proplist()) ->
     {ok, put_project_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_policy_revision_id_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, put_project_policy_errors(), tuple()}.
 put_project_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutProjectPolicy">>, Input, Options).
@@ -6084,14 +6123,7 @@ put_project_policy(Client, Input, Options)
 -spec recognize_celebrities(map(), recognize_celebrities_request()) ->
     {ok, recognize_celebrities_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, image_too_large_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_image_format_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, recognize_celebrities_errors(), tuple()}.
 recognize_celebrities(Client, Input)
   when is_map(Client), is_map(Input) ->
     recognize_celebrities(Client, Input, []).
@@ -6099,14 +6131,7 @@ recognize_celebrities(Client, Input)
 -spec recognize_celebrities(map(), recognize_celebrities_request(), proplists:proplist()) ->
     {ok, recognize_celebrities_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, image_too_large_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_image_format_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, recognize_celebrities_errors(), tuple()}.
 recognize_celebrities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RecognizeCelebrities">>, Input, Options).
@@ -6143,12 +6168,7 @@ recognize_celebrities(Client, Input, Options)
 -spec search_faces(map(), search_faces_request()) ->
     {ok, search_faces_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_faces_errors(), tuple()}.
 search_faces(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_faces(Client, Input, []).
@@ -6156,12 +6176,7 @@ search_faces(Client, Input)
 -spec search_faces(map(), search_faces_request(), proplists:proplist()) ->
     {ok, search_faces_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_faces_errors(), tuple()}.
 search_faces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SearchFaces">>, Input, Options).
@@ -6230,15 +6245,7 @@ search_faces(Client, Input, Options)
 -spec search_faces_by_image(map(), search_faces_by_image_request()) ->
     {ok, search_faces_by_image_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, image_too_large_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_image_format_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_faces_by_image_errors(), tuple()}.
 search_faces_by_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_faces_by_image(Client, Input, []).
@@ -6246,15 +6253,7 @@ search_faces_by_image(Client, Input)
 -spec search_faces_by_image(map(), search_faces_by_image_request(), proplists:proplist()) ->
     {ok, search_faces_by_image_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, image_too_large_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_image_format_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_faces_by_image_errors(), tuple()}.
 search_faces_by_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SearchFacesByImage">>, Input, Options).
@@ -6271,12 +6270,7 @@ search_faces_by_image(Client, Input, Options)
 -spec search_users(map(), search_users_request()) ->
     {ok, search_users_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_users_errors(), tuple()}.
 search_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_users(Client, Input, []).
@@ -6284,12 +6278,7 @@ search_users(Client, Input)
 -spec search_users(map(), search_users_request(), proplists:proplist()) ->
     {ok, search_users_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_users_errors(), tuple()}.
 search_users(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SearchUsers">>, Input, Options).
@@ -6315,15 +6304,7 @@ search_users(Client, Input, Options)
 -spec search_users_by_image(map(), search_users_by_image_request()) ->
     {ok, search_users_by_image_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, image_too_large_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_image_format_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_users_by_image_errors(), tuple()}.
 search_users_by_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_users_by_image(Client, Input, []).
@@ -6331,15 +6312,7 @@ search_users_by_image(Client, Input)
 -spec search_users_by_image(map(), search_users_by_image_request(), proplists:proplist()) ->
     {ok, search_users_by_image_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, image_too_large_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_image_format_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_users_by_image_errors(), tuple()}.
 search_users_by_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SearchUsersByImage">>, Input, Options).
@@ -6367,15 +6340,7 @@ search_users_by_image(Client, Input, Options)
 -spec start_celebrity_recognition(map(), start_celebrity_recognition_request()) ->
     {ok, start_celebrity_recognition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, video_too_large_exception(), tuple()}.
+    {error, start_celebrity_recognition_errors(), tuple()}.
 start_celebrity_recognition(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_celebrity_recognition(Client, Input, []).
@@ -6383,15 +6348,7 @@ start_celebrity_recognition(Client, Input)
 -spec start_celebrity_recognition(map(), start_celebrity_recognition_request(), proplists:proplist()) ->
     {ok, start_celebrity_recognition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, video_too_large_exception(), tuple()}.
+    {error, start_celebrity_recognition_errors(), tuple()}.
 start_celebrity_recognition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartCelebrityRecognition">>, Input, Options).
@@ -6424,15 +6381,7 @@ start_celebrity_recognition(Client, Input, Options)
 -spec start_content_moderation(map(), start_content_moderation_request()) ->
     {ok, start_content_moderation_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, video_too_large_exception(), tuple()}.
+    {error, start_content_moderation_errors(), tuple()}.
 start_content_moderation(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_content_moderation(Client, Input, []).
@@ -6440,15 +6389,7 @@ start_content_moderation(Client, Input)
 -spec start_content_moderation(map(), start_content_moderation_request(), proplists:proplist()) ->
     {ok, start_content_moderation_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, video_too_large_exception(), tuple()}.
+    {error, start_content_moderation_errors(), tuple()}.
 start_content_moderation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartContentModeration">>, Input, Options).
@@ -6475,15 +6416,7 @@ start_content_moderation(Client, Input, Options)
 -spec start_face_detection(map(), start_face_detection_request()) ->
     {ok, start_face_detection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, video_too_large_exception(), tuple()}.
+    {error, start_face_detection_errors(), tuple()}.
 start_face_detection(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_face_detection(Client, Input, []).
@@ -6491,15 +6424,7 @@ start_face_detection(Client, Input)
 -spec start_face_detection(map(), start_face_detection_request(), proplists:proplist()) ->
     {ok, start_face_detection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, video_too_large_exception(), tuple()}.
+    {error, start_face_detection_errors(), tuple()}.
 start_face_detection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartFaceDetection">>, Input, Options).
@@ -6527,16 +6452,7 @@ start_face_detection(Client, Input, Options)
 -spec start_face_search(map(), start_face_search_request()) ->
     {ok, start_face_search_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, video_too_large_exception(), tuple()}.
+    {error, start_face_search_errors(), tuple()}.
 start_face_search(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_face_search(Client, Input, []).
@@ -6544,16 +6460,7 @@ start_face_search(Client, Input)
 -spec start_face_search(map(), start_face_search_request(), proplists:proplist()) ->
     {ok, start_face_search_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, video_too_large_exception(), tuple()}.
+    {error, start_face_search_errors(), tuple()}.
 start_face_search(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartFaceSearch">>, Input, Options).
@@ -6602,15 +6509,7 @@ start_face_search(Client, Input, Options)
 -spec start_label_detection(map(), start_label_detection_request()) ->
     {ok, start_label_detection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, video_too_large_exception(), tuple()}.
+    {error, start_label_detection_errors(), tuple()}.
 start_label_detection(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_label_detection(Client, Input, []).
@@ -6618,15 +6517,7 @@ start_label_detection(Client, Input)
 -spec start_label_detection(map(), start_label_detection_request(), proplists:proplist()) ->
     {ok, start_label_detection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, video_too_large_exception(), tuple()}.
+    {error, start_label_detection_errors(), tuple()}.
 start_label_detection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartLabelDetection">>, Input, Options).
@@ -6639,17 +6530,7 @@ start_label_detection(Client, Input, Options)
 -spec start_media_analysis_job(map(), start_media_analysis_job_request()) ->
     {ok, start_media_analysis_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_manifest_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, start_media_analysis_job_errors(), tuple()}.
 start_media_analysis_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_media_analysis_job(Client, Input, []).
@@ -6657,17 +6538,7 @@ start_media_analysis_job(Client, Input)
 -spec start_media_analysis_job(map(), start_media_analysis_job_request(), proplists:proplist()) ->
     {ok, start_media_analysis_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_manifest_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, start_media_analysis_job_errors(), tuple()}.
 start_media_analysis_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMediaAnalysisJob">>, Input, Options).
@@ -6693,15 +6564,7 @@ start_media_analysis_job(Client, Input, Options)
 -spec start_person_tracking(map(), start_person_tracking_request()) ->
     {ok, start_person_tracking_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, video_too_large_exception(), tuple()}.
+    {error, start_person_tracking_errors(), tuple()}.
 start_person_tracking(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_person_tracking(Client, Input, []).
@@ -6709,15 +6572,7 @@ start_person_tracking(Client, Input)
 -spec start_person_tracking(map(), start_person_tracking_request(), proplists:proplist()) ->
     {ok, start_person_tracking_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, video_too_large_exception(), tuple()}.
+    {error, start_person_tracking_errors(), tuple()}.
 start_person_tracking(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartPersonTracking">>, Input, Options).
@@ -6743,14 +6598,7 @@ start_person_tracking(Client, Input, Options)
 -spec start_project_version(map(), start_project_version_request()) ->
     {ok, start_project_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, start_project_version_errors(), tuple()}.
 start_project_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_project_version(Client, Input, []).
@@ -6758,14 +6606,7 @@ start_project_version(Client, Input)
 -spec start_project_version(map(), start_project_version_request(), proplists:proplist()) ->
     {ok, start_project_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, start_project_version_errors(), tuple()}.
 start_project_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartProjectVersion">>, Input, Options).
@@ -6801,15 +6642,7 @@ start_project_version(Client, Input, Options)
 -spec start_segment_detection(map(), start_segment_detection_request()) ->
     {ok, start_segment_detection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, video_too_large_exception(), tuple()}.
+    {error, start_segment_detection_errors(), tuple()}.
 start_segment_detection(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_segment_detection(Client, Input, []).
@@ -6817,15 +6650,7 @@ start_segment_detection(Client, Input)
 -spec start_segment_detection(map(), start_segment_detection_request(), proplists:proplist()) ->
     {ok, start_segment_detection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, video_too_large_exception(), tuple()}.
+    {error, start_segment_detection_errors(), tuple()}.
 start_segment_detection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartSegmentDetection">>, Input, Options).
@@ -6843,13 +6668,7 @@ start_segment_detection(Client, Input, Options)
 -spec start_stream_processor(map(), start_stream_processor_request()) ->
     {ok, start_stream_processor_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, start_stream_processor_errors(), tuple()}.
 start_stream_processor(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_stream_processor(Client, Input, []).
@@ -6857,13 +6676,7 @@ start_stream_processor(Client, Input)
 -spec start_stream_processor(map(), start_stream_processor_request(), proplists:proplist()) ->
     {ok, start_stream_processor_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, start_stream_processor_errors(), tuple()}.
 start_stream_processor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartStreamProcessor">>, Input, Options).
@@ -6887,15 +6700,7 @@ start_stream_processor(Client, Input, Options)
 -spec start_text_detection(map(), start_text_detection_request()) ->
     {ok, start_text_detection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, video_too_large_exception(), tuple()}.
+    {error, start_text_detection_errors(), tuple()}.
 start_text_detection(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_text_detection(Client, Input, []).
@@ -6903,15 +6708,7 @@ start_text_detection(Client, Input)
 -spec start_text_detection(map(), start_text_detection_request(), proplists:proplist()) ->
     {ok, start_text_detection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, video_too_large_exception(), tuple()}.
+    {error, start_text_detection_errors(), tuple()}.
 start_text_detection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartTextDetection">>, Input, Options).
@@ -6929,13 +6726,7 @@ start_text_detection(Client, Input, Options)
 -spec stop_project_version(map(), stop_project_version_request()) ->
     {ok, stop_project_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, stop_project_version_errors(), tuple()}.
 stop_project_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_project_version(Client, Input, []).
@@ -6943,13 +6734,7 @@ stop_project_version(Client, Input)
 -spec stop_project_version(map(), stop_project_version_request(), proplists:proplist()) ->
     {ok, stop_project_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, stop_project_version_errors(), tuple()}.
 stop_project_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopProjectVersion">>, Input, Options).
@@ -6959,13 +6744,7 @@ stop_project_version(Client, Input, Options)
 -spec stop_stream_processor(map(), stop_stream_processor_request()) ->
     {ok, stop_stream_processor_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, stop_stream_processor_errors(), tuple()}.
 stop_stream_processor(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_stream_processor(Client, Input, []).
@@ -6973,13 +6752,7 @@ stop_stream_processor(Client, Input)
 -spec stop_stream_processor(map(), stop_stream_processor_request(), proplists:proplist()) ->
     {ok, stop_stream_processor_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, stop_stream_processor_errors(), tuple()}.
 stop_stream_processor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopStreamProcessor">>, Input, Options).
@@ -6997,13 +6770,7 @@ stop_stream_processor(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -7011,13 +6778,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -7031,12 +6792,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -7044,12 +6800,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -7097,14 +6848,7 @@ untag_resource(Client, Input, Options)
 -spec update_dataset_entries(map(), update_dataset_entries_request()) ->
     {ok, update_dataset_entries_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_dataset_entries_errors(), tuple()}.
 update_dataset_entries(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_dataset_entries(Client, Input, []).
@@ -7112,14 +6856,7 @@ update_dataset_entries(Client, Input)
 -spec update_dataset_entries(map(), update_dataset_entries_request(), proplists:proplist()) ->
     {ok, update_dataset_entries_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_dataset_entries_errors(), tuple()}.
 update_dataset_entries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDatasetEntries">>, Input, Options).
@@ -7132,13 +6869,7 @@ update_dataset_entries(Client, Input, Options)
 -spec update_stream_processor(map(), update_stream_processor_request()) ->
     {ok, update_stream_processor_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_stream_processor_errors(), tuple()}.
 update_stream_processor(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_stream_processor(Client, Input, []).
@@ -7146,13 +6877,7 @@ update_stream_processor(Client, Input)
 -spec update_stream_processor(map(), update_stream_processor_request(), proplists:proplist()) ->
     {ok, update_stream_processor_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_stream_processor_errors(), tuple()}.
 update_stream_processor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateStreamProcessor">>, Input, Options).

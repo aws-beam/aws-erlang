@@ -784,6 +784,168 @@
 %% }
 -type get_host_input() :: #{binary() => any()}.
 
+-type create_connection_errors() ::
+    limit_exceeded_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception().
+
+-type create_host_errors() ::
+    limit_exceeded_exception().
+
+-type create_repository_link_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_input_exception().
+
+-type create_sync_configuration_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_input_exception().
+
+-type delete_connection_errors() ::
+    resource_not_found_exception().
+
+-type delete_host_errors() ::
+    resource_not_found_exception() | 
+    resource_unavailable_exception().
+
+-type delete_repository_link_errors() ::
+    throttling_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    unsupported_provider_type_exception() | 
+    resource_not_found_exception() | 
+    sync_configuration_still_exists_exception().
+
+-type delete_sync_configuration_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_input_exception().
+
+-type get_connection_errors() ::
+    resource_not_found_exception() | 
+    resource_unavailable_exception().
+
+-type get_host_errors() ::
+    resource_not_found_exception() | 
+    resource_unavailable_exception().
+
+-type get_repository_link_errors() ::
+    throttling_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type get_repository_sync_status_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type get_resource_sync_status_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type get_sync_blocker_summary_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type get_sync_configuration_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type list_connections_errors() ::
+    resource_not_found_exception().
+
+-type list_repository_links_errors() ::
+    throttling_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type list_repository_sync_definitions_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type list_sync_configurations_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    limit_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    resource_not_found_exception().
+
+-type update_host_errors() ::
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    resource_unavailable_exception() | 
+    unsupported_operation_exception().
+
+-type update_repository_link_errors() ::
+    update_out_of_sync_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conditional_check_failed_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type update_sync_blocker_errors() ::
+    sync_blocker_does_not_exist_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    retry_latest_commit_failed_exception().
+
+-type update_sync_configuration_errors() ::
+    update_out_of_sync_exception() | 
+    throttling_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -798,9 +960,7 @@
 -spec create_connection(map(), create_connection_input()) ->
     {ok, create_connection_output(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()}.
+    {error, create_connection_errors(), tuple()}.
 create_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_connection(Client, Input, []).
@@ -808,9 +968,7 @@ create_connection(Client, Input)
 -spec create_connection(map(), create_connection_input(), proplists:proplist()) ->
     {ok, create_connection_output(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()}.
+    {error, create_connection_errors(), tuple()}.
 create_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateConnection">>, Input, Options).
@@ -831,7 +989,7 @@ create_connection(Client, Input, Options)
 -spec create_host(map(), create_host_input()) ->
     {ok, create_host_output(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_host_errors(), tuple()}.
 create_host(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_host(Client, Input, []).
@@ -839,7 +997,7 @@ create_host(Client, Input)
 -spec create_host(map(), create_host_input(), proplists:proplist()) ->
     {ok, create_host_output(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_host_errors(), tuple()}.
 create_host(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHost">>, Input, Options).
@@ -851,13 +1009,7 @@ create_host(Client, Input, Options)
 -spec create_repository_link(map(), create_repository_link_input()) ->
     {ok, create_repository_link_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_repository_link_errors(), tuple()}.
 create_repository_link(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_repository_link(Client, Input, []).
@@ -865,13 +1017,7 @@ create_repository_link(Client, Input)
 -spec create_repository_link(map(), create_repository_link_input(), proplists:proplist()) ->
     {ok, create_repository_link_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_repository_link_errors(), tuple()}.
 create_repository_link(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRepositoryLink">>, Input, Options).
@@ -885,13 +1031,7 @@ create_repository_link(Client, Input, Options)
 -spec create_sync_configuration(map(), create_sync_configuration_input()) ->
     {ok, create_sync_configuration_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_sync_configuration_errors(), tuple()}.
 create_sync_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_sync_configuration(Client, Input, []).
@@ -899,13 +1039,7 @@ create_sync_configuration(Client, Input)
 -spec create_sync_configuration(map(), create_sync_configuration_input(), proplists:proplist()) ->
     {ok, create_sync_configuration_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_sync_configuration_errors(), tuple()}.
 create_sync_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSyncConfiguration">>, Input, Options).
@@ -914,7 +1048,7 @@ create_sync_configuration(Client, Input, Options)
 -spec delete_connection(map(), delete_connection_input()) ->
     {ok, delete_connection_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_connection_errors(), tuple()}.
 delete_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_connection(Client, Input, []).
@@ -922,7 +1056,7 @@ delete_connection(Client, Input)
 -spec delete_connection(map(), delete_connection_input(), proplists:proplist()) ->
     {ok, delete_connection_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_connection_errors(), tuple()}.
 delete_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConnection">>, Input, Options).
@@ -937,8 +1071,7 @@ delete_connection(Client, Input, Options)
 -spec delete_host(map(), delete_host_input()) ->
     {ok, delete_host_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()}.
+    {error, delete_host_errors(), tuple()}.
 delete_host(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_host(Client, Input, []).
@@ -946,8 +1079,7 @@ delete_host(Client, Input)
 -spec delete_host(map(), delete_host_input(), proplists:proplist()) ->
     {ok, delete_host_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()}.
+    {error, delete_host_errors(), tuple()}.
 delete_host(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteHost">>, Input, Options).
@@ -957,14 +1089,7 @@ delete_host(Client, Input, Options)
 -spec delete_repository_link(map(), delete_repository_link_input()) ->
     {ok, delete_repository_link_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, sync_configuration_still_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_provider_type_exception(), tuple()}.
+    {error, delete_repository_link_errors(), tuple()}.
 delete_repository_link(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_repository_link(Client, Input, []).
@@ -972,14 +1097,7 @@ delete_repository_link(Client, Input)
 -spec delete_repository_link(map(), delete_repository_link_input(), proplists:proplist()) ->
     {ok, delete_repository_link_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, sync_configuration_still_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_provider_type_exception(), tuple()}.
+    {error, delete_repository_link_errors(), tuple()}.
 delete_repository_link(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRepositoryLink">>, Input, Options).
@@ -989,12 +1107,7 @@ delete_repository_link(Client, Input, Options)
 -spec delete_sync_configuration(map(), delete_sync_configuration_input()) ->
     {ok, delete_sync_configuration_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_sync_configuration_errors(), tuple()}.
 delete_sync_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_sync_configuration(Client, Input, []).
@@ -1002,12 +1115,7 @@ delete_sync_configuration(Client, Input)
 -spec delete_sync_configuration(map(), delete_sync_configuration_input(), proplists:proplist()) ->
     {ok, delete_sync_configuration_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_sync_configuration_errors(), tuple()}.
 delete_sync_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSyncConfiguration">>, Input, Options).
@@ -1017,8 +1125,7 @@ delete_sync_configuration(Client, Input, Options)
 -spec get_connection(map(), get_connection_input()) ->
     {ok, get_connection_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()}.
+    {error, get_connection_errors(), tuple()}.
 get_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_connection(Client, Input, []).
@@ -1026,8 +1133,7 @@ get_connection(Client, Input)
 -spec get_connection(map(), get_connection_input(), proplists:proplist()) ->
     {ok, get_connection_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()}.
+    {error, get_connection_errors(), tuple()}.
 get_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetConnection">>, Input, Options).
@@ -1038,8 +1144,7 @@ get_connection(Client, Input, Options)
 -spec get_host(map(), get_host_input()) ->
     {ok, get_host_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()}.
+    {error, get_host_errors(), tuple()}.
 get_host(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_host(Client, Input, []).
@@ -1047,8 +1152,7 @@ get_host(Client, Input)
 -spec get_host(map(), get_host_input(), proplists:proplist()) ->
     {ok, get_host_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()}.
+    {error, get_host_errors(), tuple()}.
 get_host(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetHost">>, Input, Options).
@@ -1060,12 +1164,7 @@ get_host(Client, Input, Options)
 -spec get_repository_link(map(), get_repository_link_input()) ->
     {ok, get_repository_link_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_repository_link_errors(), tuple()}.
 get_repository_link(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_repository_link(Client, Input, []).
@@ -1073,12 +1172,7 @@ get_repository_link(Client, Input)
 -spec get_repository_link(map(), get_repository_link_input(), proplists:proplist()) ->
     {ok, get_repository_link_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_repository_link_errors(), tuple()}.
 get_repository_link(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRepositoryLink">>, Input, Options).
@@ -1090,11 +1184,7 @@ get_repository_link(Client, Input, Options)
 -spec get_repository_sync_status(map(), get_repository_sync_status_input()) ->
     {ok, get_repository_sync_status_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_repository_sync_status_errors(), tuple()}.
 get_repository_sync_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_repository_sync_status(Client, Input, []).
@@ -1102,11 +1192,7 @@ get_repository_sync_status(Client, Input)
 -spec get_repository_sync_status(map(), get_repository_sync_status_input(), proplists:proplist()) ->
     {ok, get_repository_sync_status_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_repository_sync_status_errors(), tuple()}.
 get_repository_sync_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRepositorySyncStatus">>, Input, Options).
@@ -1117,11 +1203,7 @@ get_repository_sync_status(Client, Input, Options)
 -spec get_resource_sync_status(map(), get_resource_sync_status_input()) ->
     {ok, get_resource_sync_status_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_resource_sync_status_errors(), tuple()}.
 get_resource_sync_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_sync_status(Client, Input, []).
@@ -1129,11 +1211,7 @@ get_resource_sync_status(Client, Input)
 -spec get_resource_sync_status(map(), get_resource_sync_status_input(), proplists:proplist()) ->
     {ok, get_resource_sync_status_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_resource_sync_status_errors(), tuple()}.
 get_resource_sync_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourceSyncStatus">>, Input, Options).
@@ -1142,11 +1220,7 @@ get_resource_sync_status(Client, Input, Options)
 -spec get_sync_blocker_summary(map(), get_sync_blocker_summary_input()) ->
     {ok, get_sync_blocker_summary_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_sync_blocker_summary_errors(), tuple()}.
 get_sync_blocker_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_sync_blocker_summary(Client, Input, []).
@@ -1154,11 +1228,7 @@ get_sync_blocker_summary(Client, Input)
 -spec get_sync_blocker_summary(map(), get_sync_blocker_summary_input(), proplists:proplist()) ->
     {ok, get_sync_blocker_summary_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_sync_blocker_summary_errors(), tuple()}.
 get_sync_blocker_summary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSyncBlockerSummary">>, Input, Options).
@@ -1172,11 +1242,7 @@ get_sync_blocker_summary(Client, Input, Options)
 -spec get_sync_configuration(map(), get_sync_configuration_input()) ->
     {ok, get_sync_configuration_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_sync_configuration_errors(), tuple()}.
 get_sync_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_sync_configuration(Client, Input, []).
@@ -1184,11 +1250,7 @@ get_sync_configuration(Client, Input)
 -spec get_sync_configuration(map(), get_sync_configuration_input(), proplists:proplist()) ->
     {ok, get_sync_configuration_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_sync_configuration_errors(), tuple()}.
 get_sync_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSyncConfiguration">>, Input, Options).
@@ -1197,7 +1259,7 @@ get_sync_configuration(Client, Input, Options)
 -spec list_connections(map(), list_connections_input()) ->
     {ok, list_connections_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_connections_errors(), tuple()}.
 list_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_connections(Client, Input, []).
@@ -1205,7 +1267,7 @@ list_connections(Client, Input)
 -spec list_connections(map(), list_connections_input(), proplists:proplist()) ->
     {ok, list_connections_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_connections_errors(), tuple()}.
 list_connections(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListConnections">>, Input, Options).
@@ -1229,12 +1291,7 @@ list_hosts(Client, Input, Options)
 -spec list_repository_links(map(), list_repository_links_input()) ->
     {ok, list_repository_links_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_repository_links_errors(), tuple()}.
 list_repository_links(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_repository_links(Client, Input, []).
@@ -1242,12 +1299,7 @@ list_repository_links(Client, Input)
 -spec list_repository_links(map(), list_repository_links_input(), proplists:proplist()) ->
     {ok, list_repository_links_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_repository_links_errors(), tuple()}.
 list_repository_links(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRepositoryLinks">>, Input, Options).
@@ -1257,11 +1309,7 @@ list_repository_links(Client, Input, Options)
 -spec list_repository_sync_definitions(map(), list_repository_sync_definitions_input()) ->
     {ok, list_repository_sync_definitions_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_repository_sync_definitions_errors(), tuple()}.
 list_repository_sync_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_repository_sync_definitions(Client, Input, []).
@@ -1269,11 +1317,7 @@ list_repository_sync_definitions(Client, Input)
 -spec list_repository_sync_definitions(map(), list_repository_sync_definitions_input(), proplists:proplist()) ->
     {ok, list_repository_sync_definitions_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_repository_sync_definitions_errors(), tuple()}.
 list_repository_sync_definitions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRepositorySyncDefinitions">>, Input, Options).
@@ -1282,11 +1326,7 @@ list_repository_sync_definitions(Client, Input, Options)
 -spec list_sync_configurations(map(), list_sync_configurations_input()) ->
     {ok, list_sync_configurations_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_sync_configurations_errors(), tuple()}.
 list_sync_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_sync_configurations(Client, Input, []).
@@ -1294,11 +1334,7 @@ list_sync_configurations(Client, Input)
 -spec list_sync_configurations(map(), list_sync_configurations_input(), proplists:proplist()) ->
     {ok, list_sync_configurations_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_sync_configurations_errors(), tuple()}.
 list_sync_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSyncConfigurations">>, Input, Options).
@@ -1308,7 +1344,7 @@ list_sync_configurations(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -1316,7 +1352,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_input(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -1328,8 +1364,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -1337,8 +1372,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -1347,7 +1381,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -1355,7 +1389,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -1364,10 +1398,7 @@ untag_resource(Client, Input, Options)
 -spec update_host(map(), update_host_input()) ->
     {ok, update_host_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, update_host_errors(), tuple()}.
 update_host(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_host(Client, Input, []).
@@ -1375,10 +1406,7 @@ update_host(Client, Input)
 -spec update_host(map(), update_host_input(), proplists:proplist()) ->
     {ok, update_host_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, update_host_errors(), tuple()}.
 update_host(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateHost">>, Input, Options).
@@ -1392,13 +1420,7 @@ update_host(Client, Input, Options)
 -spec update_repository_link(map(), update_repository_link_input()) ->
     {ok, update_repository_link_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conditional_check_failed_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, update_out_of_sync_exception(), tuple()}.
+    {error, update_repository_link_errors(), tuple()}.
 update_repository_link(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_repository_link(Client, Input, []).
@@ -1406,13 +1428,7 @@ update_repository_link(Client, Input)
 -spec update_repository_link(map(), update_repository_link_input(), proplists:proplist()) ->
     {ok, update_repository_link_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conditional_check_failed_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, update_out_of_sync_exception(), tuple()}.
+    {error, update_repository_link_errors(), tuple()}.
 update_repository_link(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRepositoryLink">>, Input, Options).
@@ -1422,13 +1438,7 @@ update_repository_link(Client, Input, Options)
 -spec update_sync_blocker(map(), update_sync_blocker_input()) ->
     {ok, update_sync_blocker_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retry_latest_commit_failed_exception(), tuple()} |
-    {error, sync_blocker_does_not_exist_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_sync_blocker_errors(), tuple()}.
 update_sync_blocker(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_sync_blocker(Client, Input, []).
@@ -1436,13 +1446,7 @@ update_sync_blocker(Client, Input)
 -spec update_sync_blocker(map(), update_sync_blocker_input(), proplists:proplist()) ->
     {ok, update_sync_blocker_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retry_latest_commit_failed_exception(), tuple()} |
-    {error, sync_blocker_does_not_exist_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_sync_blocker_errors(), tuple()}.
 update_sync_blocker(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSyncBlocker">>, Input, Options).
@@ -1452,13 +1456,7 @@ update_sync_blocker(Client, Input, Options)
 -spec update_sync_configuration(map(), update_sync_configuration_input()) ->
     {ok, update_sync_configuration_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, update_out_of_sync_exception(), tuple()}.
+    {error, update_sync_configuration_errors(), tuple()}.
 update_sync_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_sync_configuration(Client, Input, []).
@@ -1466,13 +1464,7 @@ update_sync_configuration(Client, Input)
 -spec update_sync_configuration(map(), update_sync_configuration_input(), proplists:proplist()) ->
     {ok, update_sync_configuration_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, update_out_of_sync_exception(), tuple()}.
+    {error, update_sync_configuration_errors(), tuple()}.
 update_sync_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSyncConfiguration">>, Input, Options).

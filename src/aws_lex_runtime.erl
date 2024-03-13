@@ -42,6 +42,7 @@
 %% }
 -type active_context() :: #{binary() => any()}.
 
+
 %% Example:
 %% active_context_time_to_live() :: #{
 %%   <<"timeToLiveInSeconds">> => integer(),
@@ -49,17 +50,20 @@
 %% }
 -type active_context_time_to_live() :: #{binary() => any()}.
 
+
 %% Example:
 %% bad_gateway_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type bad_gateway_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% bad_request_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% button() :: #{
@@ -68,14 +72,17 @@
 %% }
 -type button() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_session_request() :: #{}
 -type delete_session_request() :: #{}.
+
 
 %% Example:
 %% delete_session_response() :: #{
@@ -86,11 +93,13 @@
 %% }
 -type delete_session_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% dependency_failed_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type dependency_failed_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% dialog_action() :: #{
@@ -104,6 +113,7 @@
 %% }
 -type dialog_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% generic_attachment() :: #{
 %%   <<"attachmentLinkUrl">> => string(),
@@ -114,11 +124,13 @@
 %% }
 -type generic_attachment() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_session_request() :: #{
 %%   <<"checkpointLabelFilter">> => string()
 %% }
 -type get_session_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_session_response() :: #{
@@ -130,11 +142,13 @@
 %% }
 -type get_session_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% intent_confidence() :: #{
 %%   <<"score">> => float()
 %% }
 -type intent_confidence() :: #{binary() => any()}.
+
 
 %% Example:
 %% intent_summary() :: #{
@@ -148,11 +162,13 @@
 %% }
 -type intent_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_failure_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type internal_failure_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% limit_exceeded_exception() :: #{
@@ -161,11 +177,13 @@
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% loop_detected_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type loop_detected_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% not_acceptable_exception() :: #{
@@ -173,11 +191,13 @@
 %% }
 -type not_acceptable_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% post_content_request() :: #{
@@ -189,6 +209,7 @@
 %%   <<"sessionAttributes">> => string()
 %% }
 -type post_content_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% post_content_response() :: #{
@@ -213,6 +234,7 @@
 %% }
 -type post_content_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% post_text_request() :: #{
 %%   <<"activeContexts">> => list(active_context()()),
@@ -221,6 +243,7 @@
 %%   <<"sessionAttributes">> => map()
 %% }
 -type post_text_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% post_text_response() :: #{
@@ -241,6 +264,7 @@
 %% }
 -type post_text_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% predicted_intent() :: #{
 %%   <<"intentName">> => string(),
@@ -248,6 +272,7 @@
 %%   <<"slots">> => map()
 %% }
 -type predicted_intent() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_session_request() :: #{
@@ -258,6 +283,7 @@
 %%   <<"sessionAttributes">> => map()
 %% }
 -type put_session_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_session_response() :: #{
@@ -276,11 +302,13 @@
 %% }
 -type put_session_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% request_timeout_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type request_timeout_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% response_card() :: #{
@@ -290,6 +318,7 @@
 %% }
 -type response_card() :: #{binary() => any()}.
 
+
 %% Example:
 %% sentiment_response() :: #{
 %%   <<"sentimentLabel">> => string(),
@@ -297,11 +326,58 @@
 %% }
 -type sentiment_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% unsupported_media_type_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type unsupported_media_type_exception() :: #{binary() => any()}.
+
+-type delete_session_errors() ::
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
+
+-type get_session_errors() ::
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
+
+-type post_content_errors() ::
+    unsupported_media_type_exception() | 
+    request_timeout_exception() | 
+    not_found_exception() | 
+    not_acceptable_exception() | 
+    loop_detected_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    dependency_failed_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    bad_gateway_exception().
+
+-type post_text_errors() ::
+    not_found_exception() | 
+    loop_detected_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    dependency_failed_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    bad_gateway_exception().
+
+-type put_session_errors() ::
+    not_found_exception() | 
+    not_acceptable_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    dependency_failed_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    bad_gateway_exception().
 
 %%====================================================================
 %% API
@@ -311,22 +387,14 @@
 -spec delete_session(map(), binary() | list(), binary() | list(), binary() | list(), delete_session_request()) ->
     {ok, delete_session_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_session_errors(), tuple()}.
 delete_session(Client, BotAlias, BotName, UserId, Input) ->
     delete_session(Client, BotAlias, BotName, UserId, Input, []).
 
 -spec delete_session(map(), binary() | list(), binary() | list(), binary() | list(), delete_session_request(), proplists:proplist()) ->
     {ok, delete_session_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_session_errors(), tuple()}.
 delete_session(Client, BotAlias, BotName, UserId, Input0, Options0) ->
     Method = delete,
     Path = ["/bot/", aws_util:encode_uri(BotName), "/alias/", aws_util:encode_uri(BotAlias), "/user/", aws_util:encode_uri(UserId), "/session"],
@@ -354,10 +422,7 @@ delete_session(Client, BotAlias, BotName, UserId, Input0, Options0) ->
 -spec get_session(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_session_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_session_errors(), tuple()}.
 get_session(Client, BotAlias, BotName, UserId)
   when is_map(Client) ->
     get_session(Client, BotAlias, BotName, UserId, #{}, #{}).
@@ -365,10 +430,7 @@ get_session(Client, BotAlias, BotName, UserId)
 -spec get_session(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_session_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_session_errors(), tuple()}.
 get_session(Client, BotAlias, BotName, UserId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_session(Client, BotAlias, BotName, UserId, QueryMap, HeadersMap, []).
@@ -376,10 +438,7 @@ get_session(Client, BotAlias, BotName, UserId, QueryMap, HeadersMap)
 -spec get_session(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_session_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_session_errors(), tuple()}.
 get_session(Client, BotAlias, BotName, UserId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bot/", aws_util:encode_uri(BotName), "/alias/", aws_util:encode_uri(BotAlias), "/user/", aws_util:encode_uri(UserId), "/session"],
@@ -469,34 +528,14 @@ get_session(Client, BotAlias, BotName, UserId, QueryMap, HeadersMap, Options0)
 -spec post_content(map(), binary() | list(), binary() | list(), binary() | list(), post_content_request()) ->
     {ok, post_content_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, dependency_failed_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, loop_detected_exception(), tuple()} |
-    {error, not_acceptable_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, unsupported_media_type_exception(), tuple()}.
+    {error, post_content_errors(), tuple()}.
 post_content(Client, BotAlias, BotName, UserId, Input) ->
     post_content(Client, BotAlias, BotName, UserId, Input, []).
 
 -spec post_content(map(), binary() | list(), binary() | list(), binary() | list(), post_content_request(), proplists:proplist()) ->
     {ok, post_content_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, dependency_failed_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, loop_detected_exception(), tuple()} |
-    {error, not_acceptable_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, unsupported_media_type_exception(), tuple()}.
+    {error, post_content_errors(), tuple()}.
 post_content(Client, BotAlias, BotName, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/bot/", aws_util:encode_uri(BotName), "/alias/", aws_util:encode_uri(BotAlias), "/user/", aws_util:encode_uri(UserId), "/content"],
@@ -622,28 +661,14 @@ post_content(Client, BotAlias, BotName, UserId, Input0, Options0) ->
 -spec post_text(map(), binary() | list(), binary() | list(), binary() | list(), post_text_request()) ->
     {ok, post_text_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, dependency_failed_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, loop_detected_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, post_text_errors(), tuple()}.
 post_text(Client, BotAlias, BotName, UserId, Input) ->
     post_text(Client, BotAlias, BotName, UserId, Input, []).
 
 -spec post_text(map(), binary() | list(), binary() | list(), binary() | list(), post_text_request(), proplists:proplist()) ->
     {ok, post_text_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, dependency_failed_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, loop_detected_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, post_text_errors(), tuple()}.
 post_text(Client, BotAlias, BotName, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/bot/", aws_util:encode_uri(BotName), "/alias/", aws_util:encode_uri(BotAlias), "/user/", aws_util:encode_uri(UserId), "/text"],
@@ -678,28 +703,14 @@ post_text(Client, BotAlias, BotName, UserId, Input0, Options0) ->
 -spec put_session(map(), binary() | list(), binary() | list(), binary() | list(), put_session_request()) ->
     {ok, put_session_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, dependency_failed_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_acceptable_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, put_session_errors(), tuple()}.
 put_session(Client, BotAlias, BotName, UserId, Input) ->
     put_session(Client, BotAlias, BotName, UserId, Input, []).
 
 -spec put_session(map(), binary() | list(), binary() | list(), binary() | list(), put_session_request(), proplists:proplist()) ->
     {ok, put_session_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, dependency_failed_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_acceptable_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, put_session_errors(), tuple()}.
 put_session(Client, BotAlias, BotName, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/bot/", aws_util:encode_uri(BotName), "/alias/", aws_util:encode_uri(BotAlias), "/user/", aws_util:encode_uri(UserId), "/session"],

@@ -367,6 +367,112 @@
 %% }
 -type environment_lifecycle() :: #{binary() => any()}.
 
+-type create_environment_ec2_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type create_environment_membership_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type delete_environment_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type delete_environment_membership_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type describe_environment_memberships_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type describe_environment_status_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type describe_environments_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type list_environments_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type list_tags_for_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception().
+
+-type tag_resource_errors() ::
+    bad_request_exception() | 
+    concurrent_access_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception().
+
+-type untag_resource_errors() ::
+    bad_request_exception() | 
+    concurrent_access_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception().
+
+-type update_environment_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type update_environment_membership_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
 
 %%====================================================================
 %% API
@@ -378,13 +484,7 @@
 -spec create_environment_ec2(map(), create_environment_ec2_request()) ->
     {ok, create_environment_ec2_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_environment_ec2_errors(), tuple()}.
 create_environment_ec2(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_environment_ec2(Client, Input, []).
@@ -392,13 +492,7 @@ create_environment_ec2(Client, Input)
 -spec create_environment_ec2(map(), create_environment_ec2_request(), proplists:proplist()) ->
     {ok, create_environment_ec2_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_environment_ec2_errors(), tuple()}.
 create_environment_ec2(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEnvironmentEC2">>, Input, Options).
@@ -407,13 +501,7 @@ create_environment_ec2(Client, Input, Options)
 -spec create_environment_membership(map(), create_environment_membership_request()) ->
     {ok, create_environment_membership_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_environment_membership_errors(), tuple()}.
 create_environment_membership(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_environment_membership(Client, Input, []).
@@ -421,13 +509,7 @@ create_environment_membership(Client, Input)
 -spec create_environment_membership(map(), create_environment_membership_request(), proplists:proplist()) ->
     {ok, create_environment_membership_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_environment_membership_errors(), tuple()}.
 create_environment_membership(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEnvironmentMembership">>, Input, Options).
@@ -439,13 +521,7 @@ create_environment_membership(Client, Input, Options)
 -spec delete_environment(map(), delete_environment_request()) ->
     {ok, delete_environment_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_environment_errors(), tuple()}.
 delete_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_environment(Client, Input, []).
@@ -453,13 +529,7 @@ delete_environment(Client, Input)
 -spec delete_environment(map(), delete_environment_request(), proplists:proplist()) ->
     {ok, delete_environment_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_environment_errors(), tuple()}.
 delete_environment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEnvironment">>, Input, Options).
@@ -468,13 +538,7 @@ delete_environment(Client, Input, Options)
 -spec delete_environment_membership(map(), delete_environment_membership_request()) ->
     {ok, delete_environment_membership_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_environment_membership_errors(), tuple()}.
 delete_environment_membership(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_environment_membership(Client, Input, []).
@@ -482,13 +546,7 @@ delete_environment_membership(Client, Input)
 -spec delete_environment_membership(map(), delete_environment_membership_request(), proplists:proplist()) ->
     {ok, delete_environment_membership_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_environment_membership_errors(), tuple()}.
 delete_environment_membership(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEnvironmentMembership">>, Input, Options).
@@ -498,13 +556,7 @@ delete_environment_membership(Client, Input, Options)
 -spec describe_environment_memberships(map(), describe_environment_memberships_request()) ->
     {ok, describe_environment_memberships_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_environment_memberships_errors(), tuple()}.
 describe_environment_memberships(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_environment_memberships(Client, Input, []).
@@ -512,13 +564,7 @@ describe_environment_memberships(Client, Input)
 -spec describe_environment_memberships(map(), describe_environment_memberships_request(), proplists:proplist()) ->
     {ok, describe_environment_memberships_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_environment_memberships_errors(), tuple()}.
 describe_environment_memberships(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEnvironmentMemberships">>, Input, Options).
@@ -527,13 +573,7 @@ describe_environment_memberships(Client, Input, Options)
 -spec describe_environment_status(map(), describe_environment_status_request()) ->
     {ok, describe_environment_status_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_environment_status_errors(), tuple()}.
 describe_environment_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_environment_status(Client, Input, []).
@@ -541,13 +581,7 @@ describe_environment_status(Client, Input)
 -spec describe_environment_status(map(), describe_environment_status_request(), proplists:proplist()) ->
     {ok, describe_environment_status_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_environment_status_errors(), tuple()}.
 describe_environment_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEnvironmentStatus">>, Input, Options).
@@ -556,13 +590,7 @@ describe_environment_status(Client, Input, Options)
 -spec describe_environments(map(), describe_environments_request()) ->
     {ok, describe_environments_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_environments_errors(), tuple()}.
 describe_environments(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_environments(Client, Input, []).
@@ -570,13 +598,7 @@ describe_environments(Client, Input)
 -spec describe_environments(map(), describe_environments_request(), proplists:proplist()) ->
     {ok, describe_environments_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_environments_errors(), tuple()}.
 describe_environments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEnvironments">>, Input, Options).
@@ -585,13 +607,7 @@ describe_environments(Client, Input, Options)
 -spec list_environments(map(), list_environments_request()) ->
     {ok, list_environments_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_environments(Client, Input, []).
@@ -599,13 +615,7 @@ list_environments(Client, Input)
 -spec list_environments(map(), list_environments_request(), proplists:proplist()) ->
     {ok, list_environments_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEnvironments">>, Input, Options).
@@ -615,9 +625,7 @@ list_environments(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -625,9 +633,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -640,10 +646,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_access_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -651,10 +654,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_access_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -663,10 +663,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_access_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -674,10 +671,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_access_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -686,13 +680,7 @@ untag_resource(Client, Input, Options)
 -spec update_environment(map(), update_environment_request()) ->
     {ok, update_environment_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_environment_errors(), tuple()}.
 update_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_environment(Client, Input, []).
@@ -700,13 +688,7 @@ update_environment(Client, Input)
 -spec update_environment(map(), update_environment_request(), proplists:proplist()) ->
     {ok, update_environment_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_environment_errors(), tuple()}.
 update_environment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEnvironment">>, Input, Options).
@@ -717,13 +699,7 @@ update_environment(Client, Input, Options)
 -spec update_environment_membership(map(), update_environment_membership_request()) ->
     {ok, update_environment_membership_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_environment_membership_errors(), tuple()}.
 update_environment_membership(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_environment_membership(Client, Input, []).
@@ -731,13 +707,7 @@ update_environment_membership(Client, Input)
 -spec update_environment_membership(map(), update_environment_membership_request(), proplists:proplist()) ->
     {ok, update_environment_membership_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_environment_membership_errors(), tuple()}.
 update_environment_membership(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEnvironmentMembership">>, Input, Options).

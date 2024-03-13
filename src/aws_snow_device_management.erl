@@ -52,12 +52,14 @@
 %% }
 -type physical_network_interface() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_devices_output() :: #{
 %%   <<"devices">> => list(device_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_devices_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_executions_output() :: #{
@@ -66,11 +68,13 @@
 %% }
 -type list_executions_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_device_ec2_output() :: #{
 %%   <<"instances">> => list(instance_summary()())
 %% }
 -type describe_device_ec2_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_task_input() :: #{
@@ -81,9 +85,11 @@
 %%   <<"targets">> := list([string()]())
 %% }
 -type create_task_input() :: #{binary() => any()}.
+
 %% Example:
 %% describe_execution_input() :: #{}
 -type describe_execution_input() :: #{}.
+
 
 %% Example:
 %% describe_execution_output() :: #{
@@ -96,6 +102,7 @@
 %% }
 -type describe_execution_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% instance_block_device_mapping() :: #{
 %%   <<"deviceName">> => [string()],
@@ -103,11 +110,13 @@
 %% }
 -type instance_block_device_mapping() :: #{binary() => any()}.
 
+
 %% Example:
 %% cancel_task_output() :: #{
 %%   <<"taskId">> => [string()]
 %% }
 -type cancel_task_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% task_summary() :: #{
@@ -117,9 +126,11 @@
 %%   <<"taskId">> => string()
 %% }
 -type task_summary() :: #{binary() => any()}.
+
 %% Example:
 %% describe_device_input() :: #{}
 -type describe_device_input() :: #{}.
+
 
 %% Example:
 %% create_task_output() :: #{
@@ -127,6 +138,7 @@
 %%   <<"taskId">> => [string()]
 %% }
 -type create_task_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_summary() :: #{
@@ -136,11 +148,13 @@
 %% }
 -type resource_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_output() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% capacity() :: #{
@@ -152,6 +166,7 @@
 %% }
 -type capacity() :: #{binary() => any()}.
 
+
 %% Example:
 %% execution_summary() :: #{
 %%   <<"executionId">> => string(),
@@ -161,6 +176,7 @@
 %% }
 -type execution_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tasks_output() :: #{
 %%   <<"nextToken">> => string(),
@@ -168,17 +184,20 @@
 %% }
 -type list_tasks_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_device_output() :: #{
@@ -196,12 +215,14 @@
 %% }
 -type describe_device_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% cpu_options() :: #{
 %%   <<"coreCount">> => [integer()],
 %%   <<"threadsPerCore">> => [integer()]
 %% }
 -type cpu_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_devices_input() :: #{
@@ -211,11 +232,13 @@
 %% }
 -type list_devices_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_input() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% instance_state() :: #{
@@ -223,9 +246,11 @@
 %%   <<"name">> => string()
 %% }
 -type instance_state() :: #{binary() => any()}.
+
 %% Example:
 %% reboot() :: #{}
 -type reboot() :: #{}.
+
 
 %% Example:
 %% list_device_resources_input() :: #{
@@ -234,6 +259,7 @@
 %%   <<"type">> => [string()]
 %% }
 -type list_device_resources_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% device_summary() :: #{
@@ -244,17 +270,20 @@
 %% }
 -type device_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_device_ec2_input() :: #{
 %%   <<"instanceIds">> := list([string()]())
 %% }
 -type describe_device_ec2_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% instance() :: #{
@@ -274,14 +303,17 @@
 %% }
 -type instance() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 %% Example:
 %% unlock() :: #{}
 -type unlock() :: #{}.
+
 
 %% Example:
 %% untag_resource_input() :: #{
@@ -289,12 +321,14 @@
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_device_resources_output() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"resources">> => list(resource_summary()())
 %% }
 -type list_device_resources_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_task_output() :: #{
@@ -310,6 +344,7 @@
 %% }
 -type describe_task_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% ebs_instance_block_device() :: #{
 %%   <<"attachTime">> => [non_neg_integer()],
@@ -319,17 +354,21 @@
 %% }
 -type ebs_instance_block_device() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_input() :: #{}
 -type list_tags_for_resource_input() :: #{}.
+
 %% Example:
 %% describe_task_input() :: #{}
 -type describe_task_input() :: #{}.
+
 
 %% Example:
 %% instance_summary() :: #{
@@ -338,11 +377,13 @@
 %% }
 -type instance_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% security_group_identifier() :: #{
@@ -350,6 +391,7 @@
 %%   <<"groupName">> => [string()]
 %% }
 -type security_group_identifier() :: #{binary() => any()}.
+
 
 %% Example:
 %% software_information() :: #{
@@ -359,6 +401,7 @@
 %% }
 -type software_information() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tasks_input() :: #{
 %%   <<"maxResults">> => integer(),
@@ -366,6 +409,7 @@
 %%   <<"state">> => string()
 %% }
 -type list_tasks_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_executions_input() :: #{
@@ -375,9 +419,94 @@
 %%   <<"taskId">> := string()
 %% }
 -type list_executions_input() :: #{binary() => any()}.
+
 %% Example:
 %% cancel_task_input() :: #{}
 -type cancel_task_input() :: #{}.
+
+-type cancel_task_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_task_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type describe_device_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_device_ec2_instances_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_execution_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_task_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_device_resources_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_devices_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_executions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tasks_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -393,22 +522,14 @@
 -spec cancel_task(map(), binary() | list(), cancel_task_input()) ->
     {ok, cancel_task_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_task_errors(), tuple()}.
 cancel_task(Client, TaskId, Input) ->
     cancel_task(Client, TaskId, Input, []).
 
 -spec cancel_task(map(), binary() | list(), cancel_task_input(), proplists:proplist()) ->
     {ok, cancel_task_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_task_errors(), tuple()}.
 cancel_task(Client, TaskId, Input0, Options0) ->
     Method = post,
     Path = ["/task/", aws_util:encode_uri(TaskId), "/cancel"],
@@ -436,24 +557,14 @@ cancel_task(Client, TaskId, Input0, Options0) ->
 -spec create_task(map(), create_task_input()) ->
     {ok, create_task_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_task_errors(), tuple()}.
 create_task(Client, Input) ->
     create_task(Client, Input, []).
 
 -spec create_task(map(), create_task_input(), proplists:proplist()) ->
     {ok, create_task_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_task_errors(), tuple()}.
 create_task(Client, Input0, Options0) ->
     Method = post,
     Path = ["/task"],
@@ -482,22 +593,14 @@ create_task(Client, Input0, Options0) ->
 -spec describe_device(map(), binary() | list(), describe_device_input()) ->
     {ok, describe_device_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_device_errors(), tuple()}.
 describe_device(Client, ManagedDeviceId, Input) ->
     describe_device(Client, ManagedDeviceId, Input, []).
 
 -spec describe_device(map(), binary() | list(), describe_device_input(), proplists:proplist()) ->
     {ok, describe_device_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_device_errors(), tuple()}.
 describe_device(Client, ManagedDeviceId, Input0, Options0) ->
     Method = post,
     Path = ["/managed-device/", aws_util:encode_uri(ManagedDeviceId), "/describe"],
@@ -529,22 +632,14 @@ describe_device(Client, ManagedDeviceId, Input0, Options0) ->
 -spec describe_device_ec2_instances(map(), binary() | list(), describe_device_ec2_input()) ->
     {ok, describe_device_ec2_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_device_ec2_instances_errors(), tuple()}.
 describe_device_ec2_instances(Client, ManagedDeviceId, Input) ->
     describe_device_ec2_instances(Client, ManagedDeviceId, Input, []).
 
 -spec describe_device_ec2_instances(map(), binary() | list(), describe_device_ec2_input(), proplists:proplist()) ->
     {ok, describe_device_ec2_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_device_ec2_instances_errors(), tuple()}.
 describe_device_ec2_instances(Client, ManagedDeviceId, Input0, Options0) ->
     Method = post,
     Path = ["/managed-device/", aws_util:encode_uri(ManagedDeviceId), "/resources/ec2/describe"],
@@ -572,22 +667,14 @@ describe_device_ec2_instances(Client, ManagedDeviceId, Input0, Options0) ->
 -spec describe_execution(map(), binary() | list(), binary() | list(), describe_execution_input()) ->
     {ok, describe_execution_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_execution_errors(), tuple()}.
 describe_execution(Client, ManagedDeviceId, TaskId, Input) ->
     describe_execution(Client, ManagedDeviceId, TaskId, Input, []).
 
 -spec describe_execution(map(), binary() | list(), binary() | list(), describe_execution_input(), proplists:proplist()) ->
     {ok, describe_execution_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_execution_errors(), tuple()}.
 describe_execution(Client, ManagedDeviceId, TaskId, Input0, Options0) ->
     Method = post,
     Path = ["/task/", aws_util:encode_uri(TaskId), "/execution/", aws_util:encode_uri(ManagedDeviceId), ""],
@@ -614,22 +701,14 @@ describe_execution(Client, ManagedDeviceId, TaskId, Input0, Options0) ->
 -spec describe_task(map(), binary() | list(), describe_task_input()) ->
     {ok, describe_task_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_task_errors(), tuple()}.
 describe_task(Client, TaskId, Input) ->
     describe_task(Client, TaskId, Input, []).
 
 -spec describe_task(map(), binary() | list(), describe_task_input(), proplists:proplist()) ->
     {ok, describe_task_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_task_errors(), tuple()}.
 describe_task(Client, TaskId, Input0, Options0) ->
     Method = post,
     Path = ["/task/", aws_util:encode_uri(TaskId), ""],
@@ -659,11 +738,7 @@ describe_task(Client, TaskId, Input0, Options0) ->
 -spec list_device_resources(map(), binary() | list()) ->
     {ok, list_device_resources_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_device_resources_errors(), tuple()}.
 list_device_resources(Client, ManagedDeviceId)
   when is_map(Client) ->
     list_device_resources(Client, ManagedDeviceId, #{}, #{}).
@@ -671,11 +746,7 @@ list_device_resources(Client, ManagedDeviceId)
 -spec list_device_resources(map(), binary() | list(), map(), map()) ->
     {ok, list_device_resources_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_device_resources_errors(), tuple()}.
 list_device_resources(Client, ManagedDeviceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_device_resources(Client, ManagedDeviceId, QueryMap, HeadersMap, []).
@@ -683,11 +754,7 @@ list_device_resources(Client, ManagedDeviceId, QueryMap, HeadersMap)
 -spec list_device_resources(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_device_resources_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_device_resources_errors(), tuple()}.
 list_device_resources(Client, ManagedDeviceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/managed-device/", aws_util:encode_uri(ManagedDeviceId), "/resources"],
@@ -716,10 +783,7 @@ list_device_resources(Client, ManagedDeviceId, QueryMap, HeadersMap, Options0)
 -spec list_devices(map()) ->
     {ok, list_devices_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_devices_errors(), tuple()}.
 list_devices(Client)
   when is_map(Client) ->
     list_devices(Client, #{}, #{}).
@@ -727,10 +791,7 @@ list_devices(Client)
 -spec list_devices(map(), map(), map()) ->
     {ok, list_devices_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_devices_errors(), tuple()}.
 list_devices(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_devices(Client, QueryMap, HeadersMap, []).
@@ -738,10 +799,7 @@ list_devices(Client, QueryMap, HeadersMap)
 -spec list_devices(map(), map(), map(), proplists:proplist()) ->
     {ok, list_devices_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_devices_errors(), tuple()}.
 list_devices(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/managed-devices"],
@@ -768,11 +826,7 @@ list_devices(Client, QueryMap, HeadersMap, Options0)
 -spec list_executions(map(), binary() | list()) ->
     {ok, list_executions_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_executions_errors(), tuple()}.
 list_executions(Client, TaskId)
   when is_map(Client) ->
     list_executions(Client, TaskId, #{}, #{}).
@@ -780,11 +834,7 @@ list_executions(Client, TaskId)
 -spec list_executions(map(), binary() | list(), map(), map()) ->
     {ok, list_executions_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_executions_errors(), tuple()}.
 list_executions(Client, TaskId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_executions(Client, TaskId, QueryMap, HeadersMap, []).
@@ -792,11 +842,7 @@ list_executions(Client, TaskId, QueryMap, HeadersMap)
 -spec list_executions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_executions_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_executions_errors(), tuple()}.
 list_executions(Client, TaskId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/executions"],
@@ -824,9 +870,7 @@ list_executions(Client, TaskId, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -834,9 +878,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -844,9 +886,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -867,10 +907,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec list_tasks(map()) ->
     {ok, list_tasks_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tasks_errors(), tuple()}.
 list_tasks(Client)
   when is_map(Client) ->
     list_tasks(Client, #{}, #{}).
@@ -878,10 +915,7 @@ list_tasks(Client)
 -spec list_tasks(map(), map(), map()) ->
     {ok, list_tasks_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tasks_errors(), tuple()}.
 list_tasks(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tasks(Client, QueryMap, HeadersMap, []).
@@ -889,10 +923,7 @@ list_tasks(Client, QueryMap, HeadersMap)
 -spec list_tasks(map(), map(), map(), proplists:proplist()) ->
     {ok, list_tasks_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tasks_errors(), tuple()}.
 list_tasks(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tasks"],
@@ -919,18 +950,14 @@ list_tasks(Client, QueryMap, HeadersMap, Options0)
 -spec tag_resource(map(), binary() | list(), tag_resource_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -957,18 +984,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],

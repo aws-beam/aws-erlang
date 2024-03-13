@@ -30,6 +30,7 @@
 %% }
 -type recognized_bot_member() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_session_response() :: #{
 %%   <<"interpretations">> => list(interpretation()()),
@@ -38,6 +39,7 @@
 %%   <<"sessionState">> => session_state()
 %% }
 -type get_session_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_session_request() :: #{
@@ -48,12 +50,14 @@
 %% }
 -type put_session_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% elicit_sub_slot() :: #{
 %%   <<"name">> => string(),
 %%   <<"subSlotToElicit">> => elicit_sub_slot()
 %% }
 -type elicit_sub_slot() :: #{binary() => any()}.
+
 
 %% Example:
 %% recognize_text_request() :: #{
@@ -63,11 +67,13 @@
 %% }
 -type recognize_text_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% bad_gateway_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type bad_gateway_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% slot() :: #{
@@ -78,11 +84,13 @@
 %% }
 -type slot() :: #{binary() => any()}.
 
+
 %% Example:
 %% dependency_failed_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type dependency_failed_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% d_t_m_f_input_event() :: #{
@@ -91,6 +99,7 @@
 %%   <<"inputCharacter">> => string()
 %% }
 -type d_t_m_f_input_event() :: #{binary() => any()}.
+
 
 %% Example:
 %% recognize_utterance_request() :: #{
@@ -102,6 +111,7 @@
 %% }
 -type recognize_utterance_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% value() :: #{
 %%   <<"interpretedValue">> => string(),
@@ -110,6 +120,7 @@
 %% }
 -type value() :: #{binary() => any()}.
 
+
 %% Example:
 %% sentiment_response() :: #{
 %%   <<"sentiment">> => list(any()),
@@ -117,12 +128,14 @@
 %% }
 -type sentiment_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% active_context_time_to_live() :: #{
 %%   <<"timeToLiveInSeconds">> => integer(),
 %%   <<"turnsToLive">> => integer()
 %% }
 -type active_context_time_to_live() :: #{binary() => any()}.
+
 
 %% Example:
 %% text_input_event() :: #{
@@ -132,6 +145,7 @@
 %% }
 -type text_input_event() :: #{binary() => any()}.
 
+
 %% Example:
 %% image_response_card() :: #{
 %%   <<"buttons">> => list(button()()),
@@ -140,9 +154,11 @@
 %%   <<"title">> => string()
 %% }
 -type image_response_card() :: #{binary() => any()}.
+
 %% Example:
 %% get_session_request() :: #{}
 -type get_session_request() :: #{}.
+
 
 %% Example:
 %% put_session_response() :: #{
@@ -155,6 +171,7 @@
 %% }
 -type put_session_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% intent() :: #{
 %%   <<"confirmationState">> => list(any()),
@@ -164,17 +181,20 @@
 %% }
 -type intent() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% sentiment_score() :: #{
@@ -184,6 +204,7 @@
 %%   <<"positive">> => float()
 %% }
 -type sentiment_score() :: #{binary() => any()}.
+
 
 %% Example:
 %% intent_result_event() :: #{
@@ -197,6 +218,7 @@
 %% }
 -type intent_result_event() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_session_response() :: #{
 %%   <<"botAliasId">> => string(),
@@ -206,12 +228,14 @@
 %% }
 -type delete_session_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% text_response_event() :: #{
 %%   <<"eventId">> => string(),
 %%   <<"messages">> => list(message()())
 %% }
 -type text_response_event() :: #{binary() => any()}.
+
 
 %% Example:
 %% active_context() :: #{
@@ -221,11 +245,13 @@
 %% }
 -type active_context() :: #{binary() => any()}.
 
+
 %% Example:
 %% confidence_score() :: #{
 %%   <<"score">> => float()
 %% }
 -type confidence_score() :: #{binary() => any()}.
+
 
 %% Example:
 %% disconnection_event() :: #{
@@ -233,6 +259,7 @@
 %%   <<"eventId">> => string()
 %% }
 -type disconnection_event() :: #{binary() => any()}.
+
 
 %% Example:
 %% session_state() :: #{
@@ -245,6 +272,7 @@
 %% }
 -type session_state() :: #{binary() => any()}.
 
+
 %% Example:
 %% recognize_text_response() :: #{
 %%   <<"interpretations">> => list(interpretation()()),
@@ -256,6 +284,7 @@
 %% }
 -type recognize_text_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% audio_response_event() :: #{
 %%   <<"audioChunk">> => binary(),
@@ -264,11 +293,13 @@
 %% }
 -type audio_response_event() :: #{binary() => any()}.
 
+
 %% Example:
 %% runtime_hint_value() :: #{
 %%   <<"phrase">> => string()
 %% }
 -type runtime_hint_value() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_conversation_request() :: #{
@@ -276,6 +307,7 @@
 %%   <<"requestEventStream">> := list()
 %% }
 -type start_conversation_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% recognize_utterance_response() :: #{
@@ -292,17 +324,20 @@
 %% }
 -type recognize_utterance_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% configuration_event() :: #{
@@ -316,6 +351,7 @@
 %% }
 -type configuration_event() :: #{binary() => any()}.
 
+
 %% Example:
 %% playback_interruption_event() :: #{
 %%   <<"causedByEventId">> => string(),
@@ -324,17 +360,20 @@
 %% }
 -type playback_interruption_event() :: #{binary() => any()}.
 
+
 %% Example:
 %% runtime_hints() :: #{
 %%   <<"slotHints">> => map()
 %% }
 -type runtime_hints() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% playback_completion_event() :: #{
@@ -343,11 +382,13 @@
 %% }
 -type playback_completion_event() :: #{binary() => any()}.
 
+
 %% Example:
 %% heartbeat_event() :: #{
 %%   <<"eventId">> => string()
 %% }
 -type heartbeat_event() :: #{binary() => any()}.
+
 
 %% Example:
 %% throttling_exception() :: #{
@@ -355,11 +396,13 @@
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_conversation_response() :: #{
 %%   <<"responseEventStream">> => list()
 %% }
 -type start_conversation_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% button() :: #{
@@ -367,6 +410,7 @@
 %%   <<"value">> => string()
 %% }
 -type button() :: #{binary() => any()}.
+
 
 %% Example:
 %% dialog_action() :: #{
@@ -377,6 +421,7 @@
 %% }
 -type dialog_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% runtime_hint_details() :: #{
 %%   <<"runtimeHintValues">> => list(runtime_hint_value()()),
@@ -384,15 +429,18 @@
 %% }
 -type runtime_hint_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% transcript_event() :: #{
 %%   <<"eventId">> => string(),
 %%   <<"transcript">> => string()
 %% }
 -type transcript_event() :: #{binary() => any()}.
+
 %% Example:
 %% delete_session_request() :: #{}
 -type delete_session_request() :: #{}.
+
 
 %% Example:
 %% interpretation() :: #{
@@ -403,6 +451,7 @@
 %% }
 -type interpretation() :: #{binary() => any()}.
 
+
 %% Example:
 %% audio_input_event() :: #{
 %%   <<"audioChunk">> => binary(),
@@ -412,6 +461,7 @@
 %% }
 -type audio_input_event() :: #{binary() => any()}.
 
+
 %% Example:
 %% message() :: #{
 %%   <<"content">> => string(),
@@ -419,6 +469,57 @@
 %%   <<"imageResponseCard">> => image_response_card()
 %% }
 -type message() :: #{binary() => any()}.
+
+-type delete_session_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_session_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type put_session_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    dependency_failed_exception() | 
+    bad_gateway_exception().
+
+-type recognize_text_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    dependency_failed_exception() | 
+    bad_gateway_exception().
+
+-type recognize_utterance_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    dependency_failed_exception() | 
+    bad_gateway_exception().
+
+-type start_conversation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 %%====================================================================
 %% API
@@ -445,24 +546,14 @@
 -spec delete_session(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_session_request()) ->
     {ok, delete_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_session_errors(), tuple()}.
 delete_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input) ->
     delete_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input, []).
 
 -spec delete_session(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_session_request(), proplists:proplist()) ->
     {ok, delete_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_session_errors(), tuple()}.
 delete_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0) ->
     Method = delete,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botAliases/", aws_util:encode_uri(BotAliasId), "/botLocales/", aws_util:encode_uri(LocaleId), "/sessions/", aws_util:encode_uri(SessionId), ""],
@@ -499,11 +590,7 @@ delete_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0)
 -spec get_session(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_session_errors(), tuple()}.
 get_session(Client, BotAliasId, BotId, LocaleId, SessionId)
   when is_map(Client) ->
     get_session(Client, BotAliasId, BotId, LocaleId, SessionId, #{}, #{}).
@@ -511,11 +598,7 @@ get_session(Client, BotAliasId, BotId, LocaleId, SessionId)
 -spec get_session(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_session_errors(), tuple()}.
 get_session(Client, BotAliasId, BotId, LocaleId, SessionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_session(Client, BotAliasId, BotId, LocaleId, SessionId, QueryMap, HeadersMap, []).
@@ -523,11 +606,7 @@ get_session(Client, BotAliasId, BotId, LocaleId, SessionId, QueryMap, HeadersMap
 -spec get_session(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_session_errors(), tuple()}.
 get_session(Client, BotAliasId, BotId, LocaleId, SessionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botAliases/", aws_util:encode_uri(BotAliasId), "/botLocales/", aws_util:encode_uri(LocaleId), "/sessions/", aws_util:encode_uri(SessionId), ""],
@@ -553,28 +632,14 @@ get_session(Client, BotAliasId, BotId, LocaleId, SessionId, QueryMap, HeadersMap
 -spec put_session(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), put_session_request()) ->
     {ok, put_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, dependency_failed_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_session_errors(), tuple()}.
 put_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input) ->
     put_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input, []).
 
 -spec put_session(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), put_session_request(), proplists:proplist()) ->
     {ok, put_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, dependency_failed_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_session_errors(), tuple()}.
 put_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botAliases/", aws_util:encode_uri(BotAliasId), "/botLocales/", aws_util:encode_uri(LocaleId), "/sessions/", aws_util:encode_uri(SessionId), ""],
@@ -654,28 +719,14 @@ put_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0) ->
 -spec recognize_text(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), recognize_text_request()) ->
     {ok, recognize_text_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, dependency_failed_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, recognize_text_errors(), tuple()}.
 recognize_text(Client, BotAliasId, BotId, LocaleId, SessionId, Input) ->
     recognize_text(Client, BotAliasId, BotId, LocaleId, SessionId, Input, []).
 
 -spec recognize_text(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), recognize_text_request(), proplists:proplist()) ->
     {ok, recognize_text_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, dependency_failed_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, recognize_text_errors(), tuple()}.
 recognize_text(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botAliases/", aws_util:encode_uri(BotAliasId), "/botLocales/", aws_util:encode_uri(LocaleId), "/sessions/", aws_util:encode_uri(SessionId), "/text"],
@@ -756,28 +807,14 @@ recognize_text(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0)
 -spec recognize_utterance(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), recognize_utterance_request()) ->
     {ok, recognize_utterance_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, dependency_failed_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, recognize_utterance_errors(), tuple()}.
 recognize_utterance(Client, BotAliasId, BotId, LocaleId, SessionId, Input) ->
     recognize_utterance(Client, BotAliasId, BotId, LocaleId, SessionId, Input, []).
 
 -spec recognize_utterance(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), recognize_utterance_request(), proplists:proplist()) ->
     {ok, recognize_utterance_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, dependency_failed_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, recognize_utterance_errors(), tuple()}.
 recognize_utterance(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botAliases/", aws_util:encode_uri(BotAliasId), "/botLocales/", aws_util:encode_uri(LocaleId), "/sessions/", aws_util:encode_uri(SessionId), "/utterance"],
@@ -888,20 +925,14 @@ recognize_utterance(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Opti
 -spec start_conversation(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), start_conversation_request()) ->
     {ok, start_conversation_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_conversation_errors(), tuple()}.
 start_conversation(Client, BotAliasId, BotId, LocaleId, SessionId, Input) ->
     start_conversation(Client, BotAliasId, BotId, LocaleId, SessionId, Input, []).
 
 -spec start_conversation(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), start_conversation_request(), proplists:proplist()) ->
     {ok, start_conversation_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_conversation_errors(), tuple()}.
 start_conversation(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botAliases/", aws_util:encode_uri(BotAliasId), "/botLocales/", aws_util:encode_uri(LocaleId), "/sessions/", aws_util:encode_uri(SessionId), "/conversation"],

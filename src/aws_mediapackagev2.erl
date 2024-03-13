@@ -99,21 +99,26 @@
 %%   <<"Policy">> := string()
 %% }
 -type put_channel_policy_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_channel_request() :: #{}
 -type delete_channel_request() :: #{}.
+
 %% Example:
 %% get_channel_request() :: #{}
 -type get_channel_request() :: #{}.
+
 %% Example:
 %% put_channel_policy_response() :: #{}
 -type put_channel_policy_response() :: #{}.
+
 
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"Tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_origin_endpoint_request() :: #{
@@ -129,6 +134,7 @@
 %% }
 -type create_origin_endpoint_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% channel_list_configuration() :: #{
 %%   <<"Arn">> => [string()],
@@ -139,6 +145,7 @@
 %%   <<"ModifiedAt">> => [non_neg_integer()]
 %% }
 -type channel_list_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_channel_response() :: #{
@@ -154,6 +161,7 @@
 %% }
 -type create_channel_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% channel_group_list_configuration() :: #{
 %%   <<"Arn">> => [string()],
@@ -163,9 +171,11 @@
 %%   <<"ModifiedAt">> => [non_neg_integer()]
 %% }
 -type channel_group_list_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% delete_channel_response() :: #{}
 -type delete_channel_response() :: #{}.
+
 
 %% Example:
 %% list_hls_manifest_configuration() :: #{
@@ -174,6 +184,7 @@
 %%   <<"Url">> => [string()]
 %% }
 -type list_hls_manifest_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_origin_endpoint_response() :: #{
@@ -194,6 +205,7 @@
 %% }
 -type create_origin_endpoint_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_hls_manifest_configuration() :: #{
 %%   <<"ChildManifestName">> => string(),
@@ -204,6 +216,7 @@
 %%   <<"ScteHls">> => scte_hls()
 %% }
 -type create_hls_manifest_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_origin_endpoint_request() :: #{
@@ -216,21 +229,26 @@
 %%   <<"StartoverWindowSeconds">> => [integer()]
 %% }
 -type update_origin_endpoint_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_channel_policy_request() :: #{}
 -type delete_channel_policy_request() :: #{}.
+
 
 %% Example:
 %% put_origin_endpoint_policy_request() :: #{
 %%   <<"Policy">> := string()
 %% }
 -type put_origin_endpoint_policy_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_origin_endpoint_response() :: #{}
 -type delete_origin_endpoint_response() :: #{}.
+
 %% Example:
 %% delete_origin_endpoint_request() :: #{}
 -type delete_origin_endpoint_request() :: #{}.
+
 
 %% Example:
 %% get_low_latency_hls_manifest_configuration() :: #{
@@ -244,6 +262,7 @@
 %% }
 -type get_low_latency_hls_manifest_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_hls_manifest_configuration() :: #{
 %%   <<"ChildManifestName">> => string(),
@@ -256,11 +275,13 @@
 %% }
 -type get_hls_manifest_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_channel_groups_request() :: #{
@@ -268,6 +289,7 @@
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_channel_groups_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% segment() :: #{
@@ -281,18 +303,22 @@
 %% }
 -type segment() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_origin_endpoints_response() :: #{
 %%   <<"Items">> => list(origin_endpoint_list_configuration()()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_origin_endpoints_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_channel_group_request() :: #{}
 -type delete_channel_group_request() :: #{}.
+
 %% Example:
 %% put_origin_endpoint_policy_response() :: #{}
 -type put_origin_endpoint_policy_response() :: #{}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -301,12 +327,14 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => [string()],
 %%   <<"ResourceTypeNotFound">> => list(any())
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_channel_group_request() :: #{
@@ -317,20 +345,25 @@
 %% }
 -type create_channel_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_origin_endpoint_policy_response() :: #{}
 -type delete_origin_endpoint_policy_response() :: #{}.
+
 %% Example:
 %% get_origin_endpoint_policy_request() :: #{}
 -type get_origin_endpoint_policy_request() :: #{}.
+
 %% Example:
 %% delete_channel_policy_response() :: #{}
 -type delete_channel_policy_response() :: #{}.
+
 
 %% Example:
 %% update_channel_group_request() :: #{
@@ -338,6 +371,7 @@
 %%   <<"ETag">> => string()
 %% }
 -type update_channel_group_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% speke_key_provider() :: #{
@@ -349,6 +383,7 @@
 %% }
 -type speke_key_provider() :: #{binary() => any()}.
 
+
 %% Example:
 %% encryption() :: #{
 %%   <<"ConstantInitializationVector">> => [string()],
@@ -358,15 +393,18 @@
 %% }
 -type encryption() :: #{binary() => any()}.
 
+
 %% Example:
 %% ingest_endpoint() :: #{
 %%   <<"Id">> => [string()],
 %%   <<"Url">> => [string()]
 %% }
 -type ingest_endpoint() :: #{binary() => any()}.
+
 %% Example:
 %% delete_channel_group_response() :: #{}
 -type delete_channel_group_response() :: #{}.
+
 
 %% Example:
 %% create_channel_request() :: #{
@@ -377,6 +415,7 @@
 %% }
 -type create_channel_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% filter_configuration() :: #{
 %%   <<"End">> => [non_neg_integer()],
@@ -386,11 +425,13 @@
 %% }
 -type filter_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_channel_policy_response() :: #{
@@ -400,15 +441,18 @@
 %% }
 -type get_channel_policy_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_channels_response() :: #{
 %%   <<"Items">> => list(channel_list_configuration()()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_channels_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_origin_endpoint_policy_request() :: #{}
 -type delete_origin_endpoint_policy_request() :: #{}.
+
 
 %% Example:
 %% update_channel_group_response() :: #{
@@ -423,12 +467,14 @@
 %% }
 -type update_channel_group_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_channel_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"ETag">> => string()
 %% }
 -type update_channel_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% encryption_contract_configuration() :: #{
@@ -437,11 +483,13 @@
 %% }
 -type encryption_contract_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_channel_groups_response() :: #{
@@ -450,11 +498,13 @@
 %% }
 -type list_channel_groups_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% encryption_method() :: #{
@@ -463,11 +513,13 @@
 %% }
 -type encryption_method() :: #{binary() => any()}.
 
+
 %% Example:
 %% scte_hls() :: #{
 %%   <<"AdMarkerHls">> => list(any())
 %% }
 -type scte_hls() :: #{binary() => any()}.
+
 
 %% Example:
 %% validation_exception() :: #{
@@ -475,15 +527,18 @@
 %%   <<"ValidationExceptionType">> => list(any())
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_low_latency_hls_manifest_configuration() :: #{
@@ -492,15 +547,18 @@
 %%   <<"Url">> => [string()]
 %% }
 -type list_low_latency_hls_manifest_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% get_channel_group_request() :: #{}
 -type get_channel_group_request() :: #{}.
+
 
 %% Example:
 %% scte() :: #{
 %%   <<"ScteFilter">> => list(list(any())())
 %% }
 -type scte() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_channel_response() :: #{
@@ -515,9 +573,11 @@
 %%   <<"Tags">> => map()
 %% }
 -type get_channel_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_origin_endpoint_request() :: #{}
 -type get_origin_endpoint_request() :: #{}.
+
 
 %% Example:
 %% update_channel_response() :: #{
@@ -533,6 +593,7 @@
 %% }
 -type update_channel_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% origin_endpoint_list_configuration() :: #{
 %%   <<"Arn">> => [string()],
@@ -547,9 +608,11 @@
 %%   <<"OriginEndpointName">> => string()
 %% }
 -type origin_endpoint_list_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% get_channel_policy_request() :: #{}
 -type get_channel_policy_request() :: #{}.
+
 
 %% Example:
 %% get_channel_group_response() :: #{
@@ -564,6 +627,7 @@
 %% }
 -type get_channel_group_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_low_latency_hls_manifest_configuration() :: #{
 %%   <<"ChildManifestName">> => string(),
@@ -574,6 +638,7 @@
 %%   <<"ScteHls">> => scte_hls()
 %% }
 -type create_low_latency_hls_manifest_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_channel_group_response() :: #{
@@ -587,6 +652,7 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_channel_group_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_origin_endpoint_response() :: #{
@@ -607,6 +673,7 @@
 %% }
 -type update_origin_endpoint_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_channels_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -614,12 +681,14 @@
 %% }
 -type list_channels_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_origin_endpoints_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_origin_endpoints_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_origin_endpoint_policy_response() :: #{
@@ -629,6 +698,7 @@
 %%   <<"Policy">> => string()
 %% }
 -type get_origin_endpoint_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_origin_endpoint_response() :: #{
@@ -649,6 +719,172 @@
 %% }
 -type get_origin_endpoint_response() :: #{binary() => any()}.
 
+-type create_channel_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_channel_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_origin_endpoint_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_channel_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_channel_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_channel_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_origin_endpoint_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type delete_origin_endpoint_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type get_channel_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_channel_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_channel_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_origin_endpoint_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_origin_endpoint_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_channel_groups_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_channels_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_origin_endpoints_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception().
+
+-type put_channel_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type put_origin_endpoint_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    validation_exception().
+
+-type untag_resource_errors() ::
+    validation_exception().
+
+-type update_channel_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_channel_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_origin_endpoint_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -665,26 +901,14 @@
 -spec create_channel(map(), binary() | list(), create_channel_request()) ->
     {ok, create_channel_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_channel_errors(), tuple()}.
 create_channel(Client, ChannelGroupName, Input) ->
     create_channel(Client, ChannelGroupName, Input, []).
 
 -spec create_channel(map(), binary() | list(), create_channel_request(), proplists:proplist()) ->
     {ok, create_channel_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_channel_errors(), tuple()}.
 create_channel(Client, ChannelGroupName, Input0, Options0) ->
     Method = post,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel"],
@@ -719,26 +943,14 @@ create_channel(Client, ChannelGroupName, Input0, Options0) ->
 -spec create_channel_group(map(), create_channel_group_request()) ->
     {ok, create_channel_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_channel_group_errors(), tuple()}.
 create_channel_group(Client, Input) ->
     create_channel_group(Client, Input, []).
 
 -spec create_channel_group(map(), create_channel_group_request(), proplists:proplist()) ->
     {ok, create_channel_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_channel_group_errors(), tuple()}.
 create_channel_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/channelGroup"],
@@ -773,26 +985,14 @@ create_channel_group(Client, Input0, Options0) ->
 -spec create_origin_endpoint(map(), binary() | list(), binary() | list(), create_origin_endpoint_request()) ->
     {ok, create_origin_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_origin_endpoint_errors(), tuple()}.
 create_origin_endpoint(Client, ChannelGroupName, ChannelName, Input) ->
     create_origin_endpoint(Client, ChannelGroupName, ChannelName, Input, []).
 
 -spec create_origin_endpoint(map(), binary() | list(), binary() | list(), create_origin_endpoint_request(), proplists:proplist()) ->
     {ok, create_origin_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_origin_endpoint_errors(), tuple()}.
 create_origin_endpoint(Client, ChannelGroupName, ChannelName, Input0, Options0) ->
     Method = post,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/originEndpoint"],
@@ -825,22 +1025,14 @@ create_origin_endpoint(Client, ChannelGroupName, ChannelName, Input0, Options0) 
 -spec delete_channel(map(), binary() | list(), binary() | list(), delete_channel_request()) ->
     {ok, delete_channel_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_channel_errors(), tuple()}.
 delete_channel(Client, ChannelGroupName, ChannelName, Input) ->
     delete_channel(Client, ChannelGroupName, ChannelName, Input, []).
 
 -spec delete_channel(map(), binary() | list(), binary() | list(), delete_channel_request(), proplists:proplist()) ->
     {ok, delete_channel_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_channel_errors(), tuple()}.
 delete_channel(Client, ChannelGroupName, ChannelName, Input0, Options0) ->
     Method = delete,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/"],
@@ -872,22 +1064,14 @@ delete_channel(Client, ChannelGroupName, ChannelName, Input0, Options0) ->
 -spec delete_channel_group(map(), binary() | list(), delete_channel_group_request()) ->
     {ok, delete_channel_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_channel_group_errors(), tuple()}.
 delete_channel_group(Client, ChannelGroupName, Input) ->
     delete_channel_group(Client, ChannelGroupName, Input, []).
 
 -spec delete_channel_group(map(), binary() | list(), delete_channel_group_request(), proplists:proplist()) ->
     {ok, delete_channel_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_channel_group_errors(), tuple()}.
 delete_channel_group(Client, ChannelGroupName, Input0, Options0) ->
     Method = delete,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), ""],
@@ -914,22 +1098,14 @@ delete_channel_group(Client, ChannelGroupName, Input0, Options0) ->
 -spec delete_channel_policy(map(), binary() | list(), binary() | list(), delete_channel_policy_request()) ->
     {ok, delete_channel_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_channel_policy_errors(), tuple()}.
 delete_channel_policy(Client, ChannelGroupName, ChannelName, Input) ->
     delete_channel_policy(Client, ChannelGroupName, ChannelName, Input, []).
 
 -spec delete_channel_policy(map(), binary() | list(), binary() | list(), delete_channel_policy_request(), proplists:proplist()) ->
     {ok, delete_channel_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_channel_policy_errors(), tuple()}.
 delete_channel_policy(Client, ChannelGroupName, ChannelName, Input0, Options0) ->
     Method = delete,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/policy"],
@@ -960,20 +1136,14 @@ delete_channel_policy(Client, ChannelGroupName, ChannelName, Input0, Options0) -
 -spec delete_origin_endpoint(map(), binary() | list(), binary() | list(), binary() | list(), delete_origin_endpoint_request()) ->
     {ok, delete_origin_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_origin_endpoint_errors(), tuple()}.
 delete_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input) ->
     delete_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input, []).
 
 -spec delete_origin_endpoint(map(), binary() | list(), binary() | list(), binary() | list(), delete_origin_endpoint_request(), proplists:proplist()) ->
     {ok, delete_origin_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_origin_endpoint_errors(), tuple()}.
 delete_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input0, Options0) ->
     Method = delete,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/originEndpoint/", aws_util:encode_uri(OriginEndpointName), ""],
@@ -1000,22 +1170,14 @@ delete_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName
 -spec delete_origin_endpoint_policy(map(), binary() | list(), binary() | list(), binary() | list(), delete_origin_endpoint_policy_request()) ->
     {ok, delete_origin_endpoint_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_origin_endpoint_policy_errors(), tuple()}.
 delete_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input) ->
     delete_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input, []).
 
 -spec delete_origin_endpoint_policy(map(), binary() | list(), binary() | list(), binary() | list(), delete_origin_endpoint_policy_request(), proplists:proplist()) ->
     {ok, delete_origin_endpoint_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_origin_endpoint_policy_errors(), tuple()}.
 delete_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input0, Options0) ->
     Method = delete,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/originEndpoint/", aws_util:encode_uri(OriginEndpointName), "/policy"],
@@ -1044,11 +1206,7 @@ delete_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpo
 -spec get_channel(map(), binary() | list(), binary() | list()) ->
     {ok, get_channel_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_channel_errors(), tuple()}.
 get_channel(Client, ChannelGroupName, ChannelName)
   when is_map(Client) ->
     get_channel(Client, ChannelGroupName, ChannelName, #{}, #{}).
@@ -1056,11 +1214,7 @@ get_channel(Client, ChannelGroupName, ChannelName)
 -spec get_channel(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_channel_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_channel_errors(), tuple()}.
 get_channel(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_channel(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap, []).
@@ -1068,11 +1222,7 @@ get_channel(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap)
 -spec get_channel(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_channel_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_channel_errors(), tuple()}.
 get_channel(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/"],
@@ -1095,11 +1245,7 @@ get_channel(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap, Options
 -spec get_channel_group(map(), binary() | list()) ->
     {ok, get_channel_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_channel_group_errors(), tuple()}.
 get_channel_group(Client, ChannelGroupName)
   when is_map(Client) ->
     get_channel_group(Client, ChannelGroupName, #{}, #{}).
@@ -1107,11 +1253,7 @@ get_channel_group(Client, ChannelGroupName)
 -spec get_channel_group(map(), binary() | list(), map(), map()) ->
     {ok, get_channel_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_channel_group_errors(), tuple()}.
 get_channel_group(Client, ChannelGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_channel_group(Client, ChannelGroupName, QueryMap, HeadersMap, []).
@@ -1119,11 +1261,7 @@ get_channel_group(Client, ChannelGroupName, QueryMap, HeadersMap)
 -spec get_channel_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_channel_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_channel_group_errors(), tuple()}.
 get_channel_group(Client, ChannelGroupName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), ""],
@@ -1148,11 +1286,7 @@ get_channel_group(Client, ChannelGroupName, QueryMap, HeadersMap, Options0)
 -spec get_channel_policy(map(), binary() | list(), binary() | list()) ->
     {ok, get_channel_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_channel_policy_errors(), tuple()}.
 get_channel_policy(Client, ChannelGroupName, ChannelName)
   when is_map(Client) ->
     get_channel_policy(Client, ChannelGroupName, ChannelName, #{}, #{}).
@@ -1160,11 +1294,7 @@ get_channel_policy(Client, ChannelGroupName, ChannelName)
 -spec get_channel_policy(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_channel_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_channel_policy_errors(), tuple()}.
 get_channel_policy(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_channel_policy(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap, []).
@@ -1172,11 +1302,7 @@ get_channel_policy(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap)
 -spec get_channel_policy(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_channel_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_channel_policy_errors(), tuple()}.
 get_channel_policy(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/policy"],
@@ -1199,11 +1325,7 @@ get_channel_policy(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap, 
 -spec get_origin_endpoint(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_origin_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_origin_endpoint_errors(), tuple()}.
 get_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName)
   when is_map(Client) ->
     get_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, #{}, #{}).
@@ -1211,11 +1333,7 @@ get_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName)
 -spec get_origin_endpoint(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_origin_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_origin_endpoint_errors(), tuple()}.
 get_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, QueryMap, HeadersMap, []).
@@ -1223,11 +1341,7 @@ get_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, Q
 -spec get_origin_endpoint(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_origin_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_origin_endpoint_errors(), tuple()}.
 get_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/originEndpoint/", aws_util:encode_uri(OriginEndpointName), ""],
@@ -1249,11 +1363,7 @@ get_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, Q
 -spec get_origin_endpoint_policy(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_origin_endpoint_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_origin_endpoint_policy_errors(), tuple()}.
 get_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpointName)
   when is_map(Client) ->
     get_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpointName, #{}, #{}).
@@ -1261,11 +1371,7 @@ get_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpoint
 -spec get_origin_endpoint_policy(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_origin_endpoint_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_origin_endpoint_policy_errors(), tuple()}.
 get_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpointName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpointName, QueryMap, HeadersMap, []).
@@ -1273,11 +1379,7 @@ get_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpoint
 -spec get_origin_endpoint_policy(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_origin_endpoint_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_origin_endpoint_policy_errors(), tuple()}.
 get_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpointName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/originEndpoint/", aws_util:encode_uri(OriginEndpointName), "/policy"],
@@ -1300,10 +1402,7 @@ get_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpoint
 -spec list_channel_groups(map()) ->
     {ok, list_channel_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_channel_groups_errors(), tuple()}.
 list_channel_groups(Client)
   when is_map(Client) ->
     list_channel_groups(Client, #{}, #{}).
@@ -1311,10 +1410,7 @@ list_channel_groups(Client)
 -spec list_channel_groups(map(), map(), map()) ->
     {ok, list_channel_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_channel_groups_errors(), tuple()}.
 list_channel_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channel_groups(Client, QueryMap, HeadersMap, []).
@@ -1322,10 +1418,7 @@ list_channel_groups(Client, QueryMap, HeadersMap)
 -spec list_channel_groups(map(), map(), map(), proplists:proplist()) ->
     {ok, list_channel_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_channel_groups_errors(), tuple()}.
 list_channel_groups(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channelGroup"],
@@ -1353,11 +1446,7 @@ list_channel_groups(Client, QueryMap, HeadersMap, Options0)
 -spec list_channels(map(), binary() | list()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_channels_errors(), tuple()}.
 list_channels(Client, ChannelGroupName)
   when is_map(Client) ->
     list_channels(Client, ChannelGroupName, #{}, #{}).
@@ -1365,11 +1454,7 @@ list_channels(Client, ChannelGroupName)
 -spec list_channels(map(), binary() | list(), map(), map()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_channels_errors(), tuple()}.
 list_channels(Client, ChannelGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channels(Client, ChannelGroupName, QueryMap, HeadersMap, []).
@@ -1377,11 +1462,7 @@ list_channels(Client, ChannelGroupName, QueryMap, HeadersMap)
 -spec list_channels(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_channels_errors(), tuple()}.
 list_channels(Client, ChannelGroupName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel"],
@@ -1408,11 +1489,7 @@ list_channels(Client, ChannelGroupName, QueryMap, HeadersMap, Options0)
 -spec list_origin_endpoints(map(), binary() | list(), binary() | list()) ->
     {ok, list_origin_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_origin_endpoints_errors(), tuple()}.
 list_origin_endpoints(Client, ChannelGroupName, ChannelName)
   when is_map(Client) ->
     list_origin_endpoints(Client, ChannelGroupName, ChannelName, #{}, #{}).
@@ -1420,11 +1497,7 @@ list_origin_endpoints(Client, ChannelGroupName, ChannelName)
 -spec list_origin_endpoints(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_origin_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_origin_endpoints_errors(), tuple()}.
 list_origin_endpoints(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_origin_endpoints(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap, []).
@@ -1432,11 +1505,7 @@ list_origin_endpoints(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMa
 -spec list_origin_endpoints(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_origin_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_origin_endpoints_errors(), tuple()}.
 list_origin_endpoints(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/originEndpoint"],
@@ -1462,7 +1531,7 @@ list_origin_endpoints(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMa
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1470,7 +1539,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1478,7 +1547,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1503,24 +1572,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec put_channel_policy(map(), binary() | list(), binary() | list(), put_channel_policy_request()) ->
     {ok, put_channel_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_channel_policy_errors(), tuple()}.
 put_channel_policy(Client, ChannelGroupName, ChannelName, Input) ->
     put_channel_policy(Client, ChannelGroupName, ChannelName, Input, []).
 
 -spec put_channel_policy(map(), binary() | list(), binary() | list(), put_channel_policy_request(), proplists:proplist()) ->
     {ok, put_channel_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_channel_policy_errors(), tuple()}.
 put_channel_policy(Client, ChannelGroupName, ChannelName, Input0, Options0) ->
     Method = put,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/policy"],
@@ -1549,24 +1608,14 @@ put_channel_policy(Client, ChannelGroupName, ChannelName, Input0, Options0) ->
 -spec put_origin_endpoint_policy(map(), binary() | list(), binary() | list(), binary() | list(), put_origin_endpoint_policy_request()) ->
     {ok, put_origin_endpoint_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_origin_endpoint_policy_errors(), tuple()}.
 put_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input) ->
     put_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input, []).
 
 -spec put_origin_endpoint_policy(map(), binary() | list(), binary() | list(), binary() | list(), put_origin_endpoint_policy_request(), proplists:proplist()) ->
     {ok, put_origin_endpoint_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_origin_endpoint_policy_errors(), tuple()}.
 put_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input0, Options0) ->
     Method = post,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/originEndpoint/", aws_util:encode_uri(OriginEndpointName), "/policy"],
@@ -1605,14 +1654,14 @@ put_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpoint
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1639,14 +1688,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1682,24 +1731,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_channel(map(), binary() | list(), binary() | list(), update_channel_request()) ->
     {ok, update_channel_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_channel_errors(), tuple()}.
 update_channel(Client, ChannelGroupName, ChannelName, Input) ->
     update_channel(Client, ChannelGroupName, ChannelName, Input, []).
 
 -spec update_channel(map(), binary() | list(), binary() | list(), update_channel_request(), proplists:proplist()) ->
     {ok, update_channel_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_channel_errors(), tuple()}.
 update_channel(Client, ChannelGroupName, ChannelName, Input0, Options0) ->
     Method = put,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/"],
@@ -1735,24 +1774,14 @@ update_channel(Client, ChannelGroupName, ChannelName, Input0, Options0) ->
 -spec update_channel_group(map(), binary() | list(), update_channel_group_request()) ->
     {ok, update_channel_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_channel_group_errors(), tuple()}.
 update_channel_group(Client, ChannelGroupName, Input) ->
     update_channel_group(Client, ChannelGroupName, Input, []).
 
 -spec update_channel_group(map(), binary() | list(), update_channel_group_request(), proplists:proplist()) ->
     {ok, update_channel_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_channel_group_errors(), tuple()}.
 update_channel_group(Client, ChannelGroupName, Input0, Options0) ->
     Method = put,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), ""],
@@ -1787,26 +1816,14 @@ update_channel_group(Client, ChannelGroupName, Input0, Options0) ->
 -spec update_origin_endpoint(map(), binary() | list(), binary() | list(), binary() | list(), update_origin_endpoint_request()) ->
     {ok, update_origin_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_origin_endpoint_errors(), tuple()}.
 update_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input) ->
     update_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input, []).
 
 -spec update_origin_endpoint(map(), binary() | list(), binary() | list(), binary() | list(), update_origin_endpoint_request(), proplists:proplist()) ->
     {ok, update_origin_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_origin_endpoint_errors(), tuple()}.
 update_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input0, Options0) ->
     Method = put,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/originEndpoint/", aws_util:encode_uri(OriginEndpointName), ""],

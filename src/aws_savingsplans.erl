@@ -42,6 +42,7 @@
 %% }
 -type describe_savings_plans_offerings_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_savings_plan_rates_request() :: #{
 %%   <<"filters">> => list(savings_plan_rate_filter()()),
@@ -51,6 +52,7 @@
 %% }
 -type describe_savings_plan_rates_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
@@ -58,12 +60,14 @@
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% savings_plan_rate_filter() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"values">> => list(string()())
 %% }
 -type savings_plan_rate_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_savings_plans_request() :: #{
@@ -76,14 +80,17 @@
 %% }
 -type describe_savings_plans_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_savings_plan_response() :: #{
 %%   <<"savingsPlanId">> => string()
 %% }
 -type create_savings_plan_response() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% savings_plan_offering_rate() :: #{
@@ -98,12 +105,14 @@
 %% }
 -type savings_plan_offering_rate() :: #{binary() => any()}.
 
+
 %% Example:
 %% savings_plan_offering_rate_property() :: #{
 %%   <<"name">> => string(),
 %%   <<"value">> => string()
 %% }
 -type savings_plan_offering_rate_property() :: #{binary() => any()}.
+
 
 %% Example:
 %% savings_plan_offering() :: #{
@@ -121,6 +130,7 @@
 %% }
 -type savings_plan_offering() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_savings_plans_offering_rates_request() :: #{
 %%   <<"filters">> => list(savings_plan_offering_rate_filter_element()()),
@@ -136,6 +146,7 @@
 %% }
 -type describe_savings_plans_offering_rates_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% savings_plan_rate() :: #{
 %%   <<"currency">> => list(any()),
@@ -148,9 +159,11 @@
 %%   <<"usageType">> => string()
 %% }
 -type savings_plan_rate() :: #{binary() => any()}.
+
 %% Example:
 %% delete_queued_savings_plan_response() :: #{}
 -type delete_queued_savings_plan_response() :: #{}.
+
 
 %% Example:
 %% savings_plan_filter() :: #{
@@ -159,12 +172,14 @@
 %% }
 -type savings_plan_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% savings_plan_offering_property() :: #{
@@ -173,11 +188,13 @@
 %% }
 -type savings_plan_offering_property() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% parent_savings_plan_offering() :: #{
@@ -190,17 +207,20 @@
 %% }
 -type parent_savings_plan_offering() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% savings_plan() :: #{
@@ -225,6 +245,7 @@
 %% }
 -type savings_plan() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_savings_plan_request() :: #{
 %%   <<"clientToken">> => string(),
@@ -236,6 +257,7 @@
 %% }
 -type create_savings_plan_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_savings_plans_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -243,12 +265,14 @@
 %% }
 -type describe_savings_plans_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_savings_plans_offering_rates_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"searchResults">> => list(savings_plan_offering_rate()())
 %% }
 -type describe_savings_plans_offering_rates_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_savings_plan_rates_response() :: #{
@@ -258,11 +282,13 @@
 %% }
 -type describe_savings_plan_rates_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_queued_savings_plan_request() :: #{
@@ -270,15 +296,18 @@
 %% }
 -type delete_queued_savings_plan_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% savings_plan_rate_property() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"value">> => string()
 %% }
 -type savings_plan_rate_property() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% validation_exception() :: #{
@@ -286,11 +315,13 @@
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_request() :: #{
 %%   <<"resourceArn">> := string()
 %% }
 -type list_tags_for_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% savings_plan_offering_filter_element() :: #{
@@ -298,6 +329,7 @@
 %%   <<"values">> => list(string()())
 %% }
 -type savings_plan_offering_filter_element() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_savings_plans_offerings_request() :: #{
@@ -317,12 +349,57 @@
 %% }
 -type describe_savings_plans_offerings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% savings_plan_offering_rate_filter_element() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"values">> => list(string()())
 %% }
 -type savings_plan_offering_rate_filter_element() :: #{binary() => any()}.
+
+-type create_savings_plan_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type delete_queued_savings_plan_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type describe_savings_plan_rates_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_savings_plans_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type describe_savings_plans_offering_rates_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type describe_savings_plans_offerings_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -332,20 +409,14 @@
 -spec create_savings_plan(map(), create_savings_plan_request()) ->
     {ok, create_savings_plan_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_savings_plan_errors(), tuple()}.
 create_savings_plan(Client, Input) ->
     create_savings_plan(Client, Input, []).
 
 -spec create_savings_plan(map(), create_savings_plan_request(), proplists:proplist()) ->
     {ok, create_savings_plan_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_savings_plan_errors(), tuple()}.
 create_savings_plan(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateSavingsPlan"],
@@ -372,20 +443,14 @@ create_savings_plan(Client, Input0, Options0) ->
 -spec delete_queued_savings_plan(map(), delete_queued_savings_plan_request()) ->
     {ok, delete_queued_savings_plan_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_queued_savings_plan_errors(), tuple()}.
 delete_queued_savings_plan(Client, Input) ->
     delete_queued_savings_plan(Client, Input, []).
 
 -spec delete_queued_savings_plan(map(), delete_queued_savings_plan_request(), proplists:proplist()) ->
     {ok, delete_queued_savings_plan_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_queued_savings_plan_errors(), tuple()}.
 delete_queued_savings_plan(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteQueuedSavingsPlan"],
@@ -412,16 +477,14 @@ delete_queued_savings_plan(Client, Input0, Options0) ->
 -spec describe_savings_plan_rates(map(), describe_savings_plan_rates_request()) ->
     {ok, describe_savings_plan_rates_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_savings_plan_rates_errors(), tuple()}.
 describe_savings_plan_rates(Client, Input) ->
     describe_savings_plan_rates(Client, Input, []).
 
 -spec describe_savings_plan_rates(map(), describe_savings_plan_rates_request(), proplists:proplist()) ->
     {ok, describe_savings_plan_rates_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_savings_plan_rates_errors(), tuple()}.
 describe_savings_plan_rates(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DescribeSavingsPlanRates"],
@@ -448,16 +511,14 @@ describe_savings_plan_rates(Client, Input0, Options0) ->
 -spec describe_savings_plans(map(), describe_savings_plans_request()) ->
     {ok, describe_savings_plans_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_savings_plans_errors(), tuple()}.
 describe_savings_plans(Client, Input) ->
     describe_savings_plans(Client, Input, []).
 
 -spec describe_savings_plans(map(), describe_savings_plans_request(), proplists:proplist()) ->
     {ok, describe_savings_plans_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_savings_plans_errors(), tuple()}.
 describe_savings_plans(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DescribeSavingsPlans"],
@@ -484,16 +545,14 @@ describe_savings_plans(Client, Input0, Options0) ->
 -spec describe_savings_plans_offering_rates(map(), describe_savings_plans_offering_rates_request()) ->
     {ok, describe_savings_plans_offering_rates_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_savings_plans_offering_rates_errors(), tuple()}.
 describe_savings_plans_offering_rates(Client, Input) ->
     describe_savings_plans_offering_rates(Client, Input, []).
 
 -spec describe_savings_plans_offering_rates(map(), describe_savings_plans_offering_rates_request(), proplists:proplist()) ->
     {ok, describe_savings_plans_offering_rates_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_savings_plans_offering_rates_errors(), tuple()}.
 describe_savings_plans_offering_rates(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DescribeSavingsPlansOfferingRates"],
@@ -520,16 +579,14 @@ describe_savings_plans_offering_rates(Client, Input0, Options0) ->
 -spec describe_savings_plans_offerings(map(), describe_savings_plans_offerings_request()) ->
     {ok, describe_savings_plans_offerings_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_savings_plans_offerings_errors(), tuple()}.
 describe_savings_plans_offerings(Client, Input) ->
     describe_savings_plans_offerings(Client, Input, []).
 
 -spec describe_savings_plans_offerings(map(), describe_savings_plans_offerings_request(), proplists:proplist()) ->
     {ok, describe_savings_plans_offerings_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_savings_plans_offerings_errors(), tuple()}.
 describe_savings_plans_offerings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DescribeSavingsPlansOfferings"],
@@ -556,18 +613,14 @@ describe_savings_plans_offerings(Client, Input0, Options0) ->
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input) ->
     list_tags_for_resource(Client, Input, []).
 
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListTagsForResource"],
@@ -594,20 +647,14 @@ list_tags_for_resource(Client, Input0, Options0) ->
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/TagResource"],
@@ -634,18 +681,14 @@ tag_resource(Client, Input0, Options0) ->
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UntagResource"],

@@ -89,15 +89,18 @@
 %% Example:
 %% delete_ingestion_response() :: #{}
 -type delete_ingestion_response() :: #{}.
+
 %% Example:
 %% stop_ingestion_response() :: #{}
 -type stop_ingestion_response() :: #{}.
+
 
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := list(tag()())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% app_bundle() :: #{
@@ -106,15 +109,18 @@
 %% }
 -type app_bundle() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_ingestions_response() :: #{
 %%   <<"ingestions">> => list(ingestion_summary()()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_ingestions_response() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% list_ingestions_request() :: #{
@@ -122,6 +128,7 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_ingestions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% user_access_task_item() :: #{
@@ -132,6 +139,7 @@
 %% }
 -type user_access_task_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_ingestion_request() :: #{
 %%   <<"app">> := string(),
@@ -141,9 +149,11 @@
 %%   <<"tenantId">> := string()
 %% }
 -type create_ingestion_request() :: #{binary() => any()}.
+
 %% Example:
 %% stop_ingestion_request() :: #{}
 -type stop_ingestion_request() :: #{}.
+
 
 %% Example:
 %% ingestion_destination_summary() :: #{
@@ -151,14 +161,17 @@
 %% }
 -type ingestion_destination_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% app_bundle_summary() :: #{
 %%   <<"arn">> => string()
 %% }
 -type app_bundle_summary() :: #{binary() => any()}.
+
 %% Example:
 %% start_ingestion_request() :: #{}
 -type start_ingestion_request() :: #{}.
+
 
 %% Example:
 %% create_ingestion_destination_request() :: #{
@@ -168,9 +181,11 @@
 %%   <<"tags">> => list(tag()())
 %% }
 -type create_ingestion_destination_request() :: #{binary() => any()}.
+
 %% Example:
 %% start_ingestion_response() :: #{}
 -type start_ingestion_response() :: #{}.
+
 
 %% Example:
 %% create_ingestion_response() :: #{
@@ -178,17 +193,20 @@
 %% }
 -type create_ingestion_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_ingestion_response() :: #{
 %%   <<"ingestion">> => ingestion()
 %% }
 -type get_ingestion_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_ingestion_destinations_request() :: #{
@@ -197,17 +215,20 @@
 %% }
 -type list_ingestion_destinations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_app_authorization_response() :: #{
 %%   <<"appAuthorization">> => app_authorization()
 %% }
 -type get_app_authorization_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% firehose_stream() :: #{
 %%   <<"streamName">> => string()
 %% }
 -type firehose_stream() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_app_bundle_request() :: #{
@@ -216,6 +237,7 @@
 %%   <<"tags">> => list(tag()())
 %% }
 -type create_app_bundle_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% app_authorization_summary() :: #{
@@ -227,9 +249,11 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type app_authorization_summary() :: #{binary() => any()}.
+
 %% Example:
 %% delete_app_bundle_request() :: #{}
 -type delete_app_bundle_request() :: #{}.
+
 
 %% Example:
 %% connect_app_authorization_request() :: #{
@@ -237,12 +261,14 @@
 %% }
 -type connect_app_authorization_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tenant() :: #{
 %%   <<"tenantDisplayName">> => string(),
 %%   <<"tenantIdentifier">> => string()
 %% }
 -type tenant() :: #{binary() => any()}.
+
 
 %% Example:
 %% user_access_result_item() :: #{
@@ -260,12 +286,15 @@
 %%   <<"userStatus">> => [string()]
 %% }
 -type user_access_result_item() :: #{binary() => any()}.
+
 %% Example:
 %% delete_ingestion_destination_request() :: #{}
 -type delete_ingestion_destination_request() :: #{}.
+
 %% Example:
 %% delete_app_bundle_response() :: #{}
 -type delete_app_bundle_response() :: #{}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -275,6 +304,7 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => [string()],
@@ -282,6 +312,7 @@
 %%   <<"resourceType">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% ingestion_destination() :: #{
@@ -296,12 +327,14 @@
 %% }
 -type ingestion_destination() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_app_bundles_response() :: #{
 %%   <<"appBundleSummaryList">> => list(app_bundle_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_app_bundles_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% ingestion() :: #{
@@ -316,12 +349,14 @@
 %% }
 -type ingestion() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag() :: #{
 %%   <<"key">> => string(),
 %%   <<"value">> => string()
 %% }
 -type tag() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_bucket() :: #{
@@ -330,12 +365,14 @@
 %% }
 -type s3_bucket() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_user_access_tasks_request() :: #{
 %%   <<"appBundleIdentifier">> := string(),
 %%   <<"email">> := string()
 %% }
 -type start_user_access_tasks_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
@@ -347,12 +384,14 @@
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_user_access_tasks_request() :: #{
 %%   <<"appBundleIdentifier">> := string(),
 %%   <<"taskIdList">> := list(string()())
 %% }
 -type batch_get_user_access_tasks_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_app_authorization_request() :: #{
@@ -365,6 +404,7 @@
 %% }
 -type create_app_authorization_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% ingestion_summary() :: #{
 %%   <<"app">> => string(),
@@ -374,11 +414,13 @@
 %% }
 -type ingestion_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => list(tag()())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_ingestion_destinations_response() :: #{
@@ -387,6 +429,7 @@
 %% }
 -type list_ingestion_destinations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception_field() :: #{
 %%   <<"message">> => [string()],
@@ -394,27 +437,33 @@
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_app_authorization_request() :: #{
 %%   <<"credential">> => list(),
 %%   <<"tenant">> => tenant()
 %% }
 -type update_app_authorization_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_ingestion_destination_response() :: #{}
 -type delete_ingestion_destination_response() :: #{}.
+
 %% Example:
 %% delete_app_authorization_request() :: #{}
 -type delete_app_authorization_request() :: #{}.
+
 
 %% Example:
 %% audit_log_destination_configuration() :: #{
 %%   <<"destination">> => list()
 %% }
 -type audit_log_destination_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% get_app_bundle_request() :: #{}
 -type get_app_bundle_request() :: #{}.
+
 
 %% Example:
 %% internal_server_exception() :: #{
@@ -423,6 +472,7 @@
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_app_bundles_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -430,20 +480,24 @@
 %% }
 -type list_app_bundles_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_user_access_tasks_response() :: #{
 %%   <<"userAccessResultsList">> => list(user_access_result_item()())
 %% }
 -type batch_get_user_access_tasks_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_ingestion_destination_response() :: #{
 %%   <<"ingestionDestination">> => ingestion_destination()
 %% }
 -type get_ingestion_destination_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_app_authorization_request() :: #{}
 -type get_app_authorization_request() :: #{}.
+
 
 %% Example:
 %% auth_request() :: #{
@@ -452,11 +506,13 @@
 %% }
 -type auth_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_ingestion_destination_response() :: #{
 %%   <<"ingestionDestination">> => ingestion_destination()
 %% }
 -type create_ingestion_destination_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% audit_log_processing_configuration() :: #{
@@ -464,9 +520,11 @@
 %%   <<"schema">> => list(any())
 %% }
 -type audit_log_processing_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% get_ingestion_request() :: #{}
 -type get_ingestion_request() :: #{}.
+
 
 %% Example:
 %% update_app_authorization_response() :: #{
@@ -474,11 +532,13 @@
 %% }
 -type update_app_authorization_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_app_authorizations_response() :: #{
@@ -487,23 +547,28 @@
 %% }
 -type list_app_authorizations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_user_access_tasks_response() :: #{
 %%   <<"userAccessTasksList">> => list(user_access_task_item()())
 %% }
 -type start_user_access_tasks_response() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% create_app_bundle_response() :: #{
 %%   <<"appBundle">> => app_bundle()
 %% }
 -type create_app_bundle_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_ingestion_request() :: #{}
 -type delete_ingestion_request() :: #{}.
+
 
 %% Example:
 %% get_app_bundle_response() :: #{
@@ -511,12 +576,14 @@
 %% }
 -type get_app_bundle_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_app_authorizations_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_app_authorizations_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% validation_exception() :: #{
@@ -526,14 +593,17 @@
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% connect_app_authorization_response() :: #{
 %%   <<"appAuthorizationSummary">> => app_authorization_summary()
 %% }
 -type connect_app_authorization_response() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% throttling_exception() :: #{
@@ -543,6 +613,7 @@
 %%   <<"serviceCode">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% app_authorization() :: #{
@@ -559,6 +630,7 @@
 %% }
 -type app_authorization() :: #{binary() => any()}.
 
+
 %% Example:
 %% task_error() :: #{
 %%   <<"errorCode">> => [string()],
@@ -566,11 +638,13 @@
 %% }
 -type task_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_ingestion_destination_request() :: #{
 %%   <<"destinationConfiguration">> := list()
 %% }
 -type update_ingestion_destination_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% oauth2_credential() :: #{
@@ -579,29 +653,224 @@
 %% }
 -type oauth2_credential() :: #{binary() => any()}.
 
+
 %% Example:
 %% api_key_credential() :: #{
 %%   <<"apiKey">> => string()
 %% }
 -type api_key_credential() :: #{binary() => any()}.
+
 %% Example:
 %% get_ingestion_destination_request() :: #{}
 -type get_ingestion_destination_request() :: #{}.
+
 
 %% Example:
 %% create_app_authorization_response() :: #{
 %%   <<"appAuthorization">> => app_authorization()
 %% }
 -type create_app_authorization_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_app_authorization_response() :: #{}
 -type delete_app_authorization_response() :: #{}.
+
 
 %% Example:
 %% update_ingestion_destination_response() :: #{
 %%   <<"ingestionDestination">> => ingestion_destination()
 %% }
 -type update_ingestion_destination_response() :: #{binary() => any()}.
+
+-type batch_get_user_access_tasks_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type connect_app_authorization_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_app_authorization_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_app_bundle_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_ingestion_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_ingestion_destination_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_app_authorization_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_app_bundle_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_ingestion_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_ingestion_destination_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_app_authorization_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_app_bundle_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_ingestion_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_ingestion_destination_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_app_authorizations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_app_bundles_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_ingestion_destinations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_ingestions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type start_ingestion_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_user_access_tasks_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type stop_ingestion_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_app_authorization_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_ingestion_destination_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -614,22 +883,14 @@
 -spec batch_get_user_access_tasks(map(), batch_get_user_access_tasks_request()) ->
     {ok, batch_get_user_access_tasks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_user_access_tasks_errors(), tuple()}.
 batch_get_user_access_tasks(Client, Input) ->
     batch_get_user_access_tasks(Client, Input, []).
 
 -spec batch_get_user_access_tasks(map(), batch_get_user_access_tasks_request(), proplists:proplist()) ->
     {ok, batch_get_user_access_tasks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_user_access_tasks_errors(), tuple()}.
 batch_get_user_access_tasks(Client, Input0, Options0) ->
     Method = post,
     Path = ["/useraccess/batchget"],
@@ -658,22 +919,14 @@ batch_get_user_access_tasks(Client, Input0, Options0) ->
 -spec connect_app_authorization(map(), binary() | list(), binary() | list(), connect_app_authorization_request()) ->
     {ok, connect_app_authorization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, connect_app_authorization_errors(), tuple()}.
 connect_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, Input) ->
     connect_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, Input, []).
 
 -spec connect_app_authorization(map(), binary() | list(), binary() | list(), connect_app_authorization_request(), proplists:proplist()) ->
     {ok, connect_app_authorization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, connect_app_authorization_errors(), tuple()}.
 connect_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/appauthorizations/", aws_util:encode_uri(AppAuthorizationIdentifier), "/connect"],
@@ -702,26 +955,14 @@ connect_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifie
 -spec create_app_authorization(map(), binary() | list(), create_app_authorization_request()) ->
     {ok, create_app_authorization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_app_authorization_errors(), tuple()}.
 create_app_authorization(Client, AppBundleIdentifier, Input) ->
     create_app_authorization(Client, AppBundleIdentifier, Input, []).
 
 -spec create_app_authorization(map(), binary() | list(), create_app_authorization_request(), proplists:proplist()) ->
     {ok, create_app_authorization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_app_authorization_errors(), tuple()}.
 create_app_authorization(Client, AppBundleIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/appauthorizations"],
@@ -749,24 +990,14 @@ create_app_authorization(Client, AppBundleIdentifier, Input0, Options0) ->
 -spec create_app_bundle(map(), create_app_bundle_request()) ->
     {ok, create_app_bundle_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_app_bundle_errors(), tuple()}.
 create_app_bundle(Client, Input) ->
     create_app_bundle(Client, Input, []).
 
 -spec create_app_bundle(map(), create_app_bundle_request(), proplists:proplist()) ->
     {ok, create_app_bundle_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_app_bundle_errors(), tuple()}.
 create_app_bundle(Client, Input0, Options0) ->
     Method = post,
     Path = ["/appbundles"],
@@ -793,24 +1024,14 @@ create_app_bundle(Client, Input0, Options0) ->
 -spec create_ingestion(map(), binary() | list(), create_ingestion_request()) ->
     {ok, create_ingestion_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_ingestion_errors(), tuple()}.
 create_ingestion(Client, AppBundleIdentifier, Input) ->
     create_ingestion(Client, AppBundleIdentifier, Input, []).
 
 -spec create_ingestion(map(), binary() | list(), create_ingestion_request(), proplists:proplist()) ->
     {ok, create_ingestion_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_ingestion_errors(), tuple()}.
 create_ingestion(Client, AppBundleIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/ingestions"],
@@ -839,24 +1060,14 @@ create_ingestion(Client, AppBundleIdentifier, Input0, Options0) ->
 -spec create_ingestion_destination(map(), binary() | list(), binary() | list(), create_ingestion_destination_request()) ->
     {ok, create_ingestion_destination_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_ingestion_destination_errors(), tuple()}.
 create_ingestion_destination(Client, AppBundleIdentifier, IngestionIdentifier, Input) ->
     create_ingestion_destination(Client, AppBundleIdentifier, IngestionIdentifier, Input, []).
 
 -spec create_ingestion_destination(map(), binary() | list(), binary() | list(), create_ingestion_destination_request(), proplists:proplist()) ->
     {ok, create_ingestion_destination_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_ingestion_destination_errors(), tuple()}.
 create_ingestion_destination(Client, AppBundleIdentifier, IngestionIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/ingestions/", aws_util:encode_uri(IngestionIdentifier), "/ingestiondestinations"],
@@ -886,22 +1097,14 @@ create_ingestion_destination(Client, AppBundleIdentifier, IngestionIdentifier, I
 -spec delete_app_authorization(map(), binary() | list(), binary() | list(), delete_app_authorization_request()) ->
     {ok, delete_app_authorization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_app_authorization_errors(), tuple()}.
 delete_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, Input) ->
     delete_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, Input, []).
 
 -spec delete_app_authorization(map(), binary() | list(), binary() | list(), delete_app_authorization_request(), proplists:proplist()) ->
     {ok, delete_app_authorization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_app_authorization_errors(), tuple()}.
 delete_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/appauthorizations/", aws_util:encode_uri(AppAuthorizationIdentifier), ""],
@@ -931,22 +1134,14 @@ delete_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier
 -spec delete_app_bundle(map(), binary() | list(), delete_app_bundle_request()) ->
     {ok, delete_app_bundle_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_app_bundle_errors(), tuple()}.
 delete_app_bundle(Client, AppBundleIdentifier, Input) ->
     delete_app_bundle(Client, AppBundleIdentifier, Input, []).
 
 -spec delete_app_bundle(map(), binary() | list(), delete_app_bundle_request(), proplists:proplist()) ->
     {ok, delete_app_bundle_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_app_bundle_errors(), tuple()}.
 delete_app_bundle(Client, AppBundleIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), ""],
@@ -976,22 +1171,14 @@ delete_app_bundle(Client, AppBundleIdentifier, Input0, Options0) ->
 -spec delete_ingestion(map(), binary() | list(), binary() | list(), delete_ingestion_request()) ->
     {ok, delete_ingestion_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_ingestion_errors(), tuple()}.
 delete_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, Input) ->
     delete_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, Input, []).
 
 -spec delete_ingestion(map(), binary() | list(), binary() | list(), delete_ingestion_request(), proplists:proplist()) ->
     {ok, delete_ingestion_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_ingestion_errors(), tuple()}.
 delete_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/ingestions/", aws_util:encode_uri(IngestionIdentifier), ""],
@@ -1027,22 +1214,14 @@ delete_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, Input0, Optio
 -spec delete_ingestion_destination(map(), binary() | list(), binary() | list(), binary() | list(), delete_ingestion_destination_request()) ->
     {ok, delete_ingestion_destination_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_ingestion_destination_errors(), tuple()}.
 delete_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationIdentifier, IngestionIdentifier, Input) ->
     delete_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationIdentifier, IngestionIdentifier, Input, []).
 
 -spec delete_ingestion_destination(map(), binary() | list(), binary() | list(), binary() | list(), delete_ingestion_destination_request(), proplists:proplist()) ->
     {ok, delete_ingestion_destination_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_ingestion_destination_errors(), tuple()}.
 delete_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationIdentifier, IngestionIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/ingestions/", aws_util:encode_uri(IngestionIdentifier), "/ingestiondestinations/", aws_util:encode_uri(IngestionDestinationIdentifier), ""],
@@ -1069,11 +1248,7 @@ delete_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationId
 -spec get_app_authorization(map(), binary() | list(), binary() | list()) ->
     {ok, get_app_authorization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_app_authorization_errors(), tuple()}.
 get_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier)
   when is_map(Client) ->
     get_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, #{}, #{}).
@@ -1081,11 +1256,7 @@ get_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier)
 -spec get_app_authorization(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_app_authorization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_app_authorization_errors(), tuple()}.
 get_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, QueryMap, HeadersMap, []).
@@ -1093,11 +1264,7 @@ get_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, Q
 -spec get_app_authorization(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_app_authorization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_app_authorization_errors(), tuple()}.
 get_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/appauthorizations/", aws_util:encode_uri(AppAuthorizationIdentifier), ""],
@@ -1118,11 +1285,7 @@ get_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, Q
 -spec get_app_bundle(map(), binary() | list()) ->
     {ok, get_app_bundle_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_app_bundle_errors(), tuple()}.
 get_app_bundle(Client, AppBundleIdentifier)
   when is_map(Client) ->
     get_app_bundle(Client, AppBundleIdentifier, #{}, #{}).
@@ -1130,11 +1293,7 @@ get_app_bundle(Client, AppBundleIdentifier)
 -spec get_app_bundle(map(), binary() | list(), map(), map()) ->
     {ok, get_app_bundle_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_app_bundle_errors(), tuple()}.
 get_app_bundle(Client, AppBundleIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_app_bundle(Client, AppBundleIdentifier, QueryMap, HeadersMap, []).
@@ -1142,11 +1301,7 @@ get_app_bundle(Client, AppBundleIdentifier, QueryMap, HeadersMap)
 -spec get_app_bundle(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_app_bundle_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_app_bundle_errors(), tuple()}.
 get_app_bundle(Client, AppBundleIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), ""],
@@ -1167,11 +1322,7 @@ get_app_bundle(Client, AppBundleIdentifier, QueryMap, HeadersMap, Options0)
 -spec get_ingestion(map(), binary() | list(), binary() | list()) ->
     {ok, get_ingestion_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_ingestion_errors(), tuple()}.
 get_ingestion(Client, AppBundleIdentifier, IngestionIdentifier)
   when is_map(Client) ->
     get_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, #{}, #{}).
@@ -1179,11 +1330,7 @@ get_ingestion(Client, AppBundleIdentifier, IngestionIdentifier)
 -spec get_ingestion(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_ingestion_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_ingestion_errors(), tuple()}.
 get_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, QueryMap, HeadersMap, []).
@@ -1191,11 +1338,7 @@ get_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, QueryMap, Header
 -spec get_ingestion(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_ingestion_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_ingestion_errors(), tuple()}.
 get_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/ingestions/", aws_util:encode_uri(IngestionIdentifier), ""],
@@ -1216,11 +1359,7 @@ get_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, QueryMap, Header
 -spec get_ingestion_destination(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_ingestion_destination_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_ingestion_destination_errors(), tuple()}.
 get_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationIdentifier, IngestionIdentifier)
   when is_map(Client) ->
     get_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationIdentifier, IngestionIdentifier, #{}, #{}).
@@ -1228,11 +1367,7 @@ get_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationIdent
 -spec get_ingestion_destination(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_ingestion_destination_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_ingestion_destination_errors(), tuple()}.
 get_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationIdentifier, IngestionIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationIdentifier, IngestionIdentifier, QueryMap, HeadersMap, []).
@@ -1240,11 +1375,7 @@ get_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationIdent
 -spec get_ingestion_destination(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_ingestion_destination_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_ingestion_destination_errors(), tuple()}.
 get_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationIdentifier, IngestionIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/ingestions/", aws_util:encode_uri(IngestionIdentifier), "/ingestiondestinations/", aws_util:encode_uri(IngestionDestinationIdentifier), ""],
@@ -1266,11 +1397,7 @@ get_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationIdent
 -spec list_app_authorizations(map(), binary() | list()) ->
     {ok, list_app_authorizations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_app_authorizations_errors(), tuple()}.
 list_app_authorizations(Client, AppBundleIdentifier)
   when is_map(Client) ->
     list_app_authorizations(Client, AppBundleIdentifier, #{}, #{}).
@@ -1278,11 +1405,7 @@ list_app_authorizations(Client, AppBundleIdentifier)
 -spec list_app_authorizations(map(), binary() | list(), map(), map()) ->
     {ok, list_app_authorizations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_app_authorizations_errors(), tuple()}.
 list_app_authorizations(Client, AppBundleIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_app_authorizations(Client, AppBundleIdentifier, QueryMap, HeadersMap, []).
@@ -1290,11 +1413,7 @@ list_app_authorizations(Client, AppBundleIdentifier, QueryMap, HeadersMap)
 -spec list_app_authorizations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_app_authorizations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_app_authorizations_errors(), tuple()}.
 list_app_authorizations(Client, AppBundleIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/appauthorizations"],
@@ -1320,10 +1439,7 @@ list_app_authorizations(Client, AppBundleIdentifier, QueryMap, HeadersMap, Optio
 -spec list_app_bundles(map()) ->
     {ok, list_app_bundles_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_app_bundles_errors(), tuple()}.
 list_app_bundles(Client)
   when is_map(Client) ->
     list_app_bundles(Client, #{}, #{}).
@@ -1331,10 +1447,7 @@ list_app_bundles(Client)
 -spec list_app_bundles(map(), map(), map()) ->
     {ok, list_app_bundles_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_app_bundles_errors(), tuple()}.
 list_app_bundles(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_app_bundles(Client, QueryMap, HeadersMap, []).
@@ -1342,10 +1455,7 @@ list_app_bundles(Client, QueryMap, HeadersMap)
 -spec list_app_bundles(map(), map(), map(), proplists:proplist()) ->
     {ok, list_app_bundles_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_app_bundles_errors(), tuple()}.
 list_app_bundles(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/appbundles"],
@@ -1372,11 +1482,7 @@ list_app_bundles(Client, QueryMap, HeadersMap, Options0)
 -spec list_ingestion_destinations(map(), binary() | list(), binary() | list()) ->
     {ok, list_ingestion_destinations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_ingestion_destinations_errors(), tuple()}.
 list_ingestion_destinations(Client, AppBundleIdentifier, IngestionIdentifier)
   when is_map(Client) ->
     list_ingestion_destinations(Client, AppBundleIdentifier, IngestionIdentifier, #{}, #{}).
@@ -1384,11 +1490,7 @@ list_ingestion_destinations(Client, AppBundleIdentifier, IngestionIdentifier)
 -spec list_ingestion_destinations(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_ingestion_destinations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_ingestion_destinations_errors(), tuple()}.
 list_ingestion_destinations(Client, AppBundleIdentifier, IngestionIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ingestion_destinations(Client, AppBundleIdentifier, IngestionIdentifier, QueryMap, HeadersMap, []).
@@ -1396,11 +1498,7 @@ list_ingestion_destinations(Client, AppBundleIdentifier, IngestionIdentifier, Qu
 -spec list_ingestion_destinations(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_ingestion_destinations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_ingestion_destinations_errors(), tuple()}.
 list_ingestion_destinations(Client, AppBundleIdentifier, IngestionIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/ingestions/", aws_util:encode_uri(IngestionIdentifier), "/ingestiondestinations"],
@@ -1426,11 +1524,7 @@ list_ingestion_destinations(Client, AppBundleIdentifier, IngestionIdentifier, Qu
 -spec list_ingestions(map(), binary() | list()) ->
     {ok, list_ingestions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_ingestions_errors(), tuple()}.
 list_ingestions(Client, AppBundleIdentifier)
   when is_map(Client) ->
     list_ingestions(Client, AppBundleIdentifier, #{}, #{}).
@@ -1438,11 +1532,7 @@ list_ingestions(Client, AppBundleIdentifier)
 -spec list_ingestions(map(), binary() | list(), map(), map()) ->
     {ok, list_ingestions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_ingestions_errors(), tuple()}.
 list_ingestions(Client, AppBundleIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ingestions(Client, AppBundleIdentifier, QueryMap, HeadersMap, []).
@@ -1450,11 +1540,7 @@ list_ingestions(Client, AppBundleIdentifier, QueryMap, HeadersMap)
 -spec list_ingestions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_ingestions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_ingestions_errors(), tuple()}.
 list_ingestions(Client, AppBundleIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/ingestions"],
@@ -1480,11 +1566,7 @@ list_ingestions(Client, AppBundleIdentifier, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1492,11 +1574,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1504,11 +1582,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1530,24 +1604,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec start_ingestion(map(), binary() | list(), binary() | list(), start_ingestion_request()) ->
     {ok, start_ingestion_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_ingestion_errors(), tuple()}.
 start_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, Input) ->
     start_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, Input, []).
 
 -spec start_ingestion(map(), binary() | list(), binary() | list(), start_ingestion_request(), proplists:proplist()) ->
     {ok, start_ingestion_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_ingestion_errors(), tuple()}.
 start_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/ingestions/", aws_util:encode_uri(IngestionIdentifier), "/start"],
@@ -1579,22 +1643,14 @@ start_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, Input0, Option
 -spec start_user_access_tasks(map(), start_user_access_tasks_request()) ->
     {ok, start_user_access_tasks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_user_access_tasks_errors(), tuple()}.
 start_user_access_tasks(Client, Input) ->
     start_user_access_tasks(Client, Input, []).
 
 -spec start_user_access_tasks(map(), start_user_access_tasks_request(), proplists:proplist()) ->
     {ok, start_user_access_tasks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_user_access_tasks_errors(), tuple()}.
 start_user_access_tasks(Client, Input0, Options0) ->
     Method = post,
     Path = ["/useraccess/start"],
@@ -1621,24 +1677,14 @@ start_user_access_tasks(Client, Input0, Options0) ->
 -spec stop_ingestion(map(), binary() | list(), binary() | list(), stop_ingestion_request()) ->
     {ok, stop_ingestion_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_ingestion_errors(), tuple()}.
 stop_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, Input) ->
     stop_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, Input, []).
 
 -spec stop_ingestion(map(), binary() | list(), binary() | list(), stop_ingestion_request(), proplists:proplist()) ->
     {ok, stop_ingestion_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_ingestion_errors(), tuple()}.
 stop_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/ingestions/", aws_util:encode_uri(IngestionIdentifier), "/stop"],
@@ -1665,22 +1711,14 @@ stop_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, Input0, Options
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1707,22 +1745,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1755,22 +1785,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_app_authorization(map(), binary() | list(), binary() | list(), update_app_authorization_request()) ->
     {ok, update_app_authorization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_app_authorization_errors(), tuple()}.
 update_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, Input) ->
     update_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, Input, []).
 
 -spec update_app_authorization(map(), binary() | list(), binary() | list(), update_app_authorization_request(), proplists:proplist()) ->
     {ok, update_app_authorization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_app_authorization_errors(), tuple()}.
 update_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/appauthorizations/", aws_util:encode_uri(AppAuthorizationIdentifier), ""],
@@ -1799,26 +1821,14 @@ update_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier
 -spec update_ingestion_destination(map(), binary() | list(), binary() | list(), binary() | list(), update_ingestion_destination_request()) ->
     {ok, update_ingestion_destination_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_ingestion_destination_errors(), tuple()}.
 update_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationIdentifier, IngestionIdentifier, Input) ->
     update_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationIdentifier, IngestionIdentifier, Input, []).
 
 -spec update_ingestion_destination(map(), binary() | list(), binary() | list(), binary() | list(), update_ingestion_destination_request(), proplists:proplist()) ->
     {ok, update_ingestion_destination_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_ingestion_destination_errors(), tuple()}.
 update_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationIdentifier, IngestionIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/ingestions/", aws_util:encode_uri(IngestionIdentifier), "/ingestiondestinations/", aws_util:encode_uri(IngestionDestinationIdentifier), ""],

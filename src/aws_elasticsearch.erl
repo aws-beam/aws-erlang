@@ -151,11 +151,13 @@
 %% describe_elasticsearch_domain_request() :: #{}
 -type describe_elasticsearch_domain_request() :: #{}.
 
+
 %% Example:
 %% list_domain_names_request() :: #{
 %%   <<"EngineType">> => list(any())
 %% }
 -type list_domain_names_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% upgrade_elasticsearch_domain_response() :: #{
@@ -166,6 +168,7 @@
 %% }
 -type upgrade_elasticsearch_domain_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% modifying_properties() :: #{
 %%   <<"ActiveValue">> => string(),
@@ -175,12 +178,14 @@
 %% }
 -type modifying_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% auto_tune_options_output() :: #{
 %%   <<"ErrorMessage">> => string(),
 %%   <<"State">> => list(any())
 %% }
 -type auto_tune_options_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_domain_auto_tunes_response() :: #{
@@ -189,11 +194,13 @@
 %% }
 -type describe_domain_auto_tunes_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_compatible_elasticsearch_versions_response() :: #{
 %%   <<"CompatibleElasticsearchVersions">> => list(compatible_versions_map()())
 %% }
 -type get_compatible_elasticsearch_versions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_vpc_endpoints_for_domain_response() :: #{
@@ -202,11 +209,13 @@
 %% }
 -type list_vpc_endpoints_for_domain_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_elasticsearch_domains_request() :: #{
 %%   <<"DomainNames">> := list(string()())
 %% }
 -type describe_elasticsearch_domains_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_domain_auto_tunes_request() :: #{
@@ -215,12 +224,14 @@
 %% }
 -type describe_domain_auto_tunes_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% package_source() :: #{
 %%   <<"S3BucketName">> => string(),
 %%   <<"S3Key">> => string()
 %% }
 -type package_source() :: #{binary() => any()}.
+
 
 %% Example:
 %% compatible_versions_map() :: #{
@@ -229,17 +240,20 @@
 %% }
 -type compatible_versions_map() :: #{binary() => any()}.
 
+
 %% Example:
 %% snapshot_options() :: #{
 %%   <<"AutomatedSnapshotStartHour">> => integer()
 %% }
 -type snapshot_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% auto_tune_details() :: #{
 %%   <<"ScheduledAutoTuneDetails">> => scheduled_auto_tune_details()
 %% }
 -type auto_tune_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_outbound_cross_cluster_search_connections_request() :: #{
@@ -249,11 +263,13 @@
 %% }
 -type describe_outbound_cross_cluster_search_connections_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% authorize_vpc_endpoint_access_response() :: #{
 %%   <<"AuthorizedPrincipal">> => authorized_principal()
 %% }
 -type authorize_vpc_endpoint_access_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% elasticsearch_cluster_config_status() :: #{
@@ -261,6 +277,7 @@
 %%   <<"Status">> => option_status()
 %% }
 -type elasticsearch_cluster_config_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% package_details() :: #{
@@ -276,11 +293,13 @@
 %% }
 -type package_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_domain_change_progress_request() :: #{
 %%   <<"ChangeId">> => string()
 %% }
 -type describe_domain_change_progress_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_package_request() :: #{
@@ -290,6 +309,7 @@
 %%   <<"PackageType">> := list(any())
 %% }
 -type create_package_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% auto_tune_status() :: #{
@@ -301,6 +321,7 @@
 %%   <<"UpdateVersion">> => integer()
 %% }
 -type auto_tune_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% elasticsearch_cluster_config() :: #{
@@ -318,11 +339,13 @@
 %% }
 -type elasticsearch_cluster_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_vpc_endpoints_request() :: #{
 %%   <<"NextToken">> => string()
 %% }
 -type list_vpc_endpoints_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% cold_storage_options() :: #{
@@ -330,11 +353,13 @@
 %% }
 -type cold_storage_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_vpc_endpoints_request() :: #{
 %%   <<"VpcEndpointIds">> := list(string()())
 %% }
 -type describe_vpc_endpoints_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% auto_tune_options_status() :: #{
@@ -343,6 +368,7 @@
 %% }
 -type auto_tune_options_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% purchase_reserved_elasticsearch_instance_offering_request() :: #{
 %%   <<"InstanceCount">> => integer(),
@@ -350,9 +376,11 @@
 %%   <<"ReservedElasticsearchInstanceOfferingId">> := string()
 %% }
 -type purchase_reserved_elasticsearch_instance_offering_request() :: #{binary() => any()}.
+
 %% Example:
 %% accept_inbound_cross_cluster_search_connection_request() :: #{}
 -type accept_inbound_cross_cluster_search_connection_request() :: #{}.
+
 
 %% Example:
 %% snapshot_options_status() :: #{
@@ -360,6 +388,7 @@
 %%   <<"Status">> => option_status()
 %% }
 -type snapshot_options_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% vpc_endpoint_summary() :: #{
@@ -370,6 +399,7 @@
 %% }
 -type vpc_endpoint_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% recurring_charge() :: #{
 %%   <<"RecurringChargeAmount">> => float(),
@@ -377,12 +407,14 @@
 %% }
 -type recurring_charge() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_vpc_endpoints_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"VpcEndpointSummaryList">> => list(vpc_endpoint_summary()())
 %% }
 -type list_vpc_endpoints_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% vpc_derived_info() :: #{
@@ -393,6 +425,7 @@
 %% }
 -type vpc_derived_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_reserved_elasticsearch_instances_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -401,6 +434,7 @@
 %% }
 -type describe_reserved_elasticsearch_instances_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% saml_idp() :: #{
 %%   <<"EntityId">> => string(),
@@ -408,11 +442,13 @@
 %% }
 -type saml_idp() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_elasticsearch_instance_type_limits_response() :: #{
 %%   <<"LimitsByRole">> => map()
 %% }
 -type describe_elasticsearch_instance_type_limits_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_tags_response() :: #{
@@ -420,12 +456,14 @@
 %% }
 -type list_tags_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% storage_type_limit() :: #{
 %%   <<"LimitName">> => string(),
 %%   <<"LimitValues">> => list(string()())
 %% }
 -type storage_type_limit() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_outbound_cross_cluster_search_connection_response() :: #{
@@ -437,12 +475,14 @@
 %% }
 -type create_outbound_cross_cluster_search_connection_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% ebs_options_status() :: #{
 %%   <<"Options">> => ebs_options(),
 %%   <<"Status">> => option_status()
 %% }
 -type ebs_options_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% authorized_principal() :: #{
@@ -451,20 +491,24 @@
 %% }
 -type authorized_principal() :: #{binary() => any()}.
 
+
 %% Example:
 %% disabled_operation_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type disabled_operation_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_vpc_endpoint_response() :: #{
 %%   <<"VpcEndpointSummary">> => vpc_endpoint_summary()
 %% }
 -type delete_vpc_endpoint_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_elasticsearch_domain_request() :: #{}
 -type delete_elasticsearch_domain_request() :: #{}.
+
 
 %% Example:
 %% storage_type() :: #{
@@ -474,11 +518,13 @@
 %% }
 -type storage_type() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_package_response() :: #{
 %%   <<"PackageDetails">> => package_details()
 %% }
 -type update_package_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_elasticsearch_domain_request() :: #{
@@ -501,12 +547,14 @@
 %% }
 -type create_elasticsearch_domain_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% additional_limit() :: #{
 %%   <<"LimitName">> => string(),
 %%   <<"LimitValues">> => list(string()())
 %% }
 -type additional_limit() :: #{binary() => any()}.
+
 
 %% Example:
 %% vpc_derived_info_status() :: #{
@@ -515,6 +563,7 @@
 %% }
 -type vpc_derived_info_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% inbound_cross_cluster_search_connection_status() :: #{
 %%   <<"Message">> => string(),
@@ -522,11 +571,13 @@
 %% }
 -type inbound_cross_cluster_search_connection_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% cancel_domain_config_change_request() :: #{
 %%   <<"DryRun">> => boolean()
 %% }
 -type cancel_domain_config_change_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% saml_options_output() :: #{
@@ -538,6 +589,7 @@
 %% }
 -type saml_options_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% cognito_options_status() :: #{
 %%   <<"Options">> => cognito_options(),
@@ -545,12 +597,14 @@
 %% }
 -type cognito_options_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_inbound_cross_cluster_search_connections_response() :: #{
 %%   <<"CrossClusterSearchConnections">> => list(inbound_cross_cluster_search_connection()()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_inbound_cross_cluster_search_connections_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% auto_tune_maintenance_schedule() :: #{
@@ -560,12 +614,14 @@
 %% }
 -type auto_tune_maintenance_schedule() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_packages_for_domain_response() :: #{
 %%   <<"DomainPackageDetailsList">> => list(domain_package_details()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_packages_for_domain_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% change_progress_status_details() :: #{
@@ -582,11 +638,13 @@
 %% }
 -type change_progress_status_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_elasticsearch_domain_config_response() :: #{
 %%   <<"DomainConfig">> => elasticsearch_domain_config()
 %% }
 -type describe_elasticsearch_domain_config_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% add_tags_request() :: #{
@@ -595,12 +653,14 @@
 %% }
 -type add_tags_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_reserved_elasticsearch_instance_offerings_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"ReservedElasticsearchInstanceOfferings">> => list(reserved_elasticsearch_instance_offering()())
 %% }
 -type describe_reserved_elasticsearch_instance_offerings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% upgrade_history() :: #{
@@ -611,6 +671,7 @@
 %% }
 -type upgrade_history() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_elasticsearch_instance_types_request() :: #{
 %%   <<"DomainName">> => string(),
@@ -619,11 +680,13 @@
 %% }
 -type list_elasticsearch_instance_types_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_package_response() :: #{
@@ -631,11 +694,13 @@
 %% }
 -type delete_package_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_packages_response() :: #{
@@ -644,6 +709,7 @@
 %% }
 -type describe_packages_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag() :: #{
 %%   <<"Key">> => string(),
@@ -651,12 +717,14 @@
 %% }
 -type tag() :: #{binary() => any()}.
 
+
 %% Example:
 %% dry_run_results() :: #{
 %%   <<"DeploymentType">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type dry_run_results() :: #{binary() => any()}.
+
 
 %% Example:
 %% advanced_security_options() :: #{
@@ -668,6 +736,7 @@
 %% }
 -type advanced_security_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% option_status() :: #{
 %%   <<"CreationDate">> => non_neg_integer(),
@@ -677,9 +746,11 @@
 %%   <<"UpdateVersion">> => integer()
 %% }
 -type option_status() :: #{binary() => any()}.
+
 %% Example:
 %% reject_inbound_cross_cluster_search_connection_request() :: #{}
 -type reject_inbound_cross_cluster_search_connection_request() :: #{}.
+
 
 %% Example:
 %% cancel_domain_config_change_response() :: #{
@@ -689,11 +760,13 @@
 %% }
 -type cancel_domain_config_change_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_inbound_cross_cluster_search_connection_response() :: #{
 %%   <<"CrossClusterSearchConnection">> => inbound_cross_cluster_search_connection()
 %% }
 -type delete_inbound_cross_cluster_search_connection_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% node_to_node_encryption_options_status() :: #{
@@ -702,6 +775,7 @@
 %% }
 -type node_to_node_encryption_options_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_upgrade_history_response() :: #{
 %%   <<"NextToken">> => string(),
@@ -709,11 +783,13 @@
 %% }
 -type get_upgrade_history_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_elasticsearch_instance_type_limits_request() :: #{
 %%   <<"DomainName">> => string()
 %% }
 -type describe_elasticsearch_instance_type_limits_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_elasticsearch_domain_response() :: #{
@@ -721,11 +797,13 @@
 %% }
 -type create_elasticsearch_domain_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_elasticsearch_domain_response() :: #{
 %%   <<"DomainStatus">> => elasticsearch_domain_status()
 %% }
 -type describe_elasticsearch_domain_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_elasticsearch_domain_response() :: #{
@@ -733,11 +811,13 @@
 %% }
 -type delete_elasticsearch_domain_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% cancel_elasticsearch_service_software_update_request() :: #{
 %%   <<"DomainName">> := string()
 %% }
 -type cancel_elasticsearch_service_software_update_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_vpc_endpoints_response() :: #{
@@ -746,11 +826,13 @@
 %% }
 -type describe_vpc_endpoints_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_elasticsearch_service_software_update_request() :: #{
 %%   <<"DomainName">> := string()
 %% }
 -type start_elasticsearch_service_software_update_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_packages_filter() :: #{
@@ -758,6 +840,7 @@
 %%   <<"Value">> => list(string()())
 %% }
 -type describe_packages_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_elasticsearch_domain_config_request() :: #{
@@ -778,11 +861,13 @@
 %% }
 -type update_elasticsearch_domain_config_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_vpc_endpoint_response() :: #{
 %%   <<"VpcEndpoint">> => vpc_endpoint()
 %% }
 -type update_vpc_endpoint_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% error_details() :: #{
@@ -791,12 +876,14 @@
 %% }
 -type error_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% encryption_at_rest_options() :: #{
 %%   <<"Enabled">> => boolean(),
 %%   <<"KmsKeyId">> => string()
 %% }
 -type encryption_at_rest_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_package_version_history_response() :: #{
@@ -806,11 +893,13 @@
 %% }
 -type get_package_version_history_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_vpc_endpoints_for_domain_request() :: #{
 %%   <<"NextToken">> => string()
 %% }
 -type list_vpc_endpoints_for_domain_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% saml_options_input() :: #{
@@ -824,6 +913,7 @@
 %% }
 -type saml_options_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% vpc_endpoint() :: #{
 %%   <<"DomainArn">> => string(),
@@ -835,12 +925,14 @@
 %% }
 -type vpc_endpoint() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_package_version_history_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type get_package_version_history_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% scheduled_auto_tune_details() :: #{
@@ -850,6 +942,7 @@
 %%   <<"Severity">> => list(any())
 %% }
 -type scheduled_auto_tune_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% ebs_options() :: #{
@@ -861,6 +954,7 @@
 %% }
 -type ebs_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_package_request() :: #{
 %%   <<"CommitMessage">> => string(),
@@ -870,11 +964,13 @@
 %% }
 -type update_package_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_domain_names_response() :: #{
 %%   <<"DomainNames">> => list(domain_info()())
 %% }
 -type list_domain_names_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% reserved_elasticsearch_instance() :: #{
@@ -893,9 +989,11 @@
 %%   <<"UsagePrice">> => float()
 %% }
 -type reserved_elasticsearch_instance() :: #{binary() => any()}.
+
 %% Example:
 %% associate_package_request() :: #{}
 -type associate_package_request() :: #{}.
+
 
 %% Example:
 %% elasticsearch_domain_config() :: #{
@@ -918,15 +1016,18 @@
 %% }
 -type elasticsearch_domain_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% filter() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Values">> => list(string()())
 %% }
 -type filter() :: #{binary() => any()}.
+
 %% Example:
 %% dissociate_package_request() :: #{}
 -type dissociate_package_request() :: #{}.
+
 
 %% Example:
 %% describe_outbound_cross_cluster_search_connections_response() :: #{
@@ -934,9 +1035,11 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_outbound_cross_cluster_search_connections_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_outbound_cross_cluster_search_connection_request() :: #{}
 -type delete_outbound_cross_cluster_search_connection_request() :: #{}.
+
 
 %% Example:
 %% start_elasticsearch_service_software_update_response() :: #{
@@ -944,11 +1047,13 @@
 %% }
 -type start_elasticsearch_service_software_update_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% cancel_elasticsearch_service_software_update_response() :: #{
 %%   <<"ServiceSoftwareOptions">> => service_software_options()
 %% }
 -type cancel_elasticsearch_service_software_update_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% domain_information() :: #{
@@ -957,6 +1062,7 @@
 %%   <<"Region">> => string()
 %% }
 -type domain_information() :: #{binary() => any()}.
+
 
 %% Example:
 %% advanced_security_options_input() :: #{
@@ -968,12 +1074,14 @@
 %% }
 -type advanced_security_options_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% domain_info() :: #{
 %%   <<"DomainName">> => string(),
 %%   <<"EngineType">> => list(any())
 %% }
 -type domain_info() :: #{binary() => any()}.
+
 
 %% Example:
 %% cognito_options() :: #{
@@ -984,11 +1092,13 @@
 %% }
 -type cognito_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_vpc_endpoint_access_request() :: #{
 %%   <<"NextToken">> => string()
 %% }
 -type list_vpc_endpoint_access_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_vpc_endpoint_request() :: #{
@@ -998,12 +1108,14 @@
 %% }
 -type create_vpc_endpoint_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% auto_tune_options_input() :: #{
 %%   <<"DesiredState">> => list(any()),
 %%   <<"MaintenanceSchedules">> => list(auto_tune_maintenance_schedule()())
 %% }
 -type auto_tune_options_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% cancelled_change_property() :: #{
@@ -1013,11 +1125,13 @@
 %% }
 -type cancelled_change_property() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_domain_change_progress_response() :: #{
 %%   <<"ChangeProgressStatus">> => change_progress_status_details()
 %% }
 -type describe_domain_change_progress_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% instance_limits() :: #{
@@ -1025,11 +1139,13 @@
 %% }
 -type instance_limits() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_type_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_type_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% change_progress_details() :: #{
@@ -1042,11 +1158,13 @@
 %% }
 -type change_progress_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% zone_awareness_config() :: #{
 %%   <<"AvailabilityZoneCount">> => integer()
 %% }
 -type zone_awareness_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_upgrade_history_request() :: #{
@@ -1054,6 +1172,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type get_upgrade_history_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% change_progress_stage() :: #{
@@ -1064,14 +1183,17 @@
 %% }
 -type change_progress_stage() :: #{binary() => any()}.
 
+
 %% Example:
 %% dissociate_package_response() :: #{
 %%   <<"DomainPackageDetails">> => domain_package_details()
 %% }
 -type dissociate_package_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_package_request() :: #{}
 -type delete_package_request() :: #{}.
+
 
 %% Example:
 %% describe_reserved_elasticsearch_instance_offerings_request() :: #{
@@ -1081,11 +1203,13 @@
 %% }
 -type describe_reserved_elasticsearch_instance_offerings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type internal_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% access_denied_exception() :: #{
@@ -1093,11 +1217,13 @@
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_compatible_elasticsearch_versions_request() :: #{
 %%   <<"DomainName">> => string()
 %% }
 -type get_compatible_elasticsearch_versions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% upgrade_elasticsearch_domain_request() :: #{
@@ -1106,9 +1232,11 @@
 %%   <<"TargetVersion">> := string()
 %% }
 -type upgrade_elasticsearch_domain_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_elasticsearch_domain_config_request() :: #{}
 -type describe_elasticsearch_domain_config_request() :: #{}.
+
 
 %% Example:
 %% list_packages_for_domain_request() :: #{
@@ -1117,12 +1245,14 @@
 %% }
 -type list_packages_for_domain_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% advanced_security_options_status() :: #{
 %%   <<"Options">> => advanced_security_options(),
 %%   <<"Status">> => option_status()
 %% }
 -type advanced_security_options_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% duration() :: #{
@@ -1131,12 +1261,14 @@
 %% }
 -type duration() :: #{binary() => any()}.
 
+
 %% Example:
 %% purchase_reserved_elasticsearch_instance_offering_response() :: #{
 %%   <<"ReservationName">> => string(),
 %%   <<"ReservedElasticsearchInstanceId">> => string()
 %% }
 -type purchase_reserved_elasticsearch_instance_offering_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_domains_for_package_request() :: #{
@@ -1145,11 +1277,13 @@
 %% }
 -type list_domains_for_package_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% authorize_vpc_endpoint_access_request() :: #{
 %%   <<"Account">> := string()
 %% }
 -type authorize_vpc_endpoint_access_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_software_options() :: #{
@@ -1164,6 +1298,7 @@
 %% }
 -type service_software_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% log_publishing_options_status() :: #{
 %%   <<"Options">> => map(),
@@ -1171,17 +1306,20 @@
 %% }
 -type log_publishing_options_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_outbound_cross_cluster_search_connection_response() :: #{
 %%   <<"CrossClusterSearchConnection">> => outbound_cross_cluster_search_connection()
 %% }
 -type delete_outbound_cross_cluster_search_connection_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% auto_tune_options() :: #{
@@ -1190,6 +1328,7 @@
 %%   <<"RollbackOnDisable">> => list(any())
 %% }
 -type auto_tune_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% elasticsearch_domain_status() :: #{
@@ -1222,12 +1361,15 @@
 %%   <<"VPCOptions">> => vpc_derived_info()
 %% }
 -type elasticsearch_domain_status() :: #{binary() => any()}.
+
 %% Example:
 %% get_upgrade_status_request() :: #{}
 -type get_upgrade_status_request() :: #{}.
+
 %% Example:
 %% delete_vpc_endpoint_request() :: #{}
 -type delete_vpc_endpoint_request() :: #{}.
+
 
 %% Example:
 %% inbound_cross_cluster_search_connection() :: #{
@@ -1238,11 +1380,13 @@
 %% }
 -type inbound_cross_cluster_search_connection() :: #{binary() => any()}.
 
+
 %% Example:
 %% base_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type base_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% node_to_node_encryption_options() :: #{
@@ -1250,11 +1394,13 @@
 %% }
 -type node_to_node_encryption_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_package_response() :: #{
 %%   <<"PackageDetails">> => package_details()
 %% }
 -type create_package_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% limits() :: #{
@@ -1264,11 +1410,13 @@
 %% }
 -type limits() :: #{binary() => any()}.
 
+
 %% Example:
 %% revoke_vpc_endpoint_access_request() :: #{
 %%   <<"Account">> := string()
 %% }
 -type revoke_vpc_endpoint_access_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% elasticsearch_version_status() :: #{
@@ -1277,12 +1425,14 @@
 %% }
 -type elasticsearch_version_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% vpc_options() :: #{
 %%   <<"SecurityGroupIds">> => list(string()()),
 %%   <<"SubnetIds">> => list(string()())
 %% }
 -type vpc_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% outbound_cross_cluster_search_connection_status() :: #{
@@ -1291,11 +1441,13 @@
 %% }
 -type outbound_cross_cluster_search_connection_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_inbound_cross_cluster_search_connections_request() :: #{
@@ -1305,11 +1457,13 @@
 %% }
 -type describe_inbound_cross_cluster_search_connections_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_vpc_endpoint_response() :: #{
 %%   <<"VpcEndpoint">> => vpc_endpoint()
 %% }
 -type create_vpc_endpoint_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% domain_endpoint_options_status() :: #{
@@ -1317,6 +1471,7 @@
 %%   <<"Status">> => option_status()
 %% }
 -type domain_endpoint_options_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% domain_package_details() :: #{
@@ -1332,6 +1487,7 @@
 %% }
 -type domain_package_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% advanced_options_status() :: #{
 %%   <<"Options">> => map(),
@@ -1339,12 +1495,14 @@
 %% }
 -type advanced_options_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_policies_status() :: #{
 %%   <<"Options">> => string(),
 %%   <<"Status">> => option_status()
 %% }
 -type access_policies_status() :: #{binary() => any()}.
+
 
 %% Example:
 %% package_version_history() :: #{
@@ -1354,6 +1512,7 @@
 %% }
 -type package_version_history() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_elasticsearch_versions_response() :: #{
 %%   <<"ElasticsearchVersions">> => list(string()()),
@@ -1361,11 +1520,13 @@
 %% }
 -type list_elasticsearch_versions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_already_exists_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_already_exists_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_vpc_endpoint_request() :: #{
@@ -1374,6 +1535,7 @@
 %% }
 -type update_vpc_endpoint_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% remove_tags_request() :: #{
 %%   <<"ARN">> := string(),
@@ -1381,11 +1543,13 @@
 %% }
 -type remove_tags_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_request() :: #{
 %%   <<"ARN">> := string()
 %% }
 -type list_tags_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% auto_tune() :: #{
@@ -1393,6 +1557,7 @@
 %%   <<"AutoTuneType">> => list(any())
 %% }
 -type auto_tune() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_packages_request() :: #{
@@ -1402,6 +1567,7 @@
 %% }
 -type describe_packages_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_outbound_cross_cluster_search_connection_request() :: #{
 %%   <<"ConnectionAlias">> := string(),
@@ -1409,6 +1575,7 @@
 %%   <<"SourceDomainInfo">> := domain_information()
 %% }
 -type create_outbound_cross_cluster_search_connection_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% upgrade_step_item() :: #{
@@ -1418,6 +1585,7 @@
 %%   <<"UpgradeStepStatus">> => list(any())
 %% }
 -type upgrade_step_item() :: #{binary() => any()}.
+
 
 %% Example:
 %% outbound_cross_cluster_search_connection() :: #{
@@ -1429,6 +1597,7 @@
 %% }
 -type outbound_cross_cluster_search_connection() :: #{binary() => any()}.
 
+
 %% Example:
 %% log_publishing_option() :: #{
 %%   <<"CloudWatchLogsLogGroupArn">> => string(),
@@ -1436,11 +1605,13 @@
 %% }
 -type log_publishing_option() :: #{binary() => any()}.
 
+
 %% Example:
 %% accept_inbound_cross_cluster_search_connection_response() :: #{
 %%   <<"CrossClusterSearchConnection">> => inbound_cross_cluster_search_connection()
 %% }
 -type accept_inbound_cross_cluster_search_connection_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_elasticsearch_versions_request() :: #{
@@ -1449,6 +1620,7 @@
 %% }
 -type list_elasticsearch_versions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_vpc_endpoint_access_response() :: #{
 %%   <<"AuthorizedPrincipalList">> => list(authorized_principal()()),
@@ -1456,12 +1628,14 @@
 %% }
 -type list_vpc_endpoint_access_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_reserved_elasticsearch_instances_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"ReservedElasticsearchInstances">> => list(reserved_elasticsearch_instance()())
 %% }
 -type describe_reserved_elasticsearch_instances_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% vpc_endpoint_error() :: #{
@@ -1471,6 +1645,7 @@
 %% }
 -type vpc_endpoint_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_upgrade_status_response() :: #{
 %%   <<"StepStatus">> => list(any()),
@@ -1479,12 +1654,14 @@
 %% }
 -type get_upgrade_status_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_elasticsearch_domain_config_response() :: #{
 %%   <<"DomainConfig">> => elasticsearch_domain_config(),
 %%   <<"DryRunResults">> => dry_run_results()
 %% }
 -type update_elasticsearch_domain_config_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% domain_endpoint_options() :: #{
@@ -1496,17 +1673,20 @@
 %% }
 -type domain_endpoint_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_package_response() :: #{
 %%   <<"DomainPackageDetails">> => domain_package_details()
 %% }
 -type associate_package_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_elasticsearch_domains_response() :: #{
 %%   <<"DomainStatusList">> => list(elasticsearch_domain_status()())
 %% }
 -type describe_elasticsearch_domains_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% encryption_at_rest_options_status() :: #{
@@ -1515,6 +1695,7 @@
 %% }
 -type encryption_at_rest_options_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_elasticsearch_instance_types_response() :: #{
 %%   <<"ElasticsearchInstanceTypes">> => list(list(any())()),
@@ -1522,18 +1703,22 @@
 %% }
 -type list_elasticsearch_instance_types_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% instance_count_limits() :: #{
 %%   <<"MaximumInstanceCount">> => integer(),
 %%   <<"MinimumInstanceCount">> => integer()
 %% }
 -type instance_count_limits() :: #{binary() => any()}.
+
 %% Example:
 %% revoke_vpc_endpoint_access_response() :: #{}
 -type revoke_vpc_endpoint_access_response() :: #{}.
+
 %% Example:
 %% delete_inbound_cross_cluster_search_connection_request() :: #{}
 -type delete_inbound_cross_cluster_search_connection_request() :: #{}.
+
 
 %% Example:
 %% list_domains_for_package_response() :: #{
@@ -1542,11 +1727,13 @@
 %% }
 -type list_domains_for_package_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_pagination_token_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_pagination_token_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% reserved_elasticsearch_instance_offering() :: #{
@@ -1561,6 +1748,7 @@
 %% }
 -type reserved_elasticsearch_instance_offering() :: #{binary() => any()}.
 
+
 %% Example:
 %% master_user_options() :: #{
 %%   <<"MasterUserARN">> => string(),
@@ -1569,11 +1757,338 @@
 %% }
 -type master_user_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% reject_inbound_cross_cluster_search_connection_response() :: #{
 %%   <<"CrossClusterSearchConnection">> => inbound_cross_cluster_search_connection()
 %% }
 -type reject_inbound_cross_cluster_search_connection_response() :: #{binary() => any()}.
+
+-type accept_inbound_cross_cluster_search_connection_errors() ::
+    limit_exceeded_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type add_tags_errors() ::
+    limit_exceeded_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    internal_exception().
+
+-type associate_package_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type authorize_vpc_endpoint_access_errors() ::
+    limit_exceeded_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type cancel_domain_config_change_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type cancel_elasticsearch_service_software_update_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type create_elasticsearch_domain_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    invalid_type_exception() | 
+    disabled_operation_exception().
+
+-type create_outbound_cross_cluster_search_connection_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    disabled_operation_exception().
+
+-type create_package_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    invalid_type_exception().
+
+-type create_vpc_endpoint_errors() ::
+    limit_exceeded_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    conflict_exception() | 
+    disabled_operation_exception().
+
+-type delete_elasticsearch_domain_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type delete_elasticsearch_service_role_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception().
+
+-type delete_inbound_cross_cluster_search_connection_errors() ::
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type delete_outbound_cross_cluster_search_connection_errors() ::
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type delete_package_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_vpc_endpoint_errors() ::
+    base_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type describe_domain_auto_tunes_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type describe_domain_change_progress_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type describe_elasticsearch_domain_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type describe_elasticsearch_domain_config_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type describe_elasticsearch_domains_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception().
+
+-type describe_elasticsearch_instance_type_limits_errors() ::
+    limit_exceeded_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    invalid_type_exception() | 
+    resource_not_found_exception().
+
+-type describe_inbound_cross_cluster_search_connections_errors() ::
+    invalid_pagination_token_exception() | 
+    disabled_operation_exception().
+
+-type describe_outbound_cross_cluster_search_connections_errors() ::
+    invalid_pagination_token_exception() | 
+    disabled_operation_exception().
+
+-type describe_packages_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type describe_reserved_elasticsearch_instance_offerings_errors() ::
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type describe_reserved_elasticsearch_instances_errors() ::
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type describe_vpc_endpoints_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    disabled_operation_exception().
+
+-type dissociate_package_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_compatible_elasticsearch_versions_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type get_package_version_history_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type get_upgrade_history_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type get_upgrade_status_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type list_domain_names_errors() ::
+    base_exception() | 
+    validation_exception().
+
+-type list_domains_for_package_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type list_elasticsearch_instance_types_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type list_elasticsearch_versions_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type list_packages_for_domain_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type list_vpc_endpoint_access_errors() ::
+    base_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type list_vpc_endpoints_errors() ::
+    base_exception() | 
+    internal_exception() | 
+    disabled_operation_exception().
+
+-type list_vpc_endpoints_for_domain_errors() ::
+    base_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type purchase_reserved_elasticsearch_instance_offering_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type reject_inbound_cross_cluster_search_connection_errors() ::
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type remove_tags_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception().
+
+-type revoke_vpc_endpoint_access_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type start_elasticsearch_service_software_update_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type update_elasticsearch_domain_config_errors() ::
+    limit_exceeded_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    invalid_type_exception() | 
+    resource_not_found_exception().
+
+-type update_package_errors() ::
+    limit_exceeded_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type update_vpc_endpoint_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    disabled_operation_exception().
+
+-type upgrade_elasticsearch_domain_errors() ::
+    resource_already_exists_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
 
 %%====================================================================
 %% API
@@ -1584,18 +2099,14 @@
 -spec accept_inbound_cross_cluster_search_connection(map(), binary() | list(), accept_inbound_cross_cluster_search_connection_request()) ->
     {ok, accept_inbound_cross_cluster_search_connection_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, accept_inbound_cross_cluster_search_connection_errors(), tuple()}.
 accept_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input) ->
     accept_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input, []).
 
 -spec accept_inbound_cross_cluster_search_connection(map(), binary() | list(), accept_inbound_cross_cluster_search_connection_request(), proplists:proplist()) ->
     {ok, accept_inbound_cross_cluster_search_connection_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, accept_inbound_cross_cluster_search_connection_errors(), tuple()}.
 accept_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input0, Options0) ->
     Method = put,
     Path = ["/2015-01-01/es/ccs/inboundConnection/", aws_util:encode_uri(CrossClusterSearchConnectionId), "/accept"],
@@ -1627,20 +2138,14 @@ accept_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnect
 -spec add_tags(map(), add_tags_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, add_tags_errors(), tuple()}.
 add_tags(Client, Input) ->
     add_tags(Client, Input, []).
 
 -spec add_tags(map(), add_tags_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, add_tags_errors(), tuple()}.
 add_tags(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/tags"],
@@ -1667,24 +2172,14 @@ add_tags(Client, Input0, Options0) ->
 -spec associate_package(map(), binary() | list(), binary() | list(), associate_package_request()) ->
     {ok, associate_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_package_errors(), tuple()}.
 associate_package(Client, DomainName, PackageID, Input) ->
     associate_package(Client, DomainName, PackageID, Input, []).
 
 -spec associate_package(map(), binary() | list(), binary() | list(), associate_package_request(), proplists:proplist()) ->
     {ok, associate_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_package_errors(), tuple()}.
 associate_package(Client, DomainName, PackageID, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/packages/associate/", aws_util:encode_uri(PackageID), "/", aws_util:encode_uri(DomainName), ""],
@@ -1712,24 +2207,14 @@ associate_package(Client, DomainName, PackageID, Input0, Options0) ->
 -spec authorize_vpc_endpoint_access(map(), binary() | list(), authorize_vpc_endpoint_access_request()) ->
     {ok, authorize_vpc_endpoint_access_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, authorize_vpc_endpoint_access_errors(), tuple()}.
 authorize_vpc_endpoint_access(Client, DomainName, Input) ->
     authorize_vpc_endpoint_access(Client, DomainName, Input, []).
 
 -spec authorize_vpc_endpoint_access(map(), binary() | list(), authorize_vpc_endpoint_access_request(), proplists:proplist()) ->
     {ok, authorize_vpc_endpoint_access_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, authorize_vpc_endpoint_access_errors(), tuple()}.
 authorize_vpc_endpoint_access(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/es/domain/", aws_util:encode_uri(DomainName), "/authorizeVpcEndpointAccess"],
@@ -1757,22 +2242,14 @@ authorize_vpc_endpoint_access(Client, DomainName, Input0, Options0) ->
 -spec cancel_domain_config_change(map(), binary() | list(), cancel_domain_config_change_request()) ->
     {ok, cancel_domain_config_change_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_domain_config_change_errors(), tuple()}.
 cancel_domain_config_change(Client, DomainName, Input) ->
     cancel_domain_config_change(Client, DomainName, Input, []).
 
 -spec cancel_domain_config_change(map(), binary() | list(), cancel_domain_config_change_request(), proplists:proplist()) ->
     {ok, cancel_domain_config_change_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_domain_config_change_errors(), tuple()}.
 cancel_domain_config_change(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/es/domain/", aws_util:encode_uri(DomainName), "/config/cancel"],
@@ -1802,20 +2279,14 @@ cancel_domain_config_change(Client, DomainName, Input0, Options0) ->
 -spec cancel_elasticsearch_service_software_update(map(), cancel_elasticsearch_service_software_update_request()) ->
     {ok, cancel_elasticsearch_service_software_update_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_elasticsearch_service_software_update_errors(), tuple()}.
 cancel_elasticsearch_service_software_update(Client, Input) ->
     cancel_elasticsearch_service_software_update(Client, Input, []).
 
 -spec cancel_elasticsearch_service_software_update(map(), cancel_elasticsearch_service_software_update_request(), proplists:proplist()) ->
     {ok, cancel_elasticsearch_service_software_update_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_elasticsearch_service_software_update_errors(), tuple()}.
 cancel_elasticsearch_service_software_update(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/es/serviceSoftwareUpdate/cancel"],
@@ -1847,26 +2318,14 @@ cancel_elasticsearch_service_software_update(Client, Input0, Options0) ->
 -spec create_elasticsearch_domain(map(), create_elasticsearch_domain_request()) ->
     {ok, create_elasticsearch_domain_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_elasticsearch_domain_errors(), tuple()}.
 create_elasticsearch_domain(Client, Input) ->
     create_elasticsearch_domain(Client, Input, []).
 
 -spec create_elasticsearch_domain(map(), create_elasticsearch_domain_request(), proplists:proplist()) ->
     {ok, create_elasticsearch_domain_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_elasticsearch_domain_errors(), tuple()}.
 create_elasticsearch_domain(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/es/domain"],
@@ -1894,20 +2353,14 @@ create_elasticsearch_domain(Client, Input0, Options0) ->
 -spec create_outbound_cross_cluster_search_connection(map(), create_outbound_cross_cluster_search_connection_request()) ->
     {ok, create_outbound_cross_cluster_search_connection_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()}.
+    {error, create_outbound_cross_cluster_search_connection_errors(), tuple()}.
 create_outbound_cross_cluster_search_connection(Client, Input) ->
     create_outbound_cross_cluster_search_connection(Client, Input, []).
 
 -spec create_outbound_cross_cluster_search_connection(map(), create_outbound_cross_cluster_search_connection_request(), proplists:proplist()) ->
     {ok, create_outbound_cross_cluster_search_connection_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()}.
+    {error, create_outbound_cross_cluster_search_connection_errors(), tuple()}.
 create_outbound_cross_cluster_search_connection(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/es/ccs/outboundConnection"],
@@ -1934,26 +2387,14 @@ create_outbound_cross_cluster_search_connection(Client, Input0, Options0) ->
 -spec create_package(map(), create_package_request()) ->
     {ok, create_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_package_errors(), tuple()}.
 create_package(Client, Input) ->
     create_package(Client, Input, []).
 
 -spec create_package(map(), create_package_request(), proplists:proplist()) ->
     {ok, create_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_package_errors(), tuple()}.
 create_package(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/packages"],
@@ -1980,24 +2421,14 @@ create_package(Client, Input0, Options0) ->
 -spec create_vpc_endpoint(map(), create_vpc_endpoint_request()) ->
     {ok, create_vpc_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_vpc_endpoint_errors(), tuple()}.
 create_vpc_endpoint(Client, Input) ->
     create_vpc_endpoint(Client, Input, []).
 
 -spec create_vpc_endpoint(map(), create_vpc_endpoint_request(), proplists:proplist()) ->
     {ok, create_vpc_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_vpc_endpoint_errors(), tuple()}.
 create_vpc_endpoint(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/es/vpcEndpoints"],
@@ -2027,20 +2458,14 @@ create_vpc_endpoint(Client, Input0, Options0) ->
 -spec delete_elasticsearch_domain(map(), binary() | list(), delete_elasticsearch_domain_request()) ->
     {ok, delete_elasticsearch_domain_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_elasticsearch_domain_errors(), tuple()}.
 delete_elasticsearch_domain(Client, DomainName, Input) ->
     delete_elasticsearch_domain(Client, DomainName, Input, []).
 
 -spec delete_elasticsearch_domain(map(), binary() | list(), delete_elasticsearch_domain_request(), proplists:proplist()) ->
     {ok, delete_elasticsearch_domain_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_elasticsearch_domain_errors(), tuple()}.
 delete_elasticsearch_domain(Client, DomainName, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-01-01/es/domain/", aws_util:encode_uri(DomainName), ""],
@@ -2074,18 +2499,14 @@ delete_elasticsearch_domain(Client, DomainName, Input0, Options0) ->
 -spec delete_elasticsearch_service_role(map(), #{}) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_elasticsearch_service_role_errors(), tuple()}.
 delete_elasticsearch_service_role(Client, Input) ->
     delete_elasticsearch_service_role(Client, Input, []).
 
 -spec delete_elasticsearch_service_role(map(), #{}, proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_elasticsearch_service_role_errors(), tuple()}.
 delete_elasticsearch_service_role(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-01-01/es/role"],
@@ -2113,16 +2534,14 @@ delete_elasticsearch_service_role(Client, Input0, Options0) ->
 -spec delete_inbound_cross_cluster_search_connection(map(), binary() | list(), delete_inbound_cross_cluster_search_connection_request()) ->
     {ok, delete_inbound_cross_cluster_search_connection_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_inbound_cross_cluster_search_connection_errors(), tuple()}.
 delete_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input) ->
     delete_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input, []).
 
 -spec delete_inbound_cross_cluster_search_connection(map(), binary() | list(), delete_inbound_cross_cluster_search_connection_request(), proplists:proplist()) ->
     {ok, delete_inbound_cross_cluster_search_connection_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_inbound_cross_cluster_search_connection_errors(), tuple()}.
 delete_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-01-01/es/ccs/inboundConnection/", aws_util:encode_uri(CrossClusterSearchConnectionId), ""],
@@ -2150,16 +2569,14 @@ delete_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnect
 -spec delete_outbound_cross_cluster_search_connection(map(), binary() | list(), delete_outbound_cross_cluster_search_connection_request()) ->
     {ok, delete_outbound_cross_cluster_search_connection_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_outbound_cross_cluster_search_connection_errors(), tuple()}.
 delete_outbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input) ->
     delete_outbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input, []).
 
 -spec delete_outbound_cross_cluster_search_connection(map(), binary() | list(), delete_outbound_cross_cluster_search_connection_request(), proplists:proplist()) ->
     {ok, delete_outbound_cross_cluster_search_connection_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_outbound_cross_cluster_search_connection_errors(), tuple()}.
 delete_outbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-01-01/es/ccs/outboundConnection/", aws_util:encode_uri(CrossClusterSearchConnectionId), ""],
@@ -2186,24 +2603,14 @@ delete_outbound_cross_cluster_search_connection(Client, CrossClusterSearchConnec
 -spec delete_package(map(), binary() | list(), delete_package_request()) ->
     {ok, delete_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_package_errors(), tuple()}.
 delete_package(Client, PackageID, Input) ->
     delete_package(Client, PackageID, Input, []).
 
 -spec delete_package(map(), binary() | list(), delete_package_request(), proplists:proplist()) ->
     {ok, delete_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_package_errors(), tuple()}.
 delete_package(Client, PackageID, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-01-01/packages/", aws_util:encode_uri(PackageID), ""],
@@ -2230,20 +2637,14 @@ delete_package(Client, PackageID, Input0, Options0) ->
 -spec delete_vpc_endpoint(map(), binary() | list(), delete_vpc_endpoint_request()) ->
     {ok, delete_vpc_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_vpc_endpoint_errors(), tuple()}.
 delete_vpc_endpoint(Client, VpcEndpointId, Input) ->
     delete_vpc_endpoint(Client, VpcEndpointId, Input, []).
 
 -spec delete_vpc_endpoint(map(), binary() | list(), delete_vpc_endpoint_request(), proplists:proplist()) ->
     {ok, delete_vpc_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_vpc_endpoint_errors(), tuple()}.
 delete_vpc_endpoint(Client, VpcEndpointId, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-01-01/es/vpcEndpoints/", aws_util:encode_uri(VpcEndpointId), ""],
@@ -2272,10 +2673,7 @@ delete_vpc_endpoint(Client, VpcEndpointId, Input0, Options0) ->
 -spec describe_domain_auto_tunes(map(), binary() | list()) ->
     {ok, describe_domain_auto_tunes_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_domain_auto_tunes_errors(), tuple()}.
 describe_domain_auto_tunes(Client, DomainName)
   when is_map(Client) ->
     describe_domain_auto_tunes(Client, DomainName, #{}, #{}).
@@ -2283,10 +2681,7 @@ describe_domain_auto_tunes(Client, DomainName)
 -spec describe_domain_auto_tunes(map(), binary() | list(), map(), map()) ->
     {ok, describe_domain_auto_tunes_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_domain_auto_tunes_errors(), tuple()}.
 describe_domain_auto_tunes(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_domain_auto_tunes(Client, DomainName, QueryMap, HeadersMap, []).
@@ -2294,10 +2689,7 @@ describe_domain_auto_tunes(Client, DomainName, QueryMap, HeadersMap)
 -spec describe_domain_auto_tunes(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_domain_auto_tunes_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_domain_auto_tunes_errors(), tuple()}.
 describe_domain_auto_tunes(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/es/domain/", aws_util:encode_uri(DomainName), "/autoTunes"],
@@ -2320,10 +2712,7 @@ describe_domain_auto_tunes(Client, DomainName, QueryMap, HeadersMap, Options0)
 -spec describe_domain_change_progress(map(), binary() | list()) ->
     {ok, describe_domain_change_progress_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_domain_change_progress_errors(), tuple()}.
 describe_domain_change_progress(Client, DomainName)
   when is_map(Client) ->
     describe_domain_change_progress(Client, DomainName, #{}, #{}).
@@ -2331,10 +2720,7 @@ describe_domain_change_progress(Client, DomainName)
 -spec describe_domain_change_progress(map(), binary() | list(), map(), map()) ->
     {ok, describe_domain_change_progress_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_domain_change_progress_errors(), tuple()}.
 describe_domain_change_progress(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_domain_change_progress(Client, DomainName, QueryMap, HeadersMap, []).
@@ -2342,10 +2728,7 @@ describe_domain_change_progress(Client, DomainName, QueryMap, HeadersMap)
 -spec describe_domain_change_progress(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_domain_change_progress_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_domain_change_progress_errors(), tuple()}.
 describe_domain_change_progress(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/es/domain/", aws_util:encode_uri(DomainName), "/progress"],
@@ -2372,10 +2755,7 @@ describe_domain_change_progress(Client, DomainName, QueryMap, HeadersMap, Option
 -spec describe_elasticsearch_domain(map(), binary() | list()) ->
     {ok, describe_elasticsearch_domain_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_elasticsearch_domain_errors(), tuple()}.
 describe_elasticsearch_domain(Client, DomainName)
   when is_map(Client) ->
     describe_elasticsearch_domain(Client, DomainName, #{}, #{}).
@@ -2383,10 +2763,7 @@ describe_elasticsearch_domain(Client, DomainName)
 -spec describe_elasticsearch_domain(map(), binary() | list(), map(), map()) ->
     {ok, describe_elasticsearch_domain_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_elasticsearch_domain_errors(), tuple()}.
 describe_elasticsearch_domain(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_elasticsearch_domain(Client, DomainName, QueryMap, HeadersMap, []).
@@ -2394,10 +2771,7 @@ describe_elasticsearch_domain(Client, DomainName, QueryMap, HeadersMap)
 -spec describe_elasticsearch_domain(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_elasticsearch_domain_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_elasticsearch_domain_errors(), tuple()}.
 describe_elasticsearch_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/es/domain/", aws_util:encode_uri(DomainName), ""],
@@ -2420,10 +2794,7 @@ describe_elasticsearch_domain(Client, DomainName, QueryMap, HeadersMap, Options0
 -spec describe_elasticsearch_domain_config(map(), binary() | list()) ->
     {ok, describe_elasticsearch_domain_config_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_elasticsearch_domain_config_errors(), tuple()}.
 describe_elasticsearch_domain_config(Client, DomainName)
   when is_map(Client) ->
     describe_elasticsearch_domain_config(Client, DomainName, #{}, #{}).
@@ -2431,10 +2802,7 @@ describe_elasticsearch_domain_config(Client, DomainName)
 -spec describe_elasticsearch_domain_config(map(), binary() | list(), map(), map()) ->
     {ok, describe_elasticsearch_domain_config_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_elasticsearch_domain_config_errors(), tuple()}.
 describe_elasticsearch_domain_config(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_elasticsearch_domain_config(Client, DomainName, QueryMap, HeadersMap, []).
@@ -2442,10 +2810,7 @@ describe_elasticsearch_domain_config(Client, DomainName, QueryMap, HeadersMap)
 -spec describe_elasticsearch_domain_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_elasticsearch_domain_config_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_elasticsearch_domain_config_errors(), tuple()}.
 describe_elasticsearch_domain_config(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/es/domain/", aws_util:encode_uri(DomainName), "/config"],
@@ -2468,18 +2833,14 @@ describe_elasticsearch_domain_config(Client, DomainName, QueryMap, HeadersMap, O
 -spec describe_elasticsearch_domains(map(), describe_elasticsearch_domains_request()) ->
     {ok, describe_elasticsearch_domains_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_elasticsearch_domains_errors(), tuple()}.
 describe_elasticsearch_domains(Client, Input) ->
     describe_elasticsearch_domains(Client, Input, []).
 
 -spec describe_elasticsearch_domains(map(), describe_elasticsearch_domains_request(), proplists:proplist()) ->
     {ok, describe_elasticsearch_domains_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_elasticsearch_domains_errors(), tuple()}.
 describe_elasticsearch_domains(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/es/domain-info"],
@@ -2514,12 +2875,7 @@ describe_elasticsearch_domains(Client, Input0, Options0) ->
 -spec describe_elasticsearch_instance_type_limits(map(), binary() | list(), binary() | list()) ->
     {ok, describe_elasticsearch_instance_type_limits_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_elasticsearch_instance_type_limits_errors(), tuple()}.
 describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, InstanceType)
   when is_map(Client) ->
     describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, InstanceType, #{}, #{}).
@@ -2527,12 +2883,7 @@ describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, Instan
 -spec describe_elasticsearch_instance_type_limits(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_elasticsearch_instance_type_limits_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_elasticsearch_instance_type_limits_errors(), tuple()}.
 describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, InstanceType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, InstanceType, QueryMap, HeadersMap, []).
@@ -2540,12 +2891,7 @@ describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, Instan
 -spec describe_elasticsearch_instance_type_limits(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_elasticsearch_instance_type_limits_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_elasticsearch_instance_type_limits_errors(), tuple()}.
 describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, InstanceType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/es/instanceTypeLimits/", aws_util:encode_uri(ElasticsearchVersion), "/", aws_util:encode_uri(InstanceType), ""],
@@ -2571,16 +2917,14 @@ describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, Instan
 -spec describe_inbound_cross_cluster_search_connections(map(), describe_inbound_cross_cluster_search_connections_request()) ->
     {ok, describe_inbound_cross_cluster_search_connections_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()}.
+    {error, describe_inbound_cross_cluster_search_connections_errors(), tuple()}.
 describe_inbound_cross_cluster_search_connections(Client, Input) ->
     describe_inbound_cross_cluster_search_connections(Client, Input, []).
 
 -spec describe_inbound_cross_cluster_search_connections(map(), describe_inbound_cross_cluster_search_connections_request(), proplists:proplist()) ->
     {ok, describe_inbound_cross_cluster_search_connections_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()}.
+    {error, describe_inbound_cross_cluster_search_connections_errors(), tuple()}.
 describe_inbound_cross_cluster_search_connections(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/es/ccs/inboundConnection/search"],
@@ -2608,16 +2952,14 @@ describe_inbound_cross_cluster_search_connections(Client, Input0, Options0) ->
 -spec describe_outbound_cross_cluster_search_connections(map(), describe_outbound_cross_cluster_search_connections_request()) ->
     {ok, describe_outbound_cross_cluster_search_connections_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()}.
+    {error, describe_outbound_cross_cluster_search_connections_errors(), tuple()}.
 describe_outbound_cross_cluster_search_connections(Client, Input) ->
     describe_outbound_cross_cluster_search_connections(Client, Input, []).
 
 -spec describe_outbound_cross_cluster_search_connections(map(), describe_outbound_cross_cluster_search_connections_request(), proplists:proplist()) ->
     {ok, describe_outbound_cross_cluster_search_connections_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()}.
+    {error, describe_outbound_cross_cluster_search_connections_errors(), tuple()}.
 describe_outbound_cross_cluster_search_connections(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/es/ccs/outboundConnection/search"],
@@ -2647,22 +2989,14 @@ describe_outbound_cross_cluster_search_connections(Client, Input0, Options0) ->
 -spec describe_packages(map(), describe_packages_request()) ->
     {ok, describe_packages_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_packages_errors(), tuple()}.
 describe_packages(Client, Input) ->
     describe_packages(Client, Input, []).
 
 -spec describe_packages(map(), describe_packages_request(), proplists:proplist()) ->
     {ok, describe_packages_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_packages_errors(), tuple()}.
 describe_packages(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/packages/describe"],
@@ -2689,10 +3023,7 @@ describe_packages(Client, Input0, Options0) ->
 -spec describe_reserved_elasticsearch_instance_offerings(map()) ->
     {ok, describe_reserved_elasticsearch_instance_offerings_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_reserved_elasticsearch_instance_offerings_errors(), tuple()}.
 describe_reserved_elasticsearch_instance_offerings(Client)
   when is_map(Client) ->
     describe_reserved_elasticsearch_instance_offerings(Client, #{}, #{}).
@@ -2700,10 +3031,7 @@ describe_reserved_elasticsearch_instance_offerings(Client)
 -spec describe_reserved_elasticsearch_instance_offerings(map(), map(), map()) ->
     {ok, describe_reserved_elasticsearch_instance_offerings_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_reserved_elasticsearch_instance_offerings_errors(), tuple()}.
 describe_reserved_elasticsearch_instance_offerings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_reserved_elasticsearch_instance_offerings(Client, QueryMap, HeadersMap, []).
@@ -2711,10 +3039,7 @@ describe_reserved_elasticsearch_instance_offerings(Client, QueryMap, HeadersMap)
 -spec describe_reserved_elasticsearch_instance_offerings(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_reserved_elasticsearch_instance_offerings_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_reserved_elasticsearch_instance_offerings_errors(), tuple()}.
 describe_reserved_elasticsearch_instance_offerings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/es/reservedInstanceOfferings"],
@@ -2742,10 +3067,7 @@ describe_reserved_elasticsearch_instance_offerings(Client, QueryMap, HeadersMap,
 -spec describe_reserved_elasticsearch_instances(map()) ->
     {ok, describe_reserved_elasticsearch_instances_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_reserved_elasticsearch_instances_errors(), tuple()}.
 describe_reserved_elasticsearch_instances(Client)
   when is_map(Client) ->
     describe_reserved_elasticsearch_instances(Client, #{}, #{}).
@@ -2753,10 +3075,7 @@ describe_reserved_elasticsearch_instances(Client)
 -spec describe_reserved_elasticsearch_instances(map(), map(), map()) ->
     {ok, describe_reserved_elasticsearch_instances_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_reserved_elasticsearch_instances_errors(), tuple()}.
 describe_reserved_elasticsearch_instances(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_reserved_elasticsearch_instances(Client, QueryMap, HeadersMap, []).
@@ -2764,10 +3083,7 @@ describe_reserved_elasticsearch_instances(Client, QueryMap, HeadersMap)
 -spec describe_reserved_elasticsearch_instances(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_reserved_elasticsearch_instances_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_reserved_elasticsearch_instances_errors(), tuple()}.
 describe_reserved_elasticsearch_instances(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/es/reservedInstances"],
@@ -2795,20 +3111,14 @@ describe_reserved_elasticsearch_instances(Client, QueryMap, HeadersMap, Options0
 -spec describe_vpc_endpoints(map(), describe_vpc_endpoints_request()) ->
     {ok, describe_vpc_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_vpc_endpoints_errors(), tuple()}.
 describe_vpc_endpoints(Client, Input) ->
     describe_vpc_endpoints(Client, Input, []).
 
 -spec describe_vpc_endpoints(map(), describe_vpc_endpoints_request(), proplists:proplist()) ->
     {ok, describe_vpc_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_vpc_endpoints_errors(), tuple()}.
 describe_vpc_endpoints(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/es/vpcEndpoints/describe"],
@@ -2835,24 +3145,14 @@ describe_vpc_endpoints(Client, Input0, Options0) ->
 -spec dissociate_package(map(), binary() | list(), binary() | list(), dissociate_package_request()) ->
     {ok, dissociate_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, dissociate_package_errors(), tuple()}.
 dissociate_package(Client, DomainName, PackageID, Input) ->
     dissociate_package(Client, DomainName, PackageID, Input, []).
 
 -spec dissociate_package(map(), binary() | list(), binary() | list(), dissociate_package_request(), proplists:proplist()) ->
     {ok, dissociate_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, dissociate_package_errors(), tuple()}.
 dissociate_package(Client, DomainName, PackageID, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/packages/dissociate/", aws_util:encode_uri(PackageID), "/", aws_util:encode_uri(DomainName), ""],
@@ -2887,11 +3187,7 @@ dissociate_package(Client, DomainName, PackageID, Input0, Options0) ->
 -spec get_compatible_elasticsearch_versions(map()) ->
     {ok, get_compatible_elasticsearch_versions_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_compatible_elasticsearch_versions_errors(), tuple()}.
 get_compatible_elasticsearch_versions(Client)
   when is_map(Client) ->
     get_compatible_elasticsearch_versions(Client, #{}, #{}).
@@ -2899,11 +3195,7 @@ get_compatible_elasticsearch_versions(Client)
 -spec get_compatible_elasticsearch_versions(map(), map(), map()) ->
     {ok, get_compatible_elasticsearch_versions_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_compatible_elasticsearch_versions_errors(), tuple()}.
 get_compatible_elasticsearch_versions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_compatible_elasticsearch_versions(Client, QueryMap, HeadersMap, []).
@@ -2911,11 +3203,7 @@ get_compatible_elasticsearch_versions(Client, QueryMap, HeadersMap)
 -spec get_compatible_elasticsearch_versions(map(), map(), map(), proplists:proplist()) ->
     {ok, get_compatible_elasticsearch_versions_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_compatible_elasticsearch_versions_errors(), tuple()}.
 get_compatible_elasticsearch_versions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/es/compatibleVersions"],
@@ -2941,11 +3229,7 @@ get_compatible_elasticsearch_versions(Client, QueryMap, HeadersMap, Options0)
 -spec get_package_version_history(map(), binary() | list()) ->
     {ok, get_package_version_history_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_package_version_history_errors(), tuple()}.
 get_package_version_history(Client, PackageID)
   when is_map(Client) ->
     get_package_version_history(Client, PackageID, #{}, #{}).
@@ -2953,11 +3237,7 @@ get_package_version_history(Client, PackageID)
 -spec get_package_version_history(map(), binary() | list(), map(), map()) ->
     {ok, get_package_version_history_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_package_version_history_errors(), tuple()}.
 get_package_version_history(Client, PackageID, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_package_version_history(Client, PackageID, QueryMap, HeadersMap, []).
@@ -2965,11 +3245,7 @@ get_package_version_history(Client, PackageID, QueryMap, HeadersMap)
 -spec get_package_version_history(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_package_version_history_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_package_version_history_errors(), tuple()}.
 get_package_version_history(Client, PackageID, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/packages/", aws_util:encode_uri(PackageID), "/history"],
@@ -2996,11 +3272,7 @@ get_package_version_history(Client, PackageID, QueryMap, HeadersMap, Options0)
 -spec get_upgrade_history(map(), binary() | list()) ->
     {ok, get_upgrade_history_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_upgrade_history_errors(), tuple()}.
 get_upgrade_history(Client, DomainName)
   when is_map(Client) ->
     get_upgrade_history(Client, DomainName, #{}, #{}).
@@ -3008,11 +3280,7 @@ get_upgrade_history(Client, DomainName)
 -spec get_upgrade_history(map(), binary() | list(), map(), map()) ->
     {ok, get_upgrade_history_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_upgrade_history_errors(), tuple()}.
 get_upgrade_history(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_upgrade_history(Client, DomainName, QueryMap, HeadersMap, []).
@@ -3020,11 +3288,7 @@ get_upgrade_history(Client, DomainName, QueryMap, HeadersMap)
 -spec get_upgrade_history(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_upgrade_history_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_upgrade_history_errors(), tuple()}.
 get_upgrade_history(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/es/upgradeDomain/", aws_util:encode_uri(DomainName), "/history"],
@@ -3051,11 +3315,7 @@ get_upgrade_history(Client, DomainName, QueryMap, HeadersMap, Options0)
 -spec get_upgrade_status(map(), binary() | list()) ->
     {ok, get_upgrade_status_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_upgrade_status_errors(), tuple()}.
 get_upgrade_status(Client, DomainName)
   when is_map(Client) ->
     get_upgrade_status(Client, DomainName, #{}, #{}).
@@ -3063,11 +3323,7 @@ get_upgrade_status(Client, DomainName)
 -spec get_upgrade_status(map(), binary() | list(), map(), map()) ->
     {ok, get_upgrade_status_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_upgrade_status_errors(), tuple()}.
 get_upgrade_status(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_upgrade_status(Client, DomainName, QueryMap, HeadersMap, []).
@@ -3075,11 +3331,7 @@ get_upgrade_status(Client, DomainName, QueryMap, HeadersMap)
 -spec get_upgrade_status(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_upgrade_status_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_upgrade_status_errors(), tuple()}.
 get_upgrade_status(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/es/upgradeDomain/", aws_util:encode_uri(DomainName), "/status"],
@@ -3101,8 +3353,7 @@ get_upgrade_status(Client, DomainName, QueryMap, HeadersMap, Options0)
 -spec list_domain_names(map()) ->
     {ok, list_domain_names_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_domain_names_errors(), tuple()}.
 list_domain_names(Client)
   when is_map(Client) ->
     list_domain_names(Client, #{}, #{}).
@@ -3110,8 +3361,7 @@ list_domain_names(Client)
 -spec list_domain_names(map(), map(), map()) ->
     {ok, list_domain_names_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_domain_names_errors(), tuple()}.
 list_domain_names(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_domain_names(Client, QueryMap, HeadersMap, []).
@@ -3119,8 +3369,7 @@ list_domain_names(Client, QueryMap, HeadersMap)
 -spec list_domain_names(map(), map(), map(), proplists:proplist()) ->
     {ok, list_domain_names_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_domain_names_errors(), tuple()}.
 list_domain_names(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/domain"],
@@ -3145,11 +3394,7 @@ list_domain_names(Client, QueryMap, HeadersMap, Options0)
 -spec list_domains_for_package(map(), binary() | list()) ->
     {ok, list_domains_for_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_domains_for_package_errors(), tuple()}.
 list_domains_for_package(Client, PackageID)
   when is_map(Client) ->
     list_domains_for_package(Client, PackageID, #{}, #{}).
@@ -3157,11 +3402,7 @@ list_domains_for_package(Client, PackageID)
 -spec list_domains_for_package(map(), binary() | list(), map(), map()) ->
     {ok, list_domains_for_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_domains_for_package_errors(), tuple()}.
 list_domains_for_package(Client, PackageID, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_domains_for_package(Client, PackageID, QueryMap, HeadersMap, []).
@@ -3169,11 +3410,7 @@ list_domains_for_package(Client, PackageID, QueryMap, HeadersMap)
 -spec list_domains_for_package(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_domains_for_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_domains_for_package_errors(), tuple()}.
 list_domains_for_package(Client, PackageID, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/packages/", aws_util:encode_uri(PackageID), "/domains"],
@@ -3200,10 +3437,7 @@ list_domains_for_package(Client, PackageID, QueryMap, HeadersMap, Options0)
 -spec list_elasticsearch_instance_types(map(), binary() | list()) ->
     {ok, list_elasticsearch_instance_types_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_elasticsearch_instance_types_errors(), tuple()}.
 list_elasticsearch_instance_types(Client, ElasticsearchVersion)
   when is_map(Client) ->
     list_elasticsearch_instance_types(Client, ElasticsearchVersion, #{}, #{}).
@@ -3211,10 +3445,7 @@ list_elasticsearch_instance_types(Client, ElasticsearchVersion)
 -spec list_elasticsearch_instance_types(map(), binary() | list(), map(), map()) ->
     {ok, list_elasticsearch_instance_types_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_elasticsearch_instance_types_errors(), tuple()}.
 list_elasticsearch_instance_types(Client, ElasticsearchVersion, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_elasticsearch_instance_types(Client, ElasticsearchVersion, QueryMap, HeadersMap, []).
@@ -3222,10 +3453,7 @@ list_elasticsearch_instance_types(Client, ElasticsearchVersion, QueryMap, Header
 -spec list_elasticsearch_instance_types(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_elasticsearch_instance_types_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_elasticsearch_instance_types_errors(), tuple()}.
 list_elasticsearch_instance_types(Client, ElasticsearchVersion, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/es/instanceTypes/", aws_util:encode_uri(ElasticsearchVersion), ""],
@@ -3252,10 +3480,7 @@ list_elasticsearch_instance_types(Client, ElasticsearchVersion, QueryMap, Header
 -spec list_elasticsearch_versions(map()) ->
     {ok, list_elasticsearch_versions_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_elasticsearch_versions_errors(), tuple()}.
 list_elasticsearch_versions(Client)
   when is_map(Client) ->
     list_elasticsearch_versions(Client, #{}, #{}).
@@ -3263,10 +3488,7 @@ list_elasticsearch_versions(Client)
 -spec list_elasticsearch_versions(map(), map(), map()) ->
     {ok, list_elasticsearch_versions_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_elasticsearch_versions_errors(), tuple()}.
 list_elasticsearch_versions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_elasticsearch_versions(Client, QueryMap, HeadersMap, []).
@@ -3274,10 +3496,7 @@ list_elasticsearch_versions(Client, QueryMap, HeadersMap)
 -spec list_elasticsearch_versions(map(), map(), map(), proplists:proplist()) ->
     {ok, list_elasticsearch_versions_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_elasticsearch_versions_errors(), tuple()}.
 list_elasticsearch_versions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/es/versions"],
@@ -3303,11 +3522,7 @@ list_elasticsearch_versions(Client, QueryMap, HeadersMap, Options0)
 -spec list_packages_for_domain(map(), binary() | list()) ->
     {ok, list_packages_for_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_packages_for_domain_errors(), tuple()}.
 list_packages_for_domain(Client, DomainName)
   when is_map(Client) ->
     list_packages_for_domain(Client, DomainName, #{}, #{}).
@@ -3315,11 +3530,7 @@ list_packages_for_domain(Client, DomainName)
 -spec list_packages_for_domain(map(), binary() | list(), map(), map()) ->
     {ok, list_packages_for_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_packages_for_domain_errors(), tuple()}.
 list_packages_for_domain(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_packages_for_domain(Client, DomainName, QueryMap, HeadersMap, []).
@@ -3327,11 +3538,7 @@ list_packages_for_domain(Client, DomainName, QueryMap, HeadersMap)
 -spec list_packages_for_domain(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_packages_for_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_packages_for_domain_errors(), tuple()}.
 list_packages_for_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/domain/", aws_util:encode_uri(DomainName), "/packages"],
@@ -3357,10 +3564,7 @@ list_packages_for_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
 -spec list_tags(map(), binary() | list()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, ARN)
   when is_map(Client) ->
     list_tags(Client, ARN, #{}, #{}).
@@ -3368,10 +3572,7 @@ list_tags(Client, ARN)
 -spec list_tags(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, ARN, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags(Client, ARN, QueryMap, HeadersMap, []).
@@ -3379,10 +3580,7 @@ list_tags(Client, ARN, QueryMap, HeadersMap)
 -spec list_tags(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, ARN, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/tags"],
@@ -3410,10 +3608,7 @@ list_tags(Client, ARN, QueryMap, HeadersMap, Options0)
 -spec list_vpc_endpoint_access(map(), binary() | list()) ->
     {ok, list_vpc_endpoint_access_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_vpc_endpoint_access_errors(), tuple()}.
 list_vpc_endpoint_access(Client, DomainName)
   when is_map(Client) ->
     list_vpc_endpoint_access(Client, DomainName, #{}, #{}).
@@ -3421,10 +3616,7 @@ list_vpc_endpoint_access(Client, DomainName)
 -spec list_vpc_endpoint_access(map(), binary() | list(), map(), map()) ->
     {ok, list_vpc_endpoint_access_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_vpc_endpoint_access_errors(), tuple()}.
 list_vpc_endpoint_access(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_vpc_endpoint_access(Client, DomainName, QueryMap, HeadersMap, []).
@@ -3432,10 +3624,7 @@ list_vpc_endpoint_access(Client, DomainName, QueryMap, HeadersMap)
 -spec list_vpc_endpoint_access(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_vpc_endpoint_access_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_vpc_endpoint_access_errors(), tuple()}.
 list_vpc_endpoint_access(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/es/domain/", aws_util:encode_uri(DomainName), "/listVpcEndpointAccess"],
@@ -3461,9 +3650,7 @@ list_vpc_endpoint_access(Client, DomainName, QueryMap, HeadersMap, Options0)
 -spec list_vpc_endpoints(map()) ->
     {ok, list_vpc_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()}.
+    {error, list_vpc_endpoints_errors(), tuple()}.
 list_vpc_endpoints(Client)
   when is_map(Client) ->
     list_vpc_endpoints(Client, #{}, #{}).
@@ -3471,9 +3658,7 @@ list_vpc_endpoints(Client)
 -spec list_vpc_endpoints(map(), map(), map()) ->
     {ok, list_vpc_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()}.
+    {error, list_vpc_endpoints_errors(), tuple()}.
 list_vpc_endpoints(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_vpc_endpoints(Client, QueryMap, HeadersMap, []).
@@ -3481,9 +3666,7 @@ list_vpc_endpoints(Client, QueryMap, HeadersMap)
 -spec list_vpc_endpoints(map(), map(), map(), proplists:proplist()) ->
     {ok, list_vpc_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()}.
+    {error, list_vpc_endpoints_errors(), tuple()}.
 list_vpc_endpoints(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/es/vpcEndpoints"],
@@ -3509,10 +3692,7 @@ list_vpc_endpoints(Client, QueryMap, HeadersMap, Options0)
 -spec list_vpc_endpoints_for_domain(map(), binary() | list()) ->
     {ok, list_vpc_endpoints_for_domain_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_vpc_endpoints_for_domain_errors(), tuple()}.
 list_vpc_endpoints_for_domain(Client, DomainName)
   when is_map(Client) ->
     list_vpc_endpoints_for_domain(Client, DomainName, #{}, #{}).
@@ -3520,10 +3700,7 @@ list_vpc_endpoints_for_domain(Client, DomainName)
 -spec list_vpc_endpoints_for_domain(map(), binary() | list(), map(), map()) ->
     {ok, list_vpc_endpoints_for_domain_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_vpc_endpoints_for_domain_errors(), tuple()}.
 list_vpc_endpoints_for_domain(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_vpc_endpoints_for_domain(Client, DomainName, QueryMap, HeadersMap, []).
@@ -3531,10 +3708,7 @@ list_vpc_endpoints_for_domain(Client, DomainName, QueryMap, HeadersMap)
 -spec list_vpc_endpoints_for_domain(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_vpc_endpoints_for_domain_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_vpc_endpoints_for_domain_errors(), tuple()}.
 list_vpc_endpoints_for_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/es/domain/", aws_util:encode_uri(DomainName), "/vpcEndpoints"],
@@ -3559,24 +3733,14 @@ list_vpc_endpoints_for_domain(Client, DomainName, QueryMap, HeadersMap, Options0
 -spec purchase_reserved_elasticsearch_instance_offering(map(), purchase_reserved_elasticsearch_instance_offering_request()) ->
     {ok, purchase_reserved_elasticsearch_instance_offering_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, purchase_reserved_elasticsearch_instance_offering_errors(), tuple()}.
 purchase_reserved_elasticsearch_instance_offering(Client, Input) ->
     purchase_reserved_elasticsearch_instance_offering(Client, Input, []).
 
 -spec purchase_reserved_elasticsearch_instance_offering(map(), purchase_reserved_elasticsearch_instance_offering_request(), proplists:proplist()) ->
     {ok, purchase_reserved_elasticsearch_instance_offering_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, purchase_reserved_elasticsearch_instance_offering_errors(), tuple()}.
 purchase_reserved_elasticsearch_instance_offering(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/es/purchaseReservedInstanceOffering"],
@@ -3604,16 +3768,14 @@ purchase_reserved_elasticsearch_instance_offering(Client, Input0, Options0) ->
 -spec reject_inbound_cross_cluster_search_connection(map(), binary() | list(), reject_inbound_cross_cluster_search_connection_request()) ->
     {ok, reject_inbound_cross_cluster_search_connection_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, reject_inbound_cross_cluster_search_connection_errors(), tuple()}.
 reject_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input) ->
     reject_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input, []).
 
 -spec reject_inbound_cross_cluster_search_connection(map(), binary() | list(), reject_inbound_cross_cluster_search_connection_request(), proplists:proplist()) ->
     {ok, reject_inbound_cross_cluster_search_connection_response(), tuple()} |
     {error, any()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, reject_inbound_cross_cluster_search_connection_errors(), tuple()}.
 reject_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input0, Options0) ->
     Method = put,
     Path = ["/2015-01-01/es/ccs/inboundConnection/", aws_util:encode_uri(CrossClusterSearchConnectionId), "/reject"],
@@ -3641,18 +3803,14 @@ reject_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnect
 -spec remove_tags(map(), remove_tags_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, remove_tags_errors(), tuple()}.
 remove_tags(Client, Input) ->
     remove_tags(Client, Input, []).
 
 -spec remove_tags(map(), remove_tags_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, remove_tags_errors(), tuple()}.
 remove_tags(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/tags-removal"],
@@ -3681,22 +3839,14 @@ remove_tags(Client, Input0, Options0) ->
 -spec revoke_vpc_endpoint_access(map(), binary() | list(), revoke_vpc_endpoint_access_request()) ->
     {ok, revoke_vpc_endpoint_access_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, revoke_vpc_endpoint_access_errors(), tuple()}.
 revoke_vpc_endpoint_access(Client, DomainName, Input) ->
     revoke_vpc_endpoint_access(Client, DomainName, Input, []).
 
 -spec revoke_vpc_endpoint_access(map(), binary() | list(), revoke_vpc_endpoint_access_request(), proplists:proplist()) ->
     {ok, revoke_vpc_endpoint_access_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, revoke_vpc_endpoint_access_errors(), tuple()}.
 revoke_vpc_endpoint_access(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/es/domain/", aws_util:encode_uri(DomainName), "/revokeVpcEndpointAccess"],
@@ -3723,20 +3873,14 @@ revoke_vpc_endpoint_access(Client, DomainName, Input0, Options0) ->
 -spec start_elasticsearch_service_software_update(map(), start_elasticsearch_service_software_update_request()) ->
     {ok, start_elasticsearch_service_software_update_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_elasticsearch_service_software_update_errors(), tuple()}.
 start_elasticsearch_service_software_update(Client, Input) ->
     start_elasticsearch_service_software_update(Client, Input, []).
 
 -spec start_elasticsearch_service_software_update(map(), start_elasticsearch_service_software_update_request(), proplists:proplist()) ->
     {ok, start_elasticsearch_service_software_update_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_elasticsearch_service_software_update_errors(), tuple()}.
 start_elasticsearch_service_software_update(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/es/serviceSoftwareUpdate/start"],
@@ -3764,24 +3908,14 @@ start_elasticsearch_service_software_update(Client, Input0, Options0) ->
 -spec update_elasticsearch_domain_config(map(), binary() | list(), update_elasticsearch_domain_config_request()) ->
     {ok, update_elasticsearch_domain_config_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_elasticsearch_domain_config_errors(), tuple()}.
 update_elasticsearch_domain_config(Client, DomainName, Input) ->
     update_elasticsearch_domain_config(Client, DomainName, Input, []).
 
 -spec update_elasticsearch_domain_config(map(), binary() | list(), update_elasticsearch_domain_config_request(), proplists:proplist()) ->
     {ok, update_elasticsearch_domain_config_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_elasticsearch_domain_config_errors(), tuple()}.
 update_elasticsearch_domain_config(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/es/domain/", aws_util:encode_uri(DomainName), "/config"],
@@ -3808,24 +3942,14 @@ update_elasticsearch_domain_config(Client, DomainName, Input0, Options0) ->
 -spec update_package(map(), update_package_request()) ->
     {ok, update_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_package_errors(), tuple()}.
 update_package(Client, Input) ->
     update_package(Client, Input, []).
 
 -spec update_package(map(), update_package_request(), proplists:proplist()) ->
     {ok, update_package_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, base_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_package_errors(), tuple()}.
 update_package(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/packages/update"],
@@ -3852,24 +3976,14 @@ update_package(Client, Input0, Options0) ->
 -spec update_vpc_endpoint(map(), update_vpc_endpoint_request()) ->
     {ok, update_vpc_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_vpc_endpoint_errors(), tuple()}.
 update_vpc_endpoint(Client, Input) ->
     update_vpc_endpoint(Client, Input, []).
 
 -spec update_vpc_endpoint(map(), update_vpc_endpoint_request(), proplists:proplist()) ->
     {ok, update_vpc_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_vpc_endpoint_errors(), tuple()}.
 update_vpc_endpoint(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/es/vpcEndpoints/update"],
@@ -3897,24 +4011,14 @@ update_vpc_endpoint(Client, Input0, Options0) ->
 -spec upgrade_elasticsearch_domain(map(), upgrade_elasticsearch_domain_request()) ->
     {ok, upgrade_elasticsearch_domain_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, upgrade_elasticsearch_domain_errors(), tuple()}.
 upgrade_elasticsearch_domain(Client, Input) ->
     upgrade_elasticsearch_domain(Client, Input, []).
 
 -spec upgrade_elasticsearch_domain(map(), upgrade_elasticsearch_domain_request(), proplists:proplist()) ->
     {ok, upgrade_elasticsearch_domain_response(), tuple()} |
     {error, any()} |
-    {error, base_exception(), tuple()} |
-    {error, disabled_operation_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, upgrade_elasticsearch_domain_errors(), tuple()}.
 upgrade_elasticsearch_domain(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/es/upgradeDomain"],

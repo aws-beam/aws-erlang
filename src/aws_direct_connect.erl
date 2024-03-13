@@ -1262,6 +1262,279 @@
 %% }
 -type create_transit_virtual_interface_result() :: #{binary() => any()}.
 
+-type accept_direct_connect_gateway_association_proposal_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type allocate_connection_on_interconnect_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type allocate_hosted_connection_errors() ::
+    too_many_tags_exception() | 
+    direct_connect_server_exception() | 
+    duplicate_tag_keys_exception() | 
+    direct_connect_client_exception().
+
+-type allocate_private_virtual_interface_errors() ::
+    too_many_tags_exception() | 
+    direct_connect_server_exception() | 
+    duplicate_tag_keys_exception() | 
+    direct_connect_client_exception().
+
+-type allocate_public_virtual_interface_errors() ::
+    too_many_tags_exception() | 
+    direct_connect_server_exception() | 
+    duplicate_tag_keys_exception() | 
+    direct_connect_client_exception().
+
+-type allocate_transit_virtual_interface_errors() ::
+    too_many_tags_exception() | 
+    direct_connect_server_exception() | 
+    duplicate_tag_keys_exception() | 
+    direct_connect_client_exception().
+
+-type associate_connection_with_lag_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type associate_hosted_connection_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type associate_mac_sec_key_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type associate_virtual_interface_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type confirm_connection_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type confirm_customer_agreement_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type confirm_private_virtual_interface_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type confirm_public_virtual_interface_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type confirm_transit_virtual_interface_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type create_bgp_peer_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type create_connection_errors() ::
+    too_many_tags_exception() | 
+    direct_connect_server_exception() | 
+    duplicate_tag_keys_exception() | 
+    direct_connect_client_exception().
+
+-type create_direct_connect_gateway_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type create_direct_connect_gateway_association_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type create_direct_connect_gateway_association_proposal_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type create_interconnect_errors() ::
+    too_many_tags_exception() | 
+    direct_connect_server_exception() | 
+    duplicate_tag_keys_exception() | 
+    direct_connect_client_exception().
+
+-type create_lag_errors() ::
+    too_many_tags_exception() | 
+    direct_connect_server_exception() | 
+    duplicate_tag_keys_exception() | 
+    direct_connect_client_exception().
+
+-type create_private_virtual_interface_errors() ::
+    too_many_tags_exception() | 
+    direct_connect_server_exception() | 
+    duplicate_tag_keys_exception() | 
+    direct_connect_client_exception().
+
+-type create_public_virtual_interface_errors() ::
+    too_many_tags_exception() | 
+    direct_connect_server_exception() | 
+    duplicate_tag_keys_exception() | 
+    direct_connect_client_exception().
+
+-type create_transit_virtual_interface_errors() ::
+    too_many_tags_exception() | 
+    direct_connect_server_exception() | 
+    duplicate_tag_keys_exception() | 
+    direct_connect_client_exception().
+
+-type delete_bgp_peer_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type delete_connection_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type delete_direct_connect_gateway_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type delete_direct_connect_gateway_association_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type delete_direct_connect_gateway_association_proposal_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type delete_interconnect_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type delete_lag_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type delete_virtual_interface_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type describe_connection_loa_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type describe_connections_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type describe_connections_on_interconnect_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type describe_customer_metadata_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type describe_direct_connect_gateway_association_proposals_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type describe_direct_connect_gateway_associations_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type describe_direct_connect_gateway_attachments_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type describe_direct_connect_gateways_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type describe_hosted_connections_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type describe_interconnect_loa_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type describe_interconnects_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type describe_lags_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type describe_loa_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type describe_locations_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type describe_router_configuration_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type describe_tags_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type describe_virtual_gateways_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type describe_virtual_interfaces_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type disassociate_connection_from_lag_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type disassociate_mac_sec_key_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type list_virtual_interface_test_history_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type start_bgp_failover_test_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type stop_bgp_failover_test_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    direct_connect_server_exception() | 
+    duplicate_tag_keys_exception() | 
+    direct_connect_client_exception().
+
+-type untag_resource_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type update_connection_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type update_direct_connect_gateway_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type update_direct_connect_gateway_association_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type update_lag_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type update_virtual_interface_attributes_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
 
 %%====================================================================
 %% API
@@ -1272,8 +1545,7 @@
 -spec accept_direct_connect_gateway_association_proposal(map(), accept_direct_connect_gateway_association_proposal_request()) ->
     {ok, accept_direct_connect_gateway_association_proposal_result(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, accept_direct_connect_gateway_association_proposal_errors(), tuple()}.
 accept_direct_connect_gateway_association_proposal(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_direct_connect_gateway_association_proposal(Client, Input, []).
@@ -1281,8 +1553,7 @@ accept_direct_connect_gateway_association_proposal(Client, Input)
 -spec accept_direct_connect_gateway_association_proposal(map(), accept_direct_connect_gateway_association_proposal_request(), proplists:proplist()) ->
     {ok, accept_direct_connect_gateway_association_proposal_result(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, accept_direct_connect_gateway_association_proposal_errors(), tuple()}.
 accept_direct_connect_gateway_association_proposal(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcceptDirectConnectGatewayAssociationProposal">>, Input, Options).
@@ -1300,8 +1571,7 @@ accept_direct_connect_gateway_association_proposal(Client, Input, Options)
 -spec allocate_connection_on_interconnect(map(), allocate_connection_on_interconnect_request()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, allocate_connection_on_interconnect_errors(), tuple()}.
 allocate_connection_on_interconnect(Client, Input)
   when is_map(Client), is_map(Input) ->
     allocate_connection_on_interconnect(Client, Input, []).
@@ -1309,8 +1579,7 @@ allocate_connection_on_interconnect(Client, Input)
 -spec allocate_connection_on_interconnect(map(), allocate_connection_on_interconnect_request(), proplists:proplist()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, allocate_connection_on_interconnect_errors(), tuple()}.
 allocate_connection_on_interconnect(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AllocateConnectionOnInterconnect">>, Input, Options).
@@ -1329,10 +1598,7 @@ allocate_connection_on_interconnect(Client, Input, Options)
 -spec allocate_hosted_connection(map(), allocate_hosted_connection_request()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, allocate_hosted_connection_errors(), tuple()}.
 allocate_hosted_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     allocate_hosted_connection(Client, Input, []).
@@ -1340,10 +1606,7 @@ allocate_hosted_connection(Client, Input)
 -spec allocate_hosted_connection(map(), allocate_hosted_connection_request(), proplists:proplist()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, allocate_hosted_connection_errors(), tuple()}.
 allocate_hosted_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AllocateHostedConnection">>, Input, Options).
@@ -1358,10 +1621,7 @@ allocate_hosted_connection(Client, Input, Options)
 -spec allocate_private_virtual_interface(map(), allocate_private_virtual_interface_request()) ->
     {ok, virtual_interface(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, allocate_private_virtual_interface_errors(), tuple()}.
 allocate_private_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     allocate_private_virtual_interface(Client, Input, []).
@@ -1369,10 +1629,7 @@ allocate_private_virtual_interface(Client, Input)
 -spec allocate_private_virtual_interface(map(), allocate_private_virtual_interface_request(), proplists:proplist()) ->
     {ok, virtual_interface(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, allocate_private_virtual_interface_errors(), tuple()}.
 allocate_private_virtual_interface(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AllocatePrivateVirtualInterface">>, Input, Options).
@@ -1396,10 +1653,7 @@ allocate_private_virtual_interface(Client, Input, Options)
 -spec allocate_public_virtual_interface(map(), allocate_public_virtual_interface_request()) ->
     {ok, virtual_interface(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, allocate_public_virtual_interface_errors(), tuple()}.
 allocate_public_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     allocate_public_virtual_interface(Client, Input, []).
@@ -1407,10 +1661,7 @@ allocate_public_virtual_interface(Client, Input)
 -spec allocate_public_virtual_interface(map(), allocate_public_virtual_interface_request(), proplists:proplist()) ->
     {ok, virtual_interface(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, allocate_public_virtual_interface_errors(), tuple()}.
 allocate_public_virtual_interface(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AllocatePublicVirtualInterface">>, Input, Options).
@@ -1431,10 +1682,7 @@ allocate_public_virtual_interface(Client, Input, Options)
 -spec allocate_transit_virtual_interface(map(), allocate_transit_virtual_interface_request()) ->
     {ok, allocate_transit_virtual_interface_result(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, allocate_transit_virtual_interface_errors(), tuple()}.
 allocate_transit_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     allocate_transit_virtual_interface(Client, Input, []).
@@ -1442,10 +1690,7 @@ allocate_transit_virtual_interface(Client, Input)
 -spec allocate_transit_virtual_interface(map(), allocate_transit_virtual_interface_request(), proplists:proplist()) ->
     {ok, allocate_transit_virtual_interface_result(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, allocate_transit_virtual_interface_errors(), tuple()}.
 allocate_transit_virtual_interface(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AllocateTransitVirtualInterface">>, Input, Options).
@@ -1482,8 +1727,7 @@ allocate_transit_virtual_interface(Client, Input, Options)
 -spec associate_connection_with_lag(map(), associate_connection_with_lag_request()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, associate_connection_with_lag_errors(), tuple()}.
 associate_connection_with_lag(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_connection_with_lag(Client, Input, []).
@@ -1491,8 +1735,7 @@ associate_connection_with_lag(Client, Input)
 -spec associate_connection_with_lag(map(), associate_connection_with_lag_request(), proplists:proplist()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, associate_connection_with_lag_errors(), tuple()}.
 associate_connection_with_lag(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateConnectionWithLag">>, Input, Options).
@@ -1512,8 +1755,7 @@ associate_connection_with_lag(Client, Input, Options)
 -spec associate_hosted_connection(map(), associate_hosted_connection_request()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, associate_hosted_connection_errors(), tuple()}.
 associate_hosted_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_hosted_connection(Client, Input, []).
@@ -1521,8 +1763,7 @@ associate_hosted_connection(Client, Input)
 -spec associate_hosted_connection(map(), associate_hosted_connection_request(), proplists:proplist()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, associate_hosted_connection_errors(), tuple()}.
 associate_hosted_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateHostedConnection">>, Input, Options).
@@ -1541,8 +1782,7 @@ associate_hosted_connection(Client, Input, Options)
 -spec associate_mac_sec_key(map(), associate_mac_sec_key_request()) ->
     {ok, associate_mac_sec_key_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, associate_mac_sec_key_errors(), tuple()}.
 associate_mac_sec_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_mac_sec_key(Client, Input, []).
@@ -1550,8 +1790,7 @@ associate_mac_sec_key(Client, Input)
 -spec associate_mac_sec_key(map(), associate_mac_sec_key_request(), proplists:proplist()) ->
     {ok, associate_mac_sec_key_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, associate_mac_sec_key_errors(), tuple()}.
 associate_mac_sec_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateMacSecKey">>, Input, Options).
@@ -1582,8 +1821,7 @@ associate_mac_sec_key(Client, Input, Options)
 -spec associate_virtual_interface(map(), associate_virtual_interface_request()) ->
     {ok, virtual_interface(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, associate_virtual_interface_errors(), tuple()}.
 associate_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_virtual_interface(Client, Input, []).
@@ -1591,8 +1829,7 @@ associate_virtual_interface(Client, Input)
 -spec associate_virtual_interface(map(), associate_virtual_interface_request(), proplists:proplist()) ->
     {ok, virtual_interface(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, associate_virtual_interface_errors(), tuple()}.
 associate_virtual_interface(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateVirtualInterface">>, Input, Options).
@@ -1607,8 +1844,7 @@ associate_virtual_interface(Client, Input, Options)
 -spec confirm_connection(map(), confirm_connection_request()) ->
     {ok, confirm_connection_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, confirm_connection_errors(), tuple()}.
 confirm_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     confirm_connection(Client, Input, []).
@@ -1616,8 +1852,7 @@ confirm_connection(Client, Input)
 -spec confirm_connection(map(), confirm_connection_request(), proplists:proplist()) ->
     {ok, confirm_connection_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, confirm_connection_errors(), tuple()}.
 confirm_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ConfirmConnection">>, Input, Options).
@@ -1628,8 +1863,7 @@ confirm_connection(Client, Input, Options)
 -spec confirm_customer_agreement(map(), confirm_customer_agreement_request()) ->
     {ok, confirm_customer_agreement_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, confirm_customer_agreement_errors(), tuple()}.
 confirm_customer_agreement(Client, Input)
   when is_map(Client), is_map(Input) ->
     confirm_customer_agreement(Client, Input, []).
@@ -1637,8 +1871,7 @@ confirm_customer_agreement(Client, Input)
 -spec confirm_customer_agreement(map(), confirm_customer_agreement_request(), proplists:proplist()) ->
     {ok, confirm_customer_agreement_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, confirm_customer_agreement_errors(), tuple()}.
 confirm_customer_agreement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ConfirmCustomerAgreement">>, Input, Options).
@@ -1654,8 +1887,7 @@ confirm_customer_agreement(Client, Input, Options)
 -spec confirm_private_virtual_interface(map(), confirm_private_virtual_interface_request()) ->
     {ok, confirm_private_virtual_interface_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, confirm_private_virtual_interface_errors(), tuple()}.
 confirm_private_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     confirm_private_virtual_interface(Client, Input, []).
@@ -1663,8 +1895,7 @@ confirm_private_virtual_interface(Client, Input)
 -spec confirm_private_virtual_interface(map(), confirm_private_virtual_interface_request(), proplists:proplist()) ->
     {ok, confirm_private_virtual_interface_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, confirm_private_virtual_interface_errors(), tuple()}.
 confirm_private_virtual_interface(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ConfirmPrivateVirtualInterface">>, Input, Options).
@@ -1678,8 +1909,7 @@ confirm_private_virtual_interface(Client, Input, Options)
 -spec confirm_public_virtual_interface(map(), confirm_public_virtual_interface_request()) ->
     {ok, confirm_public_virtual_interface_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, confirm_public_virtual_interface_errors(), tuple()}.
 confirm_public_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     confirm_public_virtual_interface(Client, Input, []).
@@ -1687,8 +1917,7 @@ confirm_public_virtual_interface(Client, Input)
 -spec confirm_public_virtual_interface(map(), confirm_public_virtual_interface_request(), proplists:proplist()) ->
     {ok, confirm_public_virtual_interface_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, confirm_public_virtual_interface_errors(), tuple()}.
 confirm_public_virtual_interface(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ConfirmPublicVirtualInterface">>, Input, Options).
@@ -1702,8 +1931,7 @@ confirm_public_virtual_interface(Client, Input, Options)
 -spec confirm_transit_virtual_interface(map(), confirm_transit_virtual_interface_request()) ->
     {ok, confirm_transit_virtual_interface_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, confirm_transit_virtual_interface_errors(), tuple()}.
 confirm_transit_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     confirm_transit_virtual_interface(Client, Input, []).
@@ -1711,8 +1939,7 @@ confirm_transit_virtual_interface(Client, Input)
 -spec confirm_transit_virtual_interface(map(), confirm_transit_virtual_interface_request(), proplists:proplist()) ->
     {ok, confirm_transit_virtual_interface_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, confirm_transit_virtual_interface_errors(), tuple()}.
 confirm_transit_virtual_interface(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ConfirmTransitVirtualInterface">>, Input, Options).
@@ -1750,8 +1977,7 @@ confirm_transit_virtual_interface(Client, Input, Options)
 -spec create_bgp_peer(map(), create_bgp_peer_request()) ->
     {ok, create_bgp_peer_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, create_bgp_peer_errors(), tuple()}.
 create_bgp_peer(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_bgp_peer(Client, Input, []).
@@ -1759,8 +1985,7 @@ create_bgp_peer(Client, Input)
 -spec create_bgp_peer(map(), create_bgp_peer_request(), proplists:proplist()) ->
     {ok, create_bgp_peer_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, create_bgp_peer_errors(), tuple()}.
 create_bgp_peer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBGPPeer">>, Input, Options).
@@ -1785,10 +2010,7 @@ create_bgp_peer(Client, Input, Options)
 -spec create_connection(map(), create_connection_request()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_connection_errors(), tuple()}.
 create_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_connection(Client, Input, []).
@@ -1796,10 +2018,7 @@ create_connection(Client, Input)
 -spec create_connection(map(), create_connection_request(), proplists:proplist()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_connection_errors(), tuple()}.
 create_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateConnection">>, Input, Options).
@@ -1819,8 +2038,7 @@ create_connection(Client, Input, Options)
 -spec create_direct_connect_gateway(map(), create_direct_connect_gateway_request()) ->
     {ok, create_direct_connect_gateway_result(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, create_direct_connect_gateway_errors(), tuple()}.
 create_direct_connect_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_direct_connect_gateway(Client, Input, []).
@@ -1828,8 +2046,7 @@ create_direct_connect_gateway(Client, Input)
 -spec create_direct_connect_gateway(map(), create_direct_connect_gateway_request(), proplists:proplist()) ->
     {ok, create_direct_connect_gateway_result(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, create_direct_connect_gateway_errors(), tuple()}.
 create_direct_connect_gateway(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDirectConnectGateway">>, Input, Options).
@@ -1843,8 +2060,7 @@ create_direct_connect_gateway(Client, Input, Options)
 -spec create_direct_connect_gateway_association(map(), create_direct_connect_gateway_association_request()) ->
     {ok, create_direct_connect_gateway_association_result(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, create_direct_connect_gateway_association_errors(), tuple()}.
 create_direct_connect_gateway_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_direct_connect_gateway_association(Client, Input, []).
@@ -1852,8 +2068,7 @@ create_direct_connect_gateway_association(Client, Input)
 -spec create_direct_connect_gateway_association(map(), create_direct_connect_gateway_association_request(), proplists:proplist()) ->
     {ok, create_direct_connect_gateway_association_result(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, create_direct_connect_gateway_association_errors(), tuple()}.
 create_direct_connect_gateway_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDirectConnectGatewayAssociation">>, Input, Options).
@@ -1866,8 +2081,7 @@ create_direct_connect_gateway_association(Client, Input, Options)
 -spec create_direct_connect_gateway_association_proposal(map(), create_direct_connect_gateway_association_proposal_request()) ->
     {ok, create_direct_connect_gateway_association_proposal_result(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, create_direct_connect_gateway_association_proposal_errors(), tuple()}.
 create_direct_connect_gateway_association_proposal(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_direct_connect_gateway_association_proposal(Client, Input, []).
@@ -1875,8 +2089,7 @@ create_direct_connect_gateway_association_proposal(Client, Input)
 -spec create_direct_connect_gateway_association_proposal(map(), create_direct_connect_gateway_association_proposal_request(), proplists:proplist()) ->
     {ok, create_direct_connect_gateway_association_proposal_result(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, create_direct_connect_gateway_association_proposal_errors(), tuple()}.
 create_direct_connect_gateway_association_proposal(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDirectConnectGatewayAssociationProposal">>, Input, Options).
@@ -1914,10 +2127,7 @@ create_direct_connect_gateway_association_proposal(Client, Input, Options)
 -spec create_interconnect(map(), create_interconnect_request()) ->
     {ok, interconnect(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_interconnect_errors(), tuple()}.
 create_interconnect(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_interconnect(Client, Input, []).
@@ -1925,10 +2135,7 @@ create_interconnect(Client, Input)
 -spec create_interconnect(map(), create_interconnect_request(), proplists:proplist()) ->
     {ok, interconnect(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_interconnect_errors(), tuple()}.
 create_interconnect(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateInterconnect">>, Input, Options).
@@ -1973,10 +2180,7 @@ create_interconnect(Client, Input, Options)
 -spec create_lag(map(), create_lag_request()) ->
     {ok, lag(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_lag_errors(), tuple()}.
 create_lag(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_lag(Client, Input, []).
@@ -1984,10 +2188,7 @@ create_lag(Client, Input)
 -spec create_lag(map(), create_lag_request(), proplists:proplist()) ->
     {ok, lag(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_lag_errors(), tuple()}.
 create_lag(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLag">>, Input, Options).
@@ -2016,10 +2217,7 @@ create_lag(Client, Input, Options)
 -spec create_private_virtual_interface(map(), create_private_virtual_interface_request()) ->
     {ok, virtual_interface(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_private_virtual_interface_errors(), tuple()}.
 create_private_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_private_virtual_interface(Client, Input, []).
@@ -2027,10 +2225,7 @@ create_private_virtual_interface(Client, Input)
 -spec create_private_virtual_interface(map(), create_private_virtual_interface_request(), proplists:proplist()) ->
     {ok, virtual_interface(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_private_virtual_interface_errors(), tuple()}.
 create_private_virtual_interface(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePrivateVirtualInterface">>, Input, Options).
@@ -2048,10 +2243,7 @@ create_private_virtual_interface(Client, Input, Options)
 -spec create_public_virtual_interface(map(), create_public_virtual_interface_request()) ->
     {ok, virtual_interface(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_public_virtual_interface_errors(), tuple()}.
 create_public_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_public_virtual_interface(Client, Input, []).
@@ -2059,10 +2251,7 @@ create_public_virtual_interface(Client, Input)
 -spec create_public_virtual_interface(map(), create_public_virtual_interface_request(), proplists:proplist()) ->
     {ok, virtual_interface(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_public_virtual_interface_errors(), tuple()}.
 create_public_virtual_interface(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePublicVirtualInterface">>, Input, Options).
@@ -2095,10 +2284,7 @@ create_public_virtual_interface(Client, Input, Options)
 -spec create_transit_virtual_interface(map(), create_transit_virtual_interface_request()) ->
     {ok, create_transit_virtual_interface_result(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_transit_virtual_interface_errors(), tuple()}.
 create_transit_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_transit_virtual_interface(Client, Input, []).
@@ -2106,10 +2292,7 @@ create_transit_virtual_interface(Client, Input)
 -spec create_transit_virtual_interface(map(), create_transit_virtual_interface_request(), proplists:proplist()) ->
     {ok, create_transit_virtual_interface_result(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_transit_virtual_interface_errors(), tuple()}.
 create_transit_virtual_interface(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTransitVirtualInterface">>, Input, Options).
@@ -2121,8 +2304,7 @@ create_transit_virtual_interface(Client, Input, Options)
 -spec delete_bgp_peer(map(), delete_bgp_peer_request()) ->
     {ok, delete_bgp_peer_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, delete_bgp_peer_errors(), tuple()}.
 delete_bgp_peer(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_bgp_peer(Client, Input, []).
@@ -2130,8 +2312,7 @@ delete_bgp_peer(Client, Input)
 -spec delete_bgp_peer(map(), delete_bgp_peer_request(), proplists:proplist()) ->
     {ok, delete_bgp_peer_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, delete_bgp_peer_errors(), tuple()}.
 delete_bgp_peer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBGPPeer">>, Input, Options).
@@ -2146,8 +2327,7 @@ delete_bgp_peer(Client, Input, Options)
 -spec delete_connection(map(), delete_connection_request()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, delete_connection_errors(), tuple()}.
 delete_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_connection(Client, Input, []).
@@ -2155,8 +2335,7 @@ delete_connection(Client, Input)
 -spec delete_connection(map(), delete_connection_request(), proplists:proplist()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, delete_connection_errors(), tuple()}.
 delete_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConnection">>, Input, Options).
@@ -2170,8 +2349,7 @@ delete_connection(Client, Input, Options)
 -spec delete_direct_connect_gateway(map(), delete_direct_connect_gateway_request()) ->
     {ok, delete_direct_connect_gateway_result(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, delete_direct_connect_gateway_errors(), tuple()}.
 delete_direct_connect_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_direct_connect_gateway(Client, Input, []).
@@ -2179,8 +2357,7 @@ delete_direct_connect_gateway(Client, Input)
 -spec delete_direct_connect_gateway(map(), delete_direct_connect_gateway_request(), proplists:proplist()) ->
     {ok, delete_direct_connect_gateway_result(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, delete_direct_connect_gateway_errors(), tuple()}.
 delete_direct_connect_gateway(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDirectConnectGateway">>, Input, Options).
@@ -2195,8 +2372,7 @@ delete_direct_connect_gateway(Client, Input, Options)
 -spec delete_direct_connect_gateway_association(map(), delete_direct_connect_gateway_association_request()) ->
     {ok, delete_direct_connect_gateway_association_result(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, delete_direct_connect_gateway_association_errors(), tuple()}.
 delete_direct_connect_gateway_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_direct_connect_gateway_association(Client, Input, []).
@@ -2204,8 +2380,7 @@ delete_direct_connect_gateway_association(Client, Input)
 -spec delete_direct_connect_gateway_association(map(), delete_direct_connect_gateway_association_request(), proplists:proplist()) ->
     {ok, delete_direct_connect_gateway_association_result(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, delete_direct_connect_gateway_association_errors(), tuple()}.
 delete_direct_connect_gateway_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDirectConnectGatewayAssociation">>, Input, Options).
@@ -2215,8 +2390,7 @@ delete_direct_connect_gateway_association(Client, Input, Options)
 -spec delete_direct_connect_gateway_association_proposal(map(), delete_direct_connect_gateway_association_proposal_request()) ->
     {ok, delete_direct_connect_gateway_association_proposal_result(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, delete_direct_connect_gateway_association_proposal_errors(), tuple()}.
 delete_direct_connect_gateway_association_proposal(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_direct_connect_gateway_association_proposal(Client, Input, []).
@@ -2224,8 +2398,7 @@ delete_direct_connect_gateway_association_proposal(Client, Input)
 -spec delete_direct_connect_gateway_association_proposal(map(), delete_direct_connect_gateway_association_proposal_request(), proplists:proplist()) ->
     {ok, delete_direct_connect_gateway_association_proposal_result(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, delete_direct_connect_gateway_association_proposal_errors(), tuple()}.
 delete_direct_connect_gateway_association_proposal(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDirectConnectGatewayAssociationProposal">>, Input, Options).
@@ -2237,8 +2410,7 @@ delete_direct_connect_gateway_association_proposal(Client, Input, Options)
 -spec delete_interconnect(map(), delete_interconnect_request()) ->
     {ok, delete_interconnect_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, delete_interconnect_errors(), tuple()}.
 delete_interconnect(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_interconnect(Client, Input, []).
@@ -2246,8 +2418,7 @@ delete_interconnect(Client, Input)
 -spec delete_interconnect(map(), delete_interconnect_request(), proplists:proplist()) ->
     {ok, delete_interconnect_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, delete_interconnect_errors(), tuple()}.
 delete_interconnect(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInterconnect">>, Input, Options).
@@ -2259,8 +2430,7 @@ delete_interconnect(Client, Input, Options)
 -spec delete_lag(map(), delete_lag_request()) ->
     {ok, lag(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, delete_lag_errors(), tuple()}.
 delete_lag(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_lag(Client, Input, []).
@@ -2268,8 +2438,7 @@ delete_lag(Client, Input)
 -spec delete_lag(map(), delete_lag_request(), proplists:proplist()) ->
     {ok, lag(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, delete_lag_errors(), tuple()}.
 delete_lag(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLag">>, Input, Options).
@@ -2278,8 +2447,7 @@ delete_lag(Client, Input, Options)
 -spec delete_virtual_interface(map(), delete_virtual_interface_request()) ->
     {ok, delete_virtual_interface_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, delete_virtual_interface_errors(), tuple()}.
 delete_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_virtual_interface(Client, Input, []).
@@ -2287,8 +2455,7 @@ delete_virtual_interface(Client, Input)
 -spec delete_virtual_interface(map(), delete_virtual_interface_request(), proplists:proplist()) ->
     {ok, delete_virtual_interface_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, delete_virtual_interface_errors(), tuple()}.
 delete_virtual_interface(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteVirtualInterface">>, Input, Options).
@@ -2310,8 +2477,7 @@ delete_virtual_interface(Client, Input, Options)
 -spec describe_connection_loa(map(), describe_connection_loa_request()) ->
     {ok, describe_connection_loa_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_connection_loa_errors(), tuple()}.
 describe_connection_loa(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_connection_loa(Client, Input, []).
@@ -2319,8 +2485,7 @@ describe_connection_loa(Client, Input)
 -spec describe_connection_loa(map(), describe_connection_loa_request(), proplists:proplist()) ->
     {ok, describe_connection_loa_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_connection_loa_errors(), tuple()}.
 describe_connection_loa(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConnectionLoa">>, Input, Options).
@@ -2329,8 +2494,7 @@ describe_connection_loa(Client, Input, Options)
 -spec describe_connections(map(), describe_connections_request()) ->
     {ok, connections(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_connections_errors(), tuple()}.
 describe_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_connections(Client, Input, []).
@@ -2338,8 +2502,7 @@ describe_connections(Client, Input)
 -spec describe_connections(map(), describe_connections_request(), proplists:proplist()) ->
     {ok, connections(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_connections_errors(), tuple()}.
 describe_connections(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConnections">>, Input, Options).
@@ -2355,8 +2518,7 @@ describe_connections(Client, Input, Options)
 -spec describe_connections_on_interconnect(map(), describe_connections_on_interconnect_request()) ->
     {ok, connections(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_connections_on_interconnect_errors(), tuple()}.
 describe_connections_on_interconnect(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_connections_on_interconnect(Client, Input, []).
@@ -2364,8 +2526,7 @@ describe_connections_on_interconnect(Client, Input)
 -spec describe_connections_on_interconnect(map(), describe_connections_on_interconnect_request(), proplists:proplist()) ->
     {ok, connections(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_connections_on_interconnect_errors(), tuple()}.
 describe_connections_on_interconnect(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConnectionsOnInterconnect">>, Input, Options).
@@ -2376,8 +2537,7 @@ describe_connections_on_interconnect(Client, Input, Options)
 -spec describe_customer_metadata(map(), #{}) ->
     {ok, describe_customer_metadata_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_customer_metadata_errors(), tuple()}.
 describe_customer_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_customer_metadata(Client, Input, []).
@@ -2385,8 +2545,7 @@ describe_customer_metadata(Client, Input)
 -spec describe_customer_metadata(map(), #{}, proplists:proplist()) ->
     {ok, describe_customer_metadata_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_customer_metadata_errors(), tuple()}.
 describe_customer_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCustomerMetadata">>, Input, Options).
@@ -2396,8 +2555,7 @@ describe_customer_metadata(Client, Input, Options)
 -spec describe_direct_connect_gateway_association_proposals(map(), describe_direct_connect_gateway_association_proposals_request()) ->
     {ok, describe_direct_connect_gateway_association_proposals_result(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_direct_connect_gateway_association_proposals_errors(), tuple()}.
 describe_direct_connect_gateway_association_proposals(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_direct_connect_gateway_association_proposals(Client, Input, []).
@@ -2405,8 +2563,7 @@ describe_direct_connect_gateway_association_proposals(Client, Input)
 -spec describe_direct_connect_gateway_association_proposals(map(), describe_direct_connect_gateway_association_proposals_request(), proplists:proplist()) ->
     {ok, describe_direct_connect_gateway_association_proposals_result(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_direct_connect_gateway_association_proposals_errors(), tuple()}.
 describe_direct_connect_gateway_association_proposals(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDirectConnectGatewayAssociationProposals">>, Input, Options).
@@ -2441,8 +2598,7 @@ describe_direct_connect_gateway_association_proposals(Client, Input, Options)
 -spec describe_direct_connect_gateway_associations(map(), describe_direct_connect_gateway_associations_request()) ->
     {ok, describe_direct_connect_gateway_associations_result(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_direct_connect_gateway_associations_errors(), tuple()}.
 describe_direct_connect_gateway_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_direct_connect_gateway_associations(Client, Input, []).
@@ -2450,8 +2606,7 @@ describe_direct_connect_gateway_associations(Client, Input)
 -spec describe_direct_connect_gateway_associations(map(), describe_direct_connect_gateway_associations_request(), proplists:proplist()) ->
     {ok, describe_direct_connect_gateway_associations_result(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_direct_connect_gateway_associations_errors(), tuple()}.
 describe_direct_connect_gateway_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDirectConnectGatewayAssociations">>, Input, Options).
@@ -2471,8 +2626,7 @@ describe_direct_connect_gateway_associations(Client, Input, Options)
 -spec describe_direct_connect_gateway_attachments(map(), describe_direct_connect_gateway_attachments_request()) ->
     {ok, describe_direct_connect_gateway_attachments_result(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_direct_connect_gateway_attachments_errors(), tuple()}.
 describe_direct_connect_gateway_attachments(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_direct_connect_gateway_attachments(Client, Input, []).
@@ -2480,8 +2634,7 @@ describe_direct_connect_gateway_attachments(Client, Input)
 -spec describe_direct_connect_gateway_attachments(map(), describe_direct_connect_gateway_attachments_request(), proplists:proplist()) ->
     {ok, describe_direct_connect_gateway_attachments_result(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_direct_connect_gateway_attachments_errors(), tuple()}.
 describe_direct_connect_gateway_attachments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDirectConnectGatewayAttachments">>, Input, Options).
@@ -2493,8 +2646,7 @@ describe_direct_connect_gateway_attachments(Client, Input, Options)
 -spec describe_direct_connect_gateways(map(), describe_direct_connect_gateways_request()) ->
     {ok, describe_direct_connect_gateways_result(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_direct_connect_gateways_errors(), tuple()}.
 describe_direct_connect_gateways(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_direct_connect_gateways(Client, Input, []).
@@ -2502,8 +2654,7 @@ describe_direct_connect_gateways(Client, Input)
 -spec describe_direct_connect_gateways(map(), describe_direct_connect_gateways_request(), proplists:proplist()) ->
     {ok, describe_direct_connect_gateways_result(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_direct_connect_gateways_errors(), tuple()}.
 describe_direct_connect_gateways(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDirectConnectGateways">>, Input, Options).
@@ -2516,8 +2667,7 @@ describe_direct_connect_gateways(Client, Input, Options)
 -spec describe_hosted_connections(map(), describe_hosted_connections_request()) ->
     {ok, connections(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_hosted_connections_errors(), tuple()}.
 describe_hosted_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_hosted_connections(Client, Input, []).
@@ -2525,8 +2675,7 @@ describe_hosted_connections(Client, Input)
 -spec describe_hosted_connections(map(), describe_hosted_connections_request(), proplists:proplist()) ->
     {ok, connections(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_hosted_connections_errors(), tuple()}.
 describe_hosted_connections(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeHostedConnections">>, Input, Options).
@@ -2547,8 +2696,7 @@ describe_hosted_connections(Client, Input, Options)
 -spec describe_interconnect_loa(map(), describe_interconnect_loa_request()) ->
     {ok, describe_interconnect_loa_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_interconnect_loa_errors(), tuple()}.
 describe_interconnect_loa(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_interconnect_loa(Client, Input, []).
@@ -2556,8 +2704,7 @@ describe_interconnect_loa(Client, Input)
 -spec describe_interconnect_loa(map(), describe_interconnect_loa_request(), proplists:proplist()) ->
     {ok, describe_interconnect_loa_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_interconnect_loa_errors(), tuple()}.
 describe_interconnect_loa(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInterconnectLoa">>, Input, Options).
@@ -2567,8 +2714,7 @@ describe_interconnect_loa(Client, Input, Options)
 -spec describe_interconnects(map(), describe_interconnects_request()) ->
     {ok, interconnects(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_interconnects_errors(), tuple()}.
 describe_interconnects(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_interconnects(Client, Input, []).
@@ -2576,8 +2722,7 @@ describe_interconnects(Client, Input)
 -spec describe_interconnects(map(), describe_interconnects_request(), proplists:proplist()) ->
     {ok, interconnects(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_interconnects_errors(), tuple()}.
 describe_interconnects(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInterconnects">>, Input, Options).
@@ -2587,8 +2732,7 @@ describe_interconnects(Client, Input, Options)
 -spec describe_lags(map(), describe_lags_request()) ->
     {ok, lags(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_lags_errors(), tuple()}.
 describe_lags(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_lags(Client, Input, []).
@@ -2596,8 +2740,7 @@ describe_lags(Client, Input)
 -spec describe_lags(map(), describe_lags_request(), proplists:proplist()) ->
     {ok, lags(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_lags_errors(), tuple()}.
 describe_lags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLags">>, Input, Options).
@@ -2615,8 +2758,7 @@ describe_lags(Client, Input, Options)
 -spec describe_loa(map(), describe_loa_request()) ->
     {ok, loa(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_loa_errors(), tuple()}.
 describe_loa(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_loa(Client, Input, []).
@@ -2624,8 +2766,7 @@ describe_loa(Client, Input)
 -spec describe_loa(map(), describe_loa_request(), proplists:proplist()) ->
     {ok, loa(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_loa_errors(), tuple()}.
 describe_loa(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLoa">>, Input, Options).
@@ -2638,8 +2779,7 @@ describe_loa(Client, Input, Options)
 -spec describe_locations(map(), #{}) ->
     {ok, locations(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_locations_errors(), tuple()}.
 describe_locations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_locations(Client, Input, []).
@@ -2647,8 +2787,7 @@ describe_locations(Client, Input)
 -spec describe_locations(map(), #{}, proplists:proplist()) ->
     {ok, locations(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_locations_errors(), tuple()}.
 describe_locations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLocations">>, Input, Options).
@@ -2658,8 +2797,7 @@ describe_locations(Client, Input, Options)
 -spec describe_router_configuration(map(), describe_router_configuration_request()) ->
     {ok, describe_router_configuration_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_router_configuration_errors(), tuple()}.
 describe_router_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_router_configuration(Client, Input, []).
@@ -2667,8 +2805,7 @@ describe_router_configuration(Client, Input)
 -spec describe_router_configuration(map(), describe_router_configuration_request(), proplists:proplist()) ->
     {ok, describe_router_configuration_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_router_configuration_errors(), tuple()}.
 describe_router_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRouterConfiguration">>, Input, Options).
@@ -2678,8 +2815,7 @@ describe_router_configuration(Client, Input, Options)
 -spec describe_tags(map(), describe_tags_request()) ->
     {ok, describe_tags_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_tags_errors(), tuple()}.
 describe_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tags(Client, Input, []).
@@ -2687,8 +2823,7 @@ describe_tags(Client, Input)
 -spec describe_tags(map(), describe_tags_request(), proplists:proplist()) ->
     {ok, describe_tags_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_tags_errors(), tuple()}.
 describe_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTags">>, Input, Options).
@@ -2701,8 +2836,7 @@ describe_tags(Client, Input, Options)
 -spec describe_virtual_gateways(map(), #{}) ->
     {ok, virtual_gateways(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_virtual_gateways_errors(), tuple()}.
 describe_virtual_gateways(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_virtual_gateways(Client, Input, []).
@@ -2710,8 +2844,7 @@ describe_virtual_gateways(Client, Input)
 -spec describe_virtual_gateways(map(), #{}, proplists:proplist()) ->
     {ok, virtual_gateways(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_virtual_gateways_errors(), tuple()}.
 describe_virtual_gateways(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeVirtualGateways">>, Input, Options).
@@ -2731,8 +2864,7 @@ describe_virtual_gateways(Client, Input, Options)
 -spec describe_virtual_interfaces(map(), describe_virtual_interfaces_request()) ->
     {ok, virtual_interfaces(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_virtual_interfaces_errors(), tuple()}.
 describe_virtual_interfaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_virtual_interfaces(Client, Input, []).
@@ -2740,8 +2872,7 @@ describe_virtual_interfaces(Client, Input)
 -spec describe_virtual_interfaces(map(), describe_virtual_interfaces_request(), proplists:proplist()) ->
     {ok, virtual_interfaces(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, describe_virtual_interfaces_errors(), tuple()}.
 describe_virtual_interfaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeVirtualInterfaces">>, Input, Options).
@@ -2769,8 +2900,7 @@ describe_virtual_interfaces(Client, Input, Options)
 -spec disassociate_connection_from_lag(map(), disassociate_connection_from_lag_request()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, disassociate_connection_from_lag_errors(), tuple()}.
 disassociate_connection_from_lag(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_connection_from_lag(Client, Input, []).
@@ -2778,8 +2908,7 @@ disassociate_connection_from_lag(Client, Input)
 -spec disassociate_connection_from_lag(map(), disassociate_connection_from_lag_request(), proplists:proplist()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, disassociate_connection_from_lag_errors(), tuple()}.
 disassociate_connection_from_lag(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateConnectionFromLag">>, Input, Options).
@@ -2789,8 +2918,7 @@ disassociate_connection_from_lag(Client, Input, Options)
 -spec disassociate_mac_sec_key(map(), disassociate_mac_sec_key_request()) ->
     {ok, disassociate_mac_sec_key_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, disassociate_mac_sec_key_errors(), tuple()}.
 disassociate_mac_sec_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_mac_sec_key(Client, Input, []).
@@ -2798,8 +2926,7 @@ disassociate_mac_sec_key(Client, Input)
 -spec disassociate_mac_sec_key(map(), disassociate_mac_sec_key_request(), proplists:proplist()) ->
     {ok, disassociate_mac_sec_key_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, disassociate_mac_sec_key_errors(), tuple()}.
 disassociate_mac_sec_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateMacSecKey">>, Input, Options).
@@ -2808,8 +2935,7 @@ disassociate_mac_sec_key(Client, Input, Options)
 -spec list_virtual_interface_test_history(map(), list_virtual_interface_test_history_request()) ->
     {ok, list_virtual_interface_test_history_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, list_virtual_interface_test_history_errors(), tuple()}.
 list_virtual_interface_test_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_virtual_interface_test_history(Client, Input, []).
@@ -2817,8 +2943,7 @@ list_virtual_interface_test_history(Client, Input)
 -spec list_virtual_interface_test_history(map(), list_virtual_interface_test_history_request(), proplists:proplist()) ->
     {ok, list_virtual_interface_test_history_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, list_virtual_interface_test_history_errors(), tuple()}.
 list_virtual_interface_test_history(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListVirtualInterfaceTestHistory">>, Input, Options).
@@ -2842,8 +2967,7 @@ list_virtual_interface_test_history(Client, Input, Options)
 -spec start_bgp_failover_test(map(), start_bgp_failover_test_request()) ->
     {ok, start_bgp_failover_test_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, start_bgp_failover_test_errors(), tuple()}.
 start_bgp_failover_test(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_bgp_failover_test(Client, Input, []).
@@ -2851,8 +2975,7 @@ start_bgp_failover_test(Client, Input)
 -spec start_bgp_failover_test(map(), start_bgp_failover_test_request(), proplists:proplist()) ->
     {ok, start_bgp_failover_test_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, start_bgp_failover_test_errors(), tuple()}.
 start_bgp_failover_test(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartBgpFailoverTest">>, Input, Options).
@@ -2861,8 +2984,7 @@ start_bgp_failover_test(Client, Input, Options)
 -spec stop_bgp_failover_test(map(), stop_bgp_failover_test_request()) ->
     {ok, stop_bgp_failover_test_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, stop_bgp_failover_test_errors(), tuple()}.
 stop_bgp_failover_test(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_bgp_failover_test(Client, Input, []).
@@ -2870,8 +2992,7 @@ stop_bgp_failover_test(Client, Input)
 -spec stop_bgp_failover_test(map(), stop_bgp_failover_test_request(), proplists:proplist()) ->
     {ok, stop_bgp_failover_test_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, stop_bgp_failover_test_errors(), tuple()}.
 stop_bgp_failover_test(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopBgpFailoverTest">>, Input, Options).
@@ -2886,10 +3007,7 @@ stop_bgp_failover_test(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -2897,10 +3015,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -2909,8 +3024,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -2918,8 +3032,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -2934,8 +3047,7 @@ untag_resource(Client, Input, Options)
 -spec update_connection(map(), update_connection_request()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, update_connection_errors(), tuple()}.
 update_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_connection(Client, Input, []).
@@ -2943,8 +3055,7 @@ update_connection(Client, Input)
 -spec update_connection(map(), update_connection_request(), proplists:proplist()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, update_connection_errors(), tuple()}.
 update_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateConnection">>, Input, Options).
@@ -2953,8 +3064,7 @@ update_connection(Client, Input, Options)
 -spec update_direct_connect_gateway(map(), update_direct_connect_gateway_request()) ->
     {ok, update_direct_connect_gateway_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, update_direct_connect_gateway_errors(), tuple()}.
 update_direct_connect_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_direct_connect_gateway(Client, Input, []).
@@ -2962,8 +3072,7 @@ update_direct_connect_gateway(Client, Input)
 -spec update_direct_connect_gateway(map(), update_direct_connect_gateway_request(), proplists:proplist()) ->
     {ok, update_direct_connect_gateway_response(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, update_direct_connect_gateway_errors(), tuple()}.
 update_direct_connect_gateway(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDirectConnectGateway">>, Input, Options).
@@ -2975,8 +3084,7 @@ update_direct_connect_gateway(Client, Input, Options)
 -spec update_direct_connect_gateway_association(map(), update_direct_connect_gateway_association_request()) ->
     {ok, update_direct_connect_gateway_association_result(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, update_direct_connect_gateway_association_errors(), tuple()}.
 update_direct_connect_gateway_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_direct_connect_gateway_association(Client, Input, []).
@@ -2984,8 +3092,7 @@ update_direct_connect_gateway_association(Client, Input)
 -spec update_direct_connect_gateway_association(map(), update_direct_connect_gateway_association_request(), proplists:proplist()) ->
     {ok, update_direct_connect_gateway_association_result(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, update_direct_connect_gateway_association_errors(), tuple()}.
 update_direct_connect_gateway_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDirectConnectGatewayAssociation">>, Input, Options).
@@ -3014,8 +3121,7 @@ update_direct_connect_gateway_association(Client, Input, Options)
 -spec update_lag(map(), update_lag_request()) ->
     {ok, lag(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, update_lag_errors(), tuple()}.
 update_lag(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_lag(Client, Input, []).
@@ -3023,8 +3129,7 @@ update_lag(Client, Input)
 -spec update_lag(map(), update_lag_request(), proplists:proplist()) ->
     {ok, lag(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, update_lag_errors(), tuple()}.
 update_lag(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLag">>, Input, Options).
@@ -3045,8 +3150,7 @@ update_lag(Client, Input, Options)
 -spec update_virtual_interface_attributes(map(), update_virtual_interface_attributes_request()) ->
     {ok, virtual_interface(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, update_virtual_interface_attributes_errors(), tuple()}.
 update_virtual_interface_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_virtual_interface_attributes(Client, Input, []).
@@ -3054,8 +3158,7 @@ update_virtual_interface_attributes(Client, Input)
 -spec update_virtual_interface_attributes(map(), update_virtual_interface_attributes_request(), proplists:proplist()) ->
     {ok, virtual_interface(), tuple()} |
     {error, any()} |
-    {error, direct_connect_client_exception(), tuple()} |
-    {error, direct_connect_server_exception(), tuple()}.
+    {error, update_virtual_interface_attributes_errors(), tuple()}.
 update_virtual_interface_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateVirtualInterfaceAttributes">>, Input, Options).

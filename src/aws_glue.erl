@@ -7076,6 +7076,1396 @@
 %% }
 -type get_partition_indexes_request() :: #{binary() => any()}.
 
+-type batch_create_partition_errors() ::
+    glue_encryption_exception() | 
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    already_exists_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type batch_delete_connection_errors() ::
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type batch_delete_partition_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type batch_delete_table_errors() ::
+    resource_not_ready_exception() | 
+    glue_encryption_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type batch_delete_table_version_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type batch_get_blueprints_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type batch_get_crawlers_errors() ::
+    invalid_input_exception() | 
+    operation_timeout_exception().
+
+-type batch_get_custom_entity_types_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type batch_get_data_quality_result_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type batch_get_dev_endpoints_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type batch_get_jobs_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type batch_get_partition_errors() ::
+    glue_encryption_exception() | 
+    federation_source_retryable_exception() | 
+    federation_source_exception() | 
+    invalid_input_exception() | 
+    invalid_state_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type batch_get_table_optimizer_errors() ::
+    internal_service_exception().
+
+-type batch_get_triggers_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type batch_get_workflows_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type batch_stop_job_run_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type batch_update_partition_errors() ::
+    glue_encryption_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type cancel_data_quality_rule_recommendation_run_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type cancel_data_quality_ruleset_evaluation_run_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type cancel_ml_task_run_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type cancel_statement_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    illegal_session_state_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type check_schema_version_validity_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception().
+
+-type create_blueprint_errors() ::
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    already_exists_exception() | 
+    operation_timeout_exception().
+
+-type create_classifier_errors() ::
+    invalid_input_exception() | 
+    already_exists_exception() | 
+    operation_timeout_exception().
+
+-type create_connection_errors() ::
+    glue_encryption_exception() | 
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    already_exists_exception() | 
+    operation_timeout_exception().
+
+-type create_crawler_errors() ::
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    already_exists_exception() | 
+    operation_timeout_exception().
+
+-type create_custom_entity_type_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    already_exists_exception() | 
+    operation_timeout_exception().
+
+-type create_data_quality_ruleset_errors() ::
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    already_exists_exception() | 
+    operation_timeout_exception().
+
+-type create_database_errors() ::
+    glue_encryption_exception() | 
+    concurrent_modification_exception() | 
+    federated_resource_already_exists_exception() | 
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    already_exists_exception() | 
+    operation_timeout_exception().
+
+-type create_dev_endpoint_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    already_exists_exception() | 
+    operation_timeout_exception().
+
+-type create_job_errors() ::
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    already_exists_exception() | 
+    operation_timeout_exception().
+
+-type create_ml_transform_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    already_exists_exception() | 
+    operation_timeout_exception().
+
+-type create_partition_errors() ::
+    glue_encryption_exception() | 
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    already_exists_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type create_partition_index_errors() ::
+    glue_encryption_exception() | 
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    already_exists_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type create_registry_errors() ::
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    already_exists_exception().
+
+-type create_schema_errors() ::
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    already_exists_exception() | 
+    entity_not_found_exception().
+
+-type create_script_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type create_security_configuration_errors() ::
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    already_exists_exception() | 
+    operation_timeout_exception().
+
+-type create_session_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    already_exists_exception() | 
+    operation_timeout_exception().
+
+-type create_table_errors() ::
+    resource_not_ready_exception() | 
+    glue_encryption_exception() | 
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    already_exists_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type create_table_optimizer_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    already_exists_exception() | 
+    entity_not_found_exception().
+
+-type create_trigger_errors() ::
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    already_exists_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type create_user_defined_function_errors() ::
+    glue_encryption_exception() | 
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    already_exists_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type create_workflow_errors() ::
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    already_exists_exception() | 
+    operation_timeout_exception().
+
+-type delete_blueprint_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type delete_classifier_errors() ::
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type delete_column_statistics_for_partition_errors() ::
+    glue_encryption_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type delete_column_statistics_for_table_errors() ::
+    glue_encryption_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type delete_connection_errors() ::
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type delete_crawler_errors() ::
+    crawler_running_exception() | 
+    scheduler_transitioning_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type delete_custom_entity_type_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type delete_data_quality_ruleset_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type delete_database_errors() ::
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type delete_dev_endpoint_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type delete_job_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type delete_ml_transform_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type delete_partition_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type delete_partition_index_errors() ::
+    glue_encryption_exception() | 
+    invalid_input_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type delete_registry_errors() ::
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    entity_not_found_exception().
+
+-type delete_resource_policy_errors() ::
+    condition_check_failure_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type delete_schema_errors() ::
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    entity_not_found_exception().
+
+-type delete_schema_versions_errors() ::
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    entity_not_found_exception().
+
+-type delete_security_configuration_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type delete_session_errors() ::
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    illegal_session_state_exception() | 
+    operation_timeout_exception().
+
+-type delete_table_errors() ::
+    resource_not_ready_exception() | 
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type delete_table_optimizer_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type delete_table_version_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type delete_trigger_errors() ::
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type delete_user_defined_function_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type delete_workflow_errors() ::
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type get_blueprint_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_blueprint_run_errors() ::
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_blueprint_runs_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_catalog_import_status_errors() ::
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type get_classifier_errors() ::
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_classifiers_errors() ::
+    operation_timeout_exception().
+
+-type get_column_statistics_for_partition_errors() ::
+    glue_encryption_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_column_statistics_for_table_errors() ::
+    glue_encryption_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_column_statistics_task_run_errors() ::
+    invalid_input_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_column_statistics_task_runs_errors() ::
+    operation_timeout_exception().
+
+-type get_connection_errors() ::
+    glue_encryption_exception() | 
+    invalid_input_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_connections_errors() ::
+    glue_encryption_exception() | 
+    invalid_input_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_crawler_errors() ::
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_crawler_metrics_errors() ::
+    operation_timeout_exception().
+
+-type get_crawlers_errors() ::
+    operation_timeout_exception().
+
+-type get_custom_entity_type_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_data_catalog_encryption_settings_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type get_data_quality_result_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_data_quality_rule_recommendation_run_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_data_quality_ruleset_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_data_quality_ruleset_evaluation_run_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_database_errors() ::
+    glue_encryption_exception() | 
+    federation_source_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_databases_errors() ::
+    glue_encryption_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type get_dataflow_graph_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type get_dev_endpoint_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_dev_endpoints_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_job_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_job_bookmark_errors() ::
+    validation_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_job_run_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_job_runs_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_jobs_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_mapping_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_ml_task_run_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_ml_task_runs_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_ml_transform_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_ml_transforms_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_partition_errors() ::
+    glue_encryption_exception() | 
+    federation_source_retryable_exception() | 
+    federation_source_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_partition_indexes_errors() ::
+    invalid_input_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_partitions_errors() ::
+    resource_not_ready_exception() | 
+    glue_encryption_exception() | 
+    federation_source_retryable_exception() | 
+    federation_source_exception() | 
+    invalid_input_exception() | 
+    invalid_state_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_plan_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type get_registry_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type get_resource_policies_errors() ::
+    glue_encryption_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type get_resource_policy_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_schema_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type get_schema_by_definition_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type get_schema_version_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type get_schema_versions_diff_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type get_security_configuration_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_security_configurations_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_session_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_statement_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    illegal_session_state_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_table_errors() ::
+    resource_not_ready_exception() | 
+    glue_encryption_exception() | 
+    federation_source_retryable_exception() | 
+    federation_source_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_table_optimizer_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type get_table_version_errors() ::
+    glue_encryption_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_table_versions_errors() ::
+    glue_encryption_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_tables_errors() ::
+    glue_encryption_exception() | 
+    federation_source_retryable_exception() | 
+    federation_source_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_tags_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_trigger_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_triggers_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_unfiltered_partition_metadata_errors() ::
+    glue_encryption_exception() | 
+    federation_source_retryable_exception() | 
+    permission_type_mismatch_exception() | 
+    federation_source_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_unfiltered_partitions_metadata_errors() ::
+    glue_encryption_exception() | 
+    federation_source_retryable_exception() | 
+    permission_type_mismatch_exception() | 
+    federation_source_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_unfiltered_table_metadata_errors() ::
+    glue_encryption_exception() | 
+    federation_source_retryable_exception() | 
+    permission_type_mismatch_exception() | 
+    federation_source_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_user_defined_function_errors() ::
+    glue_encryption_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_user_defined_functions_errors() ::
+    glue_encryption_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_workflow_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_workflow_run_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_workflow_run_properties_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_workflow_runs_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type import_catalog_to_glue_errors() ::
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type list_blueprints_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type list_column_statistics_task_runs_errors() ::
+    operation_timeout_exception().
+
+-type list_crawlers_errors() ::
+    operation_timeout_exception().
+
+-type list_crawls_errors() ::
+    invalid_input_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type list_custom_entity_types_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type list_data_quality_results_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type list_data_quality_rule_recommendation_runs_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type list_data_quality_ruleset_evaluation_runs_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type list_data_quality_rulesets_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type list_dev_endpoints_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type list_jobs_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type list_ml_transforms_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type list_registries_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception().
+
+-type list_schema_versions_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type list_schemas_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type list_sessions_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type list_statements_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    illegal_session_state_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type list_table_optimizer_runs_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type list_triggers_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type list_workflows_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type put_data_catalog_encryption_settings_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type put_resource_policy_errors() ::
+    condition_check_failure_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type put_schema_version_metadata_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    already_exists_exception() | 
+    entity_not_found_exception().
+
+-type put_workflow_run_properties_errors() ::
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    already_exists_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type query_schema_version_metadata_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    entity_not_found_exception().
+
+-type register_schema_version_errors() ::
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type remove_schema_version_metadata_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    entity_not_found_exception().
+
+-type reset_job_bookmark_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type resume_workflow_run_errors() ::
+    invalid_input_exception() | 
+    illegal_workflow_state_exception() | 
+    internal_service_exception() | 
+    concurrent_runs_exceeded_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type run_statement_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    illegal_session_state_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type search_tables_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type start_blueprint_run_errors() ::
+    illegal_blueprint_state_exception() | 
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type start_column_statistics_task_run_errors() ::
+    column_statistics_task_running_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type start_crawler_errors() ::
+    crawler_running_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type start_crawler_schedule_errors() ::
+    no_schedule_exception() | 
+    scheduler_transitioning_exception() | 
+    scheduler_running_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type start_data_quality_rule_recommendation_run_errors() ::
+    invalid_input_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type start_data_quality_ruleset_evaluation_run_errors() ::
+    invalid_input_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type start_export_labels_task_run_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type start_import_labels_task_run_errors() ::
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type start_job_run_errors() ::
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    concurrent_runs_exceeded_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type start_ml_evaluation_task_run_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    ml_transform_not_ready_exception() | 
+    concurrent_runs_exceeded_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type start_ml_labeling_set_generation_task_run_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    concurrent_runs_exceeded_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type start_trigger_errors() ::
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    concurrent_runs_exceeded_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type start_workflow_run_errors() ::
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    concurrent_runs_exceeded_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type stop_column_statistics_task_run_errors() ::
+    column_statistics_task_not_running_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception() | 
+    column_statistics_task_stopping_exception().
+
+-type stop_crawler_errors() ::
+    crawler_not_running_exception() | 
+    crawler_stopping_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type stop_crawler_schedule_errors() ::
+    scheduler_transitioning_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception() | 
+    scheduler_not_running_exception().
+
+-type stop_session_errors() ::
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    illegal_session_state_exception() | 
+    operation_timeout_exception().
+
+-type stop_trigger_errors() ::
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type stop_workflow_run_errors() ::
+    invalid_input_exception() | 
+    illegal_workflow_state_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type tag_resource_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type untag_resource_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type update_blueprint_errors() ::
+    illegal_blueprint_state_exception() | 
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type update_classifier_errors() ::
+    invalid_input_exception() | 
+    version_mismatch_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type update_column_statistics_for_partition_errors() ::
+    glue_encryption_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type update_column_statistics_for_table_errors() ::
+    glue_encryption_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type update_connection_errors() ::
+    glue_encryption_exception() | 
+    invalid_input_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type update_crawler_errors() ::
+    invalid_input_exception() | 
+    crawler_running_exception() | 
+    version_mismatch_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type update_crawler_schedule_errors() ::
+    invalid_input_exception() | 
+    scheduler_transitioning_exception() | 
+    version_mismatch_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type update_data_quality_ruleset_errors() ::
+    invalid_input_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    already_exists_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type update_database_errors() ::
+    glue_encryption_exception() | 
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type update_dev_endpoint_errors() ::
+    validation_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type update_job_errors() ::
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type update_job_from_source_control_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    already_exists_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type update_ml_transform_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type update_partition_errors() ::
+    glue_encryption_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type update_registry_errors() ::
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type update_schema_errors() ::
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type update_source_control_from_job_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    already_exists_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type update_table_errors() ::
+    resource_not_ready_exception() | 
+    glue_encryption_exception() | 
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type update_table_optimizer_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type update_trigger_errors() ::
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type update_user_defined_function_errors() ::
+    glue_encryption_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type update_workflow_errors() ::
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
 
 %%====================================================================
 %% API
@@ -7085,13 +8475,7 @@
 -spec batch_create_partition(map(), batch_create_partition_request()) ->
     {ok, batch_create_partition_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, batch_create_partition_errors(), tuple()}.
 batch_create_partition(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_create_partition(Client, Input, []).
@@ -7099,13 +8483,7 @@ batch_create_partition(Client, Input)
 -spec batch_create_partition(map(), batch_create_partition_request(), proplists:proplist()) ->
     {ok, batch_create_partition_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, batch_create_partition_errors(), tuple()}.
 batch_create_partition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchCreatePartition">>, Input, Options).
@@ -7114,8 +8492,7 @@ batch_create_partition(Client, Input, Options)
 -spec batch_delete_connection(map(), batch_delete_connection_request()) ->
     {ok, batch_delete_connection_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_delete_connection_errors(), tuple()}.
 batch_delete_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_connection(Client, Input, []).
@@ -7123,8 +8500,7 @@ batch_delete_connection(Client, Input)
 -spec batch_delete_connection(map(), batch_delete_connection_request(), proplists:proplist()) ->
     {ok, batch_delete_connection_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_delete_connection_errors(), tuple()}.
 batch_delete_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDeleteConnection">>, Input, Options).
@@ -7133,10 +8509,7 @@ batch_delete_connection(Client, Input, Options)
 -spec batch_delete_partition(map(), batch_delete_partition_request()) ->
     {ok, batch_delete_partition_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_delete_partition_errors(), tuple()}.
 batch_delete_partition(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_partition(Client, Input, []).
@@ -7144,10 +8517,7 @@ batch_delete_partition(Client, Input)
 -spec batch_delete_partition(map(), batch_delete_partition_request(), proplists:proplist()) ->
     {ok, batch_delete_partition_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_delete_partition_errors(), tuple()}.
 batch_delete_partition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDeletePartition">>, Input, Options).
@@ -7168,12 +8538,7 @@ batch_delete_partition(Client, Input, Options)
 -spec batch_delete_table(map(), batch_delete_table_request()) ->
     {ok, batch_delete_table_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()}.
+    {error, batch_delete_table_errors(), tuple()}.
 batch_delete_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_table(Client, Input, []).
@@ -7181,12 +8546,7 @@ batch_delete_table(Client, Input)
 -spec batch_delete_table(map(), batch_delete_table_request(), proplists:proplist()) ->
     {ok, batch_delete_table_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()}.
+    {error, batch_delete_table_errors(), tuple()}.
 batch_delete_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDeleteTable">>, Input, Options).
@@ -7195,10 +8555,7 @@ batch_delete_table(Client, Input, Options)
 -spec batch_delete_table_version(map(), batch_delete_table_version_request()) ->
     {ok, batch_delete_table_version_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_delete_table_version_errors(), tuple()}.
 batch_delete_table_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_table_version(Client, Input, []).
@@ -7206,10 +8563,7 @@ batch_delete_table_version(Client, Input)
 -spec batch_delete_table_version(map(), batch_delete_table_version_request(), proplists:proplist()) ->
     {ok, batch_delete_table_version_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_delete_table_version_errors(), tuple()}.
 batch_delete_table_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDeleteTableVersion">>, Input, Options).
@@ -7218,9 +8572,7 @@ batch_delete_table_version(Client, Input, Options)
 -spec batch_get_blueprints(map(), batch_get_blueprints_request()) ->
     {ok, batch_get_blueprints_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_get_blueprints_errors(), tuple()}.
 batch_get_blueprints(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_blueprints(Client, Input, []).
@@ -7228,9 +8580,7 @@ batch_get_blueprints(Client, Input)
 -spec batch_get_blueprints(map(), batch_get_blueprints_request(), proplists:proplist()) ->
     {ok, batch_get_blueprints_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_get_blueprints_errors(), tuple()}.
 batch_get_blueprints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetBlueprints">>, Input, Options).
@@ -7245,8 +8595,7 @@ batch_get_blueprints(Client, Input, Options)
 -spec batch_get_crawlers(map(), batch_get_crawlers_request()) ->
     {ok, batch_get_crawlers_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_get_crawlers_errors(), tuple()}.
 batch_get_crawlers(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_crawlers(Client, Input, []).
@@ -7254,8 +8603,7 @@ batch_get_crawlers(Client, Input)
 -spec batch_get_crawlers(map(), batch_get_crawlers_request(), proplists:proplist()) ->
     {ok, batch_get_crawlers_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_get_crawlers_errors(), tuple()}.
 batch_get_crawlers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetCrawlers">>, Input, Options).
@@ -7265,9 +8613,7 @@ batch_get_crawlers(Client, Input, Options)
 -spec batch_get_custom_entity_types(map(), batch_get_custom_entity_types_request()) ->
     {ok, batch_get_custom_entity_types_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_get_custom_entity_types_errors(), tuple()}.
 batch_get_custom_entity_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_custom_entity_types(Client, Input, []).
@@ -7275,9 +8621,7 @@ batch_get_custom_entity_types(Client, Input)
 -spec batch_get_custom_entity_types(map(), batch_get_custom_entity_types_request(), proplists:proplist()) ->
     {ok, batch_get_custom_entity_types_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_get_custom_entity_types_errors(), tuple()}.
 batch_get_custom_entity_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetCustomEntityTypes">>, Input, Options).
@@ -7287,9 +8631,7 @@ batch_get_custom_entity_types(Client, Input, Options)
 -spec batch_get_data_quality_result(map(), batch_get_data_quality_result_request()) ->
     {ok, batch_get_data_quality_result_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_get_data_quality_result_errors(), tuple()}.
 batch_get_data_quality_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_data_quality_result(Client, Input, []).
@@ -7297,9 +8639,7 @@ batch_get_data_quality_result(Client, Input)
 -spec batch_get_data_quality_result(map(), batch_get_data_quality_result_request(), proplists:proplist()) ->
     {ok, batch_get_data_quality_result_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_get_data_quality_result_errors(), tuple()}.
 batch_get_data_quality_result(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetDataQualityResult">>, Input, Options).
@@ -7316,10 +8656,7 @@ batch_get_data_quality_result(Client, Input, Options)
 -spec batch_get_dev_endpoints(map(), batch_get_dev_endpoints_request()) ->
     {ok, batch_get_dev_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_get_dev_endpoints_errors(), tuple()}.
 batch_get_dev_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_dev_endpoints(Client, Input, []).
@@ -7327,10 +8664,7 @@ batch_get_dev_endpoints(Client, Input)
 -spec batch_get_dev_endpoints(map(), batch_get_dev_endpoints_request(), proplists:proplist()) ->
     {ok, batch_get_dev_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_get_dev_endpoints_errors(), tuple()}.
 batch_get_dev_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetDevEndpoints">>, Input, Options).
@@ -7344,9 +8678,7 @@ batch_get_dev_endpoints(Client, Input, Options)
 -spec batch_get_jobs(map(), batch_get_jobs_request()) ->
     {ok, batch_get_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_get_jobs_errors(), tuple()}.
 batch_get_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_jobs(Client, Input, []).
@@ -7354,9 +8686,7 @@ batch_get_jobs(Client, Input)
 -spec batch_get_jobs(map(), batch_get_jobs_request(), proplists:proplist()) ->
     {ok, batch_get_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_get_jobs_errors(), tuple()}.
 batch_get_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetJobs">>, Input, Options).
@@ -7365,14 +8695,7 @@ batch_get_jobs(Client, Input, Options)
 -spec batch_get_partition(map(), batch_get_partition_request()) ->
     {ok, batch_get_partition_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, federation_source_exception(), tuple()} |
-    {error, federation_source_retryable_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_get_partition_errors(), tuple()}.
 batch_get_partition(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_partition(Client, Input, []).
@@ -7380,14 +8703,7 @@ batch_get_partition(Client, Input)
 -spec batch_get_partition(map(), batch_get_partition_request(), proplists:proplist()) ->
     {ok, batch_get_partition_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, federation_source_exception(), tuple()} |
-    {error, federation_source_retryable_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_get_partition_errors(), tuple()}.
 batch_get_partition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetPartition">>, Input, Options).
@@ -7396,7 +8712,7 @@ batch_get_partition(Client, Input, Options)
 -spec batch_get_table_optimizer(map(), batch_get_table_optimizer_request()) ->
     {ok, batch_get_table_optimizer_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()}.
+    {error, batch_get_table_optimizer_errors(), tuple()}.
 batch_get_table_optimizer(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_table_optimizer(Client, Input, []).
@@ -7404,7 +8720,7 @@ batch_get_table_optimizer(Client, Input)
 -spec batch_get_table_optimizer(map(), batch_get_table_optimizer_request(), proplists:proplist()) ->
     {ok, batch_get_table_optimizer_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()}.
+    {error, batch_get_table_optimizer_errors(), tuple()}.
 batch_get_table_optimizer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetTableOptimizer">>, Input, Options).
@@ -7419,9 +8735,7 @@ batch_get_table_optimizer(Client, Input, Options)
 -spec batch_get_triggers(map(), batch_get_triggers_request()) ->
     {ok, batch_get_triggers_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_get_triggers_errors(), tuple()}.
 batch_get_triggers(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_triggers(Client, Input, []).
@@ -7429,9 +8743,7 @@ batch_get_triggers(Client, Input)
 -spec batch_get_triggers(map(), batch_get_triggers_request(), proplists:proplist()) ->
     {ok, batch_get_triggers_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_get_triggers_errors(), tuple()}.
 batch_get_triggers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetTriggers">>, Input, Options).
@@ -7446,9 +8758,7 @@ batch_get_triggers(Client, Input, Options)
 -spec batch_get_workflows(map(), batch_get_workflows_request()) ->
     {ok, batch_get_workflows_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_get_workflows_errors(), tuple()}.
 batch_get_workflows(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_workflows(Client, Input, []).
@@ -7456,9 +8766,7 @@ batch_get_workflows(Client, Input)
 -spec batch_get_workflows(map(), batch_get_workflows_request(), proplists:proplist()) ->
     {ok, batch_get_workflows_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_get_workflows_errors(), tuple()}.
 batch_get_workflows(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetWorkflows">>, Input, Options).
@@ -7467,9 +8775,7 @@ batch_get_workflows(Client, Input, Options)
 -spec batch_stop_job_run(map(), batch_stop_job_run_request()) ->
     {ok, batch_stop_job_run_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_stop_job_run_errors(), tuple()}.
 batch_stop_job_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_stop_job_run(Client, Input, []).
@@ -7477,9 +8783,7 @@ batch_stop_job_run(Client, Input)
 -spec batch_stop_job_run(map(), batch_stop_job_run_request(), proplists:proplist()) ->
     {ok, batch_stop_job_run_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_stop_job_run_errors(), tuple()}.
 batch_stop_job_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchStopJobRun">>, Input, Options).
@@ -7488,11 +8792,7 @@ batch_stop_job_run(Client, Input, Options)
 -spec batch_update_partition(map(), batch_update_partition_request()) ->
     {ok, batch_update_partition_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_update_partition_errors(), tuple()}.
 batch_update_partition(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_update_partition(Client, Input, []).
@@ -7500,11 +8800,7 @@ batch_update_partition(Client, Input)
 -spec batch_update_partition(map(), batch_update_partition_request(), proplists:proplist()) ->
     {ok, batch_update_partition_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, batch_update_partition_errors(), tuple()}.
 batch_update_partition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchUpdatePartition">>, Input, Options).
@@ -7514,10 +8810,7 @@ batch_update_partition(Client, Input, Options)
 -spec cancel_data_quality_rule_recommendation_run(map(), cancel_data_quality_rule_recommendation_run_request()) ->
     {ok, cancel_data_quality_rule_recommendation_run_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, cancel_data_quality_rule_recommendation_run_errors(), tuple()}.
 cancel_data_quality_rule_recommendation_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_data_quality_rule_recommendation_run(Client, Input, []).
@@ -7525,10 +8818,7 @@ cancel_data_quality_rule_recommendation_run(Client, Input)
 -spec cancel_data_quality_rule_recommendation_run(map(), cancel_data_quality_rule_recommendation_run_request(), proplists:proplist()) ->
     {ok, cancel_data_quality_rule_recommendation_run_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, cancel_data_quality_rule_recommendation_run_errors(), tuple()}.
 cancel_data_quality_rule_recommendation_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelDataQualityRuleRecommendationRun">>, Input, Options).
@@ -7538,10 +8828,7 @@ cancel_data_quality_rule_recommendation_run(Client, Input, Options)
 -spec cancel_data_quality_ruleset_evaluation_run(map(), cancel_data_quality_ruleset_evaluation_run_request()) ->
     {ok, cancel_data_quality_ruleset_evaluation_run_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, cancel_data_quality_ruleset_evaluation_run_errors(), tuple()}.
 cancel_data_quality_ruleset_evaluation_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_data_quality_ruleset_evaluation_run(Client, Input, []).
@@ -7549,10 +8836,7 @@ cancel_data_quality_ruleset_evaluation_run(Client, Input)
 -spec cancel_data_quality_ruleset_evaluation_run(map(), cancel_data_quality_ruleset_evaluation_run_request(), proplists:proplist()) ->
     {ok, cancel_data_quality_ruleset_evaluation_run_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, cancel_data_quality_ruleset_evaluation_run_errors(), tuple()}.
 cancel_data_quality_ruleset_evaluation_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelDataQualityRulesetEvaluationRun">>, Input, Options).
@@ -7568,10 +8852,7 @@ cancel_data_quality_ruleset_evaluation_run(Client, Input, Options)
 -spec cancel_ml_task_run(map(), cancel_ml_task_run_request()) ->
     {ok, cancel_ml_task_run_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, cancel_ml_task_run_errors(), tuple()}.
 cancel_ml_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_ml_task_run(Client, Input, []).
@@ -7579,10 +8860,7 @@ cancel_ml_task_run(Client, Input)
 -spec cancel_ml_task_run(map(), cancel_ml_task_run_request(), proplists:proplist()) ->
     {ok, cancel_ml_task_run_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, cancel_ml_task_run_errors(), tuple()}.
 cancel_ml_task_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelMLTaskRun">>, Input, Options).
@@ -7591,12 +8869,7 @@ cancel_ml_task_run(Client, Input, Options)
 -spec cancel_statement(map(), cancel_statement_request()) ->
     {ok, cancel_statement_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, illegal_session_state_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, cancel_statement_errors(), tuple()}.
 cancel_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_statement(Client, Input, []).
@@ -7604,12 +8877,7 @@ cancel_statement(Client, Input)
 -spec cancel_statement(map(), cancel_statement_request(), proplists:proplist()) ->
     {ok, cancel_statement_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, illegal_session_state_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, cancel_statement_errors(), tuple()}.
 cancel_statement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelStatement">>, Input, Options).
@@ -7622,9 +8890,7 @@ cancel_statement(Client, Input, Options)
 -spec check_schema_version_validity(map(), check_schema_version_validity_input()) ->
     {ok, check_schema_version_validity_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, check_schema_version_validity_errors(), tuple()}.
 check_schema_version_validity(Client, Input)
   when is_map(Client), is_map(Input) ->
     check_schema_version_validity(Client, Input, []).
@@ -7632,9 +8898,7 @@ check_schema_version_validity(Client, Input)
 -spec check_schema_version_validity(map(), check_schema_version_validity_input(), proplists:proplist()) ->
     {ok, check_schema_version_validity_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, check_schema_version_validity_errors(), tuple()}.
 check_schema_version_validity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CheckSchemaVersionValidity">>, Input, Options).
@@ -7643,11 +8907,7 @@ check_schema_version_validity(Client, Input, Options)
 -spec create_blueprint(map(), create_blueprint_request()) ->
     {ok, create_blueprint_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_blueprint_errors(), tuple()}.
 create_blueprint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_blueprint(Client, Input, []).
@@ -7655,11 +8915,7 @@ create_blueprint(Client, Input)
 -spec create_blueprint(map(), create_blueprint_request(), proplists:proplist()) ->
     {ok, create_blueprint_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_blueprint_errors(), tuple()}.
 create_blueprint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBlueprint">>, Input, Options).
@@ -7672,9 +8928,7 @@ create_blueprint(Client, Input, Options)
 -spec create_classifier(map(), create_classifier_request()) ->
     {ok, create_classifier_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, create_classifier_errors(), tuple()}.
 create_classifier(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_classifier(Client, Input, []).
@@ -7682,9 +8936,7 @@ create_classifier(Client, Input)
 -spec create_classifier(map(), create_classifier_request(), proplists:proplist()) ->
     {ok, create_classifier_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, create_classifier_errors(), tuple()}.
 create_classifier(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateClassifier">>, Input, Options).
@@ -7696,11 +8948,7 @@ create_classifier(Client, Input, Options)
 -spec create_connection(map(), create_connection_request()) ->
     {ok, create_connection_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_connection_errors(), tuple()}.
 create_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_connection(Client, Input, []).
@@ -7708,11 +8956,7 @@ create_connection(Client, Input)
 -spec create_connection(map(), create_connection_request(), proplists:proplist()) ->
     {ok, create_connection_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_connection_errors(), tuple()}.
 create_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateConnection">>, Input, Options).
@@ -7726,10 +8970,7 @@ create_connection(Client, Input, Options)
 -spec create_crawler(map(), create_crawler_request()) ->
     {ok, create_crawler_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_crawler_errors(), tuple()}.
 create_crawler(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_crawler(Client, Input, []).
@@ -7737,10 +8978,7 @@ create_crawler(Client, Input)
 -spec create_crawler(map(), create_crawler_request(), proplists:proplist()) ->
     {ok, create_crawler_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_crawler_errors(), tuple()}.
 create_crawler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCrawler">>, Input, Options).
@@ -7754,13 +8992,7 @@ create_crawler(Client, Input, Options)
 -spec create_custom_entity_type(map(), create_custom_entity_type_request()) ->
     {ok, create_custom_entity_type_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_custom_entity_type_errors(), tuple()}.
 create_custom_entity_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_custom_entity_type(Client, Input, []).
@@ -7768,13 +9000,7 @@ create_custom_entity_type(Client, Input)
 -spec create_custom_entity_type(map(), create_custom_entity_type_request(), proplists:proplist()) ->
     {ok, create_custom_entity_type_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_custom_entity_type_errors(), tuple()}.
 create_custom_entity_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCustomEntityType">>, Input, Options).
@@ -7787,11 +9013,7 @@ create_custom_entity_type(Client, Input, Options)
 -spec create_data_quality_ruleset(map(), create_data_quality_ruleset_request()) ->
     {ok, create_data_quality_ruleset_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_data_quality_ruleset_errors(), tuple()}.
 create_data_quality_ruleset(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_quality_ruleset(Client, Input, []).
@@ -7799,11 +9021,7 @@ create_data_quality_ruleset(Client, Input)
 -spec create_data_quality_ruleset(map(), create_data_quality_ruleset_request(), proplists:proplist()) ->
     {ok, create_data_quality_ruleset_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_data_quality_ruleset_errors(), tuple()}.
 create_data_quality_ruleset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDataQualityRuleset">>, Input, Options).
@@ -7812,14 +9030,7 @@ create_data_quality_ruleset(Client, Input, Options)
 -spec create_database(map(), create_database_request()) ->
     {ok, create_database_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, federated_resource_already_exists_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_database_errors(), tuple()}.
 create_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_database(Client, Input, []).
@@ -7827,14 +9038,7 @@ create_database(Client, Input)
 -spec create_database(map(), create_database_request(), proplists:proplist()) ->
     {ok, create_database_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, federated_resource_already_exists_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_database_errors(), tuple()}.
 create_database(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDatabase">>, Input, Options).
@@ -7843,14 +9047,7 @@ create_database(Client, Input, Options)
 -spec create_dev_endpoint(map(), create_dev_endpoint_request()) ->
     {ok, create_dev_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_dev_endpoint_errors(), tuple()}.
 create_dev_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dev_endpoint(Client, Input, []).
@@ -7858,14 +9055,7 @@ create_dev_endpoint(Client, Input)
 -spec create_dev_endpoint(map(), create_dev_endpoint_request(), proplists:proplist()) ->
     {ok, create_dev_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_dev_endpoint_errors(), tuple()}.
 create_dev_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDevEndpoint">>, Input, Options).
@@ -7874,13 +9064,7 @@ create_dev_endpoint(Client, Input, Options)
 -spec create_job(map(), create_job_request()) ->
     {ok, create_job_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_job_errors(), tuple()}.
 create_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_job(Client, Input, []).
@@ -7888,13 +9072,7 @@ create_job(Client, Input)
 -spec create_job(map(), create_job_request(), proplists:proplist()) ->
     {ok, create_job_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_job_errors(), tuple()}.
 create_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateJob">>, Input, Options).
@@ -7923,13 +9101,7 @@ create_job(Client, Input, Options)
 -spec create_ml_transform(map(), create_ml_transform_request()) ->
     {ok, create_ml_transform_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_ml_transform_errors(), tuple()}.
 create_ml_transform(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_ml_transform(Client, Input, []).
@@ -7937,13 +9109,7 @@ create_ml_transform(Client, Input)
 -spec create_ml_transform(map(), create_ml_transform_request(), proplists:proplist()) ->
     {ok, create_ml_transform_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_ml_transform_errors(), tuple()}.
 create_ml_transform(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateMLTransform">>, Input, Options).
@@ -7952,13 +9118,7 @@ create_ml_transform(Client, Input, Options)
 -spec create_partition(map(), create_partition_request()) ->
     {ok, create_partition_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_partition_errors(), tuple()}.
 create_partition(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_partition(Client, Input, []).
@@ -7966,13 +9126,7 @@ create_partition(Client, Input)
 -spec create_partition(map(), create_partition_request(), proplists:proplist()) ->
     {ok, create_partition_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_partition_errors(), tuple()}.
 create_partition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePartition">>, Input, Options).
@@ -7981,13 +9135,7 @@ create_partition(Client, Input, Options)
 -spec create_partition_index(map(), create_partition_index_request()) ->
     {ok, create_partition_index_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_partition_index_errors(), tuple()}.
 create_partition_index(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_partition_index(Client, Input, []).
@@ -7995,13 +9143,7 @@ create_partition_index(Client, Input)
 -spec create_partition_index(map(), create_partition_index_request(), proplists:proplist()) ->
     {ok, create_partition_index_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_partition_index_errors(), tuple()}.
 create_partition_index(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePartitionIndex">>, Input, Options).
@@ -8011,12 +9153,7 @@ create_partition_index(Client, Input, Options)
 -spec create_registry(map(), create_registry_input()) ->
     {ok, create_registry_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_registry_errors(), tuple()}.
 create_registry(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_registry(Client, Input, []).
@@ -8024,12 +9161,7 @@ create_registry(Client, Input)
 -spec create_registry(map(), create_registry_input(), proplists:proplist()) ->
     {ok, create_registry_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_registry_errors(), tuple()}.
 create_registry(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRegistry">>, Input, Options).
@@ -8052,13 +9184,7 @@ create_registry(Client, Input, Options)
 -spec create_schema(map(), create_schema_input()) ->
     {ok, create_schema_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_schema_errors(), tuple()}.
 create_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_schema(Client, Input, []).
@@ -8066,13 +9192,7 @@ create_schema(Client, Input)
 -spec create_schema(map(), create_schema_input(), proplists:proplist()) ->
     {ok, create_schema_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_schema_errors(), tuple()}.
 create_schema(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSchema">>, Input, Options).
@@ -8081,9 +9201,7 @@ create_schema(Client, Input, Options)
 -spec create_script(map(), create_script_request()) ->
     {ok, create_script_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, create_script_errors(), tuple()}.
 create_script(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_script(Client, Input, []).
@@ -8091,9 +9209,7 @@ create_script(Client, Input)
 -spec create_script(map(), create_script_request(), proplists:proplist()) ->
     {ok, create_script_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, create_script_errors(), tuple()}.
 create_script(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateScript">>, Input, Options).
@@ -8108,11 +9224,7 @@ create_script(Client, Input, Options)
 -spec create_security_configuration(map(), create_security_configuration_request()) ->
     {ok, create_security_configuration_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_security_configuration_errors(), tuple()}.
 create_security_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_security_configuration(Client, Input, []).
@@ -8120,11 +9232,7 @@ create_security_configuration(Client, Input)
 -spec create_security_configuration(map(), create_security_configuration_request(), proplists:proplist()) ->
     {ok, create_security_configuration_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_security_configuration_errors(), tuple()}.
 create_security_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSecurityConfiguration">>, Input, Options).
@@ -8133,14 +9241,7 @@ create_security_configuration(Client, Input, Options)
 -spec create_session(map(), create_session_request()) ->
     {ok, create_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_session_errors(), tuple()}.
 create_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_session(Client, Input, []).
@@ -8148,14 +9249,7 @@ create_session(Client, Input)
 -spec create_session(map(), create_session_request(), proplists:proplist()) ->
     {ok, create_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_session_errors(), tuple()}.
 create_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSession">>, Input, Options).
@@ -8164,15 +9258,7 @@ create_session(Client, Input, Options)
 -spec create_table(map(), create_table_request()) ->
     {ok, create_table_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_table_errors(), tuple()}.
 create_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_table(Client, Input, []).
@@ -8180,15 +9266,7 @@ create_table(Client, Input)
 -spec create_table(map(), create_table_request(), proplists:proplist()) ->
     {ok, create_table_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_table_errors(), tuple()}.
 create_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTable">>, Input, Options).
@@ -8199,11 +9277,7 @@ create_table(Client, Input, Options)
 -spec create_table_optimizer(map(), create_table_optimizer_request()) ->
     {ok, create_table_optimizer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, create_table_optimizer_errors(), tuple()}.
 create_table_optimizer(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_table_optimizer(Client, Input, []).
@@ -8211,11 +9285,7 @@ create_table_optimizer(Client, Input)
 -spec create_table_optimizer(map(), create_table_optimizer_request(), proplists:proplist()) ->
     {ok, create_table_optimizer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, create_table_optimizer_errors(), tuple()}.
 create_table_optimizer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTableOptimizer">>, Input, Options).
@@ -8224,14 +9294,7 @@ create_table_optimizer(Client, Input, Options)
 -spec create_trigger(map(), create_trigger_request()) ->
     {ok, create_trigger_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_trigger_errors(), tuple()}.
 create_trigger(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_trigger(Client, Input, []).
@@ -8239,14 +9302,7 @@ create_trigger(Client, Input)
 -spec create_trigger(map(), create_trigger_request(), proplists:proplist()) ->
     {ok, create_trigger_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_trigger_errors(), tuple()}.
 create_trigger(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTrigger">>, Input, Options).
@@ -8255,13 +9311,7 @@ create_trigger(Client, Input, Options)
 -spec create_user_defined_function(map(), create_user_defined_function_request()) ->
     {ok, create_user_defined_function_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_user_defined_function_errors(), tuple()}.
 create_user_defined_function(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_defined_function(Client, Input, []).
@@ -8269,13 +9319,7 @@ create_user_defined_function(Client, Input)
 -spec create_user_defined_function(map(), create_user_defined_function_request(), proplists:proplist()) ->
     {ok, create_user_defined_function_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_user_defined_function_errors(), tuple()}.
 create_user_defined_function(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUserDefinedFunction">>, Input, Options).
@@ -8284,12 +9328,7 @@ create_user_defined_function(Client, Input, Options)
 -spec create_workflow(map(), create_workflow_request()) ->
     {ok, create_workflow_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_workflow_errors(), tuple()}.
 create_workflow(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_workflow(Client, Input, []).
@@ -8297,12 +9336,7 @@ create_workflow(Client, Input)
 -spec create_workflow(map(), create_workflow_request(), proplists:proplist()) ->
     {ok, create_workflow_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, create_workflow_errors(), tuple()}.
 create_workflow(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWorkflow">>, Input, Options).
@@ -8311,9 +9345,7 @@ create_workflow(Client, Input, Options)
 -spec delete_blueprint(map(), delete_blueprint_request()) ->
     {ok, delete_blueprint_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_blueprint_errors(), tuple()}.
 delete_blueprint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_blueprint(Client, Input, []).
@@ -8321,9 +9353,7 @@ delete_blueprint(Client, Input)
 -spec delete_blueprint(map(), delete_blueprint_request(), proplists:proplist()) ->
     {ok, delete_blueprint_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_blueprint_errors(), tuple()}.
 delete_blueprint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBlueprint">>, Input, Options).
@@ -8332,8 +9362,7 @@ delete_blueprint(Client, Input, Options)
 -spec delete_classifier(map(), delete_classifier_request()) ->
     {ok, delete_classifier_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_classifier_errors(), tuple()}.
 delete_classifier(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_classifier(Client, Input, []).
@@ -8341,8 +9370,7 @@ delete_classifier(Client, Input)
 -spec delete_classifier(map(), delete_classifier_request(), proplists:proplist()) ->
     {ok, delete_classifier_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_classifier_errors(), tuple()}.
 delete_classifier(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteClassifier">>, Input, Options).
@@ -8354,11 +9382,7 @@ delete_classifier(Client, Input, Options)
 -spec delete_column_statistics_for_partition(map(), delete_column_statistics_for_partition_request()) ->
     {ok, delete_column_statistics_for_partition_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_column_statistics_for_partition_errors(), tuple()}.
 delete_column_statistics_for_partition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_column_statistics_for_partition(Client, Input, []).
@@ -8366,11 +9390,7 @@ delete_column_statistics_for_partition(Client, Input)
 -spec delete_column_statistics_for_partition(map(), delete_column_statistics_for_partition_request(), proplists:proplist()) ->
     {ok, delete_column_statistics_for_partition_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_column_statistics_for_partition_errors(), tuple()}.
 delete_column_statistics_for_partition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteColumnStatisticsForPartition">>, Input, Options).
@@ -8382,11 +9402,7 @@ delete_column_statistics_for_partition(Client, Input, Options)
 -spec delete_column_statistics_for_table(map(), delete_column_statistics_for_table_request()) ->
     {ok, delete_column_statistics_for_table_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_column_statistics_for_table_errors(), tuple()}.
 delete_column_statistics_for_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_column_statistics_for_table(Client, Input, []).
@@ -8394,11 +9410,7 @@ delete_column_statistics_for_table(Client, Input)
 -spec delete_column_statistics_for_table(map(), delete_column_statistics_for_table_request(), proplists:proplist()) ->
     {ok, delete_column_statistics_for_table_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_column_statistics_for_table_errors(), tuple()}.
 delete_column_statistics_for_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteColumnStatisticsForTable">>, Input, Options).
@@ -8407,8 +9419,7 @@ delete_column_statistics_for_table(Client, Input, Options)
 -spec delete_connection(map(), delete_connection_request()) ->
     {ok, delete_connection_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_connection_errors(), tuple()}.
 delete_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_connection(Client, Input, []).
@@ -8416,8 +9427,7 @@ delete_connection(Client, Input)
 -spec delete_connection(map(), delete_connection_request(), proplists:proplist()) ->
     {ok, delete_connection_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_connection_errors(), tuple()}.
 delete_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConnection">>, Input, Options).
@@ -8428,10 +9438,7 @@ delete_connection(Client, Input, Options)
 -spec delete_crawler(map(), delete_crawler_request()) ->
     {ok, delete_crawler_response(), tuple()} |
     {error, any()} |
-    {error, crawler_running_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, scheduler_transitioning_exception(), tuple()}.
+    {error, delete_crawler_errors(), tuple()}.
 delete_crawler(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_crawler(Client, Input, []).
@@ -8439,10 +9446,7 @@ delete_crawler(Client, Input)
 -spec delete_crawler(map(), delete_crawler_request(), proplists:proplist()) ->
     {ok, delete_crawler_response(), tuple()} |
     {error, any()} |
-    {error, crawler_running_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, scheduler_transitioning_exception(), tuple()}.
+    {error, delete_crawler_errors(), tuple()}.
 delete_crawler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCrawler">>, Input, Options).
@@ -8451,11 +9455,7 @@ delete_crawler(Client, Input, Options)
 -spec delete_custom_entity_type(map(), delete_custom_entity_type_request()) ->
     {ok, delete_custom_entity_type_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_custom_entity_type_errors(), tuple()}.
 delete_custom_entity_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_custom_entity_type(Client, Input, []).
@@ -8463,11 +9463,7 @@ delete_custom_entity_type(Client, Input)
 -spec delete_custom_entity_type(map(), delete_custom_entity_type_request(), proplists:proplist()) ->
     {ok, delete_custom_entity_type_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_custom_entity_type_errors(), tuple()}.
 delete_custom_entity_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCustomEntityType">>, Input, Options).
@@ -8476,10 +9472,7 @@ delete_custom_entity_type(Client, Input, Options)
 -spec delete_data_quality_ruleset(map(), delete_data_quality_ruleset_request()) ->
     {ok, delete_data_quality_ruleset_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_data_quality_ruleset_errors(), tuple()}.
 delete_data_quality_ruleset(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_data_quality_ruleset(Client, Input, []).
@@ -8487,10 +9480,7 @@ delete_data_quality_ruleset(Client, Input)
 -spec delete_data_quality_ruleset(map(), delete_data_quality_ruleset_request(), proplists:proplist()) ->
     {ok, delete_data_quality_ruleset_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_data_quality_ruleset_errors(), tuple()}.
 delete_data_quality_ruleset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDataQualityRuleset">>, Input, Options).
@@ -8514,11 +9504,7 @@ delete_data_quality_ruleset(Client, Input, Options)
 -spec delete_database(map(), delete_database_request()) ->
     {ok, delete_database_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_database_errors(), tuple()}.
 delete_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_database(Client, Input, []).
@@ -8526,11 +9512,7 @@ delete_database(Client, Input)
 -spec delete_database(map(), delete_database_request(), proplists:proplist()) ->
     {ok, delete_database_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_database_errors(), tuple()}.
 delete_database(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDatabase">>, Input, Options).
@@ -8539,10 +9521,7 @@ delete_database(Client, Input, Options)
 -spec delete_dev_endpoint(map(), delete_dev_endpoint_request()) ->
     {ok, delete_dev_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_dev_endpoint_errors(), tuple()}.
 delete_dev_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_dev_endpoint(Client, Input, []).
@@ -8550,10 +9529,7 @@ delete_dev_endpoint(Client, Input)
 -spec delete_dev_endpoint(map(), delete_dev_endpoint_request(), proplists:proplist()) ->
     {ok, delete_dev_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_dev_endpoint_errors(), tuple()}.
 delete_dev_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDevEndpoint">>, Input, Options).
@@ -8565,9 +9541,7 @@ delete_dev_endpoint(Client, Input, Options)
 -spec delete_job(map(), delete_job_request()) ->
     {ok, delete_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_job_errors(), tuple()}.
 delete_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_job(Client, Input, []).
@@ -8575,9 +9549,7 @@ delete_job(Client, Input)
 -spec delete_job(map(), delete_job_request(), proplists:proplist()) ->
     {ok, delete_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_job_errors(), tuple()}.
 delete_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteJob">>, Input, Options).
@@ -8596,10 +9568,7 @@ delete_job(Client, Input, Options)
 -spec delete_ml_transform(map(), delete_ml_transform_request()) ->
     {ok, delete_ml_transform_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_ml_transform_errors(), tuple()}.
 delete_ml_transform(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_ml_transform(Client, Input, []).
@@ -8607,10 +9576,7 @@ delete_ml_transform(Client, Input)
 -spec delete_ml_transform(map(), delete_ml_transform_request(), proplists:proplist()) ->
     {ok, delete_ml_transform_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_ml_transform_errors(), tuple()}.
 delete_ml_transform(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMLTransform">>, Input, Options).
@@ -8619,10 +9585,7 @@ delete_ml_transform(Client, Input, Options)
 -spec delete_partition(map(), delete_partition_request()) ->
     {ok, delete_partition_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_partition_errors(), tuple()}.
 delete_partition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_partition(Client, Input, []).
@@ -8630,10 +9593,7 @@ delete_partition(Client, Input)
 -spec delete_partition(map(), delete_partition_request(), proplists:proplist()) ->
     {ok, delete_partition_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_partition_errors(), tuple()}.
 delete_partition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePartition">>, Input, Options).
@@ -8642,12 +9602,7 @@ delete_partition(Client, Input, Options)
 -spec delete_partition_index(map(), delete_partition_index_request()) ->
     {ok, delete_partition_index_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_partition_index_errors(), tuple()}.
 delete_partition_index(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_partition_index(Client, Input, []).
@@ -8655,12 +9610,7 @@ delete_partition_index(Client, Input)
 -spec delete_partition_index(map(), delete_partition_index_request(), proplists:proplist()) ->
     {ok, delete_partition_index_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_partition_index_errors(), tuple()}.
 delete_partition_index(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePartitionIndex">>, Input, Options).
@@ -8675,10 +9625,7 @@ delete_partition_index(Client, Input, Options)
 -spec delete_registry(map(), delete_registry_input()) ->
     {ok, delete_registry_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, delete_registry_errors(), tuple()}.
 delete_registry(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_registry(Client, Input, []).
@@ -8686,10 +9633,7 @@ delete_registry(Client, Input)
 -spec delete_registry(map(), delete_registry_input(), proplists:proplist()) ->
     {ok, delete_registry_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, delete_registry_errors(), tuple()}.
 delete_registry(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRegistry">>, Input, Options).
@@ -8698,11 +9642,7 @@ delete_registry(Client, Input, Options)
 -spec delete_resource_policy(map(), delete_resource_policy_request()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, condition_check_failure_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
@@ -8710,11 +9650,7 @@ delete_resource_policy(Client, Input)
 -spec delete_resource_policy(map(), delete_resource_policy_request(), proplists:proplist()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, condition_check_failure_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourcePolicy">>, Input, Options).
@@ -8729,10 +9665,7 @@ delete_resource_policy(Client, Input, Options)
 -spec delete_schema(map(), delete_schema_input()) ->
     {ok, delete_schema_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, delete_schema_errors(), tuple()}.
 delete_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_schema(Client, Input, []).
@@ -8740,10 +9673,7 @@ delete_schema(Client, Input)
 -spec delete_schema(map(), delete_schema_input(), proplists:proplist()) ->
     {ok, delete_schema_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, delete_schema_errors(), tuple()}.
 delete_schema(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSchema">>, Input, Options).
@@ -8771,10 +9701,7 @@ delete_schema(Client, Input, Options)
 -spec delete_schema_versions(map(), delete_schema_versions_input()) ->
     {ok, delete_schema_versions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, delete_schema_versions_errors(), tuple()}.
 delete_schema_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_schema_versions(Client, Input, []).
@@ -8782,10 +9709,7 @@ delete_schema_versions(Client, Input)
 -spec delete_schema_versions(map(), delete_schema_versions_input(), proplists:proplist()) ->
     {ok, delete_schema_versions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, delete_schema_versions_errors(), tuple()}.
 delete_schema_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSchemaVersions">>, Input, Options).
@@ -8794,10 +9718,7 @@ delete_schema_versions(Client, Input, Options)
 -spec delete_security_configuration(map(), delete_security_configuration_request()) ->
     {ok, delete_security_configuration_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_security_configuration_errors(), tuple()}.
 delete_security_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_security_configuration(Client, Input, []).
@@ -8805,10 +9726,7 @@ delete_security_configuration(Client, Input)
 -spec delete_security_configuration(map(), delete_security_configuration_request(), proplists:proplist()) ->
     {ok, delete_security_configuration_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_security_configuration_errors(), tuple()}.
 delete_security_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSecurityConfiguration">>, Input, Options).
@@ -8817,12 +9735,7 @@ delete_security_configuration(Client, Input, Options)
 -spec delete_session(map(), delete_session_request()) ->
     {ok, delete_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, illegal_session_state_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_session_errors(), tuple()}.
 delete_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_session(Client, Input, []).
@@ -8830,12 +9743,7 @@ delete_session(Client, Input)
 -spec delete_session(map(), delete_session_request(), proplists:proplist()) ->
     {ok, delete_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, illegal_session_state_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_session_errors(), tuple()}.
 delete_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSession">>, Input, Options).
@@ -8856,12 +9764,7 @@ delete_session(Client, Input, Options)
 -spec delete_table(map(), delete_table_request()) ->
     {ok, delete_table_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()}.
+    {error, delete_table_errors(), tuple()}.
 delete_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_table(Client, Input, []).
@@ -8869,12 +9772,7 @@ delete_table(Client, Input)
 -spec delete_table(map(), delete_table_request(), proplists:proplist()) ->
     {ok, delete_table_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()}.
+    {error, delete_table_errors(), tuple()}.
 delete_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTable">>, Input, Options).
@@ -8885,10 +9783,7 @@ delete_table(Client, Input, Options)
 -spec delete_table_optimizer(map(), delete_table_optimizer_request()) ->
     {ok, delete_table_optimizer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, delete_table_optimizer_errors(), tuple()}.
 delete_table_optimizer(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_table_optimizer(Client, Input, []).
@@ -8896,10 +9791,7 @@ delete_table_optimizer(Client, Input)
 -spec delete_table_optimizer(map(), delete_table_optimizer_request(), proplists:proplist()) ->
     {ok, delete_table_optimizer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, delete_table_optimizer_errors(), tuple()}.
 delete_table_optimizer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTableOptimizer">>, Input, Options).
@@ -8908,10 +9800,7 @@ delete_table_optimizer(Client, Input, Options)
 -spec delete_table_version(map(), delete_table_version_request()) ->
     {ok, delete_table_version_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_table_version_errors(), tuple()}.
 delete_table_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_table_version(Client, Input, []).
@@ -8919,10 +9808,7 @@ delete_table_version(Client, Input)
 -spec delete_table_version(map(), delete_table_version_request(), proplists:proplist()) ->
     {ok, delete_table_version_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_table_version_errors(), tuple()}.
 delete_table_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTableVersion">>, Input, Options).
@@ -8934,10 +9820,7 @@ delete_table_version(Client, Input, Options)
 -spec delete_trigger(map(), delete_trigger_request()) ->
     {ok, delete_trigger_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_trigger_errors(), tuple()}.
 delete_trigger(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_trigger(Client, Input, []).
@@ -8945,10 +9828,7 @@ delete_trigger(Client, Input)
 -spec delete_trigger(map(), delete_trigger_request(), proplists:proplist()) ->
     {ok, delete_trigger_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_trigger_errors(), tuple()}.
 delete_trigger(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTrigger">>, Input, Options).
@@ -8957,10 +9837,7 @@ delete_trigger(Client, Input, Options)
 -spec delete_user_defined_function(map(), delete_user_defined_function_request()) ->
     {ok, delete_user_defined_function_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_user_defined_function_errors(), tuple()}.
 delete_user_defined_function(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_defined_function(Client, Input, []).
@@ -8968,10 +9845,7 @@ delete_user_defined_function(Client, Input)
 -spec delete_user_defined_function(map(), delete_user_defined_function_request(), proplists:proplist()) ->
     {ok, delete_user_defined_function_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_user_defined_function_errors(), tuple()}.
 delete_user_defined_function(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUserDefinedFunction">>, Input, Options).
@@ -8980,10 +9854,7 @@ delete_user_defined_function(Client, Input, Options)
 -spec delete_workflow(map(), delete_workflow_request()) ->
     {ok, delete_workflow_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_workflow_errors(), tuple()}.
 delete_workflow(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_workflow(Client, Input, []).
@@ -8991,10 +9862,7 @@ delete_workflow(Client, Input)
 -spec delete_workflow(map(), delete_workflow_request(), proplists:proplist()) ->
     {ok, delete_workflow_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, delete_workflow_errors(), tuple()}.
 delete_workflow(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWorkflow">>, Input, Options).
@@ -9003,10 +9871,7 @@ delete_workflow(Client, Input, Options)
 -spec get_blueprint(map(), get_blueprint_request()) ->
     {ok, get_blueprint_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_blueprint_errors(), tuple()}.
 get_blueprint(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_blueprint(Client, Input, []).
@@ -9014,10 +9879,7 @@ get_blueprint(Client, Input)
 -spec get_blueprint(map(), get_blueprint_request(), proplists:proplist()) ->
     {ok, get_blueprint_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_blueprint_errors(), tuple()}.
 get_blueprint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetBlueprint">>, Input, Options).
@@ -9026,9 +9888,7 @@ get_blueprint(Client, Input, Options)
 -spec get_blueprint_run(map(), get_blueprint_run_request()) ->
     {ok, get_blueprint_run_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_blueprint_run_errors(), tuple()}.
 get_blueprint_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_blueprint_run(Client, Input, []).
@@ -9036,9 +9896,7 @@ get_blueprint_run(Client, Input)
 -spec get_blueprint_run(map(), get_blueprint_run_request(), proplists:proplist()) ->
     {ok, get_blueprint_run_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_blueprint_run_errors(), tuple()}.
 get_blueprint_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetBlueprintRun">>, Input, Options).
@@ -9047,10 +9905,7 @@ get_blueprint_run(Client, Input, Options)
 -spec get_blueprint_runs(map(), get_blueprint_runs_request()) ->
     {ok, get_blueprint_runs_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_blueprint_runs_errors(), tuple()}.
 get_blueprint_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_blueprint_runs(Client, Input, []).
@@ -9058,10 +9913,7 @@ get_blueprint_runs(Client, Input)
 -spec get_blueprint_runs(map(), get_blueprint_runs_request(), proplists:proplist()) ->
     {ok, get_blueprint_runs_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_blueprint_runs_errors(), tuple()}.
 get_blueprint_runs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetBlueprintRuns">>, Input, Options).
@@ -9070,8 +9922,7 @@ get_blueprint_runs(Client, Input, Options)
 -spec get_catalog_import_status(map(), get_catalog_import_status_request()) ->
     {ok, get_catalog_import_status_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_catalog_import_status_errors(), tuple()}.
 get_catalog_import_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_catalog_import_status(Client, Input, []).
@@ -9079,8 +9930,7 @@ get_catalog_import_status(Client, Input)
 -spec get_catalog_import_status(map(), get_catalog_import_status_request(), proplists:proplist()) ->
     {ok, get_catalog_import_status_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_catalog_import_status_errors(), tuple()}.
 get_catalog_import_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCatalogImportStatus">>, Input, Options).
@@ -9089,8 +9939,7 @@ get_catalog_import_status(Client, Input, Options)
 -spec get_classifier(map(), get_classifier_request()) ->
     {ok, get_classifier_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_classifier_errors(), tuple()}.
 get_classifier(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_classifier(Client, Input, []).
@@ -9098,8 +9947,7 @@ get_classifier(Client, Input)
 -spec get_classifier(map(), get_classifier_request(), proplists:proplist()) ->
     {ok, get_classifier_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_classifier_errors(), tuple()}.
 get_classifier(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetClassifier">>, Input, Options).
@@ -9108,7 +9956,7 @@ get_classifier(Client, Input, Options)
 -spec get_classifiers(map(), get_classifiers_request()) ->
     {ok, get_classifiers_response(), tuple()} |
     {error, any()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_classifiers_errors(), tuple()}.
 get_classifiers(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_classifiers(Client, Input, []).
@@ -9116,7 +9964,7 @@ get_classifiers(Client, Input)
 -spec get_classifiers(map(), get_classifiers_request(), proplists:proplist()) ->
     {ok, get_classifiers_response(), tuple()} |
     {error, any()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_classifiers_errors(), tuple()}.
 get_classifiers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetClassifiers">>, Input, Options).
@@ -9128,11 +9976,7 @@ get_classifiers(Client, Input, Options)
 -spec get_column_statistics_for_partition(map(), get_column_statistics_for_partition_request()) ->
     {ok, get_column_statistics_for_partition_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_column_statistics_for_partition_errors(), tuple()}.
 get_column_statistics_for_partition(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_column_statistics_for_partition(Client, Input, []).
@@ -9140,11 +9984,7 @@ get_column_statistics_for_partition(Client, Input)
 -spec get_column_statistics_for_partition(map(), get_column_statistics_for_partition_request(), proplists:proplist()) ->
     {ok, get_column_statistics_for_partition_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_column_statistics_for_partition_errors(), tuple()}.
 get_column_statistics_for_partition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetColumnStatisticsForPartition">>, Input, Options).
@@ -9156,11 +9996,7 @@ get_column_statistics_for_partition(Client, Input, Options)
 -spec get_column_statistics_for_table(map(), get_column_statistics_for_table_request()) ->
     {ok, get_column_statistics_for_table_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_column_statistics_for_table_errors(), tuple()}.
 get_column_statistics_for_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_column_statistics_for_table(Client, Input, []).
@@ -9168,11 +10004,7 @@ get_column_statistics_for_table(Client, Input)
 -spec get_column_statistics_for_table(map(), get_column_statistics_for_table_request(), proplists:proplist()) ->
     {ok, get_column_statistics_for_table_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_column_statistics_for_table_errors(), tuple()}.
 get_column_statistics_for_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetColumnStatisticsForTable">>, Input, Options).
@@ -9182,9 +10014,7 @@ get_column_statistics_for_table(Client, Input, Options)
 -spec get_column_statistics_task_run(map(), get_column_statistics_task_run_request()) ->
     {ok, get_column_statistics_task_run_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_column_statistics_task_run_errors(), tuple()}.
 get_column_statistics_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_column_statistics_task_run(Client, Input, []).
@@ -9192,9 +10022,7 @@ get_column_statistics_task_run(Client, Input)
 -spec get_column_statistics_task_run(map(), get_column_statistics_task_run_request(), proplists:proplist()) ->
     {ok, get_column_statistics_task_run_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_column_statistics_task_run_errors(), tuple()}.
 get_column_statistics_task_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetColumnStatisticsTaskRun">>, Input, Options).
@@ -9204,7 +10032,7 @@ get_column_statistics_task_run(Client, Input, Options)
 -spec get_column_statistics_task_runs(map(), get_column_statistics_task_runs_request()) ->
     {ok, get_column_statistics_task_runs_response(), tuple()} |
     {error, any()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_column_statistics_task_runs_errors(), tuple()}.
 get_column_statistics_task_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_column_statistics_task_runs(Client, Input, []).
@@ -9212,7 +10040,7 @@ get_column_statistics_task_runs(Client, Input)
 -spec get_column_statistics_task_runs(map(), get_column_statistics_task_runs_request(), proplists:proplist()) ->
     {ok, get_column_statistics_task_runs_response(), tuple()} |
     {error, any()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_column_statistics_task_runs_errors(), tuple()}.
 get_column_statistics_task_runs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetColumnStatisticsTaskRuns">>, Input, Options).
@@ -9221,10 +10049,7 @@ get_column_statistics_task_runs(Client, Input, Options)
 -spec get_connection(map(), get_connection_request()) ->
     {ok, get_connection_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_connection_errors(), tuple()}.
 get_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_connection(Client, Input, []).
@@ -9232,10 +10057,7 @@ get_connection(Client, Input)
 -spec get_connection(map(), get_connection_request(), proplists:proplist()) ->
     {ok, get_connection_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_connection_errors(), tuple()}.
 get_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetConnection">>, Input, Options).
@@ -9244,10 +10066,7 @@ get_connection(Client, Input, Options)
 -spec get_connections(map(), get_connections_request()) ->
     {ok, get_connections_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_connections_errors(), tuple()}.
 get_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_connections(Client, Input, []).
@@ -9255,10 +10074,7 @@ get_connections(Client, Input)
 -spec get_connections(map(), get_connections_request(), proplists:proplist()) ->
     {ok, get_connections_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_connections_errors(), tuple()}.
 get_connections(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetConnections">>, Input, Options).
@@ -9267,8 +10083,7 @@ get_connections(Client, Input, Options)
 -spec get_crawler(map(), get_crawler_request()) ->
     {ok, get_crawler_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_crawler_errors(), tuple()}.
 get_crawler(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_crawler(Client, Input, []).
@@ -9276,8 +10091,7 @@ get_crawler(Client, Input)
 -spec get_crawler(map(), get_crawler_request(), proplists:proplist()) ->
     {ok, get_crawler_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_crawler_errors(), tuple()}.
 get_crawler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCrawler">>, Input, Options).
@@ -9286,7 +10100,7 @@ get_crawler(Client, Input, Options)
 -spec get_crawler_metrics(map(), get_crawler_metrics_request()) ->
     {ok, get_crawler_metrics_response(), tuple()} |
     {error, any()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_crawler_metrics_errors(), tuple()}.
 get_crawler_metrics(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_crawler_metrics(Client, Input, []).
@@ -9294,7 +10108,7 @@ get_crawler_metrics(Client, Input)
 -spec get_crawler_metrics(map(), get_crawler_metrics_request(), proplists:proplist()) ->
     {ok, get_crawler_metrics_response(), tuple()} |
     {error, any()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_crawler_metrics_errors(), tuple()}.
 get_crawler_metrics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCrawlerMetrics">>, Input, Options).
@@ -9304,7 +10118,7 @@ get_crawler_metrics(Client, Input, Options)
 -spec get_crawlers(map(), get_crawlers_request()) ->
     {ok, get_crawlers_response(), tuple()} |
     {error, any()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_crawlers_errors(), tuple()}.
 get_crawlers(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_crawlers(Client, Input, []).
@@ -9312,7 +10126,7 @@ get_crawlers(Client, Input)
 -spec get_crawlers(map(), get_crawlers_request(), proplists:proplist()) ->
     {ok, get_crawlers_response(), tuple()} |
     {error, any()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_crawlers_errors(), tuple()}.
 get_crawlers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCrawlers">>, Input, Options).
@@ -9321,11 +10135,7 @@ get_crawlers(Client, Input, Options)
 -spec get_custom_entity_type(map(), get_custom_entity_type_request()) ->
     {ok, get_custom_entity_type_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_custom_entity_type_errors(), tuple()}.
 get_custom_entity_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_custom_entity_type(Client, Input, []).
@@ -9333,11 +10143,7 @@ get_custom_entity_type(Client, Input)
 -spec get_custom_entity_type(map(), get_custom_entity_type_request(), proplists:proplist()) ->
     {ok, get_custom_entity_type_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_custom_entity_type_errors(), tuple()}.
 get_custom_entity_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCustomEntityType">>, Input, Options).
@@ -9346,9 +10152,7 @@ get_custom_entity_type(Client, Input, Options)
 -spec get_data_catalog_encryption_settings(map(), get_data_catalog_encryption_settings_request()) ->
     {ok, get_data_catalog_encryption_settings_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_data_catalog_encryption_settings_errors(), tuple()}.
 get_data_catalog_encryption_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_data_catalog_encryption_settings(Client, Input, []).
@@ -9356,9 +10160,7 @@ get_data_catalog_encryption_settings(Client, Input)
 -spec get_data_catalog_encryption_settings(map(), get_data_catalog_encryption_settings_request(), proplists:proplist()) ->
     {ok, get_data_catalog_encryption_settings_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_data_catalog_encryption_settings_errors(), tuple()}.
 get_data_catalog_encryption_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDataCatalogEncryptionSettings">>, Input, Options).
@@ -9367,10 +10169,7 @@ get_data_catalog_encryption_settings(Client, Input, Options)
 -spec get_data_quality_result(map(), get_data_quality_result_request()) ->
     {ok, get_data_quality_result_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_data_quality_result_errors(), tuple()}.
 get_data_quality_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_data_quality_result(Client, Input, []).
@@ -9378,10 +10177,7 @@ get_data_quality_result(Client, Input)
 -spec get_data_quality_result(map(), get_data_quality_result_request(), proplists:proplist()) ->
     {ok, get_data_quality_result_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_data_quality_result_errors(), tuple()}.
 get_data_quality_result(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDataQualityResult">>, Input, Options).
@@ -9391,10 +10187,7 @@ get_data_quality_result(Client, Input, Options)
 -spec get_data_quality_rule_recommendation_run(map(), get_data_quality_rule_recommendation_run_request()) ->
     {ok, get_data_quality_rule_recommendation_run_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_data_quality_rule_recommendation_run_errors(), tuple()}.
 get_data_quality_rule_recommendation_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_data_quality_rule_recommendation_run(Client, Input, []).
@@ -9402,10 +10195,7 @@ get_data_quality_rule_recommendation_run(Client, Input)
 -spec get_data_quality_rule_recommendation_run(map(), get_data_quality_rule_recommendation_run_request(), proplists:proplist()) ->
     {ok, get_data_quality_rule_recommendation_run_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_data_quality_rule_recommendation_run_errors(), tuple()}.
 get_data_quality_rule_recommendation_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDataQualityRuleRecommendationRun">>, Input, Options).
@@ -9414,10 +10204,7 @@ get_data_quality_rule_recommendation_run(Client, Input, Options)
 -spec get_data_quality_ruleset(map(), get_data_quality_ruleset_request()) ->
     {ok, get_data_quality_ruleset_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_data_quality_ruleset_errors(), tuple()}.
 get_data_quality_ruleset(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_data_quality_ruleset(Client, Input, []).
@@ -9425,10 +10212,7 @@ get_data_quality_ruleset(Client, Input)
 -spec get_data_quality_ruleset(map(), get_data_quality_ruleset_request(), proplists:proplist()) ->
     {ok, get_data_quality_ruleset_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_data_quality_ruleset_errors(), tuple()}.
 get_data_quality_ruleset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDataQualityRuleset">>, Input, Options).
@@ -9438,10 +10222,7 @@ get_data_quality_ruleset(Client, Input, Options)
 -spec get_data_quality_ruleset_evaluation_run(map(), get_data_quality_ruleset_evaluation_run_request()) ->
     {ok, get_data_quality_ruleset_evaluation_run_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_data_quality_ruleset_evaluation_run_errors(), tuple()}.
 get_data_quality_ruleset_evaluation_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_data_quality_ruleset_evaluation_run(Client, Input, []).
@@ -9449,10 +10230,7 @@ get_data_quality_ruleset_evaluation_run(Client, Input)
 -spec get_data_quality_ruleset_evaluation_run(map(), get_data_quality_ruleset_evaluation_run_request(), proplists:proplist()) ->
     {ok, get_data_quality_ruleset_evaluation_run_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_data_quality_ruleset_evaluation_run_errors(), tuple()}.
 get_data_quality_ruleset_evaluation_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDataQualityRulesetEvaluationRun">>, Input, Options).
@@ -9461,12 +10239,7 @@ get_data_quality_ruleset_evaluation_run(Client, Input, Options)
 -spec get_database(map(), get_database_request()) ->
     {ok, get_database_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, federation_source_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_database_errors(), tuple()}.
 get_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_database(Client, Input, []).
@@ -9474,12 +10247,7 @@ get_database(Client, Input)
 -spec get_database(map(), get_database_request(), proplists:proplist()) ->
     {ok, get_database_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, federation_source_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_database_errors(), tuple()}.
 get_database(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDatabase">>, Input, Options).
@@ -9488,10 +10256,7 @@ get_database(Client, Input, Options)
 -spec get_databases(map(), get_databases_request()) ->
     {ok, get_databases_response(), tuple()} |
     {error, any()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_databases_errors(), tuple()}.
 get_databases(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_databases(Client, Input, []).
@@ -9499,10 +10264,7 @@ get_databases(Client, Input)
 -spec get_databases(map(), get_databases_request(), proplists:proplist()) ->
     {ok, get_databases_response(), tuple()} |
     {error, any()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_databases_errors(), tuple()}.
 get_databases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDatabases">>, Input, Options).
@@ -9511,9 +10273,7 @@ get_databases(Client, Input, Options)
 -spec get_dataflow_graph(map(), get_dataflow_graph_request()) ->
     {ok, get_dataflow_graph_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_dataflow_graph_errors(), tuple()}.
 get_dataflow_graph(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_dataflow_graph(Client, Input, []).
@@ -9521,9 +10281,7 @@ get_dataflow_graph(Client, Input)
 -spec get_dataflow_graph(map(), get_dataflow_graph_request(), proplists:proplist()) ->
     {ok, get_dataflow_graph_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_dataflow_graph_errors(), tuple()}.
 get_dataflow_graph(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDataflowGraph">>, Input, Options).
@@ -9538,10 +10296,7 @@ get_dataflow_graph(Client, Input, Options)
 -spec get_dev_endpoint(map(), get_dev_endpoint_request()) ->
     {ok, get_dev_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_dev_endpoint_errors(), tuple()}.
 get_dev_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_dev_endpoint(Client, Input, []).
@@ -9549,10 +10304,7 @@ get_dev_endpoint(Client, Input)
 -spec get_dev_endpoint(map(), get_dev_endpoint_request(), proplists:proplist()) ->
     {ok, get_dev_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_dev_endpoint_errors(), tuple()}.
 get_dev_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDevEndpoint">>, Input, Options).
@@ -9568,10 +10320,7 @@ get_dev_endpoint(Client, Input, Options)
 -spec get_dev_endpoints(map(), get_dev_endpoints_request()) ->
     {ok, get_dev_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_dev_endpoints_errors(), tuple()}.
 get_dev_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_dev_endpoints(Client, Input, []).
@@ -9579,10 +10328,7 @@ get_dev_endpoints(Client, Input)
 -spec get_dev_endpoints(map(), get_dev_endpoints_request(), proplists:proplist()) ->
     {ok, get_dev_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_dev_endpoints_errors(), tuple()}.
 get_dev_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDevEndpoints">>, Input, Options).
@@ -9591,10 +10337,7 @@ get_dev_endpoints(Client, Input, Options)
 -spec get_job(map(), get_job_request()) ->
     {ok, get_job_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_job_errors(), tuple()}.
 get_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_job(Client, Input, []).
@@ -9602,10 +10345,7 @@ get_job(Client, Input)
 -spec get_job(map(), get_job_request(), proplists:proplist()) ->
     {ok, get_job_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_job_errors(), tuple()}.
 get_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetJob">>, Input, Options).
@@ -9625,11 +10365,7 @@ get_job(Client, Input, Options)
 -spec get_job_bookmark(map(), get_job_bookmark_request()) ->
     {ok, get_job_bookmark_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_job_bookmark_errors(), tuple()}.
 get_job_bookmark(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_job_bookmark(Client, Input, []).
@@ -9637,11 +10373,7 @@ get_job_bookmark(Client, Input)
 -spec get_job_bookmark(map(), get_job_bookmark_request(), proplists:proplist()) ->
     {ok, get_job_bookmark_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_job_bookmark_errors(), tuple()}.
 get_job_bookmark(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetJobBookmark">>, Input, Options).
@@ -9650,10 +10382,7 @@ get_job_bookmark(Client, Input, Options)
 -spec get_job_run(map(), get_job_run_request()) ->
     {ok, get_job_run_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_job_run_errors(), tuple()}.
 get_job_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_job_run(Client, Input, []).
@@ -9661,10 +10390,7 @@ get_job_run(Client, Input)
 -spec get_job_run(map(), get_job_run_request(), proplists:proplist()) ->
     {ok, get_job_run_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_job_run_errors(), tuple()}.
 get_job_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetJobRun">>, Input, Options).
@@ -9673,10 +10399,7 @@ get_job_run(Client, Input, Options)
 -spec get_job_runs(map(), get_job_runs_request()) ->
     {ok, get_job_runs_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_job_runs_errors(), tuple()}.
 get_job_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_job_runs(Client, Input, []).
@@ -9684,10 +10407,7 @@ get_job_runs(Client, Input)
 -spec get_job_runs(map(), get_job_runs_request(), proplists:proplist()) ->
     {ok, get_job_runs_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_job_runs_errors(), tuple()}.
 get_job_runs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetJobRuns">>, Input, Options).
@@ -9696,10 +10416,7 @@ get_job_runs(Client, Input, Options)
 -spec get_jobs(map(), get_jobs_request()) ->
     {ok, get_jobs_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_jobs_errors(), tuple()}.
 get_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_jobs(Client, Input, []).
@@ -9707,10 +10424,7 @@ get_jobs(Client, Input)
 -spec get_jobs(map(), get_jobs_request(), proplists:proplist()) ->
     {ok, get_jobs_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_jobs_errors(), tuple()}.
 get_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetJobs">>, Input, Options).
@@ -9719,10 +10433,7 @@ get_jobs(Client, Input, Options)
 -spec get_mapping(map(), get_mapping_request()) ->
     {ok, get_mapping_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_mapping_errors(), tuple()}.
 get_mapping(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_mapping(Client, Input, []).
@@ -9730,10 +10441,7 @@ get_mapping(Client, Input)
 -spec get_mapping(map(), get_mapping_request(), proplists:proplist()) ->
     {ok, get_mapping_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_mapping_errors(), tuple()}.
 get_mapping(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMapping">>, Input, Options).
@@ -9749,10 +10457,7 @@ get_mapping(Client, Input, Options)
 -spec get_ml_task_run(map(), get_ml_task_run_request()) ->
     {ok, get_ml_task_run_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_ml_task_run_errors(), tuple()}.
 get_ml_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ml_task_run(Client, Input, []).
@@ -9760,10 +10465,7 @@ get_ml_task_run(Client, Input)
 -spec get_ml_task_run(map(), get_ml_task_run_request(), proplists:proplist()) ->
     {ok, get_ml_task_run_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_ml_task_run_errors(), tuple()}.
 get_ml_task_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMLTaskRun">>, Input, Options).
@@ -9783,10 +10485,7 @@ get_ml_task_run(Client, Input, Options)
 -spec get_ml_task_runs(map(), get_ml_task_runs_request()) ->
     {ok, get_ml_task_runs_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_ml_task_runs_errors(), tuple()}.
 get_ml_task_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ml_task_runs(Client, Input, []).
@@ -9794,10 +10493,7 @@ get_ml_task_runs(Client, Input)
 -spec get_ml_task_runs(map(), get_ml_task_runs_request(), proplists:proplist()) ->
     {ok, get_ml_task_runs_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_ml_task_runs_errors(), tuple()}.
 get_ml_task_runs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMLTaskRuns">>, Input, Options).
@@ -9815,10 +10511,7 @@ get_ml_task_runs(Client, Input, Options)
 -spec get_ml_transform(map(), get_ml_transform_request()) ->
     {ok, get_ml_transform_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_ml_transform_errors(), tuple()}.
 get_ml_transform(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ml_transform(Client, Input, []).
@@ -9826,10 +10519,7 @@ get_ml_transform(Client, Input)
 -spec get_ml_transform(map(), get_ml_transform_request(), proplists:proplist()) ->
     {ok, get_ml_transform_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_ml_transform_errors(), tuple()}.
 get_ml_transform(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMLTransform">>, Input, Options).
@@ -9848,10 +10538,7 @@ get_ml_transform(Client, Input, Options)
 -spec get_ml_transforms(map(), get_ml_transforms_request()) ->
     {ok, get_ml_transforms_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_ml_transforms_errors(), tuple()}.
 get_ml_transforms(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ml_transforms(Client, Input, []).
@@ -9859,10 +10546,7 @@ get_ml_transforms(Client, Input)
 -spec get_ml_transforms(map(), get_ml_transforms_request(), proplists:proplist()) ->
     {ok, get_ml_transforms_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_ml_transforms_errors(), tuple()}.
 get_ml_transforms(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMLTransforms">>, Input, Options).
@@ -9871,13 +10555,7 @@ get_ml_transforms(Client, Input, Options)
 -spec get_partition(map(), get_partition_request()) ->
     {ok, get_partition_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, federation_source_exception(), tuple()} |
-    {error, federation_source_retryable_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_partition_errors(), tuple()}.
 get_partition(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_partition(Client, Input, []).
@@ -9885,13 +10563,7 @@ get_partition(Client, Input)
 -spec get_partition(map(), get_partition_request(), proplists:proplist()) ->
     {ok, get_partition_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, federation_source_exception(), tuple()} |
-    {error, federation_source_retryable_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_partition_errors(), tuple()}.
 get_partition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPartition">>, Input, Options).
@@ -9900,11 +10572,7 @@ get_partition(Client, Input, Options)
 -spec get_partition_indexes(map(), get_partition_indexes_request()) ->
     {ok, get_partition_indexes_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_partition_indexes_errors(), tuple()}.
 get_partition_indexes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_partition_indexes(Client, Input, []).
@@ -9912,11 +10580,7 @@ get_partition_indexes(Client, Input)
 -spec get_partition_indexes(map(), get_partition_indexes_request(), proplists:proplist()) ->
     {ok, get_partition_indexes_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_partition_indexes_errors(), tuple()}.
 get_partition_indexes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPartitionIndexes">>, Input, Options).
@@ -9925,15 +10589,7 @@ get_partition_indexes(Client, Input, Options)
 -spec get_partitions(map(), get_partitions_request()) ->
     {ok, get_partitions_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, federation_source_exception(), tuple()} |
-    {error, federation_source_retryable_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()}.
+    {error, get_partitions_errors(), tuple()}.
 get_partitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_partitions(Client, Input, []).
@@ -9941,15 +10597,7 @@ get_partitions(Client, Input)
 -spec get_partitions(map(), get_partitions_request(), proplists:proplist()) ->
     {ok, get_partitions_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, federation_source_exception(), tuple()} |
-    {error, federation_source_retryable_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()}.
+    {error, get_partitions_errors(), tuple()}.
 get_partitions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPartitions">>, Input, Options).
@@ -9958,9 +10606,7 @@ get_partitions(Client, Input, Options)
 -spec get_plan(map(), get_plan_request()) ->
     {ok, get_plan_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_plan_errors(), tuple()}.
 get_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_plan(Client, Input, []).
@@ -9968,9 +10614,7 @@ get_plan(Client, Input)
 -spec get_plan(map(), get_plan_request(), proplists:proplist()) ->
     {ok, get_plan_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_plan_errors(), tuple()}.
 get_plan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPlan">>, Input, Options).
@@ -9979,10 +10623,7 @@ get_plan(Client, Input, Options)
 -spec get_registry(map(), get_registry_input()) ->
     {ok, get_registry_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, get_registry_errors(), tuple()}.
 get_registry(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_registry(Client, Input, []).
@@ -9990,10 +10631,7 @@ get_registry(Client, Input)
 -spec get_registry(map(), get_registry_input(), proplists:proplist()) ->
     {ok, get_registry_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, get_registry_errors(), tuple()}.
 get_registry(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRegistry">>, Input, Options).
@@ -10013,10 +10651,7 @@ get_registry(Client, Input, Options)
 -spec get_resource_policies(map(), get_resource_policies_request()) ->
     {ok, get_resource_policies_response(), tuple()} |
     {error, any()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_resource_policies_errors(), tuple()}.
 get_resource_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_policies(Client, Input, []).
@@ -10024,10 +10659,7 @@ get_resource_policies(Client, Input)
 -spec get_resource_policies(map(), get_resource_policies_request(), proplists:proplist()) ->
     {ok, get_resource_policies_response(), tuple()} |
     {error, any()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_resource_policies_errors(), tuple()}.
 get_resource_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourcePolicies">>, Input, Options).
@@ -10036,10 +10668,7 @@ get_resource_policies(Client, Input, Options)
 -spec get_resource_policy(map(), get_resource_policy_request()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_resource_policy_errors(), tuple()}.
 get_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_policy(Client, Input, []).
@@ -10047,10 +10676,7 @@ get_resource_policy(Client, Input)
 -spec get_resource_policy(map(), get_resource_policy_request(), proplists:proplist()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_resource_policy_errors(), tuple()}.
 get_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourcePolicy">>, Input, Options).
@@ -10059,10 +10685,7 @@ get_resource_policy(Client, Input, Options)
 -spec get_schema(map(), get_schema_input()) ->
     {ok, get_schema_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, get_schema_errors(), tuple()}.
 get_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_schema(Client, Input, []).
@@ -10070,10 +10693,7 @@ get_schema(Client, Input)
 -spec get_schema(map(), get_schema_input(), proplists:proplist()) ->
     {ok, get_schema_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, get_schema_errors(), tuple()}.
 get_schema(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSchema">>, Input, Options).
@@ -10088,10 +10708,7 @@ get_schema(Client, Input, Options)
 -spec get_schema_by_definition(map(), get_schema_by_definition_input()) ->
     {ok, get_schema_by_definition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, get_schema_by_definition_errors(), tuple()}.
 get_schema_by_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_schema_by_definition(Client, Input, []).
@@ -10099,10 +10716,7 @@ get_schema_by_definition(Client, Input)
 -spec get_schema_by_definition(map(), get_schema_by_definition_input(), proplists:proplist()) ->
     {ok, get_schema_by_definition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, get_schema_by_definition_errors(), tuple()}.
 get_schema_by_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSchemaByDefinition">>, Input, Options).
@@ -10114,10 +10728,7 @@ get_schema_by_definition(Client, Input, Options)
 -spec get_schema_version(map(), get_schema_version_input()) ->
     {ok, get_schema_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, get_schema_version_errors(), tuple()}.
 get_schema_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_schema_version(Client, Input, []).
@@ -10125,10 +10736,7 @@ get_schema_version(Client, Input)
 -spec get_schema_version(map(), get_schema_version_input(), proplists:proplist()) ->
     {ok, get_schema_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, get_schema_version_errors(), tuple()}.
 get_schema_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSchemaVersion">>, Input, Options).
@@ -10141,10 +10749,7 @@ get_schema_version(Client, Input, Options)
 -spec get_schema_versions_diff(map(), get_schema_versions_diff_input()) ->
     {ok, get_schema_versions_diff_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, get_schema_versions_diff_errors(), tuple()}.
 get_schema_versions_diff(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_schema_versions_diff(Client, Input, []).
@@ -10152,10 +10757,7 @@ get_schema_versions_diff(Client, Input)
 -spec get_schema_versions_diff(map(), get_schema_versions_diff_input(), proplists:proplist()) ->
     {ok, get_schema_versions_diff_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, get_schema_versions_diff_errors(), tuple()}.
 get_schema_versions_diff(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSchemaVersionsDiff">>, Input, Options).
@@ -10164,10 +10766,7 @@ get_schema_versions_diff(Client, Input, Options)
 -spec get_security_configuration(map(), get_security_configuration_request()) ->
     {ok, get_security_configuration_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_security_configuration_errors(), tuple()}.
 get_security_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_security_configuration(Client, Input, []).
@@ -10175,10 +10774,7 @@ get_security_configuration(Client, Input)
 -spec get_security_configuration(map(), get_security_configuration_request(), proplists:proplist()) ->
     {ok, get_security_configuration_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_security_configuration_errors(), tuple()}.
 get_security_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSecurityConfiguration">>, Input, Options).
@@ -10187,10 +10783,7 @@ get_security_configuration(Client, Input, Options)
 -spec get_security_configurations(map(), get_security_configurations_request()) ->
     {ok, get_security_configurations_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_security_configurations_errors(), tuple()}.
 get_security_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_security_configurations(Client, Input, []).
@@ -10198,10 +10791,7 @@ get_security_configurations(Client, Input)
 -spec get_security_configurations(map(), get_security_configurations_request(), proplists:proplist()) ->
     {ok, get_security_configurations_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_security_configurations_errors(), tuple()}.
 get_security_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSecurityConfigurations">>, Input, Options).
@@ -10210,11 +10800,7 @@ get_security_configurations(Client, Input, Options)
 -spec get_session(map(), get_session_request()) ->
     {ok, get_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_session_errors(), tuple()}.
 get_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_session(Client, Input, []).
@@ -10222,11 +10808,7 @@ get_session(Client, Input)
 -spec get_session(map(), get_session_request(), proplists:proplist()) ->
     {ok, get_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_session_errors(), tuple()}.
 get_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSession">>, Input, Options).
@@ -10235,12 +10817,7 @@ get_session(Client, Input, Options)
 -spec get_statement(map(), get_statement_request()) ->
     {ok, get_statement_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, illegal_session_state_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_statement_errors(), tuple()}.
 get_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_statement(Client, Input, []).
@@ -10248,12 +10825,7 @@ get_statement(Client, Input)
 -spec get_statement(map(), get_statement_request(), proplists:proplist()) ->
     {ok, get_statement_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, illegal_session_state_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_statement_errors(), tuple()}.
 get_statement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetStatement">>, Input, Options).
@@ -10263,14 +10835,7 @@ get_statement(Client, Input, Options)
 -spec get_table(map(), get_table_request()) ->
     {ok, get_table_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, federation_source_exception(), tuple()} |
-    {error, federation_source_retryable_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()}.
+    {error, get_table_errors(), tuple()}.
 get_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_table(Client, Input, []).
@@ -10278,14 +10843,7 @@ get_table(Client, Input)
 -spec get_table(map(), get_table_request(), proplists:proplist()) ->
     {ok, get_table_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, federation_source_exception(), tuple()} |
-    {error, federation_source_retryable_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()}.
+    {error, get_table_errors(), tuple()}.
 get_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTable">>, Input, Options).
@@ -10295,10 +10853,7 @@ get_table(Client, Input, Options)
 -spec get_table_optimizer(map(), get_table_optimizer_request()) ->
     {ok, get_table_optimizer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, get_table_optimizer_errors(), tuple()}.
 get_table_optimizer(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_table_optimizer(Client, Input, []).
@@ -10306,10 +10861,7 @@ get_table_optimizer(Client, Input)
 -spec get_table_optimizer(map(), get_table_optimizer_request(), proplists:proplist()) ->
     {ok, get_table_optimizer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, get_table_optimizer_errors(), tuple()}.
 get_table_optimizer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTableOptimizer">>, Input, Options).
@@ -10318,11 +10870,7 @@ get_table_optimizer(Client, Input, Options)
 -spec get_table_version(map(), get_table_version_request()) ->
     {ok, get_table_version_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_table_version_errors(), tuple()}.
 get_table_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_table_version(Client, Input, []).
@@ -10330,11 +10878,7 @@ get_table_version(Client, Input)
 -spec get_table_version(map(), get_table_version_request(), proplists:proplist()) ->
     {ok, get_table_version_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_table_version_errors(), tuple()}.
 get_table_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTableVersion">>, Input, Options).
@@ -10344,11 +10888,7 @@ get_table_version(Client, Input, Options)
 -spec get_table_versions(map(), get_table_versions_request()) ->
     {ok, get_table_versions_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_table_versions_errors(), tuple()}.
 get_table_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_table_versions(Client, Input, []).
@@ -10356,11 +10896,7 @@ get_table_versions(Client, Input)
 -spec get_table_versions(map(), get_table_versions_request(), proplists:proplist()) ->
     {ok, get_table_versions_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_table_versions_errors(), tuple()}.
 get_table_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTableVersions">>, Input, Options).
@@ -10370,13 +10906,7 @@ get_table_versions(Client, Input, Options)
 -spec get_tables(map(), get_tables_request()) ->
     {ok, get_tables_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, federation_source_exception(), tuple()} |
-    {error, federation_source_retryable_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_tables_errors(), tuple()}.
 get_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_tables(Client, Input, []).
@@ -10384,13 +10914,7 @@ get_tables(Client, Input)
 -spec get_tables(map(), get_tables_request(), proplists:proplist()) ->
     {ok, get_tables_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, federation_source_exception(), tuple()} |
-    {error, federation_source_retryable_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_tables_errors(), tuple()}.
 get_tables(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTables">>, Input, Options).
@@ -10399,10 +10923,7 @@ get_tables(Client, Input, Options)
 -spec get_tags(map(), get_tags_request()) ->
     {ok, get_tags_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_tags_errors(), tuple()}.
 get_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_tags(Client, Input, []).
@@ -10410,10 +10931,7 @@ get_tags(Client, Input)
 -spec get_tags(map(), get_tags_request(), proplists:proplist()) ->
     {ok, get_tags_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_tags_errors(), tuple()}.
 get_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTags">>, Input, Options).
@@ -10422,10 +10940,7 @@ get_tags(Client, Input, Options)
 -spec get_trigger(map(), get_trigger_request()) ->
     {ok, get_trigger_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_trigger_errors(), tuple()}.
 get_trigger(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_trigger(Client, Input, []).
@@ -10433,10 +10948,7 @@ get_trigger(Client, Input)
 -spec get_trigger(map(), get_trigger_request(), proplists:proplist()) ->
     {ok, get_trigger_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_trigger_errors(), tuple()}.
 get_trigger(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTrigger">>, Input, Options).
@@ -10445,10 +10957,7 @@ get_trigger(Client, Input, Options)
 -spec get_triggers(map(), get_triggers_request()) ->
     {ok, get_triggers_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_triggers_errors(), tuple()}.
 get_triggers(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_triggers(Client, Input, []).
@@ -10456,10 +10965,7 @@ get_triggers(Client, Input)
 -spec get_triggers(map(), get_triggers_request(), proplists:proplist()) ->
     {ok, get_triggers_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_triggers_errors(), tuple()}.
 get_triggers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTriggers">>, Input, Options).
@@ -10473,14 +10979,7 @@ get_triggers(Client, Input, Options)
 -spec get_unfiltered_partition_metadata(map(), get_unfiltered_partition_metadata_request()) ->
     {ok, get_unfiltered_partition_metadata_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, federation_source_exception(), tuple()} |
-    {error, federation_source_retryable_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, permission_type_mismatch_exception(), tuple()}.
+    {error, get_unfiltered_partition_metadata_errors(), tuple()}.
 get_unfiltered_partition_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_unfiltered_partition_metadata(Client, Input, []).
@@ -10488,14 +10987,7 @@ get_unfiltered_partition_metadata(Client, Input)
 -spec get_unfiltered_partition_metadata(map(), get_unfiltered_partition_metadata_request(), proplists:proplist()) ->
     {ok, get_unfiltered_partition_metadata_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, federation_source_exception(), tuple()} |
-    {error, federation_source_retryable_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, permission_type_mismatch_exception(), tuple()}.
+    {error, get_unfiltered_partition_metadata_errors(), tuple()}.
 get_unfiltered_partition_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUnfilteredPartitionMetadata">>, Input, Options).
@@ -10509,14 +11001,7 @@ get_unfiltered_partition_metadata(Client, Input, Options)
 -spec get_unfiltered_partitions_metadata(map(), get_unfiltered_partitions_metadata_request()) ->
     {ok, get_unfiltered_partitions_metadata_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, federation_source_exception(), tuple()} |
-    {error, federation_source_retryable_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, permission_type_mismatch_exception(), tuple()}.
+    {error, get_unfiltered_partitions_metadata_errors(), tuple()}.
 get_unfiltered_partitions_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_unfiltered_partitions_metadata(Client, Input, []).
@@ -10524,14 +11009,7 @@ get_unfiltered_partitions_metadata(Client, Input)
 -spec get_unfiltered_partitions_metadata(map(), get_unfiltered_partitions_metadata_request(), proplists:proplist()) ->
     {ok, get_unfiltered_partitions_metadata_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, federation_source_exception(), tuple()} |
-    {error, federation_source_retryable_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, permission_type_mismatch_exception(), tuple()}.
+    {error, get_unfiltered_partitions_metadata_errors(), tuple()}.
 get_unfiltered_partitions_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUnfilteredPartitionsMetadata">>, Input, Options).
@@ -10545,14 +11023,7 @@ get_unfiltered_partitions_metadata(Client, Input, Options)
 -spec get_unfiltered_table_metadata(map(), get_unfiltered_table_metadata_request()) ->
     {ok, get_unfiltered_table_metadata_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, federation_source_exception(), tuple()} |
-    {error, federation_source_retryable_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, permission_type_mismatch_exception(), tuple()}.
+    {error, get_unfiltered_table_metadata_errors(), tuple()}.
 get_unfiltered_table_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_unfiltered_table_metadata(Client, Input, []).
@@ -10560,14 +11031,7 @@ get_unfiltered_table_metadata(Client, Input)
 -spec get_unfiltered_table_metadata(map(), get_unfiltered_table_metadata_request(), proplists:proplist()) ->
     {ok, get_unfiltered_table_metadata_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, federation_source_exception(), tuple()} |
-    {error, federation_source_retryable_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, permission_type_mismatch_exception(), tuple()}.
+    {error, get_unfiltered_table_metadata_errors(), tuple()}.
 get_unfiltered_table_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUnfilteredTableMetadata">>, Input, Options).
@@ -10576,11 +11040,7 @@ get_unfiltered_table_metadata(Client, Input, Options)
 -spec get_user_defined_function(map(), get_user_defined_function_request()) ->
     {ok, get_user_defined_function_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_user_defined_function_errors(), tuple()}.
 get_user_defined_function(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_user_defined_function(Client, Input, []).
@@ -10588,11 +11048,7 @@ get_user_defined_function(Client, Input)
 -spec get_user_defined_function(map(), get_user_defined_function_request(), proplists:proplist()) ->
     {ok, get_user_defined_function_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_user_defined_function_errors(), tuple()}.
 get_user_defined_function(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUserDefinedFunction">>, Input, Options).
@@ -10601,11 +11057,7 @@ get_user_defined_function(Client, Input, Options)
 -spec get_user_defined_functions(map(), get_user_defined_functions_request()) ->
     {ok, get_user_defined_functions_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_user_defined_functions_errors(), tuple()}.
 get_user_defined_functions(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_user_defined_functions(Client, Input, []).
@@ -10613,11 +11065,7 @@ get_user_defined_functions(Client, Input)
 -spec get_user_defined_functions(map(), get_user_defined_functions_request(), proplists:proplist()) ->
     {ok, get_user_defined_functions_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_user_defined_functions_errors(), tuple()}.
 get_user_defined_functions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUserDefinedFunctions">>, Input, Options).
@@ -10626,10 +11074,7 @@ get_user_defined_functions(Client, Input, Options)
 -spec get_workflow(map(), get_workflow_request()) ->
     {ok, get_workflow_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_workflow_errors(), tuple()}.
 get_workflow(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_workflow(Client, Input, []).
@@ -10637,10 +11082,7 @@ get_workflow(Client, Input)
 -spec get_workflow(map(), get_workflow_request(), proplists:proplist()) ->
     {ok, get_workflow_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_workflow_errors(), tuple()}.
 get_workflow(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetWorkflow">>, Input, Options).
@@ -10649,10 +11091,7 @@ get_workflow(Client, Input, Options)
 -spec get_workflow_run(map(), get_workflow_run_request()) ->
     {ok, get_workflow_run_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_workflow_run_errors(), tuple()}.
 get_workflow_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_workflow_run(Client, Input, []).
@@ -10660,10 +11099,7 @@ get_workflow_run(Client, Input)
 -spec get_workflow_run(map(), get_workflow_run_request(), proplists:proplist()) ->
     {ok, get_workflow_run_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_workflow_run_errors(), tuple()}.
 get_workflow_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetWorkflowRun">>, Input, Options).
@@ -10672,10 +11108,7 @@ get_workflow_run(Client, Input, Options)
 -spec get_workflow_run_properties(map(), get_workflow_run_properties_request()) ->
     {ok, get_workflow_run_properties_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_workflow_run_properties_errors(), tuple()}.
 get_workflow_run_properties(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_workflow_run_properties(Client, Input, []).
@@ -10683,10 +11116,7 @@ get_workflow_run_properties(Client, Input)
 -spec get_workflow_run_properties(map(), get_workflow_run_properties_request(), proplists:proplist()) ->
     {ok, get_workflow_run_properties_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_workflow_run_properties_errors(), tuple()}.
 get_workflow_run_properties(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetWorkflowRunProperties">>, Input, Options).
@@ -10695,10 +11125,7 @@ get_workflow_run_properties(Client, Input, Options)
 -spec get_workflow_runs(map(), get_workflow_runs_request()) ->
     {ok, get_workflow_runs_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_workflow_runs_errors(), tuple()}.
 get_workflow_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_workflow_runs(Client, Input, []).
@@ -10706,10 +11133,7 @@ get_workflow_runs(Client, Input)
 -spec get_workflow_runs(map(), get_workflow_runs_request(), proplists:proplist()) ->
     {ok, get_workflow_runs_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, get_workflow_runs_errors(), tuple()}.
 get_workflow_runs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetWorkflowRuns">>, Input, Options).
@@ -10718,8 +11142,7 @@ get_workflow_runs(Client, Input, Options)
 -spec import_catalog_to_glue(map(), import_catalog_to_glue_request()) ->
     {ok, import_catalog_to_glue_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, import_catalog_to_glue_errors(), tuple()}.
 import_catalog_to_glue(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_catalog_to_glue(Client, Input, []).
@@ -10727,8 +11150,7 @@ import_catalog_to_glue(Client, Input)
 -spec import_catalog_to_glue(map(), import_catalog_to_glue_request(), proplists:proplist()) ->
     {ok, import_catalog_to_glue_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, import_catalog_to_glue_errors(), tuple()}.
 import_catalog_to_glue(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportCatalogToGlue">>, Input, Options).
@@ -10737,9 +11159,7 @@ import_catalog_to_glue(Client, Input, Options)
 -spec list_blueprints(map(), list_blueprints_request()) ->
     {ok, list_blueprints_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_blueprints_errors(), tuple()}.
 list_blueprints(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_blueprints(Client, Input, []).
@@ -10747,9 +11167,7 @@ list_blueprints(Client, Input)
 -spec list_blueprints(map(), list_blueprints_request(), proplists:proplist()) ->
     {ok, list_blueprints_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_blueprints_errors(), tuple()}.
 list_blueprints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBlueprints">>, Input, Options).
@@ -10758,7 +11176,7 @@ list_blueprints(Client, Input, Options)
 -spec list_column_statistics_task_runs(map(), list_column_statistics_task_runs_request()) ->
     {ok, list_column_statistics_task_runs_response(), tuple()} |
     {error, any()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_column_statistics_task_runs_errors(), tuple()}.
 list_column_statistics_task_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_column_statistics_task_runs(Client, Input, []).
@@ -10766,7 +11184,7 @@ list_column_statistics_task_runs(Client, Input)
 -spec list_column_statistics_task_runs(map(), list_column_statistics_task_runs_request(), proplists:proplist()) ->
     {ok, list_column_statistics_task_runs_response(), tuple()} |
     {error, any()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_column_statistics_task_runs_errors(), tuple()}.
 list_column_statistics_task_runs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListColumnStatisticsTaskRuns">>, Input, Options).
@@ -10786,7 +11204,7 @@ list_column_statistics_task_runs(Client, Input, Options)
 -spec list_crawlers(map(), list_crawlers_request()) ->
     {ok, list_crawlers_response(), tuple()} |
     {error, any()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_crawlers_errors(), tuple()}.
 list_crawlers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_crawlers(Client, Input, []).
@@ -10794,7 +11212,7 @@ list_crawlers(Client, Input)
 -spec list_crawlers(map(), list_crawlers_request(), proplists:proplist()) ->
     {ok, list_crawlers_response(), tuple()} |
     {error, any()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_crawlers_errors(), tuple()}.
 list_crawlers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCrawlers">>, Input, Options).
@@ -10818,9 +11236,7 @@ list_crawlers(Client, Input, Options)
 -spec list_crawls(map(), list_crawls_request()) ->
     {ok, list_crawls_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_crawls_errors(), tuple()}.
 list_crawls(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_crawls(Client, Input, []).
@@ -10828,9 +11244,7 @@ list_crawls(Client, Input)
 -spec list_crawls(map(), list_crawls_request(), proplists:proplist()) ->
     {ok, list_crawls_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_crawls_errors(), tuple()}.
 list_crawls(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCrawls">>, Input, Options).
@@ -10839,9 +11253,7 @@ list_crawls(Client, Input, Options)
 -spec list_custom_entity_types(map(), list_custom_entity_types_request()) ->
     {ok, list_custom_entity_types_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_custom_entity_types_errors(), tuple()}.
 list_custom_entity_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_custom_entity_types(Client, Input, []).
@@ -10849,9 +11261,7 @@ list_custom_entity_types(Client, Input)
 -spec list_custom_entity_types(map(), list_custom_entity_types_request(), proplists:proplist()) ->
     {ok, list_custom_entity_types_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_custom_entity_types_errors(), tuple()}.
 list_custom_entity_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCustomEntityTypes">>, Input, Options).
@@ -10860,9 +11270,7 @@ list_custom_entity_types(Client, Input, Options)
 -spec list_data_quality_results(map(), list_data_quality_results_request()) ->
     {ok, list_data_quality_results_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_data_quality_results_errors(), tuple()}.
 list_data_quality_results(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_data_quality_results(Client, Input, []).
@@ -10870,9 +11278,7 @@ list_data_quality_results(Client, Input)
 -spec list_data_quality_results(map(), list_data_quality_results_request(), proplists:proplist()) ->
     {ok, list_data_quality_results_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_data_quality_results_errors(), tuple()}.
 list_data_quality_results(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDataQualityResults">>, Input, Options).
@@ -10881,9 +11287,7 @@ list_data_quality_results(Client, Input, Options)
 -spec list_data_quality_rule_recommendation_runs(map(), list_data_quality_rule_recommendation_runs_request()) ->
     {ok, list_data_quality_rule_recommendation_runs_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_data_quality_rule_recommendation_runs_errors(), tuple()}.
 list_data_quality_rule_recommendation_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_data_quality_rule_recommendation_runs(Client, Input, []).
@@ -10891,9 +11295,7 @@ list_data_quality_rule_recommendation_runs(Client, Input)
 -spec list_data_quality_rule_recommendation_runs(map(), list_data_quality_rule_recommendation_runs_request(), proplists:proplist()) ->
     {ok, list_data_quality_rule_recommendation_runs_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_data_quality_rule_recommendation_runs_errors(), tuple()}.
 list_data_quality_rule_recommendation_runs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDataQualityRuleRecommendationRuns">>, Input, Options).
@@ -10903,9 +11305,7 @@ list_data_quality_rule_recommendation_runs(Client, Input, Options)
 -spec list_data_quality_ruleset_evaluation_runs(map(), list_data_quality_ruleset_evaluation_runs_request()) ->
     {ok, list_data_quality_ruleset_evaluation_runs_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_data_quality_ruleset_evaluation_runs_errors(), tuple()}.
 list_data_quality_ruleset_evaluation_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_data_quality_ruleset_evaluation_runs(Client, Input, []).
@@ -10913,9 +11313,7 @@ list_data_quality_ruleset_evaluation_runs(Client, Input)
 -spec list_data_quality_ruleset_evaluation_runs(map(), list_data_quality_ruleset_evaluation_runs_request(), proplists:proplist()) ->
     {ok, list_data_quality_ruleset_evaluation_runs_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_data_quality_ruleset_evaluation_runs_errors(), tuple()}.
 list_data_quality_ruleset_evaluation_runs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDataQualityRulesetEvaluationRuns">>, Input, Options).
@@ -10925,10 +11323,7 @@ list_data_quality_ruleset_evaluation_runs(Client, Input, Options)
 -spec list_data_quality_rulesets(map(), list_data_quality_rulesets_request()) ->
     {ok, list_data_quality_rulesets_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_data_quality_rulesets_errors(), tuple()}.
 list_data_quality_rulesets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_data_quality_rulesets(Client, Input, []).
@@ -10936,10 +11331,7 @@ list_data_quality_rulesets(Client, Input)
 -spec list_data_quality_rulesets(map(), list_data_quality_rulesets_request(), proplists:proplist()) ->
     {ok, list_data_quality_rulesets_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_data_quality_rulesets_errors(), tuple()}.
 list_data_quality_rulesets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDataQualityRulesets">>, Input, Options).
@@ -10959,10 +11351,7 @@ list_data_quality_rulesets(Client, Input, Options)
 -spec list_dev_endpoints(map(), list_dev_endpoints_request()) ->
     {ok, list_dev_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_dev_endpoints_errors(), tuple()}.
 list_dev_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dev_endpoints(Client, Input, []).
@@ -10970,10 +11359,7 @@ list_dev_endpoints(Client, Input)
 -spec list_dev_endpoints(map(), list_dev_endpoints_request(), proplists:proplist()) ->
     {ok, list_dev_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_dev_endpoints_errors(), tuple()}.
 list_dev_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDevEndpoints">>, Input, Options).
@@ -10992,10 +11378,7 @@ list_dev_endpoints(Client, Input, Options)
 -spec list_jobs(map(), list_jobs_request()) ->
     {ok, list_jobs_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_jobs_errors(), tuple()}.
 list_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_jobs(Client, Input, []).
@@ -11003,10 +11386,7 @@ list_jobs(Client, Input)
 -spec list_jobs(map(), list_jobs_request(), proplists:proplist()) ->
     {ok, list_jobs_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_jobs_errors(), tuple()}.
 list_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListJobs">>, Input, Options).
@@ -11022,10 +11402,7 @@ list_jobs(Client, Input, Options)
 -spec list_ml_transforms(map(), list_ml_transforms_request()) ->
     {ok, list_ml_transforms_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_ml_transforms_errors(), tuple()}.
 list_ml_transforms(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_ml_transforms(Client, Input, []).
@@ -11033,10 +11410,7 @@ list_ml_transforms(Client, Input)
 -spec list_ml_transforms(map(), list_ml_transforms_request(), proplists:proplist()) ->
     {ok, list_ml_transforms_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_ml_transforms_errors(), tuple()}.
 list_ml_transforms(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMLTransforms">>, Input, Options).
@@ -11050,9 +11424,7 @@ list_ml_transforms(Client, Input, Options)
 -spec list_registries(map(), list_registries_input()) ->
     {ok, list_registries_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_registries_errors(), tuple()}.
 list_registries(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_registries(Client, Input, []).
@@ -11060,9 +11432,7 @@ list_registries(Client, Input)
 -spec list_registries(map(), list_registries_input(), proplists:proplist()) ->
     {ok, list_registries_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_registries_errors(), tuple()}.
 list_registries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRegistries">>, Input, Options).
@@ -11075,10 +11445,7 @@ list_registries(Client, Input, Options)
 -spec list_schema_versions(map(), list_schema_versions_input()) ->
     {ok, list_schema_versions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_schema_versions_errors(), tuple()}.
 list_schema_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_schema_versions(Client, Input, []).
@@ -11086,10 +11453,7 @@ list_schema_versions(Client, Input)
 -spec list_schema_versions(map(), list_schema_versions_input(), proplists:proplist()) ->
     {ok, list_schema_versions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_schema_versions_errors(), tuple()}.
 list_schema_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSchemaVersions">>, Input, Options).
@@ -11104,10 +11468,7 @@ list_schema_versions(Client, Input, Options)
 -spec list_schemas(map(), list_schemas_input()) ->
     {ok, list_schemas_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_schemas_errors(), tuple()}.
 list_schemas(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_schemas(Client, Input, []).
@@ -11115,10 +11476,7 @@ list_schemas(Client, Input)
 -spec list_schemas(map(), list_schemas_input(), proplists:proplist()) ->
     {ok, list_schemas_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_schemas_errors(), tuple()}.
 list_schemas(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSchemas">>, Input, Options).
@@ -11127,10 +11485,7 @@ list_schemas(Client, Input, Options)
 -spec list_sessions(map(), list_sessions_request()) ->
     {ok, list_sessions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_sessions_errors(), tuple()}.
 list_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_sessions(Client, Input, []).
@@ -11138,10 +11493,7 @@ list_sessions(Client, Input)
 -spec list_sessions(map(), list_sessions_request(), proplists:proplist()) ->
     {ok, list_sessions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_sessions_errors(), tuple()}.
 list_sessions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSessions">>, Input, Options).
@@ -11150,12 +11502,7 @@ list_sessions(Client, Input, Options)
 -spec list_statements(map(), list_statements_request()) ->
     {ok, list_statements_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, illegal_session_state_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_statements_errors(), tuple()}.
 list_statements(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_statements(Client, Input, []).
@@ -11163,12 +11510,7 @@ list_statements(Client, Input)
 -spec list_statements(map(), list_statements_request(), proplists:proplist()) ->
     {ok, list_statements_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, illegal_session_state_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_statements_errors(), tuple()}.
 list_statements(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStatements">>, Input, Options).
@@ -11177,10 +11519,7 @@ list_statements(Client, Input, Options)
 -spec list_table_optimizer_runs(map(), list_table_optimizer_runs_request()) ->
     {ok, list_table_optimizer_runs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_table_optimizer_runs_errors(), tuple()}.
 list_table_optimizer_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_table_optimizer_runs(Client, Input, []).
@@ -11188,10 +11527,7 @@ list_table_optimizer_runs(Client, Input)
 -spec list_table_optimizer_runs(map(), list_table_optimizer_runs_request(), proplists:proplist()) ->
     {ok, list_table_optimizer_runs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, list_table_optimizer_runs_errors(), tuple()}.
 list_table_optimizer_runs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTableOptimizerRuns">>, Input, Options).
@@ -11210,10 +11546,7 @@ list_table_optimizer_runs(Client, Input, Options)
 -spec list_triggers(map(), list_triggers_request()) ->
     {ok, list_triggers_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_triggers_errors(), tuple()}.
 list_triggers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_triggers(Client, Input, []).
@@ -11221,10 +11554,7 @@ list_triggers(Client, Input)
 -spec list_triggers(map(), list_triggers_request(), proplists:proplist()) ->
     {ok, list_triggers_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_triggers_errors(), tuple()}.
 list_triggers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTriggers">>, Input, Options).
@@ -11233,9 +11563,7 @@ list_triggers(Client, Input, Options)
 -spec list_workflows(map(), list_workflows_request()) ->
     {ok, list_workflows_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_workflows_errors(), tuple()}.
 list_workflows(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_workflows(Client, Input, []).
@@ -11243,9 +11571,7 @@ list_workflows(Client, Input)
 -spec list_workflows(map(), list_workflows_request(), proplists:proplist()) ->
     {ok, list_workflows_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, list_workflows_errors(), tuple()}.
 list_workflows(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWorkflows">>, Input, Options).
@@ -11258,9 +11584,7 @@ list_workflows(Client, Input, Options)
 -spec put_data_catalog_encryption_settings(map(), put_data_catalog_encryption_settings_request()) ->
     {ok, put_data_catalog_encryption_settings_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, put_data_catalog_encryption_settings_errors(), tuple()}.
 put_data_catalog_encryption_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_data_catalog_encryption_settings(Client, Input, []).
@@ -11268,9 +11592,7 @@ put_data_catalog_encryption_settings(Client, Input)
 -spec put_data_catalog_encryption_settings(map(), put_data_catalog_encryption_settings_request(), proplists:proplist()) ->
     {ok, put_data_catalog_encryption_settings_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, put_data_catalog_encryption_settings_errors(), tuple()}.
 put_data_catalog_encryption_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutDataCatalogEncryptionSettings">>, Input, Options).
@@ -11279,11 +11601,7 @@ put_data_catalog_encryption_settings(Client, Input, Options)
 -spec put_resource_policy(map(), put_resource_policy_request()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, condition_check_failure_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
@@ -11291,11 +11609,7 @@ put_resource_policy(Client, Input)
 -spec put_resource_policy(map(), put_resource_policy_request(), proplists:proplist()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, condition_check_failure_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResourcePolicy">>, Input, Options).
@@ -11307,11 +11621,7 @@ put_resource_policy(Client, Input, Options)
 -spec put_schema_version_metadata(map(), put_schema_version_metadata_input()) ->
     {ok, put_schema_version_metadata_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, put_schema_version_metadata_errors(), tuple()}.
 put_schema_version_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_schema_version_metadata(Client, Input, []).
@@ -11319,11 +11629,7 @@ put_schema_version_metadata(Client, Input)
 -spec put_schema_version_metadata(map(), put_schema_version_metadata_input(), proplists:proplist()) ->
     {ok, put_schema_version_metadata_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, put_schema_version_metadata_errors(), tuple()}.
 put_schema_version_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutSchemaVersionMetadata">>, Input, Options).
@@ -11336,13 +11642,7 @@ put_schema_version_metadata(Client, Input, Options)
 -spec put_workflow_run_properties(map(), put_workflow_run_properties_request()) ->
     {ok, put_workflow_run_properties_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, put_workflow_run_properties_errors(), tuple()}.
 put_workflow_run_properties(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_workflow_run_properties(Client, Input, []).
@@ -11350,13 +11650,7 @@ put_workflow_run_properties(Client, Input)
 -spec put_workflow_run_properties(map(), put_workflow_run_properties_request(), proplists:proplist()) ->
     {ok, put_workflow_run_properties_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, put_workflow_run_properties_errors(), tuple()}.
 put_workflow_run_properties(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutWorkflowRunProperties">>, Input, Options).
@@ -11365,9 +11659,7 @@ put_workflow_run_properties(Client, Input, Options)
 -spec query_schema_version_metadata(map(), query_schema_version_metadata_input()) ->
     {ok, query_schema_version_metadata_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, query_schema_version_metadata_errors(), tuple()}.
 query_schema_version_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     query_schema_version_metadata(Client, Input, []).
@@ -11375,9 +11667,7 @@ query_schema_version_metadata(Client, Input)
 -spec query_schema_version_metadata(map(), query_schema_version_metadata_input(), proplists:proplist()) ->
     {ok, query_schema_version_metadata_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, query_schema_version_metadata_errors(), tuple()}.
 query_schema_version_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"QuerySchemaVersionMetadata">>, Input, Options).
@@ -11400,12 +11690,7 @@ query_schema_version_metadata(Client, Input, Options)
 -spec register_schema_version(map(), register_schema_version_input()) ->
     {ok, register_schema_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, register_schema_version_errors(), tuple()}.
 register_schema_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_schema_version(Client, Input, []).
@@ -11413,12 +11698,7 @@ register_schema_version(Client, Input)
 -spec register_schema_version(map(), register_schema_version_input(), proplists:proplist()) ->
     {ok, register_schema_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, register_schema_version_errors(), tuple()}.
 register_schema_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterSchemaVersion">>, Input, Options).
@@ -11428,9 +11708,7 @@ register_schema_version(Client, Input, Options)
 -spec remove_schema_version_metadata(map(), remove_schema_version_metadata_input()) ->
     {ok, remove_schema_version_metadata_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, remove_schema_version_metadata_errors(), tuple()}.
 remove_schema_version_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_schema_version_metadata(Client, Input, []).
@@ -11438,9 +11716,7 @@ remove_schema_version_metadata(Client, Input)
 -spec remove_schema_version_metadata(map(), remove_schema_version_metadata_input(), proplists:proplist()) ->
     {ok, remove_schema_version_metadata_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, remove_schema_version_metadata_errors(), tuple()}.
 remove_schema_version_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveSchemaVersionMetadata">>, Input, Options).
@@ -11460,10 +11736,7 @@ remove_schema_version_metadata(Client, Input, Options)
 -spec reset_job_bookmark(map(), reset_job_bookmark_request()) ->
     {ok, reset_job_bookmark_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, reset_job_bookmark_errors(), tuple()}.
 reset_job_bookmark(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_job_bookmark(Client, Input, []).
@@ -11471,10 +11744,7 @@ reset_job_bookmark(Client, Input)
 -spec reset_job_bookmark(map(), reset_job_bookmark_request(), proplists:proplist()) ->
     {ok, reset_job_bookmark_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, reset_job_bookmark_errors(), tuple()}.
 reset_job_bookmark(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResetJobBookmark">>, Input, Options).
@@ -11487,12 +11757,7 @@ reset_job_bookmark(Client, Input, Options)
 -spec resume_workflow_run(map(), resume_workflow_run_request()) ->
     {ok, resume_workflow_run_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_runs_exceeded_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, illegal_workflow_state_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, resume_workflow_run_errors(), tuple()}.
 resume_workflow_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     resume_workflow_run(Client, Input, []).
@@ -11500,12 +11765,7 @@ resume_workflow_run(Client, Input)
 -spec resume_workflow_run(map(), resume_workflow_run_request(), proplists:proplist()) ->
     {ok, resume_workflow_run_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_runs_exceeded_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, illegal_workflow_state_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, resume_workflow_run_errors(), tuple()}.
 resume_workflow_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResumeWorkflowRun">>, Input, Options).
@@ -11514,14 +11774,7 @@ resume_workflow_run(Client, Input, Options)
 -spec run_statement(map(), run_statement_request()) ->
     {ok, run_statement_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, illegal_session_state_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, run_statement_errors(), tuple()}.
 run_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     run_statement(Client, Input, []).
@@ -11529,14 +11782,7 @@ run_statement(Client, Input)
 -spec run_statement(map(), run_statement_request(), proplists:proplist()) ->
     {ok, run_statement_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, illegal_session_state_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, run_statement_errors(), tuple()}.
 run_statement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RunStatement">>, Input, Options).
@@ -11556,9 +11802,7 @@ run_statement(Client, Input, Options)
 -spec search_tables(map(), search_tables_request()) ->
     {ok, search_tables_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, search_tables_errors(), tuple()}.
 search_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_tables(Client, Input, []).
@@ -11566,9 +11810,7 @@ search_tables(Client, Input)
 -spec search_tables(map(), search_tables_request(), proplists:proplist()) ->
     {ok, search_tables_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, search_tables_errors(), tuple()}.
 search_tables(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SearchTables">>, Input, Options).
@@ -11577,12 +11819,7 @@ search_tables(Client, Input, Options)
 -spec start_blueprint_run(map(), start_blueprint_run_request()) ->
     {ok, start_blueprint_run_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, illegal_blueprint_state_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, start_blueprint_run_errors(), tuple()}.
 start_blueprint_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_blueprint_run(Client, Input, []).
@@ -11590,12 +11827,7 @@ start_blueprint_run(Client, Input)
 -spec start_blueprint_run(map(), start_blueprint_run_request(), proplists:proplist()) ->
     {ok, start_blueprint_run_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, illegal_blueprint_state_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, start_blueprint_run_errors(), tuple()}.
 start_blueprint_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartBlueprintRun">>, Input, Options).
@@ -11605,12 +11837,7 @@ start_blueprint_run(Client, Input, Options)
 -spec start_column_statistics_task_run(map(), start_column_statistics_task_run_request()) ->
     {ok, start_column_statistics_task_run_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, column_statistics_task_running_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, start_column_statistics_task_run_errors(), tuple()}.
 start_column_statistics_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_column_statistics_task_run(Client, Input, []).
@@ -11618,12 +11845,7 @@ start_column_statistics_task_run(Client, Input)
 -spec start_column_statistics_task_run(map(), start_column_statistics_task_run_request(), proplists:proplist()) ->
     {ok, start_column_statistics_task_run_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, column_statistics_task_running_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, start_column_statistics_task_run_errors(), tuple()}.
 start_column_statistics_task_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartColumnStatisticsTaskRun">>, Input, Options).
@@ -11637,9 +11859,7 @@ start_column_statistics_task_run(Client, Input, Options)
 -spec start_crawler(map(), start_crawler_request()) ->
     {ok, start_crawler_response(), tuple()} |
     {error, any()} |
-    {error, crawler_running_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, start_crawler_errors(), tuple()}.
 start_crawler(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_crawler(Client, Input, []).
@@ -11647,9 +11867,7 @@ start_crawler(Client, Input)
 -spec start_crawler(map(), start_crawler_request(), proplists:proplist()) ->
     {ok, start_crawler_response(), tuple()} |
     {error, any()} |
-    {error, crawler_running_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, start_crawler_errors(), tuple()}.
 start_crawler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartCrawler">>, Input, Options).
@@ -11660,11 +11878,7 @@ start_crawler(Client, Input, Options)
 -spec start_crawler_schedule(map(), start_crawler_schedule_request()) ->
     {ok, start_crawler_schedule_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, no_schedule_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, scheduler_running_exception(), tuple()} |
-    {error, scheduler_transitioning_exception(), tuple()}.
+    {error, start_crawler_schedule_errors(), tuple()}.
 start_crawler_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_crawler_schedule(Client, Input, []).
@@ -11672,11 +11886,7 @@ start_crawler_schedule(Client, Input)
 -spec start_crawler_schedule(map(), start_crawler_schedule_request(), proplists:proplist()) ->
     {ok, start_crawler_schedule_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, no_schedule_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, scheduler_running_exception(), tuple()} |
-    {error, scheduler_transitioning_exception(), tuple()}.
+    {error, start_crawler_schedule_errors(), tuple()}.
 start_crawler_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartCrawlerSchedule">>, Input, Options).
@@ -11692,10 +11902,7 @@ start_crawler_schedule(Client, Input, Options)
 -spec start_data_quality_rule_recommendation_run(map(), start_data_quality_rule_recommendation_run_request()) ->
     {ok, start_data_quality_rule_recommendation_run_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, start_data_quality_rule_recommendation_run_errors(), tuple()}.
 start_data_quality_rule_recommendation_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_data_quality_rule_recommendation_run(Client, Input, []).
@@ -11703,10 +11910,7 @@ start_data_quality_rule_recommendation_run(Client, Input)
 -spec start_data_quality_rule_recommendation_run(map(), start_data_quality_rule_recommendation_run_request(), proplists:proplist()) ->
     {ok, start_data_quality_rule_recommendation_run_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, start_data_quality_rule_recommendation_run_errors(), tuple()}.
 start_data_quality_rule_recommendation_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDataQualityRuleRecommendationRun">>, Input, Options).
@@ -11720,11 +11924,7 @@ start_data_quality_rule_recommendation_run(Client, Input, Options)
 -spec start_data_quality_ruleset_evaluation_run(map(), start_data_quality_ruleset_evaluation_run_request()) ->
     {ok, start_data_quality_ruleset_evaluation_run_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, start_data_quality_ruleset_evaluation_run_errors(), tuple()}.
 start_data_quality_ruleset_evaluation_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_data_quality_ruleset_evaluation_run(Client, Input, []).
@@ -11732,11 +11932,7 @@ start_data_quality_ruleset_evaluation_run(Client, Input)
 -spec start_data_quality_ruleset_evaluation_run(map(), start_data_quality_ruleset_evaluation_run_request(), proplists:proplist()) ->
     {ok, start_data_quality_ruleset_evaluation_run_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, start_data_quality_ruleset_evaluation_run_errors(), tuple()}.
 start_data_quality_ruleset_evaluation_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDataQualityRulesetEvaluationRun">>, Input, Options).
@@ -11761,10 +11957,7 @@ start_data_quality_ruleset_evaluation_run(Client, Input, Options)
 -spec start_export_labels_task_run(map(), start_export_labels_task_run_request()) ->
     {ok, start_export_labels_task_run_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, start_export_labels_task_run_errors(), tuple()}.
 start_export_labels_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_export_labels_task_run(Client, Input, []).
@@ -11772,10 +11965,7 @@ start_export_labels_task_run(Client, Input)
 -spec start_export_labels_task_run(map(), start_export_labels_task_run_request(), proplists:proplist()) ->
     {ok, start_export_labels_task_run_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, start_export_labels_task_run_errors(), tuple()}.
 start_export_labels_task_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartExportLabelsTaskRun">>, Input, Options).
@@ -11826,11 +12016,7 @@ start_export_labels_task_run(Client, Input, Options)
 -spec start_import_labels_task_run(map(), start_import_labels_task_run_request()) ->
     {ok, start_import_labels_task_run_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, start_import_labels_task_run_errors(), tuple()}.
 start_import_labels_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_import_labels_task_run(Client, Input, []).
@@ -11838,11 +12024,7 @@ start_import_labels_task_run(Client, Input)
 -spec start_import_labels_task_run(map(), start_import_labels_task_run_request(), proplists:proplist()) ->
     {ok, start_import_labels_task_run_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, start_import_labels_task_run_errors(), tuple()}.
 start_import_labels_task_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartImportLabelsTaskRun">>, Input, Options).
@@ -11851,12 +12033,7 @@ start_import_labels_task_run(Client, Input, Options)
 -spec start_job_run(map(), start_job_run_request()) ->
     {ok, start_job_run_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_runs_exceeded_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, start_job_run_errors(), tuple()}.
 start_job_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_job_run(Client, Input, []).
@@ -11864,12 +12041,7 @@ start_job_run(Client, Input)
 -spec start_job_run(map(), start_job_run_request(), proplists:proplist()) ->
     {ok, start_job_run_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_runs_exceeded_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, start_job_run_errors(), tuple()}.
 start_job_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartJobRun">>, Input, Options).
@@ -11888,12 +12060,7 @@ start_job_run(Client, Input, Options)
 -spec start_ml_evaluation_task_run(map(), start_ml_evaluation_task_run_request()) ->
     {ok, start_ml_evaluation_task_run_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_runs_exceeded_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, ml_transform_not_ready_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, start_ml_evaluation_task_run_errors(), tuple()}.
 start_ml_evaluation_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_ml_evaluation_task_run(Client, Input, []).
@@ -11901,12 +12068,7 @@ start_ml_evaluation_task_run(Client, Input)
 -spec start_ml_evaluation_task_run(map(), start_ml_evaluation_task_run_request(), proplists:proplist()) ->
     {ok, start_ml_evaluation_task_run_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_runs_exceeded_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, ml_transform_not_ready_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, start_ml_evaluation_task_run_errors(), tuple()}.
 start_ml_evaluation_task_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMLEvaluationTaskRun">>, Input, Options).
@@ -11936,11 +12098,7 @@ start_ml_evaluation_task_run(Client, Input, Options)
 -spec start_ml_labeling_set_generation_task_run(map(), start_ml_labeling_set_generation_task_run_request()) ->
     {ok, start_ml_labeling_set_generation_task_run_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_runs_exceeded_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, start_ml_labeling_set_generation_task_run_errors(), tuple()}.
 start_ml_labeling_set_generation_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_ml_labeling_set_generation_task_run(Client, Input, []).
@@ -11948,11 +12106,7 @@ start_ml_labeling_set_generation_task_run(Client, Input)
 -spec start_ml_labeling_set_generation_task_run(map(), start_ml_labeling_set_generation_task_run_request(), proplists:proplist()) ->
     {ok, start_ml_labeling_set_generation_task_run_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_runs_exceeded_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, start_ml_labeling_set_generation_task_run_errors(), tuple()}.
 start_ml_labeling_set_generation_task_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMLLabelingSetGenerationTaskRun">>, Input, Options).
@@ -11966,12 +12120,7 @@ start_ml_labeling_set_generation_task_run(Client, Input, Options)
 -spec start_trigger(map(), start_trigger_request()) ->
     {ok, start_trigger_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_runs_exceeded_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, start_trigger_errors(), tuple()}.
 start_trigger(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_trigger(Client, Input, []).
@@ -11979,12 +12128,7 @@ start_trigger(Client, Input)
 -spec start_trigger(map(), start_trigger_request(), proplists:proplist()) ->
     {ok, start_trigger_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_runs_exceeded_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, start_trigger_errors(), tuple()}.
 start_trigger(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartTrigger">>, Input, Options).
@@ -11993,12 +12137,7 @@ start_trigger(Client, Input, Options)
 -spec start_workflow_run(map(), start_workflow_run_request()) ->
     {ok, start_workflow_run_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_runs_exceeded_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, start_workflow_run_errors(), tuple()}.
 start_workflow_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_workflow_run(Client, Input, []).
@@ -12006,12 +12145,7 @@ start_workflow_run(Client, Input)
 -spec start_workflow_run(map(), start_workflow_run_request(), proplists:proplist()) ->
     {ok, start_workflow_run_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_runs_exceeded_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, start_workflow_run_errors(), tuple()}.
 start_workflow_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartWorkflowRun">>, Input, Options).
@@ -12020,10 +12154,7 @@ start_workflow_run(Client, Input, Options)
 -spec stop_column_statistics_task_run(map(), stop_column_statistics_task_run_request()) ->
     {ok, stop_column_statistics_task_run_response(), tuple()} |
     {error, any()} |
-    {error, column_statistics_task_not_running_exception(), tuple()} |
-    {error, column_statistics_task_stopping_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, stop_column_statistics_task_run_errors(), tuple()}.
 stop_column_statistics_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_column_statistics_task_run(Client, Input, []).
@@ -12031,10 +12162,7 @@ stop_column_statistics_task_run(Client, Input)
 -spec stop_column_statistics_task_run(map(), stop_column_statistics_task_run_request(), proplists:proplist()) ->
     {ok, stop_column_statistics_task_run_response(), tuple()} |
     {error, any()} |
-    {error, column_statistics_task_not_running_exception(), tuple()} |
-    {error, column_statistics_task_stopping_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, stop_column_statistics_task_run_errors(), tuple()}.
 stop_column_statistics_task_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopColumnStatisticsTaskRun">>, Input, Options).
@@ -12043,10 +12171,7 @@ stop_column_statistics_task_run(Client, Input, Options)
 -spec stop_crawler(map(), stop_crawler_request()) ->
     {ok, stop_crawler_response(), tuple()} |
     {error, any()} |
-    {error, crawler_not_running_exception(), tuple()} |
-    {error, crawler_stopping_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, stop_crawler_errors(), tuple()}.
 stop_crawler(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_crawler(Client, Input, []).
@@ -12054,10 +12179,7 @@ stop_crawler(Client, Input)
 -spec stop_crawler(map(), stop_crawler_request(), proplists:proplist()) ->
     {ok, stop_crawler_response(), tuple()} |
     {error, any()} |
-    {error, crawler_not_running_exception(), tuple()} |
-    {error, crawler_stopping_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, stop_crawler_errors(), tuple()}.
 stop_crawler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopCrawler">>, Input, Options).
@@ -12068,10 +12190,7 @@ stop_crawler(Client, Input, Options)
 -spec stop_crawler_schedule(map(), stop_crawler_schedule_request()) ->
     {ok, stop_crawler_schedule_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, scheduler_not_running_exception(), tuple()} |
-    {error, scheduler_transitioning_exception(), tuple()}.
+    {error, stop_crawler_schedule_errors(), tuple()}.
 stop_crawler_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_crawler_schedule(Client, Input, []).
@@ -12079,10 +12198,7 @@ stop_crawler_schedule(Client, Input)
 -spec stop_crawler_schedule(map(), stop_crawler_schedule_request(), proplists:proplist()) ->
     {ok, stop_crawler_schedule_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, scheduler_not_running_exception(), tuple()} |
-    {error, scheduler_transitioning_exception(), tuple()}.
+    {error, stop_crawler_schedule_errors(), tuple()}.
 stop_crawler_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopCrawlerSchedule">>, Input, Options).
@@ -12091,12 +12207,7 @@ stop_crawler_schedule(Client, Input, Options)
 -spec stop_session(map(), stop_session_request()) ->
     {ok, stop_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, illegal_session_state_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, stop_session_errors(), tuple()}.
 stop_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_session(Client, Input, []).
@@ -12104,12 +12215,7 @@ stop_session(Client, Input)
 -spec stop_session(map(), stop_session_request(), proplists:proplist()) ->
     {ok, stop_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, illegal_session_state_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, stop_session_errors(), tuple()}.
 stop_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopSession">>, Input, Options).
@@ -12118,11 +12224,7 @@ stop_session(Client, Input, Options)
 -spec stop_trigger(map(), stop_trigger_request()) ->
     {ok, stop_trigger_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, stop_trigger_errors(), tuple()}.
 stop_trigger(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_trigger(Client, Input, []).
@@ -12130,11 +12232,7 @@ stop_trigger(Client, Input)
 -spec stop_trigger(map(), stop_trigger_request(), proplists:proplist()) ->
     {ok, stop_trigger_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, stop_trigger_errors(), tuple()}.
 stop_trigger(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopTrigger">>, Input, Options).
@@ -12143,11 +12241,7 @@ stop_trigger(Client, Input, Options)
 -spec stop_workflow_run(map(), stop_workflow_run_request()) ->
     {ok, stop_workflow_run_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, illegal_workflow_state_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, stop_workflow_run_errors(), tuple()}.
 stop_workflow_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_workflow_run(Client, Input, []).
@@ -12155,11 +12249,7 @@ stop_workflow_run(Client, Input)
 -spec stop_workflow_run(map(), stop_workflow_run_request(), proplists:proplist()) ->
     {ok, stop_workflow_run_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, illegal_workflow_state_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, stop_workflow_run_errors(), tuple()}.
 stop_workflow_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopWorkflowRun">>, Input, Options).
@@ -12173,10 +12263,7 @@ stop_workflow_run(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -12184,10 +12271,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -12196,10 +12280,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -12207,10 +12288,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -12219,12 +12297,7 @@ untag_resource(Client, Input, Options)
 -spec update_blueprint(map(), update_blueprint_request()) ->
     {ok, update_blueprint_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, illegal_blueprint_state_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, update_blueprint_errors(), tuple()}.
 update_blueprint(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_blueprint(Client, Input, []).
@@ -12232,12 +12305,7 @@ update_blueprint(Client, Input)
 -spec update_blueprint(map(), update_blueprint_request(), proplists:proplist()) ->
     {ok, update_blueprint_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, illegal_blueprint_state_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, update_blueprint_errors(), tuple()}.
 update_blueprint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateBlueprint">>, Input, Options).
@@ -12249,10 +12317,7 @@ update_blueprint(Client, Input, Options)
 -spec update_classifier(map(), update_classifier_request()) ->
     {ok, update_classifier_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, version_mismatch_exception(), tuple()}.
+    {error, update_classifier_errors(), tuple()}.
 update_classifier(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_classifier(Client, Input, []).
@@ -12260,10 +12325,7 @@ update_classifier(Client, Input)
 -spec update_classifier(map(), update_classifier_request(), proplists:proplist()) ->
     {ok, update_classifier_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, version_mismatch_exception(), tuple()}.
+    {error, update_classifier_errors(), tuple()}.
 update_classifier(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateClassifier">>, Input, Options).
@@ -12275,11 +12337,7 @@ update_classifier(Client, Input, Options)
 -spec update_column_statistics_for_partition(map(), update_column_statistics_for_partition_request()) ->
     {ok, update_column_statistics_for_partition_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, update_column_statistics_for_partition_errors(), tuple()}.
 update_column_statistics_for_partition(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_column_statistics_for_partition(Client, Input, []).
@@ -12287,11 +12345,7 @@ update_column_statistics_for_partition(Client, Input)
 -spec update_column_statistics_for_partition(map(), update_column_statistics_for_partition_request(), proplists:proplist()) ->
     {ok, update_column_statistics_for_partition_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, update_column_statistics_for_partition_errors(), tuple()}.
 update_column_statistics_for_partition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateColumnStatisticsForPartition">>, Input, Options).
@@ -12303,11 +12357,7 @@ update_column_statistics_for_partition(Client, Input, Options)
 -spec update_column_statistics_for_table(map(), update_column_statistics_for_table_request()) ->
     {ok, update_column_statistics_for_table_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, update_column_statistics_for_table_errors(), tuple()}.
 update_column_statistics_for_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_column_statistics_for_table(Client, Input, []).
@@ -12315,11 +12365,7 @@ update_column_statistics_for_table(Client, Input)
 -spec update_column_statistics_for_table(map(), update_column_statistics_for_table_request(), proplists:proplist()) ->
     {ok, update_column_statistics_for_table_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, update_column_statistics_for_table_errors(), tuple()}.
 update_column_statistics_for_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateColumnStatisticsForTable">>, Input, Options).
@@ -12328,10 +12374,7 @@ update_column_statistics_for_table(Client, Input, Options)
 -spec update_connection(map(), update_connection_request()) ->
     {ok, update_connection_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, update_connection_errors(), tuple()}.
 update_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_connection(Client, Input, []).
@@ -12339,10 +12382,7 @@ update_connection(Client, Input)
 -spec update_connection(map(), update_connection_request(), proplists:proplist()) ->
     {ok, update_connection_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, update_connection_errors(), tuple()}.
 update_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateConnection">>, Input, Options).
@@ -12355,11 +12395,7 @@ update_connection(Client, Input, Options)
 -spec update_crawler(map(), update_crawler_request()) ->
     {ok, update_crawler_response(), tuple()} |
     {error, any()} |
-    {error, crawler_running_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, version_mismatch_exception(), tuple()}.
+    {error, update_crawler_errors(), tuple()}.
 update_crawler(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_crawler(Client, Input, []).
@@ -12367,11 +12403,7 @@ update_crawler(Client, Input)
 -spec update_crawler(map(), update_crawler_request(), proplists:proplist()) ->
     {ok, update_crawler_response(), tuple()} |
     {error, any()} |
-    {error, crawler_running_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, version_mismatch_exception(), tuple()}.
+    {error, update_crawler_errors(), tuple()}.
 update_crawler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCrawler">>, Input, Options).
@@ -12380,11 +12412,7 @@ update_crawler(Client, Input, Options)
 -spec update_crawler_schedule(map(), update_crawler_schedule_request()) ->
     {ok, update_crawler_schedule_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, scheduler_transitioning_exception(), tuple()} |
-    {error, version_mismatch_exception(), tuple()}.
+    {error, update_crawler_schedule_errors(), tuple()}.
 update_crawler_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_crawler_schedule(Client, Input, []).
@@ -12392,11 +12420,7 @@ update_crawler_schedule(Client, Input)
 -spec update_crawler_schedule(map(), update_crawler_schedule_request(), proplists:proplist()) ->
     {ok, update_crawler_schedule_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, scheduler_transitioning_exception(), tuple()} |
-    {error, version_mismatch_exception(), tuple()}.
+    {error, update_crawler_schedule_errors(), tuple()}.
 update_crawler_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCrawlerSchedule">>, Input, Options).
@@ -12405,13 +12429,7 @@ update_crawler_schedule(Client, Input, Options)
 -spec update_data_quality_ruleset(map(), update_data_quality_ruleset_request()) ->
     {ok, update_data_quality_ruleset_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, update_data_quality_ruleset_errors(), tuple()}.
 update_data_quality_ruleset(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_data_quality_ruleset(Client, Input, []).
@@ -12419,13 +12437,7 @@ update_data_quality_ruleset(Client, Input)
 -spec update_data_quality_ruleset(map(), update_data_quality_ruleset_request(), proplists:proplist()) ->
     {ok, update_data_quality_ruleset_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, update_data_quality_ruleset_errors(), tuple()}.
 update_data_quality_ruleset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDataQualityRuleset">>, Input, Options).
@@ -12434,12 +12446,7 @@ update_data_quality_ruleset(Client, Input, Options)
 -spec update_database(map(), update_database_request()) ->
     {ok, update_database_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, update_database_errors(), tuple()}.
 update_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_database(Client, Input, []).
@@ -12447,12 +12454,7 @@ update_database(Client, Input)
 -spec update_database(map(), update_database_request(), proplists:proplist()) ->
     {ok, update_database_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, update_database_errors(), tuple()}.
 update_database(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDatabase">>, Input, Options).
@@ -12461,11 +12463,7 @@ update_database(Client, Input, Options)
 -spec update_dev_endpoint(map(), update_dev_endpoint_request()) ->
     {ok, update_dev_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_dev_endpoint_errors(), tuple()}.
 update_dev_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_dev_endpoint(Client, Input, []).
@@ -12473,11 +12471,7 @@ update_dev_endpoint(Client, Input)
 -spec update_dev_endpoint(map(), update_dev_endpoint_request(), proplists:proplist()) ->
     {ok, update_dev_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_dev_endpoint_errors(), tuple()}.
 update_dev_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDevEndpoint">>, Input, Options).
@@ -12488,11 +12482,7 @@ update_dev_endpoint(Client, Input, Options)
 -spec update_job(map(), update_job_request()) ->
     {ok, update_job_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, update_job_errors(), tuple()}.
 update_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_job(Client, Input, []).
@@ -12500,11 +12490,7 @@ update_job(Client, Input)
 -spec update_job(map(), update_job_request(), proplists:proplist()) ->
     {ok, update_job_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, update_job_errors(), tuple()}.
 update_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateJob">>, Input, Options).
@@ -12519,13 +12505,7 @@ update_job(Client, Input, Options)
 -spec update_job_from_source_control(map(), update_job_from_source_control_request()) ->
     {ok, update_job_from_source_control_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_job_from_source_control_errors(), tuple()}.
 update_job_from_source_control(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_job_from_source_control(Client, Input, []).
@@ -12533,13 +12513,7 @@ update_job_from_source_control(Client, Input)
 -spec update_job_from_source_control(map(), update_job_from_source_control_request(), proplists:proplist()) ->
     {ok, update_job_from_source_control_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_job_from_source_control_errors(), tuple()}.
 update_job_from_source_control(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateJobFromSourceControl">>, Input, Options).
@@ -12558,11 +12532,7 @@ update_job_from_source_control(Client, Input, Options)
 -spec update_ml_transform(map(), update_ml_transform_request()) ->
     {ok, update_ml_transform_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, update_ml_transform_errors(), tuple()}.
 update_ml_transform(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_ml_transform(Client, Input, []).
@@ -12570,11 +12540,7 @@ update_ml_transform(Client, Input)
 -spec update_ml_transform(map(), update_ml_transform_request(), proplists:proplist()) ->
     {ok, update_ml_transform_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, update_ml_transform_errors(), tuple()}.
 update_ml_transform(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMLTransform">>, Input, Options).
@@ -12583,11 +12549,7 @@ update_ml_transform(Client, Input, Options)
 -spec update_partition(map(), update_partition_request()) ->
     {ok, update_partition_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, update_partition_errors(), tuple()}.
 update_partition(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_partition(Client, Input, []).
@@ -12595,11 +12557,7 @@ update_partition(Client, Input)
 -spec update_partition(map(), update_partition_request(), proplists:proplist()) ->
     {ok, update_partition_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, update_partition_errors(), tuple()}.
 update_partition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePartition">>, Input, Options).
@@ -12612,11 +12570,7 @@ update_partition(Client, Input, Options)
 -spec update_registry(map(), update_registry_input()) ->
     {ok, update_registry_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, update_registry_errors(), tuple()}.
 update_registry(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_registry(Client, Input, []).
@@ -12624,11 +12578,7 @@ update_registry(Client, Input)
 -spec update_registry(map(), update_registry_input(), proplists:proplist()) ->
     {ok, update_registry_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, update_registry_errors(), tuple()}.
 update_registry(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRegistry">>, Input, Options).
@@ -12650,11 +12600,7 @@ update_registry(Client, Input, Options)
 -spec update_schema(map(), update_schema_input()) ->
     {ok, update_schema_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, update_schema_errors(), tuple()}.
 update_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_schema(Client, Input, []).
@@ -12662,11 +12608,7 @@ update_schema(Client, Input)
 -spec update_schema(map(), update_schema_input(), proplists:proplist()) ->
     {ok, update_schema_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, update_schema_errors(), tuple()}.
 update_schema(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSchema">>, Input, Options).
@@ -12681,13 +12623,7 @@ update_schema(Client, Input, Options)
 -spec update_source_control_from_job(map(), update_source_control_from_job_request()) ->
     {ok, update_source_control_from_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_source_control_from_job_errors(), tuple()}.
 update_source_control_from_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_source_control_from_job(Client, Input, []).
@@ -12695,13 +12631,7 @@ update_source_control_from_job(Client, Input)
 -spec update_source_control_from_job(map(), update_source_control_from_job_request(), proplists:proplist()) ->
     {ok, update_source_control_from_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_source_control_from_job_errors(), tuple()}.
 update_source_control_from_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSourceControlFromJob">>, Input, Options).
@@ -12710,14 +12640,7 @@ update_source_control_from_job(Client, Input, Options)
 -spec update_table(map(), update_table_request()) ->
     {ok, update_table_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, update_table_errors(), tuple()}.
 update_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_table(Client, Input, []).
@@ -12725,14 +12648,7 @@ update_table(Client, Input)
 -spec update_table(map(), update_table_request(), proplists:proplist()) ->
     {ok, update_table_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, resource_number_limit_exceeded_exception(), tuple()}.
+    {error, update_table_errors(), tuple()}.
 update_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTable">>, Input, Options).
@@ -12741,10 +12657,7 @@ update_table(Client, Input, Options)
 -spec update_table_optimizer(map(), update_table_optimizer_request()) ->
     {ok, update_table_optimizer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, update_table_optimizer_errors(), tuple()}.
 update_table_optimizer(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_table_optimizer(Client, Input, []).
@@ -12752,10 +12665,7 @@ update_table_optimizer(Client, Input)
 -spec update_table_optimizer(map(), update_table_optimizer_request(), proplists:proplist()) ->
     {ok, update_table_optimizer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, update_table_optimizer_errors(), tuple()}.
 update_table_optimizer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTableOptimizer">>, Input, Options).
@@ -12764,11 +12674,7 @@ update_table_optimizer(Client, Input, Options)
 -spec update_trigger(map(), update_trigger_request()) ->
     {ok, update_trigger_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, update_trigger_errors(), tuple()}.
 update_trigger(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_trigger(Client, Input, []).
@@ -12776,11 +12682,7 @@ update_trigger(Client, Input)
 -spec update_trigger(map(), update_trigger_request(), proplists:proplist()) ->
     {ok, update_trigger_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, update_trigger_errors(), tuple()}.
 update_trigger(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTrigger">>, Input, Options).
@@ -12789,11 +12691,7 @@ update_trigger(Client, Input, Options)
 -spec update_user_defined_function(map(), update_user_defined_function_request()) ->
     {ok, update_user_defined_function_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, update_user_defined_function_errors(), tuple()}.
 update_user_defined_function(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_defined_function(Client, Input, []).
@@ -12801,11 +12699,7 @@ update_user_defined_function(Client, Input)
 -spec update_user_defined_function(map(), update_user_defined_function_request(), proplists:proplist()) ->
     {ok, update_user_defined_function_response(), tuple()} |
     {error, any()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, glue_encryption_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, update_user_defined_function_errors(), tuple()}.
 update_user_defined_function(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUserDefinedFunction">>, Input, Options).
@@ -12814,11 +12708,7 @@ update_user_defined_function(Client, Input, Options)
 -spec update_workflow(map(), update_workflow_request()) ->
     {ok, update_workflow_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, update_workflow_errors(), tuple()}.
 update_workflow(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_workflow(Client, Input, []).
@@ -12826,11 +12716,7 @@ update_workflow(Client, Input)
 -spec update_workflow(map(), update_workflow_request(), proplists:proplist()) ->
     {ok, update_workflow_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, operation_timeout_exception(), tuple()}.
+    {error, update_workflow_errors(), tuple()}.
 update_workflow(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateWorkflow">>, Input, Options).

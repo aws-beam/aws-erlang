@@ -309,6 +309,39 @@
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
+-type create_scaling_plan_errors() ::
+    validation_exception() | 
+    limit_exceeded_exception() | 
+    internal_service_exception() | 
+    concurrent_update_exception().
+
+-type delete_scaling_plan_errors() ::
+    validation_exception() | 
+    object_not_found_exception() | 
+    internal_service_exception() | 
+    concurrent_update_exception().
+
+-type describe_scaling_plan_resources_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception() | 
+    internal_service_exception() | 
+    concurrent_update_exception().
+
+-type describe_scaling_plans_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception() | 
+    internal_service_exception() | 
+    concurrent_update_exception().
+
+-type get_scaling_plan_resource_forecast_data_errors() ::
+    validation_exception() | 
+    internal_service_exception().
+
+-type update_scaling_plan_errors() ::
+    validation_exception() | 
+    object_not_found_exception() | 
+    internal_service_exception() | 
+    concurrent_update_exception().
 
 %%====================================================================
 %% API
@@ -318,10 +351,7 @@
 -spec create_scaling_plan(map(), create_scaling_plan_request()) ->
     {ok, create_scaling_plan_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_update_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_scaling_plan_errors(), tuple()}.
 create_scaling_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_scaling_plan(Client, Input, []).
@@ -329,10 +359,7 @@ create_scaling_plan(Client, Input)
 -spec create_scaling_plan(map(), create_scaling_plan_request(), proplists:proplist()) ->
     {ok, create_scaling_plan_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_update_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_scaling_plan_errors(), tuple()}.
 create_scaling_plan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateScalingPlan">>, Input, Options).
@@ -349,10 +376,7 @@ create_scaling_plan(Client, Input, Options)
 -spec delete_scaling_plan(map(), delete_scaling_plan_request()) ->
     {ok, delete_scaling_plan_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_update_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, object_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_scaling_plan_errors(), tuple()}.
 delete_scaling_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_scaling_plan(Client, Input, []).
@@ -360,10 +384,7 @@ delete_scaling_plan(Client, Input)
 -spec delete_scaling_plan(map(), delete_scaling_plan_request(), proplists:proplist()) ->
     {ok, delete_scaling_plan_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_update_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, object_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_scaling_plan_errors(), tuple()}.
 delete_scaling_plan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteScalingPlan">>, Input, Options).
@@ -372,10 +393,7 @@ delete_scaling_plan(Client, Input, Options)
 -spec describe_scaling_plan_resources(map(), describe_scaling_plan_resources_request()) ->
     {ok, describe_scaling_plan_resources_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_update_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_scaling_plan_resources_errors(), tuple()}.
 describe_scaling_plan_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_plan_resources(Client, Input, []).
@@ -383,10 +401,7 @@ describe_scaling_plan_resources(Client, Input)
 -spec describe_scaling_plan_resources(map(), describe_scaling_plan_resources_request(), proplists:proplist()) ->
     {ok, describe_scaling_plan_resources_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_update_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_scaling_plan_resources_errors(), tuple()}.
 describe_scaling_plan_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScalingPlanResources">>, Input, Options).
@@ -395,10 +410,7 @@ describe_scaling_plan_resources(Client, Input, Options)
 -spec describe_scaling_plans(map(), describe_scaling_plans_request()) ->
     {ok, describe_scaling_plans_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_update_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_scaling_plans_errors(), tuple()}.
 describe_scaling_plans(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_plans(Client, Input, []).
@@ -406,10 +418,7 @@ describe_scaling_plans(Client, Input)
 -spec describe_scaling_plans(map(), describe_scaling_plans_request(), proplists:proplist()) ->
     {ok, describe_scaling_plans_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_update_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_scaling_plans_errors(), tuple()}.
 describe_scaling_plans(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScalingPlans">>, Input, Options).
@@ -424,8 +433,7 @@ describe_scaling_plans(Client, Input, Options)
 -spec get_scaling_plan_resource_forecast_data(map(), get_scaling_plan_resource_forecast_data_request()) ->
     {ok, get_scaling_plan_resource_forecast_data_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_scaling_plan_resource_forecast_data_errors(), tuple()}.
 get_scaling_plan_resource_forecast_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_scaling_plan_resource_forecast_data(Client, Input, []).
@@ -433,8 +441,7 @@ get_scaling_plan_resource_forecast_data(Client, Input)
 -spec get_scaling_plan_resource_forecast_data(map(), get_scaling_plan_resource_forecast_data_request(), proplists:proplist()) ->
     {ok, get_scaling_plan_resource_forecast_data_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_scaling_plan_resource_forecast_data_errors(), tuple()}.
 get_scaling_plan_resource_forecast_data(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetScalingPlanResourceForecastData">>, Input, Options).
@@ -447,10 +454,7 @@ get_scaling_plan_resource_forecast_data(Client, Input, Options)
 -spec update_scaling_plan(map(), update_scaling_plan_request()) ->
     {ok, update_scaling_plan_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_update_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, object_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_scaling_plan_errors(), tuple()}.
 update_scaling_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_scaling_plan(Client, Input, []).
@@ -458,10 +462,7 @@ update_scaling_plan(Client, Input)
 -spec update_scaling_plan(map(), update_scaling_plan_request(), proplists:proplist()) ->
     {ok, update_scaling_plan_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_update_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, object_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_scaling_plan_errors(), tuple()}.
 update_scaling_plan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateScalingPlan">>, Input, Options).

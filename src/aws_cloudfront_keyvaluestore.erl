@@ -31,11 +31,13 @@
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_key_request() :: #{
@@ -43,11 +45,13 @@
 %% }
 -type delete_key_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_key_request_list_item() :: #{
 %%   <<"Key">> => string()
 %% }
 -type delete_key_request_list_item() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_key_response() :: #{
@@ -56,9 +60,11 @@
 %%   <<"TotalSizeInBytes">> => [float()]
 %% }
 -type delete_key_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_key_value_store_request() :: #{}
 -type describe_key_value_store_request() :: #{}.
+
 
 %% Example:
 %% describe_key_value_store_response() :: #{
@@ -72,9 +78,11 @@
 %%   <<"TotalSizeInBytes">> => [float()]
 %% }
 -type describe_key_value_store_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_key_request() :: #{}
 -type get_key_request() :: #{}.
+
 
 %% Example:
 %% get_key_response() :: #{
@@ -85,11 +93,13 @@
 %% }
 -type get_key_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_keys_request() :: #{
@@ -98,12 +108,14 @@
 %% }
 -type list_keys_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_keys_response() :: #{
 %%   <<"Items">> => list(list_keys_response_list_item()()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_keys_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_keys_response_list_item() :: #{
@@ -112,6 +124,7 @@
 %% }
 -type list_keys_response_list_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_key_request() :: #{
 %%   <<"IfMatch">> := string(),
@@ -119,12 +132,14 @@
 %% }
 -type put_key_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_key_request_list_item() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Value">> => string()
 %% }
 -type put_key_request_list_item() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_key_response() :: #{
@@ -134,17 +149,20 @@
 %% }
 -type put_key_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_keys_request() :: #{
@@ -154,6 +172,7 @@
 %% }
 -type update_keys_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_keys_response() :: #{
 %%   <<"ETag">> => string(),
@@ -162,11 +181,55 @@
 %% }
 -type update_keys_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
+-type delete_key_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type describe_key_value_store_errors() ::
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type get_key_errors() ::
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type list_keys_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type put_key_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_keys_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -176,24 +239,14 @@
 -spec delete_key(map(), binary() | list(), binary() | list(), delete_key_request()) ->
     {ok, delete_key_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_key_errors(), tuple()}.
 delete_key(Client, Key, KvsARN, Input) ->
     delete_key(Client, Key, KvsARN, Input, []).
 
 -spec delete_key(map(), binary() | list(), binary() | list(), delete_key_request(), proplists:proplist()) ->
     {ok, delete_key_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_key_errors(), tuple()}.
 delete_key(Client, Key, KvsARN, Input0, Options0) ->
     Method = delete,
     Path = ["/key-value-stores/", aws_util:encode_uri(KvsARN), "/keys/", aws_util:encode_uri(Key), ""],
@@ -238,10 +291,7 @@ delete_key(Client, Key, KvsARN, Input0, Options0) ->
 -spec describe_key_value_store(map(), binary() | list()) ->
     {ok, describe_key_value_store_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_key_value_store_errors(), tuple()}.
 describe_key_value_store(Client, KvsARN)
   when is_map(Client) ->
     describe_key_value_store(Client, KvsARN, #{}, #{}).
@@ -249,10 +299,7 @@ describe_key_value_store(Client, KvsARN)
 -spec describe_key_value_store(map(), binary() | list(), map(), map()) ->
     {ok, describe_key_value_store_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_key_value_store_errors(), tuple()}.
 describe_key_value_store(Client, KvsARN, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_key_value_store(Client, KvsARN, QueryMap, HeadersMap, []).
@@ -260,10 +307,7 @@ describe_key_value_store(Client, KvsARN, QueryMap, HeadersMap)
 -spec describe_key_value_store(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_key_value_store_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_key_value_store_errors(), tuple()}.
 describe_key_value_store(Client, KvsARN, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/key-value-stores/", aws_util:encode_uri(KvsARN), ""],
@@ -300,10 +344,7 @@ describe_key_value_store(Client, KvsARN, QueryMap, HeadersMap, Options0)
 -spec get_key(map(), binary() | list(), binary() | list()) ->
     {ok, get_key_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_key_errors(), tuple()}.
 get_key(Client, Key, KvsARN)
   when is_map(Client) ->
     get_key(Client, Key, KvsARN, #{}, #{}).
@@ -311,10 +352,7 @@ get_key(Client, Key, KvsARN)
 -spec get_key(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_key_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_key_errors(), tuple()}.
 get_key(Client, Key, KvsARN, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_key(Client, Key, KvsARN, QueryMap, HeadersMap, []).
@@ -322,10 +360,7 @@ get_key(Client, Key, KvsARN, QueryMap, HeadersMap)
 -spec get_key(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_key_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_key_errors(), tuple()}.
 get_key(Client, Key, KvsARN, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/key-value-stores/", aws_util:encode_uri(KvsARN), "/keys/", aws_util:encode_uri(Key), ""],
@@ -346,11 +381,7 @@ get_key(Client, Key, KvsARN, QueryMap, HeadersMap, Options0)
 -spec list_keys(map(), binary() | list()) ->
     {ok, list_keys_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_keys_errors(), tuple()}.
 list_keys(Client, KvsARN)
   when is_map(Client) ->
     list_keys(Client, KvsARN, #{}, #{}).
@@ -358,11 +389,7 @@ list_keys(Client, KvsARN)
 -spec list_keys(map(), binary() | list(), map(), map()) ->
     {ok, list_keys_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_keys_errors(), tuple()}.
 list_keys(Client, KvsARN, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_keys(Client, KvsARN, QueryMap, HeadersMap, []).
@@ -370,11 +397,7 @@ list_keys(Client, KvsARN, QueryMap, HeadersMap)
 -spec list_keys(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_keys_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_keys_errors(), tuple()}.
 list_keys(Client, KvsARN, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/key-value-stores/", aws_util:encode_uri(KvsARN), "/keys"],
@@ -401,24 +424,14 @@ list_keys(Client, KvsARN, QueryMap, HeadersMap, Options0)
 -spec put_key(map(), binary() | list(), binary() | list(), put_key_request()) ->
     {ok, put_key_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_key_errors(), tuple()}.
 put_key(Client, Key, KvsARN, Input) ->
     put_key(Client, Key, KvsARN, Input, []).
 
 -spec put_key(map(), binary() | list(), binary() | list(), put_key_request(), proplists:proplist()) ->
     {ok, put_key_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_key_errors(), tuple()}.
 put_key(Client, Key, KvsARN, Input0, Options0) ->
     Method = put,
     Path = ["/key-value-stores/", aws_util:encode_uri(KvsARN), "/keys/", aws_util:encode_uri(Key), ""],
@@ -464,24 +477,14 @@ put_key(Client, Key, KvsARN, Input0, Options0) ->
 -spec update_keys(map(), binary() | list(), update_keys_request()) ->
     {ok, update_keys_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_keys_errors(), tuple()}.
 update_keys(Client, KvsARN, Input) ->
     update_keys(Client, KvsARN, Input, []).
 
 -spec update_keys(map(), binary() | list(), update_keys_request(), proplists:proplist()) ->
     {ok, update_keys_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_keys_errors(), tuple()}.
 update_keys(Client, KvsARN, Input0, Options0) ->
     Method = post,
     Path = ["/key-value-stores/", aws_util:encode_uri(KvsARN), "/keys"],

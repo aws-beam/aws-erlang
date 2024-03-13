@@ -22,11 +22,13 @@
 %% get_raw_message_content_request() :: #{}
 -type get_raw_message_content_request() :: #{}.
 
+
 %% Example:
 %% get_raw_message_content_response() :: #{
 %%   <<"messageContent">> => binary()
 %% }
 -type get_raw_message_content_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% invalid_content_location() :: #{
@@ -34,11 +36,13 @@
 %% }
 -type invalid_content_location() :: #{binary() => any()}.
 
+
 %% Example:
 %% message_frozen() :: #{
 %%   <<"message">> => string()
 %% }
 -type message_frozen() :: #{binary() => any()}.
+
 
 %% Example:
 %% message_rejected() :: #{
@@ -46,14 +50,17 @@
 %% }
 -type message_rejected() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_raw_message_content_request() :: #{
 %%   <<"content">> := raw_message_content()
 %% }
 -type put_raw_message_content_request() :: #{binary() => any()}.
+
 %% Example:
 %% put_raw_message_content_response() :: #{}
 -type put_raw_message_content_response() :: #{}.
+
 
 %% Example:
 %% raw_message_content() :: #{
@@ -61,11 +68,13 @@
 %% }
 -type raw_message_content() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_reference() :: #{
@@ -74,6 +83,15 @@
 %%   <<"objectVersion">> => string()
 %% }
 -type s3_reference() :: #{binary() => any()}.
+
+-type get_raw_message_content_errors() ::
+    resource_not_found_exception().
+
+-type put_raw_message_content_errors() ::
+    resource_not_found_exception() | 
+    message_rejected() | 
+    message_frozen() | 
+    invalid_content_location().
 
 %%====================================================================
 %% API
@@ -84,7 +102,7 @@
 -spec get_raw_message_content(map(), binary() | list()) ->
     {ok, get_raw_message_content_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_raw_message_content_errors(), tuple()}.
 get_raw_message_content(Client, MessageId)
   when is_map(Client) ->
     get_raw_message_content(Client, MessageId, #{}, #{}).
@@ -92,7 +110,7 @@ get_raw_message_content(Client, MessageId)
 -spec get_raw_message_content(map(), binary() | list(), map(), map()) ->
     {ok, get_raw_message_content_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_raw_message_content_errors(), tuple()}.
 get_raw_message_content(Client, MessageId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_raw_message_content(Client, MessageId, QueryMap, HeadersMap, []).
@@ -100,7 +118,7 @@ get_raw_message_content(Client, MessageId, QueryMap, HeadersMap)
 -spec get_raw_message_content(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_raw_message_content_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_raw_message_content_errors(), tuple()}.
 get_raw_message_content(Client, MessageId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/messages/", aws_util:encode_uri(MessageId), ""],
@@ -140,20 +158,14 @@ get_raw_message_content(Client, MessageId, QueryMap, HeadersMap, Options0)
 -spec put_raw_message_content(map(), binary() | list(), put_raw_message_content_request()) ->
     {ok, put_raw_message_content_response(), tuple()} |
     {error, any()} |
-    {error, invalid_content_location(), tuple()} |
-    {error, message_frozen(), tuple()} |
-    {error, message_rejected(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_raw_message_content_errors(), tuple()}.
 put_raw_message_content(Client, MessageId, Input) ->
     put_raw_message_content(Client, MessageId, Input, []).
 
 -spec put_raw_message_content(map(), binary() | list(), put_raw_message_content_request(), proplists:proplist()) ->
     {ok, put_raw_message_content_response(), tuple()} |
     {error, any()} |
-    {error, invalid_content_location(), tuple()} |
-    {error, message_frozen(), tuple()} |
-    {error, message_rejected(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_raw_message_content_errors(), tuple()}.
 put_raw_message_content(Client, MessageId, Input0, Options0) ->
     Method = post,
     Path = ["/messages/", aws_util:encode_uri(MessageId), ""],

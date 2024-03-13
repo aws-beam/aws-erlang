@@ -1296,6 +1296,558 @@
 %% }
 -type create_organization_request() :: #{binary() => any()}.
 
+-type accept_handshake_errors() ::
+    access_denied_for_dependency_exception() | 
+    concurrent_modification_exception() | 
+    invalid_handshake_transition_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    handshake_already_in_state_exception() | 
+    handshake_not_found_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    handshake_constraint_violation_exception().
+
+-type attach_policy_errors() ::
+    policy_changes_in_progress_exception() | 
+    target_not_found_exception() | 
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    policy_type_not_enabled_exception() | 
+    access_denied_exception() | 
+    unsupported_api_endpoint_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    policy_not_found_exception() | 
+    duplicate_policy_attachment_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type cancel_handshake_errors() ::
+    concurrent_modification_exception() | 
+    invalid_handshake_transition_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    handshake_already_in_state_exception() | 
+    handshake_not_found_exception() | 
+    too_many_requests_exception().
+
+-type close_account_errors() ::
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    unsupported_api_endpoint_exception() | 
+    account_not_found_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    account_already_closed_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type create_account_errors() ::
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    unsupported_api_endpoint_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    finalizing_organization_exception().
+
+-type create_gov_cloud_account_errors() ::
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    unsupported_api_endpoint_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    finalizing_organization_exception().
+
+-type create_organization_errors() ::
+    access_denied_for_dependency_exception() | 
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    already_in_organization_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception().
+
+-type create_organizational_unit_errors() ::
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    parent_not_found_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    duplicate_organizational_unit_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type create_policy_errors() ::
+    malformed_policy_document_exception() | 
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    unsupported_api_endpoint_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    duplicate_policy_exception() | 
+    too_many_requests_exception() | 
+    policy_type_not_available_for_organization_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type decline_handshake_errors() ::
+    concurrent_modification_exception() | 
+    invalid_handshake_transition_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    handshake_already_in_state_exception() | 
+    handshake_not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_organization_errors() ::
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    organization_not_empty_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type delete_organizational_unit_errors() ::
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    organizational_unit_not_empty_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    organizational_unit_not_found_exception().
+
+-type delete_policy_errors() ::
+    policy_in_use_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    unsupported_api_endpoint_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    policy_not_found_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type delete_resource_policy_errors() ::
+    resource_policy_not_found_exception() | 
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    unsupported_api_endpoint_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type deregister_delegated_administrator_errors() ::
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    unsupported_api_endpoint_exception() | 
+    account_not_found_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    account_not_registered_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type describe_account_errors() ::
+    access_denied_exception() | 
+    account_not_found_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type describe_create_account_status_errors() ::
+    access_denied_exception() | 
+    unsupported_api_endpoint_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    create_account_status_not_found_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type describe_effective_policy_errors() ::
+    target_not_found_exception() | 
+    constraint_violation_exception() | 
+    access_denied_exception() | 
+    unsupported_api_endpoint_exception() | 
+    effective_policy_not_found_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type describe_handshake_errors() ::
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    handshake_not_found_exception() | 
+    too_many_requests_exception().
+
+-type describe_organization_errors() ::
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type describe_organizational_unit_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    organizational_unit_not_found_exception().
+
+-type describe_policy_errors() ::
+    access_denied_exception() | 
+    unsupported_api_endpoint_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    policy_not_found_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type describe_resource_policy_errors() ::
+    resource_policy_not_found_exception() | 
+    constraint_violation_exception() | 
+    access_denied_exception() | 
+    unsupported_api_endpoint_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type detach_policy_errors() ::
+    policy_changes_in_progress_exception() | 
+    policy_not_attached_exception() | 
+    target_not_found_exception() | 
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    unsupported_api_endpoint_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    policy_not_found_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type disable_aws_service_access_errors() ::
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    unsupported_api_endpoint_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type disable_policy_type_errors() ::
+    policy_changes_in_progress_exception() | 
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    policy_type_not_enabled_exception() | 
+    access_denied_exception() | 
+    unsupported_api_endpoint_exception() | 
+    root_not_found_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type enable_all_features_errors() ::
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    handshake_constraint_violation_exception().
+
+-type enable_aws_service_access_errors() ::
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    unsupported_api_endpoint_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type enable_policy_type_errors() ::
+    policy_type_already_enabled_exception() | 
+    policy_changes_in_progress_exception() | 
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    unsupported_api_endpoint_exception() | 
+    root_not_found_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    policy_type_not_available_for_organization_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type invite_account_to_organization_errors() ::
+    account_owner_not_verified_exception() | 
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    finalizing_organization_exception() | 
+    duplicate_handshake_exception() | 
+    handshake_constraint_violation_exception().
+
+-type leave_organization_errors() ::
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    master_cannot_leave_organization_exception() | 
+    account_not_found_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type list_accounts_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type list_accounts_for_parent_errors() ::
+    access_denied_exception() | 
+    parent_not_found_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type list_aws_service_access_for_organization_errors() ::
+    constraint_violation_exception() | 
+    access_denied_exception() | 
+    unsupported_api_endpoint_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type list_children_errors() ::
+    access_denied_exception() | 
+    parent_not_found_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type list_create_account_status_errors() ::
+    access_denied_exception() | 
+    unsupported_api_endpoint_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type list_delegated_administrators_errors() ::
+    constraint_violation_exception() | 
+    access_denied_exception() | 
+    unsupported_api_endpoint_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type list_delegated_services_for_account_errors() ::
+    constraint_violation_exception() | 
+    access_denied_exception() | 
+    unsupported_api_endpoint_exception() | 
+    account_not_found_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    account_not_registered_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type list_handshakes_for_account_errors() ::
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception().
+
+-type list_handshakes_for_organization_errors() ::
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type list_organizational_units_for_parent_errors() ::
+    access_denied_exception() | 
+    parent_not_found_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type list_parents_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    child_not_found_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type list_policies_errors() ::
+    access_denied_exception() | 
+    unsupported_api_endpoint_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type list_policies_for_target_errors() ::
+    target_not_found_exception() | 
+    access_denied_exception() | 
+    unsupported_api_endpoint_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type list_roots_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type list_tags_for_resource_errors() ::
+    target_not_found_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type list_targets_for_policy_errors() ::
+    access_denied_exception() | 
+    unsupported_api_endpoint_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    policy_not_found_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type move_account_errors() ::
+    source_parent_not_found_exception() | 
+    destination_parent_not_found_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    account_not_found_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    duplicate_account_exception().
+
+-type put_resource_policy_errors() ::
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    unsupported_api_endpoint_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type register_delegated_administrator_errors() ::
+    account_already_registered_exception() | 
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    unsupported_api_endpoint_exception() | 
+    account_not_found_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type remove_account_from_organization_errors() ::
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    master_cannot_leave_organization_exception() | 
+    account_not_found_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type tag_resource_errors() ::
+    target_not_found_exception() | 
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type untag_resource_errors() ::
+    target_not_found_exception() | 
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type update_organizational_unit_errors() ::
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    duplicate_organizational_unit_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    organizational_unit_not_found_exception().
+
+-type update_policy_errors() ::
+    policy_changes_in_progress_exception() | 
+    malformed_policy_document_exception() | 
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    unsupported_api_endpoint_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    duplicate_policy_exception() | 
+    policy_not_found_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
 
 %%====================================================================
 %% API
@@ -1344,17 +1896,7 @@
 -spec accept_handshake(map(), accept_handshake_request()) ->
     {ok, accept_handshake_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, access_denied_for_dependency_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, handshake_already_in_state_exception(), tuple()} |
-    {error, handshake_constraint_violation_exception(), tuple()} |
-    {error, handshake_not_found_exception(), tuple()} |
-    {error, invalid_handshake_transition_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, accept_handshake_errors(), tuple()}.
 accept_handshake(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_handshake(Client, Input, []).
@@ -1362,17 +1904,7 @@ accept_handshake(Client, Input)
 -spec accept_handshake(map(), accept_handshake_request(), proplists:proplist()) ->
     {ok, accept_handshake_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, access_denied_for_dependency_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, handshake_already_in_state_exception(), tuple()} |
-    {error, handshake_constraint_violation_exception(), tuple()} |
-    {error, handshake_not_found_exception(), tuple()} |
-    {error, invalid_handshake_transition_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, accept_handshake_errors(), tuple()}.
 accept_handshake(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcceptHandshake">>, Input, Options).
@@ -1402,19 +1934,7 @@ accept_handshake(Client, Input, Options)
 -spec attach_policy(map(), attach_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, duplicate_policy_attachment_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, policy_changes_in_progress_exception(), tuple()} |
-    {error, policy_not_found_exception(), tuple()} |
-    {error, policy_type_not_enabled_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, target_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, attach_policy_errors(), tuple()}.
 attach_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_policy(Client, Input, []).
@@ -1422,19 +1942,7 @@ attach_policy(Client, Input)
 -spec attach_policy(map(), attach_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, duplicate_policy_attachment_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, policy_changes_in_progress_exception(), tuple()} |
-    {error, policy_not_found_exception(), tuple()} |
-    {error, policy_type_not_enabled_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, target_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, attach_policy_errors(), tuple()}.
 attach_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachPolicy">>, Input, Options).
@@ -1456,14 +1964,7 @@ attach_policy(Client, Input, Options)
 -spec cancel_handshake(map(), cancel_handshake_request()) ->
     {ok, cancel_handshake_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, handshake_already_in_state_exception(), tuple()} |
-    {error, handshake_not_found_exception(), tuple()} |
-    {error, invalid_handshake_transition_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, cancel_handshake_errors(), tuple()}.
 cancel_handshake(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_handshake(Client, Input, []).
@@ -1471,14 +1972,7 @@ cancel_handshake(Client, Input)
 -spec cancel_handshake(map(), cancel_handshake_request(), proplists:proplist()) ->
     {ok, cancel_handshake_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, handshake_already_in_state_exception(), tuple()} |
-    {error, handshake_not_found_exception(), tuple()} |
-    {error, invalid_handshake_transition_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, cancel_handshake_errors(), tuple()}.
 cancel_handshake(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelHandshake">>, Input, Options).
@@ -1543,17 +2037,7 @@ cancel_handshake(Client, Input, Options)
 -spec close_account(map(), close_account_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_already_closed_exception(), tuple()} |
-    {error, account_not_found_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, close_account_errors(), tuple()}.
 close_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     close_account(Client, Input, []).
@@ -1561,17 +2045,7 @@ close_account(Client, Input)
 -spec close_account(map(), close_account_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_already_closed_exception(), tuple()} |
-    {error, account_not_found_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, close_account_errors(), tuple()}.
 close_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CloseAccount">>, Input, Options).
@@ -1679,15 +2153,7 @@ close_account(Client, Input, Options)
 -spec create_account(map(), create_account_request()) ->
     {ok, create_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, finalizing_organization_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, create_account_errors(), tuple()}.
 create_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_account(Client, Input, []).
@@ -1695,15 +2161,7 @@ create_account(Client, Input)
 -spec create_account(map(), create_account_request(), proplists:proplist()) ->
     {ok, create_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, finalizing_organization_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, create_account_errors(), tuple()}.
 create_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAccount">>, Input, Options).
@@ -1875,15 +2333,7 @@ create_account(Client, Input, Options)
 -spec create_gov_cloud_account(map(), create_gov_cloud_account_request()) ->
     {ok, create_gov_cloud_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, finalizing_organization_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, create_gov_cloud_account_errors(), tuple()}.
 create_gov_cloud_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_gov_cloud_account(Client, Input, []).
@@ -1891,15 +2341,7 @@ create_gov_cloud_account(Client, Input)
 -spec create_gov_cloud_account(map(), create_gov_cloud_account_request(), proplists:proplist()) ->
     {ok, create_gov_cloud_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, finalizing_organization_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, create_gov_cloud_account_errors(), tuple()}.
 create_gov_cloud_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGovCloudAccount">>, Input, Options).
@@ -1931,14 +2373,7 @@ create_gov_cloud_account(Client, Input, Options)
 -spec create_organization(map(), create_organization_request()) ->
     {ok, create_organization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, access_denied_for_dependency_exception(), tuple()} |
-    {error, already_in_organization_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_organization_errors(), tuple()}.
 create_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_organization(Client, Input, []).
@@ -1946,14 +2381,7 @@ create_organization(Client, Input)
 -spec create_organization(map(), create_organization_request(), proplists:proplist()) ->
     {ok, create_organization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, access_denied_for_dependency_exception(), tuple()} |
-    {error, already_in_organization_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_organization_errors(), tuple()}.
 create_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateOrganization">>, Input, Options).
@@ -1982,15 +2410,7 @@ create_organization(Client, Input, Options)
 -spec create_organizational_unit(map(), create_organizational_unit_request()) ->
     {ok, create_organizational_unit_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, duplicate_organizational_unit_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, parent_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_organizational_unit_errors(), tuple()}.
 create_organizational_unit(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_organizational_unit(Client, Input, []).
@@ -1998,15 +2418,7 @@ create_organizational_unit(Client, Input)
 -spec create_organizational_unit(map(), create_organizational_unit_request(), proplists:proplist()) ->
     {ok, create_organizational_unit_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, duplicate_organizational_unit_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, parent_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_organizational_unit_errors(), tuple()}.
 create_organizational_unit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateOrganizationalUnit">>, Input, Options).
@@ -2028,17 +2440,7 @@ create_organizational_unit(Client, Input, Options)
 -spec create_policy(map(), create_policy_request()) ->
     {ok, create_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, duplicate_policy_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, policy_type_not_available_for_organization_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, create_policy_errors(), tuple()}.
 create_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_policy(Client, Input, []).
@@ -2046,17 +2448,7 @@ create_policy(Client, Input)
 -spec create_policy(map(), create_policy_request(), proplists:proplist()) ->
     {ok, create_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, duplicate_policy_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, policy_type_not_available_for_organization_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, create_policy_errors(), tuple()}.
 create_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePolicy">>, Input, Options).
@@ -2078,14 +2470,7 @@ create_policy(Client, Input, Options)
 -spec decline_handshake(map(), decline_handshake_request()) ->
     {ok, decline_handshake_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, handshake_already_in_state_exception(), tuple()} |
-    {error, handshake_not_found_exception(), tuple()} |
-    {error, invalid_handshake_transition_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, decline_handshake_errors(), tuple()}.
 decline_handshake(Client, Input)
   when is_map(Client), is_map(Input) ->
     decline_handshake(Client, Input, []).
@@ -2093,14 +2478,7 @@ decline_handshake(Client, Input)
 -spec decline_handshake(map(), decline_handshake_request(), proplists:proplist()) ->
     {ok, decline_handshake_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, handshake_already_in_state_exception(), tuple()} |
-    {error, handshake_not_found_exception(), tuple()} |
-    {error, invalid_handshake_transition_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, decline_handshake_errors(), tuple()}.
 decline_handshake(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeclineHandshake">>, Input, Options).
@@ -2113,13 +2491,7 @@ decline_handshake(Client, Input, Options)
 -spec delete_organization(map(), #{}) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, organization_not_empty_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_organization_errors(), tuple()}.
 delete_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_organization(Client, Input, []).
@@ -2127,13 +2499,7 @@ delete_organization(Client, Input)
 -spec delete_organization(map(), #{}, proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, organization_not_empty_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_organization_errors(), tuple()}.
 delete_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteOrganization">>, Input, Options).
@@ -2148,14 +2514,7 @@ delete_organization(Client, Input, Options)
 -spec delete_organizational_unit(map(), delete_organizational_unit_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, organizational_unit_not_empty_exception(), tuple()} |
-    {error, organizational_unit_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_organizational_unit_errors(), tuple()}.
 delete_organizational_unit(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_organizational_unit(Client, Input, []).
@@ -2163,14 +2522,7 @@ delete_organizational_unit(Client, Input)
 -spec delete_organizational_unit(map(), delete_organizational_unit_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, organizational_unit_not_empty_exception(), tuple()} |
-    {error, organizational_unit_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_organizational_unit_errors(), tuple()}.
 delete_organizational_unit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteOrganizationalUnit">>, Input, Options).
@@ -2188,15 +2540,7 @@ delete_organizational_unit(Client, Input, Options)
 -spec delete_policy(map(), delete_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, policy_in_use_exception(), tuple()} |
-    {error, policy_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, delete_policy_errors(), tuple()}.
 delete_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_policy(Client, Input, []).
@@ -2204,15 +2548,7 @@ delete_policy(Client, Input)
 -spec delete_policy(map(), delete_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, policy_in_use_exception(), tuple()} |
-    {error, policy_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, delete_policy_errors(), tuple()}.
 delete_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePolicy">>, Input, Options).
@@ -2224,14 +2560,7 @@ delete_policy(Client, Input, Options)
 -spec delete_resource_policy(map(), #{}) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, resource_policy_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
@@ -2239,14 +2568,7 @@ delete_resource_policy(Client, Input)
 -spec delete_resource_policy(map(), #{}, proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, resource_policy_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourcePolicy">>, Input, Options).
@@ -2277,16 +2599,7 @@ delete_resource_policy(Client, Input, Options)
 -spec deregister_delegated_administrator(map(), deregister_delegated_administrator_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_not_found_exception(), tuple()} |
-    {error, account_not_registered_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, deregister_delegated_administrator_errors(), tuple()}.
 deregister_delegated_administrator(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_delegated_administrator(Client, Input, []).
@@ -2294,16 +2607,7 @@ deregister_delegated_administrator(Client, Input)
 -spec deregister_delegated_administrator(map(), deregister_delegated_administrator_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_not_found_exception(), tuple()} |
-    {error, account_not_registered_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, deregister_delegated_administrator_errors(), tuple()}.
 deregister_delegated_administrator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterDelegatedAdministrator">>, Input, Options).
@@ -2317,12 +2621,7 @@ deregister_delegated_administrator(Client, Input, Options)
 -spec describe_account(map(), describe_account_request()) ->
     {ok, describe_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_not_found_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_account_errors(), tuple()}.
 describe_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account(Client, Input, []).
@@ -2330,12 +2629,7 @@ describe_account(Client, Input)
 -spec describe_account(map(), describe_account_request(), proplists:proplist()) ->
     {ok, describe_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_not_found_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_account_errors(), tuple()}.
 describe_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccount">>, Input, Options).
@@ -2349,13 +2643,7 @@ describe_account(Client, Input, Options)
 -spec describe_create_account_status(map(), describe_create_account_status_request()) ->
     {ok, describe_create_account_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, create_account_status_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, describe_create_account_status_errors(), tuple()}.
 describe_create_account_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_create_account_status(Client, Input, []).
@@ -2363,13 +2651,7 @@ describe_create_account_status(Client, Input)
 -spec describe_create_account_status(map(), describe_create_account_status_request(), proplists:proplist()) ->
     {ok, describe_create_account_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, create_account_status_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, describe_create_account_status_errors(), tuple()}.
 describe_create_account_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCreateAccountStatus">>, Input, Options).
@@ -2396,15 +2678,7 @@ describe_create_account_status(Client, Input, Options)
 -spec describe_effective_policy(map(), describe_effective_policy_request()) ->
     {ok, describe_effective_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, effective_policy_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, target_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, describe_effective_policy_errors(), tuple()}.
 describe_effective_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_effective_policy(Client, Input, []).
@@ -2412,15 +2686,7 @@ describe_effective_policy(Client, Input)
 -spec describe_effective_policy(map(), describe_effective_policy_request(), proplists:proplist()) ->
     {ok, describe_effective_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, effective_policy_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, target_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, describe_effective_policy_errors(), tuple()}.
 describe_effective_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEffectivePolicy">>, Input, Options).
@@ -2440,12 +2706,7 @@ describe_effective_policy(Client, Input, Options)
 -spec describe_handshake(map(), describe_handshake_request()) ->
     {ok, describe_handshake_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, handshake_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_handshake_errors(), tuple()}.
 describe_handshake(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_handshake(Client, Input, []).
@@ -2453,12 +2714,7 @@ describe_handshake(Client, Input)
 -spec describe_handshake(map(), describe_handshake_request(), proplists:proplist()) ->
     {ok, describe_handshake_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, handshake_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_handshake_errors(), tuple()}.
 describe_handshake(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeHandshake">>, Input, Options).
@@ -2477,11 +2733,7 @@ describe_handshake(Client, Input, Options)
 -spec describe_organization(map(), #{}) ->
     {ok, describe_organization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_organization_errors(), tuple()}.
 describe_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_organization(Client, Input, []).
@@ -2489,11 +2741,7 @@ describe_organization(Client, Input)
 -spec describe_organization(map(), #{}, proplists:proplist()) ->
     {ok, describe_organization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_organization_errors(), tuple()}.
 describe_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeOrganization">>, Input, Options).
@@ -2506,12 +2754,7 @@ describe_organization(Client, Input, Options)
 -spec describe_organizational_unit(map(), describe_organizational_unit_request()) ->
     {ok, describe_organizational_unit_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, organizational_unit_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_organizational_unit_errors(), tuple()}.
 describe_organizational_unit(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_organizational_unit(Client, Input, []).
@@ -2519,12 +2762,7 @@ describe_organizational_unit(Client, Input)
 -spec describe_organizational_unit(map(), describe_organizational_unit_request(), proplists:proplist()) ->
     {ok, describe_organizational_unit_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, organizational_unit_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_organizational_unit_errors(), tuple()}.
 describe_organizational_unit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeOrganizationalUnit">>, Input, Options).
@@ -2537,13 +2775,7 @@ describe_organizational_unit(Client, Input, Options)
 -spec describe_policy(map(), describe_policy_request()) ->
     {ok, describe_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, policy_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, describe_policy_errors(), tuple()}.
 describe_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_policy(Client, Input, []).
@@ -2551,13 +2783,7 @@ describe_policy(Client, Input)
 -spec describe_policy(map(), describe_policy_request(), proplists:proplist()) ->
     {ok, describe_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, policy_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, describe_policy_errors(), tuple()}.
 describe_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePolicy">>, Input, Options).
@@ -2570,13 +2796,7 @@ describe_policy(Client, Input, Options)
 -spec describe_resource_policy(map(), #{}) ->
     {ok, describe_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, resource_policy_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, describe_resource_policy_errors(), tuple()}.
 describe_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_resource_policy(Client, Input, []).
@@ -2584,13 +2804,7 @@ describe_resource_policy(Client, Input)
 -spec describe_resource_policy(map(), #{}, proplists:proplist()) ->
     {ok, describe_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, resource_policy_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, describe_resource_policy_errors(), tuple()}.
 describe_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeResourcePolicy">>, Input, Options).
@@ -2628,18 +2842,7 @@ describe_resource_policy(Client, Input, Options)
 -spec detach_policy(map(), detach_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, policy_changes_in_progress_exception(), tuple()} |
-    {error, policy_not_attached_exception(), tuple()} |
-    {error, policy_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, target_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, detach_policy_errors(), tuple()}.
 detach_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_policy(Client, Input, []).
@@ -2647,18 +2850,7 @@ detach_policy(Client, Input)
 -spec detach_policy(map(), detach_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, policy_changes_in_progress_exception(), tuple()} |
-    {error, policy_not_attached_exception(), tuple()} |
-    {error, policy_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, target_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, detach_policy_errors(), tuple()}.
 detach_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachPolicy">>, Input, Options).
@@ -2750,14 +2942,7 @@ detach_policy(Client, Input, Options)
 -spec disable_aws_service_access(map(), disable_aws_service_access_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, disable_aws_service_access_errors(), tuple()}.
 disable_aws_service_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_aws_service_access(Client, Input, []).
@@ -2765,14 +2950,7 @@ disable_aws_service_access(Client, Input)
 -spec disable_aws_service_access(map(), disable_aws_service_access_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, disable_aws_service_access_errors(), tuple()}.
 disable_aws_service_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableAWSServiceAccess">>, Input, Options).
@@ -2807,17 +2985,7 @@ disable_aws_service_access(Client, Input, Options)
 -spec disable_policy_type(map(), disable_policy_type_request()) ->
     {ok, disable_policy_type_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, policy_changes_in_progress_exception(), tuple()} |
-    {error, policy_type_not_enabled_exception(), tuple()} |
-    {error, root_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, disable_policy_type_errors(), tuple()}.
 disable_policy_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_policy_type(Client, Input, []).
@@ -2825,17 +2993,7 @@ disable_policy_type(Client, Input)
 -spec disable_policy_type(map(), disable_policy_type_request(), proplists:proplist()) ->
     {ok, disable_policy_type_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, policy_changes_in_progress_exception(), tuple()} |
-    {error, policy_type_not_enabled_exception(), tuple()} |
-    {error, root_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, disable_policy_type_errors(), tuple()}.
 disable_policy_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisablePolicyType">>, Input, Options).
@@ -2892,13 +3050,7 @@ disable_policy_type(Client, Input, Options)
 -spec enable_all_features(map(), enable_all_features_request()) ->
     {ok, enable_all_features_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, handshake_constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, enable_all_features_errors(), tuple()}.
 enable_all_features(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_all_features(Client, Input, []).
@@ -2906,13 +3058,7 @@ enable_all_features(Client, Input)
 -spec enable_all_features(map(), enable_all_features_request(), proplists:proplist()) ->
     {ok, enable_all_features_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, handshake_constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, enable_all_features_errors(), tuple()}.
 enable_all_features(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableAllFeatures">>, Input, Options).
@@ -2956,14 +3102,7 @@ enable_all_features(Client, Input, Options)
 -spec enable_aws_service_access(map(), enable_aws_service_access_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, enable_aws_service_access_errors(), tuple()}.
 enable_aws_service_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_aws_service_access(Client, Input, []).
@@ -2971,14 +3110,7 @@ enable_aws_service_access(Client, Input)
 -spec enable_aws_service_access(map(), enable_aws_service_access_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, enable_aws_service_access_errors(), tuple()}.
 enable_aws_service_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableAWSServiceAccess">>, Input, Options).
@@ -3008,18 +3140,7 @@ enable_aws_service_access(Client, Input, Options)
 -spec enable_policy_type(map(), enable_policy_type_request()) ->
     {ok, enable_policy_type_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, policy_changes_in_progress_exception(), tuple()} |
-    {error, policy_type_already_enabled_exception(), tuple()} |
-    {error, policy_type_not_available_for_organization_exception(), tuple()} |
-    {error, root_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, enable_policy_type_errors(), tuple()}.
 enable_policy_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_policy_type(Client, Input, []).
@@ -3027,18 +3148,7 @@ enable_policy_type(Client, Input)
 -spec enable_policy_type(map(), enable_policy_type_request(), proplists:proplist()) ->
     {ok, enable_policy_type_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, policy_changes_in_progress_exception(), tuple()} |
-    {error, policy_type_already_enabled_exception(), tuple()} |
-    {error, policy_type_not_available_for_organization_exception(), tuple()} |
-    {error, root_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, enable_policy_type_errors(), tuple()}.
 enable_policy_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnablePolicyType">>, Input, Options).
@@ -3081,17 +3191,7 @@ enable_policy_type(Client, Input, Options)
 -spec invite_account_to_organization(map(), invite_account_to_organization_request()) ->
     {ok, invite_account_to_organization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_owner_not_verified_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, duplicate_handshake_exception(), tuple()} |
-    {error, finalizing_organization_exception(), tuple()} |
-    {error, handshake_constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, invite_account_to_organization_errors(), tuple()}.
 invite_account_to_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     invite_account_to_organization(Client, Input, []).
@@ -3099,17 +3199,7 @@ invite_account_to_organization(Client, Input)
 -spec invite_account_to_organization(map(), invite_account_to_organization_request(), proplists:proplist()) ->
     {ok, invite_account_to_organization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_owner_not_verified_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, duplicate_handshake_exception(), tuple()} |
-    {error, finalizing_organization_exception(), tuple()} |
-    {error, handshake_constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, invite_account_to_organization_errors(), tuple()}.
 invite_account_to_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"InviteAccountToOrganization">>, Input, Options).
@@ -3187,15 +3277,7 @@ invite_account_to_organization(Client, Input, Options)
 -spec leave_organization(map(), #{}) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_not_found_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, master_cannot_leave_organization_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, leave_organization_errors(), tuple()}.
 leave_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     leave_organization(Client, Input, []).
@@ -3203,15 +3285,7 @@ leave_organization(Client, Input)
 -spec leave_organization(map(), #{}, proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_not_found_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, master_cannot_leave_organization_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, leave_organization_errors(), tuple()}.
 leave_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"LeaveOrganization">>, Input, Options).
@@ -3237,11 +3311,7 @@ leave_organization(Client, Input, Options)
 -spec list_accounts(map(), list_accounts_request()) ->
     {ok, list_accounts_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_accounts_errors(), tuple()}.
 list_accounts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_accounts(Client, Input, []).
@@ -3249,11 +3319,7 @@ list_accounts(Client, Input)
 -spec list_accounts(map(), list_accounts_request(), proplists:proplist()) ->
     {ok, list_accounts_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_accounts_errors(), tuple()}.
 list_accounts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAccounts">>, Input, Options).
@@ -3284,12 +3350,7 @@ list_accounts(Client, Input, Options)
 -spec list_accounts_for_parent(map(), list_accounts_for_parent_request()) ->
     {ok, list_accounts_for_parent_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, parent_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_accounts_for_parent_errors(), tuple()}.
 list_accounts_for_parent(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_accounts_for_parent(Client, Input, []).
@@ -3297,12 +3358,7 @@ list_accounts_for_parent(Client, Input)
 -spec list_accounts_for_parent(map(), list_accounts_for_parent_request(), proplists:proplist()) ->
     {ok, list_accounts_for_parent_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, parent_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_accounts_for_parent_errors(), tuple()}.
 list_accounts_for_parent(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAccountsForParent">>, Input, Options).
@@ -3329,13 +3385,7 @@ list_accounts_for_parent(Client, Input, Options)
 -spec list_aws_service_access_for_organization(map(), list_aws_service_access_for_organization_request()) ->
     {ok, list_aws_service_access_for_organization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, list_aws_service_access_for_organization_errors(), tuple()}.
 list_aws_service_access_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_aws_service_access_for_organization(Client, Input, []).
@@ -3343,13 +3393,7 @@ list_aws_service_access_for_organization(Client, Input)
 -spec list_aws_service_access_for_organization(map(), list_aws_service_access_for_organization_request(), proplists:proplist()) ->
     {ok, list_aws_service_access_for_organization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, list_aws_service_access_for_organization_errors(), tuple()}.
 list_aws_service_access_for_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAWSServiceAccessForOrganization">>, Input, Options).
@@ -3376,12 +3420,7 @@ list_aws_service_access_for_organization(Client, Input, Options)
 -spec list_children(map(), list_children_request()) ->
     {ok, list_children_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, parent_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_children_errors(), tuple()}.
 list_children(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_children(Client, Input, []).
@@ -3389,12 +3428,7 @@ list_children(Client, Input)
 -spec list_children(map(), list_children_request(), proplists:proplist()) ->
     {ok, list_children_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, parent_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_children_errors(), tuple()}.
 list_children(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListChildren">>, Input, Options).
@@ -3418,12 +3452,7 @@ list_children(Client, Input, Options)
 -spec list_create_account_status(map(), list_create_account_status_request()) ->
     {ok, list_create_account_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, list_create_account_status_errors(), tuple()}.
 list_create_account_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_create_account_status(Client, Input, []).
@@ -3431,12 +3460,7 @@ list_create_account_status(Client, Input)
 -spec list_create_account_status(map(), list_create_account_status_request(), proplists:proplist()) ->
     {ok, list_create_account_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, list_create_account_status_errors(), tuple()}.
 list_create_account_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCreateAccountStatus">>, Input, Options).
@@ -3451,13 +3475,7 @@ list_create_account_status(Client, Input, Options)
 -spec list_delegated_administrators(map(), list_delegated_administrators_request()) ->
     {ok, list_delegated_administrators_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, list_delegated_administrators_errors(), tuple()}.
 list_delegated_administrators(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_delegated_administrators(Client, Input, []).
@@ -3465,13 +3483,7 @@ list_delegated_administrators(Client, Input)
 -spec list_delegated_administrators(map(), list_delegated_administrators_request(), proplists:proplist()) ->
     {ok, list_delegated_administrators_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, list_delegated_administrators_errors(), tuple()}.
 list_delegated_administrators(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDelegatedAdministrators">>, Input, Options).
@@ -3486,15 +3498,7 @@ list_delegated_administrators(Client, Input, Options)
 -spec list_delegated_services_for_account(map(), list_delegated_services_for_account_request()) ->
     {ok, list_delegated_services_for_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_not_found_exception(), tuple()} |
-    {error, account_not_registered_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, list_delegated_services_for_account_errors(), tuple()}.
 list_delegated_services_for_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_delegated_services_for_account(Client, Input, []).
@@ -3502,15 +3506,7 @@ list_delegated_services_for_account(Client, Input)
 -spec list_delegated_services_for_account(map(), list_delegated_services_for_account_request(), proplists:proplist()) ->
     {ok, list_delegated_services_for_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_not_found_exception(), tuple()} |
-    {error, account_not_registered_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, list_delegated_services_for_account_errors(), tuple()}.
 list_delegated_services_for_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDelegatedServicesForAccount">>, Input, Options).
@@ -3538,11 +3534,7 @@ list_delegated_services_for_account(Client, Input, Options)
 -spec list_handshakes_for_account(map(), list_handshakes_for_account_request()) ->
     {ok, list_handshakes_for_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_handshakes_for_account_errors(), tuple()}.
 list_handshakes_for_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_handshakes_for_account(Client, Input, []).
@@ -3550,11 +3542,7 @@ list_handshakes_for_account(Client, Input)
 -spec list_handshakes_for_account(map(), list_handshakes_for_account_request(), proplists:proplist()) ->
     {ok, list_handshakes_for_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_handshakes_for_account_errors(), tuple()}.
 list_handshakes_for_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListHandshakesForAccount">>, Input, Options).
@@ -3589,12 +3577,7 @@ list_handshakes_for_account(Client, Input, Options)
 -spec list_handshakes_for_organization(map(), list_handshakes_for_organization_request()) ->
     {ok, list_handshakes_for_organization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_handshakes_for_organization_errors(), tuple()}.
 list_handshakes_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_handshakes_for_organization(Client, Input, []).
@@ -3602,12 +3585,7 @@ list_handshakes_for_organization(Client, Input)
 -spec list_handshakes_for_organization(map(), list_handshakes_for_organization_request(), proplists:proplist()) ->
     {ok, list_handshakes_for_organization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_handshakes_for_organization_errors(), tuple()}.
 list_handshakes_for_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListHandshakesForOrganization">>, Input, Options).
@@ -3630,12 +3608,7 @@ list_handshakes_for_organization(Client, Input, Options)
 -spec list_organizational_units_for_parent(map(), list_organizational_units_for_parent_request()) ->
     {ok, list_organizational_units_for_parent_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, parent_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_organizational_units_for_parent_errors(), tuple()}.
 list_organizational_units_for_parent(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_organizational_units_for_parent(Client, Input, []).
@@ -3643,12 +3616,7 @@ list_organizational_units_for_parent(Client, Input)
 -spec list_organizational_units_for_parent(map(), list_organizational_units_for_parent_request(), proplists:proplist()) ->
     {ok, list_organizational_units_for_parent_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, parent_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_organizational_units_for_parent_errors(), tuple()}.
 list_organizational_units_for_parent(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOrganizationalUnitsForParent">>, Input, Options).
@@ -3677,12 +3645,7 @@ list_organizational_units_for_parent(Client, Input, Options)
 -spec list_parents(map(), list_parents_request()) ->
     {ok, list_parents_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, child_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_parents_errors(), tuple()}.
 list_parents(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_parents(Client, Input, []).
@@ -3690,12 +3653,7 @@ list_parents(Client, Input)
 -spec list_parents(map(), list_parents_request(), proplists:proplist()) ->
     {ok, list_parents_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, child_not_found_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_parents_errors(), tuple()}.
 list_parents(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListParents">>, Input, Options).
@@ -3718,12 +3676,7 @@ list_parents(Client, Input, Options)
 -spec list_policies(map(), list_policies_request()) ->
     {ok, list_policies_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, list_policies_errors(), tuple()}.
 list_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_policies(Client, Input, []).
@@ -3731,12 +3684,7 @@ list_policies(Client, Input)
 -spec list_policies(map(), list_policies_request(), proplists:proplist()) ->
     {ok, list_policies_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, list_policies_errors(), tuple()}.
 list_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPolicies">>, Input, Options).
@@ -3763,13 +3711,7 @@ list_policies(Client, Input, Options)
 -spec list_policies_for_target(map(), list_policies_for_target_request()) ->
     {ok, list_policies_for_target_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, target_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, list_policies_for_target_errors(), tuple()}.
 list_policies_for_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_policies_for_target(Client, Input, []).
@@ -3777,13 +3719,7 @@ list_policies_for_target(Client, Input)
 -spec list_policies_for_target(map(), list_policies_for_target_request(), proplists:proplist()) ->
     {ok, list_policies_for_target_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, target_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, list_policies_for_target_errors(), tuple()}.
 list_policies_for_target(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPoliciesForTarget">>, Input, Options).
@@ -3815,11 +3751,7 @@ list_policies_for_target(Client, Input, Options)
 -spec list_roots(map(), list_roots_request()) ->
     {ok, list_roots_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_roots_errors(), tuple()}.
 list_roots(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_roots(Client, Input, []).
@@ -3827,11 +3759,7 @@ list_roots(Client, Input)
 -spec list_roots(map(), list_roots_request(), proplists:proplist()) ->
     {ok, list_roots_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_roots_errors(), tuple()}.
 list_roots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRoots">>, Input, Options).
@@ -3854,12 +3782,7 @@ list_roots(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, target_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -3867,12 +3790,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, target_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -3896,13 +3814,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec list_targets_for_policy(map(), list_targets_for_policy_request()) ->
     {ok, list_targets_for_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, policy_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, list_targets_for_policy_errors(), tuple()}.
 list_targets_for_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_targets_for_policy(Client, Input, []).
@@ -3910,13 +3822,7 @@ list_targets_for_policy(Client, Input)
 -spec list_targets_for_policy(map(), list_targets_for_policy_request(), proplists:proplist()) ->
     {ok, list_targets_for_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, policy_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, list_targets_for_policy_errors(), tuple()}.
 list_targets_for_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTargetsForPolicy">>, Input, Options).
@@ -3930,16 +3836,7 @@ list_targets_for_policy(Client, Input, Options)
 -spec move_account(map(), move_account_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_not_found_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, destination_parent_not_found_exception(), tuple()} |
-    {error, duplicate_account_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, source_parent_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, move_account_errors(), tuple()}.
 move_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     move_account(Client, Input, []).
@@ -3947,16 +3844,7 @@ move_account(Client, Input)
 -spec move_account(map(), move_account_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_not_found_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, destination_parent_not_found_exception(), tuple()} |
-    {error, duplicate_account_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, source_parent_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, move_account_errors(), tuple()}.
 move_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"MoveAccount">>, Input, Options).
@@ -3968,14 +3856,7 @@ move_account(Client, Input, Options)
 -spec put_resource_policy(map(), put_resource_policy_request()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
@@ -3983,14 +3864,7 @@ put_resource_policy(Client, Input)
 -spec put_resource_policy(map(), put_resource_policy_request(), proplists:proplist()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResourcePolicy">>, Input, Options).
@@ -4019,16 +3893,7 @@ put_resource_policy(Client, Input, Options)
 -spec register_delegated_administrator(map(), register_delegated_administrator_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_already_registered_exception(), tuple()} |
-    {error, account_not_found_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, register_delegated_administrator_errors(), tuple()}.
 register_delegated_administrator(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_delegated_administrator(Client, Input, []).
@@ -4036,16 +3901,7 @@ register_delegated_administrator(Client, Input)
 -spec register_delegated_administrator(map(), register_delegated_administrator_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_already_registered_exception(), tuple()} |
-    {error, account_not_found_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, register_delegated_administrator_errors(), tuple()}.
 register_delegated_administrator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterDelegatedAdministrator">>, Input, Options).
@@ -4090,15 +3946,7 @@ register_delegated_administrator(Client, Input, Options)
 -spec remove_account_from_organization(map(), remove_account_from_organization_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_not_found_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, master_cannot_leave_organization_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, remove_account_from_organization_errors(), tuple()}.
 remove_account_from_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_account_from_organization(Client, Input, []).
@@ -4106,15 +3954,7 @@ remove_account_from_organization(Client, Input)
 -spec remove_account_from_organization(map(), remove_account_from_organization_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, account_not_found_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, master_cannot_leave_organization_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, remove_account_from_organization_errors(), tuple()}.
 remove_account_from_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveAccountFromOrganization">>, Input, Options).
@@ -4138,14 +3978,7 @@ remove_account_from_organization(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, target_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -4153,14 +3986,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, target_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -4183,14 +4009,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, target_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -4198,14 +4017,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, target_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -4222,14 +4034,7 @@ untag_resource(Client, Input, Options)
 -spec update_organizational_unit(map(), update_organizational_unit_request()) ->
     {ok, update_organizational_unit_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, duplicate_organizational_unit_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, organizational_unit_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_organizational_unit_errors(), tuple()}.
 update_organizational_unit(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_organizational_unit(Client, Input, []).
@@ -4237,14 +4042,7 @@ update_organizational_unit(Client, Input)
 -spec update_organizational_unit(map(), update_organizational_unit_request(), proplists:proplist()) ->
     {ok, update_organizational_unit_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, duplicate_organizational_unit_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, organizational_unit_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_organizational_unit_errors(), tuple()}.
 update_organizational_unit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateOrganizationalUnit">>, Input, Options).
@@ -4262,18 +4060,7 @@ update_organizational_unit(Client, Input, Options)
 -spec update_policy(map(), update_policy_request()) ->
     {ok, update_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, duplicate_policy_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, policy_changes_in_progress_exception(), tuple()} |
-    {error, policy_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, update_policy_errors(), tuple()}.
 update_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_policy(Client, Input, []).
@@ -4281,18 +4068,7 @@ update_policy(Client, Input)
 -spec update_policy(map(), update_policy_request(), proplists:proplist()) ->
     {ok, update_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_organizations_not_in_use_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, constraint_violation_exception(), tuple()} |
-    {error, duplicate_policy_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, policy_changes_in_progress_exception(), tuple()} |
-    {error, policy_not_found_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unsupported_api_endpoint_exception(), tuple()}.
+    {error, update_policy_errors(), tuple()}.
 update_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePolicy">>, Input, Options).

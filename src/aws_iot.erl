@@ -664,11 +664,13 @@
 %% }
 -type get_buckets_aggregation_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% http_url_destination_configuration() :: #{
 %%   <<"confirmationUrl">> => string()
 %% }
 -type http_url_destination_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_audit_suppression_request() :: #{
@@ -676,6 +678,7 @@
 %%   <<"resourceIdentifier">> := resource_identifier()
 %% }
 -type describe_audit_suppression_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_billing_group_response() :: #{
@@ -688,6 +691,7 @@
 %% }
 -type describe_billing_group_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% cancel_job_request() :: #{
 %%   <<"comment">> => string(),
@@ -695,6 +699,7 @@
 %%   <<"reasonCode">> => string()
 %% }
 -type cancel_job_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_thing_response() :: #{
@@ -704,6 +709,7 @@
 %% }
 -type create_thing_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_thing_registration_task_reports_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -711,9 +717,11 @@
 %%   <<"resourceLinks">> => list(string()())
 %% }
 -type list_thing_registration_task_reports_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_certificate_provider_request() :: #{}
 -type describe_certificate_provider_request() :: #{}.
+
 
 %% Example:
 %% retry_criteria() :: #{
@@ -721,6 +729,7 @@
 %%   <<"numberOfRetries">> => integer()
 %% }
 -type retry_criteria() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_billing_group_response() :: #{
@@ -730,15 +739,18 @@
 %% }
 -type create_billing_group_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_dimension_response() :: #{
 %%   <<"arn">> => string(),
 %%   <<"name">> => string()
 %% }
 -type create_dimension_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_mitigation_action_request() :: #{}
 -type delete_mitigation_action_request() :: #{}.
+
 
 %% Example:
 %% list_provisioning_template_versions_response() :: #{
@@ -746,6 +758,7 @@
 %%   <<"versions">> => list(provisioning_template_version_summary()())
 %% }
 -type list_provisioning_template_versions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% audit_mitigation_action_execution_metadata() :: #{
@@ -761,6 +774,7 @@
 %% }
 -type audit_mitigation_action_execution_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% geo_location_target() :: #{
 %%   <<"name">> => string(),
@@ -768,11 +782,13 @@
 %% }
 -type geo_location_target() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_certificate_request() :: #{
 %%   <<"newStatus">> := list(any())
 %% }
 -type update_certificate_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% user_property() :: #{
@@ -780,6 +796,7 @@
 %%   <<"value">> => string()
 %% }
 -type user_property() :: #{binary() => any()}.
+
 
 %% Example:
 %% topic_rule() :: #{
@@ -794,6 +811,7 @@
 %% }
 -type topic_rule() :: #{binary() => any()}.
 
+
 %% Example:
 %% timestream_dimension() :: #{
 %%   <<"name">> => string(),
@@ -801,17 +819,21 @@
 %% }
 -type timestream_dimension() :: #{binary() => any()}.
 
+
 %% Example:
 %% terms_aggregation() :: #{
 %%   <<"maxBuckets">> => integer()
 %% }
 -type terms_aggregation() :: #{binary() => any()}.
+
 %% Example:
 %% create_provisioning_claim_request() :: #{}
 -type create_provisioning_claim_request() :: #{}.
+
 %% Example:
 %% get_topic_rule_destination_request() :: #{}
 -type get_topic_rule_destination_request() :: #{}.
+
 
 %% Example:
 %% update_package_configuration_request() :: #{
@@ -819,6 +841,7 @@
 %%   <<"versionUpdateByJobsConfig">> => version_update_by_jobs_config()
 %% }
 -type update_package_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% ota_update_file() :: #{
@@ -831,11 +854,13 @@
 %% }
 -type ota_update_file() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_statistics_response() :: #{
 %%   <<"statistics">> => statistics()
 %% }
 -type get_statistics_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% violation_event_additional_info() :: #{
@@ -843,17 +868,20 @@
 %% }
 -type violation_event_additional_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_billing_group_request() :: #{
 %%   <<"expectedVersion">> => float()
 %% }
 -type delete_billing_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_policy_versions_response() :: #{
 %%   <<"policyVersions">> => list(policy_version()())
 %% }
 -type list_policy_versions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% tag_resource_request() :: #{
@@ -862,12 +890,14 @@
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_indexing_configuration_response() :: #{
 %%   <<"thingGroupIndexingConfiguration">> => thing_group_indexing_configuration(),
 %%   <<"thingIndexingConfiguration">> => thing_indexing_configuration()
 %% }
 -type get_indexing_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_thing_request() :: #{
@@ -877,9 +907,11 @@
 %%   <<"thingTypeName">> => string()
 %% }
 -type update_thing_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_ca_certificate_request() :: #{}
 -type delete_ca_certificate_request() :: #{}.
+
 
 %% Example:
 %% internal_failure_exception() :: #{
@@ -887,15 +919,18 @@
 %% }
 -type internal_failure_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_job_template_response() :: #{
 %%   <<"jobTemplateArn">> => string(),
 %%   <<"jobTemplateId">> => string()
 %% }
 -type create_job_template_response() :: #{binary() => any()}.
+
 %% Example:
 %% set_default_policy_version_request() :: #{}
 -type set_default_policy_version_request() :: #{}.
+
 
 %% Example:
 %% thing_group_indexing_configuration() :: #{
@@ -904,6 +939,7 @@
 %%   <<"thingGroupIndexingMode">> => list(any())
 %% }
 -type thing_group_indexing_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_policy_version_response() :: #{
@@ -918,6 +954,7 @@
 %% }
 -type get_policy_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% firehose_action() :: #{
 %%   <<"batchMode">> => boolean(),
@@ -927,11 +964,13 @@
 %% }
 -type firehose_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_audit_mitigation_actions_task_response() :: #{
 %%   <<"taskId">> => string()
 %% }
 -type start_audit_mitigation_actions_task_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_things_in_thing_group_request() :: #{
@@ -941,11 +980,13 @@
 %% }
 -type list_things_in_thing_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% http_authorization() :: #{
 %%   <<"sigv4">> => sig_v4_authorization()
 %% }
 -type http_authorization() :: #{binary() => any()}.
+
 
 %% Example:
 %% detect_mitigation_actions_task_target() :: #{
@@ -955,6 +996,7 @@
 %% }
 -type detect_mitigation_actions_task_target() :: #{binary() => any()}.
 
+
 %% Example:
 %% registration_config() :: #{
 %%   <<"roleArn">> => string(),
@@ -963,6 +1005,7 @@
 %% }
 -type registration_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_provisioning_template_versions_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -970,11 +1013,13 @@
 %% }
 -type list_provisioning_template_versions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% malformed_policy_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type malformed_policy_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_thing_groups_request() :: #{
@@ -985,6 +1030,7 @@
 %%   <<"recursive">> => boolean()
 %% }
 -type list_thing_groups_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_domain_configuration_response() :: #{
@@ -1002,17 +1048,20 @@
 %% }
 -type describe_domain_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% attach_thing_principal_request() :: #{
 %%   <<"principal">> := string()
 %% }
 -type attach_thing_principal_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_package_version_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
 -type delete_package_version_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_job_response() :: #{
@@ -1021,20 +1070,24 @@
 %% }
 -type describe_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% version_conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type version_conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_job_execution_request() :: #{
 %%   <<"executionNumber">> => float()
 %% }
 -type describe_job_execution_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_security_profile_response() :: #{}
 -type delete_security_profile_response() :: #{}.
+
 
 %% Example:
 %% cancel_job_execution_request() :: #{
@@ -1044,12 +1097,14 @@
 %% }
 -type cancel_job_execution_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_topic_rules_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"rules">> => list(topic_rule_list_item()())
 %% }
 -type list_topic_rules_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_job_response() :: #{
@@ -1058,6 +1113,7 @@
 %%   <<"jobId">> => string()
 %% }
 -type create_job_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% audit_finding() :: #{
@@ -1075,14 +1131,17 @@
 %% }
 -type audit_finding() :: #{binary() => any()}.
 
+
 %% Example:
 %% unauthorized_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type unauthorized_exception() :: #{binary() => any()}.
+
 %% Example:
 %% get_indexing_configuration_request() :: #{}
 -type get_indexing_configuration_request() :: #{}.
+
 
 %% Example:
 %% describe_provisioning_template_version_response() :: #{
@@ -1093,14 +1152,17 @@
 %% }
 -type describe_provisioning_template_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% tls_context() :: #{
 %%   <<"serverName">> => string()
 %% }
 -type tls_context() :: #{binary() => any()}.
+
 %% Example:
 %% get_policy_version_request() :: #{}
 -type get_policy_version_request() :: #{}.
+
 
 %% Example:
 %% update_domain_configuration_request() :: #{
@@ -1111,9 +1173,11 @@
 %%   <<"tlsConfig">> => tls_config()
 %% }
 -type update_domain_configuration_request() :: #{binary() => any()}.
+
 %% Example:
 %% attach_security_profile_response() :: #{}
 -type attach_security_profile_response() :: #{}.
+
 
 %% Example:
 %% billing_group_metadata() :: #{
@@ -1121,26 +1185,31 @@
 %% }
 -type billing_group_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% buckets_aggregation_type() :: #{
 %%   <<"termsAggregation">> => terms_aggregation()
 %% }
 -type buckets_aggregation_type() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_authorizer_response() :: #{
 %%   <<"authorizerDescription">> => authorizer_description()
 %% }
 -type describe_authorizer_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_custom_metric_request() :: #{}
 -type delete_custom_metric_request() :: #{}.
+
 
 %% Example:
 %% test_authorization_response() :: #{
 %%   <<"authResults">> => list(auth_result()())
 %% }
 -type test_authorization_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_job_executions_rollout_config() :: #{
@@ -1149,6 +1218,7 @@
 %% }
 -type aws_job_executions_rollout_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_topic_rule_response() :: #{
 %%   <<"rule">> => topic_rule(),
@@ -1156,12 +1226,14 @@
 %% }
 -type get_topic_rule_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% violation_event_occurrence_range() :: #{
 %%   <<"endTime">> => non_neg_integer(),
 %%   <<"startTime">> => non_neg_integer()
 %% }
 -type violation_event_occurrence_range() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_security_profiles_for_target_request() :: #{
@@ -1171,6 +1243,7 @@
 %%   <<"securityProfileTargetArn">> := string()
 %% }
 -type list_security_profiles_for_target_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% ca_certificate_description() :: #{
@@ -1189,24 +1262,29 @@
 %% }
 -type ca_certificate_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_policies_response() :: #{
 %%   <<"nextMarker">> => string(),
 %%   <<"policies">> => list(policy()())
 %% }
 -type list_policies_response() :: #{binary() => any()}.
+
 %% Example:
 %% cancel_certificate_transfer_request() :: #{}
 -type cancel_certificate_transfer_request() :: #{}.
+
 %% Example:
 %% delete_scheduled_audit_response() :: #{}
 -type delete_scheduled_audit_response() :: #{}.
+
 
 %% Example:
 %% get_percentiles_response() :: #{
 %%   <<"percentiles">> => list(percent_pair()())
 %% }
 -type get_percentiles_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_topic_rules_request() :: #{
@@ -1217,17 +1295,21 @@
 %% }
 -type list_topic_rules_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_job_timeout_config() :: #{
 %%   <<"inProgressTimeoutInMinutes">> => float()
 %% }
 -type aws_job_timeout_config() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 %% Example:
 %% confirm_topic_rule_destination_response() :: #{}
 -type confirm_topic_rule_destination_response() :: #{}.
+
 
 %% Example:
 %% create_package_request() :: #{
@@ -1236,6 +1318,7 @@
 %%   <<"tags">> => map()
 %% }
 -type create_package_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_audit_mitigation_actions_executions_request() :: #{
@@ -1246,12 +1329,15 @@
 %%   <<"taskId">> := string()
 %% }
 -type list_audit_mitigation_actions_executions_request() :: #{binary() => any()}.
+
 %% Example:
 %% detach_thing_principal_response() :: #{}
 -type detach_thing_principal_response() :: #{}.
+
 %% Example:
 %% delete_thing_type_request() :: #{}
 -type delete_thing_type_request() :: #{}.
+
 
 %% Example:
 %% list_topic_rule_destinations_response() :: #{
@@ -1260,12 +1346,14 @@
 %% }
 -type list_topic_rule_destinations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_detect_mitigation_actions_tasks_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"tasks">> => list(detect_mitigation_actions_task_summary()())
 %% }
 -type list_detect_mitigation_actions_tasks_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% test_invoke_authorizer_request() :: #{
@@ -1277,6 +1365,7 @@
 %% }
 -type test_invoke_authorizer_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_job_abort_criteria() :: #{
 %%   <<"action">> => list(any()),
@@ -1285,9 +1374,11 @@
 %%   <<"thresholdPercentage">> => float()
 %% }
 -type aws_job_abort_criteria() :: #{binary() => any()}.
+
 %% Example:
 %% update_audit_suppression_response() :: #{}
 -type update_audit_suppression_response() :: #{}.
+
 
 %% Example:
 %% provisioning_hook() :: #{
@@ -1296,15 +1387,18 @@
 %% }
 -type provisioning_hook() :: #{binary() => any()}.
 
+
 %% Example:
 %% dynamo_dbv2_action() :: #{
 %%   <<"putItem">> => put_item_input(),
 %%   <<"roleArn">> => string()
 %% }
 -type dynamo_dbv2_action() :: #{binary() => any()}.
+
 %% Example:
 %% enable_topic_rule_request() :: #{}
 -type enable_topic_rule_request() :: #{}.
+
 
 %% Example:
 %% audit_mitigation_actions_task_metadata() :: #{
@@ -1314,11 +1408,13 @@
 %% }
 -type audit_mitigation_actions_task_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_ota_update_response() :: #{
 %%   <<"otaUpdateInfo">> => ota_update_info()
 %% }
 -type get_ota_update_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_property_value() :: #{
@@ -1327,6 +1423,7 @@
 %%   <<"value">> => list()
 %% }
 -type asset_property_value() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_jobs_request() :: #{
@@ -1340,6 +1437,7 @@
 %% }
 -type list_jobs_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_policies_request() :: #{
 %%   <<"ascendingOrder">> => boolean(),
@@ -1348,6 +1446,7 @@
 %% }
 -type list_policies_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_billing_groups_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -1355,6 +1454,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_billing_groups_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_action() :: #{
@@ -1365,6 +1465,7 @@
 %% }
 -type s3_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% document_parameter() :: #{
 %%   <<"description">> => string(),
@@ -1374,9 +1475,11 @@
 %%   <<"regex">> => string()
 %% }
 -type document_parameter() :: #{binary() => any()}.
+
 %% Example:
 %% get_policy_request() :: #{}
 -type get_policy_request() :: #{}.
+
 
 %% Example:
 %% update_billing_group_response() :: #{
@@ -1384,11 +1487,13 @@
 %% }
 -type update_billing_group_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% reject_certificate_transfer_request() :: #{
 %%   <<"rejectReason">> => string()
 %% }
 -type reject_certificate_transfer_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_thing_principals_request() :: #{
@@ -1397,11 +1502,13 @@
 %% }
 -type list_thing_principals_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% billing_group_properties() :: #{
 %%   <<"billingGroupDescription">> => string()
 %% }
 -type billing_group_properties() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_security_profile_response() :: #{
@@ -1419,11 +1526,13 @@
 %% }
 -type describe_security_profile_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_aggregation_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_aggregation_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_security_profile_response() :: #{
@@ -1432,11 +1541,13 @@
 %% }
 -type create_security_profile_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% http_url_destination_properties() :: #{
 %%   <<"confirmationUrl">> => string()
 %% }
 -type http_url_destination_properties() :: #{binary() => any()}.
+
 
 %% Example:
 %% register_certificate_without_ca_response() :: #{
@@ -1444,6 +1555,7 @@
 %%   <<"certificateId">> => string()
 %% }
 -type register_certificate_without_ca_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_certificate_provider_request() :: #{
@@ -1454,11 +1566,13 @@
 %% }
 -type create_certificate_provider_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type delete_conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_certificate_from_csr_request() :: #{
@@ -1467,6 +1581,7 @@
 %% }
 -type create_certificate_from_csr_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_audit_findings_response() :: #{
 %%   <<"findings">> => list(audit_finding()()),
@@ -1474,12 +1589,14 @@
 %% }
 -type list_audit_findings_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_attached_policies_response() :: #{
 %%   <<"nextMarker">> => string(),
 %%   <<"policies">> => list(policy()())
 %% }
 -type list_attached_policies_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% thing_indexing_configuration() :: #{
@@ -1492,6 +1609,7 @@
 %%   <<"thingIndexingMode">> => list(any())
 %% }
 -type thing_indexing_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_security_profile_request() :: #{
@@ -1509,6 +1627,7 @@
 %% }
 -type update_security_profile_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_fleet_metric_request() :: #{
 %%   <<"aggregationField">> := string(),
@@ -1522,12 +1641,15 @@
 %%   <<"unit">> => list(any())
 %% }
 -type create_fleet_metric_request() :: #{binary() => any()}.
+
 %% Example:
 %% stop_thing_registration_task_request() :: #{}
 -type stop_thing_registration_task_request() :: #{}.
+
 %% Example:
 %% describe_custom_metric_request() :: #{}
 -type describe_custom_metric_request() :: #{}.
+
 
 %% Example:
 %% list_role_aliases_request() :: #{
@@ -1537,14 +1659,17 @@
 %% }
 -type list_role_aliases_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_custom_metric_request() :: #{
 %%   <<"displayName">> := string()
 %% }
 -type update_custom_metric_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_job_document_request() :: #{}
 -type get_job_document_request() :: #{}.
+
 
 %% Example:
 %% dynamo_db_action() :: #{
@@ -1560,6 +1685,7 @@
 %%   <<"tableName">> => string()
 %% }
 -type dynamo_db_action() :: #{binary() => any()}.
+
 
 %% Example:
 %% certificate_description() :: #{
@@ -1580,6 +1706,7 @@
 %% }
 -type certificate_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_asset_property_value_entry() :: #{
 %%   <<"assetId">> => string(),
@@ -1590,11 +1717,13 @@
 %% }
 -type put_asset_property_value_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_effective_policies_response() :: #{
 %%   <<"effectivePolicies">> => list(effective_policy()())
 %% }
 -type get_effective_policies_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_mitigation_actions_request() :: #{
@@ -1604,6 +1733,7 @@
 %% }
 -type list_mitigation_actions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_policy_principals_response() :: #{
 %%   <<"nextMarker">> => string(),
@@ -1611,11 +1741,13 @@
 %% }
 -type list_policy_principals_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% certificate_state_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type certificate_state_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_domain_configurations_response() :: #{
@@ -1624,6 +1756,7 @@
 %% }
 -type list_domain_configurations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_policy_request() :: #{
 %%   <<"policyDocument">> := string(),
@@ -1631,21 +1764,25 @@
 %% }
 -type create_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_packages_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_packages_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_ota_update_request() :: #{}
 -type get_ota_update_request() :: #{}.
+
 
 %% Example:
 %% replace_topic_rule_request() :: #{
 %%   <<"topicRulePayload">> := topic_rule_payload()
 %% }
 -type replace_topic_rule_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_thing_registration_task_request() :: #{
@@ -1656,14 +1793,17 @@
 %% }
 -type start_thing_registration_task_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% detach_security_profile_request() :: #{
 %%   <<"securityProfileTargetArn">> := string()
 %% }
 -type detach_security_profile_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_authorizer_request() :: #{}
 -type describe_authorizer_request() :: #{}.
+
 
 %% Example:
 %% list_fleet_metrics_response() :: #{
@@ -1671,6 +1811,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_fleet_metrics_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% metric_to_retain() :: #{
@@ -1680,11 +1821,13 @@
 %% }
 -type metric_to_retain() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_topic_rule_destination_response() :: #{
 %%   <<"topicRuleDestination">> => topic_rule_destination()
 %% }
 -type create_topic_rule_destination_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_ca_certificates_response() :: #{
@@ -1692,12 +1835,15 @@
 %%   <<"nextMarker">> => string()
 %% }
 -type list_ca_certificates_response() :: #{binary() => any()}.
+
 %% Example:
 %% update_package_version_response() :: #{}
 -type update_package_version_response() :: #{}.
+
 %% Example:
 %% update_event_configurations_response() :: #{}
 -type update_event_configurations_response() :: #{}.
+
 
 %% Example:
 %% versions_limit_exceeded_exception() :: #{
@@ -1705,12 +1851,14 @@
 %% }
 -type versions_limit_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_mitigation_action_request() :: #{
 %%   <<"actionParams">> => mitigation_action_params(),
 %%   <<"roleArn">> => string()
 %% }
 -type update_mitigation_action_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_violation_events_request() :: #{
@@ -1726,6 +1874,7 @@
 %% }
 -type list_violation_events_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_policy_version_response() :: #{
 %%   <<"isDefaultVersion">> => boolean(),
@@ -1735,12 +1884,14 @@
 %% }
 -type create_policy_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% add_things_to_thing_group_params() :: #{
 %%   <<"overrideDynamicGroups">> => boolean(),
 %%   <<"thingGroupNames">> => list(string()())
 %% }
 -type add_things_to_thing_group_params() :: #{binary() => any()}.
+
 
 %% Example:
 %% register_certificate_without_ca_request() :: #{
@@ -1749,6 +1900,7 @@
 %% }
 -type register_certificate_without_ca_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_things_in_thing_group_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -1756,11 +1908,13 @@
 %% }
 -type list_things_in_thing_group_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% configuration() :: #{
 %%   <<"Enabled">> => boolean()
 %% }
 -type configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_audit_mitigation_actions_task_request() :: #{
@@ -1769,12 +1923,15 @@
 %%   <<"target">> := audit_mitigation_actions_task_target()
 %% }
 -type start_audit_mitigation_actions_task_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_stream_response() :: #{}
 -type delete_stream_response() :: #{}.
+
 %% Example:
 %% update_indexing_configuration_response() :: #{}
 -type update_indexing_configuration_response() :: #{}.
+
 
 %% Example:
 %% http_action_header() :: #{
@@ -1782,6 +1939,7 @@
 %%   <<"value">> => string()
 %% }
 -type http_action_header() :: #{binary() => any()}.
+
 
 %% Example:
 %% exponential_rollout_rate() :: #{
@@ -1791,12 +1949,14 @@
 %% }
 -type exponential_rollout_rate() :: #{binary() => any()}.
 
+
 %% Example:
 %% register_ca_certificate_response() :: #{
 %%   <<"certificateArn">> => string(),
 %%   <<"certificateId">> => string()
 %% }
 -type register_ca_certificate_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_jobs_response() :: #{
@@ -1805,12 +1965,14 @@
 %% }
 -type list_jobs_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_security_profiles_for_target_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"securityProfileTargetMappings">> => list(security_profile_target_mapping()())
 %% }
 -type list_security_profiles_for_target_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_job_request() :: #{
@@ -1833,11 +1995,13 @@
 %% }
 -type create_job_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% detach_policy_request() :: #{
 %%   <<"target">> := string()
 %% }
 -type detach_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_account_audit_configuration_response() :: #{
@@ -1846,9 +2010,11 @@
 %%   <<"roleArn">> => string()
 %% }
 -type describe_account_audit_configuration_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_domain_configuration_request() :: #{}
 -type describe_domain_configuration_request() :: #{}.
+
 
 %% Example:
 %% mqtt_headers() :: #{
@@ -1861,6 +2027,7 @@
 %% }
 -type mqtt_headers() :: #{binary() => any()}.
 
+
 %% Example:
 %% remove_thing_from_billing_group_request() :: #{
 %%   <<"billingGroupArn">> => string(),
@@ -1870,21 +2037,25 @@
 %% }
 -type remove_thing_from_billing_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_provisioning_templates_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"templates">> => list(provisioning_template_summary()())
 %% }
 -type list_provisioning_templates_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_account_audit_configuration_request() :: #{}
 -type describe_account_audit_configuration_request() :: #{}.
+
 
 %% Example:
 %% update_ca_certificate_params() :: #{
 %%   <<"action">> => list(any())
 %% }
 -type update_ca_certificate_params() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_ca_certificates_request() :: #{
@@ -1895,12 +2066,14 @@
 %% }
 -type list_ca_certificates_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_topic_rule_request() :: #{
 %%   <<"tags">> => string(),
 %%   <<"topicRulePayload">> := topic_rule_payload()
 %% }
 -type create_topic_rule_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% associate_targets_with_job_request() :: #{
@@ -1909,12 +2082,15 @@
 %%   <<"targets">> := list(string()())
 %% }
 -type associate_targets_with_job_request() :: #{binary() => any()}.
+
 %% Example:
 %% update_package_response() :: #{}
 -type update_package_response() :: #{}.
+
 %% Example:
 %% remove_thing_from_billing_group_response() :: #{}
 -type remove_thing_from_billing_group_response() :: #{}.
+
 
 %% Example:
 %% update_certificate_provider_response() :: #{
@@ -1922,9 +2098,11 @@
 %%   <<"certificateProviderName">> => string()
 %% }
 -type update_certificate_provider_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_scheduled_audit_request() :: #{}
 -type describe_scheduled_audit_request() :: #{}.
+
 
 %% Example:
 %% list_policy_principals_request() :: #{
@@ -1934,6 +2112,7 @@
 %%   <<"policyName">> := string()
 %% }
 -type list_policy_principals_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_dynamic_thing_group_response() :: #{
@@ -1946,6 +2125,7 @@
 %% }
 -type create_dynamic_thing_group_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% error_info() :: #{
 %%   <<"code">> => string(),
@@ -1953,11 +2133,13 @@
 %% }
 -type error_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% statistical_threshold() :: #{
 %%   <<"statistic">> => string()
 %% }
 -type statistical_threshold() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_scheduled_audit_request() :: #{
@@ -1968,15 +2150,18 @@
 %% }
 -type update_scheduled_audit_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_index_request() :: #{}
 -type describe_index_request() :: #{}.
+
 
 %% Example:
 %% thing_connectivity() :: #{
@@ -1986,11 +2171,13 @@
 %% }
 -type thing_connectivity() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_keys_and_certificate_request() :: #{
 %%   <<"setAsActive">> => boolean()
 %% }
 -type create_keys_and_certificate_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_certificates_request() :: #{
@@ -1999,12 +2186,15 @@
 %%   <<"pageSize">> => integer()
 %% }
 -type list_certificates_request() :: #{binary() => any()}.
+
 %% Example:
 %% cancel_audit_task_response() :: #{}
 -type cancel_audit_task_response() :: #{}.
+
 %% Example:
 %% delete_authorizer_request() :: #{}
 -type delete_authorizer_request() :: #{}.
+
 
 %% Example:
 %% timestream_action() :: #{
@@ -2016,11 +2206,13 @@
 %% }
 -type timestream_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% code_signing_signature() :: #{
 %%   <<"inlineDocument">> => binary()
 %% }
 -type code_signing_signature() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_keys_and_certificate_response() :: #{
@@ -2031,6 +2223,7 @@
 %% }
 -type create_keys_and_certificate_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_streams_request() :: #{
 %%   <<"ascendingOrder">> => boolean(),
@@ -2038,6 +2231,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_streams_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_authorizer_request() :: #{
@@ -2051,6 +2245,7 @@
 %% }
 -type create_authorizer_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_provisioning_template_version_response() :: #{
 %%   <<"isDefaultVersion">> => boolean(),
@@ -2059,6 +2254,7 @@
 %%   <<"versionId">> => integer()
 %% }
 -type create_provisioning_template_version_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_audit_tasks_request() :: #{
@@ -2071,6 +2267,7 @@
 %% }
 -type list_audit_tasks_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_index_response() :: #{
 %%   <<"indexName">> => string(),
@@ -2078,6 +2275,7 @@
 %%   <<"schema">> => string()
 %% }
 -type describe_index_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_audit_mitigation_actions_tasks_request() :: #{
@@ -2090,6 +2288,7 @@
 %%   <<"taskStatus">> => list(any())
 %% }
 -type list_audit_mitigation_actions_tasks_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_ota_update_request() :: #{
@@ -2108,12 +2307,14 @@
 %% }
 -type create_ota_update_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_fleet_metrics_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_fleet_metrics_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_role_alias_request() :: #{
@@ -2123,6 +2324,7 @@
 %% }
 -type create_role_alias_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_certificate_provider_response() :: #{
 %%   <<"certificateProviderArn">> => string(),
@@ -2130,12 +2332,14 @@
 %% }
 -type create_certificate_provider_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% log_target() :: #{
 %%   <<"targetName">> => string(),
 %%   <<"targetType">> => list(any())
 %% }
 -type log_target() :: #{binary() => any()}.
+
 
 %% Example:
 %% mitigation_action() :: #{
@@ -2145,6 +2349,7 @@
 %%   <<"roleArn">> => string()
 %% }
 -type mitigation_action() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_ota_update_response() :: #{
@@ -2156,12 +2361,14 @@
 %% }
 -type create_ota_update_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% metrics_export_config() :: #{
 %%   <<"mqttTopic">> => string(),
 %%   <<"roleArn">> => string()
 %% }
 -type metrics_export_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% mitigation_action_identifier() :: #{
@@ -2170,15 +2377,18 @@
 %%   <<"creationDate">> => non_neg_integer()
 %% }
 -type mitigation_action_identifier() :: #{binary() => any()}.
+
 %% Example:
 %% delete_authorizer_response() :: #{}
 -type delete_authorizer_response() :: #{}.
+
 
 %% Example:
 %% aws_job_presigned_url_config() :: #{
 %%   <<"expiresInSec">> => float()
 %% }
 -type aws_job_presigned_url_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% percent_pair() :: #{
@@ -2187,12 +2397,14 @@
 %% }
 -type percent_pair() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_things_in_billing_group_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_things_in_billing_group_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_billing_group_request() :: #{
@@ -2201,6 +2413,7 @@
 %% }
 -type create_billing_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% security_profile_identifier() :: #{
 %%   <<"arn">> => string(),
@@ -2208,11 +2421,13 @@
 %% }
 -type security_profile_identifier() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_on_demand_audit_task_response() :: #{
 %%   <<"taskId">> => string()
 %% }
 -type start_on_demand_audit_task_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_indices_request() :: #{
@@ -2221,12 +2436,14 @@
 %% }
 -type list_indices_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% location_timestamp() :: #{
 %%   <<"unit">> => string(),
 %%   <<"value">> => string()
 %% }
 -type location_timestamp() :: #{binary() => any()}.
+
 
 %% Example:
 %% elasticsearch_action() :: #{
@@ -2238,12 +2455,14 @@
 %% }
 -type elasticsearch_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% policy_version_identifier() :: #{
 %%   <<"policyName">> => string(),
 %%   <<"policyVersionId">> => string()
 %% }
 -type policy_version_identifier() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_job_executions_for_thing_request() :: #{
@@ -2255,6 +2474,7 @@
 %% }
 -type list_job_executions_for_thing_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_targets_with_job_response() :: #{
 %%   <<"description">> => string(),
@@ -2262,6 +2482,7 @@
 %%   <<"jobId">> => string()
 %% }
 -type associate_targets_with_job_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_detect_mitigation_actions_task_request() :: #{
@@ -2273,9 +2494,11 @@
 %%   <<"violationEventOccurrenceRange">> => violation_event_occurrence_range()
 %% }
 -type start_detect_mitigation_actions_task_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_scheduled_audit_request() :: #{}
 -type delete_scheduled_audit_request() :: #{}.
+
 
 %% Example:
 %% policy_version() :: #{
@@ -2284,6 +2507,7 @@
 %%   <<"versionId">> => string()
 %% }
 -type policy_version() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_provisioning_claim_response() :: #{
@@ -2294,11 +2518,13 @@
 %% }
 -type create_provisioning_claim_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_thing_registration_task_response() :: #{
 %%   <<"taskId">> => string()
 %% }
 -type start_thing_registration_task_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_percentiles_request() :: #{
@@ -2310,12 +2536,14 @@
 %% }
 -type get_percentiles_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_authorizer_response() :: #{
 %%   <<"authorizerArn">> => string(),
 %%   <<"authorizerName">> => string()
 %% }
 -type create_authorizer_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_thing_request() :: #{
@@ -2324,6 +2552,7 @@
 %%   <<"thingTypeName">> => string()
 %% }
 -type create_thing_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_package_version_request() :: #{
@@ -2334,6 +2563,7 @@
 %% }
 -type update_package_version_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% provisioning_template_version_summary() :: #{
 %%   <<"creationDate">> => non_neg_integer(),
@@ -2341,12 +2571,15 @@
 %%   <<"versionId">> => integer()
 %% }
 -type provisioning_template_version_summary() :: #{binary() => any()}.
+
 %% Example:
 %% describe_ca_certificate_request() :: #{}
 -type describe_ca_certificate_request() :: #{}.
+
 %% Example:
 %% delete_job_template_request() :: #{}
 -type delete_job_template_request() :: #{}.
+
 
 %% Example:
 %% job_process_details() :: #{
@@ -2361,12 +2594,15 @@
 %%   <<"processingTargets">> => list(string()())
 %% }
 -type job_process_details() :: #{binary() => any()}.
+
 %% Example:
 %% cancel_detect_mitigation_actions_task_request() :: #{}
 -type cancel_detect_mitigation_actions_task_request() :: #{}.
+
 %% Example:
 %% describe_audit_mitigation_actions_task_request() :: #{}
 -type describe_audit_mitigation_actions_task_request() :: #{}.
+
 
 %% Example:
 %% sns_action() :: #{
@@ -2376,6 +2612,7 @@
 %% }
 -type sns_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% indexing_filter() :: #{
 %%   <<"geoLocations">> => list(geo_location_target()()),
@@ -2383,20 +2620,24 @@
 %% }
 -type indexing_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% set_logging_options_request() :: #{
 %%   <<"loggingOptionsPayload">> := logging_options_payload()
 %% }
 -type set_logging_options_request() :: #{binary() => any()}.
+
 %% Example:
 %% deprecate_thing_type_response() :: #{}
 -type deprecate_thing_type_response() :: #{}.
+
 
 %% Example:
 %% describe_audit_finding_response() :: #{
 %%   <<"finding">> => audit_finding()
 %% }
 -type describe_audit_finding_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_attached_policies_request() :: #{
@@ -2406,6 +2647,7 @@
 %% }
 -type list_attached_policies_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% sig_v4_authorization() :: #{
 %%   <<"roleArn">> => string(),
@@ -2413,6 +2655,7 @@
 %%   <<"signingRegion">> => string()
 %% }
 -type sig_v4_authorization() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_stream_request() :: #{
@@ -2422,6 +2665,7 @@
 %%   <<"tags">> => list(tag()())
 %% }
 -type create_stream_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_provisioning_template_request() :: #{
@@ -2434,6 +2678,7 @@
 %% }
 -type update_provisioning_template_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_v2_logging_levels_response() :: #{
 %%   <<"logTargetConfigurations">> => list(log_target_configuration()()),
@@ -2441,15 +2686,18 @@
 %% }
 -type list_v2_logging_levels_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_audit_suppression_request() :: #{
 %%   <<"checkName">> := string(),
 %%   <<"resourceIdentifier">> := resource_identifier()
 %% }
 -type delete_audit_suppression_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_event_configurations_request() :: #{}
 -type describe_event_configurations_request() :: #{}.
+
 
 %% Example:
 %% job_summary() :: #{
@@ -2465,6 +2713,7 @@
 %% }
 -type job_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_scheduled_audit_request() :: #{
 %%   <<"dayOfMonth">> => string(),
@@ -2474,9 +2723,11 @@
 %%   <<"targetCheckNames">> := list(string()())
 %% }
 -type create_scheduled_audit_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_audit_finding_request() :: #{}
 -type describe_audit_finding_request() :: #{}.
+
 
 %% Example:
 %% get_statistics_request() :: #{
@@ -2486,6 +2737,7 @@
 %%   <<"queryVersion">> => string()
 %% }
 -type get_statistics_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% thing_attribute() :: #{
@@ -2497,12 +2749,14 @@
 %% }
 -type thing_attribute() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_active_violations_response() :: #{
 %%   <<"activeViolations">> => list(active_violation()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_active_violations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_custom_metric_response() :: #{
@@ -2514,9 +2768,11 @@
 %%   <<"metricType">> => list(any())
 %% }
 -type describe_custom_metric_response() :: #{binary() => any()}.
+
 %% Example:
 %% cancel_detect_mitigation_actions_task_response() :: #{}
 -type cancel_detect_mitigation_actions_task_response() :: #{}.
+
 
 %% Example:
 %% describe_managed_job_template_request() :: #{
@@ -2524,12 +2780,14 @@
 %% }
 -type describe_managed_job_template_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_targets_for_policy_response() :: #{
 %%   <<"nextMarker">> => string(),
 %%   <<"targets">> => list(string()())
 %% }
 -type list_targets_for_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_audit_suppression_request() :: #{
@@ -2541,9 +2799,11 @@
 %%   <<"suppressIndefinitely">> => boolean()
 %% }
 -type create_audit_suppression_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_domain_configuration_request() :: #{}
 -type delete_domain_configuration_request() :: #{}.
+
 
 %% Example:
 %% aws_job_rate_increase_criteria() :: #{
@@ -2551,6 +2811,7 @@
 %%   <<"numberOfSucceededThings">> => integer()
 %% }
 -type aws_job_rate_increase_criteria() :: #{binary() => any()}.
+
 
 %% Example:
 %% cloudwatch_metric_action() :: #{
@@ -2563,6 +2824,7 @@
 %% }
 -type cloudwatch_metric_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_certificate_providers_request() :: #{
 %%   <<"ascendingOrder">> => boolean(),
@@ -2570,14 +2832,17 @@
 %% }
 -type list_certificate_providers_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_job_execution_response() :: #{
 %%   <<"execution">> => job_execution()
 %% }
 -type describe_job_execution_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_policy_version_request() :: #{}
 -type delete_policy_version_request() :: #{}.
+
 
 %% Example:
 %% http_context() :: #{
@@ -2585,9 +2850,11 @@
 %%   <<"queryString">> => string()
 %% }
 -type http_context() :: #{binary() => any()}.
+
 %% Example:
 %% detach_security_profile_response() :: #{}
 -type detach_security_profile_response() :: #{}.
+
 
 %% Example:
 %% iot_analytics_action() :: #{
@@ -2598,6 +2865,7 @@
 %% }
 -type iot_analytics_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% metric_datum() :: #{
 %%   <<"timestamp">> => non_neg_integer(),
@@ -2605,15 +2873,18 @@
 %% }
 -type metric_datum() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string(),
 %%   <<"resourceId">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_package_response() :: #{}
 -type delete_package_response() :: #{}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -2621,12 +2892,14 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% logging_options_payload() :: #{
 %%   <<"logLevel">> => list(any()),
 %%   <<"roleArn">> => string()
 %% }
 -type logging_options_payload() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_security_profile_request() :: #{
@@ -2640,12 +2913,14 @@
 %% }
 -type create_security_profile_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_mitigation_action_response() :: #{
 %%   <<"actionArn">> => string(),
 %%   <<"actionId">> => string()
 %% }
 -type create_mitigation_action_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_ota_updates_request() :: #{
@@ -2655,6 +2930,7 @@
 %% }
 -type list_ota_updates_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_indexing_configuration_request() :: #{
 %%   <<"thingGroupIndexingConfiguration">> => thing_group_indexing_configuration(),
@@ -2662,12 +2938,14 @@
 %% }
 -type update_indexing_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_things_in_billing_group_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"things">> => list(string()())
 %% }
 -type list_things_in_billing_group_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_managed_job_templates_request() :: #{
@@ -2677,6 +2955,7 @@
 %% }
 -type list_managed_job_templates_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_provisioning_templates_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -2684,11 +2963,13 @@
 %% }
 -type list_provisioning_templates_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% lambda_action() :: #{
 %%   <<"functionArn">> => string()
 %% }
 -type lambda_action() :: #{binary() => any()}.
+
 
 %% Example:
 %% attach_security_profile_request() :: #{
@@ -2696,12 +2977,14 @@
 %% }
 -type attach_security_profile_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_role_alias_request() :: #{
 %%   <<"credentialDurationSeconds">> => integer(),
 %%   <<"roleArn">> => string()
 %% }
 -type update_role_alias_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% kinesis_action() :: #{
@@ -2711,12 +2994,14 @@
 %% }
 -type kinesis_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% timestream_timestamp() :: #{
 %%   <<"unit">> => string(),
 %%   <<"value">> => string()
 %% }
 -type timestream_timestamp() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_identifier() :: #{
@@ -2733,6 +3018,7 @@
 %% }
 -type resource_identifier() :: #{binary() => any()}.
 
+
 %% Example:
 %% signing_profile_parameter() :: #{
 %%   <<"certificateArn">> => string(),
@@ -2741,6 +3027,7 @@
 %% }
 -type signing_profile_parameter() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag() :: #{
 %%   <<"Key">> => string(),
@@ -2748,12 +3035,14 @@
 %% }
 -type tag() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_custom_metrics_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_custom_metrics_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_package_version_request() :: #{
@@ -2764,6 +3053,7 @@
 %% }
 -type create_package_version_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_policy_version_request() :: #{
 %%   <<"policyDocument">> := string(),
@@ -2771,11 +3061,13 @@
 %% }
 -type create_policy_version_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_response_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_response_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_job_request() :: #{
@@ -2789,14 +3081,17 @@
 %% }
 -type update_job_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_request_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_request_exception() :: #{binary() => any()}.
+
 %% Example:
 %% describe_thing_group_request() :: #{}
 -type describe_thing_group_request() :: #{}.
+
 
 %% Example:
 %% describe_audit_suppression_response() :: #{
@@ -2808,6 +3103,7 @@
 %% }
 -type describe_audit_suppression_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_audit_suppression_request() :: #{
 %%   <<"checkName">> := string(),
@@ -2818,6 +3114,7 @@
 %% }
 -type update_audit_suppression_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_thing_group_request() :: #{
 %%   <<"expectedVersion">> => float(),
@@ -2825,14 +3122,17 @@
 %% }
 -type update_thing_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% certificate_conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type certificate_conflict_exception() :: #{binary() => any()}.
+
 %% Example:
 %% describe_mitigation_action_request() :: #{}
 -type describe_mitigation_action_request() :: #{}.
+
 
 %% Example:
 %% create_thing_group_request() :: #{
@@ -2842,6 +3142,7 @@
 %% }
 -type create_thing_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_scheduled_audits_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -2849,15 +3150,18 @@
 %% }
 -type list_scheduled_audits_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% enable_io_t_logging_params() :: #{
 %%   <<"logLevel">> => list(any()),
 %%   <<"roleArnForLogging">> => string()
 %% }
 -type enable_io_t_logging_params() :: #{binary() => any()}.
+
 %% Example:
 %% describe_job_template_request() :: #{}
 -type describe_job_template_request() :: #{}.
+
 
 %% Example:
 %% list_thing_types_response() :: #{
@@ -2866,6 +3170,7 @@
 %% }
 -type list_thing_types_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_security_profiles_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -2873,12 +3178,14 @@
 %% }
 -type list_security_profiles_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_streams_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"streams">> => list(stream_summary()())
 %% }
 -type list_streams_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% register_ca_certificate_request() :: #{
@@ -2891,12 +3198,15 @@
 %%   <<"verificationCertificate">> => string()
 %% }
 -type register_ca_certificate_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_certificate_provider_request() :: #{}
 -type delete_certificate_provider_request() :: #{}.
+
 %% Example:
 %% describe_dimension_request() :: #{}
 -type describe_dimension_request() :: #{}.
+
 
 %% Example:
 %% cloudwatch_alarm_action() :: #{
@@ -2907,14 +3217,17 @@
 %% }
 -type cloudwatch_alarm_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_billing_group_response() :: #{}
 -type delete_billing_group_response() :: #{}.
+
 
 %% Example:
 %% effective_policy() :: #{
@@ -2924,6 +3237,7 @@
 %% }
 -type effective_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_logging_options_response() :: #{
 %%   <<"logLevel">> => list(any()),
@@ -2931,20 +3245,24 @@
 %% }
 -type get_logging_options_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_role_alias_response() :: #{
 %%   <<"roleAliasDescription">> => role_alias_description()
 %% }
 -type describe_role_alias_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% attach_policy_request() :: #{
 %%   <<"target">> := string()
 %% }
 -type attach_policy_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_registration_code_request() :: #{}
 -type get_registration_code_request() :: #{}.
+
 
 %% Example:
 %% describe_thing_registration_task_response() :: #{
@@ -2963,15 +3281,18 @@
 %% }
 -type describe_thing_registration_task_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_principal_things_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"things">> => list(string()())
 %% }
 -type list_principal_things_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_topic_rule_request() :: #{}
 -type delete_topic_rule_request() :: #{}.
+
 
 %% Example:
 %% create_certificate_from_csr_response() :: #{
@@ -2981,15 +3302,18 @@
 %% }
 -type create_certificate_from_csr_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% register_thing_request() :: #{
 %%   <<"parameters">> => map(),
 %%   <<"templateBody">> := string()
 %% }
 -type register_thing_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_certificate_request() :: #{}
 -type describe_certificate_request() :: #{}.
+
 
 %% Example:
 %% list_principal_policies_request() :: #{
@@ -3000,17 +3324,20 @@
 %% }
 -type list_principal_policies_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_account_audit_configuration_request() :: #{
 %%   <<"deleteScheduledAudits">> => boolean()
 %% }
 -type delete_account_audit_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% abort_config() :: #{
 %%   <<"criteriaList">> => list(abort_criteria()())
 %% }
 -type abort_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_ota_update_request() :: #{
@@ -3019,12 +3346,14 @@
 %% }
 -type delete_ota_update_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_metric_values_response() :: #{
 %%   <<"metricDatumList">> => list(metric_datum()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_metric_values_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_certificate_provider_request() :: #{
@@ -3033,11 +3362,13 @@
 %% }
 -type update_certificate_provider_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_event_configurations_request() :: #{
 %%   <<"eventConfigurations">> => map()
 %% }
 -type update_event_configurations_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% allowed() :: #{
@@ -3045,29 +3376,35 @@
 %% }
 -type allowed() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_dimension_request() :: #{
 %%   <<"stringValues">> := list(string()())
 %% }
 -type update_dimension_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% deprecate_thing_type_request() :: #{
 %%   <<"undoDeprecate">> => boolean()
 %% }
 -type deprecate_thing_type_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_detect_mitigation_actions_task_request() :: #{}
 -type describe_detect_mitigation_actions_task_request() :: #{}.
+
 
 %% Example:
 %% security_profile_target() :: #{
 %%   <<"arn">> => string()
 %% }
 -type security_profile_target() :: #{binary() => any()}.
+
 %% Example:
 %% delete_thing_type_response() :: #{}
 -type delete_thing_type_response() :: #{}.
+
 
 %% Example:
 %% issuer_certificate_identifier() :: #{
@@ -3076,6 +3413,7 @@
 %%   <<"issuerId">> => string()
 %% }
 -type issuer_certificate_identifier() :: #{binary() => any()}.
+
 
 %% Example:
 %% topic_rule_destination_summary() :: #{
@@ -3089,12 +3427,14 @@
 %% }
 -type topic_rule_destination_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% alert_target() :: #{
 %%   <<"alertTargetArn">> => string(),
 %%   <<"roleArn">> => string()
 %% }
 -type alert_target() :: #{binary() => any()}.
+
 
 %% Example:
 %% task_statistics_for_audit_check() :: #{
@@ -3106,6 +3446,7 @@
 %% }
 -type task_statistics_for_audit_check() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_domain_configurations_request() :: #{
 %%   <<"marker">> => string(),
@@ -3114,6 +3455,7 @@
 %% }
 -type list_domain_configurations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_job_executions_for_job_response() :: #{
 %%   <<"executionSummaries">> => list(job_execution_summary_for_job()()),
@@ -3121,12 +3463,14 @@
 %% }
 -type list_job_executions_for_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% field() :: #{
 %%   <<"name">> => string(),
 %%   <<"type">> => list(any())
 %% }
 -type field() :: #{binary() => any()}.
+
 
 %% Example:
 %% step_functions_action() :: #{
@@ -3136,12 +3480,14 @@
 %% }
 -type step_functions_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_thing_groups_for_thing_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_thing_groups_for_thing_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_certificate_providers_response() :: #{
@@ -3150,12 +3496,14 @@
 %% }
 -type list_certificate_providers_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% attribute_payload() :: #{
 %%   <<"attributes">> => map(),
 %%   <<"merge">> => boolean()
 %% }
 -type attribute_payload() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_dynamic_thing_group_request() :: #{
@@ -3167,6 +3515,7 @@
 %% }
 -type update_dynamic_thing_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_role_alias_response() :: #{
 %%   <<"roleAlias">> => string(),
@@ -3174,11 +3523,13 @@
 %% }
 -type update_role_alias_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_state_transition_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_state_transition_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% presigned_url_config() :: #{
@@ -3187,14 +3538,17 @@
 %% }
 -type presigned_url_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_job_abort_config() :: #{
 %%   <<"abortCriteriaList">> => list(aws_job_abort_criteria()())
 %% }
 -type aws_job_abort_config() :: #{binary() => any()}.
+
 %% Example:
 %% describe_job_request() :: #{}
 -type describe_job_request() :: #{}.
+
 
 %% Example:
 %% managed_job_template_summary() :: #{
@@ -3206,11 +3560,13 @@
 %% }
 -type managed_job_template_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% transfer_already_completed_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type transfer_already_completed_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_domain_configuration_response() :: #{
@@ -3219,11 +3575,13 @@
 %% }
 -type create_domain_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_endpoint_request() :: #{
 %%   <<"endpointType">> => string()
 %% }
 -type describe_endpoint_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_thing_registration_tasks_request() :: #{
@@ -3233,15 +3591,18 @@
 %% }
 -type list_thing_registration_tasks_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"tags">> => list(tag()())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_v2_logging_options_request() :: #{}
 -type get_v2_logging_options_request() :: #{}.
+
 
 %% Example:
 %% create_dynamic_thing_group_request() :: #{
@@ -3253,14 +3614,17 @@
 %% }
 -type create_dynamic_thing_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_error() :: #{
 %%   <<"errorMessage">> => string()
 %% }
 -type validation_error() :: #{binary() => any()}.
+
 %% Example:
 %% attach_thing_principal_response() :: #{}
 -type attach_thing_principal_response() :: #{}.
+
 
 %% Example:
 %% update_ca_certificate_request() :: #{
@@ -3270,12 +3634,15 @@
 %%   <<"removeAutoRegistration">> => boolean()
 %% }
 -type update_ca_certificate_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_ota_update_response() :: #{}
 -type delete_ota_update_response() :: #{}.
+
 %% Example:
 %% clear_default_authorizer_response() :: #{}
 -type clear_default_authorizer_response() :: #{}.
+
 
 %% Example:
 %% auth_info() :: #{
@@ -3283,9 +3650,11 @@
 %%   <<"resources">> => list(string()())
 %% }
 -type auth_info() :: #{binary() => any()}.
+
 %% Example:
 %% delete_dimension_request() :: #{}
 -type delete_dimension_request() :: #{}.
+
 
 %% Example:
 %% describe_job_template_response() :: #{
@@ -3305,11 +3674,13 @@
 %% }
 -type describe_job_template_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_thing_request() :: #{
 %%   <<"expectedVersion">> => float()
 %% }
 -type delete_thing_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% register_certificate_request() :: #{
@@ -3319,6 +3690,7 @@
 %%   <<"status">> => list(any())
 %% }
 -type register_certificate_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_active_violations_request() :: #{
@@ -3332,6 +3704,7 @@
 %% }
 -type list_active_violations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_certificate_provider_response() :: #{
 %%   <<"accountDefaultForOperations">> => list(list(any())()),
@@ -3343,11 +3716,13 @@
 %% }
 -type describe_certificate_provider_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_unavailable_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% set_default_authorizer_response() :: #{
@@ -3355,6 +3730,7 @@
 %%   <<"authorizerName">> => string()
 %% }
 -type set_default_authorizer_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_thing_response() :: #{
@@ -3368,15 +3744,19 @@
 %%   <<"version">> => float()
 %% }
 -type describe_thing_response() :: #{binary() => any()}.
+
 %% Example:
 %% put_verification_state_on_violation_response() :: #{}
 -type put_verification_state_on_violation_response() :: #{}.
+
 %% Example:
 %% delete_topic_rule_destination_request() :: #{}
 -type delete_topic_rule_destination_request() :: #{}.
+
 %% Example:
 %% remove_thing_from_thing_group_response() :: #{}
 -type remove_thing_from_thing_group_response() :: #{}.
+
 
 %% Example:
 %% security_profile_target_mapping() :: #{
@@ -3384,6 +3764,7 @@
 %%   <<"target">> => security_profile_target()
 %% }
 -type security_profile_target_mapping() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_outgoing_certificates_request() :: #{
@@ -3393,12 +3774,14 @@
 %% }
 -type list_outgoing_certificates_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_audit_tasks_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"tasks">> => list(audit_task_metadata()())
 %% }
 -type list_audit_tasks_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_location() :: #{
@@ -3408,11 +3791,13 @@
 %% }
 -type s3_location() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_item_input() :: #{
 %%   <<"tableName">> => string()
 %% }
 -type put_item_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_mitigation_action_response() :: #{
@@ -3420,6 +3805,7 @@
 %%   <<"actionId">> => string()
 %% }
 -type update_mitigation_action_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_package_request() :: #{
@@ -3429,6 +3815,7 @@
 %%   <<"unsetDefaultVersion">> => boolean()
 %% }
 -type update_package_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% detect_mitigation_action_execution() :: #{
@@ -3443,12 +3830,15 @@
 %%   <<"violationId">> => string()
 %% }
 -type detect_mitigation_action_execution() :: #{binary() => any()}.
+
 %% Example:
 %% create_audit_suppression_response() :: #{}
 -type create_audit_suppression_response() :: #{}.
+
 %% Example:
 %% add_thing_to_thing_group_response() :: #{}
 -type add_thing_to_thing_group_response() :: #{}.
+
 
 %% Example:
 %% violation_event() :: #{
@@ -3465,12 +3855,14 @@
 %% }
 -type violation_event() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_indices_response() :: #{
 %%   <<"indexNames">> => list(string()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_indices_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% key_pair() :: #{
@@ -3479,17 +3871,20 @@
 %% }
 -type key_pair() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_scheduled_audit_response() :: #{
 %%   <<"scheduledAuditArn">> => string()
 %% }
 -type update_scheduled_audit_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% job_executions_retry_config() :: #{
 %%   <<"criteriaList">> => list(retry_criteria()())
 %% }
 -type job_executions_retry_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% kafka_action() :: #{
@@ -3502,6 +3897,7 @@
 %% }
 -type kafka_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_destination() :: #{
 %%   <<"bucket">> => string(),
@@ -3509,12 +3905,14 @@
 %% }
 -type s3_destination() :: #{binary() => any()}.
 
+
 %% Example:
 %% metric_dimension() :: #{
 %%   <<"dimensionName">> => string(),
 %%   <<"operator">> => list(any())
 %% }
 -type metric_dimension() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_policy_response() :: #{
@@ -3524,6 +3922,7 @@
 %%   <<"policyVersionId">> => string()
 %% }
 -type create_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_package_version_response() :: #{
@@ -3538,6 +3937,7 @@
 %%   <<"versionName">> => string()
 %% }
 -type get_package_version_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_execution() :: #{
@@ -3555,6 +3955,7 @@
 %% }
 -type job_execution() :: #{binary() => any()}.
 
+
 %% Example:
 %% scheduled_audit_metadata() :: #{
 %%   <<"dayOfMonth">> => string(),
@@ -3565,6 +3966,7 @@
 %% }
 -type scheduled_audit_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% domain_configuration_summary() :: #{
 %%   <<"domainConfigurationArn">> => string(),
@@ -3572,21 +3974,26 @@
 %%   <<"serviceType">> => list(any())
 %% }
 -type domain_configuration_summary() :: #{binary() => any()}.
+
 %% Example:
 %% describe_provisioning_template_request() :: #{}
 -type describe_provisioning_template_request() :: #{}.
+
 %% Example:
 %% cancel_audit_mitigation_actions_task_response() :: #{}
 -type cancel_audit_mitigation_actions_task_response() :: #{}.
+
 %% Example:
 %% list_policy_versions_request() :: #{}
 -type list_policy_versions_request() :: #{}.
+
 
 %% Example:
 %% invalid_query_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_query_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_stream_request() :: #{
@@ -3595,6 +4002,7 @@
 %%   <<"roleArn">> => string()
 %% }
 -type update_stream_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% abort_criteria() :: #{
@@ -3605,6 +4013,7 @@
 %% }
 -type abort_criteria() :: #{binary() => any()}.
 
+
 %% Example:
 %% topic_rule_list_item() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
@@ -3614,9 +4023,11 @@
 %%   <<"topicPattern">> => string()
 %% }
 -type topic_rule_list_item() :: #{binary() => any()}.
+
 %% Example:
 %% delete_thing_group_response() :: #{}
 -type delete_thing_group_response() :: #{}.
+
 
 %% Example:
 %% get_policy_response() :: #{
@@ -3630,15 +4041,18 @@
 %% }
 -type get_policy_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_ca_certificate_response() :: #{
 %%   <<"certificateDescription">> => ca_certificate_description(),
 %%   <<"registrationConfig">> => registration_config()
 %% }
 -type describe_ca_certificate_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_role_alias_response() :: #{}
 -type delete_role_alias_response() :: #{}.
+
 
 %% Example:
 %% create_mitigation_action_request() :: #{
@@ -3648,6 +4062,7 @@
 %% }
 -type create_mitigation_action_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% ca_certificate() :: #{
 %%   <<"certificateArn">> => string(),
@@ -3656,15 +4071,19 @@
 %%   <<"status">> => list(any())
 %% }
 -type ca_certificate() :: #{binary() => any()}.
+
 %% Example:
 %% confirm_topic_rule_destination_request() :: #{}
 -type confirm_topic_rule_destination_request() :: #{}.
+
 %% Example:
 %% disable_topic_rule_request() :: #{}
 -type disable_topic_rule_request() :: #{}.
+
 %% Example:
 %% describe_stream_request() :: #{}
 -type describe_stream_request() :: #{}.
+
 
 %% Example:
 %% update_stream_response() :: #{
@@ -3674,9 +4093,11 @@
 %%   <<"streamVersion">> => integer()
 %% }
 -type update_stream_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_custom_metric_response() :: #{}
 -type delete_custom_metric_response() :: #{}.
+
 
 %% Example:
 %% search_index_response() :: #{
@@ -3685,6 +4106,7 @@
 %%   <<"things">> => list(thing_document()())
 %% }
 -type search_index_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% task_statistics() :: #{
@@ -3698,11 +4120,13 @@
 %% }
 -type task_statistics() :: #{binary() => any()}.
 
+
 %% Example:
 %% not_configured_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type not_configured_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% file_location() :: #{
@@ -3710,18 +4134,22 @@
 %%   <<"stream">> => stream()
 %% }
 -type file_location() :: #{binary() => any()}.
+
 %% Example:
 %% describe_thing_registration_task_request() :: #{}
 -type describe_thing_registration_task_request() :: #{}.
+
 
 %% Example:
 %% job_execution_status_details() :: #{
 %%   <<"detailsMap">> => map()
 %% }
 -type job_execution_status_details() :: #{binary() => any()}.
+
 %% Example:
 %% delete_dimension_response() :: #{}
 -type delete_dimension_response() :: #{}.
+
 
 %% Example:
 %% rate_increase_criteria() :: #{
@@ -3730,11 +4158,13 @@
 %% }
 -type rate_increase_criteria() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_registration_code_response() :: #{
 %%   <<"registrationCode">> => string()
 %% }
 -type get_registration_code_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% thing_group_metadata() :: #{
@@ -3743,6 +4173,7 @@
 %%   <<"rootToParentThingGroups">> => list(group_name_and_arn()())
 %% }
 -type thing_group_metadata() :: #{binary() => any()}.
+
 
 %% Example:
 %% custom_code_signing() :: #{
@@ -3753,12 +4184,14 @@
 %% }
 -type custom_code_signing() :: #{binary() => any()}.
 
+
 %% Example:
 %% group_name_and_arn() :: #{
 %%   <<"groupArn">> => string(),
 %%   <<"groupName">> => string()
 %% }
 -type group_name_and_arn() :: #{binary() => any()}.
+
 
 %% Example:
 %% package_summary() :: #{
@@ -3769,6 +4202,7 @@
 %% }
 -type package_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_thing_group_response() :: #{
 %%   <<"thingGroupArn">> => string(),
@@ -3776,9 +4210,11 @@
 %%   <<"thingGroupName">> => string()
 %% }
 -type create_thing_group_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_ca_certificate_response() :: #{}
 -type delete_ca_certificate_response() :: #{}.
+
 
 %% Example:
 %% list_ota_updates_response() :: #{
@@ -3786,15 +4222,18 @@
 %%   <<"otaUpdates">> => list(ota_update_summary()())
 %% }
 -type list_ota_updates_response() :: #{binary() => any()}.
+
 %% Example:
 %% update_thing_response() :: #{}
 -type update_thing_response() :: #{}.
+
 
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_v2_logging_levels_request() :: #{
@@ -3804,11 +4243,13 @@
 %% }
 -type list_v2_logging_levels_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_default_authorizer_response() :: #{
 %%   <<"authorizerDescription">> => authorizer_description()
 %% }
 -type describe_default_authorizer_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_package_configuration_response() :: #{
@@ -3816,24 +4257,29 @@
 %% }
 -type get_package_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_billing_group_request() :: #{
 %%   <<"billingGroupProperties">> := billing_group_properties(),
 %%   <<"expectedVersion">> => float()
 %% }
 -type update_billing_group_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_policy_request() :: #{}
 -type delete_policy_request() :: #{}.
+
 
 %% Example:
 %% delete_security_profile_request() :: #{
 %%   <<"expectedVersion">> => float()
 %% }
 -type delete_security_profile_request() :: #{binary() => any()}.
+
 %% Example:
 %% update_thing_groups_for_thing_response() :: #{}
 -type update_thing_groups_for_thing_response() :: #{}.
+
 
 %% Example:
 %% delete_job_execution_request() :: #{
@@ -3842,15 +4288,18 @@
 %% }
 -type delete_job_execution_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% thing_group_properties() :: #{
 %%   <<"attributePayload">> => attribute_payload(),
 %%   <<"thingGroupDescription">> => string()
 %% }
 -type thing_group_properties() :: #{binary() => any()}.
+
 %% Example:
 %% delete_mitigation_action_response() :: #{}
 -type delete_mitigation_action_response() :: #{}.
+
 
 %% Example:
 %% get_buckets_aggregation_request() :: #{
@@ -3862,6 +4311,7 @@
 %% }
 -type get_buckets_aggregation_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% certificate() :: #{
 %%   <<"certificateArn">> => string(),
@@ -3872,6 +4322,7 @@
 %% }
 -type certificate() :: #{binary() => any()}.
 
+
 %% Example:
 %% ota_update_summary() :: #{
 %%   <<"creationDate">> => non_neg_integer(),
@@ -3880,11 +4331,13 @@
 %% }
 -type ota_update_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% set_default_authorizer_request() :: #{
 %%   <<"authorizerName">> := string()
 %% }
 -type set_default_authorizer_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% denied() :: #{
@@ -3893,11 +4346,13 @@
 %% }
 -type denied() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_fleet_metric_request() :: #{
 %%   <<"expectedVersion">> => float()
 %% }
 -type delete_fleet_metric_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_provisioning_template_response() :: #{
@@ -3915,15 +4370,18 @@
 %% }
 -type describe_provisioning_template_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_things_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"things">> => list(thing_attribute()())
 %% }
 -type list_things_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_provisioning_template_version_response() :: #{}
 -type delete_provisioning_template_version_response() :: #{}.
+
 
 %% Example:
 %% asset_property_timestamp() :: #{
@@ -3931,6 +4389,7 @@
 %%   <<"timeInSeconds">> => string()
 %% }
 -type asset_property_timestamp() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_custom_metric_response() :: #{
@@ -3943,6 +4402,7 @@
 %% }
 -type update_custom_metric_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% code_signing_certificate_chain() :: #{
 %%   <<"certificateName">> => string(),
@@ -3950,11 +4410,13 @@
 %% }
 -type code_signing_certificate_chain() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_scheduled_audit_response() :: #{
 %%   <<"scheduledAuditArn">> => string()
 %% }
 -type create_scheduled_audit_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_custom_metric_request() :: #{
@@ -3965,11 +4427,13 @@
 %% }
 -type create_custom_metric_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% task_already_exists_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type task_already_exists_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_thing_groups_for_thing_response() :: #{
@@ -3978,12 +4442,14 @@
 %% }
 -type list_thing_groups_for_thing_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% register_certificate_response() :: #{
 %%   <<"certificateArn">> => string(),
 %%   <<"certificateId">> => string()
 %% }
 -type register_certificate_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% authorizer_description() :: #{
@@ -4000,11 +4466,13 @@
 %% }
 -type authorizer_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% http_url_destination_summary() :: #{
 %%   <<"confirmationUrl">> => string()
 %% }
 -type http_url_destination_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% action() :: #{
@@ -4034,6 +4502,7 @@
 %% }
 -type action() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_violation_events_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -4041,11 +4510,13 @@
 %% }
 -type list_violation_events_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% tls_config() :: #{
 %%   <<"securityPolicy">> => string()
 %% }
 -type tls_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% republish_action() :: #{
@@ -4055,9 +4526,11 @@
 %%   <<"topic">> => string()
 %% }
 -type republish_action() :: #{binary() => any()}.
+
 %% Example:
 %% update_package_configuration_response() :: #{}
 -type update_package_configuration_response() :: #{}.
+
 
 %% Example:
 %% put_verification_state_on_violation_request() :: #{
@@ -4066,6 +4539,7 @@
 %% }
 -type put_verification_state_on_violation_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_authorizers_response() :: #{
 %%   <<"authorizers">> => list(authorizer_summary()()),
@@ -4073,11 +4547,13 @@
 %% }
 -type list_authorizers_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% server_certificate_config() :: #{
 %%   <<"enableOCSPCheck">> => boolean()
 %% }
 -type server_certificate_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_job_executions_for_thing_response() :: #{
@@ -4086,6 +4562,7 @@
 %% }
 -type list_job_executions_for_thing_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% topic_rule_destination_configuration() :: #{
 %%   <<"httpUrlConfiguration">> => http_url_destination_configuration(),
@@ -4093,11 +4570,13 @@
 %% }
 -type topic_rule_destination_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% index_not_ready_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type index_not_ready_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_job_templates_request() :: #{
@@ -4106,12 +4585,14 @@
 %% }
 -type list_job_templates_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% policy() :: #{
 %%   <<"policyArn">> => string(),
 %%   <<"policyName">> => string()
 %% }
 -type policy() :: #{binary() => any()}.
+
 
 %% Example:
 %% detect_mitigation_actions_task_summary() :: #{
@@ -4128,12 +4609,14 @@
 %% }
 -type detect_mitigation_actions_task_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% bucket() :: #{
 %%   <<"count">> => integer(),
 %%   <<"keyValue">> => string()
 %% }
 -type bucket() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_thing_registration_tasks_response() :: #{
@@ -4142,11 +4625,13 @@
 %% }
 -type list_thing_registration_tasks_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% attach_principal_policy_request() :: #{
 %%   <<"principal">> := string()
 %% }
 -type attach_principal_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% thing_group_document() :: #{
@@ -4157,6 +4642,7 @@
 %%   <<"thingGroupName">> => string()
 %% }
 -type thing_group_document() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_job_template_request() :: #{
@@ -4175,6 +4661,7 @@
 %% }
 -type create_job_template_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_stream_response() :: #{
 %%   <<"description">> => string(),
@@ -4184,11 +4671,13 @@
 %% }
 -type create_stream_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% publish_finding_to_sns_params() :: #{
 %%   <<"topicArn">> => string()
 %% }
 -type publish_finding_to_sns_params() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_thing_type_response() :: #{
@@ -4198,6 +4687,7 @@
 %% }
 -type create_thing_type_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% job_executions_rollout_config() :: #{
 %%   <<"exponentialRate">> => exponential_rollout_rate(),
@@ -4205,17 +4695,20 @@
 %% }
 -type job_executions_rollout_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_package_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
 -type delete_package_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% timeout_config() :: #{
 %%   <<"inProgressTimeoutInMinutes">> => float()
 %% }
 -type timeout_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% thing_document() :: #{
@@ -4230,20 +4723,24 @@
 %% }
 -type thing_document() :: #{binary() => any()}.
 
+
 %% Example:
 %% replace_default_policy_version_params() :: #{
 %%   <<"templateName">> => list(any())
 %% }
 -type replace_default_policy_version_params() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type internal_exception() :: #{binary() => any()}.
+
 %% Example:
 %% cancel_audit_task_request() :: #{}
 -type cancel_audit_task_request() :: #{}.
+
 
 %% Example:
 %% list_related_resources_for_audit_finding_response() :: #{
@@ -4252,14 +4749,17 @@
 %% }
 -type list_related_resources_for_audit_finding_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_job_document_response() :: #{
 %%   <<"document">> => string()
 %% }
 -type get_job_document_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_default_authorizer_request() :: #{}
 -type describe_default_authorizer_request() :: #{}.
+
 
 %% Example:
 %% create_provisioning_template_version_request() :: #{
@@ -4268,12 +4768,14 @@
 %% }
 -type create_provisioning_template_version_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% transfer_certificate_request() :: #{
 %%   <<"targetAwsAccount">> := string(),
 %%   <<"transferMessage">> => string()
 %% }
 -type transfer_certificate_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_related_resources_for_audit_finding_request() :: #{
@@ -4283,17 +4785,20 @@
 %% }
 -type list_related_resources_for_audit_finding_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_certificate_request() :: #{
 %%   <<"forceDelete">> => boolean()
 %% }
 -type delete_certificate_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_detect_mitigation_actions_task_response() :: #{
 %%   <<"taskSummary">> => detect_mitigation_actions_task_summary()
 %% }
 -type describe_detect_mitigation_actions_task_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% behavior() :: #{
@@ -4306,11 +4811,13 @@
 %% }
 -type behavior() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_certificate_response() :: #{
 %%   <<"certificateDescription">> => certificate_description()
 %% }
 -type describe_certificate_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_dimensions_request() :: #{
@@ -4319,14 +4826,17 @@
 %% }
 -type list_dimensions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_endpoint_response() :: #{
 %%   <<"endpointAddress">> => string()
 %% }
 -type describe_endpoint_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_certificate_provider_response() :: #{}
 -type delete_certificate_provider_response() :: #{}.
+
 
 %% Example:
 %% server_certificate_summary() :: #{
@@ -4336,6 +4846,7 @@
 %% }
 -type server_certificate_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% code_signing() :: #{
 %%   <<"awsSignerJobId">> => string(),
@@ -4343,6 +4854,7 @@
 %%   <<"startSigningJobParameter">> => start_signing_job_parameter()
 %% }
 -type code_signing() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_thing_registration_task_reports_request() :: #{
@@ -4352,15 +4864,18 @@
 %% }
 -type list_thing_registration_task_reports_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% authorizer_summary() :: #{
 %%   <<"authorizerArn">> => string(),
 %%   <<"authorizerName">> => string()
 %% }
 -type authorizer_summary() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% authorizer_config() :: #{
@@ -4368,6 +4883,7 @@
 %%   <<"defaultAuthorizerName">> => string()
 %% }
 -type authorizer_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_dimension_response() :: #{
@@ -4380,12 +4896,14 @@
 %% }
 -type update_dimension_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_audit_mitigation_actions_tasks_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"tasks">> => list(audit_mitigation_actions_task_metadata()())
 %% }
 -type list_audit_mitigation_actions_tasks_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% open_search_action() :: #{
@@ -4397,17 +4915,20 @@
 %% }
 -type open_search_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% machine_learning_detection_config() :: #{
 %%   <<"confidenceLevel">> => list(any())
 %% }
 -type machine_learning_detection_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflicting_resource_update_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type conflicting_resource_update_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_thing_groups_for_thing_request() :: #{
@@ -4418,12 +4939,14 @@
 %% }
 -type update_thing_groups_for_thing_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_thing_groups_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"thingGroups">> => list(group_name_and_arn()())
 %% }
 -type list_thing_groups_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_provisioning_template_response() :: #{
@@ -4432,6 +4955,7 @@
 %%   <<"templateName">> => string()
 %% }
 -type create_provisioning_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% behavior_criteria() :: #{
@@ -4445,12 +4969,14 @@
 %% }
 -type behavior_criteria() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_principal_policies_response() :: #{
 %%   <<"nextMarker">> => string(),
 %%   <<"policies">> => list(policy()())
 %% }
 -type list_principal_policies_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_detect_mitigation_actions_tasks_request() :: #{
@@ -4460,6 +4986,7 @@
 %%   <<"startTime">> := non_neg_integer()
 %% }
 -type list_detect_mitigation_actions_tasks_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_fleet_metric_request() :: #{
@@ -4475,11 +5002,13 @@
 %% }
 -type update_fleet_metric_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_thing_group_request() :: #{
 %%   <<"expectedVersion">> => float()
 %% }
 -type delete_thing_group_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_detect_mitigation_actions_task_response() :: #{
@@ -4487,11 +5016,13 @@
 %% }
 -type start_detect_mitigation_actions_task_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% registration_code_validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type registration_code_validation_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% mitigation_action_params() :: #{
@@ -4504,15 +5035,18 @@
 %% }
 -type mitigation_action_params() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_dimensions_response() :: #{
 %%   <<"dimensionNames">> => list(string()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_dimensions_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_security_profile_request() :: #{}
 -type describe_security_profile_request() :: #{}.
+
 
 %% Example:
 %% delete_job_request() :: #{
@@ -4520,6 +5054,7 @@
 %%   <<"namespaceId">> => string()
 %% }
 -type delete_job_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% statistics() :: #{
@@ -4534,6 +5069,7 @@
 %% }
 -type statistics() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_audit_mitigation_actions_task_response() :: #{
 %%   <<"actionsDefinition">> => list(mitigation_action()()),
@@ -4546,11 +5082,13 @@
 %% }
 -type describe_audit_mitigation_actions_task_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% detach_principal_policy_request() :: #{
 %%   <<"principal">> := string()
 %% }
 -type detach_principal_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% behavior_model_training_summary() :: #{
@@ -4562,6 +5100,7 @@
 %%   <<"trainingDataCollectionStartDate">> => non_neg_integer()
 %% }
 -type behavior_model_training_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% role_alias_description() :: #{
@@ -4575,6 +5114,7 @@
 %% }
 -type role_alias_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% metric_value() :: #{
 %%   <<"cidrs">> => list(string()()),
@@ -4586,6 +5126,7 @@
 %% }
 -type metric_value() :: #{binary() => any()}.
 
+
 %% Example:
 %% http_action() :: #{
 %%   <<"auth">> => http_authorization(),
@@ -4594,6 +5135,7 @@
 %%   <<"url">> => string()
 %% }
 -type http_action() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_fleet_metric_response() :: #{
@@ -4613,12 +5155,14 @@
 %% }
 -type describe_fleet_metric_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% validate_security_profile_behaviors_response() :: #{
 %%   <<"valid">> => boolean(),
 %%   <<"validationErrors">> => list(validation_error()())
 %% }
 -type validate_security_profile_behaviors_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_signing_job_parameter() :: #{
@@ -4628,6 +5172,7 @@
 %% }
 -type start_signing_job_parameter() :: #{binary() => any()}.
 
+
 %% Example:
 %% set_v2_logging_options_request() :: #{
 %%   <<"defaultLogLevel">> => list(any()),
@@ -4636,24 +5181,29 @@
 %% }
 -type set_v2_logging_options_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% set_v2_logging_level_request() :: #{
 %%   <<"logLevel">> := list(any()),
 %%   <<"logTarget">> := log_target()
 %% }
 -type set_v2_logging_level_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_package_configuration_request() :: #{}
 -type get_package_configuration_request() :: #{}.
+
 %% Example:
 %% cancel_audit_mitigation_actions_task_request() :: #{}
 -type cancel_audit_mitigation_actions_task_request() :: #{}.
+
 
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_detect_mitigation_actions_executions_request() :: #{
@@ -4667,6 +5217,7 @@
 %% }
 -type list_detect_mitigation_actions_executions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_request() :: #{
 %%   <<"nextToken">> => string(),
@@ -4674,14 +5225,17 @@
 %% }
 -type list_tags_for_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% certificate_validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type certificate_validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_provisioning_template_version_request() :: #{}
 -type delete_provisioning_template_version_request() :: #{}.
+
 
 %% Example:
 %% list_audit_mitigation_actions_executions_response() :: #{
@@ -4689,6 +5243,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_audit_mitigation_actions_executions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% job() :: #{
@@ -4719,9 +5274,11 @@
 %%   <<"timeoutConfig">> => timeout_config()
 %% }
 -type job() :: #{binary() => any()}.
+
 %% Example:
 %% delete_provisioning_template_request() :: #{}
 -type delete_provisioning_template_request() :: #{}.
+
 
 %% Example:
 %% list_package_versions_request() :: #{
@@ -4731,11 +5288,13 @@
 %% }
 -type list_package_versions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% destination() :: #{
 %%   <<"s3Destination">> => s3_destination()
 %% }
 -type destination() :: #{binary() => any()}.
+
 
 %% Example:
 %% stream_file() :: #{
@@ -4744,6 +5303,7 @@
 %% }
 -type stream_file() :: #{binary() => any()}.
 
+
 %% Example:
 %% mqtt_context() :: #{
 %%   <<"clientId">> => string(),
@@ -4751,9 +5311,11 @@
 %%   <<"username">> => string()
 %% }
 -type mqtt_context() :: #{binary() => any()}.
+
 %% Example:
 %% update_topic_rule_destination_response() :: #{}
 -type update_topic_rule_destination_response() :: #{}.
+
 
 %% Example:
 %% job_execution_summary_for_thing() :: #{
@@ -4762,12 +5324,14 @@
 %% }
 -type job_execution_summary_for_thing() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_thing_principals_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"principals">> => list(string()())
 %% }
 -type list_thing_principals_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% audit_task_metadata() :: #{
@@ -4777,12 +5341,14 @@
 %% }
 -type audit_task_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_authorizer_response() :: #{
 %%   <<"authorizerArn">> => string(),
 %%   <<"authorizerName">> => string()
 %% }
 -type update_authorizer_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% certificate_provider_summary() :: #{
@@ -4791,15 +5357,18 @@
 %% }
 -type certificate_provider_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_scheduled_audits_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_scheduled_audits_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_topic_rule_request() :: #{}
 -type get_topic_rule_request() :: #{}.
+
 
 %% Example:
 %% throttling_exception() :: #{
@@ -4807,11 +5376,13 @@
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% sql_parse_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type sql_parse_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_audit_task_response() :: #{
@@ -4824,12 +5395,14 @@
 %% }
 -type describe_audit_task_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% kafka_action_header() :: #{
 %%   <<"key">> => string(),
 %%   <<"value">> => string()
 %% }
 -type kafka_action_header() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_behavior_model_training_summaries_request() :: #{
@@ -4838,9 +5411,11 @@
 %%   <<"securityProfileName">> => string()
 %% }
 -type get_behavior_model_training_summaries_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_provisioning_template_version_request() :: #{}
 -type describe_provisioning_template_version_request() :: #{}.
+
 
 %% Example:
 %% list_targets_for_policy_request() :: #{
@@ -4848,6 +5423,7 @@
 %%   <<"pageSize">> => integer()
 %% }
 -type list_targets_for_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% ota_update_info() :: #{
@@ -4870,12 +5446,14 @@
 %% }
 -type ota_update_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_behavior_model_training_summaries_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"summaries">> => list(behavior_model_training_summary()())
 %% }
 -type get_behavior_model_training_summaries_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_package_response() :: #{
@@ -4885,14 +5463,17 @@
 %% }
 -type create_package_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% audit_check_configuration() :: #{
 %%   <<"enabled">> => boolean()
 %% }
 -type audit_check_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% delete_stream_request() :: #{}
 -type delete_stream_request() :: #{}.
+
 
 %% Example:
 %% scheduling_config() :: #{
@@ -4902,6 +5483,7 @@
 %%   <<"startTime">> => string()
 %% }
 -type scheduling_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% provisioning_template_summary() :: #{
@@ -4915,6 +5497,7 @@
 %% }
 -type provisioning_template_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_event_configurations_response() :: #{
 %%   <<"creationDate">> => non_neg_integer(),
@@ -4922,6 +5505,7 @@
 %%   <<"lastModifiedDate">> => non_neg_integer()
 %% }
 -type describe_event_configurations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_provisioning_template_request() :: #{
@@ -4936,6 +5520,7 @@
 %% }
 -type create_provisioning_template_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% stream_summary() :: #{
 %%   <<"description">> => string(),
@@ -4944,6 +5529,7 @@
 %%   <<"streamVersion">> => integer()
 %% }
 -type stream_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_thing_group_response() :: #{
@@ -4959,18 +5545,22 @@
 %%   <<"version">> => float()
 %% }
 -type describe_thing_group_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_thing_response() :: #{}
 -type delete_thing_response() :: #{}.
+
 
 %% Example:
 %% validate_security_profile_behaviors_request() :: #{
 %%   <<"behaviors">> := list(behavior()())
 %% }
 -type validate_security_profile_behaviors_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_audit_task_request() :: #{}
 -type describe_audit_task_request() :: #{}.
+
 
 %% Example:
 %% list_authorizers_request() :: #{
@@ -4980,9 +5570,11 @@
 %%   <<"status">> => list(any())
 %% }
 -type list_authorizers_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_account_audit_configuration_response() :: #{}
 -type delete_account_audit_configuration_response() :: #{}.
+
 
 %% Example:
 %% register_thing_response() :: #{
@@ -4991,12 +5583,14 @@
 %% }
 -type register_thing_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_role_aliases_response() :: #{
 %%   <<"nextMarker">> => string(),
 %%   <<"roleAliases">> => list(string()())
 %% }
 -type list_role_aliases_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% remove_thing_from_thing_group_request() :: #{
@@ -5007,12 +5601,14 @@
 %% }
 -type remove_thing_from_thing_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_audit_suppressions_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"suppressions">> => list(audit_suppression()())
 %% }
 -type list_audit_suppressions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_fleet_metric_response() :: #{
@@ -5021,6 +5617,7 @@
 %% }
 -type create_fleet_metric_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% related_resource() :: #{
 %%   <<"additionalInfo">> => map(),
@@ -5028,9 +5625,11 @@
 %%   <<"resourceType">> => list(any())
 %% }
 -type related_resource() :: #{binary() => any()}.
+
 %% Example:
 %% delete_audit_suppression_response() :: #{}
 -type delete_audit_suppression_response() :: #{}.
+
 
 %% Example:
 %% fleet_metric_name_and_arn() :: #{
@@ -5039,14 +5638,17 @@
 %% }
 -type fleet_metric_name_and_arn() :: #{binary() => any()}.
 
+
 %% Example:
 %% implicit_deny() :: #{
 %%   <<"policies">> => list(policy()())
 %% }
 -type implicit_deny() :: #{binary() => any()}.
+
 %% Example:
 %% delete_topic_rule_destination_response() :: #{}
 -type delete_topic_rule_destination_response() :: #{}.
+
 
 %% Example:
 %% vpc_destination_summary() :: #{
@@ -5057,11 +5659,13 @@
 %% }
 -type vpc_destination_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_registration_failure_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_registration_failure_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% limit_exceeded_exception() :: #{
@@ -5069,11 +5673,13 @@
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% accept_certificate_transfer_request() :: #{
 %%   <<"setAsActive">> => boolean()
 %% }
 -type accept_certificate_transfer_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% iot_site_wise_action() :: #{
@@ -5082,11 +5688,13 @@
 %% }
 -type iot_site_wise_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_thing_group_response() :: #{
 %%   <<"version">> => float()
 %% }
 -type update_thing_group_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_scheduled_audit_response() :: #{
@@ -5098,9 +5706,11 @@
 %%   <<"targetCheckNames">> => list(string()())
 %% }
 -type describe_scheduled_audit_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_package_version_request() :: #{}
 -type get_package_version_request() :: #{}.
+
 
 %% Example:
 %% list_billing_groups_response() :: #{
@@ -5109,11 +5719,13 @@
 %% }
 -type list_billing_groups_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_topic_rule_destination_request() :: #{
 %%   <<"destinationConfiguration">> := topic_rule_destination_configuration()
 %% }
 -type create_topic_rule_destination_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% active_violation() :: #{
@@ -5130,6 +5742,7 @@
 %% }
 -type active_violation() :: #{binary() => any()}.
 
+
 %% Example:
 %% detect_mitigation_actions_task_statistics() :: #{
 %%   <<"actionsExecuted">> => float(),
@@ -5137,6 +5750,7 @@
 %%   <<"actionsSkipped">> => float()
 %% }
 -type detect_mitigation_actions_task_statistics() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_things_request() :: #{
@@ -5148,9 +5762,11 @@
 %%   <<"usePrefixAttributeValue">> => boolean()
 %% }
 -type list_things_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_logging_options_request() :: #{}
 -type get_logging_options_request() :: #{}.
+
 
 %% Example:
 %% test_invoke_authorizer_response() :: #{
@@ -5161,6 +5777,7 @@
 %%   <<"refreshAfterInSeconds">> => integer()
 %% }
 -type test_invoke_authorizer_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_audit_findings_request() :: #{
@@ -5175,6 +5792,7 @@
 %% }
 -type list_audit_findings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% location_action() :: #{
 %%   <<"deviceId">> => string(),
@@ -5186,6 +5804,7 @@
 %% }
 -type location_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_thing_types_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -5193,9 +5812,11 @@
 %%   <<"thingTypeName">> => string()
 %% }
 -type list_thing_types_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_role_alias_request() :: #{}
 -type describe_role_alias_request() :: #{}.
+
 
 %% Example:
 %% thing_type_metadata() :: #{
@@ -5205,6 +5826,7 @@
 %% }
 -type thing_type_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_effective_policies_request() :: #{
 %%   <<"cognitoIdentityPoolId">> => string(),
@@ -5213,6 +5835,7 @@
 %% }
 -type get_effective_policies_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_topic_rule_destinations_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -5220,11 +5843,13 @@
 %% }
 -type list_topic_rule_destinations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_topic_rule_destination_response() :: #{
 %%   <<"topicRuleDestination">> => topic_rule_destination()
 %% }
 -type get_topic_rule_destination_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% package_version_summary() :: #{
@@ -5236,11 +5861,13 @@
 %% }
 -type package_version_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_dynamic_thing_group_response() :: #{
 %%   <<"version">> => float()
 %% }
 -type update_dynamic_thing_group_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_dimension_response() :: #{
@@ -5253,6 +5880,7 @@
 %% }
 -type describe_dimension_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_audit_suppressions_request() :: #{
 %%   <<"ascendingOrder">> => boolean(),
@@ -5263,6 +5891,7 @@
 %% }
 -type list_audit_suppressions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% add_thing_to_billing_group_request() :: #{
 %%   <<"billingGroupArn">> => string(),
@@ -5271,6 +5900,7 @@
 %%   <<"thingName">> => string()
 %% }
 -type add_thing_to_billing_group_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_cardinality_request() :: #{
@@ -5281,15 +5911,18 @@
 %% }
 -type get_cardinality_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% stream() :: #{
 %%   <<"fileId">> => integer(),
 %%   <<"streamId">> => string()
 %% }
 -type stream() :: #{binary() => any()}.
+
 %% Example:
 %% delete_dynamic_thing_group_response() :: #{}
 -type delete_dynamic_thing_group_response() :: #{}.
+
 
 %% Example:
 %% list_detect_mitigation_actions_executions_response() :: #{
@@ -5298,12 +5931,14 @@
 %% }
 -type list_detect_mitigation_actions_executions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_job_templates_response() :: #{
 %%   <<"jobTemplates">> => list(job_template_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_job_templates_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% non_compliant_resource() :: #{
@@ -5312,6 +5947,7 @@
 %%   <<"resourceType">> => list(any())
 %% }
 -type non_compliant_resource() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_mitigation_action_response() :: #{
@@ -5326,6 +5962,7 @@
 %% }
 -type describe_mitigation_action_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% stream_info() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
@@ -5339,6 +5976,7 @@
 %% }
 -type stream_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% topic_rule_payload() :: #{
 %%   <<"actions">> => list(action()()),
@@ -5349,9 +5987,11 @@
 %%   <<"sql">> => string()
 %% }
 -type topic_rule_payload() :: #{binary() => any()}.
+
 %% Example:
 %% update_account_audit_configuration_response() :: #{}
 -type update_account_audit_configuration_response() :: #{}.
+
 
 %% Example:
 %% explicit_deny() :: #{
@@ -5359,11 +5999,13 @@
 %% }
 -type explicit_deny() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_dynamic_thing_group_request() :: #{
 %%   <<"expectedVersion">> => float()
 %% }
 -type delete_dynamic_thing_group_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_v2_logging_level_request() :: #{
@@ -5371,9 +6013,11 @@
 %%   <<"targetType">> := list(any())
 %% }
 -type delete_v2_logging_level_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_billing_group_request() :: #{}
 -type describe_billing_group_request() :: #{}.
+
 
 %% Example:
 %% list_mitigation_actions_response() :: #{
@@ -5381,6 +6025,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_mitigation_actions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_already_exists_exception() :: #{
@@ -5390,6 +6035,7 @@
 %% }
 -type resource_already_exists_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% certificate_validity() :: #{
 %%   <<"notAfter">> => non_neg_integer(),
@@ -5397,11 +6043,13 @@
 %% }
 -type certificate_validity() :: #{binary() => any()}.
 
+
 %% Example:
 %% scheduled_job_rollout() :: #{
 %%   <<"startTime">> => string()
 %% }
 -type scheduled_job_rollout() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_job_exponential_rollout_rate() :: #{
@@ -5411,6 +6059,7 @@
 %% }
 -type aws_job_exponential_rollout_rate() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_outgoing_certificates_response() :: #{
 %%   <<"nextMarker">> => string(),
@@ -5418,12 +6067,14 @@
 %% }
 -type list_outgoing_certificates_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_custom_metrics_response() :: #{
 %%   <<"metricNames">> => list(string()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_custom_metrics_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_dimension_request() :: #{
@@ -5434,6 +6085,7 @@
 %% }
 -type create_dimension_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_certificates_by_ca_request() :: #{
 %%   <<"ascendingOrder">> => boolean(),
@@ -5441,6 +6093,7 @@
 %%   <<"pageSize">> => integer()
 %% }
 -type list_certificates_by_ca_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_package_version_response() :: #{
@@ -5454,15 +6107,18 @@
 %% }
 -type create_package_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% version_update_by_jobs_config() :: #{
 %%   <<"enabled">> => boolean(),
 %%   <<"roleArn">> => string()
 %% }
 -type version_update_by_jobs_config() :: #{binary() => any()}.
+
 %% Example:
 %% add_thing_to_billing_group_response() :: #{}
 -type add_thing_to_billing_group_response() :: #{}.
+
 
 %% Example:
 %% audit_mitigation_actions_task_target() :: #{
@@ -5472,6 +6128,7 @@
 %% }
 -type audit_mitigation_actions_task_target() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_v2_logging_options_response() :: #{
 %%   <<"defaultLogLevel">> => list(any()),
@@ -5479,6 +6136,7 @@
 %%   <<"roleArn">> => string()
 %% }
 -type get_v2_logging_options_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% topic_rule_destination() :: #{
@@ -5492,6 +6150,7 @@
 %% }
 -type topic_rule_destination() :: #{binary() => any()}.
 
+
 %% Example:
 %% vpc_destination_configuration() :: #{
 %%   <<"roleArn">> => string(),
@@ -5501,6 +6160,7 @@
 %% }
 -type vpc_destination_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% audit_notification_target() :: #{
 %%   <<"enabled">> => boolean(),
@@ -5508,6 +6168,7 @@
 %%   <<"targetArn">> => string()
 %% }
 -type audit_notification_target() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_security_profiles_request() :: #{
@@ -5517,6 +6178,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_security_profiles_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_metric_values_request() :: #{
@@ -5531,6 +6193,7 @@
 %% }
 -type list_metric_values_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% cancel_job_response() :: #{
 %%   <<"description">> => string(),
@@ -5539,12 +6202,14 @@
 %% }
 -type cancel_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% maintenance_window() :: #{
 %%   <<"durationInMinutes">> => integer(),
 %%   <<"startTime">> => string()
 %% }
 -type maintenance_window() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_domain_configuration_request() :: #{
@@ -5558,9 +6223,11 @@
 %%   <<"validationCertificateArn">> => string()
 %% }
 -type create_domain_configuration_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_provisioning_template_response() :: #{}
 -type delete_provisioning_template_response() :: #{}.
+
 
 %% Example:
 %% update_security_profile_response() :: #{
@@ -5578,18 +6245,22 @@
 %% }
 -type update_security_profile_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_targets_for_security_profile_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_targets_for_security_profile_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_registration_code_request() :: #{}
 -type delete_registration_code_request() :: #{}.
+
 %% Example:
 %% describe_thing_type_request() :: #{}
 -type describe_thing_type_request() :: #{}.
+
 
 %% Example:
 %% job_execution_summary() :: #{
@@ -5602,11 +6273,13 @@
 %% }
 -type job_execution_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_device_certificate_params() :: #{
 %%   <<"action">> => list(any())
 %% }
 -type update_device_certificate_params() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_managed_job_templates_response() :: #{
@@ -5615,6 +6288,7 @@
 %% }
 -type list_managed_job_templates_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_account_audit_configuration_request() :: #{
 %%   <<"auditCheckConfigurations">> => map(),
@@ -5622,9 +6296,11 @@
 %%   <<"roleArn">> => string()
 %% }
 -type update_account_audit_configuration_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_package_request() :: #{}
 -type get_package_request() :: #{}.
+
 
 %% Example:
 %% list_principal_things_request() :: #{
@@ -5634,17 +6310,20 @@
 %% }
 -type list_principal_things_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_cardinality_response() :: #{
 %%   <<"cardinality">> => integer()
 %% }
 -type get_cardinality_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% detach_thing_principal_request() :: #{
 %%   <<"principal">> := string()
 %% }
 -type detach_thing_principal_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% audit_suppression() :: #{
@@ -5656,17 +6335,21 @@
 %% }
 -type audit_suppression() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_on_demand_audit_task_request() :: #{
 %%   <<"targetCheckNames">> := list(string()())
 %% }
 -type start_on_demand_audit_task_request() :: #{binary() => any()}.
+
 %% Example:
 %% clear_default_authorizer_request() :: #{}
 -type clear_default_authorizer_request() :: #{}.
+
 %% Example:
 %% describe_thing_request() :: #{}
 -type describe_thing_request() :: #{}.
+
 
 %% Example:
 %% transfer_data() :: #{
@@ -5678,12 +6361,14 @@
 %% }
 -type transfer_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_packages_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"packageSummaries">> => list(package_summary()())
 %% }
 -type list_packages_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_index_request() :: #{
@@ -5695,11 +6380,13 @@
 %% }
 -type search_index_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% transfer_certificate_response() :: #{
 %%   <<"transferredCertificateArn">> => string()
 %% }
 -type transfer_certificate_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_package_response() :: #{
@@ -5712,11 +6399,13 @@
 %% }
 -type get_package_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% transfer_conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type transfer_conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_targets_for_security_profile_response() :: #{
@@ -5725,11 +6414,13 @@
 %% }
 -type list_targets_for_security_profile_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_stream_response() :: #{
 %%   <<"streamInfo">> => stream_info()
 %% }
 -type describe_stream_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_custom_metric_response() :: #{
@@ -5737,12 +6428,15 @@
 %%   <<"metricName">> => string()
 %% }
 -type create_custom_metric_response() :: #{binary() => any()}.
+
 %% Example:
 %% update_provisioning_template_response() :: #{}
 -type update_provisioning_template_response() :: #{}.
+
 %% Example:
 %% delete_domain_configuration_response() :: #{}
 -type delete_domain_configuration_response() :: #{}.
+
 
 %% Example:
 %% audit_check_details() :: #{
@@ -5756,12 +6450,14 @@
 %% }
 -type audit_check_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_certificates_by_ca_response() :: #{
 %%   <<"certificates">> => list(certificate()()),
 %%   <<"nextMarker">> => string()
 %% }
 -type list_certificates_by_ca_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% thing_type_properties() :: #{
@@ -5770,6 +6466,7 @@
 %% }
 -type thing_type_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_job_executions_for_job_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -5777,6 +6474,7 @@
 %%   <<"status">> => list(any())
 %% }
 -type list_job_executions_for_job_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_authorizer_request() :: #{
@@ -5788,6 +6486,7 @@
 %% }
 -type update_authorizer_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% auth_result() :: #{
 %%   <<"allowed">> => allowed(),
@@ -5797,9 +6496,11 @@
 %%   <<"missingContextValues">> => list(string()())
 %% }
 -type auth_result() :: #{binary() => any()}.
+
 %% Example:
 %% delete_role_alias_request() :: #{}
 -type delete_role_alias_request() :: #{}.
+
 
 %% Example:
 %% update_domain_configuration_response() :: #{
@@ -5808,12 +6509,14 @@
 %% }
 -type update_domain_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_certificates_response() :: #{
 %%   <<"certificates">> => list(certificate()()),
 %%   <<"nextMarker">> => string()
 %% }
 -type list_certificates_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% test_authorization_request() :: #{
@@ -5826,6 +6529,7 @@
 %% }
 -type test_authorization_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_thing_type_response() :: #{
 %%   <<"thingTypeArn">> => string(),
@@ -5836,6 +6540,7 @@
 %% }
 -type describe_thing_type_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% log_target_configuration() :: #{
 %%   <<"logLevel">> => list(any()),
@@ -5843,15 +6548,18 @@
 %% }
 -type log_target_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% aggregation_type() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"values">> => list(string()())
 %% }
 -type aggregation_type() :: #{binary() => any()}.
+
 %% Example:
 %% stop_thing_registration_task_response() :: #{}
 -type stop_thing_registration_task_response() :: #{}.
+
 
 %% Example:
 %% salesforce_action() :: #{
@@ -5859,6 +6567,7 @@
 %%   <<"url">> => string()
 %% }
 -type salesforce_action() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_managed_job_template_response() :: #{
@@ -5872,15 +6581,18 @@
 %% }
 -type describe_managed_job_template_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_thing_type_request() :: #{
 %%   <<"tags">> => list(tag()()),
 %%   <<"thingTypeProperties">> => thing_type_properties()
 %% }
 -type create_thing_type_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_registration_code_response() :: #{}
 -type delete_registration_code_response() :: #{}.
+
 
 %% Example:
 %% add_thing_to_thing_group_request() :: #{
@@ -5892,6 +6604,7 @@
 %% }
 -type add_thing_to_thing_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% job_execution_summary_for_job() :: #{
 %%   <<"jobExecutionSummary">> => job_execution_summary(),
@@ -5899,12 +6612,14 @@
 %% }
 -type job_execution_summary_for_job() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_package_versions_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"packageVersionSummaries">> => list(package_version_summary()())
 %% }
 -type list_package_versions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% outgoing_certificate() :: #{
@@ -5917,6 +6632,7 @@
 %% }
 -type outgoing_certificate() :: #{binary() => any()}.
 
+
 %% Example:
 %% sqs_action() :: #{
 %%   <<"queueUrl">> => string(),
@@ -5925,12 +6641,14 @@
 %% }
 -type sqs_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_topic_rule_destination_request() :: #{
 %%   <<"arn">> := string(),
 %%   <<"status">> := list(any())
 %% }
 -type update_topic_rule_destination_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% thing_type_definition() :: #{
@@ -5940,9 +6658,11 @@
 %%   <<"thingTypeProperties">> => thing_type_properties()
 %% }
 -type thing_type_definition() :: #{binary() => any()}.
+
 %% Example:
 %% describe_fleet_metric_request() :: #{}
 -type describe_fleet_metric_request() :: #{}.
+
 
 %% Example:
 %% cloudwatch_logs_action() :: #{
@@ -5951,6 +6671,7 @@
 %%   <<"roleArn">> => string()
 %% }
 -type cloudwatch_logs_action() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_template_summary() :: #{
@@ -5961,6 +6682,7 @@
 %% }
 -type job_template_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% iot_events_action() :: #{
 %%   <<"batchMode">> => boolean(),
@@ -5969,6 +6691,7 @@
 %%   <<"roleArn">> => string()
 %% }
 -type iot_events_action() :: #{binary() => any()}.
+
 
 %% Example:
 %% vpc_destination_properties() :: #{
@@ -5979,15 +6702,1831 @@
 %% }
 -type vpc_destination_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_role_alias_response() :: #{
 %%   <<"roleAlias">> => string(),
 %%   <<"roleAliasArn">> => string()
 %% }
 -type create_role_alias_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_package_version_response() :: #{}
 -type delete_package_version_response() :: #{}.
+
+-type accept_certificate_transfer_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    transfer_already_completed_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type add_thing_to_billing_group_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type add_thing_to_thing_group_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type associate_targets_with_job_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type attach_policy_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type attach_principal_policy_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type attach_security_profile_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    version_conflict_exception() | 
+    internal_failure_exception().
+
+-type attach_thing_principal_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type cancel_audit_mitigation_actions_task_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type cancel_audit_task_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type cancel_certificate_transfer_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    transfer_already_completed_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type cancel_detect_mitigation_actions_task_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type cancel_job_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type cancel_job_execution_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_state_transition_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    version_conflict_exception().
+
+-type clear_default_authorizer_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type confirm_topic_rule_destination_errors() ::
+    conflicting_resource_update_exception() | 
+    internal_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception().
+
+-type create_audit_suppression_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type create_authorizer_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type create_billing_group_errors() ::
+    resource_already_exists_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type create_certificate_from_csr_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type create_certificate_provider_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type create_custom_metric_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type create_dimension_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type create_domain_configuration_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    certificate_validation_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type create_dynamic_thing_group_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_query_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type create_fleet_metric_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    index_not_ready_exception() | 
+    invalid_query_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    invalid_aggregation_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type create_job_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type create_job_template_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type create_keys_and_certificate_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type create_mitigation_action_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type create_ota_update_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type create_package_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_package_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_policy_errors() ::
+    resource_already_exists_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    malformed_policy_exception() | 
+    internal_failure_exception().
+
+-type create_policy_version_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    versions_limit_exceeded_exception() | 
+    unauthorized_exception() | 
+    malformed_policy_exception() | 
+    internal_failure_exception().
+
+-type create_provisioning_claim_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type create_provisioning_template_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type create_provisioning_template_version_errors() ::
+    throttling_exception() | 
+    conflicting_resource_update_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    versions_limit_exceeded_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type create_role_alias_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type create_scheduled_audit_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type create_security_profile_errors() ::
+    resource_already_exists_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type create_stream_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type create_thing_errors() ::
+    resource_already_exists_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type create_thing_group_errors() ::
+    resource_already_exists_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type create_thing_type_errors() ::
+    resource_already_exists_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type create_topic_rule_errors() ::
+    resource_already_exists_exception() | 
+    sql_parse_exception() | 
+    conflicting_resource_update_exception() | 
+    internal_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception().
+
+-type create_topic_rule_destination_errors() ::
+    resource_already_exists_exception() | 
+    conflicting_resource_update_exception() | 
+    internal_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception().
+
+-type delete_account_audit_configuration_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type delete_audit_suppression_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type delete_authorizer_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    delete_conflict_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type delete_billing_group_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    version_conflict_exception() | 
+    internal_failure_exception().
+
+-type delete_ca_certificate_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    certificate_state_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type delete_certificate_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    certificate_state_exception() | 
+    delete_conflict_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type delete_certificate_provider_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    delete_conflict_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type delete_custom_metric_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type delete_dimension_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type delete_domain_configuration_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type delete_dynamic_thing_group_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    version_conflict_exception() | 
+    internal_failure_exception().
+
+-type delete_fleet_metric_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    version_conflict_exception() | 
+    internal_failure_exception().
+
+-type delete_job_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_state_transition_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type delete_job_execution_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_state_transition_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type delete_job_template_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type delete_mitigation_action_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type delete_ota_update_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    version_conflict_exception() | 
+    internal_failure_exception().
+
+-type delete_package_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception().
+
+-type delete_package_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception().
+
+-type delete_policy_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    delete_conflict_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type delete_policy_version_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    delete_conflict_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type delete_provisioning_template_errors() ::
+    throttling_exception() | 
+    conflicting_resource_update_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    delete_conflict_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type delete_provisioning_template_version_errors() ::
+    throttling_exception() | 
+    conflicting_resource_update_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    delete_conflict_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type delete_registration_code_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type delete_role_alias_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    delete_conflict_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type delete_scheduled_audit_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type delete_security_profile_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    version_conflict_exception() | 
+    internal_failure_exception().
+
+-type delete_stream_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    delete_conflict_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type delete_thing_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    version_conflict_exception() | 
+    internal_failure_exception().
+
+-type delete_thing_group_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    version_conflict_exception() | 
+    internal_failure_exception().
+
+-type delete_thing_type_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type delete_topic_rule_errors() ::
+    conflicting_resource_update_exception() | 
+    internal_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception().
+
+-type delete_topic_rule_destination_errors() ::
+    conflicting_resource_update_exception() | 
+    internal_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception().
+
+-type delete_v2_logging_level_errors() ::
+    internal_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception().
+
+-type deprecate_thing_type_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type describe_account_audit_configuration_errors() ::
+    throttling_exception() | 
+    internal_failure_exception().
+
+-type describe_audit_finding_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_audit_mitigation_actions_task_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_audit_suppression_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_audit_task_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_authorizer_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type describe_billing_group_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_ca_certificate_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type describe_certificate_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type describe_certificate_provider_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type describe_custom_metric_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_default_authorizer_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type describe_detect_mitigation_actions_task_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_dimension_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_domain_configuration_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type describe_endpoint_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type describe_event_configurations_errors() ::
+    throttling_exception() | 
+    internal_failure_exception().
+
+-type describe_fleet_metric_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type describe_index_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type describe_job_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_job_execution_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_job_template_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_managed_job_template_errors() ::
+    throttling_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_mitigation_action_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_provisioning_template_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type describe_provisioning_template_version_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type describe_role_alias_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type describe_scheduled_audit_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_security_profile_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_stream_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type describe_thing_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type describe_thing_group_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_thing_registration_task_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type describe_thing_type_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type detach_policy_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type detach_principal_policy_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type detach_security_profile_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type detach_thing_principal_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type disable_topic_rule_errors() ::
+    conflicting_resource_update_exception() | 
+    internal_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception().
+
+-type enable_topic_rule_errors() ::
+    conflicting_resource_update_exception() | 
+    internal_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception().
+
+-type get_behavior_model_training_summaries_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type get_buckets_aggregation_errors() ::
+    throttling_exception() | 
+    index_not_ready_exception() | 
+    invalid_query_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    invalid_aggregation_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type get_cardinality_errors() ::
+    throttling_exception() | 
+    index_not_ready_exception() | 
+    invalid_query_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    invalid_aggregation_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type get_effective_policies_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type get_indexing_configuration_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type get_job_document_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type get_logging_options_errors() ::
+    internal_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception().
+
+-type get_ota_update_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type get_package_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_package_configuration_errors() ::
+    throttling_exception() | 
+    internal_server_exception().
+
+-type get_package_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_percentiles_errors() ::
+    throttling_exception() | 
+    index_not_ready_exception() | 
+    invalid_query_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    invalid_aggregation_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type get_policy_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type get_policy_version_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type get_registration_code_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type get_statistics_errors() ::
+    throttling_exception() | 
+    index_not_ready_exception() | 
+    invalid_query_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    invalid_aggregation_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type get_topic_rule_errors() ::
+    internal_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception().
+
+-type get_topic_rule_destination_errors() ::
+    internal_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception().
+
+-type get_v2_logging_options_errors() ::
+    internal_exception() | 
+    not_configured_exception() | 
+    service_unavailable_exception().
+
+-type list_active_violations_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_attached_policies_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_audit_findings_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_audit_mitigation_actions_executions_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_audit_mitigation_actions_tasks_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_audit_suppressions_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_audit_tasks_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_authorizers_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_billing_groups_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_ca_certificates_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_certificate_providers_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_certificates_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_certificates_by_ca_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_custom_metrics_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_detect_mitigation_actions_executions_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_detect_mitigation_actions_tasks_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_dimensions_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_domain_configurations_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_fleet_metrics_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_indices_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_job_executions_for_job_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_job_executions_for_thing_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_job_templates_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_jobs_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_managed_job_templates_errors() ::
+    throttling_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_metric_values_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_mitigation_actions_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_ota_updates_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_outgoing_certificates_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_package_versions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_packages_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_policies_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_policy_principals_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_policy_versions_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_principal_policies_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_principal_things_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_provisioning_template_versions_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_provisioning_templates_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_related_resources_for_audit_finding_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_role_aliases_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_scheduled_audits_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_security_profiles_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_security_profiles_for_target_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_streams_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_targets_for_policy_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_targets_for_security_profile_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_thing_groups_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_thing_groups_for_thing_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_thing_principals_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_thing_registration_task_reports_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_thing_registration_tasks_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_thing_types_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_things_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_things_in_billing_group_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_things_in_thing_group_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_topic_rule_destinations_errors() ::
+    internal_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception().
+
+-type list_topic_rules_errors() ::
+    internal_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception().
+
+-type list_v2_logging_levels_errors() ::
+    internal_exception() | 
+    not_configured_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception().
+
+-type list_violation_events_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type put_verification_state_on_violation_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type register_ca_certificate_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    certificate_validation_exception() | 
+    registration_code_validation_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type register_certificate_errors() ::
+    resource_already_exists_exception() | 
+    throttling_exception() | 
+    certificate_validation_exception() | 
+    service_unavailable_exception() | 
+    certificate_conflict_exception() | 
+    invalid_request_exception() | 
+    certificate_state_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type register_certificate_without_ca_errors() ::
+    resource_already_exists_exception() | 
+    throttling_exception() | 
+    certificate_validation_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    certificate_state_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type register_thing_errors() ::
+    resource_registration_failure_exception() | 
+    throttling_exception() | 
+    conflicting_resource_update_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type reject_certificate_transfer_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    transfer_already_completed_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type remove_thing_from_billing_group_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type remove_thing_from_thing_group_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type replace_topic_rule_errors() ::
+    sql_parse_exception() | 
+    conflicting_resource_update_exception() | 
+    internal_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception().
+
+-type search_index_errors() ::
+    throttling_exception() | 
+    index_not_ready_exception() | 
+    invalid_query_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type set_default_authorizer_errors() ::
+    resource_already_exists_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type set_default_policy_version_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type set_logging_options_errors() ::
+    internal_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception().
+
+-type set_v2_logging_level_errors() ::
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    not_configured_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception().
+
+-type set_v2_logging_options_errors() ::
+    internal_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception().
+
+-type start_audit_mitigation_actions_task_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    task_already_exists_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type start_detect_mitigation_actions_task_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    task_already_exists_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type start_on_demand_audit_task_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type start_thing_registration_task_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type stop_thing_registration_task_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type tag_resource_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type test_authorization_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type test_invoke_authorizer_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    invalid_response_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type transfer_certificate_errors() ::
+    transfer_conflict_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    certificate_state_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type update_account_audit_configuration_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type update_audit_suppression_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type update_authorizer_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type update_billing_group_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    version_conflict_exception() | 
+    internal_failure_exception().
+
+-type update_ca_certificate_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type update_certificate_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    certificate_state_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type update_certificate_provider_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type update_custom_metric_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type update_dimension_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type update_domain_configuration_errors() ::
+    throttling_exception() | 
+    certificate_validation_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type update_dynamic_thing_group_errors() ::
+    throttling_exception() | 
+    invalid_query_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    version_conflict_exception() | 
+    internal_failure_exception().
+
+-type update_event_configurations_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type update_fleet_metric_errors() ::
+    throttling_exception() | 
+    index_not_ready_exception() | 
+    invalid_query_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    invalid_aggregation_exception() | 
+    unauthorized_exception() | 
+    version_conflict_exception() | 
+    internal_failure_exception().
+
+-type update_indexing_configuration_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type update_job_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type update_mitigation_action_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type update_package_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_package_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type update_package_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_provisioning_template_errors() ::
+    conflicting_resource_update_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type update_role_alias_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type update_scheduled_audit_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type update_security_profile_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    version_conflict_exception() | 
+    internal_failure_exception().
+
+-type update_stream_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type update_thing_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    version_conflict_exception() | 
+    internal_failure_exception().
+
+-type update_thing_group_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    version_conflict_exception() | 
+    internal_failure_exception().
+
+-type update_thing_groups_for_thing_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type update_topic_rule_destination_errors() ::
+    conflicting_resource_update_exception() | 
+    internal_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception().
+
+-type validate_security_profile_behaviors_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
 
 %%====================================================================
 %% API
@@ -6007,26 +8546,14 @@
 -spec accept_certificate_transfer(map(), binary() | list(), accept_certificate_transfer_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, transfer_already_completed_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, accept_certificate_transfer_errors(), tuple()}.
 accept_certificate_transfer(Client, CertificateId, Input) ->
     accept_certificate_transfer(Client, CertificateId, Input, []).
 
 -spec accept_certificate_transfer(map(), binary() | list(), accept_certificate_transfer_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, transfer_already_completed_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, accept_certificate_transfer_errors(), tuple()}.
 accept_certificate_transfer(Client, CertificateId, Input0, Options0) ->
     Method = patch,
     Path = ["/accept-certificate-transfer/", aws_util:encode_uri(CertificateId), ""],
@@ -6058,20 +8585,14 @@ accept_certificate_transfer(Client, CertificateId, Input0, Options0) ->
 -spec add_thing_to_billing_group(map(), add_thing_to_billing_group_request()) ->
     {ok, add_thing_to_billing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, add_thing_to_billing_group_errors(), tuple()}.
 add_thing_to_billing_group(Client, Input) ->
     add_thing_to_billing_group(Client, Input, []).
 
 -spec add_thing_to_billing_group(map(), add_thing_to_billing_group_request(), proplists:proplist()) ->
     {ok, add_thing_to_billing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, add_thing_to_billing_group_errors(), tuple()}.
 add_thing_to_billing_group(Client, Input0, Options0) ->
     Method = put,
     Path = ["/billing-groups/addThingToBillingGroup"],
@@ -6102,20 +8623,14 @@ add_thing_to_billing_group(Client, Input0, Options0) ->
 -spec add_thing_to_thing_group(map(), add_thing_to_thing_group_request()) ->
     {ok, add_thing_to_thing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, add_thing_to_thing_group_errors(), tuple()}.
 add_thing_to_thing_group(Client, Input) ->
     add_thing_to_thing_group(Client, Input, []).
 
 -spec add_thing_to_thing_group(map(), add_thing_to_thing_group_request(), proplists:proplist()) ->
     {ok, add_thing_to_thing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, add_thing_to_thing_group_errors(), tuple()}.
 add_thing_to_thing_group(Client, Input0, Options0) ->
     Method = put,
     Path = ["/thing-groups/addThingToThingGroup"],
@@ -6155,22 +8670,14 @@ add_thing_to_thing_group(Client, Input0, Options0) ->
 -spec associate_targets_with_job(map(), binary() | list(), associate_targets_with_job_request()) ->
     {ok, associate_targets_with_job_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_targets_with_job_errors(), tuple()}.
 associate_targets_with_job(Client, JobId, Input) ->
     associate_targets_with_job(Client, JobId, Input, []).
 
 -spec associate_targets_with_job(map(), binary() | list(), associate_targets_with_job_request(), proplists:proplist()) ->
     {ok, associate_targets_with_job_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_targets_with_job_errors(), tuple()}.
 associate_targets_with_job(Client, JobId, Input0, Options0) ->
     Method = post,
     Path = ["/jobs/", aws_util:encode_uri(JobId), "/targets"],
@@ -6204,26 +8711,14 @@ associate_targets_with_job(Client, JobId, Input0, Options0) ->
 -spec attach_policy(map(), binary() | list(), attach_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, attach_policy_errors(), tuple()}.
 attach_policy(Client, PolicyName, Input) ->
     attach_policy(Client, PolicyName, Input, []).
 
 -spec attach_policy(map(), binary() | list(), attach_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, attach_policy_errors(), tuple()}.
 attach_policy(Client, PolicyName, Input0, Options0) ->
     Method = put,
     Path = ["/target-policies/", aws_util:encode_uri(PolicyName), ""],
@@ -6260,26 +8755,14 @@ attach_policy(Client, PolicyName, Input0, Options0) ->
 -spec attach_principal_policy(map(), binary() | list(), attach_principal_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, attach_principal_policy_errors(), tuple()}.
 attach_principal_policy(Client, PolicyName, Input) ->
     attach_principal_policy(Client, PolicyName, Input, []).
 
 -spec attach_principal_policy(map(), binary() | list(), attach_principal_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, attach_principal_policy_errors(), tuple()}.
 attach_principal_policy(Client, PolicyName, Input0, Options0) ->
     Method = put,
     Path = ["/principal-policies/", aws_util:encode_uri(PolicyName), ""],
@@ -6317,24 +8800,14 @@ attach_principal_policy(Client, PolicyName, Input0, Options0) ->
 -spec attach_security_profile(map(), binary() | list(), attach_security_profile_request()) ->
     {ok, attach_security_profile_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, version_conflict_exception(), tuple()}.
+    {error, attach_security_profile_errors(), tuple()}.
 attach_security_profile(Client, SecurityProfileName, Input) ->
     attach_security_profile(Client, SecurityProfileName, Input, []).
 
 -spec attach_security_profile(map(), binary() | list(), attach_security_profile_request(), proplists:proplist()) ->
     {ok, attach_security_profile_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, version_conflict_exception(), tuple()}.
+    {error, attach_security_profile_errors(), tuple()}.
 attach_security_profile(Client, SecurityProfileName, Input0, Options0) ->
     Method = put,
     Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), "/targets"],
@@ -6369,24 +8842,14 @@ attach_security_profile(Client, SecurityProfileName, Input0, Options0) ->
 -spec attach_thing_principal(map(), binary() | list(), attach_thing_principal_request()) ->
     {ok, attach_thing_principal_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, attach_thing_principal_errors(), tuple()}.
 attach_thing_principal(Client, ThingName, Input) ->
     attach_thing_principal(Client, ThingName, Input, []).
 
 -spec attach_thing_principal(map(), binary() | list(), attach_thing_principal_request(), proplists:proplist()) ->
     {ok, attach_thing_principal_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, attach_thing_principal_errors(), tuple()}.
 attach_thing_principal(Client, ThingName, Input0, Options0) ->
     Method = put,
     Path = ["/things/", aws_util:encode_uri(ThingName), "/principals"],
@@ -6423,20 +8886,14 @@ attach_thing_principal(Client, ThingName, Input0, Options0) ->
 -spec cancel_audit_mitigation_actions_task(map(), binary() | list(), cancel_audit_mitigation_actions_task_request()) ->
     {ok, cancel_audit_mitigation_actions_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, cancel_audit_mitigation_actions_task_errors(), tuple()}.
 cancel_audit_mitigation_actions_task(Client, TaskId, Input) ->
     cancel_audit_mitigation_actions_task(Client, TaskId, Input, []).
 
 -spec cancel_audit_mitigation_actions_task(map(), binary() | list(), cancel_audit_mitigation_actions_task_request(), proplists:proplist()) ->
     {ok, cancel_audit_mitigation_actions_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, cancel_audit_mitigation_actions_task_errors(), tuple()}.
 cancel_audit_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
     Method = put,
     Path = ["/audit/mitigationactions/tasks/", aws_util:encode_uri(TaskId), "/cancel"],
@@ -6470,20 +8927,14 @@ cancel_audit_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
 -spec cancel_audit_task(map(), binary() | list(), cancel_audit_task_request()) ->
     {ok, cancel_audit_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, cancel_audit_task_errors(), tuple()}.
 cancel_audit_task(Client, TaskId, Input) ->
     cancel_audit_task(Client, TaskId, Input, []).
 
 -spec cancel_audit_task(map(), binary() | list(), cancel_audit_task_request(), proplists:proplist()) ->
     {ok, cancel_audit_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, cancel_audit_task_errors(), tuple()}.
 cancel_audit_task(Client, TaskId, Input0, Options0) ->
     Method = put,
     Path = ["/audit/tasks/", aws_util:encode_uri(TaskId), "/cancel"],
@@ -6525,26 +8976,14 @@ cancel_audit_task(Client, TaskId, Input0, Options0) ->
 -spec cancel_certificate_transfer(map(), binary() | list(), cancel_certificate_transfer_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, transfer_already_completed_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, cancel_certificate_transfer_errors(), tuple()}.
 cancel_certificate_transfer(Client, CertificateId, Input) ->
     cancel_certificate_transfer(Client, CertificateId, Input, []).
 
 -spec cancel_certificate_transfer(map(), binary() | list(), cancel_certificate_transfer_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, transfer_already_completed_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, cancel_certificate_transfer_errors(), tuple()}.
 cancel_certificate_transfer(Client, CertificateId, Input0, Options0) ->
     Method = patch,
     Path = ["/cancel-certificate-transfer/", aws_util:encode_uri(CertificateId), ""],
@@ -6576,20 +9015,14 @@ cancel_certificate_transfer(Client, CertificateId, Input0, Options0) ->
 -spec cancel_detect_mitigation_actions_task(map(), binary() | list(), cancel_detect_mitigation_actions_task_request()) ->
     {ok, cancel_detect_mitigation_actions_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, cancel_detect_mitigation_actions_task_errors(), tuple()}.
 cancel_detect_mitigation_actions_task(Client, TaskId, Input) ->
     cancel_detect_mitigation_actions_task(Client, TaskId, Input, []).
 
 -spec cancel_detect_mitigation_actions_task(map(), binary() | list(), cancel_detect_mitigation_actions_task_request(), proplists:proplist()) ->
     {ok, cancel_detect_mitigation_actions_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, cancel_detect_mitigation_actions_task_errors(), tuple()}.
 cancel_detect_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
     Method = put,
     Path = ["/detect/mitigationactions/tasks/", aws_util:encode_uri(TaskId), "/cancel"],
@@ -6620,22 +9053,14 @@ cancel_detect_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
 -spec cancel_job(map(), binary() | list(), cancel_job_request()) ->
     {ok, cancel_job_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, cancel_job_errors(), tuple()}.
 cancel_job(Client, JobId, Input) ->
     cancel_job(Client, JobId, Input, []).
 
 -spec cancel_job(map(), binary() | list(), cancel_job_request(), proplists:proplist()) ->
     {ok, cancel_job_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, cancel_job_errors(), tuple()}.
 cancel_job(Client, JobId, Input0, Options0) ->
     Method = put,
     Path = ["/jobs/", aws_util:encode_uri(JobId), "/cancel"],
@@ -6667,24 +9092,14 @@ cancel_job(Client, JobId, Input0, Options0) ->
 -spec cancel_job_execution(map(), binary() | list(), binary() | list(), cancel_job_execution_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_state_transition_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, version_conflict_exception(), tuple()}.
+    {error, cancel_job_execution_errors(), tuple()}.
 cancel_job_execution(Client, JobId, ThingName, Input) ->
     cancel_job_execution(Client, JobId, ThingName, Input, []).
 
 -spec cancel_job_execution(map(), binary() | list(), binary() | list(), cancel_job_execution_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_state_transition_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, version_conflict_exception(), tuple()}.
+    {error, cancel_job_execution_errors(), tuple()}.
 cancel_job_execution(Client, JobId, ThingName, Input0, Options0) ->
     Method = put,
     Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs/", aws_util:encode_uri(JobId), "/cancel"],
@@ -6716,24 +9131,14 @@ cancel_job_execution(Client, JobId, ThingName, Input0, Options0) ->
 -spec clear_default_authorizer(map(), clear_default_authorizer_request()) ->
     {ok, clear_default_authorizer_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, clear_default_authorizer_errors(), tuple()}.
 clear_default_authorizer(Client, Input) ->
     clear_default_authorizer(Client, Input, []).
 
 -spec clear_default_authorizer(map(), clear_default_authorizer_request(), proplists:proplist()) ->
     {ok, clear_default_authorizer_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, clear_default_authorizer_errors(), tuple()}.
 clear_default_authorizer(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/default-authorizer"],
@@ -6771,11 +9176,7 @@ clear_default_authorizer(Client, Input0, Options0) ->
 -spec confirm_topic_rule_destination(map(), binary() | list()) ->
     {ok, confirm_topic_rule_destination_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_resource_update_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, confirm_topic_rule_destination_errors(), tuple()}.
 confirm_topic_rule_destination(Client, ConfirmationToken)
   when is_map(Client) ->
     confirm_topic_rule_destination(Client, ConfirmationToken, #{}, #{}).
@@ -6783,11 +9184,7 @@ confirm_topic_rule_destination(Client, ConfirmationToken)
 -spec confirm_topic_rule_destination(map(), binary() | list(), map(), map()) ->
     {ok, confirm_topic_rule_destination_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_resource_update_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, confirm_topic_rule_destination_errors(), tuple()}.
 confirm_topic_rule_destination(Client, ConfirmationToken, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     confirm_topic_rule_destination(Client, ConfirmationToken, QueryMap, HeadersMap, []).
@@ -6795,11 +9192,7 @@ confirm_topic_rule_destination(Client, ConfirmationToken, QueryMap, HeadersMap)
 -spec confirm_topic_rule_destination(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, confirm_topic_rule_destination_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_resource_update_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, confirm_topic_rule_destination_errors(), tuple()}.
 confirm_topic_rule_destination(Client, ConfirmationToken, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/confirmdestination/", aws_util:encode_multi_segment_uri(ConfirmationToken), ""],
@@ -6825,22 +9218,14 @@ confirm_topic_rule_destination(Client, ConfirmationToken, QueryMap, HeadersMap, 
 -spec create_audit_suppression(map(), create_audit_suppression_request()) ->
     {ok, create_audit_suppression_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_audit_suppression_errors(), tuple()}.
 create_audit_suppression(Client, Input) ->
     create_audit_suppression(Client, Input, []).
 
 -spec create_audit_suppression(map(), create_audit_suppression_request(), proplists:proplist()) ->
     {ok, create_audit_suppression_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_audit_suppression_errors(), tuple()}.
 create_audit_suppression(Client, Input0, Options0) ->
     Method = post,
     Path = ["/audit/suppressions/create"],
@@ -6871,26 +9256,14 @@ create_audit_suppression(Client, Input0, Options0) ->
 -spec create_authorizer(map(), binary() | list(), create_authorizer_request()) ->
     {ok, create_authorizer_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_authorizer_errors(), tuple()}.
 create_authorizer(Client, AuthorizerName, Input) ->
     create_authorizer(Client, AuthorizerName, Input, []).
 
 -spec create_authorizer(map(), binary() | list(), create_authorizer_request(), proplists:proplist()) ->
     {ok, create_authorizer_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_authorizer_errors(), tuple()}.
 create_authorizer(Client, AuthorizerName, Input0, Options0) ->
     Method = post,
     Path = ["/authorizer/", aws_util:encode_uri(AuthorizerName), ""],
@@ -6921,20 +9294,14 @@ create_authorizer(Client, AuthorizerName, Input0, Options0) ->
 -spec create_billing_group(map(), binary() | list(), create_billing_group_request()) ->
     {ok, create_billing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_billing_group_errors(), tuple()}.
 create_billing_group(Client, BillingGroupName, Input) ->
     create_billing_group(Client, BillingGroupName, Input, []).
 
 -spec create_billing_group(map(), binary() | list(), create_billing_group_request(), proplists:proplist()) ->
     {ok, create_billing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_billing_group_errors(), tuple()}.
 create_billing_group(Client, BillingGroupName, Input0, Options0) ->
     Method = post,
     Path = ["/billing-groups/", aws_util:encode_uri(BillingGroupName), ""],
@@ -7022,22 +9389,14 @@ create_billing_group(Client, BillingGroupName, Input0, Options0) ->
 -spec create_certificate_from_csr(map(), create_certificate_from_csr_request()) ->
     {ok, create_certificate_from_csr_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_certificate_from_csr_errors(), tuple()}.
 create_certificate_from_csr(Client, Input) ->
     create_certificate_from_csr(Client, Input, []).
 
 -spec create_certificate_from_csr(map(), create_certificate_from_csr_request(), proplists:proplist()) ->
     {ok, create_certificate_from_csr_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_certificate_from_csr_errors(), tuple()}.
 create_certificate_from_csr(Client, Input0, Options0) ->
     Method = post,
     Path = ["/certificates"],
@@ -7087,26 +9446,14 @@ create_certificate_from_csr(Client, Input0, Options0) ->
 -spec create_certificate_provider(map(), binary() | list(), create_certificate_provider_request()) ->
     {ok, create_certificate_provider_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_certificate_provider_errors(), tuple()}.
 create_certificate_provider(Client, CertificateProviderName, Input) ->
     create_certificate_provider(Client, CertificateProviderName, Input, []).
 
 -spec create_certificate_provider(map(), binary() | list(), create_certificate_provider_request(), proplists:proplist()) ->
     {ok, create_certificate_provider_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_certificate_provider_errors(), tuple()}.
 create_certificate_provider(Client, CertificateProviderName, Input0, Options0) ->
     Method = post,
     Path = ["/certificate-providers/", aws_util:encode_uri(CertificateProviderName), ""],
@@ -7140,22 +9487,14 @@ create_certificate_provider(Client, CertificateProviderName, Input0, Options0) -
 -spec create_custom_metric(map(), binary() | list(), create_custom_metric_request()) ->
     {ok, create_custom_metric_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_custom_metric_errors(), tuple()}.
 create_custom_metric(Client, MetricName, Input) ->
     create_custom_metric(Client, MetricName, Input, []).
 
 -spec create_custom_metric(map(), binary() | list(), create_custom_metric_request(), proplists:proplist()) ->
     {ok, create_custom_metric_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_custom_metric_errors(), tuple()}.
 create_custom_metric(Client, MetricName, Input0, Options0) ->
     Method = post,
     Path = ["/custom-metric/", aws_util:encode_uri(MetricName), ""],
@@ -7191,22 +9530,14 @@ create_custom_metric(Client, MetricName, Input0, Options0) ->
 -spec create_dimension(map(), binary() | list(), create_dimension_request()) ->
     {ok, create_dimension_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_dimension_errors(), tuple()}.
 create_dimension(Client, Name, Input) ->
     create_dimension(Client, Name, Input, []).
 
 -spec create_dimension(map(), binary() | list(), create_dimension_request(), proplists:proplist()) ->
     {ok, create_dimension_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_dimension_errors(), tuple()}.
 create_dimension(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/dimensions/", aws_util:encode_uri(Name), ""],
@@ -7237,28 +9568,14 @@ create_dimension(Client, Name, Input0, Options0) ->
 -spec create_domain_configuration(map(), binary() | list(), create_domain_configuration_request()) ->
     {ok, create_domain_configuration_response(), tuple()} |
     {error, any()} |
-    {error, certificate_validation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_domain_configuration_errors(), tuple()}.
 create_domain_configuration(Client, DomainConfigurationName, Input) ->
     create_domain_configuration(Client, DomainConfigurationName, Input, []).
 
 -spec create_domain_configuration(map(), binary() | list(), create_domain_configuration_request(), proplists:proplist()) ->
     {ok, create_domain_configuration_response(), tuple()} |
     {error, any()} |
-    {error, certificate_validation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_domain_configuration_errors(), tuple()}.
 create_domain_configuration(Client, DomainConfigurationName, Input0, Options0) ->
     Method = post,
     Path = ["/domainConfigurations/", aws_util:encode_uri(DomainConfigurationName), ""],
@@ -7289,26 +9606,14 @@ create_domain_configuration(Client, DomainConfigurationName, Input0, Options0) -
 -spec create_dynamic_thing_group(map(), binary() | list(), create_dynamic_thing_group_request()) ->
     {ok, create_dynamic_thing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_query_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_dynamic_thing_group_errors(), tuple()}.
 create_dynamic_thing_group(Client, ThingGroupName, Input) ->
     create_dynamic_thing_group(Client, ThingGroupName, Input, []).
 
 -spec create_dynamic_thing_group(map(), binary() | list(), create_dynamic_thing_group_request(), proplists:proplist()) ->
     {ok, create_dynamic_thing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_query_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_dynamic_thing_group_errors(), tuple()}.
 create_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
     Method = post,
     Path = ["/dynamic-thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
@@ -7339,34 +9644,14 @@ create_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
 -spec create_fleet_metric(map(), binary() | list(), create_fleet_metric_request()) ->
     {ok, create_fleet_metric_response(), tuple()} |
     {error, any()} |
-    {error, index_not_ready_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_aggregation_exception(), tuple()} |
-    {error, invalid_query_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_fleet_metric_errors(), tuple()}.
 create_fleet_metric(Client, MetricName, Input) ->
     create_fleet_metric(Client, MetricName, Input, []).
 
 -spec create_fleet_metric(map(), binary() | list(), create_fleet_metric_request(), proplists:proplist()) ->
     {ok, create_fleet_metric_response(), tuple()} |
     {error, any()} |
-    {error, index_not_ready_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_aggregation_exception(), tuple()} |
-    {error, invalid_query_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_fleet_metric_errors(), tuple()}.
 create_fleet_metric(Client, MetricName, Input0, Options0) ->
     Method = put,
     Path = ["/fleet-metric/", aws_util:encode_uri(MetricName), ""],
@@ -7397,24 +9682,14 @@ create_fleet_metric(Client, MetricName, Input0, Options0) ->
 -spec create_job(map(), binary() | list(), create_job_request()) ->
     {ok, create_job_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_job_errors(), tuple()}.
 create_job(Client, JobId, Input) ->
     create_job(Client, JobId, Input, []).
 
 -spec create_job(map(), binary() | list(), create_job_request(), proplists:proplist()) ->
     {ok, create_job_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_job_errors(), tuple()}.
 create_job(Client, JobId, Input0, Options0) ->
     Method = put,
     Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
@@ -7445,24 +9720,14 @@ create_job(Client, JobId, Input0, Options0) ->
 -spec create_job_template(map(), binary() | list(), create_job_template_request()) ->
     {ok, create_job_template_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_job_template_errors(), tuple()}.
 create_job_template(Client, JobTemplateId, Input) ->
     create_job_template(Client, JobTemplateId, Input, []).
 
 -spec create_job_template(map(), binary() | list(), create_job_template_request(), proplists:proplist()) ->
     {ok, create_job_template_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_job_template_errors(), tuple()}.
 create_job_template(Client, JobTemplateId, Input0, Options0) ->
     Method = put,
     Path = ["/job-templates/", aws_util:encode_uri(JobTemplateId), ""],
@@ -7502,22 +9767,14 @@ create_job_template(Client, JobTemplateId, Input0, Options0) ->
 -spec create_keys_and_certificate(map(), create_keys_and_certificate_request()) ->
     {ok, create_keys_and_certificate_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_keys_and_certificate_errors(), tuple()}.
 create_keys_and_certificate(Client, Input) ->
     create_keys_and_certificate(Client, Input, []).
 
 -spec create_keys_and_certificate(map(), create_keys_and_certificate_request(), proplists:proplist()) ->
     {ok, create_keys_and_certificate_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_keys_and_certificate_errors(), tuple()}.
 create_keys_and_certificate(Client, Input0, Options0) ->
     Method = post,
     Path = ["/keys-and-certificate"],
@@ -7556,22 +9813,14 @@ create_keys_and_certificate(Client, Input0, Options0) ->
 -spec create_mitigation_action(map(), binary() | list(), create_mitigation_action_request()) ->
     {ok, create_mitigation_action_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_mitigation_action_errors(), tuple()}.
 create_mitigation_action(Client, ActionName, Input) ->
     create_mitigation_action(Client, ActionName, Input, []).
 
 -spec create_mitigation_action(map(), binary() | list(), create_mitigation_action_request(), proplists:proplist()) ->
     {ok, create_mitigation_action_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_mitigation_action_errors(), tuple()}.
 create_mitigation_action(Client, ActionName, Input0, Options0) ->
     Method = post,
     Path = ["/mitigationactions/actions/", aws_util:encode_uri(ActionName), ""],
@@ -7602,28 +9851,14 @@ create_mitigation_action(Client, ActionName, Input0, Options0) ->
 -spec create_ota_update(map(), binary() | list(), create_ota_update_request()) ->
     {ok, create_ota_update_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_ota_update_errors(), tuple()}.
 create_ota_update(Client, OtaUpdateId, Input) ->
     create_ota_update(Client, OtaUpdateId, Input, []).
 
 -spec create_ota_update(map(), binary() | list(), create_ota_update_request(), proplists:proplist()) ->
     {ok, create_ota_update_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_ota_update_errors(), tuple()}.
 create_ota_update(Client, OtaUpdateId, Input0, Options0) ->
     Method = post,
     Path = ["/otaUpdates/", aws_util:encode_uri(OtaUpdateId), ""],
@@ -7656,22 +9891,14 @@ create_ota_update(Client, OtaUpdateId, Input0, Options0) ->
 -spec create_package(map(), binary() | list(), create_package_request()) ->
     {ok, create_package_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_package_errors(), tuple()}.
 create_package(Client, PackageName, Input) ->
     create_package(Client, PackageName, Input, []).
 
 -spec create_package(map(), binary() | list(), create_package_request(), proplists:proplist()) ->
     {ok, create_package_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_package_errors(), tuple()}.
 create_package(Client, PackageName, Input0, Options0) ->
     Method = put,
     Path = ["/packages/", aws_util:encode_uri(PackageName), ""],
@@ -7705,22 +9932,14 @@ create_package(Client, PackageName, Input0, Options0) ->
 -spec create_package_version(map(), binary() | list(), binary() | list(), create_package_version_request()) ->
     {ok, create_package_version_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_package_version_errors(), tuple()}.
 create_package_version(Client, PackageName, VersionName, Input) ->
     create_package_version(Client, PackageName, VersionName, Input, []).
 
 -spec create_package_version(map(), binary() | list(), binary() | list(), create_package_version_request(), proplists:proplist()) ->
     {ok, create_package_version_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_package_version_errors(), tuple()}.
 create_package_version(Client, PackageName, VersionName, Input0, Options0) ->
     Method = put,
     Path = ["/packages/", aws_util:encode_uri(PackageName), "/versions/", aws_util:encode_uri(VersionName), ""],
@@ -7757,26 +9976,14 @@ create_package_version(Client, PackageName, VersionName, Input0, Options0) ->
 -spec create_policy(map(), binary() | list(), create_policy_request()) ->
     {ok, create_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, malformed_policy_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_policy_errors(), tuple()}.
 create_policy(Client, PolicyName, Input) ->
     create_policy(Client, PolicyName, Input, []).
 
 -spec create_policy(map(), binary() | list(), create_policy_request(), proplists:proplist()) ->
     {ok, create_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, malformed_policy_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_policy_errors(), tuple()}.
 create_policy(Client, PolicyName, Input0, Options0) ->
     Method = post,
     Path = ["/policies/", aws_util:encode_uri(PolicyName), ""],
@@ -7820,28 +10027,14 @@ create_policy(Client, PolicyName, Input0, Options0) ->
 -spec create_policy_version(map(), binary() | list(), create_policy_version_request()) ->
     {ok, create_policy_version_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, malformed_policy_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, versions_limit_exceeded_exception(), tuple()}.
+    {error, create_policy_version_errors(), tuple()}.
 create_policy_version(Client, PolicyName, Input) ->
     create_policy_version(Client, PolicyName, Input, []).
 
 -spec create_policy_version(map(), binary() | list(), create_policy_version_request(), proplists:proplist()) ->
     {ok, create_policy_version_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, malformed_policy_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, versions_limit_exceeded_exception(), tuple()}.
+    {error, create_policy_version_errors(), tuple()}.
 create_policy_version(Client, PolicyName, Input0, Options0) ->
     Method = post,
     Path = ["/policies/", aws_util:encode_uri(PolicyName), "/version"],
@@ -7873,24 +10066,14 @@ create_policy_version(Client, PolicyName, Input0, Options0) ->
 -spec create_provisioning_claim(map(), binary() | list(), create_provisioning_claim_request()) ->
     {ok, create_provisioning_claim_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_provisioning_claim_errors(), tuple()}.
 create_provisioning_claim(Client, TemplateName, Input) ->
     create_provisioning_claim(Client, TemplateName, Input, []).
 
 -spec create_provisioning_claim(map(), binary() | list(), create_provisioning_claim_request(), proplists:proplist()) ->
     {ok, create_provisioning_claim_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_provisioning_claim_errors(), tuple()}.
 create_provisioning_claim(Client, TemplateName, Input0, Options0) ->
     Method = post,
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), "/provisioning-claim"],
@@ -7921,24 +10104,14 @@ create_provisioning_claim(Client, TemplateName, Input0, Options0) ->
 -spec create_provisioning_template(map(), create_provisioning_template_request()) ->
     {ok, create_provisioning_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_provisioning_template_errors(), tuple()}.
 create_provisioning_template(Client, Input) ->
     create_provisioning_template(Client, Input, []).
 
 -spec create_provisioning_template(map(), create_provisioning_template_request(), proplists:proplist()) ->
     {ok, create_provisioning_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_provisioning_template_errors(), tuple()}.
 create_provisioning_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/provisioning-templates"],
@@ -7969,26 +10142,14 @@ create_provisioning_template(Client, Input0, Options0) ->
 -spec create_provisioning_template_version(map(), binary() | list(), create_provisioning_template_version_request()) ->
     {ok, create_provisioning_template_version_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_resource_update_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, versions_limit_exceeded_exception(), tuple()}.
+    {error, create_provisioning_template_version_errors(), tuple()}.
 create_provisioning_template_version(Client, TemplateName, Input) ->
     create_provisioning_template_version(Client, TemplateName, Input, []).
 
 -spec create_provisioning_template_version(map(), binary() | list(), create_provisioning_template_version_request(), proplists:proplist()) ->
     {ok, create_provisioning_template_version_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_resource_update_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, versions_limit_exceeded_exception(), tuple()}.
+    {error, create_provisioning_template_version_errors(), tuple()}.
 create_provisioning_template_version(Client, TemplateName, Input0, Options0) ->
     Method = post,
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), "/versions"],
@@ -8020,26 +10181,14 @@ create_provisioning_template_version(Client, TemplateName, Input0, Options0) ->
 -spec create_role_alias(map(), binary() | list(), create_role_alias_request()) ->
     {ok, create_role_alias_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_role_alias_errors(), tuple()}.
 create_role_alias(Client, RoleAlias, Input) ->
     create_role_alias(Client, RoleAlias, Input, []).
 
 -spec create_role_alias(map(), binary() | list(), create_role_alias_request(), proplists:proplist()) ->
     {ok, create_role_alias_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_role_alias_errors(), tuple()}.
 create_role_alias(Client, RoleAlias, Input0, Options0) ->
     Method = post,
     Path = ["/role-aliases/", aws_util:encode_uri(RoleAlias), ""],
@@ -8071,22 +10220,14 @@ create_role_alias(Client, RoleAlias, Input0, Options0) ->
 -spec create_scheduled_audit(map(), binary() | list(), create_scheduled_audit_request()) ->
     {ok, create_scheduled_audit_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_scheduled_audit_errors(), tuple()}.
 create_scheduled_audit(Client, ScheduledAuditName, Input) ->
     create_scheduled_audit(Client, ScheduledAuditName, Input, []).
 
 -spec create_scheduled_audit(map(), binary() | list(), create_scheduled_audit_request(), proplists:proplist()) ->
     {ok, create_scheduled_audit_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_scheduled_audit_errors(), tuple()}.
 create_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
     Method = post,
     Path = ["/audit/scheduledaudits/", aws_util:encode_uri(ScheduledAuditName), ""],
@@ -8117,20 +10258,14 @@ create_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
 -spec create_security_profile(map(), binary() | list(), create_security_profile_request()) ->
     {ok, create_security_profile_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_security_profile_errors(), tuple()}.
 create_security_profile(Client, SecurityProfileName, Input) ->
     create_security_profile(Client, SecurityProfileName, Input, []).
 
 -spec create_security_profile(map(), binary() | list(), create_security_profile_request(), proplists:proplist()) ->
     {ok, create_security_profile_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_security_profile_errors(), tuple()}.
 create_security_profile(Client, SecurityProfileName, Input0, Options0) ->
     Method = post,
     Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), ""],
@@ -8167,28 +10302,14 @@ create_security_profile(Client, SecurityProfileName, Input0, Options0) ->
 -spec create_stream(map(), binary() | list(), create_stream_request()) ->
     {ok, create_stream_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_stream_errors(), tuple()}.
 create_stream(Client, StreamId, Input) ->
     create_stream(Client, StreamId, Input, []).
 
 -spec create_stream(map(), binary() | list(), create_stream_request(), proplists:proplist()) ->
     {ok, create_stream_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_stream_errors(), tuple()}.
 create_stream(Client, StreamId, Input0, Options0) ->
     Method = post,
     Path = ["/streams/", aws_util:encode_uri(StreamId), ""],
@@ -8230,26 +10351,14 @@ create_stream(Client, StreamId, Input0, Options0) ->
 -spec create_thing(map(), binary() | list(), create_thing_request()) ->
     {ok, create_thing_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_thing_errors(), tuple()}.
 create_thing(Client, ThingName, Input) ->
     create_thing(Client, ThingName, Input, []).
 
 -spec create_thing(map(), binary() | list(), create_thing_request(), proplists:proplist()) ->
     {ok, create_thing_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_thing_errors(), tuple()}.
 create_thing(Client, ThingName, Input0, Options0) ->
     Method = post,
     Path = ["/things/", aws_util:encode_uri(ThingName), ""],
@@ -8289,20 +10398,14 @@ create_thing(Client, ThingName, Input0, Options0) ->
 -spec create_thing_group(map(), binary() | list(), create_thing_group_request()) ->
     {ok, create_thing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_thing_group_errors(), tuple()}.
 create_thing_group(Client, ThingGroupName, Input) ->
     create_thing_group(Client, ThingGroupName, Input, []).
 
 -spec create_thing_group(map(), binary() | list(), create_thing_group_request(), proplists:proplist()) ->
     {ok, create_thing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_thing_group_errors(), tuple()}.
 create_thing_group(Client, ThingGroupName, Input0, Options0) ->
     Method = post,
     Path = ["/thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
@@ -8333,24 +10436,14 @@ create_thing_group(Client, ThingGroupName, Input0, Options0) ->
 -spec create_thing_type(map(), binary() | list(), create_thing_type_request()) ->
     {ok, create_thing_type_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_thing_type_errors(), tuple()}.
 create_thing_type(Client, ThingTypeName, Input) ->
     create_thing_type(Client, ThingTypeName, Input, []).
 
 -spec create_thing_type(map(), binary() | list(), create_thing_type_request(), proplists:proplist()) ->
     {ok, create_thing_type_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_thing_type_errors(), tuple()}.
 create_thing_type(Client, ThingTypeName, Input0, Options0) ->
     Method = post,
     Path = ["/thing-types/", aws_util:encode_uri(ThingTypeName), ""],
@@ -8385,24 +10478,14 @@ create_thing_type(Client, ThingTypeName, Input0, Options0) ->
 -spec create_topic_rule(map(), binary() | list(), create_topic_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflicting_resource_update_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, sql_parse_exception(), tuple()}.
+    {error, create_topic_rule_errors(), tuple()}.
 create_topic_rule(Client, RuleName, Input) ->
     create_topic_rule(Client, RuleName, Input, []).
 
 -spec create_topic_rule(map(), binary() | list(), create_topic_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflicting_resource_update_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, sql_parse_exception(), tuple()}.
+    {error, create_topic_rule_errors(), tuple()}.
 create_topic_rule(Client, RuleName, Input0, Options0) ->
     Method = post,
     Path = ["/rules/", aws_util:encode_uri(RuleName), ""],
@@ -8437,22 +10520,14 @@ create_topic_rule(Client, RuleName, Input0, Options0) ->
 -spec create_topic_rule_destination(map(), create_topic_rule_destination_request()) ->
     {ok, create_topic_rule_destination_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_resource_update_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_topic_rule_destination_errors(), tuple()}.
 create_topic_rule_destination(Client, Input) ->
     create_topic_rule_destination(Client, Input, []).
 
 -spec create_topic_rule_destination(map(), create_topic_rule_destination_request(), proplists:proplist()) ->
     {ok, create_topic_rule_destination_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_resource_update_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_topic_rule_destination_errors(), tuple()}.
 create_topic_rule_destination(Client, Input0, Options0) ->
     Method = post,
     Path = ["/destinations"],
@@ -8489,20 +10564,14 @@ create_topic_rule_destination(Client, Input0, Options0) ->
 -spec delete_account_audit_configuration(map(), delete_account_audit_configuration_request()) ->
     {ok, delete_account_audit_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_account_audit_configuration_errors(), tuple()}.
 delete_account_audit_configuration(Client, Input) ->
     delete_account_audit_configuration(Client, Input, []).
 
 -spec delete_account_audit_configuration(map(), delete_account_audit_configuration_request(), proplists:proplist()) ->
     {ok, delete_account_audit_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_account_audit_configuration_errors(), tuple()}.
 delete_account_audit_configuration(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/audit/configuration"],
@@ -8535,18 +10604,14 @@ delete_account_audit_configuration(Client, Input0, Options0) ->
 -spec delete_audit_suppression(map(), delete_audit_suppression_request()) ->
     {ok, delete_audit_suppression_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_audit_suppression_errors(), tuple()}.
 delete_audit_suppression(Client, Input) ->
     delete_audit_suppression(Client, Input, []).
 
 -spec delete_audit_suppression(map(), delete_audit_suppression_request(), proplists:proplist()) ->
     {ok, delete_audit_suppression_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_audit_suppression_errors(), tuple()}.
 delete_audit_suppression(Client, Input0, Options0) ->
     Method = post,
     Path = ["/audit/suppressions/delete"],
@@ -8577,26 +10642,14 @@ delete_audit_suppression(Client, Input0, Options0) ->
 -spec delete_authorizer(map(), binary() | list(), delete_authorizer_request()) ->
     {ok, delete_authorizer_response(), tuple()} |
     {error, any()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_authorizer_errors(), tuple()}.
 delete_authorizer(Client, AuthorizerName, Input) ->
     delete_authorizer(Client, AuthorizerName, Input, []).
 
 -spec delete_authorizer(map(), binary() | list(), delete_authorizer_request(), proplists:proplist()) ->
     {ok, delete_authorizer_response(), tuple()} |
     {error, any()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_authorizer_errors(), tuple()}.
 delete_authorizer(Client, AuthorizerName, Input0, Options0) ->
     Method = delete,
     Path = ["/authorizer/", aws_util:encode_uri(AuthorizerName), ""],
@@ -8627,20 +10680,14 @@ delete_authorizer(Client, AuthorizerName, Input0, Options0) ->
 -spec delete_billing_group(map(), binary() | list(), delete_billing_group_request()) ->
     {ok, delete_billing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, version_conflict_exception(), tuple()}.
+    {error, delete_billing_group_errors(), tuple()}.
 delete_billing_group(Client, BillingGroupName, Input) ->
     delete_billing_group(Client, BillingGroupName, Input, []).
 
 -spec delete_billing_group(map(), binary() | list(), delete_billing_group_request(), proplists:proplist()) ->
     {ok, delete_billing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, version_conflict_exception(), tuple()}.
+    {error, delete_billing_group_errors(), tuple()}.
 delete_billing_group(Client, BillingGroupName, Input0, Options0) ->
     Method = delete,
     Path = ["/billing-groups/", aws_util:encode_uri(BillingGroupName), ""],
@@ -8672,26 +10719,14 @@ delete_billing_group(Client, BillingGroupName, Input0, Options0) ->
 -spec delete_ca_certificate(map(), binary() | list(), delete_ca_certificate_request()) ->
     {ok, delete_ca_certificate_response(), tuple()} |
     {error, any()} |
-    {error, certificate_state_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_ca_certificate_errors(), tuple()}.
 delete_ca_certificate(Client, CertificateId, Input) ->
     delete_ca_certificate(Client, CertificateId, Input, []).
 
 -spec delete_ca_certificate(map(), binary() | list(), delete_ca_certificate_request(), proplists:proplist()) ->
     {ok, delete_ca_certificate_response(), tuple()} |
     {error, any()} |
-    {error, certificate_state_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_ca_certificate_errors(), tuple()}.
 delete_ca_certificate(Client, CertificateId, Input0, Options0) ->
     Method = delete,
     Path = ["/cacertificate/", aws_util:encode_uri(CertificateId), ""],
@@ -8729,28 +10764,14 @@ delete_ca_certificate(Client, CertificateId, Input0, Options0) ->
 -spec delete_certificate(map(), binary() | list(), delete_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, certificate_state_exception(), tuple()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_certificate_errors(), tuple()}.
 delete_certificate(Client, CertificateId, Input) ->
     delete_certificate(Client, CertificateId, Input, []).
 
 -spec delete_certificate(map(), binary() | list(), delete_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, certificate_state_exception(), tuple()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_certificate_errors(), tuple()}.
 delete_certificate(Client, CertificateId, Input0, Options0) ->
     Method = delete,
     Path = ["/certificates/", aws_util:encode_uri(CertificateId), ""],
@@ -8786,26 +10807,14 @@ delete_certificate(Client, CertificateId, Input0, Options0) ->
 -spec delete_certificate_provider(map(), binary() | list(), delete_certificate_provider_request()) ->
     {ok, delete_certificate_provider_response(), tuple()} |
     {error, any()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_certificate_provider_errors(), tuple()}.
 delete_certificate_provider(Client, CertificateProviderName, Input) ->
     delete_certificate_provider(Client, CertificateProviderName, Input, []).
 
 -spec delete_certificate_provider(map(), binary() | list(), delete_certificate_provider_request(), proplists:proplist()) ->
     {ok, delete_certificate_provider_response(), tuple()} |
     {error, any()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_certificate_provider_errors(), tuple()}.
 delete_certificate_provider(Client, CertificateProviderName, Input0, Options0) ->
     Method = delete,
     Path = ["/certificate-providers/", aws_util:encode_uri(CertificateProviderName), ""],
@@ -8847,18 +10856,14 @@ delete_certificate_provider(Client, CertificateProviderName, Input0, Options0) -
 -spec delete_custom_metric(map(), binary() | list(), delete_custom_metric_request()) ->
     {ok, delete_custom_metric_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_custom_metric_errors(), tuple()}.
 delete_custom_metric(Client, MetricName, Input) ->
     delete_custom_metric(Client, MetricName, Input, []).
 
 -spec delete_custom_metric(map(), binary() | list(), delete_custom_metric_request(), proplists:proplist()) ->
     {ok, delete_custom_metric_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_custom_metric_errors(), tuple()}.
 delete_custom_metric(Client, MetricName, Input0, Options0) ->
     Method = delete,
     Path = ["/custom-metric/", aws_util:encode_uri(MetricName), ""],
@@ -8890,18 +10895,14 @@ delete_custom_metric(Client, MetricName, Input0, Options0) ->
 -spec delete_dimension(map(), binary() | list(), delete_dimension_request()) ->
     {ok, delete_dimension_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_dimension_errors(), tuple()}.
 delete_dimension(Client, Name, Input) ->
     delete_dimension(Client, Name, Input, []).
 
 -spec delete_dimension(map(), binary() | list(), delete_dimension_request(), proplists:proplist()) ->
     {ok, delete_dimension_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_dimension_errors(), tuple()}.
 delete_dimension(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/dimensions/", aws_util:encode_uri(Name), ""],
@@ -8932,24 +10933,14 @@ delete_dimension(Client, Name, Input0, Options0) ->
 -spec delete_domain_configuration(map(), binary() | list(), delete_domain_configuration_request()) ->
     {ok, delete_domain_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_domain_configuration_errors(), tuple()}.
 delete_domain_configuration(Client, DomainConfigurationName, Input) ->
     delete_domain_configuration(Client, DomainConfigurationName, Input, []).
 
 -spec delete_domain_configuration(map(), binary() | list(), delete_domain_configuration_request(), proplists:proplist()) ->
     {ok, delete_domain_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_domain_configuration_errors(), tuple()}.
 delete_domain_configuration(Client, DomainConfigurationName, Input0, Options0) ->
     Method = delete,
     Path = ["/domainConfigurations/", aws_util:encode_uri(DomainConfigurationName), ""],
@@ -8980,20 +10971,14 @@ delete_domain_configuration(Client, DomainConfigurationName, Input0, Options0) -
 -spec delete_dynamic_thing_group(map(), binary() | list(), delete_dynamic_thing_group_request()) ->
     {ok, delete_dynamic_thing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, version_conflict_exception(), tuple()}.
+    {error, delete_dynamic_thing_group_errors(), tuple()}.
 delete_dynamic_thing_group(Client, ThingGroupName, Input) ->
     delete_dynamic_thing_group(Client, ThingGroupName, Input, []).
 
 -spec delete_dynamic_thing_group(map(), binary() | list(), delete_dynamic_thing_group_request(), proplists:proplist()) ->
     {ok, delete_dynamic_thing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, version_conflict_exception(), tuple()}.
+    {error, delete_dynamic_thing_group_errors(), tuple()}.
 delete_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
     Method = delete,
     Path = ["/dynamic-thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
@@ -9028,24 +11013,14 @@ delete_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
 -spec delete_fleet_metric(map(), binary() | list(), delete_fleet_metric_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, version_conflict_exception(), tuple()}.
+    {error, delete_fleet_metric_errors(), tuple()}.
 delete_fleet_metric(Client, MetricName, Input) ->
     delete_fleet_metric(Client, MetricName, Input, []).
 
 -spec delete_fleet_metric(map(), binary() | list(), delete_fleet_metric_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, version_conflict_exception(), tuple()}.
+    {error, delete_fleet_metric_errors(), tuple()}.
 delete_fleet_metric(Client, MetricName, Input0, Options0) ->
     Method = delete,
     Path = ["/fleet-metric/", aws_util:encode_uri(MetricName), ""],
@@ -9088,24 +11063,14 @@ delete_fleet_metric(Client, MetricName, Input0, Options0) ->
 -spec delete_job(map(), binary() | list(), delete_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_state_transition_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_job_errors(), tuple()}.
 delete_job(Client, JobId, Input) ->
     delete_job(Client, JobId, Input, []).
 
 -spec delete_job(map(), binary() | list(), delete_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_state_transition_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_job_errors(), tuple()}.
 delete_job(Client, JobId, Input0, Options0) ->
     Method = delete,
     Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
@@ -9138,22 +11103,14 @@ delete_job(Client, JobId, Input0, Options0) ->
 -spec delete_job_execution(map(), binary() | list(), binary() | list(), binary() | list(), delete_job_execution_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_state_transition_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_job_execution_errors(), tuple()}.
 delete_job_execution(Client, ExecutionNumber, JobId, ThingName, Input) ->
     delete_job_execution(Client, ExecutionNumber, JobId, ThingName, Input, []).
 
 -spec delete_job_execution(map(), binary() | list(), binary() | list(), binary() | list(), delete_job_execution_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_state_transition_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_job_execution_errors(), tuple()}.
 delete_job_execution(Client, ExecutionNumber, JobId, ThingName, Input0, Options0) ->
     Method = delete,
     Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs/", aws_util:encode_uri(JobId), "/executionNumber/", aws_util:encode_uri(ExecutionNumber), ""],
@@ -9182,20 +11139,14 @@ delete_job_execution(Client, ExecutionNumber, JobId, ThingName, Input0, Options0
 -spec delete_job_template(map(), binary() | list(), delete_job_template_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_job_template_errors(), tuple()}.
 delete_job_template(Client, JobTemplateId, Input) ->
     delete_job_template(Client, JobTemplateId, Input, []).
 
 -spec delete_job_template(map(), binary() | list(), delete_job_template_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_job_template_errors(), tuple()}.
 delete_job_template(Client, JobTemplateId, Input0, Options0) ->
     Method = delete,
     Path = ["/job-templates/", aws_util:encode_uri(JobTemplateId), ""],
@@ -9227,18 +11178,14 @@ delete_job_template(Client, JobTemplateId, Input0, Options0) ->
 -spec delete_mitigation_action(map(), binary() | list(), delete_mitigation_action_request()) ->
     {ok, delete_mitigation_action_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_mitigation_action_errors(), tuple()}.
 delete_mitigation_action(Client, ActionName, Input) ->
     delete_mitigation_action(Client, ActionName, Input, []).
 
 -spec delete_mitigation_action(map(), binary() | list(), delete_mitigation_action_request(), proplists:proplist()) ->
     {ok, delete_mitigation_action_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_mitigation_action_errors(), tuple()}.
 delete_mitigation_action(Client, ActionName, Input0, Options0) ->
     Method = delete,
     Path = ["/mitigationactions/actions/", aws_util:encode_uri(ActionName), ""],
@@ -9269,26 +11216,14 @@ delete_mitigation_action(Client, ActionName, Input0, Options0) ->
 -spec delete_ota_update(map(), binary() | list(), delete_ota_update_request()) ->
     {ok, delete_ota_update_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, version_conflict_exception(), tuple()}.
+    {error, delete_ota_update_errors(), tuple()}.
 delete_ota_update(Client, OtaUpdateId, Input) ->
     delete_ota_update(Client, OtaUpdateId, Input, []).
 
 -spec delete_ota_update(map(), binary() | list(), delete_ota_update_request(), proplists:proplist()) ->
     {ok, delete_ota_update_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, version_conflict_exception(), tuple()}.
+    {error, delete_ota_update_errors(), tuple()}.
 delete_ota_update(Client, OtaUpdateId, Input0, Options0) ->
     Method = delete,
     Path = ["/otaUpdates/", aws_util:encode_uri(OtaUpdateId), ""],
@@ -9324,18 +11259,14 @@ delete_ota_update(Client, OtaUpdateId, Input0, Options0) ->
 -spec delete_package(map(), binary() | list(), delete_package_request()) ->
     {ok, delete_package_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_package_errors(), tuple()}.
 delete_package(Client, PackageName, Input) ->
     delete_package(Client, PackageName, Input, []).
 
 -spec delete_package(map(), binary() | list(), delete_package_request(), proplists:proplist()) ->
     {ok, delete_package_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_package_errors(), tuple()}.
 delete_package(Client, PackageName, Input0, Options0) ->
     Method = delete,
     Path = ["/packages/", aws_util:encode_uri(PackageName), ""],
@@ -9367,18 +11298,14 @@ delete_package(Client, PackageName, Input0, Options0) ->
 -spec delete_package_version(map(), binary() | list(), binary() | list(), delete_package_version_request()) ->
     {ok, delete_package_version_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_package_version_errors(), tuple()}.
 delete_package_version(Client, PackageName, VersionName, Input) ->
     delete_package_version(Client, PackageName, VersionName, Input, []).
 
 -spec delete_package_version(map(), binary() | list(), binary() | list(), delete_package_version_request(), proplists:proplist()) ->
     {ok, delete_package_version_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_package_version_errors(), tuple()}.
 delete_package_version(Client, PackageName, VersionName, Input0, Options0) ->
     Method = delete,
     Path = ["/packages/", aws_util:encode_uri(PackageName), "/versions/", aws_util:encode_uri(VersionName), ""],
@@ -9428,26 +11355,14 @@ delete_package_version(Client, PackageName, VersionName, Input0, Options0) ->
 -spec delete_policy(map(), binary() | list(), delete_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_policy_errors(), tuple()}.
 delete_policy(Client, PolicyName, Input) ->
     delete_policy(Client, PolicyName, Input, []).
 
 -spec delete_policy(map(), binary() | list(), delete_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_policy_errors(), tuple()}.
 delete_policy(Client, PolicyName, Input0, Options0) ->
     Method = delete,
     Path = ["/policies/", aws_util:encode_uri(PolicyName), ""],
@@ -9484,26 +11399,14 @@ delete_policy(Client, PolicyName, Input0, Options0) ->
 -spec delete_policy_version(map(), binary() | list(), binary() | list(), delete_policy_version_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_policy_version_errors(), tuple()}.
 delete_policy_version(Client, PolicyName, PolicyVersionId, Input) ->
     delete_policy_version(Client, PolicyName, PolicyVersionId, Input, []).
 
 -spec delete_policy_version(map(), binary() | list(), binary() | list(), delete_policy_version_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_policy_version_errors(), tuple()}.
 delete_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options0) ->
     Method = delete,
     Path = ["/policies/", aws_util:encode_uri(PolicyName), "/version/", aws_util:encode_uri(PolicyVersionId), ""],
@@ -9534,26 +11437,14 @@ delete_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options0) ->
 -spec delete_provisioning_template(map(), binary() | list(), delete_provisioning_template_request()) ->
     {ok, delete_provisioning_template_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_resource_update_exception(), tuple()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_provisioning_template_errors(), tuple()}.
 delete_provisioning_template(Client, TemplateName, Input) ->
     delete_provisioning_template(Client, TemplateName, Input, []).
 
 -spec delete_provisioning_template(map(), binary() | list(), delete_provisioning_template_request(), proplists:proplist()) ->
     {ok, delete_provisioning_template_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_resource_update_exception(), tuple()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_provisioning_template_errors(), tuple()}.
 delete_provisioning_template(Client, TemplateName, Input0, Options0) ->
     Method = delete,
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), ""],
@@ -9584,26 +11475,14 @@ delete_provisioning_template(Client, TemplateName, Input0, Options0) ->
 -spec delete_provisioning_template_version(map(), binary() | list(), binary() | list(), delete_provisioning_template_version_request()) ->
     {ok, delete_provisioning_template_version_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_resource_update_exception(), tuple()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_provisioning_template_version_errors(), tuple()}.
 delete_provisioning_template_version(Client, TemplateName, VersionId, Input) ->
     delete_provisioning_template_version(Client, TemplateName, VersionId, Input, []).
 
 -spec delete_provisioning_template_version(map(), binary() | list(), binary() | list(), delete_provisioning_template_version_request(), proplists:proplist()) ->
     {ok, delete_provisioning_template_version_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_resource_update_exception(), tuple()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_provisioning_template_version_errors(), tuple()}.
 delete_provisioning_template_version(Client, TemplateName, VersionId, Input0, Options0) ->
     Method = delete,
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), "/versions/", aws_util:encode_uri(VersionId), ""],
@@ -9634,22 +11513,14 @@ delete_provisioning_template_version(Client, TemplateName, VersionId, Input0, Op
 -spec delete_registration_code(map(), delete_registration_code_request()) ->
     {ok, delete_registration_code_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_registration_code_errors(), tuple()}.
 delete_registration_code(Client, Input) ->
     delete_registration_code(Client, Input, []).
 
 -spec delete_registration_code(map(), delete_registration_code_request(), proplists:proplist()) ->
     {ok, delete_registration_code_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_registration_code_errors(), tuple()}.
 delete_registration_code(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/registrationcode"],
@@ -9680,26 +11551,14 @@ delete_registration_code(Client, Input0, Options0) ->
 -spec delete_role_alias(map(), binary() | list(), delete_role_alias_request()) ->
     {ok, delete_role_alias_response(), tuple()} |
     {error, any()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_role_alias_errors(), tuple()}.
 delete_role_alias(Client, RoleAlias, Input) ->
     delete_role_alias(Client, RoleAlias, Input, []).
 
 -spec delete_role_alias(map(), binary() | list(), delete_role_alias_request(), proplists:proplist()) ->
     {ok, delete_role_alias_response(), tuple()} |
     {error, any()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_role_alias_errors(), tuple()}.
 delete_role_alias(Client, RoleAlias, Input0, Options0) ->
     Method = delete,
     Path = ["/role-aliases/", aws_util:encode_uri(RoleAlias), ""],
@@ -9730,20 +11589,14 @@ delete_role_alias(Client, RoleAlias, Input0, Options0) ->
 -spec delete_scheduled_audit(map(), binary() | list(), delete_scheduled_audit_request()) ->
     {ok, delete_scheduled_audit_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_scheduled_audit_errors(), tuple()}.
 delete_scheduled_audit(Client, ScheduledAuditName, Input) ->
     delete_scheduled_audit(Client, ScheduledAuditName, Input, []).
 
 -spec delete_scheduled_audit(map(), binary() | list(), delete_scheduled_audit_request(), proplists:proplist()) ->
     {ok, delete_scheduled_audit_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_scheduled_audit_errors(), tuple()}.
 delete_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
     Method = delete,
     Path = ["/audit/scheduledaudits/", aws_util:encode_uri(ScheduledAuditName), ""],
@@ -9774,20 +11627,14 @@ delete_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
 -spec delete_security_profile(map(), binary() | list(), delete_security_profile_request()) ->
     {ok, delete_security_profile_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, version_conflict_exception(), tuple()}.
+    {error, delete_security_profile_errors(), tuple()}.
 delete_security_profile(Client, SecurityProfileName, Input) ->
     delete_security_profile(Client, SecurityProfileName, Input, []).
 
 -spec delete_security_profile(map(), binary() | list(), delete_security_profile_request(), proplists:proplist()) ->
     {ok, delete_security_profile_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, version_conflict_exception(), tuple()}.
+    {error, delete_security_profile_errors(), tuple()}.
 delete_security_profile(Client, SecurityProfileName, Input0, Options0) ->
     Method = delete,
     Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), ""],
@@ -9819,26 +11666,14 @@ delete_security_profile(Client, SecurityProfileName, Input0, Options0) ->
 -spec delete_stream(map(), binary() | list(), delete_stream_request()) ->
     {ok, delete_stream_response(), tuple()} |
     {error, any()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_stream_errors(), tuple()}.
 delete_stream(Client, StreamId, Input) ->
     delete_stream(Client, StreamId, Input, []).
 
 -spec delete_stream(map(), binary() | list(), delete_stream_request(), proplists:proplist()) ->
     {ok, delete_stream_response(), tuple()} |
     {error, any()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_stream_errors(), tuple()}.
 delete_stream(Client, StreamId, Input0, Options0) ->
     Method = delete,
     Path = ["/streams/", aws_util:encode_uri(StreamId), ""],
@@ -9872,26 +11707,14 @@ delete_stream(Client, StreamId, Input0, Options0) ->
 -spec delete_thing(map(), binary() | list(), delete_thing_request()) ->
     {ok, delete_thing_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, version_conflict_exception(), tuple()}.
+    {error, delete_thing_errors(), tuple()}.
 delete_thing(Client, ThingName, Input) ->
     delete_thing(Client, ThingName, Input, []).
 
 -spec delete_thing(map(), binary() | list(), delete_thing_request(), proplists:proplist()) ->
     {ok, delete_thing_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, version_conflict_exception(), tuple()}.
+    {error, delete_thing_errors(), tuple()}.
 delete_thing(Client, ThingName, Input0, Options0) ->
     Method = delete,
     Path = ["/things/", aws_util:encode_uri(ThingName), ""],
@@ -9923,20 +11746,14 @@ delete_thing(Client, ThingName, Input0, Options0) ->
 -spec delete_thing_group(map(), binary() | list(), delete_thing_group_request()) ->
     {ok, delete_thing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, version_conflict_exception(), tuple()}.
+    {error, delete_thing_group_errors(), tuple()}.
 delete_thing_group(Client, ThingGroupName, Input) ->
     delete_thing_group(Client, ThingGroupName, Input, []).
 
 -spec delete_thing_group(map(), binary() | list(), delete_thing_group_request(), proplists:proplist()) ->
     {ok, delete_thing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, version_conflict_exception(), tuple()}.
+    {error, delete_thing_group_errors(), tuple()}.
 delete_thing_group(Client, ThingGroupName, Input0, Options0) ->
     Method = delete,
     Path = ["/thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
@@ -9975,24 +11792,14 @@ delete_thing_group(Client, ThingGroupName, Input0, Options0) ->
 -spec delete_thing_type(map(), binary() | list(), delete_thing_type_request()) ->
     {ok, delete_thing_type_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_thing_type_errors(), tuple()}.
 delete_thing_type(Client, ThingTypeName, Input) ->
     delete_thing_type(Client, ThingTypeName, Input, []).
 
 -spec delete_thing_type(map(), binary() | list(), delete_thing_type_request(), proplists:proplist()) ->
     {ok, delete_thing_type_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_thing_type_errors(), tuple()}.
 delete_thing_type(Client, ThingTypeName, Input0, Options0) ->
     Method = delete,
     Path = ["/thing-types/", aws_util:encode_uri(ThingTypeName), ""],
@@ -10023,22 +11830,14 @@ delete_thing_type(Client, ThingTypeName, Input0, Options0) ->
 -spec delete_topic_rule(map(), binary() | list(), delete_topic_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflicting_resource_update_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_topic_rule_errors(), tuple()}.
 delete_topic_rule(Client, RuleName, Input) ->
     delete_topic_rule(Client, RuleName, Input, []).
 
 -spec delete_topic_rule(map(), binary() | list(), delete_topic_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflicting_resource_update_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_topic_rule_errors(), tuple()}.
 delete_topic_rule(Client, RuleName, Input0, Options0) ->
     Method = delete,
     Path = ["/rules/", aws_util:encode_uri(RuleName), ""],
@@ -10069,22 +11868,14 @@ delete_topic_rule(Client, RuleName, Input0, Options0) ->
 -spec delete_topic_rule_destination(map(), binary() | list(), delete_topic_rule_destination_request()) ->
     {ok, delete_topic_rule_destination_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_resource_update_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_topic_rule_destination_errors(), tuple()}.
 delete_topic_rule_destination(Client, Arn, Input) ->
     delete_topic_rule_destination(Client, Arn, Input, []).
 
 -spec delete_topic_rule_destination(map(), binary() | list(), delete_topic_rule_destination_request(), proplists:proplist()) ->
     {ok, delete_topic_rule_destination_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_resource_update_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_topic_rule_destination_errors(), tuple()}.
 delete_topic_rule_destination(Client, Arn, Input0, Options0) ->
     Method = delete,
     Path = ["/destinations/", aws_util:encode_multi_segment_uri(Arn), ""],
@@ -10115,18 +11906,14 @@ delete_topic_rule_destination(Client, Arn, Input0, Options0) ->
 -spec delete_v2_logging_level(map(), delete_v2_logging_level_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_v2_logging_level_errors(), tuple()}.
 delete_v2_logging_level(Client, Input) ->
     delete_v2_logging_level(Client, Input, []).
 
 -spec delete_v2_logging_level(map(), delete_v2_logging_level_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_v2_logging_level_errors(), tuple()}.
 delete_v2_logging_level(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v2LoggingLevel"],
@@ -10162,24 +11949,14 @@ delete_v2_logging_level(Client, Input0, Options0) ->
 -spec deprecate_thing_type(map(), binary() | list(), deprecate_thing_type_request()) ->
     {ok, deprecate_thing_type_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, deprecate_thing_type_errors(), tuple()}.
 deprecate_thing_type(Client, ThingTypeName, Input) ->
     deprecate_thing_type(Client, ThingTypeName, Input, []).
 
 -spec deprecate_thing_type(map(), binary() | list(), deprecate_thing_type_request(), proplists:proplist()) ->
     {ok, deprecate_thing_type_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, deprecate_thing_type_errors(), tuple()}.
 deprecate_thing_type(Client, ThingTypeName, Input0, Options0) ->
     Method = post,
     Path = ["/thing-types/", aws_util:encode_uri(ThingTypeName), "/deprecate"],
@@ -10215,8 +11992,7 @@ deprecate_thing_type(Client, ThingTypeName, Input0, Options0) ->
 -spec describe_account_audit_configuration(map()) ->
     {ok, describe_account_audit_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_account_audit_configuration_errors(), tuple()}.
 describe_account_audit_configuration(Client)
   when is_map(Client) ->
     describe_account_audit_configuration(Client, #{}, #{}).
@@ -10224,8 +12000,7 @@ describe_account_audit_configuration(Client)
 -spec describe_account_audit_configuration(map(), map(), map()) ->
     {ok, describe_account_audit_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_account_audit_configuration_errors(), tuple()}.
 describe_account_audit_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_account_audit_configuration(Client, QueryMap, HeadersMap, []).
@@ -10233,8 +12008,7 @@ describe_account_audit_configuration(Client, QueryMap, HeadersMap)
 -spec describe_account_audit_configuration(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_account_audit_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_account_audit_configuration_errors(), tuple()}.
 describe_account_audit_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/configuration"],
@@ -10265,10 +12039,7 @@ describe_account_audit_configuration(Client, QueryMap, HeadersMap, Options0)
 -spec describe_audit_finding(map(), binary() | list()) ->
     {ok, describe_audit_finding_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_audit_finding_errors(), tuple()}.
 describe_audit_finding(Client, FindingId)
   when is_map(Client) ->
     describe_audit_finding(Client, FindingId, #{}, #{}).
@@ -10276,10 +12047,7 @@ describe_audit_finding(Client, FindingId)
 -spec describe_audit_finding(map(), binary() | list(), map(), map()) ->
     {ok, describe_audit_finding_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_audit_finding_errors(), tuple()}.
 describe_audit_finding(Client, FindingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_audit_finding(Client, FindingId, QueryMap, HeadersMap, []).
@@ -10287,10 +12055,7 @@ describe_audit_finding(Client, FindingId, QueryMap, HeadersMap)
 -spec describe_audit_finding(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_audit_finding_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_audit_finding_errors(), tuple()}.
 describe_audit_finding(Client, FindingId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/findings/", aws_util:encode_uri(FindingId), ""],
@@ -10316,10 +12081,7 @@ describe_audit_finding(Client, FindingId, QueryMap, HeadersMap, Options0)
 -spec describe_audit_mitigation_actions_task(map(), binary() | list()) ->
     {ok, describe_audit_mitigation_actions_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_audit_mitigation_actions_task_errors(), tuple()}.
 describe_audit_mitigation_actions_task(Client, TaskId)
   when is_map(Client) ->
     describe_audit_mitigation_actions_task(Client, TaskId, #{}, #{}).
@@ -10327,10 +12089,7 @@ describe_audit_mitigation_actions_task(Client, TaskId)
 -spec describe_audit_mitigation_actions_task(map(), binary() | list(), map(), map()) ->
     {ok, describe_audit_mitigation_actions_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_audit_mitigation_actions_task_errors(), tuple()}.
 describe_audit_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_audit_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap, []).
@@ -10338,10 +12097,7 @@ describe_audit_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap)
 -spec describe_audit_mitigation_actions_task(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_audit_mitigation_actions_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_audit_mitigation_actions_task_errors(), tuple()}.
 describe_audit_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/mitigationactions/tasks/", aws_util:encode_uri(TaskId), ""],
@@ -10363,20 +12119,14 @@ describe_audit_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap, Opt
 -spec describe_audit_suppression(map(), describe_audit_suppression_request()) ->
     {ok, describe_audit_suppression_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_audit_suppression_errors(), tuple()}.
 describe_audit_suppression(Client, Input) ->
     describe_audit_suppression(Client, Input, []).
 
 -spec describe_audit_suppression(map(), describe_audit_suppression_request(), proplists:proplist()) ->
     {ok, describe_audit_suppression_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_audit_suppression_errors(), tuple()}.
 describe_audit_suppression(Client, Input0, Options0) ->
     Method = post,
     Path = ["/audit/suppressions/describe"],
@@ -10407,10 +12157,7 @@ describe_audit_suppression(Client, Input0, Options0) ->
 -spec describe_audit_task(map(), binary() | list()) ->
     {ok, describe_audit_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_audit_task_errors(), tuple()}.
 describe_audit_task(Client, TaskId)
   when is_map(Client) ->
     describe_audit_task(Client, TaskId, #{}, #{}).
@@ -10418,10 +12165,7 @@ describe_audit_task(Client, TaskId)
 -spec describe_audit_task(map(), binary() | list(), map(), map()) ->
     {ok, describe_audit_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_audit_task_errors(), tuple()}.
 describe_audit_task(Client, TaskId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_audit_task(Client, TaskId, QueryMap, HeadersMap, []).
@@ -10429,10 +12173,7 @@ describe_audit_task(Client, TaskId, QueryMap, HeadersMap)
 -spec describe_audit_task(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_audit_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_audit_task_errors(), tuple()}.
 describe_audit_task(Client, TaskId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/tasks/", aws_util:encode_uri(TaskId), ""],
@@ -10457,12 +12198,7 @@ describe_audit_task(Client, TaskId, QueryMap, HeadersMap, Options0)
 -spec describe_authorizer(map(), binary() | list()) ->
     {ok, describe_authorizer_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_authorizer_errors(), tuple()}.
 describe_authorizer(Client, AuthorizerName)
   when is_map(Client) ->
     describe_authorizer(Client, AuthorizerName, #{}, #{}).
@@ -10470,12 +12206,7 @@ describe_authorizer(Client, AuthorizerName)
 -spec describe_authorizer(map(), binary() | list(), map(), map()) ->
     {ok, describe_authorizer_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_authorizer_errors(), tuple()}.
 describe_authorizer(Client, AuthorizerName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_authorizer(Client, AuthorizerName, QueryMap, HeadersMap, []).
@@ -10483,12 +12214,7 @@ describe_authorizer(Client, AuthorizerName, QueryMap, HeadersMap)
 -spec describe_authorizer(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_authorizer_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_authorizer_errors(), tuple()}.
 describe_authorizer(Client, AuthorizerName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/authorizer/", aws_util:encode_uri(AuthorizerName), ""],
@@ -10513,10 +12239,7 @@ describe_authorizer(Client, AuthorizerName, QueryMap, HeadersMap, Options0)
 -spec describe_billing_group(map(), binary() | list()) ->
     {ok, describe_billing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_billing_group_errors(), tuple()}.
 describe_billing_group(Client, BillingGroupName)
   when is_map(Client) ->
     describe_billing_group(Client, BillingGroupName, #{}, #{}).
@@ -10524,10 +12247,7 @@ describe_billing_group(Client, BillingGroupName)
 -spec describe_billing_group(map(), binary() | list(), map(), map()) ->
     {ok, describe_billing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_billing_group_errors(), tuple()}.
 describe_billing_group(Client, BillingGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_billing_group(Client, BillingGroupName, QueryMap, HeadersMap, []).
@@ -10535,10 +12255,7 @@ describe_billing_group(Client, BillingGroupName, QueryMap, HeadersMap)
 -spec describe_billing_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_billing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_billing_group_errors(), tuple()}.
 describe_billing_group(Client, BillingGroupName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/billing-groups/", aws_util:encode_uri(BillingGroupName), ""],
@@ -10563,12 +12280,7 @@ describe_billing_group(Client, BillingGroupName, QueryMap, HeadersMap, Options0)
 -spec describe_ca_certificate(map(), binary() | list()) ->
     {ok, describe_ca_certificate_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_ca_certificate_errors(), tuple()}.
 describe_ca_certificate(Client, CertificateId)
   when is_map(Client) ->
     describe_ca_certificate(Client, CertificateId, #{}, #{}).
@@ -10576,12 +12288,7 @@ describe_ca_certificate(Client, CertificateId)
 -spec describe_ca_certificate(map(), binary() | list(), map(), map()) ->
     {ok, describe_ca_certificate_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_ca_certificate_errors(), tuple()}.
 describe_ca_certificate(Client, CertificateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_ca_certificate(Client, CertificateId, QueryMap, HeadersMap, []).
@@ -10589,12 +12296,7 @@ describe_ca_certificate(Client, CertificateId, QueryMap, HeadersMap)
 -spec describe_ca_certificate(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_ca_certificate_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_ca_certificate_errors(), tuple()}.
 describe_ca_certificate(Client, CertificateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/cacertificate/", aws_util:encode_uri(CertificateId), ""],
@@ -10619,12 +12321,7 @@ describe_ca_certificate(Client, CertificateId, QueryMap, HeadersMap, Options0)
 -spec describe_certificate(map(), binary() | list()) ->
     {ok, describe_certificate_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_certificate_errors(), tuple()}.
 describe_certificate(Client, CertificateId)
   when is_map(Client) ->
     describe_certificate(Client, CertificateId, #{}, #{}).
@@ -10632,12 +12329,7 @@ describe_certificate(Client, CertificateId)
 -spec describe_certificate(map(), binary() | list(), map(), map()) ->
     {ok, describe_certificate_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_certificate_errors(), tuple()}.
 describe_certificate(Client, CertificateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_certificate(Client, CertificateId, QueryMap, HeadersMap, []).
@@ -10645,12 +12337,7 @@ describe_certificate(Client, CertificateId, QueryMap, HeadersMap)
 -spec describe_certificate(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_certificate_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_certificate_errors(), tuple()}.
 describe_certificate(Client, CertificateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/certificates/", aws_util:encode_uri(CertificateId), ""],
@@ -10675,12 +12362,7 @@ describe_certificate(Client, CertificateId, QueryMap, HeadersMap, Options0)
 -spec describe_certificate_provider(map(), binary() | list()) ->
     {ok, describe_certificate_provider_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_certificate_provider_errors(), tuple()}.
 describe_certificate_provider(Client, CertificateProviderName)
   when is_map(Client) ->
     describe_certificate_provider(Client, CertificateProviderName, #{}, #{}).
@@ -10688,12 +12370,7 @@ describe_certificate_provider(Client, CertificateProviderName)
 -spec describe_certificate_provider(map(), binary() | list(), map(), map()) ->
     {ok, describe_certificate_provider_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_certificate_provider_errors(), tuple()}.
 describe_certificate_provider(Client, CertificateProviderName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_certificate_provider(Client, CertificateProviderName, QueryMap, HeadersMap, []).
@@ -10701,12 +12378,7 @@ describe_certificate_provider(Client, CertificateProviderName, QueryMap, Headers
 -spec describe_certificate_provider(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_certificate_provider_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_certificate_provider_errors(), tuple()}.
 describe_certificate_provider(Client, CertificateProviderName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/certificate-providers/", aws_util:encode_uri(CertificateProviderName), ""],
@@ -10732,10 +12404,7 @@ describe_certificate_provider(Client, CertificateProviderName, QueryMap, Headers
 -spec describe_custom_metric(map(), binary() | list()) ->
     {ok, describe_custom_metric_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_custom_metric_errors(), tuple()}.
 describe_custom_metric(Client, MetricName)
   when is_map(Client) ->
     describe_custom_metric(Client, MetricName, #{}, #{}).
@@ -10743,10 +12412,7 @@ describe_custom_metric(Client, MetricName)
 -spec describe_custom_metric(map(), binary() | list(), map(), map()) ->
     {ok, describe_custom_metric_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_custom_metric_errors(), tuple()}.
 describe_custom_metric(Client, MetricName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_custom_metric(Client, MetricName, QueryMap, HeadersMap, []).
@@ -10754,10 +12420,7 @@ describe_custom_metric(Client, MetricName, QueryMap, HeadersMap)
 -spec describe_custom_metric(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_custom_metric_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_custom_metric_errors(), tuple()}.
 describe_custom_metric(Client, MetricName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/custom-metric/", aws_util:encode_uri(MetricName), ""],
@@ -10782,12 +12445,7 @@ describe_custom_metric(Client, MetricName, QueryMap, HeadersMap, Options0)
 -spec describe_default_authorizer(map()) ->
     {ok, describe_default_authorizer_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_default_authorizer_errors(), tuple()}.
 describe_default_authorizer(Client)
   when is_map(Client) ->
     describe_default_authorizer(Client, #{}, #{}).
@@ -10795,12 +12453,7 @@ describe_default_authorizer(Client)
 -spec describe_default_authorizer(map(), map(), map()) ->
     {ok, describe_default_authorizer_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_default_authorizer_errors(), tuple()}.
 describe_default_authorizer(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_default_authorizer(Client, QueryMap, HeadersMap, []).
@@ -10808,12 +12461,7 @@ describe_default_authorizer(Client, QueryMap, HeadersMap)
 -spec describe_default_authorizer(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_default_authorizer_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_default_authorizer_errors(), tuple()}.
 describe_default_authorizer(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/default-authorizer"],
@@ -10839,10 +12487,7 @@ describe_default_authorizer(Client, QueryMap, HeadersMap, Options0)
 -spec describe_detect_mitigation_actions_task(map(), binary() | list()) ->
     {ok, describe_detect_mitigation_actions_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_detect_mitigation_actions_task_errors(), tuple()}.
 describe_detect_mitigation_actions_task(Client, TaskId)
   when is_map(Client) ->
     describe_detect_mitigation_actions_task(Client, TaskId, #{}, #{}).
@@ -10850,10 +12495,7 @@ describe_detect_mitigation_actions_task(Client, TaskId)
 -spec describe_detect_mitigation_actions_task(map(), binary() | list(), map(), map()) ->
     {ok, describe_detect_mitigation_actions_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_detect_mitigation_actions_task_errors(), tuple()}.
 describe_detect_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_detect_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap, []).
@@ -10861,10 +12503,7 @@ describe_detect_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap)
 -spec describe_detect_mitigation_actions_task(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_detect_mitigation_actions_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_detect_mitigation_actions_task_errors(), tuple()}.
 describe_detect_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detect/mitigationactions/tasks/", aws_util:encode_uri(TaskId), ""],
@@ -10890,10 +12529,7 @@ describe_detect_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap, Op
 -spec describe_dimension(map(), binary() | list()) ->
     {ok, describe_dimension_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_dimension_errors(), tuple()}.
 describe_dimension(Client, Name)
   when is_map(Client) ->
     describe_dimension(Client, Name, #{}, #{}).
@@ -10901,10 +12537,7 @@ describe_dimension(Client, Name)
 -spec describe_dimension(map(), binary() | list(), map(), map()) ->
     {ok, describe_dimension_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_dimension_errors(), tuple()}.
 describe_dimension(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dimension(Client, Name, QueryMap, HeadersMap, []).
@@ -10912,10 +12545,7 @@ describe_dimension(Client, Name, QueryMap, HeadersMap)
 -spec describe_dimension(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_dimension_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_dimension_errors(), tuple()}.
 describe_dimension(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/dimensions/", aws_util:encode_uri(Name), ""],
@@ -10940,12 +12570,7 @@ describe_dimension(Client, Name, QueryMap, HeadersMap, Options0)
 -spec describe_domain_configuration(map(), binary() | list()) ->
     {ok, describe_domain_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_domain_configuration_errors(), tuple()}.
 describe_domain_configuration(Client, DomainConfigurationName)
   when is_map(Client) ->
     describe_domain_configuration(Client, DomainConfigurationName, #{}, #{}).
@@ -10953,12 +12578,7 @@ describe_domain_configuration(Client, DomainConfigurationName)
 -spec describe_domain_configuration(map(), binary() | list(), map(), map()) ->
     {ok, describe_domain_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_domain_configuration_errors(), tuple()}.
 describe_domain_configuration(Client, DomainConfigurationName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_domain_configuration(Client, DomainConfigurationName, QueryMap, HeadersMap, []).
@@ -10966,12 +12586,7 @@ describe_domain_configuration(Client, DomainConfigurationName, QueryMap, Headers
 -spec describe_domain_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_domain_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_domain_configuration_errors(), tuple()}.
 describe_domain_configuration(Client, DomainConfigurationName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domainConfigurations/", aws_util:encode_uri(DomainConfigurationName), ""],
@@ -11001,10 +12616,7 @@ describe_domain_configuration(Client, DomainConfigurationName, QueryMap, Headers
 -spec describe_endpoint(map()) ->
     {ok, describe_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_endpoint_errors(), tuple()}.
 describe_endpoint(Client)
   when is_map(Client) ->
     describe_endpoint(Client, #{}, #{}).
@@ -11012,10 +12624,7 @@ describe_endpoint(Client)
 -spec describe_endpoint(map(), map(), map()) ->
     {ok, describe_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_endpoint_errors(), tuple()}.
 describe_endpoint(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_endpoint(Client, QueryMap, HeadersMap, []).
@@ -11023,10 +12632,7 @@ describe_endpoint(Client, QueryMap, HeadersMap)
 -spec describe_endpoint(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_endpoint_errors(), tuple()}.
 describe_endpoint(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/endpoint"],
@@ -11055,8 +12661,7 @@ describe_endpoint(Client, QueryMap, HeadersMap, Options0)
 -spec describe_event_configurations(map()) ->
     {ok, describe_event_configurations_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_event_configurations_errors(), tuple()}.
 describe_event_configurations(Client)
   when is_map(Client) ->
     describe_event_configurations(Client, #{}, #{}).
@@ -11064,8 +12669,7 @@ describe_event_configurations(Client)
 -spec describe_event_configurations(map(), map(), map()) ->
     {ok, describe_event_configurations_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_event_configurations_errors(), tuple()}.
 describe_event_configurations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_event_configurations(Client, QueryMap, HeadersMap, []).
@@ -11073,8 +12677,7 @@ describe_event_configurations(Client, QueryMap, HeadersMap)
 -spec describe_event_configurations(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_event_configurations_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_event_configurations_errors(), tuple()}.
 describe_event_configurations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/event-configurations"],
@@ -11099,12 +12702,7 @@ describe_event_configurations(Client, QueryMap, HeadersMap, Options0)
 -spec describe_fleet_metric(map(), binary() | list()) ->
     {ok, describe_fleet_metric_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_fleet_metric_errors(), tuple()}.
 describe_fleet_metric(Client, MetricName)
   when is_map(Client) ->
     describe_fleet_metric(Client, MetricName, #{}, #{}).
@@ -11112,12 +12710,7 @@ describe_fleet_metric(Client, MetricName)
 -spec describe_fleet_metric(map(), binary() | list(), map(), map()) ->
     {ok, describe_fleet_metric_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_fleet_metric_errors(), tuple()}.
 describe_fleet_metric(Client, MetricName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_fleet_metric(Client, MetricName, QueryMap, HeadersMap, []).
@@ -11125,12 +12718,7 @@ describe_fleet_metric(Client, MetricName, QueryMap, HeadersMap)
 -spec describe_fleet_metric(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_fleet_metric_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_fleet_metric_errors(), tuple()}.
 describe_fleet_metric(Client, MetricName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/fleet-metric/", aws_util:encode_uri(MetricName), ""],
@@ -11155,12 +12743,7 @@ describe_fleet_metric(Client, MetricName, QueryMap, HeadersMap, Options0)
 -spec describe_index(map(), binary() | list()) ->
     {ok, describe_index_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_index_errors(), tuple()}.
 describe_index(Client, IndexName)
   when is_map(Client) ->
     describe_index(Client, IndexName, #{}, #{}).
@@ -11168,12 +12751,7 @@ describe_index(Client, IndexName)
 -spec describe_index(map(), binary() | list(), map(), map()) ->
     {ok, describe_index_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_index_errors(), tuple()}.
 describe_index(Client, IndexName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_index(Client, IndexName, QueryMap, HeadersMap, []).
@@ -11181,12 +12759,7 @@ describe_index(Client, IndexName, QueryMap, HeadersMap)
 -spec describe_index(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_index_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_index_errors(), tuple()}.
 describe_index(Client, IndexName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/indices/", aws_util:encode_uri(IndexName), ""],
@@ -11211,10 +12784,7 @@ describe_index(Client, IndexName, QueryMap, HeadersMap, Options0)
 -spec describe_job(map(), binary() | list()) ->
     {ok, describe_job_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_job_errors(), tuple()}.
 describe_job(Client, JobId)
   when is_map(Client) ->
     describe_job(Client, JobId, #{}, #{}).
@@ -11222,10 +12792,7 @@ describe_job(Client, JobId)
 -spec describe_job(map(), binary() | list(), map(), map()) ->
     {ok, describe_job_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_job_errors(), tuple()}.
 describe_job(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_job(Client, JobId, QueryMap, HeadersMap, []).
@@ -11233,10 +12800,7 @@ describe_job(Client, JobId, QueryMap, HeadersMap)
 -spec describe_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_job_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_job_errors(), tuple()}.
 describe_job(Client, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
@@ -11261,10 +12825,7 @@ describe_job(Client, JobId, QueryMap, HeadersMap, Options0)
 -spec describe_job_execution(map(), binary() | list(), binary() | list()) ->
     {ok, describe_job_execution_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_job_execution_errors(), tuple()}.
 describe_job_execution(Client, JobId, ThingName)
   when is_map(Client) ->
     describe_job_execution(Client, JobId, ThingName, #{}, #{}).
@@ -11272,10 +12833,7 @@ describe_job_execution(Client, JobId, ThingName)
 -spec describe_job_execution(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_job_execution_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_job_execution_errors(), tuple()}.
 describe_job_execution(Client, JobId, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_job_execution(Client, JobId, ThingName, QueryMap, HeadersMap, []).
@@ -11283,10 +12841,7 @@ describe_job_execution(Client, JobId, ThingName, QueryMap, HeadersMap)
 -spec describe_job_execution(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_job_execution_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_job_execution_errors(), tuple()}.
 describe_job_execution(Client, JobId, ThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs/", aws_util:encode_uri(JobId), ""],
@@ -11311,10 +12866,7 @@ describe_job_execution(Client, JobId, ThingName, QueryMap, HeadersMap, Options0)
 -spec describe_job_template(map(), binary() | list()) ->
     {ok, describe_job_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_job_template_errors(), tuple()}.
 describe_job_template(Client, JobTemplateId)
   when is_map(Client) ->
     describe_job_template(Client, JobTemplateId, #{}, #{}).
@@ -11322,10 +12874,7 @@ describe_job_template(Client, JobTemplateId)
 -spec describe_job_template(map(), binary() | list(), map(), map()) ->
     {ok, describe_job_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_job_template_errors(), tuple()}.
 describe_job_template(Client, JobTemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_job_template(Client, JobTemplateId, QueryMap, HeadersMap, []).
@@ -11333,10 +12882,7 @@ describe_job_template(Client, JobTemplateId, QueryMap, HeadersMap)
 -spec describe_job_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_job_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_job_template_errors(), tuple()}.
 describe_job_template(Client, JobTemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/job-templates/", aws_util:encode_uri(JobTemplateId), ""],
@@ -11357,10 +12903,7 @@ describe_job_template(Client, JobTemplateId, QueryMap, HeadersMap, Options0)
 -spec describe_managed_job_template(map(), binary() | list()) ->
     {ok, describe_managed_job_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_managed_job_template_errors(), tuple()}.
 describe_managed_job_template(Client, TemplateName)
   when is_map(Client) ->
     describe_managed_job_template(Client, TemplateName, #{}, #{}).
@@ -11368,10 +12911,7 @@ describe_managed_job_template(Client, TemplateName)
 -spec describe_managed_job_template(map(), binary() | list(), map(), map()) ->
     {ok, describe_managed_job_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_managed_job_template_errors(), tuple()}.
 describe_managed_job_template(Client, TemplateName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_managed_job_template(Client, TemplateName, QueryMap, HeadersMap, []).
@@ -11379,10 +12919,7 @@ describe_managed_job_template(Client, TemplateName, QueryMap, HeadersMap)
 -spec describe_managed_job_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_managed_job_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_managed_job_template_errors(), tuple()}.
 describe_managed_job_template(Client, TemplateName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/managed-job-templates/", aws_util:encode_uri(TemplateName), ""],
@@ -11411,10 +12948,7 @@ describe_managed_job_template(Client, TemplateName, QueryMap, HeadersMap, Option
 -spec describe_mitigation_action(map(), binary() | list()) ->
     {ok, describe_mitigation_action_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_mitigation_action_errors(), tuple()}.
 describe_mitigation_action(Client, ActionName)
   when is_map(Client) ->
     describe_mitigation_action(Client, ActionName, #{}, #{}).
@@ -11422,10 +12956,7 @@ describe_mitigation_action(Client, ActionName)
 -spec describe_mitigation_action(map(), binary() | list(), map(), map()) ->
     {ok, describe_mitigation_action_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_mitigation_action_errors(), tuple()}.
 describe_mitigation_action(Client, ActionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_mitigation_action(Client, ActionName, QueryMap, HeadersMap, []).
@@ -11433,10 +12964,7 @@ describe_mitigation_action(Client, ActionName, QueryMap, HeadersMap)
 -spec describe_mitigation_action(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_mitigation_action_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_mitigation_action_errors(), tuple()}.
 describe_mitigation_action(Client, ActionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/mitigationactions/actions/", aws_util:encode_uri(ActionName), ""],
@@ -11461,11 +12989,7 @@ describe_mitigation_action(Client, ActionName, QueryMap, HeadersMap, Options0)
 -spec describe_provisioning_template(map(), binary() | list()) ->
     {ok, describe_provisioning_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_provisioning_template_errors(), tuple()}.
 describe_provisioning_template(Client, TemplateName)
   when is_map(Client) ->
     describe_provisioning_template(Client, TemplateName, #{}, #{}).
@@ -11473,11 +12997,7 @@ describe_provisioning_template(Client, TemplateName)
 -spec describe_provisioning_template(map(), binary() | list(), map(), map()) ->
     {ok, describe_provisioning_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_provisioning_template_errors(), tuple()}.
 describe_provisioning_template(Client, TemplateName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_provisioning_template(Client, TemplateName, QueryMap, HeadersMap, []).
@@ -11485,11 +13005,7 @@ describe_provisioning_template(Client, TemplateName, QueryMap, HeadersMap)
 -spec describe_provisioning_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_provisioning_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_provisioning_template_errors(), tuple()}.
 describe_provisioning_template(Client, TemplateName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), ""],
@@ -11514,11 +13030,7 @@ describe_provisioning_template(Client, TemplateName, QueryMap, HeadersMap, Optio
 -spec describe_provisioning_template_version(map(), binary() | list(), binary() | list()) ->
     {ok, describe_provisioning_template_version_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_provisioning_template_version_errors(), tuple()}.
 describe_provisioning_template_version(Client, TemplateName, VersionId)
   when is_map(Client) ->
     describe_provisioning_template_version(Client, TemplateName, VersionId, #{}, #{}).
@@ -11526,11 +13038,7 @@ describe_provisioning_template_version(Client, TemplateName, VersionId)
 -spec describe_provisioning_template_version(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_provisioning_template_version_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_provisioning_template_version_errors(), tuple()}.
 describe_provisioning_template_version(Client, TemplateName, VersionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_provisioning_template_version(Client, TemplateName, VersionId, QueryMap, HeadersMap, []).
@@ -11538,11 +13046,7 @@ describe_provisioning_template_version(Client, TemplateName, VersionId, QueryMap
 -spec describe_provisioning_template_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_provisioning_template_version_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_provisioning_template_version_errors(), tuple()}.
 describe_provisioning_template_version(Client, TemplateName, VersionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), "/versions/", aws_util:encode_uri(VersionId), ""],
@@ -11567,12 +13071,7 @@ describe_provisioning_template_version(Client, TemplateName, VersionId, QueryMap
 -spec describe_role_alias(map(), binary() | list()) ->
     {ok, describe_role_alias_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_role_alias_errors(), tuple()}.
 describe_role_alias(Client, RoleAlias)
   when is_map(Client) ->
     describe_role_alias(Client, RoleAlias, #{}, #{}).
@@ -11580,12 +13079,7 @@ describe_role_alias(Client, RoleAlias)
 -spec describe_role_alias(map(), binary() | list(), map(), map()) ->
     {ok, describe_role_alias_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_role_alias_errors(), tuple()}.
 describe_role_alias(Client, RoleAlias, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_role_alias(Client, RoleAlias, QueryMap, HeadersMap, []).
@@ -11593,12 +13087,7 @@ describe_role_alias(Client, RoleAlias, QueryMap, HeadersMap)
 -spec describe_role_alias(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_role_alias_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_role_alias_errors(), tuple()}.
 describe_role_alias(Client, RoleAlias, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/role-aliases/", aws_util:encode_uri(RoleAlias), ""],
@@ -11623,10 +13112,7 @@ describe_role_alias(Client, RoleAlias, QueryMap, HeadersMap, Options0)
 -spec describe_scheduled_audit(map(), binary() | list()) ->
     {ok, describe_scheduled_audit_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_scheduled_audit_errors(), tuple()}.
 describe_scheduled_audit(Client, ScheduledAuditName)
   when is_map(Client) ->
     describe_scheduled_audit(Client, ScheduledAuditName, #{}, #{}).
@@ -11634,10 +13120,7 @@ describe_scheduled_audit(Client, ScheduledAuditName)
 -spec describe_scheduled_audit(map(), binary() | list(), map(), map()) ->
     {ok, describe_scheduled_audit_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_scheduled_audit_errors(), tuple()}.
 describe_scheduled_audit(Client, ScheduledAuditName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_scheduled_audit(Client, ScheduledAuditName, QueryMap, HeadersMap, []).
@@ -11645,10 +13128,7 @@ describe_scheduled_audit(Client, ScheduledAuditName, QueryMap, HeadersMap)
 -spec describe_scheduled_audit(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_scheduled_audit_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_scheduled_audit_errors(), tuple()}.
 describe_scheduled_audit(Client, ScheduledAuditName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/scheduledaudits/", aws_util:encode_uri(ScheduledAuditName), ""],
@@ -11673,10 +13153,7 @@ describe_scheduled_audit(Client, ScheduledAuditName, QueryMap, HeadersMap, Optio
 -spec describe_security_profile(map(), binary() | list()) ->
     {ok, describe_security_profile_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_security_profile_errors(), tuple()}.
 describe_security_profile(Client, SecurityProfileName)
   when is_map(Client) ->
     describe_security_profile(Client, SecurityProfileName, #{}, #{}).
@@ -11684,10 +13161,7 @@ describe_security_profile(Client, SecurityProfileName)
 -spec describe_security_profile(map(), binary() | list(), map(), map()) ->
     {ok, describe_security_profile_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_security_profile_errors(), tuple()}.
 describe_security_profile(Client, SecurityProfileName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_security_profile(Client, SecurityProfileName, QueryMap, HeadersMap, []).
@@ -11695,10 +13169,7 @@ describe_security_profile(Client, SecurityProfileName, QueryMap, HeadersMap)
 -spec describe_security_profile(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_security_profile_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_security_profile_errors(), tuple()}.
 describe_security_profile(Client, SecurityProfileName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), ""],
@@ -11723,12 +13194,7 @@ describe_security_profile(Client, SecurityProfileName, QueryMap, HeadersMap, Opt
 -spec describe_stream(map(), binary() | list()) ->
     {ok, describe_stream_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_stream_errors(), tuple()}.
 describe_stream(Client, StreamId)
   when is_map(Client) ->
     describe_stream(Client, StreamId, #{}, #{}).
@@ -11736,12 +13202,7 @@ describe_stream(Client, StreamId)
 -spec describe_stream(map(), binary() | list(), map(), map()) ->
     {ok, describe_stream_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_stream_errors(), tuple()}.
 describe_stream(Client, StreamId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_stream(Client, StreamId, QueryMap, HeadersMap, []).
@@ -11749,12 +13210,7 @@ describe_stream(Client, StreamId, QueryMap, HeadersMap)
 -spec describe_stream(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_stream_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_stream_errors(), tuple()}.
 describe_stream(Client, StreamId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/streams/", aws_util:encode_uri(StreamId), ""],
@@ -11779,12 +13235,7 @@ describe_stream(Client, StreamId, QueryMap, HeadersMap, Options0)
 -spec describe_thing(map(), binary() | list()) ->
     {ok, describe_thing_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_thing_errors(), tuple()}.
 describe_thing(Client, ThingName)
   when is_map(Client) ->
     describe_thing(Client, ThingName, #{}, #{}).
@@ -11792,12 +13243,7 @@ describe_thing(Client, ThingName)
 -spec describe_thing(map(), binary() | list(), map(), map()) ->
     {ok, describe_thing_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_thing_errors(), tuple()}.
 describe_thing(Client, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_thing(Client, ThingName, QueryMap, HeadersMap, []).
@@ -11805,12 +13251,7 @@ describe_thing(Client, ThingName, QueryMap, HeadersMap)
 -spec describe_thing(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_thing_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_thing_errors(), tuple()}.
 describe_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), ""],
@@ -11835,10 +13276,7 @@ describe_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
 -spec describe_thing_group(map(), binary() | list()) ->
     {ok, describe_thing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_thing_group_errors(), tuple()}.
 describe_thing_group(Client, ThingGroupName)
   when is_map(Client) ->
     describe_thing_group(Client, ThingGroupName, #{}, #{}).
@@ -11846,10 +13284,7 @@ describe_thing_group(Client, ThingGroupName)
 -spec describe_thing_group(map(), binary() | list(), map(), map()) ->
     {ok, describe_thing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_thing_group_errors(), tuple()}.
 describe_thing_group(Client, ThingGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_thing_group(Client, ThingGroupName, QueryMap, HeadersMap, []).
@@ -11857,10 +13292,7 @@ describe_thing_group(Client, ThingGroupName, QueryMap, HeadersMap)
 -spec describe_thing_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_thing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_thing_group_errors(), tuple()}.
 describe_thing_group(Client, ThingGroupName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
@@ -11885,11 +13317,7 @@ describe_thing_group(Client, ThingGroupName, QueryMap, HeadersMap, Options0)
 -spec describe_thing_registration_task(map(), binary() | list()) ->
     {ok, describe_thing_registration_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_thing_registration_task_errors(), tuple()}.
 describe_thing_registration_task(Client, TaskId)
   when is_map(Client) ->
     describe_thing_registration_task(Client, TaskId, #{}, #{}).
@@ -11897,11 +13325,7 @@ describe_thing_registration_task(Client, TaskId)
 -spec describe_thing_registration_task(map(), binary() | list(), map(), map()) ->
     {ok, describe_thing_registration_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_thing_registration_task_errors(), tuple()}.
 describe_thing_registration_task(Client, TaskId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_thing_registration_task(Client, TaskId, QueryMap, HeadersMap, []).
@@ -11909,11 +13333,7 @@ describe_thing_registration_task(Client, TaskId, QueryMap, HeadersMap)
 -spec describe_thing_registration_task(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_thing_registration_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_thing_registration_task_errors(), tuple()}.
 describe_thing_registration_task(Client, TaskId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/thing-registration-tasks/", aws_util:encode_uri(TaskId), ""],
@@ -11938,12 +13358,7 @@ describe_thing_registration_task(Client, TaskId, QueryMap, HeadersMap, Options0)
 -spec describe_thing_type(map(), binary() | list()) ->
     {ok, describe_thing_type_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_thing_type_errors(), tuple()}.
 describe_thing_type(Client, ThingTypeName)
   when is_map(Client) ->
     describe_thing_type(Client, ThingTypeName, #{}, #{}).
@@ -11951,12 +13366,7 @@ describe_thing_type(Client, ThingTypeName)
 -spec describe_thing_type(map(), binary() | list(), map(), map()) ->
     {ok, describe_thing_type_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_thing_type_errors(), tuple()}.
 describe_thing_type(Client, ThingTypeName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_thing_type(Client, ThingTypeName, QueryMap, HeadersMap, []).
@@ -11964,12 +13374,7 @@ describe_thing_type(Client, ThingTypeName, QueryMap, HeadersMap)
 -spec describe_thing_type(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_thing_type_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, describe_thing_type_errors(), tuple()}.
 describe_thing_type(Client, ThingTypeName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/thing-types/", aws_util:encode_uri(ThingTypeName), ""],
@@ -11998,24 +13403,14 @@ describe_thing_type(Client, ThingTypeName, QueryMap, HeadersMap, Options0)
 -spec detach_policy(map(), binary() | list(), detach_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, detach_policy_errors(), tuple()}.
 detach_policy(Client, PolicyName, Input) ->
     detach_policy(Client, PolicyName, Input, []).
 
 -spec detach_policy(map(), binary() | list(), detach_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, detach_policy_errors(), tuple()}.
 detach_policy(Client, PolicyName, Input0, Options0) ->
     Method = post,
     Path = ["/target-policies/", aws_util:encode_uri(PolicyName), ""],
@@ -12050,24 +13445,14 @@ detach_policy(Client, PolicyName, Input0, Options0) ->
 -spec detach_principal_policy(map(), binary() | list(), detach_principal_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, detach_principal_policy_errors(), tuple()}.
 detach_principal_policy(Client, PolicyName, Input) ->
     detach_principal_policy(Client, PolicyName, Input, []).
 
 -spec detach_principal_policy(map(), binary() | list(), detach_principal_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, detach_principal_policy_errors(), tuple()}.
 detach_principal_policy(Client, PolicyName, Input0, Options0) ->
     Method = delete,
     Path = ["/principal-policies/", aws_util:encode_uri(PolicyName), ""],
@@ -12101,20 +13486,14 @@ detach_principal_policy(Client, PolicyName, Input0, Options0) ->
 -spec detach_security_profile(map(), binary() | list(), detach_security_profile_request()) ->
     {ok, detach_security_profile_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, detach_security_profile_errors(), tuple()}.
 detach_security_profile(Client, SecurityProfileName, Input) ->
     detach_security_profile(Client, SecurityProfileName, Input, []).
 
 -spec detach_security_profile(map(), binary() | list(), detach_security_profile_request(), proplists:proplist()) ->
     {ok, detach_security_profile_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, detach_security_profile_errors(), tuple()}.
 detach_security_profile(Client, SecurityProfileName, Input0, Options0) ->
     Method = delete,
     Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), "/targets"],
@@ -12155,24 +13534,14 @@ detach_security_profile(Client, SecurityProfileName, Input0, Options0) ->
 -spec detach_thing_principal(map(), binary() | list(), detach_thing_principal_request()) ->
     {ok, detach_thing_principal_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, detach_thing_principal_errors(), tuple()}.
 detach_thing_principal(Client, ThingName, Input) ->
     detach_thing_principal(Client, ThingName, Input, []).
 
 -spec detach_thing_principal(map(), binary() | list(), detach_thing_principal_request(), proplists:proplist()) ->
     {ok, detach_thing_principal_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, detach_thing_principal_errors(), tuple()}.
 detach_thing_principal(Client, ThingName, Input0, Options0) ->
     Method = delete,
     Path = ["/things/", aws_util:encode_uri(ThingName), "/principals"],
@@ -12205,22 +13574,14 @@ detach_thing_principal(Client, ThingName, Input0, Options0) ->
 -spec disable_topic_rule(map(), binary() | list(), disable_topic_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflicting_resource_update_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, disable_topic_rule_errors(), tuple()}.
 disable_topic_rule(Client, RuleName, Input) ->
     disable_topic_rule(Client, RuleName, Input, []).
 
 -spec disable_topic_rule(map(), binary() | list(), disable_topic_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflicting_resource_update_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, disable_topic_rule_errors(), tuple()}.
 disable_topic_rule(Client, RuleName, Input0, Options0) ->
     Method = post,
     Path = ["/rules/", aws_util:encode_uri(RuleName), "/disable"],
@@ -12251,22 +13612,14 @@ disable_topic_rule(Client, RuleName, Input0, Options0) ->
 -spec enable_topic_rule(map(), binary() | list(), enable_topic_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflicting_resource_update_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, enable_topic_rule_errors(), tuple()}.
 enable_topic_rule(Client, RuleName, Input) ->
     enable_topic_rule(Client, RuleName, Input, []).
 
 -spec enable_topic_rule(map(), binary() | list(), enable_topic_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflicting_resource_update_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, enable_topic_rule_errors(), tuple()}.
 enable_topic_rule(Client, RuleName, Input0, Options0) ->
     Method = post,
     Path = ["/rules/", aws_util:encode_uri(RuleName), "/enable"],
@@ -12299,10 +13652,7 @@ enable_topic_rule(Client, RuleName, Input0, Options0) ->
 -spec get_behavior_model_training_summaries(map()) ->
     {ok, get_behavior_model_training_summaries_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_behavior_model_training_summaries_errors(), tuple()}.
 get_behavior_model_training_summaries(Client)
   when is_map(Client) ->
     get_behavior_model_training_summaries(Client, #{}, #{}).
@@ -12310,10 +13660,7 @@ get_behavior_model_training_summaries(Client)
 -spec get_behavior_model_training_summaries(map(), map(), map()) ->
     {ok, get_behavior_model_training_summaries_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_behavior_model_training_summaries_errors(), tuple()}.
 get_behavior_model_training_summaries(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_behavior_model_training_summaries(Client, QueryMap, HeadersMap, []).
@@ -12321,10 +13668,7 @@ get_behavior_model_training_summaries(Client, QueryMap, HeadersMap)
 -spec get_behavior_model_training_summaries(map(), map(), map(), proplists:proplist()) ->
     {ok, get_behavior_model_training_summaries_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_behavior_model_training_summaries_errors(), tuple()}.
 get_behavior_model_training_summaries(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/behavior-model-training/summaries"],
@@ -12356,30 +13700,14 @@ get_behavior_model_training_summaries(Client, QueryMap, HeadersMap, Options0)
 -spec get_buckets_aggregation(map(), get_buckets_aggregation_request()) ->
     {ok, get_buckets_aggregation_response(), tuple()} |
     {error, any()} |
-    {error, index_not_ready_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_aggregation_exception(), tuple()} |
-    {error, invalid_query_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_buckets_aggregation_errors(), tuple()}.
 get_buckets_aggregation(Client, Input) ->
     get_buckets_aggregation(Client, Input, []).
 
 -spec get_buckets_aggregation(map(), get_buckets_aggregation_request(), proplists:proplist()) ->
     {ok, get_buckets_aggregation_response(), tuple()} |
     {error, any()} |
-    {error, index_not_ready_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_aggregation_exception(), tuple()} |
-    {error, invalid_query_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_buckets_aggregation_errors(), tuple()}.
 get_buckets_aggregation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/indices/buckets"],
@@ -12410,30 +13738,14 @@ get_buckets_aggregation(Client, Input0, Options0) ->
 -spec get_cardinality(map(), get_cardinality_request()) ->
     {ok, get_cardinality_response(), tuple()} |
     {error, any()} |
-    {error, index_not_ready_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_aggregation_exception(), tuple()} |
-    {error, invalid_query_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_cardinality_errors(), tuple()}.
 get_cardinality(Client, Input) ->
     get_cardinality(Client, Input, []).
 
 -spec get_cardinality(map(), get_cardinality_request(), proplists:proplist()) ->
     {ok, get_cardinality_response(), tuple()} |
     {error, any()} |
-    {error, index_not_ready_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_aggregation_exception(), tuple()} |
-    {error, invalid_query_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_cardinality_errors(), tuple()}.
 get_cardinality(Client, Input0, Options0) ->
     Method = post,
     Path = ["/indices/cardinality"],
@@ -12466,26 +13778,14 @@ get_cardinality(Client, Input0, Options0) ->
 -spec get_effective_policies(map(), get_effective_policies_request()) ->
     {ok, get_effective_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_effective_policies_errors(), tuple()}.
 get_effective_policies(Client, Input) ->
     get_effective_policies(Client, Input, []).
 
 -spec get_effective_policies(map(), get_effective_policies_request(), proplists:proplist()) ->
     {ok, get_effective_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_effective_policies_errors(), tuple()}.
 get_effective_policies(Client, Input0, Options0) ->
     Method = post,
     Path = ["/effective-policies"],
@@ -12517,11 +13817,7 @@ get_effective_policies(Client, Input0, Options0) ->
 -spec get_indexing_configuration(map()) ->
     {ok, get_indexing_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_indexing_configuration_errors(), tuple()}.
 get_indexing_configuration(Client)
   when is_map(Client) ->
     get_indexing_configuration(Client, #{}, #{}).
@@ -12529,11 +13825,7 @@ get_indexing_configuration(Client)
 -spec get_indexing_configuration(map(), map(), map()) ->
     {ok, get_indexing_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_indexing_configuration_errors(), tuple()}.
 get_indexing_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_indexing_configuration(Client, QueryMap, HeadersMap, []).
@@ -12541,11 +13833,7 @@ get_indexing_configuration(Client, QueryMap, HeadersMap)
 -spec get_indexing_configuration(map(), map(), map(), proplists:proplist()) ->
     {ok, get_indexing_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_indexing_configuration_errors(), tuple()}.
 get_indexing_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/indexing/config"],
@@ -12570,10 +13858,7 @@ get_indexing_configuration(Client, QueryMap, HeadersMap, Options0)
 -spec get_job_document(map(), binary() | list()) ->
     {ok, get_job_document_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_job_document_errors(), tuple()}.
 get_job_document(Client, JobId)
   when is_map(Client) ->
     get_job_document(Client, JobId, #{}, #{}).
@@ -12581,10 +13866,7 @@ get_job_document(Client, JobId)
 -spec get_job_document(map(), binary() | list(), map(), map()) ->
     {ok, get_job_document_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_job_document_errors(), tuple()}.
 get_job_document(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_job_document(Client, JobId, QueryMap, HeadersMap, []).
@@ -12592,10 +13874,7 @@ get_job_document(Client, JobId, QueryMap, HeadersMap)
 -spec get_job_document(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_job_document_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_job_document_errors(), tuple()}.
 get_job_document(Client, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobs/", aws_util:encode_uri(JobId), "/job-document"],
@@ -12624,9 +13903,7 @@ get_job_document(Client, JobId, QueryMap, HeadersMap, Options0)
 -spec get_logging_options(map()) ->
     {ok, get_logging_options_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_logging_options_errors(), tuple()}.
 get_logging_options(Client)
   when is_map(Client) ->
     get_logging_options(Client, #{}, #{}).
@@ -12634,9 +13911,7 @@ get_logging_options(Client)
 -spec get_logging_options(map(), map(), map()) ->
     {ok, get_logging_options_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_logging_options_errors(), tuple()}.
 get_logging_options(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_logging_options(Client, QueryMap, HeadersMap, []).
@@ -12644,9 +13919,7 @@ get_logging_options(Client, QueryMap, HeadersMap)
 -spec get_logging_options(map(), map(), map(), proplists:proplist()) ->
     {ok, get_logging_options_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_logging_options_errors(), tuple()}.
 get_logging_options(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/loggingOptions"],
@@ -12671,12 +13944,7 @@ get_logging_options(Client, QueryMap, HeadersMap, Options0)
 -spec get_ota_update(map(), binary() | list()) ->
     {ok, get_ota_update_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_ota_update_errors(), tuple()}.
 get_ota_update(Client, OtaUpdateId)
   when is_map(Client) ->
     get_ota_update(Client, OtaUpdateId, #{}, #{}).
@@ -12684,12 +13952,7 @@ get_ota_update(Client, OtaUpdateId)
 -spec get_ota_update(map(), binary() | list(), map(), map()) ->
     {ok, get_ota_update_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_ota_update_errors(), tuple()}.
 get_ota_update(Client, OtaUpdateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_ota_update(Client, OtaUpdateId, QueryMap, HeadersMap, []).
@@ -12697,12 +13960,7 @@ get_ota_update(Client, OtaUpdateId, QueryMap, HeadersMap)
 -spec get_ota_update(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_ota_update_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_ota_update_errors(), tuple()}.
 get_ota_update(Client, OtaUpdateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/otaUpdates/", aws_util:encode_uri(OtaUpdateId), ""],
@@ -12727,10 +13985,7 @@ get_ota_update(Client, OtaUpdateId, QueryMap, HeadersMap, Options0)
 -spec get_package(map(), binary() | list()) ->
     {ok, get_package_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_package_errors(), tuple()}.
 get_package(Client, PackageName)
   when is_map(Client) ->
     get_package(Client, PackageName, #{}, #{}).
@@ -12738,10 +13993,7 @@ get_package(Client, PackageName)
 -spec get_package(map(), binary() | list(), map(), map()) ->
     {ok, get_package_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_package_errors(), tuple()}.
 get_package(Client, PackageName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_package(Client, PackageName, QueryMap, HeadersMap, []).
@@ -12749,10 +14001,7 @@ get_package(Client, PackageName, QueryMap, HeadersMap)
 -spec get_package(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_package_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_package_errors(), tuple()}.
 get_package(Client, PackageName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/packages/", aws_util:encode_uri(PackageName), ""],
@@ -12778,8 +14027,7 @@ get_package(Client, PackageName, QueryMap, HeadersMap, Options0)
 -spec get_package_configuration(map()) ->
     {ok, get_package_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_package_configuration_errors(), tuple()}.
 get_package_configuration(Client)
   when is_map(Client) ->
     get_package_configuration(Client, #{}, #{}).
@@ -12787,8 +14035,7 @@ get_package_configuration(Client)
 -spec get_package_configuration(map(), map(), map()) ->
     {ok, get_package_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_package_configuration_errors(), tuple()}.
 get_package_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_package_configuration(Client, QueryMap, HeadersMap, []).
@@ -12796,8 +14043,7 @@ get_package_configuration(Client, QueryMap, HeadersMap)
 -spec get_package_configuration(map(), map(), map(), proplists:proplist()) ->
     {ok, get_package_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_package_configuration_errors(), tuple()}.
 get_package_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/package-configuration"],
@@ -12822,10 +14068,7 @@ get_package_configuration(Client, QueryMap, HeadersMap, Options0)
 -spec get_package_version(map(), binary() | list(), binary() | list()) ->
     {ok, get_package_version_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_package_version_errors(), tuple()}.
 get_package_version(Client, PackageName, VersionName)
   when is_map(Client) ->
     get_package_version(Client, PackageName, VersionName, #{}, #{}).
@@ -12833,10 +14076,7 @@ get_package_version(Client, PackageName, VersionName)
 -spec get_package_version(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_package_version_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_package_version_errors(), tuple()}.
 get_package_version(Client, PackageName, VersionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_package_version(Client, PackageName, VersionName, QueryMap, HeadersMap, []).
@@ -12844,10 +14084,7 @@ get_package_version(Client, PackageName, VersionName, QueryMap, HeadersMap)
 -spec get_package_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_package_version_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_package_version_errors(), tuple()}.
 get_package_version(Client, PackageName, VersionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/packages/", aws_util:encode_uri(PackageName), "/versions/", aws_util:encode_uri(VersionName), ""],
@@ -12889,30 +14126,14 @@ get_package_version(Client, PackageName, VersionName, QueryMap, HeadersMap, Opti
 -spec get_percentiles(map(), get_percentiles_request()) ->
     {ok, get_percentiles_response(), tuple()} |
     {error, any()} |
-    {error, index_not_ready_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_aggregation_exception(), tuple()} |
-    {error, invalid_query_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_percentiles_errors(), tuple()}.
 get_percentiles(Client, Input) ->
     get_percentiles(Client, Input, []).
 
 -spec get_percentiles(map(), get_percentiles_request(), proplists:proplist()) ->
     {ok, get_percentiles_response(), tuple()} |
     {error, any()} |
-    {error, index_not_ready_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_aggregation_exception(), tuple()} |
-    {error, invalid_query_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_percentiles_errors(), tuple()}.
 get_percentiles(Client, Input0, Options0) ->
     Method = post,
     Path = ["/indices/percentiles"],
@@ -12945,12 +14166,7 @@ get_percentiles(Client, Input0, Options0) ->
 -spec get_policy(map(), binary() | list()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_policy_errors(), tuple()}.
 get_policy(Client, PolicyName)
   when is_map(Client) ->
     get_policy(Client, PolicyName, #{}, #{}).
@@ -12958,12 +14174,7 @@ get_policy(Client, PolicyName)
 -spec get_policy(map(), binary() | list(), map(), map()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_policy_errors(), tuple()}.
 get_policy(Client, PolicyName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_policy(Client, PolicyName, QueryMap, HeadersMap, []).
@@ -12971,12 +14182,7 @@ get_policy(Client, PolicyName, QueryMap, HeadersMap)
 -spec get_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_policy_errors(), tuple()}.
 get_policy(Client, PolicyName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/policies/", aws_util:encode_uri(PolicyName), ""],
@@ -13001,12 +14207,7 @@ get_policy(Client, PolicyName, QueryMap, HeadersMap, Options0)
 -spec get_policy_version(map(), binary() | list(), binary() | list()) ->
     {ok, get_policy_version_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_policy_version_errors(), tuple()}.
 get_policy_version(Client, PolicyName, PolicyVersionId)
   when is_map(Client) ->
     get_policy_version(Client, PolicyName, PolicyVersionId, #{}, #{}).
@@ -13014,12 +14215,7 @@ get_policy_version(Client, PolicyName, PolicyVersionId)
 -spec get_policy_version(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_policy_version_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_policy_version_errors(), tuple()}.
 get_policy_version(Client, PolicyName, PolicyVersionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_policy_version(Client, PolicyName, PolicyVersionId, QueryMap, HeadersMap, []).
@@ -13027,12 +14223,7 @@ get_policy_version(Client, PolicyName, PolicyVersionId, QueryMap, HeadersMap)
 -spec get_policy_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_policy_version_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_policy_version_errors(), tuple()}.
 get_policy_version(Client, PolicyName, PolicyVersionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/policies/", aws_util:encode_uri(PolicyName), "/version/", aws_util:encode_uri(PolicyVersionId), ""],
@@ -13063,11 +14254,7 @@ get_policy_version(Client, PolicyName, PolicyVersionId, QueryMap, HeadersMap, Op
 -spec get_registration_code(map()) ->
     {ok, get_registration_code_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_registration_code_errors(), tuple()}.
 get_registration_code(Client)
   when is_map(Client) ->
     get_registration_code(Client, #{}, #{}).
@@ -13075,11 +14262,7 @@ get_registration_code(Client)
 -spec get_registration_code(map(), map(), map()) ->
     {ok, get_registration_code_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_registration_code_errors(), tuple()}.
 get_registration_code(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_registration_code(Client, QueryMap, HeadersMap, []).
@@ -13087,11 +14270,7 @@ get_registration_code(Client, QueryMap, HeadersMap)
 -spec get_registration_code(map(), map(), map(), proplists:proplist()) ->
     {ok, get_registration_code_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_registration_code_errors(), tuple()}.
 get_registration_code(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/registrationcode"],
@@ -13121,30 +14300,14 @@ get_registration_code(Client, QueryMap, HeadersMap, Options0)
 -spec get_statistics(map(), get_statistics_request()) ->
     {ok, get_statistics_response(), tuple()} |
     {error, any()} |
-    {error, index_not_ready_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_aggregation_exception(), tuple()} |
-    {error, invalid_query_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_statistics_errors(), tuple()}.
 get_statistics(Client, Input) ->
     get_statistics(Client, Input, []).
 
 -spec get_statistics(map(), get_statistics_request(), proplists:proplist()) ->
     {ok, get_statistics_response(), tuple()} |
     {error, any()} |
-    {error, index_not_ready_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_aggregation_exception(), tuple()} |
-    {error, invalid_query_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_statistics_errors(), tuple()}.
 get_statistics(Client, Input0, Options0) ->
     Method = post,
     Path = ["/indices/statistics"],
@@ -13175,10 +14338,7 @@ get_statistics(Client, Input0, Options0) ->
 -spec get_topic_rule(map(), binary() | list()) ->
     {ok, get_topic_rule_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_topic_rule_errors(), tuple()}.
 get_topic_rule(Client, RuleName)
   when is_map(Client) ->
     get_topic_rule(Client, RuleName, #{}, #{}).
@@ -13186,10 +14346,7 @@ get_topic_rule(Client, RuleName)
 -spec get_topic_rule(map(), binary() | list(), map(), map()) ->
     {ok, get_topic_rule_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_topic_rule_errors(), tuple()}.
 get_topic_rule(Client, RuleName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_topic_rule(Client, RuleName, QueryMap, HeadersMap, []).
@@ -13197,10 +14354,7 @@ get_topic_rule(Client, RuleName, QueryMap, HeadersMap)
 -spec get_topic_rule(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_topic_rule_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_topic_rule_errors(), tuple()}.
 get_topic_rule(Client, RuleName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/rules/", aws_util:encode_uri(RuleName), ""],
@@ -13225,10 +14379,7 @@ get_topic_rule(Client, RuleName, QueryMap, HeadersMap, Options0)
 -spec get_topic_rule_destination(map(), binary() | list()) ->
     {ok, get_topic_rule_destination_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_topic_rule_destination_errors(), tuple()}.
 get_topic_rule_destination(Client, Arn)
   when is_map(Client) ->
     get_topic_rule_destination(Client, Arn, #{}, #{}).
@@ -13236,10 +14387,7 @@ get_topic_rule_destination(Client, Arn)
 -spec get_topic_rule_destination(map(), binary() | list(), map(), map()) ->
     {ok, get_topic_rule_destination_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_topic_rule_destination_errors(), tuple()}.
 get_topic_rule_destination(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_topic_rule_destination(Client, Arn, QueryMap, HeadersMap, []).
@@ -13247,10 +14395,7 @@ get_topic_rule_destination(Client, Arn, QueryMap, HeadersMap)
 -spec get_topic_rule_destination(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_topic_rule_destination_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_topic_rule_destination_errors(), tuple()}.
 get_topic_rule_destination(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/destinations/", aws_util:encode_multi_segment_uri(Arn), ""],
@@ -13275,9 +14420,7 @@ get_topic_rule_destination(Client, Arn, QueryMap, HeadersMap, Options0)
 -spec get_v2_logging_options(map()) ->
     {ok, get_v2_logging_options_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, not_configured_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_v2_logging_options_errors(), tuple()}.
 get_v2_logging_options(Client)
   when is_map(Client) ->
     get_v2_logging_options(Client, #{}, #{}).
@@ -13285,9 +14428,7 @@ get_v2_logging_options(Client)
 -spec get_v2_logging_options(map(), map(), map()) ->
     {ok, get_v2_logging_options_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, not_configured_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_v2_logging_options_errors(), tuple()}.
 get_v2_logging_options(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_v2_logging_options(Client, QueryMap, HeadersMap, []).
@@ -13295,9 +14436,7 @@ get_v2_logging_options(Client, QueryMap, HeadersMap)
 -spec get_v2_logging_options(map(), map(), map(), proplists:proplist()) ->
     {ok, get_v2_logging_options_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, not_configured_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_v2_logging_options_errors(), tuple()}.
 get_v2_logging_options(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2LoggingOptions"],
@@ -13323,10 +14462,7 @@ get_v2_logging_options(Client, QueryMap, HeadersMap, Options0)
 -spec list_active_violations(map()) ->
     {ok, list_active_violations_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_active_violations_errors(), tuple()}.
 list_active_violations(Client)
   when is_map(Client) ->
     list_active_violations(Client, #{}, #{}).
@@ -13334,10 +14470,7 @@ list_active_violations(Client)
 -spec list_active_violations(map(), map(), map()) ->
     {ok, list_active_violations_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_active_violations_errors(), tuple()}.
 list_active_violations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_active_violations(Client, QueryMap, HeadersMap, []).
@@ -13345,10 +14478,7 @@ list_active_violations(Client, QueryMap, HeadersMap)
 -spec list_active_violations(map(), map(), map(), proplists:proplist()) ->
     {ok, list_active_violations_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_active_violations_errors(), tuple()}.
 list_active_violations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/active-violations"],
@@ -13383,26 +14513,14 @@ list_active_violations(Client, QueryMap, HeadersMap, Options0)
 -spec list_attached_policies(map(), binary() | list(), list_attached_policies_request()) ->
     {ok, list_attached_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_attached_policies_errors(), tuple()}.
 list_attached_policies(Client, Target, Input) ->
     list_attached_policies(Client, Target, Input, []).
 
 -spec list_attached_policies(map(), binary() | list(), list_attached_policies_request(), proplists:proplist()) ->
     {ok, list_attached_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_attached_policies_errors(), tuple()}.
 list_attached_policies(Client, Target, Input0, Options0) ->
     Method = post,
     Path = ["/attached-policies/", aws_util:encode_uri(Target), ""],
@@ -13440,18 +14558,14 @@ list_attached_policies(Client, Target, Input0, Options0) ->
 -spec list_audit_findings(map(), list_audit_findings_request()) ->
     {ok, list_audit_findings_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_audit_findings_errors(), tuple()}.
 list_audit_findings(Client, Input) ->
     list_audit_findings(Client, Input, []).
 
 -spec list_audit_findings(map(), list_audit_findings_request(), proplists:proplist()) ->
     {ok, list_audit_findings_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_audit_findings_errors(), tuple()}.
 list_audit_findings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/audit/findings"],
@@ -13483,9 +14597,7 @@ list_audit_findings(Client, Input0, Options0) ->
 -spec list_audit_mitigation_actions_executions(map(), binary() | list(), binary() | list()) ->
     {ok, list_audit_mitigation_actions_executions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_audit_mitigation_actions_executions_errors(), tuple()}.
 list_audit_mitigation_actions_executions(Client, FindingId, TaskId)
   when is_map(Client) ->
     list_audit_mitigation_actions_executions(Client, FindingId, TaskId, #{}, #{}).
@@ -13493,9 +14605,7 @@ list_audit_mitigation_actions_executions(Client, FindingId, TaskId)
 -spec list_audit_mitigation_actions_executions(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_audit_mitigation_actions_executions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_audit_mitigation_actions_executions_errors(), tuple()}.
 list_audit_mitigation_actions_executions(Client, FindingId, TaskId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_audit_mitigation_actions_executions(Client, FindingId, TaskId, QueryMap, HeadersMap, []).
@@ -13503,9 +14613,7 @@ list_audit_mitigation_actions_executions(Client, FindingId, TaskId, QueryMap, He
 -spec list_audit_mitigation_actions_executions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_audit_mitigation_actions_executions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_audit_mitigation_actions_executions_errors(), tuple()}.
 list_audit_mitigation_actions_executions(Client, FindingId, TaskId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/mitigationactions/executions"],
@@ -13539,9 +14647,7 @@ list_audit_mitigation_actions_executions(Client, FindingId, TaskId, QueryMap, He
 -spec list_audit_mitigation_actions_tasks(map(), binary() | list(), binary() | list()) ->
     {ok, list_audit_mitigation_actions_tasks_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_audit_mitigation_actions_tasks_errors(), tuple()}.
 list_audit_mitigation_actions_tasks(Client, EndTime, StartTime)
   when is_map(Client) ->
     list_audit_mitigation_actions_tasks(Client, EndTime, StartTime, #{}, #{}).
@@ -13549,9 +14655,7 @@ list_audit_mitigation_actions_tasks(Client, EndTime, StartTime)
 -spec list_audit_mitigation_actions_tasks(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_audit_mitigation_actions_tasks_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_audit_mitigation_actions_tasks_errors(), tuple()}.
 list_audit_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_audit_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap, []).
@@ -13559,9 +14663,7 @@ list_audit_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, Header
 -spec list_audit_mitigation_actions_tasks(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_audit_mitigation_actions_tasks_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_audit_mitigation_actions_tasks_errors(), tuple()}.
 list_audit_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/mitigationactions/tasks"],
@@ -13597,18 +14699,14 @@ list_audit_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, Header
 -spec list_audit_suppressions(map(), list_audit_suppressions_request()) ->
     {ok, list_audit_suppressions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_audit_suppressions_errors(), tuple()}.
 list_audit_suppressions(Client, Input) ->
     list_audit_suppressions(Client, Input, []).
 
 -spec list_audit_suppressions(map(), list_audit_suppressions_request(), proplists:proplist()) ->
     {ok, list_audit_suppressions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_audit_suppressions_errors(), tuple()}.
 list_audit_suppressions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/audit/suppressions/list"],
@@ -13641,9 +14739,7 @@ list_audit_suppressions(Client, Input0, Options0) ->
 -spec list_audit_tasks(map(), binary() | list(), binary() | list()) ->
     {ok, list_audit_tasks_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_audit_tasks_errors(), tuple()}.
 list_audit_tasks(Client, EndTime, StartTime)
   when is_map(Client) ->
     list_audit_tasks(Client, EndTime, StartTime, #{}, #{}).
@@ -13651,9 +14747,7 @@ list_audit_tasks(Client, EndTime, StartTime)
 -spec list_audit_tasks(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_audit_tasks_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_audit_tasks_errors(), tuple()}.
 list_audit_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_audit_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap, []).
@@ -13661,9 +14755,7 @@ list_audit_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap)
 -spec list_audit_tasks(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_audit_tasks_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_audit_tasks_errors(), tuple()}.
 list_audit_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/tasks"],
@@ -13697,11 +14789,7 @@ list_audit_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap, Options0)
 -spec list_authorizers(map()) ->
     {ok, list_authorizers_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_authorizers_errors(), tuple()}.
 list_authorizers(Client)
   when is_map(Client) ->
     list_authorizers(Client, #{}, #{}).
@@ -13709,11 +14797,7 @@ list_authorizers(Client)
 -spec list_authorizers(map(), map(), map()) ->
     {ok, list_authorizers_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_authorizers_errors(), tuple()}.
 list_authorizers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_authorizers(Client, QueryMap, HeadersMap, []).
@@ -13721,11 +14805,7 @@ list_authorizers(Client, QueryMap, HeadersMap)
 -spec list_authorizers(map(), map(), map(), proplists:proplist()) ->
     {ok, list_authorizers_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_authorizers_errors(), tuple()}.
 list_authorizers(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/authorizers"],
@@ -13757,10 +14837,7 @@ list_authorizers(Client, QueryMap, HeadersMap, Options0)
 -spec list_billing_groups(map()) ->
     {ok, list_billing_groups_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_billing_groups_errors(), tuple()}.
 list_billing_groups(Client)
   when is_map(Client) ->
     list_billing_groups(Client, #{}, #{}).
@@ -13768,10 +14845,7 @@ list_billing_groups(Client)
 -spec list_billing_groups(map(), map(), map()) ->
     {ok, list_billing_groups_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_billing_groups_errors(), tuple()}.
 list_billing_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_billing_groups(Client, QueryMap, HeadersMap, []).
@@ -13779,10 +14853,7 @@ list_billing_groups(Client, QueryMap, HeadersMap)
 -spec list_billing_groups(map(), map(), map(), proplists:proplist()) ->
     {ok, list_billing_groups_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_billing_groups_errors(), tuple()}.
 list_billing_groups(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/billing-groups"],
@@ -13818,11 +14889,7 @@ list_billing_groups(Client, QueryMap, HeadersMap, Options0)
 -spec list_ca_certificates(map()) ->
     {ok, list_ca_certificates_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_ca_certificates_errors(), tuple()}.
 list_ca_certificates(Client)
   when is_map(Client) ->
     list_ca_certificates(Client, #{}, #{}).
@@ -13830,11 +14897,7 @@ list_ca_certificates(Client)
 -spec list_ca_certificates(map(), map(), map()) ->
     {ok, list_ca_certificates_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_ca_certificates_errors(), tuple()}.
 list_ca_certificates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ca_certificates(Client, QueryMap, HeadersMap, []).
@@ -13842,11 +14905,7 @@ list_ca_certificates(Client, QueryMap, HeadersMap)
 -spec list_ca_certificates(map(), map(), map(), proplists:proplist()) ->
     {ok, list_ca_certificates_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_ca_certificates_errors(), tuple()}.
 list_ca_certificates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/cacertificates"],
@@ -13879,11 +14938,7 @@ list_ca_certificates(Client, QueryMap, HeadersMap, Options0)
 -spec list_certificate_providers(map()) ->
     {ok, list_certificate_providers_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_certificate_providers_errors(), tuple()}.
 list_certificate_providers(Client)
   when is_map(Client) ->
     list_certificate_providers(Client, #{}, #{}).
@@ -13891,11 +14946,7 @@ list_certificate_providers(Client)
 -spec list_certificate_providers(map(), map(), map()) ->
     {ok, list_certificate_providers_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_certificate_providers_errors(), tuple()}.
 list_certificate_providers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_certificate_providers(Client, QueryMap, HeadersMap, []).
@@ -13903,11 +14954,7 @@ list_certificate_providers(Client, QueryMap, HeadersMap)
 -spec list_certificate_providers(map(), map(), map(), proplists:proplist()) ->
     {ok, list_certificate_providers_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_certificate_providers_errors(), tuple()}.
 list_certificate_providers(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/certificate-providers"],
@@ -13942,11 +14989,7 @@ list_certificate_providers(Client, QueryMap, HeadersMap, Options0)
 -spec list_certificates(map()) ->
     {ok, list_certificates_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_certificates_errors(), tuple()}.
 list_certificates(Client)
   when is_map(Client) ->
     list_certificates(Client, #{}, #{}).
@@ -13954,11 +14997,7 @@ list_certificates(Client)
 -spec list_certificates(map(), map(), map()) ->
     {ok, list_certificates_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_certificates_errors(), tuple()}.
 list_certificates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_certificates(Client, QueryMap, HeadersMap, []).
@@ -13966,11 +15005,7 @@ list_certificates(Client, QueryMap, HeadersMap)
 -spec list_certificates(map(), map(), map(), proplists:proplist()) ->
     {ok, list_certificates_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_certificates_errors(), tuple()}.
 list_certificates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/certificates"],
@@ -14001,11 +15036,7 @@ list_certificates(Client, QueryMap, HeadersMap, Options0)
 -spec list_certificates_by_ca(map(), binary() | list()) ->
     {ok, list_certificates_by_ca_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_certificates_by_ca_errors(), tuple()}.
 list_certificates_by_ca(Client, CaCertificateId)
   when is_map(Client) ->
     list_certificates_by_ca(Client, CaCertificateId, #{}, #{}).
@@ -14013,11 +15044,7 @@ list_certificates_by_ca(Client, CaCertificateId)
 -spec list_certificates_by_ca(map(), binary() | list(), map(), map()) ->
     {ok, list_certificates_by_ca_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_certificates_by_ca_errors(), tuple()}.
 list_certificates_by_ca(Client, CaCertificateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_certificates_by_ca(Client, CaCertificateId, QueryMap, HeadersMap, []).
@@ -14025,11 +15052,7 @@ list_certificates_by_ca(Client, CaCertificateId, QueryMap, HeadersMap)
 -spec list_certificates_by_ca(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_certificates_by_ca_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_certificates_by_ca_errors(), tuple()}.
 list_certificates_by_ca(Client, CaCertificateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/certificates-by-ca/", aws_util:encode_uri(CaCertificateId), ""],
@@ -14061,9 +15084,7 @@ list_certificates_by_ca(Client, CaCertificateId, QueryMap, HeadersMap, Options0)
 -spec list_custom_metrics(map()) ->
     {ok, list_custom_metrics_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_custom_metrics_errors(), tuple()}.
 list_custom_metrics(Client)
   when is_map(Client) ->
     list_custom_metrics(Client, #{}, #{}).
@@ -14071,9 +15092,7 @@ list_custom_metrics(Client)
 -spec list_custom_metrics(map(), map(), map()) ->
     {ok, list_custom_metrics_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_custom_metrics_errors(), tuple()}.
 list_custom_metrics(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_custom_metrics(Client, QueryMap, HeadersMap, []).
@@ -14081,9 +15100,7 @@ list_custom_metrics(Client, QueryMap, HeadersMap)
 -spec list_custom_metrics(map(), map(), map(), proplists:proplist()) ->
     {ok, list_custom_metrics_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_custom_metrics_errors(), tuple()}.
 list_custom_metrics(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/custom-metrics"],
@@ -14115,9 +15132,7 @@ list_custom_metrics(Client, QueryMap, HeadersMap, Options0)
 -spec list_detect_mitigation_actions_executions(map()) ->
     {ok, list_detect_mitigation_actions_executions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_detect_mitigation_actions_executions_errors(), tuple()}.
 list_detect_mitigation_actions_executions(Client)
   when is_map(Client) ->
     list_detect_mitigation_actions_executions(Client, #{}, #{}).
@@ -14125,9 +15140,7 @@ list_detect_mitigation_actions_executions(Client)
 -spec list_detect_mitigation_actions_executions(map(), map(), map()) ->
     {ok, list_detect_mitigation_actions_executions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_detect_mitigation_actions_executions_errors(), tuple()}.
 list_detect_mitigation_actions_executions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_detect_mitigation_actions_executions(Client, QueryMap, HeadersMap, []).
@@ -14135,9 +15148,7 @@ list_detect_mitigation_actions_executions(Client, QueryMap, HeadersMap)
 -spec list_detect_mitigation_actions_executions(map(), map(), map(), proplists:proplist()) ->
     {ok, list_detect_mitigation_actions_executions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_detect_mitigation_actions_executions_errors(), tuple()}.
 list_detect_mitigation_actions_executions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detect/mitigationactions/executions"],
@@ -14173,9 +15184,7 @@ list_detect_mitigation_actions_executions(Client, QueryMap, HeadersMap, Options0
 -spec list_detect_mitigation_actions_tasks(map(), binary() | list(), binary() | list()) ->
     {ok, list_detect_mitigation_actions_tasks_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_detect_mitigation_actions_tasks_errors(), tuple()}.
 list_detect_mitigation_actions_tasks(Client, EndTime, StartTime)
   when is_map(Client) ->
     list_detect_mitigation_actions_tasks(Client, EndTime, StartTime, #{}, #{}).
@@ -14183,9 +15192,7 @@ list_detect_mitigation_actions_tasks(Client, EndTime, StartTime)
 -spec list_detect_mitigation_actions_tasks(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_detect_mitigation_actions_tasks_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_detect_mitigation_actions_tasks_errors(), tuple()}.
 list_detect_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_detect_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap, []).
@@ -14193,9 +15200,7 @@ list_detect_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, Heade
 -spec list_detect_mitigation_actions_tasks(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_detect_mitigation_actions_tasks_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_detect_mitigation_actions_tasks_errors(), tuple()}.
 list_detect_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detect/mitigationactions/tasks"],
@@ -14228,9 +15233,7 @@ list_detect_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, Heade
 -spec list_dimensions(map()) ->
     {ok, list_dimensions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_dimensions_errors(), tuple()}.
 list_dimensions(Client)
   when is_map(Client) ->
     list_dimensions(Client, #{}, #{}).
@@ -14238,9 +15241,7 @@ list_dimensions(Client)
 -spec list_dimensions(map(), map(), map()) ->
     {ok, list_dimensions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_dimensions_errors(), tuple()}.
 list_dimensions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_dimensions(Client, QueryMap, HeadersMap, []).
@@ -14248,9 +15249,7 @@ list_dimensions(Client, QueryMap, HeadersMap)
 -spec list_dimensions(map(), map(), map(), proplists:proplist()) ->
     {ok, list_dimensions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_dimensions_errors(), tuple()}.
 list_dimensions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/dimensions"],
@@ -14283,11 +15282,7 @@ list_dimensions(Client, QueryMap, HeadersMap, Options0)
 -spec list_domain_configurations(map()) ->
     {ok, list_domain_configurations_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_domain_configurations_errors(), tuple()}.
 list_domain_configurations(Client)
   when is_map(Client) ->
     list_domain_configurations(Client, #{}, #{}).
@@ -14295,11 +15290,7 @@ list_domain_configurations(Client)
 -spec list_domain_configurations(map(), map(), map()) ->
     {ok, list_domain_configurations_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_domain_configurations_errors(), tuple()}.
 list_domain_configurations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_domain_configurations(Client, QueryMap, HeadersMap, []).
@@ -14307,11 +15298,7 @@ list_domain_configurations(Client, QueryMap, HeadersMap)
 -spec list_domain_configurations(map(), map(), map(), proplists:proplist()) ->
     {ok, list_domain_configurations_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_domain_configurations_errors(), tuple()}.
 list_domain_configurations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domainConfigurations"],
@@ -14342,11 +15329,7 @@ list_domain_configurations(Client, QueryMap, HeadersMap, Options0)
 -spec list_fleet_metrics(map()) ->
     {ok, list_fleet_metrics_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_fleet_metrics_errors(), tuple()}.
 list_fleet_metrics(Client)
   when is_map(Client) ->
     list_fleet_metrics(Client, #{}, #{}).
@@ -14354,11 +15337,7 @@ list_fleet_metrics(Client)
 -spec list_fleet_metrics(map(), map(), map()) ->
     {ok, list_fleet_metrics_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_fleet_metrics_errors(), tuple()}.
 list_fleet_metrics(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_fleet_metrics(Client, QueryMap, HeadersMap, []).
@@ -14366,11 +15345,7 @@ list_fleet_metrics(Client, QueryMap, HeadersMap)
 -spec list_fleet_metrics(map(), map(), map(), proplists:proplist()) ->
     {ok, list_fleet_metrics_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_fleet_metrics_errors(), tuple()}.
 list_fleet_metrics(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/fleet-metrics"],
@@ -14400,11 +15375,7 @@ list_fleet_metrics(Client, QueryMap, HeadersMap, Options0)
 -spec list_indices(map()) ->
     {ok, list_indices_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_indices_errors(), tuple()}.
 list_indices(Client)
   when is_map(Client) ->
     list_indices(Client, #{}, #{}).
@@ -14412,11 +15383,7 @@ list_indices(Client)
 -spec list_indices(map(), map(), map()) ->
     {ok, list_indices_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_indices_errors(), tuple()}.
 list_indices(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_indices(Client, QueryMap, HeadersMap, []).
@@ -14424,11 +15391,7 @@ list_indices(Client, QueryMap, HeadersMap)
 -spec list_indices(map(), map(), map(), proplists:proplist()) ->
     {ok, list_indices_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_indices_errors(), tuple()}.
 list_indices(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/indices"],
@@ -14458,10 +15421,7 @@ list_indices(Client, QueryMap, HeadersMap, Options0)
 -spec list_job_executions_for_job(map(), binary() | list()) ->
     {ok, list_job_executions_for_job_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_job_executions_for_job_errors(), tuple()}.
 list_job_executions_for_job(Client, JobId)
   when is_map(Client) ->
     list_job_executions_for_job(Client, JobId, #{}, #{}).
@@ -14469,10 +15429,7 @@ list_job_executions_for_job(Client, JobId)
 -spec list_job_executions_for_job(map(), binary() | list(), map(), map()) ->
     {ok, list_job_executions_for_job_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_job_executions_for_job_errors(), tuple()}.
 list_job_executions_for_job(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_job_executions_for_job(Client, JobId, QueryMap, HeadersMap, []).
@@ -14480,10 +15437,7 @@ list_job_executions_for_job(Client, JobId, QueryMap, HeadersMap)
 -spec list_job_executions_for_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_job_executions_for_job_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_job_executions_for_job_errors(), tuple()}.
 list_job_executions_for_job(Client, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobs/", aws_util:encode_uri(JobId), "/things"],
@@ -14514,10 +15468,7 @@ list_job_executions_for_job(Client, JobId, QueryMap, HeadersMap, Options0)
 -spec list_job_executions_for_thing(map(), binary() | list()) ->
     {ok, list_job_executions_for_thing_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_job_executions_for_thing_errors(), tuple()}.
 list_job_executions_for_thing(Client, ThingName)
   when is_map(Client) ->
     list_job_executions_for_thing(Client, ThingName, #{}, #{}).
@@ -14525,10 +15476,7 @@ list_job_executions_for_thing(Client, ThingName)
 -spec list_job_executions_for_thing(map(), binary() | list(), map(), map()) ->
     {ok, list_job_executions_for_thing_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_job_executions_for_thing_errors(), tuple()}.
 list_job_executions_for_thing(Client, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_job_executions_for_thing(Client, ThingName, QueryMap, HeadersMap, []).
@@ -14536,10 +15484,7 @@ list_job_executions_for_thing(Client, ThingName, QueryMap, HeadersMap)
 -spec list_job_executions_for_thing(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_job_executions_for_thing_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_job_executions_for_thing_errors(), tuple()}.
 list_job_executions_for_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs"],
@@ -14572,9 +15517,7 @@ list_job_executions_for_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
 -spec list_job_templates(map()) ->
     {ok, list_job_templates_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_job_templates_errors(), tuple()}.
 list_job_templates(Client)
   when is_map(Client) ->
     list_job_templates(Client, #{}, #{}).
@@ -14582,9 +15525,7 @@ list_job_templates(Client)
 -spec list_job_templates(map(), map(), map()) ->
     {ok, list_job_templates_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_job_templates_errors(), tuple()}.
 list_job_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_job_templates(Client, QueryMap, HeadersMap, []).
@@ -14592,9 +15533,7 @@ list_job_templates(Client, QueryMap, HeadersMap)
 -spec list_job_templates(map(), map(), map(), proplists:proplist()) ->
     {ok, list_job_templates_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_job_templates_errors(), tuple()}.
 list_job_templates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/job-templates"],
@@ -14624,10 +15563,7 @@ list_job_templates(Client, QueryMap, HeadersMap, Options0)
 -spec list_jobs(map()) ->
     {ok, list_jobs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_jobs_errors(), tuple()}.
 list_jobs(Client)
   when is_map(Client) ->
     list_jobs(Client, #{}, #{}).
@@ -14635,10 +15571,7 @@ list_jobs(Client)
 -spec list_jobs(map(), map(), map()) ->
     {ok, list_jobs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_jobs_errors(), tuple()}.
 list_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_jobs(Client, QueryMap, HeadersMap, []).
@@ -14646,10 +15579,7 @@ list_jobs(Client, QueryMap, HeadersMap)
 -spec list_jobs(map(), map(), map(), proplists:proplist()) ->
     {ok, list_jobs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_jobs_errors(), tuple()}.
 list_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobs"],
@@ -14680,10 +15610,7 @@ list_jobs(Client, QueryMap, HeadersMap, Options0)
 -spec list_managed_job_templates(map()) ->
     {ok, list_managed_job_templates_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_managed_job_templates_errors(), tuple()}.
 list_managed_job_templates(Client)
   when is_map(Client) ->
     list_managed_job_templates(Client, #{}, #{}).
@@ -14691,10 +15618,7 @@ list_managed_job_templates(Client)
 -spec list_managed_job_templates(map(), map(), map()) ->
     {ok, list_managed_job_templates_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_managed_job_templates_errors(), tuple()}.
 list_managed_job_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_managed_job_templates(Client, QueryMap, HeadersMap, []).
@@ -14702,10 +15626,7 @@ list_managed_job_templates(Client, QueryMap, HeadersMap)
 -spec list_managed_job_templates(map(), map(), map(), proplists:proplist()) ->
     {ok, list_managed_job_templates_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_managed_job_templates_errors(), tuple()}.
 list_managed_job_templates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/managed-job-templates"],
@@ -14734,10 +15655,7 @@ list_managed_job_templates(Client, QueryMap, HeadersMap, Options0)
 -spec list_metric_values(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_metric_values_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_metric_values_errors(), tuple()}.
 list_metric_values(Client, EndTime, MetricName, StartTime, ThingName)
   when is_map(Client) ->
     list_metric_values(Client, EndTime, MetricName, StartTime, ThingName, #{}, #{}).
@@ -14745,10 +15663,7 @@ list_metric_values(Client, EndTime, MetricName, StartTime, ThingName)
 -spec list_metric_values(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_metric_values_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_metric_values_errors(), tuple()}.
 list_metric_values(Client, EndTime, MetricName, StartTime, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_metric_values(Client, EndTime, MetricName, StartTime, ThingName, QueryMap, HeadersMap, []).
@@ -14756,10 +15671,7 @@ list_metric_values(Client, EndTime, MetricName, StartTime, ThingName, QueryMap, 
 -spec list_metric_values(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_metric_values_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_metric_values_errors(), tuple()}.
 list_metric_values(Client, EndTime, MetricName, StartTime, ThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/metric-values"],
@@ -14796,9 +15708,7 @@ list_metric_values(Client, EndTime, MetricName, StartTime, ThingName, QueryMap, 
 -spec list_mitigation_actions(map()) ->
     {ok, list_mitigation_actions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_mitigation_actions_errors(), tuple()}.
 list_mitigation_actions(Client)
   when is_map(Client) ->
     list_mitigation_actions(Client, #{}, #{}).
@@ -14806,9 +15716,7 @@ list_mitigation_actions(Client)
 -spec list_mitigation_actions(map(), map(), map()) ->
     {ok, list_mitigation_actions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_mitigation_actions_errors(), tuple()}.
 list_mitigation_actions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_mitigation_actions(Client, QueryMap, HeadersMap, []).
@@ -14816,9 +15724,7 @@ list_mitigation_actions(Client, QueryMap, HeadersMap)
 -spec list_mitigation_actions(map(), map(), map(), proplists:proplist()) ->
     {ok, list_mitigation_actions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_mitigation_actions_errors(), tuple()}.
 list_mitigation_actions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/mitigationactions/actions"],
@@ -14849,11 +15755,7 @@ list_mitigation_actions(Client, QueryMap, HeadersMap, Options0)
 -spec list_ota_updates(map()) ->
     {ok, list_ota_updates_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_ota_updates_errors(), tuple()}.
 list_ota_updates(Client)
   when is_map(Client) ->
     list_ota_updates(Client, #{}, #{}).
@@ -14861,11 +15763,7 @@ list_ota_updates(Client)
 -spec list_ota_updates(map(), map(), map()) ->
     {ok, list_ota_updates_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_ota_updates_errors(), tuple()}.
 list_ota_updates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ota_updates(Client, QueryMap, HeadersMap, []).
@@ -14873,11 +15771,7 @@ list_ota_updates(Client, QueryMap, HeadersMap)
 -spec list_ota_updates(map(), map(), map(), proplists:proplist()) ->
     {ok, list_ota_updates_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_ota_updates_errors(), tuple()}.
 list_ota_updates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/otaUpdates"],
@@ -14908,11 +15802,7 @@ list_ota_updates(Client, QueryMap, HeadersMap, Options0)
 -spec list_outgoing_certificates(map()) ->
     {ok, list_outgoing_certificates_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_outgoing_certificates_errors(), tuple()}.
 list_outgoing_certificates(Client)
   when is_map(Client) ->
     list_outgoing_certificates(Client, #{}, #{}).
@@ -14920,11 +15810,7 @@ list_outgoing_certificates(Client)
 -spec list_outgoing_certificates(map(), map(), map()) ->
     {ok, list_outgoing_certificates_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_outgoing_certificates_errors(), tuple()}.
 list_outgoing_certificates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_outgoing_certificates(Client, QueryMap, HeadersMap, []).
@@ -14932,11 +15818,7 @@ list_outgoing_certificates(Client, QueryMap, HeadersMap)
 -spec list_outgoing_certificates(map(), map(), map(), proplists:proplist()) ->
     {ok, list_outgoing_certificates_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_outgoing_certificates_errors(), tuple()}.
 list_outgoing_certificates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/certificates-out-going"],
@@ -14967,9 +15849,7 @@ list_outgoing_certificates(Client, QueryMap, HeadersMap, Options0)
 -spec list_package_versions(map(), binary() | list()) ->
     {ok, list_package_versions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_package_versions_errors(), tuple()}.
 list_package_versions(Client, PackageName)
   when is_map(Client) ->
     list_package_versions(Client, PackageName, #{}, #{}).
@@ -14977,9 +15857,7 @@ list_package_versions(Client, PackageName)
 -spec list_package_versions(map(), binary() | list(), map(), map()) ->
     {ok, list_package_versions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_package_versions_errors(), tuple()}.
 list_package_versions(Client, PackageName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_package_versions(Client, PackageName, QueryMap, HeadersMap, []).
@@ -14987,9 +15865,7 @@ list_package_versions(Client, PackageName, QueryMap, HeadersMap)
 -spec list_package_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_package_versions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_package_versions_errors(), tuple()}.
 list_package_versions(Client, PackageName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/packages/", aws_util:encode_uri(PackageName), "/versions"],
@@ -15020,9 +15896,7 @@ list_package_versions(Client, PackageName, QueryMap, HeadersMap, Options0)
 -spec list_packages(map()) ->
     {ok, list_packages_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_packages_errors(), tuple()}.
 list_packages(Client)
   when is_map(Client) ->
     list_packages(Client, #{}, #{}).
@@ -15030,9 +15904,7 @@ list_packages(Client)
 -spec list_packages(map(), map(), map()) ->
     {ok, list_packages_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_packages_errors(), tuple()}.
 list_packages(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_packages(Client, QueryMap, HeadersMap, []).
@@ -15040,9 +15912,7 @@ list_packages(Client, QueryMap, HeadersMap)
 -spec list_packages(map(), map(), map(), proplists:proplist()) ->
     {ok, list_packages_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_packages_errors(), tuple()}.
 list_packages(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/packages"],
@@ -15072,11 +15942,7 @@ list_packages(Client, QueryMap, HeadersMap, Options0)
 -spec list_policies(map()) ->
     {ok, list_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_policies_errors(), tuple()}.
 list_policies(Client)
   when is_map(Client) ->
     list_policies(Client, #{}, #{}).
@@ -15084,11 +15950,7 @@ list_policies(Client)
 -spec list_policies(map(), map(), map()) ->
     {ok, list_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_policies_errors(), tuple()}.
 list_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_policies(Client, QueryMap, HeadersMap, []).
@@ -15096,11 +15958,7 @@ list_policies(Client, QueryMap, HeadersMap)
 -spec list_policies(map(), map(), map(), proplists:proplist()) ->
     {ok, list_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_policies_errors(), tuple()}.
 list_policies(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/policies"],
@@ -15135,12 +15993,7 @@ list_policies(Client, QueryMap, HeadersMap, Options0)
 -spec list_policy_principals(map(), binary() | list()) ->
     {ok, list_policy_principals_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_policy_principals_errors(), tuple()}.
 list_policy_principals(Client, PolicyName)
   when is_map(Client) ->
     list_policy_principals(Client, PolicyName, #{}, #{}).
@@ -15148,12 +16001,7 @@ list_policy_principals(Client, PolicyName)
 -spec list_policy_principals(map(), binary() | list(), map(), map()) ->
     {ok, list_policy_principals_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_policy_principals_errors(), tuple()}.
 list_policy_principals(Client, PolicyName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_policy_principals(Client, PolicyName, QueryMap, HeadersMap, []).
@@ -15161,12 +16009,7 @@ list_policy_principals(Client, PolicyName, QueryMap, HeadersMap)
 -spec list_policy_principals(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_policy_principals_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_policy_principals_errors(), tuple()}.
 list_policy_principals(Client, PolicyName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/policy-principals"],
@@ -15202,12 +16045,7 @@ list_policy_principals(Client, PolicyName, QueryMap, HeadersMap, Options0)
 -spec list_policy_versions(map(), binary() | list()) ->
     {ok, list_policy_versions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_policy_versions_errors(), tuple()}.
 list_policy_versions(Client, PolicyName)
   when is_map(Client) ->
     list_policy_versions(Client, PolicyName, #{}, #{}).
@@ -15215,12 +16053,7 @@ list_policy_versions(Client, PolicyName)
 -spec list_policy_versions(map(), binary() | list(), map(), map()) ->
     {ok, list_policy_versions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_policy_versions_errors(), tuple()}.
 list_policy_versions(Client, PolicyName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_policy_versions(Client, PolicyName, QueryMap, HeadersMap, []).
@@ -15228,12 +16061,7 @@ list_policy_versions(Client, PolicyName, QueryMap, HeadersMap)
 -spec list_policy_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_policy_versions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_policy_versions_errors(), tuple()}.
 list_policy_versions(Client, PolicyName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/policies/", aws_util:encode_uri(PolicyName), "/version"],
@@ -15266,12 +16094,7 @@ list_policy_versions(Client, PolicyName, QueryMap, HeadersMap, Options0)
 -spec list_principal_policies(map(), binary() | list()) ->
     {ok, list_principal_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_principal_policies_errors(), tuple()}.
 list_principal_policies(Client, Principal)
   when is_map(Client) ->
     list_principal_policies(Client, Principal, #{}, #{}).
@@ -15279,12 +16102,7 @@ list_principal_policies(Client, Principal)
 -spec list_principal_policies(map(), binary() | list(), map(), map()) ->
     {ok, list_principal_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_principal_policies_errors(), tuple()}.
 list_principal_policies(Client, Principal, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_principal_policies(Client, Principal, QueryMap, HeadersMap, []).
@@ -15292,12 +16110,7 @@ list_principal_policies(Client, Principal, QueryMap, HeadersMap)
 -spec list_principal_policies(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_principal_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_principal_policies_errors(), tuple()}.
 list_principal_policies(Client, Principal, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/principal-policies"],
@@ -15337,12 +16150,7 @@ list_principal_policies(Client, Principal, QueryMap, HeadersMap, Options0)
 -spec list_principal_things(map(), binary() | list()) ->
     {ok, list_principal_things_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_principal_things_errors(), tuple()}.
 list_principal_things(Client, Principal)
   when is_map(Client) ->
     list_principal_things(Client, Principal, #{}, #{}).
@@ -15350,12 +16158,7 @@ list_principal_things(Client, Principal)
 -spec list_principal_things(map(), binary() | list(), map(), map()) ->
     {ok, list_principal_things_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_principal_things_errors(), tuple()}.
 list_principal_things(Client, Principal, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_principal_things(Client, Principal, QueryMap, HeadersMap, []).
@@ -15363,12 +16166,7 @@ list_principal_things(Client, Principal, QueryMap, HeadersMap)
 -spec list_principal_things(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_principal_things_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_principal_things_errors(), tuple()}.
 list_principal_things(Client, Principal, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/principals/things"],
@@ -15402,11 +16200,7 @@ list_principal_things(Client, Principal, QueryMap, HeadersMap, Options0)
 -spec list_provisioning_template_versions(map(), binary() | list()) ->
     {ok, list_provisioning_template_versions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_provisioning_template_versions_errors(), tuple()}.
 list_provisioning_template_versions(Client, TemplateName)
   when is_map(Client) ->
     list_provisioning_template_versions(Client, TemplateName, #{}, #{}).
@@ -15414,11 +16208,7 @@ list_provisioning_template_versions(Client, TemplateName)
 -spec list_provisioning_template_versions(map(), binary() | list(), map(), map()) ->
     {ok, list_provisioning_template_versions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_provisioning_template_versions_errors(), tuple()}.
 list_provisioning_template_versions(Client, TemplateName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_provisioning_template_versions(Client, TemplateName, QueryMap, HeadersMap, []).
@@ -15426,11 +16216,7 @@ list_provisioning_template_versions(Client, TemplateName, QueryMap, HeadersMap)
 -spec list_provisioning_template_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_provisioning_template_versions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_provisioning_template_versions_errors(), tuple()}.
 list_provisioning_template_versions(Client, TemplateName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), "/versions"],
@@ -15460,10 +16246,7 @@ list_provisioning_template_versions(Client, TemplateName, QueryMap, HeadersMap, 
 -spec list_provisioning_templates(map()) ->
     {ok, list_provisioning_templates_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_provisioning_templates_errors(), tuple()}.
 list_provisioning_templates(Client)
   when is_map(Client) ->
     list_provisioning_templates(Client, #{}, #{}).
@@ -15471,10 +16254,7 @@ list_provisioning_templates(Client)
 -spec list_provisioning_templates(map(), map(), map()) ->
     {ok, list_provisioning_templates_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_provisioning_templates_errors(), tuple()}.
 list_provisioning_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_provisioning_templates(Client, QueryMap, HeadersMap, []).
@@ -15482,10 +16262,7 @@ list_provisioning_templates(Client, QueryMap, HeadersMap)
 -spec list_provisioning_templates(map(), map(), map(), proplists:proplist()) ->
     {ok, list_provisioning_templates_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_provisioning_templates_errors(), tuple()}.
 list_provisioning_templates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/provisioning-templates"],
@@ -15541,10 +16318,7 @@ list_provisioning_templates(Client, QueryMap, HeadersMap, Options0)
 -spec list_related_resources_for_audit_finding(map(), binary() | list()) ->
     {ok, list_related_resources_for_audit_finding_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_related_resources_for_audit_finding_errors(), tuple()}.
 list_related_resources_for_audit_finding(Client, FindingId)
   when is_map(Client) ->
     list_related_resources_for_audit_finding(Client, FindingId, #{}, #{}).
@@ -15552,10 +16326,7 @@ list_related_resources_for_audit_finding(Client, FindingId)
 -spec list_related_resources_for_audit_finding(map(), binary() | list(), map(), map()) ->
     {ok, list_related_resources_for_audit_finding_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_related_resources_for_audit_finding_errors(), tuple()}.
 list_related_resources_for_audit_finding(Client, FindingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_related_resources_for_audit_finding(Client, FindingId, QueryMap, HeadersMap, []).
@@ -15563,10 +16334,7 @@ list_related_resources_for_audit_finding(Client, FindingId, QueryMap, HeadersMap
 -spec list_related_resources_for_audit_finding(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_related_resources_for_audit_finding_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_related_resources_for_audit_finding_errors(), tuple()}.
 list_related_resources_for_audit_finding(Client, FindingId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/relatedResources"],
@@ -15597,11 +16365,7 @@ list_related_resources_for_audit_finding(Client, FindingId, QueryMap, HeadersMap
 -spec list_role_aliases(map()) ->
     {ok, list_role_aliases_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_role_aliases_errors(), tuple()}.
 list_role_aliases(Client)
   when is_map(Client) ->
     list_role_aliases(Client, #{}, #{}).
@@ -15609,11 +16373,7 @@ list_role_aliases(Client)
 -spec list_role_aliases(map(), map(), map()) ->
     {ok, list_role_aliases_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_role_aliases_errors(), tuple()}.
 list_role_aliases(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_role_aliases(Client, QueryMap, HeadersMap, []).
@@ -15621,11 +16381,7 @@ list_role_aliases(Client, QueryMap, HeadersMap)
 -spec list_role_aliases(map(), map(), map(), proplists:proplist()) ->
     {ok, list_role_aliases_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_role_aliases_errors(), tuple()}.
 list_role_aliases(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/role-aliases"],
@@ -15656,9 +16412,7 @@ list_role_aliases(Client, QueryMap, HeadersMap, Options0)
 -spec list_scheduled_audits(map()) ->
     {ok, list_scheduled_audits_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_scheduled_audits_errors(), tuple()}.
 list_scheduled_audits(Client)
   when is_map(Client) ->
     list_scheduled_audits(Client, #{}, #{}).
@@ -15666,9 +16420,7 @@ list_scheduled_audits(Client)
 -spec list_scheduled_audits(map(), map(), map()) ->
     {ok, list_scheduled_audits_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_scheduled_audits_errors(), tuple()}.
 list_scheduled_audits(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_scheduled_audits(Client, QueryMap, HeadersMap, []).
@@ -15676,9 +16428,7 @@ list_scheduled_audits(Client, QueryMap, HeadersMap)
 -spec list_scheduled_audits(map(), map(), map(), proplists:proplist()) ->
     {ok, list_scheduled_audits_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_scheduled_audits_errors(), tuple()}.
 list_scheduled_audits(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/scheduledaudits"],
@@ -15715,10 +16465,7 @@ list_scheduled_audits(Client, QueryMap, HeadersMap, Options0)
 -spec list_security_profiles(map()) ->
     {ok, list_security_profiles_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_security_profiles_errors(), tuple()}.
 list_security_profiles(Client)
   when is_map(Client) ->
     list_security_profiles(Client, #{}, #{}).
@@ -15726,10 +16473,7 @@ list_security_profiles(Client)
 -spec list_security_profiles(map(), map(), map()) ->
     {ok, list_security_profiles_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_security_profiles_errors(), tuple()}.
 list_security_profiles(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_security_profiles(Client, QueryMap, HeadersMap, []).
@@ -15737,10 +16481,7 @@ list_security_profiles(Client, QueryMap, HeadersMap)
 -spec list_security_profiles(map(), map(), map(), proplists:proplist()) ->
     {ok, list_security_profiles_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_security_profiles_errors(), tuple()}.
 list_security_profiles(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/security-profiles"],
@@ -15773,10 +16514,7 @@ list_security_profiles(Client, QueryMap, HeadersMap, Options0)
 -spec list_security_profiles_for_target(map(), binary() | list()) ->
     {ok, list_security_profiles_for_target_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_security_profiles_for_target_errors(), tuple()}.
 list_security_profiles_for_target(Client, SecurityProfileTargetArn)
   when is_map(Client) ->
     list_security_profiles_for_target(Client, SecurityProfileTargetArn, #{}, #{}).
@@ -15784,10 +16522,7 @@ list_security_profiles_for_target(Client, SecurityProfileTargetArn)
 -spec list_security_profiles_for_target(map(), binary() | list(), map(), map()) ->
     {ok, list_security_profiles_for_target_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_security_profiles_for_target_errors(), tuple()}.
 list_security_profiles_for_target(Client, SecurityProfileTargetArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_security_profiles_for_target(Client, SecurityProfileTargetArn, QueryMap, HeadersMap, []).
@@ -15795,10 +16530,7 @@ list_security_profiles_for_target(Client, SecurityProfileTargetArn, QueryMap, He
 -spec list_security_profiles_for_target(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_security_profiles_for_target_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_security_profiles_for_target_errors(), tuple()}.
 list_security_profiles_for_target(Client, SecurityProfileTargetArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/security-profiles-for-target"],
@@ -15830,11 +16562,7 @@ list_security_profiles_for_target(Client, SecurityProfileTargetArn, QueryMap, He
 -spec list_streams(map()) ->
     {ok, list_streams_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_streams_errors(), tuple()}.
 list_streams(Client)
   when is_map(Client) ->
     list_streams(Client, #{}, #{}).
@@ -15842,11 +16570,7 @@ list_streams(Client)
 -spec list_streams(map(), map(), map()) ->
     {ok, list_streams_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_streams_errors(), tuple()}.
 list_streams(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_streams(Client, QueryMap, HeadersMap, []).
@@ -15854,11 +16578,7 @@ list_streams(Client, QueryMap, HeadersMap)
 -spec list_streams(map(), map(), map(), proplists:proplist()) ->
     {ok, list_streams_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_streams_errors(), tuple()}.
 list_streams(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/streams"],
@@ -15889,10 +16609,7 @@ list_streams(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -15900,10 +16617,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -15911,10 +16625,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags"],
@@ -15944,26 +16655,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec list_targets_for_policy(map(), binary() | list(), list_targets_for_policy_request()) ->
     {ok, list_targets_for_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_targets_for_policy_errors(), tuple()}.
 list_targets_for_policy(Client, PolicyName, Input) ->
     list_targets_for_policy(Client, PolicyName, Input, []).
 
 -spec list_targets_for_policy(map(), binary() | list(), list_targets_for_policy_request(), proplists:proplist()) ->
     {ok, list_targets_for_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_targets_for_policy_errors(), tuple()}.
 list_targets_for_policy(Client, PolicyName, Input0, Options0) ->
     Method = post,
     Path = ["/policy-targets/", aws_util:encode_uri(PolicyName), ""],
@@ -15997,10 +16696,7 @@ list_targets_for_policy(Client, PolicyName, Input0, Options0) ->
 -spec list_targets_for_security_profile(map(), binary() | list()) ->
     {ok, list_targets_for_security_profile_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_targets_for_security_profile_errors(), tuple()}.
 list_targets_for_security_profile(Client, SecurityProfileName)
   when is_map(Client) ->
     list_targets_for_security_profile(Client, SecurityProfileName, #{}, #{}).
@@ -16008,10 +16704,7 @@ list_targets_for_security_profile(Client, SecurityProfileName)
 -spec list_targets_for_security_profile(map(), binary() | list(), map(), map()) ->
     {ok, list_targets_for_security_profile_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_targets_for_security_profile_errors(), tuple()}.
 list_targets_for_security_profile(Client, SecurityProfileName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_targets_for_security_profile(Client, SecurityProfileName, QueryMap, HeadersMap, []).
@@ -16019,10 +16712,7 @@ list_targets_for_security_profile(Client, SecurityProfileName, QueryMap, Headers
 -spec list_targets_for_security_profile(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_targets_for_security_profile_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_targets_for_security_profile_errors(), tuple()}.
 list_targets_for_security_profile(Client, SecurityProfileName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), "/targets"],
@@ -16052,10 +16742,7 @@ list_targets_for_security_profile(Client, SecurityProfileName, QueryMap, Headers
 -spec list_thing_groups(map()) ->
     {ok, list_thing_groups_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_thing_groups_errors(), tuple()}.
 list_thing_groups(Client)
   when is_map(Client) ->
     list_thing_groups(Client, #{}, #{}).
@@ -16063,10 +16750,7 @@ list_thing_groups(Client)
 -spec list_thing_groups(map(), map(), map()) ->
     {ok, list_thing_groups_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_thing_groups_errors(), tuple()}.
 list_thing_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_thing_groups(Client, QueryMap, HeadersMap, []).
@@ -16074,10 +16758,7 @@ list_thing_groups(Client, QueryMap, HeadersMap)
 -spec list_thing_groups(map(), map(), map(), proplists:proplist()) ->
     {ok, list_thing_groups_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_thing_groups_errors(), tuple()}.
 list_thing_groups(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/thing-groups"],
@@ -16110,10 +16791,7 @@ list_thing_groups(Client, QueryMap, HeadersMap, Options0)
 -spec list_thing_groups_for_thing(map(), binary() | list()) ->
     {ok, list_thing_groups_for_thing_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_thing_groups_for_thing_errors(), tuple()}.
 list_thing_groups_for_thing(Client, ThingName)
   when is_map(Client) ->
     list_thing_groups_for_thing(Client, ThingName, #{}, #{}).
@@ -16121,10 +16799,7 @@ list_thing_groups_for_thing(Client, ThingName)
 -spec list_thing_groups_for_thing(map(), binary() | list(), map(), map()) ->
     {ok, list_thing_groups_for_thing_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_thing_groups_for_thing_errors(), tuple()}.
 list_thing_groups_for_thing(Client, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_thing_groups_for_thing(Client, ThingName, QueryMap, HeadersMap, []).
@@ -16132,10 +16807,7 @@ list_thing_groups_for_thing(Client, ThingName, QueryMap, HeadersMap)
 -spec list_thing_groups_for_thing(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_thing_groups_for_thing_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_thing_groups_for_thing_errors(), tuple()}.
 list_thing_groups_for_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), "/thing-groups"],
@@ -16170,12 +16842,7 @@ list_thing_groups_for_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
 -spec list_thing_principals(map(), binary() | list()) ->
     {ok, list_thing_principals_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_thing_principals_errors(), tuple()}.
 list_thing_principals(Client, ThingName)
   when is_map(Client) ->
     list_thing_principals(Client, ThingName, #{}, #{}).
@@ -16183,12 +16850,7 @@ list_thing_principals(Client, ThingName)
 -spec list_thing_principals(map(), binary() | list(), map(), map()) ->
     {ok, list_thing_principals_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_thing_principals_errors(), tuple()}.
 list_thing_principals(Client, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_thing_principals(Client, ThingName, QueryMap, HeadersMap, []).
@@ -16196,12 +16858,7 @@ list_thing_principals(Client, ThingName, QueryMap, HeadersMap)
 -spec list_thing_principals(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_thing_principals_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_thing_principals_errors(), tuple()}.
 list_thing_principals(Client, ThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), "/principals"],
@@ -16227,10 +16884,7 @@ list_thing_principals(Client, ThingName, QueryMap, HeadersMap, Options0)
 -spec list_thing_registration_task_reports(map(), binary() | list(), binary() | list()) ->
     {ok, list_thing_registration_task_reports_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_thing_registration_task_reports_errors(), tuple()}.
 list_thing_registration_task_reports(Client, TaskId, ReportType)
   when is_map(Client) ->
     list_thing_registration_task_reports(Client, TaskId, ReportType, #{}, #{}).
@@ -16238,10 +16892,7 @@ list_thing_registration_task_reports(Client, TaskId, ReportType)
 -spec list_thing_registration_task_reports(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_thing_registration_task_reports_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_thing_registration_task_reports_errors(), tuple()}.
 list_thing_registration_task_reports(Client, TaskId, ReportType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_thing_registration_task_reports(Client, TaskId, ReportType, QueryMap, HeadersMap, []).
@@ -16249,10 +16900,7 @@ list_thing_registration_task_reports(Client, TaskId, ReportType, QueryMap, Heade
 -spec list_thing_registration_task_reports(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_thing_registration_task_reports_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_thing_registration_task_reports_errors(), tuple()}.
 list_thing_registration_task_reports(Client, TaskId, ReportType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/thing-registration-tasks/", aws_util:encode_uri(TaskId), "/reports"],
@@ -16283,10 +16931,7 @@ list_thing_registration_task_reports(Client, TaskId, ReportType, QueryMap, Heade
 -spec list_thing_registration_tasks(map()) ->
     {ok, list_thing_registration_tasks_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_thing_registration_tasks_errors(), tuple()}.
 list_thing_registration_tasks(Client)
   when is_map(Client) ->
     list_thing_registration_tasks(Client, #{}, #{}).
@@ -16294,10 +16939,7 @@ list_thing_registration_tasks(Client)
 -spec list_thing_registration_tasks(map(), map(), map()) ->
     {ok, list_thing_registration_tasks_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_thing_registration_tasks_errors(), tuple()}.
 list_thing_registration_tasks(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_thing_registration_tasks(Client, QueryMap, HeadersMap, []).
@@ -16305,10 +16947,7 @@ list_thing_registration_tasks(Client, QueryMap, HeadersMap)
 -spec list_thing_registration_tasks(map(), map(), map(), proplists:proplist()) ->
     {ok, list_thing_registration_tasks_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_thing_registration_tasks_errors(), tuple()}.
 list_thing_registration_tasks(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/thing-registration-tasks"],
@@ -16339,11 +16978,7 @@ list_thing_registration_tasks(Client, QueryMap, HeadersMap, Options0)
 -spec list_thing_types(map()) ->
     {ok, list_thing_types_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_thing_types_errors(), tuple()}.
 list_thing_types(Client)
   when is_map(Client) ->
     list_thing_types(Client, #{}, #{}).
@@ -16351,11 +16986,7 @@ list_thing_types(Client)
 -spec list_thing_types(map(), map(), map()) ->
     {ok, list_thing_types_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_thing_types_errors(), tuple()}.
 list_thing_types(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_thing_types(Client, QueryMap, HeadersMap, []).
@@ -16363,11 +16994,7 @@ list_thing_types(Client, QueryMap, HeadersMap)
 -spec list_thing_types(map(), map(), map(), proplists:proplist()) ->
     {ok, list_thing_types_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_thing_types_errors(), tuple()}.
 list_thing_types(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/thing-types"],
@@ -16413,11 +17040,7 @@ list_thing_types(Client, QueryMap, HeadersMap, Options0)
 -spec list_things(map()) ->
     {ok, list_things_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_things_errors(), tuple()}.
 list_things(Client)
   when is_map(Client) ->
     list_things(Client, #{}, #{}).
@@ -16425,11 +17048,7 @@ list_things(Client)
 -spec list_things(map(), map(), map()) ->
     {ok, list_things_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_things_errors(), tuple()}.
 list_things(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_things(Client, QueryMap, HeadersMap, []).
@@ -16437,11 +17056,7 @@ list_things(Client, QueryMap, HeadersMap)
 -spec list_things(map(), map(), map(), proplists:proplist()) ->
     {ok, list_things_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_things_errors(), tuple()}.
 list_things(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/things"],
@@ -16475,10 +17090,7 @@ list_things(Client, QueryMap, HeadersMap, Options0)
 -spec list_things_in_billing_group(map(), binary() | list()) ->
     {ok, list_things_in_billing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_things_in_billing_group_errors(), tuple()}.
 list_things_in_billing_group(Client, BillingGroupName)
   when is_map(Client) ->
     list_things_in_billing_group(Client, BillingGroupName, #{}, #{}).
@@ -16486,10 +17098,7 @@ list_things_in_billing_group(Client, BillingGroupName)
 -spec list_things_in_billing_group(map(), binary() | list(), map(), map()) ->
     {ok, list_things_in_billing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_things_in_billing_group_errors(), tuple()}.
 list_things_in_billing_group(Client, BillingGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_things_in_billing_group(Client, BillingGroupName, QueryMap, HeadersMap, []).
@@ -16497,10 +17106,7 @@ list_things_in_billing_group(Client, BillingGroupName, QueryMap, HeadersMap)
 -spec list_things_in_billing_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_things_in_billing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_things_in_billing_group_errors(), tuple()}.
 list_things_in_billing_group(Client, BillingGroupName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/billing-groups/", aws_util:encode_uri(BillingGroupName), "/things"],
@@ -16530,10 +17136,7 @@ list_things_in_billing_group(Client, BillingGroupName, QueryMap, HeadersMap, Opt
 -spec list_things_in_thing_group(map(), binary() | list()) ->
     {ok, list_things_in_thing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_things_in_thing_group_errors(), tuple()}.
 list_things_in_thing_group(Client, ThingGroupName)
   when is_map(Client) ->
     list_things_in_thing_group(Client, ThingGroupName, #{}, #{}).
@@ -16541,10 +17144,7 @@ list_things_in_thing_group(Client, ThingGroupName)
 -spec list_things_in_thing_group(map(), binary() | list(), map(), map()) ->
     {ok, list_things_in_thing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_things_in_thing_group_errors(), tuple()}.
 list_things_in_thing_group(Client, ThingGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_things_in_thing_group(Client, ThingGroupName, QueryMap, HeadersMap, []).
@@ -16552,10 +17152,7 @@ list_things_in_thing_group(Client, ThingGroupName, QueryMap, HeadersMap)
 -spec list_things_in_thing_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_things_in_thing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_things_in_thing_group_errors(), tuple()}.
 list_things_in_thing_group(Client, ThingGroupName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/thing-groups/", aws_util:encode_uri(ThingGroupName), "/things"],
@@ -16587,10 +17184,7 @@ list_things_in_thing_group(Client, ThingGroupName, QueryMap, HeadersMap, Options
 -spec list_topic_rule_destinations(map()) ->
     {ok, list_topic_rule_destinations_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_topic_rule_destinations_errors(), tuple()}.
 list_topic_rule_destinations(Client)
   when is_map(Client) ->
     list_topic_rule_destinations(Client, #{}, #{}).
@@ -16598,10 +17192,7 @@ list_topic_rule_destinations(Client)
 -spec list_topic_rule_destinations(map(), map(), map()) ->
     {ok, list_topic_rule_destinations_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_topic_rule_destinations_errors(), tuple()}.
 list_topic_rule_destinations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_topic_rule_destinations(Client, QueryMap, HeadersMap, []).
@@ -16609,10 +17200,7 @@ list_topic_rule_destinations(Client, QueryMap, HeadersMap)
 -spec list_topic_rule_destinations(map(), map(), map(), proplists:proplist()) ->
     {ok, list_topic_rule_destinations_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_topic_rule_destinations_errors(), tuple()}.
 list_topic_rule_destinations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/destinations"],
@@ -16642,9 +17230,7 @@ list_topic_rule_destinations(Client, QueryMap, HeadersMap, Options0)
 -spec list_topic_rules(map()) ->
     {ok, list_topic_rules_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_topic_rules_errors(), tuple()}.
 list_topic_rules(Client)
   when is_map(Client) ->
     list_topic_rules(Client, #{}, #{}).
@@ -16652,9 +17238,7 @@ list_topic_rules(Client)
 -spec list_topic_rules(map(), map(), map()) ->
     {ok, list_topic_rules_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_topic_rules_errors(), tuple()}.
 list_topic_rules(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_topic_rules(Client, QueryMap, HeadersMap, []).
@@ -16662,9 +17246,7 @@ list_topic_rules(Client, QueryMap, HeadersMap)
 -spec list_topic_rules(map(), map(), map(), proplists:proplist()) ->
     {ok, list_topic_rules_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_topic_rules_errors(), tuple()}.
 list_topic_rules(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/rules"],
@@ -16696,10 +17278,7 @@ list_topic_rules(Client, QueryMap, HeadersMap, Options0)
 -spec list_v2_logging_levels(map()) ->
     {ok, list_v2_logging_levels_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_configured_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_v2_logging_levels_errors(), tuple()}.
 list_v2_logging_levels(Client)
   when is_map(Client) ->
     list_v2_logging_levels(Client, #{}, #{}).
@@ -16707,10 +17286,7 @@ list_v2_logging_levels(Client)
 -spec list_v2_logging_levels(map(), map(), map()) ->
     {ok, list_v2_logging_levels_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_configured_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_v2_logging_levels_errors(), tuple()}.
 list_v2_logging_levels(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_v2_logging_levels(Client, QueryMap, HeadersMap, []).
@@ -16718,10 +17294,7 @@ list_v2_logging_levels(Client, QueryMap, HeadersMap)
 -spec list_v2_logging_levels(map(), map(), map(), proplists:proplist()) ->
     {ok, list_v2_logging_levels_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, not_configured_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_v2_logging_levels_errors(), tuple()}.
 list_v2_logging_levels(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2LoggingLevel"],
@@ -16757,9 +17330,7 @@ list_v2_logging_levels(Client, QueryMap, HeadersMap, Options0)
 -spec list_violation_events(map(), binary() | list(), binary() | list()) ->
     {ok, list_violation_events_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_violation_events_errors(), tuple()}.
 list_violation_events(Client, EndTime, StartTime)
   when is_map(Client) ->
     list_violation_events(Client, EndTime, StartTime, #{}, #{}).
@@ -16767,9 +17338,7 @@ list_violation_events(Client, EndTime, StartTime)
 -spec list_violation_events(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_violation_events_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_violation_events_errors(), tuple()}.
 list_violation_events(Client, EndTime, StartTime, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_violation_events(Client, EndTime, StartTime, QueryMap, HeadersMap, []).
@@ -16777,9 +17346,7 @@ list_violation_events(Client, EndTime, StartTime, QueryMap, HeadersMap)
 -spec list_violation_events(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_violation_events_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_violation_events_errors(), tuple()}.
 list_violation_events(Client, EndTime, StartTime, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/violation-events"],
@@ -16813,18 +17380,14 @@ list_violation_events(Client, EndTime, StartTime, QueryMap, HeadersMap, Options0
 -spec put_verification_state_on_violation(map(), binary() | list(), put_verification_state_on_violation_request()) ->
     {ok, put_verification_state_on_violation_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, put_verification_state_on_violation_errors(), tuple()}.
 put_verification_state_on_violation(Client, ViolationId, Input) ->
     put_verification_state_on_violation(Client, ViolationId, Input, []).
 
 -spec put_verification_state_on_violation(map(), binary() | list(), put_verification_state_on_violation_request(), proplists:proplist()) ->
     {ok, put_verification_state_on_violation_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, put_verification_state_on_violation_errors(), tuple()}.
 put_verification_state_on_violation(Client, ViolationId, Input0, Options0) ->
     Method = post,
     Path = ["/violations/verification-state/", aws_util:encode_uri(ViolationId), ""],
@@ -16861,32 +17424,14 @@ put_verification_state_on_violation(Client, ViolationId, Input0, Options0) ->
 -spec register_ca_certificate(map(), register_ca_certificate_request()) ->
     {ok, register_ca_certificate_response(), tuple()} |
     {error, any()} |
-    {error, certificate_validation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, registration_code_validation_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, register_ca_certificate_errors(), tuple()}.
 register_ca_certificate(Client, Input) ->
     register_ca_certificate(Client, Input, []).
 
 -spec register_ca_certificate(map(), register_ca_certificate_request(), proplists:proplist()) ->
     {ok, register_ca_certificate_response(), tuple()} |
     {error, any()} |
-    {error, certificate_validation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, registration_code_validation_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, register_ca_certificate_errors(), tuple()}.
 register_ca_certificate(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cacertificate"],
@@ -16927,30 +17472,14 @@ register_ca_certificate(Client, Input0, Options0) ->
 -spec register_certificate(map(), register_certificate_request()) ->
     {ok, register_certificate_response(), tuple()} |
     {error, any()} |
-    {error, certificate_conflict_exception(), tuple()} |
-    {error, certificate_state_exception(), tuple()} |
-    {error, certificate_validation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, register_certificate_errors(), tuple()}.
 register_certificate(Client, Input) ->
     register_certificate(Client, Input, []).
 
 -spec register_certificate(map(), register_certificate_request(), proplists:proplist()) ->
     {ok, register_certificate_response(), tuple()} |
     {error, any()} |
-    {error, certificate_conflict_exception(), tuple()} |
-    {error, certificate_state_exception(), tuple()} |
-    {error, certificate_validation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, register_certificate_errors(), tuple()}.
 register_certificate(Client, Input0, Options0) ->
     Method = post,
     Path = ["/certificate/register"],
@@ -16983,28 +17512,14 @@ register_certificate(Client, Input0, Options0) ->
 -spec register_certificate_without_ca(map(), register_certificate_without_ca_request()) ->
     {ok, register_certificate_without_ca_response(), tuple()} |
     {error, any()} |
-    {error, certificate_state_exception(), tuple()} |
-    {error, certificate_validation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, register_certificate_without_ca_errors(), tuple()}.
 register_certificate_without_ca(Client, Input) ->
     register_certificate_without_ca(Client, Input, []).
 
 -spec register_certificate_without_ca(map(), register_certificate_without_ca_request(), proplists:proplist()) ->
     {ok, register_certificate_without_ca_response(), tuple()} |
     {error, any()} |
-    {error, certificate_state_exception(), tuple()} |
-    {error, certificate_validation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, register_certificate_without_ca_errors(), tuple()}.
 register_certificate_without_ca(Client, Input0, Options0) ->
     Method = post,
     Path = ["/certificate/register-no-ca"],
@@ -17043,26 +17558,14 @@ register_certificate_without_ca(Client, Input0, Options0) ->
 -spec register_thing(map(), register_thing_request()) ->
     {ok, register_thing_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_resource_update_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_registration_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, register_thing_errors(), tuple()}.
 register_thing(Client, Input) ->
     register_thing(Client, Input, []).
 
 -spec register_thing(map(), register_thing_request(), proplists:proplist()) ->
     {ok, register_thing_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_resource_update_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_registration_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, register_thing_errors(), tuple()}.
 register_thing(Client, Input0, Options0) ->
     Method = post,
     Path = ["/things"],
@@ -17105,26 +17608,14 @@ register_thing(Client, Input0, Options0) ->
 -spec reject_certificate_transfer(map(), binary() | list(), reject_certificate_transfer_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, transfer_already_completed_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, reject_certificate_transfer_errors(), tuple()}.
 reject_certificate_transfer(Client, CertificateId, Input) ->
     reject_certificate_transfer(Client, CertificateId, Input, []).
 
 -spec reject_certificate_transfer(map(), binary() | list(), reject_certificate_transfer_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, transfer_already_completed_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, reject_certificate_transfer_errors(), tuple()}.
 reject_certificate_transfer(Client, CertificateId, Input0, Options0) ->
     Method = patch,
     Path = ["/reject-certificate-transfer/", aws_util:encode_uri(CertificateId), ""],
@@ -17158,20 +17649,14 @@ reject_certificate_transfer(Client, CertificateId, Input0, Options0) ->
 -spec remove_thing_from_billing_group(map(), remove_thing_from_billing_group_request()) ->
     {ok, remove_thing_from_billing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, remove_thing_from_billing_group_errors(), tuple()}.
 remove_thing_from_billing_group(Client, Input) ->
     remove_thing_from_billing_group(Client, Input, []).
 
 -spec remove_thing_from_billing_group(map(), remove_thing_from_billing_group_request(), proplists:proplist()) ->
     {ok, remove_thing_from_billing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, remove_thing_from_billing_group_errors(), tuple()}.
 remove_thing_from_billing_group(Client, Input0, Options0) ->
     Method = put,
     Path = ["/billing-groups/removeThingFromBillingGroup"],
@@ -17207,20 +17692,14 @@ remove_thing_from_billing_group(Client, Input0, Options0) ->
 -spec remove_thing_from_thing_group(map(), remove_thing_from_thing_group_request()) ->
     {ok, remove_thing_from_thing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, remove_thing_from_thing_group_errors(), tuple()}.
 remove_thing_from_thing_group(Client, Input) ->
     remove_thing_from_thing_group(Client, Input, []).
 
 -spec remove_thing_from_thing_group(map(), remove_thing_from_thing_group_request(), proplists:proplist()) ->
     {ok, remove_thing_from_thing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, remove_thing_from_thing_group_errors(), tuple()}.
 remove_thing_from_thing_group(Client, Input0, Options0) ->
     Method = put,
     Path = ["/thing-groups/removeThingFromThingGroup"],
@@ -17256,24 +17735,14 @@ remove_thing_from_thing_group(Client, Input0, Options0) ->
 -spec replace_topic_rule(map(), binary() | list(), replace_topic_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflicting_resource_update_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, sql_parse_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, replace_topic_rule_errors(), tuple()}.
 replace_topic_rule(Client, RuleName, Input) ->
     replace_topic_rule(Client, RuleName, Input, []).
 
 -spec replace_topic_rule(map(), binary() | list(), replace_topic_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflicting_resource_update_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, sql_parse_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, replace_topic_rule_errors(), tuple()}.
 replace_topic_rule(Client, RuleName, Input0, Options0) ->
     Method = patch,
     Path = ["/rules/", aws_util:encode_uri(RuleName), ""],
@@ -17304,28 +17773,14 @@ replace_topic_rule(Client, RuleName, Input0, Options0) ->
 -spec search_index(map(), search_index_request()) ->
     {ok, search_index_response(), tuple()} |
     {error, any()} |
-    {error, index_not_ready_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_query_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, search_index_errors(), tuple()}.
 search_index(Client, Input) ->
     search_index(Client, Input, []).
 
 -spec search_index(map(), search_index_request(), proplists:proplist()) ->
     {ok, search_index_response(), tuple()} |
     {error, any()} |
-    {error, index_not_ready_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_query_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, search_index_errors(), tuple()}.
 search_index(Client, Input0, Options0) ->
     Method = post,
     Path = ["/indices/search"],
@@ -17359,26 +17814,14 @@ search_index(Client, Input0, Options0) ->
 -spec set_default_authorizer(map(), set_default_authorizer_request()) ->
     {ok, set_default_authorizer_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, set_default_authorizer_errors(), tuple()}.
 set_default_authorizer(Client, Input) ->
     set_default_authorizer(Client, Input, []).
 
 -spec set_default_authorizer(map(), set_default_authorizer_request(), proplists:proplist()) ->
     {ok, set_default_authorizer_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, set_default_authorizer_errors(), tuple()}.
 set_default_authorizer(Client, Input0, Options0) ->
     Method = post,
     Path = ["/default-authorizer"],
@@ -17416,24 +17859,14 @@ set_default_authorizer(Client, Input0, Options0) ->
 -spec set_default_policy_version(map(), binary() | list(), binary() | list(), set_default_policy_version_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, set_default_policy_version_errors(), tuple()}.
 set_default_policy_version(Client, PolicyName, PolicyVersionId, Input) ->
     set_default_policy_version(Client, PolicyName, PolicyVersionId, Input, []).
 
 -spec set_default_policy_version(map(), binary() | list(), binary() | list(), set_default_policy_version_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, set_default_policy_version_errors(), tuple()}.
 set_default_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options0) ->
     Method = patch,
     Path = ["/policies/", aws_util:encode_uri(PolicyName), "/version/", aws_util:encode_uri(PolicyVersionId), ""],
@@ -17468,18 +17901,14 @@ set_default_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options0
 -spec set_logging_options(map(), set_logging_options_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, set_logging_options_errors(), tuple()}.
 set_logging_options(Client, Input) ->
     set_logging_options(Client, Input, []).
 
 -spec set_logging_options(map(), set_logging_options_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, set_logging_options_errors(), tuple()}.
 set_logging_options(Client, Input0, Options0) ->
     Method = post,
     Path = ["/loggingOptions"],
@@ -17510,22 +17939,14 @@ set_logging_options(Client, Input0, Options0) ->
 -spec set_v2_logging_level(map(), set_v2_logging_level_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_configured_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, set_v2_logging_level_errors(), tuple()}.
 set_v2_logging_level(Client, Input) ->
     set_v2_logging_level(Client, Input, []).
 
 -spec set_v2_logging_level(map(), set_v2_logging_level_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_configured_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, set_v2_logging_level_errors(), tuple()}.
 set_v2_logging_level(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2LoggingLevel"],
@@ -17556,18 +17977,14 @@ set_v2_logging_level(Client, Input0, Options0) ->
 -spec set_v2_logging_options(map(), set_v2_logging_options_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, set_v2_logging_options_errors(), tuple()}.
 set_v2_logging_options(Client, Input) ->
     set_v2_logging_options(Client, Input, []).
 
 -spec set_v2_logging_options(map(), set_v2_logging_options_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, set_v2_logging_options_errors(), tuple()}.
 set_v2_logging_options(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2LoggingOptions"],
@@ -17599,22 +18016,14 @@ set_v2_logging_options(Client, Input0, Options0) ->
 -spec start_audit_mitigation_actions_task(map(), binary() | list(), start_audit_mitigation_actions_task_request()) ->
     {ok, start_audit_mitigation_actions_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, task_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, start_audit_mitigation_actions_task_errors(), tuple()}.
 start_audit_mitigation_actions_task(Client, TaskId, Input) ->
     start_audit_mitigation_actions_task(Client, TaskId, Input, []).
 
 -spec start_audit_mitigation_actions_task(map(), binary() | list(), start_audit_mitigation_actions_task_request(), proplists:proplist()) ->
     {ok, start_audit_mitigation_actions_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, task_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, start_audit_mitigation_actions_task_errors(), tuple()}.
 start_audit_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
     Method = post,
     Path = ["/audit/mitigationactions/tasks/", aws_util:encode_uri(TaskId), ""],
@@ -17646,22 +18055,14 @@ start_audit_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
 -spec start_detect_mitigation_actions_task(map(), binary() | list(), start_detect_mitigation_actions_task_request()) ->
     {ok, start_detect_mitigation_actions_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, task_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, start_detect_mitigation_actions_task_errors(), tuple()}.
 start_detect_mitigation_actions_task(Client, TaskId, Input) ->
     start_detect_mitigation_actions_task(Client, TaskId, Input, []).
 
 -spec start_detect_mitigation_actions_task(map(), binary() | list(), start_detect_mitigation_actions_task_request(), proplists:proplist()) ->
     {ok, start_detect_mitigation_actions_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, task_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, start_detect_mitigation_actions_task_errors(), tuple()}.
 start_detect_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
     Method = put,
     Path = ["/detect/mitigationactions/tasks/", aws_util:encode_uri(TaskId), ""],
@@ -17692,20 +18093,14 @@ start_detect_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
 -spec start_on_demand_audit_task(map(), start_on_demand_audit_task_request()) ->
     {ok, start_on_demand_audit_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, start_on_demand_audit_task_errors(), tuple()}.
 start_on_demand_audit_task(Client, Input) ->
     start_on_demand_audit_task(Client, Input, []).
 
 -spec start_on_demand_audit_task(map(), start_on_demand_audit_task_request(), proplists:proplist()) ->
     {ok, start_on_demand_audit_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, start_on_demand_audit_task_errors(), tuple()}.
 start_on_demand_audit_task(Client, Input0, Options0) ->
     Method = post,
     Path = ["/audit/tasks"],
@@ -17736,20 +18131,14 @@ start_on_demand_audit_task(Client, Input0, Options0) ->
 -spec start_thing_registration_task(map(), start_thing_registration_task_request()) ->
     {ok, start_thing_registration_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, start_thing_registration_task_errors(), tuple()}.
 start_thing_registration_task(Client, Input) ->
     start_thing_registration_task(Client, Input, []).
 
 -spec start_thing_registration_task(map(), start_thing_registration_task_request(), proplists:proplist()) ->
     {ok, start_thing_registration_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, start_thing_registration_task_errors(), tuple()}.
 start_thing_registration_task(Client, Input0, Options0) ->
     Method = post,
     Path = ["/thing-registration-tasks"],
@@ -17780,22 +18169,14 @@ start_thing_registration_task(Client, Input0, Options0) ->
 -spec stop_thing_registration_task(map(), binary() | list(), stop_thing_registration_task_request()) ->
     {ok, stop_thing_registration_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, stop_thing_registration_task_errors(), tuple()}.
 stop_thing_registration_task(Client, TaskId, Input) ->
     stop_thing_registration_task(Client, TaskId, Input, []).
 
 -spec stop_thing_registration_task(map(), binary() | list(), stop_thing_registration_task_request(), proplists:proplist()) ->
     {ok, stop_thing_registration_task_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, stop_thing_registration_task_errors(), tuple()}.
 stop_thing_registration_task(Client, TaskId, Input0, Options0) ->
     Method = put,
     Path = ["/thing-registration-tasks/", aws_util:encode_uri(TaskId), "/cancel"],
@@ -17829,22 +18210,14 @@ stop_thing_registration_task(Client, TaskId, Input0, Options0) ->
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags"],
@@ -17880,26 +18253,14 @@ tag_resource(Client, Input0, Options0) ->
 -spec test_authorization(map(), test_authorization_request()) ->
     {ok, test_authorization_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, test_authorization_errors(), tuple()}.
 test_authorization(Client, Input) ->
     test_authorization(Client, Input, []).
 
 -spec test_authorization(map(), test_authorization_request(), proplists:proplist()) ->
     {ok, test_authorization_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, test_authorization_errors(), tuple()}.
 test_authorization(Client, Input0, Options0) ->
     Method = post,
     Path = ["/test-authorization"],
@@ -17937,26 +18298,14 @@ test_authorization(Client, Input0, Options0) ->
 -spec test_invoke_authorizer(map(), binary() | list(), test_invoke_authorizer_request()) ->
     {ok, test_invoke_authorizer_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_response_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, test_invoke_authorizer_errors(), tuple()}.
 test_invoke_authorizer(Client, AuthorizerName, Input) ->
     test_invoke_authorizer(Client, AuthorizerName, Input, []).
 
 -spec test_invoke_authorizer(map(), binary() | list(), test_invoke_authorizer_request(), proplists:proplist()) ->
     {ok, test_invoke_authorizer_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_response_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, test_invoke_authorizer_errors(), tuple()}.
 test_invoke_authorizer(Client, AuthorizerName, Input0, Options0) ->
     Method = post,
     Path = ["/authorizer/", aws_util:encode_uri(AuthorizerName), "/test"],
@@ -18001,28 +18350,14 @@ test_invoke_authorizer(Client, AuthorizerName, Input0, Options0) ->
 -spec transfer_certificate(map(), binary() | list(), transfer_certificate_request()) ->
     {ok, transfer_certificate_response(), tuple()} |
     {error, any()} |
-    {error, certificate_state_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, transfer_conflict_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, transfer_certificate_errors(), tuple()}.
 transfer_certificate(Client, CertificateId, Input) ->
     transfer_certificate(Client, CertificateId, Input, []).
 
 -spec transfer_certificate(map(), binary() | list(), transfer_certificate_request(), proplists:proplist()) ->
     {ok, transfer_certificate_response(), tuple()} |
     {error, any()} |
-    {error, certificate_state_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, transfer_conflict_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, transfer_certificate_errors(), tuple()}.
 transfer_certificate(Client, CertificateId, Input0, Options0) ->
     Method = patch,
     Path = ["/transfer-certificate/", aws_util:encode_uri(CertificateId), ""],
@@ -18054,20 +18389,14 @@ transfer_certificate(Client, CertificateId, Input0, Options0) ->
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/untag"],
@@ -18103,18 +18432,14 @@ untag_resource(Client, Input0, Options0) ->
 -spec update_account_audit_configuration(map(), update_account_audit_configuration_request()) ->
     {ok, update_account_audit_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_account_audit_configuration_errors(), tuple()}.
 update_account_audit_configuration(Client, Input) ->
     update_account_audit_configuration(Client, Input, []).
 
 -spec update_account_audit_configuration(map(), update_account_audit_configuration_request(), proplists:proplist()) ->
     {ok, update_account_audit_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_account_audit_configuration_errors(), tuple()}.
 update_account_audit_configuration(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/audit/configuration"],
@@ -18142,20 +18467,14 @@ update_account_audit_configuration(Client, Input0, Options0) ->
 -spec update_audit_suppression(map(), update_audit_suppression_request()) ->
     {ok, update_audit_suppression_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_audit_suppression_errors(), tuple()}.
 update_audit_suppression(Client, Input) ->
     update_audit_suppression(Client, Input, []).
 
 -spec update_audit_suppression(map(), update_audit_suppression_request(), proplists:proplist()) ->
     {ok, update_audit_suppression_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_audit_suppression_errors(), tuple()}.
 update_audit_suppression(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/audit/suppressions/update"],
@@ -18186,26 +18505,14 @@ update_audit_suppression(Client, Input0, Options0) ->
 -spec update_authorizer(map(), binary() | list(), update_authorizer_request()) ->
     {ok, update_authorizer_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_authorizer_errors(), tuple()}.
 update_authorizer(Client, AuthorizerName, Input) ->
     update_authorizer(Client, AuthorizerName, Input, []).
 
 -spec update_authorizer(map(), binary() | list(), update_authorizer_request(), proplists:proplist()) ->
     {ok, update_authorizer_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_authorizer_errors(), tuple()}.
 update_authorizer(Client, AuthorizerName, Input0, Options0) ->
     Method = put,
     Path = ["/authorizer/", aws_util:encode_uri(AuthorizerName), ""],
@@ -18236,22 +18543,14 @@ update_authorizer(Client, AuthorizerName, Input0, Options0) ->
 -spec update_billing_group(map(), binary() | list(), update_billing_group_request()) ->
     {ok, update_billing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, version_conflict_exception(), tuple()}.
+    {error, update_billing_group_errors(), tuple()}.
 update_billing_group(Client, BillingGroupName, Input) ->
     update_billing_group(Client, BillingGroupName, Input, []).
 
 -spec update_billing_group(map(), binary() | list(), update_billing_group_request(), proplists:proplist()) ->
     {ok, update_billing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, version_conflict_exception(), tuple()}.
+    {error, update_billing_group_errors(), tuple()}.
 update_billing_group(Client, BillingGroupName, Input0, Options0) ->
     Method = patch,
     Path = ["/billing-groups/", aws_util:encode_uri(BillingGroupName), ""],
@@ -18282,24 +18581,14 @@ update_billing_group(Client, BillingGroupName, Input0, Options0) ->
 -spec update_ca_certificate(map(), binary() | list(), update_ca_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_ca_certificate_errors(), tuple()}.
 update_ca_certificate(Client, CertificateId, Input) ->
     update_ca_certificate(Client, CertificateId, Input, []).
 
 -spec update_ca_certificate(map(), binary() | list(), update_ca_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_ca_certificate_errors(), tuple()}.
 update_ca_certificate(Client, CertificateId, Input0, Options0) ->
     Method = put,
     Path = ["/cacertificate/", aws_util:encode_uri(CertificateId), ""],
@@ -18344,26 +18633,14 @@ update_ca_certificate(Client, CertificateId, Input0, Options0) ->
 -spec update_certificate(map(), binary() | list(), update_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, certificate_state_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_certificate_errors(), tuple()}.
 update_certificate(Client, CertificateId, Input) ->
     update_certificate(Client, CertificateId, Input, []).
 
 -spec update_certificate(map(), binary() | list(), update_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, certificate_state_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_certificate_errors(), tuple()}.
 update_certificate(Client, CertificateId, Input0, Options0) ->
     Method = put,
     Path = ["/certificates/", aws_util:encode_uri(CertificateId), ""],
@@ -18395,24 +18672,14 @@ update_certificate(Client, CertificateId, Input0, Options0) ->
 -spec update_certificate_provider(map(), binary() | list(), update_certificate_provider_request()) ->
     {ok, update_certificate_provider_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_certificate_provider_errors(), tuple()}.
 update_certificate_provider(Client, CertificateProviderName, Input) ->
     update_certificate_provider(Client, CertificateProviderName, Input, []).
 
 -spec update_certificate_provider(map(), binary() | list(), update_certificate_provider_request(), proplists:proplist()) ->
     {ok, update_certificate_provider_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_certificate_provider_errors(), tuple()}.
 update_certificate_provider(Client, CertificateProviderName, Input0, Options0) ->
     Method = put,
     Path = ["/certificate-providers/", aws_util:encode_uri(CertificateProviderName), ""],
@@ -18444,20 +18711,14 @@ update_certificate_provider(Client, CertificateProviderName, Input0, Options0) -
 -spec update_custom_metric(map(), binary() | list(), update_custom_metric_request()) ->
     {ok, update_custom_metric_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_custom_metric_errors(), tuple()}.
 update_custom_metric(Client, MetricName, Input) ->
     update_custom_metric(Client, MetricName, Input, []).
 
 -spec update_custom_metric(map(), binary() | list(), update_custom_metric_request(), proplists:proplist()) ->
     {ok, update_custom_metric_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_custom_metric_errors(), tuple()}.
 update_custom_metric(Client, MetricName, Input0, Options0) ->
     Method = patch,
     Path = ["/custom-metric/", aws_util:encode_uri(MetricName), ""],
@@ -18495,20 +18756,14 @@ update_custom_metric(Client, MetricName, Input0, Options0) ->
 -spec update_dimension(map(), binary() | list(), update_dimension_request()) ->
     {ok, update_dimension_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_dimension_errors(), tuple()}.
 update_dimension(Client, Name, Input) ->
     update_dimension(Client, Name, Input, []).
 
 -spec update_dimension(map(), binary() | list(), update_dimension_request(), proplists:proplist()) ->
     {ok, update_dimension_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_dimension_errors(), tuple()}.
 update_dimension(Client, Name, Input0, Options0) ->
     Method = patch,
     Path = ["/dimensions/", aws_util:encode_uri(Name), ""],
@@ -18542,26 +18797,14 @@ update_dimension(Client, Name, Input0, Options0) ->
 -spec update_domain_configuration(map(), binary() | list(), update_domain_configuration_request()) ->
     {ok, update_domain_configuration_response(), tuple()} |
     {error, any()} |
-    {error, certificate_validation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_domain_configuration_errors(), tuple()}.
 update_domain_configuration(Client, DomainConfigurationName, Input) ->
     update_domain_configuration(Client, DomainConfigurationName, Input, []).
 
 -spec update_domain_configuration(map(), binary() | list(), update_domain_configuration_request(), proplists:proplist()) ->
     {ok, update_domain_configuration_response(), tuple()} |
     {error, any()} |
-    {error, certificate_validation_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_domain_configuration_errors(), tuple()}.
 update_domain_configuration(Client, DomainConfigurationName, Input0, Options0) ->
     Method = put,
     Path = ["/domainConfigurations/", aws_util:encode_uri(DomainConfigurationName), ""],
@@ -18592,24 +18835,14 @@ update_domain_configuration(Client, DomainConfigurationName, Input0, Options0) -
 -spec update_dynamic_thing_group(map(), binary() | list(), update_dynamic_thing_group_request()) ->
     {ok, update_dynamic_thing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_query_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, version_conflict_exception(), tuple()}.
+    {error, update_dynamic_thing_group_errors(), tuple()}.
 update_dynamic_thing_group(Client, ThingGroupName, Input) ->
     update_dynamic_thing_group(Client, ThingGroupName, Input, []).
 
 -spec update_dynamic_thing_group(map(), binary() | list(), update_dynamic_thing_group_request(), proplists:proplist()) ->
     {ok, update_dynamic_thing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_query_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, version_conflict_exception(), tuple()}.
+    {error, update_dynamic_thing_group_errors(), tuple()}.
 update_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
     Method = patch,
     Path = ["/dynamic-thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
@@ -18640,18 +18873,14 @@ update_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
 -spec update_event_configurations(map(), update_event_configurations_request()) ->
     {ok, update_event_configurations_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_event_configurations_errors(), tuple()}.
 update_event_configurations(Client, Input) ->
     update_event_configurations(Client, Input, []).
 
 -spec update_event_configurations(map(), update_event_configurations_request(), proplists:proplist()) ->
     {ok, update_event_configurations_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_event_configurations_errors(), tuple()}.
 update_event_configurations(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/event-configurations"],
@@ -18682,32 +18911,14 @@ update_event_configurations(Client, Input0, Options0) ->
 -spec update_fleet_metric(map(), binary() | list(), update_fleet_metric_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, index_not_ready_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_aggregation_exception(), tuple()} |
-    {error, invalid_query_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, version_conflict_exception(), tuple()}.
+    {error, update_fleet_metric_errors(), tuple()}.
 update_fleet_metric(Client, MetricName, Input) ->
     update_fleet_metric(Client, MetricName, Input, []).
 
 -spec update_fleet_metric(map(), binary() | list(), update_fleet_metric_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, index_not_ready_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_aggregation_exception(), tuple()} |
-    {error, invalid_query_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, version_conflict_exception(), tuple()}.
+    {error, update_fleet_metric_errors(), tuple()}.
 update_fleet_metric(Client, MetricName, Input0, Options0) ->
     Method = patch,
     Path = ["/fleet-metric/", aws_util:encode_uri(MetricName), ""],
@@ -18738,22 +18949,14 @@ update_fleet_metric(Client, MetricName, Input0, Options0) ->
 -spec update_indexing_configuration(map(), update_indexing_configuration_request()) ->
     {ok, update_indexing_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_indexing_configuration_errors(), tuple()}.
 update_indexing_configuration(Client, Input) ->
     update_indexing_configuration(Client, Input, []).
 
 -spec update_indexing_configuration(map(), update_indexing_configuration_request(), proplists:proplist()) ->
     {ok, update_indexing_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_indexing_configuration_errors(), tuple()}.
 update_indexing_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/indexing/config"],
@@ -18784,20 +18987,14 @@ update_indexing_configuration(Client, Input0, Options0) ->
 -spec update_job(map(), binary() | list(), update_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_job_errors(), tuple()}.
 update_job(Client, JobId, Input) ->
     update_job(Client, JobId, Input, []).
 
 -spec update_job(map(), binary() | list(), update_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_job_errors(), tuple()}.
 update_job(Client, JobId, Input0, Options0) ->
     Method = patch,
     Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
@@ -18829,20 +19026,14 @@ update_job(Client, JobId, Input0, Options0) ->
 -spec update_mitigation_action(map(), binary() | list(), update_mitigation_action_request()) ->
     {ok, update_mitigation_action_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_mitigation_action_errors(), tuple()}.
 update_mitigation_action(Client, ActionName, Input) ->
     update_mitigation_action(Client, ActionName, Input, []).
 
 -spec update_mitigation_action(map(), binary() | list(), update_mitigation_action_request(), proplists:proplist()) ->
     {ok, update_mitigation_action_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_mitigation_action_errors(), tuple()}.
 update_mitigation_action(Client, ActionName, Input0, Options0) ->
     Method = patch,
     Path = ["/mitigationactions/actions/", aws_util:encode_uri(ActionName), ""],
@@ -18875,22 +19066,14 @@ update_mitigation_action(Client, ActionName, Input0, Options0) ->
 -spec update_package(map(), binary() | list(), update_package_request()) ->
     {ok, update_package_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_package_errors(), tuple()}.
 update_package(Client, PackageName, Input) ->
     update_package(Client, PackageName, Input, []).
 
 -spec update_package(map(), binary() | list(), update_package_request(), proplists:proplist()) ->
     {ok, update_package_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_package_errors(), tuple()}.
 update_package(Client, PackageName, Input0, Options0) ->
     Method = patch,
     Path = ["/packages/", aws_util:encode_uri(PackageName), ""],
@@ -18924,20 +19107,14 @@ update_package(Client, PackageName, Input0, Options0) ->
 -spec update_package_configuration(map(), update_package_configuration_request()) ->
     {ok, update_package_configuration_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_package_configuration_errors(), tuple()}.
 update_package_configuration(Client, Input) ->
     update_package_configuration(Client, Input, []).
 
 -spec update_package_configuration(map(), update_package_configuration_request(), proplists:proplist()) ->
     {ok, update_package_configuration_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_package_configuration_errors(), tuple()}.
 update_package_configuration(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/package-configuration"],
@@ -18971,22 +19148,14 @@ update_package_configuration(Client, Input0, Options0) ->
 -spec update_package_version(map(), binary() | list(), binary() | list(), update_package_version_request()) ->
     {ok, update_package_version_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_package_version_errors(), tuple()}.
 update_package_version(Client, PackageName, VersionName, Input) ->
     update_package_version(Client, PackageName, VersionName, Input, []).
 
 -spec update_package_version(map(), binary() | list(), binary() | list(), update_package_version_request(), proplists:proplist()) ->
     {ok, update_package_version_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_package_version_errors(), tuple()}.
 update_package_version(Client, PackageName, VersionName, Input0, Options0) ->
     Method = patch,
     Path = ["/packages/", aws_util:encode_uri(PackageName), "/versions/", aws_util:encode_uri(VersionName), ""],
@@ -19018,22 +19187,14 @@ update_package_version(Client, PackageName, VersionName, Input0, Options0) ->
 -spec update_provisioning_template(map(), binary() | list(), update_provisioning_template_request()) ->
     {ok, update_provisioning_template_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_resource_update_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_provisioning_template_errors(), tuple()}.
 update_provisioning_template(Client, TemplateName, Input) ->
     update_provisioning_template(Client, TemplateName, Input, []).
 
 -spec update_provisioning_template(map(), binary() | list(), update_provisioning_template_request(), proplists:proplist()) ->
     {ok, update_provisioning_template_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_resource_update_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_provisioning_template_errors(), tuple()}.
 update_provisioning_template(Client, TemplateName, Input0, Options0) ->
     Method = patch,
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), ""],
@@ -19064,24 +19225,14 @@ update_provisioning_template(Client, TemplateName, Input0, Options0) ->
 -spec update_role_alias(map(), binary() | list(), update_role_alias_request()) ->
     {ok, update_role_alias_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_role_alias_errors(), tuple()}.
 update_role_alias(Client, RoleAlias, Input) ->
     update_role_alias(Client, RoleAlias, Input, []).
 
 -spec update_role_alias(map(), binary() | list(), update_role_alias_request(), proplists:proplist()) ->
     {ok, update_role_alias_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_role_alias_errors(), tuple()}.
 update_role_alias(Client, RoleAlias, Input0, Options0) ->
     Method = put,
     Path = ["/role-aliases/", aws_util:encode_uri(RoleAlias), ""],
@@ -19113,20 +19264,14 @@ update_role_alias(Client, RoleAlias, Input0, Options0) ->
 -spec update_scheduled_audit(map(), binary() | list(), update_scheduled_audit_request()) ->
     {ok, update_scheduled_audit_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_scheduled_audit_errors(), tuple()}.
 update_scheduled_audit(Client, ScheduledAuditName, Input) ->
     update_scheduled_audit(Client, ScheduledAuditName, Input, []).
 
 -spec update_scheduled_audit(map(), binary() | list(), update_scheduled_audit_request(), proplists:proplist()) ->
     {ok, update_scheduled_audit_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_scheduled_audit_errors(), tuple()}.
 update_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
     Method = patch,
     Path = ["/audit/scheduledaudits/", aws_util:encode_uri(ScheduledAuditName), ""],
@@ -19157,22 +19302,14 @@ update_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
 -spec update_security_profile(map(), binary() | list(), update_security_profile_request()) ->
     {ok, update_security_profile_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, version_conflict_exception(), tuple()}.
+    {error, update_security_profile_errors(), tuple()}.
 update_security_profile(Client, SecurityProfileName, Input) ->
     update_security_profile(Client, SecurityProfileName, Input, []).
 
 -spec update_security_profile(map(), binary() | list(), update_security_profile_request(), proplists:proplist()) ->
     {ok, update_security_profile_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, version_conflict_exception(), tuple()}.
+    {error, update_security_profile_errors(), tuple()}.
 update_security_profile(Client, SecurityProfileName, Input0, Options0) ->
     Method = patch,
     Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), ""],
@@ -19206,24 +19343,14 @@ update_security_profile(Client, SecurityProfileName, Input0, Options0) ->
 -spec update_stream(map(), binary() | list(), update_stream_request()) ->
     {ok, update_stream_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_stream_errors(), tuple()}.
 update_stream(Client, StreamId, Input) ->
     update_stream(Client, StreamId, Input, []).
 
 -spec update_stream(map(), binary() | list(), update_stream_request(), proplists:proplist()) ->
     {ok, update_stream_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_stream_errors(), tuple()}.
 update_stream(Client, StreamId, Input0, Options0) ->
     Method = put,
     Path = ["/streams/", aws_util:encode_uri(StreamId), ""],
@@ -19254,26 +19381,14 @@ update_stream(Client, StreamId, Input0, Options0) ->
 -spec update_thing(map(), binary() | list(), update_thing_request()) ->
     {ok, update_thing_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, version_conflict_exception(), tuple()}.
+    {error, update_thing_errors(), tuple()}.
 update_thing(Client, ThingName, Input) ->
     update_thing(Client, ThingName, Input, []).
 
 -spec update_thing(map(), binary() | list(), update_thing_request(), proplists:proplist()) ->
     {ok, update_thing_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, version_conflict_exception(), tuple()}.
+    {error, update_thing_errors(), tuple()}.
 update_thing(Client, ThingName, Input0, Options0) ->
     Method = patch,
     Path = ["/things/", aws_util:encode_uri(ThingName), ""],
@@ -19304,22 +19419,14 @@ update_thing(Client, ThingName, Input0, Options0) ->
 -spec update_thing_group(map(), binary() | list(), update_thing_group_request()) ->
     {ok, update_thing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, version_conflict_exception(), tuple()}.
+    {error, update_thing_group_errors(), tuple()}.
 update_thing_group(Client, ThingGroupName, Input) ->
     update_thing_group(Client, ThingGroupName, Input, []).
 
 -spec update_thing_group(map(), binary() | list(), update_thing_group_request(), proplists:proplist()) ->
     {ok, update_thing_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, version_conflict_exception(), tuple()}.
+    {error, update_thing_group_errors(), tuple()}.
 update_thing_group(Client, ThingGroupName, Input0, Options0) ->
     Method = patch,
     Path = ["/thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
@@ -19350,20 +19457,14 @@ update_thing_group(Client, ThingGroupName, Input0, Options0) ->
 -spec update_thing_groups_for_thing(map(), update_thing_groups_for_thing_request()) ->
     {ok, update_thing_groups_for_thing_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_thing_groups_for_thing_errors(), tuple()}.
 update_thing_groups_for_thing(Client, Input) ->
     update_thing_groups_for_thing(Client, Input, []).
 
 -spec update_thing_groups_for_thing(map(), update_thing_groups_for_thing_request(), proplists:proplist()) ->
     {ok, update_thing_groups_for_thing_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_thing_groups_for_thing_errors(), tuple()}.
 update_thing_groups_for_thing(Client, Input0, Options0) ->
     Method = put,
     Path = ["/thing-groups/updateThingGroupsForThing"],
@@ -19397,22 +19498,14 @@ update_thing_groups_for_thing(Client, Input0, Options0) ->
 -spec update_topic_rule_destination(map(), update_topic_rule_destination_request()) ->
     {ok, update_topic_rule_destination_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_resource_update_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_topic_rule_destination_errors(), tuple()}.
 update_topic_rule_destination(Client, Input) ->
     update_topic_rule_destination(Client, Input, []).
 
 -spec update_topic_rule_destination(map(), update_topic_rule_destination_request(), proplists:proplist()) ->
     {ok, update_topic_rule_destination_response(), tuple()} |
     {error, any()} |
-    {error, conflicting_resource_update_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_topic_rule_destination_errors(), tuple()}.
 update_topic_rule_destination(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/destinations"],
@@ -19443,18 +19536,14 @@ update_topic_rule_destination(Client, Input0, Options0) ->
 -spec validate_security_profile_behaviors(map(), validate_security_profile_behaviors_request()) ->
     {ok, validate_security_profile_behaviors_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, validate_security_profile_behaviors_errors(), tuple()}.
 validate_security_profile_behaviors(Client, Input) ->
     validate_security_profile_behaviors(Client, Input, []).
 
 -spec validate_security_profile_behaviors(map(), validate_security_profile_behaviors_request(), proplists:proplist()) ->
     {ok, validate_security_profile_behaviors_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, validate_security_profile_behaviors_errors(), tuple()}.
 validate_security_profile_behaviors(Client, Input0, Options0) ->
     Method = post,
     Path = ["/security-profile-behaviors/validate"],

@@ -521,6 +521,173 @@
 %% }
 -type invalid_pagination_token_exception() :: #{binary() => any()}.
 
+-type associate_service_quota_template_errors() ::
+    aws_service_access_not_enabled_exception() | 
+    templates_not_available_in_region_exception() | 
+    no_available_organization_exception() | 
+    access_denied_exception() | 
+    service_exception() | 
+    organization_not_in_all_features_mode_exception() | 
+    too_many_requests_exception() | 
+    dependency_access_denied_exception().
+
+-type delete_service_quota_increase_request_from_template_errors() ::
+    aws_service_access_not_enabled_exception() | 
+    templates_not_available_in_region_exception() | 
+    no_available_organization_exception() | 
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    dependency_access_denied_exception().
+
+-type disassociate_service_quota_template_errors() ::
+    aws_service_access_not_enabled_exception() | 
+    templates_not_available_in_region_exception() | 
+    service_quota_template_not_in_use_exception() | 
+    no_available_organization_exception() | 
+    access_denied_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    dependency_access_denied_exception().
+
+-type get_association_for_service_quota_template_errors() ::
+    aws_service_access_not_enabled_exception() | 
+    templates_not_available_in_region_exception() | 
+    service_quota_template_not_in_use_exception() | 
+    no_available_organization_exception() | 
+    access_denied_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    dependency_access_denied_exception().
+
+-type get_aws_default_service_quota_errors() ::
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception().
+
+-type get_requested_service_quota_change_errors() ::
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception().
+
+-type get_service_quota_errors() ::
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception().
+
+-type get_service_quota_increase_request_from_template_errors() ::
+    aws_service_access_not_enabled_exception() | 
+    templates_not_available_in_region_exception() | 
+    no_available_organization_exception() | 
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    dependency_access_denied_exception().
+
+-type list_aws_default_service_quotas_errors() ::
+    invalid_pagination_token_exception() | 
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception().
+
+-type list_requested_service_quota_change_history_errors() ::
+    invalid_pagination_token_exception() | 
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception().
+
+-type list_requested_service_quota_change_history_by_quota_errors() ::
+    invalid_pagination_token_exception() | 
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception().
+
+-type list_service_quota_increase_requests_in_template_errors() ::
+    aws_service_access_not_enabled_exception() | 
+    templates_not_available_in_region_exception() | 
+    no_available_organization_exception() | 
+    access_denied_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    dependency_access_denied_exception().
+
+-type list_service_quotas_errors() ::
+    invalid_pagination_token_exception() | 
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception().
+
+-type list_services_errors() ::
+    invalid_pagination_token_exception() | 
+    access_denied_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception().
+
+-type list_tags_for_resource_errors() ::
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception().
+
+-type put_service_quota_increase_request_into_template_errors() ::
+    aws_service_access_not_enabled_exception() | 
+    templates_not_available_in_region_exception() | 
+    no_available_organization_exception() | 
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    quota_exceeded_exception() | 
+    dependency_access_denied_exception().
+
+-type request_service_quota_increase_errors() ::
+    resource_already_exists_exception() | 
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    invalid_resource_state_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    quota_exceeded_exception() | 
+    dependency_access_denied_exception().
+
+-type tag_resource_errors() ::
+    tag_policy_violation_exception() | 
+    too_many_tags_exception() | 
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception().
+
+-type untag_resource_errors() ::
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception().
 
 %%====================================================================
 %% API
@@ -537,14 +704,7 @@
 -spec associate_service_quota_template(map(), associate_service_quota_template_request()) ->
     {ok, associate_service_quota_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_service_access_not_enabled_exception(), tuple()} |
-    {error, dependency_access_denied_exception(), tuple()} |
-    {error, no_available_organization_exception(), tuple()} |
-    {error, organization_not_in_all_features_mode_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, templates_not_available_in_region_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, associate_service_quota_template_errors(), tuple()}.
 associate_service_quota_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_service_quota_template(Client, Input, []).
@@ -552,14 +712,7 @@ associate_service_quota_template(Client, Input)
 -spec associate_service_quota_template(map(), associate_service_quota_template_request(), proplists:proplist()) ->
     {ok, associate_service_quota_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_service_access_not_enabled_exception(), tuple()} |
-    {error, dependency_access_denied_exception(), tuple()} |
-    {error, no_available_organization_exception(), tuple()} |
-    {error, organization_not_in_all_features_mode_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, templates_not_available_in_region_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, associate_service_quota_template_errors(), tuple()}.
 associate_service_quota_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateServiceQuotaTemplate">>, Input, Options).
@@ -570,15 +723,7 @@ associate_service_quota_template(Client, Input, Options)
 -spec delete_service_quota_increase_request_from_template(map(), delete_service_quota_increase_request_from_template_request()) ->
     {ok, delete_service_quota_increase_request_from_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_service_access_not_enabled_exception(), tuple()} |
-    {error, dependency_access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, no_available_organization_exception(), tuple()} |
-    {error, no_such_resource_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, templates_not_available_in_region_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_service_quota_increase_request_from_template_errors(), tuple()}.
 delete_service_quota_increase_request_from_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service_quota_increase_request_from_template(Client, Input, []).
@@ -586,15 +731,7 @@ delete_service_quota_increase_request_from_template(Client, Input)
 -spec delete_service_quota_increase_request_from_template(map(), delete_service_quota_increase_request_from_template_request(), proplists:proplist()) ->
     {ok, delete_service_quota_increase_request_from_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_service_access_not_enabled_exception(), tuple()} |
-    {error, dependency_access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, no_available_organization_exception(), tuple()} |
-    {error, no_such_resource_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, templates_not_available_in_region_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_service_quota_increase_request_from_template_errors(), tuple()}.
 delete_service_quota_increase_request_from_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteServiceQuotaIncreaseRequestFromTemplate">>, Input, Options).
@@ -609,14 +746,7 @@ delete_service_quota_increase_request_from_template(Client, Input, Options)
 -spec disassociate_service_quota_template(map(), disassociate_service_quota_template_request()) ->
     {ok, disassociate_service_quota_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_service_access_not_enabled_exception(), tuple()} |
-    {error, dependency_access_denied_exception(), tuple()} |
-    {error, no_available_organization_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_quota_template_not_in_use_exception(), tuple()} |
-    {error, templates_not_available_in_region_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, disassociate_service_quota_template_errors(), tuple()}.
 disassociate_service_quota_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_service_quota_template(Client, Input, []).
@@ -624,14 +754,7 @@ disassociate_service_quota_template(Client, Input)
 -spec disassociate_service_quota_template(map(), disassociate_service_quota_template_request(), proplists:proplist()) ->
     {ok, disassociate_service_quota_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_service_access_not_enabled_exception(), tuple()} |
-    {error, dependency_access_denied_exception(), tuple()} |
-    {error, no_available_organization_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_quota_template_not_in_use_exception(), tuple()} |
-    {error, templates_not_available_in_region_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, disassociate_service_quota_template_errors(), tuple()}.
 disassociate_service_quota_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateServiceQuotaTemplate">>, Input, Options).
@@ -641,14 +764,7 @@ disassociate_service_quota_template(Client, Input, Options)
 -spec get_association_for_service_quota_template(map(), get_association_for_service_quota_template_request()) ->
     {ok, get_association_for_service_quota_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_service_access_not_enabled_exception(), tuple()} |
-    {error, dependency_access_denied_exception(), tuple()} |
-    {error, no_available_organization_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_quota_template_not_in_use_exception(), tuple()} |
-    {error, templates_not_available_in_region_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_association_for_service_quota_template_errors(), tuple()}.
 get_association_for_service_quota_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_association_for_service_quota_template(Client, Input, []).
@@ -656,14 +772,7 @@ get_association_for_service_quota_template(Client, Input)
 -spec get_association_for_service_quota_template(map(), get_association_for_service_quota_template_request(), proplists:proplist()) ->
     {ok, get_association_for_service_quota_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_service_access_not_enabled_exception(), tuple()} |
-    {error, dependency_access_denied_exception(), tuple()} |
-    {error, no_available_organization_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, service_quota_template_not_in_use_exception(), tuple()} |
-    {error, templates_not_available_in_region_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_association_for_service_quota_template_errors(), tuple()}.
 get_association_for_service_quota_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAssociationForServiceQuotaTemplate">>, Input, Options).
@@ -675,11 +784,7 @@ get_association_for_service_quota_template(Client, Input, Options)
 -spec get_aws_default_service_quota(map(), get_aws_default_service_quota_request()) ->
     {ok, get_aws_default_service_quota_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, no_such_resource_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_aws_default_service_quota_errors(), tuple()}.
 get_aws_default_service_quota(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_aws_default_service_quota(Client, Input, []).
@@ -687,11 +792,7 @@ get_aws_default_service_quota(Client, Input)
 -spec get_aws_default_service_quota(map(), get_aws_default_service_quota_request(), proplists:proplist()) ->
     {ok, get_aws_default_service_quota_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, no_such_resource_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_aws_default_service_quota_errors(), tuple()}.
 get_aws_default_service_quota(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAWSDefaultServiceQuota">>, Input, Options).
@@ -700,11 +801,7 @@ get_aws_default_service_quota(Client, Input, Options)
 -spec get_requested_service_quota_change(map(), get_requested_service_quota_change_request()) ->
     {ok, get_requested_service_quota_change_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, no_such_resource_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_requested_service_quota_change_errors(), tuple()}.
 get_requested_service_quota_change(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_requested_service_quota_change(Client, Input, []).
@@ -712,11 +809,7 @@ get_requested_service_quota_change(Client, Input)
 -spec get_requested_service_quota_change(map(), get_requested_service_quota_change_request(), proplists:proplist()) ->
     {ok, get_requested_service_quota_change_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, no_such_resource_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_requested_service_quota_change_errors(), tuple()}.
 get_requested_service_quota_change(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRequestedServiceQuotaChange">>, Input, Options).
@@ -730,11 +823,7 @@ get_requested_service_quota_change(Client, Input, Options)
 -spec get_service_quota(map(), get_service_quota_request()) ->
     {ok, get_service_quota_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, no_such_resource_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_service_quota_errors(), tuple()}.
 get_service_quota(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_quota(Client, Input, []).
@@ -742,11 +831,7 @@ get_service_quota(Client, Input)
 -spec get_service_quota(map(), get_service_quota_request(), proplists:proplist()) ->
     {ok, get_service_quota_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, no_such_resource_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_service_quota_errors(), tuple()}.
 get_service_quota(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServiceQuota">>, Input, Options).
@@ -757,15 +842,7 @@ get_service_quota(Client, Input, Options)
 -spec get_service_quota_increase_request_from_template(map(), get_service_quota_increase_request_from_template_request()) ->
     {ok, get_service_quota_increase_request_from_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_service_access_not_enabled_exception(), tuple()} |
-    {error, dependency_access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, no_available_organization_exception(), tuple()} |
-    {error, no_such_resource_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, templates_not_available_in_region_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_service_quota_increase_request_from_template_errors(), tuple()}.
 get_service_quota_increase_request_from_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_quota_increase_request_from_template(Client, Input, []).
@@ -773,15 +850,7 @@ get_service_quota_increase_request_from_template(Client, Input)
 -spec get_service_quota_increase_request_from_template(map(), get_service_quota_increase_request_from_template_request(), proplists:proplist()) ->
     {ok, get_service_quota_increase_request_from_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_service_access_not_enabled_exception(), tuple()} |
-    {error, dependency_access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, no_available_organization_exception(), tuple()} |
-    {error, no_such_resource_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, templates_not_available_in_region_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_service_quota_increase_request_from_template_errors(), tuple()}.
 get_service_quota_increase_request_from_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServiceQuotaIncreaseRequestFromTemplate">>, Input, Options).
@@ -794,12 +863,7 @@ get_service_quota_increase_request_from_template(Client, Input, Options)
 -spec list_aws_default_service_quotas(map(), list_aws_default_service_quotas_request()) ->
     {ok, list_aws_default_service_quotas_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, no_such_resource_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_aws_default_service_quotas_errors(), tuple()}.
 list_aws_default_service_quotas(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_aws_default_service_quotas(Client, Input, []).
@@ -807,12 +871,7 @@ list_aws_default_service_quotas(Client, Input)
 -spec list_aws_default_service_quotas(map(), list_aws_default_service_quotas_request(), proplists:proplist()) ->
     {ok, list_aws_default_service_quotas_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, no_such_resource_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_aws_default_service_quotas_errors(), tuple()}.
 list_aws_default_service_quotas(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAWSDefaultServiceQuotas">>, Input, Options).
@@ -822,12 +881,7 @@ list_aws_default_service_quotas(Client, Input, Options)
 -spec list_requested_service_quota_change_history(map(), list_requested_service_quota_change_history_request()) ->
     {ok, list_requested_service_quota_change_history_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, no_such_resource_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_requested_service_quota_change_history_errors(), tuple()}.
 list_requested_service_quota_change_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_requested_service_quota_change_history(Client, Input, []).
@@ -835,12 +889,7 @@ list_requested_service_quota_change_history(Client, Input)
 -spec list_requested_service_quota_change_history(map(), list_requested_service_quota_change_history_request(), proplists:proplist()) ->
     {ok, list_requested_service_quota_change_history_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, no_such_resource_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_requested_service_quota_change_history_errors(), tuple()}.
 list_requested_service_quota_change_history(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRequestedServiceQuotaChangeHistory">>, Input, Options).
@@ -849,12 +898,7 @@ list_requested_service_quota_change_history(Client, Input, Options)
 -spec list_requested_service_quota_change_history_by_quota(map(), list_requested_service_quota_change_history_by_quota_request()) ->
     {ok, list_requested_service_quota_change_history_by_quota_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, no_such_resource_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_requested_service_quota_change_history_by_quota_errors(), tuple()}.
 list_requested_service_quota_change_history_by_quota(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_requested_service_quota_change_history_by_quota(Client, Input, []).
@@ -862,12 +906,7 @@ list_requested_service_quota_change_history_by_quota(Client, Input)
 -spec list_requested_service_quota_change_history_by_quota(map(), list_requested_service_quota_change_history_by_quota_request(), proplists:proplist()) ->
     {ok, list_requested_service_quota_change_history_by_quota_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, no_such_resource_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_requested_service_quota_change_history_by_quota_errors(), tuple()}.
 list_requested_service_quota_change_history_by_quota(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRequestedServiceQuotaChangeHistoryByQuota">>, Input, Options).
@@ -877,14 +916,7 @@ list_requested_service_quota_change_history_by_quota(Client, Input, Options)
 -spec list_service_quota_increase_requests_in_template(map(), list_service_quota_increase_requests_in_template_request()) ->
     {ok, list_service_quota_increase_requests_in_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_service_access_not_enabled_exception(), tuple()} |
-    {error, dependency_access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, no_available_organization_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, templates_not_available_in_region_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_service_quota_increase_requests_in_template_errors(), tuple()}.
 list_service_quota_increase_requests_in_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_quota_increase_requests_in_template(Client, Input, []).
@@ -892,14 +924,7 @@ list_service_quota_increase_requests_in_template(Client, Input)
 -spec list_service_quota_increase_requests_in_template(map(), list_service_quota_increase_requests_in_template_request(), proplists:proplist()) ->
     {ok, list_service_quota_increase_requests_in_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_service_access_not_enabled_exception(), tuple()} |
-    {error, dependency_access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, no_available_organization_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, templates_not_available_in_region_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_service_quota_increase_requests_in_template_errors(), tuple()}.
 list_service_quota_increase_requests_in_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServiceQuotaIncreaseRequestsInTemplate">>, Input, Options).
@@ -913,12 +938,7 @@ list_service_quota_increase_requests_in_template(Client, Input, Options)
 -spec list_service_quotas(map(), list_service_quotas_request()) ->
     {ok, list_service_quotas_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, no_such_resource_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_service_quotas_errors(), tuple()}.
 list_service_quotas(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_quotas(Client, Input, []).
@@ -926,12 +946,7 @@ list_service_quotas(Client, Input)
 -spec list_service_quotas(map(), list_service_quotas_request(), proplists:proplist()) ->
     {ok, list_service_quotas_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, no_such_resource_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_service_quotas_errors(), tuple()}.
 list_service_quotas(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServiceQuotas">>, Input, Options).
@@ -941,11 +956,7 @@ list_service_quotas(Client, Input, Options)
 -spec list_services(map(), list_services_request()) ->
     {ok, list_services_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_services_errors(), tuple()}.
 list_services(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_services(Client, Input, []).
@@ -953,11 +964,7 @@ list_services(Client, Input)
 -spec list_services(map(), list_services_request(), proplists:proplist()) ->
     {ok, list_services_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_services_errors(), tuple()}.
 list_services(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServices">>, Input, Options).
@@ -966,11 +973,7 @@ list_services(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, no_such_resource_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -978,11 +981,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, no_such_resource_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -991,16 +990,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec put_service_quota_increase_request_into_template(map(), put_service_quota_increase_request_into_template_request()) ->
     {ok, put_service_quota_increase_request_into_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_service_access_not_enabled_exception(), tuple()} |
-    {error, dependency_access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, no_available_organization_exception(), tuple()} |
-    {error, no_such_resource_exception(), tuple()} |
-    {error, quota_exceeded_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, templates_not_available_in_region_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_service_quota_increase_request_into_template_errors(), tuple()}.
 put_service_quota_increase_request_into_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_service_quota_increase_request_into_template(Client, Input, []).
@@ -1008,16 +998,7 @@ put_service_quota_increase_request_into_template(Client, Input)
 -spec put_service_quota_increase_request_into_template(map(), put_service_quota_increase_request_into_template_request(), proplists:proplist()) ->
     {ok, put_service_quota_increase_request_into_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, aws_service_access_not_enabled_exception(), tuple()} |
-    {error, dependency_access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, no_available_organization_exception(), tuple()} |
-    {error, no_such_resource_exception(), tuple()} |
-    {error, quota_exceeded_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, templates_not_available_in_region_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_service_quota_increase_request_into_template_errors(), tuple()}.
 put_service_quota_increase_request_into_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutServiceQuotaIncreaseRequestIntoTemplate">>, Input, Options).
@@ -1026,15 +1007,7 @@ put_service_quota_increase_request_into_template(Client, Input, Options)
 -spec request_service_quota_increase(map(), request_service_quota_increase_request()) ->
     {ok, request_service_quota_increase_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, dependency_access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, no_such_resource_exception(), tuple()} |
-    {error, quota_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, request_service_quota_increase_errors(), tuple()}.
 request_service_quota_increase(Client, Input)
   when is_map(Client), is_map(Input) ->
     request_service_quota_increase(Client, Input, []).
@@ -1042,15 +1015,7 @@ request_service_quota_increase(Client, Input)
 -spec request_service_quota_increase(map(), request_service_quota_increase_request(), proplists:proplist()) ->
     {ok, request_service_quota_increase_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, dependency_access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, no_such_resource_exception(), tuple()} |
-    {error, quota_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, request_service_quota_increase_errors(), tuple()}.
 request_service_quota_increase(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RequestServiceQuotaIncrease">>, Input, Options).
@@ -1062,13 +1027,7 @@ request_service_quota_increase(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, no_such_resource_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, tag_policy_violation_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -1076,13 +1035,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, no_such_resource_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, tag_policy_violation_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -1094,11 +1047,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, no_such_resource_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -1106,11 +1055,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, illegal_argument_exception(), tuple()} |
-    {error, no_such_resource_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).

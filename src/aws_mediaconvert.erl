@@ -78,6 +78,7 @@
 %% cancel_job_request() :: #{}
 -type cancel_job_request() :: #{}.
 
+
 %% Example:
 %% video_overlay() :: #{
 %%   <<"EndTimecode">> => string(),
@@ -85,6 +86,7 @@
 %%   <<"StartTimecode">> => string()
 %% }
 -type video_overlay() :: #{binary() => any()}.
+
 
 %% Example:
 %% deinterlacer() :: #{
@@ -94,11 +96,13 @@
 %% }
 -type deinterlacer() :: #{binary() => any()}.
 
+
 %% Example:
 %% xavc4k_intra_vbr_profile_settings() :: #{
 %%   <<"XavcClass">> => list(any())
 %% }
 -type xavc4k_intra_vbr_profile_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% output_detail() :: #{
@@ -106,6 +110,7 @@
 %%   <<"VideoDetails">> => video_detail()
 %% }
 -type output_detail() :: #{binary() => any()}.
+
 
 %% Example:
 %% mp4_settings() :: #{
@@ -118,11 +123,13 @@
 %% }
 -type mp4_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% acceleration_settings() :: #{
 %%   <<"Mode">> => list(any())
 %% }
 -type acceleration_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% file_group_settings() :: #{
@@ -130,9 +137,11 @@
 %%   <<"DestinationSettings">> => destination_settings()
 %% }
 -type file_group_settings() :: #{binary() => any()}.
+
 %% Example:
 %% delete_preset_response() :: #{}
 -type delete_preset_response() :: #{}.
+
 
 %% Example:
 %% motion_image_insertion_framerate() :: #{
@@ -140,6 +149,7 @@
 %%   <<"FramerateNumerator">> => integer()
 %% }
 -type motion_image_insertion_framerate() :: #{binary() => any()}.
+
 
 %% Example:
 %% mxf_settings() :: #{
@@ -149,11 +159,13 @@
 %% }
 -type mxf_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_queue_response() :: #{
 %%   <<"Queue">> => queue()
 %% }
 -type get_queue_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% tag_resource_request() :: #{
@@ -161,6 +173,7 @@
 %%   <<"Tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_job_template_request() :: #{
@@ -174,6 +187,7 @@
 %%   <<"StatusUpdateInterval">> => list(any())
 %% }
 -type update_job_template_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% prores_settings() :: #{
@@ -193,11 +207,13 @@
 %% }
 -type prores_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_job_template_response() :: #{
 %%   <<"JobTemplate">> => job_template()
 %% }
 -type create_job_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% advanced_input_filter_settings() :: #{
@@ -205,6 +221,7 @@
 %%   <<"Sharpening">> => list(any())
 %% }
 -type advanced_input_filter_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_queues_request() :: #{
@@ -215,11 +232,13 @@
 %% }
 -type list_queues_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% partner_watermarking() :: #{
 %%   <<"NexguardFileMarkerSettings">> => nex_guard_file_marker_settings()
 %% }
 -type partner_watermarking() :: #{binary() => any()}.
+
 
 %% Example:
 %% rectangle() :: #{
@@ -230,12 +249,14 @@
 %% }
 -type rectangle() :: #{binary() => any()}.
 
+
 %% Example:
 %% force_include_rendition_size() :: #{
 %%   <<"Height">> => integer(),
 %%   <<"Width">> => integer()
 %% }
 -type force_include_rendition_size() :: #{binary() => any()}.
+
 
 %% Example:
 %% mov_settings() :: #{
@@ -247,14 +268,17 @@
 %% }
 -type mov_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_job_response() :: #{
 %%   <<"Job">> => job()
 %% }
 -type create_job_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_job_template_response() :: #{}
 -type delete_job_template_response() :: #{}.
+
 
 %% Example:
 %% hls_caption_language_mapping() :: #{
@@ -264,6 +288,7 @@
 %%   <<"LanguageDescription">> => string()
 %% }
 -type hls_caption_language_mapping() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_preset_request() :: #{
@@ -275,6 +300,7 @@
 %% }
 -type create_preset_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_encryption_settings() :: #{
 %%   <<"EncryptionType">> => list(any()),
@@ -282,6 +308,7 @@
 %%   <<"KmsKeyArn">> => string()
 %% }
 -type s3_encryption_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% mp2_settings() :: #{
@@ -291,15 +318,18 @@
 %% }
 -type mp2_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% extended_data_services() :: #{
 %%   <<"CopyProtectionAction">> => list(any()),
 %%   <<"VchipAction">> => list(any())
 %% }
 -type extended_data_services() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% list_presets_request() :: #{
@@ -311,6 +341,7 @@
 %% }
 -type list_presets_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% audio_channel_tagging_settings() :: #{
 %%   <<"ChannelTag">> => list(any()),
@@ -318,12 +349,14 @@
 %% }
 -type audio_channel_tagging_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% nielsen_configuration() :: #{
 %%   <<"BreakoutCode">> => integer(),
 %%   <<"DistributorId">> => string()
 %% }
 -type nielsen_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% caption_selector() :: #{
@@ -333,6 +366,7 @@
 %% }
 -type caption_selector() :: #{binary() => any()}.
 
+
 %% Example:
 %% timecode_burnin() :: #{
 %%   <<"FontSize">> => integer(),
@@ -340,6 +374,7 @@
 %%   <<"Prefix">> => string()
 %% }
 -type timecode_burnin() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_jobs_request() :: #{
@@ -350,9 +385,11 @@
 %%   <<"Status">> => list(any())
 %% }
 -type list_jobs_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_policy_request() :: #{}
 -type get_policy_request() :: #{}.
+
 
 %% Example:
 %% forbidden_exception() :: #{
@@ -360,11 +397,13 @@
 %% }
 -type forbidden_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% destination_settings() :: #{
 %%   <<"S3Settings">> => s3_destination_settings()
 %% }
 -type destination_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% audio_codec_settings() :: #{
@@ -383,12 +422,14 @@
 %% }
 -type audio_codec_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_tags() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Tags">> => map()
 %% }
 -type resource_tags() :: #{binary() => any()}.
+
 
 %% Example:
 %% aiff_settings() :: #{
@@ -398,6 +439,7 @@
 %% }
 -type aiff_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% esam_settings() :: #{
 %%   <<"ManifestConfirmConditionNotification">> => esam_manifest_confirm_condition_notification(),
@@ -405,6 +447,7 @@
 %%   <<"SignalProcessingNotification">> => esam_signal_processing_notification()
 %% }
 -type esam_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% burnin_destination_settings() :: #{
@@ -432,6 +475,7 @@
 %% }
 -type burnin_destination_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% hls_rendition_group_settings() :: #{
 %%   <<"RenditionGroupId">> => string(),
@@ -439,6 +483,7 @@
 %%   <<"RenditionName">> => string()
 %% }
 -type hls_rendition_group_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% xavc4k_profile_settings() :: #{
@@ -452,6 +497,7 @@
 %%   <<"Slices">> => integer()
 %% }
 -type xavc4k_profile_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% color_corrector() :: #{
@@ -469,6 +515,7 @@
 %% }
 -type color_corrector() :: #{binary() => any()}.
 
+
 %% Example:
 %% aac_settings() :: #{
 %%   <<"AudioDescriptionBroadcasterMix">> => list(any()),
@@ -483,6 +530,7 @@
 %% }
 -type aac_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% bandwidth_reduction_filter() :: #{
 %%   <<"Sharpening">> => list(any()),
@@ -490,11 +538,13 @@
 %% }
 -type bandwidth_reduction_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% input_video_generator() :: #{
 %%   <<"Duration">> => integer()
 %% }
 -type input_video_generator() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_endpoints_response() :: #{
@@ -502,6 +552,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_endpoints_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_template() :: #{
@@ -521,6 +572,7 @@
 %% }
 -type job_template() :: #{binary() => any()}.
 
+
 %% Example:
 %% automated_abr_rule() :: #{
 %%   <<"AllowedRenditions">> => list(allowed_rendition_size()()),
@@ -530,6 +582,7 @@
 %%   <<"Type">> => list(any())
 %% }
 -type automated_abr_rule() :: #{binary() => any()}.
+
 
 %% Example:
 %% m3u8_settings() :: #{
@@ -557,12 +610,14 @@
 %% }
 -type m3u8_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_jobs_response() :: #{
 %%   <<"Jobs">> => list(job()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_jobs_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_job_request() :: #{
@@ -582,6 +637,7 @@
 %% }
 -type create_job_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% nex_guard_file_marker_settings() :: #{
 %%   <<"License">> => string(),
@@ -591,17 +647,20 @@
 %% }
 -type nex_guard_file_marker_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% ms_smooth_encryption_settings() :: #{
 %%   <<"SpekeKeyProvider">> => speke_key_provider()
 %% }
 -type ms_smooth_encryption_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% dvb_sub_source_settings() :: #{
 %%   <<"Pid">> => integer()
 %% }
 -type dvb_sub_source_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% reservation_plan_settings() :: #{
@@ -610,6 +669,7 @@
 %%   <<"ReservedSlots">> => integer()
 %% }
 -type reservation_plan_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% queue() :: #{
@@ -626,15 +686,18 @@
 %%   <<"Type">> => list(any())
 %% }
 -type queue() :: #{binary() => any()}.
+
 %% Example:
 %% delete_policy_response() :: #{}
 -type delete_policy_response() :: #{}.
+
 
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> => list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_queue_request() :: #{
@@ -644,11 +707,13 @@
 %% }
 -type update_queue_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_requests_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_requests_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% flac_settings() :: #{
@@ -658,11 +723,13 @@
 %% }
 -type flac_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_destination_access_control() :: #{
 %%   <<"CannedAcl">> => list(any())
 %% }
 -type s3_destination_access_control() :: #{binary() => any()}.
+
 
 %% Example:
 %% static_key_provider() :: #{
@@ -672,6 +739,7 @@
 %%   <<"Url">> => string()
 %% }
 -type static_key_provider() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_template_settings() :: #{
@@ -692,6 +760,7 @@
 %% }
 -type job_template_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% speke_key_provider_cmaf() :: #{
 %%   <<"CertificateArn">> => string(),
@@ -701,6 +770,7 @@
 %%   <<"Url">> => string()
 %% }
 -type speke_key_provider_cmaf() :: #{binary() => any()}.
+
 
 %% Example:
 %% video_description() :: #{
@@ -721,6 +791,7 @@
 %%   <<"Width">> => integer()
 %% }
 -type video_description() :: #{binary() => any()}.
+
 
 %% Example:
 %% input_template() :: #{
@@ -748,6 +819,7 @@
 %% }
 -type input_template() :: #{binary() => any()}.
 
+
 %% Example:
 %% hls_encryption_settings() :: #{
 %%   <<"ConstantInitializationVector">> => string(),
@@ -760,11 +832,13 @@
 %% }
 -type hls_encryption_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% ttml_destination_settings() :: #{
 %%   <<"StylePassthrough">> => list(any())
 %% }
 -type ttml_destination_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% noise_reducer() :: #{
@@ -774,12 +848,15 @@
 %%   <<"TemporalFilterSettings">> => noise_reducer_temporal_filter_settings()
 %% }
 -type noise_reducer() :: #{binary() => any()}.
+
 %% Example:
 %% delete_job_template_request() :: #{}
 -type delete_job_template_request() :: #{}.
+
 %% Example:
 %% associate_certificate_response() :: #{}
 -type associate_certificate_response() :: #{}.
+
 
 %% Example:
 %% timecode_config() :: #{
@@ -790,11 +867,13 @@
 %% }
 -type timecode_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% audio_selector_group() :: #{
 %%   <<"AudioSelectorNames">> => list(string()())
 %% }
 -type audio_selector_group() :: #{binary() => any()}.
+
 
 %% Example:
 %% output_group_settings() :: #{
@@ -806,6 +885,7 @@
 %%   <<"Type">> => list(any())
 %% }
 -type output_group_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% cmaf_group_settings() :: #{
@@ -839,6 +919,7 @@
 %% }
 -type cmaf_group_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% image_inserter() :: #{
 %%   <<"InsertableImages">> => list(insertable_image()()),
@@ -846,11 +927,13 @@
 %% }
 -type image_inserter() :: #{binary() => any()}.
 
+
 %% Example:
 %% esam_manifest_confirm_condition_notification() :: #{
 %%   <<"MccXml">> => string()
 %% }
 -type esam_manifest_confirm_condition_notification() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_settings() :: #{
@@ -871,11 +954,13 @@
 %% }
 -type job_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% timed_metadata_insertion() :: #{
 %%   <<"Id3Insertions">> => list(id3_insertion()())
 %% }
 -type timed_metadata_insertion() :: #{binary() => any()}.
+
 
 %% Example:
 %% ms_smooth_group_settings() :: #{
@@ -890,12 +975,14 @@
 %% }
 -type ms_smooth_group_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% min_top_rendition_size() :: #{
 %%   <<"Height">> => integer(),
 %%   <<"Width">> => integer()
 %% }
 -type min_top_rendition_size() :: #{binary() => any()}.
+
 
 %% Example:
 %% hls_settings() :: #{
@@ -909,12 +996,14 @@
 %% }
 -type hls_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% video_overlay_input_clipping() :: #{
 %%   <<"EndTimecode">> => string(),
 %%   <<"StartTimecode">> => string()
 %% }
 -type video_overlay_input_clipping() :: #{binary() => any()}.
+
 
 %% Example:
 %% input() :: #{
@@ -946,6 +1035,7 @@
 %% }
 -type input() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_endpoints_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -954,11 +1044,13 @@
 %% }
 -type describe_endpoints_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% color_conversion3_d_l_u_t_setting() :: #{
@@ -970,11 +1062,13 @@
 %% }
 -type color_conversion3_d_l_u_t_setting() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_job_template_response() :: #{
 %%   <<"JobTemplate">> => job_template()
 %% }
 -type get_job_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% reservation_plan() :: #{
@@ -987,6 +1081,7 @@
 %% }
 -type reservation_plan() :: #{binary() => any()}.
 
+
 %% Example:
 %% output_group() :: #{
 %%   <<"AutomatedEncodingSettings">> => automated_encoding_settings(),
@@ -996,9 +1091,11 @@
 %%   <<"Outputs">> => list(output()())
 %% }
 -type output_group() :: #{binary() => any()}.
+
 %% Example:
 %% get_queue_request() :: #{}
 -type get_queue_request() :: #{}.
+
 
 %% Example:
 %% audio_description() :: #{
@@ -1015,6 +1112,7 @@
 %%   <<"StreamName">> => string()
 %% }
 -type audio_description() :: #{binary() => any()}.
+
 
 %% Example:
 %% xavc_settings() :: #{
@@ -1037,6 +1135,7 @@
 %% }
 -type xavc_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% preset_settings() :: #{
 %%   <<"AudioDescriptions">> => list(audio_description()()),
@@ -1046,11 +1145,13 @@
 %% }
 -type preset_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% scc_destination_settings() :: #{
 %%   <<"Framerate">> => list(any())
 %% }
 -type scc_destination_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% video_codec_settings() :: #{
@@ -1070,6 +1171,7 @@
 %% }
 -type video_codec_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% motion_image_insertion_offset() :: #{
 %%   <<"ImageX">> => integer(),
@@ -1077,11 +1179,13 @@
 %% }
 -type motion_image_insertion_offset() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_policy_response() :: #{
 %%   <<"Policy">> => policy()
 %% }
 -type put_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% avc_intra_settings() :: #{
@@ -1097,6 +1201,7 @@
 %%   <<"Telecine">> => list(any())
 %% }
 -type avc_intra_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% eac3_settings() :: #{
@@ -1124,6 +1229,7 @@
 %% }
 -type eac3_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% vp9_settings() :: #{
 %%   <<"Bitrate">> => integer(),
@@ -1142,17 +1248,20 @@
 %% }
 -type vp9_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% output_group_detail() :: #{
 %%   <<"OutputDetails">> => list(output_detail()())
 %% }
 -type output_group_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% caption_destination_settings() :: #{
@@ -1169,6 +1278,7 @@
 %% }
 -type caption_destination_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% speke_key_provider() :: #{
 %%   <<"CertificateArn">> => string(),
@@ -1178,6 +1288,7 @@
 %% }
 -type speke_key_provider() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_destination_settings() :: #{
 %%   <<"AccessControl">> => s3_destination_access_control(),
@@ -1185,6 +1296,7 @@
 %%   <<"StorageClass">> => list(any())
 %% }
 -type s3_destination_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% h265_settings() :: #{
@@ -1234,6 +1346,7 @@
 %% }
 -type h265_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% av1_qvbr_settings() :: #{
 %%   <<"QvbrQualityLevel">> => integer(),
@@ -1241,12 +1354,14 @@
 %% }
 -type av1_qvbr_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% teletext_destination_settings() :: #{
 %%   <<"PageNumber">> => string(),
 %%   <<"PageTypes">> => list(list(any())())
 %% }
 -type teletext_destination_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% file_source_settings() :: #{
@@ -1259,11 +1374,13 @@
 %% }
 -type file_source_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"ResourceTags">> => resource_tags()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% hls_additional_manifest() :: #{
@@ -1272,6 +1389,7 @@
 %% }
 -type hls_additional_manifest() :: #{binary() => any()}.
 
+
 %% Example:
 %% mxf_xavc_profile_settings() :: #{
 %%   <<"DurationMode">> => list(any()),
@@ -1279,12 +1397,14 @@
 %% }
 -type mxf_xavc_profile_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% dash_iso_encryption_settings() :: #{
 %%   <<"PlaybackDeviceCompatibility">> => list(any()),
 %%   <<"SpekeKeyProvider">> => speke_key_provider()
 %% }
 -type dash_iso_encryption_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% dolby_vision() :: #{
@@ -1295,6 +1415,7 @@
 %% }
 -type dolby_vision() :: #{binary() => any()}.
 
+
 %% Example:
 %% caption_description_preset() :: #{
 %%   <<"CustomLanguageCode">> => string(),
@@ -1304,12 +1425,14 @@
 %% }
 -type caption_description_preset() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_presets_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Presets">> => list(preset()())
 %% }
 -type list_presets_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% noise_reducer_temporal_filter_settings() :: #{
@@ -1320,6 +1443,7 @@
 %%   <<"Strength">> => integer()
 %% }
 -type noise_reducer_temporal_filter_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_queue_request() :: #{
@@ -1332,6 +1456,7 @@
 %% }
 -type create_queue_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% ancillary_source_settings() :: #{
 %%   <<"Convert608To708">> => list(any()),
@@ -1340,15 +1465,18 @@
 %% }
 -type ancillary_source_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% job_messages() :: #{
 %%   <<"Info">> => list(string()()),
 %%   <<"Warning">> => list(string()())
 %% }
 -type job_messages() :: #{binary() => any()}.
+
 %% Example:
 %% delete_preset_request() :: #{}
 -type delete_preset_request() :: #{}.
+
 
 %% Example:
 %% hls_image_based_trick_play_settings() :: #{
@@ -1360,6 +1488,7 @@
 %%   <<"TileWidth">> => integer()
 %% }
 -type hls_image_based_trick_play_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% dvb_sub_destination_settings() :: #{
@@ -1393,11 +1522,13 @@
 %% }
 -type dvb_sub_destination_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% esam_signal_processing_notification() :: #{
 %%   <<"SccXml">> => string()
 %% }
 -type esam_signal_processing_notification() :: #{binary() => any()}.
+
 
 %% Example:
 %% video_selector() :: #{
@@ -1415,12 +1546,14 @@
 %% }
 -type video_selector() :: #{binary() => any()}.
 
+
 %% Example:
 %% hdr10_plus() :: #{
 %%   <<"MasteringMonitorNits">> => integer(),
 %%   <<"TargetMonitorNits">> => integer()
 %% }
 -type hdr10_plus() :: #{binary() => any()}.
+
 
 %% Example:
 %% opus_settings() :: #{
@@ -1429,9 +1562,11 @@
 %%   <<"SampleRate">> => integer()
 %% }
 -type opus_settings() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_certificate_request() :: #{}
 -type disassociate_certificate_request() :: #{}.
+
 
 %% Example:
 %% hls_group_settings() :: #{
@@ -1470,11 +1605,13 @@
 %% }
 -type hls_group_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% output_settings() :: #{
 %%   <<"HlsSettings">> => hls_settings()
 %% }
 -type output_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% audio_selector() :: #{
@@ -1492,6 +1629,7 @@
 %%   <<"Tracks">> => list(integer()())
 %% }
 -type audio_selector() :: #{binary() => any()}.
+
 
 %% Example:
 %% av1_settings() :: #{
@@ -1512,6 +1650,7 @@
 %% }
 -type av1_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% xavc_hd_profile_settings() :: #{
 %%   <<"BitrateClass">> => list(any()),
@@ -1526,11 +1665,13 @@
 %% }
 -type xavc_hd_profile_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_policy_response() :: #{
 %%   <<"Policy">> => policy()
 %% }
 -type get_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% video_detail() :: #{
@@ -1539,11 +1680,13 @@
 %% }
 -type video_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% endpoint() :: #{
 %%   <<"Url">> => string()
 %% }
 -type endpoint() :: #{binary() => any()}.
+
 
 %% Example:
 %% video_preprocessor() :: #{
@@ -1558,11 +1701,13 @@
 %% }
 -type video_preprocessor() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_certificate_request() :: #{
 %%   <<"Arn">> := string()
 %% }
 -type associate_certificate_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% avail_blanking() :: #{
@@ -1570,15 +1715,18 @@
 %% }
 -type avail_blanking() :: #{binary() => any()}.
 
+
 %% Example:
 %% dash_additional_manifest() :: #{
 %%   <<"ManifestNameModifier">> => string(),
 %%   <<"SelectedOutputs">> => list(string()())
 %% }
 -type dash_additional_manifest() :: #{binary() => any()}.
+
 %% Example:
 %% get_job_template_request() :: #{}
 -type get_job_template_request() :: #{}.
+
 
 %% Example:
 %% update_preset_request() :: #{
@@ -1588,11 +1736,13 @@
 %% }
 -type update_preset_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% avc_intra_uhd_settings() :: #{
 %%   <<"QualityTuningLevel">> => list(any())
 %% }
 -type avc_intra_uhd_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% motion_image_inserter() :: #{
@@ -1605,6 +1755,7 @@
 %% }
 -type motion_image_inserter() :: #{binary() => any()}.
 
+
 %% Example:
 %% timing() :: #{
 %%   <<"FinishTime">> => non_neg_integer(),
@@ -1612,18 +1763,22 @@
 %%   <<"SubmitTime">> => non_neg_integer()
 %% }
 -type timing() :: #{binary() => any()}.
+
 %% Example:
 %% delete_policy_request() :: #{}
 -type delete_policy_request() :: #{}.
+
 %% Example:
 %% get_preset_request() :: #{}
 -type get_preset_request() :: #{}.
+
 
 %% Example:
 %% teletext_source_settings() :: #{
 %%   <<"PageNumber">> => string()
 %% }
 -type teletext_source_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% queue_transition() :: #{
@@ -1632,6 +1787,7 @@
 %%   <<"Timestamp">> => non_neg_integer()
 %% }
 -type queue_transition() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_job_templates_request() :: #{
@@ -1643,6 +1799,7 @@
 %% }
 -type list_job_templates_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% policy() :: #{
 %%   <<"HttpInputs">> => list(any()),
@@ -1651,12 +1808,14 @@
 %% }
 -type policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% cmaf_additional_manifest() :: #{
 %%   <<"ManifestNameModifier">> => string(),
 %%   <<"SelectedOutputs">> => list(string()())
 %% }
 -type cmaf_additional_manifest() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_job_template_request() :: #{
@@ -1673,11 +1832,13 @@
 %% }
 -type create_job_template_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% automated_encoding_settings() :: #{
 %%   <<"AbrSettings">> => automated_abr_settings()
 %% }
 -type automated_encoding_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% dvb_tdt_settings() :: #{
@@ -1685,12 +1846,14 @@
 %% }
 -type dvb_tdt_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% id3_insertion() :: #{
 %%   <<"Id3">> => string(),
 %%   <<"Timecode">> => string()
 %% }
 -type id3_insertion() :: #{binary() => any()}.
+
 
 %% Example:
 %% hdr10_metadata() :: #{
@@ -1709,6 +1872,7 @@
 %% }
 -type hdr10_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% mp3_settings() :: #{
 %%   <<"Bitrate">> => integer(),
@@ -1719,6 +1883,7 @@
 %% }
 -type mp3_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% webvtt_destination_settings() :: #{
 %%   <<"Accessibility">> => list(any()),
@@ -1726,14 +1891,17 @@
 %% }
 -type webvtt_destination_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_job_template_response() :: #{
 %%   <<"JobTemplate">> => job_template()
 %% }
 -type update_job_template_response() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% uncompressed_settings() :: #{
@@ -1748,9 +1916,11 @@
 %%   <<"Telecine">> => list(any())
 %% }
 -type uncompressed_settings() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_certificate_response() :: #{}
 -type disassociate_certificate_response() :: #{}.
+
 
 %% Example:
 %% remix_settings() :: #{
@@ -1761,6 +1931,7 @@
 %%   <<"ChannelsOut">> => integer()
 %% }
 -type remix_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% mpeg2_settings() :: #{
@@ -1800,6 +1971,7 @@
 %% }
 -type mpeg2_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% caption_source_settings() :: #{
 %%   <<"AncillarySourceSettings">> => ancillary_source_settings(),
@@ -1812,6 +1984,7 @@
 %%   <<"WebvttHlsSourceSettings">> => webvtt_hls_source_settings()
 %% }
 -type caption_source_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% kantar_watermark_settings() :: #{
@@ -1831,6 +2004,7 @@
 %% }
 -type kantar_watermark_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% hop_destination() :: #{
 %%   <<"Priority">> => integer(),
@@ -1839,17 +2013,20 @@
 %% }
 -type hop_destination() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_job_response() :: #{
 %%   <<"Job">> => job()
 %% }
 -type get_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_preset_response() :: #{
 %%   <<"Preset">> => preset()
 %% }
 -type update_preset_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% ms_smooth_additional_manifest() :: #{
@@ -1858,6 +2035,7 @@
 %% }
 -type ms_smooth_additional_manifest() :: #{binary() => any()}.
 
+
 %% Example:
 %% vorbis_settings() :: #{
 %%   <<"Channels">> => integer(),
@@ -1865,6 +2043,7 @@
 %%   <<"VbrQuality">> => integer()
 %% }
 -type vorbis_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% ac3_settings() :: #{
@@ -1880,9 +2059,11 @@
 %%   <<"SampleRate">> => integer()
 %% }
 -type ac3_settings() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% job() :: #{
@@ -1916,11 +2097,13 @@
 %% }
 -type job() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_error_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_server_error_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% embedded_source_settings() :: #{
@@ -1930,6 +2113,7 @@
 %%   <<"TerminateCaptions">> => list(any())
 %% }
 -type embedded_source_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% dash_iso_image_based_trick_play_settings() :: #{
@@ -1941,6 +2125,7 @@
 %%   <<"TileWidth">> => integer()
 %% }
 -type dash_iso_image_based_trick_play_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% container_settings() :: #{
@@ -1956,6 +2141,7 @@
 %% }
 -type container_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% video_overlay_input() :: #{
 %%   <<"FileInput">> => string(),
@@ -1964,9 +2150,11 @@
 %%   <<"TimecodeStart">> => string()
 %% }
 -type video_overlay_input() :: #{binary() => any()}.
+
 %% Example:
 %% get_job_request() :: #{}
 -type get_job_request() :: #{}.
+
 
 %% Example:
 %% cmaf_encryption_settings() :: #{
@@ -1979,11 +2167,13 @@
 %% }
 -type cmaf_encryption_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_preset_response() :: #{
 %%   <<"Preset">> => preset()
 %% }
 -type get_preset_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% caption_description() :: #{
@@ -1994,6 +2184,7 @@
 %%   <<"LanguageDescription">> => string()
 %% }
 -type caption_description() :: #{binary() => any()}.
+
 
 %% Example:
 %% nielsen_non_linear_watermark_settings() :: #{
@@ -2011,6 +2202,7 @@
 %% }
 -type nielsen_non_linear_watermark_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% cmaf_image_based_trick_play_settings() :: #{
 %%   <<"IntervalCadence">> => list(any()),
@@ -2022,6 +2214,7 @@
 %% }
 -type cmaf_image_based_trick_play_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% frame_capture_settings() :: #{
 %%   <<"FramerateDenominator">> => integer(),
@@ -2030,6 +2223,7 @@
 %%   <<"Quality">> => integer()
 %% }
 -type frame_capture_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% m2ts_settings() :: #{
@@ -2077,6 +2271,7 @@
 %% }
 -type m2ts_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% dvb_sdt_settings() :: #{
 %%   <<"OutputSdt">> => list(any()),
@@ -2086,6 +2281,7 @@
 %% }
 -type dvb_sdt_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_queues_response() :: #{
 %%   <<"NextToken">> => string(),
@@ -2093,11 +2289,13 @@
 %% }
 -type list_queues_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% m2ts_scte35_esam() :: #{
 %%   <<"Scte35EsamPid">> => integer()
 %% }
 -type m2ts_scte35_esam() :: #{binary() => any()}.
+
 
 %% Example:
 %% warning_group() :: #{
@@ -2106,11 +2304,13 @@
 %% }
 -type warning_group() :: #{binary() => any()}.
 
+
 %% Example:
 %% srt_destination_settings() :: #{
 %%   <<"StylePassthrough">> => list(any())
 %% }
 -type srt_destination_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% min_bottom_rendition_size() :: #{
@@ -2118,6 +2318,7 @@
 %%   <<"Width">> => integer()
 %% }
 -type min_bottom_rendition_size() :: #{binary() => any()}.
+
 
 %% Example:
 %% eac3_atmos_settings() :: #{
@@ -2141,6 +2342,7 @@
 %% }
 -type eac3_atmos_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% dolby_vision_level6_metadata() :: #{
 %%   <<"MaxCll">> => integer(),
@@ -2148,11 +2350,13 @@
 %% }
 -type dolby_vision_level6_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% f4v_settings() :: #{
 %%   <<"MoovPlacement">> => list(any())
 %% }
 -type f4v_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% input_decryption_settings() :: #{
@@ -2163,11 +2367,13 @@
 %% }
 -type input_decryption_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% channel_mapping() :: #{
 %%   <<"OutputChannels">> => list(output_channel_mapping()())
 %% }
 -type channel_mapping() :: #{binary() => any()}.
+
 
 %% Example:
 %% wav_settings() :: #{
@@ -2178,6 +2384,7 @@
 %% }
 -type wav_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% input_clipping() :: #{
 %%   <<"EndTimecode">> => string(),
@@ -2185,20 +2392,24 @@
 %% }
 -type input_clipping() :: #{binary() => any()}.
 
+
 %% Example:
 %% bad_request_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_queue_response() :: #{
 %%   <<"Queue">> => queue()
 %% }
 -type update_queue_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_queue_request() :: #{}
 -type delete_queue_request() :: #{}.
+
 
 %% Example:
 %% automated_abr_settings() :: #{
@@ -2209,11 +2420,13 @@
 %% }
 -type automated_abr_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% xavc_hd_intra_cbg_profile_settings() :: #{
 %%   <<"XavcClass">> => list(any())
 %% }
 -type xavc_hd_intra_cbg_profile_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% embedded_destination_settings() :: #{
@@ -2222,11 +2435,13 @@
 %% }
 -type embedded_destination_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_policy_request() :: #{
 %%   <<"Policy">> := policy()
 %% }
 -type put_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_job_templates_response() :: #{
@@ -2234,6 +2449,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_job_templates_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% mpd_settings() :: #{
@@ -2251,11 +2467,13 @@
 %% }
 -type mpd_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_preset_response() :: #{
 %%   <<"Preset">> => preset()
 %% }
 -type create_preset_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% caption_source_framerate() :: #{
@@ -2264,6 +2482,7 @@
 %% }
 -type caption_source_framerate() :: #{binary() => any()}.
 
+
 %% Example:
 %% h265_qvbr_settings() :: #{
 %%   <<"MaxAverageBitrate">> => integer(),
@@ -2271,6 +2490,7 @@
 %%   <<"QvbrQualityLevelFineTune">> => float()
 %% }
 -type h265_qvbr_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% audio_normalization_settings() :: #{
@@ -2284,12 +2504,14 @@
 %% }
 -type audio_normalization_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% output_channel_mapping() :: #{
 %%   <<"InputChannels">> => list(integer()()),
 %%   <<"InputChannelsFineTune">> => list(float()())
 %% }
 -type output_channel_mapping() :: #{binary() => any()}.
+
 
 %% Example:
 %% dash_iso_group_settings() :: #{
@@ -2317,18 +2539,22 @@
 %% }
 -type dash_iso_group_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% imsc_destination_settings() :: #{
 %%   <<"Accessibility">> => list(any()),
 %%   <<"StylePassthrough">> => list(any())
 %% }
 -type imsc_destination_settings() :: #{binary() => any()}.
+
 %% Example:
 %% delete_queue_response() :: #{}
 -type delete_queue_response() :: #{}.
+
 %% Example:
 %% cancel_job_response() :: #{}
 -type cancel_job_response() :: #{}.
+
 
 %% Example:
 %% clip_limits() :: #{
@@ -2338,6 +2564,7 @@
 %%   <<"MinimumYUV">> => integer()
 %% }
 -type clip_limits() :: #{binary() => any()}.
+
 
 %% Example:
 %% preset() :: #{
@@ -2352,6 +2579,7 @@
 %% }
 -type preset() :: #{binary() => any()}.
 
+
 %% Example:
 %% noise_reducer_spatial_filter_settings() :: #{
 %%   <<"PostFilterSharpenStrength">> => integer(),
@@ -2359,6 +2587,7 @@
 %%   <<"Strength">> => integer()
 %% }
 -type noise_reducer_spatial_filter_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% vp8_settings() :: #{
@@ -2378,6 +2607,7 @@
 %% }
 -type vp8_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% h264_qvbr_settings() :: #{
 %%   <<"MaxAverageBitrate">> => integer(),
@@ -2386,6 +2616,7 @@
 %% }
 -type h264_qvbr_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% dvb_nit_settings() :: #{
 %%   <<"NetworkId">> => integer(),
@@ -2393,6 +2624,7 @@
 %%   <<"NitInterval">> => integer()
 %% }
 -type dvb_nit_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% vc3_settings() :: #{
@@ -2408,11 +2640,13 @@
 %% }
 -type vc3_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% track_source_settings() :: #{
 %%   <<"TrackNumber">> => integer()
 %% }
 -type track_source_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% cmfc_settings() :: #{
@@ -2433,11 +2667,13 @@
 %% }
 -type cmfc_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_queue_response() :: #{
 %%   <<"Queue">> => queue()
 %% }
 -type create_queue_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% output() :: #{
@@ -2451,6 +2687,7 @@
 %%   <<"VideoDescription">> => video_description()
 %% }
 -type output() :: #{binary() => any()}.
+
 
 %% Example:
 %% insertable_image() :: #{
@@ -2467,6 +2704,7 @@
 %%   <<"Width">> => integer()
 %% }
 -type insertable_image() :: #{binary() => any()}.
+
 
 %% Example:
 %% h264_settings() :: #{
@@ -2516,6 +2754,7 @@
 %% }
 -type h264_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% allowed_rendition_size() :: #{
 %%   <<"Height">> => integer(),
@@ -2524,11 +2763,13 @@
 %% }
 -type allowed_rendition_size() :: #{binary() => any()}.
 
+
 %% Example:
 %% noise_reducer_filter_settings() :: #{
 %%   <<"Strength">> => integer()
 %% }
 -type noise_reducer_filter_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% webvtt_hls_source_settings() :: #{
@@ -2538,11 +2779,236 @@
 %% }
 -type webvtt_hls_source_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% xavc4k_intra_cbg_profile_settings() :: #{
 %%   <<"XavcClass">> => list(any())
 %% }
 -type xavc4k_intra_cbg_profile_settings() :: #{binary() => any()}.
+
+-type associate_certificate_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type cancel_job_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type create_job_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type create_job_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type create_preset_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type create_queue_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type delete_job_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type delete_policy_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type delete_preset_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type delete_queue_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type describe_endpoints_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type disassociate_certificate_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type get_job_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type get_job_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type get_policy_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type get_preset_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type get_queue_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type list_job_templates_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type list_jobs_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type list_presets_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type list_queues_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type list_tags_for_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type put_policy_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type tag_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type untag_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type update_job_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type update_preset_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type update_queue_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
 
 %%====================================================================
 %% API
@@ -2553,24 +3019,14 @@
 -spec associate_certificate(map(), associate_certificate_request()) ->
     {ok, associate_certificate_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, associate_certificate_errors(), tuple()}.
 associate_certificate(Client, Input) ->
     associate_certificate(Client, Input, []).
 
 -spec associate_certificate(map(), associate_certificate_request(), proplists:proplist()) ->
     {ok, associate_certificate_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, associate_certificate_errors(), tuple()}.
 associate_certificate(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2017-08-29/certificates"],
@@ -2599,24 +3055,14 @@ associate_certificate(Client, Input0, Options0) ->
 -spec cancel_job(map(), binary() | list(), cancel_job_request()) ->
     {ok, cancel_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, cancel_job_errors(), tuple()}.
 cancel_job(Client, Id, Input) ->
     cancel_job(Client, Id, Input, []).
 
 -spec cancel_job(map(), binary() | list(), cancel_job_request(), proplists:proplist()) ->
     {ok, cancel_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, cancel_job_errors(), tuple()}.
 cancel_job(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2017-08-29/jobs/", aws_util:encode_uri(Id), ""],
@@ -2646,24 +3092,14 @@ cancel_job(Client, Id, Input0, Options0) ->
 -spec create_job(map(), create_job_request()) ->
     {ok, create_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_job_errors(), tuple()}.
 create_job(Client, Input) ->
     create_job(Client, Input, []).
 
 -spec create_job(map(), create_job_request(), proplists:proplist()) ->
     {ok, create_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_job_errors(), tuple()}.
 create_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2017-08-29/jobs"],
@@ -2693,24 +3129,14 @@ create_job(Client, Input0, Options0) ->
 -spec create_job_template(map(), create_job_template_request()) ->
     {ok, create_job_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_job_template_errors(), tuple()}.
 create_job_template(Client, Input) ->
     create_job_template(Client, Input, []).
 
 -spec create_job_template(map(), create_job_template_request(), proplists:proplist()) ->
     {ok, create_job_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_job_template_errors(), tuple()}.
 create_job_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2017-08-29/jobTemplates"],
@@ -2740,24 +3166,14 @@ create_job_template(Client, Input0, Options0) ->
 -spec create_preset(map(), create_preset_request()) ->
     {ok, create_preset_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_preset_errors(), tuple()}.
 create_preset(Client, Input) ->
     create_preset(Client, Input, []).
 
 -spec create_preset(map(), create_preset_request(), proplists:proplist()) ->
     {ok, create_preset_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_preset_errors(), tuple()}.
 create_preset(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2017-08-29/presets"],
@@ -2787,24 +3203,14 @@ create_preset(Client, Input0, Options0) ->
 -spec create_queue(map(), create_queue_request()) ->
     {ok, create_queue_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_queue_errors(), tuple()}.
 create_queue(Client, Input) ->
     create_queue(Client, Input, []).
 
 -spec create_queue(map(), create_queue_request(), proplists:proplist()) ->
     {ok, create_queue_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_queue_errors(), tuple()}.
 create_queue(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2017-08-29/queues"],
@@ -2831,24 +3237,14 @@ create_queue(Client, Input0, Options0) ->
 -spec delete_job_template(map(), binary() | list(), delete_job_template_request()) ->
     {ok, delete_job_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_job_template_errors(), tuple()}.
 delete_job_template(Client, Name, Input) ->
     delete_job_template(Client, Name, Input, []).
 
 -spec delete_job_template(map(), binary() | list(), delete_job_template_request(), proplists:proplist()) ->
     {ok, delete_job_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_job_template_errors(), tuple()}.
 delete_job_template(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/2017-08-29/jobTemplates/", aws_util:encode_uri(Name), ""],
@@ -2875,24 +3271,14 @@ delete_job_template(Client, Name, Input0, Options0) ->
 -spec delete_policy(map(), delete_policy_request()) ->
     {ok, delete_policy_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_policy_errors(), tuple()}.
 delete_policy(Client, Input) ->
     delete_policy(Client, Input, []).
 
 -spec delete_policy(map(), delete_policy_request(), proplists:proplist()) ->
     {ok, delete_policy_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_policy_errors(), tuple()}.
 delete_policy(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/2017-08-29/policy"],
@@ -2919,24 +3305,14 @@ delete_policy(Client, Input0, Options0) ->
 -spec delete_preset(map(), binary() | list(), delete_preset_request()) ->
     {ok, delete_preset_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_preset_errors(), tuple()}.
 delete_preset(Client, Name, Input) ->
     delete_preset(Client, Name, Input, []).
 
 -spec delete_preset(map(), binary() | list(), delete_preset_request(), proplists:proplist()) ->
     {ok, delete_preset_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_preset_errors(), tuple()}.
 delete_preset(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/2017-08-29/presets/", aws_util:encode_uri(Name), ""],
@@ -2963,24 +3339,14 @@ delete_preset(Client, Name, Input0, Options0) ->
 -spec delete_queue(map(), binary() | list(), delete_queue_request()) ->
     {ok, delete_queue_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_queue_errors(), tuple()}.
 delete_queue(Client, Name, Input) ->
     delete_queue(Client, Name, Input, []).
 
 -spec delete_queue(map(), binary() | list(), delete_queue_request(), proplists:proplist()) ->
     {ok, delete_queue_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_queue_errors(), tuple()}.
 delete_queue(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/2017-08-29/queues/", aws_util:encode_uri(Name), ""],
@@ -3008,24 +3374,14 @@ delete_queue(Client, Name, Input0, Options0) ->
 -spec describe_endpoints(map(), describe_endpoints_request()) ->
     {ok, describe_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_endpoints_errors(), tuple()}.
 describe_endpoints(Client, Input) ->
     describe_endpoints(Client, Input, []).
 
 -spec describe_endpoints(map(), describe_endpoints_request(), proplists:proplist()) ->
     {ok, describe_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_endpoints_errors(), tuple()}.
 describe_endpoints(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2017-08-29/endpoints"],
@@ -3054,24 +3410,14 @@ describe_endpoints(Client, Input0, Options0) ->
 -spec disassociate_certificate(map(), binary() | list(), disassociate_certificate_request()) ->
     {ok, disassociate_certificate_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, disassociate_certificate_errors(), tuple()}.
 disassociate_certificate(Client, Arn, Input) ->
     disassociate_certificate(Client, Arn, Input, []).
 
 -spec disassociate_certificate(map(), binary() | list(), disassociate_certificate_request(), proplists:proplist()) ->
     {ok, disassociate_certificate_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, disassociate_certificate_errors(), tuple()}.
 disassociate_certificate(Client, Arn, Input0, Options0) ->
     Method = delete,
     Path = ["/2017-08-29/certificates/", aws_util:encode_uri(Arn), ""],
@@ -3098,12 +3444,7 @@ disassociate_certificate(Client, Arn, Input0, Options0) ->
 -spec get_job(map(), binary() | list()) ->
     {ok, get_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_job_errors(), tuple()}.
 get_job(Client, Id)
   when is_map(Client) ->
     get_job(Client, Id, #{}, #{}).
@@ -3111,12 +3452,7 @@ get_job(Client, Id)
 -spec get_job(map(), binary() | list(), map(), map()) ->
     {ok, get_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_job_errors(), tuple()}.
 get_job(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_job(Client, Id, QueryMap, HeadersMap, []).
@@ -3124,12 +3460,7 @@ get_job(Client, Id, QueryMap, HeadersMap)
 -spec get_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_job_errors(), tuple()}.
 get_job(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2017-08-29/jobs/", aws_util:encode_uri(Id), ""],
@@ -3150,12 +3481,7 @@ get_job(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_job_template(map(), binary() | list()) ->
     {ok, get_job_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_job_template_errors(), tuple()}.
 get_job_template(Client, Name)
   when is_map(Client) ->
     get_job_template(Client, Name, #{}, #{}).
@@ -3163,12 +3489,7 @@ get_job_template(Client, Name)
 -spec get_job_template(map(), binary() | list(), map(), map()) ->
     {ok, get_job_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_job_template_errors(), tuple()}.
 get_job_template(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_job_template(Client, Name, QueryMap, HeadersMap, []).
@@ -3176,12 +3497,7 @@ get_job_template(Client, Name, QueryMap, HeadersMap)
 -spec get_job_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_job_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_job_template_errors(), tuple()}.
 get_job_template(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2017-08-29/jobTemplates/", aws_util:encode_uri(Name), ""],
@@ -3202,12 +3518,7 @@ get_job_template(Client, Name, QueryMap, HeadersMap, Options0)
 -spec get_policy(map()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_policy_errors(), tuple()}.
 get_policy(Client)
   when is_map(Client) ->
     get_policy(Client, #{}, #{}).
@@ -3215,12 +3526,7 @@ get_policy(Client)
 -spec get_policy(map(), map(), map()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_policy_errors(), tuple()}.
 get_policy(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_policy(Client, QueryMap, HeadersMap, []).
@@ -3228,12 +3534,7 @@ get_policy(Client, QueryMap, HeadersMap)
 -spec get_policy(map(), map(), map(), proplists:proplist()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_policy_errors(), tuple()}.
 get_policy(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2017-08-29/policy"],
@@ -3254,12 +3555,7 @@ get_policy(Client, QueryMap, HeadersMap, Options0)
 -spec get_preset(map(), binary() | list()) ->
     {ok, get_preset_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_preset_errors(), tuple()}.
 get_preset(Client, Name)
   when is_map(Client) ->
     get_preset(Client, Name, #{}, #{}).
@@ -3267,12 +3563,7 @@ get_preset(Client, Name)
 -spec get_preset(map(), binary() | list(), map(), map()) ->
     {ok, get_preset_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_preset_errors(), tuple()}.
 get_preset(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_preset(Client, Name, QueryMap, HeadersMap, []).
@@ -3280,12 +3571,7 @@ get_preset(Client, Name, QueryMap, HeadersMap)
 -spec get_preset(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_preset_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_preset_errors(), tuple()}.
 get_preset(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2017-08-29/presets/", aws_util:encode_uri(Name), ""],
@@ -3306,12 +3592,7 @@ get_preset(Client, Name, QueryMap, HeadersMap, Options0)
 -spec get_queue(map(), binary() | list()) ->
     {ok, get_queue_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_queue_errors(), tuple()}.
 get_queue(Client, Name)
   when is_map(Client) ->
     get_queue(Client, Name, #{}, #{}).
@@ -3319,12 +3600,7 @@ get_queue(Client, Name)
 -spec get_queue(map(), binary() | list(), map(), map()) ->
     {ok, get_queue_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_queue_errors(), tuple()}.
 get_queue(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_queue(Client, Name, QueryMap, HeadersMap, []).
@@ -3332,12 +3608,7 @@ get_queue(Client, Name, QueryMap, HeadersMap)
 -spec get_queue(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_queue_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_queue_errors(), tuple()}.
 get_queue(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2017-08-29/queues/", aws_util:encode_uri(Name), ""],
@@ -3362,12 +3633,7 @@ get_queue(Client, Name, QueryMap, HeadersMap, Options0)
 -spec list_job_templates(map()) ->
     {ok, list_job_templates_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_job_templates_errors(), tuple()}.
 list_job_templates(Client)
   when is_map(Client) ->
     list_job_templates(Client, #{}, #{}).
@@ -3375,12 +3641,7 @@ list_job_templates(Client)
 -spec list_job_templates(map(), map(), map()) ->
     {ok, list_job_templates_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_job_templates_errors(), tuple()}.
 list_job_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_job_templates(Client, QueryMap, HeadersMap, []).
@@ -3388,12 +3649,7 @@ list_job_templates(Client, QueryMap, HeadersMap)
 -spec list_job_templates(map(), map(), map(), proplists:proplist()) ->
     {ok, list_job_templates_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_job_templates_errors(), tuple()}.
 list_job_templates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2017-08-29/jobTemplates"],
@@ -3428,12 +3684,7 @@ list_job_templates(Client, QueryMap, HeadersMap, Options0)
 -spec list_jobs(map()) ->
     {ok, list_jobs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_jobs_errors(), tuple()}.
 list_jobs(Client)
   when is_map(Client) ->
     list_jobs(Client, #{}, #{}).
@@ -3441,12 +3692,7 @@ list_jobs(Client)
 -spec list_jobs(map(), map(), map()) ->
     {ok, list_jobs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_jobs_errors(), tuple()}.
 list_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_jobs(Client, QueryMap, HeadersMap, []).
@@ -3454,12 +3700,7 @@ list_jobs(Client, QueryMap, HeadersMap)
 -spec list_jobs(map(), map(), map(), proplists:proplist()) ->
     {ok, list_jobs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_jobs_errors(), tuple()}.
 list_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2017-08-29/jobs"],
@@ -3492,12 +3733,7 @@ list_jobs(Client, QueryMap, HeadersMap, Options0)
 -spec list_presets(map()) ->
     {ok, list_presets_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_presets_errors(), tuple()}.
 list_presets(Client)
   when is_map(Client) ->
     list_presets(Client, #{}, #{}).
@@ -3505,12 +3741,7 @@ list_presets(Client)
 -spec list_presets(map(), map(), map()) ->
     {ok, list_presets_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_presets_errors(), tuple()}.
 list_presets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_presets(Client, QueryMap, HeadersMap, []).
@@ -3518,12 +3749,7 @@ list_presets(Client, QueryMap, HeadersMap)
 -spec list_presets(map(), map(), map(), proplists:proplist()) ->
     {ok, list_presets_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_presets_errors(), tuple()}.
 list_presets(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2017-08-29/presets"],
@@ -3556,12 +3782,7 @@ list_presets(Client, QueryMap, HeadersMap, Options0)
 -spec list_queues(map()) ->
     {ok, list_queues_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_queues_errors(), tuple()}.
 list_queues(Client)
   when is_map(Client) ->
     list_queues(Client, #{}, #{}).
@@ -3569,12 +3790,7 @@ list_queues(Client)
 -spec list_queues(map(), map(), map()) ->
     {ok, list_queues_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_queues_errors(), tuple()}.
 list_queues(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_queues(Client, QueryMap, HeadersMap, []).
@@ -3582,12 +3798,7 @@ list_queues(Client, QueryMap, HeadersMap)
 -spec list_queues(map(), map(), map(), proplists:proplist()) ->
     {ok, list_queues_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_queues_errors(), tuple()}.
 list_queues(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2017-08-29/queues"],
@@ -3615,12 +3826,7 @@ list_queues(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Arn)
   when is_map(Client) ->
     list_tags_for_resource(Client, Arn, #{}, #{}).
@@ -3628,12 +3834,7 @@ list_tags_for_resource(Client, Arn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, []).
@@ -3641,12 +3842,7 @@ list_tags_for_resource(Client, Arn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2017-08-29/tags/", aws_util:encode_uri(Arn), ""],
@@ -3670,24 +3866,14 @@ list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, Options0)
 -spec put_policy(map(), put_policy_request()) ->
     {ok, put_policy_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_policy_errors(), tuple()}.
 put_policy(Client, Input) ->
     put_policy(Client, Input, []).
 
 -spec put_policy(map(), put_policy_request(), proplists:proplist()) ->
     {ok, put_policy_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_policy_errors(), tuple()}.
 put_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/2017-08-29/policy"],
@@ -3717,24 +3903,14 @@ put_policy(Client, Input0, Options0) ->
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2017-08-29/tags"],
@@ -3764,24 +3940,14 @@ tag_resource(Client, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Arn, Input) ->
     untag_resource(Client, Arn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Arn, Input0, Options0) ->
     Method = put,
     Path = ["/2017-08-29/tags/", aws_util:encode_uri(Arn), ""],
@@ -3808,24 +3974,14 @@ untag_resource(Client, Arn, Input0, Options0) ->
 -spec update_job_template(map(), binary() | list(), update_job_template_request()) ->
     {ok, update_job_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_job_template_errors(), tuple()}.
 update_job_template(Client, Name, Input) ->
     update_job_template(Client, Name, Input, []).
 
 -spec update_job_template(map(), binary() | list(), update_job_template_request(), proplists:proplist()) ->
     {ok, update_job_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_job_template_errors(), tuple()}.
 update_job_template(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/2017-08-29/jobTemplates/", aws_util:encode_uri(Name), ""],
@@ -3852,24 +4008,14 @@ update_job_template(Client, Name, Input0, Options0) ->
 -spec update_preset(map(), binary() | list(), update_preset_request()) ->
     {ok, update_preset_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_preset_errors(), tuple()}.
 update_preset(Client, Name, Input) ->
     update_preset(Client, Name, Input, []).
 
 -spec update_preset(map(), binary() | list(), update_preset_request(), proplists:proplist()) ->
     {ok, update_preset_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_preset_errors(), tuple()}.
 update_preset(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/2017-08-29/presets/", aws_util:encode_uri(Name), ""],
@@ -3896,24 +4042,14 @@ update_preset(Client, Name, Input0, Options0) ->
 -spec update_queue(map(), binary() | list(), update_queue_request()) ->
     {ok, update_queue_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_queue_errors(), tuple()}.
 update_queue(Client, Name, Input) ->
     update_queue(Client, Name, Input, []).
 
 -spec update_queue(map(), binary() | list(), update_queue_request(), proplists:proplist()) ->
     {ok, update_queue_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_queue_errors(), tuple()}.
 update_queue(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/2017-08-29/queues/", aws_util:encode_uri(Name), ""],

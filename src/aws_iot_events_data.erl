@@ -53,11 +53,13 @@
 %% }
 -type internal_failure_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_reset_alarm_response() :: #{
 %%   <<"errorEntries">> => list(batch_alarm_action_error_entry()())
 %% }
 -type batch_reset_alarm_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_alarm_action_error_entry() :: #{
@@ -67,6 +69,7 @@
 %% }
 -type batch_alarm_action_error_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% detector_state() :: #{
 %%   <<"stateName">> => string(),
@@ -75,11 +78,13 @@
 %% }
 -type detector_state() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_snooze_alarm_request() :: #{
 %%   <<"snoozeActionRequests">> := list(snooze_alarm_action_request()())
 %% }
 -type batch_snooze_alarm_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% alarm() :: #{
@@ -93,6 +98,7 @@
 %% }
 -type alarm() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_alarms_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -100,11 +106,13 @@
 %% }
 -type list_alarms_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% acknowledge_action_configuration() :: #{
 %%   <<"note">> => string()
 %% }
 -type acknowledge_action_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% timer() :: #{
@@ -113,6 +121,7 @@
 %% }
 -type timer() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_detectors_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -120,6 +129,7 @@
 %%   <<"stateName">> => string()
 %% }
 -type list_detectors_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% disable_alarm_action_request() :: #{
@@ -130,11 +140,13 @@
 %% }
 -type disable_alarm_action_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_acknowledge_alarm_response() :: #{
 %%   <<"errorEntries">> => list(batch_alarm_action_error_entry()())
 %% }
 -type batch_acknowledge_alarm_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% reset_alarm_action_request() :: #{
@@ -145,11 +157,13 @@
 %% }
 -type reset_alarm_action_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_put_message_request() :: #{
 %%   <<"messages">> := list(message()())
 %% }
 -type batch_put_message_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% enable_action_configuration() :: #{
@@ -157,17 +171,20 @@
 %% }
 -type enable_action_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_delete_detector_response() :: #{
 %%   <<"batchDeleteDetectorErrorEntries">> => list(batch_delete_detector_error_entry()())
 %% }
 -type batch_delete_detector_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_detector_request() :: #{
 %%   <<"keyValue">> => string()
 %% }
 -type describe_detector_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% alarm_summary() :: #{
@@ -180,6 +197,7 @@
 %% }
 -type alarm_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% simple_rule_evaluation() :: #{
 %%   <<"inputPropertyValue">> => string(),
@@ -188,11 +206,13 @@
 %% }
 -type simple_rule_evaluation() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_acknowledge_alarm_request() :: #{
 %%   <<"acknowledgeActionRequests">> := list(acknowledge_alarm_action_request()())
 %% }
 -type batch_acknowledge_alarm_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% acknowledge_alarm_action_request() :: #{
@@ -203,17 +223,20 @@
 %% }
 -type acknowledge_alarm_action_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% detector_state_summary() :: #{
 %%   <<"stateName">> => string()
 %% }
 -type detector_state_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% timer_definition() :: #{
@@ -222,11 +245,13 @@
 %% }
 -type timer_definition() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_request_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_request_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_update_detector_request() :: #{
@@ -234,11 +259,13 @@
 %% }
 -type batch_update_detector_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_snooze_alarm_response() :: #{
 %%   <<"errorEntries">> => list(batch_alarm_action_error_entry()())
 %% }
 -type batch_snooze_alarm_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% customer_action() :: #{
@@ -251,11 +278,13 @@
 %% }
 -type customer_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% disable_action_configuration() :: #{
 %%   <<"note">> => string()
 %% }
 -type disable_action_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% detector_state_definition() :: #{
@@ -265,6 +294,7 @@
 %% }
 -type detector_state_definition() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_update_detector_error_entry() :: #{
 %%   <<"errorCode">> => list(any()),
@@ -272,6 +302,7 @@
 %%   <<"messageId">> => string()
 %% }
 -type batch_update_detector_error_entry() :: #{binary() => any()}.
+
 
 %% Example:
 %% detector_summary() :: #{
@@ -284,11 +315,13 @@
 %% }
 -type detector_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_unavailable_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% variable() :: #{
@@ -297,11 +330,13 @@
 %% }
 -type variable() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_disable_alarm_request() :: #{
 %%   <<"disableActionRequests">> := list(disable_alarm_action_request()())
 %% }
 -type batch_disable_alarm_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_alarms_response() :: #{
@@ -310,11 +345,13 @@
 %% }
 -type list_alarms_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% reset_action_configuration() :: #{
 %%   <<"note">> => string()
 %% }
 -type reset_action_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_alarm_response() :: #{
@@ -322,11 +359,13 @@
 %% }
 -type describe_alarm_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_enable_alarm_request() :: #{
 %%   <<"enableActionRequests">> := list(enable_alarm_action_request()())
 %% }
 -type batch_enable_alarm_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_reset_alarm_request() :: #{
@@ -334,11 +373,13 @@
 %% }
 -type batch_reset_alarm_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_detector_response() :: #{
 %%   <<"detector">> => detector()
 %% }
 -type describe_detector_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_delete_detector_request() :: #{
@@ -346,12 +387,14 @@
 %% }
 -type batch_delete_detector_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_detectors_response() :: #{
 %%   <<"detectorSummaries">> => list(detector_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_detectors_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% alarm_state() :: #{
@@ -362,11 +405,13 @@
 %% }
 -type alarm_state() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% variable_definition() :: #{
@@ -375,17 +420,20 @@
 %% }
 -type variable_definition() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_alarm_request() :: #{
 %%   <<"keyValue">> => string()
 %% }
 -type describe_alarm_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% state_change_configuration() :: #{
 %%   <<"triggerType">> => list(any())
 %% }
 -type state_change_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_put_message_error_entry() :: #{
@@ -395,12 +443,14 @@
 %% }
 -type batch_put_message_error_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% snooze_action_configuration() :: #{
 %%   <<"note">> => string(),
 %%   <<"snoozeDuration">> => integer()
 %% }
 -type snooze_action_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% snooze_alarm_action_request() :: #{
@@ -412,6 +462,7 @@
 %% }
 -type snooze_alarm_action_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% system_event() :: #{
 %%   <<"eventType">> => list(any()),
@@ -419,17 +470,20 @@
 %% }
 -type system_event() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_update_detector_response() :: #{
 %%   <<"batchUpdateDetectorErrorEntries">> => list(batch_update_detector_error_entry()())
 %% }
 -type batch_update_detector_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_enable_alarm_response() :: #{
 %%   <<"errorEntries">> => list(batch_alarm_action_error_entry()())
 %% }
 -type batch_enable_alarm_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_delete_detector_error_entry() :: #{
@@ -438,6 +492,7 @@
 %%   <<"messageId">> => string()
 %% }
 -type batch_delete_detector_error_entry() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_detector_request() :: #{
@@ -448,17 +503,20 @@
 %% }
 -type update_detector_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_put_message_response() :: #{
 %%   <<"BatchPutMessageErrorEntries">> => list(batch_put_message_error_entry()())
 %% }
 -type batch_put_message_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% rule_evaluation() :: #{
 %%   <<"simpleRuleEvaluation">> => simple_rule_evaluation()
 %% }
 -type rule_evaluation() :: #{binary() => any()}.
+
 
 %% Example:
 %% detector() :: #{
@@ -471,17 +529,20 @@
 %% }
 -type detector() :: #{binary() => any()}.
 
+
 %% Example:
 %% timestamp_value() :: #{
 %%   <<"timeInMillis">> => float()
 %% }
 -type timestamp_value() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_disable_alarm_response() :: #{
 %%   <<"errorEntries">> => list(batch_alarm_action_error_entry()())
 %% }
 -type batch_disable_alarm_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% message() :: #{
@@ -492,6 +553,7 @@
 %% }
 -type message() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_detector_request() :: #{
 %%   <<"detectorModelName">> => string(),
@@ -499,6 +561,7 @@
 %%   <<"messageId">> => string()
 %% }
 -type delete_detector_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% enable_alarm_action_request() :: #{
@@ -508,6 +571,82 @@
 %%   <<"requestId">> => string()
 %% }
 -type enable_alarm_action_request() :: #{binary() => any()}.
+
+-type batch_acknowledge_alarm_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type batch_delete_detector_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type batch_disable_alarm_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type batch_enable_alarm_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type batch_put_message_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type batch_reset_alarm_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type batch_snooze_alarm_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type batch_update_detector_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type describe_alarm_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_detector_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_alarms_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_detectors_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
 
 %%====================================================================
 %% API
@@ -520,20 +659,14 @@
 -spec batch_acknowledge_alarm(map(), batch_acknowledge_alarm_request()) ->
     {ok, batch_acknowledge_alarm_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_acknowledge_alarm_errors(), tuple()}.
 batch_acknowledge_alarm(Client, Input) ->
     batch_acknowledge_alarm(Client, Input, []).
 
 -spec batch_acknowledge_alarm(map(), batch_acknowledge_alarm_request(), proplists:proplist()) ->
     {ok, batch_acknowledge_alarm_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_acknowledge_alarm_errors(), tuple()}.
 batch_acknowledge_alarm(Client, Input0, Options0) ->
     Method = post,
     Path = ["/alarms/acknowledge"],
@@ -566,20 +699,14 @@ batch_acknowledge_alarm(Client, Input0, Options0) ->
 -spec batch_delete_detector(map(), batch_delete_detector_request()) ->
     {ok, batch_delete_detector_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_delete_detector_errors(), tuple()}.
 batch_delete_detector(Client, Input) ->
     batch_delete_detector(Client, Input, []).
 
 -spec batch_delete_detector(map(), batch_delete_detector_request(), proplists:proplist()) ->
     {ok, batch_delete_detector_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_delete_detector_errors(), tuple()}.
 batch_delete_detector(Client, Input0, Options0) ->
     Method = post,
     Path = ["/detectors/delete"],
@@ -609,20 +736,14 @@ batch_delete_detector(Client, Input0, Options0) ->
 -spec batch_disable_alarm(map(), batch_disable_alarm_request()) ->
     {ok, batch_disable_alarm_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_disable_alarm_errors(), tuple()}.
 batch_disable_alarm(Client, Input) ->
     batch_disable_alarm(Client, Input, []).
 
 -spec batch_disable_alarm(map(), batch_disable_alarm_request(), proplists:proplist()) ->
     {ok, batch_disable_alarm_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_disable_alarm_errors(), tuple()}.
 batch_disable_alarm(Client, Input0, Options0) ->
     Method = post,
     Path = ["/alarms/disable"],
@@ -652,20 +773,14 @@ batch_disable_alarm(Client, Input0, Options0) ->
 -spec batch_enable_alarm(map(), batch_enable_alarm_request()) ->
     {ok, batch_enable_alarm_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_enable_alarm_errors(), tuple()}.
 batch_enable_alarm(Client, Input) ->
     batch_enable_alarm(Client, Input, []).
 
 -spec batch_enable_alarm(map(), batch_enable_alarm_request(), proplists:proplist()) ->
     {ok, batch_enable_alarm_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_enable_alarm_errors(), tuple()}.
 batch_enable_alarm(Client, Input0, Options0) ->
     Method = post,
     Path = ["/alarms/enable"],
@@ -701,20 +816,14 @@ batch_enable_alarm(Client, Input0, Options0) ->
 -spec batch_put_message(map(), batch_put_message_request()) ->
     {ok, batch_put_message_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_put_message_errors(), tuple()}.
 batch_put_message(Client, Input) ->
     batch_put_message(Client, Input, []).
 
 -spec batch_put_message(map(), batch_put_message_request(), proplists:proplist()) ->
     {ok, batch_put_message_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_put_message_errors(), tuple()}.
 batch_put_message(Client, Input0, Options0) ->
     Method = post,
     Path = ["/inputs/messages"],
@@ -744,20 +853,14 @@ batch_put_message(Client, Input0, Options0) ->
 -spec batch_reset_alarm(map(), batch_reset_alarm_request()) ->
     {ok, batch_reset_alarm_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_reset_alarm_errors(), tuple()}.
 batch_reset_alarm(Client, Input) ->
     batch_reset_alarm(Client, Input, []).
 
 -spec batch_reset_alarm(map(), batch_reset_alarm_request(), proplists:proplist()) ->
     {ok, batch_reset_alarm_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_reset_alarm_errors(), tuple()}.
 batch_reset_alarm(Client, Input0, Options0) ->
     Method = post,
     Path = ["/alarms/reset"],
@@ -787,20 +890,14 @@ batch_reset_alarm(Client, Input0, Options0) ->
 -spec batch_snooze_alarm(map(), batch_snooze_alarm_request()) ->
     {ok, batch_snooze_alarm_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_snooze_alarm_errors(), tuple()}.
 batch_snooze_alarm(Client, Input) ->
     batch_snooze_alarm(Client, Input, []).
 
 -spec batch_snooze_alarm(map(), batch_snooze_alarm_request(), proplists:proplist()) ->
     {ok, batch_snooze_alarm_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_snooze_alarm_errors(), tuple()}.
 batch_snooze_alarm(Client, Input0, Options0) ->
     Method = post,
     Path = ["/alarms/snooze"],
@@ -829,20 +926,14 @@ batch_snooze_alarm(Client, Input0, Options0) ->
 -spec batch_update_detector(map(), batch_update_detector_request()) ->
     {ok, batch_update_detector_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_update_detector_errors(), tuple()}.
 batch_update_detector(Client, Input) ->
     batch_update_detector(Client, Input, []).
 
 -spec batch_update_detector(map(), batch_update_detector_request(), proplists:proplist()) ->
     {ok, batch_update_detector_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, batch_update_detector_errors(), tuple()}.
 batch_update_detector(Client, Input0, Options0) ->
     Method = post,
     Path = ["/detectors"],
@@ -869,11 +960,7 @@ batch_update_detector(Client, Input0, Options0) ->
 -spec describe_alarm(map(), binary() | list()) ->
     {ok, describe_alarm_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_alarm_errors(), tuple()}.
 describe_alarm(Client, AlarmModelName)
   when is_map(Client) ->
     describe_alarm(Client, AlarmModelName, #{}, #{}).
@@ -881,11 +968,7 @@ describe_alarm(Client, AlarmModelName)
 -spec describe_alarm(map(), binary() | list(), map(), map()) ->
     {ok, describe_alarm_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_alarm_errors(), tuple()}.
 describe_alarm(Client, AlarmModelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_alarm(Client, AlarmModelName, QueryMap, HeadersMap, []).
@@ -893,11 +976,7 @@ describe_alarm(Client, AlarmModelName, QueryMap, HeadersMap)
 -spec describe_alarm(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_alarm_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_alarm_errors(), tuple()}.
 describe_alarm(Client, AlarmModelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/alarms/", aws_util:encode_uri(AlarmModelName), "/keyValues"],
@@ -922,11 +1001,7 @@ describe_alarm(Client, AlarmModelName, QueryMap, HeadersMap, Options0)
 -spec describe_detector(map(), binary() | list()) ->
     {ok, describe_detector_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_detector_errors(), tuple()}.
 describe_detector(Client, DetectorModelName)
   when is_map(Client) ->
     describe_detector(Client, DetectorModelName, #{}, #{}).
@@ -934,11 +1009,7 @@ describe_detector(Client, DetectorModelName)
 -spec describe_detector(map(), binary() | list(), map(), map()) ->
     {ok, describe_detector_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_detector_errors(), tuple()}.
 describe_detector(Client, DetectorModelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_detector(Client, DetectorModelName, QueryMap, HeadersMap, []).
@@ -946,11 +1017,7 @@ describe_detector(Client, DetectorModelName, QueryMap, HeadersMap)
 -spec describe_detector(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_detector_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_detector_errors(), tuple()}.
 describe_detector(Client, DetectorModelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detectors/", aws_util:encode_uri(DetectorModelName), "/keyValues"],
@@ -978,11 +1045,7 @@ describe_detector(Client, DetectorModelName, QueryMap, HeadersMap, Options0)
 -spec list_alarms(map(), binary() | list()) ->
     {ok, list_alarms_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_alarms_errors(), tuple()}.
 list_alarms(Client, AlarmModelName)
   when is_map(Client) ->
     list_alarms(Client, AlarmModelName, #{}, #{}).
@@ -990,11 +1053,7 @@ list_alarms(Client, AlarmModelName)
 -spec list_alarms(map(), binary() | list(), map(), map()) ->
     {ok, list_alarms_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_alarms_errors(), tuple()}.
 list_alarms(Client, AlarmModelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_alarms(Client, AlarmModelName, QueryMap, HeadersMap, []).
@@ -1002,11 +1061,7 @@ list_alarms(Client, AlarmModelName, QueryMap, HeadersMap)
 -spec list_alarms(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_alarms_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_alarms_errors(), tuple()}.
 list_alarms(Client, AlarmModelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/alarms/", aws_util:encode_uri(AlarmModelName), ""],
@@ -1032,11 +1087,7 @@ list_alarms(Client, AlarmModelName, QueryMap, HeadersMap, Options0)
 -spec list_detectors(map(), binary() | list()) ->
     {ok, list_detectors_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_detectors_errors(), tuple()}.
 list_detectors(Client, DetectorModelName)
   when is_map(Client) ->
     list_detectors(Client, DetectorModelName, #{}, #{}).
@@ -1044,11 +1095,7 @@ list_detectors(Client, DetectorModelName)
 -spec list_detectors(map(), binary() | list(), map(), map()) ->
     {ok, list_detectors_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_detectors_errors(), tuple()}.
 list_detectors(Client, DetectorModelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_detectors(Client, DetectorModelName, QueryMap, HeadersMap, []).
@@ -1056,11 +1103,7 @@ list_detectors(Client, DetectorModelName, QueryMap, HeadersMap)
 -spec list_detectors(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_detectors_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_detectors_errors(), tuple()}.
 list_detectors(Client, DetectorModelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detectors/", aws_util:encode_uri(DetectorModelName), ""],

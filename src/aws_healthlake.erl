@@ -384,6 +384,82 @@
 %% }
 -type describe_fhir_datastore_response() :: #{binary() => any()}.
 
+-type create_fhir_datastore_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type delete_fhir_datastore_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_fhir_datastore_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_fhir_export_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_fhir_import_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_fhir_datastores_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_fhir_export_jobs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_fhir_import_jobs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type start_fhir_export_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type start_fhir_import_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -393,10 +469,7 @@
 -spec create_fhir_datastore(map(), create_fhir_datastore_request()) ->
     {ok, create_fhir_datastore_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_fhir_datastore_errors(), tuple()}.
 create_fhir_datastore(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_fhir_datastore(Client, Input, []).
@@ -404,10 +477,7 @@ create_fhir_datastore(Client, Input)
 -spec create_fhir_datastore(map(), create_fhir_datastore_request(), proplists:proplist()) ->
     {ok, create_fhir_datastore_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_fhir_datastore_errors(), tuple()}.
 create_fhir_datastore(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFHIRDatastore">>, Input, Options).
@@ -416,12 +486,7 @@ create_fhir_datastore(Client, Input, Options)
 -spec delete_fhir_datastore(map(), delete_fhir_datastore_request()) ->
     {ok, delete_fhir_datastore_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_fhir_datastore_errors(), tuple()}.
 delete_fhir_datastore(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_fhir_datastore(Client, Input, []).
@@ -429,12 +494,7 @@ delete_fhir_datastore(Client, Input)
 -spec delete_fhir_datastore(map(), delete_fhir_datastore_request(), proplists:proplist()) ->
     {ok, delete_fhir_datastore_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_fhir_datastore_errors(), tuple()}.
 delete_fhir_datastore(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFHIRDatastore">>, Input, Options).
@@ -446,10 +506,7 @@ delete_fhir_datastore(Client, Input, Options)
 -spec describe_fhir_datastore(map(), describe_fhir_datastore_request()) ->
     {ok, describe_fhir_datastore_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_fhir_datastore_errors(), tuple()}.
 describe_fhir_datastore(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fhir_datastore(Client, Input, []).
@@ -457,10 +514,7 @@ describe_fhir_datastore(Client, Input)
 -spec describe_fhir_datastore(map(), describe_fhir_datastore_request(), proplists:proplist()) ->
     {ok, describe_fhir_datastore_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_fhir_datastore_errors(), tuple()}.
 describe_fhir_datastore(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFHIRDatastore">>, Input, Options).
@@ -470,10 +524,7 @@ describe_fhir_datastore(Client, Input, Options)
 -spec describe_fhir_export_job(map(), describe_fhir_export_job_request()) ->
     {ok, describe_fhir_export_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_fhir_export_job_errors(), tuple()}.
 describe_fhir_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fhir_export_job(Client, Input, []).
@@ -481,10 +532,7 @@ describe_fhir_export_job(Client, Input)
 -spec describe_fhir_export_job(map(), describe_fhir_export_job_request(), proplists:proplist()) ->
     {ok, describe_fhir_export_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_fhir_export_job_errors(), tuple()}.
 describe_fhir_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFHIRExportJob">>, Input, Options).
@@ -494,10 +542,7 @@ describe_fhir_export_job(Client, Input, Options)
 -spec describe_fhir_import_job(map(), describe_fhir_import_job_request()) ->
     {ok, describe_fhir_import_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_fhir_import_job_errors(), tuple()}.
 describe_fhir_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fhir_import_job(Client, Input, []).
@@ -505,10 +550,7 @@ describe_fhir_import_job(Client, Input)
 -spec describe_fhir_import_job(map(), describe_fhir_import_job_request(), proplists:proplist()) ->
     {ok, describe_fhir_import_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_fhir_import_job_errors(), tuple()}.
 describe_fhir_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFHIRImportJob">>, Input, Options).
@@ -518,9 +560,7 @@ describe_fhir_import_job(Client, Input, Options)
 -spec list_fhir_datastores(map(), list_fhir_datastores_request()) ->
     {ok, list_fhir_datastores_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_fhir_datastores_errors(), tuple()}.
 list_fhir_datastores(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_fhir_datastores(Client, Input, []).
@@ -528,9 +568,7 @@ list_fhir_datastores(Client, Input)
 -spec list_fhir_datastores(map(), list_fhir_datastores_request(), proplists:proplist()) ->
     {ok, list_fhir_datastores_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_fhir_datastores_errors(), tuple()}.
 list_fhir_datastores(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFHIRDatastores">>, Input, Options).
@@ -540,11 +578,7 @@ list_fhir_datastores(Client, Input, Options)
 -spec list_fhir_export_jobs(map(), list_fhir_export_jobs_request()) ->
     {ok, list_fhir_export_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_fhir_export_jobs_errors(), tuple()}.
 list_fhir_export_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_fhir_export_jobs(Client, Input, []).
@@ -552,11 +586,7 @@ list_fhir_export_jobs(Client, Input)
 -spec list_fhir_export_jobs(map(), list_fhir_export_jobs_request(), proplists:proplist()) ->
     {ok, list_fhir_export_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_fhir_export_jobs_errors(), tuple()}.
 list_fhir_export_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFHIRExportJobs">>, Input, Options).
@@ -566,11 +596,7 @@ list_fhir_export_jobs(Client, Input, Options)
 -spec list_fhir_import_jobs(map(), list_fhir_import_jobs_request()) ->
     {ok, list_fhir_import_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_fhir_import_jobs_errors(), tuple()}.
 list_fhir_import_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_fhir_import_jobs(Client, Input, []).
@@ -578,11 +604,7 @@ list_fhir_import_jobs(Client, Input)
 -spec list_fhir_import_jobs(map(), list_fhir_import_jobs_request(), proplists:proplist()) ->
     {ok, list_fhir_import_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_fhir_import_jobs_errors(), tuple()}.
 list_fhir_import_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFHIRImportJobs">>, Input, Options).
@@ -592,8 +614,7 @@ list_fhir_import_jobs(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -601,8 +622,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -611,11 +631,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec start_fhir_export_job(map(), start_fhir_export_job_request()) ->
     {ok, start_fhir_export_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_fhir_export_job_errors(), tuple()}.
 start_fhir_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_fhir_export_job(Client, Input, []).
@@ -623,11 +639,7 @@ start_fhir_export_job(Client, Input)
 -spec start_fhir_export_job(map(), start_fhir_export_job_request(), proplists:proplist()) ->
     {ok, start_fhir_export_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_fhir_export_job_errors(), tuple()}.
 start_fhir_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartFHIRExportJob">>, Input, Options).
@@ -636,11 +648,7 @@ start_fhir_export_job(Client, Input, Options)
 -spec start_fhir_import_job(map(), start_fhir_import_job_request()) ->
     {ok, start_fhir_import_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_fhir_import_job_errors(), tuple()}.
 start_fhir_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_fhir_import_job(Client, Input, []).
@@ -648,11 +656,7 @@ start_fhir_import_job(Client, Input)
 -spec start_fhir_import_job(map(), start_fhir_import_job_request(), proplists:proplist()) ->
     {ok, start_fhir_import_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_fhir_import_job_errors(), tuple()}.
 start_fhir_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartFHIRImportJob">>, Input, Options).
@@ -662,8 +666,7 @@ start_fhir_import_job(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -671,8 +674,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -682,8 +684,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -691,8 +692,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).

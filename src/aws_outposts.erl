@@ -87,6 +87,7 @@
 %% get_connection_request() :: #{}
 -type get_connection_request() :: #{}.
 
+
 %% Example:
 %% get_outpost_instance_types_input() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -94,11 +95,13 @@
 %% }
 -type get_outpost_instance_types_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% instance_type_item() :: #{
 %%   <<"InstanceType">> => string()
 %% }
 -type instance_type_item() :: #{binary() => any()}.
+
 
 %% Example:
 %% tag_resource_request() :: #{
@@ -106,12 +109,14 @@
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_connection_response() :: #{
 %%   <<"ConnectionId">> => string(),
 %%   <<"UnderlayIpAddress">> => string()
 %% }
 -type start_connection_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_assets_input() :: #{
@@ -122,17 +127,21 @@
 %% }
 -type list_assets_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_location() :: #{
 %%   <<"RackElevation">> => float()
 %% }
 -type asset_location() :: #{binary() => any()}.
+
 %% Example:
 %% get_order_input() :: #{}
 -type get_order_input() :: #{}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% get_connection_response() :: #{
@@ -141,6 +150,7 @@
 %% }
 -type get_connection_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% line_item_asset_information() :: #{
 %%   <<"AssetId">> => string(),
@@ -148,12 +158,14 @@
 %% }
 -type line_item_asset_information() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_orders_output() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Orders">> => list(order_summary()())
 %% }
 -type list_orders_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_connection_request() :: #{
@@ -164,11 +176,13 @@
 %% }
 -type start_connection_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_site_output() :: #{
 %%   <<"Site">> => site()
 %% }
 -type get_site_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_site_input() :: #{
@@ -182,6 +196,7 @@
 %% }
 -type create_site_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_outposts_input() :: #{
 %%   <<"AvailabilityZoneFilter">> => list(string()()),
@@ -192,11 +207,13 @@
 %% }
 -type list_outposts_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% catalog_item() :: #{
@@ -210,17 +227,20 @@
 %% }
 -type catalog_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_site_address_input() :: #{
 %%   <<"AddressType">> := list(any())
 %% }
 -type get_site_address_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_site_output() :: #{
 %%   <<"Site">> => site()
 %% }
 -type create_site_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_site_address_input() :: #{
@@ -229,6 +249,7 @@
 %% }
 -type update_site_address_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_outpost_input() :: #{
 %%   <<"Description">> => string(),
@@ -236,6 +257,7 @@
 %%   <<"SupportedHardwareType">> => list(any())
 %% }
 -type update_outpost_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% rack_physical_properties() :: #{
@@ -251,6 +273,7 @@
 %% }
 -type rack_physical_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_site_rack_physical_properties_input() :: #{
 %%   <<"FiberOpticCableType">> => list(any()),
@@ -265,12 +288,14 @@
 %% }
 -type update_site_rack_physical_properties_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_site_address_output() :: #{
 %%   <<"Address">> => address(),
 %%   <<"AddressType">> => list(any())
 %% }
 -type update_site_address_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_orders_input() :: #{
@@ -280,6 +305,7 @@
 %% }
 -type list_orders_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"Message">> => string(),
@@ -287,18 +313,22 @@
 %%   <<"ResourceType">> => list(any())
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 %% Example:
 %% get_catalog_item_input() :: #{}
 -type get_catalog_item_input() :: #{}.
+
 
 %% Example:
 %% create_order_output() :: #{
 %%   <<"Order">> => order()
 %% }
 -type create_order_output() :: #{binary() => any()}.
+
 %% Example:
 %% get_outpost_input() :: #{}
 -type get_outpost_input() :: #{}.
+
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
@@ -306,17 +336,20 @@
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_site_output() :: #{
 %%   <<"Site">> => site()
 %% }
 -type update_site_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% site() :: #{
@@ -334,6 +367,7 @@
 %% }
 -type site() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_sites_input() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -344,11 +378,13 @@
 %% }
 -type list_sites_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_outpost_output() :: #{
 %%   <<"Outpost">> => outpost()
 %% }
 -type get_outpost_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
@@ -356,11 +392,13 @@
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_order_output() :: #{
 %%   <<"Order">> => order()
 %% }
 -type get_order_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_order_input() :: #{
@@ -371,11 +409,13 @@
 %% }
 -type create_order_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_catalog_item_output() :: #{
 %%   <<"CatalogItem">> => catalog_item()
 %% }
 -type get_catalog_item_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% ec2_capacity() :: #{
@@ -385,12 +425,14 @@
 %% }
 -type ec2_capacity() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_sites_output() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Sites">> => list(site()())
 %% }
 -type list_sites_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% order() :: #{
@@ -405,9 +447,11 @@
 %%   <<"Status">> => list(any())
 %% }
 -type order() :: #{binary() => any()}.
+
 %% Example:
 %% cancel_order_input() :: #{}
 -type cancel_order_input() :: #{}.
+
 
 %% Example:
 %% compute_attributes() :: #{
@@ -417,6 +461,7 @@
 %% }
 -type compute_attributes() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_assets_output() :: #{
 %%   <<"Assets">> => list(asset_info()()),
@@ -424,20 +469,25 @@
 %% }
 -type list_assets_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_site_output() :: #{}
 -type delete_site_output() :: #{}.
+
 %% Example:
 %% delete_outpost_output() :: #{}
 -type delete_outpost_output() :: #{}.
+
 %% Example:
 %% cancel_order_output() :: #{}
 -type cancel_order_output() :: #{}.
+
 
 %% Example:
 %% get_outpost_instance_types_output() :: #{
@@ -448,17 +498,21 @@
 %% }
 -type get_outpost_instance_types_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_site_input() :: #{}
 -type delete_site_input() :: #{}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% update_site_input() :: #{
@@ -467,9 +521,11 @@
 %%   <<"Notes">> => string()
 %% }
 -type update_site_input() :: #{binary() => any()}.
+
 %% Example:
 %% get_site_input() :: #{}
 -type get_site_input() :: #{}.
+
 
 %% Example:
 %% list_outposts_output() :: #{
@@ -477,18 +533,22 @@
 %%   <<"Outposts">> => list(outpost()())
 %% }
 -type list_outposts_output() :: #{binary() => any()}.
+
 %% Example:
 %% delete_outpost_input() :: #{}
 -type delete_outpost_input() :: #{}.
+
 
 %% Example:
 %% validation_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% order_summary() :: #{
@@ -502,11 +562,13 @@
 %% }
 -type order_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_outpost_output() :: #{
 %%   <<"Outpost">> => outpost()
 %% }
 -type create_outpost_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_site_address_output() :: #{
@@ -515,6 +577,7 @@
 %%   <<"SiteId">> => string()
 %% }
 -type get_site_address_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_info() :: #{
@@ -526,6 +589,7 @@
 %% }
 -type asset_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_catalog_items_input() :: #{
 %%   <<"EC2FamilyFilter">> => list(string()()),
@@ -536,11 +600,13 @@
 %% }
 -type list_catalog_items_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_outpost_output() :: #{
 %%   <<"Outpost">> => outpost()
 %% }
 -type update_outpost_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% line_item_request() :: #{
@@ -548,6 +614,7 @@
 %%   <<"Quantity">> => integer()
 %% }
 -type line_item_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% connection_details() :: #{
@@ -559,6 +626,7 @@
 %%   <<"ServerTunnelAddress">> => string()
 %% }
 -type connection_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% outpost() :: #{
@@ -577,6 +645,7 @@
 %% }
 -type outpost() :: #{binary() => any()}.
 
+
 %% Example:
 %% address() :: #{
 %%   <<"AddressLine1">> => string(),
@@ -593,6 +662,7 @@
 %% }
 -type address() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_catalog_items_output() :: #{
 %%   <<"CatalogItems">> => list(catalog_item()()),
@@ -600,11 +670,13 @@
 %% }
 -type list_catalog_items_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_site_rack_physical_properties_output() :: #{
 %%   <<"Site">> => site()
 %% }
 -type update_site_rack_physical_properties_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% line_item() :: #{
@@ -619,12 +691,14 @@
 %% }
 -type line_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% shipment_information() :: #{
 %%   <<"ShipmentCarrier">> => list(any()),
 %%   <<"ShipmentTrackingNumber">> => string()
 %% }
 -type shipment_information() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_outpost_input() :: #{
@@ -638,6 +712,166 @@
 %% }
 -type create_outpost_input() :: #{binary() => any()}.
 
+-type cancel_order_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception() | 
+    conflict_exception().
+
+-type create_order_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_outpost_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_site_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_outpost_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception() | 
+    conflict_exception().
+
+-type delete_site_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception() | 
+    conflict_exception().
+
+-type get_catalog_item_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    not_found_exception().
+
+-type get_connection_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception().
+
+-type get_order_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    not_found_exception().
+
+-type get_outpost_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception().
+
+-type get_outpost_instance_types_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception().
+
+-type get_site_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception().
+
+-type get_site_address_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception().
+
+-type list_assets_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception().
+
+-type list_catalog_items_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    not_found_exception().
+
+-type list_orders_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception().
+
+-type list_outposts_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_sites_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    not_found_exception().
+
+-type start_connection_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    not_found_exception().
+
+-type update_outpost_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception() | 
+    conflict_exception().
+
+-type update_site_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception() | 
+    conflict_exception().
+
+-type update_site_address_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception() | 
+    conflict_exception().
+
+-type update_site_rack_physical_properties_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception() | 
+    conflict_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -646,22 +880,14 @@
 -spec cancel_order(map(), binary() | list(), cancel_order_input()) ->
     {ok, cancel_order_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_order_errors(), tuple()}.
 cancel_order(Client, OrderId, Input) ->
     cancel_order(Client, OrderId, Input, []).
 
 -spec cancel_order(map(), binary() | list(), cancel_order_input(), proplists:proplist()) ->
     {ok, cancel_order_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_order_errors(), tuple()}.
 cancel_order(Client, OrderId, Input0, Options0) ->
     Method = post,
     Path = ["/orders/", aws_util:encode_uri(OrderId), "/cancel"],
@@ -688,24 +914,14 @@ cancel_order(Client, OrderId, Input0, Options0) ->
 -spec create_order(map(), create_order_input()) ->
     {ok, create_order_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_order_errors(), tuple()}.
 create_order(Client, Input) ->
     create_order(Client, Input, []).
 
 -spec create_order(map(), create_order_input(), proplists:proplist()) ->
     {ok, create_order_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_order_errors(), tuple()}.
 create_order(Client, Input0, Options0) ->
     Method = post,
     Path = ["/orders"],
@@ -734,24 +950,14 @@ create_order(Client, Input0, Options0) ->
 -spec create_outpost(map(), create_outpost_input()) ->
     {ok, create_outpost_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_outpost_errors(), tuple()}.
 create_outpost(Client, Input) ->
     create_outpost(Client, Input, []).
 
 -spec create_outpost(map(), create_outpost_input(), proplists:proplist()) ->
     {ok, create_outpost_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_outpost_errors(), tuple()}.
 create_outpost(Client, Input0, Options0) ->
     Method = post,
     Path = ["/outposts"],
@@ -778,22 +984,14 @@ create_outpost(Client, Input0, Options0) ->
 -spec create_site(map(), create_site_input()) ->
     {ok, create_site_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_site_errors(), tuple()}.
 create_site(Client, Input) ->
     create_site(Client, Input, []).
 
 -spec create_site(map(), create_site_input(), proplists:proplist()) ->
     {ok, create_site_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_site_errors(), tuple()}.
 create_site(Client, Input0, Options0) ->
     Method = post,
     Path = ["/sites"],
@@ -820,22 +1018,14 @@ create_site(Client, Input0, Options0) ->
 -spec delete_outpost(map(), binary() | list(), delete_outpost_input()) ->
     {ok, delete_outpost_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_outpost_errors(), tuple()}.
 delete_outpost(Client, OutpostId, Input) ->
     delete_outpost(Client, OutpostId, Input, []).
 
 -spec delete_outpost(map(), binary() | list(), delete_outpost_input(), proplists:proplist()) ->
     {ok, delete_outpost_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_outpost_errors(), tuple()}.
 delete_outpost(Client, OutpostId, Input0, Options0) ->
     Method = delete,
     Path = ["/outposts/", aws_util:encode_uri(OutpostId), ""],
@@ -862,22 +1052,14 @@ delete_outpost(Client, OutpostId, Input0, Options0) ->
 -spec delete_site(map(), binary() | list(), delete_site_input()) ->
     {ok, delete_site_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_site_errors(), tuple()}.
 delete_site(Client, SiteId, Input) ->
     delete_site(Client, SiteId, Input, []).
 
 -spec delete_site(map(), binary() | list(), delete_site_input(), proplists:proplist()) ->
     {ok, delete_site_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_site_errors(), tuple()}.
 delete_site(Client, SiteId, Input0, Options0) ->
     Method = delete,
     Path = ["/sites/", aws_util:encode_uri(SiteId), ""],
@@ -904,9 +1086,7 @@ delete_site(Client, SiteId, Input0, Options0) ->
 -spec get_catalog_item(map(), binary() | list()) ->
     {ok, get_catalog_item_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_catalog_item_errors(), tuple()}.
 get_catalog_item(Client, CatalogItemId)
   when is_map(Client) ->
     get_catalog_item(Client, CatalogItemId, #{}, #{}).
@@ -914,9 +1094,7 @@ get_catalog_item(Client, CatalogItemId)
 -spec get_catalog_item(map(), binary() | list(), map(), map()) ->
     {ok, get_catalog_item_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_catalog_item_errors(), tuple()}.
 get_catalog_item(Client, CatalogItemId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_catalog_item(Client, CatalogItemId, QueryMap, HeadersMap, []).
@@ -924,9 +1102,7 @@ get_catalog_item(Client, CatalogItemId, QueryMap, HeadersMap)
 -spec get_catalog_item(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_catalog_item_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_catalog_item_errors(), tuple()}.
 get_catalog_item(Client, CatalogItemId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/catalog/item/", aws_util:encode_uri(CatalogItemId), ""],
@@ -962,10 +1138,7 @@ get_catalog_item(Client, CatalogItemId, QueryMap, HeadersMap, Options0)
 -spec get_connection(map(), binary() | list()) ->
     {ok, get_connection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_connection_errors(), tuple()}.
 get_connection(Client, ConnectionId)
   when is_map(Client) ->
     get_connection(Client, ConnectionId, #{}, #{}).
@@ -973,10 +1146,7 @@ get_connection(Client, ConnectionId)
 -spec get_connection(map(), binary() | list(), map(), map()) ->
     {ok, get_connection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_connection_errors(), tuple()}.
 get_connection(Client, ConnectionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_connection(Client, ConnectionId, QueryMap, HeadersMap, []).
@@ -984,10 +1154,7 @@ get_connection(Client, ConnectionId, QueryMap, HeadersMap)
 -spec get_connection(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_connection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_connection_errors(), tuple()}.
 get_connection(Client, ConnectionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/connections/", aws_util:encode_uri(ConnectionId), ""],
@@ -1008,9 +1175,7 @@ get_connection(Client, ConnectionId, QueryMap, HeadersMap, Options0)
 -spec get_order(map(), binary() | list()) ->
     {ok, get_order_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_order_errors(), tuple()}.
 get_order(Client, OrderId)
   when is_map(Client) ->
     get_order(Client, OrderId, #{}, #{}).
@@ -1018,9 +1183,7 @@ get_order(Client, OrderId)
 -spec get_order(map(), binary() | list(), map(), map()) ->
     {ok, get_order_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_order_errors(), tuple()}.
 get_order(Client, OrderId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_order(Client, OrderId, QueryMap, HeadersMap, []).
@@ -1028,9 +1191,7 @@ get_order(Client, OrderId, QueryMap, HeadersMap)
 -spec get_order(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_order_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_order_errors(), tuple()}.
 get_order(Client, OrderId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/orders/", aws_util:encode_uri(OrderId), ""],
@@ -1051,10 +1212,7 @@ get_order(Client, OrderId, QueryMap, HeadersMap, Options0)
 -spec get_outpost(map(), binary() | list()) ->
     {ok, get_outpost_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_outpost_errors(), tuple()}.
 get_outpost(Client, OutpostId)
   when is_map(Client) ->
     get_outpost(Client, OutpostId, #{}, #{}).
@@ -1062,10 +1220,7 @@ get_outpost(Client, OutpostId)
 -spec get_outpost(map(), binary() | list(), map(), map()) ->
     {ok, get_outpost_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_outpost_errors(), tuple()}.
 get_outpost(Client, OutpostId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_outpost(Client, OutpostId, QueryMap, HeadersMap, []).
@@ -1073,10 +1228,7 @@ get_outpost(Client, OutpostId, QueryMap, HeadersMap)
 -spec get_outpost(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_outpost_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_outpost_errors(), tuple()}.
 get_outpost(Client, OutpostId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/outposts/", aws_util:encode_uri(OutpostId), ""],
@@ -1097,10 +1249,7 @@ get_outpost(Client, OutpostId, QueryMap, HeadersMap, Options0)
 -spec get_outpost_instance_types(map(), binary() | list()) ->
     {ok, get_outpost_instance_types_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_outpost_instance_types_errors(), tuple()}.
 get_outpost_instance_types(Client, OutpostId)
   when is_map(Client) ->
     get_outpost_instance_types(Client, OutpostId, #{}, #{}).
@@ -1108,10 +1257,7 @@ get_outpost_instance_types(Client, OutpostId)
 -spec get_outpost_instance_types(map(), binary() | list(), map(), map()) ->
     {ok, get_outpost_instance_types_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_outpost_instance_types_errors(), tuple()}.
 get_outpost_instance_types(Client, OutpostId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_outpost_instance_types(Client, OutpostId, QueryMap, HeadersMap, []).
@@ -1119,10 +1265,7 @@ get_outpost_instance_types(Client, OutpostId, QueryMap, HeadersMap)
 -spec get_outpost_instance_types(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_outpost_instance_types_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_outpost_instance_types_errors(), tuple()}.
 get_outpost_instance_types(Client, OutpostId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/outposts/", aws_util:encode_uri(OutpostId), "/instanceTypes"],
@@ -1148,10 +1291,7 @@ get_outpost_instance_types(Client, OutpostId, QueryMap, HeadersMap, Options0)
 -spec get_site(map(), binary() | list()) ->
     {ok, get_site_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_site_errors(), tuple()}.
 get_site(Client, SiteId)
   when is_map(Client) ->
     get_site(Client, SiteId, #{}, #{}).
@@ -1159,10 +1299,7 @@ get_site(Client, SiteId)
 -spec get_site(map(), binary() | list(), map(), map()) ->
     {ok, get_site_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_site_errors(), tuple()}.
 get_site(Client, SiteId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_site(Client, SiteId, QueryMap, HeadersMap, []).
@@ -1170,10 +1307,7 @@ get_site(Client, SiteId, QueryMap, HeadersMap)
 -spec get_site(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_site_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_site_errors(), tuple()}.
 get_site(Client, SiteId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sites/", aws_util:encode_uri(SiteId), ""],
@@ -1194,10 +1328,7 @@ get_site(Client, SiteId, QueryMap, HeadersMap, Options0)
 -spec get_site_address(map(), binary() | list(), binary() | list()) ->
     {ok, get_site_address_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_site_address_errors(), tuple()}.
 get_site_address(Client, SiteId, AddressType)
   when is_map(Client) ->
     get_site_address(Client, SiteId, AddressType, #{}, #{}).
@@ -1205,10 +1336,7 @@ get_site_address(Client, SiteId, AddressType)
 -spec get_site_address(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_site_address_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_site_address_errors(), tuple()}.
 get_site_address(Client, SiteId, AddressType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_site_address(Client, SiteId, AddressType, QueryMap, HeadersMap, []).
@@ -1216,10 +1344,7 @@ get_site_address(Client, SiteId, AddressType, QueryMap, HeadersMap)
 -spec get_site_address(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_site_address_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_site_address_errors(), tuple()}.
 get_site_address(Client, SiteId, AddressType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sites/", aws_util:encode_uri(SiteId), "/address"],
@@ -1250,10 +1375,7 @@ get_site_address(Client, SiteId, AddressType, QueryMap, HeadersMap, Options0)
 -spec list_assets(map(), binary() | list()) ->
     {ok, list_assets_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_assets_errors(), tuple()}.
 list_assets(Client, OutpostIdentifier)
   when is_map(Client) ->
     list_assets(Client, OutpostIdentifier, #{}, #{}).
@@ -1261,10 +1383,7 @@ list_assets(Client, OutpostIdentifier)
 -spec list_assets(map(), binary() | list(), map(), map()) ->
     {ok, list_assets_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_assets_errors(), tuple()}.
 list_assets(Client, OutpostIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_assets(Client, OutpostIdentifier, QueryMap, HeadersMap, []).
@@ -1272,10 +1391,7 @@ list_assets(Client, OutpostIdentifier, QueryMap, HeadersMap)
 -spec list_assets(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_assets_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_assets_errors(), tuple()}.
 list_assets(Client, OutpostIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/outposts/", aws_util:encode_uri(OutpostIdentifier), "/assets"],
@@ -1309,9 +1425,7 @@ list_assets(Client, OutpostIdentifier, QueryMap, HeadersMap, Options0)
 -spec list_catalog_items(map()) ->
     {ok, list_catalog_items_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_catalog_items_errors(), tuple()}.
 list_catalog_items(Client)
   when is_map(Client) ->
     list_catalog_items(Client, #{}, #{}).
@@ -1319,9 +1433,7 @@ list_catalog_items(Client)
 -spec list_catalog_items(map(), map(), map()) ->
     {ok, list_catalog_items_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_catalog_items_errors(), tuple()}.
 list_catalog_items(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_catalog_items(Client, QueryMap, HeadersMap, []).
@@ -1329,9 +1441,7 @@ list_catalog_items(Client, QueryMap, HeadersMap)
 -spec list_catalog_items(map(), map(), map(), proplists:proplist()) ->
     {ok, list_catalog_items_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_catalog_items_errors(), tuple()}.
 list_catalog_items(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/catalog/items"],
@@ -1360,10 +1470,7 @@ list_catalog_items(Client, QueryMap, HeadersMap, Options0)
 -spec list_orders(map()) ->
     {ok, list_orders_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_orders_errors(), tuple()}.
 list_orders(Client)
   when is_map(Client) ->
     list_orders(Client, #{}, #{}).
@@ -1371,10 +1478,7 @@ list_orders(Client)
 -spec list_orders(map(), map(), map()) ->
     {ok, list_orders_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_orders_errors(), tuple()}.
 list_orders(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_orders(Client, QueryMap, HeadersMap, []).
@@ -1382,10 +1486,7 @@ list_orders(Client, QueryMap, HeadersMap)
 -spec list_orders(map(), map(), map(), proplists:proplist()) ->
     {ok, list_orders_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_orders_errors(), tuple()}.
 list_orders(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/list-orders"],
@@ -1418,9 +1519,7 @@ list_orders(Client, QueryMap, HeadersMap, Options0)
 -spec list_outposts(map()) ->
     {ok, list_outposts_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_outposts_errors(), tuple()}.
 list_outposts(Client)
   when is_map(Client) ->
     list_outposts(Client, #{}, #{}).
@@ -1428,9 +1527,7 @@ list_outposts(Client)
 -spec list_outposts(map(), map(), map()) ->
     {ok, list_outposts_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_outposts_errors(), tuple()}.
 list_outposts(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_outposts(Client, QueryMap, HeadersMap, []).
@@ -1438,9 +1535,7 @@ list_outposts(Client, QueryMap, HeadersMap)
 -spec list_outposts(map(), map(), map(), proplists:proplist()) ->
     {ok, list_outposts_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_outposts_errors(), tuple()}.
 list_outposts(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/outposts"],
@@ -1478,9 +1573,7 @@ list_outposts(Client, QueryMap, HeadersMap, Options0)
 -spec list_sites(map()) ->
     {ok, list_sites_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_sites_errors(), tuple()}.
 list_sites(Client)
   when is_map(Client) ->
     list_sites(Client, #{}, #{}).
@@ -1488,9 +1581,7 @@ list_sites(Client)
 -spec list_sites(map(), map(), map()) ->
     {ok, list_sites_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_sites_errors(), tuple()}.
 list_sites(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sites(Client, QueryMap, HeadersMap, []).
@@ -1498,9 +1589,7 @@ list_sites(Client, QueryMap, HeadersMap)
 -spec list_sites(map(), map(), map(), proplists:proplist()) ->
     {ok, list_sites_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_sites_errors(), tuple()}.
 list_sites(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sites"],
@@ -1529,9 +1618,7 @@ list_sites(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1539,9 +1626,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1549,9 +1634,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1587,20 +1670,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec start_connection(map(), start_connection_request()) ->
     {ok, start_connection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_connection_errors(), tuple()}.
 start_connection(Client, Input) ->
     start_connection(Client, Input, []).
 
 -spec start_connection(map(), start_connection_request(), proplists:proplist()) ->
     {ok, start_connection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_connection_errors(), tuple()}.
 start_connection(Client, Input0, Options0) ->
     Method = post,
     Path = ["/connections"],
@@ -1627,18 +1704,14 @@ start_connection(Client, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1665,18 +1738,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1704,22 +1773,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_outpost(map(), binary() | list(), update_outpost_input()) ->
     {ok, update_outpost_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_outpost_errors(), tuple()}.
 update_outpost(Client, OutpostId, Input) ->
     update_outpost(Client, OutpostId, Input, []).
 
 -spec update_outpost(map(), binary() | list(), update_outpost_input(), proplists:proplist()) ->
     {ok, update_outpost_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_outpost_errors(), tuple()}.
 update_outpost(Client, OutpostId, Input0, Options0) ->
     Method = patch,
     Path = ["/outposts/", aws_util:encode_uri(OutpostId), ""],
@@ -1746,22 +1807,14 @@ update_outpost(Client, OutpostId, Input0, Options0) ->
 -spec update_site(map(), binary() | list(), update_site_input()) ->
     {ok, update_site_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_site_errors(), tuple()}.
 update_site(Client, SiteId, Input) ->
     update_site(Client, SiteId, Input, []).
 
 -spec update_site(map(), binary() | list(), update_site_input(), proplists:proplist()) ->
     {ok, update_site_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_site_errors(), tuple()}.
 update_site(Client, SiteId, Input0, Options0) ->
     Method = patch,
     Path = ["/sites/", aws_util:encode_uri(SiteId), ""],
@@ -1796,22 +1849,14 @@ update_site(Client, SiteId, Input0, Options0) ->
 -spec update_site_address(map(), binary() | list(), update_site_address_input()) ->
     {ok, update_site_address_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_site_address_errors(), tuple()}.
 update_site_address(Client, SiteId, Input) ->
     update_site_address(Client, SiteId, Input, []).
 
 -spec update_site_address(map(), binary() | list(), update_site_address_input(), proplists:proplist()) ->
     {ok, update_site_address_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_site_address_errors(), tuple()}.
 update_site_address(Client, SiteId, Input0, Options0) ->
     Method = put,
     Path = ["/sites/", aws_util:encode_uri(SiteId), "/address"],
@@ -1848,22 +1893,14 @@ update_site_address(Client, SiteId, Input0, Options0) ->
 -spec update_site_rack_physical_properties(map(), binary() | list(), update_site_rack_physical_properties_input()) ->
     {ok, update_site_rack_physical_properties_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_site_rack_physical_properties_errors(), tuple()}.
 update_site_rack_physical_properties(Client, SiteId, Input) ->
     update_site_rack_physical_properties(Client, SiteId, Input, []).
 
 -spec update_site_rack_physical_properties(map(), binary() | list(), update_site_rack_physical_properties_input(), proplists:proplist()) ->
     {ok, update_site_rack_physical_properties_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_site_rack_physical_properties_errors(), tuple()}.
 update_site_rack_physical_properties(Client, SiteId, Input0, Options0) ->
     Method = patch,
     Path = ["/sites/", aws_util:encode_uri(SiteId), "/rackPhysicalProperties"],

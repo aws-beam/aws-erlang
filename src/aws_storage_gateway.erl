@@ -2042,6 +2042,367 @@
 %% }
 -type invalid_gateway_request_exception() :: #{binary() => any()}.
 
+-type activate_gateway_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type add_cache_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type add_tags_to_resource_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type add_upload_buffer_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type add_working_storage_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type assign_tape_pool_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type associate_file_system_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type attach_volume_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type cancel_archival_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type cancel_retrieval_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type create_cached_iscsi_volume_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type create_nfs_file_share_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type create_smb_file_share_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type create_snapshot_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error() | 
+    service_unavailable_error().
+
+-type create_snapshot_from_volume_recovery_point_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error() | 
+    service_unavailable_error().
+
+-type create_stored_iscsi_volume_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type create_tape_pool_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type create_tape_with_barcode_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type create_tapes_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type delete_automatic_tape_creation_policy_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type delete_bandwidth_rate_limit_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type delete_chap_credentials_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type delete_file_share_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type delete_gateway_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type delete_snapshot_schedule_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type delete_tape_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type delete_tape_archive_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type delete_tape_pool_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type delete_volume_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_availability_monitor_test_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_bandwidth_rate_limit_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_bandwidth_rate_limit_schedule_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_cache_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_cached_iscsi_volumes_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_chap_credentials_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_file_system_associations_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_gateway_information_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_maintenance_start_time_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_nfs_file_shares_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_smb_file_shares_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_smb_settings_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_snapshot_schedule_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_stored_iscsi_volumes_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_tape_archives_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_tape_recovery_points_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_tapes_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_upload_buffer_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_vtl_devices_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_working_storage_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type detach_volume_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type disable_gateway_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type disassociate_file_system_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type join_domain_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type list_automatic_tape_creation_policies_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type list_file_shares_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type list_file_system_associations_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type list_gateways_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type list_local_disks_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type list_tags_for_resource_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type list_tape_pools_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type list_tapes_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type list_volume_initiators_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type list_volume_recovery_points_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type list_volumes_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type notify_when_uploaded_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type refresh_cache_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type remove_tags_from_resource_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type reset_cache_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type retrieve_tape_archive_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type retrieve_tape_recovery_point_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type set_local_console_password_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type set_smb_guest_password_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type shutdown_gateway_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type start_availability_monitor_test_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type start_gateway_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type update_automatic_tape_creation_policy_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type update_bandwidth_rate_limit_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type update_bandwidth_rate_limit_schedule_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type update_chap_credentials_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type update_file_system_association_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type update_gateway_information_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type update_gateway_software_now_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type update_maintenance_start_time_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type update_nfs_file_share_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type update_smb_file_share_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type update_smb_file_share_visibility_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type update_smb_local_groups_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type update_smb_security_strategy_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type update_snapshot_schedule_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type update_vtl_device_type_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
 
 %%====================================================================
 %% API
@@ -2063,8 +2424,7 @@
 -spec activate_gateway(map(), activate_gateway_input()) ->
     {ok, activate_gateway_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, activate_gateway_errors(), tuple()}.
 activate_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     activate_gateway(Client, Input, []).
@@ -2072,8 +2432,7 @@ activate_gateway(Client, Input)
 -spec activate_gateway(map(), activate_gateway_input(), proplists:proplist()) ->
     {ok, activate_gateway_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, activate_gateway_errors(), tuple()}.
 activate_gateway(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ActivateGateway">>, Input, Options).
@@ -2091,8 +2450,7 @@ activate_gateway(Client, Input, Options)
 -spec add_cache(map(), add_cache_input()) ->
     {ok, add_cache_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, add_cache_errors(), tuple()}.
 add_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_cache(Client, Input, []).
@@ -2100,8 +2458,7 @@ add_cache(Client, Input)
 -spec add_cache(map(), add_cache_input(), proplists:proplist()) ->
     {ok, add_cache_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, add_cache_errors(), tuple()}.
 add_cache(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddCache">>, Input, Options).
@@ -2132,8 +2489,7 @@ add_cache(Client, Input, Options)
 -spec add_tags_to_resource(map(), add_tags_to_resource_input()) ->
     {ok, add_tags_to_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, add_tags_to_resource_errors(), tuple()}.
 add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_resource(Client, Input, []).
@@ -2141,8 +2497,7 @@ add_tags_to_resource(Client, Input)
 -spec add_tags_to_resource(map(), add_tags_to_resource_input(), proplists:proplist()) ->
     {ok, add_tags_to_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, add_tags_to_resource_errors(), tuple()}.
 add_tags_to_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTagsToResource">>, Input, Options).
@@ -2162,8 +2517,7 @@ add_tags_to_resource(Client, Input, Options)
 -spec add_upload_buffer(map(), add_upload_buffer_input()) ->
     {ok, add_upload_buffer_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, add_upload_buffer_errors(), tuple()}.
 add_upload_buffer(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_upload_buffer(Client, Input, []).
@@ -2171,8 +2525,7 @@ add_upload_buffer(Client, Input)
 -spec add_upload_buffer(map(), add_upload_buffer_input(), proplists:proplist()) ->
     {ok, add_upload_buffer_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, add_upload_buffer_errors(), tuple()}.
 add_upload_buffer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddUploadBuffer">>, Input, Options).
@@ -2198,8 +2551,7 @@ add_upload_buffer(Client, Input, Options)
 -spec add_working_storage(map(), add_working_storage_input()) ->
     {ok, add_working_storage_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, add_working_storage_errors(), tuple()}.
 add_working_storage(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_working_storage(Client, Input, []).
@@ -2207,8 +2559,7 @@ add_working_storage(Client, Input)
 -spec add_working_storage(map(), add_working_storage_input(), proplists:proplist()) ->
     {ok, add_working_storage_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, add_working_storage_errors(), tuple()}.
 add_working_storage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddWorkingStorage">>, Input, Options).
@@ -2224,8 +2575,7 @@ add_working_storage(Client, Input, Options)
 -spec assign_tape_pool(map(), assign_tape_pool_input()) ->
     {ok, assign_tape_pool_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, assign_tape_pool_errors(), tuple()}.
 assign_tape_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     assign_tape_pool(Client, Input, []).
@@ -2233,8 +2583,7 @@ assign_tape_pool(Client, Input)
 -spec assign_tape_pool(map(), assign_tape_pool_input(), proplists:proplist()) ->
     {ok, assign_tape_pool_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, assign_tape_pool_errors(), tuple()}.
 assign_tape_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssignTapePool">>, Input, Options).
@@ -2250,8 +2599,7 @@ assign_tape_pool(Client, Input, Options)
 -spec associate_file_system(map(), associate_file_system_input()) ->
     {ok, associate_file_system_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, associate_file_system_errors(), tuple()}.
 associate_file_system(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_file_system(Client, Input, []).
@@ -2259,8 +2607,7 @@ associate_file_system(Client, Input)
 -spec associate_file_system(map(), associate_file_system_input(), proplists:proplist()) ->
     {ok, associate_file_system_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, associate_file_system_errors(), tuple()}.
 associate_file_system(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateFileSystem">>, Input, Options).
@@ -2278,8 +2625,7 @@ associate_file_system(Client, Input, Options)
 -spec attach_volume(map(), attach_volume_input()) ->
     {ok, attach_volume_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, attach_volume_errors(), tuple()}.
 attach_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_volume(Client, Input, []).
@@ -2287,8 +2633,7 @@ attach_volume(Client, Input)
 -spec attach_volume(map(), attach_volume_input(), proplists:proplist()) ->
     {ok, attach_volume_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, attach_volume_errors(), tuple()}.
 attach_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachVolume">>, Input, Options).
@@ -2301,8 +2646,7 @@ attach_volume(Client, Input, Options)
 -spec cancel_archival(map(), cancel_archival_input()) ->
     {ok, cancel_archival_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, cancel_archival_errors(), tuple()}.
 cancel_archival(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_archival(Client, Input, []).
@@ -2310,8 +2654,7 @@ cancel_archival(Client, Input)
 -spec cancel_archival(map(), cancel_archival_input(), proplists:proplist()) ->
     {ok, cancel_archival_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, cancel_archival_errors(), tuple()}.
 cancel_archival(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelArchival">>, Input, Options).
@@ -2325,8 +2668,7 @@ cancel_archival(Client, Input, Options)
 -spec cancel_retrieval(map(), cancel_retrieval_input()) ->
     {ok, cancel_retrieval_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, cancel_retrieval_errors(), tuple()}.
 cancel_retrieval(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_retrieval(Client, Input, []).
@@ -2334,8 +2676,7 @@ cancel_retrieval(Client, Input)
 -spec cancel_retrieval(map(), cancel_retrieval_input(), proplists:proplist()) ->
     {ok, cancel_retrieval_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, cancel_retrieval_errors(), tuple()}.
 cancel_retrieval(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelRetrieval">>, Input, Options).
@@ -2368,8 +2709,7 @@ cancel_retrieval(Client, Input, Options)
 -spec create_cached_iscsi_volume(map(), create_cached_iscsi_volume_input()) ->
     {ok, create_cached_iscsi_volume_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, create_cached_iscsi_volume_errors(), tuple()}.
 create_cached_iscsi_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cached_iscsi_volume(Client, Input, []).
@@ -2377,8 +2717,7 @@ create_cached_iscsi_volume(Client, Input)
 -spec create_cached_iscsi_volume(map(), create_cached_iscsi_volume_input(), proplists:proplist()) ->
     {ok, create_cached_iscsi_volume_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, create_cached_iscsi_volume_errors(), tuple()}.
 create_cached_iscsi_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCachediSCSIVolume">>, Input, Options).
@@ -2413,8 +2752,7 @@ create_cached_iscsi_volume(Client, Input, Options)
 -spec create_nfs_file_share(map(), create_nfs_file_share_input()) ->
     {ok, create_nfs_file_share_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, create_nfs_file_share_errors(), tuple()}.
 create_nfs_file_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_nfs_file_share(Client, Input, []).
@@ -2422,8 +2760,7 @@ create_nfs_file_share(Client, Input)
 -spec create_nfs_file_share(map(), create_nfs_file_share_input(), proplists:proplist()) ->
     {ok, create_nfs_file_share_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, create_nfs_file_share_errors(), tuple()}.
 create_nfs_file_share(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateNFSFileShare">>, Input, Options).
@@ -2458,8 +2795,7 @@ create_nfs_file_share(Client, Input, Options)
 -spec create_smb_file_share(map(), create_smb_file_share_input()) ->
     {ok, create_smb_file_share_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, create_smb_file_share_errors(), tuple()}.
 create_smb_file_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_smb_file_share(Client, Input, []).
@@ -2467,8 +2803,7 @@ create_smb_file_share(Client, Input)
 -spec create_smb_file_share(map(), create_smb_file_share_input(), proplists:proplist()) ->
     {ok, create_smb_file_share_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, create_smb_file_share_errors(), tuple()}.
 create_smb_file_share(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSMBFileShare">>, Input, Options).
@@ -2518,9 +2853,7 @@ create_smb_file_share(Client, Input, Options)
 -spec create_snapshot(map(), create_snapshot_input()) ->
     {ok, create_snapshot_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()} |
-    {error, service_unavailable_error(), tuple()}.
+    {error, create_snapshot_errors(), tuple()}.
 create_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot(Client, Input, []).
@@ -2528,9 +2861,7 @@ create_snapshot(Client, Input)
 -spec create_snapshot(map(), create_snapshot_input(), proplists:proplist()) ->
     {ok, create_snapshot_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()} |
-    {error, service_unavailable_error(), tuple()}.
+    {error, create_snapshot_errors(), tuple()}.
 create_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSnapshot">>, Input, Options).
@@ -2569,9 +2900,7 @@ create_snapshot(Client, Input, Options)
 -spec create_snapshot_from_volume_recovery_point(map(), create_snapshot_from_volume_recovery_point_input()) ->
     {ok, create_snapshot_from_volume_recovery_point_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()} |
-    {error, service_unavailable_error(), tuple()}.
+    {error, create_snapshot_from_volume_recovery_point_errors(), tuple()}.
 create_snapshot_from_volume_recovery_point(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot_from_volume_recovery_point(Client, Input, []).
@@ -2579,9 +2908,7 @@ create_snapshot_from_volume_recovery_point(Client, Input)
 -spec create_snapshot_from_volume_recovery_point(map(), create_snapshot_from_volume_recovery_point_input(), proplists:proplist()) ->
     {ok, create_snapshot_from_volume_recovery_point_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()} |
-    {error, service_unavailable_error(), tuple()}.
+    {error, create_snapshot_from_volume_recovery_point_errors(), tuple()}.
 create_snapshot_from_volume_recovery_point(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSnapshotFromVolumeRecoveryPoint">>, Input, Options).
@@ -2609,8 +2936,7 @@ create_snapshot_from_volume_recovery_point(Client, Input, Options)
 -spec create_stored_iscsi_volume(map(), create_stored_iscsi_volume_input()) ->
     {ok, create_stored_iscsi_volume_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, create_stored_iscsi_volume_errors(), tuple()}.
 create_stored_iscsi_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_stored_iscsi_volume(Client, Input, []).
@@ -2618,8 +2944,7 @@ create_stored_iscsi_volume(Client, Input)
 -spec create_stored_iscsi_volume(map(), create_stored_iscsi_volume_input(), proplists:proplist()) ->
     {ok, create_stored_iscsi_volume_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, create_stored_iscsi_volume_errors(), tuple()}.
 create_stored_iscsi_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStorediSCSIVolume">>, Input, Options).
@@ -2631,8 +2956,7 @@ create_stored_iscsi_volume(Client, Input, Options)
 -spec create_tape_pool(map(), create_tape_pool_input()) ->
     {ok, create_tape_pool_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, create_tape_pool_errors(), tuple()}.
 create_tape_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_tape_pool(Client, Input, []).
@@ -2640,8 +2964,7 @@ create_tape_pool(Client, Input)
 -spec create_tape_pool(map(), create_tape_pool_input(), proplists:proplist()) ->
     {ok, create_tape_pool_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, create_tape_pool_errors(), tuple()}.
 create_tape_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTapePool">>, Input, Options).
@@ -2661,8 +2984,7 @@ create_tape_pool(Client, Input, Options)
 -spec create_tape_with_barcode(map(), create_tape_with_barcode_input()) ->
     {ok, create_tape_with_barcode_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, create_tape_with_barcode_errors(), tuple()}.
 create_tape_with_barcode(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_tape_with_barcode(Client, Input, []).
@@ -2670,8 +2992,7 @@ create_tape_with_barcode(Client, Input)
 -spec create_tape_with_barcode(map(), create_tape_with_barcode_input(), proplists:proplist()) ->
     {ok, create_tape_with_barcode_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, create_tape_with_barcode_errors(), tuple()}.
 create_tape_with_barcode(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTapeWithBarcode">>, Input, Options).
@@ -2687,8 +3008,7 @@ create_tape_with_barcode(Client, Input, Options)
 -spec create_tapes(map(), create_tapes_input()) ->
     {ok, create_tapes_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, create_tapes_errors(), tuple()}.
 create_tapes(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_tapes(Client, Input, []).
@@ -2696,8 +3016,7 @@ create_tapes(Client, Input)
 -spec create_tapes(map(), create_tapes_input(), proplists:proplist()) ->
     {ok, create_tapes_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, create_tapes_errors(), tuple()}.
 create_tapes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTapes">>, Input, Options).
@@ -2711,8 +3030,7 @@ create_tapes(Client, Input, Options)
 -spec delete_automatic_tape_creation_policy(map(), delete_automatic_tape_creation_policy_input()) ->
     {ok, delete_automatic_tape_creation_policy_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, delete_automatic_tape_creation_policy_errors(), tuple()}.
 delete_automatic_tape_creation_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_automatic_tape_creation_policy(Client, Input, []).
@@ -2720,8 +3038,7 @@ delete_automatic_tape_creation_policy(Client, Input)
 -spec delete_automatic_tape_creation_policy(map(), delete_automatic_tape_creation_policy_input(), proplists:proplist()) ->
     {ok, delete_automatic_tape_creation_policy_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, delete_automatic_tape_creation_policy_errors(), tuple()}.
 delete_automatic_tape_creation_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAutomaticTapeCreationPolicy">>, Input, Options).
@@ -2739,8 +3056,7 @@ delete_automatic_tape_creation_policy(Client, Input, Options)
 -spec delete_bandwidth_rate_limit(map(), delete_bandwidth_rate_limit_input()) ->
     {ok, delete_bandwidth_rate_limit_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, delete_bandwidth_rate_limit_errors(), tuple()}.
 delete_bandwidth_rate_limit(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_bandwidth_rate_limit(Client, Input, []).
@@ -2748,8 +3064,7 @@ delete_bandwidth_rate_limit(Client, Input)
 -spec delete_bandwidth_rate_limit(map(), delete_bandwidth_rate_limit_input(), proplists:proplist()) ->
     {ok, delete_bandwidth_rate_limit_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, delete_bandwidth_rate_limit_errors(), tuple()}.
 delete_bandwidth_rate_limit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBandwidthRateLimit">>, Input, Options).
@@ -2763,8 +3078,7 @@ delete_bandwidth_rate_limit(Client, Input, Options)
 -spec delete_chap_credentials(map(), delete_chap_credentials_input()) ->
     {ok, delete_chap_credentials_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, delete_chap_credentials_errors(), tuple()}.
 delete_chap_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_chap_credentials(Client, Input, []).
@@ -2772,8 +3086,7 @@ delete_chap_credentials(Client, Input)
 -spec delete_chap_credentials(map(), delete_chap_credentials_input(), proplists:proplist()) ->
     {ok, delete_chap_credentials_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, delete_chap_credentials_errors(), tuple()}.
 delete_chap_credentials(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteChapCredentials">>, Input, Options).
@@ -2785,8 +3098,7 @@ delete_chap_credentials(Client, Input, Options)
 -spec delete_file_share(map(), delete_file_share_input()) ->
     {ok, delete_file_share_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, delete_file_share_errors(), tuple()}.
 delete_file_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_file_share(Client, Input, []).
@@ -2794,8 +3106,7 @@ delete_file_share(Client, Input)
 -spec delete_file_share(map(), delete_file_share_input(), proplists:proplist()) ->
     {ok, delete_file_share_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, delete_file_share_errors(), tuple()}.
 delete_file_share(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFileShare">>, Input, Options).
@@ -2830,8 +3141,7 @@ delete_file_share(Client, Input, Options)
 -spec delete_gateway(map(), delete_gateway_input()) ->
     {ok, delete_gateway_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, delete_gateway_errors(), tuple()}.
 delete_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_gateway(Client, Input, []).
@@ -2839,8 +3149,7 @@ delete_gateway(Client, Input)
 -spec delete_gateway(map(), delete_gateway_input(), proplists:proplist()) ->
     {ok, delete_gateway_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, delete_gateway_errors(), tuple()}.
 delete_gateway(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGateway">>, Input, Options).
@@ -2867,8 +3176,7 @@ delete_gateway(Client, Input, Options)
 -spec delete_snapshot_schedule(map(), delete_snapshot_schedule_input()) ->
     {ok, delete_snapshot_schedule_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, delete_snapshot_schedule_errors(), tuple()}.
 delete_snapshot_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_snapshot_schedule(Client, Input, []).
@@ -2876,8 +3184,7 @@ delete_snapshot_schedule(Client, Input)
 -spec delete_snapshot_schedule(map(), delete_snapshot_schedule_input(), proplists:proplist()) ->
     {ok, delete_snapshot_schedule_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, delete_snapshot_schedule_errors(), tuple()}.
 delete_snapshot_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSnapshotSchedule">>, Input, Options).
@@ -2889,8 +3196,7 @@ delete_snapshot_schedule(Client, Input, Options)
 -spec delete_tape(map(), delete_tape_input()) ->
     {ok, delete_tape_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, delete_tape_errors(), tuple()}.
 delete_tape(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tape(Client, Input, []).
@@ -2898,8 +3204,7 @@ delete_tape(Client, Input)
 -spec delete_tape(map(), delete_tape_input(), proplists:proplist()) ->
     {ok, delete_tape_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, delete_tape_errors(), tuple()}.
 delete_tape(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTape">>, Input, Options).
@@ -2911,8 +3216,7 @@ delete_tape(Client, Input, Options)
 -spec delete_tape_archive(map(), delete_tape_archive_input()) ->
     {ok, delete_tape_archive_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, delete_tape_archive_errors(), tuple()}.
 delete_tape_archive(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tape_archive(Client, Input, []).
@@ -2920,8 +3224,7 @@ delete_tape_archive(Client, Input)
 -spec delete_tape_archive(map(), delete_tape_archive_input(), proplists:proplist()) ->
     {ok, delete_tape_archive_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, delete_tape_archive_errors(), tuple()}.
 delete_tape_archive(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTapeArchive">>, Input, Options).
@@ -2935,8 +3238,7 @@ delete_tape_archive(Client, Input, Options)
 -spec delete_tape_pool(map(), delete_tape_pool_input()) ->
     {ok, delete_tape_pool_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, delete_tape_pool_errors(), tuple()}.
 delete_tape_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tape_pool(Client, Input, []).
@@ -2944,8 +3246,7 @@ delete_tape_pool(Client, Input)
 -spec delete_tape_pool(map(), delete_tape_pool_input(), proplists:proplist()) ->
     {ok, delete_tape_pool_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, delete_tape_pool_errors(), tuple()}.
 delete_tape_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTapePool">>, Input, Options).
@@ -2978,8 +3279,7 @@ delete_tape_pool(Client, Input, Options)
 -spec delete_volume(map(), delete_volume_input()) ->
     {ok, delete_volume_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, delete_volume_errors(), tuple()}.
 delete_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_volume(Client, Input, []).
@@ -2987,8 +3287,7 @@ delete_volume(Client, Input)
 -spec delete_volume(map(), delete_volume_input(), proplists:proplist()) ->
     {ok, delete_volume_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, delete_volume_errors(), tuple()}.
 delete_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteVolume">>, Input, Options).
@@ -3002,8 +3301,7 @@ delete_volume(Client, Input, Options)
 -spec describe_availability_monitor_test(map(), describe_availability_monitor_test_input()) ->
     {ok, describe_availability_monitor_test_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_availability_monitor_test_errors(), tuple()}.
 describe_availability_monitor_test(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_availability_monitor_test(Client, Input, []).
@@ -3011,8 +3309,7 @@ describe_availability_monitor_test(Client, Input)
 -spec describe_availability_monitor_test(map(), describe_availability_monitor_test_input(), proplists:proplist()) ->
     {ok, describe_availability_monitor_test_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_availability_monitor_test_errors(), tuple()}.
 describe_availability_monitor_test(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAvailabilityMonitorTest">>, Input, Options).
@@ -3036,8 +3333,7 @@ describe_availability_monitor_test(Client, Input, Options)
 -spec describe_bandwidth_rate_limit(map(), describe_bandwidth_rate_limit_input()) ->
     {ok, describe_bandwidth_rate_limit_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_bandwidth_rate_limit_errors(), tuple()}.
 describe_bandwidth_rate_limit(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_bandwidth_rate_limit(Client, Input, []).
@@ -3045,8 +3341,7 @@ describe_bandwidth_rate_limit(Client, Input)
 -spec describe_bandwidth_rate_limit(map(), describe_bandwidth_rate_limit_input(), proplists:proplist()) ->
     {ok, describe_bandwidth_rate_limit_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_bandwidth_rate_limit_errors(), tuple()}.
 describe_bandwidth_rate_limit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBandwidthRateLimit">>, Input, Options).
@@ -3084,8 +3379,7 @@ describe_bandwidth_rate_limit(Client, Input, Options)
 -spec describe_bandwidth_rate_limit_schedule(map(), describe_bandwidth_rate_limit_schedule_input()) ->
     {ok, describe_bandwidth_rate_limit_schedule_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_bandwidth_rate_limit_schedule_errors(), tuple()}.
 describe_bandwidth_rate_limit_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_bandwidth_rate_limit_schedule(Client, Input, []).
@@ -3093,8 +3387,7 @@ describe_bandwidth_rate_limit_schedule(Client, Input)
 -spec describe_bandwidth_rate_limit_schedule(map(), describe_bandwidth_rate_limit_schedule_input(), proplists:proplist()) ->
     {ok, describe_bandwidth_rate_limit_schedule_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_bandwidth_rate_limit_schedule_errors(), tuple()}.
 describe_bandwidth_rate_limit_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBandwidthRateLimitSchedule">>, Input, Options).
@@ -3110,8 +3403,7 @@ describe_bandwidth_rate_limit_schedule(Client, Input, Options)
 -spec describe_cache(map(), describe_cache_input()) ->
     {ok, describe_cache_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_cache_errors(), tuple()}.
 describe_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cache(Client, Input, []).
@@ -3119,8 +3411,7 @@ describe_cache(Client, Input)
 -spec describe_cache(map(), describe_cache_input(), proplists:proplist()) ->
     {ok, describe_cache_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_cache_errors(), tuple()}.
 describe_cache(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCache">>, Input, Options).
@@ -3139,8 +3430,7 @@ describe_cache(Client, Input, Options)
 -spec describe_cached_iscsi_volumes(map(), describe_cached_iscsi_volumes_input()) ->
     {ok, describe_cached_iscsi_volumes_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_cached_iscsi_volumes_errors(), tuple()}.
 describe_cached_iscsi_volumes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cached_iscsi_volumes(Client, Input, []).
@@ -3148,8 +3438,7 @@ describe_cached_iscsi_volumes(Client, Input)
 -spec describe_cached_iscsi_volumes(map(), describe_cached_iscsi_volumes_input(), proplists:proplist()) ->
     {ok, describe_cached_iscsi_volumes_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_cached_iscsi_volumes_errors(), tuple()}.
 describe_cached_iscsi_volumes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCachediSCSIVolumes">>, Input, Options).
@@ -3164,8 +3453,7 @@ describe_cached_iscsi_volumes(Client, Input, Options)
 -spec describe_chap_credentials(map(), describe_chap_credentials_input()) ->
     {ok, describe_chap_credentials_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_chap_credentials_errors(), tuple()}.
 describe_chap_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_chap_credentials(Client, Input, []).
@@ -3173,8 +3461,7 @@ describe_chap_credentials(Client, Input)
 -spec describe_chap_credentials(map(), describe_chap_credentials_input(), proplists:proplist()) ->
     {ok, describe_chap_credentials_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_chap_credentials_errors(), tuple()}.
 describe_chap_credentials(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeChapCredentials">>, Input, Options).
@@ -3186,8 +3473,7 @@ describe_chap_credentials(Client, Input, Options)
 -spec describe_file_system_associations(map(), describe_file_system_associations_input()) ->
     {ok, describe_file_system_associations_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_file_system_associations_errors(), tuple()}.
 describe_file_system_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_file_system_associations(Client, Input, []).
@@ -3195,8 +3481,7 @@ describe_file_system_associations(Client, Input)
 -spec describe_file_system_associations(map(), describe_file_system_associations_input(), proplists:proplist()) ->
     {ok, describe_file_system_associations_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_file_system_associations_errors(), tuple()}.
 describe_file_system_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFileSystemAssociations">>, Input, Options).
@@ -3210,8 +3495,7 @@ describe_file_system_associations(Client, Input, Options)
 -spec describe_gateway_information(map(), describe_gateway_information_input()) ->
     {ok, describe_gateway_information_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_gateway_information_errors(), tuple()}.
 describe_gateway_information(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_gateway_information(Client, Input, []).
@@ -3219,8 +3503,7 @@ describe_gateway_information(Client, Input)
 -spec describe_gateway_information(map(), describe_gateway_information_input(), proplists:proplist()) ->
     {ok, describe_gateway_information_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_gateway_information_errors(), tuple()}.
 describe_gateway_information(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGatewayInformation">>, Input, Options).
@@ -3233,8 +3516,7 @@ describe_gateway_information(Client, Input, Options)
 -spec describe_maintenance_start_time(map(), describe_maintenance_start_time_input()) ->
     {ok, describe_maintenance_start_time_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_maintenance_start_time_errors(), tuple()}.
 describe_maintenance_start_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_maintenance_start_time(Client, Input, []).
@@ -3242,8 +3524,7 @@ describe_maintenance_start_time(Client, Input)
 -spec describe_maintenance_start_time(map(), describe_maintenance_start_time_input(), proplists:proplist()) ->
     {ok, describe_maintenance_start_time_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_maintenance_start_time_errors(), tuple()}.
 describe_maintenance_start_time(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMaintenanceStartTime">>, Input, Options).
@@ -3256,8 +3537,7 @@ describe_maintenance_start_time(Client, Input, Options)
 -spec describe_nfs_file_shares(map(), describe_nfs_file_shares_input()) ->
     {ok, describe_nfs_file_shares_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_nfs_file_shares_errors(), tuple()}.
 describe_nfs_file_shares(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_nfs_file_shares(Client, Input, []).
@@ -3265,8 +3545,7 @@ describe_nfs_file_shares(Client, Input)
 -spec describe_nfs_file_shares(map(), describe_nfs_file_shares_input(), proplists:proplist()) ->
     {ok, describe_nfs_file_shares_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_nfs_file_shares_errors(), tuple()}.
 describe_nfs_file_shares(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeNFSFileShares">>, Input, Options).
@@ -3279,8 +3558,7 @@ describe_nfs_file_shares(Client, Input, Options)
 -spec describe_smb_file_shares(map(), describe_smb_file_shares_input()) ->
     {ok, describe_smb_file_shares_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_smb_file_shares_errors(), tuple()}.
 describe_smb_file_shares(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_smb_file_shares(Client, Input, []).
@@ -3288,8 +3566,7 @@ describe_smb_file_shares(Client, Input)
 -spec describe_smb_file_shares(map(), describe_smb_file_shares_input(), proplists:proplist()) ->
     {ok, describe_smb_file_shares_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_smb_file_shares_errors(), tuple()}.
 describe_smb_file_shares(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSMBFileShares">>, Input, Options).
@@ -3302,8 +3579,7 @@ describe_smb_file_shares(Client, Input, Options)
 -spec describe_smb_settings(map(), describe_smb_settings_input()) ->
     {ok, describe_smb_settings_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_smb_settings_errors(), tuple()}.
 describe_smb_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_smb_settings(Client, Input, []).
@@ -3311,8 +3587,7 @@ describe_smb_settings(Client, Input)
 -spec describe_smb_settings(map(), describe_smb_settings_input(), proplists:proplist()) ->
     {ok, describe_smb_settings_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_smb_settings_errors(), tuple()}.
 describe_smb_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSMBSettings">>, Input, Options).
@@ -3328,8 +3603,7 @@ describe_smb_settings(Client, Input, Options)
 -spec describe_snapshot_schedule(map(), describe_snapshot_schedule_input()) ->
     {ok, describe_snapshot_schedule_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_snapshot_schedule_errors(), tuple()}.
 describe_snapshot_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_snapshot_schedule(Client, Input, []).
@@ -3337,8 +3611,7 @@ describe_snapshot_schedule(Client, Input)
 -spec describe_snapshot_schedule(map(), describe_snapshot_schedule_input(), proplists:proplist()) ->
     {ok, describe_snapshot_schedule_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_snapshot_schedule_errors(), tuple()}.
 describe_snapshot_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSnapshotSchedule">>, Input, Options).
@@ -3354,8 +3627,7 @@ describe_snapshot_schedule(Client, Input, Options)
 -spec describe_stored_iscsi_volumes(map(), describe_stored_iscsi_volumes_input()) ->
     {ok, describe_stored_iscsi_volumes_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_stored_iscsi_volumes_errors(), tuple()}.
 describe_stored_iscsi_volumes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stored_iscsi_volumes(Client, Input, []).
@@ -3363,8 +3635,7 @@ describe_stored_iscsi_volumes(Client, Input)
 -spec describe_stored_iscsi_volumes(map(), describe_stored_iscsi_volumes_input(), proplists:proplist()) ->
     {ok, describe_stored_iscsi_volumes_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_stored_iscsi_volumes_errors(), tuple()}.
 describe_stored_iscsi_volumes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStorediSCSIVolumes">>, Input, Options).
@@ -3381,8 +3652,7 @@ describe_stored_iscsi_volumes(Client, Input, Options)
 -spec describe_tape_archives(map(), describe_tape_archives_input()) ->
     {ok, describe_tape_archives_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_tape_archives_errors(), tuple()}.
 describe_tape_archives(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tape_archives(Client, Input, []).
@@ -3390,8 +3660,7 @@ describe_tape_archives(Client, Input)
 -spec describe_tape_archives(map(), describe_tape_archives_input(), proplists:proplist()) ->
     {ok, describe_tape_archives_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_tape_archives_errors(), tuple()}.
 describe_tape_archives(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTapeArchives">>, Input, Options).
@@ -3410,8 +3679,7 @@ describe_tape_archives(Client, Input, Options)
 -spec describe_tape_recovery_points(map(), describe_tape_recovery_points_input()) ->
     {ok, describe_tape_recovery_points_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_tape_recovery_points_errors(), tuple()}.
 describe_tape_recovery_points(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tape_recovery_points(Client, Input, []).
@@ -3419,8 +3687,7 @@ describe_tape_recovery_points(Client, Input)
 -spec describe_tape_recovery_points(map(), describe_tape_recovery_points_input(), proplists:proplist()) ->
     {ok, describe_tape_recovery_points_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_tape_recovery_points_errors(), tuple()}.
 describe_tape_recovery_points(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTapeRecoveryPoints">>, Input, Options).
@@ -3446,8 +3713,7 @@ describe_tape_recovery_points(Client, Input, Options)
 -spec describe_tapes(map(), describe_tapes_input()) ->
     {ok, describe_tapes_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_tapes_errors(), tuple()}.
 describe_tapes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tapes(Client, Input, []).
@@ -3455,8 +3721,7 @@ describe_tapes(Client, Input)
 -spec describe_tapes(map(), describe_tapes_input(), proplists:proplist()) ->
     {ok, describe_tapes_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_tapes_errors(), tuple()}.
 describe_tapes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTapes">>, Input, Options).
@@ -3472,8 +3737,7 @@ describe_tapes(Client, Input, Options)
 -spec describe_upload_buffer(map(), describe_upload_buffer_input()) ->
     {ok, describe_upload_buffer_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_upload_buffer_errors(), tuple()}.
 describe_upload_buffer(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_upload_buffer(Client, Input, []).
@@ -3481,8 +3745,7 @@ describe_upload_buffer(Client, Input)
 -spec describe_upload_buffer(map(), describe_upload_buffer_input(), proplists:proplist()) ->
     {ok, describe_upload_buffer_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_upload_buffer_errors(), tuple()}.
 describe_upload_buffer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUploadBuffer">>, Input, Options).
@@ -3497,8 +3760,7 @@ describe_upload_buffer(Client, Input, Options)
 -spec describe_vtl_devices(map(), describe_vtl_devices_input()) ->
     {ok, describe_vtl_devices_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_vtl_devices_errors(), tuple()}.
 describe_vtl_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_vtl_devices(Client, Input, []).
@@ -3506,8 +3768,7 @@ describe_vtl_devices(Client, Input)
 -spec describe_vtl_devices(map(), describe_vtl_devices_input(), proplists:proplist()) ->
     {ok, describe_vtl_devices_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_vtl_devices_errors(), tuple()}.
 describe_vtl_devices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeVTLDevices">>, Input, Options).
@@ -3529,8 +3790,7 @@ describe_vtl_devices(Client, Input, Options)
 -spec describe_working_storage(map(), describe_working_storage_input()) ->
     {ok, describe_working_storage_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_working_storage_errors(), tuple()}.
 describe_working_storage(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_working_storage(Client, Input, []).
@@ -3538,8 +3798,7 @@ describe_working_storage(Client, Input)
 -spec describe_working_storage(map(), describe_working_storage_input(), proplists:proplist()) ->
     {ok, describe_working_storage_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, describe_working_storage_errors(), tuple()}.
 describe_working_storage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWorkingStorage">>, Input, Options).
@@ -3557,8 +3816,7 @@ describe_working_storage(Client, Input, Options)
 -spec detach_volume(map(), detach_volume_input()) ->
     {ok, detach_volume_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, detach_volume_errors(), tuple()}.
 detach_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_volume(Client, Input, []).
@@ -3566,8 +3824,7 @@ detach_volume(Client, Input)
 -spec detach_volume(map(), detach_volume_input(), proplists:proplist()) ->
     {ok, detach_volume_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, detach_volume_errors(), tuple()}.
 detach_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachVolume">>, Input, Options).
@@ -3586,8 +3843,7 @@ detach_volume(Client, Input, Options)
 -spec disable_gateway(map(), disable_gateway_input()) ->
     {ok, disable_gateway_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, disable_gateway_errors(), tuple()}.
 disable_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_gateway(Client, Input, []).
@@ -3595,8 +3851,7 @@ disable_gateway(Client, Input)
 -spec disable_gateway(map(), disable_gateway_input(), proplists:proplist()) ->
     {ok, disable_gateway_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, disable_gateway_errors(), tuple()}.
 disable_gateway(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableGateway">>, Input, Options).
@@ -3611,8 +3866,7 @@ disable_gateway(Client, Input, Options)
 -spec disassociate_file_system(map(), disassociate_file_system_input()) ->
     {ok, disassociate_file_system_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, disassociate_file_system_errors(), tuple()}.
 disassociate_file_system(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_file_system(Client, Input, []).
@@ -3620,8 +3874,7 @@ disassociate_file_system(Client, Input)
 -spec disassociate_file_system(map(), disassociate_file_system_input(), proplists:proplist()) ->
     {ok, disassociate_file_system_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, disassociate_file_system_errors(), tuple()}.
 disassociate_file_system(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateFileSystem">>, Input, Options).
@@ -3646,8 +3899,7 @@ disassociate_file_system(Client, Input, Options)
 -spec join_domain(map(), join_domain_input()) ->
     {ok, join_domain_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, join_domain_errors(), tuple()}.
 join_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     join_domain(Client, Input, []).
@@ -3655,8 +3907,7 @@ join_domain(Client, Input)
 -spec join_domain(map(), join_domain_input(), proplists:proplist()) ->
     {ok, join_domain_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, join_domain_errors(), tuple()}.
 join_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"JoinDomain">>, Input, Options).
@@ -3670,8 +3921,7 @@ join_domain(Client, Input, Options)
 -spec list_automatic_tape_creation_policies(map(), list_automatic_tape_creation_policies_input()) ->
     {ok, list_automatic_tape_creation_policies_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, list_automatic_tape_creation_policies_errors(), tuple()}.
 list_automatic_tape_creation_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_automatic_tape_creation_policies(Client, Input, []).
@@ -3679,8 +3929,7 @@ list_automatic_tape_creation_policies(Client, Input)
 -spec list_automatic_tape_creation_policies(map(), list_automatic_tape_creation_policies_input(), proplists:proplist()) ->
     {ok, list_automatic_tape_creation_policies_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, list_automatic_tape_creation_policies_errors(), tuple()}.
 list_automatic_tape_creation_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAutomaticTapeCreationPolicies">>, Input, Options).
@@ -3694,8 +3943,7 @@ list_automatic_tape_creation_policies(Client, Input, Options)
 -spec list_file_shares(map(), list_file_shares_input()) ->
     {ok, list_file_shares_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, list_file_shares_errors(), tuple()}.
 list_file_shares(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_file_shares(Client, Input, []).
@@ -3703,8 +3951,7 @@ list_file_shares(Client, Input)
 -spec list_file_shares(map(), list_file_shares_input(), proplists:proplist()) ->
     {ok, list_file_shares_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, list_file_shares_errors(), tuple()}.
 list_file_shares(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFileShares">>, Input, Options).
@@ -3718,8 +3965,7 @@ list_file_shares(Client, Input, Options)
 -spec list_file_system_associations(map(), list_file_system_associations_input()) ->
     {ok, list_file_system_associations_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, list_file_system_associations_errors(), tuple()}.
 list_file_system_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_file_system_associations(Client, Input, []).
@@ -3727,8 +3973,7 @@ list_file_system_associations(Client, Input)
 -spec list_file_system_associations(map(), list_file_system_associations_input(), proplists:proplist()) ->
     {ok, list_file_system_associations_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, list_file_system_associations_errors(), tuple()}.
 list_file_system_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFileSystemAssociations">>, Input, Options).
@@ -3754,8 +3999,7 @@ list_file_system_associations(Client, Input, Options)
 -spec list_gateways(map(), list_gateways_input()) ->
     {ok, list_gateways_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, list_gateways_errors(), tuple()}.
 list_gateways(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_gateways(Client, Input, []).
@@ -3763,8 +4007,7 @@ list_gateways(Client, Input)
 -spec list_gateways(map(), list_gateways_input(), proplists:proplist()) ->
     {ok, list_gateways_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, list_gateways_errors(), tuple()}.
 list_gateways(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGateways">>, Input, Options).
@@ -3789,8 +4032,7 @@ list_gateways(Client, Input, Options)
 -spec list_local_disks(map(), list_local_disks_input()) ->
     {ok, list_local_disks_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, list_local_disks_errors(), tuple()}.
 list_local_disks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_local_disks(Client, Input, []).
@@ -3798,8 +4040,7 @@ list_local_disks(Client, Input)
 -spec list_local_disks(map(), list_local_disks_input(), proplists:proplist()) ->
     {ok, list_local_disks_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, list_local_disks_errors(), tuple()}.
 list_local_disks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLocalDisks">>, Input, Options).
@@ -3811,8 +4052,7 @@ list_local_disks(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -3820,8 +4060,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_input(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -3844,8 +4083,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec list_tape_pools(map(), list_tape_pools_input()) ->
     {ok, list_tape_pools_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, list_tape_pools_errors(), tuple()}.
 list_tape_pools(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tape_pools(Client, Input, []).
@@ -3853,8 +4091,7 @@ list_tape_pools(Client, Input)
 -spec list_tape_pools(map(), list_tape_pools_input(), proplists:proplist()) ->
     {ok, list_tape_pools_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, list_tape_pools_errors(), tuple()}.
 list_tape_pools(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTapePools">>, Input, Options).
@@ -3883,8 +4120,7 @@ list_tape_pools(Client, Input, Options)
 -spec list_tapes(map(), list_tapes_input()) ->
     {ok, list_tapes_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, list_tapes_errors(), tuple()}.
 list_tapes(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tapes(Client, Input, []).
@@ -3892,8 +4128,7 @@ list_tapes(Client, Input)
 -spec list_tapes(map(), list_tapes_input(), proplists:proplist()) ->
     {ok, list_tapes_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, list_tapes_errors(), tuple()}.
 list_tapes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTapes">>, Input, Options).
@@ -3907,8 +4142,7 @@ list_tapes(Client, Input, Options)
 -spec list_volume_initiators(map(), list_volume_initiators_input()) ->
     {ok, list_volume_initiators_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, list_volume_initiators_errors(), tuple()}.
 list_volume_initiators(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_volume_initiators(Client, Input, []).
@@ -3916,8 +4150,7 @@ list_volume_initiators(Client, Input)
 -spec list_volume_initiators(map(), list_volume_initiators_input(), proplists:proplist()) ->
     {ok, list_volume_initiators_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, list_volume_initiators_errors(), tuple()}.
 list_volume_initiators(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListVolumeInitiators">>, Input, Options).
@@ -3937,8 +4170,7 @@ list_volume_initiators(Client, Input, Options)
 -spec list_volume_recovery_points(map(), list_volume_recovery_points_input()) ->
     {ok, list_volume_recovery_points_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, list_volume_recovery_points_errors(), tuple()}.
 list_volume_recovery_points(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_volume_recovery_points(Client, Input, []).
@@ -3946,8 +4178,7 @@ list_volume_recovery_points(Client, Input)
 -spec list_volume_recovery_points(map(), list_volume_recovery_points_input(), proplists:proplist()) ->
     {ok, list_volume_recovery_points_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, list_volume_recovery_points_errors(), tuple()}.
 list_volume_recovery_points(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListVolumeRecoveryPoints">>, Input, Options).
@@ -3974,8 +4205,7 @@ list_volume_recovery_points(Client, Input, Options)
 -spec list_volumes(map(), list_volumes_input()) ->
     {ok, list_volumes_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, list_volumes_errors(), tuple()}.
 list_volumes(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_volumes(Client, Input, []).
@@ -3983,8 +4213,7 @@ list_volumes(Client, Input)
 -spec list_volumes(map(), list_volumes_input(), proplists:proplist()) ->
     {ok, list_volumes_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, list_volumes_errors(), tuple()}.
 list_volumes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListVolumes">>, Input, Options).
@@ -4013,8 +4242,7 @@ list_volumes(Client, Input, Options)
 -spec notify_when_uploaded(map(), notify_when_uploaded_input()) ->
     {ok, notify_when_uploaded_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, notify_when_uploaded_errors(), tuple()}.
 notify_when_uploaded(Client, Input)
   when is_map(Client), is_map(Input) ->
     notify_when_uploaded(Client, Input, []).
@@ -4022,8 +4250,7 @@ notify_when_uploaded(Client, Input)
 -spec notify_when_uploaded(map(), notify_when_uploaded_input(), proplists:proplist()) ->
     {ok, notify_when_uploaded_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, notify_when_uploaded_errors(), tuple()}.
 notify_when_uploaded(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"NotifyWhenUploaded">>, Input, Options).
@@ -4092,8 +4319,7 @@ notify_when_uploaded(Client, Input, Options)
 -spec refresh_cache(map(), refresh_cache_input()) ->
     {ok, refresh_cache_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, refresh_cache_errors(), tuple()}.
 refresh_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     refresh_cache(Client, Input, []).
@@ -4101,8 +4327,7 @@ refresh_cache(Client, Input)
 -spec refresh_cache(map(), refresh_cache_input(), proplists:proplist()) ->
     {ok, refresh_cache_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, refresh_cache_errors(), tuple()}.
 refresh_cache(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RefreshCache">>, Input, Options).
@@ -4114,8 +4339,7 @@ refresh_cache(Client, Input, Options)
 -spec remove_tags_from_resource(map(), remove_tags_from_resource_input()) ->
     {ok, remove_tags_from_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, remove_tags_from_resource_errors(), tuple()}.
 remove_tags_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_resource(Client, Input, []).
@@ -4123,8 +4347,7 @@ remove_tags_from_resource(Client, Input)
 -spec remove_tags_from_resource(map(), remove_tags_from_resource_input(), proplists:proplist()) ->
     {ok, remove_tags_from_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, remove_tags_from_resource_errors(), tuple()}.
 remove_tags_from_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTagsFromResource">>, Input, Options).
@@ -4153,8 +4376,7 @@ remove_tags_from_resource(Client, Input, Options)
 -spec reset_cache(map(), reset_cache_input()) ->
     {ok, reset_cache_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, reset_cache_errors(), tuple()}.
 reset_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_cache(Client, Input, []).
@@ -4162,8 +4384,7 @@ reset_cache(Client, Input)
 -spec reset_cache(map(), reset_cache_input(), proplists:proplist()) ->
     {ok, reset_cache_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, reset_cache_errors(), tuple()}.
 reset_cache(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResetCache">>, Input, Options).
@@ -4186,8 +4407,7 @@ reset_cache(Client, Input, Options)
 -spec retrieve_tape_archive(map(), retrieve_tape_archive_input()) ->
     {ok, retrieve_tape_archive_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, retrieve_tape_archive_errors(), tuple()}.
 retrieve_tape_archive(Client, Input)
   when is_map(Client), is_map(Input) ->
     retrieve_tape_archive(Client, Input, []).
@@ -4195,8 +4415,7 @@ retrieve_tape_archive(Client, Input)
 -spec retrieve_tape_archive(map(), retrieve_tape_archive_input(), proplists:proplist()) ->
     {ok, retrieve_tape_archive_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, retrieve_tape_archive_errors(), tuple()}.
 retrieve_tape_archive(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RetrieveTapeArchive">>, Input, Options).
@@ -4220,8 +4439,7 @@ retrieve_tape_archive(Client, Input, Options)
 -spec retrieve_tape_recovery_point(map(), retrieve_tape_recovery_point_input()) ->
     {ok, retrieve_tape_recovery_point_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, retrieve_tape_recovery_point_errors(), tuple()}.
 retrieve_tape_recovery_point(Client, Input)
   when is_map(Client), is_map(Input) ->
     retrieve_tape_recovery_point(Client, Input, []).
@@ -4229,8 +4447,7 @@ retrieve_tape_recovery_point(Client, Input)
 -spec retrieve_tape_recovery_point(map(), retrieve_tape_recovery_point_input(), proplists:proplist()) ->
     {ok, retrieve_tape_recovery_point_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, retrieve_tape_recovery_point_errors(), tuple()}.
 retrieve_tape_recovery_point(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RetrieveTapeRecoveryPoint">>, Input, Options).
@@ -4246,8 +4463,7 @@ retrieve_tape_recovery_point(Client, Input, Options)
 -spec set_local_console_password(map(), set_local_console_password_input()) ->
     {ok, set_local_console_password_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, set_local_console_password_errors(), tuple()}.
 set_local_console_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_local_console_password(Client, Input, []).
@@ -4255,8 +4471,7 @@ set_local_console_password(Client, Input)
 -spec set_local_console_password(map(), set_local_console_password_input(), proplists:proplist()) ->
     {ok, set_local_console_password_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, set_local_console_password_errors(), tuple()}.
 set_local_console_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetLocalConsolePassword">>, Input, Options).
@@ -4270,8 +4485,7 @@ set_local_console_password(Client, Input, Options)
 -spec set_smb_guest_password(map(), set_smb_guest_password_input()) ->
     {ok, set_smb_guest_password_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, set_smb_guest_password_errors(), tuple()}.
 set_smb_guest_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_smb_guest_password(Client, Input, []).
@@ -4279,8 +4493,7 @@ set_smb_guest_password(Client, Input)
 -spec set_smb_guest_password(map(), set_smb_guest_password_input(), proplists:proplist()) ->
     {ok, set_smb_guest_password_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, set_smb_guest_password_errors(), tuple()}.
 set_smb_guest_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetSMBGuestPassword">>, Input, Options).
@@ -4322,8 +4535,7 @@ set_smb_guest_password(Client, Input, Options)
 -spec shutdown_gateway(map(), shutdown_gateway_input()) ->
     {ok, shutdown_gateway_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, shutdown_gateway_errors(), tuple()}.
 shutdown_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     shutdown_gateway(Client, Input, []).
@@ -4331,8 +4543,7 @@ shutdown_gateway(Client, Input)
 -spec shutdown_gateway(map(), shutdown_gateway_input(), proplists:proplist()) ->
     {ok, shutdown_gateway_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, shutdown_gateway_errors(), tuple()}.
 shutdown_gateway(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ShutdownGateway">>, Input, Options).
@@ -4352,8 +4563,7 @@ shutdown_gateway(Client, Input, Options)
 -spec start_availability_monitor_test(map(), start_availability_monitor_test_input()) ->
     {ok, start_availability_monitor_test_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, start_availability_monitor_test_errors(), tuple()}.
 start_availability_monitor_test(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_availability_monitor_test(Client, Input, []).
@@ -4361,8 +4571,7 @@ start_availability_monitor_test(Client, Input)
 -spec start_availability_monitor_test(map(), start_availability_monitor_test_input(), proplists:proplist()) ->
     {ok, start_availability_monitor_test_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, start_availability_monitor_test_errors(), tuple()}.
 start_availability_monitor_test(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartAvailabilityMonitorTest">>, Input, Options).
@@ -4388,8 +4597,7 @@ start_availability_monitor_test(Client, Input, Options)
 -spec start_gateway(map(), start_gateway_input()) ->
     {ok, start_gateway_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, start_gateway_errors(), tuple()}.
 start_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_gateway(Client, Input, []).
@@ -4397,8 +4605,7 @@ start_gateway(Client, Input)
 -spec start_gateway(map(), start_gateway_input(), proplists:proplist()) ->
     {ok, start_gateway_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, start_gateway_errors(), tuple()}.
 start_gateway(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartGateway">>, Input, Options).
@@ -4416,8 +4623,7 @@ start_gateway(Client, Input, Options)
 -spec update_automatic_tape_creation_policy(map(), update_automatic_tape_creation_policy_input()) ->
     {ok, update_automatic_tape_creation_policy_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, update_automatic_tape_creation_policy_errors(), tuple()}.
 update_automatic_tape_creation_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_automatic_tape_creation_policy(Client, Input, []).
@@ -4425,8 +4631,7 @@ update_automatic_tape_creation_policy(Client, Input)
 -spec update_automatic_tape_creation_policy(map(), update_automatic_tape_creation_policy_input(), proplists:proplist()) ->
     {ok, update_automatic_tape_creation_policy_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, update_automatic_tape_creation_policy_errors(), tuple()}.
 update_automatic_tape_creation_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAutomaticTapeCreationPolicy">>, Input, Options).
@@ -4454,8 +4659,7 @@ update_automatic_tape_creation_policy(Client, Input, Options)
 -spec update_bandwidth_rate_limit(map(), update_bandwidth_rate_limit_input()) ->
     {ok, update_bandwidth_rate_limit_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, update_bandwidth_rate_limit_errors(), tuple()}.
 update_bandwidth_rate_limit(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_bandwidth_rate_limit(Client, Input, []).
@@ -4463,8 +4667,7 @@ update_bandwidth_rate_limit(Client, Input)
 -spec update_bandwidth_rate_limit(map(), update_bandwidth_rate_limit_input(), proplists:proplist()) ->
     {ok, update_bandwidth_rate_limit_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, update_bandwidth_rate_limit_errors(), tuple()}.
 update_bandwidth_rate_limit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateBandwidthRateLimit">>, Input, Options).
@@ -4484,8 +4687,7 @@ update_bandwidth_rate_limit(Client, Input, Options)
 -spec update_bandwidth_rate_limit_schedule(map(), update_bandwidth_rate_limit_schedule_input()) ->
     {ok, update_bandwidth_rate_limit_schedule_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, update_bandwidth_rate_limit_schedule_errors(), tuple()}.
 update_bandwidth_rate_limit_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_bandwidth_rate_limit_schedule(Client, Input, []).
@@ -4493,8 +4695,7 @@ update_bandwidth_rate_limit_schedule(Client, Input)
 -spec update_bandwidth_rate_limit_schedule(map(), update_bandwidth_rate_limit_schedule_input(), proplists:proplist()) ->
     {ok, update_bandwidth_rate_limit_schedule_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, update_bandwidth_rate_limit_schedule_errors(), tuple()}.
 update_bandwidth_rate_limit_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateBandwidthRateLimitSchedule">>, Input, Options).
@@ -4514,8 +4715,7 @@ update_bandwidth_rate_limit_schedule(Client, Input, Options)
 -spec update_chap_credentials(map(), update_chap_credentials_input()) ->
     {ok, update_chap_credentials_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, update_chap_credentials_errors(), tuple()}.
 update_chap_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_chap_credentials(Client, Input, []).
@@ -4523,8 +4723,7 @@ update_chap_credentials(Client, Input)
 -spec update_chap_credentials(map(), update_chap_credentials_input(), proplists:proplist()) ->
     {ok, update_chap_credentials_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, update_chap_credentials_errors(), tuple()}.
 update_chap_credentials(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateChapCredentials">>, Input, Options).
@@ -4536,8 +4735,7 @@ update_chap_credentials(Client, Input, Options)
 -spec update_file_system_association(map(), update_file_system_association_input()) ->
     {ok, update_file_system_association_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, update_file_system_association_errors(), tuple()}.
 update_file_system_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_file_system_association(Client, Input, []).
@@ -4545,8 +4743,7 @@ update_file_system_association(Client, Input)
 -spec update_file_system_association(map(), update_file_system_association_input(), proplists:proplist()) ->
     {ok, update_file_system_association_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, update_file_system_association_errors(), tuple()}.
 update_file_system_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFileSystemAssociation">>, Input, Options).
@@ -4566,8 +4763,7 @@ update_file_system_association(Client, Input, Options)
 -spec update_gateway_information(map(), update_gateway_information_input()) ->
     {ok, update_gateway_information_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, update_gateway_information_errors(), tuple()}.
 update_gateway_information(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_gateway_information(Client, Input, []).
@@ -4575,8 +4771,7 @@ update_gateway_information(Client, Input)
 -spec update_gateway_information(map(), update_gateway_information_input(), proplists:proplist()) ->
     {ok, update_gateway_information_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, update_gateway_information_errors(), tuple()}.
 update_gateway_information(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGatewayInformation">>, Input, Options).
@@ -4606,8 +4801,7 @@ update_gateway_information(Client, Input, Options)
 -spec update_gateway_software_now(map(), update_gateway_software_now_input()) ->
     {ok, update_gateway_software_now_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, update_gateway_software_now_errors(), tuple()}.
 update_gateway_software_now(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_gateway_software_now(Client, Input, []).
@@ -4615,8 +4809,7 @@ update_gateway_software_now(Client, Input)
 -spec update_gateway_software_now(map(), update_gateway_software_now_input(), proplists:proplist()) ->
     {ok, update_gateway_software_now_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, update_gateway_software_now_errors(), tuple()}.
 update_gateway_software_now(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGatewaySoftwareNow">>, Input, Options).
@@ -4629,8 +4822,7 @@ update_gateway_software_now(Client, Input, Options)
 -spec update_maintenance_start_time(map(), update_maintenance_start_time_input()) ->
     {ok, update_maintenance_start_time_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, update_maintenance_start_time_errors(), tuple()}.
 update_maintenance_start_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_maintenance_start_time(Client, Input, []).
@@ -4638,8 +4830,7 @@ update_maintenance_start_time(Client, Input)
 -spec update_maintenance_start_time(map(), update_maintenance_start_time_input(), proplists:proplist()) ->
     {ok, update_maintenance_start_time_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, update_maintenance_start_time_errors(), tuple()}.
 update_maintenance_start_time(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMaintenanceStartTime">>, Input, Options).
@@ -4667,8 +4858,7 @@ update_maintenance_start_time(Client, Input, Options)
 -spec update_nfs_file_share(map(), update_nfs_file_share_input()) ->
     {ok, update_nfs_file_share_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, update_nfs_file_share_errors(), tuple()}.
 update_nfs_file_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_nfs_file_share(Client, Input, []).
@@ -4676,8 +4866,7 @@ update_nfs_file_share(Client, Input)
 -spec update_nfs_file_share(map(), update_nfs_file_share_input(), proplists:proplist()) ->
     {ok, update_nfs_file_share_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, update_nfs_file_share_errors(), tuple()}.
 update_nfs_file_share(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateNFSFileShare">>, Input, Options).
@@ -4711,8 +4900,7 @@ update_nfs_file_share(Client, Input, Options)
 -spec update_smb_file_share(map(), update_smb_file_share_input()) ->
     {ok, update_smb_file_share_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, update_smb_file_share_errors(), tuple()}.
 update_smb_file_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_smb_file_share(Client, Input, []).
@@ -4720,8 +4908,7 @@ update_smb_file_share(Client, Input)
 -spec update_smb_file_share(map(), update_smb_file_share_input(), proplists:proplist()) ->
     {ok, update_smb_file_share_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, update_smb_file_share_errors(), tuple()}.
 update_smb_file_share(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSMBFileShare">>, Input, Options).
@@ -4734,8 +4921,7 @@ update_smb_file_share(Client, Input, Options)
 -spec update_smb_file_share_visibility(map(), update_smb_file_share_visibility_input()) ->
     {ok, update_smb_file_share_visibility_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, update_smb_file_share_visibility_errors(), tuple()}.
 update_smb_file_share_visibility(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_smb_file_share_visibility(Client, Input, []).
@@ -4743,8 +4929,7 @@ update_smb_file_share_visibility(Client, Input)
 -spec update_smb_file_share_visibility(map(), update_smb_file_share_visibility_input(), proplists:proplist()) ->
     {ok, update_smb_file_share_visibility_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, update_smb_file_share_visibility_errors(), tuple()}.
 update_smb_file_share_visibility(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSMBFileShareVisibility">>, Input, Options).
@@ -4755,8 +4940,7 @@ update_smb_file_share_visibility(Client, Input, Options)
 -spec update_smb_local_groups(map(), update_smb_local_groups_input()) ->
     {ok, update_smb_local_groups_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, update_smb_local_groups_errors(), tuple()}.
 update_smb_local_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_smb_local_groups(Client, Input, []).
@@ -4764,8 +4948,7 @@ update_smb_local_groups(Client, Input)
 -spec update_smb_local_groups(map(), update_smb_local_groups_input(), proplists:proplist()) ->
     {ok, update_smb_local_groups_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, update_smb_local_groups_errors(), tuple()}.
 update_smb_local_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSMBLocalGroups">>, Input, Options).
@@ -4781,8 +4964,7 @@ update_smb_local_groups(Client, Input, Options)
 -spec update_smb_security_strategy(map(), update_smb_security_strategy_input()) ->
     {ok, update_smb_security_strategy_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, update_smb_security_strategy_errors(), tuple()}.
 update_smb_security_strategy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_smb_security_strategy(Client, Input, []).
@@ -4790,8 +4972,7 @@ update_smb_security_strategy(Client, Input)
 -spec update_smb_security_strategy(map(), update_smb_security_strategy_input(), proplists:proplist()) ->
     {ok, update_smb_security_strategy_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, update_smb_security_strategy_errors(), tuple()}.
 update_smb_security_strategy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSMBSecurityStrategy">>, Input, Options).
@@ -4815,8 +4996,7 @@ update_smb_security_strategy(Client, Input, Options)
 -spec update_snapshot_schedule(map(), update_snapshot_schedule_input()) ->
     {ok, update_snapshot_schedule_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, update_snapshot_schedule_errors(), tuple()}.
 update_snapshot_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_snapshot_schedule(Client, Input, []).
@@ -4824,8 +5004,7 @@ update_snapshot_schedule(Client, Input)
 -spec update_snapshot_schedule(map(), update_snapshot_schedule_input(), proplists:proplist()) ->
     {ok, update_snapshot_schedule_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, update_snapshot_schedule_errors(), tuple()}.
 update_snapshot_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSnapshotSchedule">>, Input, Options).
@@ -4841,8 +5020,7 @@ update_snapshot_schedule(Client, Input, Options)
 -spec update_vtl_device_type(map(), update_vtl_device_type_input()) ->
     {ok, update_vtl_device_type_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, update_vtl_device_type_errors(), tuple()}.
 update_vtl_device_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_vtl_device_type(Client, Input, []).
@@ -4850,8 +5028,7 @@ update_vtl_device_type(Client, Input)
 -spec update_vtl_device_type(map(), update_vtl_device_type_input(), proplists:proplist()) ->
     {ok, update_vtl_device_type_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_gateway_request_exception(), tuple()}.
+    {error, update_vtl_device_type_errors(), tuple()}.
 update_vtl_device_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateVTLDeviceType">>, Input, Options).

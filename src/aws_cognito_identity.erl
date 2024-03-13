@@ -506,6 +506,186 @@
 %% }
 -type internal_error_exception() :: #{binary() => any()}.
 
+-type create_identity_pool_errors() ::
+    internal_error_exception() | 
+    resource_conflict_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    too_many_requests_exception().
+
+-type delete_identities_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    too_many_requests_exception().
+
+-type delete_identity_pool_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type describe_identity_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type describe_identity_pool_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_credentials_for_identity_errors() ::
+    internal_error_exception() | 
+    resource_conflict_exception() | 
+    external_service_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    invalid_identity_pool_configuration_exception() | 
+    too_many_requests_exception().
+
+-type get_id_errors() ::
+    internal_error_exception() | 
+    resource_conflict_exception() | 
+    external_service_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_identity_pool_roles_errors() ::
+    internal_error_exception() | 
+    resource_conflict_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_open_id_token_errors() ::
+    internal_error_exception() | 
+    resource_conflict_exception() | 
+    external_service_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_open_id_token_for_developer_identity_errors() ::
+    internal_error_exception() | 
+    resource_conflict_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    developer_user_already_registered_exception().
+
+-type get_principal_tag_attribute_map_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_identities_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_identity_pools_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_tags_for_resource_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type lookup_developer_identity_errors() ::
+    internal_error_exception() | 
+    resource_conflict_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type merge_developer_identities_errors() ::
+    internal_error_exception() | 
+    resource_conflict_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type set_identity_pool_roles_errors() ::
+    internal_error_exception() | 
+    resource_conflict_exception() | 
+    concurrent_modification_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type set_principal_tag_attribute_map_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type tag_resource_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type unlink_developer_identity_errors() ::
+    internal_error_exception() | 
+    resource_conflict_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type unlink_identity_errors() ::
+    internal_error_exception() | 
+    resource_conflict_exception() | 
+    external_service_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type untag_resource_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_identity_pool_errors() ::
+    internal_error_exception() | 
+    resource_conflict_exception() | 
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
 
 %%====================================================================
 %% API
@@ -531,12 +711,7 @@
 -spec create_identity_pool(map(), create_identity_pool_input()) ->
     {ok, identity_pool(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_identity_pool_errors(), tuple()}.
 create_identity_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_identity_pool(Client, Input, []).
@@ -544,12 +719,7 @@ create_identity_pool(Client, Input)
 -spec create_identity_pool(map(), create_identity_pool_input(), proplists:proplist()) ->
     {ok, identity_pool(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_identity_pool_errors(), tuple()}.
 create_identity_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateIdentityPool">>, Input, Options).
@@ -563,9 +733,7 @@ create_identity_pool(Client, Input, Options)
 -spec delete_identities(map(), delete_identities_input()) ->
     {ok, delete_identities_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_identities_errors(), tuple()}.
 delete_identities(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_identities(Client, Input, []).
@@ -573,9 +741,7 @@ delete_identities(Client, Input)
 -spec delete_identities(map(), delete_identities_input(), proplists:proplist()) ->
     {ok, delete_identities_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_identities_errors(), tuple()}.
 delete_identities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIdentities">>, Input, Options).
@@ -589,11 +755,7 @@ delete_identities(Client, Input, Options)
 -spec delete_identity_pool(map(), delete_identity_pool_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_identity_pool_errors(), tuple()}.
 delete_identity_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_identity_pool(Client, Input, []).
@@ -601,11 +763,7 @@ delete_identity_pool(Client, Input)
 -spec delete_identity_pool(map(), delete_identity_pool_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_identity_pool_errors(), tuple()}.
 delete_identity_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIdentityPool">>, Input, Options).
@@ -618,11 +776,7 @@ delete_identity_pool(Client, Input, Options)
 -spec describe_identity(map(), describe_identity_input()) ->
     {ok, identity_description(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_identity_errors(), tuple()}.
 describe_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_identity(Client, Input, []).
@@ -630,11 +784,7 @@ describe_identity(Client, Input)
 -spec describe_identity(map(), describe_identity_input(), proplists:proplist()) ->
     {ok, identity_description(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_identity_errors(), tuple()}.
 describe_identity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeIdentity">>, Input, Options).
@@ -647,11 +797,7 @@ describe_identity(Client, Input, Options)
 -spec describe_identity_pool(map(), describe_identity_pool_input()) ->
     {ok, identity_pool(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_identity_pool_errors(), tuple()}.
 describe_identity_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_identity_pool(Client, Input, []).
@@ -659,11 +805,7 @@ describe_identity_pool(Client, Input)
 -spec describe_identity_pool(map(), describe_identity_pool_input(), proplists:proplist()) ->
     {ok, identity_pool(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_identity_pool_errors(), tuple()}.
 describe_identity_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeIdentityPool">>, Input, Options).
@@ -680,14 +822,7 @@ describe_identity_pool(Client, Input, Options)
 -spec get_credentials_for_identity(map(), get_credentials_for_identity_input()) ->
     {ok, get_credentials_for_identity_response(), tuple()} |
     {error, any()} |
-    {error, external_service_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_identity_pool_configuration_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_credentials_for_identity_errors(), tuple()}.
 get_credentials_for_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_credentials_for_identity(Client, Input, []).
@@ -695,14 +830,7 @@ get_credentials_for_identity(Client, Input)
 -spec get_credentials_for_identity(map(), get_credentials_for_identity_input(), proplists:proplist()) ->
     {ok, get_credentials_for_identity_response(), tuple()} |
     {error, any()} |
-    {error, external_service_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_identity_pool_configuration_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_credentials_for_identity_errors(), tuple()}.
 get_credentials_for_identity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCredentialsForIdentity">>, Input, Options).
@@ -716,14 +844,7 @@ get_credentials_for_identity(Client, Input, Options)
 -spec get_id(map(), get_id_input()) ->
     {ok, get_id_response(), tuple()} |
     {error, any()} |
-    {error, external_service_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_id_errors(), tuple()}.
 get_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_id(Client, Input, []).
@@ -731,14 +852,7 @@ get_id(Client, Input)
 -spec get_id(map(), get_id_input(), proplists:proplist()) ->
     {ok, get_id_response(), tuple()} |
     {error, any()} |
-    {error, external_service_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_id_errors(), tuple()}.
 get_id(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetId">>, Input, Options).
@@ -749,12 +863,7 @@ get_id(Client, Input, Options)
 -spec get_identity_pool_roles(map(), get_identity_pool_roles_input()) ->
     {ok, get_identity_pool_roles_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_identity_pool_roles_errors(), tuple()}.
 get_identity_pool_roles(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_identity_pool_roles(Client, Input, []).
@@ -762,12 +871,7 @@ get_identity_pool_roles(Client, Input)
 -spec get_identity_pool_roles(map(), get_identity_pool_roles_input(), proplists:proplist()) ->
     {ok, get_identity_pool_roles_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_identity_pool_roles_errors(), tuple()}.
 get_identity_pool_roles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetIdentityPoolRoles">>, Input, Options).
@@ -784,13 +888,7 @@ get_identity_pool_roles(Client, Input, Options)
 -spec get_open_id_token(map(), get_open_id_token_input()) ->
     {ok, get_open_id_token_response(), tuple()} |
     {error, any()} |
-    {error, external_service_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_open_id_token_errors(), tuple()}.
 get_open_id_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_open_id_token(Client, Input, []).
@@ -798,13 +896,7 @@ get_open_id_token(Client, Input)
 -spec get_open_id_token(map(), get_open_id_token_input(), proplists:proplist()) ->
     {ok, get_open_id_token_response(), tuple()} |
     {error, any()} |
-    {error, external_service_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_open_id_token_errors(), tuple()}.
 get_open_id_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOpenIdToken">>, Input, Options).
@@ -838,13 +930,7 @@ get_open_id_token(Client, Input, Options)
 -spec get_open_id_token_for_developer_identity(map(), get_open_id_token_for_developer_identity_input()) ->
     {ok, get_open_id_token_for_developer_identity_response(), tuple()} |
     {error, any()} |
-    {error, developer_user_already_registered_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_open_id_token_for_developer_identity_errors(), tuple()}.
 get_open_id_token_for_developer_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_open_id_token_for_developer_identity(Client, Input, []).
@@ -852,13 +938,7 @@ get_open_id_token_for_developer_identity(Client, Input)
 -spec get_open_id_token_for_developer_identity(map(), get_open_id_token_for_developer_identity_input(), proplists:proplist()) ->
     {ok, get_open_id_token_for_developer_identity_response(), tuple()} |
     {error, any()} |
-    {error, developer_user_already_registered_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_open_id_token_for_developer_identity_errors(), tuple()}.
 get_open_id_token_for_developer_identity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOpenIdTokenForDeveloperIdentity">>, Input, Options).
@@ -868,11 +948,7 @@ get_open_id_token_for_developer_identity(Client, Input, Options)
 -spec get_principal_tag_attribute_map(map(), get_principal_tag_attribute_map_input()) ->
     {ok, get_principal_tag_attribute_map_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_principal_tag_attribute_map_errors(), tuple()}.
 get_principal_tag_attribute_map(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_principal_tag_attribute_map(Client, Input, []).
@@ -880,11 +956,7 @@ get_principal_tag_attribute_map(Client, Input)
 -spec get_principal_tag_attribute_map(map(), get_principal_tag_attribute_map_input(), proplists:proplist()) ->
     {ok, get_principal_tag_attribute_map_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_principal_tag_attribute_map_errors(), tuple()}.
 get_principal_tag_attribute_map(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPrincipalTagAttributeMap">>, Input, Options).
@@ -895,11 +967,7 @@ get_principal_tag_attribute_map(Client, Input, Options)
 -spec list_identities(map(), list_identities_input()) ->
     {ok, list_identities_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_identities_errors(), tuple()}.
 list_identities(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_identities(Client, Input, []).
@@ -907,11 +975,7 @@ list_identities(Client, Input)
 -spec list_identities(map(), list_identities_input(), proplists:proplist()) ->
     {ok, list_identities_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_identities_errors(), tuple()}.
 list_identities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListIdentities">>, Input, Options).
@@ -922,11 +986,7 @@ list_identities(Client, Input, Options)
 -spec list_identity_pools(map(), list_identity_pools_input()) ->
     {ok, list_identity_pools_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_identity_pools_errors(), tuple()}.
 list_identity_pools(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_identity_pools(Client, Input, []).
@@ -934,11 +994,7 @@ list_identity_pools(Client, Input)
 -spec list_identity_pools(map(), list_identity_pools_input(), proplists:proplist()) ->
     {ok, list_identity_pools_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_identity_pools_errors(), tuple()}.
 list_identity_pools(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListIdentityPools">>, Input, Options).
@@ -953,11 +1009,7 @@ list_identity_pools(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -965,11 +1017,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_input(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -1001,12 +1049,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec lookup_developer_identity(map(), lookup_developer_identity_input()) ->
     {ok, lookup_developer_identity_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, lookup_developer_identity_errors(), tuple()}.
 lookup_developer_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     lookup_developer_identity(Client, Input, []).
@@ -1014,12 +1057,7 @@ lookup_developer_identity(Client, Input)
 -spec lookup_developer_identity(map(), lookup_developer_identity_input(), proplists:proplist()) ->
     {ok, lookup_developer_identity_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, lookup_developer_identity_errors(), tuple()}.
 lookup_developer_identity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"LookupDeveloperIdentity">>, Input, Options).
@@ -1049,12 +1087,7 @@ lookup_developer_identity(Client, Input, Options)
 -spec merge_developer_identities(map(), merge_developer_identities_input()) ->
     {ok, merge_developer_identities_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, merge_developer_identities_errors(), tuple()}.
 merge_developer_identities(Client, Input)
   when is_map(Client), is_map(Input) ->
     merge_developer_identities(Client, Input, []).
@@ -1062,12 +1095,7 @@ merge_developer_identities(Client, Input)
 -spec merge_developer_identities(map(), merge_developer_identities_input(), proplists:proplist()) ->
     {ok, merge_developer_identities_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, merge_developer_identities_errors(), tuple()}.
 merge_developer_identities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"MergeDeveloperIdentities">>, Input, Options).
@@ -1081,13 +1109,7 @@ merge_developer_identities(Client, Input, Options)
 -spec set_identity_pool_roles(map(), set_identity_pool_roles_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, set_identity_pool_roles_errors(), tuple()}.
 set_identity_pool_roles(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_identity_pool_roles(Client, Input, []).
@@ -1095,13 +1117,7 @@ set_identity_pool_roles(Client, Input)
 -spec set_identity_pool_roles(map(), set_identity_pool_roles_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, set_identity_pool_roles_errors(), tuple()}.
 set_identity_pool_roles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetIdentityPoolRoles">>, Input, Options).
@@ -1111,11 +1127,7 @@ set_identity_pool_roles(Client, Input, Options)
 -spec set_principal_tag_attribute_map(map(), set_principal_tag_attribute_map_input()) ->
     {ok, set_principal_tag_attribute_map_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, set_principal_tag_attribute_map_errors(), tuple()}.
 set_principal_tag_attribute_map(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_principal_tag_attribute_map(Client, Input, []).
@@ -1123,11 +1135,7 @@ set_principal_tag_attribute_map(Client, Input)
 -spec set_principal_tag_attribute_map(map(), set_principal_tag_attribute_map_input(), proplists:proplist()) ->
     {ok, set_principal_tag_attribute_map_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, set_principal_tag_attribute_map_errors(), tuple()}.
 set_principal_tag_attribute_map(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetPrincipalTagAttributeMap">>, Input, Options).
@@ -1163,11 +1171,7 @@ set_principal_tag_attribute_map(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_input()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -1175,11 +1179,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -1197,12 +1197,7 @@ tag_resource(Client, Input, Options)
 -spec unlink_developer_identity(map(), unlink_developer_identity_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, unlink_developer_identity_errors(), tuple()}.
 unlink_developer_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     unlink_developer_identity(Client, Input, []).
@@ -1210,12 +1205,7 @@ unlink_developer_identity(Client, Input)
 -spec unlink_developer_identity(map(), unlink_developer_identity_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, unlink_developer_identity_errors(), tuple()}.
 unlink_developer_identity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UnlinkDeveloperIdentity">>, Input, Options).
@@ -1231,13 +1221,7 @@ unlink_developer_identity(Client, Input, Options)
 -spec unlink_identity(map(), unlink_identity_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, external_service_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, unlink_identity_errors(), tuple()}.
 unlink_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     unlink_identity(Client, Input, []).
@@ -1245,13 +1229,7 @@ unlink_identity(Client, Input)
 -spec unlink_identity(map(), unlink_identity_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, external_service_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, unlink_identity_errors(), tuple()}.
 unlink_identity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UnlinkIdentity">>, Input, Options).
@@ -1264,11 +1242,7 @@ unlink_identity(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_input()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -1276,11 +1250,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -1291,14 +1261,7 @@ untag_resource(Client, Input, Options)
 -spec update_identity_pool(map(), identity_pool()) ->
     {ok, identity_pool(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_identity_pool_errors(), tuple()}.
 update_identity_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_identity_pool(Client, Input, []).
@@ -1306,14 +1269,7 @@ update_identity_pool(Client, Input)
 -spec update_identity_pool(map(), identity_pool(), proplists:proplist()) ->
     {ok, identity_pool(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_identity_pool_errors(), tuple()}.
 update_identity_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateIdentityPool">>, Input, Options).

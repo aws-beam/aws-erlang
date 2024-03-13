@@ -481,6 +481,114 @@
 %% }
 -type pipeline_id_name() :: #{binary() => any()}.
 
+-type activate_pipeline_errors() ::
+    pipeline_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    pipeline_deleted_exception().
+
+-type add_tags_errors() ::
+    pipeline_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    pipeline_deleted_exception().
+
+-type create_pipeline_errors() ::
+    internal_service_error() | 
+    invalid_request_exception().
+
+-type deactivate_pipeline_errors() ::
+    pipeline_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    pipeline_deleted_exception().
+
+-type delete_pipeline_errors() ::
+    pipeline_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception().
+
+-type describe_objects_errors() ::
+    pipeline_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    pipeline_deleted_exception().
+
+-type describe_pipelines_errors() ::
+    pipeline_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    pipeline_deleted_exception().
+
+-type evaluate_expression_errors() ::
+    task_not_found_exception() | 
+    pipeline_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    pipeline_deleted_exception().
+
+-type get_pipeline_definition_errors() ::
+    pipeline_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    pipeline_deleted_exception().
+
+-type list_pipelines_errors() ::
+    internal_service_error() | 
+    invalid_request_exception().
+
+-type poll_for_task_errors() ::
+    task_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception().
+
+-type put_pipeline_definition_errors() ::
+    pipeline_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    pipeline_deleted_exception().
+
+-type query_objects_errors() ::
+    pipeline_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    pipeline_deleted_exception().
+
+-type remove_tags_errors() ::
+    pipeline_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    pipeline_deleted_exception().
+
+-type report_task_progress_errors() ::
+    task_not_found_exception() | 
+    pipeline_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    pipeline_deleted_exception().
+
+-type report_task_runner_heartbeat_errors() ::
+    internal_service_error() | 
+    invalid_request_exception().
+
+-type set_status_errors() ::
+    pipeline_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    pipeline_deleted_exception().
+
+-type set_task_status_errors() ::
+    task_not_found_exception() | 
+    pipeline_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    pipeline_deleted_exception().
+
+-type validate_pipeline_definition_errors() ::
+    pipeline_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    pipeline_deleted_exception().
 
 %%====================================================================
 %% API
@@ -519,10 +627,7 @@
 -spec activate_pipeline(map(), activate_pipeline_input()) ->
     {ok, activate_pipeline_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, pipeline_deleted_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()}.
+    {error, activate_pipeline_errors(), tuple()}.
 activate_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     activate_pipeline(Client, Input, []).
@@ -530,10 +635,7 @@ activate_pipeline(Client, Input)
 -spec activate_pipeline(map(), activate_pipeline_input(), proplists:proplist()) ->
     {ok, activate_pipeline_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, pipeline_deleted_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()}.
+    {error, activate_pipeline_errors(), tuple()}.
 activate_pipeline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ActivatePipeline">>, Input, Options).
@@ -542,10 +644,7 @@ activate_pipeline(Client, Input, Options)
 -spec add_tags(map(), add_tags_input()) ->
     {ok, add_tags_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, pipeline_deleted_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()}.
+    {error, add_tags_errors(), tuple()}.
 add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
@@ -553,10 +652,7 @@ add_tags(Client, Input)
 -spec add_tags(map(), add_tags_input(), proplists:proplist()) ->
     {ok, add_tags_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, pipeline_deleted_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()}.
+    {error, add_tags_errors(), tuple()}.
 add_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTags">>, Input, Options).
@@ -587,8 +683,7 @@ add_tags(Client, Input, Options)
 -spec create_pipeline(map(), create_pipeline_input()) ->
     {ok, create_pipeline_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_pipeline_errors(), tuple()}.
 create_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_pipeline(Client, Input, []).
@@ -596,8 +691,7 @@ create_pipeline(Client, Input)
 -spec create_pipeline(map(), create_pipeline_input(), proplists:proplist()) ->
     {ok, create_pipeline_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_pipeline_errors(), tuple()}.
 create_pipeline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePipeline">>, Input, Options).
@@ -613,10 +707,7 @@ create_pipeline(Client, Input, Options)
 -spec deactivate_pipeline(map(), deactivate_pipeline_input()) ->
     {ok, deactivate_pipeline_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, pipeline_deleted_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()}.
+    {error, deactivate_pipeline_errors(), tuple()}.
 deactivate_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     deactivate_pipeline(Client, Input, []).
@@ -624,10 +715,7 @@ deactivate_pipeline(Client, Input)
 -spec deactivate_pipeline(map(), deactivate_pipeline_input(), proplists:proplist()) ->
     {ok, deactivate_pipeline_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, pipeline_deleted_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()}.
+    {error, deactivate_pipeline_errors(), tuple()}.
 deactivate_pipeline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeactivatePipeline">>, Input, Options).
@@ -663,9 +751,7 @@ deactivate_pipeline(Client, Input, Options)
 -spec delete_pipeline(map(), delete_pipeline_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()}.
+    {error, delete_pipeline_errors(), tuple()}.
 delete_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_pipeline(Client, Input, []).
@@ -673,9 +759,7 @@ delete_pipeline(Client, Input)
 -spec delete_pipeline(map(), delete_pipeline_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()}.
+    {error, delete_pipeline_errors(), tuple()}.
 delete_pipeline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePipeline">>, Input, Options).
@@ -735,10 +819,7 @@ delete_pipeline(Client, Input, Options)
 -spec describe_objects(map(), describe_objects_input()) ->
     {ok, describe_objects_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, pipeline_deleted_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()}.
+    {error, describe_objects_errors(), tuple()}.
 describe_objects(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_objects(Client, Input, []).
@@ -746,10 +827,7 @@ describe_objects(Client, Input)
 -spec describe_objects(map(), describe_objects_input(), proplists:proplist()) ->
     {ok, describe_objects_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, pipeline_deleted_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()}.
+    {error, describe_objects_errors(), tuple()}.
 describe_objects(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeObjects">>, Input, Options).
@@ -817,10 +895,7 @@ describe_objects(Client, Input, Options)
 -spec describe_pipelines(map(), describe_pipelines_input()) ->
     {ok, describe_pipelines_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, pipeline_deleted_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()}.
+    {error, describe_pipelines_errors(), tuple()}.
 describe_pipelines(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_pipelines(Client, Input, []).
@@ -828,10 +903,7 @@ describe_pipelines(Client, Input)
 -spec describe_pipelines(map(), describe_pipelines_input(), proplists:proplist()) ->
     {ok, describe_pipelines_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, pipeline_deleted_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()}.
+    {error, describe_pipelines_errors(), tuple()}.
 describe_pipelines(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePipelines">>, Input, Options).
@@ -864,11 +936,7 @@ describe_pipelines(Client, Input, Options)
 -spec evaluate_expression(map(), evaluate_expression_input()) ->
     {ok, evaluate_expression_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, pipeline_deleted_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, task_not_found_exception(), tuple()}.
+    {error, evaluate_expression_errors(), tuple()}.
 evaluate_expression(Client, Input)
   when is_map(Client), is_map(Input) ->
     evaluate_expression(Client, Input, []).
@@ -876,11 +944,7 @@ evaluate_expression(Client, Input)
 -spec evaluate_expression(map(), evaluate_expression_input(), proplists:proplist()) ->
     {ok, evaluate_expression_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, pipeline_deleted_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, task_not_found_exception(), tuple()}.
+    {error, evaluate_expression_errors(), tuple()}.
 evaluate_expression(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EvaluateExpression">>, Input, Options).
@@ -946,10 +1010,7 @@ evaluate_expression(Client, Input, Options)
 -spec get_pipeline_definition(map(), get_pipeline_definition_input()) ->
     {ok, get_pipeline_definition_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, pipeline_deleted_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()}.
+    {error, get_pipeline_definition_errors(), tuple()}.
 get_pipeline_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_pipeline_definition(Client, Input, []).
@@ -957,10 +1018,7 @@ get_pipeline_definition(Client, Input)
 -spec get_pipeline_definition(map(), get_pipeline_definition_input(), proplists:proplist()) ->
     {ok, get_pipeline_definition_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, pipeline_deleted_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()}.
+    {error, get_pipeline_definition_errors(), tuple()}.
 get_pipeline_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPipelineDefinition">>, Input, Options).
@@ -995,8 +1053,7 @@ get_pipeline_definition(Client, Input, Options)
 -spec list_pipelines(map(), list_pipelines_input()) ->
     {ok, list_pipelines_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_pipelines_errors(), tuple()}.
 list_pipelines(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pipelines(Client, Input, []).
@@ -1004,8 +1061,7 @@ list_pipelines(Client, Input)
 -spec list_pipelines(map(), list_pipelines_input(), proplists:proplist()) ->
     {ok, list_pipelines_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_pipelines_errors(), tuple()}.
 list_pipelines(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPipelines">>, Input, Options).
@@ -1094,9 +1150,7 @@ list_pipelines(Client, Input, Options)
 -spec poll_for_task(map(), poll_for_task_input()) ->
     {ok, poll_for_task_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, task_not_found_exception(), tuple()}.
+    {error, poll_for_task_errors(), tuple()}.
 poll_for_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     poll_for_task(Client, Input, []).
@@ -1104,9 +1158,7 @@ poll_for_task(Client, Input)
 -spec poll_for_task(map(), poll_for_task_input(), proplists:proplist()) ->
     {ok, poll_for_task_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, task_not_found_exception(), tuple()}.
+    {error, poll_for_task_errors(), tuple()}.
 poll_for_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PollForTask">>, Input, Options).
@@ -1260,10 +1312,7 @@ poll_for_task(Client, Input, Options)
 -spec put_pipeline_definition(map(), put_pipeline_definition_input()) ->
     {ok, put_pipeline_definition_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, pipeline_deleted_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()}.
+    {error, put_pipeline_definition_errors(), tuple()}.
 put_pipeline_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_pipeline_definition(Client, Input, []).
@@ -1271,10 +1320,7 @@ put_pipeline_definition(Client, Input)
 -spec put_pipeline_definition(map(), put_pipeline_definition_input(), proplists:proplist()) ->
     {ok, put_pipeline_definition_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, pipeline_deleted_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()}.
+    {error, put_pipeline_definition_errors(), tuple()}.
 put_pipeline_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutPipelineDefinition">>, Input, Options).
@@ -1312,10 +1358,7 @@ put_pipeline_definition(Client, Input, Options)
 -spec query_objects(map(), query_objects_input()) ->
     {ok, query_objects_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, pipeline_deleted_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()}.
+    {error, query_objects_errors(), tuple()}.
 query_objects(Client, Input)
   when is_map(Client), is_map(Input) ->
     query_objects(Client, Input, []).
@@ -1323,10 +1366,7 @@ query_objects(Client, Input)
 -spec query_objects(map(), query_objects_input(), proplists:proplist()) ->
     {ok, query_objects_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, pipeline_deleted_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()}.
+    {error, query_objects_errors(), tuple()}.
 query_objects(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"QueryObjects">>, Input, Options).
@@ -1335,10 +1375,7 @@ query_objects(Client, Input, Options)
 -spec remove_tags(map(), remove_tags_input()) ->
     {ok, remove_tags_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, pipeline_deleted_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()}.
+    {error, remove_tags_errors(), tuple()}.
 remove_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags(Client, Input, []).
@@ -1346,10 +1383,7 @@ remove_tags(Client, Input)
 -spec remove_tags(map(), remove_tags_input(), proplists:proplist()) ->
     {ok, remove_tags_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, pipeline_deleted_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()}.
+    {error, remove_tags_errors(), tuple()}.
 remove_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTags">>, Input, Options).
@@ -1396,11 +1430,7 @@ remove_tags(Client, Input, Options)
 -spec report_task_progress(map(), report_task_progress_input()) ->
     {ok, report_task_progress_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, pipeline_deleted_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, task_not_found_exception(), tuple()}.
+    {error, report_task_progress_errors(), tuple()}.
 report_task_progress(Client, Input)
   when is_map(Client), is_map(Input) ->
     report_task_progress(Client, Input, []).
@@ -1408,11 +1438,7 @@ report_task_progress(Client, Input)
 -spec report_task_progress(map(), report_task_progress_input(), proplists:proplist()) ->
     {ok, report_task_progress_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, pipeline_deleted_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, task_not_found_exception(), tuple()}.
+    {error, report_task_progress_errors(), tuple()}.
 report_task_progress(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ReportTaskProgress">>, Input, Options).
@@ -1447,8 +1473,7 @@ report_task_progress(Client, Input, Options)
 -spec report_task_runner_heartbeat(map(), report_task_runner_heartbeat_input()) ->
     {ok, report_task_runner_heartbeat_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, report_task_runner_heartbeat_errors(), tuple()}.
 report_task_runner_heartbeat(Client, Input)
   when is_map(Client), is_map(Input) ->
     report_task_runner_heartbeat(Client, Input, []).
@@ -1456,8 +1481,7 @@ report_task_runner_heartbeat(Client, Input)
 -spec report_task_runner_heartbeat(map(), report_task_runner_heartbeat_input(), proplists:proplist()) ->
     {ok, report_task_runner_heartbeat_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, report_task_runner_heartbeat_errors(), tuple()}.
 report_task_runner_heartbeat(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ReportTaskRunnerHeartbeat">>, Input, Options).
@@ -1493,10 +1517,7 @@ report_task_runner_heartbeat(Client, Input, Options)
 -spec set_status(map(), set_status_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, pipeline_deleted_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()}.
+    {error, set_status_errors(), tuple()}.
 set_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_status(Client, Input, []).
@@ -1504,10 +1525,7 @@ set_status(Client, Input)
 -spec set_status(map(), set_status_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, pipeline_deleted_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()}.
+    {error, set_status_errors(), tuple()}.
 set_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetStatus">>, Input, Options).
@@ -1541,11 +1559,7 @@ set_status(Client, Input, Options)
 -spec set_task_status(map(), set_task_status_input()) ->
     {ok, set_task_status_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, pipeline_deleted_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, task_not_found_exception(), tuple()}.
+    {error, set_task_status_errors(), tuple()}.
 set_task_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_task_status(Client, Input, []).
@@ -1553,11 +1567,7 @@ set_task_status(Client, Input)
 -spec set_task_status(map(), set_task_status_input(), proplists:proplist()) ->
     {ok, set_task_status_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, pipeline_deleted_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()} |
-    {error, task_not_found_exception(), tuple()}.
+    {error, set_task_status_errors(), tuple()}.
 set_task_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetTaskStatus">>, Input, Options).
@@ -1700,10 +1710,7 @@ set_task_status(Client, Input, Options)
 -spec validate_pipeline_definition(map(), validate_pipeline_definition_input()) ->
     {ok, validate_pipeline_definition_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, pipeline_deleted_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()}.
+    {error, validate_pipeline_definition_errors(), tuple()}.
 validate_pipeline_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     validate_pipeline_definition(Client, Input, []).
@@ -1711,10 +1718,7 @@ validate_pipeline_definition(Client, Input)
 -spec validate_pipeline_definition(map(), validate_pipeline_definition_input(), proplists:proplist()) ->
     {ok, validate_pipeline_definition_output(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, pipeline_deleted_exception(), tuple()} |
-    {error, pipeline_not_found_exception(), tuple()}.
+    {error, validate_pipeline_definition_errors(), tuple()}.
 validate_pipeline_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ValidatePipelineDefinition">>, Input, Options).

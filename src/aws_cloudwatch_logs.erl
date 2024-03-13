@@ -1570,6 +1570,441 @@
 %% }
 -type put_query_definition_response() :: #{binary() => any()}.
 
+-type associate_kms_key_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception().
+
+-type cancel_export_task_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type create_delivery_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_export_task_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception().
+
+-type create_log_anomaly_detector_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception().
+
+-type create_log_group_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    operation_aborted_exception().
+
+-type create_log_stream_errors() ::
+    resource_already_exists_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type delete_account_policy_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception().
+
+-type delete_data_protection_policy_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception().
+
+-type delete_delivery_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_delivery_destination_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_delivery_destination_policy_errors() ::
+    validation_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_delivery_source_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_destination_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception().
+
+-type delete_log_anomaly_detector_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception().
+
+-type delete_log_group_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception().
+
+-type delete_log_stream_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception().
+
+-type delete_metric_filter_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception().
+
+-type delete_query_definition_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type delete_resource_policy_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type delete_retention_policy_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception().
+
+-type delete_subscription_filter_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception().
+
+-type describe_account_policies_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception().
+
+-type describe_deliveries_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception().
+
+-type describe_delivery_destinations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception().
+
+-type describe_delivery_sources_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception().
+
+-type describe_destinations_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception().
+
+-type describe_export_tasks_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception().
+
+-type describe_log_groups_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception().
+
+-type describe_log_streams_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type describe_metric_filters_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type describe_queries_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type describe_query_definitions_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception().
+
+-type describe_resource_policies_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception().
+
+-type describe_subscription_filters_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type disassociate_kms_key_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception().
+
+-type filter_log_events_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type get_data_protection_policy_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception().
+
+-type get_delivery_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type get_delivery_destination_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type get_delivery_destination_policy_errors() ::
+    validation_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type get_delivery_source_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type get_log_anomaly_detector_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception().
+
+-type get_log_events_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type get_log_group_fields_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type get_log_record_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type get_query_results_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type list_anomalies_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception().
+
+-type list_log_anomaly_detectors_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception().
+
+-type list_tags_for_resource_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_log_group_errors() ::
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type put_account_policy_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    operation_aborted_exception().
+
+-type put_data_protection_policy_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception().
+
+-type put_delivery_destination_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type put_delivery_destination_policy_errors() ::
+    validation_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type put_delivery_source_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type put_destination_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    operation_aborted_exception().
+
+-type put_destination_policy_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    operation_aborted_exception().
+
+-type put_log_events_errors() ::
+    unrecognized_client_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    data_already_accepted_exception() | 
+    invalid_sequence_token_exception().
+
+-type put_metric_filter_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception().
+
+-type put_query_definition_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type put_resource_policy_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception().
+
+-type put_retention_policy_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception().
+
+-type put_subscription_filter_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception().
+
+-type start_live_tail_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
+-type start_query_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    malformed_query_exception().
+
+-type stop_query_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type tag_log_group_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type test_metric_filter_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception().
+
+-type untag_log_group_errors() ::
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type update_anomaly_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception().
+
+-type update_log_anomaly_detector_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception().
 
 %%====================================================================
 %% API
@@ -1644,10 +2079,7 @@
 -spec associate_kms_key(map(), associate_kms_key_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, associate_kms_key_errors(), tuple()}.
 associate_kms_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_kms_key(Client, Input, []).
@@ -1655,10 +2087,7 @@ associate_kms_key(Client, Input)
 -spec associate_kms_key(map(), associate_kms_key_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, associate_kms_key_errors(), tuple()}.
 associate_kms_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateKmsKey">>, Input, Options).
@@ -1669,10 +2098,7 @@ associate_kms_key(Client, Input, Options)
 -spec cancel_export_task(map(), cancel_export_task_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, cancel_export_task_errors(), tuple()}.
 cancel_export_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_export_task(Client, Input, []).
@@ -1680,10 +2106,7 @@ cancel_export_task(Client, Input)
 -spec cancel_export_task(map(), cancel_export_task_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, cancel_export_task_errors(), tuple()}.
 cancel_export_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelExportTask">>, Input, Options).
@@ -1738,13 +2161,7 @@ cancel_export_task(Client, Input, Options)
 -spec create_delivery(map(), create_delivery_request()) ->
     {ok, create_delivery_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_delivery_errors(), tuple()}.
 create_delivery(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_delivery(Client, Input, []).
@@ -1752,13 +2169,7 @@ create_delivery(Client, Input)
 -spec create_delivery(map(), create_delivery_request(), proplists:proplist()) ->
     {ok, create_delivery_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_delivery_errors(), tuple()}.
 create_delivery(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDelivery">>, Input, Options).
@@ -1803,12 +2214,7 @@ create_delivery(Client, Input, Options)
 -spec create_export_task(map(), create_export_task_request()) ->
     {ok, create_export_task_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_export_task_errors(), tuple()}.
 create_export_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_export_task(Client, Input, []).
@@ -1816,12 +2222,7 @@ create_export_task(Client, Input)
 -spec create_export_task(map(), create_export_task_request(), proplists:proplist()) ->
     {ok, create_export_task_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_export_task_errors(), tuple()}.
 create_export_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateExportTask">>, Input, Options).
@@ -1872,11 +2273,7 @@ create_export_task(Client, Input, Options)
 -spec create_log_anomaly_detector(map(), create_log_anomaly_detector_request()) ->
     {ok, create_log_anomaly_detector_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_log_anomaly_detector_errors(), tuple()}.
 create_log_anomaly_detector(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_log_anomaly_detector(Client, Input, []).
@@ -1884,11 +2281,7 @@ create_log_anomaly_detector(Client, Input)
 -spec create_log_anomaly_detector(map(), create_log_anomaly_detector_request(), proplists:proplist()) ->
     {ok, create_log_anomaly_detector_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_log_anomaly_detector_errors(), tuple()}.
 create_log_anomaly_detector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLogAnomalyDetector">>, Input, Options).
@@ -1935,11 +2328,7 @@ create_log_anomaly_detector(Client, Input, Options)
 -spec create_log_group(map(), create_log_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_log_group_errors(), tuple()}.
 create_log_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_log_group(Client, Input, []).
@@ -1947,11 +2336,7 @@ create_log_group(Client, Input)
 -spec create_log_group(map(), create_log_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_log_group_errors(), tuple()}.
 create_log_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLogGroup">>, Input, Options).
@@ -1978,10 +2363,7 @@ create_log_group(Client, Input, Options)
 -spec create_log_stream(map(), create_log_stream_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_log_stream_errors(), tuple()}.
 create_log_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_log_stream(Client, Input, []).
@@ -1989,10 +2371,7 @@ create_log_stream(Client, Input)
 -spec create_log_stream(map(), create_log_stream_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_log_stream_errors(), tuple()}.
 create_log_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLogStream">>, Input, Options).
@@ -2017,10 +2396,7 @@ create_log_stream(Client, Input, Options)
 -spec delete_account_policy(map(), delete_account_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_account_policy_errors(), tuple()}.
 delete_account_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_account_policy(Client, Input, []).
@@ -2028,10 +2404,7 @@ delete_account_policy(Client, Input)
 -spec delete_account_policy(map(), delete_account_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_account_policy_errors(), tuple()}.
 delete_account_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAccountPolicy">>, Input, Options).
@@ -2044,10 +2417,7 @@ delete_account_policy(Client, Input, Options)
 -spec delete_data_protection_policy(map(), delete_data_protection_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_data_protection_policy_errors(), tuple()}.
 delete_data_protection_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_data_protection_policy(Client, Input, []).
@@ -2055,10 +2425,7 @@ delete_data_protection_policy(Client, Input)
 -spec delete_data_protection_policy(map(), delete_data_protection_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_data_protection_policy_errors(), tuple()}.
 delete_data_protection_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDataProtectionPolicy">>, Input, Options).
@@ -2072,12 +2439,7 @@ delete_data_protection_policy(Client, Input, Options)
 -spec delete_delivery(map(), delete_delivery_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_delivery_errors(), tuple()}.
 delete_delivery(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_delivery(Client, Input, []).
@@ -2085,12 +2447,7 @@ delete_delivery(Client, Input)
 -spec delete_delivery(map(), delete_delivery_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_delivery_errors(), tuple()}.
 delete_delivery(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDelivery">>, Input, Options).
@@ -2108,12 +2465,7 @@ delete_delivery(Client, Input, Options)
 -spec delete_delivery_destination(map(), delete_delivery_destination_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_delivery_destination_errors(), tuple()}.
 delete_delivery_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_delivery_destination(Client, Input, []).
@@ -2121,12 +2473,7 @@ delete_delivery_destination(Client, Input)
 -spec delete_delivery_destination(map(), delete_delivery_destination_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_delivery_destination_errors(), tuple()}.
 delete_delivery_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDeliveryDestination">>, Input, Options).
@@ -2139,10 +2486,7 @@ delete_delivery_destination(Client, Input, Options)
 -spec delete_delivery_destination_policy(map(), delete_delivery_destination_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_delivery_destination_policy_errors(), tuple()}.
 delete_delivery_destination_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_delivery_destination_policy(Client, Input, []).
@@ -2150,10 +2494,7 @@ delete_delivery_destination_policy(Client, Input)
 -spec delete_delivery_destination_policy(map(), delete_delivery_destination_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_delivery_destination_policy_errors(), tuple()}.
 delete_delivery_destination_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDeliveryDestinationPolicy">>, Input, Options).
@@ -2171,12 +2512,7 @@ delete_delivery_destination_policy(Client, Input, Options)
 -spec delete_delivery_source(map(), delete_delivery_source_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_delivery_source_errors(), tuple()}.
 delete_delivery_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_delivery_source(Client, Input, []).
@@ -2184,12 +2520,7 @@ delete_delivery_source(Client, Input)
 -spec delete_delivery_source(map(), delete_delivery_source_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_delivery_source_errors(), tuple()}.
 delete_delivery_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDeliverySource">>, Input, Options).
@@ -2202,10 +2533,7 @@ delete_delivery_source(Client, Input, Options)
 -spec delete_destination(map(), delete_destination_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_destination_errors(), tuple()}.
 delete_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_destination(Client, Input, []).
@@ -2213,10 +2541,7 @@ delete_destination(Client, Input)
 -spec delete_destination(map(), delete_destination_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_destination_errors(), tuple()}.
 delete_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDestination">>, Input, Options).
@@ -2225,10 +2550,7 @@ delete_destination(Client, Input, Options)
 -spec delete_log_anomaly_detector(map(), delete_log_anomaly_detector_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_log_anomaly_detector_errors(), tuple()}.
 delete_log_anomaly_detector(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_log_anomaly_detector(Client, Input, []).
@@ -2236,10 +2558,7 @@ delete_log_anomaly_detector(Client, Input)
 -spec delete_log_anomaly_detector(map(), delete_log_anomaly_detector_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_log_anomaly_detector_errors(), tuple()}.
 delete_log_anomaly_detector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLogAnomalyDetector">>, Input, Options).
@@ -2250,10 +2569,7 @@ delete_log_anomaly_detector(Client, Input, Options)
 -spec delete_log_group(map(), delete_log_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_log_group_errors(), tuple()}.
 delete_log_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_log_group(Client, Input, []).
@@ -2261,10 +2577,7 @@ delete_log_group(Client, Input)
 -spec delete_log_group(map(), delete_log_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_log_group_errors(), tuple()}.
 delete_log_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLogGroup">>, Input, Options).
@@ -2275,10 +2588,7 @@ delete_log_group(Client, Input, Options)
 -spec delete_log_stream(map(), delete_log_stream_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_log_stream_errors(), tuple()}.
 delete_log_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_log_stream(Client, Input, []).
@@ -2286,10 +2596,7 @@ delete_log_stream(Client, Input)
 -spec delete_log_stream(map(), delete_log_stream_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_log_stream_errors(), tuple()}.
 delete_log_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLogStream">>, Input, Options).
@@ -2298,10 +2605,7 @@ delete_log_stream(Client, Input, Options)
 -spec delete_metric_filter(map(), delete_metric_filter_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_metric_filter_errors(), tuple()}.
 delete_metric_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_metric_filter(Client, Input, []).
@@ -2309,10 +2613,7 @@ delete_metric_filter(Client, Input)
 -spec delete_metric_filter(map(), delete_metric_filter_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_metric_filter_errors(), tuple()}.
 delete_metric_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMetricFilter">>, Input, Options).
@@ -2331,9 +2632,7 @@ delete_metric_filter(Client, Input, Options)
 -spec delete_query_definition(map(), delete_query_definition_request()) ->
     {ok, delete_query_definition_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_query_definition_errors(), tuple()}.
 delete_query_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_query_definition(Client, Input, []).
@@ -2341,9 +2640,7 @@ delete_query_definition(Client, Input)
 -spec delete_query_definition(map(), delete_query_definition_request(), proplists:proplist()) ->
     {ok, delete_query_definition_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_query_definition_errors(), tuple()}.
 delete_query_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteQueryDefinition">>, Input, Options).
@@ -2356,9 +2653,7 @@ delete_query_definition(Client, Input, Options)
 -spec delete_resource_policy(map(), delete_resource_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
@@ -2366,9 +2661,7 @@ delete_resource_policy(Client, Input)
 -spec delete_resource_policy(map(), delete_resource_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourcePolicy">>, Input, Options).
@@ -2380,10 +2673,7 @@ delete_resource_policy(Client, Input, Options)
 -spec delete_retention_policy(map(), delete_retention_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_retention_policy_errors(), tuple()}.
 delete_retention_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_retention_policy(Client, Input, []).
@@ -2391,10 +2681,7 @@ delete_retention_policy(Client, Input)
 -spec delete_retention_policy(map(), delete_retention_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_retention_policy_errors(), tuple()}.
 delete_retention_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRetentionPolicy">>, Input, Options).
@@ -2403,10 +2690,7 @@ delete_retention_policy(Client, Input, Options)
 -spec delete_subscription_filter(map(), delete_subscription_filter_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_subscription_filter_errors(), tuple()}.
 delete_subscription_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_subscription_filter(Client, Input, []).
@@ -2414,10 +2698,7 @@ delete_subscription_filter(Client, Input)
 -spec delete_subscription_filter(map(), delete_subscription_filter_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_subscription_filter_errors(), tuple()}.
 delete_subscription_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSubscriptionFilter">>, Input, Options).
@@ -2427,10 +2708,7 @@ delete_subscription_filter(Client, Input, Options)
 -spec describe_account_policies(map(), describe_account_policies_request()) ->
     {ok, describe_account_policies_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_account_policies_errors(), tuple()}.
 describe_account_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_policies(Client, Input, []).
@@ -2438,10 +2716,7 @@ describe_account_policies(Client, Input)
 -spec describe_account_policies(map(), describe_account_policies_request(), proplists:proplist()) ->
     {ok, describe_account_policies_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_account_policies_errors(), tuple()}.
 describe_account_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountPolicies">>, Input, Options).
@@ -2472,10 +2747,7 @@ describe_account_policies(Client, Input, Options)
 -spec describe_deliveries(map(), describe_deliveries_request()) ->
     {ok, describe_deliveries_response(), tuple()} |
     {error, any()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_deliveries_errors(), tuple()}.
 describe_deliveries(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_deliveries(Client, Input, []).
@@ -2483,10 +2755,7 @@ describe_deliveries(Client, Input)
 -spec describe_deliveries(map(), describe_deliveries_request(), proplists:proplist()) ->
     {ok, describe_deliveries_response(), tuple()} |
     {error, any()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_deliveries_errors(), tuple()}.
 describe_deliveries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDeliveries">>, Input, Options).
@@ -2496,10 +2765,7 @@ describe_deliveries(Client, Input, Options)
 -spec describe_delivery_destinations(map(), describe_delivery_destinations_request()) ->
     {ok, describe_delivery_destinations_response(), tuple()} |
     {error, any()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_delivery_destinations_errors(), tuple()}.
 describe_delivery_destinations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_delivery_destinations(Client, Input, []).
@@ -2507,10 +2773,7 @@ describe_delivery_destinations(Client, Input)
 -spec describe_delivery_destinations(map(), describe_delivery_destinations_request(), proplists:proplist()) ->
     {ok, describe_delivery_destinations_response(), tuple()} |
     {error, any()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_delivery_destinations_errors(), tuple()}.
 describe_delivery_destinations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDeliveryDestinations">>, Input, Options).
@@ -2520,10 +2783,7 @@ describe_delivery_destinations(Client, Input, Options)
 -spec describe_delivery_sources(map(), describe_delivery_sources_request()) ->
     {ok, describe_delivery_sources_response(), tuple()} |
     {error, any()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_delivery_sources_errors(), tuple()}.
 describe_delivery_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_delivery_sources(Client, Input, []).
@@ -2531,10 +2791,7 @@ describe_delivery_sources(Client, Input)
 -spec describe_delivery_sources(map(), describe_delivery_sources_request(), proplists:proplist()) ->
     {ok, describe_delivery_sources_response(), tuple()} |
     {error, any()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_delivery_sources_errors(), tuple()}.
 describe_delivery_sources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDeliverySources">>, Input, Options).
@@ -2545,8 +2802,7 @@ describe_delivery_sources(Client, Input, Options)
 -spec describe_destinations(map(), describe_destinations_request()) ->
     {ok, describe_destinations_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_destinations_errors(), tuple()}.
 describe_destinations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_destinations(Client, Input, []).
@@ -2554,8 +2810,7 @@ describe_destinations(Client, Input)
 -spec describe_destinations(map(), describe_destinations_request(), proplists:proplist()) ->
     {ok, describe_destinations_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_destinations_errors(), tuple()}.
 describe_destinations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDestinations">>, Input, Options).
@@ -2567,8 +2822,7 @@ describe_destinations(Client, Input, Options)
 -spec describe_export_tasks(map(), describe_export_tasks_request()) ->
     {ok, describe_export_tasks_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_export_tasks_errors(), tuple()}.
 describe_export_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_export_tasks(Client, Input, []).
@@ -2576,8 +2830,7 @@ describe_export_tasks(Client, Input)
 -spec describe_export_tasks(map(), describe_export_tasks_request(), proplists:proplist()) ->
     {ok, describe_export_tasks_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_export_tasks_errors(), tuple()}.
 describe_export_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeExportTasks">>, Input, Options).
@@ -2608,8 +2861,7 @@ describe_export_tasks(Client, Input, Options)
 -spec describe_log_groups(map(), describe_log_groups_request()) ->
     {ok, describe_log_groups_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_log_groups_errors(), tuple()}.
 describe_log_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_log_groups(Client, Input, []).
@@ -2617,8 +2869,7 @@ describe_log_groups(Client, Input)
 -spec describe_log_groups(map(), describe_log_groups_request(), proplists:proplist()) ->
     {ok, describe_log_groups_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_log_groups_errors(), tuple()}.
 describe_log_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLogGroups">>, Input, Options).
@@ -2644,9 +2895,7 @@ describe_log_groups(Client, Input, Options)
 -spec describe_log_streams(map(), describe_log_streams_request()) ->
     {ok, describe_log_streams_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_log_streams_errors(), tuple()}.
 describe_log_streams(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_log_streams(Client, Input, []).
@@ -2654,9 +2903,7 @@ describe_log_streams(Client, Input)
 -spec describe_log_streams(map(), describe_log_streams_request(), proplists:proplist()) ->
     {ok, describe_log_streams_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_log_streams_errors(), tuple()}.
 describe_log_streams(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLogStreams">>, Input, Options).
@@ -2670,9 +2917,7 @@ describe_log_streams(Client, Input, Options)
 -spec describe_metric_filters(map(), describe_metric_filters_request()) ->
     {ok, describe_metric_filters_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_metric_filters_errors(), tuple()}.
 describe_metric_filters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_metric_filters(Client, Input, []).
@@ -2680,9 +2925,7 @@ describe_metric_filters(Client, Input)
 -spec describe_metric_filters(map(), describe_metric_filters_request(), proplists:proplist()) ->
     {ok, describe_metric_filters_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_metric_filters_errors(), tuple()}.
 describe_metric_filters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMetricFilters">>, Input, Options).
@@ -2696,9 +2939,7 @@ describe_metric_filters(Client, Input, Options)
 -spec describe_queries(map(), describe_queries_request()) ->
     {ok, describe_queries_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_queries_errors(), tuple()}.
 describe_queries(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_queries(Client, Input, []).
@@ -2706,9 +2947,7 @@ describe_queries(Client, Input)
 -spec describe_queries(map(), describe_queries_request(), proplists:proplist()) ->
     {ok, describe_queries_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_queries_errors(), tuple()}.
 describe_queries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeQueries">>, Input, Options).
@@ -2726,8 +2965,7 @@ describe_queries(Client, Input, Options)
 -spec describe_query_definitions(map(), describe_query_definitions_request()) ->
     {ok, describe_query_definitions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_query_definitions_errors(), tuple()}.
 describe_query_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_query_definitions(Client, Input, []).
@@ -2735,8 +2973,7 @@ describe_query_definitions(Client, Input)
 -spec describe_query_definitions(map(), describe_query_definitions_request(), proplists:proplist()) ->
     {ok, describe_query_definitions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_query_definitions_errors(), tuple()}.
 describe_query_definitions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeQueryDefinitions">>, Input, Options).
@@ -2745,8 +2982,7 @@ describe_query_definitions(Client, Input, Options)
 -spec describe_resource_policies(map(), describe_resource_policies_request()) ->
     {ok, describe_resource_policies_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_resource_policies_errors(), tuple()}.
 describe_resource_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_resource_policies(Client, Input, []).
@@ -2754,8 +2990,7 @@ describe_resource_policies(Client, Input)
 -spec describe_resource_policies(map(), describe_resource_policies_request(), proplists:proplist()) ->
     {ok, describe_resource_policies_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_resource_policies_errors(), tuple()}.
 describe_resource_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeResourcePolicies">>, Input, Options).
@@ -2767,9 +3002,7 @@ describe_resource_policies(Client, Input, Options)
 -spec describe_subscription_filters(map(), describe_subscription_filters_request()) ->
     {ok, describe_subscription_filters_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_subscription_filters_errors(), tuple()}.
 describe_subscription_filters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_subscription_filters(Client, Input, []).
@@ -2777,9 +3010,7 @@ describe_subscription_filters(Client, Input)
 -spec describe_subscription_filters(map(), describe_subscription_filters_request(), proplists:proplist()) ->
     {ok, describe_subscription_filters_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_subscription_filters_errors(), tuple()}.
 describe_subscription_filters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSubscriptionFilters">>, Input, Options).
@@ -2818,10 +3049,7 @@ describe_subscription_filters(Client, Input, Options)
 -spec disassociate_kms_key(map(), disassociate_kms_key_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, disassociate_kms_key_errors(), tuple()}.
 disassociate_kms_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_kms_key(Client, Input, []).
@@ -2829,10 +3057,7 @@ disassociate_kms_key(Client, Input)
 -spec disassociate_kms_key(map(), disassociate_kms_key_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, disassociate_kms_key_errors(), tuple()}.
 disassociate_kms_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateKmsKey">>, Input, Options).
@@ -2872,9 +3097,7 @@ disassociate_kms_key(Client, Input, Options)
 -spec filter_log_events(map(), filter_log_events_request()) ->
     {ok, filter_log_events_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, filter_log_events_errors(), tuple()}.
 filter_log_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     filter_log_events(Client, Input, []).
@@ -2882,9 +3105,7 @@ filter_log_events(Client, Input)
 -spec filter_log_events(map(), filter_log_events_request(), proplists:proplist()) ->
     {ok, filter_log_events_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, filter_log_events_errors(), tuple()}.
 filter_log_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"FilterLogEvents">>, Input, Options).
@@ -2893,10 +3114,7 @@ filter_log_events(Client, Input, Options)
 -spec get_data_protection_policy(map(), get_data_protection_policy_request()) ->
     {ok, get_data_protection_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_data_protection_policy_errors(), tuple()}.
 get_data_protection_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_data_protection_policy(Client, Input, []).
@@ -2904,10 +3122,7 @@ get_data_protection_policy(Client, Input)
 -spec get_data_protection_policy(map(), get_data_protection_policy_request(), proplists:proplist()) ->
     {ok, get_data_protection_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_data_protection_policy_errors(), tuple()}.
 get_data_protection_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDataProtectionPolicy">>, Input, Options).
@@ -2943,11 +3158,7 @@ get_data_protection_policy(Client, Input, Options)
 -spec get_delivery(map(), get_delivery_request()) ->
     {ok, get_delivery_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_delivery_errors(), tuple()}.
 get_delivery(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_delivery(Client, Input, []).
@@ -2955,11 +3166,7 @@ get_delivery(Client, Input)
 -spec get_delivery(map(), get_delivery_request(), proplists:proplist()) ->
     {ok, get_delivery_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_delivery_errors(), tuple()}.
 get_delivery(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDelivery">>, Input, Options).
@@ -2968,11 +3175,7 @@ get_delivery(Client, Input, Options)
 -spec get_delivery_destination(map(), get_delivery_destination_request()) ->
     {ok, get_delivery_destination_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_delivery_destination_errors(), tuple()}.
 get_delivery_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_delivery_destination(Client, Input, []).
@@ -2980,11 +3183,7 @@ get_delivery_destination(Client, Input)
 -spec get_delivery_destination(map(), get_delivery_destination_request(), proplists:proplist()) ->
     {ok, get_delivery_destination_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_delivery_destination_errors(), tuple()}.
 get_delivery_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDeliveryDestination">>, Input, Options).
@@ -2998,9 +3197,7 @@ get_delivery_destination(Client, Input, Options)
 -spec get_delivery_destination_policy(map(), get_delivery_destination_policy_request()) ->
     {ok, get_delivery_destination_policy_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_delivery_destination_policy_errors(), tuple()}.
 get_delivery_destination_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_delivery_destination_policy(Client, Input, []).
@@ -3008,9 +3205,7 @@ get_delivery_destination_policy(Client, Input)
 -spec get_delivery_destination_policy(map(), get_delivery_destination_policy_request(), proplists:proplist()) ->
     {ok, get_delivery_destination_policy_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_delivery_destination_policy_errors(), tuple()}.
 get_delivery_destination_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDeliveryDestinationPolicy">>, Input, Options).
@@ -3019,11 +3214,7 @@ get_delivery_destination_policy(Client, Input, Options)
 -spec get_delivery_source(map(), get_delivery_source_request()) ->
     {ok, get_delivery_source_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_delivery_source_errors(), tuple()}.
 get_delivery_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_delivery_source(Client, Input, []).
@@ -3031,11 +3222,7 @@ get_delivery_source(Client, Input)
 -spec get_delivery_source(map(), get_delivery_source_request(), proplists:proplist()) ->
     {ok, get_delivery_source_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_delivery_source_errors(), tuple()}.
 get_delivery_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDeliverySource">>, Input, Options).
@@ -3045,10 +3232,7 @@ get_delivery_source(Client, Input, Options)
 -spec get_log_anomaly_detector(map(), get_log_anomaly_detector_request()) ->
     {ok, get_log_anomaly_detector_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_log_anomaly_detector_errors(), tuple()}.
 get_log_anomaly_detector(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_log_anomaly_detector(Client, Input, []).
@@ -3056,10 +3240,7 @@ get_log_anomaly_detector(Client, Input)
 -spec get_log_anomaly_detector(map(), get_log_anomaly_detector_request(), proplists:proplist()) ->
     {ok, get_log_anomaly_detector_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_log_anomaly_detector_errors(), tuple()}.
 get_log_anomaly_detector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLogAnomalyDetector">>, Input, Options).
@@ -3089,9 +3270,7 @@ get_log_anomaly_detector(Client, Input, Options)
 -spec get_log_events(map(), get_log_events_request()) ->
     {ok, get_log_events_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_log_events_errors(), tuple()}.
 get_log_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_log_events(Client, Input, []).
@@ -3099,9 +3278,7 @@ get_log_events(Client, Input)
 -spec get_log_events(map(), get_log_events_request(), proplists:proplist()) ->
     {ok, get_log_events_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_log_events_errors(), tuple()}.
 get_log_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLogEvents">>, Input, Options).
@@ -3137,10 +3314,7 @@ get_log_events(Client, Input, Options)
 -spec get_log_group_fields(map(), get_log_group_fields_request()) ->
     {ok, get_log_group_fields_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_log_group_fields_errors(), tuple()}.
 get_log_group_fields(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_log_group_fields(Client, Input, []).
@@ -3148,10 +3322,7 @@ get_log_group_fields(Client, Input)
 -spec get_log_group_fields(map(), get_log_group_fields_request(), proplists:proplist()) ->
     {ok, get_log_group_fields_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_log_group_fields_errors(), tuple()}.
 get_log_group_fields(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLogGroupFields">>, Input, Options).
@@ -3167,10 +3338,7 @@ get_log_group_fields(Client, Input, Options)
 -spec get_log_record(map(), get_log_record_request()) ->
     {ok, get_log_record_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_log_record_errors(), tuple()}.
 get_log_record(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_log_record(Client, Input, []).
@@ -3178,10 +3346,7 @@ get_log_record(Client, Input)
 -spec get_log_record(map(), get_log_record_request(), proplists:proplist()) ->
     {ok, get_log_record_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_log_record_errors(), tuple()}.
 get_log_record(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLogRecord">>, Input, Options).
@@ -3217,9 +3382,7 @@ get_log_record(Client, Input, Options)
 -spec get_query_results(map(), get_query_results_request()) ->
     {ok, get_query_results_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_query_results_errors(), tuple()}.
 get_query_results(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_query_results(Client, Input, []).
@@ -3227,9 +3390,7 @@ get_query_results(Client, Input)
 -spec get_query_results(map(), get_query_results_request(), proplists:proplist()) ->
     {ok, get_query_results_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_query_results_errors(), tuple()}.
 get_query_results(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetQueryResults">>, Input, Options).
@@ -3241,10 +3402,7 @@ get_query_results(Client, Input, Options)
 -spec list_anomalies(map(), list_anomalies_request()) ->
     {ok, list_anomalies_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_anomalies_errors(), tuple()}.
 list_anomalies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_anomalies(Client, Input, []).
@@ -3252,10 +3410,7 @@ list_anomalies(Client, Input)
 -spec list_anomalies(map(), list_anomalies_request(), proplists:proplist()) ->
     {ok, list_anomalies_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_anomalies_errors(), tuple()}.
 list_anomalies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAnomalies">>, Input, Options).
@@ -3264,10 +3419,7 @@ list_anomalies(Client, Input, Options)
 -spec list_log_anomaly_detectors(map(), list_log_anomaly_detectors_request()) ->
     {ok, list_log_anomaly_detectors_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_log_anomaly_detectors_errors(), tuple()}.
 list_log_anomaly_detectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_log_anomaly_detectors(Client, Input, []).
@@ -3275,10 +3427,7 @@ list_log_anomaly_detectors(Client, Input)
 -spec list_log_anomaly_detectors(map(), list_log_anomaly_detectors_request(), proplists:proplist()) ->
     {ok, list_log_anomaly_detectors_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_log_anomaly_detectors_errors(), tuple()}.
 list_log_anomaly_detectors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLogAnomalyDetectors">>, Input, Options).
@@ -3290,9 +3439,7 @@ list_log_anomaly_detectors(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -3300,9 +3447,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -3319,8 +3464,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec list_tags_log_group(map(), list_tags_log_group_request()) ->
     {ok, list_tags_log_group_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_tags_log_group_errors(), tuple()}.
 list_tags_log_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_log_group(Client, Input, []).
@@ -3328,8 +3472,7 @@ list_tags_log_group(Client, Input)
 -spec list_tags_log_group(map(), list_tags_log_group_request(), proplists:proplist()) ->
     {ok, list_tags_log_group_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_tags_log_group_errors(), tuple()}.
 list_tags_log_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsLogGroup">>, Input, Options).
@@ -3430,10 +3573,7 @@ list_tags_log_group(Client, Input, Options)
 -spec put_account_policy(map(), put_account_policy_request()) ->
     {ok, put_account_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_account_policy_errors(), tuple()}.
 put_account_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_account_policy(Client, Input, []).
@@ -3441,10 +3581,7 @@ put_account_policy(Client, Input)
 -spec put_account_policy(map(), put_account_policy_request(), proplists:proplist()) ->
     {ok, put_account_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_account_policy_errors(), tuple()}.
 put_account_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAccountPolicy">>, Input, Options).
@@ -3494,11 +3631,7 @@ put_account_policy(Client, Input, Options)
 -spec put_data_protection_policy(map(), put_data_protection_policy_request()) ->
     {ok, put_data_protection_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_data_protection_policy_errors(), tuple()}.
 put_data_protection_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_data_protection_policy(Client, Input, []).
@@ -3506,11 +3639,7 @@ put_data_protection_policy(Client, Input)
 -spec put_data_protection_policy(map(), put_data_protection_policy_request(), proplists:proplist()) ->
     {ok, put_data_protection_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_data_protection_policy_errors(), tuple()}.
 put_data_protection_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutDataProtectionPolicy">>, Input, Options).
@@ -3565,12 +3694,7 @@ put_data_protection_policy(Client, Input, Options)
 -spec put_delivery_destination(map(), put_delivery_destination_request()) ->
     {ok, put_delivery_destination_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_delivery_destination_errors(), tuple()}.
 put_delivery_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_delivery_destination(Client, Input, []).
@@ -3578,12 +3702,7 @@ put_delivery_destination(Client, Input)
 -spec put_delivery_destination(map(), put_delivery_destination_request(), proplists:proplist()) ->
     {ok, put_delivery_destination_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_delivery_destination_errors(), tuple()}.
 put_delivery_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutDeliveryDestination">>, Input, Options).
@@ -3631,10 +3750,7 @@ put_delivery_destination(Client, Input, Options)
 -spec put_delivery_destination_policy(map(), put_delivery_destination_policy_request()) ->
     {ok, put_delivery_destination_policy_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_delivery_destination_policy_errors(), tuple()}.
 put_delivery_destination_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_delivery_destination_policy(Client, Input, []).
@@ -3642,10 +3758,7 @@ put_delivery_destination_policy(Client, Input)
 -spec put_delivery_destination_policy(map(), put_delivery_destination_policy_request(), proplists:proplist()) ->
     {ok, put_delivery_destination_policy_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_delivery_destination_policy_errors(), tuple()}.
 put_delivery_destination_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutDeliveryDestinationPolicy">>, Input, Options).
@@ -3700,12 +3813,7 @@ put_delivery_destination_policy(Client, Input, Options)
 -spec put_delivery_source(map(), put_delivery_source_request()) ->
     {ok, put_delivery_source_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_delivery_source_errors(), tuple()}.
 put_delivery_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_delivery_source(Client, Input, []).
@@ -3713,12 +3821,7 @@ put_delivery_source(Client, Input)
 -spec put_delivery_source(map(), put_delivery_source_request(), proplists:proplist()) ->
     {ok, put_delivery_source_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_delivery_source_errors(), tuple()}.
 put_delivery_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutDeliverySource">>, Input, Options).
@@ -3751,9 +3854,7 @@ put_delivery_source(Client, Input, Options)
 -spec put_destination(map(), put_destination_request()) ->
     {ok, put_destination_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_destination_errors(), tuple()}.
 put_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_destination(Client, Input, []).
@@ -3761,9 +3862,7 @@ put_destination(Client, Input)
 -spec put_destination(map(), put_destination_request(), proplists:proplist()) ->
     {ok, put_destination_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_destination_errors(), tuple()}.
 put_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutDestination">>, Input, Options).
@@ -3779,9 +3878,7 @@ put_destination(Client, Input, Options)
 -spec put_destination_policy(map(), put_destination_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_destination_policy_errors(), tuple()}.
 put_destination_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_destination_policy(Client, Input, []).
@@ -3789,9 +3886,7 @@ put_destination_policy(Client, Input)
 -spec put_destination_policy(map(), put_destination_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_destination_policy_errors(), tuple()}.
 put_destination_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutDestinationPolicy">>, Input, Options).
@@ -3852,12 +3947,7 @@ put_destination_policy(Client, Input, Options)
 -spec put_log_events(map(), put_log_events_request()) ->
     {ok, put_log_events_response(), tuple()} |
     {error, any()} |
-    {error, data_already_accepted_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_sequence_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unrecognized_client_exception(), tuple()}.
+    {error, put_log_events_errors(), tuple()}.
 put_log_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_log_events(Client, Input, []).
@@ -3865,12 +3955,7 @@ put_log_events(Client, Input)
 -spec put_log_events(map(), put_log_events_request(), proplists:proplist()) ->
     {ok, put_log_events_response(), tuple()} |
     {error, any()} |
-    {error, data_already_accepted_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_sequence_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unrecognized_client_exception(), tuple()}.
+    {error, put_log_events_errors(), tuple()}.
 put_log_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutLogEvents">>, Input, Options).
@@ -3914,11 +3999,7 @@ put_log_events(Client, Input, Options)
 -spec put_metric_filter(map(), put_metric_filter_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_metric_filter_errors(), tuple()}.
 put_metric_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_metric_filter(Client, Input, []).
@@ -3926,11 +4007,7 @@ put_metric_filter(Client, Input)
 -spec put_metric_filter(map(), put_metric_filter_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_metric_filter_errors(), tuple()}.
 put_metric_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutMetricFilter">>, Input, Options).
@@ -3960,10 +4037,7 @@ put_metric_filter(Client, Input, Options)
 -spec put_query_definition(map(), put_query_definition_request()) ->
     {ok, put_query_definition_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_query_definition_errors(), tuple()}.
 put_query_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_query_definition(Client, Input, []).
@@ -3971,10 +4045,7 @@ put_query_definition(Client, Input)
 -spec put_query_definition(map(), put_query_definition_request(), proplists:proplist()) ->
     {ok, put_query_definition_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_query_definition_errors(), tuple()}.
 put_query_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutQueryDefinition">>, Input, Options).
@@ -3988,9 +4059,7 @@ put_query_definition(Client, Input, Options)
 -spec put_resource_policy(map(), put_resource_policy_request()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
@@ -3998,9 +4067,7 @@ put_resource_policy(Client, Input)
 -spec put_resource_policy(map(), put_resource_policy_request(), proplists:proplist()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResourcePolicy">>, Input, Options).
@@ -4043,10 +4110,7 @@ put_resource_policy(Client, Input, Options)
 -spec put_retention_policy(map(), put_retention_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_retention_policy_errors(), tuple()}.
 put_retention_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_retention_policy(Client, Input, []).
@@ -4054,10 +4118,7 @@ put_retention_policy(Client, Input)
 -spec put_retention_policy(map(), put_retention_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_retention_policy_errors(), tuple()}.
 put_retention_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRetentionPolicy">>, Input, Options).
@@ -4105,11 +4166,7 @@ put_retention_policy(Client, Input, Options)
 -spec put_subscription_filter(map(), put_subscription_filter_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_subscription_filter_errors(), tuple()}.
 put_subscription_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_subscription_filter(Client, Input, []).
@@ -4117,11 +4174,7 @@ put_subscription_filter(Client, Input)
 -spec put_subscription_filter(map(), put_subscription_filter_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_subscription_filter_errors(), tuple()}.
 put_subscription_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutSubscriptionFilter">>, Input, Options).
@@ -4185,11 +4238,7 @@ put_subscription_filter(Client, Input, Options)
 -spec start_live_tail(map(), start_live_tail_request()) ->
     {ok, start_live_tail_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_live_tail_errors(), tuple()}.
 start_live_tail(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_live_tail(Client, Input, []).
@@ -4197,11 +4246,7 @@ start_live_tail(Client, Input)
 -spec start_live_tail(map(), start_live_tail_request(), proplists:proplist()) ->
     {ok, start_live_tail_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_live_tail_errors(), tuple()}.
 start_live_tail(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartLiveTail">>, Input, Options).
@@ -4252,11 +4297,7 @@ start_live_tail(Client, Input, Options)
 -spec start_query(map(), start_query_request()) ->
     {ok, start_query_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_query_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, start_query_errors(), tuple()}.
 start_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_query(Client, Input, []).
@@ -4264,11 +4305,7 @@ start_query(Client, Input)
 -spec start_query(map(), start_query_request(), proplists:proplist()) ->
     {ok, start_query_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_query_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, start_query_errors(), tuple()}.
 start_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartQuery">>, Input, Options).
@@ -4280,9 +4317,7 @@ start_query(Client, Input, Options)
 -spec stop_query(map(), stop_query_request()) ->
     {ok, stop_query_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, stop_query_errors(), tuple()}.
 stop_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_query(Client, Input, []).
@@ -4290,9 +4325,7 @@ stop_query(Client, Input)
 -spec stop_query(map(), stop_query_request(), proplists:proplist()) ->
     {ok, stop_query_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, stop_query_errors(), tuple()}.
 stop_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopQuery">>, Input, Options).
@@ -4328,8 +4361,7 @@ stop_query(Client, Input, Options)
 -spec tag_log_group(map(), tag_log_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_log_group_errors(), tuple()}.
 tag_log_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_log_group(Client, Input, []).
@@ -4337,8 +4369,7 @@ tag_log_group(Client, Input)
 -spec tag_log_group(map(), tag_log_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_log_group_errors(), tuple()}.
 tag_log_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagLogGroup">>, Input, Options).
@@ -4368,10 +4399,7 @@ tag_log_group(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -4379,10 +4407,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -4396,8 +4421,7 @@ tag_resource(Client, Input, Options)
 -spec test_metric_filter(map(), test_metric_filter_request()) ->
     {ok, test_metric_filter_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, test_metric_filter_errors(), tuple()}.
 test_metric_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_metric_filter(Client, Input, []).
@@ -4405,8 +4429,7 @@ test_metric_filter(Client, Input)
 -spec test_metric_filter(map(), test_metric_filter_request(), proplists:proplist()) ->
     {ok, test_metric_filter_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, test_metric_filter_errors(), tuple()}.
 test_metric_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TestMetricFilter">>, Input, Options).
@@ -4434,7 +4457,7 @@ test_metric_filter(Client, Input, Options)
 -spec untag_log_group(map(), untag_log_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_log_group_errors(), tuple()}.
 untag_log_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_log_group(Client, Input, []).
@@ -4442,7 +4465,7 @@ untag_log_group(Client, Input)
 -spec untag_log_group(map(), untag_log_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_log_group_errors(), tuple()}.
 untag_log_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagLogGroup">>, Input, Options).
@@ -4451,9 +4474,7 @@ untag_log_group(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -4461,9 +4482,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -4491,10 +4510,7 @@ untag_resource(Client, Input, Options)
 -spec update_anomaly(map(), update_anomaly_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, update_anomaly_errors(), tuple()}.
 update_anomaly(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_anomaly(Client, Input, []).
@@ -4502,10 +4518,7 @@ update_anomaly(Client, Input)
 -spec update_anomaly(map(), update_anomaly_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, update_anomaly_errors(), tuple()}.
 update_anomaly(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAnomaly">>, Input, Options).
@@ -4514,10 +4527,7 @@ update_anomaly(Client, Input, Options)
 -spec update_log_anomaly_detector(map(), update_log_anomaly_detector_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, update_log_anomaly_detector_errors(), tuple()}.
 update_log_anomaly_detector(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_log_anomaly_detector(Client, Input, []).
@@ -4525,10 +4535,7 @@ update_log_anomaly_detector(Client, Input)
 -spec update_log_anomaly_detector(map(), update_log_anomaly_detector_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, operation_aborted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, update_log_anomaly_detector_errors(), tuple()}.
 update_log_anomaly_detector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLogAnomalyDetector">>, Input, Options).

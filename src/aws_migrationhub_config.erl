@@ -151,6 +151,34 @@
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+-type create_home_region_control_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_input_exception() | 
+    internal_server_error() | 
+    dry_run_operation() | 
+    access_denied_exception().
+
+-type delete_home_region_control_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_input_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
+
+-type describe_home_region_controls_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_input_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
+
+-type get_home_region_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_input_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -160,12 +188,7 @@
 -spec create_home_region_control(map(), create_home_region_control_request()) ->
     {ok, create_home_region_control_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, dry_run_operation(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_home_region_control_errors(), tuple()}.
 create_home_region_control(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_home_region_control(Client, Input, []).
@@ -173,12 +196,7 @@ create_home_region_control(Client, Input)
 -spec create_home_region_control(map(), create_home_region_control_request(), proplists:proplist()) ->
     {ok, create_home_region_control_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, dry_run_operation(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_home_region_control_errors(), tuple()}.
 create_home_region_control(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHomeRegionControl">>, Input, Options).
@@ -191,11 +209,7 @@ create_home_region_control(Client, Input, Options)
 -spec delete_home_region_control(map(), delete_home_region_control_request()) ->
     {ok, delete_home_region_control_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_home_region_control_errors(), tuple()}.
 delete_home_region_control(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_home_region_control(Client, Input, []).
@@ -203,11 +217,7 @@ delete_home_region_control(Client, Input)
 -spec delete_home_region_control(map(), delete_home_region_control_request(), proplists:proplist()) ->
     {ok, delete_home_region_control_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_home_region_control_errors(), tuple()}.
 delete_home_region_control(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteHomeRegionControl">>, Input, Options).
@@ -218,11 +228,7 @@ delete_home_region_control(Client, Input, Options)
 -spec describe_home_region_controls(map(), describe_home_region_controls_request()) ->
     {ok, describe_home_region_controls_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_home_region_controls_errors(), tuple()}.
 describe_home_region_controls(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_home_region_controls(Client, Input, []).
@@ -230,11 +236,7 @@ describe_home_region_controls(Client, Input)
 -spec describe_home_region_controls(map(), describe_home_region_controls_request(), proplists:proplist()) ->
     {ok, describe_home_region_controls_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_home_region_controls_errors(), tuple()}.
 describe_home_region_controls(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeHomeRegionControls">>, Input, Options).
@@ -252,11 +254,7 @@ describe_home_region_controls(Client, Input, Options)
 -spec get_home_region(map(), get_home_region_request()) ->
     {ok, get_home_region_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_home_region_errors(), tuple()}.
 get_home_region(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_home_region(Client, Input, []).
@@ -264,11 +262,7 @@ get_home_region(Client, Input)
 -spec get_home_region(map(), get_home_region_request(), proplists:proplist()) ->
     {ok, get_home_region_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_home_region_errors(), tuple()}.
 get_home_region(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetHomeRegion">>, Input, Options).

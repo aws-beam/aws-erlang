@@ -81,12 +81,14 @@
 %% }
 -type describe_project_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_dataset_entries_request() :: #{
 %%   <<"Changes">> := binary(),
 %%   <<"ClientToken">> => string()
 %% }
 -type update_dataset_entries_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% greengrass_output_details() :: #{
@@ -96,12 +98,14 @@
 %% }
 -type greengrass_output_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_models_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_models_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_models_response() :: #{
@@ -110,11 +114,13 @@
 %% }
 -type list_models_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"Tags">> := list(tag()())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% project_description() :: #{
@@ -125,20 +131,24 @@
 %% }
 -type project_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_dataset_entries_response() :: #{
 %%   <<"Status">> => list(any())
 %% }
 -type update_dataset_entries_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_dataset_response() :: #{}
 -type delete_dataset_response() :: #{}.
+
 
 %% Example:
 %% dataset_source() :: #{
 %%   <<"GroundTruthManifest">> => dataset_ground_truth_manifest()
 %% }
 -type dataset_source() :: #{binary() => any()}.
+
 
 %% Example:
 %% model_metadata() :: #{
@@ -152,12 +162,14 @@
 %% }
 -type model_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% pixel_anomaly() :: #{
 %%   <<"Color">> => string(),
 %%   <<"TotalPercentageArea">> => float()
 %% }
 -type pixel_anomaly() :: #{binary() => any()}.
+
 
 %% Example:
 %% dataset_description() :: #{
@@ -170,9 +182,11 @@
 %%   <<"StatusMessage">> => string()
 %% }
 -type dataset_description() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% model_packaging_description() :: #{
@@ -189,9 +203,11 @@
 %%   <<"StatusMessage">> => string()
 %% }
 -type model_packaging_description() :: #{binary() => any()}.
+
 %% Example:
 %% describe_model_packaging_job_request() :: #{}
 -type describe_model_packaging_job_request() :: #{}.
+
 
 %% Example:
 %% output_s3_object() :: #{
@@ -199,9 +215,11 @@
 %%   <<"Key">> => string()
 %% }
 -type output_s3_object() :: #{binary() => any()}.
+
 %% Example:
 %% describe_project_request() :: #{}
 -type describe_project_request() :: #{}.
+
 
 %% Example:
 %% create_model_request() :: #{
@@ -212,9 +230,11 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type create_model_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_model_request() :: #{}
 -type describe_model_request() :: #{}.
+
 
 %% Example:
 %% untag_resource_request() :: #{
@@ -222,11 +242,13 @@
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_model_response() :: #{
 %%   <<"Status">> => list(any())
 %% }
 -type start_model_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% project_metadata() :: #{
@@ -236,11 +258,13 @@
 %% }
 -type project_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_model_response() :: #{
 %%   <<"ModelDescription">> => model_description()
 %% }
 -type describe_model_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% detect_anomalies_response() :: #{
@@ -248,17 +272,20 @@
 %% }
 -type detect_anomalies_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_dataset_response() :: #{
 %%   <<"DatasetMetadata">> => dataset_metadata()
 %% }
 -type create_dataset_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_project_response() :: #{
 %%   <<"ProjectMetadata">> => project_metadata()
 %% }
 -type create_project_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -268,6 +295,7 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => string(),
@@ -276,6 +304,7 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag() :: #{
 %%   <<"Key">> => string(),
@@ -283,12 +312,14 @@
 %% }
 -type tag() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_model_packaging_jobs_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_model_packaging_jobs_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
@@ -300,6 +331,7 @@
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% dataset_image_stats() :: #{
 %%   <<"Anomaly">> => integer(),
@@ -309,11 +341,13 @@
 %% }
 -type dataset_image_stats() :: #{binary() => any()}.
 
+
 %% Example:
 %% stop_model_request() :: #{
 %%   <<"ClientToken">> => string()
 %% }
 -type stop_model_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_projects_response() :: #{
@@ -321,6 +355,7 @@
 %%   <<"Projects">> => list(project_metadata()())
 %% }
 -type list_projects_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_dataset_entries_request() :: #{
@@ -334,11 +369,13 @@
 %% }
 -type list_dataset_entries_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"Tags">> => list(tag()())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_model_request() :: #{
@@ -348,12 +385,14 @@
 %% }
 -type start_model_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_location() :: #{
 %%   <<"Bucket">> => string(),
 %%   <<"Prefix">> => string()
 %% }
 -type s3_location() :: #{binary() => any()}.
+
 
 %% Example:
 %% detect_anomaly_result() :: #{
@@ -365,11 +404,13 @@
 %% }
 -type detect_anomaly_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_model_response() :: #{
 %%   <<"ModelMetadata">> => model_metadata()
 %% }
 -type create_model_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% image_source() :: #{
@@ -377,11 +418,13 @@
 %% }
 -type image_source() :: #{binary() => any()}.
 
+
 %% Example:
 %% model_packaging_output_details() :: #{
 %%   <<"Greengrass">> => greengrass_output_details()
 %% }
 -type model_packaging_output_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% model_packaging_job_metadata() :: #{
@@ -397,6 +440,7 @@
 %% }
 -type model_packaging_job_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_model_packaging_jobs_response() :: #{
 %%   <<"ModelPackagingJobs">> => list(model_packaging_job_metadata()()),
@@ -404,12 +448,14 @@
 %% }
 -type list_model_packaging_jobs_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% detect_anomalies_request() :: #{
 %%   <<"Body">> := binary(),
 %%   <<"ContentType">> := string()
 %% }
 -type detect_anomalies_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% model_performance() :: #{
@@ -419,6 +465,7 @@
 %% }
 -type model_performance() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"Message">> => string(),
@@ -426,17 +473,20 @@
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% dataset_ground_truth_manifest() :: #{
 %%   <<"S3Object">> => input_s3_object()
 %% }
 -type dataset_ground_truth_manifest() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_project_response() :: #{
 %%   <<"ProjectArn">> => string()
 %% }
 -type delete_project_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% anomaly() :: #{
@@ -445,11 +495,13 @@
 %% }
 -type anomaly() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_model_request() :: #{
 %%   <<"ClientToken">> => string()
 %% }
 -type delete_model_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_model_packaging_job_request() :: #{
@@ -461,14 +513,17 @@
 %% }
 -type start_model_packaging_job_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% output_config() :: #{
@@ -476,20 +531,24 @@
 %% }
 -type output_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_dataset_response() :: #{
 %%   <<"DatasetDescription">> => dataset_description()
 %% }
 -type describe_dataset_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% target_platform() :: #{
@@ -499,6 +558,7 @@
 %% }
 -type target_platform() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_dataset_request() :: #{
 %%   <<"ClientToken">> => string(),
@@ -506,6 +566,7 @@
 %%   <<"DatasetType">> := string()
 %% }
 -type create_dataset_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% throttling_exception() :: #{
@@ -516,12 +577,14 @@
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_project_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"ProjectName">> := string()
 %% }
 -type create_project_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_projects_request() :: #{
@@ -530,11 +593,13 @@
 %% }
 -type list_projects_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% model_packaging_configuration() :: #{
 %%   <<"Greengrass">> => greengrass_configuration()
 %% }
 -type model_packaging_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% greengrass_configuration() :: #{
@@ -549,17 +614,20 @@
 %% }
 -type greengrass_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_model_packaging_job_response() :: #{
 %%   <<"ModelPackagingDescription">> => model_packaging_description()
 %% }
 -type describe_model_packaging_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_model_packaging_job_response() :: #{
 %%   <<"JobName">> => string()
 %% }
 -type start_model_packaging_job_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% model_description() :: #{
@@ -579,9 +647,11 @@
 %%   <<"StatusMessage">> => string()
 %% }
 -type model_description() :: #{binary() => any()}.
+
 %% Example:
 %% describe_dataset_request() :: #{}
 -type describe_dataset_request() :: #{}.
+
 
 %% Example:
 %% delete_dataset_request() :: #{
@@ -589,11 +659,13 @@
 %% }
 -type delete_dataset_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% stop_model_response() :: #{
 %%   <<"Status">> => list(any())
 %% }
 -type stop_model_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_project_request() :: #{
@@ -601,11 +673,13 @@
 %% }
 -type delete_project_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_model_response() :: #{
 %%   <<"ModelArn">> => string()
 %% }
 -type delete_model_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_dataset_entries_response() :: #{
@@ -613,6 +687,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_dataset_entries_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% dataset_metadata() :: #{
@@ -623,6 +698,7 @@
 %% }
 -type dataset_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% input_s3_object() :: #{
 %%   <<"Bucket">> => string(),
@@ -630,6 +706,186 @@
 %%   <<"VersionId">> => string()
 %% }
 -type input_s3_object() :: #{binary() => any()}.
+
+-type create_dataset_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_model_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_project_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_dataset_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_model_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_project_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_dataset_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_model_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_model_packaging_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_project_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type detect_anomalies_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_dataset_entries_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_model_packaging_jobs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_models_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_projects_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_model_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_model_packaging_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type stop_model_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_dataset_entries_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -655,26 +911,14 @@
 -spec create_dataset(map(), binary() | list(), create_dataset_request()) ->
     {ok, create_dataset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_dataset_errors(), tuple()}.
 create_dataset(Client, ProjectName, Input) ->
     create_dataset(Client, ProjectName, Input, []).
 
 -spec create_dataset(map(), binary() | list(), create_dataset_request(), proplists:proplist()) ->
     {ok, create_dataset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_dataset_errors(), tuple()}.
 create_dataset(Client, ProjectName, Input0, Options0) ->
     Method = post,
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/datasets"],
@@ -727,26 +971,14 @@ create_dataset(Client, ProjectName, Input0, Options0) ->
 -spec create_model(map(), binary() | list(), create_model_request()) ->
     {ok, create_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_model_errors(), tuple()}.
 create_model(Client, ProjectName, Input) ->
     create_model(Client, ProjectName, Input, []).
 
 -spec create_model(map(), binary() | list(), create_model_request(), proplists:proplist()) ->
     {ok, create_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_model_errors(), tuple()}.
 create_model(Client, ProjectName, Input0, Options0) ->
     Method = post,
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/models"],
@@ -781,26 +1013,14 @@ create_model(Client, ProjectName, Input0, Options0) ->
 -spec create_project(map(), create_project_request()) ->
     {ok, create_project_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_project_errors(), tuple()}.
 create_project(Client, Input) ->
     create_project(Client, Input, []).
 
 -spec create_project(map(), create_project_request(), proplists:proplist()) ->
     {ok, create_project_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_project_errors(), tuple()}.
 create_project(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-11-20/projects"],
@@ -846,24 +1066,14 @@ create_project(Client, Input0, Options0) ->
 -spec delete_dataset(map(), binary() | list(), binary() | list(), delete_dataset_request()) ->
     {ok, delete_dataset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_dataset_errors(), tuple()}.
 delete_dataset(Client, DatasetType, ProjectName, Input) ->
     delete_dataset(Client, DatasetType, ProjectName, Input, []).
 
 -spec delete_dataset(map(), binary() | list(), binary() | list(), delete_dataset_request(), proplists:proplist()) ->
     {ok, delete_dataset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_dataset_errors(), tuple()}.
 delete_dataset(Client, DatasetType, ProjectName, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/datasets/", aws_util:encode_uri(DatasetType), ""],
@@ -904,24 +1114,14 @@ delete_dataset(Client, DatasetType, ProjectName, Input0, Options0) ->
 -spec delete_model(map(), binary() | list(), binary() | list(), delete_model_request()) ->
     {ok, delete_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_model_errors(), tuple()}.
 delete_model(Client, ModelVersion, ProjectName, Input) ->
     delete_model(Client, ModelVersion, ProjectName, Input, []).
 
 -spec delete_model(map(), binary() | list(), binary() | list(), delete_model_request(), proplists:proplist()) ->
     {ok, delete_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_model_errors(), tuple()}.
 delete_model(Client, ModelVersion, ProjectName, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/models/", aws_util:encode_uri(ModelVersion), ""],
@@ -962,24 +1162,14 @@ delete_model(Client, ModelVersion, ProjectName, Input0, Options0) ->
 -spec delete_project(map(), binary() | list(), delete_project_request()) ->
     {ok, delete_project_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_project_errors(), tuple()}.
 delete_project(Client, ProjectName, Input) ->
     delete_project(Client, ProjectName, Input, []).
 
 -spec delete_project(map(), binary() | list(), delete_project_request(), proplists:proplist()) ->
     {ok, delete_project_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_project_errors(), tuple()}.
 delete_project(Client, ProjectName, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), ""],
@@ -1011,12 +1201,7 @@ delete_project(Client, ProjectName, Input0, Options0) ->
 -spec describe_dataset(map(), binary() | list(), binary() | list()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_dataset_errors(), tuple()}.
 describe_dataset(Client, DatasetType, ProjectName)
   when is_map(Client) ->
     describe_dataset(Client, DatasetType, ProjectName, #{}, #{}).
@@ -1024,12 +1209,7 @@ describe_dataset(Client, DatasetType, ProjectName)
 -spec describe_dataset(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_dataset_errors(), tuple()}.
 describe_dataset(Client, DatasetType, ProjectName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dataset(Client, DatasetType, ProjectName, QueryMap, HeadersMap, []).
@@ -1037,12 +1217,7 @@ describe_dataset(Client, DatasetType, ProjectName, QueryMap, HeadersMap)
 -spec describe_dataset(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_dataset_errors(), tuple()}.
 describe_dataset(Client, DatasetType, ProjectName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/datasets/", aws_util:encode_uri(DatasetType), ""],
@@ -1066,12 +1241,7 @@ describe_dataset(Client, DatasetType, ProjectName, QueryMap, HeadersMap, Options
 -spec describe_model(map(), binary() | list(), binary() | list()) ->
     {ok, describe_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_model_errors(), tuple()}.
 describe_model(Client, ModelVersion, ProjectName)
   when is_map(Client) ->
     describe_model(Client, ModelVersion, ProjectName, #{}, #{}).
@@ -1079,12 +1249,7 @@ describe_model(Client, ModelVersion, ProjectName)
 -spec describe_model(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_model_errors(), tuple()}.
 describe_model(Client, ModelVersion, ProjectName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_model(Client, ModelVersion, ProjectName, QueryMap, HeadersMap, []).
@@ -1092,12 +1257,7 @@ describe_model(Client, ModelVersion, ProjectName, QueryMap, HeadersMap)
 -spec describe_model(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_model_errors(), tuple()}.
 describe_model(Client, ModelVersion, ProjectName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/models/", aws_util:encode_uri(ModelVersion), ""],
@@ -1125,11 +1285,7 @@ describe_model(Client, ModelVersion, ProjectName, QueryMap, HeadersMap, Options0
 -spec describe_model_packaging_job(map(), binary() | list(), binary() | list()) ->
     {ok, describe_model_packaging_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_model_packaging_job_errors(), tuple()}.
 describe_model_packaging_job(Client, JobName, ProjectName)
   when is_map(Client) ->
     describe_model_packaging_job(Client, JobName, ProjectName, #{}, #{}).
@@ -1137,11 +1293,7 @@ describe_model_packaging_job(Client, JobName, ProjectName)
 -spec describe_model_packaging_job(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_model_packaging_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_model_packaging_job_errors(), tuple()}.
 describe_model_packaging_job(Client, JobName, ProjectName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_model_packaging_job(Client, JobName, ProjectName, QueryMap, HeadersMap, []).
@@ -1149,11 +1301,7 @@ describe_model_packaging_job(Client, JobName, ProjectName, QueryMap, HeadersMap)
 -spec describe_model_packaging_job(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_model_packaging_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_model_packaging_job_errors(), tuple()}.
 describe_model_packaging_job(Client, JobName, ProjectName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/modelpackagingjobs/", aws_util:encode_uri(JobName), ""],
@@ -1177,12 +1325,7 @@ describe_model_packaging_job(Client, JobName, ProjectName, QueryMap, HeadersMap,
 -spec describe_project(map(), binary() | list()) ->
     {ok, describe_project_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_project_errors(), tuple()}.
 describe_project(Client, ProjectName)
   when is_map(Client) ->
     describe_project(Client, ProjectName, #{}, #{}).
@@ -1190,12 +1333,7 @@ describe_project(Client, ProjectName)
 -spec describe_project(map(), binary() | list(), map(), map()) ->
     {ok, describe_project_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_project_errors(), tuple()}.
 describe_project(Client, ProjectName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_project(Client, ProjectName, QueryMap, HeadersMap, []).
@@ -1203,12 +1341,7 @@ describe_project(Client, ProjectName, QueryMap, HeadersMap)
 -spec describe_project(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_project_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_project_errors(), tuple()}.
 describe_project(Client, ProjectName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), ""],
@@ -1249,24 +1382,14 @@ describe_project(Client, ProjectName, QueryMap, HeadersMap, Options0)
 -spec detect_anomalies(map(), binary() | list(), binary() | list(), detect_anomalies_request()) ->
     {ok, detect_anomalies_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, detect_anomalies_errors(), tuple()}.
 detect_anomalies(Client, ModelVersion, ProjectName, Input) ->
     detect_anomalies(Client, ModelVersion, ProjectName, Input, []).
 
 -spec detect_anomalies(map(), binary() | list(), binary() | list(), detect_anomalies_request(), proplists:proplist()) ->
     {ok, detect_anomalies_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, detect_anomalies_errors(), tuple()}.
 detect_anomalies(Client, ModelVersion, ProjectName, Input0, Options0) ->
     Method = post,
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/models/", aws_util:encode_uri(ModelVersion), "/detect"],
@@ -1302,12 +1425,7 @@ detect_anomalies(Client, ModelVersion, ProjectName, Input0, Options0) ->
 -spec list_dataset_entries(map(), binary() | list(), binary() | list()) ->
     {ok, list_dataset_entries_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_dataset_entries_errors(), tuple()}.
 list_dataset_entries(Client, DatasetType, ProjectName)
   when is_map(Client) ->
     list_dataset_entries(Client, DatasetType, ProjectName, #{}, #{}).
@@ -1315,12 +1433,7 @@ list_dataset_entries(Client, DatasetType, ProjectName)
 -spec list_dataset_entries(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_dataset_entries_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_dataset_entries_errors(), tuple()}.
 list_dataset_entries(Client, DatasetType, ProjectName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_dataset_entries(Client, DatasetType, ProjectName, QueryMap, HeadersMap, []).
@@ -1328,12 +1441,7 @@ list_dataset_entries(Client, DatasetType, ProjectName, QueryMap, HeadersMap)
 -spec list_dataset_entries(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_dataset_entries_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_dataset_entries_errors(), tuple()}.
 list_dataset_entries(Client, DatasetType, ProjectName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/datasets/", aws_util:encode_uri(DatasetType), "/entries"],
@@ -1373,11 +1481,7 @@ list_dataset_entries(Client, DatasetType, ProjectName, QueryMap, HeadersMap, Opt
 -spec list_model_packaging_jobs(map(), binary() | list()) ->
     {ok, list_model_packaging_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_model_packaging_jobs_errors(), tuple()}.
 list_model_packaging_jobs(Client, ProjectName)
   when is_map(Client) ->
     list_model_packaging_jobs(Client, ProjectName, #{}, #{}).
@@ -1385,11 +1489,7 @@ list_model_packaging_jobs(Client, ProjectName)
 -spec list_model_packaging_jobs(map(), binary() | list(), map(), map()) ->
     {ok, list_model_packaging_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_model_packaging_jobs_errors(), tuple()}.
 list_model_packaging_jobs(Client, ProjectName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_model_packaging_jobs(Client, ProjectName, QueryMap, HeadersMap, []).
@@ -1397,11 +1497,7 @@ list_model_packaging_jobs(Client, ProjectName, QueryMap, HeadersMap)
 -spec list_model_packaging_jobs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_model_packaging_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_model_packaging_jobs_errors(), tuple()}.
 list_model_packaging_jobs(Client, ProjectName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/modelpackagingjobs"],
@@ -1435,12 +1531,7 @@ list_model_packaging_jobs(Client, ProjectName, QueryMap, HeadersMap, Options0)
 -spec list_models(map(), binary() | list()) ->
     {ok, list_models_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_models_errors(), tuple()}.
 list_models(Client, ProjectName)
   when is_map(Client) ->
     list_models(Client, ProjectName, #{}, #{}).
@@ -1448,12 +1539,7 @@ list_models(Client, ProjectName)
 -spec list_models(map(), binary() | list(), map(), map()) ->
     {ok, list_models_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_models_errors(), tuple()}.
 list_models(Client, ProjectName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_models(Client, ProjectName, QueryMap, HeadersMap, []).
@@ -1461,12 +1547,7 @@ list_models(Client, ProjectName, QueryMap, HeadersMap)
 -spec list_models(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_models_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_models_errors(), tuple()}.
 list_models(Client, ProjectName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/models"],
@@ -1501,12 +1582,7 @@ list_models(Client, ProjectName, QueryMap, HeadersMap, Options0)
 -spec list_projects(map()) ->
     {ok, list_projects_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_projects_errors(), tuple()}.
 list_projects(Client)
   when is_map(Client) ->
     list_projects(Client, #{}, #{}).
@@ -1514,12 +1590,7 @@ list_projects(Client)
 -spec list_projects(map(), map(), map()) ->
     {ok, list_projects_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_projects_errors(), tuple()}.
 list_projects(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_projects(Client, QueryMap, HeadersMap, []).
@@ -1527,12 +1598,7 @@ list_projects(Client, QueryMap, HeadersMap)
 -spec list_projects(map(), map(), map(), proplists:proplist()) ->
     {ok, list_projects_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_projects_errors(), tuple()}.
 list_projects(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-11-20/projects"],
@@ -1562,12 +1628,7 @@ list_projects(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1575,12 +1636,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1588,12 +1644,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-11-20/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1632,26 +1683,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec start_model(map(), binary() | list(), binary() | list(), start_model_request()) ->
     {ok, start_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_model_errors(), tuple()}.
 start_model(Client, ModelVersion, ProjectName, Input) ->
     start_model(Client, ModelVersion, ProjectName, Input, []).
 
 -spec start_model(map(), binary() | list(), binary() | list(), start_model_request(), proplists:proplist()) ->
     {ok, start_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_model_errors(), tuple()}.
 start_model(Client, ModelVersion, ProjectName, Input0, Options0) ->
     Method = post,
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/models/", aws_util:encode_uri(ModelVersion), "/start"],
@@ -1717,26 +1756,14 @@ start_model(Client, ModelVersion, ProjectName, Input0, Options0) ->
 -spec start_model_packaging_job(map(), binary() | list(), start_model_packaging_job_request()) ->
     {ok, start_model_packaging_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_model_packaging_job_errors(), tuple()}.
 start_model_packaging_job(Client, ProjectName, Input) ->
     start_model_packaging_job(Client, ProjectName, Input, []).
 
 -spec start_model_packaging_job(map(), binary() | list(), start_model_packaging_job_request(), proplists:proplist()) ->
     {ok, start_model_packaging_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_model_packaging_job_errors(), tuple()}.
 start_model_packaging_job(Client, ProjectName, Input0, Options0) ->
     Method = post,
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/modelpackagingjobs"],
@@ -1774,24 +1801,14 @@ start_model_packaging_job(Client, ProjectName, Input0, Options0) ->
 -spec stop_model(map(), binary() | list(), binary() | list(), stop_model_request()) ->
     {ok, stop_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_model_errors(), tuple()}.
 stop_model(Client, ModelVersion, ProjectName, Input) ->
     stop_model(Client, ModelVersion, ProjectName, Input, []).
 
 -spec stop_model(map(), binary() | list(), binary() | list(), stop_model_request(), proplists:proplist()) ->
     {ok, stop_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_model_errors(), tuple()}.
 stop_model(Client, ModelVersion, ProjectName, Input0, Options0) ->
     Method = post,
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/models/", aws_util:encode_uri(ModelVersion), "/stop"],
@@ -1827,26 +1844,14 @@ stop_model(Client, ModelVersion, ProjectName, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/2020-11-20/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1879,24 +1884,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-11-20/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1947,24 +1942,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_dataset_entries(map(), binary() | list(), binary() | list(), update_dataset_entries_request()) ->
     {ok, update_dataset_entries_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_dataset_entries_errors(), tuple()}.
 update_dataset_entries(Client, DatasetType, ProjectName, Input) ->
     update_dataset_entries(Client, DatasetType, ProjectName, Input, []).
 
 -spec update_dataset_entries(map(), binary() | list(), binary() | list(), update_dataset_entries_request(), proplists:proplist()) ->
     {ok, update_dataset_entries_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_dataset_entries_errors(), tuple()}.
 update_dataset_entries(Client, DatasetType, ProjectName, Input0, Options0) ->
     Method = patch,
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/datasets/", aws_util:encode_uri(DatasetType), "/entries"],

@@ -34,6 +34,7 @@
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% bill_of_materials_import_job() :: #{
 %%   <<"instanceId">> => string(),
@@ -44,11 +45,13 @@
 %% }
 -type bill_of_materials_import_job() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_bill_of_materials_import_job_request() :: #{
@@ -57,14 +60,17 @@
 %% }
 -type create_bill_of_materials_import_job_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_bill_of_materials_import_job_response() :: #{
 %%   <<"jobId">> => string()
 %% }
 -type create_bill_of_materials_import_job_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_bill_of_materials_import_job_request() :: #{}
 -type get_bill_of_materials_import_job_request() :: #{}.
+
 
 %% Example:
 %% get_bill_of_materials_import_job_response() :: #{
@@ -72,11 +78,13 @@
 %% }
 -type get_bill_of_materials_import_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -84,11 +92,13 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% throttling_exception() :: #{
@@ -96,11 +106,27 @@
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
+-type create_bill_of_materials_import_job_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type get_bill_of_materials_import_job_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -118,24 +144,14 @@
 -spec create_bill_of_materials_import_job(map(), binary() | list(), create_bill_of_materials_import_job_request()) ->
     {ok, create_bill_of_materials_import_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_bill_of_materials_import_job_errors(), tuple()}.
 create_bill_of_materials_import_job(Client, InstanceId, Input) ->
     create_bill_of_materials_import_job(Client, InstanceId, Input, []).
 
 -spec create_bill_of_materials_import_job(map(), binary() | list(), create_bill_of_materials_import_job_request(), proplists:proplist()) ->
     {ok, create_bill_of_materials_import_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_bill_of_materials_import_job_errors(), tuple()}.
 create_bill_of_materials_import_job(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/api/configuration/instances/", aws_util:encode_uri(InstanceId), "/bill-of-materials-import-jobs"],
@@ -162,11 +178,7 @@ create_bill_of_materials_import_job(Client, InstanceId, Input0, Options0) ->
 -spec get_bill_of_materials_import_job(map(), binary() | list(), binary() | list()) ->
     {ok, get_bill_of_materials_import_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_bill_of_materials_import_job_errors(), tuple()}.
 get_bill_of_materials_import_job(Client, InstanceId, JobId)
   when is_map(Client) ->
     get_bill_of_materials_import_job(Client, InstanceId, JobId, #{}, #{}).
@@ -174,11 +186,7 @@ get_bill_of_materials_import_job(Client, InstanceId, JobId)
 -spec get_bill_of_materials_import_job(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_bill_of_materials_import_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_bill_of_materials_import_job_errors(), tuple()}.
 get_bill_of_materials_import_job(Client, InstanceId, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bill_of_materials_import_job(Client, InstanceId, JobId, QueryMap, HeadersMap, []).
@@ -186,11 +194,7 @@ get_bill_of_materials_import_job(Client, InstanceId, JobId, QueryMap, HeadersMap
 -spec get_bill_of_materials_import_job(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bill_of_materials_import_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_bill_of_materials_import_job_errors(), tuple()}.
 get_bill_of_materials_import_job(Client, InstanceId, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/configuration/instances/", aws_util:encode_uri(InstanceId), "/bill-of-materials-import-jobs/", aws_util:encode_uri(JobId), ""],

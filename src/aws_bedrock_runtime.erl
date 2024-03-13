@@ -20,11 +20,13 @@
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% invoke_model_request() :: #{
@@ -34,12 +36,14 @@
 %% }
 -type invoke_model_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% invoke_model_response() :: #{
 %%   <<"body">> => binary(),
 %%   <<"contentType">> => string()
 %% }
 -type invoke_model_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% invoke_model_with_response_stream_request() :: #{
@@ -49,12 +53,14 @@
 %% }
 -type invoke_model_with_response_stream_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% invoke_model_with_response_stream_response() :: #{
 %%   <<"body">> => list(),
 %%   <<"contentType">> => string()
 %% }
 -type invoke_model_with_response_stream_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% model_error_exception() :: #{
@@ -64,11 +70,13 @@
 %% }
 -type model_error_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% model_not_ready_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type model_not_ready_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% model_stream_error_exception() :: #{
@@ -78,11 +86,13 @@
 %% }
 -type model_stream_error_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% model_timeout_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type model_timeout_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% payload_part() :: #{
@@ -90,11 +100,13 @@
 %% }
 -type payload_part() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
@@ -102,17 +114,42 @@
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
+-type invoke_model_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    model_timeout_exception() | 
+    model_not_ready_exception() | 
+    model_error_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type invoke_model_with_response_stream_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    model_timeout_exception() | 
+    model_stream_error_exception() | 
+    model_not_ready_exception() | 
+    model_error_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -132,30 +169,14 @@
 -spec invoke_model(map(), binary() | list(), invoke_model_request()) ->
     {ok, invoke_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, model_error_exception(), tuple()} |
-    {error, model_not_ready_exception(), tuple()} |
-    {error, model_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, invoke_model_errors(), tuple()}.
 invoke_model(Client, ModelId, Input) ->
     invoke_model(Client, ModelId, Input, []).
 
 -spec invoke_model(map(), binary() | list(), invoke_model_request(), proplists:proplist()) ->
     {ok, invoke_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, model_error_exception(), tuple()} |
-    {error, model_not_ready_exception(), tuple()} |
-    {error, model_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, invoke_model_errors(), tuple()}.
 invoke_model(Client, ModelId, Input0, Options0) ->
     Method = post,
     Path = ["/model/", aws_util:encode_uri(ModelId), "/invoke"],
@@ -211,32 +232,14 @@ invoke_model(Client, ModelId, Input0, Options0) ->
 -spec invoke_model_with_response_stream(map(), binary() | list(), invoke_model_with_response_stream_request()) ->
     {ok, invoke_model_with_response_stream_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, model_error_exception(), tuple()} |
-    {error, model_not_ready_exception(), tuple()} |
-    {error, model_stream_error_exception(), tuple()} |
-    {error, model_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, invoke_model_with_response_stream_errors(), tuple()}.
 invoke_model_with_response_stream(Client, ModelId, Input) ->
     invoke_model_with_response_stream(Client, ModelId, Input, []).
 
 -spec invoke_model_with_response_stream(map(), binary() | list(), invoke_model_with_response_stream_request(), proplists:proplist()) ->
     {ok, invoke_model_with_response_stream_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, model_error_exception(), tuple()} |
-    {error, model_not_ready_exception(), tuple()} |
-    {error, model_stream_error_exception(), tuple()} |
-    {error, model_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, invoke_model_with_response_stream_errors(), tuple()}.
 invoke_model_with_response_stream(Client, ModelId, Input0, Options0) ->
     Method = post,
     Path = ["/model/", aws_util:encode_uri(ModelId), "/invoke-with-response-stream"],

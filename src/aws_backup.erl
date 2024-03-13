@@ -253,6 +253,7 @@
 %% }
 -type list_restore_testing_plans_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% report_job() :: #{
 %%   <<"CompletionTime">> => non_neg_integer(),
@@ -266,6 +267,7 @@
 %% }
 -type report_job() :: #{binary() => any()}.
 
+
 %% Example:
 %% recovery_point_member() :: #{
 %%   <<"BackupVaultName">> => string(),
@@ -274,6 +276,7 @@
 %%   <<"ResourceType">> => string()
 %% }
 -type recovery_point_member() :: #{binary() => any()}.
+
 
 %% Example:
 %% missing_parameter_value_exception() :: #{
@@ -284,6 +287,7 @@
 %% }
 -type missing_parameter_value_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_backup_plan_output() :: #{
 %%   <<"BackupPlanArn">> => string(),
@@ -293,6 +297,7 @@
 %% }
 -type delete_backup_plan_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% backup_plan_input() :: #{
 %%   <<"AdvancedBackupSettings">> => list(advanced_backup_setting()()),
@@ -300,6 +305,7 @@
 %%   <<"Rules">> => list(backup_rule_input()())
 %% }
 -type backup_plan_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% backup_plans_list_member() :: #{
@@ -314,18 +320,22 @@
 %%   <<"VersionId">> => string()
 %% }
 -type backup_plans_list_member() :: #{binary() => any()}.
+
 %% Example:
 %% get_restore_job_metadata_input() :: #{}
 -type get_restore_job_metadata_input() :: #{}.
+
 %% Example:
 %% get_restore_testing_plan_input() :: #{}
 -type get_restore_testing_plan_input() :: #{}.
+
 
 %% Example:
 %% describe_recovery_point_input() :: #{
 %%   <<"BackupVaultAccountId">> => string()
 %% }
 -type describe_recovery_point_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_backup_vaults_output() :: #{
@@ -334,11 +344,13 @@
 %% }
 -type list_backup_vaults_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_recovery_point_lifecycle_input() :: #{
 %%   <<"Lifecycle">> => lifecycle()
 %% }
 -type update_recovery_point_lifecycle_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% recovery_point_creator() :: #{
@@ -348,6 +360,7 @@
 %%   <<"BackupRuleId">> => string()
 %% }
 -type recovery_point_creator() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_backup_job_input() :: #{
@@ -362,6 +375,7 @@
 %%   <<"StartWindowMinutes">> => float()
 %% }
 -type start_backup_job_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% copy_job() :: #{
@@ -390,12 +404,14 @@
 %% }
 -type copy_job() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_protected_resources_by_backup_vault_output() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Results">> => list(protected_resource()())
 %% }
 -type list_protected_resources_by_backup_vault_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_report_plan_output() :: #{
@@ -405,6 +421,7 @@
 %% }
 -type create_report_plan_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_restore_testing_selection_input() :: #{
 %%   <<"CreatorRequestId">> => [string()],
@@ -412,15 +429,18 @@
 %% }
 -type create_restore_testing_selection_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_region_settings_output() :: #{
 %%   <<"ResourceTypeManagementPreference">> => map(),
 %%   <<"ResourceTypeOptInPreference">> => map()
 %% }
 -type describe_region_settings_output() :: #{binary() => any()}.
+
 %% Example:
 %% delete_restore_testing_plan_input() :: #{}
 -type delete_restore_testing_plan_input() :: #{}.
+
 
 %% Example:
 %% create_backup_plan_output() :: #{
@@ -431,6 +451,7 @@
 %%   <<"VersionId">> => string()
 %% }
 -type create_backup_plan_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_restore_job_input() :: #{
@@ -443,6 +464,7 @@
 %% }
 -type start_restore_job_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% backup_plan() :: #{
 %%   <<"AdvancedBackupSettings">> => list(advanced_backup_setting()()),
@@ -450,6 +472,7 @@
 %%   <<"Rules">> => list(backup_rule()())
 %% }
 -type backup_plan() :: #{binary() => any()}.
+
 
 %% Example:
 %% recovery_point_by_backup_vault() :: #{
@@ -479,6 +502,7 @@
 %% }
 -type recovery_point_by_backup_vault() :: #{binary() => any()}.
 
+
 %% Example:
 %% restore_testing_selection_for_list() :: #{
 %%   <<"CreationTime">> => [non_neg_integer()],
@@ -490,6 +514,7 @@
 %% }
 -type restore_testing_selection_for_list() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_report_jobs_output() :: #{
 %%   <<"NextToken">> => string(),
@@ -497,17 +522,20 @@
 %% }
 -type list_report_jobs_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_backup_plan_input() :: #{
 %%   <<"VersionId">> => string()
 %% }
 -type get_backup_plan_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_report_job_output() :: #{
 %%   <<"ReportJobId">> => string()
 %% }
 -type start_report_job_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_backup_plan_templates_input() :: #{
@@ -516,6 +544,7 @@
 %% }
 -type list_backup_plan_templates_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_restore_job_metadata_output() :: #{
 %%   <<"Metadata">> => map(),
@@ -523,11 +552,13 @@
 %% }
 -type get_restore_job_metadata_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_backup_plan_from_json_output() :: #{
 %%   <<"BackupPlan">> => backup_plan()
 %% }
 -type get_backup_plan_from_json_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% already_exists_exception() :: #{
@@ -539,6 +570,7 @@
 %%   <<"Type">> => string()
 %% }
 -type already_exists_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% restore_testing_plan_for_list() :: #{
@@ -553,6 +585,7 @@
 %% }
 -type restore_testing_plan_for_list() :: #{binary() => any()}.
 
+
 %% Example:
 %% restore_testing_plan_for_update() :: #{
 %%   <<"RecoveryPointSelection">> => restore_testing_recovery_point_selection(),
@@ -561,6 +594,7 @@
 %%   <<"StartWindowHours">> => integer()
 %% }
 -type restore_testing_plan_for_update() :: #{binary() => any()}.
+
 
 %% Example:
 %% report_plan() :: #{
@@ -576,18 +610,22 @@
 %% }
 -type report_plan() :: #{binary() => any()}.
 
+
 %% Example:
 %% report_destination() :: #{
 %%   <<"S3BucketName">> => string(),
 %%   <<"S3Keys">> => list(string()())
 %% }
 -type report_destination() :: #{binary() => any()}.
+
 %% Example:
 %% describe_global_settings_input() :: #{}
 -type describe_global_settings_input() :: #{}.
+
 %% Example:
 %% disassociate_recovery_point_input() :: #{}
 -type disassociate_recovery_point_input() :: #{}.
+
 
 %% Example:
 %% protected_resource() :: #{
@@ -599,9 +637,11 @@
 %%   <<"ResourceType">> => string()
 %% }
 -type protected_resource() :: #{binary() => any()}.
+
 %% Example:
 %% stop_backup_job_input() :: #{}
 -type stop_backup_job_input() :: #{}.
+
 
 %% Example:
 %% create_backup_vault_input() :: #{
@@ -610,6 +650,7 @@
 %%   <<"EncryptionKeyArn">> => string()
 %% }
 -type create_backup_vault_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_backup_plan_output() :: #{
@@ -624,9 +665,11 @@
 %%   <<"VersionId">> => string()
 %% }
 -type get_backup_plan_output() :: #{binary() => any()}.
+
 %% Example:
 %% describe_framework_input() :: #{}
 -type describe_framework_input() :: #{}.
+
 
 %% Example:
 %% list_backup_plans_output() :: #{
@@ -635,12 +678,14 @@
 %% }
 -type list_backup_plans_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_backup_selections_input() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_backup_selections_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% restore_job_summary() :: #{
@@ -654,6 +699,7 @@
 %% }
 -type restore_job_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_backup_vault_output() :: #{
 %%   <<"BackupVaultArn">> => string(),
@@ -662,11 +708,13 @@
 %% }
 -type create_backup_vault_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_restore_testing_plan_output() :: #{
 %%   <<"RestoreTestingPlan">> => restore_testing_plan_for_get()
 %% }
 -type get_restore_testing_plan_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% condition_parameter() :: #{
@@ -674,6 +722,7 @@
 %%   <<"ConditionValue">> => string()
 %% }
 -type condition_parameter() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_legal_hold_input() :: #{
@@ -684,9 +733,11 @@
 %%   <<"Title">> := string()
 %% }
 -type create_legal_hold_input() :: #{binary() => any()}.
+
 %% Example:
 %% delete_backup_selection_input() :: #{}
 -type delete_backup_selection_input() :: #{}.
+
 
 %% Example:
 %% restore_jobs_list_member() :: #{
@@ -712,12 +763,14 @@
 %% }
 -type restore_jobs_list_member() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_restore_testing_plans_output() :: #{
 %%   <<"NextToken">> => [string()],
 %%   <<"RestoreTestingPlans">> => list(restore_testing_plan_for_list()())
 %% }
 -type list_restore_testing_plans_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_report_jobs_input() :: #{
@@ -729,6 +782,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_report_jobs_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_backup_vault_output() :: #{
@@ -746,12 +800,14 @@
 %% }
 -type describe_backup_vault_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_restore_testing_selections_input() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_restore_testing_selections_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_backup_job_summaries_input() :: #{
@@ -765,18 +821,22 @@
 %% }
 -type list_backup_job_summaries_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_backup_vault_notifications_input() :: #{
 %%   <<"BackupVaultEvents">> := list(list(any())()),
 %%   <<"SNSTopicArn">> := string()
 %% }
 -type put_backup_vault_notifications_input() :: #{binary() => any()}.
+
 %% Example:
 %% describe_protected_resource_input() :: #{}
 -type describe_protected_resource_input() :: #{}.
+
 %% Example:
 %% cancel_legal_hold_output() :: #{}
 -type cancel_legal_hold_output() :: #{}.
+
 
 %% Example:
 %% control_scope() :: #{
@@ -785,6 +845,7 @@
 %%   <<"Tags">> => map()
 %% }
 -type control_scope() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_legal_hold_output() :: #{
@@ -801,6 +862,7 @@
 %% }
 -type get_legal_hold_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% framework_control() :: #{
 %%   <<"ControlInputParameters">> => list(control_input_parameter()()),
@@ -809,15 +871,18 @@
 %% }
 -type framework_control() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_backup_jobs_output() :: #{
 %%   <<"BackupJobs">> => list(backup_job()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_backup_jobs_output() :: #{binary() => any()}.
+
 %% Example:
 %% get_backup_plan_from_template_input() :: #{}
 -type get_backup_plan_from_template_input() :: #{}.
+
 
 %% Example:
 %% export_backup_plan_template_output() :: #{
@@ -825,11 +890,13 @@
 %% }
 -type export_backup_plan_template_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_backup_plan_input() :: #{
 %%   <<"BackupPlan">> := backup_plan_input()
 %% }
 -type update_backup_plan_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_report_plans_output() :: #{
@@ -837,6 +904,7 @@
 %%   <<"ReportPlans">> => list(report_plan()())
 %% }
 -type list_report_plans_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% backup_selection() :: #{
@@ -849,6 +917,7 @@
 %% }
 -type backup_selection() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_region_settings_input() :: #{
 %%   <<"ResourceTypeManagementPreference">> => map(),
@@ -856,12 +925,14 @@
 %% }
 -type update_region_settings_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_legal_holds_input() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_legal_holds_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% lifecycle() :: #{
@@ -871,12 +942,14 @@
 %% }
 -type lifecycle() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_recovery_points_by_legal_hold_input() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_recovery_points_by_legal_hold_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_backup_selection_output() :: #{
@@ -885,9 +958,11 @@
 %%   <<"SelectionId">> => string()
 %% }
 -type create_backup_selection_output() :: #{binary() => any()}.
+
 %% Example:
 %% get_restore_testing_selection_input() :: #{}
 -type get_restore_testing_selection_input() :: #{}.
+
 
 %% Example:
 %% protected_resource_conditions() :: #{
@@ -896,12 +971,14 @@
 %% }
 -type protected_resource_conditions() :: #{binary() => any()}.
 
+
 %% Example:
 %% control_input_parameter() :: #{
 %%   <<"ParameterName">> => string(),
 %%   <<"ParameterValue">> => string()
 %% }
 -type control_input_parameter() :: #{binary() => any()}.
+
 
 %% Example:
 %% calculated_lifecycle() :: #{
@@ -910,12 +987,14 @@
 %% }
 -type calculated_lifecycle() :: #{binary() => any()}.
 
+
 %% Example:
 %% copy_action() :: #{
 %%   <<"DestinationBackupVaultArn">> => string(),
 %%   <<"Lifecycle">> => lifecycle()
 %% }
 -type copy_action() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_framework_input() :: #{
@@ -925,6 +1004,7 @@
 %% }
 -type update_framework_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_restore_testing_inferred_metadata_input() :: #{
 %%   <<"BackupVaultAccountId">> => [string()],
@@ -932,9 +1012,11 @@
 %%   <<"RecoveryPointArn">> := [string()]
 %% }
 -type get_restore_testing_inferred_metadata_input() :: #{binary() => any()}.
+
 %% Example:
 %% get_backup_vault_access_policy_input() :: #{}
 -type get_backup_vault_access_policy_input() :: #{}.
+
 
 %% Example:
 %% list_report_plans_input() :: #{
@@ -943,12 +1025,14 @@
 %% }
 -type list_report_plans_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_backup_selection_input() :: #{
 %%   <<"BackupSelection">> := backup_selection(),
 %%   <<"CreatorRequestId">> => string()
 %% }
 -type create_backup_selection_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -959,11 +1043,13 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_backup_vault_access_policy_input() :: #{
 %%   <<"Policy">> => string()
 %% }
 -type put_backup_vault_access_policy_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -974,6 +1060,7 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_restore_jobs_output() :: #{
 %%   <<"NextToken">> => string(),
@@ -981,11 +1068,13 @@
 %% }
 -type list_restore_jobs_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_restore_job_output() :: #{
 %%   <<"RestoreJobId">> => string()
 %% }
 -type start_restore_job_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% copy_job_summary() :: #{
@@ -999,9 +1088,11 @@
 %%   <<"State">> => list(any())
 %% }
 -type copy_job_summary() :: #{binary() => any()}.
+
 %% Example:
 %% delete_restore_testing_selection_input() :: #{}
 -type delete_restore_testing_selection_input() :: #{}.
+
 
 %% Example:
 %% list_recovery_points_by_resource_output() :: #{
@@ -1009,6 +1100,7 @@
 %%   <<"RecoveryPoints">> => list(recovery_point_by_resource()())
 %% }
 -type list_recovery_points_by_resource_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% invalid_request_exception() :: #{
@@ -1019,12 +1111,14 @@
 %% }
 -type invalid_request_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_backup_selections_output() :: #{
 %%   <<"BackupSelectionsList">> => list(backup_selections_list_member()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_backup_selections_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% restore_testing_plan_for_get() :: #{
@@ -1041,6 +1135,7 @@
 %% }
 -type restore_testing_plan_for_get() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_restore_testing_selection_output() :: #{
 %%   <<"CreationTime">> => [non_neg_integer()],
@@ -1050,6 +1145,7 @@
 %%   <<"UpdateTime">> => [non_neg_integer()]
 %% }
 -type update_restore_testing_selection_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_restore_job_output() :: #{
@@ -1075,6 +1171,7 @@
 %% }
 -type describe_restore_job_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% restore_testing_selection_for_update() :: #{
 %%   <<"IamRoleArn">> => [string()],
@@ -1085,6 +1182,7 @@
 %% }
 -type restore_testing_selection_for_update() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_copy_job_output() :: #{
 %%   <<"CopyJobId">> => string(),
@@ -1092,6 +1190,7 @@
 %%   <<"IsParent">> => boolean()
 %% }
 -type start_copy_job_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_restore_job_summaries_input() :: #{
@@ -1103,9 +1202,11 @@
 %%   <<"State">> => list(any())
 %% }
 -type list_restore_job_summaries_input() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_recovery_point_from_parent_input() :: #{}
 -type disassociate_recovery_point_from_parent_input() :: #{}.
+
 
 %% Example:
 %% describe_backup_job_output() :: #{
@@ -1139,6 +1240,7 @@
 %% }
 -type describe_backup_job_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% backup_selections_list_member() :: #{
 %%   <<"BackupPlanId">> => string(),
@@ -1150,12 +1252,14 @@
 %% }
 -type backup_selections_list_member() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_framework_output() :: #{
 %%   <<"FrameworkArn">> => string(),
 %%   <<"FrameworkName">> => string()
 %% }
 -type create_framework_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_copy_job_summaries_output() :: #{
@@ -1165,6 +1269,7 @@
 %% }
 -type list_copy_job_summaries_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_global_settings_output() :: #{
 %%   <<"GlobalSettings">> => map(),
@@ -1172,11 +1277,13 @@
 %% }
 -type describe_global_settings_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_supported_resource_types_output() :: #{
 %%   <<"ResourceTypes">> => list(string()())
 %% }
 -type get_supported_resource_types_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% invalid_parameter_value_exception() :: #{
@@ -1186,6 +1293,7 @@
 %%   <<"Type">> => string()
 %% }
 -type invalid_parameter_value_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% restore_testing_recovery_point_selection() :: #{
@@ -1197,6 +1305,7 @@
 %% }
 -type restore_testing_recovery_point_selection() :: #{binary() => any()}.
 
+
 %% Example:
 %% dependency_failure_exception() :: #{
 %%   <<"Code">> => string(),
@@ -1205,6 +1314,7 @@
 %%   <<"Type">> => string()
 %% }
 -type dependency_failure_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_restore_testing_selection_output() :: #{
@@ -1215,17 +1325,20 @@
 %% }
 -type create_restore_testing_selection_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_report_job_output() :: #{
 %%   <<"ReportJob">> => report_job()
 %% }
 -type describe_report_job_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_restore_testing_inferred_metadata_output() :: #{
 %%   <<"InferredMetadata">> => map()
 %% }
 -type get_restore_testing_inferred_metadata_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_backup_vault_notifications_output() :: #{
@@ -1236,12 +1349,14 @@
 %% }
 -type get_backup_vault_notifications_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% advanced_backup_setting() :: #{
 %%   <<"BackupOptions">> => map(),
 %%   <<"ResourceType">> => string()
 %% }
 -type advanced_backup_setting() :: #{binary() => any()}.
+
 
 %% Example:
 %% recovery_point_selection() :: #{
@@ -1250,6 +1365,7 @@
 %%   <<"VaultNames">> => list(string()())
 %% }
 -type recovery_point_selection() :: #{binary() => any()}.
+
 
 %% Example:
 %% conditions() :: #{
@@ -1260,14 +1376,17 @@
 %% }
 -type conditions() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_restore_testing_plan_input() :: #{
 %%   <<"RestoreTestingPlan">> := restore_testing_plan_for_update()
 %% }
 -type update_restore_testing_plan_input() :: #{binary() => any()}.
+
 %% Example:
 %% delete_backup_vault_input() :: #{}
 -type delete_backup_vault_input() :: #{}.
+
 
 %% Example:
 %% get_backup_vault_access_policy_output() :: #{
@@ -1277,11 +1396,13 @@
 %% }
 -type get_backup_vault_access_policy_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_restore_testing_selection_output() :: #{
 %%   <<"RestoreTestingSelection">> => restore_testing_selection_for_get()
 %% }
 -type get_restore_testing_selection_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% report_delivery_channel() :: #{
@@ -1291,12 +1412,14 @@
 %% }
 -type report_delivery_channel() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_protected_resources_output() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Results">> => list(protected_resource()())
 %% }
 -type list_protected_resources_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_unavailable_exception() :: #{
@@ -1306,12 +1429,15 @@
 %%   <<"Type">> => string()
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_framework_input() :: #{}
 -type delete_framework_input() :: #{}.
+
 %% Example:
 %% delete_backup_vault_notifications_input() :: #{}
 -type delete_backup_vault_notifications_input() :: #{}.
+
 
 %% Example:
 %% condition() :: #{
@@ -1320,6 +1446,7 @@
 %%   <<"ConditionValue">> => string()
 %% }
 -type condition() :: #{binary() => any()}.
+
 
 %% Example:
 %% invalid_resource_state_exception() :: #{
@@ -1330,11 +1457,13 @@
 %% }
 -type invalid_resource_state_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_input() :: #{
 %%   <<"Tags">> := map()
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_backup_plan_versions_input() :: #{
@@ -1342,6 +1471,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_backup_plan_versions_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_restore_jobs_input() :: #{
@@ -1357,9 +1487,11 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_restore_jobs_input() :: #{binary() => any()}.
+
 %% Example:
 %% get_backup_selection_input() :: #{}
 -type get_backup_selection_input() :: #{}.
+
 
 %% Example:
 %% get_backup_selection_output() :: #{
@@ -1370,6 +1502,7 @@
 %%   <<"SelectionId">> => string()
 %% }
 -type get_backup_selection_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% recovery_point_by_resource() :: #{
@@ -1386,6 +1519,7 @@
 %% }
 -type recovery_point_by_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% report_setting() :: #{
 %%   <<"Accounts">> => list(string()()),
@@ -1396,6 +1530,7 @@
 %%   <<"ReportTemplate">> => string()
 %% }
 -type report_setting() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_recovery_points_by_backup_vault_input() :: #{
@@ -1411,6 +1546,7 @@
 %% }
 -type list_recovery_points_by_backup_vault_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% framework() :: #{
 %%   <<"CreationTime">> => non_neg_integer(),
@@ -1421,6 +1557,7 @@
 %%   <<"NumberOfControls">> => integer()
 %% }
 -type framework() :: #{binary() => any()}.
+
 
 %% Example:
 %% restore_testing_selection_for_create() :: #{
@@ -1434,12 +1571,14 @@
 %% }
 -type restore_testing_selection_for_create() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_frameworks_output() :: #{
 %%   <<"Frameworks">> => list(framework()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_frameworks_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% backup_vault_list_member() :: #{
@@ -1455,9 +1594,11 @@
 %%   <<"NumberOfRecoveryPoints">> => float()
 %% }
 -type backup_vault_list_member() :: #{binary() => any()}.
+
 %% Example:
 %% describe_copy_job_input() :: #{}
 -type describe_copy_job_input() :: #{}.
+
 
 %% Example:
 %% list_copy_job_summaries_input() :: #{
@@ -1471,15 +1612,18 @@
 %% }
 -type list_copy_job_summaries_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_legal_holds_output() :: #{
 %%   <<"LegalHolds">> => list(legal_hold()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_legal_holds_output() :: #{binary() => any()}.
+
 %% Example:
 %% delete_backup_vault_access_policy_input() :: #{}
 -type delete_backup_vault_access_policy_input() :: #{}.
+
 
 %% Example:
 %% backup_rule() :: #{
@@ -1497,11 +1641,13 @@
 %% }
 -type backup_rule() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_backup_plan_from_template_output() :: #{
 %%   <<"BackupPlanDocument">> => backup_plan()
 %% }
 -type get_backup_plan_from_template_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_report_plan_input() :: #{
@@ -1512,14 +1658,17 @@
 %% }
 -type update_report_plan_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_input() :: #{
 %%   <<"TagKeyList">> := list(string()())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
+
 %% Example:
 %% describe_report_plan_input() :: #{}
 -type describe_report_plan_input() :: #{}.
+
 
 %% Example:
 %% list_recovery_points_by_resource_input() :: #{
@@ -1528,12 +1677,14 @@
 %% }
 -type list_recovery_points_by_resource_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_recovery_points_by_legal_hold_output() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"RecoveryPoints">> => list(recovery_point_member()())
 %% }
 -type list_recovery_points_by_legal_hold_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_legal_hold_output() :: #{
@@ -1547,11 +1698,13 @@
 %% }
 -type create_legal_hold_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_global_settings_input() :: #{
 %%   <<"GlobalSettings">> => map()
 %% }
 -type update_global_settings_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_copy_jobs_input() :: #{
@@ -1571,11 +1724,13 @@
 %% }
 -type list_copy_jobs_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_recovery_point_restore_metadata_input() :: #{
 %%   <<"BackupVaultAccountId">> => string()
 %% }
 -type get_recovery_point_restore_metadata_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_backup_jobs_input() :: #{
@@ -1595,6 +1750,7 @@
 %% }
 -type list_backup_jobs_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_copy_job_input() :: #{
 %%   <<"DestinationBackupVaultArn">> := string(),
@@ -1605,9 +1761,11 @@
 %%   <<"SourceBackupVaultName">> := string()
 %% }
 -type start_copy_job_input() :: #{binary() => any()}.
+
 %% Example:
 %% delete_report_plan_input() :: #{}
 -type delete_report_plan_input() :: #{}.
+
 
 %% Example:
 %% start_backup_job_output() :: #{
@@ -1618,15 +1776,18 @@
 %% }
 -type start_backup_job_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_restore_jobs_by_protected_resource_output() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"RestoreJobs">> => list(restore_jobs_list_member()())
 %% }
 -type list_restore_jobs_by_protected_resource_output() :: #{binary() => any()}.
+
 %% Example:
 %% get_backup_vault_notifications_input() :: #{}
 -type get_backup_vault_notifications_input() :: #{}.
+
 
 %% Example:
 %% create_framework_input() :: #{
@@ -1638,6 +1799,7 @@
 %% }
 -type create_framework_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_backup_plan_input() :: #{
 %%   <<"BackupPlan">> := backup_plan_input(),
@@ -1646,6 +1808,7 @@
 %% }
 -type create_backup_plan_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_input() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -1653,11 +1816,13 @@
 %% }
 -type list_tags_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_backup_vault_input() :: #{
 %%   <<"BackupVaultAccountId">> => string()
 %% }
 -type describe_backup_vault_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_copy_jobs_output() :: #{
@@ -1665,6 +1830,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_copy_jobs_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_backup_vaults_input() :: #{
@@ -1675,6 +1841,7 @@
 %% }
 -type list_backup_vaults_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_protected_resources_by_backup_vault_input() :: #{
 %%   <<"BackupVaultAccountId">> => string(),
@@ -1682,6 +1849,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_protected_resources_by_backup_vault_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% limit_exceeded_exception() :: #{
@@ -1691,6 +1859,7 @@
 %%   <<"Type">> => string()
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% backup_job_summary() :: #{
@@ -1704,6 +1873,7 @@
 %%   <<"State">> => list(any())
 %% }
 -type backup_job_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_protected_resource_output() :: #{
@@ -1719,11 +1889,13 @@
 %% }
 -type describe_protected_resource_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% restore_job_creator() :: #{
 %%   <<"RestoreTestingPlanArn">> => string()
 %% }
 -type restore_job_creator() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_logically_air_gapped_backup_vault_output() :: #{
@@ -1733,6 +1905,7 @@
 %%   <<"VaultState">> => list(any())
 %% }
 -type create_logically_air_gapped_backup_vault_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% backup_rule_input() :: #{
@@ -1749,6 +1922,7 @@
 %% }
 -type backup_rule_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% restore_testing_plan_for_create() :: #{
 %%   <<"RecoveryPointSelection">> => restore_testing_recovery_point_selection(),
@@ -1758,6 +1932,7 @@
 %%   <<"StartWindowHours">> => integer()
 %% }
 -type restore_testing_plan_for_create() :: #{binary() => any()}.
+
 
 %% Example:
 %% legal_hold() :: #{
@@ -1771,12 +1946,14 @@
 %% }
 -type legal_hold() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_backup_plan_versions_output() :: #{
 %%   <<"BackupPlanVersionsList">> => list(backup_plans_list_member()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_backup_plan_versions_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_framework_output() :: #{
@@ -1786,6 +1963,7 @@
 %% }
 -type update_framework_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_frameworks_input() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -1793,12 +1971,14 @@
 %% }
 -type list_frameworks_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% backup_plan_templates_list_member() :: #{
 %%   <<"BackupPlanTemplateId">> => string(),
 %%   <<"BackupPlanTemplateName">> => string()
 %% }
 -type backup_plan_templates_list_member() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_backup_job_summaries_output() :: #{
@@ -1808,12 +1988,14 @@
 %% }
 -type list_backup_job_summaries_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_recovery_points_by_backup_vault_output() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"RecoveryPoints">> => list(recovery_point_by_backup_vault()())
 %% }
 -type list_recovery_points_by_backup_vault_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% key_value() :: #{
@@ -1822,11 +2004,13 @@
 %% }
 -type key_value() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_report_job_input() :: #{
 %%   <<"IdempotencyToken">> => string()
 %% }
 -type start_report_job_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_report_plan_input() :: #{
@@ -1838,6 +2022,7 @@
 %%   <<"ReportSetting">> := report_setting()
 %% }
 -type create_report_plan_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% backup_job() :: #{
@@ -1868,12 +2053,15 @@
 %%   <<"StatusMessage">> => string()
 %% }
 -type backup_job() :: #{binary() => any()}.
+
 %% Example:
 %% delete_backup_plan_input() :: #{}
 -type delete_backup_plan_input() :: #{}.
+
 %% Example:
 %% describe_region_settings_input() :: #{}
 -type describe_region_settings_input() :: #{}.
+
 
 %% Example:
 %% list_restore_jobs_by_protected_resource_input() :: #{
@@ -1885,11 +2073,13 @@
 %% }
 -type list_restore_jobs_by_protected_resource_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_backup_plan_from_json_input() :: #{
 %%   <<"BackupPlanTemplateJson">> := string()
 %% }
 -type get_backup_plan_from_json_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_restore_job_summaries_output() :: #{
@@ -1898,6 +2088,7 @@
 %%   <<"RestoreJobSummaries">> => list(restore_job_summary()())
 %% }
 -type list_restore_job_summaries_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_framework_output() :: #{
@@ -1911,12 +2102,15 @@
 %%   <<"IdempotencyToken">> => string()
 %% }
 -type describe_framework_output() :: #{binary() => any()}.
+
 %% Example:
 %% describe_report_job_input() :: #{}
 -type describe_report_job_input() :: #{}.
+
 %% Example:
 %% export_backup_plan_template_input() :: #{}
 -type export_backup_plan_template_input() :: #{}.
+
 
 %% Example:
 %% update_restore_testing_plan_output() :: #{
@@ -1927,12 +2121,14 @@
 %% }
 -type update_restore_testing_plan_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% date_range() :: #{
 %%   <<"FromDate">> => non_neg_integer(),
 %%   <<"ToDate">> => non_neg_integer()
 %% }
 -type date_range() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_recovery_point_lifecycle_output() :: #{
@@ -1943,12 +2139,14 @@
 %% }
 -type update_recovery_point_lifecycle_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_restore_testing_selections_output() :: #{
 %%   <<"NextToken">> => [string()],
 %%   <<"RestoreTestingSelections">> => list(restore_testing_selection_for_list()())
 %% }
 -type list_restore_testing_selections_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_recovery_point_output() :: #{
@@ -1979,11 +2177,13 @@
 %% }
 -type describe_recovery_point_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_copy_job_output() :: #{
 %%   <<"CopyJob">> => copy_job()
 %% }
 -type describe_copy_job_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% cancel_legal_hold_input() :: #{
@@ -1992,12 +2192,14 @@
 %% }
 -type cancel_legal_hold_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_output() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Tags">> => map()
 %% }
 -type list_tags_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_restore_testing_plan_input() :: #{
@@ -2006,9 +2208,11 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_restore_testing_plan_input() :: #{binary() => any()}.
+
 %% Example:
 %% get_legal_hold_input() :: #{}
 -type get_legal_hold_input() :: #{}.
+
 
 %% Example:
 %% restore_testing_selection_for_get() :: #{
@@ -2025,6 +2229,7 @@
 %% }
 -type restore_testing_selection_for_get() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_recovery_point_restore_metadata_output() :: #{
 %%   <<"BackupVaultArn">> => string(),
@@ -2034,6 +2239,7 @@
 %% }
 -type get_recovery_point_restore_metadata_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_restore_testing_plan_output() :: #{
 %%   <<"CreationTime">> => [non_neg_integer()],
@@ -2041,9 +2247,11 @@
 %%   <<"RestoreTestingPlanName">> => [string()]
 %% }
 -type create_restore_testing_plan_output() :: #{binary() => any()}.
+
 %% Example:
 %% delete_backup_vault_lock_configuration_input() :: #{}
 -type delete_backup_vault_lock_configuration_input() :: #{}.
+
 
 %% Example:
 %% list_protected_resources_input() :: #{
@@ -2051,9 +2259,11 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_protected_resources_input() :: #{binary() => any()}.
+
 %% Example:
 %% delete_recovery_point_input() :: #{}
 -type delete_recovery_point_input() :: #{}.
+
 
 %% Example:
 %% update_report_plan_output() :: #{
@@ -2063,12 +2273,14 @@
 %% }
 -type update_report_plan_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_backup_plan_templates_output() :: #{
 %%   <<"BackupPlanTemplatesList">> => list(backup_plan_templates_list_member()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_backup_plan_templates_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_backup_plans_input() :: #{
@@ -2077,9 +2289,11 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_backup_plans_input() :: #{binary() => any()}.
+
 %% Example:
 %% describe_backup_job_input() :: #{}
 -type describe_backup_job_input() :: #{}.
+
 
 %% Example:
 %% create_logically_air_gapped_backup_vault_input() :: #{
@@ -2090,17 +2304,20 @@
 %% }
 -type create_logically_air_gapped_backup_vault_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_report_plan_output() :: #{
 %%   <<"ReportPlan">> => report_plan()
 %% }
 -type describe_report_plan_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_restore_testing_selection_input() :: #{
 %%   <<"RestoreTestingSelection">> := restore_testing_selection_for_update()
 %% }
 -type update_restore_testing_selection_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_backup_vault_lock_configuration_input() :: #{
@@ -2109,9 +2326,11 @@
 %%   <<"MinRetentionDays">> => float()
 %% }
 -type put_backup_vault_lock_configuration_input() :: #{binary() => any()}.
+
 %% Example:
 %% describe_restore_job_input() :: #{}
 -type describe_restore_job_input() :: #{}.
+
 
 %% Example:
 %% update_backup_plan_output() :: #{
@@ -2123,12 +2342,558 @@
 %% }
 -type update_backup_plan_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_restore_validation_result_input() :: #{
 %%   <<"ValidationStatus">> := list(any()),
 %%   <<"ValidationStatusMessage">> => string()
 %% }
 -type put_restore_validation_result_input() :: #{binary() => any()}.
+
+-type cancel_legal_hold_errors() ::
+    invalid_resource_state_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type create_backup_plan_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    already_exists_exception() | 
+    missing_parameter_value_exception().
+
+-type create_backup_selection_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    already_exists_exception() | 
+    missing_parameter_value_exception().
+
+-type create_backup_vault_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    already_exists_exception() | 
+    missing_parameter_value_exception().
+
+-type create_framework_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    already_exists_exception() | 
+    missing_parameter_value_exception().
+
+-type create_legal_hold_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    missing_parameter_value_exception().
+
+-type create_logically_air_gapped_backup_vault_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    already_exists_exception() | 
+    missing_parameter_value_exception().
+
+-type create_report_plan_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    already_exists_exception() | 
+    missing_parameter_value_exception().
+
+-type create_restore_testing_plan_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    conflict_exception() | 
+    already_exists_exception() | 
+    missing_parameter_value_exception().
+
+-type create_restore_testing_selection_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    already_exists_exception() | 
+    missing_parameter_value_exception().
+
+-type delete_backup_plan_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type delete_backup_selection_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type delete_backup_vault_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type delete_backup_vault_access_policy_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type delete_backup_vault_lock_configuration_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type delete_backup_vault_notifications_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type delete_framework_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    missing_parameter_value_exception().
+
+-type delete_recovery_point_errors() ::
+    invalid_resource_state_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type delete_report_plan_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    missing_parameter_value_exception().
+
+-type delete_restore_testing_plan_errors() ::
+    service_unavailable_exception() | 
+    invalid_request_exception().
+
+-type delete_restore_testing_selection_errors() ::
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type describe_backup_job_errors() ::
+    service_unavailable_exception() | 
+    dependency_failure_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type describe_backup_vault_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type describe_copy_job_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type describe_framework_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type describe_global_settings_errors() ::
+    service_unavailable_exception() | 
+    invalid_request_exception().
+
+-type describe_protected_resource_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type describe_recovery_point_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type describe_region_settings_errors() ::
+    service_unavailable_exception().
+
+-type describe_report_job_errors() ::
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type describe_report_plan_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type describe_restore_job_errors() ::
+    service_unavailable_exception() | 
+    dependency_failure_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type disassociate_recovery_point_errors() ::
+    invalid_resource_state_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type disassociate_recovery_point_from_parent_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type export_backup_plan_template_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type get_backup_plan_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type get_backup_plan_from_json_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    missing_parameter_value_exception().
+
+-type get_backup_plan_from_template_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type get_backup_selection_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type get_backup_vault_access_policy_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type get_backup_vault_notifications_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type get_legal_hold_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type get_recovery_point_restore_metadata_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type get_restore_job_metadata_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type get_restore_testing_inferred_metadata_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type get_restore_testing_plan_errors() ::
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type get_restore_testing_selection_errors() ::
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type get_supported_resource_types_errors() ::
+    service_unavailable_exception().
+
+-type list_backup_job_summaries_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception().
+
+-type list_backup_jobs_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception().
+
+-type list_backup_plan_templates_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type list_backup_plan_versions_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type list_backup_plans_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type list_backup_selections_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type list_backup_vaults_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type list_copy_job_summaries_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception().
+
+-type list_copy_jobs_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception().
+
+-type list_frameworks_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception().
+
+-type list_legal_holds_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception().
+
+-type list_protected_resources_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception().
+
+-type list_protected_resources_by_backup_vault_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception().
+
+-type list_recovery_points_by_backup_vault_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type list_recovery_points_by_legal_hold_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    missing_parameter_value_exception().
+
+-type list_recovery_points_by_resource_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type list_report_jobs_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception().
+
+-type list_report_plans_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception().
+
+-type list_restore_job_summaries_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception().
+
+-type list_restore_jobs_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type list_restore_jobs_by_protected_resource_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type list_restore_testing_plans_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception().
+
+-type list_restore_testing_selections_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type put_backup_vault_access_policy_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type put_backup_vault_lock_configuration_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type put_backup_vault_notifications_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type put_restore_validation_result_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type start_backup_job_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type start_copy_job_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type start_report_job_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type start_restore_job_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type stop_backup_job_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type tag_resource_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type untag_resource_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type update_backup_plan_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type update_framework_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    already_exists_exception() | 
+    missing_parameter_value_exception().
+
+-type update_global_settings_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    missing_parameter_value_exception().
+
+-type update_recovery_point_lifecycle_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type update_region_settings_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    missing_parameter_value_exception().
+
+-type update_report_plan_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    missing_parameter_value_exception().
+
+-type update_restore_testing_plan_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    missing_parameter_value_exception().
+
+-type update_restore_testing_selection_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    missing_parameter_value_exception().
 
 %%====================================================================
 %% API
@@ -2140,22 +2905,14 @@
 -spec cancel_legal_hold(map(), binary() | list(), cancel_legal_hold_input()) ->
     {ok, cancel_legal_hold_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, cancel_legal_hold_errors(), tuple()}.
 cancel_legal_hold(Client, LegalHoldId, Input) ->
     cancel_legal_hold(Client, LegalHoldId, Input, []).
 
 -spec cancel_legal_hold(map(), binary() | list(), cancel_legal_hold_input(), proplists:proplist()) ->
     {ok, cancel_legal_hold_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, cancel_legal_hold_errors(), tuple()}.
 cancel_legal_hold(Client, LegalHoldId, Input0, Options0) ->
     Method = delete,
     Path = ["/legal-holds/", aws_util:encode_uri(LegalHoldId), ""],
@@ -2192,22 +2949,14 @@ cancel_legal_hold(Client, LegalHoldId, Input0, Options0) ->
 -spec create_backup_plan(map(), create_backup_plan_input()) ->
     {ok, create_backup_plan_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_backup_plan_errors(), tuple()}.
 create_backup_plan(Client, Input) ->
     create_backup_plan(Client, Input, []).
 
 -spec create_backup_plan(map(), create_backup_plan_input(), proplists:proplist()) ->
     {ok, create_backup_plan_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_backup_plan_errors(), tuple()}.
 create_backup_plan(Client, Input0, Options0) ->
     Method = put,
     Path = ["/backup/plans"],
@@ -2238,22 +2987,14 @@ create_backup_plan(Client, Input0, Options0) ->
 -spec create_backup_selection(map(), binary() | list(), create_backup_selection_input()) ->
     {ok, create_backup_selection_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_backup_selection_errors(), tuple()}.
 create_backup_selection(Client, BackupPlanId, Input) ->
     create_backup_selection(Client, BackupPlanId, Input, []).
 
 -spec create_backup_selection(map(), binary() | list(), create_backup_selection_input(), proplists:proplist()) ->
     {ok, create_backup_selection_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_backup_selection_errors(), tuple()}.
 create_backup_selection(Client, BackupPlanId, Input0, Options0) ->
     Method = put,
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/selections"],
@@ -2289,22 +3030,14 @@ create_backup_selection(Client, BackupPlanId, Input0, Options0) ->
 -spec create_backup_vault(map(), binary() | list(), create_backup_vault_input()) ->
     {ok, create_backup_vault_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_backup_vault_errors(), tuple()}.
 create_backup_vault(Client, BackupVaultName, Input) ->
     create_backup_vault(Client, BackupVaultName, Input, []).
 
 -spec create_backup_vault(map(), binary() | list(), create_backup_vault_input(), proplists:proplist()) ->
     {ok, create_backup_vault_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_backup_vault_errors(), tuple()}.
 create_backup_vault(Client, BackupVaultName, Input0, Options0) ->
     Method = put,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), ""],
@@ -2338,22 +3071,14 @@ create_backup_vault(Client, BackupVaultName, Input0, Options0) ->
 -spec create_framework(map(), create_framework_input()) ->
     {ok, create_framework_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_framework_errors(), tuple()}.
 create_framework(Client, Input) ->
     create_framework(Client, Input, []).
 
 -spec create_framework(map(), create_framework_input(), proplists:proplist()) ->
     {ok, create_framework_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_framework_errors(), tuple()}.
 create_framework(Client, Input0, Options0) ->
     Method = post,
     Path = ["/audit/frameworks"],
@@ -2387,20 +3112,14 @@ create_framework(Client, Input0, Options0) ->
 -spec create_legal_hold(map(), create_legal_hold_input()) ->
     {ok, create_legal_hold_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_legal_hold_errors(), tuple()}.
 create_legal_hold(Client, Input) ->
     create_legal_hold(Client, Input, []).
 
 -spec create_legal_hold(map(), create_legal_hold_input(), proplists:proplist()) ->
     {ok, create_legal_hold_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_legal_hold_errors(), tuple()}.
 create_legal_hold(Client, Input0, Options0) ->
     Method = post,
     Path = ["/legal-holds"],
@@ -2438,24 +3157,14 @@ create_legal_hold(Client, Input0, Options0) ->
 -spec create_logically_air_gapped_backup_vault(map(), binary() | list(), create_logically_air_gapped_backup_vault_input()) ->
     {ok, create_logically_air_gapped_backup_vault_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_logically_air_gapped_backup_vault_errors(), tuple()}.
 create_logically_air_gapped_backup_vault(Client, BackupVaultName, Input) ->
     create_logically_air_gapped_backup_vault(Client, BackupVaultName, Input, []).
 
 -spec create_logically_air_gapped_backup_vault(map(), binary() | list(), create_logically_air_gapped_backup_vault_input(), proplists:proplist()) ->
     {ok, create_logically_air_gapped_backup_vault_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_logically_air_gapped_backup_vault_errors(), tuple()}.
 create_logically_air_gapped_backup_vault(Client, BackupVaultName, Input0, Options0) ->
     Method = put,
     Path = ["/logically-air-gapped-backup-vaults/", aws_util:encode_uri(BackupVaultName), ""],
@@ -2489,22 +3198,14 @@ create_logically_air_gapped_backup_vault(Client, BackupVaultName, Input0, Option
 -spec create_report_plan(map(), create_report_plan_input()) ->
     {ok, create_report_plan_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_report_plan_errors(), tuple()}.
 create_report_plan(Client, Input) ->
     create_report_plan(Client, Input, []).
 
 -spec create_report_plan(map(), create_report_plan_input(), proplists:proplist()) ->
     {ok, create_report_plan_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_report_plan_errors(), tuple()}.
 create_report_plan(Client, Input0, Options0) ->
     Method = post,
     Path = ["/audit/report-plans"],
@@ -2536,24 +3237,14 @@ create_report_plan(Client, Input0, Options0) ->
 -spec create_restore_testing_plan(map(), create_restore_testing_plan_input()) ->
     {ok, create_restore_testing_plan_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_restore_testing_plan_errors(), tuple()}.
 create_restore_testing_plan(Client, Input) ->
     create_restore_testing_plan(Client, Input, []).
 
 -spec create_restore_testing_plan(map(), create_restore_testing_plan_input(), proplists:proplist()) ->
     {ok, create_restore_testing_plan_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_restore_testing_plan_errors(), tuple()}.
 create_restore_testing_plan(Client, Input0, Options0) ->
     Method = put,
     Path = ["/restore-testing/plans"],
@@ -2603,24 +3294,14 @@ create_restore_testing_plan(Client, Input0, Options0) ->
 -spec create_restore_testing_selection(map(), binary() | list(), create_restore_testing_selection_input()) ->
     {ok, create_restore_testing_selection_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_restore_testing_selection_errors(), tuple()}.
 create_restore_testing_selection(Client, RestoreTestingPlanName, Input) ->
     create_restore_testing_selection(Client, RestoreTestingPlanName, Input, []).
 
 -spec create_restore_testing_selection(map(), binary() | list(), create_restore_testing_selection_input(), proplists:proplist()) ->
     {ok, create_restore_testing_selection_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_restore_testing_selection_errors(), tuple()}.
 create_restore_testing_selection(Client, RestoreTestingPlanName, Input0, Options0) ->
     Method = put,
     Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), "/selections"],
@@ -2652,22 +3333,14 @@ create_restore_testing_selection(Client, RestoreTestingPlanName, Input0, Options
 -spec delete_backup_plan(map(), binary() | list(), delete_backup_plan_input()) ->
     {ok, delete_backup_plan_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_backup_plan_errors(), tuple()}.
 delete_backup_plan(Client, BackupPlanId, Input) ->
     delete_backup_plan(Client, BackupPlanId, Input, []).
 
 -spec delete_backup_plan(map(), binary() | list(), delete_backup_plan_input(), proplists:proplist()) ->
     {ok, delete_backup_plan_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_backup_plan_errors(), tuple()}.
 delete_backup_plan(Client, BackupPlanId, Input0, Options0) ->
     Method = delete,
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), ""],
@@ -2696,20 +3369,14 @@ delete_backup_plan(Client, BackupPlanId, Input0, Options0) ->
 -spec delete_backup_selection(map(), binary() | list(), binary() | list(), delete_backup_selection_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_backup_selection_errors(), tuple()}.
 delete_backup_selection(Client, BackupPlanId, SelectionId, Input) ->
     delete_backup_selection(Client, BackupPlanId, SelectionId, Input, []).
 
 -spec delete_backup_selection(map(), binary() | list(), binary() | list(), delete_backup_selection_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_backup_selection_errors(), tuple()}.
 delete_backup_selection(Client, BackupPlanId, SelectionId, Input0, Options0) ->
     Method = delete,
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/selections/", aws_util:encode_uri(SelectionId), ""],
@@ -2739,22 +3406,14 @@ delete_backup_selection(Client, BackupPlanId, SelectionId, Input0, Options0) ->
 -spec delete_backup_vault(map(), binary() | list(), delete_backup_vault_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_backup_vault_errors(), tuple()}.
 delete_backup_vault(Client, BackupVaultName, Input) ->
     delete_backup_vault(Client, BackupVaultName, Input, []).
 
 -spec delete_backup_vault(map(), binary() | list(), delete_backup_vault_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_backup_vault_errors(), tuple()}.
 delete_backup_vault(Client, BackupVaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), ""],
@@ -2782,20 +3441,14 @@ delete_backup_vault(Client, BackupVaultName, Input0, Options0) ->
 -spec delete_backup_vault_access_policy(map(), binary() | list(), delete_backup_vault_access_policy_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_backup_vault_access_policy_errors(), tuple()}.
 delete_backup_vault_access_policy(Client, BackupVaultName, Input) ->
     delete_backup_vault_access_policy(Client, BackupVaultName, Input, []).
 
 -spec delete_backup_vault_access_policy(map(), binary() | list(), delete_backup_vault_access_policy_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_backup_vault_access_policy_errors(), tuple()}.
 delete_backup_vault_access_policy(Client, BackupVaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/access-policy"],
@@ -2833,22 +3486,14 @@ delete_backup_vault_access_policy(Client, BackupVaultName, Input0, Options0) ->
 -spec delete_backup_vault_lock_configuration(map(), binary() | list(), delete_backup_vault_lock_configuration_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_backup_vault_lock_configuration_errors(), tuple()}.
 delete_backup_vault_lock_configuration(Client, BackupVaultName, Input) ->
     delete_backup_vault_lock_configuration(Client, BackupVaultName, Input, []).
 
 -spec delete_backup_vault_lock_configuration(map(), binary() | list(), delete_backup_vault_lock_configuration_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_backup_vault_lock_configuration_errors(), tuple()}.
 delete_backup_vault_lock_configuration(Client, BackupVaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/vault-lock"],
@@ -2875,20 +3520,14 @@ delete_backup_vault_lock_configuration(Client, BackupVaultName, Input0, Options0
 -spec delete_backup_vault_notifications(map(), binary() | list(), delete_backup_vault_notifications_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_backup_vault_notifications_errors(), tuple()}.
 delete_backup_vault_notifications(Client, BackupVaultName, Input) ->
     delete_backup_vault_notifications(Client, BackupVaultName, Input, []).
 
 -spec delete_backup_vault_notifications(map(), binary() | list(), delete_backup_vault_notifications_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_backup_vault_notifications_errors(), tuple()}.
 delete_backup_vault_notifications(Client, BackupVaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/notification-configuration"],
@@ -2915,22 +3554,14 @@ delete_backup_vault_notifications(Client, BackupVaultName, Input0, Options0) ->
 -spec delete_framework(map(), binary() | list(), delete_framework_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_framework_errors(), tuple()}.
 delete_framework(Client, FrameworkName, Input) ->
     delete_framework(Client, FrameworkName, Input, []).
 
 -spec delete_framework(map(), binary() | list(), delete_framework_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_framework_errors(), tuple()}.
 delete_framework(Client, FrameworkName, Input0, Options0) ->
     Method = delete,
     Path = ["/audit/frameworks/", aws_util:encode_uri(FrameworkName), ""],
@@ -2979,24 +3610,14 @@ delete_framework(Client, FrameworkName, Input0, Options0) ->
 -spec delete_recovery_point(map(), binary() | list(), binary() | list(), delete_recovery_point_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_recovery_point_errors(), tuple()}.
 delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input) ->
     delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input, []).
 
 -spec delete_recovery_point(map(), binary() | list(), binary() | list(), delete_recovery_point_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_recovery_point_errors(), tuple()}.
 delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input0, Options0) ->
     Method = delete,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), ""],
@@ -3023,22 +3644,14 @@ delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input0, Options
 -spec delete_report_plan(map(), binary() | list(), delete_report_plan_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_report_plan_errors(), tuple()}.
 delete_report_plan(Client, ReportPlanName, Input) ->
     delete_report_plan(Client, ReportPlanName, Input, []).
 
 -spec delete_report_plan(map(), binary() | list(), delete_report_plan_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_report_plan_errors(), tuple()}.
 delete_report_plan(Client, ReportPlanName, Input0, Options0) ->
     Method = delete,
     Path = ["/audit/report-plans/", aws_util:encode_uri(ReportPlanName), ""],
@@ -3068,16 +3681,14 @@ delete_report_plan(Client, ReportPlanName, Input0, Options0) ->
 -spec delete_restore_testing_plan(map(), binary() | list(), delete_restore_testing_plan_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_restore_testing_plan_errors(), tuple()}.
 delete_restore_testing_plan(Client, RestoreTestingPlanName, Input) ->
     delete_restore_testing_plan(Client, RestoreTestingPlanName, Input, []).
 
 -spec delete_restore_testing_plan(map(), binary() | list(), delete_restore_testing_plan_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_restore_testing_plan_errors(), tuple()}.
 delete_restore_testing_plan(Client, RestoreTestingPlanName, Input0, Options0) ->
     Method = delete,
     Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), ""],
@@ -3108,16 +3719,14 @@ delete_restore_testing_plan(Client, RestoreTestingPlanName, Input0, Options0) ->
 -spec delete_restore_testing_selection(map(), binary() | list(), binary() | list(), delete_restore_testing_selection_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_restore_testing_selection_errors(), tuple()}.
 delete_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, Input) ->
     delete_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, Input, []).
 
 -spec delete_restore_testing_selection(map(), binary() | list(), binary() | list(), delete_restore_testing_selection_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_restore_testing_selection_errors(), tuple()}.
 delete_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, Input0, Options0) ->
     Method = delete,
     Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), "/selections/", aws_util:encode_uri(RestoreTestingSelectionName), ""],
@@ -3144,11 +3753,7 @@ delete_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingS
 -spec describe_backup_job(map(), binary() | list()) ->
     {ok, describe_backup_job_output(), tuple()} |
     {error, any()} |
-    {error, dependency_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_backup_job_errors(), tuple()}.
 describe_backup_job(Client, BackupJobId)
   when is_map(Client) ->
     describe_backup_job(Client, BackupJobId, #{}, #{}).
@@ -3156,11 +3761,7 @@ describe_backup_job(Client, BackupJobId)
 -spec describe_backup_job(map(), binary() | list(), map(), map()) ->
     {ok, describe_backup_job_output(), tuple()} |
     {error, any()} |
-    {error, dependency_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_backup_job_errors(), tuple()}.
 describe_backup_job(Client, BackupJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_backup_job(Client, BackupJobId, QueryMap, HeadersMap, []).
@@ -3168,11 +3769,7 @@ describe_backup_job(Client, BackupJobId, QueryMap, HeadersMap)
 -spec describe_backup_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_backup_job_output(), tuple()} |
     {error, any()} |
-    {error, dependency_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_backup_job_errors(), tuple()}.
 describe_backup_job(Client, BackupJobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-jobs/", aws_util:encode_uri(BackupJobId), ""],
@@ -3193,10 +3790,7 @@ describe_backup_job(Client, BackupJobId, QueryMap, HeadersMap, Options0)
 -spec describe_backup_vault(map(), binary() | list()) ->
     {ok, describe_backup_vault_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_backup_vault_errors(), tuple()}.
 describe_backup_vault(Client, BackupVaultName)
   when is_map(Client) ->
     describe_backup_vault(Client, BackupVaultName, #{}, #{}).
@@ -3204,10 +3798,7 @@ describe_backup_vault(Client, BackupVaultName)
 -spec describe_backup_vault(map(), binary() | list(), map(), map()) ->
     {ok, describe_backup_vault_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_backup_vault_errors(), tuple()}.
 describe_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, []).
@@ -3215,10 +3806,7 @@ describe_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap)
 -spec describe_backup_vault(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_backup_vault_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_backup_vault_errors(), tuple()}.
 describe_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), ""],
@@ -3243,10 +3831,7 @@ describe_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, Options0)
 -spec describe_copy_job(map(), binary() | list()) ->
     {ok, describe_copy_job_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_copy_job_errors(), tuple()}.
 describe_copy_job(Client, CopyJobId)
   when is_map(Client) ->
     describe_copy_job(Client, CopyJobId, #{}, #{}).
@@ -3254,10 +3839,7 @@ describe_copy_job(Client, CopyJobId)
 -spec describe_copy_job(map(), binary() | list(), map(), map()) ->
     {ok, describe_copy_job_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_copy_job_errors(), tuple()}.
 describe_copy_job(Client, CopyJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_copy_job(Client, CopyJobId, QueryMap, HeadersMap, []).
@@ -3265,10 +3847,7 @@ describe_copy_job(Client, CopyJobId, QueryMap, HeadersMap)
 -spec describe_copy_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_copy_job_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_copy_job_errors(), tuple()}.
 describe_copy_job(Client, CopyJobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/copy-jobs/", aws_util:encode_uri(CopyJobId), ""],
@@ -3289,10 +3868,7 @@ describe_copy_job(Client, CopyJobId, QueryMap, HeadersMap, Options0)
 -spec describe_framework(map(), binary() | list()) ->
     {ok, describe_framework_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_framework_errors(), tuple()}.
 describe_framework(Client, FrameworkName)
   when is_map(Client) ->
     describe_framework(Client, FrameworkName, #{}, #{}).
@@ -3300,10 +3876,7 @@ describe_framework(Client, FrameworkName)
 -spec describe_framework(map(), binary() | list(), map(), map()) ->
     {ok, describe_framework_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_framework_errors(), tuple()}.
 describe_framework(Client, FrameworkName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_framework(Client, FrameworkName, QueryMap, HeadersMap, []).
@@ -3311,10 +3884,7 @@ describe_framework(Client, FrameworkName, QueryMap, HeadersMap)
 -spec describe_framework(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_framework_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_framework_errors(), tuple()}.
 describe_framework(Client, FrameworkName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/frameworks/", aws_util:encode_uri(FrameworkName), ""],
@@ -3340,8 +3910,7 @@ describe_framework(Client, FrameworkName, QueryMap, HeadersMap, Options0)
 -spec describe_global_settings(map()) ->
     {ok, describe_global_settings_output(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_global_settings_errors(), tuple()}.
 describe_global_settings(Client)
   when is_map(Client) ->
     describe_global_settings(Client, #{}, #{}).
@@ -3349,8 +3918,7 @@ describe_global_settings(Client)
 -spec describe_global_settings(map(), map(), map()) ->
     {ok, describe_global_settings_output(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_global_settings_errors(), tuple()}.
 describe_global_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_global_settings(Client, QueryMap, HeadersMap, []).
@@ -3358,8 +3926,7 @@ describe_global_settings(Client, QueryMap, HeadersMap)
 -spec describe_global_settings(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_global_settings_output(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_global_settings_errors(), tuple()}.
 describe_global_settings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-settings"],
@@ -3384,10 +3951,7 @@ describe_global_settings(Client, QueryMap, HeadersMap, Options0)
 -spec describe_protected_resource(map(), binary() | list()) ->
     {ok, describe_protected_resource_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_protected_resource_errors(), tuple()}.
 describe_protected_resource(Client, ResourceArn)
   when is_map(Client) ->
     describe_protected_resource(Client, ResourceArn, #{}, #{}).
@@ -3395,10 +3959,7 @@ describe_protected_resource(Client, ResourceArn)
 -spec describe_protected_resource(map(), binary() | list(), map(), map()) ->
     {ok, describe_protected_resource_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_protected_resource_errors(), tuple()}.
 describe_protected_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_protected_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -3406,10 +3967,7 @@ describe_protected_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec describe_protected_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_protected_resource_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_protected_resource_errors(), tuple()}.
 describe_protected_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resources/", aws_util:encode_uri(ResourceArn), ""],
@@ -3432,10 +3990,7 @@ describe_protected_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec describe_recovery_point(map(), binary() | list(), binary() | list()) ->
     {ok, describe_recovery_point_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_recovery_point_errors(), tuple()}.
 describe_recovery_point(Client, BackupVaultName, RecoveryPointArn)
   when is_map(Client) ->
     describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, #{}, #{}).
@@ -3443,10 +3998,7 @@ describe_recovery_point(Client, BackupVaultName, RecoveryPointArn)
 -spec describe_recovery_point(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_recovery_point_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_recovery_point_errors(), tuple()}.
 describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap, []).
@@ -3454,10 +4006,7 @@ describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, QueryMap, Hea
 -spec describe_recovery_point(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_recovery_point_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_recovery_point_errors(), tuple()}.
 describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), ""],
@@ -3490,7 +4039,7 @@ describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, QueryMap, Hea
 -spec describe_region_settings(map()) ->
     {ok, describe_region_settings_output(), tuple()} |
     {error, any()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_region_settings_errors(), tuple()}.
 describe_region_settings(Client)
   when is_map(Client) ->
     describe_region_settings(Client, #{}, #{}).
@@ -3498,7 +4047,7 @@ describe_region_settings(Client)
 -spec describe_region_settings(map(), map(), map()) ->
     {ok, describe_region_settings_output(), tuple()} |
     {error, any()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_region_settings_errors(), tuple()}.
 describe_region_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_region_settings(Client, QueryMap, HeadersMap, []).
@@ -3506,7 +4055,7 @@ describe_region_settings(Client, QueryMap, HeadersMap)
 -spec describe_region_settings(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_region_settings_output(), tuple()} |
     {error, any()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_region_settings_errors(), tuple()}.
 describe_region_settings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/account-settings"],
@@ -3529,9 +4078,7 @@ describe_region_settings(Client, QueryMap, HeadersMap, Options0)
 -spec describe_report_job(map(), binary() | list()) ->
     {ok, describe_report_job_output(), tuple()} |
     {error, any()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_report_job_errors(), tuple()}.
 describe_report_job(Client, ReportJobId)
   when is_map(Client) ->
     describe_report_job(Client, ReportJobId, #{}, #{}).
@@ -3539,9 +4086,7 @@ describe_report_job(Client, ReportJobId)
 -spec describe_report_job(map(), binary() | list(), map(), map()) ->
     {ok, describe_report_job_output(), tuple()} |
     {error, any()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_report_job_errors(), tuple()}.
 describe_report_job(Client, ReportJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_report_job(Client, ReportJobId, QueryMap, HeadersMap, []).
@@ -3549,9 +4094,7 @@ describe_report_job(Client, ReportJobId, QueryMap, HeadersMap)
 -spec describe_report_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_report_job_output(), tuple()} |
     {error, any()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_report_job_errors(), tuple()}.
 describe_report_job(Client, ReportJobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/report-jobs/", aws_util:encode_uri(ReportJobId), ""],
@@ -3573,10 +4116,7 @@ describe_report_job(Client, ReportJobId, QueryMap, HeadersMap, Options0)
 -spec describe_report_plan(map(), binary() | list()) ->
     {ok, describe_report_plan_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_report_plan_errors(), tuple()}.
 describe_report_plan(Client, ReportPlanName)
   when is_map(Client) ->
     describe_report_plan(Client, ReportPlanName, #{}, #{}).
@@ -3584,10 +4124,7 @@ describe_report_plan(Client, ReportPlanName)
 -spec describe_report_plan(map(), binary() | list(), map(), map()) ->
     {ok, describe_report_plan_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_report_plan_errors(), tuple()}.
 describe_report_plan(Client, ReportPlanName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_report_plan(Client, ReportPlanName, QueryMap, HeadersMap, []).
@@ -3595,10 +4132,7 @@ describe_report_plan(Client, ReportPlanName, QueryMap, HeadersMap)
 -spec describe_report_plan(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_report_plan_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_report_plan_errors(), tuple()}.
 describe_report_plan(Client, ReportPlanName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/report-plans/", aws_util:encode_uri(ReportPlanName), ""],
@@ -3620,11 +4154,7 @@ describe_report_plan(Client, ReportPlanName, QueryMap, HeadersMap, Options0)
 -spec describe_restore_job(map(), binary() | list()) ->
     {ok, describe_restore_job_output(), tuple()} |
     {error, any()} |
-    {error, dependency_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_restore_job_errors(), tuple()}.
 describe_restore_job(Client, RestoreJobId)
   when is_map(Client) ->
     describe_restore_job(Client, RestoreJobId, #{}, #{}).
@@ -3632,11 +4162,7 @@ describe_restore_job(Client, RestoreJobId)
 -spec describe_restore_job(map(), binary() | list(), map(), map()) ->
     {ok, describe_restore_job_output(), tuple()} |
     {error, any()} |
-    {error, dependency_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_restore_job_errors(), tuple()}.
 describe_restore_job(Client, RestoreJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_restore_job(Client, RestoreJobId, QueryMap, HeadersMap, []).
@@ -3644,11 +4170,7 @@ describe_restore_job(Client, RestoreJobId, QueryMap, HeadersMap)
 -spec describe_restore_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_restore_job_output(), tuple()} |
     {error, any()} |
-    {error, dependency_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_restore_job_errors(), tuple()}.
 describe_restore_job(Client, RestoreJobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restore-jobs/", aws_util:encode_uri(RestoreJobId), ""],
@@ -3678,24 +4200,14 @@ describe_restore_job(Client, RestoreJobId, QueryMap, HeadersMap, Options0)
 -spec disassociate_recovery_point(map(), binary() | list(), binary() | list(), disassociate_recovery_point_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, disassociate_recovery_point_errors(), tuple()}.
 disassociate_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input) ->
     disassociate_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input, []).
 
 -spec disassociate_recovery_point(map(), binary() | list(), binary() | list(), disassociate_recovery_point_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, disassociate_recovery_point_errors(), tuple()}.
 disassociate_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input0, Options0) ->
     Method = post,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), "/disassociate"],
@@ -3725,22 +4237,14 @@ disassociate_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input0, O
 -spec disassociate_recovery_point_from_parent(map(), binary() | list(), binary() | list(), disassociate_recovery_point_from_parent_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, disassociate_recovery_point_from_parent_errors(), tuple()}.
 disassociate_recovery_point_from_parent(Client, BackupVaultName, RecoveryPointArn, Input) ->
     disassociate_recovery_point_from_parent(Client, BackupVaultName, RecoveryPointArn, Input, []).
 
 -spec disassociate_recovery_point_from_parent(map(), binary() | list(), binary() | list(), disassociate_recovery_point_from_parent_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, disassociate_recovery_point_from_parent_errors(), tuple()}.
 disassociate_recovery_point_from_parent(Client, BackupVaultName, RecoveryPointArn, Input0, Options0) ->
     Method = delete,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), "/parentAssociation"],
@@ -3768,10 +4272,7 @@ disassociate_recovery_point_from_parent(Client, BackupVaultName, RecoveryPointAr
 -spec export_backup_plan_template(map(), binary() | list()) ->
     {ok, export_backup_plan_template_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, export_backup_plan_template_errors(), tuple()}.
 export_backup_plan_template(Client, BackupPlanId)
   when is_map(Client) ->
     export_backup_plan_template(Client, BackupPlanId, #{}, #{}).
@@ -3779,10 +4280,7 @@ export_backup_plan_template(Client, BackupPlanId)
 -spec export_backup_plan_template(map(), binary() | list(), map(), map()) ->
     {ok, export_backup_plan_template_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, export_backup_plan_template_errors(), tuple()}.
 export_backup_plan_template(Client, BackupPlanId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     export_backup_plan_template(Client, BackupPlanId, QueryMap, HeadersMap, []).
@@ -3790,10 +4288,7 @@ export_backup_plan_template(Client, BackupPlanId, QueryMap, HeadersMap)
 -spec export_backup_plan_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, export_backup_plan_template_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, export_backup_plan_template_errors(), tuple()}.
 export_backup_plan_template(Client, BackupPlanId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/toTemplate"],
@@ -3819,10 +4314,7 @@ export_backup_plan_template(Client, BackupPlanId, QueryMap, HeadersMap, Options0
 -spec get_backup_plan(map(), binary() | list()) ->
     {ok, get_backup_plan_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_backup_plan_errors(), tuple()}.
 get_backup_plan(Client, BackupPlanId)
   when is_map(Client) ->
     get_backup_plan(Client, BackupPlanId, #{}, #{}).
@@ -3830,10 +4322,7 @@ get_backup_plan(Client, BackupPlanId)
 -spec get_backup_plan(map(), binary() | list(), map(), map()) ->
     {ok, get_backup_plan_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_backup_plan_errors(), tuple()}.
 get_backup_plan(Client, BackupPlanId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_backup_plan(Client, BackupPlanId, QueryMap, HeadersMap, []).
@@ -3841,10 +4330,7 @@ get_backup_plan(Client, BackupPlanId, QueryMap, HeadersMap)
 -spec get_backup_plan(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_backup_plan_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_backup_plan_errors(), tuple()}.
 get_backup_plan(Client, BackupPlanId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), ""],
@@ -3869,22 +4355,14 @@ get_backup_plan(Client, BackupPlanId, QueryMap, HeadersMap, Options0)
 -spec get_backup_plan_from_json(map(), get_backup_plan_from_json_input()) ->
     {ok, get_backup_plan_from_json_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_backup_plan_from_json_errors(), tuple()}.
 get_backup_plan_from_json(Client, Input) ->
     get_backup_plan_from_json(Client, Input, []).
 
 -spec get_backup_plan_from_json(map(), get_backup_plan_from_json_input(), proplists:proplist()) ->
     {ok, get_backup_plan_from_json_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_backup_plan_from_json_errors(), tuple()}.
 get_backup_plan_from_json(Client, Input0, Options0) ->
     Method = post,
     Path = ["/backup/template/json/toPlan"],
@@ -3912,10 +4390,7 @@ get_backup_plan_from_json(Client, Input0, Options0) ->
 -spec get_backup_plan_from_template(map(), binary() | list()) ->
     {ok, get_backup_plan_from_template_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_backup_plan_from_template_errors(), tuple()}.
 get_backup_plan_from_template(Client, BackupPlanTemplateId)
   when is_map(Client) ->
     get_backup_plan_from_template(Client, BackupPlanTemplateId, #{}, #{}).
@@ -3923,10 +4398,7 @@ get_backup_plan_from_template(Client, BackupPlanTemplateId)
 -spec get_backup_plan_from_template(map(), binary() | list(), map(), map()) ->
     {ok, get_backup_plan_from_template_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_backup_plan_from_template_errors(), tuple()}.
 get_backup_plan_from_template(Client, BackupPlanTemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_backup_plan_from_template(Client, BackupPlanTemplateId, QueryMap, HeadersMap, []).
@@ -3934,10 +4406,7 @@ get_backup_plan_from_template(Client, BackupPlanTemplateId, QueryMap, HeadersMap
 -spec get_backup_plan_from_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_backup_plan_from_template_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_backup_plan_from_template_errors(), tuple()}.
 get_backup_plan_from_template(Client, BackupPlanTemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup/template/plans/", aws_util:encode_uri(BackupPlanTemplateId), "/toPlan"],
@@ -3960,10 +4429,7 @@ get_backup_plan_from_template(Client, BackupPlanTemplateId, QueryMap, HeadersMap
 -spec get_backup_selection(map(), binary() | list(), binary() | list()) ->
     {ok, get_backup_selection_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_backup_selection_errors(), tuple()}.
 get_backup_selection(Client, BackupPlanId, SelectionId)
   when is_map(Client) ->
     get_backup_selection(Client, BackupPlanId, SelectionId, #{}, #{}).
@@ -3971,10 +4437,7 @@ get_backup_selection(Client, BackupPlanId, SelectionId)
 -spec get_backup_selection(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_backup_selection_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_backup_selection_errors(), tuple()}.
 get_backup_selection(Client, BackupPlanId, SelectionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_backup_selection(Client, BackupPlanId, SelectionId, QueryMap, HeadersMap, []).
@@ -3982,10 +4445,7 @@ get_backup_selection(Client, BackupPlanId, SelectionId, QueryMap, HeadersMap)
 -spec get_backup_selection(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_backup_selection_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_backup_selection_errors(), tuple()}.
 get_backup_selection(Client, BackupPlanId, SelectionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/selections/", aws_util:encode_uri(SelectionId), ""],
@@ -4008,10 +4468,7 @@ get_backup_selection(Client, BackupPlanId, SelectionId, QueryMap, HeadersMap, Op
 -spec get_backup_vault_access_policy(map(), binary() | list()) ->
     {ok, get_backup_vault_access_policy_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_backup_vault_access_policy_errors(), tuple()}.
 get_backup_vault_access_policy(Client, BackupVaultName)
   when is_map(Client) ->
     get_backup_vault_access_policy(Client, BackupVaultName, #{}, #{}).
@@ -4019,10 +4476,7 @@ get_backup_vault_access_policy(Client, BackupVaultName)
 -spec get_backup_vault_access_policy(map(), binary() | list(), map(), map()) ->
     {ok, get_backup_vault_access_policy_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_backup_vault_access_policy_errors(), tuple()}.
 get_backup_vault_access_policy(Client, BackupVaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_backup_vault_access_policy(Client, BackupVaultName, QueryMap, HeadersMap, []).
@@ -4030,10 +4484,7 @@ get_backup_vault_access_policy(Client, BackupVaultName, QueryMap, HeadersMap)
 -spec get_backup_vault_access_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_backup_vault_access_policy_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_backup_vault_access_policy_errors(), tuple()}.
 get_backup_vault_access_policy(Client, BackupVaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/access-policy"],
@@ -4054,10 +4505,7 @@ get_backup_vault_access_policy(Client, BackupVaultName, QueryMap, HeadersMap, Op
 -spec get_backup_vault_notifications(map(), binary() | list()) ->
     {ok, get_backup_vault_notifications_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_backup_vault_notifications_errors(), tuple()}.
 get_backup_vault_notifications(Client, BackupVaultName)
   when is_map(Client) ->
     get_backup_vault_notifications(Client, BackupVaultName, #{}, #{}).
@@ -4065,10 +4513,7 @@ get_backup_vault_notifications(Client, BackupVaultName)
 -spec get_backup_vault_notifications(map(), binary() | list(), map(), map()) ->
     {ok, get_backup_vault_notifications_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_backup_vault_notifications_errors(), tuple()}.
 get_backup_vault_notifications(Client, BackupVaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_backup_vault_notifications(Client, BackupVaultName, QueryMap, HeadersMap, []).
@@ -4076,10 +4521,7 @@ get_backup_vault_notifications(Client, BackupVaultName, QueryMap, HeadersMap)
 -spec get_backup_vault_notifications(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_backup_vault_notifications_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_backup_vault_notifications_errors(), tuple()}.
 get_backup_vault_notifications(Client, BackupVaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/notification-configuration"],
@@ -4103,10 +4545,7 @@ get_backup_vault_notifications(Client, BackupVaultName, QueryMap, HeadersMap, Op
 -spec get_legal_hold(map(), binary() | list()) ->
     {ok, get_legal_hold_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_legal_hold_errors(), tuple()}.
 get_legal_hold(Client, LegalHoldId)
   when is_map(Client) ->
     get_legal_hold(Client, LegalHoldId, #{}, #{}).
@@ -4114,10 +4553,7 @@ get_legal_hold(Client, LegalHoldId)
 -spec get_legal_hold(map(), binary() | list(), map(), map()) ->
     {ok, get_legal_hold_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_legal_hold_errors(), tuple()}.
 get_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap, []).
@@ -4125,10 +4561,7 @@ get_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap)
 -spec get_legal_hold(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_legal_hold_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_legal_hold_errors(), tuple()}.
 get_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/legal-holds/", aws_util:encode_uri(LegalHoldId), ""],
@@ -4150,10 +4583,7 @@ get_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap, Options0)
 -spec get_recovery_point_restore_metadata(map(), binary() | list(), binary() | list()) ->
     {ok, get_recovery_point_restore_metadata_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_recovery_point_restore_metadata_errors(), tuple()}.
 get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn)
   when is_map(Client) ->
     get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, #{}, #{}).
@@ -4161,10 +4591,7 @@ get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn)
 -spec get_recovery_point_restore_metadata(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_recovery_point_restore_metadata_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_recovery_point_restore_metadata_errors(), tuple()}.
 get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap, []).
@@ -4172,10 +4599,7 @@ get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, Q
 -spec get_recovery_point_restore_metadata(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_recovery_point_restore_metadata_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_recovery_point_restore_metadata_errors(), tuple()}.
 get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), "/restore-metadata"],
@@ -4200,10 +4624,7 @@ get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, Q
 -spec get_restore_job_metadata(map(), binary() | list()) ->
     {ok, get_restore_job_metadata_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_restore_job_metadata_errors(), tuple()}.
 get_restore_job_metadata(Client, RestoreJobId)
   when is_map(Client) ->
     get_restore_job_metadata(Client, RestoreJobId, #{}, #{}).
@@ -4211,10 +4632,7 @@ get_restore_job_metadata(Client, RestoreJobId)
 -spec get_restore_job_metadata(map(), binary() | list(), map(), map()) ->
     {ok, get_restore_job_metadata_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_restore_job_metadata_errors(), tuple()}.
 get_restore_job_metadata(Client, RestoreJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_restore_job_metadata(Client, RestoreJobId, QueryMap, HeadersMap, []).
@@ -4222,10 +4640,7 @@ get_restore_job_metadata(Client, RestoreJobId, QueryMap, HeadersMap)
 -spec get_restore_job_metadata(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_restore_job_metadata_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_restore_job_metadata_errors(), tuple()}.
 get_restore_job_metadata(Client, RestoreJobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restore-jobs/", aws_util:encode_uri(RestoreJobId), "/metadata"],
@@ -4251,10 +4666,7 @@ get_restore_job_metadata(Client, RestoreJobId, QueryMap, HeadersMap, Options0)
 -spec get_restore_testing_inferred_metadata(map(), binary() | list(), binary() | list()) ->
     {ok, get_restore_testing_inferred_metadata_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_restore_testing_inferred_metadata_errors(), tuple()}.
 get_restore_testing_inferred_metadata(Client, BackupVaultName, RecoveryPointArn)
   when is_map(Client) ->
     get_restore_testing_inferred_metadata(Client, BackupVaultName, RecoveryPointArn, #{}, #{}).
@@ -4262,10 +4674,7 @@ get_restore_testing_inferred_metadata(Client, BackupVaultName, RecoveryPointArn)
 -spec get_restore_testing_inferred_metadata(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_restore_testing_inferred_metadata_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_restore_testing_inferred_metadata_errors(), tuple()}.
 get_restore_testing_inferred_metadata(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_restore_testing_inferred_metadata(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap, []).
@@ -4273,10 +4682,7 @@ get_restore_testing_inferred_metadata(Client, BackupVaultName, RecoveryPointArn,
 -spec get_restore_testing_inferred_metadata(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_restore_testing_inferred_metadata_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_restore_testing_inferred_metadata_errors(), tuple()}.
 get_restore_testing_inferred_metadata(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restore-testing/inferred-metadata"],
@@ -4307,8 +4713,7 @@ get_restore_testing_inferred_metadata(Client, BackupVaultName, RecoveryPointArn,
 -spec get_restore_testing_plan(map(), binary() | list()) ->
     {ok, get_restore_testing_plan_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_restore_testing_plan_errors(), tuple()}.
 get_restore_testing_plan(Client, RestoreTestingPlanName)
   when is_map(Client) ->
     get_restore_testing_plan(Client, RestoreTestingPlanName, #{}, #{}).
@@ -4316,8 +4721,7 @@ get_restore_testing_plan(Client, RestoreTestingPlanName)
 -spec get_restore_testing_plan(map(), binary() | list(), map(), map()) ->
     {ok, get_restore_testing_plan_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_restore_testing_plan_errors(), tuple()}.
 get_restore_testing_plan(Client, RestoreTestingPlanName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_restore_testing_plan(Client, RestoreTestingPlanName, QueryMap, HeadersMap, []).
@@ -4325,8 +4729,7 @@ get_restore_testing_plan(Client, RestoreTestingPlanName, QueryMap, HeadersMap)
 -spec get_restore_testing_plan(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_restore_testing_plan_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_restore_testing_plan_errors(), tuple()}.
 get_restore_testing_plan(Client, RestoreTestingPlanName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), ""],
@@ -4348,8 +4751,7 @@ get_restore_testing_plan(Client, RestoreTestingPlanName, QueryMap, HeadersMap, O
 -spec get_restore_testing_selection(map(), binary() | list(), binary() | list()) ->
     {ok, get_restore_testing_selection_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_restore_testing_selection_errors(), tuple()}.
 get_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName)
   when is_map(Client) ->
     get_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, #{}, #{}).
@@ -4357,8 +4759,7 @@ get_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSele
 -spec get_restore_testing_selection(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_restore_testing_selection_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_restore_testing_selection_errors(), tuple()}.
 get_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, QueryMap, HeadersMap, []).
@@ -4366,8 +4767,7 @@ get_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSele
 -spec get_restore_testing_selection(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_restore_testing_selection_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_restore_testing_selection_errors(), tuple()}.
 get_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), "/selections/", aws_util:encode_uri(RestoreTestingSelectionName), ""],
@@ -4388,7 +4788,7 @@ get_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSele
 -spec get_supported_resource_types(map()) ->
     {ok, get_supported_resource_types_output(), tuple()} |
     {error, any()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_supported_resource_types_errors(), tuple()}.
 get_supported_resource_types(Client)
   when is_map(Client) ->
     get_supported_resource_types(Client, #{}, #{}).
@@ -4396,7 +4796,7 @@ get_supported_resource_types(Client)
 -spec get_supported_resource_types(map(), map(), map()) ->
     {ok, get_supported_resource_types_output(), tuple()} |
     {error, any()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_supported_resource_types_errors(), tuple()}.
 get_supported_resource_types(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_supported_resource_types(Client, QueryMap, HeadersMap, []).
@@ -4404,7 +4804,7 @@ get_supported_resource_types(Client, QueryMap, HeadersMap)
 -spec get_supported_resource_types(map(), map(), map(), proplists:proplist()) ->
     {ok, get_supported_resource_types_output(), tuple()} |
     {error, any()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_supported_resource_types_errors(), tuple()}.
 get_supported_resource_types(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/supported-resource-types"],
@@ -4435,8 +4835,7 @@ get_supported_resource_types(Client, QueryMap, HeadersMap, Options0)
 -spec list_backup_job_summaries(map()) ->
     {ok, list_backup_job_summaries_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_backup_job_summaries_errors(), tuple()}.
 list_backup_job_summaries(Client)
   when is_map(Client) ->
     list_backup_job_summaries(Client, #{}, #{}).
@@ -4444,8 +4843,7 @@ list_backup_job_summaries(Client)
 -spec list_backup_job_summaries(map(), map(), map()) ->
     {ok, list_backup_job_summaries_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_backup_job_summaries_errors(), tuple()}.
 list_backup_job_summaries(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_backup_job_summaries(Client, QueryMap, HeadersMap, []).
@@ -4453,8 +4851,7 @@ list_backup_job_summaries(Client, QueryMap, HeadersMap)
 -spec list_backup_job_summaries(map(), map(), map(), proplists:proplist()) ->
     {ok, list_backup_job_summaries_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_backup_job_summaries_errors(), tuple()}.
 list_backup_job_summaries(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/backup-job-summaries"],
@@ -4490,8 +4887,7 @@ list_backup_job_summaries(Client, QueryMap, HeadersMap, Options0)
 -spec list_backup_jobs(map()) ->
     {ok, list_backup_jobs_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_backup_jobs_errors(), tuple()}.
 list_backup_jobs(Client)
   when is_map(Client) ->
     list_backup_jobs(Client, #{}, #{}).
@@ -4499,8 +4895,7 @@ list_backup_jobs(Client)
 -spec list_backup_jobs(map(), map(), map()) ->
     {ok, list_backup_jobs_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_backup_jobs_errors(), tuple()}.
 list_backup_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_backup_jobs(Client, QueryMap, HeadersMap, []).
@@ -4508,8 +4903,7 @@ list_backup_jobs(Client, QueryMap, HeadersMap)
 -spec list_backup_jobs(map(), map(), map(), proplists:proplist()) ->
     {ok, list_backup_jobs_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_backup_jobs_errors(), tuple()}.
 list_backup_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-jobs"],
@@ -4548,10 +4942,7 @@ list_backup_jobs(Client, QueryMap, HeadersMap, Options0)
 -spec list_backup_plan_templates(map()) ->
     {ok, list_backup_plan_templates_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_backup_plan_templates_errors(), tuple()}.
 list_backup_plan_templates(Client)
   when is_map(Client) ->
     list_backup_plan_templates(Client, #{}, #{}).
@@ -4559,10 +4950,7 @@ list_backup_plan_templates(Client)
 -spec list_backup_plan_templates(map(), map(), map()) ->
     {ok, list_backup_plan_templates_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_backup_plan_templates_errors(), tuple()}.
 list_backup_plan_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_backup_plan_templates(Client, QueryMap, HeadersMap, []).
@@ -4570,10 +4958,7 @@ list_backup_plan_templates(Client, QueryMap, HeadersMap)
 -spec list_backup_plan_templates(map(), map(), map(), proplists:proplist()) ->
     {ok, list_backup_plan_templates_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_backup_plan_templates_errors(), tuple()}.
 list_backup_plan_templates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup/template/plans"],
@@ -4601,10 +4986,7 @@ list_backup_plan_templates(Client, QueryMap, HeadersMap, Options0)
 -spec list_backup_plan_versions(map(), binary() | list()) ->
     {ok, list_backup_plan_versions_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_backup_plan_versions_errors(), tuple()}.
 list_backup_plan_versions(Client, BackupPlanId)
   when is_map(Client) ->
     list_backup_plan_versions(Client, BackupPlanId, #{}, #{}).
@@ -4612,10 +4994,7 @@ list_backup_plan_versions(Client, BackupPlanId)
 -spec list_backup_plan_versions(map(), binary() | list(), map(), map()) ->
     {ok, list_backup_plan_versions_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_backup_plan_versions_errors(), tuple()}.
 list_backup_plan_versions(Client, BackupPlanId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_backup_plan_versions(Client, BackupPlanId, QueryMap, HeadersMap, []).
@@ -4623,10 +5002,7 @@ list_backup_plan_versions(Client, BackupPlanId, QueryMap, HeadersMap)
 -spec list_backup_plan_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_backup_plan_versions_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_backup_plan_versions_errors(), tuple()}.
 list_backup_plan_versions(Client, BackupPlanId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/versions"],
@@ -4658,10 +5034,7 @@ list_backup_plan_versions(Client, BackupPlanId, QueryMap, HeadersMap, Options0)
 -spec list_backup_plans(map()) ->
     {ok, list_backup_plans_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_backup_plans_errors(), tuple()}.
 list_backup_plans(Client)
   when is_map(Client) ->
     list_backup_plans(Client, #{}, #{}).
@@ -4669,10 +5042,7 @@ list_backup_plans(Client)
 -spec list_backup_plans(map(), map(), map()) ->
     {ok, list_backup_plans_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_backup_plans_errors(), tuple()}.
 list_backup_plans(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_backup_plans(Client, QueryMap, HeadersMap, []).
@@ -4680,10 +5050,7 @@ list_backup_plans(Client, QueryMap, HeadersMap)
 -spec list_backup_plans(map(), map(), map(), proplists:proplist()) ->
     {ok, list_backup_plans_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_backup_plans_errors(), tuple()}.
 list_backup_plans(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup/plans"],
@@ -4712,10 +5079,7 @@ list_backup_plans(Client, QueryMap, HeadersMap, Options0)
 -spec list_backup_selections(map(), binary() | list()) ->
     {ok, list_backup_selections_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_backup_selections_errors(), tuple()}.
 list_backup_selections(Client, BackupPlanId)
   when is_map(Client) ->
     list_backup_selections(Client, BackupPlanId, #{}, #{}).
@@ -4723,10 +5087,7 @@ list_backup_selections(Client, BackupPlanId)
 -spec list_backup_selections(map(), binary() | list(), map(), map()) ->
     {ok, list_backup_selections_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_backup_selections_errors(), tuple()}.
 list_backup_selections(Client, BackupPlanId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_backup_selections(Client, BackupPlanId, QueryMap, HeadersMap, []).
@@ -4734,10 +5095,7 @@ list_backup_selections(Client, BackupPlanId, QueryMap, HeadersMap)
 -spec list_backup_selections(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_backup_selections_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_backup_selections_errors(), tuple()}.
 list_backup_selections(Client, BackupPlanId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/selections"],
@@ -4765,10 +5123,7 @@ list_backup_selections(Client, BackupPlanId, QueryMap, HeadersMap, Options0)
 -spec list_backup_vaults(map()) ->
     {ok, list_backup_vaults_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_backup_vaults_errors(), tuple()}.
 list_backup_vaults(Client)
   when is_map(Client) ->
     list_backup_vaults(Client, #{}, #{}).
@@ -4776,10 +5131,7 @@ list_backup_vaults(Client)
 -spec list_backup_vaults(map(), map(), map()) ->
     {ok, list_backup_vaults_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_backup_vaults_errors(), tuple()}.
 list_backup_vaults(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_backup_vaults(Client, QueryMap, HeadersMap, []).
@@ -4787,10 +5139,7 @@ list_backup_vaults(Client, QueryMap, HeadersMap)
 -spec list_backup_vaults(map(), map(), map(), proplists:proplist()) ->
     {ok, list_backup_vaults_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_backup_vaults_errors(), tuple()}.
 list_backup_vaults(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-vaults"],
@@ -4828,8 +5177,7 @@ list_backup_vaults(Client, QueryMap, HeadersMap, Options0)
 -spec list_copy_job_summaries(map()) ->
     {ok, list_copy_job_summaries_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_copy_job_summaries_errors(), tuple()}.
 list_copy_job_summaries(Client)
   when is_map(Client) ->
     list_copy_job_summaries(Client, #{}, #{}).
@@ -4837,8 +5185,7 @@ list_copy_job_summaries(Client)
 -spec list_copy_job_summaries(map(), map(), map()) ->
     {ok, list_copy_job_summaries_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_copy_job_summaries_errors(), tuple()}.
 list_copy_job_summaries(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_copy_job_summaries(Client, QueryMap, HeadersMap, []).
@@ -4846,8 +5193,7 @@ list_copy_job_summaries(Client, QueryMap, HeadersMap)
 -spec list_copy_job_summaries(map(), map(), map(), proplists:proplist()) ->
     {ok, list_copy_job_summaries_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_copy_job_summaries_errors(), tuple()}.
 list_copy_job_summaries(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/copy-job-summaries"],
@@ -4878,8 +5224,7 @@ list_copy_job_summaries(Client, QueryMap, HeadersMap, Options0)
 -spec list_copy_jobs(map()) ->
     {ok, list_copy_jobs_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_copy_jobs_errors(), tuple()}.
 list_copy_jobs(Client)
   when is_map(Client) ->
     list_copy_jobs(Client, #{}, #{}).
@@ -4887,8 +5232,7 @@ list_copy_jobs(Client)
 -spec list_copy_jobs(map(), map(), map()) ->
     {ok, list_copy_jobs_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_copy_jobs_errors(), tuple()}.
 list_copy_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_copy_jobs(Client, QueryMap, HeadersMap, []).
@@ -4896,8 +5240,7 @@ list_copy_jobs(Client, QueryMap, HeadersMap)
 -spec list_copy_jobs(map(), map(), map(), proplists:proplist()) ->
     {ok, list_copy_jobs_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_copy_jobs_errors(), tuple()}.
 list_copy_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/copy-jobs"],
@@ -4935,8 +5278,7 @@ list_copy_jobs(Client, QueryMap, HeadersMap, Options0)
 -spec list_frameworks(map()) ->
     {ok, list_frameworks_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_frameworks_errors(), tuple()}.
 list_frameworks(Client)
   when is_map(Client) ->
     list_frameworks(Client, #{}, #{}).
@@ -4944,8 +5286,7 @@ list_frameworks(Client)
 -spec list_frameworks(map(), map(), map()) ->
     {ok, list_frameworks_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_frameworks_errors(), tuple()}.
 list_frameworks(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_frameworks(Client, QueryMap, HeadersMap, []).
@@ -4953,8 +5294,7 @@ list_frameworks(Client, QueryMap, HeadersMap)
 -spec list_frameworks(map(), map(), map(), proplists:proplist()) ->
     {ok, list_frameworks_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_frameworks_errors(), tuple()}.
 list_frameworks(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/frameworks"],
@@ -4980,8 +5320,7 @@ list_frameworks(Client, QueryMap, HeadersMap, Options0)
 -spec list_legal_holds(map()) ->
     {ok, list_legal_holds_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_legal_holds_errors(), tuple()}.
 list_legal_holds(Client)
   when is_map(Client) ->
     list_legal_holds(Client, #{}, #{}).
@@ -4989,8 +5328,7 @@ list_legal_holds(Client)
 -spec list_legal_holds(map(), map(), map()) ->
     {ok, list_legal_holds_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_legal_holds_errors(), tuple()}.
 list_legal_holds(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_legal_holds(Client, QueryMap, HeadersMap, []).
@@ -4998,8 +5336,7 @@ list_legal_holds(Client, QueryMap, HeadersMap)
 -spec list_legal_holds(map(), map(), map(), proplists:proplist()) ->
     {ok, list_legal_holds_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_legal_holds_errors(), tuple()}.
 list_legal_holds(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/legal-holds"],
@@ -5029,8 +5366,7 @@ list_legal_holds(Client, QueryMap, HeadersMap, Options0)
 -spec list_protected_resources(map()) ->
     {ok, list_protected_resources_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_protected_resources_errors(), tuple()}.
 list_protected_resources(Client)
   when is_map(Client) ->
     list_protected_resources(Client, #{}, #{}).
@@ -5038,8 +5374,7 @@ list_protected_resources(Client)
 -spec list_protected_resources(map(), map(), map()) ->
     {ok, list_protected_resources_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_protected_resources_errors(), tuple()}.
 list_protected_resources(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_protected_resources(Client, QueryMap, HeadersMap, []).
@@ -5047,8 +5382,7 @@ list_protected_resources(Client, QueryMap, HeadersMap)
 -spec list_protected_resources(map(), map(), map(), proplists:proplist()) ->
     {ok, list_protected_resources_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_protected_resources_errors(), tuple()}.
 list_protected_resources(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resources"],
@@ -5075,9 +5409,7 @@ list_protected_resources(Client, QueryMap, HeadersMap, Options0)
 -spec list_protected_resources_by_backup_vault(map(), binary() | list()) ->
     {ok, list_protected_resources_by_backup_vault_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_protected_resources_by_backup_vault_errors(), tuple()}.
 list_protected_resources_by_backup_vault(Client, BackupVaultName)
   when is_map(Client) ->
     list_protected_resources_by_backup_vault(Client, BackupVaultName, #{}, #{}).
@@ -5085,9 +5417,7 @@ list_protected_resources_by_backup_vault(Client, BackupVaultName)
 -spec list_protected_resources_by_backup_vault(map(), binary() | list(), map(), map()) ->
     {ok, list_protected_resources_by_backup_vault_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_protected_resources_by_backup_vault_errors(), tuple()}.
 list_protected_resources_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_protected_resources_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, []).
@@ -5095,9 +5425,7 @@ list_protected_resources_by_backup_vault(Client, BackupVaultName, QueryMap, Head
 -spec list_protected_resources_by_backup_vault(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_protected_resources_by_backup_vault_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_protected_resources_by_backup_vault_errors(), tuple()}.
 list_protected_resources_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/resources"],
@@ -5125,10 +5453,7 @@ list_protected_resources_by_backup_vault(Client, BackupVaultName, QueryMap, Head
 -spec list_recovery_points_by_backup_vault(map(), binary() | list()) ->
     {ok, list_recovery_points_by_backup_vault_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_recovery_points_by_backup_vault_errors(), tuple()}.
 list_recovery_points_by_backup_vault(Client, BackupVaultName)
   when is_map(Client) ->
     list_recovery_points_by_backup_vault(Client, BackupVaultName, #{}, #{}).
@@ -5136,10 +5461,7 @@ list_recovery_points_by_backup_vault(Client, BackupVaultName)
 -spec list_recovery_points_by_backup_vault(map(), binary() | list(), map(), map()) ->
     {ok, list_recovery_points_by_backup_vault_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_recovery_points_by_backup_vault_errors(), tuple()}.
 list_recovery_points_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_recovery_points_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, []).
@@ -5147,10 +5469,7 @@ list_recovery_points_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersM
 -spec list_recovery_points_by_backup_vault(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_recovery_points_by_backup_vault_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_recovery_points_by_backup_vault_errors(), tuple()}.
 list_recovery_points_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points"],
@@ -5185,9 +5504,7 @@ list_recovery_points_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersM
 -spec list_recovery_points_by_legal_hold(map(), binary() | list()) ->
     {ok, list_recovery_points_by_legal_hold_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_recovery_points_by_legal_hold_errors(), tuple()}.
 list_recovery_points_by_legal_hold(Client, LegalHoldId)
   when is_map(Client) ->
     list_recovery_points_by_legal_hold(Client, LegalHoldId, #{}, #{}).
@@ -5195,9 +5512,7 @@ list_recovery_points_by_legal_hold(Client, LegalHoldId)
 -spec list_recovery_points_by_legal_hold(map(), binary() | list(), map(), map()) ->
     {ok, list_recovery_points_by_legal_hold_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_recovery_points_by_legal_hold_errors(), tuple()}.
 list_recovery_points_by_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_recovery_points_by_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap, []).
@@ -5205,9 +5520,7 @@ list_recovery_points_by_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap)
 -spec list_recovery_points_by_legal_hold(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_recovery_points_by_legal_hold_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_recovery_points_by_legal_hold_errors(), tuple()}.
 list_recovery_points_by_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/legal-holds/", aws_util:encode_uri(LegalHoldId), "/recovery-points"],
@@ -5238,10 +5551,7 @@ list_recovery_points_by_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap, Op
 -spec list_recovery_points_by_resource(map(), binary() | list()) ->
     {ok, list_recovery_points_by_resource_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_recovery_points_by_resource_errors(), tuple()}.
 list_recovery_points_by_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_recovery_points_by_resource(Client, ResourceArn, #{}, #{}).
@@ -5249,10 +5559,7 @@ list_recovery_points_by_resource(Client, ResourceArn)
 -spec list_recovery_points_by_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_recovery_points_by_resource_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_recovery_points_by_resource_errors(), tuple()}.
 list_recovery_points_by_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_recovery_points_by_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -5260,10 +5567,7 @@ list_recovery_points_by_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_recovery_points_by_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_recovery_points_by_resource_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_recovery_points_by_resource_errors(), tuple()}.
 list_recovery_points_by_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resources/", aws_util:encode_uri(ResourceArn), "/recovery-points"],
@@ -5289,9 +5593,7 @@ list_recovery_points_by_resource(Client, ResourceArn, QueryMap, HeadersMap, Opti
 -spec list_report_jobs(map()) ->
     {ok, list_report_jobs_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_report_jobs_errors(), tuple()}.
 list_report_jobs(Client)
   when is_map(Client) ->
     list_report_jobs(Client, #{}, #{}).
@@ -5299,9 +5601,7 @@ list_report_jobs(Client)
 -spec list_report_jobs(map(), map(), map()) ->
     {ok, list_report_jobs_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_report_jobs_errors(), tuple()}.
 list_report_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_report_jobs(Client, QueryMap, HeadersMap, []).
@@ -5309,9 +5609,7 @@ list_report_jobs(Client, QueryMap, HeadersMap)
 -spec list_report_jobs(map(), map(), map(), proplists:proplist()) ->
     {ok, list_report_jobs_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_report_jobs_errors(), tuple()}.
 list_report_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/report-jobs"],
@@ -5344,8 +5642,7 @@ list_report_jobs(Client, QueryMap, HeadersMap, Options0)
 -spec list_report_plans(map()) ->
     {ok, list_report_plans_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_report_plans_errors(), tuple()}.
 list_report_plans(Client)
   when is_map(Client) ->
     list_report_plans(Client, #{}, #{}).
@@ -5353,8 +5650,7 @@ list_report_plans(Client)
 -spec list_report_plans(map(), map(), map()) ->
     {ok, list_report_plans_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_report_plans_errors(), tuple()}.
 list_report_plans(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_report_plans(Client, QueryMap, HeadersMap, []).
@@ -5362,8 +5658,7 @@ list_report_plans(Client, QueryMap, HeadersMap)
 -spec list_report_plans(map(), map(), map(), proplists:proplist()) ->
     {ok, list_report_plans_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_report_plans_errors(), tuple()}.
 list_report_plans(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/report-plans"],
@@ -5399,8 +5694,7 @@ list_report_plans(Client, QueryMap, HeadersMap, Options0)
 -spec list_restore_job_summaries(map()) ->
     {ok, list_restore_job_summaries_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_restore_job_summaries_errors(), tuple()}.
 list_restore_job_summaries(Client)
   when is_map(Client) ->
     list_restore_job_summaries(Client, #{}, #{}).
@@ -5408,8 +5702,7 @@ list_restore_job_summaries(Client)
 -spec list_restore_job_summaries(map(), map(), map()) ->
     {ok, list_restore_job_summaries_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_restore_job_summaries_errors(), tuple()}.
 list_restore_job_summaries(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_restore_job_summaries(Client, QueryMap, HeadersMap, []).
@@ -5417,8 +5710,7 @@ list_restore_job_summaries(Client, QueryMap, HeadersMap)
 -spec list_restore_job_summaries(map(), map(), map(), proplists:proplist()) ->
     {ok, list_restore_job_summaries_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_restore_job_summaries_errors(), tuple()}.
 list_restore_job_summaries(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/restore-job-summaries"],
@@ -5450,10 +5742,7 @@ list_restore_job_summaries(Client, QueryMap, HeadersMap, Options0)
 -spec list_restore_jobs(map()) ->
     {ok, list_restore_jobs_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_restore_jobs_errors(), tuple()}.
 list_restore_jobs(Client)
   when is_map(Client) ->
     list_restore_jobs(Client, #{}, #{}).
@@ -5461,10 +5750,7 @@ list_restore_jobs(Client)
 -spec list_restore_jobs(map(), map(), map()) ->
     {ok, list_restore_jobs_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_restore_jobs_errors(), tuple()}.
 list_restore_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_restore_jobs(Client, QueryMap, HeadersMap, []).
@@ -5472,10 +5758,7 @@ list_restore_jobs(Client, QueryMap, HeadersMap)
 -spec list_restore_jobs(map(), map(), map(), proplists:proplist()) ->
     {ok, list_restore_jobs_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_restore_jobs_errors(), tuple()}.
 list_restore_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restore-jobs"],
@@ -5515,10 +5798,7 @@ list_restore_jobs(Client, QueryMap, HeadersMap, Options0)
 -spec list_restore_jobs_by_protected_resource(map(), binary() | list()) ->
     {ok, list_restore_jobs_by_protected_resource_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_restore_jobs_by_protected_resource_errors(), tuple()}.
 list_restore_jobs_by_protected_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_restore_jobs_by_protected_resource(Client, ResourceArn, #{}, #{}).
@@ -5526,10 +5806,7 @@ list_restore_jobs_by_protected_resource(Client, ResourceArn)
 -spec list_restore_jobs_by_protected_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_restore_jobs_by_protected_resource_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_restore_jobs_by_protected_resource_errors(), tuple()}.
 list_restore_jobs_by_protected_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_restore_jobs_by_protected_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -5537,10 +5814,7 @@ list_restore_jobs_by_protected_resource(Client, ResourceArn, QueryMap, HeadersMa
 -spec list_restore_jobs_by_protected_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_restore_jobs_by_protected_resource_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_restore_jobs_by_protected_resource_errors(), tuple()}.
 list_restore_jobs_by_protected_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resources/", aws_util:encode_uri(ResourceArn), "/restore-jobs"],
@@ -5569,8 +5843,7 @@ list_restore_jobs_by_protected_resource(Client, ResourceArn, QueryMap, HeadersMa
 -spec list_restore_testing_plans(map()) ->
     {ok, list_restore_testing_plans_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_restore_testing_plans_errors(), tuple()}.
 list_restore_testing_plans(Client)
   when is_map(Client) ->
     list_restore_testing_plans(Client, #{}, #{}).
@@ -5578,8 +5851,7 @@ list_restore_testing_plans(Client)
 -spec list_restore_testing_plans(map(), map(), map()) ->
     {ok, list_restore_testing_plans_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_restore_testing_plans_errors(), tuple()}.
 list_restore_testing_plans(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_restore_testing_plans(Client, QueryMap, HeadersMap, []).
@@ -5587,8 +5859,7 @@ list_restore_testing_plans(Client, QueryMap, HeadersMap)
 -spec list_restore_testing_plans(map(), map(), map(), proplists:proplist()) ->
     {ok, list_restore_testing_plans_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_restore_testing_plans_errors(), tuple()}.
 list_restore_testing_plans(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restore-testing/plans"],
@@ -5617,9 +5888,7 @@ list_restore_testing_plans(Client, QueryMap, HeadersMap, Options0)
 -spec list_restore_testing_selections(map(), binary() | list()) ->
     {ok, list_restore_testing_selections_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_restore_testing_selections_errors(), tuple()}.
 list_restore_testing_selections(Client, RestoreTestingPlanName)
   when is_map(Client) ->
     list_restore_testing_selections(Client, RestoreTestingPlanName, #{}, #{}).
@@ -5627,9 +5896,7 @@ list_restore_testing_selections(Client, RestoreTestingPlanName)
 -spec list_restore_testing_selections(map(), binary() | list(), map(), map()) ->
     {ok, list_restore_testing_selections_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_restore_testing_selections_errors(), tuple()}.
 list_restore_testing_selections(Client, RestoreTestingPlanName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_restore_testing_selections(Client, RestoreTestingPlanName, QueryMap, HeadersMap, []).
@@ -5637,9 +5904,7 @@ list_restore_testing_selections(Client, RestoreTestingPlanName, QueryMap, Header
 -spec list_restore_testing_selections(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_restore_testing_selections_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_restore_testing_selections_errors(), tuple()}.
 list_restore_testing_selections(Client, RestoreTestingPlanName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), "/selections"],
@@ -5674,10 +5939,7 @@ list_restore_testing_selections(Client, RestoreTestingPlanName, QueryMap, Header
 -spec list_tags(map(), binary() | list()) ->
     {ok, list_tags_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, ResourceArn)
   when is_map(Client) ->
     list_tags(Client, ResourceArn, #{}, #{}).
@@ -5685,10 +5947,7 @@ list_tags(Client, ResourceArn)
 -spec list_tags(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -5696,10 +5955,7 @@ list_tags(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -5730,20 +5986,14 @@ list_tags(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec put_backup_vault_access_policy(map(), binary() | list(), put_backup_vault_access_policy_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_backup_vault_access_policy_errors(), tuple()}.
 put_backup_vault_access_policy(Client, BackupVaultName, Input) ->
     put_backup_vault_access_policy(Client, BackupVaultName, Input, []).
 
 -spec put_backup_vault_access_policy(map(), binary() | list(), put_backup_vault_access_policy_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_backup_vault_access_policy_errors(), tuple()}.
 put_backup_vault_access_policy(Client, BackupVaultName, Input0, Options0) ->
     Method = put,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/access-policy"],
@@ -5788,22 +6038,14 @@ put_backup_vault_access_policy(Client, BackupVaultName, Input0, Options0) ->
 -spec put_backup_vault_lock_configuration(map(), binary() | list(), put_backup_vault_lock_configuration_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_backup_vault_lock_configuration_errors(), tuple()}.
 put_backup_vault_lock_configuration(Client, BackupVaultName, Input) ->
     put_backup_vault_lock_configuration(Client, BackupVaultName, Input, []).
 
 -spec put_backup_vault_lock_configuration(map(), binary() | list(), put_backup_vault_lock_configuration_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_backup_vault_lock_configuration_errors(), tuple()}.
 put_backup_vault_lock_configuration(Client, BackupVaultName, Input0, Options0) ->
     Method = put,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/vault-lock"],
@@ -5831,20 +6073,14 @@ put_backup_vault_lock_configuration(Client, BackupVaultName, Input0, Options0) -
 -spec put_backup_vault_notifications(map(), binary() | list(), put_backup_vault_notifications_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_backup_vault_notifications_errors(), tuple()}.
 put_backup_vault_notifications(Client, BackupVaultName, Input) ->
     put_backup_vault_notifications(Client, BackupVaultName, Input, []).
 
 -spec put_backup_vault_notifications(map(), binary() | list(), put_backup_vault_notifications_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_backup_vault_notifications_errors(), tuple()}.
 put_backup_vault_notifications(Client, BackupVaultName, Input0, Options0) ->
     Method = put,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/notification-configuration"],
@@ -5876,22 +6112,14 @@ put_backup_vault_notifications(Client, BackupVaultName, Input0, Options0) ->
 -spec put_restore_validation_result(map(), binary() | list(), put_restore_validation_result_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_restore_validation_result_errors(), tuple()}.
 put_restore_validation_result(Client, RestoreJobId, Input) ->
     put_restore_validation_result(Client, RestoreJobId, Input, []).
 
 -spec put_restore_validation_result(map(), binary() | list(), put_restore_validation_result_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, put_restore_validation_result_errors(), tuple()}.
 put_restore_validation_result(Client, RestoreJobId, Input0, Options0) ->
     Method = put,
     Path = ["/restore-jobs/", aws_util:encode_uri(RestoreJobId), "/validations"],
@@ -5918,24 +6146,14 @@ put_restore_validation_result(Client, RestoreJobId, Input0, Options0) ->
 -spec start_backup_job(map(), start_backup_job_input()) ->
     {ok, start_backup_job_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, start_backup_job_errors(), tuple()}.
 start_backup_job(Client, Input) ->
     start_backup_job(Client, Input, []).
 
 -spec start_backup_job(map(), start_backup_job_input(), proplists:proplist()) ->
     {ok, start_backup_job_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, start_backup_job_errors(), tuple()}.
 start_backup_job(Client, Input0, Options0) ->
     Method = put,
     Path = ["/backup-jobs"],
@@ -5964,24 +6182,14 @@ start_backup_job(Client, Input0, Options0) ->
 -spec start_copy_job(map(), start_copy_job_input()) ->
     {ok, start_copy_job_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, start_copy_job_errors(), tuple()}.
 start_copy_job(Client, Input) ->
     start_copy_job(Client, Input, []).
 
 -spec start_copy_job(map(), start_copy_job_input(), proplists:proplist()) ->
     {ok, start_copy_job_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, start_copy_job_errors(), tuple()}.
 start_copy_job(Client, Input0, Options0) ->
     Method = put,
     Path = ["/copy-jobs"],
@@ -6008,20 +6216,14 @@ start_copy_job(Client, Input0, Options0) ->
 -spec start_report_job(map(), binary() | list(), start_report_job_input()) ->
     {ok, start_report_job_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, start_report_job_errors(), tuple()}.
 start_report_job(Client, ReportPlanName, Input) ->
     start_report_job(Client, ReportPlanName, Input, []).
 
 -spec start_report_job(map(), binary() | list(), start_report_job_input(), proplists:proplist()) ->
     {ok, start_report_job_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, start_report_job_errors(), tuple()}.
 start_report_job(Client, ReportPlanName, Input0, Options0) ->
     Method = post,
     Path = ["/audit/report-jobs/", aws_util:encode_uri(ReportPlanName), ""],
@@ -6049,22 +6251,14 @@ start_report_job(Client, ReportPlanName, Input0, Options0) ->
 -spec start_restore_job(map(), start_restore_job_input()) ->
     {ok, start_restore_job_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, start_restore_job_errors(), tuple()}.
 start_restore_job(Client, Input) ->
     start_restore_job(Client, Input, []).
 
 -spec start_restore_job(map(), start_restore_job_input(), proplists:proplist()) ->
     {ok, start_restore_job_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, start_restore_job_errors(), tuple()}.
 start_restore_job(Client, Input0, Options0) ->
     Method = put,
     Path = ["/restore-jobs"],
@@ -6097,22 +6291,14 @@ start_restore_job(Client, Input0, Options0) ->
 -spec stop_backup_job(map(), binary() | list(), stop_backup_job_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, stop_backup_job_errors(), tuple()}.
 stop_backup_job(Client, BackupJobId, Input) ->
     stop_backup_job(Client, BackupJobId, Input, []).
 
 -spec stop_backup_job(map(), binary() | list(), stop_backup_job_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, stop_backup_job_errors(), tuple()}.
 stop_backup_job(Client, BackupJobId, Input0, Options0) ->
     Method = post,
     Path = ["/backup-jobs/", aws_util:encode_uri(BackupJobId), ""],
@@ -6141,22 +6327,14 @@ stop_backup_job(Client, BackupJobId, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -6185,20 +6363,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/untag/", aws_util:encode_uri(ResourceArn), ""],
@@ -6230,20 +6402,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_backup_plan(map(), binary() | list(), update_backup_plan_input()) ->
     {ok, update_backup_plan_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, update_backup_plan_errors(), tuple()}.
 update_backup_plan(Client, BackupPlanId, Input) ->
     update_backup_plan(Client, BackupPlanId, Input, []).
 
 -spec update_backup_plan(map(), binary() | list(), update_backup_plan_input(), proplists:proplist()) ->
     {ok, update_backup_plan_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, update_backup_plan_errors(), tuple()}.
 update_backup_plan(Client, BackupPlanId, Input0, Options0) ->
     Method = post,
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), ""],
@@ -6272,26 +6438,14 @@ update_backup_plan(Client, BackupPlanId, Input0, Options0) ->
 -spec update_framework(map(), binary() | list(), update_framework_input()) ->
     {ok, update_framework_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, update_framework_errors(), tuple()}.
 update_framework(Client, FrameworkName, Input) ->
     update_framework(Client, FrameworkName, Input, []).
 
 -spec update_framework(map(), binary() | list(), update_framework_input(), proplists:proplist()) ->
     {ok, update_framework_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, update_framework_errors(), tuple()}.
 update_framework(Client, FrameworkName, Input0, Options0) ->
     Method = put,
     Path = ["/audit/frameworks/", aws_util:encode_uri(FrameworkName), ""],
@@ -6323,20 +6477,14 @@ update_framework(Client, FrameworkName, Input0, Options0) ->
 -spec update_global_settings(map(), update_global_settings_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, update_global_settings_errors(), tuple()}.
 update_global_settings(Client, Input) ->
     update_global_settings(Client, Input, []).
 
 -spec update_global_settings(map(), update_global_settings_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, update_global_settings_errors(), tuple()}.
 update_global_settings(Client, Input0, Options0) ->
     Method = put,
     Path = ["/global-settings"],
@@ -6387,22 +6535,14 @@ update_global_settings(Client, Input0, Options0) ->
 -spec update_recovery_point_lifecycle(map(), binary() | list(), binary() | list(), update_recovery_point_lifecycle_input()) ->
     {ok, update_recovery_point_lifecycle_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, update_recovery_point_lifecycle_errors(), tuple()}.
 update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input) ->
     update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input, []).
 
 -spec update_recovery_point_lifecycle(map(), binary() | list(), binary() | list(), update_recovery_point_lifecycle_input(), proplists:proplist()) ->
     {ok, update_recovery_point_lifecycle_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, update_recovery_point_lifecycle_errors(), tuple()}.
 update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input0, Options0) ->
     Method = post,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), ""],
@@ -6434,18 +6574,14 @@ update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input
 -spec update_region_settings(map(), update_region_settings_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, update_region_settings_errors(), tuple()}.
 update_region_settings(Client, Input) ->
     update_region_settings(Client, Input, []).
 
 -spec update_region_settings(map(), update_region_settings_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, update_region_settings_errors(), tuple()}.
 update_region_settings(Client, Input0, Options0) ->
     Method = put,
     Path = ["/account-settings"],
@@ -6474,22 +6610,14 @@ update_region_settings(Client, Input0, Options0) ->
 -spec update_report_plan(map(), binary() | list(), update_report_plan_input()) ->
     {ok, update_report_plan_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, update_report_plan_errors(), tuple()}.
 update_report_plan(Client, ReportPlanName, Input) ->
     update_report_plan(Client, ReportPlanName, Input, []).
 
 -spec update_report_plan(map(), binary() | list(), update_report_plan_input(), proplists:proplist()) ->
     {ok, update_report_plan_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, update_report_plan_errors(), tuple()}.
 update_report_plan(Client, ReportPlanName, Input0, Options0) ->
     Method = put,
     Path = ["/audit/report-plans/", aws_util:encode_uri(ReportPlanName), ""],
@@ -6532,22 +6660,14 @@ update_report_plan(Client, ReportPlanName, Input0, Options0) ->
 -spec update_restore_testing_plan(map(), binary() | list(), update_restore_testing_plan_input()) ->
     {ok, update_restore_testing_plan_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, update_restore_testing_plan_errors(), tuple()}.
 update_restore_testing_plan(Client, RestoreTestingPlanName, Input) ->
     update_restore_testing_plan(Client, RestoreTestingPlanName, Input, []).
 
 -spec update_restore_testing_plan(map(), binary() | list(), update_restore_testing_plan_input(), proplists:proplist()) ->
     {ok, update_restore_testing_plan_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, update_restore_testing_plan_errors(), tuple()}.
 update_restore_testing_plan(Client, RestoreTestingPlanName, Input0, Options0) ->
     Method = put,
     Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), ""],
@@ -6581,22 +6701,14 @@ update_restore_testing_plan(Client, RestoreTestingPlanName, Input0, Options0) ->
 -spec update_restore_testing_selection(map(), binary() | list(), binary() | list(), update_restore_testing_selection_input()) ->
     {ok, update_restore_testing_selection_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, update_restore_testing_selection_errors(), tuple()}.
 update_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, Input) ->
     update_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, Input, []).
 
 -spec update_restore_testing_selection(map(), binary() | list(), binary() | list(), update_restore_testing_selection_input(), proplists:proplist()) ->
     {ok, update_restore_testing_selection_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, update_restore_testing_selection_errors(), tuple()}.
 update_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, Input0, Options0) ->
     Method = put,
     Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), "/selections/", aws_util:encode_uri(RestoreTestingSelectionName), ""],

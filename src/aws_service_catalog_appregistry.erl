@@ -75,11 +75,13 @@
 %% delete_attribute_group_request() :: #{}
 -type delete_attribute_group_request() :: #{}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% resources_list_item() :: #{
@@ -90,14 +92,17 @@
 %% }
 -type resources_list_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_attribute_group_response() :: #{
 %%   <<"attributeGroup">> => attribute_group()
 %% }
 -type create_attribute_group_response() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% list_associated_resources_response() :: #{
@@ -105,6 +110,7 @@
 %%   <<"resources">> => list(resource_info()())
 %% }
 -type list_associated_resources_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% application_tag_result() :: #{
@@ -115,11 +121,13 @@
 %% }
 -type application_tag_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_attribute_groups_for_application_request() :: #{
@@ -128,6 +136,7 @@
 %% }
 -type list_attribute_groups_for_application_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_associated_attribute_groups_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -135,11 +144,13 @@
 %% }
 -type list_associated_attribute_groups_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_query_configuration() :: #{
 %%   <<"tagKey">> => string()
 %% }
 -type tag_query_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_associated_attribute_groups_response() :: #{
@@ -147,6 +158,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_associated_attribute_groups_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_attribute_group_request() :: #{
@@ -156,12 +168,14 @@
 %% }
 -type update_attribute_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_attribute_groups_response() :: #{
 %%   <<"attributeGroups">> => list(attribute_group_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_attribute_groups_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% associate_resource_response() :: #{
@@ -171,11 +185,13 @@
 %% }
 -type associate_resource_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_configuration_response() :: #{
 %%   <<"configuration">> => app_registry_configuration()
 %% }
 -type get_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -183,11 +199,13 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_associated_resources_request() :: #{
@@ -196,11 +214,13 @@
 %% }
 -type list_associated_resources_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_attribute_group_response() :: #{
@@ -216,6 +236,7 @@
 %% }
 -type get_attribute_group_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% application() :: #{
 %%   <<"applicationTag">> => map(),
@@ -228,15 +249,18 @@
 %%   <<"tags">> => map()
 %% }
 -type application() :: #{binary() => any()}.
+
 %% Example:
 %% get_attribute_group_request() :: #{}
 -type get_attribute_group_request() :: #{}.
+
 
 %% Example:
 %% resource_integrations() :: #{
 %%   <<"resourceGroup">> => resource_group()
 %% }
 -type resource_integrations() :: #{binary() => any()}.
+
 
 %% Example:
 %% attribute_group_summary() :: #{
@@ -250,11 +274,13 @@
 %% }
 -type attribute_group_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_application_request() :: #{
@@ -265,6 +291,7 @@
 %% }
 -type create_application_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% disassociate_resource_response() :: #{
 %%   <<"applicationArn">> => string(),
@@ -272,26 +299,32 @@
 %% }
 -type disassociate_resource_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_application_response() :: #{
 %%   <<"application">> => application()
 %% }
 -type create_application_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_resource_request() :: #{
 %%   <<"options">> => list(list(any())())
 %% }
 -type associate_resource_request() :: #{binary() => any()}.
+
 %% Example:
 %% sync_resource_request() :: #{}
 -type sync_resource_request() :: #{}.
+
 %% Example:
 %% associate_attribute_group_request() :: #{}
 -type associate_attribute_group_request() :: #{}.
+
 %% Example:
 %% disassociate_resource_request() :: #{}
 -type disassociate_resource_request() :: #{}.
+
 
 %% Example:
 %% resource_group() :: #{
@@ -301,11 +334,13 @@
 %% }
 -type resource_group() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_application_response() :: #{
 %%   <<"application">> => application_summary()
 %% }
 -type delete_application_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% sync_resource_response() :: #{
@@ -315,6 +350,7 @@
 %% }
 -type sync_resource_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_application_request() :: #{
 %%   <<"description">> => string(),
@@ -322,17 +358,20 @@
 %% }
 -type update_application_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_application_response() :: #{
 %%   <<"application">> => application()
 %% }
 -type update_application_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_application_response() :: #{
@@ -349,6 +388,7 @@
 %% }
 -type get_application_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% attribute_group() :: #{
 %%   <<"arn">> => string(),
@@ -361,6 +401,7 @@
 %% }
 -type attribute_group() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_applications_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -368,11 +409,13 @@
 %% }
 -type list_applications_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% app_registry_configuration() :: #{
 %%   <<"tagQueryConfiguration">> => tag_query_configuration()
 %% }
 -type app_registry_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% integrations() :: #{
@@ -380,9 +423,11 @@
 %%   <<"resourceGroup">> => resource_group()
 %% }
 -type integrations() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% list_attribute_groups_for_application_response() :: #{
@@ -391,14 +436,17 @@
 %% }
 -type list_attribute_groups_for_application_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% list_attribute_groups_request() :: #{
@@ -407,12 +455,14 @@
 %% }
 -type list_attribute_groups_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => string(),
 %%   <<"serviceCode">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_associated_resource_response() :: #{
@@ -422,12 +472,14 @@
 %% }
 -type get_associated_resource_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% disassociate_attribute_group_response() :: #{
 %%   <<"applicationArn">> => string(),
 %%   <<"attributeGroupArn">> => string()
 %% }
 -type disassociate_attribute_group_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_info() :: #{
@@ -438,6 +490,7 @@
 %%   <<"resourceType">> => list(any())
 %% }
 -type resource_info() :: #{binary() => any()}.
+
 
 %% Example:
 %% application_summary() :: #{
@@ -450,12 +503,14 @@
 %% }
 -type application_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_attribute_group_response() :: #{
 %%   <<"applicationArn">> => string(),
 %%   <<"attributeGroupArn">> => string()
 %% }
 -type associate_attribute_group_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_applications_response() :: #{
@@ -464,11 +519,13 @@
 %% }
 -type list_applications_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_configuration_request() :: #{
 %%   <<"configuration">> := app_registry_configuration()
 %% }
 -type put_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_attribute_group_response() :: #{
@@ -476,17 +533,20 @@
 %% }
 -type update_attribute_group_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_details() :: #{
 %%   <<"tagValue">> => string()
 %% }
 -type resource_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_attribute_group_response() :: #{
 %%   <<"attributeGroup">> => attribute_group_summary()
 %% }
 -type delete_attribute_group_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_attribute_group_request() :: #{
@@ -497,9 +557,11 @@
 %%   <<"tags">> => map()
 %% }
 -type create_attribute_group_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_application_request() :: #{}
 -type get_application_request() :: #{}.
+
 
 %% Example:
 %% attribute_group_details() :: #{
@@ -510,6 +572,7 @@
 %% }
 -type attribute_group_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_associated_resource_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -517,9 +580,11 @@
 %%   <<"resourceTagStatus">> => list(list(any())())
 %% }
 -type get_associated_resource_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_application_request() :: #{}
 -type delete_application_request() :: #{}.
+
 
 %% Example:
 %% resource() :: #{
@@ -529,9 +594,142 @@
 %%   <<"name">> => string()
 %% }
 -type resource() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_attribute_group_request() :: #{}
 -type disassociate_attribute_group_request() :: #{}.
+
+-type associate_attribute_group_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type associate_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_application_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_attribute_group_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_application_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_attribute_group_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type disassociate_attribute_group_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type disassociate_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_application_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_associated_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_attribute_group_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_configuration_errors() ::
+    internal_server_exception().
+
+-type list_applications_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_associated_attribute_groups_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_associated_resources_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_attribute_groups_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_attribute_groups_for_application_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type put_configuration_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type sync_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_application_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_attribute_group_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -547,22 +745,14 @@
 -spec associate_attribute_group(map(), binary() | list(), binary() | list(), associate_attribute_group_request()) ->
     {ok, associate_attribute_group_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_attribute_group_errors(), tuple()}.
 associate_attribute_group(Client, Application, AttributeGroup, Input) ->
     associate_attribute_group(Client, Application, AttributeGroup, Input, []).
 
 -spec associate_attribute_group(map(), binary() | list(), binary() | list(), associate_attribute_group_request(), proplists:proplist()) ->
     {ok, associate_attribute_group_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_attribute_group_errors(), tuple()}.
 associate_attribute_group(Client, Application, AttributeGroup, Input0, Options0) ->
     Method = put,
     Path = ["/applications/", aws_util:encode_uri(Application), "/attribute-groups/", aws_util:encode_uri(AttributeGroup), ""],
@@ -620,24 +810,14 @@ associate_attribute_group(Client, Application, AttributeGroup, Input0, Options0)
 -spec associate_resource(map(), binary() | list(), binary() | list(), binary() | list(), associate_resource_request()) ->
     {ok, associate_resource_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_resource_errors(), tuple()}.
 associate_resource(Client, Application, Resource, ResourceType, Input) ->
     associate_resource(Client, Application, Resource, ResourceType, Input, []).
 
 -spec associate_resource(map(), binary() | list(), binary() | list(), binary() | list(), associate_resource_request(), proplists:proplist()) ->
     {ok, associate_resource_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_resource_errors(), tuple()}.
 associate_resource(Client, Application, Resource, ResourceType, Input0, Options0) ->
     Method = put,
     Path = ["/applications/", aws_util:encode_uri(Application), "/resources/", aws_util:encode_uri(ResourceType), "/", aws_util:encode_uri(Resource), ""],
@@ -665,22 +845,14 @@ associate_resource(Client, Application, Resource, ResourceType, Input0, Options0
 -spec create_application(map(), create_application_request()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_application_errors(), tuple()}.
 create_application(Client, Input) ->
     create_application(Client, Input, []).
 
 -spec create_application(map(), create_application_request(), proplists:proplist()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_application_errors(), tuple()}.
 create_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/applications"],
@@ -715,20 +887,14 @@ create_application(Client, Input0, Options0) ->
 -spec create_attribute_group(map(), create_attribute_group_request()) ->
     {ok, create_attribute_group_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_attribute_group_errors(), tuple()}.
 create_attribute_group(Client, Input) ->
     create_attribute_group(Client, Input, []).
 
 -spec create_attribute_group(map(), create_attribute_group_request(), proplists:proplist()) ->
     {ok, create_attribute_group_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_attribute_group_errors(), tuple()}.
 create_attribute_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/attribute-groups"],
@@ -759,18 +925,14 @@ create_attribute_group(Client, Input0, Options0) ->
 -spec delete_application(map(), binary() | list(), delete_application_request()) ->
     {ok, delete_application_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_application_errors(), tuple()}.
 delete_application(Client, Application, Input) ->
     delete_application(Client, Application, Input, []).
 
 -spec delete_application(map(), binary() | list(), delete_application_request(), proplists:proplist()) ->
     {ok, delete_application_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_application_errors(), tuple()}.
 delete_application(Client, Application, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(Application), ""],
@@ -798,18 +960,14 @@ delete_application(Client, Application, Input0, Options0) ->
 -spec delete_attribute_group(map(), binary() | list(), delete_attribute_group_request()) ->
     {ok, delete_attribute_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_attribute_group_errors(), tuple()}.
 delete_attribute_group(Client, AttributeGroup, Input) ->
     delete_attribute_group(Client, AttributeGroup, Input, []).
 
 -spec delete_attribute_group(map(), binary() | list(), delete_attribute_group_request(), proplists:proplist()) ->
     {ok, delete_attribute_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_attribute_group_errors(), tuple()}.
 delete_attribute_group(Client, AttributeGroup, Input0, Options0) ->
     Method = delete,
     Path = ["/attribute-groups/", aws_util:encode_uri(AttributeGroup), ""],
@@ -840,18 +998,14 @@ delete_attribute_group(Client, AttributeGroup, Input0, Options0) ->
 -spec disassociate_attribute_group(map(), binary() | list(), binary() | list(), disassociate_attribute_group_request()) ->
     {ok, disassociate_attribute_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_attribute_group_errors(), tuple()}.
 disassociate_attribute_group(Client, Application, AttributeGroup, Input) ->
     disassociate_attribute_group(Client, Application, AttributeGroup, Input, []).
 
 -spec disassociate_attribute_group(map(), binary() | list(), binary() | list(), disassociate_attribute_group_request(), proplists:proplist()) ->
     {ok, disassociate_attribute_group_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_attribute_group_errors(), tuple()}.
 disassociate_attribute_group(Client, Application, AttributeGroup, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(Application), "/attribute-groups/", aws_util:encode_uri(AttributeGroup), ""],
@@ -911,20 +1065,14 @@ disassociate_attribute_group(Client, Application, AttributeGroup, Input0, Option
 -spec disassociate_resource(map(), binary() | list(), binary() | list(), binary() | list(), disassociate_resource_request()) ->
     {ok, disassociate_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_resource_errors(), tuple()}.
 disassociate_resource(Client, Application, Resource, ResourceType, Input) ->
     disassociate_resource(Client, Application, Resource, ResourceType, Input, []).
 
 -spec disassociate_resource(map(), binary() | list(), binary() | list(), binary() | list(), disassociate_resource_request(), proplists:proplist()) ->
     {ok, disassociate_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_resource_errors(), tuple()}.
 disassociate_resource(Client, Application, Resource, ResourceType, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(Application), "/resources/", aws_util:encode_uri(ResourceType), "/", aws_util:encode_uri(Resource), ""],
@@ -970,10 +1118,7 @@ disassociate_resource(Client, Application, Resource, ResourceType, Input0, Optio
 -spec get_application(map(), binary() | list()) ->
     {ok, get_application_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_application_errors(), tuple()}.
 get_application(Client, Application)
   when is_map(Client) ->
     get_application(Client, Application, #{}, #{}).
@@ -981,10 +1126,7 @@ get_application(Client, Application)
 -spec get_application(map(), binary() | list(), map(), map()) ->
     {ok, get_application_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_application_errors(), tuple()}.
 get_application(Client, Application, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application(Client, Application, QueryMap, HeadersMap, []).
@@ -992,10 +1134,7 @@ get_application(Client, Application, QueryMap, HeadersMap)
 -spec get_application(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_application_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_application_errors(), tuple()}.
 get_application(Client, Application, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(Application), ""],
@@ -1016,9 +1155,7 @@ get_application(Client, Application, QueryMap, HeadersMap, Options0)
 -spec get_associated_resource(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_associated_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_associated_resource_errors(), tuple()}.
 get_associated_resource(Client, Application, Resource, ResourceType)
   when is_map(Client) ->
     get_associated_resource(Client, Application, Resource, ResourceType, #{}, #{}).
@@ -1026,9 +1163,7 @@ get_associated_resource(Client, Application, Resource, ResourceType)
 -spec get_associated_resource(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_associated_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_associated_resource_errors(), tuple()}.
 get_associated_resource(Client, Application, Resource, ResourceType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_associated_resource(Client, Application, Resource, ResourceType, QueryMap, HeadersMap, []).
@@ -1036,9 +1171,7 @@ get_associated_resource(Client, Application, Resource, ResourceType, QueryMap, H
 -spec get_associated_resource(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_associated_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_associated_resource_errors(), tuple()}.
 get_associated_resource(Client, Application, Resource, ResourceType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(Application), "/resources/", aws_util:encode_uri(ResourceType), "/", aws_util:encode_uri(Resource), ""],
@@ -1070,10 +1203,7 @@ get_associated_resource(Client, Application, Resource, ResourceType, QueryMap, H
 -spec get_attribute_group(map(), binary() | list()) ->
     {ok, get_attribute_group_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_attribute_group_errors(), tuple()}.
 get_attribute_group(Client, AttributeGroup)
   when is_map(Client) ->
     get_attribute_group(Client, AttributeGroup, #{}, #{}).
@@ -1081,10 +1211,7 @@ get_attribute_group(Client, AttributeGroup)
 -spec get_attribute_group(map(), binary() | list(), map(), map()) ->
     {ok, get_attribute_group_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_attribute_group_errors(), tuple()}.
 get_attribute_group(Client, AttributeGroup, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_attribute_group(Client, AttributeGroup, QueryMap, HeadersMap, []).
@@ -1092,10 +1219,7 @@ get_attribute_group(Client, AttributeGroup, QueryMap, HeadersMap)
 -spec get_attribute_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_attribute_group_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_attribute_group_errors(), tuple()}.
 get_attribute_group(Client, AttributeGroup, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/attribute-groups/", aws_util:encode_uri(AttributeGroup), ""],
@@ -1118,7 +1242,7 @@ get_attribute_group(Client, AttributeGroup, QueryMap, HeadersMap, Options0)
 -spec get_configuration(map()) ->
     {ok, get_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, get_configuration_errors(), tuple()}.
 get_configuration(Client)
   when is_map(Client) ->
     get_configuration(Client, #{}, #{}).
@@ -1126,7 +1250,7 @@ get_configuration(Client)
 -spec get_configuration(map(), map(), map()) ->
     {ok, get_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, get_configuration_errors(), tuple()}.
 get_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_configuration(Client, QueryMap, HeadersMap, []).
@@ -1134,7 +1258,7 @@ get_configuration(Client, QueryMap, HeadersMap)
 -spec get_configuration(map(), map(), map(), proplists:proplist()) ->
     {ok, get_configuration_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()}.
+    {error, get_configuration_errors(), tuple()}.
 get_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/configuration"],
@@ -1157,8 +1281,7 @@ get_configuration(Client, QueryMap, HeadersMap, Options0)
 -spec list_applications(map()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client)
   when is_map(Client) ->
     list_applications(Client, #{}, #{}).
@@ -1166,8 +1289,7 @@ list_applications(Client)
 -spec list_applications(map(), map(), map()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_applications(Client, QueryMap, HeadersMap, []).
@@ -1175,8 +1297,7 @@ list_applications(Client, QueryMap, HeadersMap)
 -spec list_applications(map(), map(), map(), proplists:proplist()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications"],
@@ -1205,9 +1326,7 @@ list_applications(Client, QueryMap, HeadersMap, Options0)
 -spec list_associated_attribute_groups(map(), binary() | list()) ->
     {ok, list_associated_attribute_groups_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_associated_attribute_groups_errors(), tuple()}.
 list_associated_attribute_groups(Client, Application)
   when is_map(Client) ->
     list_associated_attribute_groups(Client, Application, #{}, #{}).
@@ -1215,9 +1334,7 @@ list_associated_attribute_groups(Client, Application)
 -spec list_associated_attribute_groups(map(), binary() | list(), map(), map()) ->
     {ok, list_associated_attribute_groups_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_associated_attribute_groups_errors(), tuple()}.
 list_associated_attribute_groups(Client, Application, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_associated_attribute_groups(Client, Application, QueryMap, HeadersMap, []).
@@ -1225,9 +1342,7 @@ list_associated_attribute_groups(Client, Application, QueryMap, HeadersMap)
 -spec list_associated_attribute_groups(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_associated_attribute_groups_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_associated_attribute_groups_errors(), tuple()}.
 list_associated_attribute_groups(Client, Application, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(Application), "/attribute-groups"],
@@ -1270,9 +1385,7 @@ list_associated_attribute_groups(Client, Application, QueryMap, HeadersMap, Opti
 -spec list_associated_resources(map(), binary() | list()) ->
     {ok, list_associated_resources_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_associated_resources_errors(), tuple()}.
 list_associated_resources(Client, Application)
   when is_map(Client) ->
     list_associated_resources(Client, Application, #{}, #{}).
@@ -1280,9 +1393,7 @@ list_associated_resources(Client, Application)
 -spec list_associated_resources(map(), binary() | list(), map(), map()) ->
     {ok, list_associated_resources_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_associated_resources_errors(), tuple()}.
 list_associated_resources(Client, Application, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_associated_resources(Client, Application, QueryMap, HeadersMap, []).
@@ -1290,9 +1401,7 @@ list_associated_resources(Client, Application, QueryMap, HeadersMap)
 -spec list_associated_resources(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_associated_resources_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_associated_resources_errors(), tuple()}.
 list_associated_resources(Client, Application, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(Application), "/resources"],
@@ -1320,8 +1429,7 @@ list_associated_resources(Client, Application, QueryMap, HeadersMap, Options0)
 -spec list_attribute_groups(map()) ->
     {ok, list_attribute_groups_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_attribute_groups_errors(), tuple()}.
 list_attribute_groups(Client)
   when is_map(Client) ->
     list_attribute_groups(Client, #{}, #{}).
@@ -1329,8 +1437,7 @@ list_attribute_groups(Client)
 -spec list_attribute_groups(map(), map(), map()) ->
     {ok, list_attribute_groups_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_attribute_groups_errors(), tuple()}.
 list_attribute_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_attribute_groups(Client, QueryMap, HeadersMap, []).
@@ -1338,8 +1445,7 @@ list_attribute_groups(Client, QueryMap, HeadersMap)
 -spec list_attribute_groups(map(), map(), map(), proplists:proplist()) ->
     {ok, list_attribute_groups_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_attribute_groups_errors(), tuple()}.
 list_attribute_groups(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/attribute-groups"],
@@ -1368,9 +1474,7 @@ list_attribute_groups(Client, QueryMap, HeadersMap, Options0)
 -spec list_attribute_groups_for_application(map(), binary() | list()) ->
     {ok, list_attribute_groups_for_application_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_attribute_groups_for_application_errors(), tuple()}.
 list_attribute_groups_for_application(Client, Application)
   when is_map(Client) ->
     list_attribute_groups_for_application(Client, Application, #{}, #{}).
@@ -1378,9 +1482,7 @@ list_attribute_groups_for_application(Client, Application)
 -spec list_attribute_groups_for_application(map(), binary() | list(), map(), map()) ->
     {ok, list_attribute_groups_for_application_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_attribute_groups_for_application_errors(), tuple()}.
 list_attribute_groups_for_application(Client, Application, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_attribute_groups_for_application(Client, Application, QueryMap, HeadersMap, []).
@@ -1388,9 +1490,7 @@ list_attribute_groups_for_application(Client, Application, QueryMap, HeadersMap)
 -spec list_attribute_groups_for_application(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_attribute_groups_for_application_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_attribute_groups_for_application_errors(), tuple()}.
 list_attribute_groups_for_application(Client, Application, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(Application), "/attribute-group-details"],
@@ -1416,9 +1516,7 @@ list_attribute_groups_for_application(Client, Application, QueryMap, HeadersMap,
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1426,9 +1524,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1436,9 +1532,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1461,18 +1555,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec put_configuration(map(), put_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_configuration_errors(), tuple()}.
 put_configuration(Client, Input) ->
     put_configuration(Client, Input, []).
 
 -spec put_configuration(map(), put_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_configuration_errors(), tuple()}.
 put_configuration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/configuration"],
@@ -1504,22 +1594,14 @@ put_configuration(Client, Input0, Options0) ->
 -spec sync_resource(map(), binary() | list(), binary() | list(), sync_resource_request()) ->
     {ok, sync_resource_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, sync_resource_errors(), tuple()}.
 sync_resource(Client, Resource, ResourceType, Input) ->
     sync_resource(Client, Resource, ResourceType, Input, []).
 
 -spec sync_resource(map(), binary() | list(), binary() | list(), sync_resource_request(), proplists:proplist()) ->
     {ok, sync_resource_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, sync_resource_errors(), tuple()}.
 sync_resource(Client, Resource, ResourceType, Input0, Options0) ->
     Method = post,
     Path = ["/sync/", aws_util:encode_uri(ResourceType), "/", aws_util:encode_uri(Resource), ""],
@@ -1552,18 +1634,14 @@ sync_resource(Client, Resource, ResourceType, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1592,18 +1670,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1631,22 +1705,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_application(map(), binary() | list(), update_application_request()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_application_errors(), tuple()}.
 update_application(Client, Application, Input) ->
     update_application(Client, Application, Input, []).
 
 -spec update_application(map(), binary() | list(), update_application_request(), proplists:proplist()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_application_errors(), tuple()}.
 update_application(Client, Application, Input0, Options0) ->
     Method = patch,
     Path = ["/applications/", aws_util:encode_uri(Application), ""],
@@ -1673,20 +1739,14 @@ update_application(Client, Application, Input0, Options0) ->
 -spec update_attribute_group(map(), binary() | list(), update_attribute_group_request()) ->
     {ok, update_attribute_group_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_attribute_group_errors(), tuple()}.
 update_attribute_group(Client, AttributeGroup, Input) ->
     update_attribute_group(Client, AttributeGroup, Input, []).
 
 -spec update_attribute_group(map(), binary() | list(), update_attribute_group_request(), proplists:proplist()) ->
     {ok, update_attribute_group_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_attribute_group_errors(), tuple()}.
 update_attribute_group(Client, AttributeGroup, Input0, Options0) ->
     Method = patch,
     Path = ["/attribute-groups/", aws_util:encode_uri(AttributeGroup), ""],

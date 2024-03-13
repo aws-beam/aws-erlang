@@ -685,6 +685,161 @@
 %% }
 -type too_many_tags_exception() :: #{binary() => any()}.
 
+-type create_certificate_authority_errors() ::
+    invalid_tag_exception() | 
+    limit_exceeded_exception() | 
+    invalid_policy_exception() | 
+    invalid_args_exception().
+
+-type create_certificate_authority_audit_report_errors() ::
+    resource_not_found_exception() | 
+    invalid_args_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception() | 
+    request_in_progress_exception() | 
+    request_failed_exception().
+
+-type create_permission_errors() ::
+    limit_exceeded_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception() | 
+    permission_already_exists_exception() | 
+    request_failed_exception().
+
+-type delete_certificate_authority_errors() ::
+    concurrent_modification_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception().
+
+-type delete_permission_errors() ::
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception() | 
+    request_failed_exception().
+
+-type delete_policy_errors() ::
+    concurrent_modification_exception() | 
+    lockout_prevented_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception() | 
+    request_failed_exception().
+
+-type describe_certificate_authority_errors() ::
+    resource_not_found_exception() | 
+    invalid_arn_exception().
+
+-type describe_certificate_authority_audit_report_errors() ::
+    resource_not_found_exception() | 
+    invalid_args_exception() | 
+    invalid_arn_exception().
+
+-type get_certificate_errors() ::
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception() | 
+    request_in_progress_exception() | 
+    request_failed_exception().
+
+-type get_certificate_authority_certificate_errors() ::
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception().
+
+-type get_certificate_authority_csr_errors() ::
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception() | 
+    request_in_progress_exception() | 
+    request_failed_exception().
+
+-type get_policy_errors() ::
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception() | 
+    request_failed_exception().
+
+-type import_certificate_authority_certificate_errors() ::
+    concurrent_modification_exception() | 
+    certificate_mismatch_exception() | 
+    malformed_certificate_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception() | 
+    request_in_progress_exception() | 
+    request_failed_exception().
+
+-type issue_certificate_errors() ::
+    limit_exceeded_exception() | 
+    malformed_c_s_r_exception() | 
+    resource_not_found_exception() | 
+    invalid_args_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception().
+
+-type list_certificate_authorities_errors() ::
+    invalid_next_token_exception().
+
+-type list_permissions_errors() ::
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception() | 
+    request_failed_exception().
+
+-type list_tags_errors() ::
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception().
+
+-type put_policy_errors() ::
+    concurrent_modification_exception() | 
+    lockout_prevented_exception() | 
+    resource_not_found_exception() | 
+    invalid_policy_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception() | 
+    request_failed_exception().
+
+-type restore_certificate_authority_errors() ::
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception().
+
+-type revoke_certificate_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    request_already_processed_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception() | 
+    request_in_progress_exception() | 
+    request_failed_exception().
+
+-type tag_certificate_authority_errors() ::
+    too_many_tags_exception() | 
+    invalid_tag_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception().
+
+-type untag_certificate_authority_errors() ::
+    invalid_tag_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception().
+
+-type update_certificate_authority_errors() ::
+    concurrent_modification_exception() | 
+    resource_not_found_exception() | 
+    invalid_policy_exception() | 
+    invalid_args_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception().
 
 %%====================================================================
 %% API
@@ -729,10 +884,7 @@
 -spec create_certificate_authority(map(), create_certificate_authority_request()) ->
     {ok, create_certificate_authority_response(), tuple()} |
     {error, any()} |
-    {error, invalid_args_exception(), tuple()} |
-    {error, invalid_policy_exception(), tuple()} |
-    {error, invalid_tag_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_certificate_authority_errors(), tuple()}.
 create_certificate_authority(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_certificate_authority(Client, Input, []).
@@ -740,10 +892,7 @@ create_certificate_authority(Client, Input)
 -spec create_certificate_authority(map(), create_certificate_authority_request(), proplists:proplist()) ->
     {ok, create_certificate_authority_response(), tuple()} |
     {error, any()} |
-    {error, invalid_args_exception(), tuple()} |
-    {error, invalid_policy_exception(), tuple()} |
-    {error, invalid_tag_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_certificate_authority_errors(), tuple()}.
 create_certificate_authority(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCertificateAuthority">>, Input, Options).
@@ -778,12 +927,7 @@ create_certificate_authority(Client, Input, Options)
 -spec create_certificate_authority_audit_report(map(), create_certificate_authority_audit_report_request()) ->
     {ok, create_certificate_authority_audit_report_response(), tuple()} |
     {error, any()} |
-    {error, invalid_args_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, request_failed_exception(), tuple()} |
-    {error, request_in_progress_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_certificate_authority_audit_report_errors(), tuple()}.
 create_certificate_authority_audit_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_certificate_authority_audit_report(Client, Input, []).
@@ -791,12 +935,7 @@ create_certificate_authority_audit_report(Client, Input)
 -spec create_certificate_authority_audit_report(map(), create_certificate_authority_audit_report_request(), proplists:proplist()) ->
     {ok, create_certificate_authority_audit_report_response(), tuple()} |
     {error, any()} |
-    {error, invalid_args_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, request_failed_exception(), tuple()} |
-    {error, request_in_progress_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_certificate_authority_audit_report_errors(), tuple()}.
 create_certificate_authority_audit_report(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCertificateAuthorityAuditReport">>, Input, Options).
@@ -836,12 +975,7 @@ create_certificate_authority_audit_report(Client, Input, Options)
 -spec create_permission(map(), create_permission_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, permission_already_exists_exception(), tuple()} |
-    {error, request_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_permission_errors(), tuple()}.
 create_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_permission(Client, Input, []).
@@ -849,12 +983,7 @@ create_permission(Client, Input)
 -spec create_permission(map(), create_permission_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, permission_already_exists_exception(), tuple()} |
-    {error, request_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_permission_errors(), tuple()}.
 create_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePermission">>, Input, Options).
@@ -906,10 +1035,7 @@ create_permission(Client, Input, Options)
 -spec delete_certificate_authority(map(), delete_certificate_authority_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_certificate_authority_errors(), tuple()}.
 delete_certificate_authority(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_certificate_authority(Client, Input, []).
@@ -917,10 +1043,7 @@ delete_certificate_authority(Client, Input)
 -spec delete_certificate_authority(map(), delete_certificate_authority_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_certificate_authority_errors(), tuple()}.
 delete_certificate_authority(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCertificateAuthority">>, Input, Options).
@@ -962,10 +1085,7 @@ delete_certificate_authority(Client, Input, Options)
 -spec delete_permission(map(), delete_permission_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, request_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_permission_errors(), tuple()}.
 delete_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_permission(Client, Input, []).
@@ -973,10 +1093,7 @@ delete_permission(Client, Input)
 -spec delete_permission(map(), delete_permission_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, request_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_permission_errors(), tuple()}.
 delete_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePermission">>, Input, Options).
@@ -1031,12 +1148,7 @@ delete_permission(Client, Input, Options)
 -spec delete_policy(map(), delete_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, lockout_prevented_exception(), tuple()} |
-    {error, request_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_policy_errors(), tuple()}.
 delete_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_policy(Client, Input, []).
@@ -1044,12 +1156,7 @@ delete_policy(Client, Input)
 -spec delete_policy(map(), delete_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, lockout_prevented_exception(), tuple()} |
-    {error, request_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_policy_errors(), tuple()}.
 delete_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePolicy">>, Input, Options).
@@ -1089,8 +1196,7 @@ delete_policy(Client, Input, Options)
 -spec describe_certificate_authority(map(), describe_certificate_authority_request()) ->
     {ok, describe_certificate_authority_response(), tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_certificate_authority_errors(), tuple()}.
 describe_certificate_authority(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_certificate_authority(Client, Input, []).
@@ -1098,8 +1204,7 @@ describe_certificate_authority(Client, Input)
 -spec describe_certificate_authority(map(), describe_certificate_authority_request(), proplists:proplist()) ->
     {ok, describe_certificate_authority_response(), tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_certificate_authority_errors(), tuple()}.
 describe_certificate_authority(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCertificateAuthority">>, Input, Options).
@@ -1121,9 +1226,7 @@ describe_certificate_authority(Client, Input, Options)
 -spec describe_certificate_authority_audit_report(map(), describe_certificate_authority_audit_report_request()) ->
     {ok, describe_certificate_authority_audit_report_response(), tuple()} |
     {error, any()} |
-    {error, invalid_args_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_certificate_authority_audit_report_errors(), tuple()}.
 describe_certificate_authority_audit_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_certificate_authority_audit_report(Client, Input, []).
@@ -1131,9 +1234,7 @@ describe_certificate_authority_audit_report(Client, Input)
 -spec describe_certificate_authority_audit_report(map(), describe_certificate_authority_audit_report_request(), proplists:proplist()) ->
     {ok, describe_certificate_authority_audit_report_response(), tuple()} |
     {error, any()} |
-    {error, invalid_args_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_certificate_authority_audit_report_errors(), tuple()}.
 describe_certificate_authority_audit_report(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCertificateAuthorityAuditReport">>, Input, Options).
@@ -1158,11 +1259,7 @@ describe_certificate_authority_audit_report(Client, Input, Options)
 -spec get_certificate(map(), get_certificate_request()) ->
     {ok, get_certificate_response(), tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, request_failed_exception(), tuple()} |
-    {error, request_in_progress_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_certificate_errors(), tuple()}.
 get_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_certificate(Client, Input, []).
@@ -1170,11 +1267,7 @@ get_certificate(Client, Input)
 -spec get_certificate(map(), get_certificate_request(), proplists:proplist()) ->
     {ok, get_certificate_response(), tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, request_failed_exception(), tuple()} |
-    {error, request_in_progress_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_certificate_errors(), tuple()}.
 get_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCertificate">>, Input, Options).
@@ -1190,9 +1283,7 @@ get_certificate(Client, Input, Options)
 -spec get_certificate_authority_certificate(map(), get_certificate_authority_certificate_request()) ->
     {ok, get_certificate_authority_certificate_response(), tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_certificate_authority_certificate_errors(), tuple()}.
 get_certificate_authority_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_certificate_authority_certificate(Client, Input, []).
@@ -1200,9 +1291,7 @@ get_certificate_authority_certificate(Client, Input)
 -spec get_certificate_authority_certificate(map(), get_certificate_authority_certificate_request(), proplists:proplist()) ->
     {ok, get_certificate_authority_certificate_response(), tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_certificate_authority_certificate_errors(), tuple()}.
 get_certificate_authority_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCertificateAuthorityCertificate">>, Input, Options).
@@ -1224,11 +1313,7 @@ get_certificate_authority_certificate(Client, Input, Options)
 -spec get_certificate_authority_csr(map(), get_certificate_authority_csr_request()) ->
     {ok, get_certificate_authority_csr_response(), tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, request_failed_exception(), tuple()} |
-    {error, request_in_progress_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_certificate_authority_csr_errors(), tuple()}.
 get_certificate_authority_csr(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_certificate_authority_csr(Client, Input, []).
@@ -1236,11 +1321,7 @@ get_certificate_authority_csr(Client, Input)
 -spec get_certificate_authority_csr(map(), get_certificate_authority_csr_request(), proplists:proplist()) ->
     {ok, get_certificate_authority_csr_response(), tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, request_failed_exception(), tuple()} |
-    {error, request_in_progress_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_certificate_authority_csr_errors(), tuple()}.
 get_certificate_authority_csr(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCertificateAuthorityCsr">>, Input, Options).
@@ -1286,10 +1367,7 @@ get_certificate_authority_csr(Client, Input, Options)
 -spec get_policy(map(), get_policy_request()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, request_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_policy_errors(), tuple()}.
 get_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_policy(Client, Input, []).
@@ -1297,10 +1375,7 @@ get_policy(Client, Input)
 -spec get_policy(map(), get_policy_request(), proplists:proplist()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, request_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_policy_errors(), tuple()}.
 get_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPolicy">>, Input, Options).
@@ -1416,15 +1491,7 @@ get_policy(Client, Input, Options)
 -spec import_certificate_authority_certificate(map(), import_certificate_authority_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, certificate_mismatch_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, malformed_certificate_exception(), tuple()} |
-    {error, request_failed_exception(), tuple()} |
-    {error, request_in_progress_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, import_certificate_authority_certificate_errors(), tuple()}.
 import_certificate_authority_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_certificate_authority_certificate(Client, Input, []).
@@ -1432,15 +1499,7 @@ import_certificate_authority_certificate(Client, Input)
 -spec import_certificate_authority_certificate(map(), import_certificate_authority_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, certificate_mismatch_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, malformed_certificate_exception(), tuple()} |
-    {error, request_failed_exception(), tuple()} |
-    {error, request_in_progress_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, import_certificate_authority_certificate_errors(), tuple()}.
 import_certificate_authority_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportCertificateAuthorityCertificate">>, Input, Options).
@@ -1462,12 +1521,7 @@ import_certificate_authority_certificate(Client, Input, Options)
 -spec issue_certificate(map(), issue_certificate_request()) ->
     {ok, issue_certificate_response(), tuple()} |
     {error, any()} |
-    {error, invalid_args_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_c_s_r_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, issue_certificate_errors(), tuple()}.
 issue_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     issue_certificate(Client, Input, []).
@@ -1475,12 +1529,7 @@ issue_certificate(Client, Input)
 -spec issue_certificate(map(), issue_certificate_request(), proplists:proplist()) ->
     {ok, issue_certificate_response(), tuple()} |
     {error, any()} |
-    {error, invalid_args_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_c_s_r_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, issue_certificate_errors(), tuple()}.
 issue_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"IssueCertificate">>, Input, Options).
@@ -1492,7 +1541,7 @@ issue_certificate(Client, Input, Options)
 -spec list_certificate_authorities(map(), list_certificate_authorities_request()) ->
     {ok, list_certificate_authorities_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_certificate_authorities_errors(), tuple()}.
 list_certificate_authorities(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_certificate_authorities(Client, Input, []).
@@ -1500,7 +1549,7 @@ list_certificate_authorities(Client, Input)
 -spec list_certificate_authorities(map(), list_certificate_authorities_request(), proplists:proplist()) ->
     {ok, list_certificate_authorities_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_certificate_authorities_errors(), tuple()}.
 list_certificate_authorities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCertificateAuthorities">>, Input, Options).
@@ -1540,11 +1589,7 @@ list_certificate_authorities(Client, Input, Options)
 -spec list_permissions(map(), list_permissions_request()) ->
     {ok, list_permissions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, request_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_permissions_errors(), tuple()}.
 list_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_permissions(Client, Input, []).
@@ -1552,11 +1597,7 @@ list_permissions(Client, Input)
 -spec list_permissions(map(), list_permissions_request(), proplists:proplist()) ->
     {ok, list_permissions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, request_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_permissions_errors(), tuple()}.
 list_permissions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPermissions">>, Input, Options).
@@ -1576,9 +1617,7 @@ list_permissions(Client, Input, Options)
 -spec list_tags(map(), list_tags_request()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags(Client, Input, []).
@@ -1586,9 +1625,7 @@ list_tags(Client, Input)
 -spec list_tags(map(), list_tags_request(), proplists:proplist()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTags">>, Input, Options).
@@ -1636,13 +1673,7 @@ list_tags(Client, Input, Options)
 -spec put_policy(map(), put_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_policy_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, lockout_prevented_exception(), tuple()} |
-    {error, request_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_policy_errors(), tuple()}.
 put_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_policy(Client, Input, []).
@@ -1650,13 +1681,7 @@ put_policy(Client, Input)
 -spec put_policy(map(), put_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_policy_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, lockout_prevented_exception(), tuple()} |
-    {error, request_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_policy_errors(), tuple()}.
 put_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutPolicy">>, Input, Options).
@@ -1694,9 +1719,7 @@ put_policy(Client, Input, Options)
 -spec restore_certificate_authority(map(), restore_certificate_authority_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, restore_certificate_authority_errors(), tuple()}.
 restore_certificate_authority(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_certificate_authority(Client, Input, []).
@@ -1704,9 +1727,7 @@ restore_certificate_authority(Client, Input)
 -spec restore_certificate_authority(map(), restore_certificate_authority_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, restore_certificate_authority_errors(), tuple()}.
 restore_certificate_authority(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreCertificateAuthority">>, Input, Options).
@@ -1746,15 +1767,7 @@ restore_certificate_authority(Client, Input, Options)
 -spec revoke_certificate(map(), revoke_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, request_already_processed_exception(), tuple()} |
-    {error, request_failed_exception(), tuple()} |
-    {error, request_in_progress_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, revoke_certificate_errors(), tuple()}.
 revoke_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     revoke_certificate(Client, Input, []).
@@ -1762,15 +1775,7 @@ revoke_certificate(Client, Input)
 -spec revoke_certificate(map(), revoke_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, request_already_processed_exception(), tuple()} |
-    {error, request_failed_exception(), tuple()} |
-    {error, request_in_progress_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, revoke_certificate_errors(), tuple()}.
 revoke_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RevokeCertificate">>, Input, Options).
@@ -1805,11 +1810,7 @@ revoke_certificate(Client, Input, Options)
 -spec tag_certificate_authority(map(), tag_certificate_authority_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, invalid_tag_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_certificate_authority_errors(), tuple()}.
 tag_certificate_authority(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_certificate_authority(Client, Input, []).
@@ -1817,11 +1818,7 @@ tag_certificate_authority(Client, Input)
 -spec tag_certificate_authority(map(), tag_certificate_authority_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, invalid_tag_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_certificate_authority_errors(), tuple()}.
 tag_certificate_authority(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagCertificateAuthority">>, Input, Options).
@@ -1843,10 +1840,7 @@ tag_certificate_authority(Client, Input, Options)
 -spec untag_certificate_authority(map(), untag_certificate_authority_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, invalid_tag_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_certificate_authority_errors(), tuple()}.
 untag_certificate_authority(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_certificate_authority(Client, Input, []).
@@ -1854,10 +1848,7 @@ untag_certificate_authority(Client, Input)
 -spec untag_certificate_authority(map(), untag_certificate_authority_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, invalid_tag_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_certificate_authority_errors(), tuple()}.
 untag_certificate_authority(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagCertificateAuthority">>, Input, Options).
@@ -1881,12 +1872,7 @@ untag_certificate_authority(Client, Input, Options)
 -spec update_certificate_authority(map(), update_certificate_authority_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_args_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_policy_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_certificate_authority_errors(), tuple()}.
 update_certificate_authority(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_certificate_authority(Client, Input, []).
@@ -1894,12 +1880,7 @@ update_certificate_authority(Client, Input)
 -spec update_certificate_authority(map(), update_certificate_authority_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_args_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_policy_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_certificate_authority_errors(), tuple()}.
 update_certificate_authority(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCertificateAuthority">>, Input, Options).

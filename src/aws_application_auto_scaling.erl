@@ -548,6 +548,81 @@
 %% }
 -type register_scalable_target_response() :: #{binary() => any()}.
 
+-type delete_scaling_policy_errors() ::
+    validation_exception() | 
+    concurrent_update_exception() | 
+    object_not_found_exception() | 
+    internal_service_exception().
+
+-type delete_scheduled_action_errors() ::
+    validation_exception() | 
+    concurrent_update_exception() | 
+    object_not_found_exception() | 
+    internal_service_exception().
+
+-type deregister_scalable_target_errors() ::
+    validation_exception() | 
+    concurrent_update_exception() | 
+    object_not_found_exception() | 
+    internal_service_exception().
+
+-type describe_scalable_targets_errors() ::
+    validation_exception() | 
+    concurrent_update_exception() | 
+    invalid_next_token_exception() | 
+    internal_service_exception().
+
+-type describe_scaling_activities_errors() ::
+    validation_exception() | 
+    concurrent_update_exception() | 
+    invalid_next_token_exception() | 
+    internal_service_exception().
+
+-type describe_scaling_policies_errors() ::
+    failed_resource_access_exception() | 
+    validation_exception() | 
+    concurrent_update_exception() | 
+    invalid_next_token_exception() | 
+    internal_service_exception().
+
+-type describe_scheduled_actions_errors() ::
+    validation_exception() | 
+    concurrent_update_exception() | 
+    invalid_next_token_exception() | 
+    internal_service_exception().
+
+-type list_tags_for_resource_errors() ::
+    resource_not_found_exception().
+
+-type put_scaling_policy_errors() ::
+    failed_resource_access_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    concurrent_update_exception() | 
+    object_not_found_exception() | 
+    internal_service_exception().
+
+-type put_scheduled_action_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    concurrent_update_exception() | 
+    object_not_found_exception() | 
+    internal_service_exception().
+
+-type register_scalable_target_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    concurrent_update_exception() | 
+    internal_service_exception().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -571,10 +646,7 @@
 -spec delete_scaling_policy(map(), delete_scaling_policy_request()) ->
     {ok, delete_scaling_policy_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_update_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, object_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_scaling_policy_errors(), tuple()}.
 delete_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_scaling_policy(Client, Input, []).
@@ -582,10 +654,7 @@ delete_scaling_policy(Client, Input)
 -spec delete_scaling_policy(map(), delete_scaling_policy_request(), proplists:proplist()) ->
     {ok, delete_scaling_policy_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_update_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, object_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_scaling_policy_errors(), tuple()}.
 delete_scaling_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteScalingPolicy">>, Input, Options).
@@ -599,10 +668,7 @@ delete_scaling_policy(Client, Input, Options)
 -spec delete_scheduled_action(map(), delete_scheduled_action_request()) ->
     {ok, delete_scheduled_action_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_update_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, object_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_scheduled_action_errors(), tuple()}.
 delete_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_scheduled_action(Client, Input, []).
@@ -610,10 +676,7 @@ delete_scheduled_action(Client, Input)
 -spec delete_scheduled_action(map(), delete_scheduled_action_request(), proplists:proplist()) ->
     {ok, delete_scheduled_action_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_update_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, object_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_scheduled_action_errors(), tuple()}.
 delete_scheduled_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteScheduledAction">>, Input, Options).
@@ -631,10 +694,7 @@ delete_scheduled_action(Client, Input, Options)
 -spec deregister_scalable_target(map(), deregister_scalable_target_request()) ->
     {ok, deregister_scalable_target_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_update_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, object_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, deregister_scalable_target_errors(), tuple()}.
 deregister_scalable_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_scalable_target(Client, Input, []).
@@ -642,10 +702,7 @@ deregister_scalable_target(Client, Input)
 -spec deregister_scalable_target(map(), deregister_scalable_target_request(), proplists:proplist()) ->
     {ok, deregister_scalable_target_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_update_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, object_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, deregister_scalable_target_errors(), tuple()}.
 deregister_scalable_target(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterScalableTarget">>, Input, Options).
@@ -658,10 +715,7 @@ deregister_scalable_target(Client, Input, Options)
 -spec describe_scalable_targets(map(), describe_scalable_targets_request()) ->
     {ok, describe_scalable_targets_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_update_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_scalable_targets_errors(), tuple()}.
 describe_scalable_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scalable_targets(Client, Input, []).
@@ -669,10 +723,7 @@ describe_scalable_targets(Client, Input)
 -spec describe_scalable_targets(map(), describe_scalable_targets_request(), proplists:proplist()) ->
     {ok, describe_scalable_targets_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_update_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_scalable_targets_errors(), tuple()}.
 describe_scalable_targets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScalableTargets">>, Input, Options).
@@ -690,10 +741,7 @@ describe_scalable_targets(Client, Input, Options)
 -spec describe_scaling_activities(map(), describe_scaling_activities_request()) ->
     {ok, describe_scaling_activities_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_update_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_scaling_activities_errors(), tuple()}.
 describe_scaling_activities(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_activities(Client, Input, []).
@@ -701,10 +749,7 @@ describe_scaling_activities(Client, Input)
 -spec describe_scaling_activities(map(), describe_scaling_activities_request(), proplists:proplist()) ->
     {ok, describe_scaling_activities_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_update_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_scaling_activities_errors(), tuple()}.
 describe_scaling_activities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScalingActivities">>, Input, Options).
@@ -723,11 +768,7 @@ describe_scaling_activities(Client, Input, Options)
 -spec describe_scaling_policies(map(), describe_scaling_policies_request()) ->
     {ok, describe_scaling_policies_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_update_exception(), tuple()} |
-    {error, failed_resource_access_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_scaling_policies_errors(), tuple()}.
 describe_scaling_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_policies(Client, Input, []).
@@ -735,11 +776,7 @@ describe_scaling_policies(Client, Input)
 -spec describe_scaling_policies(map(), describe_scaling_policies_request(), proplists:proplist()) ->
     {ok, describe_scaling_policies_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_update_exception(), tuple()} |
-    {error, failed_resource_access_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_scaling_policies_errors(), tuple()}.
 describe_scaling_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScalingPolicies">>, Input, Options).
@@ -759,10 +796,7 @@ describe_scaling_policies(Client, Input, Options)
 -spec describe_scheduled_actions(map(), describe_scheduled_actions_request()) ->
     {ok, describe_scheduled_actions_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_update_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_scheduled_actions_errors(), tuple()}.
 describe_scheduled_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scheduled_actions(Client, Input, []).
@@ -770,10 +804,7 @@ describe_scheduled_actions(Client, Input)
 -spec describe_scheduled_actions(map(), describe_scheduled_actions_request(), proplists:proplist()) ->
     {ok, describe_scheduled_actions_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_update_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_scheduled_actions_errors(), tuple()}.
 describe_scheduled_actions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScheduledActions">>, Input, Options).
@@ -788,7 +819,7 @@ describe_scheduled_actions(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -796,7 +827,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -854,12 +885,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec put_scaling_policy(map(), put_scaling_policy_request()) ->
     {ok, put_scaling_policy_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_update_exception(), tuple()} |
-    {error, failed_resource_access_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, object_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_scaling_policy_errors(), tuple()}.
 put_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_scaling_policy(Client, Input, []).
@@ -867,12 +893,7 @@ put_scaling_policy(Client, Input)
 -spec put_scaling_policy(map(), put_scaling_policy_request(), proplists:proplist()) ->
     {ok, put_scaling_policy_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_update_exception(), tuple()} |
-    {error, failed_resource_access_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, object_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_scaling_policy_errors(), tuple()}.
 put_scaling_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutScalingPolicy">>, Input, Options).
@@ -909,11 +930,7 @@ put_scaling_policy(Client, Input, Options)
 -spec put_scheduled_action(map(), put_scheduled_action_request()) ->
     {ok, put_scheduled_action_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_update_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, object_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_scheduled_action_errors(), tuple()}.
 put_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_scheduled_action(Client, Input, []).
@@ -921,11 +938,7 @@ put_scheduled_action(Client, Input)
 -spec put_scheduled_action(map(), put_scheduled_action_request(), proplists:proplist()) ->
     {ok, put_scheduled_action_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_update_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, object_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_scheduled_action_errors(), tuple()}.
 put_scheduled_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutScheduledAction">>, Input, Options).
@@ -995,10 +1008,7 @@ put_scheduled_action(Client, Input, Options)
 -spec register_scalable_target(map(), register_scalable_target_request()) ->
     {ok, register_scalable_target_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_update_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, register_scalable_target_errors(), tuple()}.
 register_scalable_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_scalable_target(Client, Input, []).
@@ -1006,10 +1016,7 @@ register_scalable_target(Client, Input)
 -spec register_scalable_target(map(), register_scalable_target_request(), proplists:proplist()) ->
     {ok, register_scalable_target_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_update_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, register_scalable_target_errors(), tuple()}.
 register_scalable_target(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterScalableTarget">>, Input, Options).
@@ -1043,9 +1050,7 @@ register_scalable_target(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -1053,9 +1058,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -1067,8 +1070,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -1076,8 +1078,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).

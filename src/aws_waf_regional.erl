@@ -1837,6 +1837,560 @@
 %% }
 -type create_regex_pattern_set_response() :: #{binary() => any()}.
 
+-type associate_web_acl_errors() ::
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_unavailable_entity_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type create_byte_match_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_disallowed_name_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception().
+
+-type create_geo_match_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_disallowed_name_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception().
+
+-type create_ip_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_disallowed_name_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception().
+
+-type create_rate_based_rule_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_disallowed_name_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_bad_request_exception() | 
+    w_a_f_stale_data_exception().
+
+-type create_regex_match_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_disallowed_name_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception().
+
+-type create_regex_pattern_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_disallowed_name_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception().
+
+-type create_rule_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_disallowed_name_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_bad_request_exception() | 
+    w_a_f_stale_data_exception().
+
+-type create_rule_group_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_disallowed_name_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_bad_request_exception() | 
+    w_a_f_stale_data_exception().
+
+-type create_size_constraint_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_disallowed_name_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception().
+
+-type create_sql_injection_match_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_disallowed_name_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception().
+
+-type create_web_acl_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_disallowed_name_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_bad_request_exception() | 
+    w_a_f_stale_data_exception().
+
+-type create_web_acl_migration_stack_errors() ::
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_entity_migration_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type create_xss_match_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_disallowed_name_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception().
+
+-type delete_byte_match_set_errors() ::
+    w_a_f_non_empty_entity_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_geo_match_set_errors() ::
+    w_a_f_non_empty_entity_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_ip_set_errors() ::
+    w_a_f_non_empty_entity_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_logging_configuration_errors() ::
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_permission_policy_errors() ::
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_rate_based_rule_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_non_empty_entity_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_regex_match_set_errors() ::
+    w_a_f_non_empty_entity_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_regex_pattern_set_errors() ::
+    w_a_f_non_empty_entity_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_rule_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_non_empty_entity_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_rule_group_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_non_empty_entity_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_size_constraint_set_errors() ::
+    w_a_f_non_empty_entity_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_sql_injection_match_set_errors() ::
+    w_a_f_non_empty_entity_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_web_acl_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_non_empty_entity_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_xss_match_set_errors() ::
+    w_a_f_non_empty_entity_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type disassociate_web_acl_errors() ::
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_byte_match_set_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_change_token_errors() ::
+    w_a_f_internal_error_exception().
+
+-type get_change_token_status_errors() ::
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_geo_match_set_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_ip_set_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_logging_configuration_errors() ::
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_permission_policy_errors() ::
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_rate_based_rule_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_rate_based_rule_managed_keys_errors() ::
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_regex_match_set_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_regex_pattern_set_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_rule_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_rule_group_errors() ::
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_sampled_requests_errors() ::
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_size_constraint_set_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_sql_injection_match_set_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_web_acl_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_web_acl_for_resource_errors() ::
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_unavailable_entity_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_xss_match_set_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type list_activated_rules_in_rule_group_errors() ::
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type list_byte_match_sets_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception().
+
+-type list_geo_match_sets_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception().
+
+-type list_ip_sets_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception().
+
+-type list_logging_configurations_errors() ::
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type list_rate_based_rules_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception().
+
+-type list_regex_match_sets_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception().
+
+-type list_regex_pattern_sets_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception().
+
+-type list_resources_for_web_acl_errors() ::
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type list_rule_groups_errors() ::
+    w_a_f_internal_error_exception().
+
+-type list_rules_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception().
+
+-type list_size_constraint_sets_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception().
+
+-type list_sql_injection_match_sets_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception().
+
+-type list_subscribed_rule_groups_errors() ::
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type list_tags_for_resource_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_bad_request_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type list_web_acls_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception().
+
+-type list_xss_match_sets_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception().
+
+-type put_logging_configuration_errors() ::
+    w_a_f_internal_error_exception() | 
+    w_a_f_service_linked_role_error_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type put_permission_policy_errors() ::
+    w_a_f_internal_error_exception() | 
+    w_a_f_invalid_permission_policy_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type tag_resource_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_bad_request_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type untag_resource_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_bad_request_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type update_byte_match_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_container_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type update_geo_match_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_container_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type update_ip_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_container_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type update_rate_based_rule_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_container_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type update_regex_match_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_disallowed_name_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_container_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type update_regex_pattern_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_container_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_invalid_regex_pattern_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type update_rule_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_container_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type update_rule_group_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_container_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type update_size_constraint_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_container_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type update_sql_injection_match_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_container_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type update_web_acl_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_subscription_not_found_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_container_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type update_xss_match_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_container_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
 
 %%====================================================================
 %% API
@@ -1862,11 +2416,7 @@
 -spec associate_web_acl(map(), associate_web_acl_request()) ->
     {ok, associate_web_acl_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_unavailable_entity_exception(), tuple()}.
+    {error, associate_web_acl_errors(), tuple()}.
 associate_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_web_acl(Client, Input, []).
@@ -1874,11 +2424,7 @@ associate_web_acl(Client, Input)
 -spec associate_web_acl(map(), associate_web_acl_request(), proplists:proplist()) ->
     {ok, associate_web_acl_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_unavailable_entity_exception(), tuple()}.
+    {error, associate_web_acl_errors(), tuple()}.
 associate_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateWebACL">>, Input, Options).
@@ -1931,12 +2477,7 @@ associate_web_acl(Client, Input, Options)
 -spec create_byte_match_set(map(), create_byte_match_set_request()) ->
     {ok, create_byte_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_disallowed_name_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, create_byte_match_set_errors(), tuple()}.
 create_byte_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_byte_match_set(Client, Input, []).
@@ -1944,12 +2485,7 @@ create_byte_match_set(Client, Input)
 -spec create_byte_match_set(map(), create_byte_match_set_request(), proplists:proplist()) ->
     {ok, create_byte_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_disallowed_name_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, create_byte_match_set_errors(), tuple()}.
 create_byte_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateByteMatchSet">>, Input, Options).
@@ -1998,12 +2534,7 @@ create_byte_match_set(Client, Input, Options)
 -spec create_geo_match_set(map(), create_geo_match_set_request()) ->
     {ok, create_geo_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_disallowed_name_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, create_geo_match_set_errors(), tuple()}.
 create_geo_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_geo_match_set(Client, Input, []).
@@ -2011,12 +2542,7 @@ create_geo_match_set(Client, Input)
 -spec create_geo_match_set(map(), create_geo_match_set_request(), proplists:proplist()) ->
     {ok, create_geo_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_disallowed_name_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, create_geo_match_set_errors(), tuple()}.
 create_geo_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGeoMatchSet">>, Input, Options).
@@ -2069,12 +2595,7 @@ create_geo_match_set(Client, Input, Options)
 -spec create_ip_set(map(), create_ip_set_request()) ->
     {ok, create_ip_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_disallowed_name_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, create_ip_set_errors(), tuple()}.
 create_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_ip_set(Client, Input, []).
@@ -2082,12 +2603,7 @@ create_ip_set(Client, Input)
 -spec create_ip_set(map(), create_ip_set_request(), proplists:proplist()) ->
     {ok, create_ip_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_disallowed_name_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, create_ip_set_errors(), tuple()}.
 create_ip_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateIPSet">>, Input, Options).
@@ -2189,14 +2705,7 @@ create_ip_set(Client, Input, Options)
 -spec create_rate_based_rule(map(), create_rate_based_rule_request()) ->
     {ok, create_rate_based_rule_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_bad_request_exception(), tuple()} |
-    {error, w_a_f_disallowed_name_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, create_rate_based_rule_errors(), tuple()}.
 create_rate_based_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_rate_based_rule(Client, Input, []).
@@ -2204,14 +2713,7 @@ create_rate_based_rule(Client, Input)
 -spec create_rate_based_rule(map(), create_rate_based_rule_request(), proplists:proplist()) ->
     {ok, create_rate_based_rule_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_bad_request_exception(), tuple()} |
-    {error, w_a_f_disallowed_name_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, create_rate_based_rule_errors(), tuple()}.
 create_rate_based_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRateBasedRule">>, Input, Options).
@@ -2266,10 +2768,7 @@ create_rate_based_rule(Client, Input, Options)
 -spec create_regex_match_set(map(), create_regex_match_set_request()) ->
     {ok, create_regex_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_disallowed_name_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, create_regex_match_set_errors(), tuple()}.
 create_regex_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_regex_match_set(Client, Input, []).
@@ -2277,10 +2776,7 @@ create_regex_match_set(Client, Input)
 -spec create_regex_match_set(map(), create_regex_match_set_request(), proplists:proplist()) ->
     {ok, create_regex_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_disallowed_name_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, create_regex_match_set_errors(), tuple()}.
 create_regex_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRegexMatchSet">>, Input, Options).
@@ -2328,10 +2824,7 @@ create_regex_match_set(Client, Input, Options)
 -spec create_regex_pattern_set(map(), create_regex_pattern_set_request()) ->
     {ok, create_regex_pattern_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_disallowed_name_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, create_regex_pattern_set_errors(), tuple()}.
 create_regex_pattern_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_regex_pattern_set(Client, Input, []).
@@ -2339,10 +2832,7 @@ create_regex_pattern_set(Client, Input)
 -spec create_regex_pattern_set(map(), create_regex_pattern_set_request(), proplists:proplist()) ->
     {ok, create_regex_pattern_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_disallowed_name_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, create_regex_pattern_set_errors(), tuple()}.
 create_regex_pattern_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRegexPatternSet">>, Input, Options).
@@ -2413,14 +2903,7 @@ create_regex_pattern_set(Client, Input, Options)
 -spec create_rule(map(), create_rule_request()) ->
     {ok, create_rule_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_bad_request_exception(), tuple()} |
-    {error, w_a_f_disallowed_name_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, create_rule_errors(), tuple()}.
 create_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_rule(Client, Input, []).
@@ -2428,14 +2911,7 @@ create_rule(Client, Input)
 -spec create_rule(map(), create_rule_request(), proplists:proplist()) ->
     {ok, create_rule_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_bad_request_exception(), tuple()} |
-    {error, w_a_f_disallowed_name_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, create_rule_errors(), tuple()}.
 create_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRule">>, Input, Options).
@@ -2475,13 +2951,7 @@ create_rule(Client, Input, Options)
 -spec create_rule_group(map(), create_rule_group_request()) ->
     {ok, create_rule_group_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_bad_request_exception(), tuple()} |
-    {error, w_a_f_disallowed_name_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, create_rule_group_errors(), tuple()}.
 create_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_rule_group(Client, Input, []).
@@ -2489,13 +2959,7 @@ create_rule_group(Client, Input)
 -spec create_rule_group(map(), create_rule_group_request(), proplists:proplist()) ->
     {ok, create_rule_group_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_bad_request_exception(), tuple()} |
-    {error, w_a_f_disallowed_name_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, create_rule_group_errors(), tuple()}.
 create_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRuleGroup">>, Input, Options).
@@ -2548,12 +3012,7 @@ create_rule_group(Client, Input, Options)
 -spec create_size_constraint_set(map(), create_size_constraint_set_request()) ->
     {ok, create_size_constraint_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_disallowed_name_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, create_size_constraint_set_errors(), tuple()}.
 create_size_constraint_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_size_constraint_set(Client, Input, []).
@@ -2561,12 +3020,7 @@ create_size_constraint_set(Client, Input)
 -spec create_size_constraint_set(map(), create_size_constraint_set_request(), proplists:proplist()) ->
     {ok, create_size_constraint_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_disallowed_name_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, create_size_constraint_set_errors(), tuple()}.
 create_size_constraint_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSizeConstraintSet">>, Input, Options).
@@ -2615,12 +3069,7 @@ create_size_constraint_set(Client, Input, Options)
 -spec create_sql_injection_match_set(map(), create_sql_injection_match_set_request()) ->
     {ok, create_sql_injection_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_disallowed_name_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, create_sql_injection_match_set_errors(), tuple()}.
 create_sql_injection_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_sql_injection_match_set(Client, Input, []).
@@ -2628,12 +3077,7 @@ create_sql_injection_match_set(Client, Input)
 -spec create_sql_injection_match_set(map(), create_sql_injection_match_set_request(), proplists:proplist()) ->
     {ok, create_sql_injection_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_disallowed_name_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, create_sql_injection_match_set_errors(), tuple()}.
 create_sql_injection_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSqlInjectionMatchSet">>, Input, Options).
@@ -2695,15 +3139,7 @@ create_sql_injection_match_set(Client, Input, Options)
 -spec create_web_acl(map(), create_web_acl_request()) ->
     {ok, create_web_acl_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_bad_request_exception(), tuple()} |
-    {error, w_a_f_disallowed_name_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, create_web_acl_errors(), tuple()}.
 create_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_web_acl(Client, Input, []).
@@ -2711,15 +3147,7 @@ create_web_acl(Client, Input)
 -spec create_web_acl(map(), create_web_acl_request(), proplists:proplist()) ->
     {ok, create_web_acl_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_bad_request_exception(), tuple()} |
-    {error, w_a_f_disallowed_name_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, create_web_acl_errors(), tuple()}.
 create_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWebACL">>, Input, Options).
@@ -2744,11 +3172,7 @@ create_web_acl(Client, Input, Options)
 -spec create_web_acl_migration_stack(map(), create_web_acl_migration_stack_request()) ->
     {ok, create_web_acl_migration_stack_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_entity_migration_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, create_web_acl_migration_stack_errors(), tuple()}.
 create_web_acl_migration_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_web_acl_migration_stack(Client, Input, []).
@@ -2756,11 +3180,7 @@ create_web_acl_migration_stack(Client, Input)
 -spec create_web_acl_migration_stack(map(), create_web_acl_migration_stack_request(), proplists:proplist()) ->
     {ok, create_web_acl_migration_stack_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_entity_migration_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, create_web_acl_migration_stack_errors(), tuple()}.
 create_web_acl_migration_stack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWebACLMigrationStack">>, Input, Options).
@@ -2808,12 +3228,7 @@ create_web_acl_migration_stack(Client, Input, Options)
 -spec create_xss_match_set(map(), create_xss_match_set_request()) ->
     {ok, create_xss_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_disallowed_name_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, create_xss_match_set_errors(), tuple()}.
 create_xss_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_xss_match_set(Client, Input, []).
@@ -2821,12 +3236,7 @@ create_xss_match_set(Client, Input)
 -spec create_xss_match_set(map(), create_xss_match_set_request(), proplists:proplist()) ->
     {ok, create_xss_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_disallowed_name_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, create_xss_match_set_errors(), tuple()}.
 create_xss_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateXssMatchSet">>, Input, Options).
@@ -2866,12 +3276,7 @@ create_xss_match_set(Client, Input, Options)
 -spec delete_byte_match_set(map(), delete_byte_match_set_request()) ->
     {ok, delete_byte_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_non_empty_entity_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, delete_byte_match_set_errors(), tuple()}.
 delete_byte_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_byte_match_set(Client, Input, []).
@@ -2879,12 +3284,7 @@ delete_byte_match_set(Client, Input)
 -spec delete_byte_match_set(map(), delete_byte_match_set_request(), proplists:proplist()) ->
     {ok, delete_byte_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_non_empty_entity_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, delete_byte_match_set_errors(), tuple()}.
 delete_byte_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteByteMatchSet">>, Input, Options).
@@ -2925,12 +3325,7 @@ delete_byte_match_set(Client, Input, Options)
 -spec delete_geo_match_set(map(), delete_geo_match_set_request()) ->
     {ok, delete_geo_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_non_empty_entity_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, delete_geo_match_set_errors(), tuple()}.
 delete_geo_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_geo_match_set(Client, Input, []).
@@ -2938,12 +3333,7 @@ delete_geo_match_set(Client, Input)
 -spec delete_geo_match_set(map(), delete_geo_match_set_request(), proplists:proplist()) ->
     {ok, delete_geo_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_non_empty_entity_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, delete_geo_match_set_errors(), tuple()}.
 delete_geo_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGeoMatchSet">>, Input, Options).
@@ -2984,12 +3374,7 @@ delete_geo_match_set(Client, Input, Options)
 -spec delete_ip_set(map(), delete_ip_set_request()) ->
     {ok, delete_ip_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_non_empty_entity_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, delete_ip_set_errors(), tuple()}.
 delete_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_ip_set(Client, Input, []).
@@ -2997,12 +3382,7 @@ delete_ip_set(Client, Input)
 -spec delete_ip_set(map(), delete_ip_set_request(), proplists:proplist()) ->
     {ok, delete_ip_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_non_empty_entity_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, delete_ip_set_errors(), tuple()}.
 delete_ip_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIPSet">>, Input, Options).
@@ -3027,9 +3407,7 @@ delete_ip_set(Client, Input, Options)
 -spec delete_logging_configuration(map(), delete_logging_configuration_request()) ->
     {ok, delete_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, delete_logging_configuration_errors(), tuple()}.
 delete_logging_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_logging_configuration(Client, Input, []).
@@ -3037,9 +3415,7 @@ delete_logging_configuration(Client, Input)
 -spec delete_logging_configuration(map(), delete_logging_configuration_request(), proplists:proplist()) ->
     {ok, delete_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, delete_logging_configuration_errors(), tuple()}.
 delete_logging_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLoggingConfiguration">>, Input, Options).
@@ -3065,9 +3441,7 @@ delete_logging_configuration(Client, Input, Options)
 -spec delete_permission_policy(map(), delete_permission_policy_request()) ->
     {ok, delete_permission_policy_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, delete_permission_policy_errors(), tuple()}.
 delete_permission_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_permission_policy(Client, Input, []).
@@ -3075,9 +3449,7 @@ delete_permission_policy(Client, Input)
 -spec delete_permission_policy(map(), delete_permission_policy_request(), proplists:proplist()) ->
     {ok, delete_permission_policy_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, delete_permission_policy_errors(), tuple()}.
 delete_permission_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePermissionPolicy">>, Input, Options).
@@ -3120,14 +3492,7 @@ delete_permission_policy(Client, Input, Options)
 -spec delete_rate_based_rule(map(), delete_rate_based_rule_request()) ->
     {ok, delete_rate_based_rule_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_non_empty_entity_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, delete_rate_based_rule_errors(), tuple()}.
 delete_rate_based_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rate_based_rule(Client, Input, []).
@@ -3135,14 +3500,7 @@ delete_rate_based_rule(Client, Input)
 -spec delete_rate_based_rule(map(), delete_rate_based_rule_request(), proplists:proplist()) ->
     {ok, delete_rate_based_rule_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_non_empty_entity_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, delete_rate_based_rule_errors(), tuple()}.
 delete_rate_based_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRateBasedRule">>, Input, Options).
@@ -3182,12 +3540,7 @@ delete_rate_based_rule(Client, Input, Options)
 -spec delete_regex_match_set(map(), delete_regex_match_set_request()) ->
     {ok, delete_regex_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_non_empty_entity_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, delete_regex_match_set_errors(), tuple()}.
 delete_regex_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_regex_match_set(Client, Input, []).
@@ -3195,12 +3548,7 @@ delete_regex_match_set(Client, Input)
 -spec delete_regex_match_set(map(), delete_regex_match_set_request(), proplists:proplist()) ->
     {ok, delete_regex_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_non_empty_entity_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, delete_regex_match_set_errors(), tuple()}.
 delete_regex_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRegexMatchSet">>, Input, Options).
@@ -3226,12 +3574,7 @@ delete_regex_match_set(Client, Input, Options)
 -spec delete_regex_pattern_set(map(), delete_regex_pattern_set_request()) ->
     {ok, delete_regex_pattern_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_non_empty_entity_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, delete_regex_pattern_set_errors(), tuple()}.
 delete_regex_pattern_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_regex_pattern_set(Client, Input, []).
@@ -3239,12 +3582,7 @@ delete_regex_pattern_set(Client, Input)
 -spec delete_regex_pattern_set(map(), delete_regex_pattern_set_request(), proplists:proplist()) ->
     {ok, delete_regex_pattern_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_non_empty_entity_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, delete_regex_pattern_set_errors(), tuple()}.
 delete_regex_pattern_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRegexPatternSet">>, Input, Options).
@@ -3286,14 +3624,7 @@ delete_regex_pattern_set(Client, Input, Options)
 -spec delete_rule(map(), delete_rule_request()) ->
     {ok, delete_rule_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_non_empty_entity_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, delete_rule_errors(), tuple()}.
 delete_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rule(Client, Input, []).
@@ -3301,14 +3632,7 @@ delete_rule(Client, Input)
 -spec delete_rule(map(), delete_rule_request(), proplists:proplist()) ->
     {ok, delete_rule_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_non_empty_entity_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, delete_rule_errors(), tuple()}.
 delete_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRule">>, Input, Options).
@@ -3349,14 +3673,7 @@ delete_rule(Client, Input, Options)
 -spec delete_rule_group(map(), delete_rule_group_request()) ->
     {ok, delete_rule_group_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_non_empty_entity_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, delete_rule_group_errors(), tuple()}.
 delete_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rule_group(Client, Input, []).
@@ -3364,14 +3681,7 @@ delete_rule_group(Client, Input)
 -spec delete_rule_group(map(), delete_rule_group_request(), proplists:proplist()) ->
     {ok, delete_rule_group_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_non_empty_entity_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, delete_rule_group_errors(), tuple()}.
 delete_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRuleGroup">>, Input, Options).
@@ -3412,12 +3722,7 @@ delete_rule_group(Client, Input, Options)
 -spec delete_size_constraint_set(map(), delete_size_constraint_set_request()) ->
     {ok, delete_size_constraint_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_non_empty_entity_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, delete_size_constraint_set_errors(), tuple()}.
 delete_size_constraint_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_size_constraint_set(Client, Input, []).
@@ -3425,12 +3730,7 @@ delete_size_constraint_set(Client, Input)
 -spec delete_size_constraint_set(map(), delete_size_constraint_set_request(), proplists:proplist()) ->
     {ok, delete_size_constraint_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_non_empty_entity_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, delete_size_constraint_set_errors(), tuple()}.
 delete_size_constraint_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSizeConstraintSet">>, Input, Options).
@@ -3473,12 +3773,7 @@ delete_size_constraint_set(Client, Input, Options)
 -spec delete_sql_injection_match_set(map(), delete_sql_injection_match_set_request()) ->
     {ok, delete_sql_injection_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_non_empty_entity_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, delete_sql_injection_match_set_errors(), tuple()}.
 delete_sql_injection_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_sql_injection_match_set(Client, Input, []).
@@ -3486,12 +3781,7 @@ delete_sql_injection_match_set(Client, Input)
 -spec delete_sql_injection_match_set(map(), delete_sql_injection_match_set_request(), proplists:proplist()) ->
     {ok, delete_sql_injection_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_non_empty_entity_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, delete_sql_injection_match_set_errors(), tuple()}.
 delete_sql_injection_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSqlInjectionMatchSet">>, Input, Options).
@@ -3527,14 +3817,7 @@ delete_sql_injection_match_set(Client, Input, Options)
 -spec delete_web_acl(map(), delete_web_acl_request()) ->
     {ok, delete_web_acl_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_non_empty_entity_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, delete_web_acl_errors(), tuple()}.
 delete_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_web_acl(Client, Input, []).
@@ -3542,14 +3825,7 @@ delete_web_acl(Client, Input)
 -spec delete_web_acl(map(), delete_web_acl_request(), proplists:proplist()) ->
     {ok, delete_web_acl_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_non_empty_entity_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, delete_web_acl_errors(), tuple()}.
 delete_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWebACL">>, Input, Options).
@@ -3592,12 +3868,7 @@ delete_web_acl(Client, Input, Options)
 -spec delete_xss_match_set(map(), delete_xss_match_set_request()) ->
     {ok, delete_xss_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_non_empty_entity_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, delete_xss_match_set_errors(), tuple()}.
 delete_xss_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_xss_match_set(Client, Input, []).
@@ -3605,12 +3876,7 @@ delete_xss_match_set(Client, Input)
 -spec delete_xss_match_set(map(), delete_xss_match_set_request(), proplists:proplist()) ->
     {ok, delete_xss_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_non_empty_entity_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, delete_xss_match_set_errors(), tuple()}.
 delete_xss_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteXssMatchSet">>, Input, Options).
@@ -3635,10 +3901,7 @@ delete_xss_match_set(Client, Input, Options)
 -spec disassociate_web_acl(map(), disassociate_web_acl_request()) ->
     {ok, disassociate_web_acl_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, disassociate_web_acl_errors(), tuple()}.
 disassociate_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_web_acl(Client, Input, []).
@@ -3646,10 +3909,7 @@ disassociate_web_acl(Client, Input)
 -spec disassociate_web_acl(map(), disassociate_web_acl_request(), proplists:proplist()) ->
     {ok, disassociate_web_acl_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, disassociate_web_acl_errors(), tuple()}.
 disassociate_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateWebACL">>, Input, Options).
@@ -3673,9 +3933,7 @@ disassociate_web_acl(Client, Input, Options)
 -spec get_byte_match_set(map(), get_byte_match_set_request()) ->
     {ok, get_byte_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_byte_match_set_errors(), tuple()}.
 get_byte_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_byte_match_set(Client, Input, []).
@@ -3683,9 +3941,7 @@ get_byte_match_set(Client, Input)
 -spec get_byte_match_set(map(), get_byte_match_set_request(), proplists:proplist()) ->
     {ok, get_byte_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_byte_match_set_errors(), tuple()}.
 get_byte_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetByteMatchSet">>, Input, Options).
@@ -3725,7 +3981,7 @@ get_byte_match_set(Client, Input, Options)
 -spec get_change_token(map(), get_change_token_request()) ->
     {ok, get_change_token_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()}.
+    {error, get_change_token_errors(), tuple()}.
 get_change_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_change_token(Client, Input, []).
@@ -3733,7 +3989,7 @@ get_change_token(Client, Input)
 -spec get_change_token(map(), get_change_token_request(), proplists:proplist()) ->
     {ok, get_change_token_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()}.
+    {error, get_change_token_errors(), tuple()}.
 get_change_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetChangeToken">>, Input, Options).
@@ -3768,8 +4024,7 @@ get_change_token(Client, Input, Options)
 -spec get_change_token_status(map(), get_change_token_status_request()) ->
     {ok, get_change_token_status_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_change_token_status_errors(), tuple()}.
 get_change_token_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_change_token_status(Client, Input, []).
@@ -3777,8 +4032,7 @@ get_change_token_status(Client, Input)
 -spec get_change_token_status(map(), get_change_token_status_request(), proplists:proplist()) ->
     {ok, get_change_token_status_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_change_token_status_errors(), tuple()}.
 get_change_token_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetChangeTokenStatus">>, Input, Options).
@@ -3802,9 +4056,7 @@ get_change_token_status(Client, Input, Options)
 -spec get_geo_match_set(map(), get_geo_match_set_request()) ->
     {ok, get_geo_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_geo_match_set_errors(), tuple()}.
 get_geo_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_geo_match_set(Client, Input, []).
@@ -3812,9 +4064,7 @@ get_geo_match_set(Client, Input)
 -spec get_geo_match_set(map(), get_geo_match_set_request(), proplists:proplist()) ->
     {ok, get_geo_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_geo_match_set_errors(), tuple()}.
 get_geo_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetGeoMatchSet">>, Input, Options).
@@ -3838,9 +4088,7 @@ get_geo_match_set(Client, Input, Options)
 -spec get_ip_set(map(), get_ip_set_request()) ->
     {ok, get_ip_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_ip_set_errors(), tuple()}.
 get_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ip_set(Client, Input, []).
@@ -3848,9 +4096,7 @@ get_ip_set(Client, Input)
 -spec get_ip_set(map(), get_ip_set_request(), proplists:proplist()) ->
     {ok, get_ip_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_ip_set_errors(), tuple()}.
 get_ip_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetIPSet">>, Input, Options).
@@ -3874,8 +4120,7 @@ get_ip_set(Client, Input, Options)
 -spec get_logging_configuration(map(), get_logging_configuration_request()) ->
     {ok, get_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_logging_configuration_errors(), tuple()}.
 get_logging_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_logging_configuration(Client, Input, []).
@@ -3883,8 +4128,7 @@ get_logging_configuration(Client, Input)
 -spec get_logging_configuration(map(), get_logging_configuration_request(), proplists:proplist()) ->
     {ok, get_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_logging_configuration_errors(), tuple()}.
 get_logging_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLoggingConfiguration">>, Input, Options).
@@ -3908,8 +4152,7 @@ get_logging_configuration(Client, Input, Options)
 -spec get_permission_policy(map(), get_permission_policy_request()) ->
     {ok, get_permission_policy_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_permission_policy_errors(), tuple()}.
 get_permission_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_permission_policy(Client, Input, []).
@@ -3917,8 +4160,7 @@ get_permission_policy(Client, Input)
 -spec get_permission_policy(map(), get_permission_policy_request(), proplists:proplist()) ->
     {ok, get_permission_policy_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_permission_policy_errors(), tuple()}.
 get_permission_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPermissionPolicy">>, Input, Options).
@@ -3944,9 +4186,7 @@ get_permission_policy(Client, Input, Options)
 -spec get_rate_based_rule(map(), get_rate_based_rule_request()) ->
     {ok, get_rate_based_rule_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_rate_based_rule_errors(), tuple()}.
 get_rate_based_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_rate_based_rule(Client, Input, []).
@@ -3954,9 +4194,7 @@ get_rate_based_rule(Client, Input)
 -spec get_rate_based_rule(map(), get_rate_based_rule_request(), proplists:proplist()) ->
     {ok, get_rate_based_rule_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_rate_based_rule_errors(), tuple()}.
 get_rate_based_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRateBasedRule">>, Input, Options).
@@ -3985,10 +4223,7 @@ get_rate_based_rule(Client, Input, Options)
 -spec get_rate_based_rule_managed_keys(map(), get_rate_based_rule_managed_keys_request()) ->
     {ok, get_rate_based_rule_managed_keys_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_rate_based_rule_managed_keys_errors(), tuple()}.
 get_rate_based_rule_managed_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_rate_based_rule_managed_keys(Client, Input, []).
@@ -3996,10 +4231,7 @@ get_rate_based_rule_managed_keys(Client, Input)
 -spec get_rate_based_rule_managed_keys(map(), get_rate_based_rule_managed_keys_request(), proplists:proplist()) ->
     {ok, get_rate_based_rule_managed_keys_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_rate_based_rule_managed_keys_errors(), tuple()}.
 get_rate_based_rule_managed_keys(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRateBasedRuleManagedKeys">>, Input, Options).
@@ -4023,9 +4255,7 @@ get_rate_based_rule_managed_keys(Client, Input, Options)
 -spec get_regex_match_set(map(), get_regex_match_set_request()) ->
     {ok, get_regex_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_regex_match_set_errors(), tuple()}.
 get_regex_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_regex_match_set(Client, Input, []).
@@ -4033,9 +4263,7 @@ get_regex_match_set(Client, Input)
 -spec get_regex_match_set(map(), get_regex_match_set_request(), proplists:proplist()) ->
     {ok, get_regex_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_regex_match_set_errors(), tuple()}.
 get_regex_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRegexMatchSet">>, Input, Options).
@@ -4059,9 +4287,7 @@ get_regex_match_set(Client, Input, Options)
 -spec get_regex_pattern_set(map(), get_regex_pattern_set_request()) ->
     {ok, get_regex_pattern_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_regex_pattern_set_errors(), tuple()}.
 get_regex_pattern_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_regex_pattern_set(Client, Input, []).
@@ -4069,9 +4295,7 @@ get_regex_pattern_set(Client, Input)
 -spec get_regex_pattern_set(map(), get_regex_pattern_set_request(), proplists:proplist()) ->
     {ok, get_regex_pattern_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_regex_pattern_set_errors(), tuple()}.
 get_regex_pattern_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRegexPatternSet">>, Input, Options).
@@ -4096,9 +4320,7 @@ get_regex_pattern_set(Client, Input, Options)
 -spec get_rule(map(), get_rule_request()) ->
     {ok, get_rule_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_rule_errors(), tuple()}.
 get_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_rule(Client, Input, []).
@@ -4106,9 +4328,7 @@ get_rule(Client, Input)
 -spec get_rule(map(), get_rule_request(), proplists:proplist()) ->
     {ok, get_rule_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_rule_errors(), tuple()}.
 get_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRule">>, Input, Options).
@@ -4136,8 +4356,7 @@ get_rule(Client, Input, Options)
 -spec get_rule_group(map(), get_rule_group_request()) ->
     {ok, get_rule_group_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_rule_group_errors(), tuple()}.
 get_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_rule_group(Client, Input, []).
@@ -4145,8 +4364,7 @@ get_rule_group(Client, Input)
 -spec get_rule_group(map(), get_rule_group_request(), proplists:proplist()) ->
     {ok, get_rule_group_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_rule_group_errors(), tuple()}.
 get_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRuleGroup">>, Input, Options).
@@ -4181,8 +4399,7 @@ get_rule_group(Client, Input, Options)
 -spec get_sampled_requests(map(), get_sampled_requests_request()) ->
     {ok, get_sampled_requests_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_sampled_requests_errors(), tuple()}.
 get_sampled_requests(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_sampled_requests(Client, Input, []).
@@ -4190,8 +4407,7 @@ get_sampled_requests(Client, Input)
 -spec get_sampled_requests(map(), get_sampled_requests_request(), proplists:proplist()) ->
     {ok, get_sampled_requests_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_sampled_requests_errors(), tuple()}.
 get_sampled_requests(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSampledRequests">>, Input, Options).
@@ -4216,9 +4432,7 @@ get_sampled_requests(Client, Input, Options)
 -spec get_size_constraint_set(map(), get_size_constraint_set_request()) ->
     {ok, get_size_constraint_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_size_constraint_set_errors(), tuple()}.
 get_size_constraint_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_size_constraint_set(Client, Input, []).
@@ -4226,9 +4440,7 @@ get_size_constraint_set(Client, Input)
 -spec get_size_constraint_set(map(), get_size_constraint_set_request(), proplists:proplist()) ->
     {ok, get_size_constraint_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_size_constraint_set_errors(), tuple()}.
 get_size_constraint_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSizeConstraintSet">>, Input, Options).
@@ -4253,9 +4465,7 @@ get_size_constraint_set(Client, Input, Options)
 -spec get_sql_injection_match_set(map(), get_sql_injection_match_set_request()) ->
     {ok, get_sql_injection_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_sql_injection_match_set_errors(), tuple()}.
 get_sql_injection_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_sql_injection_match_set(Client, Input, []).
@@ -4263,9 +4473,7 @@ get_sql_injection_match_set(Client, Input)
 -spec get_sql_injection_match_set(map(), get_sql_injection_match_set_request(), proplists:proplist()) ->
     {ok, get_sql_injection_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_sql_injection_match_set_errors(), tuple()}.
 get_sql_injection_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSqlInjectionMatchSet">>, Input, Options).
@@ -4289,9 +4497,7 @@ get_sql_injection_match_set(Client, Input, Options)
 -spec get_web_acl(map(), get_web_acl_request()) ->
     {ok, get_web_acl_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_web_acl_errors(), tuple()}.
 get_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_web_acl(Client, Input, []).
@@ -4299,9 +4505,7 @@ get_web_acl(Client, Input)
 -spec get_web_acl(map(), get_web_acl_request(), proplists:proplist()) ->
     {ok, get_web_acl_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_web_acl_errors(), tuple()}.
 get_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetWebACL">>, Input, Options).
@@ -4326,11 +4530,7 @@ get_web_acl(Client, Input, Options)
 -spec get_web_acl_for_resource(map(), get_web_acl_for_resource_request()) ->
     {ok, get_web_acl_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_unavailable_entity_exception(), tuple()}.
+    {error, get_web_acl_for_resource_errors(), tuple()}.
 get_web_acl_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_web_acl_for_resource(Client, Input, []).
@@ -4338,11 +4538,7 @@ get_web_acl_for_resource(Client, Input)
 -spec get_web_acl_for_resource(map(), get_web_acl_for_resource_request(), proplists:proplist()) ->
     {ok, get_web_acl_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_unavailable_entity_exception(), tuple()}.
+    {error, get_web_acl_for_resource_errors(), tuple()}.
 get_web_acl_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetWebACLForResource">>, Input, Options).
@@ -4366,9 +4562,7 @@ get_web_acl_for_resource(Client, Input, Options)
 -spec get_xss_match_set(map(), get_xss_match_set_request()) ->
     {ok, get_xss_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_xss_match_set_errors(), tuple()}.
 get_xss_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_xss_match_set(Client, Input, []).
@@ -4376,9 +4570,7 @@ get_xss_match_set(Client, Input)
 -spec get_xss_match_set(map(), get_xss_match_set_request(), proplists:proplist()) ->
     {ok, get_xss_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, get_xss_match_set_errors(), tuple()}.
 get_xss_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetXssMatchSet">>, Input, Options).
@@ -4402,9 +4594,7 @@ get_xss_match_set(Client, Input, Options)
 -spec list_activated_rules_in_rule_group(map(), list_activated_rules_in_rule_group_request()) ->
     {ok, list_activated_rules_in_rule_group_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, list_activated_rules_in_rule_group_errors(), tuple()}.
 list_activated_rules_in_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_activated_rules_in_rule_group(Client, Input, []).
@@ -4412,9 +4602,7 @@ list_activated_rules_in_rule_group(Client, Input)
 -spec list_activated_rules_in_rule_group(map(), list_activated_rules_in_rule_group_request(), proplists:proplist()) ->
     {ok, list_activated_rules_in_rule_group_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, list_activated_rules_in_rule_group_errors(), tuple()}.
 list_activated_rules_in_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListActivatedRulesInRuleGroup">>, Input, Options).
@@ -4438,8 +4626,7 @@ list_activated_rules_in_rule_group(Client, Input, Options)
 -spec list_byte_match_sets(map(), list_byte_match_sets_request()) ->
     {ok, list_byte_match_sets_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()}.
+    {error, list_byte_match_sets_errors(), tuple()}.
 list_byte_match_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_byte_match_sets(Client, Input, []).
@@ -4447,8 +4634,7 @@ list_byte_match_sets(Client, Input)
 -spec list_byte_match_sets(map(), list_byte_match_sets_request(), proplists:proplist()) ->
     {ok, list_byte_match_sets_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()}.
+    {error, list_byte_match_sets_errors(), tuple()}.
 list_byte_match_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListByteMatchSets">>, Input, Options).
@@ -4472,8 +4658,7 @@ list_byte_match_sets(Client, Input, Options)
 -spec list_geo_match_sets(map(), list_geo_match_sets_request()) ->
     {ok, list_geo_match_sets_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()}.
+    {error, list_geo_match_sets_errors(), tuple()}.
 list_geo_match_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_geo_match_sets(Client, Input, []).
@@ -4481,8 +4666,7 @@ list_geo_match_sets(Client, Input)
 -spec list_geo_match_sets(map(), list_geo_match_sets_request(), proplists:proplist()) ->
     {ok, list_geo_match_sets_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()}.
+    {error, list_geo_match_sets_errors(), tuple()}.
 list_geo_match_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGeoMatchSets">>, Input, Options).
@@ -4506,8 +4690,7 @@ list_geo_match_sets(Client, Input, Options)
 -spec list_ip_sets(map(), list_ip_sets_request()) ->
     {ok, list_ip_sets_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()}.
+    {error, list_ip_sets_errors(), tuple()}.
 list_ip_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_ip_sets(Client, Input, []).
@@ -4515,8 +4698,7 @@ list_ip_sets(Client, Input)
 -spec list_ip_sets(map(), list_ip_sets_request(), proplists:proplist()) ->
     {ok, list_ip_sets_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()}.
+    {error, list_ip_sets_errors(), tuple()}.
 list_ip_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListIPSets">>, Input, Options).
@@ -4540,9 +4722,7 @@ list_ip_sets(Client, Input, Options)
 -spec list_logging_configurations(map(), list_logging_configurations_request()) ->
     {ok, list_logging_configurations_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, list_logging_configurations_errors(), tuple()}.
 list_logging_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_logging_configurations(Client, Input, []).
@@ -4550,9 +4730,7 @@ list_logging_configurations(Client, Input)
 -spec list_logging_configurations(map(), list_logging_configurations_request(), proplists:proplist()) ->
     {ok, list_logging_configurations_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, list_logging_configurations_errors(), tuple()}.
 list_logging_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLoggingConfigurations">>, Input, Options).
@@ -4576,8 +4754,7 @@ list_logging_configurations(Client, Input, Options)
 -spec list_rate_based_rules(map(), list_rate_based_rules_request()) ->
     {ok, list_rate_based_rules_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()}.
+    {error, list_rate_based_rules_errors(), tuple()}.
 list_rate_based_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rate_based_rules(Client, Input, []).
@@ -4585,8 +4762,7 @@ list_rate_based_rules(Client, Input)
 -spec list_rate_based_rules(map(), list_rate_based_rules_request(), proplists:proplist()) ->
     {ok, list_rate_based_rules_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()}.
+    {error, list_rate_based_rules_errors(), tuple()}.
 list_rate_based_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRateBasedRules">>, Input, Options).
@@ -4610,8 +4786,7 @@ list_rate_based_rules(Client, Input, Options)
 -spec list_regex_match_sets(map(), list_regex_match_sets_request()) ->
     {ok, list_regex_match_sets_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()}.
+    {error, list_regex_match_sets_errors(), tuple()}.
 list_regex_match_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_regex_match_sets(Client, Input, []).
@@ -4619,8 +4794,7 @@ list_regex_match_sets(Client, Input)
 -spec list_regex_match_sets(map(), list_regex_match_sets_request(), proplists:proplist()) ->
     {ok, list_regex_match_sets_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()}.
+    {error, list_regex_match_sets_errors(), tuple()}.
 list_regex_match_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRegexMatchSets">>, Input, Options).
@@ -4644,8 +4818,7 @@ list_regex_match_sets(Client, Input, Options)
 -spec list_regex_pattern_sets(map(), list_regex_pattern_sets_request()) ->
     {ok, list_regex_pattern_sets_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()}.
+    {error, list_regex_pattern_sets_errors(), tuple()}.
 list_regex_pattern_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_regex_pattern_sets(Client, Input, []).
@@ -4653,8 +4826,7 @@ list_regex_pattern_sets(Client, Input)
 -spec list_regex_pattern_sets(map(), list_regex_pattern_sets_request(), proplists:proplist()) ->
     {ok, list_regex_pattern_sets_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()}.
+    {error, list_regex_pattern_sets_errors(), tuple()}.
 list_regex_pattern_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRegexPatternSets">>, Input, Options).
@@ -4678,10 +4850,7 @@ list_regex_pattern_sets(Client, Input, Options)
 -spec list_resources_for_web_acl(map(), list_resources_for_web_acl_request()) ->
     {ok, list_resources_for_web_acl_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, list_resources_for_web_acl_errors(), tuple()}.
 list_resources_for_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resources_for_web_acl(Client, Input, []).
@@ -4689,10 +4858,7 @@ list_resources_for_web_acl(Client, Input)
 -spec list_resources_for_web_acl(map(), list_resources_for_web_acl_request(), proplists:proplist()) ->
     {ok, list_resources_for_web_acl_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, list_resources_for_web_acl_errors(), tuple()}.
 list_resources_for_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResourcesForWebACL">>, Input, Options).
@@ -4716,7 +4882,7 @@ list_resources_for_web_acl(Client, Input, Options)
 -spec list_rule_groups(map(), list_rule_groups_request()) ->
     {ok, list_rule_groups_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()}.
+    {error, list_rule_groups_errors(), tuple()}.
 list_rule_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rule_groups(Client, Input, []).
@@ -4724,7 +4890,7 @@ list_rule_groups(Client, Input)
 -spec list_rule_groups(map(), list_rule_groups_request(), proplists:proplist()) ->
     {ok, list_rule_groups_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()}.
+    {error, list_rule_groups_errors(), tuple()}.
 list_rule_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRuleGroups">>, Input, Options).
@@ -4748,8 +4914,7 @@ list_rule_groups(Client, Input, Options)
 -spec list_rules(map(), list_rules_request()) ->
     {ok, list_rules_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()}.
+    {error, list_rules_errors(), tuple()}.
 list_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rules(Client, Input, []).
@@ -4757,8 +4922,7 @@ list_rules(Client, Input)
 -spec list_rules(map(), list_rules_request(), proplists:proplist()) ->
     {ok, list_rules_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()}.
+    {error, list_rules_errors(), tuple()}.
 list_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRules">>, Input, Options).
@@ -4782,8 +4946,7 @@ list_rules(Client, Input, Options)
 -spec list_size_constraint_sets(map(), list_size_constraint_sets_request()) ->
     {ok, list_size_constraint_sets_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()}.
+    {error, list_size_constraint_sets_errors(), tuple()}.
 list_size_constraint_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_size_constraint_sets(Client, Input, []).
@@ -4791,8 +4954,7 @@ list_size_constraint_sets(Client, Input)
 -spec list_size_constraint_sets(map(), list_size_constraint_sets_request(), proplists:proplist()) ->
     {ok, list_size_constraint_sets_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()}.
+    {error, list_size_constraint_sets_errors(), tuple()}.
 list_size_constraint_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSizeConstraintSets">>, Input, Options).
@@ -4816,8 +4978,7 @@ list_size_constraint_sets(Client, Input, Options)
 -spec list_sql_injection_match_sets(map(), list_sql_injection_match_sets_request()) ->
     {ok, list_sql_injection_match_sets_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()}.
+    {error, list_sql_injection_match_sets_errors(), tuple()}.
 list_sql_injection_match_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_sql_injection_match_sets(Client, Input, []).
@@ -4825,8 +4986,7 @@ list_sql_injection_match_sets(Client, Input)
 -spec list_sql_injection_match_sets(map(), list_sql_injection_match_sets_request(), proplists:proplist()) ->
     {ok, list_sql_injection_match_sets_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()}.
+    {error, list_sql_injection_match_sets_errors(), tuple()}.
 list_sql_injection_match_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSqlInjectionMatchSets">>, Input, Options).
@@ -4850,8 +5010,7 @@ list_sql_injection_match_sets(Client, Input, Options)
 -spec list_subscribed_rule_groups(map(), list_subscribed_rule_groups_request()) ->
     {ok, list_subscribed_rule_groups_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, list_subscribed_rule_groups_errors(), tuple()}.
 list_subscribed_rule_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_subscribed_rule_groups(Client, Input, []).
@@ -4859,8 +5018,7 @@ list_subscribed_rule_groups(Client, Input)
 -spec list_subscribed_rule_groups(map(), list_subscribed_rule_groups_request(), proplists:proplist()) ->
     {ok, list_subscribed_rule_groups_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()}.
+    {error, list_subscribed_rule_groups_errors(), tuple()}.
 list_subscribed_rule_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSubscribedRuleGroups">>, Input, Options).
@@ -4894,12 +5052,7 @@ list_subscribed_rule_groups(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_bad_request_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -4907,12 +5060,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_bad_request_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -4936,8 +5084,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec list_web_acls(map(), list_web_acls_request()) ->
     {ok, list_web_acls_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()}.
+    {error, list_web_acls_errors(), tuple()}.
 list_web_acls(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_web_acls(Client, Input, []).
@@ -4945,8 +5092,7 @@ list_web_acls(Client, Input)
 -spec list_web_acls(map(), list_web_acls_request(), proplists:proplist()) ->
     {ok, list_web_acls_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()}.
+    {error, list_web_acls_errors(), tuple()}.
 list_web_acls(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWebACLs">>, Input, Options).
@@ -4970,8 +5116,7 @@ list_web_acls(Client, Input, Options)
 -spec list_xss_match_sets(map(), list_xss_match_sets_request()) ->
     {ok, list_xss_match_sets_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()}.
+    {error, list_xss_match_sets_errors(), tuple()}.
 list_xss_match_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_xss_match_sets(Client, Input, []).
@@ -4979,8 +5124,7 @@ list_xss_match_sets(Client, Input)
 -spec list_xss_match_sets(map(), list_xss_match_sets_request(), proplists:proplist()) ->
     {ok, list_xss_match_sets_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()}.
+    {error, list_xss_match_sets_errors(), tuple()}.
 list_xss_match_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListXssMatchSets">>, Input, Options).
@@ -5028,10 +5172,7 @@ list_xss_match_sets(Client, Input, Options)
 -spec put_logging_configuration(map(), put_logging_configuration_request()) ->
     {ok, put_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_service_linked_role_error_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, put_logging_configuration_errors(), tuple()}.
 put_logging_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_logging_configuration(Client, Input, []).
@@ -5039,10 +5180,7 @@ put_logging_configuration(Client, Input)
 -spec put_logging_configuration(map(), put_logging_configuration_request(), proplists:proplist()) ->
     {ok, put_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_service_linked_role_error_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, put_logging_configuration_errors(), tuple()}.
 put_logging_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutLoggingConfiguration">>, Input, Options).
@@ -5096,10 +5234,7 @@ put_logging_configuration(Client, Input, Options)
 -spec put_permission_policy(map(), put_permission_policy_request()) ->
     {ok, put_permission_policy_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_permission_policy_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, put_permission_policy_errors(), tuple()}.
 put_permission_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_permission_policy(Client, Input, []).
@@ -5107,10 +5242,7 @@ put_permission_policy(Client, Input)
 -spec put_permission_policy(map(), put_permission_policy_request(), proplists:proplist()) ->
     {ok, put_permission_policy_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_permission_policy_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, put_permission_policy_errors(), tuple()}.
 put_permission_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutPermissionPolicy">>, Input, Options).
@@ -5144,13 +5276,7 @@ put_permission_policy(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_bad_request_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -5158,13 +5284,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_bad_request_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -5186,12 +5306,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_bad_request_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -5199,12 +5314,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_bad_request_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_tag_operation_exception(), tuple()} |
-    {error, w_a_f_tag_operation_internal_error_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -5272,14 +5382,7 @@ untag_resource(Client, Input, Options)
 -spec update_byte_match_set(map(), update_byte_match_set_request()) ->
     {ok, update_byte_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_container_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, update_byte_match_set_errors(), tuple()}.
 update_byte_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_byte_match_set(Client, Input, []).
@@ -5287,14 +5390,7 @@ update_byte_match_set(Client, Input)
 -spec update_byte_match_set(map(), update_byte_match_set_request(), proplists:proplist()) ->
     {ok, update_byte_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_container_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, update_byte_match_set_errors(), tuple()}.
 update_byte_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateByteMatchSet">>, Input, Options).
@@ -5351,15 +5447,7 @@ update_byte_match_set(Client, Input, Options)
 -spec update_geo_match_set(map(), update_geo_match_set_request()) ->
     {ok, update_geo_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_container_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, update_geo_match_set_errors(), tuple()}.
 update_geo_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_geo_match_set(Client, Input, []).
@@ -5367,15 +5455,7 @@ update_geo_match_set(Client, Input)
 -spec update_geo_match_set(map(), update_geo_match_set_request(), proplists:proplist()) ->
     {ok, update_geo_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_container_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, update_geo_match_set_errors(), tuple()}.
 update_geo_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGeoMatchSet">>, Input, Options).
@@ -5466,15 +5546,7 @@ update_geo_match_set(Client, Input, Options)
 -spec update_ip_set(map(), update_ip_set_request()) ->
     {ok, update_ip_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_container_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, update_ip_set_errors(), tuple()}.
 update_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_ip_set(Client, Input, []).
@@ -5482,15 +5554,7 @@ update_ip_set(Client, Input)
 -spec update_ip_set(map(), update_ip_set_request(), proplists:proplist()) ->
     {ok, update_ip_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_container_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, update_ip_set_errors(), tuple()}.
 update_ip_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateIPSet">>, Input, Options).
@@ -5560,15 +5624,7 @@ update_ip_set(Client, Input, Options)
 -spec update_rate_based_rule(map(), update_rate_based_rule_request()) ->
     {ok, update_rate_based_rule_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_container_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, update_rate_based_rule_errors(), tuple()}.
 update_rate_based_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rate_based_rule(Client, Input, []).
@@ -5576,15 +5632,7 @@ update_rate_based_rule(Client, Input)
 -spec update_rate_based_rule(map(), update_rate_based_rule_request(), proplists:proplist()) ->
     {ok, update_rate_based_rule_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_container_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, update_rate_based_rule_errors(), tuple()}.
 update_rate_based_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRateBasedRule">>, Input, Options).
@@ -5649,14 +5697,7 @@ update_rate_based_rule(Client, Input, Options)
 -spec update_regex_match_set(map(), update_regex_match_set_request()) ->
     {ok, update_regex_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_disallowed_name_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_container_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, update_regex_match_set_errors(), tuple()}.
 update_regex_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_regex_match_set(Client, Input, []).
@@ -5664,14 +5705,7 @@ update_regex_match_set(Client, Input)
 -spec update_regex_match_set(map(), update_regex_match_set_request(), proplists:proplist()) ->
     {ok, update_regex_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_disallowed_name_exception(), tuple()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_container_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, update_regex_match_set_errors(), tuple()}.
 update_regex_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRegexMatchSet">>, Input, Options).
@@ -5731,14 +5765,7 @@ update_regex_match_set(Client, Input, Options)
 -spec update_regex_pattern_set(map(), update_regex_pattern_set_request()) ->
     {ok, update_regex_pattern_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_regex_pattern_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_container_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, update_regex_pattern_set_errors(), tuple()}.
 update_regex_pattern_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_regex_pattern_set(Client, Input, []).
@@ -5746,14 +5773,7 @@ update_regex_pattern_set(Client, Input)
 -spec update_regex_pattern_set(map(), update_regex_pattern_set_request(), proplists:proplist()) ->
     {ok, update_regex_pattern_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_regex_pattern_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_container_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, update_regex_pattern_set_errors(), tuple()}.
 update_regex_pattern_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRegexPatternSet">>, Input, Options).
@@ -5821,15 +5841,7 @@ update_regex_pattern_set(Client, Input, Options)
 -spec update_rule(map(), update_rule_request()) ->
     {ok, update_rule_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_container_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, update_rule_errors(), tuple()}.
 update_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rule(Client, Input, []).
@@ -5837,15 +5849,7 @@ update_rule(Client, Input)
 -spec update_rule(map(), update_rule_request(), proplists:proplist()) ->
     {ok, update_rule_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_container_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, update_rule_errors(), tuple()}.
 update_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRule">>, Input, Options).
@@ -5897,13 +5901,7 @@ update_rule(Client, Input, Options)
 -spec update_rule_group(map(), update_rule_group_request()) ->
     {ok, update_rule_group_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_container_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, update_rule_group_errors(), tuple()}.
 update_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rule_group(Client, Input, []).
@@ -5911,13 +5909,7 @@ update_rule_group(Client, Input)
 -spec update_rule_group(map(), update_rule_group_request(), proplists:proplist()) ->
     {ok, update_rule_group_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_container_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, update_rule_group_errors(), tuple()}.
 update_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRuleGroup">>, Input, Options).
@@ -5991,15 +5983,7 @@ update_rule_group(Client, Input, Options)
 -spec update_size_constraint_set(map(), update_size_constraint_set_request()) ->
     {ok, update_size_constraint_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_container_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, update_size_constraint_set_errors(), tuple()}.
 update_size_constraint_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_size_constraint_set(Client, Input, []).
@@ -6007,15 +5991,7 @@ update_size_constraint_set(Client, Input)
 -spec update_size_constraint_set(map(), update_size_constraint_set_request(), proplists:proplist()) ->
     {ok, update_size_constraint_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_container_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, update_size_constraint_set_errors(), tuple()}.
 update_size_constraint_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSizeConstraintSet">>, Input, Options).
@@ -6085,14 +6061,7 @@ update_size_constraint_set(Client, Input, Options)
 -spec update_sql_injection_match_set(map(), update_sql_injection_match_set_request()) ->
     {ok, update_sql_injection_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_container_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, update_sql_injection_match_set_errors(), tuple()}.
 update_sql_injection_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_sql_injection_match_set(Client, Input, []).
@@ -6100,14 +6069,7 @@ update_sql_injection_match_set(Client, Input)
 -spec update_sql_injection_match_set(map(), update_sql_injection_match_set_request(), proplists:proplist()) ->
     {ok, update_sql_injection_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_container_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, update_sql_injection_match_set_errors(), tuple()}.
 update_sql_injection_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSqlInjectionMatchSet">>, Input, Options).
@@ -6210,16 +6172,7 @@ update_sql_injection_match_set(Client, Input, Options)
 -spec update_web_acl(map(), update_web_acl_request()) ->
     {ok, update_web_acl_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_container_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()} |
-    {error, w_a_f_subscription_not_found_exception(), tuple()}.
+    {error, update_web_acl_errors(), tuple()}.
 update_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_web_acl(Client, Input, []).
@@ -6227,16 +6180,7 @@ update_web_acl(Client, Input)
 -spec update_web_acl(map(), update_web_acl_request(), proplists:proplist()) ->
     {ok, update_web_acl_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_container_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_referenced_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()} |
-    {error, w_a_f_subscription_not_found_exception(), tuple()}.
+    {error, update_web_acl_errors(), tuple()}.
 update_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateWebACL">>, Input, Options).
@@ -6305,14 +6249,7 @@ update_web_acl(Client, Input, Options)
 -spec update_xss_match_set(map(), update_xss_match_set_request()) ->
     {ok, update_xss_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_container_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, update_xss_match_set_errors(), tuple()}.
 update_xss_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_xss_match_set(Client, Input, []).
@@ -6320,14 +6257,7 @@ update_xss_match_set(Client, Input)
 -spec update_xss_match_set(map(), update_xss_match_set_request(), proplists:proplist()) ->
     {ok, update_xss_match_set_response(), tuple()} |
     {error, any()} |
-    {error, w_a_f_internal_error_exception(), tuple()} |
-    {error, w_a_f_invalid_account_exception(), tuple()} |
-    {error, w_a_f_invalid_operation_exception(), tuple()} |
-    {error, w_a_f_invalid_parameter_exception(), tuple()} |
-    {error, w_a_f_limits_exceeded_exception(), tuple()} |
-    {error, w_a_f_nonexistent_container_exception(), tuple()} |
-    {error, w_a_f_nonexistent_item_exception(), tuple()} |
-    {error, w_a_f_stale_data_exception(), tuple()}.
+    {error, update_xss_match_set_errors(), tuple()}.
 update_xss_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateXssMatchSet">>, Input, Options).

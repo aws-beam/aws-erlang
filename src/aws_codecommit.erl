@@ -3294,6 +3294,1260 @@
 %% }
 -type repository_does_not_exist_exception() :: #{binary() => any()}.
 
+-type associate_approval_rule_template_with_repository_errors() ::
+    repository_does_not_exist_exception() | 
+    invalid_approval_rule_template_name_exception() | 
+    encryption_key_disabled_exception() | 
+    repository_name_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    approval_rule_template_does_not_exist_exception() | 
+    invalid_repository_name_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    maximum_rule_templates_associated_with_repository_exception() | 
+    approval_rule_template_name_required_exception().
+
+-type batch_associate_approval_rule_template_with_repositories_errors() ::
+    invalid_approval_rule_template_name_exception() | 
+    encryption_key_disabled_exception() | 
+    maximum_repository_names_exceeded_exception() | 
+    encryption_key_access_denied_exception() | 
+    approval_rule_template_does_not_exist_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    repository_names_required_exception() | 
+    approval_rule_template_name_required_exception().
+
+-type batch_describe_merge_conflicts_errors() ::
+    repository_does_not_exist_exception() | 
+    maximum_file_content_to_load_exceeded_exception() | 
+    commit_required_exception() | 
+    invalid_conflict_detail_level_exception() | 
+    commit_does_not_exist_exception() | 
+    invalid_merge_option_exception() | 
+    encryption_key_disabled_exception() | 
+    invalid_max_conflict_files_exception() | 
+    invalid_commit_exception() | 
+    repository_name_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    maximum_items_to_compare_exceeded_exception() | 
+    merge_option_required_exception() | 
+    invalid_repository_name_exception() | 
+    invalid_conflict_resolution_strategy_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    invalid_max_merge_hunks_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    invalid_continuation_token_exception() | 
+    tips_divergence_exceeded_exception().
+
+-type batch_disassociate_approval_rule_template_from_repositories_errors() ::
+    invalid_approval_rule_template_name_exception() | 
+    encryption_key_disabled_exception() | 
+    maximum_repository_names_exceeded_exception() | 
+    encryption_key_access_denied_exception() | 
+    approval_rule_template_does_not_exist_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    repository_names_required_exception() | 
+    approval_rule_template_name_required_exception().
+
+-type batch_get_commits_errors() ::
+    repository_does_not_exist_exception() | 
+    encryption_key_disabled_exception() | 
+    repository_name_required_exception() | 
+    commit_ids_list_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    invalid_repository_name_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    commit_ids_limit_exceeded_exception().
+
+-type batch_get_repositories_errors() ::
+    encryption_key_disabled_exception() | 
+    maximum_repository_names_exceeded_exception() | 
+    encryption_key_access_denied_exception() | 
+    invalid_repository_name_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    repository_names_required_exception().
+
+-type create_approval_rule_template_errors() ::
+    approval_rule_template_name_already_exists_exception() | 
+    invalid_approval_rule_template_name_exception() | 
+    number_of_rule_templates_exceeded_exception() | 
+    invalid_approval_rule_template_content_exception() | 
+    approval_rule_template_content_required_exception() | 
+    invalid_approval_rule_template_description_exception() | 
+    approval_rule_template_name_required_exception().
+
+-type create_branch_errors() ::
+    repository_does_not_exist_exception() | 
+    branch_name_exists_exception() | 
+    commit_does_not_exist_exception() | 
+    encryption_key_disabled_exception() | 
+    invalid_commit_id_exception() | 
+    repository_name_required_exception() | 
+    invalid_branch_name_exception() | 
+    encryption_key_access_denied_exception() | 
+    invalid_repository_name_exception() | 
+    commit_id_required_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    branch_name_required_exception().
+
+-type create_commit_errors() ::
+    repository_does_not_exist_exception() | 
+    no_change_exception() | 
+    invalid_file_mode_exception() | 
+    directory_name_conflicts_with_file_name_exception() | 
+    path_required_exception() | 
+    maximum_file_entries_exceeded_exception() | 
+    restricted_source_file_exception() | 
+    name_length_exceeded_exception() | 
+    invalid_path_exception() | 
+    file_path_conflicts_with_submodule_path_exception() | 
+    parent_commit_id_required_exception() | 
+    file_content_size_limit_exceeded_exception() | 
+    branch_does_not_exist_exception() | 
+    parent_commit_does_not_exist_exception() | 
+    file_content_and_source_file_specified_exception() | 
+    encryption_key_disabled_exception() | 
+    put_file_entry_conflict_exception() | 
+    commit_message_length_exceeded_exception() | 
+    invalid_deletion_parameter_exception() | 
+    file_does_not_exist_exception() | 
+    file_mode_required_exception() | 
+    parent_commit_id_outdated_exception() | 
+    invalid_email_exception() | 
+    repository_name_required_exception() | 
+    invalid_branch_name_exception() | 
+    encryption_key_access_denied_exception() | 
+    branch_name_is_tag_name_exception() | 
+    invalid_parent_commit_id_exception() | 
+    file_entry_required_exception() | 
+    invalid_repository_name_exception() | 
+    same_path_request_exception() | 
+    file_name_conflicts_with_directory_name_exception() | 
+    source_file_or_content_required_exception() | 
+    folder_content_size_limit_exceeded_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    branch_name_required_exception().
+
+-type create_pull_request_errors() ::
+    repository_does_not_exist_exception() | 
+    reference_does_not_exist_exception() | 
+    invalid_reference_name_exception() | 
+    reference_type_not_supported_exception() | 
+    idempotency_parameter_mismatch_exception() | 
+    encryption_key_disabled_exception() | 
+    invalid_title_exception() | 
+    maximum_open_pull_requests_exceeded_exception() | 
+    title_required_exception() | 
+    multiple_repositories_in_pull_request_exception() | 
+    targets_required_exception() | 
+    invalid_description_exception() | 
+    repository_name_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    reference_name_required_exception() | 
+    target_required_exception() | 
+    invalid_repository_name_exception() | 
+    invalid_targets_exception() | 
+    invalid_client_request_token_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    invalid_target_exception() | 
+    client_request_token_required_exception() | 
+    source_and_destination_are_same_exception().
+
+-type create_pull_request_approval_rule_errors() ::
+    invalid_approval_rule_name_exception() | 
+    number_of_rules_exceeded_exception() | 
+    encryption_key_disabled_exception() | 
+    pull_request_already_closed_exception() | 
+    pull_request_does_not_exist_exception() | 
+    invalid_approval_rule_content_exception() | 
+    encryption_key_access_denied_exception() | 
+    pull_request_id_required_exception() | 
+    approval_rule_content_required_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    approval_rule_name_already_exists_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    invalid_pull_request_id_exception() | 
+    approval_rule_name_required_exception().
+
+-type create_repository_errors() ::
+    invalid_repository_description_exception() | 
+    too_many_tags_exception() | 
+    invalid_tags_map_exception() | 
+    repository_limit_exceeded_exception() | 
+    invalid_system_tag_usage_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_invalid_id_exception() | 
+    encryption_key_invalid_usage_exception() | 
+    repository_name_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    invalid_repository_name_exception() | 
+    tag_policy_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    repository_name_exists_exception().
+
+-type create_unreferenced_merge_commit_errors() ::
+    repository_does_not_exist_exception() | 
+    maximum_file_content_to_load_exceeded_exception() | 
+    invalid_file_mode_exception() | 
+    concurrent_reference_update_exception() | 
+    path_required_exception() | 
+    commit_required_exception() | 
+    invalid_conflict_detail_level_exception() | 
+    name_length_exceeded_exception() | 
+    commit_does_not_exist_exception() | 
+    invalid_conflict_resolution_exception() | 
+    invalid_merge_option_exception() | 
+    invalid_path_exception() | 
+    file_content_size_limit_exceeded_exception() | 
+    replacement_type_required_exception() | 
+    encryption_key_disabled_exception() | 
+    commit_message_length_exceeded_exception() | 
+    maximum_conflict_resolution_entries_exceeded_exception() | 
+    manual_merge_required_exception() | 
+    invalid_commit_exception() | 
+    file_mode_required_exception() | 
+    invalid_email_exception() | 
+    repository_name_required_exception() | 
+    invalid_replacement_content_exception() | 
+    encryption_key_access_denied_exception() | 
+    multiple_conflict_resolution_entries_exception() | 
+    maximum_items_to_compare_exceeded_exception() | 
+    merge_option_required_exception() | 
+    replacement_content_required_exception() | 
+    invalid_repository_name_exception() | 
+    invalid_replacement_type_exception() | 
+    invalid_conflict_resolution_strategy_exception() | 
+    folder_content_size_limit_exceeded_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    tips_divergence_exceeded_exception().
+
+-type delete_approval_rule_template_errors() ::
+    invalid_approval_rule_template_name_exception() | 
+    approval_rule_template_in_use_exception() | 
+    approval_rule_template_name_required_exception().
+
+-type delete_branch_errors() ::
+    repository_does_not_exist_exception() | 
+    encryption_key_disabled_exception() | 
+    repository_name_required_exception() | 
+    invalid_branch_name_exception() | 
+    encryption_key_access_denied_exception() | 
+    invalid_repository_name_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    default_branch_cannot_be_deleted_exception() | 
+    branch_name_required_exception().
+
+-type delete_comment_content_errors() ::
+    invalid_comment_id_exception() | 
+    comment_does_not_exist_exception() | 
+    comment_id_required_exception() | 
+    comment_deleted_exception().
+
+-type delete_file_errors() ::
+    repository_does_not_exist_exception() | 
+    path_required_exception() | 
+    name_length_exceeded_exception() | 
+    invalid_path_exception() | 
+    parent_commit_id_required_exception() | 
+    branch_does_not_exist_exception() | 
+    parent_commit_does_not_exist_exception() | 
+    encryption_key_disabled_exception() | 
+    commit_message_length_exceeded_exception() | 
+    file_does_not_exist_exception() | 
+    parent_commit_id_outdated_exception() | 
+    invalid_email_exception() | 
+    repository_name_required_exception() | 
+    invalid_branch_name_exception() | 
+    encryption_key_access_denied_exception() | 
+    branch_name_is_tag_name_exception() | 
+    invalid_parent_commit_id_exception() | 
+    invalid_repository_name_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    branch_name_required_exception().
+
+-type delete_pull_request_approval_rule_errors() ::
+    invalid_approval_rule_name_exception() | 
+    cannot_delete_approval_rule_from_template_exception() | 
+    encryption_key_disabled_exception() | 
+    pull_request_already_closed_exception() | 
+    pull_request_does_not_exist_exception() | 
+    encryption_key_access_denied_exception() | 
+    pull_request_id_required_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    invalid_pull_request_id_exception() | 
+    approval_rule_name_required_exception().
+
+-type delete_repository_errors() ::
+    encryption_key_disabled_exception() | 
+    repository_name_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    invalid_repository_name_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception().
+
+-type describe_merge_conflicts_errors() ::
+    repository_does_not_exist_exception() | 
+    maximum_file_content_to_load_exceeded_exception() | 
+    path_required_exception() | 
+    commit_required_exception() | 
+    invalid_conflict_detail_level_exception() | 
+    commit_does_not_exist_exception() | 
+    invalid_merge_option_exception() | 
+    invalid_path_exception() | 
+    encryption_key_disabled_exception() | 
+    file_does_not_exist_exception() | 
+    invalid_commit_exception() | 
+    repository_name_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    maximum_items_to_compare_exceeded_exception() | 
+    merge_option_required_exception() | 
+    invalid_repository_name_exception() | 
+    invalid_conflict_resolution_strategy_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    invalid_max_merge_hunks_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    invalid_continuation_token_exception() | 
+    tips_divergence_exceeded_exception().
+
+-type describe_pull_request_events_errors() ::
+    encryption_key_disabled_exception() | 
+    actor_does_not_exist_exception() | 
+    invalid_actor_arn_exception() | 
+    pull_request_does_not_exist_exception() | 
+    invalid_pull_request_event_type_exception() | 
+    encryption_key_access_denied_exception() | 
+    pull_request_id_required_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    invalid_pull_request_id_exception() | 
+    invalid_continuation_token_exception() | 
+    invalid_max_results_exception().
+
+-type disassociate_approval_rule_template_from_repository_errors() ::
+    repository_does_not_exist_exception() | 
+    invalid_approval_rule_template_name_exception() | 
+    encryption_key_disabled_exception() | 
+    repository_name_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    approval_rule_template_does_not_exist_exception() | 
+    invalid_repository_name_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    approval_rule_template_name_required_exception().
+
+-type evaluate_pull_request_approval_rules_errors() ::
+    revision_not_current_exception() | 
+    encryption_key_disabled_exception() | 
+    pull_request_does_not_exist_exception() | 
+    invalid_revision_id_exception() | 
+    revision_id_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    pull_request_id_required_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    invalid_pull_request_id_exception().
+
+-type get_approval_rule_template_errors() ::
+    invalid_approval_rule_template_name_exception() | 
+    approval_rule_template_does_not_exist_exception() | 
+    approval_rule_template_name_required_exception().
+
+-type get_blob_errors() ::
+    repository_does_not_exist_exception() | 
+    file_too_large_exception() | 
+    encryption_key_disabled_exception() | 
+    repository_name_required_exception() | 
+    invalid_blob_id_exception() | 
+    encryption_key_access_denied_exception() | 
+    blob_id_required_exception() | 
+    invalid_repository_name_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    blob_id_does_not_exist_exception().
+
+-type get_branch_errors() ::
+    repository_does_not_exist_exception() | 
+    branch_does_not_exist_exception() | 
+    encryption_key_disabled_exception() | 
+    repository_name_required_exception() | 
+    invalid_branch_name_exception() | 
+    encryption_key_access_denied_exception() | 
+    invalid_repository_name_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    branch_name_required_exception().
+
+-type get_comment_errors() ::
+    invalid_comment_id_exception() | 
+    encryption_key_disabled_exception() | 
+    comment_does_not_exist_exception() | 
+    encryption_key_access_denied_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    comment_id_required_exception() | 
+    comment_deleted_exception().
+
+-type get_comment_reactions_errors() ::
+    invalid_comment_id_exception() | 
+    comment_does_not_exist_exception() | 
+    invalid_reaction_user_arn_exception() | 
+    comment_id_required_exception() | 
+    comment_deleted_exception() | 
+    invalid_continuation_token_exception() | 
+    invalid_max_results_exception().
+
+-type get_comments_for_compared_commit_errors() ::
+    repository_does_not_exist_exception() | 
+    commit_does_not_exist_exception() | 
+    encryption_key_disabled_exception() | 
+    invalid_commit_id_exception() | 
+    repository_name_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    invalid_repository_name_exception() | 
+    commit_id_required_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    invalid_continuation_token_exception() | 
+    invalid_max_results_exception().
+
+-type get_comments_for_pull_request_errors() ::
+    repository_does_not_exist_exception() | 
+    commit_does_not_exist_exception() | 
+    encryption_key_disabled_exception() | 
+    repository_not_associated_with_pull_request_exception() | 
+    invalid_commit_id_exception() | 
+    repository_name_required_exception() | 
+    pull_request_does_not_exist_exception() | 
+    encryption_key_access_denied_exception() | 
+    pull_request_id_required_exception() | 
+    invalid_repository_name_exception() | 
+    commit_id_required_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    invalid_pull_request_id_exception() | 
+    invalid_continuation_token_exception() | 
+    invalid_max_results_exception().
+
+-type get_commit_errors() ::
+    repository_does_not_exist_exception() | 
+    commit_id_does_not_exist_exception() | 
+    encryption_key_disabled_exception() | 
+    invalid_commit_id_exception() | 
+    repository_name_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    invalid_repository_name_exception() | 
+    commit_id_required_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception().
+
+-type get_differences_errors() ::
+    repository_does_not_exist_exception() | 
+    commit_required_exception() | 
+    commit_does_not_exist_exception() | 
+    invalid_path_exception() | 
+    encryption_key_disabled_exception() | 
+    invalid_commit_id_exception() | 
+    invalid_commit_exception() | 
+    repository_name_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    invalid_repository_name_exception() | 
+    path_does_not_exist_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    invalid_continuation_token_exception() | 
+    invalid_max_results_exception().
+
+-type get_file_errors() ::
+    repository_does_not_exist_exception() | 
+    path_required_exception() | 
+    commit_does_not_exist_exception() | 
+    invalid_path_exception() | 
+    file_too_large_exception() | 
+    encryption_key_disabled_exception() | 
+    file_does_not_exist_exception() | 
+    invalid_commit_exception() | 
+    repository_name_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    invalid_repository_name_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception().
+
+-type get_folder_errors() ::
+    repository_does_not_exist_exception() | 
+    path_required_exception() | 
+    commit_does_not_exist_exception() | 
+    invalid_path_exception() | 
+    encryption_key_disabled_exception() | 
+    folder_does_not_exist_exception() | 
+    invalid_commit_exception() | 
+    repository_name_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    invalid_repository_name_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception().
+
+-type get_merge_commit_errors() ::
+    repository_does_not_exist_exception() | 
+    commit_required_exception() | 
+    invalid_conflict_detail_level_exception() | 
+    commit_does_not_exist_exception() | 
+    encryption_key_disabled_exception() | 
+    invalid_commit_exception() | 
+    repository_name_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    invalid_repository_name_exception() | 
+    invalid_conflict_resolution_strategy_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception().
+
+-type get_merge_conflicts_errors() ::
+    repository_does_not_exist_exception() | 
+    maximum_file_content_to_load_exceeded_exception() | 
+    commit_required_exception() | 
+    invalid_conflict_detail_level_exception() | 
+    commit_does_not_exist_exception() | 
+    invalid_merge_option_exception() | 
+    invalid_source_commit_specifier_exception() | 
+    encryption_key_disabled_exception() | 
+    invalid_max_conflict_files_exception() | 
+    invalid_commit_exception() | 
+    repository_name_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    maximum_items_to_compare_exceeded_exception() | 
+    merge_option_required_exception() | 
+    invalid_repository_name_exception() | 
+    invalid_conflict_resolution_strategy_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    invalid_destination_commit_specifier_exception() | 
+    invalid_continuation_token_exception() | 
+    tips_divergence_exceeded_exception().
+
+-type get_merge_options_errors() ::
+    repository_does_not_exist_exception() | 
+    maximum_file_content_to_load_exceeded_exception() | 
+    commit_required_exception() | 
+    invalid_conflict_detail_level_exception() | 
+    commit_does_not_exist_exception() | 
+    encryption_key_disabled_exception() | 
+    invalid_commit_exception() | 
+    repository_name_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    maximum_items_to_compare_exceeded_exception() | 
+    invalid_repository_name_exception() | 
+    invalid_conflict_resolution_strategy_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    tips_divergence_exceeded_exception().
+
+-type get_pull_request_errors() ::
+    encryption_key_disabled_exception() | 
+    pull_request_does_not_exist_exception() | 
+    encryption_key_access_denied_exception() | 
+    pull_request_id_required_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    invalid_pull_request_id_exception().
+
+-type get_pull_request_approval_states_errors() ::
+    encryption_key_disabled_exception() | 
+    pull_request_does_not_exist_exception() | 
+    invalid_revision_id_exception() | 
+    revision_id_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    pull_request_id_required_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    invalid_pull_request_id_exception().
+
+-type get_pull_request_override_state_errors() ::
+    encryption_key_disabled_exception() | 
+    pull_request_does_not_exist_exception() | 
+    invalid_revision_id_exception() | 
+    revision_id_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    pull_request_id_required_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    invalid_pull_request_id_exception().
+
+-type get_repository_errors() ::
+    repository_does_not_exist_exception() | 
+    encryption_key_disabled_exception() | 
+    repository_name_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    invalid_repository_name_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception().
+
+-type get_repository_triggers_errors() ::
+    repository_does_not_exist_exception() | 
+    encryption_key_disabled_exception() | 
+    repository_name_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    invalid_repository_name_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception().
+
+-type list_approval_rule_templates_errors() ::
+    invalid_continuation_token_exception() | 
+    invalid_max_results_exception().
+
+-type list_associated_approval_rule_templates_for_repository_errors() ::
+    repository_does_not_exist_exception() | 
+    encryption_key_disabled_exception() | 
+    repository_name_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    invalid_repository_name_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    invalid_continuation_token_exception() | 
+    invalid_max_results_exception().
+
+-type list_branches_errors() ::
+    repository_does_not_exist_exception() | 
+    encryption_key_disabled_exception() | 
+    repository_name_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    invalid_repository_name_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    invalid_continuation_token_exception().
+
+-type list_file_commit_history_errors() ::
+    repository_does_not_exist_exception() | 
+    commit_required_exception() | 
+    commit_does_not_exist_exception() | 
+    encryption_key_disabled_exception() | 
+    invalid_commit_exception() | 
+    repository_name_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    invalid_repository_name_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    invalid_continuation_token_exception() | 
+    invalid_max_results_exception() | 
+    tips_divergence_exceeded_exception().
+
+-type list_pull_requests_errors() ::
+    repository_does_not_exist_exception() | 
+    invalid_pull_request_status_exception() | 
+    encryption_key_disabled_exception() | 
+    repository_name_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    invalid_repository_name_exception() | 
+    author_does_not_exist_exception() | 
+    invalid_author_arn_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    invalid_continuation_token_exception() | 
+    invalid_max_results_exception().
+
+-type list_repositories_errors() ::
+    invalid_sort_by_exception() | 
+    invalid_continuation_token_exception() | 
+    invalid_order_exception().
+
+-type list_repositories_for_approval_rule_template_errors() ::
+    invalid_approval_rule_template_name_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
+    approval_rule_template_does_not_exist_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    invalid_continuation_token_exception() | 
+    invalid_max_results_exception() | 
+    approval_rule_template_name_required_exception().
+
+-type list_tags_for_resource_errors() ::
+    repository_does_not_exist_exception() | 
+    invalid_resource_arn_exception() | 
+    resource_arn_required_exception() | 
+    invalid_repository_name_exception().
+
+-type merge_branches_by_fast_forward_errors() ::
+    repository_does_not_exist_exception() | 
+    concurrent_reference_update_exception() | 
+    commit_required_exception() | 
+    commit_does_not_exist_exception() | 
+    branch_does_not_exist_exception() | 
+    encryption_key_disabled_exception() | 
+    manual_merge_required_exception() | 
+    invalid_target_branch_exception() | 
+    invalid_commit_exception() | 
+    repository_name_required_exception() | 
+    invalid_branch_name_exception() | 
+    encryption_key_access_denied_exception() | 
+    branch_name_is_tag_name_exception() | 
+    invalid_repository_name_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    tips_divergence_exceeded_exception() | 
+    branch_name_required_exception().
+
+-type merge_branches_by_squash_errors() ::
+    repository_does_not_exist_exception() | 
+    maximum_file_content_to_load_exceeded_exception() | 
+    invalid_file_mode_exception() | 
+    concurrent_reference_update_exception() | 
+    path_required_exception() | 
+    commit_required_exception() | 
+    invalid_conflict_detail_level_exception() | 
+    name_length_exceeded_exception() | 
+    commit_does_not_exist_exception() | 
+    invalid_conflict_resolution_exception() | 
+    invalid_path_exception() | 
+    file_content_size_limit_exceeded_exception() | 
+    branch_does_not_exist_exception() | 
+    replacement_type_required_exception() | 
+    encryption_key_disabled_exception() | 
+    commit_message_length_exceeded_exception() | 
+    maximum_conflict_resolution_entries_exceeded_exception() | 
+    manual_merge_required_exception() | 
+    invalid_target_branch_exception() | 
+    invalid_commit_exception() | 
+    file_mode_required_exception() | 
+    invalid_email_exception() | 
+    repository_name_required_exception() | 
+    invalid_branch_name_exception() | 
+    invalid_replacement_content_exception() | 
+    encryption_key_access_denied_exception() | 
+    multiple_conflict_resolution_entries_exception() | 
+    maximum_items_to_compare_exceeded_exception() | 
+    replacement_content_required_exception() | 
+    branch_name_is_tag_name_exception() | 
+    invalid_repository_name_exception() | 
+    invalid_replacement_type_exception() | 
+    invalid_conflict_resolution_strategy_exception() | 
+    folder_content_size_limit_exceeded_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    tips_divergence_exceeded_exception() | 
+    branch_name_required_exception().
+
+-type merge_branches_by_three_way_errors() ::
+    repository_does_not_exist_exception() | 
+    maximum_file_content_to_load_exceeded_exception() | 
+    invalid_file_mode_exception() | 
+    concurrent_reference_update_exception() | 
+    path_required_exception() | 
+    commit_required_exception() | 
+    invalid_conflict_detail_level_exception() | 
+    name_length_exceeded_exception() | 
+    commit_does_not_exist_exception() | 
+    invalid_conflict_resolution_exception() | 
+    invalid_path_exception() | 
+    file_content_size_limit_exceeded_exception() | 
+    branch_does_not_exist_exception() | 
+    replacement_type_required_exception() | 
+    encryption_key_disabled_exception() | 
+    commit_message_length_exceeded_exception() | 
+    maximum_conflict_resolution_entries_exceeded_exception() | 
+    manual_merge_required_exception() | 
+    invalid_target_branch_exception() | 
+    invalid_commit_exception() | 
+    file_mode_required_exception() | 
+    invalid_email_exception() | 
+    repository_name_required_exception() | 
+    invalid_branch_name_exception() | 
+    invalid_replacement_content_exception() | 
+    encryption_key_access_denied_exception() | 
+    multiple_conflict_resolution_entries_exception() | 
+    maximum_items_to_compare_exceeded_exception() | 
+    replacement_content_required_exception() | 
+    branch_name_is_tag_name_exception() | 
+    invalid_repository_name_exception() | 
+    invalid_replacement_type_exception() | 
+    invalid_conflict_resolution_strategy_exception() | 
+    folder_content_size_limit_exceeded_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    tips_divergence_exceeded_exception() | 
+    branch_name_required_exception().
+
+-type merge_pull_request_by_fast_forward_errors() ::
+    repository_does_not_exist_exception() | 
+    concurrent_reference_update_exception() | 
+    reference_does_not_exist_exception() | 
+    encryption_key_disabled_exception() | 
+    pull_request_already_closed_exception() | 
+    repository_not_associated_with_pull_request_exception() | 
+    manual_merge_required_exception() | 
+    invalid_commit_id_exception() | 
+    repository_name_required_exception() | 
+    pull_request_does_not_exist_exception() | 
+    encryption_key_access_denied_exception() | 
+    pull_request_id_required_exception() | 
+    invalid_repository_name_exception() | 
+    tip_of_source_reference_is_different_exception() | 
+    pull_request_approval_rules_not_satisfied_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    invalid_pull_request_id_exception().
+
+-type merge_pull_request_by_squash_errors() ::
+    repository_does_not_exist_exception() | 
+    maximum_file_content_to_load_exceeded_exception() | 
+    invalid_file_mode_exception() | 
+    concurrent_reference_update_exception() | 
+    path_required_exception() | 
+    invalid_conflict_detail_level_exception() | 
+    name_length_exceeded_exception() | 
+    invalid_conflict_resolution_exception() | 
+    invalid_path_exception() | 
+    file_content_size_limit_exceeded_exception() | 
+    replacement_type_required_exception() | 
+    encryption_key_disabled_exception() | 
+    pull_request_already_closed_exception() | 
+    repository_not_associated_with_pull_request_exception() | 
+    commit_message_length_exceeded_exception() | 
+    maximum_conflict_resolution_entries_exceeded_exception() | 
+    manual_merge_required_exception() | 
+    invalid_commit_id_exception() | 
+    invalid_email_exception() | 
+    repository_name_required_exception() | 
+    pull_request_does_not_exist_exception() | 
+    invalid_replacement_content_exception() | 
+    encryption_key_access_denied_exception() | 
+    multiple_conflict_resolution_entries_exception() | 
+    maximum_items_to_compare_exceeded_exception() | 
+    pull_request_id_required_exception() | 
+    replacement_content_required_exception() | 
+    invalid_repository_name_exception() | 
+    invalid_replacement_type_exception() | 
+    tip_of_source_reference_is_different_exception() | 
+    invalid_conflict_resolution_strategy_exception() | 
+    folder_content_size_limit_exceeded_exception() | 
+    pull_request_approval_rules_not_satisfied_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    invalid_pull_request_id_exception() | 
+    tips_divergence_exceeded_exception().
+
+-type merge_pull_request_by_three_way_errors() ::
+    repository_does_not_exist_exception() | 
+    maximum_file_content_to_load_exceeded_exception() | 
+    invalid_file_mode_exception() | 
+    concurrent_reference_update_exception() | 
+    path_required_exception() | 
+    invalid_conflict_detail_level_exception() | 
+    name_length_exceeded_exception() | 
+    invalid_conflict_resolution_exception() | 
+    invalid_path_exception() | 
+    file_content_size_limit_exceeded_exception() | 
+    replacement_type_required_exception() | 
+    encryption_key_disabled_exception() | 
+    pull_request_already_closed_exception() | 
+    repository_not_associated_with_pull_request_exception() | 
+    commit_message_length_exceeded_exception() | 
+    maximum_conflict_resolution_entries_exceeded_exception() | 
+    manual_merge_required_exception() | 
+    invalid_commit_id_exception() | 
+    invalid_email_exception() | 
+    repository_name_required_exception() | 
+    pull_request_does_not_exist_exception() | 
+    invalid_replacement_content_exception() | 
+    encryption_key_access_denied_exception() | 
+    multiple_conflict_resolution_entries_exception() | 
+    maximum_items_to_compare_exceeded_exception() | 
+    pull_request_id_required_exception() | 
+    replacement_content_required_exception() | 
+    invalid_repository_name_exception() | 
+    invalid_replacement_type_exception() | 
+    tip_of_source_reference_is_different_exception() | 
+    invalid_conflict_resolution_strategy_exception() | 
+    folder_content_size_limit_exceeded_exception() | 
+    pull_request_approval_rules_not_satisfied_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    invalid_pull_request_id_exception() | 
+    tips_divergence_exceeded_exception().
+
+-type override_pull_request_approval_rules_errors() ::
+    revision_not_current_exception() | 
+    override_status_required_exception() | 
+    encryption_key_disabled_exception() | 
+    pull_request_already_closed_exception() | 
+    override_already_set_exception() | 
+    pull_request_does_not_exist_exception() | 
+    invalid_revision_id_exception() | 
+    revision_id_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    pull_request_id_required_exception() | 
+    invalid_override_status_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    invalid_pull_request_id_exception().
+
+-type post_comment_for_compared_commit_errors() ::
+    repository_does_not_exist_exception() | 
+    path_required_exception() | 
+    invalid_file_location_exception() | 
+    commit_does_not_exist_exception() | 
+    comment_content_required_exception() | 
+    invalid_path_exception() | 
+    idempotency_parameter_mismatch_exception() | 
+    encryption_key_disabled_exception() | 
+    before_commit_id_and_after_commit_id_are_same_exception() | 
+    invalid_commit_id_exception() | 
+    invalid_relative_file_version_enum_exception() | 
+    repository_name_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    comment_content_size_limit_exceeded_exception() | 
+    invalid_repository_name_exception() | 
+    commit_id_required_exception() | 
+    path_does_not_exist_exception() | 
+    invalid_client_request_token_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    invalid_file_position_exception() | 
+    client_request_token_required_exception().
+
+-type post_comment_for_pull_request_errors() ::
+    repository_does_not_exist_exception() | 
+    path_required_exception() | 
+    invalid_file_location_exception() | 
+    commit_does_not_exist_exception() | 
+    comment_content_required_exception() | 
+    invalid_path_exception() | 
+    idempotency_parameter_mismatch_exception() | 
+    encryption_key_disabled_exception() | 
+    repository_not_associated_with_pull_request_exception() | 
+    before_commit_id_and_after_commit_id_are_same_exception() | 
+    invalid_commit_id_exception() | 
+    invalid_relative_file_version_enum_exception() | 
+    repository_name_required_exception() | 
+    pull_request_does_not_exist_exception() | 
+    encryption_key_access_denied_exception() | 
+    pull_request_id_required_exception() | 
+    comment_content_size_limit_exceeded_exception() | 
+    invalid_repository_name_exception() | 
+    commit_id_required_exception() | 
+    path_does_not_exist_exception() | 
+    invalid_client_request_token_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    invalid_pull_request_id_exception() | 
+    invalid_file_position_exception() | 
+    client_request_token_required_exception().
+
+-type post_comment_reply_errors() ::
+    invalid_comment_id_exception() | 
+    comment_content_required_exception() | 
+    idempotency_parameter_mismatch_exception() | 
+    comment_does_not_exist_exception() | 
+    comment_content_size_limit_exceeded_exception() | 
+    invalid_client_request_token_exception() | 
+    comment_id_required_exception() | 
+    client_request_token_required_exception().
+
+-type put_comment_reaction_errors() ::
+    invalid_comment_id_exception() | 
+    comment_does_not_exist_exception() | 
+    reaction_limit_exceeded_exception() | 
+    reaction_value_required_exception() | 
+    invalid_reaction_value_exception() | 
+    comment_id_required_exception() | 
+    comment_deleted_exception().
+
+-type put_file_errors() ::
+    repository_does_not_exist_exception() | 
+    invalid_file_mode_exception() | 
+    directory_name_conflicts_with_file_name_exception() | 
+    path_required_exception() | 
+    name_length_exceeded_exception() | 
+    invalid_path_exception() | 
+    file_path_conflicts_with_submodule_path_exception() | 
+    parent_commit_id_required_exception() | 
+    file_content_size_limit_exceeded_exception() | 
+    branch_does_not_exist_exception() | 
+    parent_commit_does_not_exist_exception() | 
+    encryption_key_disabled_exception() | 
+    commit_message_length_exceeded_exception() | 
+    invalid_deletion_parameter_exception() | 
+    parent_commit_id_outdated_exception() | 
+    invalid_email_exception() | 
+    repository_name_required_exception() | 
+    invalid_branch_name_exception() | 
+    encryption_key_access_denied_exception() | 
+    branch_name_is_tag_name_exception() | 
+    invalid_parent_commit_id_exception() | 
+    invalid_repository_name_exception() | 
+    same_file_content_exception() | 
+    file_name_conflicts_with_directory_name_exception() | 
+    folder_content_size_limit_exceeded_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    file_content_required_exception() | 
+    branch_name_required_exception().
+
+-type put_repository_triggers_errors() ::
+    repository_does_not_exist_exception() | 
+    invalid_repository_trigger_name_exception() | 
+    repository_trigger_events_list_required_exception() | 
+    maximum_branches_exceeded_exception() | 
+    invalid_repository_trigger_destination_arn_exception() | 
+    invalid_repository_trigger_branch_name_exception() | 
+    encryption_key_disabled_exception() | 
+    invalid_repository_trigger_region_exception() | 
+    repository_trigger_destination_arn_required_exception() | 
+    repository_name_required_exception() | 
+    repository_trigger_name_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    invalid_repository_trigger_events_exception() | 
+    repository_trigger_branch_name_list_required_exception() | 
+    invalid_repository_name_exception() | 
+    repository_triggers_list_required_exception() | 
+    invalid_repository_trigger_custom_data_exception() | 
+    maximum_repository_triggers_exceeded_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception().
+
+-type tag_resource_errors() ::
+    repository_does_not_exist_exception() | 
+    too_many_tags_exception() | 
+    invalid_tags_map_exception() | 
+    invalid_resource_arn_exception() | 
+    invalid_system_tag_usage_exception() | 
+    resource_arn_required_exception() | 
+    invalid_repository_name_exception() | 
+    tag_policy_exception() | 
+    tags_map_required_exception().
+
+-type test_repository_triggers_errors() ::
+    repository_does_not_exist_exception() | 
+    invalid_repository_trigger_name_exception() | 
+    repository_trigger_events_list_required_exception() | 
+    maximum_branches_exceeded_exception() | 
+    invalid_repository_trigger_destination_arn_exception() | 
+    invalid_repository_trigger_branch_name_exception() | 
+    encryption_key_disabled_exception() | 
+    invalid_repository_trigger_region_exception() | 
+    repository_trigger_destination_arn_required_exception() | 
+    repository_name_required_exception() | 
+    repository_trigger_name_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    invalid_repository_trigger_events_exception() | 
+    repository_trigger_branch_name_list_required_exception() | 
+    invalid_repository_name_exception() | 
+    repository_triggers_list_required_exception() | 
+    invalid_repository_trigger_custom_data_exception() | 
+    maximum_repository_triggers_exceeded_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception().
+
+-type untag_resource_errors() ::
+    repository_does_not_exist_exception() | 
+    too_many_tags_exception() | 
+    tag_keys_list_required_exception() | 
+    invalid_resource_arn_exception() | 
+    invalid_system_tag_usage_exception() | 
+    invalid_tag_keys_list_exception() | 
+    resource_arn_required_exception() | 
+    invalid_repository_name_exception() | 
+    tag_policy_exception().
+
+-type update_approval_rule_template_content_errors() ::
+    invalid_approval_rule_template_name_exception() | 
+    invalid_approval_rule_template_content_exception() | 
+    approval_rule_template_does_not_exist_exception() | 
+    approval_rule_template_content_required_exception() | 
+    invalid_rule_content_sha256_exception() | 
+    approval_rule_template_name_required_exception().
+
+-type update_approval_rule_template_description_errors() ::
+    invalid_approval_rule_template_name_exception() | 
+    approval_rule_template_does_not_exist_exception() | 
+    invalid_approval_rule_template_description_exception() | 
+    approval_rule_template_name_required_exception().
+
+-type update_approval_rule_template_name_errors() ::
+    approval_rule_template_name_already_exists_exception() | 
+    invalid_approval_rule_template_name_exception() | 
+    approval_rule_template_does_not_exist_exception() | 
+    approval_rule_template_name_required_exception().
+
+-type update_comment_errors() ::
+    invalid_comment_id_exception() | 
+    comment_content_required_exception() | 
+    comment_does_not_exist_exception() | 
+    comment_not_created_by_caller_exception() | 
+    comment_content_size_limit_exceeded_exception() | 
+    comment_id_required_exception() | 
+    comment_deleted_exception().
+
+-type update_default_branch_errors() ::
+    repository_does_not_exist_exception() | 
+    branch_does_not_exist_exception() | 
+    encryption_key_disabled_exception() | 
+    repository_name_required_exception() | 
+    invalid_branch_name_exception() | 
+    encryption_key_access_denied_exception() | 
+    invalid_repository_name_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    branch_name_required_exception().
+
+-type update_pull_request_approval_rule_content_errors() ::
+    invalid_approval_rule_name_exception() | 
+    encryption_key_disabled_exception() | 
+    pull_request_already_closed_exception() | 
+    approval_rule_does_not_exist_exception() | 
+    pull_request_does_not_exist_exception() | 
+    invalid_approval_rule_content_exception() | 
+    encryption_key_access_denied_exception() | 
+    pull_request_id_required_exception() | 
+    approval_rule_content_required_exception() | 
+    cannot_modify_approval_rule_from_template_exception() | 
+    invalid_rule_content_sha256_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    invalid_pull_request_id_exception() | 
+    approval_rule_name_required_exception().
+
+-type update_pull_request_approval_state_errors() ::
+    revision_not_current_exception() | 
+    encryption_key_disabled_exception() | 
+    pull_request_already_closed_exception() | 
+    invalid_approval_state_exception() | 
+    pull_request_does_not_exist_exception() | 
+    invalid_revision_id_exception() | 
+    revision_id_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    pull_request_id_required_exception() | 
+    pull_request_cannot_be_approved_by_author_exception() | 
+    approval_state_required_exception() | 
+    maximum_number_of_approvals_exceeded_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    invalid_pull_request_id_exception().
+
+-type update_pull_request_description_errors() ::
+    pull_request_already_closed_exception() | 
+    invalid_description_exception() | 
+    pull_request_does_not_exist_exception() | 
+    pull_request_id_required_exception() | 
+    invalid_pull_request_id_exception().
+
+-type update_pull_request_status_errors() ::
+    invalid_pull_request_status_exception() | 
+    invalid_pull_request_status_update_exception() | 
+    encryption_key_disabled_exception() | 
+    pull_request_does_not_exist_exception() | 
+    pull_request_status_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    pull_request_id_required_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    invalid_pull_request_id_exception().
+
+-type update_pull_request_title_errors() ::
+    invalid_title_exception() | 
+    pull_request_already_closed_exception() | 
+    title_required_exception() | 
+    pull_request_does_not_exist_exception() | 
+    pull_request_id_required_exception() | 
+    invalid_pull_request_id_exception().
+
+-type update_repository_description_errors() ::
+    repository_does_not_exist_exception() | 
+    invalid_repository_description_exception() | 
+    encryption_key_disabled_exception() | 
+    repository_name_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    invalid_repository_name_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception().
+
+-type update_repository_encryption_key_errors() ::
+    repository_does_not_exist_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_invalid_id_exception() | 
+    encryption_key_invalid_usage_exception() | 
+    repository_name_required_exception() | 
+    encryption_key_access_denied_exception() | 
+    encryption_key_required_exception() | 
+    invalid_repository_name_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_integrity_checks_failed_exception().
+
+-type update_repository_name_errors() ::
+    repository_does_not_exist_exception() | 
+    repository_name_required_exception() | 
+    invalid_repository_name_exception() | 
+    repository_name_exists_exception().
 
 %%====================================================================
 %% API
@@ -3316,18 +4570,7 @@
 -spec associate_approval_rule_template_with_repository(map(), associate_approval_rule_template_with_repository_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
-    {error, approval_rule_template_name_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_approval_rule_template_name_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, maximum_rule_templates_associated_with_repository_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, associate_approval_rule_template_with_repository_errors(), tuple()}.
 associate_approval_rule_template_with_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_approval_rule_template_with_repository(Client, Input, []).
@@ -3335,18 +4578,7 @@ associate_approval_rule_template_with_repository(Client, Input)
 -spec associate_approval_rule_template_with_repository(map(), associate_approval_rule_template_with_repository_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
-    {error, approval_rule_template_name_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_approval_rule_template_name_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, maximum_rule_templates_associated_with_repository_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, associate_approval_rule_template_with_repository_errors(), tuple()}.
 associate_approval_rule_template_with_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateApprovalRuleTemplateWithRepository">>, Input, Options).
@@ -3356,16 +4588,7 @@ associate_approval_rule_template_with_repository(Client, Input, Options)
 -spec batch_associate_approval_rule_template_with_repositories(map(), batch_associate_approval_rule_template_with_repositories_input()) ->
     {ok, batch_associate_approval_rule_template_with_repositories_output(), tuple()} |
     {error, any()} |
-    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
-    {error, approval_rule_template_name_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_approval_rule_template_name_exception(), tuple()} |
-    {error, maximum_repository_names_exceeded_exception(), tuple()} |
-    {error, repository_names_required_exception(), tuple()}.
+    {error, batch_associate_approval_rule_template_with_repositories_errors(), tuple()}.
 batch_associate_approval_rule_template_with_repositories(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_associate_approval_rule_template_with_repositories(Client, Input, []).
@@ -3373,16 +4596,7 @@ batch_associate_approval_rule_template_with_repositories(Client, Input)
 -spec batch_associate_approval_rule_template_with_repositories(map(), batch_associate_approval_rule_template_with_repositories_input(), proplists:proplist()) ->
     {ok, batch_associate_approval_rule_template_with_repositories_output(), tuple()} |
     {error, any()} |
-    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
-    {error, approval_rule_template_name_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_approval_rule_template_name_exception(), tuple()} |
-    {error, maximum_repository_names_exceeded_exception(), tuple()} |
-    {error, repository_names_required_exception(), tuple()}.
+    {error, batch_associate_approval_rule_template_with_repositories_errors(), tuple()}.
 batch_associate_approval_rule_template_with_repositories(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchAssociateApprovalRuleTemplateWithRepositories">>, Input, Options).
@@ -3393,27 +4607,7 @@ batch_associate_approval_rule_template_with_repositories(Client, Input, Options)
 -spec batch_describe_merge_conflicts(map(), batch_describe_merge_conflicts_input()) ->
     {ok, batch_describe_merge_conflicts_output(), tuple()} |
     {error, any()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_commit_exception(), tuple()} |
-    {error, invalid_conflict_detail_level_exception(), tuple()} |
-    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
-    {error, invalid_continuation_token_exception(), tuple()} |
-    {error, invalid_max_conflict_files_exception(), tuple()} |
-    {error, invalid_max_merge_hunks_exception(), tuple()} |
-    {error, invalid_merge_option_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
-    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
-    {error, merge_option_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, tips_divergence_exceeded_exception(), tuple()}.
+    {error, batch_describe_merge_conflicts_errors(), tuple()}.
 batch_describe_merge_conflicts(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_describe_merge_conflicts(Client, Input, []).
@@ -3421,27 +4615,7 @@ batch_describe_merge_conflicts(Client, Input)
 -spec batch_describe_merge_conflicts(map(), batch_describe_merge_conflicts_input(), proplists:proplist()) ->
     {ok, batch_describe_merge_conflicts_output(), tuple()} |
     {error, any()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_commit_exception(), tuple()} |
-    {error, invalid_conflict_detail_level_exception(), tuple()} |
-    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
-    {error, invalid_continuation_token_exception(), tuple()} |
-    {error, invalid_max_conflict_files_exception(), tuple()} |
-    {error, invalid_max_merge_hunks_exception(), tuple()} |
-    {error, invalid_merge_option_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
-    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
-    {error, merge_option_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, tips_divergence_exceeded_exception(), tuple()}.
+    {error, batch_describe_merge_conflicts_errors(), tuple()}.
 batch_describe_merge_conflicts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDescribeMergeConflicts">>, Input, Options).
@@ -3451,16 +4625,7 @@ batch_describe_merge_conflicts(Client, Input, Options)
 -spec batch_disassociate_approval_rule_template_from_repositories(map(), batch_disassociate_approval_rule_template_from_repositories_input()) ->
     {ok, batch_disassociate_approval_rule_template_from_repositories_output(), tuple()} |
     {error, any()} |
-    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
-    {error, approval_rule_template_name_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_approval_rule_template_name_exception(), tuple()} |
-    {error, maximum_repository_names_exceeded_exception(), tuple()} |
-    {error, repository_names_required_exception(), tuple()}.
+    {error, batch_disassociate_approval_rule_template_from_repositories_errors(), tuple()}.
 batch_disassociate_approval_rule_template_from_repositories(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_disassociate_approval_rule_template_from_repositories(Client, Input, []).
@@ -3468,16 +4633,7 @@ batch_disassociate_approval_rule_template_from_repositories(Client, Input)
 -spec batch_disassociate_approval_rule_template_from_repositories(map(), batch_disassociate_approval_rule_template_from_repositories_input(), proplists:proplist()) ->
     {ok, batch_disassociate_approval_rule_template_from_repositories_output(), tuple()} |
     {error, any()} |
-    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
-    {error, approval_rule_template_name_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_approval_rule_template_name_exception(), tuple()} |
-    {error, maximum_repository_names_exceeded_exception(), tuple()} |
-    {error, repository_names_required_exception(), tuple()}.
+    {error, batch_disassociate_approval_rule_template_from_repositories_errors(), tuple()}.
 batch_disassociate_approval_rule_template_from_repositories(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDisassociateApprovalRuleTemplateFromRepositories">>, Input, Options).
@@ -3487,16 +4643,7 @@ batch_disassociate_approval_rule_template_from_repositories(Client, Input, Optio
 -spec batch_get_commits(map(), batch_get_commits_input()) ->
     {ok, batch_get_commits_output(), tuple()} |
     {error, any()} |
-    {error, commit_ids_limit_exceeded_exception(), tuple()} |
-    {error, commit_ids_list_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, batch_get_commits_errors(), tuple()}.
 batch_get_commits(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_commits(Client, Input, []).
@@ -3504,16 +4651,7 @@ batch_get_commits(Client, Input)
 -spec batch_get_commits(map(), batch_get_commits_input(), proplists:proplist()) ->
     {ok, batch_get_commits_output(), tuple()} |
     {error, any()} |
-    {error, commit_ids_limit_exceeded_exception(), tuple()} |
-    {error, commit_ids_list_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, batch_get_commits_errors(), tuple()}.
 batch_get_commits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetCommits">>, Input, Options).
@@ -3532,14 +4670,7 @@ batch_get_commits(Client, Input, Options)
 -spec batch_get_repositories(map(), batch_get_repositories_input()) ->
     {ok, batch_get_repositories_output(), tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, maximum_repository_names_exceeded_exception(), tuple()} |
-    {error, repository_names_required_exception(), tuple()}.
+    {error, batch_get_repositories_errors(), tuple()}.
 batch_get_repositories(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_repositories(Client, Input, []).
@@ -3547,14 +4678,7 @@ batch_get_repositories(Client, Input)
 -spec batch_get_repositories(map(), batch_get_repositories_input(), proplists:proplist()) ->
     {ok, batch_get_repositories_output(), tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, maximum_repository_names_exceeded_exception(), tuple()} |
-    {error, repository_names_required_exception(), tuple()}.
+    {error, batch_get_repositories_errors(), tuple()}.
 batch_get_repositories(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetRepositories">>, Input, Options).
@@ -3572,13 +4696,7 @@ batch_get_repositories(Client, Input, Options)
 -spec create_approval_rule_template(map(), create_approval_rule_template_input()) ->
     {ok, create_approval_rule_template_output(), tuple()} |
     {error, any()} |
-    {error, approval_rule_template_content_required_exception(), tuple()} |
-    {error, approval_rule_template_name_already_exists_exception(), tuple()} |
-    {error, approval_rule_template_name_required_exception(), tuple()} |
-    {error, invalid_approval_rule_template_content_exception(), tuple()} |
-    {error, invalid_approval_rule_template_description_exception(), tuple()} |
-    {error, invalid_approval_rule_template_name_exception(), tuple()} |
-    {error, number_of_rule_templates_exceeded_exception(), tuple()}.
+    {error, create_approval_rule_template_errors(), tuple()}.
 create_approval_rule_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_approval_rule_template(Client, Input, []).
@@ -3586,13 +4704,7 @@ create_approval_rule_template(Client, Input)
 -spec create_approval_rule_template(map(), create_approval_rule_template_input(), proplists:proplist()) ->
     {ok, create_approval_rule_template_output(), tuple()} |
     {error, any()} |
-    {error, approval_rule_template_content_required_exception(), tuple()} |
-    {error, approval_rule_template_name_already_exists_exception(), tuple()} |
-    {error, approval_rule_template_name_required_exception(), tuple()} |
-    {error, invalid_approval_rule_template_content_exception(), tuple()} |
-    {error, invalid_approval_rule_template_description_exception(), tuple()} |
-    {error, invalid_approval_rule_template_name_exception(), tuple()} |
-    {error, number_of_rule_templates_exceeded_exception(), tuple()}.
+    {error, create_approval_rule_template_errors(), tuple()}.
 create_approval_rule_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateApprovalRuleTemplate">>, Input, Options).
@@ -3604,20 +4716,7 @@ create_approval_rule_template(Client, Input, Options)
 -spec create_branch(map(), create_branch_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, branch_name_exists_exception(), tuple()} |
-    {error, branch_name_required_exception(), tuple()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_id_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_branch_name_exception(), tuple()} |
-    {error, invalid_commit_id_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, create_branch_errors(), tuple()}.
 create_branch(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_branch(Client, Input, []).
@@ -3625,20 +4724,7 @@ create_branch(Client, Input)
 -spec create_branch(map(), create_branch_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, branch_name_exists_exception(), tuple()} |
-    {error, branch_name_required_exception(), tuple()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_id_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_branch_name_exception(), tuple()} |
-    {error, invalid_commit_id_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, create_branch_errors(), tuple()}.
 create_branch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBranch">>, Input, Options).
@@ -3647,44 +4733,7 @@ create_branch(Client, Input, Options)
 -spec create_commit(map(), create_commit_input()) ->
     {ok, create_commit_output(), tuple()} |
     {error, any()} |
-    {error, branch_does_not_exist_exception(), tuple()} |
-    {error, branch_name_is_tag_name_exception(), tuple()} |
-    {error, branch_name_required_exception(), tuple()} |
-    {error, commit_message_length_exceeded_exception(), tuple()} |
-    {error, directory_name_conflicts_with_file_name_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, file_content_and_source_file_specified_exception(), tuple()} |
-    {error, file_content_size_limit_exceeded_exception(), tuple()} |
-    {error, file_does_not_exist_exception(), tuple()} |
-    {error, file_entry_required_exception(), tuple()} |
-    {error, file_mode_required_exception(), tuple()} |
-    {error, file_name_conflicts_with_directory_name_exception(), tuple()} |
-    {error, file_path_conflicts_with_submodule_path_exception(), tuple()} |
-    {error, folder_content_size_limit_exceeded_exception(), tuple()} |
-    {error, invalid_branch_name_exception(), tuple()} |
-    {error, invalid_deletion_parameter_exception(), tuple()} |
-    {error, invalid_email_exception(), tuple()} |
-    {error, invalid_file_mode_exception(), tuple()} |
-    {error, invalid_parent_commit_id_exception(), tuple()} |
-    {error, invalid_path_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, maximum_file_entries_exceeded_exception(), tuple()} |
-    {error, name_length_exceeded_exception(), tuple()} |
-    {error, no_change_exception(), tuple()} |
-    {error, parent_commit_does_not_exist_exception(), tuple()} |
-    {error, parent_commit_id_outdated_exception(), tuple()} |
-    {error, parent_commit_id_required_exception(), tuple()} |
-    {error, path_required_exception(), tuple()} |
-    {error, put_file_entry_conflict_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, restricted_source_file_exception(), tuple()} |
-    {error, same_path_request_exception(), tuple()} |
-    {error, source_file_or_content_required_exception(), tuple()}.
+    {error, create_commit_errors(), tuple()}.
 create_commit(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_commit(Client, Input, []).
@@ -3692,44 +4741,7 @@ create_commit(Client, Input)
 -spec create_commit(map(), create_commit_input(), proplists:proplist()) ->
     {ok, create_commit_output(), tuple()} |
     {error, any()} |
-    {error, branch_does_not_exist_exception(), tuple()} |
-    {error, branch_name_is_tag_name_exception(), tuple()} |
-    {error, branch_name_required_exception(), tuple()} |
-    {error, commit_message_length_exceeded_exception(), tuple()} |
-    {error, directory_name_conflicts_with_file_name_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, file_content_and_source_file_specified_exception(), tuple()} |
-    {error, file_content_size_limit_exceeded_exception(), tuple()} |
-    {error, file_does_not_exist_exception(), tuple()} |
-    {error, file_entry_required_exception(), tuple()} |
-    {error, file_mode_required_exception(), tuple()} |
-    {error, file_name_conflicts_with_directory_name_exception(), tuple()} |
-    {error, file_path_conflicts_with_submodule_path_exception(), tuple()} |
-    {error, folder_content_size_limit_exceeded_exception(), tuple()} |
-    {error, invalid_branch_name_exception(), tuple()} |
-    {error, invalid_deletion_parameter_exception(), tuple()} |
-    {error, invalid_email_exception(), tuple()} |
-    {error, invalid_file_mode_exception(), tuple()} |
-    {error, invalid_parent_commit_id_exception(), tuple()} |
-    {error, invalid_path_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, maximum_file_entries_exceeded_exception(), tuple()} |
-    {error, name_length_exceeded_exception(), tuple()} |
-    {error, no_change_exception(), tuple()} |
-    {error, parent_commit_does_not_exist_exception(), tuple()} |
-    {error, parent_commit_id_outdated_exception(), tuple()} |
-    {error, parent_commit_id_required_exception(), tuple()} |
-    {error, path_required_exception(), tuple()} |
-    {error, put_file_entry_conflict_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, restricted_source_file_exception(), tuple()} |
-    {error, same_path_request_exception(), tuple()} |
-    {error, source_file_or_content_required_exception(), tuple()}.
+    {error, create_commit_errors(), tuple()}.
 create_commit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCommit">>, Input, Options).
@@ -3738,31 +4750,7 @@ create_commit(Client, Input, Options)
 -spec create_pull_request(map(), create_pull_request_input()) ->
     {ok, create_pull_request_output(), tuple()} |
     {error, any()} |
-    {error, client_request_token_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, idempotency_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_request_token_exception(), tuple()} |
-    {error, invalid_description_exception(), tuple()} |
-    {error, invalid_reference_name_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, invalid_target_exception(), tuple()} |
-    {error, invalid_targets_exception(), tuple()} |
-    {error, invalid_title_exception(), tuple()} |
-    {error, maximum_open_pull_requests_exceeded_exception(), tuple()} |
-    {error, multiple_repositories_in_pull_request_exception(), tuple()} |
-    {error, reference_does_not_exist_exception(), tuple()} |
-    {error, reference_name_required_exception(), tuple()} |
-    {error, reference_type_not_supported_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, source_and_destination_are_same_exception(), tuple()} |
-    {error, target_required_exception(), tuple()} |
-    {error, targets_required_exception(), tuple()} |
-    {error, title_required_exception(), tuple()}.
+    {error, create_pull_request_errors(), tuple()}.
 create_pull_request(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_pull_request(Client, Input, []).
@@ -3770,31 +4758,7 @@ create_pull_request(Client, Input)
 -spec create_pull_request(map(), create_pull_request_input(), proplists:proplist()) ->
     {ok, create_pull_request_output(), tuple()} |
     {error, any()} |
-    {error, client_request_token_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, idempotency_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_request_token_exception(), tuple()} |
-    {error, invalid_description_exception(), tuple()} |
-    {error, invalid_reference_name_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, invalid_target_exception(), tuple()} |
-    {error, invalid_targets_exception(), tuple()} |
-    {error, invalid_title_exception(), tuple()} |
-    {error, maximum_open_pull_requests_exceeded_exception(), tuple()} |
-    {error, multiple_repositories_in_pull_request_exception(), tuple()} |
-    {error, reference_does_not_exist_exception(), tuple()} |
-    {error, reference_name_required_exception(), tuple()} |
-    {error, reference_type_not_supported_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, source_and_destination_are_same_exception(), tuple()} |
-    {error, target_required_exception(), tuple()} |
-    {error, targets_required_exception(), tuple()} |
-    {error, title_required_exception(), tuple()}.
+    {error, create_pull_request_errors(), tuple()}.
 create_pull_request(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePullRequest">>, Input, Options).
@@ -3803,21 +4767,7 @@ create_pull_request(Client, Input, Options)
 -spec create_pull_request_approval_rule(map(), create_pull_request_approval_rule_input()) ->
     {ok, create_pull_request_approval_rule_output(), tuple()} |
     {error, any()} |
-    {error, approval_rule_content_required_exception(), tuple()} |
-    {error, approval_rule_name_already_exists_exception(), tuple()} |
-    {error, approval_rule_name_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_approval_rule_content_exception(), tuple()} |
-    {error, invalid_approval_rule_name_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, number_of_rules_exceeded_exception(), tuple()} |
-    {error, pull_request_already_closed_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()}.
+    {error, create_pull_request_approval_rule_errors(), tuple()}.
 create_pull_request_approval_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_pull_request_approval_rule(Client, Input, []).
@@ -3825,21 +4775,7 @@ create_pull_request_approval_rule(Client, Input)
 -spec create_pull_request_approval_rule(map(), create_pull_request_approval_rule_input(), proplists:proplist()) ->
     {ok, create_pull_request_approval_rule_output(), tuple()} |
     {error, any()} |
-    {error, approval_rule_content_required_exception(), tuple()} |
-    {error, approval_rule_name_already_exists_exception(), tuple()} |
-    {error, approval_rule_name_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_approval_rule_content_exception(), tuple()} |
-    {error, invalid_approval_rule_name_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, number_of_rules_exceeded_exception(), tuple()} |
-    {error, pull_request_already_closed_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()}.
+    {error, create_pull_request_approval_rule_errors(), tuple()}.
 create_pull_request_approval_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePullRequestApprovalRule">>, Input, Options).
@@ -3848,22 +4784,7 @@ create_pull_request_approval_rule(Client, Input, Options)
 -spec create_repository(map(), create_repository_input()) ->
     {ok, create_repository_output(), tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_invalid_id_exception(), tuple()} |
-    {error, encryption_key_invalid_usage_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_repository_description_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, invalid_system_tag_usage_exception(), tuple()} |
-    {error, invalid_tags_map_exception(), tuple()} |
-    {error, repository_limit_exceeded_exception(), tuple()} |
-    {error, repository_name_exists_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, tag_policy_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_repository_errors(), tuple()}.
 create_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_repository(Client, Input, []).
@@ -3871,22 +4792,7 @@ create_repository(Client, Input)
 -spec create_repository(map(), create_repository_input(), proplists:proplist()) ->
     {ok, create_repository_output(), tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_invalid_id_exception(), tuple()} |
-    {error, encryption_key_invalid_usage_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_repository_description_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, invalid_system_tag_usage_exception(), tuple()} |
-    {error, invalid_tags_map_exception(), tuple()} |
-    {error, repository_limit_exceeded_exception(), tuple()} |
-    {error, repository_name_exists_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, tag_policy_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_repository_errors(), tuple()}.
 create_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRepository">>, Input, Options).
@@ -3907,42 +4813,7 @@ create_repository(Client, Input, Options)
 -spec create_unreferenced_merge_commit(map(), create_unreferenced_merge_commit_input()) ->
     {ok, create_unreferenced_merge_commit_output(), tuple()} |
     {error, any()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_message_length_exceeded_exception(), tuple()} |
-    {error, commit_required_exception(), tuple()} |
-    {error, concurrent_reference_update_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, file_content_size_limit_exceeded_exception(), tuple()} |
-    {error, file_mode_required_exception(), tuple()} |
-    {error, folder_content_size_limit_exceeded_exception(), tuple()} |
-    {error, invalid_commit_exception(), tuple()} |
-    {error, invalid_conflict_detail_level_exception(), tuple()} |
-    {error, invalid_conflict_resolution_exception(), tuple()} |
-    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
-    {error, invalid_email_exception(), tuple()} |
-    {error, invalid_file_mode_exception(), tuple()} |
-    {error, invalid_merge_option_exception(), tuple()} |
-    {error, invalid_path_exception(), tuple()} |
-    {error, invalid_replacement_content_exception(), tuple()} |
-    {error, invalid_replacement_type_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, manual_merge_required_exception(), tuple()} |
-    {error, maximum_conflict_resolution_entries_exceeded_exception(), tuple()} |
-    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
-    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
-    {error, merge_option_required_exception(), tuple()} |
-    {error, multiple_conflict_resolution_entries_exception(), tuple()} |
-    {error, name_length_exceeded_exception(), tuple()} |
-    {error, path_required_exception(), tuple()} |
-    {error, replacement_content_required_exception(), tuple()} |
-    {error, replacement_type_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, tips_divergence_exceeded_exception(), tuple()}.
+    {error, create_unreferenced_merge_commit_errors(), tuple()}.
 create_unreferenced_merge_commit(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_unreferenced_merge_commit(Client, Input, []).
@@ -3950,42 +4821,7 @@ create_unreferenced_merge_commit(Client, Input)
 -spec create_unreferenced_merge_commit(map(), create_unreferenced_merge_commit_input(), proplists:proplist()) ->
     {ok, create_unreferenced_merge_commit_output(), tuple()} |
     {error, any()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_message_length_exceeded_exception(), tuple()} |
-    {error, commit_required_exception(), tuple()} |
-    {error, concurrent_reference_update_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, file_content_size_limit_exceeded_exception(), tuple()} |
-    {error, file_mode_required_exception(), tuple()} |
-    {error, folder_content_size_limit_exceeded_exception(), tuple()} |
-    {error, invalid_commit_exception(), tuple()} |
-    {error, invalid_conflict_detail_level_exception(), tuple()} |
-    {error, invalid_conflict_resolution_exception(), tuple()} |
-    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
-    {error, invalid_email_exception(), tuple()} |
-    {error, invalid_file_mode_exception(), tuple()} |
-    {error, invalid_merge_option_exception(), tuple()} |
-    {error, invalid_path_exception(), tuple()} |
-    {error, invalid_replacement_content_exception(), tuple()} |
-    {error, invalid_replacement_type_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, manual_merge_required_exception(), tuple()} |
-    {error, maximum_conflict_resolution_entries_exceeded_exception(), tuple()} |
-    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
-    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
-    {error, merge_option_required_exception(), tuple()} |
-    {error, multiple_conflict_resolution_entries_exception(), tuple()} |
-    {error, name_length_exceeded_exception(), tuple()} |
-    {error, path_required_exception(), tuple()} |
-    {error, replacement_content_required_exception(), tuple()} |
-    {error, replacement_type_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, tips_divergence_exceeded_exception(), tuple()}.
+    {error, create_unreferenced_merge_commit_errors(), tuple()}.
 create_unreferenced_merge_commit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUnreferencedMergeCommit">>, Input, Options).
@@ -3997,9 +4833,7 @@ create_unreferenced_merge_commit(Client, Input, Options)
 -spec delete_approval_rule_template(map(), delete_approval_rule_template_input()) ->
     {ok, delete_approval_rule_template_output(), tuple()} |
     {error, any()} |
-    {error, approval_rule_template_in_use_exception(), tuple()} |
-    {error, approval_rule_template_name_required_exception(), tuple()} |
-    {error, invalid_approval_rule_template_name_exception(), tuple()}.
+    {error, delete_approval_rule_template_errors(), tuple()}.
 delete_approval_rule_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_approval_rule_template(Client, Input, []).
@@ -4007,9 +4841,7 @@ delete_approval_rule_template(Client, Input)
 -spec delete_approval_rule_template(map(), delete_approval_rule_template_input(), proplists:proplist()) ->
     {ok, delete_approval_rule_template_output(), tuple()} |
     {error, any()} |
-    {error, approval_rule_template_in_use_exception(), tuple()} |
-    {error, approval_rule_template_name_required_exception(), tuple()} |
-    {error, invalid_approval_rule_template_name_exception(), tuple()}.
+    {error, delete_approval_rule_template_errors(), tuple()}.
 delete_approval_rule_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApprovalRuleTemplate">>, Input, Options).
@@ -4019,17 +4851,7 @@ delete_approval_rule_template(Client, Input, Options)
 -spec delete_branch(map(), delete_branch_input()) ->
     {ok, delete_branch_output(), tuple()} |
     {error, any()} |
-    {error, branch_name_required_exception(), tuple()} |
-    {error, default_branch_cannot_be_deleted_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_branch_name_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, delete_branch_errors(), tuple()}.
 delete_branch(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_branch(Client, Input, []).
@@ -4037,17 +4859,7 @@ delete_branch(Client, Input)
 -spec delete_branch(map(), delete_branch_input(), proplists:proplist()) ->
     {ok, delete_branch_output(), tuple()} |
     {error, any()} |
-    {error, branch_name_required_exception(), tuple()} |
-    {error, default_branch_cannot_be_deleted_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_branch_name_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, delete_branch_errors(), tuple()}.
 delete_branch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBranch">>, Input, Options).
@@ -4057,10 +4869,7 @@ delete_branch(Client, Input, Options)
 -spec delete_comment_content(map(), delete_comment_content_input()) ->
     {ok, delete_comment_content_output(), tuple()} |
     {error, any()} |
-    {error, comment_deleted_exception(), tuple()} |
-    {error, comment_does_not_exist_exception(), tuple()} |
-    {error, comment_id_required_exception(), tuple()} |
-    {error, invalid_comment_id_exception(), tuple()}.
+    {error, delete_comment_content_errors(), tuple()}.
 delete_comment_content(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_comment_content(Client, Input, []).
@@ -4068,10 +4877,7 @@ delete_comment_content(Client, Input)
 -spec delete_comment_content(map(), delete_comment_content_input(), proplists:proplist()) ->
     {ok, delete_comment_content_output(), tuple()} |
     {error, any()} |
-    {error, comment_deleted_exception(), tuple()} |
-    {error, comment_does_not_exist_exception(), tuple()} |
-    {error, comment_id_required_exception(), tuple()} |
-    {error, invalid_comment_id_exception(), tuple()}.
+    {error, delete_comment_content_errors(), tuple()}.
 delete_comment_content(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCommentContent">>, Input, Options).
@@ -4085,28 +4891,7 @@ delete_comment_content(Client, Input, Options)
 -spec delete_file(map(), delete_file_input()) ->
     {ok, delete_file_output(), tuple()} |
     {error, any()} |
-    {error, branch_does_not_exist_exception(), tuple()} |
-    {error, branch_name_is_tag_name_exception(), tuple()} |
-    {error, branch_name_required_exception(), tuple()} |
-    {error, commit_message_length_exceeded_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, file_does_not_exist_exception(), tuple()} |
-    {error, invalid_branch_name_exception(), tuple()} |
-    {error, invalid_email_exception(), tuple()} |
-    {error, invalid_parent_commit_id_exception(), tuple()} |
-    {error, invalid_path_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, name_length_exceeded_exception(), tuple()} |
-    {error, parent_commit_does_not_exist_exception(), tuple()} |
-    {error, parent_commit_id_outdated_exception(), tuple()} |
-    {error, parent_commit_id_required_exception(), tuple()} |
-    {error, path_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, delete_file_errors(), tuple()}.
 delete_file(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_file(Client, Input, []).
@@ -4114,28 +4899,7 @@ delete_file(Client, Input)
 -spec delete_file(map(), delete_file_input(), proplists:proplist()) ->
     {ok, delete_file_output(), tuple()} |
     {error, any()} |
-    {error, branch_does_not_exist_exception(), tuple()} |
-    {error, branch_name_is_tag_name_exception(), tuple()} |
-    {error, branch_name_required_exception(), tuple()} |
-    {error, commit_message_length_exceeded_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, file_does_not_exist_exception(), tuple()} |
-    {error, invalid_branch_name_exception(), tuple()} |
-    {error, invalid_email_exception(), tuple()} |
-    {error, invalid_parent_commit_id_exception(), tuple()} |
-    {error, invalid_path_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, name_length_exceeded_exception(), tuple()} |
-    {error, parent_commit_does_not_exist_exception(), tuple()} |
-    {error, parent_commit_id_outdated_exception(), tuple()} |
-    {error, parent_commit_id_required_exception(), tuple()} |
-    {error, path_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, delete_file_errors(), tuple()}.
 delete_file(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFile">>, Input, Options).
@@ -4152,18 +4916,7 @@ delete_file(Client, Input, Options)
 -spec delete_pull_request_approval_rule(map(), delete_pull_request_approval_rule_input()) ->
     {ok, delete_pull_request_approval_rule_output(), tuple()} |
     {error, any()} |
-    {error, approval_rule_name_required_exception(), tuple()} |
-    {error, cannot_delete_approval_rule_from_template_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_approval_rule_name_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, pull_request_already_closed_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()}.
+    {error, delete_pull_request_approval_rule_errors(), tuple()}.
 delete_pull_request_approval_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_pull_request_approval_rule(Client, Input, []).
@@ -4171,18 +4924,7 @@ delete_pull_request_approval_rule(Client, Input)
 -spec delete_pull_request_approval_rule(map(), delete_pull_request_approval_rule_input(), proplists:proplist()) ->
     {ok, delete_pull_request_approval_rule_output(), tuple()} |
     {error, any()} |
-    {error, approval_rule_name_required_exception(), tuple()} |
-    {error, cannot_delete_approval_rule_from_template_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_approval_rule_name_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, pull_request_already_closed_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()}.
+    {error, delete_pull_request_approval_rule_errors(), tuple()}.
 delete_pull_request_approval_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePullRequestApprovalRule">>, Input, Options).
@@ -4198,13 +4940,7 @@ delete_pull_request_approval_rule(Client, Input, Options)
 -spec delete_repository(map(), delete_repository_input()) ->
     {ok, delete_repository_output(), tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, delete_repository_errors(), tuple()}.
 delete_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_repository(Client, Input, []).
@@ -4212,13 +4948,7 @@ delete_repository(Client, Input)
 -spec delete_repository(map(), delete_repository_input(), proplists:proplist()) ->
     {ok, delete_repository_output(), tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, delete_repository_errors(), tuple()}.
 delete_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRepository">>, Input, Options).
@@ -4233,29 +4963,7 @@ delete_repository(Client, Input, Options)
 -spec describe_merge_conflicts(map(), describe_merge_conflicts_input()) ->
     {ok, describe_merge_conflicts_output(), tuple()} |
     {error, any()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, file_does_not_exist_exception(), tuple()} |
-    {error, invalid_commit_exception(), tuple()} |
-    {error, invalid_conflict_detail_level_exception(), tuple()} |
-    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
-    {error, invalid_continuation_token_exception(), tuple()} |
-    {error, invalid_max_merge_hunks_exception(), tuple()} |
-    {error, invalid_merge_option_exception(), tuple()} |
-    {error, invalid_path_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
-    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
-    {error, merge_option_required_exception(), tuple()} |
-    {error, path_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, tips_divergence_exceeded_exception(), tuple()}.
+    {error, describe_merge_conflicts_errors(), tuple()}.
 describe_merge_conflicts(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_merge_conflicts(Client, Input, []).
@@ -4263,29 +4971,7 @@ describe_merge_conflicts(Client, Input)
 -spec describe_merge_conflicts(map(), describe_merge_conflicts_input(), proplists:proplist()) ->
     {ok, describe_merge_conflicts_output(), tuple()} |
     {error, any()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, file_does_not_exist_exception(), tuple()} |
-    {error, invalid_commit_exception(), tuple()} |
-    {error, invalid_conflict_detail_level_exception(), tuple()} |
-    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
-    {error, invalid_continuation_token_exception(), tuple()} |
-    {error, invalid_max_merge_hunks_exception(), tuple()} |
-    {error, invalid_merge_option_exception(), tuple()} |
-    {error, invalid_path_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
-    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
-    {error, merge_option_required_exception(), tuple()} |
-    {error, path_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, tips_divergence_exceeded_exception(), tuple()}.
+    {error, describe_merge_conflicts_errors(), tuple()}.
 describe_merge_conflicts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMergeConflicts">>, Input, Options).
@@ -4294,19 +4980,7 @@ describe_merge_conflicts(Client, Input, Options)
 -spec describe_pull_request_events(map(), describe_pull_request_events_input()) ->
     {ok, describe_pull_request_events_output(), tuple()} |
     {error, any()} |
-    {error, actor_does_not_exist_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_actor_arn_exception(), tuple()} |
-    {error, invalid_continuation_token_exception(), tuple()} |
-    {error, invalid_max_results_exception(), tuple()} |
-    {error, invalid_pull_request_event_type_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()}.
+    {error, describe_pull_request_events_errors(), tuple()}.
 describe_pull_request_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_pull_request_events(Client, Input, []).
@@ -4314,19 +4988,7 @@ describe_pull_request_events(Client, Input)
 -spec describe_pull_request_events(map(), describe_pull_request_events_input(), proplists:proplist()) ->
     {ok, describe_pull_request_events_output(), tuple()} |
     {error, any()} |
-    {error, actor_does_not_exist_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_actor_arn_exception(), tuple()} |
-    {error, invalid_continuation_token_exception(), tuple()} |
-    {error, invalid_max_results_exception(), tuple()} |
-    {error, invalid_pull_request_event_type_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()}.
+    {error, describe_pull_request_events_errors(), tuple()}.
 describe_pull_request_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePullRequestEvents">>, Input, Options).
@@ -4342,17 +5004,7 @@ describe_pull_request_events(Client, Input, Options)
 -spec disassociate_approval_rule_template_from_repository(map(), disassociate_approval_rule_template_from_repository_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
-    {error, approval_rule_template_name_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_approval_rule_template_name_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, disassociate_approval_rule_template_from_repository_errors(), tuple()}.
 disassociate_approval_rule_template_from_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_approval_rule_template_from_repository(Client, Input, []).
@@ -4360,17 +5012,7 @@ disassociate_approval_rule_template_from_repository(Client, Input)
 -spec disassociate_approval_rule_template_from_repository(map(), disassociate_approval_rule_template_from_repository_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
-    {error, approval_rule_template_name_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_approval_rule_template_name_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, disassociate_approval_rule_template_from_repository_errors(), tuple()}.
 disassociate_approval_rule_template_from_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateApprovalRuleTemplateFromRepository">>, Input, Options).
@@ -4380,17 +5022,7 @@ disassociate_approval_rule_template_from_repository(Client, Input, Options)
 -spec evaluate_pull_request_approval_rules(map(), evaluate_pull_request_approval_rules_input()) ->
     {ok, evaluate_pull_request_approval_rules_output(), tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, invalid_revision_id_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()} |
-    {error, revision_id_required_exception(), tuple()} |
-    {error, revision_not_current_exception(), tuple()}.
+    {error, evaluate_pull_request_approval_rules_errors(), tuple()}.
 evaluate_pull_request_approval_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     evaluate_pull_request_approval_rules(Client, Input, []).
@@ -4398,17 +5030,7 @@ evaluate_pull_request_approval_rules(Client, Input)
 -spec evaluate_pull_request_approval_rules(map(), evaluate_pull_request_approval_rules_input(), proplists:proplist()) ->
     {ok, evaluate_pull_request_approval_rules_output(), tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, invalid_revision_id_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()} |
-    {error, revision_id_required_exception(), tuple()} |
-    {error, revision_not_current_exception(), tuple()}.
+    {error, evaluate_pull_request_approval_rules_errors(), tuple()}.
 evaluate_pull_request_approval_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EvaluatePullRequestApprovalRules">>, Input, Options).
@@ -4417,9 +5039,7 @@ evaluate_pull_request_approval_rules(Client, Input, Options)
 -spec get_approval_rule_template(map(), get_approval_rule_template_input()) ->
     {ok, get_approval_rule_template_output(), tuple()} |
     {error, any()} |
-    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
-    {error, approval_rule_template_name_required_exception(), tuple()} |
-    {error, invalid_approval_rule_template_name_exception(), tuple()}.
+    {error, get_approval_rule_template_errors(), tuple()}.
 get_approval_rule_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_approval_rule_template(Client, Input, []).
@@ -4427,9 +5047,7 @@ get_approval_rule_template(Client, Input)
 -spec get_approval_rule_template(map(), get_approval_rule_template_input(), proplists:proplist()) ->
     {ok, get_approval_rule_template_output(), tuple()} |
     {error, any()} |
-    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
-    {error, approval_rule_template_name_required_exception(), tuple()} |
-    {error, invalid_approval_rule_template_name_exception(), tuple()}.
+    {error, get_approval_rule_template_errors(), tuple()}.
 get_approval_rule_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetApprovalRuleTemplate">>, Input, Options).
@@ -4439,18 +5057,7 @@ get_approval_rule_template(Client, Input, Options)
 -spec get_blob(map(), get_blob_input()) ->
     {ok, get_blob_output(), tuple()} |
     {error, any()} |
-    {error, blob_id_does_not_exist_exception(), tuple()} |
-    {error, blob_id_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, file_too_large_exception(), tuple()} |
-    {error, invalid_blob_id_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, get_blob_errors(), tuple()}.
 get_blob(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_blob(Client, Input, []).
@@ -4458,18 +5065,7 @@ get_blob(Client, Input)
 -spec get_blob(map(), get_blob_input(), proplists:proplist()) ->
     {ok, get_blob_output(), tuple()} |
     {error, any()} |
-    {error, blob_id_does_not_exist_exception(), tuple()} |
-    {error, blob_id_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, file_too_large_exception(), tuple()} |
-    {error, invalid_blob_id_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, get_blob_errors(), tuple()}.
 get_blob(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetBlob">>, Input, Options).
@@ -4479,17 +5075,7 @@ get_blob(Client, Input, Options)
 -spec get_branch(map(), get_branch_input()) ->
     {ok, get_branch_output(), tuple()} |
     {error, any()} |
-    {error, branch_does_not_exist_exception(), tuple()} |
-    {error, branch_name_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_branch_name_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, get_branch_errors(), tuple()}.
 get_branch(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_branch(Client, Input, []).
@@ -4497,17 +5083,7 @@ get_branch(Client, Input)
 -spec get_branch(map(), get_branch_input(), proplists:proplist()) ->
     {ok, get_branch_output(), tuple()} |
     {error, any()} |
-    {error, branch_does_not_exist_exception(), tuple()} |
-    {error, branch_name_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_branch_name_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, get_branch_errors(), tuple()}.
 get_branch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetBranch">>, Input, Options).
@@ -4521,15 +5097,7 @@ get_branch(Client, Input, Options)
 -spec get_comment(map(), get_comment_input()) ->
     {ok, get_comment_output(), tuple()} |
     {error, any()} |
-    {error, comment_deleted_exception(), tuple()} |
-    {error, comment_does_not_exist_exception(), tuple()} |
-    {error, comment_id_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_comment_id_exception(), tuple()}.
+    {error, get_comment_errors(), tuple()}.
 get_comment(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_comment(Client, Input, []).
@@ -4537,15 +5105,7 @@ get_comment(Client, Input)
 -spec get_comment(map(), get_comment_input(), proplists:proplist()) ->
     {ok, get_comment_output(), tuple()} |
     {error, any()} |
-    {error, comment_deleted_exception(), tuple()} |
-    {error, comment_does_not_exist_exception(), tuple()} |
-    {error, comment_id_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_comment_id_exception(), tuple()}.
+    {error, get_comment_errors(), tuple()}.
 get_comment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetComment">>, Input, Options).
@@ -4557,13 +5117,7 @@ get_comment(Client, Input, Options)
 -spec get_comment_reactions(map(), get_comment_reactions_input()) ->
     {ok, get_comment_reactions_output(), tuple()} |
     {error, any()} |
-    {error, comment_deleted_exception(), tuple()} |
-    {error, comment_does_not_exist_exception(), tuple()} |
-    {error, comment_id_required_exception(), tuple()} |
-    {error, invalid_comment_id_exception(), tuple()} |
-    {error, invalid_continuation_token_exception(), tuple()} |
-    {error, invalid_max_results_exception(), tuple()} |
-    {error, invalid_reaction_user_arn_exception(), tuple()}.
+    {error, get_comment_reactions_errors(), tuple()}.
 get_comment_reactions(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_comment_reactions(Client, Input, []).
@@ -4571,13 +5125,7 @@ get_comment_reactions(Client, Input)
 -spec get_comment_reactions(map(), get_comment_reactions_input(), proplists:proplist()) ->
     {ok, get_comment_reactions_output(), tuple()} |
     {error, any()} |
-    {error, comment_deleted_exception(), tuple()} |
-    {error, comment_does_not_exist_exception(), tuple()} |
-    {error, comment_id_required_exception(), tuple()} |
-    {error, invalid_comment_id_exception(), tuple()} |
-    {error, invalid_continuation_token_exception(), tuple()} |
-    {error, invalid_max_results_exception(), tuple()} |
-    {error, invalid_reaction_user_arn_exception(), tuple()}.
+    {error, get_comment_reactions_errors(), tuple()}.
 get_comment_reactions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCommentReactions">>, Input, Options).
@@ -4591,19 +5139,7 @@ get_comment_reactions(Client, Input, Options)
 -spec get_comments_for_compared_commit(map(), get_comments_for_compared_commit_input()) ->
     {ok, get_comments_for_compared_commit_output(), tuple()} |
     {error, any()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_id_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_commit_id_exception(), tuple()} |
-    {error, invalid_continuation_token_exception(), tuple()} |
-    {error, invalid_max_results_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, get_comments_for_compared_commit_errors(), tuple()}.
 get_comments_for_compared_commit(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_comments_for_compared_commit(Client, Input, []).
@@ -4611,19 +5147,7 @@ get_comments_for_compared_commit(Client, Input)
 -spec get_comments_for_compared_commit(map(), get_comments_for_compared_commit_input(), proplists:proplist()) ->
     {ok, get_comments_for_compared_commit_output(), tuple()} |
     {error, any()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_id_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_commit_id_exception(), tuple()} |
-    {error, invalid_continuation_token_exception(), tuple()} |
-    {error, invalid_max_results_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, get_comments_for_compared_commit_errors(), tuple()}.
 get_comments_for_compared_commit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCommentsForComparedCommit">>, Input, Options).
@@ -4636,23 +5160,7 @@ get_comments_for_compared_commit(Client, Input, Options)
 -spec get_comments_for_pull_request(map(), get_comments_for_pull_request_input()) ->
     {ok, get_comments_for_pull_request_output(), tuple()} |
     {error, any()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_id_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_commit_id_exception(), tuple()} |
-    {error, invalid_continuation_token_exception(), tuple()} |
-    {error, invalid_max_results_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, repository_not_associated_with_pull_request_exception(), tuple()}.
+    {error, get_comments_for_pull_request_errors(), tuple()}.
 get_comments_for_pull_request(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_comments_for_pull_request(Client, Input, []).
@@ -4660,23 +5168,7 @@ get_comments_for_pull_request(Client, Input)
 -spec get_comments_for_pull_request(map(), get_comments_for_pull_request_input(), proplists:proplist()) ->
     {ok, get_comments_for_pull_request_output(), tuple()} |
     {error, any()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_id_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_commit_id_exception(), tuple()} |
-    {error, invalid_continuation_token_exception(), tuple()} |
-    {error, invalid_max_results_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, repository_not_associated_with_pull_request_exception(), tuple()}.
+    {error, get_comments_for_pull_request_errors(), tuple()}.
 get_comments_for_pull_request(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCommentsForPullRequest">>, Input, Options).
@@ -4686,17 +5178,7 @@ get_comments_for_pull_request(Client, Input, Options)
 -spec get_commit(map(), get_commit_input()) ->
     {ok, get_commit_output(), tuple()} |
     {error, any()} |
-    {error, commit_id_does_not_exist_exception(), tuple()} |
-    {error, commit_id_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_commit_id_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, get_commit_errors(), tuple()}.
 get_commit(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_commit(Client, Input, []).
@@ -4704,17 +5186,7 @@ get_commit(Client, Input)
 -spec get_commit(map(), get_commit_input(), proplists:proplist()) ->
     {ok, get_commit_output(), tuple()} |
     {error, any()} |
-    {error, commit_id_does_not_exist_exception(), tuple()} |
-    {error, commit_id_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_commit_id_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, get_commit_errors(), tuple()}.
 get_commit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCommit">>, Input, Options).
@@ -4728,22 +5200,7 @@ get_commit(Client, Input, Options)
 -spec get_differences(map(), get_differences_input()) ->
     {ok, get_differences_output(), tuple()} |
     {error, any()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_commit_exception(), tuple()} |
-    {error, invalid_commit_id_exception(), tuple()} |
-    {error, invalid_continuation_token_exception(), tuple()} |
-    {error, invalid_max_results_exception(), tuple()} |
-    {error, invalid_path_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, path_does_not_exist_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, get_differences_errors(), tuple()}.
 get_differences(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_differences(Client, Input, []).
@@ -4751,22 +5208,7 @@ get_differences(Client, Input)
 -spec get_differences(map(), get_differences_input(), proplists:proplist()) ->
     {ok, get_differences_output(), tuple()} |
     {error, any()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_commit_exception(), tuple()} |
-    {error, invalid_commit_id_exception(), tuple()} |
-    {error, invalid_continuation_token_exception(), tuple()} |
-    {error, invalid_max_results_exception(), tuple()} |
-    {error, invalid_path_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, path_does_not_exist_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, get_differences_errors(), tuple()}.
 get_differences(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDifferences">>, Input, Options).
@@ -4776,20 +5218,7 @@ get_differences(Client, Input, Options)
 -spec get_file(map(), get_file_input()) ->
     {ok, get_file_output(), tuple()} |
     {error, any()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, file_does_not_exist_exception(), tuple()} |
-    {error, file_too_large_exception(), tuple()} |
-    {error, invalid_commit_exception(), tuple()} |
-    {error, invalid_path_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, path_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, get_file_errors(), tuple()}.
 get_file(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_file(Client, Input, []).
@@ -4797,20 +5226,7 @@ get_file(Client, Input)
 -spec get_file(map(), get_file_input(), proplists:proplist()) ->
     {ok, get_file_output(), tuple()} |
     {error, any()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, file_does_not_exist_exception(), tuple()} |
-    {error, file_too_large_exception(), tuple()} |
-    {error, invalid_commit_exception(), tuple()} |
-    {error, invalid_path_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, path_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, get_file_errors(), tuple()}.
 get_file(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetFile">>, Input, Options).
@@ -4819,19 +5235,7 @@ get_file(Client, Input, Options)
 -spec get_folder(map(), get_folder_input()) ->
     {ok, get_folder_output(), tuple()} |
     {error, any()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, folder_does_not_exist_exception(), tuple()} |
-    {error, invalid_commit_exception(), tuple()} |
-    {error, invalid_path_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, path_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, get_folder_errors(), tuple()}.
 get_folder(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_folder(Client, Input, []).
@@ -4839,19 +5243,7 @@ get_folder(Client, Input)
 -spec get_folder(map(), get_folder_input(), proplists:proplist()) ->
     {ok, get_folder_output(), tuple()} |
     {error, any()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, folder_does_not_exist_exception(), tuple()} |
-    {error, invalid_commit_exception(), tuple()} |
-    {error, invalid_path_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, path_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, get_folder_errors(), tuple()}.
 get_folder(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetFolder">>, Input, Options).
@@ -4860,19 +5252,7 @@ get_folder(Client, Input, Options)
 -spec get_merge_commit(map(), get_merge_commit_input()) ->
     {ok, get_merge_commit_output(), tuple()} |
     {error, any()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_commit_exception(), tuple()} |
-    {error, invalid_conflict_detail_level_exception(), tuple()} |
-    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, get_merge_commit_errors(), tuple()}.
 get_merge_commit(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_merge_commit(Client, Input, []).
@@ -4880,19 +5260,7 @@ get_merge_commit(Client, Input)
 -spec get_merge_commit(map(), get_merge_commit_input(), proplists:proplist()) ->
     {ok, get_merge_commit_output(), tuple()} |
     {error, any()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_commit_exception(), tuple()} |
-    {error, invalid_conflict_detail_level_exception(), tuple()} |
-    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, get_merge_commit_errors(), tuple()}.
 get_merge_commit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMergeCommit">>, Input, Options).
@@ -4902,28 +5270,7 @@ get_merge_commit(Client, Input, Options)
 -spec get_merge_conflicts(map(), get_merge_conflicts_input()) ->
     {ok, get_merge_conflicts_output(), tuple()} |
     {error, any()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_commit_exception(), tuple()} |
-    {error, invalid_conflict_detail_level_exception(), tuple()} |
-    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
-    {error, invalid_continuation_token_exception(), tuple()} |
-    {error, invalid_destination_commit_specifier_exception(), tuple()} |
-    {error, invalid_max_conflict_files_exception(), tuple()} |
-    {error, invalid_merge_option_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, invalid_source_commit_specifier_exception(), tuple()} |
-    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
-    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
-    {error, merge_option_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, tips_divergence_exceeded_exception(), tuple()}.
+    {error, get_merge_conflicts_errors(), tuple()}.
 get_merge_conflicts(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_merge_conflicts(Client, Input, []).
@@ -4931,28 +5278,7 @@ get_merge_conflicts(Client, Input)
 -spec get_merge_conflicts(map(), get_merge_conflicts_input(), proplists:proplist()) ->
     {ok, get_merge_conflicts_output(), tuple()} |
     {error, any()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_commit_exception(), tuple()} |
-    {error, invalid_conflict_detail_level_exception(), tuple()} |
-    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
-    {error, invalid_continuation_token_exception(), tuple()} |
-    {error, invalid_destination_commit_specifier_exception(), tuple()} |
-    {error, invalid_max_conflict_files_exception(), tuple()} |
-    {error, invalid_merge_option_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, invalid_source_commit_specifier_exception(), tuple()} |
-    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
-    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
-    {error, merge_option_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, tips_divergence_exceeded_exception(), tuple()}.
+    {error, get_merge_conflicts_errors(), tuple()}.
 get_merge_conflicts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMergeConflicts">>, Input, Options).
@@ -4967,22 +5293,7 @@ get_merge_conflicts(Client, Input, Options)
 -spec get_merge_options(map(), get_merge_options_input()) ->
     {ok, get_merge_options_output(), tuple()} |
     {error, any()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_commit_exception(), tuple()} |
-    {error, invalid_conflict_detail_level_exception(), tuple()} |
-    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
-    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, tips_divergence_exceeded_exception(), tuple()}.
+    {error, get_merge_options_errors(), tuple()}.
 get_merge_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_merge_options(Client, Input, []).
@@ -4990,22 +5301,7 @@ get_merge_options(Client, Input)
 -spec get_merge_options(map(), get_merge_options_input(), proplists:proplist()) ->
     {ok, get_merge_options_output(), tuple()} |
     {error, any()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_commit_exception(), tuple()} |
-    {error, invalid_conflict_detail_level_exception(), tuple()} |
-    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
-    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, tips_divergence_exceeded_exception(), tuple()}.
+    {error, get_merge_options_errors(), tuple()}.
 get_merge_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMergeOptions">>, Input, Options).
@@ -5014,14 +5310,7 @@ get_merge_options(Client, Input, Options)
 -spec get_pull_request(map(), get_pull_request_input()) ->
     {ok, get_pull_request_output(), tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()}.
+    {error, get_pull_request_errors(), tuple()}.
 get_pull_request(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_pull_request(Client, Input, []).
@@ -5029,14 +5318,7 @@ get_pull_request(Client, Input)
 -spec get_pull_request(map(), get_pull_request_input(), proplists:proplist()) ->
     {ok, get_pull_request_output(), tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()}.
+    {error, get_pull_request_errors(), tuple()}.
 get_pull_request(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPullRequest">>, Input, Options).
@@ -5049,16 +5331,7 @@ get_pull_request(Client, Input, Options)
 -spec get_pull_request_approval_states(map(), get_pull_request_approval_states_input()) ->
     {ok, get_pull_request_approval_states_output(), tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, invalid_revision_id_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()} |
-    {error, revision_id_required_exception(), tuple()}.
+    {error, get_pull_request_approval_states_errors(), tuple()}.
 get_pull_request_approval_states(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_pull_request_approval_states(Client, Input, []).
@@ -5066,16 +5339,7 @@ get_pull_request_approval_states(Client, Input)
 -spec get_pull_request_approval_states(map(), get_pull_request_approval_states_input(), proplists:proplist()) ->
     {ok, get_pull_request_approval_states_output(), tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, invalid_revision_id_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()} |
-    {error, revision_id_required_exception(), tuple()}.
+    {error, get_pull_request_approval_states_errors(), tuple()}.
 get_pull_request_approval_states(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPullRequestApprovalStates">>, Input, Options).
@@ -5088,16 +5352,7 @@ get_pull_request_approval_states(Client, Input, Options)
 -spec get_pull_request_override_state(map(), get_pull_request_override_state_input()) ->
     {ok, get_pull_request_override_state_output(), tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, invalid_revision_id_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()} |
-    {error, revision_id_required_exception(), tuple()}.
+    {error, get_pull_request_override_state_errors(), tuple()}.
 get_pull_request_override_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_pull_request_override_state(Client, Input, []).
@@ -5105,16 +5360,7 @@ get_pull_request_override_state(Client, Input)
 -spec get_pull_request_override_state(map(), get_pull_request_override_state_input(), proplists:proplist()) ->
     {ok, get_pull_request_override_state_output(), tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, invalid_revision_id_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()} |
-    {error, revision_id_required_exception(), tuple()}.
+    {error, get_pull_request_override_state_errors(), tuple()}.
 get_pull_request_override_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPullRequestOverrideState">>, Input, Options).
@@ -5133,14 +5379,7 @@ get_pull_request_override_state(Client, Input, Options)
 -spec get_repository(map(), get_repository_input()) ->
     {ok, get_repository_output(), tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, get_repository_errors(), tuple()}.
 get_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_repository(Client, Input, []).
@@ -5148,14 +5387,7 @@ get_repository(Client, Input)
 -spec get_repository(map(), get_repository_input(), proplists:proplist()) ->
     {ok, get_repository_output(), tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, get_repository_errors(), tuple()}.
 get_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRepository">>, Input, Options).
@@ -5164,14 +5396,7 @@ get_repository(Client, Input, Options)
 -spec get_repository_triggers(map(), get_repository_triggers_input()) ->
     {ok, get_repository_triggers_output(), tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, get_repository_triggers_errors(), tuple()}.
 get_repository_triggers(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_repository_triggers(Client, Input, []).
@@ -5179,14 +5404,7 @@ get_repository_triggers(Client, Input)
 -spec get_repository_triggers(map(), get_repository_triggers_input(), proplists:proplist()) ->
     {ok, get_repository_triggers_output(), tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, get_repository_triggers_errors(), tuple()}.
 get_repository_triggers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRepositoryTriggers">>, Input, Options).
@@ -5200,8 +5418,7 @@ get_repository_triggers(Client, Input, Options)
 -spec list_approval_rule_templates(map(), list_approval_rule_templates_input()) ->
     {ok, list_approval_rule_templates_output(), tuple()} |
     {error, any()} |
-    {error, invalid_continuation_token_exception(), tuple()} |
-    {error, invalid_max_results_exception(), tuple()}.
+    {error, list_approval_rule_templates_errors(), tuple()}.
 list_approval_rule_templates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_approval_rule_templates(Client, Input, []).
@@ -5209,8 +5426,7 @@ list_approval_rule_templates(Client, Input)
 -spec list_approval_rule_templates(map(), list_approval_rule_templates_input(), proplists:proplist()) ->
     {ok, list_approval_rule_templates_output(), tuple()} |
     {error, any()} |
-    {error, invalid_continuation_token_exception(), tuple()} |
-    {error, invalid_max_results_exception(), tuple()}.
+    {error, list_approval_rule_templates_errors(), tuple()}.
 list_approval_rule_templates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApprovalRuleTemplates">>, Input, Options).
@@ -5220,16 +5436,7 @@ list_approval_rule_templates(Client, Input, Options)
 -spec list_associated_approval_rule_templates_for_repository(map(), list_associated_approval_rule_templates_for_repository_input()) ->
     {ok, list_associated_approval_rule_templates_for_repository_output(), tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_continuation_token_exception(), tuple()} |
-    {error, invalid_max_results_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, list_associated_approval_rule_templates_for_repository_errors(), tuple()}.
 list_associated_approval_rule_templates_for_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_associated_approval_rule_templates_for_repository(Client, Input, []).
@@ -5237,16 +5444,7 @@ list_associated_approval_rule_templates_for_repository(Client, Input)
 -spec list_associated_approval_rule_templates_for_repository(map(), list_associated_approval_rule_templates_for_repository_input(), proplists:proplist()) ->
     {ok, list_associated_approval_rule_templates_for_repository_output(), tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_continuation_token_exception(), tuple()} |
-    {error, invalid_max_results_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, list_associated_approval_rule_templates_for_repository_errors(), tuple()}.
 list_associated_approval_rule_templates_for_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAssociatedApprovalRuleTemplatesForRepository">>, Input, Options).
@@ -5255,15 +5453,7 @@ list_associated_approval_rule_templates_for_repository(Client, Input, Options)
 -spec list_branches(map(), list_branches_input()) ->
     {ok, list_branches_output(), tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_continuation_token_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, list_branches_errors(), tuple()}.
 list_branches(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_branches(Client, Input, []).
@@ -5271,15 +5461,7 @@ list_branches(Client, Input)
 -spec list_branches(map(), list_branches_input(), proplists:proplist()) ->
     {ok, list_branches_output(), tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_continuation_token_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, list_branches_errors(), tuple()}.
 list_branches(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBranches">>, Input, Options).
@@ -5288,20 +5470,7 @@ list_branches(Client, Input, Options)
 -spec list_file_commit_history(map(), list_file_commit_history_request()) ->
     {ok, list_file_commit_history_response(), tuple()} |
     {error, any()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_commit_exception(), tuple()} |
-    {error, invalid_continuation_token_exception(), tuple()} |
-    {error, invalid_max_results_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, tips_divergence_exceeded_exception(), tuple()}.
+    {error, list_file_commit_history_errors(), tuple()}.
 list_file_commit_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_file_commit_history(Client, Input, []).
@@ -5309,20 +5478,7 @@ list_file_commit_history(Client, Input)
 -spec list_file_commit_history(map(), list_file_commit_history_request(), proplists:proplist()) ->
     {ok, list_file_commit_history_response(), tuple()} |
     {error, any()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_commit_exception(), tuple()} |
-    {error, invalid_continuation_token_exception(), tuple()} |
-    {error, invalid_max_results_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, tips_divergence_exceeded_exception(), tuple()}.
+    {error, list_file_commit_history_errors(), tuple()}.
 list_file_commit_history(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFileCommitHistory">>, Input, Options).
@@ -5334,19 +5490,7 @@ list_file_commit_history(Client, Input, Options)
 -spec list_pull_requests(map(), list_pull_requests_input()) ->
     {ok, list_pull_requests_output(), tuple()} |
     {error, any()} |
-    {error, author_does_not_exist_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_author_arn_exception(), tuple()} |
-    {error, invalid_continuation_token_exception(), tuple()} |
-    {error, invalid_max_results_exception(), tuple()} |
-    {error, invalid_pull_request_status_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, list_pull_requests_errors(), tuple()}.
 list_pull_requests(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pull_requests(Client, Input, []).
@@ -5354,19 +5498,7 @@ list_pull_requests(Client, Input)
 -spec list_pull_requests(map(), list_pull_requests_input(), proplists:proplist()) ->
     {ok, list_pull_requests_output(), tuple()} |
     {error, any()} |
-    {error, author_does_not_exist_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_author_arn_exception(), tuple()} |
-    {error, invalid_continuation_token_exception(), tuple()} |
-    {error, invalid_max_results_exception(), tuple()} |
-    {error, invalid_pull_request_status_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, list_pull_requests_errors(), tuple()}.
 list_pull_requests(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPullRequests">>, Input, Options).
@@ -5375,9 +5507,7 @@ list_pull_requests(Client, Input, Options)
 -spec list_repositories(map(), list_repositories_input()) ->
     {ok, list_repositories_output(), tuple()} |
     {error, any()} |
-    {error, invalid_continuation_token_exception(), tuple()} |
-    {error, invalid_order_exception(), tuple()} |
-    {error, invalid_sort_by_exception(), tuple()}.
+    {error, list_repositories_errors(), tuple()}.
 list_repositories(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_repositories(Client, Input, []).
@@ -5385,9 +5515,7 @@ list_repositories(Client, Input)
 -spec list_repositories(map(), list_repositories_input(), proplists:proplist()) ->
     {ok, list_repositories_output(), tuple()} |
     {error, any()} |
-    {error, invalid_continuation_token_exception(), tuple()} |
-    {error, invalid_order_exception(), tuple()} |
-    {error, invalid_sort_by_exception(), tuple()}.
+    {error, list_repositories_errors(), tuple()}.
 list_repositories(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRepositories">>, Input, Options).
@@ -5397,16 +5525,7 @@ list_repositories(Client, Input, Options)
 -spec list_repositories_for_approval_rule_template(map(), list_repositories_for_approval_rule_template_input()) ->
     {ok, list_repositories_for_approval_rule_template_output(), tuple()} |
     {error, any()} |
-    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
-    {error, approval_rule_template_name_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_approval_rule_template_name_exception(), tuple()} |
-    {error, invalid_continuation_token_exception(), tuple()} |
-    {error, invalid_max_results_exception(), tuple()}.
+    {error, list_repositories_for_approval_rule_template_errors(), tuple()}.
 list_repositories_for_approval_rule_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_repositories_for_approval_rule_template(Client, Input, []).
@@ -5414,16 +5533,7 @@ list_repositories_for_approval_rule_template(Client, Input)
 -spec list_repositories_for_approval_rule_template(map(), list_repositories_for_approval_rule_template_input(), proplists:proplist()) ->
     {ok, list_repositories_for_approval_rule_template_output(), tuple()} |
     {error, any()} |
-    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
-    {error, approval_rule_template_name_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_approval_rule_template_name_exception(), tuple()} |
-    {error, invalid_continuation_token_exception(), tuple()} |
-    {error, invalid_max_results_exception(), tuple()}.
+    {error, list_repositories_for_approval_rule_template_errors(), tuple()}.
 list_repositories_for_approval_rule_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRepositoriesForApprovalRuleTemplate">>, Input, Options).
@@ -5439,10 +5549,7 @@ list_repositories_for_approval_rule_template(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, invalid_resource_arn_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, resource_arn_required_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -5450,10 +5557,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_input(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, invalid_resource_arn_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, resource_arn_required_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -5462,25 +5566,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec merge_branches_by_fast_forward(map(), merge_branches_by_fast_forward_input()) ->
     {ok, merge_branches_by_fast_forward_output(), tuple()} |
     {error, any()} |
-    {error, branch_does_not_exist_exception(), tuple()} |
-    {error, branch_name_is_tag_name_exception(), tuple()} |
-    {error, branch_name_required_exception(), tuple()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_required_exception(), tuple()} |
-    {error, concurrent_reference_update_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_branch_name_exception(), tuple()} |
-    {error, invalid_commit_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, invalid_target_branch_exception(), tuple()} |
-    {error, manual_merge_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, tips_divergence_exceeded_exception(), tuple()}.
+    {error, merge_branches_by_fast_forward_errors(), tuple()}.
 merge_branches_by_fast_forward(Client, Input)
   when is_map(Client), is_map(Input) ->
     merge_branches_by_fast_forward(Client, Input, []).
@@ -5488,25 +5574,7 @@ merge_branches_by_fast_forward(Client, Input)
 -spec merge_branches_by_fast_forward(map(), merge_branches_by_fast_forward_input(), proplists:proplist()) ->
     {ok, merge_branches_by_fast_forward_output(), tuple()} |
     {error, any()} |
-    {error, branch_does_not_exist_exception(), tuple()} |
-    {error, branch_name_is_tag_name_exception(), tuple()} |
-    {error, branch_name_required_exception(), tuple()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_required_exception(), tuple()} |
-    {error, concurrent_reference_update_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_branch_name_exception(), tuple()} |
-    {error, invalid_commit_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, invalid_target_branch_exception(), tuple()} |
-    {error, manual_merge_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, tips_divergence_exceeded_exception(), tuple()}.
+    {error, merge_branches_by_fast_forward_errors(), tuple()}.
 merge_branches_by_fast_forward(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"MergeBranchesByFastForward">>, Input, Options).
@@ -5515,45 +5583,7 @@ merge_branches_by_fast_forward(Client, Input, Options)
 -spec merge_branches_by_squash(map(), merge_branches_by_squash_input()) ->
     {ok, merge_branches_by_squash_output(), tuple()} |
     {error, any()} |
-    {error, branch_does_not_exist_exception(), tuple()} |
-    {error, branch_name_is_tag_name_exception(), tuple()} |
-    {error, branch_name_required_exception(), tuple()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_message_length_exceeded_exception(), tuple()} |
-    {error, commit_required_exception(), tuple()} |
-    {error, concurrent_reference_update_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, file_content_size_limit_exceeded_exception(), tuple()} |
-    {error, file_mode_required_exception(), tuple()} |
-    {error, folder_content_size_limit_exceeded_exception(), tuple()} |
-    {error, invalid_branch_name_exception(), tuple()} |
-    {error, invalid_commit_exception(), tuple()} |
-    {error, invalid_conflict_detail_level_exception(), tuple()} |
-    {error, invalid_conflict_resolution_exception(), tuple()} |
-    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
-    {error, invalid_email_exception(), tuple()} |
-    {error, invalid_file_mode_exception(), tuple()} |
-    {error, invalid_path_exception(), tuple()} |
-    {error, invalid_replacement_content_exception(), tuple()} |
-    {error, invalid_replacement_type_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, invalid_target_branch_exception(), tuple()} |
-    {error, manual_merge_required_exception(), tuple()} |
-    {error, maximum_conflict_resolution_entries_exceeded_exception(), tuple()} |
-    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
-    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
-    {error, multiple_conflict_resolution_entries_exception(), tuple()} |
-    {error, name_length_exceeded_exception(), tuple()} |
-    {error, path_required_exception(), tuple()} |
-    {error, replacement_content_required_exception(), tuple()} |
-    {error, replacement_type_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, tips_divergence_exceeded_exception(), tuple()}.
+    {error, merge_branches_by_squash_errors(), tuple()}.
 merge_branches_by_squash(Client, Input)
   when is_map(Client), is_map(Input) ->
     merge_branches_by_squash(Client, Input, []).
@@ -5561,45 +5591,7 @@ merge_branches_by_squash(Client, Input)
 -spec merge_branches_by_squash(map(), merge_branches_by_squash_input(), proplists:proplist()) ->
     {ok, merge_branches_by_squash_output(), tuple()} |
     {error, any()} |
-    {error, branch_does_not_exist_exception(), tuple()} |
-    {error, branch_name_is_tag_name_exception(), tuple()} |
-    {error, branch_name_required_exception(), tuple()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_message_length_exceeded_exception(), tuple()} |
-    {error, commit_required_exception(), tuple()} |
-    {error, concurrent_reference_update_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, file_content_size_limit_exceeded_exception(), tuple()} |
-    {error, file_mode_required_exception(), tuple()} |
-    {error, folder_content_size_limit_exceeded_exception(), tuple()} |
-    {error, invalid_branch_name_exception(), tuple()} |
-    {error, invalid_commit_exception(), tuple()} |
-    {error, invalid_conflict_detail_level_exception(), tuple()} |
-    {error, invalid_conflict_resolution_exception(), tuple()} |
-    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
-    {error, invalid_email_exception(), tuple()} |
-    {error, invalid_file_mode_exception(), tuple()} |
-    {error, invalid_path_exception(), tuple()} |
-    {error, invalid_replacement_content_exception(), tuple()} |
-    {error, invalid_replacement_type_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, invalid_target_branch_exception(), tuple()} |
-    {error, manual_merge_required_exception(), tuple()} |
-    {error, maximum_conflict_resolution_entries_exceeded_exception(), tuple()} |
-    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
-    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
-    {error, multiple_conflict_resolution_entries_exception(), tuple()} |
-    {error, name_length_exceeded_exception(), tuple()} |
-    {error, path_required_exception(), tuple()} |
-    {error, replacement_content_required_exception(), tuple()} |
-    {error, replacement_type_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, tips_divergence_exceeded_exception(), tuple()}.
+    {error, merge_branches_by_squash_errors(), tuple()}.
 merge_branches_by_squash(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"MergeBranchesBySquash">>, Input, Options).
@@ -5608,45 +5600,7 @@ merge_branches_by_squash(Client, Input, Options)
 -spec merge_branches_by_three_way(map(), merge_branches_by_three_way_input()) ->
     {ok, merge_branches_by_three_way_output(), tuple()} |
     {error, any()} |
-    {error, branch_does_not_exist_exception(), tuple()} |
-    {error, branch_name_is_tag_name_exception(), tuple()} |
-    {error, branch_name_required_exception(), tuple()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_message_length_exceeded_exception(), tuple()} |
-    {error, commit_required_exception(), tuple()} |
-    {error, concurrent_reference_update_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, file_content_size_limit_exceeded_exception(), tuple()} |
-    {error, file_mode_required_exception(), tuple()} |
-    {error, folder_content_size_limit_exceeded_exception(), tuple()} |
-    {error, invalid_branch_name_exception(), tuple()} |
-    {error, invalid_commit_exception(), tuple()} |
-    {error, invalid_conflict_detail_level_exception(), tuple()} |
-    {error, invalid_conflict_resolution_exception(), tuple()} |
-    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
-    {error, invalid_email_exception(), tuple()} |
-    {error, invalid_file_mode_exception(), tuple()} |
-    {error, invalid_path_exception(), tuple()} |
-    {error, invalid_replacement_content_exception(), tuple()} |
-    {error, invalid_replacement_type_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, invalid_target_branch_exception(), tuple()} |
-    {error, manual_merge_required_exception(), tuple()} |
-    {error, maximum_conflict_resolution_entries_exceeded_exception(), tuple()} |
-    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
-    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
-    {error, multiple_conflict_resolution_entries_exception(), tuple()} |
-    {error, name_length_exceeded_exception(), tuple()} |
-    {error, path_required_exception(), tuple()} |
-    {error, replacement_content_required_exception(), tuple()} |
-    {error, replacement_type_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, tips_divergence_exceeded_exception(), tuple()}.
+    {error, merge_branches_by_three_way_errors(), tuple()}.
 merge_branches_by_three_way(Client, Input)
   when is_map(Client), is_map(Input) ->
     merge_branches_by_three_way(Client, Input, []).
@@ -5654,45 +5608,7 @@ merge_branches_by_three_way(Client, Input)
 -spec merge_branches_by_three_way(map(), merge_branches_by_three_way_input(), proplists:proplist()) ->
     {ok, merge_branches_by_three_way_output(), tuple()} |
     {error, any()} |
-    {error, branch_does_not_exist_exception(), tuple()} |
-    {error, branch_name_is_tag_name_exception(), tuple()} |
-    {error, branch_name_required_exception(), tuple()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_message_length_exceeded_exception(), tuple()} |
-    {error, commit_required_exception(), tuple()} |
-    {error, concurrent_reference_update_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, file_content_size_limit_exceeded_exception(), tuple()} |
-    {error, file_mode_required_exception(), tuple()} |
-    {error, folder_content_size_limit_exceeded_exception(), tuple()} |
-    {error, invalid_branch_name_exception(), tuple()} |
-    {error, invalid_commit_exception(), tuple()} |
-    {error, invalid_conflict_detail_level_exception(), tuple()} |
-    {error, invalid_conflict_resolution_exception(), tuple()} |
-    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
-    {error, invalid_email_exception(), tuple()} |
-    {error, invalid_file_mode_exception(), tuple()} |
-    {error, invalid_path_exception(), tuple()} |
-    {error, invalid_replacement_content_exception(), tuple()} |
-    {error, invalid_replacement_type_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, invalid_target_branch_exception(), tuple()} |
-    {error, manual_merge_required_exception(), tuple()} |
-    {error, maximum_conflict_resolution_entries_exceeded_exception(), tuple()} |
-    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
-    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
-    {error, multiple_conflict_resolution_entries_exception(), tuple()} |
-    {error, name_length_exceeded_exception(), tuple()} |
-    {error, path_required_exception(), tuple()} |
-    {error, replacement_content_required_exception(), tuple()} |
-    {error, replacement_type_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, tips_divergence_exceeded_exception(), tuple()}.
+    {error, merge_branches_by_three_way_errors(), tuple()}.
 merge_branches_by_three_way(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"MergeBranchesByThreeWay">>, Input, Options).
@@ -5706,25 +5622,7 @@ merge_branches_by_three_way(Client, Input, Options)
 -spec merge_pull_request_by_fast_forward(map(), merge_pull_request_by_fast_forward_input()) ->
     {ok, merge_pull_request_by_fast_forward_output(), tuple()} |
     {error, any()} |
-    {error, concurrent_reference_update_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_commit_id_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, manual_merge_required_exception(), tuple()} |
-    {error, pull_request_already_closed_exception(), tuple()} |
-    {error, pull_request_approval_rules_not_satisfied_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()} |
-    {error, reference_does_not_exist_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, repository_not_associated_with_pull_request_exception(), tuple()} |
-    {error, tip_of_source_reference_is_different_exception(), tuple()}.
+    {error, merge_pull_request_by_fast_forward_errors(), tuple()}.
 merge_pull_request_by_fast_forward(Client, Input)
   when is_map(Client), is_map(Input) ->
     merge_pull_request_by_fast_forward(Client, Input, []).
@@ -5732,25 +5630,7 @@ merge_pull_request_by_fast_forward(Client, Input)
 -spec merge_pull_request_by_fast_forward(map(), merge_pull_request_by_fast_forward_input(), proplists:proplist()) ->
     {ok, merge_pull_request_by_fast_forward_output(), tuple()} |
     {error, any()} |
-    {error, concurrent_reference_update_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_commit_id_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, manual_merge_required_exception(), tuple()} |
-    {error, pull_request_already_closed_exception(), tuple()} |
-    {error, pull_request_approval_rules_not_satisfied_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()} |
-    {error, reference_does_not_exist_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, repository_not_associated_with_pull_request_exception(), tuple()} |
-    {error, tip_of_source_reference_is_different_exception(), tuple()}.
+    {error, merge_pull_request_by_fast_forward_errors(), tuple()}.
 merge_pull_request_by_fast_forward(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"MergePullRequestByFastForward">>, Input, Options).
@@ -5764,44 +5644,7 @@ merge_pull_request_by_fast_forward(Client, Input, Options)
 -spec merge_pull_request_by_squash(map(), merge_pull_request_by_squash_input()) ->
     {ok, merge_pull_request_by_squash_output(), tuple()} |
     {error, any()} |
-    {error, commit_message_length_exceeded_exception(), tuple()} |
-    {error, concurrent_reference_update_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, file_content_size_limit_exceeded_exception(), tuple()} |
-    {error, folder_content_size_limit_exceeded_exception(), tuple()} |
-    {error, invalid_commit_id_exception(), tuple()} |
-    {error, invalid_conflict_detail_level_exception(), tuple()} |
-    {error, invalid_conflict_resolution_exception(), tuple()} |
-    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
-    {error, invalid_email_exception(), tuple()} |
-    {error, invalid_file_mode_exception(), tuple()} |
-    {error, invalid_path_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, invalid_replacement_content_exception(), tuple()} |
-    {error, invalid_replacement_type_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, manual_merge_required_exception(), tuple()} |
-    {error, maximum_conflict_resolution_entries_exceeded_exception(), tuple()} |
-    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
-    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
-    {error, multiple_conflict_resolution_entries_exception(), tuple()} |
-    {error, name_length_exceeded_exception(), tuple()} |
-    {error, path_required_exception(), tuple()} |
-    {error, pull_request_already_closed_exception(), tuple()} |
-    {error, pull_request_approval_rules_not_satisfied_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()} |
-    {error, replacement_content_required_exception(), tuple()} |
-    {error, replacement_type_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, repository_not_associated_with_pull_request_exception(), tuple()} |
-    {error, tip_of_source_reference_is_different_exception(), tuple()} |
-    {error, tips_divergence_exceeded_exception(), tuple()}.
+    {error, merge_pull_request_by_squash_errors(), tuple()}.
 merge_pull_request_by_squash(Client, Input)
   when is_map(Client), is_map(Input) ->
     merge_pull_request_by_squash(Client, Input, []).
@@ -5809,44 +5652,7 @@ merge_pull_request_by_squash(Client, Input)
 -spec merge_pull_request_by_squash(map(), merge_pull_request_by_squash_input(), proplists:proplist()) ->
     {ok, merge_pull_request_by_squash_output(), tuple()} |
     {error, any()} |
-    {error, commit_message_length_exceeded_exception(), tuple()} |
-    {error, concurrent_reference_update_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, file_content_size_limit_exceeded_exception(), tuple()} |
-    {error, folder_content_size_limit_exceeded_exception(), tuple()} |
-    {error, invalid_commit_id_exception(), tuple()} |
-    {error, invalid_conflict_detail_level_exception(), tuple()} |
-    {error, invalid_conflict_resolution_exception(), tuple()} |
-    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
-    {error, invalid_email_exception(), tuple()} |
-    {error, invalid_file_mode_exception(), tuple()} |
-    {error, invalid_path_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, invalid_replacement_content_exception(), tuple()} |
-    {error, invalid_replacement_type_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, manual_merge_required_exception(), tuple()} |
-    {error, maximum_conflict_resolution_entries_exceeded_exception(), tuple()} |
-    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
-    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
-    {error, multiple_conflict_resolution_entries_exception(), tuple()} |
-    {error, name_length_exceeded_exception(), tuple()} |
-    {error, path_required_exception(), tuple()} |
-    {error, pull_request_already_closed_exception(), tuple()} |
-    {error, pull_request_approval_rules_not_satisfied_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()} |
-    {error, replacement_content_required_exception(), tuple()} |
-    {error, replacement_type_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, repository_not_associated_with_pull_request_exception(), tuple()} |
-    {error, tip_of_source_reference_is_different_exception(), tuple()} |
-    {error, tips_divergence_exceeded_exception(), tuple()}.
+    {error, merge_pull_request_by_squash_errors(), tuple()}.
 merge_pull_request_by_squash(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"MergePullRequestBySquash">>, Input, Options).
@@ -5860,44 +5666,7 @@ merge_pull_request_by_squash(Client, Input, Options)
 -spec merge_pull_request_by_three_way(map(), merge_pull_request_by_three_way_input()) ->
     {ok, merge_pull_request_by_three_way_output(), tuple()} |
     {error, any()} |
-    {error, commit_message_length_exceeded_exception(), tuple()} |
-    {error, concurrent_reference_update_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, file_content_size_limit_exceeded_exception(), tuple()} |
-    {error, folder_content_size_limit_exceeded_exception(), tuple()} |
-    {error, invalid_commit_id_exception(), tuple()} |
-    {error, invalid_conflict_detail_level_exception(), tuple()} |
-    {error, invalid_conflict_resolution_exception(), tuple()} |
-    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
-    {error, invalid_email_exception(), tuple()} |
-    {error, invalid_file_mode_exception(), tuple()} |
-    {error, invalid_path_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, invalid_replacement_content_exception(), tuple()} |
-    {error, invalid_replacement_type_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, manual_merge_required_exception(), tuple()} |
-    {error, maximum_conflict_resolution_entries_exceeded_exception(), tuple()} |
-    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
-    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
-    {error, multiple_conflict_resolution_entries_exception(), tuple()} |
-    {error, name_length_exceeded_exception(), tuple()} |
-    {error, path_required_exception(), tuple()} |
-    {error, pull_request_already_closed_exception(), tuple()} |
-    {error, pull_request_approval_rules_not_satisfied_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()} |
-    {error, replacement_content_required_exception(), tuple()} |
-    {error, replacement_type_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, repository_not_associated_with_pull_request_exception(), tuple()} |
-    {error, tip_of_source_reference_is_different_exception(), tuple()} |
-    {error, tips_divergence_exceeded_exception(), tuple()}.
+    {error, merge_pull_request_by_three_way_errors(), tuple()}.
 merge_pull_request_by_three_way(Client, Input)
   when is_map(Client), is_map(Input) ->
     merge_pull_request_by_three_way(Client, Input, []).
@@ -5905,44 +5674,7 @@ merge_pull_request_by_three_way(Client, Input)
 -spec merge_pull_request_by_three_way(map(), merge_pull_request_by_three_way_input(), proplists:proplist()) ->
     {ok, merge_pull_request_by_three_way_output(), tuple()} |
     {error, any()} |
-    {error, commit_message_length_exceeded_exception(), tuple()} |
-    {error, concurrent_reference_update_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, file_content_size_limit_exceeded_exception(), tuple()} |
-    {error, folder_content_size_limit_exceeded_exception(), tuple()} |
-    {error, invalid_commit_id_exception(), tuple()} |
-    {error, invalid_conflict_detail_level_exception(), tuple()} |
-    {error, invalid_conflict_resolution_exception(), tuple()} |
-    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
-    {error, invalid_email_exception(), tuple()} |
-    {error, invalid_file_mode_exception(), tuple()} |
-    {error, invalid_path_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, invalid_replacement_content_exception(), tuple()} |
-    {error, invalid_replacement_type_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, manual_merge_required_exception(), tuple()} |
-    {error, maximum_conflict_resolution_entries_exceeded_exception(), tuple()} |
-    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
-    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
-    {error, multiple_conflict_resolution_entries_exception(), tuple()} |
-    {error, name_length_exceeded_exception(), tuple()} |
-    {error, path_required_exception(), tuple()} |
-    {error, pull_request_already_closed_exception(), tuple()} |
-    {error, pull_request_approval_rules_not_satisfied_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()} |
-    {error, replacement_content_required_exception(), tuple()} |
-    {error, replacement_type_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, repository_not_associated_with_pull_request_exception(), tuple()} |
-    {error, tip_of_source_reference_is_different_exception(), tuple()} |
-    {error, tips_divergence_exceeded_exception(), tuple()}.
+    {error, merge_pull_request_by_three_way_errors(), tuple()}.
 merge_pull_request_by_three_way(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"MergePullRequestByThreeWay">>, Input, Options).
@@ -5952,21 +5684,7 @@ merge_pull_request_by_three_way(Client, Input, Options)
 -spec override_pull_request_approval_rules(map(), override_pull_request_approval_rules_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_override_status_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, invalid_revision_id_exception(), tuple()} |
-    {error, override_already_set_exception(), tuple()} |
-    {error, override_status_required_exception(), tuple()} |
-    {error, pull_request_already_closed_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()} |
-    {error, revision_id_required_exception(), tuple()} |
-    {error, revision_not_current_exception(), tuple()}.
+    {error, override_pull_request_approval_rules_errors(), tuple()}.
 override_pull_request_approval_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     override_pull_request_approval_rules(Client, Input, []).
@@ -5974,21 +5692,7 @@ override_pull_request_approval_rules(Client, Input)
 -spec override_pull_request_approval_rules(map(), override_pull_request_approval_rules_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_override_status_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, invalid_revision_id_exception(), tuple()} |
-    {error, override_already_set_exception(), tuple()} |
-    {error, override_status_required_exception(), tuple()} |
-    {error, pull_request_already_closed_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()} |
-    {error, revision_id_required_exception(), tuple()} |
-    {error, revision_not_current_exception(), tuple()}.
+    {error, override_pull_request_approval_rules_errors(), tuple()}.
 override_pull_request_approval_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"OverridePullRequestApprovalRules">>, Input, Options).
@@ -5997,29 +5701,7 @@ override_pull_request_approval_rules(Client, Input, Options)
 -spec post_comment_for_compared_commit(map(), post_comment_for_compared_commit_input()) ->
     {ok, post_comment_for_compared_commit_output(), tuple()} |
     {error, any()} |
-    {error, before_commit_id_and_after_commit_id_are_same_exception(), tuple()} |
-    {error, client_request_token_required_exception(), tuple()} |
-    {error, comment_content_required_exception(), tuple()} |
-    {error, comment_content_size_limit_exceeded_exception(), tuple()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_id_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, idempotency_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_request_token_exception(), tuple()} |
-    {error, invalid_commit_id_exception(), tuple()} |
-    {error, invalid_file_location_exception(), tuple()} |
-    {error, invalid_file_position_exception(), tuple()} |
-    {error, invalid_path_exception(), tuple()} |
-    {error, invalid_relative_file_version_enum_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, path_does_not_exist_exception(), tuple()} |
-    {error, path_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, post_comment_for_compared_commit_errors(), tuple()}.
 post_comment_for_compared_commit(Client, Input)
   when is_map(Client), is_map(Input) ->
     post_comment_for_compared_commit(Client, Input, []).
@@ -6027,29 +5709,7 @@ post_comment_for_compared_commit(Client, Input)
 -spec post_comment_for_compared_commit(map(), post_comment_for_compared_commit_input(), proplists:proplist()) ->
     {ok, post_comment_for_compared_commit_output(), tuple()} |
     {error, any()} |
-    {error, before_commit_id_and_after_commit_id_are_same_exception(), tuple()} |
-    {error, client_request_token_required_exception(), tuple()} |
-    {error, comment_content_required_exception(), tuple()} |
-    {error, comment_content_size_limit_exceeded_exception(), tuple()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_id_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, idempotency_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_request_token_exception(), tuple()} |
-    {error, invalid_commit_id_exception(), tuple()} |
-    {error, invalid_file_location_exception(), tuple()} |
-    {error, invalid_file_position_exception(), tuple()} |
-    {error, invalid_path_exception(), tuple()} |
-    {error, invalid_relative_file_version_enum_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, path_does_not_exist_exception(), tuple()} |
-    {error, path_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, post_comment_for_compared_commit_errors(), tuple()}.
 post_comment_for_compared_commit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PostCommentForComparedCommit">>, Input, Options).
@@ -6058,33 +5718,7 @@ post_comment_for_compared_commit(Client, Input, Options)
 -spec post_comment_for_pull_request(map(), post_comment_for_pull_request_input()) ->
     {ok, post_comment_for_pull_request_output(), tuple()} |
     {error, any()} |
-    {error, before_commit_id_and_after_commit_id_are_same_exception(), tuple()} |
-    {error, client_request_token_required_exception(), tuple()} |
-    {error, comment_content_required_exception(), tuple()} |
-    {error, comment_content_size_limit_exceeded_exception(), tuple()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_id_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, idempotency_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_request_token_exception(), tuple()} |
-    {error, invalid_commit_id_exception(), tuple()} |
-    {error, invalid_file_location_exception(), tuple()} |
-    {error, invalid_file_position_exception(), tuple()} |
-    {error, invalid_path_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, invalid_relative_file_version_enum_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, path_does_not_exist_exception(), tuple()} |
-    {error, path_required_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, repository_not_associated_with_pull_request_exception(), tuple()}.
+    {error, post_comment_for_pull_request_errors(), tuple()}.
 post_comment_for_pull_request(Client, Input)
   when is_map(Client), is_map(Input) ->
     post_comment_for_pull_request(Client, Input, []).
@@ -6092,33 +5726,7 @@ post_comment_for_pull_request(Client, Input)
 -spec post_comment_for_pull_request(map(), post_comment_for_pull_request_input(), proplists:proplist()) ->
     {ok, post_comment_for_pull_request_output(), tuple()} |
     {error, any()} |
-    {error, before_commit_id_and_after_commit_id_are_same_exception(), tuple()} |
-    {error, client_request_token_required_exception(), tuple()} |
-    {error, comment_content_required_exception(), tuple()} |
-    {error, comment_content_size_limit_exceeded_exception(), tuple()} |
-    {error, commit_does_not_exist_exception(), tuple()} |
-    {error, commit_id_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, idempotency_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_request_token_exception(), tuple()} |
-    {error, invalid_commit_id_exception(), tuple()} |
-    {error, invalid_file_location_exception(), tuple()} |
-    {error, invalid_file_position_exception(), tuple()} |
-    {error, invalid_path_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, invalid_relative_file_version_enum_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, path_does_not_exist_exception(), tuple()} |
-    {error, path_required_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, repository_not_associated_with_pull_request_exception(), tuple()}.
+    {error, post_comment_for_pull_request_errors(), tuple()}.
 post_comment_for_pull_request(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PostCommentForPullRequest">>, Input, Options).
@@ -6128,14 +5736,7 @@ post_comment_for_pull_request(Client, Input, Options)
 -spec post_comment_reply(map(), post_comment_reply_input()) ->
     {ok, post_comment_reply_output(), tuple()} |
     {error, any()} |
-    {error, client_request_token_required_exception(), tuple()} |
-    {error, comment_content_required_exception(), tuple()} |
-    {error, comment_content_size_limit_exceeded_exception(), tuple()} |
-    {error, comment_does_not_exist_exception(), tuple()} |
-    {error, comment_id_required_exception(), tuple()} |
-    {error, idempotency_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_request_token_exception(), tuple()} |
-    {error, invalid_comment_id_exception(), tuple()}.
+    {error, post_comment_reply_errors(), tuple()}.
 post_comment_reply(Client, Input)
   when is_map(Client), is_map(Input) ->
     post_comment_reply(Client, Input, []).
@@ -6143,14 +5744,7 @@ post_comment_reply(Client, Input)
 -spec post_comment_reply(map(), post_comment_reply_input(), proplists:proplist()) ->
     {ok, post_comment_reply_output(), tuple()} |
     {error, any()} |
-    {error, client_request_token_required_exception(), tuple()} |
-    {error, comment_content_required_exception(), tuple()} |
-    {error, comment_content_size_limit_exceeded_exception(), tuple()} |
-    {error, comment_does_not_exist_exception(), tuple()} |
-    {error, comment_id_required_exception(), tuple()} |
-    {error, idempotency_parameter_mismatch_exception(), tuple()} |
-    {error, invalid_client_request_token_exception(), tuple()} |
-    {error, invalid_comment_id_exception(), tuple()}.
+    {error, post_comment_reply_errors(), tuple()}.
 post_comment_reply(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PostCommentReply">>, Input, Options).
@@ -6164,13 +5758,7 @@ post_comment_reply(Client, Input, Options)
 -spec put_comment_reaction(map(), put_comment_reaction_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, comment_deleted_exception(), tuple()} |
-    {error, comment_does_not_exist_exception(), tuple()} |
-    {error, comment_id_required_exception(), tuple()} |
-    {error, invalid_comment_id_exception(), tuple()} |
-    {error, invalid_reaction_value_exception(), tuple()} |
-    {error, reaction_limit_exceeded_exception(), tuple()} |
-    {error, reaction_value_required_exception(), tuple()}.
+    {error, put_comment_reaction_errors(), tuple()}.
 put_comment_reaction(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_comment_reaction(Client, Input, []).
@@ -6178,13 +5766,7 @@ put_comment_reaction(Client, Input)
 -spec put_comment_reaction(map(), put_comment_reaction_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, comment_deleted_exception(), tuple()} |
-    {error, comment_does_not_exist_exception(), tuple()} |
-    {error, comment_id_required_exception(), tuple()} |
-    {error, invalid_comment_id_exception(), tuple()} |
-    {error, invalid_reaction_value_exception(), tuple()} |
-    {error, reaction_limit_exceeded_exception(), tuple()} |
-    {error, reaction_value_required_exception(), tuple()}.
+    {error, put_comment_reaction_errors(), tuple()}.
 put_comment_reaction(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutCommentReaction">>, Input, Options).
@@ -6194,36 +5776,7 @@ put_comment_reaction(Client, Input, Options)
 -spec put_file(map(), put_file_input()) ->
     {ok, put_file_output(), tuple()} |
     {error, any()} |
-    {error, branch_does_not_exist_exception(), tuple()} |
-    {error, branch_name_is_tag_name_exception(), tuple()} |
-    {error, branch_name_required_exception(), tuple()} |
-    {error, commit_message_length_exceeded_exception(), tuple()} |
-    {error, directory_name_conflicts_with_file_name_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, file_content_required_exception(), tuple()} |
-    {error, file_content_size_limit_exceeded_exception(), tuple()} |
-    {error, file_name_conflicts_with_directory_name_exception(), tuple()} |
-    {error, file_path_conflicts_with_submodule_path_exception(), tuple()} |
-    {error, folder_content_size_limit_exceeded_exception(), tuple()} |
-    {error, invalid_branch_name_exception(), tuple()} |
-    {error, invalid_deletion_parameter_exception(), tuple()} |
-    {error, invalid_email_exception(), tuple()} |
-    {error, invalid_file_mode_exception(), tuple()} |
-    {error, invalid_parent_commit_id_exception(), tuple()} |
-    {error, invalid_path_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, name_length_exceeded_exception(), tuple()} |
-    {error, parent_commit_does_not_exist_exception(), tuple()} |
-    {error, parent_commit_id_outdated_exception(), tuple()} |
-    {error, parent_commit_id_required_exception(), tuple()} |
-    {error, path_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, same_file_content_exception(), tuple()}.
+    {error, put_file_errors(), tuple()}.
 put_file(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_file(Client, Input, []).
@@ -6231,36 +5784,7 @@ put_file(Client, Input)
 -spec put_file(map(), put_file_input(), proplists:proplist()) ->
     {ok, put_file_output(), tuple()} |
     {error, any()} |
-    {error, branch_does_not_exist_exception(), tuple()} |
-    {error, branch_name_is_tag_name_exception(), tuple()} |
-    {error, branch_name_required_exception(), tuple()} |
-    {error, commit_message_length_exceeded_exception(), tuple()} |
-    {error, directory_name_conflicts_with_file_name_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, file_content_required_exception(), tuple()} |
-    {error, file_content_size_limit_exceeded_exception(), tuple()} |
-    {error, file_name_conflicts_with_directory_name_exception(), tuple()} |
-    {error, file_path_conflicts_with_submodule_path_exception(), tuple()} |
-    {error, folder_content_size_limit_exceeded_exception(), tuple()} |
-    {error, invalid_branch_name_exception(), tuple()} |
-    {error, invalid_deletion_parameter_exception(), tuple()} |
-    {error, invalid_email_exception(), tuple()} |
-    {error, invalid_file_mode_exception(), tuple()} |
-    {error, invalid_parent_commit_id_exception(), tuple()} |
-    {error, invalid_path_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, name_length_exceeded_exception(), tuple()} |
-    {error, parent_commit_does_not_exist_exception(), tuple()} |
-    {error, parent_commit_id_outdated_exception(), tuple()} |
-    {error, parent_commit_id_required_exception(), tuple()} |
-    {error, path_required_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, same_file_content_exception(), tuple()}.
+    {error, put_file_errors(), tuple()}.
 put_file(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutFile">>, Input, Options).
@@ -6271,27 +5795,7 @@ put_file(Client, Input, Options)
 -spec put_repository_triggers(map(), put_repository_triggers_input()) ->
     {ok, put_repository_triggers_output(), tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, invalid_repository_trigger_branch_name_exception(), tuple()} |
-    {error, invalid_repository_trigger_custom_data_exception(), tuple()} |
-    {error, invalid_repository_trigger_destination_arn_exception(), tuple()} |
-    {error, invalid_repository_trigger_events_exception(), tuple()} |
-    {error, invalid_repository_trigger_name_exception(), tuple()} |
-    {error, invalid_repository_trigger_region_exception(), tuple()} |
-    {error, maximum_branches_exceeded_exception(), tuple()} |
-    {error, maximum_repository_triggers_exceeded_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, repository_trigger_branch_name_list_required_exception(), tuple()} |
-    {error, repository_trigger_destination_arn_required_exception(), tuple()} |
-    {error, repository_trigger_events_list_required_exception(), tuple()} |
-    {error, repository_trigger_name_required_exception(), tuple()} |
-    {error, repository_triggers_list_required_exception(), tuple()}.
+    {error, put_repository_triggers_errors(), tuple()}.
 put_repository_triggers(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_repository_triggers(Client, Input, []).
@@ -6299,27 +5803,7 @@ put_repository_triggers(Client, Input)
 -spec put_repository_triggers(map(), put_repository_triggers_input(), proplists:proplist()) ->
     {ok, put_repository_triggers_output(), tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, invalid_repository_trigger_branch_name_exception(), tuple()} |
-    {error, invalid_repository_trigger_custom_data_exception(), tuple()} |
-    {error, invalid_repository_trigger_destination_arn_exception(), tuple()} |
-    {error, invalid_repository_trigger_events_exception(), tuple()} |
-    {error, invalid_repository_trigger_name_exception(), tuple()} |
-    {error, invalid_repository_trigger_region_exception(), tuple()} |
-    {error, maximum_branches_exceeded_exception(), tuple()} |
-    {error, maximum_repository_triggers_exceeded_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, repository_trigger_branch_name_list_required_exception(), tuple()} |
-    {error, repository_trigger_destination_arn_required_exception(), tuple()} |
-    {error, repository_trigger_events_list_required_exception(), tuple()} |
-    {error, repository_trigger_name_required_exception(), tuple()} |
-    {error, repository_triggers_list_required_exception(), tuple()}.
+    {error, put_repository_triggers_errors(), tuple()}.
 put_repository_triggers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRepositoryTriggers">>, Input, Options).
@@ -6334,15 +5818,7 @@ put_repository_triggers(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, invalid_resource_arn_exception(), tuple()} |
-    {error, invalid_system_tag_usage_exception(), tuple()} |
-    {error, invalid_tags_map_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, resource_arn_required_exception(), tuple()} |
-    {error, tag_policy_exception(), tuple()} |
-    {error, tags_map_required_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -6350,15 +5826,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, invalid_resource_arn_exception(), tuple()} |
-    {error, invalid_system_tag_usage_exception(), tuple()} |
-    {error, invalid_tags_map_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, resource_arn_required_exception(), tuple()} |
-    {error, tag_policy_exception(), tuple()} |
-    {error, tags_map_required_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -6373,27 +5841,7 @@ tag_resource(Client, Input, Options)
 -spec test_repository_triggers(map(), test_repository_triggers_input()) ->
     {ok, test_repository_triggers_output(), tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, invalid_repository_trigger_branch_name_exception(), tuple()} |
-    {error, invalid_repository_trigger_custom_data_exception(), tuple()} |
-    {error, invalid_repository_trigger_destination_arn_exception(), tuple()} |
-    {error, invalid_repository_trigger_events_exception(), tuple()} |
-    {error, invalid_repository_trigger_name_exception(), tuple()} |
-    {error, invalid_repository_trigger_region_exception(), tuple()} |
-    {error, maximum_branches_exceeded_exception(), tuple()} |
-    {error, maximum_repository_triggers_exceeded_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, repository_trigger_branch_name_list_required_exception(), tuple()} |
-    {error, repository_trigger_destination_arn_required_exception(), tuple()} |
-    {error, repository_trigger_events_list_required_exception(), tuple()} |
-    {error, repository_trigger_name_required_exception(), tuple()} |
-    {error, repository_triggers_list_required_exception(), tuple()}.
+    {error, test_repository_triggers_errors(), tuple()}.
 test_repository_triggers(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_repository_triggers(Client, Input, []).
@@ -6401,27 +5849,7 @@ test_repository_triggers(Client, Input)
 -spec test_repository_triggers(map(), test_repository_triggers_input(), proplists:proplist()) ->
     {ok, test_repository_triggers_output(), tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, invalid_repository_trigger_branch_name_exception(), tuple()} |
-    {error, invalid_repository_trigger_custom_data_exception(), tuple()} |
-    {error, invalid_repository_trigger_destination_arn_exception(), tuple()} |
-    {error, invalid_repository_trigger_events_exception(), tuple()} |
-    {error, invalid_repository_trigger_name_exception(), tuple()} |
-    {error, invalid_repository_trigger_region_exception(), tuple()} |
-    {error, maximum_branches_exceeded_exception(), tuple()} |
-    {error, maximum_repository_triggers_exceeded_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()} |
-    {error, repository_trigger_branch_name_list_required_exception(), tuple()} |
-    {error, repository_trigger_destination_arn_required_exception(), tuple()} |
-    {error, repository_trigger_events_list_required_exception(), tuple()} |
-    {error, repository_trigger_name_required_exception(), tuple()} |
-    {error, repository_triggers_list_required_exception(), tuple()}.
+    {error, test_repository_triggers_errors(), tuple()}.
 test_repository_triggers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TestRepositoryTriggers">>, Input, Options).
@@ -6436,15 +5864,7 @@ test_repository_triggers(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, invalid_resource_arn_exception(), tuple()} |
-    {error, invalid_system_tag_usage_exception(), tuple()} |
-    {error, invalid_tag_keys_list_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, resource_arn_required_exception(), tuple()} |
-    {error, tag_keys_list_required_exception(), tuple()} |
-    {error, tag_policy_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -6452,15 +5872,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, invalid_resource_arn_exception(), tuple()} |
-    {error, invalid_system_tag_usage_exception(), tuple()} |
-    {error, invalid_tag_keys_list_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, resource_arn_required_exception(), tuple()} |
-    {error, tag_keys_list_required_exception(), tuple()} |
-    {error, tag_policy_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -6474,12 +5886,7 @@ untag_resource(Client, Input, Options)
 -spec update_approval_rule_template_content(map(), update_approval_rule_template_content_input()) ->
     {ok, update_approval_rule_template_content_output(), tuple()} |
     {error, any()} |
-    {error, approval_rule_template_content_required_exception(), tuple()} |
-    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
-    {error, approval_rule_template_name_required_exception(), tuple()} |
-    {error, invalid_approval_rule_template_content_exception(), tuple()} |
-    {error, invalid_approval_rule_template_name_exception(), tuple()} |
-    {error, invalid_rule_content_sha256_exception(), tuple()}.
+    {error, update_approval_rule_template_content_errors(), tuple()}.
 update_approval_rule_template_content(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_approval_rule_template_content(Client, Input, []).
@@ -6487,12 +5894,7 @@ update_approval_rule_template_content(Client, Input)
 -spec update_approval_rule_template_content(map(), update_approval_rule_template_content_input(), proplists:proplist()) ->
     {ok, update_approval_rule_template_content_output(), tuple()} |
     {error, any()} |
-    {error, approval_rule_template_content_required_exception(), tuple()} |
-    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
-    {error, approval_rule_template_name_required_exception(), tuple()} |
-    {error, invalid_approval_rule_template_content_exception(), tuple()} |
-    {error, invalid_approval_rule_template_name_exception(), tuple()} |
-    {error, invalid_rule_content_sha256_exception(), tuple()}.
+    {error, update_approval_rule_template_content_errors(), tuple()}.
 update_approval_rule_template_content(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateApprovalRuleTemplateContent">>, Input, Options).
@@ -6501,10 +5903,7 @@ update_approval_rule_template_content(Client, Input, Options)
 -spec update_approval_rule_template_description(map(), update_approval_rule_template_description_input()) ->
     {ok, update_approval_rule_template_description_output(), tuple()} |
     {error, any()} |
-    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
-    {error, approval_rule_template_name_required_exception(), tuple()} |
-    {error, invalid_approval_rule_template_description_exception(), tuple()} |
-    {error, invalid_approval_rule_template_name_exception(), tuple()}.
+    {error, update_approval_rule_template_description_errors(), tuple()}.
 update_approval_rule_template_description(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_approval_rule_template_description(Client, Input, []).
@@ -6512,10 +5911,7 @@ update_approval_rule_template_description(Client, Input)
 -spec update_approval_rule_template_description(map(), update_approval_rule_template_description_input(), proplists:proplist()) ->
     {ok, update_approval_rule_template_description_output(), tuple()} |
     {error, any()} |
-    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
-    {error, approval_rule_template_name_required_exception(), tuple()} |
-    {error, invalid_approval_rule_template_description_exception(), tuple()} |
-    {error, invalid_approval_rule_template_name_exception(), tuple()}.
+    {error, update_approval_rule_template_description_errors(), tuple()}.
 update_approval_rule_template_description(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateApprovalRuleTemplateDescription">>, Input, Options).
@@ -6524,10 +5920,7 @@ update_approval_rule_template_description(Client, Input, Options)
 -spec update_approval_rule_template_name(map(), update_approval_rule_template_name_input()) ->
     {ok, update_approval_rule_template_name_output(), tuple()} |
     {error, any()} |
-    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
-    {error, approval_rule_template_name_already_exists_exception(), tuple()} |
-    {error, approval_rule_template_name_required_exception(), tuple()} |
-    {error, invalid_approval_rule_template_name_exception(), tuple()}.
+    {error, update_approval_rule_template_name_errors(), tuple()}.
 update_approval_rule_template_name(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_approval_rule_template_name(Client, Input, []).
@@ -6535,10 +5928,7 @@ update_approval_rule_template_name(Client, Input)
 -spec update_approval_rule_template_name(map(), update_approval_rule_template_name_input(), proplists:proplist()) ->
     {ok, update_approval_rule_template_name_output(), tuple()} |
     {error, any()} |
-    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
-    {error, approval_rule_template_name_already_exists_exception(), tuple()} |
-    {error, approval_rule_template_name_required_exception(), tuple()} |
-    {error, invalid_approval_rule_template_name_exception(), tuple()}.
+    {error, update_approval_rule_template_name_errors(), tuple()}.
 update_approval_rule_template_name(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateApprovalRuleTemplateName">>, Input, Options).
@@ -6547,13 +5937,7 @@ update_approval_rule_template_name(Client, Input, Options)
 -spec update_comment(map(), update_comment_input()) ->
     {ok, update_comment_output(), tuple()} |
     {error, any()} |
-    {error, comment_content_required_exception(), tuple()} |
-    {error, comment_content_size_limit_exceeded_exception(), tuple()} |
-    {error, comment_deleted_exception(), tuple()} |
-    {error, comment_does_not_exist_exception(), tuple()} |
-    {error, comment_id_required_exception(), tuple()} |
-    {error, comment_not_created_by_caller_exception(), tuple()} |
-    {error, invalid_comment_id_exception(), tuple()}.
+    {error, update_comment_errors(), tuple()}.
 update_comment(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_comment(Client, Input, []).
@@ -6561,13 +5945,7 @@ update_comment(Client, Input)
 -spec update_comment(map(), update_comment_input(), proplists:proplist()) ->
     {ok, update_comment_output(), tuple()} |
     {error, any()} |
-    {error, comment_content_required_exception(), tuple()} |
-    {error, comment_content_size_limit_exceeded_exception(), tuple()} |
-    {error, comment_deleted_exception(), tuple()} |
-    {error, comment_does_not_exist_exception(), tuple()} |
-    {error, comment_id_required_exception(), tuple()} |
-    {error, comment_not_created_by_caller_exception(), tuple()} |
-    {error, invalid_comment_id_exception(), tuple()}.
+    {error, update_comment_errors(), tuple()}.
 update_comment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateComment">>, Input, Options).
@@ -6580,17 +5958,7 @@ update_comment(Client, Input, Options)
 -spec update_default_branch(map(), update_default_branch_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, branch_does_not_exist_exception(), tuple()} |
-    {error, branch_name_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_branch_name_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, update_default_branch_errors(), tuple()}.
 update_default_branch(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_default_branch(Client, Input, []).
@@ -6598,17 +5966,7 @@ update_default_branch(Client, Input)
 -spec update_default_branch(map(), update_default_branch_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, branch_does_not_exist_exception(), tuple()} |
-    {error, branch_name_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_branch_name_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, update_default_branch_errors(), tuple()}.
 update_default_branch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDefaultBranch">>, Input, Options).
@@ -6621,22 +5979,7 @@ update_default_branch(Client, Input, Options)
 -spec update_pull_request_approval_rule_content(map(), update_pull_request_approval_rule_content_input()) ->
     {ok, update_pull_request_approval_rule_content_output(), tuple()} |
     {error, any()} |
-    {error, approval_rule_content_required_exception(), tuple()} |
-    {error, approval_rule_does_not_exist_exception(), tuple()} |
-    {error, approval_rule_name_required_exception(), tuple()} |
-    {error, cannot_modify_approval_rule_from_template_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_approval_rule_content_exception(), tuple()} |
-    {error, invalid_approval_rule_name_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, invalid_rule_content_sha256_exception(), tuple()} |
-    {error, pull_request_already_closed_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()}.
+    {error, update_pull_request_approval_rule_content_errors(), tuple()}.
 update_pull_request_approval_rule_content(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_pull_request_approval_rule_content(Client, Input, []).
@@ -6644,22 +5987,7 @@ update_pull_request_approval_rule_content(Client, Input)
 -spec update_pull_request_approval_rule_content(map(), update_pull_request_approval_rule_content_input(), proplists:proplist()) ->
     {ok, update_pull_request_approval_rule_content_output(), tuple()} |
     {error, any()} |
-    {error, approval_rule_content_required_exception(), tuple()} |
-    {error, approval_rule_does_not_exist_exception(), tuple()} |
-    {error, approval_rule_name_required_exception(), tuple()} |
-    {error, cannot_modify_approval_rule_from_template_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_approval_rule_content_exception(), tuple()} |
-    {error, invalid_approval_rule_name_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, invalid_rule_content_sha256_exception(), tuple()} |
-    {error, pull_request_already_closed_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()}.
+    {error, update_pull_request_approval_rule_content_errors(), tuple()}.
 update_pull_request_approval_rule_content(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePullRequestApprovalRuleContent">>, Input, Options).
@@ -6670,22 +5998,7 @@ update_pull_request_approval_rule_content(Client, Input, Options)
 -spec update_pull_request_approval_state(map(), update_pull_request_approval_state_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, approval_state_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_approval_state_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, invalid_revision_id_exception(), tuple()} |
-    {error, maximum_number_of_approvals_exceeded_exception(), tuple()} |
-    {error, pull_request_already_closed_exception(), tuple()} |
-    {error, pull_request_cannot_be_approved_by_author_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()} |
-    {error, revision_id_required_exception(), tuple()} |
-    {error, revision_not_current_exception(), tuple()}.
+    {error, update_pull_request_approval_state_errors(), tuple()}.
 update_pull_request_approval_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_pull_request_approval_state(Client, Input, []).
@@ -6693,22 +6006,7 @@ update_pull_request_approval_state(Client, Input)
 -spec update_pull_request_approval_state(map(), update_pull_request_approval_state_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, approval_state_required_exception(), tuple()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_approval_state_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, invalid_revision_id_exception(), tuple()} |
-    {error, maximum_number_of_approvals_exceeded_exception(), tuple()} |
-    {error, pull_request_already_closed_exception(), tuple()} |
-    {error, pull_request_cannot_be_approved_by_author_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()} |
-    {error, revision_id_required_exception(), tuple()} |
-    {error, revision_not_current_exception(), tuple()}.
+    {error, update_pull_request_approval_state_errors(), tuple()}.
 update_pull_request_approval_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePullRequestApprovalState">>, Input, Options).
@@ -6717,11 +6015,7 @@ update_pull_request_approval_state(Client, Input, Options)
 -spec update_pull_request_description(map(), update_pull_request_description_input()) ->
     {ok, update_pull_request_description_output(), tuple()} |
     {error, any()} |
-    {error, invalid_description_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, pull_request_already_closed_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()}.
+    {error, update_pull_request_description_errors(), tuple()}.
 update_pull_request_description(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_pull_request_description(Client, Input, []).
@@ -6729,11 +6023,7 @@ update_pull_request_description(Client, Input)
 -spec update_pull_request_description(map(), update_pull_request_description_input(), proplists:proplist()) ->
     {ok, update_pull_request_description_output(), tuple()} |
     {error, any()} |
-    {error, invalid_description_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, pull_request_already_closed_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()}.
+    {error, update_pull_request_description_errors(), tuple()}.
 update_pull_request_description(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePullRequestDescription">>, Input, Options).
@@ -6742,17 +6032,7 @@ update_pull_request_description(Client, Input, Options)
 -spec update_pull_request_status(map(), update_pull_request_status_input()) ->
     {ok, update_pull_request_status_output(), tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, invalid_pull_request_status_exception(), tuple()} |
-    {error, invalid_pull_request_status_update_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()} |
-    {error, pull_request_status_required_exception(), tuple()}.
+    {error, update_pull_request_status_errors(), tuple()}.
 update_pull_request_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_pull_request_status(Client, Input, []).
@@ -6760,17 +6040,7 @@ update_pull_request_status(Client, Input)
 -spec update_pull_request_status(map(), update_pull_request_status_input(), proplists:proplist()) ->
     {ok, update_pull_request_status_output(), tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, invalid_pull_request_status_exception(), tuple()} |
-    {error, invalid_pull_request_status_update_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()} |
-    {error, pull_request_status_required_exception(), tuple()}.
+    {error, update_pull_request_status_errors(), tuple()}.
 update_pull_request_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePullRequestStatus">>, Input, Options).
@@ -6779,12 +6049,7 @@ update_pull_request_status(Client, Input, Options)
 -spec update_pull_request_title(map(), update_pull_request_title_input()) ->
     {ok, update_pull_request_title_output(), tuple()} |
     {error, any()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, invalid_title_exception(), tuple()} |
-    {error, pull_request_already_closed_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()} |
-    {error, title_required_exception(), tuple()}.
+    {error, update_pull_request_title_errors(), tuple()}.
 update_pull_request_title(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_pull_request_title(Client, Input, []).
@@ -6792,12 +6057,7 @@ update_pull_request_title(Client, Input)
 -spec update_pull_request_title(map(), update_pull_request_title_input(), proplists:proplist()) ->
     {ok, update_pull_request_title_output(), tuple()} |
     {error, any()} |
-    {error, invalid_pull_request_id_exception(), tuple()} |
-    {error, invalid_title_exception(), tuple()} |
-    {error, pull_request_already_closed_exception(), tuple()} |
-    {error, pull_request_does_not_exist_exception(), tuple()} |
-    {error, pull_request_id_required_exception(), tuple()} |
-    {error, title_required_exception(), tuple()}.
+    {error, update_pull_request_title_errors(), tuple()}.
 update_pull_request_title(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePullRequestTitle">>, Input, Options).
@@ -6816,15 +6076,7 @@ update_pull_request_title(Client, Input, Options)
 -spec update_repository_description(map(), update_repository_description_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_repository_description_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, update_repository_description_errors(), tuple()}.
 update_repository_description(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_repository_description(Client, Input, []).
@@ -6832,15 +6084,7 @@ update_repository_description(Client, Input)
 -spec update_repository_description(map(), update_repository_description_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_repository_description_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, update_repository_description_errors(), tuple()}.
 update_repository_description(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRepositoryDescription">>, Input, Options).
@@ -6850,17 +6094,7 @@ update_repository_description(Client, Input, Options)
 -spec update_repository_encryption_key(map(), update_repository_encryption_key_input()) ->
     {ok, update_repository_encryption_key_output(), tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_invalid_id_exception(), tuple()} |
-    {error, encryption_key_invalid_usage_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_required_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, update_repository_encryption_key_errors(), tuple()}.
 update_repository_encryption_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_repository_encryption_key(Client, Input, []).
@@ -6868,17 +6102,7 @@ update_repository_encryption_key(Client, Input)
 -spec update_repository_encryption_key(map(), update_repository_encryption_key_input(), proplists:proplist()) ->
     {ok, update_repository_encryption_key_output(), tuple()} |
     {error, any()} |
-    {error, encryption_integrity_checks_failed_exception(), tuple()} |
-    {error, encryption_key_access_denied_exception(), tuple()} |
-    {error, encryption_key_disabled_exception(), tuple()} |
-    {error, encryption_key_invalid_id_exception(), tuple()} |
-    {error, encryption_key_invalid_usage_exception(), tuple()} |
-    {error, encryption_key_not_found_exception(), tuple()} |
-    {error, encryption_key_required_exception(), tuple()} |
-    {error, encryption_key_unavailable_exception(), tuple()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, update_repository_encryption_key_errors(), tuple()}.
 update_repository_encryption_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRepositoryEncryptionKey">>, Input, Options).
@@ -6897,10 +6121,7 @@ update_repository_encryption_key(Client, Input, Options)
 -spec update_repository_name(map(), update_repository_name_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_exists_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, update_repository_name_errors(), tuple()}.
 update_repository_name(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_repository_name(Client, Input, []).
@@ -6908,10 +6129,7 @@ update_repository_name(Client, Input)
 -spec update_repository_name(map(), update_repository_name_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_repository_name_exception(), tuple()} |
-    {error, repository_does_not_exist_exception(), tuple()} |
-    {error, repository_name_exists_exception(), tuple()} |
-    {error, repository_name_required_exception(), tuple()}.
+    {error, update_repository_name_errors(), tuple()}.
 update_repository_name(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRepositoryName">>, Input, Options).

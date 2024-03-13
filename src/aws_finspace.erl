@@ -147,6 +147,7 @@
 %% }
 -type get_kx_volume_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% network_acl_entry() :: #{
 %%   <<"cidrBlock">> => string(),
@@ -158,11 +159,13 @@
 %% }
 -type network_acl_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% kx_cluster_code_deployment_configuration() :: #{
 %%   <<"deploymentStrategy">> => list(any())
 %% }
 -type kx_cluster_code_deployment_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% kx_cache_storage_configuration() :: #{
@@ -171,29 +174,35 @@
 %% }
 -type kx_cache_storage_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_environment_response() :: #{
 %%   <<"environment">> => environment()
 %% }
 -type update_environment_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_kx_cluster_request() :: #{}
 -type get_kx_cluster_request() :: #{}.
+
 
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_kx_dataview_response() :: #{}
 -type delete_kx_dataview_response() :: #{}.
+
 
 %% Example:
 %% get_kx_connection_string_response() :: #{
 %%   <<"signedConnectionString">> => string()
 %% }
 -type get_kx_connection_string_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_kx_environment_network_response() :: #{
@@ -216,6 +225,7 @@
 %% }
 -type update_kx_environment_network_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_kx_user_response() :: #{
 %%   <<"environmentId">> => string(),
@@ -225,12 +235,14 @@
 %% }
 -type create_kx_user_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_kx_dataviews_response() :: #{
 %%   <<"kxDataviews">> => list(kx_dataview_list_entry()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_kx_dataviews_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% code_configuration() :: #{
@@ -240,12 +252,14 @@
 %% }
 -type code_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_kx_environments_response() :: #{
 %%   <<"environments">> => list(kx_environment()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_kx_environments_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% vpc_configuration() :: #{
@@ -256,12 +270,14 @@
 %% }
 -type vpc_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_kx_volumes_response() :: #{
 %%   <<"kxVolumeSummaries">> => list(kx_volume()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_kx_volumes_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% kx_cluster() :: #{
@@ -281,6 +297,7 @@
 %% }
 -type kx_cluster() :: #{binary() => any()}.
 
+
 %% Example:
 %% kx_changeset_list_entry() :: #{
 %%   <<"activeFromTimestamp">> => non_neg_integer(),
@@ -290,9 +307,11 @@
 %%   <<"status">> => list(any())
 %% }
 -type kx_changeset_list_entry() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% list_kx_cluster_nodes_request() :: #{
@@ -301,12 +320,14 @@
 %% }
 -type list_kx_cluster_nodes_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_kx_connection_string_request() :: #{
 %%   <<"clusterName">> := string(),
 %%   <<"userArn">> := string()
 %% }
 -type get_kx_connection_string_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% kx_dataview_list_entry() :: #{
@@ -327,6 +348,7 @@
 %% }
 -type kx_dataview_list_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_kx_database_request() :: #{
 %%   <<"clientToken">> := string(),
@@ -335,6 +357,7 @@
 %%   <<"tags">> => map()
 %% }
 -type create_kx_database_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_kx_database_response() :: #{
@@ -346,9 +369,11 @@
 %%   <<"lastModifiedTimestamp">> => non_neg_integer()
 %% }
 -type create_kx_database_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_kx_user_request() :: #{}
 -type get_kx_user_request() :: #{}.
+
 
 %% Example:
 %% create_kx_changeset_request() :: #{
@@ -357,6 +382,7 @@
 %% }
 -type create_kx_changeset_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_kx_volume_request() :: #{
 %%   <<"clientToken">> => string(),
@@ -364,9 +390,11 @@
 %%   <<"nas1Configuration">> => kx_n_a_s1_configuration()
 %% }
 -type update_kx_volume_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_environment_request() :: #{}
 -type get_environment_request() :: #{}.
+
 
 %% Example:
 %% list_kx_volumes_request() :: #{
@@ -375,6 +403,7 @@
 %%   <<"volumeType">> => list(any())
 %% }
 -type list_kx_volumes_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% kx_scaling_group_configuration() :: #{
@@ -386,6 +415,7 @@
 %% }
 -type kx_scaling_group_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_kx_databases_response() :: #{
 %%   <<"kxDatabases">> => list(kx_database_list_entry()()),
@@ -393,12 +423,14 @@
 %% }
 -type list_kx_databases_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_kx_environments_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_kx_environments_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_kx_scaling_group_response() :: #{
@@ -411,9 +443,11 @@
 %%   <<"status">> => list(any())
 %% }
 -type create_kx_scaling_group_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_kx_database_response() :: #{}
 -type delete_kx_database_response() :: #{}.
+
 
 %% Example:
 %% list_kx_scaling_groups_request() :: #{
@@ -421,6 +455,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_kx_scaling_groups_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_kx_changeset_response() :: #{
@@ -434,9 +469,11 @@
 %%   <<"status">> => list(any())
 %% }
 -type create_kx_changeset_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_kx_user_response() :: #{}
 -type delete_kx_user_response() :: #{}.
+
 
 %% Example:
 %% kx_volume() :: #{
@@ -452,11 +489,13 @@
 %% }
 -type kx_volume() :: #{binary() => any()}.
 
+
 %% Example:
 %% tickerplant_log_configuration() :: #{
 %%   <<"tickerplantLogVolumes">> => list(string()())
 %% }
 -type tickerplant_log_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_kx_dataview_request() :: #{
@@ -467,6 +506,7 @@
 %% }
 -type update_kx_dataview_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_kx_database_response() :: #{
 %%   <<"databaseName">> => string(),
@@ -475,6 +515,7 @@
 %%   <<"lastModifiedTimestamp">> => non_neg_integer()
 %% }
 -type update_kx_database_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_kx_user_request() :: #{
@@ -485,12 +526,14 @@
 %% }
 -type create_kx_user_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_kx_users_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"users">> => list(kx_user()())
 %% }
 -type list_kx_users_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_kx_cluster_nodes_response() :: #{
@@ -499,6 +542,7 @@
 %% }
 -type list_kx_cluster_nodes_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% error_info() :: #{
 %%   <<"errorMessage">> => string(),
@@ -506,17 +550,20 @@
 %% }
 -type error_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_environment_response() :: #{
 %%   <<"environment">> => environment()
 %% }
 -type get_environment_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_kx_environment_response() :: #{
@@ -539,18 +586,22 @@
 %%   <<"updateTimestamp">> => non_neg_integer()
 %% }
 -type get_kx_environment_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_kx_volume_request() :: #{}
 -type get_kx_volume_request() :: #{}.
+
 
 %% Example:
 %% delete_kx_environment_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
 -type delete_kx_environment_request() :: #{binary() => any()}.
+
 %% Example:
 %% update_kx_cluster_databases_response() :: #{}
 -type update_kx_cluster_databases_response() :: #{}.
+
 
 %% Example:
 %% kx_n_a_s1_configuration() :: #{
@@ -558,6 +609,7 @@
 %%   <<"type">> => list(any())
 %% }
 -type kx_n_a_s1_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% kx_database_cache_configuration() :: #{
@@ -567,14 +619,17 @@
 %% }
 -type kx_database_cache_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_kx_database_request() :: #{
 %%   <<"clientToken">> := string()
 %% }
 -type delete_kx_database_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_kx_volume_response() :: #{}
 -type delete_kx_volume_response() :: #{}.
+
 
 %% Example:
 %% get_kx_scaling_group_response() :: #{
@@ -590,6 +645,7 @@
 %% }
 -type get_kx_scaling_group_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_kx_user_response() :: #{
 %%   <<"environmentId">> => string(),
@@ -599,11 +655,13 @@
 %% }
 -type update_kx_user_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_kx_cluster_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
 -type delete_kx_cluster_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% auto_scaling_configuration() :: #{
@@ -616,6 +674,7 @@
 %% }
 -type auto_scaling_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% kx_user() :: #{
 %%   <<"createTimestamp">> => non_neg_integer(),
@@ -625,9 +684,11 @@
 %%   <<"userName">> => string()
 %% }
 -type kx_user() :: #{binary() => any()}.
+
 %% Example:
 %% get_kx_environment_request() :: #{}
 -type get_kx_environment_request() :: #{}.
+
 
 %% Example:
 %% kx_database_configuration() :: #{
@@ -638,6 +699,7 @@
 %%   <<"dataviewName">> => string()
 %% }
 -type kx_database_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_kx_changeset_response() :: #{
@@ -653,6 +715,7 @@
 %% }
 -type get_kx_changeset_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% kx_dataview_configuration() :: #{
 %%   <<"changesetId">> => string(),
@@ -662,6 +725,7 @@
 %% }
 -type kx_dataview_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string(),
@@ -669,17 +733,21 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 %% Example:
 %% get_kx_database_request() :: #{}
 -type get_kx_database_request() :: #{}.
+
 %% Example:
 %% delete_kx_environment_response() :: #{}
 -type delete_kx_environment_response() :: #{}.
+
 
 %% Example:
 %% superuser_parameters() :: #{
@@ -689,11 +757,13 @@
 %% }
 -type superuser_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_request_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_request_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% icmp_type_code() :: #{
@@ -701,6 +771,7 @@
 %%   <<"type">> => integer()
 %% }
 -type icmp_type_code() :: #{binary() => any()}.
+
 
 %% Example:
 %% environment() :: #{
@@ -719,6 +790,7 @@
 %% }
 -type environment() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_kx_volume_request() :: #{
 %%   <<"availabilityZoneIds">> := list(string()()),
@@ -731,6 +803,7 @@
 %%   <<"volumeType">> := list(any())
 %% }
 -type create_kx_volume_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% kx_environment() :: #{
@@ -754,6 +827,7 @@
 %% }
 -type kx_environment() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_kx_environment_request() :: #{
 %%   <<"clientToken">> => string(),
@@ -762,11 +836,13 @@
 %% }
 -type update_kx_environment_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_kx_user_request() :: #{
@@ -775,15 +851,18 @@
 %% }
 -type update_kx_user_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_kx_users_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_kx_users_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_kx_scaling_group_request() :: #{}
 -type get_kx_scaling_group_request() :: #{}.
+
 
 %% Example:
 %% get_kx_cluster_response() :: #{
@@ -813,6 +892,7 @@
 %% }
 -type get_kx_cluster_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_kx_dataview_request() :: #{
 %%   <<"autoUpdate">> => boolean(),
@@ -827,6 +907,7 @@
 %% }
 -type create_kx_dataview_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% kx_scaling_group() :: #{
 %%   <<"availabilityZoneId">> => string(),
@@ -840,6 +921,7 @@
 %% }
 -type kx_scaling_group() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_kx_clusters_request() :: #{
 %%   <<"clusterType">> => list(any()),
@@ -848,6 +930,7 @@
 %% }
 -type list_kx_clusters_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% kx_command_line_argument() :: #{
 %%   <<"key">> => string(),
@@ -855,11 +938,13 @@
 %% }
 -type kx_command_line_argument() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_environments_request() :: #{
@@ -868,11 +953,13 @@
 %% }
 -type list_environments_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% kx_deployment_configuration() :: #{
 %%   <<"deploymentStrategy">> => list(any())
 %% }
 -type kx_deployment_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% kx_database_list_entry() :: #{
@@ -882,6 +969,7 @@
 %% }
 -type kx_database_list_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_kx_clusters_response() :: #{
 %%   <<"kxClusterSummaries">> => list(kx_cluster()()),
@@ -889,12 +977,14 @@
 %% }
 -type list_kx_clusters_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_kx_dataviews_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_kx_dataviews_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_environment_response() :: #{
@@ -904,11 +994,13 @@
 %% }
 -type create_environment_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_kx_dataview_response() :: #{
@@ -926,9 +1018,11 @@
 %%   <<"status">> => list(any())
 %% }
 -type create_kx_dataview_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_environment_request() :: #{}
 -type delete_environment_request() :: #{}.
+
 
 %% Example:
 %% port_range() :: #{
@@ -936,6 +1030,7 @@
 %%   <<"to">> => integer()
 %% }
 -type port_range() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_kx_volume_response() :: #{
@@ -955,6 +1050,7 @@
 %% }
 -type update_kx_volume_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% kx_savedown_storage_configuration() :: #{
 %%   <<"size">> => integer(),
@@ -962,6 +1058,7 @@
 %%   <<"volumeName">> => string()
 %% }
 -type kx_savedown_storage_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_kx_cluster_code_configuration_request() :: #{
@@ -973,6 +1070,7 @@
 %% }
 -type update_kx_cluster_code_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_kx_scaling_group_request() :: #{
 %%   <<"availabilityZoneId">> := string(),
@@ -982,9 +1080,11 @@
 %%   <<"tags">> => map()
 %% }
 -type create_kx_scaling_group_request() :: #{binary() => any()}.
+
 %% Example:
 %% update_kx_cluster_code_configuration_response() :: #{}
 -type update_kx_cluster_code_configuration_response() :: #{}.
+
 
 %% Example:
 %% delete_kx_dataview_request() :: #{
@@ -992,12 +1092,14 @@
 %% }
 -type delete_kx_dataview_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% volume() :: #{
 %%   <<"volumeName">> => string(),
 %%   <<"volumeType">> => list(any())
 %% }
 -type volume() :: #{binary() => any()}.
+
 
 %% Example:
 %% federation_parameters() :: #{
@@ -1010,14 +1112,17 @@
 %% }
 -type federation_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% get_kx_database_response() :: #{
@@ -1034,6 +1139,7 @@
 %% }
 -type get_kx_database_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_kx_environment_request() :: #{
 %%   <<"clientToken">> => string(),
@@ -1043,6 +1149,7 @@
 %%   <<"tags">> => map()
 %% }
 -type create_kx_environment_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_kx_cluster_request() :: #{
@@ -1069,6 +1176,7 @@
 %% }
 -type create_kx_cluster_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% kx_attached_cluster() :: #{
 %%   <<"clusterName">> => string(),
@@ -1076,21 +1184,26 @@
 %%   <<"clusterType">> => list(any())
 %% }
 -type kx_attached_cluster() :: #{binary() => any()}.
+
 %% Example:
 %% get_kx_dataview_request() :: #{}
 -type get_kx_dataview_request() :: #{}.
+
 
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 %% Example:
 %% get_kx_changeset_request() :: #{}
 -type get_kx_changeset_request() :: #{}.
+
 
 %% Example:
 %% kx_dataview_active_version() :: #{
@@ -1102,6 +1215,7 @@
 %% }
 -type kx_dataview_active_version() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_kx_scaling_groups_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -1109,11 +1223,13 @@
 %% }
 -type list_kx_scaling_groups_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% custom_dns_server() :: #{
@@ -1122,6 +1238,7 @@
 %% }
 -type custom_dns_server() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_environments_response() :: #{
 %%   <<"environments">> => list(environment()()),
@@ -1129,12 +1246,14 @@
 %% }
 -type list_environments_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_kx_changesets_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_kx_changesets_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_kx_user_response() :: #{
@@ -1144,6 +1263,7 @@
 %%   <<"userName">> => string()
 %% }
 -type get_kx_user_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_kx_dataview_response() :: #{
@@ -1163,6 +1283,7 @@
 %% }
 -type update_kx_dataview_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_kx_cluster_databases_request() :: #{
 %%   <<"clientToken">> => string(),
@@ -1171,11 +1292,13 @@
 %% }
 -type update_kx_cluster_databases_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_kx_dataview_response() :: #{
@@ -1196,14 +1319,17 @@
 %% }
 -type get_kx_dataview_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_kx_volume_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
 -type delete_kx_volume_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_kx_scaling_group_response() :: #{}
 -type delete_kx_scaling_group_response() :: #{}.
+
 
 %% Example:
 %% update_kx_database_request() :: #{
@@ -1212,12 +1338,14 @@
 %% }
 -type update_kx_database_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% capacity_configuration() :: #{
 %%   <<"nodeCount">> => integer(),
 %%   <<"nodeType">> => string()
 %% }
 -type capacity_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% change_request() :: #{
@@ -1227,6 +1355,7 @@
 %% }
 -type change_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% kx_dataview_segment_configuration() :: #{
 %%   <<"dbPaths">> => list(string()()),
@@ -1234,11 +1363,13 @@
 %% }
 -type kx_dataview_segment_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_already_exists_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_already_exists_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_environment_request() :: #{
@@ -1253,6 +1384,7 @@
 %% }
 -type create_environment_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_kx_environment_response() :: #{
 %%   <<"creationTimestamp">> => non_neg_integer(),
@@ -1265,11 +1397,13 @@
 %% }
 -type create_kx_environment_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_kx_scaling_group_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
 -type delete_kx_scaling_group_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_kx_changesets_response() :: #{
@@ -1278,6 +1412,7 @@
 %% }
 -type list_kx_changesets_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_kx_environment_network_request() :: #{
 %%   <<"clientToken">> => string(),
@@ -1285,6 +1420,7 @@
 %%   <<"transitGatewayConfiguration">> => transit_gateway_configuration()
 %% }
 -type update_kx_environment_network_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_environment_request() :: #{
@@ -1295,11 +1431,13 @@
 %% }
 -type update_environment_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_kx_user_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
 -type delete_kx_user_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% transit_gateway_configuration() :: #{
@@ -1308,9 +1446,11 @@
 %%   <<"transitGatewayID">> => string()
 %% }
 -type transit_gateway_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% delete_kx_cluster_response() :: #{}
 -type delete_kx_cluster_response() :: #{}.
+
 
 %% Example:
 %% create_kx_volume_response() :: #{
@@ -1328,6 +1468,7 @@
 %% }
 -type create_kx_volume_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% kx_node() :: #{
 %%   <<"availabilityZoneId">> => string(),
@@ -1335,6 +1476,7 @@
 %%   <<"nodeId">> => string()
 %% }
 -type kx_node() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_kx_environment_response() :: #{
@@ -1357,15 +1499,18 @@
 %% }
 -type update_kx_environment_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_kx_databases_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_kx_databases_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_environment_response() :: #{}
 -type delete_environment_response() :: #{}.
+
 
 %% Example:
 %% create_kx_cluster_response() :: #{
@@ -1396,6 +1541,395 @@
 %% }
 -type create_kx_cluster_response() :: #{binary() => any()}.
 
+-type create_environment_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type create_kx_changeset_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_kx_cluster_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_kx_database_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_kx_dataview_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_kx_environment_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_kx_scaling_group_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_kx_user_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_kx_volume_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_environment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_kx_cluster_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_kx_database_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_kx_dataview_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_kx_environment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_kx_scaling_group_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_kx_user_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_kx_volume_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_environment_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_kx_changeset_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_kx_cluster_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_kx_connection_string_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_kx_database_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_kx_dataview_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_kx_environment_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_kx_scaling_group_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_kx_user_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_kx_volume_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_environments_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_kx_changesets_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_kx_cluster_nodes_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_kx_clusters_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_kx_databases_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_kx_dataviews_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_kx_environments_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_kx_scaling_groups_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_kx_users_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_kx_volumes_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_tags_for_resource_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type update_environment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_kx_cluster_code_configuration_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_kx_cluster_databases_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_kx_database_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_kx_dataview_errors() ::
+    resource_already_exists_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_kx_environment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_kx_environment_network_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_kx_user_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_kx_volume_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -1404,24 +1938,14 @@
 -spec create_environment(map(), create_environment_request()) ->
     {ok, create_environment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_environment_errors(), tuple()}.
 create_environment(Client, Input) ->
     create_environment(Client, Input, []).
 
 -spec create_environment(map(), create_environment_request(), proplists:proplist()) ->
     {ok, create_environment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_environment_errors(), tuple()}.
 create_environment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/environment"],
@@ -1452,26 +1976,14 @@ create_environment(Client, Input0, Options0) ->
 -spec create_kx_changeset(map(), binary() | list(), binary() | list(), create_kx_changeset_request()) ->
     {ok, create_kx_changeset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_kx_changeset_errors(), tuple()}.
 create_kx_changeset(Client, DatabaseName, EnvironmentId, Input) ->
     create_kx_changeset(Client, DatabaseName, EnvironmentId, Input, []).
 
 -spec create_kx_changeset(map(), binary() | list(), binary() | list(), create_kx_changeset_request(), proplists:proplist()) ->
     {ok, create_kx_changeset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_kx_changeset_errors(), tuple()}.
 create_kx_changeset(Client, DatabaseName, EnvironmentId, Input0, Options0) ->
     Method = post,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), "/changesets"],
@@ -1498,26 +2010,14 @@ create_kx_changeset(Client, DatabaseName, EnvironmentId, Input0, Options0) ->
 -spec create_kx_cluster(map(), binary() | list(), create_kx_cluster_request()) ->
     {ok, create_kx_cluster_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_kx_cluster_errors(), tuple()}.
 create_kx_cluster(Client, EnvironmentId, Input) ->
     create_kx_cluster(Client, EnvironmentId, Input, []).
 
 -spec create_kx_cluster(map(), binary() | list(), create_kx_cluster_request(), proplists:proplist()) ->
     {ok, create_kx_cluster_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_kx_cluster_errors(), tuple()}.
 create_kx_cluster(Client, EnvironmentId, Input0, Options0) ->
     Method = post,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/clusters"],
@@ -1544,28 +2044,14 @@ create_kx_cluster(Client, EnvironmentId, Input0, Options0) ->
 -spec create_kx_database(map(), binary() | list(), create_kx_database_request()) ->
     {ok, create_kx_database_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_kx_database_errors(), tuple()}.
 create_kx_database(Client, EnvironmentId, Input) ->
     create_kx_database(Client, EnvironmentId, Input, []).
 
 -spec create_kx_database(map(), binary() | list(), create_kx_database_request(), proplists:proplist()) ->
     {ok, create_kx_database_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_kx_database_errors(), tuple()}.
 create_kx_database(Client, EnvironmentId, Input0, Options0) ->
     Method = post,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases"],
@@ -1597,28 +2083,14 @@ create_kx_database(Client, EnvironmentId, Input0, Options0) ->
 -spec create_kx_dataview(map(), binary() | list(), binary() | list(), create_kx_dataview_request()) ->
     {ok, create_kx_dataview_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_kx_dataview_errors(), tuple()}.
 create_kx_dataview(Client, DatabaseName, EnvironmentId, Input) ->
     create_kx_dataview(Client, DatabaseName, EnvironmentId, Input, []).
 
 -spec create_kx_dataview(map(), binary() | list(), binary() | list(), create_kx_dataview_request(), proplists:proplist()) ->
     {ok, create_kx_dataview_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_kx_dataview_errors(), tuple()}.
 create_kx_dataview(Client, DatabaseName, EnvironmentId, Input0, Options0) ->
     Method = post,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), "/dataviews"],
@@ -1645,26 +2117,14 @@ create_kx_dataview(Client, DatabaseName, EnvironmentId, Input0, Options0) ->
 -spec create_kx_environment(map(), create_kx_environment_request()) ->
     {ok, create_kx_environment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_kx_environment_errors(), tuple()}.
 create_kx_environment(Client, Input) ->
     create_kx_environment(Client, Input, []).
 
 -spec create_kx_environment(map(), create_kx_environment_request(), proplists:proplist()) ->
     {ok, create_kx_environment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_kx_environment_errors(), tuple()}.
 create_kx_environment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/kx/environments"],
@@ -1691,26 +2151,14 @@ create_kx_environment(Client, Input0, Options0) ->
 -spec create_kx_scaling_group(map(), binary() | list(), create_kx_scaling_group_request()) ->
     {ok, create_kx_scaling_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_kx_scaling_group_errors(), tuple()}.
 create_kx_scaling_group(Client, EnvironmentId, Input) ->
     create_kx_scaling_group(Client, EnvironmentId, Input, []).
 
 -spec create_kx_scaling_group(map(), binary() | list(), create_kx_scaling_group_request(), proplists:proplist()) ->
     {ok, create_kx_scaling_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_kx_scaling_group_errors(), tuple()}.
 create_kx_scaling_group(Client, EnvironmentId, Input0, Options0) ->
     Method = post,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/scalingGroups"],
@@ -1738,28 +2186,14 @@ create_kx_scaling_group(Client, EnvironmentId, Input0, Options0) ->
 -spec create_kx_user(map(), binary() | list(), create_kx_user_request()) ->
     {ok, create_kx_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_kx_user_errors(), tuple()}.
 create_kx_user(Client, EnvironmentId, Input) ->
     create_kx_user(Client, EnvironmentId, Input, []).
 
 -spec create_kx_user(map(), binary() | list(), create_kx_user_request(), proplists:proplist()) ->
     {ok, create_kx_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_kx_user_errors(), tuple()}.
 create_kx_user(Client, EnvironmentId, Input0, Options0) ->
     Method = post,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/users"],
@@ -1788,28 +2222,14 @@ create_kx_user(Client, EnvironmentId, Input0, Options0) ->
 -spec create_kx_volume(map(), binary() | list(), create_kx_volume_request()) ->
     {ok, create_kx_volume_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_kx_volume_errors(), tuple()}.
 create_kx_volume(Client, EnvironmentId, Input) ->
     create_kx_volume(Client, EnvironmentId, Input, []).
 
 -spec create_kx_volume(map(), binary() | list(), create_kx_volume_request(), proplists:proplist()) ->
     {ok, create_kx_volume_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_kx_volume_errors(), tuple()}.
 create_kx_volume(Client, EnvironmentId, Input0, Options0) ->
     Method = post,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/kxvolumes"],
@@ -1836,22 +2256,14 @@ create_kx_volume(Client, EnvironmentId, Input0, Options0) ->
 -spec delete_environment(map(), binary() | list(), delete_environment_request()) ->
     {ok, delete_environment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_environment_errors(), tuple()}.
 delete_environment(Client, EnvironmentId, Input) ->
     delete_environment(Client, EnvironmentId, Input, []).
 
 -spec delete_environment(map(), binary() | list(), delete_environment_request(), proplists:proplist()) ->
     {ok, delete_environment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_environment_errors(), tuple()}.
 delete_environment(Client, EnvironmentId, Input0, Options0) ->
     Method = delete,
     Path = ["/environment/", aws_util:encode_uri(EnvironmentId), ""],
@@ -1878,26 +2290,14 @@ delete_environment(Client, EnvironmentId, Input0, Options0) ->
 -spec delete_kx_cluster(map(), binary() | list(), binary() | list(), delete_kx_cluster_request()) ->
     {ok, delete_kx_cluster_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_kx_cluster_errors(), tuple()}.
 delete_kx_cluster(Client, ClusterName, EnvironmentId, Input) ->
     delete_kx_cluster(Client, ClusterName, EnvironmentId, Input, []).
 
 -spec delete_kx_cluster(map(), binary() | list(), binary() | list(), delete_kx_cluster_request(), proplists:proplist()) ->
     {ok, delete_kx_cluster_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_kx_cluster_errors(), tuple()}.
 delete_kx_cluster(Client, ClusterName, EnvironmentId, Input0, Options0) ->
     Method = delete,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/clusters/", aws_util:encode_uri(ClusterName), ""],
@@ -1928,24 +2328,14 @@ delete_kx_cluster(Client, ClusterName, EnvironmentId, Input0, Options0) ->
 -spec delete_kx_database(map(), binary() | list(), binary() | list(), delete_kx_database_request()) ->
     {ok, delete_kx_database_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_kx_database_errors(), tuple()}.
 delete_kx_database(Client, DatabaseName, EnvironmentId, Input) ->
     delete_kx_database(Client, DatabaseName, EnvironmentId, Input, []).
 
 -spec delete_kx_database(map(), binary() | list(), binary() | list(), delete_kx_database_request(), proplists:proplist()) ->
     {ok, delete_kx_database_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_kx_database_errors(), tuple()}.
 delete_kx_database(Client, DatabaseName, EnvironmentId, Input0, Options0) ->
     Method = delete,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), ""],
@@ -1977,24 +2367,14 @@ delete_kx_database(Client, DatabaseName, EnvironmentId, Input0, Options0) ->
 -spec delete_kx_dataview(map(), binary() | list(), binary() | list(), binary() | list(), delete_kx_dataview_request()) ->
     {ok, delete_kx_dataview_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_kx_dataview_errors(), tuple()}.
 delete_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, Input) ->
     delete_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, Input, []).
 
 -spec delete_kx_dataview(map(), binary() | list(), binary() | list(), binary() | list(), delete_kx_dataview_request(), proplists:proplist()) ->
     {ok, delete_kx_dataview_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_kx_dataview_errors(), tuple()}.
 delete_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, Input0, Options0) ->
     Method = delete,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), "/dataviews/", aws_util:encode_uri(DataviewName), ""],
@@ -2025,24 +2405,14 @@ delete_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, Input0, Op
 -spec delete_kx_environment(map(), binary() | list(), delete_kx_environment_request()) ->
     {ok, delete_kx_environment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_kx_environment_errors(), tuple()}.
 delete_kx_environment(Client, EnvironmentId, Input) ->
     delete_kx_environment(Client, EnvironmentId, Input, []).
 
 -spec delete_kx_environment(map(), binary() | list(), delete_kx_environment_request(), proplists:proplist()) ->
     {ok, delete_kx_environment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_kx_environment_errors(), tuple()}.
 delete_kx_environment(Client, EnvironmentId, Input0, Options0) ->
     Method = delete,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), ""],
@@ -2074,26 +2444,14 @@ delete_kx_environment(Client, EnvironmentId, Input0, Options0) ->
 -spec delete_kx_scaling_group(map(), binary() | list(), binary() | list(), delete_kx_scaling_group_request()) ->
     {ok, delete_kx_scaling_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_kx_scaling_group_errors(), tuple()}.
 delete_kx_scaling_group(Client, EnvironmentId, ScalingGroupName, Input) ->
     delete_kx_scaling_group(Client, EnvironmentId, ScalingGroupName, Input, []).
 
 -spec delete_kx_scaling_group(map(), binary() | list(), binary() | list(), delete_kx_scaling_group_request(), proplists:proplist()) ->
     {ok, delete_kx_scaling_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_kx_scaling_group_errors(), tuple()}.
 delete_kx_scaling_group(Client, EnvironmentId, ScalingGroupName, Input0, Options0) ->
     Method = delete,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/scalingGroups/", aws_util:encode_uri(ScalingGroupName), ""],
@@ -2121,24 +2479,14 @@ delete_kx_scaling_group(Client, EnvironmentId, ScalingGroupName, Input0, Options
 -spec delete_kx_user(map(), binary() | list(), binary() | list(), delete_kx_user_request()) ->
     {ok, delete_kx_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_kx_user_errors(), tuple()}.
 delete_kx_user(Client, EnvironmentId, UserName, Input) ->
     delete_kx_user(Client, EnvironmentId, UserName, Input, []).
 
 -spec delete_kx_user(map(), binary() | list(), binary() | list(), delete_kx_user_request(), proplists:proplist()) ->
     {ok, delete_kx_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_kx_user_errors(), tuple()}.
 delete_kx_user(Client, EnvironmentId, UserName, Input0, Options0) ->
     Method = delete,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/users/", aws_util:encode_uri(UserName), ""],
@@ -2171,26 +2519,14 @@ delete_kx_user(Client, EnvironmentId, UserName, Input0, Options0) ->
 -spec delete_kx_volume(map(), binary() | list(), binary() | list(), delete_kx_volume_request()) ->
     {ok, delete_kx_volume_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_kx_volume_errors(), tuple()}.
 delete_kx_volume(Client, EnvironmentId, VolumeName, Input) ->
     delete_kx_volume(Client, EnvironmentId, VolumeName, Input, []).
 
 -spec delete_kx_volume(map(), binary() | list(), binary() | list(), delete_kx_volume_request(), proplists:proplist()) ->
     {ok, delete_kx_volume_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_kx_volume_errors(), tuple()}.
 delete_kx_volume(Client, EnvironmentId, VolumeName, Input0, Options0) ->
     Method = delete,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/kxvolumes/", aws_util:encode_uri(VolumeName), ""],
@@ -2218,10 +2554,7 @@ delete_kx_volume(Client, EnvironmentId, VolumeName, Input0, Options0) ->
 -spec get_environment(map(), binary() | list()) ->
     {ok, get_environment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_environment_errors(), tuple()}.
 get_environment(Client, EnvironmentId)
   when is_map(Client) ->
     get_environment(Client, EnvironmentId, #{}, #{}).
@@ -2229,10 +2562,7 @@ get_environment(Client, EnvironmentId)
 -spec get_environment(map(), binary() | list(), map(), map()) ->
     {ok, get_environment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_environment_errors(), tuple()}.
 get_environment(Client, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_environment(Client, EnvironmentId, QueryMap, HeadersMap, []).
@@ -2240,10 +2570,7 @@ get_environment(Client, EnvironmentId, QueryMap, HeadersMap)
 -spec get_environment(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_environment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_environment_errors(), tuple()}.
 get_environment(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environment/", aws_util:encode_uri(EnvironmentId), ""],
@@ -2264,11 +2591,7 @@ get_environment(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
 -spec get_kx_changeset(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_kx_changeset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_kx_changeset_errors(), tuple()}.
 get_kx_changeset(Client, ChangesetId, DatabaseName, EnvironmentId)
   when is_map(Client) ->
     get_kx_changeset(Client, ChangesetId, DatabaseName, EnvironmentId, #{}, #{}).
@@ -2276,11 +2599,7 @@ get_kx_changeset(Client, ChangesetId, DatabaseName, EnvironmentId)
 -spec get_kx_changeset(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_kx_changeset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_kx_changeset_errors(), tuple()}.
 get_kx_changeset(Client, ChangesetId, DatabaseName, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_kx_changeset(Client, ChangesetId, DatabaseName, EnvironmentId, QueryMap, HeadersMap, []).
@@ -2288,11 +2607,7 @@ get_kx_changeset(Client, ChangesetId, DatabaseName, EnvironmentId, QueryMap, Hea
 -spec get_kx_changeset(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_kx_changeset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_kx_changeset_errors(), tuple()}.
 get_kx_changeset(Client, ChangesetId, DatabaseName, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), "/changesets/", aws_util:encode_uri(ChangesetId), ""],
@@ -2313,13 +2628,7 @@ get_kx_changeset(Client, ChangesetId, DatabaseName, EnvironmentId, QueryMap, Hea
 -spec get_kx_cluster(map(), binary() | list(), binary() | list()) ->
     {ok, get_kx_cluster_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_kx_cluster_errors(), tuple()}.
 get_kx_cluster(Client, ClusterName, EnvironmentId)
   when is_map(Client) ->
     get_kx_cluster(Client, ClusterName, EnvironmentId, #{}, #{}).
@@ -2327,13 +2636,7 @@ get_kx_cluster(Client, ClusterName, EnvironmentId)
 -spec get_kx_cluster(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_kx_cluster_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_kx_cluster_errors(), tuple()}.
 get_kx_cluster(Client, ClusterName, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_kx_cluster(Client, ClusterName, EnvironmentId, QueryMap, HeadersMap, []).
@@ -2341,13 +2644,7 @@ get_kx_cluster(Client, ClusterName, EnvironmentId, QueryMap, HeadersMap)
 -spec get_kx_cluster(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_kx_cluster_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_kx_cluster_errors(), tuple()}.
 get_kx_cluster(Client, ClusterName, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/clusters/", aws_util:encode_uri(ClusterName), ""],
@@ -2371,11 +2668,7 @@ get_kx_cluster(Client, ClusterName, EnvironmentId, QueryMap, HeadersMap, Options
 -spec get_kx_connection_string(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_kx_connection_string_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_kx_connection_string_errors(), tuple()}.
 get_kx_connection_string(Client, EnvironmentId, ClusterName, UserArn)
   when is_map(Client) ->
     get_kx_connection_string(Client, EnvironmentId, ClusterName, UserArn, #{}, #{}).
@@ -2383,11 +2676,7 @@ get_kx_connection_string(Client, EnvironmentId, ClusterName, UserArn)
 -spec get_kx_connection_string(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_kx_connection_string_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_kx_connection_string_errors(), tuple()}.
 get_kx_connection_string(Client, EnvironmentId, ClusterName, UserArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_kx_connection_string(Client, EnvironmentId, ClusterName, UserArn, QueryMap, HeadersMap, []).
@@ -2395,11 +2684,7 @@ get_kx_connection_string(Client, EnvironmentId, ClusterName, UserArn, QueryMap, 
 -spec get_kx_connection_string(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_kx_connection_string_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_kx_connection_string_errors(), tuple()}.
 get_kx_connection_string(Client, EnvironmentId, ClusterName, UserArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/connectionString"],
@@ -2425,11 +2710,7 @@ get_kx_connection_string(Client, EnvironmentId, ClusterName, UserArn, QueryMap, 
 -spec get_kx_database(map(), binary() | list(), binary() | list()) ->
     {ok, get_kx_database_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_kx_database_errors(), tuple()}.
 get_kx_database(Client, DatabaseName, EnvironmentId)
   when is_map(Client) ->
     get_kx_database(Client, DatabaseName, EnvironmentId, #{}, #{}).
@@ -2437,11 +2718,7 @@ get_kx_database(Client, DatabaseName, EnvironmentId)
 -spec get_kx_database(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_kx_database_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_kx_database_errors(), tuple()}.
 get_kx_database(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_kx_database(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap, []).
@@ -2449,11 +2726,7 @@ get_kx_database(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap)
 -spec get_kx_database(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_kx_database_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_kx_database_errors(), tuple()}.
 get_kx_database(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), ""],
@@ -2475,11 +2748,7 @@ get_kx_database(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap, Optio
 -spec get_kx_dataview(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_kx_dataview_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_kx_dataview_errors(), tuple()}.
 get_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId)
   when is_map(Client) ->
     get_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, #{}, #{}).
@@ -2487,11 +2756,7 @@ get_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId)
 -spec get_kx_dataview(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_kx_dataview_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_kx_dataview_errors(), tuple()}.
 get_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, QueryMap, HeadersMap, []).
@@ -2499,11 +2764,7 @@ get_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, QueryMap, Hea
 -spec get_kx_dataview(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_kx_dataview_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_kx_dataview_errors(), tuple()}.
 get_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), "/dataviews/", aws_util:encode_uri(DataviewName), ""],
@@ -2524,11 +2785,7 @@ get_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, QueryMap, Hea
 -spec get_kx_environment(map(), binary() | list()) ->
     {ok, get_kx_environment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_kx_environment_errors(), tuple()}.
 get_kx_environment(Client, EnvironmentId)
   when is_map(Client) ->
     get_kx_environment(Client, EnvironmentId, #{}, #{}).
@@ -2536,11 +2793,7 @@ get_kx_environment(Client, EnvironmentId)
 -spec get_kx_environment(map(), binary() | list(), map(), map()) ->
     {ok, get_kx_environment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_kx_environment_errors(), tuple()}.
 get_kx_environment(Client, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_kx_environment(Client, EnvironmentId, QueryMap, HeadersMap, []).
@@ -2548,11 +2801,7 @@ get_kx_environment(Client, EnvironmentId, QueryMap, HeadersMap)
 -spec get_kx_environment(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_kx_environment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_kx_environment_errors(), tuple()}.
 get_kx_environment(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), ""],
@@ -2574,13 +2823,7 @@ get_kx_environment(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
 -spec get_kx_scaling_group(map(), binary() | list(), binary() | list()) ->
     {ok, get_kx_scaling_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_kx_scaling_group_errors(), tuple()}.
 get_kx_scaling_group(Client, EnvironmentId, ScalingGroupName)
   when is_map(Client) ->
     get_kx_scaling_group(Client, EnvironmentId, ScalingGroupName, #{}, #{}).
@@ -2588,13 +2831,7 @@ get_kx_scaling_group(Client, EnvironmentId, ScalingGroupName)
 -spec get_kx_scaling_group(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_kx_scaling_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_kx_scaling_group_errors(), tuple()}.
 get_kx_scaling_group(Client, EnvironmentId, ScalingGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_kx_scaling_group(Client, EnvironmentId, ScalingGroupName, QueryMap, HeadersMap, []).
@@ -2602,13 +2839,7 @@ get_kx_scaling_group(Client, EnvironmentId, ScalingGroupName, QueryMap, HeadersM
 -spec get_kx_scaling_group(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_kx_scaling_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_kx_scaling_group_errors(), tuple()}.
 get_kx_scaling_group(Client, EnvironmentId, ScalingGroupName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/scalingGroups/", aws_util:encode_uri(ScalingGroupName), ""],
@@ -2629,11 +2860,7 @@ get_kx_scaling_group(Client, EnvironmentId, ScalingGroupName, QueryMap, HeadersM
 -spec get_kx_user(map(), binary() | list(), binary() | list()) ->
     {ok, get_kx_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_kx_user_errors(), tuple()}.
 get_kx_user(Client, EnvironmentId, UserName)
   when is_map(Client) ->
     get_kx_user(Client, EnvironmentId, UserName, #{}, #{}).
@@ -2641,11 +2868,7 @@ get_kx_user(Client, EnvironmentId, UserName)
 -spec get_kx_user(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_kx_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_kx_user_errors(), tuple()}.
 get_kx_user(Client, EnvironmentId, UserName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_kx_user(Client, EnvironmentId, UserName, QueryMap, HeadersMap, []).
@@ -2653,11 +2876,7 @@ get_kx_user(Client, EnvironmentId, UserName, QueryMap, HeadersMap)
 -spec get_kx_user(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_kx_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_kx_user_errors(), tuple()}.
 get_kx_user(Client, EnvironmentId, UserName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/users/", aws_util:encode_uri(UserName), ""],
@@ -2679,13 +2898,7 @@ get_kx_user(Client, EnvironmentId, UserName, QueryMap, HeadersMap, Options0)
 -spec get_kx_volume(map(), binary() | list(), binary() | list()) ->
     {ok, get_kx_volume_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_kx_volume_errors(), tuple()}.
 get_kx_volume(Client, EnvironmentId, VolumeName)
   when is_map(Client) ->
     get_kx_volume(Client, EnvironmentId, VolumeName, #{}, #{}).
@@ -2693,13 +2906,7 @@ get_kx_volume(Client, EnvironmentId, VolumeName)
 -spec get_kx_volume(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_kx_volume_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_kx_volume_errors(), tuple()}.
 get_kx_volume(Client, EnvironmentId, VolumeName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_kx_volume(Client, EnvironmentId, VolumeName, QueryMap, HeadersMap, []).
@@ -2707,13 +2914,7 @@ get_kx_volume(Client, EnvironmentId, VolumeName, QueryMap, HeadersMap)
 -spec get_kx_volume(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_kx_volume_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_kx_volume_errors(), tuple()}.
 get_kx_volume(Client, EnvironmentId, VolumeName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/kxvolumes/", aws_util:encode_uri(VolumeName), ""],
@@ -2734,9 +2935,7 @@ get_kx_volume(Client, EnvironmentId, VolumeName, QueryMap, HeadersMap, Options0)
 -spec list_environments(map()) ->
     {ok, list_environments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client)
   when is_map(Client) ->
     list_environments(Client, #{}, #{}).
@@ -2744,9 +2943,7 @@ list_environments(Client)
 -spec list_environments(map(), map(), map()) ->
     {ok, list_environments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_environments(Client, QueryMap, HeadersMap, []).
@@ -2754,9 +2951,7 @@ list_environments(Client, QueryMap, HeadersMap)
 -spec list_environments(map(), map(), map(), proplists:proplist()) ->
     {ok, list_environments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environment"],
@@ -2782,11 +2977,7 @@ list_environments(Client, QueryMap, HeadersMap, Options0)
 -spec list_kx_changesets(map(), binary() | list(), binary() | list()) ->
     {ok, list_kx_changesets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_kx_changesets_errors(), tuple()}.
 list_kx_changesets(Client, DatabaseName, EnvironmentId)
   when is_map(Client) ->
     list_kx_changesets(Client, DatabaseName, EnvironmentId, #{}, #{}).
@@ -2794,11 +2985,7 @@ list_kx_changesets(Client, DatabaseName, EnvironmentId)
 -spec list_kx_changesets(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_kx_changesets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_kx_changesets_errors(), tuple()}.
 list_kx_changesets(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_kx_changesets(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap, []).
@@ -2806,11 +2993,7 @@ list_kx_changesets(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap)
 -spec list_kx_changesets(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_kx_changesets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_kx_changesets_errors(), tuple()}.
 list_kx_changesets(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), "/changesets"],
@@ -2836,12 +3019,7 @@ list_kx_changesets(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap, Op
 -spec list_kx_cluster_nodes(map(), binary() | list(), binary() | list()) ->
     {ok, list_kx_cluster_nodes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_kx_cluster_nodes_errors(), tuple()}.
 list_kx_cluster_nodes(Client, ClusterName, EnvironmentId)
   when is_map(Client) ->
     list_kx_cluster_nodes(Client, ClusterName, EnvironmentId, #{}, #{}).
@@ -2849,12 +3027,7 @@ list_kx_cluster_nodes(Client, ClusterName, EnvironmentId)
 -spec list_kx_cluster_nodes(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_kx_cluster_nodes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_kx_cluster_nodes_errors(), tuple()}.
 list_kx_cluster_nodes(Client, ClusterName, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_kx_cluster_nodes(Client, ClusterName, EnvironmentId, QueryMap, HeadersMap, []).
@@ -2862,12 +3035,7 @@ list_kx_cluster_nodes(Client, ClusterName, EnvironmentId, QueryMap, HeadersMap)
 -spec list_kx_cluster_nodes(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_kx_cluster_nodes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_kx_cluster_nodes_errors(), tuple()}.
 list_kx_cluster_nodes(Client, ClusterName, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/clusters/", aws_util:encode_uri(ClusterName), "/nodes"],
@@ -2893,13 +3061,7 @@ list_kx_cluster_nodes(Client, ClusterName, EnvironmentId, QueryMap, HeadersMap, 
 -spec list_kx_clusters(map(), binary() | list()) ->
     {ok, list_kx_clusters_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_kx_clusters_errors(), tuple()}.
 list_kx_clusters(Client, EnvironmentId)
   when is_map(Client) ->
     list_kx_clusters(Client, EnvironmentId, #{}, #{}).
@@ -2907,13 +3069,7 @@ list_kx_clusters(Client, EnvironmentId)
 -spec list_kx_clusters(map(), binary() | list(), map(), map()) ->
     {ok, list_kx_clusters_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_kx_clusters_errors(), tuple()}.
 list_kx_clusters(Client, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_kx_clusters(Client, EnvironmentId, QueryMap, HeadersMap, []).
@@ -2921,13 +3077,7 @@ list_kx_clusters(Client, EnvironmentId, QueryMap, HeadersMap)
 -spec list_kx_clusters(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_kx_clusters_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_kx_clusters_errors(), tuple()}.
 list_kx_clusters(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/clusters"],
@@ -2954,11 +3104,7 @@ list_kx_clusters(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
 -spec list_kx_databases(map(), binary() | list()) ->
     {ok, list_kx_databases_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_kx_databases_errors(), tuple()}.
 list_kx_databases(Client, EnvironmentId)
   when is_map(Client) ->
     list_kx_databases(Client, EnvironmentId, #{}, #{}).
@@ -2966,11 +3112,7 @@ list_kx_databases(Client, EnvironmentId)
 -spec list_kx_databases(map(), binary() | list(), map(), map()) ->
     {ok, list_kx_databases_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_kx_databases_errors(), tuple()}.
 list_kx_databases(Client, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_kx_databases(Client, EnvironmentId, QueryMap, HeadersMap, []).
@@ -2978,11 +3120,7 @@ list_kx_databases(Client, EnvironmentId, QueryMap, HeadersMap)
 -spec list_kx_databases(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_kx_databases_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_kx_databases_errors(), tuple()}.
 list_kx_databases(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases"],
@@ -3009,11 +3147,7 @@ list_kx_databases(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
 -spec list_kx_dataviews(map(), binary() | list(), binary() | list()) ->
     {ok, list_kx_dataviews_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_kx_dataviews_errors(), tuple()}.
 list_kx_dataviews(Client, DatabaseName, EnvironmentId)
   when is_map(Client) ->
     list_kx_dataviews(Client, DatabaseName, EnvironmentId, #{}, #{}).
@@ -3021,11 +3155,7 @@ list_kx_dataviews(Client, DatabaseName, EnvironmentId)
 -spec list_kx_dataviews(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_kx_dataviews_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_kx_dataviews_errors(), tuple()}.
 list_kx_dataviews(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_kx_dataviews(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap, []).
@@ -3033,11 +3163,7 @@ list_kx_dataviews(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap)
 -spec list_kx_dataviews(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_kx_dataviews_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_kx_dataviews_errors(), tuple()}.
 list_kx_dataviews(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), "/dataviews"],
@@ -3063,9 +3189,7 @@ list_kx_dataviews(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap, Opt
 -spec list_kx_environments(map()) ->
     {ok, list_kx_environments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_kx_environments_errors(), tuple()}.
 list_kx_environments(Client)
   when is_map(Client) ->
     list_kx_environments(Client, #{}, #{}).
@@ -3073,9 +3197,7 @@ list_kx_environments(Client)
 -spec list_kx_environments(map(), map(), map()) ->
     {ok, list_kx_environments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_kx_environments_errors(), tuple()}.
 list_kx_environments(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_kx_environments(Client, QueryMap, HeadersMap, []).
@@ -3083,9 +3205,7 @@ list_kx_environments(Client, QueryMap, HeadersMap)
 -spec list_kx_environments(map(), map(), map(), proplists:proplist()) ->
     {ok, list_kx_environments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_kx_environments_errors(), tuple()}.
 list_kx_environments(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments"],
@@ -3112,13 +3232,7 @@ list_kx_environments(Client, QueryMap, HeadersMap, Options0)
 -spec list_kx_scaling_groups(map(), binary() | list()) ->
     {ok, list_kx_scaling_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_kx_scaling_groups_errors(), tuple()}.
 list_kx_scaling_groups(Client, EnvironmentId)
   when is_map(Client) ->
     list_kx_scaling_groups(Client, EnvironmentId, #{}, #{}).
@@ -3126,13 +3240,7 @@ list_kx_scaling_groups(Client, EnvironmentId)
 -spec list_kx_scaling_groups(map(), binary() | list(), map(), map()) ->
     {ok, list_kx_scaling_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_kx_scaling_groups_errors(), tuple()}.
 list_kx_scaling_groups(Client, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_kx_scaling_groups(Client, EnvironmentId, QueryMap, HeadersMap, []).
@@ -3140,13 +3248,7 @@ list_kx_scaling_groups(Client, EnvironmentId, QueryMap, HeadersMap)
 -spec list_kx_scaling_groups(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_kx_scaling_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_kx_scaling_groups_errors(), tuple()}.
 list_kx_scaling_groups(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/scalingGroups"],
@@ -3172,11 +3274,7 @@ list_kx_scaling_groups(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
 -spec list_kx_users(map(), binary() | list()) ->
     {ok, list_kx_users_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_kx_users_errors(), tuple()}.
 list_kx_users(Client, EnvironmentId)
   when is_map(Client) ->
     list_kx_users(Client, EnvironmentId, #{}, #{}).
@@ -3184,11 +3282,7 @@ list_kx_users(Client, EnvironmentId)
 -spec list_kx_users(map(), binary() | list(), map(), map()) ->
     {ok, list_kx_users_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_kx_users_errors(), tuple()}.
 list_kx_users(Client, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_kx_users(Client, EnvironmentId, QueryMap, HeadersMap, []).
@@ -3196,11 +3290,7 @@ list_kx_users(Client, EnvironmentId, QueryMap, HeadersMap)
 -spec list_kx_users(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_kx_users_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_kx_users_errors(), tuple()}.
 list_kx_users(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/users"],
@@ -3227,13 +3317,7 @@ list_kx_users(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
 -spec list_kx_volumes(map(), binary() | list()) ->
     {ok, list_kx_volumes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_kx_volumes_errors(), tuple()}.
 list_kx_volumes(Client, EnvironmentId)
   when is_map(Client) ->
     list_kx_volumes(Client, EnvironmentId, #{}, #{}).
@@ -3241,13 +3325,7 @@ list_kx_volumes(Client, EnvironmentId)
 -spec list_kx_volumes(map(), binary() | list(), map(), map()) ->
     {ok, list_kx_volumes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_kx_volumes_errors(), tuple()}.
 list_kx_volumes(Client, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_kx_volumes(Client, EnvironmentId, QueryMap, HeadersMap, []).
@@ -3255,13 +3333,7 @@ list_kx_volumes(Client, EnvironmentId, QueryMap, HeadersMap)
 -spec list_kx_volumes(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_kx_volumes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_kx_volumes_errors(), tuple()}.
 list_kx_volumes(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/kxvolumes"],
@@ -3288,9 +3360,7 @@ list_kx_volumes(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -3298,9 +3368,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -3308,9 +3376,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -3331,18 +3397,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -3369,18 +3431,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -3408,22 +3466,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_environment(map(), binary() | list(), update_environment_request()) ->
     {ok, update_environment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_environment_errors(), tuple()}.
 update_environment(Client, EnvironmentId, Input) ->
     update_environment(Client, EnvironmentId, Input, []).
 
 -spec update_environment(map(), binary() | list(), update_environment_request(), proplists:proplist()) ->
     {ok, update_environment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_environment_errors(), tuple()}.
 update_environment(Client, EnvironmentId, Input0, Options0) ->
     Method = put,
     Path = ["/environment/", aws_util:encode_uri(EnvironmentId), ""],
@@ -3456,26 +3506,14 @@ update_environment(Client, EnvironmentId, Input0, Options0) ->
 -spec update_kx_cluster_code_configuration(map(), binary() | list(), binary() | list(), update_kx_cluster_code_configuration_request()) ->
     {ok, update_kx_cluster_code_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_kx_cluster_code_configuration_errors(), tuple()}.
 update_kx_cluster_code_configuration(Client, ClusterName, EnvironmentId, Input) ->
     update_kx_cluster_code_configuration(Client, ClusterName, EnvironmentId, Input, []).
 
 -spec update_kx_cluster_code_configuration(map(), binary() | list(), binary() | list(), update_kx_cluster_code_configuration_request(), proplists:proplist()) ->
     {ok, update_kx_cluster_code_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_kx_cluster_code_configuration_errors(), tuple()}.
 update_kx_cluster_code_configuration(Client, ClusterName, EnvironmentId, Input0, Options0) ->
     Method = put,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/clusters/", aws_util:encode_uri(ClusterName), "/configuration/code"],
@@ -3509,26 +3547,14 @@ update_kx_cluster_code_configuration(Client, ClusterName, EnvironmentId, Input0,
 -spec update_kx_cluster_databases(map(), binary() | list(), binary() | list(), update_kx_cluster_databases_request()) ->
     {ok, update_kx_cluster_databases_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_kx_cluster_databases_errors(), tuple()}.
 update_kx_cluster_databases(Client, ClusterName, EnvironmentId, Input) ->
     update_kx_cluster_databases(Client, ClusterName, EnvironmentId, Input, []).
 
 -spec update_kx_cluster_databases(map(), binary() | list(), binary() | list(), update_kx_cluster_databases_request(), proplists:proplist()) ->
     {ok, update_kx_cluster_databases_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_kx_cluster_databases_errors(), tuple()}.
 update_kx_cluster_databases(Client, ClusterName, EnvironmentId, Input0, Options0) ->
     Method = put,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/clusters/", aws_util:encode_uri(ClusterName), "/configuration/databases"],
@@ -3555,24 +3581,14 @@ update_kx_cluster_databases(Client, ClusterName, EnvironmentId, Input0, Options0
 -spec update_kx_database(map(), binary() | list(), binary() | list(), update_kx_database_request()) ->
     {ok, update_kx_database_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_kx_database_errors(), tuple()}.
 update_kx_database(Client, DatabaseName, EnvironmentId, Input) ->
     update_kx_database(Client, DatabaseName, EnvironmentId, Input, []).
 
 -spec update_kx_database(map(), binary() | list(), binary() | list(), update_kx_database_request(), proplists:proplist()) ->
     {ok, update_kx_database_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_kx_database_errors(), tuple()}.
 update_kx_database(Client, DatabaseName, EnvironmentId, Input0, Options0) ->
     Method = put,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), ""],
@@ -3604,26 +3620,14 @@ update_kx_database(Client, DatabaseName, EnvironmentId, Input0, Options0) ->
 -spec update_kx_dataview(map(), binary() | list(), binary() | list(), binary() | list(), update_kx_dataview_request()) ->
     {ok, update_kx_dataview_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_kx_dataview_errors(), tuple()}.
 update_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, Input) ->
     update_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, Input, []).
 
 -spec update_kx_dataview(map(), binary() | list(), binary() | list(), binary() | list(), update_kx_dataview_request(), proplists:proplist()) ->
     {ok, update_kx_dataview_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_kx_dataview_errors(), tuple()}.
 update_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, Input0, Options0) ->
     Method = put,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), "/dataviews/", aws_util:encode_uri(DataviewName), ""],
@@ -3650,24 +3654,14 @@ update_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, Input0, Op
 -spec update_kx_environment(map(), binary() | list(), update_kx_environment_request()) ->
     {ok, update_kx_environment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_kx_environment_errors(), tuple()}.
 update_kx_environment(Client, EnvironmentId, Input) ->
     update_kx_environment(Client, EnvironmentId, Input, []).
 
 -spec update_kx_environment(map(), binary() | list(), update_kx_environment_request(), proplists:proplist()) ->
     {ok, update_kx_environment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_kx_environment_errors(), tuple()}.
 update_kx_environment(Client, EnvironmentId, Input0, Options0) ->
     Method = put,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), ""],
@@ -3703,24 +3697,14 @@ update_kx_environment(Client, EnvironmentId, Input0, Options0) ->
 -spec update_kx_environment_network(map(), binary() | list(), update_kx_environment_network_request()) ->
     {ok, update_kx_environment_network_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_kx_environment_network_errors(), tuple()}.
 update_kx_environment_network(Client, EnvironmentId, Input) ->
     update_kx_environment_network(Client, EnvironmentId, Input, []).
 
 -spec update_kx_environment_network(map(), binary() | list(), update_kx_environment_network_request(), proplists:proplist()) ->
     {ok, update_kx_environment_network_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_kx_environment_network_errors(), tuple()}.
 update_kx_environment_network(Client, EnvironmentId, Input0, Options0) ->
     Method = put,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/network"],
@@ -3749,26 +3733,14 @@ update_kx_environment_network(Client, EnvironmentId, Input0, Options0) ->
 -spec update_kx_user(map(), binary() | list(), binary() | list(), update_kx_user_request()) ->
     {ok, update_kx_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_kx_user_errors(), tuple()}.
 update_kx_user(Client, EnvironmentId, UserName, Input) ->
     update_kx_user(Client, EnvironmentId, UserName, Input, []).
 
 -spec update_kx_user(map(), binary() | list(), binary() | list(), update_kx_user_request(), proplists:proplist()) ->
     {ok, update_kx_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_kx_user_errors(), tuple()}.
 update_kx_user(Client, EnvironmentId, UserName, Input0, Options0) ->
     Method = put,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/users/", aws_util:encode_uri(UserName), ""],
@@ -3800,26 +3772,14 @@ update_kx_user(Client, EnvironmentId, UserName, Input0, Options0) ->
 -spec update_kx_volume(map(), binary() | list(), binary() | list(), update_kx_volume_request()) ->
     {ok, update_kx_volume_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_kx_volume_errors(), tuple()}.
 update_kx_volume(Client, EnvironmentId, VolumeName, Input) ->
     update_kx_volume(Client, EnvironmentId, VolumeName, Input, []).
 
 -spec update_kx_volume(map(), binary() | list(), binary() | list(), update_kx_volume_request(), proplists:proplist()) ->
     {ok, update_kx_volume_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_kx_volume_errors(), tuple()}.
 update_kx_volume(Client, EnvironmentId, VolumeName, Input0, Options0) ->
     Method = patch,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/kxvolumes/", aws_util:encode_uri(VolumeName), ""],

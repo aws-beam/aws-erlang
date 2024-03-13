@@ -426,6 +426,179 @@
 %% }
 -type migration_task() :: #{binary() => any()}.
 
+-type associate_created_artifact_errors() ::
+    home_region_not_set_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    service_unavailable_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    dry_run_operation() | 
+    unauthorized_operation().
+
+-type associate_discovered_resource_errors() ::
+    home_region_not_set_exception() | 
+    throttling_exception() | 
+    policy_error_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    service_unavailable_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    dry_run_operation() | 
+    unauthorized_operation().
+
+-type create_progress_update_stream_errors() ::
+    home_region_not_set_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    service_unavailable_exception() | 
+    invalid_input_exception() | 
+    dry_run_operation() | 
+    unauthorized_operation().
+
+-type delete_progress_update_stream_errors() ::
+    home_region_not_set_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    service_unavailable_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    dry_run_operation() | 
+    unauthorized_operation().
+
+-type describe_application_state_errors() ::
+    home_region_not_set_exception() | 
+    throttling_exception() | 
+    policy_error_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    service_unavailable_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type describe_migration_task_errors() ::
+    home_region_not_set_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    service_unavailable_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type disassociate_created_artifact_errors() ::
+    home_region_not_set_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    service_unavailable_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    dry_run_operation() | 
+    unauthorized_operation().
+
+-type disassociate_discovered_resource_errors() ::
+    home_region_not_set_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    service_unavailable_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    dry_run_operation() | 
+    unauthorized_operation().
+
+-type import_migration_task_errors() ::
+    home_region_not_set_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    service_unavailable_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    dry_run_operation() | 
+    unauthorized_operation().
+
+-type list_application_states_errors() ::
+    home_region_not_set_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    service_unavailable_exception() | 
+    invalid_input_exception().
+
+-type list_created_artifacts_errors() ::
+    home_region_not_set_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    service_unavailable_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type list_discovered_resources_errors() ::
+    home_region_not_set_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    service_unavailable_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type list_migration_tasks_errors() ::
+    home_region_not_set_exception() | 
+    throttling_exception() | 
+    policy_error_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    service_unavailable_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type list_progress_update_streams_errors() ::
+    home_region_not_set_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    service_unavailable_exception() | 
+    invalid_input_exception().
+
+-type notify_application_state_errors() ::
+    home_region_not_set_exception() | 
+    throttling_exception() | 
+    policy_error_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    service_unavailable_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    dry_run_operation() | 
+    unauthorized_operation().
+
+-type notify_migration_task_state_errors() ::
+    home_region_not_set_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    service_unavailable_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    dry_run_operation() | 
+    unauthorized_operation().
+
+-type put_resource_attributes_errors() ::
+    home_region_not_set_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    service_unavailable_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    dry_run_operation() | 
+    unauthorized_operation().
 
 %%====================================================================
 %% API
@@ -452,15 +625,7 @@
 -spec associate_created_artifact(map(), associate_created_artifact_request()) ->
     {ok, associate_created_artifact_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, dry_run_operation(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, associate_created_artifact_errors(), tuple()}.
 associate_created_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_created_artifact(Client, Input, []).
@@ -468,15 +633,7 @@ associate_created_artifact(Client, Input)
 -spec associate_created_artifact(map(), associate_created_artifact_request(), proplists:proplist()) ->
     {ok, associate_created_artifact_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, dry_run_operation(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, associate_created_artifact_errors(), tuple()}.
 associate_created_artifact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateCreatedArtifact">>, Input, Options).
@@ -487,16 +644,7 @@ associate_created_artifact(Client, Input, Options)
 -spec associate_discovered_resource(map(), associate_discovered_resource_request()) ->
     {ok, associate_discovered_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, dry_run_operation(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, policy_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, associate_discovered_resource_errors(), tuple()}.
 associate_discovered_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_discovered_resource(Client, Input, []).
@@ -504,16 +652,7 @@ associate_discovered_resource(Client, Input)
 -spec associate_discovered_resource(map(), associate_discovered_resource_request(), proplists:proplist()) ->
     {ok, associate_discovered_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, dry_run_operation(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, policy_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, associate_discovered_resource_errors(), tuple()}.
 associate_discovered_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateDiscoveredResource">>, Input, Options).
@@ -531,14 +670,7 @@ associate_discovered_resource(Client, Input, Options)
 -spec create_progress_update_stream(map(), create_progress_update_stream_request()) ->
     {ok, create_progress_update_stream_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, dry_run_operation(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, create_progress_update_stream_errors(), tuple()}.
 create_progress_update_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_progress_update_stream(Client, Input, []).
@@ -546,14 +678,7 @@ create_progress_update_stream(Client, Input)
 -spec create_progress_update_stream(map(), create_progress_update_stream_request(), proplists:proplist()) ->
     {ok, create_progress_update_stream_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, dry_run_operation(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, create_progress_update_stream_errors(), tuple()}.
 create_progress_update_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateProgressUpdateStream">>, Input, Options).
@@ -591,15 +716,7 @@ create_progress_update_stream(Client, Input, Options)
 -spec delete_progress_update_stream(map(), delete_progress_update_stream_request()) ->
     {ok, delete_progress_update_stream_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, dry_run_operation(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, delete_progress_update_stream_errors(), tuple()}.
 delete_progress_update_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_progress_update_stream(Client, Input, []).
@@ -607,15 +724,7 @@ delete_progress_update_stream(Client, Input)
 -spec delete_progress_update_stream(map(), delete_progress_update_stream_request(), proplists:proplist()) ->
     {ok, delete_progress_update_stream_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, dry_run_operation(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, delete_progress_update_stream_errors(), tuple()}.
 delete_progress_update_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProgressUpdateStream">>, Input, Options).
@@ -624,14 +733,7 @@ delete_progress_update_stream(Client, Input, Options)
 -spec describe_application_state(map(), describe_application_state_request()) ->
     {ok, describe_application_state_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, policy_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_application_state_errors(), tuple()}.
 describe_application_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_application_state(Client, Input, []).
@@ -639,14 +741,7 @@ describe_application_state(Client, Input)
 -spec describe_application_state(map(), describe_application_state_request(), proplists:proplist()) ->
     {ok, describe_application_state_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, policy_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_application_state_errors(), tuple()}.
 describe_application_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeApplicationState">>, Input, Options).
@@ -656,13 +751,7 @@ describe_application_state(Client, Input, Options)
 -spec describe_migration_task(map(), describe_migration_task_request()) ->
     {ok, describe_migration_task_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_migration_task_errors(), tuple()}.
 describe_migration_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_migration_task(Client, Input, []).
@@ -670,13 +759,7 @@ describe_migration_task(Client, Input)
 -spec describe_migration_task(map(), describe_migration_task_request(), proplists:proplist()) ->
     {ok, describe_migration_task_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_migration_task_errors(), tuple()}.
 describe_migration_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMigrationTask">>, Input, Options).
@@ -701,15 +784,7 @@ describe_migration_task(Client, Input, Options)
 -spec disassociate_created_artifact(map(), disassociate_created_artifact_request()) ->
     {ok, disassociate_created_artifact_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, dry_run_operation(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, disassociate_created_artifact_errors(), tuple()}.
 disassociate_created_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_created_artifact(Client, Input, []).
@@ -717,15 +792,7 @@ disassociate_created_artifact(Client, Input)
 -spec disassociate_created_artifact(map(), disassociate_created_artifact_request(), proplists:proplist()) ->
     {ok, disassociate_created_artifact_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, dry_run_operation(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, disassociate_created_artifact_errors(), tuple()}.
 disassociate_created_artifact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateCreatedArtifact">>, Input, Options).
@@ -736,15 +803,7 @@ disassociate_created_artifact(Client, Input, Options)
 -spec disassociate_discovered_resource(map(), disassociate_discovered_resource_request()) ->
     {ok, disassociate_discovered_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, dry_run_operation(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, disassociate_discovered_resource_errors(), tuple()}.
 disassociate_discovered_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_discovered_resource(Client, Input, []).
@@ -752,15 +811,7 @@ disassociate_discovered_resource(Client, Input)
 -spec disassociate_discovered_resource(map(), disassociate_discovered_resource_request(), proplists:proplist()) ->
     {ok, disassociate_discovered_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, dry_run_operation(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, disassociate_discovered_resource_errors(), tuple()}.
 disassociate_discovered_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateDiscoveredResource">>, Input, Options).
@@ -776,15 +827,7 @@ disassociate_discovered_resource(Client, Input, Options)
 -spec import_migration_task(map(), import_migration_task_request()) ->
     {ok, import_migration_task_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, dry_run_operation(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, import_migration_task_errors(), tuple()}.
 import_migration_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_migration_task(Client, Input, []).
@@ -792,15 +835,7 @@ import_migration_task(Client, Input)
 -spec import_migration_task(map(), import_migration_task_request(), proplists:proplist()) ->
     {ok, import_migration_task_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, dry_run_operation(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, import_migration_task_errors(), tuple()}.
 import_migration_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportMigrationTask">>, Input, Options).
@@ -813,12 +848,7 @@ import_migration_task(Client, Input, Options)
 -spec list_application_states(map(), list_application_states_request()) ->
     {ok, list_application_states_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_application_states_errors(), tuple()}.
 list_application_states(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_application_states(Client, Input, []).
@@ -826,12 +856,7 @@ list_application_states(Client, Input)
 -spec list_application_states(map(), list_application_states_request(), proplists:proplist()) ->
     {ok, list_application_states_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_application_states_errors(), tuple()}.
 list_application_states(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApplicationStates">>, Input, Options).
@@ -853,13 +878,7 @@ list_application_states(Client, Input, Options)
 -spec list_created_artifacts(map(), list_created_artifacts_request()) ->
     {ok, list_created_artifacts_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_created_artifacts_errors(), tuple()}.
 list_created_artifacts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_created_artifacts(Client, Input, []).
@@ -867,13 +886,7 @@ list_created_artifacts(Client, Input)
 -spec list_created_artifacts(map(), list_created_artifacts_request(), proplists:proplist()) ->
     {ok, list_created_artifacts_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_created_artifacts_errors(), tuple()}.
 list_created_artifacts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCreatedArtifacts">>, Input, Options).
@@ -883,13 +896,7 @@ list_created_artifacts(Client, Input, Options)
 -spec list_discovered_resources(map(), list_discovered_resources_request()) ->
     {ok, list_discovered_resources_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_discovered_resources_errors(), tuple()}.
 list_discovered_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_discovered_resources(Client, Input, []).
@@ -897,13 +904,7 @@ list_discovered_resources(Client, Input)
 -spec list_discovered_resources(map(), list_discovered_resources_request(), proplists:proplist()) ->
     {ok, list_discovered_resources_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_discovered_resources_errors(), tuple()}.
 list_discovered_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDiscoveredResources">>, Input, Options).
@@ -924,14 +925,7 @@ list_discovered_resources(Client, Input, Options)
 -spec list_migration_tasks(map(), list_migration_tasks_request()) ->
     {ok, list_migration_tasks_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, policy_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_migration_tasks_errors(), tuple()}.
 list_migration_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_migration_tasks(Client, Input, []).
@@ -939,14 +933,7 @@ list_migration_tasks(Client, Input)
 -spec list_migration_tasks(map(), list_migration_tasks_request(), proplists:proplist()) ->
     {ok, list_migration_tasks_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, policy_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_migration_tasks_errors(), tuple()}.
 list_migration_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMigrationTasks">>, Input, Options).
@@ -956,12 +943,7 @@ list_migration_tasks(Client, Input, Options)
 -spec list_progress_update_streams(map(), list_progress_update_streams_request()) ->
     {ok, list_progress_update_streams_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_progress_update_streams_errors(), tuple()}.
 list_progress_update_streams(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_progress_update_streams(Client, Input, []).
@@ -969,12 +951,7 @@ list_progress_update_streams(Client, Input)
 -spec list_progress_update_streams(map(), list_progress_update_streams_request(), proplists:proplist()) ->
     {ok, list_progress_update_streams_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_progress_update_streams_errors(), tuple()}.
 list_progress_update_streams(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProgressUpdateStreams">>, Input, Options).
@@ -990,16 +967,7 @@ list_progress_update_streams(Client, Input, Options)
 -spec notify_application_state(map(), notify_application_state_request()) ->
     {ok, notify_application_state_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, dry_run_operation(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, policy_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, notify_application_state_errors(), tuple()}.
 notify_application_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     notify_application_state(Client, Input, []).
@@ -1007,16 +975,7 @@ notify_application_state(Client, Input)
 -spec notify_application_state(map(), notify_application_state_request(), proplists:proplist()) ->
     {ok, notify_application_state_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, dry_run_operation(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, policy_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, notify_application_state_errors(), tuple()}.
 notify_application_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"NotifyApplicationState">>, Input, Options).
@@ -1038,15 +997,7 @@ notify_application_state(Client, Input, Options)
 -spec notify_migration_task_state(map(), notify_migration_task_state_request()) ->
     {ok, notify_migration_task_state_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, dry_run_operation(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, notify_migration_task_state_errors(), tuple()}.
 notify_migration_task_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     notify_migration_task_state(Client, Input, []).
@@ -1054,15 +1005,7 @@ notify_migration_task_state(Client, Input)
 -spec notify_migration_task_state(map(), notify_migration_task_state_request(), proplists:proplist()) ->
     {ok, notify_migration_task_state_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, dry_run_operation(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, notify_migration_task_state_errors(), tuple()}.
 notify_migration_task_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"NotifyMigrationTaskState">>, Input, Options).
@@ -1096,15 +1039,7 @@ notify_migration_task_state(Client, Input, Options)
 -spec put_resource_attributes(map(), put_resource_attributes_request()) ->
     {ok, put_resource_attributes_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, dry_run_operation(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, put_resource_attributes_errors(), tuple()}.
 put_resource_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_attributes(Client, Input, []).
@@ -1112,15 +1047,7 @@ put_resource_attributes(Client, Input)
 -spec put_resource_attributes(map(), put_resource_attributes_request(), proplists:proplist()) ->
     {ok, put_resource_attributes_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, dry_run_operation(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, put_resource_attributes_errors(), tuple()}.
 put_resource_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResourceAttributes">>, Input, Options).

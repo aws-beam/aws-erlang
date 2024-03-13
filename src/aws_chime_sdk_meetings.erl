@@ -58,6 +58,7 @@
 %% }
 -type update_attendee_capabilities_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% notifications_configuration() :: #{
 %%   <<"LambdaFunctionArn">> => string(),
@@ -66,6 +67,7 @@
 %% }
 -type notifications_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
@@ -73,11 +75,13 @@
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_attendee_response() :: #{
 %%   <<"Attendee">> => attendee()
 %% }
 -type get_attendee_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% unauthorized_exception() :: #{
@@ -86,9 +90,11 @@
 %%   <<"RequestId">> => string()
 %% }
 -type unauthorized_exception() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% create_meeting_with_attendees_request() :: #{
@@ -105,6 +111,7 @@
 %% }
 -type create_meeting_with_attendees_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_failure_exception() :: #{
 %%   <<"Code">> => string(),
@@ -113,6 +120,7 @@
 %% }
 -type service_failure_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% forbidden_exception() :: #{
 %%   <<"Code">> => string(),
@@ -120,6 +128,7 @@
 %%   <<"RequestId">> => string()
 %% }
 -type forbidden_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% meeting() :: #{
@@ -135,11 +144,13 @@
 %% }
 -type meeting() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_meeting_response() :: #{
 %%   <<"Meeting">> => meeting()
 %% }
 -type create_meeting_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_meeting_response() :: #{
@@ -147,21 +158,25 @@
 %% }
 -type get_meeting_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 %% Example:
 %% stop_meeting_transcription_request() :: #{}
 -type stop_meeting_transcription_request() :: #{}.
+
 
 %% Example:
 %% attendee_features() :: #{
 %%   <<"MaxCount">> => integer()
 %% }
 -type attendee_features() :: #{binary() => any()}.
+
 
 %% Example:
 %% engine_transcribe_settings() :: #{
@@ -184,12 +199,14 @@
 %% }
 -type engine_transcribe_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_attendees_response() :: #{
 %%   <<"Attendees">> => list(attendee()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_attendees_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_meeting_with_attendees_response() :: #{
@@ -199,12 +216,14 @@
 %% }
 -type create_meeting_with_attendees_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% transcription_configuration() :: #{
 %%   <<"EngineTranscribeMedicalSettings">> => engine_transcribe_medical_settings(),
 %%   <<"EngineTranscribeSettings">> => engine_transcribe_settings()
 %% }
 -type transcription_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -213,9 +232,11 @@
 %%   <<"RequestId">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_meeting_request() :: #{}
 -type delete_meeting_request() :: #{}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -226,6 +247,7 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag() :: #{
 %%   <<"Key">> => string(),
@@ -233,11 +255,13 @@
 %% }
 -type tag() :: #{binary() => any()}.
 
+
 %% Example:
 %% audio_features() :: #{
 %%   <<"EchoReduction">> => list(any())
 %% }
 -type audio_features() :: #{binary() => any()}.
+
 
 %% Example:
 %% engine_transcribe_medical_settings() :: #{
@@ -249,6 +273,7 @@
 %%   <<"VocabularyName">> => string()
 %% }
 -type engine_transcribe_medical_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_meeting_request() :: #{
@@ -264,6 +289,7 @@
 %% }
 -type create_meeting_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% not_found_exception() :: #{
 %%   <<"Code">> => string(),
@@ -272,6 +298,7 @@
 %% }
 -type not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_attendee_request_item() :: #{
 %%   <<"Capabilities">> => attendee_capabilities(),
@@ -279,17 +306,20 @@
 %% }
 -type create_attendee_request_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_attendee_response() :: #{
 %%   <<"Attendee">> => attendee()
 %% }
 -type create_attendee_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"Tags">> => list(tag()())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% attendee_capabilities() :: #{
@@ -299,6 +329,7 @@
 %% }
 -type attendee_capabilities() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_unavailable_exception() :: #{
 %%   <<"Code">> => string(),
@@ -307,9 +338,11 @@
 %%   <<"RetryAfterSeconds">> => string()
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
+
 %% Example:
 %% get_meeting_request() :: #{}
 -type get_meeting_request() :: #{}.
+
 
 %% Example:
 %% create_attendee_error() :: #{
@@ -319,6 +352,7 @@
 %% }
 -type create_attendee_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% unprocessable_entity_exception() :: #{
 %%   <<"Code">> => string(),
@@ -326,18 +360,22 @@
 %%   <<"RequestId">> => string()
 %% }
 -type unprocessable_entity_exception() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 %% Example:
 %% get_attendee_request() :: #{}
 -type get_attendee_request() :: #{}.
+
 
 %% Example:
 %% attendee_id_item() :: #{
 %%   <<"AttendeeId">> => string()
 %% }
 -type attendee_id_item() :: #{binary() => any()}.
+
 
 %% Example:
 %% meeting_features_configuration() :: #{
@@ -348,11 +386,13 @@
 %% }
 -type meeting_features_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_request() :: #{
 %%   <<"ResourceARN">> := string()
 %% }
 -type list_tags_for_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% content_features() :: #{
@@ -360,17 +400,20 @@
 %% }
 -type content_features() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_attendee_capabilities_request() :: #{
 %%   <<"Capabilities">> := attendee_capabilities()
 %% }
 -type update_attendee_capabilities_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_meeting_transcription_request() :: #{
 %%   <<"TranscriptionConfiguration">> := transcription_configuration()
 %% }
 -type start_meeting_transcription_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% throttling_exception() :: #{
@@ -380,11 +423,13 @@
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_create_attendee_request() :: #{
 %%   <<"Attendees">> := list(create_attendee_request_item()())
 %% }
 -type batch_create_attendee_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_create_attendee_response() :: #{
@@ -393,6 +438,7 @@
 %% }
 -type batch_create_attendee_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_attendees_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -400,12 +446,14 @@
 %% }
 -type list_attendees_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_update_attendee_capabilities_except_request() :: #{
 %%   <<"Capabilities">> := attendee_capabilities(),
 %%   <<"ExcludedAttendeeIds">> := list(attendee_id_item()())
 %% }
 -type batch_update_attendee_capabilities_except_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% limit_exceeded_exception() :: #{
@@ -415,11 +463,13 @@
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% video_features() :: #{
 %%   <<"MaxResolution">> => list(any())
 %% }
 -type video_features() :: #{binary() => any()}.
+
 
 %% Example:
 %% attendee() :: #{
@@ -430,6 +480,7 @@
 %% }
 -type attendee() :: #{binary() => any()}.
 
+
 %% Example:
 %% bad_request_exception() :: #{
 %%   <<"Code">> => string(),
@@ -438,12 +489,14 @@
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_attendee_request() :: #{
 %%   <<"Capabilities">> => attendee_capabilities(),
 %%   <<"ExternalUserId">> := string()
 %% }
 -type create_attendee_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% media_placement() :: #{
@@ -458,6 +511,7 @@
 %% }
 -type media_placement() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_tags_exception() :: #{
 %%   <<"Code">> => string(),
@@ -466,9 +520,169 @@
 %%   <<"ResourceName">> => string()
 %% }
 -type too_many_tags_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_attendee_request() :: #{}
 -type delete_attendee_request() :: #{}.
+
+-type batch_create_attendee_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
+
+-type batch_update_attendee_capabilities_except_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
+
+-type create_attendee_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
+
+-type create_meeting_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
+
+-type create_meeting_with_attendees_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
+
+-type delete_attendee_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
+
+-type delete_meeting_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
+
+-type get_attendee_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
+
+-type get_meeting_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
+
+-type list_attendees_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
+
+-type list_tags_for_resource_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
+
+-type start_meeting_transcription_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
+
+-type stop_meeting_transcription_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
+
+-type untag_resource_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
+
+-type update_attendee_capabilities_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
 
 %%====================================================================
 %% API
@@ -483,30 +697,14 @@
 -spec batch_create_attendee(map(), binary() | list(), batch_create_attendee_request()) ->
     {ok, batch_create_attendee_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, batch_create_attendee_errors(), tuple()}.
 batch_create_attendee(Client, MeetingId, Input) ->
     batch_create_attendee(Client, MeetingId, Input, []).
 
 -spec batch_create_attendee(map(), binary() | list(), batch_create_attendee_request(), proplists:proplist()) ->
     {ok, batch_create_attendee_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, batch_create_attendee_errors(), tuple()}.
 batch_create_attendee(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees?operation=batch-create"],
@@ -572,28 +770,14 @@ batch_create_attendee(Client, MeetingId, Input0, Options0) ->
 -spec batch_update_attendee_capabilities_except(map(), binary() | list(), batch_update_attendee_capabilities_except_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, batch_update_attendee_capabilities_except_errors(), tuple()}.
 batch_update_attendee_capabilities_except(Client, MeetingId, Input) ->
     batch_update_attendee_capabilities_except(Client, MeetingId, Input, []).
 
 -spec batch_update_attendee_capabilities_except(map(), binary() | list(), batch_update_attendee_capabilities_except_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, batch_update_attendee_capabilities_except_errors(), tuple()}.
 batch_update_attendee_capabilities_except(Client, MeetingId, Input0, Options0) ->
     Method = put,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/capabilities?operation=batch-update-except"],
@@ -627,30 +811,14 @@ batch_update_attendee_capabilities_except(Client, MeetingId, Input0, Options0) -
 -spec create_attendee(map(), binary() | list(), create_attendee_request()) ->
     {ok, create_attendee_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, create_attendee_errors(), tuple()}.
 create_attendee(Client, MeetingId, Input) ->
     create_attendee(Client, MeetingId, Input, []).
 
 -spec create_attendee(map(), binary() | list(), create_attendee_request(), proplists:proplist()) ->
     {ok, create_attendee_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, create_attendee_errors(), tuple()}.
 create_attendee(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees"],
@@ -688,28 +856,14 @@ create_attendee(Client, MeetingId, Input0, Options0) ->
 -spec create_meeting(map(), create_meeting_request()) ->
     {ok, create_meeting_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_meeting_errors(), tuple()}.
 create_meeting(Client, Input) ->
     create_meeting(Client, Input, []).
 
 -spec create_meeting(map(), create_meeting_request(), proplists:proplist()) ->
     {ok, create_meeting_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_meeting_errors(), tuple()}.
 create_meeting(Client, Input0, Options0) ->
     Method = post,
     Path = ["/meetings"],
@@ -747,28 +901,14 @@ create_meeting(Client, Input0, Options0) ->
 -spec create_meeting_with_attendees(map(), create_meeting_with_attendees_request()) ->
     {ok, create_meeting_with_attendees_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_meeting_with_attendees_errors(), tuple()}.
 create_meeting_with_attendees(Client, Input) ->
     create_meeting_with_attendees(Client, Input, []).
 
 -spec create_meeting_with_attendees(map(), create_meeting_with_attendees_request(), proplists:proplist()) ->
     {ok, create_meeting_with_attendees_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, create_meeting_with_attendees_errors(), tuple()}.
 create_meeting_with_attendees(Client, Input0, Options0) ->
     Method = post,
     Path = ["/meetings?operation=create-attendees"],
@@ -803,26 +943,14 @@ create_meeting_with_attendees(Client, Input0, Options0) ->
 -spec delete_attendee(map(), binary() | list(), binary() | list(), delete_attendee_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_attendee_errors(), tuple()}.
 delete_attendee(Client, AttendeeId, MeetingId, Input) ->
     delete_attendee(Client, AttendeeId, MeetingId, Input, []).
 
 -spec delete_attendee(map(), binary() | list(), binary() | list(), delete_attendee_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_attendee_errors(), tuple()}.
 delete_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
     Method = delete,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), ""],
@@ -856,26 +984,14 @@ delete_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
 -spec delete_meeting(map(), binary() | list(), delete_meeting_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_meeting_errors(), tuple()}.
 delete_meeting(Client, MeetingId, Input) ->
     delete_meeting(Client, MeetingId, Input, []).
 
 -spec delete_meeting(map(), binary() | list(), delete_meeting_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, delete_meeting_errors(), tuple()}.
 delete_meeting(Client, MeetingId, Input0, Options0) ->
     Method = delete,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), ""],
@@ -909,13 +1025,7 @@ delete_meeting(Client, MeetingId, Input0, Options0) ->
 -spec get_attendee(map(), binary() | list(), binary() | list()) ->
     {ok, get_attendee_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_attendee_errors(), tuple()}.
 get_attendee(Client, AttendeeId, MeetingId)
   when is_map(Client) ->
     get_attendee(Client, AttendeeId, MeetingId, #{}, #{}).
@@ -923,13 +1033,7 @@ get_attendee(Client, AttendeeId, MeetingId)
 -spec get_attendee(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_attendee_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_attendee_errors(), tuple()}.
 get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, []).
@@ -937,13 +1041,7 @@ get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap)
 -spec get_attendee(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_attendee_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_attendee_errors(), tuple()}.
 get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), ""],
@@ -970,13 +1068,7 @@ get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, Options0)
 -spec get_meeting(map(), binary() | list()) ->
     {ok, get_meeting_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_meeting_errors(), tuple()}.
 get_meeting(Client, MeetingId)
   when is_map(Client) ->
     get_meeting(Client, MeetingId, #{}, #{}).
@@ -984,13 +1076,7 @@ get_meeting(Client, MeetingId)
 -spec get_meeting(map(), binary() | list(), map(), map()) ->
     {ok, get_meeting_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_meeting_errors(), tuple()}.
 get_meeting(Client, MeetingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_meeting(Client, MeetingId, QueryMap, HeadersMap, []).
@@ -998,13 +1084,7 @@ get_meeting(Client, MeetingId, QueryMap, HeadersMap)
 -spec get_meeting(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_meeting_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_meeting_errors(), tuple()}.
 get_meeting(Client, MeetingId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), ""],
@@ -1031,13 +1111,7 @@ get_meeting(Client, MeetingId, QueryMap, HeadersMap, Options0)
 -spec list_attendees(map(), binary() | list()) ->
     {ok, list_attendees_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_attendees_errors(), tuple()}.
 list_attendees(Client, MeetingId)
   when is_map(Client) ->
     list_attendees(Client, MeetingId, #{}, #{}).
@@ -1045,13 +1119,7 @@ list_attendees(Client, MeetingId)
 -spec list_attendees(map(), binary() | list(), map(), map()) ->
     {ok, list_attendees_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_attendees_errors(), tuple()}.
 list_attendees(Client, MeetingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_attendees(Client, MeetingId, QueryMap, HeadersMap, []).
@@ -1059,13 +1127,7 @@ list_attendees(Client, MeetingId, QueryMap, HeadersMap)
 -spec list_attendees(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_attendees_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_attendees_errors(), tuple()}.
 list_attendees(Client, MeetingId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees"],
@@ -1091,14 +1153,7 @@ list_attendees(Client, MeetingId, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceARN)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceARN, #{}, #{}).
@@ -1106,14 +1161,7 @@ list_tags_for_resource(Client, ResourceARN)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, []).
@@ -1121,14 +1169,7 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags"],
@@ -1185,30 +1226,14 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
 -spec start_meeting_transcription(map(), binary() | list(), start_meeting_transcription_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, start_meeting_transcription_errors(), tuple()}.
 start_meeting_transcription(Client, MeetingId, Input) ->
     start_meeting_transcription(Client, MeetingId, Input, []).
 
 -spec start_meeting_transcription(map(), binary() | list(), start_meeting_transcription_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, start_meeting_transcription_errors(), tuple()}.
 start_meeting_transcription(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/transcription?operation=start"],
@@ -1257,28 +1282,14 @@ start_meeting_transcription(Client, MeetingId, Input0, Options0) ->
 -spec stop_meeting_transcription(map(), binary() | list(), stop_meeting_transcription_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, stop_meeting_transcription_errors(), tuple()}.
 stop_meeting_transcription(Client, MeetingId, Input) ->
     stop_meeting_transcription(Client, MeetingId, Input, []).
 
 -spec stop_meeting_transcription(map(), binary() | list(), stop_meeting_transcription_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, stop_meeting_transcription_errors(), tuple()}.
 stop_meeting_transcription(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/transcription?operation=stop"],
@@ -1305,30 +1316,14 @@ stop_meeting_transcription(Client, MeetingId, Input0, Options0) ->
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags?operation=tag-resource"],
@@ -1381,28 +1376,14 @@ tag_resource(Client, Input0, Options0) ->
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags?operation=untag-resource"],
@@ -1467,28 +1448,14 @@ untag_resource(Client, Input0, Options0) ->
 -spec update_attendee_capabilities(map(), binary() | list(), binary() | list(), update_attendee_capabilities_request()) ->
     {ok, update_attendee_capabilities_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_attendee_capabilities_errors(), tuple()}.
 update_attendee_capabilities(Client, AttendeeId, MeetingId, Input) ->
     update_attendee_capabilities(Client, AttendeeId, MeetingId, Input, []).
 
 -spec update_attendee_capabilities(map(), binary() | list(), binary() | list(), update_attendee_capabilities_request(), proplists:proplist()) ->
     {ok, update_attendee_capabilities_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, update_attendee_capabilities_errors(), tuple()}.
 update_attendee_capabilities(Client, AttendeeId, MeetingId, Input0, Options0) ->
     Method = put,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), "/capabilities"],

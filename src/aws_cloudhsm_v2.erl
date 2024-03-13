@@ -367,6 +367,117 @@
 %% }
 -type describe_clusters_request() :: #{binary() => any()}.
 
+-type copy_backup_to_region_errors() ::
+    cloud_hsm_tag_exception() | 
+    cloud_hsm_service_exception() | 
+    cloud_hsm_invalid_request_exception() | 
+    cloud_hsm_internal_failure_exception() | 
+    cloud_hsm_access_denied_exception() | 
+    cloud_hsm_resource_not_found_exception().
+
+-type create_cluster_errors() ::
+    cloud_hsm_tag_exception() | 
+    cloud_hsm_service_exception() | 
+    cloud_hsm_invalid_request_exception() | 
+    cloud_hsm_internal_failure_exception() | 
+    cloud_hsm_access_denied_exception() | 
+    cloud_hsm_resource_not_found_exception().
+
+-type create_hsm_errors() ::
+    cloud_hsm_service_exception() | 
+    cloud_hsm_invalid_request_exception() | 
+    cloud_hsm_internal_failure_exception() | 
+    cloud_hsm_access_denied_exception() | 
+    cloud_hsm_resource_not_found_exception().
+
+-type delete_backup_errors() ::
+    cloud_hsm_service_exception() | 
+    cloud_hsm_invalid_request_exception() | 
+    cloud_hsm_internal_failure_exception() | 
+    cloud_hsm_access_denied_exception() | 
+    cloud_hsm_resource_not_found_exception().
+
+-type delete_cluster_errors() ::
+    cloud_hsm_tag_exception() | 
+    cloud_hsm_service_exception() | 
+    cloud_hsm_invalid_request_exception() | 
+    cloud_hsm_internal_failure_exception() | 
+    cloud_hsm_access_denied_exception() | 
+    cloud_hsm_resource_not_found_exception().
+
+-type delete_hsm_errors() ::
+    cloud_hsm_service_exception() | 
+    cloud_hsm_invalid_request_exception() | 
+    cloud_hsm_internal_failure_exception() | 
+    cloud_hsm_access_denied_exception() | 
+    cloud_hsm_resource_not_found_exception().
+
+-type describe_backups_errors() ::
+    cloud_hsm_tag_exception() | 
+    cloud_hsm_service_exception() | 
+    cloud_hsm_invalid_request_exception() | 
+    cloud_hsm_internal_failure_exception() | 
+    cloud_hsm_access_denied_exception() | 
+    cloud_hsm_resource_not_found_exception().
+
+-type describe_clusters_errors() ::
+    cloud_hsm_tag_exception() | 
+    cloud_hsm_service_exception() | 
+    cloud_hsm_invalid_request_exception() | 
+    cloud_hsm_internal_failure_exception() | 
+    cloud_hsm_access_denied_exception().
+
+-type initialize_cluster_errors() ::
+    cloud_hsm_service_exception() | 
+    cloud_hsm_invalid_request_exception() | 
+    cloud_hsm_internal_failure_exception() | 
+    cloud_hsm_access_denied_exception() | 
+    cloud_hsm_resource_not_found_exception().
+
+-type list_tags_errors() ::
+    cloud_hsm_tag_exception() | 
+    cloud_hsm_service_exception() | 
+    cloud_hsm_invalid_request_exception() | 
+    cloud_hsm_internal_failure_exception() | 
+    cloud_hsm_access_denied_exception() | 
+    cloud_hsm_resource_not_found_exception().
+
+-type modify_backup_attributes_errors() ::
+    cloud_hsm_service_exception() | 
+    cloud_hsm_invalid_request_exception() | 
+    cloud_hsm_internal_failure_exception() | 
+    cloud_hsm_access_denied_exception() | 
+    cloud_hsm_resource_not_found_exception().
+
+-type modify_cluster_errors() ::
+    cloud_hsm_service_exception() | 
+    cloud_hsm_invalid_request_exception() | 
+    cloud_hsm_internal_failure_exception() | 
+    cloud_hsm_access_denied_exception() | 
+    cloud_hsm_resource_not_found_exception().
+
+-type restore_backup_errors() ::
+    cloud_hsm_service_exception() | 
+    cloud_hsm_invalid_request_exception() | 
+    cloud_hsm_internal_failure_exception() | 
+    cloud_hsm_access_denied_exception() | 
+    cloud_hsm_resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    cloud_hsm_tag_exception() | 
+    cloud_hsm_service_exception() | 
+    cloud_hsm_invalid_request_exception() | 
+    cloud_hsm_internal_failure_exception() | 
+    cloud_hsm_access_denied_exception() | 
+    cloud_hsm_resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    cloud_hsm_tag_exception() | 
+    cloud_hsm_service_exception() | 
+    cloud_hsm_invalid_request_exception() | 
+    cloud_hsm_internal_failure_exception() | 
+    cloud_hsm_access_denied_exception() | 
+    cloud_hsm_resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -376,12 +487,7 @@
 -spec copy_backup_to_region(map(), copy_backup_to_region_request()) ->
     {ok, copy_backup_to_region_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_access_denied_exception(), tuple()} |
-    {error, cloud_hsm_internal_failure_exception(), tuple()} |
-    {error, cloud_hsm_invalid_request_exception(), tuple()} |
-    {error, cloud_hsm_resource_not_found_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, cloud_hsm_tag_exception(), tuple()}.
+    {error, copy_backup_to_region_errors(), tuple()}.
 copy_backup_to_region(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_backup_to_region(Client, Input, []).
@@ -389,12 +495,7 @@ copy_backup_to_region(Client, Input)
 -spec copy_backup_to_region(map(), copy_backup_to_region_request(), proplists:proplist()) ->
     {ok, copy_backup_to_region_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_access_denied_exception(), tuple()} |
-    {error, cloud_hsm_internal_failure_exception(), tuple()} |
-    {error, cloud_hsm_invalid_request_exception(), tuple()} |
-    {error, cloud_hsm_resource_not_found_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, cloud_hsm_tag_exception(), tuple()}.
+    {error, copy_backup_to_region_errors(), tuple()}.
 copy_backup_to_region(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopyBackupToRegion">>, Input, Options).
@@ -403,12 +504,7 @@ copy_backup_to_region(Client, Input, Options)
 -spec create_cluster(map(), create_cluster_request()) ->
     {ok, create_cluster_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_access_denied_exception(), tuple()} |
-    {error, cloud_hsm_internal_failure_exception(), tuple()} |
-    {error, cloud_hsm_invalid_request_exception(), tuple()} |
-    {error, cloud_hsm_resource_not_found_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, cloud_hsm_tag_exception(), tuple()}.
+    {error, create_cluster_errors(), tuple()}.
 create_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cluster(Client, Input, []).
@@ -416,12 +512,7 @@ create_cluster(Client, Input)
 -spec create_cluster(map(), create_cluster_request(), proplists:proplist()) ->
     {ok, create_cluster_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_access_denied_exception(), tuple()} |
-    {error, cloud_hsm_internal_failure_exception(), tuple()} |
-    {error, cloud_hsm_invalid_request_exception(), tuple()} |
-    {error, cloud_hsm_resource_not_found_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, cloud_hsm_tag_exception(), tuple()}.
+    {error, create_cluster_errors(), tuple()}.
 create_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCluster">>, Input, Options).
@@ -432,11 +523,7 @@ create_cluster(Client, Input, Options)
 -spec create_hsm(map(), create_hsm_request()) ->
     {ok, create_hsm_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_access_denied_exception(), tuple()} |
-    {error, cloud_hsm_internal_failure_exception(), tuple()} |
-    {error, cloud_hsm_invalid_request_exception(), tuple()} |
-    {error, cloud_hsm_resource_not_found_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()}.
+    {error, create_hsm_errors(), tuple()}.
 create_hsm(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hsm(Client, Input, []).
@@ -444,11 +531,7 @@ create_hsm(Client, Input)
 -spec create_hsm(map(), create_hsm_request(), proplists:proplist()) ->
     {ok, create_hsm_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_access_denied_exception(), tuple()} |
-    {error, cloud_hsm_internal_failure_exception(), tuple()} |
-    {error, cloud_hsm_invalid_request_exception(), tuple()} |
-    {error, cloud_hsm_resource_not_found_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()}.
+    {error, create_hsm_errors(), tuple()}.
 create_hsm(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHsm">>, Input, Options).
@@ -462,11 +545,7 @@ create_hsm(Client, Input, Options)
 -spec delete_backup(map(), delete_backup_request()) ->
     {ok, delete_backup_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_access_denied_exception(), tuple()} |
-    {error, cloud_hsm_internal_failure_exception(), tuple()} |
-    {error, cloud_hsm_invalid_request_exception(), tuple()} |
-    {error, cloud_hsm_resource_not_found_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()}.
+    {error, delete_backup_errors(), tuple()}.
 delete_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_backup(Client, Input, []).
@@ -474,11 +553,7 @@ delete_backup(Client, Input)
 -spec delete_backup(map(), delete_backup_request(), proplists:proplist()) ->
     {ok, delete_backup_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_access_denied_exception(), tuple()} |
-    {error, cloud_hsm_internal_failure_exception(), tuple()} |
-    {error, cloud_hsm_invalid_request_exception(), tuple()} |
-    {error, cloud_hsm_resource_not_found_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()}.
+    {error, delete_backup_errors(), tuple()}.
 delete_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBackup">>, Input, Options).
@@ -491,12 +566,7 @@ delete_backup(Client, Input, Options)
 -spec delete_cluster(map(), delete_cluster_request()) ->
     {ok, delete_cluster_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_access_denied_exception(), tuple()} |
-    {error, cloud_hsm_internal_failure_exception(), tuple()} |
-    {error, cloud_hsm_invalid_request_exception(), tuple()} |
-    {error, cloud_hsm_resource_not_found_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, cloud_hsm_tag_exception(), tuple()}.
+    {error, delete_cluster_errors(), tuple()}.
 delete_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cluster(Client, Input, []).
@@ -504,12 +574,7 @@ delete_cluster(Client, Input)
 -spec delete_cluster(map(), delete_cluster_request(), proplists:proplist()) ->
     {ok, delete_cluster_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_access_denied_exception(), tuple()} |
-    {error, cloud_hsm_internal_failure_exception(), tuple()} |
-    {error, cloud_hsm_invalid_request_exception(), tuple()} |
-    {error, cloud_hsm_resource_not_found_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, cloud_hsm_tag_exception(), tuple()}.
+    {error, delete_cluster_errors(), tuple()}.
 delete_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCluster">>, Input, Options).
@@ -524,11 +589,7 @@ delete_cluster(Client, Input, Options)
 -spec delete_hsm(map(), delete_hsm_request()) ->
     {ok, delete_hsm_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_access_denied_exception(), tuple()} |
-    {error, cloud_hsm_internal_failure_exception(), tuple()} |
-    {error, cloud_hsm_invalid_request_exception(), tuple()} |
-    {error, cloud_hsm_resource_not_found_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()}.
+    {error, delete_hsm_errors(), tuple()}.
 delete_hsm(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_hsm(Client, Input, []).
@@ -536,11 +597,7 @@ delete_hsm(Client, Input)
 -spec delete_hsm(map(), delete_hsm_request(), proplists:proplist()) ->
     {ok, delete_hsm_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_access_denied_exception(), tuple()} |
-    {error, cloud_hsm_internal_failure_exception(), tuple()} |
-    {error, cloud_hsm_invalid_request_exception(), tuple()} |
-    {error, cloud_hsm_resource_not_found_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()}.
+    {error, delete_hsm_errors(), tuple()}.
 delete_hsm(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteHsm">>, Input, Options).
@@ -559,12 +616,7 @@ delete_hsm(Client, Input, Options)
 -spec describe_backups(map(), describe_backups_request()) ->
     {ok, describe_backups_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_access_denied_exception(), tuple()} |
-    {error, cloud_hsm_internal_failure_exception(), tuple()} |
-    {error, cloud_hsm_invalid_request_exception(), tuple()} |
-    {error, cloud_hsm_resource_not_found_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, cloud_hsm_tag_exception(), tuple()}.
+    {error, describe_backups_errors(), tuple()}.
 describe_backups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_backups(Client, Input, []).
@@ -572,12 +624,7 @@ describe_backups(Client, Input)
 -spec describe_backups(map(), describe_backups_request(), proplists:proplist()) ->
     {ok, describe_backups_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_access_denied_exception(), tuple()} |
-    {error, cloud_hsm_internal_failure_exception(), tuple()} |
-    {error, cloud_hsm_invalid_request_exception(), tuple()} |
-    {error, cloud_hsm_resource_not_found_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, cloud_hsm_tag_exception(), tuple()}.
+    {error, describe_backups_errors(), tuple()}.
 describe_backups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBackups">>, Input, Options).
@@ -596,11 +643,7 @@ describe_backups(Client, Input, Options)
 -spec describe_clusters(map(), describe_clusters_request()) ->
     {ok, describe_clusters_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_access_denied_exception(), tuple()} |
-    {error, cloud_hsm_internal_failure_exception(), tuple()} |
-    {error, cloud_hsm_invalid_request_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, cloud_hsm_tag_exception(), tuple()}.
+    {error, describe_clusters_errors(), tuple()}.
 describe_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_clusters(Client, Input, []).
@@ -608,11 +651,7 @@ describe_clusters(Client, Input)
 -spec describe_clusters(map(), describe_clusters_request(), proplists:proplist()) ->
     {ok, describe_clusters_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_access_denied_exception(), tuple()} |
-    {error, cloud_hsm_internal_failure_exception(), tuple()} |
-    {error, cloud_hsm_invalid_request_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, cloud_hsm_tag_exception(), tuple()}.
+    {error, describe_clusters_errors(), tuple()}.
 describe_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClusters">>, Input, Options).
@@ -628,11 +667,7 @@ describe_clusters(Client, Input, Options)
 -spec initialize_cluster(map(), initialize_cluster_request()) ->
     {ok, initialize_cluster_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_access_denied_exception(), tuple()} |
-    {error, cloud_hsm_internal_failure_exception(), tuple()} |
-    {error, cloud_hsm_invalid_request_exception(), tuple()} |
-    {error, cloud_hsm_resource_not_found_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()}.
+    {error, initialize_cluster_errors(), tuple()}.
 initialize_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     initialize_cluster(Client, Input, []).
@@ -640,11 +675,7 @@ initialize_cluster(Client, Input)
 -spec initialize_cluster(map(), initialize_cluster_request(), proplists:proplist()) ->
     {ok, initialize_cluster_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_access_denied_exception(), tuple()} |
-    {error, cloud_hsm_internal_failure_exception(), tuple()} |
-    {error, cloud_hsm_invalid_request_exception(), tuple()} |
-    {error, cloud_hsm_resource_not_found_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()}.
+    {error, initialize_cluster_errors(), tuple()}.
 initialize_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"InitializeCluster">>, Input, Options).
@@ -663,12 +694,7 @@ initialize_cluster(Client, Input, Options)
 -spec list_tags(map(), list_tags_request()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_access_denied_exception(), tuple()} |
-    {error, cloud_hsm_internal_failure_exception(), tuple()} |
-    {error, cloud_hsm_invalid_request_exception(), tuple()} |
-    {error, cloud_hsm_resource_not_found_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, cloud_hsm_tag_exception(), tuple()}.
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags(Client, Input, []).
@@ -676,12 +702,7 @@ list_tags(Client, Input)
 -spec list_tags(map(), list_tags_request(), proplists:proplist()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_access_denied_exception(), tuple()} |
-    {error, cloud_hsm_internal_failure_exception(), tuple()} |
-    {error, cloud_hsm_invalid_request_exception(), tuple()} |
-    {error, cloud_hsm_resource_not_found_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, cloud_hsm_tag_exception(), tuple()}.
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTags">>, Input, Options).
@@ -690,11 +711,7 @@ list_tags(Client, Input, Options)
 -spec modify_backup_attributes(map(), modify_backup_attributes_request()) ->
     {ok, modify_backup_attributes_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_access_denied_exception(), tuple()} |
-    {error, cloud_hsm_internal_failure_exception(), tuple()} |
-    {error, cloud_hsm_invalid_request_exception(), tuple()} |
-    {error, cloud_hsm_resource_not_found_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()}.
+    {error, modify_backup_attributes_errors(), tuple()}.
 modify_backup_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_backup_attributes(Client, Input, []).
@@ -702,11 +719,7 @@ modify_backup_attributes(Client, Input)
 -spec modify_backup_attributes(map(), modify_backup_attributes_request(), proplists:proplist()) ->
     {ok, modify_backup_attributes_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_access_denied_exception(), tuple()} |
-    {error, cloud_hsm_internal_failure_exception(), tuple()} |
-    {error, cloud_hsm_invalid_request_exception(), tuple()} |
-    {error, cloud_hsm_resource_not_found_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()}.
+    {error, modify_backup_attributes_errors(), tuple()}.
 modify_backup_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyBackupAttributes">>, Input, Options).
@@ -715,11 +728,7 @@ modify_backup_attributes(Client, Input, Options)
 -spec modify_cluster(map(), modify_cluster_request()) ->
     {ok, modify_cluster_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_access_denied_exception(), tuple()} |
-    {error, cloud_hsm_internal_failure_exception(), tuple()} |
-    {error, cloud_hsm_invalid_request_exception(), tuple()} |
-    {error, cloud_hsm_resource_not_found_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()}.
+    {error, modify_cluster_errors(), tuple()}.
 modify_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_cluster(Client, Input, []).
@@ -727,11 +736,7 @@ modify_cluster(Client, Input)
 -spec modify_cluster(map(), modify_cluster_request(), proplists:proplist()) ->
     {ok, modify_cluster_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_access_denied_exception(), tuple()} |
-    {error, cloud_hsm_internal_failure_exception(), tuple()} |
-    {error, cloud_hsm_invalid_request_exception(), tuple()} |
-    {error, cloud_hsm_resource_not_found_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()}.
+    {error, modify_cluster_errors(), tuple()}.
 modify_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyCluster">>, Input, Options).
@@ -744,11 +749,7 @@ modify_cluster(Client, Input, Options)
 -spec restore_backup(map(), restore_backup_request()) ->
     {ok, restore_backup_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_access_denied_exception(), tuple()} |
-    {error, cloud_hsm_internal_failure_exception(), tuple()} |
-    {error, cloud_hsm_invalid_request_exception(), tuple()} |
-    {error, cloud_hsm_resource_not_found_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()}.
+    {error, restore_backup_errors(), tuple()}.
 restore_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_backup(Client, Input, []).
@@ -756,11 +757,7 @@ restore_backup(Client, Input)
 -spec restore_backup(map(), restore_backup_request(), proplists:proplist()) ->
     {ok, restore_backup_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_access_denied_exception(), tuple()} |
-    {error, cloud_hsm_internal_failure_exception(), tuple()} |
-    {error, cloud_hsm_invalid_request_exception(), tuple()} |
-    {error, cloud_hsm_resource_not_found_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()}.
+    {error, restore_backup_errors(), tuple()}.
 restore_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreBackup">>, Input, Options).
@@ -770,12 +767,7 @@ restore_backup(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_access_denied_exception(), tuple()} |
-    {error, cloud_hsm_internal_failure_exception(), tuple()} |
-    {error, cloud_hsm_invalid_request_exception(), tuple()} |
-    {error, cloud_hsm_resource_not_found_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, cloud_hsm_tag_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -783,12 +775,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_access_denied_exception(), tuple()} |
-    {error, cloud_hsm_internal_failure_exception(), tuple()} |
-    {error, cloud_hsm_invalid_request_exception(), tuple()} |
-    {error, cloud_hsm_resource_not_found_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, cloud_hsm_tag_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -798,12 +785,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_access_denied_exception(), tuple()} |
-    {error, cloud_hsm_internal_failure_exception(), tuple()} |
-    {error, cloud_hsm_invalid_request_exception(), tuple()} |
-    {error, cloud_hsm_resource_not_found_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, cloud_hsm_tag_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -811,12 +793,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_access_denied_exception(), tuple()} |
-    {error, cloud_hsm_internal_failure_exception(), tuple()} |
-    {error, cloud_hsm_invalid_request_exception(), tuple()} |
-    {error, cloud_hsm_resource_not_found_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, cloud_hsm_tag_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).

@@ -39,6 +39,7 @@
 %% }
 -type issue_detected() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_medical_stream_transcription_request() :: #{
 %%   <<"AudioStream">> := list(),
@@ -56,17 +57,20 @@
 %% }
 -type start_medical_stream_transcription_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_failure_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_failure_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% points_of_interest() :: #{
 %%   <<"TimestampRanges">> => list(timestamp_range()())
 %% }
 -type points_of_interest() :: #{binary() => any()}.
+
 
 %% Example:
 %% entity() :: #{
@@ -79,6 +83,7 @@
 %% }
 -type entity() :: #{binary() => any()}.
 
+
 %% Example:
 %% character_offsets() :: #{
 %%   <<"Begin">> => integer(),
@@ -86,11 +91,13 @@
 %% }
 -type character_offsets() :: #{binary() => any()}.
 
+
 %% Example:
 %% audio_event() :: #{
 %%   <<"AudioChunk">> => binary()
 %% }
 -type audio_event() :: #{binary() => any()}.
+
 
 %% Example:
 %% medical_alternative() :: #{
@@ -100,12 +107,14 @@
 %% }
 -type medical_alternative() :: #{binary() => any()}.
 
+
 %% Example:
 %% category_event() :: #{
 %%   <<"MatchedCategories">> => list(string()()),
 %%   <<"MatchedDetails">> => map()
 %% }
 -type category_event() :: #{binary() => any()}.
+
 
 %% Example:
 %% language_with_score() :: #{
@@ -114,11 +123,13 @@
 %% }
 -type language_with_score() :: #{binary() => any()}.
 
+
 %% Example:
 %% transcript() :: #{
 %%   <<"Results">> => list(result()())
 %% }
 -type transcript() :: #{binary() => any()}.
+
 
 %% Example:
 %% medical_entity() :: #{
@@ -130,11 +141,13 @@
 %% }
 -type medical_entity() :: #{binary() => any()}.
 
+
 %% Example:
 %% medical_transcript() :: #{
 %%   <<"Results">> => list(medical_result()())
 %% }
 -type medical_transcript() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_call_analytics_stream_transcription_response() :: #{
@@ -156,6 +169,7 @@
 %% }
 -type start_call_analytics_stream_transcription_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% item() :: #{
 %%   <<"Confidence">> => float(),
@@ -169,11 +183,13 @@
 %% }
 -type item() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_medical_stream_transcription_response() :: #{
@@ -193,6 +209,7 @@
 %% }
 -type start_medical_stream_transcription_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% call_analytics_item() :: #{
 %%   <<"BeginOffsetMillis">> => float(),
@@ -205,12 +222,14 @@
 %% }
 -type call_analytics_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% channel_definition() :: #{
 %%   <<"ChannelId">> => integer(),
 %%   <<"ParticipantRole">> => list(any())
 %% }
 -type channel_definition() :: #{binary() => any()}.
+
 
 %% Example:
 %% result() :: #{
@@ -225,6 +244,7 @@
 %% }
 -type result() :: #{binary() => any()}.
 
+
 %% Example:
 %% post_call_analytics_settings() :: #{
 %%   <<"ContentRedactionOutput">> => list(any()),
@@ -233,6 +253,7 @@
 %%   <<"OutputLocation">> => string()
 %% }
 -type post_call_analytics_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% call_analytics_entity() :: #{
@@ -245,11 +266,13 @@
 %% }
 -type call_analytics_entity() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_unavailable_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_stream_transcription_response() :: #{
@@ -280,11 +303,13 @@
 %% }
 -type start_stream_transcription_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% medical_transcript_event() :: #{
 %%   <<"Transcript">> => medical_transcript()
 %% }
 -type medical_transcript_event() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_stream_transcription_request() :: #{
@@ -314,6 +339,7 @@
 %% }
 -type start_stream_transcription_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% medical_result() :: #{
 %%   <<"Alternatives">> => list(medical_alternative()()),
@@ -324,6 +350,7 @@
 %%   <<"StartTime">> => float()
 %% }
 -type medical_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_call_analytics_stream_transcription_request() :: #{
@@ -344,6 +371,7 @@
 %% }
 -type start_call_analytics_stream_transcription_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% timestamp_range() :: #{
 %%   <<"BeginOffsetMillis">> => float(),
@@ -351,12 +379,14 @@
 %% }
 -type timestamp_range() :: #{binary() => any()}.
 
+
 %% Example:
 %% configuration_event() :: #{
 %%   <<"ChannelDefinitions">> => list(channel_definition()()),
 %%   <<"PostCallAnalyticsSettings">> => post_call_analytics_settings()
 %% }
 -type configuration_event() :: #{binary() => any()}.
+
 
 %% Example:
 %% utterance_event() :: #{
@@ -373,17 +403,20 @@
 %% }
 -type utterance_event() :: #{binary() => any()}.
 
+
 %% Example:
 %% limit_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% bad_request_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% medical_item() :: #{
@@ -396,11 +429,13 @@
 %% }
 -type medical_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% transcript_event() :: #{
 %%   <<"Transcript">> => transcript()
 %% }
 -type transcript_event() :: #{binary() => any()}.
+
 
 %% Example:
 %% alternative() :: #{
@@ -409,6 +444,27 @@
 %%   <<"Transcript">> => string()
 %% }
 -type alternative() :: #{binary() => any()}.
+
+-type start_call_analytics_stream_transcription_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type start_medical_stream_transcription_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type start_stream_transcription_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
 
 %%====================================================================
 %% API
@@ -438,22 +494,14 @@
 -spec start_call_analytics_stream_transcription(map(), start_call_analytics_stream_transcription_request()) ->
     {ok, start_call_analytics_stream_transcription_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, start_call_analytics_stream_transcription_errors(), tuple()}.
 start_call_analytics_stream_transcription(Client, Input) ->
     start_call_analytics_stream_transcription(Client, Input, []).
 
 -spec start_call_analytics_stream_transcription(map(), start_call_analytics_stream_transcription_request(), proplists:proplist()) ->
     {ok, start_call_analytics_stream_transcription_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, start_call_analytics_stream_transcription_errors(), tuple()}.
 start_call_analytics_stream_transcription(Client, Input0, Options0) ->
     Method = post,
     Path = ["/call-analytics-stream-transcription"],
@@ -540,22 +588,14 @@ start_call_analytics_stream_transcription(Client, Input0, Options0) ->
 -spec start_medical_stream_transcription(map(), start_medical_stream_transcription_request()) ->
     {ok, start_medical_stream_transcription_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, start_medical_stream_transcription_errors(), tuple()}.
 start_medical_stream_transcription(Client, Input) ->
     start_medical_stream_transcription(Client, Input, []).
 
 -spec start_medical_stream_transcription(map(), start_medical_stream_transcription_request(), proplists:proplist()) ->
     {ok, start_medical_stream_transcription_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, start_medical_stream_transcription_errors(), tuple()}.
 start_medical_stream_transcription(Client, Input0, Options0) ->
     Method = post,
     Path = ["/medical-stream-transcription"],
@@ -637,22 +677,14 @@ start_medical_stream_transcription(Client, Input0, Options0) ->
 -spec start_stream_transcription(map(), start_stream_transcription_request()) ->
     {ok, start_stream_transcription_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, start_stream_transcription_errors(), tuple()}.
 start_stream_transcription(Client, Input) ->
     start_stream_transcription(Client, Input, []).
 
 -spec start_stream_transcription(map(), start_stream_transcription_request(), proplists:proplist()) ->
     {ok, start_stream_transcription_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, start_stream_transcription_errors(), tuple()}.
 start_stream_transcription(Client, Input0, Options0) ->
     Method = post,
     Path = ["/stream-transcription"],

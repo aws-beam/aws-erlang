@@ -1516,6 +1516,406 @@
 %% }
 -type create_user_request() :: #{binary() => any()}.
 
+-type create_access_errors() ::
+    internal_service_error() | 
+    resource_exists_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type create_agreement_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    resource_exists_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type create_connector_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    resource_exists_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type create_profile_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type create_server_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type create_user_errors() ::
+    internal_service_error() | 
+    resource_exists_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type create_workflow_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception().
+
+-type delete_access_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type delete_agreement_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type delete_certificate_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type delete_connector_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type delete_host_key_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type delete_profile_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type delete_server_errors() ::
+    internal_service_error() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type delete_ssh_public_key_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type delete_user_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type delete_workflow_errors() ::
+    internal_service_error() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_access_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_agreement_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_certificate_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_connector_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_execution_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_host_key_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_profile_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_security_policy_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_server_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_user_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_workflow_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type import_certificate_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type import_host_key_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    resource_exists_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type import_ssh_public_key_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    resource_exists_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_accesses_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_next_token_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_agreements_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_next_token_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_certificates_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_next_token_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_connectors_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_next_token_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_executions_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_next_token_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_host_keys_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_next_token_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_profiles_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_next_token_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_security_policies_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_next_token_exception() | 
+    invalid_request_exception().
+
+-type list_servers_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_next_token_exception() | 
+    invalid_request_exception().
+
+-type list_tags_for_resource_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_next_token_exception() | 
+    invalid_request_exception().
+
+-type list_users_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_next_token_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_workflows_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_next_token_exception() | 
+    invalid_request_exception().
+
+-type send_workflow_step_state_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type start_file_transfer_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type start_server_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type stop_server_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type test_connection_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type test_identity_provider_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type update_access_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    resource_exists_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type update_agreement_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    resource_exists_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type update_certificate_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type update_connector_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    resource_exists_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type update_host_key_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type update_profile_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type update_server_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_user_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -1536,11 +1936,7 @@
 -spec create_access(map(), create_access_request()) ->
     {ok, create_access_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_access_errors(), tuple()}.
 create_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_access(Client, Input, []).
@@ -1548,11 +1944,7 @@ create_access(Client, Input)
 -spec create_access(map(), create_access_request(), proplists:proplist()) ->
     {ok, create_access_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_access_errors(), tuple()}.
 create_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAccess">>, Input, Options).
@@ -1572,12 +1964,7 @@ create_access(Client, Input, Options)
 -spec create_agreement(map(), create_agreement_request()) ->
     {ok, create_agreement_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_agreement_errors(), tuple()}.
 create_agreement(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_agreement(Client, Input, []).
@@ -1585,12 +1972,7 @@ create_agreement(Client, Input)
 -spec create_agreement(map(), create_agreement_request(), proplists:proplist()) ->
     {ok, create_agreement_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_agreement_errors(), tuple()}.
 create_agreement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAgreement">>, Input, Options).
@@ -1612,12 +1994,7 @@ create_agreement(Client, Input, Options)
 -spec create_connector(map(), create_connector_request()) ->
     {ok, create_connector_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_connector_errors(), tuple()}.
 create_connector(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_connector(Client, Input, []).
@@ -1625,12 +2002,7 @@ create_connector(Client, Input)
 -spec create_connector(map(), create_connector_request(), proplists:proplist()) ->
     {ok, create_connector_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_connector_errors(), tuple()}.
 create_connector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateConnector">>, Input, Options).
@@ -1639,11 +2011,7 @@ create_connector(Client, Input, Options)
 -spec create_profile(map(), create_profile_request()) ->
     {ok, create_profile_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_profile_errors(), tuple()}.
 create_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_profile(Client, Input, []).
@@ -1651,11 +2019,7 @@ create_profile(Client, Input)
 -spec create_profile(map(), create_profile_request(), proplists:proplist()) ->
     {ok, create_profile_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_profile_errors(), tuple()}.
 create_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateProfile">>, Input, Options).
@@ -1672,13 +2036,7 @@ create_profile(Client, Input, Options)
 -spec create_server(map(), create_server_request()) ->
     {ok, create_server_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_server_errors(), tuple()}.
 create_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_server(Client, Input, []).
@@ -1686,13 +2044,7 @@ create_server(Client, Input)
 -spec create_server(map(), create_server_request(), proplists:proplist()) ->
     {ok, create_server_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_server_errors(), tuple()}.
 create_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateServer">>, Input, Options).
@@ -1713,11 +2065,7 @@ create_server(Client, Input, Options)
 -spec create_user(map(), create_user_request()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_user_errors(), tuple()}.
 create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user(Client, Input, []).
@@ -1725,11 +2073,7 @@ create_user(Client, Input)
 -spec create_user(map(), create_user_request(), proplists:proplist()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_user_errors(), tuple()}.
 create_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUser">>, Input, Options).
@@ -1744,12 +2088,7 @@ create_user(Client, Input, Options)
 -spec create_workflow(map(), create_workflow_request()) ->
     {ok, create_workflow_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_workflow_errors(), tuple()}.
 create_workflow(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_workflow(Client, Input, []).
@@ -1757,12 +2096,7 @@ create_workflow(Client, Input)
 -spec create_workflow(map(), create_workflow_request(), proplists:proplist()) ->
     {ok, create_workflow_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_workflow_errors(), tuple()}.
 create_workflow(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWorkflow">>, Input, Options).
@@ -1772,10 +2106,7 @@ create_workflow(Client, Input, Options)
 -spec delete_access(map(), delete_access_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_access_errors(), tuple()}.
 delete_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_access(Client, Input, []).
@@ -1783,10 +2114,7 @@ delete_access(Client, Input)
 -spec delete_access(map(), delete_access_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_access_errors(), tuple()}.
 delete_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAccess">>, Input, Options).
@@ -1796,10 +2124,7 @@ delete_access(Client, Input, Options)
 -spec delete_agreement(map(), delete_agreement_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_agreement_errors(), tuple()}.
 delete_agreement(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_agreement(Client, Input, []).
@@ -1807,10 +2132,7 @@ delete_agreement(Client, Input)
 -spec delete_agreement(map(), delete_agreement_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_agreement_errors(), tuple()}.
 delete_agreement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAgreement">>, Input, Options).
@@ -1821,10 +2143,7 @@ delete_agreement(Client, Input, Options)
 -spec delete_certificate(map(), delete_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_certificate_errors(), tuple()}.
 delete_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_certificate(Client, Input, []).
@@ -1832,10 +2151,7 @@ delete_certificate(Client, Input)
 -spec delete_certificate(map(), delete_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_certificate_errors(), tuple()}.
 delete_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCertificate">>, Input, Options).
@@ -1845,10 +2161,7 @@ delete_certificate(Client, Input, Options)
 -spec delete_connector(map(), delete_connector_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_connector_errors(), tuple()}.
 delete_connector(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_connector(Client, Input, []).
@@ -1856,10 +2169,7 @@ delete_connector(Client, Input)
 -spec delete_connector(map(), delete_connector_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_connector_errors(), tuple()}.
 delete_connector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConnector">>, Input, Options).
@@ -1869,11 +2179,7 @@ delete_connector(Client, Input, Options)
 -spec delete_host_key(map(), delete_host_key_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_host_key_errors(), tuple()}.
 delete_host_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_host_key(Client, Input, []).
@@ -1881,11 +2187,7 @@ delete_host_key(Client, Input)
 -spec delete_host_key(map(), delete_host_key_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_host_key_errors(), tuple()}.
 delete_host_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteHostKey">>, Input, Options).
@@ -1895,10 +2197,7 @@ delete_host_key(Client, Input, Options)
 -spec delete_profile(map(), delete_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_profile_errors(), tuple()}.
 delete_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_profile(Client, Input, []).
@@ -1906,10 +2205,7 @@ delete_profile(Client, Input)
 -spec delete_profile(map(), delete_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_profile_errors(), tuple()}.
 delete_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProfile">>, Input, Options).
@@ -1920,11 +2216,7 @@ delete_profile(Client, Input, Options)
 -spec delete_server(map(), delete_server_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_server_errors(), tuple()}.
 delete_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_server(Client, Input, []).
@@ -1932,11 +2224,7 @@ delete_server(Client, Input)
 -spec delete_server(map(), delete_server_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_server_errors(), tuple()}.
 delete_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteServer">>, Input, Options).
@@ -1945,11 +2233,7 @@ delete_server(Client, Input, Options)
 -spec delete_ssh_public_key(map(), delete_ssh_public_key_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_ssh_public_key_errors(), tuple()}.
 delete_ssh_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_ssh_public_key(Client, Input, []).
@@ -1957,11 +2241,7 @@ delete_ssh_public_key(Client, Input)
 -spec delete_ssh_public_key(map(), delete_ssh_public_key_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_ssh_public_key_errors(), tuple()}.
 delete_ssh_public_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSshPublicKey">>, Input, Options).
@@ -1975,10 +2255,7 @@ delete_ssh_public_key(Client, Input, Options)
 -spec delete_user(map(), delete_user_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_user_errors(), tuple()}.
 delete_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user(Client, Input, []).
@@ -1986,10 +2263,7 @@ delete_user(Client, Input)
 -spec delete_user(map(), delete_user_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_user_errors(), tuple()}.
 delete_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUser">>, Input, Options).
@@ -1998,11 +2272,7 @@ delete_user(Client, Input, Options)
 -spec delete_workflow(map(), delete_workflow_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_workflow_errors(), tuple()}.
 delete_workflow(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_workflow(Client, Input, []).
@@ -2010,11 +2280,7 @@ delete_workflow(Client, Input)
 -spec delete_workflow(map(), delete_workflow_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_workflow_errors(), tuple()}.
 delete_workflow(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWorkflow">>, Input, Options).
@@ -2030,10 +2296,7 @@ delete_workflow(Client, Input, Options)
 -spec describe_access(map(), describe_access_request()) ->
     {ok, describe_access_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_access_errors(), tuple()}.
 describe_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_access(Client, Input, []).
@@ -2041,10 +2304,7 @@ describe_access(Client, Input)
 -spec describe_access(map(), describe_access_request(), proplists:proplist()) ->
     {ok, describe_access_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_access_errors(), tuple()}.
 describe_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccess">>, Input, Options).
@@ -2054,10 +2314,7 @@ describe_access(Client, Input, Options)
 -spec describe_agreement(map(), describe_agreement_request()) ->
     {ok, describe_agreement_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_agreement_errors(), tuple()}.
 describe_agreement(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_agreement(Client, Input, []).
@@ -2065,10 +2322,7 @@ describe_agreement(Client, Input)
 -spec describe_agreement(map(), describe_agreement_request(), proplists:proplist()) ->
     {ok, describe_agreement_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_agreement_errors(), tuple()}.
 describe_agreement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAgreement">>, Input, Options).
@@ -2078,10 +2332,7 @@ describe_agreement(Client, Input, Options)
 -spec describe_certificate(map(), describe_certificate_request()) ->
     {ok, describe_certificate_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_certificate_errors(), tuple()}.
 describe_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_certificate(Client, Input, []).
@@ -2089,10 +2340,7 @@ describe_certificate(Client, Input)
 -spec describe_certificate(map(), describe_certificate_request(), proplists:proplist()) ->
     {ok, describe_certificate_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_certificate_errors(), tuple()}.
 describe_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCertificate">>, Input, Options).
@@ -2102,10 +2350,7 @@ describe_certificate(Client, Input, Options)
 -spec describe_connector(map(), describe_connector_request()) ->
     {ok, describe_connector_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_connector_errors(), tuple()}.
 describe_connector(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_connector(Client, Input, []).
@@ -2113,10 +2358,7 @@ describe_connector(Client, Input)
 -spec describe_connector(map(), describe_connector_request(), proplists:proplist()) ->
     {ok, describe_connector_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_connector_errors(), tuple()}.
 describe_connector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConnector">>, Input, Options).
@@ -2132,10 +2374,7 @@ describe_connector(Client, Input, Options)
 -spec describe_execution(map(), describe_execution_request()) ->
     {ok, describe_execution_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_execution_errors(), tuple()}.
 describe_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_execution(Client, Input, []).
@@ -2143,10 +2382,7 @@ describe_execution(Client, Input)
 -spec describe_execution(map(), describe_execution_request(), proplists:proplist()) ->
     {ok, describe_execution_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_execution_errors(), tuple()}.
 describe_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeExecution">>, Input, Options).
@@ -2156,10 +2392,7 @@ describe_execution(Client, Input, Options)
 -spec describe_host_key(map(), describe_host_key_request()) ->
     {ok, describe_host_key_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_host_key_errors(), tuple()}.
 describe_host_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_host_key(Client, Input, []).
@@ -2167,10 +2400,7 @@ describe_host_key(Client, Input)
 -spec describe_host_key(map(), describe_host_key_request(), proplists:proplist()) ->
     {ok, describe_host_key_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_host_key_errors(), tuple()}.
 describe_host_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeHostKey">>, Input, Options).
@@ -2180,10 +2410,7 @@ describe_host_key(Client, Input, Options)
 -spec describe_profile(map(), describe_profile_request()) ->
     {ok, describe_profile_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_profile_errors(), tuple()}.
 describe_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_profile(Client, Input, []).
@@ -2191,10 +2418,7 @@ describe_profile(Client, Input)
 -spec describe_profile(map(), describe_profile_request(), proplists:proplist()) ->
     {ok, describe_profile_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_profile_errors(), tuple()}.
 describe_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeProfile">>, Input, Options).
@@ -2211,10 +2435,7 @@ describe_profile(Client, Input, Options)
 -spec describe_security_policy(map(), describe_security_policy_request()) ->
     {ok, describe_security_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_security_policy_errors(), tuple()}.
 describe_security_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_security_policy(Client, Input, []).
@@ -2222,10 +2443,7 @@ describe_security_policy(Client, Input)
 -spec describe_security_policy(map(), describe_security_policy_request(), proplists:proplist()) ->
     {ok, describe_security_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_security_policy_errors(), tuple()}.
 describe_security_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSecurityPolicy">>, Input, Options).
@@ -2241,10 +2459,7 @@ describe_security_policy(Client, Input, Options)
 -spec describe_server(map(), describe_server_request()) ->
     {ok, describe_server_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_server_errors(), tuple()}.
 describe_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_server(Client, Input, []).
@@ -2252,10 +2467,7 @@ describe_server(Client, Input)
 -spec describe_server(map(), describe_server_request(), proplists:proplist()) ->
     {ok, describe_server_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_server_errors(), tuple()}.
 describe_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeServer">>, Input, Options).
@@ -2270,10 +2482,7 @@ describe_server(Client, Input, Options)
 -spec describe_user(map(), describe_user_request()) ->
     {ok, describe_user_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_user_errors(), tuple()}.
 describe_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user(Client, Input, []).
@@ -2281,10 +2490,7 @@ describe_user(Client, Input)
 -spec describe_user(map(), describe_user_request(), proplists:proplist()) ->
     {ok, describe_user_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_user_errors(), tuple()}.
 describe_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUser">>, Input, Options).
@@ -2293,10 +2499,7 @@ describe_user(Client, Input, Options)
 -spec describe_workflow(map(), describe_workflow_request()) ->
     {ok, describe_workflow_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_workflow_errors(), tuple()}.
 describe_workflow(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workflow(Client, Input, []).
@@ -2304,10 +2507,7 @@ describe_workflow(Client, Input)
 -spec describe_workflow(map(), describe_workflow_request(), proplists:proplist()) ->
     {ok, describe_workflow_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_workflow_errors(), tuple()}.
 describe_workflow(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWorkflow">>, Input, Options).
@@ -2319,10 +2519,7 @@ describe_workflow(Client, Input, Options)
 -spec import_certificate(map(), import_certificate_request()) ->
     {ok, import_certificate_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, import_certificate_errors(), tuple()}.
 import_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_certificate(Client, Input, []).
@@ -2330,10 +2527,7 @@ import_certificate(Client, Input)
 -spec import_certificate(map(), import_certificate_request(), proplists:proplist()) ->
     {ok, import_certificate_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, import_certificate_errors(), tuple()}.
 import_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportCertificate">>, Input, Options).
@@ -2344,12 +2538,7 @@ import_certificate(Client, Input, Options)
 -spec import_host_key(map(), import_host_key_request()) ->
     {ok, import_host_key_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, import_host_key_errors(), tuple()}.
 import_host_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_host_key(Client, Input, []).
@@ -2357,12 +2546,7 @@ import_host_key(Client, Input)
 -spec import_host_key(map(), import_host_key_request(), proplists:proplist()) ->
     {ok, import_host_key_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, import_host_key_errors(), tuple()}.
 import_host_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportHostKey">>, Input, Options).
@@ -2379,12 +2563,7 @@ import_host_key(Client, Input, Options)
 -spec import_ssh_public_key(map(), import_ssh_public_key_request()) ->
     {ok, import_ssh_public_key_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, import_ssh_public_key_errors(), tuple()}.
 import_ssh_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_ssh_public_key(Client, Input, []).
@@ -2392,12 +2571,7 @@ import_ssh_public_key(Client, Input)
 -spec import_ssh_public_key(map(), import_ssh_public_key_request(), proplists:proplist()) ->
     {ok, import_ssh_public_key_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, import_ssh_public_key_errors(), tuple()}.
 import_ssh_public_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportSshPublicKey">>, Input, Options).
@@ -2406,11 +2580,7 @@ import_ssh_public_key(Client, Input, Options)
 -spec list_accesses(map(), list_accesses_request()) ->
     {ok, list_accesses_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_accesses_errors(), tuple()}.
 list_accesses(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_accesses(Client, Input, []).
@@ -2418,11 +2588,7 @@ list_accesses(Client, Input)
 -spec list_accesses(map(), list_accesses_request(), proplists:proplist()) ->
     {ok, list_accesses_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_accesses_errors(), tuple()}.
 list_accesses(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAccesses">>, Input, Options).
@@ -2440,11 +2606,7 @@ list_accesses(Client, Input, Options)
 -spec list_agreements(map(), list_agreements_request()) ->
     {ok, list_agreements_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_agreements_errors(), tuple()}.
 list_agreements(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_agreements(Client, Input, []).
@@ -2452,11 +2614,7 @@ list_agreements(Client, Input)
 -spec list_agreements(map(), list_agreements_request(), proplists:proplist()) ->
     {ok, list_agreements_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_agreements_errors(), tuple()}.
 list_agreements(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAgreements">>, Input, Options).
@@ -2474,11 +2632,7 @@ list_agreements(Client, Input, Options)
 -spec list_certificates(map(), list_certificates_request()) ->
     {ok, list_certificates_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_certificates_errors(), tuple()}.
 list_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_certificates(Client, Input, []).
@@ -2486,11 +2640,7 @@ list_certificates(Client, Input)
 -spec list_certificates(map(), list_certificates_request(), proplists:proplist()) ->
     {ok, list_certificates_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_certificates_errors(), tuple()}.
 list_certificates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCertificates">>, Input, Options).
@@ -2499,11 +2649,7 @@ list_certificates(Client, Input, Options)
 -spec list_connectors(map(), list_connectors_request()) ->
     {ok, list_connectors_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_connectors_errors(), tuple()}.
 list_connectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_connectors(Client, Input, []).
@@ -2511,11 +2657,7 @@ list_connectors(Client, Input)
 -spec list_connectors(map(), list_connectors_request(), proplists:proplist()) ->
     {ok, list_connectors_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_connectors_errors(), tuple()}.
 list_connectors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListConnectors">>, Input, Options).
@@ -2528,11 +2670,7 @@ list_connectors(Client, Input, Options)
 -spec list_executions(map(), list_executions_request()) ->
     {ok, list_executions_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_executions_errors(), tuple()}.
 list_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_executions(Client, Input, []).
@@ -2540,11 +2678,7 @@ list_executions(Client, Input)
 -spec list_executions(map(), list_executions_request(), proplists:proplist()) ->
     {ok, list_executions_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_executions_errors(), tuple()}.
 list_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListExecutions">>, Input, Options).
@@ -2555,11 +2689,7 @@ list_executions(Client, Input, Options)
 -spec list_host_keys(map(), list_host_keys_request()) ->
     {ok, list_host_keys_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_host_keys_errors(), tuple()}.
 list_host_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_host_keys(Client, Input, []).
@@ -2567,11 +2697,7 @@ list_host_keys(Client, Input)
 -spec list_host_keys(map(), list_host_keys_request(), proplists:proplist()) ->
     {ok, list_host_keys_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_host_keys_errors(), tuple()}.
 list_host_keys(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListHostKeys">>, Input, Options).
@@ -2587,11 +2713,7 @@ list_host_keys(Client, Input, Options)
 -spec list_profiles(map(), list_profiles_request()) ->
     {ok, list_profiles_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_profiles_errors(), tuple()}.
 list_profiles(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_profiles(Client, Input, []).
@@ -2599,11 +2721,7 @@ list_profiles(Client, Input)
 -spec list_profiles(map(), list_profiles_request(), proplists:proplist()) ->
     {ok, list_profiles_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_profiles_errors(), tuple()}.
 list_profiles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProfiles">>, Input, Options).
@@ -2614,10 +2732,7 @@ list_profiles(Client, Input, Options)
 -spec list_security_policies(map(), list_security_policies_request()) ->
     {ok, list_security_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_security_policies_errors(), tuple()}.
 list_security_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_security_policies(Client, Input, []).
@@ -2625,10 +2740,7 @@ list_security_policies(Client, Input)
 -spec list_security_policies(map(), list_security_policies_request(), proplists:proplist()) ->
     {ok, list_security_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_security_policies_errors(), tuple()}.
 list_security_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSecurityPolicies">>, Input, Options).
@@ -2639,10 +2751,7 @@ list_security_policies(Client, Input, Options)
 -spec list_servers(map(), list_servers_request()) ->
     {ok, list_servers_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_servers_errors(), tuple()}.
 list_servers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_servers(Client, Input, []).
@@ -2650,10 +2759,7 @@ list_servers(Client, Input)
 -spec list_servers(map(), list_servers_request(), proplists:proplist()) ->
     {ok, list_servers_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_servers_errors(), tuple()}.
 list_servers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServers">>, Input, Options).
@@ -2666,10 +2772,7 @@ list_servers(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -2677,10 +2780,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -2691,11 +2791,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec list_users(map(), list_users_request()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_users_errors(), tuple()}.
 list_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_users(Client, Input, []).
@@ -2703,11 +2799,7 @@ list_users(Client, Input)
 -spec list_users(map(), list_users_request(), proplists:proplist()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_users_errors(), tuple()}.
 list_users(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUsers">>, Input, Options).
@@ -2717,10 +2809,7 @@ list_users(Client, Input, Options)
 -spec list_workflows(map(), list_workflows_request()) ->
     {ok, list_workflows_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_workflows_errors(), tuple()}.
 list_workflows(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_workflows(Client, Input, []).
@@ -2728,10 +2817,7 @@ list_workflows(Client, Input)
 -spec list_workflows(map(), list_workflows_request(), proplists:proplist()) ->
     {ok, list_workflows_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_workflows_errors(), tuple()}.
 list_workflows(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWorkflows">>, Input, Options).
@@ -2744,12 +2830,7 @@ list_workflows(Client, Input, Options)
 -spec send_workflow_step_state(map(), send_workflow_step_state_request()) ->
     {ok, send_workflow_step_state_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, send_workflow_step_state_errors(), tuple()}.
 send_workflow_step_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_workflow_step_state(Client, Input, []).
@@ -2757,12 +2838,7 @@ send_workflow_step_state(Client, Input)
 -spec send_workflow_step_state(map(), send_workflow_step_state_request(), proplists:proplist()) ->
     {ok, send_workflow_step_state_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, send_workflow_step_state_errors(), tuple()}.
 send_workflow_step_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendWorkflowStepState">>, Input, Options).
@@ -2798,11 +2874,7 @@ send_workflow_step_state(Client, Input, Options)
 -spec start_file_transfer(map(), start_file_transfer_request()) ->
     {ok, start_file_transfer_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, start_file_transfer_errors(), tuple()}.
 start_file_transfer(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_file_transfer(Client, Input, []).
@@ -2810,11 +2882,7 @@ start_file_transfer(Client, Input)
 -spec start_file_transfer(map(), start_file_transfer_request(), proplists:proplist()) ->
     {ok, start_file_transfer_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, start_file_transfer_errors(), tuple()}.
 start_file_transfer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartFileTransfer">>, Input, Options).
@@ -2836,11 +2904,7 @@ start_file_transfer(Client, Input, Options)
 -spec start_server(map(), start_server_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, start_server_errors(), tuple()}.
 start_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_server(Client, Input, []).
@@ -2848,11 +2912,7 @@ start_server(Client, Input)
 -spec start_server(map(), start_server_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, start_server_errors(), tuple()}.
 start_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartServer">>, Input, Options).
@@ -2880,11 +2940,7 @@ start_server(Client, Input, Options)
 -spec stop_server(map(), stop_server_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, stop_server_errors(), tuple()}.
 stop_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_server(Client, Input, []).
@@ -2892,11 +2948,7 @@ stop_server(Client, Input)
 -spec stop_server(map(), stop_server_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, stop_server_errors(), tuple()}.
 stop_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopServer">>, Input, Options).
@@ -2910,10 +2962,7 @@ stop_server(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -2921,10 +2970,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -2938,10 +2984,7 @@ tag_resource(Client, Input, Options)
 -spec test_connection(map(), test_connection_request()) ->
     {ok, test_connection_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, test_connection_errors(), tuple()}.
 test_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_connection(Client, Input, []).
@@ -2949,10 +2992,7 @@ test_connection(Client, Input)
 -spec test_connection(map(), test_connection_request(), proplists:proplist()) ->
     {ok, test_connection_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, test_connection_errors(), tuple()}.
 test_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TestConnection">>, Input, Options).
@@ -3008,10 +3048,7 @@ test_connection(Client, Input, Options)
 -spec test_identity_provider(map(), test_identity_provider_request()) ->
     {ok, test_identity_provider_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, test_identity_provider_errors(), tuple()}.
 test_identity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_identity_provider(Client, Input, []).
@@ -3019,10 +3056,7 @@ test_identity_provider(Client, Input)
 -spec test_identity_provider(map(), test_identity_provider_request(), proplists:proplist()) ->
     {ok, test_identity_provider_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, test_identity_provider_errors(), tuple()}.
 test_identity_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TestIdentityProvider">>, Input, Options).
@@ -3037,10 +3071,7 @@ test_identity_provider(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -3048,10 +3079,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -3062,12 +3090,7 @@ untag_resource(Client, Input, Options)
 -spec update_access(map(), update_access_request()) ->
     {ok, update_access_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_access_errors(), tuple()}.
 update_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_access(Client, Input, []).
@@ -3075,12 +3098,7 @@ update_access(Client, Input)
 -spec update_access(map(), update_access_request(), proplists:proplist()) ->
     {ok, update_access_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_access_errors(), tuple()}.
 update_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAccess">>, Input, Options).
@@ -3094,12 +3112,7 @@ update_access(Client, Input, Options)
 -spec update_agreement(map(), update_agreement_request()) ->
     {ok, update_agreement_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_agreement_errors(), tuple()}.
 update_agreement(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_agreement(Client, Input, []).
@@ -3107,12 +3120,7 @@ update_agreement(Client, Input)
 -spec update_agreement(map(), update_agreement_request(), proplists:proplist()) ->
     {ok, update_agreement_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_agreement_errors(), tuple()}.
 update_agreement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAgreement">>, Input, Options).
@@ -3121,11 +3129,7 @@ update_agreement(Client, Input, Options)
 -spec update_certificate(map(), update_certificate_request()) ->
     {ok, update_certificate_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_certificate_errors(), tuple()}.
 update_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_certificate(Client, Input, []).
@@ -3133,11 +3137,7 @@ update_certificate(Client, Input)
 -spec update_certificate(map(), update_certificate_request(), proplists:proplist()) ->
     {ok, update_certificate_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_certificate_errors(), tuple()}.
 update_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCertificate">>, Input, Options).
@@ -3151,12 +3151,7 @@ update_certificate(Client, Input, Options)
 -spec update_connector(map(), update_connector_request()) ->
     {ok, update_connector_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_connector_errors(), tuple()}.
 update_connector(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_connector(Client, Input, []).
@@ -3164,12 +3159,7 @@ update_connector(Client, Input)
 -spec update_connector(map(), update_connector_request(), proplists:proplist()) ->
     {ok, update_connector_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_connector_errors(), tuple()}.
 update_connector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateConnector">>, Input, Options).
@@ -3180,11 +3170,7 @@ update_connector(Client, Input, Options)
 -spec update_host_key(map(), update_host_key_request()) ->
     {ok, update_host_key_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_host_key_errors(), tuple()}.
 update_host_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_host_key(Client, Input, []).
@@ -3192,11 +3178,7 @@ update_host_key(Client, Input)
 -spec update_host_key(map(), update_host_key_request(), proplists:proplist()) ->
     {ok, update_host_key_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_host_key_errors(), tuple()}.
 update_host_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateHostKey">>, Input, Options).
@@ -3210,11 +3192,7 @@ update_host_key(Client, Input, Options)
 -spec update_profile(map(), update_profile_request()) ->
     {ok, update_profile_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_profile_errors(), tuple()}.
 update_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_profile(Client, Input, []).
@@ -3222,11 +3200,7 @@ update_profile(Client, Input)
 -spec update_profile(map(), update_profile_request(), proplists:proplist()) ->
     {ok, update_profile_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_profile_errors(), tuple()}.
 update_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateProfile">>, Input, Options).
@@ -3240,14 +3214,7 @@ update_profile(Client, Input, Options)
 -spec update_server(map(), update_server_request()) ->
     {ok, update_server_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_server_errors(), tuple()}.
 update_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_server(Client, Input, []).
@@ -3255,14 +3222,7 @@ update_server(Client, Input)
 -spec update_server(map(), update_server_request(), proplists:proplist()) ->
     {ok, update_server_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_server_errors(), tuple()}.
 update_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateServer">>, Input, Options).
@@ -3299,11 +3259,7 @@ update_server(Client, Input, Options)
 -spec update_user(map(), update_user_request()) ->
     {ok, update_user_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_user_errors(), tuple()}.
 update_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user(Client, Input, []).
@@ -3311,11 +3267,7 @@ update_user(Client, Input)
 -spec update_user(map(), update_user_request(), proplists:proplist()) ->
     {ok, update_user_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_user_errors(), tuple()}.
 update_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUser">>, Input, Options).

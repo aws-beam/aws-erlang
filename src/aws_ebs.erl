@@ -69,12 +69,14 @@
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% block() :: #{
 %%   <<"BlockIndex">> => integer(),
 %%   <<"BlockToken">> => string()
 %% }
 -type block() :: #{binary() => any()}.
+
 
 %% Example:
 %% changed_block() :: #{
@@ -83,6 +85,7 @@
 %%   <<"SecondBlockToken">> => string()
 %% }
 -type changed_block() :: #{binary() => any()}.
+
 
 %% Example:
 %% complete_snapshot_request() :: #{
@@ -93,11 +96,13 @@
 %% }
 -type complete_snapshot_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% complete_snapshot_response() :: #{
 %%   <<"Status">> => list(any())
 %% }
 -type complete_snapshot_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% concurrent_limit_exceeded_exception() :: #{
@@ -105,17 +110,20 @@
 %% }
 -type concurrent_limit_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_snapshot_block_request() :: #{
 %%   <<"BlockToken">> := string()
 %% }
 -type get_snapshot_block_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_snapshot_block_response() :: #{
@@ -126,11 +134,13 @@
 %% }
 -type get_snapshot_block_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_changed_blocks_request() :: #{
@@ -140,6 +150,7 @@
 %%   <<"StartingBlockIndex">> => integer()
 %% }
 -type list_changed_blocks_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_changed_blocks_response() :: #{
@@ -151,6 +162,7 @@
 %% }
 -type list_changed_blocks_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_snapshot_blocks_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -158,6 +170,7 @@
 %%   <<"StartingBlockIndex">> => integer()
 %% }
 -type list_snapshot_blocks_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_snapshot_blocks_response() :: #{
@@ -169,6 +182,7 @@
 %% }
 -type list_snapshot_blocks_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_snapshot_block_request() :: #{
 %%   <<"BlockData">> := binary(),
@@ -179,12 +193,14 @@
 %% }
 -type put_snapshot_block_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_snapshot_block_response() :: #{
 %%   <<"Checksum">> => string(),
 %%   <<"ChecksumAlgorithm">> => list(any())
 %% }
 -type put_snapshot_block_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% request_throttled_exception() :: #{
@@ -193,6 +209,7 @@
 %% }
 -type request_throttled_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => string(),
@@ -200,12 +217,14 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Reason">> => list(any())
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_snapshot_request() :: #{
@@ -219,6 +238,7 @@
 %%   <<"VolumeSize">> := float()
 %% }
 -type start_snapshot_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_snapshot_response() :: #{
@@ -236,6 +256,7 @@
 %% }
 -type start_snapshot_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag() :: #{
 %%   <<"Key">> => string(),
@@ -243,12 +264,63 @@
 %% }
 -type tag() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Reason">> => list(any())
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
+-type complete_snapshot_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    request_throttled_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_snapshot_block_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    request_throttled_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_changed_blocks_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    request_throttled_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_snapshot_blocks_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    request_throttled_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type put_snapshot_block_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    request_throttled_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type start_snapshot_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    request_throttled_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    concurrent_limit_exceeded_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -271,24 +343,14 @@
 -spec complete_snapshot(map(), binary() | list(), complete_snapshot_request()) ->
     {ok, complete_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_throttled_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, complete_snapshot_errors(), tuple()}.
 complete_snapshot(Client, SnapshotId, Input) ->
     complete_snapshot(Client, SnapshotId, Input, []).
 
 -spec complete_snapshot(map(), binary() | list(), complete_snapshot_request(), proplists:proplist()) ->
     {ok, complete_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_throttled_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, complete_snapshot_errors(), tuple()}.
 complete_snapshot(Client, SnapshotId, Input0, Options0) ->
     Method = post,
     Path = ["/snapshots/completion/", aws_util:encode_uri(SnapshotId), ""],
@@ -329,12 +391,7 @@ complete_snapshot(Client, SnapshotId, Input0, Options0) ->
 -spec get_snapshot_block(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_snapshot_block_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_throttled_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_snapshot_block_errors(), tuple()}.
 get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken)
   when is_map(Client) ->
     get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, #{}, #{}).
@@ -342,12 +399,7 @@ get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken)
 -spec get_snapshot_block(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_snapshot_block_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_throttled_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_snapshot_block_errors(), tuple()}.
 get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, QueryMap, HeadersMap, []).
@@ -355,12 +407,7 @@ get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, QueryMap, Headers
 -spec get_snapshot_block(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_snapshot_block_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_throttled_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_snapshot_block_errors(), tuple()}.
 get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/snapshots/", aws_util:encode_uri(SnapshotId), "/blocks/", aws_util:encode_uri(BlockIndex), ""],
@@ -412,12 +459,7 @@ get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, QueryMap, Headers
 -spec list_changed_blocks(map(), binary() | list()) ->
     {ok, list_changed_blocks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_throttled_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_changed_blocks_errors(), tuple()}.
 list_changed_blocks(Client, SecondSnapshotId)
   when is_map(Client) ->
     list_changed_blocks(Client, SecondSnapshotId, #{}, #{}).
@@ -425,12 +467,7 @@ list_changed_blocks(Client, SecondSnapshotId)
 -spec list_changed_blocks(map(), binary() | list(), map(), map()) ->
     {ok, list_changed_blocks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_throttled_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_changed_blocks_errors(), tuple()}.
 list_changed_blocks(Client, SecondSnapshotId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_changed_blocks(Client, SecondSnapshotId, QueryMap, HeadersMap, []).
@@ -438,12 +475,7 @@ list_changed_blocks(Client, SecondSnapshotId, QueryMap, HeadersMap)
 -spec list_changed_blocks(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_changed_blocks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_throttled_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_changed_blocks_errors(), tuple()}.
 list_changed_blocks(Client, SecondSnapshotId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/snapshots/", aws_util:encode_uri(SecondSnapshotId), "/changedblocks"],
@@ -480,12 +512,7 @@ list_changed_blocks(Client, SecondSnapshotId, QueryMap, HeadersMap, Options0)
 -spec list_snapshot_blocks(map(), binary() | list()) ->
     {ok, list_snapshot_blocks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_throttled_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_snapshot_blocks_errors(), tuple()}.
 list_snapshot_blocks(Client, SnapshotId)
   when is_map(Client) ->
     list_snapshot_blocks(Client, SnapshotId, #{}, #{}).
@@ -493,12 +520,7 @@ list_snapshot_blocks(Client, SnapshotId)
 -spec list_snapshot_blocks(map(), binary() | list(), map(), map()) ->
     {ok, list_snapshot_blocks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_throttled_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_snapshot_blocks_errors(), tuple()}.
 list_snapshot_blocks(Client, SnapshotId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_snapshot_blocks(Client, SnapshotId, QueryMap, HeadersMap, []).
@@ -506,12 +528,7 @@ list_snapshot_blocks(Client, SnapshotId, QueryMap, HeadersMap)
 -spec list_snapshot_blocks(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_snapshot_blocks_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_throttled_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_snapshot_blocks_errors(), tuple()}.
 list_snapshot_blocks(Client, SnapshotId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/snapshots/", aws_util:encode_uri(SnapshotId), "/blocks"],
@@ -552,24 +569,14 @@ list_snapshot_blocks(Client, SnapshotId, QueryMap, HeadersMap, Options0)
 -spec put_snapshot_block(map(), binary() | list(), binary() | list(), put_snapshot_block_request()) ->
     {ok, put_snapshot_block_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_throttled_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_snapshot_block_errors(), tuple()}.
 put_snapshot_block(Client, BlockIndex, SnapshotId, Input) ->
     put_snapshot_block(Client, BlockIndex, SnapshotId, Input, []).
 
 -spec put_snapshot_block(map(), binary() | list(), binary() | list(), put_snapshot_block_request(), proplists:proplist()) ->
     {ok, put_snapshot_block_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_throttled_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_snapshot_block_errors(), tuple()}.
 put_snapshot_block(Client, BlockIndex, SnapshotId, Input0, Options0) ->
     Method = put,
     Path = ["/snapshots/", aws_util:encode_uri(SnapshotId), "/blocks/", aws_util:encode_uri(BlockIndex), ""],
@@ -634,28 +641,14 @@ put_snapshot_block(Client, BlockIndex, SnapshotId, Input0, Options0) ->
 -spec start_snapshot(map(), start_snapshot_request()) ->
     {ok, start_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_limit_exceeded_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_throttled_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_snapshot_errors(), tuple()}.
 start_snapshot(Client, Input) ->
     start_snapshot(Client, Input, []).
 
 -spec start_snapshot(map(), start_snapshot_request(), proplists:proplist()) ->
     {ok, start_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_limit_exceeded_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_throttled_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_snapshot_errors(), tuple()}.
 start_snapshot(Client, Input0, Options0) ->
     Method = post,
     Path = ["/snapshots"],

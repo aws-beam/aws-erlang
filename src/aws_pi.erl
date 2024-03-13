@@ -474,6 +474,70 @@
 %% }
 -type get_resource_metadata_response() :: #{binary() => any()}.
 
+-type create_performance_analysis_report_errors() ::
+    internal_service_error() | 
+    invalid_argument_exception() | 
+    not_authorized_exception().
+
+-type delete_performance_analysis_report_errors() ::
+    internal_service_error() | 
+    invalid_argument_exception() | 
+    not_authorized_exception().
+
+-type describe_dimension_keys_errors() ::
+    internal_service_error() | 
+    invalid_argument_exception() | 
+    not_authorized_exception().
+
+-type get_dimension_key_details_errors() ::
+    internal_service_error() | 
+    invalid_argument_exception() | 
+    not_authorized_exception().
+
+-type get_performance_analysis_report_errors() ::
+    internal_service_error() | 
+    invalid_argument_exception() | 
+    not_authorized_exception().
+
+-type get_resource_metadata_errors() ::
+    internal_service_error() | 
+    invalid_argument_exception() | 
+    not_authorized_exception().
+
+-type get_resource_metrics_errors() ::
+    internal_service_error() | 
+    invalid_argument_exception() | 
+    not_authorized_exception().
+
+-type list_available_resource_dimensions_errors() ::
+    internal_service_error() | 
+    invalid_argument_exception() | 
+    not_authorized_exception().
+
+-type list_available_resource_metrics_errors() ::
+    internal_service_error() | 
+    invalid_argument_exception() | 
+    not_authorized_exception().
+
+-type list_performance_analysis_reports_errors() ::
+    internal_service_error() | 
+    invalid_argument_exception() | 
+    not_authorized_exception().
+
+-type list_tags_for_resource_errors() ::
+    internal_service_error() | 
+    invalid_argument_exception() | 
+    not_authorized_exception().
+
+-type tag_resource_errors() ::
+    internal_service_error() | 
+    invalid_argument_exception() | 
+    not_authorized_exception().
+
+-type untag_resource_errors() ::
+    internal_service_error() | 
+    invalid_argument_exception() | 
+    not_authorized_exception().
 
 %%====================================================================
 %% API
@@ -485,9 +549,7 @@
 -spec create_performance_analysis_report(map(), create_performance_analysis_report_request()) ->
     {ok, create_performance_analysis_report_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()}.
+    {error, create_performance_analysis_report_errors(), tuple()}.
 create_performance_analysis_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_performance_analysis_report(Client, Input, []).
@@ -495,9 +557,7 @@ create_performance_analysis_report(Client, Input)
 -spec create_performance_analysis_report(map(), create_performance_analysis_report_request(), proplists:proplist()) ->
     {ok, create_performance_analysis_report_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()}.
+    {error, create_performance_analysis_report_errors(), tuple()}.
 create_performance_analysis_report(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePerformanceAnalysisReport">>, Input, Options).
@@ -506,9 +566,7 @@ create_performance_analysis_report(Client, Input, Options)
 -spec delete_performance_analysis_report(map(), delete_performance_analysis_report_request()) ->
     {ok, delete_performance_analysis_report_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()}.
+    {error, delete_performance_analysis_report_errors(), tuple()}.
 delete_performance_analysis_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_performance_analysis_report(Client, Input, []).
@@ -516,9 +574,7 @@ delete_performance_analysis_report(Client, Input)
 -spec delete_performance_analysis_report(map(), delete_performance_analysis_report_request(), proplists:proplist()) ->
     {ok, delete_performance_analysis_report_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()}.
+    {error, delete_performance_analysis_report_errors(), tuple()}.
 delete_performance_analysis_report(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePerformanceAnalysisReport">>, Input, Options).
@@ -532,9 +588,7 @@ delete_performance_analysis_report(Client, Input, Options)
 -spec describe_dimension_keys(map(), describe_dimension_keys_request()) ->
     {ok, describe_dimension_keys_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()}.
+    {error, describe_dimension_keys_errors(), tuple()}.
 describe_dimension_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dimension_keys(Client, Input, []).
@@ -542,9 +596,7 @@ describe_dimension_keys(Client, Input)
 -spec describe_dimension_keys(map(), describe_dimension_keys_request(), proplists:proplist()) ->
     {ok, describe_dimension_keys_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()}.
+    {error, describe_dimension_keys_errors(), tuple()}.
 describe_dimension_keys(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDimensionKeys">>, Input, Options).
@@ -561,9 +613,7 @@ describe_dimension_keys(Client, Input, Options)
 -spec get_dimension_key_details(map(), get_dimension_key_details_request()) ->
     {ok, get_dimension_key_details_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()}.
+    {error, get_dimension_key_details_errors(), tuple()}.
 get_dimension_key_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_dimension_key_details(Client, Input, []).
@@ -571,9 +621,7 @@ get_dimension_key_details(Client, Input)
 -spec get_dimension_key_details(map(), get_dimension_key_details_request(), proplists:proplist()) ->
     {ok, get_dimension_key_details_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()}.
+    {error, get_dimension_key_details_errors(), tuple()}.
 get_dimension_key_details(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDimensionKeyDetails">>, Input, Options).
@@ -588,9 +636,7 @@ get_dimension_key_details(Client, Input, Options)
 -spec get_performance_analysis_report(map(), get_performance_analysis_report_request()) ->
     {ok, get_performance_analysis_report_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()}.
+    {error, get_performance_analysis_report_errors(), tuple()}.
 get_performance_analysis_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_performance_analysis_report(Client, Input, []).
@@ -598,9 +644,7 @@ get_performance_analysis_report(Client, Input)
 -spec get_performance_analysis_report(map(), get_performance_analysis_report_request(), proplists:proplist()) ->
     {ok, get_performance_analysis_report_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()}.
+    {error, get_performance_analysis_report_errors(), tuple()}.
 get_performance_analysis_report(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPerformanceAnalysisReport">>, Input, Options).
@@ -612,9 +656,7 @@ get_performance_analysis_report(Client, Input, Options)
 -spec get_resource_metadata(map(), get_resource_metadata_request()) ->
     {ok, get_resource_metadata_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()}.
+    {error, get_resource_metadata_errors(), tuple()}.
 get_resource_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_metadata(Client, Input, []).
@@ -622,9 +664,7 @@ get_resource_metadata(Client, Input)
 -spec get_resource_metadata(map(), get_resource_metadata_request(), proplists:proplist()) ->
     {ok, get_resource_metadata_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()}.
+    {error, get_resource_metadata_errors(), tuple()}.
 get_resource_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourceMetadata">>, Input, Options).
@@ -643,9 +683,7 @@ get_resource_metadata(Client, Input, Options)
 -spec get_resource_metrics(map(), get_resource_metrics_request()) ->
     {ok, get_resource_metrics_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()}.
+    {error, get_resource_metrics_errors(), tuple()}.
 get_resource_metrics(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_metrics(Client, Input, []).
@@ -653,9 +691,7 @@ get_resource_metrics(Client, Input)
 -spec get_resource_metrics(map(), get_resource_metrics_request(), proplists:proplist()) ->
     {ok, get_resource_metrics_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()}.
+    {error, get_resource_metrics_errors(), tuple()}.
 get_resource_metrics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourceMetrics">>, Input, Options).
@@ -665,9 +701,7 @@ get_resource_metrics(Client, Input, Options)
 -spec list_available_resource_dimensions(map(), list_available_resource_dimensions_request()) ->
     {ok, list_available_resource_dimensions_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()}.
+    {error, list_available_resource_dimensions_errors(), tuple()}.
 list_available_resource_dimensions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_available_resource_dimensions(Client, Input, []).
@@ -675,9 +709,7 @@ list_available_resource_dimensions(Client, Input)
 -spec list_available_resource_dimensions(map(), list_available_resource_dimensions_request(), proplists:proplist()) ->
     {ok, list_available_resource_dimensions_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()}.
+    {error, list_available_resource_dimensions_errors(), tuple()}.
 list_available_resource_dimensions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAvailableResourceDimensions">>, Input, Options).
@@ -687,9 +719,7 @@ list_available_resource_dimensions(Client, Input, Options)
 -spec list_available_resource_metrics(map(), list_available_resource_metrics_request()) ->
     {ok, list_available_resource_metrics_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()}.
+    {error, list_available_resource_metrics_errors(), tuple()}.
 list_available_resource_metrics(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_available_resource_metrics(Client, Input, []).
@@ -697,9 +727,7 @@ list_available_resource_metrics(Client, Input)
 -spec list_available_resource_metrics(map(), list_available_resource_metrics_request(), proplists:proplist()) ->
     {ok, list_available_resource_metrics_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()}.
+    {error, list_available_resource_metrics_errors(), tuple()}.
 list_available_resource_metrics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAvailableResourceMetrics">>, Input, Options).
@@ -710,9 +738,7 @@ list_available_resource_metrics(Client, Input, Options)
 -spec list_performance_analysis_reports(map(), list_performance_analysis_reports_request()) ->
     {ok, list_performance_analysis_reports_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()}.
+    {error, list_performance_analysis_reports_errors(), tuple()}.
 list_performance_analysis_reports(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_performance_analysis_reports(Client, Input, []).
@@ -720,9 +746,7 @@ list_performance_analysis_reports(Client, Input)
 -spec list_performance_analysis_reports(map(), list_performance_analysis_reports_request(), proplists:proplist()) ->
     {ok, list_performance_analysis_reports_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()}.
+    {error, list_performance_analysis_reports_errors(), tuple()}.
 list_performance_analysis_reports(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPerformanceAnalysisReports">>, Input, Options).
@@ -732,9 +756,7 @@ list_performance_analysis_reports(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -742,9 +764,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -753,9 +773,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -763,9 +781,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -775,9 +791,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -785,9 +799,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, not_authorized_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).

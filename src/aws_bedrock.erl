@@ -74,6 +74,7 @@
 %% }
 -type model_customization_job_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_custom_models_request() :: #{
 %%   <<"baseModelArnEquals">> => string(),
@@ -87,9 +88,11 @@
 %%   <<"sortOrder">> => list(any())
 %% }
 -type list_custom_models_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_provisioned_model_throughput_response() :: #{}
 -type delete_provisioned_model_throughput_response() :: #{}.
+
 
 %% Example:
 %% foundation_model_summary() :: #{
@@ -106,24 +109,29 @@
 %% }
 -type foundation_model_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"resourceARN">> := string(),
 %%   <<"tags">> := list(tag()())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_custom_model_response() :: #{}
 -type delete_custom_model_response() :: #{}.
+
 %% Example:
 %% get_provisioned_model_throughput_request() :: #{}
 -type get_provisioned_model_throughput_request() :: #{}.
+
 
 %% Example:
 %% create_model_customization_job_response() :: #{
 %%   <<"jobArn">> => string()
 %% }
 -type create_model_customization_job_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% foundation_model_details() :: #{
@@ -139,9 +147,11 @@
 %%   <<"responseStreamingSupported">> => [boolean()]
 %% }
 -type foundation_model_details() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% list_model_customization_jobs_request() :: #{
@@ -155,6 +165,7 @@
 %%   <<"statusEquals">> => list(any())
 %% }
 -type list_model_customization_jobs_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_provisioned_model_throughputs_request() :: #{
@@ -170,6 +181,7 @@
 %% }
 -type list_provisioned_model_throughputs_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% cloud_watch_config() :: #{
 %%   <<"largeDataDeliveryS3Config">> => s3_config(),
@@ -177,6 +189,7 @@
 %%   <<"roleArn">> => string()
 %% }
 -type cloud_watch_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% logging_config() :: #{
@@ -188,6 +201,7 @@
 %% }
 -type logging_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceARN">> := string(),
@@ -195,12 +209,14 @@
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_provisioned_model_throughputs_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"provisionedModelSummaries">> => list(provisioned_model_summary()())
 %% }
 -type list_provisioned_model_throughputs_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% provisioned_model_summary() :: #{
@@ -219,6 +235,7 @@
 %% }
 -type provisioned_model_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_provisioned_model_throughput_response() :: #{
 %%   <<"commitmentDuration">> => list(any()),
@@ -236,12 +253,15 @@
 %%   <<"status">> => list(any())
 %% }
 -type get_provisioned_model_throughput_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_foundation_model_request() :: #{}
 -type get_foundation_model_request() :: #{}.
+
 %% Example:
 %% stop_model_customization_job_response() :: #{}
 -type stop_model_customization_job_response() :: #{}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -249,11 +269,13 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% tag() :: #{
@@ -261,9 +283,11 @@
 %%   <<"value">> => string()
 %% }
 -type tag() :: #{binary() => any()}.
+
 %% Example:
 %% delete_provisioned_model_throughput_request() :: #{}
 -type delete_provisioned_model_throughput_request() :: #{}.
+
 
 %% Example:
 %% create_provisioned_model_throughput_response() :: #{
@@ -271,11 +295,13 @@
 %% }
 -type create_provisioned_model_throughput_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_config() :: #{
@@ -283,6 +309,7 @@
 %%   <<"keyPrefix">> => string()
 %% }
 -type s3_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_custom_model_response() :: #{
@@ -303,12 +330,14 @@
 %% }
 -type get_custom_model_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_provisioned_model_throughput_request() :: #{
 %%   <<"desiredModelId">> => string(),
 %%   <<"desiredProvisionedModelName">> => string()
 %% }
 -type update_provisioned_model_throughput_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_provisioned_model_throughput_request() :: #{
@@ -321,6 +350,7 @@
 %% }
 -type create_provisioned_model_throughput_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% vpc_config() :: #{
 %%   <<"securityGroupIds">> => list(string()()),
@@ -328,29 +358,36 @@
 %% }
 -type vpc_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => list(tag()())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_model_invocation_logging_configuration_response() :: #{}
 -type delete_model_invocation_logging_configuration_response() :: #{}.
+
 
 %% Example:
 %% training_metrics() :: #{
 %%   <<"trainingLoss">> => float()
 %% }
 -type training_metrics() :: #{binary() => any()}.
+
 %% Example:
 %% get_custom_model_request() :: #{}
 -type get_custom_model_request() :: #{}.
+
 %% Example:
 %% get_model_customization_job_request() :: #{}
 -type get_model_customization_job_request() :: #{}.
+
 %% Example:
 %% get_model_invocation_logging_configuration_request() :: #{}
 -type get_model_invocation_logging_configuration_request() :: #{}.
+
 
 %% Example:
 %% list_foundation_models_request() :: #{
@@ -361,11 +398,13 @@
 %% }
 -type list_foundation_models_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% foundation_model_lifecycle() :: #{
 %%   <<"status">> => list(any())
 %% }
 -type foundation_model_lifecycle() :: #{binary() => any()}.
+
 
 %% Example:
 %% internal_server_exception() :: #{
@@ -373,20 +412,24 @@
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_data_config() :: #{
 %%   <<"validators">> => list(validator()())
 %% }
 -type validation_data_config() :: #{binary() => any()}.
+
 %% Example:
 %% update_provisioned_model_throughput_response() :: #{}
 -type update_provisioned_model_throughput_response() :: #{}.
+
 
 %% Example:
 %% put_model_invocation_logging_configuration_request() :: #{
 %%   <<"loggingConfig">> := logging_config()
 %% }
 -type put_model_invocation_logging_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_model_customization_jobs_response() :: #{
@@ -395,17 +438,20 @@
 %% }
 -type list_model_customization_jobs_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_foundation_models_response() :: #{
 %%   <<"modelSummaries">> => list(foundation_model_summary()())
 %% }
 -type list_foundation_models_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_model_customization_job_request() :: #{
@@ -425,21 +471,26 @@
 %%   <<"vpcConfig">> => vpc_config()
 %% }
 -type create_model_customization_job_request() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% validator_metric() :: #{
 %%   <<"validationLoss">> => float()
 %% }
 -type validator_metric() :: #{binary() => any()}.
+
 %% Example:
 %% stop_model_customization_job_request() :: #{}
 -type stop_model_customization_job_request() :: #{}.
+
 %% Example:
 %% delete_custom_model_request() :: #{}
 -type delete_custom_model_request() :: #{}.
+
 
 %% Example:
 %% validation_exception() :: #{
@@ -447,17 +498,20 @@
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_request() :: #{
 %%   <<"resourceARN">> := string()
 %% }
 -type list_tags_for_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_model_customization_job_response() :: #{
@@ -485,6 +539,7 @@
 %% }
 -type get_model_customization_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_custom_models_response() :: #{
 %%   <<"modelSummaries">> => list(custom_model_summary()()),
@@ -492,20 +547,24 @@
 %% }
 -type list_custom_models_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% output_data_config() :: #{
 %%   <<"s3Uri">> => string()
 %% }
 -type output_data_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_model_invocation_logging_configuration_response() :: #{
 %%   <<"loggingConfig">> => logging_config()
 %% }
 -type get_model_invocation_logging_configuration_response() :: #{binary() => any()}.
+
 %% Example:
 %% put_model_invocation_logging_configuration_response() :: #{}
 -type put_model_invocation_logging_configuration_response() :: #{}.
+
 
 %% Example:
 %% validator() :: #{
@@ -513,14 +572,17 @@
 %% }
 -type validator() :: #{binary() => any()}.
 
+
 %% Example:
 %% training_data_config() :: #{
 %%   <<"s3Uri">> => string()
 %% }
 -type training_data_config() :: #{binary() => any()}.
+
 %% Example:
 %% delete_model_invocation_logging_configuration_request() :: #{}
 -type delete_model_invocation_logging_configuration_request() :: #{}.
+
 
 %% Example:
 %% custom_model_summary() :: #{
@@ -533,11 +595,13 @@
 %% }
 -type custom_model_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_foundation_model_response() :: #{
 %%   <<"modelDetails">> => foundation_model_details()
 %% }
 -type get_foundation_model_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% too_many_tags_exception() :: #{
@@ -545,6 +609,146 @@
 %%   <<"resourceName">> => string()
 %% }
 -type too_many_tags_exception() :: #{binary() => any()}.
+
+-type create_model_customization_job_errors() ::
+    too_many_tags_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_provisioned_model_throughput_errors() ::
+    too_many_tags_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type delete_custom_model_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_model_invocation_logging_configuration_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type delete_provisioned_model_throughput_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_custom_model_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_foundation_model_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_model_customization_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_model_invocation_logging_configuration_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type get_provisioned_model_throughput_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_custom_models_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_foundation_models_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_model_customization_jobs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_provisioned_model_throughputs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type put_model_invocation_logging_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type stop_model_customization_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_provisioned_model_throughput_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -573,28 +777,14 @@
 -spec create_model_customization_job(map(), create_model_customization_job_request()) ->
     {ok, create_model_customization_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_model_customization_job_errors(), tuple()}.
 create_model_customization_job(Client, Input) ->
     create_model_customization_job(Client, Input, []).
 
 -spec create_model_customization_job(map(), create_model_customization_job_request(), proplists:proplist()) ->
     {ok, create_model_customization_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_model_customization_job_errors(), tuple()}.
 create_model_customization_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/model-customization-jobs"],
@@ -626,26 +816,14 @@ create_model_customization_job(Client, Input0, Options0) ->
 -spec create_provisioned_model_throughput(map(), create_provisioned_model_throughput_request()) ->
     {ok, create_provisioned_model_throughput_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_provisioned_model_throughput_errors(), tuple()}.
 create_provisioned_model_throughput(Client, Input) ->
     create_provisioned_model_throughput(Client, Input, []).
 
 -spec create_provisioned_model_throughput(map(), create_provisioned_model_throughput_request(), proplists:proplist()) ->
     {ok, create_provisioned_model_throughput_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_provisioned_model_throughput_errors(), tuple()}.
 create_provisioned_model_throughput(Client, Input0, Options0) ->
     Method = post,
     Path = ["/provisioned-model-throughput"],
@@ -676,24 +854,14 @@ create_provisioned_model_throughput(Client, Input0, Options0) ->
 -spec delete_custom_model(map(), binary() | list(), delete_custom_model_request()) ->
     {ok, delete_custom_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_custom_model_errors(), tuple()}.
 delete_custom_model(Client, ModelIdentifier, Input) ->
     delete_custom_model(Client, ModelIdentifier, Input, []).
 
 -spec delete_custom_model(map(), binary() | list(), delete_custom_model_request(), proplists:proplist()) ->
     {ok, delete_custom_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_custom_model_errors(), tuple()}.
 delete_custom_model(Client, ModelIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/custom-models/", aws_util:encode_uri(ModelIdentifier), ""],
@@ -720,18 +888,14 @@ delete_custom_model(Client, ModelIdentifier, Input0, Options0) ->
 -spec delete_model_invocation_logging_configuration(map(), delete_model_invocation_logging_configuration_request()) ->
     {ok, delete_model_invocation_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_model_invocation_logging_configuration_errors(), tuple()}.
 delete_model_invocation_logging_configuration(Client, Input) ->
     delete_model_invocation_logging_configuration(Client, Input, []).
 
 -spec delete_model_invocation_logging_configuration(map(), delete_model_invocation_logging_configuration_request(), proplists:proplist()) ->
     {ok, delete_model_invocation_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_model_invocation_logging_configuration_errors(), tuple()}.
 delete_model_invocation_logging_configuration(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/logging/modelinvocations"],
@@ -762,24 +926,14 @@ delete_model_invocation_logging_configuration(Client, Input0, Options0) ->
 -spec delete_provisioned_model_throughput(map(), binary() | list(), delete_provisioned_model_throughput_request()) ->
     {ok, delete_provisioned_model_throughput_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_provisioned_model_throughput_errors(), tuple()}.
 delete_provisioned_model_throughput(Client, ProvisionedModelId, Input) ->
     delete_provisioned_model_throughput(Client, ProvisionedModelId, Input, []).
 
 -spec delete_provisioned_model_throughput(map(), binary() | list(), delete_provisioned_model_throughput_request(), proplists:proplist()) ->
     {ok, delete_provisioned_model_throughput_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_provisioned_model_throughput_errors(), tuple()}.
 delete_provisioned_model_throughput(Client, ProvisionedModelId, Input0, Options0) ->
     Method = delete,
     Path = ["/provisioned-model-throughput/", aws_util:encode_uri(ProvisionedModelId), ""],
@@ -809,11 +963,7 @@ delete_provisioned_model_throughput(Client, ProvisionedModelId, Input0, Options0
 -spec get_custom_model(map(), binary() | list()) ->
     {ok, get_custom_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_custom_model_errors(), tuple()}.
 get_custom_model(Client, ModelIdentifier)
   when is_map(Client) ->
     get_custom_model(Client, ModelIdentifier, #{}, #{}).
@@ -821,11 +971,7 @@ get_custom_model(Client, ModelIdentifier)
 -spec get_custom_model(map(), binary() | list(), map(), map()) ->
     {ok, get_custom_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_custom_model_errors(), tuple()}.
 get_custom_model(Client, ModelIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_custom_model(Client, ModelIdentifier, QueryMap, HeadersMap, []).
@@ -833,11 +979,7 @@ get_custom_model(Client, ModelIdentifier, QueryMap, HeadersMap)
 -spec get_custom_model(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_custom_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_custom_model_errors(), tuple()}.
 get_custom_model(Client, ModelIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/custom-models/", aws_util:encode_uri(ModelIdentifier), ""],
@@ -858,11 +1000,7 @@ get_custom_model(Client, ModelIdentifier, QueryMap, HeadersMap, Options0)
 -spec get_foundation_model(map(), binary() | list()) ->
     {ok, get_foundation_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_foundation_model_errors(), tuple()}.
 get_foundation_model(Client, ModelIdentifier)
   when is_map(Client) ->
     get_foundation_model(Client, ModelIdentifier, #{}, #{}).
@@ -870,11 +1008,7 @@ get_foundation_model(Client, ModelIdentifier)
 -spec get_foundation_model(map(), binary() | list(), map(), map()) ->
     {ok, get_foundation_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_foundation_model_errors(), tuple()}.
 get_foundation_model(Client, ModelIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_foundation_model(Client, ModelIdentifier, QueryMap, HeadersMap, []).
@@ -882,11 +1016,7 @@ get_foundation_model(Client, ModelIdentifier, QueryMap, HeadersMap)
 -spec get_foundation_model(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_foundation_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_foundation_model_errors(), tuple()}.
 get_foundation_model(Client, ModelIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/foundation-models/", aws_util:encode_uri(ModelIdentifier), ""],
@@ -912,11 +1042,7 @@ get_foundation_model(Client, ModelIdentifier, QueryMap, HeadersMap, Options0)
 -spec get_model_customization_job(map(), binary() | list()) ->
     {ok, get_model_customization_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_model_customization_job_errors(), tuple()}.
 get_model_customization_job(Client, JobIdentifier)
   when is_map(Client) ->
     get_model_customization_job(Client, JobIdentifier, #{}, #{}).
@@ -924,11 +1050,7 @@ get_model_customization_job(Client, JobIdentifier)
 -spec get_model_customization_job(map(), binary() | list(), map(), map()) ->
     {ok, get_model_customization_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_model_customization_job_errors(), tuple()}.
 get_model_customization_job(Client, JobIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_model_customization_job(Client, JobIdentifier, QueryMap, HeadersMap, []).
@@ -936,11 +1058,7 @@ get_model_customization_job(Client, JobIdentifier, QueryMap, HeadersMap)
 -spec get_model_customization_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_model_customization_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_model_customization_job_errors(), tuple()}.
 get_model_customization_job(Client, JobIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/model-customization-jobs/", aws_util:encode_uri(JobIdentifier), ""],
@@ -961,9 +1079,7 @@ get_model_customization_job(Client, JobIdentifier, QueryMap, HeadersMap, Options
 -spec get_model_invocation_logging_configuration(map()) ->
     {ok, get_model_invocation_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_model_invocation_logging_configuration_errors(), tuple()}.
 get_model_invocation_logging_configuration(Client)
   when is_map(Client) ->
     get_model_invocation_logging_configuration(Client, #{}, #{}).
@@ -971,9 +1087,7 @@ get_model_invocation_logging_configuration(Client)
 -spec get_model_invocation_logging_configuration(map(), map(), map()) ->
     {ok, get_model_invocation_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_model_invocation_logging_configuration_errors(), tuple()}.
 get_model_invocation_logging_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_model_invocation_logging_configuration(Client, QueryMap, HeadersMap, []).
@@ -981,9 +1095,7 @@ get_model_invocation_logging_configuration(Client, QueryMap, HeadersMap)
 -spec get_model_invocation_logging_configuration(map(), map(), map(), proplists:proplist()) ->
     {ok, get_model_invocation_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_model_invocation_logging_configuration_errors(), tuple()}.
 get_model_invocation_logging_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/logging/modelinvocations"],
@@ -1008,11 +1120,7 @@ get_model_invocation_logging_configuration(Client, QueryMap, HeadersMap, Options
 -spec get_provisioned_model_throughput(map(), binary() | list()) ->
     {ok, get_provisioned_model_throughput_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_provisioned_model_throughput_errors(), tuple()}.
 get_provisioned_model_throughput(Client, ProvisionedModelId)
   when is_map(Client) ->
     get_provisioned_model_throughput(Client, ProvisionedModelId, #{}, #{}).
@@ -1020,11 +1128,7 @@ get_provisioned_model_throughput(Client, ProvisionedModelId)
 -spec get_provisioned_model_throughput(map(), binary() | list(), map(), map()) ->
     {ok, get_provisioned_model_throughput_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_provisioned_model_throughput_errors(), tuple()}.
 get_provisioned_model_throughput(Client, ProvisionedModelId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_provisioned_model_throughput(Client, ProvisionedModelId, QueryMap, HeadersMap, []).
@@ -1032,11 +1136,7 @@ get_provisioned_model_throughput(Client, ProvisionedModelId, QueryMap, HeadersMa
 -spec get_provisioned_model_throughput(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_provisioned_model_throughput_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_provisioned_model_throughput_errors(), tuple()}.
 get_provisioned_model_throughput(Client, ProvisionedModelId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/provisioned-model-throughput/", aws_util:encode_uri(ProvisionedModelId), ""],
@@ -1062,10 +1162,7 @@ get_provisioned_model_throughput(Client, ProvisionedModelId, QueryMap, HeadersMa
 -spec list_custom_models(map()) ->
     {ok, list_custom_models_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_custom_models_errors(), tuple()}.
 list_custom_models(Client)
   when is_map(Client) ->
     list_custom_models(Client, #{}, #{}).
@@ -1073,10 +1170,7 @@ list_custom_models(Client)
 -spec list_custom_models(map(), map(), map()) ->
     {ok, list_custom_models_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_custom_models_errors(), tuple()}.
 list_custom_models(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_custom_models(Client, QueryMap, HeadersMap, []).
@@ -1084,10 +1178,7 @@ list_custom_models(Client, QueryMap, HeadersMap)
 -spec list_custom_models(map(), map(), map(), proplists:proplist()) ->
     {ok, list_custom_models_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_custom_models_errors(), tuple()}.
 list_custom_models(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/custom-models"],
@@ -1124,10 +1215,7 @@ list_custom_models(Client, QueryMap, HeadersMap, Options0)
 -spec list_foundation_models(map()) ->
     {ok, list_foundation_models_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_foundation_models_errors(), tuple()}.
 list_foundation_models(Client)
   when is_map(Client) ->
     list_foundation_models(Client, #{}, #{}).
@@ -1135,10 +1223,7 @@ list_foundation_models(Client)
 -spec list_foundation_models(map(), map(), map()) ->
     {ok, list_foundation_models_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_foundation_models_errors(), tuple()}.
 list_foundation_models(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_foundation_models(Client, QueryMap, HeadersMap, []).
@@ -1146,10 +1231,7 @@ list_foundation_models(Client, QueryMap, HeadersMap)
 -spec list_foundation_models(map(), map(), map(), proplists:proplist()) ->
     {ok, list_foundation_models_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_foundation_models_errors(), tuple()}.
 list_foundation_models(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/foundation-models"],
@@ -1184,10 +1266,7 @@ list_foundation_models(Client, QueryMap, HeadersMap, Options0)
 -spec list_model_customization_jobs(map()) ->
     {ok, list_model_customization_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_model_customization_jobs_errors(), tuple()}.
 list_model_customization_jobs(Client)
   when is_map(Client) ->
     list_model_customization_jobs(Client, #{}, #{}).
@@ -1195,10 +1274,7 @@ list_model_customization_jobs(Client)
 -spec list_model_customization_jobs(map(), map(), map()) ->
     {ok, list_model_customization_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_model_customization_jobs_errors(), tuple()}.
 list_model_customization_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_model_customization_jobs(Client, QueryMap, HeadersMap, []).
@@ -1206,10 +1282,7 @@ list_model_customization_jobs(Client, QueryMap, HeadersMap)
 -spec list_model_customization_jobs(map(), map(), map(), proplists:proplist()) ->
     {ok, list_model_customization_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_model_customization_jobs_errors(), tuple()}.
 list_model_customization_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/model-customization-jobs"],
@@ -1245,10 +1318,7 @@ list_model_customization_jobs(Client, QueryMap, HeadersMap, Options0)
 -spec list_provisioned_model_throughputs(map()) ->
     {ok, list_provisioned_model_throughputs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_provisioned_model_throughputs_errors(), tuple()}.
 list_provisioned_model_throughputs(Client)
   when is_map(Client) ->
     list_provisioned_model_throughputs(Client, #{}, #{}).
@@ -1256,10 +1326,7 @@ list_provisioned_model_throughputs(Client)
 -spec list_provisioned_model_throughputs(map(), map(), map()) ->
     {ok, list_provisioned_model_throughputs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_provisioned_model_throughputs_errors(), tuple()}.
 list_provisioned_model_throughputs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_provisioned_model_throughputs(Client, QueryMap, HeadersMap, []).
@@ -1267,10 +1334,7 @@ list_provisioned_model_throughputs(Client, QueryMap, HeadersMap)
 -spec list_provisioned_model_throughputs(map(), map(), map(), proplists:proplist()) ->
     {ok, list_provisioned_model_throughputs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_provisioned_model_throughputs_errors(), tuple()}.
 list_provisioned_model_throughputs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/provisioned-model-throughputs"],
@@ -1307,22 +1371,14 @@ list_provisioned_model_throughputs(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input) ->
     list_tags_for_resource(Client, Input, []).
 
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listTagsForResource"],
@@ -1349,20 +1405,14 @@ list_tags_for_resource(Client, Input0, Options0) ->
 -spec put_model_invocation_logging_configuration(map(), put_model_invocation_logging_configuration_request()) ->
     {ok, put_model_invocation_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_model_invocation_logging_configuration_errors(), tuple()}.
 put_model_invocation_logging_configuration(Client, Input) ->
     put_model_invocation_logging_configuration(Client, Input, []).
 
 -spec put_model_invocation_logging_configuration(map(), put_model_invocation_logging_configuration_request(), proplists:proplist()) ->
     {ok, put_model_invocation_logging_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_model_invocation_logging_configuration_errors(), tuple()}.
 put_model_invocation_logging_configuration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/logging/modelinvocations"],
@@ -1393,24 +1443,14 @@ put_model_invocation_logging_configuration(Client, Input0, Options0) ->
 -spec stop_model_customization_job(map(), binary() | list(), stop_model_customization_job_request()) ->
     {ok, stop_model_customization_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_model_customization_job_errors(), tuple()}.
 stop_model_customization_job(Client, JobIdentifier, Input) ->
     stop_model_customization_job(Client, JobIdentifier, Input, []).
 
 -spec stop_model_customization_job(map(), binary() | list(), stop_model_customization_job_request(), proplists:proplist()) ->
     {ok, stop_model_customization_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_model_customization_job_errors(), tuple()}.
 stop_model_customization_job(Client, JobIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/model-customization-jobs/", aws_util:encode_uri(JobIdentifier), "/stop"],
@@ -1441,24 +1481,14 @@ stop_model_customization_job(Client, JobIdentifier, Input0, Options0) ->
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tagResource"],
@@ -1489,22 +1519,14 @@ tag_resource(Client, Input0, Options0) ->
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/untagResource"],
@@ -1535,22 +1557,14 @@ untag_resource(Client, Input0, Options0) ->
 -spec update_provisioned_model_throughput(map(), binary() | list(), update_provisioned_model_throughput_request()) ->
     {ok, update_provisioned_model_throughput_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_provisioned_model_throughput_errors(), tuple()}.
 update_provisioned_model_throughput(Client, ProvisionedModelId, Input) ->
     update_provisioned_model_throughput(Client, ProvisionedModelId, Input, []).
 
 -spec update_provisioned_model_throughput(map(), binary() | list(), update_provisioned_model_throughput_request(), proplists:proplist()) ->
     {ok, update_provisioned_model_throughput_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_provisioned_model_throughput_errors(), tuple()}.
 update_provisioned_model_throughput(Client, ProvisionedModelId, Input0, Options0) ->
     Method = patch,
     Path = ["/provisioned-model-throughput/", aws_util:encode_uri(ProvisionedModelId), ""],

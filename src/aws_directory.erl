@@ -1739,6 +1739,512 @@
 %% }
 -type update_radius_request() :: #{binary() => any()}.
 
+-type accept_shared_directory_errors() ::
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    client_exception() | 
+    directory_already_shared_exception().
+
+-type add_ip_routes_errors() ::
+    directory_unavailable_exception() | 
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    ip_route_limit_exceeded_exception() | 
+    service_exception() | 
+    client_exception() | 
+    entity_already_exists_exception().
+
+-type add_region_errors() ::
+    directory_unavailable_exception() | 
+    directory_already_in_region_exception() | 
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception() | 
+    region_limit_exceeded_exception() | 
+    unsupported_operation_exception().
+
+-type add_tags_to_resource_errors() ::
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    tag_limit_exceeded_exception() | 
+    client_exception().
+
+-type cancel_schema_extension_errors() ::
+    entity_does_not_exist_exception() | 
+    service_exception() | 
+    client_exception().
+
+-type connect_directory_errors() ::
+    directory_limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    client_exception().
+
+-type create_alias_errors() ::
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    client_exception() | 
+    entity_already_exists_exception().
+
+-type create_computer_errors() ::
+    authentication_failed_exception() | 
+    directory_unavailable_exception() | 
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    client_exception() | 
+    unsupported_operation_exception() | 
+    entity_already_exists_exception().
+
+-type create_conditional_forwarder_errors() ::
+    directory_unavailable_exception() | 
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    client_exception() | 
+    unsupported_operation_exception() | 
+    entity_already_exists_exception().
+
+-type create_directory_errors() ::
+    directory_limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    client_exception().
+
+-type create_log_subscription_errors() ::
+    entity_does_not_exist_exception() | 
+    service_exception() | 
+    client_exception() | 
+    insufficient_permissions_exception() | 
+    unsupported_operation_exception() | 
+    entity_already_exists_exception().
+
+-type create_microsoft_ad_errors() ::
+    directory_limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    client_exception() | 
+    unsupported_operation_exception().
+
+-type create_snapshot_errors() ::
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    client_exception() | 
+    snapshot_limit_exceeded_exception().
+
+-type create_trust_errors() ::
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    client_exception() | 
+    unsupported_operation_exception() | 
+    entity_already_exists_exception().
+
+-type delete_conditional_forwarder_errors() ::
+    directory_unavailable_exception() | 
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    client_exception() | 
+    unsupported_operation_exception().
+
+-type delete_directory_errors() ::
+    entity_does_not_exist_exception() | 
+    service_exception() | 
+    client_exception().
+
+-type delete_log_subscription_errors() ::
+    entity_does_not_exist_exception() | 
+    service_exception() | 
+    client_exception() | 
+    unsupported_operation_exception().
+
+-type delete_snapshot_errors() ::
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    client_exception().
+
+-type delete_trust_errors() ::
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    client_exception() | 
+    unsupported_operation_exception().
+
+-type deregister_certificate_errors() ::
+    certificate_does_not_exist_exception() | 
+    directory_unavailable_exception() | 
+    invalid_parameter_exception() | 
+    certificate_in_use_exception() | 
+    service_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception() | 
+    unsupported_operation_exception().
+
+-type deregister_event_topic_errors() ::
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    client_exception().
+
+-type describe_certificate_errors() ::
+    certificate_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception() | 
+    unsupported_operation_exception().
+
+-type describe_client_authentication_settings_errors() ::
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception() | 
+    unsupported_operation_exception().
+
+-type describe_conditional_forwarders_errors() ::
+    directory_unavailable_exception() | 
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    client_exception() | 
+    unsupported_operation_exception().
+
+-type describe_directories_errors() ::
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    invalid_next_token_exception() | 
+    client_exception().
+
+-type describe_domain_controllers_errors() ::
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    invalid_next_token_exception() | 
+    client_exception() | 
+    unsupported_operation_exception().
+
+-type describe_event_topics_errors() ::
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    client_exception().
+
+-type describe_ldaps_settings_errors() ::
+    invalid_parameter_exception() | 
+    service_exception() | 
+    invalid_next_token_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception() | 
+    unsupported_operation_exception().
+
+-type describe_regions_errors() ::
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_exception() | 
+    invalid_next_token_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception() | 
+    unsupported_operation_exception().
+
+-type describe_settings_errors() ::
+    invalid_parameter_exception() | 
+    service_exception() | 
+    invalid_next_token_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception() | 
+    unsupported_operation_exception().
+
+-type describe_shared_directories_errors() ::
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    invalid_next_token_exception() | 
+    client_exception() | 
+    unsupported_operation_exception().
+
+-type describe_snapshots_errors() ::
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    invalid_next_token_exception() | 
+    client_exception().
+
+-type describe_trusts_errors() ::
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    invalid_next_token_exception() | 
+    client_exception() | 
+    unsupported_operation_exception().
+
+-type describe_update_directory_errors() ::
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_exception() | 
+    invalid_next_token_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception().
+
+-type disable_client_authentication_errors() ::
+    invalid_client_auth_status_exception() | 
+    access_denied_exception() | 
+    service_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception() | 
+    unsupported_operation_exception().
+
+-type disable_ldaps_errors() ::
+    directory_unavailable_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception() | 
+    invalid_ldaps_status_exception() | 
+    unsupported_operation_exception().
+
+-type disable_radius_errors() ::
+    entity_does_not_exist_exception() | 
+    service_exception() | 
+    client_exception().
+
+-type disable_sso_errors() ::
+    authentication_failed_exception() | 
+    entity_does_not_exist_exception() | 
+    service_exception() | 
+    client_exception() | 
+    insufficient_permissions_exception().
+
+-type enable_client_authentication_errors() ::
+    invalid_client_auth_status_exception() | 
+    access_denied_exception() | 
+    service_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception() | 
+    no_available_certificate_exception() | 
+    unsupported_operation_exception().
+
+-type enable_ldaps_errors() ::
+    directory_unavailable_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception() | 
+    no_available_certificate_exception() | 
+    invalid_ldaps_status_exception() | 
+    unsupported_operation_exception().
+
+-type enable_radius_errors() ::
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    client_exception() | 
+    entity_already_exists_exception().
+
+-type enable_sso_errors() ::
+    authentication_failed_exception() | 
+    entity_does_not_exist_exception() | 
+    service_exception() | 
+    client_exception() | 
+    insufficient_permissions_exception().
+
+-type get_directory_limits_errors() ::
+    entity_does_not_exist_exception() | 
+    service_exception() | 
+    client_exception().
+
+-type get_snapshot_limits_errors() ::
+    entity_does_not_exist_exception() | 
+    service_exception() | 
+    client_exception().
+
+-type list_certificates_errors() ::
+    invalid_parameter_exception() | 
+    service_exception() | 
+    invalid_next_token_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception() | 
+    unsupported_operation_exception().
+
+-type list_ip_routes_errors() ::
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    invalid_next_token_exception() | 
+    client_exception().
+
+-type list_log_subscriptions_errors() ::
+    entity_does_not_exist_exception() | 
+    service_exception() | 
+    invalid_next_token_exception() | 
+    client_exception().
+
+-type list_schema_extensions_errors() ::
+    entity_does_not_exist_exception() | 
+    service_exception() | 
+    invalid_next_token_exception() | 
+    client_exception().
+
+-type list_tags_for_resource_errors() ::
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    invalid_next_token_exception() | 
+    client_exception().
+
+-type register_certificate_errors() ::
+    certificate_limit_exceeded_exception() | 
+    directory_unavailable_exception() | 
+    invalid_parameter_exception() | 
+    invalid_certificate_exception() | 
+    service_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception() | 
+    certificate_already_exists_exception() | 
+    unsupported_operation_exception().
+
+-type register_event_topic_errors() ::
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    client_exception().
+
+-type reject_shared_directory_errors() ::
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    client_exception() | 
+    directory_already_shared_exception().
+
+-type remove_ip_routes_errors() ::
+    directory_unavailable_exception() | 
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    client_exception().
+
+-type remove_region_errors() ::
+    directory_unavailable_exception() | 
+    access_denied_exception() | 
+    service_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception() | 
+    unsupported_operation_exception().
+
+-type remove_tags_from_resource_errors() ::
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    client_exception().
+
+-type reset_user_password_errors() ::
+    invalid_password_exception() | 
+    directory_unavailable_exception() | 
+    entity_does_not_exist_exception() | 
+    user_does_not_exist_exception() | 
+    service_exception() | 
+    client_exception() | 
+    unsupported_operation_exception().
+
+-type restore_from_snapshot_errors() ::
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    client_exception().
+
+-type share_directory_errors() ::
+    share_limit_exceeded_exception() | 
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_exception() | 
+    organizations_exception() | 
+    client_exception() | 
+    directory_already_shared_exception() | 
+    unsupported_operation_exception() | 
+    invalid_target_exception().
+
+-type start_schema_extension_errors() ::
+    directory_unavailable_exception() | 
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    client_exception() | 
+    snapshot_limit_exceeded_exception().
+
+-type unshare_directory_errors() ::
+    entity_does_not_exist_exception() | 
+    service_exception() | 
+    client_exception() | 
+    directory_not_shared_exception() | 
+    invalid_target_exception().
+
+-type update_conditional_forwarder_errors() ::
+    directory_unavailable_exception() | 
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    client_exception() | 
+    unsupported_operation_exception().
+
+-type update_directory_setup_errors() ::
+    directory_unavailable_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception() | 
+    directory_in_desired_state_exception() | 
+    unsupported_operation_exception() | 
+    snapshot_limit_exceeded_exception().
+
+-type update_number_of_domain_controllers_errors() ::
+    directory_unavailable_exception() | 
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    client_exception() | 
+    unsupported_operation_exception() | 
+    domain_controller_limit_exceeded_exception().
+
+-type update_radius_errors() ::
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    client_exception().
+
+-type update_settings_errors() ::
+    directory_unavailable_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    incompatible_settings_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception() | 
+    unsupported_settings_exception() | 
+    unsupported_operation_exception().
+
+-type update_trust_errors() ::
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    client_exception().
+
+-type verify_trust_errors() ::
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    client_exception() | 
+    unsupported_operation_exception().
 
 %%====================================================================
 %% API
@@ -1749,11 +2255,7 @@
 -spec accept_shared_directory(map(), accept_shared_directory_request()) ->
     {ok, accept_shared_directory_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_already_shared_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, accept_shared_directory_errors(), tuple()}.
 accept_shared_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_shared_directory(Client, Input, []).
@@ -1761,11 +2263,7 @@ accept_shared_directory(Client, Input)
 -spec accept_shared_directory(map(), accept_shared_directory_request(), proplists:proplist()) ->
     {ok, accept_shared_directory_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_already_shared_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, accept_shared_directory_errors(), tuple()}.
 accept_shared_directory(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcceptSharedDirectory">>, Input, Options).
@@ -1789,13 +2287,7 @@ accept_shared_directory(Client, Input, Options)
 -spec add_ip_routes(map(), add_ip_routes_request()) ->
     {ok, add_ip_routes_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, ip_route_limit_exceeded_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, add_ip_routes_errors(), tuple()}.
 add_ip_routes(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_ip_routes(Client, Input, []).
@@ -1803,13 +2295,7 @@ add_ip_routes(Client, Input)
 -spec add_ip_routes(map(), add_ip_routes_request(), proplists:proplist()) ->
     {ok, add_ip_routes_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, ip_route_limit_exceeded_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, add_ip_routes_errors(), tuple()}.
 add_ip_routes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddIpRoutes">>, Input, Options).
@@ -1819,16 +2305,7 @@ add_ip_routes(Client, Input, Options)
 -spec add_region(map(), add_region_request()) ->
     {ok, add_region_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_already_in_region_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, region_limit_exceeded_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, add_region_errors(), tuple()}.
 add_region(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_region(Client, Input, []).
@@ -1836,16 +2313,7 @@ add_region(Client, Input)
 -spec add_region(map(), add_region_request(), proplists:proplist()) ->
     {ok, add_region_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_already_in_region_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, region_limit_exceeded_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, add_region_errors(), tuple()}.
 add_region(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddRegion">>, Input, Options).
@@ -1859,11 +2327,7 @@ add_region(Client, Input, Options)
 -spec add_tags_to_resource(map(), add_tags_to_resource_request()) ->
     {ok, add_tags_to_resource_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, tag_limit_exceeded_exception(), tuple()}.
+    {error, add_tags_to_resource_errors(), tuple()}.
 add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_resource(Client, Input, []).
@@ -1871,11 +2335,7 @@ add_tags_to_resource(Client, Input)
 -spec add_tags_to_resource(map(), add_tags_to_resource_request(), proplists:proplist()) ->
     {ok, add_tags_to_resource_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, tag_limit_exceeded_exception(), tuple()}.
+    {error, add_tags_to_resource_errors(), tuple()}.
 add_tags_to_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTagsToResource">>, Input, Options).
@@ -1892,9 +2352,7 @@ add_tags_to_resource(Client, Input, Options)
 -spec cancel_schema_extension(map(), cancel_schema_extension_request()) ->
     {ok, cancel_schema_extension_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, cancel_schema_extension_errors(), tuple()}.
 cancel_schema_extension(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_schema_extension(Client, Input, []).
@@ -1902,9 +2360,7 @@ cancel_schema_extension(Client, Input)
 -spec cancel_schema_extension(map(), cancel_schema_extension_request(), proplists:proplist()) ->
     {ok, cancel_schema_extension_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, cancel_schema_extension_errors(), tuple()}.
 cancel_schema_extension(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelSchemaExtension">>, Input, Options).
@@ -1922,10 +2378,7 @@ cancel_schema_extension(Client, Input, Options)
 -spec connect_directory(map(), connect_directory_request()) ->
     {ok, connect_directory_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_limit_exceeded_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, connect_directory_errors(), tuple()}.
 connect_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
     connect_directory(Client, Input, []).
@@ -1933,10 +2386,7 @@ connect_directory(Client, Input)
 -spec connect_directory(map(), connect_directory_request(), proplists:proplist()) ->
     {ok, connect_directory_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_limit_exceeded_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, connect_directory_errors(), tuple()}.
 connect_directory(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ConnectDirectory">>, Input, Options).
@@ -1953,11 +2403,7 @@ connect_directory(Client, Input, Options)
 -spec create_alias(map(), create_alias_request()) ->
     {ok, create_alias_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, create_alias_errors(), tuple()}.
 create_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_alias(Client, Input, []).
@@ -1965,11 +2411,7 @@ create_alias(Client, Input)
 -spec create_alias(map(), create_alias_request(), proplists:proplist()) ->
     {ok, create_alias_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, create_alias_errors(), tuple()}.
 create_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAlias">>, Input, Options).
@@ -1979,14 +2421,7 @@ create_alias(Client, Input, Options)
 -spec create_computer(map(), create_computer_request()) ->
     {ok, create_computer_result(), tuple()} |
     {error, any()} |
-    {error, authentication_failed_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, create_computer_errors(), tuple()}.
 create_computer(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_computer(Client, Input, []).
@@ -1994,14 +2429,7 @@ create_computer(Client, Input)
 -spec create_computer(map(), create_computer_request(), proplists:proplist()) ->
     {ok, create_computer_result(), tuple()} |
     {error, any()} |
-    {error, authentication_failed_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, create_computer_errors(), tuple()}.
 create_computer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateComputer">>, Input, Options).
@@ -2016,13 +2444,7 @@ create_computer(Client, Input, Options)
 -spec create_conditional_forwarder(map(), create_conditional_forwarder_request()) ->
     {ok, create_conditional_forwarder_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, create_conditional_forwarder_errors(), tuple()}.
 create_conditional_forwarder(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_conditional_forwarder(Client, Input, []).
@@ -2030,13 +2452,7 @@ create_conditional_forwarder(Client, Input)
 -spec create_conditional_forwarder(map(), create_conditional_forwarder_request(), proplists:proplist()) ->
     {ok, create_conditional_forwarder_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, create_conditional_forwarder_errors(), tuple()}.
 create_conditional_forwarder(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateConditionalForwarder">>, Input, Options).
@@ -2059,10 +2475,7 @@ create_conditional_forwarder(Client, Input, Options)
 -spec create_directory(map(), create_directory_request()) ->
     {ok, create_directory_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_limit_exceeded_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, create_directory_errors(), tuple()}.
 create_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_directory(Client, Input, []).
@@ -2070,10 +2483,7 @@ create_directory(Client, Input)
 -spec create_directory(map(), create_directory_request(), proplists:proplist()) ->
     {ok, create_directory_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_limit_exceeded_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, create_directory_errors(), tuple()}.
 create_directory(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDirectory">>, Input, Options).
@@ -2085,12 +2495,7 @@ create_directory(Client, Input, Options)
 -spec create_log_subscription(map(), create_log_subscription_request()) ->
     {ok, create_log_subscription_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, insufficient_permissions_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, create_log_subscription_errors(), tuple()}.
 create_log_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_log_subscription(Client, Input, []).
@@ -2098,12 +2503,7 @@ create_log_subscription(Client, Input)
 -spec create_log_subscription(map(), create_log_subscription_request(), proplists:proplist()) ->
     {ok, create_log_subscription_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, insufficient_permissions_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, create_log_subscription_errors(), tuple()}.
 create_log_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLogSubscription">>, Input, Options).
@@ -2123,11 +2523,7 @@ create_log_subscription(Client, Input, Options)
 -spec create_microsoft_ad(map(), create_microsoft_ad_request()) ->
     {ok, create_microsoft_ad_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_limit_exceeded_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, create_microsoft_ad_errors(), tuple()}.
 create_microsoft_ad(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_microsoft_ad(Client, Input, []).
@@ -2135,11 +2531,7 @@ create_microsoft_ad(Client, Input)
 -spec create_microsoft_ad(map(), create_microsoft_ad_request(), proplists:proplist()) ->
     {ok, create_microsoft_ad_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_limit_exceeded_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, create_microsoft_ad_errors(), tuple()}.
 create_microsoft_ad(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateMicrosoftAD">>, Input, Options).
@@ -2151,11 +2543,7 @@ create_microsoft_ad(Client, Input, Options)
 -spec create_snapshot(map(), create_snapshot_request()) ->
     {ok, create_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, snapshot_limit_exceeded_exception(), tuple()}.
+    {error, create_snapshot_errors(), tuple()}.
 create_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot(Client, Input, []).
@@ -2163,11 +2551,7 @@ create_snapshot(Client, Input)
 -spec create_snapshot(map(), create_snapshot_request(), proplists:proplist()) ->
     {ok, create_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, snapshot_limit_exceeded_exception(), tuple()}.
+    {error, create_snapshot_errors(), tuple()}.
 create_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSnapshot">>, Input, Options).
@@ -2190,12 +2574,7 @@ create_snapshot(Client, Input, Options)
 -spec create_trust(map(), create_trust_request()) ->
     {ok, create_trust_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, create_trust_errors(), tuple()}.
 create_trust(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_trust(Client, Input, []).
@@ -2203,12 +2582,7 @@ create_trust(Client, Input)
 -spec create_trust(map(), create_trust_request(), proplists:proplist()) ->
     {ok, create_trust_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, create_trust_errors(), tuple()}.
 create_trust(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTrust">>, Input, Options).
@@ -2219,12 +2593,7 @@ create_trust(Client, Input, Options)
 -spec delete_conditional_forwarder(map(), delete_conditional_forwarder_request()) ->
     {ok, delete_conditional_forwarder_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, delete_conditional_forwarder_errors(), tuple()}.
 delete_conditional_forwarder(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_conditional_forwarder(Client, Input, []).
@@ -2232,12 +2601,7 @@ delete_conditional_forwarder(Client, Input)
 -spec delete_conditional_forwarder(map(), delete_conditional_forwarder_request(), proplists:proplist()) ->
     {ok, delete_conditional_forwarder_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, delete_conditional_forwarder_errors(), tuple()}.
 delete_conditional_forwarder(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConditionalForwarder">>, Input, Options).
@@ -2255,9 +2619,7 @@ delete_conditional_forwarder(Client, Input, Options)
 -spec delete_directory(map(), delete_directory_request()) ->
     {ok, delete_directory_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, delete_directory_errors(), tuple()}.
 delete_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_directory(Client, Input, []).
@@ -2265,9 +2627,7 @@ delete_directory(Client, Input)
 -spec delete_directory(map(), delete_directory_request(), proplists:proplist()) ->
     {ok, delete_directory_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, delete_directory_errors(), tuple()}.
 delete_directory(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDirectory">>, Input, Options).
@@ -2276,10 +2636,7 @@ delete_directory(Client, Input, Options)
 -spec delete_log_subscription(map(), delete_log_subscription_request()) ->
     {ok, delete_log_subscription_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, delete_log_subscription_errors(), tuple()}.
 delete_log_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_log_subscription(Client, Input, []).
@@ -2287,10 +2644,7 @@ delete_log_subscription(Client, Input)
 -spec delete_log_subscription(map(), delete_log_subscription_request(), proplists:proplist()) ->
     {ok, delete_log_subscription_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, delete_log_subscription_errors(), tuple()}.
 delete_log_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLogSubscription">>, Input, Options).
@@ -2299,10 +2653,7 @@ delete_log_subscription(Client, Input, Options)
 -spec delete_snapshot(map(), delete_snapshot_request()) ->
     {ok, delete_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, delete_snapshot_errors(), tuple()}.
 delete_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_snapshot(Client, Input, []).
@@ -2310,10 +2661,7 @@ delete_snapshot(Client, Input)
 -spec delete_snapshot(map(), delete_snapshot_request(), proplists:proplist()) ->
     {ok, delete_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, delete_snapshot_errors(), tuple()}.
 delete_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSnapshot">>, Input, Options).
@@ -2324,11 +2672,7 @@ delete_snapshot(Client, Input, Options)
 -spec delete_trust(map(), delete_trust_request()) ->
     {ok, delete_trust_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, delete_trust_errors(), tuple()}.
 delete_trust(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_trust(Client, Input, []).
@@ -2336,11 +2680,7 @@ delete_trust(Client, Input)
 -spec delete_trust(map(), delete_trust_request(), proplists:proplist()) ->
     {ok, delete_trust_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, delete_trust_errors(), tuple()}.
 delete_trust(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTrust">>, Input, Options).
@@ -2350,14 +2690,7 @@ delete_trust(Client, Input, Options)
 -spec deregister_certificate(map(), deregister_certificate_request()) ->
     {ok, deregister_certificate_result(), tuple()} |
     {error, any()} |
-    {error, certificate_does_not_exist_exception(), tuple()} |
-    {error, certificate_in_use_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, deregister_certificate_errors(), tuple()}.
 deregister_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_certificate(Client, Input, []).
@@ -2365,14 +2698,7 @@ deregister_certificate(Client, Input)
 -spec deregister_certificate(map(), deregister_certificate_request(), proplists:proplist()) ->
     {ok, deregister_certificate_result(), tuple()} |
     {error, any()} |
-    {error, certificate_does_not_exist_exception(), tuple()} |
-    {error, certificate_in_use_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, deregister_certificate_errors(), tuple()}.
 deregister_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterCertificate">>, Input, Options).
@@ -2382,10 +2708,7 @@ deregister_certificate(Client, Input, Options)
 -spec deregister_event_topic(map(), deregister_event_topic_request()) ->
     {ok, deregister_event_topic_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, deregister_event_topic_errors(), tuple()}.
 deregister_event_topic(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_event_topic(Client, Input, []).
@@ -2393,10 +2716,7 @@ deregister_event_topic(Client, Input)
 -spec deregister_event_topic(map(), deregister_event_topic_request(), proplists:proplist()) ->
     {ok, deregister_event_topic_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, deregister_event_topic_errors(), tuple()}.
 deregister_event_topic(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterEventTopic">>, Input, Options).
@@ -2406,12 +2726,7 @@ deregister_event_topic(Client, Input, Options)
 -spec describe_certificate(map(), describe_certificate_request()) ->
     {ok, describe_certificate_result(), tuple()} |
     {error, any()} |
-    {error, certificate_does_not_exist_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, describe_certificate_errors(), tuple()}.
 describe_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_certificate(Client, Input, []).
@@ -2419,12 +2734,7 @@ describe_certificate(Client, Input)
 -spec describe_certificate(map(), describe_certificate_request(), proplists:proplist()) ->
     {ok, describe_certificate_result(), tuple()} |
     {error, any()} |
-    {error, certificate_does_not_exist_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, describe_certificate_errors(), tuple()}.
 describe_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCertificate">>, Input, Options).
@@ -2438,12 +2748,7 @@ describe_certificate(Client, Input, Options)
 -spec describe_client_authentication_settings(map(), describe_client_authentication_settings_request()) ->
     {ok, describe_client_authentication_settings_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, describe_client_authentication_settings_errors(), tuple()}.
 describe_client_authentication_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_client_authentication_settings(Client, Input, []).
@@ -2451,12 +2756,7 @@ describe_client_authentication_settings(Client, Input)
 -spec describe_client_authentication_settings(map(), describe_client_authentication_settings_request(), proplists:proplist()) ->
     {ok, describe_client_authentication_settings_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, describe_client_authentication_settings_errors(), tuple()}.
 describe_client_authentication_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClientAuthenticationSettings">>, Input, Options).
@@ -2470,12 +2770,7 @@ describe_client_authentication_settings(Client, Input, Options)
 -spec describe_conditional_forwarders(map(), describe_conditional_forwarders_request()) ->
     {ok, describe_conditional_forwarders_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, describe_conditional_forwarders_errors(), tuple()}.
 describe_conditional_forwarders(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_conditional_forwarders(Client, Input, []).
@@ -2483,12 +2778,7 @@ describe_conditional_forwarders(Client, Input)
 -spec describe_conditional_forwarders(map(), describe_conditional_forwarders_request(), proplists:proplist()) ->
     {ok, describe_conditional_forwarders_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, describe_conditional_forwarders_errors(), tuple()}.
 describe_conditional_forwarders(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConditionalForwarders">>, Input, Options).
@@ -2516,11 +2806,7 @@ describe_conditional_forwarders(Client, Input, Options)
 -spec describe_directories(map(), describe_directories_request()) ->
     {ok, describe_directories_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, describe_directories_errors(), tuple()}.
 describe_directories(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_directories(Client, Input, []).
@@ -2528,11 +2814,7 @@ describe_directories(Client, Input)
 -spec describe_directories(map(), describe_directories_request(), proplists:proplist()) ->
     {ok, describe_directories_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, describe_directories_errors(), tuple()}.
 describe_directories(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDirectories">>, Input, Options).
@@ -2541,12 +2823,7 @@ describe_directories(Client, Input, Options)
 -spec describe_domain_controllers(map(), describe_domain_controllers_request()) ->
     {ok, describe_domain_controllers_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, describe_domain_controllers_errors(), tuple()}.
 describe_domain_controllers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_domain_controllers(Client, Input, []).
@@ -2554,12 +2831,7 @@ describe_domain_controllers(Client, Input)
 -spec describe_domain_controllers(map(), describe_domain_controllers_request(), proplists:proplist()) ->
     {ok, describe_domain_controllers_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, describe_domain_controllers_errors(), tuple()}.
 describe_domain_controllers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDomainControllers">>, Input, Options).
@@ -2574,10 +2846,7 @@ describe_domain_controllers(Client, Input, Options)
 -spec describe_event_topics(map(), describe_event_topics_request()) ->
     {ok, describe_event_topics_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, describe_event_topics_errors(), tuple()}.
 describe_event_topics(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_topics(Client, Input, []).
@@ -2585,10 +2854,7 @@ describe_event_topics(Client, Input)
 -spec describe_event_topics(map(), describe_event_topics_request(), proplists:proplist()) ->
     {ok, describe_event_topics_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, describe_event_topics_errors(), tuple()}.
 describe_event_topics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEventTopics">>, Input, Options).
@@ -2597,12 +2863,7 @@ describe_event_topics(Client, Input, Options)
 -spec describe_ldaps_settings(map(), describe_ldaps_settings_request()) ->
     {ok, describe_ldaps_settings_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, describe_ldaps_settings_errors(), tuple()}.
 describe_ldaps_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_ldaps_settings(Client, Input, []).
@@ -2610,12 +2871,7 @@ describe_ldaps_settings(Client, Input)
 -spec describe_ldaps_settings(map(), describe_ldaps_settings_request(), proplists:proplist()) ->
     {ok, describe_ldaps_settings_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, describe_ldaps_settings_errors(), tuple()}.
 describe_ldaps_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLDAPSSettings">>, Input, Options).
@@ -2626,13 +2882,7 @@ describe_ldaps_settings(Client, Input, Options)
 -spec describe_regions(map(), describe_regions_request()) ->
     {ok, describe_regions_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, describe_regions_errors(), tuple()}.
 describe_regions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_regions(Client, Input, []).
@@ -2640,13 +2890,7 @@ describe_regions(Client, Input)
 -spec describe_regions(map(), describe_regions_request(), proplists:proplist()) ->
     {ok, describe_regions_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, describe_regions_errors(), tuple()}.
 describe_regions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRegions">>, Input, Options).
@@ -2656,12 +2900,7 @@ describe_regions(Client, Input, Options)
 -spec describe_settings(map(), describe_settings_request()) ->
     {ok, describe_settings_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, describe_settings_errors(), tuple()}.
 describe_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_settings(Client, Input, []).
@@ -2669,12 +2908,7 @@ describe_settings(Client, Input)
 -spec describe_settings(map(), describe_settings_request(), proplists:proplist()) ->
     {ok, describe_settings_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, describe_settings_errors(), tuple()}.
 describe_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSettings">>, Input, Options).
@@ -2683,12 +2917,7 @@ describe_settings(Client, Input, Options)
 -spec describe_shared_directories(map(), describe_shared_directories_request()) ->
     {ok, describe_shared_directories_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, describe_shared_directories_errors(), tuple()}.
 describe_shared_directories(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_shared_directories(Client, Input, []).
@@ -2696,12 +2925,7 @@ describe_shared_directories(Client, Input)
 -spec describe_shared_directories(map(), describe_shared_directories_request(), proplists:proplist()) ->
     {ok, describe_shared_directories_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, describe_shared_directories_errors(), tuple()}.
 describe_shared_directories(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSharedDirectories">>, Input, Options).
@@ -2722,11 +2946,7 @@ describe_shared_directories(Client, Input, Options)
 -spec describe_snapshots(map(), describe_snapshots_request()) ->
     {ok, describe_snapshots_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, describe_snapshots_errors(), tuple()}.
 describe_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_snapshots(Client, Input, []).
@@ -2734,11 +2954,7 @@ describe_snapshots(Client, Input)
 -spec describe_snapshots(map(), describe_snapshots_request(), proplists:proplist()) ->
     {ok, describe_snapshots_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, describe_snapshots_errors(), tuple()}.
 describe_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSnapshots">>, Input, Options).
@@ -2751,12 +2967,7 @@ describe_snapshots(Client, Input, Options)
 -spec describe_trusts(map(), describe_trusts_request()) ->
     {ok, describe_trusts_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, describe_trusts_errors(), tuple()}.
 describe_trusts(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trusts(Client, Input, []).
@@ -2764,12 +2975,7 @@ describe_trusts(Client, Input)
 -spec describe_trusts(map(), describe_trusts_request(), proplists:proplist()) ->
     {ok, describe_trusts_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, describe_trusts_errors(), tuple()}.
 describe_trusts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrusts">>, Input, Options).
@@ -2779,12 +2985,7 @@ describe_trusts(Client, Input, Options)
 -spec describe_update_directory(map(), describe_update_directory_request()) ->
     {ok, describe_update_directory_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, describe_update_directory_errors(), tuple()}.
 describe_update_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_update_directory(Client, Input, []).
@@ -2792,12 +2993,7 @@ describe_update_directory(Client, Input)
 -spec describe_update_directory(map(), describe_update_directory_request(), proplists:proplist()) ->
     {ok, describe_update_directory_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, describe_update_directory_errors(), tuple()}.
 describe_update_directory(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUpdateDirectory">>, Input, Options).
@@ -2807,12 +3003,7 @@ describe_update_directory(Client, Input, Options)
 -spec disable_client_authentication(map(), disable_client_authentication_request()) ->
     {ok, disable_client_authentication_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, invalid_client_auth_status_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, disable_client_authentication_errors(), tuple()}.
 disable_client_authentication(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_client_authentication(Client, Input, []).
@@ -2820,12 +3011,7 @@ disable_client_authentication(Client, Input)
 -spec disable_client_authentication(map(), disable_client_authentication_request(), proplists:proplist()) ->
     {ok, disable_client_authentication_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, invalid_client_auth_status_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, disable_client_authentication_errors(), tuple()}.
 disable_client_authentication(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableClientAuthentication">>, Input, Options).
@@ -2834,13 +3020,7 @@ disable_client_authentication(Client, Input, Options)
 -spec disable_ldaps(map(), disable_ldaps_request()) ->
     {ok, disable_ldaps_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, invalid_ldaps_status_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, disable_ldaps_errors(), tuple()}.
 disable_ldaps(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_ldaps(Client, Input, []).
@@ -2848,13 +3028,7 @@ disable_ldaps(Client, Input)
 -spec disable_ldaps(map(), disable_ldaps_request(), proplists:proplist()) ->
     {ok, disable_ldaps_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, invalid_ldaps_status_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, disable_ldaps_errors(), tuple()}.
 disable_ldaps(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableLDAPS">>, Input, Options).
@@ -2866,9 +3040,7 @@ disable_ldaps(Client, Input, Options)
 -spec disable_radius(map(), disable_radius_request()) ->
     {ok, disable_radius_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, disable_radius_errors(), tuple()}.
 disable_radius(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_radius(Client, Input, []).
@@ -2876,9 +3048,7 @@ disable_radius(Client, Input)
 -spec disable_radius(map(), disable_radius_request(), proplists:proplist()) ->
     {ok, disable_radius_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, disable_radius_errors(), tuple()}.
 disable_radius(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableRadius">>, Input, Options).
@@ -2887,11 +3057,7 @@ disable_radius(Client, Input, Options)
 -spec disable_sso(map(), disable_sso_request()) ->
     {ok, disable_sso_result(), tuple()} |
     {error, any()} |
-    {error, authentication_failed_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, insufficient_permissions_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, disable_sso_errors(), tuple()}.
 disable_sso(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_sso(Client, Input, []).
@@ -2899,11 +3065,7 @@ disable_sso(Client, Input)
 -spec disable_sso(map(), disable_sso_request(), proplists:proplist()) ->
     {ok, disable_sso_result(), tuple()} |
     {error, any()} |
-    {error, authentication_failed_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, insufficient_permissions_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, disable_sso_errors(), tuple()}.
 disable_sso(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableSso">>, Input, Options).
@@ -2913,13 +3075,7 @@ disable_sso(Client, Input, Options)
 -spec enable_client_authentication(map(), enable_client_authentication_request()) ->
     {ok, enable_client_authentication_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, invalid_client_auth_status_exception(), tuple()} |
-    {error, no_available_certificate_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, enable_client_authentication_errors(), tuple()}.
 enable_client_authentication(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_client_authentication(Client, Input, []).
@@ -2927,13 +3083,7 @@ enable_client_authentication(Client, Input)
 -spec enable_client_authentication(map(), enable_client_authentication_request(), proplists:proplist()) ->
     {ok, enable_client_authentication_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, invalid_client_auth_status_exception(), tuple()} |
-    {error, no_available_certificate_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, enable_client_authentication_errors(), tuple()}.
 enable_client_authentication(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableClientAuthentication">>, Input, Options).
@@ -2943,14 +3093,7 @@ enable_client_authentication(Client, Input, Options)
 -spec enable_ldaps(map(), enable_ldaps_request()) ->
     {ok, enable_ldaps_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, invalid_ldaps_status_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, no_available_certificate_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, enable_ldaps_errors(), tuple()}.
 enable_ldaps(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_ldaps(Client, Input, []).
@@ -2958,14 +3101,7 @@ enable_ldaps(Client, Input)
 -spec enable_ldaps(map(), enable_ldaps_request(), proplists:proplist()) ->
     {ok, enable_ldaps_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, invalid_ldaps_status_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, no_available_certificate_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, enable_ldaps_errors(), tuple()}.
 enable_ldaps(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableLDAPS">>, Input, Options).
@@ -2976,11 +3112,7 @@ enable_ldaps(Client, Input, Options)
 -spec enable_radius(map(), enable_radius_request()) ->
     {ok, enable_radius_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, enable_radius_errors(), tuple()}.
 enable_radius(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_radius(Client, Input, []).
@@ -2988,11 +3120,7 @@ enable_radius(Client, Input)
 -spec enable_radius(map(), enable_radius_request(), proplists:proplist()) ->
     {ok, enable_radius_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, enable_radius_errors(), tuple()}.
 enable_radius(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableRadius">>, Input, Options).
@@ -3006,11 +3134,7 @@ enable_radius(Client, Input, Options)
 -spec enable_sso(map(), enable_sso_request()) ->
     {ok, enable_sso_result(), tuple()} |
     {error, any()} |
-    {error, authentication_failed_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, insufficient_permissions_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, enable_sso_errors(), tuple()}.
 enable_sso(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_sso(Client, Input, []).
@@ -3018,11 +3142,7 @@ enable_sso(Client, Input)
 -spec enable_sso(map(), enable_sso_request(), proplists:proplist()) ->
     {ok, enable_sso_result(), tuple()} |
     {error, any()} |
-    {error, authentication_failed_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, insufficient_permissions_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, enable_sso_errors(), tuple()}.
 enable_sso(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableSso">>, Input, Options).
@@ -3031,9 +3151,7 @@ enable_sso(Client, Input, Options)
 -spec get_directory_limits(map(), get_directory_limits_request()) ->
     {ok, get_directory_limits_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, get_directory_limits_errors(), tuple()}.
 get_directory_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_directory_limits(Client, Input, []).
@@ -3041,9 +3159,7 @@ get_directory_limits(Client, Input)
 -spec get_directory_limits(map(), get_directory_limits_request(), proplists:proplist()) ->
     {ok, get_directory_limits_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, get_directory_limits_errors(), tuple()}.
 get_directory_limits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDirectoryLimits">>, Input, Options).
@@ -3052,9 +3168,7 @@ get_directory_limits(Client, Input, Options)
 -spec get_snapshot_limits(map(), get_snapshot_limits_request()) ->
     {ok, get_snapshot_limits_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, get_snapshot_limits_errors(), tuple()}.
 get_snapshot_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_snapshot_limits(Client, Input, []).
@@ -3062,9 +3176,7 @@ get_snapshot_limits(Client, Input)
 -spec get_snapshot_limits(map(), get_snapshot_limits_request(), proplists:proplist()) ->
     {ok, get_snapshot_limits_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, get_snapshot_limits_errors(), tuple()}.
 get_snapshot_limits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSnapshotLimits">>, Input, Options).
@@ -3074,12 +3186,7 @@ get_snapshot_limits(Client, Input, Options)
 -spec list_certificates(map(), list_certificates_request()) ->
     {ok, list_certificates_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, list_certificates_errors(), tuple()}.
 list_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_certificates(Client, Input, []).
@@ -3087,12 +3194,7 @@ list_certificates(Client, Input)
 -spec list_certificates(map(), list_certificates_request(), proplists:proplist()) ->
     {ok, list_certificates_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, list_certificates_errors(), tuple()}.
 list_certificates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCertificates">>, Input, Options).
@@ -3101,11 +3203,7 @@ list_certificates(Client, Input, Options)
 -spec list_ip_routes(map(), list_ip_routes_request()) ->
     {ok, list_ip_routes_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, list_ip_routes_errors(), tuple()}.
 list_ip_routes(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_ip_routes(Client, Input, []).
@@ -3113,11 +3211,7 @@ list_ip_routes(Client, Input)
 -spec list_ip_routes(map(), list_ip_routes_request(), proplists:proplist()) ->
     {ok, list_ip_routes_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, list_ip_routes_errors(), tuple()}.
 list_ip_routes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListIpRoutes">>, Input, Options).
@@ -3127,10 +3221,7 @@ list_ip_routes(Client, Input, Options)
 -spec list_log_subscriptions(map(), list_log_subscriptions_request()) ->
     {ok, list_log_subscriptions_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, list_log_subscriptions_errors(), tuple()}.
 list_log_subscriptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_log_subscriptions(Client, Input, []).
@@ -3138,10 +3229,7 @@ list_log_subscriptions(Client, Input)
 -spec list_log_subscriptions(map(), list_log_subscriptions_request(), proplists:proplist()) ->
     {ok, list_log_subscriptions_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, list_log_subscriptions_errors(), tuple()}.
 list_log_subscriptions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLogSubscriptions">>, Input, Options).
@@ -3150,10 +3238,7 @@ list_log_subscriptions(Client, Input, Options)
 -spec list_schema_extensions(map(), list_schema_extensions_request()) ->
     {ok, list_schema_extensions_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, list_schema_extensions_errors(), tuple()}.
 list_schema_extensions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_schema_extensions(Client, Input, []).
@@ -3161,10 +3246,7 @@ list_schema_extensions(Client, Input)
 -spec list_schema_extensions(map(), list_schema_extensions_request(), proplists:proplist()) ->
     {ok, list_schema_extensions_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, list_schema_extensions_errors(), tuple()}.
 list_schema_extensions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSchemaExtensions">>, Input, Options).
@@ -3173,11 +3255,7 @@ list_schema_extensions(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -3185,11 +3263,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -3199,15 +3273,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec register_certificate(map(), register_certificate_request()) ->
     {ok, register_certificate_result(), tuple()} |
     {error, any()} |
-    {error, certificate_already_exists_exception(), tuple()} |
-    {error, certificate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, invalid_certificate_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, register_certificate_errors(), tuple()}.
 register_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_certificate(Client, Input, []).
@@ -3215,15 +3281,7 @@ register_certificate(Client, Input)
 -spec register_certificate(map(), register_certificate_request(), proplists:proplist()) ->
     {ok, register_certificate_result(), tuple()} |
     {error, any()} |
-    {error, certificate_already_exists_exception(), tuple()} |
-    {error, certificate_limit_exceeded_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, invalid_certificate_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, register_certificate_errors(), tuple()}.
 register_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterCertificate">>, Input, Options).
@@ -3241,10 +3299,7 @@ register_certificate(Client, Input, Options)
 -spec register_event_topic(map(), register_event_topic_request()) ->
     {ok, register_event_topic_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, register_event_topic_errors(), tuple()}.
 register_event_topic(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_event_topic(Client, Input, []).
@@ -3252,10 +3307,7 @@ register_event_topic(Client, Input)
 -spec register_event_topic(map(), register_event_topic_request(), proplists:proplist()) ->
     {ok, register_event_topic_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, register_event_topic_errors(), tuple()}.
 register_event_topic(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterEventTopic">>, Input, Options).
@@ -3265,11 +3317,7 @@ register_event_topic(Client, Input, Options)
 -spec reject_shared_directory(map(), reject_shared_directory_request()) ->
     {ok, reject_shared_directory_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_already_shared_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, reject_shared_directory_errors(), tuple()}.
 reject_shared_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
     reject_shared_directory(Client, Input, []).
@@ -3277,11 +3325,7 @@ reject_shared_directory(Client, Input)
 -spec reject_shared_directory(map(), reject_shared_directory_request(), proplists:proplist()) ->
     {ok, reject_shared_directory_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_already_shared_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, reject_shared_directory_errors(), tuple()}.
 reject_shared_directory(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RejectSharedDirectory">>, Input, Options).
@@ -3290,11 +3334,7 @@ reject_shared_directory(Client, Input, Options)
 -spec remove_ip_routes(map(), remove_ip_routes_request()) ->
     {ok, remove_ip_routes_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, remove_ip_routes_errors(), tuple()}.
 remove_ip_routes(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_ip_routes(Client, Input, []).
@@ -3302,11 +3342,7 @@ remove_ip_routes(Client, Input)
 -spec remove_ip_routes(map(), remove_ip_routes_request(), proplists:proplist()) ->
     {ok, remove_ip_routes_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, remove_ip_routes_errors(), tuple()}.
 remove_ip_routes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveIpRoutes">>, Input, Options).
@@ -3320,12 +3356,7 @@ remove_ip_routes(Client, Input, Options)
 -spec remove_region(map(), remove_region_request()) ->
     {ok, remove_region_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, remove_region_errors(), tuple()}.
 remove_region(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_region(Client, Input, []).
@@ -3333,12 +3364,7 @@ remove_region(Client, Input)
 -spec remove_region(map(), remove_region_request(), proplists:proplist()) ->
     {ok, remove_region_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, remove_region_errors(), tuple()}.
 remove_region(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveRegion">>, Input, Options).
@@ -3347,10 +3373,7 @@ remove_region(Client, Input, Options)
 -spec remove_tags_from_resource(map(), remove_tags_from_resource_request()) ->
     {ok, remove_tags_from_resource_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, remove_tags_from_resource_errors(), tuple()}.
 remove_tags_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_resource(Client, Input, []).
@@ -3358,10 +3381,7 @@ remove_tags_from_resource(Client, Input)
 -spec remove_tags_from_resource(map(), remove_tags_from_resource_request(), proplists:proplist()) ->
     {ok, remove_tags_from_resource_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, remove_tags_from_resource_errors(), tuple()}.
 remove_tags_from_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTagsFromResource">>, Input, Options).
@@ -3393,13 +3413,7 @@ remove_tags_from_resource(Client, Input, Options)
 -spec reset_user_password(map(), reset_user_password_request()) ->
     {ok, reset_user_password_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_password_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()} |
-    {error, user_does_not_exist_exception(), tuple()}.
+    {error, reset_user_password_errors(), tuple()}.
 reset_user_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_user_password(Client, Input, []).
@@ -3407,13 +3421,7 @@ reset_user_password(Client, Input)
 -spec reset_user_password(map(), reset_user_password_request(), proplists:proplist()) ->
     {ok, reset_user_password_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_password_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()} |
-    {error, user_does_not_exist_exception(), tuple()}.
+    {error, reset_user_password_errors(), tuple()}.
 reset_user_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResetUserPassword">>, Input, Options).
@@ -3433,10 +3441,7 @@ reset_user_password(Client, Input, Options)
 -spec restore_from_snapshot(map(), restore_from_snapshot_request()) ->
     {ok, restore_from_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, restore_from_snapshot_errors(), tuple()}.
 restore_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_from_snapshot(Client, Input, []).
@@ -3444,10 +3449,7 @@ restore_from_snapshot(Client, Input)
 -spec restore_from_snapshot(map(), restore_from_snapshot_request(), proplists:proplist()) ->
     {ok, restore_from_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, restore_from_snapshot_errors(), tuple()}.
 restore_from_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreFromSnapshot">>, Input, Options).
@@ -3482,16 +3484,7 @@ restore_from_snapshot(Client, Input, Options)
 -spec share_directory(map(), share_directory_request()) ->
     {ok, share_directory_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_already_shared_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_target_exception(), tuple()} |
-    {error, organizations_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, share_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, share_directory_errors(), tuple()}.
 share_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
     share_directory(Client, Input, []).
@@ -3499,16 +3492,7 @@ share_directory(Client, Input)
 -spec share_directory(map(), share_directory_request(), proplists:proplist()) ->
     {ok, share_directory_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_already_shared_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_target_exception(), tuple()} |
-    {error, organizations_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, share_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, share_directory_errors(), tuple()}.
 share_directory(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ShareDirectory">>, Input, Options).
@@ -3517,12 +3501,7 @@ share_directory(Client, Input, Options)
 -spec start_schema_extension(map(), start_schema_extension_request()) ->
     {ok, start_schema_extension_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, snapshot_limit_exceeded_exception(), tuple()}.
+    {error, start_schema_extension_errors(), tuple()}.
 start_schema_extension(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_schema_extension(Client, Input, []).
@@ -3530,12 +3509,7 @@ start_schema_extension(Client, Input)
 -spec start_schema_extension(map(), start_schema_extension_request(), proplists:proplist()) ->
     {ok, start_schema_extension_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, snapshot_limit_exceeded_exception(), tuple()}.
+    {error, start_schema_extension_errors(), tuple()}.
 start_schema_extension(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartSchemaExtension">>, Input, Options).
@@ -3545,11 +3519,7 @@ start_schema_extension(Client, Input, Options)
 -spec unshare_directory(map(), unshare_directory_request()) ->
     {ok, unshare_directory_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_not_shared_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_target_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, unshare_directory_errors(), tuple()}.
 unshare_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
     unshare_directory(Client, Input, []).
@@ -3557,11 +3527,7 @@ unshare_directory(Client, Input)
 -spec unshare_directory(map(), unshare_directory_request(), proplists:proplist()) ->
     {ok, unshare_directory_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_not_shared_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_target_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, unshare_directory_errors(), tuple()}.
 unshare_directory(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UnshareDirectory">>, Input, Options).
@@ -3572,12 +3538,7 @@ unshare_directory(Client, Input, Options)
 -spec update_conditional_forwarder(map(), update_conditional_forwarder_request()) ->
     {ok, update_conditional_forwarder_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, update_conditional_forwarder_errors(), tuple()}.
 update_conditional_forwarder(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_conditional_forwarder(Client, Input, []).
@@ -3585,12 +3546,7 @@ update_conditional_forwarder(Client, Input)
 -spec update_conditional_forwarder(map(), update_conditional_forwarder_request(), proplists:proplist()) ->
     {ok, update_conditional_forwarder_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, update_conditional_forwarder_errors(), tuple()}.
 update_conditional_forwarder(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateConditionalForwarder">>, Input, Options).
@@ -3600,15 +3556,7 @@ update_conditional_forwarder(Client, Input, Options)
 -spec update_directory_setup(map(), update_directory_setup_request()) ->
     {ok, update_directory_setup_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, directory_in_desired_state_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, snapshot_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, update_directory_setup_errors(), tuple()}.
 update_directory_setup(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_directory_setup(Client, Input, []).
@@ -3616,15 +3564,7 @@ update_directory_setup(Client, Input)
 -spec update_directory_setup(map(), update_directory_setup_request(), proplists:proplist()) ->
     {ok, update_directory_setup_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, directory_in_desired_state_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, snapshot_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, update_directory_setup_errors(), tuple()}.
 update_directory_setup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDirectorySetup">>, Input, Options).
@@ -3642,13 +3582,7 @@ update_directory_setup(Client, Input, Options)
 -spec update_number_of_domain_controllers(map(), update_number_of_domain_controllers_request()) ->
     {ok, update_number_of_domain_controllers_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, domain_controller_limit_exceeded_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, update_number_of_domain_controllers_errors(), tuple()}.
 update_number_of_domain_controllers(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_number_of_domain_controllers(Client, Input, []).
@@ -3656,13 +3590,7 @@ update_number_of_domain_controllers(Client, Input)
 -spec update_number_of_domain_controllers(map(), update_number_of_domain_controllers_request(), proplists:proplist()) ->
     {ok, update_number_of_domain_controllers_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, domain_controller_limit_exceeded_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, update_number_of_domain_controllers_errors(), tuple()}.
 update_number_of_domain_controllers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateNumberOfDomainControllers">>, Input, Options).
@@ -3673,10 +3601,7 @@ update_number_of_domain_controllers(Client, Input, Options)
 -spec update_radius(map(), update_radius_request()) ->
     {ok, update_radius_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, update_radius_errors(), tuple()}.
 update_radius(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_radius(Client, Input, []).
@@ -3684,10 +3609,7 @@ update_radius(Client, Input)
 -spec update_radius(map(), update_radius_request(), proplists:proplist()) ->
     {ok, update_radius_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, update_radius_errors(), tuple()}.
 update_radius(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRadius">>, Input, Options).
@@ -3696,14 +3618,7 @@ update_radius(Client, Input, Options)
 -spec update_settings(map(), update_settings_request()) ->
     {ok, update_settings_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, incompatible_settings_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()} |
-    {error, unsupported_settings_exception(), tuple()}.
+    {error, update_settings_errors(), tuple()}.
 update_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_settings(Client, Input, []).
@@ -3711,14 +3626,7 @@ update_settings(Client, Input)
 -spec update_settings(map(), update_settings_request(), proplists:proplist()) ->
     {ok, update_settings_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, directory_does_not_exist_exception(), tuple()} |
-    {error, directory_unavailable_exception(), tuple()} |
-    {error, incompatible_settings_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()} |
-    {error, unsupported_settings_exception(), tuple()}.
+    {error, update_settings_errors(), tuple()}.
 update_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSettings">>, Input, Options).
@@ -3729,10 +3637,7 @@ update_settings(Client, Input, Options)
 -spec update_trust(map(), update_trust_request()) ->
     {ok, update_trust_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, update_trust_errors(), tuple()}.
 update_trust(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_trust(Client, Input, []).
@@ -3740,10 +3645,7 @@ update_trust(Client, Input)
 -spec update_trust(map(), update_trust_request(), proplists:proplist()) ->
     {ok, update_trust_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()}.
+    {error, update_trust_errors(), tuple()}.
 update_trust(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTrust">>, Input, Options).
@@ -3758,11 +3660,7 @@ update_trust(Client, Input, Options)
 -spec verify_trust(map(), verify_trust_request()) ->
     {ok, verify_trust_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, verify_trust_errors(), tuple()}.
 verify_trust(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify_trust(Client, Input, []).
@@ -3770,11 +3668,7 @@ verify_trust(Client, Input)
 -spec verify_trust(map(), verify_trust_request(), proplists:proplist()) ->
     {ok, verify_trust_result(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, entity_does_not_exist_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, verify_trust_errors(), tuple()}.
 verify_trust(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"VerifyTrust">>, Input, Options).

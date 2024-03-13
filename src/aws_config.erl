@@ -2727,6 +2727,458 @@
 %% }
 -type organization_custom_policy_rule_metadata_no_policy() :: #{binary() => any()}.
 
+-type batch_get_aggregate_resource_config_errors() ::
+    validation_exception() | 
+    no_such_configuration_aggregator_exception().
+
+-type batch_get_resource_config_errors() ::
+    no_available_configuration_recorder_exception() | 
+    validation_exception().
+
+-type delete_aggregation_authorization_errors() ::
+    invalid_parameter_value_exception().
+
+-type delete_config_rule_errors() ::
+    no_such_config_rule_exception() | 
+    resource_in_use_exception().
+
+-type delete_configuration_aggregator_errors() ::
+    no_such_configuration_aggregator_exception().
+
+-type delete_configuration_recorder_errors() ::
+    no_such_configuration_recorder_exception().
+
+-type delete_conformance_pack_errors() ::
+    no_such_conformance_pack_exception() | 
+    resource_in_use_exception().
+
+-type delete_delivery_channel_errors() ::
+    no_such_delivery_channel_exception() | 
+    last_delivery_channel_delete_failed_exception().
+
+-type delete_evaluation_results_errors() ::
+    no_such_config_rule_exception() | 
+    resource_in_use_exception().
+
+-type delete_organization_config_rule_errors() ::
+    organization_access_denied_exception() | 
+    no_such_organization_config_rule_exception() | 
+    resource_in_use_exception().
+
+-type delete_organization_conformance_pack_errors() ::
+    organization_access_denied_exception() | 
+    no_such_organization_conformance_pack_exception() | 
+    resource_in_use_exception().
+
+-type delete_pending_aggregation_request_errors() ::
+    invalid_parameter_value_exception().
+
+-type delete_remediation_configuration_errors() ::
+    no_such_remediation_configuration_exception() | 
+    invalid_parameter_value_exception() | 
+    remediation_in_progress_exception() | 
+    insufficient_permissions_exception().
+
+-type delete_remediation_exceptions_errors() ::
+    no_such_remediation_exception_exception().
+
+-type delete_resource_config_errors() ::
+    validation_exception() | 
+    no_running_configuration_recorder_exception().
+
+-type delete_retention_configuration_errors() ::
+    no_such_retention_configuration_exception() | 
+    invalid_parameter_value_exception().
+
+-type delete_stored_query_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type deliver_config_snapshot_errors() ::
+    no_available_configuration_recorder_exception() | 
+    no_running_configuration_recorder_exception() | 
+    no_such_delivery_channel_exception().
+
+-type describe_aggregate_compliance_by_config_rules_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception() | 
+    invalid_limit_exception() | 
+    no_such_configuration_aggregator_exception().
+
+-type describe_aggregate_compliance_by_conformance_packs_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception() | 
+    invalid_limit_exception() | 
+    no_such_configuration_aggregator_exception().
+
+-type describe_aggregation_authorizations_errors() ::
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    invalid_limit_exception().
+
+-type describe_compliance_by_config_rule_errors() ::
+    no_such_config_rule_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception().
+
+-type describe_compliance_by_resource_errors() ::
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception().
+
+-type describe_config_rule_evaluation_status_errors() ::
+    no_such_config_rule_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception().
+
+-type describe_config_rules_errors() ::
+    no_such_config_rule_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception().
+
+-type describe_configuration_aggregator_sources_status_errors() ::
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    invalid_limit_exception() | 
+    no_such_configuration_aggregator_exception().
+
+-type describe_configuration_aggregators_errors() ::
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    invalid_limit_exception() | 
+    no_such_configuration_aggregator_exception().
+
+-type describe_configuration_recorder_status_errors() ::
+    no_such_configuration_recorder_exception().
+
+-type describe_configuration_recorders_errors() ::
+    no_such_configuration_recorder_exception().
+
+-type describe_conformance_pack_compliance_errors() ::
+    no_such_conformance_pack_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    no_such_config_rule_in_conformance_pack_exception() | 
+    invalid_limit_exception().
+
+-type describe_conformance_pack_status_errors() ::
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    invalid_limit_exception().
+
+-type describe_conformance_packs_errors() ::
+    no_such_conformance_pack_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    invalid_limit_exception().
+
+-type describe_delivery_channel_status_errors() ::
+    no_such_delivery_channel_exception().
+
+-type describe_delivery_channels_errors() ::
+    no_such_delivery_channel_exception().
+
+-type describe_organization_config_rule_statuses_errors() ::
+    organization_access_denied_exception() | 
+    no_such_organization_config_rule_exception() | 
+    invalid_next_token_exception() | 
+    invalid_limit_exception().
+
+-type describe_organization_config_rules_errors() ::
+    organization_access_denied_exception() | 
+    no_such_organization_config_rule_exception() | 
+    invalid_next_token_exception() | 
+    invalid_limit_exception().
+
+-type describe_organization_conformance_pack_statuses_errors() ::
+    organization_access_denied_exception() | 
+    no_such_organization_conformance_pack_exception() | 
+    invalid_next_token_exception() | 
+    invalid_limit_exception().
+
+-type describe_organization_conformance_packs_errors() ::
+    organization_access_denied_exception() | 
+    no_such_organization_conformance_pack_exception() | 
+    invalid_next_token_exception() | 
+    invalid_limit_exception().
+
+-type describe_pending_aggregation_requests_errors() ::
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    invalid_limit_exception().
+
+-type describe_remediation_exceptions_errors() ::
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception().
+
+-type describe_remediation_execution_status_errors() ::
+    no_such_remediation_configuration_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception().
+
+-type describe_retention_configurations_errors() ::
+    no_such_retention_configuration_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception().
+
+-type get_aggregate_compliance_details_by_config_rule_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception() | 
+    invalid_limit_exception() | 
+    no_such_configuration_aggregator_exception().
+
+-type get_aggregate_config_rule_compliance_summary_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception() | 
+    invalid_limit_exception() | 
+    no_such_configuration_aggregator_exception().
+
+-type get_aggregate_conformance_pack_compliance_summary_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception() | 
+    invalid_limit_exception() | 
+    no_such_configuration_aggregator_exception().
+
+-type get_aggregate_discovered_resource_counts_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception() | 
+    invalid_limit_exception() | 
+    no_such_configuration_aggregator_exception().
+
+-type get_aggregate_resource_config_errors() ::
+    validation_exception() | 
+    resource_not_discovered_exception() | 
+    oversized_configuration_item_exception() | 
+    no_such_configuration_aggregator_exception().
+
+-type get_compliance_details_by_config_rule_errors() ::
+    no_such_config_rule_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception().
+
+-type get_compliance_details_by_resource_errors() ::
+    invalid_parameter_value_exception().
+
+-type get_compliance_summary_by_resource_type_errors() ::
+    invalid_parameter_value_exception().
+
+-type get_conformance_pack_compliance_details_errors() ::
+    no_such_conformance_pack_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    no_such_config_rule_in_conformance_pack_exception() | 
+    invalid_limit_exception().
+
+-type get_conformance_pack_compliance_summary_errors() ::
+    no_such_conformance_pack_exception() | 
+    invalid_next_token_exception() | 
+    invalid_limit_exception().
+
+-type get_custom_rule_policy_errors() ::
+    no_such_config_rule_exception().
+
+-type get_discovered_resource_counts_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception() | 
+    invalid_limit_exception().
+
+-type get_organization_config_rule_detailed_status_errors() ::
+    organization_access_denied_exception() | 
+    no_such_organization_config_rule_exception() | 
+    invalid_next_token_exception() | 
+    invalid_limit_exception().
+
+-type get_organization_conformance_pack_detailed_status_errors() ::
+    organization_access_denied_exception() | 
+    no_such_organization_conformance_pack_exception() | 
+    invalid_next_token_exception() | 
+    invalid_limit_exception().
+
+-type get_organization_custom_rule_policy_errors() ::
+    organization_access_denied_exception() | 
+    no_such_organization_config_rule_exception().
+
+-type get_resource_config_history_errors() ::
+    no_available_configuration_recorder_exception() | 
+    validation_exception() | 
+    resource_not_discovered_exception() | 
+    invalid_next_token_exception() | 
+    invalid_time_range_exception() | 
+    invalid_limit_exception().
+
+-type get_resource_evaluation_summary_errors() ::
+    resource_not_found_exception().
+
+-type get_stored_query_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type list_aggregate_discovered_resources_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception() | 
+    invalid_limit_exception() | 
+    no_such_configuration_aggregator_exception().
+
+-type list_conformance_pack_compliance_scores_errors() ::
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    invalid_limit_exception().
+
+-type list_discovered_resources_errors() ::
+    no_available_configuration_recorder_exception() | 
+    validation_exception() | 
+    invalid_next_token_exception() | 
+    invalid_limit_exception().
+
+-type list_resource_evaluations_errors() ::
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    invalid_time_range_exception().
+
+-type list_stored_queries_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    invalid_limit_exception().
+
+-type put_aggregation_authorization_errors() ::
+    invalid_parameter_value_exception().
+
+-type put_config_rule_errors() ::
+    no_available_configuration_recorder_exception() | 
+    invalid_parameter_value_exception() | 
+    max_number_of_config_rules_exceeded_exception() | 
+    resource_in_use_exception() | 
+    insufficient_permissions_exception().
+
+-type put_configuration_aggregator_errors() ::
+    organization_access_denied_exception() | 
+    limit_exceeded_exception() | 
+    no_available_organization_exception() | 
+    invalid_role_exception() | 
+    invalid_parameter_value_exception() | 
+    organization_all_features_not_enabled_exception().
+
+-type put_configuration_recorder_errors() ::
+    invalid_configuration_recorder_name_exception() | 
+    validation_exception() | 
+    invalid_role_exception() | 
+    max_number_of_configuration_recorders_exceeded_exception() | 
+    invalid_recording_group_exception().
+
+-type put_conformance_pack_errors() ::
+    conformance_pack_template_validation_exception() | 
+    max_number_of_conformance_packs_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_in_use_exception() | 
+    insufficient_permissions_exception().
+
+-type put_delivery_channel_errors() ::
+    no_available_configuration_recorder_exception() | 
+    invalid_s3_key_prefix_exception() | 
+    no_such_bucket_exception() | 
+    invalid_s3_kms_key_arn_exception() | 
+    invalid_delivery_channel_name_exception() | 
+    invalid_s_n_s_topic_arn_exception() | 
+    insufficient_delivery_policy_exception() | 
+    max_number_of_delivery_channels_exceeded_exception().
+
+-type put_evaluations_errors() ::
+    no_such_config_rule_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_result_token_exception().
+
+-type put_external_evaluation_errors() ::
+    no_such_config_rule_exception() | 
+    invalid_parameter_value_exception().
+
+-type put_organization_config_rule_errors() ::
+    organization_access_denied_exception() | 
+    no_available_organization_exception() | 
+    validation_exception() | 
+    invalid_parameter_value_exception() | 
+    max_number_of_organization_config_rules_exceeded_exception() | 
+    resource_in_use_exception() | 
+    insufficient_permissions_exception() | 
+    organization_all_features_not_enabled_exception().
+
+-type put_organization_conformance_pack_errors() ::
+    organization_access_denied_exception() | 
+    no_available_organization_exception() | 
+    validation_exception() | 
+    max_number_of_organization_conformance_packs_exceeded_exception() | 
+    resource_in_use_exception() | 
+    insufficient_permissions_exception() | 
+    organization_all_features_not_enabled_exception() | 
+    organization_conformance_pack_template_validation_exception().
+
+-type put_remediation_configurations_errors() ::
+    invalid_parameter_value_exception() | 
+    insufficient_permissions_exception().
+
+-type put_remediation_exceptions_errors() ::
+    invalid_parameter_value_exception() | 
+    insufficient_permissions_exception().
+
+-type put_resource_config_errors() ::
+    max_active_resources_exceeded_exception() | 
+    validation_exception() | 
+    no_running_configuration_recorder_exception() | 
+    insufficient_permissions_exception().
+
+-type put_retention_configuration_errors() ::
+    max_number_of_retention_configurations_exceeded_exception() | 
+    invalid_parameter_value_exception().
+
+-type put_stored_query_errors() ::
+    too_many_tags_exception() | 
+    resource_concurrent_modification_exception() | 
+    validation_exception().
+
+-type select_aggregate_resource_config_errors() ::
+    invalid_expression_exception() | 
+    invalid_next_token_exception() | 
+    invalid_limit_exception() | 
+    no_such_configuration_aggregator_exception().
+
+-type select_resource_config_errors() ::
+    invalid_expression_exception() | 
+    invalid_next_token_exception() | 
+    invalid_limit_exception().
+
+-type start_config_rules_evaluation_errors() ::
+    no_such_config_rule_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_in_use_exception().
+
+-type start_configuration_recorder_errors() ::
+    no_such_configuration_recorder_exception() | 
+    no_available_delivery_channel_exception().
+
+-type start_remediation_execution_errors() ::
+    no_such_remediation_configuration_exception() | 
+    invalid_parameter_value_exception() | 
+    insufficient_permissions_exception().
+
+-type start_resource_evaluation_errors() ::
+    invalid_parameter_value_exception() | 
+    idempotent_parameter_mismatch().
+
+-type stop_configuration_recorder_errors() ::
+    no_such_configuration_recorder_exception().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -2746,8 +3198,7 @@
 -spec batch_get_aggregate_resource_config(map(), batch_get_aggregate_resource_config_request()) ->
     {ok, batch_get_aggregate_resource_config_response(), tuple()} |
     {error, any()} |
-    {error, no_such_configuration_aggregator_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_aggregate_resource_config_errors(), tuple()}.
 batch_get_aggregate_resource_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_aggregate_resource_config(Client, Input, []).
@@ -2755,8 +3206,7 @@ batch_get_aggregate_resource_config(Client, Input)
 -spec batch_get_aggregate_resource_config(map(), batch_get_aggregate_resource_config_request(), proplists:proplist()) ->
     {ok, batch_get_aggregate_resource_config_response(), tuple()} |
     {error, any()} |
-    {error, no_such_configuration_aggregator_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_aggregate_resource_config_errors(), tuple()}.
 batch_get_aggregate_resource_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetAggregateResourceConfig">>, Input, Options).
@@ -2779,8 +3229,7 @@ batch_get_aggregate_resource_config(Client, Input, Options)
 -spec batch_get_resource_config(map(), batch_get_resource_config_request()) ->
     {ok, batch_get_resource_config_response(), tuple()} |
     {error, any()} |
-    {error, no_available_configuration_recorder_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_resource_config_errors(), tuple()}.
 batch_get_resource_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_resource_config(Client, Input, []).
@@ -2788,8 +3237,7 @@ batch_get_resource_config(Client, Input)
 -spec batch_get_resource_config(map(), batch_get_resource_config_request(), proplists:proplist()) ->
     {ok, batch_get_resource_config_response(), tuple()} |
     {error, any()} |
-    {error, no_available_configuration_recorder_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_resource_config_errors(), tuple()}.
 batch_get_resource_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetResourceConfig">>, Input, Options).
@@ -2799,7 +3247,7 @@ batch_get_resource_config(Client, Input, Options)
 -spec delete_aggregation_authorization(map(), delete_aggregation_authorization_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, delete_aggregation_authorization_errors(), tuple()}.
 delete_aggregation_authorization(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_aggregation_authorization(Client, Input, []).
@@ -2807,7 +3255,7 @@ delete_aggregation_authorization(Client, Input)
 -spec delete_aggregation_authorization(map(), delete_aggregation_authorization_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, delete_aggregation_authorization_errors(), tuple()}.
 delete_aggregation_authorization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAggregationAuthorization">>, Input, Options).
@@ -2826,8 +3274,7 @@ delete_aggregation_authorization(Client, Input, Options)
 -spec delete_config_rule(map(), delete_config_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, no_such_config_rule_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_config_rule_errors(), tuple()}.
 delete_config_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_config_rule(Client, Input, []).
@@ -2835,8 +3282,7 @@ delete_config_rule(Client, Input)
 -spec delete_config_rule(map(), delete_config_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, no_such_config_rule_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_config_rule_errors(), tuple()}.
 delete_config_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConfigRule">>, Input, Options).
@@ -2846,7 +3292,7 @@ delete_config_rule(Client, Input, Options)
 -spec delete_configuration_aggregator(map(), delete_configuration_aggregator_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, no_such_configuration_aggregator_exception(), tuple()}.
+    {error, delete_configuration_aggregator_errors(), tuple()}.
 delete_configuration_aggregator(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_configuration_aggregator(Client, Input, []).
@@ -2854,7 +3300,7 @@ delete_configuration_aggregator(Client, Input)
 -spec delete_configuration_aggregator(map(), delete_configuration_aggregator_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, no_such_configuration_aggregator_exception(), tuple()}.
+    {error, delete_configuration_aggregator_errors(), tuple()}.
 delete_configuration_aggregator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConfigurationAggregator">>, Input, Options).
@@ -2874,7 +3320,7 @@ delete_configuration_aggregator(Client, Input, Options)
 -spec delete_configuration_recorder(map(), delete_configuration_recorder_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, no_such_configuration_recorder_exception(), tuple()}.
+    {error, delete_configuration_recorder_errors(), tuple()}.
 delete_configuration_recorder(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_configuration_recorder(Client, Input, []).
@@ -2882,7 +3328,7 @@ delete_configuration_recorder(Client, Input)
 -spec delete_configuration_recorder(map(), delete_configuration_recorder_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, no_such_configuration_recorder_exception(), tuple()}.
+    {error, delete_configuration_recorder_errors(), tuple()}.
 delete_configuration_recorder(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConfigurationRecorder">>, Input, Options).
@@ -2897,8 +3343,7 @@ delete_configuration_recorder(Client, Input, Options)
 -spec delete_conformance_pack(map(), delete_conformance_pack_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, no_such_conformance_pack_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_conformance_pack_errors(), tuple()}.
 delete_conformance_pack(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_conformance_pack(Client, Input, []).
@@ -2906,8 +3351,7 @@ delete_conformance_pack(Client, Input)
 -spec delete_conformance_pack(map(), delete_conformance_pack_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, no_such_conformance_pack_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_conformance_pack_errors(), tuple()}.
 delete_conformance_pack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConformancePack">>, Input, Options).
@@ -2920,8 +3364,7 @@ delete_conformance_pack(Client, Input, Options)
 -spec delete_delivery_channel(map(), delete_delivery_channel_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, last_delivery_channel_delete_failed_exception(), tuple()} |
-    {error, no_such_delivery_channel_exception(), tuple()}.
+    {error, delete_delivery_channel_errors(), tuple()}.
 delete_delivery_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_delivery_channel(Client, Input, []).
@@ -2929,8 +3372,7 @@ delete_delivery_channel(Client, Input)
 -spec delete_delivery_channel(map(), delete_delivery_channel_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, last_delivery_channel_delete_failed_exception(), tuple()} |
-    {error, no_such_delivery_channel_exception(), tuple()}.
+    {error, delete_delivery_channel_errors(), tuple()}.
 delete_delivery_channel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDeliveryChannel">>, Input, Options).
@@ -2945,8 +3387,7 @@ delete_delivery_channel(Client, Input, Options)
 -spec delete_evaluation_results(map(), delete_evaluation_results_request()) ->
     {ok, delete_evaluation_results_response(), tuple()} |
     {error, any()} |
-    {error, no_such_config_rule_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_evaluation_results_errors(), tuple()}.
 delete_evaluation_results(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_evaluation_results(Client, Input, []).
@@ -2954,8 +3395,7 @@ delete_evaluation_results(Client, Input)
 -spec delete_evaluation_results(map(), delete_evaluation_results_request(), proplists:proplist()) ->
     {ok, delete_evaluation_results_response(), tuple()} |
     {error, any()} |
-    {error, no_such_config_rule_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_evaluation_results_errors(), tuple()}.
 delete_evaluation_results(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEvaluationResults">>, Input, Options).
@@ -2975,9 +3415,7 @@ delete_evaluation_results(Client, Input, Options)
 -spec delete_organization_config_rule(map(), delete_organization_config_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, no_such_organization_config_rule_exception(), tuple()} |
-    {error, organization_access_denied_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_organization_config_rule_errors(), tuple()}.
 delete_organization_config_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_organization_config_rule(Client, Input, []).
@@ -2985,9 +3423,7 @@ delete_organization_config_rule(Client, Input)
 -spec delete_organization_config_rule(map(), delete_organization_config_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, no_such_organization_config_rule_exception(), tuple()} |
-    {error, organization_access_denied_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_organization_config_rule_errors(), tuple()}.
 delete_organization_config_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteOrganizationConfigRule">>, Input, Options).
@@ -3008,9 +3444,7 @@ delete_organization_config_rule(Client, Input, Options)
 -spec delete_organization_conformance_pack(map(), delete_organization_conformance_pack_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, no_such_organization_conformance_pack_exception(), tuple()} |
-    {error, organization_access_denied_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_organization_conformance_pack_errors(), tuple()}.
 delete_organization_conformance_pack(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_organization_conformance_pack(Client, Input, []).
@@ -3018,9 +3452,7 @@ delete_organization_conformance_pack(Client, Input)
 -spec delete_organization_conformance_pack(map(), delete_organization_conformance_pack_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, no_such_organization_conformance_pack_exception(), tuple()} |
-    {error, organization_access_denied_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_organization_conformance_pack_errors(), tuple()}.
 delete_organization_conformance_pack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteOrganizationConformancePack">>, Input, Options).
@@ -3030,7 +3462,7 @@ delete_organization_conformance_pack(Client, Input, Options)
 -spec delete_pending_aggregation_request(map(), delete_pending_aggregation_request_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, delete_pending_aggregation_request_errors(), tuple()}.
 delete_pending_aggregation_request(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_pending_aggregation_request(Client, Input, []).
@@ -3038,7 +3470,7 @@ delete_pending_aggregation_request(Client, Input)
 -spec delete_pending_aggregation_request(map(), delete_pending_aggregation_request_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, delete_pending_aggregation_request_errors(), tuple()}.
 delete_pending_aggregation_request(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePendingAggregationRequest">>, Input, Options).
@@ -3047,10 +3479,7 @@ delete_pending_aggregation_request(Client, Input, Options)
 -spec delete_remediation_configuration(map(), delete_remediation_configuration_request()) ->
     {ok, delete_remediation_configuration_response(), tuple()} |
     {error, any()} |
-    {error, insufficient_permissions_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_such_remediation_configuration_exception(), tuple()} |
-    {error, remediation_in_progress_exception(), tuple()}.
+    {error, delete_remediation_configuration_errors(), tuple()}.
 delete_remediation_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_remediation_configuration(Client, Input, []).
@@ -3058,10 +3487,7 @@ delete_remediation_configuration(Client, Input)
 -spec delete_remediation_configuration(map(), delete_remediation_configuration_request(), proplists:proplist()) ->
     {ok, delete_remediation_configuration_response(), tuple()} |
     {error, any()} |
-    {error, insufficient_permissions_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_such_remediation_configuration_exception(), tuple()} |
-    {error, remediation_in_progress_exception(), tuple()}.
+    {error, delete_remediation_configuration_errors(), tuple()}.
 delete_remediation_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRemediationConfiguration">>, Input, Options).
@@ -3076,7 +3502,7 @@ delete_remediation_configuration(Client, Input, Options)
 -spec delete_remediation_exceptions(map(), delete_remediation_exceptions_request()) ->
     {ok, delete_remediation_exceptions_response(), tuple()} |
     {error, any()} |
-    {error, no_such_remediation_exception_exception(), tuple()}.
+    {error, delete_remediation_exceptions_errors(), tuple()}.
 delete_remediation_exceptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_remediation_exceptions(Client, Input, []).
@@ -3084,7 +3510,7 @@ delete_remediation_exceptions(Client, Input)
 -spec delete_remediation_exceptions(map(), delete_remediation_exceptions_request(), proplists:proplist()) ->
     {ok, delete_remediation_exceptions_response(), tuple()} |
     {error, any()} |
-    {error, no_such_remediation_exception_exception(), tuple()}.
+    {error, delete_remediation_exceptions_errors(), tuple()}.
 delete_remediation_exceptions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRemediationExceptions">>, Input, Options).
@@ -3098,8 +3524,7 @@ delete_remediation_exceptions(Client, Input, Options)
 -spec delete_resource_config(map(), delete_resource_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, no_running_configuration_recorder_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_resource_config_errors(), tuple()}.
 delete_resource_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_config(Client, Input, []).
@@ -3107,8 +3532,7 @@ delete_resource_config(Client, Input)
 -spec delete_resource_config(map(), delete_resource_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, no_running_configuration_recorder_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_resource_config_errors(), tuple()}.
 delete_resource_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourceConfig">>, Input, Options).
@@ -3117,8 +3541,7 @@ delete_resource_config(Client, Input, Options)
 -spec delete_retention_configuration(map(), delete_retention_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_such_retention_configuration_exception(), tuple()}.
+    {error, delete_retention_configuration_errors(), tuple()}.
 delete_retention_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_retention_configuration(Client, Input, []).
@@ -3126,8 +3549,7 @@ delete_retention_configuration(Client, Input)
 -spec delete_retention_configuration(map(), delete_retention_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_such_retention_configuration_exception(), tuple()}.
+    {error, delete_retention_configuration_errors(), tuple()}.
 delete_retention_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRetentionConfiguration">>, Input, Options).
@@ -3137,8 +3559,7 @@ delete_retention_configuration(Client, Input, Options)
 -spec delete_stored_query(map(), delete_stored_query_request()) ->
     {ok, delete_stored_query_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_stored_query_errors(), tuple()}.
 delete_stored_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_stored_query(Client, Input, []).
@@ -3146,8 +3567,7 @@ delete_stored_query(Client, Input)
 -spec delete_stored_query(map(), delete_stored_query_request(), proplists:proplist()) ->
     {ok, delete_stored_query_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_stored_query_errors(), tuple()}.
 delete_stored_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteStoredQuery">>, Input, Options).
@@ -3169,9 +3589,7 @@ delete_stored_query(Client, Input, Options)
 -spec deliver_config_snapshot(map(), deliver_config_snapshot_request()) ->
     {ok, deliver_config_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, no_available_configuration_recorder_exception(), tuple()} |
-    {error, no_running_configuration_recorder_exception(), tuple()} |
-    {error, no_such_delivery_channel_exception(), tuple()}.
+    {error, deliver_config_snapshot_errors(), tuple()}.
 deliver_config_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     deliver_config_snapshot(Client, Input, []).
@@ -3179,9 +3597,7 @@ deliver_config_snapshot(Client, Input)
 -spec deliver_config_snapshot(map(), deliver_config_snapshot_request(), proplists:proplist()) ->
     {ok, deliver_config_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, no_available_configuration_recorder_exception(), tuple()} |
-    {error, no_running_configuration_recorder_exception(), tuple()} |
-    {error, no_such_delivery_channel_exception(), tuple()}.
+    {error, deliver_config_snapshot_errors(), tuple()}.
 deliver_config_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeliverConfigSnapshot">>, Input, Options).
@@ -3197,10 +3613,7 @@ deliver_config_snapshot(Client, Input, Options)
 -spec describe_aggregate_compliance_by_config_rules(map(), describe_aggregate_compliance_by_config_rules_request()) ->
     {ok, describe_aggregate_compliance_by_config_rules_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_such_configuration_aggregator_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_aggregate_compliance_by_config_rules_errors(), tuple()}.
 describe_aggregate_compliance_by_config_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_aggregate_compliance_by_config_rules(Client, Input, []).
@@ -3208,10 +3621,7 @@ describe_aggregate_compliance_by_config_rules(Client, Input)
 -spec describe_aggregate_compliance_by_config_rules(map(), describe_aggregate_compliance_by_config_rules_request(), proplists:proplist()) ->
     {ok, describe_aggregate_compliance_by_config_rules_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_such_configuration_aggregator_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_aggregate_compliance_by_config_rules_errors(), tuple()}.
 describe_aggregate_compliance_by_config_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAggregateComplianceByConfigRules">>, Input, Options).
@@ -3230,10 +3640,7 @@ describe_aggregate_compliance_by_config_rules(Client, Input, Options)
 -spec describe_aggregate_compliance_by_conformance_packs(map(), describe_aggregate_compliance_by_conformance_packs_request()) ->
     {ok, describe_aggregate_compliance_by_conformance_packs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_such_configuration_aggregator_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_aggregate_compliance_by_conformance_packs_errors(), tuple()}.
 describe_aggregate_compliance_by_conformance_packs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_aggregate_compliance_by_conformance_packs(Client, Input, []).
@@ -3241,10 +3648,7 @@ describe_aggregate_compliance_by_conformance_packs(Client, Input)
 -spec describe_aggregate_compliance_by_conformance_packs(map(), describe_aggregate_compliance_by_conformance_packs_request(), proplists:proplist()) ->
     {ok, describe_aggregate_compliance_by_conformance_packs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_such_configuration_aggregator_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_aggregate_compliance_by_conformance_packs_errors(), tuple()}.
 describe_aggregate_compliance_by_conformance_packs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAggregateComplianceByConformancePacks">>, Input, Options).
@@ -3254,9 +3658,7 @@ describe_aggregate_compliance_by_conformance_packs(Client, Input, Options)
 -spec describe_aggregation_authorizations(map(), describe_aggregation_authorizations_request()) ->
     {ok, describe_aggregation_authorizations_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, describe_aggregation_authorizations_errors(), tuple()}.
 describe_aggregation_authorizations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_aggregation_authorizations(Client, Input, []).
@@ -3264,9 +3666,7 @@ describe_aggregation_authorizations(Client, Input)
 -spec describe_aggregation_authorizations(map(), describe_aggregation_authorizations_request(), proplists:proplist()) ->
     {ok, describe_aggregation_authorizations_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, describe_aggregation_authorizations_errors(), tuple()}.
 describe_aggregation_authorizations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAggregationAuthorizations">>, Input, Options).
@@ -3306,9 +3706,7 @@ describe_aggregation_authorizations(Client, Input, Options)
 -spec describe_compliance_by_config_rule(map(), describe_compliance_by_config_rule_request()) ->
     {ok, describe_compliance_by_config_rule_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_such_config_rule_exception(), tuple()}.
+    {error, describe_compliance_by_config_rule_errors(), tuple()}.
 describe_compliance_by_config_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_compliance_by_config_rule(Client, Input, []).
@@ -3316,9 +3714,7 @@ describe_compliance_by_config_rule(Client, Input)
 -spec describe_compliance_by_config_rule(map(), describe_compliance_by_config_rule_request(), proplists:proplist()) ->
     {ok, describe_compliance_by_config_rule_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_such_config_rule_exception(), tuple()}.
+    {error, describe_compliance_by_config_rule_errors(), tuple()}.
 describe_compliance_by_config_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeComplianceByConfigRule">>, Input, Options).
@@ -3360,8 +3756,7 @@ describe_compliance_by_config_rule(Client, Input, Options)
 -spec describe_compliance_by_resource(map(), describe_compliance_by_resource_request()) ->
     {ok, describe_compliance_by_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, describe_compliance_by_resource_errors(), tuple()}.
 describe_compliance_by_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_compliance_by_resource(Client, Input, []).
@@ -3369,8 +3764,7 @@ describe_compliance_by_resource(Client, Input)
 -spec describe_compliance_by_resource(map(), describe_compliance_by_resource_request(), proplists:proplist()) ->
     {ok, describe_compliance_by_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, describe_compliance_by_resource_errors(), tuple()}.
 describe_compliance_by_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeComplianceByResource">>, Input, Options).
@@ -3383,9 +3777,7 @@ describe_compliance_by_resource(Client, Input, Options)
 -spec describe_config_rule_evaluation_status(map(), describe_config_rule_evaluation_status_request()) ->
     {ok, describe_config_rule_evaluation_status_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_such_config_rule_exception(), tuple()}.
+    {error, describe_config_rule_evaluation_status_errors(), tuple()}.
 describe_config_rule_evaluation_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_config_rule_evaluation_status(Client, Input, []).
@@ -3393,9 +3785,7 @@ describe_config_rule_evaluation_status(Client, Input)
 -spec describe_config_rule_evaluation_status(map(), describe_config_rule_evaluation_status_request(), proplists:proplist()) ->
     {ok, describe_config_rule_evaluation_status_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_such_config_rule_exception(), tuple()}.
+    {error, describe_config_rule_evaluation_status_errors(), tuple()}.
 describe_config_rule_evaluation_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConfigRuleEvaluationStatus">>, Input, Options).
@@ -3404,9 +3794,7 @@ describe_config_rule_evaluation_status(Client, Input, Options)
 -spec describe_config_rules(map(), describe_config_rules_request()) ->
     {ok, describe_config_rules_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_such_config_rule_exception(), tuple()}.
+    {error, describe_config_rules_errors(), tuple()}.
 describe_config_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_config_rules(Client, Input, []).
@@ -3414,9 +3802,7 @@ describe_config_rules(Client, Input)
 -spec describe_config_rules(map(), describe_config_rules_request(), proplists:proplist()) ->
     {ok, describe_config_rules_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_such_config_rule_exception(), tuple()}.
+    {error, describe_config_rules_errors(), tuple()}.
 describe_config_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConfigRules">>, Input, Options).
@@ -3429,10 +3815,7 @@ describe_config_rules(Client, Input, Options)
 -spec describe_configuration_aggregator_sources_status(map(), describe_configuration_aggregator_sources_status_request()) ->
     {ok, describe_configuration_aggregator_sources_status_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_such_configuration_aggregator_exception(), tuple()}.
+    {error, describe_configuration_aggregator_sources_status_errors(), tuple()}.
 describe_configuration_aggregator_sources_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_configuration_aggregator_sources_status(Client, Input, []).
@@ -3440,10 +3823,7 @@ describe_configuration_aggregator_sources_status(Client, Input)
 -spec describe_configuration_aggregator_sources_status(map(), describe_configuration_aggregator_sources_status_request(), proplists:proplist()) ->
     {ok, describe_configuration_aggregator_sources_status_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_such_configuration_aggregator_exception(), tuple()}.
+    {error, describe_configuration_aggregator_sources_status_errors(), tuple()}.
 describe_configuration_aggregator_sources_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConfigurationAggregatorSourcesStatus">>, Input, Options).
@@ -3456,10 +3836,7 @@ describe_configuration_aggregator_sources_status(Client, Input, Options)
 -spec describe_configuration_aggregators(map(), describe_configuration_aggregators_request()) ->
     {ok, describe_configuration_aggregators_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_such_configuration_aggregator_exception(), tuple()}.
+    {error, describe_configuration_aggregators_errors(), tuple()}.
 describe_configuration_aggregators(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_configuration_aggregators(Client, Input, []).
@@ -3467,10 +3844,7 @@ describe_configuration_aggregators(Client, Input)
 -spec describe_configuration_aggregators(map(), describe_configuration_aggregators_request(), proplists:proplist()) ->
     {ok, describe_configuration_aggregators_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_such_configuration_aggregator_exception(), tuple()}.
+    {error, describe_configuration_aggregators_errors(), tuple()}.
 describe_configuration_aggregators(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConfigurationAggregators">>, Input, Options).
@@ -3490,7 +3864,7 @@ describe_configuration_aggregators(Client, Input, Options)
 -spec describe_configuration_recorder_status(map(), describe_configuration_recorder_status_request()) ->
     {ok, describe_configuration_recorder_status_response(), tuple()} |
     {error, any()} |
-    {error, no_such_configuration_recorder_exception(), tuple()}.
+    {error, describe_configuration_recorder_status_errors(), tuple()}.
 describe_configuration_recorder_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_configuration_recorder_status(Client, Input, []).
@@ -3498,7 +3872,7 @@ describe_configuration_recorder_status(Client, Input)
 -spec describe_configuration_recorder_status(map(), describe_configuration_recorder_status_request(), proplists:proplist()) ->
     {ok, describe_configuration_recorder_status_response(), tuple()} |
     {error, any()} |
-    {error, no_such_configuration_recorder_exception(), tuple()}.
+    {error, describe_configuration_recorder_status_errors(), tuple()}.
 describe_configuration_recorder_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConfigurationRecorderStatus">>, Input, Options).
@@ -3514,7 +3888,7 @@ describe_configuration_recorder_status(Client, Input, Options)
 -spec describe_configuration_recorders(map(), describe_configuration_recorders_request()) ->
     {ok, describe_configuration_recorders_response(), tuple()} |
     {error, any()} |
-    {error, no_such_configuration_recorder_exception(), tuple()}.
+    {error, describe_configuration_recorders_errors(), tuple()}.
 describe_configuration_recorders(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_configuration_recorders(Client, Input, []).
@@ -3522,7 +3896,7 @@ describe_configuration_recorders(Client, Input)
 -spec describe_configuration_recorders(map(), describe_configuration_recorders_request(), proplists:proplist()) ->
     {ok, describe_configuration_recorders_response(), tuple()} |
     {error, any()} |
-    {error, no_such_configuration_recorder_exception(), tuple()}.
+    {error, describe_configuration_recorders_errors(), tuple()}.
 describe_configuration_recorders(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConfigurationRecorders">>, Input, Options).
@@ -3533,11 +3907,7 @@ describe_configuration_recorders(Client, Input, Options)
 -spec describe_conformance_pack_compliance(map(), describe_conformance_pack_compliance_request()) ->
     {ok, describe_conformance_pack_compliance_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_such_config_rule_in_conformance_pack_exception(), tuple()} |
-    {error, no_such_conformance_pack_exception(), tuple()}.
+    {error, describe_conformance_pack_compliance_errors(), tuple()}.
 describe_conformance_pack_compliance(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_conformance_pack_compliance(Client, Input, []).
@@ -3545,11 +3915,7 @@ describe_conformance_pack_compliance(Client, Input)
 -spec describe_conformance_pack_compliance(map(), describe_conformance_pack_compliance_request(), proplists:proplist()) ->
     {ok, describe_conformance_pack_compliance_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_such_config_rule_in_conformance_pack_exception(), tuple()} |
-    {error, no_such_conformance_pack_exception(), tuple()}.
+    {error, describe_conformance_pack_compliance_errors(), tuple()}.
 describe_conformance_pack_compliance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConformancePackCompliance">>, Input, Options).
@@ -3560,9 +3926,7 @@ describe_conformance_pack_compliance(Client, Input, Options)
 -spec describe_conformance_pack_status(map(), describe_conformance_pack_status_request()) ->
     {ok, describe_conformance_pack_status_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, describe_conformance_pack_status_errors(), tuple()}.
 describe_conformance_pack_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_conformance_pack_status(Client, Input, []).
@@ -3570,9 +3934,7 @@ describe_conformance_pack_status(Client, Input)
 -spec describe_conformance_pack_status(map(), describe_conformance_pack_status_request(), proplists:proplist()) ->
     {ok, describe_conformance_pack_status_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, describe_conformance_pack_status_errors(), tuple()}.
 describe_conformance_pack_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConformancePackStatus">>, Input, Options).
@@ -3581,10 +3943,7 @@ describe_conformance_pack_status(Client, Input, Options)
 -spec describe_conformance_packs(map(), describe_conformance_packs_request()) ->
     {ok, describe_conformance_packs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_such_conformance_pack_exception(), tuple()}.
+    {error, describe_conformance_packs_errors(), tuple()}.
 describe_conformance_packs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_conformance_packs(Client, Input, []).
@@ -3592,10 +3951,7 @@ describe_conformance_packs(Client, Input)
 -spec describe_conformance_packs(map(), describe_conformance_packs_request(), proplists:proplist()) ->
     {ok, describe_conformance_packs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_such_conformance_pack_exception(), tuple()}.
+    {error, describe_conformance_packs_errors(), tuple()}.
 describe_conformance_packs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConformancePacks">>, Input, Options).
@@ -3611,7 +3967,7 @@ describe_conformance_packs(Client, Input, Options)
 -spec describe_delivery_channel_status(map(), describe_delivery_channel_status_request()) ->
     {ok, describe_delivery_channel_status_response(), tuple()} |
     {error, any()} |
-    {error, no_such_delivery_channel_exception(), tuple()}.
+    {error, describe_delivery_channel_status_errors(), tuple()}.
 describe_delivery_channel_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_delivery_channel_status(Client, Input, []).
@@ -3619,7 +3975,7 @@ describe_delivery_channel_status(Client, Input)
 -spec describe_delivery_channel_status(map(), describe_delivery_channel_status_request(), proplists:proplist()) ->
     {ok, describe_delivery_channel_status_response(), tuple()} |
     {error, any()} |
-    {error, no_such_delivery_channel_exception(), tuple()}.
+    {error, describe_delivery_channel_status_errors(), tuple()}.
 describe_delivery_channel_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDeliveryChannelStatus">>, Input, Options).
@@ -3635,7 +3991,7 @@ describe_delivery_channel_status(Client, Input, Options)
 -spec describe_delivery_channels(map(), describe_delivery_channels_request()) ->
     {ok, describe_delivery_channels_response(), tuple()} |
     {error, any()} |
-    {error, no_such_delivery_channel_exception(), tuple()}.
+    {error, describe_delivery_channels_errors(), tuple()}.
 describe_delivery_channels(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_delivery_channels(Client, Input, []).
@@ -3643,7 +3999,7 @@ describe_delivery_channels(Client, Input)
 -spec describe_delivery_channels(map(), describe_delivery_channels_request(), proplists:proplist()) ->
     {ok, describe_delivery_channels_response(), tuple()} |
     {error, any()} |
-    {error, no_such_delivery_channel_exception(), tuple()}.
+    {error, describe_delivery_channels_errors(), tuple()}.
 describe_delivery_channels(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDeliveryChannels">>, Input, Options).
@@ -3663,10 +4019,7 @@ describe_delivery_channels(Client, Input, Options)
 -spec describe_organization_config_rule_statuses(map(), describe_organization_config_rule_statuses_request()) ->
     {ok, describe_organization_config_rule_statuses_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_such_organization_config_rule_exception(), tuple()} |
-    {error, organization_access_denied_exception(), tuple()}.
+    {error, describe_organization_config_rule_statuses_errors(), tuple()}.
 describe_organization_config_rule_statuses(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_organization_config_rule_statuses(Client, Input, []).
@@ -3674,10 +4027,7 @@ describe_organization_config_rule_statuses(Client, Input)
 -spec describe_organization_config_rule_statuses(map(), describe_organization_config_rule_statuses_request(), proplists:proplist()) ->
     {ok, describe_organization_config_rule_statuses_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_such_organization_config_rule_exception(), tuple()} |
-    {error, organization_access_denied_exception(), tuple()}.
+    {error, describe_organization_config_rule_statuses_errors(), tuple()}.
 describe_organization_config_rule_statuses(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeOrganizationConfigRuleStatuses">>, Input, Options).
@@ -3714,10 +4064,7 @@ describe_organization_config_rule_statuses(Client, Input, Options)
 -spec describe_organization_config_rules(map(), describe_organization_config_rules_request()) ->
     {ok, describe_organization_config_rules_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_such_organization_config_rule_exception(), tuple()} |
-    {error, organization_access_denied_exception(), tuple()}.
+    {error, describe_organization_config_rules_errors(), tuple()}.
 describe_organization_config_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_organization_config_rules(Client, Input, []).
@@ -3725,10 +4072,7 @@ describe_organization_config_rules(Client, Input)
 -spec describe_organization_config_rules(map(), describe_organization_config_rules_request(), proplists:proplist()) ->
     {ok, describe_organization_config_rules_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_such_organization_config_rule_exception(), tuple()} |
-    {error, organization_access_denied_exception(), tuple()}.
+    {error, describe_organization_config_rules_errors(), tuple()}.
 describe_organization_config_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeOrganizationConfigRules">>, Input, Options).
@@ -3750,10 +4094,7 @@ describe_organization_config_rules(Client, Input, Options)
 -spec describe_organization_conformance_pack_statuses(map(), describe_organization_conformance_pack_statuses_request()) ->
     {ok, describe_organization_conformance_pack_statuses_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_such_organization_conformance_pack_exception(), tuple()} |
-    {error, organization_access_denied_exception(), tuple()}.
+    {error, describe_organization_conformance_pack_statuses_errors(), tuple()}.
 describe_organization_conformance_pack_statuses(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_organization_conformance_pack_statuses(Client, Input, []).
@@ -3761,10 +4102,7 @@ describe_organization_conformance_pack_statuses(Client, Input)
 -spec describe_organization_conformance_pack_statuses(map(), describe_organization_conformance_pack_statuses_request(), proplists:proplist()) ->
     {ok, describe_organization_conformance_pack_statuses_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_such_organization_conformance_pack_exception(), tuple()} |
-    {error, organization_access_denied_exception(), tuple()}.
+    {error, describe_organization_conformance_pack_statuses_errors(), tuple()}.
 describe_organization_conformance_pack_statuses(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeOrganizationConformancePackStatuses">>, Input, Options).
@@ -3801,10 +4139,7 @@ describe_organization_conformance_pack_statuses(Client, Input, Options)
 -spec describe_organization_conformance_packs(map(), describe_organization_conformance_packs_request()) ->
     {ok, describe_organization_conformance_packs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_such_organization_conformance_pack_exception(), tuple()} |
-    {error, organization_access_denied_exception(), tuple()}.
+    {error, describe_organization_conformance_packs_errors(), tuple()}.
 describe_organization_conformance_packs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_organization_conformance_packs(Client, Input, []).
@@ -3812,10 +4147,7 @@ describe_organization_conformance_packs(Client, Input)
 -spec describe_organization_conformance_packs(map(), describe_organization_conformance_packs_request(), proplists:proplist()) ->
     {ok, describe_organization_conformance_packs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_such_organization_conformance_pack_exception(), tuple()} |
-    {error, organization_access_denied_exception(), tuple()}.
+    {error, describe_organization_conformance_packs_errors(), tuple()}.
 describe_organization_conformance_packs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeOrganizationConformancePacks">>, Input, Options).
@@ -3824,9 +4156,7 @@ describe_organization_conformance_packs(Client, Input, Options)
 -spec describe_pending_aggregation_requests(map(), describe_pending_aggregation_requests_request()) ->
     {ok, describe_pending_aggregation_requests_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, describe_pending_aggregation_requests_errors(), tuple()}.
 describe_pending_aggregation_requests(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_pending_aggregation_requests(Client, Input, []).
@@ -3834,9 +4164,7 @@ describe_pending_aggregation_requests(Client, Input)
 -spec describe_pending_aggregation_requests(map(), describe_pending_aggregation_requests_request(), proplists:proplist()) ->
     {ok, describe_pending_aggregation_requests_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, describe_pending_aggregation_requests_errors(), tuple()}.
 describe_pending_aggregation_requests(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePendingAggregationRequests">>, Input, Options).
@@ -3877,8 +4205,7 @@ describe_remediation_configurations(Client, Input, Options)
 -spec describe_remediation_exceptions(map(), describe_remediation_exceptions_request()) ->
     {ok, describe_remediation_exceptions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, describe_remediation_exceptions_errors(), tuple()}.
 describe_remediation_exceptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_remediation_exceptions(Client, Input, []).
@@ -3886,8 +4213,7 @@ describe_remediation_exceptions(Client, Input)
 -spec describe_remediation_exceptions(map(), describe_remediation_exceptions_request(), proplists:proplist()) ->
     {ok, describe_remediation_exceptions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, describe_remediation_exceptions_errors(), tuple()}.
 describe_remediation_exceptions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRemediationExceptions">>, Input, Options).
@@ -3901,9 +4227,7 @@ describe_remediation_exceptions(Client, Input, Options)
 -spec describe_remediation_execution_status(map(), describe_remediation_execution_status_request()) ->
     {ok, describe_remediation_execution_status_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_such_remediation_configuration_exception(), tuple()}.
+    {error, describe_remediation_execution_status_errors(), tuple()}.
 describe_remediation_execution_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_remediation_execution_status(Client, Input, []).
@@ -3911,9 +4235,7 @@ describe_remediation_execution_status(Client, Input)
 -spec describe_remediation_execution_status(map(), describe_remediation_execution_status_request(), proplists:proplist()) ->
     {ok, describe_remediation_execution_status_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_such_remediation_configuration_exception(), tuple()}.
+    {error, describe_remediation_execution_status_errors(), tuple()}.
 describe_remediation_execution_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRemediationExecutionStatus">>, Input, Options).
@@ -3930,9 +4252,7 @@ describe_remediation_execution_status(Client, Input, Options)
 -spec describe_retention_configurations(map(), describe_retention_configurations_request()) ->
     {ok, describe_retention_configurations_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_such_retention_configuration_exception(), tuple()}.
+    {error, describe_retention_configurations_errors(), tuple()}.
 describe_retention_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_retention_configurations(Client, Input, []).
@@ -3940,9 +4260,7 @@ describe_retention_configurations(Client, Input)
 -spec describe_retention_configurations(map(), describe_retention_configurations_request(), proplists:proplist()) ->
     {ok, describe_retention_configurations_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_such_retention_configuration_exception(), tuple()}.
+    {error, describe_retention_configurations_errors(), tuple()}.
 describe_retention_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRetentionConfigurations">>, Input, Options).
@@ -3961,10 +4279,7 @@ describe_retention_configurations(Client, Input, Options)
 -spec get_aggregate_compliance_details_by_config_rule(map(), get_aggregate_compliance_details_by_config_rule_request()) ->
     {ok, get_aggregate_compliance_details_by_config_rule_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_such_configuration_aggregator_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_aggregate_compliance_details_by_config_rule_errors(), tuple()}.
 get_aggregate_compliance_details_by_config_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_aggregate_compliance_details_by_config_rule(Client, Input, []).
@@ -3972,10 +4287,7 @@ get_aggregate_compliance_details_by_config_rule(Client, Input)
 -spec get_aggregate_compliance_details_by_config_rule(map(), get_aggregate_compliance_details_by_config_rule_request(), proplists:proplist()) ->
     {ok, get_aggregate_compliance_details_by_config_rule_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_such_configuration_aggregator_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_aggregate_compliance_details_by_config_rule_errors(), tuple()}.
 get_aggregate_compliance_details_by_config_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAggregateComplianceDetailsByConfigRule">>, Input, Options).
@@ -3989,10 +4301,7 @@ get_aggregate_compliance_details_by_config_rule(Client, Input, Options)
 -spec get_aggregate_config_rule_compliance_summary(map(), get_aggregate_config_rule_compliance_summary_request()) ->
     {ok, get_aggregate_config_rule_compliance_summary_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_such_configuration_aggregator_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_aggregate_config_rule_compliance_summary_errors(), tuple()}.
 get_aggregate_config_rule_compliance_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_aggregate_config_rule_compliance_summary(Client, Input, []).
@@ -4000,10 +4309,7 @@ get_aggregate_config_rule_compliance_summary(Client, Input)
 -spec get_aggregate_config_rule_compliance_summary(map(), get_aggregate_config_rule_compliance_summary_request(), proplists:proplist()) ->
     {ok, get_aggregate_config_rule_compliance_summary_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_such_configuration_aggregator_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_aggregate_config_rule_compliance_summary_errors(), tuple()}.
 get_aggregate_config_rule_compliance_summary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAggregateConfigRuleComplianceSummary">>, Input, Options).
@@ -4020,10 +4326,7 @@ get_aggregate_config_rule_compliance_summary(Client, Input, Options)
 -spec get_aggregate_conformance_pack_compliance_summary(map(), get_aggregate_conformance_pack_compliance_summary_request()) ->
     {ok, get_aggregate_conformance_pack_compliance_summary_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_such_configuration_aggregator_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_aggregate_conformance_pack_compliance_summary_errors(), tuple()}.
 get_aggregate_conformance_pack_compliance_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_aggregate_conformance_pack_compliance_summary(Client, Input, []).
@@ -4031,10 +4334,7 @@ get_aggregate_conformance_pack_compliance_summary(Client, Input)
 -spec get_aggregate_conformance_pack_compliance_summary(map(), get_aggregate_conformance_pack_compliance_summary_request(), proplists:proplist()) ->
     {ok, get_aggregate_conformance_pack_compliance_summary_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_such_configuration_aggregator_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_aggregate_conformance_pack_compliance_summary_errors(), tuple()}.
 get_aggregate_conformance_pack_compliance_summary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAggregateConformancePackComplianceSummary">>, Input, Options).
@@ -4052,10 +4352,7 @@ get_aggregate_conformance_pack_compliance_summary(Client, Input, Options)
 -spec get_aggregate_discovered_resource_counts(map(), get_aggregate_discovered_resource_counts_request()) ->
     {ok, get_aggregate_discovered_resource_counts_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_such_configuration_aggregator_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_aggregate_discovered_resource_counts_errors(), tuple()}.
 get_aggregate_discovered_resource_counts(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_aggregate_discovered_resource_counts(Client, Input, []).
@@ -4063,10 +4360,7 @@ get_aggregate_discovered_resource_counts(Client, Input)
 -spec get_aggregate_discovered_resource_counts(map(), get_aggregate_discovered_resource_counts_request(), proplists:proplist()) ->
     {ok, get_aggregate_discovered_resource_counts_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_such_configuration_aggregator_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_aggregate_discovered_resource_counts_errors(), tuple()}.
 get_aggregate_discovered_resource_counts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAggregateDiscoveredResourceCounts">>, Input, Options).
@@ -4076,10 +4370,7 @@ get_aggregate_discovered_resource_counts(Client, Input, Options)
 -spec get_aggregate_resource_config(map(), get_aggregate_resource_config_request()) ->
     {ok, get_aggregate_resource_config_response(), tuple()} |
     {error, any()} |
-    {error, no_such_configuration_aggregator_exception(), tuple()} |
-    {error, oversized_configuration_item_exception(), tuple()} |
-    {error, resource_not_discovered_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_aggregate_resource_config_errors(), tuple()}.
 get_aggregate_resource_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_aggregate_resource_config(Client, Input, []).
@@ -4087,10 +4378,7 @@ get_aggregate_resource_config(Client, Input)
 -spec get_aggregate_resource_config(map(), get_aggregate_resource_config_request(), proplists:proplist()) ->
     {ok, get_aggregate_resource_config_response(), tuple()} |
     {error, any()} |
-    {error, no_such_configuration_aggregator_exception(), tuple()} |
-    {error, oversized_configuration_item_exception(), tuple()} |
-    {error, resource_not_discovered_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_aggregate_resource_config_errors(), tuple()}.
 get_aggregate_resource_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAggregateResourceConfig">>, Input, Options).
@@ -4105,9 +4393,7 @@ get_aggregate_resource_config(Client, Input, Options)
 -spec get_compliance_details_by_config_rule(map(), get_compliance_details_by_config_rule_request()) ->
     {ok, get_compliance_details_by_config_rule_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_such_config_rule_exception(), tuple()}.
+    {error, get_compliance_details_by_config_rule_errors(), tuple()}.
 get_compliance_details_by_config_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_compliance_details_by_config_rule(Client, Input, []).
@@ -4115,9 +4401,7 @@ get_compliance_details_by_config_rule(Client, Input)
 -spec get_compliance_details_by_config_rule(map(), get_compliance_details_by_config_rule_request(), proplists:proplist()) ->
     {ok, get_compliance_details_by_config_rule_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_such_config_rule_exception(), tuple()}.
+    {error, get_compliance_details_by_config_rule_errors(), tuple()}.
 get_compliance_details_by_config_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetComplianceDetailsByConfigRule">>, Input, Options).
@@ -4131,7 +4415,7 @@ get_compliance_details_by_config_rule(Client, Input, Options)
 -spec get_compliance_details_by_resource(map(), get_compliance_details_by_resource_request()) ->
     {ok, get_compliance_details_by_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, get_compliance_details_by_resource_errors(), tuple()}.
 get_compliance_details_by_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_compliance_details_by_resource(Client, Input, []).
@@ -4139,7 +4423,7 @@ get_compliance_details_by_resource(Client, Input)
 -spec get_compliance_details_by_resource(map(), get_compliance_details_by_resource_request(), proplists:proplist()) ->
     {ok, get_compliance_details_by_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, get_compliance_details_by_resource_errors(), tuple()}.
 get_compliance_details_by_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetComplianceDetailsByResource">>, Input, Options).
@@ -4169,7 +4453,7 @@ get_compliance_summary_by_config_rule(Client, Input, Options)
 -spec get_compliance_summary_by_resource_type(map(), get_compliance_summary_by_resource_type_request()) ->
     {ok, get_compliance_summary_by_resource_type_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, get_compliance_summary_by_resource_type_errors(), tuple()}.
 get_compliance_summary_by_resource_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_compliance_summary_by_resource_type(Client, Input, []).
@@ -4177,7 +4461,7 @@ get_compliance_summary_by_resource_type(Client, Input)
 -spec get_compliance_summary_by_resource_type(map(), get_compliance_summary_by_resource_type_request(), proplists:proplist()) ->
     {ok, get_compliance_summary_by_resource_type_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, get_compliance_summary_by_resource_type_errors(), tuple()}.
 get_compliance_summary_by_resource_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetComplianceSummaryByResourceType">>, Input, Options).
@@ -4187,11 +4471,7 @@ get_compliance_summary_by_resource_type(Client, Input, Options)
 -spec get_conformance_pack_compliance_details(map(), get_conformance_pack_compliance_details_request()) ->
     {ok, get_conformance_pack_compliance_details_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_such_config_rule_in_conformance_pack_exception(), tuple()} |
-    {error, no_such_conformance_pack_exception(), tuple()}.
+    {error, get_conformance_pack_compliance_details_errors(), tuple()}.
 get_conformance_pack_compliance_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_conformance_pack_compliance_details(Client, Input, []).
@@ -4199,11 +4479,7 @@ get_conformance_pack_compliance_details(Client, Input)
 -spec get_conformance_pack_compliance_details(map(), get_conformance_pack_compliance_details_request(), proplists:proplist()) ->
     {ok, get_conformance_pack_compliance_details_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_such_config_rule_in_conformance_pack_exception(), tuple()} |
-    {error, no_such_conformance_pack_exception(), tuple()}.
+    {error, get_conformance_pack_compliance_details_errors(), tuple()}.
 get_conformance_pack_compliance_details(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetConformancePackComplianceDetails">>, Input, Options).
@@ -4213,9 +4489,7 @@ get_conformance_pack_compliance_details(Client, Input, Options)
 -spec get_conformance_pack_compliance_summary(map(), get_conformance_pack_compliance_summary_request()) ->
     {ok, get_conformance_pack_compliance_summary_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_such_conformance_pack_exception(), tuple()}.
+    {error, get_conformance_pack_compliance_summary_errors(), tuple()}.
 get_conformance_pack_compliance_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_conformance_pack_compliance_summary(Client, Input, []).
@@ -4223,9 +4497,7 @@ get_conformance_pack_compliance_summary(Client, Input)
 -spec get_conformance_pack_compliance_summary(map(), get_conformance_pack_compliance_summary_request(), proplists:proplist()) ->
     {ok, get_conformance_pack_compliance_summary_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_such_conformance_pack_exception(), tuple()}.
+    {error, get_conformance_pack_compliance_summary_errors(), tuple()}.
 get_conformance_pack_compliance_summary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetConformancePackComplianceSummary">>, Input, Options).
@@ -4235,7 +4507,7 @@ get_conformance_pack_compliance_summary(Client, Input, Options)
 -spec get_custom_rule_policy(map(), get_custom_rule_policy_request()) ->
     {ok, get_custom_rule_policy_response(), tuple()} |
     {error, any()} |
-    {error, no_such_config_rule_exception(), tuple()}.
+    {error, get_custom_rule_policy_errors(), tuple()}.
 get_custom_rule_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_custom_rule_policy(Client, Input, []).
@@ -4243,7 +4515,7 @@ get_custom_rule_policy(Client, Input)
 -spec get_custom_rule_policy(map(), get_custom_rule_policy_request(), proplists:proplist()) ->
     {ok, get_custom_rule_policy_response(), tuple()} |
     {error, any()} |
-    {error, no_such_config_rule_exception(), tuple()}.
+    {error, get_custom_rule_policy_errors(), tuple()}.
 get_custom_rule_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCustomRulePolicy">>, Input, Options).
@@ -4295,9 +4567,7 @@ get_custom_rule_policy(Client, Input, Options)
 -spec get_discovered_resource_counts(map(), get_discovered_resource_counts_request()) ->
     {ok, get_discovered_resource_counts_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_discovered_resource_counts_errors(), tuple()}.
 get_discovered_resource_counts(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_discovered_resource_counts(Client, Input, []).
@@ -4305,9 +4575,7 @@ get_discovered_resource_counts(Client, Input)
 -spec get_discovered_resource_counts(map(), get_discovered_resource_counts_request(), proplists:proplist()) ->
     {ok, get_discovered_resource_counts_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_discovered_resource_counts_errors(), tuple()}.
 get_discovered_resource_counts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDiscoveredResourceCounts">>, Input, Options).
@@ -4317,10 +4585,7 @@ get_discovered_resource_counts(Client, Input, Options)
 -spec get_organization_config_rule_detailed_status(map(), get_organization_config_rule_detailed_status_request()) ->
     {ok, get_organization_config_rule_detailed_status_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_such_organization_config_rule_exception(), tuple()} |
-    {error, organization_access_denied_exception(), tuple()}.
+    {error, get_organization_config_rule_detailed_status_errors(), tuple()}.
 get_organization_config_rule_detailed_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_organization_config_rule_detailed_status(Client, Input, []).
@@ -4328,10 +4593,7 @@ get_organization_config_rule_detailed_status(Client, Input)
 -spec get_organization_config_rule_detailed_status(map(), get_organization_config_rule_detailed_status_request(), proplists:proplist()) ->
     {ok, get_organization_config_rule_detailed_status_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_such_organization_config_rule_exception(), tuple()} |
-    {error, organization_access_denied_exception(), tuple()}.
+    {error, get_organization_config_rule_detailed_status_errors(), tuple()}.
 get_organization_config_rule_detailed_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOrganizationConfigRuleDetailedStatus">>, Input, Options).
@@ -4341,10 +4603,7 @@ get_organization_config_rule_detailed_status(Client, Input, Options)
 -spec get_organization_conformance_pack_detailed_status(map(), get_organization_conformance_pack_detailed_status_request()) ->
     {ok, get_organization_conformance_pack_detailed_status_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_such_organization_conformance_pack_exception(), tuple()} |
-    {error, organization_access_denied_exception(), tuple()}.
+    {error, get_organization_conformance_pack_detailed_status_errors(), tuple()}.
 get_organization_conformance_pack_detailed_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_organization_conformance_pack_detailed_status(Client, Input, []).
@@ -4352,10 +4611,7 @@ get_organization_conformance_pack_detailed_status(Client, Input)
 -spec get_organization_conformance_pack_detailed_status(map(), get_organization_conformance_pack_detailed_status_request(), proplists:proplist()) ->
     {ok, get_organization_conformance_pack_detailed_status_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_such_organization_conformance_pack_exception(), tuple()} |
-    {error, organization_access_denied_exception(), tuple()}.
+    {error, get_organization_conformance_pack_detailed_status_errors(), tuple()}.
 get_organization_conformance_pack_detailed_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOrganizationConformancePackDetailedStatus">>, Input, Options).
@@ -4365,8 +4621,7 @@ get_organization_conformance_pack_detailed_status(Client, Input, Options)
 -spec get_organization_custom_rule_policy(map(), get_organization_custom_rule_policy_request()) ->
     {ok, get_organization_custom_rule_policy_response(), tuple()} |
     {error, any()} |
-    {error, no_such_organization_config_rule_exception(), tuple()} |
-    {error, organization_access_denied_exception(), tuple()}.
+    {error, get_organization_custom_rule_policy_errors(), tuple()}.
 get_organization_custom_rule_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_organization_custom_rule_policy(Client, Input, []).
@@ -4374,8 +4629,7 @@ get_organization_custom_rule_policy(Client, Input)
 -spec get_organization_custom_rule_policy(map(), get_organization_custom_rule_policy_request(), proplists:proplist()) ->
     {ok, get_organization_custom_rule_policy_response(), tuple()} |
     {error, any()} |
-    {error, no_such_organization_config_rule_exception(), tuple()} |
-    {error, organization_access_denied_exception(), tuple()}.
+    {error, get_organization_custom_rule_policy_errors(), tuple()}.
 get_organization_custom_rule_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOrganizationCustomRulePolicy">>, Input, Options).
@@ -4410,12 +4664,7 @@ get_organization_custom_rule_policy(Client, Input, Options)
 -spec get_resource_config_history(map(), get_resource_config_history_request()) ->
     {ok, get_resource_config_history_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_time_range_exception(), tuple()} |
-    {error, no_available_configuration_recorder_exception(), tuple()} |
-    {error, resource_not_discovered_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_resource_config_history_errors(), tuple()}.
 get_resource_config_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_config_history(Client, Input, []).
@@ -4423,12 +4672,7 @@ get_resource_config_history(Client, Input)
 -spec get_resource_config_history(map(), get_resource_config_history_request(), proplists:proplist()) ->
     {ok, get_resource_config_history_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_time_range_exception(), tuple()} |
-    {error, no_available_configuration_recorder_exception(), tuple()} |
-    {error, resource_not_discovered_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_resource_config_history_errors(), tuple()}.
 get_resource_config_history(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourceConfigHistory">>, Input, Options).
@@ -4452,7 +4696,7 @@ get_resource_config_history(Client, Input, Options)
 -spec get_resource_evaluation_summary(map(), get_resource_evaluation_summary_request()) ->
     {ok, get_resource_evaluation_summary_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_resource_evaluation_summary_errors(), tuple()}.
 get_resource_evaluation_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_evaluation_summary(Client, Input, []).
@@ -4460,7 +4704,7 @@ get_resource_evaluation_summary(Client, Input)
 -spec get_resource_evaluation_summary(map(), get_resource_evaluation_summary_request(), proplists:proplist()) ->
     {ok, get_resource_evaluation_summary_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_resource_evaluation_summary_errors(), tuple()}.
 get_resource_evaluation_summary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourceEvaluationSummary">>, Input, Options).
@@ -4469,8 +4713,7 @@ get_resource_evaluation_summary(Client, Input, Options)
 -spec get_stored_query(map(), get_stored_query_request()) ->
     {ok, get_stored_query_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_stored_query_errors(), tuple()}.
 get_stored_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_stored_query(Client, Input, []).
@@ -4478,8 +4721,7 @@ get_stored_query(Client, Input)
 -spec get_stored_query(map(), get_stored_query_request(), proplists:proplist()) ->
     {ok, get_stored_query_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_stored_query_errors(), tuple()}.
 get_stored_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetStoredQuery">>, Input, Options).
@@ -4500,10 +4742,7 @@ get_stored_query(Client, Input, Options)
 -spec list_aggregate_discovered_resources(map(), list_aggregate_discovered_resources_request()) ->
     {ok, list_aggregate_discovered_resources_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_such_configuration_aggregator_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_aggregate_discovered_resources_errors(), tuple()}.
 list_aggregate_discovered_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_aggregate_discovered_resources(Client, Input, []).
@@ -4511,10 +4750,7 @@ list_aggregate_discovered_resources(Client, Input)
 -spec list_aggregate_discovered_resources(map(), list_aggregate_discovered_resources_request(), proplists:proplist()) ->
     {ok, list_aggregate_discovered_resources_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_such_configuration_aggregator_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_aggregate_discovered_resources_errors(), tuple()}.
 list_aggregate_discovered_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAggregateDiscoveredResources">>, Input, Options).
@@ -4534,9 +4770,7 @@ list_aggregate_discovered_resources(Client, Input, Options)
 -spec list_conformance_pack_compliance_scores(map(), list_conformance_pack_compliance_scores_request()) ->
     {ok, list_conformance_pack_compliance_scores_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, list_conformance_pack_compliance_scores_errors(), tuple()}.
 list_conformance_pack_compliance_scores(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_conformance_pack_compliance_scores(Client, Input, []).
@@ -4544,9 +4778,7 @@ list_conformance_pack_compliance_scores(Client, Input)
 -spec list_conformance_pack_compliance_scores(map(), list_conformance_pack_compliance_scores_request(), proplists:proplist()) ->
     {ok, list_conformance_pack_compliance_scores_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, list_conformance_pack_compliance_scores_errors(), tuple()}.
 list_conformance_pack_compliance_scores(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListConformancePackComplianceScores">>, Input, Options).
@@ -4573,10 +4805,7 @@ list_conformance_pack_compliance_scores(Client, Input, Options)
 -spec list_discovered_resources(map(), list_discovered_resources_request()) ->
     {ok, list_discovered_resources_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_available_configuration_recorder_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_discovered_resources_errors(), tuple()}.
 list_discovered_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_discovered_resources(Client, Input, []).
@@ -4584,10 +4813,7 @@ list_discovered_resources(Client, Input)
 -spec list_discovered_resources(map(), list_discovered_resources_request(), proplists:proplist()) ->
     {ok, list_discovered_resources_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_available_configuration_recorder_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_discovered_resources_errors(), tuple()}.
 list_discovered_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDiscoveredResources">>, Input, Options).
@@ -4596,9 +4822,7 @@ list_discovered_resources(Client, Input, Options)
 -spec list_resource_evaluations(map(), list_resource_evaluations_request()) ->
     {ok, list_resource_evaluations_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_time_range_exception(), tuple()}.
+    {error, list_resource_evaluations_errors(), tuple()}.
 list_resource_evaluations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_evaluations(Client, Input, []).
@@ -4606,9 +4830,7 @@ list_resource_evaluations(Client, Input)
 -spec list_resource_evaluations(map(), list_resource_evaluations_request(), proplists:proplist()) ->
     {ok, list_resource_evaluations_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_time_range_exception(), tuple()}.
+    {error, list_resource_evaluations_errors(), tuple()}.
 list_resource_evaluations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResourceEvaluations">>, Input, Options).
@@ -4620,8 +4842,7 @@ list_resource_evaluations(Client, Input, Options)
 -spec list_stored_queries(map(), list_stored_queries_request()) ->
     {ok, list_stored_queries_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_stored_queries_errors(), tuple()}.
 list_stored_queries(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_stored_queries(Client, Input, []).
@@ -4629,8 +4850,7 @@ list_stored_queries(Client, Input)
 -spec list_stored_queries(map(), list_stored_queries_request(), proplists:proplist()) ->
     {ok, list_stored_queries_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_stored_queries_errors(), tuple()}.
 list_stored_queries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStoredQueries">>, Input, Options).
@@ -4639,10 +4859,7 @@ list_stored_queries(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -4650,10 +4867,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -4670,7 +4884,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec put_aggregation_authorization(map(), put_aggregation_authorization_request()) ->
     {ok, put_aggregation_authorization_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, put_aggregation_authorization_errors(), tuple()}.
 put_aggregation_authorization(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_aggregation_authorization(Client, Input, []).
@@ -4678,7 +4892,7 @@ put_aggregation_authorization(Client, Input)
 -spec put_aggregation_authorization(map(), put_aggregation_authorization_request(), proplists:proplist()) ->
     {ok, put_aggregation_authorization_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, put_aggregation_authorization_errors(), tuple()}.
 put_aggregation_authorization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAggregationAuthorization">>, Input, Options).
@@ -4753,11 +4967,7 @@ put_aggregation_authorization(Client, Input, Options)
 -spec put_config_rule(map(), put_config_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, insufficient_permissions_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, max_number_of_config_rules_exceeded_exception(), tuple()} |
-    {error, no_available_configuration_recorder_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, put_config_rule_errors(), tuple()}.
 put_config_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_config_rule(Client, Input, []).
@@ -4765,11 +4975,7 @@ put_config_rule(Client, Input)
 -spec put_config_rule(map(), put_config_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, insufficient_permissions_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, max_number_of_config_rules_exceeded_exception(), tuple()} |
-    {error, no_available_configuration_recorder_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, put_config_rule_errors(), tuple()}.
 put_config_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutConfigRule">>, Input, Options).
@@ -4812,12 +5018,7 @@ put_config_rule(Client, Input, Options)
 -spec put_configuration_aggregator(map(), put_configuration_aggregator_request()) ->
     {ok, put_configuration_aggregator_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_role_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_available_organization_exception(), tuple()} |
-    {error, organization_access_denied_exception(), tuple()} |
-    {error, organization_all_features_not_enabled_exception(), tuple()}.
+    {error, put_configuration_aggregator_errors(), tuple()}.
 put_configuration_aggregator(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_configuration_aggregator(Client, Input, []).
@@ -4825,12 +5026,7 @@ put_configuration_aggregator(Client, Input)
 -spec put_configuration_aggregator(map(), put_configuration_aggregator_request(), proplists:proplist()) ->
     {ok, put_configuration_aggregator_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_role_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_available_organization_exception(), tuple()} |
-    {error, organization_access_denied_exception(), tuple()} |
-    {error, organization_all_features_not_enabled_exception(), tuple()}.
+    {error, put_configuration_aggregator_errors(), tuple()}.
 put_configuration_aggregator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutConfigurationAggregator">>, Input, Options).
@@ -4856,11 +5052,7 @@ put_configuration_aggregator(Client, Input, Options)
 -spec put_configuration_recorder(map(), put_configuration_recorder_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_configuration_recorder_name_exception(), tuple()} |
-    {error, invalid_recording_group_exception(), tuple()} |
-    {error, invalid_role_exception(), tuple()} |
-    {error, max_number_of_configuration_recorders_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_configuration_recorder_errors(), tuple()}.
 put_configuration_recorder(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_configuration_recorder(Client, Input, []).
@@ -4868,11 +5060,7 @@ put_configuration_recorder(Client, Input)
 -spec put_configuration_recorder(map(), put_configuration_recorder_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_configuration_recorder_name_exception(), tuple()} |
-    {error, invalid_recording_group_exception(), tuple()} |
-    {error, invalid_role_exception(), tuple()} |
-    {error, max_number_of_configuration_recorders_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_configuration_recorder_errors(), tuple()}.
 put_configuration_recorder(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutConfigurationRecorder">>, Input, Options).
@@ -4898,11 +5086,7 @@ put_configuration_recorder(Client, Input, Options)
 -spec put_conformance_pack(map(), put_conformance_pack_request()) ->
     {ok, put_conformance_pack_response(), tuple()} |
     {error, any()} |
-    {error, conformance_pack_template_validation_exception(), tuple()} |
-    {error, insufficient_permissions_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, max_number_of_conformance_packs_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, put_conformance_pack_errors(), tuple()}.
 put_conformance_pack(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_conformance_pack(Client, Input, []).
@@ -4910,11 +5094,7 @@ put_conformance_pack(Client, Input)
 -spec put_conformance_pack(map(), put_conformance_pack_request(), proplists:proplist()) ->
     {ok, put_conformance_pack_response(), tuple()} |
     {error, any()} |
-    {error, conformance_pack_template_validation_exception(), tuple()} |
-    {error, insufficient_permissions_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, max_number_of_conformance_packs_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, put_conformance_pack_errors(), tuple()}.
 put_conformance_pack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutConformancePack">>, Input, Options).
@@ -4943,14 +5123,7 @@ put_conformance_pack(Client, Input, Options)
 -spec put_delivery_channel(map(), put_delivery_channel_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, insufficient_delivery_policy_exception(), tuple()} |
-    {error, invalid_delivery_channel_name_exception(), tuple()} |
-    {error, invalid_s3_key_prefix_exception(), tuple()} |
-    {error, invalid_s3_kms_key_arn_exception(), tuple()} |
-    {error, invalid_s_n_s_topic_arn_exception(), tuple()} |
-    {error, max_number_of_delivery_channels_exceeded_exception(), tuple()} |
-    {error, no_available_configuration_recorder_exception(), tuple()} |
-    {error, no_such_bucket_exception(), tuple()}.
+    {error, put_delivery_channel_errors(), tuple()}.
 put_delivery_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_delivery_channel(Client, Input, []).
@@ -4958,14 +5131,7 @@ put_delivery_channel(Client, Input)
 -spec put_delivery_channel(map(), put_delivery_channel_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, insufficient_delivery_policy_exception(), tuple()} |
-    {error, invalid_delivery_channel_name_exception(), tuple()} |
-    {error, invalid_s3_key_prefix_exception(), tuple()} |
-    {error, invalid_s3_kms_key_arn_exception(), tuple()} |
-    {error, invalid_s_n_s_topic_arn_exception(), tuple()} |
-    {error, max_number_of_delivery_channels_exceeded_exception(), tuple()} |
-    {error, no_available_configuration_recorder_exception(), tuple()} |
-    {error, no_such_bucket_exception(), tuple()}.
+    {error, put_delivery_channel_errors(), tuple()}.
 put_delivery_channel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutDeliveryChannel">>, Input, Options).
@@ -4978,9 +5144,7 @@ put_delivery_channel(Client, Input, Options)
 -spec put_evaluations(map(), put_evaluations_request()) ->
     {ok, put_evaluations_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_result_token_exception(), tuple()} |
-    {error, no_such_config_rule_exception(), tuple()}.
+    {error, put_evaluations_errors(), tuple()}.
 put_evaluations(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_evaluations(Client, Input, []).
@@ -4988,9 +5152,7 @@ put_evaluations(Client, Input)
 -spec put_evaluations(map(), put_evaluations_request(), proplists:proplist()) ->
     {ok, put_evaluations_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_result_token_exception(), tuple()} |
-    {error, no_such_config_rule_exception(), tuple()}.
+    {error, put_evaluations_errors(), tuple()}.
 put_evaluations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutEvaluations">>, Input, Options).
@@ -5002,8 +5164,7 @@ put_evaluations(Client, Input, Options)
 -spec put_external_evaluation(map(), put_external_evaluation_request()) ->
     {ok, put_external_evaluation_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_such_config_rule_exception(), tuple()}.
+    {error, put_external_evaluation_errors(), tuple()}.
 put_external_evaluation(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_external_evaluation(Client, Input, []).
@@ -5011,8 +5172,7 @@ put_external_evaluation(Client, Input)
 -spec put_external_evaluation(map(), put_external_evaluation_request(), proplists:proplist()) ->
     {ok, put_external_evaluation_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_such_config_rule_exception(), tuple()}.
+    {error, put_external_evaluation_errors(), tuple()}.
 put_external_evaluation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutExternalEvaluation">>, Input, Options).
@@ -5094,14 +5254,7 @@ put_external_evaluation(Client, Input, Options)
 -spec put_organization_config_rule(map(), put_organization_config_rule_request()) ->
     {ok, put_organization_config_rule_response(), tuple()} |
     {error, any()} |
-    {error, insufficient_permissions_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, max_number_of_organization_config_rules_exceeded_exception(), tuple()} |
-    {error, no_available_organization_exception(), tuple()} |
-    {error, organization_access_denied_exception(), tuple()} |
-    {error, organization_all_features_not_enabled_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_organization_config_rule_errors(), tuple()}.
 put_organization_config_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_organization_config_rule(Client, Input, []).
@@ -5109,14 +5262,7 @@ put_organization_config_rule(Client, Input)
 -spec put_organization_config_rule(map(), put_organization_config_rule_request(), proplists:proplist()) ->
     {ok, put_organization_config_rule_response(), tuple()} |
     {error, any()} |
-    {error, insufficient_permissions_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, max_number_of_organization_config_rules_exceeded_exception(), tuple()} |
-    {error, no_available_organization_exception(), tuple()} |
-    {error, organization_access_denied_exception(), tuple()} |
-    {error, organization_all_features_not_enabled_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_organization_config_rule_errors(), tuple()}.
 put_organization_config_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutOrganizationConfigRule">>, Input, Options).
@@ -5164,14 +5310,7 @@ put_organization_config_rule(Client, Input, Options)
 -spec put_organization_conformance_pack(map(), put_organization_conformance_pack_request()) ->
     {ok, put_organization_conformance_pack_response(), tuple()} |
     {error, any()} |
-    {error, insufficient_permissions_exception(), tuple()} |
-    {error, max_number_of_organization_conformance_packs_exceeded_exception(), tuple()} |
-    {error, no_available_organization_exception(), tuple()} |
-    {error, organization_access_denied_exception(), tuple()} |
-    {error, organization_all_features_not_enabled_exception(), tuple()} |
-    {error, organization_conformance_pack_template_validation_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_organization_conformance_pack_errors(), tuple()}.
 put_organization_conformance_pack(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_organization_conformance_pack(Client, Input, []).
@@ -5179,14 +5318,7 @@ put_organization_conformance_pack(Client, Input)
 -spec put_organization_conformance_pack(map(), put_organization_conformance_pack_request(), proplists:proplist()) ->
     {ok, put_organization_conformance_pack_response(), tuple()} |
     {error, any()} |
-    {error, insufficient_permissions_exception(), tuple()} |
-    {error, max_number_of_organization_conformance_packs_exceeded_exception(), tuple()} |
-    {error, no_available_organization_exception(), tuple()} |
-    {error, organization_access_denied_exception(), tuple()} |
-    {error, organization_all_features_not_enabled_exception(), tuple()} |
-    {error, organization_conformance_pack_template_validation_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_organization_conformance_pack_errors(), tuple()}.
 put_organization_conformance_pack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutOrganizationConformancePack">>, Input, Options).
@@ -5245,8 +5377,7 @@ put_organization_conformance_pack(Client, Input, Options)
 -spec put_remediation_configurations(map(), put_remediation_configurations_request()) ->
     {ok, put_remediation_configurations_response(), tuple()} |
     {error, any()} |
-    {error, insufficient_permissions_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, put_remediation_configurations_errors(), tuple()}.
 put_remediation_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_remediation_configurations(Client, Input, []).
@@ -5254,8 +5385,7 @@ put_remediation_configurations(Client, Input)
 -spec put_remediation_configurations(map(), put_remediation_configurations_request(), proplists:proplist()) ->
     {ok, put_remediation_configurations_response(), tuple()} |
     {error, any()} |
-    {error, insufficient_permissions_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, put_remediation_configurations_errors(), tuple()}.
 put_remediation_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRemediationConfigurations">>, Input, Options).
@@ -5318,8 +5448,7 @@ put_remediation_configurations(Client, Input, Options)
 -spec put_remediation_exceptions(map(), put_remediation_exceptions_request()) ->
     {ok, put_remediation_exceptions_response(), tuple()} |
     {error, any()} |
-    {error, insufficient_permissions_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, put_remediation_exceptions_errors(), tuple()}.
 put_remediation_exceptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_remediation_exceptions(Client, Input, []).
@@ -5327,8 +5456,7 @@ put_remediation_exceptions(Client, Input)
 -spec put_remediation_exceptions(map(), put_remediation_exceptions_request(), proplists:proplist()) ->
     {ok, put_remediation_exceptions_response(), tuple()} |
     {error, any()} |
-    {error, insufficient_permissions_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, put_remediation_exceptions_errors(), tuple()}.
 put_remediation_exceptions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRemediationExceptions">>, Input, Options).
@@ -5354,10 +5482,7 @@ put_remediation_exceptions(Client, Input, Options)
 -spec put_resource_config(map(), put_resource_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, insufficient_permissions_exception(), tuple()} |
-    {error, max_active_resources_exceeded_exception(), tuple()} |
-    {error, no_running_configuration_recorder_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_resource_config_errors(), tuple()}.
 put_resource_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_config(Client, Input, []).
@@ -5365,10 +5490,7 @@ put_resource_config(Client, Input)
 -spec put_resource_config(map(), put_resource_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, insufficient_permissions_exception(), tuple()} |
-    {error, max_active_resources_exceeded_exception(), tuple()} |
-    {error, no_running_configuration_recorder_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_resource_config_errors(), tuple()}.
 put_resource_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResourceConfig">>, Input, Options).
@@ -5389,8 +5511,7 @@ put_resource_config(Client, Input, Options)
 -spec put_retention_configuration(map(), put_retention_configuration_request()) ->
     {ok, put_retention_configuration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, max_number_of_retention_configurations_exceeded_exception(), tuple()}.
+    {error, put_retention_configuration_errors(), tuple()}.
 put_retention_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_retention_configuration(Client, Input, []).
@@ -5398,8 +5519,7 @@ put_retention_configuration(Client, Input)
 -spec put_retention_configuration(map(), put_retention_configuration_request(), proplists:proplist()) ->
     {ok, put_retention_configuration_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, max_number_of_retention_configurations_exceeded_exception(), tuple()}.
+    {error, put_retention_configuration_errors(), tuple()}.
 put_retention_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRetentionConfiguration">>, Input, Options).
@@ -5420,9 +5540,7 @@ put_retention_configuration(Client, Input, Options)
 -spec put_stored_query(map(), put_stored_query_request()) ->
     {ok, put_stored_query_response(), tuple()} |
     {error, any()} |
-    {error, resource_concurrent_modification_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_stored_query_errors(), tuple()}.
 put_stored_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_stored_query(Client, Input, []).
@@ -5430,9 +5548,7 @@ put_stored_query(Client, Input)
 -spec put_stored_query(map(), put_stored_query_request(), proplists:proplist()) ->
     {ok, put_stored_query_response(), tuple()} |
     {error, any()} |
-    {error, resource_concurrent_modification_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_stored_query_errors(), tuple()}.
 put_stored_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutStoredQuery">>, Input, Options).
@@ -5465,10 +5581,7 @@ put_stored_query(Client, Input, Options)
 -spec select_aggregate_resource_config(map(), select_aggregate_resource_config_request()) ->
     {ok, select_aggregate_resource_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_expression_exception(), tuple()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_such_configuration_aggregator_exception(), tuple()}.
+    {error, select_aggregate_resource_config_errors(), tuple()}.
 select_aggregate_resource_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     select_aggregate_resource_config(Client, Input, []).
@@ -5476,10 +5589,7 @@ select_aggregate_resource_config(Client, Input)
 -spec select_aggregate_resource_config(map(), select_aggregate_resource_config_request(), proplists:proplist()) ->
     {ok, select_aggregate_resource_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_expression_exception(), tuple()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, no_such_configuration_aggregator_exception(), tuple()}.
+    {error, select_aggregate_resource_config_errors(), tuple()}.
 select_aggregate_resource_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SelectAggregateResourceConfig">>, Input, Options).
@@ -5497,9 +5607,7 @@ select_aggregate_resource_config(Client, Input, Options)
 -spec select_resource_config(map(), select_resource_config_request()) ->
     {ok, select_resource_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_expression_exception(), tuple()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, select_resource_config_errors(), tuple()}.
 select_resource_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     select_resource_config(Client, Input, []).
@@ -5507,9 +5615,7 @@ select_resource_config(Client, Input)
 -spec select_resource_config(map(), select_resource_config_request(), proplists:proplist()) ->
     {ok, select_resource_config_response(), tuple()} |
     {error, any()} |
-    {error, invalid_expression_exception(), tuple()} |
-    {error, invalid_limit_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, select_resource_config_errors(), tuple()}.
 select_resource_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SelectResourceConfig">>, Input, Options).
@@ -5559,10 +5665,7 @@ select_resource_config(Client, Input, Options)
 -spec start_config_rules_evaluation(map(), start_config_rules_evaluation_request()) ->
     {ok, start_config_rules_evaluation_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_config_rule_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, start_config_rules_evaluation_errors(), tuple()}.
 start_config_rules_evaluation(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_config_rules_evaluation(Client, Input, []).
@@ -5570,10 +5673,7 @@ start_config_rules_evaluation(Client, Input)
 -spec start_config_rules_evaluation(map(), start_config_rules_evaluation_request(), proplists:proplist()) ->
     {ok, start_config_rules_evaluation_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_config_rule_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, start_config_rules_evaluation_errors(), tuple()}.
 start_config_rules_evaluation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartConfigRulesEvaluation">>, Input, Options).
@@ -5587,8 +5687,7 @@ start_config_rules_evaluation(Client, Input, Options)
 -spec start_configuration_recorder(map(), start_configuration_recorder_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, no_available_delivery_channel_exception(), tuple()} |
-    {error, no_such_configuration_recorder_exception(), tuple()}.
+    {error, start_configuration_recorder_errors(), tuple()}.
 start_configuration_recorder(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_configuration_recorder(Client, Input, []).
@@ -5596,8 +5695,7 @@ start_configuration_recorder(Client, Input)
 -spec start_configuration_recorder(map(), start_configuration_recorder_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, no_available_delivery_channel_exception(), tuple()} |
-    {error, no_such_configuration_recorder_exception(), tuple()}.
+    {error, start_configuration_recorder_errors(), tuple()}.
 start_configuration_recorder(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartConfigurationRecorder">>, Input, Options).
@@ -5614,9 +5712,7 @@ start_configuration_recorder(Client, Input, Options)
 -spec start_remediation_execution(map(), start_remediation_execution_request()) ->
     {ok, start_remediation_execution_response(), tuple()} |
     {error, any()} |
-    {error, insufficient_permissions_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_such_remediation_configuration_exception(), tuple()}.
+    {error, start_remediation_execution_errors(), tuple()}.
 start_remediation_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_remediation_execution(Client, Input, []).
@@ -5624,9 +5720,7 @@ start_remediation_execution(Client, Input)
 -spec start_remediation_execution(map(), start_remediation_execution_request(), proplists:proplist()) ->
     {ok, start_remediation_execution_response(), tuple()} |
     {error, any()} |
-    {error, insufficient_permissions_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, no_such_remediation_configuration_exception(), tuple()}.
+    {error, start_remediation_execution_errors(), tuple()}.
 start_remediation_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartRemediationExecution">>, Input, Options).
@@ -5660,8 +5754,7 @@ start_remediation_execution(Client, Input, Options)
 -spec start_resource_evaluation(map(), start_resource_evaluation_request()) ->
     {ok, start_resource_evaluation_response(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, start_resource_evaluation_errors(), tuple()}.
 start_resource_evaluation(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_resource_evaluation(Client, Input, []).
@@ -5669,8 +5762,7 @@ start_resource_evaluation(Client, Input)
 -spec start_resource_evaluation(map(), start_resource_evaluation_request(), proplists:proplist()) ->
     {ok, start_resource_evaluation_response(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, start_resource_evaluation_errors(), tuple()}.
 start_resource_evaluation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartResourceEvaluation">>, Input, Options).
@@ -5680,7 +5772,7 @@ start_resource_evaluation(Client, Input, Options)
 -spec stop_configuration_recorder(map(), stop_configuration_recorder_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, no_such_configuration_recorder_exception(), tuple()}.
+    {error, stop_configuration_recorder_errors(), tuple()}.
 stop_configuration_recorder(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_configuration_recorder(Client, Input, []).
@@ -5688,7 +5780,7 @@ stop_configuration_recorder(Client, Input)
 -spec stop_configuration_recorder(map(), stop_configuration_recorder_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, no_such_configuration_recorder_exception(), tuple()}.
+    {error, stop_configuration_recorder_errors(), tuple()}.
 stop_configuration_recorder(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopConfigurationRecorder">>, Input, Options).
@@ -5704,9 +5796,7 @@ stop_configuration_recorder(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -5714,9 +5804,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -5725,8 +5813,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -5734,8 +5821,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).

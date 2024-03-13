@@ -430,6 +430,96 @@
 %% }
 -type certificate_detail() :: #{binary() => any()}.
 
+-type add_tags_to_certificate_errors() ::
+    too_many_tags_exception() | 
+    invalid_tag_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    tag_policy_exception().
+
+-type delete_certificate_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    invalid_arn_exception() | 
+    resource_in_use_exception().
+
+-type describe_certificate_errors() ::
+    resource_not_found_exception() | 
+    invalid_arn_exception().
+
+-type export_certificate_errors() ::
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    request_in_progress_exception().
+
+-type get_account_configuration_errors() ::
+    throttling_exception() | 
+    access_denied_exception().
+
+-type get_certificate_errors() ::
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    request_in_progress_exception().
+
+-type import_certificate_errors() ::
+    too_many_tags_exception() | 
+    invalid_tag_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    tag_policy_exception().
+
+-type list_certificates_errors() ::
+    validation_exception() | 
+    invalid_args_exception().
+
+-type list_tags_for_certificate_errors() ::
+    resource_not_found_exception() | 
+    invalid_arn_exception().
+
+-type put_account_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    conflict_exception().
+
+-type remove_tags_from_certificate_errors() ::
+    invalid_tag_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    tag_policy_exception().
+
+-type renew_certificate_errors() ::
+    resource_not_found_exception() | 
+    invalid_arn_exception().
+
+-type request_certificate_errors() ::
+    too_many_tags_exception() | 
+    invalid_tag_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    invalid_domain_validation_options_exception() | 
+    invalid_arn_exception() | 
+    tag_policy_exception().
+
+-type resend_validation_email_errors() ::
+    invalid_domain_validation_options_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception().
+
+-type update_certificate_options_errors() ::
+    limit_exceeded_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception().
 
 %%====================================================================
 %% API
@@ -466,13 +556,7 @@
 -spec add_tags_to_certificate(map(), add_tags_to_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_tag_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, tag_policy_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, add_tags_to_certificate_errors(), tuple()}.
 add_tags_to_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_certificate(Client, Input, []).
@@ -480,13 +564,7 @@ add_tags_to_certificate(Client, Input)
 -spec add_tags_to_certificate(map(), add_tags_to_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_tag_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, tag_policy_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, add_tags_to_certificate_errors(), tuple()}.
 add_tags_to_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTagsToCertificate">>, Input, Options).
@@ -508,12 +586,7 @@ add_tags_to_certificate(Client, Input, Options)
 -spec delete_certificate(map(), delete_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_certificate_errors(), tuple()}.
 delete_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_certificate(Client, Input, []).
@@ -521,12 +594,7 @@ delete_certificate(Client, Input)
 -spec delete_certificate(map(), delete_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_certificate_errors(), tuple()}.
 delete_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCertificate">>, Input, Options).
@@ -540,8 +608,7 @@ delete_certificate(Client, Input, Options)
 -spec describe_certificate(map(), describe_certificate_request()) ->
     {ok, describe_certificate_response(), tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_certificate_errors(), tuple()}.
 describe_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_certificate(Client, Input, []).
@@ -549,8 +616,7 @@ describe_certificate(Client, Input)
 -spec describe_certificate(map(), describe_certificate_request(), proplists:proplist()) ->
     {ok, describe_certificate_response(), tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_certificate_errors(), tuple()}.
 describe_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCertificate">>, Input, Options).
@@ -574,9 +640,7 @@ describe_certificate(Client, Input, Options)
 -spec export_certificate(map(), export_certificate_request()) ->
     {ok, export_certificate_response(), tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, request_in_progress_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, export_certificate_errors(), tuple()}.
 export_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_certificate(Client, Input, []).
@@ -584,9 +648,7 @@ export_certificate(Client, Input)
 -spec export_certificate(map(), export_certificate_request(), proplists:proplist()) ->
     {ok, export_certificate_response(), tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, request_in_progress_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, export_certificate_errors(), tuple()}.
 export_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportCertificate">>, Input, Options).
@@ -596,8 +658,7 @@ export_certificate(Client, Input, Options)
 -spec get_account_configuration(map(), #{}) ->
     {ok, get_account_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_account_configuration_errors(), tuple()}.
 get_account_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_account_configuration(Client, Input, []).
@@ -605,8 +666,7 @@ get_account_configuration(Client, Input)
 -spec get_account_configuration(map(), #{}, proplists:proplist()) ->
     {ok, get_account_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_account_configuration_errors(), tuple()}.
 get_account_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAccountConfiguration">>, Input, Options).
@@ -622,9 +682,7 @@ get_account_configuration(Client, Input, Options)
 -spec get_certificate(map(), get_certificate_request()) ->
     {ok, get_certificate_response(), tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, request_in_progress_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_certificate_errors(), tuple()}.
 get_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_certificate(Client, Input, []).
@@ -632,9 +690,7 @@ get_certificate(Client, Input)
 -spec get_certificate(map(), get_certificate_request(), proplists:proplist()) ->
     {ok, get_certificate_response(), tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, request_in_progress_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_certificate_errors(), tuple()}.
 get_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCertificate">>, Input, Options).
@@ -722,13 +778,7 @@ get_certificate(Client, Input, Options)
 -spec import_certificate(map(), import_certificate_request()) ->
     {ok, import_certificate_response(), tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_tag_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, tag_policy_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, import_certificate_errors(), tuple()}.
 import_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_certificate(Client, Input, []).
@@ -736,13 +786,7 @@ import_certificate(Client, Input)
 -spec import_certificate(map(), import_certificate_request(), proplists:proplist()) ->
     {ok, import_certificate_response(), tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_tag_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, tag_policy_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, import_certificate_errors(), tuple()}.
 import_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportCertificate">>, Input, Options).
@@ -758,8 +802,7 @@ import_certificate(Client, Input, Options)
 -spec list_certificates(map(), list_certificates_request()) ->
     {ok, list_certificates_response(), tuple()} |
     {error, any()} |
-    {error, invalid_args_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_certificates_errors(), tuple()}.
 list_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_certificates(Client, Input, []).
@@ -767,8 +810,7 @@ list_certificates(Client, Input)
 -spec list_certificates(map(), list_certificates_request(), proplists:proplist()) ->
     {ok, list_certificates_response(), tuple()} |
     {error, any()} |
-    {error, invalid_args_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_certificates_errors(), tuple()}.
 list_certificates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCertificates">>, Input, Options).
@@ -783,8 +825,7 @@ list_certificates(Client, Input, Options)
 -spec list_tags_for_certificate(map(), list_tags_for_certificate_request()) ->
     {ok, list_tags_for_certificate_response(), tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_certificate_errors(), tuple()}.
 list_tags_for_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_certificate(Client, Input, []).
@@ -792,8 +833,7 @@ list_tags_for_certificate(Client, Input)
 -spec list_tags_for_certificate(map(), list_tags_for_certificate_request(), proplists:proplist()) ->
     {ok, list_tags_for_certificate_response(), tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_certificate_errors(), tuple()}.
 list_tags_for_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForCertificate">>, Input, Options).
@@ -812,10 +852,7 @@ list_tags_for_certificate(Client, Input, Options)
 -spec put_account_configuration(map(), put_account_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_account_configuration_errors(), tuple()}.
 put_account_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_account_configuration(Client, Input, []).
@@ -823,10 +860,7 @@ put_account_configuration(Client, Input)
 -spec put_account_configuration(map(), put_account_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_account_configuration_errors(), tuple()}.
 put_account_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAccountConfiguration">>, Input, Options).
@@ -847,12 +881,7 @@ put_account_configuration(Client, Input, Options)
 -spec remove_tags_from_certificate(map(), remove_tags_from_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_tag_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, tag_policy_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, remove_tags_from_certificate_errors(), tuple()}.
 remove_tags_from_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_certificate(Client, Input, []).
@@ -860,12 +889,7 @@ remove_tags_from_certificate(Client, Input)
 -spec remove_tags_from_certificate(map(), remove_tags_from_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_tag_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, tag_policy_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, remove_tags_from_certificate_errors(), tuple()}.
 remove_tags_from_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTagsFromCertificate">>, Input, Options).
@@ -884,8 +908,7 @@ remove_tags_from_certificate(Client, Input, Options)
 -spec renew_certificate(map(), renew_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, renew_certificate_errors(), tuple()}.
 renew_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     renew_certificate(Client, Input, []).
@@ -893,8 +916,7 @@ renew_certificate(Client, Input)
 -spec renew_certificate(map(), renew_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, renew_certificate_errors(), tuple()}.
 renew_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RenewCertificate">>, Input, Options).
@@ -932,13 +954,7 @@ renew_certificate(Client, Input, Options)
 -spec request_certificate(map(), request_certificate_request()) ->
     {ok, request_certificate_response(), tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_domain_validation_options_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_tag_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, tag_policy_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, request_certificate_errors(), tuple()}.
 request_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     request_certificate(Client, Input, []).
@@ -946,13 +962,7 @@ request_certificate(Client, Input)
 -spec request_certificate(map(), request_certificate_request(), proplists:proplist()) ->
     {ok, request_certificate_response(), tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_domain_validation_options_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_tag_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, tag_policy_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, request_certificate_errors(), tuple()}.
 request_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RequestCertificate">>, Input, Options).
@@ -979,10 +989,7 @@ request_certificate(Client, Input, Options)
 -spec resend_validation_email(map(), resend_validation_email_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_domain_validation_options_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, resend_validation_email_errors(), tuple()}.
 resend_validation_email(Client, Input)
   when is_map(Client), is_map(Input) ->
     resend_validation_email(Client, Input, []).
@@ -990,10 +997,7 @@ resend_validation_email(Client, Input)
 -spec resend_validation_email(map(), resend_validation_email_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_domain_validation_options_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, resend_validation_email_errors(), tuple()}.
 resend_validation_email(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResendValidationEmail">>, Input, Options).
@@ -1009,10 +1013,7 @@ resend_validation_email(Client, Input, Options)
 -spec update_certificate_options(map(), update_certificate_options_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_certificate_options_errors(), tuple()}.
 update_certificate_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_certificate_options(Client, Input, []).
@@ -1020,10 +1021,7 @@ update_certificate_options(Client, Input)
 -spec update_certificate_options(map(), update_certificate_options_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_certificate_options_errors(), tuple()}.
 update_certificate_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCertificateOptions">>, Input, Options).

@@ -56,15 +56,18 @@
 %% Example:
 %% rotate_ingest_endpoint_credentials_request() :: #{}
 -type rotate_ingest_endpoint_credentials_request() :: #{}.
+
 %% Example:
 %% delete_channel_request() :: #{}
 -type delete_channel_request() :: #{}.
+
 
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"Tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% hls_manifest_create_or_update_parameters() :: #{
@@ -79,6 +82,7 @@
 %%   <<"ProgramDateTimeIntervalSeconds">> => integer()
 %% }
 -type hls_manifest_create_or_update_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_origin_endpoint_request() :: #{
@@ -99,6 +103,7 @@
 %% }
 -type create_origin_endpoint_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_channel_response() :: #{
 %%   <<"Arn">> => string(),
@@ -111,9 +116,11 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_channel_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_channel_response() :: #{}
 -type delete_channel_response() :: #{}.
+
 
 %% Example:
 %% create_origin_endpoint_response() :: #{
@@ -137,6 +144,7 @@
 %% }
 -type create_origin_endpoint_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% rotate_channel_credentials_response() :: #{
 %%   <<"Arn">> => string(),
@@ -150,11 +158,13 @@
 %% }
 -type rotate_channel_credentials_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% forbidden_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type forbidden_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_origin_endpoint_request() :: #{
@@ -171,6 +181,7 @@
 %%   <<"Whitelist">> => list(string()())
 %% }
 -type update_origin_endpoint_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% origin_endpoint() :: #{
@@ -194,6 +205,7 @@
 %% }
 -type origin_endpoint() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_harvest_jobs_request() :: #{
 %%   <<"IncludeChannelId">> => string(),
@@ -202,15 +214,19 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_harvest_jobs_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_origin_endpoint_response() :: #{}
 -type delete_origin_endpoint_response() :: #{}.
+
 %% Example:
 %% rotate_channel_credentials_request() :: #{}
 -type rotate_channel_credentials_request() :: #{}.
+
 %% Example:
 %% delete_origin_endpoint_request() :: #{}
 -type delete_origin_endpoint_request() :: #{}.
+
 
 %% Example:
 %% describe_origin_endpoint_response() :: #{
@@ -234,6 +250,7 @@
 %% }
 -type describe_origin_endpoint_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% rotate_ingest_endpoint_credentials_response() :: #{
 %%   <<"Arn">> => string(),
@@ -247,17 +264,20 @@
 %% }
 -type rotate_ingest_endpoint_credentials_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_requests_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_requests_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% hls_manifest() :: #{
@@ -274,14 +294,17 @@
 %% }
 -type hls_manifest() :: #{binary() => any()}.
 
+
 %% Example:
 %% hls_ingest() :: #{
 %%   <<"IngestEndpoints">> => list(ingest_endpoint()())
 %% }
 -type hls_ingest() :: #{binary() => any()}.
+
 %% Example:
 %% describe_harvest_job_request() :: #{}
 -type describe_harvest_job_request() :: #{}.
+
 
 %% Example:
 %% list_origin_endpoints_response() :: #{
@@ -290,12 +313,14 @@
 %% }
 -type list_origin_endpoints_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% authorization() :: #{
 %%   <<"CdnIdentifierSecret">> => string(),
 %%   <<"SecretsRoleArn">> => string()
 %% }
 -type authorization() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_harvest_job_request() :: #{
@@ -307,6 +332,7 @@
 %% }
 -type create_harvest_job_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% hls_encryption() :: #{
 %%   <<"ConstantInitializationVector">> => string(),
@@ -317,6 +343,7 @@
 %% }
 -type hls_encryption() :: #{binary() => any()}.
 
+
 %% Example:
 %% cmaf_package() :: #{
 %%   <<"Encryption">> => cmaf_encryption(),
@@ -326,6 +353,7 @@
 %%   <<"StreamSelection">> => stream_selection()
 %% }
 -type cmaf_package() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_channel_response() :: #{
@@ -340,6 +368,7 @@
 %% }
 -type describe_channel_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% cmaf_package_create_or_update_parameters() :: #{
 %%   <<"Encryption">> => cmaf_encryption(),
@@ -350,14 +379,17 @@
 %% }
 -type cmaf_package_create_or_update_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type not_found_exception() :: #{binary() => any()}.
+
 %% Example:
 %% describe_channel_request() :: #{}
 -type describe_channel_request() :: #{}.
+
 
 %% Example:
 %% speke_key_provider() :: #{
@@ -370,6 +402,7 @@
 %% }
 -type speke_key_provider() :: #{binary() => any()}.
 
+
 %% Example:
 %% ingest_endpoint() :: #{
 %%   <<"Id">> => string(),
@@ -379,6 +412,7 @@
 %% }
 -type ingest_endpoint() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_channel_request() :: #{
 %%   <<"Description">> => string(),
@@ -387,11 +421,13 @@
 %% }
 -type create_channel_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% hls_package() :: #{
@@ -410,11 +446,13 @@
 %% }
 -type hls_package() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_unavailable_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% dash_package() :: #{
@@ -437,12 +475,14 @@
 %% }
 -type dash_package() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_channels_response() :: #{
 %%   <<"Channels">> => list(channel()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_channels_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_destination() :: #{
@@ -452,11 +492,13 @@
 %% }
 -type s3_destination() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_channel_request() :: #{
 %%   <<"Description">> => string()
 %% }
 -type update_channel_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% stream_selection() :: #{
@@ -466,6 +508,7 @@
 %% }
 -type stream_selection() :: #{binary() => any()}.
 
+
 %% Example:
 %% encryption_contract_configuration() :: #{
 %%   <<"PresetSpeke20Audio">> => list(any()),
@@ -473,11 +516,13 @@
 %% }
 -type encryption_contract_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% egress_access_logs() :: #{
 %%   <<"LogGroupName">> => string()
 %% }
 -type egress_access_logs() :: #{binary() => any()}.
+
 
 %% Example:
 %% dash_encryption() :: #{
@@ -486,11 +531,13 @@
 %% }
 -type dash_encryption() :: #{binary() => any()}.
 
+
 %% Example:
 %% unprocessable_entity_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type unprocessable_entity_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% cmaf_encryption() :: #{
@@ -500,15 +547,18 @@
 %%   <<"SpekeKeyProvider">> => speke_key_provider()
 %% }
 -type cmaf_encryption() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% internal_server_error_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_server_error_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% channel() :: #{
@@ -522,6 +572,7 @@
 %%   <<"Tags">> => map()
 %% }
 -type channel() :: #{binary() => any()}.
+
 
 %% Example:
 %% harvest_job() :: #{
@@ -537,6 +588,7 @@
 %% }
 -type harvest_job() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_harvest_job_response() :: #{
 %%   <<"Arn">> => string(),
@@ -550,6 +602,7 @@
 %%   <<"Status">> => list(any())
 %% }
 -type describe_harvest_job_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_harvest_job_response() :: #{
@@ -565,6 +618,7 @@
 %% }
 -type create_harvest_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% configure_logs_response() :: #{
 %%   <<"Arn">> => string(),
@@ -577,9 +631,11 @@
 %%   <<"Tags">> => map()
 %% }
 -type configure_logs_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_origin_endpoint_request() :: #{}
 -type describe_origin_endpoint_request() :: #{}.
+
 
 %% Example:
 %% configure_logs_request() :: #{
@@ -588,12 +644,14 @@
 %% }
 -type configure_logs_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_harvest_jobs_response() :: #{
 %%   <<"HarvestJobs">> => list(harvest_job()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_harvest_jobs_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_channel_response() :: #{
@@ -608,11 +666,13 @@
 %% }
 -type update_channel_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% mss_encryption() :: #{
 %%   <<"SpekeKeyProvider">> => speke_key_provider()
 %% }
 -type mss_encryption() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_origin_endpoint_response() :: #{
@@ -636,12 +696,14 @@
 %% }
 -type update_origin_endpoint_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_channels_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_channels_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_origin_endpoints_request() :: #{
@@ -651,11 +713,13 @@
 %% }
 -type list_origin_endpoints_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% ingress_access_logs() :: #{
 %%   <<"LogGroupName">> => string()
 %% }
 -type ingress_access_logs() :: #{binary() => any()}.
+
 
 %% Example:
 %% mss_package() :: #{
@@ -666,6 +730,134 @@
 %% }
 -type mss_package() :: #{binary() => any()}.
 
+-type configure_logs_errors() ::
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type create_channel_errors() ::
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type create_harvest_job_errors() ::
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type create_origin_endpoint_errors() ::
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type delete_channel_errors() ::
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type delete_origin_endpoint_errors() ::
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type describe_channel_errors() ::
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type describe_harvest_job_errors() ::
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type describe_origin_endpoint_errors() ::
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type list_channels_errors() ::
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type list_harvest_jobs_errors() ::
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type list_origin_endpoints_errors() ::
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type rotate_channel_credentials_errors() ::
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type rotate_ingest_endpoint_credentials_errors() ::
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type update_channel_errors() ::
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type update_origin_endpoint_errors() ::
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -674,24 +866,14 @@
 -spec configure_logs(map(), binary() | list(), configure_logs_request()) ->
     {ok, configure_logs_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, configure_logs_errors(), tuple()}.
 configure_logs(Client, Id, Input) ->
     configure_logs(Client, Id, Input, []).
 
 -spec configure_logs(map(), binary() | list(), configure_logs_request(), proplists:proplist()) ->
     {ok, configure_logs_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, configure_logs_errors(), tuple()}.
 configure_logs(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/channels/", aws_util:encode_uri(Id), "/configure_logs"],
@@ -718,24 +900,14 @@ configure_logs(Client, Id, Input0, Options0) ->
 -spec create_channel(map(), create_channel_request()) ->
     {ok, create_channel_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, create_channel_errors(), tuple()}.
 create_channel(Client, Input) ->
     create_channel(Client, Input, []).
 
 -spec create_channel(map(), create_channel_request(), proplists:proplist()) ->
     {ok, create_channel_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, create_channel_errors(), tuple()}.
 create_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/channels"],
@@ -762,24 +934,14 @@ create_channel(Client, Input0, Options0) ->
 -spec create_harvest_job(map(), create_harvest_job_request()) ->
     {ok, create_harvest_job_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, create_harvest_job_errors(), tuple()}.
 create_harvest_job(Client, Input) ->
     create_harvest_job(Client, Input, []).
 
 -spec create_harvest_job(map(), create_harvest_job_request(), proplists:proplist()) ->
     {ok, create_harvest_job_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, create_harvest_job_errors(), tuple()}.
 create_harvest_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/harvest_jobs"],
@@ -806,24 +968,14 @@ create_harvest_job(Client, Input0, Options0) ->
 -spec create_origin_endpoint(map(), create_origin_endpoint_request()) ->
     {ok, create_origin_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, create_origin_endpoint_errors(), tuple()}.
 create_origin_endpoint(Client, Input) ->
     create_origin_endpoint(Client, Input, []).
 
 -spec create_origin_endpoint(map(), create_origin_endpoint_request(), proplists:proplist()) ->
     {ok, create_origin_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, create_origin_endpoint_errors(), tuple()}.
 create_origin_endpoint(Client, Input0, Options0) ->
     Method = post,
     Path = ["/origin_endpoints"],
@@ -850,24 +1002,14 @@ create_origin_endpoint(Client, Input0, Options0) ->
 -spec delete_channel(map(), binary() | list(), delete_channel_request()) ->
     {ok, delete_channel_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, delete_channel_errors(), tuple()}.
 delete_channel(Client, Id, Input) ->
     delete_channel(Client, Id, Input, []).
 
 -spec delete_channel(map(), binary() | list(), delete_channel_request(), proplists:proplist()) ->
     {ok, delete_channel_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, delete_channel_errors(), tuple()}.
 delete_channel(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/channels/", aws_util:encode_uri(Id), ""],
@@ -894,24 +1036,14 @@ delete_channel(Client, Id, Input0, Options0) ->
 -spec delete_origin_endpoint(map(), binary() | list(), delete_origin_endpoint_request()) ->
     {ok, delete_origin_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, delete_origin_endpoint_errors(), tuple()}.
 delete_origin_endpoint(Client, Id, Input) ->
     delete_origin_endpoint(Client, Id, Input, []).
 
 -spec delete_origin_endpoint(map(), binary() | list(), delete_origin_endpoint_request(), proplists:proplist()) ->
     {ok, delete_origin_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, delete_origin_endpoint_errors(), tuple()}.
 delete_origin_endpoint(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/origin_endpoints/", aws_util:encode_uri(Id), ""],
@@ -938,12 +1070,7 @@ delete_origin_endpoint(Client, Id, Input0, Options0) ->
 -spec describe_channel(map(), binary() | list()) ->
     {ok, describe_channel_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, describe_channel_errors(), tuple()}.
 describe_channel(Client, Id)
   when is_map(Client) ->
     describe_channel(Client, Id, #{}, #{}).
@@ -951,12 +1078,7 @@ describe_channel(Client, Id)
 -spec describe_channel(map(), binary() | list(), map(), map()) ->
     {ok, describe_channel_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, describe_channel_errors(), tuple()}.
 describe_channel(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel(Client, Id, QueryMap, HeadersMap, []).
@@ -964,12 +1086,7 @@ describe_channel(Client, Id, QueryMap, HeadersMap)
 -spec describe_channel(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_channel_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, describe_channel_errors(), tuple()}.
 describe_channel(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(Id), ""],
@@ -990,12 +1107,7 @@ describe_channel(Client, Id, QueryMap, HeadersMap, Options0)
 -spec describe_harvest_job(map(), binary() | list()) ->
     {ok, describe_harvest_job_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, describe_harvest_job_errors(), tuple()}.
 describe_harvest_job(Client, Id)
   when is_map(Client) ->
     describe_harvest_job(Client, Id, #{}, #{}).
@@ -1003,12 +1115,7 @@ describe_harvest_job(Client, Id)
 -spec describe_harvest_job(map(), binary() | list(), map(), map()) ->
     {ok, describe_harvest_job_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, describe_harvest_job_errors(), tuple()}.
 describe_harvest_job(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_harvest_job(Client, Id, QueryMap, HeadersMap, []).
@@ -1016,12 +1123,7 @@ describe_harvest_job(Client, Id, QueryMap, HeadersMap)
 -spec describe_harvest_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_harvest_job_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, describe_harvest_job_errors(), tuple()}.
 describe_harvest_job(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/harvest_jobs/", aws_util:encode_uri(Id), ""],
@@ -1042,12 +1144,7 @@ describe_harvest_job(Client, Id, QueryMap, HeadersMap, Options0)
 -spec describe_origin_endpoint(map(), binary() | list()) ->
     {ok, describe_origin_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, describe_origin_endpoint_errors(), tuple()}.
 describe_origin_endpoint(Client, Id)
   when is_map(Client) ->
     describe_origin_endpoint(Client, Id, #{}, #{}).
@@ -1055,12 +1152,7 @@ describe_origin_endpoint(Client, Id)
 -spec describe_origin_endpoint(map(), binary() | list(), map(), map()) ->
     {ok, describe_origin_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, describe_origin_endpoint_errors(), tuple()}.
 describe_origin_endpoint(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_origin_endpoint(Client, Id, QueryMap, HeadersMap, []).
@@ -1068,12 +1160,7 @@ describe_origin_endpoint(Client, Id, QueryMap, HeadersMap)
 -spec describe_origin_endpoint(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_origin_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, describe_origin_endpoint_errors(), tuple()}.
 describe_origin_endpoint(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/origin_endpoints/", aws_util:encode_uri(Id), ""],
@@ -1094,12 +1181,7 @@ describe_origin_endpoint(Client, Id, QueryMap, HeadersMap, Options0)
 -spec list_channels(map()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, list_channels_errors(), tuple()}.
 list_channels(Client)
   when is_map(Client) ->
     list_channels(Client, #{}, #{}).
@@ -1107,12 +1189,7 @@ list_channels(Client)
 -spec list_channels(map(), map(), map()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, list_channels_errors(), tuple()}.
 list_channels(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channels(Client, QueryMap, HeadersMap, []).
@@ -1120,12 +1197,7 @@ list_channels(Client, QueryMap, HeadersMap)
 -spec list_channels(map(), map(), map(), proplists:proplist()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, list_channels_errors(), tuple()}.
 list_channels(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels"],
@@ -1151,12 +1223,7 @@ list_channels(Client, QueryMap, HeadersMap, Options0)
 -spec list_harvest_jobs(map()) ->
     {ok, list_harvest_jobs_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, list_harvest_jobs_errors(), tuple()}.
 list_harvest_jobs(Client)
   when is_map(Client) ->
     list_harvest_jobs(Client, #{}, #{}).
@@ -1164,12 +1231,7 @@ list_harvest_jobs(Client)
 -spec list_harvest_jobs(map(), map(), map()) ->
     {ok, list_harvest_jobs_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, list_harvest_jobs_errors(), tuple()}.
 list_harvest_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_harvest_jobs(Client, QueryMap, HeadersMap, []).
@@ -1177,12 +1239,7 @@ list_harvest_jobs(Client, QueryMap, HeadersMap)
 -spec list_harvest_jobs(map(), map(), map(), proplists:proplist()) ->
     {ok, list_harvest_jobs_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, list_harvest_jobs_errors(), tuple()}.
 list_harvest_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/harvest_jobs"],
@@ -1210,12 +1267,7 @@ list_harvest_jobs(Client, QueryMap, HeadersMap, Options0)
 -spec list_origin_endpoints(map()) ->
     {ok, list_origin_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, list_origin_endpoints_errors(), tuple()}.
 list_origin_endpoints(Client)
   when is_map(Client) ->
     list_origin_endpoints(Client, #{}, #{}).
@@ -1223,12 +1275,7 @@ list_origin_endpoints(Client)
 -spec list_origin_endpoints(map(), map(), map()) ->
     {ok, list_origin_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, list_origin_endpoints_errors(), tuple()}.
 list_origin_endpoints(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_origin_endpoints(Client, QueryMap, HeadersMap, []).
@@ -1236,12 +1283,7 @@ list_origin_endpoints(Client, QueryMap, HeadersMap)
 -spec list_origin_endpoints(map(), map(), map(), proplists:proplist()) ->
     {ok, list_origin_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, list_origin_endpoints_errors(), tuple()}.
 list_origin_endpoints(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/origin_endpoints"],
@@ -1306,24 +1348,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec rotate_channel_credentials(map(), binary() | list(), rotate_channel_credentials_request()) ->
     {ok, rotate_channel_credentials_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, rotate_channel_credentials_errors(), tuple()}.
 rotate_channel_credentials(Client, Id, Input) ->
     rotate_channel_credentials(Client, Id, Input, []).
 
 -spec rotate_channel_credentials(map(), binary() | list(), rotate_channel_credentials_request(), proplists:proplist()) ->
     {ok, rotate_channel_credentials_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, rotate_channel_credentials_errors(), tuple()}.
 rotate_channel_credentials(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/channels/", aws_util:encode_uri(Id), "/credentials"],
@@ -1351,24 +1383,14 @@ rotate_channel_credentials(Client, Id, Input0, Options0) ->
 -spec rotate_ingest_endpoint_credentials(map(), binary() | list(), binary() | list(), rotate_ingest_endpoint_credentials_request()) ->
     {ok, rotate_ingest_endpoint_credentials_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, rotate_ingest_endpoint_credentials_errors(), tuple()}.
 rotate_ingest_endpoint_credentials(Client, Id, IngestEndpointId, Input) ->
     rotate_ingest_endpoint_credentials(Client, Id, IngestEndpointId, Input, []).
 
 -spec rotate_ingest_endpoint_credentials(map(), binary() | list(), binary() | list(), rotate_ingest_endpoint_credentials_request(), proplists:proplist()) ->
     {ok, rotate_ingest_endpoint_credentials_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, rotate_ingest_endpoint_credentials_errors(), tuple()}.
 rotate_ingest_endpoint_credentials(Client, Id, IngestEndpointId, Input0, Options0) ->
     Method = put,
     Path = ["/channels/", aws_util:encode_uri(Id), "/ingest_endpoints/", aws_util:encode_uri(IngestEndpointId), "/credentials"],
@@ -1460,24 +1482,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_channel(map(), binary() | list(), update_channel_request()) ->
     {ok, update_channel_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, update_channel_errors(), tuple()}.
 update_channel(Client, Id, Input) ->
     update_channel(Client, Id, Input, []).
 
 -spec update_channel(map(), binary() | list(), update_channel_request(), proplists:proplist()) ->
     {ok, update_channel_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, update_channel_errors(), tuple()}.
 update_channel(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/channels/", aws_util:encode_uri(Id), ""],
@@ -1504,24 +1516,14 @@ update_channel(Client, Id, Input0, Options0) ->
 -spec update_origin_endpoint(map(), binary() | list(), update_origin_endpoint_request()) ->
     {ok, update_origin_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, update_origin_endpoint_errors(), tuple()}.
 update_origin_endpoint(Client, Id, Input) ->
     update_origin_endpoint(Client, Id, Input, []).
 
 -spec update_origin_endpoint(map(), binary() | list(), update_origin_endpoint_request(), proplists:proplist()) ->
     {ok, update_origin_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, update_origin_endpoint_errors(), tuple()}.
 update_origin_endpoint(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/origin_endpoints/", aws_util:encode_uri(Id), ""],

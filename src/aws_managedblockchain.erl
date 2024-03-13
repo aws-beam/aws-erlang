@@ -99,15 +99,18 @@
 %%   <<"ApprovalThresholdPolicy">> => approval_threshold_policy()
 %% }
 -type voting_policy() :: #{binary() => any()}.
+
 %% Example:
 %% reject_invitation_output() :: #{}
 -type reject_invitation_output() :: #{}.
+
 
 %% Example:
 %% create_proposal_output() :: #{
 %%   <<"ProposalId">> => string()
 %% }
 -type create_proposal_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_managedblockchain_node() :: #{
@@ -126,9 +129,11 @@
 %%   <<"Tags">> => map()
 %% }
 -type aws_managedblockchain_node() :: #{binary() => any()}.
+
 %% Example:
 %% update_node_output() :: #{}
 -type update_node_output() :: #{}.
+
 
 %% Example:
 %% node_ethereum_attributes() :: #{
@@ -137,11 +142,13 @@
 %% }
 -type node_ethereum_attributes() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"Tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% accessor() :: #{
@@ -156,12 +163,14 @@
 %% }
 -type accessor() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_proposal_votes_input() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_proposal_votes_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% network_fabric_attributes() :: #{
@@ -170,15 +179,18 @@
 %% }
 -type network_fabric_attributes() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_proposals_input() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_proposals_input() :: #{binary() => any()}.
+
 %% Example:
 %% vote_on_proposal_output() :: #{}
 -type vote_on_proposal_output() :: #{}.
+
 
 %% Example:
 %% create_member_input() :: #{
@@ -188,12 +200,14 @@
 %% }
 -type create_member_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_members_output() :: #{
 %%   <<"Members">> => list(member_summary()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_members_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% proposal_actions() :: #{
@@ -202,20 +216,24 @@
 %% }
 -type proposal_actions() :: #{binary() => any()}.
 
+
 %% Example:
 %% network_framework_configuration() :: #{
 %%   <<"Fabric">> => network_fabric_configuration()
 %% }
 -type network_framework_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% get_proposal_output() :: #{
 %%   <<"Proposal">> => proposal()
 %% }
 -type get_proposal_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% approval_threshold_policy() :: #{
@@ -224,6 +242,7 @@
 %%   <<"ThresholdPercentage">> => integer()
 %% }
 -type approval_threshold_policy() :: #{binary() => any()}.
+
 
 %% Example:
 %% invitation() :: #{
@@ -236,14 +255,17 @@
 %% }
 -type invitation() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_accessor_output() :: #{
 %%   <<"Accessor">> => accessor()
 %% }
 -type get_accessor_output() :: #{binary() => any()}.
+
 %% Example:
 %% get_accessor_input() :: #{}
 -type get_accessor_input() :: #{}.
+
 
 %% Example:
 %% list_accessors_input() :: #{
@@ -253,6 +275,7 @@
 %% }
 -type list_accessors_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% node_fabric_log_publishing_configuration() :: #{
 %%   <<"ChaincodeLogs">> => log_configurations(),
@@ -260,21 +283,25 @@
 %% }
 -type node_fabric_log_publishing_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% node_fabric_attributes() :: #{
 %%   <<"PeerEndpoint">> => string(),
 %%   <<"PeerEventEndpoint">> => string()
 %% }
 -type node_fabric_attributes() :: #{binary() => any()}.
+
 %% Example:
 %% internal_service_error_exception() :: #{}
 -type internal_service_error_exception() :: #{}.
+
 
 %% Example:
 %% network_fabric_configuration() :: #{
 %%   <<"Edition">> => list(any())
 %% }
 -type network_fabric_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_networks_input() :: #{
@@ -285,6 +312,7 @@
 %%   <<"Status">> => list(any())
 %% }
 -type list_networks_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% member_configuration() :: #{
@@ -297,20 +325,24 @@
 %% }
 -type member_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% member_fabric_log_publishing_configuration() :: #{
 %%   <<"CaLogs">> => log_configurations()
 %% }
 -type member_fabric_log_publishing_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% reject_invitation_input() :: #{}
 -type reject_invitation_input() :: #{}.
+
 
 %% Example:
 %% list_nodes_input() :: #{
@@ -321,11 +353,13 @@
 %% }
 -type list_nodes_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% member_framework_attributes() :: #{
 %%   <<"Fabric">> => member_fabric_attributes()
 %% }
 -type member_framework_attributes() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_network_input() :: #{
@@ -340,9 +374,11 @@
 %%   <<"VotingPolicy">> := voting_policy()
 %% }
 -type create_network_input() :: #{binary() => any()}.
+
 %% Example:
 %% update_member_output() :: #{}
 -type update_member_output() :: #{}.
+
 
 %% Example:
 %% create_proposal_input() :: #{
@@ -353,9 +389,11 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_proposal_input() :: #{binary() => any()}.
+
 %% Example:
 %% delete_member_output() :: #{}
 -type delete_member_output() :: #{}.
+
 
 %% Example:
 %% list_proposal_votes_output() :: #{
@@ -364,11 +402,13 @@
 %% }
 -type list_proposal_votes_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_network_output() :: #{
 %%   <<"Network">> => network()
 %% }
 -type get_network_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_node_input() :: #{
@@ -376,9 +416,11 @@
 %%   <<"MemberId">> => string()
 %% }
 -type update_node_input() :: #{binary() => any()}.
+
 %% Example:
 %% delete_member_input() :: #{}
 -type delete_member_input() :: #{}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -387,6 +429,7 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_networks_output() :: #{
 %%   <<"Networks">> => list(network_summary()()),
@@ -394,11 +437,13 @@
 %% }
 -type list_networks_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_member_input() :: #{
 %%   <<"LogPublishingConfiguration">> => member_log_publishing_configuration()
 %% }
 -type update_member_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% invalid_request_exception() :: #{
@@ -406,11 +451,13 @@
 %% }
 -type invalid_request_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% node_log_publishing_configuration() :: #{
 %%   <<"Fabric">> => node_fabric_log_publishing_configuration()
 %% }
 -type node_log_publishing_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% invite_action() :: #{
@@ -418,14 +465,17 @@
 %% }
 -type invite_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_limit_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type resource_limit_exceeded_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_accessor_input() :: #{}
 -type delete_accessor_input() :: #{}.
+
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
@@ -433,11 +483,13 @@
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_member_output() :: #{
 %%   <<"Member">> => member()
 %% }
 -type get_member_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% member_fabric_configuration() :: #{
@@ -445,6 +497,7 @@
 %%   <<"AdminUsername">> => string()
 %% }
 -type member_fabric_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_members_input() :: #{
@@ -456,15 +509,18 @@
 %% }
 -type list_members_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% vote_on_proposal_input() :: #{
 %%   <<"Vote">> := list(any()),
 %%   <<"VoterMemberId">> := string()
 %% }
 -type vote_on_proposal_input() :: #{binary() => any()}.
+
 %% Example:
 %% get_proposal_input() :: #{}
 -type get_proposal_input() :: #{}.
+
 
 %% Example:
 %% create_accessor_output() :: #{
@@ -473,6 +529,7 @@
 %%   <<"NetworkType">> => list(any())
 %% }
 -type create_accessor_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% accessor_summary() :: #{
@@ -484,6 +541,7 @@
 %%   <<"Type">> => list(any())
 %% }
 -type accessor_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% proposal() :: #{
@@ -504,20 +562,24 @@
 %% }
 -type proposal() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_node_input() :: #{
 %%   <<"MemberId">> => string()
 %% }
 -type get_node_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% network_framework_attributes() :: #{
@@ -526,11 +588,13 @@
 %% }
 -type network_framework_attributes() :: #{binary() => any()}.
 
+
 %% Example:
 %% remove_action() :: #{
 %%   <<"MemberId">> => string()
 %% }
 -type remove_action() :: #{binary() => any()}.
+
 
 %% Example:
 %% network() :: #{
@@ -548,9 +612,11 @@
 %%   <<"VpcEndpointServiceName">> => string()
 %% }
 -type network() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% proposal_summary() :: #{
@@ -565,6 +631,7 @@
 %% }
 -type proposal_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% node_summary() :: #{
 %%   <<"Arn">> => string(),
@@ -575,15 +642,18 @@
 %%   <<"Status">> => list(any())
 %% }
 -type node_summary() :: #{binary() => any()}.
+
 %% Example:
 %% throttling_exception() :: #{}
 -type throttling_exception() :: #{}.
+
 
 %% Example:
 %% delete_node_input() :: #{
 %%   <<"MemberId">> => string()
 %% }
 -type delete_node_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_accessor_input() :: #{
@@ -593,9 +663,11 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_accessor_input() :: #{binary() => any()}.
+
 %% Example:
 %% get_network_input() :: #{}
 -type get_network_input() :: #{}.
+
 
 %% Example:
 %% list_invitations_output() :: #{
@@ -603,15 +675,18 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_invitations_output() :: #{binary() => any()}.
+
 %% Example:
 %% delete_accessor_output() :: #{}
 -type delete_accessor_output() :: #{}.
+
 
 %% Example:
 %% network_ethereum_attributes() :: #{
 %%   <<"ChainId">> => string()
 %% }
 -type network_ethereum_attributes() :: #{binary() => any()}.
+
 
 %% Example:
 %% member() :: #{
@@ -629,11 +704,13 @@
 %% }
 -type member() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_node_output() :: #{
 %%   <<"NodeId">> => string()
 %% }
 -type create_node_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% network_summary() :: #{
@@ -648,6 +725,7 @@
 %% }
 -type network_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% member_summary() :: #{
 %%   <<"Arn">> => string(),
@@ -660,6 +738,7 @@
 %% }
 -type member_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% node_configuration() :: #{
 %%   <<"AvailabilityZone">> => string(),
@@ -668,9 +747,11 @@
 %%   <<"StateDB">> => list(any())
 %% }
 -type node_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% get_member_input() :: #{}
 -type get_member_input() :: #{}.
+
 
 %% Example:
 %% member_fabric_attributes() :: #{
@@ -679,11 +760,13 @@
 %% }
 -type member_fabric_attributes() :: #{binary() => any()}.
 
+
 %% Example:
 %% log_configurations() :: #{
 %%   <<"Cloudwatch">> => log_configuration()
 %% }
 -type log_configurations() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_invitations_input() :: #{
@@ -692,11 +775,13 @@
 %% }
 -type list_invitations_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_already_exists_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type resource_already_exists_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_node_input() :: #{
@@ -707,11 +792,13 @@
 %% }
 -type create_node_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% log_configuration() :: #{
 %%   <<"Enabled">> => boolean()
 %% }
 -type log_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% illegal_action_exception() :: #{
@@ -719,11 +806,13 @@
 %% }
 -type illegal_action_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% member_log_publishing_configuration() :: #{
 %%   <<"Fabric">> => member_fabric_log_publishing_configuration()
 %% }
 -type member_log_publishing_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_nodes_output() :: #{
@@ -732,20 +821,24 @@
 %% }
 -type list_nodes_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_ready_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type resource_not_ready_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_member_output() :: #{
 %%   <<"MemberId">> => string()
 %% }
 -type create_member_output() :: #{binary() => any()}.
+
 %% Example:
 %% delete_node_output() :: #{}
 -type delete_node_output() :: #{}.
+
 
 %% Example:
 %% list_accessors_output() :: #{
@@ -754,12 +847,14 @@
 %% }
 -type list_accessors_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% node_framework_attributes() :: #{
 %%   <<"Ethereum">> => node_ethereum_attributes(),
 %%   <<"Fabric">> => node_fabric_attributes()
 %% }
 -type node_framework_attributes() :: #{binary() => any()}.
+
 
 %% Example:
 %% too_many_tags_exception() :: #{
@@ -768,12 +863,14 @@
 %% }
 -type too_many_tags_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_network_output() :: #{
 %%   <<"MemberId">> => string(),
 %%   <<"NetworkId">> => string()
 %% }
 -type create_network_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_proposals_output() :: #{
@@ -782,17 +879,20 @@
 %% }
 -type list_proposals_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_node_output() :: #{
 %%   <<"Node">> => managedblockchain_node()
 %% }
 -type get_node_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% member_framework_configuration() :: #{
 %%   <<"Fabric">> => member_fabric_configuration()
 %% }
 -type member_framework_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% vote_summary() :: #{
@@ -801,6 +901,207 @@
 %%   <<"Vote">> => list(any())
 %% }
 -type vote_summary() :: #{binary() => any()}.
+
+-type create_accessor_errors() ::
+    too_many_tags_exception() | 
+    resource_already_exists_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_service_error_exception().
+
+-type create_member_errors() ::
+    too_many_tags_exception() | 
+    resource_not_ready_exception() | 
+    resource_already_exists_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_error_exception().
+
+-type create_network_errors() ::
+    too_many_tags_exception() | 
+    resource_already_exists_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_service_error_exception().
+
+-type create_node_errors() ::
+    too_many_tags_exception() | 
+    resource_not_ready_exception() | 
+    resource_already_exists_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_error_exception().
+
+-type create_proposal_errors() ::
+    too_many_tags_exception() | 
+    resource_not_ready_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_error_exception().
+
+-type delete_accessor_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_error_exception().
+
+-type delete_member_errors() ::
+    resource_not_ready_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_error_exception().
+
+-type delete_node_errors() ::
+    resource_not_ready_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_error_exception().
+
+-type get_accessor_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_error_exception().
+
+-type get_member_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_error_exception().
+
+-type get_network_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_error_exception().
+
+-type get_node_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_error_exception().
+
+-type get_proposal_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_error_exception().
+
+-type list_accessors_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    internal_service_error_exception().
+
+-type list_invitations_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_error_exception().
+
+-type list_members_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    internal_service_error_exception().
+
+-type list_networks_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    internal_service_error_exception().
+
+-type list_nodes_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    internal_service_error_exception().
+
+-type list_proposal_votes_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    internal_service_error_exception().
+
+-type list_proposals_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_error_exception().
+
+-type list_tags_for_resource_errors() ::
+    resource_not_ready_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_error_exception().
+
+-type reject_invitation_errors() ::
+    illegal_action_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_error_exception().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    resource_not_ready_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_error_exception().
+
+-type untag_resource_errors() ::
+    resource_not_ready_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_error_exception().
+
+-type update_member_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_error_exception().
+
+-type update_node_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_error_exception().
+
+-type vote_on_proposal_errors() ::
+    illegal_action_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_error_exception().
 
 %%====================================================================
 %% API
@@ -813,26 +1114,14 @@
 -spec create_accessor(map(), create_accessor_input()) ->
     {ok, create_accessor_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_accessor_errors(), tuple()}.
 create_accessor(Client, Input) ->
     create_accessor(Client, Input, []).
 
 -spec create_accessor(map(), create_accessor_input(), proplists:proplist()) ->
     {ok, create_accessor_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_accessor_errors(), tuple()}.
 create_accessor(Client, Input0, Options0) ->
     Method = post,
     Path = ["/accessors"],
@@ -861,30 +1150,14 @@ create_accessor(Client, Input0, Options0) ->
 -spec create_member(map(), binary() | list(), create_member_input()) ->
     {ok, create_member_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_member_errors(), tuple()}.
 create_member(Client, NetworkId, Input) ->
     create_member(Client, NetworkId, Input, []).
 
 -spec create_member(map(), binary() | list(), create_member_input(), proplists:proplist()) ->
     {ok, create_member_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_member_errors(), tuple()}.
 create_member(Client, NetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/members"],
@@ -913,26 +1186,14 @@ create_member(Client, NetworkId, Input0, Options0) ->
 -spec create_network(map(), create_network_input()) ->
     {ok, create_network_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_network_errors(), tuple()}.
 create_network(Client, Input) ->
     create_network(Client, Input, []).
 
 -spec create_network(map(), create_network_input(), proplists:proplist()) ->
     {ok, create_network_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_network_errors(), tuple()}.
 create_network(Client, Input0, Options0) ->
     Method = post,
     Path = ["/networks"],
@@ -961,30 +1222,14 @@ create_network(Client, Input0, Options0) ->
 -spec create_node(map(), binary() | list(), create_node_input()) ->
     {ok, create_node_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_node_errors(), tuple()}.
 create_node(Client, NetworkId, Input) ->
     create_node(Client, NetworkId, Input, []).
 
 -spec create_node(map(), binary() | list(), create_node_input(), proplists:proplist()) ->
     {ok, create_node_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_node_errors(), tuple()}.
 create_node(Client, NetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/nodes"],
@@ -1017,26 +1262,14 @@ create_node(Client, NetworkId, Input0, Options0) ->
 -spec create_proposal(map(), binary() | list(), create_proposal_input()) ->
     {ok, create_proposal_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_proposal_errors(), tuple()}.
 create_proposal(Client, NetworkId, Input) ->
     create_proposal(Client, NetworkId, Input, []).
 
 -spec create_proposal(map(), binary() | list(), create_proposal_input(), proplists:proplist()) ->
     {ok, create_proposal_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_proposal_errors(), tuple()}.
 create_proposal(Client, NetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/proposals"],
@@ -1074,22 +1307,14 @@ create_proposal(Client, NetworkId, Input0, Options0) ->
 -spec delete_accessor(map(), binary() | list(), delete_accessor_input()) ->
     {ok, delete_accessor_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_accessor_errors(), tuple()}.
 delete_accessor(Client, AccessorId, Input) ->
     delete_accessor(Client, AccessorId, Input, []).
 
 -spec delete_accessor(map(), binary() | list(), delete_accessor_input(), proplists:proplist()) ->
     {ok, delete_accessor_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_accessor_errors(), tuple()}.
 delete_accessor(Client, AccessorId, Input0, Options0) ->
     Method = delete,
     Path = ["/accessors/", aws_util:encode_uri(AccessorId), ""],
@@ -1127,24 +1352,14 @@ delete_accessor(Client, AccessorId, Input0, Options0) ->
 -spec delete_member(map(), binary() | list(), binary() | list(), delete_member_input()) ->
     {ok, delete_member_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_member_errors(), tuple()}.
 delete_member(Client, MemberId, NetworkId, Input) ->
     delete_member(Client, MemberId, NetworkId, Input, []).
 
 -spec delete_member(map(), binary() | list(), binary() | list(), delete_member_input(), proplists:proplist()) ->
     {ok, delete_member_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_member_errors(), tuple()}.
 delete_member(Client, MemberId, NetworkId, Input0, Options0) ->
     Method = delete,
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/members/", aws_util:encode_uri(MemberId), ""],
@@ -1175,24 +1390,14 @@ delete_member(Client, MemberId, NetworkId, Input0, Options0) ->
 -spec delete_node(map(), binary() | list(), binary() | list(), delete_node_input()) ->
     {ok, delete_node_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_node_errors(), tuple()}.
 delete_node(Client, NetworkId, NodeId, Input) ->
     delete_node(Client, NetworkId, NodeId, Input, []).
 
 -spec delete_node(map(), binary() | list(), binary() | list(), delete_node_input(), proplists:proplist()) ->
     {ok, delete_node_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_node_errors(), tuple()}.
 delete_node(Client, NetworkId, NodeId, Input0, Options0) ->
     Method = delete,
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/nodes/", aws_util:encode_uri(NodeId), ""],
@@ -1223,11 +1428,7 @@ delete_node(Client, NetworkId, NodeId, Input0, Options0) ->
 -spec get_accessor(map(), binary() | list()) ->
     {ok, get_accessor_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_accessor_errors(), tuple()}.
 get_accessor(Client, AccessorId)
   when is_map(Client) ->
     get_accessor(Client, AccessorId, #{}, #{}).
@@ -1235,11 +1436,7 @@ get_accessor(Client, AccessorId)
 -spec get_accessor(map(), binary() | list(), map(), map()) ->
     {ok, get_accessor_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_accessor_errors(), tuple()}.
 get_accessor(Client, AccessorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_accessor(Client, AccessorId, QueryMap, HeadersMap, []).
@@ -1247,11 +1444,7 @@ get_accessor(Client, AccessorId, QueryMap, HeadersMap)
 -spec get_accessor(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_accessor_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_accessor_errors(), tuple()}.
 get_accessor(Client, AccessorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accessors/", aws_util:encode_uri(AccessorId), ""],
@@ -1274,11 +1467,7 @@ get_accessor(Client, AccessorId, QueryMap, HeadersMap, Options0)
 -spec get_member(map(), binary() | list(), binary() | list()) ->
     {ok, get_member_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_member_errors(), tuple()}.
 get_member(Client, MemberId, NetworkId)
   when is_map(Client) ->
     get_member(Client, MemberId, NetworkId, #{}, #{}).
@@ -1286,11 +1475,7 @@ get_member(Client, MemberId, NetworkId)
 -spec get_member(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_member_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_member_errors(), tuple()}.
 get_member(Client, MemberId, NetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_member(Client, MemberId, NetworkId, QueryMap, HeadersMap, []).
@@ -1298,11 +1483,7 @@ get_member(Client, MemberId, NetworkId, QueryMap, HeadersMap)
 -spec get_member(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_member_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_member_errors(), tuple()}.
 get_member(Client, MemberId, NetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/members/", aws_util:encode_uri(MemberId), ""],
@@ -1325,11 +1506,7 @@ get_member(Client, MemberId, NetworkId, QueryMap, HeadersMap, Options0)
 -spec get_network(map(), binary() | list()) ->
     {ok, get_network_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_network_errors(), tuple()}.
 get_network(Client, NetworkId)
   when is_map(Client) ->
     get_network(Client, NetworkId, #{}, #{}).
@@ -1337,11 +1514,7 @@ get_network(Client, NetworkId)
 -spec get_network(map(), binary() | list(), map(), map()) ->
     {ok, get_network_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_network_errors(), tuple()}.
 get_network(Client, NetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_network(Client, NetworkId, QueryMap, HeadersMap, []).
@@ -1349,11 +1522,7 @@ get_network(Client, NetworkId, QueryMap, HeadersMap)
 -spec get_network(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_network_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_network_errors(), tuple()}.
 get_network(Client, NetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/networks/", aws_util:encode_uri(NetworkId), ""],
@@ -1376,11 +1545,7 @@ get_network(Client, NetworkId, QueryMap, HeadersMap, Options0)
 -spec get_node(map(), binary() | list(), binary() | list()) ->
     {ok, get_node_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_node_errors(), tuple()}.
 get_node(Client, NetworkId, NodeId)
   when is_map(Client) ->
     get_node(Client, NetworkId, NodeId, #{}, #{}).
@@ -1388,11 +1553,7 @@ get_node(Client, NetworkId, NodeId)
 -spec get_node(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_node_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_node_errors(), tuple()}.
 get_node(Client, NetworkId, NodeId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_node(Client, NetworkId, NodeId, QueryMap, HeadersMap, []).
@@ -1400,11 +1561,7 @@ get_node(Client, NetworkId, NodeId, QueryMap, HeadersMap)
 -spec get_node(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_node_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_node_errors(), tuple()}.
 get_node(Client, NetworkId, NodeId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/nodes/", aws_util:encode_uri(NodeId), ""],
@@ -1431,11 +1588,7 @@ get_node(Client, NetworkId, NodeId, QueryMap, HeadersMap, Options0)
 -spec get_proposal(map(), binary() | list(), binary() | list()) ->
     {ok, get_proposal_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_proposal_errors(), tuple()}.
 get_proposal(Client, NetworkId, ProposalId)
   when is_map(Client) ->
     get_proposal(Client, NetworkId, ProposalId, #{}, #{}).
@@ -1443,11 +1596,7 @@ get_proposal(Client, NetworkId, ProposalId)
 -spec get_proposal(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_proposal_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_proposal_errors(), tuple()}.
 get_proposal(Client, NetworkId, ProposalId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_proposal(Client, NetworkId, ProposalId, QueryMap, HeadersMap, []).
@@ -1455,11 +1604,7 @@ get_proposal(Client, NetworkId, ProposalId, QueryMap, HeadersMap)
 -spec get_proposal(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_proposal_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_proposal_errors(), tuple()}.
 get_proposal(Client, NetworkId, ProposalId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/proposals/", aws_util:encode_uri(ProposalId), ""],
@@ -1483,10 +1628,7 @@ get_proposal(Client, NetworkId, ProposalId, QueryMap, HeadersMap, Options0)
 -spec list_accessors(map()) ->
     {ok, list_accessors_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_accessors_errors(), tuple()}.
 list_accessors(Client)
   when is_map(Client) ->
     list_accessors(Client, #{}, #{}).
@@ -1494,10 +1636,7 @@ list_accessors(Client)
 -spec list_accessors(map(), map(), map()) ->
     {ok, list_accessors_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_accessors_errors(), tuple()}.
 list_accessors(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_accessors(Client, QueryMap, HeadersMap, []).
@@ -1505,10 +1644,7 @@ list_accessors(Client, QueryMap, HeadersMap)
 -spec list_accessors(map(), map(), map(), proplists:proplist()) ->
     {ok, list_accessors_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_accessors_errors(), tuple()}.
 list_accessors(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accessors"],
@@ -1538,12 +1674,7 @@ list_accessors(Client, QueryMap, HeadersMap, Options0)
 -spec list_invitations(map()) ->
     {ok, list_invitations_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_invitations_errors(), tuple()}.
 list_invitations(Client)
   when is_map(Client) ->
     list_invitations(Client, #{}, #{}).
@@ -1551,12 +1682,7 @@ list_invitations(Client)
 -spec list_invitations(map(), map(), map()) ->
     {ok, list_invitations_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_invitations_errors(), tuple()}.
 list_invitations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_invitations(Client, QueryMap, HeadersMap, []).
@@ -1564,12 +1690,7 @@ list_invitations(Client, QueryMap, HeadersMap)
 -spec list_invitations(map(), map(), map(), proplists:proplist()) ->
     {ok, list_invitations_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_invitations_errors(), tuple()}.
 list_invitations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/invitations"],
@@ -1598,10 +1719,7 @@ list_invitations(Client, QueryMap, HeadersMap, Options0)
 -spec list_members(map(), binary() | list()) ->
     {ok, list_members_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_members_errors(), tuple()}.
 list_members(Client, NetworkId)
   when is_map(Client) ->
     list_members(Client, NetworkId, #{}, #{}).
@@ -1609,10 +1727,7 @@ list_members(Client, NetworkId)
 -spec list_members(map(), binary() | list(), map(), map()) ->
     {ok, list_members_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_members_errors(), tuple()}.
 list_members(Client, NetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_members(Client, NetworkId, QueryMap, HeadersMap, []).
@@ -1620,10 +1735,7 @@ list_members(Client, NetworkId, QueryMap, HeadersMap)
 -spec list_members(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_members_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_members_errors(), tuple()}.
 list_members(Client, NetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/members"],
@@ -1655,10 +1767,7 @@ list_members(Client, NetworkId, QueryMap, HeadersMap, Options0)
 -spec list_networks(map()) ->
     {ok, list_networks_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_networks_errors(), tuple()}.
 list_networks(Client)
   when is_map(Client) ->
     list_networks(Client, #{}, #{}).
@@ -1666,10 +1775,7 @@ list_networks(Client)
 -spec list_networks(map(), map(), map()) ->
     {ok, list_networks_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_networks_errors(), tuple()}.
 list_networks(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_networks(Client, QueryMap, HeadersMap, []).
@@ -1677,10 +1783,7 @@ list_networks(Client, QueryMap, HeadersMap)
 -spec list_networks(map(), map(), map(), proplists:proplist()) ->
     {ok, list_networks_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_networks_errors(), tuple()}.
 list_networks(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/networks"],
@@ -1711,10 +1814,7 @@ list_networks(Client, QueryMap, HeadersMap, Options0)
 -spec list_nodes(map(), binary() | list()) ->
     {ok, list_nodes_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_nodes_errors(), tuple()}.
 list_nodes(Client, NetworkId)
   when is_map(Client) ->
     list_nodes(Client, NetworkId, #{}, #{}).
@@ -1722,10 +1822,7 @@ list_nodes(Client, NetworkId)
 -spec list_nodes(map(), binary() | list(), map(), map()) ->
     {ok, list_nodes_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_nodes_errors(), tuple()}.
 list_nodes(Client, NetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_nodes(Client, NetworkId, QueryMap, HeadersMap, []).
@@ -1733,10 +1830,7 @@ list_nodes(Client, NetworkId, QueryMap, HeadersMap)
 -spec list_nodes(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_nodes_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_nodes_errors(), tuple()}.
 list_nodes(Client, NetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/nodes"],
@@ -1768,10 +1862,7 @@ list_nodes(Client, NetworkId, QueryMap, HeadersMap, Options0)
 -spec list_proposal_votes(map(), binary() | list(), binary() | list()) ->
     {ok, list_proposal_votes_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_proposal_votes_errors(), tuple()}.
 list_proposal_votes(Client, NetworkId, ProposalId)
   when is_map(Client) ->
     list_proposal_votes(Client, NetworkId, ProposalId, #{}, #{}).
@@ -1779,10 +1870,7 @@ list_proposal_votes(Client, NetworkId, ProposalId)
 -spec list_proposal_votes(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_proposal_votes_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_proposal_votes_errors(), tuple()}.
 list_proposal_votes(Client, NetworkId, ProposalId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_proposal_votes(Client, NetworkId, ProposalId, QueryMap, HeadersMap, []).
@@ -1790,10 +1878,7 @@ list_proposal_votes(Client, NetworkId, ProposalId, QueryMap, HeadersMap)
 -spec list_proposal_votes(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_proposal_votes_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_proposal_votes_errors(), tuple()}.
 list_proposal_votes(Client, NetworkId, ProposalId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/proposals/", aws_util:encode_uri(ProposalId), "/votes"],
@@ -1821,11 +1906,7 @@ list_proposal_votes(Client, NetworkId, ProposalId, QueryMap, HeadersMap, Options
 -spec list_proposals(map(), binary() | list()) ->
     {ok, list_proposals_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_proposals_errors(), tuple()}.
 list_proposals(Client, NetworkId)
   when is_map(Client) ->
     list_proposals(Client, NetworkId, #{}, #{}).
@@ -1833,11 +1914,7 @@ list_proposals(Client, NetworkId)
 -spec list_proposals(map(), binary() | list(), map(), map()) ->
     {ok, list_proposals_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_proposals_errors(), tuple()}.
 list_proposals(Client, NetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_proposals(Client, NetworkId, QueryMap, HeadersMap, []).
@@ -1845,11 +1922,7 @@ list_proposals(Client, NetworkId, QueryMap, HeadersMap)
 -spec list_proposals(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_proposals_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_proposals_errors(), tuple()}.
 list_proposals(Client, NetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/proposals"],
@@ -1884,10 +1957,7 @@ list_proposals(Client, NetworkId, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1895,10 +1965,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1906,10 +1973,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1935,24 +1999,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec reject_invitation(map(), binary() | list(), reject_invitation_input()) ->
     {ok, reject_invitation_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, illegal_action_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, reject_invitation_errors(), tuple()}.
 reject_invitation(Client, InvitationId, Input) ->
     reject_invitation(Client, InvitationId, Input, []).
 
 -spec reject_invitation(map(), binary() | list(), reject_invitation_input(), proplists:proplist()) ->
     {ok, reject_invitation_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, illegal_action_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, reject_invitation_errors(), tuple()}.
 reject_invitation(Client, InvitationId, Input0, Options0) ->
     Method = delete,
     Path = ["/invitations/", aws_util:encode_uri(InvitationId), ""],
@@ -1996,22 +2050,14 @@ reject_invitation(Client, InvitationId, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2046,20 +2092,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_not_ready_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2089,22 +2129,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_member(map(), binary() | list(), binary() | list(), update_member_input()) ->
     {ok, update_member_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_member_errors(), tuple()}.
 update_member(Client, MemberId, NetworkId, Input) ->
     update_member(Client, MemberId, NetworkId, Input, []).
 
 -spec update_member(map(), binary() | list(), binary() | list(), update_member_input(), proplists:proplist()) ->
     {ok, update_member_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_member_errors(), tuple()}.
 update_member(Client, MemberId, NetworkId, Input0, Options0) ->
     Method = patch,
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/members/", aws_util:encode_uri(MemberId), ""],
@@ -2133,22 +2165,14 @@ update_member(Client, MemberId, NetworkId, Input0, Options0) ->
 -spec update_node(map(), binary() | list(), binary() | list(), update_node_input()) ->
     {ok, update_node_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_node_errors(), tuple()}.
 update_node(Client, NetworkId, NodeId, Input) ->
     update_node(Client, NetworkId, NodeId, Input, []).
 
 -spec update_node(map(), binary() | list(), binary() | list(), update_node_input(), proplists:proplist()) ->
     {ok, update_node_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_node_errors(), tuple()}.
 update_node(Client, NetworkId, NodeId, Input0, Options0) ->
     Method = patch,
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/nodes/", aws_util:encode_uri(NodeId), ""],
@@ -2180,24 +2204,14 @@ update_node(Client, NetworkId, NodeId, Input0, Options0) ->
 -spec vote_on_proposal(map(), binary() | list(), binary() | list(), vote_on_proposal_input()) ->
     {ok, vote_on_proposal_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, illegal_action_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, vote_on_proposal_errors(), tuple()}.
 vote_on_proposal(Client, NetworkId, ProposalId, Input) ->
     vote_on_proposal(Client, NetworkId, ProposalId, Input, []).
 
 -spec vote_on_proposal(map(), binary() | list(), binary() | list(), vote_on_proposal_input(), proplists:proplist()) ->
     {ok, vote_on_proposal_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, illegal_action_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, vote_on_proposal_errors(), tuple()}.
 vote_on_proposal(Client, NetworkId, ProposalId, Input0, Options0) ->
     Method = post,
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/proposals/", aws_util:encode_uri(ProposalId), "/votes"],

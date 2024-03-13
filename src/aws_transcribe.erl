@@ -1168,6 +1168,254 @@
 %% }
 -type get_medical_scribe_job_response() :: #{binary() => any()}.
 
+-type create_call_analytics_category_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type create_language_model_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type create_medical_vocabulary_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type create_vocabulary_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type create_vocabulary_filter_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type delete_call_analytics_category_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type delete_call_analytics_job_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception().
+
+-type delete_language_model_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception().
+
+-type delete_medical_scribe_job_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception().
+
+-type delete_medical_transcription_job_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception().
+
+-type delete_medical_vocabulary_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type delete_transcription_job_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception().
+
+-type delete_vocabulary_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type delete_vocabulary_filter_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_language_model_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type get_call_analytics_category_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type get_call_analytics_job_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type get_medical_scribe_job_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type get_medical_transcription_job_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type get_medical_vocabulary_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type get_transcription_job_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type get_vocabulary_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type get_vocabulary_filter_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type list_call_analytics_categories_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception().
+
+-type list_call_analytics_jobs_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception().
+
+-type list_language_models_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception().
+
+-type list_medical_scribe_jobs_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception().
+
+-type list_medical_transcription_jobs_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception().
+
+-type list_medical_vocabularies_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception().
+
+-type list_tags_for_resource_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type list_transcription_jobs_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception().
+
+-type list_vocabularies_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception().
+
+-type list_vocabulary_filters_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception().
+
+-type start_call_analytics_job_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type start_medical_scribe_job_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type start_medical_transcription_job_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type start_transcription_job_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type tag_resource_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type untag_resource_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type update_call_analytics_category_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type update_medical_vocabulary_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type update_vocabulary_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type update_vocabulary_filter_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
 
 %%====================================================================
 %% API
@@ -1206,10 +1454,7 @@
 -spec create_call_analytics_category(map(), create_call_analytics_category_request()) ->
     {ok, create_call_analytics_category_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_call_analytics_category_errors(), tuple()}.
 create_call_analytics_category(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_call_analytics_category(Client, Input, []).
@@ -1217,10 +1462,7 @@ create_call_analytics_category(Client, Input)
 -spec create_call_analytics_category(map(), create_call_analytics_category_request(), proplists:proplist()) ->
     {ok, create_call_analytics_category_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_call_analytics_category_errors(), tuple()}.
 create_call_analytics_category(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCallAnalyticsCategory">>, Input, Options).
@@ -1241,10 +1483,7 @@ create_call_analytics_category(Client, Input, Options)
 -spec create_language_model(map(), create_language_model_request()) ->
     {ok, create_language_model_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_language_model_errors(), tuple()}.
 create_language_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_language_model(Client, Input, []).
@@ -1252,10 +1491,7 @@ create_language_model(Client, Input)
 -spec create_language_model(map(), create_language_model_request(), proplists:proplist()) ->
     {ok, create_language_model_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_language_model_errors(), tuple()}.
 create_language_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLanguageModel">>, Input, Options).
@@ -1285,10 +1521,7 @@ create_language_model(Client, Input, Options)
 -spec create_medical_vocabulary(map(), create_medical_vocabulary_request()) ->
     {ok, create_medical_vocabulary_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_medical_vocabulary_errors(), tuple()}.
 create_medical_vocabulary(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_medical_vocabulary(Client, Input, []).
@@ -1296,10 +1529,7 @@ create_medical_vocabulary(Client, Input)
 -spec create_medical_vocabulary(map(), create_medical_vocabulary_request(), proplists:proplist()) ->
     {ok, create_medical_vocabulary_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_medical_vocabulary_errors(), tuple()}.
 create_medical_vocabulary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateMedicalVocabulary">>, Input, Options).
@@ -1329,10 +1559,7 @@ create_medical_vocabulary(Client, Input, Options)
 -spec create_vocabulary(map(), create_vocabulary_request()) ->
     {ok, create_vocabulary_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_vocabulary_errors(), tuple()}.
 create_vocabulary(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vocabulary(Client, Input, []).
@@ -1340,10 +1567,7 @@ create_vocabulary(Client, Input)
 -spec create_vocabulary(map(), create_vocabulary_request(), proplists:proplist()) ->
     {ok, create_vocabulary_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_vocabulary_errors(), tuple()}.
 create_vocabulary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateVocabulary">>, Input, Options).
@@ -1371,10 +1595,7 @@ create_vocabulary(Client, Input, Options)
 -spec create_vocabulary_filter(map(), create_vocabulary_filter_request()) ->
     {ok, create_vocabulary_filter_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_vocabulary_filter_errors(), tuple()}.
 create_vocabulary_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vocabulary_filter(Client, Input, []).
@@ -1382,10 +1603,7 @@ create_vocabulary_filter(Client, Input)
 -spec create_vocabulary_filter(map(), create_vocabulary_filter_request(), proplists:proplist()) ->
     {ok, create_vocabulary_filter_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_vocabulary_filter_errors(), tuple()}.
 create_vocabulary_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateVocabularyFilter">>, Input, Options).
@@ -1399,10 +1617,7 @@ create_vocabulary_filter(Client, Input, Options)
 -spec delete_call_analytics_category(map(), delete_call_analytics_category_request()) ->
     {ok, delete_call_analytics_category_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_call_analytics_category_errors(), tuple()}.
 delete_call_analytics_category(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_call_analytics_category(Client, Input, []).
@@ -1410,10 +1625,7 @@ delete_call_analytics_category(Client, Input)
 -spec delete_call_analytics_category(map(), delete_call_analytics_category_request(), proplists:proplist()) ->
     {ok, delete_call_analytics_category_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_call_analytics_category_errors(), tuple()}.
 delete_call_analytics_category(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCallAnalyticsCategory">>, Input, Options).
@@ -1426,9 +1638,7 @@ delete_call_analytics_category(Client, Input, Options)
 -spec delete_call_analytics_job(map(), delete_call_analytics_job_request()) ->
     {ok, delete_call_analytics_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, delete_call_analytics_job_errors(), tuple()}.
 delete_call_analytics_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_call_analytics_job(Client, Input, []).
@@ -1436,9 +1646,7 @@ delete_call_analytics_job(Client, Input)
 -spec delete_call_analytics_job(map(), delete_call_analytics_job_request(), proplists:proplist()) ->
     {ok, delete_call_analytics_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, delete_call_analytics_job_errors(), tuple()}.
 delete_call_analytics_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCallAnalyticsJob">>, Input, Options).
@@ -1452,9 +1660,7 @@ delete_call_analytics_job(Client, Input, Options)
 -spec delete_language_model(map(), delete_language_model_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, delete_language_model_errors(), tuple()}.
 delete_language_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_language_model(Client, Input, []).
@@ -1462,9 +1668,7 @@ delete_language_model(Client, Input)
 -spec delete_language_model(map(), delete_language_model_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, delete_language_model_errors(), tuple()}.
 delete_language_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLanguageModel">>, Input, Options).
@@ -1477,9 +1681,7 @@ delete_language_model(Client, Input, Options)
 -spec delete_medical_scribe_job(map(), delete_medical_scribe_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, delete_medical_scribe_job_errors(), tuple()}.
 delete_medical_scribe_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_medical_scribe_job(Client, Input, []).
@@ -1487,9 +1689,7 @@ delete_medical_scribe_job(Client, Input)
 -spec delete_medical_scribe_job(map(), delete_medical_scribe_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, delete_medical_scribe_job_errors(), tuple()}.
 delete_medical_scribe_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMedicalScribeJob">>, Input, Options).
@@ -1503,9 +1703,7 @@ delete_medical_scribe_job(Client, Input, Options)
 -spec delete_medical_transcription_job(map(), delete_medical_transcription_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, delete_medical_transcription_job_errors(), tuple()}.
 delete_medical_transcription_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_medical_transcription_job(Client, Input, []).
@@ -1513,9 +1711,7 @@ delete_medical_transcription_job(Client, Input)
 -spec delete_medical_transcription_job(map(), delete_medical_transcription_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, delete_medical_transcription_job_errors(), tuple()}.
 delete_medical_transcription_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMedicalTranscriptionJob">>, Input, Options).
@@ -1528,10 +1724,7 @@ delete_medical_transcription_job(Client, Input, Options)
 -spec delete_medical_vocabulary(map(), delete_medical_vocabulary_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_medical_vocabulary_errors(), tuple()}.
 delete_medical_vocabulary(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_medical_vocabulary(Client, Input, []).
@@ -1539,10 +1732,7 @@ delete_medical_vocabulary(Client, Input)
 -spec delete_medical_vocabulary(map(), delete_medical_vocabulary_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_medical_vocabulary_errors(), tuple()}.
 delete_medical_vocabulary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMedicalVocabulary">>, Input, Options).
@@ -1555,9 +1745,7 @@ delete_medical_vocabulary(Client, Input, Options)
 -spec delete_transcription_job(map(), delete_transcription_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, delete_transcription_job_errors(), tuple()}.
 delete_transcription_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_transcription_job(Client, Input, []).
@@ -1565,9 +1753,7 @@ delete_transcription_job(Client, Input)
 -spec delete_transcription_job(map(), delete_transcription_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, delete_transcription_job_errors(), tuple()}.
 delete_transcription_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTranscriptionJob">>, Input, Options).
@@ -1581,10 +1767,7 @@ delete_transcription_job(Client, Input, Options)
 -spec delete_vocabulary(map(), delete_vocabulary_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_vocabulary_errors(), tuple()}.
 delete_vocabulary(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_vocabulary(Client, Input, []).
@@ -1592,10 +1775,7 @@ delete_vocabulary(Client, Input)
 -spec delete_vocabulary(map(), delete_vocabulary_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_vocabulary_errors(), tuple()}.
 delete_vocabulary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteVocabulary">>, Input, Options).
@@ -1609,10 +1789,7 @@ delete_vocabulary(Client, Input, Options)
 -spec delete_vocabulary_filter(map(), delete_vocabulary_filter_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_vocabulary_filter_errors(), tuple()}.
 delete_vocabulary_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_vocabulary_filter(Client, Input, []).
@@ -1620,10 +1797,7 @@ delete_vocabulary_filter(Client, Input)
 -spec delete_vocabulary_filter(map(), delete_vocabulary_filter_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_vocabulary_filter_errors(), tuple()}.
 delete_vocabulary_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteVocabularyFilter">>, Input, Options).
@@ -1645,10 +1819,7 @@ delete_vocabulary_filter(Client, Input, Options)
 -spec describe_language_model(map(), describe_language_model_request()) ->
     {ok, describe_language_model_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, describe_language_model_errors(), tuple()}.
 describe_language_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_language_model(Client, Input, []).
@@ -1656,10 +1827,7 @@ describe_language_model(Client, Input)
 -spec describe_language_model(map(), describe_language_model_request(), proplists:proplist()) ->
     {ok, describe_language_model_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, describe_language_model_errors(), tuple()}.
 describe_language_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLanguageModel">>, Input, Options).
@@ -1670,10 +1838,7 @@ describe_language_model(Client, Input, Options)
 -spec get_call_analytics_category(map(), get_call_analytics_category_request()) ->
     {ok, get_call_analytics_category_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_call_analytics_category_errors(), tuple()}.
 get_call_analytics_category(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_call_analytics_category(Client, Input, []).
@@ -1681,10 +1846,7 @@ get_call_analytics_category(Client, Input)
 -spec get_call_analytics_category(map(), get_call_analytics_category_request(), proplists:proplist()) ->
     {ok, get_call_analytics_category_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_call_analytics_category_errors(), tuple()}.
 get_call_analytics_category(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCallAnalyticsCategory">>, Input, Options).
@@ -1712,10 +1874,7 @@ get_call_analytics_category(Client, Input, Options)
 -spec get_call_analytics_job(map(), get_call_analytics_job_request()) ->
     {ok, get_call_analytics_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_call_analytics_job_errors(), tuple()}.
 get_call_analytics_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_call_analytics_job(Client, Input, []).
@@ -1723,10 +1882,7 @@ get_call_analytics_job(Client, Input)
 -spec get_call_analytics_job(map(), get_call_analytics_job_request(), proplists:proplist()) ->
     {ok, get_call_analytics_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_call_analytics_job_errors(), tuple()}.
 get_call_analytics_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCallAnalyticsJob">>, Input, Options).
@@ -1745,10 +1901,7 @@ get_call_analytics_job(Client, Input, Options)
 -spec get_medical_scribe_job(map(), get_medical_scribe_job_request()) ->
     {ok, get_medical_scribe_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_medical_scribe_job_errors(), tuple()}.
 get_medical_scribe_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_medical_scribe_job(Client, Input, []).
@@ -1756,10 +1909,7 @@ get_medical_scribe_job(Client, Input)
 -spec get_medical_scribe_job(map(), get_medical_scribe_job_request(), proplists:proplist()) ->
     {ok, get_medical_scribe_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_medical_scribe_job_errors(), tuple()}.
 get_medical_scribe_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMedicalScribeJob">>, Input, Options).
@@ -1777,10 +1927,7 @@ get_medical_scribe_job(Client, Input, Options)
 -spec get_medical_transcription_job(map(), get_medical_transcription_job_request()) ->
     {ok, get_medical_transcription_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_medical_transcription_job_errors(), tuple()}.
 get_medical_transcription_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_medical_transcription_job(Client, Input, []).
@@ -1788,10 +1935,7 @@ get_medical_transcription_job(Client, Input)
 -spec get_medical_transcription_job(map(), get_medical_transcription_job_request(), proplists:proplist()) ->
     {ok, get_medical_transcription_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_medical_transcription_job_errors(), tuple()}.
 get_medical_transcription_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMedicalTranscriptionJob">>, Input, Options).
@@ -1807,10 +1951,7 @@ get_medical_transcription_job(Client, Input, Options)
 -spec get_medical_vocabulary(map(), get_medical_vocabulary_request()) ->
     {ok, get_medical_vocabulary_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_medical_vocabulary_errors(), tuple()}.
 get_medical_vocabulary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_medical_vocabulary(Client, Input, []).
@@ -1818,10 +1959,7 @@ get_medical_vocabulary(Client, Input)
 -spec get_medical_vocabulary(map(), get_medical_vocabulary_request(), proplists:proplist()) ->
     {ok, get_medical_vocabulary_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_medical_vocabulary_errors(), tuple()}.
 get_medical_vocabulary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMedicalVocabulary">>, Input, Options).
@@ -1843,10 +1981,7 @@ get_medical_vocabulary(Client, Input, Options)
 -spec get_transcription_job(map(), get_transcription_job_request()) ->
     {ok, get_transcription_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_transcription_job_errors(), tuple()}.
 get_transcription_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_transcription_job(Client, Input, []).
@@ -1854,10 +1989,7 @@ get_transcription_job(Client, Input)
 -spec get_transcription_job(map(), get_transcription_job_request(), proplists:proplist()) ->
     {ok, get_transcription_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_transcription_job_errors(), tuple()}.
 get_transcription_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTranscriptionJob">>, Input, Options).
@@ -1874,10 +2006,7 @@ get_transcription_job(Client, Input, Options)
 -spec get_vocabulary(map(), get_vocabulary_request()) ->
     {ok, get_vocabulary_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_vocabulary_errors(), tuple()}.
 get_vocabulary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_vocabulary(Client, Input, []).
@@ -1885,10 +2014,7 @@ get_vocabulary(Client, Input)
 -spec get_vocabulary(map(), get_vocabulary_request(), proplists:proplist()) ->
     {ok, get_vocabulary_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_vocabulary_errors(), tuple()}.
 get_vocabulary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetVocabulary">>, Input, Options).
@@ -1899,10 +2025,7 @@ get_vocabulary(Client, Input, Options)
 -spec get_vocabulary_filter(map(), get_vocabulary_filter_request()) ->
     {ok, get_vocabulary_filter_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_vocabulary_filter_errors(), tuple()}.
 get_vocabulary_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_vocabulary_filter(Client, Input, []).
@@ -1910,10 +2033,7 @@ get_vocabulary_filter(Client, Input)
 -spec get_vocabulary_filter(map(), get_vocabulary_filter_request(), proplists:proplist()) ->
     {ok, get_vocabulary_filter_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_vocabulary_filter_errors(), tuple()}.
 get_vocabulary_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetVocabularyFilter">>, Input, Options).
@@ -1927,9 +2047,7 @@ get_vocabulary_filter(Client, Input, Options)
 -spec list_call_analytics_categories(map(), list_call_analytics_categories_request()) ->
     {ok, list_call_analytics_categories_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_call_analytics_categories_errors(), tuple()}.
 list_call_analytics_categories(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_call_analytics_categories(Client, Input, []).
@@ -1937,9 +2055,7 @@ list_call_analytics_categories(Client, Input)
 -spec list_call_analytics_categories(map(), list_call_analytics_categories_request(), proplists:proplist()) ->
     {ok, list_call_analytics_categories_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_call_analytics_categories_errors(), tuple()}.
 list_call_analytics_categories(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCallAnalyticsCategories">>, Input, Options).
@@ -1955,9 +2071,7 @@ list_call_analytics_categories(Client, Input, Options)
 -spec list_call_analytics_jobs(map(), list_call_analytics_jobs_request()) ->
     {ok, list_call_analytics_jobs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_call_analytics_jobs_errors(), tuple()}.
 list_call_analytics_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_call_analytics_jobs(Client, Input, []).
@@ -1965,9 +2079,7 @@ list_call_analytics_jobs(Client, Input)
 -spec list_call_analytics_jobs(map(), list_call_analytics_jobs_request(), proplists:proplist()) ->
     {ok, list_call_analytics_jobs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_call_analytics_jobs_errors(), tuple()}.
 list_call_analytics_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCallAnalyticsJobs">>, Input, Options).
@@ -1983,9 +2095,7 @@ list_call_analytics_jobs(Client, Input, Options)
 -spec list_language_models(map(), list_language_models_request()) ->
     {ok, list_language_models_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_language_models_errors(), tuple()}.
 list_language_models(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_language_models(Client, Input, []).
@@ -1993,9 +2103,7 @@ list_language_models(Client, Input)
 -spec list_language_models(map(), list_language_models_request(), proplists:proplist()) ->
     {ok, list_language_models_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_language_models_errors(), tuple()}.
 list_language_models(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLanguageModels">>, Input, Options).
@@ -2011,9 +2119,7 @@ list_language_models(Client, Input, Options)
 -spec list_medical_scribe_jobs(map(), list_medical_scribe_jobs_request()) ->
     {ok, list_medical_scribe_jobs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_medical_scribe_jobs_errors(), tuple()}.
 list_medical_scribe_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_medical_scribe_jobs(Client, Input, []).
@@ -2021,9 +2127,7 @@ list_medical_scribe_jobs(Client, Input)
 -spec list_medical_scribe_jobs(map(), list_medical_scribe_jobs_request(), proplists:proplist()) ->
     {ok, list_medical_scribe_jobs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_medical_scribe_jobs_errors(), tuple()}.
 list_medical_scribe_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMedicalScribeJobs">>, Input, Options).
@@ -2039,9 +2143,7 @@ list_medical_scribe_jobs(Client, Input, Options)
 -spec list_medical_transcription_jobs(map(), list_medical_transcription_jobs_request()) ->
     {ok, list_medical_transcription_jobs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_medical_transcription_jobs_errors(), tuple()}.
 list_medical_transcription_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_medical_transcription_jobs(Client, Input, []).
@@ -2049,9 +2151,7 @@ list_medical_transcription_jobs(Client, Input)
 -spec list_medical_transcription_jobs(map(), list_medical_transcription_jobs_request(), proplists:proplist()) ->
     {ok, list_medical_transcription_jobs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_medical_transcription_jobs_errors(), tuple()}.
 list_medical_transcription_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMedicalTranscriptionJobs">>, Input, Options).
@@ -2067,9 +2167,7 @@ list_medical_transcription_jobs(Client, Input, Options)
 -spec list_medical_vocabularies(map(), list_medical_vocabularies_request()) ->
     {ok, list_medical_vocabularies_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_medical_vocabularies_errors(), tuple()}.
 list_medical_vocabularies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_medical_vocabularies(Client, Input, []).
@@ -2077,9 +2175,7 @@ list_medical_vocabularies(Client, Input)
 -spec list_medical_vocabularies(map(), list_medical_vocabularies_request(), proplists:proplist()) ->
     {ok, list_medical_vocabularies_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_medical_vocabularies_errors(), tuple()}.
 list_medical_vocabularies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMedicalVocabularies">>, Input, Options).
@@ -2093,10 +2189,7 @@ list_medical_vocabularies(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -2104,10 +2197,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -2123,9 +2213,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec list_transcription_jobs(map(), list_transcription_jobs_request()) ->
     {ok, list_transcription_jobs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_transcription_jobs_errors(), tuple()}.
 list_transcription_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_transcription_jobs(Client, Input, []).
@@ -2133,9 +2221,7 @@ list_transcription_jobs(Client, Input)
 -spec list_transcription_jobs(map(), list_transcription_jobs_request(), proplists:proplist()) ->
     {ok, list_transcription_jobs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_transcription_jobs_errors(), tuple()}.
 list_transcription_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTranscriptionJobs">>, Input, Options).
@@ -2151,9 +2237,7 @@ list_transcription_jobs(Client, Input, Options)
 -spec list_vocabularies(map(), list_vocabularies_request()) ->
     {ok, list_vocabularies_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_vocabularies_errors(), tuple()}.
 list_vocabularies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_vocabularies(Client, Input, []).
@@ -2161,9 +2245,7 @@ list_vocabularies(Client, Input)
 -spec list_vocabularies(map(), list_vocabularies_request(), proplists:proplist()) ->
     {ok, list_vocabularies_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_vocabularies_errors(), tuple()}.
 list_vocabularies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListVocabularies">>, Input, Options).
@@ -2179,9 +2261,7 @@ list_vocabularies(Client, Input, Options)
 -spec list_vocabulary_filters(map(), list_vocabulary_filters_request()) ->
     {ok, list_vocabulary_filters_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_vocabulary_filters_errors(), tuple()}.
 list_vocabulary_filters(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_vocabulary_filters(Client, Input, []).
@@ -2189,9 +2269,7 @@ list_vocabulary_filters(Client, Input)
 -spec list_vocabulary_filters(map(), list_vocabulary_filters_request(), proplists:proplist()) ->
     {ok, list_vocabulary_filters_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_vocabulary_filters_errors(), tuple()}.
 list_vocabulary_filters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListVocabularyFilters">>, Input, Options).
@@ -2262,10 +2340,7 @@ list_vocabulary_filters(Client, Input, Options)
 -spec start_call_analytics_job(map(), start_call_analytics_job_request()) ->
     {ok, start_call_analytics_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, start_call_analytics_job_errors(), tuple()}.
 start_call_analytics_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_call_analytics_job(Client, Input, []).
@@ -2273,10 +2348,7 @@ start_call_analytics_job(Client, Input)
 -spec start_call_analytics_job(map(), start_call_analytics_job_request(), proplists:proplist()) ->
     {ok, start_call_analytics_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, start_call_analytics_job_errors(), tuple()}.
 start_call_analytics_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartCallAnalyticsJob">>, Input, Options).
@@ -2329,10 +2401,7 @@ start_call_analytics_job(Client, Input, Options)
 -spec start_medical_scribe_job(map(), start_medical_scribe_job_request()) ->
     {ok, start_medical_scribe_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, start_medical_scribe_job_errors(), tuple()}.
 start_medical_scribe_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_medical_scribe_job(Client, Input, []).
@@ -2340,10 +2409,7 @@ start_medical_scribe_job(Client, Input)
 -spec start_medical_scribe_job(map(), start_medical_scribe_job_request(), proplists:proplist()) ->
     {ok, start_medical_scribe_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, start_medical_scribe_job_errors(), tuple()}.
 start_medical_scribe_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMedicalScribeJob">>, Input, Options).
@@ -2396,10 +2462,7 @@ start_medical_scribe_job(Client, Input, Options)
 -spec start_medical_transcription_job(map(), start_medical_transcription_job_request()) ->
     {ok, start_medical_transcription_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, start_medical_transcription_job_errors(), tuple()}.
 start_medical_transcription_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_medical_transcription_job(Client, Input, []).
@@ -2407,10 +2470,7 @@ start_medical_transcription_job(Client, Input)
 -spec start_medical_transcription_job(map(), start_medical_transcription_job_request(), proplists:proplist()) ->
     {ok, start_medical_transcription_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, start_medical_transcription_job_errors(), tuple()}.
 start_medical_transcription_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMedicalTranscriptionJob">>, Input, Options).
@@ -2452,10 +2512,7 @@ start_medical_transcription_job(Client, Input, Options)
 -spec start_transcription_job(map(), start_transcription_job_request()) ->
     {ok, start_transcription_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, start_transcription_job_errors(), tuple()}.
 start_transcription_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_transcription_job(Client, Input, []).
@@ -2463,10 +2520,7 @@ start_transcription_job(Client, Input)
 -spec start_transcription_job(map(), start_transcription_job_request(), proplists:proplist()) ->
     {ok, start_transcription_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, start_transcription_job_errors(), tuple()}.
 start_transcription_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartTranscriptionJob">>, Input, Options).
@@ -2480,11 +2534,7 @@ start_transcription_job(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -2492,11 +2542,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -2509,11 +2555,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -2521,11 +2563,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -2542,11 +2580,7 @@ untag_resource(Client, Input, Options)
 -spec update_call_analytics_category(map(), update_call_analytics_category_request()) ->
     {ok, update_call_analytics_category_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_call_analytics_category_errors(), tuple()}.
 update_call_analytics_category(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_call_analytics_category(Client, Input, []).
@@ -2554,11 +2588,7 @@ update_call_analytics_category(Client, Input)
 -spec update_call_analytics_category(map(), update_call_analytics_category_request(), proplists:proplist()) ->
     {ok, update_call_analytics_category_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_call_analytics_category_errors(), tuple()}.
 update_call_analytics_category(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCallAnalyticsCategory">>, Input, Options).
@@ -2572,11 +2602,7 @@ update_call_analytics_category(Client, Input, Options)
 -spec update_medical_vocabulary(map(), update_medical_vocabulary_request()) ->
     {ok, update_medical_vocabulary_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_medical_vocabulary_errors(), tuple()}.
 update_medical_vocabulary(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_medical_vocabulary(Client, Input, []).
@@ -2584,11 +2610,7 @@ update_medical_vocabulary(Client, Input)
 -spec update_medical_vocabulary(map(), update_medical_vocabulary_request(), proplists:proplist()) ->
     {ok, update_medical_vocabulary_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_medical_vocabulary_errors(), tuple()}.
 update_medical_vocabulary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMedicalVocabulary">>, Input, Options).
@@ -2602,11 +2624,7 @@ update_medical_vocabulary(Client, Input, Options)
 -spec update_vocabulary(map(), update_vocabulary_request()) ->
     {ok, update_vocabulary_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_vocabulary_errors(), tuple()}.
 update_vocabulary(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_vocabulary(Client, Input, []).
@@ -2614,11 +2632,7 @@ update_vocabulary(Client, Input)
 -spec update_vocabulary(map(), update_vocabulary_request(), proplists:proplist()) ->
     {ok, update_vocabulary_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_vocabulary_errors(), tuple()}.
 update_vocabulary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateVocabulary">>, Input, Options).
@@ -2633,10 +2647,7 @@ update_vocabulary(Client, Input, Options)
 -spec update_vocabulary_filter(map(), update_vocabulary_filter_request()) ->
     {ok, update_vocabulary_filter_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_vocabulary_filter_errors(), tuple()}.
 update_vocabulary_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_vocabulary_filter(Client, Input, []).
@@ -2644,10 +2655,7 @@ update_vocabulary_filter(Client, Input)
 -spec update_vocabulary_filter(map(), update_vocabulary_filter_request(), proplists:proplist()) ->
     {ok, update_vocabulary_filter_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_vocabulary_filter_errors(), tuple()}.
 update_vocabulary_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateVocabularyFilter">>, Input, Options).

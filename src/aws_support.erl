@@ -563,6 +563,74 @@
 %% }
 -type describe_attachment_limit_exceeded() :: #{binary() => any()}.
 
+-type add_attachments_to_set_errors() ::
+    attachment_set_size_limit_exceeded() | 
+    internal_server_error() | 
+    attachment_set_id_not_found() | 
+    attachment_set_expired() | 
+    attachment_limit_exceeded().
+
+-type add_communication_to_case_errors() ::
+    internal_server_error() | 
+    attachment_set_id_not_found() | 
+    attachment_set_expired() | 
+    case_id_not_found().
+
+-type create_case_errors() ::
+    internal_server_error() | 
+    attachment_set_id_not_found() | 
+    attachment_set_expired() | 
+    case_creation_limit_exceeded().
+
+-type describe_attachment_errors() ::
+    describe_attachment_limit_exceeded() | 
+    attachment_id_not_found() | 
+    internal_server_error().
+
+-type describe_cases_errors() ::
+    internal_server_error() | 
+    case_id_not_found().
+
+-type describe_communications_errors() ::
+    internal_server_error() | 
+    case_id_not_found().
+
+-type describe_create_case_options_errors() ::
+    throttling_exception() | 
+    internal_server_error().
+
+-type describe_services_errors() ::
+    internal_server_error().
+
+-type describe_severity_levels_errors() ::
+    internal_server_error().
+
+-type describe_supported_languages_errors() ::
+    throttling_exception() | 
+    internal_server_error().
+
+-type describe_trusted_advisor_check_refresh_statuses_errors() ::
+    throttling_exception() | 
+    internal_server_error().
+
+-type describe_trusted_advisor_check_result_errors() ::
+    throttling_exception() | 
+    internal_server_error().
+
+-type describe_trusted_advisor_check_summaries_errors() ::
+    throttling_exception() | 
+    internal_server_error().
+
+-type describe_trusted_advisor_checks_errors() ::
+    throttling_exception() | 
+    internal_server_error().
+
+-type refresh_trusted_advisor_check_errors() ::
+    internal_server_error().
+
+-type resolve_case_errors() ::
+    internal_server_error() | 
+    case_id_not_found().
 
 %%====================================================================
 %% API
@@ -589,11 +657,7 @@
 -spec add_attachments_to_set(map(), add_attachments_to_set_request()) ->
     {ok, add_attachments_to_set_response(), tuple()} |
     {error, any()} |
-    {error, attachment_limit_exceeded(), tuple()} |
-    {error, attachment_set_expired(), tuple()} |
-    {error, attachment_set_id_not_found(), tuple()} |
-    {error, attachment_set_size_limit_exceeded(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, add_attachments_to_set_errors(), tuple()}.
 add_attachments_to_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_attachments_to_set(Client, Input, []).
@@ -601,11 +665,7 @@ add_attachments_to_set(Client, Input)
 -spec add_attachments_to_set(map(), add_attachments_to_set_request(), proplists:proplist()) ->
     {ok, add_attachments_to_set_response(), tuple()} |
     {error, any()} |
-    {error, attachment_limit_exceeded(), tuple()} |
-    {error, attachment_set_expired(), tuple()} |
-    {error, attachment_set_id_not_found(), tuple()} |
-    {error, attachment_set_size_limit_exceeded(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, add_attachments_to_set_errors(), tuple()}.
 add_attachments_to_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddAttachmentsToSet">>, Input, Options).
@@ -634,10 +694,7 @@ add_attachments_to_set(Client, Input, Options)
 -spec add_communication_to_case(map(), add_communication_to_case_request()) ->
     {ok, add_communication_to_case_response(), tuple()} |
     {error, any()} |
-    {error, attachment_set_expired(), tuple()} |
-    {error, attachment_set_id_not_found(), tuple()} |
-    {error, case_id_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, add_communication_to_case_errors(), tuple()}.
 add_communication_to_case(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_communication_to_case(Client, Input, []).
@@ -645,10 +702,7 @@ add_communication_to_case(Client, Input)
 -spec add_communication_to_case(map(), add_communication_to_case_request(), proplists:proplist()) ->
     {ok, add_communication_to_case_response(), tuple()} |
     {error, any()} |
-    {error, attachment_set_expired(), tuple()} |
-    {error, attachment_set_id_not_found(), tuple()} |
-    {error, case_id_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, add_communication_to_case_errors(), tuple()}.
 add_communication_to_case(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddCommunicationToCase">>, Input, Options).
@@ -696,10 +750,7 @@ add_communication_to_case(Client, Input, Options)
 -spec create_case(map(), create_case_request()) ->
     {ok, create_case_response(), tuple()} |
     {error, any()} |
-    {error, attachment_set_expired(), tuple()} |
-    {error, attachment_set_id_not_found(), tuple()} |
-    {error, case_creation_limit_exceeded(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, create_case_errors(), tuple()}.
 create_case(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_case(Client, Input, []).
@@ -707,10 +758,7 @@ create_case(Client, Input)
 -spec create_case(map(), create_case_request(), proplists:proplist()) ->
     {ok, create_case_response(), tuple()} |
     {error, any()} |
-    {error, attachment_set_expired(), tuple()} |
-    {error, attachment_set_id_not_found(), tuple()} |
-    {error, case_creation_limit_exceeded(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, create_case_errors(), tuple()}.
 create_case(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCase">>, Input, Options).
@@ -739,9 +787,7 @@ create_case(Client, Input, Options)
 -spec describe_attachment(map(), describe_attachment_request()) ->
     {ok, describe_attachment_response(), tuple()} |
     {error, any()} |
-    {error, attachment_id_not_found(), tuple()} |
-    {error, describe_attachment_limit_exceeded(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_attachment_errors(), tuple()}.
 describe_attachment(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_attachment(Client, Input, []).
@@ -749,9 +795,7 @@ describe_attachment(Client, Input)
 -spec describe_attachment(map(), describe_attachment_request(), proplists:proplist()) ->
     {ok, describe_attachment_response(), tuple()} |
     {error, any()} |
-    {error, attachment_id_not_found(), tuple()} |
-    {error, describe_attachment_limit_exceeded(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_attachment_errors(), tuple()}.
 describe_attachment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAttachment">>, Input, Options).
@@ -791,8 +835,7 @@ describe_attachment(Client, Input, Options)
 -spec describe_cases(map(), describe_cases_request()) ->
     {ok, describe_cases_response(), tuple()} |
     {error, any()} |
-    {error, case_id_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_cases_errors(), tuple()}.
 describe_cases(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cases(Client, Input, []).
@@ -800,8 +843,7 @@ describe_cases(Client, Input)
 -spec describe_cases(map(), describe_cases_request(), proplists:proplist()) ->
     {ok, describe_cases_response(), tuple()} |
     {error, any()} |
-    {error, case_id_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_cases_errors(), tuple()}.
 describe_cases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCases">>, Input, Options).
@@ -837,8 +879,7 @@ describe_cases(Client, Input, Options)
 -spec describe_communications(map(), describe_communications_request()) ->
     {ok, describe_communications_response(), tuple()} |
     {error, any()} |
-    {error, case_id_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_communications_errors(), tuple()}.
 describe_communications(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_communications(Client, Input, []).
@@ -846,8 +887,7 @@ describe_communications(Client, Input)
 -spec describe_communications(map(), describe_communications_request(), proplists:proplist()) ->
     {ok, describe_communications_response(), tuple()} |
     {error, any()} |
-    {error, case_id_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_communications_errors(), tuple()}.
 describe_communications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCommunications">>, Input, Options).
@@ -873,8 +913,7 @@ describe_communications(Client, Input, Options)
 -spec describe_create_case_options(map(), describe_create_case_options_request()) ->
     {ok, describe_create_case_options_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_create_case_options_errors(), tuple()}.
 describe_create_case_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_create_case_options(Client, Input, []).
@@ -882,8 +921,7 @@ describe_create_case_options(Client, Input)
 -spec describe_create_case_options(map(), describe_create_case_options_request(), proplists:proplist()) ->
     {ok, describe_create_case_options_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_create_case_options_errors(), tuple()}.
 describe_create_case_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCreateCaseOptions">>, Input, Options).
@@ -921,7 +959,7 @@ describe_create_case_options(Client, Input, Options)
 -spec describe_services(map(), describe_services_request()) ->
     {ok, describe_services_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_services_errors(), tuple()}.
 describe_services(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_services(Client, Input, []).
@@ -929,7 +967,7 @@ describe_services(Client, Input)
 -spec describe_services(map(), describe_services_request(), proplists:proplist()) ->
     {ok, describe_services_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_services_errors(), tuple()}.
 describe_services(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeServices">>, Input, Options).
@@ -955,7 +993,7 @@ describe_services(Client, Input, Options)
 -spec describe_severity_levels(map(), describe_severity_levels_request()) ->
     {ok, describe_severity_levels_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_severity_levels_errors(), tuple()}.
 describe_severity_levels(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_severity_levels(Client, Input, []).
@@ -963,7 +1001,7 @@ describe_severity_levels(Client, Input)
 -spec describe_severity_levels(map(), describe_severity_levels_request(), proplists:proplist()) ->
     {ok, describe_severity_levels_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_severity_levels_errors(), tuple()}.
 describe_severity_levels(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSeverityLevels">>, Input, Options).
@@ -989,8 +1027,7 @@ describe_severity_levels(Client, Input, Options)
 -spec describe_supported_languages(map(), describe_supported_languages_request()) ->
     {ok, describe_supported_languages_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_supported_languages_errors(), tuple()}.
 describe_supported_languages(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_supported_languages(Client, Input, []).
@@ -998,8 +1035,7 @@ describe_supported_languages(Client, Input)
 -spec describe_supported_languages(map(), describe_supported_languages_request(), proplists:proplist()) ->
     {ok, describe_supported_languages_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_supported_languages_errors(), tuple()}.
 describe_supported_languages(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSupportedLanguages">>, Input, Options).
@@ -1040,8 +1076,7 @@ describe_supported_languages(Client, Input, Options)
 -spec describe_trusted_advisor_check_refresh_statuses(map(), describe_trusted_advisor_check_refresh_statuses_request()) ->
     {ok, describe_trusted_advisor_check_refresh_statuses_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_trusted_advisor_check_refresh_statuses_errors(), tuple()}.
 describe_trusted_advisor_check_refresh_statuses(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trusted_advisor_check_refresh_statuses(Client, Input, []).
@@ -1049,8 +1084,7 @@ describe_trusted_advisor_check_refresh_statuses(Client, Input)
 -spec describe_trusted_advisor_check_refresh_statuses(map(), describe_trusted_advisor_check_refresh_statuses_request(), proplists:proplist()) ->
     {ok, describe_trusted_advisor_check_refresh_statuses_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_trusted_advisor_check_refresh_statuses_errors(), tuple()}.
 describe_trusted_advisor_check_refresh_statuses(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrustedAdvisorCheckRefreshStatuses">>, Input, Options).
@@ -1105,8 +1139,7 @@ describe_trusted_advisor_check_refresh_statuses(Client, Input, Options)
 -spec describe_trusted_advisor_check_result(map(), describe_trusted_advisor_check_result_request()) ->
     {ok, describe_trusted_advisor_check_result_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_trusted_advisor_check_result_errors(), tuple()}.
 describe_trusted_advisor_check_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trusted_advisor_check_result(Client, Input, []).
@@ -1114,8 +1147,7 @@ describe_trusted_advisor_check_result(Client, Input)
 -spec describe_trusted_advisor_check_result(map(), describe_trusted_advisor_check_result_request(), proplists:proplist()) ->
     {ok, describe_trusted_advisor_check_result_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_trusted_advisor_check_result_errors(), tuple()}.
 describe_trusted_advisor_check_result(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrustedAdvisorCheckResult">>, Input, Options).
@@ -1152,8 +1184,7 @@ describe_trusted_advisor_check_result(Client, Input, Options)
 -spec describe_trusted_advisor_check_summaries(map(), describe_trusted_advisor_check_summaries_request()) ->
     {ok, describe_trusted_advisor_check_summaries_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_trusted_advisor_check_summaries_errors(), tuple()}.
 describe_trusted_advisor_check_summaries(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trusted_advisor_check_summaries(Client, Input, []).
@@ -1161,8 +1192,7 @@ describe_trusted_advisor_check_summaries(Client, Input)
 -spec describe_trusted_advisor_check_summaries(map(), describe_trusted_advisor_check_summaries_request(), proplists:proplist()) ->
     {ok, describe_trusted_advisor_check_summaries_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_trusted_advisor_check_summaries_errors(), tuple()}.
 describe_trusted_advisor_check_summaries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrustedAdvisorCheckSummaries">>, Input, Options).
@@ -1203,8 +1233,7 @@ describe_trusted_advisor_check_summaries(Client, Input, Options)
 -spec describe_trusted_advisor_checks(map(), describe_trusted_advisor_checks_request()) ->
     {ok, describe_trusted_advisor_checks_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_trusted_advisor_checks_errors(), tuple()}.
 describe_trusted_advisor_checks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trusted_advisor_checks(Client, Input, []).
@@ -1212,8 +1241,7 @@ describe_trusted_advisor_checks(Client, Input)
 -spec describe_trusted_advisor_checks(map(), describe_trusted_advisor_checks_request(), proplists:proplist()) ->
     {ok, describe_trusted_advisor_checks_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_trusted_advisor_checks_errors(), tuple()}.
 describe_trusted_advisor_checks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrustedAdvisorChecks">>, Input, Options).
@@ -1254,7 +1282,7 @@ describe_trusted_advisor_checks(Client, Input, Options)
 -spec refresh_trusted_advisor_check(map(), refresh_trusted_advisor_check_request()) ->
     {ok, refresh_trusted_advisor_check_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, refresh_trusted_advisor_check_errors(), tuple()}.
 refresh_trusted_advisor_check(Client, Input)
   when is_map(Client), is_map(Input) ->
     refresh_trusted_advisor_check(Client, Input, []).
@@ -1262,7 +1290,7 @@ refresh_trusted_advisor_check(Client, Input)
 -spec refresh_trusted_advisor_check(map(), refresh_trusted_advisor_check_request(), proplists:proplist()) ->
     {ok, refresh_trusted_advisor_check_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, refresh_trusted_advisor_check_errors(), tuple()}.
 refresh_trusted_advisor_check(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RefreshTrustedAdvisorCheck">>, Input, Options).
@@ -1285,8 +1313,7 @@ refresh_trusted_advisor_check(Client, Input, Options)
 -spec resolve_case(map(), resolve_case_request()) ->
     {ok, resolve_case_response(), tuple()} |
     {error, any()} |
-    {error, case_id_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, resolve_case_errors(), tuple()}.
 resolve_case(Client, Input)
   when is_map(Client), is_map(Input) ->
     resolve_case(Client, Input, []).
@@ -1294,8 +1321,7 @@ resolve_case(Client, Input)
 -spec resolve_case(map(), resolve_case_request(), proplists:proplist()) ->
     {ok, resolve_case_response(), tuple()} |
     {error, any()} |
-    {error, case_id_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, resolve_case_errors(), tuple()}.
 resolve_case(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResolveCase">>, Input, Options).

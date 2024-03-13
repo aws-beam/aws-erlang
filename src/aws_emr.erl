@@ -1898,6 +1898,187 @@
 %% }
 -type scaling_rule() :: #{binary() => any()}.
 
+-type add_instance_fleet_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type add_instance_groups_errors() ::
+    internal_server_error().
+
+-type add_job_flow_steps_errors() ::
+    internal_server_error().
+
+-type add_tags_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type cancel_steps_errors() ::
+    internal_server_error() | 
+    invalid_request_exception().
+
+-type create_security_configuration_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type create_studio_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type create_studio_session_mapping_errors() ::
+    internal_server_error() | 
+    invalid_request_exception().
+
+-type delete_security_configuration_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type delete_studio_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type delete_studio_session_mapping_errors() ::
+    internal_server_error() | 
+    invalid_request_exception().
+
+-type describe_cluster_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type describe_job_flows_errors() ::
+    internal_server_error().
+
+-type describe_notebook_execution_errors() ::
+    internal_server_error() | 
+    invalid_request_exception().
+
+-type describe_release_label_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type describe_security_configuration_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type describe_step_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type describe_studio_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type get_block_public_access_configuration_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type get_cluster_session_credentials_errors() ::
+    internal_server_error() | 
+    invalid_request_exception().
+
+-type get_studio_session_mapping_errors() ::
+    internal_server_error() | 
+    invalid_request_exception().
+
+-type list_bootstrap_actions_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type list_clusters_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type list_instance_fleets_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type list_instance_groups_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type list_instances_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type list_notebook_executions_errors() ::
+    internal_server_error() | 
+    invalid_request_exception().
+
+-type list_release_labels_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type list_security_configurations_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type list_steps_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type list_studio_session_mappings_errors() ::
+    internal_server_error() | 
+    invalid_request_exception().
+
+-type list_studios_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type list_supported_instance_types_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type modify_cluster_errors() ::
+    internal_server_error() | 
+    invalid_request_exception().
+
+-type modify_instance_fleet_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type modify_instance_groups_errors() ::
+    internal_server_error().
+
+-type put_block_public_access_configuration_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type remove_tags_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type run_job_flow_errors() ::
+    internal_server_error().
+
+-type set_keep_job_flow_alive_when_no_steps_errors() ::
+    internal_server_error().
+
+-type set_termination_protection_errors() ::
+    internal_server_error().
+
+-type set_unhealthy_node_replacement_errors() ::
+    internal_server_error().
+
+-type set_visible_to_all_users_errors() ::
+    internal_server_error().
+
+-type start_notebook_execution_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type stop_notebook_execution_errors() ::
+    internal_server_error() | 
+    invalid_request_exception().
+
+-type terminate_job_flows_errors() ::
+    internal_server_error().
+
+-type update_studio_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type update_studio_session_mapping_errors() ::
+    internal_server_error() | 
+    invalid_request_exception().
 
 %%====================================================================
 %% API
@@ -1910,8 +2091,7 @@
 -spec add_instance_fleet(map(), add_instance_fleet_input()) ->
     {ok, add_instance_fleet_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, add_instance_fleet_errors(), tuple()}.
 add_instance_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_instance_fleet(Client, Input, []).
@@ -1919,8 +2099,7 @@ add_instance_fleet(Client, Input)
 -spec add_instance_fleet(map(), add_instance_fleet_input(), proplists:proplist()) ->
     {ok, add_instance_fleet_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, add_instance_fleet_errors(), tuple()}.
 add_instance_fleet(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddInstanceFleet">>, Input, Options).
@@ -1929,7 +2108,7 @@ add_instance_fleet(Client, Input, Options)
 -spec add_instance_groups(map(), add_instance_groups_input()) ->
     {ok, add_instance_groups_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, add_instance_groups_errors(), tuple()}.
 add_instance_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_instance_groups(Client, Input, []).
@@ -1937,7 +2116,7 @@ add_instance_groups(Client, Input)
 -spec add_instance_groups(map(), add_instance_groups_input(), proplists:proplist()) ->
     {ok, add_instance_groups_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, add_instance_groups_errors(), tuple()}.
 add_instance_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddInstanceGroups">>, Input, Options).
@@ -1980,7 +2159,7 @@ add_instance_groups(Client, Input, Options)
 -spec add_job_flow_steps(map(), add_job_flow_steps_input()) ->
     {ok, add_job_flow_steps_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, add_job_flow_steps_errors(), tuple()}.
 add_job_flow_steps(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_job_flow_steps(Client, Input, []).
@@ -1988,7 +2167,7 @@ add_job_flow_steps(Client, Input)
 -spec add_job_flow_steps(map(), add_job_flow_steps_input(), proplists:proplist()) ->
     {ok, add_job_flow_steps_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, add_job_flow_steps_errors(), tuple()}.
 add_job_flow_steps(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddJobFlowSteps">>, Input, Options).
@@ -2007,8 +2186,7 @@ add_job_flow_steps(Client, Input, Options)
 -spec add_tags(map(), add_tags_input()) ->
     {ok, add_tags_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, add_tags_errors(), tuple()}.
 add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
@@ -2016,8 +2194,7 @@ add_tags(Client, Input)
 -spec add_tags(map(), add_tags_input(), proplists:proplist()) ->
     {ok, add_tags_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, add_tags_errors(), tuple()}.
 add_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTags">>, Input, Options).
@@ -2036,8 +2213,7 @@ add_tags(Client, Input, Options)
 -spec cancel_steps(map(), cancel_steps_input()) ->
     {ok, cancel_steps_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, cancel_steps_errors(), tuple()}.
 cancel_steps(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_steps(Client, Input, []).
@@ -2045,8 +2221,7 @@ cancel_steps(Client, Input)
 -spec cancel_steps(map(), cancel_steps_input(), proplists:proplist()) ->
     {ok, cancel_steps_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, cancel_steps_errors(), tuple()}.
 cancel_steps(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelSteps">>, Input, Options).
@@ -2057,8 +2232,7 @@ cancel_steps(Client, Input, Options)
 -spec create_security_configuration(map(), create_security_configuration_input()) ->
     {ok, create_security_configuration_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_security_configuration_errors(), tuple()}.
 create_security_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_security_configuration(Client, Input, []).
@@ -2066,8 +2240,7 @@ create_security_configuration(Client, Input)
 -spec create_security_configuration(map(), create_security_configuration_input(), proplists:proplist()) ->
     {ok, create_security_configuration_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_security_configuration_errors(), tuple()}.
 create_security_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSecurityConfiguration">>, Input, Options).
@@ -2076,8 +2249,7 @@ create_security_configuration(Client, Input, Options)
 -spec create_studio(map(), create_studio_input()) ->
     {ok, create_studio_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_studio_errors(), tuple()}.
 create_studio(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_studio(Client, Input, []).
@@ -2085,8 +2257,7 @@ create_studio(Client, Input)
 -spec create_studio(map(), create_studio_input(), proplists:proplist()) ->
     {ok, create_studio_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_studio_errors(), tuple()}.
 create_studio(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStudio">>, Input, Options).
@@ -2105,8 +2276,7 @@ create_studio(Client, Input, Options)
 -spec create_studio_session_mapping(map(), create_studio_session_mapping_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_studio_session_mapping_errors(), tuple()}.
 create_studio_session_mapping(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_studio_session_mapping(Client, Input, []).
@@ -2114,8 +2284,7 @@ create_studio_session_mapping(Client, Input)
 -spec create_studio_session_mapping(map(), create_studio_session_mapping_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_studio_session_mapping_errors(), tuple()}.
 create_studio_session_mapping(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStudioSessionMapping">>, Input, Options).
@@ -2124,8 +2293,7 @@ create_studio_session_mapping(Client, Input, Options)
 -spec delete_security_configuration(map(), delete_security_configuration_input()) ->
     {ok, delete_security_configuration_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, delete_security_configuration_errors(), tuple()}.
 delete_security_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_security_configuration(Client, Input, []).
@@ -2133,8 +2301,7 @@ delete_security_configuration(Client, Input)
 -spec delete_security_configuration(map(), delete_security_configuration_input(), proplists:proplist()) ->
     {ok, delete_security_configuration_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, delete_security_configuration_errors(), tuple()}.
 delete_security_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSecurityConfiguration">>, Input, Options).
@@ -2143,8 +2310,7 @@ delete_security_configuration(Client, Input, Options)
 -spec delete_studio(map(), delete_studio_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, delete_studio_errors(), tuple()}.
 delete_studio(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_studio(Client, Input, []).
@@ -2152,8 +2318,7 @@ delete_studio(Client, Input)
 -spec delete_studio(map(), delete_studio_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, delete_studio_errors(), tuple()}.
 delete_studio(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteStudio">>, Input, Options).
@@ -2162,8 +2327,7 @@ delete_studio(Client, Input, Options)
 -spec delete_studio_session_mapping(map(), delete_studio_session_mapping_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, delete_studio_session_mapping_errors(), tuple()}.
 delete_studio_session_mapping(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_studio_session_mapping(Client, Input, []).
@@ -2171,8 +2335,7 @@ delete_studio_session_mapping(Client, Input)
 -spec delete_studio_session_mapping(map(), delete_studio_session_mapping_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, delete_studio_session_mapping_errors(), tuple()}.
 delete_studio_session_mapping(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteStudioSessionMapping">>, Input, Options).
@@ -2183,8 +2346,7 @@ delete_studio_session_mapping(Client, Input, Options)
 -spec describe_cluster(map(), describe_cluster_input()) ->
     {ok, describe_cluster_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_cluster_errors(), tuple()}.
 describe_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cluster(Client, Input, []).
@@ -2192,8 +2354,7 @@ describe_cluster(Client, Input)
 -spec describe_cluster(map(), describe_cluster_input(), proplists:proplist()) ->
     {ok, describe_cluster_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_cluster_errors(), tuple()}.
 describe_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCluster">>, Input, Options).
@@ -2229,7 +2390,7 @@ describe_cluster(Client, Input, Options)
 -spec describe_job_flows(map(), describe_job_flows_input()) ->
     {ok, describe_job_flows_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_job_flows_errors(), tuple()}.
 describe_job_flows(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_job_flows(Client, Input, []).
@@ -2237,7 +2398,7 @@ describe_job_flows(Client, Input)
 -spec describe_job_flows(map(), describe_job_flows_input(), proplists:proplist()) ->
     {ok, describe_job_flows_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_job_flows_errors(), tuple()}.
 describe_job_flows(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeJobFlows">>, Input, Options).
@@ -2246,8 +2407,7 @@ describe_job_flows(Client, Input, Options)
 -spec describe_notebook_execution(map(), describe_notebook_execution_input()) ->
     {ok, describe_notebook_execution_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_notebook_execution_errors(), tuple()}.
 describe_notebook_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_notebook_execution(Client, Input, []).
@@ -2255,8 +2415,7 @@ describe_notebook_execution(Client, Input)
 -spec describe_notebook_execution(map(), describe_notebook_execution_input(), proplists:proplist()) ->
     {ok, describe_notebook_execution_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_notebook_execution_errors(), tuple()}.
 describe_notebook_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeNotebookExecution">>, Input, Options).
@@ -2271,8 +2430,7 @@ describe_notebook_execution(Client, Input, Options)
 -spec describe_release_label(map(), describe_release_label_input()) ->
     {ok, describe_release_label_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_release_label_errors(), tuple()}.
 describe_release_label(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_release_label(Client, Input, []).
@@ -2280,8 +2438,7 @@ describe_release_label(Client, Input)
 -spec describe_release_label(map(), describe_release_label_input(), proplists:proplist()) ->
     {ok, describe_release_label_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_release_label_errors(), tuple()}.
 describe_release_label(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReleaseLabel">>, Input, Options).
@@ -2292,8 +2449,7 @@ describe_release_label(Client, Input, Options)
 -spec describe_security_configuration(map(), describe_security_configuration_input()) ->
     {ok, describe_security_configuration_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_security_configuration_errors(), tuple()}.
 describe_security_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_security_configuration(Client, Input, []).
@@ -2301,8 +2457,7 @@ describe_security_configuration(Client, Input)
 -spec describe_security_configuration(map(), describe_security_configuration_input(), proplists:proplist()) ->
     {ok, describe_security_configuration_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_security_configuration_errors(), tuple()}.
 describe_security_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSecurityConfiguration">>, Input, Options).
@@ -2311,8 +2466,7 @@ describe_security_configuration(Client, Input, Options)
 -spec describe_step(map(), describe_step_input()) ->
     {ok, describe_step_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_step_errors(), tuple()}.
 describe_step(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_step(Client, Input, []).
@@ -2320,8 +2474,7 @@ describe_step(Client, Input)
 -spec describe_step(map(), describe_step_input(), proplists:proplist()) ->
     {ok, describe_step_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_step_errors(), tuple()}.
 describe_step(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStep">>, Input, Options).
@@ -2332,8 +2485,7 @@ describe_step(Client, Input, Options)
 -spec describe_studio(map(), describe_studio_input()) ->
     {ok, describe_studio_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_studio_errors(), tuple()}.
 describe_studio(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_studio(Client, Input, []).
@@ -2341,8 +2493,7 @@ describe_studio(Client, Input)
 -spec describe_studio(map(), describe_studio_input(), proplists:proplist()) ->
     {ok, describe_studio_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_studio_errors(), tuple()}.
 describe_studio(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStudio">>, Input, Options).
@@ -2373,8 +2524,7 @@ get_auto_termination_policy(Client, Input, Options)
 -spec get_block_public_access_configuration(map(), get_block_public_access_configuration_input()) ->
     {ok, get_block_public_access_configuration_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, get_block_public_access_configuration_errors(), tuple()}.
 get_block_public_access_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_block_public_access_configuration(Client, Input, []).
@@ -2382,8 +2532,7 @@ get_block_public_access_configuration(Client, Input)
 -spec get_block_public_access_configuration(map(), get_block_public_access_configuration_input(), proplists:proplist()) ->
     {ok, get_block_public_access_configuration_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, get_block_public_access_configuration_errors(), tuple()}.
 get_block_public_access_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetBlockPublicAccessConfiguration">>, Input, Options).
@@ -2398,8 +2547,7 @@ get_block_public_access_configuration(Client, Input, Options)
 -spec get_cluster_session_credentials(map(), get_cluster_session_credentials_input()) ->
     {ok, get_cluster_session_credentials_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, get_cluster_session_credentials_errors(), tuple()}.
 get_cluster_session_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_cluster_session_credentials(Client, Input, []).
@@ -2407,8 +2555,7 @@ get_cluster_session_credentials(Client, Input)
 -spec get_cluster_session_credentials(map(), get_cluster_session_credentials_input(), proplists:proplist()) ->
     {ok, get_cluster_session_credentials_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, get_cluster_session_credentials_errors(), tuple()}.
 get_cluster_session_credentials(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetClusterSessionCredentials">>, Input, Options).
@@ -2435,8 +2582,7 @@ get_managed_scaling_policy(Client, Input, Options)
 -spec get_studio_session_mapping(map(), get_studio_session_mapping_input()) ->
     {ok, get_studio_session_mapping_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, get_studio_session_mapping_errors(), tuple()}.
 get_studio_session_mapping(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_studio_session_mapping(Client, Input, []).
@@ -2444,8 +2590,7 @@ get_studio_session_mapping(Client, Input)
 -spec get_studio_session_mapping(map(), get_studio_session_mapping_input(), proplists:proplist()) ->
     {ok, get_studio_session_mapping_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, get_studio_session_mapping_errors(), tuple()}.
 get_studio_session_mapping(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetStudioSessionMapping">>, Input, Options).
@@ -2455,8 +2600,7 @@ get_studio_session_mapping(Client, Input, Options)
 -spec list_bootstrap_actions(map(), list_bootstrap_actions_input()) ->
     {ok, list_bootstrap_actions_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_bootstrap_actions_errors(), tuple()}.
 list_bootstrap_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_bootstrap_actions(Client, Input, []).
@@ -2464,8 +2608,7 @@ list_bootstrap_actions(Client, Input)
 -spec list_bootstrap_actions(map(), list_bootstrap_actions_input(), proplists:proplist()) ->
     {ok, list_bootstrap_actions_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_bootstrap_actions_errors(), tuple()}.
 list_bootstrap_actions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBootstrapActions">>, Input, Options).
@@ -2484,8 +2627,7 @@ list_bootstrap_actions(Client, Input, Options)
 -spec list_clusters(map(), list_clusters_input()) ->
     {ok, list_clusters_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_clusters_errors(), tuple()}.
 list_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_clusters(Client, Input, []).
@@ -2493,8 +2635,7 @@ list_clusters(Client, Input)
 -spec list_clusters(map(), list_clusters_input(), proplists:proplist()) ->
     {ok, list_clusters_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_clusters_errors(), tuple()}.
 list_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListClusters">>, Input, Options).
@@ -2506,8 +2647,7 @@ list_clusters(Client, Input, Options)
 -spec list_instance_fleets(map(), list_instance_fleets_input()) ->
     {ok, list_instance_fleets_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_instance_fleets_errors(), tuple()}.
 list_instance_fleets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_instance_fleets(Client, Input, []).
@@ -2515,8 +2655,7 @@ list_instance_fleets(Client, Input)
 -spec list_instance_fleets(map(), list_instance_fleets_input(), proplists:proplist()) ->
     {ok, list_instance_fleets_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_instance_fleets_errors(), tuple()}.
 list_instance_fleets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInstanceFleets">>, Input, Options).
@@ -2526,8 +2665,7 @@ list_instance_fleets(Client, Input, Options)
 -spec list_instance_groups(map(), list_instance_groups_input()) ->
     {ok, list_instance_groups_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_instance_groups_errors(), tuple()}.
 list_instance_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_instance_groups(Client, Input, []).
@@ -2535,8 +2673,7 @@ list_instance_groups(Client, Input)
 -spec list_instance_groups(map(), list_instance_groups_input(), proplists:proplist()) ->
     {ok, list_instance_groups_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_instance_groups_errors(), tuple()}.
 list_instance_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInstanceGroups">>, Input, Options).
@@ -2552,8 +2689,7 @@ list_instance_groups(Client, Input, Options)
 -spec list_instances(map(), list_instances_input()) ->
     {ok, list_instances_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_instances_errors(), tuple()}.
 list_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_instances(Client, Input, []).
@@ -2561,8 +2697,7 @@ list_instances(Client, Input)
 -spec list_instances(map(), list_instances_input(), proplists:proplist()) ->
     {ok, list_instances_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_instances_errors(), tuple()}.
 list_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInstances">>, Input, Options).
@@ -2578,8 +2713,7 @@ list_instances(Client, Input, Options)
 -spec list_notebook_executions(map(), list_notebook_executions_input()) ->
     {ok, list_notebook_executions_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_notebook_executions_errors(), tuple()}.
 list_notebook_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_notebook_executions(Client, Input, []).
@@ -2587,8 +2721,7 @@ list_notebook_executions(Client, Input)
 -spec list_notebook_executions(map(), list_notebook_executions_input(), proplists:proplist()) ->
     {ok, list_notebook_executions_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_notebook_executions_errors(), tuple()}.
 list_notebook_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListNotebookExecutions">>, Input, Options).
@@ -2599,8 +2732,7 @@ list_notebook_executions(Client, Input, Options)
 -spec list_release_labels(map(), list_release_labels_input()) ->
     {ok, list_release_labels_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_release_labels_errors(), tuple()}.
 list_release_labels(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_release_labels(Client, Input, []).
@@ -2608,8 +2740,7 @@ list_release_labels(Client, Input)
 -spec list_release_labels(map(), list_release_labels_input(), proplists:proplist()) ->
     {ok, list_release_labels_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_release_labels_errors(), tuple()}.
 list_release_labels(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListReleaseLabels">>, Input, Options).
@@ -2624,8 +2755,7 @@ list_release_labels(Client, Input, Options)
 -spec list_security_configurations(map(), list_security_configurations_input()) ->
     {ok, list_security_configurations_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_security_configurations_errors(), tuple()}.
 list_security_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_security_configurations(Client, Input, []).
@@ -2633,8 +2763,7 @@ list_security_configurations(Client, Input)
 -spec list_security_configurations(map(), list_security_configurations_input(), proplists:proplist()) ->
     {ok, list_security_configurations_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_security_configurations_errors(), tuple()}.
 list_security_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSecurityConfigurations">>, Input, Options).
@@ -2652,8 +2781,7 @@ list_security_configurations(Client, Input, Options)
 -spec list_steps(map(), list_steps_input()) ->
     {ok, list_steps_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_steps_errors(), tuple()}.
 list_steps(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_steps(Client, Input, []).
@@ -2661,8 +2789,7 @@ list_steps(Client, Input)
 -spec list_steps(map(), list_steps_input(), proplists:proplist()) ->
     {ok, list_steps_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_steps_errors(), tuple()}.
 list_steps(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSteps">>, Input, Options).
@@ -2673,8 +2800,7 @@ list_steps(Client, Input, Options)
 -spec list_studio_session_mappings(map(), list_studio_session_mappings_input()) ->
     {ok, list_studio_session_mappings_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_studio_session_mappings_errors(), tuple()}.
 list_studio_session_mappings(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_studio_session_mappings(Client, Input, []).
@@ -2682,8 +2808,7 @@ list_studio_session_mappings(Client, Input)
 -spec list_studio_session_mappings(map(), list_studio_session_mappings_input(), proplists:proplist()) ->
     {ok, list_studio_session_mappings_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_studio_session_mappings_errors(), tuple()}.
 list_studio_session_mappings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStudioSessionMappings">>, Input, Options).
@@ -2696,8 +2821,7 @@ list_studio_session_mappings(Client, Input, Options)
 -spec list_studios(map(), list_studios_input()) ->
     {ok, list_studios_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_studios_errors(), tuple()}.
 list_studios(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_studios(Client, Input, []).
@@ -2705,8 +2829,7 @@ list_studios(Client, Input)
 -spec list_studios(map(), list_studios_input(), proplists:proplist()) ->
     {ok, list_studios_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_studios_errors(), tuple()}.
 list_studios(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStudios">>, Input, Options).
@@ -2718,8 +2841,7 @@ list_studios(Client, Input, Options)
 -spec list_supported_instance_types(map(), list_supported_instance_types_input()) ->
     {ok, list_supported_instance_types_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_supported_instance_types_errors(), tuple()}.
 list_supported_instance_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_supported_instance_types(Client, Input, []).
@@ -2727,8 +2849,7 @@ list_supported_instance_types(Client, Input)
 -spec list_supported_instance_types(map(), list_supported_instance_types_input(), proplists:proplist()) ->
     {ok, list_supported_instance_types_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_supported_instance_types_errors(), tuple()}.
 list_supported_instance_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSupportedInstanceTypes">>, Input, Options).
@@ -2739,8 +2860,7 @@ list_supported_instance_types(Client, Input, Options)
 -spec modify_cluster(map(), modify_cluster_input()) ->
     {ok, modify_cluster_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, modify_cluster_errors(), tuple()}.
 modify_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_cluster(Client, Input, []).
@@ -2748,8 +2868,7 @@ modify_cluster(Client, Input)
 -spec modify_cluster(map(), modify_cluster_input(), proplists:proplist()) ->
     {ok, modify_cluster_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, modify_cluster_errors(), tuple()}.
 modify_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyCluster">>, Input, Options).
@@ -2766,8 +2885,7 @@ modify_cluster(Client, Input, Options)
 -spec modify_instance_fleet(map(), modify_instance_fleet_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, modify_instance_fleet_errors(), tuple()}.
 modify_instance_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_instance_fleet(Client, Input, []).
@@ -2775,8 +2893,7 @@ modify_instance_fleet(Client, Input)
 -spec modify_instance_fleet(map(), modify_instance_fleet_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, modify_instance_fleet_errors(), tuple()}.
 modify_instance_fleet(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyInstanceFleet">>, Input, Options).
@@ -2791,7 +2908,7 @@ modify_instance_fleet(Client, Input, Options)
 -spec modify_instance_groups(map(), modify_instance_groups_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, modify_instance_groups_errors(), tuple()}.
 modify_instance_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_instance_groups(Client, Input, []).
@@ -2799,7 +2916,7 @@ modify_instance_groups(Client, Input)
 -spec modify_instance_groups(map(), modify_instance_groups_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, modify_instance_groups_errors(), tuple()}.
 modify_instance_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyInstanceGroups">>, Input, Options).
@@ -2868,8 +2985,7 @@ put_auto_termination_policy(Client, Input, Options)
 -spec put_block_public_access_configuration(map(), put_block_public_access_configuration_input()) ->
     {ok, put_block_public_access_configuration_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, put_block_public_access_configuration_errors(), tuple()}.
 put_block_public_access_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_block_public_access_configuration(Client, Input, []).
@@ -2877,8 +2993,7 @@ put_block_public_access_configuration(Client, Input)
 -spec put_block_public_access_configuration(map(), put_block_public_access_configuration_input(), proplists:proplist()) ->
     {ok, put_block_public_access_configuration_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, put_block_public_access_configuration_errors(), tuple()}.
 put_block_public_access_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutBlockPublicAccessConfiguration">>, Input, Options).
@@ -2969,8 +3084,7 @@ remove_managed_scaling_policy(Client, Input, Options)
 -spec remove_tags(map(), remove_tags_input()) ->
     {ok, remove_tags_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, remove_tags_errors(), tuple()}.
 remove_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags(Client, Input, []).
@@ -2978,8 +3092,7 @@ remove_tags(Client, Input)
 -spec remove_tags(map(), remove_tags_input(), proplists:proplist()) ->
     {ok, remove_tags_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, remove_tags_errors(), tuple()}.
 remove_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTags">>, Input, Options).
@@ -3025,7 +3138,7 @@ remove_tags(Client, Input, Options)
 -spec run_job_flow(map(), run_job_flow_input()) ->
     {ok, run_job_flow_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, run_job_flow_errors(), tuple()}.
 run_job_flow(Client, Input)
   when is_map(Client), is_map(Input) ->
     run_job_flow(Client, Input, []).
@@ -3033,7 +3146,7 @@ run_job_flow(Client, Input)
 -spec run_job_flow(map(), run_job_flow_input(), proplists:proplist()) ->
     {ok, run_job_flow_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, run_job_flow_errors(), tuple()}.
 run_job_flow(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RunJobFlow">>, Input, Options).
@@ -3054,7 +3167,7 @@ run_job_flow(Client, Input, Options)
 -spec set_keep_job_flow_alive_when_no_steps(map(), set_keep_job_flow_alive_when_no_steps_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, set_keep_job_flow_alive_when_no_steps_errors(), tuple()}.
 set_keep_job_flow_alive_when_no_steps(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_keep_job_flow_alive_when_no_steps(Client, Input, []).
@@ -3062,7 +3175,7 @@ set_keep_job_flow_alive_when_no_steps(Client, Input)
 -spec set_keep_job_flow_alive_when_no_steps(map(), set_keep_job_flow_alive_when_no_steps_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, set_keep_job_flow_alive_when_no_steps_errors(), tuple()}.
 set_keep_job_flow_alive_when_no_steps(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetKeepJobFlowAliveWhenNoSteps">>, Input, Options).
@@ -3099,7 +3212,7 @@ set_keep_job_flow_alive_when_no_steps(Client, Input, Options)
 -spec set_termination_protection(map(), set_termination_protection_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, set_termination_protection_errors(), tuple()}.
 set_termination_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_termination_protection(Client, Input, []).
@@ -3107,7 +3220,7 @@ set_termination_protection(Client, Input)
 -spec set_termination_protection(map(), set_termination_protection_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, set_termination_protection_errors(), tuple()}.
 set_termination_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetTerminationProtection">>, Input, Options).
@@ -3138,7 +3251,7 @@ set_termination_protection(Client, Input, Options)
 -spec set_unhealthy_node_replacement(map(), set_unhealthy_node_replacement_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, set_unhealthy_node_replacement_errors(), tuple()}.
 set_unhealthy_node_replacement(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_unhealthy_node_replacement(Client, Input, []).
@@ -3146,7 +3259,7 @@ set_unhealthy_node_replacement(Client, Input)
 -spec set_unhealthy_node_replacement(map(), set_unhealthy_node_replacement_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, set_unhealthy_node_replacement_errors(), tuple()}.
 set_unhealthy_node_replacement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetUnhealthyNodeReplacement">>, Input, Options).
@@ -3180,7 +3293,7 @@ set_unhealthy_node_replacement(Client, Input, Options)
 -spec set_visible_to_all_users(map(), set_visible_to_all_users_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, set_visible_to_all_users_errors(), tuple()}.
 set_visible_to_all_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_visible_to_all_users(Client, Input, []).
@@ -3188,7 +3301,7 @@ set_visible_to_all_users(Client, Input)
 -spec set_visible_to_all_users(map(), set_visible_to_all_users_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, set_visible_to_all_users_errors(), tuple()}.
 set_visible_to_all_users(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetVisibleToAllUsers">>, Input, Options).
@@ -3197,8 +3310,7 @@ set_visible_to_all_users(Client, Input, Options)
 -spec start_notebook_execution(map(), start_notebook_execution_input()) ->
     {ok, start_notebook_execution_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, start_notebook_execution_errors(), tuple()}.
 start_notebook_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_notebook_execution(Client, Input, []).
@@ -3206,8 +3318,7 @@ start_notebook_execution(Client, Input)
 -spec start_notebook_execution(map(), start_notebook_execution_input(), proplists:proplist()) ->
     {ok, start_notebook_execution_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, start_notebook_execution_errors(), tuple()}.
 start_notebook_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartNotebookExecution">>, Input, Options).
@@ -3216,8 +3327,7 @@ start_notebook_execution(Client, Input, Options)
 -spec stop_notebook_execution(map(), stop_notebook_execution_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, stop_notebook_execution_errors(), tuple()}.
 stop_notebook_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_notebook_execution(Client, Input, []).
@@ -3225,8 +3335,7 @@ stop_notebook_execution(Client, Input)
 -spec stop_notebook_execution(map(), stop_notebook_execution_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, stop_notebook_execution_errors(), tuple()}.
 stop_notebook_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopNotebookExecution">>, Input, Options).
@@ -3250,7 +3359,7 @@ stop_notebook_execution(Client, Input, Options)
 -spec terminate_job_flows(map(), terminate_job_flows_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, terminate_job_flows_errors(), tuple()}.
 terminate_job_flows(Client, Input)
   when is_map(Client), is_map(Input) ->
     terminate_job_flows(Client, Input, []).
@@ -3258,7 +3367,7 @@ terminate_job_flows(Client, Input)
 -spec terminate_job_flows(map(), terminate_job_flows_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, terminate_job_flows_errors(), tuple()}.
 terminate_job_flows(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TerminateJobFlows">>, Input, Options).
@@ -3269,8 +3378,7 @@ terminate_job_flows(Client, Input, Options)
 -spec update_studio(map(), update_studio_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_studio_errors(), tuple()}.
 update_studio(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_studio(Client, Input, []).
@@ -3278,8 +3386,7 @@ update_studio(Client, Input)
 -spec update_studio(map(), update_studio_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_studio_errors(), tuple()}.
 update_studio(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateStudio">>, Input, Options).
@@ -3289,8 +3396,7 @@ update_studio(Client, Input, Options)
 -spec update_studio_session_mapping(map(), update_studio_session_mapping_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_studio_session_mapping_errors(), tuple()}.
 update_studio_session_mapping(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_studio_session_mapping(Client, Input, []).
@@ -3298,8 +3404,7 @@ update_studio_session_mapping(Client, Input)
 -spec update_studio_session_mapping(map(), update_studio_session_mapping_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, update_studio_session_mapping_errors(), tuple()}.
 update_studio_session_mapping(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateStudioSessionMapping">>, Input, Options).

@@ -701,6 +701,169 @@
 %% }
 -type upload_layer_part_request() :: #{binary() => any()}.
 
+-type batch_check_layer_availability_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    unsupported_command_exception() | 
+    registry_not_found_exception().
+
+-type batch_delete_image_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    unsupported_command_exception().
+
+-type complete_layer_upload_errors() ::
+    empty_upload_exception() | 
+    repository_not_found_exception() | 
+    server_exception() | 
+    invalid_layer_exception() | 
+    invalid_parameter_exception() | 
+    layer_part_too_small_exception() | 
+    unsupported_command_exception() | 
+    layer_already_exists_exception() | 
+    registry_not_found_exception() | 
+    upload_not_found_exception().
+
+-type create_repository_errors() ::
+    too_many_tags_exception() | 
+    limit_exceeded_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    unsupported_command_exception() | 
+    repository_already_exists_exception() | 
+    invalid_tag_parameter_exception().
+
+-type delete_repository_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    unsupported_command_exception() | 
+    repository_not_empty_exception().
+
+-type delete_repository_policy_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    unsupported_command_exception() | 
+    repository_policy_not_found_exception().
+
+-type describe_image_tags_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    unsupported_command_exception().
+
+-type describe_images_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    unsupported_command_exception() | 
+    image_not_found_exception().
+
+-type describe_registries_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    unsupported_command_exception().
+
+-type describe_repositories_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    unsupported_command_exception().
+
+-type get_authorization_token_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    unsupported_command_exception().
+
+-type get_registry_catalog_data_errors() ::
+    server_exception() | 
+    unsupported_command_exception().
+
+-type get_repository_catalog_data_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    repository_catalog_data_not_found_exception() | 
+    invalid_parameter_exception() | 
+    unsupported_command_exception().
+
+-type get_repository_policy_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    unsupported_command_exception() | 
+    repository_policy_not_found_exception().
+
+-type initiate_layer_upload_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    unsupported_command_exception() | 
+    registry_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    unsupported_command_exception().
+
+-type put_image_errors() ::
+    limit_exceeded_exception() | 
+    repository_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    referenced_images_not_found_exception() | 
+    image_tag_already_exists_exception() | 
+    unsupported_command_exception() | 
+    layers_not_found_exception() | 
+    registry_not_found_exception() | 
+    image_already_exists_exception() | 
+    image_digest_does_not_match_exception().
+
+-type put_registry_catalog_data_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    unsupported_command_exception().
+
+-type put_repository_catalog_data_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    unsupported_command_exception().
+
+-type set_repository_policy_errors() ::
+    repository_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    unsupported_command_exception().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    repository_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    unsupported_command_exception() | 
+    invalid_tag_parameter_exception().
+
+-type untag_resource_errors() ::
+    too_many_tags_exception() | 
+    repository_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    unsupported_command_exception() | 
+    invalid_tag_parameter_exception().
+
+-type upload_layer_part_errors() ::
+    limit_exceeded_exception() | 
+    repository_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    invalid_layer_part_exception() | 
+    unsupported_command_exception() | 
+    registry_not_found_exception() | 
+    upload_not_found_exception().
 
 %%====================================================================
 %% API
@@ -721,11 +884,7 @@
 -spec batch_check_layer_availability(map(), batch_check_layer_availability_request()) ->
     {ok, batch_check_layer_availability_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, registry_not_found_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, batch_check_layer_availability_errors(), tuple()}.
 batch_check_layer_availability(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_check_layer_availability(Client, Input, []).
@@ -733,11 +892,7 @@ batch_check_layer_availability(Client, Input)
 -spec batch_check_layer_availability(map(), batch_check_layer_availability_request(), proplists:proplist()) ->
     {ok, batch_check_layer_availability_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, registry_not_found_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, batch_check_layer_availability_errors(), tuple()}.
 batch_check_layer_availability(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchCheckLayerAvailability">>, Input, Options).
@@ -759,10 +914,7 @@ batch_check_layer_availability(Client, Input, Options)
 -spec batch_delete_image(map(), batch_delete_image_request()) ->
     {ok, batch_delete_image_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, batch_delete_image_errors(), tuple()}.
 batch_delete_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_image(Client, Input, []).
@@ -770,10 +922,7 @@ batch_delete_image(Client, Input)
 -spec batch_delete_image(map(), batch_delete_image_request(), proplists:proplist()) ->
     {ok, batch_delete_image_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, batch_delete_image_errors(), tuple()}.
 batch_delete_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDeleteImage">>, Input, Options).
@@ -795,16 +944,7 @@ batch_delete_image(Client, Input, Options)
 -spec complete_layer_upload(map(), complete_layer_upload_request()) ->
     {ok, complete_layer_upload_response(), tuple()} |
     {error, any()} |
-    {error, empty_upload_exception(), tuple()} |
-    {error, invalid_layer_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, layer_already_exists_exception(), tuple()} |
-    {error, layer_part_too_small_exception(), tuple()} |
-    {error, registry_not_found_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()} |
-    {error, upload_not_found_exception(), tuple()}.
+    {error, complete_layer_upload_errors(), tuple()}.
 complete_layer_upload(Client, Input)
   when is_map(Client), is_map(Input) ->
     complete_layer_upload(Client, Input, []).
@@ -812,16 +952,7 @@ complete_layer_upload(Client, Input)
 -spec complete_layer_upload(map(), complete_layer_upload_request(), proplists:proplist()) ->
     {ok, complete_layer_upload_response(), tuple()} |
     {error, any()} |
-    {error, empty_upload_exception(), tuple()} |
-    {error, invalid_layer_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, layer_already_exists_exception(), tuple()} |
-    {error, layer_part_too_small_exception(), tuple()} |
-    {error, registry_not_found_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()} |
-    {error, upload_not_found_exception(), tuple()}.
+    {error, complete_layer_upload_errors(), tuple()}.
 complete_layer_upload(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CompleteLayerUpload">>, Input, Options).
@@ -835,13 +966,7 @@ complete_layer_upload(Client, Input, Options)
 -spec create_repository(map(), create_repository_request()) ->
     {ok, create_repository_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_tag_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, repository_already_exists_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, create_repository_errors(), tuple()}.
 create_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_repository(Client, Input, []).
@@ -849,13 +974,7 @@ create_repository(Client, Input)
 -spec create_repository(map(), create_repository_request(), proplists:proplist()) ->
     {ok, create_repository_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_tag_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, repository_already_exists_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, create_repository_errors(), tuple()}.
 create_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRepository">>, Input, Options).
@@ -870,11 +989,7 @@ create_repository(Client, Input, Options)
 -spec delete_repository(map(), delete_repository_request()) ->
     {ok, delete_repository_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_empty_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, delete_repository_errors(), tuple()}.
 delete_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_repository(Client, Input, []).
@@ -882,11 +997,7 @@ delete_repository(Client, Input)
 -spec delete_repository(map(), delete_repository_request(), proplists:proplist()) ->
     {ok, delete_repository_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_empty_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, delete_repository_errors(), tuple()}.
 delete_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRepository">>, Input, Options).
@@ -896,11 +1007,7 @@ delete_repository(Client, Input, Options)
 -spec delete_repository_policy(map(), delete_repository_policy_request()) ->
     {ok, delete_repository_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, repository_policy_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, delete_repository_policy_errors(), tuple()}.
 delete_repository_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_repository_policy(Client, Input, []).
@@ -908,11 +1015,7 @@ delete_repository_policy(Client, Input)
 -spec delete_repository_policy(map(), delete_repository_policy_request(), proplists:proplist()) ->
     {ok, delete_repository_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, repository_policy_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, delete_repository_policy_errors(), tuple()}.
 delete_repository_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRepositoryPolicy">>, Input, Options).
@@ -921,10 +1024,7 @@ delete_repository_policy(Client, Input, Options)
 -spec describe_image_tags(map(), describe_image_tags_request()) ->
     {ok, describe_image_tags_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, describe_image_tags_errors(), tuple()}.
 describe_image_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_image_tags(Client, Input, []).
@@ -932,10 +1032,7 @@ describe_image_tags(Client, Input)
 -spec describe_image_tags(map(), describe_image_tags_request(), proplists:proplist()) ->
     {ok, describe_image_tags_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, describe_image_tags_errors(), tuple()}.
 describe_image_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeImageTags">>, Input, Options).
@@ -954,11 +1051,7 @@ describe_image_tags(Client, Input, Options)
 -spec describe_images(map(), describe_images_request()) ->
     {ok, describe_images_response(), tuple()} |
     {error, any()} |
-    {error, image_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, describe_images_errors(), tuple()}.
 describe_images(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_images(Client, Input, []).
@@ -966,11 +1059,7 @@ describe_images(Client, Input)
 -spec describe_images(map(), describe_images_request(), proplists:proplist()) ->
     {ok, describe_images_response(), tuple()} |
     {error, any()} |
-    {error, image_not_found_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, describe_images_errors(), tuple()}.
 describe_images(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeImages">>, Input, Options).
@@ -979,9 +1068,7 @@ describe_images(Client, Input, Options)
 -spec describe_registries(map(), describe_registries_request()) ->
     {ok, describe_registries_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, describe_registries_errors(), tuple()}.
 describe_registries(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_registries(Client, Input, []).
@@ -989,9 +1076,7 @@ describe_registries(Client, Input)
 -spec describe_registries(map(), describe_registries_request(), proplists:proplist()) ->
     {ok, describe_registries_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, describe_registries_errors(), tuple()}.
 describe_registries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRegistries">>, Input, Options).
@@ -1000,10 +1085,7 @@ describe_registries(Client, Input, Options)
 -spec describe_repositories(map(), describe_repositories_request()) ->
     {ok, describe_repositories_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, describe_repositories_errors(), tuple()}.
 describe_repositories(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_repositories(Client, Input, []).
@@ -1011,10 +1093,7 @@ describe_repositories(Client, Input)
 -spec describe_repositories(map(), describe_repositories_request(), proplists:proplist()) ->
     {ok, describe_repositories_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, describe_repositories_errors(), tuple()}.
 describe_repositories(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRepositories">>, Input, Options).
@@ -1031,9 +1110,7 @@ describe_repositories(Client, Input, Options)
 -spec get_authorization_token(map(), get_authorization_token_request()) ->
     {ok, get_authorization_token_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, get_authorization_token_errors(), tuple()}.
 get_authorization_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_authorization_token(Client, Input, []).
@@ -1041,9 +1118,7 @@ get_authorization_token(Client, Input)
 -spec get_authorization_token(map(), get_authorization_token_request(), proplists:proplist()) ->
     {ok, get_authorization_token_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, get_authorization_token_errors(), tuple()}.
 get_authorization_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAuthorizationToken">>, Input, Options).
@@ -1052,8 +1127,7 @@ get_authorization_token(Client, Input, Options)
 -spec get_registry_catalog_data(map(), get_registry_catalog_data_request()) ->
     {ok, get_registry_catalog_data_response(), tuple()} |
     {error, any()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, get_registry_catalog_data_errors(), tuple()}.
 get_registry_catalog_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_registry_catalog_data(Client, Input, []).
@@ -1061,8 +1135,7 @@ get_registry_catalog_data(Client, Input)
 -spec get_registry_catalog_data(map(), get_registry_catalog_data_request(), proplists:proplist()) ->
     {ok, get_registry_catalog_data_response(), tuple()} |
     {error, any()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, get_registry_catalog_data_errors(), tuple()}.
 get_registry_catalog_data(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRegistryCatalogData">>, Input, Options).
@@ -1074,11 +1147,7 @@ get_registry_catalog_data(Client, Input, Options)
 -spec get_repository_catalog_data(map(), get_repository_catalog_data_request()) ->
     {ok, get_repository_catalog_data_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_catalog_data_not_found_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, get_repository_catalog_data_errors(), tuple()}.
 get_repository_catalog_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_repository_catalog_data(Client, Input, []).
@@ -1086,11 +1155,7 @@ get_repository_catalog_data(Client, Input)
 -spec get_repository_catalog_data(map(), get_repository_catalog_data_request(), proplists:proplist()) ->
     {ok, get_repository_catalog_data_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_catalog_data_not_found_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, get_repository_catalog_data_errors(), tuple()}.
 get_repository_catalog_data(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRepositoryCatalogData">>, Input, Options).
@@ -1099,11 +1164,7 @@ get_repository_catalog_data(Client, Input, Options)
 -spec get_repository_policy(map(), get_repository_policy_request()) ->
     {ok, get_repository_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, repository_policy_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, get_repository_policy_errors(), tuple()}.
 get_repository_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_repository_policy(Client, Input, []).
@@ -1111,11 +1172,7 @@ get_repository_policy(Client, Input)
 -spec get_repository_policy(map(), get_repository_policy_request(), proplists:proplist()) ->
     {ok, get_repository_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, repository_policy_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, get_repository_policy_errors(), tuple()}.
 get_repository_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRepositoryPolicy">>, Input, Options).
@@ -1134,11 +1191,7 @@ get_repository_policy(Client, Input, Options)
 -spec initiate_layer_upload(map(), initiate_layer_upload_request()) ->
     {ok, initiate_layer_upload_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, registry_not_found_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, initiate_layer_upload_errors(), tuple()}.
 initiate_layer_upload(Client, Input)
   when is_map(Client), is_map(Input) ->
     initiate_layer_upload(Client, Input, []).
@@ -1146,11 +1199,7 @@ initiate_layer_upload(Client, Input)
 -spec initiate_layer_upload(map(), initiate_layer_upload_request(), proplists:proplist()) ->
     {ok, initiate_layer_upload_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, registry_not_found_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, initiate_layer_upload_errors(), tuple()}.
 initiate_layer_upload(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"InitiateLayerUpload">>, Input, Options).
@@ -1159,10 +1208,7 @@ initiate_layer_upload(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -1170,10 +1216,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -1193,17 +1236,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec put_image(map(), put_image_request()) ->
     {ok, put_image_response(), tuple()} |
     {error, any()} |
-    {error, image_already_exists_exception(), tuple()} |
-    {error, image_digest_does_not_match_exception(), tuple()} |
-    {error, image_tag_already_exists_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, layers_not_found_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, referenced_images_not_found_exception(), tuple()} |
-    {error, registry_not_found_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, put_image_errors(), tuple()}.
 put_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_image(Client, Input, []).
@@ -1211,17 +1244,7 @@ put_image(Client, Input)
 -spec put_image(map(), put_image_request(), proplists:proplist()) ->
     {ok, put_image_response(), tuple()} |
     {error, any()} |
-    {error, image_already_exists_exception(), tuple()} |
-    {error, image_digest_does_not_match_exception(), tuple()} |
-    {error, image_tag_already_exists_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, layers_not_found_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, referenced_images_not_found_exception(), tuple()} |
-    {error, registry_not_found_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, put_image_errors(), tuple()}.
 put_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutImage">>, Input, Options).
@@ -1230,9 +1253,7 @@ put_image(Client, Input, Options)
 -spec put_registry_catalog_data(map(), put_registry_catalog_data_request()) ->
     {ok, put_registry_catalog_data_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, put_registry_catalog_data_errors(), tuple()}.
 put_registry_catalog_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_registry_catalog_data(Client, Input, []).
@@ -1240,9 +1261,7 @@ put_registry_catalog_data(Client, Input)
 -spec put_registry_catalog_data(map(), put_registry_catalog_data_request(), proplists:proplist()) ->
     {ok, put_registry_catalog_data_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, put_registry_catalog_data_errors(), tuple()}.
 put_registry_catalog_data(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRegistryCatalogData">>, Input, Options).
@@ -1252,10 +1271,7 @@ put_registry_catalog_data(Client, Input, Options)
 -spec put_repository_catalog_data(map(), put_repository_catalog_data_request()) ->
     {ok, put_repository_catalog_data_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, put_repository_catalog_data_errors(), tuple()}.
 put_repository_catalog_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_repository_catalog_data(Client, Input, []).
@@ -1263,10 +1279,7 @@ put_repository_catalog_data(Client, Input)
 -spec put_repository_catalog_data(map(), put_repository_catalog_data_request(), proplists:proplist()) ->
     {ok, put_repository_catalog_data_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, put_repository_catalog_data_errors(), tuple()}.
 put_repository_catalog_data(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRepositoryCatalogData">>, Input, Options).
@@ -1282,10 +1295,7 @@ put_repository_catalog_data(Client, Input, Options)
 -spec set_repository_policy(map(), set_repository_policy_request()) ->
     {ok, set_repository_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, set_repository_policy_errors(), tuple()}.
 set_repository_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_repository_policy(Client, Input, []).
@@ -1293,10 +1303,7 @@ set_repository_policy(Client, Input)
 -spec set_repository_policy(map(), set_repository_policy_request(), proplists:proplist()) ->
     {ok, set_repository_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, set_repository_policy_errors(), tuple()}.
 set_repository_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetRepositoryPolicy">>, Input, Options).
@@ -1312,12 +1319,7 @@ set_repository_policy(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_tag_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -1325,12 +1327,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_tag_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -1339,12 +1336,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_tag_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -1352,12 +1344,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_tag_parameter_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -1376,14 +1363,7 @@ untag_resource(Client, Input, Options)
 -spec upload_layer_part(map(), upload_layer_part_request()) ->
     {ok, upload_layer_part_response(), tuple()} |
     {error, any()} |
-    {error, invalid_layer_part_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, registry_not_found_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()} |
-    {error, upload_not_found_exception(), tuple()}.
+    {error, upload_layer_part_errors(), tuple()}.
 upload_layer_part(Client, Input)
   when is_map(Client), is_map(Input) ->
     upload_layer_part(Client, Input, []).
@@ -1391,14 +1371,7 @@ upload_layer_part(Client, Input)
 -spec upload_layer_part(map(), upload_layer_part_request(), proplists:proplist()) ->
     {ok, upload_layer_part_response(), tuple()} |
     {error, any()} |
-    {error, invalid_layer_part_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, registry_not_found_exception(), tuple()} |
-    {error, repository_not_found_exception(), tuple()} |
-    {error, server_exception(), tuple()} |
-    {error, unsupported_command_exception(), tuple()} |
-    {error, upload_not_found_exception(), tuple()}.
+    {error, upload_layer_part_errors(), tuple()}.
 upload_layer_part(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UploadLayerPart">>, Input, Options).

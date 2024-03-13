@@ -128,12 +128,14 @@
 %% }
 -type builtin_slot_type_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_slot_types_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"slotTypes">> => list(slot_type_metadata()())
 %% }
 -type get_slot_types_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_bot_request() :: #{
@@ -155,11 +157,13 @@
 %% }
 -type put_bot_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := list(tag()())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_bot_channel_associations_response() :: #{
@@ -167,6 +171,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type get_bot_channel_associations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_builtin_intents_request() :: #{
@@ -177,11 +182,13 @@
 %% }
 -type get_builtin_intents_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_failure_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type internal_failure_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% fulfillment_activity() :: #{
@@ -189,6 +196,7 @@
 %%   <<"type">> => list(any())
 %% }
 -type fulfillment_activity() :: #{binary() => any()}.
+
 
 %% Example:
 %% migration_summary() :: #{
@@ -203,6 +211,7 @@
 %%   <<"v2BotRole">> => string()
 %% }
 -type migration_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_migration_response() :: #{
@@ -219,6 +228,7 @@
 %% }
 -type get_migration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_reference() :: #{
 %%   <<"name">> => string(),
@@ -226,15 +236,18 @@
 %% }
 -type resource_reference() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_builtin_slot_types_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"slotTypes">> => list(builtin_slot_type_metadata()())
 %% }
 -type get_builtin_slot_types_response() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% put_slot_type_response() :: #{
@@ -252,6 +265,7 @@
 %% }
 -type put_slot_type_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_import_response() :: #{
 %%   <<"createdDate">> => non_neg_integer(),
@@ -263,9 +277,11 @@
 %%   <<"resourceType">> => list(any())
 %% }
 -type get_import_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_bot_request() :: #{}
 -type get_bot_request() :: #{}.
+
 
 %% Example:
 %% resource_in_use_exception() :: #{
@@ -273,6 +289,7 @@
 %%   <<"referenceType">> => list(any())
 %% }
 -type resource_in_use_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_migration_request() :: #{
@@ -283,6 +300,7 @@
 %%   <<"v2BotRole">> := string()
 %% }
 -type start_migration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_slot_type_version_response() :: #{
@@ -299,6 +317,7 @@
 %% }
 -type create_slot_type_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% log_settings_request() :: #{
 %%   <<"destination">> => list(any()),
@@ -307,9 +326,11 @@
 %%   <<"resourceArn">> => string()
 %% }
 -type log_settings_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_bot_request() :: #{}
 -type delete_bot_request() :: #{}.
+
 
 %% Example:
 %% get_bot_response() :: #{
@@ -334,12 +355,14 @@
 %% }
 -type get_bot_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% follow_up_prompt() :: #{
 %%   <<"prompt">> => prompt(),
 %%   <<"rejectionStatement">> => statement()
 %% }
 -type follow_up_prompt() :: #{binary() => any()}.
+
 
 %% Example:
 %% output_context() :: #{
@@ -348,6 +371,7 @@
 %%   <<"turnsToLive">> => integer()
 %% }
 -type output_context() :: #{binary() => any()}.
+
 
 %% Example:
 %% slot() :: #{
@@ -365,6 +389,7 @@
 %% }
 -type slot() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_builtin_slot_types_request() :: #{
 %%   <<"locale">> => list(any()),
@@ -374,11 +399,13 @@
 %% }
 -type get_builtin_slot_types_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_bot_version_request() :: #{
 %%   <<"checksum">> => string()
 %% }
 -type create_bot_version_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_bot_channel_association_response() :: #{
@@ -394,6 +421,7 @@
 %% }
 -type get_bot_channel_association_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_builtin_intent_response() :: #{
 %%   <<"signature">> => string(),
@@ -402,11 +430,13 @@
 %% }
 -type get_builtin_intent_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_slot_type_version_request() :: #{
 %%   <<"checksum">> => string()
 %% }
 -type create_slot_type_version_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_slot_type_versions_response() :: #{
@@ -414,9 +444,11 @@
 %%   <<"slotTypes">> => list(slot_type_metadata()())
 %% }
 -type get_slot_type_versions_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_slot_type_version_request() :: #{}
 -type delete_slot_type_version_request() :: #{}.
+
 
 %% Example:
 %% statement() :: #{
@@ -425,12 +457,14 @@
 %% }
 -type statement() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bots_response() :: #{
 %%   <<"bots">> => list(bot_metadata()()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_bots_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% builtin_intent_metadata() :: #{
@@ -439,6 +473,7 @@
 %% }
 -type builtin_intent_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_migrations_response() :: #{
 %%   <<"migrationSummaries">> => list(migration_summary()()),
@@ -446,11 +481,13 @@
 %% }
 -type get_migrations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% bot_alias_metadata() :: #{
@@ -464,6 +501,7 @@
 %%   <<"name">> => string()
 %% }
 -type bot_alias_metadata() :: #{binary() => any()}.
+
 
 %% Example:
 %% bot_channel_association() :: #{
@@ -479,6 +517,7 @@
 %% }
 -type bot_channel_association() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_migrations_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -490,12 +529,14 @@
 %% }
 -type get_migrations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% intent() :: #{
 %%   <<"intentName">> => string(),
 %%   <<"intentVersion">> => string()
 %% }
 -type intent() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_intents_response() :: #{
@@ -504,12 +545,14 @@
 %% }
 -type get_intents_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_intent_versions_response() :: #{
 %%   <<"intents">> => list(intent_metadata()()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_intent_versions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% kendra_configuration() :: #{
@@ -518,15 +561,18 @@
 %%   <<"role">> => string()
 %% }
 -type kendra_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% delete_intent_version_request() :: #{}
 -type delete_intent_version_request() :: #{}.
+
 
 %% Example:
 %% slot_type_regex_configuration() :: #{
 %%   <<"pattern">> => string()
 %% }
 -type slot_type_regex_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_intent_response() :: #{
@@ -551,11 +597,13 @@
 %% }
 -type get_intent_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_bots_request() :: #{
@@ -565,12 +613,14 @@
 %% }
 -type get_bots_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% code_hook() :: #{
 %%   <<"messageVersion">> => string(),
 %%   <<"uri">> => string()
 %% }
 -type code_hook() :: #{binary() => any()}.
+
 
 %% Example:
 %% bot_metadata() :: #{
@@ -583,6 +633,7 @@
 %% }
 -type bot_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% conversation_logs_response() :: #{
 %%   <<"iamRoleArn">> => string(),
@@ -590,15 +641,18 @@
 %% }
 -type conversation_logs_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag() :: #{
 %%   <<"key">> => string(),
 %%   <<"value">> => string()
 %% }
 -type tag() :: #{binary() => any()}.
+
 %% Example:
 %% delete_bot_version_request() :: #{}
 -type delete_bot_version_request() :: #{}.
+
 
 %% Example:
 %% put_bot_alias_request() :: #{
@@ -610,20 +664,24 @@
 %% }
 -type put_bot_alias_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% slot_default_value_spec() :: #{
 %%   <<"defaultValueList">> => list(slot_default_value()())
 %% }
 -type slot_default_value_spec() :: #{binary() => any()}.
+
 %% Example:
 %% get_import_request() :: #{}
 -type get_import_request() :: #{}.
+
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
@@ -631,12 +689,14 @@
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_utterances_view_response() :: #{
 %%   <<"botName">> => string(),
 %%   <<"utterances">> => list(utterance_list()())
 %% }
 -type get_utterances_view_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_bot_response() :: #{
@@ -663,12 +723,14 @@
 %% }
 -type put_bot_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_intent_versions_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type get_intent_versions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_bot_versions_request() :: #{
@@ -677,18 +739,22 @@
 %% }
 -type get_bot_versions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_slot_type_versions_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type get_slot_type_versions_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_bot_alias_request() :: #{}
 -type get_bot_alias_request() :: #{}.
+
 %% Example:
 %% get_intent_request() :: #{}
 -type get_intent_request() :: #{}.
+
 
 %% Example:
 %% get_bot_aliases_response() :: #{
@@ -696,6 +762,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type get_bot_aliases_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_slot_type_response() :: #{
@@ -712,21 +779,26 @@
 %% }
 -type get_slot_type_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% utterance_list() :: #{
 %%   <<"botVersion">> => string(),
 %%   <<"utterances">> => list(utterance_data()())
 %% }
 -type utterance_list() :: #{binary() => any()}.
+
 %% Example:
 %% get_builtin_intent_request() :: #{}
 -type get_builtin_intent_request() :: #{}.
+
 %% Example:
 %% delete_bot_alias_request() :: #{}
 -type delete_bot_alias_request() :: #{}.
+
 %% Example:
 %% delete_bot_channel_association_request() :: #{}
 -type delete_bot_channel_association_request() :: #{}.
+
 
 %% Example:
 %% get_bot_versions_response() :: #{
@@ -734,6 +806,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type get_bot_versions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_intent_request() :: #{
@@ -755,6 +828,7 @@
 %% }
 -type put_intent_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_intents_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -762,6 +836,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type get_intents_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_export_request() :: #{
@@ -771,6 +846,7 @@
 %%   <<"version">> := string()
 %% }
 -type get_export_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_slot_type_request() :: #{
@@ -783,6 +859,7 @@
 %%   <<"valueSelectionStrategy">> => list(any())
 %% }
 -type put_slot_type_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_migration_response() :: #{
@@ -797,6 +874,7 @@
 %% }
 -type start_migration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% conversation_logs_request() :: #{
 %%   <<"iamRoleArn">> => string(),
@@ -804,11 +882,13 @@
 %% }
 -type conversation_logs_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% slot_type_configuration() :: #{
 %%   <<"regexConfiguration">> => slot_type_regex_configuration()
 %% }
 -type slot_type_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_builtin_intents_response() :: #{
@@ -816,6 +896,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type get_builtin_intents_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_intent_response() :: #{
@@ -841,29 +922,35 @@
 %% }
 -type put_intent_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_intent_version_request() :: #{
 %%   <<"checksum">> => string()
 %% }
 -type create_intent_version_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 %% Example:
 %% get_bot_channel_association_request() :: #{}
 -type get_bot_channel_association_request() :: #{}.
+
 
 %% Example:
 %% builtin_intent_slot() :: #{
 %%   <<"name">> => string()
 %% }
 -type builtin_intent_slot() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_slot_types_request() :: #{
@@ -873,17 +960,21 @@
 %% }
 -type get_slot_types_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% input_context() :: #{
 %%   <<"name">> => string()
 %% }
 -type input_context() :: #{binary() => any()}.
+
 %% Example:
 %% delete_slot_type_request() :: #{}
 -type delete_slot_type_request() :: #{}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% log_settings_response() :: #{
@@ -894,9 +985,11 @@
 %%   <<"resourcePrefix">> => string()
 %% }
 -type log_settings_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_migration_request() :: #{}
 -type get_migration_request() :: #{}.
+
 
 %% Example:
 %% get_export_response() :: #{
@@ -910,6 +1003,7 @@
 %% }
 -type get_export_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% limit_exceeded_exception() :: #{
 %%   <<"message">> => string(),
@@ -917,17 +1011,20 @@
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% bad_request_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% slot_default_value() :: #{
 %%   <<"defaultValue">> => string()
 %% }
 -type slot_default_value() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_intent_version_response() :: #{
@@ -951,9 +1048,11 @@
 %%   <<"version">> => string()
 %% }
 -type create_intent_version_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_slot_type_request() :: #{}
 -type get_slot_type_request() :: #{}.
+
 
 %% Example:
 %% intent_metadata() :: #{
@@ -965,6 +1064,7 @@
 %% }
 -type intent_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% utterance_data() :: #{
 %%   <<"count">> => integer(),
@@ -974,9 +1074,11 @@
 %%   <<"utteranceString">> => string()
 %% }
 -type utterance_data() :: #{binary() => any()}.
+
 %% Example:
 %% delete_utterances_request() :: #{}
 -type delete_utterances_request() :: #{}.
+
 
 %% Example:
 %% enumeration_value() :: #{
@@ -985,12 +1087,14 @@
 %% }
 -type enumeration_value() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_utterances_view_request() :: #{
 %%   <<"botVersions">> := list(string()()),
 %%   <<"statusType">> := list(any())
 %% }
 -type get_utterances_view_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_bot_alias_response() :: #{
@@ -1006,11 +1110,13 @@
 %% }
 -type put_bot_alias_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% precondition_failed_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type precondition_failed_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% migration_alert() :: #{
@@ -1020,9 +1126,11 @@
 %%   <<"type">> => list(any())
 %% }
 -type migration_alert() :: #{binary() => any()}.
+
 %% Example:
 %% delete_intent_request() :: #{}
 -type delete_intent_request() :: #{}.
+
 
 %% Example:
 %% get_bot_aliases_request() :: #{
@@ -1031,6 +1139,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type get_bot_aliases_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_bot_alias_response() :: #{
@@ -1045,6 +1154,7 @@
 %% }
 -type get_bot_alias_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_import_request() :: #{
 %%   <<"mergeStrategy">> := list(any()),
@@ -1053,6 +1163,7 @@
 %%   <<"tags">> => list(tag()())
 %% }
 -type start_import_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% slot_type_metadata() :: #{
@@ -1063,6 +1174,7 @@
 %%   <<"version">> => string()
 %% }
 -type slot_type_metadata() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_import_response() :: #{
@@ -1076,6 +1188,7 @@
 %% }
 -type start_import_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% prompt() :: #{
 %%   <<"maxAttempts">> => integer(),
@@ -1083,6 +1196,7 @@
 %%   <<"responseCard">> => string()
 %% }
 -type prompt() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_bot_version_response() :: #{
@@ -1106,6 +1220,7 @@
 %% }
 -type create_bot_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% message() :: #{
 %%   <<"content">> => string(),
@@ -1114,6 +1229,7 @@
 %% }
 -type message() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bot_channel_associations_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -1121,6 +1237,279 @@
 %%   <<"nextToken">> => string()
 %% }
 -type get_bot_channel_associations_request() :: #{binary() => any()}.
+
+-type create_bot_version_errors() ::
+    precondition_failed_exception() | 
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type create_intent_version_errors() ::
+    precondition_failed_exception() | 
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type create_slot_type_version_errors() ::
+    precondition_failed_exception() | 
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type delete_bot_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    resource_in_use_exception() | 
+    internal_failure_exception().
+
+-type delete_bot_alias_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    resource_in_use_exception() | 
+    internal_failure_exception().
+
+-type delete_bot_channel_association_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type delete_bot_version_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    resource_in_use_exception() | 
+    internal_failure_exception().
+
+-type delete_intent_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    resource_in_use_exception() | 
+    internal_failure_exception().
+
+-type delete_intent_version_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    resource_in_use_exception() | 
+    internal_failure_exception().
+
+-type delete_slot_type_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    resource_in_use_exception() | 
+    internal_failure_exception().
+
+-type delete_slot_type_version_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    resource_in_use_exception() | 
+    internal_failure_exception().
+
+-type delete_utterances_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type get_bot_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type get_bot_alias_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type get_bot_aliases_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception().
+
+-type get_bot_channel_association_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type get_bot_channel_associations_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception().
+
+-type get_bot_versions_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type get_bots_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type get_builtin_intent_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type get_builtin_intents_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception().
+
+-type get_builtin_slot_types_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception().
+
+-type get_export_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type get_import_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type get_intent_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type get_intent_versions_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type get_intents_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type get_migration_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type get_migrations_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception().
+
+-type get_slot_type_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type get_slot_type_versions_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type get_slot_types_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type get_utterances_view_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception().
+
+-type list_tags_for_resource_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type put_bot_errors() ::
+    precondition_failed_exception() | 
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type put_bot_alias_errors() ::
+    precondition_failed_exception() | 
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type put_intent_errors() ::
+    precondition_failed_exception() | 
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type put_slot_type_errors() ::
+    precondition_failed_exception() | 
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type start_import_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception().
+
+-type start_migration_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    internal_failure_exception().
+
+-type tag_resource_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type untag_resource_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
 
 %%====================================================================
 %% API
@@ -1147,24 +1536,14 @@
 -spec create_bot_version(map(), binary() | list(), create_bot_version_request()) ->
     {ok, create_bot_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()}.
+    {error, create_bot_version_errors(), tuple()}.
 create_bot_version(Client, Name, Input) ->
     create_bot_version(Client, Name, Input, []).
 
 -spec create_bot_version(map(), binary() | list(), create_bot_version_request(), proplists:proplist()) ->
     {ok, create_bot_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()}.
+    {error, create_bot_version_errors(), tuple()}.
 create_bot_version(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(Name), "/versions"],
@@ -1210,24 +1589,14 @@ create_bot_version(Client, Name, Input0, Options0) ->
 -spec create_intent_version(map(), binary() | list(), create_intent_version_request()) ->
     {ok, create_intent_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()}.
+    {error, create_intent_version_errors(), tuple()}.
 create_intent_version(Client, Name, Input) ->
     create_intent_version(Client, Name, Input, []).
 
 -spec create_intent_version(map(), binary() | list(), create_intent_version_request(), proplists:proplist()) ->
     {ok, create_intent_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()}.
+    {error, create_intent_version_errors(), tuple()}.
 create_intent_version(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/intents/", aws_util:encode_uri(Name), "/versions"],
@@ -1272,24 +1641,14 @@ create_intent_version(Client, Name, Input0, Options0) ->
 -spec create_slot_type_version(map(), binary() | list(), create_slot_type_version_request()) ->
     {ok, create_slot_type_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()}.
+    {error, create_slot_type_version_errors(), tuple()}.
 create_slot_type_version(Client, Name, Input) ->
     create_slot_type_version(Client, Name, Input, []).
 
 -spec create_slot_type_version(map(), binary() | list(), create_slot_type_version_request(), proplists:proplist()) ->
     {ok, create_slot_type_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()}.
+    {error, create_slot_type_version_errors(), tuple()}.
 create_slot_type_version(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/slottypes/", aws_util:encode_uri(Name), "/versions"],
@@ -1339,24 +1698,14 @@ create_slot_type_version(Client, Name, Input0, Options0) ->
 -spec delete_bot(map(), binary() | list(), delete_bot_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_bot_errors(), tuple()}.
 delete_bot(Client, Name, Input) ->
     delete_bot(Client, Name, Input, []).
 
 -spec delete_bot(map(), binary() | list(), delete_bot_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_bot_errors(), tuple()}.
 delete_bot(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/bots/", aws_util:encode_uri(Name), ""],
@@ -1392,24 +1741,14 @@ delete_bot(Client, Name, Input0, Options0) ->
 -spec delete_bot_alias(map(), binary() | list(), binary() | list(), delete_bot_alias_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_bot_alias_errors(), tuple()}.
 delete_bot_alias(Client, BotName, Name, Input) ->
     delete_bot_alias(Client, BotName, Name, Input, []).
 
 -spec delete_bot_alias(map(), binary() | list(), binary() | list(), delete_bot_alias_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_bot_alias_errors(), tuple()}.
 delete_bot_alias(Client, BotName, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/bots/", aws_util:encode_uri(BotName), "/aliases/", aws_util:encode_uri(Name), ""],
@@ -1440,22 +1779,14 @@ delete_bot_alias(Client, BotName, Name, Input0, Options0) ->
 -spec delete_bot_channel_association(map(), binary() | list(), binary() | list(), binary() | list(), delete_bot_channel_association_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_bot_channel_association_errors(), tuple()}.
 delete_bot_channel_association(Client, BotAlias, BotName, Name, Input) ->
     delete_bot_channel_association(Client, BotAlias, BotName, Name, Input, []).
 
 -spec delete_bot_channel_association(map(), binary() | list(), binary() | list(), binary() | list(), delete_bot_channel_association_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_bot_channel_association_errors(), tuple()}.
 delete_bot_channel_association(Client, BotAlias, BotName, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/bots/", aws_util:encode_uri(BotName), "/aliases/", aws_util:encode_uri(BotAlias), "/channels/", aws_util:encode_uri(Name), ""],
@@ -1488,24 +1819,14 @@ delete_bot_channel_association(Client, BotAlias, BotName, Name, Input0, Options0
 -spec delete_bot_version(map(), binary() | list(), binary() | list(), delete_bot_version_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_bot_version_errors(), tuple()}.
 delete_bot_version(Client, Name, Version, Input) ->
     delete_bot_version(Client, Name, Version, Input, []).
 
 -spec delete_bot_version(map(), binary() | list(), binary() | list(), delete_bot_version_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_bot_version_errors(), tuple()}.
 delete_bot_version(Client, Name, Version, Input0, Options0) ->
     Method = delete,
     Path = ["/bots/", aws_util:encode_uri(Name), "/versions/", aws_util:encode_uri(Version), ""],
@@ -1551,24 +1872,14 @@ delete_bot_version(Client, Name, Version, Input0, Options0) ->
 -spec delete_intent(map(), binary() | list(), delete_intent_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_intent_errors(), tuple()}.
 delete_intent(Client, Name, Input) ->
     delete_intent(Client, Name, Input, []).
 
 -spec delete_intent(map(), binary() | list(), delete_intent_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_intent_errors(), tuple()}.
 delete_intent(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/intents/", aws_util:encode_uri(Name), ""],
@@ -1601,24 +1912,14 @@ delete_intent(Client, Name, Input0, Options0) ->
 -spec delete_intent_version(map(), binary() | list(), binary() | list(), delete_intent_version_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_intent_version_errors(), tuple()}.
 delete_intent_version(Client, Name, Version, Input) ->
     delete_intent_version(Client, Name, Version, Input, []).
 
 -spec delete_intent_version(map(), binary() | list(), binary() | list(), delete_intent_version_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_intent_version_errors(), tuple()}.
 delete_intent_version(Client, Name, Version, Input0, Options0) ->
     Method = delete,
     Path = ["/intents/", aws_util:encode_uri(Name), "/versions/", aws_util:encode_uri(Version), ""],
@@ -1664,24 +1965,14 @@ delete_intent_version(Client, Name, Version, Input0, Options0) ->
 -spec delete_slot_type(map(), binary() | list(), delete_slot_type_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_slot_type_errors(), tuple()}.
 delete_slot_type(Client, Name, Input) ->
     delete_slot_type(Client, Name, Input, []).
 
 -spec delete_slot_type(map(), binary() | list(), delete_slot_type_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_slot_type_errors(), tuple()}.
 delete_slot_type(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/slottypes/", aws_util:encode_uri(Name), ""],
@@ -1714,24 +2005,14 @@ delete_slot_type(Client, Name, Input0, Options0) ->
 -spec delete_slot_type_version(map(), binary() | list(), binary() | list(), delete_slot_type_version_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_slot_type_version_errors(), tuple()}.
 delete_slot_type_version(Client, Name, Version, Input) ->
     delete_slot_type_version(Client, Name, Version, Input, []).
 
 -spec delete_slot_type_version(map(), binary() | list(), binary() | list(), delete_slot_type_version_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_slot_type_version_errors(), tuple()}.
 delete_slot_type_version(Client, Name, Version, Input0, Options0) ->
     Method = delete,
     Path = ["/slottypes/", aws_util:encode_uri(Name), "/version/", aws_util:encode_uri(Version), ""],
@@ -1773,20 +2054,14 @@ delete_slot_type_version(Client, Name, Version, Input0, Options0) ->
 -spec delete_utterances(map(), binary() | list(), binary() | list(), delete_utterances_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_utterances_errors(), tuple()}.
 delete_utterances(Client, BotName, UserId, Input) ->
     delete_utterances(Client, BotName, UserId, Input, []).
 
 -spec delete_utterances(map(), binary() | list(), binary() | list(), delete_utterances_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_utterances_errors(), tuple()}.
 delete_utterances(Client, BotName, UserId, Input0, Options0) ->
     Method = delete,
     Path = ["/bots/", aws_util:encode_uri(BotName), "/utterances/", aws_util:encode_uri(UserId), ""],
@@ -1819,10 +2094,7 @@ delete_utterances(Client, BotName, UserId, Input0, Options0) ->
 -spec get_bot(map(), binary() | list(), binary() | list()) ->
     {ok, get_bot_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_bot_errors(), tuple()}.
 get_bot(Client, Name, VersionOrAlias)
   when is_map(Client) ->
     get_bot(Client, Name, VersionOrAlias, #{}, #{}).
@@ -1830,10 +2102,7 @@ get_bot(Client, Name, VersionOrAlias)
 -spec get_bot(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_bot_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_bot_errors(), tuple()}.
 get_bot(Client, Name, VersionOrAlias, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bot(Client, Name, VersionOrAlias, QueryMap, HeadersMap, []).
@@ -1841,10 +2110,7 @@ get_bot(Client, Name, VersionOrAlias, QueryMap, HeadersMap)
 -spec get_bot(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bot_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_bot_errors(), tuple()}.
 get_bot(Client, Name, VersionOrAlias, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(Name), "/versions/", aws_util:encode_uri(VersionOrAlias), ""],
@@ -1871,10 +2137,7 @@ get_bot(Client, Name, VersionOrAlias, QueryMap, HeadersMap, Options0)
 -spec get_bot_alias(map(), binary() | list(), binary() | list()) ->
     {ok, get_bot_alias_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_bot_alias_errors(), tuple()}.
 get_bot_alias(Client, BotName, Name)
   when is_map(Client) ->
     get_bot_alias(Client, BotName, Name, #{}, #{}).
@@ -1882,10 +2145,7 @@ get_bot_alias(Client, BotName, Name)
 -spec get_bot_alias(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_bot_alias_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_bot_alias_errors(), tuple()}.
 get_bot_alias(Client, BotName, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bot_alias(Client, BotName, Name, QueryMap, HeadersMap, []).
@@ -1893,10 +2153,7 @@ get_bot_alias(Client, BotName, Name, QueryMap, HeadersMap)
 -spec get_bot_alias(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bot_alias_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_bot_alias_errors(), tuple()}.
 get_bot_alias(Client, BotName, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotName), "/aliases/", aws_util:encode_uri(Name), ""],
@@ -1920,9 +2177,7 @@ get_bot_alias(Client, BotName, Name, QueryMap, HeadersMap, Options0)
 -spec get_bot_aliases(map(), binary() | list()) ->
     {ok, get_bot_aliases_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_bot_aliases_errors(), tuple()}.
 get_bot_aliases(Client, BotName)
   when is_map(Client) ->
     get_bot_aliases(Client, BotName, #{}, #{}).
@@ -1930,9 +2185,7 @@ get_bot_aliases(Client, BotName)
 -spec get_bot_aliases(map(), binary() | list(), map(), map()) ->
     {ok, get_bot_aliases_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_bot_aliases_errors(), tuple()}.
 get_bot_aliases(Client, BotName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bot_aliases(Client, BotName, QueryMap, HeadersMap, []).
@@ -1940,9 +2193,7 @@ get_bot_aliases(Client, BotName, QueryMap, HeadersMap)
 -spec get_bot_aliases(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bot_aliases_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_bot_aliases_errors(), tuple()}.
 get_bot_aliases(Client, BotName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotName), "/aliases"],
@@ -1974,10 +2225,7 @@ get_bot_aliases(Client, BotName, QueryMap, HeadersMap, Options0)
 -spec get_bot_channel_association(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_bot_channel_association_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_bot_channel_association_errors(), tuple()}.
 get_bot_channel_association(Client, BotAlias, BotName, Name)
   when is_map(Client) ->
     get_bot_channel_association(Client, BotAlias, BotName, Name, #{}, #{}).
@@ -1985,10 +2233,7 @@ get_bot_channel_association(Client, BotAlias, BotName, Name)
 -spec get_bot_channel_association(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_bot_channel_association_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_bot_channel_association_errors(), tuple()}.
 get_bot_channel_association(Client, BotAlias, BotName, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bot_channel_association(Client, BotAlias, BotName, Name, QueryMap, HeadersMap, []).
@@ -1996,10 +2241,7 @@ get_bot_channel_association(Client, BotAlias, BotName, Name, QueryMap, HeadersMa
 -spec get_bot_channel_association(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bot_channel_association_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_bot_channel_association_errors(), tuple()}.
 get_bot_channel_association(Client, BotAlias, BotName, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotName), "/aliases/", aws_util:encode_uri(BotAlias), "/channels/", aws_util:encode_uri(Name), ""],
@@ -2025,9 +2267,7 @@ get_bot_channel_association(Client, BotAlias, BotName, Name, QueryMap, HeadersMa
 -spec get_bot_channel_associations(map(), binary() | list(), binary() | list()) ->
     {ok, get_bot_channel_associations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_bot_channel_associations_errors(), tuple()}.
 get_bot_channel_associations(Client, BotAlias, BotName)
   when is_map(Client) ->
     get_bot_channel_associations(Client, BotAlias, BotName, #{}, #{}).
@@ -2035,9 +2275,7 @@ get_bot_channel_associations(Client, BotAlias, BotName)
 -spec get_bot_channel_associations(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_bot_channel_associations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_bot_channel_associations_errors(), tuple()}.
 get_bot_channel_associations(Client, BotAlias, BotName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bot_channel_associations(Client, BotAlias, BotName, QueryMap, HeadersMap, []).
@@ -2045,9 +2283,7 @@ get_bot_channel_associations(Client, BotAlias, BotName, QueryMap, HeadersMap)
 -spec get_bot_channel_associations(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bot_channel_associations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_bot_channel_associations_errors(), tuple()}.
 get_bot_channel_associations(Client, BotAlias, BotName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotName), "/aliases/", aws_util:encode_uri(BotAlias), "/channels"],
@@ -2087,10 +2323,7 @@ get_bot_channel_associations(Client, BotAlias, BotName, QueryMap, HeadersMap, Op
 -spec get_bot_versions(map(), binary() | list()) ->
     {ok, get_bot_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_bot_versions_errors(), tuple()}.
 get_bot_versions(Client, Name)
   when is_map(Client) ->
     get_bot_versions(Client, Name, #{}, #{}).
@@ -2098,10 +2331,7 @@ get_bot_versions(Client, Name)
 -spec get_bot_versions(map(), binary() | list(), map(), map()) ->
     {ok, get_bot_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_bot_versions_errors(), tuple()}.
 get_bot_versions(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bot_versions(Client, Name, QueryMap, HeadersMap, []).
@@ -2109,10 +2339,7 @@ get_bot_versions(Client, Name, QueryMap, HeadersMap)
 -spec get_bot_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bot_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_bot_versions_errors(), tuple()}.
 get_bot_versions(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(Name), "/versions"],
@@ -2149,10 +2376,7 @@ get_bot_versions(Client, Name, QueryMap, HeadersMap, Options0)
 -spec get_bots(map()) ->
     {ok, get_bots_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_bots_errors(), tuple()}.
 get_bots(Client)
   when is_map(Client) ->
     get_bots(Client, #{}, #{}).
@@ -2160,10 +2384,7 @@ get_bots(Client)
 -spec get_bots(map(), map(), map()) ->
     {ok, get_bots_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_bots_errors(), tuple()}.
 get_bots(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bots(Client, QueryMap, HeadersMap, []).
@@ -2171,10 +2392,7 @@ get_bots(Client, QueryMap, HeadersMap)
 -spec get_bots(map(), map(), map(), proplists:proplist()) ->
     {ok, get_bots_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_bots_errors(), tuple()}.
 get_bots(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots"],
@@ -2204,10 +2422,7 @@ get_bots(Client, QueryMap, HeadersMap, Options0)
 -spec get_builtin_intent(map(), binary() | list()) ->
     {ok, get_builtin_intent_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_builtin_intent_errors(), tuple()}.
 get_builtin_intent(Client, Signature)
   when is_map(Client) ->
     get_builtin_intent(Client, Signature, #{}, #{}).
@@ -2215,10 +2430,7 @@ get_builtin_intent(Client, Signature)
 -spec get_builtin_intent(map(), binary() | list(), map(), map()) ->
     {ok, get_builtin_intent_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_builtin_intent_errors(), tuple()}.
 get_builtin_intent(Client, Signature, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_builtin_intent(Client, Signature, QueryMap, HeadersMap, []).
@@ -2226,10 +2438,7 @@ get_builtin_intent(Client, Signature, QueryMap, HeadersMap)
 -spec get_builtin_intent(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_builtin_intent_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_builtin_intent_errors(), tuple()}.
 get_builtin_intent(Client, Signature, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/builtins/intents/", aws_util:encode_uri(Signature), ""],
@@ -2254,9 +2463,7 @@ get_builtin_intent(Client, Signature, QueryMap, HeadersMap, Options0)
 -spec get_builtin_intents(map()) ->
     {ok, get_builtin_intents_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_builtin_intents_errors(), tuple()}.
 get_builtin_intents(Client)
   when is_map(Client) ->
     get_builtin_intents(Client, #{}, #{}).
@@ -2264,9 +2471,7 @@ get_builtin_intents(Client)
 -spec get_builtin_intents(map(), map(), map()) ->
     {ok, get_builtin_intents_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_builtin_intents_errors(), tuple()}.
 get_builtin_intents(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_builtin_intents(Client, QueryMap, HeadersMap, []).
@@ -2274,9 +2479,7 @@ get_builtin_intents(Client, QueryMap, HeadersMap)
 -spec get_builtin_intents(map(), map(), map(), proplists:proplist()) ->
     {ok, get_builtin_intents_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_builtin_intents_errors(), tuple()}.
 get_builtin_intents(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/builtins/intents"],
@@ -2313,9 +2516,7 @@ get_builtin_intents(Client, QueryMap, HeadersMap, Options0)
 -spec get_builtin_slot_types(map()) ->
     {ok, get_builtin_slot_types_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_builtin_slot_types_errors(), tuple()}.
 get_builtin_slot_types(Client)
   when is_map(Client) ->
     get_builtin_slot_types(Client, #{}, #{}).
@@ -2323,9 +2524,7 @@ get_builtin_slot_types(Client)
 -spec get_builtin_slot_types(map(), map(), map()) ->
     {ok, get_builtin_slot_types_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_builtin_slot_types_errors(), tuple()}.
 get_builtin_slot_types(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_builtin_slot_types(Client, QueryMap, HeadersMap, []).
@@ -2333,9 +2532,7 @@ get_builtin_slot_types(Client, QueryMap, HeadersMap)
 -spec get_builtin_slot_types(map(), map(), map(), proplists:proplist()) ->
     {ok, get_builtin_slot_types_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_builtin_slot_types_errors(), tuple()}.
 get_builtin_slot_types(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/builtins/slottypes"],
@@ -2363,10 +2560,7 @@ get_builtin_slot_types(Client, QueryMap, HeadersMap, Options0)
 -spec get_export(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_export_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_export_errors(), tuple()}.
 get_export(Client, ExportType, Name, ResourceType, Version)
   when is_map(Client) ->
     get_export(Client, ExportType, Name, ResourceType, Version, #{}, #{}).
@@ -2374,10 +2568,7 @@ get_export(Client, ExportType, Name, ResourceType, Version)
 -spec get_export(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_export_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_export_errors(), tuple()}.
 get_export(Client, ExportType, Name, ResourceType, Version, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_export(Client, ExportType, Name, ResourceType, Version, QueryMap, HeadersMap, []).
@@ -2385,10 +2576,7 @@ get_export(Client, ExportType, Name, ResourceType, Version, QueryMap, HeadersMap
 -spec get_export(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_export_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_export_errors(), tuple()}.
 get_export(Client, ExportType, Name, ResourceType, Version, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/exports"],
@@ -2417,10 +2605,7 @@ get_export(Client, ExportType, Name, ResourceType, Version, QueryMap, HeadersMap
 -spec get_import(map(), binary() | list()) ->
     {ok, get_import_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_import_errors(), tuple()}.
 get_import(Client, ImportId)
   when is_map(Client) ->
     get_import(Client, ImportId, #{}, #{}).
@@ -2428,10 +2613,7 @@ get_import(Client, ImportId)
 -spec get_import(map(), binary() | list(), map(), map()) ->
     {ok, get_import_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_import_errors(), tuple()}.
 get_import(Client, ImportId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_import(Client, ImportId, QueryMap, HeadersMap, []).
@@ -2439,10 +2621,7 @@ get_import(Client, ImportId, QueryMap, HeadersMap)
 -spec get_import(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_import_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_import_errors(), tuple()}.
 get_import(Client, ImportId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/imports/", aws_util:encode_uri(ImportId), ""],
@@ -2469,10 +2648,7 @@ get_import(Client, ImportId, QueryMap, HeadersMap, Options0)
 -spec get_intent(map(), binary() | list(), binary() | list()) ->
     {ok, get_intent_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_intent_errors(), tuple()}.
 get_intent(Client, Name, Version)
   when is_map(Client) ->
     get_intent(Client, Name, Version, #{}, #{}).
@@ -2480,10 +2656,7 @@ get_intent(Client, Name, Version)
 -spec get_intent(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_intent_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_intent_errors(), tuple()}.
 get_intent(Client, Name, Version, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_intent(Client, Name, Version, QueryMap, HeadersMap, []).
@@ -2491,10 +2664,7 @@ get_intent(Client, Name, Version, QueryMap, HeadersMap)
 -spec get_intent(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_intent_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_intent_errors(), tuple()}.
 get_intent(Client, Name, Version, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/intents/", aws_util:encode_uri(Name), "/versions/", aws_util:encode_uri(Version), ""],
@@ -2528,10 +2698,7 @@ get_intent(Client, Name, Version, QueryMap, HeadersMap, Options0)
 -spec get_intent_versions(map(), binary() | list()) ->
     {ok, get_intent_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_intent_versions_errors(), tuple()}.
 get_intent_versions(Client, Name)
   when is_map(Client) ->
     get_intent_versions(Client, Name, #{}, #{}).
@@ -2539,10 +2706,7 @@ get_intent_versions(Client, Name)
 -spec get_intent_versions(map(), binary() | list(), map(), map()) ->
     {ok, get_intent_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_intent_versions_errors(), tuple()}.
 get_intent_versions(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_intent_versions(Client, Name, QueryMap, HeadersMap, []).
@@ -2550,10 +2714,7 @@ get_intent_versions(Client, Name, QueryMap, HeadersMap)
 -spec get_intent_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_intent_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_intent_versions_errors(), tuple()}.
 get_intent_versions(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/intents/", aws_util:encode_uri(Name), "/versions"],
@@ -2590,10 +2751,7 @@ get_intent_versions(Client, Name, QueryMap, HeadersMap, Options0)
 -spec get_intents(map()) ->
     {ok, get_intents_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_intents_errors(), tuple()}.
 get_intents(Client)
   when is_map(Client) ->
     get_intents(Client, #{}, #{}).
@@ -2601,10 +2759,7 @@ get_intents(Client)
 -spec get_intents(map(), map(), map()) ->
     {ok, get_intents_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_intents_errors(), tuple()}.
 get_intents(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_intents(Client, QueryMap, HeadersMap, []).
@@ -2612,10 +2767,7 @@ get_intents(Client, QueryMap, HeadersMap)
 -spec get_intents(map(), map(), map(), proplists:proplist()) ->
     {ok, get_intents_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_intents_errors(), tuple()}.
 get_intents(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/intents"],
@@ -2646,10 +2798,7 @@ get_intents(Client, QueryMap, HeadersMap, Options0)
 -spec get_migration(map(), binary() | list()) ->
     {ok, get_migration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_migration_errors(), tuple()}.
 get_migration(Client, MigrationId)
   when is_map(Client) ->
     get_migration(Client, MigrationId, #{}, #{}).
@@ -2657,10 +2806,7 @@ get_migration(Client, MigrationId)
 -spec get_migration(map(), binary() | list(), map(), map()) ->
     {ok, get_migration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_migration_errors(), tuple()}.
 get_migration(Client, MigrationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_migration(Client, MigrationId, QueryMap, HeadersMap, []).
@@ -2668,10 +2814,7 @@ get_migration(Client, MigrationId, QueryMap, HeadersMap)
 -spec get_migration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_migration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_migration_errors(), tuple()}.
 get_migration(Client, MigrationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/migrations/", aws_util:encode_uri(MigrationId), ""],
@@ -2692,9 +2835,7 @@ get_migration(Client, MigrationId, QueryMap, HeadersMap, Options0)
 -spec get_migrations(map()) ->
     {ok, get_migrations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_migrations_errors(), tuple()}.
 get_migrations(Client)
   when is_map(Client) ->
     get_migrations(Client, #{}, #{}).
@@ -2702,9 +2843,7 @@ get_migrations(Client)
 -spec get_migrations(map(), map(), map()) ->
     {ok, get_migrations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_migrations_errors(), tuple()}.
 get_migrations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_migrations(Client, QueryMap, HeadersMap, []).
@@ -2712,9 +2851,7 @@ get_migrations(Client, QueryMap, HeadersMap)
 -spec get_migrations(map(), map(), map(), proplists:proplist()) ->
     {ok, get_migrations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_migrations_errors(), tuple()}.
 get_migrations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/migrations"],
@@ -2751,10 +2888,7 @@ get_migrations(Client, QueryMap, HeadersMap, Options0)
 -spec get_slot_type(map(), binary() | list(), binary() | list()) ->
     {ok, get_slot_type_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_slot_type_errors(), tuple()}.
 get_slot_type(Client, Name, Version)
   when is_map(Client) ->
     get_slot_type(Client, Name, Version, #{}, #{}).
@@ -2762,10 +2896,7 @@ get_slot_type(Client, Name, Version)
 -spec get_slot_type(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_slot_type_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_slot_type_errors(), tuple()}.
 get_slot_type(Client, Name, Version, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_slot_type(Client, Name, Version, QueryMap, HeadersMap, []).
@@ -2773,10 +2904,7 @@ get_slot_type(Client, Name, Version, QueryMap, HeadersMap)
 -spec get_slot_type(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_slot_type_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_slot_type_errors(), tuple()}.
 get_slot_type(Client, Name, Version, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/slottypes/", aws_util:encode_uri(Name), "/versions/", aws_util:encode_uri(Version), ""],
@@ -2810,10 +2938,7 @@ get_slot_type(Client, Name, Version, QueryMap, HeadersMap, Options0)
 -spec get_slot_type_versions(map(), binary() | list()) ->
     {ok, get_slot_type_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_slot_type_versions_errors(), tuple()}.
 get_slot_type_versions(Client, Name)
   when is_map(Client) ->
     get_slot_type_versions(Client, Name, #{}, #{}).
@@ -2821,10 +2946,7 @@ get_slot_type_versions(Client, Name)
 -spec get_slot_type_versions(map(), binary() | list(), map(), map()) ->
     {ok, get_slot_type_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_slot_type_versions_errors(), tuple()}.
 get_slot_type_versions(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_slot_type_versions(Client, Name, QueryMap, HeadersMap, []).
@@ -2832,10 +2954,7 @@ get_slot_type_versions(Client, Name, QueryMap, HeadersMap)
 -spec get_slot_type_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_slot_type_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_slot_type_versions_errors(), tuple()}.
 get_slot_type_versions(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/slottypes/", aws_util:encode_uri(Name), "/versions"],
@@ -2872,10 +2991,7 @@ get_slot_type_versions(Client, Name, QueryMap, HeadersMap, Options0)
 -spec get_slot_types(map()) ->
     {ok, get_slot_types_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_slot_types_errors(), tuple()}.
 get_slot_types(Client)
   when is_map(Client) ->
     get_slot_types(Client, #{}, #{}).
@@ -2883,10 +2999,7 @@ get_slot_types(Client)
 -spec get_slot_types(map(), map(), map()) ->
     {ok, get_slot_types_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_slot_types_errors(), tuple()}.
 get_slot_types(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_slot_types(Client, QueryMap, HeadersMap, []).
@@ -2894,10 +3007,7 @@ get_slot_types(Client, QueryMap, HeadersMap)
 -spec get_slot_types(map(), map(), map(), proplists:proplist()) ->
     {ok, get_slot_types_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_slot_types_errors(), tuple()}.
 get_slot_types(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/slottypes"],
@@ -2956,9 +3066,7 @@ get_slot_types(Client, QueryMap, HeadersMap, Options0)
 -spec get_utterances_view(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_utterances_view_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_utterances_view_errors(), tuple()}.
 get_utterances_view(Client, BotName, BotVersions, StatusType)
   when is_map(Client) ->
     get_utterances_view(Client, BotName, BotVersions, StatusType, #{}, #{}).
@@ -2966,9 +3074,7 @@ get_utterances_view(Client, BotName, BotVersions, StatusType)
 -spec get_utterances_view(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_utterances_view_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_utterances_view_errors(), tuple()}.
 get_utterances_view(Client, BotName, BotVersions, StatusType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_utterances_view(Client, BotName, BotVersions, StatusType, QueryMap, HeadersMap, []).
@@ -2976,9 +3082,7 @@ get_utterances_view(Client, BotName, BotVersions, StatusType, QueryMap, HeadersM
 -spec get_utterances_view(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_utterances_view_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, get_utterances_view_errors(), tuple()}.
 get_utterances_view(Client, BotName, BotVersions, StatusType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotName), "/utterances?view=aggregation"],
@@ -3007,10 +3111,7 @@ get_utterances_view(Client, BotName, BotVersions, StatusType, QueryMap, HeadersM
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -3018,10 +3119,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -3029,10 +3127,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -3075,22 +3170,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec put_bot(map(), binary() | list(), put_bot_request()) ->
     {ok, put_bot_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()}.
+    {error, put_bot_errors(), tuple()}.
 put_bot(Client, Name, Input) ->
     put_bot(Client, Name, Input, []).
 
 -spec put_bot(map(), binary() | list(), put_bot_request(), proplists:proplist()) ->
     {ok, put_bot_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()}.
+    {error, put_bot_errors(), tuple()}.
 put_bot(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(Name), "/versions/$LATEST"],
@@ -3125,22 +3212,14 @@ put_bot(Client, Name, Input0, Options0) ->
 -spec put_bot_alias(map(), binary() | list(), binary() | list(), put_bot_alias_request()) ->
     {ok, put_bot_alias_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()}.
+    {error, put_bot_alias_errors(), tuple()}.
 put_bot_alias(Client, BotName, Name, Input) ->
     put_bot_alias(Client, BotName, Name, Input, []).
 
 -spec put_bot_alias(map(), binary() | list(), binary() | list(), put_bot_alias_request(), proplists:proplist()) ->
     {ok, put_bot_alias_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()}.
+    {error, put_bot_alias_errors(), tuple()}.
 put_bot_alias(Client, BotName, Name, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotName), "/aliases/", aws_util:encode_uri(Name), ""],
@@ -3220,22 +3299,14 @@ put_bot_alias(Client, BotName, Name, Input0, Options0) ->
 -spec put_intent(map(), binary() | list(), put_intent_request()) ->
     {ok, put_intent_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()}.
+    {error, put_intent_errors(), tuple()}.
 put_intent(Client, Name, Input) ->
     put_intent(Client, Name, Input, []).
 
 -spec put_intent(map(), binary() | list(), put_intent_request(), proplists:proplist()) ->
     {ok, put_intent_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()}.
+    {error, put_intent_errors(), tuple()}.
 put_intent(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/intents/", aws_util:encode_uri(Name), "/versions/$LATEST"],
@@ -3281,22 +3352,14 @@ put_intent(Client, Name, Input0, Options0) ->
 -spec put_slot_type(map(), binary() | list(), put_slot_type_request()) ->
     {ok, put_slot_type_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()}.
+    {error, put_slot_type_errors(), tuple()}.
 put_slot_type(Client, Name, Input) ->
     put_slot_type(Client, Name, Input, []).
 
 -spec put_slot_type(map(), binary() | list(), put_slot_type_request(), proplists:proplist()) ->
     {ok, put_slot_type_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()}.
+    {error, put_slot_type_errors(), tuple()}.
 put_slot_type(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/slottypes/", aws_util:encode_uri(Name), "/versions/$LATEST"],
@@ -3323,18 +3386,14 @@ put_slot_type(Client, Name, Input0, Options0) ->
 -spec start_import(map(), start_import_request()) ->
     {ok, start_import_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, start_import_errors(), tuple()}.
 start_import(Client, Input) ->
     start_import(Client, Input, []).
 
 -spec start_import(map(), start_import_request(), proplists:proplist()) ->
     {ok, start_import_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, start_import_errors(), tuple()}.
 start_import(Client, Input0, Options0) ->
     Method = post,
     Path = ["/imports"],
@@ -3368,22 +3427,14 @@ start_import(Client, Input0, Options0) ->
 -spec start_migration(map(), start_migration_request()) ->
     {ok, start_migration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, start_migration_errors(), tuple()}.
 start_migration(Client, Input) ->
     start_migration(Client, Input, []).
 
 -spec start_migration(map(), start_migration_request(), proplists:proplist()) ->
     {ok, start_migration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, start_migration_errors(), tuple()}.
 start_migration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/migrations"],
@@ -3413,22 +3464,14 @@ start_migration(Client, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -3455,22 +3498,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],

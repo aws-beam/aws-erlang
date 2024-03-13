@@ -138,6 +138,7 @@
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_data_lake_exceptions_response() :: #{
 %%   <<"exceptions">> => list(data_lake_exception()()),
@@ -145,20 +146,24 @@
 %% }
 -type list_data_lake_exceptions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_aws_log_source_response() :: #{
 %%   <<"failed">> => list(string()())
 %% }
 -type create_aws_log_source_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_subscriber_request() :: #{}
 -type delete_subscriber_request() :: #{}.
+
 
 %% Example:
 %% list_data_lakes_request() :: #{
 %%   <<"regions">> => list(string()())
 %% }
 -type list_data_lakes_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_lake_replication_configuration() :: #{
@@ -167,11 +172,13 @@
 %% }
 -type data_lake_replication_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_custom_log_source_response() :: #{
 %%   <<"source">> => custom_log_source_resource()
 %% }
 -type create_custom_log_source_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% custom_log_source_attributes() :: #{
@@ -180,6 +187,7 @@
 %%   <<"tableArn">> => string()
 %% }
 -type custom_log_source_attributes() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_log_sources_request() :: #{
@@ -190,18 +198,22 @@
 %%   <<"sources">> => list(list()())
 %% }
 -type list_log_sources_request() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 %% Example:
 %% update_data_lake_exception_subscription_response() :: #{}
 -type update_data_lake_exception_subscription_response() :: #{}.
+
 
 %% Example:
 %% update_subscriber_response() :: #{
 %%   <<"subscriber">> => subscriber_resource()
 %% }
 -type update_subscriber_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_data_lake_sources_request() :: #{
@@ -211,6 +223,7 @@
 %% }
 -type get_data_lake_sources_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_data_lake_request() :: #{
 %%   <<"configurations">> := list(data_lake_configuration()()),
@@ -219,6 +232,7 @@
 %% }
 -type create_data_lake_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% custom_log_source_configuration() :: #{
 %%   <<"crawlerConfiguration">> => custom_log_source_crawler_configuration(),
@@ -226,23 +240,28 @@
 %% }
 -type custom_log_source_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_data_lakes_response() :: #{
 %%   <<"dataLakes">> => list(data_lake_resource()())
 %% }
 -type list_data_lakes_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_custom_log_source_response() :: #{}
 -type delete_custom_log_source_response() :: #{}.
+
 
 %% Example:
 %% create_subscriber_response() :: #{
 %%   <<"subscriber">> => subscriber_resource()
 %% }
 -type create_subscriber_response() :: #{binary() => any()}.
+
 %% Example:
 %% create_data_lake_organization_configuration_response() :: #{}
 -type create_data_lake_organization_configuration_response() :: #{}.
+
 
 %% Example:
 %% data_lake_source_status() :: #{
@@ -251,14 +270,17 @@
 %% }
 -type data_lake_source_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 %% Example:
 %% create_data_lake_exception_subscription_response() :: #{}
 -type create_data_lake_exception_subscription_response() :: #{}.
+
 
 %% Example:
 %% update_data_lake_exception_subscription_request() :: #{
@@ -268,6 +290,7 @@
 %% }
 -type update_data_lake_exception_subscription_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_lake_auto_enable_new_account_configuration() :: #{
 %%   <<"region">> => string(),
@@ -275,21 +298,25 @@
 %% }
 -type data_lake_auto_enable_new_account_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_data_lake_request() :: #{
 %%   <<"configurations">> := list(data_lake_configuration()()),
 %%   <<"metaStoreManagerRoleArn">> => string()
 %% }
 -type update_data_lake_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_subscriber_response() :: #{}
 -type delete_subscriber_response() :: #{}.
+
 
 %% Example:
 %% create_aws_log_source_request() :: #{
 %%   <<"sources">> := list(aws_log_source_configuration()())
 %% }
 -type create_aws_log_source_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_data_lake_sources_response() :: #{
@@ -299,6 +326,7 @@
 %% }
 -type get_data_lake_sources_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_log_source_resource() :: #{
 %%   <<"sourceName">> => list(any()),
@@ -306,14 +334,17 @@
 %% }
 -type aws_log_source_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_lake_encryption_configuration() :: #{
 %%   <<"kmsKeyId">> => [string()]
 %% }
 -type data_lake_encryption_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% delete_data_lake_organization_configuration_response() :: #{}
 -type delete_data_lake_organization_configuration_response() :: #{}.
+
 
 %% Example:
 %% update_data_lake_response() :: #{
@@ -321,11 +352,13 @@
 %% }
 -type update_data_lake_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_data_lake_response() :: #{
 %%   <<"dataLakes">> => list(data_lake_resource()())
 %% }
 -type create_data_lake_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -335,6 +368,7 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => [string()],
@@ -342,6 +376,7 @@
 %%   <<"resourceType">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_subscriber_request() :: #{
@@ -352,6 +387,7 @@
 %% }
 -type update_subscriber_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag() :: #{
 %%   <<"key">> => string(),
@@ -359,11 +395,13 @@
 %% }
 -type tag() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_subscriber_response() :: #{
 %%   <<"subscriber">> => subscriber_resource()
 %% }
 -type get_subscriber_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_lake_lifecycle_transition() :: #{
@@ -371,6 +409,7 @@
 %%   <<"storageClass">> => string()
 %% }
 -type data_lake_lifecycle_transition() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_lake_configuration() :: #{
@@ -381,15 +420,18 @@
 %% }
 -type data_lake_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_identity() :: #{
 %%   <<"externalId">> => string(),
 %%   <<"principal">> => string()
 %% }
 -type aws_identity() :: #{binary() => any()}.
+
 %% Example:
 %% delete_subscriber_notification_response() :: #{}
 -type delete_subscriber_notification_response() :: #{}.
+
 
 %% Example:
 %% get_data_lake_exception_subscription_response() :: #{
@@ -399,11 +441,13 @@
 %% }
 -type get_data_lake_exception_subscription_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_subscriber_notification_request() :: #{
 %%   <<"configuration">> := list()
 %% }
 -type update_subscriber_notification_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_data_lake_exception_subscription_request() :: #{
@@ -412,9 +456,11 @@
 %%   <<"subscriptionProtocol">> := string()
 %% }
 -type create_data_lake_exception_subscription_request() :: #{binary() => any()}.
+
 %% Example:
 %% sqs_notification_configuration() :: #{}
 -type sqs_notification_configuration() :: #{}.
+
 
 %% Example:
 %% create_subscriber_notification_request() :: #{
@@ -422,11 +468,13 @@
 %% }
 -type create_subscriber_notification_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => list(tag()())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% subscriber_resource() :: #{
@@ -448,14 +496,17 @@
 %% }
 -type subscriber_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_data_lake_organization_configuration_request() :: #{
 %%   <<"autoEnableNewAccount">> => list(data_lake_auto_enable_new_account_configuration()())
 %% }
 -type create_data_lake_organization_configuration_request() :: #{binary() => any()}.
+
 %% Example:
 %% deregister_data_lake_delegated_administrator_response() :: #{}
 -type deregister_data_lake_delegated_administrator_response() :: #{}.
+
 
 %% Example:
 %% list_data_lake_exceptions_request() :: #{
@@ -464,9 +515,11 @@
 %%   <<"regions">> => list(string()())
 %% }
 -type list_data_lake_exceptions_request() :: #{binary() => any()}.
+
 %% Example:
 %% deregister_data_lake_delegated_administrator_request() :: #{}
 -type deregister_data_lake_delegated_administrator_request() :: #{}.
+
 
 %% Example:
 %% list_subscribers_response() :: #{
@@ -475,11 +528,13 @@
 %% }
 -type list_subscribers_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_data_lake_organization_configuration_request() :: #{
 %%   <<"autoEnableNewAccount">> => list(data_lake_auto_enable_new_account_configuration()())
 %% }
 -type delete_data_lake_organization_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_log_source_configuration() :: #{
@@ -490,11 +545,13 @@
 %% }
 -type aws_log_source_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% custom_log_source_crawler_configuration() :: #{
 %%   <<"roleArn">> => string()
 %% }
 -type custom_log_source_crawler_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_lake_source() :: #{
@@ -504,15 +561,18 @@
 %%   <<"sourceStatuses">> => list(data_lake_source_status()())
 %% }
 -type data_lake_source() :: #{binary() => any()}.
+
 %% Example:
 %% get_subscriber_request() :: #{}
 -type get_subscriber_request() :: #{}.
+
 
 %% Example:
 %% data_lake_lifecycle_expiration() :: #{
 %%   <<"days">> => [integer()]
 %% }
 -type data_lake_lifecycle_expiration() :: #{binary() => any()}.
+
 
 %% Example:
 %% log_source() :: #{
@@ -521,6 +581,7 @@
 %%   <<"sources">> => list(list()())
 %% }
 -type log_source() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_lake_resource() :: #{
@@ -535,11 +596,13 @@
 %% }
 -type data_lake_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_aws_log_source_response() :: #{
@@ -547,15 +610,18 @@
 %% }
 -type delete_aws_log_source_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_lake_lifecycle_configuration() :: #{
 %%   <<"expiration">> => data_lake_lifecycle_expiration(),
 %%   <<"transitions">> => list(data_lake_lifecycle_transition()())
 %% }
 -type data_lake_lifecycle_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% delete_data_lake_response() :: #{}
 -type delete_data_lake_response() :: #{}.
+
 
 %% Example:
 %% access_denied_exception() :: #{
@@ -563,9 +629,11 @@
 %%   <<"message">> => [string()]
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 %% Example:
 %% get_data_lake_organization_configuration_request() :: #{}
 -type get_data_lake_organization_configuration_request() :: #{}.
+
 
 %% Example:
 %% list_log_sources_response() :: #{
@@ -573,9 +641,11 @@
 %%   <<"sources">> => list(log_source()())
 %% }
 -type list_log_sources_response() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% data_lake_update_exception() :: #{
@@ -583,6 +653,7 @@
 %%   <<"reason">> => [string()]
 %% }
 -type data_lake_update_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_custom_log_source_request() :: #{
@@ -593,6 +664,7 @@
 %% }
 -type create_custom_log_source_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% custom_log_source_provider() :: #{
 %%   <<"location">> => string(),
@@ -600,17 +672,21 @@
 %% }
 -type custom_log_source_provider() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_data_lake_request() :: #{
 %%   <<"regions">> := list(string()())
 %% }
 -type delete_data_lake_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_data_lake_exception_subscription_response() :: #{}
 -type delete_data_lake_exception_subscription_response() :: #{}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% throttling_exception() :: #{
@@ -621,6 +697,7 @@
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_lake_exception() :: #{
 %%   <<"exception">> => string(),
@@ -630,26 +707,31 @@
 %% }
 -type data_lake_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_subscriber_notification_response() :: #{
 %%   <<"subscriberEndpoint">> => string()
 %% }
 -type update_subscriber_notification_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_subscriber_notification_response() :: #{
 %%   <<"subscriberEndpoint">> => string()
 %% }
 -type create_subscriber_notification_response() :: #{binary() => any()}.
+
 %% Example:
 %% register_data_lake_delegated_administrator_response() :: #{}
 -type register_data_lake_delegated_administrator_response() :: #{}.
+
 
 %% Example:
 %% delete_custom_log_source_request() :: #{
 %%   <<"sourceVersion">> => string()
 %% }
 -type delete_custom_log_source_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% custom_log_source_resource() :: #{
@@ -660,29 +742,35 @@
 %% }
 -type custom_log_source_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% bad_request_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_data_lake_organization_configuration_response() :: #{
 %%   <<"autoEnableNewAccount">> => list(data_lake_auto_enable_new_account_configuration()())
 %% }
 -type get_data_lake_organization_configuration_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_data_lake_exception_subscription_request() :: #{}
 -type get_data_lake_exception_subscription_request() :: #{}.
+
 
 %% Example:
 %% register_data_lake_delegated_administrator_request() :: #{
 %%   <<"accountId">> := string()
 %% }
 -type register_data_lake_delegated_administrator_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_subscriber_notification_request() :: #{}
 -type delete_subscriber_notification_request() :: #{}.
+
 
 %% Example:
 %% create_subscriber_request() :: #{
@@ -695,11 +783,13 @@
 %% }
 -type create_subscriber_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_aws_log_source_request() :: #{
 %%   <<"sources">> := list(aws_log_source_configuration()())
 %% }
 -type delete_aws_log_source_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_subscribers_request() :: #{
@@ -708,6 +798,7 @@
 %% }
 -type list_subscribers_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_lake_update_status() :: #{
 %%   <<"exception">> => data_lake_update_exception(),
@@ -715,9 +806,11 @@
 %%   <<"status">> => list(any())
 %% }
 -type data_lake_update_status() :: #{binary() => any()}.
+
 %% Example:
 %% delete_data_lake_exception_subscription_request() :: #{}
 -type delete_data_lake_exception_subscription_request() :: #{}.
+
 
 %% Example:
 %% https_notification_configuration() :: #{
@@ -728,6 +821,254 @@
 %%   <<"targetRoleArn">> => string()
 %% }
 -type https_notification_configuration() :: #{binary() => any()}.
+
+-type create_aws_log_source_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_custom_log_source_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_data_lake_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_data_lake_exception_subscription_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_data_lake_organization_configuration_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_subscriber_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_subscriber_notification_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_aws_log_source_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_custom_log_source_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_data_lake_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_data_lake_exception_subscription_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_data_lake_organization_configuration_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_subscriber_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_subscriber_notification_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type deregister_data_lake_delegated_administrator_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_data_lake_exception_subscription_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_data_lake_organization_configuration_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_data_lake_sources_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_subscriber_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_data_lake_exceptions_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_data_lakes_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_log_sources_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_subscribers_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_tags_for_resource_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type register_data_lake_delegated_administrator_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type untag_resource_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_data_lake_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_data_lake_exception_subscription_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_subscriber_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_subscriber_notification_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -753,24 +1094,14 @@
 -spec create_aws_log_source(map(), create_aws_log_source_request()) ->
     {ok, create_aws_log_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_aws_log_source_errors(), tuple()}.
 create_aws_log_source(Client, Input) ->
     create_aws_log_source(Client, Input, []).
 
 -spec create_aws_log_source(map(), create_aws_log_source_request(), proplists:proplist()) ->
     {ok, create_aws_log_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_aws_log_source_errors(), tuple()}.
 create_aws_log_source(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/logsources/aws"],
@@ -809,24 +1140,14 @@ create_aws_log_source(Client, Input0, Options0) ->
 -spec create_custom_log_source(map(), create_custom_log_source_request()) ->
     {ok, create_custom_log_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_custom_log_source_errors(), tuple()}.
 create_custom_log_source(Client, Input) ->
     create_custom_log_source(Client, Input, []).
 
 -spec create_custom_log_source(map(), create_custom_log_source_request(), proplists:proplist()) ->
     {ok, create_custom_log_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_custom_log_source_errors(), tuple()}.
 create_custom_log_source(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/logsources/custom"],
@@ -880,24 +1201,14 @@ create_custom_log_source(Client, Input0, Options0) ->
 -spec create_data_lake(map(), create_data_lake_request()) ->
     {ok, create_data_lake_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_data_lake_errors(), tuple()}.
 create_data_lake(Client, Input) ->
     create_data_lake(Client, Input, []).
 
 -spec create_data_lake(map(), create_data_lake_request(), proplists:proplist()) ->
     {ok, create_data_lake_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_data_lake_errors(), tuple()}.
 create_data_lake(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake"],
@@ -926,24 +1237,14 @@ create_data_lake(Client, Input0, Options0) ->
 -spec create_data_lake_exception_subscription(map(), create_data_lake_exception_subscription_request()) ->
     {ok, create_data_lake_exception_subscription_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_data_lake_exception_subscription_errors(), tuple()}.
 create_data_lake_exception_subscription(Client, Input) ->
     create_data_lake_exception_subscription(Client, Input, []).
 
 -spec create_data_lake_exception_subscription(map(), create_data_lake_exception_subscription_request(), proplists:proplist()) ->
     {ok, create_data_lake_exception_subscription_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_data_lake_exception_subscription_errors(), tuple()}.
 create_data_lake_exception_subscription(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/exceptions/subscription"],
@@ -975,24 +1276,14 @@ create_data_lake_exception_subscription(Client, Input0, Options0) ->
 -spec create_data_lake_organization_configuration(map(), create_data_lake_organization_configuration_request()) ->
     {ok, create_data_lake_organization_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_data_lake_organization_configuration_errors(), tuple()}.
 create_data_lake_organization_configuration(Client, Input) ->
     create_data_lake_organization_configuration(Client, Input, []).
 
 -spec create_data_lake_organization_configuration(map(), create_data_lake_organization_configuration_request(), proplists:proplist()) ->
     {ok, create_data_lake_organization_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_data_lake_organization_configuration_errors(), tuple()}.
 create_data_lake_organization_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/organization/configuration"],
@@ -1024,24 +1315,14 @@ create_data_lake_organization_configuration(Client, Input0, Options0) ->
 -spec create_subscriber(map(), create_subscriber_request()) ->
     {ok, create_subscriber_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_subscriber_errors(), tuple()}.
 create_subscriber(Client, Input) ->
     create_subscriber(Client, Input, []).
 
 -spec create_subscriber(map(), create_subscriber_request(), proplists:proplist()) ->
     {ok, create_subscriber_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_subscriber_errors(), tuple()}.
 create_subscriber(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/subscribers"],
@@ -1073,24 +1354,14 @@ create_subscriber(Client, Input0, Options0) ->
 -spec create_subscriber_notification(map(), binary() | list(), create_subscriber_notification_request()) ->
     {ok, create_subscriber_notification_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_subscriber_notification_errors(), tuple()}.
 create_subscriber_notification(Client, SubscriberId, Input) ->
     create_subscriber_notification(Client, SubscriberId, Input, []).
 
 -spec create_subscriber_notification(map(), binary() | list(), create_subscriber_notification_request(), proplists:proplist()) ->
     {ok, create_subscriber_notification_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_subscriber_notification_errors(), tuple()}.
 create_subscriber_notification(Client, SubscriberId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/subscribers/", aws_util:encode_uri(SubscriberId), "/notification"],
@@ -1131,24 +1402,14 @@ create_subscriber_notification(Client, SubscriberId, Input0, Options0) ->
 -spec delete_aws_log_source(map(), delete_aws_log_source_request()) ->
     {ok, delete_aws_log_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_aws_log_source_errors(), tuple()}.
 delete_aws_log_source(Client, Input) ->
     delete_aws_log_source(Client, Input, []).
 
 -spec delete_aws_log_source(map(), delete_aws_log_source_request(), proplists:proplist()) ->
     {ok, delete_aws_log_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_aws_log_source_errors(), tuple()}.
 delete_aws_log_source(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/logsources/aws/delete"],
@@ -1177,24 +1438,14 @@ delete_aws_log_source(Client, Input0, Options0) ->
 -spec delete_custom_log_source(map(), binary() | list(), delete_custom_log_source_request()) ->
     {ok, delete_custom_log_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_custom_log_source_errors(), tuple()}.
 delete_custom_log_source(Client, SourceName, Input) ->
     delete_custom_log_source(Client, SourceName, Input, []).
 
 -spec delete_custom_log_source(map(), binary() | list(), delete_custom_log_source_request(), proplists:proplist()) ->
     {ok, delete_custom_log_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_custom_log_source_errors(), tuple()}.
 delete_custom_log_source(Client, SourceName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/datalake/logsources/custom/", aws_util:encode_uri(SourceName), ""],
@@ -1239,24 +1490,14 @@ delete_custom_log_source(Client, SourceName, Input0, Options0) ->
 -spec delete_data_lake(map(), delete_data_lake_request()) ->
     {ok, delete_data_lake_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_data_lake_errors(), tuple()}.
 delete_data_lake(Client, Input) ->
     delete_data_lake(Client, Input, []).
 
 -spec delete_data_lake(map(), delete_data_lake_request(), proplists:proplist()) ->
     {ok, delete_data_lake_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_data_lake_errors(), tuple()}.
 delete_data_lake(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/delete"],
@@ -1285,24 +1526,14 @@ delete_data_lake(Client, Input0, Options0) ->
 -spec delete_data_lake_exception_subscription(map(), delete_data_lake_exception_subscription_request()) ->
     {ok, delete_data_lake_exception_subscription_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_data_lake_exception_subscription_errors(), tuple()}.
 delete_data_lake_exception_subscription(Client, Input) ->
     delete_data_lake_exception_subscription(Client, Input, []).
 
 -spec delete_data_lake_exception_subscription(map(), delete_data_lake_exception_subscription_request(), proplists:proplist()) ->
     {ok, delete_data_lake_exception_subscription_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_data_lake_exception_subscription_errors(), tuple()}.
 delete_data_lake_exception_subscription(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/datalake/exceptions/subscription"],
@@ -1336,24 +1567,14 @@ delete_data_lake_exception_subscription(Client, Input0, Options0) ->
 -spec delete_data_lake_organization_configuration(map(), delete_data_lake_organization_configuration_request()) ->
     {ok, delete_data_lake_organization_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_data_lake_organization_configuration_errors(), tuple()}.
 delete_data_lake_organization_configuration(Client, Input) ->
     delete_data_lake_organization_configuration(Client, Input, []).
 
 -spec delete_data_lake_organization_configuration(map(), delete_data_lake_organization_configuration_request(), proplists:proplist()) ->
     {ok, delete_data_lake_organization_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_data_lake_organization_configuration_errors(), tuple()}.
 delete_data_lake_organization_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/organization/configuration/delete"],
@@ -1388,24 +1609,14 @@ delete_data_lake_organization_configuration(Client, Input0, Options0) ->
 -spec delete_subscriber(map(), binary() | list(), delete_subscriber_request()) ->
     {ok, delete_subscriber_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_subscriber_errors(), tuple()}.
 delete_subscriber(Client, SubscriberId, Input) ->
     delete_subscriber(Client, SubscriberId, Input, []).
 
 -spec delete_subscriber(map(), binary() | list(), delete_subscriber_request(), proplists:proplist()) ->
     {ok, delete_subscriber_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_subscriber_errors(), tuple()}.
 delete_subscriber(Client, SubscriberId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/subscribers/", aws_util:encode_uri(SubscriberId), ""],
@@ -1434,24 +1645,14 @@ delete_subscriber(Client, SubscriberId, Input0, Options0) ->
 -spec delete_subscriber_notification(map(), binary() | list(), delete_subscriber_notification_request()) ->
     {ok, delete_subscriber_notification_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_subscriber_notification_errors(), tuple()}.
 delete_subscriber_notification(Client, SubscriberId, Input) ->
     delete_subscriber_notification(Client, SubscriberId, Input, []).
 
 -spec delete_subscriber_notification(map(), binary() | list(), delete_subscriber_notification_request(), proplists:proplist()) ->
     {ok, delete_subscriber_notification_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_subscriber_notification_errors(), tuple()}.
 delete_subscriber_notification(Client, SubscriberId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/subscribers/", aws_util:encode_uri(SubscriberId), "/notification"],
@@ -1484,24 +1685,14 @@ delete_subscriber_notification(Client, SubscriberId, Input0, Options0) ->
 -spec deregister_data_lake_delegated_administrator(map(), deregister_data_lake_delegated_administrator_request()) ->
     {ok, deregister_data_lake_delegated_administrator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, deregister_data_lake_delegated_administrator_errors(), tuple()}.
 deregister_data_lake_delegated_administrator(Client, Input) ->
     deregister_data_lake_delegated_administrator(Client, Input, []).
 
 -spec deregister_data_lake_delegated_administrator(map(), deregister_data_lake_delegated_administrator_request(), proplists:proplist()) ->
     {ok, deregister_data_lake_delegated_administrator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, deregister_data_lake_delegated_administrator_errors(), tuple()}.
 deregister_data_lake_delegated_administrator(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/datalake/delegate"],
@@ -1529,12 +1720,7 @@ deregister_data_lake_delegated_administrator(Client, Input0, Options0) ->
 -spec get_data_lake_exception_subscription(map()) ->
     {ok, get_data_lake_exception_subscription_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_data_lake_exception_subscription_errors(), tuple()}.
 get_data_lake_exception_subscription(Client)
   when is_map(Client) ->
     get_data_lake_exception_subscription(Client, #{}, #{}).
@@ -1542,12 +1728,7 @@ get_data_lake_exception_subscription(Client)
 -spec get_data_lake_exception_subscription(map(), map(), map()) ->
     {ok, get_data_lake_exception_subscription_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_data_lake_exception_subscription_errors(), tuple()}.
 get_data_lake_exception_subscription(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_lake_exception_subscription(Client, QueryMap, HeadersMap, []).
@@ -1555,12 +1736,7 @@ get_data_lake_exception_subscription(Client, QueryMap, HeadersMap)
 -spec get_data_lake_exception_subscription(map(), map(), map(), proplists:proplist()) ->
     {ok, get_data_lake_exception_subscription_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_data_lake_exception_subscription_errors(), tuple()}.
 get_data_lake_exception_subscription(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/datalake/exceptions/subscription"],
@@ -1586,12 +1762,7 @@ get_data_lake_exception_subscription(Client, QueryMap, HeadersMap, Options0)
 -spec get_data_lake_organization_configuration(map()) ->
     {ok, get_data_lake_organization_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_data_lake_organization_configuration_errors(), tuple()}.
 get_data_lake_organization_configuration(Client)
   when is_map(Client) ->
     get_data_lake_organization_configuration(Client, #{}, #{}).
@@ -1599,12 +1770,7 @@ get_data_lake_organization_configuration(Client)
 -spec get_data_lake_organization_configuration(map(), map(), map()) ->
     {ok, get_data_lake_organization_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_data_lake_organization_configuration_errors(), tuple()}.
 get_data_lake_organization_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_lake_organization_configuration(Client, QueryMap, HeadersMap, []).
@@ -1612,12 +1778,7 @@ get_data_lake_organization_configuration(Client, QueryMap, HeadersMap)
 -spec get_data_lake_organization_configuration(map(), map(), map(), proplists:proplist()) ->
     {ok, get_data_lake_organization_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_data_lake_organization_configuration_errors(), tuple()}.
 get_data_lake_organization_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/datalake/organization/configuration"],
@@ -1641,24 +1802,14 @@ get_data_lake_organization_configuration(Client, QueryMap, HeadersMap, Options0)
 -spec get_data_lake_sources(map(), get_data_lake_sources_request()) ->
     {ok, get_data_lake_sources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_data_lake_sources_errors(), tuple()}.
 get_data_lake_sources(Client, Input) ->
     get_data_lake_sources(Client, Input, []).
 
 -spec get_data_lake_sources(map(), get_data_lake_sources_request(), proplists:proplist()) ->
     {ok, get_data_lake_sources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_data_lake_sources_errors(), tuple()}.
 get_data_lake_sources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/sources"],
@@ -1689,12 +1840,7 @@ get_data_lake_sources(Client, Input0, Options0) ->
 -spec get_subscriber(map(), binary() | list()) ->
     {ok, get_subscriber_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_subscriber_errors(), tuple()}.
 get_subscriber(Client, SubscriberId)
   when is_map(Client) ->
     get_subscriber(Client, SubscriberId, #{}, #{}).
@@ -1702,12 +1848,7 @@ get_subscriber(Client, SubscriberId)
 -spec get_subscriber(map(), binary() | list(), map(), map()) ->
     {ok, get_subscriber_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_subscriber_errors(), tuple()}.
 get_subscriber(Client, SubscriberId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_subscriber(Client, SubscriberId, QueryMap, HeadersMap, []).
@@ -1715,12 +1856,7 @@ get_subscriber(Client, SubscriberId, QueryMap, HeadersMap)
 -spec get_subscriber(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_subscriber_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_subscriber_errors(), tuple()}.
 get_subscriber(Client, SubscriberId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/subscribers/", aws_util:encode_uri(SubscriberId), ""],
@@ -1743,24 +1879,14 @@ get_subscriber(Client, SubscriberId, QueryMap, HeadersMap, Options0)
 -spec list_data_lake_exceptions(map(), list_data_lake_exceptions_request()) ->
     {ok, list_data_lake_exceptions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_data_lake_exceptions_errors(), tuple()}.
 list_data_lake_exceptions(Client, Input) ->
     list_data_lake_exceptions(Client, Input, []).
 
 -spec list_data_lake_exceptions(map(), list_data_lake_exceptions_request(), proplists:proplist()) ->
     {ok, list_data_lake_exceptions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_data_lake_exceptions_errors(), tuple()}.
 list_data_lake_exceptions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/exceptions"],
@@ -1791,12 +1917,7 @@ list_data_lake_exceptions(Client, Input0, Options0) ->
 -spec list_data_lakes(map()) ->
     {ok, list_data_lakes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_data_lakes_errors(), tuple()}.
 list_data_lakes(Client)
   when is_map(Client) ->
     list_data_lakes(Client, #{}, #{}).
@@ -1804,12 +1925,7 @@ list_data_lakes(Client)
 -spec list_data_lakes(map(), map(), map()) ->
     {ok, list_data_lakes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_data_lakes_errors(), tuple()}.
 list_data_lakes(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_lakes(Client, QueryMap, HeadersMap, []).
@@ -1817,12 +1933,7 @@ list_data_lakes(Client, QueryMap, HeadersMap)
 -spec list_data_lakes(map(), map(), map(), proplists:proplist()) ->
     {ok, list_data_lakes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_data_lakes_errors(), tuple()}.
 list_data_lakes(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/datalakes"],
@@ -1847,24 +1958,14 @@ list_data_lakes(Client, QueryMap, HeadersMap, Options0)
 -spec list_log_sources(map(), list_log_sources_request()) ->
     {ok, list_log_sources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_log_sources_errors(), tuple()}.
 list_log_sources(Client, Input) ->
     list_log_sources(Client, Input, []).
 
 -spec list_log_sources(map(), list_log_sources_request(), proplists:proplist()) ->
     {ok, list_log_sources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_log_sources_errors(), tuple()}.
 list_log_sources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/logsources/list"],
@@ -1896,12 +1997,7 @@ list_log_sources(Client, Input0, Options0) ->
 -spec list_subscribers(map()) ->
     {ok, list_subscribers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_subscribers_errors(), tuple()}.
 list_subscribers(Client)
   when is_map(Client) ->
     list_subscribers(Client, #{}, #{}).
@@ -1909,12 +2005,7 @@ list_subscribers(Client)
 -spec list_subscribers(map(), map(), map()) ->
     {ok, list_subscribers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_subscribers_errors(), tuple()}.
 list_subscribers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_subscribers(Client, QueryMap, HeadersMap, []).
@@ -1922,12 +2013,7 @@ list_subscribers(Client, QueryMap, HeadersMap)
 -spec list_subscribers(map(), map(), map(), proplists:proplist()) ->
     {ok, list_subscribers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_subscribers_errors(), tuple()}.
 list_subscribers(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/subscribers"],
@@ -1957,12 +2043,7 @@ list_subscribers(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1970,12 +2051,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1983,12 +2059,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2015,24 +2086,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec register_data_lake_delegated_administrator(map(), register_data_lake_delegated_administrator_request()) ->
     {ok, register_data_lake_delegated_administrator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, register_data_lake_delegated_administrator_errors(), tuple()}.
 register_data_lake_delegated_administrator(Client, Input) ->
     register_data_lake_delegated_administrator(Client, Input, []).
 
 -spec register_data_lake_delegated_administrator(map(), register_data_lake_delegated_administrator_request(), proplists:proplist()) ->
     {ok, register_data_lake_delegated_administrator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, register_data_lake_delegated_administrator_errors(), tuple()}.
 register_data_lake_delegated_administrator(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/delegate"],
@@ -2076,24 +2137,14 @@ register_data_lake_delegated_administrator(Client, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2122,24 +2173,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2170,24 +2211,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_data_lake(map(), update_data_lake_request()) ->
     {ok, update_data_lake_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_data_lake_errors(), tuple()}.
 update_data_lake(Client, Input) ->
     update_data_lake(Client, Input, []).
 
 -spec update_data_lake(map(), update_data_lake_request(), proplists:proplist()) ->
     {ok, update_data_lake_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_data_lake_errors(), tuple()}.
 update_data_lake(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v1/datalake"],
@@ -2216,24 +2247,14 @@ update_data_lake(Client, Input0, Options0) ->
 -spec update_data_lake_exception_subscription(map(), update_data_lake_exception_subscription_request()) ->
     {ok, update_data_lake_exception_subscription_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_data_lake_exception_subscription_errors(), tuple()}.
 update_data_lake_exception_subscription(Client, Input) ->
     update_data_lake_exception_subscription(Client, Input, []).
 
 -spec update_data_lake_exception_subscription(map(), update_data_lake_exception_subscription_request(), proplists:proplist()) ->
     {ok, update_data_lake_exception_subscription_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_data_lake_exception_subscription_errors(), tuple()}.
 update_data_lake_exception_subscription(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v1/datalake/exceptions/subscription"],
@@ -2265,24 +2286,14 @@ update_data_lake_exception_subscription(Client, Input0, Options0) ->
 -spec update_subscriber(map(), binary() | list(), update_subscriber_request()) ->
     {ok, update_subscriber_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_subscriber_errors(), tuple()}.
 update_subscriber(Client, SubscriberId, Input) ->
     update_subscriber(Client, SubscriberId, Input, []).
 
 -spec update_subscriber(map(), binary() | list(), update_subscriber_request(), proplists:proplist()) ->
     {ok, update_subscriber_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_subscriber_errors(), tuple()}.
 update_subscriber(Client, SubscriberId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/subscribers/", aws_util:encode_uri(SubscriberId), ""],
@@ -2311,24 +2322,14 @@ update_subscriber(Client, SubscriberId, Input0, Options0) ->
 -spec update_subscriber_notification(map(), binary() | list(), update_subscriber_notification_request()) ->
     {ok, update_subscriber_notification_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_subscriber_notification_errors(), tuple()}.
 update_subscriber_notification(Client, SubscriberId, Input) ->
     update_subscriber_notification(Client, SubscriberId, Input, []).
 
 -spec update_subscriber_notification(map(), binary() | list(), update_subscriber_notification_request(), proplists:proplist()) ->
     {ok, update_subscriber_notification_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_subscriber_notification_errors(), tuple()}.
 update_subscriber_notification(Client, SubscriberId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/subscribers/", aws_util:encode_uri(SubscriberId), "/notification"],

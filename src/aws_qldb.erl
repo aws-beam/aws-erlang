@@ -63,6 +63,7 @@
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_revision_response() :: #{
 %%   <<"Proof">> => value_holder(),
@@ -70,12 +71,14 @@
 %% }
 -type get_revision_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_journal_s3_exports_for_ledger_response() :: #{
 %%   <<"JournalS3Exports">> => list(journal_s3_export_description()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_journal_s3_exports_for_ledger_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% export_journal_to_s3_request() :: #{
@@ -86,9 +89,11 @@
 %%   <<"S3ExportConfiguration">> := s3_export_configuration()
 %% }
 -type export_journal_to_s3_request() :: #{binary() => any()}.
+
 %% Example:
 %% cancel_journal_kinesis_stream_request() :: #{}
 -type cancel_journal_kinesis_stream_request() :: #{}.
+
 
 %% Example:
 %% list_journal_kinesis_streams_for_ledger_request() :: #{
@@ -97,6 +102,7 @@
 %% }
 -type list_journal_kinesis_streams_for_ledger_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_precondition_not_met_exception() :: #{
 %%   <<"Message">> => string(),
@@ -104,6 +110,7 @@
 %%   <<"ResourceType">> => string()
 %% }
 -type resource_precondition_not_met_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_ledger_response() :: #{
@@ -116,9 +123,11 @@
 %%   <<"State">> => list(any())
 %% }
 -type describe_ledger_response() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% journal_kinesis_stream_description() :: #{
@@ -136,6 +145,7 @@
 %% }
 -type journal_kinesis_stream_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_in_use_exception() :: #{
 %%   <<"Message">> => string(),
@@ -143,6 +153,7 @@
 %%   <<"ResourceType">> => string()
 %% }
 -type resource_in_use_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_revision_request() :: #{
@@ -152,6 +163,7 @@
 %% }
 -type get_revision_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_block_request() :: #{
 %%   <<"BlockAddress">> := value_holder(),
@@ -159,12 +171,14 @@
 %% }
 -type get_block_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_encryption_configuration() :: #{
 %%   <<"KmsKeyArn">> => string(),
 %%   <<"ObjectEncryptionType">> => list(any())
 %% }
 -type s3_encryption_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% ledger_summary() :: #{
@@ -174,15 +188,18 @@
 %% }
 -type ledger_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_ledgers_response() :: #{
 %%   <<"Ledgers">> => list(ledger_summary()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_ledgers_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_digest_request() :: #{}
 -type get_digest_request() :: #{}.
+
 
 %% Example:
 %% update_ledger_request() :: #{
@@ -191,11 +208,13 @@
 %% }
 -type update_ledger_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% journal_s3_export_description() :: #{
@@ -211,6 +230,7 @@
 %% }
 -type journal_s3_export_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_ledger_response() :: #{
 %%   <<"Arn">> => string(),
@@ -223,6 +243,7 @@
 %% }
 -type create_ledger_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_journal_kinesis_streams_for_ledger_response() :: #{
 %%   <<"NextToken">> => string(),
@@ -230,12 +251,14 @@
 %% }
 -type list_journal_kinesis_streams_for_ledger_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_digest_response() :: #{
 %%   <<"Digest">> => binary(),
 %%   <<"DigestTipAddress">> => value_holder()
 %% }
 -type get_digest_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% stream_journal_to_kinesis_request() :: #{
@@ -247,9 +270,11 @@
 %%   <<"Tags">> => map()
 %% }
 -type stream_journal_to_kinesis_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_ledger_request() :: #{}
 -type delete_ledger_request() :: #{}.
+
 
 %% Example:
 %% s3_export_configuration() :: #{
@@ -259,11 +284,13 @@
 %% }
 -type s3_export_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% cancel_journal_kinesis_stream_response() :: #{
 %%   <<"StreamId">> => string()
 %% }
 -type cancel_journal_kinesis_stream_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -272,6 +299,7 @@
 %%   <<"ResourceType">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_ledger_response() :: #{
@@ -284,12 +312,14 @@
 %% }
 -type update_ledger_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% kinesis_configuration() :: #{
 %%   <<"AggregationEnabled">> => boolean(),
 %%   <<"StreamArn">> => string()
 %% }
 -type kinesis_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_ledger_permissions_mode_response() :: #{
@@ -299,6 +329,7 @@
 %% }
 -type update_ledger_permissions_mode_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_journal_s3_exports_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -306,17 +337,20 @@
 %% }
 -type list_journal_s3_exports_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_journal_s3_export_response() :: #{
 %%   <<"ExportDescription">> => journal_s3_export_description()
 %% }
 -type describe_journal_s3_export_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_block_response() :: #{
@@ -325,12 +359,14 @@
 %% }
 -type get_block_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_journal_s3_exports_for_ledger_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_journal_s3_exports_for_ledger_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_journal_s3_exports_response() :: #{
@@ -339,11 +375,13 @@
 %% }
 -type list_journal_s3_exports_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% value_holder() :: #{
 %%   <<"IonText">> => string()
 %% }
 -type value_holder() :: #{binary() => any()}.
+
 
 %% Example:
 %% stream_journal_to_kinesis_response() :: #{
@@ -351,18 +389,22 @@
 %% }
 -type stream_journal_to_kinesis_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_parameter_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"ParameterName">> => string()
 %% }
 -type invalid_parameter_exception() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% create_ledger_request() :: #{
@@ -374,23 +416,28 @@
 %% }
 -type create_ledger_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% export_journal_to_s3_response() :: #{
 %%   <<"ExportId">> => string()
 %% }
 -type export_journal_to_s3_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_journal_kinesis_stream_response() :: #{
 %%   <<"Stream">> => journal_kinesis_stream_description()
 %% }
 -type describe_journal_kinesis_stream_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_ledger_request() :: #{}
 -type describe_ledger_request() :: #{}.
+
 %% Example:
 %% describe_journal_s3_export_request() :: #{}
 -type describe_journal_s3_export_request() :: #{}.
+
 
 %% Example:
 %% limit_exceeded_exception() :: #{
@@ -399,11 +446,13 @@
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_ledger_permissions_mode_request() :: #{
 %%   <<"PermissionsMode">> := list(any())
 %% }
 -type update_ledger_permissions_mode_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_already_exists_exception() :: #{
@@ -413,6 +462,7 @@
 %% }
 -type resource_already_exists_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% ledger_encryption_description() :: #{
 %%   <<"EncryptionStatus">> => list(any()),
@@ -420,9 +470,11 @@
 %%   <<"KmsKeyArn">> => string()
 %% }
 -type ledger_encryption_description() :: #{binary() => any()}.
+
 %% Example:
 %% describe_journal_kinesis_stream_request() :: #{}
 -type describe_journal_kinesis_stream_request() :: #{}.
+
 
 %% Example:
 %% list_ledgers_request() :: #{
@@ -430,6 +482,84 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_ledgers_request() :: #{binary() => any()}.
+
+-type cancel_journal_kinesis_stream_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    resource_precondition_not_met_exception().
+
+-type create_ledger_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    resource_in_use_exception().
+
+-type delete_ledger_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    resource_precondition_not_met_exception().
+
+-type describe_journal_kinesis_stream_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    resource_precondition_not_met_exception().
+
+-type describe_journal_s3_export_errors() ::
+    resource_not_found_exception().
+
+-type describe_ledger_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception().
+
+-type export_journal_to_s3_errors() ::
+    resource_not_found_exception() | 
+    resource_precondition_not_met_exception().
+
+-type get_block_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    resource_precondition_not_met_exception().
+
+-type get_digest_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    resource_precondition_not_met_exception().
+
+-type get_revision_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    resource_precondition_not_met_exception().
+
+-type list_journal_kinesis_streams_for_ledger_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    resource_precondition_not_met_exception().
+
+-type list_tags_for_resource_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception().
+
+-type stream_journal_to_kinesis_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    resource_precondition_not_met_exception().
+
+-type tag_resource_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception().
+
+-type update_ledger_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception().
+
+-type update_ledger_permissions_mode_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -448,18 +578,14 @@
 -spec cancel_journal_kinesis_stream(map(), binary() | list(), binary() | list(), cancel_journal_kinesis_stream_request()) ->
     {ok, cancel_journal_kinesis_stream_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_precondition_not_met_exception(), tuple()}.
+    {error, cancel_journal_kinesis_stream_errors(), tuple()}.
 cancel_journal_kinesis_stream(Client, LedgerName, StreamId, Input) ->
     cancel_journal_kinesis_stream(Client, LedgerName, StreamId, Input, []).
 
 -spec cancel_journal_kinesis_stream(map(), binary() | list(), binary() | list(), cancel_journal_kinesis_stream_request(), proplists:proplist()) ->
     {ok, cancel_journal_kinesis_stream_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_precondition_not_met_exception(), tuple()}.
+    {error, cancel_journal_kinesis_stream_errors(), tuple()}.
 cancel_journal_kinesis_stream(Client, LedgerName, StreamId, Input0, Options0) ->
     Method = delete,
     Path = ["/ledgers/", aws_util:encode_uri(LedgerName), "/journal-kinesis-streams/", aws_util:encode_uri(StreamId), ""],
@@ -487,20 +613,14 @@ cancel_journal_kinesis_stream(Client, LedgerName, StreamId, Input0, Options0) ->
 -spec create_ledger(map(), create_ledger_request()) ->
     {ok, create_ledger_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, create_ledger_errors(), tuple()}.
 create_ledger(Client, Input) ->
     create_ledger(Client, Input, []).
 
 -spec create_ledger(map(), create_ledger_request(), proplists:proplist()) ->
     {ok, create_ledger_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, create_ledger_errors(), tuple()}.
 create_ledger(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ledgers"],
@@ -534,20 +654,14 @@ create_ledger(Client, Input0, Options0) ->
 -spec delete_ledger(map(), binary() | list(), delete_ledger_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_precondition_not_met_exception(), tuple()}.
+    {error, delete_ledger_errors(), tuple()}.
 delete_ledger(Client, Name, Input) ->
     delete_ledger(Client, Name, Input, []).
 
 -spec delete_ledger(map(), binary() | list(), delete_ledger_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_precondition_not_met_exception(), tuple()}.
+    {error, delete_ledger_errors(), tuple()}.
 delete_ledger(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/ledgers/", aws_util:encode_uri(Name), ""],
@@ -587,9 +701,7 @@ delete_ledger(Client, Name, Input0, Options0) ->
 -spec describe_journal_kinesis_stream(map(), binary() | list(), binary() | list()) ->
     {ok, describe_journal_kinesis_stream_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_precondition_not_met_exception(), tuple()}.
+    {error, describe_journal_kinesis_stream_errors(), tuple()}.
 describe_journal_kinesis_stream(Client, LedgerName, StreamId)
   when is_map(Client) ->
     describe_journal_kinesis_stream(Client, LedgerName, StreamId, #{}, #{}).
@@ -597,9 +709,7 @@ describe_journal_kinesis_stream(Client, LedgerName, StreamId)
 -spec describe_journal_kinesis_stream(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_journal_kinesis_stream_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_precondition_not_met_exception(), tuple()}.
+    {error, describe_journal_kinesis_stream_errors(), tuple()}.
 describe_journal_kinesis_stream(Client, LedgerName, StreamId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_journal_kinesis_stream(Client, LedgerName, StreamId, QueryMap, HeadersMap, []).
@@ -607,9 +717,7 @@ describe_journal_kinesis_stream(Client, LedgerName, StreamId, QueryMap, HeadersM
 -spec describe_journal_kinesis_stream(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_journal_kinesis_stream_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_precondition_not_met_exception(), tuple()}.
+    {error, describe_journal_kinesis_stream_errors(), tuple()}.
 describe_journal_kinesis_stream(Client, LedgerName, StreamId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ledgers/", aws_util:encode_uri(LedgerName), "/journal-kinesis-streams/", aws_util:encode_uri(StreamId), ""],
@@ -647,7 +755,7 @@ describe_journal_kinesis_stream(Client, LedgerName, StreamId, QueryMap, HeadersM
 -spec describe_journal_s3_export(map(), binary() | list(), binary() | list()) ->
     {ok, describe_journal_s3_export_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_journal_s3_export_errors(), tuple()}.
 describe_journal_s3_export(Client, ExportId, Name)
   when is_map(Client) ->
     describe_journal_s3_export(Client, ExportId, Name, #{}, #{}).
@@ -655,7 +763,7 @@ describe_journal_s3_export(Client, ExportId, Name)
 -spec describe_journal_s3_export(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_journal_s3_export_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_journal_s3_export_errors(), tuple()}.
 describe_journal_s3_export(Client, ExportId, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_journal_s3_export(Client, ExportId, Name, QueryMap, HeadersMap, []).
@@ -663,7 +771,7 @@ describe_journal_s3_export(Client, ExportId, Name, QueryMap, HeadersMap)
 -spec describe_journal_s3_export(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_journal_s3_export_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_journal_s3_export_errors(), tuple()}.
 describe_journal_s3_export(Client, ExportId, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ledgers/", aws_util:encode_uri(Name), "/journal-s3-exports/", aws_util:encode_uri(ExportId), ""],
@@ -686,8 +794,7 @@ describe_journal_s3_export(Client, ExportId, Name, QueryMap, HeadersMap, Options
 -spec describe_ledger(map(), binary() | list()) ->
     {ok, describe_ledger_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_ledger_errors(), tuple()}.
 describe_ledger(Client, Name)
   when is_map(Client) ->
     describe_ledger(Client, Name, #{}, #{}).
@@ -695,8 +802,7 @@ describe_ledger(Client, Name)
 -spec describe_ledger(map(), binary() | list(), map(), map()) ->
     {ok, describe_ledger_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_ledger_errors(), tuple()}.
 describe_ledger(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_ledger(Client, Name, QueryMap, HeadersMap, []).
@@ -704,8 +810,7 @@ describe_ledger(Client, Name, QueryMap, HeadersMap)
 -spec describe_ledger(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_ledger_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_ledger_errors(), tuple()}.
 describe_ledger(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ledgers/", aws_util:encode_uri(Name), ""],
@@ -742,16 +847,14 @@ describe_ledger(Client, Name, QueryMap, HeadersMap, Options0)
 -spec export_journal_to_s3(map(), binary() | list(), export_journal_to_s3_request()) ->
     {ok, export_journal_to_s3_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_precondition_not_met_exception(), tuple()}.
+    {error, export_journal_to_s3_errors(), tuple()}.
 export_journal_to_s3(Client, Name, Input) ->
     export_journal_to_s3(Client, Name, Input, []).
 
 -spec export_journal_to_s3(map(), binary() | list(), export_journal_to_s3_request(), proplists:proplist()) ->
     {ok, export_journal_to_s3_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_precondition_not_met_exception(), tuple()}.
+    {error, export_journal_to_s3_errors(), tuple()}.
 export_journal_to_s3(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/ledgers/", aws_util:encode_uri(Name), "/journal-s3-exports"],
@@ -796,18 +899,14 @@ export_journal_to_s3(Client, Name, Input0, Options0) ->
 -spec get_block(map(), binary() | list(), get_block_request()) ->
     {ok, get_block_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_precondition_not_met_exception(), tuple()}.
+    {error, get_block_errors(), tuple()}.
 get_block(Client, Name, Input) ->
     get_block(Client, Name, Input, []).
 
 -spec get_block(map(), binary() | list(), get_block_request(), proplists:proplist()) ->
     {ok, get_block_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_precondition_not_met_exception(), tuple()}.
+    {error, get_block_errors(), tuple()}.
 get_block(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/ledgers/", aws_util:encode_uri(Name), "/block"],
@@ -838,18 +937,14 @@ get_block(Client, Name, Input0, Options0) ->
 -spec get_digest(map(), binary() | list(), get_digest_request()) ->
     {ok, get_digest_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_precondition_not_met_exception(), tuple()}.
+    {error, get_digest_errors(), tuple()}.
 get_digest(Client, Name, Input) ->
     get_digest(Client, Name, Input, []).
 
 -spec get_digest(map(), binary() | list(), get_digest_request(), proplists:proplist()) ->
     {ok, get_digest_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_precondition_not_met_exception(), tuple()}.
+    {error, get_digest_errors(), tuple()}.
 get_digest(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/ledgers/", aws_util:encode_uri(Name), "/digest"],
@@ -882,18 +977,14 @@ get_digest(Client, Name, Input0, Options0) ->
 -spec get_revision(map(), binary() | list(), get_revision_request()) ->
     {ok, get_revision_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_precondition_not_met_exception(), tuple()}.
+    {error, get_revision_errors(), tuple()}.
 get_revision(Client, Name, Input) ->
     get_revision(Client, Name, Input, []).
 
 -spec get_revision(map(), binary() | list(), get_revision_request(), proplists:proplist()) ->
     {ok, get_revision_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_precondition_not_met_exception(), tuple()}.
+    {error, get_revision_errors(), tuple()}.
 get_revision(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/ledgers/", aws_util:encode_uri(Name), "/revision"],
@@ -933,9 +1024,7 @@ get_revision(Client, Name, Input0, Options0) ->
 -spec list_journal_kinesis_streams_for_ledger(map(), binary() | list()) ->
     {ok, list_journal_kinesis_streams_for_ledger_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_precondition_not_met_exception(), tuple()}.
+    {error, list_journal_kinesis_streams_for_ledger_errors(), tuple()}.
 list_journal_kinesis_streams_for_ledger(Client, LedgerName)
   when is_map(Client) ->
     list_journal_kinesis_streams_for_ledger(Client, LedgerName, #{}, #{}).
@@ -943,9 +1032,7 @@ list_journal_kinesis_streams_for_ledger(Client, LedgerName)
 -spec list_journal_kinesis_streams_for_ledger(map(), binary() | list(), map(), map()) ->
     {ok, list_journal_kinesis_streams_for_ledger_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_precondition_not_met_exception(), tuple()}.
+    {error, list_journal_kinesis_streams_for_ledger_errors(), tuple()}.
 list_journal_kinesis_streams_for_ledger(Client, LedgerName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_journal_kinesis_streams_for_ledger(Client, LedgerName, QueryMap, HeadersMap, []).
@@ -953,9 +1040,7 @@ list_journal_kinesis_streams_for_ledger(Client, LedgerName, QueryMap, HeadersMap
 -spec list_journal_kinesis_streams_for_ledger(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_journal_kinesis_streams_for_ledger_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_precondition_not_met_exception(), tuple()}.
+    {error, list_journal_kinesis_streams_for_ledger_errors(), tuple()}.
 list_journal_kinesis_streams_for_ledger(Client, LedgerName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ledgers/", aws_util:encode_uri(LedgerName), "/journal-kinesis-streams"],
@@ -1131,8 +1216,7 @@ list_ledgers(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1140,8 +1224,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1149,8 +1232,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1176,18 +1258,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec stream_journal_to_kinesis(map(), binary() | list(), stream_journal_to_kinesis_request()) ->
     {ok, stream_journal_to_kinesis_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_precondition_not_met_exception(), tuple()}.
+    {error, stream_journal_to_kinesis_errors(), tuple()}.
 stream_journal_to_kinesis(Client, LedgerName, Input) ->
     stream_journal_to_kinesis(Client, LedgerName, Input, []).
 
 -spec stream_journal_to_kinesis(map(), binary() | list(), stream_journal_to_kinesis_request(), proplists:proplist()) ->
     {ok, stream_journal_to_kinesis_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_precondition_not_met_exception(), tuple()}.
+    {error, stream_journal_to_kinesis_errors(), tuple()}.
 stream_journal_to_kinesis(Client, LedgerName, Input0, Options0) ->
     Method = post,
     Path = ["/ledgers/", aws_util:encode_uri(LedgerName), "/journal-kinesis-streams"],
@@ -1218,16 +1296,14 @@ stream_journal_to_kinesis(Client, LedgerName, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1257,16 +1333,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1294,16 +1368,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_ledger(map(), binary() | list(), update_ledger_request()) ->
     {ok, update_ledger_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_ledger_errors(), tuple()}.
 update_ledger(Client, Name, Input) ->
     update_ledger(Client, Name, Input, []).
 
 -spec update_ledger(map(), binary() | list(), update_ledger_request(), proplists:proplist()) ->
     {ok, update_ledger_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_ledger_errors(), tuple()}.
 update_ledger(Client, Name, Input0, Options0) ->
     Method = patch,
     Path = ["/ledgers/", aws_util:encode_uri(Name), ""],
@@ -1338,16 +1410,14 @@ update_ledger(Client, Name, Input0, Options0) ->
 -spec update_ledger_permissions_mode(map(), binary() | list(), update_ledger_permissions_mode_request()) ->
     {ok, update_ledger_permissions_mode_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_ledger_permissions_mode_errors(), tuple()}.
 update_ledger_permissions_mode(Client, Name, Input) ->
     update_ledger_permissions_mode(Client, Name, Input, []).
 
 -spec update_ledger_permissions_mode(map(), binary() | list(), update_ledger_permissions_mode_request(), proplists:proplist()) ->
     {ok, update_ledger_permissions_mode_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_ledger_permissions_mode_errors(), tuple()}.
 update_ledger_permissions_mode(Client, Name, Input0, Options0) ->
     Method = patch,
     Path = ["/ledgers/", aws_util:encode_uri(Name), "/permissions-mode"],

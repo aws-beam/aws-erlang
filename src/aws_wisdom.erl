@@ -123,11 +123,13 @@
 %% }
 -type start_content_upload_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_knowledge_base_template_uri_request() :: #{
 %%   <<"templateUri">> := string()
 %% }
 -type update_knowledge_base_template_uri_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% query_assistant_response() :: #{
@@ -136,11 +138,13 @@
 %% }
 -type query_assistant_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% session_summary() :: #{
@@ -151,17 +155,20 @@
 %% }
 -type session_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_quick_response_response() :: #{
 %%   <<"quickResponse">> => quick_response_data()
 %% }
 -type create_quick_response_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_session_response() :: #{
 %%   <<"session">> => session_data()
 %% }
 -type get_session_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_quick_responses_request() :: #{
@@ -171,9 +178,11 @@
 %%   <<"searchExpression">> := quick_response_search_expression()
 %% }
 -type search_quick_responses_request() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% quick_response_search_expression() :: #{
@@ -183,12 +192,14 @@
 %% }
 -type quick_response_search_expression() :: #{binary() => any()}.
 
+
 %% Example:
 %% highlight() :: #{
 %%   <<"beginOffsetInclusive">> => integer(),
 %%   <<"endOffsetExclusive">> => integer()
 %% }
 -type highlight() :: #{binary() => any()}.
+
 
 %% Example:
 %% app_integrations_configuration() :: #{
@@ -197,12 +208,14 @@
 %% }
 -type app_integrations_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_contents_response() :: #{
 %%   <<"contentSummaries">> := list(content_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_contents_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% quick_response_filter_field() :: #{
@@ -213,12 +226,14 @@
 %% }
 -type quick_response_filter_field() :: #{binary() => any()}.
 
+
 %% Example:
 %% external_source_configuration() :: #{
 %%   <<"configuration">> => list(),
 %%   <<"source">> => string()
 %% }
 -type external_source_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% recommendation_data() :: #{
@@ -230,18 +245,22 @@
 %% }
 -type recommendation_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_contents_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_contents_request() :: #{binary() => any()}.
+
 %% Example:
 %% remove_knowledge_base_template_uri_response() :: #{}
 -type remove_knowledge_base_template_uri_response() :: #{}.
+
 %% Example:
 %% delete_assistant_association_request() :: #{}
 -type delete_assistant_association_request() :: #{}.
+
 
 %% Example:
 %% get_content_summary_response() :: #{
@@ -249,14 +268,17 @@
 %% }
 -type get_content_summary_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% assistant_integration_configuration() :: #{
 %%   <<"topicIntegrationArn">> => string()
 %% }
 -type assistant_integration_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% delete_knowledge_base_response() :: #{}
 -type delete_knowledge_base_response() :: #{}.
+
 
 %% Example:
 %% create_content_response() :: #{
@@ -264,11 +286,13 @@
 %% }
 -type create_content_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_assistant_response() :: #{
 %%   <<"assistant">> => assistant_data()
 %% }
 -type get_assistant_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_recommendations_response() :: #{
@@ -277,11 +301,13 @@
 %% }
 -type get_recommendations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% request_timeout_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type request_timeout_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_import_job_request() :: #{
@@ -293,11 +319,13 @@
 %% }
 -type start_import_job_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_knowledge_base_response() :: #{
 %%   <<"knowledgeBase">> => knowledge_base_data()
 %% }
 -type create_knowledge_base_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% untag_resource_request() :: #{
@@ -305,11 +333,13 @@
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_assistant_association_response() :: #{
 %%   <<"assistantAssociation">> => assistant_association_data()
 %% }
 -type get_assistant_association_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_quick_response_request() :: #{
@@ -327,11 +357,13 @@
 %% }
 -type create_quick_response_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% connect_configuration() :: #{
 %%   <<"instanceId">> => string()
 %% }
 -type connect_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_content_response() :: #{
@@ -339,9 +371,11 @@
 %%   <<"nextToken">> => string()
 %% }
 -type search_content_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_session_request() :: #{}
 -type get_session_request() :: #{}.
+
 
 %% Example:
 %% list_quick_responses_request() :: #{
@@ -350,15 +384,18 @@
 %% }
 -type list_quick_responses_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_content_upload_request() :: #{
 %%   <<"contentType">> := string(),
 %%   <<"presignedUrlTimeToLive">> => integer()
 %% }
 -type start_content_upload_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_assistant_request() :: #{}
 -type delete_assistant_request() :: #{}.
+
 
 %% Example:
 %% create_session_request() :: #{
@@ -369,11 +406,13 @@
 %% }
 -type create_session_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_knowledge_base_template_uri_response() :: #{
 %%   <<"knowledgeBase">> => knowledge_base_data()
 %% }
 -type update_knowledge_base_template_uri_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_knowledge_base_request() :: #{
@@ -388,12 +427,14 @@
 %% }
 -type create_knowledge_base_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_import_jobs_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_import_jobs_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% knowledge_base_summary() :: #{
@@ -410,12 +451,14 @@
 %% }
 -type knowledge_base_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_quick_responses_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"quickResponseSummaries">> => list(quick_response_summary()())
 %% }
 -type list_quick_responses_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_knowledge_bases_request() :: #{
@@ -424,11 +467,13 @@
 %% }
 -type list_knowledge_bases_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -436,6 +481,7 @@
 %%   <<"resourceName">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% import_job_data() :: #{
@@ -455,6 +501,7 @@
 %% }
 -type import_job_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% knowledge_base_data() :: #{
 %%   <<"description">> => string(),
@@ -471,6 +518,7 @@
 %% }
 -type knowledge_base_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% assistant_association_data() :: #{
 %%   <<"assistantArn">> => string(),
@@ -483,18 +531,22 @@
 %% }
 -type assistant_association_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% document_text() :: #{
 %%   <<"highlights">> => list(highlight()()),
 %%   <<"text">> => string()
 %% }
 -type document_text() :: #{binary() => any()}.
+
 %% Example:
 %% get_assistant_request() :: #{}
 -type get_assistant_request() :: #{}.
+
 %% Example:
 %% delete_assistant_response() :: #{}
 -type delete_assistant_response() :: #{}.
+
 
 %% Example:
 %% quick_response_contents() :: #{
@@ -502,9 +554,11 @@
 %%   <<"plainText">> => list()
 %% }
 -type quick_response_contents() :: #{binary() => any()}.
+
 %% Example:
 %% delete_import_job_request() :: #{}
 -type delete_import_job_request() :: #{}.
+
 
 %% Example:
 %% assistant_data() :: #{
@@ -520,17 +574,20 @@
 %% }
 -type assistant_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_assistant_response() :: #{
 %%   <<"assistant">> => assistant_data()
 %% }
 -type create_assistant_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% quick_response_summary() :: #{
@@ -551,14 +608,17 @@
 %% }
 -type quick_response_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_quick_response_response() :: #{
 %%   <<"quickResponse">> => quick_response_data()
 %% }
 -type get_quick_response_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_import_job_request() :: #{}
 -type get_import_job_request() :: #{}.
+
 
 %% Example:
 %% create_assistant_request() :: #{
@@ -571,6 +631,7 @@
 %% }
 -type create_assistant_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_recommendations_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -578,11 +639,13 @@
 %% }
 -type get_recommendations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% query_recommendation_trigger_data() :: #{
 %%   <<"text">> => string()
 %% }
 -type query_recommendation_trigger_data() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_sessions_response() :: #{
@@ -591,12 +654,14 @@
 %% }
 -type search_sessions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% notify_recommendations_received_response() :: #{
 %%   <<"errors">> => list(notify_recommendations_received_error()()),
 %%   <<"recommendationIds">> => list([string()]())
 %% }
 -type notify_recommendations_received_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_quick_response_request() :: #{
@@ -614,6 +679,7 @@
 %%   <<"shortcutKey">> => string()
 %% }
 -type update_quick_response_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% quick_response_data() :: #{
@@ -638,6 +704,7 @@
 %% }
 -type quick_response_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% knowledge_base_association_data() :: #{
 %%   <<"knowledgeBaseArn">> => string(),
@@ -645,11 +712,13 @@
 %% }
 -type knowledge_base_association_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_assistant_associations_request() :: #{
@@ -657,15 +726,18 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_assistant_associations_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_knowledge_base_request() :: #{}
 -type delete_knowledge_base_request() :: #{}.
+
 
 %% Example:
 %% update_quick_response_response() :: #{
 %%   <<"quickResponse">> => quick_response_data()
 %% }
 -type update_quick_response_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% assistant_summary() :: #{
@@ -681,11 +753,13 @@
 %% }
 -type assistant_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_expression() :: #{
 %%   <<"filters">> => list(filter()())
 %% }
 -type search_expression() :: #{binary() => any()}.
+
 
 %% Example:
 %% filter() :: #{
@@ -695,11 +769,13 @@
 %% }
 -type filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% server_side_encryption_configuration() :: #{
 %%   <<"kmsKeyId">> => string()
 %% }
 -type server_side_encryption_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% session_data() :: #{
@@ -712,6 +788,7 @@
 %% }
 -type session_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_sessions_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -720,15 +797,18 @@
 %% }
 -type search_sessions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_import_jobs_response() :: #{
 %%   <<"importJobSummaries">> => list(import_job_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_import_jobs_response() :: #{binary() => any()}.
+
 %% Example:
 %% remove_knowledge_base_template_uri_request() :: #{}
 -type remove_knowledge_base_template_uri_request() :: #{}.
+
 
 %% Example:
 %% search_quick_responses_response() :: #{
@@ -737,6 +817,7 @@
 %% }
 -type search_quick_responses_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% notify_recommendations_received_error() :: #{
 %%   <<"message">> => string(),
@@ -744,20 +825,24 @@
 %% }
 -type notify_recommendations_received_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_import_job_response() :: #{
 %%   <<"importJob">> => import_job_data()
 %% }
 -type get_import_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_content_response() :: #{
 %%   <<"content">> => content_data()
 %% }
 -type update_content_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_quick_response_request() :: #{}
 -type get_quick_response_request() :: #{}.
+
 
 %% Example:
 %% access_denied_exception() :: #{
@@ -765,11 +850,13 @@
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_assistant_association_response() :: #{
 %%   <<"assistantAssociation">> => assistant_association_data()
 %% }
 -type create_assistant_association_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_content_request() :: #{
@@ -782,9 +869,11 @@
 %%   <<"uploadId">> := string()
 %% }
 -type create_content_request() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% import_job_summary() :: #{
@@ -801,6 +890,7 @@
 %% }
 -type import_job_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% query_assistant_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -808,6 +898,7 @@
 %%   <<"queryText">> := string()
 %% }
 -type query_assistant_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% quick_response_search_result_data() :: #{
@@ -834,29 +925,36 @@
 %% }
 -type quick_response_search_result_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% rendering_configuration() :: #{
 %%   <<"templateUri">> => string()
 %% }
 -type rendering_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% delete_content_request() :: #{}
 -type delete_content_request() :: #{}.
+
 %% Example:
 %% get_content_request() :: #{}
 -type get_content_request() :: #{}.
+
 %% Example:
 %% delete_quick_response_request() :: #{}
 -type delete_quick_response_request() :: #{}.
+
 
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% content_reference() :: #{
@@ -866,6 +964,7 @@
 %%   <<"knowledgeBaseId">> => string()
 %% }
 -type content_reference() :: #{binary() => any()}.
+
 
 %% Example:
 %% content_data() :: #{
@@ -886,6 +985,7 @@
 %% }
 -type content_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% content_summary() :: #{
 %%   <<"contentArn">> => string(),
@@ -902,11 +1002,13 @@
 %% }
 -type content_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_content_response() :: #{
 %%   <<"content">> => content_data()
 %% }
 -type get_content_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% recommendation_trigger() :: #{
@@ -918,11 +1020,13 @@
 %% }
 -type recommendation_trigger() :: #{binary() => any()}.
 
+
 %% Example:
 %% notify_recommendations_received_request() :: #{
 %%   <<"recommendationIds">> := list([string()]())
 %% }
 -type notify_recommendations_received_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_knowledge_bases_response() :: #{
@@ -931,11 +1035,13 @@
 %% }
 -type list_knowledge_bases_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_knowledge_base_response() :: #{
 %%   <<"knowledgeBase">> => knowledge_base_data()
 %% }
 -type get_knowledge_base_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_assistant_associations_response() :: #{
@@ -943,6 +1049,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_assistant_associations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% result_data() :: #{
@@ -952,11 +1059,13 @@
 %% }
 -type result_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_import_job_response() :: #{
 %%   <<"importJob">> => import_job_data()
 %% }
 -type start_import_job_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_content_request() :: #{
@@ -969,6 +1078,7 @@
 %% }
 -type update_content_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% assistant_association_summary() :: #{
 %%   <<"assistantArn">> => string(),
@@ -980,9 +1090,11 @@
 %%   <<"tags">> => map()
 %% }
 -type assistant_association_summary() :: #{binary() => any()}.
+
 %% Example:
 %% get_content_summary_request() :: #{}
 -type get_content_summary_request() :: #{}.
+
 
 %% Example:
 %% quick_response_query_field() :: #{
@@ -993,15 +1105,19 @@
 %%   <<"values">> => list(string()())
 %% }
 -type quick_response_query_field() :: #{binary() => any()}.
+
 %% Example:
 %% get_assistant_association_request() :: #{}
 -type get_assistant_association_request() :: #{}.
+
 %% Example:
 %% delete_content_response() :: #{}
 -type delete_content_response() :: #{}.
+
 %% Example:
 %% get_knowledge_base_request() :: #{}
 -type get_knowledge_base_request() :: #{}.
+
 
 %% Example:
 %% quick_response_order_field() :: #{
@@ -1010,15 +1126,18 @@
 %% }
 -type quick_response_order_field() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_assistants_response() :: #{
 %%   <<"assistantSummaries">> := list(assistant_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_assistants_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_quick_response_response() :: #{}
 -type delete_quick_response_response() :: #{}.
+
 
 %% Example:
 %% search_content_request() :: #{
@@ -1028,12 +1147,14 @@
 %% }
 -type search_content_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% grouping_configuration() :: #{
 %%   <<"criteria">> => string(),
 %%   <<"values">> => list(string()())
 %% }
 -type grouping_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_assistant_association_request() :: #{
@@ -1044,20 +1165,24 @@
 %% }
 -type create_assistant_association_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_session_response() :: #{
 %%   <<"session">> => session_data()
 %% }
 -type create_session_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% precondition_failed_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type precondition_failed_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_assistant_association_response() :: #{}
 -type delete_assistant_association_response() :: #{}.
+
 
 %% Example:
 %% document() :: #{
@@ -1067,6 +1192,7 @@
 %% }
 -type document() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_assistants_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -1074,14 +1200,17 @@
 %% }
 -type list_assistants_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% session_integration_configuration() :: #{
 %%   <<"topicIntegrationArn">> => string()
 %% }
 -type session_integration_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% delete_import_job_response() :: #{}
 -type delete_import_job_response() :: #{}.
+
 
 %% Example:
 %% too_many_tags_exception() :: #{
@@ -1089,6 +1218,220 @@
 %%   <<"resourceName">> => [string()]
 %% }
 -type too_many_tags_exception() :: #{binary() => any()}.
+
+-type create_assistant_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_assistant_association_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_content_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_knowledge_base_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_quick_response_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_session_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_assistant_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type delete_assistant_association_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type delete_content_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type delete_import_job_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_knowledge_base_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_quick_response_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_assistant_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_assistant_association_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_content_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_content_summary_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_import_job_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_knowledge_base_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_quick_response_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_recommendations_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_session_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_assistant_associations_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_assistants_errors() ::
+    validation_exception() | 
+    access_denied_exception().
+
+-type list_contents_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_import_jobs_errors() ::
+    validation_exception() | 
+    access_denied_exception().
+
+-type list_knowledge_bases_errors() ::
+    validation_exception() | 
+    access_denied_exception().
+
+-type list_quick_responses_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    resource_not_found_exception().
+
+-type notify_recommendations_received_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type query_assistant_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type remove_knowledge_base_template_uri_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type search_content_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type search_quick_responses_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type search_sessions_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type start_content_upload_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type start_import_job_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    resource_not_found_exception().
+
+-type update_content_errors() ::
+    precondition_failed_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type update_knowledge_base_template_uri_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type update_quick_response_errors() ::
+    precondition_failed_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -1098,20 +1441,14 @@
 -spec create_assistant(map(), create_assistant_request()) ->
     {ok, create_assistant_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_assistant_errors(), tuple()}.
 create_assistant(Client, Input) ->
     create_assistant(Client, Input, []).
 
 -spec create_assistant(map(), create_assistant_request(), proplists:proplist()) ->
     {ok, create_assistant_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_assistant_errors(), tuple()}.
 create_assistant(Client, Input0, Options0) ->
     Method = post,
     Path = ["/assistants"],
@@ -1144,22 +1481,14 @@ create_assistant(Client, Input0, Options0) ->
 -spec create_assistant_association(map(), binary() | list(), create_assistant_association_request()) ->
     {ok, create_assistant_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_assistant_association_errors(), tuple()}.
 create_assistant_association(Client, AssistantId, Input) ->
     create_assistant_association(Client, AssistantId, Input, []).
 
 -spec create_assistant_association(map(), binary() | list(), create_assistant_association_request(), proplists:proplist()) ->
     {ok, create_assistant_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_assistant_association_errors(), tuple()}.
 create_assistant_association(Client, AssistantId, Input0, Options0) ->
     Method = post,
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/associations"],
@@ -1191,22 +1520,14 @@ create_assistant_association(Client, AssistantId, Input0, Options0) ->
 -spec create_content(map(), binary() | list(), create_content_request()) ->
     {ok, create_content_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_content_errors(), tuple()}.
 create_content(Client, KnowledgeBaseId, Input) ->
     create_content(Client, KnowledgeBaseId, Input, []).
 
 -spec create_content(map(), binary() | list(), create_content_request(), proplists:proplist()) ->
     {ok, create_content_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_content_errors(), tuple()}.
 create_content(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/contents"],
@@ -1258,20 +1579,14 @@ create_content(Client, KnowledgeBaseId, Input0, Options0) ->
 -spec create_knowledge_base(map(), create_knowledge_base_request()) ->
     {ok, create_knowledge_base_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_knowledge_base_errors(), tuple()}.
 create_knowledge_base(Client, Input) ->
     create_knowledge_base(Client, Input, []).
 
 -spec create_knowledge_base(map(), create_knowledge_base_request(), proplists:proplist()) ->
     {ok, create_knowledge_base_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_knowledge_base_errors(), tuple()}.
 create_knowledge_base(Client, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases"],
@@ -1298,22 +1613,14 @@ create_knowledge_base(Client, Input0, Options0) ->
 -spec create_quick_response(map(), binary() | list(), create_quick_response_request()) ->
     {ok, create_quick_response_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_quick_response_errors(), tuple()}.
 create_quick_response(Client, KnowledgeBaseId, Input) ->
     create_quick_response(Client, KnowledgeBaseId, Input, []).
 
 -spec create_quick_response(map(), binary() | list(), create_quick_response_request(), proplists:proplist()) ->
     {ok, create_quick_response_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_quick_response_errors(), tuple()}.
 create_quick_response(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/quickResponses"],
@@ -1345,18 +1652,14 @@ create_quick_response(Client, KnowledgeBaseId, Input0, Options0) ->
 -spec create_session(map(), binary() | list(), create_session_request()) ->
     {ok, create_session_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_session_errors(), tuple()}.
 create_session(Client, AssistantId, Input) ->
     create_session(Client, AssistantId, Input, []).
 
 -spec create_session(map(), binary() | list(), create_session_request(), proplists:proplist()) ->
     {ok, create_session_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_session_errors(), tuple()}.
 create_session(Client, AssistantId, Input0, Options0) ->
     Method = post,
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/sessions"],
@@ -1383,18 +1686,14 @@ create_session(Client, AssistantId, Input0, Options0) ->
 -spec delete_assistant(map(), binary() | list(), delete_assistant_request()) ->
     {ok, delete_assistant_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_assistant_errors(), tuple()}.
 delete_assistant(Client, AssistantId, Input) ->
     delete_assistant(Client, AssistantId, Input, []).
 
 -spec delete_assistant(map(), binary() | list(), delete_assistant_request(), proplists:proplist()) ->
     {ok, delete_assistant_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_assistant_errors(), tuple()}.
 delete_assistant(Client, AssistantId, Input0, Options0) ->
     Method = delete,
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), ""],
@@ -1421,18 +1720,14 @@ delete_assistant(Client, AssistantId, Input0, Options0) ->
 -spec delete_assistant_association(map(), binary() | list(), binary() | list(), delete_assistant_association_request()) ->
     {ok, delete_assistant_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_assistant_association_errors(), tuple()}.
 delete_assistant_association(Client, AssistantAssociationId, AssistantId, Input) ->
     delete_assistant_association(Client, AssistantAssociationId, AssistantId, Input, []).
 
 -spec delete_assistant_association(map(), binary() | list(), binary() | list(), delete_assistant_association_request(), proplists:proplist()) ->
     {ok, delete_assistant_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_assistant_association_errors(), tuple()}.
 delete_assistant_association(Client, AssistantAssociationId, AssistantId, Input0, Options0) ->
     Method = delete,
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/associations/", aws_util:encode_uri(AssistantAssociationId), ""],
@@ -1459,18 +1754,14 @@ delete_assistant_association(Client, AssistantAssociationId, AssistantId, Input0
 -spec delete_content(map(), binary() | list(), binary() | list(), delete_content_request()) ->
     {ok, delete_content_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_content_errors(), tuple()}.
 delete_content(Client, ContentId, KnowledgeBaseId, Input) ->
     delete_content(Client, ContentId, KnowledgeBaseId, Input, []).
 
 -spec delete_content(map(), binary() | list(), binary() | list(), delete_content_request(), proplists:proplist()) ->
     {ok, delete_content_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_content_errors(), tuple()}.
 delete_content(Client, ContentId, KnowledgeBaseId, Input0, Options0) ->
     Method = delete,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/contents/", aws_util:encode_uri(ContentId), ""],
@@ -1497,20 +1788,14 @@ delete_content(Client, ContentId, KnowledgeBaseId, Input0, Options0) ->
 -spec delete_import_job(map(), binary() | list(), binary() | list(), delete_import_job_request()) ->
     {ok, delete_import_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_import_job_errors(), tuple()}.
 delete_import_job(Client, ImportJobId, KnowledgeBaseId, Input) ->
     delete_import_job(Client, ImportJobId, KnowledgeBaseId, Input, []).
 
 -spec delete_import_job(map(), binary() | list(), binary() | list(), delete_import_job_request(), proplists:proplist()) ->
     {ok, delete_import_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_import_job_errors(), tuple()}.
 delete_import_job(Client, ImportJobId, KnowledgeBaseId, Input0, Options0) ->
     Method = delete,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/importJobs/", aws_util:encode_uri(ImportJobId), ""],
@@ -1552,20 +1837,14 @@ delete_import_job(Client, ImportJobId, KnowledgeBaseId, Input0, Options0) ->
 -spec delete_knowledge_base(map(), binary() | list(), delete_knowledge_base_request()) ->
     {ok, delete_knowledge_base_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_knowledge_base_errors(), tuple()}.
 delete_knowledge_base(Client, KnowledgeBaseId, Input) ->
     delete_knowledge_base(Client, KnowledgeBaseId, Input, []).
 
 -spec delete_knowledge_base(map(), binary() | list(), delete_knowledge_base_request(), proplists:proplist()) ->
     {ok, delete_knowledge_base_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_knowledge_base_errors(), tuple()}.
 delete_knowledge_base(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = delete,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), ""],
@@ -1592,18 +1871,14 @@ delete_knowledge_base(Client, KnowledgeBaseId, Input0, Options0) ->
 -spec delete_quick_response(map(), binary() | list(), binary() | list(), delete_quick_response_request()) ->
     {ok, delete_quick_response_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_quick_response_errors(), tuple()}.
 delete_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input) ->
     delete_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input, []).
 
 -spec delete_quick_response(map(), binary() | list(), binary() | list(), delete_quick_response_request(), proplists:proplist()) ->
     {ok, delete_quick_response_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_quick_response_errors(), tuple()}.
 delete_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input0, Options0) ->
     Method = delete,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/quickResponses/", aws_util:encode_uri(QuickResponseId), ""],
@@ -1630,9 +1905,7 @@ delete_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input0, Options0
 -spec get_assistant(map(), binary() | list()) ->
     {ok, get_assistant_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_assistant_errors(), tuple()}.
 get_assistant(Client, AssistantId)
   when is_map(Client) ->
     get_assistant(Client, AssistantId, #{}, #{}).
@@ -1640,9 +1913,7 @@ get_assistant(Client, AssistantId)
 -spec get_assistant(map(), binary() | list(), map(), map()) ->
     {ok, get_assistant_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_assistant_errors(), tuple()}.
 get_assistant(Client, AssistantId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_assistant(Client, AssistantId, QueryMap, HeadersMap, []).
@@ -1650,9 +1921,7 @@ get_assistant(Client, AssistantId, QueryMap, HeadersMap)
 -spec get_assistant(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_assistant_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_assistant_errors(), tuple()}.
 get_assistant(Client, AssistantId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), ""],
@@ -1673,9 +1942,7 @@ get_assistant(Client, AssistantId, QueryMap, HeadersMap, Options0)
 -spec get_assistant_association(map(), binary() | list(), binary() | list()) ->
     {ok, get_assistant_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_assistant_association_errors(), tuple()}.
 get_assistant_association(Client, AssistantAssociationId, AssistantId)
   when is_map(Client) ->
     get_assistant_association(Client, AssistantAssociationId, AssistantId, #{}, #{}).
@@ -1683,9 +1950,7 @@ get_assistant_association(Client, AssistantAssociationId, AssistantId)
 -spec get_assistant_association(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_assistant_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_assistant_association_errors(), tuple()}.
 get_assistant_association(Client, AssistantAssociationId, AssistantId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_assistant_association(Client, AssistantAssociationId, AssistantId, QueryMap, HeadersMap, []).
@@ -1693,9 +1958,7 @@ get_assistant_association(Client, AssistantAssociationId, AssistantId, QueryMap,
 -spec get_assistant_association(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_assistant_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_assistant_association_errors(), tuple()}.
 get_assistant_association(Client, AssistantAssociationId, AssistantId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/associations/", aws_util:encode_uri(AssistantAssociationId), ""],
@@ -1717,9 +1980,7 @@ get_assistant_association(Client, AssistantAssociationId, AssistantId, QueryMap,
 -spec get_content(map(), binary() | list(), binary() | list()) ->
     {ok, get_content_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_content_errors(), tuple()}.
 get_content(Client, ContentId, KnowledgeBaseId)
   when is_map(Client) ->
     get_content(Client, ContentId, KnowledgeBaseId, #{}, #{}).
@@ -1727,9 +1988,7 @@ get_content(Client, ContentId, KnowledgeBaseId)
 -spec get_content(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_content_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_content_errors(), tuple()}.
 get_content(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_content(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap, []).
@@ -1737,9 +1996,7 @@ get_content(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap)
 -spec get_content(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_content_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_content_errors(), tuple()}.
 get_content(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/contents/", aws_util:encode_uri(ContentId), ""],
@@ -1760,9 +2017,7 @@ get_content(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
 -spec get_content_summary(map(), binary() | list(), binary() | list()) ->
     {ok, get_content_summary_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_content_summary_errors(), tuple()}.
 get_content_summary(Client, ContentId, KnowledgeBaseId)
   when is_map(Client) ->
     get_content_summary(Client, ContentId, KnowledgeBaseId, #{}, #{}).
@@ -1770,9 +2025,7 @@ get_content_summary(Client, ContentId, KnowledgeBaseId)
 -spec get_content_summary(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_content_summary_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_content_summary_errors(), tuple()}.
 get_content_summary(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_content_summary(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap, []).
@@ -1780,9 +2033,7 @@ get_content_summary(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap)
 -spec get_content_summary(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_content_summary_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_content_summary_errors(), tuple()}.
 get_content_summary(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/contents/", aws_util:encode_uri(ContentId), "/summary"],
@@ -1803,9 +2054,7 @@ get_content_summary(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap, Op
 -spec get_import_job(map(), binary() | list(), binary() | list()) ->
     {ok, get_import_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_import_job_errors(), tuple()}.
 get_import_job(Client, ImportJobId, KnowledgeBaseId)
   when is_map(Client) ->
     get_import_job(Client, ImportJobId, KnowledgeBaseId, #{}, #{}).
@@ -1813,9 +2062,7 @@ get_import_job(Client, ImportJobId, KnowledgeBaseId)
 -spec get_import_job(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_import_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_import_job_errors(), tuple()}.
 get_import_job(Client, ImportJobId, KnowledgeBaseId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_import_job(Client, ImportJobId, KnowledgeBaseId, QueryMap, HeadersMap, []).
@@ -1823,9 +2070,7 @@ get_import_job(Client, ImportJobId, KnowledgeBaseId, QueryMap, HeadersMap)
 -spec get_import_job(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_import_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_import_job_errors(), tuple()}.
 get_import_job(Client, ImportJobId, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/importJobs/", aws_util:encode_uri(ImportJobId), ""],
@@ -1846,9 +2091,7 @@ get_import_job(Client, ImportJobId, KnowledgeBaseId, QueryMap, HeadersMap, Optio
 -spec get_knowledge_base(map(), binary() | list()) ->
     {ok, get_knowledge_base_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_knowledge_base_errors(), tuple()}.
 get_knowledge_base(Client, KnowledgeBaseId)
   when is_map(Client) ->
     get_knowledge_base(Client, KnowledgeBaseId, #{}, #{}).
@@ -1856,9 +2099,7 @@ get_knowledge_base(Client, KnowledgeBaseId)
 -spec get_knowledge_base(map(), binary() | list(), map(), map()) ->
     {ok, get_knowledge_base_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_knowledge_base_errors(), tuple()}.
 get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap, []).
@@ -1866,9 +2107,7 @@ get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap)
 -spec get_knowledge_base(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_knowledge_base_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_knowledge_base_errors(), tuple()}.
 get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), ""],
@@ -1889,9 +2128,7 @@ get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
 -spec get_quick_response(map(), binary() | list(), binary() | list()) ->
     {ok, get_quick_response_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_quick_response_errors(), tuple()}.
 get_quick_response(Client, KnowledgeBaseId, QuickResponseId)
   when is_map(Client) ->
     get_quick_response(Client, KnowledgeBaseId, QuickResponseId, #{}, #{}).
@@ -1899,9 +2136,7 @@ get_quick_response(Client, KnowledgeBaseId, QuickResponseId)
 -spec get_quick_response(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_quick_response_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_quick_response_errors(), tuple()}.
 get_quick_response(Client, KnowledgeBaseId, QuickResponseId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_quick_response(Client, KnowledgeBaseId, QuickResponseId, QueryMap, HeadersMap, []).
@@ -1909,9 +2144,7 @@ get_quick_response(Client, KnowledgeBaseId, QuickResponseId, QueryMap, HeadersMa
 -spec get_quick_response(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_quick_response_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_quick_response_errors(), tuple()}.
 get_quick_response(Client, KnowledgeBaseId, QuickResponseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/quickResponses/", aws_util:encode_uri(QuickResponseId), ""],
@@ -1942,9 +2175,7 @@ get_quick_response(Client, KnowledgeBaseId, QuickResponseId, QueryMap, HeadersMa
 -spec get_recommendations(map(), binary() | list(), binary() | list()) ->
     {ok, get_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_recommendations_errors(), tuple()}.
 get_recommendations(Client, AssistantId, SessionId)
   when is_map(Client) ->
     get_recommendations(Client, AssistantId, SessionId, #{}, #{}).
@@ -1952,9 +2183,7 @@ get_recommendations(Client, AssistantId, SessionId)
 -spec get_recommendations(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_recommendations_errors(), tuple()}.
 get_recommendations(Client, AssistantId, SessionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_recommendations(Client, AssistantId, SessionId, QueryMap, HeadersMap, []).
@@ -1962,9 +2191,7 @@ get_recommendations(Client, AssistantId, SessionId, QueryMap, HeadersMap)
 -spec get_recommendations(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_recommendations_errors(), tuple()}.
 get_recommendations(Client, AssistantId, SessionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/sessions/", aws_util:encode_uri(SessionId), "/recommendations"],
@@ -1990,9 +2217,7 @@ get_recommendations(Client, AssistantId, SessionId, QueryMap, HeadersMap, Option
 -spec get_session(map(), binary() | list(), binary() | list()) ->
     {ok, get_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_session_errors(), tuple()}.
 get_session(Client, AssistantId, SessionId)
   when is_map(Client) ->
     get_session(Client, AssistantId, SessionId, #{}, #{}).
@@ -2000,9 +2225,7 @@ get_session(Client, AssistantId, SessionId)
 -spec get_session(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_session_errors(), tuple()}.
 get_session(Client, AssistantId, SessionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_session(Client, AssistantId, SessionId, QueryMap, HeadersMap, []).
@@ -2010,9 +2233,7 @@ get_session(Client, AssistantId, SessionId, QueryMap, HeadersMap)
 -spec get_session(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_session_errors(), tuple()}.
 get_session(Client, AssistantId, SessionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/sessions/", aws_util:encode_uri(SessionId), ""],
@@ -2033,9 +2254,7 @@ get_session(Client, AssistantId, SessionId, QueryMap, HeadersMap, Options0)
 -spec list_assistant_associations(map(), binary() | list()) ->
     {ok, list_assistant_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_assistant_associations_errors(), tuple()}.
 list_assistant_associations(Client, AssistantId)
   when is_map(Client) ->
     list_assistant_associations(Client, AssistantId, #{}, #{}).
@@ -2043,9 +2262,7 @@ list_assistant_associations(Client, AssistantId)
 -spec list_assistant_associations(map(), binary() | list(), map(), map()) ->
     {ok, list_assistant_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_assistant_associations_errors(), tuple()}.
 list_assistant_associations(Client, AssistantId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_assistant_associations(Client, AssistantId, QueryMap, HeadersMap, []).
@@ -2053,9 +2270,7 @@ list_assistant_associations(Client, AssistantId, QueryMap, HeadersMap)
 -spec list_assistant_associations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_assistant_associations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_assistant_associations_errors(), tuple()}.
 list_assistant_associations(Client, AssistantId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/associations"],
@@ -2081,8 +2296,7 @@ list_assistant_associations(Client, AssistantId, QueryMap, HeadersMap, Options0)
 -spec list_assistants(map()) ->
     {ok, list_assistants_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_assistants_errors(), tuple()}.
 list_assistants(Client)
   when is_map(Client) ->
     list_assistants(Client, #{}, #{}).
@@ -2090,8 +2304,7 @@ list_assistants(Client)
 -spec list_assistants(map(), map(), map()) ->
     {ok, list_assistants_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_assistants_errors(), tuple()}.
 list_assistants(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_assistants(Client, QueryMap, HeadersMap, []).
@@ -2099,8 +2312,7 @@ list_assistants(Client, QueryMap, HeadersMap)
 -spec list_assistants(map(), map(), map(), proplists:proplist()) ->
     {ok, list_assistants_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_assistants_errors(), tuple()}.
 list_assistants(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assistants"],
@@ -2126,9 +2338,7 @@ list_assistants(Client, QueryMap, HeadersMap, Options0)
 -spec list_contents(map(), binary() | list()) ->
     {ok, list_contents_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_contents_errors(), tuple()}.
 list_contents(Client, KnowledgeBaseId)
   when is_map(Client) ->
     list_contents(Client, KnowledgeBaseId, #{}, #{}).
@@ -2136,9 +2346,7 @@ list_contents(Client, KnowledgeBaseId)
 -spec list_contents(map(), binary() | list(), map(), map()) ->
     {ok, list_contents_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_contents_errors(), tuple()}.
 list_contents(Client, KnowledgeBaseId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_contents(Client, KnowledgeBaseId, QueryMap, HeadersMap, []).
@@ -2146,9 +2354,7 @@ list_contents(Client, KnowledgeBaseId, QueryMap, HeadersMap)
 -spec list_contents(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_contents_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_contents_errors(), tuple()}.
 list_contents(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/contents"],
@@ -2174,8 +2380,7 @@ list_contents(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
 -spec list_import_jobs(map(), binary() | list()) ->
     {ok, list_import_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_import_jobs_errors(), tuple()}.
 list_import_jobs(Client, KnowledgeBaseId)
   when is_map(Client) ->
     list_import_jobs(Client, KnowledgeBaseId, #{}, #{}).
@@ -2183,8 +2388,7 @@ list_import_jobs(Client, KnowledgeBaseId)
 -spec list_import_jobs(map(), binary() | list(), map(), map()) ->
     {ok, list_import_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_import_jobs_errors(), tuple()}.
 list_import_jobs(Client, KnowledgeBaseId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_import_jobs(Client, KnowledgeBaseId, QueryMap, HeadersMap, []).
@@ -2192,8 +2396,7 @@ list_import_jobs(Client, KnowledgeBaseId, QueryMap, HeadersMap)
 -spec list_import_jobs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_import_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_import_jobs_errors(), tuple()}.
 list_import_jobs(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/importJobs"],
@@ -2219,8 +2422,7 @@ list_import_jobs(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
 -spec list_knowledge_bases(map()) ->
     {ok, list_knowledge_bases_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_knowledge_bases_errors(), tuple()}.
 list_knowledge_bases(Client)
   when is_map(Client) ->
     list_knowledge_bases(Client, #{}, #{}).
@@ -2228,8 +2430,7 @@ list_knowledge_bases(Client)
 -spec list_knowledge_bases(map(), map(), map()) ->
     {ok, list_knowledge_bases_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_knowledge_bases_errors(), tuple()}.
 list_knowledge_bases(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_knowledge_bases(Client, QueryMap, HeadersMap, []).
@@ -2237,8 +2438,7 @@ list_knowledge_bases(Client, QueryMap, HeadersMap)
 -spec list_knowledge_bases(map(), map(), map(), proplists:proplist()) ->
     {ok, list_knowledge_bases_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_knowledge_bases_errors(), tuple()}.
 list_knowledge_bases(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases"],
@@ -2264,9 +2464,7 @@ list_knowledge_bases(Client, QueryMap, HeadersMap, Options0)
 -spec list_quick_responses(map(), binary() | list()) ->
     {ok, list_quick_responses_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_quick_responses_errors(), tuple()}.
 list_quick_responses(Client, KnowledgeBaseId)
   when is_map(Client) ->
     list_quick_responses(Client, KnowledgeBaseId, #{}, #{}).
@@ -2274,9 +2472,7 @@ list_quick_responses(Client, KnowledgeBaseId)
 -spec list_quick_responses(map(), binary() | list(), map(), map()) ->
     {ok, list_quick_responses_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_quick_responses_errors(), tuple()}.
 list_quick_responses(Client, KnowledgeBaseId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_quick_responses(Client, KnowledgeBaseId, QueryMap, HeadersMap, []).
@@ -2284,9 +2480,7 @@ list_quick_responses(Client, KnowledgeBaseId, QueryMap, HeadersMap)
 -spec list_quick_responses(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_quick_responses_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_quick_responses_errors(), tuple()}.
 list_quick_responses(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/quickResponses"],
@@ -2312,7 +2506,7 @@ list_quick_responses(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -2320,7 +2514,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -2328,7 +2522,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2356,18 +2550,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec notify_recommendations_received(map(), binary() | list(), binary() | list(), notify_recommendations_received_request()) ->
     {ok, notify_recommendations_received_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, notify_recommendations_received_errors(), tuple()}.
 notify_recommendations_received(Client, AssistantId, SessionId, Input) ->
     notify_recommendations_received(Client, AssistantId, SessionId, Input, []).
 
 -spec notify_recommendations_received(map(), binary() | list(), binary() | list(), notify_recommendations_received_request(), proplists:proplist()) ->
     {ok, notify_recommendations_received_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, notify_recommendations_received_errors(), tuple()}.
 notify_recommendations_received(Client, AssistantId, SessionId, Input0, Options0) ->
     Method = post,
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/sessions/", aws_util:encode_uri(SessionId), "/recommendations/notify"],
@@ -2398,20 +2588,14 @@ notify_recommendations_received(Client, AssistantId, SessionId, Input0, Options0
 -spec query_assistant(map(), binary() | list(), query_assistant_request()) ->
     {ok, query_assistant_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, query_assistant_errors(), tuple()}.
 query_assistant(Client, AssistantId, Input) ->
     query_assistant(Client, AssistantId, Input, []).
 
 -spec query_assistant(map(), binary() | list(), query_assistant_request(), proplists:proplist()) ->
     {ok, query_assistant_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, query_assistant_errors(), tuple()}.
 query_assistant(Client, AssistantId, Input0, Options0) ->
     Method = post,
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/query"],
@@ -2438,18 +2622,14 @@ query_assistant(Client, AssistantId, Input0, Options0) ->
 -spec remove_knowledge_base_template_uri(map(), binary() | list(), remove_knowledge_base_template_uri_request()) ->
     {ok, remove_knowledge_base_template_uri_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, remove_knowledge_base_template_uri_errors(), tuple()}.
 remove_knowledge_base_template_uri(Client, KnowledgeBaseId, Input) ->
     remove_knowledge_base_template_uri(Client, KnowledgeBaseId, Input, []).
 
 -spec remove_knowledge_base_template_uri(map(), binary() | list(), remove_knowledge_base_template_uri_request(), proplists:proplist()) ->
     {ok, remove_knowledge_base_template_uri_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, remove_knowledge_base_template_uri_errors(), tuple()}.
 remove_knowledge_base_template_uri(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = delete,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/templateUri"],
@@ -2479,18 +2659,14 @@ remove_knowledge_base_template_uri(Client, KnowledgeBaseId, Input0, Options0) ->
 -spec search_content(map(), binary() | list(), search_content_request()) ->
     {ok, search_content_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_content_errors(), tuple()}.
 search_content(Client, KnowledgeBaseId, Input) ->
     search_content(Client, KnowledgeBaseId, Input, []).
 
 -spec search_content(map(), binary() | list(), search_content_request(), proplists:proplist()) ->
     {ok, search_content_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_content_errors(), tuple()}.
 search_content(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/search"],
@@ -2519,20 +2695,14 @@ search_content(Client, KnowledgeBaseId, Input0, Options0) ->
 -spec search_quick_responses(map(), binary() | list(), search_quick_responses_request()) ->
     {ok, search_quick_responses_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_quick_responses_errors(), tuple()}.
 search_quick_responses(Client, KnowledgeBaseId, Input) ->
     search_quick_responses(Client, KnowledgeBaseId, Input, []).
 
 -spec search_quick_responses(map(), binary() | list(), search_quick_responses_request(), proplists:proplist()) ->
     {ok, search_quick_responses_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_quick_responses_errors(), tuple()}.
 search_quick_responses(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/search/quickResponses"],
@@ -2561,18 +2731,14 @@ search_quick_responses(Client, KnowledgeBaseId, Input0, Options0) ->
 -spec search_sessions(map(), binary() | list(), search_sessions_request()) ->
     {ok, search_sessions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_sessions_errors(), tuple()}.
 search_sessions(Client, AssistantId, Input) ->
     search_sessions(Client, AssistantId, Input, []).
 
 -spec search_sessions(map(), binary() | list(), search_sessions_request(), proplists:proplist()) ->
     {ok, search_sessions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_sessions_errors(), tuple()}.
 search_sessions(Client, AssistantId, Input0, Options0) ->
     Method = post,
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/searchSessions"],
@@ -2611,18 +2777,14 @@ search_sessions(Client, AssistantId, Input0, Options0) ->
 -spec start_content_upload(map(), binary() | list(), start_content_upload_request()) ->
     {ok, start_content_upload_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_content_upload_errors(), tuple()}.
 start_content_upload(Client, KnowledgeBaseId, Input) ->
     start_content_upload(Client, KnowledgeBaseId, Input, []).
 
 -spec start_content_upload(map(), binary() | list(), start_content_upload_request(), proplists:proplist()) ->
     {ok, start_content_upload_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_content_upload_errors(), tuple()}.
 start_content_upload(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/upload"],
@@ -2660,22 +2822,14 @@ start_content_upload(Client, KnowledgeBaseId, Input0, Options0) ->
 -spec start_import_job(map(), binary() | list(), start_import_job_request()) ->
     {ok, start_import_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_import_job_errors(), tuple()}.
 start_import_job(Client, KnowledgeBaseId, Input) ->
     start_import_job(Client, KnowledgeBaseId, Input, []).
 
 -spec start_import_job(map(), binary() | list(), start_import_job_request(), proplists:proplist()) ->
     {ok, start_import_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_import_job_errors(), tuple()}.
 start_import_job(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/importJobs"],
@@ -2702,16 +2856,14 @@ start_import_job(Client, KnowledgeBaseId, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2738,14 +2890,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2773,20 +2925,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_content(map(), binary() | list(), binary() | list(), update_content_request()) ->
     {ok, update_content_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_content_errors(), tuple()}.
 update_content(Client, ContentId, KnowledgeBaseId, Input) ->
     update_content(Client, ContentId, KnowledgeBaseId, Input, []).
 
 -spec update_content(map(), binary() | list(), binary() | list(), update_content_request(), proplists:proplist()) ->
     {ok, update_content_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_content_errors(), tuple()}.
 update_content(Client, ContentId, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/contents/", aws_util:encode_uri(ContentId), ""],
@@ -2821,18 +2967,14 @@ update_content(Client, ContentId, KnowledgeBaseId, Input0, Options0) ->
 -spec update_knowledge_base_template_uri(map(), binary() | list(), update_knowledge_base_template_uri_request()) ->
     {ok, update_knowledge_base_template_uri_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_knowledge_base_template_uri_errors(), tuple()}.
 update_knowledge_base_template_uri(Client, KnowledgeBaseId, Input) ->
     update_knowledge_base_template_uri(Client, KnowledgeBaseId, Input, []).
 
 -spec update_knowledge_base_template_uri(map(), binary() | list(), update_knowledge_base_template_uri_request(), proplists:proplist()) ->
     {ok, update_knowledge_base_template_uri_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_knowledge_base_template_uri_errors(), tuple()}.
 update_knowledge_base_template_uri(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/templateUri"],
@@ -2859,22 +3001,14 @@ update_knowledge_base_template_uri(Client, KnowledgeBaseId, Input0, Options0) ->
 -spec update_quick_response(map(), binary() | list(), binary() | list(), update_quick_response_request()) ->
     {ok, update_quick_response_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_quick_response_errors(), tuple()}.
 update_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input) ->
     update_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input, []).
 
 -spec update_quick_response(map(), binary() | list(), binary() | list(), update_quick_response_request(), proplists:proplist()) ->
     {ok, update_quick_response_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, precondition_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_quick_response_errors(), tuple()}.
 update_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/quickResponses/", aws_util:encode_uri(QuickResponseId), ""],

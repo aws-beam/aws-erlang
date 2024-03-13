@@ -53,11 +53,13 @@
 %% }
 -type describe_project_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% project_description() :: #{
@@ -71,6 +73,7 @@
 %% }
 -type project_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_failure_exception() :: #{
 %%   <<"code">> => string(),
@@ -78,15 +81,18 @@
 %% }
 -type internal_failure_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_placement_request() :: #{
 %%   <<"attributes">> => map(),
 %%   <<"placementName">> := string()
 %% }
 -type create_placement_request() :: #{binary() => any()}.
+
 %% Example:
 %% update_placement_response() :: #{}
 -type update_placement_response() :: #{}.
+
 
 %% Example:
 %% project_summary() :: #{
@@ -97,9 +103,11 @@
 %%   <<"updatedDate">> => non_neg_integer()
 %% }
 -type project_summary() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% list_placements_request() :: #{
@@ -107,9 +115,11 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_placements_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_project_request() :: #{}
 -type describe_project_request() :: #{}.
+
 
 %% Example:
 %% placement_description() :: #{
@@ -121,6 +131,7 @@
 %% }
 -type placement_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% placement_template() :: #{
 %%   <<"defaultAttributes">> => map(),
@@ -128,11 +139,13 @@
 %% }
 -type placement_template() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% too_many_requests_exception() :: #{
@@ -140,9 +153,11 @@
 %%   <<"message">> => string()
 %% }
 -type too_many_requests_exception() :: #{binary() => any()}.
+
 %% Example:
 %% update_project_response() :: #{}
 -type update_project_response() :: #{}.
+
 
 %% Example:
 %% list_placements_response() :: #{
@@ -150,9 +165,11 @@
 %%   <<"placements">> => list(placement_summary()())
 %% }
 -type list_placements_response() :: #{binary() => any()}.
+
 %% Example:
 %% create_project_response() :: #{}
 -type create_project_response() :: #{}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -161,6 +178,7 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_request_exception() :: #{
 %%   <<"code">> => string(),
@@ -168,20 +186,24 @@
 %% }
 -type invalid_request_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_device_with_placement_request() :: #{
 %%   <<"deviceId">> := string()
 %% }
 -type associate_device_with_placement_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_placement_response() :: #{
 %%   <<"placement">> => placement_description()
 %% }
 -type describe_placement_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_placement_response() :: #{}
 -type delete_placement_response() :: #{}.
+
 
 %% Example:
 %% list_projects_response() :: #{
@@ -190,11 +212,13 @@
 %% }
 -type list_projects_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% placement_summary() :: #{
@@ -204,12 +228,15 @@
 %%   <<"updatedDate">> => non_neg_integer()
 %% }
 -type placement_summary() :: #{binary() => any()}.
+
 %% Example:
 %% create_placement_response() :: #{}
 -type create_placement_response() :: #{}.
+
 %% Example:
 %% delete_project_response() :: #{}
 -type delete_project_response() :: #{}.
+
 
 %% Example:
 %% update_project_request() :: #{
@@ -218,20 +245,25 @@
 %% }
 -type update_project_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_placement_request() :: #{
 %%   <<"attributes">> => map()
 %% }
 -type update_placement_request() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 %% Example:
 %% associate_device_with_placement_response() :: #{}
 -type associate_device_with_placement_response() :: #{}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% create_project_request() :: #{
@@ -242,21 +274,26 @@
 %% }
 -type create_project_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_projects_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_projects_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_placement_request() :: #{}
 -type describe_placement_request() :: #{}.
+
 %% Example:
 %% disassociate_device_from_placement_response() :: #{}
 -type disassociate_device_from_placement_response() :: #{}.
+
 %% Example:
 %% delete_placement_request() :: #{}
 -type delete_placement_request() :: #{}.
+
 
 %% Example:
 %% device_template() :: #{
@@ -264,12 +301,15 @@
 %%   <<"deviceType">> => string()
 %% }
 -type device_template() :: #{binary() => any()}.
+
 %% Example:
 %% delete_project_request() :: #{}
 -type delete_project_request() :: #{}.
+
 %% Example:
 %% get_devices_in_placement_request() :: #{}
 -type get_devices_in_placement_request() :: #{}.
+
 
 %% Example:
 %% resource_conflict_exception() :: #{
@@ -278,14 +318,102 @@
 %% }
 -type resource_conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_devices_in_placement_response() :: #{
 %%   <<"devices">> => map()
 %% }
 -type get_devices_in_placement_response() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_device_from_placement_request() :: #{}
 -type disassociate_device_from_placement_request() :: #{}.
+
+-type associate_device_with_placement_errors() ::
+    resource_conflict_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type create_placement_errors() ::
+    resource_conflict_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type create_project_errors() ::
+    resource_conflict_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type delete_placement_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    internal_failure_exception().
+
+-type delete_project_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    internal_failure_exception().
+
+-type describe_placement_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_project_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type disassociate_device_from_placement_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    internal_failure_exception().
+
+-type get_devices_in_placement_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_placements_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_projects_errors() ::
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_tags_for_resource_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type tag_resource_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type untag_resource_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type update_placement_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    internal_failure_exception().
+
+-type update_project_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    internal_failure_exception().
 
 %%====================================================================
 %% API
@@ -295,20 +423,14 @@
 -spec associate_device_with_placement(map(), binary() | list(), binary() | list(), binary() | list(), associate_device_with_placement_request()) ->
     {ok, associate_device_with_placement_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, associate_device_with_placement_errors(), tuple()}.
 associate_device_with_placement(Client, DeviceTemplateName, PlacementName, ProjectName, Input) ->
     associate_device_with_placement(Client, DeviceTemplateName, PlacementName, ProjectName, Input, []).
 
 -spec associate_device_with_placement(map(), binary() | list(), binary() | list(), binary() | list(), associate_device_with_placement_request(), proplists:proplist()) ->
     {ok, associate_device_with_placement_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, associate_device_with_placement_errors(), tuple()}.
 associate_device_with_placement(Client, DeviceTemplateName, PlacementName, ProjectName, Input0, Options0) ->
     Method = put,
     Path = ["/projects/", aws_util:encode_uri(ProjectName), "/placements/", aws_util:encode_uri(PlacementName), "/devices/", aws_util:encode_uri(DeviceTemplateName), ""],
@@ -335,20 +457,14 @@ associate_device_with_placement(Client, DeviceTemplateName, PlacementName, Proje
 -spec create_placement(map(), binary() | list(), create_placement_request()) ->
     {ok, create_placement_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_placement_errors(), tuple()}.
 create_placement(Client, ProjectName, Input) ->
     create_placement(Client, ProjectName, Input, []).
 
 -spec create_placement(map(), binary() | list(), create_placement_request(), proplists:proplist()) ->
     {ok, create_placement_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_placement_errors(), tuple()}.
 create_placement(Client, ProjectName, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(ProjectName), "/placements"],
@@ -378,18 +494,14 @@ create_placement(Client, ProjectName, Input0, Options0) ->
 -spec create_project(map(), create_project_request()) ->
     {ok, create_project_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()}.
+    {error, create_project_errors(), tuple()}.
 create_project(Client, Input) ->
     create_project(Client, Input, []).
 
 -spec create_project(map(), create_project_request(), proplists:proplist()) ->
     {ok, create_project_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_conflict_exception(), tuple()}.
+    {error, create_project_errors(), tuple()}.
 create_project(Client, Input0, Options0) ->
     Method = post,
     Path = ["/projects"],
@@ -421,20 +533,14 @@ create_project(Client, Input0, Options0) ->
 -spec delete_placement(map(), binary() | list(), binary() | list(), delete_placement_request()) ->
     {ok, delete_placement_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_placement_errors(), tuple()}.
 delete_placement(Client, PlacementName, ProjectName, Input) ->
     delete_placement(Client, PlacementName, ProjectName, Input, []).
 
 -spec delete_placement(map(), binary() | list(), binary() | list(), delete_placement_request(), proplists:proplist()) ->
     {ok, delete_placement_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_placement_errors(), tuple()}.
 delete_placement(Client, PlacementName, ProjectName, Input0, Options0) ->
     Method = delete,
     Path = ["/projects/", aws_util:encode_uri(ProjectName), "/placements/", aws_util:encode_uri(PlacementName), ""],
@@ -466,20 +572,14 @@ delete_placement(Client, PlacementName, ProjectName, Input0, Options0) ->
 -spec delete_project(map(), binary() | list(), delete_project_request()) ->
     {ok, delete_project_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_project_errors(), tuple()}.
 delete_project(Client, ProjectName, Input) ->
     delete_project(Client, ProjectName, Input, []).
 
 -spec delete_project(map(), binary() | list(), delete_project_request(), proplists:proplist()) ->
     {ok, delete_project_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_project_errors(), tuple()}.
 delete_project(Client, ProjectName, Input0, Options0) ->
     Method = delete,
     Path = ["/projects/", aws_util:encode_uri(ProjectName), ""],
@@ -506,9 +606,7 @@ delete_project(Client, ProjectName, Input0, Options0) ->
 -spec describe_placement(map(), binary() | list(), binary() | list()) ->
     {ok, describe_placement_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_placement_errors(), tuple()}.
 describe_placement(Client, PlacementName, ProjectName)
   when is_map(Client) ->
     describe_placement(Client, PlacementName, ProjectName, #{}, #{}).
@@ -516,9 +614,7 @@ describe_placement(Client, PlacementName, ProjectName)
 -spec describe_placement(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_placement_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_placement_errors(), tuple()}.
 describe_placement(Client, PlacementName, ProjectName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_placement(Client, PlacementName, ProjectName, QueryMap, HeadersMap, []).
@@ -526,9 +622,7 @@ describe_placement(Client, PlacementName, ProjectName, QueryMap, HeadersMap)
 -spec describe_placement(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_placement_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_placement_errors(), tuple()}.
 describe_placement(Client, PlacementName, ProjectName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects/", aws_util:encode_uri(ProjectName), "/placements/", aws_util:encode_uri(PlacementName), ""],
@@ -549,9 +643,7 @@ describe_placement(Client, PlacementName, ProjectName, QueryMap, HeadersMap, Opt
 -spec describe_project(map(), binary() | list()) ->
     {ok, describe_project_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_project_errors(), tuple()}.
 describe_project(Client, ProjectName)
   when is_map(Client) ->
     describe_project(Client, ProjectName, #{}, #{}).
@@ -559,9 +651,7 @@ describe_project(Client, ProjectName)
 -spec describe_project(map(), binary() | list(), map(), map()) ->
     {ok, describe_project_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_project_errors(), tuple()}.
 describe_project(Client, ProjectName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_project(Client, ProjectName, QueryMap, HeadersMap, []).
@@ -569,9 +659,7 @@ describe_project(Client, ProjectName, QueryMap, HeadersMap)
 -spec describe_project(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_project_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_project_errors(), tuple()}.
 describe_project(Client, ProjectName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects/", aws_util:encode_uri(ProjectName), ""],
@@ -592,20 +680,14 @@ describe_project(Client, ProjectName, QueryMap, HeadersMap, Options0)
 -spec disassociate_device_from_placement(map(), binary() | list(), binary() | list(), binary() | list(), disassociate_device_from_placement_request()) ->
     {ok, disassociate_device_from_placement_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, disassociate_device_from_placement_errors(), tuple()}.
 disassociate_device_from_placement(Client, DeviceTemplateName, PlacementName, ProjectName, Input) ->
     disassociate_device_from_placement(Client, DeviceTemplateName, PlacementName, ProjectName, Input, []).
 
 -spec disassociate_device_from_placement(map(), binary() | list(), binary() | list(), binary() | list(), disassociate_device_from_placement_request(), proplists:proplist()) ->
     {ok, disassociate_device_from_placement_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, disassociate_device_from_placement_errors(), tuple()}.
 disassociate_device_from_placement(Client, DeviceTemplateName, PlacementName, ProjectName, Input0, Options0) ->
     Method = delete,
     Path = ["/projects/", aws_util:encode_uri(ProjectName), "/placements/", aws_util:encode_uri(PlacementName), "/devices/", aws_util:encode_uri(DeviceTemplateName), ""],
@@ -632,9 +714,7 @@ disassociate_device_from_placement(Client, DeviceTemplateName, PlacementName, Pr
 -spec get_devices_in_placement(map(), binary() | list(), binary() | list()) ->
     {ok, get_devices_in_placement_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_devices_in_placement_errors(), tuple()}.
 get_devices_in_placement(Client, PlacementName, ProjectName)
   when is_map(Client) ->
     get_devices_in_placement(Client, PlacementName, ProjectName, #{}, #{}).
@@ -642,9 +722,7 @@ get_devices_in_placement(Client, PlacementName, ProjectName)
 -spec get_devices_in_placement(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_devices_in_placement_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_devices_in_placement_errors(), tuple()}.
 get_devices_in_placement(Client, PlacementName, ProjectName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_devices_in_placement(Client, PlacementName, ProjectName, QueryMap, HeadersMap, []).
@@ -652,9 +730,7 @@ get_devices_in_placement(Client, PlacementName, ProjectName, QueryMap, HeadersMa
 -spec get_devices_in_placement(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_devices_in_placement_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_devices_in_placement_errors(), tuple()}.
 get_devices_in_placement(Client, PlacementName, ProjectName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects/", aws_util:encode_uri(ProjectName), "/placements/", aws_util:encode_uri(PlacementName), "/devices"],
@@ -675,9 +751,7 @@ get_devices_in_placement(Client, PlacementName, ProjectName, QueryMap, HeadersMa
 -spec list_placements(map(), binary() | list()) ->
     {ok, list_placements_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_placements_errors(), tuple()}.
 list_placements(Client, ProjectName)
   when is_map(Client) ->
     list_placements(Client, ProjectName, #{}, #{}).
@@ -685,9 +759,7 @@ list_placements(Client, ProjectName)
 -spec list_placements(map(), binary() | list(), map(), map()) ->
     {ok, list_placements_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_placements_errors(), tuple()}.
 list_placements(Client, ProjectName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_placements(Client, ProjectName, QueryMap, HeadersMap, []).
@@ -695,9 +767,7 @@ list_placements(Client, ProjectName, QueryMap, HeadersMap)
 -spec list_placements(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_placements_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_placements_errors(), tuple()}.
 list_placements(Client, ProjectName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects/", aws_util:encode_uri(ProjectName), "/placements"],
@@ -724,8 +794,7 @@ list_placements(Client, ProjectName, QueryMap, HeadersMap, Options0)
 -spec list_projects(map()) ->
     {ok, list_projects_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_projects_errors(), tuple()}.
 list_projects(Client)
   when is_map(Client) ->
     list_projects(Client, #{}, #{}).
@@ -733,8 +802,7 @@ list_projects(Client)
 -spec list_projects(map(), map(), map()) ->
     {ok, list_projects_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_projects_errors(), tuple()}.
 list_projects(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_projects(Client, QueryMap, HeadersMap, []).
@@ -742,8 +810,7 @@ list_projects(Client, QueryMap, HeadersMap)
 -spec list_projects(map(), map(), map(), proplists:proplist()) ->
     {ok, list_projects_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_projects_errors(), tuple()}.
 list_projects(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects"],
@@ -770,9 +837,7 @@ list_projects(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -780,9 +845,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -790,9 +853,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -818,18 +879,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -856,18 +913,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -898,20 +951,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_placement(map(), binary() | list(), binary() | list(), update_placement_request()) ->
     {ok, update_placement_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_placement_errors(), tuple()}.
 update_placement(Client, PlacementName, ProjectName, Input) ->
     update_placement(Client, PlacementName, ProjectName, Input, []).
 
 -spec update_placement(map(), binary() | list(), binary() | list(), update_placement_request(), proplists:proplist()) ->
     {ok, update_placement_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_placement_errors(), tuple()}.
 update_placement(Client, PlacementName, ProjectName, Input0, Options0) ->
     Method = put,
     Path = ["/projects/", aws_util:encode_uri(ProjectName), "/placements/", aws_util:encode_uri(PlacementName), ""],
@@ -945,20 +992,14 @@ update_placement(Client, PlacementName, ProjectName, Input0, Options0) ->
 -spec update_project(map(), binary() | list(), update_project_request()) ->
     {ok, update_project_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_project_errors(), tuple()}.
 update_project(Client, ProjectName, Input) ->
     update_project(Client, ProjectName, Input, []).
 
 -spec update_project(map(), binary() | list(), update_project_request(), proplists:proplist()) ->
     {ok, update_project_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_project_errors(), tuple()}.
 update_project(Client, ProjectName, Input0, Options0) ->
     Method = put,
     Path = ["/projects/", aws_util:encode_uri(ProjectName), ""],

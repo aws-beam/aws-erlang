@@ -102,6 +102,7 @@
 %% }
 -type update_file_system_protection_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% file_system_size() :: #{
 %%   <<"Timestamp">> => non_neg_integer(),
@@ -112,6 +113,7 @@
 %% }
 -type file_system_size() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_account_preferences_response() :: #{
 %%   <<"NextToken">> => string(),
@@ -119,17 +121,20 @@
 %% }
 -type describe_account_preferences_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"Tags">> := list(tag()())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_tags_request() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type delete_tags_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% mount_target_description() :: #{
@@ -146,11 +151,13 @@
 %% }
 -type mount_target_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% backup_policy_description() :: #{
 %%   <<"BackupPolicy">> => backup_policy()
 %% }
 -type backup_policy_description() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_account_preferences_request() :: #{
@@ -159,12 +166,14 @@
 %% }
 -type describe_account_preferences_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% file_system_limit_exceeded() :: #{
 %%   <<"ErrorCode">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type file_system_limit_exceeded() :: #{binary() => any()}.
+
 
 %% Example:
 %% root_directory() :: #{
@@ -173,6 +182,7 @@
 %% }
 -type root_directory() :: #{binary() => any()}.
 
+
 %% Example:
 %% unsupported_availability_zone() :: #{
 %%   <<"ErrorCode">> => string(),
@@ -180,11 +190,13 @@
 %% }
 -type unsupported_availability_zone() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_backup_policy_request() :: #{
 %%   <<"BackupPolicy">> := backup_policy()
 %% }
 -type put_backup_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_replication_configurations_response() :: #{
@@ -192,6 +204,7 @@
 %%   <<"Replications">> => list(replication_configuration_description()())
 %% }
 -type describe_replication_configurations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% file_system_already_exists() :: #{
@@ -201,12 +214,14 @@
 %% }
 -type file_system_already_exists() :: #{binary() => any()}.
 
+
 %% Example:
 %% incorrect_file_system_life_cycle_state() :: #{
 %%   <<"ErrorCode">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type incorrect_file_system_life_cycle_state() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_mount_target_request() :: #{
@@ -217,11 +232,13 @@
 %% }
 -type create_mount_target_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_lifecycle_configuration_request() :: #{
 %%   <<"LifecyclePolicies">> := list(lifecycle_policy()())
 %% }
 -type put_lifecycle_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% untag_resource_request() :: #{
@@ -229,11 +246,13 @@
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_account_preferences_response() :: #{
 %%   <<"ResourceIdPreference">> => resource_id_preference()
 %% }
 -type put_account_preferences_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% file_system_in_use() :: #{
@@ -241,6 +260,7 @@
 %%   <<"Message">> => string()
 %% }
 -type file_system_in_use() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_tags_response() :: #{
@@ -250,12 +270,14 @@
 %% }
 -type describe_tags_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% mount_target_conflict() :: #{
 %%   <<"ErrorCode">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type mount_target_conflict() :: #{binary() => any()}.
+
 
 %% Example:
 %% destination_to_create() :: #{
@@ -266,12 +288,14 @@
 %% }
 -type destination_to_create() :: #{binary() => any()}.
 
+
 %% Example:
 %% security_group_limit_exceeded() :: #{
 %%   <<"ErrorCode">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type security_group_limit_exceeded() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_mount_targets_response() :: #{
@@ -280,6 +304,7 @@
 %%   <<"NextMarker">> => string()
 %% }
 -type describe_mount_targets_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_access_point_request() :: #{
@@ -290,9 +315,11 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type create_access_point_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_replication_configuration_request() :: #{}
 -type delete_replication_configuration_request() :: #{}.
+
 
 %% Example:
 %% file_system_policy_description() :: #{
@@ -301,11 +328,13 @@
 %% }
 -type file_system_policy_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_tags_request() :: #{
 %%   <<"Tags">> := list(tag()())
 %% }
 -type create_tags_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% invalid_policy_exception() :: #{
@@ -314,14 +343,17 @@
 %% }
 -type invalid_policy_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_account_preferences_request() :: #{
 %%   <<"ResourceIdType">> := list(any())
 %% }
 -type put_account_preferences_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_mount_target_request() :: #{}
 -type delete_mount_target_request() :: #{}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -329,6 +361,7 @@
 %%   <<"Message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% posix_user() :: #{
@@ -338,12 +371,14 @@
 %% }
 -type posix_user() :: #{binary() => any()}.
 
+
 %% Example:
 %% availability_zones_mismatch() :: #{
 %%   <<"ErrorCode">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type availability_zones_mismatch() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_file_system_request() :: #{
@@ -352,12 +387,14 @@
 %% }
 -type update_file_system_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Value">> => string()
 %% }
 -type tag() :: #{binary() => any()}.
+
 
 %% Example:
 %% replication_already_exists() :: #{
@@ -366,6 +403,7 @@
 %% }
 -type replication_already_exists() :: #{binary() => any()}.
 
+
 %% Example:
 %% incorrect_mount_target_state() :: #{
 %%   <<"ErrorCode">> => string(),
@@ -373,11 +411,13 @@
 %% }
 -type incorrect_mount_target_state() :: #{binary() => any()}.
 
+
 %% Example:
 %% backup_policy() :: #{
 %%   <<"Status">> => list(any())
 %% }
 -type backup_policy() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_file_system_request() :: #{
@@ -393,11 +433,13 @@
 %% }
 -type create_file_system_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_mount_target_security_groups_response() :: #{
 %%   <<"SecurityGroups">> => list(string()())
 %% }
 -type describe_mount_target_security_groups_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% mount_target_not_found() :: #{
@@ -405,6 +447,7 @@
 %%   <<"Message">> => string()
 %% }
 -type mount_target_not_found() :: #{binary() => any()}.
+
 
 %% Example:
 %% file_system_description() :: #{
@@ -429,6 +472,7 @@
 %% }
 -type file_system_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_id_preference() :: #{
 %%   <<"ResourceIdType">> => list(any()),
@@ -436,11 +480,13 @@
 %% }
 -type resource_id_preference() :: #{binary() => any()}.
 
+
 %% Example:
 %% file_system_protection_description() :: #{
 %%   <<"ReplicationOverwriteProtection">> => list(any())
 %% }
 -type file_system_protection_description() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
@@ -449,12 +495,14 @@
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% dependency_timeout() :: #{
 %%   <<"ErrorCode">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type dependency_timeout() :: #{binary() => any()}.
+
 
 %% Example:
 %% access_point_limit_exceeded() :: #{
@@ -463,6 +511,7 @@
 %% }
 -type access_point_limit_exceeded() :: #{binary() => any()}.
 
+
 %% Example:
 %% network_interface_limit_exceeded() :: #{
 %%   <<"ErrorCode">> => string(),
@@ -470,11 +519,13 @@
 %% }
 -type network_interface_limit_exceeded() :: #{binary() => any()}.
 
+
 %% Example:
 %% modify_mount_target_security_groups_request() :: #{
 %%   <<"SecurityGroups">> => list(string()())
 %% }
 -type modify_mount_target_security_groups_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% file_system_not_found() :: #{
@@ -483,12 +534,14 @@
 %% }
 -type file_system_not_found() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_file_system_policy_request() :: #{
 %%   <<"BypassPolicyLockoutSafetyCheck">> => boolean(),
 %%   <<"Policy">> := string()
 %% }
 -type put_file_system_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% insufficient_throughput_capacity() :: #{
@@ -497,15 +550,18 @@
 %% }
 -type insufficient_throughput_capacity() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_point_not_found() :: #{
 %%   <<"ErrorCode">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type access_point_not_found() :: #{binary() => any()}.
+
 %% Example:
 %% delete_file_system_policy_request() :: #{}
 -type delete_file_system_policy_request() :: #{}.
+
 
 %% Example:
 %% access_point_already_exists() :: #{
@@ -514,6 +570,7 @@
 %%   <<"Message">> => string()
 %% }
 -type access_point_already_exists() :: #{binary() => any()}.
+
 
 %% Example:
 %% replication_configuration_description() :: #{
@@ -525,9 +582,11 @@
 %%   <<"SourceFileSystemRegion">> => string()
 %% }
 -type replication_configuration_description() :: #{binary() => any()}.
+
 %% Example:
 %% delete_access_point_request() :: #{}
 -type delete_access_point_request() :: #{}.
+
 
 %% Example:
 %% lifecycle_policy() :: #{
@@ -537,6 +596,7 @@
 %% }
 -type lifecycle_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% security_group_not_found() :: #{
 %%   <<"ErrorCode">> => string(),
@@ -544,11 +604,13 @@
 %% }
 -type security_group_not_found() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_replication_configuration_request() :: #{
 %%   <<"Destinations">> := list(destination_to_create()())
 %% }
 -type create_replication_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_file_systems_request() :: #{
@@ -559,12 +621,14 @@
 %% }
 -type describe_file_systems_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% bad_request() :: #{
 %%   <<"ErrorCode">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type bad_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_mount_targets_request() :: #{
@@ -576,15 +640,18 @@
 %% }
 -type describe_mount_targets_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_error() :: #{
 %%   <<"ErrorCode">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type internal_server_error() :: #{binary() => any()}.
+
 %% Example:
 %% describe_backup_policy_request() :: #{}
 -type describe_backup_policy_request() :: #{}.
+
 
 %% Example:
 %% describe_access_points_request() :: #{
@@ -595,15 +662,18 @@
 %% }
 -type describe_access_points_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"ErrorCode">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% describe_mount_target_security_groups_request() :: #{}
 -type describe_mount_target_security_groups_request() :: #{}.
+
 
 %% Example:
 %% list_tags_for_resource_request() :: #{
@@ -612,6 +682,7 @@
 %% }
 -type list_tags_for_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% ip_address_in_use() :: #{
 %%   <<"ErrorCode">> => string(),
@@ -619,12 +690,14 @@
 %% }
 -type ip_address_in_use() :: #{binary() => any()}.
 
+
 %% Example:
 %% policy_not_found() :: #{
 %%   <<"ErrorCode">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type policy_not_found() :: #{binary() => any()}.
+
 
 %% Example:
 %% destination() :: #{
@@ -635,6 +708,7 @@
 %% }
 -type destination() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_file_systems_response() :: #{
 %%   <<"FileSystems">> => list(file_system_description()()),
@@ -643,12 +717,14 @@
 %% }
 -type describe_file_systems_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"ErrorCode">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% too_many_requests() :: #{
@@ -657,12 +733,14 @@
 %% }
 -type too_many_requests() :: #{binary() => any()}.
 
+
 %% Example:
 %% replication_not_found() :: #{
 %%   <<"ErrorCode">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type replication_not_found() :: #{binary() => any()}.
+
 
 %% Example:
 %% creation_info() :: #{
@@ -672,12 +750,14 @@
 %% }
 -type creation_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% throughput_limit_exceeded() :: #{
 %%   <<"ErrorCode">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type throughput_limit_exceeded() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_tags_request() :: #{
@@ -686,6 +766,7 @@
 %% }
 -type describe_tags_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% no_free_addresses_in_subnet() :: #{
 %%   <<"ErrorCode">> => string(),
@@ -693,15 +774,18 @@
 %% }
 -type no_free_addresses_in_subnet() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_access_points_response() :: #{
 %%   <<"AccessPoints">> => list(access_point_description()()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_access_points_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_lifecycle_configuration_request() :: #{}
 -type describe_lifecycle_configuration_request() :: #{}.
+
 
 %% Example:
 %% describe_replication_configurations_request() :: #{
@@ -710,15 +794,18 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_replication_configurations_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_file_system_policy_request() :: #{}
 -type describe_file_system_policy_request() :: #{}.
+
 
 %% Example:
 %% lifecycle_configuration_description() :: #{
 %%   <<"LifecyclePolicies">> => list(lifecycle_policy()())
 %% }
 -type lifecycle_configuration_description() :: #{binary() => any()}.
+
 
 %% Example:
 %% access_point_description() :: #{
@@ -735,15 +822,228 @@
 %% }
 -type access_point_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% subnet_not_found() :: #{
 %%   <<"ErrorCode">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type subnet_not_found() :: #{binary() => any()}.
+
 %% Example:
 %% delete_file_system_request() :: #{}
 -type delete_file_system_request() :: #{}.
+
+-type create_access_point_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    bad_request() | 
+    access_point_already_exists() | 
+    file_system_not_found() | 
+    access_point_limit_exceeded() | 
+    incorrect_file_system_life_cycle_state().
+
+-type create_file_system_errors() ::
+    throughput_limit_exceeded() | 
+    internal_server_error() | 
+    bad_request() | 
+    insufficient_throughput_capacity() | 
+    file_system_already_exists() | 
+    unsupported_availability_zone() | 
+    file_system_limit_exceeded().
+
+-type create_mount_target_errors() ::
+    subnet_not_found() | 
+    no_free_addresses_in_subnet() | 
+    ip_address_in_use() | 
+    internal_server_error() | 
+    bad_request() | 
+    security_group_not_found() | 
+    file_system_not_found() | 
+    network_interface_limit_exceeded() | 
+    availability_zones_mismatch() | 
+    security_group_limit_exceeded() | 
+    mount_target_conflict() | 
+    incorrect_file_system_life_cycle_state() | 
+    unsupported_availability_zone().
+
+-type create_replication_configuration_errors() ::
+    throughput_limit_exceeded() | 
+    replication_not_found() | 
+    validation_exception() | 
+    internal_server_error() | 
+    bad_request() | 
+    insufficient_throughput_capacity() | 
+    file_system_not_found() | 
+    conflict_exception() | 
+    incorrect_file_system_life_cycle_state() | 
+    unsupported_availability_zone() | 
+    file_system_limit_exceeded().
+
+-type create_tags_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    file_system_not_found().
+
+-type delete_access_point_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    access_point_not_found().
+
+-type delete_file_system_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    file_system_not_found() | 
+    file_system_in_use().
+
+-type delete_file_system_policy_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    file_system_not_found() | 
+    incorrect_file_system_life_cycle_state().
+
+-type delete_mount_target_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    dependency_timeout() | 
+    mount_target_not_found().
+
+-type delete_replication_configuration_errors() ::
+    replication_not_found() | 
+    internal_server_error() | 
+    bad_request() | 
+    file_system_not_found().
+
+-type delete_tags_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    file_system_not_found().
+
+-type describe_access_points_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    access_point_not_found() | 
+    file_system_not_found().
+
+-type describe_account_preferences_errors() ::
+    internal_server_error().
+
+-type describe_backup_policy_errors() ::
+    policy_not_found() | 
+    validation_exception() | 
+    internal_server_error() | 
+    bad_request() | 
+    file_system_not_found().
+
+-type describe_file_system_policy_errors() ::
+    policy_not_found() | 
+    internal_server_error() | 
+    bad_request() | 
+    file_system_not_found().
+
+-type describe_file_systems_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    file_system_not_found().
+
+-type describe_lifecycle_configuration_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    file_system_not_found().
+
+-type describe_mount_target_security_groups_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    mount_target_not_found() | 
+    incorrect_mount_target_state().
+
+-type describe_mount_targets_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    access_point_not_found() | 
+    file_system_not_found() | 
+    mount_target_not_found().
+
+-type describe_replication_configurations_errors() ::
+    replication_not_found() | 
+    validation_exception() | 
+    internal_server_error() | 
+    bad_request() | 
+    file_system_not_found().
+
+-type describe_tags_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    file_system_not_found().
+
+-type list_tags_for_resource_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    access_point_not_found() | 
+    file_system_not_found().
+
+-type modify_mount_target_security_groups_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    security_group_not_found() | 
+    mount_target_not_found() | 
+    incorrect_mount_target_state() | 
+    security_group_limit_exceeded().
+
+-type put_account_preferences_errors() ::
+    internal_server_error() | 
+    bad_request().
+
+-type put_backup_policy_errors() ::
+    validation_exception() | 
+    internal_server_error() | 
+    bad_request() | 
+    file_system_not_found() | 
+    incorrect_file_system_life_cycle_state().
+
+-type put_file_system_policy_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    file_system_not_found() | 
+    invalid_policy_exception() | 
+    incorrect_file_system_life_cycle_state().
+
+-type put_lifecycle_configuration_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    file_system_not_found() | 
+    incorrect_file_system_life_cycle_state().
+
+-type tag_resource_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    access_point_not_found() | 
+    file_system_not_found().
+
+-type untag_resource_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    access_point_not_found() | 
+    file_system_not_found().
+
+-type update_file_system_errors() ::
+    throughput_limit_exceeded() | 
+    too_many_requests() | 
+    internal_server_error() | 
+    bad_request() | 
+    insufficient_throughput_capacity() | 
+    file_system_not_found() | 
+    incorrect_file_system_life_cycle_state().
+
+-type update_file_system_protection_errors() ::
+    throughput_limit_exceeded() | 
+    too_many_requests() | 
+    internal_server_error() | 
+    bad_request() | 
+    insufficient_throughput_capacity() | 
+    file_system_not_found() | 
+    replication_already_exists() | 
+    incorrect_file_system_life_cycle_state().
 
 %%====================================================================
 %% API
@@ -791,26 +1091,14 @@
 -spec create_access_point(map(), create_access_point_request()) ->
     {ok, access_point_description(), tuple()} |
     {error, any()} |
-    {error, access_point_already_exists(), tuple()} |
-    {error, access_point_limit_exceeded(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incorrect_file_system_life_cycle_state(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_access_point_errors(), tuple()}.
 create_access_point(Client, Input) ->
     create_access_point(Client, Input, []).
 
 -spec create_access_point(map(), create_access_point_request(), proplists:proplist()) ->
     {ok, access_point_description(), tuple()} |
     {error, any()} |
-    {error, access_point_already_exists(), tuple()} |
-    {error, access_point_limit_exceeded(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incorrect_file_system_life_cycle_state(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_access_point_errors(), tuple()}.
 create_access_point(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-02-01/access-points"],
@@ -932,26 +1220,14 @@ create_access_point(Client, Input0, Options0) ->
 -spec create_file_system(map(), create_file_system_request()) ->
     {ok, file_system_description(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_already_exists(), tuple()} |
-    {error, file_system_limit_exceeded(), tuple()} |
-    {error, insufficient_throughput_capacity(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, throughput_limit_exceeded(), tuple()} |
-    {error, unsupported_availability_zone(), tuple()}.
+    {error, create_file_system_errors(), tuple()}.
 create_file_system(Client, Input) ->
     create_file_system(Client, Input, []).
 
 -spec create_file_system(map(), create_file_system_request(), proplists:proplist()) ->
     {ok, file_system_description(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_already_exists(), tuple()} |
-    {error, file_system_limit_exceeded(), tuple()} |
-    {error, insufficient_throughput_capacity(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, throughput_limit_exceeded(), tuple()} |
-    {error, unsupported_availability_zone(), tuple()}.
+    {error, create_file_system_errors(), tuple()}.
 create_file_system(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-02-01/file-systems"],
@@ -1123,38 +1399,14 @@ create_file_system(Client, Input0, Options0) ->
 -spec create_mount_target(map(), create_mount_target_request()) ->
     {ok, mount_target_description(), tuple()} |
     {error, any()} |
-    {error, availability_zones_mismatch(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incorrect_file_system_life_cycle_state(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, ip_address_in_use(), tuple()} |
-    {error, mount_target_conflict(), tuple()} |
-    {error, network_interface_limit_exceeded(), tuple()} |
-    {error, no_free_addresses_in_subnet(), tuple()} |
-    {error, security_group_limit_exceeded(), tuple()} |
-    {error, security_group_not_found(), tuple()} |
-    {error, subnet_not_found(), tuple()} |
-    {error, unsupported_availability_zone(), tuple()}.
+    {error, create_mount_target_errors(), tuple()}.
 create_mount_target(Client, Input) ->
     create_mount_target(Client, Input, []).
 
 -spec create_mount_target(map(), create_mount_target_request(), proplists:proplist()) ->
     {ok, mount_target_description(), tuple()} |
     {error, any()} |
-    {error, availability_zones_mismatch(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incorrect_file_system_life_cycle_state(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, ip_address_in_use(), tuple()} |
-    {error, mount_target_conflict(), tuple()} |
-    {error, network_interface_limit_exceeded(), tuple()} |
-    {error, no_free_addresses_in_subnet(), tuple()} |
-    {error, security_group_limit_exceeded(), tuple()} |
-    {error, security_group_not_found(), tuple()} |
-    {error, subnet_not_found(), tuple()} |
-    {error, unsupported_availability_zone(), tuple()}.
+    {error, create_mount_target_errors(), tuple()}.
 create_mount_target(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-02-01/mount-targets"],
@@ -1270,34 +1522,14 @@ create_mount_target(Client, Input0, Options0) ->
 -spec create_replication_configuration(map(), binary() | list(), create_replication_configuration_request()) ->
     {ok, replication_configuration_description(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, file_system_limit_exceeded(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incorrect_file_system_life_cycle_state(), tuple()} |
-    {error, insufficient_throughput_capacity(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, replication_not_found(), tuple()} |
-    {error, throughput_limit_exceeded(), tuple()} |
-    {error, unsupported_availability_zone(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_replication_configuration_errors(), tuple()}.
 create_replication_configuration(Client, SourceFileSystemId, Input) ->
     create_replication_configuration(Client, SourceFileSystemId, Input, []).
 
 -spec create_replication_configuration(map(), binary() | list(), create_replication_configuration_request(), proplists:proplist()) ->
     {ok, replication_configuration_description(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, file_system_limit_exceeded(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incorrect_file_system_life_cycle_state(), tuple()} |
-    {error, insufficient_throughput_capacity(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, replication_not_found(), tuple()} |
-    {error, throughput_limit_exceeded(), tuple()} |
-    {error, unsupported_availability_zone(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_replication_configuration_errors(), tuple()}.
 create_replication_configuration(Client, SourceFileSystemId, Input0, Options0) ->
     Method = post,
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(SourceFileSystemId), "/replication-configuration"],
@@ -1341,18 +1573,14 @@ create_replication_configuration(Client, SourceFileSystemId, Input0, Options0) -
 -spec create_tags(map(), binary() | list(), create_tags_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, create_tags_errors(), tuple()}.
 create_tags(Client, FileSystemId, Input) ->
     create_tags(Client, FileSystemId, Input, []).
 
 -spec create_tags(map(), binary() | list(), create_tags_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, create_tags_errors(), tuple()}.
 create_tags(Client, FileSystemId, Input0, Options0) ->
     Method = post,
     Path = ["/2015-02-01/create-tags/", aws_util:encode_uri(FileSystemId), ""],
@@ -1387,18 +1615,14 @@ create_tags(Client, FileSystemId, Input0, Options0) ->
 -spec delete_access_point(map(), binary() | list(), delete_access_point_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_point_not_found(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, delete_access_point_errors(), tuple()}.
 delete_access_point(Client, AccessPointId, Input) ->
     delete_access_point(Client, AccessPointId, Input, []).
 
 -spec delete_access_point(map(), binary() | list(), delete_access_point_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_point_not_found(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, delete_access_point_errors(), tuple()}.
 delete_access_point(Client, AccessPointId, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-02-01/access-points/", aws_util:encode_uri(AccessPointId), ""],
@@ -1458,20 +1682,14 @@ delete_access_point(Client, AccessPointId, Input0, Options0) ->
 -spec delete_file_system(map(), binary() | list(), delete_file_system_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_in_use(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, delete_file_system_errors(), tuple()}.
 delete_file_system(Client, FileSystemId, Input) ->
     delete_file_system(Client, FileSystemId, Input, []).
 
 -spec delete_file_system(map(), binary() | list(), delete_file_system_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_in_use(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, delete_file_system_errors(), tuple()}.
 delete_file_system(Client, FileSystemId, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), ""],
@@ -1507,20 +1725,14 @@ delete_file_system(Client, FileSystemId, Input0, Options0) ->
 -spec delete_file_system_policy(map(), binary() | list(), delete_file_system_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incorrect_file_system_life_cycle_state(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, delete_file_system_policy_errors(), tuple()}.
 delete_file_system_policy(Client, FileSystemId, Input) ->
     delete_file_system_policy(Client, FileSystemId, Input, []).
 
 -spec delete_file_system_policy(map(), binary() | list(), delete_file_system_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incorrect_file_system_life_cycle_state(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, delete_file_system_policy_errors(), tuple()}.
 delete_file_system_policy(Client, FileSystemId, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), "/policy"],
@@ -1578,20 +1790,14 @@ delete_file_system_policy(Client, FileSystemId, Input0, Options0) ->
 -spec delete_mount_target(map(), binary() | list(), delete_mount_target_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, dependency_timeout(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, mount_target_not_found(), tuple()}.
+    {error, delete_mount_target_errors(), tuple()}.
 delete_mount_target(Client, MountTargetId, Input) ->
     delete_mount_target(Client, MountTargetId, Input, []).
 
 -spec delete_mount_target(map(), binary() | list(), delete_mount_target_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, dependency_timeout(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, mount_target_not_found(), tuple()}.
+    {error, delete_mount_target_errors(), tuple()}.
 delete_mount_target(Client, MountTargetId, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-02-01/mount-targets/", aws_util:encode_uri(MountTargetId), ""],
@@ -1629,20 +1835,14 @@ delete_mount_target(Client, MountTargetId, Input0, Options0) ->
 -spec delete_replication_configuration(map(), binary() | list(), delete_replication_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, replication_not_found(), tuple()}.
+    {error, delete_replication_configuration_errors(), tuple()}.
 delete_replication_configuration(Client, SourceFileSystemId, Input) ->
     delete_replication_configuration(Client, SourceFileSystemId, Input, []).
 
 -spec delete_replication_configuration(map(), binary() | list(), delete_replication_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, replication_not_found(), tuple()}.
+    {error, delete_replication_configuration_errors(), tuple()}.
 delete_replication_configuration(Client, SourceFileSystemId, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(SourceFileSystemId), "/replication-configuration"],
@@ -1687,18 +1887,14 @@ delete_replication_configuration(Client, SourceFileSystemId, Input0, Options0) -
 -spec delete_tags(map(), binary() | list(), delete_tags_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, delete_tags_errors(), tuple()}.
 delete_tags(Client, FileSystemId, Input) ->
     delete_tags(Client, FileSystemId, Input, []).
 
 -spec delete_tags(map(), binary() | list(), delete_tags_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, delete_tags_errors(), tuple()}.
 delete_tags(Client, FileSystemId, Input0, Options0) ->
     Method = post,
     Path = ["/2015-02-01/delete-tags/", aws_util:encode_uri(FileSystemId), ""],
@@ -1736,10 +1932,7 @@ delete_tags(Client, FileSystemId, Input0, Options0) ->
 -spec describe_access_points(map()) ->
     {ok, describe_access_points_response(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_access_points_errors(), tuple()}.
 describe_access_points(Client)
   when is_map(Client) ->
     describe_access_points(Client, #{}, #{}).
@@ -1747,10 +1940,7 @@ describe_access_points(Client)
 -spec describe_access_points(map(), map(), map()) ->
     {ok, describe_access_points_response(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_access_points_errors(), tuple()}.
 describe_access_points(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_access_points(Client, QueryMap, HeadersMap, []).
@@ -1758,10 +1948,7 @@ describe_access_points(Client, QueryMap, HeadersMap)
 -spec describe_access_points(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_access_points_response(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_access_points_errors(), tuple()}.
 describe_access_points(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-02-01/access-points"],
@@ -1791,7 +1978,7 @@ describe_access_points(Client, QueryMap, HeadersMap, Options0)
 -spec describe_account_preferences(map()) ->
     {ok, describe_account_preferences_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_account_preferences_errors(), tuple()}.
 describe_account_preferences(Client)
   when is_map(Client) ->
     describe_account_preferences(Client, #{}, #{}).
@@ -1799,7 +1986,7 @@ describe_account_preferences(Client)
 -spec describe_account_preferences(map(), map(), map()) ->
     {ok, describe_account_preferences_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_account_preferences_errors(), tuple()}.
 describe_account_preferences(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_account_preferences(Client, QueryMap, HeadersMap, []).
@@ -1807,7 +1994,7 @@ describe_account_preferences(Client, QueryMap, HeadersMap)
 -spec describe_account_preferences(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_account_preferences_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_account_preferences_errors(), tuple()}.
 describe_account_preferences(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-02-01/account-preferences"],
@@ -1828,11 +2015,7 @@ describe_account_preferences(Client, QueryMap, HeadersMap, Options0)
 -spec describe_backup_policy(map(), binary() | list()) ->
     {ok, backup_policy_description(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, policy_not_found(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_backup_policy_errors(), tuple()}.
 describe_backup_policy(Client, FileSystemId)
   when is_map(Client) ->
     describe_backup_policy(Client, FileSystemId, #{}, #{}).
@@ -1840,11 +2023,7 @@ describe_backup_policy(Client, FileSystemId)
 -spec describe_backup_policy(map(), binary() | list(), map(), map()) ->
     {ok, backup_policy_description(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, policy_not_found(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_backup_policy_errors(), tuple()}.
 describe_backup_policy(Client, FileSystemId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_backup_policy(Client, FileSystemId, QueryMap, HeadersMap, []).
@@ -1852,11 +2031,7 @@ describe_backup_policy(Client, FileSystemId, QueryMap, HeadersMap)
 -spec describe_backup_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, backup_policy_description(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, policy_not_found(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_backup_policy_errors(), tuple()}.
 describe_backup_policy(Client, FileSystemId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), "/backup-policy"],
@@ -1881,10 +2056,7 @@ describe_backup_policy(Client, FileSystemId, QueryMap, HeadersMap, Options0)
 -spec describe_file_system_policy(map(), binary() | list()) ->
     {ok, file_system_policy_description(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, policy_not_found(), tuple()}.
+    {error, describe_file_system_policy_errors(), tuple()}.
 describe_file_system_policy(Client, FileSystemId)
   when is_map(Client) ->
     describe_file_system_policy(Client, FileSystemId, #{}, #{}).
@@ -1892,10 +2064,7 @@ describe_file_system_policy(Client, FileSystemId)
 -spec describe_file_system_policy(map(), binary() | list(), map(), map()) ->
     {ok, file_system_policy_description(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, policy_not_found(), tuple()}.
+    {error, describe_file_system_policy_errors(), tuple()}.
 describe_file_system_policy(Client, FileSystemId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_file_system_policy(Client, FileSystemId, QueryMap, HeadersMap, []).
@@ -1903,10 +2072,7 @@ describe_file_system_policy(Client, FileSystemId, QueryMap, HeadersMap)
 -spec describe_file_system_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, file_system_policy_description(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, policy_not_found(), tuple()}.
+    {error, describe_file_system_policy_errors(), tuple()}.
 describe_file_system_policy(Client, FileSystemId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), "/policy"],
@@ -1964,9 +2130,7 @@ describe_file_system_policy(Client, FileSystemId, QueryMap, HeadersMap, Options0
 -spec describe_file_systems(map()) ->
     {ok, describe_file_systems_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_file_systems_errors(), tuple()}.
 describe_file_systems(Client)
   when is_map(Client) ->
     describe_file_systems(Client, #{}, #{}).
@@ -1974,9 +2138,7 @@ describe_file_systems(Client)
 -spec describe_file_systems(map(), map(), map()) ->
     {ok, describe_file_systems_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_file_systems_errors(), tuple()}.
 describe_file_systems(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_file_systems(Client, QueryMap, HeadersMap, []).
@@ -1984,9 +2146,7 @@ describe_file_systems(Client, QueryMap, HeadersMap)
 -spec describe_file_systems(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_file_systems_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_file_systems_errors(), tuple()}.
 describe_file_systems(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-02-01/file-systems"],
@@ -2026,9 +2186,7 @@ describe_file_systems(Client, QueryMap, HeadersMap, Options0)
 -spec describe_lifecycle_configuration(map(), binary() | list()) ->
     {ok, lifecycle_configuration_description(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_lifecycle_configuration_errors(), tuple()}.
 describe_lifecycle_configuration(Client, FileSystemId)
   when is_map(Client) ->
     describe_lifecycle_configuration(Client, FileSystemId, #{}, #{}).
@@ -2036,9 +2194,7 @@ describe_lifecycle_configuration(Client, FileSystemId)
 -spec describe_lifecycle_configuration(map(), binary() | list(), map(), map()) ->
     {ok, lifecycle_configuration_description(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_lifecycle_configuration_errors(), tuple()}.
 describe_lifecycle_configuration(Client, FileSystemId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_lifecycle_configuration(Client, FileSystemId, QueryMap, HeadersMap, []).
@@ -2046,9 +2202,7 @@ describe_lifecycle_configuration(Client, FileSystemId, QueryMap, HeadersMap)
 -spec describe_lifecycle_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, lifecycle_configuration_description(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_lifecycle_configuration_errors(), tuple()}.
 describe_lifecycle_configuration(Client, FileSystemId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), "/lifecycle-configuration"],
@@ -2084,10 +2238,7 @@ describe_lifecycle_configuration(Client, FileSystemId, QueryMap, HeadersMap, Opt
 -spec describe_mount_target_security_groups(map(), binary() | list()) ->
     {ok, describe_mount_target_security_groups_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, incorrect_mount_target_state(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, mount_target_not_found(), tuple()}.
+    {error, describe_mount_target_security_groups_errors(), tuple()}.
 describe_mount_target_security_groups(Client, MountTargetId)
   when is_map(Client) ->
     describe_mount_target_security_groups(Client, MountTargetId, #{}, #{}).
@@ -2095,10 +2246,7 @@ describe_mount_target_security_groups(Client, MountTargetId)
 -spec describe_mount_target_security_groups(map(), binary() | list(), map(), map()) ->
     {ok, describe_mount_target_security_groups_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, incorrect_mount_target_state(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, mount_target_not_found(), tuple()}.
+    {error, describe_mount_target_security_groups_errors(), tuple()}.
 describe_mount_target_security_groups(Client, MountTargetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_mount_target_security_groups(Client, MountTargetId, QueryMap, HeadersMap, []).
@@ -2106,10 +2254,7 @@ describe_mount_target_security_groups(Client, MountTargetId, QueryMap, HeadersMa
 -spec describe_mount_target_security_groups(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_mount_target_security_groups_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, incorrect_mount_target_state(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, mount_target_not_found(), tuple()}.
+    {error, describe_mount_target_security_groups_errors(), tuple()}.
 describe_mount_target_security_groups(Client, MountTargetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-02-01/mount-targets/", aws_util:encode_uri(MountTargetId), "/security-groups"],
@@ -2142,11 +2287,7 @@ describe_mount_target_security_groups(Client, MountTargetId, QueryMap, HeadersMa
 -spec describe_mount_targets(map()) ->
     {ok, describe_mount_targets_response(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, mount_target_not_found(), tuple()}.
+    {error, describe_mount_targets_errors(), tuple()}.
 describe_mount_targets(Client)
   when is_map(Client) ->
     describe_mount_targets(Client, #{}, #{}).
@@ -2154,11 +2295,7 @@ describe_mount_targets(Client)
 -spec describe_mount_targets(map(), map(), map()) ->
     {ok, describe_mount_targets_response(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, mount_target_not_found(), tuple()}.
+    {error, describe_mount_targets_errors(), tuple()}.
 describe_mount_targets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_mount_targets(Client, QueryMap, HeadersMap, []).
@@ -2166,11 +2303,7 @@ describe_mount_targets(Client, QueryMap, HeadersMap)
 -spec describe_mount_targets(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_mount_targets_response(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, mount_target_not_found(), tuple()}.
+    {error, describe_mount_targets_errors(), tuple()}.
 describe_mount_targets(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-02-01/mount-targets"],
@@ -2204,11 +2337,7 @@ describe_mount_targets(Client, QueryMap, HeadersMap, Options0)
 -spec describe_replication_configurations(map()) ->
     {ok, describe_replication_configurations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, replication_not_found(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_replication_configurations_errors(), tuple()}.
 describe_replication_configurations(Client)
   when is_map(Client) ->
     describe_replication_configurations(Client, #{}, #{}).
@@ -2216,11 +2345,7 @@ describe_replication_configurations(Client)
 -spec describe_replication_configurations(map(), map(), map()) ->
     {ok, describe_replication_configurations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, replication_not_found(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_replication_configurations_errors(), tuple()}.
 describe_replication_configurations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_replication_configurations(Client, QueryMap, HeadersMap, []).
@@ -2228,11 +2353,7 @@ describe_replication_configurations(Client, QueryMap, HeadersMap)
 -spec describe_replication_configurations(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_replication_configurations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, replication_not_found(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_replication_configurations_errors(), tuple()}.
 describe_replication_configurations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-02-01/file-systems/replication-configurations"],
@@ -2275,9 +2396,7 @@ describe_replication_configurations(Client, QueryMap, HeadersMap, Options0)
 -spec describe_tags(map(), binary() | list()) ->
     {ok, describe_tags_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_tags_errors(), tuple()}.
 describe_tags(Client, FileSystemId)
   when is_map(Client) ->
     describe_tags(Client, FileSystemId, #{}, #{}).
@@ -2285,9 +2404,7 @@ describe_tags(Client, FileSystemId)
 -spec describe_tags(map(), binary() | list(), map(), map()) ->
     {ok, describe_tags_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_tags_errors(), tuple()}.
 describe_tags(Client, FileSystemId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_tags(Client, FileSystemId, QueryMap, HeadersMap, []).
@@ -2295,9 +2412,7 @@ describe_tags(Client, FileSystemId, QueryMap, HeadersMap)
 -spec describe_tags(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_tags_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_tags_errors(), tuple()}.
 describe_tags(Client, FileSystemId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-02-01/tags/", aws_util:encode_uri(FileSystemId), ""],
@@ -2329,10 +2444,7 @@ describe_tags(Client, FileSystemId, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceId)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceId, #{}, #{}).
@@ -2340,10 +2452,7 @@ list_tags_for_resource(Client, ResourceId)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceId, QueryMap, HeadersMap, []).
@@ -2351,10 +2460,7 @@ list_tags_for_resource(Client, ResourceId, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-02-01/resource-tags/", aws_util:encode_uri(ResourceId), ""],
@@ -2401,24 +2507,14 @@ list_tags_for_resource(Client, ResourceId, QueryMap, HeadersMap, Options0)
 -spec modify_mount_target_security_groups(map(), binary() | list(), modify_mount_target_security_groups_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, incorrect_mount_target_state(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, mount_target_not_found(), tuple()} |
-    {error, security_group_limit_exceeded(), tuple()} |
-    {error, security_group_not_found(), tuple()}.
+    {error, modify_mount_target_security_groups_errors(), tuple()}.
 modify_mount_target_security_groups(Client, MountTargetId, Input) ->
     modify_mount_target_security_groups(Client, MountTargetId, Input, []).
 
 -spec modify_mount_target_security_groups(map(), binary() | list(), modify_mount_target_security_groups_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, incorrect_mount_target_state(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, mount_target_not_found(), tuple()} |
-    {error, security_group_limit_exceeded(), tuple()} |
-    {error, security_group_not_found(), tuple()}.
+    {error, modify_mount_target_security_groups_errors(), tuple()}.
 modify_mount_target_security_groups(Client, MountTargetId, Input0, Options0) ->
     Method = put,
     Path = ["/2015-02-01/mount-targets/", aws_util:encode_uri(MountTargetId), "/security-groups"],
@@ -2463,16 +2559,14 @@ modify_mount_target_security_groups(Client, MountTargetId, Input0, Options0) ->
 -spec put_account_preferences(map(), put_account_preferences_request()) ->
     {ok, put_account_preferences_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, put_account_preferences_errors(), tuple()}.
 put_account_preferences(Client, Input) ->
     put_account_preferences(Client, Input, []).
 
 -spec put_account_preferences(map(), put_account_preferences_request(), proplists:proplist()) ->
     {ok, put_account_preferences_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, put_account_preferences_errors(), tuple()}.
 put_account_preferences(Client, Input0, Options0) ->
     Method = put,
     Path = ["/2015-02-01/account-preferences"],
@@ -2501,22 +2595,14 @@ put_account_preferences(Client, Input0, Options0) ->
 -spec put_backup_policy(map(), binary() | list(), put_backup_policy_request()) ->
     {ok, backup_policy_description(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incorrect_file_system_life_cycle_state(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_backup_policy_errors(), tuple()}.
 put_backup_policy(Client, FileSystemId, Input) ->
     put_backup_policy(Client, FileSystemId, Input, []).
 
 -spec put_backup_policy(map(), binary() | list(), put_backup_policy_request(), proplists:proplist()) ->
     {ok, backup_policy_description(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incorrect_file_system_life_cycle_state(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_backup_policy_errors(), tuple()}.
 put_backup_policy(Client, FileSystemId, Input0, Options0) ->
     Method = put,
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), "/backup-policy"],
@@ -2562,22 +2648,14 @@ put_backup_policy(Client, FileSystemId, Input0, Options0) ->
 -spec put_file_system_policy(map(), binary() | list(), put_file_system_policy_request()) ->
     {ok, file_system_policy_description(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incorrect_file_system_life_cycle_state(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_policy_exception(), tuple()}.
+    {error, put_file_system_policy_errors(), tuple()}.
 put_file_system_policy(Client, FileSystemId, Input) ->
     put_file_system_policy(Client, FileSystemId, Input, []).
 
 -spec put_file_system_policy(map(), binary() | list(), put_file_system_policy_request(), proplists:proplist()) ->
     {ok, file_system_policy_description(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incorrect_file_system_life_cycle_state(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_policy_exception(), tuple()}.
+    {error, put_file_system_policy_errors(), tuple()}.
 put_file_system_policy(Client, FileSystemId, Input0, Options0) ->
     Method = put,
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), "/policy"],
@@ -2672,20 +2750,14 @@ put_file_system_policy(Client, FileSystemId, Input0, Options0) ->
 -spec put_lifecycle_configuration(map(), binary() | list(), put_lifecycle_configuration_request()) ->
     {ok, lifecycle_configuration_description(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incorrect_file_system_life_cycle_state(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, put_lifecycle_configuration_errors(), tuple()}.
 put_lifecycle_configuration(Client, FileSystemId, Input) ->
     put_lifecycle_configuration(Client, FileSystemId, Input, []).
 
 -spec put_lifecycle_configuration(map(), binary() | list(), put_lifecycle_configuration_request(), proplists:proplist()) ->
     {ok, lifecycle_configuration_description(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incorrect_file_system_life_cycle_state(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, put_lifecycle_configuration_errors(), tuple()}.
 put_lifecycle_configuration(Client, FileSystemId, Input0, Options0) ->
     Method = put,
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), "/lifecycle-configuration"],
@@ -2718,20 +2790,14 @@ put_lifecycle_configuration(Client, FileSystemId, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_point_not_found(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceId, Input) ->
     tag_resource(Client, ResourceId, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_point_not_found(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceId, Input0, Options0) ->
     Method = post,
     Path = ["/2015-02-01/resource-tags/", aws_util:encode_uri(ResourceId), ""],
@@ -2764,20 +2830,14 @@ tag_resource(Client, ResourceId, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_point_not_found(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceId, Input) ->
     untag_resource(Client, ResourceId, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_point_not_found(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceId, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-02-01/resource-tags/", aws_util:encode_uri(ResourceId), ""],
@@ -2807,26 +2867,14 @@ untag_resource(Client, ResourceId, Input0, Options0) ->
 -spec update_file_system(map(), binary() | list(), update_file_system_request()) ->
     {ok, file_system_description(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incorrect_file_system_life_cycle_state(), tuple()} |
-    {error, insufficient_throughput_capacity(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, throughput_limit_exceeded(), tuple()} |
-    {error, too_many_requests(), tuple()}.
+    {error, update_file_system_errors(), tuple()}.
 update_file_system(Client, FileSystemId, Input) ->
     update_file_system(Client, FileSystemId, Input, []).
 
 -spec update_file_system(map(), binary() | list(), update_file_system_request(), proplists:proplist()) ->
     {ok, file_system_description(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incorrect_file_system_life_cycle_state(), tuple()} |
-    {error, insufficient_throughput_capacity(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, throughput_limit_exceeded(), tuple()} |
-    {error, too_many_requests(), tuple()}.
+    {error, update_file_system_errors(), tuple()}.
 update_file_system(Client, FileSystemId, Input0, Options0) ->
     Method = put,
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), ""],
@@ -2856,28 +2904,14 @@ update_file_system(Client, FileSystemId, Input0, Options0) ->
 -spec update_file_system_protection(map(), binary() | list(), update_file_system_protection_request()) ->
     {ok, file_system_protection_description(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incorrect_file_system_life_cycle_state(), tuple()} |
-    {error, insufficient_throughput_capacity(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, replication_already_exists(), tuple()} |
-    {error, throughput_limit_exceeded(), tuple()} |
-    {error, too_many_requests(), tuple()}.
+    {error, update_file_system_protection_errors(), tuple()}.
 update_file_system_protection(Client, FileSystemId, Input) ->
     update_file_system_protection(Client, FileSystemId, Input, []).
 
 -spec update_file_system_protection(map(), binary() | list(), update_file_system_protection_request(), proplists:proplist()) ->
     {ok, file_system_protection_description(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incorrect_file_system_life_cycle_state(), tuple()} |
-    {error, insufficient_throughput_capacity(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, replication_already_exists(), tuple()} |
-    {error, throughput_limit_exceeded(), tuple()} |
-    {error, too_many_requests(), tuple()}.
+    {error, update_file_system_protection_errors(), tuple()}.
 update_file_system_protection(Client, FileSystemId, Input0, Options0) ->
     Method = put,
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), "/protection"],

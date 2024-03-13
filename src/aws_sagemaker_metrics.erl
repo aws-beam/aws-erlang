@@ -25,6 +25,7 @@
 %% }
 -type batch_put_metrics_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_put_metrics_request() :: #{
 %%   <<"MetricData">> := list(raw_metric_data()()),
@@ -32,11 +33,13 @@
 %% }
 -type batch_put_metrics_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_put_metrics_response() :: #{
 %%   <<"Errors">> => list(batch_put_metrics_error()())
 %% }
 -type batch_put_metrics_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% raw_metric_data() :: #{
@@ -46,6 +49,8 @@
 %%   <<"Value">> => float()
 %% }
 -type raw_metric_data() :: #{binary() => any()}.
+
+
 
 %%====================================================================
 %% API

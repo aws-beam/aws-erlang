@@ -125,6 +125,7 @@
 %% }
 -type redshift_data_share_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% import_asset_from_api_gateway_api_response_details() :: #{
 %%   <<"ApiDescription">> => string(),
@@ -140,9 +141,11 @@
 %%   <<"Stage">> => string()
 %% }
 -type import_asset_from_api_gateway_api_response_details() :: #{binary() => any()}.
+
 %% Example:
 %% cancel_job_request() :: #{}
 -type cancel_job_request() :: #{}.
+
 
 %% Example:
 %% event_action_entry() :: #{
@@ -155,6 +158,7 @@
 %% }
 -type event_action_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% scope_details() :: #{
 %%   <<"LakeFormationTagPolicies">> => list(lake_formation_tag_policy_details()()),
@@ -162,6 +166,7 @@
 %%   <<"S3DataAccesses">> => list(s3_data_access_details()())
 %% }
 -type scope_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_data_set_response() :: #{
@@ -179,11 +184,13 @@
 %% }
 -type get_data_set_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"Tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_revision_response() :: #{
@@ -200,6 +207,7 @@
 %%   <<"UpdatedAt">> => non_neg_integer()
 %% }
 -type update_revision_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_revision_response() :: #{
@@ -218,12 +226,14 @@
 %% }
 -type get_revision_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_data_sets_response() :: #{
 %%   <<"DataSets">> => list(data_set_entry()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_data_sets_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% export_revisions_to_s3_response_details() :: #{
@@ -233,6 +243,7 @@
 %%   <<"RevisionDestinations">> => list(revision_destination_entry()())
 %% }
 -type export_revisions_to_s3_response_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_job_response() :: #{
@@ -247,6 +258,7 @@
 %% }
 -type create_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% l_f_tag() :: #{
 %%   <<"TagKey">> => [string()],
@@ -254,11 +266,13 @@
 %% }
 -type l_f_tag() :: #{binary() => any()}.
 
+
 %% Example:
 %% redshift_data_share_asset_source_entry() :: #{
 %%   <<"DataShareArn">> => string()
 %% }
 -type redshift_data_share_asset_source_entry() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_event_action_request() :: #{
@@ -266,6 +280,7 @@
 %%   <<"Event">> := event()
 %% }
 -type create_event_action_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% send_data_set_notification_request() :: #{
@@ -276,15 +291,18 @@
 %%   <<"Type">> := string()
 %% }
 -type send_data_set_notification_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_revision_request() :: #{}
 -type get_revision_request() :: #{}.
+
 
 %% Example:
 %% import_asset_from_signed_url_job_error_details() :: #{
 %%   <<"AssetName">> => string()
 %% }
 -type import_asset_from_signed_url_job_error_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_jobs_request() :: #{
@@ -294,15 +312,18 @@
 %%   <<"RevisionId">> => string()
 %% }
 -type list_jobs_request() :: #{binary() => any()}.
+
 %% Example:
 %% start_job_response() :: #{}
 -type start_job_response() :: #{}.
+
 
 %% Example:
 %% redshift_data_share_asset() :: #{
 %%   <<"Arn">> => string()
 %% }
 -type redshift_data_share_asset() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_data_sets_request() :: #{
@@ -312,6 +333,7 @@
 %% }
 -type list_data_sets_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% notification_details() :: #{
 %%   <<"DataUpdate">> => data_update_request_details(),
@@ -319,6 +341,7 @@
 %%   <<"SchemaChange">> => schema_change_request_details()
 %% }
 -type notification_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_set_entry() :: #{
@@ -335,12 +358,14 @@
 %% }
 -type data_set_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_jobs_response() :: #{
 %%   <<"Jobs">> => list(job_entry()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_jobs_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_job_request() :: #{
@@ -349,11 +374,13 @@
 %% }
 -type create_job_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% database_l_f_tag_policy_and_permissions() :: #{
@@ -361,6 +388,7 @@
 %%   <<"Permissions">> => list(string()())
 %% }
 -type database_l_f_tag_policy_and_permissions() :: #{binary() => any()}.
+
 
 %% Example:
 %% import_asset_from_api_gateway_api_request_details() :: #{
@@ -376,11 +404,13 @@
 %% }
 -type import_asset_from_api_gateway_api_request_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% kms_key_to_grant() :: #{
 %%   <<"KmsKeyArn">> => string()
 %% }
 -type kms_key_to_grant() :: #{binary() => any()}.
+
 
 %% Example:
 %% send_api_asset_response() :: #{
@@ -389,6 +419,7 @@
 %% }
 -type send_api_asset_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% export_server_side_encryption() :: #{
 %%   <<"KmsKeyArn">> => string(),
@@ -396,12 +427,14 @@
 %% }
 -type export_server_side_encryption() :: #{binary() => any()}.
 
+
 %% Example:
 %% lake_formation_tag_policy_details() :: #{
 %%   <<"Database">> => string(),
 %%   <<"Table">> => string()
 %% }
 -type lake_formation_tag_policy_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_data_set_response() :: #{
@@ -417,6 +450,7 @@
 %%   <<"UpdatedAt">> => non_neg_integer()
 %% }
 -type update_data_set_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% revision_entry() :: #{
@@ -434,6 +468,7 @@
 %% }
 -type revision_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_asset_response() :: #{
 %%   <<"Arn">> => string(),
@@ -449,6 +484,7 @@
 %% }
 -type update_asset_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% schema_change_details() :: #{
 %%   <<"Description">> => string(),
@@ -457,12 +493,14 @@
 %% }
 -type schema_change_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_data_set_revisions_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Revisions">> => list(revision_entry()())
 %% }
 -type list_data_set_revisions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% export_asset_to_signed_url_response_details() :: #{
@@ -474,6 +512,7 @@
 %% }
 -type export_asset_to_signed_url_response_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% export_asset_to_signed_url_request_details() :: #{
 %%   <<"AssetId">> => string(),
@@ -482,12 +521,14 @@
 %% }
 -type export_asset_to_signed_url_request_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_revision_assets_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_revision_assets_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -497,6 +538,7 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => string(),
@@ -504,6 +546,7 @@
 %%   <<"ResourceType">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% import_assets_from_lake_formation_tag_policy_response_details() :: #{
@@ -516,12 +559,14 @@
 %% }
 -type import_assets_from_lake_formation_tag_policy_response_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% table_l_f_tag_policy_and_permissions() :: #{
 %%   <<"Expression">> => list(l_f_tag()()),
 %%   <<"Permissions">> => list(string()())
 %% }
 -type table_l_f_tag_policy_and_permissions() :: #{binary() => any()}.
+
 
 %% Example:
 %% export_assets_to_s3_request_details() :: #{
@@ -532,6 +577,7 @@
 %% }
 -type export_assets_to_s3_request_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_data_set_request() :: #{
 %%   <<"AssetType">> := string(),
@@ -540,6 +586,7 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_data_set_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% export_assets_to_s3_response_details() :: #{
@@ -550,6 +597,7 @@
 %% }
 -type export_assets_to_s3_response_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_revision_assets_response() :: #{
 %%   <<"Assets">> => list(asset_entry()()),
@@ -557,12 +605,14 @@
 %% }
 -type list_revision_assets_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% details() :: #{
 %%   <<"ImportAssetFromSignedUrlJobErrorDetails">> => import_asset_from_signed_url_job_error_details(),
 %%   <<"ImportAssetsFromS3JobErrorDetails">> => list(asset_source_entry()())
 %% }
 -type details() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_event_action_response() :: #{
@@ -574,9 +624,11 @@
 %%   <<"UpdatedAt">> => non_neg_integer()
 %% }
 -type get_event_action_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_event_action_request() :: #{}
 -type get_event_action_request() :: #{}.
+
 
 %% Example:
 %% create_s3_data_access_from_s3_bucket_request_details() :: #{
@@ -585,9 +637,11 @@
 %%   <<"RevisionId">> => string()
 %% }
 -type create_s3_data_access_from_s3_bucket_request_details() :: #{binary() => any()}.
+
 %% Example:
 %% delete_event_action_request() :: #{}
 -type delete_event_action_request() :: #{}.
+
 
 %% Example:
 %% schema_change_request_details() :: #{
@@ -595,6 +649,7 @@
 %%   <<"SchemaChangeAt">> => non_neg_integer()
 %% }
 -type schema_change_request_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_data_set_response() :: #{
@@ -612,11 +667,13 @@
 %% }
 -type create_data_set_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% database_l_f_tag_policy() :: #{
 %%   <<"Expression">> => list(l_f_tag()())
 %% }
 -type database_l_f_tag_policy() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_data_access_asset() :: #{
@@ -629,11 +686,13 @@
 %% }
 -type s3_data_access_asset() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% revoke_revision_request() :: #{
@@ -641,26 +700,31 @@
 %% }
 -type revoke_revision_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% table_l_f_tag_policy() :: #{
 %%   <<"Expression">> => list(l_f_tag()())
 %% }
 -type table_l_f_tag_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_event_action_request() :: #{
 %%   <<"Action">> => action()
 %% }
 -type update_event_action_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_revision_request() :: #{}
 -type delete_revision_request() :: #{}.
+
 
 %% Example:
 %% lake_formation_data_permission_details() :: #{
 %%   <<"LFTagPolicy">> => l_f_tag_policy_details()
 %% }
 -type lake_formation_data_permission_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_asset_response() :: #{
@@ -676,9 +740,11 @@
 %%   <<"UpdatedAt">> => non_neg_integer()
 %% }
 -type get_asset_response() :: #{binary() => any()}.
+
 %% Example:
 %% start_job_request() :: #{}
 -type start_job_request() :: #{}.
+
 
 %% Example:
 %% update_event_action_response() :: #{
@@ -691,6 +757,7 @@
 %% }
 -type update_event_action_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_data_access_asset_source_entry() :: #{
 %%   <<"Bucket">> => string(),
@@ -700,6 +767,7 @@
 %% }
 -type s3_data_access_asset_source_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_s3_data_access_from_s3_bucket_response_details() :: #{
 %%   <<"AssetSource">> => s3_data_access_asset_source_entry(),
@@ -708,11 +776,13 @@
 %% }
 -type create_s3_data_access_from_s3_bucket_response_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_update_request_details() :: #{
 %%   <<"DataUpdatedAt">> => non_neg_integer()
 %% }
 -type data_update_request_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% api_gateway_api_asset() :: #{
@@ -728,23 +798,28 @@
 %% }
 -type api_gateway_api_asset() :: #{binary() => any()}.
 
+
 %% Example:
 %% origin_details() :: #{
 %%   <<"ProductId">> => string()
 %% }
 -type origin_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 %% Example:
 %% send_data_set_notification_response() :: #{}
 -type send_data_set_notification_response() :: #{}.
+
 %% Example:
 %% delete_data_set_request() :: #{}
 -type delete_data_set_request() :: #{}.
+
 
 %% Example:
 %% l_f_resource_details() :: #{
@@ -752,6 +827,7 @@
 %%   <<"Table">> => table_l_f_tag_policy()
 %% }
 -type l_f_resource_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_revision_response() :: #{
@@ -770,6 +846,7 @@
 %% }
 -type create_revision_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_entry() :: #{
 %%   <<"Arn">> => string(),
@@ -785,12 +862,14 @@
 %% }
 -type asset_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_data_access_details() :: #{
 %%   <<"KeyPrefixes">> => list(string()()),
 %%   <<"Keys">> => list(string()())
 %% }
 -type s3_data_access_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_details() :: #{
@@ -802,17 +881,20 @@
 %% }
 -type asset_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% event() :: #{
 %%   <<"RevisionPublished">> => revision_published()
 %% }
 -type event() :: #{binary() => any()}.
 
+
 %% Example:
 %% action() :: #{
 %%   <<"ExportRevisionToS3">> => auto_export_revision_to_s3_request_details()
 %% }
 -type action() :: #{binary() => any()}.
+
 
 %% Example:
 %% import_assets_from_s3_response_details() :: #{
@@ -821,9 +903,11 @@
 %%   <<"RevisionId">> => string()
 %% }
 -type import_assets_from_s3_response_details() :: #{binary() => any()}.
+
 %% Example:
 %% delete_asset_request() :: #{}
 -type delete_asset_request() :: #{}.
+
 
 %% Example:
 %% import_assets_from_redshift_data_shares_request_details() :: #{
@@ -833,11 +917,13 @@
 %% }
 -type import_assets_from_redshift_data_shares_request_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% revision_published() :: #{
 %%   <<"DataSetId">> => string()
 %% }
 -type revision_published() :: #{binary() => any()}.
+
 
 %% Example:
 %% access_denied_exception() :: #{
@@ -845,11 +931,13 @@
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_asset_request() :: #{
 %%   <<"Name">> := string()
 %% }
 -type update_asset_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% import_assets_from_redshift_data_shares_response_details() :: #{
@@ -859,6 +947,7 @@
 %% }
 -type import_assets_from_redshift_data_shares_response_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% auto_export_revision_destination_entry() :: #{
 %%   <<"Bucket">> => string(),
@@ -866,12 +955,14 @@
 %% }
 -type auto_export_revision_destination_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_source_entry() :: #{
 %%   <<"Bucket">> => string(),
 %%   <<"Key">> => string()
 %% }
 -type asset_source_entry() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_job_response() :: #{
@@ -886,15 +977,18 @@
 %% }
 -type get_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"ExceptionCause">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% auto_export_revision_to_s3_request_details() :: #{
@@ -902,6 +996,7 @@
 %%   <<"RevisionDestination">> => auto_export_revision_destination_entry()
 %% }
 -type auto_export_revision_to_s3_request_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% l_f_tag_policy_details() :: #{
@@ -911,11 +1006,13 @@
 %% }
 -type l_f_tag_policy_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% deprecation_request_details() :: #{
 %%   <<"DeprecationAt">> => non_neg_integer()
 %% }
 -type deprecation_request_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_limit_exceeded_exception() :: #{
@@ -924,18 +1021,22 @@
 %%   <<"Message">> => string()
 %% }
 -type service_limit_exceeded_exception() :: #{binary() => any()}.
+
 %% Example:
 %% get_asset_request() :: #{}
 -type get_asset_request() :: #{}.
+
 %% Example:
 %% get_job_request() :: #{}
 -type get_job_request() :: #{}.
+
 
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% send_api_asset_request() :: #{
@@ -949,9 +1050,11 @@
 %%   <<"RevisionId">> := string()
 %% }
 -type send_api_asset_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_data_set_request() :: #{}
 -type get_data_set_request() :: #{}.
+
 
 %% Example:
 %% create_revision_request() :: #{
@@ -960,6 +1063,7 @@
 %% }
 -type create_revision_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% import_assets_from_s3_request_details() :: #{
 %%   <<"AssetSources">> => list(asset_source_entry()()),
@@ -967,6 +1071,7 @@
 %%   <<"RevisionId">> => string()
 %% }
 -type import_assets_from_s3_request_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% lake_formation_data_permission_asset() :: #{
@@ -977,6 +1082,7 @@
 %% }
 -type lake_formation_data_permission_asset() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_event_actions_request() :: #{
 %%   <<"EventSourceId">> => string(),
@@ -985,12 +1091,14 @@
 %% }
 -type list_event_actions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_data_set_revisions_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_data_set_revisions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_destination_entry() :: #{
@@ -1000,12 +1108,14 @@
 %% }
 -type asset_destination_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_event_actions_response() :: #{
 %%   <<"EventActions">> => list(event_action_entry()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_event_actions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% request_details() :: #{
@@ -1021,6 +1131,7 @@
 %% }
 -type request_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% job_entry() :: #{
 %%   <<"Arn">> => string(),
@@ -1034,6 +1145,7 @@
 %% }
 -type job_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% import_asset_from_signed_url_request_details() :: #{
 %%   <<"AssetName">> => string(),
@@ -1042,6 +1154,7 @@
 %%   <<"RevisionId">> => string()
 %% }
 -type import_asset_from_signed_url_request_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% import_asset_from_signed_url_response_details() :: #{
@@ -1053,6 +1166,7 @@
 %%   <<"SignedUrlExpiresAt">> => non_neg_integer()
 %% }
 -type import_asset_from_signed_url_response_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% response_details() :: #{
@@ -1068,6 +1182,7 @@
 %% }
 -type response_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% import_assets_from_lake_formation_tag_policy_request_details() :: #{
 %%   <<"CatalogId">> => string(),
@@ -1079,6 +1194,7 @@
 %% }
 -type import_assets_from_lake_formation_tag_policy_request_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_revision_request() :: #{
 %%   <<"Comment">> => string(),
@@ -1086,11 +1202,13 @@
 %% }
 -type update_revision_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_snapshot_asset() :: #{
 %%   <<"Size">> => float()
 %% }
 -type s3_snapshot_asset() :: #{binary() => any()}.
+
 
 %% Example:
 %% export_revisions_to_s3_request_details() :: #{
@@ -1099,6 +1217,7 @@
 %%   <<"RevisionDestinations">> => list(revision_destination_entry()())
 %% }
 -type export_revisions_to_s3_request_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% revoke_revision_response() :: #{
@@ -1116,6 +1235,7 @@
 %% }
 -type revoke_revision_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% job_error() :: #{
 %%   <<"Code">> => string(),
@@ -1128,12 +1248,14 @@
 %% }
 -type job_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_data_set_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"Name">> => string()
 %% }
 -type update_data_set_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% revision_destination_entry() :: #{
@@ -1142,6 +1264,7 @@
 %%   <<"RevisionId">> => string()
 %% }
 -type revision_destination_entry() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_event_action_response() :: #{
@@ -1154,6 +1277,193 @@
 %% }
 -type create_event_action_response() :: #{binary() => any()}.
 
+-type cancel_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_data_set_errors() ::
+    throttling_exception() | 
+    service_limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type create_event_action_errors() ::
+    throttling_exception() | 
+    service_limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type create_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_revision_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_asset_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_data_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_event_action_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_revision_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_asset_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_data_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_event_action_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_revision_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_data_set_revisions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_data_sets_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_event_actions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_jobs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_revision_assets_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type revoke_revision_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type send_api_asset_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type send_data_set_notification_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_asset_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_data_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_event_action_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_revision_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -1164,22 +1474,14 @@
 -spec cancel_job(map(), binary() | list(), cancel_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_job_errors(), tuple()}.
 cancel_job(Client, JobId, Input) ->
     cancel_job(Client, JobId, Input, []).
 
 -spec cancel_job(map(), binary() | list(), cancel_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_job_errors(), tuple()}.
 cancel_job(Client, JobId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/jobs/", aws_util:encode_uri(JobId), ""],
@@ -1206,22 +1508,14 @@ cancel_job(Client, JobId, Input0, Options0) ->
 -spec create_data_set(map(), create_data_set_request()) ->
     {ok, create_data_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_data_set_errors(), tuple()}.
 create_data_set(Client, Input) ->
     create_data_set(Client, Input, []).
 
 -spec create_data_set(map(), create_data_set_request(), proplists:proplist()) ->
     {ok, create_data_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_data_set_errors(), tuple()}.
 create_data_set(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/data-sets"],
@@ -1248,22 +1542,14 @@ create_data_set(Client, Input0, Options0) ->
 -spec create_event_action(map(), create_event_action_request()) ->
     {ok, create_event_action_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_event_action_errors(), tuple()}.
 create_event_action(Client, Input) ->
     create_event_action(Client, Input, []).
 
 -spec create_event_action(map(), create_event_action_request(), proplists:proplist()) ->
     {ok, create_event_action_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_event_action_errors(), tuple()}.
 create_event_action(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/event-actions"],
@@ -1290,24 +1576,14 @@ create_event_action(Client, Input0, Options0) ->
 -spec create_job(map(), create_job_request()) ->
     {ok, create_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_job_errors(), tuple()}.
 create_job(Client, Input) ->
     create_job(Client, Input, []).
 
 -spec create_job(map(), create_job_request(), proplists:proplist()) ->
     {ok, create_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_job_errors(), tuple()}.
 create_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/jobs"],
@@ -1334,22 +1610,14 @@ create_job(Client, Input0, Options0) ->
 -spec create_revision(map(), binary() | list(), create_revision_request()) ->
     {ok, create_revision_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_revision_errors(), tuple()}.
 create_revision(Client, DataSetId, Input) ->
     create_revision(Client, DataSetId, Input, []).
 
 -spec create_revision(map(), binary() | list(), create_revision_request(), proplists:proplist()) ->
     {ok, create_revision_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_revision_errors(), tuple()}.
 create_revision(Client, DataSetId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/revisions"],
@@ -1376,24 +1644,14 @@ create_revision(Client, DataSetId, Input0, Options0) ->
 -spec delete_asset(map(), binary() | list(), binary() | list(), binary() | list(), delete_asset_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_asset_errors(), tuple()}.
 delete_asset(Client, AssetId, DataSetId, RevisionId, Input) ->
     delete_asset(Client, AssetId, DataSetId, RevisionId, Input, []).
 
 -spec delete_asset(map(), binary() | list(), binary() | list(), binary() | list(), delete_asset_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_asset_errors(), tuple()}.
 delete_asset(Client, AssetId, DataSetId, RevisionId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/revisions/", aws_util:encode_uri(RevisionId), "/assets/", aws_util:encode_uri(AssetId), ""],
@@ -1420,24 +1678,14 @@ delete_asset(Client, AssetId, DataSetId, RevisionId, Input0, Options0) ->
 -spec delete_data_set(map(), binary() | list(), delete_data_set_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_data_set_errors(), tuple()}.
 delete_data_set(Client, DataSetId, Input) ->
     delete_data_set(Client, DataSetId, Input, []).
 
 -spec delete_data_set(map(), binary() | list(), delete_data_set_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_data_set_errors(), tuple()}.
 delete_data_set(Client, DataSetId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), ""],
@@ -1464,20 +1712,14 @@ delete_data_set(Client, DataSetId, Input0, Options0) ->
 -spec delete_event_action(map(), binary() | list(), delete_event_action_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_event_action_errors(), tuple()}.
 delete_event_action(Client, EventActionId, Input) ->
     delete_event_action(Client, EventActionId, Input, []).
 
 -spec delete_event_action(map(), binary() | list(), delete_event_action_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_event_action_errors(), tuple()}.
 delete_event_action(Client, EventActionId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/event-actions/", aws_util:encode_uri(EventActionId), ""],
@@ -1504,24 +1746,14 @@ delete_event_action(Client, EventActionId, Input0, Options0) ->
 -spec delete_revision(map(), binary() | list(), binary() | list(), delete_revision_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_revision_errors(), tuple()}.
 delete_revision(Client, DataSetId, RevisionId, Input) ->
     delete_revision(Client, DataSetId, RevisionId, Input, []).
 
 -spec delete_revision(map(), binary() | list(), binary() | list(), delete_revision_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_revision_errors(), tuple()}.
 delete_revision(Client, DataSetId, RevisionId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/revisions/", aws_util:encode_uri(RevisionId), ""],
@@ -1548,10 +1780,7 @@ delete_revision(Client, DataSetId, RevisionId, Input0, Options0) ->
 -spec get_asset(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_asset_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_asset_errors(), tuple()}.
 get_asset(Client, AssetId, DataSetId, RevisionId)
   when is_map(Client) ->
     get_asset(Client, AssetId, DataSetId, RevisionId, #{}, #{}).
@@ -1559,10 +1788,7 @@ get_asset(Client, AssetId, DataSetId, RevisionId)
 -spec get_asset(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_asset_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_asset_errors(), tuple()}.
 get_asset(Client, AssetId, DataSetId, RevisionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_asset(Client, AssetId, DataSetId, RevisionId, QueryMap, HeadersMap, []).
@@ -1570,10 +1796,7 @@ get_asset(Client, AssetId, DataSetId, RevisionId, QueryMap, HeadersMap)
 -spec get_asset(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_asset_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_asset_errors(), tuple()}.
 get_asset(Client, AssetId, DataSetId, RevisionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/revisions/", aws_util:encode_uri(RevisionId), "/assets/", aws_util:encode_uri(AssetId), ""],
@@ -1594,10 +1817,7 @@ get_asset(Client, AssetId, DataSetId, RevisionId, QueryMap, HeadersMap, Options0
 -spec get_data_set(map(), binary() | list()) ->
     {ok, get_data_set_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_data_set_errors(), tuple()}.
 get_data_set(Client, DataSetId)
   when is_map(Client) ->
     get_data_set(Client, DataSetId, #{}, #{}).
@@ -1605,10 +1825,7 @@ get_data_set(Client, DataSetId)
 -spec get_data_set(map(), binary() | list(), map(), map()) ->
     {ok, get_data_set_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_data_set_errors(), tuple()}.
 get_data_set(Client, DataSetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_set(Client, DataSetId, QueryMap, HeadersMap, []).
@@ -1616,10 +1833,7 @@ get_data_set(Client, DataSetId, QueryMap, HeadersMap)
 -spec get_data_set(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_data_set_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_data_set_errors(), tuple()}.
 get_data_set(Client, DataSetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), ""],
@@ -1640,10 +1854,7 @@ get_data_set(Client, DataSetId, QueryMap, HeadersMap, Options0)
 -spec get_event_action(map(), binary() | list()) ->
     {ok, get_event_action_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_event_action_errors(), tuple()}.
 get_event_action(Client, EventActionId)
   when is_map(Client) ->
     get_event_action(Client, EventActionId, #{}, #{}).
@@ -1651,10 +1862,7 @@ get_event_action(Client, EventActionId)
 -spec get_event_action(map(), binary() | list(), map(), map()) ->
     {ok, get_event_action_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_event_action_errors(), tuple()}.
 get_event_action(Client, EventActionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_event_action(Client, EventActionId, QueryMap, HeadersMap, []).
@@ -1662,10 +1870,7 @@ get_event_action(Client, EventActionId, QueryMap, HeadersMap)
 -spec get_event_action(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_event_action_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_event_action_errors(), tuple()}.
 get_event_action(Client, EventActionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/event-actions/", aws_util:encode_uri(EventActionId), ""],
@@ -1686,10 +1891,7 @@ get_event_action(Client, EventActionId, QueryMap, HeadersMap, Options0)
 -spec get_job(map(), binary() | list()) ->
     {ok, get_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_job_errors(), tuple()}.
 get_job(Client, JobId)
   when is_map(Client) ->
     get_job(Client, JobId, #{}, #{}).
@@ -1697,10 +1899,7 @@ get_job(Client, JobId)
 -spec get_job(map(), binary() | list(), map(), map()) ->
     {ok, get_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_job_errors(), tuple()}.
 get_job(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_job(Client, JobId, QueryMap, HeadersMap, []).
@@ -1708,10 +1907,7 @@ get_job(Client, JobId, QueryMap, HeadersMap)
 -spec get_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_job_errors(), tuple()}.
 get_job(Client, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/jobs/", aws_util:encode_uri(JobId), ""],
@@ -1732,10 +1928,7 @@ get_job(Client, JobId, QueryMap, HeadersMap, Options0)
 -spec get_revision(map(), binary() | list(), binary() | list()) ->
     {ok, get_revision_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_revision_errors(), tuple()}.
 get_revision(Client, DataSetId, RevisionId)
   when is_map(Client) ->
     get_revision(Client, DataSetId, RevisionId, #{}, #{}).
@@ -1743,10 +1936,7 @@ get_revision(Client, DataSetId, RevisionId)
 -spec get_revision(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_revision_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_revision_errors(), tuple()}.
 get_revision(Client, DataSetId, RevisionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_revision(Client, DataSetId, RevisionId, QueryMap, HeadersMap, []).
@@ -1754,10 +1944,7 @@ get_revision(Client, DataSetId, RevisionId, QueryMap, HeadersMap)
 -spec get_revision(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_revision_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_revision_errors(), tuple()}.
 get_revision(Client, DataSetId, RevisionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/revisions/", aws_util:encode_uri(RevisionId), ""],
@@ -1779,10 +1966,7 @@ get_revision(Client, DataSetId, RevisionId, QueryMap, HeadersMap, Options0)
 -spec list_data_set_revisions(map(), binary() | list()) ->
     {ok, list_data_set_revisions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_data_set_revisions_errors(), tuple()}.
 list_data_set_revisions(Client, DataSetId)
   when is_map(Client) ->
     list_data_set_revisions(Client, DataSetId, #{}, #{}).
@@ -1790,10 +1974,7 @@ list_data_set_revisions(Client, DataSetId)
 -spec list_data_set_revisions(map(), binary() | list(), map(), map()) ->
     {ok, list_data_set_revisions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_data_set_revisions_errors(), tuple()}.
 list_data_set_revisions(Client, DataSetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_set_revisions(Client, DataSetId, QueryMap, HeadersMap, []).
@@ -1801,10 +1982,7 @@ list_data_set_revisions(Client, DataSetId, QueryMap, HeadersMap)
 -spec list_data_set_revisions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_data_set_revisions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_data_set_revisions_errors(), tuple()}.
 list_data_set_revisions(Client, DataSetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/revisions"],
@@ -1834,10 +2012,7 @@ list_data_set_revisions(Client, DataSetId, QueryMap, HeadersMap, Options0)
 -spec list_data_sets(map()) ->
     {ok, list_data_sets_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_data_sets_errors(), tuple()}.
 list_data_sets(Client)
   when is_map(Client) ->
     list_data_sets(Client, #{}, #{}).
@@ -1845,10 +2020,7 @@ list_data_sets(Client)
 -spec list_data_sets(map(), map(), map()) ->
     {ok, list_data_sets_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_data_sets_errors(), tuple()}.
 list_data_sets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_sets(Client, QueryMap, HeadersMap, []).
@@ -1856,10 +2028,7 @@ list_data_sets(Client, QueryMap, HeadersMap)
 -spec list_data_sets(map(), map(), map(), proplists:proplist()) ->
     {ok, list_data_sets_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_data_sets_errors(), tuple()}.
 list_data_sets(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/data-sets"],
@@ -1886,10 +2055,7 @@ list_data_sets(Client, QueryMap, HeadersMap, Options0)
 -spec list_event_actions(map()) ->
     {ok, list_event_actions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_event_actions_errors(), tuple()}.
 list_event_actions(Client)
   when is_map(Client) ->
     list_event_actions(Client, #{}, #{}).
@@ -1897,10 +2063,7 @@ list_event_actions(Client)
 -spec list_event_actions(map(), map(), map()) ->
     {ok, list_event_actions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_event_actions_errors(), tuple()}.
 list_event_actions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_event_actions(Client, QueryMap, HeadersMap, []).
@@ -1908,10 +2071,7 @@ list_event_actions(Client, QueryMap, HeadersMap)
 -spec list_event_actions(map(), map(), map(), proplists:proplist()) ->
     {ok, list_event_actions_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_event_actions_errors(), tuple()}.
 list_event_actions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/event-actions"],
@@ -1939,10 +2099,7 @@ list_event_actions(Client, QueryMap, HeadersMap, Options0)
 -spec list_jobs(map()) ->
     {ok, list_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_jobs_errors(), tuple()}.
 list_jobs(Client)
   when is_map(Client) ->
     list_jobs(Client, #{}, #{}).
@@ -1950,10 +2107,7 @@ list_jobs(Client)
 -spec list_jobs(map(), map(), map()) ->
     {ok, list_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_jobs_errors(), tuple()}.
 list_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_jobs(Client, QueryMap, HeadersMap, []).
@@ -1961,10 +2115,7 @@ list_jobs(Client, QueryMap, HeadersMap)
 -spec list_jobs(map(), map(), map(), proplists:proplist()) ->
     {ok, list_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_jobs_errors(), tuple()}.
 list_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/jobs"],
@@ -1993,10 +2144,7 @@ list_jobs(Client, QueryMap, HeadersMap, Options0)
 -spec list_revision_assets(map(), binary() | list(), binary() | list()) ->
     {ok, list_revision_assets_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_revision_assets_errors(), tuple()}.
 list_revision_assets(Client, DataSetId, RevisionId)
   when is_map(Client) ->
     list_revision_assets(Client, DataSetId, RevisionId, #{}, #{}).
@@ -2004,10 +2152,7 @@ list_revision_assets(Client, DataSetId, RevisionId)
 -spec list_revision_assets(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_revision_assets_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_revision_assets_errors(), tuple()}.
 list_revision_assets(Client, DataSetId, RevisionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_revision_assets(Client, DataSetId, RevisionId, QueryMap, HeadersMap, []).
@@ -2015,10 +2160,7 @@ list_revision_assets(Client, DataSetId, RevisionId, QueryMap, HeadersMap)
 -spec list_revision_assets(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_revision_assets_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_revision_assets_errors(), tuple()}.
 list_revision_assets(Client, DataSetId, RevisionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/revisions/", aws_util:encode_uri(RevisionId), "/assets"],
@@ -2078,24 +2220,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec revoke_revision(map(), binary() | list(), binary() | list(), revoke_revision_request()) ->
     {ok, revoke_revision_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, revoke_revision_errors(), tuple()}.
 revoke_revision(Client, DataSetId, RevisionId, Input) ->
     revoke_revision(Client, DataSetId, RevisionId, Input, []).
 
 -spec revoke_revision(map(), binary() | list(), binary() | list(), revoke_revision_request(), proplists:proplist()) ->
     {ok, revoke_revision_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, revoke_revision_errors(), tuple()}.
 revoke_revision(Client, DataSetId, RevisionId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/revisions/", aws_util:encode_uri(RevisionId), "/revoke"],
@@ -2124,22 +2256,14 @@ revoke_revision(Client, DataSetId, RevisionId, Input0, Options0) ->
 -spec send_api_asset(map(), send_api_asset_request()) ->
     {ok, send_api_asset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, send_api_asset_errors(), tuple()}.
 send_api_asset(Client, Input) ->
     send_api_asset(Client, Input, []).
 
 -spec send_api_asset(map(), send_api_asset_request(), proplists:proplist()) ->
     {ok, send_api_asset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, send_api_asset_errors(), tuple()}.
 send_api_asset(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1"],
@@ -2173,24 +2297,14 @@ send_api_asset(Client, Input0, Options0) ->
 -spec send_data_set_notification(map(), binary() | list(), send_data_set_notification_request()) ->
     {ok, send_data_set_notification_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, send_data_set_notification_errors(), tuple()}.
 send_data_set_notification(Client, DataSetId, Input) ->
     send_data_set_notification(Client, DataSetId, Input, []).
 
 -spec send_data_set_notification(map(), binary() | list(), send_data_set_notification_request(), proplists:proplist()) ->
     {ok, send_data_set_notification_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, send_data_set_notification_errors(), tuple()}.
 send_data_set_notification(Client, DataSetId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/notification"],
@@ -2217,24 +2331,14 @@ send_data_set_notification(Client, DataSetId, Input0, Options0) ->
 -spec start_job(map(), binary() | list(), start_job_request()) ->
     {ok, start_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_job_errors(), tuple()}.
 start_job(Client, JobId, Input) ->
     start_job(Client, JobId, Input, []).
 
 -spec start_job(map(), binary() | list(), start_job_request(), proplists:proplist()) ->
     {ok, start_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_job_errors(), tuple()}.
 start_job(Client, JobId, Input0, Options0) ->
     Method = patch,
     Path = ["/v1/jobs/", aws_util:encode_uri(JobId), ""],
@@ -2326,24 +2430,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_asset(map(), binary() | list(), binary() | list(), binary() | list(), update_asset_request()) ->
     {ok, update_asset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_asset_errors(), tuple()}.
 update_asset(Client, AssetId, DataSetId, RevisionId, Input) ->
     update_asset(Client, AssetId, DataSetId, RevisionId, Input, []).
 
 -spec update_asset(map(), binary() | list(), binary() | list(), binary() | list(), update_asset_request(), proplists:proplist()) ->
     {ok, update_asset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_asset_errors(), tuple()}.
 update_asset(Client, AssetId, DataSetId, RevisionId, Input0, Options0) ->
     Method = patch,
     Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/revisions/", aws_util:encode_uri(RevisionId), "/assets/", aws_util:encode_uri(AssetId), ""],
@@ -2370,22 +2464,14 @@ update_asset(Client, AssetId, DataSetId, RevisionId, Input0, Options0) ->
 -spec update_data_set(map(), binary() | list(), update_data_set_request()) ->
     {ok, update_data_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_data_set_errors(), tuple()}.
 update_data_set(Client, DataSetId, Input) ->
     update_data_set(Client, DataSetId, Input, []).
 
 -spec update_data_set(map(), binary() | list(), update_data_set_request(), proplists:proplist()) ->
     {ok, update_data_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_data_set_errors(), tuple()}.
 update_data_set(Client, DataSetId, Input0, Options0) ->
     Method = patch,
     Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), ""],
@@ -2412,22 +2498,14 @@ update_data_set(Client, DataSetId, Input0, Options0) ->
 -spec update_event_action(map(), binary() | list(), update_event_action_request()) ->
     {ok, update_event_action_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_event_action_errors(), tuple()}.
 update_event_action(Client, EventActionId, Input) ->
     update_event_action(Client, EventActionId, Input, []).
 
 -spec update_event_action(map(), binary() | list(), update_event_action_request(), proplists:proplist()) ->
     {ok, update_event_action_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_event_action_errors(), tuple()}.
 update_event_action(Client, EventActionId, Input0, Options0) ->
     Method = patch,
     Path = ["/v1/event-actions/", aws_util:encode_uri(EventActionId), ""],
@@ -2454,24 +2532,14 @@ update_event_action(Client, EventActionId, Input0, Options0) ->
 -spec update_revision(map(), binary() | list(), binary() | list(), update_revision_request()) ->
     {ok, update_revision_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_revision_errors(), tuple()}.
 update_revision(Client, DataSetId, RevisionId, Input) ->
     update_revision(Client, DataSetId, RevisionId, Input, []).
 
 -spec update_revision(map(), binary() | list(), binary() | list(), update_revision_request(), proplists:proplist()) ->
     {ok, update_revision_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_revision_errors(), tuple()}.
 update_revision(Client, DataSetId, RevisionId, Input0, Options0) ->
     Method = patch,
     Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/revisions/", aws_util:encode_uri(RevisionId), ""],

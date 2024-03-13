@@ -2780,6 +2780,837 @@
 %% }
 -type untag_instance_profile_request() :: #{binary() => any()}.
 
+-type add_client_id_to_open_id_connect_provider_errors() ::
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type add_role_to_instance_profile_errors() ::
+    limit_exceeded_exception() | 
+    unmodifiable_entity_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    entity_already_exists_exception().
+
+-type add_user_to_group_errors() ::
+    limit_exceeded_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type attach_group_policy_errors() ::
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    policy_not_attachable_exception().
+
+-type attach_role_policy_errors() ::
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    unmodifiable_entity_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    policy_not_attachable_exception().
+
+-type attach_user_policy_errors() ::
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    policy_not_attachable_exception().
+
+-type change_password_errors() ::
+    limit_exceeded_exception() | 
+    password_policy_violation_exception() | 
+    entity_temporarily_unmodifiable_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    invalid_user_type_exception().
+
+-type create_access_key_errors() ::
+    limit_exceeded_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type create_account_alias_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    service_failure_exception() | 
+    entity_already_exists_exception().
+
+-type create_group_errors() ::
+    limit_exceeded_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    entity_already_exists_exception().
+
+-type create_instance_profile_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    entity_already_exists_exception().
+
+-type create_login_profile_errors() ::
+    limit_exceeded_exception() | 
+    password_policy_violation_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    entity_already_exists_exception().
+
+-type create_open_id_connect_provider_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    entity_already_exists_exception().
+
+-type create_policy_errors() ::
+    limit_exceeded_exception() | 
+    malformed_policy_document_exception() | 
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    entity_already_exists_exception().
+
+-type create_policy_version_errors() ::
+    limit_exceeded_exception() | 
+    malformed_policy_document_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type create_role_errors() ::
+    limit_exceeded_exception() | 
+    malformed_policy_document_exception() | 
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    entity_already_exists_exception().
+
+-type create_saml_provider_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    entity_already_exists_exception().
+
+-type create_service_linked_role_errors() ::
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type create_service_specific_credential_errors() ::
+    limit_exceeded_exception() | 
+    service_not_supported_exception() | 
+    no_such_entity_exception().
+
+-type create_user_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    entity_already_exists_exception().
+
+-type create_virtual_mfa_device_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    entity_already_exists_exception().
+
+-type deactivate_mfa_device_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    entity_temporarily_unmodifiable_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type delete_access_key_errors() ::
+    limit_exceeded_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type delete_account_alias_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type delete_account_password_policy_errors() ::
+    limit_exceeded_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type delete_group_errors() ::
+    limit_exceeded_exception() | 
+    delete_conflict_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type delete_group_policy_errors() ::
+    limit_exceeded_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type delete_instance_profile_errors() ::
+    limit_exceeded_exception() | 
+    delete_conflict_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type delete_login_profile_errors() ::
+    limit_exceeded_exception() | 
+    entity_temporarily_unmodifiable_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type delete_open_id_connect_provider_errors() ::
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type delete_policy_errors() ::
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    delete_conflict_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type delete_policy_version_errors() ::
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    delete_conflict_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type delete_role_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    unmodifiable_entity_exception() | 
+    delete_conflict_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type delete_role_permissions_boundary_errors() ::
+    unmodifiable_entity_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type delete_role_policy_errors() ::
+    limit_exceeded_exception() | 
+    unmodifiable_entity_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type delete_saml_provider_errors() ::
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type delete_server_certificate_errors() ::
+    limit_exceeded_exception() | 
+    delete_conflict_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type delete_service_linked_role_errors() ::
+    limit_exceeded_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type delete_service_specific_credential_errors() ::
+    no_such_entity_exception().
+
+-type delete_signing_certificate_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type delete_ssh_public_key_errors() ::
+    no_such_entity_exception().
+
+-type delete_user_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    delete_conflict_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type delete_user_permissions_boundary_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type delete_user_policy_errors() ::
+    limit_exceeded_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type delete_virtual_mfa_device_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    delete_conflict_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type detach_group_policy_errors() ::
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type detach_role_policy_errors() ::
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    unmodifiable_entity_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type detach_user_policy_errors() ::
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type enable_mfa_device_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    invalid_authentication_code_exception() | 
+    entity_temporarily_unmodifiable_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    entity_already_exists_exception().
+
+-type generate_credential_report_errors() ::
+    limit_exceeded_exception() | 
+    service_failure_exception().
+
+-type generate_organizations_access_report_errors() ::
+    report_generation_limit_exceeded_exception().
+
+-type generate_service_last_accessed_details_errors() ::
+    invalid_input_exception() | 
+    no_such_entity_exception().
+
+-type get_account_authorization_details_errors() ::
+    service_failure_exception().
+
+-type get_account_password_policy_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type get_account_summary_errors() ::
+    service_failure_exception().
+
+-type get_context_keys_for_custom_policy_errors() ::
+    invalid_input_exception().
+
+-type get_context_keys_for_principal_policy_errors() ::
+    invalid_input_exception() | 
+    no_such_entity_exception().
+
+-type get_credential_report_errors() ::
+    credential_report_not_present_exception() | 
+    credential_report_expired_exception() | 
+    credential_report_not_ready_exception() | 
+    service_failure_exception().
+
+-type get_group_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type get_group_policy_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type get_instance_profile_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type get_login_profile_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type get_mfa_device_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type get_open_id_connect_provider_errors() ::
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type get_organizations_access_report_errors() ::
+    no_such_entity_exception().
+
+-type get_policy_errors() ::
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type get_policy_version_errors() ::
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type get_role_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type get_role_policy_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type get_saml_provider_errors() ::
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type get_server_certificate_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type get_service_last_accessed_details_errors() ::
+    invalid_input_exception() | 
+    no_such_entity_exception().
+
+-type get_service_last_accessed_details_with_entities_errors() ::
+    invalid_input_exception() | 
+    no_such_entity_exception().
+
+-type get_service_linked_role_deletion_status_errors() ::
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type get_ssh_public_key_errors() ::
+    unrecognized_public_key_encoding_exception() | 
+    no_such_entity_exception().
+
+-type get_user_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type get_user_policy_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type list_access_keys_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type list_account_aliases_errors() ::
+    service_failure_exception().
+
+-type list_attached_group_policies_errors() ::
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type list_attached_role_policies_errors() ::
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type list_attached_user_policies_errors() ::
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type list_entities_for_policy_errors() ::
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type list_group_policies_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type list_groups_errors() ::
+    service_failure_exception().
+
+-type list_groups_for_user_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type list_instance_profile_tags_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type list_instance_profiles_errors() ::
+    service_failure_exception().
+
+-type list_instance_profiles_for_role_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type list_mfa_device_tags_errors() ::
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type list_mfa_devices_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type list_open_id_connect_provider_tags_errors() ::
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type list_open_id_connect_providers_errors() ::
+    service_failure_exception().
+
+-type list_policies_errors() ::
+    service_failure_exception().
+
+-type list_policies_granting_service_access_errors() ::
+    invalid_input_exception() | 
+    no_such_entity_exception().
+
+-type list_policy_tags_errors() ::
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type list_policy_versions_errors() ::
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type list_role_policies_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type list_role_tags_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type list_roles_errors() ::
+    service_failure_exception().
+
+-type list_saml_provider_tags_errors() ::
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type list_saml_providers_errors() ::
+    service_failure_exception().
+
+-type list_server_certificate_tags_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type list_server_certificates_errors() ::
+    service_failure_exception().
+
+-type list_service_specific_credentials_errors() ::
+    service_not_supported_exception() | 
+    no_such_entity_exception().
+
+-type list_signing_certificates_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type list_ssh_public_keys_errors() ::
+    no_such_entity_exception().
+
+-type list_user_policies_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type list_user_tags_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type list_users_errors() ::
+    service_failure_exception().
+
+-type put_group_policy_errors() ::
+    limit_exceeded_exception() | 
+    malformed_policy_document_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type put_role_permissions_boundary_errors() ::
+    invalid_input_exception() | 
+    unmodifiable_entity_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    policy_not_attachable_exception().
+
+-type put_role_policy_errors() ::
+    limit_exceeded_exception() | 
+    malformed_policy_document_exception() | 
+    unmodifiable_entity_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type put_user_permissions_boundary_errors() ::
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    policy_not_attachable_exception().
+
+-type put_user_policy_errors() ::
+    limit_exceeded_exception() | 
+    malformed_policy_document_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type remove_client_id_from_open_id_connect_provider_errors() ::
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type remove_role_from_instance_profile_errors() ::
+    limit_exceeded_exception() | 
+    unmodifiable_entity_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type remove_user_from_group_errors() ::
+    limit_exceeded_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type reset_service_specific_credential_errors() ::
+    no_such_entity_exception().
+
+-type resync_mfa_device_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    invalid_authentication_code_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type set_default_policy_version_errors() ::
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type set_security_token_service_preferences_errors() ::
+    service_failure_exception().
+
+-type simulate_custom_policy_errors() ::
+    invalid_input_exception() | 
+    policy_evaluation_exception().
+
+-type simulate_principal_policy_errors() ::
+    invalid_input_exception() | 
+    policy_evaluation_exception() | 
+    no_such_entity_exception().
+
+-type tag_instance_profile_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type tag_mfa_device_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type tag_open_id_connect_provider_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type tag_policy_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type tag_role_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type tag_saml_provider_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type tag_server_certificate_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type tag_user_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type untag_instance_profile_errors() ::
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type untag_mfa_device_errors() ::
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type untag_open_id_connect_provider_errors() ::
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type untag_policy_errors() ::
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type untag_role_errors() ::
+    concurrent_modification_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type untag_saml_provider_errors() ::
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type untag_server_certificate_errors() ::
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type untag_user_errors() ::
+    concurrent_modification_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type update_access_key_errors() ::
+    limit_exceeded_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type update_account_password_policy_errors() ::
+    limit_exceeded_exception() | 
+    malformed_policy_document_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type update_assume_role_policy_errors() ::
+    limit_exceeded_exception() | 
+    malformed_policy_document_exception() | 
+    unmodifiable_entity_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type update_group_errors() ::
+    limit_exceeded_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    entity_already_exists_exception().
+
+-type update_login_profile_errors() ::
+    limit_exceeded_exception() | 
+    password_policy_violation_exception() | 
+    entity_temporarily_unmodifiable_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type update_open_id_connect_provider_thumbprint_errors() ::
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type update_role_errors() ::
+    unmodifiable_entity_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type update_role_description_errors() ::
+    unmodifiable_entity_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type update_saml_provider_errors() ::
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type update_server_certificate_errors() ::
+    limit_exceeded_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    entity_already_exists_exception().
+
+-type update_service_specific_credential_errors() ::
+    no_such_entity_exception().
+
+-type update_signing_certificate_errors() ::
+    limit_exceeded_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception().
+
+-type update_ssh_public_key_errors() ::
+    no_such_entity_exception().
+
+-type update_user_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    entity_temporarily_unmodifiable_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    entity_already_exists_exception().
+
+-type upload_server_certificate_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    malformed_certificate_exception() | 
+    invalid_input_exception() | 
+    service_failure_exception() | 
+    key_pair_mismatch_exception() | 
+    entity_already_exists_exception().
+
+-type upload_signing_certificate_errors() ::
+    duplicate_certificate_exception() | 
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    malformed_certificate_exception() | 
+    invalid_certificate_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    entity_already_exists_exception().
+
+-type upload_ssh_public_key_errors() ::
+    duplicate_ssh_public_key_exception() | 
+    invalid_public_key_exception() | 
+    limit_exceeded_exception() | 
+    unrecognized_public_key_encoding_exception() | 
+    no_such_entity_exception().
 
 %%====================================================================
 %% API
@@ -2795,10 +3626,7 @@
 -spec add_client_id_to_open_id_connect_provider(map(), add_client_id_to_open_id_connect_provider_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, add_client_id_to_open_id_connect_provider_errors(), tuple()}.
 add_client_id_to_open_id_connect_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_client_id_to_open_id_connect_provider(Client, Input, []).
@@ -2806,10 +3634,7 @@ add_client_id_to_open_id_connect_provider(Client, Input)
 -spec add_client_id_to_open_id_connect_provider(map(), add_client_id_to_open_id_connect_provider_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, add_client_id_to_open_id_connect_provider_errors(), tuple()}.
 add_client_id_to_open_id_connect_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddClientIDToOpenIDConnectProvider">>, Input, Options).
@@ -2844,11 +3669,7 @@ add_client_id_to_open_id_connect_provider(Client, Input, Options)
 -spec add_role_to_instance_profile(map(), add_role_to_instance_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, unmodifiable_entity_exception(), tuple()}.
+    {error, add_role_to_instance_profile_errors(), tuple()}.
 add_role_to_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_role_to_instance_profile(Client, Input, []).
@@ -2856,11 +3677,7 @@ add_role_to_instance_profile(Client, Input)
 -spec add_role_to_instance_profile(map(), add_role_to_instance_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, unmodifiable_entity_exception(), tuple()}.
+    {error, add_role_to_instance_profile_errors(), tuple()}.
 add_role_to_instance_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddRoleToInstanceProfile">>, Input, Options).
@@ -2869,9 +3686,7 @@ add_role_to_instance_profile(Client, Input, Options)
 -spec add_user_to_group(map(), add_user_to_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, add_user_to_group_errors(), tuple()}.
 add_user_to_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_user_to_group(Client, Input, []).
@@ -2879,9 +3694,7 @@ add_user_to_group(Client, Input)
 -spec add_user_to_group(map(), add_user_to_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, add_user_to_group_errors(), tuple()}.
 add_user_to_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddUserToGroup">>, Input, Options).
@@ -2907,11 +3720,7 @@ add_user_to_group(Client, Input, Options)
 -spec attach_group_policy(map(), attach_group_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, policy_not_attachable_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, attach_group_policy_errors(), tuple()}.
 attach_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_group_policy(Client, Input, []).
@@ -2919,11 +3728,7 @@ attach_group_policy(Client, Input)
 -spec attach_group_policy(map(), attach_group_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, policy_not_attachable_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, attach_group_policy_errors(), tuple()}.
 attach_group_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachGroupPolicy">>, Input, Options).
@@ -2964,12 +3769,7 @@ attach_group_policy(Client, Input, Options)
 -spec attach_role_policy(map(), attach_role_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, policy_not_attachable_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, unmodifiable_entity_exception(), tuple()}.
+    {error, attach_role_policy_errors(), tuple()}.
 attach_role_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_role_policy(Client, Input, []).
@@ -2977,12 +3777,7 @@ attach_role_policy(Client, Input)
 -spec attach_role_policy(map(), attach_role_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, policy_not_attachable_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, unmodifiable_entity_exception(), tuple()}.
+    {error, attach_role_policy_errors(), tuple()}.
 attach_role_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachRolePolicy">>, Input, Options).
@@ -3007,11 +3802,7 @@ attach_role_policy(Client, Input, Options)
 -spec attach_user_policy(map(), attach_user_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, policy_not_attachable_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, attach_user_policy_errors(), tuple()}.
 attach_user_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_user_policy(Client, Input, []).
@@ -3019,11 +3810,7 @@ attach_user_policy(Client, Input)
 -spec attach_user_policy(map(), attach_user_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, policy_not_attachable_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, attach_user_policy_errors(), tuple()}.
 attach_user_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachUserPolicy">>, Input, Options).
@@ -3047,12 +3834,7 @@ attach_user_policy(Client, Input, Options)
 -spec change_password(map(), change_password_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, entity_temporarily_unmodifiable_exception(), tuple()} |
-    {error, invalid_user_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, password_policy_violation_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, change_password_errors(), tuple()}.
 change_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     change_password(Client, Input, []).
@@ -3060,12 +3842,7 @@ change_password(Client, Input)
 -spec change_password(map(), change_password_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, entity_temporarily_unmodifiable_exception(), tuple()} |
-    {error, invalid_user_type_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, password_policy_violation_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, change_password_errors(), tuple()}.
 change_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ChangePassword">>, Input, Options).
@@ -3101,9 +3878,7 @@ change_password(Client, Input, Options)
 -spec create_access_key(map(), create_access_key_request()) ->
     {ok, create_access_key_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, create_access_key_errors(), tuple()}.
 create_access_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_access_key(Client, Input, []).
@@ -3111,9 +3886,7 @@ create_access_key(Client, Input)
 -spec create_access_key(map(), create_access_key_request(), proplists:proplist()) ->
     {ok, create_access_key_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, create_access_key_errors(), tuple()}.
 create_access_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAccessKey">>, Input, Options).
@@ -3129,10 +3902,7 @@ create_access_key(Client, Input, Options)
 -spec create_account_alias(map(), create_account_alias_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, create_account_alias_errors(), tuple()}.
 create_account_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_account_alias(Client, Input, []).
@@ -3140,10 +3910,7 @@ create_account_alias(Client, Input)
 -spec create_account_alias(map(), create_account_alias_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, create_account_alias_errors(), tuple()}.
 create_account_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAccountAlias">>, Input, Options).
@@ -3157,10 +3924,7 @@ create_account_alias(Client, Input, Options)
 -spec create_group(map(), create_group_request()) ->
     {ok, create_group_response(), tuple()} |
     {error, any()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, create_group_errors(), tuple()}.
 create_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_group(Client, Input, []).
@@ -3168,10 +3932,7 @@ create_group(Client, Input)
 -spec create_group(map(), create_group_request(), proplists:proplist()) ->
     {ok, create_group_response(), tuple()} |
     {error, any()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, create_group_errors(), tuple()}.
 create_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGroup">>, Input, Options).
@@ -3194,11 +3955,7 @@ create_group(Client, Input, Options)
 -spec create_instance_profile(map(), create_instance_profile_request()) ->
     {ok, create_instance_profile_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, create_instance_profile_errors(), tuple()}.
 create_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_instance_profile(Client, Input, []).
@@ -3206,11 +3963,7 @@ create_instance_profile(Client, Input)
 -spec create_instance_profile(map(), create_instance_profile_request(), proplists:proplist()) ->
     {ok, create_instance_profile_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, create_instance_profile_errors(), tuple()}.
 create_instance_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateInstanceProfile">>, Input, Options).
@@ -3233,11 +3986,7 @@ create_instance_profile(Client, Input, Options)
 -spec create_login_profile(map(), create_login_profile_request()) ->
     {ok, create_login_profile_response(), tuple()} |
     {error, any()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, password_policy_violation_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, create_login_profile_errors(), tuple()}.
 create_login_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_login_profile(Client, Input, []).
@@ -3245,11 +3994,7 @@ create_login_profile(Client, Input)
 -spec create_login_profile(map(), create_login_profile_request(), proplists:proplist()) ->
     {ok, create_login_profile_response(), tuple()} |
     {error, any()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, password_policy_violation_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, create_login_profile_errors(), tuple()}.
 create_login_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLoginProfile">>, Input, Options).
@@ -3312,11 +4057,7 @@ create_login_profile(Client, Input, Options)
 -spec create_open_id_connect_provider(map(), create_open_id_connect_provider_request()) ->
     {ok, create_open_id_connect_provider_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, create_open_id_connect_provider_errors(), tuple()}.
 create_open_id_connect_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_open_id_connect_provider(Client, Input, []).
@@ -3324,11 +4065,7 @@ create_open_id_connect_provider(Client, Input)
 -spec create_open_id_connect_provider(map(), create_open_id_connect_provider_request(), proplists:proplist()) ->
     {ok, create_open_id_connect_provider_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, create_open_id_connect_provider_errors(), tuple()}.
 create_open_id_connect_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateOpenIDConnectProvider">>, Input, Options).
@@ -3357,12 +4094,7 @@ create_open_id_connect_provider(Client, Input, Options)
 -spec create_policy(map(), create_policy_request()) ->
     {ok, create_policy_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, create_policy_errors(), tuple()}.
 create_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_policy(Client, Input, []).
@@ -3370,12 +4102,7 @@ create_policy(Client, Input)
 -spec create_policy(map(), create_policy_request(), proplists:proplist()) ->
     {ok, create_policy_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, create_policy_errors(), tuple()}.
 create_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePolicy">>, Input, Options).
@@ -3402,11 +4129,7 @@ create_policy(Client, Input, Options)
 -spec create_policy_version(map(), create_policy_version_request()) ->
     {ok, create_policy_version_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, create_policy_version_errors(), tuple()}.
 create_policy_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_policy_version(Client, Input, []).
@@ -3414,11 +4137,7 @@ create_policy_version(Client, Input)
 -spec create_policy_version(map(), create_policy_version_request(), proplists:proplist()) ->
     {ok, create_policy_version_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, create_policy_version_errors(), tuple()}.
 create_policy_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePolicyVersion">>, Input, Options).
@@ -3435,12 +4154,7 @@ create_policy_version(Client, Input, Options)
 -spec create_role(map(), create_role_request()) ->
     {ok, create_role_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, create_role_errors(), tuple()}.
 create_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_role(Client, Input, []).
@@ -3448,12 +4162,7 @@ create_role(Client, Input)
 -spec create_role(map(), create_role_request(), proplists:proplist()) ->
     {ok, create_role_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, create_role_errors(), tuple()}.
 create_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRole">>, Input, Options).
@@ -3495,11 +4204,7 @@ create_role(Client, Input, Options)
 -spec create_saml_provider(map(), create_saml_provider_request()) ->
     {ok, create_saml_provider_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, create_saml_provider_errors(), tuple()}.
 create_saml_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_saml_provider(Client, Input, []).
@@ -3507,11 +4212,7 @@ create_saml_provider(Client, Input)
 -spec create_saml_provider(map(), create_saml_provider_request(), proplists:proplist()) ->
     {ok, create_saml_provider_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, create_saml_provider_errors(), tuple()}.
 create_saml_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSAMLProvider">>, Input, Options).
@@ -3539,10 +4240,7 @@ create_saml_provider(Client, Input, Options)
 -spec create_service_linked_role(map(), create_service_linked_role_request()) ->
     {ok, create_service_linked_role_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, create_service_linked_role_errors(), tuple()}.
 create_service_linked_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service_linked_role(Client, Input, []).
@@ -3550,10 +4248,7 @@ create_service_linked_role(Client, Input)
 -spec create_service_linked_role(map(), create_service_linked_role_request(), proplists:proplist()) ->
     {ok, create_service_linked_role_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, create_service_linked_role_errors(), tuple()}.
 create_service_linked_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateServiceLinkedRole">>, Input, Options).
@@ -3585,9 +4280,7 @@ create_service_linked_role(Client, Input, Options)
 -spec create_service_specific_credential(map(), create_service_specific_credential_request()) ->
     {ok, create_service_specific_credential_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_not_supported_exception(), tuple()}.
+    {error, create_service_specific_credential_errors(), tuple()}.
 create_service_specific_credential(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service_specific_credential(Client, Input, []).
@@ -3595,9 +4288,7 @@ create_service_specific_credential(Client, Input)
 -spec create_service_specific_credential(map(), create_service_specific_credential_request(), proplists:proplist()) ->
     {ok, create_service_specific_credential_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_not_supported_exception(), tuple()}.
+    {error, create_service_specific_credential_errors(), tuple()}.
 create_service_specific_credential(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateServiceSpecificCredential">>, Input, Options).
@@ -3612,12 +4303,7 @@ create_service_specific_credential(Client, Input, Options)
 -spec create_user(map(), create_user_request()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, create_user_errors(), tuple()}.
 create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user(Client, Input, []).
@@ -3625,12 +4311,7 @@ create_user(Client, Input)
 -spec create_user(map(), create_user_request(), proplists:proplist()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, create_user_errors(), tuple()}.
 create_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUser">>, Input, Options).
@@ -3663,11 +4344,7 @@ create_user(Client, Input, Options)
 -spec create_virtual_mfa_device(map(), create_virtual_mfa_device_request()) ->
     {ok, create_virtual_mfa_device_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, create_virtual_mfa_device_errors(), tuple()}.
 create_virtual_mfa_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_virtual_mfa_device(Client, Input, []).
@@ -3675,11 +4352,7 @@ create_virtual_mfa_device(Client, Input)
 -spec create_virtual_mfa_device(map(), create_virtual_mfa_device_request(), proplists:proplist()) ->
     {ok, create_virtual_mfa_device_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, create_virtual_mfa_device_errors(), tuple()}.
 create_virtual_mfa_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateVirtualMFADevice">>, Input, Options).
@@ -3697,11 +4370,7 @@ create_virtual_mfa_device(Client, Input, Options)
 -spec deactivate_mfa_device(map(), deactivate_mfa_device_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_temporarily_unmodifiable_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, deactivate_mfa_device_errors(), tuple()}.
 deactivate_mfa_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     deactivate_mfa_device(Client, Input, []).
@@ -3709,11 +4378,7 @@ deactivate_mfa_device(Client, Input)
 -spec deactivate_mfa_device(map(), deactivate_mfa_device_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_temporarily_unmodifiable_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, deactivate_mfa_device_errors(), tuple()}.
 deactivate_mfa_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeactivateMFADevice">>, Input, Options).
@@ -3731,9 +4396,7 @@ deactivate_mfa_device(Client, Input, Options)
 -spec delete_access_key(map(), delete_access_key_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_access_key_errors(), tuple()}.
 delete_access_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_access_key(Client, Input, []).
@@ -3741,9 +4404,7 @@ delete_access_key(Client, Input)
 -spec delete_access_key(map(), delete_access_key_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_access_key_errors(), tuple()}.
 delete_access_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAccessKey">>, Input, Options).
@@ -3759,10 +4420,7 @@ delete_access_key(Client, Input, Options)
 -spec delete_account_alias(map(), delete_account_alias_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_account_alias_errors(), tuple()}.
 delete_account_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_account_alias(Client, Input, []).
@@ -3770,10 +4428,7 @@ delete_account_alias(Client, Input)
 -spec delete_account_alias(map(), delete_account_alias_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_account_alias_errors(), tuple()}.
 delete_account_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAccountAlias">>, Input, Options).
@@ -3784,9 +4439,7 @@ delete_account_alias(Client, Input, Options)
 -spec delete_account_password_policy(map(), #{}) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_account_password_policy_errors(), tuple()}.
 delete_account_password_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_account_password_policy(Client, Input, []).
@@ -3794,9 +4447,7 @@ delete_account_password_policy(Client, Input)
 -spec delete_account_password_policy(map(), #{}, proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_account_password_policy_errors(), tuple()}.
 delete_account_password_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAccountPasswordPolicy">>, Input, Options).
@@ -3808,10 +4459,7 @@ delete_account_password_policy(Client, Input, Options)
 -spec delete_group(map(), delete_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_group_errors(), tuple()}.
 delete_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_group(Client, Input, []).
@@ -3819,10 +4467,7 @@ delete_group(Client, Input)
 -spec delete_group(map(), delete_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_group_errors(), tuple()}.
 delete_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGroup">>, Input, Options).
@@ -3841,9 +4486,7 @@ delete_group(Client, Input, Options)
 -spec delete_group_policy(map(), delete_group_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_group_policy_errors(), tuple()}.
 delete_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_group_policy(Client, Input, []).
@@ -3851,9 +4494,7 @@ delete_group_policy(Client, Input)
 -spec delete_group_policy(map(), delete_group_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_group_policy_errors(), tuple()}.
 delete_group_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGroupPolicy">>, Input, Options).
@@ -3878,10 +4519,7 @@ delete_group_policy(Client, Input, Options)
 -spec delete_instance_profile(map(), delete_instance_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_instance_profile_errors(), tuple()}.
 delete_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_instance_profile(Client, Input, []).
@@ -3889,10 +4527,7 @@ delete_instance_profile(Client, Input)
 -spec delete_instance_profile(map(), delete_instance_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_instance_profile_errors(), tuple()}.
 delete_instance_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInstanceProfile">>, Input, Options).
@@ -3919,10 +4554,7 @@ delete_instance_profile(Client, Input, Options)
 -spec delete_login_profile(map(), delete_login_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, entity_temporarily_unmodifiable_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_login_profile_errors(), tuple()}.
 delete_login_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_login_profile(Client, Input, []).
@@ -3930,10 +4562,7 @@ delete_login_profile(Client, Input)
 -spec delete_login_profile(map(), delete_login_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, entity_temporarily_unmodifiable_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_login_profile_errors(), tuple()}.
 delete_login_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLoginProfile">>, Input, Options).
@@ -3953,9 +4582,7 @@ delete_login_profile(Client, Input, Options)
 -spec delete_open_id_connect_provider(map(), delete_open_id_connect_provider_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_open_id_connect_provider_errors(), tuple()}.
 delete_open_id_connect_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_open_id_connect_provider(Client, Input, []).
@@ -3963,9 +4590,7 @@ delete_open_id_connect_provider(Client, Input)
 -spec delete_open_id_connect_provider(map(), delete_open_id_connect_provider_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_open_id_connect_provider_errors(), tuple()}.
 delete_open_id_connect_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteOpenIDConnectProvider">>, Input, Options).
@@ -4004,11 +4629,7 @@ delete_open_id_connect_provider(Client, Input, Options)
 -spec delete_policy(map(), delete_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_policy_errors(), tuple()}.
 delete_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_policy(Client, Input, []).
@@ -4016,11 +4637,7 @@ delete_policy(Client, Input)
 -spec delete_policy(map(), delete_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_policy_errors(), tuple()}.
 delete_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePolicy">>, Input, Options).
@@ -4042,11 +4659,7 @@ delete_policy(Client, Input, Options)
 -spec delete_policy_version(map(), delete_policy_version_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_policy_version_errors(), tuple()}.
 delete_policy_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_policy_version(Client, Input, []).
@@ -4054,11 +4667,7 @@ delete_policy_version(Client, Input)
 -spec delete_policy_version(map(), delete_policy_version_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_policy_version_errors(), tuple()}.
 delete_policy_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePolicyVersion">>, Input, Options).
@@ -4090,12 +4699,7 @@ delete_policy_version(Client, Input, Options)
 -spec delete_role(map(), delete_role_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, unmodifiable_entity_exception(), tuple()}.
+    {error, delete_role_errors(), tuple()}.
 delete_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_role(Client, Input, []).
@@ -4103,12 +4707,7 @@ delete_role(Client, Input)
 -spec delete_role(map(), delete_role_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, unmodifiable_entity_exception(), tuple()}.
+    {error, delete_role_errors(), tuple()}.
 delete_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRole">>, Input, Options).
@@ -4125,9 +4724,7 @@ delete_role(Client, Input, Options)
 -spec delete_role_permissions_boundary(map(), delete_role_permissions_boundary_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, unmodifiable_entity_exception(), tuple()}.
+    {error, delete_role_permissions_boundary_errors(), tuple()}.
 delete_role_permissions_boundary(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_role_permissions_boundary(Client, Input, []).
@@ -4135,9 +4732,7 @@ delete_role_permissions_boundary(Client, Input)
 -spec delete_role_permissions_boundary(map(), delete_role_permissions_boundary_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, unmodifiable_entity_exception(), tuple()}.
+    {error, delete_role_permissions_boundary_errors(), tuple()}.
 delete_role_permissions_boundary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRolePermissionsBoundary">>, Input, Options).
@@ -4156,10 +4751,7 @@ delete_role_permissions_boundary(Client, Input, Options)
 -spec delete_role_policy(map(), delete_role_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, unmodifiable_entity_exception(), tuple()}.
+    {error, delete_role_policy_errors(), tuple()}.
 delete_role_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_role_policy(Client, Input, []).
@@ -4167,10 +4759,7 @@ delete_role_policy(Client, Input)
 -spec delete_role_policy(map(), delete_role_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, unmodifiable_entity_exception(), tuple()}.
+    {error, delete_role_policy_errors(), tuple()}.
 delete_role_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRolePolicy">>, Input, Options).
@@ -4188,10 +4777,7 @@ delete_role_policy(Client, Input, Options)
 -spec delete_saml_provider(map(), delete_saml_provider_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_saml_provider_errors(), tuple()}.
 delete_saml_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_saml_provider(Client, Input, []).
@@ -4199,10 +4785,7 @@ delete_saml_provider(Client, Input)
 -spec delete_saml_provider(map(), delete_saml_provider_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_saml_provider_errors(), tuple()}.
 delete_saml_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSAMLProvider">>, Input, Options).
@@ -4236,10 +4819,7 @@ delete_saml_provider(Client, Input, Options)
 -spec delete_server_certificate(map(), delete_server_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_server_certificate_errors(), tuple()}.
 delete_server_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_server_certificate(Client, Input, []).
@@ -4247,10 +4827,7 @@ delete_server_certificate(Client, Input)
 -spec delete_server_certificate(map(), delete_server_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_server_certificate_errors(), tuple()}.
 delete_server_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteServerCertificate">>, Input, Options).
@@ -4293,9 +4870,7 @@ delete_server_certificate(Client, Input, Options)
 -spec delete_service_linked_role(map(), delete_service_linked_role_request()) ->
     {ok, delete_service_linked_role_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_service_linked_role_errors(), tuple()}.
 delete_service_linked_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service_linked_role(Client, Input, []).
@@ -4303,9 +4878,7 @@ delete_service_linked_role(Client, Input)
 -spec delete_service_linked_role(map(), delete_service_linked_role_request(), proplists:proplist()) ->
     {ok, delete_service_linked_role_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_service_linked_role_errors(), tuple()}.
 delete_service_linked_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteServiceLinkedRole">>, Input, Options).
@@ -4314,7 +4887,7 @@ delete_service_linked_role(Client, Input, Options)
 -spec delete_service_specific_credential(map(), delete_service_specific_credential_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, delete_service_specific_credential_errors(), tuple()}.
 delete_service_specific_credential(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service_specific_credential(Client, Input, []).
@@ -4322,7 +4895,7 @@ delete_service_specific_credential(Client, Input)
 -spec delete_service_specific_credential(map(), delete_service_specific_credential_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, delete_service_specific_credential_errors(), tuple()}.
 delete_service_specific_credential(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteServiceSpecificCredential">>, Input, Options).
@@ -4340,10 +4913,7 @@ delete_service_specific_credential(Client, Input, Options)
 -spec delete_signing_certificate(map(), delete_signing_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_signing_certificate_errors(), tuple()}.
 delete_signing_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_signing_certificate(Client, Input, []).
@@ -4351,10 +4921,7 @@ delete_signing_certificate(Client, Input)
 -spec delete_signing_certificate(map(), delete_signing_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_signing_certificate_errors(), tuple()}.
 delete_signing_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSigningCertificate">>, Input, Options).
@@ -4372,7 +4939,7 @@ delete_signing_certificate(Client, Input, Options)
 -spec delete_ssh_public_key(map(), delete_ssh_public_key_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, delete_ssh_public_key_errors(), tuple()}.
 delete_ssh_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_ssh_public_key(Client, Input, []).
@@ -4380,7 +4947,7 @@ delete_ssh_public_key(Client, Input)
 -spec delete_ssh_public_key(map(), delete_ssh_public_key_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, delete_ssh_public_key_errors(), tuple()}.
 delete_ssh_public_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSSHPublicKey">>, Input, Options).
@@ -4416,11 +4983,7 @@ delete_ssh_public_key(Client, Input, Options)
 -spec delete_user(map(), delete_user_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_user_errors(), tuple()}.
 delete_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user(Client, Input, []).
@@ -4428,11 +4991,7 @@ delete_user(Client, Input)
 -spec delete_user(map(), delete_user_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_user_errors(), tuple()}.
 delete_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUser">>, Input, Options).
@@ -4446,8 +5005,7 @@ delete_user(Client, Input, Options)
 -spec delete_user_permissions_boundary(map(), delete_user_permissions_boundary_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_user_permissions_boundary_errors(), tuple()}.
 delete_user_permissions_boundary(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_permissions_boundary(Client, Input, []).
@@ -4455,8 +5013,7 @@ delete_user_permissions_boundary(Client, Input)
 -spec delete_user_permissions_boundary(map(), delete_user_permissions_boundary_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_user_permissions_boundary_errors(), tuple()}.
 delete_user_permissions_boundary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUserPermissionsBoundary">>, Input, Options).
@@ -4475,9 +5032,7 @@ delete_user_permissions_boundary(Client, Input, Options)
 -spec delete_user_policy(map(), delete_user_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_user_policy_errors(), tuple()}.
 delete_user_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_policy(Client, Input, []).
@@ -4485,9 +5040,7 @@ delete_user_policy(Client, Input)
 -spec delete_user_policy(map(), delete_user_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_user_policy_errors(), tuple()}.
 delete_user_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUserPolicy">>, Input, Options).
@@ -4500,11 +5053,7 @@ delete_user_policy(Client, Input, Options)
 -spec delete_virtual_mfa_device(map(), delete_virtual_mfa_device_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_virtual_mfa_device_errors(), tuple()}.
 delete_virtual_mfa_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_virtual_mfa_device(Client, Input, []).
@@ -4512,11 +5061,7 @@ delete_virtual_mfa_device(Client, Input)
 -spec delete_virtual_mfa_device(map(), delete_virtual_mfa_device_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, delete_conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_virtual_mfa_device_errors(), tuple()}.
 delete_virtual_mfa_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteVirtualMFADevice">>, Input, Options).
@@ -4533,10 +5078,7 @@ delete_virtual_mfa_device(Client, Input, Options)
 -spec detach_group_policy(map(), detach_group_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, detach_group_policy_errors(), tuple()}.
 detach_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_group_policy(Client, Input, []).
@@ -4544,10 +5086,7 @@ detach_group_policy(Client, Input)
 -spec detach_group_policy(map(), detach_group_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, detach_group_policy_errors(), tuple()}.
 detach_group_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachGroupPolicy">>, Input, Options).
@@ -4564,11 +5103,7 @@ detach_group_policy(Client, Input, Options)
 -spec detach_role_policy(map(), detach_role_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, unmodifiable_entity_exception(), tuple()}.
+    {error, detach_role_policy_errors(), tuple()}.
 detach_role_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_role_policy(Client, Input, []).
@@ -4576,11 +5111,7 @@ detach_role_policy(Client, Input)
 -spec detach_role_policy(map(), detach_role_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, unmodifiable_entity_exception(), tuple()}.
+    {error, detach_role_policy_errors(), tuple()}.
 detach_role_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachRolePolicy">>, Input, Options).
@@ -4597,10 +5128,7 @@ detach_role_policy(Client, Input, Options)
 -spec detach_user_policy(map(), detach_user_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, detach_user_policy_errors(), tuple()}.
 detach_user_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_user_policy(Client, Input, []).
@@ -4608,10 +5136,7 @@ detach_user_policy(Client, Input)
 -spec detach_user_policy(map(), detach_user_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, detach_user_policy_errors(), tuple()}.
 detach_user_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachUserPolicy">>, Input, Options).
@@ -4626,13 +5151,7 @@ detach_user_policy(Client, Input, Options)
 -spec enable_mfa_device(map(), enable_mfa_device_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, entity_temporarily_unmodifiable_exception(), tuple()} |
-    {error, invalid_authentication_code_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, enable_mfa_device_errors(), tuple()}.
 enable_mfa_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_mfa_device(Client, Input, []).
@@ -4640,13 +5159,7 @@ enable_mfa_device(Client, Input)
 -spec enable_mfa_device(map(), enable_mfa_device_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, entity_temporarily_unmodifiable_exception(), tuple()} |
-    {error, invalid_authentication_code_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, enable_mfa_device_errors(), tuple()}.
 enable_mfa_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableMFADevice">>, Input, Options).
@@ -4661,8 +5174,7 @@ enable_mfa_device(Client, Input, Options)
 -spec generate_credential_report(map(), #{}) ->
     {ok, generate_credential_report_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, generate_credential_report_errors(), tuple()}.
 generate_credential_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_credential_report(Client, Input, []).
@@ -4670,8 +5182,7 @@ generate_credential_report(Client, Input)
 -spec generate_credential_report(map(), #{}, proplists:proplist()) ->
     {ok, generate_credential_report_response(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, generate_credential_report_errors(), tuple()}.
 generate_credential_report(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GenerateCredentialReport">>, Input, Options).
@@ -4864,7 +5375,7 @@ generate_credential_report(Client, Input, Options)
 -spec generate_organizations_access_report(map(), generate_organizations_access_report_request()) ->
     {ok, generate_organizations_access_report_response(), tuple()} |
     {error, any()} |
-    {error, report_generation_limit_exceeded_exception(), tuple()}.
+    {error, generate_organizations_access_report_errors(), tuple()}.
 generate_organizations_access_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_organizations_access_report(Client, Input, []).
@@ -4872,7 +5383,7 @@ generate_organizations_access_report(Client, Input)
 -spec generate_organizations_access_report(map(), generate_organizations_access_report_request(), proplists:proplist()) ->
     {ok, generate_organizations_access_report_response(), tuple()} |
     {error, any()} |
-    {error, report_generation_limit_exceeded_exception(), tuple()}.
+    {error, generate_organizations_access_report_errors(), tuple()}.
 generate_organizations_access_report(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GenerateOrganizationsAccessReport">>, Input, Options).
@@ -4967,8 +5478,7 @@ generate_organizations_access_report(Client, Input, Options)
 -spec generate_service_last_accessed_details(map(), generate_service_last_accessed_details_request()) ->
     {ok, generate_service_last_accessed_details_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, generate_service_last_accessed_details_errors(), tuple()}.
 generate_service_last_accessed_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_service_last_accessed_details(Client, Input, []).
@@ -4976,8 +5486,7 @@ generate_service_last_accessed_details(Client, Input)
 -spec generate_service_last_accessed_details(map(), generate_service_last_accessed_details_request(), proplists:proplist()) ->
     {ok, generate_service_last_accessed_details_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, generate_service_last_accessed_details_errors(), tuple()}.
 generate_service_last_accessed_details(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GenerateServiceLastAccessedDetails">>, Input, Options).
@@ -5027,7 +5536,7 @@ get_access_key_last_used(Client, Input, Options)
 -spec get_account_authorization_details(map(), get_account_authorization_details_request()) ->
     {ok, get_account_authorization_details_response(), tuple()} |
     {error, any()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_account_authorization_details_errors(), tuple()}.
 get_account_authorization_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_account_authorization_details(Client, Input, []).
@@ -5035,7 +5544,7 @@ get_account_authorization_details(Client, Input)
 -spec get_account_authorization_details(map(), get_account_authorization_details_request(), proplists:proplist()) ->
     {ok, get_account_authorization_details_response(), tuple()} |
     {error, any()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_account_authorization_details_errors(), tuple()}.
 get_account_authorization_details(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAccountAuthorizationDetails">>, Input, Options).
@@ -5052,8 +5561,7 @@ get_account_authorization_details(Client, Input, Options)
 -spec get_account_password_policy(map(), #{}) ->
     {ok, get_account_password_policy_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_account_password_policy_errors(), tuple()}.
 get_account_password_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_account_password_policy(Client, Input, []).
@@ -5061,8 +5569,7 @@ get_account_password_policy(Client, Input)
 -spec get_account_password_policy(map(), #{}, proplists:proplist()) ->
     {ok, get_account_password_policy_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_account_password_policy_errors(), tuple()}.
 get_account_password_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAccountPasswordPolicy">>, Input, Options).
@@ -5078,7 +5585,7 @@ get_account_password_policy(Client, Input, Options)
 -spec get_account_summary(map(), #{}) ->
     {ok, get_account_summary_response(), tuple()} |
     {error, any()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_account_summary_errors(), tuple()}.
 get_account_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_account_summary(Client, Input, []).
@@ -5086,7 +5593,7 @@ get_account_summary(Client, Input)
 -spec get_account_summary(map(), #{}, proplists:proplist()) ->
     {ok, get_account_summary_response(), tuple()} |
     {error, any()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_account_summary_errors(), tuple()}.
 get_account_summary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAccountSummary">>, Input, Options).
@@ -5114,7 +5621,7 @@ get_account_summary(Client, Input, Options)
 -spec get_context_keys_for_custom_policy(map(), get_context_keys_for_custom_policy_request()) ->
     {ok, get_context_keys_for_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, get_context_keys_for_custom_policy_errors(), tuple()}.
 get_context_keys_for_custom_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_context_keys_for_custom_policy(Client, Input, []).
@@ -5122,7 +5629,7 @@ get_context_keys_for_custom_policy(Client, Input)
 -spec get_context_keys_for_custom_policy(map(), get_context_keys_for_custom_policy_request(), proplists:proplist()) ->
     {ok, get_context_keys_for_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, get_context_keys_for_custom_policy_errors(), tuple()}.
 get_context_keys_for_custom_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetContextKeysForCustomPolicy">>, Input, Options).
@@ -5157,8 +5664,7 @@ get_context_keys_for_custom_policy(Client, Input, Options)
 -spec get_context_keys_for_principal_policy(map(), get_context_keys_for_principal_policy_request()) ->
     {ok, get_context_keys_for_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, get_context_keys_for_principal_policy_errors(), tuple()}.
 get_context_keys_for_principal_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_context_keys_for_principal_policy(Client, Input, []).
@@ -5166,8 +5672,7 @@ get_context_keys_for_principal_policy(Client, Input)
 -spec get_context_keys_for_principal_policy(map(), get_context_keys_for_principal_policy_request(), proplists:proplist()) ->
     {ok, get_context_keys_for_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, get_context_keys_for_principal_policy_errors(), tuple()}.
 get_context_keys_for_principal_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetContextKeysForPrincipalPolicy">>, Input, Options).
@@ -5182,10 +5687,7 @@ get_context_keys_for_principal_policy(Client, Input, Options)
 -spec get_credential_report(map(), #{}) ->
     {ok, get_credential_report_response(), tuple()} |
     {error, any()} |
-    {error, credential_report_expired_exception(), tuple()} |
-    {error, credential_report_not_present_exception(), tuple()} |
-    {error, credential_report_not_ready_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_credential_report_errors(), tuple()}.
 get_credential_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_credential_report(Client, Input, []).
@@ -5193,10 +5695,7 @@ get_credential_report(Client, Input)
 -spec get_credential_report(map(), #{}, proplists:proplist()) ->
     {ok, get_credential_report_response(), tuple()} |
     {error, any()} |
-    {error, credential_report_expired_exception(), tuple()} |
-    {error, credential_report_not_present_exception(), tuple()} |
-    {error, credential_report_not_ready_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_credential_report_errors(), tuple()}.
 get_credential_report(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCredentialReport">>, Input, Options).
@@ -5208,8 +5707,7 @@ get_credential_report(Client, Input, Options)
 -spec get_group(map(), get_group_request()) ->
     {ok, get_group_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_group_errors(), tuple()}.
 get_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_group(Client, Input, []).
@@ -5217,8 +5715,7 @@ get_group(Client, Input)
 -spec get_group(map(), get_group_request(), proplists:proplist()) ->
     {ok, get_group_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_group_errors(), tuple()}.
 get_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetGroup">>, Input, Options).
@@ -5249,8 +5746,7 @@ get_group(Client, Input, Options)
 -spec get_group_policy(map(), get_group_policy_request()) ->
     {ok, get_group_policy_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_group_policy_errors(), tuple()}.
 get_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_group_policy(Client, Input, []).
@@ -5258,8 +5754,7 @@ get_group_policy(Client, Input)
 -spec get_group_policy(map(), get_group_policy_request(), proplists:proplist()) ->
     {ok, get_group_policy_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_group_policy_errors(), tuple()}.
 get_group_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetGroupPolicy">>, Input, Options).
@@ -5276,8 +5771,7 @@ get_group_policy(Client, Input, Options)
 -spec get_instance_profile(map(), get_instance_profile_request()) ->
     {ok, get_instance_profile_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_instance_profile_errors(), tuple()}.
 get_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instance_profile(Client, Input, []).
@@ -5285,8 +5779,7 @@ get_instance_profile(Client, Input)
 -spec get_instance_profile(map(), get_instance_profile_request(), proplists:proplist()) ->
     {ok, get_instance_profile_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_instance_profile_errors(), tuple()}.
 get_instance_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInstanceProfile">>, Input, Options).
@@ -5314,8 +5807,7 @@ get_instance_profile(Client, Input, Options)
 -spec get_login_profile(map(), get_login_profile_request()) ->
     {ok, get_login_profile_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_login_profile_errors(), tuple()}.
 get_login_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_login_profile(Client, Input, []).
@@ -5323,8 +5815,7 @@ get_login_profile(Client, Input)
 -spec get_login_profile(map(), get_login_profile_request(), proplists:proplist()) ->
     {ok, get_login_profile_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_login_profile_errors(), tuple()}.
 get_login_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLoginProfile">>, Input, Options).
@@ -5333,8 +5824,7 @@ get_login_profile(Client, Input, Options)
 -spec get_mfa_device(map(), get_mfa_device_request()) ->
     {ok, get_mfa_device_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_mfa_device_errors(), tuple()}.
 get_mfa_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_mfa_device(Client, Input, []).
@@ -5342,8 +5832,7 @@ get_mfa_device(Client, Input)
 -spec get_mfa_device(map(), get_mfa_device_request(), proplists:proplist()) ->
     {ok, get_mfa_device_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_mfa_device_errors(), tuple()}.
 get_mfa_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMFADevice">>, Input, Options).
@@ -5354,9 +5843,7 @@ get_mfa_device(Client, Input, Options)
 -spec get_open_id_connect_provider(map(), get_open_id_connect_provider_request()) ->
     {ok, get_open_id_connect_provider_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_open_id_connect_provider_errors(), tuple()}.
 get_open_id_connect_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_open_id_connect_provider(Client, Input, []).
@@ -5364,9 +5851,7 @@ get_open_id_connect_provider(Client, Input)
 -spec get_open_id_connect_provider(map(), get_open_id_connect_provider_request(), proplists:proplist()) ->
     {ok, get_open_id_connect_provider_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_open_id_connect_provider_errors(), tuple()}.
 get_open_id_connect_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOpenIDConnectProvider">>, Input, Options).
@@ -5411,7 +5896,7 @@ get_open_id_connect_provider(Client, Input, Options)
 -spec get_organizations_access_report(map(), get_organizations_access_report_request()) ->
     {ok, get_organizations_access_report_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, get_organizations_access_report_errors(), tuple()}.
 get_organizations_access_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_organizations_access_report(Client, Input, []).
@@ -5419,7 +5904,7 @@ get_organizations_access_report(Client, Input)
 -spec get_organizations_access_report(map(), get_organizations_access_report_request(), proplists:proplist()) ->
     {ok, get_organizations_access_report_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, get_organizations_access_report_errors(), tuple()}.
 get_organizations_access_report(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOrganizationsAccessReport">>, Input, Options).
@@ -5448,9 +5933,7 @@ get_organizations_access_report(Client, Input, Options)
 -spec get_policy(map(), get_policy_request()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_policy_errors(), tuple()}.
 get_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_policy(Client, Input, []).
@@ -5458,9 +5941,7 @@ get_policy(Client, Input)
 -spec get_policy(map(), get_policy_request(), proplists:proplist()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_policy_errors(), tuple()}.
 get_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPolicy">>, Input, Options).
@@ -5498,9 +5979,7 @@ get_policy(Client, Input, Options)
 -spec get_policy_version(map(), get_policy_version_request()) ->
     {ok, get_policy_version_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_policy_version_errors(), tuple()}.
 get_policy_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_policy_version(Client, Input, []).
@@ -5508,9 +5987,7 @@ get_policy_version(Client, Input)
 -spec get_policy_version(map(), get_policy_version_request(), proplists:proplist()) ->
     {ok, get_policy_version_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_policy_version_errors(), tuple()}.
 get_policy_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPolicyVersion">>, Input, Options).
@@ -5534,8 +6011,7 @@ get_policy_version(Client, Input, Options)
 -spec get_role(map(), get_role_request()) ->
     {ok, get_role_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_role_errors(), tuple()}.
 get_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_role(Client, Input, []).
@@ -5543,8 +6019,7 @@ get_role(Client, Input)
 -spec get_role(map(), get_role_request(), proplists:proplist()) ->
     {ok, get_role_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_role_errors(), tuple()}.
 get_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRole">>, Input, Options).
@@ -5580,8 +6055,7 @@ get_role(Client, Input, Options)
 -spec get_role_policy(map(), get_role_policy_request()) ->
     {ok, get_role_policy_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_role_policy_errors(), tuple()}.
 get_role_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_role_policy(Client, Input, []).
@@ -5589,8 +6063,7 @@ get_role_policy(Client, Input)
 -spec get_role_policy(map(), get_role_policy_request(), proplists:proplist()) ->
     {ok, get_role_policy_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_role_policy_errors(), tuple()}.
 get_role_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRolePolicy">>, Input, Options).
@@ -5604,9 +6077,7 @@ get_role_policy(Client, Input, Options)
 -spec get_saml_provider(map(), get_saml_provider_request()) ->
     {ok, get_saml_provider_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_saml_provider_errors(), tuple()}.
 get_saml_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_saml_provider(Client, Input, []).
@@ -5614,9 +6085,7 @@ get_saml_provider(Client, Input)
 -spec get_saml_provider(map(), get_saml_provider_request(), proplists:proplist()) ->
     {ok, get_saml_provider_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_saml_provider_errors(), tuple()}.
 get_saml_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSAMLProvider">>, Input, Options).
@@ -5634,8 +6103,7 @@ get_saml_provider(Client, Input, Options)
 -spec get_server_certificate(map(), get_server_certificate_request()) ->
     {ok, get_server_certificate_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_server_certificate_errors(), tuple()}.
 get_server_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_server_certificate(Client, Input, []).
@@ -5643,8 +6111,7 @@ get_server_certificate(Client, Input)
 -spec get_server_certificate(map(), get_server_certificate_request(), proplists:proplist()) ->
     {ok, get_server_certificate_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_server_certificate_errors(), tuple()}.
 get_server_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServerCertificate">>, Input, Options).
@@ -5721,8 +6188,7 @@ get_server_certificate(Client, Input, Options)
 -spec get_service_last_accessed_details(map(), get_service_last_accessed_details_request()) ->
     {ok, get_service_last_accessed_details_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, get_service_last_accessed_details_errors(), tuple()}.
 get_service_last_accessed_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_last_accessed_details(Client, Input, []).
@@ -5730,8 +6196,7 @@ get_service_last_accessed_details(Client, Input)
 -spec get_service_last_accessed_details(map(), get_service_last_accessed_details_request(), proplists:proplist()) ->
     {ok, get_service_last_accessed_details_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, get_service_last_accessed_details_errors(), tuple()}.
 get_service_last_accessed_details(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServiceLastAccessedDetails">>, Input, Options).
@@ -5770,8 +6235,7 @@ get_service_last_accessed_details(Client, Input, Options)
 -spec get_service_last_accessed_details_with_entities(map(), get_service_last_accessed_details_with_entities_request()) ->
     {ok, get_service_last_accessed_details_with_entities_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, get_service_last_accessed_details_with_entities_errors(), tuple()}.
 get_service_last_accessed_details_with_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_last_accessed_details_with_entities(Client, Input, []).
@@ -5779,8 +6243,7 @@ get_service_last_accessed_details_with_entities(Client, Input)
 -spec get_service_last_accessed_details_with_entities(map(), get_service_last_accessed_details_with_entities_request(), proplists:proplist()) ->
     {ok, get_service_last_accessed_details_with_entities_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, get_service_last_accessed_details_with_entities_errors(), tuple()}.
 get_service_last_accessed_details_with_entities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServiceLastAccessedDetailsWithEntities">>, Input, Options).
@@ -5798,9 +6261,7 @@ get_service_last_accessed_details_with_entities(Client, Input, Options)
 -spec get_service_linked_role_deletion_status(map(), get_service_linked_role_deletion_status_request()) ->
     {ok, get_service_linked_role_deletion_status_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_service_linked_role_deletion_status_errors(), tuple()}.
 get_service_linked_role_deletion_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_linked_role_deletion_status(Client, Input, []).
@@ -5808,9 +6269,7 @@ get_service_linked_role_deletion_status(Client, Input)
 -spec get_service_linked_role_deletion_status(map(), get_service_linked_role_deletion_status_request(), proplists:proplist()) ->
     {ok, get_service_linked_role_deletion_status_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_service_linked_role_deletion_status_errors(), tuple()}.
 get_service_linked_role_deletion_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServiceLinkedRoleDeletionStatus">>, Input, Options).
@@ -5829,8 +6288,7 @@ get_service_linked_role_deletion_status(Client, Input, Options)
 -spec get_ssh_public_key(map(), get_ssh_public_key_request()) ->
     {ok, get_ssh_public_key_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, unrecognized_public_key_encoding_exception(), tuple()}.
+    {error, get_ssh_public_key_errors(), tuple()}.
 get_ssh_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ssh_public_key(Client, Input, []).
@@ -5838,8 +6296,7 @@ get_ssh_public_key(Client, Input)
 -spec get_ssh_public_key(map(), get_ssh_public_key_request(), proplists:proplist()) ->
     {ok, get_ssh_public_key_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, unrecognized_public_key_encoding_exception(), tuple()}.
+    {error, get_ssh_public_key_errors(), tuple()}.
 get_ssh_public_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSSHPublicKey">>, Input, Options).
@@ -5855,8 +6312,7 @@ get_ssh_public_key(Client, Input, Options)
 -spec get_user(map(), get_user_request()) ->
     {ok, get_user_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_user_errors(), tuple()}.
 get_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_user(Client, Input, []).
@@ -5864,8 +6320,7 @@ get_user(Client, Input)
 -spec get_user(map(), get_user_request(), proplists:proplist()) ->
     {ok, get_user_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_user_errors(), tuple()}.
 get_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUser">>, Input, Options).
@@ -5897,8 +6352,7 @@ get_user(Client, Input, Options)
 -spec get_user_policy(map(), get_user_policy_request()) ->
     {ok, get_user_policy_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_user_policy_errors(), tuple()}.
 get_user_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_user_policy(Client, Input, []).
@@ -5906,8 +6360,7 @@ get_user_policy(Client, Input)
 -spec get_user_policy(map(), get_user_policy_request(), proplists:proplist()) ->
     {ok, get_user_policy_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_user_policy_errors(), tuple()}.
 get_user_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUserPolicy">>, Input, Options).
@@ -5941,8 +6394,7 @@ get_user_policy(Client, Input, Options)
 -spec list_access_keys(map(), list_access_keys_request()) ->
     {ok, list_access_keys_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_access_keys_errors(), tuple()}.
 list_access_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_access_keys(Client, Input, []).
@@ -5950,8 +6402,7 @@ list_access_keys(Client, Input)
 -spec list_access_keys(map(), list_access_keys_request(), proplists:proplist()) ->
     {ok, list_access_keys_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_access_keys_errors(), tuple()}.
 list_access_keys(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAccessKeys">>, Input, Options).
@@ -5969,7 +6420,7 @@ list_access_keys(Client, Input, Options)
 -spec list_account_aliases(map(), list_account_aliases_request()) ->
     {ok, list_account_aliases_response(), tuple()} |
     {error, any()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_account_aliases_errors(), tuple()}.
 list_account_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_account_aliases(Client, Input, []).
@@ -5977,7 +6428,7 @@ list_account_aliases(Client, Input)
 -spec list_account_aliases(map(), list_account_aliases_request(), proplists:proplist()) ->
     {ok, list_account_aliases_response(), tuple()} |
     {error, any()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_account_aliases_errors(), tuple()}.
 list_account_aliases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAccountAliases">>, Input, Options).
@@ -6004,9 +6455,7 @@ list_account_aliases(Client, Input, Options)
 -spec list_attached_group_policies(map(), list_attached_group_policies_request()) ->
     {ok, list_attached_group_policies_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_attached_group_policies_errors(), tuple()}.
 list_attached_group_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_attached_group_policies(Client, Input, []).
@@ -6014,9 +6463,7 @@ list_attached_group_policies(Client, Input)
 -spec list_attached_group_policies(map(), list_attached_group_policies_request(), proplists:proplist()) ->
     {ok, list_attached_group_policies_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_attached_group_policies_errors(), tuple()}.
 list_attached_group_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAttachedGroupPolicies">>, Input, Options).
@@ -6043,9 +6490,7 @@ list_attached_group_policies(Client, Input, Options)
 -spec list_attached_role_policies(map(), list_attached_role_policies_request()) ->
     {ok, list_attached_role_policies_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_attached_role_policies_errors(), tuple()}.
 list_attached_role_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_attached_role_policies(Client, Input, []).
@@ -6053,9 +6498,7 @@ list_attached_role_policies(Client, Input)
 -spec list_attached_role_policies(map(), list_attached_role_policies_request(), proplists:proplist()) ->
     {ok, list_attached_role_policies_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_attached_role_policies_errors(), tuple()}.
 list_attached_role_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAttachedRolePolicies">>, Input, Options).
@@ -6082,9 +6525,7 @@ list_attached_role_policies(Client, Input, Options)
 -spec list_attached_user_policies(map(), list_attached_user_policies_request()) ->
     {ok, list_attached_user_policies_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_attached_user_policies_errors(), tuple()}.
 list_attached_user_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_attached_user_policies(Client, Input, []).
@@ -6092,9 +6533,7 @@ list_attached_user_policies(Client, Input)
 -spec list_attached_user_policies(map(), list_attached_user_policies_request(), proplists:proplist()) ->
     {ok, list_attached_user_policies_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_attached_user_policies_errors(), tuple()}.
 list_attached_user_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAttachedUserPolicies">>, Input, Options).
@@ -6115,9 +6554,7 @@ list_attached_user_policies(Client, Input, Options)
 -spec list_entities_for_policy(map(), list_entities_for_policy_request()) ->
     {ok, list_entities_for_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_entities_for_policy_errors(), tuple()}.
 list_entities_for_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_entities_for_policy(Client, Input, []).
@@ -6125,9 +6562,7 @@ list_entities_for_policy(Client, Input)
 -spec list_entities_for_policy(map(), list_entities_for_policy_request(), proplists:proplist()) ->
     {ok, list_entities_for_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_entities_for_policy_errors(), tuple()}.
 list_entities_for_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEntitiesForPolicy">>, Input, Options).
@@ -6152,8 +6587,7 @@ list_entities_for_policy(Client, Input, Options)
 -spec list_group_policies(map(), list_group_policies_request()) ->
     {ok, list_group_policies_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_group_policies_errors(), tuple()}.
 list_group_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_group_policies(Client, Input, []).
@@ -6161,8 +6595,7 @@ list_group_policies(Client, Input)
 -spec list_group_policies(map(), list_group_policies_request(), proplists:proplist()) ->
     {ok, list_group_policies_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_group_policies_errors(), tuple()}.
 list_group_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGroupPolicies">>, Input, Options).
@@ -6174,7 +6607,7 @@ list_group_policies(Client, Input, Options)
 -spec list_groups(map(), list_groups_request()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_groups_errors(), tuple()}.
 list_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_groups(Client, Input, []).
@@ -6182,7 +6615,7 @@ list_groups(Client, Input)
 -spec list_groups(map(), list_groups_request(), proplists:proplist()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_groups_errors(), tuple()}.
 list_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGroups">>, Input, Options).
@@ -6194,8 +6627,7 @@ list_groups(Client, Input, Options)
 -spec list_groups_for_user(map(), list_groups_for_user_request()) ->
     {ok, list_groups_for_user_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_groups_for_user_errors(), tuple()}.
 list_groups_for_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_groups_for_user(Client, Input, []).
@@ -6203,8 +6635,7 @@ list_groups_for_user(Client, Input)
 -spec list_groups_for_user(map(), list_groups_for_user_request(), proplists:proplist()) ->
     {ok, list_groups_for_user_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_groups_for_user_errors(), tuple()}.
 list_groups_for_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGroupsForUser">>, Input, Options).
@@ -6219,8 +6650,7 @@ list_groups_for_user(Client, Input, Options)
 -spec list_instance_profile_tags(map(), list_instance_profile_tags_request()) ->
     {ok, list_instance_profile_tags_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_instance_profile_tags_errors(), tuple()}.
 list_instance_profile_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_instance_profile_tags(Client, Input, []).
@@ -6228,8 +6658,7 @@ list_instance_profile_tags(Client, Input)
 -spec list_instance_profile_tags(map(), list_instance_profile_tags_request(), proplists:proplist()) ->
     {ok, list_instance_profile_tags_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_instance_profile_tags_errors(), tuple()}.
 list_instance_profile_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInstanceProfileTags">>, Input, Options).
@@ -6255,7 +6684,7 @@ list_instance_profile_tags(Client, Input, Options)
 -spec list_instance_profiles(map(), list_instance_profiles_request()) ->
     {ok, list_instance_profiles_response(), tuple()} |
     {error, any()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_instance_profiles_errors(), tuple()}.
 list_instance_profiles(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_instance_profiles(Client, Input, []).
@@ -6263,7 +6692,7 @@ list_instance_profiles(Client, Input)
 -spec list_instance_profiles(map(), list_instance_profiles_request(), proplists:proplist()) ->
     {ok, list_instance_profiles_response(), tuple()} |
     {error, any()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_instance_profiles_errors(), tuple()}.
 list_instance_profiles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInstanceProfiles">>, Input, Options).
@@ -6284,8 +6713,7 @@ list_instance_profiles(Client, Input, Options)
 -spec list_instance_profiles_for_role(map(), list_instance_profiles_for_role_request()) ->
     {ok, list_instance_profiles_for_role_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_instance_profiles_for_role_errors(), tuple()}.
 list_instance_profiles_for_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_instance_profiles_for_role(Client, Input, []).
@@ -6293,8 +6721,7 @@ list_instance_profiles_for_role(Client, Input)
 -spec list_instance_profiles_for_role(map(), list_instance_profiles_for_role_request(), proplists:proplist()) ->
     {ok, list_instance_profiles_for_role_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_instance_profiles_for_role_errors(), tuple()}.
 list_instance_profiles_for_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInstanceProfilesForRole">>, Input, Options).
@@ -6310,9 +6737,7 @@ list_instance_profiles_for_role(Client, Input, Options)
 -spec list_mfa_device_tags(map(), list_mfa_device_tags_request()) ->
     {ok, list_mfa_device_tags_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_mfa_device_tags_errors(), tuple()}.
 list_mfa_device_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_mfa_device_tags(Client, Input, []).
@@ -6320,9 +6745,7 @@ list_mfa_device_tags(Client, Input)
 -spec list_mfa_device_tags(map(), list_mfa_device_tags_request(), proplists:proplist()) ->
     {ok, list_mfa_device_tags_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_mfa_device_tags_errors(), tuple()}.
 list_mfa_device_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMFADeviceTags">>, Input, Options).
@@ -6341,8 +6764,7 @@ list_mfa_device_tags(Client, Input, Options)
 -spec list_mfa_devices(map(), list_mfa_devices_request()) ->
     {ok, list_mfa_devices_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_mfa_devices_errors(), tuple()}.
 list_mfa_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_mfa_devices(Client, Input, []).
@@ -6350,8 +6772,7 @@ list_mfa_devices(Client, Input)
 -spec list_mfa_devices(map(), list_mfa_devices_request(), proplists:proplist()) ->
     {ok, list_mfa_devices_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_mfa_devices_errors(), tuple()}.
 list_mfa_devices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMFADevices">>, Input, Options).
@@ -6371,9 +6792,7 @@ list_mfa_devices(Client, Input, Options)
 -spec list_open_id_connect_provider_tags(map(), list_open_id_connect_provider_tags_request()) ->
     {ok, list_open_id_connect_provider_tags_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_open_id_connect_provider_tags_errors(), tuple()}.
 list_open_id_connect_provider_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_open_id_connect_provider_tags(Client, Input, []).
@@ -6381,9 +6800,7 @@ list_open_id_connect_provider_tags(Client, Input)
 -spec list_open_id_connect_provider_tags(map(), list_open_id_connect_provider_tags_request(), proplists:proplist()) ->
     {ok, list_open_id_connect_provider_tags_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_open_id_connect_provider_tags_errors(), tuple()}.
 list_open_id_connect_provider_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOpenIDConnectProviderTags">>, Input, Options).
@@ -6400,7 +6817,7 @@ list_open_id_connect_provider_tags(Client, Input, Options)
 -spec list_open_id_connect_providers(map(), list_open_id_connect_providers_request()) ->
     {ok, list_open_id_connect_providers_response(), tuple()} |
     {error, any()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_open_id_connect_providers_errors(), tuple()}.
 list_open_id_connect_providers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_open_id_connect_providers(Client, Input, []).
@@ -6408,7 +6825,7 @@ list_open_id_connect_providers(Client, Input)
 -spec list_open_id_connect_providers(map(), list_open_id_connect_providers_request(), proplists:proplist()) ->
     {ok, list_open_id_connect_providers_response(), tuple()} |
     {error, any()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_open_id_connect_providers_errors(), tuple()}.
 list_open_id_connect_providers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOpenIDConnectProviders">>, Input, Options).
@@ -6443,7 +6860,7 @@ list_open_id_connect_providers(Client, Input, Options)
 -spec list_policies(map(), list_policies_request()) ->
     {ok, list_policies_response(), tuple()} |
     {error, any()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_policies_errors(), tuple()}.
 list_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_policies(Client, Input, []).
@@ -6451,7 +6868,7 @@ list_policies(Client, Input)
 -spec list_policies(map(), list_policies_request(), proplists:proplist()) ->
     {ok, list_policies_response(), tuple()} |
     {error, any()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_policies_errors(), tuple()}.
 list_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPolicies">>, Input, Options).
@@ -6511,8 +6928,7 @@ list_policies(Client, Input, Options)
 -spec list_policies_granting_service_access(map(), list_policies_granting_service_access_request()) ->
     {ok, list_policies_granting_service_access_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, list_policies_granting_service_access_errors(), tuple()}.
 list_policies_granting_service_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_policies_granting_service_access(Client, Input, []).
@@ -6520,8 +6936,7 @@ list_policies_granting_service_access(Client, Input)
 -spec list_policies_granting_service_access(map(), list_policies_granting_service_access_request(), proplists:proplist()) ->
     {ok, list_policies_granting_service_access_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, list_policies_granting_service_access_errors(), tuple()}.
 list_policies_granting_service_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPoliciesGrantingServiceAccess">>, Input, Options).
@@ -6536,9 +6951,7 @@ list_policies_granting_service_access(Client, Input, Options)
 -spec list_policy_tags(map(), list_policy_tags_request()) ->
     {ok, list_policy_tags_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_policy_tags_errors(), tuple()}.
 list_policy_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_policy_tags(Client, Input, []).
@@ -6546,9 +6959,7 @@ list_policy_tags(Client, Input)
 -spec list_policy_tags(map(), list_policy_tags_request(), proplists:proplist()) ->
     {ok, list_policy_tags_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_policy_tags_errors(), tuple()}.
 list_policy_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPolicyTags">>, Input, Options).
@@ -6565,9 +6976,7 @@ list_policy_tags(Client, Input, Options)
 -spec list_policy_versions(map(), list_policy_versions_request()) ->
     {ok, list_policy_versions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_policy_versions_errors(), tuple()}.
 list_policy_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_policy_versions(Client, Input, []).
@@ -6575,9 +6984,7 @@ list_policy_versions(Client, Input)
 -spec list_policy_versions(map(), list_policy_versions_request(), proplists:proplist()) ->
     {ok, list_policy_versions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_policy_versions_errors(), tuple()}.
 list_policy_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPolicyVersions">>, Input, Options).
@@ -6601,8 +7008,7 @@ list_policy_versions(Client, Input, Options)
 -spec list_role_policies(map(), list_role_policies_request()) ->
     {ok, list_role_policies_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_role_policies_errors(), tuple()}.
 list_role_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_role_policies(Client, Input, []).
@@ -6610,8 +7016,7 @@ list_role_policies(Client, Input)
 -spec list_role_policies(map(), list_role_policies_request(), proplists:proplist()) ->
     {ok, list_role_policies_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_role_policies_errors(), tuple()}.
 list_role_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRolePolicies">>, Input, Options).
@@ -6626,8 +7031,7 @@ list_role_policies(Client, Input, Options)
 -spec list_role_tags(map(), list_role_tags_request()) ->
     {ok, list_role_tags_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_role_tags_errors(), tuple()}.
 list_role_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_role_tags(Client, Input, []).
@@ -6635,8 +7039,7 @@ list_role_tags(Client, Input)
 -spec list_role_tags(map(), list_role_tags_request(), proplists:proplist()) ->
     {ok, list_role_tags_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_role_tags_errors(), tuple()}.
 list_role_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRoleTags">>, Input, Options).
@@ -6666,7 +7069,7 @@ list_role_tags(Client, Input, Options)
 -spec list_roles(map(), list_roles_request()) ->
     {ok, list_roles_response(), tuple()} |
     {error, any()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_roles_errors(), tuple()}.
 list_roles(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_roles(Client, Input, []).
@@ -6674,7 +7077,7 @@ list_roles(Client, Input)
 -spec list_roles(map(), list_roles_request(), proplists:proplist()) ->
     {ok, list_roles_response(), tuple()} |
     {error, any()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_roles_errors(), tuple()}.
 list_roles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRoles">>, Input, Options).
@@ -6694,9 +7097,7 @@ list_roles(Client, Input, Options)
 -spec list_saml_provider_tags(map(), list_saml_provider_tags_request()) ->
     {ok, list_saml_provider_tags_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_saml_provider_tags_errors(), tuple()}.
 list_saml_provider_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_saml_provider_tags(Client, Input, []).
@@ -6704,9 +7105,7 @@ list_saml_provider_tags(Client, Input)
 -spec list_saml_provider_tags(map(), list_saml_provider_tags_request(), proplists:proplist()) ->
     {ok, list_saml_provider_tags_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_saml_provider_tags_errors(), tuple()}.
 list_saml_provider_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSAMLProviderTags">>, Input, Options).
@@ -6724,7 +7123,7 @@ list_saml_provider_tags(Client, Input, Options)
 -spec list_saml_providers(map(), list_saml_providers_request()) ->
     {ok, list_saml_providers_response(), tuple()} |
     {error, any()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_saml_providers_errors(), tuple()}.
 list_saml_providers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_saml_providers(Client, Input, []).
@@ -6732,7 +7131,7 @@ list_saml_providers(Client, Input)
 -spec list_saml_providers(map(), list_saml_providers_request(), proplists:proplist()) ->
     {ok, list_saml_providers_response(), tuple()} |
     {error, any()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_saml_providers_errors(), tuple()}.
 list_saml_providers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSAMLProviders">>, Input, Options).
@@ -6758,8 +7157,7 @@ list_saml_providers(Client, Input, Options)
 -spec list_server_certificate_tags(map(), list_server_certificate_tags_request()) ->
     {ok, list_server_certificate_tags_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_server_certificate_tags_errors(), tuple()}.
 list_server_certificate_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_server_certificate_tags(Client, Input, []).
@@ -6767,8 +7165,7 @@ list_server_certificate_tags(Client, Input)
 -spec list_server_certificate_tags(map(), list_server_certificate_tags_request(), proplists:proplist()) ->
     {ok, list_server_certificate_tags_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_server_certificate_tags_errors(), tuple()}.
 list_server_certificate_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServerCertificateTags">>, Input, Options).
@@ -6798,7 +7195,7 @@ list_server_certificate_tags(Client, Input, Options)
 -spec list_server_certificates(map(), list_server_certificates_request()) ->
     {ok, list_server_certificates_response(), tuple()} |
     {error, any()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_server_certificates_errors(), tuple()}.
 list_server_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_server_certificates(Client, Input, []).
@@ -6806,7 +7203,7 @@ list_server_certificates(Client, Input)
 -spec list_server_certificates(map(), list_server_certificates_request(), proplists:proplist()) ->
     {ok, list_server_certificates_response(), tuple()} |
     {error, any()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_server_certificates_errors(), tuple()}.
 list_server_certificates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServerCertificates">>, Input, Options).
@@ -6827,8 +7224,7 @@ list_server_certificates(Client, Input, Options)
 -spec list_service_specific_credentials(map(), list_service_specific_credentials_request()) ->
     {ok, list_service_specific_credentials_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_not_supported_exception(), tuple()}.
+    {error, list_service_specific_credentials_errors(), tuple()}.
 list_service_specific_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_specific_credentials(Client, Input, []).
@@ -6836,8 +7232,7 @@ list_service_specific_credentials(Client, Input)
 -spec list_service_specific_credentials(map(), list_service_specific_credentials_request(), proplists:proplist()) ->
     {ok, list_service_specific_credentials_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_not_supported_exception(), tuple()}.
+    {error, list_service_specific_credentials_errors(), tuple()}.
 list_service_specific_credentials(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServiceSpecificCredentials">>, Input, Options).
@@ -6864,8 +7259,7 @@ list_service_specific_credentials(Client, Input, Options)
 -spec list_signing_certificates(map(), list_signing_certificates_request()) ->
     {ok, list_signing_certificates_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_signing_certificates_errors(), tuple()}.
 list_signing_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_signing_certificates(Client, Input, []).
@@ -6873,8 +7267,7 @@ list_signing_certificates(Client, Input)
 -spec list_signing_certificates(map(), list_signing_certificates_request(), proplists:proplist()) ->
     {ok, list_signing_certificates_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_signing_certificates_errors(), tuple()}.
 list_signing_certificates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSigningCertificates">>, Input, Options).
@@ -6900,7 +7293,7 @@ list_signing_certificates(Client, Input, Options)
 -spec list_ssh_public_keys(map(), list_ssh_public_keys_request()) ->
     {ok, list_ssh_public_keys_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, list_ssh_public_keys_errors(), tuple()}.
 list_ssh_public_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_ssh_public_keys(Client, Input, []).
@@ -6908,7 +7301,7 @@ list_ssh_public_keys(Client, Input)
 -spec list_ssh_public_keys(map(), list_ssh_public_keys_request(), proplists:proplist()) ->
     {ok, list_ssh_public_keys_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, list_ssh_public_keys_errors(), tuple()}.
 list_ssh_public_keys(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSSHPublicKeys">>, Input, Options).
@@ -6931,8 +7324,7 @@ list_ssh_public_keys(Client, Input, Options)
 -spec list_user_policies(map(), list_user_policies_request()) ->
     {ok, list_user_policies_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_user_policies_errors(), tuple()}.
 list_user_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_user_policies(Client, Input, []).
@@ -6940,8 +7332,7 @@ list_user_policies(Client, Input)
 -spec list_user_policies(map(), list_user_policies_request(), proplists:proplist()) ->
     {ok, list_user_policies_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_user_policies_errors(), tuple()}.
 list_user_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUserPolicies">>, Input, Options).
@@ -6955,8 +7346,7 @@ list_user_policies(Client, Input, Options)
 -spec list_user_tags(map(), list_user_tags_request()) ->
     {ok, list_user_tags_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_user_tags_errors(), tuple()}.
 list_user_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_user_tags(Client, Input, []).
@@ -6964,8 +7354,7 @@ list_user_tags(Client, Input)
 -spec list_user_tags(map(), list_user_tags_request(), proplists:proplist()) ->
     {ok, list_user_tags_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_user_tags_errors(), tuple()}.
 list_user_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUserTags">>, Input, Options).
@@ -6992,7 +7381,7 @@ list_user_tags(Client, Input, Options)
 -spec list_users(map(), list_users_request()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_users_errors(), tuple()}.
 list_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_users(Client, Input, []).
@@ -7000,7 +7389,7 @@ list_users(Client, Input)
 -spec list_users(map(), list_users_request(), proplists:proplist()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_users_errors(), tuple()}.
 list_users(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUsers">>, Input, Options).
@@ -7073,10 +7462,7 @@ list_virtual_mfa_devices(Client, Input, Options)
 -spec put_group_policy(map(), put_group_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, put_group_policy_errors(), tuple()}.
 put_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_group_policy(Client, Input, []).
@@ -7084,10 +7470,7 @@ put_group_policy(Client, Input)
 -spec put_group_policy(map(), put_group_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, put_group_policy_errors(), tuple()}.
 put_group_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutGroupPolicy">>, Input, Options).
@@ -7116,11 +7499,7 @@ put_group_policy(Client, Input, Options)
 -spec put_role_permissions_boundary(map(), put_role_permissions_boundary_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, policy_not_attachable_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, unmodifiable_entity_exception(), tuple()}.
+    {error, put_role_permissions_boundary_errors(), tuple()}.
 put_role_permissions_boundary(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_role_permissions_boundary(Client, Input, []).
@@ -7128,11 +7507,7 @@ put_role_permissions_boundary(Client, Input)
 -spec put_role_permissions_boundary(map(), put_role_permissions_boundary_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, policy_not_attachable_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, unmodifiable_entity_exception(), tuple()}.
+    {error, put_role_permissions_boundary_errors(), tuple()}.
 put_role_permissions_boundary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRolePermissionsBoundary">>, Input, Options).
@@ -7191,11 +7566,7 @@ put_role_permissions_boundary(Client, Input, Options)
 -spec put_role_policy(map(), put_role_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, unmodifiable_entity_exception(), tuple()}.
+    {error, put_role_policy_errors(), tuple()}.
 put_role_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_role_policy(Client, Input, []).
@@ -7203,11 +7574,7 @@ put_role_policy(Client, Input)
 -spec put_role_policy(map(), put_role_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, unmodifiable_entity_exception(), tuple()}.
+    {error, put_role_policy_errors(), tuple()}.
 put_role_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRolePolicy">>, Input, Options).
@@ -7235,10 +7602,7 @@ put_role_policy(Client, Input, Options)
 -spec put_user_permissions_boundary(map(), put_user_permissions_boundary_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, policy_not_attachable_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, put_user_permissions_boundary_errors(), tuple()}.
 put_user_permissions_boundary(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_user_permissions_boundary(Client, Input, []).
@@ -7246,10 +7610,7 @@ put_user_permissions_boundary(Client, Input)
 -spec put_user_permissions_boundary(map(), put_user_permissions_boundary_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, policy_not_attachable_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, put_user_permissions_boundary_errors(), tuple()}.
 put_user_permissions_boundary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutUserPermissionsBoundary">>, Input, Options).
@@ -7291,10 +7652,7 @@ put_user_permissions_boundary(Client, Input, Options)
 -spec put_user_policy(map(), put_user_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, put_user_policy_errors(), tuple()}.
 put_user_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_user_policy(Client, Input, []).
@@ -7302,10 +7660,7 @@ put_user_policy(Client, Input)
 -spec put_user_policy(map(), put_user_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, put_user_policy_errors(), tuple()}.
 put_user_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutUserPolicy">>, Input, Options).
@@ -7321,9 +7676,7 @@ put_user_policy(Client, Input, Options)
 -spec remove_client_id_from_open_id_connect_provider(map(), remove_client_id_from_open_id_connect_provider_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, remove_client_id_from_open_id_connect_provider_errors(), tuple()}.
 remove_client_id_from_open_id_connect_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_client_id_from_open_id_connect_provider(Client, Input, []).
@@ -7331,9 +7684,7 @@ remove_client_id_from_open_id_connect_provider(Client, Input)
 -spec remove_client_id_from_open_id_connect_provider(map(), remove_client_id_from_open_id_connect_provider_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, remove_client_id_from_open_id_connect_provider_errors(), tuple()}.
 remove_client_id_from_open_id_connect_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveClientIDFromOpenIDConnectProvider">>, Input, Options).
@@ -7359,10 +7710,7 @@ remove_client_id_from_open_id_connect_provider(Client, Input, Options)
 -spec remove_role_from_instance_profile(map(), remove_role_from_instance_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, unmodifiable_entity_exception(), tuple()}.
+    {error, remove_role_from_instance_profile_errors(), tuple()}.
 remove_role_from_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_role_from_instance_profile(Client, Input, []).
@@ -7370,10 +7718,7 @@ remove_role_from_instance_profile(Client, Input)
 -spec remove_role_from_instance_profile(map(), remove_role_from_instance_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, unmodifiable_entity_exception(), tuple()}.
+    {error, remove_role_from_instance_profile_errors(), tuple()}.
 remove_role_from_instance_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveRoleFromInstanceProfile">>, Input, Options).
@@ -7382,9 +7727,7 @@ remove_role_from_instance_profile(Client, Input, Options)
 -spec remove_user_from_group(map(), remove_user_from_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, remove_user_from_group_errors(), tuple()}.
 remove_user_from_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_user_from_group(Client, Input, []).
@@ -7392,9 +7735,7 @@ remove_user_from_group(Client, Input)
 -spec remove_user_from_group(map(), remove_user_from_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, remove_user_from_group_errors(), tuple()}.
 remove_user_from_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveUserFromGroup">>, Input, Options).
@@ -7410,7 +7751,7 @@ remove_user_from_group(Client, Input, Options)
 -spec reset_service_specific_credential(map(), reset_service_specific_credential_request()) ->
     {ok, reset_service_specific_credential_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, reset_service_specific_credential_errors(), tuple()}.
 reset_service_specific_credential(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_service_specific_credential(Client, Input, []).
@@ -7418,7 +7759,7 @@ reset_service_specific_credential(Client, Input)
 -spec reset_service_specific_credential(map(), reset_service_specific_credential_request(), proplists:proplist()) ->
     {ok, reset_service_specific_credential_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, reset_service_specific_credential_errors(), tuple()}.
 reset_service_specific_credential(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResetServiceSpecificCredential">>, Input, Options).
@@ -7435,11 +7776,7 @@ reset_service_specific_credential(Client, Input, Options)
 -spec resync_mfa_device(map(), resync_mfa_device_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_authentication_code_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, resync_mfa_device_errors(), tuple()}.
 resync_mfa_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     resync_mfa_device(Client, Input, []).
@@ -7447,11 +7784,7 @@ resync_mfa_device(Client, Input)
 -spec resync_mfa_device(map(), resync_mfa_device_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_authentication_code_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, resync_mfa_device_errors(), tuple()}.
 resync_mfa_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResyncMFADevice">>, Input, Options).
@@ -7472,10 +7805,7 @@ resync_mfa_device(Client, Input, Options)
 -spec set_default_policy_version(map(), set_default_policy_version_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, set_default_policy_version_errors(), tuple()}.
 set_default_policy_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_default_policy_version(Client, Input, []).
@@ -7483,10 +7813,7 @@ set_default_policy_version(Client, Input)
 -spec set_default_policy_version(map(), set_default_policy_version_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, set_default_policy_version_errors(), tuple()}.
 set_default_policy_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetDefaultPolicyVersion">>, Input, Options).
@@ -7532,7 +7859,7 @@ set_default_policy_version(Client, Input, Options)
 -spec set_security_token_service_preferences(map(), set_security_token_service_preferences_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, set_security_token_service_preferences_errors(), tuple()}.
 set_security_token_service_preferences(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_security_token_service_preferences(Client, Input, []).
@@ -7540,7 +7867,7 @@ set_security_token_service_preferences(Client, Input)
 -spec set_security_token_service_preferences(map(), set_security_token_service_preferences_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, set_security_token_service_preferences_errors(), tuple()}.
 set_security_token_service_preferences(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetSecurityTokenServicePreferences">>, Input, Options).
@@ -7591,8 +7918,7 @@ set_security_token_service_preferences(Client, Input, Options)
 -spec simulate_custom_policy(map(), simulate_custom_policy_request()) ->
     {ok, simulate_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, policy_evaluation_exception(), tuple()}.
+    {error, simulate_custom_policy_errors(), tuple()}.
 simulate_custom_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     simulate_custom_policy(Client, Input, []).
@@ -7600,8 +7926,7 @@ simulate_custom_policy(Client, Input)
 -spec simulate_custom_policy(map(), simulate_custom_policy_request(), proplists:proplist()) ->
     {ok, simulate_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, policy_evaluation_exception(), tuple()}.
+    {error, simulate_custom_policy_errors(), tuple()}.
 simulate_custom_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SimulateCustomPolicy">>, Input, Options).
@@ -7667,9 +7992,7 @@ simulate_custom_policy(Client, Input, Options)
 -spec simulate_principal_policy(map(), simulate_principal_policy_request()) ->
     {ok, simulate_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, policy_evaluation_exception(), tuple()}.
+    {error, simulate_principal_policy_errors(), tuple()}.
 simulate_principal_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     simulate_principal_policy(Client, Input, []).
@@ -7677,9 +8000,7 @@ simulate_principal_policy(Client, Input)
 -spec simulate_principal_policy(map(), simulate_principal_policy_request(), proplists:proplist()) ->
     {ok, simulate_policy_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, policy_evaluation_exception(), tuple()}.
+    {error, simulate_principal_policy_errors(), tuple()}.
 simulate_principal_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SimulatePrincipalPolicy">>, Input, Options).
@@ -7724,11 +8045,7 @@ simulate_principal_policy(Client, Input, Options)
 -spec tag_instance_profile(map(), tag_instance_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, tag_instance_profile_errors(), tuple()}.
 tag_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_instance_profile(Client, Input, []).
@@ -7736,11 +8053,7 @@ tag_instance_profile(Client, Input)
 -spec tag_instance_profile(map(), tag_instance_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, tag_instance_profile_errors(), tuple()}.
 tag_instance_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagInstanceProfile">>, Input, Options).
@@ -7788,11 +8101,7 @@ tag_instance_profile(Client, Input, Options)
 -spec tag_mfa_device(map(), tag_mfa_device_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, tag_mfa_device_errors(), tuple()}.
 tag_mfa_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_mfa_device(Client, Input, []).
@@ -7800,11 +8109,7 @@ tag_mfa_device(Client, Input)
 -spec tag_mfa_device(map(), tag_mfa_device_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, tag_mfa_device_errors(), tuple()}.
 tag_mfa_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagMFADevice">>, Input, Options).
@@ -7855,11 +8160,7 @@ tag_mfa_device(Client, Input, Options)
 -spec tag_open_id_connect_provider(map(), tag_open_id_connect_provider_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, tag_open_id_connect_provider_errors(), tuple()}.
 tag_open_id_connect_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_open_id_connect_provider(Client, Input, []).
@@ -7867,11 +8168,7 @@ tag_open_id_connect_provider(Client, Input)
 -spec tag_open_id_connect_provider(map(), tag_open_id_connect_provider_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, tag_open_id_connect_provider_errors(), tuple()}.
 tag_open_id_connect_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagOpenIDConnectProvider">>, Input, Options).
@@ -7916,11 +8213,7 @@ tag_open_id_connect_provider(Client, Input, Options)
 -spec tag_policy(map(), tag_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, tag_policy_errors(), tuple()}.
 tag_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_policy(Client, Input, []).
@@ -7928,11 +8221,7 @@ tag_policy(Client, Input)
 -spec tag_policy(map(), tag_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, tag_policy_errors(), tuple()}.
 tag_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagPolicy">>, Input, Options).
@@ -7988,11 +8277,7 @@ tag_policy(Client, Input, Options)
 -spec tag_role(map(), tag_role_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, tag_role_errors(), tuple()}.
 tag_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_role(Client, Input, []).
@@ -8000,11 +8285,7 @@ tag_role(Client, Input)
 -spec tag_role(map(), tag_role_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, tag_role_errors(), tuple()}.
 tag_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagRole">>, Input, Options).
@@ -8054,11 +8335,7 @@ tag_role(Client, Input, Options)
 -spec tag_saml_provider(map(), tag_saml_provider_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, tag_saml_provider_errors(), tuple()}.
 tag_saml_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_saml_provider(Client, Input, []).
@@ -8066,11 +8343,7 @@ tag_saml_provider(Client, Input)
 -spec tag_saml_provider(map(), tag_saml_provider_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, tag_saml_provider_errors(), tuple()}.
 tag_saml_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagSAMLProvider">>, Input, Options).
@@ -8128,11 +8401,7 @@ tag_saml_provider(Client, Input, Options)
 -spec tag_server_certificate(map(), tag_server_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, tag_server_certificate_errors(), tuple()}.
 tag_server_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_server_certificate(Client, Input, []).
@@ -8140,11 +8409,7 @@ tag_server_certificate(Client, Input)
 -spec tag_server_certificate(map(), tag_server_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, tag_server_certificate_errors(), tuple()}.
 tag_server_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagServerCertificate">>, Input, Options).
@@ -8198,11 +8463,7 @@ tag_server_certificate(Client, Input, Options)
 -spec tag_user(map(), tag_user_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, tag_user_errors(), tuple()}.
 tag_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_user(Client, Input, []).
@@ -8210,11 +8471,7 @@ tag_user(Client, Input)
 -spec tag_user(map(), tag_user_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, tag_user_errors(), tuple()}.
 tag_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagUser">>, Input, Options).
@@ -8227,10 +8484,7 @@ tag_user(Client, Input, Options)
 -spec untag_instance_profile(map(), untag_instance_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, untag_instance_profile_errors(), tuple()}.
 untag_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_instance_profile(Client, Input, []).
@@ -8238,10 +8492,7 @@ untag_instance_profile(Client, Input)
 -spec untag_instance_profile(map(), untag_instance_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, untag_instance_profile_errors(), tuple()}.
 untag_instance_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagInstanceProfile">>, Input, Options).
@@ -8256,10 +8507,7 @@ untag_instance_profile(Client, Input, Options)
 -spec untag_mfa_device(map(), untag_mfa_device_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, untag_mfa_device_errors(), tuple()}.
 untag_mfa_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_mfa_device(Client, Input, []).
@@ -8267,10 +8515,7 @@ untag_mfa_device(Client, Input)
 -spec untag_mfa_device(map(), untag_mfa_device_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, untag_mfa_device_errors(), tuple()}.
 untag_mfa_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagMFADevice">>, Input, Options).
@@ -8288,10 +8533,7 @@ untag_mfa_device(Client, Input, Options)
 -spec untag_open_id_connect_provider(map(), untag_open_id_connect_provider_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, untag_open_id_connect_provider_errors(), tuple()}.
 untag_open_id_connect_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_open_id_connect_provider(Client, Input, []).
@@ -8299,10 +8541,7 @@ untag_open_id_connect_provider(Client, Input)
 -spec untag_open_id_connect_provider(map(), untag_open_id_connect_provider_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, untag_open_id_connect_provider_errors(), tuple()}.
 untag_open_id_connect_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagOpenIDConnectProvider">>, Input, Options).
@@ -8315,10 +8554,7 @@ untag_open_id_connect_provider(Client, Input, Options)
 -spec untag_policy(map(), untag_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, untag_policy_errors(), tuple()}.
 untag_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_policy(Client, Input, []).
@@ -8326,10 +8562,7 @@ untag_policy(Client, Input)
 -spec untag_policy(map(), untag_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, untag_policy_errors(), tuple()}.
 untag_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagPolicy">>, Input, Options).
@@ -8342,9 +8575,7 @@ untag_policy(Client, Input, Options)
 -spec untag_role(map(), untag_role_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, untag_role_errors(), tuple()}.
 untag_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_role(Client, Input, []).
@@ -8352,9 +8583,7 @@ untag_role(Client, Input)
 -spec untag_role(map(), untag_role_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, untag_role_errors(), tuple()}.
 untag_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagRole">>, Input, Options).
@@ -8372,10 +8601,7 @@ untag_role(Client, Input, Options)
 -spec untag_saml_provider(map(), untag_saml_provider_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, untag_saml_provider_errors(), tuple()}.
 untag_saml_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_saml_provider(Client, Input, []).
@@ -8383,10 +8609,7 @@ untag_saml_provider(Client, Input)
 -spec untag_saml_provider(map(), untag_saml_provider_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, untag_saml_provider_errors(), tuple()}.
 untag_saml_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagSAMLProvider">>, Input, Options).
@@ -8409,10 +8632,7 @@ untag_saml_provider(Client, Input, Options)
 -spec untag_server_certificate(map(), untag_server_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, untag_server_certificate_errors(), tuple()}.
 untag_server_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_server_certificate(Client, Input, []).
@@ -8420,10 +8640,7 @@ untag_server_certificate(Client, Input)
 -spec untag_server_certificate(map(), untag_server_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, untag_server_certificate_errors(), tuple()}.
 untag_server_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagServerCertificate">>, Input, Options).
@@ -8436,9 +8653,7 @@ untag_server_certificate(Client, Input, Options)
 -spec untag_user(map(), untag_user_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, untag_user_errors(), tuple()}.
 untag_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_user(Client, Input, []).
@@ -8446,9 +8661,7 @@ untag_user(Client, Input)
 -spec untag_user(map(), untag_user_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, untag_user_errors(), tuple()}.
 untag_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagUser">>, Input, Options).
@@ -8479,9 +8692,7 @@ untag_user(Client, Input, Options)
 -spec update_access_key(map(), update_access_key_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, update_access_key_errors(), tuple()}.
 update_access_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_access_key(Client, Input, []).
@@ -8489,9 +8700,7 @@ update_access_key(Client, Input)
 -spec update_access_key(map(), update_access_key_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, update_access_key_errors(), tuple()}.
 update_access_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAccessKey">>, Input, Options).
@@ -8518,10 +8727,7 @@ update_access_key(Client, Input, Options)
 -spec update_account_password_policy(map(), update_account_password_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, update_account_password_policy_errors(), tuple()}.
 update_account_password_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_account_password_policy(Client, Input, []).
@@ -8529,10 +8735,7 @@ update_account_password_policy(Client, Input)
 -spec update_account_password_policy(map(), update_account_password_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, update_account_password_policy_errors(), tuple()}.
 update_account_password_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAccountPasswordPolicy">>, Input, Options).
@@ -8549,11 +8752,7 @@ update_account_password_policy(Client, Input, Options)
 -spec update_assume_role_policy(map(), update_assume_role_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, unmodifiable_entity_exception(), tuple()}.
+    {error, update_assume_role_policy_errors(), tuple()}.
 update_assume_role_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_assume_role_policy(Client, Input, []).
@@ -8561,11 +8760,7 @@ update_assume_role_policy(Client, Input)
 -spec update_assume_role_policy(map(), update_assume_role_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, unmodifiable_entity_exception(), tuple()}.
+    {error, update_assume_role_policy_errors(), tuple()}.
 update_assume_role_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAssumeRolePolicy">>, Input, Options).
@@ -8592,10 +8787,7 @@ update_assume_role_policy(Client, Input, Options)
 -spec update_group(map(), update_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, update_group_errors(), tuple()}.
 update_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_group(Client, Input, []).
@@ -8603,10 +8795,7 @@ update_group(Client, Input)
 -spec update_group(map(), update_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, update_group_errors(), tuple()}.
 update_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGroup">>, Input, Options).
@@ -8626,11 +8815,7 @@ update_group(Client, Input, Options)
 -spec update_login_profile(map(), update_login_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, entity_temporarily_unmodifiable_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, password_policy_violation_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, update_login_profile_errors(), tuple()}.
 update_login_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_login_profile(Client, Input, []).
@@ -8638,11 +8823,7 @@ update_login_profile(Client, Input)
 -spec update_login_profile(map(), update_login_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, entity_temporarily_unmodifiable_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, password_policy_violation_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, update_login_profile_errors(), tuple()}.
 update_login_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLoginProfile">>, Input, Options).
@@ -8682,9 +8863,7 @@ update_login_profile(Client, Input, Options)
 -spec update_open_id_connect_provider_thumbprint(map(), update_open_id_connect_provider_thumbprint_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, update_open_id_connect_provider_thumbprint_errors(), tuple()}.
 update_open_id_connect_provider_thumbprint(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_open_id_connect_provider_thumbprint(Client, Input, []).
@@ -8692,9 +8871,7 @@ update_open_id_connect_provider_thumbprint(Client, Input)
 -spec update_open_id_connect_provider_thumbprint(map(), update_open_id_connect_provider_thumbprint_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, update_open_id_connect_provider_thumbprint_errors(), tuple()}.
 update_open_id_connect_provider_thumbprint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateOpenIDConnectProviderThumbprint">>, Input, Options).
@@ -8704,9 +8881,7 @@ update_open_id_connect_provider_thumbprint(Client, Input, Options)
 -spec update_role(map(), update_role_request()) ->
     {ok, update_role_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, unmodifiable_entity_exception(), tuple()}.
+    {error, update_role_errors(), tuple()}.
 update_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_role(Client, Input, []).
@@ -8714,9 +8889,7 @@ update_role(Client, Input)
 -spec update_role(map(), update_role_request(), proplists:proplist()) ->
     {ok, update_role_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, unmodifiable_entity_exception(), tuple()}.
+    {error, update_role_errors(), tuple()}.
 update_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRole">>, Input, Options).
@@ -8729,9 +8902,7 @@ update_role(Client, Input, Options)
 -spec update_role_description(map(), update_role_description_request()) ->
     {ok, update_role_description_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, unmodifiable_entity_exception(), tuple()}.
+    {error, update_role_description_errors(), tuple()}.
 update_role_description(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_role_description(Client, Input, []).
@@ -8739,9 +8910,7 @@ update_role_description(Client, Input)
 -spec update_role_description(map(), update_role_description_request(), proplists:proplist()) ->
     {ok, update_role_description_response(), tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, unmodifiable_entity_exception(), tuple()}.
+    {error, update_role_description_errors(), tuple()}.
 update_role_description(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRoleDescription">>, Input, Options).
@@ -8754,10 +8923,7 @@ update_role_description(Client, Input, Options)
 -spec update_saml_provider(map(), update_saml_provider_request()) ->
     {ok, update_saml_provider_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, update_saml_provider_errors(), tuple()}.
 update_saml_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_saml_provider(Client, Input, []).
@@ -8765,10 +8931,7 @@ update_saml_provider(Client, Input)
 -spec update_saml_provider(map(), update_saml_provider_request(), proplists:proplist()) ->
     {ok, update_saml_provider_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, update_saml_provider_errors(), tuple()}.
 update_saml_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSAMLProvider">>, Input, Options).
@@ -8808,10 +8971,7 @@ update_saml_provider(Client, Input, Options)
 -spec update_server_certificate(map(), update_server_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, update_server_certificate_errors(), tuple()}.
 update_server_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_server_certificate(Client, Input, []).
@@ -8819,10 +8979,7 @@ update_server_certificate(Client, Input)
 -spec update_server_certificate(map(), update_server_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, update_server_certificate_errors(), tuple()}.
 update_server_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateServerCertificate">>, Input, Options).
@@ -8837,7 +8994,7 @@ update_server_certificate(Client, Input, Options)
 -spec update_service_specific_credential(map(), update_service_specific_credential_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, update_service_specific_credential_errors(), tuple()}.
 update_service_specific_credential(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service_specific_credential(Client, Input, []).
@@ -8845,7 +9002,7 @@ update_service_specific_credential(Client, Input)
 -spec update_service_specific_credential(map(), update_service_specific_credential_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, update_service_specific_credential_errors(), tuple()}.
 update_service_specific_credential(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateServiceSpecificCredential">>, Input, Options).
@@ -8868,9 +9025,7 @@ update_service_specific_credential(Client, Input, Options)
 -spec update_signing_certificate(map(), update_signing_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, update_signing_certificate_errors(), tuple()}.
 update_signing_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_signing_certificate(Client, Input, []).
@@ -8878,9 +9033,7 @@ update_signing_certificate(Client, Input)
 -spec update_signing_certificate(map(), update_signing_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, update_signing_certificate_errors(), tuple()}.
 update_signing_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSigningCertificate">>, Input, Options).
@@ -8904,7 +9057,7 @@ update_signing_certificate(Client, Input, Options)
 -spec update_ssh_public_key(map(), update_ssh_public_key_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, update_ssh_public_key_errors(), tuple()}.
 update_ssh_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_ssh_public_key(Client, Input, []).
@@ -8912,7 +9065,7 @@ update_ssh_public_key(Client, Input)
 -spec update_ssh_public_key(map(), update_ssh_public_key_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, no_such_entity_exception(), tuple()}.
+    {error, update_ssh_public_key_errors(), tuple()}.
 update_ssh_public_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSSHPublicKey">>, Input, Options).
@@ -8941,12 +9094,7 @@ update_ssh_public_key(Client, Input, Options)
 -spec update_user(map(), update_user_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, entity_temporarily_unmodifiable_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, update_user_errors(), tuple()}.
 update_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user(Client, Input, []).
@@ -8954,12 +9102,7 @@ update_user(Client, Input)
 -spec update_user(map(), update_user_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, entity_temporarily_unmodifiable_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, update_user_errors(), tuple()}.
 update_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUser">>, Input, Options).
@@ -9014,13 +9157,7 @@ update_user(Client, Input, Options)
 -spec upload_server_certificate(map(), upload_server_certificate_request()) ->
     {ok, upload_server_certificate_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, key_pair_mismatch_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_certificate_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, upload_server_certificate_errors(), tuple()}.
 upload_server_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     upload_server_certificate(Client, Input, []).
@@ -9028,13 +9165,7 @@ upload_server_certificate(Client, Input)
 -spec upload_server_certificate(map(), upload_server_certificate_request(), proplists:proplist()) ->
     {ok, upload_server_certificate_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, key_pair_mismatch_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_certificate_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, upload_server_certificate_errors(), tuple()}.
 upload_server_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UploadServerCertificate">>, Input, Options).
@@ -9079,14 +9210,7 @@ upload_server_certificate(Client, Input, Options)
 -spec upload_signing_certificate(map(), upload_signing_certificate_request()) ->
     {ok, upload_signing_certificate_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, duplicate_certificate_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, invalid_certificate_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_certificate_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, upload_signing_certificate_errors(), tuple()}.
 upload_signing_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     upload_signing_certificate(Client, Input, []).
@@ -9094,14 +9218,7 @@ upload_signing_certificate(Client, Input)
 -spec upload_signing_certificate(map(), upload_signing_certificate_request(), proplists:proplist()) ->
     {ok, upload_signing_certificate_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, duplicate_certificate_exception(), tuple()} |
-    {error, entity_already_exists_exception(), tuple()} |
-    {error, invalid_certificate_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_certificate_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, upload_signing_certificate_errors(), tuple()}.
 upload_signing_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UploadSigningCertificate">>, Input, Options).
@@ -9120,11 +9237,7 @@ upload_signing_certificate(Client, Input, Options)
 -spec upload_ssh_public_key(map(), upload_ssh_public_key_request()) ->
     {ok, upload_ssh_public_key_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_ssh_public_key_exception(), tuple()} |
-    {error, invalid_public_key_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, unrecognized_public_key_encoding_exception(), tuple()}.
+    {error, upload_ssh_public_key_errors(), tuple()}.
 upload_ssh_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     upload_ssh_public_key(Client, Input, []).
@@ -9132,11 +9245,7 @@ upload_ssh_public_key(Client, Input)
 -spec upload_ssh_public_key(map(), upload_ssh_public_key_request(), proplists:proplist()) ->
     {ok, upload_ssh_public_key_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_ssh_public_key_exception(), tuple()} |
-    {error, invalid_public_key_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, no_such_entity_exception(), tuple()} |
-    {error, unrecognized_public_key_encoding_exception(), tuple()}.
+    {error, upload_ssh_public_key_errors(), tuple()}.
 upload_ssh_public_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UploadSSHPublicKey">>, Input, Options).

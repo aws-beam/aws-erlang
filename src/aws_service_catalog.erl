@@ -2275,6 +2275,396 @@
 %% }
 -type provision_product_output() :: #{binary() => any()}.
 
+-type accept_portfolio_share_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type associate_budget_with_resource_errors() ::
+    duplicate_resource_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type associate_principal_with_portfolio_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type associate_product_with_portfolio_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type associate_service_action_with_provisioning_artifact_errors() ::
+    duplicate_resource_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type associate_tag_option_with_resource_errors() ::
+    duplicate_resource_exception() | 
+    limit_exceeded_exception() | 
+    tag_option_not_migrated_exception() | 
+    invalid_parameters_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type batch_associate_service_action_with_provisioning_artifact_errors() ::
+    invalid_parameters_exception().
+
+-type batch_disassociate_service_action_from_provisioning_artifact_errors() ::
+    invalid_parameters_exception().
+
+-type copy_product_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type create_constraint_errors() ::
+    duplicate_resource_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type create_portfolio_errors() ::
+    limit_exceeded_exception() | 
+    tag_option_not_migrated_exception() | 
+    invalid_parameters_exception().
+
+-type create_portfolio_share_errors() ::
+    operation_not_supported_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameters_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type create_product_errors() ::
+    limit_exceeded_exception() | 
+    tag_option_not_migrated_exception() | 
+    invalid_parameters_exception().
+
+-type create_provisioned_product_plan_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type create_provisioning_artifact_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type create_service_action_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameters_exception().
+
+-type create_tag_option_errors() ::
+    duplicate_resource_exception() | 
+    limit_exceeded_exception() | 
+    tag_option_not_migrated_exception().
+
+-type delete_constraint_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type delete_portfolio_errors() ::
+    tag_option_not_migrated_exception() | 
+    invalid_parameters_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type delete_portfolio_share_errors() ::
+    operation_not_supported_exception() | 
+    invalid_parameters_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type delete_product_errors() ::
+    tag_option_not_migrated_exception() | 
+    invalid_parameters_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type delete_provisioned_product_plan_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type delete_provisioning_artifact_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type delete_service_action_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type delete_tag_option_errors() ::
+    tag_option_not_migrated_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type describe_constraint_errors() ::
+    resource_not_found_exception().
+
+-type describe_copy_product_status_errors() ::
+    resource_not_found_exception().
+
+-type describe_portfolio_errors() ::
+    resource_not_found_exception().
+
+-type describe_portfolio_share_status_errors() ::
+    operation_not_supported_exception() | 
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type describe_portfolio_shares_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type describe_product_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type describe_product_as_admin_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type describe_product_view_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type describe_provisioned_product_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type describe_provisioned_product_plan_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type describe_provisioning_artifact_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type describe_provisioning_parameters_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type describe_record_errors() ::
+    resource_not_found_exception().
+
+-type describe_service_action_errors() ::
+    resource_not_found_exception().
+
+-type describe_service_action_execution_parameters_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type describe_tag_option_errors() ::
+    tag_option_not_migrated_exception() | 
+    resource_not_found_exception().
+
+-type disable_aws_organizations_access_errors() ::
+    operation_not_supported_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type disassociate_budget_from_resource_errors() ::
+    resource_not_found_exception().
+
+-type disassociate_principal_from_portfolio_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type disassociate_product_from_portfolio_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type disassociate_service_action_from_provisioning_artifact_errors() ::
+    resource_not_found_exception().
+
+-type disassociate_tag_option_from_resource_errors() ::
+    tag_option_not_migrated_exception() | 
+    resource_not_found_exception().
+
+-type enable_aws_organizations_access_errors() ::
+    operation_not_supported_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type execute_provisioned_product_plan_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type execute_provisioned_product_service_action_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type get_aws_organizations_access_status_errors() ::
+    operation_not_supported_exception() | 
+    resource_not_found_exception().
+
+-type get_provisioned_product_outputs_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type import_as_provisioned_product_errors() ::
+    duplicate_resource_exception() | 
+    invalid_parameters_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type list_accepted_portfolio_shares_errors() ::
+    operation_not_supported_exception() | 
+    invalid_parameters_exception().
+
+-type list_budgets_for_resource_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type list_constraints_for_portfolio_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type list_launch_paths_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type list_organization_portfolio_access_errors() ::
+    operation_not_supported_exception() | 
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type list_portfolio_access_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type list_portfolios_errors() ::
+    invalid_parameters_exception().
+
+-type list_portfolios_for_product_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type list_principals_for_portfolio_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type list_provisioned_product_plans_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type list_provisioning_artifacts_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type list_provisioning_artifacts_for_service_action_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type list_record_history_errors() ::
+    invalid_parameters_exception().
+
+-type list_resources_for_tag_option_errors() ::
+    tag_option_not_migrated_exception() | 
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type list_service_actions_errors() ::
+    invalid_parameters_exception().
+
+-type list_service_actions_for_provisioning_artifact_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type list_stack_instances_for_provisioned_product_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type list_tag_options_errors() ::
+    tag_option_not_migrated_exception() | 
+    invalid_parameters_exception().
+
+-type notify_provision_product_engine_workflow_result_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type notify_terminate_provisioned_product_engine_workflow_result_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type notify_update_provisioned_product_engine_workflow_result_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type provision_product_errors() ::
+    duplicate_resource_exception() | 
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type reject_portfolio_share_errors() ::
+    resource_not_found_exception().
+
+-type scan_provisioned_products_errors() ::
+    invalid_parameters_exception().
+
+-type search_products_errors() ::
+    invalid_parameters_exception().
+
+-type search_products_as_admin_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type search_provisioned_products_errors() ::
+    invalid_parameters_exception().
+
+-type terminate_provisioned_product_errors() ::
+    resource_not_found_exception().
+
+-type update_constraint_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type update_portfolio_errors() ::
+    limit_exceeded_exception() | 
+    tag_option_not_migrated_exception() | 
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type update_portfolio_share_errors() ::
+    operation_not_supported_exception() | 
+    invalid_parameters_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type update_product_errors() ::
+    tag_option_not_migrated_exception() | 
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type update_provisioned_product_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type update_provisioned_product_properties_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type update_provisioning_artifact_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type update_service_action_errors() ::
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
+
+-type update_tag_option_errors() ::
+    duplicate_resource_exception() | 
+    tag_option_not_migrated_exception() | 
+    invalid_parameters_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -2284,9 +2674,7 @@
 -spec accept_portfolio_share(map(), accept_portfolio_share_input()) ->
     {ok, accept_portfolio_share_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, accept_portfolio_share_errors(), tuple()}.
 accept_portfolio_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_portfolio_share(Client, Input, []).
@@ -2294,9 +2682,7 @@ accept_portfolio_share(Client, Input)
 -spec accept_portfolio_share(map(), accept_portfolio_share_input(), proplists:proplist()) ->
     {ok, accept_portfolio_share_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, accept_portfolio_share_errors(), tuple()}.
 accept_portfolio_share(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcceptPortfolioShare">>, Input, Options).
@@ -2305,10 +2691,7 @@ accept_portfolio_share(Client, Input, Options)
 -spec associate_budget_with_resource(map(), associate_budget_with_resource_input()) ->
     {ok, associate_budget_with_resource_output(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, associate_budget_with_resource_errors(), tuple()}.
 associate_budget_with_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_budget_with_resource(Client, Input, []).
@@ -2316,10 +2699,7 @@ associate_budget_with_resource(Client, Input)
 -spec associate_budget_with_resource(map(), associate_budget_with_resource_input(), proplists:proplist()) ->
     {ok, associate_budget_with_resource_output(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, associate_budget_with_resource_errors(), tuple()}.
 associate_budget_with_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateBudgetWithResource">>, Input, Options).
@@ -2354,9 +2734,7 @@ associate_budget_with_resource(Client, Input, Options)
 -spec associate_principal_with_portfolio(map(), associate_principal_with_portfolio_input()) ->
     {ok, associate_principal_with_portfolio_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, associate_principal_with_portfolio_errors(), tuple()}.
 associate_principal_with_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_principal_with_portfolio(Client, Input, []).
@@ -2364,9 +2742,7 @@ associate_principal_with_portfolio(Client, Input)
 -spec associate_principal_with_portfolio(map(), associate_principal_with_portfolio_input(), proplists:proplist()) ->
     {ok, associate_principal_with_portfolio_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, associate_principal_with_portfolio_errors(), tuple()}.
 associate_principal_with_portfolio(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociatePrincipalWithPortfolio">>, Input, Options).
@@ -2377,9 +2753,7 @@ associate_principal_with_portfolio(Client, Input, Options)
 -spec associate_product_with_portfolio(map(), associate_product_with_portfolio_input()) ->
     {ok, associate_product_with_portfolio_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, associate_product_with_portfolio_errors(), tuple()}.
 associate_product_with_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_product_with_portfolio(Client, Input, []).
@@ -2387,9 +2761,7 @@ associate_product_with_portfolio(Client, Input)
 -spec associate_product_with_portfolio(map(), associate_product_with_portfolio_input(), proplists:proplist()) ->
     {ok, associate_product_with_portfolio_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, associate_product_with_portfolio_errors(), tuple()}.
 associate_product_with_portfolio(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateProductWithPortfolio">>, Input, Options).
@@ -2398,10 +2770,7 @@ associate_product_with_portfolio(Client, Input, Options)
 -spec associate_service_action_with_provisioning_artifact(map(), associate_service_action_with_provisioning_artifact_input()) ->
     {ok, associate_service_action_with_provisioning_artifact_output(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, associate_service_action_with_provisioning_artifact_errors(), tuple()}.
 associate_service_action_with_provisioning_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_service_action_with_provisioning_artifact(Client, Input, []).
@@ -2409,10 +2778,7 @@ associate_service_action_with_provisioning_artifact(Client, Input)
 -spec associate_service_action_with_provisioning_artifact(map(), associate_service_action_with_provisioning_artifact_input(), proplists:proplist()) ->
     {ok, associate_service_action_with_provisioning_artifact_output(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, associate_service_action_with_provisioning_artifact_errors(), tuple()}.
 associate_service_action_with_provisioning_artifact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateServiceActionWithProvisioningArtifact">>, Input, Options).
@@ -2422,12 +2788,7 @@ associate_service_action_with_provisioning_artifact(Client, Input, Options)
 -spec associate_tag_option_with_resource(map(), associate_tag_option_with_resource_input()) ->
     {ok, associate_tag_option_with_resource_output(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, tag_option_not_migrated_exception(), tuple()}.
+    {error, associate_tag_option_with_resource_errors(), tuple()}.
 associate_tag_option_with_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_tag_option_with_resource(Client, Input, []).
@@ -2435,12 +2796,7 @@ associate_tag_option_with_resource(Client, Input)
 -spec associate_tag_option_with_resource(map(), associate_tag_option_with_resource_input(), proplists:proplist()) ->
     {ok, associate_tag_option_with_resource_output(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, tag_option_not_migrated_exception(), tuple()}.
+    {error, associate_tag_option_with_resource_errors(), tuple()}.
 associate_tag_option_with_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateTagOptionWithResource">>, Input, Options).
@@ -2449,7 +2805,7 @@ associate_tag_option_with_resource(Client, Input, Options)
 -spec batch_associate_service_action_with_provisioning_artifact(map(), batch_associate_service_action_with_provisioning_artifact_input()) ->
     {ok, batch_associate_service_action_with_provisioning_artifact_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()}.
+    {error, batch_associate_service_action_with_provisioning_artifact_errors(), tuple()}.
 batch_associate_service_action_with_provisioning_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_associate_service_action_with_provisioning_artifact(Client, Input, []).
@@ -2457,7 +2813,7 @@ batch_associate_service_action_with_provisioning_artifact(Client, Input)
 -spec batch_associate_service_action_with_provisioning_artifact(map(), batch_associate_service_action_with_provisioning_artifact_input(), proplists:proplist()) ->
     {ok, batch_associate_service_action_with_provisioning_artifact_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()}.
+    {error, batch_associate_service_action_with_provisioning_artifact_errors(), tuple()}.
 batch_associate_service_action_with_provisioning_artifact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchAssociateServiceActionWithProvisioningArtifact">>, Input, Options).
@@ -2467,7 +2823,7 @@ batch_associate_service_action_with_provisioning_artifact(Client, Input, Options
 -spec batch_disassociate_service_action_from_provisioning_artifact(map(), batch_disassociate_service_action_from_provisioning_artifact_input()) ->
     {ok, batch_disassociate_service_action_from_provisioning_artifact_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()}.
+    {error, batch_disassociate_service_action_from_provisioning_artifact_errors(), tuple()}.
 batch_disassociate_service_action_from_provisioning_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_disassociate_service_action_from_provisioning_artifact(Client, Input, []).
@@ -2475,7 +2831,7 @@ batch_disassociate_service_action_from_provisioning_artifact(Client, Input)
 -spec batch_disassociate_service_action_from_provisioning_artifact(map(), batch_disassociate_service_action_from_provisioning_artifact_input(), proplists:proplist()) ->
     {ok, batch_disassociate_service_action_from_provisioning_artifact_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()}.
+    {error, batch_disassociate_service_action_from_provisioning_artifact_errors(), tuple()}.
 batch_disassociate_service_action_from_provisioning_artifact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDisassociateServiceActionFromProvisioningArtifact">>, Input, Options).
@@ -2495,8 +2851,7 @@ batch_disassociate_service_action_from_provisioning_artifact(Client, Input, Opti
 -spec copy_product(map(), copy_product_input()) ->
     {ok, copy_product_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, copy_product_errors(), tuple()}.
 copy_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_product(Client, Input, []).
@@ -2504,8 +2859,7 @@ copy_product(Client, Input)
 -spec copy_product(map(), copy_product_input(), proplists:proplist()) ->
     {ok, copy_product_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, copy_product_errors(), tuple()}.
 copy_product(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopyProduct">>, Input, Options).
@@ -2516,10 +2870,7 @@ copy_product(Client, Input, Options)
 -spec create_constraint(map(), create_constraint_input()) ->
     {ok, create_constraint_output(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_constraint_errors(), tuple()}.
 create_constraint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_constraint(Client, Input, []).
@@ -2527,10 +2878,7 @@ create_constraint(Client, Input)
 -spec create_constraint(map(), create_constraint_input(), proplists:proplist()) ->
     {ok, create_constraint_output(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_constraint_errors(), tuple()}.
 create_constraint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateConstraint">>, Input, Options).
@@ -2541,9 +2889,7 @@ create_constraint(Client, Input, Options)
 -spec create_portfolio(map(), create_portfolio_input()) ->
     {ok, create_portfolio_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, tag_option_not_migrated_exception(), tuple()}.
+    {error, create_portfolio_errors(), tuple()}.
 create_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_portfolio(Client, Input, []).
@@ -2551,9 +2897,7 @@ create_portfolio(Client, Input)
 -spec create_portfolio(map(), create_portfolio_input(), proplists:proplist()) ->
     {ok, create_portfolio_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, tag_option_not_migrated_exception(), tuple()}.
+    {error, create_portfolio_errors(), tuple()}.
 create_portfolio(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePortfolio">>, Input, Options).
@@ -2598,11 +2942,7 @@ create_portfolio(Client, Input, Options)
 -spec create_portfolio_share(map(), create_portfolio_share_input()) ->
     {ok, create_portfolio_share_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_portfolio_share_errors(), tuple()}.
 create_portfolio_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_portfolio_share(Client, Input, []).
@@ -2610,11 +2950,7 @@ create_portfolio_share(Client, Input)
 -spec create_portfolio_share(map(), create_portfolio_share_input(), proplists:proplist()) ->
     {ok, create_portfolio_share_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_portfolio_share_errors(), tuple()}.
 create_portfolio_share(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePortfolioShare">>, Input, Options).
@@ -2631,9 +2967,7 @@ create_portfolio_share(Client, Input, Options)
 -spec create_product(map(), create_product_input()) ->
     {ok, create_product_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, tag_option_not_migrated_exception(), tuple()}.
+    {error, create_product_errors(), tuple()}.
 create_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_product(Client, Input, []).
@@ -2641,9 +2975,7 @@ create_product(Client, Input)
 -spec create_product(map(), create_product_input(), proplists:proplist()) ->
     {ok, create_product_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, tag_option_not_migrated_exception(), tuple()}.
+    {error, create_product_errors(), tuple()}.
 create_product(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateProduct">>, Input, Options).
@@ -2666,9 +2998,7 @@ create_product(Client, Input, Options)
 -spec create_provisioned_product_plan(map(), create_provisioned_product_plan_input()) ->
     {ok, create_provisioned_product_plan_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_provisioned_product_plan_errors(), tuple()}.
 create_provisioned_product_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_provisioned_product_plan(Client, Input, []).
@@ -2676,9 +3006,7 @@ create_provisioned_product_plan(Client, Input)
 -spec create_provisioned_product_plan(map(), create_provisioned_product_plan_input(), proplists:proplist()) ->
     {ok, create_provisioned_product_plan_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_provisioned_product_plan_errors(), tuple()}.
 create_provisioned_product_plan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateProvisionedProductPlan">>, Input, Options).
@@ -2697,9 +3025,7 @@ create_provisioned_product_plan(Client, Input, Options)
 -spec create_provisioning_artifact(map(), create_provisioning_artifact_input()) ->
     {ok, create_provisioning_artifact_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_provisioning_artifact_errors(), tuple()}.
 create_provisioning_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_provisioning_artifact(Client, Input, []).
@@ -2707,9 +3033,7 @@ create_provisioning_artifact(Client, Input)
 -spec create_provisioning_artifact(map(), create_provisioning_artifact_input(), proplists:proplist()) ->
     {ok, create_provisioning_artifact_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_provisioning_artifact_errors(), tuple()}.
 create_provisioning_artifact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateProvisioningArtifact">>, Input, Options).
@@ -2718,8 +3042,7 @@ create_provisioning_artifact(Client, Input, Options)
 -spec create_service_action(map(), create_service_action_input()) ->
     {ok, create_service_action_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_service_action_errors(), tuple()}.
 create_service_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service_action(Client, Input, []).
@@ -2727,8 +3050,7 @@ create_service_action(Client, Input)
 -spec create_service_action(map(), create_service_action_input(), proplists:proplist()) ->
     {ok, create_service_action_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_service_action_errors(), tuple()}.
 create_service_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateServiceAction">>, Input, Options).
@@ -2737,9 +3059,7 @@ create_service_action(Client, Input, Options)
 -spec create_tag_option(map(), create_tag_option_input()) ->
     {ok, create_tag_option_output(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, tag_option_not_migrated_exception(), tuple()}.
+    {error, create_tag_option_errors(), tuple()}.
 create_tag_option(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_tag_option(Client, Input, []).
@@ -2747,9 +3067,7 @@ create_tag_option(Client, Input)
 -spec create_tag_option(map(), create_tag_option_input(), proplists:proplist()) ->
     {ok, create_tag_option_output(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, tag_option_not_migrated_exception(), tuple()}.
+    {error, create_tag_option_errors(), tuple()}.
 create_tag_option(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTagOption">>, Input, Options).
@@ -2760,8 +3078,7 @@ create_tag_option(Client, Input, Options)
 -spec delete_constraint(map(), delete_constraint_input()) ->
     {ok, delete_constraint_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_constraint_errors(), tuple()}.
 delete_constraint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_constraint(Client, Input, []).
@@ -2769,8 +3086,7 @@ delete_constraint(Client, Input)
 -spec delete_constraint(map(), delete_constraint_input(), proplists:proplist()) ->
     {ok, delete_constraint_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_constraint_errors(), tuple()}.
 delete_constraint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConstraint">>, Input, Options).
@@ -2785,10 +3101,7 @@ delete_constraint(Client, Input, Options)
 -spec delete_portfolio(map(), delete_portfolio_input()) ->
     {ok, delete_portfolio_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, tag_option_not_migrated_exception(), tuple()}.
+    {error, delete_portfolio_errors(), tuple()}.
 delete_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_portfolio(Client, Input, []).
@@ -2796,10 +3109,7 @@ delete_portfolio(Client, Input)
 -spec delete_portfolio(map(), delete_portfolio_input(), proplists:proplist()) ->
     {ok, delete_portfolio_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, tag_option_not_migrated_exception(), tuple()}.
+    {error, delete_portfolio_errors(), tuple()}.
 delete_portfolio(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePortfolio">>, Input, Options).
@@ -2817,10 +3127,7 @@ delete_portfolio(Client, Input, Options)
 -spec delete_portfolio_share(map(), delete_portfolio_share_input()) ->
     {ok, delete_portfolio_share_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_portfolio_share_errors(), tuple()}.
 delete_portfolio_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_portfolio_share(Client, Input, []).
@@ -2828,10 +3135,7 @@ delete_portfolio_share(Client, Input)
 -spec delete_portfolio_share(map(), delete_portfolio_share_input(), proplists:proplist()) ->
     {ok, delete_portfolio_share_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_portfolio_share_errors(), tuple()}.
 delete_portfolio_share(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePortfolioShare">>, Input, Options).
@@ -2845,10 +3149,7 @@ delete_portfolio_share(Client, Input, Options)
 -spec delete_product(map(), delete_product_input()) ->
     {ok, delete_product_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, tag_option_not_migrated_exception(), tuple()}.
+    {error, delete_product_errors(), tuple()}.
 delete_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_product(Client, Input, []).
@@ -2856,10 +3157,7 @@ delete_product(Client, Input)
 -spec delete_product(map(), delete_product_input(), proplists:proplist()) ->
     {ok, delete_product_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, tag_option_not_migrated_exception(), tuple()}.
+    {error, delete_product_errors(), tuple()}.
 delete_product(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProduct">>, Input, Options).
@@ -2868,8 +3166,7 @@ delete_product(Client, Input, Options)
 -spec delete_provisioned_product_plan(map(), delete_provisioned_product_plan_input()) ->
     {ok, delete_provisioned_product_plan_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_provisioned_product_plan_errors(), tuple()}.
 delete_provisioned_product_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_provisioned_product_plan(Client, Input, []).
@@ -2877,8 +3174,7 @@ delete_provisioned_product_plan(Client, Input)
 -spec delete_provisioned_product_plan(map(), delete_provisioned_product_plan_input(), proplists:proplist()) ->
     {ok, delete_provisioned_product_plan_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_provisioned_product_plan_errors(), tuple()}.
 delete_provisioned_product_plan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProvisionedProductPlan">>, Input, Options).
@@ -2894,9 +3190,7 @@ delete_provisioned_product_plan(Client, Input, Options)
 -spec delete_provisioning_artifact(map(), delete_provisioning_artifact_input()) ->
     {ok, delete_provisioning_artifact_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_provisioning_artifact_errors(), tuple()}.
 delete_provisioning_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_provisioning_artifact(Client, Input, []).
@@ -2904,9 +3198,7 @@ delete_provisioning_artifact(Client, Input)
 -spec delete_provisioning_artifact(map(), delete_provisioning_artifact_input(), proplists:proplist()) ->
     {ok, delete_provisioning_artifact_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_provisioning_artifact_errors(), tuple()}.
 delete_provisioning_artifact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProvisioningArtifact">>, Input, Options).
@@ -2915,8 +3207,7 @@ delete_provisioning_artifact(Client, Input, Options)
 -spec delete_service_action(map(), delete_service_action_input()) ->
     {ok, delete_service_action_output(), tuple()} |
     {error, any()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_service_action_errors(), tuple()}.
 delete_service_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service_action(Client, Input, []).
@@ -2924,8 +3215,7 @@ delete_service_action(Client, Input)
 -spec delete_service_action(map(), delete_service_action_input(), proplists:proplist()) ->
     {ok, delete_service_action_output(), tuple()} |
     {error, any()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_service_action_errors(), tuple()}.
 delete_service_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteServiceAction">>, Input, Options).
@@ -2937,9 +3227,7 @@ delete_service_action(Client, Input, Options)
 -spec delete_tag_option(map(), delete_tag_option_input()) ->
     {ok, delete_tag_option_output(), tuple()} |
     {error, any()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, tag_option_not_migrated_exception(), tuple()}.
+    {error, delete_tag_option_errors(), tuple()}.
 delete_tag_option(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tag_option(Client, Input, []).
@@ -2947,9 +3235,7 @@ delete_tag_option(Client, Input)
 -spec delete_tag_option(map(), delete_tag_option_input(), proplists:proplist()) ->
     {ok, delete_tag_option_output(), tuple()} |
     {error, any()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, tag_option_not_migrated_exception(), tuple()}.
+    {error, delete_tag_option_errors(), tuple()}.
 delete_tag_option(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTagOption">>, Input, Options).
@@ -2958,7 +3244,7 @@ delete_tag_option(Client, Input, Options)
 -spec describe_constraint(map(), describe_constraint_input()) ->
     {ok, describe_constraint_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_constraint_errors(), tuple()}.
 describe_constraint(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_constraint(Client, Input, []).
@@ -2966,7 +3252,7 @@ describe_constraint(Client, Input)
 -spec describe_constraint(map(), describe_constraint_input(), proplists:proplist()) ->
     {ok, describe_constraint_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_constraint_errors(), tuple()}.
 describe_constraint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConstraint">>, Input, Options).
@@ -2975,7 +3261,7 @@ describe_constraint(Client, Input, Options)
 -spec describe_copy_product_status(map(), describe_copy_product_status_input()) ->
     {ok, describe_copy_product_status_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_copy_product_status_errors(), tuple()}.
 describe_copy_product_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_copy_product_status(Client, Input, []).
@@ -2983,7 +3269,7 @@ describe_copy_product_status(Client, Input)
 -spec describe_copy_product_status(map(), describe_copy_product_status_input(), proplists:proplist()) ->
     {ok, describe_copy_product_status_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_copy_product_status_errors(), tuple()}.
 describe_copy_product_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCopyProductStatus">>, Input, Options).
@@ -2994,7 +3280,7 @@ describe_copy_product_status(Client, Input, Options)
 -spec describe_portfolio(map(), describe_portfolio_input()) ->
     {ok, describe_portfolio_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_portfolio_errors(), tuple()}.
 describe_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_portfolio(Client, Input, []).
@@ -3002,7 +3288,7 @@ describe_portfolio(Client, Input)
 -spec describe_portfolio(map(), describe_portfolio_input(), proplists:proplist()) ->
     {ok, describe_portfolio_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_portfolio_errors(), tuple()}.
 describe_portfolio(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePortfolio">>, Input, Options).
@@ -3014,9 +3300,7 @@ describe_portfolio(Client, Input, Options)
 -spec describe_portfolio_share_status(map(), describe_portfolio_share_status_input()) ->
     {ok, describe_portfolio_share_status_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_portfolio_share_status_errors(), tuple()}.
 describe_portfolio_share_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_portfolio_share_status(Client, Input, []).
@@ -3024,9 +3308,7 @@ describe_portfolio_share_status(Client, Input)
 -spec describe_portfolio_share_status(map(), describe_portfolio_share_status_input(), proplists:proplist()) ->
     {ok, describe_portfolio_share_status_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_portfolio_share_status_errors(), tuple()}.
 describe_portfolio_share_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePortfolioShareStatus">>, Input, Options).
@@ -3044,8 +3326,7 @@ describe_portfolio_share_status(Client, Input, Options)
 -spec describe_portfolio_shares(map(), describe_portfolio_shares_input()) ->
     {ok, describe_portfolio_shares_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_portfolio_shares_errors(), tuple()}.
 describe_portfolio_shares(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_portfolio_shares(Client, Input, []).
@@ -3053,8 +3334,7 @@ describe_portfolio_shares(Client, Input)
 -spec describe_portfolio_shares(map(), describe_portfolio_shares_input(), proplists:proplist()) ->
     {ok, describe_portfolio_shares_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_portfolio_shares_errors(), tuple()}.
 describe_portfolio_shares(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePortfolioShares">>, Input, Options).
@@ -3069,8 +3349,7 @@ describe_portfolio_shares(Client, Input, Options)
 -spec describe_product(map(), describe_product_input()) ->
     {ok, describe_product_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_product_errors(), tuple()}.
 describe_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_product(Client, Input, []).
@@ -3078,8 +3357,7 @@ describe_product(Client, Input)
 -spec describe_product(map(), describe_product_input(), proplists:proplist()) ->
     {ok, describe_product_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_product_errors(), tuple()}.
 describe_product(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeProduct">>, Input, Options).
@@ -3090,8 +3368,7 @@ describe_product(Client, Input, Options)
 -spec describe_product_as_admin(map(), describe_product_as_admin_input()) ->
     {ok, describe_product_as_admin_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_product_as_admin_errors(), tuple()}.
 describe_product_as_admin(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_product_as_admin(Client, Input, []).
@@ -3099,8 +3376,7 @@ describe_product_as_admin(Client, Input)
 -spec describe_product_as_admin(map(), describe_product_as_admin_input(), proplists:proplist()) ->
     {ok, describe_product_as_admin_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_product_as_admin_errors(), tuple()}.
 describe_product_as_admin(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeProductAsAdmin">>, Input, Options).
@@ -3109,8 +3385,7 @@ describe_product_as_admin(Client, Input, Options)
 -spec describe_product_view(map(), describe_product_view_input()) ->
     {ok, describe_product_view_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_product_view_errors(), tuple()}.
 describe_product_view(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_product_view(Client, Input, []).
@@ -3118,8 +3393,7 @@ describe_product_view(Client, Input)
 -spec describe_product_view(map(), describe_product_view_input(), proplists:proplist()) ->
     {ok, describe_product_view_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_product_view_errors(), tuple()}.
 describe_product_view(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeProductView">>, Input, Options).
@@ -3128,8 +3402,7 @@ describe_product_view(Client, Input, Options)
 -spec describe_provisioned_product(map(), describe_provisioned_product_input()) ->
     {ok, describe_provisioned_product_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_provisioned_product_errors(), tuple()}.
 describe_provisioned_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_provisioned_product(Client, Input, []).
@@ -3137,8 +3410,7 @@ describe_provisioned_product(Client, Input)
 -spec describe_provisioned_product(map(), describe_provisioned_product_input(), proplists:proplist()) ->
     {ok, describe_provisioned_product_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_provisioned_product_errors(), tuple()}.
 describe_provisioned_product(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeProvisionedProduct">>, Input, Options).
@@ -3147,8 +3419,7 @@ describe_provisioned_product(Client, Input, Options)
 -spec describe_provisioned_product_plan(map(), describe_provisioned_product_plan_input()) ->
     {ok, describe_provisioned_product_plan_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_provisioned_product_plan_errors(), tuple()}.
 describe_provisioned_product_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_provisioned_product_plan(Client, Input, []).
@@ -3156,8 +3427,7 @@ describe_provisioned_product_plan(Client, Input)
 -spec describe_provisioned_product_plan(map(), describe_provisioned_product_plan_input(), proplists:proplist()) ->
     {ok, describe_provisioned_product_plan_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_provisioned_product_plan_errors(), tuple()}.
 describe_provisioned_product_plan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeProvisionedProductPlan">>, Input, Options).
@@ -3167,8 +3437,7 @@ describe_provisioned_product_plan(Client, Input, Options)
 -spec describe_provisioning_artifact(map(), describe_provisioning_artifact_input()) ->
     {ok, describe_provisioning_artifact_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_provisioning_artifact_errors(), tuple()}.
 describe_provisioning_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_provisioning_artifact(Client, Input, []).
@@ -3176,8 +3445,7 @@ describe_provisioning_artifact(Client, Input)
 -spec describe_provisioning_artifact(map(), describe_provisioning_artifact_input(), proplists:proplist()) ->
     {ok, describe_provisioning_artifact_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_provisioning_artifact_errors(), tuple()}.
 describe_provisioning_artifact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeProvisioningArtifact">>, Input, Options).
@@ -3199,8 +3467,7 @@ describe_provisioning_artifact(Client, Input, Options)
 -spec describe_provisioning_parameters(map(), describe_provisioning_parameters_input()) ->
     {ok, describe_provisioning_parameters_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_provisioning_parameters_errors(), tuple()}.
 describe_provisioning_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_provisioning_parameters(Client, Input, []).
@@ -3208,8 +3475,7 @@ describe_provisioning_parameters(Client, Input)
 -spec describe_provisioning_parameters(map(), describe_provisioning_parameters_input(), proplists:proplist()) ->
     {ok, describe_provisioning_parameters_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_provisioning_parameters_errors(), tuple()}.
 describe_provisioning_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeProvisioningParameters">>, Input, Options).
@@ -3229,7 +3495,7 @@ describe_provisioning_parameters(Client, Input, Options)
 -spec describe_record(map(), describe_record_input()) ->
     {ok, describe_record_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_record_errors(), tuple()}.
 describe_record(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_record(Client, Input, []).
@@ -3237,7 +3503,7 @@ describe_record(Client, Input)
 -spec describe_record(map(), describe_record_input(), proplists:proplist()) ->
     {ok, describe_record_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_record_errors(), tuple()}.
 describe_record(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRecord">>, Input, Options).
@@ -3246,7 +3512,7 @@ describe_record(Client, Input, Options)
 -spec describe_service_action(map(), describe_service_action_input()) ->
     {ok, describe_service_action_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_service_action_errors(), tuple()}.
 describe_service_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_service_action(Client, Input, []).
@@ -3254,7 +3520,7 @@ describe_service_action(Client, Input)
 -spec describe_service_action(map(), describe_service_action_input(), proplists:proplist()) ->
     {ok, describe_service_action_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_service_action_errors(), tuple()}.
 describe_service_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeServiceAction">>, Input, Options).
@@ -3264,8 +3530,7 @@ describe_service_action(Client, Input, Options)
 -spec describe_service_action_execution_parameters(map(), describe_service_action_execution_parameters_input()) ->
     {ok, describe_service_action_execution_parameters_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_service_action_execution_parameters_errors(), tuple()}.
 describe_service_action_execution_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_service_action_execution_parameters(Client, Input, []).
@@ -3273,8 +3538,7 @@ describe_service_action_execution_parameters(Client, Input)
 -spec describe_service_action_execution_parameters(map(), describe_service_action_execution_parameters_input(), proplists:proplist()) ->
     {ok, describe_service_action_execution_parameters_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_service_action_execution_parameters_errors(), tuple()}.
 describe_service_action_execution_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeServiceActionExecutionParameters">>, Input, Options).
@@ -3283,8 +3547,7 @@ describe_service_action_execution_parameters(Client, Input, Options)
 -spec describe_tag_option(map(), describe_tag_option_input()) ->
     {ok, describe_tag_option_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, tag_option_not_migrated_exception(), tuple()}.
+    {error, describe_tag_option_errors(), tuple()}.
 describe_tag_option(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tag_option(Client, Input, []).
@@ -3292,8 +3555,7 @@ describe_tag_option(Client, Input)
 -spec describe_tag_option(map(), describe_tag_option_input(), proplists:proplist()) ->
     {ok, describe_tag_option_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, tag_option_not_migrated_exception(), tuple()}.
+    {error, describe_tag_option_errors(), tuple()}.
 describe_tag_option(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTagOption">>, Input, Options).
@@ -3325,9 +3587,7 @@ describe_tag_option(Client, Input, Options)
 -spec disable_aws_organizations_access(map(), disable_aws_organizations_access_input()) ->
     {ok, disable_aws_organizations_access_output(), tuple()} |
     {error, any()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disable_aws_organizations_access_errors(), tuple()}.
 disable_aws_organizations_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_aws_organizations_access(Client, Input, []).
@@ -3335,9 +3595,7 @@ disable_aws_organizations_access(Client, Input)
 -spec disable_aws_organizations_access(map(), disable_aws_organizations_access_input(), proplists:proplist()) ->
     {ok, disable_aws_organizations_access_output(), tuple()} |
     {error, any()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disable_aws_organizations_access_errors(), tuple()}.
 disable_aws_organizations_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableAWSOrganizationsAccess">>, Input, Options).
@@ -3346,7 +3604,7 @@ disable_aws_organizations_access(Client, Input, Options)
 -spec disassociate_budget_from_resource(map(), disassociate_budget_from_resource_input()) ->
     {ok, disassociate_budget_from_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_budget_from_resource_errors(), tuple()}.
 disassociate_budget_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_budget_from_resource(Client, Input, []).
@@ -3354,7 +3612,7 @@ disassociate_budget_from_resource(Client, Input)
 -spec disassociate_budget_from_resource(map(), disassociate_budget_from_resource_input(), proplists:proplist()) ->
     {ok, disassociate_budget_from_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_budget_from_resource_errors(), tuple()}.
 disassociate_budget_from_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateBudgetFromResource">>, Input, Options).
@@ -3391,8 +3649,7 @@ disassociate_budget_from_resource(Client, Input, Options)
 -spec disassociate_principal_from_portfolio(map(), disassociate_principal_from_portfolio_input()) ->
     {ok, disassociate_principal_from_portfolio_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_principal_from_portfolio_errors(), tuple()}.
 disassociate_principal_from_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_principal_from_portfolio(Client, Input, []).
@@ -3400,8 +3657,7 @@ disassociate_principal_from_portfolio(Client, Input)
 -spec disassociate_principal_from_portfolio(map(), disassociate_principal_from_portfolio_input(), proplists:proplist()) ->
     {ok, disassociate_principal_from_portfolio_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_principal_from_portfolio_errors(), tuple()}.
 disassociate_principal_from_portfolio(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociatePrincipalFromPortfolio">>, Input, Options).
@@ -3412,9 +3668,7 @@ disassociate_principal_from_portfolio(Client, Input, Options)
 -spec disassociate_product_from_portfolio(map(), disassociate_product_from_portfolio_input()) ->
     {ok, disassociate_product_from_portfolio_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_product_from_portfolio_errors(), tuple()}.
 disassociate_product_from_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_product_from_portfolio(Client, Input, []).
@@ -3422,9 +3676,7 @@ disassociate_product_from_portfolio(Client, Input)
 -spec disassociate_product_from_portfolio(map(), disassociate_product_from_portfolio_input(), proplists:proplist()) ->
     {ok, disassociate_product_from_portfolio_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_product_from_portfolio_errors(), tuple()}.
 disassociate_product_from_portfolio(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateProductFromPortfolio">>, Input, Options).
@@ -3434,7 +3686,7 @@ disassociate_product_from_portfolio(Client, Input, Options)
 -spec disassociate_service_action_from_provisioning_artifact(map(), disassociate_service_action_from_provisioning_artifact_input()) ->
     {ok, disassociate_service_action_from_provisioning_artifact_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_service_action_from_provisioning_artifact_errors(), tuple()}.
 disassociate_service_action_from_provisioning_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_service_action_from_provisioning_artifact(Client, Input, []).
@@ -3442,7 +3694,7 @@ disassociate_service_action_from_provisioning_artifact(Client, Input)
 -spec disassociate_service_action_from_provisioning_artifact(map(), disassociate_service_action_from_provisioning_artifact_input(), proplists:proplist()) ->
     {ok, disassociate_service_action_from_provisioning_artifact_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_service_action_from_provisioning_artifact_errors(), tuple()}.
 disassociate_service_action_from_provisioning_artifact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateServiceActionFromProvisioningArtifact">>, Input, Options).
@@ -3451,8 +3703,7 @@ disassociate_service_action_from_provisioning_artifact(Client, Input, Options)
 -spec disassociate_tag_option_from_resource(map(), disassociate_tag_option_from_resource_input()) ->
     {ok, disassociate_tag_option_from_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, tag_option_not_migrated_exception(), tuple()}.
+    {error, disassociate_tag_option_from_resource_errors(), tuple()}.
 disassociate_tag_option_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_tag_option_from_resource(Client, Input, []).
@@ -3460,8 +3711,7 @@ disassociate_tag_option_from_resource(Client, Input)
 -spec disassociate_tag_option_from_resource(map(), disassociate_tag_option_from_resource_input(), proplists:proplist()) ->
     {ok, disassociate_tag_option_from_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, tag_option_not_migrated_exception(), tuple()}.
+    {error, disassociate_tag_option_from_resource_errors(), tuple()}.
 disassociate_tag_option_from_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateTagOptionFromResource">>, Input, Options).
@@ -3496,9 +3746,7 @@ disassociate_tag_option_from_resource(Client, Input, Options)
 -spec enable_aws_organizations_access(map(), enable_aws_organizations_access_input()) ->
     {ok, enable_aws_organizations_access_output(), tuple()} |
     {error, any()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, enable_aws_organizations_access_errors(), tuple()}.
 enable_aws_organizations_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_aws_organizations_access(Client, Input, []).
@@ -3506,9 +3754,7 @@ enable_aws_organizations_access(Client, Input)
 -spec enable_aws_organizations_access(map(), enable_aws_organizations_access_input(), proplists:proplist()) ->
     {ok, enable_aws_organizations_access_output(), tuple()} |
     {error, any()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, enable_aws_organizations_access_errors(), tuple()}.
 enable_aws_organizations_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableAWSOrganizationsAccess">>, Input, Options).
@@ -3518,9 +3764,7 @@ enable_aws_organizations_access(Client, Input, Options)
 -spec execute_provisioned_product_plan(map(), execute_provisioned_product_plan_input()) ->
     {ok, execute_provisioned_product_plan_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, execute_provisioned_product_plan_errors(), tuple()}.
 execute_provisioned_product_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_provisioned_product_plan(Client, Input, []).
@@ -3528,9 +3772,7 @@ execute_provisioned_product_plan(Client, Input)
 -spec execute_provisioned_product_plan(map(), execute_provisioned_product_plan_input(), proplists:proplist()) ->
     {ok, execute_provisioned_product_plan_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, execute_provisioned_product_plan_errors(), tuple()}.
 execute_provisioned_product_plan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExecuteProvisionedProductPlan">>, Input, Options).
@@ -3539,9 +3781,7 @@ execute_provisioned_product_plan(Client, Input, Options)
 -spec execute_provisioned_product_service_action(map(), execute_provisioned_product_service_action_input()) ->
     {ok, execute_provisioned_product_service_action_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, execute_provisioned_product_service_action_errors(), tuple()}.
 execute_provisioned_product_service_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_provisioned_product_service_action(Client, Input, []).
@@ -3549,9 +3789,7 @@ execute_provisioned_product_service_action(Client, Input)
 -spec execute_provisioned_product_service_action(map(), execute_provisioned_product_service_action_input(), proplists:proplist()) ->
     {ok, execute_provisioned_product_service_action_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, execute_provisioned_product_service_action_errors(), tuple()}.
 execute_provisioned_product_service_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExecuteProvisionedProductServiceAction">>, Input, Options).
@@ -3564,8 +3802,7 @@ execute_provisioned_product_service_action(Client, Input, Options)
 -spec get_aws_organizations_access_status(map(), get_aws_organizations_access_status_input()) ->
     {ok, get_aws_organizations_access_status_output(), tuple()} |
     {error, any()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_aws_organizations_access_status_errors(), tuple()}.
 get_aws_organizations_access_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_aws_organizations_access_status(Client, Input, []).
@@ -3573,8 +3810,7 @@ get_aws_organizations_access_status(Client, Input)
 -spec get_aws_organizations_access_status(map(), get_aws_organizations_access_status_input(), proplists:proplist()) ->
     {ok, get_aws_organizations_access_status_output(), tuple()} |
     {error, any()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_aws_organizations_access_status_errors(), tuple()}.
 get_aws_organizations_access_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAWSOrganizationsAccessStatus">>, Input, Options).
@@ -3585,8 +3821,7 @@ get_aws_organizations_access_status(Client, Input, Options)
 -spec get_provisioned_product_outputs(map(), get_provisioned_product_outputs_input()) ->
     {ok, get_provisioned_product_outputs_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_provisioned_product_outputs_errors(), tuple()}.
 get_provisioned_product_outputs(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_provisioned_product_outputs(Client, Input, []).
@@ -3594,8 +3829,7 @@ get_provisioned_product_outputs(Client, Input)
 -spec get_provisioned_product_outputs(map(), get_provisioned_product_outputs_input(), proplists:proplist()) ->
     {ok, get_provisioned_product_outputs_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_provisioned_product_outputs_errors(), tuple()}.
 get_provisioned_product_outputs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetProvisionedProductOutputs">>, Input, Options).
@@ -3639,10 +3873,7 @@ get_provisioned_product_outputs(Client, Input, Options)
 -spec import_as_provisioned_product(map(), import_as_provisioned_product_input()) ->
     {ok, import_as_provisioned_product_output(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, import_as_provisioned_product_errors(), tuple()}.
 import_as_provisioned_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_as_provisioned_product(Client, Input, []).
@@ -3650,10 +3881,7 @@ import_as_provisioned_product(Client, Input)
 -spec import_as_provisioned_product(map(), import_as_provisioned_product_input(), proplists:proplist()) ->
     {ok, import_as_provisioned_product_output(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, import_as_provisioned_product_errors(), tuple()}.
 import_as_provisioned_product(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportAsProvisionedProduct">>, Input, Options).
@@ -3668,8 +3896,7 @@ import_as_provisioned_product(Client, Input, Options)
 -spec list_accepted_portfolio_shares(map(), list_accepted_portfolio_shares_input()) ->
     {ok, list_accepted_portfolio_shares_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()}.
+    {error, list_accepted_portfolio_shares_errors(), tuple()}.
 list_accepted_portfolio_shares(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_accepted_portfolio_shares(Client, Input, []).
@@ -3677,8 +3904,7 @@ list_accepted_portfolio_shares(Client, Input)
 -spec list_accepted_portfolio_shares(map(), list_accepted_portfolio_shares_input(), proplists:proplist()) ->
     {ok, list_accepted_portfolio_shares_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()}.
+    {error, list_accepted_portfolio_shares_errors(), tuple()}.
 list_accepted_portfolio_shares(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAcceptedPortfolioShares">>, Input, Options).
@@ -3687,8 +3913,7 @@ list_accepted_portfolio_shares(Client, Input, Options)
 -spec list_budgets_for_resource(map(), list_budgets_for_resource_input()) ->
     {ok, list_budgets_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_budgets_for_resource_errors(), tuple()}.
 list_budgets_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_budgets_for_resource(Client, Input, []).
@@ -3696,8 +3921,7 @@ list_budgets_for_resource(Client, Input)
 -spec list_budgets_for_resource(map(), list_budgets_for_resource_input(), proplists:proplist()) ->
     {ok, list_budgets_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_budgets_for_resource_errors(), tuple()}.
 list_budgets_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBudgetsForResource">>, Input, Options).
@@ -3706,8 +3930,7 @@ list_budgets_for_resource(Client, Input, Options)
 -spec list_constraints_for_portfolio(map(), list_constraints_for_portfolio_input()) ->
     {ok, list_constraints_for_portfolio_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_constraints_for_portfolio_errors(), tuple()}.
 list_constraints_for_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_constraints_for_portfolio(Client, Input, []).
@@ -3715,8 +3938,7 @@ list_constraints_for_portfolio(Client, Input)
 -spec list_constraints_for_portfolio(map(), list_constraints_for_portfolio_input(), proplists:proplist()) ->
     {ok, list_constraints_for_portfolio_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_constraints_for_portfolio_errors(), tuple()}.
 list_constraints_for_portfolio(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListConstraintsForPortfolio">>, Input, Options).
@@ -3748,8 +3970,7 @@ list_constraints_for_portfolio(Client, Input, Options)
 -spec list_launch_paths(map(), list_launch_paths_input()) ->
     {ok, list_launch_paths_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_launch_paths_errors(), tuple()}.
 list_launch_paths(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_launch_paths(Client, Input, []).
@@ -3757,8 +3978,7 @@ list_launch_paths(Client, Input)
 -spec list_launch_paths(map(), list_launch_paths_input(), proplists:proplist()) ->
     {ok, list_launch_paths_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_launch_paths_errors(), tuple()}.
 list_launch_paths(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLaunchPaths">>, Input, Options).
@@ -3776,9 +3996,7 @@ list_launch_paths(Client, Input, Options)
 -spec list_organization_portfolio_access(map(), list_organization_portfolio_access_input()) ->
     {ok, list_organization_portfolio_access_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_organization_portfolio_access_errors(), tuple()}.
 list_organization_portfolio_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_organization_portfolio_access(Client, Input, []).
@@ -3786,9 +4004,7 @@ list_organization_portfolio_access(Client, Input)
 -spec list_organization_portfolio_access(map(), list_organization_portfolio_access_input(), proplists:proplist()) ->
     {ok, list_organization_portfolio_access_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_organization_portfolio_access_errors(), tuple()}.
 list_organization_portfolio_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOrganizationPortfolioAccess">>, Input, Options).
@@ -3801,8 +4017,7 @@ list_organization_portfolio_access(Client, Input, Options)
 -spec list_portfolio_access(map(), list_portfolio_access_input()) ->
     {ok, list_portfolio_access_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_portfolio_access_errors(), tuple()}.
 list_portfolio_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_portfolio_access(Client, Input, []).
@@ -3810,8 +4025,7 @@ list_portfolio_access(Client, Input)
 -spec list_portfolio_access(map(), list_portfolio_access_input(), proplists:proplist()) ->
     {ok, list_portfolio_access_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_portfolio_access_errors(), tuple()}.
 list_portfolio_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPortfolioAccess">>, Input, Options).
@@ -3820,7 +4034,7 @@ list_portfolio_access(Client, Input, Options)
 -spec list_portfolios(map(), list_portfolios_input()) ->
     {ok, list_portfolios_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()}.
+    {error, list_portfolios_errors(), tuple()}.
 list_portfolios(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_portfolios(Client, Input, []).
@@ -3828,7 +4042,7 @@ list_portfolios(Client, Input)
 -spec list_portfolios(map(), list_portfolios_input(), proplists:proplist()) ->
     {ok, list_portfolios_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()}.
+    {error, list_portfolios_errors(), tuple()}.
 list_portfolios(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPortfolios">>, Input, Options).
@@ -3837,8 +4051,7 @@ list_portfolios(Client, Input, Options)
 -spec list_portfolios_for_product(map(), list_portfolios_for_product_input()) ->
     {ok, list_portfolios_for_product_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_portfolios_for_product_errors(), tuple()}.
 list_portfolios_for_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_portfolios_for_product(Client, Input, []).
@@ -3846,8 +4059,7 @@ list_portfolios_for_product(Client, Input)
 -spec list_portfolios_for_product(map(), list_portfolios_for_product_input(), proplists:proplist()) ->
     {ok, list_portfolios_for_product_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_portfolios_for_product_errors(), tuple()}.
 list_portfolios_for_product(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPortfoliosForProduct">>, Input, Options).
@@ -3857,8 +4069,7 @@ list_portfolios_for_product(Client, Input, Options)
 -spec list_principals_for_portfolio(map(), list_principals_for_portfolio_input()) ->
     {ok, list_principals_for_portfolio_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_principals_for_portfolio_errors(), tuple()}.
 list_principals_for_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_principals_for_portfolio(Client, Input, []).
@@ -3866,8 +4077,7 @@ list_principals_for_portfolio(Client, Input)
 -spec list_principals_for_portfolio(map(), list_principals_for_portfolio_input(), proplists:proplist()) ->
     {ok, list_principals_for_portfolio_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_principals_for_portfolio_errors(), tuple()}.
 list_principals_for_portfolio(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPrincipalsForPortfolio">>, Input, Options).
@@ -3877,8 +4087,7 @@ list_principals_for_portfolio(Client, Input, Options)
 -spec list_provisioned_product_plans(map(), list_provisioned_product_plans_input()) ->
     {ok, list_provisioned_product_plans_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_provisioned_product_plans_errors(), tuple()}.
 list_provisioned_product_plans(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_provisioned_product_plans(Client, Input, []).
@@ -3886,8 +4095,7 @@ list_provisioned_product_plans(Client, Input)
 -spec list_provisioned_product_plans(map(), list_provisioned_product_plans_input(), proplists:proplist()) ->
     {ok, list_provisioned_product_plans_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_provisioned_product_plans_errors(), tuple()}.
 list_provisioned_product_plans(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProvisionedProductPlans">>, Input, Options).
@@ -3897,8 +4105,7 @@ list_provisioned_product_plans(Client, Input, Options)
 -spec list_provisioning_artifacts(map(), list_provisioning_artifacts_input()) ->
     {ok, list_provisioning_artifacts_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_provisioning_artifacts_errors(), tuple()}.
 list_provisioning_artifacts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_provisioning_artifacts(Client, Input, []).
@@ -3906,8 +4113,7 @@ list_provisioning_artifacts(Client, Input)
 -spec list_provisioning_artifacts(map(), list_provisioning_artifacts_input(), proplists:proplist()) ->
     {ok, list_provisioning_artifacts_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_provisioning_artifacts_errors(), tuple()}.
 list_provisioning_artifacts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProvisioningArtifacts">>, Input, Options).
@@ -3917,8 +4123,7 @@ list_provisioning_artifacts(Client, Input, Options)
 -spec list_provisioning_artifacts_for_service_action(map(), list_provisioning_artifacts_for_service_action_input()) ->
     {ok, list_provisioning_artifacts_for_service_action_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_provisioning_artifacts_for_service_action_errors(), tuple()}.
 list_provisioning_artifacts_for_service_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_provisioning_artifacts_for_service_action(Client, Input, []).
@@ -3926,8 +4131,7 @@ list_provisioning_artifacts_for_service_action(Client, Input)
 -spec list_provisioning_artifacts_for_service_action(map(), list_provisioning_artifacts_for_service_action_input(), proplists:proplist()) ->
     {ok, list_provisioning_artifacts_for_service_action_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_provisioning_artifacts_for_service_action_errors(), tuple()}.
 list_provisioning_artifacts_for_service_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProvisioningArtifactsForServiceAction">>, Input, Options).
@@ -3936,7 +4140,7 @@ list_provisioning_artifacts_for_service_action(Client, Input, Options)
 -spec list_record_history(map(), list_record_history_input()) ->
     {ok, list_record_history_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()}.
+    {error, list_record_history_errors(), tuple()}.
 list_record_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_record_history(Client, Input, []).
@@ -3944,7 +4148,7 @@ list_record_history(Client, Input)
 -spec list_record_history(map(), list_record_history_input(), proplists:proplist()) ->
     {ok, list_record_history_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()}.
+    {error, list_record_history_errors(), tuple()}.
 list_record_history(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRecordHistory">>, Input, Options).
@@ -3953,9 +4157,7 @@ list_record_history(Client, Input, Options)
 -spec list_resources_for_tag_option(map(), list_resources_for_tag_option_input()) ->
     {ok, list_resources_for_tag_option_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, tag_option_not_migrated_exception(), tuple()}.
+    {error, list_resources_for_tag_option_errors(), tuple()}.
 list_resources_for_tag_option(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resources_for_tag_option(Client, Input, []).
@@ -3963,9 +4165,7 @@ list_resources_for_tag_option(Client, Input)
 -spec list_resources_for_tag_option(map(), list_resources_for_tag_option_input(), proplists:proplist()) ->
     {ok, list_resources_for_tag_option_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, tag_option_not_migrated_exception(), tuple()}.
+    {error, list_resources_for_tag_option_errors(), tuple()}.
 list_resources_for_tag_option(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResourcesForTagOption">>, Input, Options).
@@ -3974,7 +4174,7 @@ list_resources_for_tag_option(Client, Input, Options)
 -spec list_service_actions(map(), list_service_actions_input()) ->
     {ok, list_service_actions_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()}.
+    {error, list_service_actions_errors(), tuple()}.
 list_service_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_actions(Client, Input, []).
@@ -3982,7 +4182,7 @@ list_service_actions(Client, Input)
 -spec list_service_actions(map(), list_service_actions_input(), proplists:proplist()) ->
     {ok, list_service_actions_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()}.
+    {error, list_service_actions_errors(), tuple()}.
 list_service_actions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServiceActions">>, Input, Options).
@@ -3992,8 +4192,7 @@ list_service_actions(Client, Input, Options)
 -spec list_service_actions_for_provisioning_artifact(map(), list_service_actions_for_provisioning_artifact_input()) ->
     {ok, list_service_actions_for_provisioning_artifact_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_service_actions_for_provisioning_artifact_errors(), tuple()}.
 list_service_actions_for_provisioning_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_actions_for_provisioning_artifact(Client, Input, []).
@@ -4001,8 +4200,7 @@ list_service_actions_for_provisioning_artifact(Client, Input)
 -spec list_service_actions_for_provisioning_artifact(map(), list_service_actions_for_provisioning_artifact_input(), proplists:proplist()) ->
     {ok, list_service_actions_for_provisioning_artifact_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_service_actions_for_provisioning_artifact_errors(), tuple()}.
 list_service_actions_for_provisioning_artifact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServiceActionsForProvisioningArtifact">>, Input, Options).
@@ -4015,8 +4213,7 @@ list_service_actions_for_provisioning_artifact(Client, Input, Options)
 -spec list_stack_instances_for_provisioned_product(map(), list_stack_instances_for_provisioned_product_input()) ->
     {ok, list_stack_instances_for_provisioned_product_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_stack_instances_for_provisioned_product_errors(), tuple()}.
 list_stack_instances_for_provisioned_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_stack_instances_for_provisioned_product(Client, Input, []).
@@ -4024,8 +4221,7 @@ list_stack_instances_for_provisioned_product(Client, Input)
 -spec list_stack_instances_for_provisioned_product(map(), list_stack_instances_for_provisioned_product_input(), proplists:proplist()) ->
     {ok, list_stack_instances_for_provisioned_product_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_stack_instances_for_provisioned_product_errors(), tuple()}.
 list_stack_instances_for_provisioned_product(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStackInstancesForProvisionedProduct">>, Input, Options).
@@ -4034,8 +4230,7 @@ list_stack_instances_for_provisioned_product(Client, Input, Options)
 -spec list_tag_options(map(), list_tag_options_input()) ->
     {ok, list_tag_options_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, tag_option_not_migrated_exception(), tuple()}.
+    {error, list_tag_options_errors(), tuple()}.
 list_tag_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tag_options(Client, Input, []).
@@ -4043,8 +4238,7 @@ list_tag_options(Client, Input)
 -spec list_tag_options(map(), list_tag_options_input(), proplists:proplist()) ->
     {ok, list_tag_options_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, tag_option_not_migrated_exception(), tuple()}.
+    {error, list_tag_options_errors(), tuple()}.
 list_tag_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagOptions">>, Input, Options).
@@ -4055,8 +4249,7 @@ list_tag_options(Client, Input, Options)
 -spec notify_provision_product_engine_workflow_result(map(), notify_provision_product_engine_workflow_result_input()) ->
     {ok, notify_provision_product_engine_workflow_result_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, notify_provision_product_engine_workflow_result_errors(), tuple()}.
 notify_provision_product_engine_workflow_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     notify_provision_product_engine_workflow_result(Client, Input, []).
@@ -4064,8 +4257,7 @@ notify_provision_product_engine_workflow_result(Client, Input)
 -spec notify_provision_product_engine_workflow_result(map(), notify_provision_product_engine_workflow_result_input(), proplists:proplist()) ->
     {ok, notify_provision_product_engine_workflow_result_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, notify_provision_product_engine_workflow_result_errors(), tuple()}.
 notify_provision_product_engine_workflow_result(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"NotifyProvisionProductEngineWorkflowResult">>, Input, Options).
@@ -4076,8 +4268,7 @@ notify_provision_product_engine_workflow_result(Client, Input, Options)
 -spec notify_terminate_provisioned_product_engine_workflow_result(map(), notify_terminate_provisioned_product_engine_workflow_result_input()) ->
     {ok, notify_terminate_provisioned_product_engine_workflow_result_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, notify_terminate_provisioned_product_engine_workflow_result_errors(), tuple()}.
 notify_terminate_provisioned_product_engine_workflow_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     notify_terminate_provisioned_product_engine_workflow_result(Client, Input, []).
@@ -4085,8 +4276,7 @@ notify_terminate_provisioned_product_engine_workflow_result(Client, Input)
 -spec notify_terminate_provisioned_product_engine_workflow_result(map(), notify_terminate_provisioned_product_engine_workflow_result_input(), proplists:proplist()) ->
     {ok, notify_terminate_provisioned_product_engine_workflow_result_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, notify_terminate_provisioned_product_engine_workflow_result_errors(), tuple()}.
 notify_terminate_provisioned_product_engine_workflow_result(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"NotifyTerminateProvisionedProductEngineWorkflowResult">>, Input, Options).
@@ -4097,8 +4287,7 @@ notify_terminate_provisioned_product_engine_workflow_result(Client, Input, Optio
 -spec notify_update_provisioned_product_engine_workflow_result(map(), notify_update_provisioned_product_engine_workflow_result_input()) ->
     {ok, notify_update_provisioned_product_engine_workflow_result_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, notify_update_provisioned_product_engine_workflow_result_errors(), tuple()}.
 notify_update_provisioned_product_engine_workflow_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     notify_update_provisioned_product_engine_workflow_result(Client, Input, []).
@@ -4106,8 +4295,7 @@ notify_update_provisioned_product_engine_workflow_result(Client, Input)
 -spec notify_update_provisioned_product_engine_workflow_result(map(), notify_update_provisioned_product_engine_workflow_result_input(), proplists:proplist()) ->
     {ok, notify_update_provisioned_product_engine_workflow_result_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, notify_update_provisioned_product_engine_workflow_result_errors(), tuple()}.
 notify_update_provisioned_product_engine_workflow_result(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"NotifyUpdateProvisionedProductEngineWorkflowResult">>, Input, Options).
@@ -4148,9 +4336,7 @@ notify_update_provisioned_product_engine_workflow_result(Client, Input, Options)
 -spec provision_product(map(), provision_product_input()) ->
     {ok, provision_product_output(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, provision_product_errors(), tuple()}.
 provision_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     provision_product(Client, Input, []).
@@ -4158,9 +4344,7 @@ provision_product(Client, Input)
 -spec provision_product(map(), provision_product_input(), proplists:proplist()) ->
     {ok, provision_product_output(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, provision_product_errors(), tuple()}.
 provision_product(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ProvisionProduct">>, Input, Options).
@@ -4169,7 +4353,7 @@ provision_product(Client, Input, Options)
 -spec reject_portfolio_share(map(), reject_portfolio_share_input()) ->
     {ok, reject_portfolio_share_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, reject_portfolio_share_errors(), tuple()}.
 reject_portfolio_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     reject_portfolio_share(Client, Input, []).
@@ -4177,7 +4361,7 @@ reject_portfolio_share(Client, Input)
 -spec reject_portfolio_share(map(), reject_portfolio_share_input(), proplists:proplist()) ->
     {ok, reject_portfolio_share_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, reject_portfolio_share_errors(), tuple()}.
 reject_portfolio_share(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RejectPortfolioShare">>, Input, Options).
@@ -4188,7 +4372,7 @@ reject_portfolio_share(Client, Input, Options)
 -spec scan_provisioned_products(map(), scan_provisioned_products_input()) ->
     {ok, scan_provisioned_products_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()}.
+    {error, scan_provisioned_products_errors(), tuple()}.
 scan_provisioned_products(Client, Input)
   when is_map(Client), is_map(Input) ->
     scan_provisioned_products(Client, Input, []).
@@ -4196,7 +4380,7 @@ scan_provisioned_products(Client, Input)
 -spec scan_provisioned_products(map(), scan_provisioned_products_input(), proplists:proplist()) ->
     {ok, scan_provisioned_products_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()}.
+    {error, scan_provisioned_products_errors(), tuple()}.
 scan_provisioned_products(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ScanProvisionedProducts">>, Input, Options).
@@ -4205,7 +4389,7 @@ scan_provisioned_products(Client, Input, Options)
 -spec search_products(map(), search_products_input()) ->
     {ok, search_products_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()}.
+    {error, search_products_errors(), tuple()}.
 search_products(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_products(Client, Input, []).
@@ -4213,7 +4397,7 @@ search_products(Client, Input)
 -spec search_products(map(), search_products_input(), proplists:proplist()) ->
     {ok, search_products_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()}.
+    {error, search_products_errors(), tuple()}.
 search_products(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SearchProducts">>, Input, Options).
@@ -4223,8 +4407,7 @@ search_products(Client, Input, Options)
 -spec search_products_as_admin(map(), search_products_as_admin_input()) ->
     {ok, search_products_as_admin_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, search_products_as_admin_errors(), tuple()}.
 search_products_as_admin(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_products_as_admin(Client, Input, []).
@@ -4232,8 +4415,7 @@ search_products_as_admin(Client, Input)
 -spec search_products_as_admin(map(), search_products_as_admin_input(), proplists:proplist()) ->
     {ok, search_products_as_admin_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, search_products_as_admin_errors(), tuple()}.
 search_products_as_admin(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SearchProductsAsAdmin">>, Input, Options).
@@ -4243,7 +4425,7 @@ search_products_as_admin(Client, Input, Options)
 -spec search_provisioned_products(map(), search_provisioned_products_input()) ->
     {ok, search_provisioned_products_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()}.
+    {error, search_provisioned_products_errors(), tuple()}.
 search_provisioned_products(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_provisioned_products(Client, Input, []).
@@ -4251,7 +4433,7 @@ search_provisioned_products(Client, Input)
 -spec search_provisioned_products(map(), search_provisioned_products_input(), proplists:proplist()) ->
     {ok, search_provisioned_products_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()}.
+    {error, search_provisioned_products_errors(), tuple()}.
 search_provisioned_products(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SearchProvisionedProducts">>, Input, Options).
@@ -4265,7 +4447,7 @@ search_provisioned_products(Client, Input, Options)
 -spec terminate_provisioned_product(map(), terminate_provisioned_product_input()) ->
     {ok, terminate_provisioned_product_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, terminate_provisioned_product_errors(), tuple()}.
 terminate_provisioned_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     terminate_provisioned_product(Client, Input, []).
@@ -4273,7 +4455,7 @@ terminate_provisioned_product(Client, Input)
 -spec terminate_provisioned_product(map(), terminate_provisioned_product_input(), proplists:proplist()) ->
     {ok, terminate_provisioned_product_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, terminate_provisioned_product_errors(), tuple()}.
 terminate_provisioned_product(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TerminateProvisionedProduct">>, Input, Options).
@@ -4282,8 +4464,7 @@ terminate_provisioned_product(Client, Input, Options)
 -spec update_constraint(map(), update_constraint_input()) ->
     {ok, update_constraint_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_constraint_errors(), tuple()}.
 update_constraint(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_constraint(Client, Input, []).
@@ -4291,8 +4472,7 @@ update_constraint(Client, Input)
 -spec update_constraint(map(), update_constraint_input(), proplists:proplist()) ->
     {ok, update_constraint_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_constraint_errors(), tuple()}.
 update_constraint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateConstraint">>, Input, Options).
@@ -4303,10 +4483,7 @@ update_constraint(Client, Input, Options)
 -spec update_portfolio(map(), update_portfolio_input()) ->
     {ok, update_portfolio_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, tag_option_not_migrated_exception(), tuple()}.
+    {error, update_portfolio_errors(), tuple()}.
 update_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_portfolio(Client, Input, []).
@@ -4314,10 +4491,7 @@ update_portfolio(Client, Input)
 -spec update_portfolio(map(), update_portfolio_input(), proplists:proplist()) ->
     {ok, update_portfolio_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, tag_option_not_migrated_exception(), tuple()}.
+    {error, update_portfolio_errors(), tuple()}.
 update_portfolio(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePortfolio">>, Input, Options).
@@ -4359,10 +4533,7 @@ update_portfolio(Client, Input, Options)
 -spec update_portfolio_share(map(), update_portfolio_share_input()) ->
     {ok, update_portfolio_share_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_portfolio_share_errors(), tuple()}.
 update_portfolio_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_portfolio_share(Client, Input, []).
@@ -4370,10 +4541,7 @@ update_portfolio_share(Client, Input)
 -spec update_portfolio_share(map(), update_portfolio_share_input(), proplists:proplist()) ->
     {ok, update_portfolio_share_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_portfolio_share_errors(), tuple()}.
 update_portfolio_share(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePortfolioShare">>, Input, Options).
@@ -4382,9 +4550,7 @@ update_portfolio_share(Client, Input, Options)
 -spec update_product(map(), update_product_input()) ->
     {ok, update_product_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, tag_option_not_migrated_exception(), tuple()}.
+    {error, update_product_errors(), tuple()}.
 update_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_product(Client, Input, []).
@@ -4392,9 +4558,7 @@ update_product(Client, Input)
 -spec update_product(map(), update_product_input(), proplists:proplist()) ->
     {ok, update_product_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, tag_option_not_migrated_exception(), tuple()}.
+    {error, update_product_errors(), tuple()}.
 update_product(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateProduct">>, Input, Options).
@@ -4413,8 +4577,7 @@ update_product(Client, Input, Options)
 -spec update_provisioned_product(map(), update_provisioned_product_input()) ->
     {ok, update_provisioned_product_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_provisioned_product_errors(), tuple()}.
 update_provisioned_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_provisioned_product(Client, Input, []).
@@ -4422,8 +4585,7 @@ update_provisioned_product(Client, Input)
 -spec update_provisioned_product(map(), update_provisioned_product_input(), proplists:proplist()) ->
     {ok, update_provisioned_product_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_provisioned_product_errors(), tuple()}.
 update_provisioned_product(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateProvisionedProduct">>, Input, Options).
@@ -4433,9 +4595,7 @@ update_provisioned_product(Client, Input, Options)
 -spec update_provisioned_product_properties(map(), update_provisioned_product_properties_input()) ->
     {ok, update_provisioned_product_properties_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_provisioned_product_properties_errors(), tuple()}.
 update_provisioned_product_properties(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_provisioned_product_properties(Client, Input, []).
@@ -4443,9 +4603,7 @@ update_provisioned_product_properties(Client, Input)
 -spec update_provisioned_product_properties(map(), update_provisioned_product_properties_input(), proplists:proplist()) ->
     {ok, update_provisioned_product_properties_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_provisioned_product_properties_errors(), tuple()}.
 update_provisioned_product_properties(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateProvisionedProductProperties">>, Input, Options).
@@ -4458,8 +4616,7 @@ update_provisioned_product_properties(Client, Input, Options)
 -spec update_provisioning_artifact(map(), update_provisioning_artifact_input()) ->
     {ok, update_provisioning_artifact_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_provisioning_artifact_errors(), tuple()}.
 update_provisioning_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_provisioning_artifact(Client, Input, []).
@@ -4467,8 +4624,7 @@ update_provisioning_artifact(Client, Input)
 -spec update_provisioning_artifact(map(), update_provisioning_artifact_input(), proplists:proplist()) ->
     {ok, update_provisioning_artifact_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_provisioning_artifact_errors(), tuple()}.
 update_provisioning_artifact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateProvisioningArtifact">>, Input, Options).
@@ -4477,8 +4633,7 @@ update_provisioning_artifact(Client, Input, Options)
 -spec update_service_action(map(), update_service_action_input()) ->
     {ok, update_service_action_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_service_action_errors(), tuple()}.
 update_service_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service_action(Client, Input, []).
@@ -4486,8 +4641,7 @@ update_service_action(Client, Input)
 -spec update_service_action(map(), update_service_action_input(), proplists:proplist()) ->
     {ok, update_service_action_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_service_action_errors(), tuple()}.
 update_service_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateServiceAction">>, Input, Options).
@@ -4496,10 +4650,7 @@ update_service_action(Client, Input, Options)
 -spec update_tag_option(map(), update_tag_option_input()) ->
     {ok, update_tag_option_output(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, tag_option_not_migrated_exception(), tuple()}.
+    {error, update_tag_option_errors(), tuple()}.
 update_tag_option(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_tag_option(Client, Input, []).
@@ -4507,10 +4658,7 @@ update_tag_option(Client, Input)
 -spec update_tag_option(map(), update_tag_option_input(), proplists:proplist()) ->
     {ok, update_tag_option_output(), tuple()} |
     {error, any()} |
-    {error, duplicate_resource_exception(), tuple()} |
-    {error, invalid_parameters_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, tag_option_not_migrated_exception(), tuple()}.
+    {error, update_tag_option_errors(), tuple()}.
 update_tag_option(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTagOption">>, Input, Options).

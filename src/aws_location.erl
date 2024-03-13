@@ -143,12 +143,14 @@
 %% get_device_position_request() :: #{}
 -type get_device_position_request() :: #{}.
 
+
 %% Example:
 %% list_geofence_collections_response() :: #{
 %%   <<"Entries">> := list(list_geofence_collections_response_entry()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_geofence_collections_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% truck_dimensions() :: #{
@@ -158,6 +160,7 @@
 %%   <<"Width">> => [float()]
 %% }
 -type truck_dimensions() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_geofence_response() :: #{
@@ -169,15 +172,18 @@
 %%   <<"UpdateTime">> := non_neg_integer()
 %% }
 -type get_geofence_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_geofence_collection_request() :: #{}
 -type describe_geofence_collection_request() :: #{}.
+
 
 %% Example:
 %% batch_update_device_position_response() :: #{
 %%   <<"Errors">> := list(batch_update_device_position_error()())
 %% }
 -type batch_update_device_position_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_device_positions_response() :: #{
@@ -186,11 +192,13 @@
 %% }
 -type list_device_positions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"Tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% associate_tracker_consumer_request() :: #{
@@ -198,11 +206,13 @@
 %% }
 -type associate_tracker_consumer_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_put_geofence_request() :: #{
 %%   <<"Entries">> := list(batch_put_geofence_request_entry()())
 %% }
 -type batch_put_geofence_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% calculate_route_car_mode_options() :: #{
@@ -211,12 +221,14 @@
 %% }
 -type calculate_route_car_mode_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_put_geofence_error() :: #{
 %%   <<"Error">> => batch_item_error(),
 %%   <<"GeofenceId">> => string()
 %% }
 -type batch_put_geofence_error() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_update_device_position_error() :: #{
@@ -226,11 +238,13 @@
 %% }
 -type batch_update_device_position_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_delete_geofence_response() :: #{
 %%   <<"Errors">> := list(batch_delete_geofence_error()())
 %% }
 -type batch_delete_geofence_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_key_request() :: #{
@@ -243,6 +257,7 @@
 %% }
 -type create_key_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_place_index_request() :: #{
 %%   <<"DataSource">> := [string()],
@@ -254,11 +269,13 @@
 %% }
 -type create_place_index_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_source_configuration() :: #{
 %%   <<"IntendedUse">> => string()
 %% }
 -type data_source_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_route_calculator_response() :: #{
@@ -267,9 +284,11 @@
 %%   <<"CreateTime">> := non_neg_integer()
 %% }
 -type create_route_calculator_response() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% create_tracker_response() :: #{
@@ -279,6 +298,7 @@
 %% }
 -type create_tracker_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_map_tile_response() :: #{
 %%   <<"Blob">> => [binary()],
@@ -286,6 +306,7 @@
 %%   <<"ContentType">> => [string()]
 %% }
 -type get_map_tile_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_map_response() :: #{
@@ -295,15 +316,18 @@
 %% }
 -type update_map_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_maps_request() :: #{
 %%   <<"MaxResults">> => [integer()],
 %%   <<"NextToken">> => string()
 %% }
 -type list_maps_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_route_calculator_response() :: #{}
 -type delete_route_calculator_response() :: #{}.
+
 
 %% Example:
 %% get_map_glyphs_response() :: #{
@@ -312,9 +336,11 @@
 %%   <<"ContentType">> => [string()]
 %% }
 -type get_map_glyphs_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_place_index_request() :: #{}
 -type describe_place_index_request() :: #{}.
+
 
 %% Example:
 %% list_keys_response() :: #{
@@ -323,12 +349,14 @@
 %% }
 -type list_keys_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% calculate_route_response() :: #{
 %%   <<"Legs">> => list(leg()()),
 %%   <<"Summary">> => calculate_route_summary()
 %% }
 -type calculate_route_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_route_calculators_response_entry() :: #{
@@ -341,6 +369,7 @@
 %% }
 -type list_route_calculators_response_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_key_response() :: #{
 %%   <<"KeyArn">> := string(),
@@ -349,12 +378,14 @@
 %% }
 -type update_key_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_place_index_for_position_response() :: #{
 %%   <<"Results">> := list(search_for_position_result()()),
 %%   <<"Summary">> := search_place_index_for_position_summary()
 %% }
 -type search_place_index_for_position_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_maps_response_entry() :: #{
@@ -367,15 +398,18 @@
 %% }
 -type list_maps_response_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_trackers_response() :: #{
 %%   <<"Entries">> := list(list_trackers_response_entry()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_trackers_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_route_calculator_request() :: #{}
 -type describe_route_calculator_request() :: #{}.
+
 
 %% Example:
 %% delete_key_request() :: #{
@@ -383,12 +417,14 @@
 %% }
 -type delete_key_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_route_calculator_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"PricingPlan">> => string()
 %% }
 -type update_route_calculator_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_for_position_result() :: #{
@@ -398,12 +434,14 @@
 %% }
 -type search_for_position_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_geofence_request() :: #{
 %%   <<"GeofenceProperties">> => map(),
 %%   <<"Geometry">> := geofence_geometry()
 %% }
 -type put_geofence_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_put_geofence_success() :: #{
@@ -413,17 +451,20 @@
 %% }
 -type batch_put_geofence_success() :: #{binary() => any()}.
 
+
 %% Example:
 %% api_key_filter() :: #{
 %%   <<"KeyStatus">> => string()
 %% }
 -type api_key_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> := list([string()]())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_for_suggestions_result() :: #{
@@ -433,9 +474,11 @@
 %%   <<"Text">> => [string()]
 %% }
 -type search_for_suggestions_result() :: #{binary() => any()}.
+
 %% Example:
 %% associate_tracker_consumer_response() :: #{}
 -type associate_tracker_consumer_response() :: #{}.
+
 
 %% Example:
 %% search_place_index_for_text_summary() :: #{
@@ -451,6 +494,7 @@
 %% }
 -type search_place_index_for_text_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_delete_geofence_error() :: #{
 %%   <<"Error">> => batch_item_error(),
@@ -458,11 +502,13 @@
 %% }
 -type batch_delete_geofence_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_evaluate_geofences_request() :: #{
 %%   <<"DevicePositionUpdates">> := list(device_position_update()())
 %% }
 -type batch_evaluate_geofences_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_geofences_response() :: #{
@@ -471,24 +517,29 @@
 %% }
 -type list_geofences_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% route_matrix_entry_error() :: #{
 %%   <<"Code">> => string(),
 %%   <<"Message">> => [string()]
 %% }
 -type route_matrix_entry_error() :: #{binary() => any()}.
+
 %% Example:
 %% delete_place_index_response() :: #{}
 -type delete_place_index_response() :: #{}.
+
 
 %% Example:
 %% get_map_sprites_request() :: #{
 %%   <<"Key">> => string()
 %% }
 -type get_map_sprites_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_map_request() :: #{}
 -type delete_map_request() :: #{}.
+
 
 %% Example:
 %% list_geofence_collections_request() :: #{
@@ -497,6 +548,7 @@
 %% }
 -type list_geofence_collections_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_map_style_descriptor_response() :: #{
 %%   <<"Blob">> => [binary()],
@@ -504,9 +556,11 @@
 %%   <<"ContentType">> => [string()]
 %% }
 -type get_map_style_descriptor_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_key_response() :: #{}
 -type delete_key_response() :: #{}.
+
 
 %% Example:
 %% list_tracker_consumers_request() :: #{
@@ -514,6 +568,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_tracker_consumers_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_device_positions_response_entry() :: #{
@@ -525,6 +580,7 @@
 %% }
 -type list_device_positions_response_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_keys_request() :: #{
 %%   <<"Filter">> => api_key_filter(),
@@ -532,6 +588,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_keys_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_place_index_for_position_summary() :: #{
@@ -542,6 +599,7 @@
 %% }
 -type search_place_index_for_position_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_place_index_response() :: #{
 %%   <<"CreateTime">> := non_neg_integer(),
@@ -549,9 +607,11 @@
 %%   <<"IndexName">> := string()
 %% }
 -type create_place_index_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_route_calculator_request() :: #{}
 -type delete_route_calculator_request() :: #{}.
+
 
 %% Example:
 %% update_geofence_collection_response() :: #{
@@ -560,15 +620,18 @@
 %%   <<"UpdateTime">> := non_neg_integer()
 %% }
 -type update_geofence_collection_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_key_request() :: #{}
 -type describe_key_request() :: #{}.
+
 
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_geofence_response() :: #{
@@ -578,11 +641,13 @@
 %% }
 -type put_geofence_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_geofence_response_entry() :: #{
@@ -594,9 +659,11 @@
 %%   <<"UpdateTime">> => non_neg_integer()
 %% }
 -type list_geofence_response_entry() :: #{binary() => any()}.
+
 %% Example:
 %% delete_map_response() :: #{}
 -type delete_map_response() :: #{}.
+
 
 %% Example:
 %% search_place_index_for_text_response() :: #{
@@ -605,11 +672,13 @@
 %% }
 -type search_place_index_for_text_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_map_tile_request() :: #{
 %%   <<"Key">> => string()
 %% }
 -type get_map_tile_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_key_request() :: #{
@@ -621,11 +690,13 @@
 %% }
 -type update_key_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_geofence_collection_response() :: #{
@@ -634,9 +705,11 @@
 %%   <<"CreateTime">> := non_neg_integer()
 %% }
 -type create_geofence_collection_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_tracker_request() :: #{}
 -type describe_tracker_request() :: #{}.
+
 
 %% Example:
 %% describe_route_calculator_response() :: #{
@@ -650,9 +723,11 @@
 %%   <<"UpdateTime">> := non_neg_integer()
 %% }
 -type describe_route_calculator_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_map_request() :: #{}
 -type describe_map_request() :: #{}.
+
 
 %% Example:
 %% map_configuration_update() :: #{
@@ -660,6 +735,7 @@
 %%   <<"PoliticalView">> => string()
 %% }
 -type map_configuration_update() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_map_request() :: #{
@@ -669,6 +745,7 @@
 %% }
 -type update_map_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_route_calculator_response() :: #{
 %%   <<"CalculatorArn">> := string(),
@@ -677,17 +754,20 @@
 %% }
 -type update_route_calculator_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% place_geometry() :: #{
 %%   <<"Point">> => list([float()]())
 %% }
 -type place_geometry() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_device_position_request() :: #{
 %%   <<"DeviceIds">> := list(string()())
 %% }
 -type batch_get_device_position_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_place_indexes_request() :: #{
@@ -696,12 +776,14 @@
 %% }
 -type list_place_indexes_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% circle() :: #{
 %%   <<"Center">> => list([float()]()),
 %%   <<"Radius">> => [float()]
 %% }
 -type circle() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_map_request() :: #{
@@ -713,11 +795,13 @@
 %% }
 -type create_map_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% validation_exception_field() :: #{
@@ -725,9 +809,11 @@
 %%   <<"Name">> => [string()]
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_tracker_consumer_request() :: #{}
 -type disassociate_tracker_consumer_request() :: #{}.
+
 
 %% Example:
 %% search_place_index_for_text_request() :: #{
@@ -742,12 +828,14 @@
 %% }
 -type search_place_index_for_text_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_place_request() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Language">> => string()
 %% }
 -type get_place_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% time_zone() :: #{
@@ -756,6 +844,7 @@
 %% }
 -type time_zone() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_geofence_collection_request() :: #{
 %%   <<"Description">> => string(),
@@ -763,9 +852,11 @@
 %%   <<"PricingPlanDataSource">> => [string()]
 %% }
 -type update_geofence_collection_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_geofence_collection_request() :: #{}
 -type delete_geofence_collection_request() :: #{}.
+
 
 %% Example:
 %% batch_item_error() :: #{
@@ -773,6 +864,7 @@
 %%   <<"Message">> => [string()]
 %% }
 -type batch_item_error() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_map_response() :: #{
@@ -788,6 +880,7 @@
 %% }
 -type describe_map_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_place_index_for_suggestions_summary() :: #{
 %%   <<"BiasPosition">> => list([float()]()),
@@ -801,6 +894,7 @@
 %% }
 -type search_place_index_for_suggestions_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_place_index_response() :: #{
 %%   <<"IndexArn">> := string(),
@@ -808,6 +902,7 @@
 %%   <<"UpdateTime">> := non_neg_integer()
 %% }
 -type update_place_index_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_route_calculator_request() :: #{
@@ -818,6 +913,7 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_route_calculator_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_place_indexes_response_entry() :: #{
@@ -830,6 +926,7 @@
 %% }
 -type list_place_indexes_response_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_device_position_history_response() :: #{
 %%   <<"DevicePositions">> := list(device_position()()),
@@ -837,11 +934,13 @@
 %% }
 -type get_device_position_history_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_evaluate_geofences_response() :: #{
 %%   <<"Errors">> := list(batch_evaluate_geofences_error()())
 %% }
 -type batch_evaluate_geofences_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_map_response() :: #{
@@ -851,6 +950,7 @@
 %% }
 -type create_map_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% api_key_restrictions() :: #{
 %%   <<"AllowActions">> => list(string()()),
@@ -858,6 +958,7 @@
 %%   <<"AllowResources">> => list(string()())
 %% }
 -type api_key_restrictions() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_tracker_response() :: #{
@@ -867,11 +968,13 @@
 %% }
 -type update_tracker_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_place_indexes_response() :: #{
@@ -880,12 +983,14 @@
 %% }
 -type list_place_indexes_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_route_calculators_request() :: #{
 %%   <<"MaxResults">> => [integer()],
 %%   <<"NextToken">> => string()
 %% }
 -type list_route_calculators_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_maps_response() :: #{
@@ -894,6 +999,7 @@
 %% }
 -type list_maps_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_put_geofence_request_entry() :: #{
 %%   <<"GeofenceId">> => string(),
@@ -901,9 +1007,11 @@
 %%   <<"Geometry">> => geofence_geometry()
 %% }
 -type batch_put_geofence_request_entry() :: #{binary() => any()}.
+
 %% Example:
 %% delete_tracker_request() :: #{}
 -type delete_tracker_request() :: #{}.
+
 
 %% Example:
 %% get_map_sprites_response() :: #{
@@ -913,11 +1021,13 @@
 %% }
 -type get_map_sprites_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_place_index_response() :: #{
@@ -933,6 +1043,7 @@
 %% }
 -type describe_place_index_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% calculate_route_truck_mode_options() :: #{
 %%   <<"AvoidFerries">> => [boolean()],
@@ -941,6 +1052,7 @@
 %%   <<"Weight">> => truck_weight()
 %% }
 -type calculate_route_truck_mode_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_tracker_response() :: #{
@@ -958,9 +1070,11 @@
 %%   <<"UpdateTime">> := non_neg_integer()
 %% }
 -type describe_tracker_response() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% create_tracker_request() :: #{
@@ -975,6 +1089,7 @@
 %%   <<"TrackerName">> := string()
 %% }
 -type create_tracker_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_geofence_collection_response() :: #{
@@ -991,6 +1106,7 @@
 %% }
 -type describe_geofence_collection_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% calculate_route_matrix_response() :: #{
 %%   <<"RouteMatrix">> => list(list(route_matrix_entry()())()),
@@ -1000,12 +1116,14 @@
 %% }
 -type calculate_route_matrix_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_device_position_error() :: #{
 %%   <<"DeviceId">> => string(),
 %%   <<"Error">> => batch_item_error()
 %% }
 -type batch_get_device_position_error() :: #{binary() => any()}.
+
 
 %% Example:
 %% calculate_route_request() :: #{
@@ -1025,6 +1143,7 @@
 %% }
 -type calculate_route_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"FieldList">> => list(validation_exception_field()()),
@@ -1032,9 +1151,11 @@
 %%   <<"Reason">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% batch_put_geofence_response() :: #{
@@ -1043,6 +1164,7 @@
 %% }
 -type batch_put_geofence_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_delete_device_position_history_error() :: #{
 %%   <<"DeviceId">> => string(),
@@ -1050,11 +1172,13 @@
 %% }
 -type batch_delete_device_position_history_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_place_response() :: #{
 %%   <<"Place">> := place()
 %% }
 -type get_place_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_get_device_position_response() :: #{
@@ -1063,14 +1187,17 @@
 %% }
 -type batch_get_device_position_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_tracker_consumer_response() :: #{}
 -type disassociate_tracker_consumer_response() :: #{}.
+
 
 %% Example:
 %% truck_weight() :: #{
@@ -1078,6 +1205,7 @@
 %%   <<"Unit">> => string()
 %% }
 -type truck_weight() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_key_response() :: #{
@@ -1093,11 +1221,13 @@
 %% }
 -type describe_key_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_update_device_position_request() :: #{
 %%   <<"Updates">> := list(device_position_update()())
 %% }
 -type batch_update_device_position_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% device_position_update() :: #{
@@ -1109,6 +1239,7 @@
 %% }
 -type device_position_update() :: #{binary() => any()}.
 
+
 %% Example:
 %% calculate_route_matrix_summary() :: #{
 %%   <<"DataSource">> => [string()],
@@ -1118,11 +1249,13 @@
 %% }
 -type calculate_route_matrix_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_delete_geofence_request() :: #{
 %%   <<"GeofenceIds">> := list(string()())
 %% }
 -type batch_delete_geofence_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_keys_response_entry() :: #{
@@ -1135,6 +1268,7 @@
 %% }
 -type list_keys_response_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% calculate_route_summary() :: #{
 %%   <<"DataSource">> => [string()],
@@ -1145,6 +1279,7 @@
 %% }
 -type calculate_route_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% map_configuration() :: #{
 %%   <<"CustomLayers">> => list(string()()),
@@ -1153,11 +1288,13 @@
 %% }
 -type map_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% positional_accuracy() :: #{
 %%   <<"Horizontal">> => [float()]
 %% }
 -type positional_accuracy() :: #{binary() => any()}.
+
 
 %% Example:
 %% device_position() :: #{
@@ -1170,6 +1307,7 @@
 %% }
 -type device_position() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_geofence_collection_request() :: #{
 %%   <<"CollectionName">> := string(),
@@ -1181,6 +1319,7 @@
 %% }
 -type create_geofence_collection_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% step() :: #{
 %%   <<"Distance">> => [float()],
@@ -1191,6 +1330,7 @@
 %% }
 -type step() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tracker_consumers_response() :: #{
 %%   <<"ConsumerArns">> := list(string()()),
@@ -1198,17 +1338,20 @@
 %% }
 -type list_tracker_consumers_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_map_style_descriptor_request() :: #{
 %%   <<"Key">> => string()
 %% }
 -type get_map_style_descriptor_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tracking_filter_geometry() :: #{
 %%   <<"Polygon">> => list(list(list([float()]())())())
 %% }
 -type tracking_filter_geometry() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_for_text_result() :: #{
@@ -1219,15 +1362,18 @@
 %% }
 -type search_for_text_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_trackers_request() :: #{
 %%   <<"MaxResults">> => [integer()],
 %%   <<"NextToken">> => string()
 %% }
 -type list_trackers_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_place_index_request() :: #{}
 -type delete_place_index_request() :: #{}.
+
 
 %% Example:
 %% update_tracker_request() :: #{
@@ -1240,6 +1386,7 @@
 %% }
 -type update_tracker_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_device_positions_request() :: #{
 %%   <<"FilterGeometry">> => tracking_filter_geometry(),
@@ -1248,11 +1395,13 @@
 %% }
 -type list_device_positions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% leg_geometry() :: #{
 %%   <<"LineString">> => list(list([float()]())())
 %% }
 -type leg_geometry() :: #{binary() => any()}.
+
 
 %% Example:
 %% geofence_geometry() :: #{
@@ -1260,9 +1409,11 @@
 %%   <<"Polygon">> => list(list(list([float()]())())())
 %% }
 -type geofence_geometry() :: #{binary() => any()}.
+
 %% Example:
 %% get_geofence_request() :: #{}
 -type get_geofence_request() :: #{}.
+
 
 %% Example:
 %% list_route_calculators_response() :: #{
@@ -1270,6 +1421,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_route_calculators_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_device_position_history_request() :: #{
@@ -1280,6 +1432,7 @@
 %% }
 -type get_device_position_history_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% route_matrix_entry() :: #{
 %%   <<"Distance">> => [float()],
@@ -1287,6 +1440,7 @@
 %%   <<"Error">> => route_matrix_entry_error()
 %% }
 -type route_matrix_entry() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_device_position_response() :: #{
@@ -1298,6 +1452,7 @@
 %%   <<"SampleTime">> := non_neg_integer()
 %% }
 -type get_device_position_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_place_index_for_suggestions_request() :: #{
@@ -1312,14 +1467,17 @@
 %% }
 -type search_place_index_for_suggestions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_delete_device_position_history_response() :: #{
 %%   <<"Errors">> := list(batch_delete_device_position_history_error()())
 %% }
 -type batch_delete_device_position_history_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_tracker_response() :: #{}
 -type delete_tracker_response() :: #{}.
+
 
 %% Example:
 %% search_place_index_for_suggestions_response() :: #{
@@ -1328,11 +1486,13 @@
 %% }
 -type search_place_index_for_suggestions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_map_glyphs_request() :: #{
 %%   <<"Key">> => string()
 %% }
 -type get_map_glyphs_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% leg() :: #{
@@ -1344,6 +1504,7 @@
 %%   <<"Steps">> => list(step()())
 %% }
 -type leg() :: #{binary() => any()}.
+
 
 %% Example:
 %% place() :: #{
@@ -1367,6 +1528,7 @@
 %% }
 -type place() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_evaluate_geofences_error() :: #{
 %%   <<"DeviceId">> => string(),
@@ -1374,6 +1536,7 @@
 %%   <<"SampleTime">> => non_neg_integer()
 %% }
 -type batch_evaluate_geofences_error() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_geofence_collections_response_entry() :: #{
@@ -1386,6 +1549,7 @@
 %% }
 -type list_geofence_collections_response_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_place_index_request() :: #{
 %%   <<"DataSourceConfiguration">> => data_source_configuration(),
@@ -1393,6 +1557,7 @@
 %%   <<"PricingPlan">> => string()
 %% }
 -type update_place_index_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_key_response() :: #{
@@ -1403,6 +1568,7 @@
 %% }
 -type create_key_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_place_index_for_position_request() :: #{
 %%   <<"Key">> => string(),
@@ -1411,6 +1577,7 @@
 %%   <<"Position">> := list([float()]())
 %% }
 -type search_place_index_for_position_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% calculate_route_matrix_request() :: #{
@@ -1425,9 +1592,11 @@
 %%   <<"TruckModeOptions">> => calculate_route_truck_mode_options()
 %% }
 -type calculate_route_matrix_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_geofence_collection_response() :: #{}
 -type delete_geofence_collection_response() :: #{}.
+
 
 %% Example:
 %% list_geofences_request() :: #{
@@ -1435,6 +1604,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_geofences_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_trackers_response_entry() :: #{
@@ -1447,11 +1617,420 @@
 %% }
 -type list_trackers_response_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_delete_device_position_history_request() :: #{
 %%   <<"DeviceIds">> := list(string()())
 %% }
 -type batch_delete_device_position_history_request() :: #{binary() => any()}.
+
+-type associate_tracker_consumer_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type batch_delete_device_position_history_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type batch_delete_geofence_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type batch_evaluate_geofences_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type batch_get_device_position_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type batch_put_geofence_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type batch_update_device_position_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type calculate_route_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type calculate_route_matrix_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_geofence_collection_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_key_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_map_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_place_index_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_route_calculator_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_tracker_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_geofence_collection_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_key_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_map_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_place_index_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_route_calculator_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_tracker_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_geofence_collection_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_key_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_map_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_place_index_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_route_calculator_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_tracker_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type disassociate_tracker_consumer_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_device_position_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_device_position_history_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_geofence_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_map_glyphs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_map_sprites_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_map_style_descriptor_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_map_tile_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_place_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_device_positions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_geofence_collections_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_geofences_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_keys_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_maps_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_place_indexes_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_route_calculators_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tracker_consumers_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_trackers_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type put_geofence_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type search_place_index_for_position_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type search_place_index_for_suggestions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type search_place_index_for_text_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_geofence_collection_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_key_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_map_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_place_index_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_route_calculator_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_tracker_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -1474,26 +2053,14 @@
 -spec associate_tracker_consumer(map(), binary() | list(), associate_tracker_consumer_request()) ->
     {ok, associate_tracker_consumer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_tracker_consumer_errors(), tuple()}.
 associate_tracker_consumer(Client, TrackerName, Input) ->
     associate_tracker_consumer(Client, TrackerName, Input, []).
 
 -spec associate_tracker_consumer(map(), binary() | list(), associate_tracker_consumer_request(), proplists:proplist()) ->
     {ok, associate_tracker_consumer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_tracker_consumer_errors(), tuple()}.
 associate_tracker_consumer(Client, TrackerName, Input0, Options0) ->
     Method = post,
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/consumers"],
@@ -1521,22 +2088,14 @@ associate_tracker_consumer(Client, TrackerName, Input0, Options0) ->
 -spec batch_delete_device_position_history(map(), binary() | list(), batch_delete_device_position_history_request()) ->
     {ok, batch_delete_device_position_history_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_delete_device_position_history_errors(), tuple()}.
 batch_delete_device_position_history(Client, TrackerName, Input) ->
     batch_delete_device_position_history(Client, TrackerName, Input, []).
 
 -spec batch_delete_device_position_history(map(), binary() | list(), batch_delete_device_position_history_request(), proplists:proplist()) ->
     {ok, batch_delete_device_position_history_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_delete_device_position_history_errors(), tuple()}.
 batch_delete_device_position_history(Client, TrackerName, Input0, Options0) ->
     Method = post,
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/delete-positions"],
@@ -1565,22 +2124,14 @@ batch_delete_device_position_history(Client, TrackerName, Input0, Options0) ->
 -spec batch_delete_geofence(map(), binary() | list(), batch_delete_geofence_request()) ->
     {ok, batch_delete_geofence_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_delete_geofence_errors(), tuple()}.
 batch_delete_geofence(Client, CollectionName, Input) ->
     batch_delete_geofence(Client, CollectionName, Input, []).
 
 -spec batch_delete_geofence(map(), binary() | list(), batch_delete_geofence_request(), proplists:proplist()) ->
     {ok, batch_delete_geofence_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_delete_geofence_errors(), tuple()}.
 batch_delete_geofence(Client, CollectionName, Input0, Options0) ->
     Method = post,
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), "/delete-geofences"],
@@ -1635,22 +2186,14 @@ batch_delete_geofence(Client, CollectionName, Input0, Options0) ->
 -spec batch_evaluate_geofences(map(), binary() | list(), batch_evaluate_geofences_request()) ->
     {ok, batch_evaluate_geofences_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_evaluate_geofences_errors(), tuple()}.
 batch_evaluate_geofences(Client, CollectionName, Input) ->
     batch_evaluate_geofences(Client, CollectionName, Input, []).
 
 -spec batch_evaluate_geofences(map(), binary() | list(), batch_evaluate_geofences_request(), proplists:proplist()) ->
     {ok, batch_evaluate_geofences_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_evaluate_geofences_errors(), tuple()}.
 batch_evaluate_geofences(Client, CollectionName, Input0, Options0) ->
     Method = post,
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), "/positions"],
@@ -1677,22 +2220,14 @@ batch_evaluate_geofences(Client, CollectionName, Input0, Options0) ->
 -spec batch_get_device_position(map(), binary() | list(), batch_get_device_position_request()) ->
     {ok, batch_get_device_position_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_device_position_errors(), tuple()}.
 batch_get_device_position(Client, TrackerName, Input) ->
     batch_get_device_position(Client, TrackerName, Input, []).
 
 -spec batch_get_device_position(map(), binary() | list(), batch_get_device_position_request(), proplists:proplist()) ->
     {ok, batch_get_device_position_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_device_position_errors(), tuple()}.
 batch_get_device_position(Client, TrackerName, Input0, Options0) ->
     Method = post,
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/get-positions"],
@@ -1722,22 +2257,14 @@ batch_get_device_position(Client, TrackerName, Input0, Options0) ->
 -spec batch_put_geofence(map(), binary() | list(), batch_put_geofence_request()) ->
     {ok, batch_put_geofence_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_put_geofence_errors(), tuple()}.
 batch_put_geofence(Client, CollectionName, Input) ->
     batch_put_geofence(Client, CollectionName, Input, []).
 
 -spec batch_put_geofence(map(), binary() | list(), batch_put_geofence_request(), proplists:proplist()) ->
     {ok, batch_put_geofence_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_put_geofence_errors(), tuple()}.
 batch_put_geofence(Client, CollectionName, Input0, Options0) ->
     Method = post,
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), "/put-geofences"],
@@ -1797,22 +2324,14 @@ batch_put_geofence(Client, CollectionName, Input0, Options0) ->
 -spec batch_update_device_position(map(), binary() | list(), batch_update_device_position_request()) ->
     {ok, batch_update_device_position_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_update_device_position_errors(), tuple()}.
 batch_update_device_position(Client, TrackerName, Input) ->
     batch_update_device_position(Client, TrackerName, Input, []).
 
 -spec batch_update_device_position(map(), binary() | list(), batch_update_device_position_request(), proplists:proplist()) ->
     {ok, batch_update_device_position_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_update_device_position_errors(), tuple()}.
 batch_update_device_position(Client, TrackerName, Input0, Options0) ->
     Method = post,
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/positions"],
@@ -1876,22 +2395,14 @@ batch_update_device_position(Client, TrackerName, Input0, Options0) ->
 -spec calculate_route(map(), binary() | list(), calculate_route_request()) ->
     {ok, calculate_route_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, calculate_route_errors(), tuple()}.
 calculate_route(Client, CalculatorName, Input) ->
     calculate_route(Client, CalculatorName, Input, []).
 
 -spec calculate_route(map(), binary() | list(), calculate_route_request(), proplists:proplist()) ->
     {ok, calculate_route_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, calculate_route_errors(), tuple()}.
 calculate_route(Client, CalculatorName, Input0, Options0) ->
     Method = post,
     Path = ["/routes/v0/calculators/", aws_util:encode_uri(CalculatorName), "/calculate/route"],
@@ -1970,22 +2481,14 @@ calculate_route(Client, CalculatorName, Input0, Options0) ->
 -spec calculate_route_matrix(map(), binary() | list(), calculate_route_matrix_request()) ->
     {ok, calculate_route_matrix_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, calculate_route_matrix_errors(), tuple()}.
 calculate_route_matrix(Client, CalculatorName, Input) ->
     calculate_route_matrix(Client, CalculatorName, Input, []).
 
 -spec calculate_route_matrix(map(), binary() | list(), calculate_route_matrix_request(), proplists:proplist()) ->
     {ok, calculate_route_matrix_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, calculate_route_matrix_errors(), tuple()}.
 calculate_route_matrix(Client, CalculatorName, Input0, Options0) ->
     Method = post,
     Path = ["/routes/v0/calculators/", aws_util:encode_uri(CalculatorName), "/calculate/route-matrix"],
@@ -2013,24 +2516,14 @@ calculate_route_matrix(Client, CalculatorName, Input0, Options0) ->
 -spec create_geofence_collection(map(), create_geofence_collection_request()) ->
     {ok, create_geofence_collection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_geofence_collection_errors(), tuple()}.
 create_geofence_collection(Client, Input) ->
     create_geofence_collection(Client, Input, []).
 
 -spec create_geofence_collection(map(), create_geofence_collection_request(), proplists:proplist()) ->
     {ok, create_geofence_collection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_geofence_collection_errors(), tuple()}.
 create_geofence_collection(Client, Input0, Options0) ->
     Method = post,
     Path = ["/geofencing/v0/collections"],
@@ -2062,24 +2555,14 @@ create_geofence_collection(Client, Input0, Options0) ->
 -spec create_key(map(), create_key_request()) ->
     {ok, create_key_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_key_errors(), tuple()}.
 create_key(Client, Input) ->
     create_key(Client, Input, []).
 
 -spec create_key(map(), create_key_request(), proplists:proplist()) ->
     {ok, create_key_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_key_errors(), tuple()}.
 create_key(Client, Input0, Options0) ->
     Method = post,
     Path = ["/metadata/v0/keys"],
@@ -2115,24 +2598,14 @@ create_key(Client, Input0, Options0) ->
 -spec create_map(map(), create_map_request()) ->
     {ok, create_map_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_map_errors(), tuple()}.
 create_map(Client, Input) ->
     create_map(Client, Input, []).
 
 -spec create_map(map(), create_map_request(), proplists:proplist()) ->
     {ok, create_map_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_map_errors(), tuple()}.
 create_map(Client, Input0, Options0) ->
     Method = post,
     Path = ["/maps/v0/maps"],
@@ -2174,24 +2647,14 @@ create_map(Client, Input0, Options0) ->
 -spec create_place_index(map(), create_place_index_request()) ->
     {ok, create_place_index_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_place_index_errors(), tuple()}.
 create_place_index(Client, Input) ->
     create_place_index(Client, Input, []).
 
 -spec create_place_index(map(), create_place_index_request(), proplists:proplist()) ->
     {ok, create_place_index_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_place_index_errors(), tuple()}.
 create_place_index(Client, Input0, Options0) ->
     Method = post,
     Path = ["/places/v0/indexes"],
@@ -2232,24 +2695,14 @@ create_place_index(Client, Input0, Options0) ->
 -spec create_route_calculator(map(), create_route_calculator_request()) ->
     {ok, create_route_calculator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_route_calculator_errors(), tuple()}.
 create_route_calculator(Client, Input) ->
     create_route_calculator(Client, Input, []).
 
 -spec create_route_calculator(map(), create_route_calculator_request(), proplists:proplist()) ->
     {ok, create_route_calculator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_route_calculator_errors(), tuple()}.
 create_route_calculator(Client, Input0, Options0) ->
     Method = post,
     Path = ["/routes/v0/calculators"],
@@ -2278,24 +2731,14 @@ create_route_calculator(Client, Input0, Options0) ->
 -spec create_tracker(map(), create_tracker_request()) ->
     {ok, create_tracker_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_tracker_errors(), tuple()}.
 create_tracker(Client, Input) ->
     create_tracker(Client, Input, []).
 
 -spec create_tracker(map(), create_tracker_request(), proplists:proplist()) ->
     {ok, create_tracker_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_tracker_errors(), tuple()}.
 create_tracker(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tracking/v0/trackers"],
@@ -2326,22 +2769,14 @@ create_tracker(Client, Input0, Options0) ->
 -spec delete_geofence_collection(map(), binary() | list(), delete_geofence_collection_request()) ->
     {ok, delete_geofence_collection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_geofence_collection_errors(), tuple()}.
 delete_geofence_collection(Client, CollectionName, Input) ->
     delete_geofence_collection(Client, CollectionName, Input, []).
 
 -spec delete_geofence_collection(map(), binary() | list(), delete_geofence_collection_request(), proplists:proplist()) ->
     {ok, delete_geofence_collection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_geofence_collection_errors(), tuple()}.
 delete_geofence_collection(Client, CollectionName, Input0, Options0) ->
     Method = delete,
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), ""],
@@ -2371,22 +2806,14 @@ delete_geofence_collection(Client, CollectionName, Input0, Options0) ->
 -spec delete_key(map(), binary() | list(), delete_key_request()) ->
     {ok, delete_key_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_key_errors(), tuple()}.
 delete_key(Client, KeyName, Input) ->
     delete_key(Client, KeyName, Input, []).
 
 -spec delete_key(map(), binary() | list(), delete_key_request(), proplists:proplist()) ->
     {ok, delete_key_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_key_errors(), tuple()}.
 delete_key(Client, KeyName, Input0, Options0) ->
     Method = delete,
     Path = ["/metadata/v0/keys/", aws_util:encode_uri(KeyName), ""],
@@ -2418,22 +2845,14 @@ delete_key(Client, KeyName, Input0, Options0) ->
 -spec delete_map(map(), binary() | list(), delete_map_request()) ->
     {ok, delete_map_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_map_errors(), tuple()}.
 delete_map(Client, MapName, Input) ->
     delete_map(Client, MapName, Input, []).
 
 -spec delete_map(map(), binary() | list(), delete_map_request(), proplists:proplist()) ->
     {ok, delete_map_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_map_errors(), tuple()}.
 delete_map(Client, MapName, Input0, Options0) ->
     Method = delete,
     Path = ["/maps/v0/maps/", aws_util:encode_uri(MapName), ""],
@@ -2462,22 +2881,14 @@ delete_map(Client, MapName, Input0, Options0) ->
 -spec delete_place_index(map(), binary() | list(), delete_place_index_request()) ->
     {ok, delete_place_index_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_place_index_errors(), tuple()}.
 delete_place_index(Client, IndexName, Input) ->
     delete_place_index(Client, IndexName, Input, []).
 
 -spec delete_place_index(map(), binary() | list(), delete_place_index_request(), proplists:proplist()) ->
     {ok, delete_place_index_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_place_index_errors(), tuple()}.
 delete_place_index(Client, IndexName, Input0, Options0) ->
     Method = delete,
     Path = ["/places/v0/indexes/", aws_util:encode_uri(IndexName), ""],
@@ -2507,22 +2918,14 @@ delete_place_index(Client, IndexName, Input0, Options0) ->
 -spec delete_route_calculator(map(), binary() | list(), delete_route_calculator_request()) ->
     {ok, delete_route_calculator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_route_calculator_errors(), tuple()}.
 delete_route_calculator(Client, CalculatorName, Input) ->
     delete_route_calculator(Client, CalculatorName, Input, []).
 
 -spec delete_route_calculator(map(), binary() | list(), delete_route_calculator_request(), proplists:proplist()) ->
     {ok, delete_route_calculator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_route_calculator_errors(), tuple()}.
 delete_route_calculator(Client, CalculatorName, Input0, Options0) ->
     Method = delete,
     Path = ["/routes/v0/calculators/", aws_util:encode_uri(CalculatorName), ""],
@@ -2555,22 +2958,14 @@ delete_route_calculator(Client, CalculatorName, Input0, Options0) ->
 -spec delete_tracker(map(), binary() | list(), delete_tracker_request()) ->
     {ok, delete_tracker_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_tracker_errors(), tuple()}.
 delete_tracker(Client, TrackerName, Input) ->
     delete_tracker(Client, TrackerName, Input, []).
 
 -spec delete_tracker(map(), binary() | list(), delete_tracker_request(), proplists:proplist()) ->
     {ok, delete_tracker_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_tracker_errors(), tuple()}.
 delete_tracker(Client, TrackerName, Input0, Options0) ->
     Method = delete,
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), ""],
@@ -2597,11 +2992,7 @@ delete_tracker(Client, TrackerName, Input0, Options0) ->
 -spec describe_geofence_collection(map(), binary() | list()) ->
     {ok, describe_geofence_collection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_geofence_collection_errors(), tuple()}.
 describe_geofence_collection(Client, CollectionName)
   when is_map(Client) ->
     describe_geofence_collection(Client, CollectionName, #{}, #{}).
@@ -2609,11 +3000,7 @@ describe_geofence_collection(Client, CollectionName)
 -spec describe_geofence_collection(map(), binary() | list(), map(), map()) ->
     {ok, describe_geofence_collection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_geofence_collection_errors(), tuple()}.
 describe_geofence_collection(Client, CollectionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_geofence_collection(Client, CollectionName, QueryMap, HeadersMap, []).
@@ -2621,11 +3008,7 @@ describe_geofence_collection(Client, CollectionName, QueryMap, HeadersMap)
 -spec describe_geofence_collection(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_geofence_collection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_geofence_collection_errors(), tuple()}.
 describe_geofence_collection(Client, CollectionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), ""],
@@ -2646,11 +3029,7 @@ describe_geofence_collection(Client, CollectionName, QueryMap, HeadersMap, Optio
 -spec describe_key(map(), binary() | list()) ->
     {ok, describe_key_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_key_errors(), tuple()}.
 describe_key(Client, KeyName)
   when is_map(Client) ->
     describe_key(Client, KeyName, #{}, #{}).
@@ -2658,11 +3037,7 @@ describe_key(Client, KeyName)
 -spec describe_key(map(), binary() | list(), map(), map()) ->
     {ok, describe_key_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_key_errors(), tuple()}.
 describe_key(Client, KeyName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_key(Client, KeyName, QueryMap, HeadersMap, []).
@@ -2670,11 +3045,7 @@ describe_key(Client, KeyName, QueryMap, HeadersMap)
 -spec describe_key(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_key_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_key_errors(), tuple()}.
 describe_key(Client, KeyName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/metadata/v0/keys/", aws_util:encode_uri(KeyName), ""],
@@ -2695,11 +3066,7 @@ describe_key(Client, KeyName, QueryMap, HeadersMap, Options0)
 -spec describe_map(map(), binary() | list()) ->
     {ok, describe_map_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_map_errors(), tuple()}.
 describe_map(Client, MapName)
   when is_map(Client) ->
     describe_map(Client, MapName, #{}, #{}).
@@ -2707,11 +3074,7 @@ describe_map(Client, MapName)
 -spec describe_map(map(), binary() | list(), map(), map()) ->
     {ok, describe_map_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_map_errors(), tuple()}.
 describe_map(Client, MapName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_map(Client, MapName, QueryMap, HeadersMap, []).
@@ -2719,11 +3082,7 @@ describe_map(Client, MapName, QueryMap, HeadersMap)
 -spec describe_map(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_map_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_map_errors(), tuple()}.
 describe_map(Client, MapName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/maps/v0/maps/", aws_util:encode_uri(MapName), ""],
@@ -2744,11 +3103,7 @@ describe_map(Client, MapName, QueryMap, HeadersMap, Options0)
 -spec describe_place_index(map(), binary() | list()) ->
     {ok, describe_place_index_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_place_index_errors(), tuple()}.
 describe_place_index(Client, IndexName)
   when is_map(Client) ->
     describe_place_index(Client, IndexName, #{}, #{}).
@@ -2756,11 +3111,7 @@ describe_place_index(Client, IndexName)
 -spec describe_place_index(map(), binary() | list(), map(), map()) ->
     {ok, describe_place_index_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_place_index_errors(), tuple()}.
 describe_place_index(Client, IndexName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_place_index(Client, IndexName, QueryMap, HeadersMap, []).
@@ -2768,11 +3119,7 @@ describe_place_index(Client, IndexName, QueryMap, HeadersMap)
 -spec describe_place_index(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_place_index_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_place_index_errors(), tuple()}.
 describe_place_index(Client, IndexName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/places/v0/indexes/", aws_util:encode_uri(IndexName), ""],
@@ -2793,11 +3140,7 @@ describe_place_index(Client, IndexName, QueryMap, HeadersMap, Options0)
 -spec describe_route_calculator(map(), binary() | list()) ->
     {ok, describe_route_calculator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_route_calculator_errors(), tuple()}.
 describe_route_calculator(Client, CalculatorName)
   when is_map(Client) ->
     describe_route_calculator(Client, CalculatorName, #{}, #{}).
@@ -2805,11 +3148,7 @@ describe_route_calculator(Client, CalculatorName)
 -spec describe_route_calculator(map(), binary() | list(), map(), map()) ->
     {ok, describe_route_calculator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_route_calculator_errors(), tuple()}.
 describe_route_calculator(Client, CalculatorName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_route_calculator(Client, CalculatorName, QueryMap, HeadersMap, []).
@@ -2817,11 +3156,7 @@ describe_route_calculator(Client, CalculatorName, QueryMap, HeadersMap)
 -spec describe_route_calculator(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_route_calculator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_route_calculator_errors(), tuple()}.
 describe_route_calculator(Client, CalculatorName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/routes/v0/calculators/", aws_util:encode_uri(CalculatorName), ""],
@@ -2842,11 +3177,7 @@ describe_route_calculator(Client, CalculatorName, QueryMap, HeadersMap, Options0
 -spec describe_tracker(map(), binary() | list()) ->
     {ok, describe_tracker_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_tracker_errors(), tuple()}.
 describe_tracker(Client, TrackerName)
   when is_map(Client) ->
     describe_tracker(Client, TrackerName, #{}, #{}).
@@ -2854,11 +3185,7 @@ describe_tracker(Client, TrackerName)
 -spec describe_tracker(map(), binary() | list(), map(), map()) ->
     {ok, describe_tracker_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_tracker_errors(), tuple()}.
 describe_tracker(Client, TrackerName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_tracker(Client, TrackerName, QueryMap, HeadersMap, []).
@@ -2866,11 +3193,7 @@ describe_tracker(Client, TrackerName, QueryMap, HeadersMap)
 -spec describe_tracker(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_tracker_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_tracker_errors(), tuple()}.
 describe_tracker(Client, TrackerName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), ""],
@@ -2895,22 +3218,14 @@ describe_tracker(Client, TrackerName, QueryMap, HeadersMap, Options0)
 -spec disassociate_tracker_consumer(map(), binary() | list(), binary() | list(), disassociate_tracker_consumer_request()) ->
     {ok, disassociate_tracker_consumer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_tracker_consumer_errors(), tuple()}.
 disassociate_tracker_consumer(Client, ConsumerArn, TrackerName, Input) ->
     disassociate_tracker_consumer(Client, ConsumerArn, TrackerName, Input, []).
 
 -spec disassociate_tracker_consumer(map(), binary() | list(), binary() | list(), disassociate_tracker_consumer_request(), proplists:proplist()) ->
     {ok, disassociate_tracker_consumer_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_tracker_consumer_errors(), tuple()}.
 disassociate_tracker_consumer(Client, ConsumerArn, TrackerName, Input0, Options0) ->
     Method = delete,
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/consumers/", aws_util:encode_uri(ConsumerArn), ""],
@@ -2940,11 +3255,7 @@ disassociate_tracker_consumer(Client, ConsumerArn, TrackerName, Input0, Options0
 -spec get_device_position(map(), binary() | list(), binary() | list()) ->
     {ok, get_device_position_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_device_position_errors(), tuple()}.
 get_device_position(Client, DeviceId, TrackerName)
   when is_map(Client) ->
     get_device_position(Client, DeviceId, TrackerName, #{}, #{}).
@@ -2952,11 +3263,7 @@ get_device_position(Client, DeviceId, TrackerName)
 -spec get_device_position(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_device_position_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_device_position_errors(), tuple()}.
 get_device_position(Client, DeviceId, TrackerName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_device_position(Client, DeviceId, TrackerName, QueryMap, HeadersMap, []).
@@ -2964,11 +3271,7 @@ get_device_position(Client, DeviceId, TrackerName, QueryMap, HeadersMap)
 -spec get_device_position(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_device_position_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_device_position_errors(), tuple()}.
 get_device_position(Client, DeviceId, TrackerName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/devices/", aws_util:encode_uri(DeviceId), "/positions/latest"],
@@ -2993,22 +3296,14 @@ get_device_position(Client, DeviceId, TrackerName, QueryMap, HeadersMap, Options
 -spec get_device_position_history(map(), binary() | list(), binary() | list(), get_device_position_history_request()) ->
     {ok, get_device_position_history_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_device_position_history_errors(), tuple()}.
 get_device_position_history(Client, DeviceId, TrackerName, Input) ->
     get_device_position_history(Client, DeviceId, TrackerName, Input, []).
 
 -spec get_device_position_history(map(), binary() | list(), binary() | list(), get_device_position_history_request(), proplists:proplist()) ->
     {ok, get_device_position_history_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_device_position_history_errors(), tuple()}.
 get_device_position_history(Client, DeviceId, TrackerName, Input0, Options0) ->
     Method = post,
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/devices/", aws_util:encode_uri(DeviceId), "/list-positions"],
@@ -3035,11 +3330,7 @@ get_device_position_history(Client, DeviceId, TrackerName, Input0, Options0) ->
 -spec get_geofence(map(), binary() | list(), binary() | list()) ->
     {ok, get_geofence_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_geofence_errors(), tuple()}.
 get_geofence(Client, CollectionName, GeofenceId)
   when is_map(Client) ->
     get_geofence(Client, CollectionName, GeofenceId, #{}, #{}).
@@ -3047,11 +3338,7 @@ get_geofence(Client, CollectionName, GeofenceId)
 -spec get_geofence(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_geofence_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_geofence_errors(), tuple()}.
 get_geofence(Client, CollectionName, GeofenceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_geofence(Client, CollectionName, GeofenceId, QueryMap, HeadersMap, []).
@@ -3059,11 +3346,7 @@ get_geofence(Client, CollectionName, GeofenceId, QueryMap, HeadersMap)
 -spec get_geofence(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_geofence_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_geofence_errors(), tuple()}.
 get_geofence(Client, CollectionName, GeofenceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), "/geofences/", aws_util:encode_uri(GeofenceId), ""],
@@ -3084,11 +3367,7 @@ get_geofence(Client, CollectionName, GeofenceId, QueryMap, HeadersMap, Options0)
 -spec get_map_glyphs(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_map_glyphs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_map_glyphs_errors(), tuple()}.
 get_map_glyphs(Client, FontStack, FontUnicodeRange, MapName)
   when is_map(Client) ->
     get_map_glyphs(Client, FontStack, FontUnicodeRange, MapName, #{}, #{}).
@@ -3096,11 +3375,7 @@ get_map_glyphs(Client, FontStack, FontUnicodeRange, MapName)
 -spec get_map_glyphs(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_map_glyphs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_map_glyphs_errors(), tuple()}.
 get_map_glyphs(Client, FontStack, FontUnicodeRange, MapName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_map_glyphs(Client, FontStack, FontUnicodeRange, MapName, QueryMap, HeadersMap, []).
@@ -3108,11 +3383,7 @@ get_map_glyphs(Client, FontStack, FontUnicodeRange, MapName, QueryMap, HeadersMa
 -spec get_map_glyphs(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_map_glyphs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_map_glyphs_errors(), tuple()}.
 get_map_glyphs(Client, FontStack, FontUnicodeRange, MapName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/maps/v0/maps/", aws_util:encode_uri(MapName), "/glyphs/", aws_util:encode_uri(FontStack), "/", aws_util:encode_uri(FontUnicodeRange), ""],
@@ -3159,11 +3430,7 @@ get_map_glyphs(Client, FontStack, FontUnicodeRange, MapName, QueryMap, HeadersMa
 -spec get_map_sprites(map(), binary() | list(), binary() | list()) ->
     {ok, get_map_sprites_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_map_sprites_errors(), tuple()}.
 get_map_sprites(Client, FileName, MapName)
   when is_map(Client) ->
     get_map_sprites(Client, FileName, MapName, #{}, #{}).
@@ -3171,11 +3438,7 @@ get_map_sprites(Client, FileName, MapName)
 -spec get_map_sprites(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_map_sprites_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_map_sprites_errors(), tuple()}.
 get_map_sprites(Client, FileName, MapName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_map_sprites(Client, FileName, MapName, QueryMap, HeadersMap, []).
@@ -3183,11 +3446,7 @@ get_map_sprites(Client, FileName, MapName, QueryMap, HeadersMap)
 -spec get_map_sprites(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_map_sprites_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_map_sprites_errors(), tuple()}.
 get_map_sprites(Client, FileName, MapName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/maps/v0/maps/", aws_util:encode_uri(MapName), "/sprites/", aws_util:encode_uri(FileName), ""],
@@ -3235,11 +3494,7 @@ get_map_sprites(Client, FileName, MapName, QueryMap, HeadersMap, Options0)
 -spec get_map_style_descriptor(map(), binary() | list()) ->
     {ok, get_map_style_descriptor_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_map_style_descriptor_errors(), tuple()}.
 get_map_style_descriptor(Client, MapName)
   when is_map(Client) ->
     get_map_style_descriptor(Client, MapName, #{}, #{}).
@@ -3247,11 +3502,7 @@ get_map_style_descriptor(Client, MapName)
 -spec get_map_style_descriptor(map(), binary() | list(), map(), map()) ->
     {ok, get_map_style_descriptor_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_map_style_descriptor_errors(), tuple()}.
 get_map_style_descriptor(Client, MapName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_map_style_descriptor(Client, MapName, QueryMap, HeadersMap, []).
@@ -3259,11 +3510,7 @@ get_map_style_descriptor(Client, MapName, QueryMap, HeadersMap)
 -spec get_map_style_descriptor(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_map_style_descriptor_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_map_style_descriptor_errors(), tuple()}.
 get_map_style_descriptor(Client, MapName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/maps/v0/maps/", aws_util:encode_uri(MapName), "/style-descriptor"],
@@ -3316,11 +3563,7 @@ get_map_style_descriptor(Client, MapName, QueryMap, HeadersMap, Options0)
 -spec get_map_tile(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_map_tile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_map_tile_errors(), tuple()}.
 get_map_tile(Client, MapName, X, Y, Z)
   when is_map(Client) ->
     get_map_tile(Client, MapName, X, Y, Z, #{}, #{}).
@@ -3328,11 +3571,7 @@ get_map_tile(Client, MapName, X, Y, Z)
 -spec get_map_tile(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_map_tile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_map_tile_errors(), tuple()}.
 get_map_tile(Client, MapName, X, Y, Z, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_map_tile(Client, MapName, X, Y, Z, QueryMap, HeadersMap, []).
@@ -3340,11 +3579,7 @@ get_map_tile(Client, MapName, X, Y, Z, QueryMap, HeadersMap)
 -spec get_map_tile(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_map_tile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_map_tile_errors(), tuple()}.
 get_map_tile(Client, MapName, X, Y, Z, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/maps/v0/maps/", aws_util:encode_uri(MapName), "/tiles/", aws_util:encode_uri(Z), "/", aws_util:encode_uri(X), "/", aws_util:encode_uri(Y), ""],
@@ -3399,11 +3634,7 @@ get_map_tile(Client, MapName, X, Y, Z, QueryMap, HeadersMap, Options0)
 -spec get_place(map(), binary() | list(), binary() | list()) ->
     {ok, get_place_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_place_errors(), tuple()}.
 get_place(Client, IndexName, PlaceId)
   when is_map(Client) ->
     get_place(Client, IndexName, PlaceId, #{}, #{}).
@@ -3411,11 +3642,7 @@ get_place(Client, IndexName, PlaceId)
 -spec get_place(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_place_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_place_errors(), tuple()}.
 get_place(Client, IndexName, PlaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_place(Client, IndexName, PlaceId, QueryMap, HeadersMap, []).
@@ -3423,11 +3650,7 @@ get_place(Client, IndexName, PlaceId, QueryMap, HeadersMap)
 -spec get_place(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_place_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_place_errors(), tuple()}.
 get_place(Client, IndexName, PlaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/places/v0/indexes/", aws_util:encode_uri(IndexName), "/places/", aws_util:encode_uri(PlaceId), ""],
@@ -3453,20 +3676,14 @@ get_place(Client, IndexName, PlaceId, QueryMap, HeadersMap, Options0)
 -spec list_device_positions(map(), binary() | list(), list_device_positions_request()) ->
     {ok, list_device_positions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_device_positions_errors(), tuple()}.
 list_device_positions(Client, TrackerName, Input) ->
     list_device_positions(Client, TrackerName, Input, []).
 
 -spec list_device_positions(map(), binary() | list(), list_device_positions_request(), proplists:proplist()) ->
     {ok, list_device_positions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_device_positions_errors(), tuple()}.
 list_device_positions(Client, TrackerName, Input0, Options0) ->
     Method = post,
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/list-positions"],
@@ -3493,20 +3710,14 @@ list_device_positions(Client, TrackerName, Input0, Options0) ->
 -spec list_geofence_collections(map(), list_geofence_collections_request()) ->
     {ok, list_geofence_collections_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_geofence_collections_errors(), tuple()}.
 list_geofence_collections(Client, Input) ->
     list_geofence_collections(Client, Input, []).
 
 -spec list_geofence_collections(map(), list_geofence_collections_request(), proplists:proplist()) ->
     {ok, list_geofence_collections_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_geofence_collections_errors(), tuple()}.
 list_geofence_collections(Client, Input0, Options0) ->
     Method = post,
     Path = ["/geofencing/v0/list-collections"],
@@ -3533,22 +3744,14 @@ list_geofence_collections(Client, Input0, Options0) ->
 -spec list_geofences(map(), binary() | list(), list_geofences_request()) ->
     {ok, list_geofences_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_geofences_errors(), tuple()}.
 list_geofences(Client, CollectionName, Input) ->
     list_geofences(Client, CollectionName, Input, []).
 
 -spec list_geofences(map(), binary() | list(), list_geofences_request(), proplists:proplist()) ->
     {ok, list_geofences_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_geofences_errors(), tuple()}.
 list_geofences(Client, CollectionName, Input0, Options0) ->
     Method = post,
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), "/list-geofences"],
@@ -3575,20 +3778,14 @@ list_geofences(Client, CollectionName, Input0, Options0) ->
 -spec list_keys(map(), list_keys_request()) ->
     {ok, list_keys_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_keys_errors(), tuple()}.
 list_keys(Client, Input) ->
     list_keys(Client, Input, []).
 
 -spec list_keys(map(), list_keys_request(), proplists:proplist()) ->
     {ok, list_keys_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_keys_errors(), tuple()}.
 list_keys(Client, Input0, Options0) ->
     Method = post,
     Path = ["/metadata/v0/list-keys"],
@@ -3615,20 +3812,14 @@ list_keys(Client, Input0, Options0) ->
 -spec list_maps(map(), list_maps_request()) ->
     {ok, list_maps_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_maps_errors(), tuple()}.
 list_maps(Client, Input) ->
     list_maps(Client, Input, []).
 
 -spec list_maps(map(), list_maps_request(), proplists:proplist()) ->
     {ok, list_maps_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_maps_errors(), tuple()}.
 list_maps(Client, Input0, Options0) ->
     Method = post,
     Path = ["/maps/v0/list-maps"],
@@ -3655,20 +3846,14 @@ list_maps(Client, Input0, Options0) ->
 -spec list_place_indexes(map(), list_place_indexes_request()) ->
     {ok, list_place_indexes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_place_indexes_errors(), tuple()}.
 list_place_indexes(Client, Input) ->
     list_place_indexes(Client, Input, []).
 
 -spec list_place_indexes(map(), list_place_indexes_request(), proplists:proplist()) ->
     {ok, list_place_indexes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_place_indexes_errors(), tuple()}.
 list_place_indexes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/places/v0/list-indexes"],
@@ -3695,20 +3880,14 @@ list_place_indexes(Client, Input0, Options0) ->
 -spec list_route_calculators(map(), list_route_calculators_request()) ->
     {ok, list_route_calculators_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_route_calculators_errors(), tuple()}.
 list_route_calculators(Client, Input) ->
     list_route_calculators(Client, Input, []).
 
 -spec list_route_calculators(map(), list_route_calculators_request(), proplists:proplist()) ->
     {ok, list_route_calculators_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_route_calculators_errors(), tuple()}.
 list_route_calculators(Client, Input0, Options0) ->
     Method = post,
     Path = ["/routes/v0/list-calculators"],
@@ -3736,11 +3915,7 @@ list_route_calculators(Client, Input0, Options0) ->
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -3748,11 +3923,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -3760,11 +3931,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -3786,22 +3953,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec list_tracker_consumers(map(), binary() | list(), list_tracker_consumers_request()) ->
     {ok, list_tracker_consumers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tracker_consumers_errors(), tuple()}.
 list_tracker_consumers(Client, TrackerName, Input) ->
     list_tracker_consumers(Client, TrackerName, Input, []).
 
 -spec list_tracker_consumers(map(), binary() | list(), list_tracker_consumers_request(), proplists:proplist()) ->
     {ok, list_tracker_consumers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tracker_consumers_errors(), tuple()}.
 list_tracker_consumers(Client, TrackerName, Input0, Options0) ->
     Method = post,
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/list-consumers"],
@@ -3828,20 +3987,14 @@ list_tracker_consumers(Client, TrackerName, Input0, Options0) ->
 -spec list_trackers(map(), list_trackers_request()) ->
     {ok, list_trackers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_trackers_errors(), tuple()}.
 list_trackers(Client, Input) ->
     list_trackers(Client, Input, []).
 
 -spec list_trackers(map(), list_trackers_request(), proplists:proplist()) ->
     {ok, list_trackers_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_trackers_errors(), tuple()}.
 list_trackers(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tracking/v0/list-trackers"],
@@ -3870,24 +4023,14 @@ list_trackers(Client, Input0, Options0) ->
 -spec put_geofence(map(), binary() | list(), binary() | list(), put_geofence_request()) ->
     {ok, put_geofence_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_geofence_errors(), tuple()}.
 put_geofence(Client, CollectionName, GeofenceId, Input) ->
     put_geofence(Client, CollectionName, GeofenceId, Input, []).
 
 -spec put_geofence(map(), binary() | list(), binary() | list(), put_geofence_request(), proplists:proplist()) ->
     {ok, put_geofence_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_geofence_errors(), tuple()}.
 put_geofence(Client, CollectionName, GeofenceId, Input0, Options0) ->
     Method = put,
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), "/geofences/", aws_util:encode_uri(GeofenceId), ""],
@@ -3917,22 +4060,14 @@ put_geofence(Client, CollectionName, GeofenceId, Input0, Options0) ->
 -spec search_place_index_for_position(map(), binary() | list(), search_place_index_for_position_request()) ->
     {ok, search_place_index_for_position_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_place_index_for_position_errors(), tuple()}.
 search_place_index_for_position(Client, IndexName, Input) ->
     search_place_index_for_position(Client, IndexName, Input, []).
 
 -spec search_place_index_for_position(map(), binary() | list(), search_place_index_for_position_request(), proplists:proplist()) ->
     {ok, search_place_index_for_position_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_place_index_for_position_errors(), tuple()}.
 search_place_index_for_position(Client, IndexName, Input0, Options0) ->
     Method = post,
     Path = ["/places/v0/indexes/", aws_util:encode_uri(IndexName), "/search/position"],
@@ -3976,22 +4111,14 @@ search_place_index_for_position(Client, IndexName, Input0, Options0) ->
 -spec search_place_index_for_suggestions(map(), binary() | list(), search_place_index_for_suggestions_request()) ->
     {ok, search_place_index_for_suggestions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_place_index_for_suggestions_errors(), tuple()}.
 search_place_index_for_suggestions(Client, IndexName, Input) ->
     search_place_index_for_suggestions(Client, IndexName, Input, []).
 
 -spec search_place_index_for_suggestions(map(), binary() | list(), search_place_index_for_suggestions_request(), proplists:proplist()) ->
     {ok, search_place_index_for_suggestions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_place_index_for_suggestions_errors(), tuple()}.
 search_place_index_for_suggestions(Client, IndexName, Input0, Options0) ->
     Method = post,
     Path = ["/places/v0/indexes/", aws_util:encode_uri(IndexName), "/search/suggestions"],
@@ -4031,22 +4158,14 @@ search_place_index_for_suggestions(Client, IndexName, Input0, Options0) ->
 -spec search_place_index_for_text(map(), binary() | list(), search_place_index_for_text_request()) ->
     {ok, search_place_index_for_text_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_place_index_for_text_errors(), tuple()}.
 search_place_index_for_text(Client, IndexName, Input) ->
     search_place_index_for_text(Client, IndexName, Input, []).
 
 -spec search_place_index_for_text(map(), binary() | list(), search_place_index_for_text_request(), proplists:proplist()) ->
     {ok, search_place_index_for_text_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_place_index_for_text_errors(), tuple()}.
 search_place_index_for_text(Client, IndexName, Input0, Options0) ->
     Method = post,
     Path = ["/places/v0/indexes/", aws_util:encode_uri(IndexName), "/search/text"],
@@ -4094,22 +4213,14 @@ search_place_index_for_text(Client, IndexName, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -4136,22 +4247,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -4179,22 +4282,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_geofence_collection(map(), binary() | list(), update_geofence_collection_request()) ->
     {ok, update_geofence_collection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_geofence_collection_errors(), tuple()}.
 update_geofence_collection(Client, CollectionName, Input) ->
     update_geofence_collection(Client, CollectionName, Input, []).
 
 -spec update_geofence_collection(map(), binary() | list(), update_geofence_collection_request(), proplists:proplist()) ->
     {ok, update_geofence_collection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_geofence_collection_errors(), tuple()}.
 update_geofence_collection(Client, CollectionName, Input0, Options0) ->
     Method = patch,
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), ""],
@@ -4221,22 +4316,14 @@ update_geofence_collection(Client, CollectionName, Input0, Options0) ->
 -spec update_key(map(), binary() | list(), update_key_request()) ->
     {ok, update_key_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_key_errors(), tuple()}.
 update_key(Client, KeyName, Input) ->
     update_key(Client, KeyName, Input, []).
 
 -spec update_key(map(), binary() | list(), update_key_request(), proplists:proplist()) ->
     {ok, update_key_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_key_errors(), tuple()}.
 update_key(Client, KeyName, Input0, Options0) ->
     Method = patch,
     Path = ["/metadata/v0/keys/", aws_util:encode_uri(KeyName), ""],
@@ -4263,22 +4350,14 @@ update_key(Client, KeyName, Input0, Options0) ->
 -spec update_map(map(), binary() | list(), update_map_request()) ->
     {ok, update_map_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_map_errors(), tuple()}.
 update_map(Client, MapName, Input) ->
     update_map(Client, MapName, Input, []).
 
 -spec update_map(map(), binary() | list(), update_map_request(), proplists:proplist()) ->
     {ok, update_map_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_map_errors(), tuple()}.
 update_map(Client, MapName, Input0, Options0) ->
     Method = patch,
     Path = ["/maps/v0/maps/", aws_util:encode_uri(MapName), ""],
@@ -4305,22 +4384,14 @@ update_map(Client, MapName, Input0, Options0) ->
 -spec update_place_index(map(), binary() | list(), update_place_index_request()) ->
     {ok, update_place_index_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_place_index_errors(), tuple()}.
 update_place_index(Client, IndexName, Input) ->
     update_place_index(Client, IndexName, Input, []).
 
 -spec update_place_index(map(), binary() | list(), update_place_index_request(), proplists:proplist()) ->
     {ok, update_place_index_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_place_index_errors(), tuple()}.
 update_place_index(Client, IndexName, Input0, Options0) ->
     Method = patch,
     Path = ["/places/v0/indexes/", aws_util:encode_uri(IndexName), ""],
@@ -4348,22 +4419,14 @@ update_place_index(Client, IndexName, Input0, Options0) ->
 -spec update_route_calculator(map(), binary() | list(), update_route_calculator_request()) ->
     {ok, update_route_calculator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_route_calculator_errors(), tuple()}.
 update_route_calculator(Client, CalculatorName, Input) ->
     update_route_calculator(Client, CalculatorName, Input, []).
 
 -spec update_route_calculator(map(), binary() | list(), update_route_calculator_request(), proplists:proplist()) ->
     {ok, update_route_calculator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_route_calculator_errors(), tuple()}.
 update_route_calculator(Client, CalculatorName, Input0, Options0) ->
     Method = patch,
     Path = ["/routes/v0/calculators/", aws_util:encode_uri(CalculatorName), ""],
@@ -4390,22 +4453,14 @@ update_route_calculator(Client, CalculatorName, Input0, Options0) ->
 -spec update_tracker(map(), binary() | list(), update_tracker_request()) ->
     {ok, update_tracker_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_tracker_errors(), tuple()}.
 update_tracker(Client, TrackerName, Input) ->
     update_tracker(Client, TrackerName, Input, []).
 
 -spec update_tracker(map(), binary() | list(), update_tracker_request(), proplists:proplist()) ->
     {ok, update_tracker_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_tracker_errors(), tuple()}.
 update_tracker(Client, TrackerName, Input0, Options0) ->
     Method = patch,
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), ""],

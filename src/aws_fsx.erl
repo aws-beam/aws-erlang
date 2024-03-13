@@ -2066,6 +2066,325 @@
 %% }
 -type create_file_system_from_backup_request() :: #{binary() => any()}.
 
+-type associate_file_system_aliases_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    file_system_not_found().
+
+-type cancel_data_repository_task_errors() ::
+    data_repository_task_ended() | 
+    internal_server_error() | 
+    bad_request() | 
+    unsupported_operation() | 
+    data_repository_task_not_found().
+
+-type copy_backup_errors() ::
+    source_backup_unavailable() | 
+    incompatible_parameter_error() | 
+    incompatible_region_for_multi_a_z() | 
+    service_limit_exceeded() | 
+    internal_server_error() | 
+    bad_request() | 
+    backup_not_found() | 
+    invalid_destination_kms_key() | 
+    invalid_source_kms_key() | 
+    unsupported_operation() | 
+    invalid_region().
+
+-type copy_snapshot_and_update_volume_errors() ::
+    incompatible_parameter_error() | 
+    service_limit_exceeded() | 
+    internal_server_error() | 
+    bad_request().
+
+-type create_backup_errors() ::
+    incompatible_parameter_error() | 
+    volume_not_found() | 
+    service_limit_exceeded() | 
+    internal_server_error() | 
+    bad_request() | 
+    file_system_not_found() | 
+    unsupported_operation() | 
+    backup_in_progress().
+
+-type create_data_repository_association_errors() ::
+    incompatible_parameter_error() | 
+    service_limit_exceeded() | 
+    internal_server_error() | 
+    bad_request() | 
+    file_system_not_found() | 
+    unsupported_operation().
+
+-type create_data_repository_task_errors() ::
+    incompatible_parameter_error() | 
+    service_limit_exceeded() | 
+    internal_server_error() | 
+    bad_request() | 
+    file_system_not_found() | 
+    unsupported_operation() | 
+    data_repository_task_executing().
+
+-type create_file_cache_errors() ::
+    incompatible_parameter_error() | 
+    service_limit_exceeded() | 
+    internal_server_error() | 
+    bad_request() | 
+    missing_file_cache_configuration() | 
+    invalid_per_unit_storage_throughput() | 
+    invalid_network_settings().
+
+-type create_file_system_errors() ::
+    invalid_import_path() | 
+    incompatible_parameter_error() | 
+    service_limit_exceeded() | 
+    internal_server_error() | 
+    bad_request() | 
+    missing_file_system_configuration() | 
+    invalid_per_unit_storage_throughput() | 
+    active_directory_error() | 
+    invalid_network_settings() | 
+    invalid_export_path().
+
+-type create_file_system_from_backup_errors() ::
+    incompatible_parameter_error() | 
+    service_limit_exceeded() | 
+    internal_server_error() | 
+    bad_request() | 
+    backup_not_found() | 
+    missing_file_system_configuration() | 
+    invalid_per_unit_storage_throughput() | 
+    active_directory_error() | 
+    invalid_network_settings().
+
+-type create_snapshot_errors() ::
+    volume_not_found() | 
+    service_limit_exceeded() | 
+    internal_server_error() | 
+    bad_request().
+
+-type create_storage_virtual_machine_errors() ::
+    incompatible_parameter_error() | 
+    service_limit_exceeded() | 
+    internal_server_error() | 
+    bad_request() | 
+    file_system_not_found() | 
+    active_directory_error() | 
+    unsupported_operation().
+
+-type create_volume_errors() ::
+    incompatible_parameter_error() | 
+    service_limit_exceeded() | 
+    internal_server_error() | 
+    bad_request() | 
+    file_system_not_found() | 
+    unsupported_operation() | 
+    missing_volume_configuration() | 
+    storage_virtual_machine_not_found().
+
+-type create_volume_from_backup_errors() ::
+    incompatible_parameter_error() | 
+    service_limit_exceeded() | 
+    internal_server_error() | 
+    bad_request() | 
+    backup_not_found() | 
+    file_system_not_found() | 
+    missing_volume_configuration() | 
+    storage_virtual_machine_not_found().
+
+-type delete_backup_errors() ::
+    backup_being_copied() | 
+    incompatible_parameter_error() | 
+    internal_server_error() | 
+    bad_request() | 
+    backup_not_found() | 
+    backup_restoring() | 
+    backup_in_progress().
+
+-type delete_data_repository_association_errors() ::
+    incompatible_parameter_error() | 
+    service_limit_exceeded() | 
+    internal_server_error() | 
+    bad_request() | 
+    data_repository_association_not_found().
+
+-type delete_file_cache_errors() ::
+    incompatible_parameter_error() | 
+    service_limit_exceeded() | 
+    internal_server_error() | 
+    bad_request() | 
+    file_cache_not_found().
+
+-type delete_file_system_errors() ::
+    incompatible_parameter_error() | 
+    service_limit_exceeded() | 
+    internal_server_error() | 
+    bad_request() | 
+    file_system_not_found().
+
+-type delete_snapshot_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    snapshot_not_found().
+
+-type delete_storage_virtual_machine_errors() ::
+    incompatible_parameter_error() | 
+    internal_server_error() | 
+    bad_request() | 
+    storage_virtual_machine_not_found().
+
+-type delete_volume_errors() ::
+    incompatible_parameter_error() | 
+    volume_not_found() | 
+    service_limit_exceeded() | 
+    internal_server_error() | 
+    bad_request().
+
+-type describe_backups_errors() ::
+    volume_not_found() | 
+    internal_server_error() | 
+    bad_request() | 
+    backup_not_found() | 
+    file_system_not_found().
+
+-type describe_data_repository_associations_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    data_repository_association_not_found() | 
+    file_system_not_found() | 
+    invalid_data_repository_type().
+
+-type describe_data_repository_tasks_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    file_system_not_found() | 
+    data_repository_task_not_found().
+
+-type describe_file_caches_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    file_cache_not_found().
+
+-type describe_file_system_aliases_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    file_system_not_found().
+
+-type describe_file_systems_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    file_system_not_found().
+
+-type describe_shared_vpc_configuration_errors() ::
+    internal_server_error() | 
+    bad_request().
+
+-type describe_snapshots_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    snapshot_not_found().
+
+-type describe_storage_virtual_machines_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    storage_virtual_machine_not_found().
+
+-type describe_volumes_errors() ::
+    volume_not_found() | 
+    internal_server_error() | 
+    bad_request().
+
+-type disassociate_file_system_aliases_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    file_system_not_found().
+
+-type list_tags_for_resource_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    not_service_resource_error() | 
+    resource_not_found() | 
+    resource_does_not_support_tagging().
+
+-type release_file_system_nfs_v3_locks_errors() ::
+    incompatible_parameter_error() | 
+    service_limit_exceeded() | 
+    internal_server_error() | 
+    bad_request() | 
+    file_system_not_found().
+
+-type restore_volume_from_snapshot_errors() ::
+    volume_not_found() | 
+    internal_server_error() | 
+    bad_request().
+
+-type start_misconfigured_state_recovery_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    file_system_not_found().
+
+-type tag_resource_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    not_service_resource_error() | 
+    resource_not_found() | 
+    resource_does_not_support_tagging().
+
+-type untag_resource_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    not_service_resource_error() | 
+    resource_not_found() | 
+    resource_does_not_support_tagging().
+
+-type update_data_repository_association_errors() ::
+    incompatible_parameter_error() | 
+    service_limit_exceeded() | 
+    internal_server_error() | 
+    bad_request() | 
+    data_repository_association_not_found().
+
+-type update_file_cache_errors() ::
+    incompatible_parameter_error() | 
+    service_limit_exceeded() | 
+    internal_server_error() | 
+    bad_request() | 
+    file_cache_not_found() | 
+    missing_file_cache_configuration() | 
+    unsupported_operation().
+
+-type update_file_system_errors() ::
+    incompatible_parameter_error() | 
+    service_limit_exceeded() | 
+    internal_server_error() | 
+    bad_request() | 
+    missing_file_system_configuration() | 
+    file_system_not_found() | 
+    unsupported_operation() | 
+    invalid_network_settings().
+
+-type update_shared_vpc_configuration_errors() ::
+    incompatible_parameter_error() | 
+    internal_server_error() | 
+    bad_request().
+
+-type update_snapshot_errors() ::
+    internal_server_error() | 
+    bad_request() | 
+    snapshot_not_found().
+
+-type update_storage_virtual_machine_errors() ::
+    incompatible_parameter_error() | 
+    internal_server_error() | 
+    bad_request() | 
+    unsupported_operation() | 
+    storage_virtual_machine_not_found().
+
+-type update_volume_errors() ::
+    incompatible_parameter_error() | 
+    volume_not_found() | 
+    internal_server_error() | 
+    bad_request() | 
+    missing_volume_configuration().
 
 %%====================================================================
 %% API
@@ -2095,9 +2414,7 @@
 -spec associate_file_system_aliases(map(), associate_file_system_aliases_request()) ->
     {ok, associate_file_system_aliases_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, associate_file_system_aliases_errors(), tuple()}.
 associate_file_system_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_file_system_aliases(Client, Input, []).
@@ -2105,9 +2422,7 @@ associate_file_system_aliases(Client, Input)
 -spec associate_file_system_aliases(map(), associate_file_system_aliases_request(), proplists:proplist()) ->
     {ok, associate_file_system_aliases_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, associate_file_system_aliases_errors(), tuple()}.
 associate_file_system_aliases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateFileSystemAliases">>, Input, Options).
@@ -2132,11 +2447,7 @@ associate_file_system_aliases(Client, Input, Options)
 -spec cancel_data_repository_task(map(), cancel_data_repository_task_request()) ->
     {ok, cancel_data_repository_task_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, data_repository_task_ended(), tuple()} |
-    {error, data_repository_task_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, cancel_data_repository_task_errors(), tuple()}.
 cancel_data_repository_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_data_repository_task(Client, Input, []).
@@ -2144,11 +2455,7 @@ cancel_data_repository_task(Client, Input)
 -spec cancel_data_repository_task(map(), cancel_data_repository_task_request(), proplists:proplist()) ->
     {ok, cancel_data_repository_task_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, data_repository_task_ended(), tuple()} |
-    {error, data_repository_task_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, cancel_data_repository_task_errors(), tuple()}.
 cancel_data_repository_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelDataRepositoryTask">>, Input, Options).
@@ -2202,17 +2509,7 @@ cancel_data_repository_task(Client, Input, Options)
 -spec copy_backup(map(), copy_backup_request()) ->
     {ok, copy_backup_response(), tuple()} |
     {error, any()} |
-    {error, backup_not_found(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, incompatible_region_for_multi_a_z(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_destination_kms_key(), tuple()} |
-    {error, invalid_region(), tuple()} |
-    {error, invalid_source_kms_key(), tuple()} |
-    {error, service_limit_exceeded(), tuple()} |
-    {error, source_backup_unavailable(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, copy_backup_errors(), tuple()}.
 copy_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_backup(Client, Input, []).
@@ -2220,17 +2517,7 @@ copy_backup(Client, Input)
 -spec copy_backup(map(), copy_backup_request(), proplists:proplist()) ->
     {ok, copy_backup_response(), tuple()} |
     {error, any()} |
-    {error, backup_not_found(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, incompatible_region_for_multi_a_z(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_destination_kms_key(), tuple()} |
-    {error, invalid_region(), tuple()} |
-    {error, invalid_source_kms_key(), tuple()} |
-    {error, service_limit_exceeded(), tuple()} |
-    {error, source_backup_unavailable(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, copy_backup_errors(), tuple()}.
 copy_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopyBackup">>, Input, Options).
@@ -2245,10 +2532,7 @@ copy_backup(Client, Input, Options)
 -spec copy_snapshot_and_update_volume(map(), copy_snapshot_and_update_volume_request()) ->
     {ok, copy_snapshot_and_update_volume_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, service_limit_exceeded(), tuple()}.
+    {error, copy_snapshot_and_update_volume_errors(), tuple()}.
 copy_snapshot_and_update_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_snapshot_and_update_volume(Client, Input, []).
@@ -2256,10 +2540,7 @@ copy_snapshot_and_update_volume(Client, Input)
 -spec copy_snapshot_and_update_volume(map(), copy_snapshot_and_update_volume_request(), proplists:proplist()) ->
     {ok, copy_snapshot_and_update_volume_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, service_limit_exceeded(), tuple()}.
+    {error, copy_snapshot_and_update_volume_errors(), tuple()}.
 copy_snapshot_and_update_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopySnapshotAndUpdateVolume">>, Input, Options).
@@ -2335,14 +2616,7 @@ copy_snapshot_and_update_volume(Client, Input, Options)
 -spec create_backup(map(), create_backup_request()) ->
     {ok, create_backup_response(), tuple()} |
     {error, any()} |
-    {error, backup_in_progress(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, service_limit_exceeded(), tuple()} |
-    {error, unsupported_operation(), tuple()} |
-    {error, volume_not_found(), tuple()}.
+    {error, create_backup_errors(), tuple()}.
 create_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_backup(Client, Input, []).
@@ -2350,14 +2624,7 @@ create_backup(Client, Input)
 -spec create_backup(map(), create_backup_request(), proplists:proplist()) ->
     {ok, create_backup_response(), tuple()} |
     {error, any()} |
-    {error, backup_in_progress(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, service_limit_exceeded(), tuple()} |
-    {error, unsupported_operation(), tuple()} |
-    {error, volume_not_found(), tuple()}.
+    {error, create_backup_errors(), tuple()}.
 create_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBackup">>, Input, Options).
@@ -2386,12 +2653,7 @@ create_backup(Client, Input, Options)
 -spec create_data_repository_association(map(), create_data_repository_association_request()) ->
     {ok, create_data_repository_association_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, service_limit_exceeded(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, create_data_repository_association_errors(), tuple()}.
 create_data_repository_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_repository_association(Client, Input, []).
@@ -2399,12 +2661,7 @@ create_data_repository_association(Client, Input)
 -spec create_data_repository_association(map(), create_data_repository_association_request(), proplists:proplist()) ->
     {ok, create_data_repository_association_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, service_limit_exceeded(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, create_data_repository_association_errors(), tuple()}.
 create_data_repository_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDataRepositoryAssociation">>, Input, Options).
@@ -2440,13 +2697,7 @@ create_data_repository_association(Client, Input, Options)
 -spec create_data_repository_task(map(), create_data_repository_task_request()) ->
     {ok, create_data_repository_task_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, data_repository_task_executing(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, service_limit_exceeded(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, create_data_repository_task_errors(), tuple()}.
 create_data_repository_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_repository_task(Client, Input, []).
@@ -2454,13 +2705,7 @@ create_data_repository_task(Client, Input)
 -spec create_data_repository_task(map(), create_data_repository_task_request(), proplists:proplist()) ->
     {ok, create_data_repository_task_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, data_repository_task_executing(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, service_limit_exceeded(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, create_data_repository_task_errors(), tuple()}.
 create_data_repository_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDataRepositoryTask">>, Input, Options).
@@ -2492,13 +2737,7 @@ create_data_repository_task(Client, Input, Options)
 -spec create_file_cache(map(), create_file_cache_request()) ->
     {ok, create_file_cache_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_network_settings(), tuple()} |
-    {error, invalid_per_unit_storage_throughput(), tuple()} |
-    {error, missing_file_cache_configuration(), tuple()} |
-    {error, service_limit_exceeded(), tuple()}.
+    {error, create_file_cache_errors(), tuple()}.
 create_file_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_file_cache(Client, Input, []).
@@ -2506,13 +2745,7 @@ create_file_cache(Client, Input)
 -spec create_file_cache(map(), create_file_cache_request(), proplists:proplist()) ->
     {ok, create_file_cache_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_network_settings(), tuple()} |
-    {error, invalid_per_unit_storage_throughput(), tuple()} |
-    {error, missing_file_cache_configuration(), tuple()} |
-    {error, service_limit_exceeded(), tuple()}.
+    {error, create_file_cache_errors(), tuple()}.
 create_file_cache(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFileCache">>, Input, Options).
@@ -2574,16 +2807,7 @@ create_file_cache(Client, Input, Options)
 -spec create_file_system(map(), create_file_system_request()) ->
     {ok, create_file_system_response(), tuple()} |
     {error, any()} |
-    {error, active_directory_error(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_export_path(), tuple()} |
-    {error, invalid_import_path(), tuple()} |
-    {error, invalid_network_settings(), tuple()} |
-    {error, invalid_per_unit_storage_throughput(), tuple()} |
-    {error, missing_file_system_configuration(), tuple()} |
-    {error, service_limit_exceeded(), tuple()}.
+    {error, create_file_system_errors(), tuple()}.
 create_file_system(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_file_system(Client, Input, []).
@@ -2591,16 +2815,7 @@ create_file_system(Client, Input)
 -spec create_file_system(map(), create_file_system_request(), proplists:proplist()) ->
     {ok, create_file_system_response(), tuple()} |
     {error, any()} |
-    {error, active_directory_error(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_export_path(), tuple()} |
-    {error, invalid_import_path(), tuple()} |
-    {error, invalid_network_settings(), tuple()} |
-    {error, invalid_per_unit_storage_throughput(), tuple()} |
-    {error, missing_file_system_configuration(), tuple()} |
-    {error, service_limit_exceeded(), tuple()}.
+    {error, create_file_system_errors(), tuple()}.
 create_file_system(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFileSystem">>, Input, Options).
@@ -2654,15 +2869,7 @@ create_file_system(Client, Input, Options)
 -spec create_file_system_from_backup(map(), create_file_system_from_backup_request()) ->
     {ok, create_file_system_from_backup_response(), tuple()} |
     {error, any()} |
-    {error, active_directory_error(), tuple()} |
-    {error, backup_not_found(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_network_settings(), tuple()} |
-    {error, invalid_per_unit_storage_throughput(), tuple()} |
-    {error, missing_file_system_configuration(), tuple()} |
-    {error, service_limit_exceeded(), tuple()}.
+    {error, create_file_system_from_backup_errors(), tuple()}.
 create_file_system_from_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_file_system_from_backup(Client, Input, []).
@@ -2670,15 +2877,7 @@ create_file_system_from_backup(Client, Input)
 -spec create_file_system_from_backup(map(), create_file_system_from_backup_request(), proplists:proplist()) ->
     {ok, create_file_system_from_backup_response(), tuple()} |
     {error, any()} |
-    {error, active_directory_error(), tuple()} |
-    {error, backup_not_found(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_network_settings(), tuple()} |
-    {error, invalid_per_unit_storage_throughput(), tuple()} |
-    {error, missing_file_system_configuration(), tuple()} |
-    {error, service_limit_exceeded(), tuple()}.
+    {error, create_file_system_from_backup_errors(), tuple()}.
 create_file_system_from_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFileSystemFromBackup">>, Input, Options).
@@ -2729,10 +2928,7 @@ create_file_system_from_backup(Client, Input, Options)
 -spec create_snapshot(map(), create_snapshot_request()) ->
     {ok, create_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, service_limit_exceeded(), tuple()} |
-    {error, volume_not_found(), tuple()}.
+    {error, create_snapshot_errors(), tuple()}.
 create_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot(Client, Input, []).
@@ -2740,10 +2936,7 @@ create_snapshot(Client, Input)
 -spec create_snapshot(map(), create_snapshot_request(), proplists:proplist()) ->
     {ok, create_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, service_limit_exceeded(), tuple()} |
-    {error, volume_not_found(), tuple()}.
+    {error, create_snapshot_errors(), tuple()}.
 create_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSnapshot">>, Input, Options).
@@ -2753,13 +2946,7 @@ create_snapshot(Client, Input, Options)
 -spec create_storage_virtual_machine(map(), create_storage_virtual_machine_request()) ->
     {ok, create_storage_virtual_machine_response(), tuple()} |
     {error, any()} |
-    {error, active_directory_error(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, service_limit_exceeded(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, create_storage_virtual_machine_errors(), tuple()}.
 create_storage_virtual_machine(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_storage_virtual_machine(Client, Input, []).
@@ -2767,13 +2954,7 @@ create_storage_virtual_machine(Client, Input)
 -spec create_storage_virtual_machine(map(), create_storage_virtual_machine_request(), proplists:proplist()) ->
     {ok, create_storage_virtual_machine_response(), tuple()} |
     {error, any()} |
-    {error, active_directory_error(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, service_limit_exceeded(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, create_storage_virtual_machine_errors(), tuple()}.
 create_storage_virtual_machine(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStorageVirtualMachine">>, Input, Options).
@@ -2782,14 +2963,7 @@ create_storage_virtual_machine(Client, Input, Options)
 -spec create_volume(map(), create_volume_request()) ->
     {ok, create_volume_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, missing_volume_configuration(), tuple()} |
-    {error, service_limit_exceeded(), tuple()} |
-    {error, storage_virtual_machine_not_found(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, create_volume_errors(), tuple()}.
 create_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_volume(Client, Input, []).
@@ -2797,14 +2971,7 @@ create_volume(Client, Input)
 -spec create_volume(map(), create_volume_request(), proplists:proplist()) ->
     {ok, create_volume_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, missing_volume_configuration(), tuple()} |
-    {error, service_limit_exceeded(), tuple()} |
-    {error, storage_virtual_machine_not_found(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, create_volume_errors(), tuple()}.
 create_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateVolume">>, Input, Options).
@@ -2814,14 +2981,7 @@ create_volume(Client, Input, Options)
 -spec create_volume_from_backup(map(), create_volume_from_backup_request()) ->
     {ok, create_volume_from_backup_response(), tuple()} |
     {error, any()} |
-    {error, backup_not_found(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, missing_volume_configuration(), tuple()} |
-    {error, service_limit_exceeded(), tuple()} |
-    {error, storage_virtual_machine_not_found(), tuple()}.
+    {error, create_volume_from_backup_errors(), tuple()}.
 create_volume_from_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_volume_from_backup(Client, Input, []).
@@ -2829,14 +2989,7 @@ create_volume_from_backup(Client, Input)
 -spec create_volume_from_backup(map(), create_volume_from_backup_request(), proplists:proplist()) ->
     {ok, create_volume_from_backup_response(), tuple()} |
     {error, any()} |
-    {error, backup_not_found(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, missing_volume_configuration(), tuple()} |
-    {error, service_limit_exceeded(), tuple()} |
-    {error, storage_virtual_machine_not_found(), tuple()}.
+    {error, create_volume_from_backup_errors(), tuple()}.
 create_volume_from_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateVolumeFromBackup">>, Input, Options).
@@ -2856,13 +3009,7 @@ create_volume_from_backup(Client, Input, Options)
 -spec delete_backup(map(), delete_backup_request()) ->
     {ok, delete_backup_response(), tuple()} |
     {error, any()} |
-    {error, backup_being_copied(), tuple()} |
-    {error, backup_in_progress(), tuple()} |
-    {error, backup_not_found(), tuple()} |
-    {error, backup_restoring(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, delete_backup_errors(), tuple()}.
 delete_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_backup(Client, Input, []).
@@ -2870,13 +3017,7 @@ delete_backup(Client, Input)
 -spec delete_backup(map(), delete_backup_request(), proplists:proplist()) ->
     {ok, delete_backup_response(), tuple()} |
     {error, any()} |
-    {error, backup_being_copied(), tuple()} |
-    {error, backup_in_progress(), tuple()} |
-    {error, backup_not_found(), tuple()} |
-    {error, backup_restoring(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, delete_backup_errors(), tuple()}.
 delete_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBackup">>, Input, Options).
@@ -2893,11 +3034,7 @@ delete_backup(Client, Input, Options)
 -spec delete_data_repository_association(map(), delete_data_repository_association_request()) ->
     {ok, delete_data_repository_association_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, data_repository_association_not_found(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, service_limit_exceeded(), tuple()}.
+    {error, delete_data_repository_association_errors(), tuple()}.
 delete_data_repository_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_data_repository_association(Client, Input, []).
@@ -2905,11 +3042,7 @@ delete_data_repository_association(Client, Input)
 -spec delete_data_repository_association(map(), delete_data_repository_association_request(), proplists:proplist()) ->
     {ok, delete_data_repository_association_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, data_repository_association_not_found(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, service_limit_exceeded(), tuple()}.
+    {error, delete_data_repository_association_errors(), tuple()}.
 delete_data_repository_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDataRepositoryAssociation">>, Input, Options).
@@ -2933,11 +3066,7 @@ delete_data_repository_association(Client, Input, Options)
 -spec delete_file_cache(map(), delete_file_cache_request()) ->
     {ok, delete_file_cache_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_cache_not_found(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, service_limit_exceeded(), tuple()}.
+    {error, delete_file_cache_errors(), tuple()}.
 delete_file_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_file_cache(Client, Input, []).
@@ -2945,11 +3074,7 @@ delete_file_cache(Client, Input)
 -spec delete_file_cache(map(), delete_file_cache_request(), proplists:proplist()) ->
     {ok, delete_file_cache_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_cache_not_found(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, service_limit_exceeded(), tuple()}.
+    {error, delete_file_cache_errors(), tuple()}.
 delete_file_cache(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFileCache">>, Input, Options).
@@ -3016,11 +3141,7 @@ delete_file_cache(Client, Input, Options)
 -spec delete_file_system(map(), delete_file_system_request()) ->
     {ok, delete_file_system_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, service_limit_exceeded(), tuple()}.
+    {error, delete_file_system_errors(), tuple()}.
 delete_file_system(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_file_system(Client, Input, []).
@@ -3028,11 +3149,7 @@ delete_file_system(Client, Input)
 -spec delete_file_system(map(), delete_file_system_request(), proplists:proplist()) ->
     {ok, delete_file_system_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, service_limit_exceeded(), tuple()}.
+    {error, delete_file_system_errors(), tuple()}.
 delete_file_system(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFileSystem">>, Input, Options).
@@ -3050,9 +3167,7 @@ delete_file_system(Client, Input, Options)
 -spec delete_snapshot(map(), delete_snapshot_request()) ->
     {ok, delete_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, snapshot_not_found(), tuple()}.
+    {error, delete_snapshot_errors(), tuple()}.
 delete_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_snapshot(Client, Input, []).
@@ -3060,9 +3175,7 @@ delete_snapshot(Client, Input)
 -spec delete_snapshot(map(), delete_snapshot_request(), proplists:proplist()) ->
     {ok, delete_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, snapshot_not_found(), tuple()}.
+    {error, delete_snapshot_errors(), tuple()}.
 delete_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSnapshot">>, Input, Options).
@@ -3076,10 +3189,7 @@ delete_snapshot(Client, Input, Options)
 -spec delete_storage_virtual_machine(map(), delete_storage_virtual_machine_request()) ->
     {ok, delete_storage_virtual_machine_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, storage_virtual_machine_not_found(), tuple()}.
+    {error, delete_storage_virtual_machine_errors(), tuple()}.
 delete_storage_virtual_machine(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_storage_virtual_machine(Client, Input, []).
@@ -3087,10 +3197,7 @@ delete_storage_virtual_machine(Client, Input)
 -spec delete_storage_virtual_machine(map(), delete_storage_virtual_machine_request(), proplists:proplist()) ->
     {ok, delete_storage_virtual_machine_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, storage_virtual_machine_not_found(), tuple()}.
+    {error, delete_storage_virtual_machine_errors(), tuple()}.
 delete_storage_virtual_machine(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteStorageVirtualMachine">>, Input, Options).
@@ -3100,11 +3207,7 @@ delete_storage_virtual_machine(Client, Input, Options)
 -spec delete_volume(map(), delete_volume_request()) ->
     {ok, delete_volume_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, service_limit_exceeded(), tuple()} |
-    {error, volume_not_found(), tuple()}.
+    {error, delete_volume_errors(), tuple()}.
 delete_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_volume(Client, Input, []).
@@ -3112,11 +3215,7 @@ delete_volume(Client, Input)
 -spec delete_volume(map(), delete_volume_request(), proplists:proplist()) ->
     {ok, delete_volume_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, service_limit_exceeded(), tuple()} |
-    {error, volume_not_found(), tuple()}.
+    {error, delete_volume_errors(), tuple()}.
 delete_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteVolume">>, Input, Options).
@@ -3158,11 +3257,7 @@ delete_volume(Client, Input, Options)
 -spec describe_backups(map(), describe_backups_request()) ->
     {ok, describe_backups_response(), tuple()} |
     {error, any()} |
-    {error, backup_not_found(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, volume_not_found(), tuple()}.
+    {error, describe_backups_errors(), tuple()}.
 describe_backups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_backups(Client, Input, []).
@@ -3170,11 +3265,7 @@ describe_backups(Client, Input)
 -spec describe_backups(map(), describe_backups_request(), proplists:proplist()) ->
     {ok, describe_backups_response(), tuple()} |
     {error, any()} |
-    {error, backup_not_found(), tuple()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, volume_not_found(), tuple()}.
+    {error, describe_backups_errors(), tuple()}.
 describe_backups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBackups">>, Input, Options).
@@ -3214,11 +3305,7 @@ describe_backups(Client, Input, Options)
 -spec describe_data_repository_associations(map(), describe_data_repository_associations_request()) ->
     {ok, describe_data_repository_associations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, data_repository_association_not_found(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_data_repository_type(), tuple()}.
+    {error, describe_data_repository_associations_errors(), tuple()}.
 describe_data_repository_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_data_repository_associations(Client, Input, []).
@@ -3226,11 +3313,7 @@ describe_data_repository_associations(Client, Input)
 -spec describe_data_repository_associations(map(), describe_data_repository_associations_request(), proplists:proplist()) ->
     {ok, describe_data_repository_associations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, data_repository_association_not_found(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_data_repository_type(), tuple()}.
+    {error, describe_data_repository_associations_errors(), tuple()}.
 describe_data_repository_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDataRepositoryAssociations">>, Input, Options).
@@ -3258,10 +3341,7 @@ describe_data_repository_associations(Client, Input, Options)
 -spec describe_data_repository_tasks(map(), describe_data_repository_tasks_request()) ->
     {ok, describe_data_repository_tasks_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, data_repository_task_not_found(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_data_repository_tasks_errors(), tuple()}.
 describe_data_repository_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_data_repository_tasks(Client, Input, []).
@@ -3269,10 +3349,7 @@ describe_data_repository_tasks(Client, Input)
 -spec describe_data_repository_tasks(map(), describe_data_repository_tasks_request(), proplists:proplist()) ->
     {ok, describe_data_repository_tasks_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, data_repository_task_not_found(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_data_repository_tasks_errors(), tuple()}.
 describe_data_repository_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDataRepositoryTasks">>, Input, Options).
@@ -3313,9 +3390,7 @@ describe_data_repository_tasks(Client, Input, Options)
 -spec describe_file_caches(map(), describe_file_caches_request()) ->
     {ok, describe_file_caches_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_cache_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_file_caches_errors(), tuple()}.
 describe_file_caches(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_file_caches(Client, Input, []).
@@ -3323,9 +3398,7 @@ describe_file_caches(Client, Input)
 -spec describe_file_caches(map(), describe_file_caches_request(), proplists:proplist()) ->
     {ok, describe_file_caches_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_cache_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_file_caches_errors(), tuple()}.
 describe_file_caches(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFileCaches">>, Input, Options).
@@ -3340,9 +3413,7 @@ describe_file_caches(Client, Input, Options)
 -spec describe_file_system_aliases(map(), describe_file_system_aliases_request()) ->
     {ok, describe_file_system_aliases_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_file_system_aliases_errors(), tuple()}.
 describe_file_system_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_file_system_aliases(Client, Input, []).
@@ -3350,9 +3421,7 @@ describe_file_system_aliases(Client, Input)
 -spec describe_file_system_aliases(map(), describe_file_system_aliases_request(), proplists:proplist()) ->
     {ok, describe_file_system_aliases_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_file_system_aliases_errors(), tuple()}.
 describe_file_system_aliases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFileSystemAliases">>, Input, Options).
@@ -3393,9 +3462,7 @@ describe_file_system_aliases(Client, Input, Options)
 -spec describe_file_systems(map(), describe_file_systems_request()) ->
     {ok, describe_file_systems_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_file_systems_errors(), tuple()}.
 describe_file_systems(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_file_systems(Client, Input, []).
@@ -3403,9 +3470,7 @@ describe_file_systems(Client, Input)
 -spec describe_file_systems(map(), describe_file_systems_request(), proplists:proplist()) ->
     {ok, describe_file_systems_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_file_systems_errors(), tuple()}.
 describe_file_systems(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFileSystems">>, Input, Options).
@@ -3421,8 +3486,7 @@ describe_file_systems(Client, Input, Options)
 -spec describe_shared_vpc_configuration(map(), describe_shared_vpc_configuration_request()) ->
     {ok, describe_shared_vpc_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_shared_vpc_configuration_errors(), tuple()}.
 describe_shared_vpc_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_shared_vpc_configuration(Client, Input, []).
@@ -3430,8 +3494,7 @@ describe_shared_vpc_configuration(Client, Input)
 -spec describe_shared_vpc_configuration(map(), describe_shared_vpc_configuration_request(), proplists:proplist()) ->
     {ok, describe_shared_vpc_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, describe_shared_vpc_configuration_errors(), tuple()}.
 describe_shared_vpc_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSharedVpcConfiguration">>, Input, Options).
@@ -3474,9 +3537,7 @@ describe_shared_vpc_configuration(Client, Input, Options)
 -spec describe_snapshots(map(), describe_snapshots_request()) ->
     {ok, describe_snapshots_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, snapshot_not_found(), tuple()}.
+    {error, describe_snapshots_errors(), tuple()}.
 describe_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_snapshots(Client, Input, []).
@@ -3484,9 +3545,7 @@ describe_snapshots(Client, Input)
 -spec describe_snapshots(map(), describe_snapshots_request(), proplists:proplist()) ->
     {ok, describe_snapshots_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, snapshot_not_found(), tuple()}.
+    {error, describe_snapshots_errors(), tuple()}.
 describe_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSnapshots">>, Input, Options).
@@ -3496,9 +3555,7 @@ describe_snapshots(Client, Input, Options)
 -spec describe_storage_virtual_machines(map(), describe_storage_virtual_machines_request()) ->
     {ok, describe_storage_virtual_machines_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, storage_virtual_machine_not_found(), tuple()}.
+    {error, describe_storage_virtual_machines_errors(), tuple()}.
 describe_storage_virtual_machines(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_storage_virtual_machines(Client, Input, []).
@@ -3506,9 +3563,7 @@ describe_storage_virtual_machines(Client, Input)
 -spec describe_storage_virtual_machines(map(), describe_storage_virtual_machines_request(), proplists:proplist()) ->
     {ok, describe_storage_virtual_machines_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, storage_virtual_machine_not_found(), tuple()}.
+    {error, describe_storage_virtual_machines_errors(), tuple()}.
 describe_storage_virtual_machines(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStorageVirtualMachines">>, Input, Options).
@@ -3518,9 +3573,7 @@ describe_storage_virtual_machines(Client, Input, Options)
 -spec describe_volumes(map(), describe_volumes_request()) ->
     {ok, describe_volumes_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, volume_not_found(), tuple()}.
+    {error, describe_volumes_errors(), tuple()}.
 describe_volumes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_volumes(Client, Input, []).
@@ -3528,9 +3581,7 @@ describe_volumes(Client, Input)
 -spec describe_volumes(map(), describe_volumes_request(), proplists:proplist()) ->
     {ok, describe_volumes_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, volume_not_found(), tuple()}.
+    {error, describe_volumes_errors(), tuple()}.
 describe_volumes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeVolumes">>, Input, Options).
@@ -3553,9 +3604,7 @@ describe_volumes(Client, Input, Options)
 -spec disassociate_file_system_aliases(map(), disassociate_file_system_aliases_request()) ->
     {ok, disassociate_file_system_aliases_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, disassociate_file_system_aliases_errors(), tuple()}.
 disassociate_file_system_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_file_system_aliases(Client, Input, []).
@@ -3563,9 +3612,7 @@ disassociate_file_system_aliases(Client, Input)
 -spec disassociate_file_system_aliases(map(), disassociate_file_system_aliases_request(), proplists:proplist()) ->
     {ok, disassociate_file_system_aliases_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, disassociate_file_system_aliases_errors(), tuple()}.
 disassociate_file_system_aliases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateFileSystemAliases">>, Input, Options).
@@ -3599,11 +3646,7 @@ disassociate_file_system_aliases(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, not_service_resource_error(), tuple()} |
-    {error, resource_does_not_support_tagging(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -3611,11 +3654,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, not_service_resource_error(), tuple()} |
-    {error, resource_does_not_support_tagging(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -3625,11 +3664,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec release_file_system_nfs_v3_locks(map(), release_file_system_nfs_v3_locks_request()) ->
     {ok, release_file_system_nfs_v3_locks_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, service_limit_exceeded(), tuple()}.
+    {error, release_file_system_nfs_v3_locks_errors(), tuple()}.
 release_file_system_nfs_v3_locks(Client, Input)
   when is_map(Client), is_map(Input) ->
     release_file_system_nfs_v3_locks(Client, Input, []).
@@ -3637,11 +3672,7 @@ release_file_system_nfs_v3_locks(Client, Input)
 -spec release_file_system_nfs_v3_locks(map(), release_file_system_nfs_v3_locks_request(), proplists:proplist()) ->
     {ok, release_file_system_nfs_v3_locks_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, service_limit_exceeded(), tuple()}.
+    {error, release_file_system_nfs_v3_locks_errors(), tuple()}.
 release_file_system_nfs_v3_locks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ReleaseFileSystemNfsV3Locks">>, Input, Options).
@@ -3652,9 +3683,7 @@ release_file_system_nfs_v3_locks(Client, Input, Options)
 -spec restore_volume_from_snapshot(map(), restore_volume_from_snapshot_request()) ->
     {ok, restore_volume_from_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, volume_not_found(), tuple()}.
+    {error, restore_volume_from_snapshot_errors(), tuple()}.
 restore_volume_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_volume_from_snapshot(Client, Input, []).
@@ -3662,9 +3691,7 @@ restore_volume_from_snapshot(Client, Input)
 -spec restore_volume_from_snapshot(map(), restore_volume_from_snapshot_request(), proplists:proplist()) ->
     {ok, restore_volume_from_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, volume_not_found(), tuple()}.
+    {error, restore_volume_from_snapshot_errors(), tuple()}.
 restore_volume_from_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreVolumeFromSnapshot">>, Input, Options).
@@ -3676,9 +3703,7 @@ restore_volume_from_snapshot(Client, Input, Options)
 -spec start_misconfigured_state_recovery(map(), start_misconfigured_state_recovery_request()) ->
     {ok, start_misconfigured_state_recovery_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, start_misconfigured_state_recovery_errors(), tuple()}.
 start_misconfigured_state_recovery(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_misconfigured_state_recovery(Client, Input, []).
@@ -3686,9 +3711,7 @@ start_misconfigured_state_recovery(Client, Input)
 -spec start_misconfigured_state_recovery(map(), start_misconfigured_state_recovery_request(), proplists:proplist()) ->
     {ok, start_misconfigured_state_recovery_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, start_misconfigured_state_recovery_errors(), tuple()}.
 start_misconfigured_state_recovery(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMisconfiguredStateRecovery">>, Input, Options).
@@ -3697,11 +3720,7 @@ start_misconfigured_state_recovery(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, not_service_resource_error(), tuple()} |
-    {error, resource_does_not_support_tagging(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -3709,11 +3728,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, not_service_resource_error(), tuple()} |
-    {error, resource_does_not_support_tagging(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -3722,11 +3737,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, not_service_resource_error(), tuple()} |
-    {error, resource_does_not_support_tagging(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -3734,11 +3745,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, not_service_resource_error(), tuple()} |
-    {error, resource_does_not_support_tagging(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -3752,11 +3759,7 @@ untag_resource(Client, Input, Options)
 -spec update_data_repository_association(map(), update_data_repository_association_request()) ->
     {ok, update_data_repository_association_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, data_repository_association_not_found(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, service_limit_exceeded(), tuple()}.
+    {error, update_data_repository_association_errors(), tuple()}.
 update_data_repository_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_data_repository_association(Client, Input, []).
@@ -3764,11 +3767,7 @@ update_data_repository_association(Client, Input)
 -spec update_data_repository_association(map(), update_data_repository_association_request(), proplists:proplist()) ->
     {ok, update_data_repository_association_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, data_repository_association_not_found(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, service_limit_exceeded(), tuple()}.
+    {error, update_data_repository_association_errors(), tuple()}.
 update_data_repository_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDataRepositoryAssociation">>, Input, Options).
@@ -3779,13 +3778,7 @@ update_data_repository_association(Client, Input, Options)
 -spec update_file_cache(map(), update_file_cache_request()) ->
     {ok, update_file_cache_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_cache_not_found(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, missing_file_cache_configuration(), tuple()} |
-    {error, service_limit_exceeded(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, update_file_cache_errors(), tuple()}.
 update_file_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_file_cache(Client, Input, []).
@@ -3793,13 +3786,7 @@ update_file_cache(Client, Input)
 -spec update_file_cache(map(), update_file_cache_request(), proplists:proplist()) ->
     {ok, update_file_cache_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_cache_not_found(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, missing_file_cache_configuration(), tuple()} |
-    {error, service_limit_exceeded(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, update_file_cache_errors(), tuple()}.
 update_file_cache(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFileCache">>, Input, Options).
@@ -3902,14 +3889,7 @@ update_file_cache(Client, Input, Options)
 -spec update_file_system(map(), update_file_system_request()) ->
     {ok, update_file_system_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_network_settings(), tuple()} |
-    {error, missing_file_system_configuration(), tuple()} |
-    {error, service_limit_exceeded(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, update_file_system_errors(), tuple()}.
 update_file_system(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_file_system(Client, Input, []).
@@ -3917,14 +3897,7 @@ update_file_system(Client, Input)
 -spec update_file_system(map(), update_file_system_request(), proplists:proplist()) ->
     {ok, update_file_system_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, file_system_not_found(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_network_settings(), tuple()} |
-    {error, missing_file_system_configuration(), tuple()} |
-    {error, service_limit_exceeded(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, update_file_system_errors(), tuple()}.
 update_file_system(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFileSystem">>, Input, Options).
@@ -3951,9 +3924,7 @@ update_file_system(Client, Input, Options)
 -spec update_shared_vpc_configuration(map(), update_shared_vpc_configuration_request()) ->
     {ok, update_shared_vpc_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, update_shared_vpc_configuration_errors(), tuple()}.
 update_shared_vpc_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_shared_vpc_configuration(Client, Input, []).
@@ -3961,9 +3932,7 @@ update_shared_vpc_configuration(Client, Input)
 -spec update_shared_vpc_configuration(map(), update_shared_vpc_configuration_request(), proplists:proplist()) ->
     {ok, update_shared_vpc_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()}.
+    {error, update_shared_vpc_configuration_errors(), tuple()}.
 update_shared_vpc_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSharedVpcConfiguration">>, Input, Options).
@@ -3972,9 +3941,7 @@ update_shared_vpc_configuration(Client, Input, Options)
 -spec update_snapshot(map(), update_snapshot_request()) ->
     {ok, update_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, snapshot_not_found(), tuple()}.
+    {error, update_snapshot_errors(), tuple()}.
 update_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_snapshot(Client, Input, []).
@@ -3982,9 +3949,7 @@ update_snapshot(Client, Input)
 -spec update_snapshot(map(), update_snapshot_request(), proplists:proplist()) ->
     {ok, update_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, snapshot_not_found(), tuple()}.
+    {error, update_snapshot_errors(), tuple()}.
 update_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSnapshot">>, Input, Options).
@@ -3993,11 +3958,7 @@ update_snapshot(Client, Input, Options)
 -spec update_storage_virtual_machine(map(), update_storage_virtual_machine_request()) ->
     {ok, update_storage_virtual_machine_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, storage_virtual_machine_not_found(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, update_storage_virtual_machine_errors(), tuple()}.
 update_storage_virtual_machine(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_storage_virtual_machine(Client, Input, []).
@@ -4005,11 +3966,7 @@ update_storage_virtual_machine(Client, Input)
 -spec update_storage_virtual_machine(map(), update_storage_virtual_machine_request(), proplists:proplist()) ->
     {ok, update_storage_virtual_machine_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, storage_virtual_machine_not_found(), tuple()} |
-    {error, unsupported_operation(), tuple()}.
+    {error, update_storage_virtual_machine_errors(), tuple()}.
 update_storage_virtual_machine(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateStorageVirtualMachine">>, Input, Options).
@@ -4019,11 +3976,7 @@ update_storage_virtual_machine(Client, Input, Options)
 -spec update_volume(map(), update_volume_request()) ->
     {ok, update_volume_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, missing_volume_configuration(), tuple()} |
-    {error, volume_not_found(), tuple()}.
+    {error, update_volume_errors(), tuple()}.
 update_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_volume(Client, Input, []).
@@ -4031,11 +3984,7 @@ update_volume(Client, Input)
 -spec update_volume(map(), update_volume_request(), proplists:proplist()) ->
     {ok, update_volume_response(), tuple()} |
     {error, any()} |
-    {error, bad_request(), tuple()} |
-    {error, incompatible_parameter_error(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, missing_volume_configuration(), tuple()} |
-    {error, volume_not_found(), tuple()}.
+    {error, update_volume_errors(), tuple()}.
 update_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateVolume">>, Input, Options).

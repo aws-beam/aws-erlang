@@ -189,6 +189,25 @@
 %% }
 -type trimmed_data_access_exception() :: #{binary() => any()}.
 
+-type describe_stream_errors() ::
+    resource_not_found_exception() | 
+    internal_server_error().
+
+-type get_records_errors() ::
+    trimmed_data_access_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    expired_iterator_exception().
+
+-type get_shard_iterator_errors() ::
+    trimmed_data_access_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error().
+
+-type list_streams_errors() ::
+    resource_not_found_exception() | 
+    internal_server_error().
 
 %%====================================================================
 %% API
@@ -213,8 +232,7 @@
 -spec describe_stream(map(), describe_stream_input()) ->
     {ok, describe_stream_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_stream_errors(), tuple()}.
 describe_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stream(Client, Input, []).
@@ -222,8 +240,7 @@ describe_stream(Client, Input)
 -spec describe_stream(map(), describe_stream_input(), proplists:proplist()) ->
     {ok, describe_stream_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_stream_errors(), tuple()}.
 describe_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStream">>, Input, Options).
@@ -247,11 +264,7 @@ describe_stream(Client, Input, Options)
 -spec get_records(map(), get_records_input()) ->
     {ok, get_records_output(), tuple()} |
     {error, any()} |
-    {error, expired_iterator_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, trimmed_data_access_exception(), tuple()}.
+    {error, get_records_errors(), tuple()}.
 get_records(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_records(Client, Input, []).
@@ -259,11 +272,7 @@ get_records(Client, Input)
 -spec get_records(map(), get_records_input(), proplists:proplist()) ->
     {ok, get_records_output(), tuple()} |
     {error, any()} |
-    {error, expired_iterator_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, trimmed_data_access_exception(), tuple()}.
+    {error, get_records_errors(), tuple()}.
 get_records(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRecords">>, Input, Options).
@@ -280,9 +289,7 @@ get_records(Client, Input, Options)
 -spec get_shard_iterator(map(), get_shard_iterator_input()) ->
     {ok, get_shard_iterator_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, trimmed_data_access_exception(), tuple()}.
+    {error, get_shard_iterator_errors(), tuple()}.
 get_shard_iterator(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_shard_iterator(Client, Input, []).
@@ -290,9 +297,7 @@ get_shard_iterator(Client, Input)
 -spec get_shard_iterator(map(), get_shard_iterator_input(), proplists:proplist()) ->
     {ok, get_shard_iterator_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, trimmed_data_access_exception(), tuple()}.
+    {error, get_shard_iterator_errors(), tuple()}.
 get_shard_iterator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetShardIterator">>, Input, Options).
@@ -309,8 +314,7 @@ get_shard_iterator(Client, Input, Options)
 -spec list_streams(map(), list_streams_input()) ->
     {ok, list_streams_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_streams_errors(), tuple()}.
 list_streams(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_streams(Client, Input, []).
@@ -318,8 +322,7 @@ list_streams(Client, Input)
 -spec list_streams(map(), list_streams_input(), proplists:proplist()) ->
     {ok, list_streams_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_streams_errors(), tuple()}.
 list_streams(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStreams">>, Input, Options).

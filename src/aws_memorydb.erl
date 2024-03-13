@@ -1336,6 +1336,296 @@
 %% }
 -type update_cluster_response() :: #{binary() => any()}.
 
+-type batch_update_cluster_errors() ::
+    invalid_parameter_value_exception() | 
+    service_update_not_found_fault().
+
+-type copy_snapshot_errors() ::
+    snapshot_already_exists_fault() | 
+    service_linked_role_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_snapshot_state_fault() | 
+    tag_quota_per_resource_exceeded() | 
+    invalid_parameter_combination_exception() | 
+    snapshot_not_found_fault() | 
+    snapshot_quota_exceeded_fault().
+
+-type create_acl_errors() ::
+    acl_quota_exceeded_fault() | 
+    default_user_required() | 
+    acl_already_exists_fault() | 
+    duplicate_user_name_fault() | 
+    invalid_parameter_value_exception() | 
+    tag_quota_per_resource_exceeded() | 
+    user_not_found_fault().
+
+-type create_cluster_errors() ::
+    node_quota_for_cluster_exceeded_fault() | 
+    parameter_group_not_found_fault() | 
+    invalid_credentials_exception() | 
+    cluster_already_exists_fault() | 
+    insufficient_cluster_capacity_fault() | 
+    service_linked_role_not_found_fault() | 
+    cluster_quota_for_customer_exceeded_fault() | 
+    invalid_acl_state_fault() | 
+    invalid_parameter_value_exception() | 
+    shards_per_cluster_quota_exceeded_fault() | 
+    tag_quota_per_resource_exceeded() | 
+    invalid_vpc_network_state_fault() | 
+    invalid_parameter_combination_exception() | 
+    acl_not_found_fault() | 
+    subnet_group_not_found_fault() | 
+    node_quota_for_customer_exceeded_fault().
+
+-type create_parameter_group_errors() ::
+    service_linked_role_not_found_fault() | 
+    parameter_group_quota_exceeded_fault() | 
+    parameter_group_already_exists_fault() | 
+    invalid_parameter_value_exception() | 
+    tag_quota_per_resource_exceeded() | 
+    invalid_parameter_combination_exception() | 
+    invalid_parameter_group_state_fault().
+
+-type create_snapshot_errors() ::
+    invalid_cluster_state_fault() | 
+    snapshot_already_exists_fault() | 
+    service_linked_role_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    tag_quota_per_resource_exceeded() | 
+    invalid_parameter_combination_exception() | 
+    cluster_not_found_fault() | 
+    snapshot_quota_exceeded_fault().
+
+-type create_subnet_group_errors() ::
+    subnet_quota_exceeded_fault() | 
+    service_linked_role_not_found_fault() | 
+    subnet_group_quota_exceeded_fault() | 
+    subnet_not_allowed_fault() | 
+    tag_quota_per_resource_exceeded() | 
+    invalid_subnet() | 
+    subnet_group_already_exists_fault().
+
+-type create_user_errors() ::
+    duplicate_user_name_fault() | 
+    user_quota_exceeded_fault() | 
+    user_already_exists_fault() | 
+    invalid_parameter_value_exception() | 
+    tag_quota_per_resource_exceeded() | 
+    invalid_parameter_combination_exception().
+
+-type delete_acl_errors() ::
+    invalid_acl_state_fault() | 
+    invalid_parameter_value_exception() | 
+    acl_not_found_fault().
+
+-type delete_cluster_errors() ::
+    invalid_cluster_state_fault() | 
+    snapshot_already_exists_fault() | 
+    service_linked_role_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception() | 
+    cluster_not_found_fault().
+
+-type delete_parameter_group_errors() ::
+    parameter_group_not_found_fault() | 
+    service_linked_role_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception() | 
+    invalid_parameter_group_state_fault().
+
+-type delete_snapshot_errors() ::
+    service_linked_role_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_snapshot_state_fault() | 
+    invalid_parameter_combination_exception() | 
+    snapshot_not_found_fault().
+
+-type delete_subnet_group_errors() ::
+    subnet_group_in_use_fault() | 
+    service_linked_role_not_found_fault() | 
+    subnet_group_not_found_fault().
+
+-type delete_user_errors() ::
+    invalid_parameter_value_exception() | 
+    user_not_found_fault() | 
+    invalid_user_state_fault().
+
+-type describe_acls_errors() ::
+    invalid_parameter_combination_exception() | 
+    acl_not_found_fault().
+
+-type describe_clusters_errors() ::
+    service_linked_role_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception() | 
+    cluster_not_found_fault().
+
+-type describe_engine_versions_errors() ::
+    service_linked_role_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception().
+
+-type describe_events_errors() ::
+    service_linked_role_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception().
+
+-type describe_parameter_groups_errors() ::
+    parameter_group_not_found_fault() | 
+    service_linked_role_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception().
+
+-type describe_parameters_errors() ::
+    parameter_group_not_found_fault() | 
+    service_linked_role_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception().
+
+-type describe_reserved_nodes_errors() ::
+    service_linked_role_not_found_fault() | 
+    reserved_node_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception().
+
+-type describe_reserved_nodes_offerings_errors() ::
+    reserved_nodes_offering_not_found_fault() | 
+    service_linked_role_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception().
+
+-type describe_service_updates_errors() ::
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception().
+
+-type describe_snapshots_errors() ::
+    service_linked_role_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception() | 
+    snapshot_not_found_fault().
+
+-type describe_subnet_groups_errors() ::
+    service_linked_role_not_found_fault() | 
+    subnet_group_not_found_fault().
+
+-type describe_users_errors() ::
+    invalid_parameter_combination_exception() | 
+    user_not_found_fault().
+
+-type failover_shard_errors() ::
+    invalid_cluster_state_fault() | 
+    shard_not_found_fault() | 
+    api_call_rate_for_customer_exceeded_fault() | 
+    invalid_parameter_value_exception() | 
+    test_failover_not_available_fault() | 
+    invalid_parameter_combination_exception() | 
+    cluster_not_found_fault() | 
+    invalid_kms_key_fault().
+
+-type list_allowed_node_type_updates_errors() ::
+    service_linked_role_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception() | 
+    cluster_not_found_fault().
+
+-type list_tags_errors() ::
+    parameter_group_not_found_fault() | 
+    invalid_cluster_state_fault() | 
+    service_linked_role_not_found_fault() | 
+    invalid_arn_fault() | 
+    acl_not_found_fault() | 
+    subnet_group_not_found_fault() | 
+    cluster_not_found_fault() | 
+    user_not_found_fault() | 
+    snapshot_not_found_fault().
+
+-type purchase_reserved_nodes_offering_errors() ::
+    reserved_node_quota_exceeded_fault() | 
+    reserved_nodes_offering_not_found_fault() | 
+    service_linked_role_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    tag_quota_per_resource_exceeded() | 
+    invalid_parameter_combination_exception() | 
+    reserved_node_already_exists_fault().
+
+-type reset_parameter_group_errors() ::
+    parameter_group_not_found_fault() | 
+    service_linked_role_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception() | 
+    invalid_parameter_group_state_fault().
+
+-type tag_resource_errors() ::
+    parameter_group_not_found_fault() | 
+    invalid_cluster_state_fault() | 
+    service_linked_role_not_found_fault() | 
+    invalid_arn_fault() | 
+    tag_quota_per_resource_exceeded() | 
+    acl_not_found_fault() | 
+    subnet_group_not_found_fault() | 
+    cluster_not_found_fault() | 
+    user_not_found_fault() | 
+    snapshot_not_found_fault().
+
+-type untag_resource_errors() ::
+    parameter_group_not_found_fault() | 
+    invalid_cluster_state_fault() | 
+    service_linked_role_not_found_fault() | 
+    invalid_arn_fault() | 
+    tag_not_found_fault() | 
+    acl_not_found_fault() | 
+    subnet_group_not_found_fault() | 
+    cluster_not_found_fault() | 
+    user_not_found_fault() | 
+    snapshot_not_found_fault().
+
+-type update_acl_errors() ::
+    default_user_required() | 
+    duplicate_user_name_fault() | 
+    invalid_acl_state_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception() | 
+    acl_not_found_fault() | 
+    user_not_found_fault().
+
+-type update_cluster_errors() ::
+    node_quota_for_cluster_exceeded_fault() | 
+    parameter_group_not_found_fault() | 
+    invalid_node_state_fault() | 
+    invalid_cluster_state_fault() | 
+    service_linked_role_not_found_fault() | 
+    cluster_quota_for_customer_exceeded_fault() | 
+    invalid_acl_state_fault() | 
+    invalid_parameter_value_exception() | 
+    no_operation_fault() | 
+    shards_per_cluster_quota_exceeded_fault() | 
+    invalid_vpc_network_state_fault() | 
+    invalid_parameter_combination_exception() | 
+    acl_not_found_fault() | 
+    cluster_not_found_fault() | 
+    invalid_kms_key_fault() | 
+    node_quota_for_customer_exceeded_fault().
+
+-type update_parameter_group_errors() ::
+    parameter_group_not_found_fault() | 
+    service_linked_role_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception() | 
+    invalid_parameter_group_state_fault().
+
+-type update_subnet_group_errors() ::
+    subnet_quota_exceeded_fault() | 
+    service_linked_role_not_found_fault() | 
+    subnet_in_use() | 
+    subnet_not_allowed_fault() | 
+    subnet_group_not_found_fault() | 
+    invalid_subnet().
+
+-type update_user_errors() ::
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception() | 
+    user_not_found_fault() | 
+    invalid_user_state_fault().
 
 %%====================================================================
 %% API
@@ -1349,8 +1639,7 @@
 -spec batch_update_cluster(map(), batch_update_cluster_request()) ->
     {ok, batch_update_cluster_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_update_not_found_fault(), tuple()}.
+    {error, batch_update_cluster_errors(), tuple()}.
 batch_update_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_update_cluster(Client, Input, []).
@@ -1358,8 +1647,7 @@ batch_update_cluster(Client, Input)
 -spec batch_update_cluster(map(), batch_update_cluster_request(), proplists:proplist()) ->
     {ok, batch_update_cluster_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_update_not_found_fault(), tuple()}.
+    {error, batch_update_cluster_errors(), tuple()}.
 batch_update_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchUpdateCluster">>, Input, Options).
@@ -1368,14 +1656,7 @@ batch_update_cluster(Client, Input, Options)
 -spec copy_snapshot(map(), copy_snapshot_request()) ->
     {ok, copy_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_snapshot_state_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, snapshot_already_exists_fault(), tuple()} |
-    {error, snapshot_not_found_fault(), tuple()} |
-    {error, snapshot_quota_exceeded_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()}.
+    {error, copy_snapshot_errors(), tuple()}.
 copy_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_snapshot(Client, Input, []).
@@ -1383,14 +1664,7 @@ copy_snapshot(Client, Input)
 -spec copy_snapshot(map(), copy_snapshot_request(), proplists:proplist()) ->
     {ok, copy_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_snapshot_state_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, snapshot_already_exists_fault(), tuple()} |
-    {error, snapshot_not_found_fault(), tuple()} |
-    {error, snapshot_quota_exceeded_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()}.
+    {error, copy_snapshot_errors(), tuple()}.
 copy_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopySnapshot">>, Input, Options).
@@ -1403,13 +1677,7 @@ copy_snapshot(Client, Input, Options)
 -spec create_acl(map(), create_acl_request()) ->
     {ok, create_acl_response(), tuple()} |
     {error, any()} |
-    {error, acl_already_exists_fault(), tuple()} |
-    {error, acl_quota_exceeded_fault(), tuple()} |
-    {error, default_user_required(), tuple()} |
-    {error, duplicate_user_name_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, create_acl_errors(), tuple()}.
 create_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_acl(Client, Input, []).
@@ -1417,13 +1685,7 @@ create_acl(Client, Input)
 -spec create_acl(map(), create_acl_request(), proplists:proplist()) ->
     {ok, create_acl_response(), tuple()} |
     {error, any()} |
-    {error, acl_already_exists_fault(), tuple()} |
-    {error, acl_quota_exceeded_fault(), tuple()} |
-    {error, default_user_required(), tuple()} |
-    {error, duplicate_user_name_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, create_acl_errors(), tuple()}.
 create_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateACL">>, Input, Options).
@@ -1434,22 +1696,7 @@ create_acl(Client, Input, Options)
 -spec create_cluster(map(), create_cluster_request()) ->
     {ok, create_cluster_response(), tuple()} |
     {error, any()} |
-    {error, acl_not_found_fault(), tuple()} |
-    {error, cluster_already_exists_fault(), tuple()} |
-    {error, cluster_quota_for_customer_exceeded_fault(), tuple()} |
-    {error, insufficient_cluster_capacity_fault(), tuple()} |
-    {error, invalid_acl_state_fault(), tuple()} |
-    {error, invalid_credentials_exception(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, node_quota_for_cluster_exceeded_fault(), tuple()} |
-    {error, node_quota_for_customer_exceeded_fault(), tuple()} |
-    {error, parameter_group_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, shards_per_cluster_quota_exceeded_fault(), tuple()} |
-    {error, subnet_group_not_found_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()}.
+    {error, create_cluster_errors(), tuple()}.
 create_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cluster(Client, Input, []).
@@ -1457,22 +1704,7 @@ create_cluster(Client, Input)
 -spec create_cluster(map(), create_cluster_request(), proplists:proplist()) ->
     {ok, create_cluster_response(), tuple()} |
     {error, any()} |
-    {error, acl_not_found_fault(), tuple()} |
-    {error, cluster_already_exists_fault(), tuple()} |
-    {error, cluster_quota_for_customer_exceeded_fault(), tuple()} |
-    {error, insufficient_cluster_capacity_fault(), tuple()} |
-    {error, invalid_acl_state_fault(), tuple()} |
-    {error, invalid_credentials_exception(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, node_quota_for_cluster_exceeded_fault(), tuple()} |
-    {error, node_quota_for_customer_exceeded_fault(), tuple()} |
-    {error, parameter_group_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, shards_per_cluster_quota_exceeded_fault(), tuple()} |
-    {error, subnet_group_not_found_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()}.
+    {error, create_cluster_errors(), tuple()}.
 create_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCluster">>, Input, Options).
@@ -1487,13 +1719,7 @@ create_cluster(Client, Input, Options)
 -spec create_parameter_group(map(), create_parameter_group_request()) ->
     {ok, create_parameter_group_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_group_state_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, parameter_group_already_exists_fault(), tuple()} |
-    {error, parameter_group_quota_exceeded_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()}.
+    {error, create_parameter_group_errors(), tuple()}.
 create_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_parameter_group(Client, Input, []).
@@ -1501,13 +1727,7 @@ create_parameter_group(Client, Input)
 -spec create_parameter_group(map(), create_parameter_group_request(), proplists:proplist()) ->
     {ok, create_parameter_group_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_group_state_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, parameter_group_already_exists_fault(), tuple()} |
-    {error, parameter_group_quota_exceeded_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()}.
+    {error, create_parameter_group_errors(), tuple()}.
 create_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateParameterGroup">>, Input, Options).
@@ -1516,14 +1736,7 @@ create_parameter_group(Client, Input, Options)
 -spec create_snapshot(map(), create_snapshot_request()) ->
     {ok, create_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, snapshot_already_exists_fault(), tuple()} |
-    {error, snapshot_quota_exceeded_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()}.
+    {error, create_snapshot_errors(), tuple()}.
 create_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot(Client, Input, []).
@@ -1531,14 +1744,7 @@ create_snapshot(Client, Input)
 -spec create_snapshot(map(), create_snapshot_request(), proplists:proplist()) ->
     {ok, create_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, snapshot_already_exists_fault(), tuple()} |
-    {error, snapshot_quota_exceeded_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()}.
+    {error, create_snapshot_errors(), tuple()}.
 create_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSnapshot">>, Input, Options).
@@ -1557,13 +1763,7 @@ create_snapshot(Client, Input, Options)
 -spec create_subnet_group(map(), create_subnet_group_request()) ->
     {ok, create_subnet_group_response(), tuple()} |
     {error, any()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, subnet_group_already_exists_fault(), tuple()} |
-    {error, subnet_group_quota_exceeded_fault(), tuple()} |
-    {error, subnet_not_allowed_fault(), tuple()} |
-    {error, subnet_quota_exceeded_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()}.
+    {error, create_subnet_group_errors(), tuple()}.
 create_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_subnet_group(Client, Input, []).
@@ -1571,13 +1771,7 @@ create_subnet_group(Client, Input)
 -spec create_subnet_group(map(), create_subnet_group_request(), proplists:proplist()) ->
     {ok, create_subnet_group_response(), tuple()} |
     {error, any()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, subnet_group_already_exists_fault(), tuple()} |
-    {error, subnet_group_quota_exceeded_fault(), tuple()} |
-    {error, subnet_not_allowed_fault(), tuple()} |
-    {error, subnet_quota_exceeded_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()}.
+    {error, create_subnet_group_errors(), tuple()}.
 create_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSubnetGroup">>, Input, Options).
@@ -1590,12 +1784,7 @@ create_subnet_group(Client, Input, Options)
 -spec create_user(map(), create_user_request()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_user_name_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()} |
-    {error, user_already_exists_fault(), tuple()} |
-    {error, user_quota_exceeded_fault(), tuple()}.
+    {error, create_user_errors(), tuple()}.
 create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user(Client, Input, []).
@@ -1603,12 +1792,7 @@ create_user(Client, Input)
 -spec create_user(map(), create_user_request(), proplists:proplist()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_user_name_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()} |
-    {error, user_already_exists_fault(), tuple()} |
-    {error, user_quota_exceeded_fault(), tuple()}.
+    {error, create_user_errors(), tuple()}.
 create_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUser">>, Input, Options).
@@ -1622,9 +1806,7 @@ create_user(Client, Input, Options)
 -spec delete_acl(map(), delete_acl_request()) ->
     {ok, delete_acl_response(), tuple()} |
     {error, any()} |
-    {error, acl_not_found_fault(), tuple()} |
-    {error, invalid_acl_state_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, delete_acl_errors(), tuple()}.
 delete_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_acl(Client, Input, []).
@@ -1632,9 +1814,7 @@ delete_acl(Client, Input)
 -spec delete_acl(map(), delete_acl_request(), proplists:proplist()) ->
     {ok, delete_acl_response(), tuple()} |
     {error, any()} |
-    {error, acl_not_found_fault(), tuple()} |
-    {error, invalid_acl_state_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, delete_acl_errors(), tuple()}.
 delete_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteACL">>, Input, Options).
@@ -1645,12 +1825,7 @@ delete_acl(Client, Input, Options)
 -spec delete_cluster(map(), delete_cluster_request()) ->
     {ok, delete_cluster_response(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, snapshot_already_exists_fault(), tuple()}.
+    {error, delete_cluster_errors(), tuple()}.
 delete_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cluster(Client, Input, []).
@@ -1658,12 +1833,7 @@ delete_cluster(Client, Input)
 -spec delete_cluster(map(), delete_cluster_request(), proplists:proplist()) ->
     {ok, delete_cluster_response(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, snapshot_already_exists_fault(), tuple()}.
+    {error, delete_cluster_errors(), tuple()}.
 delete_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCluster">>, Input, Options).
@@ -1675,11 +1845,7 @@ delete_cluster(Client, Input, Options)
 -spec delete_parameter_group(map(), delete_parameter_group_request()) ->
     {ok, delete_parameter_group_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_group_state_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, parameter_group_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, delete_parameter_group_errors(), tuple()}.
 delete_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_parameter_group(Client, Input, []).
@@ -1687,11 +1853,7 @@ delete_parameter_group(Client, Input)
 -spec delete_parameter_group(map(), delete_parameter_group_request(), proplists:proplist()) ->
     {ok, delete_parameter_group_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_group_state_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, parameter_group_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, delete_parameter_group_errors(), tuple()}.
 delete_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteParameterGroup">>, Input, Options).
@@ -1704,11 +1866,7 @@ delete_parameter_group(Client, Input, Options)
 -spec delete_snapshot(map(), delete_snapshot_request()) ->
     {ok, delete_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_snapshot_state_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, snapshot_not_found_fault(), tuple()}.
+    {error, delete_snapshot_errors(), tuple()}.
 delete_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_snapshot(Client, Input, []).
@@ -1716,11 +1874,7 @@ delete_snapshot(Client, Input)
 -spec delete_snapshot(map(), delete_snapshot_request(), proplists:proplist()) ->
     {ok, delete_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_snapshot_state_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, snapshot_not_found_fault(), tuple()}.
+    {error, delete_snapshot_errors(), tuple()}.
 delete_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSnapshot">>, Input, Options).
@@ -1732,9 +1886,7 @@ delete_snapshot(Client, Input, Options)
 -spec delete_subnet_group(map(), delete_subnet_group_request()) ->
     {ok, delete_subnet_group_response(), tuple()} |
     {error, any()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, subnet_group_in_use_fault(), tuple()} |
-    {error, subnet_group_not_found_fault(), tuple()}.
+    {error, delete_subnet_group_errors(), tuple()}.
 delete_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_subnet_group(Client, Input, []).
@@ -1742,9 +1894,7 @@ delete_subnet_group(Client, Input)
 -spec delete_subnet_group(map(), delete_subnet_group_request(), proplists:proplist()) ->
     {ok, delete_subnet_group_response(), tuple()} |
     {error, any()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, subnet_group_in_use_fault(), tuple()} |
-    {error, subnet_group_not_found_fault(), tuple()}.
+    {error, delete_subnet_group_errors(), tuple()}.
 delete_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSubnetGroup">>, Input, Options).
@@ -1756,9 +1906,7 @@ delete_subnet_group(Client, Input, Options)
 -spec delete_user(map(), delete_user_request()) ->
     {ok, delete_user_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_user_state_fault(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, delete_user_errors(), tuple()}.
 delete_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user(Client, Input, []).
@@ -1766,9 +1914,7 @@ delete_user(Client, Input)
 -spec delete_user(map(), delete_user_request(), proplists:proplist()) ->
     {ok, delete_user_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_user_state_fault(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, delete_user_errors(), tuple()}.
 delete_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUser">>, Input, Options).
@@ -1777,8 +1923,7 @@ delete_user(Client, Input, Options)
 -spec describe_acls(map(), describe_acls_request()) ->
     {ok, describe_acls_response(), tuple()} |
     {error, any()} |
-    {error, acl_not_found_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()}.
+    {error, describe_acls_errors(), tuple()}.
 describe_acls(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_acls(Client, Input, []).
@@ -1786,8 +1931,7 @@ describe_acls(Client, Input)
 -spec describe_acls(map(), describe_acls_request(), proplists:proplist()) ->
     {ok, describe_acls_response(), tuple()} |
     {error, any()} |
-    {error, acl_not_found_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()}.
+    {error, describe_acls_errors(), tuple()}.
 describe_acls(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeACLs">>, Input, Options).
@@ -1798,10 +1942,7 @@ describe_acls(Client, Input, Options)
 -spec describe_clusters(map(), describe_clusters_request()) ->
     {ok, describe_clusters_response(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, describe_clusters_errors(), tuple()}.
 describe_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_clusters(Client, Input, []).
@@ -1809,10 +1950,7 @@ describe_clusters(Client, Input)
 -spec describe_clusters(map(), describe_clusters_request(), proplists:proplist()) ->
     {ok, describe_clusters_response(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, describe_clusters_errors(), tuple()}.
 describe_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClusters">>, Input, Options).
@@ -1821,9 +1959,7 @@ describe_clusters(Client, Input, Options)
 -spec describe_engine_versions(map(), describe_engine_versions_request()) ->
     {ok, describe_engine_versions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, describe_engine_versions_errors(), tuple()}.
 describe_engine_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_engine_versions(Client, Input, []).
@@ -1831,9 +1967,7 @@ describe_engine_versions(Client, Input)
 -spec describe_engine_versions(map(), describe_engine_versions_request(), proplists:proplist()) ->
     {ok, describe_engine_versions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, describe_engine_versions_errors(), tuple()}.
 describe_engine_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEngineVersions">>, Input, Options).
@@ -1849,9 +1983,7 @@ describe_engine_versions(Client, Input, Options)
 -spec describe_events(map(), describe_events_request()) ->
     {ok, describe_events_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, describe_events_errors(), tuple()}.
 describe_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events(Client, Input, []).
@@ -1859,9 +1991,7 @@ describe_events(Client, Input)
 -spec describe_events(map(), describe_events_request(), proplists:proplist()) ->
     {ok, describe_events_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, describe_events_errors(), tuple()}.
 describe_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEvents">>, Input, Options).
@@ -1873,10 +2003,7 @@ describe_events(Client, Input, Options)
 -spec describe_parameter_groups(map(), describe_parameter_groups_request()) ->
     {ok, describe_parameter_groups_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, parameter_group_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, describe_parameter_groups_errors(), tuple()}.
 describe_parameter_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_parameter_groups(Client, Input, []).
@@ -1884,10 +2011,7 @@ describe_parameter_groups(Client, Input)
 -spec describe_parameter_groups(map(), describe_parameter_groups_request(), proplists:proplist()) ->
     {ok, describe_parameter_groups_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, parameter_group_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, describe_parameter_groups_errors(), tuple()}.
 describe_parameter_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeParameterGroups">>, Input, Options).
@@ -1896,10 +2020,7 @@ describe_parameter_groups(Client, Input, Options)
 -spec describe_parameters(map(), describe_parameters_request()) ->
     {ok, describe_parameters_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, parameter_group_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, describe_parameters_errors(), tuple()}.
 describe_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_parameters(Client, Input, []).
@@ -1907,10 +2028,7 @@ describe_parameters(Client, Input)
 -spec describe_parameters(map(), describe_parameters_request(), proplists:proplist()) ->
     {ok, describe_parameters_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, parameter_group_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, describe_parameters_errors(), tuple()}.
 describe_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeParameters">>, Input, Options).
@@ -1920,10 +2038,7 @@ describe_parameters(Client, Input, Options)
 -spec describe_reserved_nodes(map(), describe_reserved_nodes_request()) ->
     {ok, describe_reserved_nodes_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, reserved_node_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, describe_reserved_nodes_errors(), tuple()}.
 describe_reserved_nodes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_reserved_nodes(Client, Input, []).
@@ -1931,10 +2046,7 @@ describe_reserved_nodes(Client, Input)
 -spec describe_reserved_nodes(map(), describe_reserved_nodes_request(), proplists:proplist()) ->
     {ok, describe_reserved_nodes_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, reserved_node_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, describe_reserved_nodes_errors(), tuple()}.
 describe_reserved_nodes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReservedNodes">>, Input, Options).
@@ -1943,10 +2055,7 @@ describe_reserved_nodes(Client, Input, Options)
 -spec describe_reserved_nodes_offerings(map(), describe_reserved_nodes_offerings_request()) ->
     {ok, describe_reserved_nodes_offerings_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, reserved_nodes_offering_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, describe_reserved_nodes_offerings_errors(), tuple()}.
 describe_reserved_nodes_offerings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_reserved_nodes_offerings(Client, Input, []).
@@ -1954,10 +2063,7 @@ describe_reserved_nodes_offerings(Client, Input)
 -spec describe_reserved_nodes_offerings(map(), describe_reserved_nodes_offerings_request(), proplists:proplist()) ->
     {ok, describe_reserved_nodes_offerings_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, reserved_nodes_offering_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, describe_reserved_nodes_offerings_errors(), tuple()}.
 describe_reserved_nodes_offerings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReservedNodesOfferings">>, Input, Options).
@@ -1966,8 +2072,7 @@ describe_reserved_nodes_offerings(Client, Input, Options)
 -spec describe_service_updates(map(), describe_service_updates_request()) ->
     {ok, describe_service_updates_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, describe_service_updates_errors(), tuple()}.
 describe_service_updates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_service_updates(Client, Input, []).
@@ -1975,8 +2080,7 @@ describe_service_updates(Client, Input)
 -spec describe_service_updates(map(), describe_service_updates_request(), proplists:proplist()) ->
     {ok, describe_service_updates_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()}.
+    {error, describe_service_updates_errors(), tuple()}.
 describe_service_updates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeServiceUpdates">>, Input, Options).
@@ -1989,10 +2093,7 @@ describe_service_updates(Client, Input, Options)
 -spec describe_snapshots(map(), describe_snapshots_request()) ->
     {ok, describe_snapshots_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, snapshot_not_found_fault(), tuple()}.
+    {error, describe_snapshots_errors(), tuple()}.
 describe_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_snapshots(Client, Input, []).
@@ -2000,10 +2101,7 @@ describe_snapshots(Client, Input)
 -spec describe_snapshots(map(), describe_snapshots_request(), proplists:proplist()) ->
     {ok, describe_snapshots_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, snapshot_not_found_fault(), tuple()}.
+    {error, describe_snapshots_errors(), tuple()}.
 describe_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSnapshots">>, Input, Options).
@@ -2015,8 +2113,7 @@ describe_snapshots(Client, Input, Options)
 -spec describe_subnet_groups(map(), describe_subnet_groups_request()) ->
     {ok, describe_subnet_groups_response(), tuple()} |
     {error, any()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, subnet_group_not_found_fault(), tuple()}.
+    {error, describe_subnet_groups_errors(), tuple()}.
 describe_subnet_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_subnet_groups(Client, Input, []).
@@ -2024,8 +2121,7 @@ describe_subnet_groups(Client, Input)
 -spec describe_subnet_groups(map(), describe_subnet_groups_request(), proplists:proplist()) ->
     {ok, describe_subnet_groups_response(), tuple()} |
     {error, any()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, subnet_group_not_found_fault(), tuple()}.
+    {error, describe_subnet_groups_errors(), tuple()}.
 describe_subnet_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSubnetGroups">>, Input, Options).
@@ -2034,8 +2130,7 @@ describe_subnet_groups(Client, Input, Options)
 -spec describe_users(map(), describe_users_request()) ->
     {ok, describe_users_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, describe_users_errors(), tuple()}.
 describe_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_users(Client, Input, []).
@@ -2043,8 +2138,7 @@ describe_users(Client, Input)
 -spec describe_users(map(), describe_users_request(), proplists:proplist()) ->
     {ok, describe_users_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, describe_users_errors(), tuple()}.
 describe_users(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUsers">>, Input, Options).
@@ -2060,14 +2154,7 @@ describe_users(Client, Input, Options)
 -spec failover_shard(map(), failover_shard_request()) ->
     {ok, failover_shard_response(), tuple()} |
     {error, any()} |
-    {error, api_call_rate_for_customer_exceeded_fault(), tuple()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_kms_key_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, shard_not_found_fault(), tuple()} |
-    {error, test_failover_not_available_fault(), tuple()}.
+    {error, failover_shard_errors(), tuple()}.
 failover_shard(Client, Input)
   when is_map(Client), is_map(Input) ->
     failover_shard(Client, Input, []).
@@ -2075,14 +2162,7 @@ failover_shard(Client, Input)
 -spec failover_shard(map(), failover_shard_request(), proplists:proplist()) ->
     {ok, failover_shard_response(), tuple()} |
     {error, any()} |
-    {error, api_call_rate_for_customer_exceeded_fault(), tuple()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_kms_key_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, shard_not_found_fault(), tuple()} |
-    {error, test_failover_not_available_fault(), tuple()}.
+    {error, failover_shard_errors(), tuple()}.
 failover_shard(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"FailoverShard">>, Input, Options).
@@ -2096,10 +2176,7 @@ failover_shard(Client, Input, Options)
 -spec list_allowed_node_type_updates(map(), list_allowed_node_type_updates_request()) ->
     {ok, list_allowed_node_type_updates_response(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, list_allowed_node_type_updates_errors(), tuple()}.
 list_allowed_node_type_updates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_allowed_node_type_updates(Client, Input, []).
@@ -2107,10 +2184,7 @@ list_allowed_node_type_updates(Client, Input)
 -spec list_allowed_node_type_updates(map(), list_allowed_node_type_updates_request(), proplists:proplist()) ->
     {ok, list_allowed_node_type_updates_response(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, list_allowed_node_type_updates_errors(), tuple()}.
 list_allowed_node_type_updates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAllowedNodeTypeUpdates">>, Input, Options).
@@ -2124,15 +2198,7 @@ list_allowed_node_type_updates(Client, Input, Options)
 -spec list_tags(map(), list_tags_request()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
-    {error, acl_not_found_fault(), tuple()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_arn_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, parameter_group_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, snapshot_not_found_fault(), tuple()} |
-    {error, subnet_group_not_found_fault(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags(Client, Input, []).
@@ -2140,15 +2206,7 @@ list_tags(Client, Input)
 -spec list_tags(map(), list_tags_request(), proplists:proplist()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
-    {error, acl_not_found_fault(), tuple()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_arn_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, parameter_group_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, snapshot_not_found_fault(), tuple()} |
-    {error, subnet_group_not_found_fault(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTags">>, Input, Options).
@@ -2159,13 +2217,7 @@ list_tags(Client, Input, Options)
 -spec purchase_reserved_nodes_offering(map(), purchase_reserved_nodes_offering_request()) ->
     {ok, purchase_reserved_nodes_offering_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, reserved_node_already_exists_fault(), tuple()} |
-    {error, reserved_node_quota_exceeded_fault(), tuple()} |
-    {error, reserved_nodes_offering_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()}.
+    {error, purchase_reserved_nodes_offering_errors(), tuple()}.
 purchase_reserved_nodes_offering(Client, Input)
   when is_map(Client), is_map(Input) ->
     purchase_reserved_nodes_offering(Client, Input, []).
@@ -2173,13 +2225,7 @@ purchase_reserved_nodes_offering(Client, Input)
 -spec purchase_reserved_nodes_offering(map(), purchase_reserved_nodes_offering_request(), proplists:proplist()) ->
     {ok, purchase_reserved_nodes_offering_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, reserved_node_already_exists_fault(), tuple()} |
-    {error, reserved_node_quota_exceeded_fault(), tuple()} |
-    {error, reserved_nodes_offering_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()}.
+    {error, purchase_reserved_nodes_offering_errors(), tuple()}.
 purchase_reserved_nodes_offering(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PurchaseReservedNodesOffering">>, Input, Options).
@@ -2193,11 +2239,7 @@ purchase_reserved_nodes_offering(Client, Input, Options)
 -spec reset_parameter_group(map(), reset_parameter_group_request()) ->
     {ok, reset_parameter_group_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_group_state_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, parameter_group_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, reset_parameter_group_errors(), tuple()}.
 reset_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_parameter_group(Client, Input, []).
@@ -2205,11 +2247,7 @@ reset_parameter_group(Client, Input)
 -spec reset_parameter_group(map(), reset_parameter_group_request(), proplists:proplist()) ->
     {ok, reset_parameter_group_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_group_state_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, parameter_group_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, reset_parameter_group_errors(), tuple()}.
 reset_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResetParameterGroup">>, Input, Options).
@@ -2236,16 +2274,7 @@ reset_parameter_group(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, acl_not_found_fault(), tuple()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_arn_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, parameter_group_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, snapshot_not_found_fault(), tuple()} |
-    {error, subnet_group_not_found_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -2253,16 +2282,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, acl_not_found_fault(), tuple()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_arn_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, parameter_group_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, snapshot_not_found_fault(), tuple()} |
-    {error, subnet_group_not_found_fault(), tuple()} |
-    {error, tag_quota_per_resource_exceeded(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -2271,16 +2291,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, acl_not_found_fault(), tuple()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_arn_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, parameter_group_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, snapshot_not_found_fault(), tuple()} |
-    {error, subnet_group_not_found_fault(), tuple()} |
-    {error, tag_not_found_fault(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -2288,16 +2299,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, acl_not_found_fault(), tuple()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_arn_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, parameter_group_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, snapshot_not_found_fault(), tuple()} |
-    {error, subnet_group_not_found_fault(), tuple()} |
-    {error, tag_not_found_fault(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -2306,13 +2308,7 @@ untag_resource(Client, Input, Options)
 -spec update_acl(map(), update_acl_request()) ->
     {ok, update_acl_response(), tuple()} |
     {error, any()} |
-    {error, acl_not_found_fault(), tuple()} |
-    {error, default_user_required(), tuple()} |
-    {error, duplicate_user_name_fault(), tuple()} |
-    {error, invalid_acl_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, update_acl_errors(), tuple()}.
 update_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_acl(Client, Input, []).
@@ -2320,13 +2316,7 @@ update_acl(Client, Input)
 -spec update_acl(map(), update_acl_request(), proplists:proplist()) ->
     {ok, update_acl_response(), tuple()} |
     {error, any()} |
-    {error, acl_not_found_fault(), tuple()} |
-    {error, default_user_required(), tuple()} |
-    {error, duplicate_user_name_fault(), tuple()} |
-    {error, invalid_acl_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, update_acl_errors(), tuple()}.
 update_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateACL">>, Input, Options).
@@ -2338,22 +2328,7 @@ update_acl(Client, Input, Options)
 -spec update_cluster(map(), update_cluster_request()) ->
     {ok, update_cluster_response(), tuple()} |
     {error, any()} |
-    {error, acl_not_found_fault(), tuple()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, cluster_quota_for_customer_exceeded_fault(), tuple()} |
-    {error, invalid_acl_state_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_kms_key_fault(), tuple()} |
-    {error, invalid_node_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, node_quota_for_cluster_exceeded_fault(), tuple()} |
-    {error, node_quota_for_customer_exceeded_fault(), tuple()} |
-    {error, no_operation_fault(), tuple()} |
-    {error, parameter_group_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, shards_per_cluster_quota_exceeded_fault(), tuple()}.
+    {error, update_cluster_errors(), tuple()}.
 update_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_cluster(Client, Input, []).
@@ -2361,22 +2336,7 @@ update_cluster(Client, Input)
 -spec update_cluster(map(), update_cluster_request(), proplists:proplist()) ->
     {ok, update_cluster_response(), tuple()} |
     {error, any()} |
-    {error, acl_not_found_fault(), tuple()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, cluster_quota_for_customer_exceeded_fault(), tuple()} |
-    {error, invalid_acl_state_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_kms_key_fault(), tuple()} |
-    {error, invalid_node_state_fault(), tuple()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, node_quota_for_cluster_exceeded_fault(), tuple()} |
-    {error, node_quota_for_customer_exceeded_fault(), tuple()} |
-    {error, no_operation_fault(), tuple()} |
-    {error, parameter_group_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, shards_per_cluster_quota_exceeded_fault(), tuple()}.
+    {error, update_cluster_errors(), tuple()}.
 update_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCluster">>, Input, Options).
@@ -2388,11 +2348,7 @@ update_cluster(Client, Input, Options)
 -spec update_parameter_group(map(), update_parameter_group_request()) ->
     {ok, update_parameter_group_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_group_state_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, parameter_group_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, update_parameter_group_errors(), tuple()}.
 update_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_parameter_group(Client, Input, []).
@@ -2400,11 +2356,7 @@ update_parameter_group(Client, Input)
 -spec update_parameter_group(map(), update_parameter_group_request(), proplists:proplist()) ->
     {ok, update_parameter_group_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_group_state_fault(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, parameter_group_not_found_fault(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()}.
+    {error, update_parameter_group_errors(), tuple()}.
 update_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateParameterGroup">>, Input, Options).
@@ -2416,12 +2368,7 @@ update_parameter_group(Client, Input, Options)
 -spec update_subnet_group(map(), update_subnet_group_request()) ->
     {ok, update_subnet_group_response(), tuple()} |
     {error, any()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, subnet_group_not_found_fault(), tuple()} |
-    {error, subnet_in_use(), tuple()} |
-    {error, subnet_not_allowed_fault(), tuple()} |
-    {error, subnet_quota_exceeded_fault(), tuple()}.
+    {error, update_subnet_group_errors(), tuple()}.
 update_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_subnet_group(Client, Input, []).
@@ -2429,12 +2376,7 @@ update_subnet_group(Client, Input)
 -spec update_subnet_group(map(), update_subnet_group_request(), proplists:proplist()) ->
     {ok, update_subnet_group_response(), tuple()} |
     {error, any()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, service_linked_role_not_found_fault(), tuple()} |
-    {error, subnet_group_not_found_fault(), tuple()} |
-    {error, subnet_in_use(), tuple()} |
-    {error, subnet_not_allowed_fault(), tuple()} |
-    {error, subnet_quota_exceeded_fault(), tuple()}.
+    {error, update_subnet_group_errors(), tuple()}.
 update_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSubnetGroup">>, Input, Options).
@@ -2443,10 +2385,7 @@ update_subnet_group(Client, Input, Options)
 -spec update_user(map(), update_user_request()) ->
     {ok, update_user_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_user_state_fault(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, update_user_errors(), tuple()}.
 update_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user(Client, Input, []).
@@ -2454,10 +2393,7 @@ update_user(Client, Input)
 -spec update_user(map(), update_user_request(), proplists:proplist()) ->
     {ok, update_user_response(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_combination_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_user_state_fault(), tuple()} |
-    {error, user_not_found_fault(), tuple()}.
+    {error, update_user_errors(), tuple()}.
 update_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUser">>, Input, Options).

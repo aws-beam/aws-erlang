@@ -86,6 +86,7 @@
 %% }
 -type repository_association_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_recommendation_feedback_request() :: #{
 %%   <<"RecommendationId">> := string(),
@@ -93,11 +94,13 @@
 %% }
 -type describe_recommendation_feedback_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"Tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% repository_association() :: #{
@@ -116,6 +119,7 @@
 %% }
 -type repository_association() :: #{binary() => any()}.
 
+
 %% Example:
 %% request_metadata() :: #{
 %%   <<"EventInfo">> => event_info(),
@@ -124,9 +128,11 @@
 %%   <<"VendorName">> => list(any())
 %% }
 -type request_metadata() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% repository_analysis() :: #{
@@ -135,12 +141,14 @@
 %% }
 -type repository_analysis() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_code_reviews_response() :: #{
 %%   <<"CodeReviewSummaries">> => list(code_review_summary()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_code_reviews_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% recommendation_feedback_summary() :: #{
@@ -149,6 +157,7 @@
 %%   <<"UserId">> => string()
 %% }
 -type recommendation_feedback_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% code_review() :: #{
@@ -171,6 +180,7 @@
 %% }
 -type code_review() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_repository_request() :: #{
 %%   <<"ClientRequestToken">> => string(),
@@ -180,11 +190,13 @@
 %% }
 -type associate_repository_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_code_review_response() :: #{
 %%   <<"CodeReview">> => code_review()
 %% }
 -type describe_code_review_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_repository_association_response() :: #{
@@ -192,6 +204,7 @@
 %%   <<"Tags">> => map()
 %% }
 -type describe_repository_association_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% metrics_summary() :: #{
@@ -201,20 +214,24 @@
 %% }
 -type metrics_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_recommendation_feedback_response() :: #{
 %%   <<"RecommendationFeedback">> => recommendation_feedback()
 %% }
 -type describe_recommendation_feedback_response() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_repository_request() :: #{}
 -type disassociate_repository_request() :: #{}.
+
 
 %% Example:
 %% list_repository_associations_request() :: #{
@@ -227,12 +244,14 @@
 %% }
 -type list_repository_associations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_repository() :: #{
 %%   <<"BucketName">> => string(),
 %%   <<"Name">> => string()
 %% }
 -type s3_repository() :: #{binary() => any()}.
+
 
 %% Example:
 %% metrics() :: #{
@@ -242,6 +261,7 @@
 %% }
 -type metrics() :: #{binary() => any()}.
 
+
 %% Example:
 %% third_party_source_repository() :: #{
 %%   <<"ConnectionArn">> => string(),
@@ -249,6 +269,7 @@
 %%   <<"Owner">> => string()
 %% }
 -type third_party_source_repository() :: #{binary() => any()}.
+
 
 %% Example:
 %% recommendation_feedback() :: #{
@@ -261,17 +282,20 @@
 %% }
 -type recommendation_feedback() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% repository() :: #{
@@ -282,11 +306,13 @@
 %% }
 -type repository() :: #{binary() => any()}.
 
+
 %% Example:
 %% not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% branch_diff_source_code_type() :: #{
@@ -295,12 +321,14 @@
 %% }
 -type branch_diff_source_code_type() :: #{binary() => any()}.
 
+
 %% Example:
 %% code_review_type() :: #{
 %%   <<"AnalysisTypes">> => list(list(any())()),
 %%   <<"RepositoryAnalysis">> => repository_analysis()
 %% }
 -type code_review_type() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_code_review_request() :: #{
@@ -311,6 +339,7 @@
 %% }
 -type create_code_review_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_bucket_repository() :: #{
 %%   <<"Details">> => s3_repository_details(),
@@ -318,11 +347,13 @@
 %% }
 -type s3_bucket_repository() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% associate_repository_response() :: #{
@@ -331,14 +362,17 @@
 %% }
 -type associate_repository_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_code_review_response() :: #{
 %%   <<"CodeReview">> => code_review()
 %% }
 -type create_code_review_response() :: #{binary() => any()}.
+
 %% Example:
 %% put_recommendation_feedback_response() :: #{}
 -type put_recommendation_feedback_response() :: #{}.
+
 
 %% Example:
 %% rule_metadata() :: #{
@@ -350,6 +384,7 @@
 %% }
 -type rule_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% source_code_type() :: #{
 %%   <<"BranchDiff">> => branch_diff_source_code_type(),
@@ -359,6 +394,7 @@
 %%   <<"S3BucketRepository">> => s3_bucket_repository()
 %% }
 -type source_code_type() :: #{binary() => any()}.
+
 
 %% Example:
 %% code_review_summary() :: #{
@@ -377,11 +413,13 @@
 %% }
 -type code_review_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% disassociate_repository_response() :: #{
@@ -389,6 +427,7 @@
 %%   <<"Tags">> => map()
 %% }
 -type disassociate_repository_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% commit_diff_source_code_type() :: #{
@@ -398,12 +437,14 @@
 %% }
 -type commit_diff_source_code_type() :: #{binary() => any()}.
 
+
 %% Example:
 %% code_artifacts() :: #{
 %%   <<"BuildArtifactsObjectKey">> => string(),
 %%   <<"SourceCodeArtifactsObjectKey">> => string()
 %% }
 -type code_artifacts() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_repository_details() :: #{
@@ -412,11 +453,13 @@
 %% }
 -type s3_repository_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_recommendation_feedback_request() :: #{
@@ -425,9 +468,11 @@
 %%   <<"RecommendationId">> := string()
 %% }
 -type put_recommendation_feedback_request() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% list_code_reviews_request() :: #{
@@ -440,12 +485,14 @@
 %% }
 -type list_code_reviews_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% kms_key_details() :: #{
 %%   <<"EncryptionOption">> => list(any()),
 %%   <<"KMSKeyId">> => string()
 %% }
 -type kms_key_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_recommendation_feedback_request() :: #{
@@ -456,14 +503,17 @@
 %% }
 -type list_recommendation_feedback_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% throttling_exception() :: #{
@@ -471,11 +521,13 @@
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% repository_head_source_code_type() :: #{
 %%   <<"BranchName">> => string()
 %% }
 -type repository_head_source_code_type() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_repository_associations_response() :: #{
@@ -484,11 +536,13 @@
 %% }
 -type list_repository_associations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% code_commit_repository() :: #{
 %%   <<"Name">> => string()
 %% }
 -type code_commit_repository() :: #{binary() => any()}.
+
 
 %% Example:
 %% recommendation_summary() :: #{
@@ -503,15 +557,18 @@
 %% }
 -type recommendation_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_recommendation_feedback_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"RecommendationFeedbackSummaries">> => list(recommendation_feedback_summary()())
 %% }
 -type list_recommendation_feedback_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_code_review_request() :: #{}
 -type describe_code_review_request() :: #{}.
+
 
 %% Example:
 %% list_recommendations_response() :: #{
@@ -520,15 +577,18 @@
 %% }
 -type list_recommendations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% event_info() :: #{
 %%   <<"Name">> => string(),
 %%   <<"State">> => string()
 %% }
 -type event_info() :: #{binary() => any()}.
+
 %% Example:
 %% describe_repository_association_request() :: #{}
 -type describe_repository_association_request() :: #{}.
+
 
 %% Example:
 %% list_recommendations_request() :: #{
@@ -536,6 +596,97 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_recommendations_request() :: #{binary() => any()}.
+
+-type associate_repository_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type create_code_review_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_code_review_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_recommendation_feedback_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_repository_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception().
+
+-type disassociate_repository_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception() | 
+    conflict_exception().
+
+-type list_code_reviews_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_recommendation_feedback_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_recommendations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_repository_associations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type put_recommendation_feedback_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -579,22 +730,14 @@
 -spec associate_repository(map(), associate_repository_request()) ->
     {ok, associate_repository_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_repository_errors(), tuple()}.
 associate_repository(Client, Input) ->
     associate_repository(Client, Input, []).
 
 -spec associate_repository(map(), associate_repository_request(), proplists:proplist()) ->
     {ok, associate_repository_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_repository_errors(), tuple()}.
 associate_repository(Client, Input0, Options0) ->
     Method = post,
     Path = ["/associations"],
@@ -629,24 +772,14 @@ associate_repository(Client, Input0, Options0) ->
 -spec create_code_review(map(), create_code_review_request()) ->
     {ok, create_code_review_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_code_review_errors(), tuple()}.
 create_code_review(Client, Input) ->
     create_code_review(Client, Input, []).
 
 -spec create_code_review(map(), create_code_review_request(), proplists:proplist()) ->
     {ok, create_code_review_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_code_review_errors(), tuple()}.
 create_code_review(Client, Input0, Options0) ->
     Method = post,
     Path = ["/codereviews"],
@@ -674,11 +807,7 @@ create_code_review(Client, Input0, Options0) ->
 -spec describe_code_review(map(), binary() | list()) ->
     {ok, describe_code_review_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_code_review_errors(), tuple()}.
 describe_code_review(Client, CodeReviewArn)
   when is_map(Client) ->
     describe_code_review(Client, CodeReviewArn, #{}, #{}).
@@ -686,11 +815,7 @@ describe_code_review(Client, CodeReviewArn)
 -spec describe_code_review(map(), binary() | list(), map(), map()) ->
     {ok, describe_code_review_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_code_review_errors(), tuple()}.
 describe_code_review(Client, CodeReviewArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_code_review(Client, CodeReviewArn, QueryMap, HeadersMap, []).
@@ -698,11 +823,7 @@ describe_code_review(Client, CodeReviewArn, QueryMap, HeadersMap)
 -spec describe_code_review(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_code_review_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_code_review_errors(), tuple()}.
 describe_code_review(Client, CodeReviewArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/codereviews/", aws_util:encode_uri(CodeReviewArn), ""],
@@ -724,11 +845,7 @@ describe_code_review(Client, CodeReviewArn, QueryMap, HeadersMap, Options0)
 -spec describe_recommendation_feedback(map(), binary() | list(), binary() | list()) ->
     {ok, describe_recommendation_feedback_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_recommendation_feedback_errors(), tuple()}.
 describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId)
   when is_map(Client) ->
     describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, #{}, #{}).
@@ -736,11 +853,7 @@ describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId)
 -spec describe_recommendation_feedback(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_recommendation_feedback_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_recommendation_feedback_errors(), tuple()}.
 describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, QueryMap, HeadersMap, []).
@@ -748,11 +861,7 @@ describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, QueryM
 -spec describe_recommendation_feedback(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_recommendation_feedback_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_recommendation_feedback_errors(), tuple()}.
 describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/feedback/", aws_util:encode_uri(CodeReviewArn), ""],
@@ -781,11 +890,7 @@ describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, QueryM
 -spec describe_repository_association(map(), binary() | list()) ->
     {ok, describe_repository_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_repository_association_errors(), tuple()}.
 describe_repository_association(Client, AssociationArn)
   when is_map(Client) ->
     describe_repository_association(Client, AssociationArn, #{}, #{}).
@@ -793,11 +898,7 @@ describe_repository_association(Client, AssociationArn)
 -spec describe_repository_association(map(), binary() | list(), map(), map()) ->
     {ok, describe_repository_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_repository_association_errors(), tuple()}.
 describe_repository_association(Client, AssociationArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_repository_association(Client, AssociationArn, QueryMap, HeadersMap, []).
@@ -805,11 +906,7 @@ describe_repository_association(Client, AssociationArn, QueryMap, HeadersMap)
 -spec describe_repository_association(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_repository_association_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_repository_association_errors(), tuple()}.
 describe_repository_association(Client, AssociationArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/associations/", aws_util:encode_uri(AssociationArn), ""],
@@ -831,24 +928,14 @@ describe_repository_association(Client, AssociationArn, QueryMap, HeadersMap, Op
 -spec disassociate_repository(map(), binary() | list(), disassociate_repository_request()) ->
     {ok, disassociate_repository_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_repository_errors(), tuple()}.
 disassociate_repository(Client, AssociationArn, Input) ->
     disassociate_repository(Client, AssociationArn, Input, []).
 
 -spec disassociate_repository(map(), binary() | list(), disassociate_repository_request(), proplists:proplist()) ->
     {ok, disassociate_repository_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_repository_errors(), tuple()}.
 disassociate_repository(Client, AssociationArn, Input0, Options0) ->
     Method = delete,
     Path = ["/associations/", aws_util:encode_uri(AssociationArn), ""],
@@ -876,10 +963,7 @@ disassociate_repository(Client, AssociationArn, Input0, Options0) ->
 -spec list_code_reviews(map(), binary() | list()) ->
     {ok, list_code_reviews_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_code_reviews_errors(), tuple()}.
 list_code_reviews(Client, Type)
   when is_map(Client) ->
     list_code_reviews(Client, Type, #{}, #{}).
@@ -887,10 +971,7 @@ list_code_reviews(Client, Type)
 -spec list_code_reviews(map(), binary() | list(), map(), map()) ->
     {ok, list_code_reviews_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_code_reviews_errors(), tuple()}.
 list_code_reviews(Client, Type, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_code_reviews(Client, Type, QueryMap, HeadersMap, []).
@@ -898,10 +979,7 @@ list_code_reviews(Client, Type, QueryMap, HeadersMap)
 -spec list_code_reviews(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_code_reviews_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_code_reviews_errors(), tuple()}.
 list_code_reviews(Client, Type, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/codereviews"],
@@ -934,11 +1012,7 @@ list_code_reviews(Client, Type, QueryMap, HeadersMap, Options0)
 -spec list_recommendation_feedback(map(), binary() | list()) ->
     {ok, list_recommendation_feedback_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_recommendation_feedback_errors(), tuple()}.
 list_recommendation_feedback(Client, CodeReviewArn)
   when is_map(Client) ->
     list_recommendation_feedback(Client, CodeReviewArn, #{}, #{}).
@@ -946,11 +1020,7 @@ list_recommendation_feedback(Client, CodeReviewArn)
 -spec list_recommendation_feedback(map(), binary() | list(), map(), map()) ->
     {ok, list_recommendation_feedback_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_recommendation_feedback_errors(), tuple()}.
 list_recommendation_feedback(Client, CodeReviewArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_recommendation_feedback(Client, CodeReviewArn, QueryMap, HeadersMap, []).
@@ -958,11 +1028,7 @@ list_recommendation_feedback(Client, CodeReviewArn, QueryMap, HeadersMap)
 -spec list_recommendation_feedback(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_recommendation_feedback_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_recommendation_feedback_errors(), tuple()}.
 list_recommendation_feedback(Client, CodeReviewArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/feedback/", aws_util:encode_uri(CodeReviewArn), "/RecommendationFeedback"],
@@ -990,11 +1056,7 @@ list_recommendation_feedback(Client, CodeReviewArn, QueryMap, HeadersMap, Option
 -spec list_recommendations(map(), binary() | list()) ->
     {ok, list_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_recommendations_errors(), tuple()}.
 list_recommendations(Client, CodeReviewArn)
   when is_map(Client) ->
     list_recommendations(Client, CodeReviewArn, #{}, #{}).
@@ -1002,11 +1064,7 @@ list_recommendations(Client, CodeReviewArn)
 -spec list_recommendations(map(), binary() | list(), map(), map()) ->
     {ok, list_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_recommendations_errors(), tuple()}.
 list_recommendations(Client, CodeReviewArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_recommendations(Client, CodeReviewArn, QueryMap, HeadersMap, []).
@@ -1014,11 +1072,7 @@ list_recommendations(Client, CodeReviewArn, QueryMap, HeadersMap)
 -spec list_recommendations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_recommendations_errors(), tuple()}.
 list_recommendations(Client, CodeReviewArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/codereviews/", aws_util:encode_uri(CodeReviewArn), "/Recommendations"],
@@ -1056,9 +1110,7 @@ list_recommendations(Client, CodeReviewArn, QueryMap, HeadersMap, Options0)
 -spec list_repository_associations(map()) ->
     {ok, list_repository_associations_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_repository_associations_errors(), tuple()}.
 list_repository_associations(Client)
   when is_map(Client) ->
     list_repository_associations(Client, #{}, #{}).
@@ -1066,9 +1118,7 @@ list_repository_associations(Client)
 -spec list_repository_associations(map(), map(), map()) ->
     {ok, list_repository_associations_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_repository_associations_errors(), tuple()}.
 list_repository_associations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_repository_associations(Client, QueryMap, HeadersMap, []).
@@ -1076,9 +1126,7 @@ list_repository_associations(Client, QueryMap, HeadersMap)
 -spec list_repository_associations(map(), map(), map(), proplists:proplist()) ->
     {ok, list_repository_associations_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_repository_associations_errors(), tuple()}.
 list_repository_associations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/associations"],
@@ -1109,9 +1157,7 @@ list_repository_associations(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1119,9 +1165,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1129,9 +1173,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1155,22 +1197,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec put_recommendation_feedback(map(), put_recommendation_feedback_request()) ->
     {ok, put_recommendation_feedback_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_recommendation_feedback_errors(), tuple()}.
 put_recommendation_feedback(Client, Input) ->
     put_recommendation_feedback(Client, Input, []).
 
 -spec put_recommendation_feedback(map(), put_recommendation_feedback_request(), proplists:proplist()) ->
     {ok, put_recommendation_feedback_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_recommendation_feedback_errors(), tuple()}.
 put_recommendation_feedback(Client, Input0, Options0) ->
     Method = put,
     Path = ["/feedback"],
@@ -1197,18 +1231,14 @@ put_recommendation_feedback(Client, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1235,18 +1265,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],

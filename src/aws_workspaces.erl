@@ -1862,6 +1862,425 @@
 %% }
 -type migrate_workspace_result() :: #{binary() => any()}.
 
+-type associate_connection_alias_errors() ::
+    operation_not_supported_exception() | 
+    resource_associated_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    invalid_resource_state_exception() | 
+    resource_not_found_exception().
+
+-type associate_ip_groups_errors() ::
+    operation_not_supported_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    invalid_resource_state_exception() | 
+    resource_limit_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type associate_workspace_application_errors() ::
+    operation_not_supported_exception() | 
+    resource_already_exists_exception() | 
+    application_not_supported_exception() | 
+    operating_system_not_compatible_exception() | 
+    compute_not_compatible_exception() | 
+    incompatible_applications_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type authorize_ip_rules_errors() ::
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    invalid_resource_state_exception() | 
+    resource_limit_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type copy_workspace_image_errors() ::
+    operation_not_supported_exception() | 
+    resource_already_exists_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_limit_exceeded_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception().
+
+-type create_connect_client_add_in_errors() ::
+    resource_already_exists_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_creation_failed_exception() | 
+    resource_not_found_exception().
+
+-type create_connection_alias_errors() ::
+    operation_not_supported_exception() | 
+    resource_already_exists_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    invalid_resource_state_exception() | 
+    resource_limit_exceeded_exception().
+
+-type create_ip_group_errors() ::
+    resource_already_exists_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_creation_failed_exception() | 
+    resource_limit_exceeded_exception().
+
+-type create_standby_workspaces_errors() ::
+    operation_not_supported_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_limit_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type create_tags_errors() ::
+    invalid_parameter_values_exception() | 
+    resource_limit_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type create_updated_workspace_image_errors() ::
+    operation_not_supported_exception() | 
+    resource_already_exists_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    invalid_resource_state_exception() | 
+    resource_limit_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type create_workspace_bundle_errors() ::
+    resource_already_exists_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_limit_exceeded_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception().
+
+-type create_workspace_image_errors() ::
+    operation_not_supported_exception() | 
+    resource_already_exists_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    invalid_resource_state_exception() | 
+    resource_limit_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type create_workspaces_errors() ::
+    invalid_parameter_values_exception() | 
+    resource_limit_exceeded_exception().
+
+-type delete_client_branding_errors() ::
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception().
+
+-type delete_connect_client_add_in_errors() ::
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception().
+
+-type delete_connection_alias_errors() ::
+    operation_not_supported_exception() | 
+    resource_associated_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    invalid_resource_state_exception() | 
+    resource_not_found_exception().
+
+-type delete_ip_group_errors() ::
+    resource_associated_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception().
+
+-type delete_tags_errors() ::
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception().
+
+-type delete_workspace_bundle_errors() ::
+    resource_associated_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception().
+
+-type delete_workspace_image_errors() ::
+    resource_associated_exception() | 
+    access_denied_exception() | 
+    invalid_resource_state_exception().
+
+-type deploy_workspace_applications_errors() ::
+    operation_not_supported_exception() | 
+    incompatible_applications_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type deregister_workspace_directory_errors() ::
+    operation_not_supported_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    invalid_resource_state_exception() | 
+    resource_not_found_exception().
+
+-type describe_account_errors() ::
+    access_denied_exception().
+
+-type describe_account_modifications_errors() ::
+    access_denied_exception().
+
+-type describe_application_associations_errors() ::
+    operation_not_supported_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception().
+
+-type describe_applications_errors() ::
+    operation_not_supported_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception().
+
+-type describe_bundle_associations_errors() ::
+    operation_not_supported_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception().
+
+-type describe_client_branding_errors() ::
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception().
+
+-type describe_client_properties_errors() ::
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception().
+
+-type describe_connect_client_add_ins_errors() ::
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception().
+
+-type describe_connection_alias_permissions_errors() ::
+    operation_not_supported_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception().
+
+-type describe_connection_aliases_errors() ::
+    operation_not_supported_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception().
+
+-type describe_image_associations_errors() ::
+    operation_not_supported_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception().
+
+-type describe_ip_groups_errors() ::
+    access_denied_exception() | 
+    invalid_parameter_values_exception().
+
+-type describe_tags_errors() ::
+    resource_not_found_exception().
+
+-type describe_workspace_associations_errors() ::
+    operation_not_supported_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception().
+
+-type describe_workspace_bundles_errors() ::
+    invalid_parameter_values_exception().
+
+-type describe_workspace_directories_errors() ::
+    invalid_parameter_values_exception().
+
+-type describe_workspace_image_permissions_errors() ::
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception().
+
+-type describe_workspace_images_errors() ::
+    access_denied_exception().
+
+-type describe_workspace_snapshots_errors() ::
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception().
+
+-type describe_workspaces_errors() ::
+    invalid_parameter_values_exception() | 
+    resource_unavailable_exception().
+
+-type describe_workspaces_connection_status_errors() ::
+    invalid_parameter_values_exception().
+
+-type disassociate_connection_alias_errors() ::
+    operation_not_supported_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    invalid_resource_state_exception() | 
+    resource_not_found_exception().
+
+-type disassociate_ip_groups_errors() ::
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    invalid_resource_state_exception() | 
+    resource_not_found_exception().
+
+-type disassociate_workspace_application_errors() ::
+    operation_not_supported_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type import_client_branding_errors() ::
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_limit_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type import_workspace_image_errors() ::
+    operation_not_supported_exception() | 
+    resource_already_exists_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_limit_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type list_available_management_cidr_ranges_errors() ::
+    access_denied_exception() | 
+    invalid_parameter_values_exception().
+
+-type migrate_workspace_errors() ::
+    operation_not_supported_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    operation_in_progress_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception().
+
+-type modify_account_errors() ::
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    invalid_resource_state_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception().
+
+-type modify_certificate_based_auth_properties_errors() ::
+    operation_not_supported_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception().
+
+-type modify_client_properties_errors() ::
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception().
+
+-type modify_saml_properties_errors() ::
+    operation_not_supported_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception().
+
+-type modify_selfservice_permissions_errors() ::
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception().
+
+-type modify_workspace_access_properties_errors() ::
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type modify_workspace_creation_properties_errors() ::
+    operation_not_supported_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception().
+
+-type modify_workspace_properties_errors() ::
+    unsupported_workspace_configuration_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    invalid_resource_state_exception() | 
+    operation_in_progress_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception().
+
+-type modify_workspace_state_errors() ::
+    operation_not_supported_exception() | 
+    invalid_parameter_values_exception() | 
+    invalid_resource_state_exception() | 
+    resource_not_found_exception().
+
+-type reboot_workspaces_errors() ::
+    operation_not_supported_exception().
+
+-type rebuild_workspaces_errors() ::
+    operation_not_supported_exception().
+
+-type register_workspace_directory_errors() ::
+    operation_not_supported_exception() | 
+    access_denied_exception() | 
+    workspaces_default_role_not_found_exception() | 
+    invalid_parameter_values_exception() | 
+    invalid_resource_state_exception() | 
+    resource_limit_exceeded_exception() | 
+    resource_not_found_exception() | 
+    unsupported_network_configuration_exception().
+
+-type restore_workspace_errors() ::
+    operation_not_supported_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception().
+
+-type revoke_ip_rules_errors() ::
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    invalid_resource_state_exception() | 
+    resource_not_found_exception().
+
+-type update_connect_client_add_in_errors() ::
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception().
+
+-type update_connection_alias_permission_errors() ::
+    operation_not_supported_exception() | 
+    resource_associated_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    invalid_resource_state_exception() | 
+    resource_limit_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type update_rules_of_ip_group_errors() ::
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    invalid_resource_state_exception() | 
+    resource_limit_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type update_workspace_bundle_errors() ::
+    operation_not_supported_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception().
+
+-type update_workspace_image_permission_errors() ::
+    operation_not_supported_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception().
 
 %%====================================================================
 %% API
@@ -1883,12 +2302,7 @@
 -spec associate_connection_alias(map(), associate_connection_alias_request()) ->
     {ok, associate_connection_alias_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_associated_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, associate_connection_alias_errors(), tuple()}.
 associate_connection_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_connection_alias(Client, Input, []).
@@ -1896,12 +2310,7 @@ associate_connection_alias(Client, Input)
 -spec associate_connection_alias(map(), associate_connection_alias_request(), proplists:proplist()) ->
     {ok, associate_connection_alias_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_associated_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, associate_connection_alias_errors(), tuple()}.
 associate_connection_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateConnectionAlias">>, Input, Options).
@@ -1911,12 +2320,7 @@ associate_connection_alias(Client, Input, Options)
 -spec associate_ip_groups(map(), associate_ip_groups_request()) ->
     {ok, associate_ip_groups_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, associate_ip_groups_errors(), tuple()}.
 associate_ip_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_ip_groups(Client, Input, []).
@@ -1924,12 +2328,7 @@ associate_ip_groups(Client, Input)
 -spec associate_ip_groups(map(), associate_ip_groups_request(), proplists:proplist()) ->
     {ok, associate_ip_groups_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, associate_ip_groups_errors(), tuple()}.
 associate_ip_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateIpGroups">>, Input, Options).
@@ -1938,16 +2337,7 @@ associate_ip_groups(Client, Input, Options)
 -spec associate_workspace_application(map(), associate_workspace_application_request()) ->
     {ok, associate_workspace_application_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, application_not_supported_exception(), tuple()} |
-    {error, compute_not_compatible_exception(), tuple()} |
-    {error, incompatible_applications_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operating_system_not_compatible_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, associate_workspace_application_errors(), tuple()}.
 associate_workspace_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_workspace_application(Client, Input, []).
@@ -1955,16 +2345,7 @@ associate_workspace_application(Client, Input)
 -spec associate_workspace_application(map(), associate_workspace_application_request(), proplists:proplist()) ->
     {ok, associate_workspace_application_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, application_not_supported_exception(), tuple()} |
-    {error, compute_not_compatible_exception(), tuple()} |
-    {error, incompatible_applications_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operating_system_not_compatible_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, associate_workspace_application_errors(), tuple()}.
 associate_workspace_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateWorkspaceApplication">>, Input, Options).
@@ -1977,11 +2358,7 @@ associate_workspace_application(Client, Input, Options)
 -spec authorize_ip_rules(map(), authorize_ip_rules_request()) ->
     {ok, authorize_ip_rules_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, authorize_ip_rules_errors(), tuple()}.
 authorize_ip_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     authorize_ip_rules(Client, Input, []).
@@ -1989,11 +2366,7 @@ authorize_ip_rules(Client, Input)
 -spec authorize_ip_rules(map(), authorize_ip_rules_request(), proplists:proplist()) ->
     {ok, authorize_ip_rules_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, authorize_ip_rules_errors(), tuple()}.
 authorize_ip_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AuthorizeIpRules">>, Input, Options).
@@ -2025,13 +2398,7 @@ authorize_ip_rules(Client, Input, Options)
 -spec copy_workspace_image(map(), copy_workspace_image_request()) ->
     {ok, copy_workspace_image_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()}.
+    {error, copy_workspace_image_errors(), tuple()}.
 copy_workspace_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_workspace_image(Client, Input, []).
@@ -2039,13 +2406,7 @@ copy_workspace_image(Client, Input)
 -spec copy_workspace_image(map(), copy_workspace_image_request(), proplists:proplist()) ->
     {ok, copy_workspace_image_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()}.
+    {error, copy_workspace_image_errors(), tuple()}.
 copy_workspace_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopyWorkspaceImage">>, Input, Options).
@@ -2060,11 +2421,7 @@ copy_workspace_image(Client, Input, Options)
 -spec create_connect_client_add_in(map(), create_connect_client_add_in_request()) ->
     {ok, create_connect_client_add_in_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_creation_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_connect_client_add_in_errors(), tuple()}.
 create_connect_client_add_in(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_connect_client_add_in(Client, Input, []).
@@ -2072,11 +2429,7 @@ create_connect_client_add_in(Client, Input)
 -spec create_connect_client_add_in(map(), create_connect_client_add_in_request(), proplists:proplist()) ->
     {ok, create_connect_client_add_in_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_creation_failed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_connect_client_add_in_errors(), tuple()}.
 create_connect_client_add_in(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateConnectClientAddIn">>, Input, Options).
@@ -2091,12 +2444,7 @@ create_connect_client_add_in(Client, Input, Options)
 -spec create_connection_alias(map(), create_connection_alias_request()) ->
     {ok, create_connection_alias_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()}.
+    {error, create_connection_alias_errors(), tuple()}.
 create_connection_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_connection_alias(Client, Input, []).
@@ -2104,12 +2452,7 @@ create_connection_alias(Client, Input)
 -spec create_connection_alias(map(), create_connection_alias_request(), proplists:proplist()) ->
     {ok, create_connection_alias_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()}.
+    {error, create_connection_alias_errors(), tuple()}.
 create_connection_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateConnectionAlias">>, Input, Options).
@@ -2136,11 +2479,7 @@ create_connection_alias(Client, Input, Options)
 -spec create_ip_group(map(), create_ip_group_request()) ->
     {ok, create_ip_group_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_creation_failed_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()}.
+    {error, create_ip_group_errors(), tuple()}.
 create_ip_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_ip_group(Client, Input, []).
@@ -2148,11 +2487,7 @@ create_ip_group(Client, Input)
 -spec create_ip_group(map(), create_ip_group_request(), proplists:proplist()) ->
     {ok, create_ip_group_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_creation_failed_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()}.
+    {error, create_ip_group_errors(), tuple()}.
 create_ip_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateIpGroup">>, Input, Options).
@@ -2161,11 +2496,7 @@ create_ip_group(Client, Input, Options)
 -spec create_standby_workspaces(map(), create_standby_workspaces_request()) ->
     {ok, create_standby_workspaces_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_standby_workspaces_errors(), tuple()}.
 create_standby_workspaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_standby_workspaces(Client, Input, []).
@@ -2173,11 +2504,7 @@ create_standby_workspaces(Client, Input)
 -spec create_standby_workspaces(map(), create_standby_workspaces_request(), proplists:proplist()) ->
     {ok, create_standby_workspaces_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_standby_workspaces_errors(), tuple()}.
 create_standby_workspaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStandbyWorkspaces">>, Input, Options).
@@ -2186,9 +2513,7 @@ create_standby_workspaces(Client, Input, Options)
 -spec create_tags(map(), create_tags_request()) ->
     {ok, create_tags_result(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_tags_errors(), tuple()}.
 create_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_tags(Client, Input, []).
@@ -2196,9 +2521,7 @@ create_tags(Client, Input)
 -spec create_tags(map(), create_tags_request(), proplists:proplist()) ->
     {ok, create_tags_result(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_tags_errors(), tuple()}.
 create_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTags">>, Input, Options).
@@ -2230,13 +2553,7 @@ create_tags(Client, Input, Options)
 -spec create_updated_workspace_image(map(), create_updated_workspace_image_request()) ->
     {ok, create_updated_workspace_image_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_updated_workspace_image_errors(), tuple()}.
 create_updated_workspace_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_updated_workspace_image(Client, Input, []).
@@ -2244,13 +2561,7 @@ create_updated_workspace_image(Client, Input)
 -spec create_updated_workspace_image(map(), create_updated_workspace_image_request(), proplists:proplist()) ->
     {ok, create_updated_workspace_image_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_updated_workspace_image_errors(), tuple()}.
 create_updated_workspace_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUpdatedWorkspaceImage">>, Input, Options).
@@ -2264,12 +2575,7 @@ create_updated_workspace_image(Client, Input, Options)
 -spec create_workspace_bundle(map(), create_workspace_bundle_request()) ->
     {ok, create_workspace_bundle_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()}.
+    {error, create_workspace_bundle_errors(), tuple()}.
 create_workspace_bundle(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_workspace_bundle(Client, Input, []).
@@ -2277,12 +2583,7 @@ create_workspace_bundle(Client, Input)
 -spec create_workspace_bundle(map(), create_workspace_bundle_request(), proplists:proplist()) ->
     {ok, create_workspace_bundle_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()}.
+    {error, create_workspace_bundle_errors(), tuple()}.
 create_workspace_bundle(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWorkspaceBundle">>, Input, Options).
@@ -2291,13 +2592,7 @@ create_workspace_bundle(Client, Input, Options)
 -spec create_workspace_image(map(), create_workspace_image_request()) ->
     {ok, create_workspace_image_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_workspace_image_errors(), tuple()}.
 create_workspace_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_workspace_image(Client, Input, []).
@@ -2305,13 +2600,7 @@ create_workspace_image(Client, Input)
 -spec create_workspace_image(map(), create_workspace_image_request(), proplists:proplist()) ->
     {ok, create_workspace_image_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_workspace_image_errors(), tuple()}.
 create_workspace_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWorkspaceImage">>, Input, Options).
@@ -2335,8 +2624,7 @@ create_workspace_image(Client, Input, Options)
 -spec create_workspaces(map(), create_workspaces_request()) ->
     {ok, create_workspaces_result(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()}.
+    {error, create_workspaces_errors(), tuple()}.
 create_workspaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_workspaces(Client, Input, []).
@@ -2344,8 +2632,7 @@ create_workspaces(Client, Input)
 -spec create_workspaces(map(), create_workspaces_request(), proplists:proplist()) ->
     {ok, create_workspaces_result(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()}.
+    {error, create_workspaces_errors(), tuple()}.
 create_workspaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWorkspaces">>, Input, Options).
@@ -2365,9 +2652,7 @@ create_workspaces(Client, Input, Options)
 -spec delete_client_branding(map(), delete_client_branding_request()) ->
     {ok, delete_client_branding_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_client_branding_errors(), tuple()}.
 delete_client_branding(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_client_branding(Client, Input, []).
@@ -2375,9 +2660,7 @@ delete_client_branding(Client, Input)
 -spec delete_client_branding(map(), delete_client_branding_request(), proplists:proplist()) ->
     {ok, delete_client_branding_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_client_branding_errors(), tuple()}.
 delete_client_branding(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteClientBranding">>, Input, Options).
@@ -2388,9 +2671,7 @@ delete_client_branding(Client, Input, Options)
 -spec delete_connect_client_add_in(map(), delete_connect_client_add_in_request()) ->
     {ok, delete_connect_client_add_in_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_connect_client_add_in_errors(), tuple()}.
 delete_connect_client_add_in(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_connect_client_add_in(Client, Input, []).
@@ -2398,9 +2679,7 @@ delete_connect_client_add_in(Client, Input)
 -spec delete_connect_client_add_in(map(), delete_connect_client_add_in_request(), proplists:proplist()) ->
     {ok, delete_connect_client_add_in_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_connect_client_add_in_errors(), tuple()}.
 delete_connect_client_add_in(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConnectClientAddIn">>, Input, Options).
@@ -2430,12 +2709,7 @@ delete_connect_client_add_in(Client, Input, Options)
 -spec delete_connection_alias(map(), delete_connection_alias_request()) ->
     {ok, delete_connection_alias_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_associated_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_connection_alias_errors(), tuple()}.
 delete_connection_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_connection_alias(Client, Input, []).
@@ -2443,12 +2717,7 @@ delete_connection_alias(Client, Input)
 -spec delete_connection_alias(map(), delete_connection_alias_request(), proplists:proplist()) ->
     {ok, delete_connection_alias_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_associated_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_connection_alias_errors(), tuple()}.
 delete_connection_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConnectionAlias">>, Input, Options).
@@ -2460,10 +2729,7 @@ delete_connection_alias(Client, Input, Options)
 -spec delete_ip_group(map(), delete_ip_group_request()) ->
     {ok, delete_ip_group_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_associated_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_ip_group_errors(), tuple()}.
 delete_ip_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_ip_group(Client, Input, []).
@@ -2471,10 +2737,7 @@ delete_ip_group(Client, Input)
 -spec delete_ip_group(map(), delete_ip_group_request(), proplists:proplist()) ->
     {ok, delete_ip_group_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_associated_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_ip_group_errors(), tuple()}.
 delete_ip_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIpGroup">>, Input, Options).
@@ -2483,8 +2746,7 @@ delete_ip_group(Client, Input, Options)
 -spec delete_tags(map(), delete_tags_request()) ->
     {ok, delete_tags_result(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_tags_errors(), tuple()}.
 delete_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tags(Client, Input, []).
@@ -2492,8 +2754,7 @@ delete_tags(Client, Input)
 -spec delete_tags(map(), delete_tags_request(), proplists:proplist()) ->
     {ok, delete_tags_result(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_tags_errors(), tuple()}.
 delete_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTags">>, Input, Options).
@@ -2507,10 +2768,7 @@ delete_tags(Client, Input, Options)
 -spec delete_workspace_bundle(map(), delete_workspace_bundle_request()) ->
     {ok, delete_workspace_bundle_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_associated_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_workspace_bundle_errors(), tuple()}.
 delete_workspace_bundle(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_workspace_bundle(Client, Input, []).
@@ -2518,10 +2776,7 @@ delete_workspace_bundle(Client, Input)
 -spec delete_workspace_bundle(map(), delete_workspace_bundle_request(), proplists:proplist()) ->
     {ok, delete_workspace_bundle_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_associated_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_workspace_bundle_errors(), tuple()}.
 delete_workspace_bundle(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWorkspaceBundle">>, Input, Options).
@@ -2535,9 +2790,7 @@ delete_workspace_bundle(Client, Input, Options)
 -spec delete_workspace_image(map(), delete_workspace_image_request()) ->
     {ok, delete_workspace_image_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, resource_associated_exception(), tuple()}.
+    {error, delete_workspace_image_errors(), tuple()}.
 delete_workspace_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_workspace_image(Client, Input, []).
@@ -2545,9 +2798,7 @@ delete_workspace_image(Client, Input)
 -spec delete_workspace_image(map(), delete_workspace_image_request(), proplists:proplist()) ->
     {ok, delete_workspace_image_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, resource_associated_exception(), tuple()}.
+    {error, delete_workspace_image_errors(), tuple()}.
 delete_workspace_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWorkspaceImage">>, Input, Options).
@@ -2556,12 +2807,7 @@ delete_workspace_image(Client, Input, Options)
 -spec deploy_workspace_applications(map(), deploy_workspace_applications_request()) ->
     {ok, deploy_workspace_applications_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_applications_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, deploy_workspace_applications_errors(), tuple()}.
 deploy_workspace_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
     deploy_workspace_applications(Client, Input, []).
@@ -2569,12 +2815,7 @@ deploy_workspace_applications(Client, Input)
 -spec deploy_workspace_applications(map(), deploy_workspace_applications_request(), proplists:proplist()) ->
     {ok, deploy_workspace_applications_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_applications_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, deploy_workspace_applications_errors(), tuple()}.
 deploy_workspace_applications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeployWorkspaceApplications">>, Input, Options).
@@ -2606,11 +2847,7 @@ deploy_workspace_applications(Client, Input, Options)
 -spec deregister_workspace_directory(map(), deregister_workspace_directory_request()) ->
     {ok, deregister_workspace_directory_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, deregister_workspace_directory_errors(), tuple()}.
 deregister_workspace_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_workspace_directory(Client, Input, []).
@@ -2618,11 +2855,7 @@ deregister_workspace_directory(Client, Input)
 -spec deregister_workspace_directory(map(), deregister_workspace_directory_request(), proplists:proplist()) ->
     {ok, deregister_workspace_directory_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, deregister_workspace_directory_errors(), tuple()}.
 deregister_workspace_directory(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterWorkspaceDirectory">>, Input, Options).
@@ -2633,7 +2866,7 @@ deregister_workspace_directory(Client, Input, Options)
 -spec describe_account(map(), describe_account_request()) ->
     {ok, describe_account_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()}.
+    {error, describe_account_errors(), tuple()}.
 describe_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account(Client, Input, []).
@@ -2641,7 +2874,7 @@ describe_account(Client, Input)
 -spec describe_account(map(), describe_account_request(), proplists:proplist()) ->
     {ok, describe_account_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()}.
+    {error, describe_account_errors(), tuple()}.
 describe_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccount">>, Input, Options).
@@ -2652,7 +2885,7 @@ describe_account(Client, Input, Options)
 -spec describe_account_modifications(map(), describe_account_modifications_request()) ->
     {ok, describe_account_modifications_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()}.
+    {error, describe_account_modifications_errors(), tuple()}.
 describe_account_modifications(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_modifications(Client, Input, []).
@@ -2660,7 +2893,7 @@ describe_account_modifications(Client, Input)
 -spec describe_account_modifications(map(), describe_account_modifications_request(), proplists:proplist()) ->
     {ok, describe_account_modifications_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()}.
+    {error, describe_account_modifications_errors(), tuple()}.
 describe_account_modifications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountModifications">>, Input, Options).
@@ -2670,10 +2903,7 @@ describe_account_modifications(Client, Input, Options)
 -spec describe_application_associations(map(), describe_application_associations_request()) ->
     {ok, describe_application_associations_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_application_associations_errors(), tuple()}.
 describe_application_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_application_associations(Client, Input, []).
@@ -2681,10 +2911,7 @@ describe_application_associations(Client, Input)
 -spec describe_application_associations(map(), describe_application_associations_request(), proplists:proplist()) ->
     {ok, describe_application_associations_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_application_associations_errors(), tuple()}.
 describe_application_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeApplicationAssociations">>, Input, Options).
@@ -2694,10 +2921,7 @@ describe_application_associations(Client, Input, Options)
 -spec describe_applications(map(), describe_applications_request()) ->
     {ok, describe_applications_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_applications_errors(), tuple()}.
 describe_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_applications(Client, Input, []).
@@ -2705,10 +2929,7 @@ describe_applications(Client, Input)
 -spec describe_applications(map(), describe_applications_request(), proplists:proplist()) ->
     {ok, describe_applications_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_applications_errors(), tuple()}.
 describe_applications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeApplications">>, Input, Options).
@@ -2718,10 +2939,7 @@ describe_applications(Client, Input, Options)
 -spec describe_bundle_associations(map(), describe_bundle_associations_request()) ->
     {ok, describe_bundle_associations_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_bundle_associations_errors(), tuple()}.
 describe_bundle_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_bundle_associations(Client, Input, []).
@@ -2729,10 +2947,7 @@ describe_bundle_associations(Client, Input)
 -spec describe_bundle_associations(map(), describe_bundle_associations_request(), proplists:proplist()) ->
     {ok, describe_bundle_associations_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_bundle_associations_errors(), tuple()}.
 describe_bundle_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBundleAssociations">>, Input, Options).
@@ -2752,9 +2967,7 @@ describe_bundle_associations(Client, Input, Options)
 -spec describe_client_branding(map(), describe_client_branding_request()) ->
     {ok, describe_client_branding_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_client_branding_errors(), tuple()}.
 describe_client_branding(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_client_branding(Client, Input, []).
@@ -2762,9 +2975,7 @@ describe_client_branding(Client, Input)
 -spec describe_client_branding(map(), describe_client_branding_request(), proplists:proplist()) ->
     {ok, describe_client_branding_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_client_branding_errors(), tuple()}.
 describe_client_branding(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClientBranding">>, Input, Options).
@@ -2774,9 +2985,7 @@ describe_client_branding(Client, Input, Options)
 -spec describe_client_properties(map(), describe_client_properties_request()) ->
     {ok, describe_client_properties_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_client_properties_errors(), tuple()}.
 describe_client_properties(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_client_properties(Client, Input, []).
@@ -2784,9 +2993,7 @@ describe_client_properties(Client, Input)
 -spec describe_client_properties(map(), describe_client_properties_request(), proplists:proplist()) ->
     {ok, describe_client_properties_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_client_properties_errors(), tuple()}.
 describe_client_properties(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClientProperties">>, Input, Options).
@@ -2796,9 +3003,7 @@ describe_client_properties(Client, Input, Options)
 -spec describe_connect_client_add_ins(map(), describe_connect_client_add_ins_request()) ->
     {ok, describe_connect_client_add_ins_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_connect_client_add_ins_errors(), tuple()}.
 describe_connect_client_add_ins(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_connect_client_add_ins(Client, Input, []).
@@ -2806,9 +3011,7 @@ describe_connect_client_add_ins(Client, Input)
 -spec describe_connect_client_add_ins(map(), describe_connect_client_add_ins_request(), proplists:proplist()) ->
     {ok, describe_connect_client_add_ins_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_connect_client_add_ins_errors(), tuple()}.
 describe_connect_client_add_ins(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConnectClientAddIns">>, Input, Options).
@@ -2824,10 +3027,7 @@ describe_connect_client_add_ins(Client, Input, Options)
 -spec describe_connection_alias_permissions(map(), describe_connection_alias_permissions_request()) ->
     {ok, describe_connection_alias_permissions_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_connection_alias_permissions_errors(), tuple()}.
 describe_connection_alias_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_connection_alias_permissions(Client, Input, []).
@@ -2835,10 +3035,7 @@ describe_connection_alias_permissions(Client, Input)
 -spec describe_connection_alias_permissions(map(), describe_connection_alias_permissions_request(), proplists:proplist()) ->
     {ok, describe_connection_alias_permissions_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_connection_alias_permissions_errors(), tuple()}.
 describe_connection_alias_permissions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConnectionAliasPermissions">>, Input, Options).
@@ -2853,9 +3050,7 @@ describe_connection_alias_permissions(Client, Input, Options)
 -spec describe_connection_aliases(map(), describe_connection_aliases_request()) ->
     {ok, describe_connection_aliases_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()}.
+    {error, describe_connection_aliases_errors(), tuple()}.
 describe_connection_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_connection_aliases(Client, Input, []).
@@ -2863,9 +3058,7 @@ describe_connection_aliases(Client, Input)
 -spec describe_connection_aliases(map(), describe_connection_aliases_request(), proplists:proplist()) ->
     {ok, describe_connection_aliases_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()}.
+    {error, describe_connection_aliases_errors(), tuple()}.
 describe_connection_aliases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConnectionAliases">>, Input, Options).
@@ -2875,10 +3068,7 @@ describe_connection_aliases(Client, Input, Options)
 -spec describe_image_associations(map(), describe_image_associations_request()) ->
     {ok, describe_image_associations_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_image_associations_errors(), tuple()}.
 describe_image_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_image_associations(Client, Input, []).
@@ -2886,10 +3076,7 @@ describe_image_associations(Client, Input)
 -spec describe_image_associations(map(), describe_image_associations_request(), proplists:proplist()) ->
     {ok, describe_image_associations_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_image_associations_errors(), tuple()}.
 describe_image_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeImageAssociations">>, Input, Options).
@@ -2898,8 +3085,7 @@ describe_image_associations(Client, Input, Options)
 -spec describe_ip_groups(map(), describe_ip_groups_request()) ->
     {ok, describe_ip_groups_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()}.
+    {error, describe_ip_groups_errors(), tuple()}.
 describe_ip_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_ip_groups(Client, Input, []).
@@ -2907,8 +3093,7 @@ describe_ip_groups(Client, Input)
 -spec describe_ip_groups(map(), describe_ip_groups_request(), proplists:proplist()) ->
     {ok, describe_ip_groups_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()}.
+    {error, describe_ip_groups_errors(), tuple()}.
 describe_ip_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeIpGroups">>, Input, Options).
@@ -2917,7 +3102,7 @@ describe_ip_groups(Client, Input, Options)
 -spec describe_tags(map(), describe_tags_request()) ->
     {ok, describe_tags_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_tags_errors(), tuple()}.
 describe_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tags(Client, Input, []).
@@ -2925,7 +3110,7 @@ describe_tags(Client, Input)
 -spec describe_tags(map(), describe_tags_request(), proplists:proplist()) ->
     {ok, describe_tags_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_tags_errors(), tuple()}.
 describe_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTags">>, Input, Options).
@@ -2935,10 +3120,7 @@ describe_tags(Client, Input, Options)
 -spec describe_workspace_associations(map(), describe_workspace_associations_request()) ->
     {ok, describe_workspace_associations_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_workspace_associations_errors(), tuple()}.
 describe_workspace_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workspace_associations(Client, Input, []).
@@ -2946,10 +3128,7 @@ describe_workspace_associations(Client, Input)
 -spec describe_workspace_associations(map(), describe_workspace_associations_request(), proplists:proplist()) ->
     {ok, describe_workspace_associations_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_workspace_associations_errors(), tuple()}.
 describe_workspace_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWorkspaceAssociations">>, Input, Options).
@@ -2960,7 +3139,7 @@ describe_workspace_associations(Client, Input, Options)
 -spec describe_workspace_bundles(map(), describe_workspace_bundles_request()) ->
     {ok, describe_workspace_bundles_result(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_values_exception(), tuple()}.
+    {error, describe_workspace_bundles_errors(), tuple()}.
 describe_workspace_bundles(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workspace_bundles(Client, Input, []).
@@ -2968,7 +3147,7 @@ describe_workspace_bundles(Client, Input)
 -spec describe_workspace_bundles(map(), describe_workspace_bundles_request(), proplists:proplist()) ->
     {ok, describe_workspace_bundles_result(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_values_exception(), tuple()}.
+    {error, describe_workspace_bundles_errors(), tuple()}.
 describe_workspace_bundles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWorkspaceBundles">>, Input, Options).
@@ -2978,7 +3157,7 @@ describe_workspace_bundles(Client, Input, Options)
 -spec describe_workspace_directories(map(), describe_workspace_directories_request()) ->
     {ok, describe_workspace_directories_result(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_values_exception(), tuple()}.
+    {error, describe_workspace_directories_errors(), tuple()}.
 describe_workspace_directories(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workspace_directories(Client, Input, []).
@@ -2986,7 +3165,7 @@ describe_workspace_directories(Client, Input)
 -spec describe_workspace_directories(map(), describe_workspace_directories_request(), proplists:proplist()) ->
     {ok, describe_workspace_directories_result(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_values_exception(), tuple()}.
+    {error, describe_workspace_directories_errors(), tuple()}.
 describe_workspace_directories(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWorkspaceDirectories">>, Input, Options).
@@ -2996,9 +3175,7 @@ describe_workspace_directories(Client, Input, Options)
 -spec describe_workspace_image_permissions(map(), describe_workspace_image_permissions_request()) ->
     {ok, describe_workspace_image_permissions_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_workspace_image_permissions_errors(), tuple()}.
 describe_workspace_image_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workspace_image_permissions(Client, Input, []).
@@ -3006,9 +3183,7 @@ describe_workspace_image_permissions(Client, Input)
 -spec describe_workspace_image_permissions(map(), describe_workspace_image_permissions_request(), proplists:proplist()) ->
     {ok, describe_workspace_image_permissions_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_workspace_image_permissions_errors(), tuple()}.
 describe_workspace_image_permissions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWorkspaceImagePermissions">>, Input, Options).
@@ -3021,7 +3196,7 @@ describe_workspace_image_permissions(Client, Input, Options)
 -spec describe_workspace_images(map(), describe_workspace_images_request()) ->
     {ok, describe_workspace_images_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()}.
+    {error, describe_workspace_images_errors(), tuple()}.
 describe_workspace_images(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workspace_images(Client, Input, []).
@@ -3029,7 +3204,7 @@ describe_workspace_images(Client, Input)
 -spec describe_workspace_images(map(), describe_workspace_images_request(), proplists:proplist()) ->
     {ok, describe_workspace_images_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()}.
+    {error, describe_workspace_images_errors(), tuple()}.
 describe_workspace_images(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWorkspaceImages">>, Input, Options).
@@ -3038,9 +3213,7 @@ describe_workspace_images(Client, Input, Options)
 -spec describe_workspace_snapshots(map(), describe_workspace_snapshots_request()) ->
     {ok, describe_workspace_snapshots_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_workspace_snapshots_errors(), tuple()}.
 describe_workspace_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workspace_snapshots(Client, Input, []).
@@ -3048,9 +3221,7 @@ describe_workspace_snapshots(Client, Input)
 -spec describe_workspace_snapshots(map(), describe_workspace_snapshots_request(), proplists:proplist()) ->
     {ok, describe_workspace_snapshots_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_workspace_snapshots_errors(), tuple()}.
 describe_workspace_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWorkspaceSnapshots">>, Input, Options).
@@ -3063,8 +3234,7 @@ describe_workspace_snapshots(Client, Input, Options)
 -spec describe_workspaces(map(), describe_workspaces_request()) ->
     {ok, describe_workspaces_result(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()}.
+    {error, describe_workspaces_errors(), tuple()}.
 describe_workspaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workspaces(Client, Input, []).
@@ -3072,8 +3242,7 @@ describe_workspaces(Client, Input)
 -spec describe_workspaces(map(), describe_workspaces_request(), proplists:proplist()) ->
     {ok, describe_workspaces_result(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()}.
+    {error, describe_workspaces_errors(), tuple()}.
 describe_workspaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWorkspaces">>, Input, Options).
@@ -3082,7 +3251,7 @@ describe_workspaces(Client, Input, Options)
 -spec describe_workspaces_connection_status(map(), describe_workspaces_connection_status_request()) ->
     {ok, describe_workspaces_connection_status_result(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_values_exception(), tuple()}.
+    {error, describe_workspaces_connection_status_errors(), tuple()}.
 describe_workspaces_connection_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workspaces_connection_status(Client, Input, []).
@@ -3090,7 +3259,7 @@ describe_workspaces_connection_status(Client, Input)
 -spec describe_workspaces_connection_status(map(), describe_workspaces_connection_status_request(), proplists:proplist()) ->
     {ok, describe_workspaces_connection_status_result(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_values_exception(), tuple()}.
+    {error, describe_workspaces_connection_status_errors(), tuple()}.
 describe_workspaces_connection_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWorkspacesConnectionStatus">>, Input, Options).
@@ -3112,11 +3281,7 @@ describe_workspaces_connection_status(Client, Input, Options)
 -spec disassociate_connection_alias(map(), disassociate_connection_alias_request()) ->
     {ok, disassociate_connection_alias_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_connection_alias_errors(), tuple()}.
 disassociate_connection_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_connection_alias(Client, Input, []).
@@ -3124,11 +3289,7 @@ disassociate_connection_alias(Client, Input)
 -spec disassociate_connection_alias(map(), disassociate_connection_alias_request(), proplists:proplist()) ->
     {ok, disassociate_connection_alias_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_connection_alias_errors(), tuple()}.
 disassociate_connection_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateConnectionAlias">>, Input, Options).
@@ -3138,10 +3299,7 @@ disassociate_connection_alias(Client, Input, Options)
 -spec disassociate_ip_groups(map(), disassociate_ip_groups_request()) ->
     {ok, disassociate_ip_groups_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_ip_groups_errors(), tuple()}.
 disassociate_ip_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_ip_groups(Client, Input, []).
@@ -3149,10 +3307,7 @@ disassociate_ip_groups(Client, Input)
 -spec disassociate_ip_groups(map(), disassociate_ip_groups_request(), proplists:proplist()) ->
     {ok, disassociate_ip_groups_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_ip_groups_errors(), tuple()}.
 disassociate_ip_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateIpGroups">>, Input, Options).
@@ -3161,11 +3316,7 @@ disassociate_ip_groups(Client, Input, Options)
 -spec disassociate_workspace_application(map(), disassociate_workspace_application_request()) ->
     {ok, disassociate_workspace_application_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_workspace_application_errors(), tuple()}.
 disassociate_workspace_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_workspace_application(Client, Input, []).
@@ -3173,11 +3324,7 @@ disassociate_workspace_application(Client, Input)
 -spec disassociate_workspace_application(map(), disassociate_workspace_application_request(), proplists:proplist()) ->
     {ok, disassociate_workspace_application_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disassociate_workspace_application_errors(), tuple()}.
 disassociate_workspace_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateWorkspaceApplication">>, Input, Options).
@@ -3213,10 +3360,7 @@ disassociate_workspace_application(Client, Input, Options)
 -spec import_client_branding(map(), import_client_branding_request()) ->
     {ok, import_client_branding_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, import_client_branding_errors(), tuple()}.
 import_client_branding(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_client_branding(Client, Input, []).
@@ -3224,10 +3368,7 @@ import_client_branding(Client, Input)
 -spec import_client_branding(map(), import_client_branding_request(), proplists:proplist()) ->
     {ok, import_client_branding_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, import_client_branding_errors(), tuple()}.
 import_client_branding(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportClientBranding">>, Input, Options).
@@ -3244,12 +3385,7 @@ import_client_branding(Client, Input, Options)
 -spec import_workspace_image(map(), import_workspace_image_request()) ->
     {ok, import_workspace_image_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, import_workspace_image_errors(), tuple()}.
 import_workspace_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_workspace_image(Client, Input, []).
@@ -3257,12 +3393,7 @@ import_workspace_image(Client, Input)
 -spec import_workspace_image(map(), import_workspace_image_request(), proplists:proplist()) ->
     {ok, import_workspace_image_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, import_workspace_image_errors(), tuple()}.
 import_workspace_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportWorkspaceImage">>, Input, Options).
@@ -3285,8 +3416,7 @@ import_workspace_image(Client, Input, Options)
 -spec list_available_management_cidr_ranges(map(), list_available_management_cidr_ranges_request()) ->
     {ok, list_available_management_cidr_ranges_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()}.
+    {error, list_available_management_cidr_ranges_errors(), tuple()}.
 list_available_management_cidr_ranges(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_available_management_cidr_ranges(Client, Input, []).
@@ -3294,8 +3424,7 @@ list_available_management_cidr_ranges(Client, Input)
 -spec list_available_management_cidr_ranges(map(), list_available_management_cidr_ranges_request(), proplists:proplist()) ->
     {ok, list_available_management_cidr_ranges_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()}.
+    {error, list_available_management_cidr_ranges_errors(), tuple()}.
 list_available_management_cidr_ranges(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAvailableManagementCidrRanges">>, Input, Options).
@@ -3324,12 +3453,7 @@ list_available_management_cidr_ranges(Client, Input, Options)
 -spec migrate_workspace(map(), migrate_workspace_request()) ->
     {ok, migrate_workspace_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_in_progress_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()}.
+    {error, migrate_workspace_errors(), tuple()}.
 migrate_workspace(Client, Input)
   when is_map(Client), is_map(Input) ->
     migrate_workspace(Client, Input, []).
@@ -3337,12 +3461,7 @@ migrate_workspace(Client, Input)
 -spec migrate_workspace(map(), migrate_workspace_request(), proplists:proplist()) ->
     {ok, migrate_workspace_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_in_progress_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()}.
+    {error, migrate_workspace_errors(), tuple()}.
 migrate_workspace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"MigrateWorkspace">>, Input, Options).
@@ -3353,11 +3472,7 @@ migrate_workspace(Client, Input, Options)
 -spec modify_account(map(), modify_account_request()) ->
     {ok, modify_account_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()}.
+    {error, modify_account_errors(), tuple()}.
 modify_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_account(Client, Input, []).
@@ -3365,11 +3480,7 @@ modify_account(Client, Input)
 -spec modify_account(map(), modify_account_request(), proplists:proplist()) ->
     {ok, modify_account_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()}.
+    {error, modify_account_errors(), tuple()}.
 modify_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyAccount">>, Input, Options).
@@ -3380,10 +3491,7 @@ modify_account(Client, Input, Options)
 -spec modify_certificate_based_auth_properties(map(), modify_certificate_based_auth_properties_request()) ->
     {ok, modify_certificate_based_auth_properties_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, modify_certificate_based_auth_properties_errors(), tuple()}.
 modify_certificate_based_auth_properties(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_certificate_based_auth_properties(Client, Input, []).
@@ -3391,10 +3499,7 @@ modify_certificate_based_auth_properties(Client, Input)
 -spec modify_certificate_based_auth_properties(map(), modify_certificate_based_auth_properties_request(), proplists:proplist()) ->
     {ok, modify_certificate_based_auth_properties_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, modify_certificate_based_auth_properties_errors(), tuple()}.
 modify_certificate_based_auth_properties(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyCertificateBasedAuthProperties">>, Input, Options).
@@ -3403,9 +3508,7 @@ modify_certificate_based_auth_properties(Client, Input, Options)
 -spec modify_client_properties(map(), modify_client_properties_request()) ->
     {ok, modify_client_properties_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, modify_client_properties_errors(), tuple()}.
 modify_client_properties(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_client_properties(Client, Input, []).
@@ -3413,9 +3516,7 @@ modify_client_properties(Client, Input)
 -spec modify_client_properties(map(), modify_client_properties_request(), proplists:proplist()) ->
     {ok, modify_client_properties_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, modify_client_properties_errors(), tuple()}.
 modify_client_properties(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyClientProperties">>, Input, Options).
@@ -3428,10 +3529,7 @@ modify_client_properties(Client, Input, Options)
 -spec modify_saml_properties(map(), modify_saml_properties_request()) ->
     {ok, modify_saml_properties_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, modify_saml_properties_errors(), tuple()}.
 modify_saml_properties(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_saml_properties(Client, Input, []).
@@ -3439,10 +3537,7 @@ modify_saml_properties(Client, Input)
 -spec modify_saml_properties(map(), modify_saml_properties_request(), proplists:proplist()) ->
     {ok, modify_saml_properties_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, modify_saml_properties_errors(), tuple()}.
 modify_saml_properties(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifySamlProperties">>, Input, Options).
@@ -3457,9 +3552,7 @@ modify_saml_properties(Client, Input, Options)
 -spec modify_selfservice_permissions(map(), modify_selfservice_permissions_request()) ->
     {ok, modify_selfservice_permissions_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, modify_selfservice_permissions_errors(), tuple()}.
 modify_selfservice_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_selfservice_permissions(Client, Input, []).
@@ -3467,9 +3560,7 @@ modify_selfservice_permissions(Client, Input)
 -spec modify_selfservice_permissions(map(), modify_selfservice_permissions_request(), proplists:proplist()) ->
     {ok, modify_selfservice_permissions_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, modify_selfservice_permissions_errors(), tuple()}.
 modify_selfservice_permissions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifySelfservicePermissions">>, Input, Options).
@@ -3483,8 +3574,7 @@ modify_selfservice_permissions(Client, Input, Options)
 -spec modify_workspace_access_properties(map(), modify_workspace_access_properties_request()) ->
     {ok, modify_workspace_access_properties_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, modify_workspace_access_properties_errors(), tuple()}.
 modify_workspace_access_properties(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_workspace_access_properties(Client, Input, []).
@@ -3492,8 +3582,7 @@ modify_workspace_access_properties(Client, Input)
 -spec modify_workspace_access_properties(map(), modify_workspace_access_properties_request(), proplists:proplist()) ->
     {ok, modify_workspace_access_properties_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, modify_workspace_access_properties_errors(), tuple()}.
 modify_workspace_access_properties(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyWorkspaceAccessProperties">>, Input, Options).
@@ -3502,10 +3591,7 @@ modify_workspace_access_properties(Client, Input, Options)
 -spec modify_workspace_creation_properties(map(), modify_workspace_creation_properties_request()) ->
     {ok, modify_workspace_creation_properties_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, modify_workspace_creation_properties_errors(), tuple()}.
 modify_workspace_creation_properties(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_workspace_creation_properties(Client, Input, []).
@@ -3513,10 +3599,7 @@ modify_workspace_creation_properties(Client, Input)
 -spec modify_workspace_creation_properties(map(), modify_workspace_creation_properties_request(), proplists:proplist()) ->
     {ok, modify_workspace_creation_properties_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, modify_workspace_creation_properties_errors(), tuple()}.
 modify_workspace_creation_properties(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyWorkspaceCreationProperties">>, Input, Options).
@@ -3535,13 +3618,7 @@ modify_workspace_creation_properties(Client, Input, Options)
 -spec modify_workspace_properties(map(), modify_workspace_properties_request()) ->
     {ok, modify_workspace_properties_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, operation_in_progress_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, unsupported_workspace_configuration_exception(), tuple()}.
+    {error, modify_workspace_properties_errors(), tuple()}.
 modify_workspace_properties(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_workspace_properties(Client, Input, []).
@@ -3549,13 +3626,7 @@ modify_workspace_properties(Client, Input)
 -spec modify_workspace_properties(map(), modify_workspace_properties_request(), proplists:proplist()) ->
     {ok, modify_workspace_properties_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, operation_in_progress_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, unsupported_workspace_configuration_exception(), tuple()}.
+    {error, modify_workspace_properties_errors(), tuple()}.
 modify_workspace_properties(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyWorkspaceProperties">>, Input, Options).
@@ -3573,10 +3644,7 @@ modify_workspace_properties(Client, Input, Options)
 -spec modify_workspace_state(map(), modify_workspace_state_request()) ->
     {ok, modify_workspace_state_result(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, modify_workspace_state_errors(), tuple()}.
 modify_workspace_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_workspace_state(Client, Input, []).
@@ -3584,10 +3652,7 @@ modify_workspace_state(Client, Input)
 -spec modify_workspace_state(map(), modify_workspace_state_request(), proplists:proplist()) ->
     {ok, modify_workspace_state_result(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, modify_workspace_state_errors(), tuple()}.
 modify_workspace_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyWorkspaceState">>, Input, Options).
@@ -3605,7 +3670,7 @@ modify_workspace_state(Client, Input, Options)
 -spec reboot_workspaces(map(), reboot_workspaces_request()) ->
     {ok, reboot_workspaces_result(), tuple()} |
     {error, any()} |
-    {error, operation_not_supported_exception(), tuple()}.
+    {error, reboot_workspaces_errors(), tuple()}.
 reboot_workspaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_workspaces(Client, Input, []).
@@ -3613,7 +3678,7 @@ reboot_workspaces(Client, Input)
 -spec reboot_workspaces(map(), reboot_workspaces_request(), proplists:proplist()) ->
     {ok, reboot_workspaces_result(), tuple()} |
     {error, any()} |
-    {error, operation_not_supported_exception(), tuple()}.
+    {error, reboot_workspaces_errors(), tuple()}.
 reboot_workspaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RebootWorkspaces">>, Input, Options).
@@ -3636,7 +3701,7 @@ reboot_workspaces(Client, Input, Options)
 -spec rebuild_workspaces(map(), rebuild_workspaces_request()) ->
     {ok, rebuild_workspaces_result(), tuple()} |
     {error, any()} |
-    {error, operation_not_supported_exception(), tuple()}.
+    {error, rebuild_workspaces_errors(), tuple()}.
 rebuild_workspaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     rebuild_workspaces(Client, Input, []).
@@ -3644,7 +3709,7 @@ rebuild_workspaces(Client, Input)
 -spec rebuild_workspaces(map(), rebuild_workspaces_request(), proplists:proplist()) ->
     {ok, rebuild_workspaces_result(), tuple()} |
     {error, any()} |
-    {error, operation_not_supported_exception(), tuple()}.
+    {error, rebuild_workspaces_errors(), tuple()}.
 rebuild_workspaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RebuildWorkspaces">>, Input, Options).
@@ -3662,14 +3727,7 @@ rebuild_workspaces(Client, Input, Options)
 -spec register_workspace_directory(map(), register_workspace_directory_request()) ->
     {ok, register_workspace_directory_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, unsupported_network_configuration_exception(), tuple()} |
-    {error, workspaces_default_role_not_found_exception(), tuple()}.
+    {error, register_workspace_directory_errors(), tuple()}.
 register_workspace_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_workspace_directory(Client, Input, []).
@@ -3677,14 +3735,7 @@ register_workspace_directory(Client, Input)
 -spec register_workspace_directory(map(), register_workspace_directory_request(), proplists:proplist()) ->
     {ok, register_workspace_directory_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, unsupported_network_configuration_exception(), tuple()} |
-    {error, workspaces_default_role_not_found_exception(), tuple()}.
+    {error, register_workspace_directory_errors(), tuple()}.
 register_workspace_directory(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterWorkspaceDirectory">>, Input, Options).
@@ -3706,10 +3757,7 @@ register_workspace_directory(Client, Input, Options)
 -spec restore_workspace(map(), restore_workspace_request()) ->
     {ok, restore_workspace_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, restore_workspace_errors(), tuple()}.
 restore_workspace(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_workspace(Client, Input, []).
@@ -3717,10 +3765,7 @@ restore_workspace(Client, Input)
 -spec restore_workspace(map(), restore_workspace_request(), proplists:proplist()) ->
     {ok, restore_workspace_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, restore_workspace_errors(), tuple()}.
 restore_workspace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreWorkspace">>, Input, Options).
@@ -3729,10 +3774,7 @@ restore_workspace(Client, Input, Options)
 -spec revoke_ip_rules(map(), revoke_ip_rules_request()) ->
     {ok, revoke_ip_rules_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, revoke_ip_rules_errors(), tuple()}.
 revoke_ip_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     revoke_ip_rules(Client, Input, []).
@@ -3740,10 +3782,7 @@ revoke_ip_rules(Client, Input)
 -spec revoke_ip_rules(map(), revoke_ip_rules_request(), proplists:proplist()) ->
     {ok, revoke_ip_rules_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, revoke_ip_rules_errors(), tuple()}.
 revoke_ip_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RevokeIpRules">>, Input, Options).
@@ -3849,9 +3888,7 @@ terminate_workspaces(Client, Input, Options)
 -spec update_connect_client_add_in(map(), update_connect_client_add_in_request()) ->
     {ok, update_connect_client_add_in_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_connect_client_add_in_errors(), tuple()}.
 update_connect_client_add_in(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_connect_client_add_in(Client, Input, []).
@@ -3859,9 +3896,7 @@ update_connect_client_add_in(Client, Input)
 -spec update_connect_client_add_in(map(), update_connect_client_add_in_request(), proplists:proplist()) ->
     {ok, update_connect_client_add_in_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_connect_client_add_in_errors(), tuple()}.
 update_connect_client_add_in(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateConnectClientAddIn">>, Input, Options).
@@ -3895,13 +3930,7 @@ update_connect_client_add_in(Client, Input, Options)
 -spec update_connection_alias_permission(map(), update_connection_alias_permission_request()) ->
     {ok, update_connection_alias_permission_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_associated_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_connection_alias_permission_errors(), tuple()}.
 update_connection_alias_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_connection_alias_permission(Client, Input, []).
@@ -3909,13 +3938,7 @@ update_connection_alias_permission(Client, Input)
 -spec update_connection_alias_permission(map(), update_connection_alias_permission_request(), proplists:proplist()) ->
     {ok, update_connection_alias_permission_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_associated_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_connection_alias_permission_errors(), tuple()}.
 update_connection_alias_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateConnectionAliasPermission">>, Input, Options).
@@ -3926,11 +3949,7 @@ update_connection_alias_permission(Client, Input, Options)
 -spec update_rules_of_ip_group(map(), update_rules_of_ip_group_request()) ->
     {ok, update_rules_of_ip_group_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_rules_of_ip_group_errors(), tuple()}.
 update_rules_of_ip_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rules_of_ip_group(Client, Input, []).
@@ -3938,11 +3957,7 @@ update_rules_of_ip_group(Client, Input)
 -spec update_rules_of_ip_group(map(), update_rules_of_ip_group_request(), proplists:proplist()) ->
     {ok, update_rules_of_ip_group_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, invalid_resource_state_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_rules_of_ip_group_errors(), tuple()}.
 update_rules_of_ip_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRulesOfIpGroup">>, Input, Options).
@@ -3962,11 +3977,7 @@ update_rules_of_ip_group(Client, Input, Options)
 -spec update_workspace_bundle(map(), update_workspace_bundle_request()) ->
     {ok, update_workspace_bundle_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()}.
+    {error, update_workspace_bundle_errors(), tuple()}.
 update_workspace_bundle(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_workspace_bundle(Client, Input, []).
@@ -3974,11 +3985,7 @@ update_workspace_bundle(Client, Input)
 -spec update_workspace_bundle(map(), update_workspace_bundle_request(), proplists:proplist()) ->
     {ok, update_workspace_bundle_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()}.
+    {error, update_workspace_bundle_errors(), tuple()}.
 update_workspace_bundle(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateWorkspaceBundle">>, Input, Options).
@@ -4019,11 +4026,7 @@ update_workspace_bundle(Client, Input, Options)
 -spec update_workspace_image_permission(map(), update_workspace_image_permission_request()) ->
     {ok, update_workspace_image_permission_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()}.
+    {error, update_workspace_image_permission_errors(), tuple()}.
 update_workspace_image_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_workspace_image_permission(Client, Input, []).
@@ -4031,11 +4034,7 @@ update_workspace_image_permission(Client, Input)
 -spec update_workspace_image_permission(map(), update_workspace_image_permission_request(), proplists:proplist()) ->
     {ok, update_workspace_image_permission_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_parameter_values_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()}.
+    {error, update_workspace_image_permission_errors(), tuple()}.
 update_workspace_image_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateWorkspaceImagePermission">>, Input, Options).

@@ -168,15 +168,18 @@
 %%   <<"OutputNames">> => list(string()())
 %% }
 -type static_image_output_deactivate_schedule_action_settings() :: #{binary() => any()}.
+
 %% Example:
 %% scte27_destination_settings() :: #{}
 -type scte27_destination_settings() :: #{}.
+
 
 %% Example:
 %% archive_s3_settings() :: #{
 %%   <<"CannedAcl">> => list(any())
 %% }
 -type archive_s3_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% caption_rectangle() :: #{
@@ -187,6 +190,7 @@
 %% }
 -type caption_rectangle() :: #{binary() => any()}.
 
+
 %% Example:
 %% scte35_time_signal_apos() :: #{
 %%   <<"AdAvailOffset">> => integer(),
@@ -194,9 +198,11 @@
 %%   <<"WebDeliveryAllowedFlag">> => list(any())
 %% }
 -type scte35_time_signal_apos() :: #{binary() => any()}.
+
 %% Example:
 %% delete_channel_request() :: #{}
 -type delete_channel_request() :: #{}.
+
 
 %% Example:
 %% frame_capture_group_settings() :: #{
@@ -205,11 +211,13 @@
 %% }
 -type frame_capture_group_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% input_device_settings() :: #{
 %%   <<"Id">> => string()
 %% }
 -type input_device_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_input_security_groups_request() :: #{
@@ -218,12 +226,14 @@
 %% }
 -type list_input_security_groups_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% stop_timecode() :: #{
 %%   <<"LastFrameClippingBehavior">> => list(any()),
 %%   <<"Timecode">> => string()
 %% }
 -type stop_timecode() :: #{binary() => any()}.
+
 
 %% Example:
 %% input_destination() :: #{
@@ -233,6 +243,7 @@
 %%   <<"Vpc">> => input_destination_vpc()
 %% }
 -type input_destination() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_input_device_response() :: #{
@@ -255,6 +266,7 @@
 %% }
 -type describe_input_device_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_start_response() :: #{
 %%   <<"Failed">> => list(batch_failed_result_model()()),
@@ -262,15 +274,18 @@
 %% }
 -type batch_start_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% scte20_source_settings() :: #{
 %%   <<"Convert608To708">> => list(any()),
 %%   <<"Source608ChannelNumber">> => integer()
 %% }
 -type scte20_source_settings() :: #{binary() => any()}.
+
 %% Example:
 %% delete_multiplex_program_request() :: #{}
 -type delete_multiplex_program_request() :: #{}.
+
 
 %% Example:
 %% input_clipping_settings() :: #{
@@ -280,6 +295,7 @@
 %% }
 -type input_clipping_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% input_source() :: #{
 %%   <<"PasswordParam">> => string(),
@@ -287,9 +303,11 @@
 %%   <<"Username">> => string()
 %% }
 -type input_source() :: #{binary() => any()}.
+
 %% Example:
 %% cancel_input_device_transfer_response() :: #{}
 -type cancel_input_device_transfer_response() :: #{}.
+
 
 %% Example:
 %% output_destination() :: #{
@@ -300,6 +318,7 @@
 %% }
 -type output_destination() :: #{binary() => any()}.
 
+
 %% Example:
 %% video_selector_settings() :: #{
 %%   <<"VideoSelectorPid">> => video_selector_pid(),
@@ -307,12 +326,14 @@
 %% }
 -type video_selector_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_update_schedule_request() :: #{
 %%   <<"Creates">> => batch_schedule_action_create_request(),
 %%   <<"Deletes">> => batch_schedule_action_delete_request()
 %% }
 -type batch_update_schedule_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% multiplex_summary() :: #{
@@ -327,15 +348,18 @@
 %%   <<"Tags">> => map()
 %% }
 -type multiplex_summary() :: #{binary() => any()}.
+
 %% Example:
 %% stop_multiplex_request() :: #{}
 -type stop_multiplex_request() :: #{}.
+
 
 %% Example:
 %% delete_tags_request() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type delete_tags_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_input_device_request() :: #{
@@ -346,15 +370,18 @@
 %% }
 -type update_input_device_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_multiplex_programs_response() :: #{
 %%   <<"MultiplexPrograms">> => list(multiplex_program_summary()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_multiplex_programs_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_input_request() :: #{}
 -type describe_input_request() :: #{}.
+
 
 %% Example:
 %% scte27_source_settings() :: #{
@@ -362,6 +389,7 @@
 %%   <<"Pid">> => integer()
 %% }
 -type scte27_source_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% restart_channel_pipelines_response() :: #{
@@ -387,11 +415,13 @@
 %% }
 -type restart_channel_pipelines_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_channel_class_response() :: #{
 %%   <<"Channel">> => channel()
 %% }
 -type update_channel_class_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% archive_group_settings() :: #{
@@ -400,6 +430,7 @@
 %%   <<"RolloverInterval">> => integer()
 %% }
 -type archive_group_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% hls_akamai_settings() :: #{
@@ -413,6 +444,7 @@
 %% }
 -type hls_akamai_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% audio_only_hls_settings() :: #{
 %%   <<"AudioGroupId">> => string(),
@@ -421,6 +453,7 @@
 %%   <<"SegmentType">> => list(any())
 %% }
 -type audio_only_hls_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% scte35_delivery_restrictions() :: #{
@@ -431,6 +464,7 @@
 %% }
 -type scte35_delivery_restrictions() :: #{binary() => any()}.
 
+
 %% Example:
 %% multiplex_program_summary() :: #{
 %%   <<"ChannelId">> => string(),
@@ -438,26 +472,31 @@
 %% }
 -type multiplex_program_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_channel_response() :: #{
 %%   <<"Channel">> => channel()
 %% }
 -type create_channel_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% scte35_return_to_network_schedule_action_settings() :: #{
 %%   <<"SpliceEventId">> => float()
 %% }
 -type scte35_return_to_network_schedule_action_settings() :: #{binary() => any()}.
+
 %% Example:
 %% start_input_device_request() :: #{}
 -type start_input_device_request() :: #{}.
+
 
 %% Example:
 %% pause_state_schedule_action_settings() :: #{
 %%   <<"Pipelines">> => list(pipeline_pause_state_settings()())
 %% }
 -type pause_state_schedule_action_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% network_input_settings() :: #{
@@ -466,6 +505,7 @@
 %% }
 -type network_input_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% mp2_settings() :: #{
 %%   <<"Bitrate">> => float(),
@@ -473,15 +513,18 @@
 %%   <<"SampleRate">> => float()
 %% }
 -type mp2_settings() :: #{binary() => any()}.
+
 %% Example:
 %% delete_reservation_request() :: #{}
 -type delete_reservation_request() :: #{}.
+
 
 %% Example:
 %% multiplex_output_destination() :: #{
 %%   <<"MediaConnectSettings">> => multiplex_media_connect_output_destination_settings()
 %% }
 -type multiplex_output_destination() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_failed_result_model() :: #{
@@ -491,6 +534,7 @@
 %%   <<"Message">> => string()
 %% }
 -type batch_failed_result_model() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_channel_response() :: #{
@@ -515,11 +559,13 @@
 %% }
 -type delete_channel_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% account_configuration() :: #{
 %%   <<"KmsKeyId">> => string()
 %% }
 -type account_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_input_security_group_request() :: #{
@@ -527,6 +573,7 @@
 %%   <<"WhitelistRules">> => list(input_whitelist_rule_cidr()())
 %% }
 -type update_input_security_group_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% thumbnail() :: #{
@@ -537,6 +584,7 @@
 %% }
 -type thumbnail() :: #{binary() => any()}.
 
+
 %% Example:
 %% udp_output_settings() :: #{
 %%   <<"BufferMsec">> => integer(),
@@ -546,6 +594,7 @@
 %% }
 -type udp_output_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% input_location() :: #{
 %%   <<"PasswordParam">> => string(),
@@ -553,9 +602,11 @@
 %%   <<"Username">> => string()
 %% }
 -type input_location() :: #{binary() => any()}.
+
 %% Example:
 %% describe_account_configuration_request() :: #{}
 -type describe_account_configuration_request() :: #{}.
+
 
 %% Example:
 %% nielsen_configuration() :: #{
@@ -564,6 +615,7 @@
 %% }
 -type nielsen_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% caption_selector() :: #{
 %%   <<"LanguageCode">> => string(),
@@ -571,6 +623,7 @@
 %%   <<"SelectorSettings">> => caption_selector_settings()
 %% }
 -type caption_selector() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_input_device_response() :: #{
@@ -593,17 +646,20 @@
 %% }
 -type update_input_device_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% bad_gateway_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type bad_gateway_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% input_device_request() :: #{
 %%   <<"Id">> => string()
 %% }
 -type input_device_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% input_device_network_settings() :: #{
@@ -615,6 +671,7 @@
 %% }
 -type input_device_network_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% multiplex_program() :: #{
 %%   <<"ChannelId">> => string(),
@@ -624,6 +681,7 @@
 %%   <<"ProgramName">> => string()
 %% }
 -type multiplex_program() :: #{binary() => any()}.
+
 
 %% Example:
 %% caption_selector_settings() :: #{
@@ -637,11 +695,13 @@
 %% }
 -type caption_selector_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% input_loss_failover_settings() :: #{
 %%   <<"InputLossThresholdMsec">> => integer()
 %% }
 -type input_loss_failover_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_multiplex_program_request() :: #{
@@ -650,15 +710,18 @@
 %%   <<"RequestId">> := string()
 %% }
 -type create_multiplex_program_request() :: #{binary() => any()}.
+
 %% Example:
 %% transfer_input_device_response() :: #{}
 -type transfer_input_device_response() :: #{}.
+
 
 %% Example:
 %% forbidden_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type forbidden_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_reservations_request() :: #{
@@ -675,6 +738,7 @@
 %% }
 -type list_reservations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% hls_cdn_settings() :: #{
 %%   <<"HlsAkamaiSettings">> => hls_akamai_settings(),
@@ -684,6 +748,7 @@
 %%   <<"HlsWebdavSettings">> => hls_webdav_settings()
 %% }
 -type hls_cdn_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% audio_codec_settings() :: #{
@@ -696,6 +761,7 @@
 %%   <<"WavSettings">> => wav_settings()
 %% }
 -type audio_codec_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_offerings_request() :: #{
@@ -714,14 +780,17 @@
 %% }
 -type list_offerings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_account_configuration_response() :: #{
 %%   <<"AccountConfiguration">> => account_configuration()
 %% }
 -type describe_account_configuration_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_input_security_group_response() :: #{}
 -type delete_input_security_group_response() :: #{}.
+
 
 %% Example:
 %% list_offerings_response() :: #{
@@ -730,11 +799,13 @@
 %% }
 -type list_offerings_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_input_security_group_response() :: #{
 %%   <<"SecurityGroup">> => input_security_group()
 %% }
 -type update_input_security_group_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% transferring_input_device_summary() :: #{
@@ -744,6 +815,7 @@
 %%   <<"TransferType">> => list(any())
 %% }
 -type transferring_input_device_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% aac_settings() :: #{
@@ -758,6 +830,7 @@
 %%   <<"VbrQuality">> => list(any())
 %% }
 -type aac_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% input_settings() :: #{
@@ -775,6 +848,7 @@
 %% }
 -type input_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_multiplex_request() :: #{
 %%   <<"AvailabilityZones">> := list(string()()),
@@ -784,6 +858,7 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_multiplex_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% h265_color_space_settings() :: #{
@@ -795,6 +870,7 @@
 %% }
 -type h265_color_space_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% multiplex_program_channel_destination_settings() :: #{
 %%   <<"MultiplexId">> => string(),
@@ -802,11 +878,13 @@
 %% }
 -type multiplex_program_channel_destination_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% frame_capture_output_settings() :: #{
 %%   <<"NameModifier">> => string()
 %% }
 -type frame_capture_output_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_delete_response() :: #{
@@ -814,15 +892,18 @@
 %%   <<"Successful">> => list(batch_successful_result_model()())
 %% }
 -type batch_delete_response() :: #{binary() => any()}.
+
 %% Example:
 %% rec709_settings() :: #{}
 -type rec709_settings() :: #{}.
+
 
 %% Example:
 %% video_selector_pid() :: #{
 %%   <<"Pid">> => integer()
 %% }
 -type video_selector_pid() :: #{binary() => any()}.
+
 
 %% Example:
 %% m3u8_settings() :: #{
@@ -848,6 +929,7 @@
 %% }
 -type m3u8_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% dvb_sub_source_settings() :: #{
 %%   <<"OcrLanguage">> => list(any()),
@@ -855,11 +937,13 @@
 %% }
 -type dvb_sub_source_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% media_connect_flow() :: #{
 %%   <<"FlowArn">> => string()
 %% }
 -type media_connect_flow() :: #{binary() => any()}.
+
 
 %% Example:
 %% scte35_splice_insert_schedule_action_settings() :: #{
@@ -868,6 +952,7 @@
 %% }
 -type scte35_splice_insert_schedule_action_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% motion_graphics_configuration() :: #{
 %%   <<"MotionGraphicsInsertion">> => list(any()),
@@ -875,14 +960,17 @@
 %% }
 -type motion_graphics_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% udp_container_settings() :: #{
 %%   <<"M2tsSettings">> => m2ts_settings()
 %% }
 -type udp_container_settings() :: #{binary() => any()}.
+
 %% Example:
 %% delete_schedule_response() :: #{}
 -type delete_schedule_response() :: #{}.
+
 
 %% Example:
 %% maintenance_update_settings() :: #{
@@ -891,6 +979,7 @@
 %%   <<"MaintenanceStartTime">> => string()
 %% }
 -type maintenance_update_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% input_security_group() :: #{
@@ -903,12 +992,14 @@
 %% }
 -type input_security_group() :: #{binary() => any()}.
 
+
 %% Example:
 %% input_channel_level() :: #{
 %%   <<"Gain">> => integer(),
 %%   <<"InputChannel">> => integer()
 %% }
 -type input_channel_level() :: #{binary() => any()}.
+
 
 %% Example:
 %% ms_smooth_output_settings() :: #{
@@ -917,29 +1008,35 @@
 %% }
 -type ms_smooth_output_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% reboot_input_device_request() :: #{
 %%   <<"Force">> => list(any())
 %% }
 -type reboot_input_device_request() :: #{binary() => any()}.
+
 %% Example:
 %% embedded_plus_scte20_destination_settings() :: #{}
 -type embedded_plus_scte20_destination_settings() :: #{}.
+
 
 %% Example:
 %% too_many_requests_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_requests_exception() :: #{binary() => any()}.
+
 %% Example:
 %% motion_graphics_deactivate_schedule_action_settings() :: #{}
 -type motion_graphics_deactivate_schedule_action_settings() :: #{}.
+
 
 %% Example:
 %% input_whitelist_rule_cidr() :: #{
 %%   <<"Cidr">> => string()
 %% }
 -type input_whitelist_rule_cidr() :: #{binary() => any()}.
+
 
 %% Example:
 %% input_device_configurable_settings() :: #{
@@ -951,12 +1048,15 @@
 %%   <<"MediaconnectSettings">> => input_device_media_connect_configurable_settings()
 %% }
 -type input_device_configurable_settings() :: #{binary() => any()}.
+
 %% Example:
 %% smpte_tt_destination_settings() :: #{}
 -type smpte_tt_destination_settings() :: #{}.
+
 %% Example:
 %% stop_channel_request() :: #{}
 -type stop_channel_request() :: #{}.
+
 
 %% Example:
 %% caption_language_mapping() :: #{
@@ -966,12 +1066,14 @@
 %% }
 -type caption_language_mapping() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_multiplex_programs_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_multiplex_programs_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% reservation_resource_specification() :: #{
@@ -986,12 +1088,14 @@
 %% }
 -type reservation_resource_specification() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_input_security_group_request() :: #{
 %%   <<"Tags">> => map(),
 %%   <<"WhitelistRules">> => list(input_whitelist_rule_cidr()())
 %% }
 -type create_input_security_group_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_delete_request() :: #{
@@ -1002,12 +1106,14 @@
 %% }
 -type batch_delete_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_input_security_groups_response() :: #{
 %%   <<"InputSecurityGroups">> => list(input_security_group()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_input_security_groups_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% video_description() :: #{
@@ -1021,14 +1127,17 @@
 %% }
 -type video_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% ttml_destination_settings() :: #{
 %%   <<"StyleControl">> => list(any())
 %% }
 -type ttml_destination_settings() :: #{binary() => any()}.
+
 %% Example:
 %% start_multiplex_request() :: #{}
 -type start_multiplex_request() :: #{}.
+
 
 %% Example:
 %% input_attachment() :: #{
@@ -1039,20 +1148,24 @@
 %% }
 -type input_attachment() :: #{binary() => any()}.
 
+
 %% Example:
 %% cdi_input_specification() :: #{
 %%   <<"Resolution">> => list(any())
 %% }
 -type cdi_input_specification() :: #{binary() => any()}.
 
+
 %% Example:
 %% audio_track() :: #{
 %%   <<"Track">> => integer()
 %% }
 -type audio_track() :: #{binary() => any()}.
+
 %% Example:
 %% media_package_output_settings() :: #{}
 -type media_package_output_settings() :: #{}.
+
 
 %% Example:
 %% timecode_config() :: #{
@@ -1060,9 +1173,11 @@
 %%   <<"SyncThreshold">> => integer()
 %% }
 -type timecode_config() :: #{binary() => any()}.
+
 %% Example:
 %% accept_input_device_transfer_request() :: #{}
 -type accept_input_device_transfer_request() :: #{}.
+
 
 %% Example:
 %% list_input_devices_response() :: #{
@@ -1071,6 +1186,7 @@
 %% }
 -type list_input_devices_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% input_specification() :: #{
 %%   <<"Codec">> => list(any()),
@@ -1078,9 +1194,11 @@
 %%   <<"Resolution">> => list(any())
 %% }
 -type input_specification() :: #{binary() => any()}.
+
 %% Example:
 %% pipeline_locking_settings() :: #{}
 -type pipeline_locking_settings() :: #{}.
+
 
 %% Example:
 %% create_partner_input_request() :: #{
@@ -1089,11 +1207,13 @@
 %% }
 -type create_partner_input_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_schedule_action_create_request() :: #{
 %%   <<"ScheduleActions">> => list(schedule_action()())
 %% }
 -type batch_schedule_action_create_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% output_group_settings() :: #{
@@ -1108,12 +1228,14 @@
 %% }
 -type output_group_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_schedule_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"ScheduleActions">> => list(schedule_action()())
 %% }
 -type describe_schedule_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% h264_color_space_settings() :: #{
@@ -1123,6 +1245,7 @@
 %% }
 -type h264_color_space_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_reservation_request() :: #{
 %%   <<"Name">> => string(),
@@ -1130,11 +1253,13 @@
 %% }
 -type update_reservation_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_tags_request() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type create_tags_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% stop_multiplex_response() :: #{
@@ -1151,11 +1276,13 @@
 %% }
 -type stop_multiplex_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_input_response() :: #{
 %%   <<"Input">> => input()
 %% }
 -type create_input_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% input_device_uhd_audio_channel_pair_config() :: #{
@@ -1164,11 +1291,13 @@
 %% }
 -type input_device_uhd_audio_channel_pair_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% video_selector_program_id() :: #{
 %%   <<"ProgramId">> => integer()
 %% }
 -type video_selector_program_id() :: #{binary() => any()}.
+
 
 %% Example:
 %% ms_smooth_group_settings() :: #{
@@ -1194,6 +1323,7 @@
 %% }
 -type ms_smooth_group_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_input_request() :: #{
 %%   <<"Destinations">> => list(input_destination_request()()),
@@ -1210,12 +1340,14 @@
 %% }
 -type create_input_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% hls_id3_segment_tagging_schedule_action_settings() :: #{
 %%   <<"Id3">> => string(),
 %%   <<"Tag">> => string()
 %% }
 -type hls_id3_segment_tagging_schedule_action_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_multiplex_program_response() :: #{
@@ -1226,6 +1358,7 @@
 %%   <<"ProgramName">> => string()
 %% }
 -type delete_multiplex_program_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% channel_summary() :: #{
@@ -1248,6 +1381,7 @@
 %% }
 -type channel_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% hls_settings() :: #{
 %%   <<"AudioOnlyHlsSettings">> => audio_only_hls_settings(),
@@ -1257,12 +1391,14 @@
 %% }
 -type hls_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% archive_container_settings() :: #{
 %%   <<"M2tsSettings">> => m2ts_settings(),
 %%   <<"RawSettings">> => raw_settings()
 %% }
 -type archive_container_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% stop_channel_response() :: #{
@@ -1286,9 +1422,11 @@
 %%   <<"Vpc">> => vpc_output_settings_description()
 %% }
 -type stop_channel_response() :: #{binary() => any()}.
+
 %% Example:
 %% start_channel_request() :: #{}
 -type start_channel_request() :: #{}.
+
 
 %% Example:
 %% avail_configuration() :: #{
@@ -1296,11 +1434,13 @@
 %% }
 -type avail_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_thumbnails_response() :: #{
 %%   <<"ThumbnailDetails">> => list(thumbnail_detail()())
 %% }
 -type describe_thumbnails_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% global_configuration() :: #{
@@ -1314,12 +1454,14 @@
 %% }
 -type global_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_stop_response() :: #{
 %%   <<"Failed">> => list(batch_failed_result_model()()),
 %%   <<"Successful">> => list(batch_successful_result_model()())
 %% }
 -type batch_stop_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% input() :: #{
@@ -1342,6 +1484,7 @@
 %% }
 -type input() :: #{binary() => any()}.
 
+
 %% Example:
 %% automatic_input_failover_settings() :: #{
 %%   <<"ErrorClearTimeMsec">> => integer(),
@@ -1350,18 +1493,22 @@
 %%   <<"SecondaryInputId">> => string()
 %% }
 -type automatic_input_failover_settings() :: #{binary() => any()}.
+
 %% Example:
 %% start_input_device_maintenance_window_response() :: #{}
 -type start_input_device_maintenance_window_response() :: #{}.
+
 
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_input_request() :: #{}
 -type delete_input_request() :: #{}.
+
 
 %% Example:
 %% update_input_request() :: #{
@@ -1374,6 +1521,7 @@
 %%   <<"Sources">> => list(input_source_request()())
 %% }
 -type update_input_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% schedule_action_settings() :: #{
@@ -1395,11 +1543,13 @@
 %% }
 -type schedule_action_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% multiplex_media_connect_output_destination_settings() :: #{
 %%   <<"EntitlementArn">> => string()
 %% }
 -type multiplex_media_connect_output_destination_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_reservation_response() :: #{
@@ -1425,6 +1575,7 @@
 %% }
 -type delete_reservation_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% nielsen_naes_ii_nw() :: #{
 %%   <<"CheckDigitString">> => string(),
@@ -1432,9 +1583,11 @@
 %%   <<"Timezone">> => list(any())
 %% }
 -type nielsen_naes_ii_nw() :: #{binary() => any()}.
+
 %% Example:
 %% rec601_settings() :: #{}
 -type rec601_settings() :: #{}.
+
 
 %% Example:
 %% batch_stop_request() :: #{
@@ -1442,9 +1595,11 @@
 %%   <<"MultiplexIds">> => list(string()())
 %% }
 -type batch_stop_request() :: #{binary() => any()}.
+
 %% Example:
 %% cancel_input_device_transfer_request() :: #{}
 -type cancel_input_device_transfer_request() :: #{}.
+
 
 %% Example:
 %% output_group() :: #{
@@ -1453,6 +1608,7 @@
 %%   <<"Outputs">> => list(output()())
 %% }
 -type output_group() :: #{binary() => any()}.
+
 
 %% Example:
 %% input_device_uhd_settings() :: #{
@@ -1470,9 +1626,11 @@
 %%   <<"Width">> => integer()
 %% }
 -type input_device_uhd_settings() :: #{binary() => any()}.
+
 %% Example:
 %% arib_source_settings() :: #{}
 -type arib_source_settings() :: #{}.
+
 
 %% Example:
 %% list_inputs_request() :: #{
@@ -1480,12 +1638,15 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_inputs_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_input_security_group_request() :: #{}
 -type delete_input_security_group_request() :: #{}.
+
 %% Example:
 %% multiplex_group_settings() :: #{}
 -type multiplex_group_settings() :: #{}.
+
 
 %% Example:
 %% audio_description() :: #{
@@ -1503,11 +1664,13 @@
 %% }
 -type audio_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_partner_input_response() :: #{
 %%   <<"Input">> => input()
 %% }
 -type create_partner_input_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% archive_output_settings() :: #{
@@ -1517,12 +1680,14 @@
 %% }
 -type archive_output_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_channel_class_request() :: #{
 %%   <<"ChannelClass">> := list(any()),
 %%   <<"Destinations">> => list(output_destination()())
 %% }
 -type update_channel_class_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% video_codec_settings() :: #{
@@ -1533,6 +1698,7 @@
 %% }
 -type video_codec_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% udp_group_settings() :: #{
 %%   <<"InputLossAction">> => list(any()),
@@ -1541,11 +1707,13 @@
 %% }
 -type udp_group_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_input_security_group_response() :: #{
 %%   <<"SecurityGroup">> => input_security_group()
 %% }
 -type create_input_security_group_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_channel_response() :: #{
@@ -1570,6 +1738,7 @@
 %% }
 -type describe_channel_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_multiplex_program_response() :: #{
 %%   <<"ChannelId">> => string(),
@@ -1579,6 +1748,7 @@
 %%   <<"ProgramName">> => string()
 %% }
 -type describe_multiplex_program_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% rtmp_group_settings() :: #{
@@ -1593,6 +1763,7 @@
 %% }
 -type rtmp_group_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% input_loss_behavior() :: #{
 %%   <<"BlackFrameMsec">> => integer(),
@@ -1603,12 +1774,14 @@
 %% }
 -type input_loss_behavior() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_multiplex_request() :: #{
 %%   <<"MultiplexSettings">> => multiplex_settings(),
 %%   <<"Name">> => string()
 %% }
 -type update_multiplex_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% eac3_settings() :: #{
@@ -1635,15 +1808,18 @@
 %% }
 -type eac3_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_thumbnails_request() :: #{
 %%   <<"PipelineId">> := string(),
 %%   <<"ThumbnailType">> := string()
 %% }
 -type describe_thumbnails_request() :: #{binary() => any()}.
+
 %% Example:
 %% scte20_plus_embedded_destination_settings() :: #{}
 -type scte20_plus_embedded_destination_settings() :: #{}.
+
 
 %% Example:
 %% not_found_exception() :: #{
@@ -1651,14 +1827,17 @@
 %% }
 -type not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_timecode() :: #{
 %%   <<"Timecode">> => string()
 %% }
 -type start_timecode() :: #{binary() => any()}.
+
 %% Example:
 %% describe_channel_request() :: #{}
 -type describe_channel_request() :: #{}.
+
 
 %% Example:
 %% batch_update_schedule_response() :: #{
@@ -1667,12 +1846,14 @@
 %% }
 -type batch_update_schedule_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% scte35_input_schedule_action_settings() :: #{
 %%   <<"InputAttachmentNameReference">> => string(),
 %%   <<"Mode">> => list(any())
 %% }
 -type scte35_input_schedule_action_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% caption_destination_settings() :: #{
@@ -1691,6 +1872,7 @@
 %%   <<"WebvttDestinationSettings">> => webvtt_destination_settings()
 %% }
 -type caption_destination_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_input_response() :: #{
@@ -1713,6 +1895,7 @@
 %% }
 -type describe_input_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_channel_request() :: #{
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
@@ -1732,11 +1915,13 @@
 %% }
 -type create_channel_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% motion_graphics_settings() :: #{
 %%   <<"HtmlMotionGraphicsSettings">> => html_motion_graphics_settings()
 %% }
 -type motion_graphics_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% h265_settings() :: #{
@@ -1773,24 +1958,29 @@
 %% }
 -type h265_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% output_locking_settings() :: #{
 %%   <<"EpochLockingSettings">> => epoch_locking_settings(),
 %%   <<"PipelineLockingSettings">> => pipeline_locking_settings()
 %% }
 -type output_locking_settings() :: #{binary() => any()}.
+
 %% Example:
 %% teletext_destination_settings() :: #{}
 -type teletext_destination_settings() :: #{}.
+
 %% Example:
 %% color_space_passthrough_settings() :: #{}
 -type color_space_passthrough_settings() :: #{}.
+
 
 %% Example:
 %% create_multiplex_program_response() :: #{
 %%   <<"MultiplexProgram">> => multiplex_program()
 %% }
 -type create_multiplex_program_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_multiplex_response() :: #{
@@ -1807,11 +1997,13 @@
 %% }
 -type start_multiplex_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% validation_error() :: #{
@@ -1820,6 +2012,7 @@
 %% }
 -type validation_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% transfer_input_device_request() :: #{
 %%   <<"TargetCustomerId">> => string(),
@@ -1827,6 +2020,7 @@
 %%   <<"TransferMessage">> => string()
 %% }
 -type transfer_input_device_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% multiplex_program_packet_identifiers_map() :: #{
@@ -1845,15 +2039,18 @@
 %%   <<"VideoPid">> => integer()
 %% }
 -type multiplex_program_packet_identifiers_map() :: #{binary() => any()}.
+
 %% Example:
 %% stop_input_device_request() :: #{}
 -type stop_input_device_request() :: #{}.
+
 
 %% Example:
 %% update_multiplex_response() :: #{
 %%   <<"Multiplex">> => multiplex()
 %% }
 -type update_multiplex_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% feature_activations() :: #{
@@ -1862,11 +2059,13 @@
 %% }
 -type feature_activations() :: #{binary() => any()}.
 
+
 %% Example:
 %% multiplex_output_settings() :: #{
 %%   <<"Destination">> => output_location_ref()
 %% }
 -type multiplex_output_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% reservation() :: #{
@@ -1892,11 +2091,13 @@
 %% }
 -type reservation() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_schedule_action_create_result() :: #{
 %%   <<"ScheduleActions">> => list(schedule_action()())
 %% }
 -type batch_schedule_action_create_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% archive_cdn_settings() :: #{
@@ -1904,11 +2105,13 @@
 %% }
 -type archive_cdn_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_input_device_thumbnail_request() :: #{
 %%   <<"Accept">> := list(any())
 %% }
 -type describe_input_device_thumbnail_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_inputs_response() :: #{
@@ -1917,14 +2120,17 @@
 %% }
 -type list_inputs_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% ancillary_source_settings() :: #{
 %%   <<"SourceAncillaryChannelNumber">> => integer()
 %% }
 -type ancillary_source_settings() :: #{binary() => any()}.
+
 %% Example:
 %% html_motion_graphics_settings() :: #{}
 -type html_motion_graphics_settings() :: #{}.
+
 
 %% Example:
 %% list_channels_response() :: #{
@@ -1933,6 +2139,7 @@
 %% }
 -type list_channels_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% nielsen_c_b_e_t() :: #{
 %%   <<"CbetCheckDigitString">> => string(),
@@ -1940,6 +2147,7 @@
 %%   <<"Csid">> => string()
 %% }
 -type nielsen_c_b_e_t() :: #{binary() => any()}.
+
 
 %% Example:
 %% audio_selector_settings() :: #{
@@ -1950,6 +2158,7 @@
 %% }
 -type audio_selector_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% input_switch_schedule_action_settings() :: #{
 %%   <<"InputAttachmentNameReference">> => string(),
@@ -1957,6 +2166,7 @@
 %%   <<"UrlPath">> => list(string()())
 %% }
 -type input_switch_schedule_action_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% dvb_sub_destination_settings() :: #{
@@ -1980,6 +2190,7 @@
 %% }
 -type dvb_sub_destination_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% video_selector() :: #{
 %%   <<"ColorSpace">> => list(any()),
@@ -1989,6 +2200,7 @@
 %% }
 -type video_selector() :: #{binary() => any()}.
 
+
 %% Example:
 %% audio_language_selection() :: #{
 %%   <<"LanguageCode">> => string(),
@@ -1996,12 +2208,14 @@
 %% }
 -type audio_language_selection() :: #{binary() => any()}.
 
+
 %% Example:
 %% audio_channel_mapping() :: #{
 %%   <<"InputChannelLevels">> => list(input_channel_level()()),
 %%   <<"OutputChannel">> => integer()
 %% }
 -type audio_channel_mapping() :: #{binary() => any()}.
+
 
 %% Example:
 %% hls_group_settings() :: #{
@@ -2051,11 +2265,13 @@
 %% }
 -type hls_group_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% h264_filter_settings() :: #{
 %%   <<"TemporalFilterSettings">> => temporal_filter_settings()
 %% }
 -type h264_filter_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% output_settings() :: #{
@@ -2069,6 +2285,7 @@
 %%   <<"UdpOutputSettings">> => udp_output_settings()
 %% }
 -type output_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_channel_request() :: #{
@@ -2084,6 +2301,7 @@
 %% }
 -type update_channel_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% fmp4_hls_settings() :: #{
 %%   <<"AudioRenditionSets">> => string(),
@@ -2091,6 +2309,7 @@
 %%   <<"TimedMetadataBehavior">> => list(any())
 %% }
 -type fmp4_hls_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% multiplex_settings() :: #{
@@ -2101,12 +2320,14 @@
 %% }
 -type multiplex_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% audio_selector() :: #{
 %%   <<"Name">> => string(),
 %%   <<"SelectorSettings">> => audio_selector_settings()
 %% }
 -type audio_selector() :: #{binary() => any()}.
+
 
 %% Example:
 %% input_device_configurable_audio_channel_pair_config() :: #{
@@ -2115,6 +2336,7 @@
 %% }
 -type input_device_configurable_audio_channel_pair_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% multiplex_program_service_descriptor() :: #{
 %%   <<"ProviderName">> => string(),
@@ -2122,11 +2344,13 @@
 %% }
 -type multiplex_program_service_descriptor() :: #{binary() => any()}.
 
+
 %% Example:
 %% media_connect_flow_request() :: #{
 %%   <<"FlowArn">> => string()
 %% }
 -type media_connect_flow_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_multiplex_response() :: #{
@@ -2143,6 +2367,7 @@
 %% }
 -type describe_multiplex_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_input_device_thumbnail_response() :: #{
 %%   <<"Body">> => binary(),
@@ -2153,6 +2378,7 @@
 %% }
 -type describe_input_device_thumbnail_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% motion_graphics_activate_schedule_action_settings() :: #{
 %%   <<"Duration">> => float(),
@@ -2162,6 +2388,7 @@
 %% }
 -type motion_graphics_activate_schedule_action_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% nielsen_watermarks_settings() :: #{
 %%   <<"NielsenCbetSettings">> => nielsen_c_b_e_t(),
@@ -2170,11 +2397,13 @@
 %% }
 -type nielsen_watermarks_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% key_provider_settings() :: #{
 %%   <<"StaticKeySettings">> => static_key_settings()
 %% }
 -type key_provider_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% avail_blanking() :: #{
@@ -2183,11 +2412,13 @@
 %% }
 -type avail_blanking() :: #{binary() => any()}.
 
+
 %% Example:
 %% output_location_ref() :: #{
 %%   <<"DestinationRefId">> => string()
 %% }
 -type output_location_ref() :: #{binary() => any()}.
+
 
 %% Example:
 %% temporal_filter_settings() :: #{
@@ -2196,14 +2427,17 @@
 %% }
 -type temporal_filter_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_multiplex_program_response() :: #{
 %%   <<"MultiplexProgram">> => multiplex_program()
 %% }
 -type update_multiplex_program_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_input_response() :: #{}
 -type delete_input_response() :: #{}.
+
 
 %% Example:
 %% frame_capture_s3_settings() :: #{
@@ -2211,14 +2445,17 @@
 %% }
 -type frame_capture_s3_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% scte35_time_signal_schedule_action_settings() :: #{
 %%   <<"Scte35Descriptors">> => list(scte35_descriptor()())
 %% }
 -type scte35_time_signal_schedule_action_settings() :: #{binary() => any()}.
+
 %% Example:
 %% arib_destination_settings() :: #{}
 -type arib_destination_settings() :: #{}.
+
 
 %% Example:
 %% schedule_action() :: #{
@@ -2228,11 +2465,13 @@
 %% }
 -type schedule_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_multiplex_program_request() :: #{
 %%   <<"MultiplexProgramSettings">> => multiplex_program_settings()
 %% }
 -type update_multiplex_program_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% epoch_locking_settings() :: #{
@@ -2241,24 +2480,29 @@
 %% }
 -type epoch_locking_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% static_image_deactivate_schedule_action_settings() :: #{
 %%   <<"FadeOut">> => integer(),
 %%   <<"Layer">> => integer()
 %% }
 -type static_image_deactivate_schedule_action_settings() :: #{binary() => any()}.
+
 %% Example:
 %% describe_multiplex_request() :: #{}
 -type describe_multiplex_request() :: #{}.
+
 
 %% Example:
 %% media_package_group_settings() :: #{
 %%   <<"Destination">> => output_location_ref()
 %% }
 -type media_package_group_settings() :: #{binary() => any()}.
+
 %% Example:
 %% delete_multiplex_request() :: #{}
 -type delete_multiplex_request() :: #{}.
+
 
 %% Example:
 %% teletext_source_settings() :: #{
@@ -2266,6 +2510,7 @@
 %%   <<"PageNumber">> => string()
 %% }
 -type teletext_source_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% maintenance_status() :: #{
@@ -2275,9 +2520,11 @@
 %%   <<"MaintenanceStartTime">> => string()
 %% }
 -type maintenance_status() :: #{binary() => any()}.
+
 %% Example:
 %% frame_capture_hls_settings() :: #{}
 -type frame_capture_hls_settings() :: #{}.
+
 
 %% Example:
 %% esam() :: #{
@@ -2289,6 +2536,7 @@
 %%   <<"ZoneIdentity">> => string()
 %% }
 -type esam() :: #{binary() => any()}.
+
 
 %% Example:
 %% static_image_output_activate_schedule_action_settings() :: #{
@@ -2306,14 +2554,17 @@
 %% }
 -type static_image_output_activate_schedule_action_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% input_whitelist_rule() :: #{
 %%   <<"Cidr">> => string()
 %% }
 -type input_whitelist_rule() :: #{binary() => any()}.
+
 %% Example:
 %% describe_input_security_group_request() :: #{}
 -type describe_input_security_group_request() :: #{}.
+
 
 %% Example:
 %% vpc_output_settings_description() :: #{
@@ -2323,6 +2574,7 @@
 %%   <<"SubnetIds">> => list(string()())
 %% }
 -type vpc_output_settings_description() :: #{binary() => any()}.
+
 
 %% Example:
 %% blackout_slate() :: #{
@@ -2334,6 +2586,7 @@
 %% }
 -type blackout_slate() :: #{binary() => any()}.
 
+
 %% Example:
 %% vpc_output_settings() :: #{
 %%   <<"PublicAddressAllocationIds">> => list(string()()),
@@ -2341,6 +2594,7 @@
 %%   <<"SubnetIds">> => list(string()())
 %% }
 -type vpc_output_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% input_prepare_schedule_action_settings() :: #{
@@ -2350,17 +2604,20 @@
 %% }
 -type input_prepare_schedule_action_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% failover_condition() :: #{
 %%   <<"FailoverConditionSettings">> => failover_condition_settings()
 %% }
 -type failover_condition() :: #{binary() => any()}.
 
+
 %% Example:
 %% dvb_tdt_settings() :: #{
 %%   <<"RepInterval">> => integer()
 %% }
 -type dvb_tdt_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_input_devices_request() :: #{
@@ -2369,6 +2626,7 @@
 %% }
 -type list_input_devices_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% standard_hls_settings() :: #{
 %%   <<"AudioRenditionSets">> => string(),
@@ -2376,12 +2634,14 @@
 %% }
 -type standard_hls_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% unprocessable_entity_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"ValidationErrors">> => list(validation_error()())
 %% }
 -type unprocessable_entity_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% encoder_settings() :: #{
@@ -2402,11 +2662,13 @@
 %% }
 -type encoder_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% webvtt_destination_settings() :: #{
 %%   <<"StyleControl">> => list(any())
 %% }
 -type webvtt_destination_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% avail_settings() :: #{
@@ -2415,9 +2677,11 @@
 %%   <<"Scte35TimeSignalApos">> => scte35_time_signal_apos()
 %% }
 -type avail_settings() :: #{binary() => any()}.
+
 %% Example:
 %% dolby_vision81_settings() :: #{}
 -type dolby_vision81_settings() :: #{}.
+
 
 %% Example:
 %% list_reservations_response() :: #{
@@ -2425,9 +2689,11 @@
 %%   <<"Reservations">> => list(reservation()())
 %% }
 -type list_reservations_response() :: #{binary() => any()}.
+
 %% Example:
 %% start_input_device_maintenance_window_request() :: #{}
 -type start_input_device_maintenance_window_request() :: #{}.
+
 
 %% Example:
 %% h265_filter_settings() :: #{
@@ -2435,20 +2701,24 @@
 %% }
 -type h265_filter_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% hls_timed_metadata_schedule_action_settings() :: #{
 %%   <<"Id3">> => string()
 %% }
 -type hls_timed_metadata_schedule_action_settings() :: #{binary() => any()}.
+
 %% Example:
 %% immediate_mode_schedule_action_start_settings() :: #{}
 -type immediate_mode_schedule_action_start_settings() :: #{}.
+
 
 %% Example:
 %% thumbnail_configuration() :: #{
 %%   <<"State">> => list(any())
 %% }
 -type thumbnail_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_reservation_response() :: #{
@@ -2474,6 +2744,7 @@
 %% }
 -type describe_reservation_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% remix_settings() :: #{
 %%   <<"ChannelMappings">> => list(audio_channel_mapping()()),
@@ -2482,12 +2753,14 @@
 %% }
 -type remix_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% static_key_settings() :: #{
 %%   <<"KeyProviderServer">> => input_location(),
 %%   <<"StaticKeyValue">> => string()
 %% }
 -type static_key_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% thumbnail_detail() :: #{
@@ -2496,12 +2769,14 @@
 %% }
 -type thumbnail_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% multiplex_video_settings() :: #{
 %%   <<"ConstantBitrate">> => integer(),
 %%   <<"StatmuxSettings">> => multiplex_statmux_video_settings()
 %% }
 -type multiplex_video_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% burn_in_destination_settings() :: #{
@@ -2525,6 +2800,7 @@
 %% }
 -type burn_in_destination_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% mpeg2_settings() :: #{
 %%   <<"AdaptiveQuantization">> => list(any()),
@@ -2547,6 +2823,7 @@
 %% }
 -type mpeg2_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% multiplex() :: #{
 %%   <<"Arn">> => string(),
@@ -2562,12 +2839,14 @@
 %% }
 -type multiplex() :: #{binary() => any()}.
 
+
 %% Example:
 %% input_vpc_request() :: #{
 %%   <<"SecurityGroupIds">> => list(string()()),
 %%   <<"SubnetIds">> => list(string()())
 %% }
 -type input_vpc_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% hls_output_settings() :: #{
@@ -2577,9 +2856,11 @@
 %%   <<"SegmentModifier">> => string()
 %% }
 -type hls_output_settings() :: #{binary() => any()}.
+
 %% Example:
 %% accept_input_device_transfer_response() :: #{}
 -type accept_input_device_transfer_response() :: #{}.
+
 
 %% Example:
 %% input_device_summary() :: #{
@@ -2602,6 +2883,7 @@
 %% }
 -type input_device_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% ac3_settings() :: #{
 %%   <<"AttenuationControl">> => list(any()),
@@ -2615,6 +2897,7 @@
 %% }
 -type ac3_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% multiplex_program_settings() :: #{
 %%   <<"PreferredChannelPipeline">> => list(any()),
@@ -2624,14 +2907,17 @@
 %% }
 -type multiplex_program_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% color_correction_settings() :: #{
 %%   <<"GlobalColorCorrections">> => list(color_correction()())
 %% }
 -type color_correction_settings() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% describe_input_security_group_response() :: #{
@@ -2643,18 +2929,22 @@
 %%   <<"WhitelistRules">> => list(input_whitelist_rule()())
 %% }
 -type describe_input_security_group_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_reservation_request() :: #{}
 -type describe_reservation_request() :: #{}.
+
 
 %% Example:
 %% internal_server_error_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_server_error_exception() :: #{binary() => any()}.
+
 %% Example:
 %% reject_input_device_transfer_response() :: #{}
 -type reject_input_device_transfer_response() :: #{}.
+
 
 %% Example:
 %% embedded_source_settings() :: #{
@@ -2665,11 +2955,13 @@
 %% }
 -type embedded_source_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_multiplex_response() :: #{
 %%   <<"Multiplex">> => multiplex()
 %% }
 -type create_multiplex_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% channel() :: #{
@@ -2694,6 +2986,7 @@
 %% }
 -type channel() :: #{binary() => any()}.
 
+
 %% Example:
 %% caption_description() :: #{
 %%   <<"Accessibility">> => list(any()),
@@ -2705,6 +2998,7 @@
 %% }
 -type caption_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% input_device_media_connect_settings() :: #{
 %%   <<"FlowArn">> => string(),
@@ -2713,6 +3007,7 @@
 %%   <<"SourceName">> => string()
 %% }
 -type input_device_media_connect_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_channel_response() :: #{
@@ -2737,11 +3032,13 @@
 %% }
 -type start_channel_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% frame_capture_cdn_settings() :: #{
 %%   <<"FrameCaptureS3Settings">> => frame_capture_s3_settings()
 %% }
 -type frame_capture_cdn_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% hdr10_settings() :: #{
@@ -2749,6 +3046,7 @@
 %%   <<"MaxFall">> => integer()
 %% }
 -type hdr10_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% offering() :: #{
@@ -2765,12 +3063,15 @@
 %%   <<"UsagePrice">> => float()
 %% }
 -type offering() :: #{binary() => any()}.
+
 %% Example:
 %% raw_settings() :: #{}
 -type raw_settings() :: #{}.
+
 %% Example:
 %% claim_device_response() :: #{}
 -type claim_device_response() :: #{}.
+
 
 %% Example:
 %% pipeline_pause_state_settings() :: #{
@@ -2778,11 +3079,13 @@
 %% }
 -type pipeline_pause_state_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% video_selector_color_space_settings() :: #{
 %%   <<"Hdr10Settings">> => hdr10_settings()
 %% }
 -type video_selector_color_space_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% audio_track_selection() :: #{
@@ -2790,6 +3093,7 @@
 %%   <<"Tracks">> => list(audio_track()())
 %% }
 -type audio_track_selection() :: #{binary() => any()}.
+
 
 %% Example:
 %% frame_capture_settings() :: #{
@@ -2799,21 +3103,25 @@
 %% }
 -type frame_capture_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% audio_silence_failover_settings() :: #{
 %%   <<"AudioSelectorName">> => string(),
 %%   <<"AudioSilenceThresholdMsec">> => integer()
 %% }
 -type audio_silence_failover_settings() :: #{binary() => any()}.
+
 %% Example:
 %% reboot_input_device_response() :: #{}
 -type reboot_input_device_response() :: #{}.
+
 
 %% Example:
 %% gateway_timeout_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type gateway_timeout_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% rtmp_output_settings() :: #{
@@ -2823,6 +3131,7 @@
 %%   <<"NumRetries">> => integer()
 %% }
 -type rtmp_output_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% m2ts_settings() :: #{
@@ -2877,6 +3186,7 @@
 %% }
 -type m2ts_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% dvb_sdt_settings() :: #{
 %%   <<"OutputSdt">> => list(any()),
@@ -2886,11 +3196,13 @@
 %% }
 -type dvb_sdt_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% input_destination_request() :: #{
 %%   <<"StreamName">> => string()
 %% }
 -type input_destination_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% schedule_action_start_settings() :: #{
@@ -2900,11 +3212,13 @@
 %% }
 -type schedule_action_start_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_input_response() :: #{
 %%   <<"Input">> => input()
 %% }
 -type update_input_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% input_destination_vpc() :: #{
@@ -2912,9 +3226,11 @@
 %%   <<"NetworkInterfaceId">> => string()
 %% }
 -type input_destination_vpc() :: #{binary() => any()}.
+
 %% Example:
 %% delete_schedule_request() :: #{}
 -type delete_schedule_request() :: #{}.
+
 
 %% Example:
 %% eac3_atmos_settings() :: #{
@@ -2928,6 +3244,7 @@
 %% }
 -type eac3_atmos_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% pipeline_detail() :: #{
 %%   <<"ActiveInputAttachmentName">> => string(),
@@ -2937,9 +3254,11 @@
 %%   <<"PipelineId">> => string()
 %% }
 -type pipeline_detail() :: #{binary() => any()}.
+
 %% Example:
 %% rtmp_caption_info_destination_settings() :: #{}
 -type rtmp_caption_info_destination_settings() :: #{}.
+
 
 %% Example:
 %% wav_settings() :: #{
@@ -2949,6 +3268,7 @@
 %% }
 -type wav_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% fec_output_settings() :: #{
 %%   <<"ColumnDepth">> => integer(),
@@ -2956,6 +3276,7 @@
 %%   <<"RowLength">> => integer()
 %% }
 -type fec_output_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% hls_input_settings() :: #{
@@ -2967,26 +3288,31 @@
 %% }
 -type hls_input_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% bad_request_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_schedule_action_delete_result() :: #{
 %%   <<"ScheduleActions">> => list(schedule_action()())
 %% }
 -type batch_schedule_action_delete_result() :: #{binary() => any()}.
+
 %% Example:
 %% reject_input_device_transfer_request() :: #{}
 -type reject_input_device_transfer_request() :: #{}.
+
 
 %% Example:
 %% batch_schedule_action_delete_request() :: #{
 %%   <<"ActionNames">> => list(string()())
 %% }
 -type batch_schedule_action_delete_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_input_device_transfers_request() :: #{
@@ -2995,9 +3321,11 @@
 %%   <<"TransferType">> := string()
 %% }
 -type list_input_device_transfers_request() :: #{binary() => any()}.
+
 %% Example:
 %% embedded_destination_settings() :: #{}
 -type embedded_destination_settings() :: #{}.
+
 
 %% Example:
 %% maintenance_create_settings() :: #{
@@ -3006,11 +3334,13 @@
 %% }
 -type maintenance_create_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% restart_channel_pipelines_request() :: #{
 %%   <<"PipelineIds">> => list(list(any())())
 %% }
 -type restart_channel_pipelines_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% failover_condition_settings() :: #{
@@ -3020,11 +3350,13 @@
 %% }
 -type failover_condition_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% channel_egress_endpoint() :: #{
 %%   <<"SourceIp">> => string()
 %% }
 -type channel_egress_endpoint() :: #{binary() => any()}.
+
 
 %% Example:
 %% input_device_media_connect_configurable_settings() :: #{
@@ -3035,15 +3367,18 @@
 %% }
 -type input_device_media_connect_configurable_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_multiplexes_response() :: #{
 %%   <<"Multiplexes">> => list(multiplex_summary()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_multiplexes_response() :: #{binary() => any()}.
+
 %% Example:
 %% pass_through_settings() :: #{}
 -type pass_through_settings() :: #{}.
+
 
 %% Example:
 %% list_multiplexes_request() :: #{
@@ -3052,17 +3387,20 @@
 %% }
 -type list_multiplexes_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_channel_response() :: #{
 %%   <<"Channel">> => channel()
 %% }
 -type update_channel_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% audio_pid_selection() :: #{
 %%   <<"Pid">> => integer()
 %% }
 -type audio_pid_selection() :: #{binary() => any()}.
+
 
 %% Example:
 %% input_source_request() :: #{
@@ -3072,11 +3410,13 @@
 %% }
 -type input_source_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% mpeg2_filter_settings() :: #{
 %%   <<"TemporalFilterSettings">> => temporal_filter_settings()
 %% }
 -type mpeg2_filter_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% audio_normalization_settings() :: #{
@@ -3086,11 +3426,13 @@
 %% }
 -type audio_normalization_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% hls_s3_settings() :: #{
 %%   <<"CannedAcl">> => list(any())
 %% }
 -type hls_s3_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% output_destination_settings() :: #{
@@ -3100,6 +3442,7 @@
 %%   <<"Username">> => string()
 %% }
 -type output_destination_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% scte35_segmentation_descriptor() :: #{
@@ -3117,6 +3460,7 @@
 %% }
 -type scte35_segmentation_descriptor() :: #{binary() => any()}.
 
+
 %% Example:
 %% timecode_burnin_settings() :: #{
 %%   <<"FontSize">> => list(any()),
@@ -3125,12 +3469,14 @@
 %% }
 -type timecode_burnin_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% renewal_settings() :: #{
 %%   <<"AutomaticRenewal">> => list(any()),
 %%   <<"RenewalCount">> => integer()
 %% }
 -type renewal_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% ebu_tt_d_destination_settings() :: #{
@@ -3141,11 +3487,13 @@
 %% }
 -type ebu_tt_d_destination_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_account_configuration_response() :: #{
 %%   <<"AccountConfiguration">> => account_configuration()
 %% }
 -type update_account_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% video_black_failover_settings() :: #{
@@ -3154,6 +3502,7 @@
 %% }
 -type video_black_failover_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% audio_hls_rendition_selection() :: #{
 %%   <<"GroupId">> => string(),
@@ -3161,17 +3510,20 @@
 %% }
 -type audio_hls_rendition_selection() :: #{binary() => any()}.
 
+
 %% Example:
 %% multiplex_settings_summary() :: #{
 %%   <<"TransportStreamBitrate">> => integer()
 %% }
 -type multiplex_settings_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% audio_dolby_e_decode() :: #{
 %%   <<"ProgramSelection">> => list(any())
 %% }
 -type audio_dolby_e_decode() :: #{binary() => any()}.
+
 
 %% Example:
 %% follow_mode_schedule_action_start_settings() :: #{
@@ -3180,11 +3532,13 @@
 %% }
 -type follow_mode_schedule_action_start_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% audio_watermark_settings() :: #{
 %%   <<"NielsenWatermarksSettings">> => nielsen_watermarks_settings()
 %% }
 -type audio_watermark_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% scte35_splice_insert() :: #{
@@ -3194,11 +3548,13 @@
 %% }
 -type scte35_splice_insert() :: #{binary() => any()}.
 
+
 %% Example:
 %% claim_device_request() :: #{
 %%   <<"Id">> => string()
 %% }
 -type claim_device_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% input_device_hd_settings() :: #{
@@ -3214,14 +3570,17 @@
 %% }
 -type input_device_hd_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% scte35_descriptor_settings() :: #{
 %%   <<"SegmentationDescriptorScte35DescriptorSettings">> => scte35_segmentation_descriptor()
 %% }
 -type scte35_descriptor_settings() :: #{binary() => any()}.
+
 %% Example:
 %% start_input_device_response() :: #{}
 -type start_input_device_response() :: #{}.
+
 
 %% Example:
 %% list_channels_request() :: #{
@@ -3229,6 +3588,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_channels_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% dvb_nit_settings() :: #{
@@ -3238,21 +3598,25 @@
 %% }
 -type dvb_nit_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_schedule_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_schedule_request() :: #{binary() => any()}.
+
 %% Example:
 %% stop_input_device_response() :: #{}
 -type stop_input_device_response() :: #{}.
+
 
 %% Example:
 %% update_account_configuration_request() :: #{
 %%   <<"AccountConfiguration">> => account_configuration()
 %% }
 -type update_account_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_offering_response() :: #{
@@ -3270,6 +3634,7 @@
 %% }
 -type describe_offering_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% hls_basic_put_settings() :: #{
 %%   <<"ConnectionRetryInterval">> => integer(),
@@ -3279,11 +3644,13 @@
 %% }
 -type hls_basic_put_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% fixed_mode_schedule_action_start_settings() :: #{
 %%   <<"Time">> => string()
 %% }
 -type fixed_mode_schedule_action_start_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_input_device_transfers_response() :: #{
@@ -3292,11 +3659,13 @@
 %% }
 -type list_input_device_transfers_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% media_package_output_destination_settings() :: #{
 %%   <<"ChannelId">> => string()
 %% }
 -type media_package_output_destination_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_successful_result_model() :: #{
@@ -3305,9 +3674,11 @@
 %%   <<"State">> => string()
 %% }
 -type batch_successful_result_model() :: #{binary() => any()}.
+
 %% Example:
 %% describe_offering_request() :: #{}
 -type describe_offering_request() :: #{}.
+
 
 %% Example:
 %% batch_start_request() :: #{
@@ -3315,6 +3686,7 @@
 %%   <<"MultiplexIds">> => list(string()())
 %% }
 -type batch_start_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% hls_webdav_settings() :: #{
@@ -3326,6 +3698,7 @@
 %% }
 -type hls_webdav_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% multiplex_statmux_video_settings() :: #{
 %%   <<"MaximumBitrate">> => integer(),
@@ -3333,6 +3706,7 @@
 %%   <<"Priority">> => integer()
 %% }
 -type multiplex_statmux_video_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% output() :: #{
@@ -3344,11 +3718,13 @@
 %% }
 -type output() :: #{binary() => any()}.
 
+
 %% Example:
 %% purchase_offering_response() :: #{
 %%   <<"Reservation">> => reservation()
 %% }
 -type purchase_offering_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_multiplex_response() :: #{
@@ -3365,6 +3741,7 @@
 %% }
 -type delete_multiplex_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% static_image_activate_schedule_action_settings() :: #{
 %%   <<"Duration">> => integer(),
@@ -3379,15 +3756,18 @@
 %%   <<"Width">> => integer()
 %% }
 -type static_image_activate_schedule_action_settings() :: #{binary() => any()}.
+
 %% Example:
 %% describe_multiplex_program_request() :: #{}
 -type describe_multiplex_program_request() :: #{}.
+
 
 %% Example:
 %% scte35_descriptor() :: #{
 %%   <<"Scte35DescriptorSettings">> => scte35_descriptor_settings()
 %% }
 -type scte35_descriptor() :: #{binary() => any()}.
+
 
 %% Example:
 %% purchase_offering_request() :: #{
@@ -3399,6 +3779,7 @@
 %%   <<"Tags">> => map()
 %% }
 -type purchase_offering_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% h264_settings() :: #{
@@ -3447,12 +3828,14 @@
 %% }
 -type h264_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% multiplex_program_pipeline_detail() :: #{
 %%   <<"ActiveChannelPipeline">> => string(),
 %%   <<"PipelineId">> => string()
 %% }
 -type multiplex_program_pipeline_detail() :: #{binary() => any()}.
+
 
 %% Example:
 %% color_correction() :: #{
@@ -3462,11 +3845,13 @@
 %% }
 -type color_correction() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_reservation_response() :: #{
 %%   <<"Reservation">> => reservation()
 %% }
 -type update_reservation_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% hls_media_store_settings() :: #{
@@ -3477,9 +3862,613 @@
 %%   <<"RestartDelay">> => integer()
 %% }
 -type hls_media_store_settings() :: #{binary() => any()}.
+
 %% Example:
 %% describe_input_device_request() :: #{}
 -type describe_input_device_request() :: #{}.
+
+-type accept_input_device_transfer_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type batch_delete_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type batch_start_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type batch_stop_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type batch_update_schedule_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type cancel_input_device_transfer_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type claim_device_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type create_channel_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type create_input_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type create_input_security_group_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type create_multiplex_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type create_multiplex_program_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type create_partner_input_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type create_tags_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    forbidden_exception().
+
+-type delete_channel_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type delete_input_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type delete_input_security_group_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type delete_multiplex_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type delete_multiplex_program_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type delete_reservation_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type delete_schedule_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type delete_tags_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    forbidden_exception().
+
+-type describe_account_configuration_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type describe_channel_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type describe_input_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type describe_input_device_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type describe_input_device_thumbnail_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type describe_input_security_group_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type describe_multiplex_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type describe_multiplex_program_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type describe_offering_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type describe_reservation_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type describe_schedule_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type describe_thumbnails_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type list_channels_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type list_input_device_transfers_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type list_input_devices_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type list_input_security_groups_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type list_inputs_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type list_multiplex_programs_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type list_multiplexes_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type list_offerings_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type list_reservations_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type list_tags_for_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    forbidden_exception().
+
+-type purchase_offering_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type reboot_input_device_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type reject_input_device_transfer_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type restart_channel_pipelines_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type start_channel_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type start_input_device_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type start_input_device_maintenance_window_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type start_multiplex_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type stop_channel_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type stop_input_device_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type stop_multiplex_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type transfer_input_device_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type update_account_configuration_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type update_channel_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    conflict_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type update_channel_class_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type update_input_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type update_input_device_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type update_input_security_group_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type update_multiplex_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type update_multiplex_program_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type update_reservation_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
 
 %%====================================================================
 %% API
@@ -3491,30 +4480,14 @@
 -spec accept_input_device_transfer(map(), binary() | list(), accept_input_device_transfer_request()) ->
     {ok, accept_input_device_transfer_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, accept_input_device_transfer_errors(), tuple()}.
 accept_input_device_transfer(Client, InputDeviceId, Input) ->
     accept_input_device_transfer(Client, InputDeviceId, Input, []).
 
 -spec accept_input_device_transfer(map(), binary() | list(), accept_input_device_transfer_request(), proplists:proplist()) ->
     {ok, accept_input_device_transfer_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, accept_input_device_transfer_errors(), tuple()}.
 accept_input_device_transfer(Client, InputDeviceId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/accept"],
@@ -3541,28 +4514,14 @@ accept_input_device_transfer(Client, InputDeviceId, Input0, Options0) ->
 -spec batch_delete(map(), batch_delete_request()) ->
     {ok, batch_delete_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, batch_delete_errors(), tuple()}.
 batch_delete(Client, Input) ->
     batch_delete(Client, Input, []).
 
 -spec batch_delete(map(), batch_delete_request(), proplists:proplist()) ->
     {ok, batch_delete_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, batch_delete_errors(), tuple()}.
 batch_delete(Client, Input0, Options0) ->
     Method = post,
     Path = ["/prod/batch/delete"],
@@ -3589,28 +4548,14 @@ batch_delete(Client, Input0, Options0) ->
 -spec batch_start(map(), batch_start_request()) ->
     {ok, batch_start_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, batch_start_errors(), tuple()}.
 batch_start(Client, Input) ->
     batch_start(Client, Input, []).
 
 -spec batch_start(map(), batch_start_request(), proplists:proplist()) ->
     {ok, batch_start_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, batch_start_errors(), tuple()}.
 batch_start(Client, Input0, Options0) ->
     Method = post,
     Path = ["/prod/batch/start"],
@@ -3637,28 +4582,14 @@ batch_start(Client, Input0, Options0) ->
 -spec batch_stop(map(), batch_stop_request()) ->
     {ok, batch_stop_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, batch_stop_errors(), tuple()}.
 batch_stop(Client, Input) ->
     batch_stop(Client, Input, []).
 
 -spec batch_stop(map(), batch_stop_request(), proplists:proplist()) ->
     {ok, batch_stop_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, batch_stop_errors(), tuple()}.
 batch_stop(Client, Input0, Options0) ->
     Method = post,
     Path = ["/prod/batch/stop"],
@@ -3685,28 +4616,14 @@ batch_stop(Client, Input0, Options0) ->
 -spec batch_update_schedule(map(), binary() | list(), batch_update_schedule_request()) ->
     {ok, batch_update_schedule_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, batch_update_schedule_errors(), tuple()}.
 batch_update_schedule(Client, ChannelId, Input) ->
     batch_update_schedule(Client, ChannelId, Input, []).
 
 -spec batch_update_schedule(map(), binary() | list(), batch_update_schedule_request(), proplists:proplist()) ->
     {ok, batch_update_schedule_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, batch_update_schedule_errors(), tuple()}.
 batch_update_schedule(Client, ChannelId, Input0, Options0) ->
     Method = put,
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/schedule"],
@@ -3733,30 +4650,14 @@ batch_update_schedule(Client, ChannelId, Input0, Options0) ->
 -spec cancel_input_device_transfer(map(), binary() | list(), cancel_input_device_transfer_request()) ->
     {ok, cancel_input_device_transfer_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, cancel_input_device_transfer_errors(), tuple()}.
 cancel_input_device_transfer(Client, InputDeviceId, Input) ->
     cancel_input_device_transfer(Client, InputDeviceId, Input, []).
 
 -spec cancel_input_device_transfer(map(), binary() | list(), cancel_input_device_transfer_request(), proplists:proplist()) ->
     {ok, cancel_input_device_transfer_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, cancel_input_device_transfer_errors(), tuple()}.
 cancel_input_device_transfer(Client, InputDeviceId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/cancel"],
@@ -3786,28 +4687,14 @@ cancel_input_device_transfer(Client, InputDeviceId, Input0, Options0) ->
 -spec claim_device(map(), claim_device_request()) ->
     {ok, claim_device_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, claim_device_errors(), tuple()}.
 claim_device(Client, Input) ->
     claim_device(Client, Input, []).
 
 -spec claim_device(map(), claim_device_request(), proplists:proplist()) ->
     {ok, claim_device_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, claim_device_errors(), tuple()}.
 claim_device(Client, Input0, Options0) ->
     Method = post,
     Path = ["/prod/claimDevice"],
@@ -3834,28 +4721,14 @@ claim_device(Client, Input0, Options0) ->
 -spec create_channel(map(), create_channel_request()) ->
     {ok, create_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, create_channel_errors(), tuple()}.
 create_channel(Client, Input) ->
     create_channel(Client, Input, []).
 
 -spec create_channel(map(), create_channel_request(), proplists:proplist()) ->
     {ok, create_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, create_channel_errors(), tuple()}.
 create_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/prod/channels"],
@@ -3882,24 +4755,14 @@ create_channel(Client, Input0, Options0) ->
 -spec create_input(map(), create_input_request()) ->
     {ok, create_input_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_input_errors(), tuple()}.
 create_input(Client, Input) ->
     create_input(Client, Input, []).
 
 -spec create_input(map(), create_input_request(), proplists:proplist()) ->
     {ok, create_input_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_input_errors(), tuple()}.
 create_input(Client, Input0, Options0) ->
     Method = post,
     Path = ["/prod/inputs"],
@@ -3926,24 +4789,14 @@ create_input(Client, Input0, Options0) ->
 -spec create_input_security_group(map(), create_input_security_group_request()) ->
     {ok, create_input_security_group_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_input_security_group_errors(), tuple()}.
 create_input_security_group(Client, Input) ->
     create_input_security_group(Client, Input, []).
 
 -spec create_input_security_group(map(), create_input_security_group_request(), proplists:proplist()) ->
     {ok, create_input_security_group_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_input_security_group_errors(), tuple()}.
 create_input_security_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/prod/inputSecurityGroups"],
@@ -3970,28 +4823,14 @@ create_input_security_group(Client, Input0, Options0) ->
 -spec create_multiplex(map(), create_multiplex_request()) ->
     {ok, create_multiplex_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, create_multiplex_errors(), tuple()}.
 create_multiplex(Client, Input) ->
     create_multiplex(Client, Input, []).
 
 -spec create_multiplex(map(), create_multiplex_request(), proplists:proplist()) ->
     {ok, create_multiplex_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, create_multiplex_errors(), tuple()}.
 create_multiplex(Client, Input0, Options0) ->
     Method = post,
     Path = ["/prod/multiplexes"],
@@ -4018,28 +4857,14 @@ create_multiplex(Client, Input0, Options0) ->
 -spec create_multiplex_program(map(), binary() | list(), create_multiplex_program_request()) ->
     {ok, create_multiplex_program_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, create_multiplex_program_errors(), tuple()}.
 create_multiplex_program(Client, MultiplexId, Input) ->
     create_multiplex_program(Client, MultiplexId, Input, []).
 
 -spec create_multiplex_program(map(), binary() | list(), create_multiplex_program_request(), proplists:proplist()) ->
     {ok, create_multiplex_program_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, create_multiplex_program_errors(), tuple()}.
 create_multiplex_program(Client, MultiplexId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/programs"],
@@ -4066,24 +4891,14 @@ create_multiplex_program(Client, MultiplexId, Input0, Options0) ->
 -spec create_partner_input(map(), binary() | list(), create_partner_input_request()) ->
     {ok, create_partner_input_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_partner_input_errors(), tuple()}.
 create_partner_input(Client, InputId, Input) ->
     create_partner_input(Client, InputId, Input, []).
 
 -spec create_partner_input(map(), binary() | list(), create_partner_input_request(), proplists:proplist()) ->
     {ok, create_partner_input_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_partner_input_errors(), tuple()}.
 create_partner_input(Client, InputId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/inputs/", aws_util:encode_uri(InputId), "/partners"],
@@ -4110,20 +4925,14 @@ create_partner_input(Client, InputId, Input0, Options0) ->
 -spec create_tags(map(), binary() | list(), create_tags_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, create_tags_errors(), tuple()}.
 create_tags(Client, ResourceArn, Input) ->
     create_tags(Client, ResourceArn, Input, []).
 
 -spec create_tags(map(), binary() | list(), create_tags_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, create_tags_errors(), tuple()}.
 create_tags(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/prod/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -4152,28 +4961,14 @@ create_tags(Client, ResourceArn, Input0, Options0) ->
 -spec delete_channel(map(), binary() | list(), delete_channel_request()) ->
     {ok, delete_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_channel_errors(), tuple()}.
 delete_channel(Client, ChannelId, Input) ->
     delete_channel(Client, ChannelId, Input, []).
 
 -spec delete_channel(map(), binary() | list(), delete_channel_request(), proplists:proplist()) ->
     {ok, delete_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_channel_errors(), tuple()}.
 delete_channel(Client, ChannelId, Input0, Options0) ->
     Method = delete,
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), ""],
@@ -4200,28 +4995,14 @@ delete_channel(Client, ChannelId, Input0, Options0) ->
 -spec delete_input(map(), binary() | list(), delete_input_request()) ->
     {ok, delete_input_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_input_errors(), tuple()}.
 delete_input(Client, InputId, Input) ->
     delete_input(Client, InputId, Input, []).
 
 -spec delete_input(map(), binary() | list(), delete_input_request(), proplists:proplist()) ->
     {ok, delete_input_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_input_errors(), tuple()}.
 delete_input(Client, InputId, Input0, Options0) ->
     Method = delete,
     Path = ["/prod/inputs/", aws_util:encode_uri(InputId), ""],
@@ -4248,26 +5029,14 @@ delete_input(Client, InputId, Input0, Options0) ->
 -spec delete_input_security_group(map(), binary() | list(), delete_input_security_group_request()) ->
     {ok, delete_input_security_group_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_input_security_group_errors(), tuple()}.
 delete_input_security_group(Client, InputSecurityGroupId, Input) ->
     delete_input_security_group(Client, InputSecurityGroupId, Input, []).
 
 -spec delete_input_security_group(map(), binary() | list(), delete_input_security_group_request(), proplists:proplist()) ->
     {ok, delete_input_security_group_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_input_security_group_errors(), tuple()}.
 delete_input_security_group(Client, InputSecurityGroupId, Input0, Options0) ->
     Method = delete,
     Path = ["/prod/inputSecurityGroups/", aws_util:encode_uri(InputSecurityGroupId), ""],
@@ -4296,28 +5065,14 @@ delete_input_security_group(Client, InputSecurityGroupId, Input0, Options0) ->
 -spec delete_multiplex(map(), binary() | list(), delete_multiplex_request()) ->
     {ok, delete_multiplex_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_multiplex_errors(), tuple()}.
 delete_multiplex(Client, MultiplexId, Input) ->
     delete_multiplex(Client, MultiplexId, Input, []).
 
 -spec delete_multiplex(map(), binary() | list(), delete_multiplex_request(), proplists:proplist()) ->
     {ok, delete_multiplex_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_multiplex_errors(), tuple()}.
 delete_multiplex(Client, MultiplexId, Input0, Options0) ->
     Method = delete,
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), ""],
@@ -4344,28 +5099,14 @@ delete_multiplex(Client, MultiplexId, Input0, Options0) ->
 -spec delete_multiplex_program(map(), binary() | list(), binary() | list(), delete_multiplex_program_request()) ->
     {ok, delete_multiplex_program_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_multiplex_program_errors(), tuple()}.
 delete_multiplex_program(Client, MultiplexId, ProgramName, Input) ->
     delete_multiplex_program(Client, MultiplexId, ProgramName, Input, []).
 
 -spec delete_multiplex_program(map(), binary() | list(), binary() | list(), delete_multiplex_program_request(), proplists:proplist()) ->
     {ok, delete_multiplex_program_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_multiplex_program_errors(), tuple()}.
 delete_multiplex_program(Client, MultiplexId, ProgramName, Input0, Options0) ->
     Method = delete,
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/programs/", aws_util:encode_uri(ProgramName), ""],
@@ -4392,28 +5133,14 @@ delete_multiplex_program(Client, MultiplexId, ProgramName, Input0, Options0) ->
 -spec delete_reservation(map(), binary() | list(), delete_reservation_request()) ->
     {ok, delete_reservation_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_reservation_errors(), tuple()}.
 delete_reservation(Client, ReservationId, Input) ->
     delete_reservation(Client, ReservationId, Input, []).
 
 -spec delete_reservation(map(), binary() | list(), delete_reservation_request(), proplists:proplist()) ->
     {ok, delete_reservation_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_reservation_errors(), tuple()}.
 delete_reservation(Client, ReservationId, Input0, Options0) ->
     Method = delete,
     Path = ["/prod/reservations/", aws_util:encode_uri(ReservationId), ""],
@@ -4440,26 +5167,14 @@ delete_reservation(Client, ReservationId, Input0, Options0) ->
 -spec delete_schedule(map(), binary() | list(), delete_schedule_request()) ->
     {ok, delete_schedule_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_schedule_errors(), tuple()}.
 delete_schedule(Client, ChannelId, Input) ->
     delete_schedule(Client, ChannelId, Input, []).
 
 -spec delete_schedule(map(), binary() | list(), delete_schedule_request(), proplists:proplist()) ->
     {ok, delete_schedule_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_schedule_errors(), tuple()}.
 delete_schedule(Client, ChannelId, Input0, Options0) ->
     Method = delete,
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/schedule"],
@@ -4486,20 +5201,14 @@ delete_schedule(Client, ChannelId, Input0, Options0) ->
 -spec delete_tags(map(), binary() | list(), delete_tags_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_tags_errors(), tuple()}.
 delete_tags(Client, ResourceArn, Input) ->
     delete_tags(Client, ResourceArn, Input, []).
 
 -spec delete_tags(map(), binary() | list(), delete_tags_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_tags_errors(), tuple()}.
 delete_tags(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/prod/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -4527,12 +5236,7 @@ delete_tags(Client, ResourceArn, Input0, Options0) ->
 -spec describe_account_configuration(map()) ->
     {ok, describe_account_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_account_configuration_errors(), tuple()}.
 describe_account_configuration(Client)
   when is_map(Client) ->
     describe_account_configuration(Client, #{}, #{}).
@@ -4540,12 +5244,7 @@ describe_account_configuration(Client)
 -spec describe_account_configuration(map(), map(), map()) ->
     {ok, describe_account_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_account_configuration_errors(), tuple()}.
 describe_account_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_account_configuration(Client, QueryMap, HeadersMap, []).
@@ -4553,12 +5252,7 @@ describe_account_configuration(Client, QueryMap, HeadersMap)
 -spec describe_account_configuration(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_account_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_account_configuration_errors(), tuple()}.
 describe_account_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/accountConfiguration"],
@@ -4579,13 +5273,7 @@ describe_account_configuration(Client, QueryMap, HeadersMap, Options0)
 -spec describe_channel(map(), binary() | list()) ->
     {ok, describe_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_channel_errors(), tuple()}.
 describe_channel(Client, ChannelId)
   when is_map(Client) ->
     describe_channel(Client, ChannelId, #{}, #{}).
@@ -4593,13 +5281,7 @@ describe_channel(Client, ChannelId)
 -spec describe_channel(map(), binary() | list(), map(), map()) ->
     {ok, describe_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_channel_errors(), tuple()}.
 describe_channel(Client, ChannelId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel(Client, ChannelId, QueryMap, HeadersMap, []).
@@ -4607,13 +5289,7 @@ describe_channel(Client, ChannelId, QueryMap, HeadersMap)
 -spec describe_channel(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_channel_errors(), tuple()}.
 describe_channel(Client, ChannelId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), ""],
@@ -4634,13 +5310,7 @@ describe_channel(Client, ChannelId, QueryMap, HeadersMap, Options0)
 -spec describe_input(map(), binary() | list()) ->
     {ok, describe_input_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_input_errors(), tuple()}.
 describe_input(Client, InputId)
   when is_map(Client) ->
     describe_input(Client, InputId, #{}, #{}).
@@ -4648,13 +5318,7 @@ describe_input(Client, InputId)
 -spec describe_input(map(), binary() | list(), map(), map()) ->
     {ok, describe_input_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_input_errors(), tuple()}.
 describe_input(Client, InputId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_input(Client, InputId, QueryMap, HeadersMap, []).
@@ -4662,13 +5326,7 @@ describe_input(Client, InputId, QueryMap, HeadersMap)
 -spec describe_input(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_input_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_input_errors(), tuple()}.
 describe_input(Client, InputId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/inputs/", aws_util:encode_uri(InputId), ""],
@@ -4689,13 +5347,7 @@ describe_input(Client, InputId, QueryMap, HeadersMap, Options0)
 -spec describe_input_device(map(), binary() | list()) ->
     {ok, describe_input_device_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_input_device_errors(), tuple()}.
 describe_input_device(Client, InputDeviceId)
   when is_map(Client) ->
     describe_input_device(Client, InputDeviceId, #{}, #{}).
@@ -4703,13 +5355,7 @@ describe_input_device(Client, InputDeviceId)
 -spec describe_input_device(map(), binary() | list(), map(), map()) ->
     {ok, describe_input_device_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_input_device_errors(), tuple()}.
 describe_input_device(Client, InputDeviceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_input_device(Client, InputDeviceId, QueryMap, HeadersMap, []).
@@ -4717,13 +5363,7 @@ describe_input_device(Client, InputDeviceId, QueryMap, HeadersMap)
 -spec describe_input_device(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_input_device_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_input_device_errors(), tuple()}.
 describe_input_device(Client, InputDeviceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), ""],
@@ -4744,13 +5384,7 @@ describe_input_device(Client, InputDeviceId, QueryMap, HeadersMap, Options0)
 -spec describe_input_device_thumbnail(map(), binary() | list(), binary() | list()) ->
     {ok, describe_input_device_thumbnail_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_input_device_thumbnail_errors(), tuple()}.
 describe_input_device_thumbnail(Client, InputDeviceId, Accept)
   when is_map(Client) ->
     describe_input_device_thumbnail(Client, InputDeviceId, Accept, #{}, #{}).
@@ -4758,13 +5392,7 @@ describe_input_device_thumbnail(Client, InputDeviceId, Accept)
 -spec describe_input_device_thumbnail(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_input_device_thumbnail_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_input_device_thumbnail_errors(), tuple()}.
 describe_input_device_thumbnail(Client, InputDeviceId, Accept, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_input_device_thumbnail(Client, InputDeviceId, Accept, QueryMap, HeadersMap, []).
@@ -4772,13 +5400,7 @@ describe_input_device_thumbnail(Client, InputDeviceId, Accept, QueryMap, Headers
 -spec describe_input_device_thumbnail(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_input_device_thumbnail_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_input_device_thumbnail_errors(), tuple()}.
 describe_input_device_thumbnail(Client, InputDeviceId, Accept, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/thumbnailData"],
@@ -4822,13 +5444,7 @@ describe_input_device_thumbnail(Client, InputDeviceId, Accept, QueryMap, Headers
 -spec describe_input_security_group(map(), binary() | list()) ->
     {ok, describe_input_security_group_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_input_security_group_errors(), tuple()}.
 describe_input_security_group(Client, InputSecurityGroupId)
   when is_map(Client) ->
     describe_input_security_group(Client, InputSecurityGroupId, #{}, #{}).
@@ -4836,13 +5452,7 @@ describe_input_security_group(Client, InputSecurityGroupId)
 -spec describe_input_security_group(map(), binary() | list(), map(), map()) ->
     {ok, describe_input_security_group_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_input_security_group_errors(), tuple()}.
 describe_input_security_group(Client, InputSecurityGroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_input_security_group(Client, InputSecurityGroupId, QueryMap, HeadersMap, []).
@@ -4850,13 +5460,7 @@ describe_input_security_group(Client, InputSecurityGroupId, QueryMap, HeadersMap
 -spec describe_input_security_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_input_security_group_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_input_security_group_errors(), tuple()}.
 describe_input_security_group(Client, InputSecurityGroupId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/inputSecurityGroups/", aws_util:encode_uri(InputSecurityGroupId), ""],
@@ -4877,13 +5481,7 @@ describe_input_security_group(Client, InputSecurityGroupId, QueryMap, HeadersMap
 -spec describe_multiplex(map(), binary() | list()) ->
     {ok, describe_multiplex_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_multiplex_errors(), tuple()}.
 describe_multiplex(Client, MultiplexId)
   when is_map(Client) ->
     describe_multiplex(Client, MultiplexId, #{}, #{}).
@@ -4891,13 +5489,7 @@ describe_multiplex(Client, MultiplexId)
 -spec describe_multiplex(map(), binary() | list(), map(), map()) ->
     {ok, describe_multiplex_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_multiplex_errors(), tuple()}.
 describe_multiplex(Client, MultiplexId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_multiplex(Client, MultiplexId, QueryMap, HeadersMap, []).
@@ -4905,13 +5497,7 @@ describe_multiplex(Client, MultiplexId, QueryMap, HeadersMap)
 -spec describe_multiplex(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_multiplex_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_multiplex_errors(), tuple()}.
 describe_multiplex(Client, MultiplexId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), ""],
@@ -4932,13 +5518,7 @@ describe_multiplex(Client, MultiplexId, QueryMap, HeadersMap, Options0)
 -spec describe_multiplex_program(map(), binary() | list(), binary() | list()) ->
     {ok, describe_multiplex_program_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_multiplex_program_errors(), tuple()}.
 describe_multiplex_program(Client, MultiplexId, ProgramName)
   when is_map(Client) ->
     describe_multiplex_program(Client, MultiplexId, ProgramName, #{}, #{}).
@@ -4946,13 +5526,7 @@ describe_multiplex_program(Client, MultiplexId, ProgramName)
 -spec describe_multiplex_program(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_multiplex_program_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_multiplex_program_errors(), tuple()}.
 describe_multiplex_program(Client, MultiplexId, ProgramName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_multiplex_program(Client, MultiplexId, ProgramName, QueryMap, HeadersMap, []).
@@ -4960,13 +5534,7 @@ describe_multiplex_program(Client, MultiplexId, ProgramName, QueryMap, HeadersMa
 -spec describe_multiplex_program(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_multiplex_program_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_multiplex_program_errors(), tuple()}.
 describe_multiplex_program(Client, MultiplexId, ProgramName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/programs/", aws_util:encode_uri(ProgramName), ""],
@@ -4987,13 +5555,7 @@ describe_multiplex_program(Client, MultiplexId, ProgramName, QueryMap, HeadersMa
 -spec describe_offering(map(), binary() | list()) ->
     {ok, describe_offering_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_offering_errors(), tuple()}.
 describe_offering(Client, OfferingId)
   when is_map(Client) ->
     describe_offering(Client, OfferingId, #{}, #{}).
@@ -5001,13 +5563,7 @@ describe_offering(Client, OfferingId)
 -spec describe_offering(map(), binary() | list(), map(), map()) ->
     {ok, describe_offering_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_offering_errors(), tuple()}.
 describe_offering(Client, OfferingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_offering(Client, OfferingId, QueryMap, HeadersMap, []).
@@ -5015,13 +5571,7 @@ describe_offering(Client, OfferingId, QueryMap, HeadersMap)
 -spec describe_offering(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_offering_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_offering_errors(), tuple()}.
 describe_offering(Client, OfferingId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/offerings/", aws_util:encode_uri(OfferingId), ""],
@@ -5042,13 +5592,7 @@ describe_offering(Client, OfferingId, QueryMap, HeadersMap, Options0)
 -spec describe_reservation(map(), binary() | list()) ->
     {ok, describe_reservation_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_reservation_errors(), tuple()}.
 describe_reservation(Client, ReservationId)
   when is_map(Client) ->
     describe_reservation(Client, ReservationId, #{}, #{}).
@@ -5056,13 +5600,7 @@ describe_reservation(Client, ReservationId)
 -spec describe_reservation(map(), binary() | list(), map(), map()) ->
     {ok, describe_reservation_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_reservation_errors(), tuple()}.
 describe_reservation(Client, ReservationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_reservation(Client, ReservationId, QueryMap, HeadersMap, []).
@@ -5070,13 +5608,7 @@ describe_reservation(Client, ReservationId, QueryMap, HeadersMap)
 -spec describe_reservation(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_reservation_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_reservation_errors(), tuple()}.
 describe_reservation(Client, ReservationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/reservations/", aws_util:encode_uri(ReservationId), ""],
@@ -5097,13 +5629,7 @@ describe_reservation(Client, ReservationId, QueryMap, HeadersMap, Options0)
 -spec describe_schedule(map(), binary() | list()) ->
     {ok, describe_schedule_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_schedule_errors(), tuple()}.
 describe_schedule(Client, ChannelId)
   when is_map(Client) ->
     describe_schedule(Client, ChannelId, #{}, #{}).
@@ -5111,13 +5637,7 @@ describe_schedule(Client, ChannelId)
 -spec describe_schedule(map(), binary() | list(), map(), map()) ->
     {ok, describe_schedule_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_schedule_errors(), tuple()}.
 describe_schedule(Client, ChannelId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_schedule(Client, ChannelId, QueryMap, HeadersMap, []).
@@ -5125,13 +5645,7 @@ describe_schedule(Client, ChannelId, QueryMap, HeadersMap)
 -spec describe_schedule(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_schedule_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_schedule_errors(), tuple()}.
 describe_schedule(Client, ChannelId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/schedule"],
@@ -5157,14 +5671,7 @@ describe_schedule(Client, ChannelId, QueryMap, HeadersMap, Options0)
 -spec describe_thumbnails(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_thumbnails_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_thumbnails_errors(), tuple()}.
 describe_thumbnails(Client, ChannelId, PipelineId, ThumbnailType)
   when is_map(Client) ->
     describe_thumbnails(Client, ChannelId, PipelineId, ThumbnailType, #{}, #{}).
@@ -5172,14 +5679,7 @@ describe_thumbnails(Client, ChannelId, PipelineId, ThumbnailType)
 -spec describe_thumbnails(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_thumbnails_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_thumbnails_errors(), tuple()}.
 describe_thumbnails(Client, ChannelId, PipelineId, ThumbnailType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_thumbnails(Client, ChannelId, PipelineId, ThumbnailType, QueryMap, HeadersMap, []).
@@ -5187,14 +5687,7 @@ describe_thumbnails(Client, ChannelId, PipelineId, ThumbnailType, QueryMap, Head
 -spec describe_thumbnails(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_thumbnails_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_thumbnails_errors(), tuple()}.
 describe_thumbnails(Client, ChannelId, PipelineId, ThumbnailType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/thumbnails"],
@@ -5220,12 +5713,7 @@ describe_thumbnails(Client, ChannelId, PipelineId, ThumbnailType, QueryMap, Head
 -spec list_channels(map()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_channels_errors(), tuple()}.
 list_channels(Client)
   when is_map(Client) ->
     list_channels(Client, #{}, #{}).
@@ -5233,12 +5721,7 @@ list_channels(Client)
 -spec list_channels(map(), map(), map()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_channels_errors(), tuple()}.
 list_channels(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channels(Client, QueryMap, HeadersMap, []).
@@ -5246,12 +5729,7 @@ list_channels(Client, QueryMap, HeadersMap)
 -spec list_channels(map(), map(), map(), proplists:proplist()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_channels_errors(), tuple()}.
 list_channels(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/channels"],
@@ -5280,13 +5758,7 @@ list_channels(Client, QueryMap, HeadersMap, Options0)
 -spec list_input_device_transfers(map(), binary() | list()) ->
     {ok, list_input_device_transfers_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, list_input_device_transfers_errors(), tuple()}.
 list_input_device_transfers(Client, TransferType)
   when is_map(Client) ->
     list_input_device_transfers(Client, TransferType, #{}, #{}).
@@ -5294,13 +5766,7 @@ list_input_device_transfers(Client, TransferType)
 -spec list_input_device_transfers(map(), binary() | list(), map(), map()) ->
     {ok, list_input_device_transfers_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, list_input_device_transfers_errors(), tuple()}.
 list_input_device_transfers(Client, TransferType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_input_device_transfers(Client, TransferType, QueryMap, HeadersMap, []).
@@ -5308,13 +5774,7 @@ list_input_device_transfers(Client, TransferType, QueryMap, HeadersMap)
 -spec list_input_device_transfers(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_input_device_transfers_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, list_input_device_transfers_errors(), tuple()}.
 list_input_device_transfers(Client, TransferType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/inputDeviceTransfers"],
@@ -5341,12 +5801,7 @@ list_input_device_transfers(Client, TransferType, QueryMap, HeadersMap, Options0
 -spec list_input_devices(map()) ->
     {ok, list_input_devices_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_input_devices_errors(), tuple()}.
 list_input_devices(Client)
   when is_map(Client) ->
     list_input_devices(Client, #{}, #{}).
@@ -5354,12 +5809,7 @@ list_input_devices(Client)
 -spec list_input_devices(map(), map(), map()) ->
     {ok, list_input_devices_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_input_devices_errors(), tuple()}.
 list_input_devices(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_input_devices(Client, QueryMap, HeadersMap, []).
@@ -5367,12 +5817,7 @@ list_input_devices(Client, QueryMap, HeadersMap)
 -spec list_input_devices(map(), map(), map(), proplists:proplist()) ->
     {ok, list_input_devices_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_input_devices_errors(), tuple()}.
 list_input_devices(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/inputDevices"],
@@ -5398,12 +5843,7 @@ list_input_devices(Client, QueryMap, HeadersMap, Options0)
 -spec list_input_security_groups(map()) ->
     {ok, list_input_security_groups_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_input_security_groups_errors(), tuple()}.
 list_input_security_groups(Client)
   when is_map(Client) ->
     list_input_security_groups(Client, #{}, #{}).
@@ -5411,12 +5851,7 @@ list_input_security_groups(Client)
 -spec list_input_security_groups(map(), map(), map()) ->
     {ok, list_input_security_groups_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_input_security_groups_errors(), tuple()}.
 list_input_security_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_input_security_groups(Client, QueryMap, HeadersMap, []).
@@ -5424,12 +5859,7 @@ list_input_security_groups(Client, QueryMap, HeadersMap)
 -spec list_input_security_groups(map(), map(), map(), proplists:proplist()) ->
     {ok, list_input_security_groups_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_input_security_groups_errors(), tuple()}.
 list_input_security_groups(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/inputSecurityGroups"],
@@ -5455,12 +5885,7 @@ list_input_security_groups(Client, QueryMap, HeadersMap, Options0)
 -spec list_inputs(map()) ->
     {ok, list_inputs_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_inputs_errors(), tuple()}.
 list_inputs(Client)
   when is_map(Client) ->
     list_inputs(Client, #{}, #{}).
@@ -5468,12 +5893,7 @@ list_inputs(Client)
 -spec list_inputs(map(), map(), map()) ->
     {ok, list_inputs_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_inputs_errors(), tuple()}.
 list_inputs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_inputs(Client, QueryMap, HeadersMap, []).
@@ -5481,12 +5901,7 @@ list_inputs(Client, QueryMap, HeadersMap)
 -spec list_inputs(map(), map(), map(), proplists:proplist()) ->
     {ok, list_inputs_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_inputs_errors(), tuple()}.
 list_inputs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/inputs"],
@@ -5512,13 +5927,7 @@ list_inputs(Client, QueryMap, HeadersMap, Options0)
 -spec list_multiplex_programs(map(), binary() | list()) ->
     {ok, list_multiplex_programs_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_multiplex_programs_errors(), tuple()}.
 list_multiplex_programs(Client, MultiplexId)
   when is_map(Client) ->
     list_multiplex_programs(Client, MultiplexId, #{}, #{}).
@@ -5526,13 +5935,7 @@ list_multiplex_programs(Client, MultiplexId)
 -spec list_multiplex_programs(map(), binary() | list(), map(), map()) ->
     {ok, list_multiplex_programs_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_multiplex_programs_errors(), tuple()}.
 list_multiplex_programs(Client, MultiplexId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_multiplex_programs(Client, MultiplexId, QueryMap, HeadersMap, []).
@@ -5540,13 +5943,7 @@ list_multiplex_programs(Client, MultiplexId, QueryMap, HeadersMap)
 -spec list_multiplex_programs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_multiplex_programs_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_multiplex_programs_errors(), tuple()}.
 list_multiplex_programs(Client, MultiplexId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/programs"],
@@ -5572,12 +5969,7 @@ list_multiplex_programs(Client, MultiplexId, QueryMap, HeadersMap, Options0)
 -spec list_multiplexes(map()) ->
     {ok, list_multiplexes_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_multiplexes_errors(), tuple()}.
 list_multiplexes(Client)
   when is_map(Client) ->
     list_multiplexes(Client, #{}, #{}).
@@ -5585,12 +5977,7 @@ list_multiplexes(Client)
 -spec list_multiplexes(map(), map(), map()) ->
     {ok, list_multiplexes_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_multiplexes_errors(), tuple()}.
 list_multiplexes(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_multiplexes(Client, QueryMap, HeadersMap, []).
@@ -5598,12 +5985,7 @@ list_multiplexes(Client, QueryMap, HeadersMap)
 -spec list_multiplexes(map(), map(), map(), proplists:proplist()) ->
     {ok, list_multiplexes_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_multiplexes_errors(), tuple()}.
 list_multiplexes(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/multiplexes"],
@@ -5629,12 +6011,7 @@ list_multiplexes(Client, QueryMap, HeadersMap, Options0)
 -spec list_offerings(map()) ->
     {ok, list_offerings_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_offerings_errors(), tuple()}.
 list_offerings(Client)
   when is_map(Client) ->
     list_offerings(Client, #{}, #{}).
@@ -5642,12 +6019,7 @@ list_offerings(Client)
 -spec list_offerings(map(), map(), map()) ->
     {ok, list_offerings_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_offerings_errors(), tuple()}.
 list_offerings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_offerings(Client, QueryMap, HeadersMap, []).
@@ -5655,12 +6027,7 @@ list_offerings(Client, QueryMap, HeadersMap)
 -spec list_offerings(map(), map(), map(), proplists:proplist()) ->
     {ok, list_offerings_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_offerings_errors(), tuple()}.
 list_offerings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/offerings"],
@@ -5696,12 +6063,7 @@ list_offerings(Client, QueryMap, HeadersMap, Options0)
 -spec list_reservations(map()) ->
     {ok, list_reservations_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_reservations_errors(), tuple()}.
 list_reservations(Client)
   when is_map(Client) ->
     list_reservations(Client, #{}, #{}).
@@ -5709,12 +6071,7 @@ list_reservations(Client)
 -spec list_reservations(map(), map(), map()) ->
     {ok, list_reservations_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_reservations_errors(), tuple()}.
 list_reservations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_reservations(Client, QueryMap, HeadersMap, []).
@@ -5722,12 +6079,7 @@ list_reservations(Client, QueryMap, HeadersMap)
 -spec list_reservations(map(), map(), map(), proplists:proplist()) ->
     {ok, list_reservations_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_reservations_errors(), tuple()}.
 list_reservations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/reservations"],
@@ -5761,10 +6113,7 @@ list_reservations(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -5772,10 +6121,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -5783,10 +6129,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -5807,28 +6150,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec purchase_offering(map(), binary() | list(), purchase_offering_request()) ->
     {ok, purchase_offering_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, purchase_offering_errors(), tuple()}.
 purchase_offering(Client, OfferingId, Input) ->
     purchase_offering(Client, OfferingId, Input, []).
 
 -spec purchase_offering(map(), binary() | list(), purchase_offering_request(), proplists:proplist()) ->
     {ok, purchase_offering_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, purchase_offering_errors(), tuple()}.
 purchase_offering(Client, OfferingId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/offerings/", aws_util:encode_uri(OfferingId), "/purchase"],
@@ -5859,28 +6188,14 @@ purchase_offering(Client, OfferingId, Input0, Options0) ->
 -spec reboot_input_device(map(), binary() | list(), reboot_input_device_request()) ->
     {ok, reboot_input_device_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, reboot_input_device_errors(), tuple()}.
 reboot_input_device(Client, InputDeviceId, Input) ->
     reboot_input_device(Client, InputDeviceId, Input, []).
 
 -spec reboot_input_device(map(), binary() | list(), reboot_input_device_request(), proplists:proplist()) ->
     {ok, reboot_input_device_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, reboot_input_device_errors(), tuple()}.
 reboot_input_device(Client, InputDeviceId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/reboot"],
@@ -5908,30 +6223,14 @@ reboot_input_device(Client, InputDeviceId, Input0, Options0) ->
 -spec reject_input_device_transfer(map(), binary() | list(), reject_input_device_transfer_request()) ->
     {ok, reject_input_device_transfer_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, reject_input_device_transfer_errors(), tuple()}.
 reject_input_device_transfer(Client, InputDeviceId, Input) ->
     reject_input_device_transfer(Client, InputDeviceId, Input, []).
 
 -spec reject_input_device_transfer(map(), binary() | list(), reject_input_device_transfer_request(), proplists:proplist()) ->
     {ok, reject_input_device_transfer_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, reject_input_device_transfer_errors(), tuple()}.
 reject_input_device_transfer(Client, InputDeviceId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/reject"],
@@ -5958,28 +6257,14 @@ reject_input_device_transfer(Client, InputDeviceId, Input0, Options0) ->
 -spec restart_channel_pipelines(map(), binary() | list(), restart_channel_pipelines_request()) ->
     {ok, restart_channel_pipelines_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, restart_channel_pipelines_errors(), tuple()}.
 restart_channel_pipelines(Client, ChannelId, Input) ->
     restart_channel_pipelines(Client, ChannelId, Input, []).
 
 -spec restart_channel_pipelines(map(), binary() | list(), restart_channel_pipelines_request(), proplists:proplist()) ->
     {ok, restart_channel_pipelines_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, restart_channel_pipelines_errors(), tuple()}.
 restart_channel_pipelines(Client, ChannelId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/restartChannelPipelines"],
@@ -6006,28 +6291,14 @@ restart_channel_pipelines(Client, ChannelId, Input0, Options0) ->
 -spec start_channel(map(), binary() | list(), start_channel_request()) ->
     {ok, start_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, start_channel_errors(), tuple()}.
 start_channel(Client, ChannelId, Input) ->
     start_channel(Client, ChannelId, Input, []).
 
 -spec start_channel(map(), binary() | list(), start_channel_request(), proplists:proplist()) ->
     {ok, start_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, start_channel_errors(), tuple()}.
 start_channel(Client, ChannelId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/start"],
@@ -6057,28 +6328,14 @@ start_channel(Client, ChannelId, Input0, Options0) ->
 -spec start_input_device(map(), binary() | list(), start_input_device_request()) ->
     {ok, start_input_device_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, start_input_device_errors(), tuple()}.
 start_input_device(Client, InputDeviceId, Input) ->
     start_input_device(Client, InputDeviceId, Input, []).
 
 -spec start_input_device(map(), binary() | list(), start_input_device_request(), proplists:proplist()) ->
     {ok, start_input_device_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, start_input_device_errors(), tuple()}.
 start_input_device(Client, InputDeviceId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/start"],
@@ -6114,28 +6371,14 @@ start_input_device(Client, InputDeviceId, Input0, Options0) ->
 -spec start_input_device_maintenance_window(map(), binary() | list(), start_input_device_maintenance_window_request()) ->
     {ok, start_input_device_maintenance_window_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, start_input_device_maintenance_window_errors(), tuple()}.
 start_input_device_maintenance_window(Client, InputDeviceId, Input) ->
     start_input_device_maintenance_window(Client, InputDeviceId, Input, []).
 
 -spec start_input_device_maintenance_window(map(), binary() | list(), start_input_device_maintenance_window_request(), proplists:proplist()) ->
     {ok, start_input_device_maintenance_window_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, start_input_device_maintenance_window_errors(), tuple()}.
 start_input_device_maintenance_window(Client, InputDeviceId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/startInputDeviceMaintenanceWindow"],
@@ -6165,28 +6408,14 @@ start_input_device_maintenance_window(Client, InputDeviceId, Input0, Options0) -
 -spec start_multiplex(map(), binary() | list(), start_multiplex_request()) ->
     {ok, start_multiplex_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, start_multiplex_errors(), tuple()}.
 start_multiplex(Client, MultiplexId, Input) ->
     start_multiplex(Client, MultiplexId, Input, []).
 
 -spec start_multiplex(map(), binary() | list(), start_multiplex_request(), proplists:proplist()) ->
     {ok, start_multiplex_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, start_multiplex_errors(), tuple()}.
 start_multiplex(Client, MultiplexId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/start"],
@@ -6213,28 +6442,14 @@ start_multiplex(Client, MultiplexId, Input0, Options0) ->
 -spec stop_channel(map(), binary() | list(), stop_channel_request()) ->
     {ok, stop_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, stop_channel_errors(), tuple()}.
 stop_channel(Client, ChannelId, Input) ->
     stop_channel(Client, ChannelId, Input, []).
 
 -spec stop_channel(map(), binary() | list(), stop_channel_request(), proplists:proplist()) ->
     {ok, stop_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, stop_channel_errors(), tuple()}.
 stop_channel(Client, ChannelId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/stop"],
@@ -6264,28 +6479,14 @@ stop_channel(Client, ChannelId, Input0, Options0) ->
 -spec stop_input_device(map(), binary() | list(), stop_input_device_request()) ->
     {ok, stop_input_device_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, stop_input_device_errors(), tuple()}.
 stop_input_device(Client, InputDeviceId, Input) ->
     stop_input_device(Client, InputDeviceId, Input, []).
 
 -spec stop_input_device(map(), binary() | list(), stop_input_device_request(), proplists:proplist()) ->
     {ok, stop_input_device_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, stop_input_device_errors(), tuple()}.
 stop_input_device(Client, InputDeviceId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/stop"],
@@ -6314,28 +6515,14 @@ stop_input_device(Client, InputDeviceId, Input0, Options0) ->
 -spec stop_multiplex(map(), binary() | list(), stop_multiplex_request()) ->
     {ok, stop_multiplex_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, stop_multiplex_errors(), tuple()}.
 stop_multiplex(Client, MultiplexId, Input) ->
     stop_multiplex(Client, MultiplexId, Input, []).
 
 -spec stop_multiplex(map(), binary() | list(), stop_multiplex_request(), proplists:proplist()) ->
     {ok, stop_multiplex_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, stop_multiplex_errors(), tuple()}.
 stop_multiplex(Client, MultiplexId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/stop"],
@@ -6365,30 +6552,14 @@ stop_multiplex(Client, MultiplexId, Input0, Options0) ->
 -spec transfer_input_device(map(), binary() | list(), transfer_input_device_request()) ->
     {ok, transfer_input_device_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, transfer_input_device_errors(), tuple()}.
 transfer_input_device(Client, InputDeviceId, Input) ->
     transfer_input_device(Client, InputDeviceId, Input, []).
 
 -spec transfer_input_device(map(), binary() | list(), transfer_input_device_request(), proplists:proplist()) ->
     {ok, transfer_input_device_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, transfer_input_device_errors(), tuple()}.
 transfer_input_device(Client, InputDeviceId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/transfer"],
@@ -6415,26 +6586,14 @@ transfer_input_device(Client, InputDeviceId, Input0, Options0) ->
 -spec update_account_configuration(map(), update_account_configuration_request()) ->
     {ok, update_account_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, update_account_configuration_errors(), tuple()}.
 update_account_configuration(Client, Input) ->
     update_account_configuration(Client, Input, []).
 
 -spec update_account_configuration(map(), update_account_configuration_request(), proplists:proplist()) ->
     {ok, update_account_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, update_account_configuration_errors(), tuple()}.
 update_account_configuration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/prod/accountConfiguration"],
@@ -6461,26 +6620,14 @@ update_account_configuration(Client, Input0, Options0) ->
 -spec update_channel(map(), binary() | list(), update_channel_request()) ->
     {ok, update_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, update_channel_errors(), tuple()}.
 update_channel(Client, ChannelId, Input) ->
     update_channel(Client, ChannelId, Input, []).
 
 -spec update_channel(map(), binary() | list(), update_channel_request(), proplists:proplist()) ->
     {ok, update_channel_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, update_channel_errors(), tuple()}.
 update_channel(Client, ChannelId, Input0, Options0) ->
     Method = put,
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), ""],
@@ -6507,30 +6654,14 @@ update_channel(Client, ChannelId, Input0, Options0) ->
 -spec update_channel_class(map(), binary() | list(), update_channel_class_request()) ->
     {ok, update_channel_class_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, update_channel_class_errors(), tuple()}.
 update_channel_class(Client, ChannelId, Input) ->
     update_channel_class(Client, ChannelId, Input, []).
 
 -spec update_channel_class(map(), binary() | list(), update_channel_class_request(), proplists:proplist()) ->
     {ok, update_channel_class_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, update_channel_class_errors(), tuple()}.
 update_channel_class(Client, ChannelId, Input0, Options0) ->
     Method = put,
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/channelClass"],
@@ -6557,26 +6688,14 @@ update_channel_class(Client, ChannelId, Input0, Options0) ->
 -spec update_input(map(), binary() | list(), update_input_request()) ->
     {ok, update_input_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_input_errors(), tuple()}.
 update_input(Client, InputId, Input) ->
     update_input(Client, InputId, Input, []).
 
 -spec update_input(map(), binary() | list(), update_input_request(), proplists:proplist()) ->
     {ok, update_input_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_input_errors(), tuple()}.
 update_input(Client, InputId, Input0, Options0) ->
     Method = put,
     Path = ["/prod/inputs/", aws_util:encode_uri(InputId), ""],
@@ -6603,28 +6722,14 @@ update_input(Client, InputId, Input0, Options0) ->
 -spec update_input_device(map(), binary() | list(), update_input_device_request()) ->
     {ok, update_input_device_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, update_input_device_errors(), tuple()}.
 update_input_device(Client, InputDeviceId, Input) ->
     update_input_device(Client, InputDeviceId, Input, []).
 
 -spec update_input_device(map(), binary() | list(), update_input_device_request(), proplists:proplist()) ->
     {ok, update_input_device_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, update_input_device_errors(), tuple()}.
 update_input_device(Client, InputDeviceId, Input0, Options0) ->
     Method = put,
     Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), ""],
@@ -6651,26 +6756,14 @@ update_input_device(Client, InputDeviceId, Input0, Options0) ->
 -spec update_input_security_group(map(), binary() | list(), update_input_security_group_request()) ->
     {ok, update_input_security_group_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_input_security_group_errors(), tuple()}.
 update_input_security_group(Client, InputSecurityGroupId, Input) ->
     update_input_security_group(Client, InputSecurityGroupId, Input, []).
 
 -spec update_input_security_group(map(), binary() | list(), update_input_security_group_request(), proplists:proplist()) ->
     {ok, update_input_security_group_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_input_security_group_errors(), tuple()}.
 update_input_security_group(Client, InputSecurityGroupId, Input0, Options0) ->
     Method = put,
     Path = ["/prod/inputSecurityGroups/", aws_util:encode_uri(InputSecurityGroupId), ""],
@@ -6697,28 +6790,14 @@ update_input_security_group(Client, InputSecurityGroupId, Input0, Options0) ->
 -spec update_multiplex(map(), binary() | list(), update_multiplex_request()) ->
     {ok, update_multiplex_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, update_multiplex_errors(), tuple()}.
 update_multiplex(Client, MultiplexId, Input) ->
     update_multiplex(Client, MultiplexId, Input, []).
 
 -spec update_multiplex(map(), binary() | list(), update_multiplex_request(), proplists:proplist()) ->
     {ok, update_multiplex_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, update_multiplex_errors(), tuple()}.
 update_multiplex(Client, MultiplexId, Input0, Options0) ->
     Method = put,
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), ""],
@@ -6745,28 +6824,14 @@ update_multiplex(Client, MultiplexId, Input0, Options0) ->
 -spec update_multiplex_program(map(), binary() | list(), binary() | list(), update_multiplex_program_request()) ->
     {ok, update_multiplex_program_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, update_multiplex_program_errors(), tuple()}.
 update_multiplex_program(Client, MultiplexId, ProgramName, Input) ->
     update_multiplex_program(Client, MultiplexId, ProgramName, Input, []).
 
 -spec update_multiplex_program(map(), binary() | list(), binary() | list(), update_multiplex_program_request(), proplists:proplist()) ->
     {ok, update_multiplex_program_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unprocessable_entity_exception(), tuple()}.
+    {error, update_multiplex_program_errors(), tuple()}.
 update_multiplex_program(Client, MultiplexId, ProgramName, Input0, Options0) ->
     Method = put,
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/programs/", aws_util:encode_uri(ProgramName), ""],
@@ -6793,28 +6858,14 @@ update_multiplex_program(Client, MultiplexId, ProgramName, Input0, Options0) ->
 -spec update_reservation(map(), binary() | list(), update_reservation_request()) ->
     {ok, update_reservation_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_reservation_errors(), tuple()}.
 update_reservation(Client, ReservationId, Input) ->
     update_reservation(Client, ReservationId, Input, []).
 
 -spec update_reservation(map(), binary() | list(), update_reservation_request(), proplists:proplist()) ->
     {ok, update_reservation_response(), tuple()} |
     {error, any()} |
-    {error, bad_gateway_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_reservation_errors(), tuple()}.
 update_reservation(Client, ReservationId, Input0, Options0) ->
     Method = put,
     Path = ["/prod/reservations/", aws_util:encode_uri(ReservationId), ""],

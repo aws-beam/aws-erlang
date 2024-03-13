@@ -392,6 +392,103 @@
 %% }
 -type create_luna_client_request() :: #{binary() => any()}.
 
+-type add_tags_to_resource_errors() ::
+    cloud_hsm_service_exception() | 
+    cloud_hsm_internal_exception() | 
+    invalid_request_exception().
+
+-type create_hapg_errors() ::
+    cloud_hsm_service_exception() | 
+    cloud_hsm_internal_exception() | 
+    invalid_request_exception().
+
+-type create_hsm_errors() ::
+    cloud_hsm_service_exception() | 
+    cloud_hsm_internal_exception() | 
+    invalid_request_exception().
+
+-type create_luna_client_errors() ::
+    cloud_hsm_service_exception() | 
+    cloud_hsm_internal_exception() | 
+    invalid_request_exception().
+
+-type delete_hapg_errors() ::
+    cloud_hsm_service_exception() | 
+    cloud_hsm_internal_exception() | 
+    invalid_request_exception().
+
+-type delete_hsm_errors() ::
+    cloud_hsm_service_exception() | 
+    cloud_hsm_internal_exception() | 
+    invalid_request_exception().
+
+-type delete_luna_client_errors() ::
+    cloud_hsm_service_exception() | 
+    cloud_hsm_internal_exception() | 
+    invalid_request_exception().
+
+-type describe_hapg_errors() ::
+    cloud_hsm_service_exception() | 
+    cloud_hsm_internal_exception() | 
+    invalid_request_exception().
+
+-type describe_hsm_errors() ::
+    cloud_hsm_service_exception() | 
+    cloud_hsm_internal_exception() | 
+    invalid_request_exception().
+
+-type describe_luna_client_errors() ::
+    cloud_hsm_service_exception() | 
+    cloud_hsm_internal_exception() | 
+    invalid_request_exception().
+
+-type get_config_errors() ::
+    cloud_hsm_service_exception() | 
+    cloud_hsm_internal_exception() | 
+    invalid_request_exception().
+
+-type list_available_zones_errors() ::
+    cloud_hsm_service_exception() | 
+    cloud_hsm_internal_exception() | 
+    invalid_request_exception().
+
+-type list_hapgs_errors() ::
+    cloud_hsm_service_exception() | 
+    cloud_hsm_internal_exception() | 
+    invalid_request_exception().
+
+-type list_hsms_errors() ::
+    cloud_hsm_service_exception() | 
+    cloud_hsm_internal_exception() | 
+    invalid_request_exception().
+
+-type list_luna_clients_errors() ::
+    cloud_hsm_service_exception() | 
+    cloud_hsm_internal_exception() | 
+    invalid_request_exception().
+
+-type list_tags_for_resource_errors() ::
+    cloud_hsm_service_exception() | 
+    cloud_hsm_internal_exception() | 
+    invalid_request_exception().
+
+-type modify_hapg_errors() ::
+    cloud_hsm_service_exception() | 
+    cloud_hsm_internal_exception() | 
+    invalid_request_exception().
+
+-type modify_hsm_errors() ::
+    cloud_hsm_service_exception() | 
+    cloud_hsm_internal_exception() | 
+    invalid_request_exception().
+
+-type modify_luna_client_errors() ::
+    cloud_hsm_service_exception().
+
+-type remove_tags_from_resource_errors() ::
+    cloud_hsm_service_exception() | 
+    cloud_hsm_internal_exception() | 
+    invalid_request_exception().
 
 %%====================================================================
 %% API
@@ -422,9 +519,7 @@
 -spec add_tags_to_resource(map(), add_tags_to_resource_request()) ->
     {ok, add_tags_to_resource_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, add_tags_to_resource_errors(), tuple()}.
 add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_resource(Client, Input, []).
@@ -432,9 +527,7 @@ add_tags_to_resource(Client, Input)
 -spec add_tags_to_resource(map(), add_tags_to_resource_request(), proplists:proplist()) ->
     {ok, add_tags_to_resource_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, add_tags_to_resource_errors(), tuple()}.
 add_tags_to_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTagsToResource">>, Input, Options).
@@ -462,9 +555,7 @@ add_tags_to_resource(Client, Input, Options)
 -spec create_hapg(map(), create_hapg_request()) ->
     {ok, create_hapg_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_hapg_errors(), tuple()}.
 create_hapg(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hapg(Client, Input, []).
@@ -472,9 +563,7 @@ create_hapg(Client, Input)
 -spec create_hapg(map(), create_hapg_request(), proplists:proplist()) ->
     {ok, create_hapg_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_hapg_errors(), tuple()}.
 create_hapg(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHapg">>, Input, Options).
@@ -515,9 +604,7 @@ create_hapg(Client, Input, Options)
 -spec create_hsm(map(), create_hsm_request()) ->
     {ok, create_hsm_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_hsm_errors(), tuple()}.
 create_hsm(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hsm(Client, Input, []).
@@ -525,9 +612,7 @@ create_hsm(Client, Input)
 -spec create_hsm(map(), create_hsm_request(), proplists:proplist()) ->
     {ok, create_hsm_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_hsm_errors(), tuple()}.
 create_hsm(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHsm">>, Input, Options).
@@ -553,9 +638,7 @@ create_hsm(Client, Input, Options)
 -spec create_luna_client(map(), create_luna_client_request()) ->
     {ok, create_luna_client_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_luna_client_errors(), tuple()}.
 create_luna_client(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_luna_client(Client, Input, []).
@@ -563,9 +646,7 @@ create_luna_client(Client, Input)
 -spec create_luna_client(map(), create_luna_client_request(), proplists:proplist()) ->
     {ok, create_luna_client_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, create_luna_client_errors(), tuple()}.
 create_luna_client(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLunaClient">>, Input, Options).
@@ -591,9 +672,7 @@ create_luna_client(Client, Input, Options)
 -spec delete_hapg(map(), delete_hapg_request()) ->
     {ok, delete_hapg_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, delete_hapg_errors(), tuple()}.
 delete_hapg(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_hapg(Client, Input, []).
@@ -601,9 +680,7 @@ delete_hapg(Client, Input)
 -spec delete_hapg(map(), delete_hapg_request(), proplists:proplist()) ->
     {ok, delete_hapg_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, delete_hapg_errors(), tuple()}.
 delete_hapg(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteHapg">>, Input, Options).
@@ -631,9 +708,7 @@ delete_hapg(Client, Input, Options)
 -spec delete_hsm(map(), delete_hsm_request()) ->
     {ok, delete_hsm_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, delete_hsm_errors(), tuple()}.
 delete_hsm(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_hsm(Client, Input, []).
@@ -641,9 +716,7 @@ delete_hsm(Client, Input)
 -spec delete_hsm(map(), delete_hsm_request(), proplists:proplist()) ->
     {ok, delete_hsm_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, delete_hsm_errors(), tuple()}.
 delete_hsm(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteHsm">>, Input, Options).
@@ -669,9 +742,7 @@ delete_hsm(Client, Input, Options)
 -spec delete_luna_client(map(), delete_luna_client_request()) ->
     {ok, delete_luna_client_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, delete_luna_client_errors(), tuple()}.
 delete_luna_client(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_luna_client(Client, Input, []).
@@ -679,9 +750,7 @@ delete_luna_client(Client, Input)
 -spec delete_luna_client(map(), delete_luna_client_request(), proplists:proplist()) ->
     {ok, delete_luna_client_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, delete_luna_client_errors(), tuple()}.
 delete_luna_client(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLunaClient">>, Input, Options).
@@ -707,9 +776,7 @@ delete_luna_client(Client, Input, Options)
 -spec describe_hapg(map(), describe_hapg_request()) ->
     {ok, describe_hapg_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_hapg_errors(), tuple()}.
 describe_hapg(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_hapg(Client, Input, []).
@@ -717,9 +784,7 @@ describe_hapg(Client, Input)
 -spec describe_hapg(map(), describe_hapg_request(), proplists:proplist()) ->
     {ok, describe_hapg_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_hapg_errors(), tuple()}.
 describe_hapg(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeHapg">>, Input, Options).
@@ -747,9 +812,7 @@ describe_hapg(Client, Input, Options)
 -spec describe_hsm(map(), describe_hsm_request()) ->
     {ok, describe_hsm_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_hsm_errors(), tuple()}.
 describe_hsm(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_hsm(Client, Input, []).
@@ -757,9 +820,7 @@ describe_hsm(Client, Input)
 -spec describe_hsm(map(), describe_hsm_request(), proplists:proplist()) ->
     {ok, describe_hsm_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_hsm_errors(), tuple()}.
 describe_hsm(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeHsm">>, Input, Options).
@@ -785,9 +846,7 @@ describe_hsm(Client, Input, Options)
 -spec describe_luna_client(map(), describe_luna_client_request()) ->
     {ok, describe_luna_client_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_luna_client_errors(), tuple()}.
 describe_luna_client(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_luna_client(Client, Input, []).
@@ -795,9 +854,7 @@ describe_luna_client(Client, Input)
 -spec describe_luna_client(map(), describe_luna_client_request(), proplists:proplist()) ->
     {ok, describe_luna_client_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, describe_luna_client_errors(), tuple()}.
 describe_luna_client(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLunaClient">>, Input, Options).
@@ -825,9 +882,7 @@ describe_luna_client(Client, Input, Options)
 -spec get_config(map(), get_config_request()) ->
     {ok, get_config_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, get_config_errors(), tuple()}.
 get_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_config(Client, Input, []).
@@ -835,9 +890,7 @@ get_config(Client, Input)
 -spec get_config(map(), get_config_request(), proplists:proplist()) ->
     {ok, get_config_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, get_config_errors(), tuple()}.
 get_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetConfig">>, Input, Options).
@@ -863,9 +916,7 @@ get_config(Client, Input, Options)
 -spec list_available_zones(map(), list_available_zones_request()) ->
     {ok, list_available_zones_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_available_zones_errors(), tuple()}.
 list_available_zones(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_available_zones(Client, Input, []).
@@ -873,9 +924,7 @@ list_available_zones(Client, Input)
 -spec list_available_zones(map(), list_available_zones_request(), proplists:proplist()) ->
     {ok, list_available_zones_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_available_zones_errors(), tuple()}.
 list_available_zones(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAvailableZones">>, Input, Options).
@@ -909,9 +958,7 @@ list_available_zones(Client, Input, Options)
 -spec list_hapgs(map(), list_hapgs_request()) ->
     {ok, list_hapgs_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_hapgs_errors(), tuple()}.
 list_hapgs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_hapgs(Client, Input, []).
@@ -919,9 +966,7 @@ list_hapgs(Client, Input)
 -spec list_hapgs(map(), list_hapgs_request(), proplists:proplist()) ->
     {ok, list_hapgs_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_hapgs_errors(), tuple()}.
 list_hapgs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListHapgs">>, Input, Options).
@@ -956,9 +1001,7 @@ list_hapgs(Client, Input, Options)
 -spec list_hsms(map(), list_hsms_request()) ->
     {ok, list_hsms_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_hsms_errors(), tuple()}.
 list_hsms(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_hsms(Client, Input, []).
@@ -966,9 +1009,7 @@ list_hsms(Client, Input)
 -spec list_hsms(map(), list_hsms_request(), proplists:proplist()) ->
     {ok, list_hsms_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_hsms_errors(), tuple()}.
 list_hsms(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListHsms">>, Input, Options).
@@ -1002,9 +1043,7 @@ list_hsms(Client, Input, Options)
 -spec list_luna_clients(map(), list_luna_clients_request()) ->
     {ok, list_luna_clients_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_luna_clients_errors(), tuple()}.
 list_luna_clients(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_luna_clients(Client, Input, []).
@@ -1012,9 +1051,7 @@ list_luna_clients(Client, Input)
 -spec list_luna_clients(map(), list_luna_clients_request(), proplists:proplist()) ->
     {ok, list_luna_clients_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_luna_clients_errors(), tuple()}.
 list_luna_clients(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLunaClients">>, Input, Options).
@@ -1040,9 +1077,7 @@ list_luna_clients(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -1050,9 +1085,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -1078,9 +1111,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec modify_hapg(map(), modify_hapg_request()) ->
     {ok, modify_hapg_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, modify_hapg_errors(), tuple()}.
 modify_hapg(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_hapg(Client, Input, []).
@@ -1088,9 +1119,7 @@ modify_hapg(Client, Input)
 -spec modify_hapg(map(), modify_hapg_request(), proplists:proplist()) ->
     {ok, modify_hapg_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, modify_hapg_errors(), tuple()}.
 modify_hapg(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyHapg">>, Input, Options).
@@ -1124,9 +1153,7 @@ modify_hapg(Client, Input, Options)
 -spec modify_hsm(map(), modify_hsm_request()) ->
     {ok, modify_hsm_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, modify_hsm_errors(), tuple()}.
 modify_hsm(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_hsm(Client, Input, []).
@@ -1134,9 +1161,7 @@ modify_hsm(Client, Input)
 -spec modify_hsm(map(), modify_hsm_request(), proplists:proplist()) ->
     {ok, modify_hsm_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, modify_hsm_errors(), tuple()}.
 modify_hsm(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyHsm">>, Input, Options).
@@ -1166,7 +1191,7 @@ modify_hsm(Client, Input, Options)
 -spec modify_luna_client(map(), modify_luna_client_request()) ->
     {ok, modify_luna_client_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_service_exception(), tuple()}.
+    {error, modify_luna_client_errors(), tuple()}.
 modify_luna_client(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_luna_client(Client, Input, []).
@@ -1174,7 +1199,7 @@ modify_luna_client(Client, Input)
 -spec modify_luna_client(map(), modify_luna_client_request(), proplists:proplist()) ->
     {ok, modify_luna_client_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_service_exception(), tuple()}.
+    {error, modify_luna_client_errors(), tuple()}.
 modify_luna_client(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyLunaClient">>, Input, Options).
@@ -1204,9 +1229,7 @@ modify_luna_client(Client, Input, Options)
 -spec remove_tags_from_resource(map(), remove_tags_from_resource_request()) ->
     {ok, remove_tags_from_resource_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, remove_tags_from_resource_errors(), tuple()}.
 remove_tags_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_resource(Client, Input, []).
@@ -1214,9 +1237,7 @@ remove_tags_from_resource(Client, Input)
 -spec remove_tags_from_resource(map(), remove_tags_from_resource_request(), proplists:proplist()) ->
     {ok, remove_tags_from_resource_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_internal_exception(), tuple()} |
-    {error, cloud_hsm_service_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, remove_tags_from_resource_errors(), tuple()}.
 remove_tags_from_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTagsFromResource">>, Input, Options).

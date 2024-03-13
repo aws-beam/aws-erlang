@@ -2450,6 +2450,246 @@
 %% }
 -type auto_deployment() :: #{binary() => any()}.
 
+-type activate_organizations_access_errors() ::
+    operation_not_found_exception() | 
+    invalid_operation_exception().
+
+-type activate_type_errors() ::
+    c_f_n_registry_exception() | 
+    type_not_found_exception().
+
+-type batch_describe_type_configurations_errors() ::
+    c_f_n_registry_exception() | 
+    type_configuration_not_found_exception().
+
+-type cancel_update_stack_errors() ::
+    token_already_exists_exception().
+
+-type continue_update_rollback_errors() ::
+    token_already_exists_exception().
+
+-type create_change_set_errors() ::
+    limit_exceeded_exception() | 
+    insufficient_capabilities_exception() | 
+    already_exists_exception().
+
+-type create_generated_template_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_resources_limit_exceeded_exception() | 
+    already_exists_exception().
+
+-type create_stack_errors() ::
+    token_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    insufficient_capabilities_exception() | 
+    already_exists_exception().
+
+-type create_stack_instances_errors() ::
+    operation_id_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    stack_set_not_found_exception() | 
+    operation_in_progress_exception() | 
+    invalid_operation_exception() | 
+    stale_request_exception().
+
+-type create_stack_set_errors() ::
+    limit_exceeded_exception() | 
+    created_but_modified_exception() | 
+    name_already_exists_exception().
+
+-type deactivate_organizations_access_errors() ::
+    operation_not_found_exception() | 
+    invalid_operation_exception().
+
+-type deactivate_type_errors() ::
+    c_f_n_registry_exception() | 
+    type_not_found_exception().
+
+-type delete_change_set_errors() ::
+    invalid_change_set_status_exception().
+
+-type delete_generated_template_errors() ::
+    concurrent_resources_limit_exceeded_exception() | 
+    generated_template_not_found_exception().
+
+-type delete_stack_errors() ::
+    token_already_exists_exception().
+
+-type delete_stack_instances_errors() ::
+    operation_id_already_exists_exception() | 
+    stack_set_not_found_exception() | 
+    operation_in_progress_exception() | 
+    invalid_operation_exception() | 
+    stale_request_exception().
+
+-type delete_stack_set_errors() ::
+    stack_set_not_empty_exception() | 
+    operation_in_progress_exception().
+
+-type deregister_type_errors() ::
+    c_f_n_registry_exception() | 
+    type_not_found_exception().
+
+-type describe_change_set_errors() ::
+    change_set_not_found_exception().
+
+-type describe_change_set_hooks_errors() ::
+    change_set_not_found_exception().
+
+-type describe_generated_template_errors() ::
+    generated_template_not_found_exception().
+
+-type describe_organizations_access_errors() ::
+    operation_not_found_exception() | 
+    invalid_operation_exception().
+
+-type describe_publisher_errors() ::
+    c_f_n_registry_exception().
+
+-type describe_resource_scan_errors() ::
+    resource_scan_not_found_exception().
+
+-type describe_stack_instance_errors() ::
+    stack_instance_not_found_exception() | 
+    stack_set_not_found_exception().
+
+-type describe_stack_set_errors() ::
+    stack_set_not_found_exception().
+
+-type describe_stack_set_operation_errors() ::
+    stack_set_not_found_exception() | 
+    operation_not_found_exception().
+
+-type describe_type_errors() ::
+    c_f_n_registry_exception() | 
+    type_not_found_exception().
+
+-type describe_type_registration_errors() ::
+    c_f_n_registry_exception().
+
+-type detect_stack_set_drift_errors() ::
+    stack_set_not_found_exception() | 
+    operation_in_progress_exception() | 
+    invalid_operation_exception().
+
+-type execute_change_set_errors() ::
+    change_set_not_found_exception() | 
+    token_already_exists_exception() | 
+    invalid_change_set_status_exception() | 
+    insufficient_capabilities_exception().
+
+-type get_generated_template_errors() ::
+    generated_template_not_found_exception().
+
+-type get_template_errors() ::
+    change_set_not_found_exception().
+
+-type get_template_summary_errors() ::
+    stack_set_not_found_exception().
+
+-type import_stacks_to_stack_set_errors() ::
+    operation_id_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    stack_set_not_found_exception() | 
+    stack_not_found_exception() | 
+    operation_in_progress_exception() | 
+    invalid_operation_exception() | 
+    stale_request_exception().
+
+-type list_resource_scan_related_resources_errors() ::
+    resource_scan_in_progress_exception() | 
+    resource_scan_not_found_exception().
+
+-type list_resource_scan_resources_errors() ::
+    resource_scan_in_progress_exception() | 
+    resource_scan_not_found_exception().
+
+-type list_stack_instance_resource_drifts_errors() ::
+    stack_instance_not_found_exception() | 
+    stack_set_not_found_exception() | 
+    operation_not_found_exception().
+
+-type list_stack_instances_errors() ::
+    stack_set_not_found_exception().
+
+-type list_stack_set_operation_results_errors() ::
+    stack_set_not_found_exception() | 
+    operation_not_found_exception().
+
+-type list_stack_set_operations_errors() ::
+    stack_set_not_found_exception().
+
+-type list_type_registrations_errors() ::
+    c_f_n_registry_exception().
+
+-type list_type_versions_errors() ::
+    c_f_n_registry_exception().
+
+-type list_types_errors() ::
+    c_f_n_registry_exception().
+
+-type publish_type_errors() ::
+    c_f_n_registry_exception() | 
+    type_not_found_exception().
+
+-type record_handler_progress_errors() ::
+    invalid_state_transition_exception() | 
+    operation_status_check_failed_exception().
+
+-type register_publisher_errors() ::
+    c_f_n_registry_exception().
+
+-type register_type_errors() ::
+    c_f_n_registry_exception().
+
+-type rollback_stack_errors() ::
+    token_already_exists_exception().
+
+-type set_type_configuration_errors() ::
+    c_f_n_registry_exception() | 
+    type_not_found_exception().
+
+-type set_type_default_version_errors() ::
+    c_f_n_registry_exception() | 
+    type_not_found_exception().
+
+-type start_resource_scan_errors() ::
+    resource_scan_limit_exceeded_exception() | 
+    resource_scan_in_progress_exception().
+
+-type stop_stack_set_operation_errors() ::
+    stack_set_not_found_exception() | 
+    operation_not_found_exception() | 
+    invalid_operation_exception().
+
+-type test_type_errors() ::
+    c_f_n_registry_exception() | 
+    type_not_found_exception().
+
+-type update_generated_template_errors() ::
+    limit_exceeded_exception() | 
+    already_exists_exception() | 
+    generated_template_not_found_exception().
+
+-type update_stack_errors() ::
+    token_already_exists_exception() | 
+    insufficient_capabilities_exception().
+
+-type update_stack_instances_errors() ::
+    operation_id_already_exists_exception() | 
+    stack_instance_not_found_exception() | 
+    stack_set_not_found_exception() | 
+    operation_in_progress_exception() | 
+    invalid_operation_exception() | 
+    stale_request_exception().
+
+-type update_stack_set_errors() ::
+    operation_id_already_exists_exception() | 
+    stack_instance_not_found_exception() | 
+    stack_set_not_found_exception() | 
+    operation_in_progress_exception() | 
+    invalid_operation_exception() | 
+    stale_request_exception().
 
 %%====================================================================
 %% API
@@ -2464,8 +2704,7 @@
 -spec activate_organizations_access(map(), activate_organizations_access_input()) ->
     {ok, activate_organizations_access_output(), tuple()} |
     {error, any()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, operation_not_found_exception(), tuple()}.
+    {error, activate_organizations_access_errors(), tuple()}.
 activate_organizations_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     activate_organizations_access(Client, Input, []).
@@ -2473,8 +2712,7 @@ activate_organizations_access(Client, Input)
 -spec activate_organizations_access(map(), activate_organizations_access_input(), proplists:proplist()) ->
     {ok, activate_organizations_access_output(), tuple()} |
     {error, any()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, operation_not_found_exception(), tuple()}.
+    {error, activate_organizations_access_errors(), tuple()}.
 activate_organizations_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ActivateOrganizationsAccess">>, Input, Options).
@@ -2500,8 +2738,7 @@ activate_organizations_access(Client, Input, Options)
 -spec activate_type(map(), activate_type_input()) ->
     {ok, activate_type_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()} |
-    {error, type_not_found_exception(), tuple()}.
+    {error, activate_type_errors(), tuple()}.
 activate_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     activate_type(Client, Input, []).
@@ -2509,8 +2746,7 @@ activate_type(Client, Input)
 -spec activate_type(map(), activate_type_input(), proplists:proplist()) ->
     {ok, activate_type_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()} |
-    {error, type_not_found_exception(), tuple()}.
+    {error, activate_type_errors(), tuple()}.
 activate_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ActivateType">>, Input, Options).
@@ -2526,8 +2762,7 @@ activate_type(Client, Input, Options)
 -spec batch_describe_type_configurations(map(), batch_describe_type_configurations_input()) ->
     {ok, batch_describe_type_configurations_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()} |
-    {error, type_configuration_not_found_exception(), tuple()}.
+    {error, batch_describe_type_configurations_errors(), tuple()}.
 batch_describe_type_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_describe_type_configurations(Client, Input, []).
@@ -2535,8 +2770,7 @@ batch_describe_type_configurations(Client, Input)
 -spec batch_describe_type_configurations(map(), batch_describe_type_configurations_input(), proplists:proplist()) ->
     {ok, batch_describe_type_configurations_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()} |
-    {error, type_configuration_not_found_exception(), tuple()}.
+    {error, batch_describe_type_configurations_errors(), tuple()}.
 batch_describe_type_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDescribeTypeConfigurations">>, Input, Options).
@@ -2550,7 +2784,7 @@ batch_describe_type_configurations(Client, Input, Options)
 -spec cancel_update_stack(map(), cancel_update_stack_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, token_already_exists_exception(), tuple()}.
+    {error, cancel_update_stack_errors(), tuple()}.
 cancel_update_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_update_stack(Client, Input, []).
@@ -2558,7 +2792,7 @@ cancel_update_stack(Client, Input)
 -spec cancel_update_stack(map(), cancel_update_stack_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, token_already_exists_exception(), tuple()}.
+    {error, cancel_update_stack_errors(), tuple()}.
 cancel_update_stack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelUpdateStack">>, Input, Options).
@@ -2586,7 +2820,7 @@ cancel_update_stack(Client, Input, Options)
 -spec continue_update_rollback(map(), continue_update_rollback_input()) ->
     {ok, continue_update_rollback_output(), tuple()} |
     {error, any()} |
-    {error, token_already_exists_exception(), tuple()}.
+    {error, continue_update_rollback_errors(), tuple()}.
 continue_update_rollback(Client, Input)
   when is_map(Client), is_map(Input) ->
     continue_update_rollback(Client, Input, []).
@@ -2594,7 +2828,7 @@ continue_update_rollback(Client, Input)
 -spec continue_update_rollback(map(), continue_update_rollback_input(), proplists:proplist()) ->
     {ok, continue_update_rollback_output(), tuple()} |
     {error, any()} |
-    {error, token_already_exists_exception(), tuple()}.
+    {error, continue_update_rollback_errors(), tuple()}.
 continue_update_rollback(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ContinueUpdateRollback">>, Input, Options).
@@ -2635,9 +2869,7 @@ continue_update_rollback(Client, Input, Options)
 -spec create_change_set(map(), create_change_set_input()) ->
     {ok, create_change_set_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, insufficient_capabilities_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_change_set_errors(), tuple()}.
 create_change_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_change_set(Client, Input, []).
@@ -2645,9 +2877,7 @@ create_change_set(Client, Input)
 -spec create_change_set(map(), create_change_set_input(), proplists:proplist()) ->
     {ok, create_change_set_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, insufficient_capabilities_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_change_set_errors(), tuple()}.
 create_change_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateChangeSet">>, Input, Options).
@@ -2661,9 +2891,7 @@ create_change_set(Client, Input, Options)
 -spec create_generated_template(map(), create_generated_template_input()) ->
     {ok, create_generated_template_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, concurrent_resources_limit_exceeded_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_generated_template_errors(), tuple()}.
 create_generated_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_generated_template(Client, Input, []).
@@ -2671,9 +2899,7 @@ create_generated_template(Client, Input)
 -spec create_generated_template(map(), create_generated_template_input(), proplists:proplist()) ->
     {ok, create_generated_template_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, concurrent_resources_limit_exceeded_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_generated_template_errors(), tuple()}.
 create_generated_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGeneratedTemplate">>, Input, Options).
@@ -2686,10 +2912,7 @@ create_generated_template(Client, Input, Options)
 -spec create_stack(map(), create_stack_input()) ->
     {ok, create_stack_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, insufficient_capabilities_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, token_already_exists_exception(), tuple()}.
+    {error, create_stack_errors(), tuple()}.
 create_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_stack(Client, Input, []).
@@ -2697,10 +2920,7 @@ create_stack(Client, Input)
 -spec create_stack(map(), create_stack_input(), proplists:proplist()) ->
     {ok, create_stack_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, insufficient_capabilities_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, token_already_exists_exception(), tuple()}.
+    {error, create_stack_errors(), tuple()}.
 create_stack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStack">>, Input, Options).
@@ -2717,12 +2937,7 @@ create_stack(Client, Input, Options)
 -spec create_stack_instances(map(), create_stack_instances_input()) ->
     {ok, create_stack_instances_output(), tuple()} |
     {error, any()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, operation_id_already_exists_exception(), tuple()} |
-    {error, operation_in_progress_exception(), tuple()} |
-    {error, stack_set_not_found_exception(), tuple()} |
-    {error, stale_request_exception(), tuple()}.
+    {error, create_stack_instances_errors(), tuple()}.
 create_stack_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_stack_instances(Client, Input, []).
@@ -2730,12 +2945,7 @@ create_stack_instances(Client, Input)
 -spec create_stack_instances(map(), create_stack_instances_input(), proplists:proplist()) ->
     {ok, create_stack_instances_output(), tuple()} |
     {error, any()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, operation_id_already_exists_exception(), tuple()} |
-    {error, operation_in_progress_exception(), tuple()} |
-    {error, stack_set_not_found_exception(), tuple()} |
-    {error, stale_request_exception(), tuple()}.
+    {error, create_stack_instances_errors(), tuple()}.
 create_stack_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStackInstances">>, Input, Options).
@@ -2744,9 +2954,7 @@ create_stack_instances(Client, Input, Options)
 -spec create_stack_set(map(), create_stack_set_input()) ->
     {ok, create_stack_set_output(), tuple()} |
     {error, any()} |
-    {error, created_but_modified_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, name_already_exists_exception(), tuple()}.
+    {error, create_stack_set_errors(), tuple()}.
 create_stack_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_stack_set(Client, Input, []).
@@ -2754,9 +2962,7 @@ create_stack_set(Client, Input)
 -spec create_stack_set(map(), create_stack_set_input(), proplists:proplist()) ->
     {ok, create_stack_set_output(), tuple()} |
     {error, any()} |
-    {error, created_but_modified_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, name_already_exists_exception(), tuple()}.
+    {error, create_stack_set_errors(), tuple()}.
 create_stack_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStackSet">>, Input, Options).
@@ -2769,8 +2975,7 @@ create_stack_set(Client, Input, Options)
 -spec deactivate_organizations_access(map(), deactivate_organizations_access_input()) ->
     {ok, deactivate_organizations_access_output(), tuple()} |
     {error, any()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, operation_not_found_exception(), tuple()}.
+    {error, deactivate_organizations_access_errors(), tuple()}.
 deactivate_organizations_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     deactivate_organizations_access(Client, Input, []).
@@ -2778,8 +2983,7 @@ deactivate_organizations_access(Client, Input)
 -spec deactivate_organizations_access(map(), deactivate_organizations_access_input(), proplists:proplist()) ->
     {ok, deactivate_organizations_access_output(), tuple()} |
     {error, any()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, operation_not_found_exception(), tuple()}.
+    {error, deactivate_organizations_access_errors(), tuple()}.
 deactivate_organizations_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeactivateOrganizationsAccess">>, Input, Options).
@@ -2796,8 +3000,7 @@ deactivate_organizations_access(Client, Input, Options)
 -spec deactivate_type(map(), deactivate_type_input()) ->
     {ok, deactivate_type_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()} |
-    {error, type_not_found_exception(), tuple()}.
+    {error, deactivate_type_errors(), tuple()}.
 deactivate_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     deactivate_type(Client, Input, []).
@@ -2805,8 +3008,7 @@ deactivate_type(Client, Input)
 -spec deactivate_type(map(), deactivate_type_input(), proplists:proplist()) ->
     {ok, deactivate_type_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()} |
-    {error, type_not_found_exception(), tuple()}.
+    {error, deactivate_type_errors(), tuple()}.
 deactivate_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeactivateType">>, Input, Options).
@@ -2827,7 +3029,7 @@ deactivate_type(Client, Input, Options)
 -spec delete_change_set(map(), delete_change_set_input()) ->
     {ok, delete_change_set_output(), tuple()} |
     {error, any()} |
-    {error, invalid_change_set_status_exception(), tuple()}.
+    {error, delete_change_set_errors(), tuple()}.
 delete_change_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_change_set(Client, Input, []).
@@ -2835,7 +3037,7 @@ delete_change_set(Client, Input)
 -spec delete_change_set(map(), delete_change_set_input(), proplists:proplist()) ->
     {ok, delete_change_set_output(), tuple()} |
     {error, any()} |
-    {error, invalid_change_set_status_exception(), tuple()}.
+    {error, delete_change_set_errors(), tuple()}.
 delete_change_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteChangeSet">>, Input, Options).
@@ -2844,8 +3046,7 @@ delete_change_set(Client, Input, Options)
 -spec delete_generated_template(map(), delete_generated_template_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_resources_limit_exceeded_exception(), tuple()} |
-    {error, generated_template_not_found_exception(), tuple()}.
+    {error, delete_generated_template_errors(), tuple()}.
 delete_generated_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_generated_template(Client, Input, []).
@@ -2853,8 +3054,7 @@ delete_generated_template(Client, Input)
 -spec delete_generated_template(map(), delete_generated_template_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_resources_limit_exceeded_exception(), tuple()} |
-    {error, generated_template_not_found_exception(), tuple()}.
+    {error, delete_generated_template_errors(), tuple()}.
 delete_generated_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGeneratedTemplate">>, Input, Options).
@@ -2868,7 +3068,7 @@ delete_generated_template(Client, Input, Options)
 -spec delete_stack(map(), delete_stack_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, token_already_exists_exception(), tuple()}.
+    {error, delete_stack_errors(), tuple()}.
 delete_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_stack(Client, Input, []).
@@ -2876,7 +3076,7 @@ delete_stack(Client, Input)
 -spec delete_stack(map(), delete_stack_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, token_already_exists_exception(), tuple()}.
+    {error, delete_stack_errors(), tuple()}.
 delete_stack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteStack">>, Input, Options).
@@ -2886,11 +3086,7 @@ delete_stack(Client, Input, Options)
 -spec delete_stack_instances(map(), delete_stack_instances_input()) ->
     {ok, delete_stack_instances_output(), tuple()} |
     {error, any()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, operation_id_already_exists_exception(), tuple()} |
-    {error, operation_in_progress_exception(), tuple()} |
-    {error, stack_set_not_found_exception(), tuple()} |
-    {error, stale_request_exception(), tuple()}.
+    {error, delete_stack_instances_errors(), tuple()}.
 delete_stack_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_stack_instances(Client, Input, []).
@@ -2898,11 +3094,7 @@ delete_stack_instances(Client, Input)
 -spec delete_stack_instances(map(), delete_stack_instances_input(), proplists:proplist()) ->
     {ok, delete_stack_instances_output(), tuple()} |
     {error, any()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, operation_id_already_exists_exception(), tuple()} |
-    {error, operation_in_progress_exception(), tuple()} |
-    {error, stack_set_not_found_exception(), tuple()} |
-    {error, stale_request_exception(), tuple()}.
+    {error, delete_stack_instances_errors(), tuple()}.
 delete_stack_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteStackInstances">>, Input, Options).
@@ -2915,8 +3107,7 @@ delete_stack_instances(Client, Input, Options)
 -spec delete_stack_set(map(), delete_stack_set_input()) ->
     {ok, delete_stack_set_output(), tuple()} |
     {error, any()} |
-    {error, operation_in_progress_exception(), tuple()} |
-    {error, stack_set_not_empty_exception(), tuple()}.
+    {error, delete_stack_set_errors(), tuple()}.
 delete_stack_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_stack_set(Client, Input, []).
@@ -2924,8 +3115,7 @@ delete_stack_set(Client, Input)
 -spec delete_stack_set(map(), delete_stack_set_input(), proplists:proplist()) ->
     {ok, delete_stack_set_output(), tuple()} |
     {error, any()} |
-    {error, operation_in_progress_exception(), tuple()} |
-    {error, stack_set_not_empty_exception(), tuple()}.
+    {error, delete_stack_set_errors(), tuple()}.
 delete_stack_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteStackSet">>, Input, Options).
@@ -2956,8 +3146,7 @@ delete_stack_set(Client, Input, Options)
 -spec deregister_type(map(), deregister_type_input()) ->
     {ok, deregister_type_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()} |
-    {error, type_not_found_exception(), tuple()}.
+    {error, deregister_type_errors(), tuple()}.
 deregister_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_type(Client, Input, []).
@@ -2965,8 +3154,7 @@ deregister_type(Client, Input)
 -spec deregister_type(map(), deregister_type_input(), proplists:proplist()) ->
     {ok, deregister_type_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()} |
-    {error, type_not_found_exception(), tuple()}.
+    {error, deregister_type_errors(), tuple()}.
 deregister_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterType">>, Input, Options).
@@ -3002,7 +3190,7 @@ describe_account_limits(Client, Input, Options)
 -spec describe_change_set(map(), describe_change_set_input()) ->
     {ok, describe_change_set_output(), tuple()} |
     {error, any()} |
-    {error, change_set_not_found_exception(), tuple()}.
+    {error, describe_change_set_errors(), tuple()}.
 describe_change_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_change_set(Client, Input, []).
@@ -3010,7 +3198,7 @@ describe_change_set(Client, Input)
 -spec describe_change_set(map(), describe_change_set_input(), proplists:proplist()) ->
     {ok, describe_change_set_output(), tuple()} |
     {error, any()} |
-    {error, change_set_not_found_exception(), tuple()}.
+    {error, describe_change_set_errors(), tuple()}.
 describe_change_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeChangeSet">>, Input, Options).
@@ -3021,7 +3209,7 @@ describe_change_set(Client, Input, Options)
 -spec describe_change_set_hooks(map(), describe_change_set_hooks_input()) ->
     {ok, describe_change_set_hooks_output(), tuple()} |
     {error, any()} |
-    {error, change_set_not_found_exception(), tuple()}.
+    {error, describe_change_set_hooks_errors(), tuple()}.
 describe_change_set_hooks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_change_set_hooks(Client, Input, []).
@@ -3029,7 +3217,7 @@ describe_change_set_hooks(Client, Input)
 -spec describe_change_set_hooks(map(), describe_change_set_hooks_input(), proplists:proplist()) ->
     {ok, describe_change_set_hooks_output(), tuple()} |
     {error, any()} |
-    {error, change_set_not_found_exception(), tuple()}.
+    {error, describe_change_set_hooks_errors(), tuple()}.
 describe_change_set_hooks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeChangeSetHooks">>, Input, Options).
@@ -3044,7 +3232,7 @@ describe_change_set_hooks(Client, Input, Options)
 -spec describe_generated_template(map(), describe_generated_template_input()) ->
     {ok, describe_generated_template_output(), tuple()} |
     {error, any()} |
-    {error, generated_template_not_found_exception(), tuple()}.
+    {error, describe_generated_template_errors(), tuple()}.
 describe_generated_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_generated_template(Client, Input, []).
@@ -3052,7 +3240,7 @@ describe_generated_template(Client, Input)
 -spec describe_generated_template(map(), describe_generated_template_input(), proplists:proplist()) ->
     {ok, describe_generated_template_output(), tuple()} |
     {error, any()} |
-    {error, generated_template_not_found_exception(), tuple()}.
+    {error, describe_generated_template_errors(), tuple()}.
 describe_generated_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGeneratedTemplate">>, Input, Options).
@@ -3068,8 +3256,7 @@ describe_generated_template(Client, Input, Options)
 -spec describe_organizations_access(map(), describe_organizations_access_input()) ->
     {ok, describe_organizations_access_output(), tuple()} |
     {error, any()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, operation_not_found_exception(), tuple()}.
+    {error, describe_organizations_access_errors(), tuple()}.
 describe_organizations_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_organizations_access(Client, Input, []).
@@ -3077,8 +3264,7 @@ describe_organizations_access(Client, Input)
 -spec describe_organizations_access(map(), describe_organizations_access_input(), proplists:proplist()) ->
     {ok, describe_organizations_access_output(), tuple()} |
     {error, any()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, operation_not_found_exception(), tuple()}.
+    {error, describe_organizations_access_errors(), tuple()}.
 describe_organizations_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeOrganizationsAccess">>, Input, Options).
@@ -3104,7 +3290,7 @@ describe_organizations_access(Client, Input, Options)
 -spec describe_publisher(map(), describe_publisher_input()) ->
     {ok, describe_publisher_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()}.
+    {error, describe_publisher_errors(), tuple()}.
 describe_publisher(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_publisher(Client, Input, []).
@@ -3112,7 +3298,7 @@ describe_publisher(Client, Input)
 -spec describe_publisher(map(), describe_publisher_input(), proplists:proplist()) ->
     {ok, describe_publisher_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()}.
+    {error, describe_publisher_errors(), tuple()}.
 describe_publisher(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePublisher">>, Input, Options).
@@ -3121,7 +3307,7 @@ describe_publisher(Client, Input, Options)
 -spec describe_resource_scan(map(), describe_resource_scan_input()) ->
     {ok, describe_resource_scan_output(), tuple()} |
     {error, any()} |
-    {error, resource_scan_not_found_exception(), tuple()}.
+    {error, describe_resource_scan_errors(), tuple()}.
 describe_resource_scan(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_resource_scan(Client, Input, []).
@@ -3129,7 +3315,7 @@ describe_resource_scan(Client, Input)
 -spec describe_resource_scan(map(), describe_resource_scan_input(), proplists:proplist()) ->
     {ok, describe_resource_scan_output(), tuple()} |
     {error, any()} |
-    {error, resource_scan_not_found_exception(), tuple()}.
+    {error, describe_resource_scan_errors(), tuple()}.
 describe_resource_scan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeResourceScan">>, Input, Options).
@@ -3202,8 +3388,7 @@ describe_stack_events(Client, Input, Options)
 -spec describe_stack_instance(map(), describe_stack_instance_input()) ->
     {ok, describe_stack_instance_output(), tuple()} |
     {error, any()} |
-    {error, stack_instance_not_found_exception(), tuple()} |
-    {error, stack_set_not_found_exception(), tuple()}.
+    {error, describe_stack_instance_errors(), tuple()}.
 describe_stack_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stack_instance(Client, Input, []).
@@ -3211,8 +3396,7 @@ describe_stack_instance(Client, Input)
 -spec describe_stack_instance(map(), describe_stack_instance_input(), proplists:proplist()) ->
     {ok, describe_stack_instance_output(), tuple()} |
     {error, any()} |
-    {error, stack_instance_not_found_exception(), tuple()} |
-    {error, stack_set_not_found_exception(), tuple()}.
+    {error, describe_stack_instance_errors(), tuple()}.
 describe_stack_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStackInstance">>, Input, Options).
@@ -3316,7 +3500,7 @@ describe_stack_resources(Client, Input, Options)
 -spec describe_stack_set(map(), describe_stack_set_input()) ->
     {ok, describe_stack_set_output(), tuple()} |
     {error, any()} |
-    {error, stack_set_not_found_exception(), tuple()}.
+    {error, describe_stack_set_errors(), tuple()}.
 describe_stack_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stack_set(Client, Input, []).
@@ -3324,7 +3508,7 @@ describe_stack_set(Client, Input)
 -spec describe_stack_set(map(), describe_stack_set_input(), proplists:proplist()) ->
     {ok, describe_stack_set_output(), tuple()} |
     {error, any()} |
-    {error, stack_set_not_found_exception(), tuple()}.
+    {error, describe_stack_set_errors(), tuple()}.
 describe_stack_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStackSet">>, Input, Options).
@@ -3333,8 +3517,7 @@ describe_stack_set(Client, Input, Options)
 -spec describe_stack_set_operation(map(), describe_stack_set_operation_input()) ->
     {ok, describe_stack_set_operation_output(), tuple()} |
     {error, any()} |
-    {error, operation_not_found_exception(), tuple()} |
-    {error, stack_set_not_found_exception(), tuple()}.
+    {error, describe_stack_set_operation_errors(), tuple()}.
 describe_stack_set_operation(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stack_set_operation(Client, Input, []).
@@ -3342,8 +3525,7 @@ describe_stack_set_operation(Client, Input)
 -spec describe_stack_set_operation(map(), describe_stack_set_operation_input(), proplists:proplist()) ->
     {ok, describe_stack_set_operation_output(), tuple()} |
     {error, any()} |
-    {error, operation_not_found_exception(), tuple()} |
-    {error, stack_set_not_found_exception(), tuple()}.
+    {error, describe_stack_set_operation_errors(), tuple()}.
 describe_stack_set_operation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStackSetOperation">>, Input, Options).
@@ -3377,8 +3559,7 @@ describe_stacks(Client, Input, Options)
 -spec describe_type(map(), describe_type_input()) ->
     {ok, describe_type_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()} |
-    {error, type_not_found_exception(), tuple()}.
+    {error, describe_type_errors(), tuple()}.
 describe_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_type(Client, Input, []).
@@ -3386,8 +3567,7 @@ describe_type(Client, Input)
 -spec describe_type(map(), describe_type_input(), proplists:proplist()) ->
     {ok, describe_type_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()} |
-    {error, type_not_found_exception(), tuple()}.
+    {error, describe_type_errors(), tuple()}.
 describe_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeType">>, Input, Options).
@@ -3406,7 +3586,7 @@ describe_type(Client, Input, Options)
 -spec describe_type_registration(map(), describe_type_registration_input()) ->
     {ok, describe_type_registration_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()}.
+    {error, describe_type_registration_errors(), tuple()}.
 describe_type_registration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_type_registration(Client, Input, []).
@@ -3414,7 +3594,7 @@ describe_type_registration(Client, Input)
 -spec describe_type_registration(map(), describe_type_registration_input(), proplists:proplist()) ->
     {ok, describe_type_registration_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()}.
+    {error, describe_type_registration_errors(), tuple()}.
 describe_type_registration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTypeRegistration">>, Input, Options).
@@ -3556,9 +3736,7 @@ detect_stack_resource_drift(Client, Input, Options)
 -spec detect_stack_set_drift(map(), detect_stack_set_drift_input()) ->
     {ok, detect_stack_set_drift_output(), tuple()} |
     {error, any()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, operation_in_progress_exception(), tuple()} |
-    {error, stack_set_not_found_exception(), tuple()}.
+    {error, detect_stack_set_drift_errors(), tuple()}.
 detect_stack_set_drift(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_stack_set_drift(Client, Input, []).
@@ -3566,9 +3744,7 @@ detect_stack_set_drift(Client, Input)
 -spec detect_stack_set_drift(map(), detect_stack_set_drift_input(), proplists:proplist()) ->
     {ok, detect_stack_set_drift_output(), tuple()} |
     {error, any()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, operation_in_progress_exception(), tuple()} |
-    {error, stack_set_not_found_exception(), tuple()}.
+    {error, detect_stack_set_drift_errors(), tuple()}.
 detect_stack_set_drift(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetectStackSetDrift">>, Input, Options).
@@ -3614,10 +3790,7 @@ estimate_template_cost(Client, Input, Options)
 -spec execute_change_set(map(), execute_change_set_input()) ->
     {ok, execute_change_set_output(), tuple()} |
     {error, any()} |
-    {error, change_set_not_found_exception(), tuple()} |
-    {error, insufficient_capabilities_exception(), tuple()} |
-    {error, invalid_change_set_status_exception(), tuple()} |
-    {error, token_already_exists_exception(), tuple()}.
+    {error, execute_change_set_errors(), tuple()}.
 execute_change_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_change_set(Client, Input, []).
@@ -3625,10 +3798,7 @@ execute_change_set(Client, Input)
 -spec execute_change_set(map(), execute_change_set_input(), proplists:proplist()) ->
     {ok, execute_change_set_output(), tuple()} |
     {error, any()} |
-    {error, change_set_not_found_exception(), tuple()} |
-    {error, insufficient_capabilities_exception(), tuple()} |
-    {error, invalid_change_set_status_exception(), tuple()} |
-    {error, token_already_exists_exception(), tuple()}.
+    {error, execute_change_set_errors(), tuple()}.
 execute_change_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExecuteChangeSet">>, Input, Options).
@@ -3643,7 +3813,7 @@ execute_change_set(Client, Input, Options)
 -spec get_generated_template(map(), get_generated_template_input()) ->
     {ok, get_generated_template_output(), tuple()} |
     {error, any()} |
-    {error, generated_template_not_found_exception(), tuple()}.
+    {error, get_generated_template_errors(), tuple()}.
 get_generated_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_generated_template(Client, Input, []).
@@ -3651,7 +3821,7 @@ get_generated_template(Client, Input)
 -spec get_generated_template(map(), get_generated_template_input(), proplists:proplist()) ->
     {ok, get_generated_template_output(), tuple()} |
     {error, any()} |
-    {error, generated_template_not_found_exception(), tuple()}.
+    {error, get_generated_template_errors(), tuple()}.
 get_generated_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetGeneratedTemplate">>, Input, Options).
@@ -3686,7 +3856,7 @@ get_stack_policy(Client, Input, Options)
 -spec get_template(map(), get_template_input()) ->
     {ok, get_template_output(), tuple()} |
     {error, any()} |
-    {error, change_set_not_found_exception(), tuple()}.
+    {error, get_template_errors(), tuple()}.
 get_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_template(Client, Input, []).
@@ -3694,7 +3864,7 @@ get_template(Client, Input)
 -spec get_template(map(), get_template_input(), proplists:proplist()) ->
     {ok, get_template_output(), tuple()} |
     {error, any()} |
-    {error, change_set_not_found_exception(), tuple()}.
+    {error, get_template_errors(), tuple()}.
 get_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTemplate">>, Input, Options).
@@ -3717,7 +3887,7 @@ get_template(Client, Input, Options)
 -spec get_template_summary(map(), get_template_summary_input()) ->
     {ok, get_template_summary_output(), tuple()} |
     {error, any()} |
-    {error, stack_set_not_found_exception(), tuple()}.
+    {error, get_template_summary_errors(), tuple()}.
 get_template_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_template_summary(Client, Input, []).
@@ -3725,7 +3895,7 @@ get_template_summary(Client, Input)
 -spec get_template_summary(map(), get_template_summary_input(), proplists:proplist()) ->
     {ok, get_template_summary_output(), tuple()} |
     {error, any()} |
-    {error, stack_set_not_found_exception(), tuple()}.
+    {error, get_template_summary_errors(), tuple()}.
 get_template_summary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTemplateSummary">>, Input, Options).
@@ -3739,13 +3909,7 @@ get_template_summary(Client, Input, Options)
 -spec import_stacks_to_stack_set(map(), import_stacks_to_stack_set_input()) ->
     {ok, import_stacks_to_stack_set_output(), tuple()} |
     {error, any()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, operation_id_already_exists_exception(), tuple()} |
-    {error, operation_in_progress_exception(), tuple()} |
-    {error, stack_not_found_exception(), tuple()} |
-    {error, stack_set_not_found_exception(), tuple()} |
-    {error, stale_request_exception(), tuple()}.
+    {error, import_stacks_to_stack_set_errors(), tuple()}.
 import_stacks_to_stack_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_stacks_to_stack_set(Client, Input, []).
@@ -3753,13 +3917,7 @@ import_stacks_to_stack_set(Client, Input)
 -spec import_stacks_to_stack_set(map(), import_stacks_to_stack_set_input(), proplists:proplist()) ->
     {ok, import_stacks_to_stack_set_output(), tuple()} |
     {error, any()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, operation_id_already_exists_exception(), tuple()} |
-    {error, operation_in_progress_exception(), tuple()} |
-    {error, stack_not_found_exception(), tuple()} |
-    {error, stack_set_not_found_exception(), tuple()} |
-    {error, stale_request_exception(), tuple()}.
+    {error, import_stacks_to_stack_set_errors(), tuple()}.
 import_stacks_to_stack_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportStacksToStackSet">>, Input, Options).
@@ -3856,8 +4014,7 @@ list_imports(Client, Input, Options)
 -spec list_resource_scan_related_resources(map(), list_resource_scan_related_resources_input()) ->
     {ok, list_resource_scan_related_resources_output(), tuple()} |
     {error, any()} |
-    {error, resource_scan_in_progress_exception(), tuple()} |
-    {error, resource_scan_not_found_exception(), tuple()}.
+    {error, list_resource_scan_related_resources_errors(), tuple()}.
 list_resource_scan_related_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_scan_related_resources(Client, Input, []).
@@ -3865,8 +4022,7 @@ list_resource_scan_related_resources(Client, Input)
 -spec list_resource_scan_related_resources(map(), list_resource_scan_related_resources_input(), proplists:proplist()) ->
     {ok, list_resource_scan_related_resources_output(), tuple()} |
     {error, any()} |
-    {error, resource_scan_in_progress_exception(), tuple()} |
-    {error, resource_scan_not_found_exception(), tuple()}.
+    {error, list_resource_scan_related_resources_errors(), tuple()}.
 list_resource_scan_related_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResourceScanRelatedResources">>, Input, Options).
@@ -3880,8 +4036,7 @@ list_resource_scan_related_resources(Client, Input, Options)
 -spec list_resource_scan_resources(map(), list_resource_scan_resources_input()) ->
     {ok, list_resource_scan_resources_output(), tuple()} |
     {error, any()} |
-    {error, resource_scan_in_progress_exception(), tuple()} |
-    {error, resource_scan_not_found_exception(), tuple()}.
+    {error, list_resource_scan_resources_errors(), tuple()}.
 list_resource_scan_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_scan_resources(Client, Input, []).
@@ -3889,8 +4044,7 @@ list_resource_scan_resources(Client, Input)
 -spec list_resource_scan_resources(map(), list_resource_scan_resources_input(), proplists:proplist()) ->
     {ok, list_resource_scan_resources_output(), tuple()} |
     {error, any()} |
-    {error, resource_scan_in_progress_exception(), tuple()} |
-    {error, resource_scan_not_found_exception(), tuple()}.
+    {error, list_resource_scan_resources_errors(), tuple()}.
 list_resource_scan_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResourceScanResources">>, Input, Options).
@@ -3921,9 +4075,7 @@ list_resource_scans(Client, Input, Options)
 -spec list_stack_instance_resource_drifts(map(), list_stack_instance_resource_drifts_input()) ->
     {ok, list_stack_instance_resource_drifts_output(), tuple()} |
     {error, any()} |
-    {error, operation_not_found_exception(), tuple()} |
-    {error, stack_instance_not_found_exception(), tuple()} |
-    {error, stack_set_not_found_exception(), tuple()}.
+    {error, list_stack_instance_resource_drifts_errors(), tuple()}.
 list_stack_instance_resource_drifts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_stack_instance_resource_drifts(Client, Input, []).
@@ -3931,9 +4083,7 @@ list_stack_instance_resource_drifts(Client, Input)
 -spec list_stack_instance_resource_drifts(map(), list_stack_instance_resource_drifts_input(), proplists:proplist()) ->
     {ok, list_stack_instance_resource_drifts_output(), tuple()} |
     {error, any()} |
-    {error, operation_not_found_exception(), tuple()} |
-    {error, stack_instance_not_found_exception(), tuple()} |
-    {error, stack_set_not_found_exception(), tuple()}.
+    {error, list_stack_instance_resource_drifts_errors(), tuple()}.
 list_stack_instance_resource_drifts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStackInstanceResourceDrifts">>, Input, Options).
@@ -3948,7 +4098,7 @@ list_stack_instance_resource_drifts(Client, Input, Options)
 -spec list_stack_instances(map(), list_stack_instances_input()) ->
     {ok, list_stack_instances_output(), tuple()} |
     {error, any()} |
-    {error, stack_set_not_found_exception(), tuple()}.
+    {error, list_stack_instances_errors(), tuple()}.
 list_stack_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_stack_instances(Client, Input, []).
@@ -3956,7 +4106,7 @@ list_stack_instances(Client, Input)
 -spec list_stack_instances(map(), list_stack_instances_input(), proplists:proplist()) ->
     {ok, list_stack_instances_output(), tuple()} |
     {error, any()} |
-    {error, stack_set_not_found_exception(), tuple()}.
+    {error, list_stack_instances_errors(), tuple()}.
 list_stack_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStackInstances">>, Input, Options).
@@ -3985,8 +4135,7 @@ list_stack_resources(Client, Input, Options)
 -spec list_stack_set_operation_results(map(), list_stack_set_operation_results_input()) ->
     {ok, list_stack_set_operation_results_output(), tuple()} |
     {error, any()} |
-    {error, operation_not_found_exception(), tuple()} |
-    {error, stack_set_not_found_exception(), tuple()}.
+    {error, list_stack_set_operation_results_errors(), tuple()}.
 list_stack_set_operation_results(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_stack_set_operation_results(Client, Input, []).
@@ -3994,8 +4143,7 @@ list_stack_set_operation_results(Client, Input)
 -spec list_stack_set_operation_results(map(), list_stack_set_operation_results_input(), proplists:proplist()) ->
     {ok, list_stack_set_operation_results_output(), tuple()} |
     {error, any()} |
-    {error, operation_not_found_exception(), tuple()} |
-    {error, stack_set_not_found_exception(), tuple()}.
+    {error, list_stack_set_operation_results_errors(), tuple()}.
 list_stack_set_operation_results(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStackSetOperationResults">>, Input, Options).
@@ -4005,7 +4153,7 @@ list_stack_set_operation_results(Client, Input, Options)
 -spec list_stack_set_operations(map(), list_stack_set_operations_input()) ->
     {ok, list_stack_set_operations_output(), tuple()} |
     {error, any()} |
-    {error, stack_set_not_found_exception(), tuple()}.
+    {error, list_stack_set_operations_errors(), tuple()}.
 list_stack_set_operations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_stack_set_operations(Client, Input, []).
@@ -4013,7 +4161,7 @@ list_stack_set_operations(Client, Input)
 -spec list_stack_set_operations(map(), list_stack_set_operations_input(), proplists:proplist()) ->
     {ok, list_stack_set_operations_output(), tuple()} |
     {error, any()} |
-    {error, stack_set_not_found_exception(), tuple()}.
+    {error, list_stack_set_operations_errors(), tuple()}.
 list_stack_set_operations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStackSetOperations">>, Input, Options).
@@ -4078,7 +4226,7 @@ list_stacks(Client, Input, Options)
 -spec list_type_registrations(map(), list_type_registrations_input()) ->
     {ok, list_type_registrations_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()}.
+    {error, list_type_registrations_errors(), tuple()}.
 list_type_registrations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_type_registrations(Client, Input, []).
@@ -4086,7 +4234,7 @@ list_type_registrations(Client, Input)
 -spec list_type_registrations(map(), list_type_registrations_input(), proplists:proplist()) ->
     {ok, list_type_registrations_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()}.
+    {error, list_type_registrations_errors(), tuple()}.
 list_type_registrations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTypeRegistrations">>, Input, Options).
@@ -4095,7 +4243,7 @@ list_type_registrations(Client, Input, Options)
 -spec list_type_versions(map(), list_type_versions_input()) ->
     {ok, list_type_versions_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()}.
+    {error, list_type_versions_errors(), tuple()}.
 list_type_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_type_versions(Client, Input, []).
@@ -4103,7 +4251,7 @@ list_type_versions(Client, Input)
 -spec list_type_versions(map(), list_type_versions_input(), proplists:proplist()) ->
     {ok, list_type_versions_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()}.
+    {error, list_type_versions_errors(), tuple()}.
 list_type_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTypeVersions">>, Input, Options).
@@ -4113,7 +4261,7 @@ list_type_versions(Client, Input, Options)
 -spec list_types(map(), list_types_input()) ->
     {ok, list_types_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()}.
+    {error, list_types_errors(), tuple()}.
 list_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_types(Client, Input, []).
@@ -4121,7 +4269,7 @@ list_types(Client, Input)
 -spec list_types(map(), list_types_input(), proplists:proplist()) ->
     {ok, list_types_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()}.
+    {error, list_types_errors(), tuple()}.
 list_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTypes">>, Input, Options).
@@ -4145,8 +4293,7 @@ list_types(Client, Input, Options)
 -spec publish_type(map(), publish_type_input()) ->
     {ok, publish_type_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()} |
-    {error, type_not_found_exception(), tuple()}.
+    {error, publish_type_errors(), tuple()}.
 publish_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     publish_type(Client, Input, []).
@@ -4154,8 +4301,7 @@ publish_type(Client, Input)
 -spec publish_type(map(), publish_type_input(), proplists:proplist()) ->
     {ok, publish_type_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()} |
-    {error, type_not_found_exception(), tuple()}.
+    {error, publish_type_errors(), tuple()}.
 publish_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PublishType">>, Input, Options).
@@ -4169,8 +4315,7 @@ publish_type(Client, Input, Options)
 -spec record_handler_progress(map(), record_handler_progress_input()) ->
     {ok, record_handler_progress_output(), tuple()} |
     {error, any()} |
-    {error, invalid_state_transition_exception(), tuple()} |
-    {error, operation_status_check_failed_exception(), tuple()}.
+    {error, record_handler_progress_errors(), tuple()}.
 record_handler_progress(Client, Input)
   when is_map(Client), is_map(Input) ->
     record_handler_progress(Client, Input, []).
@@ -4178,8 +4323,7 @@ record_handler_progress(Client, Input)
 -spec record_handler_progress(map(), record_handler_progress_input(), proplists:proplist()) ->
     {ok, record_handler_progress_output(), tuple()} |
     {error, any()} |
-    {error, invalid_state_transition_exception(), tuple()} |
-    {error, operation_status_check_failed_exception(), tuple()}.
+    {error, record_handler_progress_errors(), tuple()}.
 record_handler_progress(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RecordHandlerProgress">>, Input, Options).
@@ -4200,7 +4344,7 @@ record_handler_progress(Client, Input, Options)
 -spec register_publisher(map(), register_publisher_input()) ->
     {ok, register_publisher_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()}.
+    {error, register_publisher_errors(), tuple()}.
 register_publisher(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_publisher(Client, Input, []).
@@ -4208,7 +4352,7 @@ register_publisher(Client, Input)
 -spec register_publisher(map(), register_publisher_input(), proplists:proplist()) ->
     {ok, register_publisher_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()}.
+    {error, register_publisher_errors(), tuple()}.
 register_publisher(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterPublisher">>, Input, Options).
@@ -4257,7 +4401,7 @@ register_publisher(Client, Input, Options)
 -spec register_type(map(), register_type_input()) ->
     {ok, register_type_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()}.
+    {error, register_type_errors(), tuple()}.
 register_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_type(Client, Input, []).
@@ -4265,7 +4409,7 @@ register_type(Client, Input)
 -spec register_type(map(), register_type_input(), proplists:proplist()) ->
     {ok, register_type_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()}.
+    {error, register_type_errors(), tuple()}.
 register_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterType">>, Input, Options).
@@ -4298,7 +4442,7 @@ register_type(Client, Input, Options)
 -spec rollback_stack(map(), rollback_stack_input()) ->
     {ok, rollback_stack_output(), tuple()} |
     {error, any()} |
-    {error, token_already_exists_exception(), tuple()}.
+    {error, rollback_stack_errors(), tuple()}.
 rollback_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     rollback_stack(Client, Input, []).
@@ -4306,7 +4450,7 @@ rollback_stack(Client, Input)
 -spec rollback_stack(map(), rollback_stack_input(), proplists:proplist()) ->
     {ok, rollback_stack_output(), tuple()} |
     {error, any()} |
-    {error, token_already_exists_exception(), tuple()}.
+    {error, rollback_stack_errors(), tuple()}.
 rollback_stack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RollbackStack">>, Input, Options).
@@ -4349,8 +4493,7 @@ set_stack_policy(Client, Input, Options)
 -spec set_type_configuration(map(), set_type_configuration_input()) ->
     {ok, set_type_configuration_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()} |
-    {error, type_not_found_exception(), tuple()}.
+    {error, set_type_configuration_errors(), tuple()}.
 set_type_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_type_configuration(Client, Input, []).
@@ -4358,8 +4501,7 @@ set_type_configuration(Client, Input)
 -spec set_type_configuration(map(), set_type_configuration_input(), proplists:proplist()) ->
     {ok, set_type_configuration_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()} |
-    {error, type_not_found_exception(), tuple()}.
+    {error, set_type_configuration_errors(), tuple()}.
 set_type_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetTypeConfiguration">>, Input, Options).
@@ -4371,8 +4513,7 @@ set_type_configuration(Client, Input, Options)
 -spec set_type_default_version(map(), set_type_default_version_input()) ->
     {ok, set_type_default_version_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()} |
-    {error, type_not_found_exception(), tuple()}.
+    {error, set_type_default_version_errors(), tuple()}.
 set_type_default_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_type_default_version(Client, Input, []).
@@ -4380,8 +4521,7 @@ set_type_default_version(Client, Input)
 -spec set_type_default_version(map(), set_type_default_version_input(), proplists:proplist()) ->
     {ok, set_type_default_version_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()} |
-    {error, type_not_found_exception(), tuple()}.
+    {error, set_type_default_version_errors(), tuple()}.
 set_type_default_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetTypeDefaultVersion">>, Input, Options).
@@ -4418,8 +4558,7 @@ signal_resource(Client, Input, Options)
 -spec start_resource_scan(map(), start_resource_scan_input()) ->
     {ok, start_resource_scan_output(), tuple()} |
     {error, any()} |
-    {error, resource_scan_in_progress_exception(), tuple()} |
-    {error, resource_scan_limit_exceeded_exception(), tuple()}.
+    {error, start_resource_scan_errors(), tuple()}.
 start_resource_scan(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_resource_scan(Client, Input, []).
@@ -4427,8 +4566,7 @@ start_resource_scan(Client, Input)
 -spec start_resource_scan(map(), start_resource_scan_input(), proplists:proplist()) ->
     {ok, start_resource_scan_output(), tuple()} |
     {error, any()} |
-    {error, resource_scan_in_progress_exception(), tuple()} |
-    {error, resource_scan_limit_exceeded_exception(), tuple()}.
+    {error, start_resource_scan_errors(), tuple()}.
 start_resource_scan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartResourceScan">>, Input, Options).
@@ -4442,9 +4580,7 @@ start_resource_scan(Client, Input, Options)
 -spec stop_stack_set_operation(map(), stop_stack_set_operation_input()) ->
     {ok, stop_stack_set_operation_output(), tuple()} |
     {error, any()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, operation_not_found_exception(), tuple()} |
-    {error, stack_set_not_found_exception(), tuple()}.
+    {error, stop_stack_set_operation_errors(), tuple()}.
 stop_stack_set_operation(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_stack_set_operation(Client, Input, []).
@@ -4452,9 +4588,7 @@ stop_stack_set_operation(Client, Input)
 -spec stop_stack_set_operation(map(), stop_stack_set_operation_input(), proplists:proplist()) ->
     {ok, stop_stack_set_operation_output(), tuple()} |
     {error, any()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, operation_not_found_exception(), tuple()} |
-    {error, stack_set_not_found_exception(), tuple()}.
+    {error, stop_stack_set_operation_errors(), tuple()}.
 stop_stack_set_operation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopStackSetOperation">>, Input, Options).
@@ -4503,8 +4637,7 @@ stop_stack_set_operation(Client, Input, Options)
 -spec test_type(map(), test_type_input()) ->
     {ok, test_type_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()} |
-    {error, type_not_found_exception(), tuple()}.
+    {error, test_type_errors(), tuple()}.
 test_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_type(Client, Input, []).
@@ -4512,8 +4645,7 @@ test_type(Client, Input)
 -spec test_type(map(), test_type_input(), proplists:proplist()) ->
     {ok, test_type_output(), tuple()} |
     {error, any()} |
-    {error, c_f_n_registry_exception(), tuple()} |
-    {error, type_not_found_exception(), tuple()}.
+    {error, test_type_errors(), tuple()}.
 test_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TestType">>, Input, Options).
@@ -4529,9 +4661,7 @@ test_type(Client, Input, Options)
 -spec update_generated_template(map(), update_generated_template_input()) ->
     {ok, update_generated_template_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, generated_template_not_found_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, update_generated_template_errors(), tuple()}.
 update_generated_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_generated_template(Client, Input, []).
@@ -4539,9 +4669,7 @@ update_generated_template(Client, Input)
 -spec update_generated_template(map(), update_generated_template_input(), proplists:proplist()) ->
     {ok, update_generated_template_output(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, generated_template_not_found_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, update_generated_template_errors(), tuple()}.
 update_generated_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGeneratedTemplate">>, Input, Options).
@@ -4563,8 +4691,7 @@ update_generated_template(Client, Input, Options)
 -spec update_stack(map(), update_stack_input()) ->
     {ok, update_stack_output(), tuple()} |
     {error, any()} |
-    {error, insufficient_capabilities_exception(), tuple()} |
-    {error, token_already_exists_exception(), tuple()}.
+    {error, update_stack_errors(), tuple()}.
 update_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_stack(Client, Input, []).
@@ -4572,8 +4699,7 @@ update_stack(Client, Input)
 -spec update_stack(map(), update_stack_input(), proplists:proplist()) ->
     {ok, update_stack_output(), tuple()} |
     {error, any()} |
-    {error, insufficient_capabilities_exception(), tuple()} |
-    {error, token_already_exists_exception(), tuple()}.
+    {error, update_stack_errors(), tuple()}.
 update_stack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateStack">>, Input, Options).
@@ -4616,12 +4742,7 @@ update_stack(Client, Input, Options)
 -spec update_stack_instances(map(), update_stack_instances_input()) ->
     {ok, update_stack_instances_output(), tuple()} |
     {error, any()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, operation_id_already_exists_exception(), tuple()} |
-    {error, operation_in_progress_exception(), tuple()} |
-    {error, stack_instance_not_found_exception(), tuple()} |
-    {error, stack_set_not_found_exception(), tuple()} |
-    {error, stale_request_exception(), tuple()}.
+    {error, update_stack_instances_errors(), tuple()}.
 update_stack_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_stack_instances(Client, Input, []).
@@ -4629,12 +4750,7 @@ update_stack_instances(Client, Input)
 -spec update_stack_instances(map(), update_stack_instances_input(), proplists:proplist()) ->
     {ok, update_stack_instances_output(), tuple()} |
     {error, any()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, operation_id_already_exists_exception(), tuple()} |
-    {error, operation_in_progress_exception(), tuple()} |
-    {error, stack_instance_not_found_exception(), tuple()} |
-    {error, stack_set_not_found_exception(), tuple()} |
-    {error, stale_request_exception(), tuple()}.
+    {error, update_stack_instances_errors(), tuple()}.
 update_stack_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateStackInstances">>, Input, Options).
@@ -4650,12 +4766,7 @@ update_stack_instances(Client, Input, Options)
 -spec update_stack_set(map(), update_stack_set_input()) ->
     {ok, update_stack_set_output(), tuple()} |
     {error, any()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, operation_id_already_exists_exception(), tuple()} |
-    {error, operation_in_progress_exception(), tuple()} |
-    {error, stack_instance_not_found_exception(), tuple()} |
-    {error, stack_set_not_found_exception(), tuple()} |
-    {error, stale_request_exception(), tuple()}.
+    {error, update_stack_set_errors(), tuple()}.
 update_stack_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_stack_set(Client, Input, []).
@@ -4663,12 +4774,7 @@ update_stack_set(Client, Input)
 -spec update_stack_set(map(), update_stack_set_input(), proplists:proplist()) ->
     {ok, update_stack_set_output(), tuple()} |
     {error, any()} |
-    {error, invalid_operation_exception(), tuple()} |
-    {error, operation_id_already_exists_exception(), tuple()} |
-    {error, operation_in_progress_exception(), tuple()} |
-    {error, stack_instance_not_found_exception(), tuple()} |
-    {error, stack_set_not_found_exception(), tuple()} |
-    {error, stale_request_exception(), tuple()}.
+    {error, update_stack_set_errors(), tuple()}.
 update_stack_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateStackSet">>, Input, Options).

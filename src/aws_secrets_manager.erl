@@ -640,6 +640,164 @@
 %% }
 -type create_secret_request() :: #{binary() => any()}.
 
+-type batch_get_secret_value_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_next_token_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    decryption_failure().
+
+-type cancel_rotate_secret_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type create_secret_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    malformed_policy_document_exception() | 
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    resource_exists_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    encryption_failure() | 
+    decryption_failure().
+
+-type delete_resource_policy_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type delete_secret_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_secret_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception().
+
+-type get_random_password_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception().
+
+-type get_resource_policy_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type get_secret_value_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    decryption_failure().
+
+-type list_secret_version_ids_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception().
+
+-type list_secrets_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_next_token_exception() | 
+    invalid_request_exception().
+
+-type put_resource_policy_errors() ::
+    public_policy_exception() | 
+    malformed_policy_document_exception() | 
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type put_secret_value_errors() ::
+    limit_exceeded_exception() | 
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    resource_exists_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    encryption_failure() | 
+    decryption_failure().
+
+-type remove_regions_from_replication_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type replicate_secret_to_regions_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type restore_secret_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type rotate_secret_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type stop_replication_to_replica_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type update_secret_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    malformed_policy_document_exception() | 
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    resource_exists_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    encryption_failure() | 
+    decryption_failure().
+
+-type update_secret_version_stage_errors() ::
+    limit_exceeded_exception() | 
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type validate_resource_policy_errors() ::
+    malformed_policy_document_exception() | 
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -678,12 +836,7 @@
 -spec batch_get_secret_value(map(), batch_get_secret_value_request()) ->
     {ok, batch_get_secret_value_response(), tuple()} |
     {error, any()} |
-    {error, decryption_failure(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, batch_get_secret_value_errors(), tuple()}.
 batch_get_secret_value(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_secret_value(Client, Input, []).
@@ -691,12 +844,7 @@ batch_get_secret_value(Client, Input)
 -spec batch_get_secret_value(map(), batch_get_secret_value_request(), proplists:proplist()) ->
     {ok, batch_get_secret_value_response(), tuple()} |
     {error, any()} |
-    {error, decryption_failure(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, batch_get_secret_value_errors(), tuple()}.
 batch_get_secret_value(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetSecretValue">>, Input, Options).
@@ -738,10 +886,7 @@ batch_get_secret_value(Client, Input, Options)
 -spec cancel_rotate_secret(map(), cancel_rotate_secret_request()) ->
     {ok, cancel_rotate_secret_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, cancel_rotate_secret_errors(), tuple()}.
 cancel_rotate_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_rotate_secret(Client, Input, []).
@@ -749,10 +894,7 @@ cancel_rotate_secret(Client, Input)
 -spec cancel_rotate_secret(map(), cancel_rotate_secret_request(), proplists:proplist()) ->
     {ok, cancel_rotate_secret_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, cancel_rotate_secret_errors(), tuple()}.
 cancel_rotate_secret(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelRotateSecret">>, Input, Options).
@@ -834,16 +976,7 @@ cancel_rotate_secret(Client, Input, Options)
 -spec create_secret(map(), create_secret_request()) ->
     {ok, create_secret_response(), tuple()} |
     {error, any()} |
-    {error, decryption_failure(), tuple()} |
-    {error, encryption_failure(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_secret_errors(), tuple()}.
 create_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_secret(Client, Input, []).
@@ -851,16 +984,7 @@ create_secret(Client, Input)
 -spec create_secret(map(), create_secret_request(), proplists:proplist()) ->
     {ok, create_secret_response(), tuple()} |
     {error, any()} |
-    {error, decryption_failure(), tuple()} |
-    {error, encryption_failure(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_secret_errors(), tuple()}.
 create_secret(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSecret">>, Input, Options).
@@ -887,10 +1011,7 @@ create_secret(Client, Input, Options)
 -spec delete_resource_policy(map(), delete_resource_policy_request()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
@@ -898,10 +1019,7 @@ delete_resource_policy(Client, Input)
 -spec delete_resource_policy(map(), delete_resource_policy_request(), proplists:proplist()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourcePolicy">>, Input, Options).
@@ -970,10 +1088,7 @@ delete_resource_policy(Client, Input, Options)
 -spec delete_secret(map(), delete_secret_request()) ->
     {ok, delete_secret_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_secret_errors(), tuple()}.
 delete_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_secret(Client, Input, []).
@@ -981,10 +1096,7 @@ delete_secret(Client, Input)
 -spec delete_secret(map(), delete_secret_request(), proplists:proplist()) ->
     {ok, delete_secret_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_secret_errors(), tuple()}.
 delete_secret(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSecret">>, Input, Options).
@@ -1011,9 +1123,7 @@ delete_secret(Client, Input, Options)
 -spec describe_secret(map(), describe_secret_request()) ->
     {ok, describe_secret_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_secret_errors(), tuple()}.
 describe_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_secret(Client, Input, []).
@@ -1021,9 +1131,7 @@ describe_secret(Client, Input)
 -spec describe_secret(map(), describe_secret_request(), proplists:proplist()) ->
     {ok, describe_secret_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_secret_errors(), tuple()}.
 describe_secret(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSecret">>, Input, Options).
@@ -1054,9 +1162,7 @@ describe_secret(Client, Input, Options)
 -spec get_random_password(map(), get_random_password_request()) ->
     {ok, get_random_password_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, get_random_password_errors(), tuple()}.
 get_random_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_random_password(Client, Input, []).
@@ -1064,9 +1170,7 @@ get_random_password(Client, Input)
 -spec get_random_password(map(), get_random_password_request(), proplists:proplist()) ->
     {ok, get_random_password_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, get_random_password_errors(), tuple()}.
 get_random_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRandomPassword">>, Input, Options).
@@ -1097,10 +1201,7 @@ get_random_password(Client, Input, Options)
 -spec get_resource_policy(map(), get_resource_policy_request()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_resource_policy_errors(), tuple()}.
 get_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_policy(Client, Input, []).
@@ -1108,10 +1209,7 @@ get_resource_policy(Client, Input)
 -spec get_resource_policy(map(), get_resource_policy_request(), proplists:proplist()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_resource_policy_errors(), tuple()}.
 get_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourcePolicy">>, Input, Options).
@@ -1158,11 +1256,7 @@ get_resource_policy(Client, Input, Options)
 -spec get_secret_value(map(), get_secret_value_request()) ->
     {ok, get_secret_value_response(), tuple()} |
     {error, any()} |
-    {error, decryption_failure(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_secret_value_errors(), tuple()}.
 get_secret_value(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_secret_value(Client, Input, []).
@@ -1170,11 +1264,7 @@ get_secret_value(Client, Input)
 -spec get_secret_value(map(), get_secret_value_request(), proplists:proplist()) ->
     {ok, get_secret_value_response(), tuple()} |
     {error, any()} |
-    {error, decryption_failure(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_secret_value_errors(), tuple()}.
 get_secret_value(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSecretValue">>, Input, Options).
@@ -1205,10 +1295,7 @@ get_secret_value(Client, Input, Options)
 -spec list_secret_version_ids(map(), list_secret_version_ids_request()) ->
     {ok, list_secret_version_ids_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_secret_version_ids_errors(), tuple()}.
 list_secret_version_ids(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_secret_version_ids(Client, Input, []).
@@ -1216,10 +1303,7 @@ list_secret_version_ids(Client, Input)
 -spec list_secret_version_ids(map(), list_secret_version_ids_request(), proplists:proplist()) ->
     {ok, list_secret_version_ids_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_secret_version_ids_errors(), tuple()}.
 list_secret_version_ids(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSecretVersionIds">>, Input, Options).
@@ -1260,10 +1344,7 @@ list_secret_version_ids(Client, Input, Options)
 -spec list_secrets(map(), list_secrets_request()) ->
     {ok, list_secrets_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_secrets_errors(), tuple()}.
 list_secrets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_secrets(Client, Input, []).
@@ -1271,10 +1352,7 @@ list_secrets(Client, Input)
 -spec list_secrets(map(), list_secrets_request(), proplists:proplist()) ->
     {ok, list_secrets_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_secrets_errors(), tuple()}.
 list_secrets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSecrets">>, Input, Options).
@@ -1307,12 +1385,7 @@ list_secrets(Client, Input, Options)
 -spec put_resource_policy(map(), put_resource_policy_request()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, public_policy_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
@@ -1320,12 +1393,7 @@ put_resource_policy(Client, Input)
 -spec put_resource_policy(map(), put_resource_policy_request(), proplists:proplist()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, public_policy_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResourcePolicy">>, Input, Options).
@@ -1389,14 +1457,7 @@ put_resource_policy(Client, Input, Options)
 -spec put_secret_value(map(), put_secret_value_request()) ->
     {ok, put_secret_value_response(), tuple()} |
     {error, any()} |
-    {error, decryption_failure(), tuple()} |
-    {error, encryption_failure(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_secret_value_errors(), tuple()}.
 put_secret_value(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_secret_value(Client, Input, []).
@@ -1404,14 +1465,7 @@ put_secret_value(Client, Input)
 -spec put_secret_value(map(), put_secret_value_request(), proplists:proplist()) ->
     {ok, put_secret_value_response(), tuple()} |
     {error, any()} |
-    {error, decryption_failure(), tuple()} |
-    {error, encryption_failure(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_secret_value_errors(), tuple()}.
 put_secret_value(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutSecretValue">>, Input, Options).
@@ -1436,10 +1490,7 @@ put_secret_value(Client, Input, Options)
 -spec remove_regions_from_replication(map(), remove_regions_from_replication_request()) ->
     {ok, remove_regions_from_replication_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, remove_regions_from_replication_errors(), tuple()}.
 remove_regions_from_replication(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_regions_from_replication(Client, Input, []).
@@ -1447,10 +1498,7 @@ remove_regions_from_replication(Client, Input)
 -spec remove_regions_from_replication(map(), remove_regions_from_replication_request(), proplists:proplist()) ->
     {ok, remove_regions_from_replication_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, remove_regions_from_replication_errors(), tuple()}.
 remove_regions_from_replication(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveRegionsFromReplication">>, Input, Options).
@@ -1481,10 +1529,7 @@ remove_regions_from_replication(Client, Input, Options)
 -spec replicate_secret_to_regions(map(), replicate_secret_to_regions_request()) ->
     {ok, replicate_secret_to_regions_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, replicate_secret_to_regions_errors(), tuple()}.
 replicate_secret_to_regions(Client, Input)
   when is_map(Client), is_map(Input) ->
     replicate_secret_to_regions(Client, Input, []).
@@ -1492,10 +1537,7 @@ replicate_secret_to_regions(Client, Input)
 -spec replicate_secret_to_regions(map(), replicate_secret_to_regions_request(), proplists:proplist()) ->
     {ok, replicate_secret_to_regions_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, replicate_secret_to_regions_errors(), tuple()}.
 replicate_secret_to_regions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ReplicateSecretToRegions">>, Input, Options).
@@ -1523,10 +1565,7 @@ replicate_secret_to_regions(Client, Input, Options)
 -spec restore_secret(map(), restore_secret_request()) ->
     {ok, restore_secret_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, restore_secret_errors(), tuple()}.
 restore_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_secret(Client, Input, []).
@@ -1534,10 +1573,7 @@ restore_secret(Client, Input)
 -spec restore_secret(map(), restore_secret_request(), proplists:proplist()) ->
     {ok, restore_secret_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, restore_secret_errors(), tuple()}.
 restore_secret(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreSecret">>, Input, Options).
@@ -1591,10 +1627,7 @@ restore_secret(Client, Input, Options)
 -spec rotate_secret(map(), rotate_secret_request()) ->
     {ok, rotate_secret_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, rotate_secret_errors(), tuple()}.
 rotate_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     rotate_secret(Client, Input, []).
@@ -1602,10 +1635,7 @@ rotate_secret(Client, Input)
 -spec rotate_secret(map(), rotate_secret_request(), proplists:proplist()) ->
     {ok, rotate_secret_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, rotate_secret_errors(), tuple()}.
 rotate_secret(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RotateSecret">>, Input, Options).
@@ -1633,10 +1663,7 @@ rotate_secret(Client, Input, Options)
 -spec stop_replication_to_replica(map(), stop_replication_to_replica_request()) ->
     {ok, stop_replication_to_replica_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_replication_to_replica_errors(), tuple()}.
 stop_replication_to_replica(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_replication_to_replica(Client, Input, []).
@@ -1644,10 +1671,7 @@ stop_replication_to_replica(Client, Input)
 -spec stop_replication_to_replica(map(), stop_replication_to_replica_request(), proplists:proplist()) ->
     {ok, stop_replication_to_replica_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_replication_to_replica_errors(), tuple()}.
 stop_replication_to_replica(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopReplicationToReplica">>, Input, Options).
@@ -1688,10 +1712,7 @@ stop_replication_to_replica(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -1699,10 +1720,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -1738,10 +1756,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -1749,10 +1764,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -1821,16 +1833,7 @@ untag_resource(Client, Input, Options)
 -spec update_secret(map(), update_secret_request()) ->
     {ok, update_secret_response(), tuple()} |
     {error, any()} |
-    {error, decryption_failure(), tuple()} |
-    {error, encryption_failure(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_secret_errors(), tuple()}.
 update_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_secret(Client, Input, []).
@@ -1838,16 +1841,7 @@ update_secret(Client, Input)
 -spec update_secret(map(), update_secret_request(), proplists:proplist()) ->
     {ok, update_secret_response(), tuple()} |
     {error, any()} |
-    {error, decryption_failure(), tuple()} |
-    {error, encryption_failure(), tuple()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_secret_errors(), tuple()}.
 update_secret(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSecret">>, Input, Options).
@@ -1899,11 +1893,7 @@ update_secret(Client, Input, Options)
 -spec update_secret_version_stage(map(), update_secret_version_stage_request()) ->
     {ok, update_secret_version_stage_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_secret_version_stage_errors(), tuple()}.
 update_secret_version_stage(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_secret_version_stage(Client, Input, []).
@@ -1911,11 +1901,7 @@ update_secret_version_stage(Client, Input)
 -spec update_secret_version_stage(map(), update_secret_version_stage_request(), proplists:proplist()) ->
     {ok, update_secret_version_stage_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_secret_version_stage_errors(), tuple()}.
 update_secret_version_stage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSecretVersionStage">>, Input, Options).
@@ -1956,11 +1942,7 @@ update_secret_version_stage(Client, Input, Options)
 -spec validate_resource_policy(map(), validate_resource_policy_request()) ->
     {ok, validate_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, validate_resource_policy_errors(), tuple()}.
 validate_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     validate_resource_policy(Client, Input, []).
@@ -1968,11 +1950,7 @@ validate_resource_policy(Client, Input)
 -spec validate_resource_policy(map(), validate_resource_policy_request(), proplists:proplist()) ->
     {ok, validate_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, validate_resource_policy_errors(), tuple()}.
 validate_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ValidateResourcePolicy">>, Input, Options).

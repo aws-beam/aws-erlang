@@ -86,12 +86,14 @@
 %% }
 -type ecs_properties_override() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_compute_environments_response() :: #{
 %%   <<"computeEnvironments">> => list(compute_environment_detail()()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_compute_environments_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_scheduling_policies_request() :: #{
@@ -100,6 +102,7 @@
 %% }
 -type list_scheduling_policies_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% cancel_job_request() :: #{
 %%   <<"jobId">> := string(),
@@ -107,11 +110,13 @@
 %% }
 -type cancel_job_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% eks_metadata() :: #{
 %%   <<"labels">> => map()
 %% }
 -type eks_metadata() :: #{binary() => any()}.
+
 
 %% Example:
 %% task_properties_override() :: #{
@@ -119,11 +124,13 @@
 %% }
 -type task_properties_override() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% deregister_job_definition_request() :: #{
@@ -131,11 +138,13 @@
 %% }
 -type deregister_job_definition_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% fargate_platform_configuration() :: #{
 %%   <<"platformVersion">> => string()
 %% }
 -type fargate_platform_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_job_definitions_response() :: #{
@@ -143,6 +152,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type describe_job_definitions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% container_properties() :: #{
@@ -172,11 +182,13 @@
 %% }
 -type container_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% eks_host_path() :: #{
 %%   <<"path">> => string()
 %% }
 -type eks_host_path() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_compute_environment_response() :: #{
@@ -185,15 +197,18 @@
 %% }
 -type create_compute_environment_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% eks_container_environment_variable() :: #{
 %%   <<"name">> => string(),
 %%   <<"value">> => string()
 %% }
 -type eks_container_environment_variable() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% update_compute_environment_request() :: #{
@@ -206,11 +221,13 @@
 %% }
 -type update_compute_environment_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% job_timeout() :: #{
 %%   <<"attemptDurationSeconds">> => integer()
 %% }
 -type job_timeout() :: #{binary() => any()}.
+
 
 %% Example:
 %% scheduling_policy_detail() :: #{
@@ -220,6 +237,7 @@
 %%   <<"tags">> => map()
 %% }
 -type scheduling_policy_detail() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_jobs_request() :: #{
@@ -233,11 +251,13 @@
 %% }
 -type list_jobs_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_scheduling_policy_request() :: #{
 %%   <<"arn">> := string()
 %% }
 -type delete_scheduling_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% ec2_configuration() :: #{
@@ -246,9 +266,11 @@
 %%   <<"imageType">> => string()
 %% }
 -type ec2_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% deregister_job_definition_response() :: #{}
 -type deregister_job_definition_response() :: #{}.
+
 
 %% Example:
 %% create_scheduling_policy_request() :: #{
@@ -257,6 +279,7 @@
 %%   <<"tags">> => map()
 %% }
 -type create_scheduling_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% node_property_override() :: #{
@@ -267,6 +290,7 @@
 %% }
 -type node_property_override() :: #{binary() => any()}.
 
+
 %% Example:
 %% network_interface() :: #{
 %%   <<"attachmentId">> => string(),
@@ -274,6 +298,7 @@
 %%   <<"privateIpv4Address">> => string()
 %% }
 -type network_interface() :: #{binary() => any()}.
+
 
 %% Example:
 %% eks_container_override() :: #{
@@ -286,6 +311,7 @@
 %% }
 -type eks_container_override() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_jobs_response() :: #{
 %%   <<"jobSummaryList">> => list(job_summary()()),
@@ -293,11 +319,13 @@
 %% }
 -type list_jobs_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_scheduling_policies_response() :: #{
 %%   <<"schedulingPolicies">> => list(scheduling_policy_detail()())
 %% }
 -type describe_scheduling_policies_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_policy() :: #{
@@ -305,6 +333,7 @@
 %%   <<"terminateJobsOnUpdate">> => boolean()
 %% }
 -type update_policy() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_queue_detail() :: #{
@@ -321,20 +350,24 @@
 %% }
 -type job_queue_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_job_queue_response() :: #{}
 -type delete_job_queue_response() :: #{}.
+
 
 %% Example:
 %% ecs_properties() :: #{
 %%   <<"taskProperties">> => list(ecs_task_properties()())
 %% }
 -type ecs_properties() :: #{binary() => any()}.
+
 
 %% Example:
 %% register_job_definition_response() :: #{
@@ -343,6 +376,7 @@
 %%   <<"revision">> => integer()
 %% }
 -type register_job_definition_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_job_definitions_request() :: #{
@@ -353,6 +387,7 @@
 %%   <<"status">> => string()
 %% }
 -type describe_job_definitions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_compute_environment_request() :: #{
@@ -367,6 +402,7 @@
 %% }
 -type create_compute_environment_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% mount_point() :: #{
 %%   <<"containerPath">> => string(),
@@ -374,6 +410,7 @@
 %%   <<"sourceVolume">> => string()
 %% }
 -type mount_point() :: #{binary() => any()}.
+
 
 %% Example:
 %% task_container_overrides() :: #{
@@ -383,6 +420,7 @@
 %%   <<"resourceRequirements">> => list(resource_requirement()())
 %% }
 -type task_container_overrides() :: #{binary() => any()}.
+
 
 %% Example:
 %% eks_container_detail() :: #{
@@ -400,11 +438,13 @@
 %% }
 -type eks_container_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% eks_properties_override() :: #{
 %%   <<"podProperties">> => eks_pod_properties_override()
 %% }
 -type eks_properties_override() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_scheduling_policy_response() :: #{
@@ -412,6 +452,7 @@
 %%   <<"name">> => string()
 %% }
 -type create_scheduling_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_summary() :: #{
@@ -430,6 +471,7 @@
 %% }
 -type job_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_scheduling_policies_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -437,11 +479,13 @@
 %% }
 -type list_scheduling_policies_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_compute_environment_request() :: #{
 %%   <<"computeEnvironment">> := string()
 %% }
 -type delete_compute_environment_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% ecs_task_properties() :: #{
@@ -457,6 +501,7 @@
 %%   <<"volumes">> => list(volume()())
 %% }
 -type ecs_task_properties() :: #{binary() => any()}.
+
 
 %% Example:
 %% task_container_details() :: #{
@@ -483,11 +528,13 @@
 %% }
 -type task_container_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% client_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type client_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_job_queue_response() :: #{
@@ -496,6 +543,7 @@
 %% }
 -type create_job_queue_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% ulimit() :: #{
 %%   <<"hardLimit">> => integer(),
@@ -503,6 +551,7 @@
 %%   <<"softLimit">> => integer()
 %% }
 -type ulimit() :: #{binary() => any()}.
+
 
 %% Example:
 %% evaluate_on_exit() :: #{
@@ -513,6 +562,7 @@
 %% }
 -type evaluate_on_exit() :: #{binary() => any()}.
 
+
 %% Example:
 %% attempt_detail() :: #{
 %%   <<"container">> => attempt_container_detail(),
@@ -521,6 +571,7 @@
 %%   <<"stoppedAt">> => float()
 %% }
 -type attempt_detail() :: #{binary() => any()}.
+
 
 %% Example:
 %% register_job_definition_request() :: #{
@@ -539,9 +590,11 @@
 %%   <<"type">> := list(any())
 %% }
 -type register_job_definition_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_scheduling_policy_response() :: #{}
 -type delete_scheduling_policy_response() :: #{}.
+
 
 %% Example:
 %% submit_job_request() :: #{
@@ -564,12 +617,14 @@
 %% }
 -type submit_job_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% key_values_pair() :: #{
 %%   <<"name">> => string(),
 %%   <<"values">> => list(string()())
 %% }
 -type key_values_pair() :: #{binary() => any()}.
+
 
 %% Example:
 %% attempt_container_detail() :: #{
@@ -582,6 +637,7 @@
 %% }
 -type attempt_container_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_job_queue_request() :: #{
 %%   <<"computeEnvironmentOrder">> => list(compute_environment_order()()),
@@ -592,6 +648,7 @@
 %%   <<"state">> => list(any())
 %% }
 -type update_job_queue_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% ecs_task_details() :: #{
@@ -610,12 +667,14 @@
 %% }
 -type ecs_task_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_job_queues_response() :: #{
 %%   <<"jobQueues">> => list(job_queue_detail()()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_job_queues_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% eks_configuration() :: #{
@@ -624,6 +683,7 @@
 %% }
 -type eks_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% secret() :: #{
 %%   <<"name">> => string(),
@@ -631,12 +691,14 @@
 %% }
 -type secret() :: #{binary() => any()}.
 
+
 %% Example:
 %% share_attributes() :: #{
 %%   <<"shareIdentifier">> => string(),
 %%   <<"weightFactor">> => float()
 %% }
 -type share_attributes() :: #{binary() => any()}.
+
 
 %% Example:
 %% fairshare_policy() :: #{
@@ -646,12 +708,14 @@
 %% }
 -type fairshare_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% terminate_job_request() :: #{
 %%   <<"jobId">> := string(),
 %%   <<"reason">> := string()
 %% }
 -type terminate_job_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% eks_volume() :: #{
@@ -661,6 +725,7 @@
 %%   <<"secret">> => eks_secret()
 %% }
 -type eks_volume() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_definition() :: #{
@@ -684,11 +749,13 @@
 %% }
 -type job_definition() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% container_summary() :: #{
@@ -697,17 +764,20 @@
 %% }
 -type container_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% ephemeral_storage() :: #{
 %%   <<"sizeInGiB">> => integer()
 %% }
 -type ephemeral_storage() :: #{binary() => any()}.
 
+
 %% Example:
 %% eks_properties() :: #{
 %%   <<"podProperties">> => eks_pod_properties()
 %% }
 -type eks_properties() :: #{binary() => any()}.
+
 
 %% Example:
 %% eks_attempt_detail() :: #{
@@ -721,6 +791,7 @@
 %% }
 -type eks_attempt_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% eks_secret() :: #{
 %%   <<"optional">> => boolean(),
@@ -728,11 +799,13 @@
 %% }
 -type eks_secret() :: #{binary() => any()}.
 
+
 %% Example:
 %% host() :: #{
 %%   <<"sourcePath">> => string()
 %% }
 -type host() :: #{binary() => any()}.
+
 
 %% Example:
 %% compute_environment_order() :: #{
@@ -741,12 +814,14 @@
 %% }
 -type compute_environment_order() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_scheduling_policy_request() :: #{
 %%   <<"arn">> := string(),
 %%   <<"fairsharePolicy">> => fairshare_policy()
 %% }
 -type update_scheduling_policy_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% compute_resource_update() :: #{
@@ -770,6 +845,7 @@
 %% }
 -type compute_resource_update() :: #{binary() => any()}.
 
+
 %% Example:
 %% eks_container_security_context() :: #{
 %%   <<"privileged">> => boolean(),
@@ -780,12 +856,14 @@
 %% }
 -type eks_container_security_context() :: #{binary() => any()}.
 
+
 %% Example:
 %% e_f_s_authorization_config() :: #{
 %%   <<"accessPointId">> => string(),
 %%   <<"iam">> => list(any())
 %% }
 -type e_f_s_authorization_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% submit_job_response() :: #{
@@ -794,6 +872,7 @@
 %%   <<"jobName">> => string()
 %% }
 -type submit_job_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% container_overrides() :: #{
@@ -806,6 +885,7 @@
 %% }
 -type container_overrides() :: #{binary() => any()}.
 
+
 %% Example:
 %% e_f_s_volume_configuration() :: #{
 %%   <<"authorizationConfig">> => e_f_s_authorization_config(),
@@ -815,6 +895,7 @@
 %%   <<"transitEncryptionPort">> => integer()
 %% }
 -type e_f_s_volume_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% container_detail() :: #{
@@ -850,17 +931,20 @@
 %% }
 -type container_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% network_configuration() :: #{
 %%   <<"assignPublicIp">> => list(any())
 %% }
 -type network_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% scheduling_policy_listing_detail() :: #{
 %%   <<"arn">> => string()
 %% }
 -type scheduling_policy_listing_detail() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_compute_environments_request() :: #{
@@ -870,12 +954,14 @@
 %% }
 -type describe_compute_environments_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% node_overrides() :: #{
 %%   <<"nodePropertyOverrides">> => list(node_property_override()()),
 %%   <<"numNodes">> => integer()
 %% }
 -type node_overrides() :: #{binary() => any()}.
+
 
 %% Example:
 %% volume() :: #{
@@ -885,21 +971,25 @@
 %% }
 -type volume() :: #{binary() => any()}.
 
+
 %% Example:
 %% job_dependency() :: #{
 %%   <<"jobId">> => string(),
 %%   <<"type">> => list(any())
 %% }
 -type job_dependency() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% array_properties() :: #{
 %%   <<"size">> => integer()
 %% }
 -type array_properties() :: #{binary() => any()}.
+
 
 %% Example:
 %% node_range_property() :: #{
@@ -910,6 +1000,7 @@
 %% }
 -type node_range_property() :: #{binary() => any()}.
 
+
 %% Example:
 %% eks_attempt_container_detail() :: #{
 %%   <<"exitCode">> => integer(),
@@ -917,11 +1008,13 @@
 %% }
 -type eks_attempt_container_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_jobs_response() :: #{
 %%   <<"jobs">> => list(job_detail()())
 %% }
 -type describe_jobs_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% key_value_pair() :: #{
@@ -929,9 +1022,11 @@
 %%   <<"value">> => string()
 %% }
 -type key_value_pair() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% runtime_platform() :: #{
@@ -940,14 +1035,17 @@
 %% }
 -type runtime_platform() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_job_queue_request() :: #{
 %%   <<"jobQueue">> := string()
 %% }
 -type delete_job_queue_request() :: #{binary() => any()}.
+
 %% Example:
 %% terminate_job_response() :: #{}
 -type terminate_job_response() :: #{}.
+
 
 %% Example:
 %% eks_container_resource_requirements() :: #{
@@ -955,6 +1053,7 @@
 %%   <<"requests">> => map()
 %% }
 -type eks_container_resource_requirements() :: #{binary() => any()}.
+
 
 %% Example:
 %% linux_parameters() :: #{
@@ -967,12 +1066,14 @@
 %% }
 -type linux_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_compute_environment_response() :: #{
 %%   <<"computeEnvironmentArn">> => string(),
 %%   <<"computeEnvironmentName">> => string()
 %% }
 -type update_compute_environment_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% node_details() :: #{
@@ -981,6 +1082,7 @@
 %% }
 -type node_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% eks_container_volume_mount() :: #{
 %%   <<"mountPath">> => string(),
@@ -988,6 +1090,7 @@
 %%   <<"readOnly">> => boolean()
 %% }
 -type eks_container_volume_mount() :: #{binary() => any()}.
+
 
 %% Example:
 %% eks_pod_properties() :: #{
@@ -1002,11 +1105,13 @@
 %% }
 -type eks_pod_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% server_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_job_queue_response() :: #{
@@ -1015,6 +1120,7 @@
 %% }
 -type update_job_queue_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% retry_strategy() :: #{
 %%   <<"attempts">> => integer(),
@@ -1022,11 +1128,13 @@
 %% }
 -type retry_strategy() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_jobs_request() :: #{
 %%   <<"jobs">> := list(string()())
 %% }
 -type describe_jobs_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% launch_template_specification() :: #{
@@ -1036,6 +1144,7 @@
 %% }
 -type launch_template_specification() :: #{binary() => any()}.
 
+
 %% Example:
 %% node_properties_summary() :: #{
 %%   <<"isMainNode">> => boolean(),
@@ -1043,6 +1152,7 @@
 %%   <<"numNodes">> => integer()
 %% }
 -type node_properties_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% compute_environment_detail() :: #{
@@ -1064,6 +1174,7 @@
 %% }
 -type compute_environment_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% device() :: #{
 %%   <<"containerPath">> => string(),
@@ -1072,11 +1183,13 @@
 %% }
 -type device() :: #{binary() => any()}.
 
+
 %% Example:
 %% eks_properties_detail() :: #{
 %%   <<"podProperties">> => eks_pod_properties_detail()
 %% }
 -type eks_properties_detail() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_job_queues_request() :: #{
@@ -1085,6 +1198,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type describe_job_queues_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% eks_container() :: #{
@@ -1099,6 +1213,7 @@
 %%   <<"volumeMounts">> => list(eks_container_volume_mount()())
 %% }
 -type eks_container() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_detail() :: #{
@@ -1134,6 +1249,7 @@
 %% }
 -type job_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% array_properties_detail() :: #{
 %%   <<"index">> => integer(),
@@ -1142,11 +1258,13 @@
 %% }
 -type array_properties_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_scheduling_policies_request() :: #{
 %%   <<"arns">> := list(string()())
 %% }
 -type describe_scheduling_policies_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% array_properties_summary() :: #{
@@ -1155,11 +1273,13 @@
 %% }
 -type array_properties_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% ecs_properties_detail() :: #{
 %%   <<"taskProperties">> => list(ecs_task_details()())
 %% }
 -type ecs_properties_detail() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_job_queue_request() :: #{
@@ -1173,6 +1293,7 @@
 %% }
 -type create_job_queue_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% log_configuration() :: #{
 %%   <<"logDriver">> => list(any()),
@@ -1180,12 +1301,15 @@
 %%   <<"secretOptions">> => list(secret()())
 %% }
 -type log_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% cancel_job_response() :: #{}
 -type cancel_job_response() :: #{}.
+
 %% Example:
 %% update_scheduling_policy_response() :: #{}
 -type update_scheduling_policy_response() :: #{}.
+
 
 %% Example:
 %% resource_requirement() :: #{
@@ -1193,6 +1317,7 @@
 %%   <<"value">> => string()
 %% }
 -type resource_requirement() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_state_time_limit_action() :: #{
@@ -1202,6 +1327,7 @@
 %%   <<"state">> => list(any())
 %% }
 -type job_state_time_limit_action() :: #{binary() => any()}.
+
 
 %% Example:
 %% compute_resource() :: #{
@@ -1225,6 +1351,7 @@
 %% }
 -type compute_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% node_properties() :: #{
 %%   <<"mainNode">> => integer(),
@@ -1233,6 +1360,7 @@
 %% }
 -type node_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% eks_empty_dir() :: #{
 %%   <<"medium">> => string(),
@@ -1240,12 +1368,14 @@
 %% }
 -type eks_empty_dir() :: #{binary() => any()}.
 
+
 %% Example:
 %% task_container_dependency() :: #{
 %%   <<"condition">> => string(),
 %%   <<"containerName">> => string()
 %% }
 -type task_container_dependency() :: #{binary() => any()}.
+
 
 %% Example:
 %% eks_pod_properties_override() :: #{
@@ -1255,11 +1385,13 @@
 %% }
 -type eks_pod_properties_override() :: #{binary() => any()}.
 
+
 %% Example:
 %% repository_credentials() :: #{
 %%   <<"credentialsParameter">> => string()
 %% }
 -type repository_credentials() :: #{binary() => any()}.
+
 
 %% Example:
 %% eks_pod_properties_detail() :: #{
@@ -1276,6 +1408,7 @@
 %% }
 -type eks_pod_properties_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% tmpfs() :: #{
 %%   <<"containerPath">> => string(),
@@ -1283,9 +1416,11 @@
 %%   <<"size">> => integer()
 %% }
 -type tmpfs() :: #{binary() => any()}.
+
 %% Example:
 %% delete_compute_environment_response() :: #{}
 -type delete_compute_environment_response() :: #{}.
+
 
 %% Example:
 %% task_container_properties() :: #{
@@ -1307,6 +1442,102 @@
 %%   <<"user">> => string()
 %% }
 -type task_container_properties() :: #{binary() => any()}.
+
+-type cancel_job_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type create_compute_environment_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type create_job_queue_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type create_scheduling_policy_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type delete_compute_environment_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type delete_job_queue_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type delete_scheduling_policy_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type deregister_job_definition_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type describe_compute_environments_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type describe_job_definitions_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type describe_job_queues_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type describe_jobs_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type describe_scheduling_policies_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type list_jobs_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type list_scheduling_policies_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type list_tags_for_resource_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type register_job_definition_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type submit_job_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type tag_resource_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type terminate_job_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type untag_resource_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type update_compute_environment_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type update_job_queue_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type update_scheduling_policy_errors() ::
+    server_exception() | 
+    client_exception().
 
 %%====================================================================
 %% API
@@ -1345,16 +1576,14 @@
 -spec cancel_job(map(), cancel_job_request()) ->
     {ok, cancel_job_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, cancel_job_errors(), tuple()}.
 cancel_job(Client, Input) ->
     cancel_job(Client, Input, []).
 
 -spec cancel_job(map(), cancel_job_request(), proplists:proplist()) ->
     {ok, cancel_job_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, cancel_job_errors(), tuple()}.
 cancel_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/canceljob"],
@@ -1511,16 +1740,14 @@ cancel_job(Client, Input0, Options0) ->
 -spec create_compute_environment(map(), create_compute_environment_request()) ->
     {ok, create_compute_environment_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, create_compute_environment_errors(), tuple()}.
 create_compute_environment(Client, Input) ->
     create_compute_environment(Client, Input, []).
 
 -spec create_compute_environment(map(), create_compute_environment_request(), proplists:proplist()) ->
     {ok, create_compute_environment_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, create_compute_environment_errors(), tuple()}.
 create_compute_environment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/createcomputeenvironment"],
@@ -1560,16 +1787,14 @@ create_compute_environment(Client, Input0, Options0) ->
 -spec create_job_queue(map(), create_job_queue_request()) ->
     {ok, create_job_queue_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, create_job_queue_errors(), tuple()}.
 create_job_queue(Client, Input) ->
     create_job_queue(Client, Input, []).
 
 -spec create_job_queue(map(), create_job_queue_request(), proplists:proplist()) ->
     {ok, create_job_queue_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, create_job_queue_errors(), tuple()}.
 create_job_queue(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/createjobqueue"],
@@ -1596,16 +1821,14 @@ create_job_queue(Client, Input0, Options0) ->
 -spec create_scheduling_policy(map(), create_scheduling_policy_request()) ->
     {ok, create_scheduling_policy_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, create_scheduling_policy_errors(), tuple()}.
 create_scheduling_policy(Client, Input) ->
     create_scheduling_policy(Client, Input, []).
 
 -spec create_scheduling_policy(map(), create_scheduling_policy_request(), proplists:proplist()) ->
     {ok, create_scheduling_policy_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, create_scheduling_policy_errors(), tuple()}.
 create_scheduling_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/createschedulingpolicy"],
@@ -1642,16 +1865,14 @@ create_scheduling_policy(Client, Input0, Options0) ->
 -spec delete_compute_environment(map(), delete_compute_environment_request()) ->
     {ok, delete_compute_environment_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, delete_compute_environment_errors(), tuple()}.
 delete_compute_environment(Client, Input) ->
     delete_compute_environment(Client, Input, []).
 
 -spec delete_compute_environment(map(), delete_compute_environment_request(), proplists:proplist()) ->
     {ok, delete_compute_environment_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, delete_compute_environment_errors(), tuple()}.
 delete_compute_environment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/deletecomputeenvironment"],
@@ -1689,16 +1910,14 @@ delete_compute_environment(Client, Input0, Options0) ->
 -spec delete_job_queue(map(), delete_job_queue_request()) ->
     {ok, delete_job_queue_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, delete_job_queue_errors(), tuple()}.
 delete_job_queue(Client, Input) ->
     delete_job_queue(Client, Input, []).
 
 -spec delete_job_queue(map(), delete_job_queue_request(), proplists:proplist()) ->
     {ok, delete_job_queue_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, delete_job_queue_errors(), tuple()}.
 delete_job_queue(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/deletejobqueue"],
@@ -1728,16 +1947,14 @@ delete_job_queue(Client, Input0, Options0) ->
 -spec delete_scheduling_policy(map(), delete_scheduling_policy_request()) ->
     {ok, delete_scheduling_policy_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, delete_scheduling_policy_errors(), tuple()}.
 delete_scheduling_policy(Client, Input) ->
     delete_scheduling_policy(Client, Input, []).
 
 -spec delete_scheduling_policy(map(), delete_scheduling_policy_request(), proplists:proplist()) ->
     {ok, delete_scheduling_policy_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, delete_scheduling_policy_errors(), tuple()}.
 delete_scheduling_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/deleteschedulingpolicy"],
@@ -1767,16 +1984,14 @@ delete_scheduling_policy(Client, Input0, Options0) ->
 -spec deregister_job_definition(map(), deregister_job_definition_request()) ->
     {ok, deregister_job_definition_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, deregister_job_definition_errors(), tuple()}.
 deregister_job_definition(Client, Input) ->
     deregister_job_definition(Client, Input, []).
 
 -spec deregister_job_definition(map(), deregister_job_definition_request(), proplists:proplist()) ->
     {ok, deregister_job_definition_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, deregister_job_definition_errors(), tuple()}.
 deregister_job_definition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/deregisterjobdefinition"],
@@ -1808,16 +2023,14 @@ deregister_job_definition(Client, Input0, Options0) ->
 -spec describe_compute_environments(map(), describe_compute_environments_request()) ->
     {ok, describe_compute_environments_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_compute_environments_errors(), tuple()}.
 describe_compute_environments(Client, Input) ->
     describe_compute_environments(Client, Input, []).
 
 -spec describe_compute_environments(map(), describe_compute_environments_request(), proplists:proplist()) ->
     {ok, describe_compute_environments_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_compute_environments_errors(), tuple()}.
 describe_compute_environments(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/describecomputeenvironments"],
@@ -1847,16 +2060,14 @@ describe_compute_environments(Client, Input0, Options0) ->
 -spec describe_job_definitions(map(), describe_job_definitions_request()) ->
     {ok, describe_job_definitions_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_job_definitions_errors(), tuple()}.
 describe_job_definitions(Client, Input) ->
     describe_job_definitions(Client, Input, []).
 
 -spec describe_job_definitions(map(), describe_job_definitions_request(), proplists:proplist()) ->
     {ok, describe_job_definitions_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_job_definitions_errors(), tuple()}.
 describe_job_definitions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/describejobdefinitions"],
@@ -1883,16 +2094,14 @@ describe_job_definitions(Client, Input0, Options0) ->
 -spec describe_job_queues(map(), describe_job_queues_request()) ->
     {ok, describe_job_queues_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_job_queues_errors(), tuple()}.
 describe_job_queues(Client, Input) ->
     describe_job_queues(Client, Input, []).
 
 -spec describe_job_queues(map(), describe_job_queues_request(), proplists:proplist()) ->
     {ok, describe_job_queues_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_job_queues_errors(), tuple()}.
 describe_job_queues(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/describejobqueues"],
@@ -1919,16 +2128,14 @@ describe_job_queues(Client, Input0, Options0) ->
 -spec describe_jobs(map(), describe_jobs_request()) ->
     {ok, describe_jobs_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_jobs_errors(), tuple()}.
 describe_jobs(Client, Input) ->
     describe_jobs(Client, Input, []).
 
 -spec describe_jobs(map(), describe_jobs_request(), proplists:proplist()) ->
     {ok, describe_jobs_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_jobs_errors(), tuple()}.
 describe_jobs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/describejobs"],
@@ -1955,16 +2162,14 @@ describe_jobs(Client, Input0, Options0) ->
 -spec describe_scheduling_policies(map(), describe_scheduling_policies_request()) ->
     {ok, describe_scheduling_policies_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_scheduling_policies_errors(), tuple()}.
 describe_scheduling_policies(Client, Input) ->
     describe_scheduling_policies(Client, Input, []).
 
 -spec describe_scheduling_policies(map(), describe_scheduling_policies_request(), proplists:proplist()) ->
     {ok, describe_scheduling_policies_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, describe_scheduling_policies_errors(), tuple()}.
 describe_scheduling_policies(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/describeschedulingpolicies"],
@@ -2003,16 +2208,14 @@ describe_scheduling_policies(Client, Input0, Options0) ->
 -spec list_jobs(map(), list_jobs_request()) ->
     {ok, list_jobs_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_jobs_errors(), tuple()}.
 list_jobs(Client, Input) ->
     list_jobs(Client, Input, []).
 
 -spec list_jobs(map(), list_jobs_request(), proplists:proplist()) ->
     {ok, list_jobs_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_jobs_errors(), tuple()}.
 list_jobs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/listjobs"],
@@ -2039,16 +2242,14 @@ list_jobs(Client, Input0, Options0) ->
 -spec list_scheduling_policies(map(), list_scheduling_policies_request()) ->
     {ok, list_scheduling_policies_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_scheduling_policies_errors(), tuple()}.
 list_scheduling_policies(Client, Input) ->
     list_scheduling_policies(Client, Input, []).
 
 -spec list_scheduling_policies(map(), list_scheduling_policies_request(), proplists:proplist()) ->
     {ok, list_scheduling_policies_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_scheduling_policies_errors(), tuple()}.
 list_scheduling_policies(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/listschedulingpolicies"],
@@ -2080,8 +2281,7 @@ list_scheduling_policies(Client, Input0, Options0) ->
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -2089,8 +2289,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -2098,8 +2297,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2120,16 +2318,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec register_job_definition(map(), register_job_definition_request()) ->
     {ok, register_job_definition_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, register_job_definition_errors(), tuple()}.
 register_job_definition(Client, Input) ->
     register_job_definition(Client, Input, []).
 
 -spec register_job_definition(map(), register_job_definition_request(), proplists:proplist()) ->
     {ok, register_job_definition_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, register_job_definition_errors(), tuple()}.
 register_job_definition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/registerjobdefinition"],
@@ -2178,16 +2374,14 @@ register_job_definition(Client, Input0, Options0) ->
 -spec submit_job(map(), submit_job_request()) ->
     {ok, submit_job_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, submit_job_errors(), tuple()}.
 submit_job(Client, Input) ->
     submit_job(Client, Input, []).
 
 -spec submit_job(map(), submit_job_request(), proplists:proplist()) ->
     {ok, submit_job_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, submit_job_errors(), tuple()}.
 submit_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/submitjob"],
@@ -2224,16 +2418,14 @@ submit_job(Client, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2266,16 +2458,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec terminate_job(map(), terminate_job_request()) ->
     {ok, terminate_job_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, terminate_job_errors(), tuple()}.
 terminate_job(Client, Input) ->
     terminate_job(Client, Input, []).
 
 -spec terminate_job(map(), terminate_job_request(), proplists:proplist()) ->
     {ok, terminate_job_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, terminate_job_errors(), tuple()}.
 terminate_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/terminatejob"],
@@ -2302,16 +2492,14 @@ terminate_job(Client, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2339,16 +2527,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_compute_environment(map(), update_compute_environment_request()) ->
     {ok, update_compute_environment_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, update_compute_environment_errors(), tuple()}.
 update_compute_environment(Client, Input) ->
     update_compute_environment(Client, Input, []).
 
 -spec update_compute_environment(map(), update_compute_environment_request(), proplists:proplist()) ->
     {ok, update_compute_environment_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, update_compute_environment_errors(), tuple()}.
 update_compute_environment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/updatecomputeenvironment"],
@@ -2375,16 +2561,14 @@ update_compute_environment(Client, Input0, Options0) ->
 -spec update_job_queue(map(), update_job_queue_request()) ->
     {ok, update_job_queue_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, update_job_queue_errors(), tuple()}.
 update_job_queue(Client, Input) ->
     update_job_queue(Client, Input, []).
 
 -spec update_job_queue(map(), update_job_queue_request(), proplists:proplist()) ->
     {ok, update_job_queue_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, update_job_queue_errors(), tuple()}.
 update_job_queue(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/updatejobqueue"],
@@ -2411,16 +2595,14 @@ update_job_queue(Client, Input0, Options0) ->
 -spec update_scheduling_policy(map(), update_scheduling_policy_request()) ->
     {ok, update_scheduling_policy_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, update_scheduling_policy_errors(), tuple()}.
 update_scheduling_policy(Client, Input) ->
     update_scheduling_policy(Client, Input, []).
 
 -spec update_scheduling_policy(map(), update_scheduling_policy_request(), proplists:proplist()) ->
     {ok, update_scheduling_policy_response(), tuple()} |
     {error, any()} |
-    {error, client_exception(), tuple()} |
-    {error, server_exception(), tuple()}.
+    {error, update_scheduling_policy_errors(), tuple()}.
 update_scheduling_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/updateschedulingpolicy"],

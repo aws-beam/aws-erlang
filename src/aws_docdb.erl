@@ -1662,6 +1662,300 @@
 %% }
 -type insufficient_storage_cluster_capacity_fault() :: #{binary() => any()}.
 
+-type add_source_identifier_to_subscription_errors() ::
+    subscription_not_found_fault() | 
+    source_not_found_fault().
+
+-type add_tags_to_resource_errors() ::
+    db_cluster_not_found_fault() | 
+    db_snapshot_not_found_fault() | 
+    db_instance_not_found_fault().
+
+-type apply_pending_maintenance_action_errors() ::
+    invalid_db_instance_state_fault() | 
+    invalid_db_cluster_state_fault() | 
+    resource_not_found_fault().
+
+-type copy_db_cluster_parameter_group_errors() ::
+    db_parameter_group_already_exists_fault() | 
+    db_parameter_group_quota_exceeded_fault() | 
+    db_parameter_group_not_found_fault().
+
+-type copy_db_cluster_snapshot_errors() ::
+    db_cluster_snapshot_not_found_fault() | 
+    invalid_db_cluster_state_fault() | 
+    kms_key_not_accessible_fault() | 
+    invalid_db_cluster_snapshot_state_fault() | 
+    db_cluster_snapshot_already_exists_fault() | 
+    snapshot_quota_exceeded_fault().
+
+-type create_db_cluster_errors() ::
+    insufficient_storage_cluster_capacity_fault() | 
+    invalid_db_instance_state_fault() | 
+    global_cluster_not_found_fault() | 
+    db_cluster_not_found_fault() | 
+    db_cluster_already_exists_fault() | 
+    invalid_db_cluster_state_fault() | 
+    kms_key_not_accessible_fault() | 
+    db_cluster_parameter_group_not_found_fault() | 
+    storage_quota_exceeded_fault() | 
+    db_subnet_group_not_found_fault() | 
+    db_instance_not_found_fault() | 
+    db_subnet_group_does_not_cover_enough_a_zs() | 
+    invalid_vpc_network_state_fault() | 
+    invalid_global_cluster_state_fault() | 
+    invalid_subnet() | 
+    invalid_db_subnet_group_state_fault() | 
+    db_cluster_quota_exceeded_fault().
+
+-type create_db_cluster_parameter_group_errors() ::
+    db_parameter_group_already_exists_fault() | 
+    db_parameter_group_quota_exceeded_fault().
+
+-type create_db_cluster_snapshot_errors() ::
+    db_cluster_not_found_fault() | 
+    invalid_db_cluster_state_fault() | 
+    invalid_db_cluster_snapshot_state_fault() | 
+    db_cluster_snapshot_already_exists_fault() | 
+    snapshot_quota_exceeded_fault().
+
+-type create_db_instance_errors() ::
+    db_cluster_not_found_fault() | 
+    invalid_db_cluster_state_fault() | 
+    kms_key_not_accessible_fault() | 
+    storage_quota_exceeded_fault() | 
+    instance_quota_exceeded_fault() | 
+    db_subnet_group_not_found_fault() | 
+    authorization_not_found_fault() | 
+    db_subnet_group_does_not_cover_enough_a_zs() | 
+    db_security_group_not_found_fault() | 
+    invalid_vpc_network_state_fault() | 
+    storage_type_not_supported_fault() | 
+    invalid_subnet() | 
+    insufficient_db_instance_capacity_fault() | 
+    db_instance_already_exists_fault() | 
+    db_parameter_group_not_found_fault().
+
+-type create_db_subnet_group_errors() ::
+    db_subnet_group_does_not_cover_enough_a_zs() | 
+    db_subnet_group_quota_exceeded_fault() | 
+    db_subnet_quota_exceeded_fault() | 
+    invalid_subnet() | 
+    db_subnet_group_already_exists_fault().
+
+-type create_event_subscription_errors() ::
+    s_n_s_no_authorization_fault() | 
+    event_subscription_quota_exceeded_fault() | 
+    s_n_s_topic_arn_not_found_fault() | 
+    s_n_s_invalid_topic_fault() | 
+    subscription_category_not_found_fault() | 
+    source_not_found_fault() | 
+    subscription_already_exist_fault().
+
+-type create_global_cluster_errors() ::
+    global_cluster_already_exists_fault() | 
+    global_cluster_quota_exceeded_fault() | 
+    db_cluster_not_found_fault() | 
+    invalid_db_cluster_state_fault().
+
+-type delete_db_cluster_errors() ::
+    db_cluster_not_found_fault() | 
+    invalid_db_cluster_state_fault() | 
+    invalid_db_cluster_snapshot_state_fault() | 
+    db_cluster_snapshot_already_exists_fault() | 
+    snapshot_quota_exceeded_fault().
+
+-type delete_db_cluster_parameter_group_errors() ::
+    invalid_db_parameter_group_state_fault() | 
+    db_parameter_group_not_found_fault().
+
+-type delete_db_cluster_snapshot_errors() ::
+    db_cluster_snapshot_not_found_fault() | 
+    invalid_db_cluster_snapshot_state_fault().
+
+-type delete_db_instance_errors() ::
+    invalid_db_instance_state_fault() | 
+    invalid_db_cluster_state_fault() | 
+    db_instance_not_found_fault() | 
+    db_snapshot_already_exists_fault() | 
+    snapshot_quota_exceeded_fault().
+
+-type delete_db_subnet_group_errors() ::
+    invalid_db_subnet_state_fault() | 
+    db_subnet_group_not_found_fault() | 
+    invalid_db_subnet_group_state_fault().
+
+-type delete_event_subscription_errors() ::
+    subscription_not_found_fault() | 
+    invalid_event_subscription_state_fault().
+
+-type delete_global_cluster_errors() ::
+    global_cluster_not_found_fault() | 
+    invalid_global_cluster_state_fault().
+
+-type describe_certificates_errors() ::
+    certificate_not_found_fault().
+
+-type describe_db_cluster_parameter_groups_errors() ::
+    db_parameter_group_not_found_fault().
+
+-type describe_db_cluster_parameters_errors() ::
+    db_parameter_group_not_found_fault().
+
+-type describe_db_cluster_snapshot_attributes_errors() ::
+    db_cluster_snapshot_not_found_fault().
+
+-type describe_db_cluster_snapshots_errors() ::
+    db_cluster_snapshot_not_found_fault().
+
+-type describe_db_clusters_errors() ::
+    db_cluster_not_found_fault().
+
+-type describe_db_instances_errors() ::
+    db_instance_not_found_fault().
+
+-type describe_db_subnet_groups_errors() ::
+    db_subnet_group_not_found_fault().
+
+-type describe_event_subscriptions_errors() ::
+    subscription_not_found_fault().
+
+-type describe_global_clusters_errors() ::
+    global_cluster_not_found_fault().
+
+-type describe_pending_maintenance_actions_errors() ::
+    resource_not_found_fault().
+
+-type failover_db_cluster_errors() ::
+    invalid_db_instance_state_fault() | 
+    db_cluster_not_found_fault() | 
+    invalid_db_cluster_state_fault().
+
+-type list_tags_for_resource_errors() ::
+    db_cluster_not_found_fault() | 
+    db_snapshot_not_found_fault() | 
+    db_instance_not_found_fault().
+
+-type modify_db_cluster_errors() ::
+    invalid_db_instance_state_fault() | 
+    db_cluster_not_found_fault() | 
+    db_cluster_already_exists_fault() | 
+    invalid_db_security_group_state_fault() | 
+    invalid_db_cluster_state_fault() | 
+    db_cluster_parameter_group_not_found_fault() | 
+    storage_quota_exceeded_fault() | 
+    db_subnet_group_not_found_fault() | 
+    invalid_vpc_network_state_fault() | 
+    invalid_subnet() | 
+    invalid_db_subnet_group_state_fault().
+
+-type modify_db_cluster_parameter_group_errors() ::
+    invalid_db_parameter_group_state_fault() | 
+    db_parameter_group_not_found_fault().
+
+-type modify_db_cluster_snapshot_attribute_errors() ::
+    db_cluster_snapshot_not_found_fault() | 
+    invalid_db_cluster_snapshot_state_fault() | 
+    shared_snapshot_quota_exceeded_fault().
+
+-type modify_db_instance_errors() ::
+    invalid_db_instance_state_fault() | 
+    invalid_db_security_group_state_fault() | 
+    storage_quota_exceeded_fault() | 
+    certificate_not_found_fault() | 
+    db_upgrade_dependency_failure_fault() | 
+    db_instance_not_found_fault() | 
+    authorization_not_found_fault() | 
+    db_security_group_not_found_fault() | 
+    invalid_vpc_network_state_fault() | 
+    storage_type_not_supported_fault() | 
+    insufficient_db_instance_capacity_fault() | 
+    db_instance_already_exists_fault() | 
+    db_parameter_group_not_found_fault().
+
+-type modify_db_subnet_group_errors() ::
+    db_subnet_group_not_found_fault() | 
+    db_subnet_group_does_not_cover_enough_a_zs() | 
+    db_subnet_quota_exceeded_fault() | 
+    invalid_subnet() | 
+    subnet_already_in_use().
+
+-type modify_event_subscription_errors() ::
+    s_n_s_no_authorization_fault() | 
+    event_subscription_quota_exceeded_fault() | 
+    s_n_s_topic_arn_not_found_fault() | 
+    s_n_s_invalid_topic_fault() | 
+    subscription_category_not_found_fault() | 
+    subscription_not_found_fault().
+
+-type modify_global_cluster_errors() ::
+    global_cluster_not_found_fault() | 
+    invalid_global_cluster_state_fault().
+
+-type reboot_db_instance_errors() ::
+    invalid_db_instance_state_fault() | 
+    db_instance_not_found_fault().
+
+-type remove_from_global_cluster_errors() ::
+    global_cluster_not_found_fault() | 
+    db_cluster_not_found_fault() | 
+    invalid_global_cluster_state_fault().
+
+-type remove_source_identifier_from_subscription_errors() ::
+    subscription_not_found_fault() | 
+    source_not_found_fault().
+
+-type remove_tags_from_resource_errors() ::
+    db_cluster_not_found_fault() | 
+    db_snapshot_not_found_fault() | 
+    db_instance_not_found_fault().
+
+-type reset_db_cluster_parameter_group_errors() ::
+    invalid_db_parameter_group_state_fault() | 
+    db_parameter_group_not_found_fault().
+
+-type restore_db_cluster_from_snapshot_errors() ::
+    insufficient_storage_cluster_capacity_fault() | 
+    db_cluster_snapshot_not_found_fault() | 
+    insufficient_db_cluster_capacity_fault() | 
+    db_cluster_already_exists_fault() | 
+    kms_key_not_accessible_fault() | 
+    db_snapshot_not_found_fault() | 
+    invalid_db_snapshot_state_fault() | 
+    storage_quota_exceeded_fault() | 
+    db_subnet_group_not_found_fault() | 
+    invalid_db_cluster_snapshot_state_fault() | 
+    invalid_vpc_network_state_fault() | 
+    invalid_subnet() | 
+    invalid_restore_fault() | 
+    db_cluster_quota_exceeded_fault().
+
+-type restore_db_cluster_to_point_in_time_errors() ::
+    insufficient_storage_cluster_capacity_fault() | 
+    db_cluster_snapshot_not_found_fault() | 
+    insufficient_db_cluster_capacity_fault() | 
+    db_cluster_not_found_fault() | 
+    db_cluster_already_exists_fault() | 
+    invalid_db_cluster_state_fault() | 
+    kms_key_not_accessible_fault() | 
+    invalid_db_snapshot_state_fault() | 
+    storage_quota_exceeded_fault() | 
+    db_subnet_group_not_found_fault() | 
+    invalid_db_cluster_snapshot_state_fault() | 
+    invalid_vpc_network_state_fault() | 
+    invalid_subnet() | 
+    invalid_restore_fault() | 
+    db_cluster_quota_exceeded_fault().
+
+-type start_db_cluster_errors() ::
+    invalid_db_instance_state_fault() | 
+    db_cluster_not_found_fault() | 
+    invalid_db_cluster_state_fault().
+
+-type stop_db_cluster_errors() ::
+    invalid_db_instance_state_fault() | 
+    db_cluster_not_found_fault() | 
+    invalid_db_cluster_state_fault().
 
 %%====================================================================
 %% API
@@ -1672,8 +1966,7 @@
 -spec add_source_identifier_to_subscription(map(), add_source_identifier_to_subscription_message()) ->
     {ok, add_source_identifier_to_subscription_result(), tuple()} |
     {error, any()} |
-    {error, source_not_found_fault(), tuple()} |
-    {error, subscription_not_found_fault(), tuple()}.
+    {error, add_source_identifier_to_subscription_errors(), tuple()}.
 add_source_identifier_to_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_source_identifier_to_subscription(Client, Input, []).
@@ -1681,8 +1974,7 @@ add_source_identifier_to_subscription(Client, Input)
 -spec add_source_identifier_to_subscription(map(), add_source_identifier_to_subscription_message(), proplists:proplist()) ->
     {ok, add_source_identifier_to_subscription_result(), tuple()} |
     {error, any()} |
-    {error, source_not_found_fault(), tuple()} |
-    {error, subscription_not_found_fault(), tuple()}.
+    {error, add_source_identifier_to_subscription_errors(), tuple()}.
 add_source_identifier_to_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddSourceIdentifierToSubscription">>, Input, Options).
@@ -1696,9 +1988,7 @@ add_source_identifier_to_subscription(Client, Input, Options)
 -spec add_tags_to_resource(map(), add_tags_to_resource_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, db_cluster_not_found_fault(), tuple()} |
-    {error, db_instance_not_found_fault(), tuple()} |
-    {error, db_snapshot_not_found_fault(), tuple()}.
+    {error, add_tags_to_resource_errors(), tuple()}.
 add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_resource(Client, Input, []).
@@ -1706,9 +1996,7 @@ add_tags_to_resource(Client, Input)
 -spec add_tags_to_resource(map(), add_tags_to_resource_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, db_cluster_not_found_fault(), tuple()} |
-    {error, db_instance_not_found_fault(), tuple()} |
-    {error, db_snapshot_not_found_fault(), tuple()}.
+    {error, add_tags_to_resource_errors(), tuple()}.
 add_tags_to_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTagsToResource">>, Input, Options).
@@ -1718,9 +2006,7 @@ add_tags_to_resource(Client, Input, Options)
 -spec apply_pending_maintenance_action(map(), apply_pending_maintenance_action_message()) ->
     {ok, apply_pending_maintenance_action_result(), tuple()} |
     {error, any()} |
-    {error, invalid_db_cluster_state_fault(), tuple()} |
-    {error, invalid_db_instance_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, apply_pending_maintenance_action_errors(), tuple()}.
 apply_pending_maintenance_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     apply_pending_maintenance_action(Client, Input, []).
@@ -1728,9 +2014,7 @@ apply_pending_maintenance_action(Client, Input)
 -spec apply_pending_maintenance_action(map(), apply_pending_maintenance_action_message(), proplists:proplist()) ->
     {ok, apply_pending_maintenance_action_result(), tuple()} |
     {error, any()} |
-    {error, invalid_db_cluster_state_fault(), tuple()} |
-    {error, invalid_db_instance_state_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, apply_pending_maintenance_action_errors(), tuple()}.
 apply_pending_maintenance_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ApplyPendingMaintenanceAction">>, Input, Options).
@@ -1739,9 +2023,7 @@ apply_pending_maintenance_action(Client, Input, Options)
 -spec copy_db_cluster_parameter_group(map(), copy_db_cluster_parameter_group_message()) ->
     {ok, copy_db_cluster_parameter_group_result(), tuple()} |
     {error, any()} |
-    {error, db_parameter_group_already_exists_fault(), tuple()} |
-    {error, db_parameter_group_not_found_fault(), tuple()} |
-    {error, db_parameter_group_quota_exceeded_fault(), tuple()}.
+    {error, copy_db_cluster_parameter_group_errors(), tuple()}.
 copy_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_db_cluster_parameter_group(Client, Input, []).
@@ -1749,9 +2031,7 @@ copy_db_cluster_parameter_group(Client, Input)
 -spec copy_db_cluster_parameter_group(map(), copy_db_cluster_parameter_group_message(), proplists:proplist()) ->
     {ok, copy_db_cluster_parameter_group_result(), tuple()} |
     {error, any()} |
-    {error, db_parameter_group_already_exists_fault(), tuple()} |
-    {error, db_parameter_group_not_found_fault(), tuple()} |
-    {error, db_parameter_group_quota_exceeded_fault(), tuple()}.
+    {error, copy_db_cluster_parameter_group_errors(), tuple()}.
 copy_db_cluster_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopyDBClusterParameterGroup">>, Input, Options).
@@ -1771,12 +2051,7 @@ copy_db_cluster_parameter_group(Client, Input, Options)
 -spec copy_db_cluster_snapshot(map(), copy_db_cluster_snapshot_message()) ->
     {ok, copy_db_cluster_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, db_cluster_snapshot_already_exists_fault(), tuple()} |
-    {error, db_cluster_snapshot_not_found_fault(), tuple()} |
-    {error, invalid_db_cluster_snapshot_state_fault(), tuple()} |
-    {error, invalid_db_cluster_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, snapshot_quota_exceeded_fault(), tuple()}.
+    {error, copy_db_cluster_snapshot_errors(), tuple()}.
 copy_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_db_cluster_snapshot(Client, Input, []).
@@ -1784,12 +2059,7 @@ copy_db_cluster_snapshot(Client, Input)
 -spec copy_db_cluster_snapshot(map(), copy_db_cluster_snapshot_message(), proplists:proplist()) ->
     {ok, copy_db_cluster_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, db_cluster_snapshot_already_exists_fault(), tuple()} |
-    {error, db_cluster_snapshot_not_found_fault(), tuple()} |
-    {error, invalid_db_cluster_snapshot_state_fault(), tuple()} |
-    {error, invalid_db_cluster_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, snapshot_quota_exceeded_fault(), tuple()}.
+    {error, copy_db_cluster_snapshot_errors(), tuple()}.
 copy_db_cluster_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopyDBClusterSnapshot">>, Input, Options).
@@ -1798,23 +2068,7 @@ copy_db_cluster_snapshot(Client, Input, Options)
 -spec create_db_cluster(map(), create_db_cluster_message()) ->
     {ok, create_db_cluster_result(), tuple()} |
     {error, any()} |
-    {error, db_cluster_already_exists_fault(), tuple()} |
-    {error, db_cluster_not_found_fault(), tuple()} |
-    {error, db_cluster_parameter_group_not_found_fault(), tuple()} |
-    {error, db_cluster_quota_exceeded_fault(), tuple()} |
-    {error, db_instance_not_found_fault(), tuple()} |
-    {error, db_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
-    {error, db_subnet_group_not_found_fault(), tuple()} |
-    {error, global_cluster_not_found_fault(), tuple()} |
-    {error, insufficient_storage_cluster_capacity_fault(), tuple()} |
-    {error, invalid_db_cluster_state_fault(), tuple()} |
-    {error, invalid_db_instance_state_fault(), tuple()} |
-    {error, invalid_db_subnet_group_state_fault(), tuple()} |
-    {error, invalid_global_cluster_state_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, storage_quota_exceeded_fault(), tuple()}.
+    {error, create_db_cluster_errors(), tuple()}.
 create_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster(Client, Input, []).
@@ -1822,23 +2076,7 @@ create_db_cluster(Client, Input)
 -spec create_db_cluster(map(), create_db_cluster_message(), proplists:proplist()) ->
     {ok, create_db_cluster_result(), tuple()} |
     {error, any()} |
-    {error, db_cluster_already_exists_fault(), tuple()} |
-    {error, db_cluster_not_found_fault(), tuple()} |
-    {error, db_cluster_parameter_group_not_found_fault(), tuple()} |
-    {error, db_cluster_quota_exceeded_fault(), tuple()} |
-    {error, db_instance_not_found_fault(), tuple()} |
-    {error, db_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
-    {error, db_subnet_group_not_found_fault(), tuple()} |
-    {error, global_cluster_not_found_fault(), tuple()} |
-    {error, insufficient_storage_cluster_capacity_fault(), tuple()} |
-    {error, invalid_db_cluster_state_fault(), tuple()} |
-    {error, invalid_db_instance_state_fault(), tuple()} |
-    {error, invalid_db_subnet_group_state_fault(), tuple()} |
-    {error, invalid_global_cluster_state_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, storage_quota_exceeded_fault(), tuple()}.
+    {error, create_db_cluster_errors(), tuple()}.
 create_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBCluster">>, Input, Options).
@@ -1870,8 +2108,7 @@ create_db_cluster(Client, Input, Options)
 -spec create_db_cluster_parameter_group(map(), create_db_cluster_parameter_group_message()) ->
     {ok, create_db_cluster_parameter_group_result(), tuple()} |
     {error, any()} |
-    {error, db_parameter_group_already_exists_fault(), tuple()} |
-    {error, db_parameter_group_quota_exceeded_fault(), tuple()}.
+    {error, create_db_cluster_parameter_group_errors(), tuple()}.
 create_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster_parameter_group(Client, Input, []).
@@ -1879,8 +2116,7 @@ create_db_cluster_parameter_group(Client, Input)
 -spec create_db_cluster_parameter_group(map(), create_db_cluster_parameter_group_message(), proplists:proplist()) ->
     {ok, create_db_cluster_parameter_group_result(), tuple()} |
     {error, any()} |
-    {error, db_parameter_group_already_exists_fault(), tuple()} |
-    {error, db_parameter_group_quota_exceeded_fault(), tuple()}.
+    {error, create_db_cluster_parameter_group_errors(), tuple()}.
 create_db_cluster_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBClusterParameterGroup">>, Input, Options).
@@ -1889,11 +2125,7 @@ create_db_cluster_parameter_group(Client, Input, Options)
 -spec create_db_cluster_snapshot(map(), create_db_cluster_snapshot_message()) ->
     {ok, create_db_cluster_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, db_cluster_not_found_fault(), tuple()} |
-    {error, db_cluster_snapshot_already_exists_fault(), tuple()} |
-    {error, invalid_db_cluster_snapshot_state_fault(), tuple()} |
-    {error, invalid_db_cluster_state_fault(), tuple()} |
-    {error, snapshot_quota_exceeded_fault(), tuple()}.
+    {error, create_db_cluster_snapshot_errors(), tuple()}.
 create_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster_snapshot(Client, Input, []).
@@ -1901,11 +2133,7 @@ create_db_cluster_snapshot(Client, Input)
 -spec create_db_cluster_snapshot(map(), create_db_cluster_snapshot_message(), proplists:proplist()) ->
     {ok, create_db_cluster_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, db_cluster_not_found_fault(), tuple()} |
-    {error, db_cluster_snapshot_already_exists_fault(), tuple()} |
-    {error, invalid_db_cluster_snapshot_state_fault(), tuple()} |
-    {error, invalid_db_cluster_state_fault(), tuple()} |
-    {error, snapshot_quota_exceeded_fault(), tuple()}.
+    {error, create_db_cluster_snapshot_errors(), tuple()}.
 create_db_cluster_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBClusterSnapshot">>, Input, Options).
@@ -1914,21 +2142,7 @@ create_db_cluster_snapshot(Client, Input, Options)
 -spec create_db_instance(map(), create_db_instance_message()) ->
     {ok, create_db_instance_result(), tuple()} |
     {error, any()} |
-    {error, authorization_not_found_fault(), tuple()} |
-    {error, db_cluster_not_found_fault(), tuple()} |
-    {error, db_instance_already_exists_fault(), tuple()} |
-    {error, db_parameter_group_not_found_fault(), tuple()} |
-    {error, db_security_group_not_found_fault(), tuple()} |
-    {error, db_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
-    {error, db_subnet_group_not_found_fault(), tuple()} |
-    {error, instance_quota_exceeded_fault(), tuple()} |
-    {error, insufficient_db_instance_capacity_fault(), tuple()} |
-    {error, invalid_db_cluster_state_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, storage_quota_exceeded_fault(), tuple()} |
-    {error, storage_type_not_supported_fault(), tuple()}.
+    {error, create_db_instance_errors(), tuple()}.
 create_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_instance(Client, Input, []).
@@ -1936,21 +2150,7 @@ create_db_instance(Client, Input)
 -spec create_db_instance(map(), create_db_instance_message(), proplists:proplist()) ->
     {ok, create_db_instance_result(), tuple()} |
     {error, any()} |
-    {error, authorization_not_found_fault(), tuple()} |
-    {error, db_cluster_not_found_fault(), tuple()} |
-    {error, db_instance_already_exists_fault(), tuple()} |
-    {error, db_parameter_group_not_found_fault(), tuple()} |
-    {error, db_security_group_not_found_fault(), tuple()} |
-    {error, db_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
-    {error, db_subnet_group_not_found_fault(), tuple()} |
-    {error, instance_quota_exceeded_fault(), tuple()} |
-    {error, insufficient_db_instance_capacity_fault(), tuple()} |
-    {error, invalid_db_cluster_state_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, storage_quota_exceeded_fault(), tuple()} |
-    {error, storage_type_not_supported_fault(), tuple()}.
+    {error, create_db_instance_errors(), tuple()}.
 create_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBInstance">>, Input, Options).
@@ -1962,11 +2162,7 @@ create_db_instance(Client, Input, Options)
 -spec create_db_subnet_group(map(), create_db_subnet_group_message()) ->
     {ok, create_db_subnet_group_result(), tuple()} |
     {error, any()} |
-    {error, db_subnet_group_already_exists_fault(), tuple()} |
-    {error, db_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
-    {error, db_subnet_group_quota_exceeded_fault(), tuple()} |
-    {error, db_subnet_quota_exceeded_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()}.
+    {error, create_db_subnet_group_errors(), tuple()}.
 create_db_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_subnet_group(Client, Input, []).
@@ -1974,11 +2170,7 @@ create_db_subnet_group(Client, Input)
 -spec create_db_subnet_group(map(), create_db_subnet_group_message(), proplists:proplist()) ->
     {ok, create_db_subnet_group_result(), tuple()} |
     {error, any()} |
-    {error, db_subnet_group_already_exists_fault(), tuple()} |
-    {error, db_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
-    {error, db_subnet_group_quota_exceeded_fault(), tuple()} |
-    {error, db_subnet_quota_exceeded_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()}.
+    {error, create_db_subnet_group_errors(), tuple()}.
 create_db_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBSubnetGroup">>, Input, Options).
@@ -2011,13 +2203,7 @@ create_db_subnet_group(Client, Input, Options)
 -spec create_event_subscription(map(), create_event_subscription_message()) ->
     {ok, create_event_subscription_result(), tuple()} |
     {error, any()} |
-    {error, event_subscription_quota_exceeded_fault(), tuple()} |
-    {error, s_n_s_invalid_topic_fault(), tuple()} |
-    {error, s_n_s_no_authorization_fault(), tuple()} |
-    {error, s_n_s_topic_arn_not_found_fault(), tuple()} |
-    {error, source_not_found_fault(), tuple()} |
-    {error, subscription_already_exist_fault(), tuple()} |
-    {error, subscription_category_not_found_fault(), tuple()}.
+    {error, create_event_subscription_errors(), tuple()}.
 create_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_event_subscription(Client, Input, []).
@@ -2025,13 +2211,7 @@ create_event_subscription(Client, Input)
 -spec create_event_subscription(map(), create_event_subscription_message(), proplists:proplist()) ->
     {ok, create_event_subscription_result(), tuple()} |
     {error, any()} |
-    {error, event_subscription_quota_exceeded_fault(), tuple()} |
-    {error, s_n_s_invalid_topic_fault(), tuple()} |
-    {error, s_n_s_no_authorization_fault(), tuple()} |
-    {error, s_n_s_topic_arn_not_found_fault(), tuple()} |
-    {error, source_not_found_fault(), tuple()} |
-    {error, subscription_already_exist_fault(), tuple()} |
-    {error, subscription_category_not_found_fault(), tuple()}.
+    {error, create_event_subscription_errors(), tuple()}.
 create_event_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEventSubscription">>, Input, Options).
@@ -2054,10 +2234,7 @@ create_event_subscription(Client, Input, Options)
 -spec create_global_cluster(map(), create_global_cluster_message()) ->
     {ok, create_global_cluster_result(), tuple()} |
     {error, any()} |
-    {error, db_cluster_not_found_fault(), tuple()} |
-    {error, global_cluster_already_exists_fault(), tuple()} |
-    {error, global_cluster_quota_exceeded_fault(), tuple()} |
-    {error, invalid_db_cluster_state_fault(), tuple()}.
+    {error, create_global_cluster_errors(), tuple()}.
 create_global_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_global_cluster(Client, Input, []).
@@ -2065,10 +2242,7 @@ create_global_cluster(Client, Input)
 -spec create_global_cluster(map(), create_global_cluster_message(), proplists:proplist()) ->
     {ok, create_global_cluster_result(), tuple()} |
     {error, any()} |
-    {error, db_cluster_not_found_fault(), tuple()} |
-    {error, global_cluster_already_exists_fault(), tuple()} |
-    {error, global_cluster_quota_exceeded_fault(), tuple()} |
-    {error, invalid_db_cluster_state_fault(), tuple()}.
+    {error, create_global_cluster_errors(), tuple()}.
 create_global_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGlobalCluster">>, Input, Options).
@@ -2081,11 +2255,7 @@ create_global_cluster(Client, Input, Options)
 -spec delete_db_cluster(map(), delete_db_cluster_message()) ->
     {ok, delete_db_cluster_result(), tuple()} |
     {error, any()} |
-    {error, db_cluster_not_found_fault(), tuple()} |
-    {error, db_cluster_snapshot_already_exists_fault(), tuple()} |
-    {error, invalid_db_cluster_snapshot_state_fault(), tuple()} |
-    {error, invalid_db_cluster_state_fault(), tuple()} |
-    {error, snapshot_quota_exceeded_fault(), tuple()}.
+    {error, delete_db_cluster_errors(), tuple()}.
 delete_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster(Client, Input, []).
@@ -2093,11 +2263,7 @@ delete_db_cluster(Client, Input)
 -spec delete_db_cluster(map(), delete_db_cluster_message(), proplists:proplist()) ->
     {ok, delete_db_cluster_result(), tuple()} |
     {error, any()} |
-    {error, db_cluster_not_found_fault(), tuple()} |
-    {error, db_cluster_snapshot_already_exists_fault(), tuple()} |
-    {error, invalid_db_cluster_snapshot_state_fault(), tuple()} |
-    {error, invalid_db_cluster_state_fault(), tuple()} |
-    {error, snapshot_quota_exceeded_fault(), tuple()}.
+    {error, delete_db_cluster_errors(), tuple()}.
 delete_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBCluster">>, Input, Options).
@@ -2109,8 +2275,7 @@ delete_db_cluster(Client, Input, Options)
 -spec delete_db_cluster_parameter_group(map(), delete_db_cluster_parameter_group_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, db_parameter_group_not_found_fault(), tuple()} |
-    {error, invalid_db_parameter_group_state_fault(), tuple()}.
+    {error, delete_db_cluster_parameter_group_errors(), tuple()}.
 delete_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster_parameter_group(Client, Input, []).
@@ -2118,8 +2283,7 @@ delete_db_cluster_parameter_group(Client, Input)
 -spec delete_db_cluster_parameter_group(map(), delete_db_cluster_parameter_group_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, db_parameter_group_not_found_fault(), tuple()} |
-    {error, invalid_db_parameter_group_state_fault(), tuple()}.
+    {error, delete_db_cluster_parameter_group_errors(), tuple()}.
 delete_db_cluster_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBClusterParameterGroup">>, Input, Options).
@@ -2132,8 +2296,7 @@ delete_db_cluster_parameter_group(Client, Input, Options)
 -spec delete_db_cluster_snapshot(map(), delete_db_cluster_snapshot_message()) ->
     {ok, delete_db_cluster_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, db_cluster_snapshot_not_found_fault(), tuple()} |
-    {error, invalid_db_cluster_snapshot_state_fault(), tuple()}.
+    {error, delete_db_cluster_snapshot_errors(), tuple()}.
 delete_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster_snapshot(Client, Input, []).
@@ -2141,8 +2304,7 @@ delete_db_cluster_snapshot(Client, Input)
 -spec delete_db_cluster_snapshot(map(), delete_db_cluster_snapshot_message(), proplists:proplist()) ->
     {ok, delete_db_cluster_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, db_cluster_snapshot_not_found_fault(), tuple()} |
-    {error, invalid_db_cluster_snapshot_state_fault(), tuple()}.
+    {error, delete_db_cluster_snapshot_errors(), tuple()}.
 delete_db_cluster_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBClusterSnapshot">>, Input, Options).
@@ -2151,11 +2313,7 @@ delete_db_cluster_snapshot(Client, Input, Options)
 -spec delete_db_instance(map(), delete_db_instance_message()) ->
     {ok, delete_db_instance_result(), tuple()} |
     {error, any()} |
-    {error, db_instance_not_found_fault(), tuple()} |
-    {error, db_snapshot_already_exists_fault(), tuple()} |
-    {error, invalid_db_cluster_state_fault(), tuple()} |
-    {error, invalid_db_instance_state_fault(), tuple()} |
-    {error, snapshot_quota_exceeded_fault(), tuple()}.
+    {error, delete_db_instance_errors(), tuple()}.
 delete_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_instance(Client, Input, []).
@@ -2163,11 +2321,7 @@ delete_db_instance(Client, Input)
 -spec delete_db_instance(map(), delete_db_instance_message(), proplists:proplist()) ->
     {ok, delete_db_instance_result(), tuple()} |
     {error, any()} |
-    {error, db_instance_not_found_fault(), tuple()} |
-    {error, db_snapshot_already_exists_fault(), tuple()} |
-    {error, invalid_db_cluster_state_fault(), tuple()} |
-    {error, invalid_db_instance_state_fault(), tuple()} |
-    {error, snapshot_quota_exceeded_fault(), tuple()}.
+    {error, delete_db_instance_errors(), tuple()}.
 delete_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBInstance">>, Input, Options).
@@ -2179,9 +2333,7 @@ delete_db_instance(Client, Input, Options)
 -spec delete_db_subnet_group(map(), delete_db_subnet_group_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, db_subnet_group_not_found_fault(), tuple()} |
-    {error, invalid_db_subnet_group_state_fault(), tuple()} |
-    {error, invalid_db_subnet_state_fault(), tuple()}.
+    {error, delete_db_subnet_group_errors(), tuple()}.
 delete_db_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_subnet_group(Client, Input, []).
@@ -2189,9 +2341,7 @@ delete_db_subnet_group(Client, Input)
 -spec delete_db_subnet_group(map(), delete_db_subnet_group_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, db_subnet_group_not_found_fault(), tuple()} |
-    {error, invalid_db_subnet_group_state_fault(), tuple()} |
-    {error, invalid_db_subnet_state_fault(), tuple()}.
+    {error, delete_db_subnet_group_errors(), tuple()}.
 delete_db_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBSubnetGroup">>, Input, Options).
@@ -2200,8 +2350,7 @@ delete_db_subnet_group(Client, Input, Options)
 -spec delete_event_subscription(map(), delete_event_subscription_message()) ->
     {ok, delete_event_subscription_result(), tuple()} |
     {error, any()} |
-    {error, invalid_event_subscription_state_fault(), tuple()} |
-    {error, subscription_not_found_fault(), tuple()}.
+    {error, delete_event_subscription_errors(), tuple()}.
 delete_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_event_subscription(Client, Input, []).
@@ -2209,8 +2358,7 @@ delete_event_subscription(Client, Input)
 -spec delete_event_subscription(map(), delete_event_subscription_message(), proplists:proplist()) ->
     {ok, delete_event_subscription_result(), tuple()} |
     {error, any()} |
-    {error, invalid_event_subscription_state_fault(), tuple()} |
-    {error, subscription_not_found_fault(), tuple()}.
+    {error, delete_event_subscription_errors(), tuple()}.
 delete_event_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEventSubscription">>, Input, Options).
@@ -2224,8 +2372,7 @@ delete_event_subscription(Client, Input, Options)
 -spec delete_global_cluster(map(), delete_global_cluster_message()) ->
     {ok, delete_global_cluster_result(), tuple()} |
     {error, any()} |
-    {error, global_cluster_not_found_fault(), tuple()} |
-    {error, invalid_global_cluster_state_fault(), tuple()}.
+    {error, delete_global_cluster_errors(), tuple()}.
 delete_global_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_global_cluster(Client, Input, []).
@@ -2233,8 +2380,7 @@ delete_global_cluster(Client, Input)
 -spec delete_global_cluster(map(), delete_global_cluster_message(), proplists:proplist()) ->
     {ok, delete_global_cluster_result(), tuple()} |
     {error, any()} |
-    {error, global_cluster_not_found_fault(), tuple()} |
-    {error, invalid_global_cluster_state_fault(), tuple()}.
+    {error, delete_global_cluster_errors(), tuple()}.
 delete_global_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGlobalCluster">>, Input, Options).
@@ -2244,7 +2390,7 @@ delete_global_cluster(Client, Input, Options)
 -spec describe_certificates(map(), describe_certificates_message()) ->
     {ok, certificate_message(), tuple()} |
     {error, any()} |
-    {error, certificate_not_found_fault(), tuple()}.
+    {error, describe_certificates_errors(), tuple()}.
 describe_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_certificates(Client, Input, []).
@@ -2252,7 +2398,7 @@ describe_certificates(Client, Input)
 -spec describe_certificates(map(), describe_certificates_message(), proplists:proplist()) ->
     {ok, certificate_message(), tuple()} |
     {error, any()} |
-    {error, certificate_not_found_fault(), tuple()}.
+    {error, describe_certificates_errors(), tuple()}.
 describe_certificates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCertificates">>, Input, Options).
@@ -2264,7 +2410,7 @@ describe_certificates(Client, Input, Options)
 -spec describe_db_cluster_parameter_groups(map(), describe_db_cluster_parameter_groups_message()) ->
     {ok, db_cluster_parameter_groups_message(), tuple()} |
     {error, any()} |
-    {error, db_parameter_group_not_found_fault(), tuple()}.
+    {error, describe_db_cluster_parameter_groups_errors(), tuple()}.
 describe_db_cluster_parameter_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_parameter_groups(Client, Input, []).
@@ -2272,7 +2418,7 @@ describe_db_cluster_parameter_groups(Client, Input)
 -spec describe_db_cluster_parameter_groups(map(), describe_db_cluster_parameter_groups_message(), proplists:proplist()) ->
     {ok, db_cluster_parameter_groups_message(), tuple()} |
     {error, any()} |
-    {error, db_parameter_group_not_found_fault(), tuple()}.
+    {error, describe_db_cluster_parameter_groups_errors(), tuple()}.
 describe_db_cluster_parameter_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBClusterParameterGroups">>, Input, Options).
@@ -2283,7 +2429,7 @@ describe_db_cluster_parameter_groups(Client, Input, Options)
 -spec describe_db_cluster_parameters(map(), describe_db_cluster_parameters_message()) ->
     {ok, db_cluster_parameter_group_details(), tuple()} |
     {error, any()} |
-    {error, db_parameter_group_not_found_fault(), tuple()}.
+    {error, describe_db_cluster_parameters_errors(), tuple()}.
 describe_db_cluster_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_parameters(Client, Input, []).
@@ -2291,7 +2437,7 @@ describe_db_cluster_parameters(Client, Input)
 -spec describe_db_cluster_parameters(map(), describe_db_cluster_parameters_message(), proplists:proplist()) ->
     {ok, db_cluster_parameter_group_details(), tuple()} |
     {error, any()} |
-    {error, db_parameter_group_not_found_fault(), tuple()}.
+    {error, describe_db_cluster_parameters_errors(), tuple()}.
 describe_db_cluster_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBClusterParameters">>, Input, Options).
@@ -2310,7 +2456,7 @@ describe_db_cluster_parameters(Client, Input, Options)
 -spec describe_db_cluster_snapshot_attributes(map(), describe_db_cluster_snapshot_attributes_message()) ->
     {ok, describe_db_cluster_snapshot_attributes_result(), tuple()} |
     {error, any()} |
-    {error, db_cluster_snapshot_not_found_fault(), tuple()}.
+    {error, describe_db_cluster_snapshot_attributes_errors(), tuple()}.
 describe_db_cluster_snapshot_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_snapshot_attributes(Client, Input, []).
@@ -2318,7 +2464,7 @@ describe_db_cluster_snapshot_attributes(Client, Input)
 -spec describe_db_cluster_snapshot_attributes(map(), describe_db_cluster_snapshot_attributes_message(), proplists:proplist()) ->
     {ok, describe_db_cluster_snapshot_attributes_result(), tuple()} |
     {error, any()} |
-    {error, db_cluster_snapshot_not_found_fault(), tuple()}.
+    {error, describe_db_cluster_snapshot_attributes_errors(), tuple()}.
 describe_db_cluster_snapshot_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBClusterSnapshotAttributes">>, Input, Options).
@@ -2329,7 +2475,7 @@ describe_db_cluster_snapshot_attributes(Client, Input, Options)
 -spec describe_db_cluster_snapshots(map(), describe_db_cluster_snapshots_message()) ->
     {ok, db_cluster_snapshot_message(), tuple()} |
     {error, any()} |
-    {error, db_cluster_snapshot_not_found_fault(), tuple()}.
+    {error, describe_db_cluster_snapshots_errors(), tuple()}.
 describe_db_cluster_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_snapshots(Client, Input, []).
@@ -2337,7 +2483,7 @@ describe_db_cluster_snapshots(Client, Input)
 -spec describe_db_cluster_snapshots(map(), describe_db_cluster_snapshots_message(), proplists:proplist()) ->
     {ok, db_cluster_snapshot_message(), tuple()} |
     {error, any()} |
-    {error, db_cluster_snapshot_not_found_fault(), tuple()}.
+    {error, describe_db_cluster_snapshots_errors(), tuple()}.
 describe_db_cluster_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBClusterSnapshots">>, Input, Options).
@@ -2354,7 +2500,7 @@ describe_db_cluster_snapshots(Client, Input, Options)
 -spec describe_db_clusters(map(), describe_db_clusters_message()) ->
     {ok, db_cluster_message(), tuple()} |
     {error, any()} |
-    {error, db_cluster_not_found_fault(), tuple()}.
+    {error, describe_db_clusters_errors(), tuple()}.
 describe_db_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_clusters(Client, Input, []).
@@ -2362,7 +2508,7 @@ describe_db_clusters(Client, Input)
 -spec describe_db_clusters(map(), describe_db_clusters_message(), proplists:proplist()) ->
     {ok, db_cluster_message(), tuple()} |
     {error, any()} |
-    {error, db_cluster_not_found_fault(), tuple()}.
+    {error, describe_db_clusters_errors(), tuple()}.
 describe_db_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBClusters">>, Input, Options).
@@ -2388,7 +2534,7 @@ describe_db_engine_versions(Client, Input, Options)
 -spec describe_db_instances(map(), describe_db_instances_message()) ->
     {ok, db_instance_message(), tuple()} |
     {error, any()} |
-    {error, db_instance_not_found_fault(), tuple()}.
+    {error, describe_db_instances_errors(), tuple()}.
 describe_db_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_instances(Client, Input, []).
@@ -2396,7 +2542,7 @@ describe_db_instances(Client, Input)
 -spec describe_db_instances(map(), describe_db_instances_message(), proplists:proplist()) ->
     {ok, db_instance_message(), tuple()} |
     {error, any()} |
-    {error, db_instance_not_found_fault(), tuple()}.
+    {error, describe_db_instances_errors(), tuple()}.
 describe_db_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBInstances">>, Input, Options).
@@ -2409,7 +2555,7 @@ describe_db_instances(Client, Input, Options)
 -spec describe_db_subnet_groups(map(), describe_db_subnet_groups_message()) ->
     {ok, db_subnet_group_message(), tuple()} |
     {error, any()} |
-    {error, db_subnet_group_not_found_fault(), tuple()}.
+    {error, describe_db_subnet_groups_errors(), tuple()}.
 describe_db_subnet_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_subnet_groups(Client, Input, []).
@@ -2417,7 +2563,7 @@ describe_db_subnet_groups(Client, Input)
 -spec describe_db_subnet_groups(map(), describe_db_subnet_groups_message(), proplists:proplist()) ->
     {ok, db_subnet_group_message(), tuple()} |
     {error, any()} |
-    {error, db_subnet_group_not_found_fault(), tuple()}.
+    {error, describe_db_subnet_groups_errors(), tuple()}.
 describe_db_subnet_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBSubnetGroups">>, Input, Options).
@@ -2467,7 +2613,7 @@ describe_event_categories(Client, Input, Options)
 -spec describe_event_subscriptions(map(), describe_event_subscriptions_message()) ->
     {ok, event_subscriptions_message(), tuple()} |
     {error, any()} |
-    {error, subscription_not_found_fault(), tuple()}.
+    {error, describe_event_subscriptions_errors(), tuple()}.
 describe_event_subscriptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_subscriptions(Client, Input, []).
@@ -2475,7 +2621,7 @@ describe_event_subscriptions(Client, Input)
 -spec describe_event_subscriptions(map(), describe_event_subscriptions_message(), proplists:proplist()) ->
     {ok, event_subscriptions_message(), tuple()} |
     {error, any()} |
-    {error, subscription_not_found_fault(), tuple()}.
+    {error, describe_event_subscriptions_errors(), tuple()}.
 describe_event_subscriptions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEventSubscriptions">>, Input, Options).
@@ -2508,7 +2654,7 @@ describe_events(Client, Input, Options)
 -spec describe_global_clusters(map(), describe_global_clusters_message()) ->
     {ok, global_clusters_message(), tuple()} |
     {error, any()} |
-    {error, global_cluster_not_found_fault(), tuple()}.
+    {error, describe_global_clusters_errors(), tuple()}.
 describe_global_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_global_clusters(Client, Input, []).
@@ -2516,7 +2662,7 @@ describe_global_clusters(Client, Input)
 -spec describe_global_clusters(map(), describe_global_clusters_message(), proplists:proplist()) ->
     {ok, global_clusters_message(), tuple()} |
     {error, any()} |
-    {error, global_cluster_not_found_fault(), tuple()}.
+    {error, describe_global_clusters_errors(), tuple()}.
 describe_global_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGlobalClusters">>, Input, Options).
@@ -2543,7 +2689,7 @@ describe_orderable_db_instance_options(Client, Input, Options)
 -spec describe_pending_maintenance_actions(map(), describe_pending_maintenance_actions_message()) ->
     {ok, pending_maintenance_actions_message(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_pending_maintenance_actions_errors(), tuple()}.
 describe_pending_maintenance_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_pending_maintenance_actions(Client, Input, []).
@@ -2551,7 +2697,7 @@ describe_pending_maintenance_actions(Client, Input)
 -spec describe_pending_maintenance_actions(map(), describe_pending_maintenance_actions_message(), proplists:proplist()) ->
     {ok, pending_maintenance_actions_message(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_pending_maintenance_actions_errors(), tuple()}.
 describe_pending_maintenance_actions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePendingMaintenanceActions">>, Input, Options).
@@ -2568,9 +2714,7 @@ describe_pending_maintenance_actions(Client, Input, Options)
 -spec failover_db_cluster(map(), failover_db_cluster_message()) ->
     {ok, failover_db_cluster_result(), tuple()} |
     {error, any()} |
-    {error, db_cluster_not_found_fault(), tuple()} |
-    {error, invalid_db_cluster_state_fault(), tuple()} |
-    {error, invalid_db_instance_state_fault(), tuple()}.
+    {error, failover_db_cluster_errors(), tuple()}.
 failover_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     failover_db_cluster(Client, Input, []).
@@ -2578,9 +2722,7 @@ failover_db_cluster(Client, Input)
 -spec failover_db_cluster(map(), failover_db_cluster_message(), proplists:proplist()) ->
     {ok, failover_db_cluster_result(), tuple()} |
     {error, any()} |
-    {error, db_cluster_not_found_fault(), tuple()} |
-    {error, invalid_db_cluster_state_fault(), tuple()} |
-    {error, invalid_db_instance_state_fault(), tuple()}.
+    {error, failover_db_cluster_errors(), tuple()}.
 failover_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"FailoverDBCluster">>, Input, Options).
@@ -2589,9 +2731,7 @@ failover_db_cluster(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_message()) ->
     {ok, tag_list_message(), tuple()} |
     {error, any()} |
-    {error, db_cluster_not_found_fault(), tuple()} |
-    {error, db_instance_not_found_fault(), tuple()} |
-    {error, db_snapshot_not_found_fault(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -2599,9 +2739,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_message(), proplists:proplist()) ->
     {ok, tag_list_message(), tuple()} |
     {error, any()} |
-    {error, db_cluster_not_found_fault(), tuple()} |
-    {error, db_instance_not_found_fault(), tuple()} |
-    {error, db_snapshot_not_found_fault(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -2615,17 +2753,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec modify_db_cluster(map(), modify_db_cluster_message()) ->
     {ok, modify_db_cluster_result(), tuple()} |
     {error, any()} |
-    {error, db_cluster_already_exists_fault(), tuple()} |
-    {error, db_cluster_not_found_fault(), tuple()} |
-    {error, db_cluster_parameter_group_not_found_fault(), tuple()} |
-    {error, db_subnet_group_not_found_fault(), tuple()} |
-    {error, invalid_db_cluster_state_fault(), tuple()} |
-    {error, invalid_db_instance_state_fault(), tuple()} |
-    {error, invalid_db_security_group_state_fault(), tuple()} |
-    {error, invalid_db_subnet_group_state_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, storage_quota_exceeded_fault(), tuple()}.
+    {error, modify_db_cluster_errors(), tuple()}.
 modify_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster(Client, Input, []).
@@ -2633,17 +2761,7 @@ modify_db_cluster(Client, Input)
 -spec modify_db_cluster(map(), modify_db_cluster_message(), proplists:proplist()) ->
     {ok, modify_db_cluster_result(), tuple()} |
     {error, any()} |
-    {error, db_cluster_already_exists_fault(), tuple()} |
-    {error, db_cluster_not_found_fault(), tuple()} |
-    {error, db_cluster_parameter_group_not_found_fault(), tuple()} |
-    {error, db_subnet_group_not_found_fault(), tuple()} |
-    {error, invalid_db_cluster_state_fault(), tuple()} |
-    {error, invalid_db_instance_state_fault(), tuple()} |
-    {error, invalid_db_security_group_state_fault(), tuple()} |
-    {error, invalid_db_subnet_group_state_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, storage_quota_exceeded_fault(), tuple()}.
+    {error, modify_db_cluster_errors(), tuple()}.
 modify_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBCluster">>, Input, Options).
@@ -2675,8 +2793,7 @@ modify_db_cluster(Client, Input, Options)
 -spec modify_db_cluster_parameter_group(map(), modify_db_cluster_parameter_group_message()) ->
     {ok, db_cluster_parameter_group_name_message(), tuple()} |
     {error, any()} |
-    {error, db_parameter_group_not_found_fault(), tuple()} |
-    {error, invalid_db_parameter_group_state_fault(), tuple()}.
+    {error, modify_db_cluster_parameter_group_errors(), tuple()}.
 modify_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster_parameter_group(Client, Input, []).
@@ -2684,8 +2801,7 @@ modify_db_cluster_parameter_group(Client, Input)
 -spec modify_db_cluster_parameter_group(map(), modify_db_cluster_parameter_group_message(), proplists:proplist()) ->
     {ok, db_cluster_parameter_group_name_message(), tuple()} |
     {error, any()} |
-    {error, db_parameter_group_not_found_fault(), tuple()} |
-    {error, invalid_db_parameter_group_state_fault(), tuple()}.
+    {error, modify_db_cluster_parameter_group_errors(), tuple()}.
 modify_db_cluster_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBClusterParameterGroup">>, Input, Options).
@@ -2709,9 +2825,7 @@ modify_db_cluster_parameter_group(Client, Input, Options)
 -spec modify_db_cluster_snapshot_attribute(map(), modify_db_cluster_snapshot_attribute_message()) ->
     {ok, modify_db_cluster_snapshot_attribute_result(), tuple()} |
     {error, any()} |
-    {error, db_cluster_snapshot_not_found_fault(), tuple()} |
-    {error, invalid_db_cluster_snapshot_state_fault(), tuple()} |
-    {error, shared_snapshot_quota_exceeded_fault(), tuple()}.
+    {error, modify_db_cluster_snapshot_attribute_errors(), tuple()}.
 modify_db_cluster_snapshot_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster_snapshot_attribute(Client, Input, []).
@@ -2719,9 +2833,7 @@ modify_db_cluster_snapshot_attribute(Client, Input)
 -spec modify_db_cluster_snapshot_attribute(map(), modify_db_cluster_snapshot_attribute_message(), proplists:proplist()) ->
     {ok, modify_db_cluster_snapshot_attribute_result(), tuple()} |
     {error, any()} |
-    {error, db_cluster_snapshot_not_found_fault(), tuple()} |
-    {error, invalid_db_cluster_snapshot_state_fault(), tuple()} |
-    {error, shared_snapshot_quota_exceeded_fault(), tuple()}.
+    {error, modify_db_cluster_snapshot_attribute_errors(), tuple()}.
 modify_db_cluster_snapshot_attribute(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBClusterSnapshotAttribute">>, Input, Options).
@@ -2733,19 +2845,7 @@ modify_db_cluster_snapshot_attribute(Client, Input, Options)
 -spec modify_db_instance(map(), modify_db_instance_message()) ->
     {ok, modify_db_instance_result(), tuple()} |
     {error, any()} |
-    {error, authorization_not_found_fault(), tuple()} |
-    {error, certificate_not_found_fault(), tuple()} |
-    {error, db_instance_already_exists_fault(), tuple()} |
-    {error, db_instance_not_found_fault(), tuple()} |
-    {error, db_parameter_group_not_found_fault(), tuple()} |
-    {error, db_security_group_not_found_fault(), tuple()} |
-    {error, db_upgrade_dependency_failure_fault(), tuple()} |
-    {error, insufficient_db_instance_capacity_fault(), tuple()} |
-    {error, invalid_db_instance_state_fault(), tuple()} |
-    {error, invalid_db_security_group_state_fault(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, storage_quota_exceeded_fault(), tuple()} |
-    {error, storage_type_not_supported_fault(), tuple()}.
+    {error, modify_db_instance_errors(), tuple()}.
 modify_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_instance(Client, Input, []).
@@ -2753,19 +2853,7 @@ modify_db_instance(Client, Input)
 -spec modify_db_instance(map(), modify_db_instance_message(), proplists:proplist()) ->
     {ok, modify_db_instance_result(), tuple()} |
     {error, any()} |
-    {error, authorization_not_found_fault(), tuple()} |
-    {error, certificate_not_found_fault(), tuple()} |
-    {error, db_instance_already_exists_fault(), tuple()} |
-    {error, db_instance_not_found_fault(), tuple()} |
-    {error, db_parameter_group_not_found_fault(), tuple()} |
-    {error, db_security_group_not_found_fault(), tuple()} |
-    {error, db_upgrade_dependency_failure_fault(), tuple()} |
-    {error, insufficient_db_instance_capacity_fault(), tuple()} |
-    {error, invalid_db_instance_state_fault(), tuple()} |
-    {error, invalid_db_security_group_state_fault(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, storage_quota_exceeded_fault(), tuple()} |
-    {error, storage_type_not_supported_fault(), tuple()}.
+    {error, modify_db_instance_errors(), tuple()}.
 modify_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBInstance">>, Input, Options).
@@ -2777,11 +2865,7 @@ modify_db_instance(Client, Input, Options)
 -spec modify_db_subnet_group(map(), modify_db_subnet_group_message()) ->
     {ok, modify_db_subnet_group_result(), tuple()} |
     {error, any()} |
-    {error, db_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
-    {error, db_subnet_group_not_found_fault(), tuple()} |
-    {error, db_subnet_quota_exceeded_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, subnet_already_in_use(), tuple()}.
+    {error, modify_db_subnet_group_errors(), tuple()}.
 modify_db_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_subnet_group(Client, Input, []).
@@ -2789,11 +2873,7 @@ modify_db_subnet_group(Client, Input)
 -spec modify_db_subnet_group(map(), modify_db_subnet_group_message(), proplists:proplist()) ->
     {ok, modify_db_subnet_group_result(), tuple()} |
     {error, any()} |
-    {error, db_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
-    {error, db_subnet_group_not_found_fault(), tuple()} |
-    {error, db_subnet_quota_exceeded_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, subnet_already_in_use(), tuple()}.
+    {error, modify_db_subnet_group_errors(), tuple()}.
 modify_db_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBSubnetGroup">>, Input, Options).
@@ -2803,12 +2883,7 @@ modify_db_subnet_group(Client, Input, Options)
 -spec modify_event_subscription(map(), modify_event_subscription_message()) ->
     {ok, modify_event_subscription_result(), tuple()} |
     {error, any()} |
-    {error, event_subscription_quota_exceeded_fault(), tuple()} |
-    {error, s_n_s_invalid_topic_fault(), tuple()} |
-    {error, s_n_s_no_authorization_fault(), tuple()} |
-    {error, s_n_s_topic_arn_not_found_fault(), tuple()} |
-    {error, subscription_category_not_found_fault(), tuple()} |
-    {error, subscription_not_found_fault(), tuple()}.
+    {error, modify_event_subscription_errors(), tuple()}.
 modify_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_event_subscription(Client, Input, []).
@@ -2816,12 +2891,7 @@ modify_event_subscription(Client, Input)
 -spec modify_event_subscription(map(), modify_event_subscription_message(), proplists:proplist()) ->
     {ok, modify_event_subscription_result(), tuple()} |
     {error, any()} |
-    {error, event_subscription_quota_exceeded_fault(), tuple()} |
-    {error, s_n_s_invalid_topic_fault(), tuple()} |
-    {error, s_n_s_no_authorization_fault(), tuple()} |
-    {error, s_n_s_topic_arn_not_found_fault(), tuple()} |
-    {error, subscription_category_not_found_fault(), tuple()} |
-    {error, subscription_not_found_fault(), tuple()}.
+    {error, modify_event_subscription_errors(), tuple()}.
 modify_event_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyEventSubscription">>, Input, Options).
@@ -2836,8 +2906,7 @@ modify_event_subscription(Client, Input, Options)
 -spec modify_global_cluster(map(), modify_global_cluster_message()) ->
     {ok, modify_global_cluster_result(), tuple()} |
     {error, any()} |
-    {error, global_cluster_not_found_fault(), tuple()} |
-    {error, invalid_global_cluster_state_fault(), tuple()}.
+    {error, modify_global_cluster_errors(), tuple()}.
 modify_global_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_global_cluster(Client, Input, []).
@@ -2845,8 +2914,7 @@ modify_global_cluster(Client, Input)
 -spec modify_global_cluster(map(), modify_global_cluster_message(), proplists:proplist()) ->
     {ok, modify_global_cluster_result(), tuple()} |
     {error, any()} |
-    {error, global_cluster_not_found_fault(), tuple()} |
-    {error, invalid_global_cluster_state_fault(), tuple()}.
+    {error, modify_global_cluster_errors(), tuple()}.
 modify_global_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyGlobalCluster">>, Input, Options).
@@ -2868,8 +2936,7 @@ modify_global_cluster(Client, Input, Options)
 -spec reboot_db_instance(map(), reboot_db_instance_message()) ->
     {ok, reboot_db_instance_result(), tuple()} |
     {error, any()} |
-    {error, db_instance_not_found_fault(), tuple()} |
-    {error, invalid_db_instance_state_fault(), tuple()}.
+    {error, reboot_db_instance_errors(), tuple()}.
 reboot_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_db_instance(Client, Input, []).
@@ -2877,8 +2944,7 @@ reboot_db_instance(Client, Input)
 -spec reboot_db_instance(map(), reboot_db_instance_message(), proplists:proplist()) ->
     {ok, reboot_db_instance_result(), tuple()} |
     {error, any()} |
-    {error, db_instance_not_found_fault(), tuple()} |
-    {error, invalid_db_instance_state_fault(), tuple()}.
+    {error, reboot_db_instance_errors(), tuple()}.
 reboot_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RebootDBInstance">>, Input, Options).
@@ -2894,9 +2960,7 @@ reboot_db_instance(Client, Input, Options)
 -spec remove_from_global_cluster(map(), remove_from_global_cluster_message()) ->
     {ok, remove_from_global_cluster_result(), tuple()} |
     {error, any()} |
-    {error, db_cluster_not_found_fault(), tuple()} |
-    {error, global_cluster_not_found_fault(), tuple()} |
-    {error, invalid_global_cluster_state_fault(), tuple()}.
+    {error, remove_from_global_cluster_errors(), tuple()}.
 remove_from_global_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_from_global_cluster(Client, Input, []).
@@ -2904,9 +2968,7 @@ remove_from_global_cluster(Client, Input)
 -spec remove_from_global_cluster(map(), remove_from_global_cluster_message(), proplists:proplist()) ->
     {ok, remove_from_global_cluster_result(), tuple()} |
     {error, any()} |
-    {error, db_cluster_not_found_fault(), tuple()} |
-    {error, global_cluster_not_found_fault(), tuple()} |
-    {error, invalid_global_cluster_state_fault(), tuple()}.
+    {error, remove_from_global_cluster_errors(), tuple()}.
 remove_from_global_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveFromGlobalCluster">>, Input, Options).
@@ -2917,8 +2979,7 @@ remove_from_global_cluster(Client, Input, Options)
 -spec remove_source_identifier_from_subscription(map(), remove_source_identifier_from_subscription_message()) ->
     {ok, remove_source_identifier_from_subscription_result(), tuple()} |
     {error, any()} |
-    {error, source_not_found_fault(), tuple()} |
-    {error, subscription_not_found_fault(), tuple()}.
+    {error, remove_source_identifier_from_subscription_errors(), tuple()}.
 remove_source_identifier_from_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_source_identifier_from_subscription(Client, Input, []).
@@ -2926,8 +2987,7 @@ remove_source_identifier_from_subscription(Client, Input)
 -spec remove_source_identifier_from_subscription(map(), remove_source_identifier_from_subscription_message(), proplists:proplist()) ->
     {ok, remove_source_identifier_from_subscription_result(), tuple()} |
     {error, any()} |
-    {error, source_not_found_fault(), tuple()} |
-    {error, subscription_not_found_fault(), tuple()}.
+    {error, remove_source_identifier_from_subscription_errors(), tuple()}.
 remove_source_identifier_from_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveSourceIdentifierFromSubscription">>, Input, Options).
@@ -2936,9 +2996,7 @@ remove_source_identifier_from_subscription(Client, Input, Options)
 -spec remove_tags_from_resource(map(), remove_tags_from_resource_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, db_cluster_not_found_fault(), tuple()} |
-    {error, db_instance_not_found_fault(), tuple()} |
-    {error, db_snapshot_not_found_fault(), tuple()}.
+    {error, remove_tags_from_resource_errors(), tuple()}.
 remove_tags_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_resource(Client, Input, []).
@@ -2946,9 +3004,7 @@ remove_tags_from_resource(Client, Input)
 -spec remove_tags_from_resource(map(), remove_tags_from_resource_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, db_cluster_not_found_fault(), tuple()} |
-    {error, db_instance_not_found_fault(), tuple()} |
-    {error, db_snapshot_not_found_fault(), tuple()}.
+    {error, remove_tags_from_resource_errors(), tuple()}.
 remove_tags_from_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTagsFromResource">>, Input, Options).
@@ -2972,8 +3028,7 @@ remove_tags_from_resource(Client, Input, Options)
 -spec reset_db_cluster_parameter_group(map(), reset_db_cluster_parameter_group_message()) ->
     {ok, db_cluster_parameter_group_name_message(), tuple()} |
     {error, any()} |
-    {error, db_parameter_group_not_found_fault(), tuple()} |
-    {error, invalid_db_parameter_group_state_fault(), tuple()}.
+    {error, reset_db_cluster_parameter_group_errors(), tuple()}.
 reset_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_db_cluster_parameter_group(Client, Input, []).
@@ -2981,8 +3036,7 @@ reset_db_cluster_parameter_group(Client, Input)
 -spec reset_db_cluster_parameter_group(map(), reset_db_cluster_parameter_group_message(), proplists:proplist()) ->
     {ok, db_cluster_parameter_group_name_message(), tuple()} |
     {error, any()} |
-    {error, db_parameter_group_not_found_fault(), tuple()} |
-    {error, invalid_db_parameter_group_state_fault(), tuple()}.
+    {error, reset_db_cluster_parameter_group_errors(), tuple()}.
 reset_db_cluster_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResetDBClusterParameterGroup">>, Input, Options).
@@ -2999,20 +3053,7 @@ reset_db_cluster_parameter_group(Client, Input, Options)
 -spec restore_db_cluster_from_snapshot(map(), restore_db_cluster_from_snapshot_message()) ->
     {ok, restore_db_cluster_from_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, db_cluster_already_exists_fault(), tuple()} |
-    {error, db_cluster_quota_exceeded_fault(), tuple()} |
-    {error, db_cluster_snapshot_not_found_fault(), tuple()} |
-    {error, db_snapshot_not_found_fault(), tuple()} |
-    {error, db_subnet_group_not_found_fault(), tuple()} |
-    {error, insufficient_db_cluster_capacity_fault(), tuple()} |
-    {error, insufficient_storage_cluster_capacity_fault(), tuple()} |
-    {error, invalid_db_cluster_snapshot_state_fault(), tuple()} |
-    {error, invalid_db_snapshot_state_fault(), tuple()} |
-    {error, invalid_restore_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, storage_quota_exceeded_fault(), tuple()}.
+    {error, restore_db_cluster_from_snapshot_errors(), tuple()}.
 restore_db_cluster_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_cluster_from_snapshot(Client, Input, []).
@@ -3020,20 +3061,7 @@ restore_db_cluster_from_snapshot(Client, Input)
 -spec restore_db_cluster_from_snapshot(map(), restore_db_cluster_from_snapshot_message(), proplists:proplist()) ->
     {ok, restore_db_cluster_from_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, db_cluster_already_exists_fault(), tuple()} |
-    {error, db_cluster_quota_exceeded_fault(), tuple()} |
-    {error, db_cluster_snapshot_not_found_fault(), tuple()} |
-    {error, db_snapshot_not_found_fault(), tuple()} |
-    {error, db_subnet_group_not_found_fault(), tuple()} |
-    {error, insufficient_db_cluster_capacity_fault(), tuple()} |
-    {error, insufficient_storage_cluster_capacity_fault(), tuple()} |
-    {error, invalid_db_cluster_snapshot_state_fault(), tuple()} |
-    {error, invalid_db_snapshot_state_fault(), tuple()} |
-    {error, invalid_restore_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, storage_quota_exceeded_fault(), tuple()}.
+    {error, restore_db_cluster_from_snapshot_errors(), tuple()}.
 restore_db_cluster_from_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreDBClusterFromSnapshot">>, Input, Options).
@@ -3049,21 +3077,7 @@ restore_db_cluster_from_snapshot(Client, Input, Options)
 -spec restore_db_cluster_to_point_in_time(map(), restore_db_cluster_to_point_in_time_message()) ->
     {ok, restore_db_cluster_to_point_in_time_result(), tuple()} |
     {error, any()} |
-    {error, db_cluster_already_exists_fault(), tuple()} |
-    {error, db_cluster_not_found_fault(), tuple()} |
-    {error, db_cluster_quota_exceeded_fault(), tuple()} |
-    {error, db_cluster_snapshot_not_found_fault(), tuple()} |
-    {error, db_subnet_group_not_found_fault(), tuple()} |
-    {error, insufficient_db_cluster_capacity_fault(), tuple()} |
-    {error, insufficient_storage_cluster_capacity_fault(), tuple()} |
-    {error, invalid_db_cluster_snapshot_state_fault(), tuple()} |
-    {error, invalid_db_cluster_state_fault(), tuple()} |
-    {error, invalid_db_snapshot_state_fault(), tuple()} |
-    {error, invalid_restore_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, storage_quota_exceeded_fault(), tuple()}.
+    {error, restore_db_cluster_to_point_in_time_errors(), tuple()}.
 restore_db_cluster_to_point_in_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_cluster_to_point_in_time(Client, Input, []).
@@ -3071,21 +3085,7 @@ restore_db_cluster_to_point_in_time(Client, Input)
 -spec restore_db_cluster_to_point_in_time(map(), restore_db_cluster_to_point_in_time_message(), proplists:proplist()) ->
     {ok, restore_db_cluster_to_point_in_time_result(), tuple()} |
     {error, any()} |
-    {error, db_cluster_already_exists_fault(), tuple()} |
-    {error, db_cluster_not_found_fault(), tuple()} |
-    {error, db_cluster_quota_exceeded_fault(), tuple()} |
-    {error, db_cluster_snapshot_not_found_fault(), tuple()} |
-    {error, db_subnet_group_not_found_fault(), tuple()} |
-    {error, insufficient_db_cluster_capacity_fault(), tuple()} |
-    {error, insufficient_storage_cluster_capacity_fault(), tuple()} |
-    {error, invalid_db_cluster_snapshot_state_fault(), tuple()} |
-    {error, invalid_db_cluster_state_fault(), tuple()} |
-    {error, invalid_db_snapshot_state_fault(), tuple()} |
-    {error, invalid_restore_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, kms_key_not_accessible_fault(), tuple()} |
-    {error, storage_quota_exceeded_fault(), tuple()}.
+    {error, restore_db_cluster_to_point_in_time_errors(), tuple()}.
 restore_db_cluster_to_point_in_time(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreDBClusterToPointInTime">>, Input, Options).
@@ -3099,9 +3099,7 @@ restore_db_cluster_to_point_in_time(Client, Input, Options)
 -spec start_db_cluster(map(), start_db_cluster_message()) ->
     {ok, start_db_cluster_result(), tuple()} |
     {error, any()} |
-    {error, db_cluster_not_found_fault(), tuple()} |
-    {error, invalid_db_cluster_state_fault(), tuple()} |
-    {error, invalid_db_instance_state_fault(), tuple()}.
+    {error, start_db_cluster_errors(), tuple()}.
 start_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_db_cluster(Client, Input, []).
@@ -3109,9 +3107,7 @@ start_db_cluster(Client, Input)
 -spec start_db_cluster(map(), start_db_cluster_message(), proplists:proplist()) ->
     {ok, start_db_cluster_result(), tuple()} |
     {error, any()} |
-    {error, db_cluster_not_found_fault(), tuple()} |
-    {error, invalid_db_cluster_state_fault(), tuple()} |
-    {error, invalid_db_instance_state_fault(), tuple()}.
+    {error, start_db_cluster_errors(), tuple()}.
 start_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDBCluster">>, Input, Options).
@@ -3127,9 +3123,7 @@ start_db_cluster(Client, Input, Options)
 -spec stop_db_cluster(map(), stop_db_cluster_message()) ->
     {ok, stop_db_cluster_result(), tuple()} |
     {error, any()} |
-    {error, db_cluster_not_found_fault(), tuple()} |
-    {error, invalid_db_cluster_state_fault(), tuple()} |
-    {error, invalid_db_instance_state_fault(), tuple()}.
+    {error, stop_db_cluster_errors(), tuple()}.
 stop_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_db_cluster(Client, Input, []).
@@ -3137,9 +3131,7 @@ stop_db_cluster(Client, Input)
 -spec stop_db_cluster(map(), stop_db_cluster_message(), proplists:proplist()) ->
     {ok, stop_db_cluster_result(), tuple()} |
     {error, any()} |
-    {error, db_cluster_not_found_fault(), tuple()} |
-    {error, invalid_db_cluster_state_fault(), tuple()} |
-    {error, invalid_db_instance_state_fault(), tuple()}.
+    {error, stop_db_cluster_errors(), tuple()}.
 stop_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopDBCluster">>, Input, Options).

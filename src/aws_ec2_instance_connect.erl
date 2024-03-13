@@ -113,6 +113,27 @@
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+-type send_serial_console_ssh_public_key_errors() ::
+    throttling_exception() | 
+    service_exception() | 
+    serial_console_session_unavailable_exception() | 
+    serial_console_session_limit_exceeded_exception() | 
+    serial_console_access_disabled_exception() | 
+    invalid_args_exception() | 
+    ec2_instance_unavailable_exception() | 
+    ec2_instance_type_invalid_exception() | 
+    ec2_instance_state_invalid_exception() | 
+    ec2_instance_not_found_exception() | 
+    auth_exception().
+
+-type send_ssh_public_key_errors() ::
+    throttling_exception() | 
+    service_exception() | 
+    invalid_args_exception() | 
+    ec2_instance_unavailable_exception() | 
+    ec2_instance_state_invalid_exception() | 
+    ec2_instance_not_found_exception() | 
+    auth_exception().
 
 %%====================================================================
 %% API
@@ -130,17 +151,7 @@
 -spec send_serial_console_ssh_public_key(map(), send_serial_console_ssh_public_key_request()) ->
     {ok, send_serial_console_ssh_public_key_response(), tuple()} |
     {error, any()} |
-    {error, auth_exception(), tuple()} |
-    {error, ec2_instance_not_found_exception(), tuple()} |
-    {error, ec2_instance_state_invalid_exception(), tuple()} |
-    {error, ec2_instance_type_invalid_exception(), tuple()} |
-    {error, ec2_instance_unavailable_exception(), tuple()} |
-    {error, invalid_args_exception(), tuple()} |
-    {error, serial_console_access_disabled_exception(), tuple()} |
-    {error, serial_console_session_limit_exceeded_exception(), tuple()} |
-    {error, serial_console_session_unavailable_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, send_serial_console_ssh_public_key_errors(), tuple()}.
 send_serial_console_ssh_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_serial_console_ssh_public_key(Client, Input, []).
@@ -148,17 +159,7 @@ send_serial_console_ssh_public_key(Client, Input)
 -spec send_serial_console_ssh_public_key(map(), send_serial_console_ssh_public_key_request(), proplists:proplist()) ->
     {ok, send_serial_console_ssh_public_key_response(), tuple()} |
     {error, any()} |
-    {error, auth_exception(), tuple()} |
-    {error, ec2_instance_not_found_exception(), tuple()} |
-    {error, ec2_instance_state_invalid_exception(), tuple()} |
-    {error, ec2_instance_type_invalid_exception(), tuple()} |
-    {error, ec2_instance_unavailable_exception(), tuple()} |
-    {error, invalid_args_exception(), tuple()} |
-    {error, serial_console_access_disabled_exception(), tuple()} |
-    {error, serial_console_session_limit_exceeded_exception(), tuple()} |
-    {error, serial_console_session_unavailable_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, send_serial_console_ssh_public_key_errors(), tuple()}.
 send_serial_console_ssh_public_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendSerialConsoleSSHPublicKey">>, Input, Options).
@@ -174,13 +175,7 @@ send_serial_console_ssh_public_key(Client, Input, Options)
 -spec send_ssh_public_key(map(), send_ssh_public_key_request()) ->
     {ok, send_ssh_public_key_response(), tuple()} |
     {error, any()} |
-    {error, auth_exception(), tuple()} |
-    {error, ec2_instance_not_found_exception(), tuple()} |
-    {error, ec2_instance_state_invalid_exception(), tuple()} |
-    {error, ec2_instance_unavailable_exception(), tuple()} |
-    {error, invalid_args_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, send_ssh_public_key_errors(), tuple()}.
 send_ssh_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_ssh_public_key(Client, Input, []).
@@ -188,13 +183,7 @@ send_ssh_public_key(Client, Input)
 -spec send_ssh_public_key(map(), send_ssh_public_key_request(), proplists:proplist()) ->
     {ok, send_ssh_public_key_response(), tuple()} |
     {error, any()} |
-    {error, auth_exception(), tuple()} |
-    {error, ec2_instance_not_found_exception(), tuple()} |
-    {error, ec2_instance_state_invalid_exception(), tuple()} |
-    {error, ec2_instance_unavailable_exception(), tuple()} |
-    {error, invalid_args_exception(), tuple()} |
-    {error, service_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, send_ssh_public_key_errors(), tuple()}.
 send_ssh_public_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendSSHPublicKey">>, Input, Options).

@@ -48,6 +48,7 @@
 %% }
 -type archive_retain_rule() :: #{binary() => any()}.
 
+
 %% Example:
 %% encryption_configuration() :: #{
 %%   <<"CmkArn">> => string(),
@@ -55,11 +56,13 @@
 %% }
 -type encryption_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"Tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_lifecycle_policy_request() :: #{
@@ -76,6 +79,7 @@
 %% }
 -type update_lifecycle_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% cross_region_copy_action() :: #{
 %%   <<"EncryptionConfiguration">> => encryption_configuration(),
@@ -83,12 +87,15 @@
 %%   <<"Target">> => string()
 %% }
 -type cross_region_copy_action() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 %% Example:
 %% update_lifecycle_policy_response() :: #{}
 -type update_lifecycle_policy_response() :: #{}.
+
 
 %% Example:
 %% retain_rule() :: #{
@@ -98,6 +105,7 @@
 %% }
 -type retain_rule() :: #{binary() => any()}.
 
+
 %% Example:
 %% deprecate_rule() :: #{
 %%   <<"Count">> => integer(),
@@ -105,6 +113,7 @@
 %%   <<"IntervalUnit">> => list(any())
 %% }
 -type deprecate_rule() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_lifecycle_policies_request() :: #{
@@ -117,6 +126,7 @@
 %% }
 -type get_lifecycle_policies_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% event_parameters() :: #{
 %%   <<"DescriptionRegex">> => string(),
@@ -124,6 +134,7 @@
 %%   <<"SnapshotOwner">> => list(string()())
 %% }
 -type event_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% fast_restore_rule() :: #{
@@ -134,11 +145,13 @@
 %% }
 -type fast_restore_rule() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% parameters() :: #{
@@ -148,15 +161,18 @@
 %% }
 -type parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% event_source() :: #{
 %%   <<"Parameters">> => event_parameters(),
 %%   <<"Type">> => list(any())
 %% }
 -type event_source() :: #{binary() => any()}.
+
 %% Example:
 %% delete_lifecycle_policy_response() :: #{}
 -type delete_lifecycle_policy_response() :: #{}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -166,6 +182,7 @@
 %%   <<"ResourceType">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% lifecycle_policy_summary() :: #{
@@ -178,6 +195,7 @@
 %% }
 -type lifecycle_policy_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag() :: #{
 %%   <<"Key">> => string(),
@@ -185,12 +203,14 @@
 %% }
 -type tag() :: #{binary() => any()}.
 
+
 %% Example:
 %% cross_region_copy_deprecate_rule() :: #{
 %%   <<"Interval">> => integer(),
 %%   <<"IntervalUnit">> => list(any())
 %% }
 -type cross_region_copy_deprecate_rule() :: #{binary() => any()}.
+
 
 %% Example:
 %% invalid_request_exception() :: #{
@@ -201,11 +221,13 @@
 %% }
 -type invalid_request_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% exclusions() :: #{
@@ -215,17 +237,20 @@
 %% }
 -type exclusions() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_lifecycle_policy_response() :: #{
 %%   <<"PolicyId">> => string()
 %% }
 -type create_lifecycle_policy_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_lifecycle_policies_response() :: #{
 %%   <<"Policies">> => list(lifecycle_policy_summary()())
 %% }
 -type get_lifecycle_policies_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% cross_region_copy_rule() :: #{
@@ -239,11 +264,13 @@
 %% }
 -type cross_region_copy_rule() :: #{binary() => any()}.
 
+
 %% Example:
 %% cross_region_copy_target() :: #{
 %%   <<"TargetRegion">> => string()
 %% }
 -type cross_region_copy_target() :: #{binary() => any()}.
+
 
 %% Example:
 %% lifecycle_policy() :: #{
@@ -261,6 +288,7 @@
 %% }
 -type lifecycle_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"Code">> => string(),
@@ -268,11 +296,13 @@
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% archive_rule() :: #{
 %%   <<"RetainRule">> => archive_retain_rule()
 %% }
 -type archive_rule() :: #{binary() => any()}.
+
 
 %% Example:
 %% schedule() :: #{
@@ -289,9 +319,11 @@
 %%   <<"VariableTags">> => list(tag()())
 %% }
 -type schedule() :: #{binary() => any()}.
+
 %% Example:
 %% delete_lifecycle_policy_request() :: #{}
 -type delete_lifecycle_policy_request() :: #{}.
+
 
 %% Example:
 %% action() :: #{
@@ -299,6 +331,7 @@
 %%   <<"Name">> => string()
 %% }
 -type action() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_rule() :: #{
@@ -311,6 +344,7 @@
 %% }
 -type create_rule() :: #{binary() => any()}.
 
+
 %% Example:
 %% retention_archive_tier() :: #{
 %%   <<"Count">> => integer(),
@@ -318,15 +352,19 @@
 %%   <<"IntervalUnit">> => list(any())
 %% }
 -type retention_archive_tier() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 %% Example:
 %% get_lifecycle_policy_request() :: #{}
 -type get_lifecycle_policy_request() :: #{}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% cross_region_copy_retain_rule() :: #{
@@ -334,6 +372,7 @@
 %%   <<"IntervalUnit">> => list(any())
 %% }
 -type cross_region_copy_retain_rule() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_lifecycle_policy_request() :: #{
@@ -352,6 +391,7 @@
 %% }
 -type create_lifecycle_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% script() :: #{
 %%   <<"ExecuteOperationOnScriptFailure">> => boolean(),
@@ -363,6 +403,7 @@
 %% }
 -type script() :: #{binary() => any()}.
 
+
 %% Example:
 %% limit_exceeded_exception() :: #{
 %%   <<"Code">> => string(),
@@ -370,6 +411,7 @@
 %%   <<"ResourceType">> => string()
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% policy_details() :: #{
@@ -392,6 +434,7 @@
 %% }
 -type policy_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% share_rule() :: #{
 %%   <<"TargetAccounts">> => list(string()()),
@@ -400,11 +443,54 @@
 %% }
 -type share_rule() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_lifecycle_policy_response() :: #{
 %%   <<"Policy">> => lifecycle_policy()
 %% }
 -type get_lifecycle_policy_response() :: #{binary() => any()}.
+
+-type create_lifecycle_policy_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type delete_lifecycle_policy_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_lifecycle_policies_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type get_lifecycle_policy_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type update_lifecycle_policy_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -434,18 +520,14 @@
 -spec create_lifecycle_policy(map(), create_lifecycle_policy_request()) ->
     {ok, create_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_lifecycle_policy_errors(), tuple()}.
 create_lifecycle_policy(Client, Input) ->
     create_lifecycle_policy(Client, Input, []).
 
 -spec create_lifecycle_policy(map(), create_lifecycle_policy_request(), proplists:proplist()) ->
     {ok, create_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_lifecycle_policy_errors(), tuple()}.
 create_lifecycle_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/policies"],
@@ -478,18 +560,14 @@ create_lifecycle_policy(Client, Input0, Options0) ->
 -spec delete_lifecycle_policy(map(), binary() | list(), delete_lifecycle_policy_request()) ->
     {ok, delete_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_lifecycle_policy_errors(), tuple()}.
 delete_lifecycle_policy(Client, PolicyId, Input) ->
     delete_lifecycle_policy(Client, PolicyId, Input, []).
 
 -spec delete_lifecycle_policy(map(), binary() | list(), delete_lifecycle_policy_request(), proplists:proplist()) ->
     {ok, delete_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_lifecycle_policy_errors(), tuple()}.
 delete_lifecycle_policy(Client, PolicyId, Input0, Options0) ->
     Method = delete,
     Path = ["/policies/", aws_util:encode_uri(PolicyId), ""],
@@ -520,10 +598,7 @@ delete_lifecycle_policy(Client, PolicyId, Input0, Options0) ->
 -spec get_lifecycle_policies(map()) ->
     {ok, get_lifecycle_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_lifecycle_policies_errors(), tuple()}.
 get_lifecycle_policies(Client)
   when is_map(Client) ->
     get_lifecycle_policies(Client, #{}, #{}).
@@ -531,10 +606,7 @@ get_lifecycle_policies(Client)
 -spec get_lifecycle_policies(map(), map(), map()) ->
     {ok, get_lifecycle_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_lifecycle_policies_errors(), tuple()}.
 get_lifecycle_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_lifecycle_policies(Client, QueryMap, HeadersMap, []).
@@ -542,10 +614,7 @@ get_lifecycle_policies(Client, QueryMap, HeadersMap)
 -spec get_lifecycle_policies(map(), map(), map(), proplists:proplist()) ->
     {ok, get_lifecycle_policies_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_lifecycle_policies_errors(), tuple()}.
 get_lifecycle_policies(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/policies"],
@@ -575,9 +644,7 @@ get_lifecycle_policies(Client, QueryMap, HeadersMap, Options0)
 -spec get_lifecycle_policy(map(), binary() | list()) ->
     {ok, get_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_lifecycle_policy_errors(), tuple()}.
 get_lifecycle_policy(Client, PolicyId)
   when is_map(Client) ->
     get_lifecycle_policy(Client, PolicyId, #{}, #{}).
@@ -585,9 +652,7 @@ get_lifecycle_policy(Client, PolicyId)
 -spec get_lifecycle_policy(map(), binary() | list(), map(), map()) ->
     {ok, get_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_lifecycle_policy_errors(), tuple()}.
 get_lifecycle_policy(Client, PolicyId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_lifecycle_policy(Client, PolicyId, QueryMap, HeadersMap, []).
@@ -595,9 +660,7 @@ get_lifecycle_policy(Client, PolicyId, QueryMap, HeadersMap)
 -spec get_lifecycle_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_lifecycle_policy_errors(), tuple()}.
 get_lifecycle_policy(Client, PolicyId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/policies/", aws_util:encode_uri(PolicyId), ""],
@@ -618,9 +681,7 @@ get_lifecycle_policy(Client, PolicyId, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -628,9 +689,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -638,9 +697,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -661,18 +718,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -699,18 +752,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -742,20 +791,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_lifecycle_policy(map(), binary() | list(), update_lifecycle_policy_request()) ->
     {ok, update_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_lifecycle_policy_errors(), tuple()}.
 update_lifecycle_policy(Client, PolicyId, Input) ->
     update_lifecycle_policy(Client, PolicyId, Input, []).
 
 -spec update_lifecycle_policy(map(), binary() | list(), update_lifecycle_policy_request(), proplists:proplist()) ->
     {ok, update_lifecycle_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_lifecycle_policy_errors(), tuple()}.
 update_lifecycle_policy(Client, PolicyId, Input0, Options0) ->
     Method = patch,
     Path = ["/policies/", aws_util:encode_uri(PolicyId), ""],

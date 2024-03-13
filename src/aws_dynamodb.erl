@@ -2111,6 +2111,345 @@
 %% }
 -type condition_check() :: #{binary() => any()}.
 
+-type batch_execute_statement_errors() ::
+    request_limit_exceeded() | 
+    internal_server_error().
+
+-type batch_get_item_errors() ::
+    request_limit_exceeded() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_endpoint_exception().
+
+-type batch_write_item_errors() ::
+    request_limit_exceeded() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_endpoint_exception() | 
+    item_collection_size_limit_exceeded_exception().
+
+-type create_backup_errors() ::
+    table_not_found_exception() | 
+    table_in_use_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    backup_in_use_exception() | 
+    continuous_backups_unavailable_exception() | 
+    invalid_endpoint_exception().
+
+-type create_global_table_errors() ::
+    table_not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    global_table_already_exists_exception() | 
+    invalid_endpoint_exception().
+
+-type create_table_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    invalid_endpoint_exception() | 
+    resource_in_use_exception().
+
+-type delete_backup_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    backup_in_use_exception() | 
+    backup_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type delete_item_errors() ::
+    request_limit_exceeded() | 
+    internal_server_error() | 
+    conditional_check_failed_exception() | 
+    transaction_conflict_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_endpoint_exception() | 
+    item_collection_size_limit_exceeded_exception().
+
+-type delete_table_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception() | 
+    resource_in_use_exception().
+
+-type describe_backup_errors() ::
+    internal_server_error() | 
+    backup_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type describe_continuous_backups_errors() ::
+    table_not_found_exception() | 
+    internal_server_error() | 
+    invalid_endpoint_exception().
+
+-type describe_contributor_insights_errors() ::
+    internal_server_error() | 
+    resource_not_found_exception().
+
+-type describe_export_errors() ::
+    export_not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error().
+
+-type describe_global_table_errors() ::
+    internal_server_error() | 
+    global_table_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type describe_global_table_settings_errors() ::
+    internal_server_error() | 
+    global_table_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type describe_import_errors() ::
+    import_not_found_exception().
+
+-type describe_kinesis_streaming_destination_errors() ::
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type describe_limits_errors() ::
+    internal_server_error() | 
+    invalid_endpoint_exception().
+
+-type describe_table_errors() ::
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type describe_table_replica_auto_scaling_errors() ::
+    internal_server_error() | 
+    resource_not_found_exception().
+
+-type describe_time_to_live_errors() ::
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type disable_kinesis_streaming_destination_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception() | 
+    resource_in_use_exception().
+
+-type enable_kinesis_streaming_destination_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception() | 
+    resource_in_use_exception().
+
+-type execute_statement_errors() ::
+    request_limit_exceeded() | 
+    internal_server_error() | 
+    conditional_check_failed_exception() | 
+    transaction_conflict_exception() | 
+    duplicate_item_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    item_collection_size_limit_exceeded_exception().
+
+-type execute_transaction_errors() ::
+    transaction_in_progress_exception() | 
+    request_limit_exceeded() | 
+    internal_server_error() | 
+    idempotent_parameter_mismatch_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    transaction_canceled_exception().
+
+-type export_table_to_point_in_time_errors() ::
+    table_not_found_exception() | 
+    export_conflict_exception() | 
+    invalid_export_time_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    point_in_time_recovery_unavailable_exception().
+
+-type get_item_errors() ::
+    request_limit_exceeded() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_endpoint_exception().
+
+-type import_table_errors() ::
+    limit_exceeded_exception() | 
+    import_conflict_exception() | 
+    resource_in_use_exception().
+
+-type list_backups_errors() ::
+    internal_server_error() | 
+    invalid_endpoint_exception().
+
+-type list_contributor_insights_errors() ::
+    internal_server_error() | 
+    resource_not_found_exception().
+
+-type list_exports_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_error().
+
+-type list_global_tables_errors() ::
+    internal_server_error() | 
+    invalid_endpoint_exception().
+
+-type list_imports_errors() ::
+    limit_exceeded_exception().
+
+-type list_tables_errors() ::
+    internal_server_error() | 
+    invalid_endpoint_exception().
+
+-type list_tags_of_resource_errors() ::
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type put_item_errors() ::
+    request_limit_exceeded() | 
+    internal_server_error() | 
+    conditional_check_failed_exception() | 
+    transaction_conflict_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_endpoint_exception() | 
+    item_collection_size_limit_exceeded_exception().
+
+-type query_errors() ::
+    request_limit_exceeded() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_endpoint_exception().
+
+-type restore_table_from_backup_errors() ::
+    table_in_use_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    backup_in_use_exception() | 
+    backup_not_found_exception() | 
+    invalid_endpoint_exception() | 
+    table_already_exists_exception().
+
+-type restore_table_to_point_in_time_errors() ::
+    table_not_found_exception() | 
+    table_in_use_exception() | 
+    limit_exceeded_exception() | 
+    invalid_restore_time_exception() | 
+    internal_server_error() | 
+    invalid_endpoint_exception() | 
+    point_in_time_recovery_unavailable_exception() | 
+    table_already_exists_exception().
+
+-type scan_errors() ::
+    request_limit_exceeded() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_endpoint_exception().
+
+-type tag_resource_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception() | 
+    resource_in_use_exception().
+
+-type transact_get_items_errors() ::
+    request_limit_exceeded() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    transaction_canceled_exception() | 
+    invalid_endpoint_exception().
+
+-type transact_write_items_errors() ::
+    transaction_in_progress_exception() | 
+    request_limit_exceeded() | 
+    internal_server_error() | 
+    idempotent_parameter_mismatch_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    transaction_canceled_exception() | 
+    invalid_endpoint_exception().
+
+-type untag_resource_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception() | 
+    resource_in_use_exception().
+
+-type update_continuous_backups_errors() ::
+    table_not_found_exception() | 
+    internal_server_error() | 
+    continuous_backups_unavailable_exception() | 
+    invalid_endpoint_exception().
+
+-type update_contributor_insights_errors() ::
+    internal_server_error() | 
+    resource_not_found_exception().
+
+-type update_global_table_errors() ::
+    table_not_found_exception() | 
+    replica_not_found_exception() | 
+    internal_server_error() | 
+    global_table_not_found_exception() | 
+    replica_already_exists_exception() | 
+    invalid_endpoint_exception().
+
+-type update_global_table_settings_errors() ::
+    replica_not_found_exception() | 
+    index_not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    global_table_not_found_exception() | 
+    invalid_endpoint_exception() | 
+    resource_in_use_exception().
+
+-type update_item_errors() ::
+    request_limit_exceeded() | 
+    internal_server_error() | 
+    conditional_check_failed_exception() | 
+    transaction_conflict_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_endpoint_exception() | 
+    item_collection_size_limit_exceeded_exception().
+
+-type update_kinesis_streaming_destination_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception() | 
+    resource_in_use_exception().
+
+-type update_table_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception() | 
+    resource_in_use_exception().
+
+-type update_table_replica_auto_scaling_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type update_time_to_live_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception() | 
+    resource_in_use_exception().
 
 %%====================================================================
 %% API
@@ -2139,8 +2478,7 @@
 -spec batch_execute_statement(map(), batch_execute_statement_input()) ->
     {ok, batch_execute_statement_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, request_limit_exceeded(), tuple()}.
+    {error, batch_execute_statement_errors(), tuple()}.
 batch_execute_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_execute_statement(Client, Input, []).
@@ -2148,8 +2486,7 @@ batch_execute_statement(Client, Input)
 -spec batch_execute_statement(map(), batch_execute_statement_input(), proplists:proplist()) ->
     {ok, batch_execute_statement_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, request_limit_exceeded(), tuple()}.
+    {error, batch_execute_statement_errors(), tuple()}.
 batch_execute_statement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchExecuteStatement">>, Input, Options).
@@ -2236,11 +2573,7 @@ batch_execute_statement(Client, Input, Options)
 -spec batch_get_item(map(), batch_get_item_input()) ->
     {ok, batch_get_item_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, request_limit_exceeded(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, batch_get_item_errors(), tuple()}.
 batch_get_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_item(Client, Input, []).
@@ -2248,11 +2581,7 @@ batch_get_item(Client, Input)
 -spec batch_get_item(map(), batch_get_item_input(), proplists:proplist()) ->
     {ok, batch_get_item_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, request_limit_exceeded(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, batch_get_item_errors(), tuple()}.
 batch_get_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetItem">>, Input, Options).
@@ -2370,12 +2699,7 @@ batch_get_item(Client, Input, Options)
 -spec batch_write_item(map(), batch_write_item_input()) ->
     {ok, batch_write_item_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, item_collection_size_limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, request_limit_exceeded(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, batch_write_item_errors(), tuple()}.
 batch_write_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_write_item(Client, Input, []).
@@ -2383,12 +2707,7 @@ batch_write_item(Client, Input)
 -spec batch_write_item(map(), batch_write_item_input(), proplists:proplist()) ->
     {ok, batch_write_item_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, item_collection_size_limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, request_limit_exceeded(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, batch_write_item_errors(), tuple()}.
 batch_write_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchWriteItem">>, Input, Options).
@@ -2434,13 +2753,7 @@ batch_write_item(Client, Input, Options)
 -spec create_backup(map(), create_backup_input()) ->
     {ok, create_backup_output(), tuple()} |
     {error, any()} |
-    {error, backup_in_use_exception(), tuple()} |
-    {error, continuous_backups_unavailable_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, table_in_use_exception(), tuple()} |
-    {error, table_not_found_exception(), tuple()}.
+    {error, create_backup_errors(), tuple()}.
 create_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_backup(Client, Input, []).
@@ -2448,13 +2761,7 @@ create_backup(Client, Input)
 -spec create_backup(map(), create_backup_input(), proplists:proplist()) ->
     {ok, create_backup_output(), tuple()} |
     {error, any()} |
-    {error, backup_in_use_exception(), tuple()} |
-    {error, continuous_backups_unavailable_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, table_in_use_exception(), tuple()} |
-    {error, table_not_found_exception(), tuple()}.
+    {error, create_backup_errors(), tuple()}.
 create_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBackup">>, Input, Options).
@@ -2532,11 +2839,7 @@ create_backup(Client, Input, Options)
 -spec create_global_table(map(), create_global_table_input()) ->
     {ok, create_global_table_output(), tuple()} |
     {error, any()} |
-    {error, global_table_already_exists_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, table_not_found_exception(), tuple()}.
+    {error, create_global_table_errors(), tuple()}.
 create_global_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_global_table(Client, Input, []).
@@ -2544,11 +2847,7 @@ create_global_table(Client, Input)
 -spec create_global_table(map(), create_global_table_input(), proplists:proplist()) ->
     {ok, create_global_table_output(), tuple()} |
     {error, any()} |
-    {error, global_table_already_exists_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, table_not_found_exception(), tuple()}.
+    {error, create_global_table_errors(), tuple()}.
 create_global_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGlobalTable">>, Input, Options).
@@ -2577,10 +2876,7 @@ create_global_table(Client, Input, Options)
 -spec create_table(map(), create_table_input()) ->
     {ok, create_table_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, create_table_errors(), tuple()}.
 create_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_table(Client, Input, []).
@@ -2588,10 +2884,7 @@ create_table(Client, Input)
 -spec create_table(map(), create_table_input(), proplists:proplist()) ->
     {ok, create_table_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, create_table_errors(), tuple()}.
 create_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTable">>, Input, Options).
@@ -2603,11 +2896,7 @@ create_table(Client, Input, Options)
 -spec delete_backup(map(), delete_backup_input()) ->
     {ok, delete_backup_output(), tuple()} |
     {error, any()} |
-    {error, backup_in_use_exception(), tuple()} |
-    {error, backup_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, delete_backup_errors(), tuple()}.
 delete_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_backup(Client, Input, []).
@@ -2615,11 +2904,7 @@ delete_backup(Client, Input)
 -spec delete_backup(map(), delete_backup_input(), proplists:proplist()) ->
     {ok, delete_backup_output(), tuple()} |
     {error, any()} |
-    {error, backup_in_use_exception(), tuple()} |
-    {error, backup_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, delete_backup_errors(), tuple()}.
 delete_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBackup">>, Input, Options).
@@ -2648,14 +2933,7 @@ delete_backup(Client, Input, Options)
 -spec delete_item(map(), delete_item_input()) ->
     {ok, delete_item_output(), tuple()} |
     {error, any()} |
-    {error, conditional_check_failed_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, item_collection_size_limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, request_limit_exceeded(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, transaction_conflict_exception(), tuple()}.
+    {error, delete_item_errors(), tuple()}.
 delete_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_item(Client, Input, []).
@@ -2663,14 +2941,7 @@ delete_item(Client, Input)
 -spec delete_item(map(), delete_item_input(), proplists:proplist()) ->
     {ok, delete_item_output(), tuple()} |
     {error, any()} |
-    {error, conditional_check_failed_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, item_collection_size_limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, request_limit_exceeded(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, transaction_conflict_exception(), tuple()}.
+    {error, delete_item_errors(), tuple()}.
 delete_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteItem">>, Input, Options).
@@ -2708,11 +2979,7 @@ delete_item(Client, Input, Options)
 -spec delete_table(map(), delete_table_input()) ->
     {ok, delete_table_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_table_errors(), tuple()}.
 delete_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_table(Client, Input, []).
@@ -2720,11 +2987,7 @@ delete_table(Client, Input)
 -spec delete_table(map(), delete_table_input(), proplists:proplist()) ->
     {ok, delete_table_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_table_errors(), tuple()}.
 delete_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTable">>, Input, Options).
@@ -2736,9 +2999,7 @@ delete_table(Client, Input, Options)
 -spec describe_backup(map(), describe_backup_input()) ->
     {ok, describe_backup_output(), tuple()} |
     {error, any()} |
-    {error, backup_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()}.
+    {error, describe_backup_errors(), tuple()}.
 describe_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_backup(Client, Input, []).
@@ -2746,9 +3007,7 @@ describe_backup(Client, Input)
 -spec describe_backup(map(), describe_backup_input(), proplists:proplist()) ->
     {ok, describe_backup_output(), tuple()} |
     {error, any()} |
-    {error, backup_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()}.
+    {error, describe_backup_errors(), tuple()}.
 describe_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBackup">>, Input, Options).
@@ -2777,9 +3036,7 @@ describe_backup(Client, Input, Options)
 -spec describe_continuous_backups(map(), describe_continuous_backups_input()) ->
     {ok, describe_continuous_backups_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, table_not_found_exception(), tuple()}.
+    {error, describe_continuous_backups_errors(), tuple()}.
 describe_continuous_backups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_continuous_backups(Client, Input, []).
@@ -2787,9 +3044,7 @@ describe_continuous_backups(Client, Input)
 -spec describe_continuous_backups(map(), describe_continuous_backups_input(), proplists:proplist()) ->
     {ok, describe_continuous_backups_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, table_not_found_exception(), tuple()}.
+    {error, describe_continuous_backups_errors(), tuple()}.
 describe_continuous_backups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeContinuousBackups">>, Input, Options).
@@ -2800,8 +3055,7 @@ describe_continuous_backups(Client, Input, Options)
 -spec describe_contributor_insights(map(), describe_contributor_insights_input()) ->
     {ok, describe_contributor_insights_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_contributor_insights_errors(), tuple()}.
 describe_contributor_insights(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_contributor_insights(Client, Input, []).
@@ -2809,8 +3063,7 @@ describe_contributor_insights(Client, Input)
 -spec describe_contributor_insights(map(), describe_contributor_insights_input(), proplists:proplist()) ->
     {ok, describe_contributor_insights_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_contributor_insights_errors(), tuple()}.
 describe_contributor_insights(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeContributorInsights">>, Input, Options).
@@ -2838,9 +3091,7 @@ describe_endpoints(Client, Input, Options)
 -spec describe_export(map(), describe_export_input()) ->
     {ok, describe_export_output(), tuple()} |
     {error, any()} |
-    {error, export_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, describe_export_errors(), tuple()}.
 describe_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_export(Client, Input, []).
@@ -2848,9 +3099,7 @@ describe_export(Client, Input)
 -spec describe_export(map(), describe_export_input(), proplists:proplist()) ->
     {ok, describe_export_output(), tuple()} |
     {error, any()} |
-    {error, export_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, describe_export_errors(), tuple()}.
 describe_export(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeExport">>, Input, Options).
@@ -2876,9 +3125,7 @@ describe_export(Client, Input, Options)
 -spec describe_global_table(map(), describe_global_table_input()) ->
     {ok, describe_global_table_output(), tuple()} |
     {error, any()} |
-    {error, global_table_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()}.
+    {error, describe_global_table_errors(), tuple()}.
 describe_global_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_global_table(Client, Input, []).
@@ -2886,9 +3133,7 @@ describe_global_table(Client, Input)
 -spec describe_global_table(map(), describe_global_table_input(), proplists:proplist()) ->
     {ok, describe_global_table_output(), tuple()} |
     {error, any()} |
-    {error, global_table_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()}.
+    {error, describe_global_table_errors(), tuple()}.
 describe_global_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGlobalTable">>, Input, Options).
@@ -2914,9 +3159,7 @@ describe_global_table(Client, Input, Options)
 -spec describe_global_table_settings(map(), describe_global_table_settings_input()) ->
     {ok, describe_global_table_settings_output(), tuple()} |
     {error, any()} |
-    {error, global_table_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()}.
+    {error, describe_global_table_settings_errors(), tuple()}.
 describe_global_table_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_global_table_settings(Client, Input, []).
@@ -2924,9 +3167,7 @@ describe_global_table_settings(Client, Input)
 -spec describe_global_table_settings(map(), describe_global_table_settings_input(), proplists:proplist()) ->
     {ok, describe_global_table_settings_output(), tuple()} |
     {error, any()} |
-    {error, global_table_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()}.
+    {error, describe_global_table_settings_errors(), tuple()}.
 describe_global_table_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGlobalTableSettings">>, Input, Options).
@@ -2935,7 +3176,7 @@ describe_global_table_settings(Client, Input, Options)
 -spec describe_import(map(), describe_import_input()) ->
     {ok, describe_import_output(), tuple()} |
     {error, any()} |
-    {error, import_not_found_exception(), tuple()}.
+    {error, describe_import_errors(), tuple()}.
 describe_import(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_import(Client, Input, []).
@@ -2943,7 +3184,7 @@ describe_import(Client, Input)
 -spec describe_import(map(), describe_import_input(), proplists:proplist()) ->
     {ok, describe_import_output(), tuple()} |
     {error, any()} |
-    {error, import_not_found_exception(), tuple()}.
+    {error, describe_import_errors(), tuple()}.
 describe_import(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeImport">>, Input, Options).
@@ -2952,9 +3193,7 @@ describe_import(Client, Input, Options)
 -spec describe_kinesis_streaming_destination(map(), describe_kinesis_streaming_destination_input()) ->
     {ok, describe_kinesis_streaming_destination_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_kinesis_streaming_destination_errors(), tuple()}.
 describe_kinesis_streaming_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_kinesis_streaming_destination(Client, Input, []).
@@ -2962,9 +3201,7 @@ describe_kinesis_streaming_destination(Client, Input)
 -spec describe_kinesis_streaming_destination(map(), describe_kinesis_streaming_destination_input(), proplists:proplist()) ->
     {ok, describe_kinesis_streaming_destination_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_kinesis_streaming_destination_errors(), tuple()}.
 describe_kinesis_streaming_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeKinesisStreamingDestination">>, Input, Options).
@@ -3054,8 +3291,7 @@ describe_kinesis_streaming_destination(Client, Input, Options)
 -spec describe_limits(map(), describe_limits_input()) ->
     {ok, describe_limits_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()}.
+    {error, describe_limits_errors(), tuple()}.
 describe_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_limits(Client, Input, []).
@@ -3063,8 +3299,7 @@ describe_limits(Client, Input)
 -spec describe_limits(map(), describe_limits_input(), proplists:proplist()) ->
     {ok, describe_limits_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()}.
+    {error, describe_limits_errors(), tuple()}.
 describe_limits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLimits">>, Input, Options).
@@ -3087,9 +3322,7 @@ describe_limits(Client, Input, Options)
 -spec describe_table(map(), describe_table_input()) ->
     {ok, describe_table_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_table_errors(), tuple()}.
 describe_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_table(Client, Input, []).
@@ -3097,9 +3330,7 @@ describe_table(Client, Input)
 -spec describe_table(map(), describe_table_input(), proplists:proplist()) ->
     {ok, describe_table_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_table_errors(), tuple()}.
 describe_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTable">>, Input, Options).
@@ -3113,8 +3344,7 @@ describe_table(Client, Input, Options)
 -spec describe_table_replica_auto_scaling(map(), describe_table_replica_auto_scaling_input()) ->
     {ok, describe_table_replica_auto_scaling_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_table_replica_auto_scaling_errors(), tuple()}.
 describe_table_replica_auto_scaling(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_table_replica_auto_scaling(Client, Input, []).
@@ -3122,8 +3352,7 @@ describe_table_replica_auto_scaling(Client, Input)
 -spec describe_table_replica_auto_scaling(map(), describe_table_replica_auto_scaling_input(), proplists:proplist()) ->
     {ok, describe_table_replica_auto_scaling_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_table_replica_auto_scaling_errors(), tuple()}.
 describe_table_replica_auto_scaling(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTableReplicaAutoScaling">>, Input, Options).
@@ -3133,9 +3362,7 @@ describe_table_replica_auto_scaling(Client, Input, Options)
 -spec describe_time_to_live(map(), describe_time_to_live_input()) ->
     {ok, describe_time_to_live_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_time_to_live_errors(), tuple()}.
 describe_time_to_live(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_time_to_live(Client, Input, []).
@@ -3143,9 +3370,7 @@ describe_time_to_live(Client, Input)
 -spec describe_time_to_live(map(), describe_time_to_live_input(), proplists:proplist()) ->
     {ok, describe_time_to_live_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_time_to_live_errors(), tuple()}.
 describe_time_to_live(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTimeToLive">>, Input, Options).
@@ -3157,11 +3382,7 @@ describe_time_to_live(Client, Input, Options)
 -spec disable_kinesis_streaming_destination(map(), kinesis_streaming_destination_input()) ->
     {ok, kinesis_streaming_destination_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disable_kinesis_streaming_destination_errors(), tuple()}.
 disable_kinesis_streaming_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_kinesis_streaming_destination(Client, Input, []).
@@ -3169,11 +3390,7 @@ disable_kinesis_streaming_destination(Client, Input)
 -spec disable_kinesis_streaming_destination(map(), kinesis_streaming_destination_input(), proplists:proplist()) ->
     {ok, kinesis_streaming_destination_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disable_kinesis_streaming_destination_errors(), tuple()}.
 disable_kinesis_streaming_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableKinesisStreamingDestination">>, Input, Options).
@@ -3189,11 +3406,7 @@ disable_kinesis_streaming_destination(Client, Input, Options)
 -spec enable_kinesis_streaming_destination(map(), kinesis_streaming_destination_input()) ->
     {ok, kinesis_streaming_destination_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, enable_kinesis_streaming_destination_errors(), tuple()}.
 enable_kinesis_streaming_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_kinesis_streaming_destination(Client, Input, []).
@@ -3201,11 +3414,7 @@ enable_kinesis_streaming_destination(Client, Input)
 -spec enable_kinesis_streaming_destination(map(), kinesis_streaming_destination_input(), proplists:proplist()) ->
     {ok, kinesis_streaming_destination_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, enable_kinesis_streaming_destination_errors(), tuple()}.
 enable_kinesis_streaming_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableKinesisStreamingDestination">>, Input, Options).
@@ -3237,14 +3446,7 @@ enable_kinesis_streaming_destination(Client, Input, Options)
 -spec execute_statement(map(), execute_statement_input()) ->
     {ok, execute_statement_output(), tuple()} |
     {error, any()} |
-    {error, conditional_check_failed_exception(), tuple()} |
-    {error, duplicate_item_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, item_collection_size_limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, request_limit_exceeded(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, transaction_conflict_exception(), tuple()}.
+    {error, execute_statement_errors(), tuple()}.
 execute_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_statement(Client, Input, []).
@@ -3252,14 +3454,7 @@ execute_statement(Client, Input)
 -spec execute_statement(map(), execute_statement_input(), proplists:proplist()) ->
     {ok, execute_statement_output(), tuple()} |
     {error, any()} |
-    {error, conditional_check_failed_exception(), tuple()} |
-    {error, duplicate_item_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, item_collection_size_limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, request_limit_exceeded(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, transaction_conflict_exception(), tuple()}.
+    {error, execute_statement_errors(), tuple()}.
 execute_statement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExecuteStatement">>, Input, Options).
@@ -3280,13 +3475,7 @@ execute_statement(Client, Input, Options)
 -spec execute_transaction(map(), execute_transaction_input()) ->
     {ok, execute_transaction_output(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, request_limit_exceeded(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, transaction_canceled_exception(), tuple()} |
-    {error, transaction_in_progress_exception(), tuple()}.
+    {error, execute_transaction_errors(), tuple()}.
 execute_transaction(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_transaction(Client, Input, []).
@@ -3294,13 +3483,7 @@ execute_transaction(Client, Input)
 -spec execute_transaction(map(), execute_transaction_input(), proplists:proplist()) ->
     {ok, execute_transaction_output(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, request_limit_exceeded(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, transaction_canceled_exception(), tuple()} |
-    {error, transaction_in_progress_exception(), tuple()}.
+    {error, execute_transaction_errors(), tuple()}.
 execute_transaction(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExecuteTransaction">>, Input, Options).
@@ -3314,12 +3497,7 @@ execute_transaction(Client, Input, Options)
 -spec export_table_to_point_in_time(map(), export_table_to_point_in_time_input()) ->
     {ok, export_table_to_point_in_time_output(), tuple()} |
     {error, any()} |
-    {error, export_conflict_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_export_time_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, point_in_time_recovery_unavailable_exception(), tuple()} |
-    {error, table_not_found_exception(), tuple()}.
+    {error, export_table_to_point_in_time_errors(), tuple()}.
 export_table_to_point_in_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_table_to_point_in_time(Client, Input, []).
@@ -3327,12 +3505,7 @@ export_table_to_point_in_time(Client, Input)
 -spec export_table_to_point_in_time(map(), export_table_to_point_in_time_input(), proplists:proplist()) ->
     {ok, export_table_to_point_in_time_output(), tuple()} |
     {error, any()} |
-    {error, export_conflict_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_export_time_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, point_in_time_recovery_unavailable_exception(), tuple()} |
-    {error, table_not_found_exception(), tuple()}.
+    {error, export_table_to_point_in_time_errors(), tuple()}.
 export_table_to_point_in_time(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportTableToPointInTime">>, Input, Options).
@@ -3353,11 +3526,7 @@ export_table_to_point_in_time(Client, Input, Options)
 -spec get_item(map(), get_item_input()) ->
     {ok, get_item_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, request_limit_exceeded(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_item_errors(), tuple()}.
 get_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_item(Client, Input, []).
@@ -3365,11 +3534,7 @@ get_item(Client, Input)
 -spec get_item(map(), get_item_input(), proplists:proplist()) ->
     {ok, get_item_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, request_limit_exceeded(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_item_errors(), tuple()}.
 get_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetItem">>, Input, Options).
@@ -3378,9 +3543,7 @@ get_item(Client, Input, Options)
 -spec import_table(map(), import_table_input()) ->
     {ok, import_table_output(), tuple()} |
     {error, any()} |
-    {error, import_conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, import_table_errors(), tuple()}.
 import_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_table(Client, Input, []).
@@ -3388,9 +3551,7 @@ import_table(Client, Input)
 -spec import_table(map(), import_table_input(), proplists:proplist()) ->
     {ok, import_table_output(), tuple()} |
     {error, any()} |
-    {error, import_conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, import_table_errors(), tuple()}.
 import_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportTable">>, Input, Options).
@@ -3417,8 +3578,7 @@ import_table(Client, Input, Options)
 -spec list_backups(map(), list_backups_input()) ->
     {ok, list_backups_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()}.
+    {error, list_backups_errors(), tuple()}.
 list_backups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_backups(Client, Input, []).
@@ -3426,8 +3586,7 @@ list_backups(Client, Input)
 -spec list_backups(map(), list_backups_input(), proplists:proplist()) ->
     {ok, list_backups_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()}.
+    {error, list_backups_errors(), tuple()}.
 list_backups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBackups">>, Input, Options).
@@ -3438,8 +3597,7 @@ list_backups(Client, Input, Options)
 -spec list_contributor_insights(map(), list_contributor_insights_input()) ->
     {ok, list_contributor_insights_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_contributor_insights_errors(), tuple()}.
 list_contributor_insights(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_contributor_insights(Client, Input, []).
@@ -3447,8 +3605,7 @@ list_contributor_insights(Client, Input)
 -spec list_contributor_insights(map(), list_contributor_insights_input(), proplists:proplist()) ->
     {ok, list_contributor_insights_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_contributor_insights_errors(), tuple()}.
 list_contributor_insights(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListContributorInsights">>, Input, Options).
@@ -3457,8 +3614,7 @@ list_contributor_insights(Client, Input, Options)
 -spec list_exports(map(), list_exports_input()) ->
     {ok, list_exports_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_exports_errors(), tuple()}.
 list_exports(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_exports(Client, Input, []).
@@ -3466,8 +3622,7 @@ list_exports(Client, Input)
 -spec list_exports(map(), list_exports_input(), proplists:proplist()) ->
     {ok, list_exports_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_exports_errors(), tuple()}.
 list_exports(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListExports">>, Input, Options).
@@ -3493,8 +3648,7 @@ list_exports(Client, Input, Options)
 -spec list_global_tables(map(), list_global_tables_input()) ->
     {ok, list_global_tables_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()}.
+    {error, list_global_tables_errors(), tuple()}.
 list_global_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_global_tables(Client, Input, []).
@@ -3502,8 +3656,7 @@ list_global_tables(Client, Input)
 -spec list_global_tables(map(), list_global_tables_input(), proplists:proplist()) ->
     {ok, list_global_tables_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()}.
+    {error, list_global_tables_errors(), tuple()}.
 list_global_tables(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGlobalTables">>, Input, Options).
@@ -3512,7 +3665,7 @@ list_global_tables(Client, Input, Options)
 -spec list_imports(map(), list_imports_input()) ->
     {ok, list_imports_output(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_imports_errors(), tuple()}.
 list_imports(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_imports(Client, Input, []).
@@ -3520,7 +3673,7 @@ list_imports(Client, Input)
 -spec list_imports(map(), list_imports_input(), proplists:proplist()) ->
     {ok, list_imports_output(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_imports_errors(), tuple()}.
 list_imports(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListImports">>, Input, Options).
@@ -3535,8 +3688,7 @@ list_imports(Client, Input, Options)
 -spec list_tables(map(), list_tables_input()) ->
     {ok, list_tables_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()}.
+    {error, list_tables_errors(), tuple()}.
 list_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tables(Client, Input, []).
@@ -3544,8 +3696,7 @@ list_tables(Client, Input)
 -spec list_tables(map(), list_tables_input(), proplists:proplist()) ->
     {ok, list_tables_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()}.
+    {error, list_tables_errors(), tuple()}.
 list_tables(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTables">>, Input, Options).
@@ -3561,9 +3712,7 @@ list_tables(Client, Input, Options)
 -spec list_tags_of_resource(map(), list_tags_of_resource_input()) ->
     {ok, list_tags_of_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_of_resource_errors(), tuple()}.
 list_tags_of_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_of_resource(Client, Input, []).
@@ -3571,9 +3720,7 @@ list_tags_of_resource(Client, Input)
 -spec list_tags_of_resource(map(), list_tags_of_resource_input(), proplists:proplist()) ->
     {ok, list_tags_of_resource_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_of_resource_errors(), tuple()}.
 list_tags_of_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsOfResource">>, Input, Options).
@@ -3618,14 +3765,7 @@ list_tags_of_resource(Client, Input, Options)
 -spec put_item(map(), put_item_input()) ->
     {ok, put_item_output(), tuple()} |
     {error, any()} |
-    {error, conditional_check_failed_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, item_collection_size_limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, request_limit_exceeded(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, transaction_conflict_exception(), tuple()}.
+    {error, put_item_errors(), tuple()}.
 put_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_item(Client, Input, []).
@@ -3633,14 +3773,7 @@ put_item(Client, Input)
 -spec put_item(map(), put_item_input(), proplists:proplist()) ->
     {ok, put_item_output(), tuple()} |
     {error, any()} |
-    {error, conditional_check_failed_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, item_collection_size_limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, request_limit_exceeded(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, transaction_conflict_exception(), tuple()}.
+    {error, put_item_errors(), tuple()}.
 put_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutItem">>, Input, Options).
@@ -3726,11 +3859,7 @@ put_item(Client, Input, Options)
 -spec query(map(), query_input()) ->
     {ok, query_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, request_limit_exceeded(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, query_errors(), tuple()}.
 query(Client, Input)
   when is_map(Client), is_map(Input) ->
     query(Client, Input, []).
@@ -3738,11 +3867,7 @@ query(Client, Input)
 -spec query(map(), query_input(), proplists:proplist()) ->
     {ok, query_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, request_limit_exceeded(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, query_errors(), tuple()}.
 query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Query">>, Input, Options).
@@ -3772,13 +3897,7 @@ query(Client, Input, Options)
 -spec restore_table_from_backup(map(), restore_table_from_backup_input()) ->
     {ok, restore_table_from_backup_output(), tuple()} |
     {error, any()} |
-    {error, backup_in_use_exception(), tuple()} |
-    {error, backup_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, table_already_exists_exception(), tuple()} |
-    {error, table_in_use_exception(), tuple()}.
+    {error, restore_table_from_backup_errors(), tuple()}.
 restore_table_from_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_table_from_backup(Client, Input, []).
@@ -3786,13 +3905,7 @@ restore_table_from_backup(Client, Input)
 -spec restore_table_from_backup(map(), restore_table_from_backup_input(), proplists:proplist()) ->
     {ok, restore_table_from_backup_output(), tuple()} |
     {error, any()} |
-    {error, backup_in_use_exception(), tuple()} |
-    {error, backup_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, table_already_exists_exception(), tuple()} |
-    {error, table_in_use_exception(), tuple()}.
+    {error, restore_table_from_backup_errors(), tuple()}.
 restore_table_from_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreTableFromBackup">>, Input, Options).
@@ -3843,14 +3956,7 @@ restore_table_from_backup(Client, Input, Options)
 -spec restore_table_to_point_in_time(map(), restore_table_to_point_in_time_input()) ->
     {ok, restore_table_to_point_in_time_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, invalid_restore_time_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, point_in_time_recovery_unavailable_exception(), tuple()} |
-    {error, table_already_exists_exception(), tuple()} |
-    {error, table_in_use_exception(), tuple()} |
-    {error, table_not_found_exception(), tuple()}.
+    {error, restore_table_to_point_in_time_errors(), tuple()}.
 restore_table_to_point_in_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_table_to_point_in_time(Client, Input, []).
@@ -3858,14 +3964,7 @@ restore_table_to_point_in_time(Client, Input)
 -spec restore_table_to_point_in_time(map(), restore_table_to_point_in_time_input(), proplists:proplist()) ->
     {ok, restore_table_to_point_in_time_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, invalid_restore_time_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, point_in_time_recovery_unavailable_exception(), tuple()} |
-    {error, table_already_exists_exception(), tuple()} |
-    {error, table_in_use_exception(), tuple()} |
-    {error, table_not_found_exception(), tuple()}.
+    {error, restore_table_to_point_in_time_errors(), tuple()}.
 restore_table_to_point_in_time(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreTableToPointInTime">>, Input, Options).
@@ -3941,11 +4040,7 @@ restore_table_to_point_in_time(Client, Input, Options)
 -spec scan(map(), scan_input()) ->
     {ok, scan_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, request_limit_exceeded(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, scan_errors(), tuple()}.
 scan(Client, Input)
   when is_map(Client), is_map(Input) ->
     scan(Client, Input, []).
@@ -3953,11 +4048,7 @@ scan(Client, Input)
 -spec scan(map(), scan_input(), proplists:proplist()) ->
     {ok, scan_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, request_limit_exceeded(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, scan_errors(), tuple()}.
 scan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Scan">>, Input, Options).
@@ -3977,11 +4068,7 @@ scan(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -3989,11 +4076,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -4030,12 +4113,7 @@ tag_resource(Client, Input, Options)
 -spec transact_get_items(map(), transact_get_items_input()) ->
     {ok, transact_get_items_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, request_limit_exceeded(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, transaction_canceled_exception(), tuple()}.
+    {error, transact_get_items_errors(), tuple()}.
 transact_get_items(Client, Input)
   when is_map(Client), is_map(Input) ->
     transact_get_items(Client, Input, []).
@@ -4043,12 +4121,7 @@ transact_get_items(Client, Input)
 -spec transact_get_items(map(), transact_get_items_input(), proplists:proplist()) ->
     {ok, transact_get_items_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, request_limit_exceeded(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, transaction_canceled_exception(), tuple()}.
+    {error, transact_get_items_errors(), tuple()}.
 transact_get_items(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TransactGetItems">>, Input, Options).
@@ -4136,14 +4209,7 @@ transact_get_items(Client, Input, Options)
 -spec transact_write_items(map(), transact_write_items_input()) ->
     {ok, transact_write_items_output(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, request_limit_exceeded(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, transaction_canceled_exception(), tuple()} |
-    {error, transaction_in_progress_exception(), tuple()}.
+    {error, transact_write_items_errors(), tuple()}.
 transact_write_items(Client, Input)
   when is_map(Client), is_map(Input) ->
     transact_write_items(Client, Input, []).
@@ -4151,14 +4217,7 @@ transact_write_items(Client, Input)
 -spec transact_write_items(map(), transact_write_items_input(), proplists:proplist()) ->
     {ok, transact_write_items_output(), tuple()} |
     {error, any()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, request_limit_exceeded(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, transaction_canceled_exception(), tuple()} |
-    {error, transaction_in_progress_exception(), tuple()}.
+    {error, transact_write_items_errors(), tuple()}.
 transact_write_items(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TransactWriteItems">>, Input, Options).
@@ -4174,11 +4233,7 @@ transact_write_items(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -4186,11 +4241,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -4217,10 +4268,7 @@ untag_resource(Client, Input, Options)
 -spec update_continuous_backups(map(), update_continuous_backups_input()) ->
     {ok, update_continuous_backups_output(), tuple()} |
     {error, any()} |
-    {error, continuous_backups_unavailable_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, table_not_found_exception(), tuple()}.
+    {error, update_continuous_backups_errors(), tuple()}.
 update_continuous_backups(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_continuous_backups(Client, Input, []).
@@ -4228,10 +4276,7 @@ update_continuous_backups(Client, Input)
 -spec update_continuous_backups(map(), update_continuous_backups_input(), proplists:proplist()) ->
     {ok, update_continuous_backups_output(), tuple()} |
     {error, any()} |
-    {error, continuous_backups_unavailable_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, table_not_found_exception(), tuple()}.
+    {error, update_continuous_backups_errors(), tuple()}.
 update_continuous_backups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateContinuousBackups">>, Input, Options).
@@ -4254,8 +4299,7 @@ update_continuous_backups(Client, Input, Options)
 -spec update_contributor_insights(map(), update_contributor_insights_input()) ->
     {ok, update_contributor_insights_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_contributor_insights_errors(), tuple()}.
 update_contributor_insights(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_contributor_insights(Client, Input, []).
@@ -4263,8 +4307,7 @@ update_contributor_insights(Client, Input)
 -spec update_contributor_insights(map(), update_contributor_insights_input(), proplists:proplist()) ->
     {ok, update_contributor_insights_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_contributor_insights_errors(), tuple()}.
 update_contributor_insights(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateContributorInsights">>, Input, Options).
@@ -4325,12 +4368,7 @@ update_contributor_insights(Client, Input, Options)
 -spec update_global_table(map(), update_global_table_input()) ->
     {ok, update_global_table_output(), tuple()} |
     {error, any()} |
-    {error, global_table_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, replica_already_exists_exception(), tuple()} |
-    {error, replica_not_found_exception(), tuple()} |
-    {error, table_not_found_exception(), tuple()}.
+    {error, update_global_table_errors(), tuple()}.
 update_global_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_global_table(Client, Input, []).
@@ -4338,12 +4376,7 @@ update_global_table(Client, Input)
 -spec update_global_table(map(), update_global_table_input(), proplists:proplist()) ->
     {ok, update_global_table_output(), tuple()} |
     {error, any()} |
-    {error, global_table_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, replica_already_exists_exception(), tuple()} |
-    {error, replica_not_found_exception(), tuple()} |
-    {error, table_not_found_exception(), tuple()}.
+    {error, update_global_table_errors(), tuple()}.
 update_global_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGlobalTable">>, Input, Options).
@@ -4369,13 +4402,7 @@ update_global_table(Client, Input, Options)
 -spec update_global_table_settings(map(), update_global_table_settings_input()) ->
     {ok, update_global_table_settings_output(), tuple()} |
     {error, any()} |
-    {error, global_table_not_found_exception(), tuple()} |
-    {error, index_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, replica_not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, update_global_table_settings_errors(), tuple()}.
 update_global_table_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_global_table_settings(Client, Input, []).
@@ -4383,13 +4410,7 @@ update_global_table_settings(Client, Input)
 -spec update_global_table_settings(map(), update_global_table_settings_input(), proplists:proplist()) ->
     {ok, update_global_table_settings_output(), tuple()} |
     {error, any()} |
-    {error, global_table_not_found_exception(), tuple()} |
-    {error, index_not_found_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, replica_not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, update_global_table_settings_errors(), tuple()}.
 update_global_table_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGlobalTableSettings">>, Input, Options).
@@ -4411,14 +4432,7 @@ update_global_table_settings(Client, Input, Options)
 -spec update_item(map(), update_item_input()) ->
     {ok, update_item_output(), tuple()} |
     {error, any()} |
-    {error, conditional_check_failed_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, item_collection_size_limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, request_limit_exceeded(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, transaction_conflict_exception(), tuple()}.
+    {error, update_item_errors(), tuple()}.
 update_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_item(Client, Input, []).
@@ -4426,14 +4440,7 @@ update_item(Client, Input)
 -spec update_item(map(), update_item_input(), proplists:proplist()) ->
     {ok, update_item_output(), tuple()} |
     {error, any()} |
-    {error, conditional_check_failed_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, item_collection_size_limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, request_limit_exceeded(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, transaction_conflict_exception(), tuple()}.
+    {error, update_item_errors(), tuple()}.
 update_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateItem">>, Input, Options).
@@ -4442,11 +4449,7 @@ update_item(Client, Input, Options)
 -spec update_kinesis_streaming_destination(map(), update_kinesis_streaming_destination_input()) ->
     {ok, update_kinesis_streaming_destination_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_kinesis_streaming_destination_errors(), tuple()}.
 update_kinesis_streaming_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_kinesis_streaming_destination(Client, Input, []).
@@ -4454,11 +4457,7 @@ update_kinesis_streaming_destination(Client, Input)
 -spec update_kinesis_streaming_destination(map(), update_kinesis_streaming_destination_input(), proplists:proplist()) ->
     {ok, update_kinesis_streaming_destination_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_kinesis_streaming_destination_errors(), tuple()}.
 update_kinesis_streaming_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateKinesisStreamingDestination">>, Input, Options).
@@ -4493,11 +4492,7 @@ update_kinesis_streaming_destination(Client, Input, Options)
 -spec update_table(map(), update_table_input()) ->
     {ok, update_table_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_table_errors(), tuple()}.
 update_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_table(Client, Input, []).
@@ -4505,11 +4500,7 @@ update_table(Client, Input)
 -spec update_table(map(), update_table_input(), proplists:proplist()) ->
     {ok, update_table_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_table_errors(), tuple()}.
 update_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTable">>, Input, Options).
@@ -4522,10 +4513,7 @@ update_table(Client, Input, Options)
 -spec update_table_replica_auto_scaling(map(), update_table_replica_auto_scaling_input()) ->
     {ok, update_table_replica_auto_scaling_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_table_replica_auto_scaling_errors(), tuple()}.
 update_table_replica_auto_scaling(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_table_replica_auto_scaling(Client, Input, []).
@@ -4533,10 +4521,7 @@ update_table_replica_auto_scaling(Client, Input)
 -spec update_table_replica_auto_scaling(map(), update_table_replica_auto_scaling_input(), proplists:proplist()) ->
     {ok, update_table_replica_auto_scaling_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_table_replica_auto_scaling_errors(), tuple()}.
 update_table_replica_auto_scaling(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTableReplicaAutoScaling">>, Input, Options).
@@ -4587,11 +4572,7 @@ update_table_replica_auto_scaling(Client, Input, Options)
 -spec update_time_to_live(map(), update_time_to_live_input()) ->
     {ok, update_time_to_live_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_time_to_live_errors(), tuple()}.
 update_time_to_live(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_time_to_live(Client, Input, []).
@@ -4599,11 +4580,7 @@ update_time_to_live(Client, Input)
 -spec update_time_to_live(map(), update_time_to_live_input(), proplists:proplist()) ->
     {ok, update_time_to_live_output(), tuple()} |
     {error, any()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_time_to_live_errors(), tuple()}.
 update_time_to_live(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTimeToLive">>, Input, Options).

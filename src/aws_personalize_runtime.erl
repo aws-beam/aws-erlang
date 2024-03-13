@@ -25,12 +25,14 @@
 %% }
 -type get_action_recommendations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_action_recommendations_response() :: #{
 %%   <<"actionList">> => list(predicted_action()()),
 %%   <<"recommendationId">> => string()
 %% }
 -type get_action_recommendations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_personalized_ranking_request() :: #{
@@ -44,12 +46,14 @@
 %% }
 -type get_personalized_ranking_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_personalized_ranking_response() :: #{
 %%   <<"personalizedRanking">> => list(predicted_item()()),
 %%   <<"recommendationId">> => string()
 %% }
 -type get_personalized_ranking_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_recommendations_request() :: #{
@@ -66,6 +70,7 @@
 %% }
 -type get_recommendations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_recommendations_response() :: #{
 %%   <<"itemList">> => list(predicted_item()()),
@@ -73,11 +78,13 @@
 %% }
 -type get_recommendations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_input_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_input_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% predicted_action() :: #{
@@ -85,6 +92,7 @@
 %%   <<"score">> => float()
 %% }
 -type predicted_action() :: #{binary() => any()}.
+
 
 %% Example:
 %% predicted_item() :: #{
@@ -95,6 +103,7 @@
 %% }
 -type predicted_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% promotion() :: #{
 %%   <<"filterArn">> => string(),
@@ -104,11 +113,24 @@
 %% }
 -type promotion() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+-type get_action_recommendations_errors() ::
+    resource_not_found_exception() | 
+    invalid_input_exception().
+
+-type get_personalized_ranking_errors() ::
+    resource_not_found_exception() | 
+    invalid_input_exception().
+
+-type get_recommendations_errors() ::
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 %%====================================================================
 %% API
@@ -130,16 +152,14 @@
 -spec get_action_recommendations(map(), get_action_recommendations_request()) ->
     {ok, get_action_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_action_recommendations_errors(), tuple()}.
 get_action_recommendations(Client, Input) ->
     get_action_recommendations(Client, Input, []).
 
 -spec get_action_recommendations(map(), get_action_recommendations_request(), proplists:proplist()) ->
     {ok, get_action_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_action_recommendations_errors(), tuple()}.
 get_action_recommendations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/action-recommendations"],
@@ -173,16 +193,14 @@ get_action_recommendations(Client, Input0, Options0) ->
 -spec get_personalized_ranking(map(), get_personalized_ranking_request()) ->
     {ok, get_personalized_ranking_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_personalized_ranking_errors(), tuple()}.
 get_personalized_ranking(Client, Input) ->
     get_personalized_ranking(Client, Input, []).
 
 -spec get_personalized_ranking(map(), get_personalized_ranking_request(), proplists:proplist()) ->
     {ok, get_personalized_ranking_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_personalized_ranking_errors(), tuple()}.
 get_personalized_ranking(Client, Input0, Options0) ->
     Method = post,
     Path = ["/personalize-ranking"],
@@ -227,16 +245,14 @@ get_personalized_ranking(Client, Input0, Options0) ->
 -spec get_recommendations(map(), get_recommendations_request()) ->
     {ok, get_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_recommendations_errors(), tuple()}.
 get_recommendations(Client, Input) ->
     get_recommendations(Client, Input, []).
 
 -spec get_recommendations(map(), get_recommendations_request(), proplists:proplist()) ->
     {ok, get_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_recommendations_errors(), tuple()}.
 get_recommendations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/recommendations"],

@@ -32,6 +32,7 @@
 %% }
 -type action() :: #{binary() => any()}.
 
+
 %% Example:
 %% action_interaction() :: #{
 %%   <<"actionId">> => string(),
@@ -45,6 +46,7 @@
 %%   <<"userId">> => string()
 %% }
 -type action_interaction() :: #{binary() => any()}.
+
 
 %% Example:
 %% event() :: #{
@@ -60,11 +62,13 @@
 %% }
 -type event() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_input_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_input_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% item() :: #{
@@ -73,11 +77,13 @@
 %% }
 -type item() :: #{binary() => any()}.
 
+
 %% Example:
 %% metric_attribution() :: #{
 %%   <<"eventAttributionSource">> => string()
 %% }
 -type metric_attribution() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_action_interactions_request() :: #{
@@ -86,12 +92,14 @@
 %% }
 -type put_action_interactions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_actions_request() :: #{
 %%   <<"actions">> := list(action()()),
 %%   <<"datasetArn">> := string()
 %% }
 -type put_actions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_events_request() :: #{
@@ -102,12 +110,14 @@
 %% }
 -type put_events_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_items_request() :: #{
 %%   <<"datasetArn">> := string(),
 %%   <<"items">> := list(item()())
 %% }
 -type put_items_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_users_request() :: #{
@@ -116,11 +126,13 @@
 %% }
 -type put_users_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_in_use_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_in_use_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -128,12 +140,36 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% user() :: #{
 %%   <<"properties">> => string(),
 %%   <<"userId">> => string()
 %% }
 -type user() :: #{binary() => any()}.
+
+-type put_action_interactions_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_input_exception().
+
+-type put_actions_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_input_exception().
+
+-type put_events_errors() ::
+    invalid_input_exception().
+
+-type put_items_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_input_exception().
+
+-type put_users_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_input_exception().
 
 %%====================================================================
 %% API
@@ -155,18 +191,14 @@
 -spec put_action_interactions(map(), put_action_interactions_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_action_interactions_errors(), tuple()}.
 put_action_interactions(Client, Input) ->
     put_action_interactions(Client, Input, []).
 
 -spec put_action_interactions(map(), put_action_interactions_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_action_interactions_errors(), tuple()}.
 put_action_interactions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/action-interactions"],
@@ -197,18 +229,14 @@ put_action_interactions(Client, Input0, Options0) ->
 -spec put_actions(map(), put_actions_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_actions_errors(), tuple()}.
 put_actions(Client, Input) ->
     put_actions(Client, Input, []).
 
 -spec put_actions(map(), put_actions_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_actions_errors(), tuple()}.
 put_actions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/actions"],
@@ -239,14 +267,14 @@ put_actions(Client, Input0, Options0) ->
 -spec put_events(map(), put_events_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, put_events_errors(), tuple()}.
 put_events(Client, Input) ->
     put_events(Client, Input, []).
 
 -spec put_events(map(), put_events_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()}.
+    {error, put_events_errors(), tuple()}.
 put_events(Client, Input0, Options0) ->
     Method = post,
     Path = ["/events"],
@@ -277,18 +305,14 @@ put_events(Client, Input0, Options0) ->
 -spec put_items(map(), put_items_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_items_errors(), tuple()}.
 put_items(Client, Input) ->
     put_items(Client, Input, []).
 
 -spec put_items(map(), put_items_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_items_errors(), tuple()}.
 put_items(Client, Input0, Options0) ->
     Method = post,
     Path = ["/items"],
@@ -319,18 +343,14 @@ put_items(Client, Input0, Options0) ->
 -spec put_users(map(), put_users_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_users_errors(), tuple()}.
 put_users(Client, Input) ->
     put_users(Client, Input, []).
 
 -spec put_users(map(), put_users_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_users_errors(), tuple()}.
 put_users(Client, Input0, Options0) ->
     Method = post,
     Path = ["/users"],

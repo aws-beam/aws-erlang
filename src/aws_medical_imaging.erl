@@ -208,11 +208,13 @@
 %% }
 -type get_image_set_metadata_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_d_i_c_o_m_import_job_request() :: #{
@@ -224,6 +226,7 @@
 %% }
 -type start_d_i_c_o_m_import_job_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_image_sets_request() :: #{
 %%   <<"maxResults">> => [integer()],
@@ -231,6 +234,7 @@
 %%   <<"searchCriteria">> => search_criteria()
 %% }
 -type search_image_sets_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% image_sets_metadata_summary() :: #{
@@ -241,9 +245,11 @@
 %%   <<"version">> => [integer()]
 %% }
 -type image_sets_metadata_summary() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% copy_image_set_request() :: #{
@@ -251,11 +257,13 @@
 %% }
 -type copy_image_set_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% copy_source_image_set_information() :: #{
 %%   <<"latestVersionId">> => string()
 %% }
 -type copy_source_image_set_information() :: #{binary() => any()}.
+
 
 %% Example:
 %% copy_source_image_set_properties() :: #{
@@ -268,9 +276,11 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type copy_source_image_set_properties() :: #{binary() => any()}.
+
 %% Example:
 %% get_datastore_request() :: #{}
 -type get_datastore_request() :: #{}.
+
 
 %% Example:
 %% list_image_set_versions_request() :: #{
@@ -278,6 +288,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_image_set_versions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% d_i_c_o_m_import_job_summary() :: #{
@@ -292,11 +303,13 @@
 %% }
 -type d_i_c_o_m_import_job_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% image_set_properties() :: #{
@@ -311,11 +324,13 @@
 %% }
 -type image_set_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% image_frame_information() :: #{
 %%   <<"imageFrameId">> => string()
 %% }
 -type image_frame_information() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_filter() :: #{
@@ -323,9 +338,11 @@
 %%   <<"values">> => list(list()())
 %% }
 -type search_filter() :: #{binary() => any()}.
+
 %% Example:
 %% get_d_i_c_o_m_import_job_request() :: #{}
 -type get_d_i_c_o_m_import_job_request() :: #{}.
+
 
 %% Example:
 %% get_image_set_response() :: #{
@@ -342,6 +359,7 @@
 %% }
 -type get_image_set_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_datastore_response() :: #{
 %%   <<"datastoreId">> => string(),
@@ -349,11 +367,13 @@
 %% }
 -type delete_datastore_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -361,11 +381,13 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_image_set_request() :: #{
 %%   <<"versionId">> => string()
 %% }
 -type get_image_set_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_image_sets_response() :: #{
@@ -374,12 +396,14 @@
 %% }
 -type search_image_sets_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_image_set_metadata_request() :: #{
 %%   <<"latestVersionId">> := string(),
 %%   <<"updateImageSetMetadataUpdates">> := list()
 %% }
 -type update_image_set_metadata_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% copy_image_set_response() :: #{
@@ -389,11 +413,13 @@
 %% }
 -type copy_image_set_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_datastore_response() :: #{
@@ -401,12 +427,14 @@
 %% }
 -type get_datastore_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_datastores_response() :: #{
 %%   <<"datastoreSummaries">> => list(datastore_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_datastores_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_d_i_c_o_m_import_job_response() :: #{
@@ -417,11 +445,13 @@
 %% }
 -type start_d_i_c_o_m_import_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_image_frame_request() :: #{
 %%   <<"imageFrameInformation">> := image_frame_information()
 %% }
 -type get_image_frame_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% d_i_c_o_m_import_job_properties() :: #{
@@ -438,11 +468,13 @@
 %% }
 -type d_i_c_o_m_import_job_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_datastores_request() :: #{
@@ -451,6 +483,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_datastores_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% datastore_properties() :: #{
@@ -463,6 +496,7 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type datastore_properties() :: #{binary() => any()}.
+
 
 %% Example:
 %% d_i_c_o_m_tags() :: #{
@@ -481,11 +515,13 @@
 %% }
 -type d_i_c_o_m_tags() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% copy_destination_image_set_properties() :: #{
@@ -499,6 +535,7 @@
 %% }
 -type copy_destination_image_set_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% datastore_summary() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
@@ -510,12 +547,14 @@
 %% }
 -type datastore_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% d_i_c_o_m_updates() :: #{
 %%   <<"removableAttributes">> => binary(),
 %%   <<"updatableAttributes">> => binary()
 %% }
 -type d_i_c_o_m_updates() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_image_set_versions_response() :: #{
@@ -524,14 +563,17 @@
 %% }
 -type list_image_set_versions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% copy_destination_image_set() :: #{
@@ -540,6 +582,7 @@
 %% }
 -type copy_destination_image_set() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_d_i_c_o_m_import_jobs_request() :: #{
 %%   <<"jobStatus">> => list(any()),
@@ -547,24 +590,29 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_d_i_c_o_m_import_jobs_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_image_set_request() :: #{}
 -type delete_image_set_request() :: #{}.
+
 
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_datastore_request() :: #{
@@ -575,6 +623,7 @@
 %% }
 -type create_datastore_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_image_set_metadata_response() :: #{
 %%   <<"contentEncoding">> => [string()],
@@ -582,6 +631,7 @@
 %%   <<"imageSetMetadataBlob">> => binary()
 %% }
 -type get_image_set_metadata_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_image_set_metadata_response() :: #{
@@ -596,12 +646,14 @@
 %% }
 -type update_image_set_metadata_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% d_i_c_o_m_study_date_and_time() :: #{
 %%   <<"DICOMStudyDate">> => string(),
 %%   <<"DICOMStudyTime">> => string()
 %% }
 -type d_i_c_o_m_study_date_and_time() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_datastore_response() :: #{
@@ -610,12 +662,14 @@
 %% }
 -type create_datastore_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% copy_image_set_information() :: #{
 %%   <<"destinationImageSet">> => copy_destination_image_set(),
 %%   <<"sourceImageSet">> => copy_source_image_set_information()
 %% }
 -type copy_image_set_information() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_image_set_response() :: #{
@@ -626,11 +680,13 @@
 %% }
 -type delete_image_set_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_criteria() :: #{
 %%   <<"filters">> => list(search_filter()())
 %% }
 -type search_criteria() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_image_frame_response() :: #{
@@ -639,21 +695,165 @@
 %% }
 -type get_image_frame_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_d_i_c_o_m_import_jobs_response() :: #{
 %%   <<"jobSummaries">> => list(d_i_c_o_m_import_job_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_d_i_c_o_m_import_jobs_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_datastore_request() :: #{}
 -type delete_datastore_request() :: #{}.
+
 
 %% Example:
 %% get_d_i_c_o_m_import_job_response() :: #{
 %%   <<"jobProperties">> => d_i_c_o_m_import_job_properties()
 %% }
 -type get_d_i_c_o_m_import_job_response() :: #{binary() => any()}.
+
+-type copy_image_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_datastore_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_datastore_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_image_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_d_i_c_o_m_import_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_datastore_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_image_frame_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_image_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_image_set_metadata_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_d_i_c_o_m_import_jobs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_datastores_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_image_set_versions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type search_image_sets_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_d_i_c_o_m_import_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_image_set_metadata_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -663,26 +863,14 @@
 -spec copy_image_set(map(), binary() | list(), binary() | list(), copy_image_set_request()) ->
     {ok, copy_image_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, copy_image_set_errors(), tuple()}.
 copy_image_set(Client, DatastoreId, SourceImageSetId, Input) ->
     copy_image_set(Client, DatastoreId, SourceImageSetId, Input, []).
 
 -spec copy_image_set(map(), binary() | list(), binary() | list(), copy_image_set_request(), proplists:proplist()) ->
     {ok, copy_image_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, copy_image_set_errors(), tuple()}.
 copy_image_set(Client, DatastoreId, SourceImageSetId, Input0, Options0) ->
     Method = post,
     Path = ["/datastore/", aws_util:encode_uri(DatastoreId), "/imageSet/", aws_util:encode_uri(SourceImageSetId), "/copyImageSet"],
@@ -709,24 +897,14 @@ copy_image_set(Client, DatastoreId, SourceImageSetId, Input0, Options0) ->
 -spec create_datastore(map(), create_datastore_request()) ->
     {ok, create_datastore_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_datastore_errors(), tuple()}.
 create_datastore(Client, Input) ->
     create_datastore(Client, Input, []).
 
 -spec create_datastore(map(), create_datastore_request(), proplists:proplist()) ->
     {ok, create_datastore_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_datastore_errors(), tuple()}.
 create_datastore(Client, Input0, Options0) ->
     Method = post,
     Path = ["/datastore"],
@@ -756,24 +934,14 @@ create_datastore(Client, Input0, Options0) ->
 -spec delete_datastore(map(), binary() | list(), delete_datastore_request()) ->
     {ok, delete_datastore_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_datastore_errors(), tuple()}.
 delete_datastore(Client, DatastoreId, Input) ->
     delete_datastore(Client, DatastoreId, Input, []).
 
 -spec delete_datastore(map(), binary() | list(), delete_datastore_request(), proplists:proplist()) ->
     {ok, delete_datastore_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_datastore_errors(), tuple()}.
 delete_datastore(Client, DatastoreId, Input0, Options0) ->
     Method = delete,
     Path = ["/datastore/", aws_util:encode_uri(DatastoreId), ""],
@@ -800,24 +968,14 @@ delete_datastore(Client, DatastoreId, Input0, Options0) ->
 -spec delete_image_set(map(), binary() | list(), binary() | list(), delete_image_set_request()) ->
     {ok, delete_image_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_image_set_errors(), tuple()}.
 delete_image_set(Client, DatastoreId, ImageSetId, Input) ->
     delete_image_set(Client, DatastoreId, ImageSetId, Input, []).
 
 -spec delete_image_set(map(), binary() | list(), binary() | list(), delete_image_set_request(), proplists:proplist()) ->
     {ok, delete_image_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_image_set_errors(), tuple()}.
 delete_image_set(Client, DatastoreId, ImageSetId, Input0, Options0) ->
     Method = post,
     Path = ["/datastore/", aws_util:encode_uri(DatastoreId), "/imageSet/", aws_util:encode_uri(ImageSetId), "/deleteImageSet"],
@@ -845,12 +1003,7 @@ delete_image_set(Client, DatastoreId, ImageSetId, Input0, Options0) ->
 -spec get_d_i_c_o_m_import_job(map(), binary() | list(), binary() | list()) ->
     {ok, get_d_i_c_o_m_import_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_d_i_c_o_m_import_job_errors(), tuple()}.
 get_d_i_c_o_m_import_job(Client, DatastoreId, JobId)
   when is_map(Client) ->
     get_d_i_c_o_m_import_job(Client, DatastoreId, JobId, #{}, #{}).
@@ -858,12 +1011,7 @@ get_d_i_c_o_m_import_job(Client, DatastoreId, JobId)
 -spec get_d_i_c_o_m_import_job(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_d_i_c_o_m_import_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_d_i_c_o_m_import_job_errors(), tuple()}.
 get_d_i_c_o_m_import_job(Client, DatastoreId, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_d_i_c_o_m_import_job(Client, DatastoreId, JobId, QueryMap, HeadersMap, []).
@@ -871,12 +1019,7 @@ get_d_i_c_o_m_import_job(Client, DatastoreId, JobId, QueryMap, HeadersMap)
 -spec get_d_i_c_o_m_import_job(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_d_i_c_o_m_import_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_d_i_c_o_m_import_job_errors(), tuple()}.
 get_d_i_c_o_m_import_job(Client, DatastoreId, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/getDICOMImportJob/datastore/", aws_util:encode_uri(DatastoreId), "/job/", aws_util:encode_uri(JobId), ""],
@@ -897,11 +1040,7 @@ get_d_i_c_o_m_import_job(Client, DatastoreId, JobId, QueryMap, HeadersMap, Optio
 -spec get_datastore(map(), binary() | list()) ->
     {ok, get_datastore_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_datastore_errors(), tuple()}.
 get_datastore(Client, DatastoreId)
   when is_map(Client) ->
     get_datastore(Client, DatastoreId, #{}, #{}).
@@ -909,11 +1048,7 @@ get_datastore(Client, DatastoreId)
 -spec get_datastore(map(), binary() | list(), map(), map()) ->
     {ok, get_datastore_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_datastore_errors(), tuple()}.
 get_datastore(Client, DatastoreId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_datastore(Client, DatastoreId, QueryMap, HeadersMap, []).
@@ -921,11 +1056,7 @@ get_datastore(Client, DatastoreId, QueryMap, HeadersMap)
 -spec get_datastore(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_datastore_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_datastore_errors(), tuple()}.
 get_datastore(Client, DatastoreId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/datastore/", aws_util:encode_uri(DatastoreId), ""],
@@ -946,24 +1077,14 @@ get_datastore(Client, DatastoreId, QueryMap, HeadersMap, Options0)
 -spec get_image_frame(map(), binary() | list(), binary() | list(), get_image_frame_request()) ->
     {ok, get_image_frame_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_image_frame_errors(), tuple()}.
 get_image_frame(Client, DatastoreId, ImageSetId, Input) ->
     get_image_frame(Client, DatastoreId, ImageSetId, Input, []).
 
 -spec get_image_frame(map(), binary() | list(), binary() | list(), get_image_frame_request(), proplists:proplist()) ->
     {ok, get_image_frame_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_image_frame_errors(), tuple()}.
 get_image_frame(Client, DatastoreId, ImageSetId, Input0, Options0) ->
     Method = post,
     Path = ["/datastore/", aws_util:encode_uri(DatastoreId), "/imageSet/", aws_util:encode_uri(ImageSetId), "/getImageFrame"],
@@ -1006,24 +1127,14 @@ get_image_frame(Client, DatastoreId, ImageSetId, Input0, Options0) ->
 -spec get_image_set(map(), binary() | list(), binary() | list(), get_image_set_request()) ->
     {ok, get_image_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_image_set_errors(), tuple()}.
 get_image_set(Client, DatastoreId, ImageSetId, Input) ->
     get_image_set(Client, DatastoreId, ImageSetId, Input, []).
 
 -spec get_image_set(map(), binary() | list(), binary() | list(), get_image_set_request(), proplists:proplist()) ->
     {ok, get_image_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_image_set_errors(), tuple()}.
 get_image_set(Client, DatastoreId, ImageSetId, Input0, Options0) ->
     Method = post,
     Path = ["/datastore/", aws_util:encode_uri(DatastoreId), "/imageSet/", aws_util:encode_uri(ImageSetId), "/getImageSet"],
@@ -1051,24 +1162,14 @@ get_image_set(Client, DatastoreId, ImageSetId, Input0, Options0) ->
 -spec get_image_set_metadata(map(), binary() | list(), binary() | list(), get_image_set_metadata_request()) ->
     {ok, get_image_set_metadata_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_image_set_metadata_errors(), tuple()}.
 get_image_set_metadata(Client, DatastoreId, ImageSetId, Input) ->
     get_image_set_metadata(Client, DatastoreId, ImageSetId, Input, []).
 
 -spec get_image_set_metadata(map(), binary() | list(), binary() | list(), get_image_set_metadata_request(), proplists:proplist()) ->
     {ok, get_image_set_metadata_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_image_set_metadata_errors(), tuple()}.
 get_image_set_metadata(Client, DatastoreId, ImageSetId, Input0, Options0) ->
     Method = post,
     Path = ["/datastore/", aws_util:encode_uri(DatastoreId), "/imageSet/", aws_util:encode_uri(ImageSetId), "/getImageSetMetadata"],
@@ -1113,12 +1214,7 @@ get_image_set_metadata(Client, DatastoreId, ImageSetId, Input0, Options0) ->
 -spec list_d_i_c_o_m_import_jobs(map(), binary() | list()) ->
     {ok, list_d_i_c_o_m_import_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_d_i_c_o_m_import_jobs_errors(), tuple()}.
 list_d_i_c_o_m_import_jobs(Client, DatastoreId)
   when is_map(Client) ->
     list_d_i_c_o_m_import_jobs(Client, DatastoreId, #{}, #{}).
@@ -1126,12 +1222,7 @@ list_d_i_c_o_m_import_jobs(Client, DatastoreId)
 -spec list_d_i_c_o_m_import_jobs(map(), binary() | list(), map(), map()) ->
     {ok, list_d_i_c_o_m_import_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_d_i_c_o_m_import_jobs_errors(), tuple()}.
 list_d_i_c_o_m_import_jobs(Client, DatastoreId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_d_i_c_o_m_import_jobs(Client, DatastoreId, QueryMap, HeadersMap, []).
@@ -1139,12 +1230,7 @@ list_d_i_c_o_m_import_jobs(Client, DatastoreId, QueryMap, HeadersMap)
 -spec list_d_i_c_o_m_import_jobs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_d_i_c_o_m_import_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_d_i_c_o_m_import_jobs_errors(), tuple()}.
 list_d_i_c_o_m_import_jobs(Client, DatastoreId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/listDICOMImportJobs/datastore/", aws_util:encode_uri(DatastoreId), ""],
@@ -1171,10 +1257,7 @@ list_d_i_c_o_m_import_jobs(Client, DatastoreId, QueryMap, HeadersMap, Options0)
 -spec list_datastores(map()) ->
     {ok, list_datastores_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_datastores_errors(), tuple()}.
 list_datastores(Client)
   when is_map(Client) ->
     list_datastores(Client, #{}, #{}).
@@ -1182,10 +1265,7 @@ list_datastores(Client)
 -spec list_datastores(map(), map(), map()) ->
     {ok, list_datastores_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_datastores_errors(), tuple()}.
 list_datastores(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_datastores(Client, QueryMap, HeadersMap, []).
@@ -1193,10 +1273,7 @@ list_datastores(Client, QueryMap, HeadersMap)
 -spec list_datastores(map(), map(), map(), proplists:proplist()) ->
     {ok, list_datastores_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_datastores_errors(), tuple()}.
 list_datastores(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/datastore"],
@@ -1223,24 +1300,14 @@ list_datastores(Client, QueryMap, HeadersMap, Options0)
 -spec list_image_set_versions(map(), binary() | list(), binary() | list(), list_image_set_versions_request()) ->
     {ok, list_image_set_versions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_image_set_versions_errors(), tuple()}.
 list_image_set_versions(Client, DatastoreId, ImageSetId, Input) ->
     list_image_set_versions(Client, DatastoreId, ImageSetId, Input, []).
 
 -spec list_image_set_versions(map(), binary() | list(), binary() | list(), list_image_set_versions_request(), proplists:proplist()) ->
     {ok, list_image_set_versions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_image_set_versions_errors(), tuple()}.
 list_image_set_versions(Client, DatastoreId, ImageSetId, Input0, Options0) ->
     Method = post,
     Path = ["/datastore/", aws_util:encode_uri(DatastoreId), "/imageSet/", aws_util:encode_uri(ImageSetId), "/listImageSetVersions"],
@@ -1269,11 +1336,7 @@ list_image_set_versions(Client, DatastoreId, ImageSetId, Input0, Options0) ->
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1281,11 +1344,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1293,11 +1352,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1327,24 +1382,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec search_image_sets(map(), binary() | list(), search_image_sets_request()) ->
     {ok, search_image_sets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_image_sets_errors(), tuple()}.
 search_image_sets(Client, DatastoreId, Input) ->
     search_image_sets(Client, DatastoreId, Input, []).
 
 -spec search_image_sets(map(), binary() | list(), search_image_sets_request(), proplists:proplist()) ->
     {ok, search_image_sets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_image_sets_errors(), tuple()}.
 search_image_sets(Client, DatastoreId, Input0, Options0) ->
     Method = post,
     Path = ["/datastore/", aws_util:encode_uri(DatastoreId), "/searchImageSets"],
@@ -1379,26 +1424,14 @@ search_image_sets(Client, DatastoreId, Input0, Options0) ->
 -spec start_d_i_c_o_m_import_job(map(), binary() | list(), start_d_i_c_o_m_import_job_request()) ->
     {ok, start_d_i_c_o_m_import_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_d_i_c_o_m_import_job_errors(), tuple()}.
 start_d_i_c_o_m_import_job(Client, DatastoreId, Input) ->
     start_d_i_c_o_m_import_job(Client, DatastoreId, Input, []).
 
 -spec start_d_i_c_o_m_import_job(map(), binary() | list(), start_d_i_c_o_m_import_job_request(), proplists:proplist()) ->
     {ok, start_d_i_c_o_m_import_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_d_i_c_o_m_import_job_errors(), tuple()}.
 start_d_i_c_o_m_import_job(Client, DatastoreId, Input0, Options0) ->
     Method = post,
     Path = ["/startDICOMImportJob/datastore/", aws_util:encode_uri(DatastoreId), ""],
@@ -1425,22 +1458,14 @@ start_d_i_c_o_m_import_job(Client, DatastoreId, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1467,22 +1492,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1510,26 +1527,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_image_set_metadata(map(), binary() | list(), binary() | list(), update_image_set_metadata_request()) ->
     {ok, update_image_set_metadata_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_image_set_metadata_errors(), tuple()}.
 update_image_set_metadata(Client, DatastoreId, ImageSetId, Input) ->
     update_image_set_metadata(Client, DatastoreId, ImageSetId, Input, []).
 
 -spec update_image_set_metadata(map(), binary() | list(), binary() | list(), update_image_set_metadata_request(), proplists:proplist()) ->
     {ok, update_image_set_metadata_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_image_set_metadata_errors(), tuple()}.
 update_image_set_metadata(Client, DatastoreId, ImageSetId, Input0, Options0) ->
     Method = post,
     Path = ["/datastore/", aws_util:encode_uri(DatastoreId), "/imageSet/", aws_util:encode_uri(ImageSetId), "/updateImageSetMetadata"],

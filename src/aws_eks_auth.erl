@@ -19,11 +19,13 @@
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% assume_role_for_pod_identity_request() :: #{
 %%   <<"token">> := string()
 %% }
 -type assume_role_for_pod_identity_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% assume_role_for_pod_identity_response() :: #{
@@ -35,12 +37,14 @@
 %% }
 -type assume_role_for_pod_identity_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% assumed_role_user() :: #{
 %%   <<"arn">> => [string()],
 %%   <<"assumeRoleId">> => [string()]
 %% }
 -type assumed_role_user() :: #{binary() => any()}.
+
 
 %% Example:
 %% credentials() :: #{
@@ -51,11 +55,13 @@
 %% }
 -type credentials() :: #{binary() => any()}.
 
+
 %% Example:
 %% expired_token_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type expired_token_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% internal_server_exception() :: #{
@@ -63,11 +69,13 @@
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_parameter_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type invalid_parameter_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% invalid_request_exception() :: #{
@@ -75,11 +83,13 @@
 %% }
 -type invalid_request_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_token_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type invalid_token_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% pod_identity_association() :: #{
@@ -88,17 +98,20 @@
 %% }
 -type pod_identity_association() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_unavailable_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% subject() :: #{
@@ -107,11 +120,23 @@
 %% }
 -type subject() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
+-type assume_role_for_pod_identity_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    invalid_token_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_exception() | 
+    expired_token_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -129,30 +154,14 @@
 -spec assume_role_for_pod_identity(map(), binary() | list(), assume_role_for_pod_identity_request()) ->
     {ok, assume_role_for_pod_identity_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, expired_token_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, assume_role_for_pod_identity_errors(), tuple()}.
 assume_role_for_pod_identity(Client, ClusterName, Input) ->
     assume_role_for_pod_identity(Client, ClusterName, Input, []).
 
 -spec assume_role_for_pod_identity(map(), binary() | list(), assume_role_for_pod_identity_request(), proplists:proplist()) ->
     {ok, assume_role_for_pod_identity_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, expired_token_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, assume_role_for_pod_identity_errors(), tuple()}.
 assume_role_for_pod_identity(Client, ClusterName, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/assume-role-for-pod-identity"],

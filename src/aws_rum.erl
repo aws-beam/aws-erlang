@@ -65,11 +65,13 @@
 %% put_rum_metrics_destination_response() :: #{}
 -type put_rum_metrics_destination_response() :: #{}.
 
+
 %% Example:
 %% data_storage() :: #{
 %%   <<"CwLog">> => cw_log()
 %% }
 -type data_storage() :: #{binary() => any()}.
+
 
 %% Example:
 %% tag_resource_request() :: #{
@@ -77,12 +79,14 @@
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% query_filter() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Values">> => list(string()())
 %% }
 -type query_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_rum_events_request() :: #{
@@ -92,6 +96,7 @@
 %%   <<"UserDetails">> := user_details()
 %% }
 -type put_rum_events_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% app_monitor_summary() :: #{
@@ -103,11 +108,13 @@
 %% }
 -type app_monitor_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_app_monitor_response() :: #{
 %%   <<"AppMonitor">> => app_monitor()
 %% }
 -type get_app_monitor_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% app_monitor_details() :: #{
@@ -116,9 +123,11 @@
 %%   <<"version">> => [string()]
 %% }
 -type app_monitor_details() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% metric_destination_summary() :: #{
@@ -128,12 +137,14 @@
 %% }
 -type metric_destination_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% cw_log() :: #{
 %%   <<"CwLogEnabled">> => [boolean()],
 %%   <<"CwLogGroup">> => [string()]
 %% }
 -type cw_log() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_delete_rum_metric_definitions_request() :: #{
@@ -142,6 +153,7 @@
 %%   <<"MetricDefinitionIds">> := list(string()())
 %% }
 -type batch_delete_rum_metric_definitions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% app_monitor_configuration() :: #{
@@ -157,12 +169,14 @@
 %% }
 -type app_monitor_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% user_details() :: #{
 %%   <<"sessionId">> => [string()],
 %%   <<"userId">> => [string()]
 %% }
 -type user_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_app_monitor_request() :: #{
@@ -173,6 +187,7 @@
 %% }
 -type update_app_monitor_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_app_monitor_data_request() :: #{
 %%   <<"Filters">> => list(query_filter()()),
@@ -181,6 +196,7 @@
 %%   <<"TimeRange">> := time_range()
 %% }
 -type get_app_monitor_data_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% metric_definition() :: #{
@@ -194,6 +210,7 @@
 %% }
 -type metric_definition() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_app_monitors_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -201,11 +218,13 @@
 %% }
 -type list_app_monitors_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% rum_event() :: #{
@@ -216,15 +235,18 @@
 %%   <<"type">> => [string()]
 %% }
 -type rum_event() :: #{binary() => any()}.
+
 %% Example:
 %% get_app_monitor_request() :: #{}
 -type get_app_monitor_request() :: #{}.
+
 
 %% Example:
 %% create_app_monitor_response() :: #{
 %%   <<"Id">> => string()
 %% }
 -type create_app_monitor_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% app_monitor() :: #{
@@ -240,9 +262,11 @@
 %%   <<"Tags">> => map()
 %% }
 -type app_monitor() :: #{binary() => any()}.
+
 %% Example:
 %% delete_app_monitor_response() :: #{}
 -type delete_app_monitor_response() :: #{}.
+
 
 %% Example:
 %% create_app_monitor_request() :: #{
@@ -255,12 +279,14 @@
 %% }
 -type create_app_monitor_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_rum_metrics_destination_request() :: #{
 %%   <<"Destination">> := string(),
 %%   <<"DestinationArn">> => string()
 %% }
 -type delete_rum_metrics_destination_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_create_rum_metric_definitions_error() :: #{
@@ -270,6 +296,7 @@
 %% }
 -type batch_create_rum_metric_definitions_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_create_rum_metric_definitions_request() :: #{
 %%   <<"Destination">> := string(),
@@ -277,6 +304,7 @@
 %%   <<"MetricDefinitions">> := list(metric_definition_request()())
 %% }
 -type batch_create_rum_metric_definitions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_rum_metric_definition_request() :: #{
@@ -287,6 +315,7 @@
 %% }
 -type update_rum_metric_definition_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => [string()],
@@ -294,6 +323,7 @@
 %%   <<"resourceType">> => [string()]
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -303,6 +333,7 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_delete_rum_metric_definitions_response() :: #{
 %%   <<"Errors">> := list(batch_delete_rum_metric_definitions_error()()),
@@ -310,11 +341,13 @@
 %% }
 -type batch_delete_rum_metric_definitions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_delete_rum_metric_definitions_error() :: #{
@@ -324,15 +357,18 @@
 %% }
 -type batch_delete_rum_metric_definitions_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_app_monitor_data_response() :: #{
 %%   <<"Events">> => list(string()()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_app_monitor_data_response() :: #{binary() => any()}.
+
 %% Example:
 %% put_rum_events_response() :: #{}
 -type put_rum_events_response() :: #{}.
+
 
 %% Example:
 %% put_rum_metrics_destination_request() :: #{
@@ -342,15 +378,18 @@
 %% }
 -type put_rum_metrics_destination_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"ResourceArn">> := string(),
 %%   <<"Tags">> := map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_app_monitor_request() :: #{}
 -type delete_app_monitor_request() :: #{}.
+
 
 %% Example:
 %% list_rum_metrics_destinations_request() :: #{
@@ -358,9 +397,11 @@
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_rum_metrics_destinations_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_rum_metrics_destination_response() :: #{}
 -type delete_rum_metrics_destination_response() :: #{}.
+
 
 %% Example:
 %% batch_get_rum_metric_definitions_response() :: #{
@@ -369,12 +410,14 @@
 %% }
 -type batch_get_rum_metric_definitions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => [string()],
 %%   <<"retryAfterSeconds">> => [integer()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_get_rum_metric_definitions_request() :: #{
@@ -385,6 +428,7 @@
 %% }
 -type batch_get_rum_metric_definitions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% time_range() :: #{
 %%   <<"After">> => float(),
@@ -392,14 +436,17 @@
 %% }
 -type time_range() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% batch_create_rum_metric_definitions_response() :: #{
@@ -408,17 +455,21 @@
 %% }
 -type batch_create_rum_metric_definitions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 %% Example:
 %% update_app_monitor_response() :: #{}
 -type update_app_monitor_response() :: #{}.
+
 
 %% Example:
 %% throttling_exception() :: #{
@@ -428,6 +479,7 @@
 %%   <<"serviceCode">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% metric_definition_request() :: #{
@@ -439,9 +491,11 @@
 %%   <<"ValueKey">> => string()
 %% }
 -type metric_definition_request() :: #{binary() => any()}.
+
 %% Example:
 %% update_rum_metric_definition_response() :: #{}
 -type update_rum_metric_definition_response() :: #{}.
+
 
 %% Example:
 %% list_app_monitors_response() :: #{
@@ -450,6 +504,7 @@
 %% }
 -type list_app_monitors_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_rum_metrics_destinations_response() :: #{
 %%   <<"Destinations">> => list(metric_destination_summary()()),
@@ -457,11 +512,133 @@
 %% }
 -type list_rum_metrics_destinations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% custom_events() :: #{
 %%   <<"Status">> => string()
 %% }
 -type custom_events() :: #{binary() => any()}.
+
+-type batch_create_rum_metric_definitions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type batch_delete_rum_metric_definitions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type batch_get_rum_metric_definitions_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_app_monitor_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_app_monitor_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_rum_metrics_destination_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_app_monitor_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_app_monitor_data_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_app_monitors_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_rum_metrics_destinations_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type put_rum_events_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type put_rum_metrics_destination_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_app_monitor_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_rum_metric_definition_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -538,26 +715,14 @@
 -spec batch_create_rum_metric_definitions(map(), binary() | list(), batch_create_rum_metric_definitions_request()) ->
     {ok, batch_create_rum_metric_definitions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_create_rum_metric_definitions_errors(), tuple()}.
 batch_create_rum_metric_definitions(Client, AppMonitorName, Input) ->
     batch_create_rum_metric_definitions(Client, AppMonitorName, Input, []).
 
 -spec batch_create_rum_metric_definitions(map(), binary() | list(), batch_create_rum_metric_definitions_request(), proplists:proplist()) ->
     {ok, batch_create_rum_metric_definitions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_create_rum_metric_definitions_errors(), tuple()}.
 batch_create_rum_metric_definitions(Client, AppMonitorName, Input0, Options0) ->
     Method = post,
     Path = ["/rummetrics/", aws_util:encode_uri(AppMonitorName), "/metrics"],
@@ -594,24 +759,14 @@ batch_create_rum_metric_definitions(Client, AppMonitorName, Input0, Options0) ->
 -spec batch_delete_rum_metric_definitions(map(), binary() | list(), batch_delete_rum_metric_definitions_request()) ->
     {ok, batch_delete_rum_metric_definitions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_delete_rum_metric_definitions_errors(), tuple()}.
 batch_delete_rum_metric_definitions(Client, AppMonitorName, Input) ->
     batch_delete_rum_metric_definitions(Client, AppMonitorName, Input, []).
 
 -spec batch_delete_rum_metric_definitions(map(), binary() | list(), batch_delete_rum_metric_definitions_request(), proplists:proplist()) ->
     {ok, batch_delete_rum_metric_definitions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_delete_rum_metric_definitions_errors(), tuple()}.
 batch_delete_rum_metric_definitions(Client, AppMonitorName, Input0, Options0) ->
     Method = delete,
     Path = ["/rummetrics/", aws_util:encode_uri(AppMonitorName), "/metrics"],
@@ -642,10 +797,7 @@ batch_delete_rum_metric_definitions(Client, AppMonitorName, Input0, Options0) ->
 -spec batch_get_rum_metric_definitions(map(), binary() | list(), binary() | list()) ->
     {ok, batch_get_rum_metric_definitions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_rum_metric_definitions_errors(), tuple()}.
 batch_get_rum_metric_definitions(Client, AppMonitorName, Destination)
   when is_map(Client) ->
     batch_get_rum_metric_definitions(Client, AppMonitorName, Destination, #{}, #{}).
@@ -653,10 +805,7 @@ batch_get_rum_metric_definitions(Client, AppMonitorName, Destination)
 -spec batch_get_rum_metric_definitions(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, batch_get_rum_metric_definitions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_rum_metric_definitions_errors(), tuple()}.
 batch_get_rum_metric_definitions(Client, AppMonitorName, Destination, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     batch_get_rum_metric_definitions(Client, AppMonitorName, Destination, QueryMap, HeadersMap, []).
@@ -664,10 +813,7 @@ batch_get_rum_metric_definitions(Client, AppMonitorName, Destination, QueryMap, 
 -spec batch_get_rum_metric_definitions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, batch_get_rum_metric_definitions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_rum_metric_definitions_errors(), tuple()}.
 batch_get_rum_metric_definitions(Client, AppMonitorName, Destination, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/rummetrics/", aws_util:encode_uri(AppMonitorName), "/metrics"],
@@ -714,26 +860,14 @@ batch_get_rum_metric_definitions(Client, AppMonitorName, Destination, QueryMap, 
 -spec create_app_monitor(map(), create_app_monitor_request()) ->
     {ok, create_app_monitor_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_app_monitor_errors(), tuple()}.
 create_app_monitor(Client, Input) ->
     create_app_monitor(Client, Input, []).
 
 -spec create_app_monitor(map(), create_app_monitor_request(), proplists:proplist()) ->
     {ok, create_app_monitor_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_app_monitor_errors(), tuple()}.
 create_app_monitor(Client, Input0, Options0) ->
     Method = post,
     Path = ["/appmonitor"],
@@ -762,24 +896,14 @@ create_app_monitor(Client, Input0, Options0) ->
 -spec delete_app_monitor(map(), binary() | list(), delete_app_monitor_request()) ->
     {ok, delete_app_monitor_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_app_monitor_errors(), tuple()}.
 delete_app_monitor(Client, Name, Input) ->
     delete_app_monitor(Client, Name, Input, []).
 
 -spec delete_app_monitor(map(), binary() | list(), delete_app_monitor_request(), proplists:proplist()) ->
     {ok, delete_app_monitor_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_app_monitor_errors(), tuple()}.
 delete_app_monitor(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/appmonitor/", aws_util:encode_uri(Name), ""],
@@ -808,24 +932,14 @@ delete_app_monitor(Client, Name, Input0, Options0) ->
 -spec delete_rum_metrics_destination(map(), binary() | list(), delete_rum_metrics_destination_request()) ->
     {ok, delete_rum_metrics_destination_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_rum_metrics_destination_errors(), tuple()}.
 delete_rum_metrics_destination(Client, AppMonitorName, Input) ->
     delete_rum_metrics_destination(Client, AppMonitorName, Input, []).
 
 -spec delete_rum_metrics_destination(map(), binary() | list(), delete_rum_metrics_destination_request(), proplists:proplist()) ->
     {ok, delete_rum_metrics_destination_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_rum_metrics_destination_errors(), tuple()}.
 delete_rum_metrics_destination(Client, AppMonitorName, Input0, Options0) ->
     Method = delete,
     Path = ["/rummetrics/", aws_util:encode_uri(AppMonitorName), "/metricsdestination"],
@@ -854,11 +968,7 @@ delete_rum_metrics_destination(Client, AppMonitorName, Input0, Options0) ->
 -spec get_app_monitor(map(), binary() | list()) ->
     {ok, get_app_monitor_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_app_monitor_errors(), tuple()}.
 get_app_monitor(Client, Name)
   when is_map(Client) ->
     get_app_monitor(Client, Name, #{}, #{}).
@@ -866,11 +976,7 @@ get_app_monitor(Client, Name)
 -spec get_app_monitor(map(), binary() | list(), map(), map()) ->
     {ok, get_app_monitor_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_app_monitor_errors(), tuple()}.
 get_app_monitor(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_app_monitor(Client, Name, QueryMap, HeadersMap, []).
@@ -878,11 +984,7 @@ get_app_monitor(Client, Name, QueryMap, HeadersMap)
 -spec get_app_monitor(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_app_monitor_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_app_monitor_errors(), tuple()}.
 get_app_monitor(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/appmonitor/", aws_util:encode_uri(Name), ""],
@@ -905,22 +1007,14 @@ get_app_monitor(Client, Name, QueryMap, HeadersMap, Options0)
 -spec get_app_monitor_data(map(), binary() | list(), get_app_monitor_data_request()) ->
     {ok, get_app_monitor_data_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_app_monitor_data_errors(), tuple()}.
 get_app_monitor_data(Client, Name, Input) ->
     get_app_monitor_data(Client, Name, Input, []).
 
 -spec get_app_monitor_data(map(), binary() | list(), get_app_monitor_data_request(), proplists:proplist()) ->
     {ok, get_app_monitor_data_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_app_monitor_data_errors(), tuple()}.
 get_app_monitor_data(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/appmonitor/", aws_util:encode_uri(Name), "/data"],
@@ -948,20 +1042,14 @@ get_app_monitor_data(Client, Name, Input0, Options0) ->
 -spec list_app_monitors(map(), list_app_monitors_request()) ->
     {ok, list_app_monitors_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_app_monitors_errors(), tuple()}.
 list_app_monitors(Client, Input) ->
     list_app_monitors(Client, Input, []).
 
 -spec list_app_monitors(map(), list_app_monitors_request(), proplists:proplist()) ->
     {ok, list_app_monitors_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_app_monitors_errors(), tuple()}.
 list_app_monitors(Client, Input0, Options0) ->
     Method = post,
     Path = ["/appmonitors"],
@@ -995,10 +1083,7 @@ list_app_monitors(Client, Input0, Options0) ->
 -spec list_rum_metrics_destinations(map(), binary() | list()) ->
     {ok, list_rum_metrics_destinations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_rum_metrics_destinations_errors(), tuple()}.
 list_rum_metrics_destinations(Client, AppMonitorName)
   when is_map(Client) ->
     list_rum_metrics_destinations(Client, AppMonitorName, #{}, #{}).
@@ -1006,10 +1091,7 @@ list_rum_metrics_destinations(Client, AppMonitorName)
 -spec list_rum_metrics_destinations(map(), binary() | list(), map(), map()) ->
     {ok, list_rum_metrics_destinations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_rum_metrics_destinations_errors(), tuple()}.
 list_rum_metrics_destinations(Client, AppMonitorName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_rum_metrics_destinations(Client, AppMonitorName, QueryMap, HeadersMap, []).
@@ -1017,10 +1099,7 @@ list_rum_metrics_destinations(Client, AppMonitorName, QueryMap, HeadersMap)
 -spec list_rum_metrics_destinations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_rum_metrics_destinations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_rum_metrics_destinations_errors(), tuple()}.
 list_rum_metrics_destinations(Client, AppMonitorName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/rummetrics/", aws_util:encode_uri(AppMonitorName), "/metricsdestination"],
@@ -1046,9 +1125,7 @@ list_rum_metrics_destinations(Client, AppMonitorName, QueryMap, HeadersMap, Opti
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1056,9 +1133,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1066,9 +1141,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1098,22 +1171,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec put_rum_events(map(), binary() | list(), put_rum_events_request()) ->
     {ok, put_rum_events_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_rum_events_errors(), tuple()}.
 put_rum_events(Client, Id, Input) ->
     put_rum_events(Client, Id, Input, []).
 
 -spec put_rum_events(map(), binary() | list(), put_rum_events_request(), proplists:proplist()) ->
     {ok, put_rum_events_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_rum_events_errors(), tuple()}.
 put_rum_events(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/appmonitors/", aws_util:encode_uri(Id), "/"],
@@ -1148,24 +1213,14 @@ put_rum_events(Client, Id, Input0, Options0) ->
 -spec put_rum_metrics_destination(map(), binary() | list(), put_rum_metrics_destination_request()) ->
     {ok, put_rum_metrics_destination_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_rum_metrics_destination_errors(), tuple()}.
 put_rum_metrics_destination(Client, AppMonitorName, Input) ->
     put_rum_metrics_destination(Client, AppMonitorName, Input, []).
 
 -spec put_rum_metrics_destination(map(), binary() | list(), put_rum_metrics_destination_request(), proplists:proplist()) ->
     {ok, put_rum_metrics_destination_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_rum_metrics_destination_errors(), tuple()}.
 put_rum_metrics_destination(Client, AppMonitorName, Input0, Options0) ->
     Method = post,
     Path = ["/rummetrics/", aws_util:encode_uri(AppMonitorName), "/metricsdestination"],
@@ -1218,18 +1273,14 @@ put_rum_metrics_destination(Client, AppMonitorName, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1256,18 +1307,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1316,24 +1363,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_app_monitor(map(), binary() | list(), update_app_monitor_request()) ->
     {ok, update_app_monitor_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_app_monitor_errors(), tuple()}.
 update_app_monitor(Client, Name, Input) ->
     update_app_monitor(Client, Name, Input, []).
 
 -spec update_app_monitor(map(), binary() | list(), update_app_monitor_request(), proplists:proplist()) ->
     {ok, update_app_monitor_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_app_monitor_errors(), tuple()}.
 update_app_monitor(Client, Name, Input0, Options0) ->
     Method = patch,
     Path = ["/appmonitor/", aws_util:encode_uri(Name), ""],
@@ -1366,26 +1403,14 @@ update_app_monitor(Client, Name, Input0, Options0) ->
 -spec update_rum_metric_definition(map(), binary() | list(), update_rum_metric_definition_request()) ->
     {ok, update_rum_metric_definition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_rum_metric_definition_errors(), tuple()}.
 update_rum_metric_definition(Client, AppMonitorName, Input) ->
     update_rum_metric_definition(Client, AppMonitorName, Input, []).
 
 -spec update_rum_metric_definition(map(), binary() | list(), update_rum_metric_definition_request(), proplists:proplist()) ->
     {ok, update_rum_metric_definition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_rum_metric_definition_errors(), tuple()}.
 update_rum_metric_definition(Client, AppMonitorName, Input0, Options0) ->
     Method = patch,
     Path = ["/rummetrics/", aws_util:encode_uri(AppMonitorName), "/metrics"],

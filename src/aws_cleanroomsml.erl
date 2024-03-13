@@ -94,11 +94,13 @@
 %% }
 -type update_configured_audience_model_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_audience_model_response() :: #{
 %%   <<"audienceModelArn">> => string()
 %% }
 -type create_audience_model_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% tag_resource_request() :: #{
@@ -106,17 +108,20 @@
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% audience_quality_metrics() :: #{
 %%   <<"relevanceMetrics">> => list(relevance_metric()())
 %% }
 -type audience_quality_metrics() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_audience_generation_job_response() :: #{
 %%   <<"audienceGenerationJobArn">> => string()
 %% }
 -type start_audience_generation_job_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_audience_generation_job_response() :: #{
@@ -137,6 +142,7 @@
 %% }
 -type get_audience_generation_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_training_dataset_response() :: #{
 %%   <<"createTime">> => [non_neg_integer()],
@@ -151,14 +157,17 @@
 %% }
 -type get_training_dataset_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_configured_audience_model_response() :: #{
 %%   <<"configuredAudienceModelArn">> => string()
 %% }
 -type create_configured_audience_model_response() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% list_configured_audience_models_request() :: #{
@@ -167,15 +176,18 @@
 %% }
 -type list_configured_audience_models_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_training_datasets_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_training_datasets_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_training_dataset_request() :: #{}
 -type get_training_dataset_request() :: #{}.
+
 
 %% Example:
 %% relevance_metric() :: #{
@@ -183,6 +195,7 @@
 %%   <<"score">> => [float()]
 %% }
 -type relevance_metric() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_configured_audience_model_request() :: #{
@@ -197,9 +210,11 @@
 %%   <<"tags">> => map()
 %% }
 -type create_configured_audience_model_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_configured_audience_model_request() :: #{}
 -type delete_configured_audience_model_request() :: #{}.
+
 
 %% Example:
 %% untag_resource_request() :: #{
@@ -207,12 +222,14 @@
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% status_details() :: #{
 %%   <<"message">> => [string()],
 %%   <<"statusCode">> => [string()]
 %% }
 -type status_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_audience_export_job_request() :: #{
@@ -222,9 +239,11 @@
 %%   <<"name">> := string()
 %% }
 -type start_audience_export_job_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_training_dataset_request() :: #{}
 -type delete_training_dataset_request() :: #{}.
+
 
 %% Example:
 %% list_audience_models_request() :: #{
@@ -233,6 +252,7 @@
 %% }
 -type list_audience_models_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% dataset() :: #{
 %%   <<"inputConfig">> => dataset_input_config(),
@@ -240,12 +260,14 @@
 %% }
 -type dataset() :: #{binary() => any()}.
 
+
 %% Example:
 %% audience_size() :: #{
 %%   <<"type">> => list(any()),
 %%   <<"value">> => integer()
 %% }
 -type audience_size() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_audience_generation_job_request() :: #{
@@ -258,6 +280,7 @@
 %%   <<"tags">> => map()
 %% }
 -type start_audience_generation_job_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% audience_generation_job_summary() :: #{
@@ -273,20 +296,24 @@
 %% }
 -type audience_generation_job_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 %% Example:
 %% get_audience_model_request() :: #{}
 -type get_audience_model_request() :: #{}.
+
 
 %% Example:
 %% configured_audience_model_output_config() :: #{
@@ -295,11 +322,13 @@
 %% }
 -type configured_audience_model_output_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_configured_audience_model_response() :: #{
@@ -319,6 +348,7 @@
 %% }
 -type get_configured_audience_model_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% audience_model_summary() :: #{
 %%   <<"audienceModelArn">> => string(),
@@ -330,9 +360,11 @@
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
 -type audience_model_summary() :: #{binary() => any()}.
+
 %% Example:
 %% delete_audience_generation_job_request() :: #{}
 -type delete_audience_generation_job_request() :: #{}.
+
 
 %% Example:
 %% list_training_datasets_response() :: #{
@@ -341,11 +373,13 @@
 %% }
 -type list_training_datasets_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% audience_export_job_summary() :: #{
@@ -360,15 +394,18 @@
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
 -type audience_export_job_summary() :: #{binary() => any()}.
+
 %% Example:
 %% delete_audience_model_request() :: #{}
 -type delete_audience_model_request() :: #{}.
+
 
 %% Example:
 %% create_training_dataset_response() :: #{
 %%   <<"trainingDatasetArn">> => string()
 %% }
 -type create_training_dataset_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_audience_model_request() :: #{
@@ -382,6 +419,7 @@
 %% }
 -type create_audience_model_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_configured_audience_models_response() :: #{
 %%   <<"configuredAudienceModels">> => list(configured_audience_model_summary()()),
@@ -389,11 +427,13 @@
 %% }
 -type list_configured_audience_models_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_config_map() :: #{
 %%   <<"s3Uri">> => string()
 %% }
 -type s3_config_map() :: #{binary() => any()}.
+
 
 %% Example:
 %% access_denied_exception() :: #{
@@ -401,27 +441,33 @@
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_audience_export_jobs_response() :: #{
 %%   <<"audienceExportJobs">> => list(audience_export_job_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_audience_export_jobs_response() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 %% Example:
 %% get_configured_audience_model_request() :: #{}
 -type get_configured_audience_model_request() :: #{}.
+
 
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% configured_audience_model_summary() :: #{
@@ -436,6 +482,7 @@
 %% }
 -type configured_audience_model_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_configured_audience_model_policy_response() :: #{
 %%   <<"configuredAudienceModelArn">> => string(),
@@ -443,6 +490,7 @@
 %%   <<"policyHash">> => string()
 %% }
 -type get_configured_audience_model_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% glue_data_source() :: #{
@@ -452,12 +500,14 @@
 %% }
 -type glue_data_source() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_configured_audience_model_policy_response() :: #{
 %%   <<"configuredAudienceModelPolicy">> => string(),
 %%   <<"policyHash">> => string()
 %% }
 -type put_configured_audience_model_policy_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_training_dataset_request() :: #{
@@ -468,6 +518,7 @@
 %%   <<"trainingData">> := list(dataset()())
 %% }
 -type create_training_dataset_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% training_dataset_summary() :: #{
@@ -480,12 +531,14 @@
 %% }
 -type training_dataset_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% column_schema() :: #{
 %%   <<"columnName">> => string(),
 %%   <<"columnTypes">> => list(list(any())())
 %% }
 -type column_schema() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_audience_model_response() :: #{
@@ -505,6 +558,7 @@
 %% }
 -type get_audience_model_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% audience_model_metric() :: #{
 %%   <<"forTopKItemPredictions">> => [integer()],
@@ -513,12 +567,14 @@
 %% }
 -type audience_model_metric() :: #{binary() => any()}.
 
+
 %% Example:
 %% dataset_input_config() :: #{
 %%   <<"dataSource">> => data_source(),
 %%   <<"schema">> => list(column_schema()())
 %% }
 -type dataset_input_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_configured_audience_model_policy_request() :: #{
@@ -528,11 +584,13 @@
 %% }
 -type put_configured_audience_model_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_source() :: #{
 %%   <<"glueDataSource">> => glue_data_source()
 %% }
 -type data_source() :: #{binary() => any()}.
+
 
 %% Example:
 %% audience_size_config() :: #{
@@ -541,11 +599,13 @@
 %% }
 -type audience_size_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% audience_destination() :: #{
 %%   <<"s3Destination">> => s3_config_map()
 %% }
 -type audience_destination() :: #{binary() => any()}.
+
 
 %% Example:
 %% audience_generation_job_data_source() :: #{
@@ -553,6 +613,7 @@
 %%   <<"roleArn">> => string()
 %% }
 -type audience_generation_job_data_source() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_audience_generation_jobs_request() :: #{
@@ -563,12 +624,14 @@
 %% }
 -type list_audience_generation_jobs_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_audience_generation_jobs_response() :: #{
 %%   <<"audienceGenerationJobs">> => list(audience_generation_job_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_audience_generation_jobs_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_audience_models_response() :: #{
@@ -577,6 +640,7 @@
 %% }
 -type list_audience_models_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_audience_export_jobs_request() :: #{
 %%   <<"audienceGenerationJobArn">> => string(),
@@ -584,12 +648,15 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_audience_export_jobs_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_configured_audience_model_policy_request() :: #{}
 -type delete_configured_audience_model_policy_request() :: #{}.
+
 %% Example:
 %% get_configured_audience_model_policy_request() :: #{}
 -type get_configured_audience_model_policy_request() :: #{}.
+
 
 %% Example:
 %% update_configured_audience_model_request() :: #{
@@ -601,9 +668,143 @@
 %%   <<"sharedAudienceMetrics">> => list(list(any())())
 %% }
 -type update_configured_audience_model_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_audience_generation_job_request() :: #{}
 -type get_audience_generation_job_request() :: #{}.
+
+-type create_audience_model_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_configured_audience_model_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_training_dataset_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    conflict_exception().
+
+-type delete_audience_generation_job_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_audience_model_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_configured_audience_model_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_configured_audience_model_policy_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type delete_training_dataset_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_audience_generation_job_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_audience_model_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_configured_audience_model_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_configured_audience_model_policy_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_training_dataset_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_audience_export_jobs_errors() ::
+    validation_exception() | 
+    access_denied_exception().
+
+-type list_audience_generation_jobs_errors() ::
+    validation_exception() | 
+    access_denied_exception().
+
+-type list_audience_models_errors() ::
+    validation_exception() | 
+    access_denied_exception().
+
+-type list_configured_audience_models_errors() ::
+    validation_exception() | 
+    access_denied_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_training_datasets_errors() ::
+    validation_exception() | 
+    access_denied_exception().
+
+-type put_configured_audience_model_policy_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type start_audience_export_job_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_audience_generation_job_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type update_configured_audience_model_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -618,22 +819,14 @@
 -spec create_audience_model(map(), create_audience_model_request()) ->
     {ok, create_audience_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_audience_model_errors(), tuple()}.
 create_audience_model(Client, Input) ->
     create_audience_model(Client, Input, []).
 
 -spec create_audience_model(map(), create_audience_model_request(), proplists:proplist()) ->
     {ok, create_audience_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_audience_model_errors(), tuple()}.
 create_audience_model(Client, Input0, Options0) ->
     Method = post,
     Path = ["/audience-model"],
@@ -661,22 +854,14 @@ create_audience_model(Client, Input0, Options0) ->
 -spec create_configured_audience_model(map(), create_configured_audience_model_request()) ->
     {ok, create_configured_audience_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_configured_audience_model_errors(), tuple()}.
 create_configured_audience_model(Client, Input) ->
     create_configured_audience_model(Client, Input, []).
 
 -spec create_configured_audience_model(map(), create_configured_audience_model_request(), proplists:proplist()) ->
     {ok, create_configured_audience_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_configured_audience_model_errors(), tuple()}.
 create_configured_audience_model(Client, Input0, Options0) ->
     Method = post,
     Path = ["/configured-audience-model"],
@@ -707,18 +892,14 @@ create_configured_audience_model(Client, Input0, Options0) ->
 -spec create_training_dataset(map(), create_training_dataset_request()) ->
     {ok, create_training_dataset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_training_dataset_errors(), tuple()}.
 create_training_dataset(Client, Input) ->
     create_training_dataset(Client, Input, []).
 
 -spec create_training_dataset(map(), create_training_dataset_request(), proplists:proplist()) ->
     {ok, create_training_dataset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_training_dataset_errors(), tuple()}.
 create_training_dataset(Client, Input0, Options0) ->
     Method = post,
     Path = ["/training-dataset"],
@@ -746,20 +927,14 @@ create_training_dataset(Client, Input0, Options0) ->
 -spec delete_audience_generation_job(map(), binary() | list(), delete_audience_generation_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_audience_generation_job_errors(), tuple()}.
 delete_audience_generation_job(Client, AudienceGenerationJobArn, Input) ->
     delete_audience_generation_job(Client, AudienceGenerationJobArn, Input, []).
 
 -spec delete_audience_generation_job(map(), binary() | list(), delete_audience_generation_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_audience_generation_job_errors(), tuple()}.
 delete_audience_generation_job(Client, AudienceGenerationJobArn, Input0, Options0) ->
     Method = delete,
     Path = ["/audience-generation-job/", aws_util:encode_uri(AudienceGenerationJobArn), ""],
@@ -789,20 +964,14 @@ delete_audience_generation_job(Client, AudienceGenerationJobArn, Input0, Options
 -spec delete_audience_model(map(), binary() | list(), delete_audience_model_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_audience_model_errors(), tuple()}.
 delete_audience_model(Client, AudienceModelArn, Input) ->
     delete_audience_model(Client, AudienceModelArn, Input, []).
 
 -spec delete_audience_model(map(), binary() | list(), delete_audience_model_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_audience_model_errors(), tuple()}.
 delete_audience_model(Client, AudienceModelArn, Input0, Options0) ->
     Method = delete,
     Path = ["/audience-model/", aws_util:encode_uri(AudienceModelArn), ""],
@@ -834,20 +1003,14 @@ delete_audience_model(Client, AudienceModelArn, Input0, Options0) ->
 -spec delete_configured_audience_model(map(), binary() | list(), delete_configured_audience_model_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_configured_audience_model_errors(), tuple()}.
 delete_configured_audience_model(Client, ConfiguredAudienceModelArn, Input) ->
     delete_configured_audience_model(Client, ConfiguredAudienceModelArn, Input, []).
 
 -spec delete_configured_audience_model(map(), binary() | list(), delete_configured_audience_model_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_configured_audience_model_errors(), tuple()}.
 delete_configured_audience_model(Client, ConfiguredAudienceModelArn, Input0, Options0) ->
     Method = delete,
     Path = ["/configured-audience-model/", aws_util:encode_uri(ConfiguredAudienceModelArn), ""],
@@ -874,18 +1037,14 @@ delete_configured_audience_model(Client, ConfiguredAudienceModelArn, Input0, Opt
 -spec delete_configured_audience_model_policy(map(), binary() | list(), delete_configured_audience_model_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_configured_audience_model_policy_errors(), tuple()}.
 delete_configured_audience_model_policy(Client, ConfiguredAudienceModelArn, Input) ->
     delete_configured_audience_model_policy(Client, ConfiguredAudienceModelArn, Input, []).
 
 -spec delete_configured_audience_model_policy(map(), binary() | list(), delete_configured_audience_model_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_configured_audience_model_policy_errors(), tuple()}.
 delete_configured_audience_model_policy(Client, ConfiguredAudienceModelArn, Input0, Options0) ->
     Method = delete,
     Path = ["/configured-audience-model/", aws_util:encode_uri(ConfiguredAudienceModelArn), "/policy"],
@@ -918,20 +1077,14 @@ delete_configured_audience_model_policy(Client, ConfiguredAudienceModelArn, Inpu
 -spec delete_training_dataset(map(), binary() | list(), delete_training_dataset_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_training_dataset_errors(), tuple()}.
 delete_training_dataset(Client, TrainingDatasetArn, Input) ->
     delete_training_dataset(Client, TrainingDatasetArn, Input, []).
 
 -spec delete_training_dataset(map(), binary() | list(), delete_training_dataset_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_training_dataset_errors(), tuple()}.
 delete_training_dataset(Client, TrainingDatasetArn, Input0, Options0) ->
     Method = delete,
     Path = ["/training-dataset/", aws_util:encode_uri(TrainingDatasetArn), ""],
@@ -958,9 +1111,7 @@ delete_training_dataset(Client, TrainingDatasetArn, Input0, Options0) ->
 -spec get_audience_generation_job(map(), binary() | list()) ->
     {ok, get_audience_generation_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_audience_generation_job_errors(), tuple()}.
 get_audience_generation_job(Client, AudienceGenerationJobArn)
   when is_map(Client) ->
     get_audience_generation_job(Client, AudienceGenerationJobArn, #{}, #{}).
@@ -968,9 +1119,7 @@ get_audience_generation_job(Client, AudienceGenerationJobArn)
 -spec get_audience_generation_job(map(), binary() | list(), map(), map()) ->
     {ok, get_audience_generation_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_audience_generation_job_errors(), tuple()}.
 get_audience_generation_job(Client, AudienceGenerationJobArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_audience_generation_job(Client, AudienceGenerationJobArn, QueryMap, HeadersMap, []).
@@ -978,9 +1127,7 @@ get_audience_generation_job(Client, AudienceGenerationJobArn, QueryMap, HeadersM
 -spec get_audience_generation_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_audience_generation_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_audience_generation_job_errors(), tuple()}.
 get_audience_generation_job(Client, AudienceGenerationJobArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audience-generation-job/", aws_util:encode_uri(AudienceGenerationJobArn), ""],
@@ -1001,9 +1148,7 @@ get_audience_generation_job(Client, AudienceGenerationJobArn, QueryMap, HeadersM
 -spec get_audience_model(map(), binary() | list()) ->
     {ok, get_audience_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_audience_model_errors(), tuple()}.
 get_audience_model(Client, AudienceModelArn)
   when is_map(Client) ->
     get_audience_model(Client, AudienceModelArn, #{}, #{}).
@@ -1011,9 +1156,7 @@ get_audience_model(Client, AudienceModelArn)
 -spec get_audience_model(map(), binary() | list(), map(), map()) ->
     {ok, get_audience_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_audience_model_errors(), tuple()}.
 get_audience_model(Client, AudienceModelArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_audience_model(Client, AudienceModelArn, QueryMap, HeadersMap, []).
@@ -1021,9 +1164,7 @@ get_audience_model(Client, AudienceModelArn, QueryMap, HeadersMap)
 -spec get_audience_model(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_audience_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_audience_model_errors(), tuple()}.
 get_audience_model(Client, AudienceModelArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audience-model/", aws_util:encode_uri(AudienceModelArn), ""],
@@ -1044,9 +1185,7 @@ get_audience_model(Client, AudienceModelArn, QueryMap, HeadersMap, Options0)
 -spec get_configured_audience_model(map(), binary() | list()) ->
     {ok, get_configured_audience_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_configured_audience_model_errors(), tuple()}.
 get_configured_audience_model(Client, ConfiguredAudienceModelArn)
   when is_map(Client) ->
     get_configured_audience_model(Client, ConfiguredAudienceModelArn, #{}, #{}).
@@ -1054,9 +1193,7 @@ get_configured_audience_model(Client, ConfiguredAudienceModelArn)
 -spec get_configured_audience_model(map(), binary() | list(), map(), map()) ->
     {ok, get_configured_audience_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_configured_audience_model_errors(), tuple()}.
 get_configured_audience_model(Client, ConfiguredAudienceModelArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_configured_audience_model(Client, ConfiguredAudienceModelArn, QueryMap, HeadersMap, []).
@@ -1064,9 +1201,7 @@ get_configured_audience_model(Client, ConfiguredAudienceModelArn, QueryMap, Head
 -spec get_configured_audience_model(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_configured_audience_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_configured_audience_model_errors(), tuple()}.
 get_configured_audience_model(Client, ConfiguredAudienceModelArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/configured-audience-model/", aws_util:encode_uri(ConfiguredAudienceModelArn), ""],
@@ -1087,9 +1222,7 @@ get_configured_audience_model(Client, ConfiguredAudienceModelArn, QueryMap, Head
 -spec get_configured_audience_model_policy(map(), binary() | list()) ->
     {ok, get_configured_audience_model_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_configured_audience_model_policy_errors(), tuple()}.
 get_configured_audience_model_policy(Client, ConfiguredAudienceModelArn)
   when is_map(Client) ->
     get_configured_audience_model_policy(Client, ConfiguredAudienceModelArn, #{}, #{}).
@@ -1097,9 +1230,7 @@ get_configured_audience_model_policy(Client, ConfiguredAudienceModelArn)
 -spec get_configured_audience_model_policy(map(), binary() | list(), map(), map()) ->
     {ok, get_configured_audience_model_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_configured_audience_model_policy_errors(), tuple()}.
 get_configured_audience_model_policy(Client, ConfiguredAudienceModelArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_configured_audience_model_policy(Client, ConfiguredAudienceModelArn, QueryMap, HeadersMap, []).
@@ -1107,9 +1238,7 @@ get_configured_audience_model_policy(Client, ConfiguredAudienceModelArn, QueryMa
 -spec get_configured_audience_model_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_configured_audience_model_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_configured_audience_model_policy_errors(), tuple()}.
 get_configured_audience_model_policy(Client, ConfiguredAudienceModelArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/configured-audience-model/", aws_util:encode_uri(ConfiguredAudienceModelArn), "/policy"],
@@ -1130,9 +1259,7 @@ get_configured_audience_model_policy(Client, ConfiguredAudienceModelArn, QueryMa
 -spec get_training_dataset(map(), binary() | list()) ->
     {ok, get_training_dataset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_training_dataset_errors(), tuple()}.
 get_training_dataset(Client, TrainingDatasetArn)
   when is_map(Client) ->
     get_training_dataset(Client, TrainingDatasetArn, #{}, #{}).
@@ -1140,9 +1267,7 @@ get_training_dataset(Client, TrainingDatasetArn)
 -spec get_training_dataset(map(), binary() | list(), map(), map()) ->
     {ok, get_training_dataset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_training_dataset_errors(), tuple()}.
 get_training_dataset(Client, TrainingDatasetArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_training_dataset(Client, TrainingDatasetArn, QueryMap, HeadersMap, []).
@@ -1150,9 +1275,7 @@ get_training_dataset(Client, TrainingDatasetArn, QueryMap, HeadersMap)
 -spec get_training_dataset(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_training_dataset_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_training_dataset_errors(), tuple()}.
 get_training_dataset(Client, TrainingDatasetArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/training-dataset/", aws_util:encode_uri(TrainingDatasetArn), ""],
@@ -1173,8 +1296,7 @@ get_training_dataset(Client, TrainingDatasetArn, QueryMap, HeadersMap, Options0)
 -spec list_audience_export_jobs(map()) ->
     {ok, list_audience_export_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_audience_export_jobs_errors(), tuple()}.
 list_audience_export_jobs(Client)
   when is_map(Client) ->
     list_audience_export_jobs(Client, #{}, #{}).
@@ -1182,8 +1304,7 @@ list_audience_export_jobs(Client)
 -spec list_audience_export_jobs(map(), map(), map()) ->
     {ok, list_audience_export_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_audience_export_jobs_errors(), tuple()}.
 list_audience_export_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_audience_export_jobs(Client, QueryMap, HeadersMap, []).
@@ -1191,8 +1312,7 @@ list_audience_export_jobs(Client, QueryMap, HeadersMap)
 -spec list_audience_export_jobs(map(), map(), map(), proplists:proplist()) ->
     {ok, list_audience_export_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_audience_export_jobs_errors(), tuple()}.
 list_audience_export_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audience-export-job"],
@@ -1219,8 +1339,7 @@ list_audience_export_jobs(Client, QueryMap, HeadersMap, Options0)
 -spec list_audience_generation_jobs(map()) ->
     {ok, list_audience_generation_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_audience_generation_jobs_errors(), tuple()}.
 list_audience_generation_jobs(Client)
   when is_map(Client) ->
     list_audience_generation_jobs(Client, #{}, #{}).
@@ -1228,8 +1347,7 @@ list_audience_generation_jobs(Client)
 -spec list_audience_generation_jobs(map(), map(), map()) ->
     {ok, list_audience_generation_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_audience_generation_jobs_errors(), tuple()}.
 list_audience_generation_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_audience_generation_jobs(Client, QueryMap, HeadersMap, []).
@@ -1237,8 +1355,7 @@ list_audience_generation_jobs(Client, QueryMap, HeadersMap)
 -spec list_audience_generation_jobs(map(), map(), map(), proplists:proplist()) ->
     {ok, list_audience_generation_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_audience_generation_jobs_errors(), tuple()}.
 list_audience_generation_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audience-generation-job"],
@@ -1266,8 +1383,7 @@ list_audience_generation_jobs(Client, QueryMap, HeadersMap, Options0)
 -spec list_audience_models(map()) ->
     {ok, list_audience_models_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_audience_models_errors(), tuple()}.
 list_audience_models(Client)
   when is_map(Client) ->
     list_audience_models(Client, #{}, #{}).
@@ -1275,8 +1391,7 @@ list_audience_models(Client)
 -spec list_audience_models(map(), map(), map()) ->
     {ok, list_audience_models_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_audience_models_errors(), tuple()}.
 list_audience_models(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_audience_models(Client, QueryMap, HeadersMap, []).
@@ -1284,8 +1399,7 @@ list_audience_models(Client, QueryMap, HeadersMap)
 -spec list_audience_models(map(), map(), map(), proplists:proplist()) ->
     {ok, list_audience_models_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_audience_models_errors(), tuple()}.
 list_audience_models(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audience-model"],
@@ -1311,8 +1425,7 @@ list_audience_models(Client, QueryMap, HeadersMap, Options0)
 -spec list_configured_audience_models(map()) ->
     {ok, list_configured_audience_models_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_configured_audience_models_errors(), tuple()}.
 list_configured_audience_models(Client)
   when is_map(Client) ->
     list_configured_audience_models(Client, #{}, #{}).
@@ -1320,8 +1433,7 @@ list_configured_audience_models(Client)
 -spec list_configured_audience_models(map(), map(), map()) ->
     {ok, list_configured_audience_models_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_configured_audience_models_errors(), tuple()}.
 list_configured_audience_models(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configured_audience_models(Client, QueryMap, HeadersMap, []).
@@ -1329,8 +1441,7 @@ list_configured_audience_models(Client, QueryMap, HeadersMap)
 -spec list_configured_audience_models(map(), map(), map(), proplists:proplist()) ->
     {ok, list_configured_audience_models_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_configured_audience_models_errors(), tuple()}.
 list_configured_audience_models(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/configured-audience-model"],
@@ -1356,9 +1467,7 @@ list_configured_audience_models(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1366,9 +1475,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1376,9 +1483,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1399,8 +1504,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec list_training_datasets(map()) ->
     {ok, list_training_datasets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_training_datasets_errors(), tuple()}.
 list_training_datasets(Client)
   when is_map(Client) ->
     list_training_datasets(Client, #{}, #{}).
@@ -1408,8 +1512,7 @@ list_training_datasets(Client)
 -spec list_training_datasets(map(), map(), map()) ->
     {ok, list_training_datasets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_training_datasets_errors(), tuple()}.
 list_training_datasets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_training_datasets(Client, QueryMap, HeadersMap, []).
@@ -1417,8 +1520,7 @@ list_training_datasets(Client, QueryMap, HeadersMap)
 -spec list_training_datasets(map(), map(), map(), proplists:proplist()) ->
     {ok, list_training_datasets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_training_datasets_errors(), tuple()}.
 list_training_datasets(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/training-dataset"],
@@ -1444,18 +1546,14 @@ list_training_datasets(Client, QueryMap, HeadersMap, Options0)
 -spec put_configured_audience_model_policy(map(), binary() | list(), put_configured_audience_model_policy_request()) ->
     {ok, put_configured_audience_model_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_configured_audience_model_policy_errors(), tuple()}.
 put_configured_audience_model_policy(Client, ConfiguredAudienceModelArn, Input) ->
     put_configured_audience_model_policy(Client, ConfiguredAudienceModelArn, Input, []).
 
 -spec put_configured_audience_model_policy(map(), binary() | list(), put_configured_audience_model_policy_request(), proplists:proplist()) ->
     {ok, put_configured_audience_model_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_configured_audience_model_policy_errors(), tuple()}.
 put_configured_audience_model_policy(Client, ConfiguredAudienceModelArn, Input0, Options0) ->
     Method = put,
     Path = ["/configured-audience-model/", aws_util:encode_uri(ConfiguredAudienceModelArn), "/policy"],
@@ -1483,22 +1581,14 @@ put_configured_audience_model_policy(Client, ConfiguredAudienceModelArn, Input0,
 -spec start_audience_export_job(map(), start_audience_export_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_audience_export_job_errors(), tuple()}.
 start_audience_export_job(Client, Input) ->
     start_audience_export_job(Client, Input, []).
 
 -spec start_audience_export_job(map(), start_audience_export_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_audience_export_job_errors(), tuple()}.
 start_audience_export_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/audience-export-job"],
@@ -1525,22 +1615,14 @@ start_audience_export_job(Client, Input0, Options0) ->
 -spec start_audience_generation_job(map(), start_audience_generation_job_request()) ->
     {ok, start_audience_generation_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_audience_generation_job_errors(), tuple()}.
 start_audience_generation_job(Client, Input) ->
     start_audience_generation_job(Client, Input, []).
 
 -spec start_audience_generation_job(map(), start_audience_generation_job_request(), proplists:proplist()) ->
     {ok, start_audience_generation_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_audience_generation_job_errors(), tuple()}.
 start_audience_generation_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/audience-generation-job"],
@@ -1567,18 +1649,14 @@ start_audience_generation_job(Client, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1605,18 +1683,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1648,20 +1722,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_configured_audience_model(map(), binary() | list(), update_configured_audience_model_request()) ->
     {ok, update_configured_audience_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_configured_audience_model_errors(), tuple()}.
 update_configured_audience_model(Client, ConfiguredAudienceModelArn, Input) ->
     update_configured_audience_model(Client, ConfiguredAudienceModelArn, Input, []).
 
 -spec update_configured_audience_model(map(), binary() | list(), update_configured_audience_model_request(), proplists:proplist()) ->
     {ok, update_configured_audience_model_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_configured_audience_model_errors(), tuple()}.
 update_configured_audience_model(Client, ConfiguredAudienceModelArn, Input0, Options0) ->
     Method = patch,
     Path = ["/configured-audience-model/", aws_util:encode_uri(ConfiguredAudienceModelArn), ""],

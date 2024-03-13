@@ -611,6 +611,48 @@
 %% }
 -type compute_configuration() :: #{binary() => any()}.
 
+-type get_preferences_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type get_recommendation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_enrollment_statuses_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_recommendation_summaries_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_recommendations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type update_enrollment_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type update_preferences_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 %%====================================================================
 %% API
@@ -628,10 +670,7 @@
 -spec get_preferences(map(), get_preferences_request()) ->
     {ok, get_preferences_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_preferences_errors(), tuple()}.
 get_preferences(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_preferences(Client, Input, []).
@@ -639,10 +678,7 @@ get_preferences(Client, Input)
 -spec get_preferences(map(), get_preferences_request(), proplists:proplist()) ->
     {ok, get_preferences_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_preferences_errors(), tuple()}.
 get_preferences(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPreferences">>, Input, Options).
@@ -659,11 +695,7 @@ get_preferences(Client, Input, Options)
 -spec get_recommendation(map(), get_recommendation_request()) ->
     {ok, get_recommendation_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_recommendation_errors(), tuple()}.
 get_recommendation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_recommendation(Client, Input, []).
@@ -671,11 +703,7 @@ get_recommendation(Client, Input)
 -spec get_recommendation(map(), get_recommendation_request(), proplists:proplist()) ->
     {ok, get_recommendation_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_recommendation_errors(), tuple()}.
 get_recommendation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRecommendation">>, Input, Options).
@@ -687,10 +715,7 @@ get_recommendation(Client, Input, Options)
 -spec list_enrollment_statuses(map(), list_enrollment_statuses_request()) ->
     {ok, list_enrollment_statuses_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_enrollment_statuses_errors(), tuple()}.
 list_enrollment_statuses(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_enrollment_statuses(Client, Input, []).
@@ -698,10 +723,7 @@ list_enrollment_statuses(Client, Input)
 -spec list_enrollment_statuses(map(), list_enrollment_statuses_request(), proplists:proplist()) ->
     {ok, list_enrollment_statuses_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_enrollment_statuses_errors(), tuple()}.
 list_enrollment_statuses(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEnrollmentStatuses">>, Input, Options).
@@ -717,10 +739,7 @@ list_enrollment_statuses(Client, Input, Options)
 -spec list_recommendation_summaries(map(), list_recommendation_summaries_request()) ->
     {ok, list_recommendation_summaries_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_recommendation_summaries_errors(), tuple()}.
 list_recommendation_summaries(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_recommendation_summaries(Client, Input, []).
@@ -728,10 +747,7 @@ list_recommendation_summaries(Client, Input)
 -spec list_recommendation_summaries(map(), list_recommendation_summaries_request(), proplists:proplist()) ->
     {ok, list_recommendation_summaries_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_recommendation_summaries_errors(), tuple()}.
 list_recommendation_summaries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRecommendationSummaries">>, Input, Options).
@@ -740,10 +756,7 @@ list_recommendation_summaries(Client, Input, Options)
 -spec list_recommendations(map(), list_recommendations_request()) ->
     {ok, list_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_recommendations_errors(), tuple()}.
 list_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_recommendations(Client, Input, []).
@@ -751,10 +764,7 @@ list_recommendations(Client, Input)
 -spec list_recommendations(map(), list_recommendations_request(), proplists:proplist()) ->
     {ok, list_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_recommendations_errors(), tuple()}.
 list_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRecommendations">>, Input, Options).
@@ -775,10 +785,7 @@ list_recommendations(Client, Input, Options)
 -spec update_enrollment_status(map(), update_enrollment_status_request()) ->
     {ok, update_enrollment_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_enrollment_status_errors(), tuple()}.
 update_enrollment_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_enrollment_status(Client, Input, []).
@@ -786,10 +793,7 @@ update_enrollment_status(Client, Input)
 -spec update_enrollment_status(map(), update_enrollment_status_request(), proplists:proplist()) ->
     {ok, update_enrollment_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_enrollment_status_errors(), tuple()}.
 update_enrollment_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEnrollmentStatus">>, Input, Options).
@@ -804,10 +808,7 @@ update_enrollment_status(Client, Input, Options)
 -spec update_preferences(map(), update_preferences_request()) ->
     {ok, update_preferences_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_preferences_errors(), tuple()}.
 update_preferences(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_preferences(Client, Input, []).
@@ -815,10 +816,7 @@ update_preferences(Client, Input)
 -spec update_preferences(map(), update_preferences_request(), proplists:proplist()) ->
     {ok, update_preferences_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_preferences_errors(), tuple()}.
 update_preferences(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePreferences">>, Input, Options).

@@ -167,6 +167,7 @@
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% administrator() :: #{
 %%   <<"AccountId">> => string(),
@@ -175,11 +176,13 @@
 %% }
 -type administrator() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_organization_configuration_request() :: #{
 %%   <<"GraphArn">> := string()
 %% }
 -type describe_organization_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_members_response() :: #{
@@ -188,15 +191,18 @@
 %% }
 -type get_members_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% new_aso_detail() :: #{
 %%   <<"Aso">> => string(),
 %%   <<"IsNewForEntireAccount">> => boolean()
 %% }
 -type new_aso_detail() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% filter_criteria() :: #{
@@ -208,6 +214,7 @@
 %% }
 -type filter_criteria() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_datasource_packages_request() :: #{
 %%   <<"GraphArn">> := string(),
@@ -216,11 +223,13 @@
 %% }
 -type list_datasource_packages_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_graph_request() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type create_graph_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% new_user_agent_detail() :: #{
@@ -229,12 +238,14 @@
 %% }
 -type new_user_agent_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_datasource_packages_request() :: #{
 %%   <<"DatasourcePackages">> := list(list(any())()),
 %%   <<"GraphArn">> := string()
 %% }
 -type update_datasource_packages_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_investigation_request() :: #{
@@ -245,11 +256,13 @@
 %% }
 -type start_investigation_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_investigation_response() :: #{
@@ -257,11 +270,13 @@
 %% }
 -type start_investigation_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_requests_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_requests_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_graphs_request() :: #{
@@ -270,12 +285,14 @@
 %% }
 -type list_graphs_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_members_response() :: #{
 %%   <<"AccountIds">> => list(string()()),
 %%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
 %% }
 -type delete_members_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_investigations_response() :: #{
@@ -284,11 +301,13 @@
 %% }
 -type list_investigations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% related_finding_group_detail() :: #{
 %%   <<"Id">> => string()
 %% }
 -type related_finding_group_detail() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_organization_configuration_response() :: #{
@@ -296,17 +315,20 @@
 %% }
 -type describe_organization_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_investigations_request() :: #{
@@ -318,12 +340,14 @@
 %% }
 -type list_investigations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_members_request() :: #{
 %%   <<"AccountIds">> := list(string()()),
 %%   <<"GraphArn">> := string()
 %% }
 -type get_members_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_members_request() :: #{
@@ -334,12 +358,14 @@
 %% }
 -type create_members_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% graph() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer()
 %% }
 -type graph() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_get_graph_member_datasources_response() :: #{
@@ -348,12 +374,14 @@
 %% }
 -type batch_get_graph_member_datasources_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Resources">> => list(string()())
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_members_request() :: #{
@@ -362,11 +390,13 @@
 %% }
 -type delete_members_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% timestamp_for_collection() :: #{
 %%   <<"Timestamp">> => non_neg_integer()
 %% }
 -type timestamp_for_collection() :: #{binary() => any()}.
+
 
 %% Example:
 %% account() :: #{
@@ -375,12 +405,14 @@
 %% }
 -type account() :: #{binary() => any()}.
 
+
 %% Example:
 %% unprocessed_graph() :: #{
 %%   <<"GraphArn">> => string(),
 %%   <<"Reason">> => string()
 %% }
 -type unprocessed_graph() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_get_membership_datasources_response() :: #{
@@ -389,12 +421,14 @@
 %% }
 -type batch_get_membership_datasources_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_graph_member_datasources_request() :: #{
 %%   <<"AccountIds">> := list(string()()),
 %%   <<"GraphArn">> := string()
 %% }
 -type batch_get_graph_member_datasources_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_investigation_state_request() :: #{
@@ -404,11 +438,13 @@
 %% }
 -type update_investigation_state_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% date_filter() :: #{
@@ -417,11 +453,13 @@
 %% }
 -type date_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% reject_invitation_request() :: #{
 %%   <<"GraphArn">> := string()
 %% }
 -type reject_invitation_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% investigation_detail() :: #{
@@ -435,6 +473,7 @@
 %% }
 -type investigation_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% impossible_travel_detail() :: #{
 %%   <<"EndingIpAddress">> => string(),
@@ -445,11 +484,13 @@
 %% }
 -type impossible_travel_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_graph_request() :: #{
 %%   <<"GraphArn">> := string()
 %% }
 -type delete_graph_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% internal_server_exception() :: #{
@@ -457,11 +498,13 @@
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_membership_datasources_request() :: #{
 %%   <<"GraphArns">> := list(string()())
 %% }
 -type batch_get_membership_datasources_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_organization_configuration_request() :: #{
@@ -470,11 +513,13 @@
 %% }
 -type update_organization_configuration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% enable_organization_admin_account_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
 -type enable_organization_admin_account_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_graphs_response() :: #{
@@ -483,6 +528,7 @@
 %% }
 -type list_graphs_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% datasource_package_usage_info() :: #{
 %%   <<"VolumeUsageInBytes">> => float(),
@@ -490,12 +536,14 @@
 %% }
 -type datasource_package_usage_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_datasource_packages_response() :: #{
 %%   <<"DatasourcePackages">> => map(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_datasource_packages_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% membership_datasources() :: #{
@@ -505,6 +553,7 @@
 %% }
 -type membership_datasources() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_organization_admin_accounts_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -512,12 +561,14 @@
 %% }
 -type list_organization_admin_accounts_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% sort_criteria() :: #{
 %%   <<"Field">> => list(any()),
 %%   <<"SortOrder">> => list(any())
 %% }
 -type sort_criteria() :: #{binary() => any()}.
+
 
 %% Example:
 %% access_denied_exception() :: #{
@@ -529,6 +580,7 @@
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% new_geolocation_detail() :: #{
 %%   <<"IpAddress">> => string(),
@@ -537,20 +589,24 @@
 %% }
 -type new_geolocation_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% accept_invitation_request() :: #{
 %%   <<"GraphArn">> := string()
 %% }
 -type accept_invitation_request() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% create_graph_response() :: #{
 %%   <<"GraphArn">> => string()
 %% }
 -type create_graph_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_members_request() :: #{
@@ -560,6 +616,7 @@
 %% }
 -type list_members_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_members_response() :: #{
 %%   <<"MemberDetails">> => list(member_detail()()),
@@ -567,12 +624,14 @@
 %% }
 -type list_members_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_investigation_request() :: #{
 %%   <<"GraphArn">> := string(),
 %%   <<"InvestigationId">> := string()
 %% }
 -type get_investigation_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_investigation_response() :: #{
@@ -589,6 +648,7 @@
 %% }
 -type get_investigation_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"ErrorCode">> => list(any()),
@@ -596,9 +656,11 @@
 %%   <<"Message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% list_invitations_request() :: #{
@@ -606,6 +668,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_invitations_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% indicator_detail() :: #{
@@ -620,11 +683,13 @@
 %% }
 -type indicator_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% string_filter() :: #{
 %%   <<"Value">> => string()
 %% }
 -type string_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% flagged_ip_address_detail() :: #{
@@ -632,6 +697,7 @@
 %%   <<"Reason">> => list(any())
 %% }
 -type flagged_ip_address_detail() :: #{binary() => any()}.
+
 
 %% Example:
 %% related_finding_detail() :: #{
@@ -641,6 +707,7 @@
 %% }
 -type related_finding_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% unprocessed_account() :: #{
 %%   <<"AccountId">> => string(),
@@ -648,12 +715,14 @@
 %% }
 -type unprocessed_account() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_monitoring_member_request() :: #{
 %%   <<"AccountId">> := string(),
 %%   <<"GraphArn">> := string()
 %% }
 -type start_monitoring_member_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_indicators_response() :: #{
@@ -664,6 +733,7 @@
 %% }
 -type list_indicators_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% datasource_package_ingest_detail() :: #{
 %%   <<"DatasourcePackageIngestState">> => list(any()),
@@ -671,12 +741,14 @@
 %% }
 -type datasource_package_ingest_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_organization_admin_accounts_response() :: #{
 %%   <<"Administrators">> => list(administrator()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_organization_admin_accounts_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_indicators_request() :: #{
@@ -688,11 +760,13 @@
 %% }
 -type list_indicators_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% disassociate_membership_request() :: #{
 %%   <<"GraphArn">> := string()
 %% }
 -type disassociate_membership_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% t_t_ps_observed_detail() :: #{
@@ -706,12 +780,14 @@
 %% }
 -type t_t_ps_observed_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_members_response() :: #{
 %%   <<"Members">> => list(member_detail()()),
 %%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
 %% }
 -type create_members_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% member_detail() :: #{
@@ -734,6 +810,7 @@
 %% }
 -type member_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_invitations_response() :: #{
 %%   <<"Invitations">> => list(member_detail()()),
@@ -741,12 +818,198 @@
 %% }
 -type list_invitations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% indicator() :: #{
 %%   <<"IndicatorDetail">> => indicator_detail(),
 %%   <<"IndicatorType">> => list(any())
 %% }
 -type indicator() :: #{binary() => any()}.
+
+-type accept_invitation_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type batch_get_graph_member_datasources_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type batch_get_membership_datasources_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_graph_errors() ::
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_members_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type delete_graph_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_members_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_organization_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    too_many_requests_exception().
+
+-type disable_organization_admin_account_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    too_many_requests_exception().
+
+-type disassociate_membership_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type enable_organization_admin_account_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    too_many_requests_exception().
+
+-type get_investigation_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_members_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_datasource_packages_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_graphs_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_indicators_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_investigations_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_invitations_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_members_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_organization_admin_accounts_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    too_many_requests_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type reject_invitation_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_investigation_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type start_monitoring_member_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_datasource_packages_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type update_investigation_state_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_organization_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    too_many_requests_exception().
 
 %%====================================================================
 %% API
@@ -763,22 +1026,14 @@
 -spec accept_invitation(map(), accept_invitation_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, accept_invitation_errors(), tuple()}.
 accept_invitation(Client, Input) ->
     accept_invitation(Client, Input, []).
 
 -spec accept_invitation(map(), accept_invitation_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, accept_invitation_errors(), tuple()}.
 accept_invitation(Client, Input0, Options0) ->
     Method = put,
     Path = ["/invitation"],
@@ -805,20 +1060,14 @@ accept_invitation(Client, Input0, Options0) ->
 -spec batch_get_graph_member_datasources(map(), batch_get_graph_member_datasources_request()) ->
     {ok, batch_get_graph_member_datasources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_graph_member_datasources_errors(), tuple()}.
 batch_get_graph_member_datasources(Client, Input) ->
     batch_get_graph_member_datasources(Client, Input, []).
 
 -spec batch_get_graph_member_datasources(map(), batch_get_graph_member_datasources_request(), proplists:proplist()) ->
     {ok, batch_get_graph_member_datasources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_graph_member_datasources_errors(), tuple()}.
 batch_get_graph_member_datasources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/datasources/get"],
@@ -845,20 +1094,14 @@ batch_get_graph_member_datasources(Client, Input0, Options0) ->
 -spec batch_get_membership_datasources(map(), batch_get_membership_datasources_request()) ->
     {ok, batch_get_membership_datasources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_membership_datasources_errors(), tuple()}.
 batch_get_membership_datasources(Client, Input) ->
     batch_get_membership_datasources(Client, Input, []).
 
 -spec batch_get_membership_datasources(map(), batch_get_membership_datasources_request(), proplists:proplist()) ->
     {ok, batch_get_membership_datasources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_membership_datasources_errors(), tuple()}.
 batch_get_membership_datasources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/membership/datasources/get"],
@@ -904,20 +1147,14 @@ batch_get_membership_datasources(Client, Input0, Options0) ->
 -spec create_graph(map(), create_graph_request()) ->
     {ok, create_graph_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_graph_errors(), tuple()}.
 create_graph(Client, Input) ->
     create_graph(Client, Input, []).
 
 -spec create_graph(map(), create_graph_request(), proplists:proplist()) ->
     {ok, create_graph_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()}.
+    {error, create_graph_errors(), tuple()}.
 create_graph(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph"],
@@ -987,22 +1224,14 @@ create_graph(Client, Input0, Options0) ->
 -spec create_members(map(), create_members_request()) ->
     {ok, create_members_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_members_errors(), tuple()}.
 create_members(Client, Input) ->
     create_members(Client, Input, []).
 
 -spec create_members(map(), create_members_request(), proplists:proplist()) ->
     {ok, create_members_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_members_errors(), tuple()}.
 create_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/members"],
@@ -1037,20 +1266,14 @@ create_members(Client, Input0, Options0) ->
 -spec delete_graph(map(), delete_graph_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_graph_errors(), tuple()}.
 delete_graph(Client, Input) ->
     delete_graph(Client, Input, []).
 
 -spec delete_graph(map(), delete_graph_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_graph_errors(), tuple()}.
 delete_graph(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/removal"],
@@ -1101,22 +1324,14 @@ delete_graph(Client, Input0, Options0) ->
 -spec delete_members(map(), delete_members_request()) ->
     {ok, delete_members_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_members_errors(), tuple()}.
 delete_members(Client, Input) ->
     delete_members(Client, Input, []).
 
 -spec delete_members(map(), delete_members_request(), proplists:proplist()) ->
     {ok, delete_members_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_members_errors(), tuple()}.
 delete_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/members/removal"],
@@ -1151,20 +1366,14 @@ delete_members(Client, Input0, Options0) ->
 -spec describe_organization_configuration(map(), describe_organization_configuration_request()) ->
     {ok, describe_organization_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_organization_configuration_errors(), tuple()}.
 describe_organization_configuration(Client, Input) ->
     describe_organization_configuration(Client, Input, []).
 
 -spec describe_organization_configuration(map(), describe_organization_configuration_request(), proplists:proplist()) ->
     {ok, describe_organization_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_organization_configuration_errors(), tuple()}.
 describe_organization_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/orgs/describeOrganizationConfiguration"],
@@ -1205,20 +1414,14 @@ describe_organization_configuration(Client, Input0, Options0) ->
 -spec disable_organization_admin_account(map(), #{}) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disable_organization_admin_account_errors(), tuple()}.
 disable_organization_admin_account(Client, Input) ->
     disable_organization_admin_account(Client, Input, []).
 
 -spec disable_organization_admin_account(map(), #{}, proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disable_organization_admin_account_errors(), tuple()}.
 disable_organization_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/orgs/disableAdminAccount"],
@@ -1256,22 +1459,14 @@ disable_organization_admin_account(Client, Input0, Options0) ->
 -spec disassociate_membership(map(), disassociate_membership_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_membership_errors(), tuple()}.
 disassociate_membership(Client, Input) ->
     disassociate_membership(Client, Input, []).
 
 -spec disassociate_membership(map(), disassociate_membership_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_membership_errors(), tuple()}.
 disassociate_membership(Client, Input0, Options0) ->
     Method = post,
     Path = ["/membership/removal"],
@@ -1318,20 +1513,14 @@ disassociate_membership(Client, Input0, Options0) ->
 -spec enable_organization_admin_account(map(), enable_organization_admin_account_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, enable_organization_admin_account_errors(), tuple()}.
 enable_organization_admin_account(Client, Input) ->
     enable_organization_admin_account(Client, Input, []).
 
 -spec enable_organization_admin_account(map(), enable_organization_admin_account_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, enable_organization_admin_account_errors(), tuple()}.
 enable_organization_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/orgs/enableAdminAccount"],
@@ -1365,22 +1554,14 @@ enable_organization_admin_account(Client, Input0, Options0) ->
 -spec get_investigation(map(), get_investigation_request()) ->
     {ok, get_investigation_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_investigation_errors(), tuple()}.
 get_investigation(Client, Input) ->
     get_investigation(Client, Input, []).
 
 -spec get_investigation(map(), get_investigation_request(), proplists:proplist()) ->
     {ok, get_investigation_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_investigation_errors(), tuple()}.
 get_investigation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/investigations/getInvestigation"],
@@ -1409,20 +1590,14 @@ get_investigation(Client, Input0, Options0) ->
 -spec get_members(map(), get_members_request()) ->
     {ok, get_members_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_members_errors(), tuple()}.
 get_members(Client, Input) ->
     get_members(Client, Input, []).
 
 -spec get_members(map(), get_members_request(), proplists:proplist()) ->
     {ok, get_members_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_members_errors(), tuple()}.
 get_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/members/get"],
@@ -1449,20 +1624,14 @@ get_members(Client, Input0, Options0) ->
 -spec list_datasource_packages(map(), list_datasource_packages_request()) ->
     {ok, list_datasource_packages_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_datasource_packages_errors(), tuple()}.
 list_datasource_packages(Client, Input) ->
     list_datasource_packages(Client, Input, []).
 
 -spec list_datasource_packages(map(), list_datasource_packages_request(), proplists:proplist()) ->
     {ok, list_datasource_packages_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_datasource_packages_errors(), tuple()}.
 list_datasource_packages(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/datasources/list"],
@@ -1497,18 +1666,14 @@ list_datasource_packages(Client, Input0, Options0) ->
 -spec list_graphs(map(), list_graphs_request()) ->
     {ok, list_graphs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_graphs_errors(), tuple()}.
 list_graphs(Client, Input) ->
     list_graphs(Client, Input, []).
 
 -spec list_graphs(map(), list_graphs_request(), proplists:proplist()) ->
     {ok, list_graphs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_graphs_errors(), tuple()}.
 list_graphs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graphs/list"],
@@ -1539,22 +1704,14 @@ list_graphs(Client, Input0, Options0) ->
 -spec list_indicators(map(), list_indicators_request()) ->
     {ok, list_indicators_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_indicators_errors(), tuple()}.
 list_indicators(Client, Input) ->
     list_indicators(Client, Input, []).
 
 -spec list_indicators(map(), list_indicators_request(), proplists:proplist()) ->
     {ok, list_indicators_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_indicators_errors(), tuple()}.
 list_indicators(Client, Input0, Options0) ->
     Method = post,
     Path = ["/investigations/listIndicators"],
@@ -1590,22 +1747,14 @@ list_indicators(Client, Input0, Options0) ->
 -spec list_investigations(map(), list_investigations_request()) ->
     {ok, list_investigations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_investigations_errors(), tuple()}.
 list_investigations(Client, Input) ->
     list_investigations(Client, Input, []).
 
 -spec list_investigations(map(), list_investigations_request(), proplists:proplist()) ->
     {ok, list_investigations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_investigations_errors(), tuple()}.
 list_investigations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/investigations/listInvestigations"],
@@ -1645,18 +1794,14 @@ list_investigations(Client, Input0, Options0) ->
 -spec list_invitations(map(), list_invitations_request()) ->
     {ok, list_invitations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_invitations_errors(), tuple()}.
 list_invitations(Client, Input) ->
     list_invitations(Client, Input, []).
 
 -spec list_invitations(map(), list_invitations_request(), proplists:proplist()) ->
     {ok, list_invitations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_invitations_errors(), tuple()}.
 list_invitations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/invitations/list"],
@@ -1692,20 +1837,14 @@ list_invitations(Client, Input0, Options0) ->
 -spec list_members(map(), list_members_request()) ->
     {ok, list_members_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_members_errors(), tuple()}.
 list_members(Client, Input) ->
     list_members(Client, Input, []).
 
 -spec list_members(map(), list_members_request(), proplists:proplist()) ->
     {ok, list_members_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_members_errors(), tuple()}.
 list_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/members/list"],
@@ -1735,20 +1874,14 @@ list_members(Client, Input0, Options0) ->
 -spec list_organization_admin_accounts(map(), list_organization_admin_accounts_request()) ->
     {ok, list_organization_admin_accounts_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_organization_admin_accounts_errors(), tuple()}.
 list_organization_admin_accounts(Client, Input) ->
     list_organization_admin_accounts(Client, Input, []).
 
 -spec list_organization_admin_accounts(map(), list_organization_admin_accounts_request(), proplists:proplist()) ->
     {ok, list_organization_admin_accounts_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_organization_admin_accounts_errors(), tuple()}.
 list_organization_admin_accounts(Client, Input0, Options0) ->
     Method = post,
     Path = ["/orgs/adminAccountslist"],
@@ -1775,10 +1908,7 @@ list_organization_admin_accounts(Client, Input0, Options0) ->
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1786,10 +1916,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1797,10 +1924,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1831,22 +1955,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec reject_invitation(map(), reject_invitation_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, reject_invitation_errors(), tuple()}.
 reject_invitation(Client, Input) ->
     reject_invitation(Client, Input, []).
 
 -spec reject_invitation(map(), reject_invitation_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, reject_invitation_errors(), tuple()}.
 reject_invitation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/invitation/removal"],
@@ -1880,22 +1996,14 @@ reject_invitation(Client, Input0, Options0) ->
 -spec start_investigation(map(), start_investigation_request()) ->
     {ok, start_investigation_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_investigation_errors(), tuple()}.
 start_investigation(Client, Input) ->
     start_investigation(Client, Input, []).
 
 -spec start_investigation(map(), start_investigation_request(), proplists:proplist()) ->
     {ok, start_investigation_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_investigation_errors(), tuple()}.
 start_investigation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/investigations/startInvestigation"],
@@ -1932,24 +2040,14 @@ start_investigation(Client, Input0, Options0) ->
 -spec start_monitoring_member(map(), start_monitoring_member_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_monitoring_member_errors(), tuple()}.
 start_monitoring_member(Client, Input) ->
     start_monitoring_member(Client, Input, []).
 
 -spec start_monitoring_member(map(), start_monitoring_member_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_monitoring_member_errors(), tuple()}.
 start_monitoring_member(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/member/monitoringstate"],
@@ -1976,20 +2074,14 @@ start_monitoring_member(Client, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2016,20 +2108,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2057,22 +2143,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_datasource_packages(map(), update_datasource_packages_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_datasource_packages_errors(), tuple()}.
 update_datasource_packages(Client, Input) ->
     update_datasource_packages(Client, Input, []).
 
 -spec update_datasource_packages(map(), update_datasource_packages_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_datasource_packages_errors(), tuple()}.
 update_datasource_packages(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/datasources/update"],
@@ -2099,22 +2177,14 @@ update_datasource_packages(Client, Input0, Options0) ->
 -spec update_investigation_state(map(), update_investigation_state_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_investigation_state_errors(), tuple()}.
 update_investigation_state(Client, Input) ->
     update_investigation_state(Client, Input, []).
 
 -spec update_investigation_state(map(), update_investigation_state_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_investigation_state_errors(), tuple()}.
 update_investigation_state(Client, Input0, Options0) ->
     Method = post,
     Path = ["/investigations/updateInvestigationState"],
@@ -2145,20 +2215,14 @@ update_investigation_state(Client, Input0, Options0) ->
 -spec update_organization_configuration(map(), update_organization_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_organization_configuration_errors(), tuple()}.
 update_organization_configuration(Client, Input) ->
     update_organization_configuration(Client, Input, []).
 
 -spec update_organization_configuration(map(), update_organization_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_organization_configuration_errors(), tuple()}.
 update_organization_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/orgs/updateOrganizationConfiguration"],

@@ -990,6 +990,276 @@
 %% }
 -type delete_adapter_version_response() :: #{binary() => any()}.
 
+-type analyze_document_errors() ::
+    document_too_large_exception() | 
+    invalid_s3_object_exception() | 
+    human_loop_quota_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    provisioned_throughput_exceeded_exception() | 
+    unsupported_document_exception() | 
+    bad_document_exception().
+
+-type analyze_expense_errors() ::
+    document_too_large_exception() | 
+    invalid_s3_object_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    provisioned_throughput_exceeded_exception() | 
+    unsupported_document_exception() | 
+    bad_document_exception().
+
+-type analyze_id_errors() ::
+    document_too_large_exception() | 
+    invalid_s3_object_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    provisioned_throughput_exceeded_exception() | 
+    unsupported_document_exception() | 
+    bad_document_exception().
+
+-type create_adapter_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    idempotent_parameter_mismatch_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type create_adapter_version_errors() ::
+    invalid_s3_object_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    invalid_kms_key_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type delete_adapter_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type delete_adapter_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type detect_document_text_errors() ::
+    document_too_large_exception() | 
+    invalid_s3_object_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    provisioned_throughput_exceeded_exception() | 
+    unsupported_document_exception() | 
+    bad_document_exception().
+
+-type get_adapter_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type get_adapter_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type get_document_analysis_errors() ::
+    invalid_s3_object_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    invalid_kms_key_exception() | 
+    invalid_job_id_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type get_document_text_detection_errors() ::
+    invalid_s3_object_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    invalid_kms_key_exception() | 
+    invalid_job_id_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type get_expense_analysis_errors() ::
+    invalid_s3_object_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    invalid_kms_key_exception() | 
+    invalid_job_id_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type get_lending_analysis_errors() ::
+    invalid_s3_object_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    invalid_kms_key_exception() | 
+    invalid_job_id_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type get_lending_analysis_summary_errors() ::
+    invalid_s3_object_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    invalid_kms_key_exception() | 
+    invalid_job_id_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type list_adapter_versions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type list_adapters_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    provisioned_throughput_exceeded_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type start_document_analysis_errors() ::
+    document_too_large_exception() | 
+    invalid_s3_object_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    invalid_kms_key_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    unsupported_document_exception() | 
+    bad_document_exception().
+
+-type start_document_text_detection_errors() ::
+    document_too_large_exception() | 
+    invalid_s3_object_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    invalid_kms_key_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    unsupported_document_exception() | 
+    bad_document_exception().
+
+-type start_expense_analysis_errors() ::
+    document_too_large_exception() | 
+    invalid_s3_object_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    invalid_kms_key_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    unsupported_document_exception() | 
+    bad_document_exception().
+
+-type start_lending_analysis_errors() ::
+    document_too_large_exception() | 
+    invalid_s3_object_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    invalid_kms_key_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    unsupported_document_exception() | 
+    bad_document_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type update_adapter_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    provisioned_throughput_exceeded_exception().
 
 %%====================================================================
 %% API
@@ -1052,16 +1322,7 @@
 -spec analyze_document(map(), analyze_document_request()) ->
     {ok, analyze_document_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_document_exception(), tuple()} |
-    {error, document_too_large_exception(), tuple()} |
-    {error, human_loop_quota_exceeded_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_document_exception(), tuple()}.
+    {error, analyze_document_errors(), tuple()}.
 analyze_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     analyze_document(Client, Input, []).
@@ -1069,16 +1330,7 @@ analyze_document(Client, Input)
 -spec analyze_document(map(), analyze_document_request(), proplists:proplist()) ->
     {ok, analyze_document_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_document_exception(), tuple()} |
-    {error, document_too_large_exception(), tuple()} |
-    {error, human_loop_quota_exceeded_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_document_exception(), tuple()}.
+    {error, analyze_document_errors(), tuple()}.
 analyze_document(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AnalyzeDocument">>, Input, Options).
@@ -1101,15 +1353,7 @@ analyze_document(Client, Input, Options)
 -spec analyze_expense(map(), analyze_expense_request()) ->
     {ok, analyze_expense_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_document_exception(), tuple()} |
-    {error, document_too_large_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_document_exception(), tuple()}.
+    {error, analyze_expense_errors(), tuple()}.
 analyze_expense(Client, Input)
   when is_map(Client), is_map(Input) ->
     analyze_expense(Client, Input, []).
@@ -1117,15 +1361,7 @@ analyze_expense(Client, Input)
 -spec analyze_expense(map(), analyze_expense_request(), proplists:proplist()) ->
     {ok, analyze_expense_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_document_exception(), tuple()} |
-    {error, document_too_large_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_document_exception(), tuple()}.
+    {error, analyze_expense_errors(), tuple()}.
 analyze_expense(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AnalyzeExpense">>, Input, Options).
@@ -1140,15 +1376,7 @@ analyze_expense(Client, Input, Options)
 -spec analyze_id(map(), analyze_id_request()) ->
     {ok, analyze_id_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_document_exception(), tuple()} |
-    {error, document_too_large_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_document_exception(), tuple()}.
+    {error, analyze_id_errors(), tuple()}.
 analyze_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     analyze_id(Client, Input, []).
@@ -1156,15 +1384,7 @@ analyze_id(Client, Input)
 -spec analyze_id(map(), analyze_id_request(), proplists:proplist()) ->
     {ok, analyze_id_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_document_exception(), tuple()} |
-    {error, document_too_large_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_document_exception(), tuple()}.
+    {error, analyze_id_errors(), tuple()}.
 analyze_id(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AnalyzeID">>, Input, Options).
@@ -1182,16 +1402,7 @@ analyze_id(Client, Input, Options)
 -spec create_adapter(map(), create_adapter_request()) ->
     {ok, create_adapter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_adapter_errors(), tuple()}.
 create_adapter(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_adapter(Client, Input, []).
@@ -1199,16 +1410,7 @@ create_adapter(Client, Input)
 -spec create_adapter(map(), create_adapter_request(), proplists:proplist()) ->
     {ok, create_adapter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_adapter_errors(), tuple()}.
 create_adapter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAdapter">>, Input, Options).
@@ -1223,19 +1425,7 @@ create_adapter(Client, Input, Options)
 -spec create_adapter_version(map(), create_adapter_version_request()) ->
     {ok, create_adapter_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_kms_key_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_adapter_version_errors(), tuple()}.
 create_adapter_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_adapter_version(Client, Input, []).
@@ -1243,19 +1433,7 @@ create_adapter_version(Client, Input)
 -spec create_adapter_version(map(), create_adapter_version_request(), proplists:proplist()) ->
     {ok, create_adapter_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_kms_key_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_adapter_version_errors(), tuple()}.
 create_adapter_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAdapterVersion">>, Input, Options).
@@ -1266,14 +1444,7 @@ create_adapter_version(Client, Input, Options)
 -spec delete_adapter(map(), delete_adapter_request()) ->
     {ok, delete_adapter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_adapter_errors(), tuple()}.
 delete_adapter(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_adapter(Client, Input, []).
@@ -1281,14 +1452,7 @@ delete_adapter(Client, Input)
 -spec delete_adapter(map(), delete_adapter_request(), proplists:proplist()) ->
     {ok, delete_adapter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_adapter_errors(), tuple()}.
 delete_adapter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAdapter">>, Input, Options).
@@ -1301,14 +1465,7 @@ delete_adapter(Client, Input, Options)
 -spec delete_adapter_version(map(), delete_adapter_version_request()) ->
     {ok, delete_adapter_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_adapter_version_errors(), tuple()}.
 delete_adapter_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_adapter_version(Client, Input, []).
@@ -1316,14 +1473,7 @@ delete_adapter_version(Client, Input)
 -spec delete_adapter_version(map(), delete_adapter_version_request(), proplists:proplist()) ->
     {ok, delete_adapter_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_adapter_version_errors(), tuple()}.
 delete_adapter_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAdapterVersion">>, Input, Options).
@@ -1352,15 +1502,7 @@ delete_adapter_version(Client, Input, Options)
 -spec detect_document_text(map(), detect_document_text_request()) ->
     {ok, detect_document_text_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_document_exception(), tuple()} |
-    {error, document_too_large_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_document_exception(), tuple()}.
+    {error, detect_document_text_errors(), tuple()}.
 detect_document_text(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_document_text(Client, Input, []).
@@ -1368,15 +1510,7 @@ detect_document_text(Client, Input)
 -spec detect_document_text(map(), detect_document_text_request(), proplists:proplist()) ->
     {ok, detect_document_text_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_document_exception(), tuple()} |
-    {error, document_too_large_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_document_exception(), tuple()}.
+    {error, detect_document_text_errors(), tuple()}.
 detect_document_text(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetectDocumentText">>, Input, Options).
@@ -1387,13 +1521,7 @@ detect_document_text(Client, Input, Options)
 -spec get_adapter(map(), get_adapter_request()) ->
     {ok, get_adapter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_adapter_errors(), tuple()}.
 get_adapter(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_adapter(Client, Input, []).
@@ -1401,13 +1529,7 @@ get_adapter(Client, Input)
 -spec get_adapter(map(), get_adapter_request(), proplists:proplist()) ->
     {ok, get_adapter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_adapter_errors(), tuple()}.
 get_adapter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAdapter">>, Input, Options).
@@ -1420,13 +1542,7 @@ get_adapter(Client, Input, Options)
 -spec get_adapter_version(map(), get_adapter_version_request()) ->
     {ok, get_adapter_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_adapter_version_errors(), tuple()}.
 get_adapter_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_adapter_version(Client, Input, []).
@@ -1434,13 +1550,7 @@ get_adapter_version(Client, Input)
 -spec get_adapter_version(map(), get_adapter_version_request(), proplists:proplist()) ->
     {ok, get_adapter_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_adapter_version_errors(), tuple()}.
 get_adapter_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAdapterVersion">>, Input, Options).
@@ -1525,14 +1635,7 @@ get_adapter_version(Client, Input, Options)
 -spec get_document_analysis(map(), get_document_analysis_request()) ->
     {ok, get_document_analysis_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_job_id_exception(), tuple()} |
-    {error, invalid_kms_key_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_document_analysis_errors(), tuple()}.
 get_document_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_document_analysis(Client, Input, []).
@@ -1540,14 +1643,7 @@ get_document_analysis(Client, Input)
 -spec get_document_analysis(map(), get_document_analysis_request(), proplists:proplist()) ->
     {ok, get_document_analysis_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_job_id_exception(), tuple()} |
-    {error, invalid_kms_key_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_document_analysis_errors(), tuple()}.
 get_document_analysis(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDocumentAnalysis">>, Input, Options).
@@ -1597,14 +1693,7 @@ get_document_analysis(Client, Input, Options)
 -spec get_document_text_detection(map(), get_document_text_detection_request()) ->
     {ok, get_document_text_detection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_job_id_exception(), tuple()} |
-    {error, invalid_kms_key_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_document_text_detection_errors(), tuple()}.
 get_document_text_detection(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_document_text_detection(Client, Input, []).
@@ -1612,14 +1701,7 @@ get_document_text_detection(Client, Input)
 -spec get_document_text_detection(map(), get_document_text_detection_request(), proplists:proplist()) ->
     {ok, get_document_text_detection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_job_id_exception(), tuple()} |
-    {error, invalid_kms_key_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_document_text_detection_errors(), tuple()}.
 get_document_text_detection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDocumentTextDetection">>, Input, Options).
@@ -1663,14 +1745,7 @@ get_document_text_detection(Client, Input, Options)
 -spec get_expense_analysis(map(), get_expense_analysis_request()) ->
     {ok, get_expense_analysis_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_job_id_exception(), tuple()} |
-    {error, invalid_kms_key_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_expense_analysis_errors(), tuple()}.
 get_expense_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_expense_analysis(Client, Input, []).
@@ -1678,14 +1753,7 @@ get_expense_analysis(Client, Input)
 -spec get_expense_analysis(map(), get_expense_analysis_request(), proplists:proplist()) ->
     {ok, get_expense_analysis_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_job_id_exception(), tuple()} |
-    {error, invalid_kms_key_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_expense_analysis_errors(), tuple()}.
 get_expense_analysis(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetExpenseAnalysis">>, Input, Options).
@@ -1713,14 +1781,7 @@ get_expense_analysis(Client, Input, Options)
 -spec get_lending_analysis(map(), get_lending_analysis_request()) ->
     {ok, get_lending_analysis_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_job_id_exception(), tuple()} |
-    {error, invalid_kms_key_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_lending_analysis_errors(), tuple()}.
 get_lending_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_lending_analysis(Client, Input, []).
@@ -1728,14 +1789,7 @@ get_lending_analysis(Client, Input)
 -spec get_lending_analysis(map(), get_lending_analysis_request(), proplists:proplist()) ->
     {ok, get_lending_analysis_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_job_id_exception(), tuple()} |
-    {error, invalid_kms_key_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_lending_analysis_errors(), tuple()}.
 get_lending_analysis(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLendingAnalysis">>, Input, Options).
@@ -1767,14 +1821,7 @@ get_lending_analysis(Client, Input, Options)
 -spec get_lending_analysis_summary(map(), get_lending_analysis_summary_request()) ->
     {ok, get_lending_analysis_summary_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_job_id_exception(), tuple()} |
-    {error, invalid_kms_key_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_lending_analysis_summary_errors(), tuple()}.
 get_lending_analysis_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_lending_analysis_summary(Client, Input, []).
@@ -1782,14 +1829,7 @@ get_lending_analysis_summary(Client, Input)
 -spec get_lending_analysis_summary(map(), get_lending_analysis_summary_request(), proplists:proplist()) ->
     {ok, get_lending_analysis_summary_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_job_id_exception(), tuple()} |
-    {error, invalid_kms_key_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_lending_analysis_summary_errors(), tuple()}.
 get_lending_analysis_summary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLendingAnalysisSummary">>, Input, Options).
@@ -1799,13 +1839,7 @@ get_lending_analysis_summary(Client, Input, Options)
 -spec list_adapter_versions(map(), list_adapter_versions_request()) ->
     {ok, list_adapter_versions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_adapter_versions_errors(), tuple()}.
 list_adapter_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_adapter_versions(Client, Input, []).
@@ -1813,13 +1847,7 @@ list_adapter_versions(Client, Input)
 -spec list_adapter_versions(map(), list_adapter_versions_request(), proplists:proplist()) ->
     {ok, list_adapter_versions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_adapter_versions_errors(), tuple()}.
 list_adapter_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAdapterVersions">>, Input, Options).
@@ -1828,12 +1856,7 @@ list_adapter_versions(Client, Input, Options)
 -spec list_adapters(map(), list_adapters_request()) ->
     {ok, list_adapters_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_adapters_errors(), tuple()}.
 list_adapters(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_adapters(Client, Input, []).
@@ -1841,12 +1864,7 @@ list_adapters(Client, Input)
 -spec list_adapters(map(), list_adapters_request(), proplists:proplist()) ->
     {ok, list_adapters_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_adapters_errors(), tuple()}.
 list_adapters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAdapters">>, Input, Options).
@@ -1855,13 +1873,7 @@ list_adapters(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -1869,13 +1881,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -1907,18 +1913,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec start_document_analysis(map(), start_document_analysis_request()) ->
     {ok, start_document_analysis_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_document_exception(), tuple()} |
-    {error, document_too_large_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_kms_key_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_document_exception(), tuple()}.
+    {error, start_document_analysis_errors(), tuple()}.
 start_document_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_document_analysis(Client, Input, []).
@@ -1926,18 +1921,7 @@ start_document_analysis(Client, Input)
 -spec start_document_analysis(map(), start_document_analysis_request(), proplists:proplist()) ->
     {ok, start_document_analysis_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_document_exception(), tuple()} |
-    {error, document_too_large_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_kms_key_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_document_exception(), tuple()}.
+    {error, start_document_analysis_errors(), tuple()}.
 start_document_analysis(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDocumentAnalysis">>, Input, Options).
@@ -1970,18 +1954,7 @@ start_document_analysis(Client, Input, Options)
 -spec start_document_text_detection(map(), start_document_text_detection_request()) ->
     {ok, start_document_text_detection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_document_exception(), tuple()} |
-    {error, document_too_large_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_kms_key_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_document_exception(), tuple()}.
+    {error, start_document_text_detection_errors(), tuple()}.
 start_document_text_detection(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_document_text_detection(Client, Input, []).
@@ -1989,18 +1962,7 @@ start_document_text_detection(Client, Input)
 -spec start_document_text_detection(map(), start_document_text_detection_request(), proplists:proplist()) ->
     {ok, start_document_text_detection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_document_exception(), tuple()} |
-    {error, document_too_large_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_kms_key_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_document_exception(), tuple()}.
+    {error, start_document_text_detection_errors(), tuple()}.
 start_document_text_detection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDocumentTextDetection">>, Input, Options).
@@ -2035,18 +1997,7 @@ start_document_text_detection(Client, Input, Options)
 -spec start_expense_analysis(map(), start_expense_analysis_request()) ->
     {ok, start_expense_analysis_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_document_exception(), tuple()} |
-    {error, document_too_large_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_kms_key_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_document_exception(), tuple()}.
+    {error, start_expense_analysis_errors(), tuple()}.
 start_expense_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_expense_analysis(Client, Input, []).
@@ -2054,18 +2005,7 @@ start_expense_analysis(Client, Input)
 -spec start_expense_analysis(map(), start_expense_analysis_request(), proplists:proplist()) ->
     {ok, start_expense_analysis_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_document_exception(), tuple()} |
-    {error, document_too_large_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_kms_key_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_document_exception(), tuple()}.
+    {error, start_expense_analysis_errors(), tuple()}.
 start_expense_analysis(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartExpenseAnalysis">>, Input, Options).
@@ -2113,18 +2053,7 @@ start_expense_analysis(Client, Input, Options)
 -spec start_lending_analysis(map(), start_lending_analysis_request()) ->
     {ok, start_lending_analysis_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_document_exception(), tuple()} |
-    {error, document_too_large_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_kms_key_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_document_exception(), tuple()}.
+    {error, start_lending_analysis_errors(), tuple()}.
 start_lending_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_lending_analysis(Client, Input, []).
@@ -2132,18 +2061,7 @@ start_lending_analysis(Client, Input)
 -spec start_lending_analysis(map(), start_lending_analysis_request(), proplists:proplist()) ->
     {ok, start_lending_analysis_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_document_exception(), tuple()} |
-    {error, document_too_large_exception(), tuple()} |
-    {error, idempotent_parameter_mismatch_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_kms_key_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_s3_object_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_document_exception(), tuple()}.
+    {error, start_lending_analysis_errors(), tuple()}.
 start_lending_analysis(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartLendingAnalysis">>, Input, Options).
@@ -2152,14 +2070,7 @@ start_lending_analysis(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -2167,14 +2078,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -2183,13 +2087,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -2197,13 +2095,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -2215,14 +2107,7 @@ untag_resource(Client, Input, Options)
 -spec update_adapter(map(), update_adapter_request()) ->
     {ok, update_adapter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_adapter_errors(), tuple()}.
 update_adapter(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_adapter(Client, Input, []).
@@ -2230,14 +2115,7 @@ update_adapter(Client, Input)
 -spec update_adapter(map(), update_adapter_request(), proplists:proplist()) ->
     {ok, update_adapter_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_adapter_errors(), tuple()}.
 update_adapter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAdapter">>, Input, Options).

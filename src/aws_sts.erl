@@ -269,6 +269,39 @@
 %% }
 -type tag() :: #{binary() => any()}.
 
+-type assume_role_errors() ::
+    region_disabled_exception() | 
+    packed_policy_too_large_exception() | 
+    malformed_policy_document_exception() | 
+    expired_token_exception().
+
+-type assume_role_with_saml_errors() ::
+    region_disabled_exception() | 
+    packed_policy_too_large_exception() | 
+    malformed_policy_document_exception() | 
+    invalid_identity_token_exception() | 
+    id_p_rejected_claim_exception() | 
+    expired_token_exception().
+
+-type assume_role_with_web_identity_errors() ::
+    region_disabled_exception() | 
+    packed_policy_too_large_exception() | 
+    malformed_policy_document_exception() | 
+    invalid_identity_token_exception() | 
+    id_p_rejected_claim_exception() | 
+    id_p_communication_error_exception() | 
+    expired_token_exception().
+
+-type decode_authorization_message_errors() ::
+    invalid_authorization_message_exception().
+
+-type get_federation_token_errors() ::
+    region_disabled_exception() | 
+    packed_policy_too_large_exception() | 
+    malformed_policy_document_exception().
+
+-type get_session_token_errors() ::
+    region_disabled_exception().
 
 %%====================================================================
 %% API
@@ -430,10 +463,7 @@
 -spec assume_role(map(), assume_role_request()) ->
     {ok, assume_role_response(), tuple()} |
     {error, any()} |
-    {error, expired_token_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, packed_policy_too_large_exception(), tuple()} |
-    {error, region_disabled_exception(), tuple()}.
+    {error, assume_role_errors(), tuple()}.
 assume_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     assume_role(Client, Input, []).
@@ -441,10 +471,7 @@ assume_role(Client, Input)
 -spec assume_role(map(), assume_role_request(), proplists:proplist()) ->
     {ok, assume_role_response(), tuple()} |
     {error, any()} |
-    {error, expired_token_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, packed_policy_too_large_exception(), tuple()} |
-    {error, region_disabled_exception(), tuple()}.
+    {error, assume_role_errors(), tuple()}.
 assume_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssumeRole">>, Input, Options).
@@ -655,12 +682,7 @@ assume_role(Client, Input, Options)
 -spec assume_role_with_saml(map(), assume_role_with_saml_request()) ->
     {ok, assume_role_with_saml_response(), tuple()} |
     {error, any()} |
-    {error, expired_token_exception(), tuple()} |
-    {error, id_p_rejected_claim_exception(), tuple()} |
-    {error, invalid_identity_token_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, packed_policy_too_large_exception(), tuple()} |
-    {error, region_disabled_exception(), tuple()}.
+    {error, assume_role_with_saml_errors(), tuple()}.
 assume_role_with_saml(Client, Input)
   when is_map(Client), is_map(Input) ->
     assume_role_with_saml(Client, Input, []).
@@ -668,12 +690,7 @@ assume_role_with_saml(Client, Input)
 -spec assume_role_with_saml(map(), assume_role_with_saml_request(), proplists:proplist()) ->
     {ok, assume_role_with_saml_response(), tuple()} |
     {error, any()} |
-    {error, expired_token_exception(), tuple()} |
-    {error, id_p_rejected_claim_exception(), tuple()} |
-    {error, invalid_identity_token_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, packed_policy_too_large_exception(), tuple()} |
-    {error, region_disabled_exception(), tuple()}.
+    {error, assume_role_with_saml_errors(), tuple()}.
 assume_role_with_saml(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssumeRoleWithSAML">>, Input, Options).
@@ -895,13 +912,7 @@ assume_role_with_saml(Client, Input, Options)
 -spec assume_role_with_web_identity(map(), assume_role_with_web_identity_request()) ->
     {ok, assume_role_with_web_identity_response(), tuple()} |
     {error, any()} |
-    {error, expired_token_exception(), tuple()} |
-    {error, id_p_communication_error_exception(), tuple()} |
-    {error, id_p_rejected_claim_exception(), tuple()} |
-    {error, invalid_identity_token_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, packed_policy_too_large_exception(), tuple()} |
-    {error, region_disabled_exception(), tuple()}.
+    {error, assume_role_with_web_identity_errors(), tuple()}.
 assume_role_with_web_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     assume_role_with_web_identity(Client, Input, []).
@@ -909,13 +920,7 @@ assume_role_with_web_identity(Client, Input)
 -spec assume_role_with_web_identity(map(), assume_role_with_web_identity_request(), proplists:proplist()) ->
     {ok, assume_role_with_web_identity_response(), tuple()} |
     {error, any()} |
-    {error, expired_token_exception(), tuple()} |
-    {error, id_p_communication_error_exception(), tuple()} |
-    {error, id_p_rejected_claim_exception(), tuple()} |
-    {error, invalid_identity_token_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, packed_policy_too_large_exception(), tuple()} |
-    {error, region_disabled_exception(), tuple()}.
+    {error, assume_role_with_web_identity_errors(), tuple()}.
 assume_role_with_web_identity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssumeRoleWithWebIdentity">>, Input, Options).
@@ -968,7 +973,7 @@ assume_role_with_web_identity(Client, Input, Options)
 -spec decode_authorization_message(map(), decode_authorization_message_request()) ->
     {ok, decode_authorization_message_response(), tuple()} |
     {error, any()} |
-    {error, invalid_authorization_message_exception(), tuple()}.
+    {error, decode_authorization_message_errors(), tuple()}.
 decode_authorization_message(Client, Input)
   when is_map(Client), is_map(Input) ->
     decode_authorization_message(Client, Input, []).
@@ -976,7 +981,7 @@ decode_authorization_message(Client, Input)
 -spec decode_authorization_message(map(), decode_authorization_message_request(), proplists:proplist()) ->
     {ok, decode_authorization_message_response(), tuple()} |
     {error, any()} |
-    {error, invalid_authorization_message_exception(), tuple()}.
+    {error, decode_authorization_message_errors(), tuple()}.
 decode_authorization_message(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DecodeAuthorizationMessage">>, Input, Options).
@@ -1215,9 +1220,7 @@ get_caller_identity(Client, Input, Options)
 -spec get_federation_token(map(), get_federation_token_request()) ->
     {ok, get_federation_token_response(), tuple()} |
     {error, any()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, packed_policy_too_large_exception(), tuple()} |
-    {error, region_disabled_exception(), tuple()}.
+    {error, get_federation_token_errors(), tuple()}.
 get_federation_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_federation_token(Client, Input, []).
@@ -1225,9 +1228,7 @@ get_federation_token(Client, Input)
 -spec get_federation_token(map(), get_federation_token_request(), proplists:proplist()) ->
     {ok, get_federation_token_response(), tuple()} |
     {error, any()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, packed_policy_too_large_exception(), tuple()} |
-    {error, region_disabled_exception(), tuple()}.
+    {error, get_federation_token_errors(), tuple()}.
 get_federation_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetFederationToken">>, Input, Options).
@@ -1324,7 +1325,7 @@ get_federation_token(Client, Input, Options)
 -spec get_session_token(map(), get_session_token_request()) ->
     {ok, get_session_token_response(), tuple()} |
     {error, any()} |
-    {error, region_disabled_exception(), tuple()}.
+    {error, get_session_token_errors(), tuple()}.
 get_session_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_session_token(Client, Input, []).
@@ -1332,7 +1333,7 @@ get_session_token(Client, Input)
 -spec get_session_token(map(), get_session_token_request(), proplists:proplist()) ->
     {ok, get_session_token_response(), tuple()} |
     {error, any()} |
-    {error, region_disabled_exception(), tuple()}.
+    {error, get_session_token_errors(), tuple()}.
 get_session_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSessionToken">>, Input, Options).

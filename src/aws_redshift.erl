@@ -3853,6 +3853,786 @@
 %% }
 -type delete_endpoint_access_message() :: #{binary() => any()}.
 
+-type accept_reserved_node_exchange_errors() ::
+    dependent_service_unavailable_fault() | 
+    reserved_node_offering_not_found_fault() | 
+    reserved_node_not_found_fault() | 
+    invalid_reserved_node_state_fault() | 
+    reserved_node_already_migrated_fault() | 
+    unsupported_operation_fault() | 
+    reserved_node_already_exists_fault().
+
+-type add_partner_errors() ::
+    partner_not_found_fault() | 
+    unauthorized_partner_integration_fault() | 
+    unsupported_operation_fault() | 
+    cluster_not_found_fault().
+
+-type associate_data_share_consumer_errors() ::
+    invalid_namespace_fault() | 
+    invalid_data_share_fault().
+
+-type authorize_cluster_security_group_ingress_errors() ::
+    authorization_quota_exceeded_fault() | 
+    cluster_security_group_not_found_fault() | 
+    invalid_cluster_security_group_state_fault() | 
+    authorization_already_exists_fault().
+
+-type authorize_data_share_errors() ::
+    invalid_data_share_fault().
+
+-type authorize_endpoint_access_errors() ::
+    invalid_authorization_state_fault() | 
+    endpoint_authorization_already_exists_fault() | 
+    invalid_cluster_state_fault() | 
+    endpoint_authorizations_per_cluster_limit_exceeded_fault() | 
+    unsupported_operation_fault() | 
+    cluster_not_found_fault().
+
+-type authorize_snapshot_access_errors() ::
+    authorization_quota_exceeded_fault() | 
+    cluster_snapshot_not_found_fault() | 
+    authorization_already_exists_fault() | 
+    invalid_cluster_snapshot_state_fault() | 
+    unsupported_operation_fault() | 
+    dependent_service_request_throttling_fault() | 
+    limit_exceeded_fault().
+
+-type batch_delete_cluster_snapshots_errors() ::
+    batch_delete_request_size_exceeded_fault().
+
+-type batch_modify_cluster_snapshots_errors() ::
+    invalid_retention_period_fault() | 
+    batch_modify_cluster_snapshots_limit_exceeded_fault().
+
+-type cancel_resize_errors() ::
+    invalid_cluster_state_fault() | 
+    unsupported_operation_fault() | 
+    cluster_not_found_fault() | 
+    resize_not_found_fault().
+
+-type copy_cluster_snapshot_errors() ::
+    invalid_retention_period_fault() | 
+    cluster_snapshot_not_found_fault() | 
+    cluster_snapshot_already_exists_fault() | 
+    invalid_cluster_snapshot_state_fault() | 
+    cluster_snapshot_quota_exceeded_fault() | 
+    cluster_not_found_fault().
+
+-type create_authentication_profile_errors() ::
+    authentication_profile_quota_exceeded_fault() | 
+    invalid_authentication_profile_request_fault() | 
+    authentication_profile_already_exists_fault().
+
+-type create_cluster_errors() ::
+    tag_limit_exceeded_fault() | 
+    invalid_retention_period_fault() | 
+    cluster_already_exists_fault() | 
+    insufficient_cluster_capacity_fault() | 
+    number_of_nodes_per_cluster_limit_exceeded_fault() | 
+    cluster_security_group_not_found_fault() | 
+    snapshot_schedule_not_found_fault() | 
+    ipv6_cidr_block_not_found_fault() | 
+    number_of_nodes_quota_exceeded_fault() | 
+    hsm_client_certificate_not_found_fault() | 
+    redshift_idc_application_not_exists_fault() | 
+    cluster_parameter_group_not_found_fault() | 
+    invalid_tag_fault() | 
+    invalid_elastic_ip_fault() | 
+    invalid_vpc_network_state_fault() | 
+    unauthorized_operation() | 
+    invalid_cluster_track_fault() | 
+    hsm_configuration_not_found_fault() | 
+    cluster_quota_exceeded_fault() | 
+    unsupported_operation_fault() | 
+    dependent_service_request_throttling_fault() | 
+    invalid_subnet() | 
+    limit_exceeded_fault() | 
+    cluster_subnet_group_not_found_fault() | 
+    invalid_cluster_subnet_group_state_fault().
+
+-type create_cluster_parameter_group_errors() ::
+    tag_limit_exceeded_fault() | 
+    cluster_parameter_group_already_exists_fault() | 
+    cluster_parameter_group_quota_exceeded_fault() | 
+    invalid_tag_fault().
+
+-type create_cluster_security_group_errors() ::
+    tag_limit_exceeded_fault() | 
+    invalid_tag_fault() | 
+    cluster_security_group_already_exists_fault() | 
+    cluster_security_group_quota_exceeded_fault().
+
+-type create_cluster_snapshot_errors() ::
+    tag_limit_exceeded_fault() | 
+    invalid_retention_period_fault() | 
+    invalid_cluster_state_fault() | 
+    cluster_snapshot_already_exists_fault() | 
+    invalid_tag_fault() | 
+    cluster_snapshot_quota_exceeded_fault() | 
+    cluster_not_found_fault().
+
+-type create_cluster_subnet_group_errors() ::
+    tag_limit_exceeded_fault() | 
+    cluster_subnet_group_already_exists_fault() | 
+    cluster_subnet_quota_exceeded_fault() | 
+    invalid_tag_fault() | 
+    unauthorized_operation() | 
+    dependent_service_request_throttling_fault() | 
+    invalid_subnet() | 
+    cluster_subnet_group_quota_exceeded_fault().
+
+-type create_custom_domain_association_errors() ::
+    custom_cname_association_fault() | 
+    unsupported_operation_fault() | 
+    cluster_not_found_fault().
+
+-type create_endpoint_access_errors() ::
+    endpoint_already_exists_fault() | 
+    access_to_cluster_denied_fault() | 
+    invalid_cluster_state_fault() | 
+    invalid_cluster_security_group_state_fault() | 
+    endpoints_per_cluster_limit_exceeded_fault() | 
+    unauthorized_operation() | 
+    endpoints_per_authorization_limit_exceeded_fault() | 
+    unsupported_operation_fault() | 
+    cluster_not_found_fault() | 
+    cluster_subnet_group_not_found_fault().
+
+-type create_event_subscription_errors() ::
+    tag_limit_exceeded_fault() | 
+    s_n_s_no_authorization_fault() | 
+    event_subscription_quota_exceeded_fault() | 
+    s_n_s_topic_arn_not_found_fault() | 
+    s_n_s_invalid_topic_fault() | 
+    subscription_category_not_found_fault() | 
+    source_not_found_fault() | 
+    invalid_tag_fault() | 
+    subscription_event_id_not_found_fault() | 
+    subscription_already_exist_fault() | 
+    subscription_severity_not_found_fault().
+
+-type create_hsm_client_certificate_errors() ::
+    hsm_client_certificate_already_exists_fault() | 
+    tag_limit_exceeded_fault() | 
+    invalid_tag_fault() | 
+    hsm_client_certificate_quota_exceeded_fault().
+
+-type create_hsm_configuration_errors() ::
+    tag_limit_exceeded_fault() | 
+    hsm_configuration_already_exists_fault() | 
+    hsm_configuration_quota_exceeded_fault() | 
+    invalid_tag_fault().
+
+-type create_redshift_idc_application_errors() ::
+    dependent_service_unavailable_fault() | 
+    redshift_idc_application_quota_exceeded_fault() | 
+    dependent_service_access_denied_fault() | 
+    unsupported_operation_fault() | 
+    redshift_idc_application_already_exists_fault().
+
+-type create_scheduled_action_errors() ::
+    invalid_schedule_fault() | 
+    invalid_scheduled_action_fault() | 
+    scheduled_action_already_exists_fault() | 
+    scheduled_action_quota_exceeded_fault() | 
+    unauthorized_operation() | 
+    scheduled_action_type_unsupported_fault() | 
+    unsupported_operation_fault() | 
+    cluster_not_found_fault().
+
+-type create_snapshot_copy_grant_errors() ::
+    tag_limit_exceeded_fault() | 
+    snapshot_copy_grant_quota_exceeded_fault() | 
+    invalid_tag_fault() | 
+    snapshot_copy_grant_already_exists_fault() | 
+    dependent_service_request_throttling_fault() | 
+    limit_exceeded_fault().
+
+-type create_snapshot_schedule_errors() ::
+    tag_limit_exceeded_fault() | 
+    invalid_schedule_fault() | 
+    invalid_tag_fault() | 
+    snapshot_schedule_quota_exceeded_fault() | 
+    snapshot_schedule_already_exists_fault() | 
+    schedule_definition_type_unsupported_fault().
+
+-type create_tags_errors() ::
+    tag_limit_exceeded_fault() | 
+    invalid_cluster_state_fault() | 
+    invalid_tag_fault() | 
+    resource_not_found_fault().
+
+-type create_usage_limit_errors() ::
+    tag_limit_exceeded_fault() | 
+    usage_limit_already_exists_fault() | 
+    invalid_cluster_state_fault() | 
+    invalid_usage_limit_fault() | 
+    unsupported_operation_fault() | 
+    cluster_not_found_fault() | 
+    limit_exceeded_fault().
+
+-type deauthorize_data_share_errors() ::
+    invalid_data_share_fault().
+
+-type delete_authentication_profile_errors() ::
+    authentication_profile_not_found_fault() | 
+    invalid_authentication_profile_request_fault().
+
+-type delete_cluster_errors() ::
+    invalid_retention_period_fault() | 
+    invalid_cluster_state_fault() | 
+    cluster_snapshot_already_exists_fault() | 
+    cluster_snapshot_quota_exceeded_fault() | 
+    cluster_not_found_fault().
+
+-type delete_cluster_parameter_group_errors() ::
+    cluster_parameter_group_not_found_fault() | 
+    invalid_cluster_parameter_group_state_fault().
+
+-type delete_cluster_security_group_errors() ::
+    cluster_security_group_not_found_fault() | 
+    invalid_cluster_security_group_state_fault().
+
+-type delete_cluster_snapshot_errors() ::
+    cluster_snapshot_not_found_fault() | 
+    invalid_cluster_snapshot_state_fault().
+
+-type delete_cluster_subnet_group_errors() ::
+    invalid_cluster_subnet_state_fault() | 
+    cluster_subnet_group_not_found_fault() | 
+    invalid_cluster_subnet_group_state_fault().
+
+-type delete_custom_domain_association_errors() ::
+    custom_domain_association_not_found_fault() | 
+    custom_cname_association_fault() | 
+    unsupported_operation_fault() | 
+    cluster_not_found_fault().
+
+-type delete_endpoint_access_errors() ::
+    invalid_cluster_state_fault() | 
+    invalid_endpoint_state_fault() | 
+    endpoint_not_found_fault() | 
+    invalid_cluster_security_group_state_fault() | 
+    cluster_not_found_fault().
+
+-type delete_event_subscription_errors() ::
+    invalid_subscription_state_fault() | 
+    subscription_not_found_fault().
+
+-type delete_hsm_client_certificate_errors() ::
+    hsm_client_certificate_not_found_fault() | 
+    invalid_hsm_client_certificate_state_fault().
+
+-type delete_hsm_configuration_errors() ::
+    invalid_hsm_configuration_state_fault() | 
+    hsm_configuration_not_found_fault().
+
+-type delete_partner_errors() ::
+    partner_not_found_fault() | 
+    unauthorized_partner_integration_fault() | 
+    unsupported_operation_fault() | 
+    cluster_not_found_fault().
+
+-type delete_redshift_idc_application_errors() ::
+    dependent_service_unavailable_fault() | 
+    redshift_idc_application_not_exists_fault() | 
+    dependent_service_access_denied_fault() | 
+    unsupported_operation_fault().
+
+-type delete_resource_policy_errors() ::
+    unsupported_operation_fault() | 
+    resource_not_found_fault().
+
+-type delete_scheduled_action_errors() ::
+    scheduled_action_not_found_fault() | 
+    unauthorized_operation().
+
+-type delete_snapshot_copy_grant_errors() ::
+    snapshot_copy_grant_not_found_fault() | 
+    invalid_snapshot_copy_grant_state_fault().
+
+-type delete_snapshot_schedule_errors() ::
+    snapshot_schedule_not_found_fault() | 
+    invalid_cluster_snapshot_schedule_state_fault().
+
+-type delete_tags_errors() ::
+    invalid_tag_fault() | 
+    resource_not_found_fault().
+
+-type delete_usage_limit_errors() ::
+    unsupported_operation_fault() | 
+    usage_limit_not_found_fault().
+
+-type describe_authentication_profiles_errors() ::
+    authentication_profile_not_found_fault() | 
+    invalid_authentication_profile_request_fault().
+
+-type describe_cluster_db_revisions_errors() ::
+    invalid_cluster_state_fault() | 
+    cluster_not_found_fault().
+
+-type describe_cluster_parameter_groups_errors() ::
+    cluster_parameter_group_not_found_fault() | 
+    invalid_tag_fault().
+
+-type describe_cluster_parameters_errors() ::
+    cluster_parameter_group_not_found_fault().
+
+-type describe_cluster_security_groups_errors() ::
+    cluster_security_group_not_found_fault() | 
+    invalid_tag_fault().
+
+-type describe_cluster_snapshots_errors() ::
+    cluster_snapshot_not_found_fault() | 
+    invalid_tag_fault() | 
+    unsupported_operation_fault() | 
+    cluster_not_found_fault().
+
+-type describe_cluster_subnet_groups_errors() ::
+    invalid_tag_fault() | 
+    cluster_subnet_group_not_found_fault().
+
+-type describe_cluster_tracks_errors() ::
+    unauthorized_operation() | 
+    invalid_cluster_track_fault().
+
+-type describe_clusters_errors() ::
+    invalid_tag_fault() | 
+    cluster_not_found_fault().
+
+-type describe_custom_domain_associations_errors() ::
+    custom_domain_association_not_found_fault() | 
+    unsupported_operation_fault().
+
+-type describe_data_shares_errors() ::
+    invalid_data_share_fault().
+
+-type describe_data_shares_for_consumer_errors() ::
+    invalid_namespace_fault().
+
+-type describe_data_shares_for_producer_errors() ::
+    invalid_namespace_fault().
+
+-type describe_endpoint_access_errors() ::
+    invalid_cluster_state_fault() | 
+    endpoint_not_found_fault() | 
+    cluster_not_found_fault().
+
+-type describe_endpoint_authorization_errors() ::
+    unsupported_operation_fault() | 
+    cluster_not_found_fault().
+
+-type describe_event_subscriptions_errors() ::
+    subscription_not_found_fault() | 
+    invalid_tag_fault().
+
+-type describe_hsm_client_certificates_errors() ::
+    hsm_client_certificate_not_found_fault() | 
+    invalid_tag_fault().
+
+-type describe_hsm_configurations_errors() ::
+    invalid_tag_fault() | 
+    hsm_configuration_not_found_fault().
+
+-type describe_inbound_integrations_errors() ::
+    integration_not_found_fault() | 
+    invalid_namespace_fault() | 
+    unsupported_operation_fault().
+
+-type describe_logging_status_errors() ::
+    unsupported_operation_fault() | 
+    cluster_not_found_fault().
+
+-type describe_node_configuration_options_errors() ::
+    cluster_snapshot_not_found_fault() | 
+    access_to_snapshot_denied_fault() | 
+    invalid_cluster_snapshot_state_fault() | 
+    unsupported_operation_fault() | 
+    cluster_not_found_fault().
+
+-type describe_partners_errors() ::
+    unauthorized_partner_integration_fault() | 
+    unsupported_operation_fault() | 
+    cluster_not_found_fault().
+
+-type describe_redshift_idc_applications_errors() ::
+    dependent_service_unavailable_fault() | 
+    redshift_idc_application_not_exists_fault() | 
+    dependent_service_access_denied_fault() | 
+    unsupported_operation_fault().
+
+-type describe_reserved_node_exchange_status_errors() ::
+    reserved_node_exchange_not_found_fault() | 
+    reserved_node_not_found_fault() | 
+    unsupported_operation_fault().
+
+-type describe_reserved_node_offerings_errors() ::
+    dependent_service_unavailable_fault() | 
+    reserved_node_offering_not_found_fault() | 
+    unsupported_operation_fault().
+
+-type describe_reserved_nodes_errors() ::
+    dependent_service_unavailable_fault() | 
+    reserved_node_not_found_fault().
+
+-type describe_resize_errors() ::
+    unsupported_operation_fault() | 
+    cluster_not_found_fault() | 
+    resize_not_found_fault().
+
+-type describe_scheduled_actions_errors() ::
+    scheduled_action_not_found_fault() | 
+    unauthorized_operation().
+
+-type describe_snapshot_copy_grants_errors() ::
+    invalid_tag_fault() | 
+    snapshot_copy_grant_not_found_fault().
+
+-type describe_table_restore_status_errors() ::
+    table_restore_not_found_fault() | 
+    cluster_not_found_fault().
+
+-type describe_tags_errors() ::
+    invalid_tag_fault() | 
+    resource_not_found_fault().
+
+-type describe_usage_limits_errors() ::
+    unsupported_operation_fault() | 
+    cluster_not_found_fault().
+
+-type disable_logging_errors() ::
+    invalid_cluster_state_fault() | 
+    unsupported_operation_fault() | 
+    cluster_not_found_fault().
+
+-type disable_snapshot_copy_errors() ::
+    invalid_cluster_state_fault() | 
+    unauthorized_operation() | 
+    unsupported_operation_fault() | 
+    snapshot_copy_already_disabled_fault() | 
+    cluster_not_found_fault().
+
+-type disassociate_data_share_consumer_errors() ::
+    invalid_namespace_fault() | 
+    invalid_data_share_fault().
+
+-type enable_logging_errors() ::
+    invalid_cluster_state_fault() | 
+    invalid_s3_key_prefix_fault() | 
+    insufficient_s3_bucket_policy_fault() | 
+    bucket_not_found_fault() | 
+    unsupported_operation_fault() | 
+    cluster_not_found_fault() | 
+    invalid_s3_bucket_name_fault().
+
+-type enable_snapshot_copy_errors() ::
+    invalid_retention_period_fault() | 
+    copy_to_region_disabled_fault() | 
+    unknown_snapshot_copy_region_fault() | 
+    invalid_cluster_state_fault() | 
+    incompatible_orderable_options() | 
+    snapshot_copy_already_enabled_fault() | 
+    unauthorized_operation() | 
+    dependent_service_request_throttling_fault() | 
+    cluster_not_found_fault() | 
+    limit_exceeded_fault() | 
+    snapshot_copy_grant_not_found_fault().
+
+-type failover_primary_compute_errors() ::
+    invalid_cluster_state_fault() | 
+    unauthorized_operation() | 
+    unsupported_operation_fault() | 
+    cluster_not_found_fault().
+
+-type get_cluster_credentials_errors() ::
+    unsupported_operation_fault() | 
+    cluster_not_found_fault().
+
+-type get_cluster_credentials_with_iam_errors() ::
+    unsupported_operation_fault() | 
+    cluster_not_found_fault().
+
+-type get_reserved_node_exchange_configuration_options_errors() ::
+    dependent_service_unavailable_fault() | 
+    reserved_node_offering_not_found_fault() | 
+    cluster_snapshot_not_found_fault() | 
+    reserved_node_not_found_fault() | 
+    invalid_reserved_node_state_fault() | 
+    reserved_node_already_migrated_fault() | 
+    unsupported_operation_fault() | 
+    cluster_not_found_fault().
+
+-type get_reserved_node_exchange_offerings_errors() ::
+    dependent_service_unavailable_fault() | 
+    reserved_node_offering_not_found_fault() | 
+    reserved_node_not_found_fault() | 
+    invalid_reserved_node_state_fault() | 
+    reserved_node_already_migrated_fault() | 
+    unsupported_operation_fault().
+
+-type get_resource_policy_errors() ::
+    unsupported_operation_fault() | 
+    invalid_policy_fault() | 
+    resource_not_found_fault().
+
+-type list_recommendations_errors() ::
+    unsupported_operation_fault() | 
+    cluster_not_found_fault().
+
+-type modify_aqua_configuration_errors() ::
+    invalid_cluster_state_fault() | 
+    unsupported_operation_fault() | 
+    cluster_not_found_fault().
+
+-type modify_authentication_profile_errors() ::
+    authentication_profile_quota_exceeded_fault() | 
+    authentication_profile_not_found_fault() | 
+    invalid_authentication_profile_request_fault().
+
+-type modify_cluster_errors() ::
+    invalid_retention_period_fault() | 
+    cluster_already_exists_fault() | 
+    insufficient_cluster_capacity_fault() | 
+    number_of_nodes_per_cluster_limit_exceeded_fault() | 
+    unsupported_option_fault() | 
+    cluster_security_group_not_found_fault() | 
+    invalid_cluster_state_fault() | 
+    invalid_cluster_security_group_state_fault() | 
+    ipv6_cidr_block_not_found_fault() | 
+    custom_cname_association_fault() | 
+    table_limit_exceeded_fault() | 
+    number_of_nodes_quota_exceeded_fault() | 
+    hsm_client_certificate_not_found_fault() | 
+    cluster_parameter_group_not_found_fault() | 
+    invalid_elastic_ip_fault() | 
+    unauthorized_operation() | 
+    invalid_cluster_track_fault() | 
+    hsm_configuration_not_found_fault() | 
+    unsupported_operation_fault() | 
+    dependent_service_request_throttling_fault() | 
+    cluster_not_found_fault() | 
+    limit_exceeded_fault().
+
+-type modify_cluster_db_revision_errors() ::
+    invalid_cluster_state_fault() | 
+    unsupported_operation_fault() | 
+    cluster_not_found_fault() | 
+    cluster_on_latest_revision_fault().
+
+-type modify_cluster_iam_roles_errors() ::
+    invalid_cluster_state_fault() | 
+    cluster_not_found_fault().
+
+-type modify_cluster_maintenance_errors() ::
+    invalid_cluster_state_fault() | 
+    cluster_not_found_fault().
+
+-type modify_cluster_parameter_group_errors() ::
+    cluster_parameter_group_not_found_fault() | 
+    invalid_cluster_parameter_group_state_fault().
+
+-type modify_cluster_snapshot_errors() ::
+    invalid_retention_period_fault() | 
+    cluster_snapshot_not_found_fault() | 
+    invalid_cluster_snapshot_state_fault().
+
+-type modify_cluster_snapshot_schedule_errors() ::
+    snapshot_schedule_not_found_fault() | 
+    invalid_cluster_snapshot_schedule_state_fault() | 
+    cluster_not_found_fault().
+
+-type modify_cluster_subnet_group_errors() ::
+    cluster_subnet_quota_exceeded_fault() | 
+    unauthorized_operation() | 
+    dependent_service_request_throttling_fault() | 
+    invalid_subnet() | 
+    cluster_subnet_group_not_found_fault() | 
+    subnet_already_in_use().
+
+-type modify_custom_domain_association_errors() ::
+    custom_domain_association_not_found_fault() | 
+    custom_cname_association_fault() | 
+    unsupported_operation_fault() | 
+    cluster_not_found_fault().
+
+-type modify_endpoint_access_errors() ::
+    invalid_cluster_state_fault() | 
+    invalid_endpoint_state_fault() | 
+    endpoint_not_found_fault() | 
+    invalid_cluster_security_group_state_fault() | 
+    unauthorized_operation() | 
+    cluster_not_found_fault().
+
+-type modify_event_subscription_errors() ::
+    s_n_s_no_authorization_fault() | 
+    invalid_subscription_state_fault() | 
+    s_n_s_topic_arn_not_found_fault() | 
+    s_n_s_invalid_topic_fault() | 
+    subscription_category_not_found_fault() | 
+    subscription_not_found_fault() | 
+    source_not_found_fault() | 
+    subscription_event_id_not_found_fault() | 
+    subscription_severity_not_found_fault().
+
+-type modify_redshift_idc_application_errors() ::
+    dependent_service_unavailable_fault() | 
+    redshift_idc_application_not_exists_fault() | 
+    dependent_service_access_denied_fault() | 
+    unsupported_operation_fault().
+
+-type modify_scheduled_action_errors() ::
+    invalid_schedule_fault() | 
+    invalid_scheduled_action_fault() | 
+    scheduled_action_not_found_fault() | 
+    unauthorized_operation() | 
+    scheduled_action_type_unsupported_fault() | 
+    unsupported_operation_fault() | 
+    cluster_not_found_fault().
+
+-type modify_snapshot_copy_retention_period_errors() ::
+    invalid_retention_period_fault() | 
+    invalid_cluster_state_fault() | 
+    snapshot_copy_disabled_fault() | 
+    unauthorized_operation() | 
+    cluster_not_found_fault().
+
+-type modify_snapshot_schedule_errors() ::
+    invalid_schedule_fault() | 
+    snapshot_schedule_not_found_fault() | 
+    snapshot_schedule_update_in_progress_fault().
+
+-type modify_usage_limit_errors() ::
+    invalid_usage_limit_fault() | 
+    unsupported_operation_fault() | 
+    usage_limit_not_found_fault().
+
+-type pause_cluster_errors() ::
+    invalid_cluster_state_fault() | 
+    unsupported_operation_fault() | 
+    cluster_not_found_fault().
+
+-type purchase_reserved_node_offering_errors() ::
+    reserved_node_offering_not_found_fault() | 
+    reserved_node_quota_exceeded_fault() | 
+    unsupported_operation_fault() | 
+    reserved_node_already_exists_fault().
+
+-type put_resource_policy_errors() ::
+    conflict_policy_update_fault() | 
+    unsupported_operation_fault() | 
+    invalid_policy_fault() | 
+    resource_not_found_fault().
+
+-type reboot_cluster_errors() ::
+    invalid_cluster_state_fault() | 
+    cluster_not_found_fault().
+
+-type reject_data_share_errors() ::
+    invalid_data_share_fault().
+
+-type reset_cluster_parameter_group_errors() ::
+    cluster_parameter_group_not_found_fault() | 
+    invalid_cluster_parameter_group_state_fault().
+
+-type resize_cluster_errors() ::
+    dependent_service_unavailable_fault() | 
+    insufficient_cluster_capacity_fault() | 
+    reserved_node_offering_not_found_fault() | 
+    number_of_nodes_per_cluster_limit_exceeded_fault() | 
+    unsupported_option_fault() | 
+    invalid_cluster_state_fault() | 
+    reserved_node_not_found_fault() | 
+    number_of_nodes_quota_exceeded_fault() | 
+    invalid_reserved_node_state_fault() | 
+    unauthorized_operation() | 
+    reserved_node_already_migrated_fault() | 
+    unsupported_operation_fault() | 
+    cluster_not_found_fault() | 
+    limit_exceeded_fault() | 
+    reserved_node_already_exists_fault().
+
+-type restore_from_cluster_snapshot_errors() ::
+    dependent_service_unavailable_fault() | 
+    tag_limit_exceeded_fault() | 
+    cluster_already_exists_fault() | 
+    insufficient_cluster_capacity_fault() | 
+    reserved_node_offering_not_found_fault() | 
+    number_of_nodes_per_cluster_limit_exceeded_fault() | 
+    cluster_snapshot_not_found_fault() | 
+    cluster_security_group_not_found_fault() | 
+    access_to_snapshot_denied_fault() | 
+    snapshot_schedule_not_found_fault() | 
+    ipv6_cidr_block_not_found_fault() | 
+    reserved_node_not_found_fault() | 
+    number_of_nodes_quota_exceeded_fault() | 
+    hsm_client_certificate_not_found_fault() | 
+    invalid_reserved_node_state_fault() | 
+    cluster_parameter_group_not_found_fault() | 
+    invalid_tag_fault() | 
+    invalid_elastic_ip_fault() | 
+    invalid_vpc_network_state_fault() | 
+    unauthorized_operation() | 
+    reserved_node_already_migrated_fault() | 
+    invalid_cluster_snapshot_state_fault() | 
+    invalid_cluster_track_fault() | 
+    hsm_configuration_not_found_fault() | 
+    cluster_quota_exceeded_fault() | 
+    unsupported_operation_fault() | 
+    dependent_service_request_throttling_fault() | 
+    invalid_subnet() | 
+    invalid_restore_fault() | 
+    limit_exceeded_fault() | 
+    reserved_node_already_exists_fault() | 
+    cluster_subnet_group_not_found_fault() | 
+    invalid_cluster_subnet_group_state_fault().
+
+-type restore_table_from_cluster_snapshot_errors() ::
+    invalid_table_restore_argument_fault() | 
+    cluster_snapshot_not_found_fault() | 
+    invalid_cluster_state_fault() | 
+    in_progress_table_restore_quota_exceeded_fault() | 
+    invalid_cluster_snapshot_state_fault() | 
+    unsupported_operation_fault() | 
+    cluster_not_found_fault().
+
+-type resume_cluster_errors() ::
+    insufficient_cluster_capacity_fault() | 
+    invalid_cluster_state_fault() | 
+    unsupported_operation_fault() | 
+    cluster_not_found_fault().
+
+-type revoke_cluster_security_group_ingress_errors() ::
+    cluster_security_group_not_found_fault() | 
+    invalid_cluster_security_group_state_fault() | 
+    authorization_not_found_fault().
+
+-type revoke_endpoint_access_errors() ::
+    invalid_authorization_state_fault() | 
+    invalid_cluster_state_fault() | 
+    invalid_endpoint_state_fault() | 
+    endpoint_not_found_fault() | 
+    invalid_cluster_security_group_state_fault() | 
+    cluster_not_found_fault() | 
+    endpoint_authorization_not_found_fault().
+
+-type revoke_snapshot_access_errors() ::
+    cluster_snapshot_not_found_fault() | 
+    access_to_snapshot_denied_fault() | 
+    authorization_not_found_fault() | 
+    unsupported_operation_fault().
+
+-type rotate_encryption_key_errors() ::
+    invalid_cluster_state_fault() | 
+    unsupported_operation_fault() | 
+    dependent_service_request_throttling_fault() | 
+    cluster_not_found_fault().
+
+-type update_partner_status_errors() ::
+    partner_not_found_fault() | 
+    unauthorized_partner_integration_fault() | 
+    unsupported_operation_fault() | 
+    cluster_not_found_fault().
 
 %%====================================================================
 %% API
@@ -3865,13 +4645,7 @@
 -spec accept_reserved_node_exchange(map(), accept_reserved_node_exchange_input_message()) ->
     {ok, accept_reserved_node_exchange_output_message(), tuple()} |
     {error, any()} |
-    {error, dependent_service_unavailable_fault(), tuple()} |
-    {error, invalid_reserved_node_state_fault(), tuple()} |
-    {error, reserved_node_already_exists_fault(), tuple()} |
-    {error, reserved_node_already_migrated_fault(), tuple()} |
-    {error, reserved_node_not_found_fault(), tuple()} |
-    {error, reserved_node_offering_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, accept_reserved_node_exchange_errors(), tuple()}.
 accept_reserved_node_exchange(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_reserved_node_exchange(Client, Input, []).
@@ -3879,13 +4653,7 @@ accept_reserved_node_exchange(Client, Input)
 -spec accept_reserved_node_exchange(map(), accept_reserved_node_exchange_input_message(), proplists:proplist()) ->
     {ok, accept_reserved_node_exchange_output_message(), tuple()} |
     {error, any()} |
-    {error, dependent_service_unavailable_fault(), tuple()} |
-    {error, invalid_reserved_node_state_fault(), tuple()} |
-    {error, reserved_node_already_exists_fault(), tuple()} |
-    {error, reserved_node_already_migrated_fault(), tuple()} |
-    {error, reserved_node_not_found_fault(), tuple()} |
-    {error, reserved_node_offering_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, accept_reserved_node_exchange_errors(), tuple()}.
 accept_reserved_node_exchange(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcceptReservedNodeExchange">>, Input, Options).
@@ -3899,10 +4667,7 @@ accept_reserved_node_exchange(Client, Input, Options)
 -spec add_partner(map(), partner_integration_input_message()) ->
     {ok, partner_integration_output_message(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, partner_not_found_fault(), tuple()} |
-    {error, unauthorized_partner_integration_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, add_partner_errors(), tuple()}.
 add_partner(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_partner(Client, Input, []).
@@ -3910,10 +4675,7 @@ add_partner(Client, Input)
 -spec add_partner(map(), partner_integration_input_message(), proplists:proplist()) ->
     {ok, partner_integration_output_message(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, partner_not_found_fault(), tuple()} |
-    {error, unauthorized_partner_integration_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, add_partner_errors(), tuple()}.
 add_partner(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddPartner">>, Input, Options).
@@ -3926,8 +4688,7 @@ add_partner(Client, Input, Options)
 -spec associate_data_share_consumer(map(), associate_data_share_consumer_message()) ->
     {ok, data_share(), tuple()} |
     {error, any()} |
-    {error, invalid_data_share_fault(), tuple()} |
-    {error, invalid_namespace_fault(), tuple()}.
+    {error, associate_data_share_consumer_errors(), tuple()}.
 associate_data_share_consumer(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_data_share_consumer(Client, Input, []).
@@ -3935,8 +4696,7 @@ associate_data_share_consumer(Client, Input)
 -spec associate_data_share_consumer(map(), associate_data_share_consumer_message(), proplists:proplist()) ->
     {ok, data_share(), tuple()} |
     {error, any()} |
-    {error, invalid_data_share_fault(), tuple()} |
-    {error, invalid_namespace_fault(), tuple()}.
+    {error, associate_data_share_consumer_errors(), tuple()}.
 associate_data_share_consumer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateDataShareConsumer">>, Input, Options).
@@ -3973,10 +4733,7 @@ associate_data_share_consumer(Client, Input, Options)
 -spec authorize_cluster_security_group_ingress(map(), authorize_cluster_security_group_ingress_message()) ->
     {ok, authorize_cluster_security_group_ingress_result(), tuple()} |
     {error, any()} |
-    {error, authorization_already_exists_fault(), tuple()} |
-    {error, authorization_quota_exceeded_fault(), tuple()} |
-    {error, cluster_security_group_not_found_fault(), tuple()} |
-    {error, invalid_cluster_security_group_state_fault(), tuple()}.
+    {error, authorize_cluster_security_group_ingress_errors(), tuple()}.
 authorize_cluster_security_group_ingress(Client, Input)
   when is_map(Client), is_map(Input) ->
     authorize_cluster_security_group_ingress(Client, Input, []).
@@ -3984,10 +4741,7 @@ authorize_cluster_security_group_ingress(Client, Input)
 -spec authorize_cluster_security_group_ingress(map(), authorize_cluster_security_group_ingress_message(), proplists:proplist()) ->
     {ok, authorize_cluster_security_group_ingress_result(), tuple()} |
     {error, any()} |
-    {error, authorization_already_exists_fault(), tuple()} |
-    {error, authorization_quota_exceeded_fault(), tuple()} |
-    {error, cluster_security_group_not_found_fault(), tuple()} |
-    {error, invalid_cluster_security_group_state_fault(), tuple()}.
+    {error, authorize_cluster_security_group_ingress_errors(), tuple()}.
 authorize_cluster_security_group_ingress(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AuthorizeClusterSecurityGroupIngress">>, Input, Options).
@@ -4001,7 +4755,7 @@ authorize_cluster_security_group_ingress(Client, Input, Options)
 -spec authorize_data_share(map(), authorize_data_share_message()) ->
     {ok, data_share(), tuple()} |
     {error, any()} |
-    {error, invalid_data_share_fault(), tuple()}.
+    {error, authorize_data_share_errors(), tuple()}.
 authorize_data_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     authorize_data_share(Client, Input, []).
@@ -4009,7 +4763,7 @@ authorize_data_share(Client, Input)
 -spec authorize_data_share(map(), authorize_data_share_message(), proplists:proplist()) ->
     {ok, data_share(), tuple()} |
     {error, any()} |
-    {error, invalid_data_share_fault(), tuple()}.
+    {error, authorize_data_share_errors(), tuple()}.
 authorize_data_share(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AuthorizeDataShare">>, Input, Options).
@@ -4018,12 +4772,7 @@ authorize_data_share(Client, Input, Options)
 -spec authorize_endpoint_access(map(), authorize_endpoint_access_message()) ->
     {ok, endpoint_authorization(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, endpoint_authorization_already_exists_fault(), tuple()} |
-    {error, endpoint_authorizations_per_cluster_limit_exceeded_fault(), tuple()} |
-    {error, invalid_authorization_state_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, authorize_endpoint_access_errors(), tuple()}.
 authorize_endpoint_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     authorize_endpoint_access(Client, Input, []).
@@ -4031,12 +4780,7 @@ authorize_endpoint_access(Client, Input)
 -spec authorize_endpoint_access(map(), authorize_endpoint_access_message(), proplists:proplist()) ->
     {ok, endpoint_authorization(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, endpoint_authorization_already_exists_fault(), tuple()} |
-    {error, endpoint_authorizations_per_cluster_limit_exceeded_fault(), tuple()} |
-    {error, invalid_authorization_state_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, authorize_endpoint_access_errors(), tuple()}.
 authorize_endpoint_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AuthorizeEndpointAccess">>, Input, Options).
@@ -4052,13 +4796,7 @@ authorize_endpoint_access(Client, Input, Options)
 -spec authorize_snapshot_access(map(), authorize_snapshot_access_message()) ->
     {ok, authorize_snapshot_access_result(), tuple()} |
     {error, any()} |
-    {error, authorization_already_exists_fault(), tuple()} |
-    {error, authorization_quota_exceeded_fault(), tuple()} |
-    {error, cluster_snapshot_not_found_fault(), tuple()} |
-    {error, dependent_service_request_throttling_fault(), tuple()} |
-    {error, invalid_cluster_snapshot_state_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, authorize_snapshot_access_errors(), tuple()}.
 authorize_snapshot_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     authorize_snapshot_access(Client, Input, []).
@@ -4066,13 +4804,7 @@ authorize_snapshot_access(Client, Input)
 -spec authorize_snapshot_access(map(), authorize_snapshot_access_message(), proplists:proplist()) ->
     {ok, authorize_snapshot_access_result(), tuple()} |
     {error, any()} |
-    {error, authorization_already_exists_fault(), tuple()} |
-    {error, authorization_quota_exceeded_fault(), tuple()} |
-    {error, cluster_snapshot_not_found_fault(), tuple()} |
-    {error, dependent_service_request_throttling_fault(), tuple()} |
-    {error, invalid_cluster_snapshot_state_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, authorize_snapshot_access_errors(), tuple()}.
 authorize_snapshot_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AuthorizeSnapshotAccess">>, Input, Options).
@@ -4081,7 +4813,7 @@ authorize_snapshot_access(Client, Input, Options)
 -spec batch_delete_cluster_snapshots(map(), batch_delete_cluster_snapshots_request()) ->
     {ok, batch_delete_cluster_snapshots_result(), tuple()} |
     {error, any()} |
-    {error, batch_delete_request_size_exceeded_fault(), tuple()}.
+    {error, batch_delete_cluster_snapshots_errors(), tuple()}.
 batch_delete_cluster_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_cluster_snapshots(Client, Input, []).
@@ -4089,7 +4821,7 @@ batch_delete_cluster_snapshots(Client, Input)
 -spec batch_delete_cluster_snapshots(map(), batch_delete_cluster_snapshots_request(), proplists:proplist()) ->
     {ok, batch_delete_cluster_snapshots_result(), tuple()} |
     {error, any()} |
-    {error, batch_delete_request_size_exceeded_fault(), tuple()}.
+    {error, batch_delete_cluster_snapshots_errors(), tuple()}.
 batch_delete_cluster_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDeleteClusterSnapshots">>, Input, Options).
@@ -4098,8 +4830,7 @@ batch_delete_cluster_snapshots(Client, Input, Options)
 -spec batch_modify_cluster_snapshots(map(), batch_modify_cluster_snapshots_message()) ->
     {ok, batch_modify_cluster_snapshots_output_message(), tuple()} |
     {error, any()} |
-    {error, batch_modify_cluster_snapshots_limit_exceeded_fault(), tuple()} |
-    {error, invalid_retention_period_fault(), tuple()}.
+    {error, batch_modify_cluster_snapshots_errors(), tuple()}.
 batch_modify_cluster_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_modify_cluster_snapshots(Client, Input, []).
@@ -4107,8 +4838,7 @@ batch_modify_cluster_snapshots(Client, Input)
 -spec batch_modify_cluster_snapshots(map(), batch_modify_cluster_snapshots_message(), proplists:proplist()) ->
     {ok, batch_modify_cluster_snapshots_output_message(), tuple()} |
     {error, any()} |
-    {error, batch_modify_cluster_snapshots_limit_exceeded_fault(), tuple()} |
-    {error, invalid_retention_period_fault(), tuple()}.
+    {error, batch_modify_cluster_snapshots_errors(), tuple()}.
 batch_modify_cluster_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchModifyClusterSnapshots">>, Input, Options).
@@ -4117,10 +4847,7 @@ batch_modify_cluster_snapshots(Client, Input, Options)
 -spec cancel_resize(map(), cancel_resize_message()) ->
     {ok, resize_progress_message(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, resize_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, cancel_resize_errors(), tuple()}.
 cancel_resize(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_resize(Client, Input, []).
@@ -4128,10 +4855,7 @@ cancel_resize(Client, Input)
 -spec cancel_resize(map(), cancel_resize_message(), proplists:proplist()) ->
     {ok, resize_progress_message(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, resize_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, cancel_resize_errors(), tuple()}.
 cancel_resize(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelResize">>, Input, Options).
@@ -4159,12 +4883,7 @@ cancel_resize(Client, Input, Options)
 -spec copy_cluster_snapshot(map(), copy_cluster_snapshot_message()) ->
     {ok, copy_cluster_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, cluster_snapshot_already_exists_fault(), tuple()} |
-    {error, cluster_snapshot_not_found_fault(), tuple()} |
-    {error, cluster_snapshot_quota_exceeded_fault(), tuple()} |
-    {error, invalid_cluster_snapshot_state_fault(), tuple()} |
-    {error, invalid_retention_period_fault(), tuple()}.
+    {error, copy_cluster_snapshot_errors(), tuple()}.
 copy_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_cluster_snapshot(Client, Input, []).
@@ -4172,12 +4891,7 @@ copy_cluster_snapshot(Client, Input)
 -spec copy_cluster_snapshot(map(), copy_cluster_snapshot_message(), proplists:proplist()) ->
     {ok, copy_cluster_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, cluster_snapshot_already_exists_fault(), tuple()} |
-    {error, cluster_snapshot_not_found_fault(), tuple()} |
-    {error, cluster_snapshot_quota_exceeded_fault(), tuple()} |
-    {error, invalid_cluster_snapshot_state_fault(), tuple()} |
-    {error, invalid_retention_period_fault(), tuple()}.
+    {error, copy_cluster_snapshot_errors(), tuple()}.
 copy_cluster_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopyClusterSnapshot">>, Input, Options).
@@ -4186,9 +4900,7 @@ copy_cluster_snapshot(Client, Input, Options)
 -spec create_authentication_profile(map(), create_authentication_profile_message()) ->
     {ok, create_authentication_profile_result(), tuple()} |
     {error, any()} |
-    {error, authentication_profile_already_exists_fault(), tuple()} |
-    {error, authentication_profile_quota_exceeded_fault(), tuple()} |
-    {error, invalid_authentication_profile_request_fault(), tuple()}.
+    {error, create_authentication_profile_errors(), tuple()}.
 create_authentication_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_authentication_profile(Client, Input, []).
@@ -4196,9 +4908,7 @@ create_authentication_profile(Client, Input)
 -spec create_authentication_profile(map(), create_authentication_profile_message(), proplists:proplist()) ->
     {ok, create_authentication_profile_result(), tuple()} |
     {error, any()} |
-    {error, authentication_profile_already_exists_fault(), tuple()} |
-    {error, authentication_profile_quota_exceeded_fault(), tuple()} |
-    {error, invalid_authentication_profile_request_fault(), tuple()}.
+    {error, create_authentication_profile_errors(), tuple()}.
 create_authentication_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAuthenticationProfile">>, Input, Options).
@@ -4217,31 +4927,7 @@ create_authentication_profile(Client, Input, Options)
 -spec create_cluster(map(), create_cluster_message()) ->
     {ok, create_cluster_result(), tuple()} |
     {error, any()} |
-    {error, cluster_already_exists_fault(), tuple()} |
-    {error, cluster_parameter_group_not_found_fault(), tuple()} |
-    {error, cluster_quota_exceeded_fault(), tuple()} |
-    {error, cluster_security_group_not_found_fault(), tuple()} |
-    {error, cluster_subnet_group_not_found_fault(), tuple()} |
-    {error, dependent_service_request_throttling_fault(), tuple()} |
-    {error, hsm_client_certificate_not_found_fault(), tuple()} |
-    {error, hsm_configuration_not_found_fault(), tuple()} |
-    {error, insufficient_cluster_capacity_fault(), tuple()} |
-    {error, invalid_cluster_subnet_group_state_fault(), tuple()} |
-    {error, invalid_cluster_track_fault(), tuple()} |
-    {error, invalid_elastic_ip_fault(), tuple()} |
-    {error, invalid_retention_period_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, ipv6_cidr_block_not_found_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, number_of_nodes_per_cluster_limit_exceeded_fault(), tuple()} |
-    {error, number_of_nodes_quota_exceeded_fault(), tuple()} |
-    {error, redshift_idc_application_not_exists_fault(), tuple()} |
-    {error, snapshot_schedule_not_found_fault(), tuple()} |
-    {error, tag_limit_exceeded_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, create_cluster_errors(), tuple()}.
 create_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cluster(Client, Input, []).
@@ -4249,31 +4935,7 @@ create_cluster(Client, Input)
 -spec create_cluster(map(), create_cluster_message(), proplists:proplist()) ->
     {ok, create_cluster_result(), tuple()} |
     {error, any()} |
-    {error, cluster_already_exists_fault(), tuple()} |
-    {error, cluster_parameter_group_not_found_fault(), tuple()} |
-    {error, cluster_quota_exceeded_fault(), tuple()} |
-    {error, cluster_security_group_not_found_fault(), tuple()} |
-    {error, cluster_subnet_group_not_found_fault(), tuple()} |
-    {error, dependent_service_request_throttling_fault(), tuple()} |
-    {error, hsm_client_certificate_not_found_fault(), tuple()} |
-    {error, hsm_configuration_not_found_fault(), tuple()} |
-    {error, insufficient_cluster_capacity_fault(), tuple()} |
-    {error, invalid_cluster_subnet_group_state_fault(), tuple()} |
-    {error, invalid_cluster_track_fault(), tuple()} |
-    {error, invalid_elastic_ip_fault(), tuple()} |
-    {error, invalid_retention_period_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, ipv6_cidr_block_not_found_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, number_of_nodes_per_cluster_limit_exceeded_fault(), tuple()} |
-    {error, number_of_nodes_quota_exceeded_fault(), tuple()} |
-    {error, redshift_idc_application_not_exists_fault(), tuple()} |
-    {error, snapshot_schedule_not_found_fault(), tuple()} |
-    {error, tag_limit_exceeded_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, create_cluster_errors(), tuple()}.
 create_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCluster">>, Input, Options).
@@ -4297,10 +4959,7 @@ create_cluster(Client, Input, Options)
 -spec create_cluster_parameter_group(map(), create_cluster_parameter_group_message()) ->
     {ok, create_cluster_parameter_group_result(), tuple()} |
     {error, any()} |
-    {error, cluster_parameter_group_already_exists_fault(), tuple()} |
-    {error, cluster_parameter_group_quota_exceeded_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, tag_limit_exceeded_fault(), tuple()}.
+    {error, create_cluster_parameter_group_errors(), tuple()}.
 create_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cluster_parameter_group(Client, Input, []).
@@ -4308,10 +4967,7 @@ create_cluster_parameter_group(Client, Input)
 -spec create_cluster_parameter_group(map(), create_cluster_parameter_group_message(), proplists:proplist()) ->
     {ok, create_cluster_parameter_group_result(), tuple()} |
     {error, any()} |
-    {error, cluster_parameter_group_already_exists_fault(), tuple()} |
-    {error, cluster_parameter_group_quota_exceeded_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, tag_limit_exceeded_fault(), tuple()}.
+    {error, create_cluster_parameter_group_errors(), tuple()}.
 create_cluster_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateClusterParameterGroup">>, Input, Options).
@@ -4329,10 +4985,7 @@ create_cluster_parameter_group(Client, Input, Options)
 -spec create_cluster_security_group(map(), create_cluster_security_group_message()) ->
     {ok, create_cluster_security_group_result(), tuple()} |
     {error, any()} |
-    {error, cluster_security_group_already_exists_fault(), tuple()} |
-    {error, cluster_security_group_quota_exceeded_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, tag_limit_exceeded_fault(), tuple()}.
+    {error, create_cluster_security_group_errors(), tuple()}.
 create_cluster_security_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cluster_security_group(Client, Input, []).
@@ -4340,10 +4993,7 @@ create_cluster_security_group(Client, Input)
 -spec create_cluster_security_group(map(), create_cluster_security_group_message(), proplists:proplist()) ->
     {ok, create_cluster_security_group_result(), tuple()} |
     {error, any()} |
-    {error, cluster_security_group_already_exists_fault(), tuple()} |
-    {error, cluster_security_group_quota_exceeded_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, tag_limit_exceeded_fault(), tuple()}.
+    {error, create_cluster_security_group_errors(), tuple()}.
 create_cluster_security_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateClusterSecurityGroup">>, Input, Options).
@@ -4360,13 +5010,7 @@ create_cluster_security_group(Client, Input, Options)
 -spec create_cluster_snapshot(map(), create_cluster_snapshot_message()) ->
     {ok, create_cluster_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, cluster_snapshot_already_exists_fault(), tuple()} |
-    {error, cluster_snapshot_quota_exceeded_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_retention_period_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, tag_limit_exceeded_fault(), tuple()}.
+    {error, create_cluster_snapshot_errors(), tuple()}.
 create_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cluster_snapshot(Client, Input, []).
@@ -4374,13 +5018,7 @@ create_cluster_snapshot(Client, Input)
 -spec create_cluster_snapshot(map(), create_cluster_snapshot_message(), proplists:proplist()) ->
     {ok, create_cluster_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, cluster_snapshot_already_exists_fault(), tuple()} |
-    {error, cluster_snapshot_quota_exceeded_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_retention_period_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, tag_limit_exceeded_fault(), tuple()}.
+    {error, create_cluster_snapshot_errors(), tuple()}.
 create_cluster_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateClusterSnapshot">>, Input, Options).
@@ -4400,14 +5038,7 @@ create_cluster_snapshot(Client, Input, Options)
 -spec create_cluster_subnet_group(map(), create_cluster_subnet_group_message()) ->
     {ok, create_cluster_subnet_group_result(), tuple()} |
     {error, any()} |
-    {error, cluster_subnet_group_already_exists_fault(), tuple()} |
-    {error, cluster_subnet_group_quota_exceeded_fault(), tuple()} |
-    {error, cluster_subnet_quota_exceeded_fault(), tuple()} |
-    {error, dependent_service_request_throttling_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, tag_limit_exceeded_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, create_cluster_subnet_group_errors(), tuple()}.
 create_cluster_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cluster_subnet_group(Client, Input, []).
@@ -4415,14 +5046,7 @@ create_cluster_subnet_group(Client, Input)
 -spec create_cluster_subnet_group(map(), create_cluster_subnet_group_message(), proplists:proplist()) ->
     {ok, create_cluster_subnet_group_result(), tuple()} |
     {error, any()} |
-    {error, cluster_subnet_group_already_exists_fault(), tuple()} |
-    {error, cluster_subnet_group_quota_exceeded_fault(), tuple()} |
-    {error, cluster_subnet_quota_exceeded_fault(), tuple()} |
-    {error, dependent_service_request_throttling_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, tag_limit_exceeded_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, create_cluster_subnet_group_errors(), tuple()}.
 create_cluster_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateClusterSubnetGroup">>, Input, Options).
@@ -4435,9 +5059,7 @@ create_cluster_subnet_group(Client, Input, Options)
 -spec create_custom_domain_association(map(), create_custom_domain_association_message()) ->
     {ok, create_custom_domain_association_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, custom_cname_association_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, create_custom_domain_association_errors(), tuple()}.
 create_custom_domain_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_custom_domain_association(Client, Input, []).
@@ -4445,9 +5067,7 @@ create_custom_domain_association(Client, Input)
 -spec create_custom_domain_association(map(), create_custom_domain_association_message(), proplists:proplist()) ->
     {ok, create_custom_domain_association_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, custom_cname_association_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, create_custom_domain_association_errors(), tuple()}.
 create_custom_domain_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCustomDomainAssociation">>, Input, Options).
@@ -4456,16 +5076,7 @@ create_custom_domain_association(Client, Input, Options)
 -spec create_endpoint_access(map(), create_endpoint_access_message()) ->
     {ok, endpoint_access(), tuple()} |
     {error, any()} |
-    {error, access_to_cluster_denied_fault(), tuple()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, cluster_subnet_group_not_found_fault(), tuple()} |
-    {error, endpoint_already_exists_fault(), tuple()} |
-    {error, endpoints_per_authorization_limit_exceeded_fault(), tuple()} |
-    {error, endpoints_per_cluster_limit_exceeded_fault(), tuple()} |
-    {error, invalid_cluster_security_group_state_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, create_endpoint_access_errors(), tuple()}.
 create_endpoint_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_endpoint_access(Client, Input, []).
@@ -4473,16 +5084,7 @@ create_endpoint_access(Client, Input)
 -spec create_endpoint_access(map(), create_endpoint_access_message(), proplists:proplist()) ->
     {ok, endpoint_access(), tuple()} |
     {error, any()} |
-    {error, access_to_cluster_denied_fault(), tuple()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, cluster_subnet_group_not_found_fault(), tuple()} |
-    {error, endpoint_already_exists_fault(), tuple()} |
-    {error, endpoints_per_authorization_limit_exceeded_fault(), tuple()} |
-    {error, endpoints_per_cluster_limit_exceeded_fault(), tuple()} |
-    {error, invalid_cluster_security_group_state_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, create_endpoint_access_errors(), tuple()}.
 create_endpoint_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEndpointAccess">>, Input, Options).
@@ -4526,17 +5128,7 @@ create_endpoint_access(Client, Input, Options)
 -spec create_event_subscription(map(), create_event_subscription_message()) ->
     {ok, create_event_subscription_result(), tuple()} |
     {error, any()} |
-    {error, event_subscription_quota_exceeded_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, s_n_s_invalid_topic_fault(), tuple()} |
-    {error, s_n_s_no_authorization_fault(), tuple()} |
-    {error, s_n_s_topic_arn_not_found_fault(), tuple()} |
-    {error, source_not_found_fault(), tuple()} |
-    {error, subscription_already_exist_fault(), tuple()} |
-    {error, subscription_category_not_found_fault(), tuple()} |
-    {error, subscription_event_id_not_found_fault(), tuple()} |
-    {error, subscription_severity_not_found_fault(), tuple()} |
-    {error, tag_limit_exceeded_fault(), tuple()}.
+    {error, create_event_subscription_errors(), tuple()}.
 create_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_event_subscription(Client, Input, []).
@@ -4544,17 +5136,7 @@ create_event_subscription(Client, Input)
 -spec create_event_subscription(map(), create_event_subscription_message(), proplists:proplist()) ->
     {ok, create_event_subscription_result(), tuple()} |
     {error, any()} |
-    {error, event_subscription_quota_exceeded_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, s_n_s_invalid_topic_fault(), tuple()} |
-    {error, s_n_s_no_authorization_fault(), tuple()} |
-    {error, s_n_s_topic_arn_not_found_fault(), tuple()} |
-    {error, source_not_found_fault(), tuple()} |
-    {error, subscription_already_exist_fault(), tuple()} |
-    {error, subscription_category_not_found_fault(), tuple()} |
-    {error, subscription_event_id_not_found_fault(), tuple()} |
-    {error, subscription_severity_not_found_fault(), tuple()} |
-    {error, tag_limit_exceeded_fault(), tuple()}.
+    {error, create_event_subscription_errors(), tuple()}.
 create_event_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEventSubscription">>, Input, Options).
@@ -4577,10 +5159,7 @@ create_event_subscription(Client, Input, Options)
 -spec create_hsm_client_certificate(map(), create_hsm_client_certificate_message()) ->
     {ok, create_hsm_client_certificate_result(), tuple()} |
     {error, any()} |
-    {error, hsm_client_certificate_already_exists_fault(), tuple()} |
-    {error, hsm_client_certificate_quota_exceeded_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, tag_limit_exceeded_fault(), tuple()}.
+    {error, create_hsm_client_certificate_errors(), tuple()}.
 create_hsm_client_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hsm_client_certificate(Client, Input, []).
@@ -4588,10 +5167,7 @@ create_hsm_client_certificate(Client, Input)
 -spec create_hsm_client_certificate(map(), create_hsm_client_certificate_message(), proplists:proplist()) ->
     {ok, create_hsm_client_certificate_result(), tuple()} |
     {error, any()} |
-    {error, hsm_client_certificate_already_exists_fault(), tuple()} |
-    {error, hsm_client_certificate_quota_exceeded_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, tag_limit_exceeded_fault(), tuple()}.
+    {error, create_hsm_client_certificate_errors(), tuple()}.
 create_hsm_client_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHsmClientCertificate">>, Input, Options).
@@ -4613,10 +5189,7 @@ create_hsm_client_certificate(Client, Input, Options)
 -spec create_hsm_configuration(map(), create_hsm_configuration_message()) ->
     {ok, create_hsm_configuration_result(), tuple()} |
     {error, any()} |
-    {error, hsm_configuration_already_exists_fault(), tuple()} |
-    {error, hsm_configuration_quota_exceeded_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, tag_limit_exceeded_fault(), tuple()}.
+    {error, create_hsm_configuration_errors(), tuple()}.
 create_hsm_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hsm_configuration(Client, Input, []).
@@ -4624,10 +5197,7 @@ create_hsm_configuration(Client, Input)
 -spec create_hsm_configuration(map(), create_hsm_configuration_message(), proplists:proplist()) ->
     {ok, create_hsm_configuration_result(), tuple()} |
     {error, any()} |
-    {error, hsm_configuration_already_exists_fault(), tuple()} |
-    {error, hsm_configuration_quota_exceeded_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, tag_limit_exceeded_fault(), tuple()}.
+    {error, create_hsm_configuration_errors(), tuple()}.
 create_hsm_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHsmConfiguration">>, Input, Options).
@@ -4637,11 +5207,7 @@ create_hsm_configuration(Client, Input, Options)
 -spec create_redshift_idc_application(map(), create_redshift_idc_application_message()) ->
     {ok, create_redshift_idc_application_result(), tuple()} |
     {error, any()} |
-    {error, dependent_service_access_denied_fault(), tuple()} |
-    {error, dependent_service_unavailable_fault(), tuple()} |
-    {error, redshift_idc_application_already_exists_fault(), tuple()} |
-    {error, redshift_idc_application_quota_exceeded_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, create_redshift_idc_application_errors(), tuple()}.
 create_redshift_idc_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_redshift_idc_application(Client, Input, []).
@@ -4649,11 +5215,7 @@ create_redshift_idc_application(Client, Input)
 -spec create_redshift_idc_application(map(), create_redshift_idc_application_message(), proplists:proplist()) ->
     {ok, create_redshift_idc_application_result(), tuple()} |
     {error, any()} |
-    {error, dependent_service_access_denied_fault(), tuple()} |
-    {error, dependent_service_unavailable_fault(), tuple()} |
-    {error, redshift_idc_application_already_exists_fault(), tuple()} |
-    {error, redshift_idc_application_quota_exceeded_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, create_redshift_idc_application_errors(), tuple()}.
 create_redshift_idc_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRedshiftIdcApplication">>, Input, Options).
@@ -4666,14 +5228,7 @@ create_redshift_idc_application(Client, Input, Options)
 -spec create_scheduled_action(map(), create_scheduled_action_message()) ->
     {ok, scheduled_action(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_scheduled_action_fault(), tuple()} |
-    {error, invalid_schedule_fault(), tuple()} |
-    {error, scheduled_action_already_exists_fault(), tuple()} |
-    {error, scheduled_action_quota_exceeded_fault(), tuple()} |
-    {error, scheduled_action_type_unsupported_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, create_scheduled_action_errors(), tuple()}.
 create_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_scheduled_action(Client, Input, []).
@@ -4681,14 +5236,7 @@ create_scheduled_action(Client, Input)
 -spec create_scheduled_action(map(), create_scheduled_action_message(), proplists:proplist()) ->
     {ok, scheduled_action(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_scheduled_action_fault(), tuple()} |
-    {error, invalid_schedule_fault(), tuple()} |
-    {error, scheduled_action_already_exists_fault(), tuple()} |
-    {error, scheduled_action_quota_exceeded_fault(), tuple()} |
-    {error, scheduled_action_type_unsupported_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, create_scheduled_action_errors(), tuple()}.
 create_scheduled_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateScheduledAction">>, Input, Options).
@@ -4705,12 +5253,7 @@ create_scheduled_action(Client, Input, Options)
 -spec create_snapshot_copy_grant(map(), create_snapshot_copy_grant_message()) ->
     {ok, create_snapshot_copy_grant_result(), tuple()} |
     {error, any()} |
-    {error, dependent_service_request_throttling_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, snapshot_copy_grant_already_exists_fault(), tuple()} |
-    {error, snapshot_copy_grant_quota_exceeded_fault(), tuple()} |
-    {error, tag_limit_exceeded_fault(), tuple()}.
+    {error, create_snapshot_copy_grant_errors(), tuple()}.
 create_snapshot_copy_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot_copy_grant(Client, Input, []).
@@ -4718,12 +5261,7 @@ create_snapshot_copy_grant(Client, Input)
 -spec create_snapshot_copy_grant(map(), create_snapshot_copy_grant_message(), proplists:proplist()) ->
     {ok, create_snapshot_copy_grant_result(), tuple()} |
     {error, any()} |
-    {error, dependent_service_request_throttling_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, snapshot_copy_grant_already_exists_fault(), tuple()} |
-    {error, snapshot_copy_grant_quota_exceeded_fault(), tuple()} |
-    {error, tag_limit_exceeded_fault(), tuple()}.
+    {error, create_snapshot_copy_grant_errors(), tuple()}.
 create_snapshot_copy_grant(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSnapshotCopyGrant">>, Input, Options).
@@ -4733,12 +5271,7 @@ create_snapshot_copy_grant(Client, Input, Options)
 -spec create_snapshot_schedule(map(), create_snapshot_schedule_message()) ->
     {ok, snapshot_schedule(), tuple()} |
     {error, any()} |
-    {error, invalid_schedule_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, schedule_definition_type_unsupported_fault(), tuple()} |
-    {error, snapshot_schedule_already_exists_fault(), tuple()} |
-    {error, snapshot_schedule_quota_exceeded_fault(), tuple()} |
-    {error, tag_limit_exceeded_fault(), tuple()}.
+    {error, create_snapshot_schedule_errors(), tuple()}.
 create_snapshot_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot_schedule(Client, Input, []).
@@ -4746,12 +5279,7 @@ create_snapshot_schedule(Client, Input)
 -spec create_snapshot_schedule(map(), create_snapshot_schedule_message(), proplists:proplist()) ->
     {ok, snapshot_schedule(), tuple()} |
     {error, any()} |
-    {error, invalid_schedule_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, schedule_definition_type_unsupported_fault(), tuple()} |
-    {error, snapshot_schedule_already_exists_fault(), tuple()} |
-    {error, snapshot_schedule_quota_exceeded_fault(), tuple()} |
-    {error, tag_limit_exceeded_fault(), tuple()}.
+    {error, create_snapshot_schedule_errors(), tuple()}.
 create_snapshot_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSnapshotSchedule">>, Input, Options).
@@ -4768,10 +5296,7 @@ create_snapshot_schedule(Client, Input, Options)
 -spec create_tags(map(), create_tags_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, tag_limit_exceeded_fault(), tuple()}.
+    {error, create_tags_errors(), tuple()}.
 create_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_tags(Client, Input, []).
@@ -4779,10 +5304,7 @@ create_tags(Client, Input)
 -spec create_tags(map(), create_tags_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, tag_limit_exceeded_fault(), tuple()}.
+    {error, create_tags_errors(), tuple()}.
 create_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTags">>, Input, Options).
@@ -4794,13 +5316,7 @@ create_tags(Client, Input, Options)
 -spec create_usage_limit(map(), create_usage_limit_message()) ->
     {ok, usage_limit(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_usage_limit_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, tag_limit_exceeded_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()} |
-    {error, usage_limit_already_exists_fault(), tuple()}.
+    {error, create_usage_limit_errors(), tuple()}.
 create_usage_limit(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_usage_limit(Client, Input, []).
@@ -4808,13 +5324,7 @@ create_usage_limit(Client, Input)
 -spec create_usage_limit(map(), create_usage_limit_message(), proplists:proplist()) ->
     {ok, usage_limit(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_usage_limit_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, tag_limit_exceeded_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()} |
-    {error, usage_limit_already_exists_fault(), tuple()}.
+    {error, create_usage_limit_errors(), tuple()}.
 create_usage_limit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUsageLimit">>, Input, Options).
@@ -4824,7 +5334,7 @@ create_usage_limit(Client, Input, Options)
 -spec deauthorize_data_share(map(), deauthorize_data_share_message()) ->
     {ok, data_share(), tuple()} |
     {error, any()} |
-    {error, invalid_data_share_fault(), tuple()}.
+    {error, deauthorize_data_share_errors(), tuple()}.
 deauthorize_data_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     deauthorize_data_share(Client, Input, []).
@@ -4832,7 +5342,7 @@ deauthorize_data_share(Client, Input)
 -spec deauthorize_data_share(map(), deauthorize_data_share_message(), proplists:proplist()) ->
     {ok, data_share(), tuple()} |
     {error, any()} |
-    {error, invalid_data_share_fault(), tuple()}.
+    {error, deauthorize_data_share_errors(), tuple()}.
 deauthorize_data_share(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeauthorizeDataShare">>, Input, Options).
@@ -4841,8 +5351,7 @@ deauthorize_data_share(Client, Input, Options)
 -spec delete_authentication_profile(map(), delete_authentication_profile_message()) ->
     {ok, delete_authentication_profile_result(), tuple()} |
     {error, any()} |
-    {error, authentication_profile_not_found_fault(), tuple()} |
-    {error, invalid_authentication_profile_request_fault(), tuple()}.
+    {error, delete_authentication_profile_errors(), tuple()}.
 delete_authentication_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_authentication_profile(Client, Input, []).
@@ -4850,8 +5359,7 @@ delete_authentication_profile(Client, Input)
 -spec delete_authentication_profile(map(), delete_authentication_profile_message(), proplists:proplist()) ->
     {ok, delete_authentication_profile_result(), tuple()} |
     {error, any()} |
-    {error, authentication_profile_not_found_fault(), tuple()} |
-    {error, invalid_authentication_profile_request_fault(), tuple()}.
+    {error, delete_authentication_profile_errors(), tuple()}.
 delete_authentication_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAuthenticationProfile">>, Input, Options).
@@ -4885,11 +5393,7 @@ delete_authentication_profile(Client, Input, Options)
 -spec delete_cluster(map(), delete_cluster_message()) ->
     {ok, delete_cluster_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, cluster_snapshot_already_exists_fault(), tuple()} |
-    {error, cluster_snapshot_quota_exceeded_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_retention_period_fault(), tuple()}.
+    {error, delete_cluster_errors(), tuple()}.
 delete_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cluster(Client, Input, []).
@@ -4897,11 +5401,7 @@ delete_cluster(Client, Input)
 -spec delete_cluster(map(), delete_cluster_message(), proplists:proplist()) ->
     {ok, delete_cluster_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, cluster_snapshot_already_exists_fault(), tuple()} |
-    {error, cluster_snapshot_quota_exceeded_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_retention_period_fault(), tuple()}.
+    {error, delete_cluster_errors(), tuple()}.
 delete_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCluster">>, Input, Options).
@@ -4913,8 +5413,7 @@ delete_cluster(Client, Input, Options)
 -spec delete_cluster_parameter_group(map(), delete_cluster_parameter_group_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, cluster_parameter_group_not_found_fault(), tuple()} |
-    {error, invalid_cluster_parameter_group_state_fault(), tuple()}.
+    {error, delete_cluster_parameter_group_errors(), tuple()}.
 delete_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cluster_parameter_group(Client, Input, []).
@@ -4922,8 +5421,7 @@ delete_cluster_parameter_group(Client, Input)
 -spec delete_cluster_parameter_group(map(), delete_cluster_parameter_group_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, cluster_parameter_group_not_found_fault(), tuple()} |
-    {error, invalid_cluster_parameter_group_state_fault(), tuple()}.
+    {error, delete_cluster_parameter_group_errors(), tuple()}.
 delete_cluster_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteClusterParameterGroup">>, Input, Options).
@@ -4942,8 +5440,7 @@ delete_cluster_parameter_group(Client, Input, Options)
 -spec delete_cluster_security_group(map(), delete_cluster_security_group_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, cluster_security_group_not_found_fault(), tuple()} |
-    {error, invalid_cluster_security_group_state_fault(), tuple()}.
+    {error, delete_cluster_security_group_errors(), tuple()}.
 delete_cluster_security_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cluster_security_group(Client, Input, []).
@@ -4951,8 +5448,7 @@ delete_cluster_security_group(Client, Input)
 -spec delete_cluster_security_group(map(), delete_cluster_security_group_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, cluster_security_group_not_found_fault(), tuple()} |
-    {error, invalid_cluster_security_group_state_fault(), tuple()}.
+    {error, delete_cluster_security_group_errors(), tuple()}.
 delete_cluster_security_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteClusterSecurityGroup">>, Input, Options).
@@ -4975,8 +5471,7 @@ delete_cluster_security_group(Client, Input, Options)
 -spec delete_cluster_snapshot(map(), delete_cluster_snapshot_message()) ->
     {ok, delete_cluster_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, cluster_snapshot_not_found_fault(), tuple()} |
-    {error, invalid_cluster_snapshot_state_fault(), tuple()}.
+    {error, delete_cluster_snapshot_errors(), tuple()}.
 delete_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cluster_snapshot(Client, Input, []).
@@ -4984,8 +5479,7 @@ delete_cluster_snapshot(Client, Input)
 -spec delete_cluster_snapshot(map(), delete_cluster_snapshot_message(), proplists:proplist()) ->
     {ok, delete_cluster_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, cluster_snapshot_not_found_fault(), tuple()} |
-    {error, invalid_cluster_snapshot_state_fault(), tuple()}.
+    {error, delete_cluster_snapshot_errors(), tuple()}.
 delete_cluster_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteClusterSnapshot">>, Input, Options).
@@ -4994,9 +5488,7 @@ delete_cluster_snapshot(Client, Input, Options)
 -spec delete_cluster_subnet_group(map(), delete_cluster_subnet_group_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, cluster_subnet_group_not_found_fault(), tuple()} |
-    {error, invalid_cluster_subnet_group_state_fault(), tuple()} |
-    {error, invalid_cluster_subnet_state_fault(), tuple()}.
+    {error, delete_cluster_subnet_group_errors(), tuple()}.
 delete_cluster_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cluster_subnet_group(Client, Input, []).
@@ -5004,9 +5496,7 @@ delete_cluster_subnet_group(Client, Input)
 -spec delete_cluster_subnet_group(map(), delete_cluster_subnet_group_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, cluster_subnet_group_not_found_fault(), tuple()} |
-    {error, invalid_cluster_subnet_group_state_fault(), tuple()} |
-    {error, invalid_cluster_subnet_state_fault(), tuple()}.
+    {error, delete_cluster_subnet_group_errors(), tuple()}.
 delete_cluster_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteClusterSubnetGroup">>, Input, Options).
@@ -5016,10 +5506,7 @@ delete_cluster_subnet_group(Client, Input, Options)
 -spec delete_custom_domain_association(map(), delete_custom_domain_association_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, custom_cname_association_fault(), tuple()} |
-    {error, custom_domain_association_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, delete_custom_domain_association_errors(), tuple()}.
 delete_custom_domain_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_custom_domain_association(Client, Input, []).
@@ -5027,10 +5514,7 @@ delete_custom_domain_association(Client, Input)
 -spec delete_custom_domain_association(map(), delete_custom_domain_association_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, custom_cname_association_fault(), tuple()} |
-    {error, custom_domain_association_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, delete_custom_domain_association_errors(), tuple()}.
 delete_custom_domain_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCustomDomainAssociation">>, Input, Options).
@@ -5039,11 +5523,7 @@ delete_custom_domain_association(Client, Input, Options)
 -spec delete_endpoint_access(map(), delete_endpoint_access_message()) ->
     {ok, endpoint_access(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, endpoint_not_found_fault(), tuple()} |
-    {error, invalid_cluster_security_group_state_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_endpoint_state_fault(), tuple()}.
+    {error, delete_endpoint_access_errors(), tuple()}.
 delete_endpoint_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_endpoint_access(Client, Input, []).
@@ -5051,11 +5531,7 @@ delete_endpoint_access(Client, Input)
 -spec delete_endpoint_access(map(), delete_endpoint_access_message(), proplists:proplist()) ->
     {ok, endpoint_access(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, endpoint_not_found_fault(), tuple()} |
-    {error, invalid_cluster_security_group_state_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_endpoint_state_fault(), tuple()}.
+    {error, delete_endpoint_access_errors(), tuple()}.
 delete_endpoint_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEndpointAccess">>, Input, Options).
@@ -5064,8 +5540,7 @@ delete_endpoint_access(Client, Input, Options)
 -spec delete_event_subscription(map(), delete_event_subscription_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_subscription_state_fault(), tuple()} |
-    {error, subscription_not_found_fault(), tuple()}.
+    {error, delete_event_subscription_errors(), tuple()}.
 delete_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_event_subscription(Client, Input, []).
@@ -5073,8 +5548,7 @@ delete_event_subscription(Client, Input)
 -spec delete_event_subscription(map(), delete_event_subscription_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_subscription_state_fault(), tuple()} |
-    {error, subscription_not_found_fault(), tuple()}.
+    {error, delete_event_subscription_errors(), tuple()}.
 delete_event_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEventSubscription">>, Input, Options).
@@ -5083,8 +5557,7 @@ delete_event_subscription(Client, Input, Options)
 -spec delete_hsm_client_certificate(map(), delete_hsm_client_certificate_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, hsm_client_certificate_not_found_fault(), tuple()} |
-    {error, invalid_hsm_client_certificate_state_fault(), tuple()}.
+    {error, delete_hsm_client_certificate_errors(), tuple()}.
 delete_hsm_client_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_hsm_client_certificate(Client, Input, []).
@@ -5092,8 +5565,7 @@ delete_hsm_client_certificate(Client, Input)
 -spec delete_hsm_client_certificate(map(), delete_hsm_client_certificate_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, hsm_client_certificate_not_found_fault(), tuple()} |
-    {error, invalid_hsm_client_certificate_state_fault(), tuple()}.
+    {error, delete_hsm_client_certificate_errors(), tuple()}.
 delete_hsm_client_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteHsmClientCertificate">>, Input, Options).
@@ -5102,8 +5574,7 @@ delete_hsm_client_certificate(Client, Input, Options)
 -spec delete_hsm_configuration(map(), delete_hsm_configuration_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, hsm_configuration_not_found_fault(), tuple()} |
-    {error, invalid_hsm_configuration_state_fault(), tuple()}.
+    {error, delete_hsm_configuration_errors(), tuple()}.
 delete_hsm_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_hsm_configuration(Client, Input, []).
@@ -5111,8 +5582,7 @@ delete_hsm_configuration(Client, Input)
 -spec delete_hsm_configuration(map(), delete_hsm_configuration_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, hsm_configuration_not_found_fault(), tuple()} |
-    {error, invalid_hsm_configuration_state_fault(), tuple()}.
+    {error, delete_hsm_configuration_errors(), tuple()}.
 delete_hsm_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteHsmConfiguration">>, Input, Options).
@@ -5124,10 +5594,7 @@ delete_hsm_configuration(Client, Input, Options)
 -spec delete_partner(map(), partner_integration_input_message()) ->
     {ok, partner_integration_output_message(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, partner_not_found_fault(), tuple()} |
-    {error, unauthorized_partner_integration_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, delete_partner_errors(), tuple()}.
 delete_partner(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_partner(Client, Input, []).
@@ -5135,10 +5602,7 @@ delete_partner(Client, Input)
 -spec delete_partner(map(), partner_integration_input_message(), proplists:proplist()) ->
     {ok, partner_integration_output_message(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, partner_not_found_fault(), tuple()} |
-    {error, unauthorized_partner_integration_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, delete_partner_errors(), tuple()}.
 delete_partner(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePartner">>, Input, Options).
@@ -5147,10 +5611,7 @@ delete_partner(Client, Input, Options)
 -spec delete_redshift_idc_application(map(), delete_redshift_idc_application_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, dependent_service_access_denied_fault(), tuple()} |
-    {error, dependent_service_unavailable_fault(), tuple()} |
-    {error, redshift_idc_application_not_exists_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, delete_redshift_idc_application_errors(), tuple()}.
 delete_redshift_idc_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_redshift_idc_application(Client, Input, []).
@@ -5158,10 +5619,7 @@ delete_redshift_idc_application(Client, Input)
 -spec delete_redshift_idc_application(map(), delete_redshift_idc_application_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, dependent_service_access_denied_fault(), tuple()} |
-    {error, dependent_service_unavailable_fault(), tuple()} |
-    {error, redshift_idc_application_not_exists_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, delete_redshift_idc_application_errors(), tuple()}.
 delete_redshift_idc_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRedshiftIdcApplication">>, Input, Options).
@@ -5170,8 +5628,7 @@ delete_redshift_idc_application(Client, Input, Options)
 -spec delete_resource_policy(map(), delete_resource_policy_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
@@ -5179,8 +5636,7 @@ delete_resource_policy(Client, Input)
 -spec delete_resource_policy(map(), delete_resource_policy_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourcePolicy">>, Input, Options).
@@ -5189,8 +5645,7 @@ delete_resource_policy(Client, Input, Options)
 -spec delete_scheduled_action(map(), delete_scheduled_action_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, scheduled_action_not_found_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, delete_scheduled_action_errors(), tuple()}.
 delete_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_scheduled_action(Client, Input, []).
@@ -5198,8 +5653,7 @@ delete_scheduled_action(Client, Input)
 -spec delete_scheduled_action(map(), delete_scheduled_action_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, scheduled_action_not_found_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, delete_scheduled_action_errors(), tuple()}.
 delete_scheduled_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteScheduledAction">>, Input, Options).
@@ -5208,8 +5662,7 @@ delete_scheduled_action(Client, Input, Options)
 -spec delete_snapshot_copy_grant(map(), delete_snapshot_copy_grant_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_snapshot_copy_grant_state_fault(), tuple()} |
-    {error, snapshot_copy_grant_not_found_fault(), tuple()}.
+    {error, delete_snapshot_copy_grant_errors(), tuple()}.
 delete_snapshot_copy_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_snapshot_copy_grant(Client, Input, []).
@@ -5217,8 +5670,7 @@ delete_snapshot_copy_grant(Client, Input)
 -spec delete_snapshot_copy_grant(map(), delete_snapshot_copy_grant_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_snapshot_copy_grant_state_fault(), tuple()} |
-    {error, snapshot_copy_grant_not_found_fault(), tuple()}.
+    {error, delete_snapshot_copy_grant_errors(), tuple()}.
 delete_snapshot_copy_grant(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSnapshotCopyGrant">>, Input, Options).
@@ -5227,8 +5679,7 @@ delete_snapshot_copy_grant(Client, Input, Options)
 -spec delete_snapshot_schedule(map(), delete_snapshot_schedule_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_cluster_snapshot_schedule_state_fault(), tuple()} |
-    {error, snapshot_schedule_not_found_fault(), tuple()}.
+    {error, delete_snapshot_schedule_errors(), tuple()}.
 delete_snapshot_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_snapshot_schedule(Client, Input, []).
@@ -5236,8 +5687,7 @@ delete_snapshot_schedule(Client, Input)
 -spec delete_snapshot_schedule(map(), delete_snapshot_schedule_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_cluster_snapshot_schedule_state_fault(), tuple()} |
-    {error, snapshot_schedule_not_found_fault(), tuple()}.
+    {error, delete_snapshot_schedule_errors(), tuple()}.
 delete_snapshot_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSnapshotSchedule">>, Input, Options).
@@ -5249,8 +5699,7 @@ delete_snapshot_schedule(Client, Input, Options)
 -spec delete_tags(map(), delete_tags_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, delete_tags_errors(), tuple()}.
 delete_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tags(Client, Input, []).
@@ -5258,8 +5707,7 @@ delete_tags(Client, Input)
 -spec delete_tags(map(), delete_tags_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, delete_tags_errors(), tuple()}.
 delete_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTags">>, Input, Options).
@@ -5268,8 +5716,7 @@ delete_tags(Client, Input, Options)
 -spec delete_usage_limit(map(), delete_usage_limit_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, unsupported_operation_fault(), tuple()} |
-    {error, usage_limit_not_found_fault(), tuple()}.
+    {error, delete_usage_limit_errors(), tuple()}.
 delete_usage_limit(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_usage_limit(Client, Input, []).
@@ -5277,8 +5724,7 @@ delete_usage_limit(Client, Input)
 -spec delete_usage_limit(map(), delete_usage_limit_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, unsupported_operation_fault(), tuple()} |
-    {error, usage_limit_not_found_fault(), tuple()}.
+    {error, delete_usage_limit_errors(), tuple()}.
 delete_usage_limit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUsageLimit">>, Input, Options).
@@ -5302,8 +5748,7 @@ describe_account_attributes(Client, Input, Options)
 -spec describe_authentication_profiles(map(), describe_authentication_profiles_message()) ->
     {ok, describe_authentication_profiles_result(), tuple()} |
     {error, any()} |
-    {error, authentication_profile_not_found_fault(), tuple()} |
-    {error, invalid_authentication_profile_request_fault(), tuple()}.
+    {error, describe_authentication_profiles_errors(), tuple()}.
 describe_authentication_profiles(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_authentication_profiles(Client, Input, []).
@@ -5311,8 +5756,7 @@ describe_authentication_profiles(Client, Input)
 -spec describe_authentication_profiles(map(), describe_authentication_profiles_message(), proplists:proplist()) ->
     {ok, describe_authentication_profiles_result(), tuple()} |
     {error, any()} |
-    {error, authentication_profile_not_found_fault(), tuple()} |
-    {error, invalid_authentication_profile_request_fault(), tuple()}.
+    {error, describe_authentication_profiles_errors(), tuple()}.
 describe_authentication_profiles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAuthenticationProfiles">>, Input, Options).
@@ -5321,8 +5765,7 @@ describe_authentication_profiles(Client, Input, Options)
 -spec describe_cluster_db_revisions(map(), describe_cluster_db_revisions_message()) ->
     {ok, cluster_db_revisions_message(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()}.
+    {error, describe_cluster_db_revisions_errors(), tuple()}.
 describe_cluster_db_revisions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cluster_db_revisions(Client, Input, []).
@@ -5330,8 +5773,7 @@ describe_cluster_db_revisions(Client, Input)
 -spec describe_cluster_db_revisions(map(), describe_cluster_db_revisions_message(), proplists:proplist()) ->
     {ok, cluster_db_revisions_message(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()}.
+    {error, describe_cluster_db_revisions_errors(), tuple()}.
 describe_cluster_db_revisions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClusterDbRevisions">>, Input, Options).
@@ -5368,8 +5810,7 @@ describe_cluster_db_revisions(Client, Input, Options)
 -spec describe_cluster_parameter_groups(map(), describe_cluster_parameter_groups_message()) ->
     {ok, cluster_parameter_groups_message(), tuple()} |
     {error, any()} |
-    {error, cluster_parameter_group_not_found_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()}.
+    {error, describe_cluster_parameter_groups_errors(), tuple()}.
 describe_cluster_parameter_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cluster_parameter_groups(Client, Input, []).
@@ -5377,8 +5818,7 @@ describe_cluster_parameter_groups(Client, Input)
 -spec describe_cluster_parameter_groups(map(), describe_cluster_parameter_groups_message(), proplists:proplist()) ->
     {ok, cluster_parameter_groups_message(), tuple()} |
     {error, any()} |
-    {error, cluster_parameter_group_not_found_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()}.
+    {error, describe_cluster_parameter_groups_errors(), tuple()}.
 describe_cluster_parameter_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClusterParameterGroups">>, Input, Options).
@@ -5405,7 +5845,7 @@ describe_cluster_parameter_groups(Client, Input, Options)
 -spec describe_cluster_parameters(map(), describe_cluster_parameters_message()) ->
     {ok, cluster_parameter_group_details(), tuple()} |
     {error, any()} |
-    {error, cluster_parameter_group_not_found_fault(), tuple()}.
+    {error, describe_cluster_parameters_errors(), tuple()}.
 describe_cluster_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cluster_parameters(Client, Input, []).
@@ -5413,7 +5853,7 @@ describe_cluster_parameters(Client, Input)
 -spec describe_cluster_parameters(map(), describe_cluster_parameters_message(), proplists:proplist()) ->
     {ok, cluster_parameter_group_details(), tuple()} |
     {error, any()} |
-    {error, cluster_parameter_group_not_found_fault(), tuple()}.
+    {error, describe_cluster_parameters_errors(), tuple()}.
 describe_cluster_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClusterParameters">>, Input, Options).
@@ -5447,8 +5887,7 @@ describe_cluster_parameters(Client, Input, Options)
 -spec describe_cluster_security_groups(map(), describe_cluster_security_groups_message()) ->
     {ok, cluster_security_group_message(), tuple()} |
     {error, any()} |
-    {error, cluster_security_group_not_found_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()}.
+    {error, describe_cluster_security_groups_errors(), tuple()}.
 describe_cluster_security_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cluster_security_groups(Client, Input, []).
@@ -5456,8 +5895,7 @@ describe_cluster_security_groups(Client, Input)
 -spec describe_cluster_security_groups(map(), describe_cluster_security_groups_message(), proplists:proplist()) ->
     {ok, cluster_security_group_message(), tuple()} |
     {error, any()} |
-    {error, cluster_security_group_not_found_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()}.
+    {error, describe_cluster_security_groups_errors(), tuple()}.
 describe_cluster_security_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClusterSecurityGroups">>, Input, Options).
@@ -5489,10 +5927,7 @@ describe_cluster_security_groups(Client, Input, Options)
 -spec describe_cluster_snapshots(map(), describe_cluster_snapshots_message()) ->
     {ok, snapshot_message(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, cluster_snapshot_not_found_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, describe_cluster_snapshots_errors(), tuple()}.
 describe_cluster_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cluster_snapshots(Client, Input, []).
@@ -5500,10 +5935,7 @@ describe_cluster_snapshots(Client, Input)
 -spec describe_cluster_snapshots(map(), describe_cluster_snapshots_message(), proplists:proplist()) ->
     {ok, snapshot_message(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, cluster_snapshot_not_found_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, describe_cluster_snapshots_errors(), tuple()}.
 describe_cluster_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClusterSnapshots">>, Input, Options).
@@ -5531,8 +5963,7 @@ describe_cluster_snapshots(Client, Input, Options)
 -spec describe_cluster_subnet_groups(map(), describe_cluster_subnet_groups_message()) ->
     {ok, cluster_subnet_group_message(), tuple()} |
     {error, any()} |
-    {error, cluster_subnet_group_not_found_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()}.
+    {error, describe_cluster_subnet_groups_errors(), tuple()}.
 describe_cluster_subnet_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cluster_subnet_groups(Client, Input, []).
@@ -5540,8 +5971,7 @@ describe_cluster_subnet_groups(Client, Input)
 -spec describe_cluster_subnet_groups(map(), describe_cluster_subnet_groups_message(), proplists:proplist()) ->
     {ok, cluster_subnet_group_message(), tuple()} |
     {error, any()} |
-    {error, cluster_subnet_group_not_found_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()}.
+    {error, describe_cluster_subnet_groups_errors(), tuple()}.
 describe_cluster_subnet_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClusterSubnetGroups">>, Input, Options).
@@ -5550,8 +5980,7 @@ describe_cluster_subnet_groups(Client, Input, Options)
 -spec describe_cluster_tracks(map(), describe_cluster_tracks_message()) ->
     {ok, track_list_message(), tuple()} |
     {error, any()} |
-    {error, invalid_cluster_track_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, describe_cluster_tracks_errors(), tuple()}.
 describe_cluster_tracks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cluster_tracks(Client, Input, []).
@@ -5559,8 +5988,7 @@ describe_cluster_tracks(Client, Input)
 -spec describe_cluster_tracks(map(), describe_cluster_tracks_message(), proplists:proplist()) ->
     {ok, track_list_message(), tuple()} |
     {error, any()} |
-    {error, invalid_cluster_track_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, describe_cluster_tracks_errors(), tuple()}.
 describe_cluster_tracks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClusterTracks">>, Input, Options).
@@ -5616,8 +6044,7 @@ describe_cluster_versions(Client, Input, Options)
 -spec describe_clusters(map(), describe_clusters_message()) ->
     {ok, clusters_message(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()}.
+    {error, describe_clusters_errors(), tuple()}.
 describe_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_clusters(Client, Input, []).
@@ -5625,8 +6052,7 @@ describe_clusters(Client, Input)
 -spec describe_clusters(map(), describe_clusters_message(), proplists:proplist()) ->
     {ok, clusters_message(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()}.
+    {error, describe_clusters_errors(), tuple()}.
 describe_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClusters">>, Input, Options).
@@ -5635,8 +6061,7 @@ describe_clusters(Client, Input, Options)
 -spec describe_custom_domain_associations(map(), describe_custom_domain_associations_message()) ->
     {ok, custom_domain_associations_message(), tuple()} |
     {error, any()} |
-    {error, custom_domain_association_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, describe_custom_domain_associations_errors(), tuple()}.
 describe_custom_domain_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_custom_domain_associations(Client, Input, []).
@@ -5644,8 +6069,7 @@ describe_custom_domain_associations(Client, Input)
 -spec describe_custom_domain_associations(map(), describe_custom_domain_associations_message(), proplists:proplist()) ->
     {ok, custom_domain_associations_message(), tuple()} |
     {error, any()} |
-    {error, custom_domain_association_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, describe_custom_domain_associations_errors(), tuple()}.
 describe_custom_domain_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCustomDomainAssociations">>, Input, Options).
@@ -5656,7 +6080,7 @@ describe_custom_domain_associations(Client, Input, Options)
 -spec describe_data_shares(map(), describe_data_shares_message()) ->
     {ok, describe_data_shares_result(), tuple()} |
     {error, any()} |
-    {error, invalid_data_share_fault(), tuple()}.
+    {error, describe_data_shares_errors(), tuple()}.
 describe_data_shares(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_data_shares(Client, Input, []).
@@ -5664,7 +6088,7 @@ describe_data_shares(Client, Input)
 -spec describe_data_shares(map(), describe_data_shares_message(), proplists:proplist()) ->
     {ok, describe_data_shares_result(), tuple()} |
     {error, any()} |
-    {error, invalid_data_share_fault(), tuple()}.
+    {error, describe_data_shares_errors(), tuple()}.
 describe_data_shares(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDataShares">>, Input, Options).
@@ -5674,7 +6098,7 @@ describe_data_shares(Client, Input, Options)
 -spec describe_data_shares_for_consumer(map(), describe_data_shares_for_consumer_message()) ->
     {ok, describe_data_shares_for_consumer_result(), tuple()} |
     {error, any()} |
-    {error, invalid_namespace_fault(), tuple()}.
+    {error, describe_data_shares_for_consumer_errors(), tuple()}.
 describe_data_shares_for_consumer(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_data_shares_for_consumer(Client, Input, []).
@@ -5682,7 +6106,7 @@ describe_data_shares_for_consumer(Client, Input)
 -spec describe_data_shares_for_consumer(map(), describe_data_shares_for_consumer_message(), proplists:proplist()) ->
     {ok, describe_data_shares_for_consumer_result(), tuple()} |
     {error, any()} |
-    {error, invalid_namespace_fault(), tuple()}.
+    {error, describe_data_shares_for_consumer_errors(), tuple()}.
 describe_data_shares_for_consumer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDataSharesForConsumer">>, Input, Options).
@@ -5692,7 +6116,7 @@ describe_data_shares_for_consumer(Client, Input, Options)
 -spec describe_data_shares_for_producer(map(), describe_data_shares_for_producer_message()) ->
     {ok, describe_data_shares_for_producer_result(), tuple()} |
     {error, any()} |
-    {error, invalid_namespace_fault(), tuple()}.
+    {error, describe_data_shares_for_producer_errors(), tuple()}.
 describe_data_shares_for_producer(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_data_shares_for_producer(Client, Input, []).
@@ -5700,7 +6124,7 @@ describe_data_shares_for_producer(Client, Input)
 -spec describe_data_shares_for_producer(map(), describe_data_shares_for_producer_message(), proplists:proplist()) ->
     {ok, describe_data_shares_for_producer_result(), tuple()} |
     {error, any()} |
-    {error, invalid_namespace_fault(), tuple()}.
+    {error, describe_data_shares_for_producer_errors(), tuple()}.
 describe_data_shares_for_producer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDataSharesForProducer">>, Input, Options).
@@ -5731,9 +6155,7 @@ describe_default_cluster_parameters(Client, Input, Options)
 -spec describe_endpoint_access(map(), describe_endpoint_access_message()) ->
     {ok, endpoint_access_list(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, endpoint_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()}.
+    {error, describe_endpoint_access_errors(), tuple()}.
 describe_endpoint_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoint_access(Client, Input, []).
@@ -5741,9 +6163,7 @@ describe_endpoint_access(Client, Input)
 -spec describe_endpoint_access(map(), describe_endpoint_access_message(), proplists:proplist()) ->
     {ok, endpoint_access_list(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, endpoint_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()}.
+    {error, describe_endpoint_access_errors(), tuple()}.
 describe_endpoint_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEndpointAccess">>, Input, Options).
@@ -5752,8 +6172,7 @@ describe_endpoint_access(Client, Input, Options)
 -spec describe_endpoint_authorization(map(), describe_endpoint_authorization_message()) ->
     {ok, endpoint_authorization_list(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, describe_endpoint_authorization_errors(), tuple()}.
 describe_endpoint_authorization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoint_authorization(Client, Input, []).
@@ -5761,8 +6180,7 @@ describe_endpoint_authorization(Client, Input)
 -spec describe_endpoint_authorization(map(), describe_endpoint_authorization_message(), proplists:proplist()) ->
     {ok, endpoint_authorization_list(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, describe_endpoint_authorization_errors(), tuple()}.
 describe_endpoint_authorization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEndpointAuthorization">>, Input, Options).
@@ -5812,8 +6230,7 @@ describe_event_categories(Client, Input, Options)
 -spec describe_event_subscriptions(map(), describe_event_subscriptions_message()) ->
     {ok, event_subscriptions_message(), tuple()} |
     {error, any()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, subscription_not_found_fault(), tuple()}.
+    {error, describe_event_subscriptions_errors(), tuple()}.
 describe_event_subscriptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_subscriptions(Client, Input, []).
@@ -5821,8 +6238,7 @@ describe_event_subscriptions(Client, Input)
 -spec describe_event_subscriptions(map(), describe_event_subscriptions_message(), proplists:proplist()) ->
     {ok, event_subscriptions_message(), tuple()} |
     {error, any()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, subscription_not_found_fault(), tuple()}.
+    {error, describe_event_subscriptions_errors(), tuple()}.
 describe_event_subscriptions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEventSubscriptions">>, Input, Options).
@@ -5871,8 +6287,7 @@ describe_events(Client, Input, Options)
 -spec describe_hsm_client_certificates(map(), describe_hsm_client_certificates_message()) ->
     {ok, hsm_client_certificate_message(), tuple()} |
     {error, any()} |
-    {error, hsm_client_certificate_not_found_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()}.
+    {error, describe_hsm_client_certificates_errors(), tuple()}.
 describe_hsm_client_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_hsm_client_certificates(Client, Input, []).
@@ -5880,8 +6295,7 @@ describe_hsm_client_certificates(Client, Input)
 -spec describe_hsm_client_certificates(map(), describe_hsm_client_certificates_message(), proplists:proplist()) ->
     {ok, hsm_client_certificate_message(), tuple()} |
     {error, any()} |
-    {error, hsm_client_certificate_not_found_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()}.
+    {error, describe_hsm_client_certificates_errors(), tuple()}.
 describe_hsm_client_certificates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeHsmClientCertificates">>, Input, Options).
@@ -5910,8 +6324,7 @@ describe_hsm_client_certificates(Client, Input, Options)
 -spec describe_hsm_configurations(map(), describe_hsm_configurations_message()) ->
     {ok, hsm_configuration_message(), tuple()} |
     {error, any()} |
-    {error, hsm_configuration_not_found_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()}.
+    {error, describe_hsm_configurations_errors(), tuple()}.
 describe_hsm_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_hsm_configurations(Client, Input, []).
@@ -5919,8 +6332,7 @@ describe_hsm_configurations(Client, Input)
 -spec describe_hsm_configurations(map(), describe_hsm_configurations_message(), proplists:proplist()) ->
     {ok, hsm_configuration_message(), tuple()} |
     {error, any()} |
-    {error, hsm_configuration_not_found_fault(), tuple()} |
-    {error, invalid_tag_fault(), tuple()}.
+    {error, describe_hsm_configurations_errors(), tuple()}.
 describe_hsm_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeHsmConfigurations">>, Input, Options).
@@ -5929,9 +6341,7 @@ describe_hsm_configurations(Client, Input, Options)
 -spec describe_inbound_integrations(map(), describe_inbound_integrations_message()) ->
     {ok, inbound_integrations_message(), tuple()} |
     {error, any()} |
-    {error, integration_not_found_fault(), tuple()} |
-    {error, invalid_namespace_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, describe_inbound_integrations_errors(), tuple()}.
 describe_inbound_integrations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_inbound_integrations(Client, Input, []).
@@ -5939,9 +6349,7 @@ describe_inbound_integrations(Client, Input)
 -spec describe_inbound_integrations(map(), describe_inbound_integrations_message(), proplists:proplist()) ->
     {ok, inbound_integrations_message(), tuple()} |
     {error, any()} |
-    {error, integration_not_found_fault(), tuple()} |
-    {error, invalid_namespace_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, describe_inbound_integrations_errors(), tuple()}.
 describe_inbound_integrations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInboundIntegrations">>, Input, Options).
@@ -5952,8 +6360,7 @@ describe_inbound_integrations(Client, Input, Options)
 -spec describe_logging_status(map(), describe_logging_status_message()) ->
     {ok, logging_status(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, describe_logging_status_errors(), tuple()}.
 describe_logging_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_logging_status(Client, Input, []).
@@ -5961,8 +6368,7 @@ describe_logging_status(Client, Input)
 -spec describe_logging_status(map(), describe_logging_status_message(), proplists:proplist()) ->
     {ok, logging_status(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, describe_logging_status_errors(), tuple()}.
 describe_logging_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLoggingStatus">>, Input, Options).
@@ -5973,11 +6379,7 @@ describe_logging_status(Client, Input, Options)
 -spec describe_node_configuration_options(map(), describe_node_configuration_options_message()) ->
     {ok, node_configuration_options_message(), tuple()} |
     {error, any()} |
-    {error, access_to_snapshot_denied_fault(), tuple()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, cluster_snapshot_not_found_fault(), tuple()} |
-    {error, invalid_cluster_snapshot_state_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, describe_node_configuration_options_errors(), tuple()}.
 describe_node_configuration_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_node_configuration_options(Client, Input, []).
@@ -5985,11 +6387,7 @@ describe_node_configuration_options(Client, Input)
 -spec describe_node_configuration_options(map(), describe_node_configuration_options_message(), proplists:proplist()) ->
     {ok, node_configuration_options_message(), tuple()} |
     {error, any()} |
-    {error, access_to_snapshot_denied_fault(), tuple()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, cluster_snapshot_not_found_fault(), tuple()} |
-    {error, invalid_cluster_snapshot_state_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, describe_node_configuration_options_errors(), tuple()}.
 describe_node_configuration_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeNodeConfigurationOptions">>, Input, Options).
@@ -6029,9 +6427,7 @@ describe_orderable_cluster_options(Client, Input, Options)
 -spec describe_partners(map(), describe_partners_input_message()) ->
     {ok, describe_partners_output_message(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, unauthorized_partner_integration_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, describe_partners_errors(), tuple()}.
 describe_partners(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_partners(Client, Input, []).
@@ -6039,9 +6435,7 @@ describe_partners(Client, Input)
 -spec describe_partners(map(), describe_partners_input_message(), proplists:proplist()) ->
     {ok, describe_partners_output_message(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, unauthorized_partner_integration_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, describe_partners_errors(), tuple()}.
 describe_partners(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePartners">>, Input, Options).
@@ -6050,10 +6444,7 @@ describe_partners(Client, Input, Options)
 -spec describe_redshift_idc_applications(map(), describe_redshift_idc_applications_message()) ->
     {ok, describe_redshift_idc_applications_result(), tuple()} |
     {error, any()} |
-    {error, dependent_service_access_denied_fault(), tuple()} |
-    {error, dependent_service_unavailable_fault(), tuple()} |
-    {error, redshift_idc_application_not_exists_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, describe_redshift_idc_applications_errors(), tuple()}.
 describe_redshift_idc_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_redshift_idc_applications(Client, Input, []).
@@ -6061,10 +6452,7 @@ describe_redshift_idc_applications(Client, Input)
 -spec describe_redshift_idc_applications(map(), describe_redshift_idc_applications_message(), proplists:proplist()) ->
     {ok, describe_redshift_idc_applications_result(), tuple()} |
     {error, any()} |
-    {error, dependent_service_access_denied_fault(), tuple()} |
-    {error, dependent_service_unavailable_fault(), tuple()} |
-    {error, redshift_idc_application_not_exists_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, describe_redshift_idc_applications_errors(), tuple()}.
 describe_redshift_idc_applications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRedshiftIdcApplications">>, Input, Options).
@@ -6077,9 +6465,7 @@ describe_redshift_idc_applications(Client, Input, Options)
 -spec describe_reserved_node_exchange_status(map(), describe_reserved_node_exchange_status_input_message()) ->
     {ok, describe_reserved_node_exchange_status_output_message(), tuple()} |
     {error, any()} |
-    {error, reserved_node_exchange_not_found_fault(), tuple()} |
-    {error, reserved_node_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, describe_reserved_node_exchange_status_errors(), tuple()}.
 describe_reserved_node_exchange_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_reserved_node_exchange_status(Client, Input, []).
@@ -6087,9 +6473,7 @@ describe_reserved_node_exchange_status(Client, Input)
 -spec describe_reserved_node_exchange_status(map(), describe_reserved_node_exchange_status_input_message(), proplists:proplist()) ->
     {ok, describe_reserved_node_exchange_status_output_message(), tuple()} |
     {error, any()} |
-    {error, reserved_node_exchange_not_found_fault(), tuple()} |
-    {error, reserved_node_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, describe_reserved_node_exchange_status_errors(), tuple()}.
 describe_reserved_node_exchange_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReservedNodeExchangeStatus">>, Input, Options).
@@ -6114,9 +6498,7 @@ describe_reserved_node_exchange_status(Client, Input, Options)
 -spec describe_reserved_node_offerings(map(), describe_reserved_node_offerings_message()) ->
     {ok, reserved_node_offerings_message(), tuple()} |
     {error, any()} |
-    {error, dependent_service_unavailable_fault(), tuple()} |
-    {error, reserved_node_offering_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, describe_reserved_node_offerings_errors(), tuple()}.
 describe_reserved_node_offerings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_reserved_node_offerings(Client, Input, []).
@@ -6124,9 +6506,7 @@ describe_reserved_node_offerings(Client, Input)
 -spec describe_reserved_node_offerings(map(), describe_reserved_node_offerings_message(), proplists:proplist()) ->
     {ok, reserved_node_offerings_message(), tuple()} |
     {error, any()} |
-    {error, dependent_service_unavailable_fault(), tuple()} |
-    {error, reserved_node_offering_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, describe_reserved_node_offerings_errors(), tuple()}.
 describe_reserved_node_offerings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReservedNodeOfferings">>, Input, Options).
@@ -6135,8 +6515,7 @@ describe_reserved_node_offerings(Client, Input, Options)
 -spec describe_reserved_nodes(map(), describe_reserved_nodes_message()) ->
     {ok, reserved_nodes_message(), tuple()} |
     {error, any()} |
-    {error, dependent_service_unavailable_fault(), tuple()} |
-    {error, reserved_node_not_found_fault(), tuple()}.
+    {error, describe_reserved_nodes_errors(), tuple()}.
 describe_reserved_nodes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_reserved_nodes(Client, Input, []).
@@ -6144,8 +6523,7 @@ describe_reserved_nodes(Client, Input)
 -spec describe_reserved_nodes(map(), describe_reserved_nodes_message(), proplists:proplist()) ->
     {ok, reserved_nodes_message(), tuple()} |
     {error, any()} |
-    {error, dependent_service_unavailable_fault(), tuple()} |
-    {error, reserved_node_not_found_fault(), tuple()}.
+    {error, describe_reserved_nodes_errors(), tuple()}.
 describe_reserved_nodes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReservedNodes">>, Input, Options).
@@ -6165,9 +6543,7 @@ describe_reserved_nodes(Client, Input, Options)
 -spec describe_resize(map(), describe_resize_message()) ->
     {ok, resize_progress_message(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, resize_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, describe_resize_errors(), tuple()}.
 describe_resize(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_resize(Client, Input, []).
@@ -6175,9 +6551,7 @@ describe_resize(Client, Input)
 -spec describe_resize(map(), describe_resize_message(), proplists:proplist()) ->
     {ok, resize_progress_message(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, resize_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, describe_resize_errors(), tuple()}.
 describe_resize(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeResize">>, Input, Options).
@@ -6186,8 +6560,7 @@ describe_resize(Client, Input, Options)
 -spec describe_scheduled_actions(map(), describe_scheduled_actions_message()) ->
     {ok, scheduled_actions_message(), tuple()} |
     {error, any()} |
-    {error, scheduled_action_not_found_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, describe_scheduled_actions_errors(), tuple()}.
 describe_scheduled_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scheduled_actions(Client, Input, []).
@@ -6195,8 +6568,7 @@ describe_scheduled_actions(Client, Input)
 -spec describe_scheduled_actions(map(), describe_scheduled_actions_message(), proplists:proplist()) ->
     {ok, scheduled_actions_message(), tuple()} |
     {error, any()} |
-    {error, scheduled_action_not_found_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, describe_scheduled_actions_errors(), tuple()}.
 describe_scheduled_actions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScheduledActions">>, Input, Options).
@@ -6212,8 +6584,7 @@ describe_scheduled_actions(Client, Input, Options)
 -spec describe_snapshot_copy_grants(map(), describe_snapshot_copy_grants_message()) ->
     {ok, snapshot_copy_grant_message(), tuple()} |
     {error, any()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, snapshot_copy_grant_not_found_fault(), tuple()}.
+    {error, describe_snapshot_copy_grants_errors(), tuple()}.
 describe_snapshot_copy_grants(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_snapshot_copy_grants(Client, Input, []).
@@ -6221,8 +6592,7 @@ describe_snapshot_copy_grants(Client, Input)
 -spec describe_snapshot_copy_grants(map(), describe_snapshot_copy_grants_message(), proplists:proplist()) ->
     {ok, snapshot_copy_grant_message(), tuple()} |
     {error, any()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, snapshot_copy_grant_not_found_fault(), tuple()}.
+    {error, describe_snapshot_copy_grants_errors(), tuple()}.
 describe_snapshot_copy_grants(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSnapshotCopyGrants">>, Input, Options).
@@ -6271,8 +6641,7 @@ describe_storage(Client, Input, Options)
 -spec describe_table_restore_status(map(), describe_table_restore_status_message()) ->
     {ok, table_restore_status_message(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, table_restore_not_found_fault(), tuple()}.
+    {error, describe_table_restore_status_errors(), tuple()}.
 describe_table_restore_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_table_restore_status(Client, Input, []).
@@ -6280,8 +6649,7 @@ describe_table_restore_status(Client, Input)
 -spec describe_table_restore_status(map(), describe_table_restore_status_message(), proplists:proplist()) ->
     {ok, table_restore_status_message(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, table_restore_not_found_fault(), tuple()}.
+    {error, describe_table_restore_status_errors(), tuple()}.
 describe_table_restore_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTableRestoreStatus">>, Input, Options).
@@ -6318,8 +6686,7 @@ describe_table_restore_status(Client, Input, Options)
 -spec describe_tags(map(), describe_tags_message()) ->
     {ok, tagged_resource_list_message(), tuple()} |
     {error, any()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_tags_errors(), tuple()}.
 describe_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tags(Client, Input, []).
@@ -6327,8 +6694,7 @@ describe_tags(Client, Input)
 -spec describe_tags(map(), describe_tags_message(), proplists:proplist()) ->
     {ok, tagged_resource_list_message(), tuple()} |
     {error, any()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()}.
+    {error, describe_tags_errors(), tuple()}.
 describe_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTags">>, Input, Options).
@@ -6355,8 +6721,7 @@ describe_tags(Client, Input, Options)
 -spec describe_usage_limits(map(), describe_usage_limits_message()) ->
     {ok, usage_limit_list(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, describe_usage_limits_errors(), tuple()}.
 describe_usage_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_usage_limits(Client, Input, []).
@@ -6364,8 +6729,7 @@ describe_usage_limits(Client, Input)
 -spec describe_usage_limits(map(), describe_usage_limits_message(), proplists:proplist()) ->
     {ok, usage_limit_list(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, describe_usage_limits_errors(), tuple()}.
 describe_usage_limits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUsageLimits">>, Input, Options).
@@ -6376,9 +6740,7 @@ describe_usage_limits(Client, Input, Options)
 -spec disable_logging(map(), disable_logging_message()) ->
     {ok, logging_status(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, disable_logging_errors(), tuple()}.
 disable_logging(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_logging(Client, Input, []).
@@ -6386,9 +6748,7 @@ disable_logging(Client, Input)
 -spec disable_logging(map(), disable_logging_message(), proplists:proplist()) ->
     {ok, logging_status(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, disable_logging_errors(), tuple()}.
 disable_logging(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableLogging">>, Input, Options).
@@ -6405,11 +6765,7 @@ disable_logging(Client, Input, Options)
 -spec disable_snapshot_copy(map(), disable_snapshot_copy_message()) ->
     {ok, disable_snapshot_copy_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, snapshot_copy_already_disabled_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, disable_snapshot_copy_errors(), tuple()}.
 disable_snapshot_copy(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_snapshot_copy(Client, Input, []).
@@ -6417,11 +6773,7 @@ disable_snapshot_copy(Client, Input)
 -spec disable_snapshot_copy(map(), disable_snapshot_copy_message(), proplists:proplist()) ->
     {ok, disable_snapshot_copy_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, snapshot_copy_already_disabled_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, disable_snapshot_copy_errors(), tuple()}.
 disable_snapshot_copy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableSnapshotCopy">>, Input, Options).
@@ -6431,8 +6783,7 @@ disable_snapshot_copy(Client, Input, Options)
 -spec disassociate_data_share_consumer(map(), disassociate_data_share_consumer_message()) ->
     {ok, data_share(), tuple()} |
     {error, any()} |
-    {error, invalid_data_share_fault(), tuple()} |
-    {error, invalid_namespace_fault(), tuple()}.
+    {error, disassociate_data_share_consumer_errors(), tuple()}.
 disassociate_data_share_consumer(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_data_share_consumer(Client, Input, []).
@@ -6440,8 +6791,7 @@ disassociate_data_share_consumer(Client, Input)
 -spec disassociate_data_share_consumer(map(), disassociate_data_share_consumer_message(), proplists:proplist()) ->
     {ok, data_share(), tuple()} |
     {error, any()} |
-    {error, invalid_data_share_fault(), tuple()} |
-    {error, invalid_namespace_fault(), tuple()}.
+    {error, disassociate_data_share_consumer_errors(), tuple()}.
 disassociate_data_share_consumer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateDataShareConsumer">>, Input, Options).
@@ -6452,13 +6802,7 @@ disassociate_data_share_consumer(Client, Input, Options)
 -spec enable_logging(map(), enable_logging_message()) ->
     {ok, logging_status(), tuple()} |
     {error, any()} |
-    {error, bucket_not_found_fault(), tuple()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, insufficient_s3_bucket_policy_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_s3_bucket_name_fault(), tuple()} |
-    {error, invalid_s3_key_prefix_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, enable_logging_errors(), tuple()}.
 enable_logging(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_logging(Client, Input, []).
@@ -6466,13 +6810,7 @@ enable_logging(Client, Input)
 -spec enable_logging(map(), enable_logging_message(), proplists:proplist()) ->
     {ok, logging_status(), tuple()} |
     {error, any()} |
-    {error, bucket_not_found_fault(), tuple()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, insufficient_s3_bucket_policy_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_s3_bucket_name_fault(), tuple()} |
-    {error, invalid_s3_key_prefix_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, enable_logging_errors(), tuple()}.
 enable_logging(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableLogging">>, Input, Options).
@@ -6483,17 +6821,7 @@ enable_logging(Client, Input, Options)
 -spec enable_snapshot_copy(map(), enable_snapshot_copy_message()) ->
     {ok, enable_snapshot_copy_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, copy_to_region_disabled_fault(), tuple()} |
-    {error, dependent_service_request_throttling_fault(), tuple()} |
-    {error, incompatible_orderable_options(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_retention_period_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, snapshot_copy_already_enabled_fault(), tuple()} |
-    {error, snapshot_copy_grant_not_found_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()} |
-    {error, unknown_snapshot_copy_region_fault(), tuple()}.
+    {error, enable_snapshot_copy_errors(), tuple()}.
 enable_snapshot_copy(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_snapshot_copy(Client, Input, []).
@@ -6501,17 +6829,7 @@ enable_snapshot_copy(Client, Input)
 -spec enable_snapshot_copy(map(), enable_snapshot_copy_message(), proplists:proplist()) ->
     {ok, enable_snapshot_copy_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, copy_to_region_disabled_fault(), tuple()} |
-    {error, dependent_service_request_throttling_fault(), tuple()} |
-    {error, incompatible_orderable_options(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_retention_period_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, snapshot_copy_already_enabled_fault(), tuple()} |
-    {error, snapshot_copy_grant_not_found_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()} |
-    {error, unknown_snapshot_copy_region_fault(), tuple()}.
+    {error, enable_snapshot_copy_errors(), tuple()}.
 enable_snapshot_copy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableSnapshotCopy">>, Input, Options).
@@ -6521,10 +6839,7 @@ enable_snapshot_copy(Client, Input, Options)
 -spec failover_primary_compute(map(), failover_primary_compute_input_message()) ->
     {ok, failover_primary_compute_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, failover_primary_compute_errors(), tuple()}.
 failover_primary_compute(Client, Input)
   when is_map(Client), is_map(Input) ->
     failover_primary_compute(Client, Input, []).
@@ -6532,10 +6847,7 @@ failover_primary_compute(Client, Input)
 -spec failover_primary_compute(map(), failover_primary_compute_input_message(), proplists:proplist()) ->
     {ok, failover_primary_compute_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, failover_primary_compute_errors(), tuple()}.
 failover_primary_compute(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"FailoverPrimaryCompute">>, Input, Options).
@@ -6582,8 +6894,7 @@ failover_primary_compute(Client, Input, Options)
 -spec get_cluster_credentials(map(), get_cluster_credentials_message()) ->
     {ok, cluster_credentials(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, get_cluster_credentials_errors(), tuple()}.
 get_cluster_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_cluster_credentials(Client, Input, []).
@@ -6591,8 +6902,7 @@ get_cluster_credentials(Client, Input)
 -spec get_cluster_credentials(map(), get_cluster_credentials_message(), proplists:proplist()) ->
     {ok, cluster_credentials(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, get_cluster_credentials_errors(), tuple()}.
 get_cluster_credentials(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetClusterCredentials">>, Input, Options).
@@ -6619,8 +6929,7 @@ get_cluster_credentials(Client, Input, Options)
 -spec get_cluster_credentials_with_iam(map(), get_cluster_credentials_with_iam_message()) ->
     {ok, cluster_extended_credentials(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, get_cluster_credentials_with_iam_errors(), tuple()}.
 get_cluster_credentials_with_iam(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_cluster_credentials_with_iam(Client, Input, []).
@@ -6628,8 +6937,7 @@ get_cluster_credentials_with_iam(Client, Input)
 -spec get_cluster_credentials_with_iam(map(), get_cluster_credentials_with_iam_message(), proplists:proplist()) ->
     {ok, cluster_extended_credentials(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, get_cluster_credentials_with_iam_errors(), tuple()}.
 get_cluster_credentials_with_iam(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetClusterCredentialsWithIAM">>, Input, Options).
@@ -6644,14 +6952,7 @@ get_cluster_credentials_with_iam(Client, Input, Options)
 -spec get_reserved_node_exchange_configuration_options(map(), get_reserved_node_exchange_configuration_options_input_message()) ->
     {ok, get_reserved_node_exchange_configuration_options_output_message(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, cluster_snapshot_not_found_fault(), tuple()} |
-    {error, dependent_service_unavailable_fault(), tuple()} |
-    {error, invalid_reserved_node_state_fault(), tuple()} |
-    {error, reserved_node_already_migrated_fault(), tuple()} |
-    {error, reserved_node_not_found_fault(), tuple()} |
-    {error, reserved_node_offering_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, get_reserved_node_exchange_configuration_options_errors(), tuple()}.
 get_reserved_node_exchange_configuration_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_reserved_node_exchange_configuration_options(Client, Input, []).
@@ -6659,14 +6960,7 @@ get_reserved_node_exchange_configuration_options(Client, Input)
 -spec get_reserved_node_exchange_configuration_options(map(), get_reserved_node_exchange_configuration_options_input_message(), proplists:proplist()) ->
     {ok, get_reserved_node_exchange_configuration_options_output_message(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, cluster_snapshot_not_found_fault(), tuple()} |
-    {error, dependent_service_unavailable_fault(), tuple()} |
-    {error, invalid_reserved_node_state_fault(), tuple()} |
-    {error, reserved_node_already_migrated_fault(), tuple()} |
-    {error, reserved_node_not_found_fault(), tuple()} |
-    {error, reserved_node_offering_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, get_reserved_node_exchange_configuration_options_errors(), tuple()}.
 get_reserved_node_exchange_configuration_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetReservedNodeExchangeConfigurationOptions">>, Input, Options).
@@ -6677,12 +6971,7 @@ get_reserved_node_exchange_configuration_options(Client, Input, Options)
 -spec get_reserved_node_exchange_offerings(map(), get_reserved_node_exchange_offerings_input_message()) ->
     {ok, get_reserved_node_exchange_offerings_output_message(), tuple()} |
     {error, any()} |
-    {error, dependent_service_unavailable_fault(), tuple()} |
-    {error, invalid_reserved_node_state_fault(), tuple()} |
-    {error, reserved_node_already_migrated_fault(), tuple()} |
-    {error, reserved_node_not_found_fault(), tuple()} |
-    {error, reserved_node_offering_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, get_reserved_node_exchange_offerings_errors(), tuple()}.
 get_reserved_node_exchange_offerings(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_reserved_node_exchange_offerings(Client, Input, []).
@@ -6690,12 +6979,7 @@ get_reserved_node_exchange_offerings(Client, Input)
 -spec get_reserved_node_exchange_offerings(map(), get_reserved_node_exchange_offerings_input_message(), proplists:proplist()) ->
     {ok, get_reserved_node_exchange_offerings_output_message(), tuple()} |
     {error, any()} |
-    {error, dependent_service_unavailable_fault(), tuple()} |
-    {error, invalid_reserved_node_state_fault(), tuple()} |
-    {error, reserved_node_already_migrated_fault(), tuple()} |
-    {error, reserved_node_not_found_fault(), tuple()} |
-    {error, reserved_node_offering_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, get_reserved_node_exchange_offerings_errors(), tuple()}.
 get_reserved_node_exchange_offerings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetReservedNodeExchangeOfferings">>, Input, Options).
@@ -6704,9 +6988,7 @@ get_reserved_node_exchange_offerings(Client, Input, Options)
 -spec get_resource_policy(map(), get_resource_policy_message()) ->
     {ok, get_resource_policy_result(), tuple()} |
     {error, any()} |
-    {error, invalid_policy_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, get_resource_policy_errors(), tuple()}.
 get_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_policy(Client, Input, []).
@@ -6714,9 +6996,7 @@ get_resource_policy(Client, Input)
 -spec get_resource_policy(map(), get_resource_policy_message(), proplists:proplist()) ->
     {ok, get_resource_policy_result(), tuple()} |
     {error, any()} |
-    {error, invalid_policy_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, get_resource_policy_errors(), tuple()}.
 get_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourcePolicy">>, Input, Options).
@@ -6726,8 +7006,7 @@ get_resource_policy(Client, Input, Options)
 -spec list_recommendations(map(), list_recommendations_message()) ->
     {ok, list_recommendations_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, list_recommendations_errors(), tuple()}.
 list_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_recommendations(Client, Input, []).
@@ -6735,8 +7014,7 @@ list_recommendations(Client, Input)
 -spec list_recommendations(map(), list_recommendations_message(), proplists:proplist()) ->
     {ok, list_recommendations_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, list_recommendations_errors(), tuple()}.
 list_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRecommendations">>, Input, Options).
@@ -6748,9 +7026,7 @@ list_recommendations(Client, Input, Options)
 -spec modify_aqua_configuration(map(), modify_aqua_input_message()) ->
     {ok, modify_aqua_output_message(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, modify_aqua_configuration_errors(), tuple()}.
 modify_aqua_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_aqua_configuration(Client, Input, []).
@@ -6758,9 +7034,7 @@ modify_aqua_configuration(Client, Input)
 -spec modify_aqua_configuration(map(), modify_aqua_input_message(), proplists:proplist()) ->
     {ok, modify_aqua_output_message(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, modify_aqua_configuration_errors(), tuple()}.
 modify_aqua_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyAquaConfiguration">>, Input, Options).
@@ -6769,9 +7043,7 @@ modify_aqua_configuration(Client, Input, Options)
 -spec modify_authentication_profile(map(), modify_authentication_profile_message()) ->
     {ok, modify_authentication_profile_result(), tuple()} |
     {error, any()} |
-    {error, authentication_profile_not_found_fault(), tuple()} |
-    {error, authentication_profile_quota_exceeded_fault(), tuple()} |
-    {error, invalid_authentication_profile_request_fault(), tuple()}.
+    {error, modify_authentication_profile_errors(), tuple()}.
 modify_authentication_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_authentication_profile(Client, Input, []).
@@ -6779,9 +7051,7 @@ modify_authentication_profile(Client, Input)
 -spec modify_authentication_profile(map(), modify_authentication_profile_message(), proplists:proplist()) ->
     {ok, modify_authentication_profile_result(), tuple()} |
     {error, any()} |
-    {error, authentication_profile_not_found_fault(), tuple()} |
-    {error, authentication_profile_quota_exceeded_fault(), tuple()} |
-    {error, invalid_authentication_profile_request_fault(), tuple()}.
+    {error, modify_authentication_profile_errors(), tuple()}.
 modify_authentication_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyAuthenticationProfile">>, Input, Options).
@@ -6806,28 +7076,7 @@ modify_authentication_profile(Client, Input, Options)
 -spec modify_cluster(map(), modify_cluster_message()) ->
     {ok, modify_cluster_result(), tuple()} |
     {error, any()} |
-    {error, cluster_already_exists_fault(), tuple()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, cluster_parameter_group_not_found_fault(), tuple()} |
-    {error, cluster_security_group_not_found_fault(), tuple()} |
-    {error, custom_cname_association_fault(), tuple()} |
-    {error, dependent_service_request_throttling_fault(), tuple()} |
-    {error, hsm_client_certificate_not_found_fault(), tuple()} |
-    {error, hsm_configuration_not_found_fault(), tuple()} |
-    {error, insufficient_cluster_capacity_fault(), tuple()} |
-    {error, invalid_cluster_security_group_state_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_cluster_track_fault(), tuple()} |
-    {error, invalid_elastic_ip_fault(), tuple()} |
-    {error, invalid_retention_period_fault(), tuple()} |
-    {error, ipv6_cidr_block_not_found_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, number_of_nodes_per_cluster_limit_exceeded_fault(), tuple()} |
-    {error, number_of_nodes_quota_exceeded_fault(), tuple()} |
-    {error, table_limit_exceeded_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()} |
-    {error, unsupported_option_fault(), tuple()}.
+    {error, modify_cluster_errors(), tuple()}.
 modify_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_cluster(Client, Input, []).
@@ -6835,28 +7084,7 @@ modify_cluster(Client, Input)
 -spec modify_cluster(map(), modify_cluster_message(), proplists:proplist()) ->
     {ok, modify_cluster_result(), tuple()} |
     {error, any()} |
-    {error, cluster_already_exists_fault(), tuple()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, cluster_parameter_group_not_found_fault(), tuple()} |
-    {error, cluster_security_group_not_found_fault(), tuple()} |
-    {error, custom_cname_association_fault(), tuple()} |
-    {error, dependent_service_request_throttling_fault(), tuple()} |
-    {error, hsm_client_certificate_not_found_fault(), tuple()} |
-    {error, hsm_configuration_not_found_fault(), tuple()} |
-    {error, insufficient_cluster_capacity_fault(), tuple()} |
-    {error, invalid_cluster_security_group_state_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_cluster_track_fault(), tuple()} |
-    {error, invalid_elastic_ip_fault(), tuple()} |
-    {error, invalid_retention_period_fault(), tuple()} |
-    {error, ipv6_cidr_block_not_found_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, number_of_nodes_per_cluster_limit_exceeded_fault(), tuple()} |
-    {error, number_of_nodes_quota_exceeded_fault(), tuple()} |
-    {error, table_limit_exceeded_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()} |
-    {error, unsupported_option_fault(), tuple()}.
+    {error, modify_cluster_errors(), tuple()}.
 modify_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyCluster">>, Input, Options).
@@ -6868,10 +7096,7 @@ modify_cluster(Client, Input, Options)
 -spec modify_cluster_db_revision(map(), modify_cluster_db_revision_message()) ->
     {ok, modify_cluster_db_revision_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, cluster_on_latest_revision_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, modify_cluster_db_revision_errors(), tuple()}.
 modify_cluster_db_revision(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_cluster_db_revision(Client, Input, []).
@@ -6879,10 +7104,7 @@ modify_cluster_db_revision(Client, Input)
 -spec modify_cluster_db_revision(map(), modify_cluster_db_revision_message(), proplists:proplist()) ->
     {ok, modify_cluster_db_revision_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, cluster_on_latest_revision_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, modify_cluster_db_revision_errors(), tuple()}.
 modify_cluster_db_revision(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyClusterDbRevision">>, Input, Options).
@@ -6899,8 +7121,7 @@ modify_cluster_db_revision(Client, Input, Options)
 -spec modify_cluster_iam_roles(map(), modify_cluster_iam_roles_message()) ->
     {ok, modify_cluster_iam_roles_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()}.
+    {error, modify_cluster_iam_roles_errors(), tuple()}.
 modify_cluster_iam_roles(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_cluster_iam_roles(Client, Input, []).
@@ -6908,8 +7129,7 @@ modify_cluster_iam_roles(Client, Input)
 -spec modify_cluster_iam_roles(map(), modify_cluster_iam_roles_message(), proplists:proplist()) ->
     {ok, modify_cluster_iam_roles_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()}.
+    {error, modify_cluster_iam_roles_errors(), tuple()}.
 modify_cluster_iam_roles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyClusterIamRoles">>, Input, Options).
@@ -6918,8 +7138,7 @@ modify_cluster_iam_roles(Client, Input, Options)
 -spec modify_cluster_maintenance(map(), modify_cluster_maintenance_message()) ->
     {ok, modify_cluster_maintenance_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()}.
+    {error, modify_cluster_maintenance_errors(), tuple()}.
 modify_cluster_maintenance(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_cluster_maintenance(Client, Input, []).
@@ -6927,8 +7146,7 @@ modify_cluster_maintenance(Client, Input)
 -spec modify_cluster_maintenance(map(), modify_cluster_maintenance_message(), proplists:proplist()) ->
     {ok, modify_cluster_maintenance_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()}.
+    {error, modify_cluster_maintenance_errors(), tuple()}.
 modify_cluster_maintenance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyClusterMaintenance">>, Input, Options).
@@ -6944,8 +7162,7 @@ modify_cluster_maintenance(Client, Input, Options)
 -spec modify_cluster_parameter_group(map(), modify_cluster_parameter_group_message()) ->
     {ok, cluster_parameter_group_name_message(), tuple()} |
     {error, any()} |
-    {error, cluster_parameter_group_not_found_fault(), tuple()} |
-    {error, invalid_cluster_parameter_group_state_fault(), tuple()}.
+    {error, modify_cluster_parameter_group_errors(), tuple()}.
 modify_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_cluster_parameter_group(Client, Input, []).
@@ -6953,8 +7170,7 @@ modify_cluster_parameter_group(Client, Input)
 -spec modify_cluster_parameter_group(map(), modify_cluster_parameter_group_message(), proplists:proplist()) ->
     {ok, cluster_parameter_group_name_message(), tuple()} |
     {error, any()} |
-    {error, cluster_parameter_group_not_found_fault(), tuple()} |
-    {error, invalid_cluster_parameter_group_state_fault(), tuple()}.
+    {error, modify_cluster_parameter_group_errors(), tuple()}.
 modify_cluster_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyClusterParameterGroup">>, Input, Options).
@@ -6966,9 +7182,7 @@ modify_cluster_parameter_group(Client, Input, Options)
 -spec modify_cluster_snapshot(map(), modify_cluster_snapshot_message()) ->
     {ok, modify_cluster_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, cluster_snapshot_not_found_fault(), tuple()} |
-    {error, invalid_cluster_snapshot_state_fault(), tuple()} |
-    {error, invalid_retention_period_fault(), tuple()}.
+    {error, modify_cluster_snapshot_errors(), tuple()}.
 modify_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_cluster_snapshot(Client, Input, []).
@@ -6976,9 +7190,7 @@ modify_cluster_snapshot(Client, Input)
 -spec modify_cluster_snapshot(map(), modify_cluster_snapshot_message(), proplists:proplist()) ->
     {ok, modify_cluster_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, cluster_snapshot_not_found_fault(), tuple()} |
-    {error, invalid_cluster_snapshot_state_fault(), tuple()} |
-    {error, invalid_retention_period_fault(), tuple()}.
+    {error, modify_cluster_snapshot_errors(), tuple()}.
 modify_cluster_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyClusterSnapshot">>, Input, Options).
@@ -6987,9 +7199,7 @@ modify_cluster_snapshot(Client, Input, Options)
 -spec modify_cluster_snapshot_schedule(map(), modify_cluster_snapshot_schedule_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_snapshot_schedule_state_fault(), tuple()} |
-    {error, snapshot_schedule_not_found_fault(), tuple()}.
+    {error, modify_cluster_snapshot_schedule_errors(), tuple()}.
 modify_cluster_snapshot_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_cluster_snapshot_schedule(Client, Input, []).
@@ -6997,9 +7207,7 @@ modify_cluster_snapshot_schedule(Client, Input)
 -spec modify_cluster_snapshot_schedule(map(), modify_cluster_snapshot_schedule_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_snapshot_schedule_state_fault(), tuple()} |
-    {error, snapshot_schedule_not_found_fault(), tuple()}.
+    {error, modify_cluster_snapshot_schedule_errors(), tuple()}.
 modify_cluster_snapshot_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyClusterSnapshotSchedule">>, Input, Options).
@@ -7013,12 +7221,7 @@ modify_cluster_snapshot_schedule(Client, Input, Options)
 -spec modify_cluster_subnet_group(map(), modify_cluster_subnet_group_message()) ->
     {ok, modify_cluster_subnet_group_result(), tuple()} |
     {error, any()} |
-    {error, cluster_subnet_group_not_found_fault(), tuple()} |
-    {error, cluster_subnet_quota_exceeded_fault(), tuple()} |
-    {error, dependent_service_request_throttling_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, subnet_already_in_use(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, modify_cluster_subnet_group_errors(), tuple()}.
 modify_cluster_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_cluster_subnet_group(Client, Input, []).
@@ -7026,12 +7229,7 @@ modify_cluster_subnet_group(Client, Input)
 -spec modify_cluster_subnet_group(map(), modify_cluster_subnet_group_message(), proplists:proplist()) ->
     {ok, modify_cluster_subnet_group_result(), tuple()} |
     {error, any()} |
-    {error, cluster_subnet_group_not_found_fault(), tuple()} |
-    {error, cluster_subnet_quota_exceeded_fault(), tuple()} |
-    {error, dependent_service_request_throttling_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, subnet_already_in_use(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, modify_cluster_subnet_group_errors(), tuple()}.
 modify_cluster_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyClusterSubnetGroup">>, Input, Options).
@@ -7040,10 +7238,7 @@ modify_cluster_subnet_group(Client, Input, Options)
 -spec modify_custom_domain_association(map(), modify_custom_domain_association_message()) ->
     {ok, modify_custom_domain_association_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, custom_cname_association_fault(), tuple()} |
-    {error, custom_domain_association_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, modify_custom_domain_association_errors(), tuple()}.
 modify_custom_domain_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_custom_domain_association(Client, Input, []).
@@ -7051,10 +7246,7 @@ modify_custom_domain_association(Client, Input)
 -spec modify_custom_domain_association(map(), modify_custom_domain_association_message(), proplists:proplist()) ->
     {ok, modify_custom_domain_association_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, custom_cname_association_fault(), tuple()} |
-    {error, custom_domain_association_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, modify_custom_domain_association_errors(), tuple()}.
 modify_custom_domain_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyCustomDomainAssociation">>, Input, Options).
@@ -7063,12 +7255,7 @@ modify_custom_domain_association(Client, Input, Options)
 -spec modify_endpoint_access(map(), modify_endpoint_access_message()) ->
     {ok, endpoint_access(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, endpoint_not_found_fault(), tuple()} |
-    {error, invalid_cluster_security_group_state_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_endpoint_state_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, modify_endpoint_access_errors(), tuple()}.
 modify_endpoint_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_endpoint_access(Client, Input, []).
@@ -7076,12 +7263,7 @@ modify_endpoint_access(Client, Input)
 -spec modify_endpoint_access(map(), modify_endpoint_access_message(), proplists:proplist()) ->
     {ok, endpoint_access(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, endpoint_not_found_fault(), tuple()} |
-    {error, invalid_cluster_security_group_state_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_endpoint_state_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, modify_endpoint_access_errors(), tuple()}.
 modify_endpoint_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyEndpointAccess">>, Input, Options).
@@ -7090,15 +7272,7 @@ modify_endpoint_access(Client, Input, Options)
 -spec modify_event_subscription(map(), modify_event_subscription_message()) ->
     {ok, modify_event_subscription_result(), tuple()} |
     {error, any()} |
-    {error, invalid_subscription_state_fault(), tuple()} |
-    {error, s_n_s_invalid_topic_fault(), tuple()} |
-    {error, s_n_s_no_authorization_fault(), tuple()} |
-    {error, s_n_s_topic_arn_not_found_fault(), tuple()} |
-    {error, source_not_found_fault(), tuple()} |
-    {error, subscription_category_not_found_fault(), tuple()} |
-    {error, subscription_event_id_not_found_fault(), tuple()} |
-    {error, subscription_not_found_fault(), tuple()} |
-    {error, subscription_severity_not_found_fault(), tuple()}.
+    {error, modify_event_subscription_errors(), tuple()}.
 modify_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_event_subscription(Client, Input, []).
@@ -7106,15 +7280,7 @@ modify_event_subscription(Client, Input)
 -spec modify_event_subscription(map(), modify_event_subscription_message(), proplists:proplist()) ->
     {ok, modify_event_subscription_result(), tuple()} |
     {error, any()} |
-    {error, invalid_subscription_state_fault(), tuple()} |
-    {error, s_n_s_invalid_topic_fault(), tuple()} |
-    {error, s_n_s_no_authorization_fault(), tuple()} |
-    {error, s_n_s_topic_arn_not_found_fault(), tuple()} |
-    {error, source_not_found_fault(), tuple()} |
-    {error, subscription_category_not_found_fault(), tuple()} |
-    {error, subscription_event_id_not_found_fault(), tuple()} |
-    {error, subscription_not_found_fault(), tuple()} |
-    {error, subscription_severity_not_found_fault(), tuple()}.
+    {error, modify_event_subscription_errors(), tuple()}.
 modify_event_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyEventSubscription">>, Input, Options).
@@ -7123,10 +7289,7 @@ modify_event_subscription(Client, Input, Options)
 -spec modify_redshift_idc_application(map(), modify_redshift_idc_application_message()) ->
     {ok, modify_redshift_idc_application_result(), tuple()} |
     {error, any()} |
-    {error, dependent_service_access_denied_fault(), tuple()} |
-    {error, dependent_service_unavailable_fault(), tuple()} |
-    {error, redshift_idc_application_not_exists_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, modify_redshift_idc_application_errors(), tuple()}.
 modify_redshift_idc_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_redshift_idc_application(Client, Input, []).
@@ -7134,10 +7297,7 @@ modify_redshift_idc_application(Client, Input)
 -spec modify_redshift_idc_application(map(), modify_redshift_idc_application_message(), proplists:proplist()) ->
     {ok, modify_redshift_idc_application_result(), tuple()} |
     {error, any()} |
-    {error, dependent_service_access_denied_fault(), tuple()} |
-    {error, dependent_service_unavailable_fault(), tuple()} |
-    {error, redshift_idc_application_not_exists_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, modify_redshift_idc_application_errors(), tuple()}.
 modify_redshift_idc_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyRedshiftIdcApplication">>, Input, Options).
@@ -7146,13 +7306,7 @@ modify_redshift_idc_application(Client, Input, Options)
 -spec modify_scheduled_action(map(), modify_scheduled_action_message()) ->
     {ok, scheduled_action(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_scheduled_action_fault(), tuple()} |
-    {error, invalid_schedule_fault(), tuple()} |
-    {error, scheduled_action_not_found_fault(), tuple()} |
-    {error, scheduled_action_type_unsupported_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, modify_scheduled_action_errors(), tuple()}.
 modify_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_scheduled_action(Client, Input, []).
@@ -7160,13 +7314,7 @@ modify_scheduled_action(Client, Input)
 -spec modify_scheduled_action(map(), modify_scheduled_action_message(), proplists:proplist()) ->
     {ok, scheduled_action(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_scheduled_action_fault(), tuple()} |
-    {error, invalid_schedule_fault(), tuple()} |
-    {error, scheduled_action_not_found_fault(), tuple()} |
-    {error, scheduled_action_type_unsupported_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, modify_scheduled_action_errors(), tuple()}.
 modify_scheduled_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyScheduledAction">>, Input, Options).
@@ -7188,11 +7336,7 @@ modify_scheduled_action(Client, Input, Options)
 -spec modify_snapshot_copy_retention_period(map(), modify_snapshot_copy_retention_period_message()) ->
     {ok, modify_snapshot_copy_retention_period_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_retention_period_fault(), tuple()} |
-    {error, snapshot_copy_disabled_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, modify_snapshot_copy_retention_period_errors(), tuple()}.
 modify_snapshot_copy_retention_period(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_snapshot_copy_retention_period(Client, Input, []).
@@ -7200,11 +7344,7 @@ modify_snapshot_copy_retention_period(Client, Input)
 -spec modify_snapshot_copy_retention_period(map(), modify_snapshot_copy_retention_period_message(), proplists:proplist()) ->
     {ok, modify_snapshot_copy_retention_period_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_retention_period_fault(), tuple()} |
-    {error, snapshot_copy_disabled_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()}.
+    {error, modify_snapshot_copy_retention_period_errors(), tuple()}.
 modify_snapshot_copy_retention_period(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifySnapshotCopyRetentionPeriod">>, Input, Options).
@@ -7216,9 +7356,7 @@ modify_snapshot_copy_retention_period(Client, Input, Options)
 -spec modify_snapshot_schedule(map(), modify_snapshot_schedule_message()) ->
     {ok, snapshot_schedule(), tuple()} |
     {error, any()} |
-    {error, invalid_schedule_fault(), tuple()} |
-    {error, snapshot_schedule_not_found_fault(), tuple()} |
-    {error, snapshot_schedule_update_in_progress_fault(), tuple()}.
+    {error, modify_snapshot_schedule_errors(), tuple()}.
 modify_snapshot_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_snapshot_schedule(Client, Input, []).
@@ -7226,9 +7364,7 @@ modify_snapshot_schedule(Client, Input)
 -spec modify_snapshot_schedule(map(), modify_snapshot_schedule_message(), proplists:proplist()) ->
     {ok, snapshot_schedule(), tuple()} |
     {error, any()} |
-    {error, invalid_schedule_fault(), tuple()} |
-    {error, snapshot_schedule_not_found_fault(), tuple()} |
-    {error, snapshot_schedule_update_in_progress_fault(), tuple()}.
+    {error, modify_snapshot_schedule_errors(), tuple()}.
 modify_snapshot_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifySnapshotSchedule">>, Input, Options).
@@ -7239,9 +7375,7 @@ modify_snapshot_schedule(Client, Input, Options)
 -spec modify_usage_limit(map(), modify_usage_limit_message()) ->
     {ok, usage_limit(), tuple()} |
     {error, any()} |
-    {error, invalid_usage_limit_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()} |
-    {error, usage_limit_not_found_fault(), tuple()}.
+    {error, modify_usage_limit_errors(), tuple()}.
 modify_usage_limit(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_usage_limit(Client, Input, []).
@@ -7249,9 +7383,7 @@ modify_usage_limit(Client, Input)
 -spec modify_usage_limit(map(), modify_usage_limit_message(), proplists:proplist()) ->
     {ok, usage_limit(), tuple()} |
     {error, any()} |
-    {error, invalid_usage_limit_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()} |
-    {error, usage_limit_not_found_fault(), tuple()}.
+    {error, modify_usage_limit_errors(), tuple()}.
 modify_usage_limit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyUsageLimit">>, Input, Options).
@@ -7260,9 +7392,7 @@ modify_usage_limit(Client, Input, Options)
 -spec pause_cluster(map(), pause_cluster_message()) ->
     {ok, pause_cluster_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, pause_cluster_errors(), tuple()}.
 pause_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     pause_cluster(Client, Input, []).
@@ -7270,9 +7400,7 @@ pause_cluster(Client, Input)
 -spec pause_cluster(map(), pause_cluster_message(), proplists:proplist()) ->
     {ok, pause_cluster_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, pause_cluster_errors(), tuple()}.
 pause_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PauseCluster">>, Input, Options).
@@ -7294,10 +7422,7 @@ pause_cluster(Client, Input, Options)
 -spec purchase_reserved_node_offering(map(), purchase_reserved_node_offering_message()) ->
     {ok, purchase_reserved_node_offering_result(), tuple()} |
     {error, any()} |
-    {error, reserved_node_already_exists_fault(), tuple()} |
-    {error, reserved_node_offering_not_found_fault(), tuple()} |
-    {error, reserved_node_quota_exceeded_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, purchase_reserved_node_offering_errors(), tuple()}.
 purchase_reserved_node_offering(Client, Input)
   when is_map(Client), is_map(Input) ->
     purchase_reserved_node_offering(Client, Input, []).
@@ -7305,10 +7430,7 @@ purchase_reserved_node_offering(Client, Input)
 -spec purchase_reserved_node_offering(map(), purchase_reserved_node_offering_message(), proplists:proplist()) ->
     {ok, purchase_reserved_node_offering_result(), tuple()} |
     {error, any()} |
-    {error, reserved_node_already_exists_fault(), tuple()} |
-    {error, reserved_node_offering_not_found_fault(), tuple()} |
-    {error, reserved_node_quota_exceeded_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, purchase_reserved_node_offering_errors(), tuple()}.
 purchase_reserved_node_offering(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PurchaseReservedNodeOffering">>, Input, Options).
@@ -7317,10 +7439,7 @@ purchase_reserved_node_offering(Client, Input, Options)
 -spec put_resource_policy(map(), put_resource_policy_message()) ->
     {ok, put_resource_policy_result(), tuple()} |
     {error, any()} |
-    {error, conflict_policy_update_fault(), tuple()} |
-    {error, invalid_policy_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
@@ -7328,10 +7447,7 @@ put_resource_policy(Client, Input)
 -spec put_resource_policy(map(), put_resource_policy_message(), proplists:proplist()) ->
     {ok, put_resource_policy_result(), tuple()} |
     {error, any()} |
-    {error, conflict_policy_update_fault(), tuple()} |
-    {error, invalid_policy_fault(), tuple()} |
-    {error, resource_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResourcePolicy">>, Input, Options).
@@ -7352,8 +7468,7 @@ put_resource_policy(Client, Input, Options)
 -spec reboot_cluster(map(), reboot_cluster_message()) ->
     {ok, reboot_cluster_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()}.
+    {error, reboot_cluster_errors(), tuple()}.
 reboot_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_cluster(Client, Input, []).
@@ -7361,8 +7476,7 @@ reboot_cluster(Client, Input)
 -spec reboot_cluster(map(), reboot_cluster_message(), proplists:proplist()) ->
     {ok, reboot_cluster_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()}.
+    {error, reboot_cluster_errors(), tuple()}.
 reboot_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RebootCluster">>, Input, Options).
@@ -7371,7 +7485,7 @@ reboot_cluster(Client, Input, Options)
 -spec reject_data_share(map(), reject_data_share_message()) ->
     {ok, data_share(), tuple()} |
     {error, any()} |
-    {error, invalid_data_share_fault(), tuple()}.
+    {error, reject_data_share_errors(), tuple()}.
 reject_data_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     reject_data_share(Client, Input, []).
@@ -7379,7 +7493,7 @@ reject_data_share(Client, Input)
 -spec reject_data_share(map(), reject_data_share_message(), proplists:proplist()) ->
     {ok, data_share(), tuple()} |
     {error, any()} |
-    {error, invalid_data_share_fault(), tuple()}.
+    {error, reject_data_share_errors(), tuple()}.
 reject_data_share(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RejectDataShare">>, Input, Options).
@@ -7396,8 +7510,7 @@ reject_data_share(Client, Input, Options)
 -spec reset_cluster_parameter_group(map(), reset_cluster_parameter_group_message()) ->
     {ok, cluster_parameter_group_name_message(), tuple()} |
     {error, any()} |
-    {error, cluster_parameter_group_not_found_fault(), tuple()} |
-    {error, invalid_cluster_parameter_group_state_fault(), tuple()}.
+    {error, reset_cluster_parameter_group_errors(), tuple()}.
 reset_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_cluster_parameter_group(Client, Input, []).
@@ -7405,8 +7518,7 @@ reset_cluster_parameter_group(Client, Input)
 -spec reset_cluster_parameter_group(map(), reset_cluster_parameter_group_message(), proplists:proplist()) ->
     {ok, cluster_parameter_group_name_message(), tuple()} |
     {error, any()} |
-    {error, cluster_parameter_group_not_found_fault(), tuple()} |
-    {error, invalid_cluster_parameter_group_state_fault(), tuple()}.
+    {error, reset_cluster_parameter_group_errors(), tuple()}.
 reset_cluster_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResetClusterParameterGroup">>, Input, Options).
@@ -7447,21 +7559,7 @@ reset_cluster_parameter_group(Client, Input, Options)
 -spec resize_cluster(map(), resize_cluster_message()) ->
     {ok, resize_cluster_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, dependent_service_unavailable_fault(), tuple()} |
-    {error, insufficient_cluster_capacity_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_reserved_node_state_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, number_of_nodes_per_cluster_limit_exceeded_fault(), tuple()} |
-    {error, number_of_nodes_quota_exceeded_fault(), tuple()} |
-    {error, reserved_node_already_exists_fault(), tuple()} |
-    {error, reserved_node_already_migrated_fault(), tuple()} |
-    {error, reserved_node_not_found_fault(), tuple()} |
-    {error, reserved_node_offering_not_found_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()} |
-    {error, unsupported_option_fault(), tuple()}.
+    {error, resize_cluster_errors(), tuple()}.
 resize_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     resize_cluster(Client, Input, []).
@@ -7469,21 +7567,7 @@ resize_cluster(Client, Input)
 -spec resize_cluster(map(), resize_cluster_message(), proplists:proplist()) ->
     {ok, resize_cluster_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, dependent_service_unavailable_fault(), tuple()} |
-    {error, insufficient_cluster_capacity_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_reserved_node_state_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, number_of_nodes_per_cluster_limit_exceeded_fault(), tuple()} |
-    {error, number_of_nodes_quota_exceeded_fault(), tuple()} |
-    {error, reserved_node_already_exists_fault(), tuple()} |
-    {error, reserved_node_already_migrated_fault(), tuple()} |
-    {error, reserved_node_not_found_fault(), tuple()} |
-    {error, reserved_node_offering_not_found_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()} |
-    {error, unsupported_option_fault(), tuple()}.
+    {error, resize_cluster_errors(), tuple()}.
 resize_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResizeCluster">>, Input, Options).
@@ -7513,39 +7597,7 @@ resize_cluster(Client, Input, Options)
 -spec restore_from_cluster_snapshot(map(), restore_from_cluster_snapshot_message()) ->
     {ok, restore_from_cluster_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_to_snapshot_denied_fault(), tuple()} |
-    {error, cluster_already_exists_fault(), tuple()} |
-    {error, cluster_parameter_group_not_found_fault(), tuple()} |
-    {error, cluster_quota_exceeded_fault(), tuple()} |
-    {error, cluster_security_group_not_found_fault(), tuple()} |
-    {error, cluster_snapshot_not_found_fault(), tuple()} |
-    {error, cluster_subnet_group_not_found_fault(), tuple()} |
-    {error, dependent_service_request_throttling_fault(), tuple()} |
-    {error, dependent_service_unavailable_fault(), tuple()} |
-    {error, hsm_client_certificate_not_found_fault(), tuple()} |
-    {error, hsm_configuration_not_found_fault(), tuple()} |
-    {error, insufficient_cluster_capacity_fault(), tuple()} |
-    {error, invalid_cluster_snapshot_state_fault(), tuple()} |
-    {error, invalid_cluster_subnet_group_state_fault(), tuple()} |
-    {error, invalid_cluster_track_fault(), tuple()} |
-    {error, invalid_elastic_ip_fault(), tuple()} |
-    {error, invalid_reserved_node_state_fault(), tuple()} |
-    {error, invalid_restore_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, ipv6_cidr_block_not_found_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, number_of_nodes_per_cluster_limit_exceeded_fault(), tuple()} |
-    {error, number_of_nodes_quota_exceeded_fault(), tuple()} |
-    {error, reserved_node_already_exists_fault(), tuple()} |
-    {error, reserved_node_already_migrated_fault(), tuple()} |
-    {error, reserved_node_not_found_fault(), tuple()} |
-    {error, reserved_node_offering_not_found_fault(), tuple()} |
-    {error, snapshot_schedule_not_found_fault(), tuple()} |
-    {error, tag_limit_exceeded_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, restore_from_cluster_snapshot_errors(), tuple()}.
 restore_from_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_from_cluster_snapshot(Client, Input, []).
@@ -7553,39 +7605,7 @@ restore_from_cluster_snapshot(Client, Input)
 -spec restore_from_cluster_snapshot(map(), restore_from_cluster_snapshot_message(), proplists:proplist()) ->
     {ok, restore_from_cluster_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, access_to_snapshot_denied_fault(), tuple()} |
-    {error, cluster_already_exists_fault(), tuple()} |
-    {error, cluster_parameter_group_not_found_fault(), tuple()} |
-    {error, cluster_quota_exceeded_fault(), tuple()} |
-    {error, cluster_security_group_not_found_fault(), tuple()} |
-    {error, cluster_snapshot_not_found_fault(), tuple()} |
-    {error, cluster_subnet_group_not_found_fault(), tuple()} |
-    {error, dependent_service_request_throttling_fault(), tuple()} |
-    {error, dependent_service_unavailable_fault(), tuple()} |
-    {error, hsm_client_certificate_not_found_fault(), tuple()} |
-    {error, hsm_configuration_not_found_fault(), tuple()} |
-    {error, insufficient_cluster_capacity_fault(), tuple()} |
-    {error, invalid_cluster_snapshot_state_fault(), tuple()} |
-    {error, invalid_cluster_subnet_group_state_fault(), tuple()} |
-    {error, invalid_cluster_track_fault(), tuple()} |
-    {error, invalid_elastic_ip_fault(), tuple()} |
-    {error, invalid_reserved_node_state_fault(), tuple()} |
-    {error, invalid_restore_fault(), tuple()} |
-    {error, invalid_subnet(), tuple()} |
-    {error, invalid_tag_fault(), tuple()} |
-    {error, invalid_vpc_network_state_fault(), tuple()} |
-    {error, ipv6_cidr_block_not_found_fault(), tuple()} |
-    {error, limit_exceeded_fault(), tuple()} |
-    {error, number_of_nodes_per_cluster_limit_exceeded_fault(), tuple()} |
-    {error, number_of_nodes_quota_exceeded_fault(), tuple()} |
-    {error, reserved_node_already_exists_fault(), tuple()} |
-    {error, reserved_node_already_migrated_fault(), tuple()} |
-    {error, reserved_node_not_found_fault(), tuple()} |
-    {error, reserved_node_offering_not_found_fault(), tuple()} |
-    {error, snapshot_schedule_not_found_fault(), tuple()} |
-    {error, tag_limit_exceeded_fault(), tuple()} |
-    {error, unauthorized_operation(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, restore_from_cluster_snapshot_errors(), tuple()}.
 restore_from_cluster_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreFromClusterSnapshot">>, Input, Options).
@@ -7620,13 +7640,7 @@ restore_from_cluster_snapshot(Client, Input, Options)
 -spec restore_table_from_cluster_snapshot(map(), restore_table_from_cluster_snapshot_message()) ->
     {ok, restore_table_from_cluster_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, cluster_snapshot_not_found_fault(), tuple()} |
-    {error, in_progress_table_restore_quota_exceeded_fault(), tuple()} |
-    {error, invalid_cluster_snapshot_state_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_table_restore_argument_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, restore_table_from_cluster_snapshot_errors(), tuple()}.
 restore_table_from_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_table_from_cluster_snapshot(Client, Input, []).
@@ -7634,13 +7648,7 @@ restore_table_from_cluster_snapshot(Client, Input)
 -spec restore_table_from_cluster_snapshot(map(), restore_table_from_cluster_snapshot_message(), proplists:proplist()) ->
     {ok, restore_table_from_cluster_snapshot_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, cluster_snapshot_not_found_fault(), tuple()} |
-    {error, in_progress_table_restore_quota_exceeded_fault(), tuple()} |
-    {error, invalid_cluster_snapshot_state_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_table_restore_argument_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, restore_table_from_cluster_snapshot_errors(), tuple()}.
 restore_table_from_cluster_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreTableFromClusterSnapshot">>, Input, Options).
@@ -7649,10 +7657,7 @@ restore_table_from_cluster_snapshot(Client, Input, Options)
 -spec resume_cluster(map(), resume_cluster_message()) ->
     {ok, resume_cluster_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, insufficient_cluster_capacity_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, resume_cluster_errors(), tuple()}.
 resume_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     resume_cluster(Client, Input, []).
@@ -7660,10 +7665,7 @@ resume_cluster(Client, Input)
 -spec resume_cluster(map(), resume_cluster_message(), proplists:proplist()) ->
     {ok, resume_cluster_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, insufficient_cluster_capacity_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, resume_cluster_errors(), tuple()}.
 resume_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResumeCluster">>, Input, Options).
@@ -7681,9 +7683,7 @@ resume_cluster(Client, Input, Options)
 -spec revoke_cluster_security_group_ingress(map(), revoke_cluster_security_group_ingress_message()) ->
     {ok, revoke_cluster_security_group_ingress_result(), tuple()} |
     {error, any()} |
-    {error, authorization_not_found_fault(), tuple()} |
-    {error, cluster_security_group_not_found_fault(), tuple()} |
-    {error, invalid_cluster_security_group_state_fault(), tuple()}.
+    {error, revoke_cluster_security_group_ingress_errors(), tuple()}.
 revoke_cluster_security_group_ingress(Client, Input)
   when is_map(Client), is_map(Input) ->
     revoke_cluster_security_group_ingress(Client, Input, []).
@@ -7691,9 +7691,7 @@ revoke_cluster_security_group_ingress(Client, Input)
 -spec revoke_cluster_security_group_ingress(map(), revoke_cluster_security_group_ingress_message(), proplists:proplist()) ->
     {ok, revoke_cluster_security_group_ingress_result(), tuple()} |
     {error, any()} |
-    {error, authorization_not_found_fault(), tuple()} |
-    {error, cluster_security_group_not_found_fault(), tuple()} |
-    {error, invalid_cluster_security_group_state_fault(), tuple()}.
+    {error, revoke_cluster_security_group_ingress_errors(), tuple()}.
 revoke_cluster_security_group_ingress(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RevokeClusterSecurityGroupIngress">>, Input, Options).
@@ -7702,13 +7700,7 @@ revoke_cluster_security_group_ingress(Client, Input, Options)
 -spec revoke_endpoint_access(map(), revoke_endpoint_access_message()) ->
     {ok, endpoint_authorization(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, endpoint_authorization_not_found_fault(), tuple()} |
-    {error, endpoint_not_found_fault(), tuple()} |
-    {error, invalid_authorization_state_fault(), tuple()} |
-    {error, invalid_cluster_security_group_state_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_endpoint_state_fault(), tuple()}.
+    {error, revoke_endpoint_access_errors(), tuple()}.
 revoke_endpoint_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     revoke_endpoint_access(Client, Input, []).
@@ -7716,13 +7708,7 @@ revoke_endpoint_access(Client, Input)
 -spec revoke_endpoint_access(map(), revoke_endpoint_access_message(), proplists:proplist()) ->
     {ok, endpoint_authorization(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, endpoint_authorization_not_found_fault(), tuple()} |
-    {error, endpoint_not_found_fault(), tuple()} |
-    {error, invalid_authorization_state_fault(), tuple()} |
-    {error, invalid_cluster_security_group_state_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, invalid_endpoint_state_fault(), tuple()}.
+    {error, revoke_endpoint_access_errors(), tuple()}.
 revoke_endpoint_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RevokeEndpointAccess">>, Input, Options).
@@ -7742,10 +7728,7 @@ revoke_endpoint_access(Client, Input, Options)
 -spec revoke_snapshot_access(map(), revoke_snapshot_access_message()) ->
     {ok, revoke_snapshot_access_result(), tuple()} |
     {error, any()} |
-    {error, access_to_snapshot_denied_fault(), tuple()} |
-    {error, authorization_not_found_fault(), tuple()} |
-    {error, cluster_snapshot_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, revoke_snapshot_access_errors(), tuple()}.
 revoke_snapshot_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     revoke_snapshot_access(Client, Input, []).
@@ -7753,10 +7736,7 @@ revoke_snapshot_access(Client, Input)
 -spec revoke_snapshot_access(map(), revoke_snapshot_access_message(), proplists:proplist()) ->
     {ok, revoke_snapshot_access_result(), tuple()} |
     {error, any()} |
-    {error, access_to_snapshot_denied_fault(), tuple()} |
-    {error, authorization_not_found_fault(), tuple()} |
-    {error, cluster_snapshot_not_found_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, revoke_snapshot_access_errors(), tuple()}.
 revoke_snapshot_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RevokeSnapshotAccess">>, Input, Options).
@@ -7765,10 +7745,7 @@ revoke_snapshot_access(Client, Input, Options)
 -spec rotate_encryption_key(map(), rotate_encryption_key_message()) ->
     {ok, rotate_encryption_key_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, dependent_service_request_throttling_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, rotate_encryption_key_errors(), tuple()}.
 rotate_encryption_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     rotate_encryption_key(Client, Input, []).
@@ -7776,10 +7753,7 @@ rotate_encryption_key(Client, Input)
 -spec rotate_encryption_key(map(), rotate_encryption_key_message(), proplists:proplist()) ->
     {ok, rotate_encryption_key_result(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, dependent_service_request_throttling_fault(), tuple()} |
-    {error, invalid_cluster_state_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, rotate_encryption_key_errors(), tuple()}.
 rotate_encryption_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RotateEncryptionKey">>, Input, Options).
@@ -7788,10 +7762,7 @@ rotate_encryption_key(Client, Input, Options)
 -spec update_partner_status(map(), update_partner_status_input_message()) ->
     {ok, partner_integration_output_message(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, partner_not_found_fault(), tuple()} |
-    {error, unauthorized_partner_integration_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, update_partner_status_errors(), tuple()}.
 update_partner_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_partner_status(Client, Input, []).
@@ -7799,10 +7770,7 @@ update_partner_status(Client, Input)
 -spec update_partner_status(map(), update_partner_status_input_message(), proplists:proplist()) ->
     {ok, partner_integration_output_message(), tuple()} |
     {error, any()} |
-    {error, cluster_not_found_fault(), tuple()} |
-    {error, partner_not_found_fault(), tuple()} |
-    {error, unauthorized_partner_integration_fault(), tuple()} |
-    {error, unsupported_operation_fault(), tuple()}.
+    {error, update_partner_status_errors(), tuple()}.
 update_partner_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePartnerStatus">>, Input, Options).

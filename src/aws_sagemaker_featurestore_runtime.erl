@@ -44,6 +44,7 @@
 %% }
 -type access_forbidden() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_record_error() :: #{
 %%   <<"ErrorCode">> => string(),
@@ -53,6 +54,7 @@
 %% }
 -type batch_get_record_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_record_identifier() :: #{
 %%   <<"FeatureGroupName">> => string(),
@@ -61,12 +63,14 @@
 %% }
 -type batch_get_record_identifier() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_record_request() :: #{
 %%   <<"ExpirationTimeResponse">> => list(any()),
 %%   <<"Identifiers">> := list(batch_get_record_identifier()())
 %% }
 -type batch_get_record_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_get_record_response() :: #{
@@ -75,6 +79,7 @@
 %%   <<"UnprocessedIdentifiers">> => list(batch_get_record_identifier()())
 %% }
 -type batch_get_record_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_get_record_result_detail() :: #{
@@ -85,6 +90,7 @@
 %% }
 -type batch_get_record_result_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_record_request() :: #{
 %%   <<"DeletionMode">> => list(any()),
@@ -94,6 +100,7 @@
 %% }
 -type delete_record_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% feature_value() :: #{
 %%   <<"FeatureName">> => string(),
@@ -101,6 +108,7 @@
 %%   <<"ValueAsStringList">> => list(string()())
 %% }
 -type feature_value() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_record_request() :: #{
@@ -110,6 +118,7 @@
 %% }
 -type get_record_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_record_response() :: #{
 %%   <<"ExpiresAt">> => string(),
@@ -117,11 +126,13 @@
 %% }
 -type get_record_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_failure() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_failure() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_record_request() :: #{
@@ -131,17 +142,20 @@
 %% }
 -type put_record_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found() :: #{
 %%   <<"Message">> => string()
 %% }
 -type resource_not_found() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_unavailable() :: #{
 %%   <<"Message">> => string()
 %% }
 -type service_unavailable() :: #{binary() => any()}.
+
 
 %% Example:
 %% ttl_duration() :: #{
@@ -150,11 +164,37 @@
 %% }
 -type ttl_duration() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_error() :: #{
 %%   <<"Message">> => string()
 %% }
 -type validation_error() :: #{binary() => any()}.
+
+-type batch_get_record_errors() ::
+    validation_error() | 
+    service_unavailable() | 
+    internal_failure() | 
+    access_forbidden().
+
+-type delete_record_errors() ::
+    validation_error() | 
+    service_unavailable() | 
+    internal_failure() | 
+    access_forbidden().
+
+-type get_record_errors() ::
+    validation_error() | 
+    service_unavailable() | 
+    resource_not_found() | 
+    internal_failure() | 
+    access_forbidden().
+
+-type put_record_errors() ::
+    validation_error() | 
+    service_unavailable() | 
+    internal_failure() | 
+    access_forbidden().
 
 %%====================================================================
 %% API
@@ -164,20 +204,14 @@
 -spec batch_get_record(map(), batch_get_record_request()) ->
     {ok, batch_get_record_response(), tuple()} |
     {error, any()} |
-    {error, access_forbidden(), tuple()} |
-    {error, internal_failure(), tuple()} |
-    {error, service_unavailable(), tuple()} |
-    {error, validation_error(), tuple()}.
+    {error, batch_get_record_errors(), tuple()}.
 batch_get_record(Client, Input) ->
     batch_get_record(Client, Input, []).
 
 -spec batch_get_record(map(), batch_get_record_request(), proplists:proplist()) ->
     {ok, batch_get_record_response(), tuple()} |
     {error, any()} |
-    {error, access_forbidden(), tuple()} |
-    {error, internal_failure(), tuple()} |
-    {error, service_unavailable(), tuple()} |
-    {error, validation_error(), tuple()}.
+    {error, batch_get_record_errors(), tuple()}.
 batch_get_record(Client, Input0, Options0) ->
     Method = post,
     Path = ["/BatchGetRecord"],
@@ -246,20 +280,14 @@ batch_get_record(Client, Input0, Options0) ->
 -spec delete_record(map(), binary() | list(), delete_record_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_forbidden(), tuple()} |
-    {error, internal_failure(), tuple()} |
-    {error, service_unavailable(), tuple()} |
-    {error, validation_error(), tuple()}.
+    {error, delete_record_errors(), tuple()}.
 delete_record(Client, FeatureGroupName, Input) ->
     delete_record(Client, FeatureGroupName, Input, []).
 
 -spec delete_record(map(), binary() | list(), delete_record_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_forbidden(), tuple()} |
-    {error, internal_failure(), tuple()} |
-    {error, service_unavailable(), tuple()} |
-    {error, validation_error(), tuple()}.
+    {error, delete_record_errors(), tuple()}.
 delete_record(Client, FeatureGroupName, Input0, Options0) ->
     Method = delete,
     Path = ["/FeatureGroup/", aws_util:encode_uri(FeatureGroupName), ""],
@@ -295,11 +323,7 @@ delete_record(Client, FeatureGroupName, Input0, Options0) ->
 -spec get_record(map(), binary() | list(), binary() | list()) ->
     {ok, get_record_response(), tuple()} |
     {error, any()} |
-    {error, access_forbidden(), tuple()} |
-    {error, internal_failure(), tuple()} |
-    {error, resource_not_found(), tuple()} |
-    {error, service_unavailable(), tuple()} |
-    {error, validation_error(), tuple()}.
+    {error, get_record_errors(), tuple()}.
 get_record(Client, FeatureGroupName, RecordIdentifierValueAsString)
   when is_map(Client) ->
     get_record(Client, FeatureGroupName, RecordIdentifierValueAsString, #{}, #{}).
@@ -307,11 +331,7 @@ get_record(Client, FeatureGroupName, RecordIdentifierValueAsString)
 -spec get_record(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_record_response(), tuple()} |
     {error, any()} |
-    {error, access_forbidden(), tuple()} |
-    {error, internal_failure(), tuple()} |
-    {error, resource_not_found(), tuple()} |
-    {error, service_unavailable(), tuple()} |
-    {error, validation_error(), tuple()}.
+    {error, get_record_errors(), tuple()}.
 get_record(Client, FeatureGroupName, RecordIdentifierValueAsString, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_record(Client, FeatureGroupName, RecordIdentifierValueAsString, QueryMap, HeadersMap, []).
@@ -319,11 +339,7 @@ get_record(Client, FeatureGroupName, RecordIdentifierValueAsString, QueryMap, He
 -spec get_record(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_record_response(), tuple()} |
     {error, any()} |
-    {error, access_forbidden(), tuple()} |
-    {error, internal_failure(), tuple()} |
-    {error, resource_not_found(), tuple()} |
-    {error, service_unavailable(), tuple()} |
-    {error, validation_error(), tuple()}.
+    {error, get_record_errors(), tuple()}.
 get_record(Client, FeatureGroupName, RecordIdentifierValueAsString, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/FeatureGroup/", aws_util:encode_uri(FeatureGroupName), ""],
@@ -373,20 +389,14 @@ get_record(Client, FeatureGroupName, RecordIdentifierValueAsString, QueryMap, He
 -spec put_record(map(), binary() | list(), put_record_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_forbidden(), tuple()} |
-    {error, internal_failure(), tuple()} |
-    {error, service_unavailable(), tuple()} |
-    {error, validation_error(), tuple()}.
+    {error, put_record_errors(), tuple()}.
 put_record(Client, FeatureGroupName, Input) ->
     put_record(Client, FeatureGroupName, Input, []).
 
 -spec put_record(map(), binary() | list(), put_record_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_forbidden(), tuple()} |
-    {error, internal_failure(), tuple()} |
-    {error, service_unavailable(), tuple()} |
-    {error, validation_error(), tuple()}.
+    {error, put_record_errors(), tuple()}.
 put_record(Client, FeatureGroupName, Input0, Options0) ->
     Method = put,
     Path = ["/FeatureGroup/", aws_util:encode_uri(FeatureGroupName), ""],

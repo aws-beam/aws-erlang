@@ -1354,6 +1354,213 @@
 %% }
 -type describe_state_machine_output() :: #{binary() => any()}.
 
+-type create_activity_errors() ::
+    too_many_tags() | 
+    invalid_name() | 
+    activity_limit_exceeded().
+
+-type create_state_machine_errors() ::
+    invalid_arn() | 
+    too_many_tags() | 
+    state_machine_deleting() | 
+    invalid_logging_configuration() | 
+    validation_exception() | 
+    invalid_name() | 
+    invalid_definition() | 
+    state_machine_limit_exceeded() | 
+    conflict_exception() | 
+    state_machine_already_exists() | 
+    invalid_tracing_configuration() | 
+    state_machine_type_not_supported().
+
+-type create_state_machine_alias_errors() ::
+    invalid_arn() | 
+    state_machine_deleting() | 
+    validation_exception() | 
+    invalid_name() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception() | 
+    resource_not_found().
+
+-type delete_activity_errors() ::
+    invalid_arn().
+
+-type delete_state_machine_errors() ::
+    invalid_arn() | 
+    validation_exception().
+
+-type delete_state_machine_alias_errors() ::
+    invalid_arn() | 
+    validation_exception() | 
+    conflict_exception() | 
+    resource_not_found().
+
+-type delete_state_machine_version_errors() ::
+    invalid_arn() | 
+    validation_exception() | 
+    conflict_exception().
+
+-type describe_activity_errors() ::
+    invalid_arn() | 
+    activity_does_not_exist().
+
+-type describe_execution_errors() ::
+    invalid_arn() | 
+    execution_does_not_exist().
+
+-type describe_map_run_errors() ::
+    invalid_arn() | 
+    resource_not_found().
+
+-type describe_state_machine_errors() ::
+    invalid_arn() | 
+    state_machine_does_not_exist().
+
+-type describe_state_machine_alias_errors() ::
+    invalid_arn() | 
+    validation_exception() | 
+    resource_not_found().
+
+-type describe_state_machine_for_execution_errors() ::
+    invalid_arn() | 
+    execution_does_not_exist().
+
+-type get_activity_task_errors() ::
+    invalid_arn() | 
+    activity_does_not_exist() | 
+    activity_worker_limit_exceeded().
+
+-type get_execution_history_errors() ::
+    invalid_arn() | 
+    invalid_token() | 
+    execution_does_not_exist().
+
+-type list_activities_errors() ::
+    invalid_token().
+
+-type list_executions_errors() ::
+    invalid_arn() | 
+    validation_exception() | 
+    state_machine_does_not_exist() | 
+    invalid_token() | 
+    state_machine_type_not_supported() | 
+    resource_not_found().
+
+-type list_map_runs_errors() ::
+    invalid_arn() | 
+    invalid_token() | 
+    execution_does_not_exist().
+
+-type list_state_machine_aliases_errors() ::
+    invalid_arn() | 
+    state_machine_deleting() | 
+    state_machine_does_not_exist() | 
+    invalid_token() | 
+    resource_not_found().
+
+-type list_state_machine_versions_errors() ::
+    invalid_arn() | 
+    validation_exception() | 
+    invalid_token().
+
+-type list_state_machines_errors() ::
+    invalid_token().
+
+-type list_tags_for_resource_errors() ::
+    invalid_arn() | 
+    resource_not_found().
+
+-type publish_state_machine_version_errors() ::
+    invalid_arn() | 
+    state_machine_deleting() | 
+    validation_exception() | 
+    state_machine_does_not_exist() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type redrive_execution_errors() ::
+    invalid_arn() | 
+    execution_limit_exceeded() | 
+    execution_not_redrivable() | 
+    execution_does_not_exist().
+
+-type send_task_failure_errors() ::
+    task_does_not_exist() | 
+    task_timed_out() | 
+    invalid_token().
+
+-type send_task_heartbeat_errors() ::
+    task_does_not_exist() | 
+    task_timed_out() | 
+    invalid_token().
+
+-type send_task_success_errors() ::
+    task_does_not_exist() | 
+    task_timed_out() | 
+    invalid_token() | 
+    invalid_output().
+
+-type start_execution_errors() ::
+    invalid_arn() | 
+    invalid_execution_input() | 
+    state_machine_deleting() | 
+    validation_exception() | 
+    invalid_name() | 
+    execution_already_exists() | 
+    state_machine_does_not_exist() | 
+    execution_limit_exceeded().
+
+-type start_sync_execution_errors() ::
+    invalid_arn() | 
+    invalid_execution_input() | 
+    state_machine_deleting() | 
+    invalid_name() | 
+    state_machine_does_not_exist() | 
+    state_machine_type_not_supported().
+
+-type stop_execution_errors() ::
+    invalid_arn() | 
+    validation_exception() | 
+    execution_does_not_exist().
+
+-type tag_resource_errors() ::
+    invalid_arn() | 
+    too_many_tags() | 
+    resource_not_found().
+
+-type test_state_errors() ::
+    invalid_arn() | 
+    invalid_execution_input() | 
+    validation_exception() | 
+    invalid_definition().
+
+-type untag_resource_errors() ::
+    invalid_arn() | 
+    resource_not_found().
+
+-type update_map_run_errors() ::
+    invalid_arn() | 
+    validation_exception() | 
+    resource_not_found().
+
+-type update_state_machine_errors() ::
+    invalid_arn() | 
+    state_machine_deleting() | 
+    invalid_logging_configuration() | 
+    validation_exception() | 
+    invalid_definition() | 
+    state_machine_does_not_exist() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception() | 
+    invalid_tracing_configuration() | 
+    missing_required_parameter().
+
+-type update_state_machine_alias_errors() ::
+    invalid_arn() | 
+    state_machine_deleting() | 
+    validation_exception() | 
+    conflict_exception() | 
+    resource_not_found().
 
 %%====================================================================
 %% API
@@ -1386,9 +1593,7 @@
 -spec create_activity(map(), create_activity_input()) ->
     {ok, create_activity_output(), tuple()} |
     {error, any()} |
-    {error, activity_limit_exceeded(), tuple()} |
-    {error, invalid_name(), tuple()} |
-    {error, too_many_tags(), tuple()}.
+    {error, create_activity_errors(), tuple()}.
 create_activity(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_activity(Client, Input, []).
@@ -1396,9 +1601,7 @@ create_activity(Client, Input)
 -spec create_activity(map(), create_activity_input(), proplists:proplist()) ->
     {ok, create_activity_output(), tuple()} |
     {error, any()} |
-    {error, activity_limit_exceeded(), tuple()} |
-    {error, invalid_name(), tuple()} |
-    {error, too_many_tags(), tuple()}.
+    {error, create_activity_errors(), tuple()}.
 create_activity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateActivity">>, Input, Options).
@@ -1440,18 +1643,7 @@ create_activity(Client, Input, Options)
 -spec create_state_machine(map(), create_state_machine_input()) ->
     {ok, create_state_machine_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_arn(), tuple()} |
-    {error, invalid_definition(), tuple()} |
-    {error, invalid_logging_configuration(), tuple()} |
-    {error, invalid_name(), tuple()} |
-    {error, invalid_tracing_configuration(), tuple()} |
-    {error, state_machine_already_exists(), tuple()} |
-    {error, state_machine_deleting(), tuple()} |
-    {error, state_machine_limit_exceeded(), tuple()} |
-    {error, state_machine_type_not_supported(), tuple()} |
-    {error, too_many_tags(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_state_machine_errors(), tuple()}.
 create_state_machine(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_state_machine(Client, Input, []).
@@ -1459,18 +1651,7 @@ create_state_machine(Client, Input)
 -spec create_state_machine(map(), create_state_machine_input(), proplists:proplist()) ->
     {ok, create_state_machine_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_arn(), tuple()} |
-    {error, invalid_definition(), tuple()} |
-    {error, invalid_logging_configuration(), tuple()} |
-    {error, invalid_name(), tuple()} |
-    {error, invalid_tracing_configuration(), tuple()} |
-    {error, state_machine_already_exists(), tuple()} |
-    {error, state_machine_deleting(), tuple()} |
-    {error, state_machine_limit_exceeded(), tuple()} |
-    {error, state_machine_type_not_supported(), tuple()} |
-    {error, too_many_tags(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_state_machine_errors(), tuple()}.
 create_state_machine(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStateMachine">>, Input, Options).
@@ -1524,13 +1705,7 @@ create_state_machine(Client, Input, Options)
 -spec create_state_machine_alias(map(), create_state_machine_alias_input()) ->
     {ok, create_state_machine_alias_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_arn(), tuple()} |
-    {error, invalid_name(), tuple()} |
-    {error, resource_not_found(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, state_machine_deleting(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_state_machine_alias_errors(), tuple()}.
 create_state_machine_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_state_machine_alias(Client, Input, []).
@@ -1538,13 +1713,7 @@ create_state_machine_alias(Client, Input)
 -spec create_state_machine_alias(map(), create_state_machine_alias_input(), proplists:proplist()) ->
     {ok, create_state_machine_alias_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_arn(), tuple()} |
-    {error, invalid_name(), tuple()} |
-    {error, resource_not_found(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, state_machine_deleting(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_state_machine_alias_errors(), tuple()}.
 create_state_machine_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStateMachineAlias">>, Input, Options).
@@ -1553,7 +1722,7 @@ create_state_machine_alias(Client, Input, Options)
 -spec delete_activity(map(), delete_activity_input()) ->
     {ok, delete_activity_output(), tuple()} |
     {error, any()} |
-    {error, invalid_arn(), tuple()}.
+    {error, delete_activity_errors(), tuple()}.
 delete_activity(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_activity(Client, Input, []).
@@ -1561,7 +1730,7 @@ delete_activity(Client, Input)
 -spec delete_activity(map(), delete_activity_input(), proplists:proplist()) ->
     {ok, delete_activity_output(), tuple()} |
     {error, any()} |
-    {error, invalid_arn(), tuple()}.
+    {error, delete_activity_errors(), tuple()}.
 delete_activity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteActivity">>, Input, Options).
@@ -1607,8 +1776,7 @@ delete_activity(Client, Input, Options)
 -spec delete_state_machine(map(), delete_state_machine_input()) ->
     {ok, delete_state_machine_output(), tuple()} |
     {error, any()} |
-    {error, invalid_arn(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_state_machine_errors(), tuple()}.
 delete_state_machine(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_state_machine(Client, Input, []).
@@ -1616,8 +1784,7 @@ delete_state_machine(Client, Input)
 -spec delete_state_machine(map(), delete_state_machine_input(), proplists:proplist()) ->
     {ok, delete_state_machine_output(), tuple()} |
     {error, any()} |
-    {error, invalid_arn(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_state_machine_errors(), tuple()}.
 delete_state_machine(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteStateMachine">>, Input, Options).
@@ -1643,10 +1810,7 @@ delete_state_machine(Client, Input, Options)
 -spec delete_state_machine_alias(map(), delete_state_machine_alias_input()) ->
     {ok, delete_state_machine_alias_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_arn(), tuple()} |
-    {error, resource_not_found(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_state_machine_alias_errors(), tuple()}.
 delete_state_machine_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_state_machine_alias(Client, Input, []).
@@ -1654,10 +1818,7 @@ delete_state_machine_alias(Client, Input)
 -spec delete_state_machine_alias(map(), delete_state_machine_alias_input(), proplists:proplist()) ->
     {ok, delete_state_machine_alias_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_arn(), tuple()} |
-    {error, resource_not_found(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_state_machine_alias_errors(), tuple()}.
 delete_state_machine_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteStateMachineAlias">>, Input, Options).
@@ -1688,9 +1849,7 @@ delete_state_machine_alias(Client, Input, Options)
 -spec delete_state_machine_version(map(), delete_state_machine_version_input()) ->
     {ok, delete_state_machine_version_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_arn(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_state_machine_version_errors(), tuple()}.
 delete_state_machine_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_state_machine_version(Client, Input, []).
@@ -1698,9 +1857,7 @@ delete_state_machine_version(Client, Input)
 -spec delete_state_machine_version(map(), delete_state_machine_version_input(), proplists:proplist()) ->
     {ok, delete_state_machine_version_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_arn(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_state_machine_version_errors(), tuple()}.
 delete_state_machine_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteStateMachineVersion">>, Input, Options).
@@ -1712,8 +1869,7 @@ delete_state_machine_version(Client, Input, Options)
 -spec describe_activity(map(), describe_activity_input()) ->
     {ok, describe_activity_output(), tuple()} |
     {error, any()} |
-    {error, activity_does_not_exist(), tuple()} |
-    {error, invalid_arn(), tuple()}.
+    {error, describe_activity_errors(), tuple()}.
 describe_activity(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_activity(Client, Input, []).
@@ -1721,8 +1877,7 @@ describe_activity(Client, Input)
 -spec describe_activity(map(), describe_activity_input(), proplists:proplist()) ->
     {ok, describe_activity_output(), tuple()} |
     {error, any()} |
-    {error, activity_does_not_exist(), tuple()} |
-    {error, invalid_arn(), tuple()}.
+    {error, describe_activity_errors(), tuple()}.
 describe_activity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeActivity">>, Input, Options).
@@ -1750,8 +1905,7 @@ describe_activity(Client, Input, Options)
 -spec describe_execution(map(), describe_execution_input()) ->
     {ok, describe_execution_output(), tuple()} |
     {error, any()} |
-    {error, execution_does_not_exist(), tuple()} |
-    {error, invalid_arn(), tuple()}.
+    {error, describe_execution_errors(), tuple()}.
 describe_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_execution(Client, Input, []).
@@ -1759,8 +1913,7 @@ describe_execution(Client, Input)
 -spec describe_execution(map(), describe_execution_input(), proplists:proplist()) ->
     {ok, describe_execution_output(), tuple()} |
     {error, any()} |
-    {error, execution_does_not_exist(), tuple()} |
-    {error, invalid_arn(), tuple()}.
+    {error, describe_execution_errors(), tuple()}.
 describe_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeExecution">>, Input, Options).
@@ -1777,8 +1930,7 @@ describe_execution(Client, Input, Options)
 -spec describe_map_run(map(), describe_map_run_input()) ->
     {ok, describe_map_run_output(), tuple()} |
     {error, any()} |
-    {error, invalid_arn(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_map_run_errors(), tuple()}.
 describe_map_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_map_run(Client, Input, []).
@@ -1786,8 +1938,7 @@ describe_map_run(Client, Input)
 -spec describe_map_run(map(), describe_map_run_input(), proplists:proplist()) ->
     {ok, describe_map_run_output(), tuple()} |
     {error, any()} |
-    {error, invalid_arn(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_map_run_errors(), tuple()}.
 describe_map_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMapRun">>, Input, Options).
@@ -1831,8 +1982,7 @@ describe_map_run(Client, Input, Options)
 -spec describe_state_machine(map(), describe_state_machine_input()) ->
     {ok, describe_state_machine_output(), tuple()} |
     {error, any()} |
-    {error, invalid_arn(), tuple()} |
-    {error, state_machine_does_not_exist(), tuple()}.
+    {error, describe_state_machine_errors(), tuple()}.
 describe_state_machine(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_state_machine(Client, Input, []).
@@ -1840,8 +1990,7 @@ describe_state_machine(Client, Input)
 -spec describe_state_machine(map(), describe_state_machine_input(), proplists:proplist()) ->
     {ok, describe_state_machine_output(), tuple()} |
     {error, any()} |
-    {error, invalid_arn(), tuple()} |
-    {error, state_machine_does_not_exist(), tuple()}.
+    {error, describe_state_machine_errors(), tuple()}.
 describe_state_machine(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStateMachine">>, Input, Options).
@@ -1861,9 +2010,7 @@ describe_state_machine(Client, Input, Options)
 -spec describe_state_machine_alias(map(), describe_state_machine_alias_input()) ->
     {ok, describe_state_machine_alias_output(), tuple()} |
     {error, any()} |
-    {error, invalid_arn(), tuple()} |
-    {error, resource_not_found(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_state_machine_alias_errors(), tuple()}.
 describe_state_machine_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_state_machine_alias(Client, Input, []).
@@ -1871,9 +2018,7 @@ describe_state_machine_alias(Client, Input)
 -spec describe_state_machine_alias(map(), describe_state_machine_alias_input(), proplists:proplist()) ->
     {ok, describe_state_machine_alias_output(), tuple()} |
     {error, any()} |
-    {error, invalid_arn(), tuple()} |
-    {error, resource_not_found(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_state_machine_alias_errors(), tuple()}.
 describe_state_machine_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStateMachineAlias">>, Input, Options).
@@ -1895,8 +2040,7 @@ describe_state_machine_alias(Client, Input, Options)
 -spec describe_state_machine_for_execution(map(), describe_state_machine_for_execution_input()) ->
     {ok, describe_state_machine_for_execution_output(), tuple()} |
     {error, any()} |
-    {error, execution_does_not_exist(), tuple()} |
-    {error, invalid_arn(), tuple()}.
+    {error, describe_state_machine_for_execution_errors(), tuple()}.
 describe_state_machine_for_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_state_machine_for_execution(Client, Input, []).
@@ -1904,8 +2048,7 @@ describe_state_machine_for_execution(Client, Input)
 -spec describe_state_machine_for_execution(map(), describe_state_machine_for_execution_input(), proplists:proplist()) ->
     {ok, describe_state_machine_for_execution_output(), tuple()} |
     {error, any()} |
-    {error, execution_does_not_exist(), tuple()} |
-    {error, invalid_arn(), tuple()}.
+    {error, describe_state_machine_for_execution_errors(), tuple()}.
 describe_state_machine_for_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStateMachineForExecution">>, Input, Options).
@@ -1938,9 +2081,7 @@ describe_state_machine_for_execution(Client, Input, Options)
 -spec get_activity_task(map(), get_activity_task_input()) ->
     {ok, get_activity_task_output(), tuple()} |
     {error, any()} |
-    {error, activity_does_not_exist(), tuple()} |
-    {error, activity_worker_limit_exceeded(), tuple()} |
-    {error, invalid_arn(), tuple()}.
+    {error, get_activity_task_errors(), tuple()}.
 get_activity_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_activity_task(Client, Input, []).
@@ -1948,9 +2089,7 @@ get_activity_task(Client, Input)
 -spec get_activity_task(map(), get_activity_task_input(), proplists:proplist()) ->
     {ok, get_activity_task_output(), tuple()} |
     {error, any()} |
-    {error, activity_does_not_exist(), tuple()} |
-    {error, activity_worker_limit_exceeded(), tuple()} |
-    {error, invalid_arn(), tuple()}.
+    {error, get_activity_task_errors(), tuple()}.
 get_activity_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetActivityTask">>, Input, Options).
@@ -1973,9 +2112,7 @@ get_activity_task(Client, Input, Options)
 -spec get_execution_history(map(), get_execution_history_input()) ->
     {ok, get_execution_history_output(), tuple()} |
     {error, any()} |
-    {error, execution_does_not_exist(), tuple()} |
-    {error, invalid_arn(), tuple()} |
-    {error, invalid_token(), tuple()}.
+    {error, get_execution_history_errors(), tuple()}.
 get_execution_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_execution_history(Client, Input, []).
@@ -1983,9 +2120,7 @@ get_execution_history(Client, Input)
 -spec get_execution_history(map(), get_execution_history_input(), proplists:proplist()) ->
     {ok, get_execution_history_output(), tuple()} |
     {error, any()} |
-    {error, execution_does_not_exist(), tuple()} |
-    {error, invalid_arn(), tuple()} |
-    {error, invalid_token(), tuple()}.
+    {error, get_execution_history_errors(), tuple()}.
 get_execution_history(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetExecutionHistory">>, Input, Options).
@@ -2004,7 +2139,7 @@ get_execution_history(Client, Input, Options)
 -spec list_activities(map(), list_activities_input()) ->
     {ok, list_activities_output(), tuple()} |
     {error, any()} |
-    {error, invalid_token(), tuple()}.
+    {error, list_activities_errors(), tuple()}.
 list_activities(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_activities(Client, Input, []).
@@ -2012,7 +2147,7 @@ list_activities(Client, Input)
 -spec list_activities(map(), list_activities_input(), proplists:proplist()) ->
     {ok, list_activities_output(), tuple()} |
     {error, any()} |
-    {error, invalid_token(), tuple()}.
+    {error, list_activities_errors(), tuple()}.
 list_activities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListActivities">>, Input, Options).
@@ -2049,12 +2184,7 @@ list_activities(Client, Input, Options)
 -spec list_executions(map(), list_executions_input()) ->
     {ok, list_executions_output(), tuple()} |
     {error, any()} |
-    {error, invalid_arn(), tuple()} |
-    {error, invalid_token(), tuple()} |
-    {error, resource_not_found(), tuple()} |
-    {error, state_machine_does_not_exist(), tuple()} |
-    {error, state_machine_type_not_supported(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_executions_errors(), tuple()}.
 list_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_executions(Client, Input, []).
@@ -2062,12 +2192,7 @@ list_executions(Client, Input)
 -spec list_executions(map(), list_executions_input(), proplists:proplist()) ->
     {ok, list_executions_output(), tuple()} |
     {error, any()} |
-    {error, invalid_arn(), tuple()} |
-    {error, invalid_token(), tuple()} |
-    {error, resource_not_found(), tuple()} |
-    {error, state_machine_does_not_exist(), tuple()} |
-    {error, state_machine_type_not_supported(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_executions_errors(), tuple()}.
 list_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListExecutions">>, Input, Options).
@@ -2080,9 +2205,7 @@ list_executions(Client, Input, Options)
 -spec list_map_runs(map(), list_map_runs_input()) ->
     {ok, list_map_runs_output(), tuple()} |
     {error, any()} |
-    {error, execution_does_not_exist(), tuple()} |
-    {error, invalid_arn(), tuple()} |
-    {error, invalid_token(), tuple()}.
+    {error, list_map_runs_errors(), tuple()}.
 list_map_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_map_runs(Client, Input, []).
@@ -2090,9 +2213,7 @@ list_map_runs(Client, Input)
 -spec list_map_runs(map(), list_map_runs_input(), proplists:proplist()) ->
     {ok, list_map_runs_output(), tuple()} |
     {error, any()} |
-    {error, execution_does_not_exist(), tuple()} |
-    {error, invalid_arn(), tuple()} |
-    {error, invalid_token(), tuple()}.
+    {error, list_map_runs_errors(), tuple()}.
 list_map_runs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMapRuns">>, Input, Options).
@@ -2127,11 +2248,7 @@ list_map_runs(Client, Input, Options)
 -spec list_state_machine_aliases(map(), list_state_machine_aliases_input()) ->
     {ok, list_state_machine_aliases_output(), tuple()} |
     {error, any()} |
-    {error, invalid_arn(), tuple()} |
-    {error, invalid_token(), tuple()} |
-    {error, resource_not_found(), tuple()} |
-    {error, state_machine_deleting(), tuple()} |
-    {error, state_machine_does_not_exist(), tuple()}.
+    {error, list_state_machine_aliases_errors(), tuple()}.
 list_state_machine_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_state_machine_aliases(Client, Input, []).
@@ -2139,11 +2256,7 @@ list_state_machine_aliases(Client, Input)
 -spec list_state_machine_aliases(map(), list_state_machine_aliases_input(), proplists:proplist()) ->
     {ok, list_state_machine_aliases_output(), tuple()} |
     {error, any()} |
-    {error, invalid_arn(), tuple()} |
-    {error, invalid_token(), tuple()} |
-    {error, resource_not_found(), tuple()} |
-    {error, state_machine_deleting(), tuple()} |
-    {error, state_machine_does_not_exist(), tuple()}.
+    {error, list_state_machine_aliases_errors(), tuple()}.
 list_state_machine_aliases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStateMachineAliases">>, Input, Options).
@@ -2169,9 +2282,7 @@ list_state_machine_aliases(Client, Input, Options)
 -spec list_state_machine_versions(map(), list_state_machine_versions_input()) ->
     {ok, list_state_machine_versions_output(), tuple()} |
     {error, any()} |
-    {error, invalid_arn(), tuple()} |
-    {error, invalid_token(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_state_machine_versions_errors(), tuple()}.
 list_state_machine_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_state_machine_versions(Client, Input, []).
@@ -2179,9 +2290,7 @@ list_state_machine_versions(Client, Input)
 -spec list_state_machine_versions(map(), list_state_machine_versions_input(), proplists:proplist()) ->
     {ok, list_state_machine_versions_output(), tuple()} |
     {error, any()} |
-    {error, invalid_arn(), tuple()} |
-    {error, invalid_token(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_state_machine_versions_errors(), tuple()}.
 list_state_machine_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStateMachineVersions">>, Input, Options).
@@ -2200,7 +2309,7 @@ list_state_machine_versions(Client, Input, Options)
 -spec list_state_machines(map(), list_state_machines_input()) ->
     {ok, list_state_machines_output(), tuple()} |
     {error, any()} |
-    {error, invalid_token(), tuple()}.
+    {error, list_state_machines_errors(), tuple()}.
 list_state_machines(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_state_machines(Client, Input, []).
@@ -2208,7 +2317,7 @@ list_state_machines(Client, Input)
 -spec list_state_machines(map(), list_state_machines_input(), proplists:proplist()) ->
     {ok, list_state_machines_output(), tuple()} |
     {error, any()} |
-    {error, invalid_token(), tuple()}.
+    {error, list_state_machines_errors(), tuple()}.
 list_state_machines(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStateMachines">>, Input, Options).
@@ -2220,8 +2329,7 @@ list_state_machines(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, invalid_arn(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -2229,8 +2337,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_input(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, invalid_arn(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -2269,12 +2376,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec publish_state_machine_version(map(), publish_state_machine_version_input()) ->
     {ok, publish_state_machine_version_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_arn(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, state_machine_deleting(), tuple()} |
-    {error, state_machine_does_not_exist(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, publish_state_machine_version_errors(), tuple()}.
 publish_state_machine_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     publish_state_machine_version(Client, Input, []).
@@ -2282,12 +2384,7 @@ publish_state_machine_version(Client, Input)
 -spec publish_state_machine_version(map(), publish_state_machine_version_input(), proplists:proplist()) ->
     {ok, publish_state_machine_version_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_arn(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, state_machine_deleting(), tuple()} |
-    {error, state_machine_does_not_exist(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, publish_state_machine_version_errors(), tuple()}.
 publish_state_machine_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PublishStateMachineVersion">>, Input, Options).
@@ -2350,10 +2447,7 @@ publish_state_machine_version(Client, Input, Options)
 -spec redrive_execution(map(), redrive_execution_input()) ->
     {ok, redrive_execution_output(), tuple()} |
     {error, any()} |
-    {error, execution_does_not_exist(), tuple()} |
-    {error, execution_limit_exceeded(), tuple()} |
-    {error, execution_not_redrivable(), tuple()} |
-    {error, invalid_arn(), tuple()}.
+    {error, redrive_execution_errors(), tuple()}.
 redrive_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     redrive_execution(Client, Input, []).
@@ -2361,10 +2455,7 @@ redrive_execution(Client, Input)
 -spec redrive_execution(map(), redrive_execution_input(), proplists:proplist()) ->
     {ok, redrive_execution_output(), tuple()} |
     {error, any()} |
-    {error, execution_does_not_exist(), tuple()} |
-    {error, execution_limit_exceeded(), tuple()} |
-    {error, execution_not_redrivable(), tuple()} |
-    {error, invalid_arn(), tuple()}.
+    {error, redrive_execution_errors(), tuple()}.
 redrive_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RedriveExecution">>, Input, Options).
@@ -2377,9 +2468,7 @@ redrive_execution(Client, Input, Options)
 -spec send_task_failure(map(), send_task_failure_input()) ->
     {ok, send_task_failure_output(), tuple()} |
     {error, any()} |
-    {error, invalid_token(), tuple()} |
-    {error, task_does_not_exist(), tuple()} |
-    {error, task_timed_out(), tuple()}.
+    {error, send_task_failure_errors(), tuple()}.
 send_task_failure(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_task_failure(Client, Input, []).
@@ -2387,9 +2476,7 @@ send_task_failure(Client, Input)
 -spec send_task_failure(map(), send_task_failure_input(), proplists:proplist()) ->
     {ok, send_task_failure_output(), tuple()} |
     {error, any()} |
-    {error, invalid_token(), tuple()} |
-    {error, task_does_not_exist(), tuple()} |
-    {error, task_timed_out(), tuple()}.
+    {error, send_task_failure_errors(), tuple()}.
 send_task_failure(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendTaskFailure">>, Input, Options).
@@ -2426,9 +2513,7 @@ send_task_failure(Client, Input, Options)
 -spec send_task_heartbeat(map(), send_task_heartbeat_input()) ->
     {ok, send_task_heartbeat_output(), tuple()} |
     {error, any()} |
-    {error, invalid_token(), tuple()} |
-    {error, task_does_not_exist(), tuple()} |
-    {error, task_timed_out(), tuple()}.
+    {error, send_task_heartbeat_errors(), tuple()}.
 send_task_heartbeat(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_task_heartbeat(Client, Input, []).
@@ -2436,9 +2521,7 @@ send_task_heartbeat(Client, Input)
 -spec send_task_heartbeat(map(), send_task_heartbeat_input(), proplists:proplist()) ->
     {ok, send_task_heartbeat_output(), tuple()} |
     {error, any()} |
-    {error, invalid_token(), tuple()} |
-    {error, task_does_not_exist(), tuple()} |
-    {error, task_timed_out(), tuple()}.
+    {error, send_task_heartbeat_errors(), tuple()}.
 send_task_heartbeat(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendTaskHeartbeat">>, Input, Options).
@@ -2453,10 +2536,7 @@ send_task_heartbeat(Client, Input, Options)
 -spec send_task_success(map(), send_task_success_input()) ->
     {ok, send_task_success_output(), tuple()} |
     {error, any()} |
-    {error, invalid_output(), tuple()} |
-    {error, invalid_token(), tuple()} |
-    {error, task_does_not_exist(), tuple()} |
-    {error, task_timed_out(), tuple()}.
+    {error, send_task_success_errors(), tuple()}.
 send_task_success(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_task_success(Client, Input, []).
@@ -2464,10 +2544,7 @@ send_task_success(Client, Input)
 -spec send_task_success(map(), send_task_success_input(), proplists:proplist()) ->
     {ok, send_task_success_output(), tuple()} |
     {error, any()} |
-    {error, invalid_output(), tuple()} |
-    {error, invalid_token(), tuple()} |
-    {error, task_does_not_exist(), tuple()} |
-    {error, task_timed_out(), tuple()}.
+    {error, send_task_success_errors(), tuple()}.
 send_task_success(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendTaskSuccess">>, Input, Options).
@@ -2525,14 +2602,7 @@ send_task_success(Client, Input, Options)
 -spec start_execution(map(), start_execution_input()) ->
     {ok, start_execution_output(), tuple()} |
     {error, any()} |
-    {error, execution_already_exists(), tuple()} |
-    {error, execution_limit_exceeded(), tuple()} |
-    {error, invalid_arn(), tuple()} |
-    {error, invalid_execution_input(), tuple()} |
-    {error, invalid_name(), tuple()} |
-    {error, state_machine_deleting(), tuple()} |
-    {error, state_machine_does_not_exist(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_execution_errors(), tuple()}.
 start_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_execution(Client, Input, []).
@@ -2540,14 +2610,7 @@ start_execution(Client, Input)
 -spec start_execution(map(), start_execution_input(), proplists:proplist()) ->
     {ok, start_execution_output(), tuple()} |
     {error, any()} |
-    {error, execution_already_exists(), tuple()} |
-    {error, execution_limit_exceeded(), tuple()} |
-    {error, invalid_arn(), tuple()} |
-    {error, invalid_execution_input(), tuple()} |
-    {error, invalid_name(), tuple()} |
-    {error, state_machine_deleting(), tuple()} |
-    {error, state_machine_does_not_exist(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_execution_errors(), tuple()}.
 start_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartExecution">>, Input, Options).
@@ -2570,12 +2633,7 @@ start_execution(Client, Input, Options)
 -spec start_sync_execution(map(), start_sync_execution_input()) ->
     {ok, start_sync_execution_output(), tuple()} |
     {error, any()} |
-    {error, invalid_arn(), tuple()} |
-    {error, invalid_execution_input(), tuple()} |
-    {error, invalid_name(), tuple()} |
-    {error, state_machine_deleting(), tuple()} |
-    {error, state_machine_does_not_exist(), tuple()} |
-    {error, state_machine_type_not_supported(), tuple()}.
+    {error, start_sync_execution_errors(), tuple()}.
 start_sync_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_sync_execution(Client, Input, []).
@@ -2583,12 +2641,7 @@ start_sync_execution(Client, Input)
 -spec start_sync_execution(map(), start_sync_execution_input(), proplists:proplist()) ->
     {ok, start_sync_execution_output(), tuple()} |
     {error, any()} |
-    {error, invalid_arn(), tuple()} |
-    {error, invalid_execution_input(), tuple()} |
-    {error, invalid_name(), tuple()} |
-    {error, state_machine_deleting(), tuple()} |
-    {error, state_machine_does_not_exist(), tuple()} |
-    {error, state_machine_type_not_supported(), tuple()}.
+    {error, start_sync_execution_errors(), tuple()}.
 start_sync_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartSyncExecution">>, Input, Options).
@@ -2599,9 +2652,7 @@ start_sync_execution(Client, Input, Options)
 -spec stop_execution(map(), stop_execution_input()) ->
     {ok, stop_execution_output(), tuple()} |
     {error, any()} |
-    {error, execution_does_not_exist(), tuple()} |
-    {error, invalid_arn(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_execution_errors(), tuple()}.
 stop_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_execution(Client, Input, []).
@@ -2609,9 +2660,7 @@ stop_execution(Client, Input)
 -spec stop_execution(map(), stop_execution_input(), proplists:proplist()) ->
     {ok, stop_execution_output(), tuple()} |
     {error, any()} |
-    {error, execution_does_not_exist(), tuple()} |
-    {error, invalid_arn(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_execution_errors(), tuple()}.
 stop_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopExecution">>, Input, Options).
@@ -2631,9 +2680,7 @@ stop_execution(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, invalid_arn(), tuple()} |
-    {error, resource_not_found(), tuple()} |
-    {error, too_many_tags(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -2641,9 +2688,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, invalid_arn(), tuple()} |
-    {error, resource_not_found(), tuple()} |
-    {error, too_many_tags(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -2711,10 +2756,7 @@ tag_resource(Client, Input, Options)
 -spec test_state(map(), test_state_input()) ->
     {ok, test_state_output(), tuple()} |
     {error, any()} |
-    {error, invalid_arn(), tuple()} |
-    {error, invalid_definition(), tuple()} |
-    {error, invalid_execution_input(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, test_state_errors(), tuple()}.
 test_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_state(Client, Input, []).
@@ -2722,10 +2764,7 @@ test_state(Client, Input)
 -spec test_state(map(), test_state_input(), proplists:proplist()) ->
     {ok, test_state_output(), tuple()} |
     {error, any()} |
-    {error, invalid_arn(), tuple()} |
-    {error, invalid_definition(), tuple()} |
-    {error, invalid_execution_input(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, test_state_errors(), tuple()}.
 test_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TestState">>, Input, Options).
@@ -2734,8 +2773,7 @@ test_state(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, invalid_arn(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -2743,8 +2781,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, invalid_arn(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -2754,9 +2791,7 @@ untag_resource(Client, Input, Options)
 -spec update_map_run(map(), update_map_run_input()) ->
     {ok, update_map_run_output(), tuple()} |
     {error, any()} |
-    {error, invalid_arn(), tuple()} |
-    {error, resource_not_found(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_map_run_errors(), tuple()}.
 update_map_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_map_run(Client, Input, []).
@@ -2764,9 +2799,7 @@ update_map_run(Client, Input)
 -spec update_map_run(map(), update_map_run_input(), proplists:proplist()) ->
     {ok, update_map_run_output(), tuple()} |
     {error, any()} |
-    {error, invalid_arn(), tuple()} |
-    {error, resource_not_found(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_map_run_errors(), tuple()}.
 update_map_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMapRun">>, Input, Options).
@@ -2832,16 +2865,7 @@ update_map_run(Client, Input, Options)
 -spec update_state_machine(map(), update_state_machine_input()) ->
     {ok, update_state_machine_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_arn(), tuple()} |
-    {error, invalid_definition(), tuple()} |
-    {error, invalid_logging_configuration(), tuple()} |
-    {error, invalid_tracing_configuration(), tuple()} |
-    {error, missing_required_parameter(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, state_machine_deleting(), tuple()} |
-    {error, state_machine_does_not_exist(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_state_machine_errors(), tuple()}.
 update_state_machine(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_state_machine(Client, Input, []).
@@ -2849,16 +2873,7 @@ update_state_machine(Client, Input)
 -spec update_state_machine(map(), update_state_machine_input(), proplists:proplist()) ->
     {ok, update_state_machine_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_arn(), tuple()} |
-    {error, invalid_definition(), tuple()} |
-    {error, invalid_logging_configuration(), tuple()} |
-    {error, invalid_tracing_configuration(), tuple()} |
-    {error, missing_required_parameter(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, state_machine_deleting(), tuple()} |
-    {error, state_machine_does_not_exist(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_state_machine_errors(), tuple()}.
 update_state_machine(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateStateMachine">>, Input, Options).
@@ -2896,11 +2911,7 @@ update_state_machine(Client, Input, Options)
 -spec update_state_machine_alias(map(), update_state_machine_alias_input()) ->
     {ok, update_state_machine_alias_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_arn(), tuple()} |
-    {error, resource_not_found(), tuple()} |
-    {error, state_machine_deleting(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_state_machine_alias_errors(), tuple()}.
 update_state_machine_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_state_machine_alias(Client, Input, []).
@@ -2908,11 +2919,7 @@ update_state_machine_alias(Client, Input)
 -spec update_state_machine_alias(map(), update_state_machine_alias_input(), proplists:proplist()) ->
     {ok, update_state_machine_alias_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_arn(), tuple()} |
-    {error, resource_not_found(), tuple()} |
-    {error, state_machine_deleting(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_state_machine_alias_errors(), tuple()}.
 update_state_machine_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateStateMachineAlias">>, Input, Options).

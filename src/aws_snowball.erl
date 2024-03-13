@@ -850,6 +850,119 @@
 %% }
 -type target_on_device_service() :: #{binary() => any()}.
 
+-type cancel_cluster_errors() ::
+    invalid_job_state_exception() | 
+    invalid_resource_exception() | 
+    kms_request_failed_exception().
+
+-type cancel_job_errors() ::
+    invalid_job_state_exception() | 
+    invalid_resource_exception() | 
+    kms_request_failed_exception().
+
+-type create_address_errors() ::
+    unsupported_address_exception() | 
+    invalid_address_exception().
+
+-type create_cluster_errors() ::
+    ec2_request_failed_exception() | 
+    invalid_resource_exception() | 
+    kms_request_failed_exception() | 
+    invalid_input_combination_exception().
+
+-type create_job_errors() ::
+    ec2_request_failed_exception() | 
+    invalid_resource_exception() | 
+    kms_request_failed_exception() | 
+    cluster_limit_exceeded_exception() | 
+    invalid_input_combination_exception().
+
+-type create_long_term_pricing_errors() ::
+    invalid_resource_exception().
+
+-type create_return_shipping_label_errors() ::
+    invalid_job_state_exception() | 
+    return_shipping_label_already_exists_exception() | 
+    invalid_resource_exception() | 
+    conflict_exception() | 
+    invalid_input_combination_exception().
+
+-type describe_address_errors() ::
+    invalid_resource_exception().
+
+-type describe_addresses_errors() ::
+    invalid_resource_exception() | 
+    invalid_next_token_exception().
+
+-type describe_cluster_errors() ::
+    invalid_resource_exception().
+
+-type describe_job_errors() ::
+    invalid_resource_exception().
+
+-type describe_return_shipping_label_errors() ::
+    invalid_job_state_exception() | 
+    invalid_resource_exception() | 
+    conflict_exception().
+
+-type get_job_manifest_errors() ::
+    invalid_job_state_exception() | 
+    invalid_resource_exception().
+
+-type get_job_unlock_code_errors() ::
+    invalid_job_state_exception() | 
+    invalid_resource_exception().
+
+-type get_software_updates_errors() ::
+    invalid_job_state_exception() | 
+    invalid_resource_exception().
+
+-type list_cluster_jobs_errors() ::
+    invalid_resource_exception() | 
+    invalid_next_token_exception().
+
+-type list_clusters_errors() ::
+    invalid_next_token_exception().
+
+-type list_compatible_images_errors() ::
+    ec2_request_failed_exception() | 
+    invalid_next_token_exception().
+
+-type list_jobs_errors() ::
+    invalid_next_token_exception().
+
+-type list_long_term_pricing_errors() ::
+    invalid_resource_exception() | 
+    invalid_next_token_exception().
+
+-type list_pickup_locations_errors() ::
+    invalid_resource_exception().
+
+-type list_service_versions_errors() ::
+    invalid_resource_exception() | 
+    invalid_next_token_exception().
+
+-type update_cluster_errors() ::
+    invalid_job_state_exception() | 
+    ec2_request_failed_exception() | 
+    invalid_resource_exception() | 
+    kms_request_failed_exception() | 
+    invalid_input_combination_exception().
+
+-type update_job_errors() ::
+    invalid_job_state_exception() | 
+    ec2_request_failed_exception() | 
+    invalid_resource_exception() | 
+    kms_request_failed_exception() | 
+    cluster_limit_exceeded_exception() | 
+    invalid_input_combination_exception().
+
+-type update_job_shipment_state_errors() ::
+    invalid_job_state_exception() | 
+    invalid_resource_exception().
+
+-type update_long_term_pricing_errors() ::
+    invalid_resource_exception().
 
 %%====================================================================
 %% API
@@ -864,9 +977,7 @@
 -spec cancel_cluster(map(), cancel_cluster_request()) ->
     {ok, cancel_cluster_result(), tuple()} |
     {error, any()} |
-    {error, invalid_job_state_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()} |
-    {error, kms_request_failed_exception(), tuple()}.
+    {error, cancel_cluster_errors(), tuple()}.
 cancel_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_cluster(Client, Input, []).
@@ -874,9 +985,7 @@ cancel_cluster(Client, Input)
 -spec cancel_cluster(map(), cancel_cluster_request(), proplists:proplist()) ->
     {ok, cancel_cluster_result(), tuple()} |
     {error, any()} |
-    {error, invalid_job_state_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()} |
-    {error, kms_request_failed_exception(), tuple()}.
+    {error, cancel_cluster_errors(), tuple()}.
 cancel_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelCluster">>, Input, Options).
@@ -891,9 +1000,7 @@ cancel_cluster(Client, Input, Options)
 -spec cancel_job(map(), cancel_job_request()) ->
     {ok, cancel_job_result(), tuple()} |
     {error, any()} |
-    {error, invalid_job_state_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()} |
-    {error, kms_request_failed_exception(), tuple()}.
+    {error, cancel_job_errors(), tuple()}.
 cancel_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_job(Client, Input, []).
@@ -901,9 +1008,7 @@ cancel_job(Client, Input)
 -spec cancel_job(map(), cancel_job_request(), proplists:proplist()) ->
     {ok, cancel_job_result(), tuple()} |
     {error, any()} |
-    {error, invalid_job_state_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()} |
-    {error, kms_request_failed_exception(), tuple()}.
+    {error, cancel_job_errors(), tuple()}.
 cancel_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelJob">>, Input, Options).
@@ -921,8 +1026,7 @@ cancel_job(Client, Input, Options)
 -spec create_address(map(), create_address_request()) ->
     {ok, create_address_result(), tuple()} |
     {error, any()} |
-    {error, invalid_address_exception(), tuple()} |
-    {error, unsupported_address_exception(), tuple()}.
+    {error, create_address_errors(), tuple()}.
 create_address(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_address(Client, Input, []).
@@ -930,8 +1034,7 @@ create_address(Client, Input)
 -spec create_address(map(), create_address_request(), proplists:proplist()) ->
     {ok, create_address_result(), tuple()} |
     {error, any()} |
-    {error, invalid_address_exception(), tuple()} |
-    {error, unsupported_address_exception(), tuple()}.
+    {error, create_address_errors(), tuple()}.
 create_address(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAddress">>, Input, Options).
@@ -944,10 +1047,7 @@ create_address(Client, Input, Options)
 -spec create_cluster(map(), create_cluster_request()) ->
     {ok, create_cluster_result(), tuple()} |
     {error, any()} |
-    {error, ec2_request_failed_exception(), tuple()} |
-    {error, invalid_input_combination_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()} |
-    {error, kms_request_failed_exception(), tuple()}.
+    {error, create_cluster_errors(), tuple()}.
 create_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cluster(Client, Input, []).
@@ -955,10 +1055,7 @@ create_cluster(Client, Input)
 -spec create_cluster(map(), create_cluster_request(), proplists:proplist()) ->
     {ok, create_cluster_result(), tuple()} |
     {error, any()} |
-    {error, ec2_request_failed_exception(), tuple()} |
-    {error, invalid_input_combination_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()} |
-    {error, kms_request_failed_exception(), tuple()}.
+    {error, create_cluster_errors(), tuple()}.
 create_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCluster">>, Input, Options).
@@ -1057,11 +1154,7 @@ create_cluster(Client, Input, Options)
 -spec create_job(map(), create_job_request()) ->
     {ok, create_job_result(), tuple()} |
     {error, any()} |
-    {error, cluster_limit_exceeded_exception(), tuple()} |
-    {error, ec2_request_failed_exception(), tuple()} |
-    {error, invalid_input_combination_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()} |
-    {error, kms_request_failed_exception(), tuple()}.
+    {error, create_job_errors(), tuple()}.
 create_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_job(Client, Input, []).
@@ -1069,11 +1162,7 @@ create_job(Client, Input)
 -spec create_job(map(), create_job_request(), proplists:proplist()) ->
     {ok, create_job_result(), tuple()} |
     {error, any()} |
-    {error, cluster_limit_exceeded_exception(), tuple()} |
-    {error, ec2_request_failed_exception(), tuple()} |
-    {error, invalid_input_combination_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()} |
-    {error, kms_request_failed_exception(), tuple()}.
+    {error, create_job_errors(), tuple()}.
 create_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateJob">>, Input, Options).
@@ -1086,7 +1175,7 @@ create_job(Client, Input, Options)
 -spec create_long_term_pricing(map(), create_long_term_pricing_request()) ->
     {ok, create_long_term_pricing_result(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_exception(), tuple()}.
+    {error, create_long_term_pricing_errors(), tuple()}.
 create_long_term_pricing(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_long_term_pricing(Client, Input, []).
@@ -1094,7 +1183,7 @@ create_long_term_pricing(Client, Input)
 -spec create_long_term_pricing(map(), create_long_term_pricing_request(), proplists:proplist()) ->
     {ok, create_long_term_pricing_result(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_exception(), tuple()}.
+    {error, create_long_term_pricing_errors(), tuple()}.
 create_long_term_pricing(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLongTermPricing">>, Input, Options).
@@ -1104,11 +1193,7 @@ create_long_term_pricing(Client, Input, Options)
 -spec create_return_shipping_label(map(), create_return_shipping_label_request()) ->
     {ok, create_return_shipping_label_result(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_input_combination_exception(), tuple()} |
-    {error, invalid_job_state_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()} |
-    {error, return_shipping_label_already_exists_exception(), tuple()}.
+    {error, create_return_shipping_label_errors(), tuple()}.
 create_return_shipping_label(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_return_shipping_label(Client, Input, []).
@@ -1116,11 +1201,7 @@ create_return_shipping_label(Client, Input)
 -spec create_return_shipping_label(map(), create_return_shipping_label_request(), proplists:proplist()) ->
     {ok, create_return_shipping_label_result(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_input_combination_exception(), tuple()} |
-    {error, invalid_job_state_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()} |
-    {error, return_shipping_label_already_exists_exception(), tuple()}.
+    {error, create_return_shipping_label_errors(), tuple()}.
 create_return_shipping_label(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateReturnShippingLabel">>, Input, Options).
@@ -1131,7 +1212,7 @@ create_return_shipping_label(Client, Input, Options)
 -spec describe_address(map(), describe_address_request()) ->
     {ok, describe_address_result(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_exception(), tuple()}.
+    {error, describe_address_errors(), tuple()}.
 describe_address(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_address(Client, Input, []).
@@ -1139,7 +1220,7 @@ describe_address(Client, Input)
 -spec describe_address(map(), describe_address_request(), proplists:proplist()) ->
     {ok, describe_address_result(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_exception(), tuple()}.
+    {error, describe_address_errors(), tuple()}.
 describe_address(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAddress">>, Input, Options).
@@ -1153,8 +1234,7 @@ describe_address(Client, Input, Options)
 -spec describe_addresses(map(), describe_addresses_request()) ->
     {ok, describe_addresses_result(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()}.
+    {error, describe_addresses_errors(), tuple()}.
 describe_addresses(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_addresses(Client, Input, []).
@@ -1162,8 +1242,7 @@ describe_addresses(Client, Input)
 -spec describe_addresses(map(), describe_addresses_request(), proplists:proplist()) ->
     {ok, describe_addresses_result(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()}.
+    {error, describe_addresses_errors(), tuple()}.
 describe_addresses(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAddresses">>, Input, Options).
@@ -1174,7 +1253,7 @@ describe_addresses(Client, Input, Options)
 -spec describe_cluster(map(), describe_cluster_request()) ->
     {ok, describe_cluster_result(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_exception(), tuple()}.
+    {error, describe_cluster_errors(), tuple()}.
 describe_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cluster(Client, Input, []).
@@ -1182,7 +1261,7 @@ describe_cluster(Client, Input)
 -spec describe_cluster(map(), describe_cluster_request(), proplists:proplist()) ->
     {ok, describe_cluster_result(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_exception(), tuple()}.
+    {error, describe_cluster_errors(), tuple()}.
 describe_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCluster">>, Input, Options).
@@ -1193,7 +1272,7 @@ describe_cluster(Client, Input, Options)
 -spec describe_job(map(), describe_job_request()) ->
     {ok, describe_job_result(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_exception(), tuple()}.
+    {error, describe_job_errors(), tuple()}.
 describe_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_job(Client, Input, []).
@@ -1201,7 +1280,7 @@ describe_job(Client, Input)
 -spec describe_job(map(), describe_job_request(), proplists:proplist()) ->
     {ok, describe_job_result(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_exception(), tuple()}.
+    {error, describe_job_errors(), tuple()}.
 describe_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeJob">>, Input, Options).
@@ -1211,9 +1290,7 @@ describe_job(Client, Input, Options)
 -spec describe_return_shipping_label(map(), describe_return_shipping_label_request()) ->
     {ok, describe_return_shipping_label_result(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_job_state_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()}.
+    {error, describe_return_shipping_label_errors(), tuple()}.
 describe_return_shipping_label(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_return_shipping_label(Client, Input, []).
@@ -1221,9 +1298,7 @@ describe_return_shipping_label(Client, Input)
 -spec describe_return_shipping_label(map(), describe_return_shipping_label_request(), proplists:proplist()) ->
     {ok, describe_return_shipping_label_result(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_job_state_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()}.
+    {error, describe_return_shipping_label_errors(), tuple()}.
 describe_return_shipping_label(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReturnShippingLabel">>, Input, Options).
@@ -1262,8 +1337,7 @@ describe_return_shipping_label(Client, Input, Options)
 -spec get_job_manifest(map(), get_job_manifest_request()) ->
     {ok, get_job_manifest_result(), tuple()} |
     {error, any()} |
-    {error, invalid_job_state_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()}.
+    {error, get_job_manifest_errors(), tuple()}.
 get_job_manifest(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_job_manifest(Client, Input, []).
@@ -1271,8 +1345,7 @@ get_job_manifest(Client, Input)
 -spec get_job_manifest(map(), get_job_manifest_request(), proplists:proplist()) ->
     {ok, get_job_manifest_result(), tuple()} |
     {error, any()} |
-    {error, invalid_job_state_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()}.
+    {error, get_job_manifest_errors(), tuple()}.
 get_job_manifest(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetJobManifest">>, Input, Options).
@@ -1303,8 +1376,7 @@ get_job_manifest(Client, Input, Options)
 -spec get_job_unlock_code(map(), get_job_unlock_code_request()) ->
     {ok, get_job_unlock_code_result(), tuple()} |
     {error, any()} |
-    {error, invalid_job_state_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()}.
+    {error, get_job_unlock_code_errors(), tuple()}.
 get_job_unlock_code(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_job_unlock_code(Client, Input, []).
@@ -1312,8 +1384,7 @@ get_job_unlock_code(Client, Input)
 -spec get_job_unlock_code(map(), get_job_unlock_code_request(), proplists:proplist()) ->
     {ok, get_job_unlock_code_result(), tuple()} |
     {error, any()} |
-    {error, invalid_job_state_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()}.
+    {error, get_job_unlock_code_errors(), tuple()}.
 get_job_unlock_code(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetJobUnlockCode">>, Input, Options).
@@ -1346,8 +1417,7 @@ get_snowball_usage(Client, Input, Options)
 -spec get_software_updates(map(), get_software_updates_request()) ->
     {ok, get_software_updates_result(), tuple()} |
     {error, any()} |
-    {error, invalid_job_state_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()}.
+    {error, get_software_updates_errors(), tuple()}.
 get_software_updates(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_software_updates(Client, Input, []).
@@ -1355,8 +1425,7 @@ get_software_updates(Client, Input)
 -spec get_software_updates(map(), get_software_updates_request(), proplists:proplist()) ->
     {ok, get_software_updates_result(), tuple()} |
     {error, any()} |
-    {error, invalid_job_state_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()}.
+    {error, get_software_updates_errors(), tuple()}.
 get_software_updates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSoftwareUpdates">>, Input, Options).
@@ -1371,8 +1440,7 @@ get_software_updates(Client, Input, Options)
 -spec list_cluster_jobs(map(), list_cluster_jobs_request()) ->
     {ok, list_cluster_jobs_result(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()}.
+    {error, list_cluster_jobs_errors(), tuple()}.
 list_cluster_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_cluster_jobs(Client, Input, []).
@@ -1380,8 +1448,7 @@ list_cluster_jobs(Client, Input)
 -spec list_cluster_jobs(map(), list_cluster_jobs_request(), proplists:proplist()) ->
     {ok, list_cluster_jobs_result(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()}.
+    {error, list_cluster_jobs_errors(), tuple()}.
 list_cluster_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListClusterJobs">>, Input, Options).
@@ -1396,7 +1463,7 @@ list_cluster_jobs(Client, Input, Options)
 -spec list_clusters(map(), list_clusters_request()) ->
     {ok, list_clusters_result(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_clusters_errors(), tuple()}.
 list_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_clusters(Client, Input, []).
@@ -1404,7 +1471,7 @@ list_clusters(Client, Input)
 -spec list_clusters(map(), list_clusters_request(), proplists:proplist()) ->
     {ok, list_clusters_result(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_clusters_errors(), tuple()}.
 list_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListClusters">>, Input, Options).
@@ -1423,8 +1490,7 @@ list_clusters(Client, Input, Options)
 -spec list_compatible_images(map(), list_compatible_images_request()) ->
     {ok, list_compatible_images_result(), tuple()} |
     {error, any()} |
-    {error, ec2_request_failed_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_compatible_images_errors(), tuple()}.
 list_compatible_images(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_compatible_images(Client, Input, []).
@@ -1432,8 +1498,7 @@ list_compatible_images(Client, Input)
 -spec list_compatible_images(map(), list_compatible_images_request(), proplists:proplist()) ->
     {ok, list_compatible_images_result(), tuple()} |
     {error, any()} |
-    {error, ec2_request_failed_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_compatible_images_errors(), tuple()}.
 list_compatible_images(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCompatibleImages">>, Input, Options).
@@ -1452,7 +1517,7 @@ list_compatible_images(Client, Input, Options)
 -spec list_jobs(map(), list_jobs_request()) ->
     {ok, list_jobs_result(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_jobs_errors(), tuple()}.
 list_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_jobs(Client, Input, []).
@@ -1460,7 +1525,7 @@ list_jobs(Client, Input)
 -spec list_jobs(map(), list_jobs_request(), proplists:proplist()) ->
     {ok, list_jobs_result(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_jobs_errors(), tuple()}.
 list_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListJobs">>, Input, Options).
@@ -1469,8 +1534,7 @@ list_jobs(Client, Input, Options)
 -spec list_long_term_pricing(map(), list_long_term_pricing_request()) ->
     {ok, list_long_term_pricing_result(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()}.
+    {error, list_long_term_pricing_errors(), tuple()}.
 list_long_term_pricing(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_long_term_pricing(Client, Input, []).
@@ -1478,8 +1542,7 @@ list_long_term_pricing(Client, Input)
 -spec list_long_term_pricing(map(), list_long_term_pricing_request(), proplists:proplist()) ->
     {ok, list_long_term_pricing_result(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()}.
+    {error, list_long_term_pricing_errors(), tuple()}.
 list_long_term_pricing(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLongTermPricing">>, Input, Options).
@@ -1489,7 +1552,7 @@ list_long_term_pricing(Client, Input, Options)
 -spec list_pickup_locations(map(), list_pickup_locations_request()) ->
     {ok, list_pickup_locations_result(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_exception(), tuple()}.
+    {error, list_pickup_locations_errors(), tuple()}.
 list_pickup_locations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pickup_locations(Client, Input, []).
@@ -1497,7 +1560,7 @@ list_pickup_locations(Client, Input)
 -spec list_pickup_locations(map(), list_pickup_locations_request(), proplists:proplist()) ->
     {ok, list_pickup_locations_result(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_exception(), tuple()}.
+    {error, list_pickup_locations_errors(), tuple()}.
 list_pickup_locations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPickupLocations">>, Input, Options).
@@ -1510,8 +1573,7 @@ list_pickup_locations(Client, Input, Options)
 -spec list_service_versions(map(), list_service_versions_request()) ->
     {ok, list_service_versions_result(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()}.
+    {error, list_service_versions_errors(), tuple()}.
 list_service_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_versions(Client, Input, []).
@@ -1519,8 +1581,7 @@ list_service_versions(Client, Input)
 -spec list_service_versions(map(), list_service_versions_request(), proplists:proplist()) ->
     {ok, list_service_versions_result(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()}.
+    {error, list_service_versions_errors(), tuple()}.
 list_service_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServiceVersions">>, Input, Options).
@@ -1536,11 +1597,7 @@ list_service_versions(Client, Input, Options)
 -spec update_cluster(map(), update_cluster_request()) ->
     {ok, update_cluster_result(), tuple()} |
     {error, any()} |
-    {error, ec2_request_failed_exception(), tuple()} |
-    {error, invalid_input_combination_exception(), tuple()} |
-    {error, invalid_job_state_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()} |
-    {error, kms_request_failed_exception(), tuple()}.
+    {error, update_cluster_errors(), tuple()}.
 update_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_cluster(Client, Input, []).
@@ -1548,11 +1605,7 @@ update_cluster(Client, Input)
 -spec update_cluster(map(), update_cluster_request(), proplists:proplist()) ->
     {ok, update_cluster_result(), tuple()} |
     {error, any()} |
-    {error, ec2_request_failed_exception(), tuple()} |
-    {error, invalid_input_combination_exception(), tuple()} |
-    {error, invalid_job_state_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()} |
-    {error, kms_request_failed_exception(), tuple()}.
+    {error, update_cluster_errors(), tuple()}.
 update_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCluster">>, Input, Options).
@@ -1567,12 +1620,7 @@ update_cluster(Client, Input, Options)
 -spec update_job(map(), update_job_request()) ->
     {ok, update_job_result(), tuple()} |
     {error, any()} |
-    {error, cluster_limit_exceeded_exception(), tuple()} |
-    {error, ec2_request_failed_exception(), tuple()} |
-    {error, invalid_input_combination_exception(), tuple()} |
-    {error, invalid_job_state_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()} |
-    {error, kms_request_failed_exception(), tuple()}.
+    {error, update_job_errors(), tuple()}.
 update_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_job(Client, Input, []).
@@ -1580,12 +1628,7 @@ update_job(Client, Input)
 -spec update_job(map(), update_job_request(), proplists:proplist()) ->
     {ok, update_job_result(), tuple()} |
     {error, any()} |
-    {error, cluster_limit_exceeded_exception(), tuple()} |
-    {error, ec2_request_failed_exception(), tuple()} |
-    {error, invalid_input_combination_exception(), tuple()} |
-    {error, invalid_job_state_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()} |
-    {error, kms_request_failed_exception(), tuple()}.
+    {error, update_job_errors(), tuple()}.
 update_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateJob">>, Input, Options).
@@ -1594,8 +1637,7 @@ update_job(Client, Input, Options)
 -spec update_job_shipment_state(map(), update_job_shipment_state_request()) ->
     {ok, update_job_shipment_state_result(), tuple()} |
     {error, any()} |
-    {error, invalid_job_state_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()}.
+    {error, update_job_shipment_state_errors(), tuple()}.
 update_job_shipment_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_job_shipment_state(Client, Input, []).
@@ -1603,8 +1645,7 @@ update_job_shipment_state(Client, Input)
 -spec update_job_shipment_state(map(), update_job_shipment_state_request(), proplists:proplist()) ->
     {ok, update_job_shipment_state_result(), tuple()} |
     {error, any()} |
-    {error, invalid_job_state_exception(), tuple()} |
-    {error, invalid_resource_exception(), tuple()}.
+    {error, update_job_shipment_state_errors(), tuple()}.
 update_job_shipment_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateJobShipmentState">>, Input, Options).
@@ -1613,7 +1654,7 @@ update_job_shipment_state(Client, Input, Options)
 -spec update_long_term_pricing(map(), update_long_term_pricing_request()) ->
     {ok, update_long_term_pricing_result(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_exception(), tuple()}.
+    {error, update_long_term_pricing_errors(), tuple()}.
 update_long_term_pricing(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_long_term_pricing(Client, Input, []).
@@ -1621,7 +1662,7 @@ update_long_term_pricing(Client, Input)
 -spec update_long_term_pricing(map(), update_long_term_pricing_request(), proplists:proplist()) ->
     {ok, update_long_term_pricing_result(), tuple()} |
     {error, any()} |
-    {error, invalid_resource_exception(), tuple()}.
+    {error, update_long_term_pricing_errors(), tuple()}.
 update_long_term_pricing(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLongTermPricing">>, Input, Options).

@@ -46,6 +46,7 @@
 %% }
 -type certificate_validation_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_job_execution_request() :: #{
 %%   <<"executionNumber">> => float(),
@@ -53,14 +54,17 @@
 %% }
 -type describe_job_execution_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_job_execution_response() :: #{
 %%   <<"execution">> => job_execution()
 %% }
 -type describe_job_execution_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_pending_job_executions_request() :: #{}
 -type get_pending_job_executions_request() :: #{}.
+
 
 %% Example:
 %% get_pending_job_executions_response() :: #{
@@ -69,17 +73,20 @@
 %% }
 -type get_pending_job_executions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_request_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_request_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_state_transition_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_state_transition_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_execution() :: #{
@@ -97,6 +104,7 @@
 %% }
 -type job_execution() :: #{binary() => any()}.
 
+
 %% Example:
 %% job_execution_state() :: #{
 %%   <<"status">> => list(any()),
@@ -104,6 +112,7 @@
 %%   <<"versionNumber">> => float()
 %% }
 -type job_execution_state() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_execution_summary() :: #{
@@ -116,17 +125,20 @@
 %% }
 -type job_execution_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_unavailable_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_next_pending_job_execution_request() :: #{
@@ -135,11 +147,13 @@
 %% }
 -type start_next_pending_job_execution_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_next_pending_job_execution_response() :: #{
 %%   <<"execution">> => job_execution()
 %% }
 -type start_next_pending_job_execution_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% terminal_state_exception() :: #{
@@ -147,12 +161,14 @@
 %% }
 -type terminal_state_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => string(),
 %%   <<"payload">> => binary()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_job_execution_request() :: #{
@@ -166,12 +182,43 @@
 %% }
 -type update_job_execution_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_job_execution_response() :: #{
 %%   <<"executionState">> => job_execution_state(),
 %%   <<"jobDocument">> => string()
 %% }
 -type update_job_execution_response() :: #{binary() => any()}.
+
+-type describe_job_execution_errors() ::
+    throttling_exception() | 
+    terminal_state_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    certificate_validation_exception().
+
+-type get_pending_job_executions_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    certificate_validation_exception().
+
+-type start_next_pending_job_execution_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    certificate_validation_exception().
+
+-type update_job_execution_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_transition_exception() | 
+    invalid_request_exception() | 
+    certificate_validation_exception().
 
 %%====================================================================
 %% API
@@ -181,12 +228,7 @@
 -spec describe_job_execution(map(), binary() | list(), binary() | list()) ->
     {ok, describe_job_execution_response(), tuple()} |
     {error, any()} |
-    {error, certificate_validation_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, terminal_state_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_job_execution_errors(), tuple()}.
 describe_job_execution(Client, JobId, ThingName)
   when is_map(Client) ->
     describe_job_execution(Client, JobId, ThingName, #{}, #{}).
@@ -194,12 +236,7 @@ describe_job_execution(Client, JobId, ThingName)
 -spec describe_job_execution(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_job_execution_response(), tuple()} |
     {error, any()} |
-    {error, certificate_validation_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, terminal_state_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_job_execution_errors(), tuple()}.
 describe_job_execution(Client, JobId, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_job_execution(Client, JobId, ThingName, QueryMap, HeadersMap, []).
@@ -207,12 +244,7 @@ describe_job_execution(Client, JobId, ThingName, QueryMap, HeadersMap)
 -spec describe_job_execution(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_job_execution_response(), tuple()} |
     {error, any()} |
-    {error, certificate_validation_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, terminal_state_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_job_execution_errors(), tuple()}.
 describe_job_execution(Client, JobId, ThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs/", aws_util:encode_uri(JobId), ""],
@@ -239,11 +271,7 @@ describe_job_execution(Client, JobId, ThingName, QueryMap, HeadersMap, Options0)
 -spec get_pending_job_executions(map(), binary() | list()) ->
     {ok, get_pending_job_executions_response(), tuple()} |
     {error, any()} |
-    {error, certificate_validation_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_pending_job_executions_errors(), tuple()}.
 get_pending_job_executions(Client, ThingName)
   when is_map(Client) ->
     get_pending_job_executions(Client, ThingName, #{}, #{}).
@@ -251,11 +279,7 @@ get_pending_job_executions(Client, ThingName)
 -spec get_pending_job_executions(map(), binary() | list(), map(), map()) ->
     {ok, get_pending_job_executions_response(), tuple()} |
     {error, any()} |
-    {error, certificate_validation_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_pending_job_executions_errors(), tuple()}.
 get_pending_job_executions(Client, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_pending_job_executions(Client, ThingName, QueryMap, HeadersMap, []).
@@ -263,11 +287,7 @@ get_pending_job_executions(Client, ThingName, QueryMap, HeadersMap)
 -spec get_pending_job_executions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_pending_job_executions_response(), tuple()} |
     {error, any()} |
-    {error, certificate_validation_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_pending_job_executions_errors(), tuple()}.
 get_pending_job_executions(Client, ThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs"],
@@ -289,22 +309,14 @@ get_pending_job_executions(Client, ThingName, QueryMap, HeadersMap, Options0)
 -spec start_next_pending_job_execution(map(), binary() | list(), start_next_pending_job_execution_request()) ->
     {ok, start_next_pending_job_execution_response(), tuple()} |
     {error, any()} |
-    {error, certificate_validation_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, start_next_pending_job_execution_errors(), tuple()}.
 start_next_pending_job_execution(Client, ThingName, Input) ->
     start_next_pending_job_execution(Client, ThingName, Input, []).
 
 -spec start_next_pending_job_execution(map(), binary() | list(), start_next_pending_job_execution_request(), proplists:proplist()) ->
     {ok, start_next_pending_job_execution_response(), tuple()} |
     {error, any()} |
-    {error, certificate_validation_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, start_next_pending_job_execution_errors(), tuple()}.
 start_next_pending_job_execution(Client, ThingName, Input0, Options0) ->
     Method = put,
     Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs/$next"],
@@ -331,24 +343,14 @@ start_next_pending_job_execution(Client, ThingName, Input0, Options0) ->
 -spec update_job_execution(map(), binary() | list(), binary() | list(), update_job_execution_request()) ->
     {ok, update_job_execution_response(), tuple()} |
     {error, any()} |
-    {error, certificate_validation_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_state_transition_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_job_execution_errors(), tuple()}.
 update_job_execution(Client, JobId, ThingName, Input) ->
     update_job_execution(Client, JobId, ThingName, Input, []).
 
 -spec update_job_execution(map(), binary() | list(), binary() | list(), update_job_execution_request(), proplists:proplist()) ->
     {ok, update_job_execution_response(), tuple()} |
     {error, any()} |
-    {error, certificate_validation_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, invalid_state_transition_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_job_execution_errors(), tuple()}.
 update_job_execution(Client, JobId, ThingName, Input0, Options0) ->
     Method = post,
     Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs/", aws_util:encode_uri(JobId), ""],

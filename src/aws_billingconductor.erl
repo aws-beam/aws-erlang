@@ -108,11 +108,13 @@
 %% }
 -type delete_pricing_rule_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_custom_line_item_percentage_charge_details() :: #{
 %%   <<"PercentageValue">> => float()
 %% }
 -type list_custom_line_item_percentage_charge_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_pricing_rules_output() :: #{
@@ -121,6 +123,7 @@
 %%   <<"PricingRules">> => list(pricing_rule_list_element()())
 %% }
 -type list_pricing_rules_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_resources_associated_to_custom_line_item_input() :: #{
@@ -132,11 +135,13 @@
 %% }
 -type list_resources_associated_to_custom_line_item_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_pricing_rules_input() :: #{
@@ -147,6 +152,7 @@
 %% }
 -type list_pricing_rules_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_custom_line_item_charge_details() :: #{
 %%   <<"Flat">> => update_custom_line_item_flat_charge_details(),
@@ -155,12 +161,14 @@
 %% }
 -type update_custom_line_item_charge_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% disassociate_pricing_rules_input() :: #{
 %%   <<"Arn">> := string(),
 %%   <<"PricingRuleArns">> := list(string()())
 %% }
 -type disassociate_pricing_rules_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_billing_group_input() :: #{
@@ -173,17 +181,20 @@
 %% }
 -type update_billing_group_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_pricing_rules_output() :: #{
 %%   <<"Arn">> => string()
 %% }
 -type associate_pricing_rules_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_free_tier_config() :: #{
 %%   <<"Activated">> => boolean()
 %% }
 -type create_free_tier_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_pricing_plans_output() :: #{
@@ -193,6 +204,7 @@
 %% }
 -type list_pricing_plans_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_pricing_rules_associated_to_pricing_plan_output() :: #{
 %%   <<"BillingPeriod">> => string(),
@@ -201,6 +213,7 @@
 %%   <<"PricingRuleArns">> => list(string()())
 %% }
 -type list_pricing_rules_associated_to_pricing_plan_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_billing_group_input() :: #{
@@ -213,15 +226,18 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_billing_group_input() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% delete_pricing_rule_input() :: #{
 %%   <<"Arn">> := string()
 %% }
 -type delete_pricing_rule_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_billing_group_cost_report_input() :: #{
@@ -233,6 +249,7 @@
 %% }
 -type get_billing_group_cost_report_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_custom_line_item_charge_details() :: #{
 %%   <<"Flat">> => list_custom_line_item_flat_charge_details(),
@@ -242,6 +259,7 @@
 %% }
 -type list_custom_line_item_charge_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_pricing_plans_associated_with_pricing_rule_input() :: #{
 %%   <<"BillingPeriod">> => string(),
@@ -250,6 +268,7 @@
 %%   <<"PricingRuleArn">> := string()
 %% }
 -type list_pricing_plans_associated_with_pricing_rule_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_pricing_rule_input() :: #{
@@ -268,17 +287,20 @@
 %% }
 -type create_pricing_rule_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_custom_line_item_percentage_charge_details() :: #{
 %%   <<"PercentageValue">> => float()
 %% }
 -type update_custom_line_item_percentage_charge_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_pricing_plan_output() :: #{
 %%   <<"Arn">> => string()
 %% }
 -type create_pricing_plan_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_billing_group_cost_reports_input() :: #{
@@ -289,17 +311,20 @@
 %% }
 -type list_billing_group_cost_reports_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_pricing_rule_output() :: #{
 %%   <<"Arn">> => string()
 %% }
 -type create_pricing_rule_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% free_tier_config() :: #{
 %%   <<"Activated">> => boolean()
 %% }
 -type free_tier_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% associate_resource_error() :: #{
@@ -308,11 +333,13 @@
 %% }
 -type associate_resource_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_billing_group_output() :: #{
 %%   <<"Arn">> => string()
 %% }
 -type create_billing_group_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% custom_line_item_charge_details() :: #{
@@ -323,6 +350,7 @@
 %% }
 -type custom_line_item_charge_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_associate_resources_to_custom_line_item_input() :: #{
 %%   <<"BillingPeriodRange">> => custom_line_item_billing_period_range(),
@@ -331,11 +359,13 @@
 %% }
 -type batch_associate_resources_to_custom_line_item_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> => list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_custom_line_items_input() :: #{
@@ -346,12 +376,14 @@
 %% }
 -type list_custom_line_items_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_custom_line_item_versions_output() :: #{
 %%   <<"CustomLineItemVersions">> => list(custom_line_item_version_list_element()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_custom_line_item_versions_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% associate_pricing_rules_input() :: #{
@@ -360,6 +392,7 @@
 %% }
 -type associate_pricing_rules_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% custom_line_item_billing_period_range() :: #{
 %%   <<"ExclusiveEndBillingPeriod">> => string(),
@@ -367,12 +400,14 @@
 %% }
 -type custom_line_item_billing_period_range() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_custom_line_items_output() :: #{
 %%   <<"CustomLineItems">> => list(custom_line_item_list_element()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_custom_line_items_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_pricing_plan_output() :: #{
@@ -383,6 +418,7 @@
 %%   <<"Size">> => float()
 %% }
 -type update_pricing_plan_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_billing_group_output() :: #{
@@ -399,6 +435,7 @@
 %% }
 -type update_billing_group_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_disassociate_resources_from_custom_line_item_output() :: #{
 %%   <<"FailedDisassociatedResources">> => list(disassociate_resource_response_element()()),
@@ -406,11 +443,13 @@
 %% }
 -type batch_disassociate_resources_from_custom_line_item_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% computation_preference() :: #{
 %%   <<"PricingPlanArn">> => string()
 %% }
 -type computation_preference() :: #{binary() => any()}.
+
 
 %% Example:
 %% pricing_plan_list_element() :: #{
@@ -423,6 +462,7 @@
 %% }
 -type pricing_plan_list_element() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_resources_associated_to_custom_line_item_response_element() :: #{
 %%   <<"Arn">> => string(),
@@ -431,17 +471,20 @@
 %% }
 -type list_resources_associated_to_custom_line_item_response_element() :: #{binary() => any()}.
 
+
 %% Example:
 %% disassociate_pricing_rules_output() :: #{
 %%   <<"Arn">> => string()
 %% }
 -type disassociate_pricing_rules_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_billing_group_output() :: #{
 %%   <<"Arn">> => string()
 %% }
 -type delete_billing_group_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -452,6 +495,7 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => string(),
@@ -460,12 +504,14 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% billing_period_range() :: #{
 %%   <<"ExclusiveEndBillingPeriod">> => string(),
 %%   <<"InclusiveStartBillingPeriod">> => string()
 %% }
 -type billing_period_range() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_pricing_plans_associated_with_pricing_rule_output() :: #{
@@ -476,11 +522,13 @@
 %% }
 -type list_pricing_plans_associated_with_pricing_rule_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_tiering_input() :: #{
 %%   <<"FreeTier">> => update_free_tier_config()
 %% }
 -type update_tiering_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_billing_groups_output() :: #{
@@ -488,6 +536,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_billing_groups_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_custom_line_item_versions_input() :: #{
@@ -498,11 +547,13 @@
 %% }
 -type list_custom_line_item_versions_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_pricing_plan_input() :: #{
 %%   <<"Arn">> := string()
 %% }
 -type delete_pricing_plan_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_account_associations_input() :: #{
@@ -512,11 +563,13 @@
 %% }
 -type list_account_associations_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_custom_line_item_versions_filter() :: #{
 %%   <<"BillingPeriodRange">> => list_custom_line_item_versions_billing_period_range_filter()
 %% }
 -type list_custom_line_item_versions_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% billing_group_cost_report_result_element() :: #{
@@ -530,6 +583,7 @@
 %% }
 -type billing_group_cost_report_result_element() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_pricing_rules_associated_to_pricing_plan_input() :: #{
 %%   <<"BillingPeriod">> => string(),
@@ -539,6 +593,7 @@
 %% }
 -type list_pricing_rules_associated_to_pricing_plan_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% account_grouping() :: #{
 %%   <<"AutoAssociate">> => [boolean()],
@@ -546,11 +601,13 @@
 %% }
 -type account_grouping() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_custom_line_item_flat_charge_details() :: #{
 %%   <<"ChargeValue">> => float()
 %% }
 -type update_custom_line_item_flat_charge_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_pricing_plan_input() :: #{
@@ -562,11 +619,13 @@
 %% }
 -type create_pricing_plan_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_pricing_plans_filter() :: #{
 %%   <<"Arns">> => list(string()())
 %% }
 -type list_pricing_plans_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
@@ -574,11 +633,13 @@
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_custom_line_item_flat_charge_details() :: #{
 %%   <<"ChargeValue">> => float()
 %% }
 -type list_custom_line_item_flat_charge_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% validation_exception_field() :: #{
@@ -586,6 +647,7 @@
 %%   <<"Name">> => string()
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_resources_associated_to_custom_line_item_output() :: #{
@@ -595,12 +657,14 @@
 %% }
 -type list_resources_associated_to_custom_line_item_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_account_associations_output() :: #{
 %%   <<"LinkedAccounts">> => list(account_associations_list_element()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_account_associations_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_pricing_plans_input() :: #{
@@ -611,6 +675,7 @@
 %% }
 -type list_pricing_plans_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_pricing_plan_input() :: #{
 %%   <<"Arn">> := string(),
@@ -618,6 +683,7 @@
 %%   <<"Name">> => string()
 %% }
 -type update_pricing_plan_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_account_associations_filter() :: #{
@@ -627,17 +693,20 @@
 %% }
 -type list_account_associations_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_billing_group_cost_reports_filter() :: #{
 %%   <<"BillingGroupArns">> => list(string()())
 %% }
 -type list_billing_group_cost_reports_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_pricing_rules_filter() :: #{
 %%   <<"Arns">> => list(string()())
 %% }
 -type list_pricing_rules_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% associate_resource_response_element() :: #{
@@ -646,11 +715,13 @@
 %% }
 -type associate_resource_response_element() :: #{binary() => any()}.
 
+
 %% Example:
 %% custom_line_item_flat_charge_details() :: #{
 %%   <<"ChargeValue">> => float()
 %% }
 -type custom_line_item_flat_charge_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_pricing_rule_output() :: #{
@@ -670,12 +741,14 @@
 %% }
 -type update_pricing_rule_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_custom_line_item_input() :: #{
 %%   <<"Arn">> := string(),
 %%   <<"BillingPeriodRange">> => custom_line_item_billing_period_range()
 %% }
 -type delete_custom_line_item_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% line_item_filter() :: #{
@@ -685,6 +758,7 @@
 %% }
 -type line_item_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"Message">> => string(),
@@ -692,12 +766,14 @@
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% custom_line_item_percentage_charge_details() :: #{
 %%   <<"AssociatedValues">> => list(string()()),
 %%   <<"PercentageValue">> => float()
 %% }
 -type custom_line_item_percentage_charge_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_billing_groups_filter() :: #{
@@ -708,6 +784,7 @@
 %% }
 -type list_billing_groups_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% disassociate_accounts_input() :: #{
 %%   <<"AccountIds">> := list(string()()),
@@ -715,11 +792,13 @@
 %% }
 -type disassociate_accounts_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_billing_group_account_grouping() :: #{
 %%   <<"AutoAssociate">> => [boolean()]
 %% }
 -type list_billing_group_account_grouping() :: #{binary() => any()}.
+
 
 %% Example:
 %% access_denied_exception() :: #{
@@ -727,15 +806,18 @@
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_billing_group_cost_report_output() :: #{
 %%   <<"BillingGroupCostReportResults">> => list(billing_group_cost_report_result_element()()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_billing_group_cost_report_output() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% list_custom_line_items_filter() :: #{
@@ -746,17 +828,20 @@
 %% }
 -type list_custom_line_items_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_custom_line_item_output() :: #{
 %%   <<"Arn">> => string()
 %% }
 -type create_custom_line_item_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_billing_group_account_grouping() :: #{
 %%   <<"AutoAssociate">> => [boolean()]
 %% }
 -type update_billing_group_account_grouping() :: #{binary() => any()}.
+
 
 %% Example:
 %% disassociate_resource_response_element() :: #{
@@ -765,6 +850,7 @@
 %% }
 -type disassociate_resource_response_element() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"Fields">> => list(validation_exception_field()()),
@@ -772,9 +858,11 @@
 %%   <<"Reason">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% batch_disassociate_resources_from_custom_line_item_input() :: #{
@@ -784,12 +872,14 @@
 %% }
 -type batch_disassociate_resources_from_custom_line_item_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_custom_line_item_versions_billing_period_range_filter() :: #{
 %%   <<"EndBillingPeriod">> => string(),
 %%   <<"StartBillingPeriod">> => string()
 %% }
 -type list_custom_line_item_versions_billing_period_range_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_limit_exceeded_exception() :: #{
@@ -800,6 +890,7 @@
 %%   <<"ServiceCode">> => string()
 %% }
 -type service_limit_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% custom_line_item_list_element() :: #{
@@ -816,6 +907,7 @@
 %%   <<"ProductCode">> => string()
 %% }
 -type custom_line_item_list_element() :: #{binary() => any()}.
+
 
 %% Example:
 %% custom_line_item_version_list_element() :: #{
@@ -836,12 +928,14 @@
 %% }
 -type custom_line_item_version_list_element() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RetryAfterSeconds">> => integer()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_custom_line_item_input() :: #{
@@ -853,12 +947,14 @@
 %% }
 -type update_custom_line_item_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% attribute() :: #{
 %%   <<"Key">> => [string()],
 %%   <<"Value">> => [string()]
 %% }
 -type attribute() :: #{binary() => any()}.
+
 
 %% Example:
 %% billing_group_list_element() :: #{
@@ -876,6 +972,7 @@
 %% }
 -type billing_group_list_element() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_pricing_rule_input() :: #{
 %%   <<"Arn">> := string(),
@@ -887,11 +984,13 @@
 %% }
 -type update_pricing_rule_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_pricing_plan_output() :: #{
 %%   <<"Arn">> => string()
 %% }
 -type delete_pricing_plan_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% tiering() :: #{
@@ -899,11 +998,13 @@
 %% }
 -type tiering() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_tiering_input() :: #{
 %%   <<"FreeTier">> => create_free_tier_config()
 %% }
 -type create_tiering_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% associate_accounts_input() :: #{
@@ -912,17 +1013,20 @@
 %% }
 -type associate_accounts_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_resources_associated_to_custom_line_item_filter() :: #{
 %%   <<"Relationship">> => string()
 %% }
 -type list_resources_associated_to_custom_line_item_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_accounts_output() :: #{
 %%   <<"Arn">> => string()
 %% }
 -type associate_accounts_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% pricing_rule_list_element() :: #{
@@ -943,11 +1047,13 @@
 %% }
 -type pricing_rule_list_element() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_free_tier_config() :: #{
 %%   <<"Activated">> => boolean()
 %% }
 -type update_free_tier_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_billing_groups_input() :: #{
@@ -958,11 +1064,13 @@
 %% }
 -type list_billing_groups_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% disassociate_accounts_output() :: #{
 %%   <<"Arn">> => string()
 %% }
 -type disassociate_accounts_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% account_associations_list_element() :: #{
@@ -973,11 +1081,13 @@
 %% }
 -type account_associations_list_element() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_billing_group_input() :: #{
 %%   <<"Arn">> := string()
 %% }
 -type delete_billing_group_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_billing_group_cost_reports_output() :: #{
@@ -986,6 +1096,7 @@
 %% }
 -type list_billing_group_cost_reports_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_associate_resources_to_custom_line_item_output() :: #{
 %%   <<"FailedAssociatedResources">> => list(associate_resource_response_element()()),
@@ -993,11 +1104,13 @@
 %% }
 -type batch_associate_resources_to_custom_line_item_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_custom_line_item_output() :: #{
 %%   <<"Arn">> => string()
 %% }
 -type delete_custom_line_item_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_custom_line_item_input() :: #{
@@ -1012,6 +1125,7 @@
 %% }
 -type create_custom_line_item_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_custom_line_item_output() :: #{
 %%   <<"Arn">> => string(),
@@ -1024,6 +1138,7 @@
 %% }
 -type update_custom_line_item_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% billing_group_cost_report_element() :: #{
 %%   <<"AWSCost">> => string(),
@@ -1034,6 +1149,243 @@
 %%   <<"ProformaCost">> => string()
 %% }
 -type billing_group_cost_report_element() :: #{binary() => any()}.
+
+-type associate_accounts_errors() ::
+    throttling_exception() | 
+    service_limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type associate_pricing_rules_errors() ::
+    throttling_exception() | 
+    service_limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type batch_associate_resources_to_custom_line_item_errors() ::
+    throttling_exception() | 
+    service_limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type batch_disassociate_resources_from_custom_line_item_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_billing_group_errors() ::
+    throttling_exception() | 
+    service_limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type create_custom_line_item_errors() ::
+    throttling_exception() | 
+    service_limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type create_pricing_plan_errors() ::
+    throttling_exception() | 
+    service_limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_pricing_rule_errors() ::
+    throttling_exception() | 
+    service_limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_billing_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type delete_custom_line_item_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_pricing_plan_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_pricing_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type disassociate_accounts_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type disassociate_pricing_rules_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_billing_group_cost_report_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_account_associations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_billing_group_cost_reports_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_billing_groups_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_custom_line_item_versions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_custom_line_items_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_pricing_plans_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_pricing_plans_associated_with_pricing_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_pricing_rules_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_pricing_rules_associated_to_pricing_plan_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_resources_associated_to_custom_line_item_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_billing_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_custom_line_item_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_pricing_plan_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_pricing_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -1051,26 +1403,14 @@
 -spec associate_accounts(map(), associate_accounts_input()) ->
     {ok, associate_accounts_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_accounts_errors(), tuple()}.
 associate_accounts(Client, Input) ->
     associate_accounts(Client, Input, []).
 
 -spec associate_accounts(map(), associate_accounts_input(), proplists:proplist()) ->
     {ok, associate_accounts_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_accounts_errors(), tuple()}.
 associate_accounts(Client, Input0, Options0) ->
     Method = post,
     Path = ["/associate-accounts"],
@@ -1101,26 +1441,14 @@ associate_accounts(Client, Input0, Options0) ->
 -spec associate_pricing_rules(map(), associate_pricing_rules_input()) ->
     {ok, associate_pricing_rules_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_pricing_rules_errors(), tuple()}.
 associate_pricing_rules(Client, Input) ->
     associate_pricing_rules(Client, Input, []).
 
 -spec associate_pricing_rules(map(), associate_pricing_rules_input(), proplists:proplist()) ->
     {ok, associate_pricing_rules_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_pricing_rules_errors(), tuple()}.
 associate_pricing_rules(Client, Input0, Options0) ->
     Method = put,
     Path = ["/associate-pricing-rules"],
@@ -1148,26 +1476,14 @@ associate_pricing_rules(Client, Input0, Options0) ->
 -spec batch_associate_resources_to_custom_line_item(map(), batch_associate_resources_to_custom_line_item_input()) ->
     {ok, batch_associate_resources_to_custom_line_item_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_associate_resources_to_custom_line_item_errors(), tuple()}.
 batch_associate_resources_to_custom_line_item(Client, Input) ->
     batch_associate_resources_to_custom_line_item(Client, Input, []).
 
 -spec batch_associate_resources_to_custom_line_item(map(), batch_associate_resources_to_custom_line_item_input(), proplists:proplist()) ->
     {ok, batch_associate_resources_to_custom_line_item_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_associate_resources_to_custom_line_item_errors(), tuple()}.
 batch_associate_resources_to_custom_line_item(Client, Input0, Options0) ->
     Method = put,
     Path = ["/batch-associate-resources-to-custom-line-item"],
@@ -1195,24 +1511,14 @@ batch_associate_resources_to_custom_line_item(Client, Input0, Options0) ->
 -spec batch_disassociate_resources_from_custom_line_item(map(), batch_disassociate_resources_from_custom_line_item_input()) ->
     {ok, batch_disassociate_resources_from_custom_line_item_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_disassociate_resources_from_custom_line_item_errors(), tuple()}.
 batch_disassociate_resources_from_custom_line_item(Client, Input) ->
     batch_disassociate_resources_from_custom_line_item(Client, Input, []).
 
 -spec batch_disassociate_resources_from_custom_line_item(map(), batch_disassociate_resources_from_custom_line_item_input(), proplists:proplist()) ->
     {ok, batch_disassociate_resources_from_custom_line_item_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_disassociate_resources_from_custom_line_item_errors(), tuple()}.
 batch_disassociate_resources_from_custom_line_item(Client, Input0, Options0) ->
     Method = put,
     Path = ["/batch-disassociate-resources-from-custom-line-item"],
@@ -1242,24 +1548,14 @@ batch_disassociate_resources_from_custom_line_item(Client, Input0, Options0) ->
 -spec create_billing_group(map(), create_billing_group_input()) ->
     {ok, create_billing_group_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_billing_group_errors(), tuple()}.
 create_billing_group(Client, Input) ->
     create_billing_group(Client, Input, []).
 
 -spec create_billing_group(map(), create_billing_group_input(), proplists:proplist()) ->
     {ok, create_billing_group_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_billing_group_errors(), tuple()}.
 create_billing_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/create-billing-group"],
@@ -1294,24 +1590,14 @@ create_billing_group(Client, Input0, Options0) ->
 -spec create_custom_line_item(map(), create_custom_line_item_input()) ->
     {ok, create_custom_line_item_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_custom_line_item_errors(), tuple()}.
 create_custom_line_item(Client, Input) ->
     create_custom_line_item(Client, Input, []).
 
 -spec create_custom_line_item(map(), create_custom_line_item_input(), proplists:proplist()) ->
     {ok, create_custom_line_item_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_custom_line_item_errors(), tuple()}.
 create_custom_line_item(Client, Input0, Options0) ->
     Method = post,
     Path = ["/create-custom-line-item"],
@@ -1341,26 +1627,14 @@ create_custom_line_item(Client, Input0, Options0) ->
 -spec create_pricing_plan(map(), create_pricing_plan_input()) ->
     {ok, create_pricing_plan_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_pricing_plan_errors(), tuple()}.
 create_pricing_plan(Client, Input) ->
     create_pricing_plan(Client, Input, []).
 
 -spec create_pricing_plan(map(), create_pricing_plan_input(), proplists:proplist()) ->
     {ok, create_pricing_plan_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_pricing_plan_errors(), tuple()}.
 create_pricing_plan(Client, Input0, Options0) ->
     Method = post,
     Path = ["/create-pricing-plan"],
@@ -1391,24 +1665,14 @@ create_pricing_plan(Client, Input0, Options0) ->
 -spec create_pricing_rule(map(), create_pricing_rule_input()) ->
     {ok, create_pricing_rule_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_pricing_rule_errors(), tuple()}.
 create_pricing_rule(Client, Input) ->
     create_pricing_rule(Client, Input, []).
 
 -spec create_pricing_rule(map(), create_pricing_rule_input(), proplists:proplist()) ->
     {ok, create_pricing_rule_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_pricing_rule_errors(), tuple()}.
 create_pricing_rule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/create-pricing-rule"],
@@ -1438,20 +1702,14 @@ create_pricing_rule(Client, Input0, Options0) ->
 -spec delete_billing_group(map(), delete_billing_group_input()) ->
     {ok, delete_billing_group_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_billing_group_errors(), tuple()}.
 delete_billing_group(Client, Input) ->
     delete_billing_group(Client, Input, []).
 
 -spec delete_billing_group(map(), delete_billing_group_input(), proplists:proplist()) ->
     {ok, delete_billing_group_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_billing_group_errors(), tuple()}.
 delete_billing_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-billing-group"],
@@ -1480,22 +1738,14 @@ delete_billing_group(Client, Input0, Options0) ->
 -spec delete_custom_line_item(map(), delete_custom_line_item_input()) ->
     {ok, delete_custom_line_item_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_custom_line_item_errors(), tuple()}.
 delete_custom_line_item(Client, Input) ->
     delete_custom_line_item(Client, Input, []).
 
 -spec delete_custom_line_item(map(), delete_custom_line_item_input(), proplists:proplist()) ->
     {ok, delete_custom_line_item_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_custom_line_item_errors(), tuple()}.
 delete_custom_line_item(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-custom-line-item"],
@@ -1525,22 +1775,14 @@ delete_custom_line_item(Client, Input0, Options0) ->
 -spec delete_pricing_plan(map(), delete_pricing_plan_input()) ->
     {ok, delete_pricing_plan_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_pricing_plan_errors(), tuple()}.
 delete_pricing_plan(Client, Input) ->
     delete_pricing_plan(Client, Input, []).
 
 -spec delete_pricing_plan(map(), delete_pricing_plan_input(), proplists:proplist()) ->
     {ok, delete_pricing_plan_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_pricing_plan_errors(), tuple()}.
 delete_pricing_plan(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-pricing-plan"],
@@ -1568,22 +1810,14 @@ delete_pricing_plan(Client, Input0, Options0) ->
 -spec delete_pricing_rule(map(), delete_pricing_rule_input()) ->
     {ok, delete_pricing_rule_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_pricing_rule_errors(), tuple()}.
 delete_pricing_rule(Client, Input) ->
     delete_pricing_rule(Client, Input, []).
 
 -spec delete_pricing_rule(map(), delete_pricing_rule_input(), proplists:proplist()) ->
     {ok, delete_pricing_rule_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_pricing_rule_errors(), tuple()}.
 delete_pricing_rule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-pricing-rule"],
@@ -1611,24 +1845,14 @@ delete_pricing_rule(Client, Input0, Options0) ->
 -spec disassociate_accounts(map(), disassociate_accounts_input()) ->
     {ok, disassociate_accounts_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_accounts_errors(), tuple()}.
 disassociate_accounts(Client, Input) ->
     disassociate_accounts(Client, Input, []).
 
 -spec disassociate_accounts(map(), disassociate_accounts_input(), proplists:proplist()) ->
     {ok, disassociate_accounts_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_accounts_errors(), tuple()}.
 disassociate_accounts(Client, Input0, Options0) ->
     Method = post,
     Path = ["/disassociate-accounts"],
@@ -1656,24 +1880,14 @@ disassociate_accounts(Client, Input0, Options0) ->
 -spec disassociate_pricing_rules(map(), disassociate_pricing_rules_input()) ->
     {ok, disassociate_pricing_rules_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_pricing_rules_errors(), tuple()}.
 disassociate_pricing_rules(Client, Input) ->
     disassociate_pricing_rules(Client, Input, []).
 
 -spec disassociate_pricing_rules(map(), disassociate_pricing_rules_input(), proplists:proplist()) ->
     {ok, disassociate_pricing_rules_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_pricing_rules_errors(), tuple()}.
 disassociate_pricing_rules(Client, Input0, Options0) ->
     Method = put,
     Path = ["/disassociate-pricing-rules"],
@@ -1703,22 +1917,14 @@ disassociate_pricing_rules(Client, Input0, Options0) ->
 -spec get_billing_group_cost_report(map(), get_billing_group_cost_report_input()) ->
     {ok, get_billing_group_cost_report_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_billing_group_cost_report_errors(), tuple()}.
 get_billing_group_cost_report(Client, Input) ->
     get_billing_group_cost_report(Client, Input, []).
 
 -spec get_billing_group_cost_report(map(), get_billing_group_cost_report_input(), proplists:proplist()) ->
     {ok, get_billing_group_cost_report_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_billing_group_cost_report_errors(), tuple()}.
 get_billing_group_cost_report(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-billing-group-cost-report"],
@@ -1752,22 +1958,14 @@ get_billing_group_cost_report(Client, Input0, Options0) ->
 -spec list_account_associations(map(), list_account_associations_input()) ->
     {ok, list_account_associations_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_account_associations_errors(), tuple()}.
 list_account_associations(Client, Input) ->
     list_account_associations(Client, Input, []).
 
 -spec list_account_associations(map(), list_account_associations_input(), proplists:proplist()) ->
     {ok, list_account_associations_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_account_associations_errors(), tuple()}.
 list_account_associations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-account-associations"],
@@ -1797,22 +1995,14 @@ list_account_associations(Client, Input0, Options0) ->
 -spec list_billing_group_cost_reports(map(), list_billing_group_cost_reports_input()) ->
     {ok, list_billing_group_cost_reports_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_billing_group_cost_reports_errors(), tuple()}.
 list_billing_group_cost_reports(Client, Input) ->
     list_billing_group_cost_reports(Client, Input, []).
 
 -spec list_billing_group_cost_reports(map(), list_billing_group_cost_reports_input(), proplists:proplist()) ->
     {ok, list_billing_group_cost_reports_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_billing_group_cost_reports_errors(), tuple()}.
 list_billing_group_cost_reports(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-billing-group-cost-reports"],
@@ -1843,22 +2033,14 @@ list_billing_group_cost_reports(Client, Input0, Options0) ->
 -spec list_billing_groups(map(), list_billing_groups_input()) ->
     {ok, list_billing_groups_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_billing_groups_errors(), tuple()}.
 list_billing_groups(Client, Input) ->
     list_billing_groups(Client, Input, []).
 
 -spec list_billing_groups(map(), list_billing_groups_input(), proplists:proplist()) ->
     {ok, list_billing_groups_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_billing_groups_errors(), tuple()}.
 list_billing_groups(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-billing-groups"],
@@ -1885,20 +2067,14 @@ list_billing_groups(Client, Input0, Options0) ->
 -spec list_custom_line_item_versions(map(), list_custom_line_item_versions_input()) ->
     {ok, list_custom_line_item_versions_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_custom_line_item_versions_errors(), tuple()}.
 list_custom_line_item_versions(Client, Input) ->
     list_custom_line_item_versions(Client, Input, []).
 
 -spec list_custom_line_item_versions(map(), list_custom_line_item_versions_input(), proplists:proplist()) ->
     {ok, list_custom_line_item_versions_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_custom_line_item_versions_errors(), tuple()}.
 list_custom_line_item_versions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-custom-line-item-versions"],
@@ -1930,22 +2106,14 @@ list_custom_line_item_versions(Client, Input0, Options0) ->
 -spec list_custom_line_items(map(), list_custom_line_items_input()) ->
     {ok, list_custom_line_items_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_custom_line_items_errors(), tuple()}.
 list_custom_line_items(Client, Input) ->
     list_custom_line_items(Client, Input, []).
 
 -spec list_custom_line_items(map(), list_custom_line_items_input(), proplists:proplist()) ->
     {ok, list_custom_line_items_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_custom_line_items_errors(), tuple()}.
 list_custom_line_items(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-custom-line-items"],
@@ -1975,20 +2143,14 @@ list_custom_line_items(Client, Input0, Options0) ->
 -spec list_pricing_plans(map(), list_pricing_plans_input()) ->
     {ok, list_pricing_plans_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_pricing_plans_errors(), tuple()}.
 list_pricing_plans(Client, Input) ->
     list_pricing_plans(Client, Input, []).
 
 -spec list_pricing_plans(map(), list_pricing_plans_input(), proplists:proplist()) ->
     {ok, list_pricing_plans_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_pricing_plans_errors(), tuple()}.
 list_pricing_plans(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-pricing-plans"],
@@ -2016,22 +2178,14 @@ list_pricing_plans(Client, Input0, Options0) ->
 -spec list_pricing_plans_associated_with_pricing_rule(map(), list_pricing_plans_associated_with_pricing_rule_input()) ->
     {ok, list_pricing_plans_associated_with_pricing_rule_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_pricing_plans_associated_with_pricing_rule_errors(), tuple()}.
 list_pricing_plans_associated_with_pricing_rule(Client, Input) ->
     list_pricing_plans_associated_with_pricing_rule(Client, Input, []).
 
 -spec list_pricing_plans_associated_with_pricing_rule(map(), list_pricing_plans_associated_with_pricing_rule_input(), proplists:proplist()) ->
     {ok, list_pricing_plans_associated_with_pricing_rule_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_pricing_plans_associated_with_pricing_rule_errors(), tuple()}.
 list_pricing_plans_associated_with_pricing_rule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-pricing-plans-associated-with-pricing-rule"],
@@ -2060,20 +2214,14 @@ list_pricing_plans_associated_with_pricing_rule(Client, Input0, Options0) ->
 -spec list_pricing_rules(map(), list_pricing_rules_input()) ->
     {ok, list_pricing_rules_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_pricing_rules_errors(), tuple()}.
 list_pricing_rules(Client, Input) ->
     list_pricing_rules(Client, Input, []).
 
 -spec list_pricing_rules(map(), list_pricing_rules_input(), proplists:proplist()) ->
     {ok, list_pricing_rules_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_pricing_rules_errors(), tuple()}.
 list_pricing_rules(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-pricing-rules"],
@@ -2101,22 +2249,14 @@ list_pricing_rules(Client, Input0, Options0) ->
 -spec list_pricing_rules_associated_to_pricing_plan(map(), list_pricing_rules_associated_to_pricing_plan_input()) ->
     {ok, list_pricing_rules_associated_to_pricing_plan_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_pricing_rules_associated_to_pricing_plan_errors(), tuple()}.
 list_pricing_rules_associated_to_pricing_plan(Client, Input) ->
     list_pricing_rules_associated_to_pricing_plan(Client, Input, []).
 
 -spec list_pricing_rules_associated_to_pricing_plan(map(), list_pricing_rules_associated_to_pricing_plan_input(), proplists:proplist()) ->
     {ok, list_pricing_rules_associated_to_pricing_plan_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_pricing_rules_associated_to_pricing_plan_errors(), tuple()}.
 list_pricing_rules_associated_to_pricing_plan(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-pricing-rules-associated-to-pricing-plan"],
@@ -2144,22 +2284,14 @@ list_pricing_rules_associated_to_pricing_plan(Client, Input0, Options0) ->
 -spec list_resources_associated_to_custom_line_item(map(), list_resources_associated_to_custom_line_item_input()) ->
     {ok, list_resources_associated_to_custom_line_item_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_resources_associated_to_custom_line_item_errors(), tuple()}.
 list_resources_associated_to_custom_line_item(Client, Input) ->
     list_resources_associated_to_custom_line_item(Client, Input, []).
 
 -spec list_resources_associated_to_custom_line_item(map(), list_resources_associated_to_custom_line_item_input(), proplists:proplist()) ->
     {ok, list_resources_associated_to_custom_line_item_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_resources_associated_to_custom_line_item_errors(), tuple()}.
 list_resources_associated_to_custom_line_item(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-resources-associated-to-custom-line-item"],
@@ -2187,11 +2319,7 @@ list_resources_associated_to_custom_line_item(Client, Input0, Options0) ->
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -2199,11 +2327,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -2211,11 +2335,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2241,22 +2361,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2284,22 +2396,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2327,24 +2431,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_billing_group(map(), update_billing_group_input()) ->
     {ok, update_billing_group_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_billing_group_errors(), tuple()}.
 update_billing_group(Client, Input) ->
     update_billing_group(Client, Input, []).
 
 -spec update_billing_group(map(), update_billing_group_input(), proplists:proplist()) ->
     {ok, update_billing_group_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_billing_group_errors(), tuple()}.
 update_billing_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-billing-group"],
@@ -2373,22 +2467,14 @@ update_billing_group(Client, Input0, Options0) ->
 -spec update_custom_line_item(map(), update_custom_line_item_input()) ->
     {ok, update_custom_line_item_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_custom_line_item_errors(), tuple()}.
 update_custom_line_item(Client, Input) ->
     update_custom_line_item(Client, Input, []).
 
 -spec update_custom_line_item(map(), update_custom_line_item_input(), proplists:proplist()) ->
     {ok, update_custom_line_item_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_custom_line_item_errors(), tuple()}.
 update_custom_line_item(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-custom-line-item"],
@@ -2415,24 +2501,14 @@ update_custom_line_item(Client, Input0, Options0) ->
 -spec update_pricing_plan(map(), update_pricing_plan_input()) ->
     {ok, update_pricing_plan_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_pricing_plan_errors(), tuple()}.
 update_pricing_plan(Client, Input) ->
     update_pricing_plan(Client, Input, []).
 
 -spec update_pricing_plan(map(), update_pricing_plan_input(), proplists:proplist()) ->
     {ok, update_pricing_plan_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_pricing_plan_errors(), tuple()}.
 update_pricing_plan(Client, Input0, Options0) ->
     Method = put,
     Path = ["/update-pricing-plan"],
@@ -2460,24 +2536,14 @@ update_pricing_plan(Client, Input0, Options0) ->
 -spec update_pricing_rule(map(), update_pricing_rule_input()) ->
     {ok, update_pricing_rule_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_pricing_rule_errors(), tuple()}.
 update_pricing_rule(Client, Input) ->
     update_pricing_rule(Client, Input, []).
 
 -spec update_pricing_rule(map(), update_pricing_rule_input(), proplists:proplist()) ->
     {ok, update_pricing_rule_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_pricing_rule_errors(), tuple()}.
 update_pricing_rule(Client, Input0, Options0) ->
     Method = put,
     Path = ["/update-pricing-rule"],

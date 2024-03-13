@@ -79,6 +79,7 @@
 %% }
 -type update_environment_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_devices_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -86,11 +87,13 @@
 %% }
 -type list_devices_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_software_set_request() :: #{
 %%   <<"validationStatus">> := list(any())
 %% }
 -type update_software_set_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% tag_resource_request() :: #{
@@ -98,14 +101,17 @@
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_device_response() :: #{
 %%   <<"device">> => device_summary()
 %% }
 -type update_device_response() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% update_device_request() :: #{
@@ -115,6 +121,7 @@
 %%   <<"softwareSetUpdateSchedule">> => list(any())
 %% }
 -type update_device_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% environment_summary() :: #{
@@ -135,18 +142,22 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type environment_summary() :: #{binary() => any()}.
+
 %% Example:
 %% get_environment_request() :: #{}
 -type get_environment_request() :: #{}.
+
 %% Example:
 %% get_software_set_request() :: #{}
 -type get_software_set_request() :: #{}.
+
 
 %% Example:
 %% delete_device_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
 -type delete_device_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% software_set_summary() :: #{
@@ -159,6 +170,7 @@
 %% }
 -type software_set_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_service_exception() :: #{
 %%   <<"message">> => string(),
@@ -166,17 +178,20 @@
 %% }
 -type internal_service_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_environment_response() :: #{
 %%   <<"environment">> => environment()
 %% }
 -type get_environment_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list([string()]())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% software_set() :: #{
@@ -190,6 +205,7 @@
 %% }
 -type software_set() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string(),
@@ -197,6 +213,7 @@
 %%   <<"resourceType">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -206,11 +223,13 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_software_set_response() :: #{
 %%   <<"softwareSet">> => software_set()
 %% }
 -type get_software_set_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% environment() :: #{
@@ -236,6 +255,7 @@
 %% }
 -type environment() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => string(),
@@ -246,11 +266,13 @@
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_devices_response() :: #{
@@ -259,15 +281,18 @@
 %% }
 -type list_devices_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_environments_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_environments_request() :: #{binary() => any()}.
+
 %% Example:
 %% deregister_device_response() :: #{}
 -type deregister_device_response() :: #{}.
+
 
 %% Example:
 %% validation_exception_field() :: #{
@@ -276,6 +301,7 @@
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_software_sets_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -283,24 +309,29 @@
 %% }
 -type list_software_sets_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% deregister_device_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"targetDeviceStatus">> => list(any())
 %% }
 -type deregister_device_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_device_request() :: #{}
 -type get_device_request() :: #{}.
+
 
 %% Example:
 %% create_environment_response() :: #{
 %%   <<"environment">> => environment_summary()
 %% }
 -type create_environment_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_device_response() :: #{}
 -type delete_device_response() :: #{}.
+
 
 %% Example:
 %% device_summary() :: #{
@@ -323,6 +354,7 @@
 %% }
 -type device_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => string(),
@@ -330,11 +362,13 @@
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_environment_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
 -type delete_environment_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_software_sets_response() :: #{
@@ -343,6 +377,7 @@
 %% }
 -type list_software_sets_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% embedded_tag() :: #{
 %%   <<"internalId">> => [string()],
@@ -350,14 +385,17 @@
 %% }
 -type embedded_tag() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% software() :: #{
@@ -366,6 +404,7 @@
 %% }
 -type software() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"fieldList">> => list(validation_exception_field()()),
@@ -373,9 +412,11 @@
 %%   <<"reason">> => list(any())
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% throttling_exception() :: #{
@@ -386,12 +427,14 @@
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_environments_response() :: #{
 %%   <<"environments">> => list(environment_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_environments_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% device() :: #{
@@ -419,6 +462,7 @@
 %% }
 -type device() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_environment_request() :: #{
 %%   <<"clientToken">> => string(),
@@ -434,6 +478,7 @@
 %% }
 -type create_environment_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_environment_request() :: #{
 %%   <<"desiredSoftwareSetId">> => string(),
@@ -446,6 +491,7 @@
 %% }
 -type update_environment_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% maintenance_window() :: #{
 %%   <<"applyTimeOf">> => list(any()),
@@ -457,18 +503,129 @@
 %%   <<"type">> => list(any())
 %% }
 -type maintenance_window() :: #{binary() => any()}.
+
 %% Example:
 %% delete_environment_response() :: #{}
 -type delete_environment_response() :: #{}.
+
 %% Example:
 %% update_software_set_response() :: #{}
 -type update_software_set_response() :: #{}.
+
 
 %% Example:
 %% get_device_response() :: #{
 %%   <<"device">> => device()
 %% }
 -type get_device_response() :: #{binary() => any()}.
+
+-type create_environment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_device_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_environment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type deregister_device_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_device_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_environment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_software_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_devices_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_environments_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_software_sets_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_device_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_environment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_software_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -478,26 +635,14 @@
 -spec create_environment(map(), create_environment_request()) ->
     {ok, create_environment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_environment_errors(), tuple()}.
 create_environment(Client, Input) ->
     create_environment(Client, Input, []).
 
 -spec create_environment(map(), create_environment_request(), proplists:proplist()) ->
     {ok, create_environment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_environment_errors(), tuple()}.
 create_environment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/environments"],
@@ -524,24 +669,14 @@ create_environment(Client, Input0, Options0) ->
 -spec delete_device(map(), binary() | list(), delete_device_request()) ->
     {ok, delete_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_device_errors(), tuple()}.
 delete_device(Client, Id, Input) ->
     delete_device(Client, Id, Input, []).
 
 -spec delete_device(map(), binary() | list(), delete_device_request(), proplists:proplist()) ->
     {ok, delete_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_device_errors(), tuple()}.
 delete_device(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/devices/", aws_util:encode_uri(Id), ""],
@@ -569,24 +704,14 @@ delete_device(Client, Id, Input0, Options0) ->
 -spec delete_environment(map(), binary() | list(), delete_environment_request()) ->
     {ok, delete_environment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_environment_errors(), tuple()}.
 delete_environment(Client, Id, Input) ->
     delete_environment(Client, Id, Input, []).
 
 -spec delete_environment(map(), binary() | list(), delete_environment_request(), proplists:proplist()) ->
     {ok, delete_environment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_environment_errors(), tuple()}.
 delete_environment(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/environments/", aws_util:encode_uri(Id), ""],
@@ -614,24 +739,14 @@ delete_environment(Client, Id, Input0, Options0) ->
 -spec deregister_device(map(), binary() | list(), deregister_device_request()) ->
     {ok, deregister_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, deregister_device_errors(), tuple()}.
 deregister_device(Client, Id, Input) ->
     deregister_device(Client, Id, Input, []).
 
 -spec deregister_device(map(), binary() | list(), deregister_device_request(), proplists:proplist()) ->
     {ok, deregister_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, deregister_device_errors(), tuple()}.
 deregister_device(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/deregister-device/", aws_util:encode_uri(Id), ""],
@@ -658,11 +773,7 @@ deregister_device(Client, Id, Input0, Options0) ->
 -spec get_device(map(), binary() | list()) ->
     {ok, get_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_device_errors(), tuple()}.
 get_device(Client, Id)
   when is_map(Client) ->
     get_device(Client, Id, #{}, #{}).
@@ -670,11 +781,7 @@ get_device(Client, Id)
 -spec get_device(map(), binary() | list(), map(), map()) ->
     {ok, get_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_device_errors(), tuple()}.
 get_device(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_device(Client, Id, QueryMap, HeadersMap, []).
@@ -682,11 +789,7 @@ get_device(Client, Id, QueryMap, HeadersMap)
 -spec get_device(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_device_errors(), tuple()}.
 get_device(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/devices/", aws_util:encode_uri(Id), ""],
@@ -707,11 +810,7 @@ get_device(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_environment(map(), binary() | list()) ->
     {ok, get_environment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_environment_errors(), tuple()}.
 get_environment(Client, Id)
   when is_map(Client) ->
     get_environment(Client, Id, #{}, #{}).
@@ -719,11 +818,7 @@ get_environment(Client, Id)
 -spec get_environment(map(), binary() | list(), map(), map()) ->
     {ok, get_environment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_environment_errors(), tuple()}.
 get_environment(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_environment(Client, Id, QueryMap, HeadersMap, []).
@@ -731,11 +826,7 @@ get_environment(Client, Id, QueryMap, HeadersMap)
 -spec get_environment(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_environment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_environment_errors(), tuple()}.
 get_environment(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environments/", aws_util:encode_uri(Id), ""],
@@ -756,11 +847,7 @@ get_environment(Client, Id, QueryMap, HeadersMap, Options0)
 -spec get_software_set(map(), binary() | list()) ->
     {ok, get_software_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_software_set_errors(), tuple()}.
 get_software_set(Client, Id)
   when is_map(Client) ->
     get_software_set(Client, Id, #{}, #{}).
@@ -768,11 +855,7 @@ get_software_set(Client, Id)
 -spec get_software_set(map(), binary() | list(), map(), map()) ->
     {ok, get_software_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_software_set_errors(), tuple()}.
 get_software_set(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_software_set(Client, Id, QueryMap, HeadersMap, []).
@@ -780,11 +863,7 @@ get_software_set(Client, Id, QueryMap, HeadersMap)
 -spec get_software_set(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_software_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_software_set_errors(), tuple()}.
 get_software_set(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/softwaresets/", aws_util:encode_uri(Id), ""],
@@ -805,10 +884,7 @@ get_software_set(Client, Id, QueryMap, HeadersMap, Options0)
 -spec list_devices(map()) ->
     {ok, list_devices_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_devices_errors(), tuple()}.
 list_devices(Client)
   when is_map(Client) ->
     list_devices(Client, #{}, #{}).
@@ -816,10 +892,7 @@ list_devices(Client)
 -spec list_devices(map(), map(), map()) ->
     {ok, list_devices_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_devices_errors(), tuple()}.
 list_devices(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_devices(Client, QueryMap, HeadersMap, []).
@@ -827,10 +900,7 @@ list_devices(Client, QueryMap, HeadersMap)
 -spec list_devices(map(), map(), map(), proplists:proplist()) ->
     {ok, list_devices_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_devices_errors(), tuple()}.
 list_devices(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/devices"],
@@ -856,10 +926,7 @@ list_devices(Client, QueryMap, HeadersMap, Options0)
 -spec list_environments(map()) ->
     {ok, list_environments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client)
   when is_map(Client) ->
     list_environments(Client, #{}, #{}).
@@ -867,10 +934,7 @@ list_environments(Client)
 -spec list_environments(map(), map(), map()) ->
     {ok, list_environments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_environments(Client, QueryMap, HeadersMap, []).
@@ -878,10 +942,7 @@ list_environments(Client, QueryMap, HeadersMap)
 -spec list_environments(map(), map(), map(), proplists:proplist()) ->
     {ok, list_environments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environments"],
@@ -907,10 +968,7 @@ list_environments(Client, QueryMap, HeadersMap, Options0)
 -spec list_software_sets(map()) ->
     {ok, list_software_sets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_software_sets_errors(), tuple()}.
 list_software_sets(Client)
   when is_map(Client) ->
     list_software_sets(Client, #{}, #{}).
@@ -918,10 +976,7 @@ list_software_sets(Client)
 -spec list_software_sets(map(), map(), map()) ->
     {ok, list_software_sets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_software_sets_errors(), tuple()}.
 list_software_sets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_software_sets(Client, QueryMap, HeadersMap, []).
@@ -929,10 +984,7 @@ list_software_sets(Client, QueryMap, HeadersMap)
 -spec list_software_sets(map(), map(), map(), proplists:proplist()) ->
     {ok, list_software_sets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_software_sets_errors(), tuple()}.
 list_software_sets(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/softwaresets"],
@@ -958,9 +1010,7 @@ list_software_sets(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -968,9 +1018,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -978,9 +1026,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1001,18 +1047,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1039,18 +1081,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1078,22 +1116,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_device(map(), binary() | list(), update_device_request()) ->
     {ok, update_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_device_errors(), tuple()}.
 update_device(Client, Id, Input) ->
     update_device(Client, Id, Input, []).
 
 -spec update_device(map(), binary() | list(), update_device_request(), proplists:proplist()) ->
     {ok, update_device_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_device_errors(), tuple()}.
 update_device(Client, Id, Input0, Options0) ->
     Method = patch,
     Path = ["/devices/", aws_util:encode_uri(Id), ""],
@@ -1120,22 +1150,14 @@ update_device(Client, Id, Input0, Options0) ->
 -spec update_environment(map(), binary() | list(), update_environment_request()) ->
     {ok, update_environment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_environment_errors(), tuple()}.
 update_environment(Client, Id, Input) ->
     update_environment(Client, Id, Input, []).
 
 -spec update_environment(map(), binary() | list(), update_environment_request(), proplists:proplist()) ->
     {ok, update_environment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_environment_errors(), tuple()}.
 update_environment(Client, Id, Input0, Options0) ->
     Method = patch,
     Path = ["/environments/", aws_util:encode_uri(Id), ""],
@@ -1162,22 +1184,14 @@ update_environment(Client, Id, Input0, Options0) ->
 -spec update_software_set(map(), binary() | list(), update_software_set_request()) ->
     {ok, update_software_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_software_set_errors(), tuple()}.
 update_software_set(Client, Id, Input) ->
     update_software_set(Client, Id, Input, []).
 
 -spec update_software_set(map(), binary() | list(), update_software_set_request(), proplists:proplist()) ->
     {ok, update_software_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_software_set_errors(), tuple()}.
 update_software_set(Client, Id, Input0, Options0) ->
     Method = patch,
     Path = ["/softwaresets/", aws_util:encode_uri(Id), ""],

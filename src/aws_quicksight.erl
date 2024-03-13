@@ -445,6 +445,7 @@
 %% }
 -type box_plot_visual() :: #{binary() => any()}.
 
+
 %% Example:
 %% theme() :: #{
 %%   <<"Arn">> => string(),
@@ -457,11 +458,13 @@
 %% }
 -type theme() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_point_drill_up_down_option() :: #{
 %%   <<"AvailabilityStatus">> => list(any())
 %% }
 -type data_point_drill_up_down_option() :: #{binary() => any()}.
+
 
 %% Example:
 %% folder_summary() :: #{
@@ -475,6 +478,7 @@
 %% }
 -type folder_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_topic_refresh_schedule_response() :: #{
 %%   <<"DatasetArn">> => string(),
@@ -485,6 +489,7 @@
 %% }
 -type update_topic_refresh_schedule_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% line_chart_default_series_settings() :: #{
 %%   <<"AxisBinding">> => list(any()),
@@ -492,6 +497,7 @@
 %%   <<"MarkerStyleSettings">> => line_chart_marker_style_settings()
 %% }
 -type line_chart_default_series_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_label_type() :: #{
@@ -503,11 +509,13 @@
 %% }
 -type data_label_type() :: #{binary() => any()}.
 
+
 %% Example:
 %% number_format_configuration() :: #{
 %%   <<"FormatConfiguration">> => numeric_format_configuration()
 %% }
 -type number_format_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_dashboards_request() :: #{
@@ -515,6 +523,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_dashboards_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% growth_rate_computation() :: #{
@@ -525,9 +534,11 @@
 %%   <<"Value">> => measure_field()
 %% }
 -type growth_rate_computation() :: #{binary() => any()}.
+
 %% Example:
 %% describe_dashboard_snapshot_job_request() :: #{}
 -type describe_dashboard_snapshot_job_request() :: #{}.
+
 
 %% Example:
 %% update_dashboard_permissions_response() :: #{
@@ -540,6 +551,7 @@
 %% }
 -type update_dashboard_permissions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% field_based_tooltip() :: #{
 %%   <<"AggregationVisibility">> => list(any()),
@@ -548,11 +560,13 @@
 %% }
 -type field_based_tooltip() :: #{binary() => any()}.
 
+
 %% Example:
 %% gutter_style() :: #{
 %%   <<"Show">> => boolean()
 %% }
 -type gutter_style() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_namespace_response() :: #{
@@ -561,12 +575,14 @@
 %% }
 -type delete_namespace_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% date_time_parameter() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Values">> => list(non_neg_integer()())
 %% }
 -type date_time_parameter() :: #{binary() => any()}.
+
 
 %% Example:
 %% axis_label_options() :: #{
@@ -576,11 +592,13 @@
 %% }
 -type axis_label_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% free_form_layout_canvas_size_options() :: #{
 %%   <<"ScreenCanvasSizeOptions">> => free_form_layout_screen_canvas_size_options()
 %% }
 -type free_form_layout_canvas_size_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_iam_policy_assignments_for_user_request() :: #{
@@ -588,6 +606,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_iam_policy_assignments_for_user_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% dashboard_error() :: #{
@@ -597,12 +616,14 @@
 %% }
 -type dashboard_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% pivot_table_field_collapse_state_option() :: #{
 %%   <<"State">> => list(any()),
 %%   <<"Target">> => pivot_table_field_collapse_state_target()
 %% }
 -type pivot_table_field_collapse_state_option() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_dashboard_embed_url_response() :: #{
@@ -612,11 +633,13 @@
 %% }
 -type get_dashboard_embed_url_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% reference_line_custom_label_configuration() :: #{
 %%   <<"CustomLabel">> => string()
 %% }
 -type reference_line_custom_label_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_analysis_definition_response() :: #{
@@ -631,6 +654,7 @@
 %% }
 -type describe_analysis_definition_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% filled_map_configuration() :: #{
 %%   <<"FieldWells">> => filled_map_field_wells(),
@@ -643,6 +667,7 @@
 %% }
 -type filled_map_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% filter_date_time_picker_control() :: #{
 %%   <<"DisplayOptions">> => date_time_picker_control_display_options(),
@@ -652,6 +677,7 @@
 %%   <<"Type">> => list(any())
 %% }
 -type filter_date_time_picker_control() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_dashboard_response() :: #{
@@ -664,6 +690,7 @@
 %% }
 -type update_dashboard_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% reference_line_data_configuration() :: #{
 %%   <<"AxisBinding">> => list(any()),
@@ -672,6 +699,7 @@
 %%   <<"StaticConfiguration">> => reference_line_static_data_configuration()
 %% }
 -type reference_line_data_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% template_version() :: #{
@@ -687,11 +715,13 @@
 %% }
 -type template_version() :: #{binary() => any()}.
 
+
 %% Example:
 %% trend_arrow_options() :: #{
 %%   <<"Visibility">> => list(any())
 %% }
 -type trend_arrow_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% radar_chart_visual() :: #{
@@ -703,6 +733,7 @@
 %%   <<"VisualId">> => string()
 %% }
 -type radar_chart_visual() :: #{binary() => any()}.
+
 
 %% Example:
 %% filter_list_control() :: #{
@@ -716,6 +747,7 @@
 %% }
 -type filter_list_control() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_aggregation() :: #{
 %%   <<"DatasetRowDateGranularity">> => list(any()),
@@ -723,12 +755,14 @@
 %% }
 -type data_aggregation() :: #{binary() => any()}.
 
+
 %% Example:
 %% field_sort() :: #{
 %%   <<"Direction">> => list(any()),
 %%   <<"FieldId">> => string()
 %% }
 -type field_sort() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_bundle_import_job_summary() :: #{
@@ -740,11 +774,13 @@
 %% }
 -type asset_bundle_import_job_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_point_menu_label_option() :: #{
 %%   <<"AvailabilityStatus">> => list(any())
 %% }
 -type data_point_menu_label_option() :: #{binary() => any()}.
+
 
 %% Example:
 %% string_default_values() :: #{
@@ -752,6 +788,7 @@
 %%   <<"StaticValues">> => list(string()())
 %% }
 -type string_default_values() :: #{binary() => any()}.
+
 
 %% Example:
 %% template_alias() :: #{
@@ -761,6 +798,7 @@
 %% }
 -type template_alias() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_vpc_connection_response() :: #{
 %%   <<"RequestId">> => string(),
@@ -769,6 +807,7 @@
 %% }
 -type describe_vpc_connection_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_dashboard_snapshot_job_request() :: #{
 %%   <<"SnapshotConfiguration">> := snapshot_configuration(),
@@ -776,6 +815,7 @@
 %%   <<"UserConfiguration">> := snapshot_user_configuration()
 %% }
 -type start_dashboard_snapshot_job_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_dashboard_request() :: #{
@@ -790,11 +830,13 @@
 %% }
 -type update_dashboard_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_set_refresh_properties() :: #{
 %%   <<"RefreshConfiguration">> => refresh_configuration()
 %% }
 -type data_set_refresh_properties() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_namespace_response() :: #{
@@ -803,6 +845,7 @@
 %%   <<"Status">> => integer()
 %% }
 -type describe_namespace_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% line_chart_aggregated_field_wells() :: #{
@@ -813,6 +856,7 @@
 %% }
 -type line_chart_aggregated_field_wells() :: #{binary() => any()}.
 
+
 %% Example:
 %% drill_down_filter() :: #{
 %%   <<"CategoryFilter">> => category_drill_down_filter(),
@@ -820,6 +864,7 @@
 %%   <<"TimeRangeFilter">> => time_range_drill_down_filter()
 %% }
 -type drill_down_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% topic_category_filter_constant() :: #{
@@ -829,6 +874,7 @@
 %% }
 -type topic_category_filter_constant() :: #{binary() => any()}.
 
+
 %% Example:
 %% override_dataset_parameter_operation() :: #{
 %%   <<"NewDefaultValues">> => new_default_values(),
@@ -836,6 +882,7 @@
 %%   <<"ParameterName">> => string()
 %% }
 -type override_dataset_parameter_operation() :: #{binary() => any()}.
+
 
 %% Example:
 %% bar_chart_visual() :: #{
@@ -848,12 +895,14 @@
 %% }
 -type bar_chart_visual() :: #{binary() => any()}.
 
+
 %% Example:
 %% table_paginated_report_options() :: #{
 %%   <<"OverflowColumnHeaderVisibility">> => list(any()),
 %%   <<"VerticalOverflowVisibility">> => list(any())
 %% }
 -type table_paginated_report_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_data_set_refresh_properties_response() :: #{
@@ -863,12 +912,14 @@
 %% }
 -type describe_data_set_refresh_properties_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% column_level_permission_rule() :: #{
 %%   <<"ColumnNames">> => list(string()()),
 %%   <<"Principals">> => list(string()())
 %% }
 -type column_level_permission_rule() :: #{binary() => any()}.
+
 
 %% Example:
 %% untag_column_operation() :: #{
@@ -877,11 +928,13 @@
 %% }
 -type untag_column_operation() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"Tags">> := list(tag()())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% snapshot_file_sheet_selection() :: #{
@@ -890,9 +943,11 @@
 %%   <<"VisualIds">> => list(string()())
 %% }
 -type snapshot_file_sheet_selection() :: #{binary() => any()}.
+
 %% Example:
 %% delete_account_subscription_request() :: #{}
 -type delete_account_subscription_request() :: #{}.
+
 
 %% Example:
 %% internal_failure_exception() :: #{
@@ -901,11 +956,13 @@
 %% }
 -type internal_failure_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_columns_operation() :: #{
 %%   <<"Columns">> => list(calculated_column()())
 %% }
 -type create_columns_operation() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_dashboard_definition_response() :: #{
@@ -921,6 +978,7 @@
 %% }
 -type describe_dashboard_definition_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% table_border_options() :: #{
 %%   <<"Color">> => string(),
@@ -929,17 +987,20 @@
 %% }
 -type table_border_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% waterfall_chart_options() :: #{
 %%   <<"TotalBarLabel">> => string()
 %% }
 -type waterfall_chart_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% radar_chart_field_wells() :: #{
 %%   <<"RadarChartAggregatedFieldWells">> => radar_chart_aggregated_field_wells()
 %% }
 -type radar_chart_field_wells() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_template_alias_response() :: #{
@@ -949,12 +1010,14 @@
 %% }
 -type create_template_alias_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_identity_propagation_config_response() :: #{
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
 %% }
 -type update_identity_propagation_config_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% label_options() :: #{
@@ -963,6 +1026,7 @@
 %%   <<"Visibility">> => list(any())
 %% }
 -type label_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% legend_options() :: #{
@@ -974,14 +1038,17 @@
 %% }
 -type legend_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% registered_user_q_search_bar_embedding_configuration() :: #{
 %%   <<"InitialTopicId">> => string()
 %% }
 -type registered_user_q_search_bar_embedding_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% describe_account_settings_request() :: #{}
 -type describe_account_settings_request() :: #{}.
+
 
 %% Example:
 %% string_parameter() :: #{
@@ -989,6 +1056,7 @@
 %%   <<"Values">> => list(string()())
 %% }
 -type string_parameter() :: #{binary() => any()}.
+
 
 %% Example:
 %% upload_settings() :: #{
@@ -999,6 +1067,7 @@
 %%   <<"TextQualifier">> => list(any())
 %% }
 -type upload_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_dashboard_embed_url_request() :: #{
@@ -1013,6 +1082,7 @@
 %% }
 -type get_dashboard_embed_url_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% parameter_control() :: #{
 %%   <<"DateTimePicker">> => parameter_date_time_picker_control(),
@@ -1024,15 +1094,18 @@
 %% }
 -type parameter_control() :: #{binary() => any()}.
 
+
 %% Example:
 %% cell_value_synonym() :: #{
 %%   <<"CellValue">> => string(),
 %%   <<"Synonyms">> => list(string()())
 %% }
 -type cell_value_synonym() :: #{binary() => any()}.
+
 %% Example:
 %% describe_data_source_request() :: #{}
 -type describe_data_source_request() :: #{}.
+
 
 %% Example:
 %% snapshot_configuration() :: #{
@@ -1042,6 +1115,7 @@
 %% }
 -type snapshot_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% numerical_aggregation_function() :: #{
 %%   <<"PercentileAggregation">> => percentile_aggregation(),
@@ -1049,11 +1123,13 @@
 %% }
 -type numerical_aggregation_function() :: #{binary() => any()}.
 
+
 %% Example:
 %% default_grid_layout_configuration() :: #{
 %%   <<"CanvasSizeOptions">> => grid_layout_canvas_size_options()
 %% }
 -type default_grid_layout_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% period_to_date_computation() :: #{
@@ -1065,6 +1141,7 @@
 %% }
 -type period_to_date_computation() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_folder_response() :: #{
 %%   <<"Arn">> => string(),
@@ -1073,9 +1150,11 @@
 %%   <<"Status">> => integer()
 %% }
 -type create_folder_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_folder_request() :: #{}
 -type describe_folder_request() :: #{}.
+
 
 %% Example:
 %% create_vpc_connection_response() :: #{
@@ -1088,6 +1167,7 @@
 %% }
 -type create_vpc_connection_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% logical_table() :: #{
 %%   <<"Alias">> => string(),
@@ -1095,6 +1175,7 @@
 %%   <<"Source">> => logical_table_source()
 %% }
 -type logical_table() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_dashboard_snapshot_job_result_response() :: #{
@@ -1109,6 +1190,7 @@
 %% }
 -type describe_dashboard_snapshot_job_result_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% negative_format() :: #{
 %%   <<"Prefix">> => string(),
@@ -1116,11 +1198,13 @@
 %% }
 -type negative_format() :: #{binary() => any()}.
 
+
 %% Example:
 %% anonymous_user_q_search_bar_embedding_configuration() :: #{
 %%   <<"InitialTopicId">> => string()
 %% }
 -type anonymous_user_q_search_bar_embedding_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% parameter_text_area_control() :: #{
@@ -1132,12 +1216,14 @@
 %% }
 -type parameter_text_area_control() :: #{binary() => any()}.
 
+
 %% Example:
 %% visual_subtitle_label_options() :: #{
 %%   <<"FormatText">> => long_format_text(),
 %%   <<"Visibility">> => list(any())
 %% }
 -type visual_subtitle_label_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_source() :: #{
@@ -1146,6 +1232,7 @@
 %%   <<"UploadSettings">> => upload_settings()
 %% }
 -type s3_source() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_data_sets_response() :: #{
@@ -1156,6 +1243,7 @@
 %% }
 -type list_data_sets_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% date_time_picker_control_display_options() :: #{
 %%   <<"DateTimeFormat">> => string(),
@@ -1164,12 +1252,14 @@
 %% }
 -type date_time_picker_control_display_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% pivot_table_rows_label_options() :: #{
 %%   <<"CustomLabel">> => string(),
 %%   <<"Visibility">> => list(any())
 %% }
 -type pivot_table_rows_label_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% combo_chart_sort_configuration() :: #{
@@ -1180,15 +1270,18 @@
 %% }
 -type combo_chart_sort_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% topic_numeric_equality_filter() :: #{
 %%   <<"Aggregation">> => list(any()),
 %%   <<"Constant">> => topic_singular_filter_constant()
 %% }
 -type topic_numeric_equality_filter() :: #{binary() => any()}.
+
 %% Example:
 %% describe_account_subscription_request() :: #{}
 -type describe_account_subscription_request() :: #{}.
+
 
 %% Example:
 %% integer_parameter() :: #{
@@ -1197,12 +1290,14 @@
 %% }
 -type integer_parameter() :: #{binary() => any()}.
 
+
 %% Example:
 %% default_interactive_layout_configuration() :: #{
 %%   <<"FreeForm">> => default_free_form_layout_configuration(),
 %%   <<"Grid">> => default_grid_layout_configuration()
 %% }
 -type default_interactive_layout_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% insight_configuration() :: #{
@@ -1212,20 +1307,24 @@
 %% }
 -type insight_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% pivot_table_field_wells() :: #{
 %%   <<"PivotTableAggregatedFieldWells">> => pivot_table_aggregated_field_wells()
 %% }
 -type pivot_table_field_wells() :: #{binary() => any()}.
+
 %% Example:
 %% describe_refresh_schedule_request() :: #{}
 -type describe_refresh_schedule_request() :: #{}.
+
 
 %% Example:
 %% default_free_form_layout_configuration() :: #{
 %%   <<"CanvasSizeOptions">> => free_form_layout_canvas_size_options()
 %% }
 -type default_free_form_layout_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% numerical_measure_field() :: #{
@@ -1236,12 +1335,14 @@
 %% }
 -type numerical_measure_field() :: #{binary() => any()}.
 
+
 %% Example:
 %% schedule_refresh_on_entity() :: #{
 %%   <<"DayOfMonth">> => string(),
 %%   <<"DayOfWeek">> => list(any())
 %% }
 -type schedule_refresh_on_entity() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_bundle_import_job_error() :: #{
@@ -1250,6 +1351,7 @@
 %%   <<"Type">> => string()
 %% }
 -type asset_bundle_import_job_error() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_vpc_connections_response() :: #{
@@ -1260,6 +1362,7 @@
 %% }
 -type list_vpc_connections_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_refresh_schedule_response() :: #{
 %%   <<"Arn">> => string(),
@@ -1269,6 +1372,7 @@
 %% }
 -type delete_refresh_schedule_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% predefined_hierarchy() :: #{
 %%   <<"Columns">> => list(column_identifier()()),
@@ -1276,6 +1380,7 @@
 %%   <<"HierarchyId">> => string()
 %% }
 -type predefined_hierarchy() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_ingestions_response() :: #{
@@ -1285,6 +1390,7 @@
 %%   <<"Status">> => integer()
 %% }
 -type list_ingestions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_ip_restriction_response() :: #{
@@ -1296,6 +1402,7 @@
 %% }
 -type describe_ip_restriction_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% aurora_parameters() :: #{
 %%   <<"Database">> => string(),
@@ -1304,12 +1411,14 @@
 %% }
 -type aurora_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% analysis_source_template() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"DataSetReferences">> => list(data_set_reference()())
 %% }
 -type analysis_source_template() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_refresh_schedule_response() :: #{
@@ -1319,12 +1428,15 @@
 %%   <<"Status">> => integer()
 %% }
 -type update_refresh_schedule_response() :: #{binary() => any()}.
+
 %% Example:
 %% cancel_ingestion_request() :: #{}
 -type cancel_ingestion_request() :: #{}.
+
 %% Example:
 %% delete_theme_alias_request() :: #{}
 -type delete_theme_alias_request() :: #{}.
+
 
 %% Example:
 %% dashboard_version_definition() :: #{
@@ -1339,6 +1451,7 @@
 %% }
 -type dashboard_version_definition() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_user_response() :: #{
 %%   <<"RequestId">> => string(),
@@ -1346,6 +1459,7 @@
 %%   <<"User">> => user()
 %% }
 -type update_user_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_data_source_request() :: #{
@@ -1362,6 +1476,7 @@
 %% }
 -type create_data_source_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_topic_refresh_schedules_response() :: #{
 %%   <<"RefreshSchedules">> => list(topic_refresh_schedule_summary()()),
@@ -1372,12 +1487,14 @@
 %% }
 -type list_topic_refresh_schedules_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_bundle_resource_permissions() :: #{
 %%   <<"Actions">> => list(string()()),
 %%   <<"Principals">> => list(string()())
 %% }
 -type asset_bundle_resource_permissions() :: #{binary() => any()}.
+
 
 %% Example:
 %% waterfall_chart_configuration() :: #{
@@ -1396,6 +1513,7 @@
 %% }
 -type waterfall_chart_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_folders_response() :: #{
 %%   <<"FolderSummaryList">> => list(folder_summary()()),
@@ -1404,6 +1522,7 @@
 %%   <<"Status">> => integer()
 %% }
 -type search_folders_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% gauge_chart_configuration() :: #{
@@ -1416,12 +1535,14 @@
 %% }
 -type gauge_chart_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_data_set_refresh_properties_response() :: #{
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
 %% }
 -type put_data_set_refresh_properties_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_data_source_permissions_response() :: #{
@@ -1433,12 +1554,14 @@
 %% }
 -type describe_data_source_permissions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% folder_member() :: #{
 %%   <<"MemberId">> => string(),
 %%   <<"MemberType">> => list(any())
 %% }
 -type folder_member() :: #{binary() => any()}.
+
 
 %% Example:
 %% decimal_dataset_parameter() :: #{
@@ -1449,12 +1572,14 @@
 %% }
 -type decimal_dataset_parameter() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_template_request() :: #{
 %%   <<"AliasName">> => string(),
 %%   <<"VersionNumber">> => float()
 %% }
 -type describe_template_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% sheet_text_box() :: #{
@@ -1463,11 +1588,13 @@
 %% }
 -type sheet_text_box() :: #{binary() => any()}.
 
+
 %% Example:
 %% sheet_layout_element_maximization_option() :: #{
 %%   <<"AvailabilityStatus">> => list(any())
 %% }
 -type sheet_layout_element_maximization_option() :: #{binary() => any()}.
+
 
 %% Example:
 %% relational_table() :: #{
@@ -1479,6 +1606,7 @@
 %% }
 -type relational_table() :: #{binary() => any()}.
 
+
 %% Example:
 %% table_field_options() :: #{
 %%   <<"Order">> => list(string()()),
@@ -1486,6 +1614,7 @@
 %%   <<"SelectedFieldOptions">> => list(table_field_option()())
 %% }
 -type table_field_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% k_p_i_options() :: #{
@@ -1501,6 +1630,7 @@
 %% }
 -type k_p_i_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_templates_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -1508,11 +1638,13 @@
 %% }
 -type list_templates_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% sheet_controls_option() :: #{
 %%   <<"VisibilityState">> => list(any())
 %% }
 -type sheet_controls_option() :: #{binary() => any()}.
+
 
 %% Example:
 %% tile_layout_style() :: #{
@@ -1521,11 +1653,13 @@
 %% }
 -type tile_layout_style() :: #{binary() => any()}.
 
+
 %% Example:
 %% percentile_aggregation() :: #{
 %%   <<"PercentileValue">> => float()
 %% }
 -type percentile_aggregation() :: #{binary() => any()}.
+
 
 %% Example:
 %% untag_resource_response() :: #{
@@ -1534,11 +1668,13 @@
 %% }
 -type untag_resource_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% entity() :: #{
 %%   <<"Path">> => string()
 %% }
 -type entity() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_analysis_response() :: #{
@@ -1550,11 +1686,13 @@
 %% }
 -type update_analysis_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% waterfall_chart_color_configuration() :: #{
 %%   <<"GroupColorConfiguration">> => waterfall_chart_group_color_configuration()
 %% }
 -type waterfall_chart_color_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% axis_label_reference_options() :: #{
@@ -1563,17 +1701,20 @@
 %% }
 -type axis_label_reference_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% table_field_custom_icon_content() :: #{
 %%   <<"Icon">> => list(any())
 %% }
 -type table_field_custom_icon_content() :: #{binary() => any()}.
 
+
 %% Example:
 %% column_description() :: #{
 %%   <<"Text">> => string()
 %% }
 -type column_description() :: #{binary() => any()}.
+
 
 %% Example:
 %% k_p_i_field_wells() :: #{
@@ -1583,6 +1724,7 @@
 %% }
 -type k_p_i_field_wells() :: #{binary() => any()}.
 
+
 %% Example:
 %% text_field_control_display_options() :: #{
 %%   <<"InfoIconLabelOptions">> => sheet_control_info_icon_label_options(),
@@ -1591,12 +1733,14 @@
 %% }
 -type text_field_control_display_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_bundle_import_job_theme_override_parameters() :: #{
 %%   <<"Name">> => string(),
 %%   <<"ThemeId">> => string()
 %% }
 -type asset_bundle_import_job_theme_override_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% tooltip_options() :: #{
@@ -1606,11 +1750,13 @@
 %% }
 -type tooltip_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% gauge_chart_arc_conditional_formatting() :: #{
 %%   <<"ForegroundColor">> => conditional_formatting_color()
 %% }
 -type gauge_chart_arc_conditional_formatting() :: #{binary() => any()}.
+
 
 %% Example:
 %% axis_tick_label_options() :: #{
@@ -1619,12 +1765,14 @@
 %% }
 -type axis_tick_label_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_ingestions_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_ingestions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_namespaces_request() :: #{
@@ -1633,12 +1781,14 @@
 %% }
 -type list_namespaces_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_identity_propagation_configs_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_identity_propagation_configs_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% pie_chart_sort_configuration() :: #{
@@ -1649,12 +1799,14 @@
 %% }
 -type pie_chart_sort_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_data_set_refresh_properties_response() :: #{
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
 %% }
 -type delete_data_set_refresh_properties_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% k_p_i_conditional_formatting_option() :: #{
@@ -1665,12 +1817,14 @@
 %% }
 -type k_p_i_conditional_formatting_option() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_bundle_export_job_vpc_connection_override_properties() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Properties">> => list(list(any())())
 %% }
 -type asset_bundle_export_job_vpc_connection_override_properties() :: #{binary() => any()}.
+
 
 %% Example:
 %% line_chart_sort_configuration() :: #{
@@ -1682,6 +1836,7 @@
 %% }
 -type line_chart_sort_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_template_permissions_response() :: #{
 %%   <<"Permissions">> => list(resource_permission()()),
@@ -1692,6 +1847,7 @@
 %% }
 -type update_template_permissions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_theme_alias_response() :: #{
 %%   <<"RequestId">> => string(),
@@ -1699,6 +1855,7 @@
 %%   <<"ThemeAlias">> => theme_alias()
 %% }
 -type create_theme_alias_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_set() :: #{
@@ -1722,6 +1879,7 @@
 %% }
 -type data_set() :: #{binary() => any()}.
 
+
 %% Example:
 %% radar_chart_sort_configuration() :: #{
 %%   <<"CategoryItemsLimit">> => items_limit_configuration(),
@@ -1731,17 +1889,20 @@
 %% }
 -type radar_chart_sort_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_ingestion_request() :: #{
 %%   <<"IngestionType">> => list(any())
 %% }
 -type create_ingestion_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% geospatial_heatmap_data_color() :: #{
 %%   <<"Color">> => string()
 %% }
 -type geospatial_heatmap_data_color() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_iam_policy_assignment_request() :: #{
@@ -1752,11 +1913,13 @@
 %% }
 -type create_iam_policy_assignment_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_template_alias_request() :: #{
 %%   <<"TemplateVersionNumber">> := float()
 %% }
 -type update_template_alias_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_asset_bundle_import_jobs_request() :: #{
@@ -1764,6 +1927,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_asset_bundle_import_jobs_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% lookback_window() :: #{
@@ -1773,17 +1937,20 @@
 %% }
 -type lookback_window() :: #{binary() => any()}.
 
+
 %% Example:
 %% cluster_marker() :: #{
 %%   <<"SimpleClusterMarker">> => simple_cluster_marker()
 %% }
 -type cluster_marker() :: #{binary() => any()}.
 
+
 %% Example:
 %% pivot_table_sort_configuration() :: #{
 %%   <<"FieldSortOptions">> => list(pivot_field_sort_options()())
 %% }
 -type pivot_table_sort_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_user_groups_response() :: #{
@@ -1794,12 +1961,14 @@
 %% }
 -type list_user_groups_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% authorized_targets_by_service() :: #{
 %%   <<"AuthorizedTargets">> => list(string()()),
 %%   <<"Service">> => list(any())
 %% }
 -type authorized_targets_by_service() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_set_search_filter() :: #{
@@ -1808,6 +1977,7 @@
 %%   <<"Value">> => string()
 %% }
 -type data_set_search_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% forecast_computation() :: #{
@@ -1825,17 +1995,20 @@
 %% }
 -type forecast_computation() :: #{binary() => any()}.
 
+
 %% Example:
 %% filled_map_field_wells() :: #{
 %%   <<"FilledMapAggregatedFieldWells">> => filled_map_aggregated_field_wells()
 %% }
 -type filled_map_field_wells() :: #{binary() => any()}.
 
+
 %% Example:
 %% snapshot_file_group() :: #{
 %%   <<"Files">> => list(snapshot_file()())
 %% }
 -type snapshot_file_group() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_folders_request() :: #{
@@ -1845,11 +2018,13 @@
 %% }
 -type search_folders_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_topic_refresh_schedule_request() :: #{
 %%   <<"RefreshSchedule">> := topic_refresh_schedule()
 %% }
 -type update_topic_refresh_schedule_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_template_aliases_response() :: #{
@@ -1859,6 +2034,7 @@
 %%   <<"TemplateAliasList">> => list(template_alias()())
 %% }
 -type list_template_aliases_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% time_based_forecast_properties() :: #{
@@ -1871,12 +2047,14 @@
 %% }
 -type time_based_forecast_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_bundle_import_job_data_source_credential_pair() :: #{
 %%   <<"Password">> => string(),
 %%   <<"Username">> => string()
 %% }
 -type asset_bundle_import_job_data_source_credential_pair() :: #{binary() => any()}.
+
 
 %% Example:
 %% header_footer_section_configuration() :: #{
@@ -1886,6 +2064,7 @@
 %% }
 -type header_footer_section_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% field_folder() :: #{
 %%   <<"columns">> => list(string()()),
@@ -1893,12 +2072,14 @@
 %% }
 -type field_folder() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_bundle_import_job_vpc_connection_override_tags() :: #{
 %%   <<"Tags">> => list(tag()()),
 %%   <<"VPCConnectionIds">> => list(string()())
 %% }
 -type asset_bundle_import_job_vpc_connection_override_tags() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_iam_policy_assignments_response() :: #{
@@ -1908,6 +2089,7 @@
 %%   <<"Status">> => integer()
 %% }
 -type list_iam_policy_assignments_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% namespace_info_v2() :: #{
@@ -1920,6 +2102,7 @@
 %% }
 -type namespace_info_v2() :: #{binary() => any()}.
 
+
 %% Example:
 %% quick_sight_user_not_found_exception() :: #{
 %%   <<"Message">> => string(),
@@ -1927,12 +2110,14 @@
 %% }
 -type quick_sight_user_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% funnel_chart_sort_configuration() :: #{
 %%   <<"CategoryItemsLimit">> => items_limit_configuration(),
 %%   <<"CategorySort">> => list(field_sort_options()())
 %% }
 -type funnel_chart_sort_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% font_configuration() :: #{
@@ -1944,11 +2129,13 @@
 %% }
 -type font_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% gauge_chart_conditional_formatting() :: #{
 %%   <<"ConditionalFormattingOptions">> => list(gauge_chart_conditional_formatting_option()())
 %% }
 -type gauge_chart_conditional_formatting() :: #{binary() => any()}.
+
 
 %% Example:
 %% time_range_drill_down_filter() :: #{
@@ -1959,6 +2146,7 @@
 %% }
 -type time_range_drill_down_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_bundle_import_source_description() :: #{
 %%   <<"Body">> => string(),
@@ -1966,21 +2154,25 @@
 %% }
 -type asset_bundle_import_source_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% athena_parameters() :: #{
 %%   <<"RoleArn">> => string(),
 %%   <<"WorkGroup">> => string()
 %% }
 -type athena_parameters() :: #{binary() => any()}.
+
 %% Example:
 %% describe_iam_policy_assignment_request() :: #{}
 -type describe_iam_policy_assignment_request() :: #{}.
+
 
 %% Example:
 %% bin_count_options() :: #{
 %%   <<"Value">> => integer()
 %% }
 -type bin_count_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_asset_bundle_export_job_response() :: #{
@@ -2003,15 +2195,18 @@
 %%   <<"Warnings">> => list(asset_bundle_export_job_warning()())
 %% }
 -type describe_asset_bundle_export_job_response() :: #{binary() => any()}.
+
 %% Example:
 %% restore_analysis_request() :: #{}
 -type restore_analysis_request() :: #{}.
+
 
 %% Example:
 %% free_form_section_layout_configuration() :: #{
 %%   <<"Elements">> => list(free_form_layout_element()())
 %% }
 -type free_form_section_layout_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_bundle_import_job_data_source_override_parameters() :: #{
@@ -2024,6 +2219,7 @@
 %% }
 -type asset_bundle_import_job_data_source_override_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% geospatial_coordinate_bounds() :: #{
 %%   <<"East">> => float(),
@@ -2033,12 +2229,14 @@
 %% }
 -type geospatial_coordinate_bounds() :: #{binary() => any()}.
 
+
 %% Example:
 %% conditional_formatting_color() :: #{
 %%   <<"Gradient">> => conditional_formatting_gradient_color(),
 %%   <<"Solid">> => conditional_formatting_solid_color()
 %% }
 -type conditional_formatting_color() :: #{binary() => any()}.
+
 
 %% Example:
 %% parameter_text_field_control() :: #{
@@ -2049,6 +2247,7 @@
 %% }
 -type parameter_text_field_control() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_unavailable_exception() :: #{
 %%   <<"Message">> => string(),
@@ -2057,11 +2256,13 @@
 %% }
 -type resource_unavailable_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% geospatial_heatmap_configuration() :: #{
 %%   <<"HeatmapColor">> => geospatial_heatmap_color_scale()
 %% }
 -type geospatial_heatmap_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_bundle_import_job_theme_override_permissions() :: #{
@@ -2070,6 +2271,7 @@
 %% }
 -type asset_bundle_import_job_theme_override_permissions() :: #{binary() => any()}.
 
+
 %% Example:
 %% gauge_chart_primary_value_conditional_formatting() :: #{
 %%   <<"Icon">> => conditional_formatting_icon(),
@@ -2077,12 +2279,14 @@
 %% }
 -type gauge_chart_primary_value_conditional_formatting() :: #{binary() => any()}.
 
+
 %% Example:
 %% sheet_element_rendering_rule() :: #{
 %%   <<"ConfigurationOverrides">> => sheet_element_configuration_overrides(),
 %%   <<"Expression">> => string()
 %% }
 -type sheet_element_rendering_rule() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_asset_bundle_import_job_response() :: #{
@@ -2093,12 +2297,14 @@
 %% }
 -type start_asset_bundle_import_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% table_field_link_content_configuration() :: #{
 %%   <<"CustomIconContent">> => table_field_custom_icon_content(),
 %%   <<"CustomTextContent">> => table_field_custom_text_content()
 %% }
 -type table_field_link_content_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_refresh_schedule_response() :: #{
@@ -2109,6 +2315,7 @@
 %% }
 -type describe_refresh_schedule_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% category_filter_configuration() :: #{
 %%   <<"CustomFilterConfiguration">> => custom_filter_configuration(),
@@ -2116,6 +2323,7 @@
 %%   <<"FilterListConfiguration">> => filter_list_configuration()
 %% }
 -type category_filter_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_template_definition_response() :: #{
@@ -2130,6 +2338,7 @@
 %% }
 -type describe_template_definition_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% topic_refresh_schedule() :: #{
 %%   <<"BasedOnSpiceSchedule">> => boolean(),
@@ -2141,6 +2350,7 @@
 %% }
 -type topic_refresh_schedule() :: #{binary() => any()}.
 
+
 %% Example:
 %% column_sort() :: #{
 %%   <<"AggregationFunction">> => aggregation_function(),
@@ -2148,6 +2358,7 @@
 %%   <<"SortBy">> => column_identifier()
 %% }
 -type column_sort() :: #{binary() => any()}.
+
 
 %% Example:
 %% input_column() :: #{
@@ -2157,6 +2368,7 @@
 %% }
 -type input_column() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_account_settings_response() :: #{
 %%   <<"RequestId">> => string(),
@@ -2164,11 +2376,13 @@
 %% }
 -type update_account_settings_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_bundle_export_job_resource_id_override_configuration() :: #{
 %%   <<"PrefixForAllResources">> => boolean()
 %% }
 -type asset_bundle_export_job_resource_id_override_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% axis_display_range() :: #{
@@ -2177,12 +2391,14 @@
 %% }
 -type axis_display_range() :: #{binary() => any()}.
 
+
 %% Example:
 %% filled_map_shape_conditional_formatting() :: #{
 %%   <<"FieldId">> => string(),
 %%   <<"Format">> => shape_conditional_format()
 %% }
 -type filled_map_shape_conditional_formatting() :: #{binary() => any()}.
+
 
 %% Example:
 %% network_interface() :: #{
@@ -2193,6 +2409,7 @@
 %%   <<"SubnetId">> => string()
 %% }
 -type network_interface() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_iam_policy_assignment_response() :: #{
@@ -2206,11 +2423,13 @@
 %% }
 -type create_iam_policy_assignment_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% line_chart_field_wells() :: #{
 %%   <<"LineChartAggregatedFieldWells">> => line_chart_aggregated_field_wells()
 %% }
 -type line_chart_field_wells() :: #{binary() => any()}.
+
 
 %% Example:
 %% dashboard_version() :: #{
@@ -2227,11 +2446,13 @@
 %% }
 -type dashboard_version() :: #{binary() => any()}.
 
+
 %% Example:
 %% table_unaggregated_field_wells() :: #{
 %%   <<"Values">> => list(unaggregated_field()())
 %% }
 -type table_unaggregated_field_wells() :: #{binary() => any()}.
+
 
 %% Example:
 %% analysis_summary() :: #{
@@ -2244,12 +2465,14 @@
 %% }
 -type analysis_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% integer_default_values() :: #{
 %%   <<"DynamicValue">> => dynamic_default_value(),
 %%   <<"StaticValues">> => list(float()())
 %% }
 -type integer_default_values() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_analysis_permissions_request() :: #{
@@ -2258,11 +2481,13 @@
 %% }
 -type update_analysis_permissions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% pie_chart_field_wells() :: #{
 %%   <<"PieChartAggregatedFieldWells">> => pie_chart_aggregated_field_wells()
 %% }
 -type pie_chart_field_wells() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_template_request() :: #{
@@ -2276,11 +2501,13 @@
 %% }
 -type create_template_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% anonymous_user_dashboard_embedding_configuration() :: #{
 %%   <<"InitialDashboardId">> => string()
 %% }
 -type anonymous_user_dashboard_embedding_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_dashboard_published_version_response() :: #{
@@ -2291,12 +2518,14 @@
 %% }
 -type update_dashboard_published_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% table_field_link_configuration() :: #{
 %%   <<"Content">> => table_field_link_content_configuration(),
 %%   <<"Target">> => list(any())
 %% }
 -type table_field_link_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% generate_embed_url_for_registered_user_request() :: #{
@@ -2307,6 +2536,7 @@
 %% }
 -type generate_embed_url_for_registered_user_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_data_sources_request() :: #{
 %%   <<"Filters">> := list(data_source_search_filter()()),
@@ -2314,6 +2544,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type search_data_sources_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% account_info() :: #{
@@ -2326,12 +2557,14 @@
 %% }
 -type account_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% global_table_border_options() :: #{
 %%   <<"SideSpecificBorder">> => table_side_border_options(),
 %%   <<"UniformBorder">> => table_border_options()
 %% }
 -type global_table_border_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% filter_slider_control() :: #{
@@ -2346,17 +2579,20 @@
 %% }
 -type filter_slider_control() :: #{binary() => any()}.
 
+
 %% Example:
 %% histogram_field_wells() :: #{
 %%   <<"HistogramAggregatedFieldWells">> => histogram_aggregated_field_wells()
 %% }
 -type histogram_field_wells() :: #{binary() => any()}.
 
+
 %% Example:
 %% loading_animation() :: #{
 %%   <<"Visibility">> => list(any())
 %% }
 -type loading_animation() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_control_display_options() :: #{
@@ -2366,6 +2602,7 @@
 %%   <<"TitleOptions">> => label_options()
 %% }
 -type list_control_display_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_account_customization_response() :: #{
@@ -2378,6 +2615,7 @@
 %% }
 -type update_account_customization_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% integer_dataset_parameter() :: #{
 %%   <<"DefaultValues">> => integer_dataset_parameter_default_values(),
@@ -2387,17 +2625,20 @@
 %% }
 -type integer_dataset_parameter() :: #{binary() => any()}.
 
+
 %% Example:
 %% snapshot_s3_destination_configuration() :: #{
 %%   <<"BucketConfiguration">> => s3_bucket_configuration()
 %% }
 -type snapshot_s3_destination_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_dashboard_links_request() :: #{
 %%   <<"LinkEntities">> := list(string()())
 %% }
 -type update_dashboard_links_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% geo_spatial_column_group() :: #{
@@ -2407,6 +2648,7 @@
 %% }
 -type geo_spatial_column_group() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_topic_request() :: #{
 %%   <<"Tags">> => list(tag()()),
@@ -2415,12 +2657,14 @@
 %% }
 -type create_topic_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_data_sets_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_data_sets_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% decimal_value_when_unset_configuration() :: #{
@@ -2429,11 +2673,13 @@
 %% }
 -type decimal_value_when_unset_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% font() :: #{
 %%   <<"FontFamily">> => string()
 %% }
 -type font() :: #{binary() => any()}.
+
 
 %% Example:
 %% unsupported_pricing_plan_exception() :: #{
@@ -2441,6 +2687,7 @@
 %%   <<"RequestId">> => string()
 %% }
 -type unsupported_pricing_plan_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% geospatial_point_style_options() :: #{
@@ -2450,11 +2697,13 @@
 %% }
 -type geospatial_point_style_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% radar_chart_series_settings() :: #{
 %%   <<"AreaStyleSettings">> => radar_chart_area_style_settings()
 %% }
 -type radar_chart_series_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_data_set_refresh_properties_request() :: #{
@@ -2462,12 +2711,14 @@
 %% }
 -type put_data_set_refresh_properties_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% scroll_bar_options() :: #{
 %%   <<"Visibility">> => list(any()),
 %%   <<"VisibleRange">> => visible_range_options()
 %% }
 -type scroll_bar_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_data_sources_response() :: #{
@@ -2478,11 +2729,13 @@
 %% }
 -type search_data_sources_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_topic_request() :: #{
 %%   <<"Topic">> := topic_details()
 %% }
 -type update_topic_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% theme_alias() :: #{
@@ -2491,12 +2744,15 @@
 %%   <<"ThemeVersionNumber">> => float()
 %% }
 -type theme_alias() :: #{binary() => any()}.
+
 %% Example:
 %% update_dashboard_published_version_request() :: #{}
 -type update_dashboard_published_version_request() :: #{}.
+
 %% Example:
 %% describe_asset_bundle_import_job_request() :: #{}
 -type describe_asset_bundle_import_job_request() :: #{}.
+
 
 %% Example:
 %% layout() :: #{
@@ -2504,11 +2760,13 @@
 %% }
 -type layout() :: #{binary() => any()}.
 
+
 %% Example:
 %% reference_line_static_data_configuration() :: #{
 %%   <<"Value">> => float()
 %% }
 -type reference_line_static_data_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% free_form_layout_element_border_style() :: #{
@@ -2516,6 +2774,7 @@
 %%   <<"Visibility">> => list(any())
 %% }
 -type free_form_layout_element_border_style() :: #{binary() => any()}.
+
 
 %% Example:
 %% filter_group() :: #{
@@ -2527,6 +2786,7 @@
 %% }
 -type filter_group() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_iam_policy_assignment_request() :: #{
 %%   <<"AssignmentStatus">> => list(any()),
@@ -2534,9 +2794,11 @@
 %%   <<"PolicyArn">> => string()
 %% }
 -type update_iam_policy_assignment_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_namespace_request() :: #{}
 -type describe_namespace_request() :: #{}.
+
 
 %% Example:
 %% create_ingestion_response() :: #{
@@ -2548,6 +2810,7 @@
 %% }
 -type create_ingestion_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_account_customization_request() :: #{
 %%   <<"Namespace">> => string(),
@@ -2555,11 +2818,13 @@
 %% }
 -type describe_account_customization_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% aws_iot_analytics_parameters() :: #{
 %%   <<"DataSetName">> => string()
 %% }
 -type aws_iot_analytics_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_template_request() :: #{
@@ -2571,11 +2836,13 @@
 %% }
 -type update_template_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% context_menu_option() :: #{
 %%   <<"AvailabilityStatus">> => list(any())
 %% }
 -type context_menu_option() :: #{binary() => any()}.
+
 
 %% Example:
 %% custom_filter_list_configuration() :: #{
@@ -2585,6 +2852,7 @@
 %%   <<"SelectAllOptions">> => list(any())
 %% }
 -type custom_filter_list_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% scatter_plot_categorically_aggregated_field_wells() :: #{
@@ -2596,17 +2864,20 @@
 %% }
 -type scatter_plot_categorically_aggregated_field_wells() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_theme_alias_request() :: #{
 %%   <<"ThemeVersionNumber">> := float()
 %% }
 -type create_theme_alias_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% bookmarks_configurations() :: #{
 %%   <<"Enabled">> => boolean()
 %% }
 -type bookmarks_configurations() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_data_source_response() :: #{
@@ -2618,6 +2889,7 @@
 %% }
 -type update_data_source_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% gauge_chart_options() :: #{
 %%   <<"Arc">> => arc_configuration(),
@@ -2627,9 +2899,11 @@
 %%   <<"PrimaryValueFontConfiguration">> => font_configuration()
 %% }
 -type gauge_chart_options() :: #{binary() => any()}.
+
 %% Example:
 %% describe_topic_request() :: #{}
 -type describe_topic_request() :: #{}.
+
 
 %% Example:
 %% top_bottom_filter() :: #{
@@ -2642,12 +2916,14 @@
 %% }
 -type top_bottom_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% error_info() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Type">> => list(any())
 %% }
 -type error_info() :: #{binary() => any()}.
+
 
 %% Example:
 %% maximum_minimum_computation() :: #{
@@ -2659,12 +2935,14 @@
 %% }
 -type maximum_minimum_computation() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_account_customization_response() :: #{
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
 %% }
 -type delete_account_customization_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% field_sort_options() :: #{
@@ -2673,11 +2951,13 @@
 %% }
 -type field_sort_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% vpc_connection() :: #{
@@ -2696,6 +2976,7 @@
 %% }
 -type vpc_connection() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_vpc_connection_request() :: #{
 %%   <<"DnsResolvers">> => list(string()()),
@@ -2708,6 +2989,7 @@
 %% }
 -type create_vpc_connection_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% unaggregated_field() :: #{
 %%   <<"Column">> => column_identifier(),
@@ -2716,12 +2998,14 @@
 %% }
 -type unaggregated_field() :: #{binary() => any()}.
 
+
 %% Example:
 %% line_series_axis_display_options() :: #{
 %%   <<"AxisOptions">> => axis_display_options(),
 %%   <<"MissingDataConfigurations">> => list(missing_data_configuration()())
 %% }
 -type line_series_axis_display_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% sheet_visual_scoping_configuration() :: #{
@@ -2731,6 +3015,7 @@
 %% }
 -type sheet_visual_scoping_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% dynamic_default_value() :: #{
 %%   <<"DefaultValueColumn">> => column_identifier(),
@@ -2739,12 +3024,14 @@
 %% }
 -type dynamic_default_value() :: #{binary() => any()}.
 
+
 %% Example:
 %% axis_display_min_max_range() :: #{
 %%   <<"Maximum">> => float(),
 %%   <<"Minimum">> => float()
 %% }
 -type axis_display_min_max_range() :: #{binary() => any()}.
+
 
 %% Example:
 %% pivot_table_cell_conditional_formatting() :: #{
@@ -2755,6 +3042,7 @@
 %% }
 -type pivot_table_cell_conditional_formatting() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_analyses_response() :: #{
 %%   <<"AnalysisSummaryList">> => list(analysis_summary()()),
@@ -2763,6 +3051,7 @@
 %%   <<"Status">> => integer()
 %% }
 -type search_analyses_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% parameters() :: #{
@@ -2773,6 +3062,7 @@
 %% }
 -type parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% grid_layout_configuration() :: #{
 %%   <<"CanvasSizeOptions">> => grid_layout_canvas_size_options(),
@@ -2780,11 +3070,13 @@
 %% }
 -type grid_layout_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_theme_request() :: #{
 %%   <<"VersionNumber">> => float()
 %% }
 -type delete_theme_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% template_version_definition() :: #{
@@ -2799,6 +3091,7 @@
 %% }
 -type template_version_definition() :: #{binary() => any()}.
 
+
 %% Example:
 %% named_entity_definition_metric() :: #{
 %%   <<"Aggregation">> => list(any()),
@@ -2806,11 +3099,13 @@
 %% }
 -type named_entity_definition_metric() :: #{binary() => any()}.
 
+
 %% Example:
 %% free_form_layout_screen_canvas_size_options() :: #{
 %%   <<"OptimizedViewPortWidth">> => string()
 %% }
 -type free_form_layout_screen_canvas_size_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% field_label_type() :: #{
@@ -2818,9 +3113,11 @@
 %%   <<"Visibility">> => list(any())
 %% }
 -type field_label_type() :: #{binary() => any()}.
+
 %% Example:
 %% describe_data_set_permissions_request() :: #{}
 -type describe_data_set_permissions_request() :: #{}.
+
 
 %% Example:
 %% sheet_definition() :: #{
@@ -2838,6 +3135,7 @@
 %% }
 -type sheet_definition() :: #{binary() => any()}.
 
+
 %% Example:
 %% relative_dates_filter() :: #{
 %%   <<"AnchorDateConfiguration">> => anchor_date_configuration(),
@@ -2853,12 +3151,14 @@
 %% }
 -type relative_dates_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% line_chart_series_settings() :: #{
 %%   <<"LineStyleSettings">> => line_chart_line_style_settings(),
 %%   <<"MarkerStyleSettings">> => line_chart_marker_style_settings()
 %% }
 -type line_chart_series_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% pivot_field_sort_options() :: #{
@@ -2867,12 +3167,14 @@
 %% }
 -type pivot_field_sort_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% queue_info() :: #{
 %%   <<"QueuedIngestion">> => string(),
 %%   <<"WaitingOnIngestion">> => string()
 %% }
 -type queue_info() :: #{binary() => any()}.
+
 
 %% Example:
 %% rename_column_operation() :: #{
@@ -2881,6 +3183,7 @@
 %% }
 -type rename_column_operation() :: #{binary() => any()}.
 
+
 %% Example:
 %% long_format_text() :: #{
 %%   <<"PlainText">> => string(),
@@ -2888,11 +3191,13 @@
 %% }
 -type long_format_text() :: #{binary() => any()}.
 
+
 %% Example:
 %% tree_map_field_wells() :: #{
 %%   <<"TreeMapAggregatedFieldWells">> => tree_map_aggregated_field_wells()
 %% }
 -type tree_map_field_wells() :: #{binary() => any()}.
+
 
 %% Example:
 %% grid_layout_element() :: #{
@@ -2905,6 +3210,7 @@
 %% }
 -type grid_layout_element() :: #{binary() => any()}.
 
+
 %% Example:
 %% column_identifier() :: #{
 %%   <<"ColumnName">> => string(),
@@ -2912,23 +3218,28 @@
 %% }
 -type column_identifier() :: #{binary() => any()}.
 
+
 %% Example:
 %% heat_map_field_wells() :: #{
 %%   <<"HeatMapAggregatedFieldWells">> => heat_map_aggregated_field_wells()
 %% }
 -type heat_map_field_wells() :: #{binary() => any()}.
+
 %% Example:
 %% delete_role_custom_permission_request() :: #{}
 -type delete_role_custom_permission_request() :: #{}.
+
 
 %% Example:
 %% ssl_properties() :: #{
 %%   <<"DisableSsl">> => boolean()
 %% }
 -type ssl_properties() :: #{binary() => any()}.
+
 %% Example:
 %% describe_topic_permissions_request() :: #{}
 -type describe_topic_permissions_request() :: #{}.
+
 
 %% Example:
 %% table_field_option() :: #{
@@ -2940,6 +3251,7 @@
 %% }
 -type table_field_option() :: #{binary() => any()}.
 
+
 %% Example:
 %% arc_axis_display_range() :: #{
 %%   <<"Max">> => float(),
@@ -2947,12 +3259,14 @@
 %% }
 -type arc_axis_display_range() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_account_customization_request() :: #{
 %%   <<"AccountCustomization">> := account_customization(),
 %%   <<"Namespace">> => string()
 %% }
 -type update_account_customization_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% word_cloud_chart_configuration() :: #{
@@ -2963,6 +3277,7 @@
 %%   <<"WordCloudOptions">> => word_cloud_options()
 %% }
 -type word_cloud_chart_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% histogram_configuration() :: #{
@@ -2978,6 +3293,7 @@
 %% }
 -type histogram_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% string_dataset_parameter() :: #{
 %%   <<"DefaultValues">> => string_dataset_parameter_default_values(),
@@ -2987,6 +3303,7 @@
 %% }
 -type string_dataset_parameter() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_analysis_request() :: #{
 %%   <<"ForceDeleteWithoutRecovery">> => boolean(),
@@ -2994,11 +3311,13 @@
 %% }
 -type delete_analysis_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_group_request() :: #{
 %%   <<"Description">> => string()
 %% }
 -type update_group_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% custom_sql() :: #{
@@ -3009,11 +3328,13 @@
 %% }
 -type custom_sql() :: #{binary() => any()}.
 
+
 %% Example:
 %% filter_selectable_values() :: #{
 %%   <<"Values">> => list(string()())
 %% }
 -type filter_selectable_values() :: #{binary() => any()}.
+
 
 %% Example:
 %% donut_options() :: #{
@@ -3021,6 +3342,7 @@
 %%   <<"DonutCenterOptions">> => donut_center_options()
 %% }
 -type donut_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_analysis_response() :: #{
@@ -3032,6 +3354,7 @@
 %% }
 -type create_analysis_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_analyses_request() :: #{
 %%   <<"Filters">> := list(analysis_search_filter()()),
@@ -3039,6 +3362,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type search_analyses_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_theme_permissions_response() :: #{
@@ -3050,6 +3374,7 @@
 %% }
 -type describe_theme_permissions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% integer_parameter_declaration() :: #{
 %%   <<"DefaultValues">> => integer_default_values(),
@@ -3060,6 +3385,7 @@
 %% }
 -type integer_parameter_declaration() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_folder_permissions_response() :: #{
 %%   <<"Arn">> => string(),
@@ -3069,9 +3395,11 @@
 %%   <<"Status">> => integer()
 %% }
 -type update_folder_permissions_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_data_set_refresh_properties_request() :: #{}
 -type describe_data_set_refresh_properties_request() :: #{}.
+
 
 %% Example:
 %% describe_theme_response() :: #{
@@ -3081,11 +3409,13 @@
 %% }
 -type describe_theme_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% state_persistence_configurations() :: #{
 %%   <<"Enabled">> => boolean()
 %% }
 -type state_persistence_configurations() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_path_sort() :: #{
@@ -3093,6 +3423,7 @@
 %%   <<"SortPaths">> => list(data_path_value()())
 %% }
 -type data_path_sort() :: #{binary() => any()}.
+
 
 %% Example:
 %% folder_search_filter() :: #{
@@ -3102,11 +3433,13 @@
 %% }
 -type folder_search_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% arc_options() :: #{
 %%   <<"ArcThickness">> => list(any())
 %% }
 -type arc_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% combo_chart_field_wells() :: #{
@@ -3114,11 +3447,13 @@
 %% }
 -type combo_chart_field_wells() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_identity_propagation_config_request() :: #{
 %%   <<"AuthorizedTargets">> => list(string()())
 %% }
 -type update_identity_propagation_config_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_topic_permissions_response() :: #{
@@ -3130,6 +3465,7 @@
 %% }
 -type describe_topic_permissions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% custom_content_configuration() :: #{
 %%   <<"ContentType">> => list(any()),
@@ -3139,6 +3475,7 @@
 %% }
 -type custom_content_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% template_error() :: #{
 %%   <<"Message">> => string(),
@@ -3147,6 +3484,7 @@
 %% }
 -type template_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_data_source_response() :: #{
 %%   <<"DataSource">> => data_source(),
@@ -3154,6 +3492,7 @@
 %%   <<"Status">> => integer()
 %% }
 -type describe_data_source_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% dashboard_version_summary() :: #{
@@ -3166,6 +3505,7 @@
 %% }
 -type dashboard_version_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_topic_response() :: #{
 %%   <<"Arn">> => string(),
@@ -3176,11 +3516,13 @@
 %% }
 -type create_topic_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% date_axis_options() :: #{
 %%   <<"MissingDateVisibility">> => list(any())
 %% }
 -type date_axis_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% join_instruction() :: #{
@@ -3193,6 +3535,7 @@
 %% }
 -type join_instruction() :: #{binary() => any()}.
 
+
 %% Example:
 %% comparison_format_configuration() :: #{
 %%   <<"NumberDisplayFormatConfiguration">> => number_display_format_configuration(),
@@ -3200,11 +3543,13 @@
 %% }
 -type comparison_format_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_bundle_import_job_resource_id_override_configuration() :: #{
 %%   <<"PrefixForAllResources">> => string()
 %% }
 -type asset_bundle_import_job_resource_id_override_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_theme_alias_response() :: #{
@@ -3213,6 +3558,7 @@
 %%   <<"ThemeAlias">> => theme_alias()
 %% }
 -type describe_theme_alias_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% analysis_definition() :: #{
@@ -3227,12 +3573,14 @@
 %% }
 -type analysis_definition() :: #{binary() => any()}.
 
+
 %% Example:
 %% integer_value_when_unset_configuration() :: #{
 %%   <<"CustomValue">> => float(),
 %%   <<"ValueWhenUnsetOption">> => list(any())
 %% }
 -type integer_value_when_unset_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_data_set_response() :: #{
@@ -3245,6 +3593,7 @@
 %% }
 -type update_data_set_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_theme_response() :: #{
 %%   <<"Arn">> => string(),
@@ -3256,12 +3605,14 @@
 %% }
 -type create_theme_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_template_definition_request() :: #{
 %%   <<"AliasName">> => string(),
 %%   <<"VersionNumber">> => float()
 %% }
 -type describe_template_definition_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% pivot_total_options() :: #{
@@ -3276,11 +3627,13 @@
 %% }
 -type pivot_total_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% table_inline_visualization() :: #{
 %%   <<"DataBars">> => data_bars_options()
 %% }
 -type table_inline_visualization() :: #{binary() => any()}.
+
 
 %% Example:
 %% named_entity_definition() :: #{
@@ -3291,15 +3644,18 @@
 %%   <<"PropertyUsage">> => list(any())
 %% }
 -type named_entity_definition() :: #{binary() => any()}.
+
 %% Example:
 %% delete_vpc_connection_request() :: #{}
 -type delete_vpc_connection_request() :: #{}.
+
 
 %% Example:
 %% snapshot_job_result() :: #{
 %%   <<"AnonymousUsers">> => list(anonymous_user_snapshot_job_result()())
 %% }
 -type snapshot_job_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% dashboard_search_filter() :: #{
@@ -3309,12 +3665,14 @@
 %% }
 -type dashboard_search_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% small_multiples_axis_properties() :: #{
 %%   <<"Placement">> => list(any()),
 %%   <<"Scale">> => list(any())
 %% }
 -type small_multiples_axis_properties() :: #{binary() => any()}.
+
 
 %% Example:
 %% maria_db_parameters() :: #{
@@ -3323,6 +3681,7 @@
 %%   <<"Port">> => integer()
 %% }
 -type maria_db_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_analysis_permissions_response() :: #{
@@ -3334,12 +3693,14 @@
 %% }
 -type describe_analysis_permissions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% axis_linear_scale() :: #{
 %%   <<"StepCount">> => integer(),
 %%   <<"StepSize">> => float()
 %% }
 -type axis_linear_scale() :: #{binary() => any()}.
+
 
 %% Example:
 %% parameter_list_control() :: #{
@@ -3353,6 +3714,7 @@
 %% }
 -type parameter_list_control() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_role_custom_permission_response() :: #{
 %%   <<"CustomPermissionsName">> => string(),
@@ -3361,11 +3723,13 @@
 %% }
 -type describe_role_custom_permission_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% sheet_control_layout_configuration() :: #{
 %%   <<"GridLayout">> => grid_layout_configuration()
 %% }
 -type sheet_control_layout_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% line_chart_configuration() :: #{
@@ -3393,11 +3757,13 @@
 %% }
 -type line_chart_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% visual_axis_sort_option() :: #{
 %%   <<"AvailabilityStatus">> => list(any())
 %% }
 -type visual_axis_sort_option() :: #{binary() => any()}.
+
 
 %% Example:
 %% topic_named_entity() :: #{
@@ -3409,6 +3775,7 @@
 %% }
 -type topic_named_entity() :: #{binary() => any()}.
 
+
 %% Example:
 %% pivot_table_total_options() :: #{
 %%   <<"ColumnSubtotalOptions">> => subtotal_options(),
@@ -3417,6 +3784,7 @@
 %%   <<"RowTotalOptions">> => pivot_total_options()
 %% }
 -type pivot_table_total_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% bar_chart_aggregated_field_wells() :: #{
@@ -3427,12 +3795,14 @@
 %% }
 -type bar_chart_aggregated_field_wells() :: #{binary() => any()}.
 
+
 %% Example:
 %% unsupported_user_edition_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RequestId">> => string()
 %% }
 -type unsupported_user_edition_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% display_format_options() :: #{
@@ -3451,17 +3821,20 @@
 %% }
 -type display_format_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% total_aggregation_function() :: #{
 %%   <<"SimpleTotalAggregationFunction">> => list(any())
 %% }
 -type total_aggregation_function() :: #{binary() => any()}.
 
+
 %% Example:
 %% link_sharing_configuration() :: #{
 %%   <<"Permissions">> => list(resource_permission()())
 %% }
 -type link_sharing_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_vpc_connections_request() :: #{
@@ -3470,12 +3843,14 @@
 %% }
 -type list_vpc_connections_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% mapped_data_set_parameter() :: #{
 %%   <<"DataSetIdentifier">> => string(),
 %%   <<"DataSetParameterName">> => string()
 %% }
 -type mapped_data_set_parameter() :: #{binary() => any()}.
+
 
 %% Example:
 %% starburst_parameters() :: #{
@@ -3486,11 +3861,13 @@
 %% }
 -type starburst_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% shape_conditional_format() :: #{
 %%   <<"BackgroundColor">> => conditional_formatting_color()
 %% }
 -type shape_conditional_format() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_data_sources_request() :: #{
@@ -3498,6 +3875,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_data_sources_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% tree_map_configuration() :: #{
@@ -3514,12 +3892,14 @@
 %% }
 -type tree_map_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_role_custom_permission_response() :: #{
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
 %% }
 -type delete_role_custom_permission_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% active_iam_policy_assignment() :: #{
@@ -3528,12 +3908,14 @@
 %% }
 -type active_iam_policy_assignment() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_bundle_import_job_analysis_override_tags() :: #{
 %%   <<"AnalysisIds">> => list(string()()),
 %%   <<"Tags">> => list(tag()())
 %% }
 -type asset_bundle_import_job_analysis_override_tags() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_namespace_request() :: #{
@@ -3543,6 +3925,7 @@
 %% }
 -type create_namespace_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_bars_options() :: #{
 %%   <<"FieldId">> => string(),
@@ -3550,6 +3933,7 @@
 %%   <<"PositiveColor">> => string()
 %% }
 -type data_bars_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_set_configuration() :: #{
@@ -3559,6 +3943,7 @@
 %% }
 -type data_set_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_source_search_filter() :: #{
 %%   <<"Name">> => list(any()),
@@ -3566,6 +3951,7 @@
 %%   <<"Value">> => string()
 %% }
 -type data_source_search_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% heat_map_aggregated_field_wells() :: #{
@@ -3575,11 +3961,13 @@
 %% }
 -type heat_map_aggregated_field_wells() :: #{binary() => any()}.
 
+
 %% Example:
 %% default_paginated_layout_configuration() :: #{
 %%   <<"SectionBased">> => default_section_based_layout_configuration()
 %% }
 -type default_paginated_layout_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_iam_policy_assignments_for_user_response() :: #{
@@ -3590,6 +3978,7 @@
 %% }
 -type list_iam_policy_assignments_for_user_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_data_source_response() :: #{
 %%   <<"Arn">> => string(),
@@ -3599,6 +3988,7 @@
 %% }
 -type delete_data_source_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% axis_scale() :: #{
 %%   <<"Linear">> => axis_linear_scale(),
@@ -3606,11 +3996,13 @@
 %% }
 -type axis_scale() :: #{binary() => any()}.
 
+
 %% Example:
 %% missing_data_configuration() :: #{
 %%   <<"TreatmentOption">> => list(any())
 %% }
 -type missing_data_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_dashboard_snapshot_job_response() :: #{
@@ -3628,6 +4020,7 @@
 %% }
 -type describe_dashboard_snapshot_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% text_area_control_display_options() :: #{
 %%   <<"InfoIconLabelOptions">> => sheet_control_info_icon_label_options(),
@@ -3636,11 +4029,13 @@
 %% }
 -type text_area_control_display_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_template_request() :: #{
 %%   <<"VersionNumber">> => float()
 %% }
 -type delete_template_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_folder_membership_response() :: #{
@@ -3649,23 +4044,28 @@
 %% }
 -type delete_folder_membership_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% filled_map_conditional_formatting_option() :: #{
 %%   <<"Shape">> => filled_map_shape_conditional_formatting()
 %% }
 -type filled_map_conditional_formatting_option() :: #{binary() => any()}.
+
 %% Example:
 %% describe_data_set_request() :: #{}
 -type describe_data_set_request() :: #{}.
+
 %% Example:
 %% delete_data_set_refresh_properties_request() :: #{}
 -type delete_data_set_refresh_properties_request() :: #{}.
+
 
 %% Example:
 %% conditional_formatting_icon_display_configuration() :: #{
 %%   <<"IconDisplayOption">> => list(any())
 %% }
 -type conditional_formatting_icon_display_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% arc_configuration() :: #{
@@ -3674,11 +4074,13 @@
 %% }
 -type arc_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% box_plot_style_options() :: #{
 %%   <<"FillStyle">> => list(any())
 %% }
 -type box_plot_style_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% minimum_label_type() :: #{
@@ -3686,11 +4088,13 @@
 %% }
 -type minimum_label_type() :: #{binary() => any()}.
 
+
 %% Example:
 %% anonymous_user_dashboard_visual_embedding_configuration() :: #{
 %%   <<"InitialDashboardVisualId">> => dashboard_visual_id()
 %% }
 -type anonymous_user_dashboard_visual_embedding_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_topic_response() :: #{
@@ -3702,12 +4106,14 @@
 %% }
 -type describe_topic_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% registered_user_dashboard_embedding_configuration() :: #{
 %%   <<"FeatureConfigurations">> => registered_user_dashboard_feature_configurations(),
 %%   <<"InitialDashboardId">> => string()
 %% }
 -type registered_user_dashboard_embedding_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% numeric_range_filter() :: #{
@@ -3723,6 +4129,7 @@
 %% }
 -type numeric_range_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_data_sets_response() :: #{
 %%   <<"DataSetSummaries">> => list(data_set_summary()()),
@@ -3731,6 +4138,7 @@
 %%   <<"Status">> => integer()
 %% }
 -type search_data_sets_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_identity_propagation_configs_response() :: #{
@@ -3741,11 +4149,13 @@
 %% }
 -type list_identity_propagation_configs_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% box_plot_field_wells() :: #{
 %%   <<"BoxPlotAggregatedFieldWells">> => box_plot_aggregated_field_wells()
 %% }
 -type box_plot_field_wells() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_bundle_resource_link_sharing_configuration() :: #{
@@ -3753,12 +4163,14 @@
 %% }
 -type asset_bundle_resource_link_sharing_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RequestId">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_themes_request() :: #{
@@ -3768,11 +4180,13 @@
 %% }
 -type list_themes_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% column_group_column_schema() :: #{
 %%   <<"Name">> => string()
 %% }
 -type column_group_column_schema() :: #{binary() => any()}.
+
 
 %% Example:
 %% filter_relative_date_time_control() :: #{
@@ -3783,6 +4197,7 @@
 %% }
 -type filter_relative_date_time_control() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => string(),
@@ -3791,17 +4206,20 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% cluster_marker_configuration() :: #{
 %%   <<"ClusterMarker">> => cluster_marker()
 %% }
 -type cluster_marker_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% string_dataset_parameter_default_values() :: #{
 %%   <<"StaticValues">> => list(string()())
 %% }
 -type string_dataset_parameter_default_values() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_dashboard_definition_request() :: #{
@@ -3810,6 +4228,7 @@
 %% }
 -type describe_dashboard_definition_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_analyses_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -3817,15 +4236,18 @@
 %% }
 -type list_analyses_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% numeric_range_filter_value() :: #{
 %%   <<"Parameter">> => string(),
 %%   <<"StaticValue">> => float()
 %% }
 -type numeric_range_filter_value() :: #{binary() => any()}.
+
 %% Example:
 %% describe_analysis_request() :: #{}
 -type describe_analysis_request() :: #{}.
+
 
 %% Example:
 %% section_style() :: #{
@@ -3834,17 +4256,20 @@
 %% }
 -type section_style() :: #{binary() => any()}.
 
+
 %% Example:
 %% colors_configuration() :: #{
 %%   <<"CustomColors">> => list(custom_color()())
 %% }
 -type colors_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% section_after_page_break() :: #{
 %%   <<"Status">> => list(any())
 %% }
 -type section_after_page_break() :: #{binary() => any()}.
+
 
 %% Example:
 %% analysis_search_filter() :: #{
@@ -3853,6 +4278,7 @@
 %%   <<"Value">> => string()
 %% }
 -type analysis_search_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% pivot_table_visual() :: #{
@@ -3865,11 +4291,13 @@
 %% }
 -type pivot_table_visual() :: #{binary() => any()}.
 
+
 %% Example:
 %% text_control_placeholder_options() :: #{
 %%   <<"Visibility">> => list(any())
 %% }
 -type text_control_placeholder_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% text_conditional_format() :: #{
@@ -3879,6 +4307,7 @@
 %% }
 -type text_conditional_format() :: #{binary() => any()}.
 
+
 %% Example:
 %% unique_values_computation() :: #{
 %%   <<"Category">> => dimension_field(),
@@ -3886,6 +4315,7 @@
 %%   <<"Name">> => string()
 %% }
 -type unique_values_computation() :: #{binary() => any()}.
+
 
 %% Example:
 %% funnel_chart_data_label_options() :: #{
@@ -3899,11 +4329,13 @@
 %% }
 -type funnel_chart_data_label_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% axis_logarithmic_scale() :: #{
 %%   <<"Base">> => float()
 %% }
 -type axis_logarithmic_scale() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_template_permissions_response() :: #{
@@ -3914,6 +4346,7 @@
 %%   <<"TemplateId">> => string()
 %% }
 -type describe_template_permissions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% ingestion() :: #{
@@ -3931,6 +4364,7 @@
 %% }
 -type ingestion() :: #{binary() => any()}.
 
+
 %% Example:
 %% subtotal_options() :: #{
 %%   <<"CustomLabel">> => string(),
@@ -3943,9 +4377,11 @@
 %%   <<"ValueCellStyle">> => table_cell_style()
 %% }
 -type subtotal_options() :: #{binary() => any()}.
+
 %% Example:
 %% describe_theme_permissions_request() :: #{}
 -type describe_theme_permissions_request() :: #{}.
+
 
 %% Example:
 %% axis_display_options() :: #{
@@ -3958,12 +4394,14 @@
 %% }
 -type axis_display_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_bundle_import_job_analysis_override_parameters() :: #{
 %%   <<"AnalysisId">> => string(),
 %%   <<"Name">> => string()
 %% }
 -type asset_bundle_import_job_analysis_override_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% pivot_table_field_collapse_state_target() :: #{
@@ -3972,12 +4410,14 @@
 %% }
 -type pivot_table_field_collapse_state_target() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Value">> => string()
 %% }
 -type tag() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_data_set_request() :: #{
@@ -3999,6 +4439,7 @@
 %% }
 -type create_data_set_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% registered_user_dashboard_feature_configurations() :: #{
 %%   <<"Bookmarks">> => bookmarks_configurations(),
@@ -4006,11 +4447,13 @@
 %% }
 -type registered_user_dashboard_feature_configurations() :: #{binary() => any()}.
 
+
 %% Example:
 %% filter_operation() :: #{
 %%   <<"ConditionExpression">> => string()
 %% }
 -type filter_operation() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_bundle_export_job_data_set_override_properties() :: #{
@@ -4018,6 +4461,7 @@
 %%   <<"Properties">> => list(list(any())())
 %% }
 -type asset_bundle_export_job_data_set_override_properties() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_data_sets_request() :: #{
@@ -4027,6 +4471,7 @@
 %% }
 -type search_data_sets_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% visual_palette() :: #{
 %%   <<"ChartColor">> => string(),
@@ -4034,11 +4479,13 @@
 %% }
 -type visual_palette() :: #{binary() => any()}.
 
+
 %% Example:
 %% visible_range_options() :: #{
 %%   <<"PercentRange">> => percent_visible_range()
 %% }
 -type visible_range_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_bundle_export_job_error() :: #{
@@ -4048,12 +4495,14 @@
 %% }
 -type asset_bundle_export_job_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_request_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RequestId">> => string()
 %% }
 -type invalid_request_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% scatter_plot_unaggregated_field_wells() :: #{
@@ -4065,6 +4514,7 @@
 %% }
 -type scatter_plot_unaggregated_field_wells() :: #{binary() => any()}.
 
+
 %% Example:
 %% register_user_response() :: #{
 %%   <<"RequestId">> => string(),
@@ -4074,6 +4524,7 @@
 %% }
 -type register_user_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% topic_category_filter() :: #{
 %%   <<"CategoryFilterFunction">> => list(any()),
@@ -4082,6 +4533,7 @@
 %%   <<"Inverse">> => boolean()
 %% }
 -type topic_category_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_folder_permissions_response() :: #{
@@ -4094,6 +4546,7 @@
 %% }
 -type describe_folder_permissions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% semantic_entity_type() :: #{
 %%   <<"SubTypeName">> => string(),
@@ -4102,11 +4555,13 @@
 %% }
 -type semantic_entity_type() :: #{binary() => any()}.
 
+
 %% Example:
 %% filled_map_sort_configuration() :: #{
 %%   <<"CategorySort">> => list(field_sort_options()())
 %% }
 -type filled_map_sort_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% snowflake_parameters() :: #{
@@ -4116,12 +4571,14 @@
 %% }
 -type snowflake_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% template_source_analysis() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"DataSetReferences">> => list(data_set_reference()())
 %% }
 -type template_source_analysis() :: #{binary() => any()}.
+
 
 %% Example:
 %% field_tooltip_item() :: #{
@@ -4132,11 +4589,13 @@
 %% }
 -type field_tooltip_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% scatter_plot_sort_configuration() :: #{
 %%   <<"ScatterPlotLimitConfiguration">> => items_limit_configuration()
 %% }
 -type scatter_plot_sort_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% geospatial_window_options() :: #{
@@ -4144,9 +4603,11 @@
 %%   <<"MapZoomMode">> => list(any())
 %% }
 -type geospatial_window_options() :: #{binary() => any()}.
+
 %% Example:
 %% describe_template_alias_request() :: #{}
 -type describe_template_alias_request() :: #{}.
+
 
 %% Example:
 %% describe_account_subscription_response() :: #{
@@ -4156,6 +4617,7 @@
 %% }
 -type describe_account_subscription_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_asset_bundle_export_jobs_response() :: #{
 %%   <<"AssetBundleExportJobSummaryList">> => list(asset_bundle_export_job_summary()()),
@@ -4164,6 +4626,7 @@
 %%   <<"Status">> => integer()
 %% }
 -type list_asset_bundle_export_jobs_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% k_p_i_visual() :: #{
@@ -4176,6 +4639,7 @@
 %%   <<"VisualId">> => string()
 %% }
 -type k_p_i_visual() :: #{binary() => any()}.
+
 
 %% Example:
 %% dashboard() :: #{
@@ -4190,6 +4654,7 @@
 %% }
 -type dashboard() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_topic_refresh_response() :: #{
 %%   <<"RefreshDetails">> => topic_refresh_details(),
@@ -4198,12 +4663,14 @@
 %% }
 -type describe_topic_refresh_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% conditional_formatting_custom_icon_options() :: #{
 %%   <<"Icon">> => list(any()),
 %%   <<"UnicodeIcon">> => string()
 %% }
 -type conditional_formatting_custom_icon_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% panel_configuration() :: #{
@@ -4219,6 +4686,7 @@
 %% }
 -type panel_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_bundle_import_job_data_source_override_tags() :: #{
 %%   <<"DataSourceIds">> => list(string()()),
@@ -4226,12 +4694,14 @@
 %% }
 -type asset_bundle_import_job_data_source_override_tags() :: #{binary() => any()}.
 
+
 %% Example:
 %% domain_not_whitelisted_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RequestId">> => string()
 %% }
 -type domain_not_whitelisted_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% semantic_type() :: #{
@@ -4245,6 +4715,7 @@
 %% }
 -type semantic_type() :: #{binary() => any()}.
 
+
 %% Example:
 %% table_visual() :: #{
 %%   <<"Actions">> => list(visual_custom_action()()),
@@ -4256,17 +4727,20 @@
 %% }
 -type table_visual() :: #{binary() => any()}.
 
+
 %% Example:
 %% visual_menu_option() :: #{
 %%   <<"AvailabilityStatus">> => list(any())
 %% }
 -type visual_menu_option() :: #{binary() => any()}.
 
+
 %% Example:
 %% dashboard_visual_publish_options() :: #{
 %%   <<"ExportHiddenFieldsOption">> => export_hidden_fields_option()
 %% }
 -type dashboard_visual_publish_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% computation() :: #{
@@ -4283,11 +4757,13 @@
 %% }
 -type computation() :: #{binary() => any()}.
 
+
 %% Example:
 %% export_to_csv_option() :: #{
 %%   <<"AvailabilityStatus">> => list(any())
 %% }
 -type export_to_csv_option() :: #{binary() => any()}.
+
 
 %% Example:
 %% default_formatting() :: #{
@@ -4296,11 +4772,13 @@
 %% }
 -type default_formatting() :: #{binary() => any()}.
 
+
 %% Example:
 %% analysis_source_entity() :: #{
 %%   <<"SourceTemplate">> => analysis_source_template()
 %% }
 -type analysis_source_entity() :: #{binary() => any()}.
+
 
 %% Example:
 %% conditional_formatting_custom_icon_condition() :: #{
@@ -4311,11 +4789,13 @@
 %% }
 -type conditional_formatting_custom_icon_condition() :: #{binary() => any()}.
 
+
 %% Example:
 %% snapshot_anonymous_user_redacted() :: #{
 %%   <<"RowLevelPermissionTagKeys">> => list(string()())
 %% }
 -type snapshot_anonymous_user_redacted() :: #{binary() => any()}.
+
 
 %% Example:
 %% invalid_next_token_exception() :: #{
@@ -4323,6 +4803,7 @@
 %%   <<"RequestId">> => string()
 %% }
 -type invalid_next_token_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% metric_comparison_computation() :: #{
@@ -4334,6 +4815,7 @@
 %% }
 -type metric_comparison_computation() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_analysis_response() :: #{
 %%   <<"Analysis">> => analysis(),
@@ -4342,6 +4824,7 @@
 %% }
 -type describe_analysis_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_parameter_value_exception() :: #{
 %%   <<"Message">> => string(),
@@ -4349,12 +4832,14 @@
 %% }
 -type invalid_parameter_value_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% namespace_error() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Type">> => list(any())
 %% }
 -type namespace_error() :: #{binary() => any()}.
+
 
 %% Example:
 %% template_summary() :: #{
@@ -4367,6 +4852,7 @@
 %% }
 -type template_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_path_label_type() :: #{
 %%   <<"FieldId">> => string(),
@@ -4375,12 +4861,14 @@
 %% }
 -type data_path_label_type() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_template_versions_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_template_versions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_bundle_export_job_theme_override_properties() :: #{
@@ -4389,12 +4877,14 @@
 %% }
 -type asset_bundle_export_job_theme_override_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% slider_control_display_options() :: #{
 %%   <<"InfoIconLabelOptions">> => sheet_control_info_icon_label_options(),
 %%   <<"TitleOptions">> => label_options()
 %% }
 -type slider_control_display_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_analysis_request() :: #{
@@ -4407,6 +4897,7 @@
 %% }
 -type update_analysis_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% total_aggregation_computation() :: #{
 %%   <<"ComputationId">> => string(),
@@ -4415,11 +4906,13 @@
 %% }
 -type total_aggregation_computation() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_refresh_schedule_request() :: #{
 %%   <<"Schedule">> := refresh_schedule()
 %% }
 -type update_refresh_schedule_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_users_response() :: #{
@@ -4430,6 +4923,7 @@
 %% }
 -type list_users_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_role_memberships_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -4437,11 +4931,13 @@
 %% }
 -type list_role_memberships_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% project_operation() :: #{
 %%   <<"ProjectedColumns">> => list(string()())
 %% }
 -type project_operation() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_theme_request() :: #{
@@ -4452,11 +4948,13 @@
 %% }
 -type update_theme_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_theme_alias_request() :: #{
 %%   <<"ThemeVersionNumber">> := float()
 %% }
 -type update_theme_alias_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_theme_request() :: #{
@@ -4469,12 +4967,14 @@
 %% }
 -type create_theme_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% axis_data_options() :: #{
 %%   <<"DateAxisOptions">> => date_axis_options(),
 %%   <<"NumericAxisOptions">> => numeric_axis_options()
 %% }
 -type axis_data_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_groups_request() :: #{
@@ -4483,6 +4983,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type search_groups_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% radar_chart_configuration() :: #{
@@ -4505,6 +5006,7 @@
 %% }
 -type radar_chart_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_dashboard_response() :: #{
 %%   <<"Dashboard">> => dashboard(),
@@ -4513,17 +5015,20 @@
 %% }
 -type describe_dashboard_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% amazon_elasticsearch_parameters() :: #{
 %%   <<"Domain">> => string()
 %% }
 -type amazon_elasticsearch_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% pivot_table_conditional_formatting_option() :: #{
 %%   <<"Cell">> => pivot_table_cell_conditional_formatting()
 %% }
 -type pivot_table_conditional_formatting_option() :: #{binary() => any()}.
+
 
 %% Example:
 %% sankey_diagram_visual() :: #{
@@ -4534,6 +5039,7 @@
 %%   <<"VisualId">> => string()
 %% }
 -type sankey_diagram_visual() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_dashboard_permissions_response() :: #{
@@ -4546,6 +5052,7 @@
 %% }
 -type describe_dashboard_permissions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_data_set_response() :: #{
 %%   <<"Arn">> => string(),
@@ -4557,6 +5064,7 @@
 %% }
 -type create_data_set_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_topics_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -4564,14 +5072,17 @@
 %% }
 -type list_topics_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% k_p_i_visual_layout_options() :: #{
 %%   <<"StandardLayout">> => k_p_i_visual_standard_layout()
 %% }
 -type k_p_i_visual_layout_options() :: #{binary() => any()}.
+
 %% Example:
 %% delete_topic_refresh_schedule_request() :: #{}
 -type delete_topic_refresh_schedule_request() :: #{}.
+
 
 %% Example:
 %% theme_version() :: #{
@@ -4586,6 +5097,7 @@
 %% }
 -type theme_version() :: #{binary() => any()}.
 
+
 %% Example:
 %% postgre_sql_parameters() :: #{
 %%   <<"Database">> => string(),
@@ -4593,6 +5105,7 @@
 %%   <<"Port">> => integer()
 %% }
 -type postgre_sql_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% parameter_date_time_picker_control() :: #{
@@ -4603,11 +5116,13 @@
 %% }
 -type parameter_date_time_picker_control() :: #{binary() => any()}.
 
+
 %% Example:
 %% refresh_configuration() :: #{
 %%   <<"IncrementalRefresh">> => incremental_refresh()
 %% }
 -type refresh_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% k_p_i_actual_value_conditional_formatting() :: #{
@@ -4615,6 +5130,7 @@
 %%   <<"TextColor">> => conditional_formatting_color()
 %% }
 -type k_p_i_actual_value_conditional_formatting() :: #{binary() => any()}.
+
 
 %% Example:
 %% combo_chart_aggregated_field_wells() :: #{
@@ -4625,6 +5141,7 @@
 %% }
 -type combo_chart_aggregated_field_wells() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_template_versions_response() :: #{
 %%   <<"NextToken">> => string(),
@@ -4634,17 +5151,21 @@
 %% }
 -type list_template_versions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% secondary_value_options() :: #{
 %%   <<"Visibility">> => list(any())
 %% }
 -type secondary_value_options() :: #{binary() => any()}.
+
 %% Example:
 %% delete_refresh_schedule_request() :: #{}
 -type delete_refresh_schedule_request() :: #{}.
+
 %% Example:
 %% list_refresh_schedules_request() :: #{}
 -type list_refresh_schedules_request() :: #{}.
+
 
 %% Example:
 %% list_data_sources_response() :: #{
@@ -4654,9 +5175,11 @@
 %%   <<"Status">> => integer()
 %% }
 -type list_data_sources_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_data_source_request() :: #{}
 -type delete_data_source_request() :: #{}.
+
 
 %% Example:
 %% member_id_arn_pair() :: #{
@@ -4664,6 +5187,7 @@
 %%   <<"MemberId">> => string()
 %% }
 -type member_id_arn_pair() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_theme_aliases_response() :: #{
@@ -4674,6 +5198,7 @@
 %% }
 -type list_theme_aliases_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_refresh_schedule_response() :: #{
 %%   <<"Arn">> => string(),
@@ -4682,6 +5207,7 @@
 %%   <<"Status">> => integer()
 %% }
 -type create_refresh_schedule_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% parameter_slider_control() :: #{
@@ -4695,12 +5221,14 @@
 %% }
 -type parameter_slider_control() :: #{binary() => any()}.
 
+
 %% Example:
 %% string_value_when_unset_configuration() :: #{
 %%   <<"CustomValue">> => string(),
 %%   <<"ValueWhenUnsetOption">> => list(any())
 %% }
 -type string_value_when_unset_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% custom_filter_configuration() :: #{
@@ -4711,9 +5239,11 @@
 %%   <<"SelectAllOptions">> => list(any())
 %% }
 -type custom_filter_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% describe_template_permissions_request() :: #{}
 -type describe_template_permissions_request() :: #{}.
+
 
 %% Example:
 %% data_set_summary() :: #{
@@ -4729,6 +5259,7 @@
 %% }
 -type data_set_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% tree_map_visual() :: #{
 %%   <<"Actions">> => list(visual_custom_action()()),
@@ -4740,6 +5271,7 @@
 %% }
 -type tree_map_visual() :: #{binary() => any()}.
 
+
 %% Example:
 %% empty_visual() :: #{
 %%   <<"Actions">> => list(visual_custom_action()()),
@@ -4748,12 +5280,14 @@
 %% }
 -type empty_visual() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_bundle_import_job_data_set_override_tags() :: #{
 %%   <<"DataSetIds">> => list(string()()),
 %%   <<"Tags">> => list(tag()())
 %% }
 -type asset_bundle_import_job_data_set_override_tags() :: #{binary() => any()}.
+
 
 %% Example:
 %% pivot_table_field_option() :: #{
@@ -4762,6 +5296,7 @@
 %%   <<"Visibility">> => list(any())
 %% }
 -type pivot_table_field_option() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_asset_bundle_export_job_request() :: #{
@@ -4776,12 +5311,14 @@
 %% }
 -type start_asset_bundle_export_job_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% conditional_formatting_icon_set() :: #{
 %%   <<"Expression">> => string(),
 %%   <<"IconSetType">> => list(any())
 %% }
 -type conditional_formatting_icon_set() :: #{binary() => any()}.
+
 
 %% Example:
 %% pivot_table_field_options() :: #{
@@ -4790,6 +5327,7 @@
 %%   <<"SelectedFieldOptions">> => list(pivot_table_field_option()())
 %% }
 -type pivot_table_field_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% parameter_drop_down_control() :: #{
@@ -4803,6 +5341,7 @@
 %% }
 -type parameter_drop_down_control() :: #{binary() => any()}.
 
+
 %% Example:
 %% refresh_frequency() :: #{
 %%   <<"Interval">> => list(any()),
@@ -4812,6 +5351,7 @@
 %% }
 -type refresh_frequency() :: #{binary() => any()}.
 
+
 %% Example:
 %% tree_map_sort_configuration() :: #{
 %%   <<"TreeMapGroupItemsLimitConfiguration">> => items_limit_configuration(),
@@ -4819,20 +5359,24 @@
 %% }
 -type tree_map_sort_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% grid_layout_canvas_size_options() :: #{
 %%   <<"ScreenCanvasSizeOptions">> => grid_layout_screen_canvas_size_options()
 %% }
 -type grid_layout_canvas_size_options() :: #{binary() => any()}.
+
 %% Example:
 %% delete_folder_request() :: #{}
 -type delete_folder_request() :: #{}.
+
 
 %% Example:
 %% template_source_template() :: #{
 %%   <<"Arn">> => string()
 %% }
 -type template_source_template() :: #{binary() => any()}.
+
 
 %% Example:
 %% row_level_permission_data_set() :: #{
@@ -4844,6 +5388,7 @@
 %% }
 -type row_level_permission_data_set() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_dashboard_permissions_request() :: #{
 %%   <<"GrantLinkPermissions">> => list(resource_permission()()),
@@ -4853,6 +5398,7 @@
 %% }
 -type update_dashboard_permissions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% row_info() :: #{
 %%   <<"RowsDropped">> => float(),
@@ -4861,12 +5407,14 @@
 %% }
 -type row_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_group_memberships_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_group_memberships_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% row_level_permission_tag_rule() :: #{
@@ -4877,6 +5425,7 @@
 %% }
 -type row_level_permission_tag_rule() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"RequestId">> => string(),
@@ -4884,6 +5433,7 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% filter_control() :: #{
@@ -4897,6 +5447,7 @@
 %% }
 -type filter_control() :: #{binary() => any()}.
 
+
 %% Example:
 %% my_sql_parameters() :: #{
 %%   <<"Database">> => string(),
@@ -4905,11 +5456,13 @@
 %% }
 -type my_sql_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% k_p_iprogress_bar_conditional_formatting() :: #{
 %%   <<"ForegroundColor">> => conditional_formatting_color()
 %% }
 -type k_p_iprogress_bar_conditional_formatting() :: #{binary() => any()}.
+
 
 %% Example:
 %% column_tag() :: #{
@@ -4918,6 +5471,7 @@
 %% }
 -type column_tag() :: #{binary() => any()}.
 
+
 %% Example:
 %% free_form_layout_configuration() :: #{
 %%   <<"CanvasSizeOptions">> => free_form_layout_canvas_size_options(),
@@ -4925,12 +5479,14 @@
 %% }
 -type free_form_layout_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% funnel_chart_aggregated_field_wells() :: #{
 %%   <<"Category">> => list(dimension_field()()),
 %%   <<"Values">> => list(measure_field()())
 %% }
 -type funnel_chart_aggregated_field_wells() :: #{binary() => any()}.
+
 
 %% Example:
 %% date_time_parameter_declaration() :: #{
@@ -4942,6 +5498,7 @@
 %% }
 -type date_time_parameter_declaration() :: #{binary() => any()}.
 
+
 %% Example:
 %% panel_title_options() :: #{
 %%   <<"FontConfiguration">> => font_configuration(),
@@ -4950,11 +5507,13 @@
 %% }
 -type panel_title_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% export_hidden_fields_option() :: #{
 %%   <<"AvailabilityStatus">> => list(any())
 %% }
 -type export_hidden_fields_option() :: #{binary() => any()}.
+
 
 %% Example:
 %% top_bottom_movers_computation() :: #{
@@ -4969,6 +5528,7 @@
 %% }
 -type top_bottom_movers_computation() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_topics_response() :: #{
 %%   <<"NextToken">> => string(),
@@ -4977,6 +5537,7 @@
 %%   <<"TopicsSummaries">> => list(topic_summary()())
 %% }
 -type list_topics_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% word_cloud_options() :: #{
@@ -4989,6 +5550,7 @@
 %% }
 -type word_cloud_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% total_aggregation_option() :: #{
 %%   <<"FieldId">> => string(),
@@ -4996,12 +5558,14 @@
 %% }
 -type total_aggregation_option() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_bundle_import_job_analysis_override_permissions() :: #{
 %%   <<"AnalysisIds">> => list(string()()),
 %%   <<"Permissions">> => asset_bundle_resource_permissions()
 %% }
 -type asset_bundle_import_job_analysis_override_permissions() :: #{binary() => any()}.
+
 
 %% Example:
 %% radar_chart_aggregated_field_wells() :: #{
@@ -5011,6 +5575,7 @@
 %% }
 -type radar_chart_aggregated_field_wells() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_bundle_import_job_refresh_schedule_override_parameters() :: #{
 %%   <<"DataSetId">> => string(),
@@ -5018,6 +5583,7 @@
 %%   <<"StartAfterDateTime">> => non_neg_integer()
 %% }
 -type asset_bundle_import_job_refresh_schedule_override_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% pie_chart_aggregated_field_wells() :: #{
@@ -5027,12 +5593,14 @@
 %% }
 -type pie_chart_aggregated_field_wells() :: #{binary() => any()}.
 
+
 %% Example:
 %% grid_layout_screen_canvas_size_options() :: #{
 %%   <<"OptimizedViewPortWidth">> => string(),
 %%   <<"ResizeOption">> => list(any())
 %% }
 -type grid_layout_screen_canvas_size_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% what_if_range_scenario() :: #{
@@ -5041,9 +5609,11 @@
 %%   <<"Value">> => float()
 %% }
 -type what_if_range_scenario() :: #{binary() => any()}.
+
 %% Example:
 %% describe_role_custom_permission_request() :: #{}
 -type describe_role_custom_permission_request() :: #{}.
+
 
 %% Example:
 %% create_group_request() :: #{
@@ -5052,12 +5622,14 @@
 %% }
 -type create_group_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_template_permissions_request() :: #{
 %%   <<"GrantPermissions">> => list(resource_permission()()),
 %%   <<"RevokePermissions">> => list(resource_permission()())
 %% }
 -type update_template_permissions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_account_settings_request() :: #{
@@ -5066,9 +5638,11 @@
 %%   <<"TerminationProtectionEnabled">> => boolean()
 %% }
 -type update_account_settings_request() :: #{binary() => any()}.
+
 %% Example:
 %% create_folder_membership_request() :: #{}
 -type create_folder_membership_request() :: #{}.
+
 
 %% Example:
 %% asset_bundle_export_job_refresh_schedule_override_properties() :: #{
@@ -5077,17 +5651,20 @@
 %% }
 -type asset_bundle_export_job_refresh_schedule_override_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% column_group() :: #{
 %%   <<"GeoSpatialColumnGroup">> => geo_spatial_column_group()
 %% }
 -type column_group() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_template_alias_request() :: #{
 %%   <<"TemplateVersionNumber">> := float()
 %% }
 -type create_template_alias_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% analysis_error() :: #{
@@ -5097,17 +5674,20 @@
 %% }
 -type analysis_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% registered_user_dashboard_visual_embedding_configuration() :: #{
 %%   <<"InitialDashboardVisualId">> => dashboard_visual_id()
 %% }
 -type registered_user_dashboard_visual_embedding_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% custom_action_navigation_operation() :: #{
 %%   <<"LocalNavigationConfiguration">> => local_navigation_configuration()
 %% }
 -type custom_action_navigation_operation() :: #{binary() => any()}.
+
 
 %% Example:
 %% bar_chart_configuration() :: #{
@@ -5131,6 +5711,7 @@
 %% }
 -type bar_chart_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% date_measure_field() :: #{
 %%   <<"AggregationFunction">> => list(any()),
@@ -5139,6 +5720,7 @@
 %%   <<"FormatConfiguration">> => date_time_format_configuration()
 %% }
 -type date_measure_field() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_iam_policy_assignment_response() :: #{
@@ -5151,12 +5733,15 @@
 %%   <<"Status">> => integer()
 %% }
 -type update_iam_policy_assignment_response() :: #{binary() => any()}.
+
 %% Example:
 %% create_group_membership_request() :: #{}
 -type create_group_membership_request() :: #{}.
+
 %% Example:
 %% describe_group_membership_request() :: #{}
 -type describe_group_membership_request() :: #{}.
+
 
 %% Example:
 %% generate_embed_url_for_anonymous_user_request() :: #{
@@ -5169,11 +5754,13 @@
 %% }
 -type generate_embed_url_for_anonymous_user_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% date_time_dataset_parameter_default_values() :: #{
 %%   <<"StaticValues">> => list(non_neg_integer()())
 %% }
 -type date_time_dataset_parameter_default_values() :: #{binary() => any()}.
+
 
 %% Example:
 %% visual_interaction_options() :: #{
@@ -5181,9 +5768,11 @@
 %%   <<"VisualMenuOption">> => visual_menu_option()
 %% }
 -type visual_interaction_options() :: #{binary() => any()}.
+
 %% Example:
 %% describe_data_source_permissions_request() :: #{}
 -type describe_data_source_permissions_request() :: #{}.
+
 
 %% Example:
 %% asset_bundle_import_job_dashboard_override_tags() :: #{
@@ -5191,6 +5780,7 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type asset_bundle_import_job_dashboard_override_tags() :: #{binary() => any()}.
+
 
 %% Example:
 %% filter_text_field_control() :: #{
@@ -5201,17 +5791,20 @@
 %% }
 -type filter_text_field_control() :: #{binary() => any()}.
 
+
 %% Example:
 %% tile_style() :: #{
 %%   <<"Border">> => border_style()
 %% }
 -type tile_style() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_path_type() :: #{
 %%   <<"PivotTableDataPathType">> => list(any())
 %% }
 -type data_path_type() :: #{binary() => any()}.
+
 
 %% Example:
 %% date_time_dataset_parameter() :: #{
@@ -5222,6 +5815,7 @@
 %%   <<"ValueType">> => list(any())
 %% }
 -type date_time_dataset_parameter() :: #{binary() => any()}.
+
 
 %% Example:
 %% currency_display_format_configuration() :: #{
@@ -5236,6 +5830,7 @@
 %% }
 -type currency_display_format_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_asset_bundle_import_job_request() :: #{
 %%   <<"AssetBundleImportJobId">> := string(),
@@ -5248,6 +5843,7 @@
 %% }
 -type start_asset_bundle_import_job_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_session_embed_url_response() :: #{
 %%   <<"EmbedUrl">> => string(),
@@ -5255,6 +5851,7 @@
 %%   <<"Status">> => integer()
 %% }
 -type get_session_embed_url_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_asset_bundle_import_jobs_response() :: #{
@@ -5265,6 +5862,7 @@
 %% }
 -type list_asset_bundle_import_jobs_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% group_member() :: #{
 %%   <<"Arn">> => string(),
@@ -5272,12 +5870,14 @@
 %% }
 -type group_member() :: #{binary() => any()}.
 
+
 %% Example:
 %% category_drill_down_filter() :: #{
 %%   <<"CategoryValues">> => list(string()()),
 %%   <<"Column">> => column_identifier()
 %% }
 -type category_drill_down_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% signup_response() :: #{
@@ -5288,6 +5888,7 @@
 %% }
 -type signup_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% section_based_layout_paper_canvas_size_options() :: #{
 %%   <<"PaperMargin">> => spacing(),
@@ -5295,6 +5896,7 @@
 %%   <<"PaperSize">> => list(any())
 %% }
 -type section_based_layout_paper_canvas_size_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_source_credentials() :: #{
@@ -5304,12 +5906,14 @@
 %% }
 -type data_source_credentials() :: #{binary() => any()}.
 
+
 %% Example:
 %% account_customization() :: #{
 %%   <<"DefaultEmailCustomizationTemplate">> => string(),
 %%   <<"DefaultTheme">> => string()
 %% }
 -type account_customization() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_theme_request() :: #{
@@ -5318,6 +5922,7 @@
 %% }
 -type describe_theme_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% series_item() :: #{
 %%   <<"DataFieldSeriesItem">> => data_field_series_item(),
@@ -5325,11 +5930,13 @@
 %% }
 -type series_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_role_custom_permission_request() :: #{
 %%   <<"CustomPermissionsName">> := string()
 %% }
 -type update_role_custom_permission_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% generate_embed_url_for_registered_user_response() :: #{
@@ -5339,20 +5946,24 @@
 %% }
 -type generate_embed_url_for_registered_user_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_strategy() :: #{
 %%   <<"Mode">> => list(any())
 %% }
 -type validation_strategy() :: #{binary() => any()}.
+
 %% Example:
 %% delete_user_request() :: #{}
 -type delete_user_request() :: #{}.
+
 
 %% Example:
 %% jira_parameters() :: #{
 %%   <<"SiteBaseUrl">> => string()
 %% }
 -type jira_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_folder_permissions_request() :: #{
@@ -5361,6 +5972,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_folder_permissions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% filter() :: #{
@@ -5374,11 +5986,13 @@
 %% }
 -type filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% progress_bar_options() :: #{
 %%   <<"Visibility">> => list(any())
 %% }
 -type progress_bar_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% time_range_filter_value() :: #{
@@ -5388,6 +6002,7 @@
 %% }
 -type time_range_filter_value() :: #{binary() => any()}.
 
+
 %% Example:
 %% numeric_format_configuration() :: #{
 %%   <<"CurrencyDisplayFormatConfiguration">> => currency_display_format_configuration(),
@@ -5395,6 +6010,7 @@
 %%   <<"PercentageDisplayFormatConfiguration">> => percentage_display_format_configuration()
 %% }
 -type numeric_format_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% filter_operation_selected_fields_configuration() :: #{
@@ -5404,6 +6020,7 @@
 %% }
 -type filter_operation_selected_fields_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% anchor_date_configuration() :: #{
 %%   <<"AnchorOption">> => list(any()),
@@ -5411,11 +6028,13 @@
 %% }
 -type anchor_date_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% geospatial_map_style_options() :: #{
 %%   <<"BaseMapStyle">> => list(any())
 %% }
 -type geospatial_map_style_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% attribute_aggregation_function() :: #{
@@ -5424,6 +6043,7 @@
 %% }
 -type attribute_aggregation_function() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_role_membership_response() :: #{
 %%   <<"RequestId">> => string(),
@@ -5431,12 +6051,14 @@
 %% }
 -type delete_role_membership_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_set_identifier_declaration() :: #{
 %%   <<"DataSetArn">> => string(),
 %%   <<"Identifier">> => string()
 %% }
 -type data_set_identifier_declaration() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_topic_permissions_response() :: #{
@@ -5448,6 +6070,7 @@
 %% }
 -type update_topic_permissions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% set_parameter_value_configuration() :: #{
 %%   <<"DestinationParameterName">> => string(),
@@ -5455,11 +6078,13 @@
 %% }
 -type set_parameter_value_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% null_value_format_configuration() :: #{
 %%   <<"NullString">> => string()
 %% }
 -type null_value_format_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% teradata_parameters() :: #{
@@ -5468,9 +6093,11 @@
 %%   <<"Port">> => integer()
 %% }
 -type teradata_parameters() :: #{binary() => any()}.
+
 %% Example:
 %% axis_display_data_driven_range() :: #{}
 -type axis_display_data_driven_range() :: #{}.
+
 
 %% Example:
 %% dashboard_visual_id() :: #{
@@ -5480,11 +6107,13 @@
 %% }
 -type dashboard_visual_id() :: #{binary() => any()}.
 
+
 %% Example:
 %% range_ends_label_type() :: #{
 %%   <<"Visibility">> => list(any())
 %% }
 -type range_ends_label_type() :: #{binary() => any()}.
+
 
 %% Example:
 %% concurrent_updating_exception() :: #{
@@ -5493,6 +6122,7 @@
 %% }
 -type concurrent_updating_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% items_limit_configuration() :: #{
 %%   <<"ItemsLimit">> => float(),
@@ -5500,11 +6130,13 @@
 %% }
 -type items_limit_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_dashboard_request() :: #{
 %%   <<"VersionNumber">> => float()
 %% }
 -type delete_dashboard_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% k_p_i_configuration() :: #{
@@ -5515,20 +6147,24 @@
 %% }
 -type k_p_i_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_point_tooltip_option() :: #{
 %%   <<"AvailabilityStatus">> => list(any())
 %% }
 -type data_point_tooltip_option() :: #{binary() => any()}.
+
 %% Example:
 %% describe_dashboard_snapshot_job_result_request() :: #{}
 -type describe_dashboard_snapshot_job_result_request() :: #{}.
+
 
 %% Example:
 %% negative_value_configuration() :: #{
 %%   <<"DisplayMode">> => list(any())
 %% }
 -type negative_value_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_user_response() :: #{
@@ -5537,11 +6173,13 @@
 %% }
 -type delete_user_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% sheet_control_layout() :: #{
 %%   <<"Configuration">> => sheet_control_layout_configuration()
 %% }
 -type sheet_control_layout() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_theme_alias_response() :: #{
@@ -5552,6 +6190,7 @@
 %%   <<"ThemeId">> => string()
 %% }
 -type delete_theme_alias_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% iam_policy_assignment() :: #{
@@ -5564,12 +6203,14 @@
 %% }
 -type iam_policy_assignment() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_account_subscription_response() :: #{
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
 %% }
 -type delete_account_subscription_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% table_side_border_options() :: #{
@@ -5582,12 +6223,14 @@
 %% }
 -type table_side_border_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% gauge_chart_field_wells() :: #{
 %%   <<"TargetValues">> => list(measure_field()()),
 %%   <<"Values">> => list(measure_field()())
 %% }
 -type gauge_chart_field_wells() :: #{binary() => any()}.
+
 
 %% Example:
 %% topic_details() :: #{
@@ -5598,6 +6241,7 @@
 %% }
 -type topic_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% dataset_parameter() :: #{
 %%   <<"DateTimeDatasetParameter">> => date_time_dataset_parameter(),
@@ -5606,6 +6250,7 @@
 %%   <<"StringDatasetParameter">> => string_dataset_parameter()
 %% }
 -type dataset_parameter() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_vpc_connection_response() :: #{
@@ -5618,11 +6263,13 @@
 %% }
 -type update_vpc_connection_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% ad_hoc_filtering_option() :: #{
 %%   <<"AvailabilityStatus">> => list(any())
 %% }
 -type ad_hoc_filtering_option() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_account_subscription_request() :: #{
@@ -5643,12 +6290,14 @@
 %% }
 -type create_account_subscription_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_column_operation() :: #{
 %%   <<"ColumnName">> => string(),
 %%   <<"Tags">> => list(column_tag()())
 %% }
 -type tag_column_operation() :: #{binary() => any()}.
+
 
 %% Example:
 %% bar_chart_sort_configuration() :: #{
@@ -5660,6 +6309,7 @@
 %%   <<"SmallMultiplesSort">> => list(field_sort_options()())
 %% }
 -type bar_chart_sort_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% filter_drop_down_control() :: #{
@@ -5673,6 +6323,7 @@
 %% }
 -type filter_drop_down_control() :: #{binary() => any()}.
 
+
 %% Example:
 %% pie_chart_visual() :: #{
 %%   <<"Actions">> => list(visual_custom_action()()),
@@ -5684,6 +6335,7 @@
 %% }
 -type pie_chart_visual() :: #{binary() => any()}.
 
+
 %% Example:
 %% refresh_schedule() :: #{
 %%   <<"Arn">> => string(),
@@ -5694,6 +6346,7 @@
 %% }
 -type refresh_schedule() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_folders_response() :: #{
 %%   <<"FolderSummaryList">> => list(folder_summary()()),
@@ -5703,12 +6356,14 @@
 %% }
 -type list_folders_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% table_aggregated_field_wells() :: #{
 %%   <<"GroupBy">> => list(dimension_field()()),
 %%   <<"Values">> => list(measure_field()())
 %% }
 -type table_aggregated_field_wells() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_dashboard_response() :: #{
@@ -5719,11 +6374,13 @@
 %% }
 -type delete_dashboard_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_now_parameters() :: #{
 %%   <<"SiteBaseUrl">> => string()
 %% }
 -type service_now_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_template_alias_response() :: #{
@@ -5732,6 +6389,7 @@
 %%   <<"TemplateAlias">> => template_alias()
 %% }
 -type update_template_alias_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% destination_parameter_value_configuration() :: #{
@@ -5743,12 +6401,14 @@
 %% }
 -type destination_parameter_value_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% rds_parameters() :: #{
 %%   <<"Database">> => string(),
 %%   <<"InstanceId">> => string()
 %% }
 -type rds_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_folders_request() :: #{
@@ -5757,12 +6417,14 @@
 %% }
 -type list_folders_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% thousand_separator_options() :: #{
 %%   <<"Symbol">> => list(any()),
 %%   <<"Visibility">> => list(any())
 %% }
 -type thousand_separator_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% aurora_postgre_sql_parameters() :: #{
@@ -5771,6 +6433,7 @@
 %%   <<"Port">> => integer()
 %% }
 -type aurora_postgre_sql_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_template_response() :: #{
@@ -5783,6 +6446,7 @@
 %% }
 -type update_template_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% numeric_separator_configuration() :: #{
 %%   <<"DecimalSeparator">> => list(any()),
@@ -5790,12 +6454,14 @@
 %% }
 -type numeric_separator_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% conditional_formatting_icon() :: #{
 %%   <<"CustomCondition">> => conditional_formatting_custom_icon_condition(),
 %%   <<"IconSet">> => conditional_formatting_icon_set()
 %% }
 -type conditional_formatting_icon() :: #{binary() => any()}.
+
 
 %% Example:
 %% filter_list_configuration() :: #{
@@ -5806,6 +6472,7 @@
 %% }
 -type filter_list_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% parameter_declaration() :: #{
 %%   <<"DateTimeParameterDeclaration">> => date_time_parameter_declaration(),
@@ -5814,6 +6481,7 @@
 %%   <<"StringParameterDeclaration">> => string_parameter_declaration()
 %% }
 -type parameter_declaration() :: #{binary() => any()}.
+
 
 %% Example:
 %% custom_content_visual() :: #{
@@ -5826,6 +6494,7 @@
 %% }
 -type custom_content_visual() :: #{binary() => any()}.
 
+
 %% Example:
 %% waterfall_chart_aggregated_field_wells() :: #{
 %%   <<"Breakdowns">> => list(dimension_field()()),
@@ -5833,18 +6502,22 @@
 %%   <<"Values">> => list(measure_field()())
 %% }
 -type waterfall_chart_aggregated_field_wells() :: #{binary() => any()}.
+
 %% Example:
 %% describe_vpc_connection_request() :: #{}
 -type describe_vpc_connection_request() :: #{}.
+
 %% Example:
 %% delete_data_set_request() :: #{}
 -type delete_data_set_request() :: #{}.
+
 
 %% Example:
 %% sankey_diagram_field_wells() :: #{
 %%   <<"SankeyDiagramAggregatedFieldWells">> => sankey_diagram_aggregated_field_wells()
 %% }
 -type sankey_diagram_field_wells() :: #{binary() => any()}.
+
 
 %% Example:
 %% range_constant() :: #{
@@ -5853,12 +6526,14 @@
 %% }
 -type range_constant() :: #{binary() => any()}.
 
+
 %% Example:
 %% table_row_conditional_formatting() :: #{
 %%   <<"BackgroundColor">> => conditional_formatting_color(),
 %%   <<"TextColor">> => conditional_formatting_color()
 %% }
 -type table_row_conditional_formatting() :: #{binary() => any()}.
+
 
 %% Example:
 %% numeric_equality_drill_down_filter() :: #{
@@ -5867,11 +6542,13 @@
 %% }
 -type numeric_equality_drill_down_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% snapshot_destination_configuration() :: #{
 %%   <<"S3Destinations">> => list(snapshot_s3_destination_configuration()())
 %% }
 -type snapshot_destination_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% topic_singular_filter_constant() :: #{
@@ -5879,6 +6556,7 @@
 %%   <<"SingularConstant">> => string()
 %% }
 -type topic_singular_filter_constant() :: #{binary() => any()}.
+
 
 %% Example:
 %% analysis() :: #{
@@ -5895,11 +6573,13 @@
 %% }
 -type analysis() :: #{binary() => any()}.
 
+
 %% Example:
 %% default_section_based_layout_configuration() :: #{
 %%   <<"CanvasSizeOptions">> => section_based_layout_canvas_size_options()
 %% }
 -type default_section_based_layout_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% new_default_values() :: #{
@@ -5910,11 +6590,13 @@
 %% }
 -type new_default_values() :: #{binary() => any()}.
 
+
 %% Example:
 %% k_p_i_sort_configuration() :: #{
 %%   <<"TrendGroupSort">> => list(field_sort_options()())
 %% }
 -type k_p_i_sort_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% session_lifetime_in_minutes_invalid_exception() :: #{
@@ -5923,11 +6605,13 @@
 %% }
 -type session_lifetime_in_minutes_invalid_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% geospatial_heatmap_color_scale() :: #{
 %%   <<"Colors">> => list(geospatial_heatmap_data_color()())
 %% }
 -type geospatial_heatmap_color_scale() :: #{binary() => any()}.
+
 
 %% Example:
 %% theme_version_summary() :: #{
@@ -5939,6 +6623,7 @@
 %% }
 -type theme_version_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_data_source_response() :: #{
 %%   <<"Arn">> => string(),
@@ -5949,12 +6634,14 @@
 %% }
 -type create_data_source_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% table_field_wells() :: #{
 %%   <<"TableAggregatedFieldWells">> => table_aggregated_field_wells(),
 %%   <<"TableUnaggregatedFieldWells">> => table_unaggregated_field_wells()
 %% }
 -type table_field_wells() :: #{binary() => any()}.
+
 
 %% Example:
 %% theme_configuration() :: #{
@@ -5964,6 +6651,7 @@
 %%   <<"UIColorPalette">> => ui_color_palette()
 %% }
 -type theme_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% combo_chart_configuration() :: #{
@@ -5987,9 +6675,11 @@
 %%   <<"VisualPalette">> => visual_palette()
 %% }
 -type combo_chart_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% describe_asset_bundle_export_job_request() :: #{}
 -type describe_asset_bundle_export_job_request() :: #{}.
+
 
 %% Example:
 %% describe_user_response() :: #{
@@ -5998,6 +6688,7 @@
 %%   <<"User">> => user()
 %% }
 -type describe_user_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_role_memberships_response() :: #{
@@ -6008,12 +6699,14 @@
 %% }
 -type list_role_memberships_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% topic_date_range_filter() :: #{
 %%   <<"Constant">> => topic_range_filter_constant(),
 %%   <<"Inclusive">> => boolean()
 %% }
 -type topic_date_range_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% funnel_chart_visual() :: #{
@@ -6026,6 +6719,7 @@
 %% }
 -type funnel_chart_visual() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_dashboard_response() :: #{
 %%   <<"Arn">> => string(),
@@ -6037,6 +6731,7 @@
 %% }
 -type create_dashboard_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_analyses_response() :: #{
 %%   <<"AnalysisSummaryList">> => list(analysis_summary()()),
@@ -6046,12 +6741,14 @@
 %% }
 -type list_analyses_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% tooltip_item() :: #{
 %%   <<"ColumnTooltipItem">> => column_tooltip_item(),
 %%   <<"FieldTooltipItem">> => field_tooltip_item()
 %% }
 -type tooltip_item() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_bundle_export_job_data_source_override_properties() :: #{
@@ -6060,12 +6757,14 @@
 %% }
 -type asset_bundle_export_job_data_source_override_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% table_field_custom_text_content() :: #{
 %%   <<"FontConfiguration">> => font_configuration(),
 %%   <<"Value">> => string()
 %% }
 -type table_field_custom_text_content() :: #{binary() => any()}.
+
 
 %% Example:
 %% string_format_configuration() :: #{
@@ -6074,6 +6773,7 @@
 %% }
 -type string_format_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% aggregation_sort_configuration() :: #{
 %%   <<"AggregationFunction">> => aggregation_function(),
@@ -6081,6 +6781,7 @@
 %%   <<"SortDirection">> => list(any())
 %% }
 -type aggregation_sort_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% line_chart_visual() :: #{
@@ -6093,6 +6794,7 @@
 %% }
 -type line_chart_visual() :: #{binary() => any()}.
 
+
 %% Example:
 %% row_alternate_color_options() :: #{
 %%   <<"RowAlternateColors">> => list(string()()),
@@ -6101,11 +6803,13 @@
 %% }
 -type row_alternate_color_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% integer_dataset_parameter_default_values() :: #{
 %%   <<"StaticValues">> => list(float()())
 %% }
 -type integer_dataset_parameter_default_values() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_theme_response() :: #{
@@ -6118,6 +6822,7 @@
 %% }
 -type update_theme_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_topic_response() :: #{
 %%   <<"Arn">> => string(),
@@ -6128,12 +6833,14 @@
 %% }
 -type update_topic_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% gauge_chart_conditional_formatting_option() :: #{
 %%   <<"Arc">> => gauge_chart_arc_conditional_formatting(),
 %%   <<"PrimaryValue">> => gauge_chart_primary_value_conditional_formatting()
 %% }
 -type gauge_chart_conditional_formatting_option() :: #{binary() => any()}.
+
 
 %% Example:
 %% column_tooltip_item() :: #{
@@ -6144,6 +6851,7 @@
 %%   <<"Visibility">> => list(any())
 %% }
 -type column_tooltip_item() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_source_summary() :: #{
@@ -6156,11 +6864,13 @@
 %% }
 -type data_source_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% anonymous_user_snapshot_job_result() :: #{
 %%   <<"FileGroups">> => list(snapshot_job_result_file_group()())
 %% }
 -type anonymous_user_snapshot_job_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_dashboard_versions_request() :: #{
@@ -6168,9 +6878,11 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_dashboard_versions_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_identity_propagation_config_request() :: #{}
 -type delete_identity_propagation_config_request() :: #{}.
+
 
 %% Example:
 %% cast_column_type_operation() :: #{
@@ -6181,6 +6893,7 @@
 %% }
 -type cast_column_type_operation() :: #{binary() => any()}.
 
+
 %% Example:
 %% custom_action_url_operation() :: #{
 %%   <<"URLTarget">> => list(any()),
@@ -6188,11 +6901,13 @@
 %% }
 -type custom_action_url_operation() :: #{binary() => any()}.
 
+
 %% Example:
 %% selected_sheets_filter_scope_configuration() :: #{
 %%   <<"SheetVisualScopingConfigurations">> => list(sheet_visual_scoping_configuration()())
 %% }
 -type selected_sheets_filter_scope_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_data_set_permissions_response() :: #{
@@ -6204,11 +6919,13 @@
 %% }
 -type describe_data_set_permissions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% table_cell_image_sizing_configuration() :: #{
 %%   <<"TableCellImageScalingConfiguration">> => list(any())
 %% }
 -type table_cell_image_sizing_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% topic_numeric_range_filter() :: #{
@@ -6218,12 +6935,14 @@
 %% }
 -type topic_numeric_range_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_bundle_import_source() :: #{
 %%   <<"Body">> => binary(),
 %%   <<"S3Uri">> => string()
 %% }
 -type asset_bundle_import_source() :: #{binary() => any()}.
+
 
 %% Example:
 %% geospatial_map_visual() :: #{
@@ -6236,11 +6955,13 @@
 %% }
 -type geospatial_map_visual() :: #{binary() => any()}.
 
+
 %% Example:
 %% registered_user_console_feature_configurations() :: #{
 %%   <<"StatePersistence">> => state_persistence_configurations()
 %% }
 -type registered_user_console_feature_configurations() :: #{binary() => any()}.
+
 
 %% Example:
 %% snapshot_job_result_file_group() :: #{
@@ -6248,6 +6969,7 @@
 %%   <<"S3Results">> => list(snapshot_job_s3_result()())
 %% }
 -type snapshot_job_result_file_group() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_dashboard_links_response() :: #{
@@ -6258,6 +6980,7 @@
 %% }
 -type update_dashboard_links_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% template_source_entity() :: #{
 %%   <<"SourceAnalysis">> => template_source_analysis(),
@@ -6265,11 +6988,13 @@
 %% }
 -type template_source_entity() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_public_sharing_settings_request() :: #{
 %%   <<"PublicSharingEnabled">> => boolean()
 %% }
 -type update_public_sharing_settings_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_account_subscription_response() :: #{
@@ -6278,6 +7003,7 @@
 %%   <<"Status">> => integer()
 %% }
 -type create_account_subscription_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% spacing() :: #{
@@ -6288,6 +7014,7 @@
 %% }
 -type spacing() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_exists_exception() :: #{
 %%   <<"Message">> => string(),
@@ -6296,11 +7023,13 @@
 %% }
 -type resource_exists_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% snapshot_user_configuration() :: #{
 %%   <<"AnonymousUsers">> => list(snapshot_anonymous_user()())
 %% }
 -type snapshot_user_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_theme_permissions_request() :: #{
@@ -6309,14 +7038,17 @@
 %% }
 -type update_theme_permissions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% donut_center_options() :: #{
 %%   <<"LabelVisibility">> => list(any())
 %% }
 -type donut_center_options() :: #{binary() => any()}.
+
 %% Example:
 %% list_topic_refresh_schedules_request() :: #{}
 -type list_topic_refresh_schedules_request() :: #{}.
+
 
 %% Example:
 %% describe_group_membership_response() :: #{
@@ -6325,6 +7057,7 @@
 %%   <<"Status">> => integer()
 %% }
 -type describe_group_membership_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_label_options() :: #{
@@ -6341,6 +7074,7 @@
 %% }
 -type data_label_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% column_configuration() :: #{
 %%   <<"ColorsConfiguration">> => colors_configuration(),
@@ -6350,6 +7084,7 @@
 %% }
 -type column_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% row_level_permission_tag_configuration() :: #{
 %%   <<"Status">> => list(any()),
@@ -6358,12 +7093,14 @@
 %% }
 -type row_level_permission_tag_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% what_if_point_scenario() :: #{
 %%   <<"Date">> => non_neg_integer(),
 %%   <<"Value">> => float()
 %% }
 -type what_if_point_scenario() :: #{binary() => any()}.
+
 
 %% Example:
 %% exasol_parameters() :: #{
@@ -6372,6 +7109,7 @@
 %% }
 -type exasol_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_theme_alias_response() :: #{
 %%   <<"RequestId">> => string(),
@@ -6379,6 +7117,7 @@
 %%   <<"ThemeAlias">> => theme_alias()
 %% }
 -type update_theme_alias_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% dashboard_publish_options() :: #{
@@ -6396,6 +7135,7 @@
 %% }
 -type dashboard_publish_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_template_aliases_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -6403,17 +7143,21 @@
 %% }
 -type list_template_aliases_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% bar_chart_field_wells() :: #{
 %%   <<"BarChartAggregatedFieldWells">> => bar_chart_aggregated_field_wells()
 %% }
 -type bar_chart_field_wells() :: #{binary() => any()}.
+
 %% Example:
 %% delete_folder_membership_request() :: #{}
 -type delete_folder_membership_request() :: #{}.
+
 %% Example:
 %% delete_role_membership_request() :: #{}
 -type delete_role_membership_request() :: #{}.
+
 
 %% Example:
 %% asset_bundle_import_job_dashboard_override_parameters() :: #{
@@ -6421,9 +7165,11 @@
 %%   <<"Name">> => string()
 %% }
 -type asset_bundle_import_job_dashboard_override_parameters() :: #{binary() => any()}.
+
 %% Example:
 %% delete_template_alias_request() :: #{}
 -type delete_template_alias_request() :: #{}.
+
 
 %% Example:
 %% explicit_hierarchy() :: #{
@@ -6433,12 +7179,14 @@
 %% }
 -type explicit_hierarchy() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_group_membership_response() :: #{
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
 %% }
 -type delete_group_membership_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% exclude_period_configuration() :: #{
@@ -6448,6 +7196,7 @@
 %% }
 -type exclude_period_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_group_response() :: #{
 %%   <<"RequestId">> => string(),
@@ -6455,11 +7204,13 @@
 %% }
 -type delete_group_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% maximum_label_type() :: #{
 %%   <<"Visibility">> => list(any())
 %% }
 -type maximum_label_type() :: #{binary() => any()}.
+
 
 %% Example:
 %% access_denied_exception() :: #{
@@ -6467,6 +7218,7 @@
 %%   <<"RequestId">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% registered_user_embedding_experience_configuration() :: #{
@@ -6477,6 +7229,7 @@
 %% }
 -type registered_user_embedding_experience_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% categorical_dimension_field() :: #{
 %%   <<"Column">> => column_identifier(),
@@ -6486,6 +7239,7 @@
 %% }
 -type categorical_dimension_field() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_bundle_export_job_analysis_override_properties() :: #{
 %%   <<"Arn">> => string(),
@@ -6493,11 +7247,13 @@
 %% }
 -type asset_bundle_export_job_analysis_override_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% table_pinned_field_options() :: #{
 %%   <<"PinnedLeftFields">> => list(string()())
 %% }
 -type table_pinned_field_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% parameter_selectable_values() :: #{
@@ -6505,6 +7261,7 @@
 %%   <<"Values">> => list(string()())
 %% }
 -type parameter_selectable_values() :: #{binary() => any()}.
+
 
 %% Example:
 %% reference_line_dynamic_data_configuration() :: #{
@@ -6514,6 +7271,7 @@
 %% }
 -type reference_line_dynamic_data_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_ingestion_response() :: #{
 %%   <<"Ingestion">> => ingestion(),
@@ -6521,6 +7279,7 @@
 %%   <<"Status">> => integer()
 %% }
 -type describe_ingestion_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% time_equality_filter() :: #{
@@ -6533,12 +7292,14 @@
 %% }
 -type time_equality_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% forecast_scenario() :: #{
 %%   <<"WhatIfPointScenario">> => what_if_point_scenario(),
 %%   <<"WhatIfRangeScenario">> => what_if_range_scenario()
 %% }
 -type forecast_scenario() :: #{binary() => any()}.
+
 
 %% Example:
 %% table_conditional_formatting_option() :: #{
@@ -6547,6 +7308,7 @@
 %% }
 -type table_conditional_formatting_option() :: #{binary() => any()}.
 
+
 %% Example:
 %% topic_relative_date_filter() :: #{
 %%   <<"Constant">> => topic_singular_filter_constant(),
@@ -6554,6 +7316,7 @@
 %%   <<"TimeGranularity">> => list(any())
 %% }
 -type topic_relative_date_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_asset_bundle_import_job_response() :: #{
@@ -6575,11 +7338,13 @@
 %% }
 -type describe_asset_bundle_import_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_folder_request() :: #{
 %%   <<"Name">> := string()
 %% }
 -type update_folder_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% filled_map_visual() :: #{
@@ -6592,6 +7357,7 @@
 %%   <<"VisualId">> => string()
 %% }
 -type filled_map_visual() :: #{binary() => any()}.
+
 
 %% Example:
 %% table_configuration() :: #{
@@ -6606,6 +7372,7 @@
 %% }
 -type table_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% contribution_analysis_default() :: #{
 %%   <<"ContributorDimensions">> => list(column_identifier()()),
@@ -6613,11 +7380,13 @@
 %% }
 -type contribution_analysis_default() :: #{binary() => any()}.
 
+
 %% Example:
 %% word_cloud_field_wells() :: #{
 %%   <<"WordCloudAggregatedFieldWells">> => word_cloud_aggregated_field_wells()
 %% }
 -type word_cloud_field_wells() :: #{binary() => any()}.
+
 
 %% Example:
 %% gauge_chart_visual() :: #{
@@ -6630,6 +7399,7 @@
 %% }
 -type gauge_chart_visual() :: #{binary() => any()}.
 
+
 %% Example:
 %% date_time_value_when_unset_configuration() :: #{
 %%   <<"CustomValue">> => non_neg_integer(),
@@ -6637,12 +7407,14 @@
 %% }
 -type date_time_value_when_unset_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% percent_visible_range() :: #{
 %%   <<"From">> => float(),
 %%   <<"To">> => float()
 %% }
 -type percent_visible_range() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_bundle_import_job_vpc_connection_override_parameters() :: #{
@@ -6655,6 +7427,7 @@
 %% }
 -type asset_bundle_import_job_vpc_connection_override_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% histogram_visual() :: #{
 %%   <<"Actions">> => list(visual_custom_action()()),
@@ -6665,6 +7438,7 @@
 %% }
 -type histogram_visual() :: #{binary() => any()}.
 
+
 %% Example:
 %% gradient_stop() :: #{
 %%   <<"Color">> => string(),
@@ -6673,12 +7447,14 @@
 %% }
 -type gradient_stop() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_response() :: #{
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
 %% }
 -type tag_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% box_plot_chart_configuration() :: #{
@@ -6697,6 +7473,7 @@
 %% }
 -type box_plot_chart_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% dashboard_summary() :: #{
 %%   <<"Arn">> => string(),
@@ -6709,6 +7486,7 @@
 %% }
 -type dashboard_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% date_time_format_configuration() :: #{
 %%   <<"DateTimeFormat">> => string(),
@@ -6716,6 +7494,7 @@
 %%   <<"NumericFormatConfiguration">> => numeric_format_configuration()
 %% }
 -type date_time_format_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_template_alias_response() :: #{
@@ -6727,12 +7506,14 @@
 %% }
 -type delete_template_alias_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% short_format_text() :: #{
 %%   <<"PlainText">> => string(),
 %%   <<"RichText">> => string()
 %% }
 -type short_format_text() :: #{binary() => any()}.
+
 
 %% Example:
 %% tree_map_aggregated_field_wells() :: #{
@@ -6742,12 +7523,14 @@
 %% }
 -type tree_map_aggregated_field_wells() :: #{binary() => any()}.
 
+
 %% Example:
 %% big_query_parameters() :: #{
 %%   <<"DataSetRegion">> => string(),
 %%   <<"ProjectId">> => string()
 %% }
 -type big_query_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_dashboard_snapshot_job_response() :: #{
@@ -6758,6 +7541,7 @@
 %% }
 -type start_dashboard_snapshot_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% field_series_item() :: #{
 %%   <<"AxisBinding">> => list(any()),
@@ -6766,6 +7550,7 @@
 %% }
 -type field_series_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% visual_title_label_options() :: #{
 %%   <<"FormatText">> => short_format_text(),
@@ -6773,14 +7558,17 @@
 %% }
 -type visual_title_label_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% join_key_properties() :: #{
 %%   <<"UniqueKey">> => boolean()
 %% }
 -type join_key_properties() :: #{binary() => any()}.
+
 %% Example:
 %% describe_dashboard_permissions_request() :: #{}
 -type describe_dashboard_permissions_request() :: #{}.
+
 
 %% Example:
 %% delete_theme_response() :: #{
@@ -6790,6 +7578,7 @@
 %%   <<"ThemeId">> => string()
 %% }
 -type delete_theme_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% theme_summary() :: #{
@@ -6801,6 +7590,7 @@
 %%   <<"ThemeId">> => string()
 %% }
 -type theme_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% topic_column() :: #{
@@ -6824,12 +7614,14 @@
 %% }
 -type topic_column() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_options() :: #{
 %%   <<"Timezone">> => string(),
 %%   <<"WeekStart">> => list(any())
 %% }
 -type asset_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% presto_parameters() :: #{
@@ -6839,6 +7631,7 @@
 %% }
 -type presto_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% pivot_table_sort_by() :: #{
 %%   <<"Column">> => column_sort(),
@@ -6846,9 +7639,11 @@
 %%   <<"Field">> => field_sort()
 %% }
 -type pivot_table_sort_by() :: #{binary() => any()}.
+
 %% Example:
 %% describe_user_request() :: #{}
 -type describe_user_request() :: #{}.
+
 
 %% Example:
 %% period_over_period_computation() :: #{
@@ -6859,6 +7654,7 @@
 %% }
 -type period_over_period_computation() :: #{binary() => any()}.
 
+
 %% Example:
 %% chart_axis_label_options() :: #{
 %%   <<"AxisLabelOptions">> => list(axis_label_options()()),
@@ -6866,6 +7662,7 @@
 %%   <<"Visibility">> => list(any())
 %% }
 -type chart_axis_label_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_data_set_permissions_response() :: #{
@@ -6876,12 +7673,14 @@
 %% }
 -type update_data_set_permissions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_topic_permissions_request() :: #{
 %%   <<"GrantPermissions">> => list(resource_permission()()),
 %%   <<"RevokePermissions">> => list(resource_permission()())
 %% }
 -type update_topic_permissions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% waterfall_visual() :: #{
@@ -6894,11 +7693,13 @@
 %% }
 -type waterfall_visual() :: #{binary() => any()}.
 
+
 %% Example:
 %% sheet_element_configuration_overrides() :: #{
 %%   <<"Visibility">> => list(any())
 %% }
 -type sheet_element_configuration_overrides() :: #{binary() => any()}.
+
 
 %% Example:
 %% account_settings() :: #{
@@ -6910,6 +7711,7 @@
 %%   <<"TerminationProtectionEnabled">> => boolean()
 %% }
 -type account_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% number_display_format_configuration() :: #{
@@ -6923,12 +7725,14 @@
 %% }
 -type number_display_format_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% calculated_measure_field() :: #{
 %%   <<"Expression">> => string(),
 %%   <<"FieldId">> => string()
 %% }
 -type calculated_measure_field() :: #{binary() => any()}.
+
 
 %% Example:
 %% category_filter() :: #{
@@ -6938,11 +7742,13 @@
 %% }
 -type category_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% vpc_connection_properties() :: #{
 %%   <<"VpcConnectionArn">> => string()
 %% }
 -type vpc_connection_properties() :: #{binary() => any()}.
+
 
 %% Example:
 %% percentage_display_format_configuration() :: #{
@@ -6954,6 +7760,7 @@
 %%   <<"Suffix">> => string()
 %% }
 -type percentage_display_format_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_namespace_response() :: #{
@@ -6967,6 +7774,7 @@
 %% }
 -type create_namespace_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_user_request() :: #{
 %%   <<"CustomFederationProviderUrl">> => string(),
@@ -6979,6 +7787,7 @@
 %% }
 -type update_user_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_role_membership_response() :: #{
 %%   <<"RequestId">> => string(),
@@ -6986,12 +7795,14 @@
 %% }
 -type create_role_membership_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% sheet_control_info_icon_label_options() :: #{
 %%   <<"InfoIconText">> => string(),
 %%   <<"Visibility">> => list(any())
 %% }
 -type sheet_control_info_icon_label_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_templates_response() :: #{
@@ -7002,6 +7813,7 @@
 %% }
 -type list_templates_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_data_source_permissions_response() :: #{
 %%   <<"DataSourceArn">> => string(),
@@ -7010,6 +7822,7 @@
 %%   <<"Status">> => integer()
 %% }
 -type update_data_source_permissions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_analysis_response() :: #{
@@ -7021,6 +7834,7 @@
 %% }
 -type delete_analysis_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_bucket_configuration() :: #{
 %%   <<"BucketName">> => string(),
@@ -7028,6 +7842,7 @@
 %%   <<"BucketRegion">> => string()
 %% }
 -type s3_bucket_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% credential_pair() :: #{
@@ -7037,6 +7852,7 @@
 %% }
 -type credential_pair() :: #{binary() => any()}.
 
+
 %% Example:
 %% column_group_schema() :: #{
 %%   <<"ColumnGroupColumnSchemaList">> => list(column_group_column_schema()()),
@@ -7044,11 +7860,13 @@
 %% }
 -type column_group_schema() :: #{binary() => any()}.
 
+
 %% Example:
 %% amazon_open_search_parameters() :: #{
 %%   <<"Domain">> => string()
 %% }
 -type amazon_open_search_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% sheet() :: #{
@@ -7056,6 +7874,7 @@
 %%   <<"SheetId">> => string()
 %% }
 -type sheet() :: #{binary() => any()}.
+
 
 %% Example:
 %% heat_map_configuration() :: #{
@@ -7070,9 +7889,11 @@
 %%   <<"Tooltip">> => tooltip_options()
 %% }
 -type heat_map_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% group_search_filter() :: #{
@@ -7082,12 +7903,14 @@
 %% }
 -type group_search_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% decimal_parameter() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Values">> => list(float()())
 %% }
 -type decimal_parameter() :: #{binary() => any()}.
+
 
 %% Example:
 %% categorical_measure_field() :: #{
@@ -7098,11 +7921,13 @@
 %% }
 -type categorical_measure_field() :: #{binary() => any()}.
 
+
 %% Example:
 %% gradient_color() :: #{
 %%   <<"Stops">> => list(gradient_stop()())
 %% }
 -type gradient_color() :: #{binary() => any()}.
+
 
 %% Example:
 %% topic_summary() :: #{
@@ -7111,6 +7936,7 @@
 %%   <<"TopicId">> => string()
 %% }
 -type topic_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_folder_response() :: #{
@@ -7121,6 +7947,7 @@
 %% }
 -type delete_folder_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_session_embed_url_request() :: #{
 %%   <<"EntryPoint">> => string(),
@@ -7129,17 +7956,20 @@
 %% }
 -type get_session_embed_url_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% snapshot_user_configuration_redacted() :: #{
 %%   <<"AnonymousUsers">> => list(snapshot_anonymous_user_redacted()())
 %% }
 -type snapshot_user_configuration_redacted() :: #{binary() => any()}.
 
+
 %% Example:
 %% border_style() :: #{
 %%   <<"Show">> => boolean()
 %% }
 -type border_style() :: #{binary() => any()}.
+
 
 %% Example:
 %% logical_table_source() :: #{
@@ -7148,9 +7978,11 @@
 %%   <<"PhysicalTableId">> => string()
 %% }
 -type logical_table_source() :: #{binary() => any()}.
+
 %% Example:
 %% describe_topic_refresh_request() :: #{}
 -type describe_topic_refresh_request() :: #{}.
+
 
 %% Example:
 %% sankey_diagram_aggregated_field_wells() :: #{
@@ -7159,9 +7991,11 @@
 %%   <<"Weight">> => list(measure_field()())
 %% }
 -type sankey_diagram_aggregated_field_wells() :: #{binary() => any()}.
+
 %% Example:
 %% delete_group_membership_request() :: #{}
 -type delete_group_membership_request() :: #{}.
+
 
 %% Example:
 %% pivot_table_data_path_option() :: #{
@@ -7170,11 +8004,13 @@
 %% }
 -type pivot_table_data_path_option() :: #{binary() => any()}.
 
+
 %% Example:
 %% identity_center_configuration() :: #{
 %%   <<"EnableIdentityPropagation">> => boolean()
 %% }
 -type identity_center_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_iam_policy_assignment_response() :: #{
@@ -7183,6 +8019,7 @@
 %%   <<"Status">> => integer()
 %% }
 -type describe_iam_policy_assignment_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% pivot_table_options() :: #{
@@ -7202,6 +8039,7 @@
 %% }
 -type pivot_table_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_topic_refresh_schedule_response() :: #{
 %%   <<"DatasetArn">> => string(),
@@ -7212,6 +8050,7 @@
 %% }
 -type delete_topic_refresh_schedule_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% table_field_url_configuration() :: #{
 %%   <<"ImageConfiguration">> => table_field_image_configuration(),
@@ -7219,11 +8058,13 @@
 %% }
 -type table_field_url_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% collective_constant() :: #{
 %%   <<"ValueList">> => list(string()())
 %% }
 -type collective_constant() :: #{binary() => any()}.
+
 
 %% Example:
 %% section_layout_configuration() :: #{
@@ -7231,11 +8072,13 @@
 %% }
 -type section_layout_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% k_p_i_conditional_formatting() :: #{
 %%   <<"ConditionalFormattingOptions">> => list(k_p_i_conditional_formatting_option()())
 %% }
 -type k_p_i_conditional_formatting() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_template_alias_response() :: #{
@@ -7245,12 +8088,14 @@
 %% }
 -type describe_template_alias_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% sheet_style() :: #{
 %%   <<"Tile">> => tile_style(),
 %%   <<"TileLayout">> => tile_layout_style()
 %% }
 -type sheet_style() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_data_source_request() :: #{
@@ -7261,6 +8106,7 @@
 %%   <<"VpcConnectionProperties">> => vpc_connection_properties()
 %% }
 -type update_data_source_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% time_range_filter() :: #{
@@ -7276,6 +8122,7 @@
 %% }
 -type time_range_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_topic_refresh_schedule_response() :: #{
 %%   <<"DatasetArn">> => string(),
@@ -7287,6 +8134,7 @@
 %% }
 -type describe_topic_refresh_schedule_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% cancel_ingestion_response() :: #{
 %%   <<"Arn">> => string(),
@@ -7296,11 +8144,13 @@
 %% }
 -type cancel_ingestion_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_control_search_options() :: #{
 %%   <<"Visibility">> => list(any())
 %% }
 -type list_control_search_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_theme_aliases_request() :: #{
@@ -7308,6 +8158,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_theme_aliases_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% table_cell_style() :: #{
@@ -7322,6 +8173,7 @@
 %% }
 -type table_cell_style() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_namespaces_response() :: #{
 %%   <<"Namespaces">> => list(namespace_info_v2()()),
@@ -7331,12 +8183,14 @@
 %% }
 -type list_namespaces_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RequestId">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_color() :: #{
@@ -7345,11 +8199,13 @@
 %% }
 -type data_color() :: #{binary() => any()}.
 
+
 %% Example:
 %% font_weight() :: #{
 %%   <<"Name">> => list(any())
 %% }
 -type font_weight() :: #{binary() => any()}.
+
 
 %% Example:
 %% group() :: #{
@@ -7360,6 +8216,7 @@
 %% }
 -type group() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_topic_response() :: #{
 %%   <<"Arn">> => string(),
@@ -7369,12 +8226,14 @@
 %% }
 -type delete_topic_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% dashboard_source_template() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"DataSetReferences">> => list(data_set_reference()())
 %% }
 -type dashboard_source_template() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_folder_members_response() :: #{
@@ -7385,12 +8244,14 @@
 %% }
 -type list_folder_members_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% word_cloud_sort_configuration() :: #{
 %%   <<"CategoryItemsLimit">> => items_limit_configuration(),
 %%   <<"CategorySort">> => list(field_sort_options()())
 %% }
 -type word_cloud_sort_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% user() :: #{
@@ -7408,6 +8269,7 @@
 %% }
 -type user() :: #{binary() => any()}.
 
+
 %% Example:
 %% arc_axis_configuration() :: #{
 %%   <<"Range">> => arc_axis_display_range(),
@@ -7415,15 +8277,18 @@
 %% }
 -type arc_axis_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% snapshot_job_result_error_info() :: #{
 %%   <<"ErrorMessage">> => string(),
 %%   <<"ErrorType">> => string()
 %% }
 -type snapshot_job_result_error_info() :: #{binary() => any()}.
+
 %% Example:
 %% describe_group_request() :: #{}
 -type describe_group_request() :: #{}.
+
 
 %% Example:
 %% list_user_groups_request() :: #{
@@ -7432,11 +8297,13 @@
 %% }
 -type list_user_groups_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% radar_chart_area_style_settings() :: #{
 %%   <<"Visibility">> => list(any())
 %% }
 -type radar_chart_area_style_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_folder_response() :: #{
@@ -7447,6 +8314,7 @@
 %% }
 -type update_folder_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% databricks_parameters() :: #{
 %%   <<"Host">> => string(),
@@ -7454,6 +8322,7 @@
 %%   <<"SqlEndpointPath">> => string()
 %% }
 -type databricks_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% sankey_diagram_sort_configuration() :: #{
@@ -7463,6 +8332,7 @@
 %% }
 -type sankey_diagram_sort_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_account_settings_response() :: #{
 %%   <<"AccountSettings">> => account_settings(),
@@ -7471,12 +8341,14 @@
 %% }
 -type describe_account_settings_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_ip_restriction_request() :: #{
 %%   <<"Enabled">> => boolean(),
 %%   <<"IpRestrictionRuleMap">> => map()
 %% }
 -type update_ip_restriction_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% folder() :: #{
@@ -7491,15 +8363,18 @@
 %% }
 -type folder() :: #{binary() => any()}.
 
+
 %% Example:
 %% filter_scope_configuration() :: #{
 %%   <<"AllSheets">> => all_sheets_filter_scope_configuration(),
 %%   <<"SelectedSheets">> => selected_sheets_filter_scope_configuration()
 %% }
 -type filter_scope_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% delete_namespace_request() :: #{}
 -type delete_namespace_request() :: #{}.
+
 
 %% Example:
 %% geospatial_map_aggregated_field_wells() :: #{
@@ -7508,6 +8383,7 @@
 %%   <<"Values">> => list(measure_field()())
 %% }
 -type geospatial_map_aggregated_field_wells() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_dashboard_request() :: #{
@@ -7527,12 +8403,14 @@
 %% }
 -type create_dashboard_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% iam_policy_assignment_summary() :: #{
 %%   <<"AssignmentName">> => string(),
 %%   <<"AssignmentStatus">> => list(any())
 %% }
 -type iam_policy_assignment_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% visual_custom_action() :: #{
@@ -7544,6 +8422,7 @@
 %% }
 -type visual_custom_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% visual_custom_action_operation() :: #{
 %%   <<"FilterOperation">> => custom_action_filter_operation(),
@@ -7552,6 +8431,7 @@
 %%   <<"URLOperation">> => custom_action_url_operation()
 %% }
 -type visual_custom_action_operation() :: #{binary() => any()}.
+
 
 %% Example:
 %% measure_field() :: #{
@@ -7562,12 +8442,14 @@
 %% }
 -type measure_field() :: #{binary() => any()}.
 
+
 %% Example:
 %% decimal_default_values() :: #{
 %%   <<"DynamicValue">> => dynamic_default_value(),
 %%   <<"StaticValues">> => list(float()())
 %% }
 -type decimal_default_values() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_refresh_schedules_response() :: #{
@@ -7576,15 +8458,18 @@
 %%   <<"Status">> => integer()
 %% }
 -type list_refresh_schedules_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_group_request() :: #{}
 -type delete_group_request() :: #{}.
+
 
 %% Example:
 %% list_control_select_all_options() :: #{
 %%   <<"Visibility">> => list(any())
 %% }
 -type list_control_select_all_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% numerical_dimension_field() :: #{
@@ -7595,6 +8480,7 @@
 %% }
 -type numerical_dimension_field() :: #{binary() => any()}.
 
+
 %% Example:
 %% restore_analysis_response() :: #{
 %%   <<"AnalysisId">> => string(),
@@ -7604,12 +8490,14 @@
 %% }
 -type restore_analysis_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% twitter_parameters() :: #{
 %%   <<"MaxRows">> => integer(),
 %%   <<"Query">> => string()
 %% }
 -type twitter_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_set_usage_configuration() :: #{
@@ -7618,6 +8506,7 @@
 %% }
 -type data_set_usage_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_bundle_import_job_dashboard_override_permissions() :: #{
 %%   <<"DashboardIds">> => list(string()()),
@@ -7625,6 +8514,7 @@
 %%   <<"Permissions">> => asset_bundle_resource_permissions()
 %% }
 -type asset_bundle_import_job_dashboard_override_permissions() :: #{binary() => any()}.
+
 
 %% Example:
 %% heat_map_sort_configuration() :: #{
@@ -7635,11 +8525,13 @@
 %% }
 -type heat_map_sort_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% table_style_target() :: #{
 %%   <<"CellType">> => list(any())
 %% }
 -type table_style_target() :: #{binary() => any()}.
+
 
 %% Example:
 %% numeric_equality_filter() :: #{
@@ -7654,11 +8546,13 @@
 %% }
 -type numeric_equality_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% funnel_chart_field_wells() :: #{
 %%   <<"FunnelChartAggregatedFieldWells">> => funnel_chart_aggregated_field_wells()
 %% }
 -type funnel_chart_field_wells() :: #{binary() => any()}.
+
 
 %% Example:
 %% spark_parameters() :: #{
@@ -7666,6 +8560,7 @@
 %%   <<"Port">> => integer()
 %% }
 -type spark_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_analysis_permissions_response() :: #{
@@ -7677,12 +8572,14 @@
 %% }
 -type update_analysis_permissions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% theme_error() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Type">> => list(any())
 %% }
 -type theme_error() :: #{binary() => any()}.
+
 
 %% Example:
 %% line_chart_line_style_settings() :: #{
@@ -7693,12 +8590,14 @@
 %% }
 -type line_chart_line_style_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% reference_line_style_configuration() :: #{
 %%   <<"Color">> => string(),
 %%   <<"Pattern">> => list(any())
 %% }
 -type reference_line_style_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% date_dimension_field() :: #{
@@ -7709,6 +8608,7 @@
 %%   <<"HierarchyId">> => string()
 %% }
 -type date_dimension_field() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_account_customization_response() :: #{
@@ -7721,12 +8621,14 @@
 %% }
 -type create_account_customization_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% session_tag() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Value">> => string()
 %% }
 -type session_tag() :: #{binary() => any()}.
+
 
 %% Example:
 %% pie_chart_configuration() :: #{
@@ -7745,6 +8647,7 @@
 %% }
 -type pie_chart_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% generate_embed_url_for_anonymous_user_response() :: #{
 %%   <<"AnonymousUserArn">> => string(),
@@ -7754,12 +8657,14 @@
 %% }
 -type generate_embed_url_for_anonymous_user_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_users_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_users_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_bundle_import_job_theme_override_tags() :: #{
@@ -7768,6 +8673,7 @@
 %% }
 -type asset_bundle_import_job_theme_override_tags() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_dashboards_request() :: #{
 %%   <<"Filters">> := list(dashboard_search_filter()()),
@@ -7775,9 +8681,11 @@
 %%   <<"NextToken">> => string()
 %% }
 -type search_dashboards_request() :: #{binary() => any()}.
+
 %% Example:
 %% all_sheets_filter_scope_configuration() :: #{}
 -type all_sheets_filter_scope_configuration() :: #{}.
+
 
 %% Example:
 %% asset_bundle_import_job_data_set_override_permissions() :: #{
@@ -7785,6 +8693,7 @@
 %%   <<"Permissions">> => asset_bundle_resource_permissions()
 %% }
 -type asset_bundle_import_job_data_set_override_permissions() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_vpc_connection_response() :: #{
@@ -7797,12 +8706,14 @@
 %% }
 -type delete_vpc_connection_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% bin_width_options() :: #{
 %%   <<"BinCountLimit">> => float(),
 %%   <<"Value">> => float()
 %% }
 -type bin_width_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% pagination_configuration() :: #{
@@ -7811,6 +8722,7 @@
 %% }
 -type pagination_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% limit_exceeded_exception() :: #{
 %%   <<"Message">> => string(),
@@ -7818,6 +8730,7 @@
 %%   <<"ResourceType">> => list(any())
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_vpc_connection_request() :: #{
@@ -7828,6 +8741,7 @@
 %%   <<"SubnetIds">> := list(string()())
 %% }
 -type update_vpc_connection_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% scatter_plot_configuration() :: #{
@@ -7845,11 +8759,13 @@
 %% }
 -type scatter_plot_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% table_conditional_formatting() :: #{
 %%   <<"ConditionalFormattingOptions">> => list(table_conditional_formatting_option()())
 %% }
 -type table_conditional_formatting() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_folder_response() :: #{
@@ -7859,6 +8775,7 @@
 %% }
 -type describe_folder_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_account_customization_request() :: #{
 %%   <<"AccountCustomization">> := account_customization(),
@@ -7867,11 +8784,13 @@
 %% }
 -type create_account_customization_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% geospatial_map_field_wells() :: #{
 %%   <<"GeospatialMapAggregatedFieldWells">> => geospatial_map_aggregated_field_wells()
 %% }
 -type geospatial_map_field_wells() :: #{binary() => any()}.
+
 
 %% Example:
 %% cascading_control_source() :: #{
@@ -7880,11 +8799,13 @@
 %% }
 -type cascading_control_source() :: #{binary() => any()}.
 
+
 %% Example:
 %% single_axis_options() :: #{
 %%   <<"YAxisOptions">> => y_axis_options()
 %% }
 -type single_axis_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% vpc_connection_summary() :: #{
@@ -7903,6 +8824,7 @@
 %% }
 -type vpc_connection_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% pivot_table_aggregated_field_wells() :: #{
 %%   <<"Columns">> => list(dimension_field()()),
@@ -7911,14 +8833,17 @@
 %% }
 -type pivot_table_aggregated_field_wells() :: #{binary() => any()}.
 
+
 %% Example:
 %% local_navigation_configuration() :: #{
 %%   <<"TargetSheetId">> => string()
 %% }
 -type local_navigation_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% describe_analysis_permissions_request() :: #{}
 -type describe_analysis_permissions_request() :: #{}.
+
 
 %% Example:
 %% asset_bundle_export_job_summary() :: #{
@@ -7932,9 +8857,11 @@
 %%   <<"JobStatus">> => list(any())
 %% }
 -type asset_bundle_export_job_summary() :: #{binary() => any()}.
+
 %% Example:
 %% describe_topic_refresh_schedule_request() :: #{}
 -type describe_topic_refresh_schedule_request() :: #{}.
+
 
 %% Example:
 %% margin_style() :: #{
@@ -7942,15 +8869,18 @@
 %% }
 -type margin_style() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_bundle_export_job_dashboard_override_properties() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Properties">> => list(list(any())())
 %% }
 -type asset_bundle_export_job_dashboard_override_properties() :: #{binary() => any()}.
+
 %% Example:
 %% describe_ingestion_request() :: #{}
 -type describe_ingestion_request() :: #{}.
+
 
 %% Example:
 %% anonymous_user_embedding_experience_configuration() :: #{
@@ -7960,11 +8890,13 @@
 %% }
 -type anonymous_user_embedding_experience_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% y_axis_options() :: #{
 %%   <<"YAxis">> => list(any())
 %% }
 -type y_axis_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_topic_refresh_schedule_request() :: #{
@@ -7974,6 +8906,7 @@
 %% }
 -type create_topic_refresh_schedule_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% column_schema() :: #{
 %%   <<"DataType">> => string(),
@@ -7981,6 +8914,7 @@
 %%   <<"Name">> => string()
 %% }
 -type column_schema() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_ip_restriction_response() :: #{
@@ -7990,6 +8924,7 @@
 %% }
 -type update_ip_restriction_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% k_p_i_sparkline_options() :: #{
 %%   <<"Color">> => string(),
@@ -7998,6 +8933,7 @@
 %%   <<"Visibility">> => list(any())
 %% }
 -type k_p_i_sparkline_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_theme_permissions_response() :: #{
@@ -8009,12 +8945,14 @@
 %% }
 -type update_theme_permissions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% waterfall_chart_sort_configuration() :: #{
 %%   <<"BreakdownItemsLimit">> => items_limit_configuration(),
 %%   <<"CategorySort">> => list(field_sort_options()())
 %% }
 -type waterfall_chart_sort_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% date_time_default_values() :: #{
@@ -8024,17 +8962,20 @@
 %% }
 -type date_time_default_values() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_set_schema() :: #{
 %%   <<"ColumnSchemaList">> => list(column_schema()())
 %% }
 -type data_set_schema() :: #{binary() => any()}.
 
+
 %% Example:
 %% table_field_image_configuration() :: #{
 %%   <<"SizingOptions">> => table_cell_image_sizing_configuration()
 %% }
 -type table_field_image_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% topic_refresh_schedule_summary() :: #{
@@ -8045,12 +8986,14 @@
 %% }
 -type topic_refresh_schedule_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_data_set_permissions_request() :: #{
 %%   <<"GrantPermissions">> => list(resource_permission()()),
 %%   <<"RevokePermissions">> => list(resource_permission()())
 %% }
 -type update_data_set_permissions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% custom_color() :: #{
@@ -8059,6 +9002,7 @@
 %%   <<"SpecialValue">> => list(any())
 %% }
 -type custom_color() :: #{binary() => any()}.
+
 
 %% Example:
 %% aggregation_function() :: #{
@@ -8069,12 +9013,14 @@
 %% }
 -type aggregation_function() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_dashboard_request() :: #{
 %%   <<"AliasName">> => string(),
 %%   <<"VersionNumber">> => float()
 %% }
 -type describe_dashboard_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% total_options() :: #{
@@ -8087,6 +9033,7 @@
 %% }
 -type total_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_dashboards_response() :: #{
 %%   <<"DashboardSummaryList">> => list(dashboard_summary()()),
@@ -8096,12 +9043,14 @@
 %% }
 -type search_dashboards_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% identity_type_not_supported_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RequestId">> => string()
 %% }
 -type identity_type_not_supported_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% box_plot_options() :: #{
@@ -8110,6 +9059,7 @@
 %%   <<"StyleOptions">> => box_plot_style_options()
 %% }
 -type box_plot_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_template_response() :: #{
@@ -8122,6 +9072,7 @@
 %% }
 -type create_template_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_group_response() :: #{
 %%   <<"Group">> => group(),
@@ -8129,6 +9080,7 @@
 %%   <<"Status">> => integer()
 %% }
 -type describe_group_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% funnel_chart_configuration() :: #{
@@ -8142,6 +9094,7 @@
 %%   <<"VisualPalette">> => visual_palette()
 %% }
 -type funnel_chart_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% visual() :: #{
@@ -8171,6 +9124,7 @@
 %% }
 -type visual() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_permission() :: #{
 %%   <<"Actions">> => list(string()()),
@@ -8178,12 +9132,14 @@
 %% }
 -type resource_permission() :: #{binary() => any()}.
 
+
 %% Example:
 %% registered_user_quick_sight_console_embedding_configuration() :: #{
 %%   <<"FeatureConfigurations">> => registered_user_console_feature_configurations(),
 %%   <<"InitialPath">> => string()
 %% }
 -type registered_user_quick_sight_console_embedding_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_template_response() :: #{
@@ -8194,6 +9150,7 @@
 %% }
 -type delete_template_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% table_options() :: #{
 %%   <<"CellStyle">> => table_cell_style(),
@@ -8202,6 +9159,7 @@
 %%   <<"RowAlternateColorOptions">> => row_alternate_color_options()
 %% }
 -type table_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% redshift_iam_parameters() :: #{
@@ -8212,12 +9170,14 @@
 %% }
 -type redshift_iam_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_bundle_export_job_warning() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type asset_bundle_export_job_warning() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_folder_permissions_request() :: #{
@@ -8226,11 +9186,13 @@
 %% }
 -type update_folder_permissions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% typography() :: #{
 %%   <<"FontFamilies">> => list(font()())
 %% }
 -type typography() :: #{binary() => any()}.
+
 
 %% Example:
 %% template() :: #{
@@ -8243,6 +9205,7 @@
 %% }
 -type template() :: #{binary() => any()}.
 
+
 %% Example:
 %% filled_map_aggregated_field_wells() :: #{
 %%   <<"Geospatial">> => list(dimension_field()()),
@@ -8250,14 +9213,17 @@
 %% }
 -type filled_map_aggregated_field_wells() :: #{binary() => any()}.
 
+
 %% Example:
 %% dashboard_source_entity() :: #{
 %%   <<"SourceTemplate">> => dashboard_source_template()
 %% }
 -type dashboard_source_entity() :: #{binary() => any()}.
+
 %% Example:
 %% describe_ip_restriction_request() :: #{}
 -type describe_ip_restriction_request() :: #{}.
+
 
 %% Example:
 %% table_cell_conditional_formatting() :: #{
@@ -8265,6 +9231,7 @@
 %%   <<"TextFormat">> => text_conditional_format()
 %% }
 -type table_cell_conditional_formatting() :: #{binary() => any()}.
+
 
 %% Example:
 %% histogram_bin_options() :: #{
@@ -8275,6 +9242,7 @@
 %% }
 -type histogram_bin_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% trino_parameters() :: #{
 %%   <<"Catalog">> => string(),
@@ -8282,6 +9250,7 @@
 %%   <<"Port">> => integer()
 %% }
 -type trino_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_group_membership_response() :: #{
@@ -8291,6 +9260,7 @@
 %% }
 -type create_group_membership_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_data_set_response() :: #{
 %%   <<"DataSet">> => data_set(),
@@ -8298,6 +9268,7 @@
 %%   <<"Status">> => integer()
 %% }
 -type describe_data_set_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_bundle_import_job_override_permissions() :: #{
@@ -8309,6 +9280,7 @@
 %% }
 -type asset_bundle_import_job_override_permissions() :: #{binary() => any()}.
 
+
 %% Example:
 %% column_hierarchy() :: #{
 %%   <<"DateTimeHierarchy">> => date_time_hierarchy(),
@@ -8317,11 +9289,13 @@
 %% }
 -type column_hierarchy() :: #{binary() => any()}.
 
+
 %% Example:
 %% simple_cluster_marker() :: #{
 %%   <<"Color">> => string()
 %% }
 -type simple_cluster_marker() :: #{binary() => any()}.
+
 
 %% Example:
 %% font_size() :: #{
@@ -8329,11 +9303,13 @@
 %% }
 -type font_size() :: #{binary() => any()}.
 
+
 %% Example:
 %% waterfall_chart_field_wells() :: #{
 %%   <<"WaterfallChartAggregatedFieldWells">> => waterfall_chart_aggregated_field_wells()
 %% }
 -type waterfall_chart_field_wells() :: #{binary() => any()}.
+
 
 %% Example:
 %% calculated_field() :: #{
@@ -8343,11 +9319,13 @@
 %% }
 -type calculated_field() :: #{binary() => any()}.
 
+
 %% Example:
 %% export_with_hidden_fields_option() :: #{
 %%   <<"AvailabilityStatus">> => list(any())
 %% }
 -type export_with_hidden_fields_option() :: #{binary() => any()}.
+
 
 %% Example:
 %% decimal_dataset_parameter_default_values() :: #{
@@ -8355,11 +9333,13 @@
 %% }
 -type decimal_dataset_parameter_default_values() :: #{binary() => any()}.
 
+
 %% Example:
 %% incremental_refresh() :: #{
 %%   <<"LookbackWindow">> => lookback_window()
 %% }
 -type incremental_refresh() :: #{binary() => any()}.
+
 
 %% Example:
 %% pivot_table_paginated_report_options() :: #{
@@ -8368,6 +9348,7 @@
 %% }
 -type pivot_table_paginated_report_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% k_p_iprimary_value_conditional_formatting() :: #{
 %%   <<"Icon">> => conditional_formatting_icon(),
@@ -8375,12 +9356,14 @@
 %% }
 -type k_p_iprimary_value_conditional_formatting() :: #{binary() => any()}.
 
+
 %% Example:
 %% topic_range_filter_constant() :: #{
 %%   <<"ConstantType">> => list(any()),
 %%   <<"RangeConstant">> => range_constant()
 %% }
 -type topic_range_filter_constant() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_source() :: #{
@@ -8400,6 +9383,7 @@
 %% }
 -type data_source() :: #{binary() => any()}.
 
+
 %% Example:
 %% search_groups_response() :: #{
 %%   <<"GroupList">> => list(group()()),
@@ -8409,6 +9393,7 @@
 %% }
 -type search_groups_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% calculated_column() :: #{
 %%   <<"ColumnId">> => string(),
@@ -8416,6 +9401,7 @@
 %%   <<"Expression">> => string()
 %% }
 -type calculated_column() :: #{binary() => any()}.
+
 
 %% Example:
 %% dimension_field() :: #{
@@ -8425,6 +9411,7 @@
 %% }
 -type dimension_field() :: #{binary() => any()}.
 
+
 %% Example:
 %% waterfall_chart_group_color_configuration() :: #{
 %%   <<"NegativeBarColor">> => string(),
@@ -8432,6 +9419,7 @@
 %%   <<"TotalBarColor">> => string()
 %% }
 -type waterfall_chart_group_color_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% string_parameter_declaration() :: #{
@@ -8443,12 +9431,14 @@
 %% }
 -type string_parameter_declaration() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_set_reference() :: #{
 %%   <<"DataSetArn">> => string(),
 %%   <<"DataSetPlaceholder">> => string()
 %% }
 -type data_set_reference() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_group_memberships_response() :: #{
@@ -8458,6 +9448,7 @@
 %%   <<"Status">> => integer()
 %% }
 -type list_group_memberships_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% combo_chart_visual() :: #{
@@ -8470,12 +9461,14 @@
 %% }
 -type combo_chart_visual() :: #{binary() => any()}.
 
+
 %% Example:
 %% comparison_configuration() :: #{
 %%   <<"ComparisonFormat">> => comparison_format_configuration(),
 %%   <<"ComparisonMethod">> => list(any())
 %% }
 -type comparison_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% numeric_axis_options() :: #{
@@ -8484,12 +9477,14 @@
 %% }
 -type numeric_axis_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% forecast_configuration() :: #{
 %%   <<"ForecastProperties">> => time_based_forecast_properties(),
 %%   <<"Scenario">> => forecast_scenario()
 %% }
 -type forecast_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_folder_membership_response() :: #{
@@ -8499,6 +9494,7 @@
 %% }
 -type create_folder_membership_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% sql_server_parameters() :: #{
 %%   <<"Database">> => string(),
@@ -8506,6 +9502,7 @@
 %%   <<"Port">> => integer()
 %% }
 -type sql_server_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_groups_response() :: #{
@@ -8516,6 +9513,7 @@
 %% }
 -type list_groups_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_asset_bundle_export_job_response() :: #{
 %%   <<"Arn">> => string(),
@@ -8524,6 +9522,7 @@
 %%   <<"Status">> => integer()
 %% }
 -type start_asset_bundle_export_job_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% filter_text_area_control() :: #{
@@ -8535,6 +9534,7 @@
 %% }
 -type filter_text_area_control() :: #{binary() => any()}.
 
+
 %% Example:
 %% conditional_formatting_solid_color() :: #{
 %%   <<"Color">> => string(),
@@ -8542,11 +9542,13 @@
 %% }
 -type conditional_formatting_solid_color() :: #{binary() => any()}.
 
+
 %% Example:
 %% snapshot_anonymous_user() :: #{
 %%   <<"RowLevelPermissionTags">> => list(session_tag()())
 %% }
 -type snapshot_anonymous_user() :: #{binary() => any()}.
+
 
 %% Example:
 %% rolling_date_configuration() :: #{
@@ -8555,12 +9557,14 @@
 %% }
 -type rolling_date_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% conditional_formatting_gradient_color() :: #{
 %%   <<"Color">> => gradient_color(),
 %%   <<"Expression">> => string()
 %% }
 -type conditional_formatting_gradient_color() :: #{binary() => any()}.
+
 
 %% Example:
 %% ui_color_palette() :: #{
@@ -8583,12 +9587,14 @@
 %% }
 -type ui_color_palette() :: #{binary() => any()}.
 
+
 %% Example:
 %% manifest_file_location() :: #{
 %%   <<"Bucket">> => string(),
 %%   <<"Key">> => string()
 %% }
 -type manifest_file_location() :: #{binary() => any()}.
+
 
 %% Example:
 %% relative_date_time_control_display_options() :: #{
@@ -8597,9 +9603,11 @@
 %%   <<"TitleOptions">> => label_options()
 %% }
 -type relative_date_time_control_display_options() :: #{binary() => any()}.
+
 %% Example:
 %% delete_user_by_principal_id_request() :: #{}
 -type delete_user_by_principal_id_request() :: #{}.
+
 
 %% Example:
 %% snapshot_file() :: #{
@@ -8607,6 +9615,7 @@
 %%   <<"SheetSelections">> => list(snapshot_file_sheet_selection()())
 %% }
 -type snapshot_file() :: #{binary() => any()}.
+
 
 %% Example:
 %% color_scale() :: #{
@@ -8616,12 +9625,14 @@
 %% }
 -type color_scale() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_bundle_import_job_data_source_credentials() :: #{
 %%   <<"CredentialPair">> => asset_bundle_import_job_data_source_credential_pair(),
 %%   <<"SecretArn">> => string()
 %% }
 -type asset_bundle_import_job_data_source_credentials() :: #{binary() => any()}.
+
 
 %% Example:
 %% same_sheet_target_visual_configuration() :: #{
@@ -8630,6 +9641,7 @@
 %% }
 -type same_sheet_target_visual_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_user_by_principal_id_response() :: #{
 %%   <<"RequestId">> => string(),
@@ -8637,11 +9649,13 @@
 %% }
 -type delete_user_by_principal_id_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% pivot_table_conditional_formatting() :: #{
 %%   <<"ConditionalFormattingOptions">> => list(pivot_table_conditional_formatting_option()())
 %% }
 -type pivot_table_conditional_formatting() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_field_series_item() :: #{
@@ -8652,11 +9666,13 @@
 %% }
 -type data_field_series_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% custom_narrative_options() :: #{
 %%   <<"Narrative">> => string()
 %% }
 -type custom_narrative_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_iam_policy_assignment_response() :: #{
@@ -8666,12 +9682,14 @@
 %% }
 -type delete_iam_policy_assignment_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% snapshot_job_error_info() :: #{
 %%   <<"ErrorMessage">> => string(),
 %%   <<"ErrorType">> => string()
 %% }
 -type snapshot_job_error_info() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_folder_request() :: #{
@@ -8684,6 +9702,7 @@
 %% }
 -type create_folder_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_themes_response() :: #{
 %%   <<"NextToken">> => string(),
@@ -8692,6 +9711,7 @@
 %%   <<"ThemeSummaryList">> => list(theme_summary()())
 %% }
 -type list_themes_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_theme_versions_response() :: #{
@@ -8702,6 +9722,7 @@
 %% }
 -type list_theme_versions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% date_time_hierarchy() :: #{
 %%   <<"DrillDownFilters">> => list(drill_down_filter()()),
@@ -8709,11 +9730,13 @@
 %% }
 -type date_time_hierarchy() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_bundle_import_job_override_validation_strategy() :: #{
 %%   <<"StrictModeForAllResources">> => boolean()
 %% }
 -type asset_bundle_import_job_override_validation_strategy() :: #{binary() => any()}.
+
 
 %% Example:
 %% body_section_configuration() :: #{
@@ -8724,6 +9747,7 @@
 %% }
 -type body_section_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_dashboards_response() :: #{
 %%   <<"DashboardSummaryList">> => list(dashboard_summary()()),
@@ -8733,11 +9757,13 @@
 %% }
 -type list_dashboards_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% pivot_table_field_subtotal_options() :: #{
 %%   <<"FieldId">> => string()
 %% }
 -type pivot_table_field_subtotal_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_bundle_export_job_validation_strategy() :: #{
@@ -8745,11 +9771,13 @@
 %% }
 -type asset_bundle_export_job_validation_strategy() :: #{binary() => any()}.
 
+
 %% Example:
 %% analysis_defaults() :: #{
 %%   <<"DefaultNewSheetConfiguration">> => default_new_sheet_configuration()
 %% }
 -type analysis_defaults() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_topic_refresh_schedule_response() :: #{
@@ -8761,6 +9789,7 @@
 %% }
 -type create_topic_refresh_schedule_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% small_multiples_options() :: #{
 %%   <<"MaxVisibleColumns">> => float(),
@@ -8771,6 +9800,7 @@
 %% }
 -type small_multiples_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_groups_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -8778,12 +9808,14 @@
 %% }
 -type list_groups_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% reference_line_value_label_configuration() :: #{
 %%   <<"FormatConfiguration">> => numeric_format_configuration(),
 %%   <<"RelativePosition">> => list(any())
 %% }
 -type reference_line_value_label_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_folder_resolved_permissions_response() :: #{
@@ -8796,6 +9828,7 @@
 %% }
 -type describe_folder_resolved_permissions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% reference_line() :: #{
 %%   <<"DataConfiguration">> => reference_line_data_configuration(),
@@ -8805,11 +9838,13 @@
 %% }
 -type reference_line() :: #{binary() => any()}.
 
+
 %% Example:
 %% section_page_break_configuration() :: #{
 %%   <<"After">> => section_after_page_break()
 %% }
 -type section_page_break_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% snapshot_job_s3_result() :: #{
@@ -8819,12 +9854,14 @@
 %% }
 -type snapshot_job_s3_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% precondition_not_met_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RequestId">> => string()
 %% }
 -type precondition_not_met_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% sankey_diagram_chart_configuration() :: #{
@@ -8835,6 +9872,7 @@
 %% }
 -type sankey_diagram_chart_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_data_set_response() :: #{
 %%   <<"Arn">> => string(),
@@ -8844,11 +9882,13 @@
 %% }
 -type delete_data_set_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% filter_operation_target_visuals_configuration() :: #{
 %%   <<"SameSheetTargetVisualConfiguration">> => same_sheet_target_visual_configuration()
 %% }
 -type filter_operation_target_visuals_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% free_form_layout_element_background_style() :: #{
@@ -8856,6 +9896,7 @@
 %%   <<"Visibility">> => list(any())
 %% }
 -type free_form_layout_element_background_style() :: #{binary() => any()}.
+
 
 %% Example:
 %% output_column() :: #{
@@ -8865,6 +9906,7 @@
 %%   <<"Type">> => list(any())
 %% }
 -type output_column() :: #{binary() => any()}.
+
 
 %% Example:
 %% insight_visual() :: #{
@@ -8877,6 +9919,7 @@
 %% }
 -type insight_visual() :: #{binary() => any()}.
 
+
 %% Example:
 %% drop_down_control_display_options() :: #{
 %%   <<"InfoIconLabelOptions">> => sheet_control_info_icon_label_options(),
@@ -8884,6 +9927,7 @@
 %%   <<"TitleOptions">> => label_options()
 %% }
 -type drop_down_control_display_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% pivot_table_configuration() :: #{
@@ -8896,6 +9940,7 @@
 %%   <<"TotalOptions">> => pivot_table_total_options()
 %% }
 -type pivot_table_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% register_user_request() :: #{
@@ -8913,11 +9958,13 @@
 %% }
 -type register_user_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_refresh_schedule_request() :: #{
 %%   <<"Schedule">> := refresh_schedule()
 %% }
 -type create_refresh_schedule_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_bundle_import_job_override_parameters() :: #{
@@ -8932,6 +9979,7 @@
 %% }
 -type asset_bundle_import_job_override_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_source_error_info() :: #{
 %%   <<"Message">> => string(),
@@ -8939,11 +9987,13 @@
 %% }
 -type data_source_error_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% custom_action_set_parameters_operation() :: #{
 %%   <<"ParameterValueConfigurations">> => list(set_parameter_value_configuration()())
 %% }
 -type custom_action_set_parameters_operation() :: #{binary() => any()}.
+
 
 %% Example:
 %% comparative_order() :: #{
@@ -8952,6 +10002,7 @@
 %%   <<"UseOrdering">> => list(any())
 %% }
 -type comparative_order() :: #{binary() => any()}.
+
 
 %% Example:
 %% scatter_plot_visual() :: #{
@@ -8963,9 +10014,11 @@
 %%   <<"VisualId">> => string()
 %% }
 -type scatter_plot_visual() :: #{binary() => any()}.
+
 %% Example:
 %% describe_analysis_definition_request() :: #{}
 -type describe_analysis_definition_request() :: #{}.
+
 
 %% Example:
 %% heat_map_visual() :: #{
@@ -8978,6 +10031,7 @@
 %% }
 -type heat_map_visual() :: #{binary() => any()}.
 
+
 %% Example:
 %% decimal_parameter_declaration() :: #{
 %%   <<"DefaultValues">> => decimal_default_values(),
@@ -8987,6 +10041,7 @@
 %%   <<"ValueWhenUnset">> => decimal_value_when_unset_configuration()
 %% }
 -type decimal_parameter_declaration() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_analysis_request() :: #{
@@ -9002,6 +10057,7 @@
 %% }
 -type create_analysis_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% oracle_parameters() :: #{
 %%   <<"Database">> => string(),
@@ -9009,6 +10065,7 @@
 %%   <<"Port">> => integer()
 %% }
 -type oracle_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% top_bottom_ranked_computation() :: #{
@@ -9021,11 +10078,13 @@
 %% }
 -type top_bottom_ranked_computation() :: #{binary() => any()}.
 
+
 %% Example:
 %% cascading_control_configuration() :: #{
 %%   <<"SourceControls">> => list(cascading_control_source()())
 %% }
 -type cascading_control_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_color_palette() :: #{
@@ -9034,6 +10093,7 @@
 %%   <<"MinMaxGradient">> => list(string()())
 %% }
 -type data_color_palette() :: #{binary() => any()}.
+
 
 %% Example:
 %% custom_parameter_values() :: #{
@@ -9044,6 +10104,7 @@
 %% }
 -type custom_parameter_values() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_group_response() :: #{
 %%   <<"Group">> => group(),
@@ -9051,9 +10112,11 @@
 %%   <<"Status">> => integer()
 %% }
 -type update_group_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_iam_policy_assignment_request() :: #{}
 -type delete_iam_policy_assignment_request() :: #{}.
+
 
 %% Example:
 %% delete_identity_propagation_config_response() :: #{
@@ -9061,6 +10124,7 @@
 %%   <<"Status">> => integer()
 %% }
 -type delete_identity_propagation_config_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% free_form_layout_element() :: #{
@@ -9079,11 +10143,13 @@
 %% }
 -type free_form_layout_element() :: #{binary() => any()}.
 
+
 %% Example:
 %% filled_map_conditional_formatting() :: #{
 %%   <<"ConditionalFormattingOptions">> => list(filled_map_conditional_formatting_option()())
 %% }
 -type filled_map_conditional_formatting() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_bundle_import_job_override_tags() :: #{
@@ -9095,6 +10161,7 @@
 %%   <<"VPCConnections">> => list(asset_bundle_import_job_vpc_connection_override_tags()())
 %% }
 -type asset_bundle_import_job_override_tags() :: #{binary() => any()}.
+
 
 %% Example:
 %% dataset_metadata() :: #{
@@ -9109,12 +10176,14 @@
 %% }
 -type dataset_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% word_cloud_aggregated_field_wells() :: #{
 %%   <<"GroupBy">> => list(dimension_field()()),
 %%   <<"Size">> => list(measure_field()())
 %% }
 -type word_cloud_aggregated_field_wells() :: #{binary() => any()}.
+
 
 %% Example:
 %% template_version_summary() :: #{
@@ -9126,12 +10195,14 @@
 %% }
 -type template_version_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_role_custom_permission_response() :: #{
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
 %% }
 -type update_role_custom_permission_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% reference_line_label_configuration() :: #{
@@ -9144,11 +10215,13 @@
 %% }
 -type reference_line_label_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% section_based_layout_canvas_size_options() :: #{
 %%   <<"PaperCanvasSizeOptions">> => section_based_layout_paper_canvas_size_options()
 %% }
 -type section_based_layout_canvas_size_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% topic_calculated_field() :: #{
@@ -9172,6 +10245,7 @@
 %% }
 -type topic_calculated_field() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_path_value() :: #{
 %%   <<"DataPathType">> => data_path_type(),
@@ -9180,6 +10254,7 @@
 %% }
 -type data_path_value() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_template_response() :: #{
 %%   <<"RequestId">> => string(),
@@ -9187,6 +10262,7 @@
 %%   <<"Template">> => template()
 %% }
 -type describe_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% line_chart_marker_style_settings() :: #{
@@ -9197,6 +10273,7 @@
 %% }
 -type line_chart_marker_style_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_asset_bundle_export_jobs_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -9204,11 +10281,13 @@
 %% }
 -type list_asset_bundle_export_jobs_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% decimal_places_configuration() :: #{
 %%   <<"DecimalPlaces">> => float()
 %% }
 -type decimal_places_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_data_set_request() :: #{
@@ -9226,6 +10305,7 @@
 %% }
 -type update_data_set_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_theme_versions_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -9233,11 +10313,13 @@
 %% }
 -type list_theme_versions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% body_section_content() :: #{
 %%   <<"Layout">> => section_layout_configuration()
 %% }
 -type body_section_content() :: #{binary() => any()}.
+
 
 %% Example:
 %% pivot_table_conditional_formatting_scope() :: #{
@@ -9245,11 +10327,13 @@
 %% }
 -type pivot_table_conditional_formatting_scope() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_account_customization_request() :: #{
 %%   <<"Namespace">> => string()
 %% }
 -type delete_account_customization_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_group_response() :: #{
@@ -9258,9 +10342,11 @@
 %%   <<"Status">> => integer()
 %% }
 -type create_group_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_theme_alias_request() :: #{}
 -type describe_theme_alias_request() :: #{}.
+
 
 %% Example:
 %% k_p_i_comparison_value_conditional_formatting() :: #{
@@ -9269,6 +10355,7 @@
 %% }
 -type k_p_i_comparison_value_conditional_formatting() :: #{binary() => any()}.
 
+
 %% Example:
 %% box_plot_sort_configuration() :: #{
 %%   <<"CategorySort">> => list(field_sort_options()()),
@@ -9276,12 +10363,14 @@
 %% }
 -type box_plot_sort_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_folder_members_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_folder_members_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_bundle_cloud_formation_override_property_configuration() :: #{
@@ -9296,6 +10385,7 @@
 %% }
 -type asset_bundle_cloud_formation_override_property_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% box_plot_aggregated_field_wells() :: #{
 %%   <<"GroupBy">> => list(dimension_field()()),
@@ -9303,14 +10393,17 @@
 %% }
 -type box_plot_aggregated_field_wells() :: #{binary() => any()}.
 
+
 %% Example:
 %% k_p_i_visual_standard_layout() :: #{
 %%   <<"Type">> => list(any())
 %% }
 -type k_p_i_visual_standard_layout() :: #{binary() => any()}.
+
 %% Example:
 %% create_role_membership_request() :: #{}
 -type create_role_membership_request() :: #{}.
+
 
 %% Example:
 %% layout_configuration() :: #{
@@ -9320,6 +10413,7 @@
 %% }
 -type layout_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_path_color() :: #{
 %%   <<"Color">> => string(),
@@ -9328,12 +10422,14 @@
 %% }
 -type data_path_color() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_bundle_import_job_data_set_override_parameters() :: #{
 %%   <<"DataSetId">> => string(),
 %%   <<"Name">> => string()
 %% }
 -type asset_bundle_import_job_data_set_override_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% topic_filter() :: #{
@@ -9351,6 +10447,7 @@
 %% }
 -type topic_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% redshift_parameters() :: #{
 %%   <<"ClusterId">> => string(),
@@ -9362,11 +10459,13 @@
 %% }
 -type redshift_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% histogram_aggregated_field_wells() :: #{
 %%   <<"Values">> => list(measure_field()())
 %% }
 -type histogram_aggregated_field_wells() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_folder_resolved_permissions_request() :: #{
@@ -9376,12 +10475,14 @@
 %% }
 -type describe_folder_resolved_permissions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_public_sharing_settings_response() :: #{
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
 %% }
 -type update_public_sharing_settings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% scatter_plot_field_wells() :: #{
@@ -9390,12 +10491,14 @@
 %% }
 -type scatter_plot_field_wells() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_data_source_permissions_request() :: #{
 %%   <<"GrantPermissions">> => list(resource_permission()()),
 %%   <<"RevokePermissions">> => list(resource_permission()())
 %% }
 -type update_data_source_permissions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% topic_refresh_details() :: #{
@@ -9405,12 +10508,14 @@
 %% }
 -type topic_refresh_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% custom_values_configuration() :: #{
 %%   <<"CustomValues">> => custom_parameter_values(),
 %%   <<"IncludeNullValue">> => boolean()
 %% }
 -type custom_values_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% table_sort_configuration() :: #{
@@ -9419,12 +10524,14 @@
 %% }
 -type table_sort_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_parameters() :: #{
 %%   <<"ManifestFileLocation">> => manifest_file_location(),
 %%   <<"RoleArn">> => string()
 %% }
 -type s3_parameters() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_iam_policy_assignments_request() :: #{
@@ -9434,12 +10541,14 @@
 %% }
 -type list_iam_policy_assignments_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% asset_bundle_import_job_data_source_override_permissions() :: #{
 %%   <<"DataSourceIds">> => list(string()()),
 %%   <<"Permissions">> => asset_bundle_resource_permissions()
 %% }
 -type asset_bundle_import_job_data_source_override_permissions() :: #{binary() => any()}.
+
 
 %% Example:
 %% default_new_sheet_configuration() :: #{
@@ -9448,6 +10557,7 @@
 %%   <<"SheetContentType">> => list(any())
 %% }
 -type default_new_sheet_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_account_customization_response() :: #{
@@ -9459,9 +10569,11 @@
 %%   <<"Status">> => integer()
 %% }
 -type describe_account_customization_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_topic_request() :: #{}
 -type delete_topic_request() :: #{}.
+
 
 %% Example:
 %% custom_action_filter_operation() :: #{
@@ -9469,6 +10581,7 @@
 %%   <<"TargetVisualsConfiguration">> => filter_operation_target_visuals_configuration()
 %% }
 -type custom_action_filter_operation() :: #{binary() => any()}.
+
 
 %% Example:
 %% word_cloud_visual() :: #{
@@ -9481,6 +10594,7 @@
 %% }
 -type word_cloud_visual() :: #{binary() => any()}.
 
+
 %% Example:
 %% format_configuration() :: #{
 %%   <<"DateTimeFormatConfiguration">> => date_time_format_configuration(),
@@ -9488,6 +10602,7 @@
 %%   <<"StringFormatConfiguration">> => string_format_configuration()
 %% }
 -type format_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_dashboard_versions_response() :: #{
@@ -9497,6 +10612,7 @@
 %%   <<"Status">> => integer()
 %% }
 -type list_dashboard_versions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% geospatial_map_configuration() :: #{
@@ -9511,6 +10627,7 @@
 %% }
 -type geospatial_map_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% section_based_layout_configuration() :: #{
 %%   <<"BodySections">> => list(body_section_configuration()()),
@@ -9520,6 +10637,1501 @@
 %% }
 -type section_based_layout_configuration() :: #{binary() => any()}.
 
+-type cancel_ingestion_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type create_account_customization_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type create_account_subscription_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type create_analysis_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type create_dashboard_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type create_data_set_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type create_data_source_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type create_folder_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type create_folder_membership_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type create_group_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type create_group_membership_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type create_iam_policy_assignment_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    concurrent_updating_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type create_ingestion_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type create_namespace_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type create_refresh_schedule_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type create_role_membership_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type create_template_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type create_template_alias_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    resource_exists_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type create_theme_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type create_theme_alias_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type create_topic_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type create_topic_refresh_schedule_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type create_vpc_connection_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type delete_account_customization_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type delete_account_subscription_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type delete_analysis_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type delete_dashboard_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type delete_data_set_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type delete_data_set_refresh_properties_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type delete_data_source_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type delete_folder_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type delete_folder_membership_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type delete_group_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type delete_group_membership_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type delete_iam_policy_assignment_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    concurrent_updating_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type delete_identity_propagation_config_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type delete_namespace_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type delete_refresh_schedule_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type delete_role_custom_permission_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type delete_role_membership_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type delete_template_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type delete_template_alias_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type delete_theme_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type delete_theme_alias_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type delete_topic_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type delete_topic_refresh_schedule_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type delete_user_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type delete_user_by_principal_id_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type delete_vpc_connection_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_account_customization_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type describe_account_settings_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type describe_account_subscription_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type describe_analysis_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_analysis_definition_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_analysis_permissions_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_asset_bundle_export_job_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception().
+
+-type describe_asset_bundle_import_job_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception().
+
+-type describe_dashboard_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_dashboard_definition_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_dashboard_permissions_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_dashboard_snapshot_job_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_dashboard_snapshot_job_result_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_data_set_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_data_set_permissions_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_data_set_refresh_properties_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_data_source_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_data_source_permissions_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_folder_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_folder_permissions_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_folder_resolved_permissions_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_group_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type describe_group_membership_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type describe_iam_policy_assignment_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_ingestion_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_ip_restriction_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_namespace_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type describe_refresh_schedule_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_role_custom_permission_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type describe_template_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_template_alias_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_template_definition_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_template_permissions_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_theme_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_theme_alias_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_theme_permissions_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_topic_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_topic_permissions_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_topic_refresh_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_topic_refresh_schedule_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type describe_user_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type describe_vpc_connection_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type generate_embed_url_for_anonymous_user_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    session_lifetime_in_minutes_invalid_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    unsupported_pricing_plan_exception() | 
+    internal_failure_exception().
+
+-type generate_embed_url_for_registered_user_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    session_lifetime_in_minutes_invalid_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    unsupported_pricing_plan_exception() | 
+    quick_sight_user_not_found_exception() | 
+    internal_failure_exception().
+
+-type get_dashboard_embed_url_errors() ::
+    identity_type_not_supported_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    session_lifetime_in_minutes_invalid_exception() | 
+    invalid_parameter_value_exception() | 
+    domain_not_whitelisted_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    unsupported_pricing_plan_exception() | 
+    quick_sight_user_not_found_exception() | 
+    internal_failure_exception().
+
+-type get_session_embed_url_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    session_lifetime_in_minutes_invalid_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    quick_sight_user_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_analyses_errors() ::
+    throttling_exception() | 
+    invalid_next_token_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type list_asset_bundle_export_jobs_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception().
+
+-type list_asset_bundle_import_jobs_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception().
+
+-type list_dashboard_versions_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type list_dashboards_errors() ::
+    throttling_exception() | 
+    invalid_next_token_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type list_data_sets_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    internal_failure_exception().
+
+-type list_data_sources_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    internal_failure_exception().
+
+-type list_folder_members_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type list_folders_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type list_group_memberships_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type list_groups_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type list_iam_policy_assignments_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_iam_policy_assignments_for_user_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    concurrent_updating_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_identity_propagation_configs_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_ingestions_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_namespaces_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type list_refresh_schedules_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_role_memberships_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_template_aliases_errors() ::
+    throttling_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type list_template_versions_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type list_templates_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type list_theme_aliases_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type list_theme_versions_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type list_themes_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type list_topic_refresh_schedules_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type list_topics_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    internal_failure_exception().
+
+-type list_user_groups_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type list_users_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type list_vpc_connections_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type put_data_set_refresh_properties_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type register_user_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type restore_analysis_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type search_analyses_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type search_dashboards_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type search_data_sets_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type search_data_sources_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type search_folders_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type search_groups_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type start_asset_bundle_export_job_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception().
+
+-type start_asset_bundle_import_job_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception().
+
+-type start_dashboard_snapshot_job_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    unsupported_pricing_plan_exception() | 
+    internal_failure_exception().
+
+-type tag_resource_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type update_account_customization_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type update_account_settings_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type update_analysis_errors() ::
+    throttling_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_analysis_permissions_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_dashboard_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_dashboard_links_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_dashboard_permissions_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_dashboard_published_version_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_data_set_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_data_set_permissions_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type update_data_source_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type update_data_source_permissions_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type update_folder_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_folder_permissions_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_group_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type update_iam_policy_assignment_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    concurrent_updating_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type update_identity_propagation_config_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type update_ip_restriction_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type update_public_sharing_settings_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_pricing_plan_exception() | 
+    internal_failure_exception().
+
+-type update_refresh_schedule_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type update_role_custom_permission_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type update_template_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_template_alias_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_template_permissions_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_theme_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_theme_alias_errors() ::
+    throttling_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_theme_permissions_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_topic_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type update_topic_permissions_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_topic_refresh_schedule_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type update_user_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type update_vpc_connection_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -9528,24 +12140,14 @@
 -spec cancel_ingestion(map(), binary() | list(), binary() | list(), binary() | list(), cancel_ingestion_request()) ->
     {ok, cancel_ingestion_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, cancel_ingestion_errors(), tuple()}.
 cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input) ->
     cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input, []).
 
 -spec cancel_ingestion(map(), binary() | list(), binary() | list(), binary() | list(), cancel_ingestion_request(), proplists:proplist()) ->
     {ok, cancel_ingestion_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, cancel_ingestion_errors(), tuple()}.
 cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/ingestions/", aws_util:encode_uri(IngestionId), ""],
@@ -9612,28 +12214,14 @@ cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options0)
 -spec create_account_customization(map(), binary() | list(), create_account_customization_request()) ->
     {ok, create_account_customization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_account_customization_errors(), tuple()}.
 create_account_customization(Client, AwsAccountId, Input) ->
     create_account_customization(Client, AwsAccountId, Input, []).
 
 -spec create_account_customization(map(), binary() | list(), create_account_customization_request(), proplists:proplist()) ->
     {ok, create_account_customization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_account_customization_errors(), tuple()}.
 create_account_customization(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/customizations"],
@@ -9706,30 +12294,14 @@ create_account_customization(Client, AwsAccountId, Input0, Options0) ->
 -spec create_account_subscription(map(), binary() | list(), create_account_subscription_request()) ->
     {ok, create_account_subscription_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_account_subscription_errors(), tuple()}.
 create_account_subscription(Client, AwsAccountId, Input) ->
     create_account_subscription(Client, AwsAccountId, Input, []).
 
 -spec create_account_subscription(map(), binary() | list(), create_account_subscription_request(), proplists:proplist()) ->
     {ok, create_account_subscription_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_account_subscription_errors(), tuple()}.
 create_account_subscription(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/account/", aws_util:encode_uri(AwsAccountId), ""],
@@ -9759,28 +12331,14 @@ create_account_subscription(Client, AwsAccountId, Input0, Options0) ->
 -spec create_analysis(map(), binary() | list(), binary() | list(), create_analysis_request()) ->
     {ok, create_analysis_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, create_analysis_errors(), tuple()}.
 create_analysis(Client, AnalysisId, AwsAccountId, Input) ->
     create_analysis(Client, AnalysisId, AwsAccountId, Input, []).
 
 -spec create_analysis(map(), binary() | list(), binary() | list(), create_analysis_request(), proplists:proplist()) ->
     {ok, create_analysis_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, create_analysis_errors(), tuple()}.
 create_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), ""],
@@ -9825,28 +12383,14 @@ create_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
 -spec create_dashboard(map(), binary() | list(), binary() | list(), create_dashboard_request()) ->
     {ok, create_dashboard_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, create_dashboard_errors(), tuple()}.
 create_dashboard(Client, AwsAccountId, DashboardId, Input) ->
     create_dashboard(Client, AwsAccountId, DashboardId, Input, []).
 
 -spec create_dashboard(map(), binary() | list(), binary() | list(), create_dashboard_request(), proplists:proplist()) ->
     {ok, create_dashboard_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, create_dashboard_errors(), tuple()}.
 create_dashboard(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), ""],
@@ -9876,30 +12420,14 @@ create_dashboard(Client, AwsAccountId, DashboardId, Input0, Options0) ->
 -spec create_data_set(map(), binary() | list(), create_data_set_request()) ->
     {ok, create_data_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, create_data_set_errors(), tuple()}.
 create_data_set(Client, AwsAccountId, Input) ->
     create_data_set(Client, AwsAccountId, Input, []).
 
 -spec create_data_set(map(), binary() | list(), create_data_set_request(), proplists:proplist()) ->
     {ok, create_data_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, create_data_set_errors(), tuple()}.
 create_data_set(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets"],
@@ -9926,28 +12454,14 @@ create_data_set(Client, AwsAccountId, Input0, Options0) ->
 -spec create_data_source(map(), binary() | list(), create_data_source_request()) ->
     {ok, create_data_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_data_source_errors(), tuple()}.
 create_data_source(Client, AwsAccountId, Input) ->
     create_data_source(Client, AwsAccountId, Input, []).
 
 -spec create_data_source(map(), binary() | list(), create_data_source_request(), proplists:proplist()) ->
     {ok, create_data_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_data_source_errors(), tuple()}.
 create_data_source(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources"],
@@ -9974,30 +12488,14 @@ create_data_source(Client, AwsAccountId, Input0, Options0) ->
 -spec create_folder(map(), binary() | list(), binary() | list(), create_folder_request()) ->
     {ok, create_folder_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, create_folder_errors(), tuple()}.
 create_folder(Client, AwsAccountId, FolderId, Input) ->
     create_folder(Client, AwsAccountId, FolderId, Input, []).
 
 -spec create_folder(map(), binary() | list(), binary() | list(), create_folder_request(), proplists:proplist()) ->
     {ok, create_folder_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, create_folder_errors(), tuple()}.
 create_folder(Client, AwsAccountId, FolderId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), ""],
@@ -10025,28 +12523,14 @@ create_folder(Client, AwsAccountId, FolderId, Input0, Options0) ->
 -spec create_folder_membership(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_folder_membership_request()) ->
     {ok, create_folder_membership_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, create_folder_membership_errors(), tuple()}.
 create_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, Input) ->
     create_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, Input, []).
 
 -spec create_folder_membership(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_folder_membership_request(), proplists:proplist()) ->
     {ok, create_folder_membership_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, create_folder_membership_errors(), tuple()}.
 create_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), "/members/", aws_util:encode_uri(MemberType), "/", aws_util:encode_uri(MemberId), ""],
@@ -10085,30 +12569,14 @@ create_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, I
 -spec create_group(map(), binary() | list(), binary() | list(), create_group_request()) ->
     {ok, create_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_group_errors(), tuple()}.
 create_group(Client, AwsAccountId, Namespace, Input) ->
     create_group(Client, AwsAccountId, Namespace, Input, []).
 
 -spec create_group(map(), binary() | list(), binary() | list(), create_group_request(), proplists:proplist()) ->
     {ok, create_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_group_errors(), tuple()}.
 create_group(Client, AwsAccountId, Namespace, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups"],
@@ -10135,26 +12603,14 @@ create_group(Client, AwsAccountId, Namespace, Input0, Options0) ->
 -spec create_group_membership(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_group_membership_request()) ->
     {ok, create_group_membership_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_group_membership_errors(), tuple()}.
 create_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input) ->
     create_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input, []).
 
 -spec create_group_membership(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_group_membership_request(), proplists:proplist()) ->
     {ok, create_group_membership_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_group_membership_errors(), tuple()}.
 create_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), "/members/", aws_util:encode_uri(MemberName), ""],
@@ -10190,26 +12646,14 @@ create_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, 
 -spec create_iam_policy_assignment(map(), binary() | list(), binary() | list(), create_iam_policy_assignment_request()) ->
     {ok, create_iam_policy_assignment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_updating_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_iam_policy_assignment_errors(), tuple()}.
 create_iam_policy_assignment(Client, AwsAccountId, Namespace, Input) ->
     create_iam_policy_assignment(Client, AwsAccountId, Namespace, Input, []).
 
 -spec create_iam_policy_assignment(map(), binary() | list(), binary() | list(), create_iam_policy_assignment_request(), proplists:proplist()) ->
     {ok, create_iam_policy_assignment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_updating_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_iam_policy_assignment_errors(), tuple()}.
 create_iam_policy_assignment(Client, AwsAccountId, Namespace, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/iam-policy-assignments"],
@@ -10252,26 +12696,14 @@ create_iam_policy_assignment(Client, AwsAccountId, Namespace, Input0, Options0) 
 -spec create_ingestion(map(), binary() | list(), binary() | list(), binary() | list(), create_ingestion_request()) ->
     {ok, create_ingestion_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_ingestion_errors(), tuple()}.
 create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input) ->
     create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input, []).
 
 -spec create_ingestion(map(), binary() | list(), binary() | list(), binary() | list(), create_ingestion_request(), proplists:proplist()) ->
     {ok, create_ingestion_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_ingestion_errors(), tuple()}.
 create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/ingestions/", aws_util:encode_uri(IngestionId), ""],
@@ -10313,32 +12745,14 @@ create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options0)
 -spec create_namespace(map(), binary() | list(), create_namespace_request()) ->
     {ok, create_namespace_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_namespace_errors(), tuple()}.
 create_namespace(Client, AwsAccountId, Input) ->
     create_namespace(Client, AwsAccountId, Input, []).
 
 -spec create_namespace(map(), binary() | list(), create_namespace_request(), proplists:proplist()) ->
     {ok, create_namespace_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_namespace_errors(), tuple()}.
 create_namespace(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), ""],
@@ -10367,28 +12781,14 @@ create_namespace(Client, AwsAccountId, Input0, Options0) ->
 -spec create_refresh_schedule(map(), binary() | list(), binary() | list(), create_refresh_schedule_request()) ->
     {ok, create_refresh_schedule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_refresh_schedule_errors(), tuple()}.
 create_refresh_schedule(Client, AwsAccountId, DataSetId, Input) ->
     create_refresh_schedule(Client, AwsAccountId, DataSetId, Input, []).
 
 -spec create_refresh_schedule(map(), binary() | list(), binary() | list(), create_refresh_schedule_request(), proplists:proplist()) ->
     {ok, create_refresh_schedule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_refresh_schedule_errors(), tuple()}.
 create_refresh_schedule(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-schedules"],
@@ -10416,26 +12816,14 @@ create_refresh_schedule(Client, AwsAccountId, DataSetId, Input0, Options0) ->
 -spec create_role_membership(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_role_membership_request()) ->
     {ok, create_role_membership_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_role_membership_errors(), tuple()}.
 create_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input) ->
     create_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input, []).
 
 -spec create_role_membership(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_role_membership_request(), proplists:proplist()) ->
     {ok, create_role_membership_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_role_membership_errors(), tuple()}.
 create_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/roles/", aws_util:encode_uri(Role), "/members/", aws_util:encode_uri(MemberName), ""],
@@ -10478,30 +12866,14 @@ create_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input0
 -spec create_template(map(), binary() | list(), binary() | list(), create_template_request()) ->
     {ok, create_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, create_template_errors(), tuple()}.
 create_template(Client, AwsAccountId, TemplateId, Input) ->
     create_template(Client, AwsAccountId, TemplateId, Input, []).
 
 -spec create_template(map(), binary() | list(), binary() | list(), create_template_request(), proplists:proplist()) ->
     {ok, create_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, create_template_errors(), tuple()}.
 create_template(Client, AwsAccountId, TemplateId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), ""],
@@ -10528,26 +12900,14 @@ create_template(Client, AwsAccountId, TemplateId, Input0, Options0) ->
 -spec create_template_alias(map(), binary() | list(), binary() | list(), binary() | list(), create_template_alias_request()) ->
     {ok, create_template_alias_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, create_template_alias_errors(), tuple()}.
 create_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input) ->
     create_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input, []).
 
 -spec create_template_alias(map(), binary() | list(), binary() | list(), binary() | list(), create_template_alias_request(), proplists:proplist()) ->
     {ok, create_template_alias_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, create_template_alias_errors(), tuple()}.
 create_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/aliases/", aws_util:encode_uri(AliasName), ""],
@@ -10580,28 +12940,14 @@ create_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Optio
 -spec create_theme(map(), binary() | list(), binary() | list(), create_theme_request()) ->
     {ok, create_theme_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, create_theme_errors(), tuple()}.
 create_theme(Client, AwsAccountId, ThemeId, Input) ->
     create_theme(Client, AwsAccountId, ThemeId, Input, []).
 
 -spec create_theme(map(), binary() | list(), binary() | list(), create_theme_request(), proplists:proplist()) ->
     {ok, create_theme_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, create_theme_errors(), tuple()}.
 create_theme(Client, AwsAccountId, ThemeId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), ""],
@@ -10628,28 +12974,14 @@ create_theme(Client, AwsAccountId, ThemeId, Input0, Options0) ->
 -spec create_theme_alias(map(), binary() | list(), binary() | list(), binary() | list(), create_theme_alias_request()) ->
     {ok, create_theme_alias_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, create_theme_alias_errors(), tuple()}.
 create_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input) ->
     create_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input, []).
 
 -spec create_theme_alias(map(), binary() | list(), binary() | list(), binary() | list(), create_theme_alias_request(), proplists:proplist()) ->
     {ok, create_theme_alias_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, create_theme_alias_errors(), tuple()}.
 create_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/aliases/", aws_util:encode_uri(AliasName), ""],
@@ -10676,28 +13008,14 @@ create_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options0) -
 -spec create_topic(map(), binary() | list(), create_topic_request()) ->
     {ok, create_topic_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_topic_errors(), tuple()}.
 create_topic(Client, AwsAccountId, Input) ->
     create_topic(Client, AwsAccountId, Input, []).
 
 -spec create_topic(map(), binary() | list(), create_topic_request(), proplists:proplist()) ->
     {ok, create_topic_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_topic_errors(), tuple()}.
 create_topic(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics"],
@@ -10724,28 +13042,14 @@ create_topic(Client, AwsAccountId, Input0, Options0) ->
 -spec create_topic_refresh_schedule(map(), binary() | list(), binary() | list(), create_topic_refresh_schedule_request()) ->
     {ok, create_topic_refresh_schedule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_topic_refresh_schedule_errors(), tuple()}.
 create_topic_refresh_schedule(Client, AwsAccountId, TopicId, Input) ->
     create_topic_refresh_schedule(Client, AwsAccountId, TopicId, Input, []).
 
 -spec create_topic_refresh_schedule(map(), binary() | list(), binary() | list(), create_topic_refresh_schedule_request(), proplists:proplist()) ->
     {ok, create_topic_refresh_schedule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_topic_refresh_schedule_errors(), tuple()}.
 create_topic_refresh_schedule(Client, AwsAccountId, TopicId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/schedules"],
@@ -10772,28 +13076,14 @@ create_topic_refresh_schedule(Client, AwsAccountId, TopicId, Input0, Options0) -
 -spec create_vpc_connection(map(), binary() | list(), create_vpc_connection_request()) ->
     {ok, create_vpc_connection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, create_vpc_connection_errors(), tuple()}.
 create_vpc_connection(Client, AwsAccountId, Input) ->
     create_vpc_connection(Client, AwsAccountId, Input, []).
 
 -spec create_vpc_connection(map(), binary() | list(), create_vpc_connection_request(), proplists:proplist()) ->
     {ok, create_vpc_connection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, create_vpc_connection_errors(), tuple()}.
 create_vpc_connection(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/vpc-connections"],
@@ -10822,30 +13112,14 @@ create_vpc_connection(Client, AwsAccountId, Input0, Options0) ->
 -spec delete_account_customization(map(), binary() | list(), delete_account_customization_request()) ->
     {ok, delete_account_customization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_account_customization_errors(), tuple()}.
 delete_account_customization(Client, AwsAccountId, Input) ->
     delete_account_customization(Client, AwsAccountId, Input, []).
 
 -spec delete_account_customization(map(), binary() | list(), delete_account_customization_request(), proplists:proplist()) ->
     {ok, delete_account_customization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_account_customization_errors(), tuple()}.
 delete_account_customization(Client, AwsAccountId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/customizations"],
@@ -10881,26 +13155,14 @@ delete_account_customization(Client, AwsAccountId, Input0, Options0) ->
 -spec delete_account_subscription(map(), binary() | list(), delete_account_subscription_request()) ->
     {ok, delete_account_subscription_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_account_subscription_errors(), tuple()}.
 delete_account_subscription(Client, AwsAccountId, Input) ->
     delete_account_subscription(Client, AwsAccountId, Input, []).
 
 -spec delete_account_subscription(map(), binary() | list(), delete_account_subscription_request(), proplists:proplist()) ->
     {ok, delete_account_subscription_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_account_subscription_errors(), tuple()}.
 delete_account_subscription(Client, AwsAccountId, Input0, Options0) ->
     Method = delete,
     Path = ["/account/", aws_util:encode_uri(AwsAccountId), ""],
@@ -10950,24 +13212,14 @@ delete_account_subscription(Client, AwsAccountId, Input0, Options0) ->
 -spec delete_analysis(map(), binary() | list(), binary() | list(), delete_analysis_request()) ->
     {ok, delete_analysis_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, delete_analysis_errors(), tuple()}.
 delete_analysis(Client, AnalysisId, AwsAccountId, Input) ->
     delete_analysis(Client, AnalysisId, AwsAccountId, Input, []).
 
 -spec delete_analysis(map(), binary() | list(), binary() | list(), delete_analysis_request(), proplists:proplist()) ->
     {ok, delete_analysis_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, delete_analysis_errors(), tuple()}.
 delete_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), ""],
@@ -10996,24 +13248,14 @@ delete_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
 -spec delete_dashboard(map(), binary() | list(), binary() | list(), delete_dashboard_request()) ->
     {ok, delete_dashboard_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, delete_dashboard_errors(), tuple()}.
 delete_dashboard(Client, AwsAccountId, DashboardId, Input) ->
     delete_dashboard(Client, AwsAccountId, DashboardId, Input, []).
 
 -spec delete_dashboard(map(), binary() | list(), binary() | list(), delete_dashboard_request(), proplists:proplist()) ->
     {ok, delete_dashboard_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, delete_dashboard_errors(), tuple()}.
 delete_dashboard(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), ""],
@@ -11041,22 +13283,14 @@ delete_dashboard(Client, AwsAccountId, DashboardId, Input0, Options0) ->
 -spec delete_data_set(map(), binary() | list(), binary() | list(), delete_data_set_request()) ->
     {ok, delete_data_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_data_set_errors(), tuple()}.
 delete_data_set(Client, AwsAccountId, DataSetId, Input) ->
     delete_data_set(Client, AwsAccountId, DataSetId, Input, []).
 
 -spec delete_data_set(map(), binary() | list(), binary() | list(), delete_data_set_request(), proplists:proplist()) ->
     {ok, delete_data_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_data_set_errors(), tuple()}.
 delete_data_set(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), ""],
@@ -11083,26 +13317,14 @@ delete_data_set(Client, AwsAccountId, DataSetId, Input0, Options0) ->
 -spec delete_data_set_refresh_properties(map(), binary() | list(), binary() | list(), delete_data_set_refresh_properties_request()) ->
     {ok, delete_data_set_refresh_properties_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_data_set_refresh_properties_errors(), tuple()}.
 delete_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input) ->
     delete_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input, []).
 
 -spec delete_data_set_refresh_properties(map(), binary() | list(), binary() | list(), delete_data_set_refresh_properties_request(), proplists:proplist()) ->
     {ok, delete_data_set_refresh_properties_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_data_set_refresh_properties_errors(), tuple()}.
 delete_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-properties"],
@@ -11132,22 +13354,14 @@ delete_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input0, Opti
 -spec delete_data_source(map(), binary() | list(), binary() | list(), delete_data_source_request()) ->
     {ok, delete_data_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_data_source_errors(), tuple()}.
 delete_data_source(Client, AwsAccountId, DataSourceId, Input) ->
     delete_data_source(Client, AwsAccountId, DataSourceId, Input, []).
 
 -spec delete_data_source(map(), binary() | list(), binary() | list(), delete_data_source_request(), proplists:proplist()) ->
     {ok, delete_data_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_data_source_errors(), tuple()}.
 delete_data_source(Client, AwsAccountId, DataSourceId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources/", aws_util:encode_uri(DataSourceId), ""],
@@ -11174,28 +13388,14 @@ delete_data_source(Client, AwsAccountId, DataSourceId, Input0, Options0) ->
 -spec delete_folder(map(), binary() | list(), binary() | list(), delete_folder_request()) ->
     {ok, delete_folder_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, delete_folder_errors(), tuple()}.
 delete_folder(Client, AwsAccountId, FolderId, Input) ->
     delete_folder(Client, AwsAccountId, FolderId, Input, []).
 
 -spec delete_folder(map(), binary() | list(), binary() | list(), delete_folder_request(), proplists:proplist()) ->
     {ok, delete_folder_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, delete_folder_errors(), tuple()}.
 delete_folder(Client, AwsAccountId, FolderId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), ""],
@@ -11223,24 +13423,14 @@ delete_folder(Client, AwsAccountId, FolderId, Input0, Options0) ->
 -spec delete_folder_membership(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_folder_membership_request()) ->
     {ok, delete_folder_membership_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, delete_folder_membership_errors(), tuple()}.
 delete_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, Input) ->
     delete_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, Input, []).
 
 -spec delete_folder_membership(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_folder_membership_request(), proplists:proplist()) ->
     {ok, delete_folder_membership_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, delete_folder_membership_errors(), tuple()}.
 delete_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), "/members/", aws_util:encode_uri(MemberType), "/", aws_util:encode_uri(MemberId), ""],
@@ -11267,26 +13457,14 @@ delete_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, I
 -spec delete_group(map(), binary() | list(), binary() | list(), binary() | list(), delete_group_request()) ->
     {ok, delete_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_group_errors(), tuple()}.
 delete_group(Client, AwsAccountId, GroupName, Namespace, Input) ->
     delete_group(Client, AwsAccountId, GroupName, Namespace, Input, []).
 
 -spec delete_group(map(), binary() | list(), binary() | list(), binary() | list(), delete_group_request(), proplists:proplist()) ->
     {ok, delete_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_group_errors(), tuple()}.
 delete_group(Client, AwsAccountId, GroupName, Namespace, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), ""],
@@ -11314,26 +13492,14 @@ delete_group(Client, AwsAccountId, GroupName, Namespace, Input0, Options0) ->
 -spec delete_group_membership(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_group_membership_request()) ->
     {ok, delete_group_membership_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_group_membership_errors(), tuple()}.
 delete_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input) ->
     delete_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input, []).
 
 -spec delete_group_membership(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_group_membership_request(), proplists:proplist()) ->
     {ok, delete_group_membership_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_group_membership_errors(), tuple()}.
 delete_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), "/members/", aws_util:encode_uri(MemberName), ""],
@@ -11360,26 +13526,14 @@ delete_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, 
 -spec delete_iam_policy_assignment(map(), binary() | list(), binary() | list(), binary() | list(), delete_iam_policy_assignment_request()) ->
     {ok, delete_iam_policy_assignment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_updating_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_iam_policy_assignment_errors(), tuple()}.
 delete_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input) ->
     delete_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input, []).
 
 -spec delete_iam_policy_assignment(map(), binary() | list(), binary() | list(), binary() | list(), delete_iam_policy_assignment_request(), proplists:proplist()) ->
     {ok, delete_iam_policy_assignment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_updating_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_iam_policy_assignment_errors(), tuple()}.
 delete_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespace/", aws_util:encode_uri(Namespace), "/iam-policy-assignments/", aws_util:encode_uri(AssignmentName), ""],
@@ -11410,22 +13564,14 @@ delete_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, In
 -spec delete_identity_propagation_config(map(), binary() | list(), binary() | list(), delete_identity_propagation_config_request()) ->
     {ok, delete_identity_propagation_config_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_identity_propagation_config_errors(), tuple()}.
 delete_identity_propagation_config(Client, AwsAccountId, Service, Input) ->
     delete_identity_propagation_config(Client, AwsAccountId, Service, Input, []).
 
 -spec delete_identity_propagation_config(map(), binary() | list(), binary() | list(), delete_identity_propagation_config_request(), proplists:proplist()) ->
     {ok, delete_identity_propagation_config_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_identity_propagation_config_errors(), tuple()}.
 delete_identity_propagation_config(Client, AwsAccountId, Service, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/identity-propagation-config/", aws_util:encode_uri(Service), ""],
@@ -11458,26 +13604,14 @@ delete_identity_propagation_config(Client, AwsAccountId, Service, Input0, Option
 -spec delete_namespace(map(), binary() | list(), binary() | list(), delete_namespace_request()) ->
     {ok, delete_namespace_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_namespace_errors(), tuple()}.
 delete_namespace(Client, AwsAccountId, Namespace, Input) ->
     delete_namespace(Client, AwsAccountId, Namespace, Input, []).
 
 -spec delete_namespace(map(), binary() | list(), binary() | list(), delete_namespace_request(), proplists:proplist()) ->
     {ok, delete_namespace_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_namespace_errors(), tuple()}.
 delete_namespace(Client, AwsAccountId, Namespace, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), ""],
@@ -11504,24 +13638,14 @@ delete_namespace(Client, AwsAccountId, Namespace, Input0, Options0) ->
 -spec delete_refresh_schedule(map(), binary() | list(), binary() | list(), binary() | list(), delete_refresh_schedule_request()) ->
     {ok, delete_refresh_schedule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_refresh_schedule_errors(), tuple()}.
 delete_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, Input) ->
     delete_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, Input, []).
 
 -spec delete_refresh_schedule(map(), binary() | list(), binary() | list(), binary() | list(), delete_refresh_schedule_request(), proplists:proplist()) ->
     {ok, delete_refresh_schedule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_refresh_schedule_errors(), tuple()}.
 delete_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-schedules/", aws_util:encode_uri(ScheduleId), ""],
@@ -11548,26 +13672,14 @@ delete_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, Input0, Opt
 -spec delete_role_custom_permission(map(), binary() | list(), binary() | list(), binary() | list(), delete_role_custom_permission_request()) ->
     {ok, delete_role_custom_permission_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_role_custom_permission_errors(), tuple()}.
 delete_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input) ->
     delete_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input, []).
 
 -spec delete_role_custom_permission(map(), binary() | list(), binary() | list(), binary() | list(), delete_role_custom_permission_request(), proplists:proplist()) ->
     {ok, delete_role_custom_permission_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_role_custom_permission_errors(), tuple()}.
 delete_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/roles/", aws_util:encode_uri(Role), "/custom-permission"],
@@ -11594,26 +13706,14 @@ delete_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input0, Opt
 -spec delete_role_membership(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_role_membership_request()) ->
     {ok, delete_role_membership_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_role_membership_errors(), tuple()}.
 delete_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input) ->
     delete_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input, []).
 
 -spec delete_role_membership(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_role_membership_request(), proplists:proplist()) ->
     {ok, delete_role_membership_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_role_membership_errors(), tuple()}.
 delete_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/roles/", aws_util:encode_uri(Role), "/members/", aws_util:encode_uri(MemberName), ""],
@@ -11640,26 +13740,14 @@ delete_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input0
 -spec delete_template(map(), binary() | list(), binary() | list(), delete_template_request()) ->
     {ok, delete_template_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, delete_template_errors(), tuple()}.
 delete_template(Client, AwsAccountId, TemplateId, Input) ->
     delete_template(Client, AwsAccountId, TemplateId, Input, []).
 
 -spec delete_template(map(), binary() | list(), binary() | list(), delete_template_request(), proplists:proplist()) ->
     {ok, delete_template_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, delete_template_errors(), tuple()}.
 delete_template(Client, AwsAccountId, TemplateId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), ""],
@@ -11690,22 +13778,14 @@ delete_template(Client, AwsAccountId, TemplateId, Input0, Options0) ->
 -spec delete_template_alias(map(), binary() | list(), binary() | list(), binary() | list(), delete_template_alias_request()) ->
     {ok, delete_template_alias_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, delete_template_alias_errors(), tuple()}.
 delete_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input) ->
     delete_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input, []).
 
 -spec delete_template_alias(map(), binary() | list(), binary() | list(), binary() | list(), delete_template_alias_request(), proplists:proplist()) ->
     {ok, delete_template_alias_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, delete_template_alias_errors(), tuple()}.
 delete_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/aliases/", aws_util:encode_uri(AliasName), ""],
@@ -11732,26 +13812,14 @@ delete_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Optio
 -spec delete_theme(map(), binary() | list(), binary() | list(), delete_theme_request()) ->
     {ok, delete_theme_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, delete_theme_errors(), tuple()}.
 delete_theme(Client, AwsAccountId, ThemeId, Input) ->
     delete_theme(Client, AwsAccountId, ThemeId, Input, []).
 
 -spec delete_theme(map(), binary() | list(), binary() | list(), delete_theme_request(), proplists:proplist()) ->
     {ok, delete_theme_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, delete_theme_errors(), tuple()}.
 delete_theme(Client, AwsAccountId, ThemeId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), ""],
@@ -11783,24 +13851,14 @@ delete_theme(Client, AwsAccountId, ThemeId, Input0, Options0) ->
 -spec delete_theme_alias(map(), binary() | list(), binary() | list(), binary() | list(), delete_theme_alias_request()) ->
     {ok, delete_theme_alias_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, delete_theme_alias_errors(), tuple()}.
 delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input) ->
     delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input, []).
 
 -spec delete_theme_alias(map(), binary() | list(), binary() | list(), binary() | list(), delete_theme_alias_request(), proplists:proplist()) ->
     {ok, delete_theme_alias_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, delete_theme_alias_errors(), tuple()}.
 delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/aliases/", aws_util:encode_uri(AliasName), ""],
@@ -11827,24 +13885,14 @@ delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options0) -
 -spec delete_topic(map(), binary() | list(), binary() | list(), delete_topic_request()) ->
     {ok, delete_topic_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_topic_errors(), tuple()}.
 delete_topic(Client, AwsAccountId, TopicId, Input) ->
     delete_topic(Client, AwsAccountId, TopicId, Input, []).
 
 -spec delete_topic(map(), binary() | list(), binary() | list(), delete_topic_request(), proplists:proplist()) ->
     {ok, delete_topic_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_topic_errors(), tuple()}.
 delete_topic(Client, AwsAccountId, TopicId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), ""],
@@ -11871,28 +13919,14 @@ delete_topic(Client, AwsAccountId, TopicId, Input0, Options0) ->
 -spec delete_topic_refresh_schedule(map(), binary() | list(), binary() | list(), binary() | list(), delete_topic_refresh_schedule_request()) ->
     {ok, delete_topic_refresh_schedule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_topic_refresh_schedule_errors(), tuple()}.
 delete_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input) ->
     delete_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input, []).
 
 -spec delete_topic_refresh_schedule(map(), binary() | list(), binary() | list(), binary() | list(), delete_topic_refresh_schedule_request(), proplists:proplist()) ->
     {ok, delete_topic_refresh_schedule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_topic_refresh_schedule_errors(), tuple()}.
 delete_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/schedules/", aws_util:encode_uri(DatasetId), ""],
@@ -11924,26 +13958,14 @@ delete_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input0, 
 -spec delete_user(map(), binary() | list(), binary() | list(), binary() | list(), delete_user_request()) ->
     {ok, delete_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_user_errors(), tuple()}.
 delete_user(Client, AwsAccountId, Namespace, UserName, Input) ->
     delete_user(Client, AwsAccountId, Namespace, UserName, Input, []).
 
 -spec delete_user(map(), binary() | list(), binary() | list(), binary() | list(), delete_user_request(), proplists:proplist()) ->
     {ok, delete_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_user_errors(), tuple()}.
 delete_user(Client, AwsAccountId, Namespace, UserName, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), ""],
@@ -11970,26 +13992,14 @@ delete_user(Client, AwsAccountId, Namespace, UserName, Input0, Options0) ->
 -spec delete_user_by_principal_id(map(), binary() | list(), binary() | list(), binary() | list(), delete_user_by_principal_id_request()) ->
     {ok, delete_user_by_principal_id_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_user_by_principal_id_errors(), tuple()}.
 delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input) ->
     delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input, []).
 
 -spec delete_user_by_principal_id(map(), binary() | list(), binary() | list(), binary() | list(), delete_user_by_principal_id_request(), proplists:proplist()) ->
     {ok, delete_user_by_principal_id_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_user_by_principal_id_errors(), tuple()}.
 delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/user-principals/", aws_util:encode_uri(PrincipalId), ""],
@@ -12016,26 +14026,14 @@ delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input0
 -spec delete_vpc_connection(map(), binary() | list(), binary() | list(), delete_vpc_connection_request()) ->
     {ok, delete_vpc_connection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, delete_vpc_connection_errors(), tuple()}.
 delete_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input) ->
     delete_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input, []).
 
 -spec delete_vpc_connection(map(), binary() | list(), binary() | list(), delete_vpc_connection_request(), proplists:proplist()) ->
     {ok, delete_vpc_connection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, delete_vpc_connection_errors(), tuple()}.
 delete_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/vpc-connections/", aws_util:encode_uri(VPCConnectionId), ""],
@@ -12133,12 +14131,7 @@ delete_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input0, Options0) -
 -spec describe_account_customization(map(), binary() | list()) ->
     {ok, describe_account_customization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_account_customization_errors(), tuple()}.
 describe_account_customization(Client, AwsAccountId)
   when is_map(Client) ->
     describe_account_customization(Client, AwsAccountId, #{}, #{}).
@@ -12146,12 +14139,7 @@ describe_account_customization(Client, AwsAccountId)
 -spec describe_account_customization(map(), binary() | list(), map(), map()) ->
     {ok, describe_account_customization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_account_customization_errors(), tuple()}.
 describe_account_customization(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_account_customization(Client, AwsAccountId, QueryMap, HeadersMap, []).
@@ -12159,12 +14147,7 @@ describe_account_customization(Client, AwsAccountId, QueryMap, HeadersMap)
 -spec describe_account_customization(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_account_customization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_account_customization_errors(), tuple()}.
 describe_account_customization(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/customizations"],
@@ -12192,12 +14175,7 @@ describe_account_customization(Client, AwsAccountId, QueryMap, HeadersMap, Optio
 -spec describe_account_settings(map(), binary() | list()) ->
     {ok, describe_account_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_account_settings_errors(), tuple()}.
 describe_account_settings(Client, AwsAccountId)
   when is_map(Client) ->
     describe_account_settings(Client, AwsAccountId, #{}, #{}).
@@ -12205,12 +14183,7 @@ describe_account_settings(Client, AwsAccountId)
 -spec describe_account_settings(map(), binary() | list(), map(), map()) ->
     {ok, describe_account_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_account_settings_errors(), tuple()}.
 describe_account_settings(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_account_settings(Client, AwsAccountId, QueryMap, HeadersMap, []).
@@ -12218,12 +14191,7 @@ describe_account_settings(Client, AwsAccountId, QueryMap, HeadersMap)
 -spec describe_account_settings(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_account_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_account_settings_errors(), tuple()}.
 describe_account_settings(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/settings"],
@@ -12249,12 +14217,7 @@ describe_account_settings(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 -spec describe_account_subscription(map(), binary() | list()) ->
     {ok, describe_account_subscription_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_account_subscription_errors(), tuple()}.
 describe_account_subscription(Client, AwsAccountId)
   when is_map(Client) ->
     describe_account_subscription(Client, AwsAccountId, #{}, #{}).
@@ -12262,12 +14225,7 @@ describe_account_subscription(Client, AwsAccountId)
 -spec describe_account_subscription(map(), binary() | list(), map(), map()) ->
     {ok, describe_account_subscription_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_account_subscription_errors(), tuple()}.
 describe_account_subscription(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_account_subscription(Client, AwsAccountId, QueryMap, HeadersMap, []).
@@ -12275,12 +14233,7 @@ describe_account_subscription(Client, AwsAccountId, QueryMap, HeadersMap)
 -spec describe_account_subscription(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_account_subscription_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_account_subscription_errors(), tuple()}.
 describe_account_subscription(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/account/", aws_util:encode_uri(AwsAccountId), ""],
@@ -12301,12 +14254,7 @@ describe_account_subscription(Client, AwsAccountId, QueryMap, HeadersMap, Option
 -spec describe_analysis(map(), binary() | list(), binary() | list()) ->
     {ok, describe_analysis_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_analysis_errors(), tuple()}.
 describe_analysis(Client, AnalysisId, AwsAccountId)
   when is_map(Client) ->
     describe_analysis(Client, AnalysisId, AwsAccountId, #{}, #{}).
@@ -12314,12 +14262,7 @@ describe_analysis(Client, AnalysisId, AwsAccountId)
 -spec describe_analysis(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_analysis_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_analysis_errors(), tuple()}.
 describe_analysis(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_analysis(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, []).
@@ -12327,12 +14270,7 @@ describe_analysis(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap)
 -spec describe_analysis(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_analysis_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_analysis_errors(), tuple()}.
 describe_analysis(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), ""],
@@ -12363,14 +14301,7 @@ describe_analysis(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, Option
 -spec describe_analysis_definition(map(), binary() | list(), binary() | list()) ->
     {ok, describe_analysis_definition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_analysis_definition_errors(), tuple()}.
 describe_analysis_definition(Client, AnalysisId, AwsAccountId)
   when is_map(Client) ->
     describe_analysis_definition(Client, AnalysisId, AwsAccountId, #{}, #{}).
@@ -12378,14 +14309,7 @@ describe_analysis_definition(Client, AnalysisId, AwsAccountId)
 -spec describe_analysis_definition(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_analysis_definition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_analysis_definition_errors(), tuple()}.
 describe_analysis_definition(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_analysis_definition(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, []).
@@ -12393,14 +14317,7 @@ describe_analysis_definition(Client, AnalysisId, AwsAccountId, QueryMap, Headers
 -spec describe_analysis_definition(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_analysis_definition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_analysis_definition_errors(), tuple()}.
 describe_analysis_definition(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), "/definition"],
@@ -12421,11 +14338,7 @@ describe_analysis_definition(Client, AnalysisId, AwsAccountId, QueryMap, Headers
 -spec describe_analysis_permissions(map(), binary() | list(), binary() | list()) ->
     {ok, describe_analysis_permissions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_analysis_permissions_errors(), tuple()}.
 describe_analysis_permissions(Client, AnalysisId, AwsAccountId)
   when is_map(Client) ->
     describe_analysis_permissions(Client, AnalysisId, AwsAccountId, #{}, #{}).
@@ -12433,11 +14346,7 @@ describe_analysis_permissions(Client, AnalysisId, AwsAccountId)
 -spec describe_analysis_permissions(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_analysis_permissions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_analysis_permissions_errors(), tuple()}.
 describe_analysis_permissions(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_analysis_permissions(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, []).
@@ -12445,11 +14354,7 @@ describe_analysis_permissions(Client, AnalysisId, AwsAccountId, QueryMap, Header
 -spec describe_analysis_permissions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_analysis_permissions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_analysis_permissions_errors(), tuple()}.
 describe_analysis_permissions(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), "/permissions"],
@@ -12478,9 +14383,7 @@ describe_analysis_permissions(Client, AnalysisId, AwsAccountId, QueryMap, Header
 -spec describe_asset_bundle_export_job(map(), binary() | list(), binary() | list()) ->
     {ok, describe_asset_bundle_export_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_asset_bundle_export_job_errors(), tuple()}.
 describe_asset_bundle_export_job(Client, AssetBundleExportJobId, AwsAccountId)
   when is_map(Client) ->
     describe_asset_bundle_export_job(Client, AssetBundleExportJobId, AwsAccountId, #{}, #{}).
@@ -12488,9 +14391,7 @@ describe_asset_bundle_export_job(Client, AssetBundleExportJobId, AwsAccountId)
 -spec describe_asset_bundle_export_job(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_asset_bundle_export_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_asset_bundle_export_job_errors(), tuple()}.
 describe_asset_bundle_export_job(Client, AssetBundleExportJobId, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_asset_bundle_export_job(Client, AssetBundleExportJobId, AwsAccountId, QueryMap, HeadersMap, []).
@@ -12498,9 +14399,7 @@ describe_asset_bundle_export_job(Client, AssetBundleExportJobId, AwsAccountId, Q
 -spec describe_asset_bundle_export_job(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_asset_bundle_export_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_asset_bundle_export_job_errors(), tuple()}.
 describe_asset_bundle_export_job(Client, AssetBundleExportJobId, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/asset-bundle-export-jobs/", aws_util:encode_uri(AssetBundleExportJobId), ""],
@@ -12524,9 +14423,7 @@ describe_asset_bundle_export_job(Client, AssetBundleExportJobId, AwsAccountId, Q
 -spec describe_asset_bundle_import_job(map(), binary() | list(), binary() | list()) ->
     {ok, describe_asset_bundle_import_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_asset_bundle_import_job_errors(), tuple()}.
 describe_asset_bundle_import_job(Client, AssetBundleImportJobId, AwsAccountId)
   when is_map(Client) ->
     describe_asset_bundle_import_job(Client, AssetBundleImportJobId, AwsAccountId, #{}, #{}).
@@ -12534,9 +14431,7 @@ describe_asset_bundle_import_job(Client, AssetBundleImportJobId, AwsAccountId)
 -spec describe_asset_bundle_import_job(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_asset_bundle_import_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_asset_bundle_import_job_errors(), tuple()}.
 describe_asset_bundle_import_job(Client, AssetBundleImportJobId, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_asset_bundle_import_job(Client, AssetBundleImportJobId, AwsAccountId, QueryMap, HeadersMap, []).
@@ -12544,9 +14439,7 @@ describe_asset_bundle_import_job(Client, AssetBundleImportJobId, AwsAccountId, Q
 -spec describe_asset_bundle_import_job(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_asset_bundle_import_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_asset_bundle_import_job_errors(), tuple()}.
 describe_asset_bundle_import_job(Client, AssetBundleImportJobId, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/asset-bundle-import-jobs/", aws_util:encode_uri(AssetBundleImportJobId), ""],
@@ -12567,12 +14460,7 @@ describe_asset_bundle_import_job(Client, AssetBundleImportJobId, AwsAccountId, Q
 -spec describe_dashboard(map(), binary() | list(), binary() | list()) ->
     {ok, describe_dashboard_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_dashboard_errors(), tuple()}.
 describe_dashboard(Client, AwsAccountId, DashboardId)
   when is_map(Client) ->
     describe_dashboard(Client, AwsAccountId, DashboardId, #{}, #{}).
@@ -12580,12 +14468,7 @@ describe_dashboard(Client, AwsAccountId, DashboardId)
 -spec describe_dashboard(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_dashboard_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_dashboard_errors(), tuple()}.
 describe_dashboard(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dashboard(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, []).
@@ -12593,12 +14476,7 @@ describe_dashboard(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap)
 -spec describe_dashboard(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_dashboard_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_dashboard_errors(), tuple()}.
 describe_dashboard(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), ""],
@@ -12634,14 +14512,7 @@ describe_dashboard(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, Opti
 -spec describe_dashboard_definition(map(), binary() | list(), binary() | list()) ->
     {ok, describe_dashboard_definition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_dashboard_definition_errors(), tuple()}.
 describe_dashboard_definition(Client, AwsAccountId, DashboardId)
   when is_map(Client) ->
     describe_dashboard_definition(Client, AwsAccountId, DashboardId, #{}, #{}).
@@ -12649,14 +14520,7 @@ describe_dashboard_definition(Client, AwsAccountId, DashboardId)
 -spec describe_dashboard_definition(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_dashboard_definition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_dashboard_definition_errors(), tuple()}.
 describe_dashboard_definition(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dashboard_definition(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, []).
@@ -12664,14 +14528,7 @@ describe_dashboard_definition(Client, AwsAccountId, DashboardId, QueryMap, Heade
 -spec describe_dashboard_definition(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_dashboard_definition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_dashboard_definition_errors(), tuple()}.
 describe_dashboard_definition(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/definition"],
@@ -12697,11 +14554,7 @@ describe_dashboard_definition(Client, AwsAccountId, DashboardId, QueryMap, Heade
 -spec describe_dashboard_permissions(map(), binary() | list(), binary() | list()) ->
     {ok, describe_dashboard_permissions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_dashboard_permissions_errors(), tuple()}.
 describe_dashboard_permissions(Client, AwsAccountId, DashboardId)
   when is_map(Client) ->
     describe_dashboard_permissions(Client, AwsAccountId, DashboardId, #{}, #{}).
@@ -12709,11 +14562,7 @@ describe_dashboard_permissions(Client, AwsAccountId, DashboardId)
 -spec describe_dashboard_permissions(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_dashboard_permissions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_dashboard_permissions_errors(), tuple()}.
 describe_dashboard_permissions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dashboard_permissions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, []).
@@ -12721,11 +14570,7 @@ describe_dashboard_permissions(Client, AwsAccountId, DashboardId, QueryMap, Head
 -spec describe_dashboard_permissions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_dashboard_permissions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_dashboard_permissions_errors(), tuple()}.
 describe_dashboard_permissions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/permissions"],
@@ -12749,11 +14594,7 @@ describe_dashboard_permissions(Client, AwsAccountId, DashboardId, QueryMap, Head
 -spec describe_dashboard_snapshot_job(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_dashboard_snapshot_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_dashboard_snapshot_job_errors(), tuple()}.
 describe_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, SnapshotJobId)
   when is_map(Client) ->
     describe_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, SnapshotJobId, #{}, #{}).
@@ -12761,11 +14602,7 @@ describe_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, SnapshotJobId
 -spec describe_dashboard_snapshot_job(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_dashboard_snapshot_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_dashboard_snapshot_job_errors(), tuple()}.
 describe_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, SnapshotJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, SnapshotJobId, QueryMap, HeadersMap, []).
@@ -12773,11 +14610,7 @@ describe_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, SnapshotJobId
 -spec describe_dashboard_snapshot_job(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_dashboard_snapshot_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_dashboard_snapshot_job_errors(), tuple()}.
 describe_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, SnapshotJobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/snapshot-jobs/", aws_util:encode_uri(SnapshotJobId), ""],
@@ -12807,13 +14640,7 @@ describe_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, SnapshotJobId
 -spec describe_dashboard_snapshot_job_result(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_dashboard_snapshot_job_result_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_dashboard_snapshot_job_result_errors(), tuple()}.
 describe_dashboard_snapshot_job_result(Client, AwsAccountId, DashboardId, SnapshotJobId)
   when is_map(Client) ->
     describe_dashboard_snapshot_job_result(Client, AwsAccountId, DashboardId, SnapshotJobId, #{}, #{}).
@@ -12821,13 +14648,7 @@ describe_dashboard_snapshot_job_result(Client, AwsAccountId, DashboardId, Snapsh
 -spec describe_dashboard_snapshot_job_result(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_dashboard_snapshot_job_result_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_dashboard_snapshot_job_result_errors(), tuple()}.
 describe_dashboard_snapshot_job_result(Client, AwsAccountId, DashboardId, SnapshotJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dashboard_snapshot_job_result(Client, AwsAccountId, DashboardId, SnapshotJobId, QueryMap, HeadersMap, []).
@@ -12835,13 +14656,7 @@ describe_dashboard_snapshot_job_result(Client, AwsAccountId, DashboardId, Snapsh
 -spec describe_dashboard_snapshot_job_result(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_dashboard_snapshot_job_result_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_dashboard_snapshot_job_result_errors(), tuple()}.
 describe_dashboard_snapshot_job_result(Client, AwsAccountId, DashboardId, SnapshotJobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/snapshot-jobs/", aws_util:encode_uri(SnapshotJobId), "/result"],
@@ -12865,11 +14680,7 @@ describe_dashboard_snapshot_job_result(Client, AwsAccountId, DashboardId, Snapsh
 -spec describe_data_set(map(), binary() | list(), binary() | list()) ->
     {ok, describe_data_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_data_set_errors(), tuple()}.
 describe_data_set(Client, AwsAccountId, DataSetId)
   when is_map(Client) ->
     describe_data_set(Client, AwsAccountId, DataSetId, #{}, #{}).
@@ -12877,11 +14688,7 @@ describe_data_set(Client, AwsAccountId, DataSetId)
 -spec describe_data_set(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_data_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_data_set_errors(), tuple()}.
 describe_data_set(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_data_set(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, []).
@@ -12889,11 +14696,7 @@ describe_data_set(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap)
 -spec describe_data_set(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_data_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_data_set_errors(), tuple()}.
 describe_data_set(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), ""],
@@ -12917,11 +14720,7 @@ describe_data_set(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options
 -spec describe_data_set_permissions(map(), binary() | list(), binary() | list()) ->
     {ok, describe_data_set_permissions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_data_set_permissions_errors(), tuple()}.
 describe_data_set_permissions(Client, AwsAccountId, DataSetId)
   when is_map(Client) ->
     describe_data_set_permissions(Client, AwsAccountId, DataSetId, #{}, #{}).
@@ -12929,11 +14728,7 @@ describe_data_set_permissions(Client, AwsAccountId, DataSetId)
 -spec describe_data_set_permissions(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_data_set_permissions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_data_set_permissions_errors(), tuple()}.
 describe_data_set_permissions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_data_set_permissions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, []).
@@ -12941,11 +14736,7 @@ describe_data_set_permissions(Client, AwsAccountId, DataSetId, QueryMap, Headers
 -spec describe_data_set_permissions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_data_set_permissions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_data_set_permissions_errors(), tuple()}.
 describe_data_set_permissions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/permissions"],
@@ -12966,13 +14757,7 @@ describe_data_set_permissions(Client, AwsAccountId, DataSetId, QueryMap, Headers
 -spec describe_data_set_refresh_properties(map(), binary() | list(), binary() | list()) ->
     {ok, describe_data_set_refresh_properties_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_data_set_refresh_properties_errors(), tuple()}.
 describe_data_set_refresh_properties(Client, AwsAccountId, DataSetId)
   when is_map(Client) ->
     describe_data_set_refresh_properties(Client, AwsAccountId, DataSetId, #{}, #{}).
@@ -12980,13 +14765,7 @@ describe_data_set_refresh_properties(Client, AwsAccountId, DataSetId)
 -spec describe_data_set_refresh_properties(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_data_set_refresh_properties_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_data_set_refresh_properties_errors(), tuple()}.
 describe_data_set_refresh_properties(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_data_set_refresh_properties(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, []).
@@ -12994,13 +14773,7 @@ describe_data_set_refresh_properties(Client, AwsAccountId, DataSetId, QueryMap, 
 -spec describe_data_set_refresh_properties(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_data_set_refresh_properties_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_data_set_refresh_properties_errors(), tuple()}.
 describe_data_set_refresh_properties(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-properties"],
@@ -13021,11 +14794,7 @@ describe_data_set_refresh_properties(Client, AwsAccountId, DataSetId, QueryMap, 
 -spec describe_data_source(map(), binary() | list(), binary() | list()) ->
     {ok, describe_data_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_data_source_errors(), tuple()}.
 describe_data_source(Client, AwsAccountId, DataSourceId)
   when is_map(Client) ->
     describe_data_source(Client, AwsAccountId, DataSourceId, #{}, #{}).
@@ -13033,11 +14802,7 @@ describe_data_source(Client, AwsAccountId, DataSourceId)
 -spec describe_data_source(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_data_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_data_source_errors(), tuple()}.
 describe_data_source(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_data_source(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap, []).
@@ -13045,11 +14810,7 @@ describe_data_source(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap)
 -spec describe_data_source(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_data_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_data_source_errors(), tuple()}.
 describe_data_source(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources/", aws_util:encode_uri(DataSourceId), ""],
@@ -13070,11 +14831,7 @@ describe_data_source(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap, O
 -spec describe_data_source_permissions(map(), binary() | list(), binary() | list()) ->
     {ok, describe_data_source_permissions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_data_source_permissions_errors(), tuple()}.
 describe_data_source_permissions(Client, AwsAccountId, DataSourceId)
   when is_map(Client) ->
     describe_data_source_permissions(Client, AwsAccountId, DataSourceId, #{}, #{}).
@@ -13082,11 +14839,7 @@ describe_data_source_permissions(Client, AwsAccountId, DataSourceId)
 -spec describe_data_source_permissions(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_data_source_permissions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_data_source_permissions_errors(), tuple()}.
 describe_data_source_permissions(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_data_source_permissions(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap, []).
@@ -13094,11 +14847,7 @@ describe_data_source_permissions(Client, AwsAccountId, DataSourceId, QueryMap, H
 -spec describe_data_source_permissions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_data_source_permissions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_data_source_permissions_errors(), tuple()}.
 describe_data_source_permissions(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources/", aws_util:encode_uri(DataSourceId), "/permissions"],
@@ -13119,12 +14868,7 @@ describe_data_source_permissions(Client, AwsAccountId, DataSourceId, QueryMap, H
 -spec describe_folder(map(), binary() | list(), binary() | list()) ->
     {ok, describe_folder_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_folder_errors(), tuple()}.
 describe_folder(Client, AwsAccountId, FolderId)
   when is_map(Client) ->
     describe_folder(Client, AwsAccountId, FolderId, #{}, #{}).
@@ -13132,12 +14876,7 @@ describe_folder(Client, AwsAccountId, FolderId)
 -spec describe_folder(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_folder_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_folder_errors(), tuple()}.
 describe_folder(Client, AwsAccountId, FolderId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_folder(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, []).
@@ -13145,12 +14884,7 @@ describe_folder(Client, AwsAccountId, FolderId, QueryMap, HeadersMap)
 -spec describe_folder(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_folder_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_folder_errors(), tuple()}.
 describe_folder(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), ""],
@@ -13171,13 +14905,7 @@ describe_folder(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, Options0)
 -spec describe_folder_permissions(map(), binary() | list(), binary() | list()) ->
     {ok, describe_folder_permissions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_folder_permissions_errors(), tuple()}.
 describe_folder_permissions(Client, AwsAccountId, FolderId)
   when is_map(Client) ->
     describe_folder_permissions(Client, AwsAccountId, FolderId, #{}, #{}).
@@ -13185,13 +14913,7 @@ describe_folder_permissions(Client, AwsAccountId, FolderId)
 -spec describe_folder_permissions(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_folder_permissions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_folder_permissions_errors(), tuple()}.
 describe_folder_permissions(Client, AwsAccountId, FolderId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_folder_permissions(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, []).
@@ -13199,13 +14921,7 @@ describe_folder_permissions(Client, AwsAccountId, FolderId, QueryMap, HeadersMap
 -spec describe_folder_permissions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_folder_permissions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_folder_permissions_errors(), tuple()}.
 describe_folder_permissions(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), "/permissions"],
@@ -13235,13 +14951,7 @@ describe_folder_permissions(Client, AwsAccountId, FolderId, QueryMap, HeadersMap
 -spec describe_folder_resolved_permissions(map(), binary() | list(), binary() | list()) ->
     {ok, describe_folder_resolved_permissions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_folder_resolved_permissions_errors(), tuple()}.
 describe_folder_resolved_permissions(Client, AwsAccountId, FolderId)
   when is_map(Client) ->
     describe_folder_resolved_permissions(Client, AwsAccountId, FolderId, #{}, #{}).
@@ -13249,13 +14959,7 @@ describe_folder_resolved_permissions(Client, AwsAccountId, FolderId)
 -spec describe_folder_resolved_permissions(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_folder_resolved_permissions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_folder_resolved_permissions_errors(), tuple()}.
 describe_folder_resolved_permissions(Client, AwsAccountId, FolderId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_folder_resolved_permissions(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, []).
@@ -13263,13 +14967,7 @@ describe_folder_resolved_permissions(Client, AwsAccountId, FolderId, QueryMap, H
 -spec describe_folder_resolved_permissions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_folder_resolved_permissions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_folder_resolved_permissions_errors(), tuple()}.
 describe_folder_resolved_permissions(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), "/resolved-permissions"],
@@ -13297,13 +14995,7 @@ describe_folder_resolved_permissions(Client, AwsAccountId, FolderId, QueryMap, H
 -spec describe_group(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_group_errors(), tuple()}.
 describe_group(Client, AwsAccountId, GroupName, Namespace)
   when is_map(Client) ->
     describe_group(Client, AwsAccountId, GroupName, Namespace, #{}, #{}).
@@ -13311,13 +15003,7 @@ describe_group(Client, AwsAccountId, GroupName, Namespace)
 -spec describe_group(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_group_errors(), tuple()}.
 describe_group(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_group(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap, []).
@@ -13325,13 +15011,7 @@ describe_group(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap)
 -spec describe_group(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_group_errors(), tuple()}.
 describe_group(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), ""],
@@ -13357,13 +15037,7 @@ describe_group(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap,
 -spec describe_group_membership(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_group_membership_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_group_membership_errors(), tuple()}.
 describe_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace)
   when is_map(Client) ->
     describe_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, #{}, #{}).
@@ -13371,13 +15045,7 @@ describe_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace
 -spec describe_group_membership(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_group_membership_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_group_membership_errors(), tuple()}.
 describe_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, QueryMap, HeadersMap, []).
@@ -13385,13 +15053,7 @@ describe_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace
 -spec describe_group_membership(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_group_membership_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_group_membership_errors(), tuple()}.
 describe_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), "/members/", aws_util:encode_uri(MemberName), ""],
@@ -13413,12 +15075,7 @@ describe_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace
 -spec describe_iam_policy_assignment(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_iam_policy_assignment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_iam_policy_assignment_errors(), tuple()}.
 describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace)
   when is_map(Client) ->
     describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, #{}, #{}).
@@ -13426,12 +15083,7 @@ describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace)
 -spec describe_iam_policy_assignment(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_iam_policy_assignment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_iam_policy_assignment_errors(), tuple()}.
 describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, QueryMap, HeadersMap, []).
@@ -13439,12 +15091,7 @@ describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, 
 -spec describe_iam_policy_assignment(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_iam_policy_assignment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_iam_policy_assignment_errors(), tuple()}.
 describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/iam-policy-assignments/", aws_util:encode_uri(AssignmentName), ""],
@@ -13465,12 +15112,7 @@ describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, 
 -spec describe_ingestion(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_ingestion_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_ingestion_errors(), tuple()}.
 describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId)
   when is_map(Client) ->
     describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, #{}, #{}).
@@ -13478,12 +15120,7 @@ describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId)
 -spec describe_ingestion(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_ingestion_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_ingestion_errors(), tuple()}.
 describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, QueryMap, HeadersMap, []).
@@ -13491,12 +15128,7 @@ describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, QueryMap, Heade
 -spec describe_ingestion(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_ingestion_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_ingestion_errors(), tuple()}.
 describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/ingestions/", aws_util:encode_uri(IngestionId), ""],
@@ -13517,11 +15149,7 @@ describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, QueryMap, Heade
 -spec describe_ip_restriction(map(), binary() | list()) ->
     {ok, describe_ip_restriction_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_ip_restriction_errors(), tuple()}.
 describe_ip_restriction(Client, AwsAccountId)
   when is_map(Client) ->
     describe_ip_restriction(Client, AwsAccountId, #{}, #{}).
@@ -13529,11 +15157,7 @@ describe_ip_restriction(Client, AwsAccountId)
 -spec describe_ip_restriction(map(), binary() | list(), map(), map()) ->
     {ok, describe_ip_restriction_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_ip_restriction_errors(), tuple()}.
 describe_ip_restriction(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_ip_restriction(Client, AwsAccountId, QueryMap, HeadersMap, []).
@@ -13541,11 +15165,7 @@ describe_ip_restriction(Client, AwsAccountId, QueryMap, HeadersMap)
 -spec describe_ip_restriction(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_ip_restriction_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_ip_restriction_errors(), tuple()}.
 describe_ip_restriction(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/ip-restriction"],
@@ -13566,12 +15186,7 @@ describe_ip_restriction(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 -spec describe_namespace(map(), binary() | list(), binary() | list()) ->
     {ok, describe_namespace_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_namespace_errors(), tuple()}.
 describe_namespace(Client, AwsAccountId, Namespace)
   when is_map(Client) ->
     describe_namespace(Client, AwsAccountId, Namespace, #{}, #{}).
@@ -13579,12 +15194,7 @@ describe_namespace(Client, AwsAccountId, Namespace)
 -spec describe_namespace(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_namespace_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_namespace_errors(), tuple()}.
 describe_namespace(Client, AwsAccountId, Namespace, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_namespace(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, []).
@@ -13592,12 +15202,7 @@ describe_namespace(Client, AwsAccountId, Namespace, QueryMap, HeadersMap)
 -spec describe_namespace(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_namespace_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_namespace_errors(), tuple()}.
 describe_namespace(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), ""],
@@ -13618,12 +15223,7 @@ describe_namespace(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Option
 -spec describe_refresh_schedule(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_refresh_schedule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_refresh_schedule_errors(), tuple()}.
 describe_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId)
   when is_map(Client) ->
     describe_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, #{}, #{}).
@@ -13631,12 +15231,7 @@ describe_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId)
 -spec describe_refresh_schedule(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_refresh_schedule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_refresh_schedule_errors(), tuple()}.
 describe_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, QueryMap, HeadersMap, []).
@@ -13644,12 +15239,7 @@ describe_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, QueryMap,
 -spec describe_refresh_schedule(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_refresh_schedule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_refresh_schedule_errors(), tuple()}.
 describe_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-schedules/", aws_util:encode_uri(ScheduleId), ""],
@@ -13670,13 +15260,7 @@ describe_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, QueryMap,
 -spec describe_role_custom_permission(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_role_custom_permission_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_role_custom_permission_errors(), tuple()}.
 describe_role_custom_permission(Client, AwsAccountId, Namespace, Role)
   when is_map(Client) ->
     describe_role_custom_permission(Client, AwsAccountId, Namespace, Role, #{}, #{}).
@@ -13684,13 +15268,7 @@ describe_role_custom_permission(Client, AwsAccountId, Namespace, Role)
 -spec describe_role_custom_permission(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_role_custom_permission_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_role_custom_permission_errors(), tuple()}.
 describe_role_custom_permission(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_role_custom_permission(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMap, []).
@@ -13698,13 +15276,7 @@ describe_role_custom_permission(Client, AwsAccountId, Namespace, Role, QueryMap,
 -spec describe_role_custom_permission(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_role_custom_permission_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_role_custom_permission_errors(), tuple()}.
 describe_role_custom_permission(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/roles/", aws_util:encode_uri(Role), "/custom-permission"],
@@ -13725,14 +15297,7 @@ describe_role_custom_permission(Client, AwsAccountId, Namespace, Role, QueryMap,
 -spec describe_template(map(), binary() | list(), binary() | list()) ->
     {ok, describe_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_template_errors(), tuple()}.
 describe_template(Client, AwsAccountId, TemplateId)
   when is_map(Client) ->
     describe_template(Client, AwsAccountId, TemplateId, #{}, #{}).
@@ -13740,14 +15305,7 @@ describe_template(Client, AwsAccountId, TemplateId)
 -spec describe_template(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_template_errors(), tuple()}.
 describe_template(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_template(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, []).
@@ -13755,14 +15313,7 @@ describe_template(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap)
 -spec describe_template(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_template_errors(), tuple()}.
 describe_template(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), ""],
@@ -13788,10 +15339,7 @@ describe_template(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Option
 -spec describe_template_alias(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_template_alias_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_template_alias_errors(), tuple()}.
 describe_template_alias(Client, AliasName, AwsAccountId, TemplateId)
   when is_map(Client) ->
     describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, #{}, #{}).
@@ -13799,10 +15347,7 @@ describe_template_alias(Client, AliasName, AwsAccountId, TemplateId)
 -spec describe_template_alias(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_template_alias_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_template_alias_errors(), tuple()}.
 describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, QueryMap, HeadersMap, []).
@@ -13810,10 +15355,7 @@ describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, QueryMap, H
 -spec describe_template_alias(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_template_alias_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_template_alias_errors(), tuple()}.
 describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/aliases/", aws_util:encode_uri(AliasName), ""],
@@ -13844,14 +15386,7 @@ describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, QueryMap, H
 -spec describe_template_definition(map(), binary() | list(), binary() | list()) ->
     {ok, describe_template_definition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_template_definition_errors(), tuple()}.
 describe_template_definition(Client, AwsAccountId, TemplateId)
   when is_map(Client) ->
     describe_template_definition(Client, AwsAccountId, TemplateId, #{}, #{}).
@@ -13859,14 +15394,7 @@ describe_template_definition(Client, AwsAccountId, TemplateId)
 -spec describe_template_definition(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_template_definition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_template_definition_errors(), tuple()}.
 describe_template_definition(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_template_definition(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, []).
@@ -13874,14 +15402,7 @@ describe_template_definition(Client, AwsAccountId, TemplateId, QueryMap, Headers
 -spec describe_template_definition(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_template_definition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_template_definition_errors(), tuple()}.
 describe_template_definition(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/definition"],
@@ -13907,12 +15428,7 @@ describe_template_definition(Client, AwsAccountId, TemplateId, QueryMap, Headers
 -spec describe_template_permissions(map(), binary() | list(), binary() | list()) ->
     {ok, describe_template_permissions_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_template_permissions_errors(), tuple()}.
 describe_template_permissions(Client, AwsAccountId, TemplateId)
   when is_map(Client) ->
     describe_template_permissions(Client, AwsAccountId, TemplateId, #{}, #{}).
@@ -13920,12 +15436,7 @@ describe_template_permissions(Client, AwsAccountId, TemplateId)
 -spec describe_template_permissions(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_template_permissions_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_template_permissions_errors(), tuple()}.
 describe_template_permissions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_template_permissions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, []).
@@ -13933,12 +15444,7 @@ describe_template_permissions(Client, AwsAccountId, TemplateId, QueryMap, Header
 -spec describe_template_permissions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_template_permissions_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_template_permissions_errors(), tuple()}.
 describe_template_permissions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/permissions"],
@@ -13959,13 +15465,7 @@ describe_template_permissions(Client, AwsAccountId, TemplateId, QueryMap, Header
 -spec describe_theme(map(), binary() | list(), binary() | list()) ->
     {ok, describe_theme_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_theme_errors(), tuple()}.
 describe_theme(Client, AwsAccountId, ThemeId)
   when is_map(Client) ->
     describe_theme(Client, AwsAccountId, ThemeId, #{}, #{}).
@@ -13973,13 +15473,7 @@ describe_theme(Client, AwsAccountId, ThemeId)
 -spec describe_theme(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_theme_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_theme_errors(), tuple()}.
 describe_theme(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_theme(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, []).
@@ -13987,13 +15481,7 @@ describe_theme(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap)
 -spec describe_theme(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_theme_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_theme_errors(), tuple()}.
 describe_theme(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), ""],
@@ -14019,12 +15507,7 @@ describe_theme(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options0)
 -spec describe_theme_alias(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_theme_alias_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_theme_alias_errors(), tuple()}.
 describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId)
   when is_map(Client) ->
     describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId, #{}, #{}).
@@ -14032,12 +15515,7 @@ describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId)
 -spec describe_theme_alias(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_theme_alias_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_theme_alias_errors(), tuple()}.
 describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId, QueryMap, HeadersMap, []).
@@ -14045,12 +15523,7 @@ describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId, QueryMap, Headers
 -spec describe_theme_alias(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_theme_alias_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_theme_alias_errors(), tuple()}.
 describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/aliases/", aws_util:encode_uri(AliasName), ""],
@@ -14071,12 +15544,7 @@ describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId, QueryMap, Headers
 -spec describe_theme_permissions(map(), binary() | list(), binary() | list()) ->
     {ok, describe_theme_permissions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_theme_permissions_errors(), tuple()}.
 describe_theme_permissions(Client, AwsAccountId, ThemeId)
   when is_map(Client) ->
     describe_theme_permissions(Client, AwsAccountId, ThemeId, #{}, #{}).
@@ -14084,12 +15552,7 @@ describe_theme_permissions(Client, AwsAccountId, ThemeId)
 -spec describe_theme_permissions(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_theme_permissions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_theme_permissions_errors(), tuple()}.
 describe_theme_permissions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_theme_permissions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, []).
@@ -14097,12 +15560,7 @@ describe_theme_permissions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap)
 -spec describe_theme_permissions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_theme_permissions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_theme_permissions_errors(), tuple()}.
 describe_theme_permissions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/permissions"],
@@ -14123,11 +15581,7 @@ describe_theme_permissions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, 
 -spec describe_topic(map(), binary() | list(), binary() | list()) ->
     {ok, describe_topic_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_topic_errors(), tuple()}.
 describe_topic(Client, AwsAccountId, TopicId)
   when is_map(Client) ->
     describe_topic(Client, AwsAccountId, TopicId, #{}, #{}).
@@ -14135,11 +15589,7 @@ describe_topic(Client, AwsAccountId, TopicId)
 -spec describe_topic(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_topic_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_topic_errors(), tuple()}.
 describe_topic(Client, AwsAccountId, TopicId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_topic(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, []).
@@ -14147,11 +15597,7 @@ describe_topic(Client, AwsAccountId, TopicId, QueryMap, HeadersMap)
 -spec describe_topic(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_topic_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_topic_errors(), tuple()}.
 describe_topic(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), ""],
@@ -14172,11 +15618,7 @@ describe_topic(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, Options0)
 -spec describe_topic_permissions(map(), binary() | list(), binary() | list()) ->
     {ok, describe_topic_permissions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_topic_permissions_errors(), tuple()}.
 describe_topic_permissions(Client, AwsAccountId, TopicId)
   when is_map(Client) ->
     describe_topic_permissions(Client, AwsAccountId, TopicId, #{}, #{}).
@@ -14184,11 +15626,7 @@ describe_topic_permissions(Client, AwsAccountId, TopicId)
 -spec describe_topic_permissions(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_topic_permissions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_topic_permissions_errors(), tuple()}.
 describe_topic_permissions(Client, AwsAccountId, TopicId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_topic_permissions(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, []).
@@ -14196,11 +15634,7 @@ describe_topic_permissions(Client, AwsAccountId, TopicId, QueryMap, HeadersMap)
 -spec describe_topic_permissions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_topic_permissions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_topic_permissions_errors(), tuple()}.
 describe_topic_permissions(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/permissions"],
@@ -14221,11 +15655,7 @@ describe_topic_permissions(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, 
 -spec describe_topic_refresh(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_topic_refresh_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_topic_refresh_errors(), tuple()}.
 describe_topic_refresh(Client, AwsAccountId, RefreshId, TopicId)
   when is_map(Client) ->
     describe_topic_refresh(Client, AwsAccountId, RefreshId, TopicId, #{}, #{}).
@@ -14233,11 +15663,7 @@ describe_topic_refresh(Client, AwsAccountId, RefreshId, TopicId)
 -spec describe_topic_refresh(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_topic_refresh_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_topic_refresh_errors(), tuple()}.
 describe_topic_refresh(Client, AwsAccountId, RefreshId, TopicId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_topic_refresh(Client, AwsAccountId, RefreshId, TopicId, QueryMap, HeadersMap, []).
@@ -14245,11 +15671,7 @@ describe_topic_refresh(Client, AwsAccountId, RefreshId, TopicId, QueryMap, Heade
 -spec describe_topic_refresh(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_topic_refresh_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_topic_refresh_errors(), tuple()}.
 describe_topic_refresh(Client, AwsAccountId, RefreshId, TopicId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/refresh/", aws_util:encode_uri(RefreshId), ""],
@@ -14270,14 +15692,7 @@ describe_topic_refresh(Client, AwsAccountId, RefreshId, TopicId, QueryMap, Heade
 -spec describe_topic_refresh_schedule(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_topic_refresh_schedule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_topic_refresh_schedule_errors(), tuple()}.
 describe_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId)
   when is_map(Client) ->
     describe_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, #{}, #{}).
@@ -14285,14 +15700,7 @@ describe_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId)
 -spec describe_topic_refresh_schedule(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_topic_refresh_schedule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_topic_refresh_schedule_errors(), tuple()}.
 describe_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, QueryMap, HeadersMap, []).
@@ -14300,14 +15708,7 @@ describe_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, QueryM
 -spec describe_topic_refresh_schedule(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_topic_refresh_schedule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_topic_refresh_schedule_errors(), tuple()}.
 describe_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/schedules/", aws_util:encode_uri(DatasetId), ""],
@@ -14328,13 +15729,7 @@ describe_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, QueryM
 -spec describe_user(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_user_errors(), tuple()}.
 describe_user(Client, AwsAccountId, Namespace, UserName)
   when is_map(Client) ->
     describe_user(Client, AwsAccountId, Namespace, UserName, #{}, #{}).
@@ -14342,13 +15737,7 @@ describe_user(Client, AwsAccountId, Namespace, UserName)
 -spec describe_user(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_user_errors(), tuple()}.
 describe_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, []).
@@ -14356,13 +15745,7 @@ describe_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap)
 -spec describe_user(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_user_errors(), tuple()}.
 describe_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), ""],
@@ -14383,12 +15766,7 @@ describe_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, O
 -spec describe_vpc_connection(map(), binary() | list(), binary() | list()) ->
     {ok, describe_vpc_connection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_vpc_connection_errors(), tuple()}.
 describe_vpc_connection(Client, AwsAccountId, VPCConnectionId)
   when is_map(Client) ->
     describe_vpc_connection(Client, AwsAccountId, VPCConnectionId, #{}, #{}).
@@ -14396,12 +15774,7 @@ describe_vpc_connection(Client, AwsAccountId, VPCConnectionId)
 -spec describe_vpc_connection(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_vpc_connection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_vpc_connection_errors(), tuple()}.
 describe_vpc_connection(Client, AwsAccountId, VPCConnectionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_vpc_connection(Client, AwsAccountId, VPCConnectionId, QueryMap, HeadersMap, []).
@@ -14409,12 +15782,7 @@ describe_vpc_connection(Client, AwsAccountId, VPCConnectionId, QueryMap, Headers
 -spec describe_vpc_connection(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_vpc_connection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, describe_vpc_connection_errors(), tuple()}.
 describe_vpc_connection(Client, AwsAccountId, VPCConnectionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/vpc-connections/", aws_util:encode_uri(VPCConnectionId), ""],
@@ -14468,28 +15836,14 @@ describe_vpc_connection(Client, AwsAccountId, VPCConnectionId, QueryMap, Headers
 -spec generate_embed_url_for_anonymous_user(map(), binary() | list(), generate_embed_url_for_anonymous_user_request()) ->
     {ok, generate_embed_url_for_anonymous_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, session_lifetime_in_minutes_invalid_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_pricing_plan_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, generate_embed_url_for_anonymous_user_errors(), tuple()}.
 generate_embed_url_for_anonymous_user(Client, AwsAccountId, Input) ->
     generate_embed_url_for_anonymous_user(Client, AwsAccountId, Input, []).
 
 -spec generate_embed_url_for_anonymous_user(map(), binary() | list(), generate_embed_url_for_anonymous_user_request(), proplists:proplist()) ->
     {ok, generate_embed_url_for_anonymous_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, session_lifetime_in_minutes_invalid_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_pricing_plan_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, generate_embed_url_for_anonymous_user_errors(), tuple()}.
 generate_embed_url_for_anonymous_user(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/embed-url/anonymous-user"],
@@ -14552,30 +15906,14 @@ generate_embed_url_for_anonymous_user(Client, AwsAccountId, Input0, Options0) ->
 -spec generate_embed_url_for_registered_user(map(), binary() | list(), generate_embed_url_for_registered_user_request()) ->
     {ok, generate_embed_url_for_registered_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, quick_sight_user_not_found_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, session_lifetime_in_minutes_invalid_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_pricing_plan_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, generate_embed_url_for_registered_user_errors(), tuple()}.
 generate_embed_url_for_registered_user(Client, AwsAccountId, Input) ->
     generate_embed_url_for_registered_user(Client, AwsAccountId, Input, []).
 
 -spec generate_embed_url_for_registered_user(map(), binary() | list(), generate_embed_url_for_registered_user_request(), proplists:proplist()) ->
     {ok, generate_embed_url_for_registered_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, quick_sight_user_not_found_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, session_lifetime_in_minutes_invalid_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_pricing_plan_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, generate_embed_url_for_registered_user_errors(), tuple()}.
 generate_embed_url_for_registered_user(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/embed-url/registered-user"],
@@ -14634,18 +15972,7 @@ generate_embed_url_for_registered_user(Client, AwsAccountId, Input0, Options0) -
 -spec get_dashboard_embed_url(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_dashboard_embed_url_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, domain_not_whitelisted_exception(), tuple()} |
-    {error, identity_type_not_supported_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, quick_sight_user_not_found_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, session_lifetime_in_minutes_invalid_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_pricing_plan_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, get_dashboard_embed_url_errors(), tuple()}.
 get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType)
   when is_map(Client) ->
     get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, #{}, #{}).
@@ -14653,18 +15980,7 @@ get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType)
 -spec get_dashboard_embed_url(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_dashboard_embed_url_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, domain_not_whitelisted_exception(), tuple()} |
-    {error, identity_type_not_supported_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, quick_sight_user_not_found_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, session_lifetime_in_minutes_invalid_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_pricing_plan_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, get_dashboard_embed_url_errors(), tuple()}.
 get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, QueryMap, HeadersMap, []).
@@ -14672,18 +15988,7 @@ get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, QueryMa
 -spec get_dashboard_embed_url(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_dashboard_embed_url_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, domain_not_whitelisted_exception(), tuple()} |
-    {error, identity_type_not_supported_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, quick_sight_user_not_found_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, session_lifetime_in_minutes_invalid_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_pricing_plan_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, get_dashboard_embed_url_errors(), tuple()}.
 get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/embed-url"],
@@ -14746,15 +16051,7 @@ get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, QueryMa
 -spec get_session_embed_url(map(), binary() | list()) ->
     {ok, get_session_embed_url_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, quick_sight_user_not_found_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, session_lifetime_in_minutes_invalid_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, get_session_embed_url_errors(), tuple()}.
 get_session_embed_url(Client, AwsAccountId)
   when is_map(Client) ->
     get_session_embed_url(Client, AwsAccountId, #{}, #{}).
@@ -14762,15 +16059,7 @@ get_session_embed_url(Client, AwsAccountId)
 -spec get_session_embed_url(map(), binary() | list(), map(), map()) ->
     {ok, get_session_embed_url_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, quick_sight_user_not_found_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, session_lifetime_in_minutes_invalid_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, get_session_embed_url_errors(), tuple()}.
 get_session_embed_url(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_session_embed_url(Client, AwsAccountId, QueryMap, HeadersMap, []).
@@ -14778,15 +16067,7 @@ get_session_embed_url(Client, AwsAccountId, QueryMap, HeadersMap)
 -spec get_session_embed_url(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_session_embed_url_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, quick_sight_user_not_found_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, session_lifetime_in_minutes_invalid_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, get_session_embed_url_errors(), tuple()}.
 get_session_embed_url(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/session-embed-url"],
@@ -14814,10 +16095,7 @@ get_session_embed_url(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 -spec list_analyses(map(), binary() | list()) ->
     {ok, list_analyses_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_analyses_errors(), tuple()}.
 list_analyses(Client, AwsAccountId)
   when is_map(Client) ->
     list_analyses(Client, AwsAccountId, #{}, #{}).
@@ -14825,10 +16103,7 @@ list_analyses(Client, AwsAccountId)
 -spec list_analyses(map(), binary() | list(), map(), map()) ->
     {ok, list_analyses_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_analyses_errors(), tuple()}.
 list_analyses(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_analyses(Client, AwsAccountId, QueryMap, HeadersMap, []).
@@ -14836,10 +16111,7 @@ list_analyses(Client, AwsAccountId, QueryMap, HeadersMap)
 -spec list_analyses(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_analyses_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_analyses_errors(), tuple()}.
 list_analyses(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses"],
@@ -14871,11 +16143,7 @@ list_analyses(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 -spec list_asset_bundle_export_jobs(map(), binary() | list()) ->
     {ok, list_asset_bundle_export_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_asset_bundle_export_jobs_errors(), tuple()}.
 list_asset_bundle_export_jobs(Client, AwsAccountId)
   when is_map(Client) ->
     list_asset_bundle_export_jobs(Client, AwsAccountId, #{}, #{}).
@@ -14883,11 +16151,7 @@ list_asset_bundle_export_jobs(Client, AwsAccountId)
 -spec list_asset_bundle_export_jobs(map(), binary() | list(), map(), map()) ->
     {ok, list_asset_bundle_export_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_asset_bundle_export_jobs_errors(), tuple()}.
 list_asset_bundle_export_jobs(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_asset_bundle_export_jobs(Client, AwsAccountId, QueryMap, HeadersMap, []).
@@ -14895,11 +16159,7 @@ list_asset_bundle_export_jobs(Client, AwsAccountId, QueryMap, HeadersMap)
 -spec list_asset_bundle_export_jobs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_asset_bundle_export_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_asset_bundle_export_jobs_errors(), tuple()}.
 list_asset_bundle_export_jobs(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/asset-bundle-export-jobs"],
@@ -14931,11 +16191,7 @@ list_asset_bundle_export_jobs(Client, AwsAccountId, QueryMap, HeadersMap, Option
 -spec list_asset_bundle_import_jobs(map(), binary() | list()) ->
     {ok, list_asset_bundle_import_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_asset_bundle_import_jobs_errors(), tuple()}.
 list_asset_bundle_import_jobs(Client, AwsAccountId)
   when is_map(Client) ->
     list_asset_bundle_import_jobs(Client, AwsAccountId, #{}, #{}).
@@ -14943,11 +16199,7 @@ list_asset_bundle_import_jobs(Client, AwsAccountId)
 -spec list_asset_bundle_import_jobs(map(), binary() | list(), map(), map()) ->
     {ok, list_asset_bundle_import_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_asset_bundle_import_jobs_errors(), tuple()}.
 list_asset_bundle_import_jobs(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_asset_bundle_import_jobs(Client, AwsAccountId, QueryMap, HeadersMap, []).
@@ -14955,11 +16207,7 @@ list_asset_bundle_import_jobs(Client, AwsAccountId, QueryMap, HeadersMap)
 -spec list_asset_bundle_import_jobs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_asset_bundle_import_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_asset_bundle_import_jobs_errors(), tuple()}.
 list_asset_bundle_import_jobs(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/asset-bundle-import-jobs"],
@@ -14986,12 +16234,7 @@ list_asset_bundle_import_jobs(Client, AwsAccountId, QueryMap, HeadersMap, Option
 -spec list_dashboard_versions(map(), binary() | list(), binary() | list()) ->
     {ok, list_dashboard_versions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_dashboard_versions_errors(), tuple()}.
 list_dashboard_versions(Client, AwsAccountId, DashboardId)
   when is_map(Client) ->
     list_dashboard_versions(Client, AwsAccountId, DashboardId, #{}, #{}).
@@ -14999,12 +16242,7 @@ list_dashboard_versions(Client, AwsAccountId, DashboardId)
 -spec list_dashboard_versions(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_dashboard_versions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_dashboard_versions_errors(), tuple()}.
 list_dashboard_versions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_dashboard_versions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, []).
@@ -15012,12 +16250,7 @@ list_dashboard_versions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap)
 -spec list_dashboard_versions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_dashboard_versions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_dashboard_versions_errors(), tuple()}.
 list_dashboard_versions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/versions"],
@@ -15043,10 +16276,7 @@ list_dashboard_versions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap,
 -spec list_dashboards(map(), binary() | list()) ->
     {ok, list_dashboards_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_dashboards_errors(), tuple()}.
 list_dashboards(Client, AwsAccountId)
   when is_map(Client) ->
     list_dashboards(Client, AwsAccountId, #{}, #{}).
@@ -15054,10 +16284,7 @@ list_dashboards(Client, AwsAccountId)
 -spec list_dashboards(map(), binary() | list(), map(), map()) ->
     {ok, list_dashboards_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_dashboards_errors(), tuple()}.
 list_dashboards(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_dashboards(Client, AwsAccountId, QueryMap, HeadersMap, []).
@@ -15065,10 +16292,7 @@ list_dashboards(Client, AwsAccountId, QueryMap, HeadersMap)
 -spec list_dashboards(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_dashboards_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_dashboards_errors(), tuple()}.
 list_dashboards(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards"],
@@ -15098,11 +16322,7 @@ list_dashboards(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 -spec list_data_sets(map(), binary() | list()) ->
     {ok, list_data_sets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_data_sets_errors(), tuple()}.
 list_data_sets(Client, AwsAccountId)
   when is_map(Client) ->
     list_data_sets(Client, AwsAccountId, #{}, #{}).
@@ -15110,11 +16330,7 @@ list_data_sets(Client, AwsAccountId)
 -spec list_data_sets(map(), binary() | list(), map(), map()) ->
     {ok, list_data_sets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_data_sets_errors(), tuple()}.
 list_data_sets(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_sets(Client, AwsAccountId, QueryMap, HeadersMap, []).
@@ -15122,11 +16338,7 @@ list_data_sets(Client, AwsAccountId, QueryMap, HeadersMap)
 -spec list_data_sets(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_data_sets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_data_sets_errors(), tuple()}.
 list_data_sets(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets"],
@@ -15153,11 +16365,7 @@ list_data_sets(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 -spec list_data_sources(map(), binary() | list()) ->
     {ok, list_data_sources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_data_sources_errors(), tuple()}.
 list_data_sources(Client, AwsAccountId)
   when is_map(Client) ->
     list_data_sources(Client, AwsAccountId, #{}, #{}).
@@ -15165,11 +16373,7 @@ list_data_sources(Client, AwsAccountId)
 -spec list_data_sources(map(), binary() | list(), map(), map()) ->
     {ok, list_data_sources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_data_sources_errors(), tuple()}.
 list_data_sources(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_sources(Client, AwsAccountId, QueryMap, HeadersMap, []).
@@ -15177,11 +16381,7 @@ list_data_sources(Client, AwsAccountId, QueryMap, HeadersMap)
 -spec list_data_sources(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_data_sources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_data_sources_errors(), tuple()}.
 list_data_sources(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources"],
@@ -15208,13 +16408,7 @@ list_data_sources(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 -spec list_folder_members(map(), binary() | list(), binary() | list()) ->
     {ok, list_folder_members_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_folder_members_errors(), tuple()}.
 list_folder_members(Client, AwsAccountId, FolderId)
   when is_map(Client) ->
     list_folder_members(Client, AwsAccountId, FolderId, #{}, #{}).
@@ -15222,13 +16416,7 @@ list_folder_members(Client, AwsAccountId, FolderId)
 -spec list_folder_members(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_folder_members_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_folder_members_errors(), tuple()}.
 list_folder_members(Client, AwsAccountId, FolderId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_folder_members(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, []).
@@ -15236,13 +16424,7 @@ list_folder_members(Client, AwsAccountId, FolderId, QueryMap, HeadersMap)
 -spec list_folder_members(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_folder_members_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_folder_members_errors(), tuple()}.
 list_folder_members(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), "/members"],
@@ -15268,13 +16450,7 @@ list_folder_members(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, Option
 -spec list_folders(map(), binary() | list()) ->
     {ok, list_folders_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_folders_errors(), tuple()}.
 list_folders(Client, AwsAccountId)
   when is_map(Client) ->
     list_folders(Client, AwsAccountId, #{}, #{}).
@@ -15282,13 +16458,7 @@ list_folders(Client, AwsAccountId)
 -spec list_folders(map(), binary() | list(), map(), map()) ->
     {ok, list_folders_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_folders_errors(), tuple()}.
 list_folders(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_folders(Client, AwsAccountId, QueryMap, HeadersMap, []).
@@ -15296,13 +16466,7 @@ list_folders(Client, AwsAccountId, QueryMap, HeadersMap)
 -spec list_folders(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_folders_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_folders_errors(), tuple()}.
 list_folders(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders"],
@@ -15328,14 +16492,7 @@ list_folders(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 -spec list_group_memberships(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_group_memberships_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_group_memberships_errors(), tuple()}.
 list_group_memberships(Client, AwsAccountId, GroupName, Namespace)
   when is_map(Client) ->
     list_group_memberships(Client, AwsAccountId, GroupName, Namespace, #{}, #{}).
@@ -15343,14 +16500,7 @@ list_group_memberships(Client, AwsAccountId, GroupName, Namespace)
 -spec list_group_memberships(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_group_memberships_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_group_memberships_errors(), tuple()}.
 list_group_memberships(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_group_memberships(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap, []).
@@ -15358,14 +16508,7 @@ list_group_memberships(Client, AwsAccountId, GroupName, Namespace, QueryMap, Hea
 -spec list_group_memberships(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_group_memberships_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_group_memberships_errors(), tuple()}.
 list_group_memberships(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), "/members"],
@@ -15391,14 +16534,7 @@ list_group_memberships(Client, AwsAccountId, GroupName, Namespace, QueryMap, Hea
 -spec list_groups(map(), binary() | list(), binary() | list()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_groups_errors(), tuple()}.
 list_groups(Client, AwsAccountId, Namespace)
   when is_map(Client) ->
     list_groups(Client, AwsAccountId, Namespace, #{}, #{}).
@@ -15406,14 +16542,7 @@ list_groups(Client, AwsAccountId, Namespace)
 -spec list_groups(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_groups_errors(), tuple()}.
 list_groups(Client, AwsAccountId, Namespace, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_groups(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, []).
@@ -15421,14 +16550,7 @@ list_groups(Client, AwsAccountId, Namespace, QueryMap, HeadersMap)
 -spec list_groups(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_groups_errors(), tuple()}.
 list_groups(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups"],
@@ -15456,12 +16578,7 @@ list_groups(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
 -spec list_iam_policy_assignments(map(), binary() | list(), binary() | list()) ->
     {ok, list_iam_policy_assignments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_iam_policy_assignments_errors(), tuple()}.
 list_iam_policy_assignments(Client, AwsAccountId, Namespace)
   when is_map(Client) ->
     list_iam_policy_assignments(Client, AwsAccountId, Namespace, #{}, #{}).
@@ -15469,12 +16586,7 @@ list_iam_policy_assignments(Client, AwsAccountId, Namespace)
 -spec list_iam_policy_assignments(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_iam_policy_assignments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_iam_policy_assignments_errors(), tuple()}.
 list_iam_policy_assignments(Client, AwsAccountId, Namespace, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_iam_policy_assignments(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, []).
@@ -15482,12 +16594,7 @@ list_iam_policy_assignments(Client, AwsAccountId, Namespace, QueryMap, HeadersMa
 -spec list_iam_policy_assignments(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_iam_policy_assignments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_iam_policy_assignments_errors(), tuple()}.
 list_iam_policy_assignments(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/v2/iam-policy-assignments"],
@@ -15520,13 +16627,7 @@ list_iam_policy_assignments(Client, AwsAccountId, Namespace, QueryMap, HeadersMa
 -spec list_iam_policy_assignments_for_user(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_iam_policy_assignments_for_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_updating_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_iam_policy_assignments_for_user_errors(), tuple()}.
 list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName)
   when is_map(Client) ->
     list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, #{}, #{}).
@@ -15534,13 +16635,7 @@ list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName)
 -spec list_iam_policy_assignments_for_user(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_iam_policy_assignments_for_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_updating_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_iam_policy_assignments_for_user_errors(), tuple()}.
 list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, []).
@@ -15548,13 +16643,7 @@ list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, 
 -spec list_iam_policy_assignments_for_user(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_iam_policy_assignments_for_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_updating_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_iam_policy_assignments_for_user_errors(), tuple()}.
 list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), "/iam-policy-assignments"],
@@ -15584,11 +16673,7 @@ list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, 
 -spec list_identity_propagation_configs(map(), binary() | list()) ->
     {ok, list_identity_propagation_configs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_identity_propagation_configs_errors(), tuple()}.
 list_identity_propagation_configs(Client, AwsAccountId)
   when is_map(Client) ->
     list_identity_propagation_configs(Client, AwsAccountId, #{}, #{}).
@@ -15596,11 +16681,7 @@ list_identity_propagation_configs(Client, AwsAccountId)
 -spec list_identity_propagation_configs(map(), binary() | list(), map(), map()) ->
     {ok, list_identity_propagation_configs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_identity_propagation_configs_errors(), tuple()}.
 list_identity_propagation_configs(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_identity_propagation_configs(Client, AwsAccountId, QueryMap, HeadersMap, []).
@@ -15608,11 +16689,7 @@ list_identity_propagation_configs(Client, AwsAccountId, QueryMap, HeadersMap)
 -spec list_identity_propagation_configs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_identity_propagation_configs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_identity_propagation_configs_errors(), tuple()}.
 list_identity_propagation_configs(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/identity-propagation-config"],
@@ -15638,13 +16715,7 @@ list_identity_propagation_configs(Client, AwsAccountId, QueryMap, HeadersMap, Op
 -spec list_ingestions(map(), binary() | list(), binary() | list()) ->
     {ok, list_ingestions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_ingestions_errors(), tuple()}.
 list_ingestions(Client, AwsAccountId, DataSetId)
   when is_map(Client) ->
     list_ingestions(Client, AwsAccountId, DataSetId, #{}, #{}).
@@ -15652,13 +16723,7 @@ list_ingestions(Client, AwsAccountId, DataSetId)
 -spec list_ingestions(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_ingestions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_ingestions_errors(), tuple()}.
 list_ingestions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ingestions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, []).
@@ -15666,13 +16731,7 @@ list_ingestions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap)
 -spec list_ingestions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_ingestions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_ingestions_errors(), tuple()}.
 list_ingestions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/ingestions"],
@@ -15700,14 +16759,7 @@ list_ingestions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options0)
 -spec list_namespaces(map(), binary() | list()) ->
     {ok, list_namespaces_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_namespaces_errors(), tuple()}.
 list_namespaces(Client, AwsAccountId)
   when is_map(Client) ->
     list_namespaces(Client, AwsAccountId, #{}, #{}).
@@ -15715,14 +16767,7 @@ list_namespaces(Client, AwsAccountId)
 -spec list_namespaces(map(), binary() | list(), map(), map()) ->
     {ok, list_namespaces_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_namespaces_errors(), tuple()}.
 list_namespaces(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_namespaces(Client, AwsAccountId, QueryMap, HeadersMap, []).
@@ -15730,14 +16775,7 @@ list_namespaces(Client, AwsAccountId, QueryMap, HeadersMap)
 -spec list_namespaces(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_namespaces_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_namespaces_errors(), tuple()}.
 list_namespaces(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces"],
@@ -15765,12 +16803,7 @@ list_namespaces(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 -spec list_refresh_schedules(map(), binary() | list(), binary() | list()) ->
     {ok, list_refresh_schedules_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_refresh_schedules_errors(), tuple()}.
 list_refresh_schedules(Client, AwsAccountId, DataSetId)
   when is_map(Client) ->
     list_refresh_schedules(Client, AwsAccountId, DataSetId, #{}, #{}).
@@ -15778,12 +16811,7 @@ list_refresh_schedules(Client, AwsAccountId, DataSetId)
 -spec list_refresh_schedules(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_refresh_schedules_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_refresh_schedules_errors(), tuple()}.
 list_refresh_schedules(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_refresh_schedules(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, []).
@@ -15791,12 +16819,7 @@ list_refresh_schedules(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap)
 -spec list_refresh_schedules(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_refresh_schedules_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_refresh_schedules_errors(), tuple()}.
 list_refresh_schedules(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-schedules"],
@@ -15817,15 +16840,7 @@ list_refresh_schedules(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Op
 -spec list_role_memberships(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_role_memberships_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_role_memberships_errors(), tuple()}.
 list_role_memberships(Client, AwsAccountId, Namespace, Role)
   when is_map(Client) ->
     list_role_memberships(Client, AwsAccountId, Namespace, Role, #{}, #{}).
@@ -15833,15 +16848,7 @@ list_role_memberships(Client, AwsAccountId, Namespace, Role)
 -spec list_role_memberships(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_role_memberships_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_role_memberships_errors(), tuple()}.
 list_role_memberships(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_role_memberships(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMap, []).
@@ -15849,15 +16856,7 @@ list_role_memberships(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMa
 -spec list_role_memberships(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_role_memberships_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_role_memberships_errors(), tuple()}.
 list_role_memberships(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/roles/", aws_util:encode_uri(Role), "/members"],
@@ -15883,11 +16882,7 @@ list_role_memberships(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMa
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -15895,11 +16890,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -15907,11 +16898,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resources/", aws_util:encode_uri(ResourceArn), "/tags"],
@@ -15932,11 +16919,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec list_template_aliases(map(), binary() | list(), binary() | list()) ->
     {ok, list_template_aliases_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_template_aliases_errors(), tuple()}.
 list_template_aliases(Client, AwsAccountId, TemplateId)
   when is_map(Client) ->
     list_template_aliases(Client, AwsAccountId, TemplateId, #{}, #{}).
@@ -15944,11 +16927,7 @@ list_template_aliases(Client, AwsAccountId, TemplateId)
 -spec list_template_aliases(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_template_aliases_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_template_aliases_errors(), tuple()}.
 list_template_aliases(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_template_aliases(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, []).
@@ -15956,11 +16935,7 @@ list_template_aliases(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap)
 -spec list_template_aliases(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_template_aliases_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_template_aliases_errors(), tuple()}.
 list_template_aliases(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/aliases"],
@@ -15987,12 +16962,7 @@ list_template_aliases(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Op
 -spec list_template_versions(map(), binary() | list(), binary() | list()) ->
     {ok, list_template_versions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_template_versions_errors(), tuple()}.
 list_template_versions(Client, AwsAccountId, TemplateId)
   when is_map(Client) ->
     list_template_versions(Client, AwsAccountId, TemplateId, #{}, #{}).
@@ -16000,12 +16970,7 @@ list_template_versions(Client, AwsAccountId, TemplateId)
 -spec list_template_versions(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_template_versions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_template_versions_errors(), tuple()}.
 list_template_versions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_template_versions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, []).
@@ -16013,12 +16978,7 @@ list_template_versions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap)
 -spec list_template_versions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_template_versions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_template_versions_errors(), tuple()}.
 list_template_versions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/versions"],
@@ -16044,12 +17004,7 @@ list_template_versions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, O
 -spec list_templates(map(), binary() | list()) ->
     {ok, list_templates_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_templates_errors(), tuple()}.
 list_templates(Client, AwsAccountId)
   when is_map(Client) ->
     list_templates(Client, AwsAccountId, #{}, #{}).
@@ -16057,12 +17012,7 @@ list_templates(Client, AwsAccountId)
 -spec list_templates(map(), binary() | list(), map(), map()) ->
     {ok, list_templates_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_templates_errors(), tuple()}.
 list_templates(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_templates(Client, AwsAccountId, QueryMap, HeadersMap, []).
@@ -16070,12 +17020,7 @@ list_templates(Client, AwsAccountId, QueryMap, HeadersMap)
 -spec list_templates(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_templates_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_templates_errors(), tuple()}.
 list_templates(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates"],
@@ -16101,13 +17046,7 @@ list_templates(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 -spec list_theme_aliases(map(), binary() | list(), binary() | list()) ->
     {ok, list_theme_aliases_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_theme_aliases_errors(), tuple()}.
 list_theme_aliases(Client, AwsAccountId, ThemeId)
   when is_map(Client) ->
     list_theme_aliases(Client, AwsAccountId, ThemeId, #{}, #{}).
@@ -16115,13 +17054,7 @@ list_theme_aliases(Client, AwsAccountId, ThemeId)
 -spec list_theme_aliases(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_theme_aliases_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_theme_aliases_errors(), tuple()}.
 list_theme_aliases(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_theme_aliases(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, []).
@@ -16129,13 +17062,7 @@ list_theme_aliases(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap)
 -spec list_theme_aliases(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_theme_aliases_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_theme_aliases_errors(), tuple()}.
 list_theme_aliases(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/aliases"],
@@ -16162,13 +17089,7 @@ list_theme_aliases(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options0
 -spec list_theme_versions(map(), binary() | list(), binary() | list()) ->
     {ok, list_theme_versions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_theme_versions_errors(), tuple()}.
 list_theme_versions(Client, AwsAccountId, ThemeId)
   when is_map(Client) ->
     list_theme_versions(Client, AwsAccountId, ThemeId, #{}, #{}).
@@ -16176,13 +17097,7 @@ list_theme_versions(Client, AwsAccountId, ThemeId)
 -spec list_theme_versions(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_theme_versions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_theme_versions_errors(), tuple()}.
 list_theme_versions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_theme_versions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, []).
@@ -16190,13 +17105,7 @@ list_theme_versions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap)
 -spec list_theme_versions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_theme_versions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_theme_versions_errors(), tuple()}.
 list_theme_versions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/versions"],
@@ -16222,13 +17131,7 @@ list_theme_versions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options
 -spec list_themes(map(), binary() | list()) ->
     {ok, list_themes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_themes_errors(), tuple()}.
 list_themes(Client, AwsAccountId)
   when is_map(Client) ->
     list_themes(Client, AwsAccountId, #{}, #{}).
@@ -16236,13 +17139,7 @@ list_themes(Client, AwsAccountId)
 -spec list_themes(map(), binary() | list(), map(), map()) ->
     {ok, list_themes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_themes_errors(), tuple()}.
 list_themes(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_themes(Client, AwsAccountId, QueryMap, HeadersMap, []).
@@ -16250,13 +17147,7 @@ list_themes(Client, AwsAccountId, QueryMap, HeadersMap)
 -spec list_themes(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_themes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_themes_errors(), tuple()}.
 list_themes(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes"],
@@ -16283,14 +17174,7 @@ list_themes(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 -spec list_topic_refresh_schedules(map(), binary() | list(), binary() | list()) ->
     {ok, list_topic_refresh_schedules_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_topic_refresh_schedules_errors(), tuple()}.
 list_topic_refresh_schedules(Client, AwsAccountId, TopicId)
   when is_map(Client) ->
     list_topic_refresh_schedules(Client, AwsAccountId, TopicId, #{}, #{}).
@@ -16298,14 +17182,7 @@ list_topic_refresh_schedules(Client, AwsAccountId, TopicId)
 -spec list_topic_refresh_schedules(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_topic_refresh_schedules_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_topic_refresh_schedules_errors(), tuple()}.
 list_topic_refresh_schedules(Client, AwsAccountId, TopicId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_topic_refresh_schedules(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, []).
@@ -16313,14 +17190,7 @@ list_topic_refresh_schedules(Client, AwsAccountId, TopicId, QueryMap, HeadersMap
 -spec list_topic_refresh_schedules(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_topic_refresh_schedules_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_topic_refresh_schedules_errors(), tuple()}.
 list_topic_refresh_schedules(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/schedules"],
@@ -16341,11 +17211,7 @@ list_topic_refresh_schedules(Client, AwsAccountId, TopicId, QueryMap, HeadersMap
 -spec list_topics(map(), binary() | list()) ->
     {ok, list_topics_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_topics_errors(), tuple()}.
 list_topics(Client, AwsAccountId)
   when is_map(Client) ->
     list_topics(Client, AwsAccountId, #{}, #{}).
@@ -16353,11 +17219,7 @@ list_topics(Client, AwsAccountId)
 -spec list_topics(map(), binary() | list(), map(), map()) ->
     {ok, list_topics_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_topics_errors(), tuple()}.
 list_topics(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_topics(Client, AwsAccountId, QueryMap, HeadersMap, []).
@@ -16365,11 +17227,7 @@ list_topics(Client, AwsAccountId, QueryMap, HeadersMap)
 -spec list_topics(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_topics_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_topics_errors(), tuple()}.
 list_topics(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics"],
@@ -16396,13 +17254,7 @@ list_topics(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 -spec list_user_groups(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_user_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_user_groups_errors(), tuple()}.
 list_user_groups(Client, AwsAccountId, Namespace, UserName)
   when is_map(Client) ->
     list_user_groups(Client, AwsAccountId, Namespace, UserName, #{}, #{}).
@@ -16410,13 +17262,7 @@ list_user_groups(Client, AwsAccountId, Namespace, UserName)
 -spec list_user_groups(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_user_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_user_groups_errors(), tuple()}.
 list_user_groups(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_user_groups(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, []).
@@ -16424,13 +17270,7 @@ list_user_groups(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap
 -spec list_user_groups(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_user_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_user_groups_errors(), tuple()}.
 list_user_groups(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), "/groups"],
@@ -16457,14 +17297,7 @@ list_user_groups(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap
 -spec list_users(map(), binary() | list(), binary() | list()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_users_errors(), tuple()}.
 list_users(Client, AwsAccountId, Namespace)
   when is_map(Client) ->
     list_users(Client, AwsAccountId, Namespace, #{}, #{}).
@@ -16472,14 +17305,7 @@ list_users(Client, AwsAccountId, Namespace)
 -spec list_users(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_users_errors(), tuple()}.
 list_users(Client, AwsAccountId, Namespace, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_users(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, []).
@@ -16487,14 +17313,7 @@ list_users(Client, AwsAccountId, Namespace, QueryMap, HeadersMap)
 -spec list_users(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_users_errors(), tuple()}.
 list_users(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users"],
@@ -16522,12 +17341,7 @@ list_users(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
 -spec list_vpc_connections(map(), binary() | list()) ->
     {ok, list_vpc_connections_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_vpc_connections_errors(), tuple()}.
 list_vpc_connections(Client, AwsAccountId)
   when is_map(Client) ->
     list_vpc_connections(Client, AwsAccountId, #{}, #{}).
@@ -16535,12 +17349,7 @@ list_vpc_connections(Client, AwsAccountId)
 -spec list_vpc_connections(map(), binary() | list(), map(), map()) ->
     {ok, list_vpc_connections_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_vpc_connections_errors(), tuple()}.
 list_vpc_connections(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_vpc_connections(Client, AwsAccountId, QueryMap, HeadersMap, []).
@@ -16548,12 +17357,7 @@ list_vpc_connections(Client, AwsAccountId, QueryMap, HeadersMap)
 -spec list_vpc_connections(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_vpc_connections_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, list_vpc_connections_errors(), tuple()}.
 list_vpc_connections(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/vpc-connections"],
@@ -16579,28 +17383,14 @@ list_vpc_connections(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 -spec put_data_set_refresh_properties(map(), binary() | list(), binary() | list(), put_data_set_refresh_properties_request()) ->
     {ok, put_data_set_refresh_properties_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, put_data_set_refresh_properties_errors(), tuple()}.
 put_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input) ->
     put_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input, []).
 
 -spec put_data_set_refresh_properties(map(), binary() | list(), binary() | list(), put_data_set_refresh_properties_request(), proplists:proplist()) ->
     {ok, put_data_set_refresh_properties_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, put_data_set_refresh_properties_errors(), tuple()}.
 put_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-properties"],
@@ -16639,30 +17429,14 @@ put_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input0, Options
 -spec register_user(map(), binary() | list(), binary() | list(), register_user_request()) ->
     {ok, register_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, register_user_errors(), tuple()}.
 register_user(Client, AwsAccountId, Namespace, Input) ->
     register_user(Client, AwsAccountId, Namespace, Input, []).
 
 -spec register_user(map(), binary() | list(), binary() | list(), register_user_request(), proplists:proplist()) ->
     {ok, register_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, register_user_errors(), tuple()}.
 register_user(Client, AwsAccountId, Namespace, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users"],
@@ -16689,24 +17463,14 @@ register_user(Client, AwsAccountId, Namespace, Input0, Options0) ->
 -spec restore_analysis(map(), binary() | list(), binary() | list(), restore_analysis_request()) ->
     {ok, restore_analysis_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, restore_analysis_errors(), tuple()}.
 restore_analysis(Client, AnalysisId, AwsAccountId, Input) ->
     restore_analysis(Client, AnalysisId, AwsAccountId, Input, []).
 
 -spec restore_analysis(map(), binary() | list(), binary() | list(), restore_analysis_request(), proplists:proplist()) ->
     {ok, restore_analysis_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, restore_analysis_errors(), tuple()}.
 restore_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/restore/analyses/", aws_util:encode_uri(AnalysisId), ""],
@@ -16737,24 +17501,14 @@ restore_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
 -spec search_analyses(map(), binary() | list(), search_analyses_request()) ->
     {ok, search_analyses_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, search_analyses_errors(), tuple()}.
 search_analyses(Client, AwsAccountId, Input) ->
     search_analyses(Client, AwsAccountId, Input, []).
 
 -spec search_analyses(map(), binary() | list(), search_analyses_request(), proplists:proplist()) ->
     {ok, search_analyses_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, search_analyses_errors(), tuple()}.
 search_analyses(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/search/analyses"],
@@ -16784,24 +17538,14 @@ search_analyses(Client, AwsAccountId, Input0, Options0) ->
 -spec search_dashboards(map(), binary() | list(), search_dashboards_request()) ->
     {ok, search_dashboards_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, search_dashboards_errors(), tuple()}.
 search_dashboards(Client, AwsAccountId, Input) ->
     search_dashboards(Client, AwsAccountId, Input, []).
 
 -spec search_dashboards(map(), binary() | list(), search_dashboards_request(), proplists:proplist()) ->
     {ok, search_dashboards_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, search_dashboards_errors(), tuple()}.
 search_dashboards(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/search/dashboards"],
@@ -16829,24 +17573,14 @@ search_dashboards(Client, AwsAccountId, Input0, Options0) ->
 -spec search_data_sets(map(), binary() | list(), search_data_sets_request()) ->
     {ok, search_data_sets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_data_sets_errors(), tuple()}.
 search_data_sets(Client, AwsAccountId, Input) ->
     search_data_sets(Client, AwsAccountId, Input, []).
 
 -spec search_data_sets(map(), binary() | list(), search_data_sets_request(), proplists:proplist()) ->
     {ok, search_data_sets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_data_sets_errors(), tuple()}.
 search_data_sets(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/search/data-sets"],
@@ -16874,24 +17608,14 @@ search_data_sets(Client, AwsAccountId, Input0, Options0) ->
 -spec search_data_sources(map(), binary() | list(), search_data_sources_request()) ->
     {ok, search_data_sources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_data_sources_errors(), tuple()}.
 search_data_sources(Client, AwsAccountId, Input) ->
     search_data_sources(Client, AwsAccountId, Input, []).
 
 -spec search_data_sources(map(), binary() | list(), search_data_sources_request(), proplists:proplist()) ->
     {ok, search_data_sources_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_data_sources_errors(), tuple()}.
 search_data_sources(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/search/data-sources"],
@@ -16918,28 +17642,14 @@ search_data_sources(Client, AwsAccountId, Input0, Options0) ->
 -spec search_folders(map(), binary() | list(), search_folders_request()) ->
     {ok, search_folders_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, search_folders_errors(), tuple()}.
 search_folders(Client, AwsAccountId, Input) ->
     search_folders(Client, AwsAccountId, Input, []).
 
 -spec search_folders(map(), binary() | list(), search_folders_request(), proplists:proplist()) ->
     {ok, search_folders_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, search_folders_errors(), tuple()}.
 search_folders(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/search/folders"],
@@ -16967,28 +17677,14 @@ search_folders(Client, AwsAccountId, Input0, Options0) ->
 -spec search_groups(map(), binary() | list(), binary() | list(), search_groups_request()) ->
     {ok, search_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_groups_errors(), tuple()}.
 search_groups(Client, AwsAccountId, Namespace, Input) ->
     search_groups(Client, AwsAccountId, Namespace, Input, []).
 
 -spec search_groups(map(), binary() | list(), binary() | list(), search_groups_request(), proplists:proplist()) ->
     {ok, search_groups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_groups_errors(), tuple()}.
 search_groups(Client, AwsAccountId, Namespace, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups-search"],
@@ -17029,26 +17725,14 @@ search_groups(Client, AwsAccountId, Namespace, Input0, Options0) ->
 -spec start_asset_bundle_export_job(map(), binary() | list(), start_asset_bundle_export_job_request()) ->
     {ok, start_asset_bundle_export_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, start_asset_bundle_export_job_errors(), tuple()}.
 start_asset_bundle_export_job(Client, AwsAccountId, Input) ->
     start_asset_bundle_export_job(Client, AwsAccountId, Input, []).
 
 -spec start_asset_bundle_export_job(map(), binary() | list(), start_asset_bundle_export_job_request(), proplists:proplist()) ->
     {ok, start_asset_bundle_export_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, start_asset_bundle_export_job_errors(), tuple()}.
 start_asset_bundle_export_job(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/asset-bundle-export-jobs/export"],
@@ -17087,26 +17771,14 @@ start_asset_bundle_export_job(Client, AwsAccountId, Input0, Options0) ->
 -spec start_asset_bundle_import_job(map(), binary() | list(), start_asset_bundle_import_job_request()) ->
     {ok, start_asset_bundle_import_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, start_asset_bundle_import_job_errors(), tuple()}.
 start_asset_bundle_import_job(Client, AwsAccountId, Input) ->
     start_asset_bundle_import_job(Client, AwsAccountId, Input, []).
 
 -spec start_asset_bundle_import_job(map(), binary() | list(), start_asset_bundle_import_job_request(), proplists:proplist()) ->
     {ok, start_asset_bundle_import_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, start_asset_bundle_import_job_errors(), tuple()}.
 start_asset_bundle_import_job(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/asset-bundle-import-jobs/import"],
@@ -17145,30 +17817,14 @@ start_asset_bundle_import_job(Client, AwsAccountId, Input0, Options0) ->
 -spec start_dashboard_snapshot_job(map(), binary() | list(), binary() | list(), start_dashboard_snapshot_job_request()) ->
     {ok, start_dashboard_snapshot_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_pricing_plan_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, start_dashboard_snapshot_job_errors(), tuple()}.
 start_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, Input) ->
     start_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, Input, []).
 
 -spec start_dashboard_snapshot_job(map(), binary() | list(), binary() | list(), start_dashboard_snapshot_job_request(), proplists:proplist()) ->
     {ok, start_dashboard_snapshot_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_pricing_plan_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, start_dashboard_snapshot_job_errors(), tuple()}.
 start_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/snapshot-jobs"],
@@ -17226,24 +17882,14 @@ start_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, Input0, Options0
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/resources/", aws_util:encode_uri(ResourceArn), "/tags"],
@@ -17270,22 +17916,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/resources/", aws_util:encode_uri(ResourceArn), "/tags"],
@@ -17324,26 +17962,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_account_customization(map(), binary() | list(), update_account_customization_request()) ->
     {ok, update_account_customization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_account_customization_errors(), tuple()}.
 update_account_customization(Client, AwsAccountId, Input) ->
     update_account_customization(Client, AwsAccountId, Input, []).
 
 -spec update_account_customization(map(), binary() | list(), update_account_customization_request(), proplists:proplist()) ->
     {ok, update_account_customization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_account_customization_errors(), tuple()}.
 update_account_customization(Client, AwsAccountId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/customizations"],
@@ -17372,24 +17998,14 @@ update_account_customization(Client, AwsAccountId, Input0, Options0) ->
 -spec update_account_settings(map(), binary() | list(), update_account_settings_request()) ->
     {ok, update_account_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_account_settings_errors(), tuple()}.
 update_account_settings(Client, AwsAccountId, Input) ->
     update_account_settings(Client, AwsAccountId, Input, []).
 
 -spec update_account_settings(map(), binary() | list(), update_account_settings_request(), proplists:proplist()) ->
     {ok, update_account_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_account_settings_errors(), tuple()}.
 update_account_settings(Client, AwsAccountId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/settings"],
@@ -17416,26 +18032,14 @@ update_account_settings(Client, AwsAccountId, Input0, Options0) ->
 -spec update_analysis(map(), binary() | list(), binary() | list(), update_analysis_request()) ->
     {ok, update_analysis_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_analysis_errors(), tuple()}.
 update_analysis(Client, AnalysisId, AwsAccountId, Input) ->
     update_analysis(Client, AnalysisId, AwsAccountId, Input, []).
 
 -spec update_analysis(map(), binary() | list(), binary() | list(), update_analysis_request(), proplists:proplist()) ->
     {ok, update_analysis_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_analysis_errors(), tuple()}.
 update_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), ""],
@@ -17462,26 +18066,14 @@ update_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
 -spec update_analysis_permissions(map(), binary() | list(), binary() | list(), update_analysis_permissions_request()) ->
     {ok, update_analysis_permissions_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_analysis_permissions_errors(), tuple()}.
 update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input) ->
     update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input, []).
 
 -spec update_analysis_permissions(map(), binary() | list(), binary() | list(), update_analysis_permissions_request(), proplists:proplist()) ->
     {ok, update_analysis_permissions_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_analysis_permissions_errors(), tuple()}.
 update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), "/permissions"],
@@ -17517,26 +18109,14 @@ update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input0, Options0) 
 -spec update_dashboard(map(), binary() | list(), binary() | list(), update_dashboard_request()) ->
     {ok, update_dashboard_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_dashboard_errors(), tuple()}.
 update_dashboard(Client, AwsAccountId, DashboardId, Input) ->
     update_dashboard(Client, AwsAccountId, DashboardId, Input, []).
 
 -spec update_dashboard(map(), binary() | list(), binary() | list(), update_dashboard_request(), proplists:proplist()) ->
     {ok, update_dashboard_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_dashboard_errors(), tuple()}.
 update_dashboard(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), ""],
@@ -17563,26 +18143,14 @@ update_dashboard(Client, AwsAccountId, DashboardId, Input0, Options0) ->
 -spec update_dashboard_links(map(), binary() | list(), binary() | list(), update_dashboard_links_request()) ->
     {ok, update_dashboard_links_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_dashboard_links_errors(), tuple()}.
 update_dashboard_links(Client, AwsAccountId, DashboardId, Input) ->
     update_dashboard_links(Client, AwsAccountId, DashboardId, Input, []).
 
 -spec update_dashboard_links(map(), binary() | list(), binary() | list(), update_dashboard_links_request(), proplists:proplist()) ->
     {ok, update_dashboard_links_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_dashboard_links_errors(), tuple()}.
 update_dashboard_links(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/linked-entities"],
@@ -17609,26 +18177,14 @@ update_dashboard_links(Client, AwsAccountId, DashboardId, Input0, Options0) ->
 -spec update_dashboard_permissions(map(), binary() | list(), binary() | list(), update_dashboard_permissions_request()) ->
     {ok, update_dashboard_permissions_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_dashboard_permissions_errors(), tuple()}.
 update_dashboard_permissions(Client, AwsAccountId, DashboardId, Input) ->
     update_dashboard_permissions(Client, AwsAccountId, DashboardId, Input, []).
 
 -spec update_dashboard_permissions(map(), binary() | list(), binary() | list(), update_dashboard_permissions_request(), proplists:proplist()) ->
     {ok, update_dashboard_permissions_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_dashboard_permissions_errors(), tuple()}.
 update_dashboard_permissions(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/permissions"],
@@ -17655,24 +18211,14 @@ update_dashboard_permissions(Client, AwsAccountId, DashboardId, Input0, Options0
 -spec update_dashboard_published_version(map(), binary() | list(), binary() | list(), binary() | list(), update_dashboard_published_version_request()) ->
     {ok, update_dashboard_published_version_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_dashboard_published_version_errors(), tuple()}.
 update_dashboard_published_version(Client, AwsAccountId, DashboardId, VersionNumber, Input) ->
     update_dashboard_published_version(Client, AwsAccountId, DashboardId, VersionNumber, Input, []).
 
 -spec update_dashboard_published_version(map(), binary() | list(), binary() | list(), binary() | list(), update_dashboard_published_version_request(), proplists:proplist()) ->
     {ok, update_dashboard_published_version_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_dashboard_published_version_errors(), tuple()}.
 update_dashboard_published_version(Client, AwsAccountId, DashboardId, VersionNumber, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/versions/", aws_util:encode_uri(VersionNumber), ""],
@@ -17702,28 +18248,14 @@ update_dashboard_published_version(Client, AwsAccountId, DashboardId, VersionNum
 -spec update_data_set(map(), binary() | list(), binary() | list(), update_data_set_request()) ->
     {ok, update_data_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_data_set_errors(), tuple()}.
 update_data_set(Client, AwsAccountId, DataSetId, Input) ->
     update_data_set(Client, AwsAccountId, DataSetId, Input, []).
 
 -spec update_data_set(map(), binary() | list(), binary() | list(), update_data_set_request(), proplists:proplist()) ->
     {ok, update_data_set_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_data_set_errors(), tuple()}.
 update_data_set(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), ""],
@@ -17753,24 +18285,14 @@ update_data_set(Client, AwsAccountId, DataSetId, Input0, Options0) ->
 -spec update_data_set_permissions(map(), binary() | list(), binary() | list(), update_data_set_permissions_request()) ->
     {ok, update_data_set_permissions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_data_set_permissions_errors(), tuple()}.
 update_data_set_permissions(Client, AwsAccountId, DataSetId, Input) ->
     update_data_set_permissions(Client, AwsAccountId, DataSetId, Input, []).
 
 -spec update_data_set_permissions(map(), binary() | list(), binary() | list(), update_data_set_permissions_request(), proplists:proplist()) ->
     {ok, update_data_set_permissions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_data_set_permissions_errors(), tuple()}.
 update_data_set_permissions(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/permissions"],
@@ -17797,24 +18319,14 @@ update_data_set_permissions(Client, AwsAccountId, DataSetId, Input0, Options0) -
 -spec update_data_source(map(), binary() | list(), binary() | list(), update_data_source_request()) ->
     {ok, update_data_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_data_source_errors(), tuple()}.
 update_data_source(Client, AwsAccountId, DataSourceId, Input) ->
     update_data_source(Client, AwsAccountId, DataSourceId, Input, []).
 
 -spec update_data_source(map(), binary() | list(), binary() | list(), update_data_source_request(), proplists:proplist()) ->
     {ok, update_data_source_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_data_source_errors(), tuple()}.
 update_data_source(Client, AwsAccountId, DataSourceId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources/", aws_util:encode_uri(DataSourceId), ""],
@@ -17841,24 +18353,14 @@ update_data_source(Client, AwsAccountId, DataSourceId, Input0, Options0) ->
 -spec update_data_source_permissions(map(), binary() | list(), binary() | list(), update_data_source_permissions_request()) ->
     {ok, update_data_source_permissions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_data_source_permissions_errors(), tuple()}.
 update_data_source_permissions(Client, AwsAccountId, DataSourceId, Input) ->
     update_data_source_permissions(Client, AwsAccountId, DataSourceId, Input, []).
 
 -spec update_data_source_permissions(map(), binary() | list(), binary() | list(), update_data_source_permissions_request(), proplists:proplist()) ->
     {ok, update_data_source_permissions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_data_source_permissions_errors(), tuple()}.
 update_data_source_permissions(Client, AwsAccountId, DataSourceId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources/", aws_util:encode_uri(DataSourceId), "/permissions"],
@@ -17885,28 +18387,14 @@ update_data_source_permissions(Client, AwsAccountId, DataSourceId, Input0, Optio
 -spec update_folder(map(), binary() | list(), binary() | list(), update_folder_request()) ->
     {ok, update_folder_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_folder_errors(), tuple()}.
 update_folder(Client, AwsAccountId, FolderId, Input) ->
     update_folder(Client, AwsAccountId, FolderId, Input, []).
 
 -spec update_folder(map(), binary() | list(), binary() | list(), update_folder_request(), proplists:proplist()) ->
     {ok, update_folder_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_folder_errors(), tuple()}.
 update_folder(Client, AwsAccountId, FolderId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), ""],
@@ -17933,26 +18421,14 @@ update_folder(Client, AwsAccountId, FolderId, Input0, Options0) ->
 -spec update_folder_permissions(map(), binary() | list(), binary() | list(), update_folder_permissions_request()) ->
     {ok, update_folder_permissions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_folder_permissions_errors(), tuple()}.
 update_folder_permissions(Client, AwsAccountId, FolderId, Input) ->
     update_folder_permissions(Client, AwsAccountId, FolderId, Input, []).
 
 -spec update_folder_permissions(map(), binary() | list(), binary() | list(), update_folder_permissions_request(), proplists:proplist()) ->
     {ok, update_folder_permissions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_folder_permissions_errors(), tuple()}.
 update_folder_permissions(Client, AwsAccountId, FolderId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), "/permissions"],
@@ -17979,26 +18455,14 @@ update_folder_permissions(Client, AwsAccountId, FolderId, Input0, Options0) ->
 -spec update_group(map(), binary() | list(), binary() | list(), binary() | list(), update_group_request()) ->
     {ok, update_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_group_errors(), tuple()}.
 update_group(Client, AwsAccountId, GroupName, Namespace, Input) ->
     update_group(Client, AwsAccountId, GroupName, Namespace, Input, []).
 
 -spec update_group(map(), binary() | list(), binary() | list(), binary() | list(), update_group_request(), proplists:proplist()) ->
     {ok, update_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_group_errors(), tuple()}.
 update_group(Client, AwsAccountId, GroupName, Namespace, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), ""],
@@ -18030,26 +18494,14 @@ update_group(Client, AwsAccountId, GroupName, Namespace, Input0, Options0) ->
 -spec update_iam_policy_assignment(map(), binary() | list(), binary() | list(), binary() | list(), update_iam_policy_assignment_request()) ->
     {ok, update_iam_policy_assignment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_updating_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_iam_policy_assignment_errors(), tuple()}.
 update_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input) ->
     update_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input, []).
 
 -spec update_iam_policy_assignment(map(), binary() | list(), binary() | list(), binary() | list(), update_iam_policy_assignment_request(), proplists:proplist()) ->
     {ok, update_iam_policy_assignment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_updating_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_iam_policy_assignment_errors(), tuple()}.
 update_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/iam-policy-assignments/", aws_util:encode_uri(AssignmentName), ""],
@@ -18080,22 +18532,14 @@ update_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, In
 -spec update_identity_propagation_config(map(), binary() | list(), binary() | list(), update_identity_propagation_config_request()) ->
     {ok, update_identity_propagation_config_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_identity_propagation_config_errors(), tuple()}.
 update_identity_propagation_config(Client, AwsAccountId, Service, Input) ->
     update_identity_propagation_config(Client, AwsAccountId, Service, Input, []).
 
 -spec update_identity_propagation_config(map(), binary() | list(), binary() | list(), update_identity_propagation_config_request(), proplists:proplist()) ->
     {ok, update_identity_propagation_config_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_identity_propagation_config_errors(), tuple()}.
 update_identity_propagation_config(Client, AwsAccountId, Service, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/identity-propagation-config/", aws_util:encode_uri(Service), ""],
@@ -18128,24 +18572,14 @@ update_identity_propagation_config(Client, AwsAccountId, Service, Input0, Option
 -spec update_ip_restriction(map(), binary() | list(), update_ip_restriction_request()) ->
     {ok, update_ip_restriction_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_ip_restriction_errors(), tuple()}.
 update_ip_restriction(Client, AwsAccountId, Input) ->
     update_ip_restriction(Client, AwsAccountId, Input, []).
 
 -spec update_ip_restriction(map(), binary() | list(), update_ip_restriction_request(), proplists:proplist()) ->
     {ok, update_ip_restriction_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_ip_restriction_errors(), tuple()}.
 update_ip_restriction(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/ip-restriction"],
@@ -18188,24 +18622,14 @@ update_ip_restriction(Client, AwsAccountId, Input0, Options0) ->
 -spec update_public_sharing_settings(map(), binary() | list(), update_public_sharing_settings_request()) ->
     {ok, update_public_sharing_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_pricing_plan_exception(), tuple()}.
+    {error, update_public_sharing_settings_errors(), tuple()}.
 update_public_sharing_settings(Client, AwsAccountId, Input) ->
     update_public_sharing_settings(Client, AwsAccountId, Input, []).
 
 -spec update_public_sharing_settings(map(), binary() | list(), update_public_sharing_settings_request(), proplists:proplist()) ->
     {ok, update_public_sharing_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_pricing_plan_exception(), tuple()}.
+    {error, update_public_sharing_settings_errors(), tuple()}.
 update_public_sharing_settings(Client, AwsAccountId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/public-sharing-settings"],
@@ -18232,26 +18656,14 @@ update_public_sharing_settings(Client, AwsAccountId, Input0, Options0) ->
 -spec update_refresh_schedule(map(), binary() | list(), binary() | list(), update_refresh_schedule_request()) ->
     {ok, update_refresh_schedule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_refresh_schedule_errors(), tuple()}.
 update_refresh_schedule(Client, AwsAccountId, DataSetId, Input) ->
     update_refresh_schedule(Client, AwsAccountId, DataSetId, Input, []).
 
 -spec update_refresh_schedule(map(), binary() | list(), binary() | list(), update_refresh_schedule_request(), proplists:proplist()) ->
     {ok, update_refresh_schedule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_refresh_schedule_errors(), tuple()}.
 update_refresh_schedule(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-schedules"],
@@ -18278,26 +18690,14 @@ update_refresh_schedule(Client, AwsAccountId, DataSetId, Input0, Options0) ->
 -spec update_role_custom_permission(map(), binary() | list(), binary() | list(), binary() | list(), update_role_custom_permission_request()) ->
     {ok, update_role_custom_permission_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_role_custom_permission_errors(), tuple()}.
 update_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input) ->
     update_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input, []).
 
 -spec update_role_custom_permission(map(), binary() | list(), binary() | list(), binary() | list(), update_role_custom_permission_request(), proplists:proplist()) ->
     {ok, update_role_custom_permission_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_role_custom_permission_errors(), tuple()}.
 update_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/roles/", aws_util:encode_uri(Role), "/custom-permission"],
@@ -18325,28 +18725,14 @@ update_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input0, Opt
 -spec update_template(map(), binary() | list(), binary() | list(), update_template_request()) ->
     {ok, update_template_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_template_errors(), tuple()}.
 update_template(Client, AwsAccountId, TemplateId, Input) ->
     update_template(Client, AwsAccountId, TemplateId, Input, []).
 
 -spec update_template(map(), binary() | list(), binary() | list(), update_template_request(), proplists:proplist()) ->
     {ok, update_template_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_template_errors(), tuple()}.
 update_template(Client, AwsAccountId, TemplateId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), ""],
@@ -18373,22 +18759,14 @@ update_template(Client, AwsAccountId, TemplateId, Input0, Options0) ->
 -spec update_template_alias(map(), binary() | list(), binary() | list(), binary() | list(), update_template_alias_request()) ->
     {ok, update_template_alias_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_template_alias_errors(), tuple()}.
 update_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input) ->
     update_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input, []).
 
 -spec update_template_alias(map(), binary() | list(), binary() | list(), binary() | list(), update_template_alias_request(), proplists:proplist()) ->
     {ok, update_template_alias_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_template_alias_errors(), tuple()}.
 update_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/aliases/", aws_util:encode_uri(AliasName), ""],
@@ -18415,26 +18793,14 @@ update_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Optio
 -spec update_template_permissions(map(), binary() | list(), binary() | list(), update_template_permissions_request()) ->
     {ok, update_template_permissions_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_template_permissions_errors(), tuple()}.
 update_template_permissions(Client, AwsAccountId, TemplateId, Input) ->
     update_template_permissions(Client, AwsAccountId, TemplateId, Input, []).
 
 -spec update_template_permissions(map(), binary() | list(), binary() | list(), update_template_permissions_request(), proplists:proplist()) ->
     {ok, update_template_permissions_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_template_permissions_errors(), tuple()}.
 update_template_permissions(Client, AwsAccountId, TemplateId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/permissions"],
@@ -18461,28 +18827,14 @@ update_template_permissions(Client, AwsAccountId, TemplateId, Input0, Options0) 
 -spec update_theme(map(), binary() | list(), binary() | list(), update_theme_request()) ->
     {ok, update_theme_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_theme_errors(), tuple()}.
 update_theme(Client, AwsAccountId, ThemeId, Input) ->
     update_theme(Client, AwsAccountId, ThemeId, Input, []).
 
 -spec update_theme(map(), binary() | list(), binary() | list(), update_theme_request(), proplists:proplist()) ->
     {ok, update_theme_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_theme_errors(), tuple()}.
 update_theme(Client, AwsAccountId, ThemeId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), ""],
@@ -18509,26 +18861,14 @@ update_theme(Client, AwsAccountId, ThemeId, Input0, Options0) ->
 -spec update_theme_alias(map(), binary() | list(), binary() | list(), binary() | list(), update_theme_alias_request()) ->
     {ok, update_theme_alias_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_theme_alias_errors(), tuple()}.
 update_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input) ->
     update_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input, []).
 
 -spec update_theme_alias(map(), binary() | list(), binary() | list(), binary() | list(), update_theme_alias_request(), proplists:proplist()) ->
     {ok, update_theme_alias_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_theme_alias_errors(), tuple()}.
 update_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/aliases/", aws_util:encode_uri(AliasName), ""],
@@ -18599,26 +18939,14 @@ update_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options0) -
 -spec update_theme_permissions(map(), binary() | list(), binary() | list(), update_theme_permissions_request()) ->
     {ok, update_theme_permissions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_theme_permissions_errors(), tuple()}.
 update_theme_permissions(Client, AwsAccountId, ThemeId, Input) ->
     update_theme_permissions(Client, AwsAccountId, ThemeId, Input, []).
 
 -spec update_theme_permissions(map(), binary() | list(), binary() | list(), update_theme_permissions_request(), proplists:proplist()) ->
     {ok, update_theme_permissions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_theme_permissions_errors(), tuple()}.
 update_theme_permissions(Client, AwsAccountId, ThemeId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/permissions"],
@@ -18645,28 +18973,14 @@ update_theme_permissions(Client, AwsAccountId, ThemeId, Input0, Options0) ->
 -spec update_topic(map(), binary() | list(), binary() | list(), update_topic_request()) ->
     {ok, update_topic_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_topic_errors(), tuple()}.
 update_topic(Client, AwsAccountId, TopicId, Input) ->
     update_topic(Client, AwsAccountId, TopicId, Input, []).
 
 -spec update_topic(map(), binary() | list(), binary() | list(), update_topic_request(), proplists:proplist()) ->
     {ok, update_topic_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_topic_errors(), tuple()}.
 update_topic(Client, AwsAccountId, TopicId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), ""],
@@ -18693,28 +19007,14 @@ update_topic(Client, AwsAccountId, TopicId, Input0, Options0) ->
 -spec update_topic_permissions(map(), binary() | list(), binary() | list(), update_topic_permissions_request()) ->
     {ok, update_topic_permissions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_topic_permissions_errors(), tuple()}.
 update_topic_permissions(Client, AwsAccountId, TopicId, Input) ->
     update_topic_permissions(Client, AwsAccountId, TopicId, Input, []).
 
 -spec update_topic_permissions(map(), binary() | list(), binary() | list(), update_topic_permissions_request(), proplists:proplist()) ->
     {ok, update_topic_permissions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_topic_permissions_errors(), tuple()}.
 update_topic_permissions(Client, AwsAccountId, TopicId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/permissions"],
@@ -18741,28 +19041,14 @@ update_topic_permissions(Client, AwsAccountId, TopicId, Input0, Options0) ->
 -spec update_topic_refresh_schedule(map(), binary() | list(), binary() | list(), binary() | list(), update_topic_refresh_schedule_request()) ->
     {ok, update_topic_refresh_schedule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_topic_refresh_schedule_errors(), tuple()}.
 update_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input) ->
     update_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input, []).
 
 -spec update_topic_refresh_schedule(map(), binary() | list(), binary() | list(), binary() | list(), update_topic_refresh_schedule_request(), proplists:proplist()) ->
     {ok, update_topic_refresh_schedule_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_topic_refresh_schedule_errors(), tuple()}.
 update_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/schedules/", aws_util:encode_uri(DatasetId), ""],
@@ -18789,26 +19075,14 @@ update_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input0, 
 -spec update_user(map(), binary() | list(), binary() | list(), binary() | list(), update_user_request()) ->
     {ok, update_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_user_errors(), tuple()}.
 update_user(Client, AwsAccountId, Namespace, UserName, Input) ->
     update_user(Client, AwsAccountId, Namespace, UserName, Input, []).
 
 -spec update_user(map(), binary() | list(), binary() | list(), binary() | list(), update_user_request(), proplists:proplist()) ->
     {ok, update_user_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, precondition_not_met_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_user_errors(), tuple()}.
 update_user(Client, AwsAccountId, Namespace, UserName, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), ""],
@@ -18835,28 +19109,14 @@ update_user(Client, AwsAccountId, Namespace, UserName, Input0, Options0) ->
 -spec update_vpc_connection(map(), binary() | list(), binary() | list(), update_vpc_connection_request()) ->
     {ok, update_vpc_connection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_vpc_connection_errors(), tuple()}.
 update_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input) ->
     update_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input, []).
 
 -spec update_vpc_connection(map(), binary() | list(), binary() | list(), update_vpc_connection_request(), proplists:proplist()) ->
     {ok, update_vpc_connection_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unsupported_user_edition_exception(), tuple()}.
+    {error, update_vpc_connection_errors(), tuple()}.
 update_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/vpc-connections/", aws_util:encode_uri(VPCConnectionId), ""],

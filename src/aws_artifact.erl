@@ -33,11 +33,13 @@
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% account_settings() :: #{
 %%   <<"notificationSubscriptionStatus">> => string()
 %% }
 -type account_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -46,15 +48,18 @@
 %%   <<"resourceType">> => [string()]
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 %% Example:
 %% get_account_settings_request() :: #{}
 -type get_account_settings_request() :: #{}.
+
 
 %% Example:
 %% get_account_settings_response() :: #{
 %%   <<"accountSettings">> => account_settings()
 %% }
 -type get_account_settings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_report_metadata_request() :: #{
@@ -63,11 +68,13 @@
 %% }
 -type get_report_metadata_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_report_metadata_response() :: #{
 %%   <<"reportDetails">> => report_detail()
 %% }
 -type get_report_metadata_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_report_request() :: #{
@@ -77,11 +84,13 @@
 %% }
 -type get_report_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_report_response() :: #{
 %%   <<"documentPresignedUrl">> => [string()]
 %% }
 -type get_report_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_term_for_report_request() :: #{
@@ -90,12 +99,14 @@
 %% }
 -type get_term_for_report_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_term_for_report_response() :: #{
 %%   <<"documentPresignedUrl">> => [string()],
 %%   <<"termToken">> => [string()]
 %% }
 -type get_term_for_report_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% internal_server_exception() :: #{
@@ -104,12 +115,14 @@
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_reports_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_reports_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_reports_response() :: #{
@@ -118,17 +131,20 @@
 %% }
 -type list_reports_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_account_settings_request() :: #{
 %%   <<"notificationSubscriptionStatus">> => string()
 %% }
 -type put_account_settings_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_account_settings_response() :: #{
 %%   <<"accountSettings">> => account_settings()
 %% }
 -type put_account_settings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% report_detail() :: #{
@@ -155,6 +171,7 @@
 %% }
 -type report_detail() :: #{binary() => any()}.
 
+
 %% Example:
 %% report_summary() :: #{
 %%   <<"arn">> => string(),
@@ -174,6 +191,7 @@
 %% }
 -type report_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => [string()],
@@ -181,6 +199,7 @@
 %%   <<"resourceType">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
@@ -192,6 +211,7 @@
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => [string()],
@@ -201,6 +221,7 @@
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"fieldList">> => list(validation_exception_field()()),
@@ -209,12 +230,65 @@
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception_field() :: #{
 %%   <<"message">> => [string()],
 %%   <<"name">> => [string()]
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
+
+-type get_account_settings_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type get_report_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type get_report_metadata_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_term_for_report_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type list_reports_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type put_account_settings_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -224,13 +298,7 @@
 -spec get_account_settings(map()) ->
     {ok, get_account_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_account_settings_errors(), tuple()}.
 get_account_settings(Client)
   when is_map(Client) ->
     get_account_settings(Client, #{}, #{}).
@@ -238,13 +306,7 @@ get_account_settings(Client)
 -spec get_account_settings(map(), map(), map()) ->
     {ok, get_account_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_account_settings_errors(), tuple()}.
 get_account_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_account_settings(Client, QueryMap, HeadersMap, []).
@@ -252,13 +314,7 @@ get_account_settings(Client, QueryMap, HeadersMap)
 -spec get_account_settings(map(), map(), map(), proplists:proplist()) ->
     {ok, get_account_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_account_settings_errors(), tuple()}.
 get_account_settings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/account-settings/get"],
@@ -279,13 +335,7 @@ get_account_settings(Client, QueryMap, HeadersMap, Options0)
 -spec get_report(map(), binary() | list(), binary() | list()) ->
     {ok, get_report_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_report_errors(), tuple()}.
 get_report(Client, ReportId, TermToken)
   when is_map(Client) ->
     get_report(Client, ReportId, TermToken, #{}, #{}).
@@ -293,13 +343,7 @@ get_report(Client, ReportId, TermToken)
 -spec get_report(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_report_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_report_errors(), tuple()}.
 get_report(Client, ReportId, TermToken, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_report(Client, ReportId, TermToken, QueryMap, HeadersMap, []).
@@ -307,13 +351,7 @@ get_report(Client, ReportId, TermToken, QueryMap, HeadersMap)
 -spec get_report(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_report_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_report_errors(), tuple()}.
 get_report(Client, ReportId, TermToken, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/report/get"],
@@ -340,12 +378,7 @@ get_report(Client, ReportId, TermToken, QueryMap, HeadersMap, Options0)
 -spec get_report_metadata(map(), binary() | list()) ->
     {ok, get_report_metadata_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_report_metadata_errors(), tuple()}.
 get_report_metadata(Client, ReportId)
   when is_map(Client) ->
     get_report_metadata(Client, ReportId, #{}, #{}).
@@ -353,12 +386,7 @@ get_report_metadata(Client, ReportId)
 -spec get_report_metadata(map(), binary() | list(), map(), map()) ->
     {ok, get_report_metadata_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_report_metadata_errors(), tuple()}.
 get_report_metadata(Client, ReportId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_report_metadata(Client, ReportId, QueryMap, HeadersMap, []).
@@ -366,12 +394,7 @@ get_report_metadata(Client, ReportId, QueryMap, HeadersMap)
 -spec get_report_metadata(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_report_metadata_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_report_metadata_errors(), tuple()}.
 get_report_metadata(Client, ReportId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/report/getMetadata"],
@@ -397,13 +420,7 @@ get_report_metadata(Client, ReportId, QueryMap, HeadersMap, Options0)
 -spec get_term_for_report(map(), binary() | list()) ->
     {ok, get_term_for_report_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_term_for_report_errors(), tuple()}.
 get_term_for_report(Client, ReportId)
   when is_map(Client) ->
     get_term_for_report(Client, ReportId, #{}, #{}).
@@ -411,13 +428,7 @@ get_term_for_report(Client, ReportId)
 -spec get_term_for_report(map(), binary() | list(), map(), map()) ->
     {ok, get_term_for_report_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_term_for_report_errors(), tuple()}.
 get_term_for_report(Client, ReportId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_term_for_report(Client, ReportId, QueryMap, HeadersMap, []).
@@ -425,13 +436,7 @@ get_term_for_report(Client, ReportId, QueryMap, HeadersMap)
 -spec get_term_for_report(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_term_for_report_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_term_for_report_errors(), tuple()}.
 get_term_for_report(Client, ReportId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/report/getTermForReport"],
@@ -457,12 +462,7 @@ get_term_for_report(Client, ReportId, QueryMap, HeadersMap, Options0)
 -spec list_reports(map()) ->
     {ok, list_reports_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_reports_errors(), tuple()}.
 list_reports(Client)
   when is_map(Client) ->
     list_reports(Client, #{}, #{}).
@@ -470,12 +470,7 @@ list_reports(Client)
 -spec list_reports(map(), map(), map()) ->
     {ok, list_reports_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_reports_errors(), tuple()}.
 list_reports(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_reports(Client, QueryMap, HeadersMap, []).
@@ -483,12 +478,7 @@ list_reports(Client, QueryMap, HeadersMap)
 -spec list_reports(map(), map(), map(), proplists:proplist()) ->
     {ok, list_reports_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_reports_errors(), tuple()}.
 list_reports(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/report/list"],
@@ -514,26 +504,14 @@ list_reports(Client, QueryMap, HeadersMap, Options0)
 -spec put_account_settings(map(), put_account_settings_request()) ->
     {ok, put_account_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_account_settings_errors(), tuple()}.
 put_account_settings(Client, Input) ->
     put_account_settings(Client, Input, []).
 
 -spec put_account_settings(map(), put_account_settings_request(), proplists:proplist()) ->
     {ok, put_account_settings_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_account_settings_errors(), tuple()}.
 put_account_settings(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v1/account-settings/put"],

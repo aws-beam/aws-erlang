@@ -1444,6 +1444,382 @@
 %% }
 -type update_model_manifest_request() :: #{binary() => any()}.
 
+-type associate_vehicle_fleet_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type batch_create_vehicle_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type batch_update_vehicle_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type create_campaign_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_decoder_manifest_errors() ::
+    decoder_manifest_validation_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_fleet_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_model_manifest_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_signals_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_signal_catalog_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_signals_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_node_exception() | 
+    conflict_exception().
+
+-type create_vehicle_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_campaign_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type delete_decoder_manifest_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_fleet_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type delete_model_manifest_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_signal_catalog_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_vehicle_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type disassociate_vehicle_fleet_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_campaign_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_decoder_manifest_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_encryption_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_fleet_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_logging_options_errors() ::
+    throttling_exception() | 
+    access_denied_exception().
+
+-type get_model_manifest_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_register_account_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_signal_catalog_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_vehicle_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_vehicle_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type import_decoder_manifest_errors() ::
+    decoder_manifest_validation_exception() | 
+    throttling_exception() | 
+    invalid_signals_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type import_signal_catalog_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_signals_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_campaigns_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception().
+
+-type list_decoder_manifest_network_interfaces_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_decoder_manifest_signals_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_decoder_manifests_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_fleets_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_fleets_for_vehicle_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_model_manifest_nodes_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_model_manifests_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_signal_catalog_nodes_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_signal_catalogs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_vehicles_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_vehicles_in_fleet_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type put_encryption_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type put_logging_options_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type register_account_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_campaign_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_decoder_manifest_errors() ::
+    decoder_manifest_validation_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_fleet_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_model_manifest_errors() ::
+    throttling_exception() | 
+    invalid_signals_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_signal_catalog_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_signals_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_node_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_vehicle_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -1453,12 +1829,7 @@
 -spec associate_vehicle_fleet(map(), associate_vehicle_fleet_request()) ->
     {ok, associate_vehicle_fleet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_vehicle_fleet_errors(), tuple()}.
 associate_vehicle_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_vehicle_fleet(Client, Input, []).
@@ -1466,12 +1837,7 @@ associate_vehicle_fleet(Client, Input)
 -spec associate_vehicle_fleet(map(), associate_vehicle_fleet_request(), proplists:proplist()) ->
     {ok, associate_vehicle_fleet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, associate_vehicle_fleet_errors(), tuple()}.
 associate_vehicle_fleet(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateVehicleFleet">>, Input, Options).
@@ -1489,11 +1855,7 @@ associate_vehicle_fleet(Client, Input, Options)
 -spec batch_create_vehicle(map(), batch_create_vehicle_request()) ->
     {ok, batch_create_vehicle_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_create_vehicle_errors(), tuple()}.
 batch_create_vehicle(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_create_vehicle(Client, Input, []).
@@ -1501,11 +1863,7 @@ batch_create_vehicle(Client, Input)
 -spec batch_create_vehicle(map(), batch_create_vehicle_request(), proplists:proplist()) ->
     {ok, batch_create_vehicle_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_create_vehicle_errors(), tuple()}.
 batch_create_vehicle(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchCreateVehicle">>, Input, Options).
@@ -1523,10 +1881,7 @@ batch_create_vehicle(Client, Input, Options)
 -spec batch_update_vehicle(map(), batch_update_vehicle_request()) ->
     {ok, batch_update_vehicle_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_update_vehicle_errors(), tuple()}.
 batch_update_vehicle(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_update_vehicle(Client, Input, []).
@@ -1534,10 +1889,7 @@ batch_update_vehicle(Client, Input)
 -spec batch_update_vehicle(map(), batch_update_vehicle_request(), proplists:proplist()) ->
     {ok, batch_update_vehicle_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_update_vehicle_errors(), tuple()}.
 batch_update_vehicle(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchUpdateVehicle">>, Input, Options).
@@ -1558,12 +1910,7 @@ batch_update_vehicle(Client, Input, Options)
 -spec create_campaign(map(), create_campaign_request()) ->
     {ok, create_campaign_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_campaign_errors(), tuple()}.
 create_campaign(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_campaign(Client, Input, []).
@@ -1571,12 +1918,7 @@ create_campaign(Client, Input)
 -spec create_campaign(map(), create_campaign_request(), proplists:proplist()) ->
     {ok, create_campaign_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_campaign_errors(), tuple()}.
 create_campaign(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCampaign">>, Input, Options).
@@ -1596,13 +1938,7 @@ create_campaign(Client, Input, Options)
 -spec create_decoder_manifest(map(), create_decoder_manifest_request()) ->
     {ok, create_decoder_manifest_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, decoder_manifest_validation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_decoder_manifest_errors(), tuple()}.
 create_decoder_manifest(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_decoder_manifest(Client, Input, []).
@@ -1610,13 +1946,7 @@ create_decoder_manifest(Client, Input)
 -spec create_decoder_manifest(map(), create_decoder_manifest_request(), proplists:proplist()) ->
     {ok, create_decoder_manifest_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, decoder_manifest_validation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_decoder_manifest_errors(), tuple()}.
 create_decoder_manifest(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDecoderManifest">>, Input, Options).
@@ -1633,13 +1963,7 @@ create_decoder_manifest(Client, Input, Options)
 -spec create_fleet(map(), create_fleet_request()) ->
     {ok, create_fleet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_fleet_errors(), tuple()}.
 create_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_fleet(Client, Input, []).
@@ -1647,13 +1971,7 @@ create_fleet(Client, Input)
 -spec create_fleet(map(), create_fleet_request(), proplists:proplist()) ->
     {ok, create_fleet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_fleet_errors(), tuple()}.
 create_fleet(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFleet">>, Input, Options).
@@ -1668,13 +1986,7 @@ create_fleet(Client, Input, Options)
 -spec create_model_manifest(map(), create_model_manifest_request()) ->
     {ok, create_model_manifest_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_signals_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_model_manifest_errors(), tuple()}.
 create_model_manifest(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model_manifest(Client, Input, []).
@@ -1682,13 +1994,7 @@ create_model_manifest(Client, Input)
 -spec create_model_manifest(map(), create_model_manifest_request(), proplists:proplist()) ->
     {ok, create_model_manifest_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_signals_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_model_manifest_errors(), tuple()}.
 create_model_manifest(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateModelManifest">>, Input, Options).
@@ -1699,13 +2005,7 @@ create_model_manifest(Client, Input, Options)
 -spec create_signal_catalog(map(), create_signal_catalog_request()) ->
     {ok, create_signal_catalog_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_node_exception(), tuple()} |
-    {error, invalid_signals_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_signal_catalog_errors(), tuple()}.
 create_signal_catalog(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_signal_catalog(Client, Input, []).
@@ -1713,13 +2013,7 @@ create_signal_catalog(Client, Input)
 -spec create_signal_catalog(map(), create_signal_catalog_request(), proplists:proplist()) ->
     {ok, create_signal_catalog_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, invalid_node_exception(), tuple()} |
-    {error, invalid_signals_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_signal_catalog_errors(), tuple()}.
 create_signal_catalog(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSignalCatalog">>, Input, Options).
@@ -1743,13 +2037,7 @@ create_signal_catalog(Client, Input, Options)
 -spec create_vehicle(map(), create_vehicle_request()) ->
     {ok, create_vehicle_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_vehicle_errors(), tuple()}.
 create_vehicle(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vehicle(Client, Input, []).
@@ -1757,13 +2045,7 @@ create_vehicle(Client, Input)
 -spec create_vehicle(map(), create_vehicle_request(), proplists:proplist()) ->
     {ok, create_vehicle_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_vehicle_errors(), tuple()}.
 create_vehicle(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateVehicle">>, Input, Options).
@@ -1775,10 +2057,7 @@ create_vehicle(Client, Input, Options)
 -spec delete_campaign(map(), delete_campaign_request()) ->
     {ok, delete_campaign_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_campaign_errors(), tuple()}.
 delete_campaign(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_campaign(Client, Input, []).
@@ -1786,10 +2065,7 @@ delete_campaign(Client, Input)
 -spec delete_campaign(map(), delete_campaign_request(), proplists:proplist()) ->
     {ok, delete_campaign_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_campaign_errors(), tuple()}.
 delete_campaign(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCampaign">>, Input, Options).
@@ -1805,11 +2081,7 @@ delete_campaign(Client, Input, Options)
 -spec delete_decoder_manifest(map(), delete_decoder_manifest_request()) ->
     {ok, delete_decoder_manifest_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_decoder_manifest_errors(), tuple()}.
 delete_decoder_manifest(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_decoder_manifest(Client, Input, []).
@@ -1817,11 +2089,7 @@ delete_decoder_manifest(Client, Input)
 -spec delete_decoder_manifest(map(), delete_decoder_manifest_request(), proplists:proplist()) ->
     {ok, delete_decoder_manifest_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_decoder_manifest_errors(), tuple()}.
 delete_decoder_manifest(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDecoderManifest">>, Input, Options).
@@ -1840,10 +2108,7 @@ delete_decoder_manifest(Client, Input, Options)
 -spec delete_fleet(map(), delete_fleet_request()) ->
     {ok, delete_fleet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_fleet_errors(), tuple()}.
 delete_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_fleet(Client, Input, []).
@@ -1851,10 +2116,7 @@ delete_fleet(Client, Input)
 -spec delete_fleet(map(), delete_fleet_request(), proplists:proplist()) ->
     {ok, delete_fleet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_fleet_errors(), tuple()}.
 delete_fleet(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFleet">>, Input, Options).
@@ -1867,11 +2129,7 @@ delete_fleet(Client, Input, Options)
 -spec delete_model_manifest(map(), delete_model_manifest_request()) ->
     {ok, delete_model_manifest_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_model_manifest_errors(), tuple()}.
 delete_model_manifest(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model_manifest(Client, Input, []).
@@ -1879,11 +2137,7 @@ delete_model_manifest(Client, Input)
 -spec delete_model_manifest(map(), delete_model_manifest_request(), proplists:proplist()) ->
     {ok, delete_model_manifest_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_model_manifest_errors(), tuple()}.
 delete_model_manifest(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteModelManifest">>, Input, Options).
@@ -1896,11 +2150,7 @@ delete_model_manifest(Client, Input, Options)
 -spec delete_signal_catalog(map(), delete_signal_catalog_request()) ->
     {ok, delete_signal_catalog_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_signal_catalog_errors(), tuple()}.
 delete_signal_catalog(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_signal_catalog(Client, Input, []).
@@ -1908,11 +2158,7 @@ delete_signal_catalog(Client, Input)
 -spec delete_signal_catalog(map(), delete_signal_catalog_request(), proplists:proplist()) ->
     {ok, delete_signal_catalog_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_signal_catalog_errors(), tuple()}.
 delete_signal_catalog(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSignalCatalog">>, Input, Options).
@@ -1925,10 +2171,7 @@ delete_signal_catalog(Client, Input, Options)
 -spec delete_vehicle(map(), delete_vehicle_request()) ->
     {ok, delete_vehicle_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_vehicle_errors(), tuple()}.
 delete_vehicle(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_vehicle(Client, Input, []).
@@ -1936,10 +2179,7 @@ delete_vehicle(Client, Input)
 -spec delete_vehicle(map(), delete_vehicle_request(), proplists:proplist()) ->
     {ok, delete_vehicle_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_vehicle_errors(), tuple()}.
 delete_vehicle(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteVehicle">>, Input, Options).
@@ -1955,11 +2195,7 @@ delete_vehicle(Client, Input, Options)
 -spec disassociate_vehicle_fleet(map(), disassociate_vehicle_fleet_request()) ->
     {ok, disassociate_vehicle_fleet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_vehicle_fleet_errors(), tuple()}.
 disassociate_vehicle_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_vehicle_fleet(Client, Input, []).
@@ -1967,11 +2203,7 @@ disassociate_vehicle_fleet(Client, Input)
 -spec disassociate_vehicle_fleet(map(), disassociate_vehicle_fleet_request(), proplists:proplist()) ->
     {ok, disassociate_vehicle_fleet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disassociate_vehicle_fleet_errors(), tuple()}.
 disassociate_vehicle_fleet(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateVehicleFleet">>, Input, Options).
@@ -1980,10 +2212,7 @@ disassociate_vehicle_fleet(Client, Input, Options)
 -spec get_campaign(map(), get_campaign_request()) ->
     {ok, get_campaign_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_campaign_errors(), tuple()}.
 get_campaign(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_campaign(Client, Input, []).
@@ -1991,10 +2220,7 @@ get_campaign(Client, Input)
 -spec get_campaign(map(), get_campaign_request(), proplists:proplist()) ->
     {ok, get_campaign_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_campaign_errors(), tuple()}.
 get_campaign(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCampaign">>, Input, Options).
@@ -2003,10 +2229,7 @@ get_campaign(Client, Input, Options)
 -spec get_decoder_manifest(map(), get_decoder_manifest_request()) ->
     {ok, get_decoder_manifest_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_decoder_manifest_errors(), tuple()}.
 get_decoder_manifest(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_decoder_manifest(Client, Input, []).
@@ -2014,10 +2237,7 @@ get_decoder_manifest(Client, Input)
 -spec get_decoder_manifest(map(), get_decoder_manifest_request(), proplists:proplist()) ->
     {ok, get_decoder_manifest_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_decoder_manifest_errors(), tuple()}.
 get_decoder_manifest(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDecoderManifest">>, Input, Options).
@@ -2027,11 +2247,7 @@ get_decoder_manifest(Client, Input, Options)
 -spec get_encryption_configuration(map(), get_encryption_configuration_request()) ->
     {ok, get_encryption_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_encryption_configuration_errors(), tuple()}.
 get_encryption_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_encryption_configuration(Client, Input, []).
@@ -2039,11 +2255,7 @@ get_encryption_configuration(Client, Input)
 -spec get_encryption_configuration(map(), get_encryption_configuration_request(), proplists:proplist()) ->
     {ok, get_encryption_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_encryption_configuration_errors(), tuple()}.
 get_encryption_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEncryptionConfiguration">>, Input, Options).
@@ -2052,11 +2264,7 @@ get_encryption_configuration(Client, Input, Options)
 -spec get_fleet(map(), get_fleet_request()) ->
     {ok, get_fleet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_fleet_errors(), tuple()}.
 get_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_fleet(Client, Input, []).
@@ -2064,11 +2272,7 @@ get_fleet(Client, Input)
 -spec get_fleet(map(), get_fleet_request(), proplists:proplist()) ->
     {ok, get_fleet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_fleet_errors(), tuple()}.
 get_fleet(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetFleet">>, Input, Options).
@@ -2077,8 +2281,7 @@ get_fleet(Client, Input, Options)
 -spec get_logging_options(map(), get_logging_options_request()) ->
     {ok, get_logging_options_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_logging_options_errors(), tuple()}.
 get_logging_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_logging_options(Client, Input, []).
@@ -2086,8 +2289,7 @@ get_logging_options(Client, Input)
 -spec get_logging_options(map(), get_logging_options_request(), proplists:proplist()) ->
     {ok, get_logging_options_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_logging_options_errors(), tuple()}.
 get_logging_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLoggingOptions">>, Input, Options).
@@ -2096,10 +2298,7 @@ get_logging_options(Client, Input, Options)
 -spec get_model_manifest(map(), get_model_manifest_request()) ->
     {ok, get_model_manifest_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_model_manifest_errors(), tuple()}.
 get_model_manifest(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_model_manifest(Client, Input, []).
@@ -2107,10 +2306,7 @@ get_model_manifest(Client, Input)
 -spec get_model_manifest(map(), get_model_manifest_request(), proplists:proplist()) ->
     {ok, get_model_manifest_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_model_manifest_errors(), tuple()}.
 get_model_manifest(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetModelManifest">>, Input, Options).
@@ -2129,11 +2325,7 @@ get_model_manifest(Client, Input, Options)
 -spec get_register_account_status(map(), get_register_account_status_request()) ->
     {ok, get_register_account_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_register_account_status_errors(), tuple()}.
 get_register_account_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_register_account_status(Client, Input, []).
@@ -2141,11 +2333,7 @@ get_register_account_status(Client, Input)
 -spec get_register_account_status(map(), get_register_account_status_request(), proplists:proplist()) ->
     {ok, get_register_account_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_register_account_status_errors(), tuple()}.
 get_register_account_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRegisterAccountStatus">>, Input, Options).
@@ -2154,10 +2342,7 @@ get_register_account_status(Client, Input, Options)
 -spec get_signal_catalog(map(), get_signal_catalog_request()) ->
     {ok, get_signal_catalog_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_signal_catalog_errors(), tuple()}.
 get_signal_catalog(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_signal_catalog(Client, Input, []).
@@ -2165,10 +2350,7 @@ get_signal_catalog(Client, Input)
 -spec get_signal_catalog(map(), get_signal_catalog_request(), proplists:proplist()) ->
     {ok, get_signal_catalog_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_signal_catalog_errors(), tuple()}.
 get_signal_catalog(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSignalCatalog">>, Input, Options).
@@ -2177,11 +2359,7 @@ get_signal_catalog(Client, Input, Options)
 -spec get_vehicle(map(), get_vehicle_request()) ->
     {ok, get_vehicle_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_vehicle_errors(), tuple()}.
 get_vehicle(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_vehicle(Client, Input, []).
@@ -2189,11 +2367,7 @@ get_vehicle(Client, Input)
 -spec get_vehicle(map(), get_vehicle_request(), proplists:proplist()) ->
     {ok, get_vehicle_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_vehicle_errors(), tuple()}.
 get_vehicle(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetVehicle">>, Input, Options).
@@ -2203,10 +2377,7 @@ get_vehicle(Client, Input, Options)
 -spec get_vehicle_status(map(), get_vehicle_status_request()) ->
     {ok, get_vehicle_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_vehicle_status_errors(), tuple()}.
 get_vehicle_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_vehicle_status(Client, Input, []).
@@ -2214,10 +2385,7 @@ get_vehicle_status(Client, Input)
 -spec get_vehicle_status(map(), get_vehicle_status_request(), proplists:proplist()) ->
     {ok, get_vehicle_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_vehicle_status_errors(), tuple()}.
 get_vehicle_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetVehicleStatus">>, Input, Options).
@@ -2227,13 +2395,7 @@ get_vehicle_status(Client, Input, Options)
 -spec import_decoder_manifest(map(), import_decoder_manifest_request()) ->
     {ok, import_decoder_manifest_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, decoder_manifest_validation_exception(), tuple()} |
-    {error, invalid_signals_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, import_decoder_manifest_errors(), tuple()}.
 import_decoder_manifest(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_decoder_manifest(Client, Input, []).
@@ -2241,13 +2403,7 @@ import_decoder_manifest(Client, Input)
 -spec import_decoder_manifest(map(), import_decoder_manifest_request(), proplists:proplist()) ->
     {ok, import_decoder_manifest_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, decoder_manifest_validation_exception(), tuple()} |
-    {error, invalid_signals_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, import_decoder_manifest_errors(), tuple()}.
 import_decoder_manifest(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportDecoderManifest">>, Input, Options).
@@ -2258,14 +2414,7 @@ import_decoder_manifest(Client, Input, Options)
 -spec import_signal_catalog(map(), import_signal_catalog_request()) ->
     {ok, import_signal_catalog_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_signals_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, import_signal_catalog_errors(), tuple()}.
 import_signal_catalog(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_signal_catalog(Client, Input, []).
@@ -2273,14 +2422,7 @@ import_signal_catalog(Client, Input)
 -spec import_signal_catalog(map(), import_signal_catalog_request(), proplists:proplist()) ->
     {ok, import_signal_catalog_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_signals_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, import_signal_catalog_errors(), tuple()}.
 import_signal_catalog(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportSignalCatalog">>, Input, Options).
@@ -2292,9 +2434,7 @@ import_signal_catalog(Client, Input, Options)
 -spec list_campaigns(map(), list_campaigns_request()) ->
     {ok, list_campaigns_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_campaigns_errors(), tuple()}.
 list_campaigns(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_campaigns(Client, Input, []).
@@ -2302,9 +2442,7 @@ list_campaigns(Client, Input)
 -spec list_campaigns(map(), list_campaigns_request(), proplists:proplist()) ->
     {ok, list_campaigns_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_campaigns_errors(), tuple()}.
 list_campaigns(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCampaigns">>, Input, Options).
@@ -2316,11 +2454,7 @@ list_campaigns(Client, Input, Options)
 -spec list_decoder_manifest_network_interfaces(map(), list_decoder_manifest_network_interfaces_request()) ->
     {ok, list_decoder_manifest_network_interfaces_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_decoder_manifest_network_interfaces_errors(), tuple()}.
 list_decoder_manifest_network_interfaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_decoder_manifest_network_interfaces(Client, Input, []).
@@ -2328,11 +2462,7 @@ list_decoder_manifest_network_interfaces(Client, Input)
 -spec list_decoder_manifest_network_interfaces(map(), list_decoder_manifest_network_interfaces_request(), proplists:proplist()) ->
     {ok, list_decoder_manifest_network_interfaces_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_decoder_manifest_network_interfaces_errors(), tuple()}.
 list_decoder_manifest_network_interfaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDecoderManifestNetworkInterfaces">>, Input, Options).
@@ -2345,11 +2475,7 @@ list_decoder_manifest_network_interfaces(Client, Input, Options)
 -spec list_decoder_manifest_signals(map(), list_decoder_manifest_signals_request()) ->
     {ok, list_decoder_manifest_signals_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_decoder_manifest_signals_errors(), tuple()}.
 list_decoder_manifest_signals(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_decoder_manifest_signals(Client, Input, []).
@@ -2357,11 +2483,7 @@ list_decoder_manifest_signals(Client, Input)
 -spec list_decoder_manifest_signals(map(), list_decoder_manifest_signals_request(), proplists:proplist()) ->
     {ok, list_decoder_manifest_signals_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_decoder_manifest_signals_errors(), tuple()}.
 list_decoder_manifest_signals(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDecoderManifestSignals">>, Input, Options).
@@ -2373,10 +2495,7 @@ list_decoder_manifest_signals(Client, Input, Options)
 -spec list_decoder_manifests(map(), list_decoder_manifests_request()) ->
     {ok, list_decoder_manifests_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_decoder_manifests_errors(), tuple()}.
 list_decoder_manifests(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_decoder_manifests(Client, Input, []).
@@ -2384,10 +2503,7 @@ list_decoder_manifests(Client, Input)
 -spec list_decoder_manifests(map(), list_decoder_manifests_request(), proplists:proplist()) ->
     {ok, list_decoder_manifests_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_decoder_manifests_errors(), tuple()}.
 list_decoder_manifests(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDecoderManifests">>, Input, Options).
@@ -2400,11 +2516,7 @@ list_decoder_manifests(Client, Input, Options)
 -spec list_fleets(map(), list_fleets_request()) ->
     {ok, list_fleets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_fleets_errors(), tuple()}.
 list_fleets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_fleets(Client, Input, []).
@@ -2412,11 +2524,7 @@ list_fleets(Client, Input)
 -spec list_fleets(map(), list_fleets_request(), proplists:proplist()) ->
     {ok, list_fleets_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_fleets_errors(), tuple()}.
 list_fleets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFleets">>, Input, Options).
@@ -2429,11 +2537,7 @@ list_fleets(Client, Input, Options)
 -spec list_fleets_for_vehicle(map(), list_fleets_for_vehicle_request()) ->
     {ok, list_fleets_for_vehicle_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_fleets_for_vehicle_errors(), tuple()}.
 list_fleets_for_vehicle(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_fleets_for_vehicle(Client, Input, []).
@@ -2441,11 +2545,7 @@ list_fleets_for_vehicle(Client, Input)
 -spec list_fleets_for_vehicle(map(), list_fleets_for_vehicle_request(), proplists:proplist()) ->
     {ok, list_fleets_for_vehicle_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_fleets_for_vehicle_errors(), tuple()}.
 list_fleets_for_vehicle(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFleetsForVehicle">>, Input, Options).
@@ -2458,12 +2558,7 @@ list_fleets_for_vehicle(Client, Input, Options)
 -spec list_model_manifest_nodes(map(), list_model_manifest_nodes_request()) ->
     {ok, list_model_manifest_nodes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_model_manifest_nodes_errors(), tuple()}.
 list_model_manifest_nodes(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_model_manifest_nodes(Client, Input, []).
@@ -2471,12 +2566,7 @@ list_model_manifest_nodes(Client, Input)
 -spec list_model_manifest_nodes(map(), list_model_manifest_nodes_request(), proplists:proplist()) ->
     {ok, list_model_manifest_nodes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_model_manifest_nodes_errors(), tuple()}.
 list_model_manifest_nodes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListModelManifestNodes">>, Input, Options).
@@ -2488,10 +2578,7 @@ list_model_manifest_nodes(Client, Input, Options)
 -spec list_model_manifests(map(), list_model_manifests_request()) ->
     {ok, list_model_manifests_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_model_manifests_errors(), tuple()}.
 list_model_manifests(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_model_manifests(Client, Input, []).
@@ -2499,10 +2586,7 @@ list_model_manifests(Client, Input)
 -spec list_model_manifests(map(), list_model_manifests_request(), proplists:proplist()) ->
     {ok, list_model_manifests_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_model_manifests_errors(), tuple()}.
 list_model_manifests(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListModelManifests">>, Input, Options).
@@ -2515,12 +2599,7 @@ list_model_manifests(Client, Input, Options)
 -spec list_signal_catalog_nodes(map(), list_signal_catalog_nodes_request()) ->
     {ok, list_signal_catalog_nodes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_signal_catalog_nodes_errors(), tuple()}.
 list_signal_catalog_nodes(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_signal_catalog_nodes(Client, Input, []).
@@ -2528,12 +2607,7 @@ list_signal_catalog_nodes(Client, Input)
 -spec list_signal_catalog_nodes(map(), list_signal_catalog_nodes_request(), proplists:proplist()) ->
     {ok, list_signal_catalog_nodes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_signal_catalog_nodes_errors(), tuple()}.
 list_signal_catalog_nodes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSignalCatalogNodes">>, Input, Options).
@@ -2549,10 +2623,7 @@ list_signal_catalog_nodes(Client, Input, Options)
 -spec list_signal_catalogs(map(), list_signal_catalogs_request()) ->
     {ok, list_signal_catalogs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_signal_catalogs_errors(), tuple()}.
 list_signal_catalogs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_signal_catalogs(Client, Input, []).
@@ -2560,10 +2631,7 @@ list_signal_catalogs(Client, Input)
 -spec list_signal_catalogs(map(), list_signal_catalogs_request(), proplists:proplist()) ->
     {ok, list_signal_catalogs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_signal_catalogs_errors(), tuple()}.
 list_signal_catalogs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSignalCatalogs">>, Input, Options).
@@ -2572,11 +2640,7 @@ list_signal_catalogs(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -2584,11 +2648,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -2600,10 +2660,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec list_vehicles(map(), list_vehicles_request()) ->
     {ok, list_vehicles_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_vehicles_errors(), tuple()}.
 list_vehicles(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_vehicles(Client, Input, []).
@@ -2611,10 +2668,7 @@ list_vehicles(Client, Input)
 -spec list_vehicles(map(), list_vehicles_request(), proplists:proplist()) ->
     {ok, list_vehicles_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_vehicles_errors(), tuple()}.
 list_vehicles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListVehicles">>, Input, Options).
@@ -2627,11 +2681,7 @@ list_vehicles(Client, Input, Options)
 -spec list_vehicles_in_fleet(map(), list_vehicles_in_fleet_request()) ->
     {ok, list_vehicles_in_fleet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_vehicles_in_fleet_errors(), tuple()}.
 list_vehicles_in_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_vehicles_in_fleet(Client, Input, []).
@@ -2639,11 +2689,7 @@ list_vehicles_in_fleet(Client, Input)
 -spec list_vehicles_in_fleet(map(), list_vehicles_in_fleet_request(), proplists:proplist()) ->
     {ok, list_vehicles_in_fleet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_vehicles_in_fleet_errors(), tuple()}.
 list_vehicles_in_fleet(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListVehiclesInFleet">>, Input, Options).
@@ -2658,12 +2704,7 @@ list_vehicles_in_fleet(Client, Input, Options)
 -spec put_encryption_configuration(map(), put_encryption_configuration_request()) ->
     {ok, put_encryption_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_encryption_configuration_errors(), tuple()}.
 put_encryption_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_encryption_configuration(Client, Input, []).
@@ -2671,12 +2712,7 @@ put_encryption_configuration(Client, Input)
 -spec put_encryption_configuration(map(), put_encryption_configuration_request(), proplists:proplist()) ->
     {ok, put_encryption_configuration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_encryption_configuration_errors(), tuple()}.
 put_encryption_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutEncryptionConfiguration">>, Input, Options).
@@ -2685,11 +2721,7 @@ put_encryption_configuration(Client, Input, Options)
 -spec put_logging_options(map(), put_logging_options_request()) ->
     {ok, put_logging_options_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_logging_options_errors(), tuple()}.
 put_logging_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_logging_options(Client, Input, []).
@@ -2697,11 +2729,7 @@ put_logging_options(Client, Input)
 -spec put_logging_options(map(), put_logging_options_request(), proplists:proplist()) ->
     {ok, put_logging_options_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_logging_options_errors(), tuple()}.
 put_logging_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutLoggingOptions">>, Input, Options).
@@ -2752,12 +2780,7 @@ put_logging_options(Client, Input, Options)
 -spec register_account(map(), register_account_request()) ->
     {ok, register_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, register_account_errors(), tuple()}.
 register_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_account(Client, Input, []).
@@ -2765,12 +2788,7 @@ register_account(Client, Input)
 -spec register_account(map(), register_account_request(), proplists:proplist()) ->
     {ok, register_account_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, register_account_errors(), tuple()}.
 register_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterAccount">>, Input, Options).
@@ -2782,11 +2800,7 @@ register_account(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -2794,11 +2808,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -2807,11 +2817,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -2819,11 +2825,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -2832,11 +2834,7 @@ untag_resource(Client, Input, Options)
 -spec update_campaign(map(), update_campaign_request()) ->
     {ok, update_campaign_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_campaign_errors(), tuple()}.
 update_campaign(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_campaign(Client, Input, []).
@@ -2844,11 +2842,7 @@ update_campaign(Client, Input)
 -spec update_campaign(map(), update_campaign_request(), proplists:proplist()) ->
     {ok, update_campaign_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_campaign_errors(), tuple()}.
 update_campaign(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCampaign">>, Input, Options).
@@ -2861,13 +2855,7 @@ update_campaign(Client, Input, Options)
 -spec update_decoder_manifest(map(), update_decoder_manifest_request()) ->
     {ok, update_decoder_manifest_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, decoder_manifest_validation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_decoder_manifest_errors(), tuple()}.
 update_decoder_manifest(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_decoder_manifest(Client, Input, []).
@@ -2875,13 +2863,7 @@ update_decoder_manifest(Client, Input)
 -spec update_decoder_manifest(map(), update_decoder_manifest_request(), proplists:proplist()) ->
     {ok, update_decoder_manifest_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, decoder_manifest_validation_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_decoder_manifest_errors(), tuple()}.
 update_decoder_manifest(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDecoderManifest">>, Input, Options).
@@ -2894,12 +2876,7 @@ update_decoder_manifest(Client, Input, Options)
 -spec update_fleet(map(), update_fleet_request()) ->
     {ok, update_fleet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_fleet_errors(), tuple()}.
 update_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_fleet(Client, Input, []).
@@ -2907,12 +2884,7 @@ update_fleet(Client, Input)
 -spec update_fleet(map(), update_fleet_request(), proplists:proplist()) ->
     {ok, update_fleet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_fleet_errors(), tuple()}.
 update_fleet(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFleet">>, Input, Options).
@@ -2924,13 +2896,7 @@ update_fleet(Client, Input, Options)
 -spec update_model_manifest(map(), update_model_manifest_request()) ->
     {ok, update_model_manifest_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_signals_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_model_manifest_errors(), tuple()}.
 update_model_manifest(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_model_manifest(Client, Input, []).
@@ -2938,13 +2904,7 @@ update_model_manifest(Client, Input)
 -spec update_model_manifest(map(), update_model_manifest_request(), proplists:proplist()) ->
     {ok, update_model_manifest_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_signals_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_model_manifest_errors(), tuple()}.
 update_model_manifest(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateModelManifest">>, Input, Options).
@@ -2953,15 +2913,7 @@ update_model_manifest(Client, Input, Options)
 -spec update_signal_catalog(map(), update_signal_catalog_request()) ->
     {ok, update_signal_catalog_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_node_exception(), tuple()} |
-    {error, invalid_signals_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_signal_catalog_errors(), tuple()}.
 update_signal_catalog(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_signal_catalog(Client, Input, []).
@@ -2969,15 +2921,7 @@ update_signal_catalog(Client, Input)
 -spec update_signal_catalog(map(), update_signal_catalog_request(), proplists:proplist()) ->
     {ok, update_signal_catalog_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_node_exception(), tuple()} |
-    {error, invalid_signals_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_signal_catalog_errors(), tuple()}.
 update_signal_catalog(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSignalCatalog">>, Input, Options).
@@ -2986,12 +2930,7 @@ update_signal_catalog(Client, Input, Options)
 -spec update_vehicle(map(), update_vehicle_request()) ->
     {ok, update_vehicle_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_vehicle_errors(), tuple()}.
 update_vehicle(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_vehicle(Client, Input, []).
@@ -2999,12 +2938,7 @@ update_vehicle(Client, Input)
 -spec update_vehicle(map(), update_vehicle_request(), proplists:proplist()) ->
     {ok, update_vehicle_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_vehicle_errors(), tuple()}.
 update_vehicle(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateVehicle">>, Input, Options).

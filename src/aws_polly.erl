@@ -53,11 +53,13 @@
 %% }
 -type synthesize_speech_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_lexicon_input() :: #{
 %%   <<"Content">> := string()
 %% }
 -type put_lexicon_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_voices_output() :: #{
@@ -66,11 +68,13 @@
 %% }
 -type describe_voices_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% max_lexicons_number_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type max_lexicons_number_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_speech_synthesis_task_output() :: #{
@@ -78,11 +82,13 @@
 %% }
 -type start_speech_synthesis_task_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_s3_key_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_s3_key_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% lexicon_size_exceeded_exception() :: #{
@@ -90,11 +96,13 @@
 %% }
 -type lexicon_size_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_failure_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type service_failure_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_lexicons_output() :: #{
@@ -102,9 +110,11 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_lexicons_output() :: #{binary() => any()}.
+
 %% Example:
 %% get_lexicon_input() :: #{}
 -type get_lexicon_input() :: #{}.
+
 
 %% Example:
 %% describe_voices_input() :: #{
@@ -115,6 +125,7 @@
 %% }
 -type describe_voices_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_speech_synthesis_tasks_input() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -123,6 +134,7 @@
 %% }
 -type list_speech_synthesis_tasks_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_speech_synthesis_tasks_output() :: #{
 %%   <<"NextToken">> => string(),
@@ -130,11 +142,13 @@
 %% }
 -type list_speech_synthesis_tasks_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% lexicon_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type lexicon_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% ssml_marks_not_supported_for_text_type_exception() :: #{
@@ -142,11 +156,13 @@
 %% }
 -type ssml_marks_not_supported_for_text_type_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% engine_not_supported_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type engine_not_supported_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_lexicon_output() :: #{
@@ -155,20 +171,24 @@
 %% }
 -type get_lexicon_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_ssml_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_ssml_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% unsupported_pls_alphabet_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type unsupported_pls_alphabet_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_lexicon_input() :: #{}
 -type delete_lexicon_input() :: #{}.
+
 
 %% Example:
 %% voice() :: #{
@@ -182,17 +202,20 @@
 %% }
 -type voice() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_speech_synthesis_task_output() :: #{
 %%   <<"SynthesisTask">> => synthesis_task()
 %% }
 -type get_speech_synthesis_task_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_s3_bucket_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_s3_bucket_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% lexicon_attributes() :: #{
@@ -205,11 +228,13 @@
 %% }
 -type lexicon_attributes() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_next_token_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_next_token_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% synthesis_task() :: #{
@@ -231,11 +256,13 @@
 %% }
 -type synthesis_task() :: #{binary() => any()}.
 
+
 %% Example:
 %% max_lexeme_length_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type max_lexeme_length_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% language_not_supported_exception() :: #{
@@ -243,11 +270,13 @@
 %% }
 -type language_not_supported_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_lexicons_input() :: #{
 %%   <<"NextToken">> => string()
 %% }
 -type list_lexicons_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% invalid_task_id_exception() :: #{
@@ -255,11 +284,13 @@
 %% }
 -type invalid_task_id_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_lexicon_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_lexicon_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% invalid_sns_topic_arn_exception() :: #{
@@ -267,15 +298,18 @@
 %% }
 -type invalid_sns_topic_arn_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% lexicon_description() :: #{
 %%   <<"Attributes">> => lexicon_attributes(),
 %%   <<"Name">> => string()
 %% }
 -type lexicon_description() :: #{binary() => any()}.
+
 %% Example:
 %% put_lexicon_output() :: #{}
 -type put_lexicon_output() :: #{}.
+
 
 %% Example:
 %% lexicon() :: #{
@@ -284,17 +318,20 @@
 %% }
 -type lexicon() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_sample_rate_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_sample_rate_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% unsupported_pls_language_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type unsupported_pls_language_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% synthesize_speech_output() :: #{
@@ -303,6 +340,7 @@
 %%   <<"RequestCharacters">> => integer()
 %% }
 -type synthesize_speech_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_speech_synthesis_task_input() :: #{
@@ -321,29 +359,93 @@
 %% }
 -type start_speech_synthesis_task_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% marks_not_supported_for_format_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type marks_not_supported_for_format_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% synthesis_task_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type synthesis_task_not_found_exception() :: #{binary() => any()}.
+
 %% Example:
 %% get_speech_synthesis_task_input() :: #{}
 -type get_speech_synthesis_task_input() :: #{}.
+
 
 %% Example:
 %% text_length_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type text_length_exceeded_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_lexicon_output() :: #{}
 -type delete_lexicon_output() :: #{}.
+
+-type delete_lexicon_errors() ::
+    lexicon_not_found_exception() | 
+    service_failure_exception().
+
+-type describe_voices_errors() ::
+    invalid_next_token_exception() | 
+    service_failure_exception().
+
+-type get_lexicon_errors() ::
+    lexicon_not_found_exception() | 
+    service_failure_exception().
+
+-type get_speech_synthesis_task_errors() ::
+    synthesis_task_not_found_exception() | 
+    invalid_task_id_exception() | 
+    service_failure_exception().
+
+-type list_lexicons_errors() ::
+    invalid_next_token_exception() | 
+    service_failure_exception().
+
+-type list_speech_synthesis_tasks_errors() ::
+    invalid_next_token_exception() | 
+    service_failure_exception().
+
+-type put_lexicon_errors() ::
+    unsupported_pls_language_exception() | 
+    invalid_lexicon_exception() | 
+    max_lexeme_length_exceeded_exception() | 
+    unsupported_pls_alphabet_exception() | 
+    service_failure_exception() | 
+    lexicon_size_exceeded_exception() | 
+    max_lexicons_number_exceeded_exception().
+
+-type start_speech_synthesis_task_errors() ::
+    text_length_exceeded_exception() | 
+    marks_not_supported_for_format_exception() | 
+    invalid_sample_rate_exception() | 
+    invalid_sns_topic_arn_exception() | 
+    language_not_supported_exception() | 
+    invalid_s3_bucket_exception() | 
+    invalid_ssml_exception() | 
+    engine_not_supported_exception() | 
+    ssml_marks_not_supported_for_text_type_exception() | 
+    lexicon_not_found_exception() | 
+    service_failure_exception() | 
+    invalid_s3_key_exception().
+
+-type synthesize_speech_errors() ::
+    text_length_exceeded_exception() | 
+    marks_not_supported_for_format_exception() | 
+    invalid_sample_rate_exception() | 
+    language_not_supported_exception() | 
+    invalid_ssml_exception() | 
+    engine_not_supported_exception() | 
+    ssml_marks_not_supported_for_text_type_exception() | 
+    lexicon_not_found_exception() | 
+    service_failure_exception().
 
 %%====================================================================
 %% API
@@ -361,16 +463,14 @@
 -spec delete_lexicon(map(), binary() | list(), delete_lexicon_input()) ->
     {ok, delete_lexicon_output(), tuple()} |
     {error, any()} |
-    {error, lexicon_not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_lexicon_errors(), tuple()}.
 delete_lexicon(Client, Name, Input) ->
     delete_lexicon(Client, Name, Input, []).
 
 -spec delete_lexicon(map(), binary() | list(), delete_lexicon_input(), proplists:proplist()) ->
     {ok, delete_lexicon_output(), tuple()} |
     {error, any()} |
-    {error, lexicon_not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, delete_lexicon_errors(), tuple()}.
 delete_lexicon(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/lexicons/", aws_util:encode_uri(Name), ""],
@@ -418,8 +518,7 @@ delete_lexicon(Client, Name, Input0, Options0) ->
 -spec describe_voices(map()) ->
     {ok, describe_voices_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, describe_voices_errors(), tuple()}.
 describe_voices(Client)
   when is_map(Client) ->
     describe_voices(Client, #{}, #{}).
@@ -427,8 +526,7 @@ describe_voices(Client)
 -spec describe_voices(map(), map(), map()) ->
     {ok, describe_voices_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, describe_voices_errors(), tuple()}.
 describe_voices(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_voices(Client, QueryMap, HeadersMap, []).
@@ -436,8 +534,7 @@ describe_voices(Client, QueryMap, HeadersMap)
 -spec describe_voices(map(), map(), map(), proplists:proplist()) ->
     {ok, describe_voices_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, describe_voices_errors(), tuple()}.
 describe_voices(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/voices"],
@@ -469,8 +566,7 @@ describe_voices(Client, QueryMap, HeadersMap, Options0)
 -spec get_lexicon(map(), binary() | list()) ->
     {ok, get_lexicon_output(), tuple()} |
     {error, any()} |
-    {error, lexicon_not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_lexicon_errors(), tuple()}.
 get_lexicon(Client, Name)
   when is_map(Client) ->
     get_lexicon(Client, Name, #{}, #{}).
@@ -478,8 +574,7 @@ get_lexicon(Client, Name)
 -spec get_lexicon(map(), binary() | list(), map(), map()) ->
     {ok, get_lexicon_output(), tuple()} |
     {error, any()} |
-    {error, lexicon_not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_lexicon_errors(), tuple()}.
 get_lexicon(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_lexicon(Client, Name, QueryMap, HeadersMap, []).
@@ -487,8 +582,7 @@ get_lexicon(Client, Name, QueryMap, HeadersMap)
 -spec get_lexicon(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_lexicon_output(), tuple()} |
     {error, any()} |
-    {error, lexicon_not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, get_lexicon_errors(), tuple()}.
 get_lexicon(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/lexicons/", aws_util:encode_uri(Name), ""],
@@ -513,9 +607,7 @@ get_lexicon(Client, Name, QueryMap, HeadersMap, Options0)
 -spec get_speech_synthesis_task(map(), binary() | list()) ->
     {ok, get_speech_synthesis_task_output(), tuple()} |
     {error, any()} |
-    {error, invalid_task_id_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, synthesis_task_not_found_exception(), tuple()}.
+    {error, get_speech_synthesis_task_errors(), tuple()}.
 get_speech_synthesis_task(Client, TaskId)
   when is_map(Client) ->
     get_speech_synthesis_task(Client, TaskId, #{}, #{}).
@@ -523,9 +615,7 @@ get_speech_synthesis_task(Client, TaskId)
 -spec get_speech_synthesis_task(map(), binary() | list(), map(), map()) ->
     {ok, get_speech_synthesis_task_output(), tuple()} |
     {error, any()} |
-    {error, invalid_task_id_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, synthesis_task_not_found_exception(), tuple()}.
+    {error, get_speech_synthesis_task_errors(), tuple()}.
 get_speech_synthesis_task(Client, TaskId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_speech_synthesis_task(Client, TaskId, QueryMap, HeadersMap, []).
@@ -533,9 +623,7 @@ get_speech_synthesis_task(Client, TaskId, QueryMap, HeadersMap)
 -spec get_speech_synthesis_task(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_speech_synthesis_task_output(), tuple()} |
     {error, any()} |
-    {error, invalid_task_id_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, synthesis_task_not_found_exception(), tuple()}.
+    {error, get_speech_synthesis_task_errors(), tuple()}.
 get_speech_synthesis_task(Client, TaskId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/synthesisTasks/", aws_util:encode_uri(TaskId), ""],
@@ -560,8 +648,7 @@ get_speech_synthesis_task(Client, TaskId, QueryMap, HeadersMap, Options0)
 -spec list_lexicons(map()) ->
     {ok, list_lexicons_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_lexicons_errors(), tuple()}.
 list_lexicons(Client)
   when is_map(Client) ->
     list_lexicons(Client, #{}, #{}).
@@ -569,8 +656,7 @@ list_lexicons(Client)
 -spec list_lexicons(map(), map(), map()) ->
     {ok, list_lexicons_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_lexicons_errors(), tuple()}.
 list_lexicons(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_lexicons(Client, QueryMap, HeadersMap, []).
@@ -578,8 +664,7 @@ list_lexicons(Client, QueryMap, HeadersMap)
 -spec list_lexicons(map(), map(), map(), proplists:proplist()) ->
     {ok, list_lexicons_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_lexicons_errors(), tuple()}.
 list_lexicons(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/lexicons"],
@@ -608,8 +693,7 @@ list_lexicons(Client, QueryMap, HeadersMap, Options0)
 -spec list_speech_synthesis_tasks(map()) ->
     {ok, list_speech_synthesis_tasks_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_speech_synthesis_tasks_errors(), tuple()}.
 list_speech_synthesis_tasks(Client)
   when is_map(Client) ->
     list_speech_synthesis_tasks(Client, #{}, #{}).
@@ -617,8 +701,7 @@ list_speech_synthesis_tasks(Client)
 -spec list_speech_synthesis_tasks(map(), map(), map()) ->
     {ok, list_speech_synthesis_tasks_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_speech_synthesis_tasks_errors(), tuple()}.
 list_speech_synthesis_tasks(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_speech_synthesis_tasks(Client, QueryMap, HeadersMap, []).
@@ -626,8 +709,7 @@ list_speech_synthesis_tasks(Client, QueryMap, HeadersMap)
 -spec list_speech_synthesis_tasks(map(), map(), map(), proplists:proplist()) ->
     {ok, list_speech_synthesis_tasks_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()}.
+    {error, list_speech_synthesis_tasks_errors(), tuple()}.
 list_speech_synthesis_tasks(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/synthesisTasks"],
@@ -663,26 +745,14 @@ list_speech_synthesis_tasks(Client, QueryMap, HeadersMap, Options0)
 -spec put_lexicon(map(), binary() | list(), put_lexicon_input()) ->
     {ok, put_lexicon_output(), tuple()} |
     {error, any()} |
-    {error, invalid_lexicon_exception(), tuple()} |
-    {error, lexicon_size_exceeded_exception(), tuple()} |
-    {error, max_lexeme_length_exceeded_exception(), tuple()} |
-    {error, max_lexicons_number_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, unsupported_pls_alphabet_exception(), tuple()} |
-    {error, unsupported_pls_language_exception(), tuple()}.
+    {error, put_lexicon_errors(), tuple()}.
 put_lexicon(Client, Name, Input) ->
     put_lexicon(Client, Name, Input, []).
 
 -spec put_lexicon(map(), binary() | list(), put_lexicon_input(), proplists:proplist()) ->
     {ok, put_lexicon_output(), tuple()} |
     {error, any()} |
-    {error, invalid_lexicon_exception(), tuple()} |
-    {error, lexicon_size_exceeded_exception(), tuple()} |
-    {error, max_lexeme_length_exceeded_exception(), tuple()} |
-    {error, max_lexicons_number_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, unsupported_pls_alphabet_exception(), tuple()} |
-    {error, unsupported_pls_language_exception(), tuple()}.
+    {error, put_lexicon_errors(), tuple()}.
 put_lexicon(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/v1/lexicons/", aws_util:encode_uri(Name), ""],
@@ -720,36 +790,14 @@ put_lexicon(Client, Name, Input0, Options0) ->
 -spec start_speech_synthesis_task(map(), start_speech_synthesis_task_input()) ->
     {ok, start_speech_synthesis_task_output(), tuple()} |
     {error, any()} |
-    {error, engine_not_supported_exception(), tuple()} |
-    {error, invalid_s3_bucket_exception(), tuple()} |
-    {error, invalid_s3_key_exception(), tuple()} |
-    {error, invalid_sample_rate_exception(), tuple()} |
-    {error, invalid_sns_topic_arn_exception(), tuple()} |
-    {error, invalid_ssml_exception(), tuple()} |
-    {error, language_not_supported_exception(), tuple()} |
-    {error, lexicon_not_found_exception(), tuple()} |
-    {error, marks_not_supported_for_format_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, ssml_marks_not_supported_for_text_type_exception(), tuple()} |
-    {error, text_length_exceeded_exception(), tuple()}.
+    {error, start_speech_synthesis_task_errors(), tuple()}.
 start_speech_synthesis_task(Client, Input) ->
     start_speech_synthesis_task(Client, Input, []).
 
 -spec start_speech_synthesis_task(map(), start_speech_synthesis_task_input(), proplists:proplist()) ->
     {ok, start_speech_synthesis_task_output(), tuple()} |
     {error, any()} |
-    {error, engine_not_supported_exception(), tuple()} |
-    {error, invalid_s3_bucket_exception(), tuple()} |
-    {error, invalid_s3_key_exception(), tuple()} |
-    {error, invalid_sample_rate_exception(), tuple()} |
-    {error, invalid_sns_topic_arn_exception(), tuple()} |
-    {error, invalid_ssml_exception(), tuple()} |
-    {error, language_not_supported_exception(), tuple()} |
-    {error, lexicon_not_found_exception(), tuple()} |
-    {error, marks_not_supported_for_format_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, ssml_marks_not_supported_for_text_type_exception(), tuple()} |
-    {error, text_length_exceeded_exception(), tuple()}.
+    {error, start_speech_synthesis_task_errors(), tuple()}.
 start_speech_synthesis_task(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/synthesisTasks"],
@@ -782,30 +830,14 @@ start_speech_synthesis_task(Client, Input0, Options0) ->
 -spec synthesize_speech(map(), synthesize_speech_input()) ->
     {ok, synthesize_speech_output(), tuple()} |
     {error, any()} |
-    {error, engine_not_supported_exception(), tuple()} |
-    {error, invalid_sample_rate_exception(), tuple()} |
-    {error, invalid_ssml_exception(), tuple()} |
-    {error, language_not_supported_exception(), tuple()} |
-    {error, lexicon_not_found_exception(), tuple()} |
-    {error, marks_not_supported_for_format_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, ssml_marks_not_supported_for_text_type_exception(), tuple()} |
-    {error, text_length_exceeded_exception(), tuple()}.
+    {error, synthesize_speech_errors(), tuple()}.
 synthesize_speech(Client, Input) ->
     synthesize_speech(Client, Input, []).
 
 -spec synthesize_speech(map(), synthesize_speech_input(), proplists:proplist()) ->
     {ok, synthesize_speech_output(), tuple()} |
     {error, any()} |
-    {error, engine_not_supported_exception(), tuple()} |
-    {error, invalid_sample_rate_exception(), tuple()} |
-    {error, invalid_ssml_exception(), tuple()} |
-    {error, language_not_supported_exception(), tuple()} |
-    {error, lexicon_not_found_exception(), tuple()} |
-    {error, marks_not_supported_for_format_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, ssml_marks_not_supported_for_text_type_exception(), tuple()} |
-    {error, text_length_exceeded_exception(), tuple()}.
+    {error, synthesize_speech_errors(), tuple()}.
 synthesize_speech(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/speech"],

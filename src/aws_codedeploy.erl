@@ -1985,6 +1985,432 @@
 %% }
 -type target_group_info() :: #{binary() => any()}.
 
+-type add_tags_to_on_premises_instances_errors() ::
+    instance_not_registered_exception() | 
+    instance_name_required_exception() | 
+    invalid_tag_exception() | 
+    invalid_instance_name_exception() | 
+    tag_limit_exceeded_exception() | 
+    tag_required_exception() | 
+    instance_limit_exceeded_exception().
+
+-type batch_get_application_revisions_errors() ::
+    invalid_application_name_exception() | 
+    invalid_revision_exception() | 
+    application_name_required_exception() | 
+    revision_required_exception() | 
+    application_does_not_exist_exception() | 
+    batch_limit_exceeded_exception().
+
+-type batch_get_applications_errors() ::
+    invalid_application_name_exception() | 
+    application_name_required_exception() | 
+    application_does_not_exist_exception() | 
+    batch_limit_exceeded_exception().
+
+-type batch_get_deployment_groups_errors() ::
+    deployment_group_name_required_exception() | 
+    deployment_config_does_not_exist_exception() | 
+    invalid_application_name_exception() | 
+    invalid_deployment_group_name_exception() | 
+    application_name_required_exception() | 
+    application_does_not_exist_exception() | 
+    batch_limit_exceeded_exception().
+
+-type batch_get_deployment_instances_errors() ::
+    invalid_deployment_id_exception() | 
+    invalid_compute_platform_exception() | 
+    invalid_instance_name_exception() | 
+    deployment_does_not_exist_exception() | 
+    instance_id_required_exception() | 
+    deployment_id_required_exception() | 
+    batch_limit_exceeded_exception().
+
+-type batch_get_deployment_targets_errors() ::
+    invalid_deployment_id_exception() | 
+    deployment_target_does_not_exist_exception() | 
+    deployment_does_not_exist_exception() | 
+    deployment_target_list_size_exceeded_exception() | 
+    deployment_not_started_exception() | 
+    deployment_id_required_exception() | 
+    instance_does_not_exist_exception() | 
+    invalid_deployment_target_id_exception() | 
+    deployment_target_id_required_exception().
+
+-type batch_get_deployments_errors() ::
+    invalid_deployment_id_exception() | 
+    deployment_id_required_exception() | 
+    batch_limit_exceeded_exception().
+
+-type batch_get_on_premises_instances_errors() ::
+    instance_name_required_exception() | 
+    invalid_instance_name_exception() | 
+    batch_limit_exceeded_exception().
+
+-type continue_deployment_errors() ::
+    invalid_deployment_id_exception() | 
+    deployment_already_completed_exception() | 
+    invalid_deployment_wait_type_exception() | 
+    deployment_does_not_exist_exception() | 
+    deployment_id_required_exception() | 
+    invalid_deployment_status_exception() | 
+    deployment_is_not_in_ready_state_exception() | 
+    unsupported_action_for_deployment_type_exception().
+
+-type create_application_errors() ::
+    invalid_compute_platform_exception() | 
+    invalid_application_name_exception() | 
+    application_already_exists_exception() | 
+    application_name_required_exception() | 
+    invalid_tags_to_add_exception() | 
+    application_limit_exceeded_exception().
+
+-type create_deployment_errors() ::
+    deployment_group_name_required_exception() | 
+    invalid_auto_rollback_config_exception() | 
+    alarms_limit_exceeded_exception() | 
+    invalid_ignore_application_stop_failures_value_exception() | 
+    deployment_config_does_not_exist_exception() | 
+    invalid_target_instances_exception() | 
+    deployment_limit_exceeded_exception() | 
+    invalid_application_name_exception() | 
+    throttling_exception() | 
+    revision_does_not_exist_exception() | 
+    invalid_deployment_config_name_exception() | 
+    deployment_group_does_not_exist_exception() | 
+    invalid_traffic_routing_configuration_exception() | 
+    invalid_role_exception() | 
+    invalid_deployment_group_name_exception() | 
+    invalid_git_hub_account_token_exception() | 
+    invalid_auto_scaling_group_exception() | 
+    invalid_alarm_config_exception() | 
+    description_too_long_exception() | 
+    invalid_revision_exception() | 
+    invalid_file_exists_behavior_exception() | 
+    application_name_required_exception() | 
+    invalid_update_outdated_instances_only_value_exception() | 
+    revision_required_exception() | 
+    application_does_not_exist_exception() | 
+    invalid_load_balancer_info_exception().
+
+-type create_deployment_config_errors() ::
+    invalid_compute_platform_exception() | 
+    invalid_deployment_config_name_exception() | 
+    invalid_traffic_routing_configuration_exception() | 
+    invalid_zonal_deployment_configuration_exception() | 
+    deployment_config_already_exists_exception() | 
+    invalid_minimum_healthy_host_value_exception() | 
+    deployment_config_name_required_exception() | 
+    deployment_config_limit_exceeded_exception().
+
+-type create_deployment_group_errors() ::
+    deployment_group_name_required_exception() | 
+    invalid_auto_rollback_config_exception() | 
+    invalid_ec2_tag_exception() | 
+    invalid_ec2_tag_combination_exception() | 
+    alarms_limit_exceeded_exception() | 
+    invalid_target_group_pair_exception() | 
+    invalid_tag_exception() | 
+    deployment_config_does_not_exist_exception() | 
+    deployment_group_limit_exceeded_exception() | 
+    tag_set_list_limit_exceeded_exception() | 
+    invalid_blue_green_deployment_configuration_exception() | 
+    invalid_application_name_exception() | 
+    throttling_exception() | 
+    e_c_s_service_mapping_limit_exceeded_exception() | 
+    role_required_exception() | 
+    invalid_deployment_config_name_exception() | 
+    lifecycle_hook_limit_exceeded_exception() | 
+    invalid_traffic_routing_configuration_exception() | 
+    trigger_targets_limit_exceeded_exception() | 
+    invalid_role_exception() | 
+    deployment_group_already_exists_exception() | 
+    invalid_deployment_group_name_exception() | 
+    invalid_input_exception() | 
+    invalid_on_premises_tag_combination_exception() | 
+    invalid_auto_scaling_group_exception() | 
+    invalid_alarm_config_exception() | 
+    invalid_e_c_s_service_exception() | 
+    application_name_required_exception() | 
+    invalid_tags_to_add_exception() | 
+    invalid_deployment_style_exception() | 
+    invalid_trigger_config_exception() | 
+    application_does_not_exist_exception() | 
+    invalid_load_balancer_info_exception().
+
+-type delete_application_errors() ::
+    invalid_application_name_exception() | 
+    invalid_role_exception() | 
+    application_name_required_exception().
+
+-type delete_deployment_config_errors() ::
+    invalid_deployment_config_name_exception() | 
+    deployment_config_in_use_exception() | 
+    deployment_config_name_required_exception() | 
+    invalid_operation_exception().
+
+-type delete_deployment_group_errors() ::
+    deployment_group_name_required_exception() | 
+    invalid_application_name_exception() | 
+    invalid_role_exception() | 
+    invalid_deployment_group_name_exception() | 
+    application_name_required_exception().
+
+-type delete_git_hub_account_token_errors() ::
+    operation_not_supported_exception() | 
+    resource_validation_exception() | 
+    git_hub_account_token_name_required_exception() | 
+    invalid_git_hub_account_token_name_exception() | 
+    git_hub_account_token_does_not_exist_exception().
+
+-type deregister_on_premises_instance_errors() ::
+    instance_name_required_exception() | 
+    invalid_instance_name_exception().
+
+-type get_application_errors() ::
+    invalid_application_name_exception() | 
+    application_name_required_exception() | 
+    application_does_not_exist_exception().
+
+-type get_application_revision_errors() ::
+    invalid_application_name_exception() | 
+    revision_does_not_exist_exception() | 
+    invalid_revision_exception() | 
+    application_name_required_exception() | 
+    revision_required_exception() | 
+    application_does_not_exist_exception().
+
+-type get_deployment_errors() ::
+    invalid_deployment_id_exception() | 
+    deployment_does_not_exist_exception() | 
+    deployment_id_required_exception().
+
+-type get_deployment_config_errors() ::
+    deployment_config_does_not_exist_exception() | 
+    invalid_compute_platform_exception() | 
+    invalid_deployment_config_name_exception() | 
+    deployment_config_name_required_exception().
+
+-type get_deployment_group_errors() ::
+    deployment_group_name_required_exception() | 
+    deployment_config_does_not_exist_exception() | 
+    invalid_application_name_exception() | 
+    deployment_group_does_not_exist_exception() | 
+    invalid_deployment_group_name_exception() | 
+    application_name_required_exception() | 
+    application_does_not_exist_exception().
+
+-type get_deployment_instance_errors() ::
+    invalid_deployment_id_exception() | 
+    invalid_compute_platform_exception() | 
+    invalid_instance_name_exception() | 
+    deployment_does_not_exist_exception() | 
+    instance_id_required_exception() | 
+    deployment_id_required_exception() | 
+    instance_does_not_exist_exception().
+
+-type get_deployment_target_errors() ::
+    invalid_deployment_id_exception() | 
+    invalid_instance_name_exception() | 
+    deployment_target_does_not_exist_exception() | 
+    deployment_does_not_exist_exception() | 
+    deployment_not_started_exception() | 
+    deployment_id_required_exception() | 
+    invalid_deployment_target_id_exception() | 
+    deployment_target_id_required_exception().
+
+-type get_on_premises_instance_errors() ::
+    instance_not_registered_exception() | 
+    instance_name_required_exception() | 
+    invalid_instance_name_exception().
+
+-type list_application_revisions_errors() ::
+    bucket_name_filter_required_exception() | 
+    invalid_application_name_exception() | 
+    invalid_deployed_state_filter_exception() | 
+    invalid_sort_by_exception() | 
+    invalid_key_prefix_filter_exception() | 
+    invalid_next_token_exception() | 
+    application_name_required_exception() | 
+    invalid_bucket_name_filter_exception() | 
+    invalid_sort_order_exception() | 
+    application_does_not_exist_exception().
+
+-type list_applications_errors() ::
+    invalid_next_token_exception().
+
+-type list_deployment_configs_errors() ::
+    invalid_next_token_exception().
+
+-type list_deployment_groups_errors() ::
+    invalid_application_name_exception() | 
+    invalid_next_token_exception() | 
+    application_name_required_exception() | 
+    application_does_not_exist_exception().
+
+-type list_deployment_instances_errors() ::
+    invalid_deployment_id_exception() | 
+    invalid_compute_platform_exception() | 
+    invalid_deployment_instance_type_exception() | 
+    invalid_target_filter_name_exception() | 
+    invalid_instance_type_exception() | 
+    invalid_next_token_exception() | 
+    deployment_does_not_exist_exception() | 
+    deployment_not_started_exception() | 
+    deployment_id_required_exception() | 
+    invalid_instance_status_exception().
+
+-type list_deployment_targets_errors() ::
+    invalid_deployment_id_exception() | 
+    invalid_deployment_instance_type_exception() | 
+    invalid_target_filter_name_exception() | 
+    invalid_instance_type_exception() | 
+    invalid_next_token_exception() | 
+    deployment_does_not_exist_exception() | 
+    deployment_not_started_exception() | 
+    deployment_id_required_exception() | 
+    invalid_instance_status_exception().
+
+-type list_deployments_errors() ::
+    deployment_group_name_required_exception() | 
+    invalid_application_name_exception() | 
+    deployment_group_does_not_exist_exception() | 
+    invalid_deployment_group_name_exception() | 
+    invalid_input_exception() | 
+    invalid_external_id_exception() | 
+    invalid_next_token_exception() | 
+    invalid_time_range_exception() | 
+    application_name_required_exception() | 
+    invalid_deployment_status_exception() | 
+    application_does_not_exist_exception().
+
+-type list_git_hub_account_token_names_errors() ::
+    operation_not_supported_exception() | 
+    resource_validation_exception() | 
+    invalid_next_token_exception().
+
+-type list_on_premises_instances_errors() ::
+    invalid_tag_filter_exception() | 
+    invalid_next_token_exception() | 
+    invalid_registration_status_exception().
+
+-type list_tags_for_resource_errors() ::
+    resource_arn_required_exception() | 
+    arn_not_supported_exception() | 
+    invalid_arn_exception().
+
+-type put_lifecycle_event_hook_execution_status_errors() ::
+    invalid_lifecycle_event_hook_execution_status_exception() | 
+    invalid_lifecycle_event_hook_execution_id_exception() | 
+    invalid_deployment_id_exception() | 
+    deployment_does_not_exist_exception() | 
+    deployment_id_required_exception() | 
+    unsupported_action_for_deployment_type_exception() | 
+    lifecycle_event_already_completed_exception().
+
+-type register_application_revision_errors() ::
+    invalid_application_name_exception() | 
+    description_too_long_exception() | 
+    invalid_revision_exception() | 
+    application_name_required_exception() | 
+    revision_required_exception() | 
+    application_does_not_exist_exception().
+
+-type register_on_premises_instance_errors() ::
+    instance_name_required_exception() | 
+    multiple_iam_arns_provided_exception() | 
+    invalid_iam_user_arn_exception() | 
+    iam_user_arn_required_exception() | 
+    iam_arn_required_exception() | 
+    invalid_instance_name_exception() | 
+    iam_session_arn_already_registered_exception() | 
+    iam_user_arn_already_registered_exception() | 
+    invalid_iam_session_arn_exception() | 
+    instance_name_already_registered_exception().
+
+-type remove_tags_from_on_premises_instances_errors() ::
+    instance_not_registered_exception() | 
+    instance_name_required_exception() | 
+    invalid_tag_exception() | 
+    invalid_instance_name_exception() | 
+    tag_limit_exceeded_exception() | 
+    tag_required_exception() | 
+    instance_limit_exceeded_exception().
+
+-type skip_wait_time_for_instance_termination_errors() ::
+    invalid_deployment_id_exception() | 
+    deployment_already_completed_exception() | 
+    deployment_does_not_exist_exception() | 
+    deployment_not_started_exception() | 
+    deployment_id_required_exception() | 
+    unsupported_action_for_deployment_type_exception().
+
+-type stop_deployment_errors() ::
+    invalid_deployment_id_exception() | 
+    deployment_already_completed_exception() | 
+    deployment_group_does_not_exist_exception() | 
+    deployment_does_not_exist_exception() | 
+    deployment_id_required_exception() | 
+    unsupported_action_for_deployment_type_exception().
+
+-type tag_resource_errors() ::
+    deployment_config_does_not_exist_exception() | 
+    deployment_group_does_not_exist_exception() | 
+    resource_arn_required_exception() | 
+    arn_not_supported_exception() | 
+    invalid_arn_exception() | 
+    invalid_tags_to_add_exception() | 
+    tag_required_exception() | 
+    application_does_not_exist_exception().
+
+-type untag_resource_errors() ::
+    deployment_config_does_not_exist_exception() | 
+    deployment_group_does_not_exist_exception() | 
+    resource_arn_required_exception() | 
+    arn_not_supported_exception() | 
+    invalid_arn_exception() | 
+    invalid_tags_to_add_exception() | 
+    tag_required_exception() | 
+    application_does_not_exist_exception().
+
+-type update_application_errors() ::
+    invalid_application_name_exception() | 
+    application_already_exists_exception() | 
+    application_name_required_exception() | 
+    application_does_not_exist_exception().
+
+-type update_deployment_group_errors() ::
+    deployment_group_name_required_exception() | 
+    invalid_auto_rollback_config_exception() | 
+    invalid_ec2_tag_exception() | 
+    invalid_ec2_tag_combination_exception() | 
+    alarms_limit_exceeded_exception() | 
+    invalid_target_group_pair_exception() | 
+    invalid_tag_exception() | 
+    deployment_config_does_not_exist_exception() | 
+    tag_set_list_limit_exceeded_exception() | 
+    invalid_blue_green_deployment_configuration_exception() | 
+    invalid_application_name_exception() | 
+    throttling_exception() | 
+    e_c_s_service_mapping_limit_exceeded_exception() | 
+    invalid_deployment_config_name_exception() | 
+    lifecycle_hook_limit_exceeded_exception() | 
+    deployment_group_does_not_exist_exception() | 
+    invalid_traffic_routing_configuration_exception() | 
+    trigger_targets_limit_exceeded_exception() | 
+    invalid_role_exception() | 
+    deployment_group_already_exists_exception() | 
+    invalid_deployment_group_name_exception() | 
+    invalid_input_exception() | 
+    invalid_on_premises_tag_combination_exception() | 
+    invalid_auto_scaling_group_exception() | 
+    invalid_alarm_config_exception() | 
+    invalid_e_c_s_service_exception() | 
+    application_name_required_exception() | 
+    invalid_deployment_style_exception() | 
+    invalid_trigger_config_exception() | 
+    application_does_not_exist_exception() | 
+    invalid_load_balancer_info_exception().
 
 %%====================================================================
 %% API
@@ -1994,13 +2420,7 @@
 -spec add_tags_to_on_premises_instances(map(), add_tags_to_on_premises_instances_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, instance_limit_exceeded_exception(), tuple()} |
-    {error, instance_name_required_exception(), tuple()} |
-    {error, instance_not_registered_exception(), tuple()} |
-    {error, invalid_instance_name_exception(), tuple()} |
-    {error, invalid_tag_exception(), tuple()} |
-    {error, tag_limit_exceeded_exception(), tuple()} |
-    {error, tag_required_exception(), tuple()}.
+    {error, add_tags_to_on_premises_instances_errors(), tuple()}.
 add_tags_to_on_premises_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_on_premises_instances(Client, Input, []).
@@ -2008,13 +2428,7 @@ add_tags_to_on_premises_instances(Client, Input)
 -spec add_tags_to_on_premises_instances(map(), add_tags_to_on_premises_instances_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, instance_limit_exceeded_exception(), tuple()} |
-    {error, instance_name_required_exception(), tuple()} |
-    {error, instance_not_registered_exception(), tuple()} |
-    {error, invalid_instance_name_exception(), tuple()} |
-    {error, invalid_tag_exception(), tuple()} |
-    {error, tag_limit_exceeded_exception(), tuple()} |
-    {error, tag_required_exception(), tuple()}.
+    {error, add_tags_to_on_premises_instances_errors(), tuple()}.
 add_tags_to_on_premises_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTagsToOnPremisesInstances">>, Input, Options).
@@ -2026,12 +2440,7 @@ add_tags_to_on_premises_instances(Client, Input, Options)
 -spec batch_get_application_revisions(map(), batch_get_application_revisions_input()) ->
     {ok, batch_get_application_revisions_output(), tuple()} |
     {error, any()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, batch_limit_exceeded_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()} |
-    {error, invalid_revision_exception(), tuple()} |
-    {error, revision_required_exception(), tuple()}.
+    {error, batch_get_application_revisions_errors(), tuple()}.
 batch_get_application_revisions(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_application_revisions(Client, Input, []).
@@ -2039,12 +2448,7 @@ batch_get_application_revisions(Client, Input)
 -spec batch_get_application_revisions(map(), batch_get_application_revisions_input(), proplists:proplist()) ->
     {ok, batch_get_application_revisions_output(), tuple()} |
     {error, any()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, batch_limit_exceeded_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()} |
-    {error, invalid_revision_exception(), tuple()} |
-    {error, revision_required_exception(), tuple()}.
+    {error, batch_get_application_revisions_errors(), tuple()}.
 batch_get_application_revisions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetApplicationRevisions">>, Input, Options).
@@ -2056,10 +2460,7 @@ batch_get_application_revisions(Client, Input, Options)
 -spec batch_get_applications(map(), batch_get_applications_input()) ->
     {ok, batch_get_applications_output(), tuple()} |
     {error, any()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, batch_limit_exceeded_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()}.
+    {error, batch_get_applications_errors(), tuple()}.
 batch_get_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_applications(Client, Input, []).
@@ -2067,10 +2468,7 @@ batch_get_applications(Client, Input)
 -spec batch_get_applications(map(), batch_get_applications_input(), proplists:proplist()) ->
     {ok, batch_get_applications_output(), tuple()} |
     {error, any()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, batch_limit_exceeded_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()}.
+    {error, batch_get_applications_errors(), tuple()}.
 batch_get_applications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetApplications">>, Input, Options).
@@ -2079,13 +2477,7 @@ batch_get_applications(Client, Input, Options)
 -spec batch_get_deployment_groups(map(), batch_get_deployment_groups_input()) ->
     {ok, batch_get_deployment_groups_output(), tuple()} |
     {error, any()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, batch_limit_exceeded_exception(), tuple()} |
-    {error, deployment_config_does_not_exist_exception(), tuple()} |
-    {error, deployment_group_name_required_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()} |
-    {error, invalid_deployment_group_name_exception(), tuple()}.
+    {error, batch_get_deployment_groups_errors(), tuple()}.
 batch_get_deployment_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_deployment_groups(Client, Input, []).
@@ -2093,13 +2485,7 @@ batch_get_deployment_groups(Client, Input)
 -spec batch_get_deployment_groups(map(), batch_get_deployment_groups_input(), proplists:proplist()) ->
     {ok, batch_get_deployment_groups_output(), tuple()} |
     {error, any()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, batch_limit_exceeded_exception(), tuple()} |
-    {error, deployment_config_does_not_exist_exception(), tuple()} |
-    {error, deployment_group_name_required_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()} |
-    {error, invalid_deployment_group_name_exception(), tuple()}.
+    {error, batch_get_deployment_groups_errors(), tuple()}.
 batch_get_deployment_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetDeploymentGroups">>, Input, Options).
@@ -2119,13 +2505,7 @@ batch_get_deployment_groups(Client, Input, Options)
 -spec batch_get_deployment_instances(map(), batch_get_deployment_instances_input()) ->
     {ok, batch_get_deployment_instances_output(), tuple()} |
     {error, any()} |
-    {error, batch_limit_exceeded_exception(), tuple()} |
-    {error, deployment_does_not_exist_exception(), tuple()} |
-    {error, deployment_id_required_exception(), tuple()} |
-    {error, instance_id_required_exception(), tuple()} |
-    {error, invalid_compute_platform_exception(), tuple()} |
-    {error, invalid_deployment_id_exception(), tuple()} |
-    {error, invalid_instance_name_exception(), tuple()}.
+    {error, batch_get_deployment_instances_errors(), tuple()}.
 batch_get_deployment_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_deployment_instances(Client, Input, []).
@@ -2133,13 +2513,7 @@ batch_get_deployment_instances(Client, Input)
 -spec batch_get_deployment_instances(map(), batch_get_deployment_instances_input(), proplists:proplist()) ->
     {ok, batch_get_deployment_instances_output(), tuple()} |
     {error, any()} |
-    {error, batch_limit_exceeded_exception(), tuple()} |
-    {error, deployment_does_not_exist_exception(), tuple()} |
-    {error, deployment_id_required_exception(), tuple()} |
-    {error, instance_id_required_exception(), tuple()} |
-    {error, invalid_compute_platform_exception(), tuple()} |
-    {error, invalid_deployment_id_exception(), tuple()} |
-    {error, invalid_instance_name_exception(), tuple()}.
+    {error, batch_get_deployment_instances_errors(), tuple()}.
 batch_get_deployment_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetDeploymentInstances">>, Input, Options).
@@ -2169,15 +2543,7 @@ batch_get_deployment_instances(Client, Input, Options)
 -spec batch_get_deployment_targets(map(), batch_get_deployment_targets_input()) ->
     {ok, batch_get_deployment_targets_output(), tuple()} |
     {error, any()} |
-    {error, deployment_does_not_exist_exception(), tuple()} |
-    {error, deployment_id_required_exception(), tuple()} |
-    {error, deployment_not_started_exception(), tuple()} |
-    {error, deployment_target_does_not_exist_exception(), tuple()} |
-    {error, deployment_target_id_required_exception(), tuple()} |
-    {error, deployment_target_list_size_exceeded_exception(), tuple()} |
-    {error, instance_does_not_exist_exception(), tuple()} |
-    {error, invalid_deployment_id_exception(), tuple()} |
-    {error, invalid_deployment_target_id_exception(), tuple()}.
+    {error, batch_get_deployment_targets_errors(), tuple()}.
 batch_get_deployment_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_deployment_targets(Client, Input, []).
@@ -2185,15 +2551,7 @@ batch_get_deployment_targets(Client, Input)
 -spec batch_get_deployment_targets(map(), batch_get_deployment_targets_input(), proplists:proplist()) ->
     {ok, batch_get_deployment_targets_output(), tuple()} |
     {error, any()} |
-    {error, deployment_does_not_exist_exception(), tuple()} |
-    {error, deployment_id_required_exception(), tuple()} |
-    {error, deployment_not_started_exception(), tuple()} |
-    {error, deployment_target_does_not_exist_exception(), tuple()} |
-    {error, deployment_target_id_required_exception(), tuple()} |
-    {error, deployment_target_list_size_exceeded_exception(), tuple()} |
-    {error, instance_does_not_exist_exception(), tuple()} |
-    {error, invalid_deployment_id_exception(), tuple()} |
-    {error, invalid_deployment_target_id_exception(), tuple()}.
+    {error, batch_get_deployment_targets_errors(), tuple()}.
 batch_get_deployment_targets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetDeploymentTargets">>, Input, Options).
@@ -2205,9 +2563,7 @@ batch_get_deployment_targets(Client, Input, Options)
 -spec batch_get_deployments(map(), batch_get_deployments_input()) ->
     {ok, batch_get_deployments_output(), tuple()} |
     {error, any()} |
-    {error, batch_limit_exceeded_exception(), tuple()} |
-    {error, deployment_id_required_exception(), tuple()} |
-    {error, invalid_deployment_id_exception(), tuple()}.
+    {error, batch_get_deployments_errors(), tuple()}.
 batch_get_deployments(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_deployments(Client, Input, []).
@@ -2215,9 +2571,7 @@ batch_get_deployments(Client, Input)
 -spec batch_get_deployments(map(), batch_get_deployments_input(), proplists:proplist()) ->
     {ok, batch_get_deployments_output(), tuple()} |
     {error, any()} |
-    {error, batch_limit_exceeded_exception(), tuple()} |
-    {error, deployment_id_required_exception(), tuple()} |
-    {error, invalid_deployment_id_exception(), tuple()}.
+    {error, batch_get_deployments_errors(), tuple()}.
 batch_get_deployments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetDeployments">>, Input, Options).
@@ -2229,9 +2583,7 @@ batch_get_deployments(Client, Input, Options)
 -spec batch_get_on_premises_instances(map(), batch_get_on_premises_instances_input()) ->
     {ok, batch_get_on_premises_instances_output(), tuple()} |
     {error, any()} |
-    {error, batch_limit_exceeded_exception(), tuple()} |
-    {error, instance_name_required_exception(), tuple()} |
-    {error, invalid_instance_name_exception(), tuple()}.
+    {error, batch_get_on_premises_instances_errors(), tuple()}.
 batch_get_on_premises_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_on_premises_instances(Client, Input, []).
@@ -2239,9 +2591,7 @@ batch_get_on_premises_instances(Client, Input)
 -spec batch_get_on_premises_instances(map(), batch_get_on_premises_instances_input(), proplists:proplist()) ->
     {ok, batch_get_on_premises_instances_output(), tuple()} |
     {error, any()} |
-    {error, batch_limit_exceeded_exception(), tuple()} |
-    {error, instance_name_required_exception(), tuple()} |
-    {error, invalid_instance_name_exception(), tuple()}.
+    {error, batch_get_on_premises_instances_errors(), tuple()}.
 batch_get_on_premises_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetOnPremisesInstances">>, Input, Options).
@@ -2259,14 +2609,7 @@ batch_get_on_premises_instances(Client, Input, Options)
 -spec continue_deployment(map(), continue_deployment_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, deployment_already_completed_exception(), tuple()} |
-    {error, deployment_does_not_exist_exception(), tuple()} |
-    {error, deployment_id_required_exception(), tuple()} |
-    {error, deployment_is_not_in_ready_state_exception(), tuple()} |
-    {error, invalid_deployment_id_exception(), tuple()} |
-    {error, invalid_deployment_status_exception(), tuple()} |
-    {error, invalid_deployment_wait_type_exception(), tuple()} |
-    {error, unsupported_action_for_deployment_type_exception(), tuple()}.
+    {error, continue_deployment_errors(), tuple()}.
 continue_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     continue_deployment(Client, Input, []).
@@ -2274,14 +2617,7 @@ continue_deployment(Client, Input)
 -spec continue_deployment(map(), continue_deployment_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, deployment_already_completed_exception(), tuple()} |
-    {error, deployment_does_not_exist_exception(), tuple()} |
-    {error, deployment_id_required_exception(), tuple()} |
-    {error, deployment_is_not_in_ready_state_exception(), tuple()} |
-    {error, invalid_deployment_id_exception(), tuple()} |
-    {error, invalid_deployment_status_exception(), tuple()} |
-    {error, invalid_deployment_wait_type_exception(), tuple()} |
-    {error, unsupported_action_for_deployment_type_exception(), tuple()}.
+    {error, continue_deployment_errors(), tuple()}.
 continue_deployment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ContinueDeployment">>, Input, Options).
@@ -2290,12 +2626,7 @@ continue_deployment(Client, Input, Options)
 -spec create_application(map(), create_application_input()) ->
     {ok, create_application_output(), tuple()} |
     {error, any()} |
-    {error, application_already_exists_exception(), tuple()} |
-    {error, application_limit_exceeded_exception(), tuple()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()} |
-    {error, invalid_compute_platform_exception(), tuple()} |
-    {error, invalid_tags_to_add_exception(), tuple()}.
+    {error, create_application_errors(), tuple()}.
 create_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_application(Client, Input, []).
@@ -2303,12 +2634,7 @@ create_application(Client, Input)
 -spec create_application(map(), create_application_input(), proplists:proplist()) ->
     {ok, create_application_output(), tuple()} |
     {error, any()} |
-    {error, application_already_exists_exception(), tuple()} |
-    {error, application_limit_exceeded_exception(), tuple()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()} |
-    {error, invalid_compute_platform_exception(), tuple()} |
-    {error, invalid_tags_to_add_exception(), tuple()}.
+    {error, create_application_errors(), tuple()}.
 create_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateApplication">>, Input, Options).
@@ -2318,32 +2644,7 @@ create_application(Client, Input, Options)
 -spec create_deployment(map(), create_deployment_input()) ->
     {ok, create_deployment_output(), tuple()} |
     {error, any()} |
-    {error, alarms_limit_exceeded_exception(), tuple()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, deployment_config_does_not_exist_exception(), tuple()} |
-    {error, deployment_group_does_not_exist_exception(), tuple()} |
-    {error, deployment_group_name_required_exception(), tuple()} |
-    {error, deployment_limit_exceeded_exception(), tuple()} |
-    {error, description_too_long_exception(), tuple()} |
-    {error, invalid_alarm_config_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()} |
-    {error, invalid_auto_rollback_config_exception(), tuple()} |
-    {error, invalid_auto_scaling_group_exception(), tuple()} |
-    {error, invalid_deployment_config_name_exception(), tuple()} |
-    {error, invalid_deployment_group_name_exception(), tuple()} |
-    {error, invalid_file_exists_behavior_exception(), tuple()} |
-    {error, invalid_git_hub_account_token_exception(), tuple()} |
-    {error, invalid_ignore_application_stop_failures_value_exception(), tuple()} |
-    {error, invalid_load_balancer_info_exception(), tuple()} |
-    {error, invalid_revision_exception(), tuple()} |
-    {error, invalid_role_exception(), tuple()} |
-    {error, invalid_target_instances_exception(), tuple()} |
-    {error, invalid_traffic_routing_configuration_exception(), tuple()} |
-    {error, invalid_update_outdated_instances_only_value_exception(), tuple()} |
-    {error, revision_does_not_exist_exception(), tuple()} |
-    {error, revision_required_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_deployment_errors(), tuple()}.
 create_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_deployment(Client, Input, []).
@@ -2351,32 +2652,7 @@ create_deployment(Client, Input)
 -spec create_deployment(map(), create_deployment_input(), proplists:proplist()) ->
     {ok, create_deployment_output(), tuple()} |
     {error, any()} |
-    {error, alarms_limit_exceeded_exception(), tuple()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, deployment_config_does_not_exist_exception(), tuple()} |
-    {error, deployment_group_does_not_exist_exception(), tuple()} |
-    {error, deployment_group_name_required_exception(), tuple()} |
-    {error, deployment_limit_exceeded_exception(), tuple()} |
-    {error, description_too_long_exception(), tuple()} |
-    {error, invalid_alarm_config_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()} |
-    {error, invalid_auto_rollback_config_exception(), tuple()} |
-    {error, invalid_auto_scaling_group_exception(), tuple()} |
-    {error, invalid_deployment_config_name_exception(), tuple()} |
-    {error, invalid_deployment_group_name_exception(), tuple()} |
-    {error, invalid_file_exists_behavior_exception(), tuple()} |
-    {error, invalid_git_hub_account_token_exception(), tuple()} |
-    {error, invalid_ignore_application_stop_failures_value_exception(), tuple()} |
-    {error, invalid_load_balancer_info_exception(), tuple()} |
-    {error, invalid_revision_exception(), tuple()} |
-    {error, invalid_role_exception(), tuple()} |
-    {error, invalid_target_instances_exception(), tuple()} |
-    {error, invalid_traffic_routing_configuration_exception(), tuple()} |
-    {error, invalid_update_outdated_instances_only_value_exception(), tuple()} |
-    {error, revision_does_not_exist_exception(), tuple()} |
-    {error, revision_required_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_deployment_errors(), tuple()}.
 create_deployment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDeployment">>, Input, Options).
@@ -2385,14 +2661,7 @@ create_deployment(Client, Input, Options)
 -spec create_deployment_config(map(), create_deployment_config_input()) ->
     {ok, create_deployment_config_output(), tuple()} |
     {error, any()} |
-    {error, deployment_config_already_exists_exception(), tuple()} |
-    {error, deployment_config_limit_exceeded_exception(), tuple()} |
-    {error, deployment_config_name_required_exception(), tuple()} |
-    {error, invalid_compute_platform_exception(), tuple()} |
-    {error, invalid_deployment_config_name_exception(), tuple()} |
-    {error, invalid_minimum_healthy_host_value_exception(), tuple()} |
-    {error, invalid_traffic_routing_configuration_exception(), tuple()} |
-    {error, invalid_zonal_deployment_configuration_exception(), tuple()}.
+    {error, create_deployment_config_errors(), tuple()}.
 create_deployment_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_deployment_config(Client, Input, []).
@@ -2400,14 +2669,7 @@ create_deployment_config(Client, Input)
 -spec create_deployment_config(map(), create_deployment_config_input(), proplists:proplist()) ->
     {ok, create_deployment_config_output(), tuple()} |
     {error, any()} |
-    {error, deployment_config_already_exists_exception(), tuple()} |
-    {error, deployment_config_limit_exceeded_exception(), tuple()} |
-    {error, deployment_config_name_required_exception(), tuple()} |
-    {error, invalid_compute_platform_exception(), tuple()} |
-    {error, invalid_deployment_config_name_exception(), tuple()} |
-    {error, invalid_minimum_healthy_host_value_exception(), tuple()} |
-    {error, invalid_traffic_routing_configuration_exception(), tuple()} |
-    {error, invalid_zonal_deployment_configuration_exception(), tuple()}.
+    {error, create_deployment_config_errors(), tuple()}.
 create_deployment_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDeploymentConfig">>, Input, Options).
@@ -2417,39 +2679,7 @@ create_deployment_config(Client, Input, Options)
 -spec create_deployment_group(map(), create_deployment_group_input()) ->
     {ok, create_deployment_group_output(), tuple()} |
     {error, any()} |
-    {error, alarms_limit_exceeded_exception(), tuple()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, deployment_config_does_not_exist_exception(), tuple()} |
-    {error, deployment_group_already_exists_exception(), tuple()} |
-    {error, deployment_group_limit_exceeded_exception(), tuple()} |
-    {error, deployment_group_name_required_exception(), tuple()} |
-    {error, e_c_s_service_mapping_limit_exceeded_exception(), tuple()} |
-    {error, invalid_alarm_config_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()} |
-    {error, invalid_auto_rollback_config_exception(), tuple()} |
-    {error, invalid_auto_scaling_group_exception(), tuple()} |
-    {error, invalid_blue_green_deployment_configuration_exception(), tuple()} |
-    {error, invalid_deployment_config_name_exception(), tuple()} |
-    {error, invalid_deployment_group_name_exception(), tuple()} |
-    {error, invalid_deployment_style_exception(), tuple()} |
-    {error, invalid_ec2_tag_combination_exception(), tuple()} |
-    {error, invalid_ec2_tag_exception(), tuple()} |
-    {error, invalid_e_c_s_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_load_balancer_info_exception(), tuple()} |
-    {error, invalid_on_premises_tag_combination_exception(), tuple()} |
-    {error, invalid_role_exception(), tuple()} |
-    {error, invalid_tag_exception(), tuple()} |
-    {error, invalid_tags_to_add_exception(), tuple()} |
-    {error, invalid_target_group_pair_exception(), tuple()} |
-    {error, invalid_traffic_routing_configuration_exception(), tuple()} |
-    {error, invalid_trigger_config_exception(), tuple()} |
-    {error, lifecycle_hook_limit_exceeded_exception(), tuple()} |
-    {error, role_required_exception(), tuple()} |
-    {error, tag_set_list_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, trigger_targets_limit_exceeded_exception(), tuple()}.
+    {error, create_deployment_group_errors(), tuple()}.
 create_deployment_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_deployment_group(Client, Input, []).
@@ -2457,39 +2687,7 @@ create_deployment_group(Client, Input)
 -spec create_deployment_group(map(), create_deployment_group_input(), proplists:proplist()) ->
     {ok, create_deployment_group_output(), tuple()} |
     {error, any()} |
-    {error, alarms_limit_exceeded_exception(), tuple()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, deployment_config_does_not_exist_exception(), tuple()} |
-    {error, deployment_group_already_exists_exception(), tuple()} |
-    {error, deployment_group_limit_exceeded_exception(), tuple()} |
-    {error, deployment_group_name_required_exception(), tuple()} |
-    {error, e_c_s_service_mapping_limit_exceeded_exception(), tuple()} |
-    {error, invalid_alarm_config_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()} |
-    {error, invalid_auto_rollback_config_exception(), tuple()} |
-    {error, invalid_auto_scaling_group_exception(), tuple()} |
-    {error, invalid_blue_green_deployment_configuration_exception(), tuple()} |
-    {error, invalid_deployment_config_name_exception(), tuple()} |
-    {error, invalid_deployment_group_name_exception(), tuple()} |
-    {error, invalid_deployment_style_exception(), tuple()} |
-    {error, invalid_ec2_tag_combination_exception(), tuple()} |
-    {error, invalid_ec2_tag_exception(), tuple()} |
-    {error, invalid_e_c_s_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_load_balancer_info_exception(), tuple()} |
-    {error, invalid_on_premises_tag_combination_exception(), tuple()} |
-    {error, invalid_role_exception(), tuple()} |
-    {error, invalid_tag_exception(), tuple()} |
-    {error, invalid_tags_to_add_exception(), tuple()} |
-    {error, invalid_target_group_pair_exception(), tuple()} |
-    {error, invalid_traffic_routing_configuration_exception(), tuple()} |
-    {error, invalid_trigger_config_exception(), tuple()} |
-    {error, lifecycle_hook_limit_exceeded_exception(), tuple()} |
-    {error, role_required_exception(), tuple()} |
-    {error, tag_set_list_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, trigger_targets_limit_exceeded_exception(), tuple()}.
+    {error, create_deployment_group_errors(), tuple()}.
 create_deployment_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDeploymentGroup">>, Input, Options).
@@ -2498,9 +2696,7 @@ create_deployment_group(Client, Input, Options)
 -spec delete_application(map(), delete_application_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()} |
-    {error, invalid_role_exception(), tuple()}.
+    {error, delete_application_errors(), tuple()}.
 delete_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application(Client, Input, []).
@@ -2508,9 +2704,7 @@ delete_application(Client, Input)
 -spec delete_application(map(), delete_application_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()} |
-    {error, invalid_role_exception(), tuple()}.
+    {error, delete_application_errors(), tuple()}.
 delete_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApplication">>, Input, Options).
@@ -2523,10 +2717,7 @@ delete_application(Client, Input, Options)
 -spec delete_deployment_config(map(), delete_deployment_config_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, deployment_config_in_use_exception(), tuple()} |
-    {error, deployment_config_name_required_exception(), tuple()} |
-    {error, invalid_deployment_config_name_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()}.
+    {error, delete_deployment_config_errors(), tuple()}.
 delete_deployment_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_deployment_config(Client, Input, []).
@@ -2534,10 +2725,7 @@ delete_deployment_config(Client, Input)
 -spec delete_deployment_config(map(), delete_deployment_config_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, deployment_config_in_use_exception(), tuple()} |
-    {error, deployment_config_name_required_exception(), tuple()} |
-    {error, invalid_deployment_config_name_exception(), tuple()} |
-    {error, invalid_operation_exception(), tuple()}.
+    {error, delete_deployment_config_errors(), tuple()}.
 delete_deployment_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDeploymentConfig">>, Input, Options).
@@ -2546,11 +2734,7 @@ delete_deployment_config(Client, Input, Options)
 -spec delete_deployment_group(map(), delete_deployment_group_input()) ->
     {ok, delete_deployment_group_output(), tuple()} |
     {error, any()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, deployment_group_name_required_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()} |
-    {error, invalid_deployment_group_name_exception(), tuple()} |
-    {error, invalid_role_exception(), tuple()}.
+    {error, delete_deployment_group_errors(), tuple()}.
 delete_deployment_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_deployment_group(Client, Input, []).
@@ -2558,11 +2742,7 @@ delete_deployment_group(Client, Input)
 -spec delete_deployment_group(map(), delete_deployment_group_input(), proplists:proplist()) ->
     {ok, delete_deployment_group_output(), tuple()} |
     {error, any()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, deployment_group_name_required_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()} |
-    {error, invalid_deployment_group_name_exception(), tuple()} |
-    {error, invalid_role_exception(), tuple()}.
+    {error, delete_deployment_group_errors(), tuple()}.
 delete_deployment_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDeploymentGroup">>, Input, Options).
@@ -2571,11 +2751,7 @@ delete_deployment_group(Client, Input, Options)
 -spec delete_git_hub_account_token(map(), delete_git_hub_account_token_input()) ->
     {ok, delete_git_hub_account_token_output(), tuple()} |
     {error, any()} |
-    {error, git_hub_account_token_does_not_exist_exception(), tuple()} |
-    {error, git_hub_account_token_name_required_exception(), tuple()} |
-    {error, invalid_git_hub_account_token_name_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_validation_exception(), tuple()}.
+    {error, delete_git_hub_account_token_errors(), tuple()}.
 delete_git_hub_account_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_git_hub_account_token(Client, Input, []).
@@ -2583,11 +2759,7 @@ delete_git_hub_account_token(Client, Input)
 -spec delete_git_hub_account_token(map(), delete_git_hub_account_token_input(), proplists:proplist()) ->
     {ok, delete_git_hub_account_token_output(), tuple()} |
     {error, any()} |
-    {error, git_hub_account_token_does_not_exist_exception(), tuple()} |
-    {error, git_hub_account_token_name_required_exception(), tuple()} |
-    {error, invalid_git_hub_account_token_name_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_validation_exception(), tuple()}.
+    {error, delete_git_hub_account_token_errors(), tuple()}.
 delete_git_hub_account_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGitHubAccountToken">>, Input, Options).
@@ -2621,8 +2793,7 @@ delete_resources_by_external_id(Client, Input, Options)
 -spec deregister_on_premises_instance(map(), deregister_on_premises_instance_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, instance_name_required_exception(), tuple()} |
-    {error, invalid_instance_name_exception(), tuple()}.
+    {error, deregister_on_premises_instance_errors(), tuple()}.
 deregister_on_premises_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_on_premises_instance(Client, Input, []).
@@ -2630,8 +2801,7 @@ deregister_on_premises_instance(Client, Input)
 -spec deregister_on_premises_instance(map(), deregister_on_premises_instance_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, instance_name_required_exception(), tuple()} |
-    {error, invalid_instance_name_exception(), tuple()}.
+    {error, deregister_on_premises_instance_errors(), tuple()}.
 deregister_on_premises_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterOnPremisesInstance">>, Input, Options).
@@ -2640,9 +2810,7 @@ deregister_on_premises_instance(Client, Input, Options)
 -spec get_application(map(), get_application_input()) ->
     {ok, get_application_output(), tuple()} |
     {error, any()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()}.
+    {error, get_application_errors(), tuple()}.
 get_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_application(Client, Input, []).
@@ -2650,9 +2818,7 @@ get_application(Client, Input)
 -spec get_application(map(), get_application_input(), proplists:proplist()) ->
     {ok, get_application_output(), tuple()} |
     {error, any()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()}.
+    {error, get_application_errors(), tuple()}.
 get_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetApplication">>, Input, Options).
@@ -2661,12 +2827,7 @@ get_application(Client, Input, Options)
 -spec get_application_revision(map(), get_application_revision_input()) ->
     {ok, get_application_revision_output(), tuple()} |
     {error, any()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()} |
-    {error, invalid_revision_exception(), tuple()} |
-    {error, revision_does_not_exist_exception(), tuple()} |
-    {error, revision_required_exception(), tuple()}.
+    {error, get_application_revision_errors(), tuple()}.
 get_application_revision(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_application_revision(Client, Input, []).
@@ -2674,12 +2835,7 @@ get_application_revision(Client, Input)
 -spec get_application_revision(map(), get_application_revision_input(), proplists:proplist()) ->
     {ok, get_application_revision_output(), tuple()} |
     {error, any()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()} |
-    {error, invalid_revision_exception(), tuple()} |
-    {error, revision_does_not_exist_exception(), tuple()} |
-    {error, revision_required_exception(), tuple()}.
+    {error, get_application_revision_errors(), tuple()}.
 get_application_revision(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetApplicationRevision">>, Input, Options).
@@ -2693,9 +2849,7 @@ get_application_revision(Client, Input, Options)
 -spec get_deployment(map(), get_deployment_input()) ->
     {ok, get_deployment_output(), tuple()} |
     {error, any()} |
-    {error, deployment_does_not_exist_exception(), tuple()} |
-    {error, deployment_id_required_exception(), tuple()} |
-    {error, invalid_deployment_id_exception(), tuple()}.
+    {error, get_deployment_errors(), tuple()}.
 get_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_deployment(Client, Input, []).
@@ -2703,9 +2857,7 @@ get_deployment(Client, Input)
 -spec get_deployment(map(), get_deployment_input(), proplists:proplist()) ->
     {ok, get_deployment_output(), tuple()} |
     {error, any()} |
-    {error, deployment_does_not_exist_exception(), tuple()} |
-    {error, deployment_id_required_exception(), tuple()} |
-    {error, invalid_deployment_id_exception(), tuple()}.
+    {error, get_deployment_errors(), tuple()}.
 get_deployment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDeployment">>, Input, Options).
@@ -2714,10 +2866,7 @@ get_deployment(Client, Input, Options)
 -spec get_deployment_config(map(), get_deployment_config_input()) ->
     {ok, get_deployment_config_output(), tuple()} |
     {error, any()} |
-    {error, deployment_config_does_not_exist_exception(), tuple()} |
-    {error, deployment_config_name_required_exception(), tuple()} |
-    {error, invalid_compute_platform_exception(), tuple()} |
-    {error, invalid_deployment_config_name_exception(), tuple()}.
+    {error, get_deployment_config_errors(), tuple()}.
 get_deployment_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_deployment_config(Client, Input, []).
@@ -2725,10 +2874,7 @@ get_deployment_config(Client, Input)
 -spec get_deployment_config(map(), get_deployment_config_input(), proplists:proplist()) ->
     {ok, get_deployment_config_output(), tuple()} |
     {error, any()} |
-    {error, deployment_config_does_not_exist_exception(), tuple()} |
-    {error, deployment_config_name_required_exception(), tuple()} |
-    {error, invalid_compute_platform_exception(), tuple()} |
-    {error, invalid_deployment_config_name_exception(), tuple()}.
+    {error, get_deployment_config_errors(), tuple()}.
 get_deployment_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDeploymentConfig">>, Input, Options).
@@ -2737,13 +2883,7 @@ get_deployment_config(Client, Input, Options)
 -spec get_deployment_group(map(), get_deployment_group_input()) ->
     {ok, get_deployment_group_output(), tuple()} |
     {error, any()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, deployment_config_does_not_exist_exception(), tuple()} |
-    {error, deployment_group_does_not_exist_exception(), tuple()} |
-    {error, deployment_group_name_required_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()} |
-    {error, invalid_deployment_group_name_exception(), tuple()}.
+    {error, get_deployment_group_errors(), tuple()}.
 get_deployment_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_deployment_group(Client, Input, []).
@@ -2751,13 +2891,7 @@ get_deployment_group(Client, Input)
 -spec get_deployment_group(map(), get_deployment_group_input(), proplists:proplist()) ->
     {ok, get_deployment_group_output(), tuple()} |
     {error, any()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, deployment_config_does_not_exist_exception(), tuple()} |
-    {error, deployment_group_does_not_exist_exception(), tuple()} |
-    {error, deployment_group_name_required_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()} |
-    {error, invalid_deployment_group_name_exception(), tuple()}.
+    {error, get_deployment_group_errors(), tuple()}.
 get_deployment_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDeploymentGroup">>, Input, Options).
@@ -2766,13 +2900,7 @@ get_deployment_group(Client, Input, Options)
 -spec get_deployment_instance(map(), get_deployment_instance_input()) ->
     {ok, get_deployment_instance_output(), tuple()} |
     {error, any()} |
-    {error, deployment_does_not_exist_exception(), tuple()} |
-    {error, deployment_id_required_exception(), tuple()} |
-    {error, instance_does_not_exist_exception(), tuple()} |
-    {error, instance_id_required_exception(), tuple()} |
-    {error, invalid_compute_platform_exception(), tuple()} |
-    {error, invalid_deployment_id_exception(), tuple()} |
-    {error, invalid_instance_name_exception(), tuple()}.
+    {error, get_deployment_instance_errors(), tuple()}.
 get_deployment_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_deployment_instance(Client, Input, []).
@@ -2780,13 +2908,7 @@ get_deployment_instance(Client, Input)
 -spec get_deployment_instance(map(), get_deployment_instance_input(), proplists:proplist()) ->
     {ok, get_deployment_instance_output(), tuple()} |
     {error, any()} |
-    {error, deployment_does_not_exist_exception(), tuple()} |
-    {error, deployment_id_required_exception(), tuple()} |
-    {error, instance_does_not_exist_exception(), tuple()} |
-    {error, instance_id_required_exception(), tuple()} |
-    {error, invalid_compute_platform_exception(), tuple()} |
-    {error, invalid_deployment_id_exception(), tuple()} |
-    {error, invalid_instance_name_exception(), tuple()}.
+    {error, get_deployment_instance_errors(), tuple()}.
 get_deployment_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDeploymentInstance">>, Input, Options).
@@ -2795,14 +2917,7 @@ get_deployment_instance(Client, Input, Options)
 -spec get_deployment_target(map(), get_deployment_target_input()) ->
     {ok, get_deployment_target_output(), tuple()} |
     {error, any()} |
-    {error, deployment_does_not_exist_exception(), tuple()} |
-    {error, deployment_id_required_exception(), tuple()} |
-    {error, deployment_not_started_exception(), tuple()} |
-    {error, deployment_target_does_not_exist_exception(), tuple()} |
-    {error, deployment_target_id_required_exception(), tuple()} |
-    {error, invalid_deployment_id_exception(), tuple()} |
-    {error, invalid_deployment_target_id_exception(), tuple()} |
-    {error, invalid_instance_name_exception(), tuple()}.
+    {error, get_deployment_target_errors(), tuple()}.
 get_deployment_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_deployment_target(Client, Input, []).
@@ -2810,14 +2925,7 @@ get_deployment_target(Client, Input)
 -spec get_deployment_target(map(), get_deployment_target_input(), proplists:proplist()) ->
     {ok, get_deployment_target_output(), tuple()} |
     {error, any()} |
-    {error, deployment_does_not_exist_exception(), tuple()} |
-    {error, deployment_id_required_exception(), tuple()} |
-    {error, deployment_not_started_exception(), tuple()} |
-    {error, deployment_target_does_not_exist_exception(), tuple()} |
-    {error, deployment_target_id_required_exception(), tuple()} |
-    {error, invalid_deployment_id_exception(), tuple()} |
-    {error, invalid_deployment_target_id_exception(), tuple()} |
-    {error, invalid_instance_name_exception(), tuple()}.
+    {error, get_deployment_target_errors(), tuple()}.
 get_deployment_target(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDeploymentTarget">>, Input, Options).
@@ -2826,9 +2934,7 @@ get_deployment_target(Client, Input, Options)
 -spec get_on_premises_instance(map(), get_on_premises_instance_input()) ->
     {ok, get_on_premises_instance_output(), tuple()} |
     {error, any()} |
-    {error, instance_name_required_exception(), tuple()} |
-    {error, instance_not_registered_exception(), tuple()} |
-    {error, invalid_instance_name_exception(), tuple()}.
+    {error, get_on_premises_instance_errors(), tuple()}.
 get_on_premises_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_on_premises_instance(Client, Input, []).
@@ -2836,9 +2942,7 @@ get_on_premises_instance(Client, Input)
 -spec get_on_premises_instance(map(), get_on_premises_instance_input(), proplists:proplist()) ->
     {ok, get_on_premises_instance_output(), tuple()} |
     {error, any()} |
-    {error, instance_name_required_exception(), tuple()} |
-    {error, instance_not_registered_exception(), tuple()} |
-    {error, invalid_instance_name_exception(), tuple()}.
+    {error, get_on_premises_instance_errors(), tuple()}.
 get_on_premises_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOnPremisesInstance">>, Input, Options).
@@ -2847,16 +2951,7 @@ get_on_premises_instance(Client, Input, Options)
 -spec list_application_revisions(map(), list_application_revisions_input()) ->
     {ok, list_application_revisions_output(), tuple()} |
     {error, any()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, bucket_name_filter_required_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()} |
-    {error, invalid_bucket_name_filter_exception(), tuple()} |
-    {error, invalid_deployed_state_filter_exception(), tuple()} |
-    {error, invalid_key_prefix_filter_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_sort_by_exception(), tuple()} |
-    {error, invalid_sort_order_exception(), tuple()}.
+    {error, list_application_revisions_errors(), tuple()}.
 list_application_revisions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_application_revisions(Client, Input, []).
@@ -2864,16 +2959,7 @@ list_application_revisions(Client, Input)
 -spec list_application_revisions(map(), list_application_revisions_input(), proplists:proplist()) ->
     {ok, list_application_revisions_output(), tuple()} |
     {error, any()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, bucket_name_filter_required_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()} |
-    {error, invalid_bucket_name_filter_exception(), tuple()} |
-    {error, invalid_deployed_state_filter_exception(), tuple()} |
-    {error, invalid_key_prefix_filter_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_sort_by_exception(), tuple()} |
-    {error, invalid_sort_order_exception(), tuple()}.
+    {error, list_application_revisions_errors(), tuple()}.
 list_application_revisions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApplicationRevisions">>, Input, Options).
@@ -2883,7 +2969,7 @@ list_application_revisions(Client, Input, Options)
 -spec list_applications(map(), list_applications_input()) ->
     {ok, list_applications_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_applications(Client, Input, []).
@@ -2891,7 +2977,7 @@ list_applications(Client, Input)
 -spec list_applications(map(), list_applications_input(), proplists:proplist()) ->
     {ok, list_applications_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApplications">>, Input, Options).
@@ -2901,7 +2987,7 @@ list_applications(Client, Input, Options)
 -spec list_deployment_configs(map(), list_deployment_configs_input()) ->
     {ok, list_deployment_configs_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_deployment_configs_errors(), tuple()}.
 list_deployment_configs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_deployment_configs(Client, Input, []).
@@ -2909,7 +2995,7 @@ list_deployment_configs(Client, Input)
 -spec list_deployment_configs(map(), list_deployment_configs_input(), proplists:proplist()) ->
     {ok, list_deployment_configs_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_deployment_configs_errors(), tuple()}.
 list_deployment_configs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDeploymentConfigs">>, Input, Options).
@@ -2920,10 +3006,7 @@ list_deployment_configs(Client, Input, Options)
 -spec list_deployment_groups(map(), list_deployment_groups_input()) ->
     {ok, list_deployment_groups_output(), tuple()} |
     {error, any()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_deployment_groups_errors(), tuple()}.
 list_deployment_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_deployment_groups(Client, Input, []).
@@ -2931,10 +3014,7 @@ list_deployment_groups(Client, Input)
 -spec list_deployment_groups(map(), list_deployment_groups_input(), proplists:proplist()) ->
     {ok, list_deployment_groups_output(), tuple()} |
     {error, any()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_deployment_groups_errors(), tuple()}.
 list_deployment_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDeploymentGroups">>, Input, Options).
@@ -2953,16 +3033,7 @@ list_deployment_groups(Client, Input, Options)
 -spec list_deployment_instances(map(), list_deployment_instances_input()) ->
     {ok, list_deployment_instances_output(), tuple()} |
     {error, any()} |
-    {error, deployment_does_not_exist_exception(), tuple()} |
-    {error, deployment_id_required_exception(), tuple()} |
-    {error, deployment_not_started_exception(), tuple()} |
-    {error, invalid_compute_platform_exception(), tuple()} |
-    {error, invalid_deployment_id_exception(), tuple()} |
-    {error, invalid_deployment_instance_type_exception(), tuple()} |
-    {error, invalid_instance_status_exception(), tuple()} |
-    {error, invalid_instance_type_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_target_filter_name_exception(), tuple()}.
+    {error, list_deployment_instances_errors(), tuple()}.
 list_deployment_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_deployment_instances(Client, Input, []).
@@ -2970,16 +3041,7 @@ list_deployment_instances(Client, Input)
 -spec list_deployment_instances(map(), list_deployment_instances_input(), proplists:proplist()) ->
     {ok, list_deployment_instances_output(), tuple()} |
     {error, any()} |
-    {error, deployment_does_not_exist_exception(), tuple()} |
-    {error, deployment_id_required_exception(), tuple()} |
-    {error, deployment_not_started_exception(), tuple()} |
-    {error, invalid_compute_platform_exception(), tuple()} |
-    {error, invalid_deployment_id_exception(), tuple()} |
-    {error, invalid_deployment_instance_type_exception(), tuple()} |
-    {error, invalid_instance_status_exception(), tuple()} |
-    {error, invalid_instance_type_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_target_filter_name_exception(), tuple()}.
+    {error, list_deployment_instances_errors(), tuple()}.
 list_deployment_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDeploymentInstances">>, Input, Options).
@@ -2988,15 +3050,7 @@ list_deployment_instances(Client, Input, Options)
 -spec list_deployment_targets(map(), list_deployment_targets_input()) ->
     {ok, list_deployment_targets_output(), tuple()} |
     {error, any()} |
-    {error, deployment_does_not_exist_exception(), tuple()} |
-    {error, deployment_id_required_exception(), tuple()} |
-    {error, deployment_not_started_exception(), tuple()} |
-    {error, invalid_deployment_id_exception(), tuple()} |
-    {error, invalid_deployment_instance_type_exception(), tuple()} |
-    {error, invalid_instance_status_exception(), tuple()} |
-    {error, invalid_instance_type_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_target_filter_name_exception(), tuple()}.
+    {error, list_deployment_targets_errors(), tuple()}.
 list_deployment_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_deployment_targets(Client, Input, []).
@@ -3004,15 +3058,7 @@ list_deployment_targets(Client, Input)
 -spec list_deployment_targets(map(), list_deployment_targets_input(), proplists:proplist()) ->
     {ok, list_deployment_targets_output(), tuple()} |
     {error, any()} |
-    {error, deployment_does_not_exist_exception(), tuple()} |
-    {error, deployment_id_required_exception(), tuple()} |
-    {error, deployment_not_started_exception(), tuple()} |
-    {error, invalid_deployment_id_exception(), tuple()} |
-    {error, invalid_deployment_instance_type_exception(), tuple()} |
-    {error, invalid_instance_status_exception(), tuple()} |
-    {error, invalid_instance_type_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_target_filter_name_exception(), tuple()}.
+    {error, list_deployment_targets_errors(), tuple()}.
 list_deployment_targets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDeploymentTargets">>, Input, Options).
@@ -3023,17 +3069,7 @@ list_deployment_targets(Client, Input, Options)
 -spec list_deployments(map(), list_deployments_input()) ->
     {ok, list_deployments_output(), tuple()} |
     {error, any()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, deployment_group_does_not_exist_exception(), tuple()} |
-    {error, deployment_group_name_required_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()} |
-    {error, invalid_deployment_group_name_exception(), tuple()} |
-    {error, invalid_deployment_status_exception(), tuple()} |
-    {error, invalid_external_id_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_time_range_exception(), tuple()}.
+    {error, list_deployments_errors(), tuple()}.
 list_deployments(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_deployments(Client, Input, []).
@@ -3041,17 +3077,7 @@ list_deployments(Client, Input)
 -spec list_deployments(map(), list_deployments_input(), proplists:proplist()) ->
     {ok, list_deployments_output(), tuple()} |
     {error, any()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, deployment_group_does_not_exist_exception(), tuple()} |
-    {error, deployment_group_name_required_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()} |
-    {error, invalid_deployment_group_name_exception(), tuple()} |
-    {error, invalid_deployment_status_exception(), tuple()} |
-    {error, invalid_external_id_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_time_range_exception(), tuple()}.
+    {error, list_deployments_errors(), tuple()}.
 list_deployments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDeployments">>, Input, Options).
@@ -3060,9 +3086,7 @@ list_deployments(Client, Input, Options)
 -spec list_git_hub_account_token_names(map(), list_git_hub_account_token_names_input()) ->
     {ok, list_git_hub_account_token_names_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_validation_exception(), tuple()}.
+    {error, list_git_hub_account_token_names_errors(), tuple()}.
 list_git_hub_account_token_names(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_git_hub_account_token_names(Client, Input, []).
@@ -3070,9 +3094,7 @@ list_git_hub_account_token_names(Client, Input)
 -spec list_git_hub_account_token_names(map(), list_git_hub_account_token_names_input(), proplists:proplist()) ->
     {ok, list_git_hub_account_token_names_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, operation_not_supported_exception(), tuple()} |
-    {error, resource_validation_exception(), tuple()}.
+    {error, list_git_hub_account_token_names_errors(), tuple()}.
 list_git_hub_account_token_names(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGitHubAccountTokenNames">>, Input, Options).
@@ -3087,9 +3109,7 @@ list_git_hub_account_token_names(Client, Input, Options)
 -spec list_on_premises_instances(map(), list_on_premises_instances_input()) ->
     {ok, list_on_premises_instances_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_registration_status_exception(), tuple()} |
-    {error, invalid_tag_filter_exception(), tuple()}.
+    {error, list_on_premises_instances_errors(), tuple()}.
 list_on_premises_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_on_premises_instances(Client, Input, []).
@@ -3097,9 +3117,7 @@ list_on_premises_instances(Client, Input)
 -spec list_on_premises_instances(map(), list_on_premises_instances_input(), proplists:proplist()) ->
     {ok, list_on_premises_instances_output(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, invalid_registration_status_exception(), tuple()} |
-    {error, invalid_tag_filter_exception(), tuple()}.
+    {error, list_on_premises_instances_errors(), tuple()}.
 list_on_premises_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOnPremisesInstances">>, Input, Options).
@@ -3112,9 +3130,7 @@ list_on_premises_instances(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, arn_not_supported_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, resource_arn_required_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -3122,9 +3138,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_input(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, arn_not_supported_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, resource_arn_required_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -3148,13 +3162,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec put_lifecycle_event_hook_execution_status(map(), put_lifecycle_event_hook_execution_status_input()) ->
     {ok, put_lifecycle_event_hook_execution_status_output(), tuple()} |
     {error, any()} |
-    {error, deployment_does_not_exist_exception(), tuple()} |
-    {error, deployment_id_required_exception(), tuple()} |
-    {error, invalid_deployment_id_exception(), tuple()} |
-    {error, invalid_lifecycle_event_hook_execution_id_exception(), tuple()} |
-    {error, invalid_lifecycle_event_hook_execution_status_exception(), tuple()} |
-    {error, lifecycle_event_already_completed_exception(), tuple()} |
-    {error, unsupported_action_for_deployment_type_exception(), tuple()}.
+    {error, put_lifecycle_event_hook_execution_status_errors(), tuple()}.
 put_lifecycle_event_hook_execution_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_lifecycle_event_hook_execution_status(Client, Input, []).
@@ -3162,13 +3170,7 @@ put_lifecycle_event_hook_execution_status(Client, Input)
 -spec put_lifecycle_event_hook_execution_status(map(), put_lifecycle_event_hook_execution_status_input(), proplists:proplist()) ->
     {ok, put_lifecycle_event_hook_execution_status_output(), tuple()} |
     {error, any()} |
-    {error, deployment_does_not_exist_exception(), tuple()} |
-    {error, deployment_id_required_exception(), tuple()} |
-    {error, invalid_deployment_id_exception(), tuple()} |
-    {error, invalid_lifecycle_event_hook_execution_id_exception(), tuple()} |
-    {error, invalid_lifecycle_event_hook_execution_status_exception(), tuple()} |
-    {error, lifecycle_event_already_completed_exception(), tuple()} |
-    {error, unsupported_action_for_deployment_type_exception(), tuple()}.
+    {error, put_lifecycle_event_hook_execution_status_errors(), tuple()}.
 put_lifecycle_event_hook_execution_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutLifecycleEventHookExecutionStatus">>, Input, Options).
@@ -3177,12 +3179,7 @@ put_lifecycle_event_hook_execution_status(Client, Input, Options)
 -spec register_application_revision(map(), register_application_revision_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, description_too_long_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()} |
-    {error, invalid_revision_exception(), tuple()} |
-    {error, revision_required_exception(), tuple()}.
+    {error, register_application_revision_errors(), tuple()}.
 register_application_revision(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_application_revision(Client, Input, []).
@@ -3190,12 +3187,7 @@ register_application_revision(Client, Input)
 -spec register_application_revision(map(), register_application_revision_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, description_too_long_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()} |
-    {error, invalid_revision_exception(), tuple()} |
-    {error, revision_required_exception(), tuple()}.
+    {error, register_application_revision_errors(), tuple()}.
 register_application_revision(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterApplicationRevision">>, Input, Options).
@@ -3207,16 +3199,7 @@ register_application_revision(Client, Input, Options)
 -spec register_on_premises_instance(map(), register_on_premises_instance_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, iam_arn_required_exception(), tuple()} |
-    {error, iam_session_arn_already_registered_exception(), tuple()} |
-    {error, iam_user_arn_already_registered_exception(), tuple()} |
-    {error, iam_user_arn_required_exception(), tuple()} |
-    {error, instance_name_already_registered_exception(), tuple()} |
-    {error, instance_name_required_exception(), tuple()} |
-    {error, invalid_iam_session_arn_exception(), tuple()} |
-    {error, invalid_iam_user_arn_exception(), tuple()} |
-    {error, invalid_instance_name_exception(), tuple()} |
-    {error, multiple_iam_arns_provided_exception(), tuple()}.
+    {error, register_on_premises_instance_errors(), tuple()}.
 register_on_premises_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_on_premises_instance(Client, Input, []).
@@ -3224,16 +3207,7 @@ register_on_premises_instance(Client, Input)
 -spec register_on_premises_instance(map(), register_on_premises_instance_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, iam_arn_required_exception(), tuple()} |
-    {error, iam_session_arn_already_registered_exception(), tuple()} |
-    {error, iam_user_arn_already_registered_exception(), tuple()} |
-    {error, iam_user_arn_required_exception(), tuple()} |
-    {error, instance_name_already_registered_exception(), tuple()} |
-    {error, instance_name_required_exception(), tuple()} |
-    {error, invalid_iam_session_arn_exception(), tuple()} |
-    {error, invalid_iam_user_arn_exception(), tuple()} |
-    {error, invalid_instance_name_exception(), tuple()} |
-    {error, multiple_iam_arns_provided_exception(), tuple()}.
+    {error, register_on_premises_instance_errors(), tuple()}.
 register_on_premises_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterOnPremisesInstance">>, Input, Options).
@@ -3242,13 +3216,7 @@ register_on_premises_instance(Client, Input, Options)
 -spec remove_tags_from_on_premises_instances(map(), remove_tags_from_on_premises_instances_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, instance_limit_exceeded_exception(), tuple()} |
-    {error, instance_name_required_exception(), tuple()} |
-    {error, instance_not_registered_exception(), tuple()} |
-    {error, invalid_instance_name_exception(), tuple()} |
-    {error, invalid_tag_exception(), tuple()} |
-    {error, tag_limit_exceeded_exception(), tuple()} |
-    {error, tag_required_exception(), tuple()}.
+    {error, remove_tags_from_on_premises_instances_errors(), tuple()}.
 remove_tags_from_on_premises_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_on_premises_instances(Client, Input, []).
@@ -3256,13 +3224,7 @@ remove_tags_from_on_premises_instances(Client, Input)
 -spec remove_tags_from_on_premises_instances(map(), remove_tags_from_on_premises_instances_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, instance_limit_exceeded_exception(), tuple()} |
-    {error, instance_name_required_exception(), tuple()} |
-    {error, instance_not_registered_exception(), tuple()} |
-    {error, invalid_instance_name_exception(), tuple()} |
-    {error, invalid_tag_exception(), tuple()} |
-    {error, tag_limit_exceeded_exception(), tuple()} |
-    {error, tag_required_exception(), tuple()}.
+    {error, remove_tags_from_on_premises_instances_errors(), tuple()}.
 remove_tags_from_on_premises_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTagsFromOnPremisesInstances">>, Input, Options).
@@ -3273,12 +3235,7 @@ remove_tags_from_on_premises_instances(Client, Input, Options)
 -spec skip_wait_time_for_instance_termination(map(), skip_wait_time_for_instance_termination_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, deployment_already_completed_exception(), tuple()} |
-    {error, deployment_does_not_exist_exception(), tuple()} |
-    {error, deployment_id_required_exception(), tuple()} |
-    {error, deployment_not_started_exception(), tuple()} |
-    {error, invalid_deployment_id_exception(), tuple()} |
-    {error, unsupported_action_for_deployment_type_exception(), tuple()}.
+    {error, skip_wait_time_for_instance_termination_errors(), tuple()}.
 skip_wait_time_for_instance_termination(Client, Input)
   when is_map(Client), is_map(Input) ->
     skip_wait_time_for_instance_termination(Client, Input, []).
@@ -3286,12 +3243,7 @@ skip_wait_time_for_instance_termination(Client, Input)
 -spec skip_wait_time_for_instance_termination(map(), skip_wait_time_for_instance_termination_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, deployment_already_completed_exception(), tuple()} |
-    {error, deployment_does_not_exist_exception(), tuple()} |
-    {error, deployment_id_required_exception(), tuple()} |
-    {error, deployment_not_started_exception(), tuple()} |
-    {error, invalid_deployment_id_exception(), tuple()} |
-    {error, unsupported_action_for_deployment_type_exception(), tuple()}.
+    {error, skip_wait_time_for_instance_termination_errors(), tuple()}.
 skip_wait_time_for_instance_termination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SkipWaitTimeForInstanceTermination">>, Input, Options).
@@ -3300,12 +3252,7 @@ skip_wait_time_for_instance_termination(Client, Input, Options)
 -spec stop_deployment(map(), stop_deployment_input()) ->
     {ok, stop_deployment_output(), tuple()} |
     {error, any()} |
-    {error, deployment_already_completed_exception(), tuple()} |
-    {error, deployment_does_not_exist_exception(), tuple()} |
-    {error, deployment_group_does_not_exist_exception(), tuple()} |
-    {error, deployment_id_required_exception(), tuple()} |
-    {error, invalid_deployment_id_exception(), tuple()} |
-    {error, unsupported_action_for_deployment_type_exception(), tuple()}.
+    {error, stop_deployment_errors(), tuple()}.
 stop_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_deployment(Client, Input, []).
@@ -3313,12 +3260,7 @@ stop_deployment(Client, Input)
 -spec stop_deployment(map(), stop_deployment_input(), proplists:proplist()) ->
     {ok, stop_deployment_output(), tuple()} |
     {error, any()} |
-    {error, deployment_already_completed_exception(), tuple()} |
-    {error, deployment_does_not_exist_exception(), tuple()} |
-    {error, deployment_group_does_not_exist_exception(), tuple()} |
-    {error, deployment_id_required_exception(), tuple()} |
-    {error, invalid_deployment_id_exception(), tuple()} |
-    {error, unsupported_action_for_deployment_type_exception(), tuple()}.
+    {error, stop_deployment_errors(), tuple()}.
 stop_deployment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopDeployment">>, Input, Options).
@@ -3329,14 +3271,7 @@ stop_deployment(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, arn_not_supported_exception(), tuple()} |
-    {error, deployment_config_does_not_exist_exception(), tuple()} |
-    {error, deployment_group_does_not_exist_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_tags_to_add_exception(), tuple()} |
-    {error, resource_arn_required_exception(), tuple()} |
-    {error, tag_required_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -3344,14 +3279,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, arn_not_supported_exception(), tuple()} |
-    {error, deployment_config_does_not_exist_exception(), tuple()} |
-    {error, deployment_group_does_not_exist_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_tags_to_add_exception(), tuple()} |
-    {error, resource_arn_required_exception(), tuple()} |
-    {error, tag_required_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -3364,14 +3292,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, arn_not_supported_exception(), tuple()} |
-    {error, deployment_config_does_not_exist_exception(), tuple()} |
-    {error, deployment_group_does_not_exist_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_tags_to_add_exception(), tuple()} |
-    {error, resource_arn_required_exception(), tuple()} |
-    {error, tag_required_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -3379,14 +3300,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, arn_not_supported_exception(), tuple()} |
-    {error, deployment_config_does_not_exist_exception(), tuple()} |
-    {error, deployment_group_does_not_exist_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_tags_to_add_exception(), tuple()} |
-    {error, resource_arn_required_exception(), tuple()} |
-    {error, tag_required_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -3395,10 +3309,7 @@ untag_resource(Client, Input, Options)
 -spec update_application(map(), update_application_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, application_already_exists_exception(), tuple()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()}.
+    {error, update_application_errors(), tuple()}.
 update_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_application(Client, Input, []).
@@ -3406,10 +3317,7 @@ update_application(Client, Input)
 -spec update_application(map(), update_application_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, application_already_exists_exception(), tuple()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()}.
+    {error, update_application_errors(), tuple()}.
 update_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateApplication">>, Input, Options).
@@ -3418,37 +3326,7 @@ update_application(Client, Input, Options)
 -spec update_deployment_group(map(), update_deployment_group_input()) ->
     {ok, update_deployment_group_output(), tuple()} |
     {error, any()} |
-    {error, alarms_limit_exceeded_exception(), tuple()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, deployment_config_does_not_exist_exception(), tuple()} |
-    {error, deployment_group_already_exists_exception(), tuple()} |
-    {error, deployment_group_does_not_exist_exception(), tuple()} |
-    {error, deployment_group_name_required_exception(), tuple()} |
-    {error, e_c_s_service_mapping_limit_exceeded_exception(), tuple()} |
-    {error, invalid_alarm_config_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()} |
-    {error, invalid_auto_rollback_config_exception(), tuple()} |
-    {error, invalid_auto_scaling_group_exception(), tuple()} |
-    {error, invalid_blue_green_deployment_configuration_exception(), tuple()} |
-    {error, invalid_deployment_config_name_exception(), tuple()} |
-    {error, invalid_deployment_group_name_exception(), tuple()} |
-    {error, invalid_deployment_style_exception(), tuple()} |
-    {error, invalid_ec2_tag_combination_exception(), tuple()} |
-    {error, invalid_ec2_tag_exception(), tuple()} |
-    {error, invalid_e_c_s_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_load_balancer_info_exception(), tuple()} |
-    {error, invalid_on_premises_tag_combination_exception(), tuple()} |
-    {error, invalid_role_exception(), tuple()} |
-    {error, invalid_tag_exception(), tuple()} |
-    {error, invalid_target_group_pair_exception(), tuple()} |
-    {error, invalid_traffic_routing_configuration_exception(), tuple()} |
-    {error, invalid_trigger_config_exception(), tuple()} |
-    {error, lifecycle_hook_limit_exceeded_exception(), tuple()} |
-    {error, tag_set_list_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, trigger_targets_limit_exceeded_exception(), tuple()}.
+    {error, update_deployment_group_errors(), tuple()}.
 update_deployment_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_deployment_group(Client, Input, []).
@@ -3456,37 +3334,7 @@ update_deployment_group(Client, Input)
 -spec update_deployment_group(map(), update_deployment_group_input(), proplists:proplist()) ->
     {ok, update_deployment_group_output(), tuple()} |
     {error, any()} |
-    {error, alarms_limit_exceeded_exception(), tuple()} |
-    {error, application_does_not_exist_exception(), tuple()} |
-    {error, application_name_required_exception(), tuple()} |
-    {error, deployment_config_does_not_exist_exception(), tuple()} |
-    {error, deployment_group_already_exists_exception(), tuple()} |
-    {error, deployment_group_does_not_exist_exception(), tuple()} |
-    {error, deployment_group_name_required_exception(), tuple()} |
-    {error, e_c_s_service_mapping_limit_exceeded_exception(), tuple()} |
-    {error, invalid_alarm_config_exception(), tuple()} |
-    {error, invalid_application_name_exception(), tuple()} |
-    {error, invalid_auto_rollback_config_exception(), tuple()} |
-    {error, invalid_auto_scaling_group_exception(), tuple()} |
-    {error, invalid_blue_green_deployment_configuration_exception(), tuple()} |
-    {error, invalid_deployment_config_name_exception(), tuple()} |
-    {error, invalid_deployment_group_name_exception(), tuple()} |
-    {error, invalid_deployment_style_exception(), tuple()} |
-    {error, invalid_ec2_tag_combination_exception(), tuple()} |
-    {error, invalid_ec2_tag_exception(), tuple()} |
-    {error, invalid_e_c_s_service_exception(), tuple()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_load_balancer_info_exception(), tuple()} |
-    {error, invalid_on_premises_tag_combination_exception(), tuple()} |
-    {error, invalid_role_exception(), tuple()} |
-    {error, invalid_tag_exception(), tuple()} |
-    {error, invalid_target_group_pair_exception(), tuple()} |
-    {error, invalid_traffic_routing_configuration_exception(), tuple()} |
-    {error, invalid_trigger_config_exception(), tuple()} |
-    {error, lifecycle_hook_limit_exceeded_exception(), tuple()} |
-    {error, tag_set_list_limit_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, trigger_targets_limit_exceeded_exception(), tuple()}.
+    {error, update_deployment_group_errors(), tuple()}.
 update_deployment_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDeploymentGroup">>, Input, Options).

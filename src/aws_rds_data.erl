@@ -45,11 +45,13 @@
 %% }
 -type statement_timeout_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% record() :: #{
 %%   <<"values">> => list(list()())
 %% }
 -type record() :: #{binary() => any()}.
+
 
 %% Example:
 %% result_set_metadata() :: #{
@@ -58,11 +60,13 @@
 %% }
 -type result_set_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% unsupported_result_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type unsupported_result_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% rollback_transaction_request() :: #{
@@ -71,6 +75,7 @@
 %%   <<"transactionId">> => string()
 %% }
 -type rollback_transaction_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% column_metadata() :: #{
@@ -91,6 +96,7 @@
 %% }
 -type column_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% commit_transaction_request() :: #{
 %%   <<"resourceArn">> => string(),
@@ -98,6 +104,7 @@
 %%   <<"transactionId">> => string()
 %% }
 -type commit_transaction_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% execute_sql_request() :: #{
@@ -109,11 +116,13 @@
 %% }
 -type execute_sql_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% transaction_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type transaction_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% forbidden_exception() :: #{
@@ -121,11 +130,13 @@
 %% }
 -type forbidden_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_result() :: #{
 %%   <<"generatedFields">> => list(list()())
 %% }
 -type update_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% sql_parameter() :: #{
@@ -134,6 +145,7 @@
 %%   <<"value">> => list()
 %% }
 -type sql_parameter() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_execute_statement_request() :: #{
@@ -147,6 +159,7 @@
 %% }
 -type batch_execute_statement_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% begin_transaction_request() :: #{
 %%   <<"database">> => string(),
@@ -155,6 +168,7 @@
 %%   <<"secretArn">> => string()
 %% }
 -type begin_transaction_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% execute_statement_response() :: #{
@@ -165,15 +179,18 @@
 %%   <<"records">> => list(list(list()())())
 %% }
 -type execute_statement_response() :: #{binary() => any()}.
+
 %% Example:
 %% service_unavailable_error() :: #{}
 -type service_unavailable_error() :: #{}.
+
 
 %% Example:
 %% invalid_secret_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_secret_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% result_set_options() :: #{
@@ -182,20 +199,24 @@
 %% }
 -type result_set_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% commit_transaction_response() :: #{
 %%   <<"transactionStatus">> => string()
 %% }
 -type commit_transaction_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type not_found_exception() :: #{binary() => any()}.
+
 %% Example:
 %% database_unavailable_exception() :: #{}
 -type database_unavailable_exception() :: #{}.
+
 
 %% Example:
 %% secrets_error_exception() :: #{
@@ -203,11 +224,13 @@
 %% }
 -type secrets_error_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% http_endpoint_not_enabled_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type http_endpoint_not_enabled_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% database_not_found_exception() :: #{
@@ -215,11 +238,13 @@
 %% }
 -type database_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% rollback_transaction_response() :: #{
 %%   <<"transactionStatus">> => string()
 %% }
 -type rollback_transaction_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% access_denied_exception() :: #{
@@ -227,20 +252,24 @@
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% database_error_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type database_error_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% begin_transaction_response() :: #{
 %%   <<"transactionId">> => string()
 %% }
 -type begin_transaction_response() :: #{binary() => any()}.
+
 %% Example:
 %% internal_server_error_exception() :: #{}
 -type internal_server_error_exception() :: #{}.
+
 
 %% Example:
 %% result_frame() :: #{
@@ -248,6 +277,7 @@
 %%   <<"resultSetMetadata">> => result_set_metadata()
 %% }
 -type result_frame() :: #{binary() => any()}.
+
 
 %% Example:
 %% execute_statement_request() :: #{
@@ -265,6 +295,7 @@
 %% }
 -type execute_statement_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% sql_statement_result() :: #{
 %%   <<"numberOfRecordsUpdated">> => float(),
@@ -272,11 +303,13 @@
 %% }
 -type sql_statement_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% bad_request_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% execute_sql_response() :: #{
@@ -284,17 +317,104 @@
 %% }
 -type execute_sql_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% struct_value() :: #{
 %%   <<"attributes">> => list(list()())
 %% }
 -type struct_value() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_execute_statement_response() :: #{
 %%   <<"updateResults">> => list(update_result()())
 %% }
 -type batch_execute_statement_response() :: #{binary() => any()}.
+
+-type batch_execute_statement_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    database_error_exception() | 
+    access_denied_exception() | 
+    database_not_found_exception() | 
+    http_endpoint_not_enabled_exception() | 
+    secrets_error_exception() | 
+    database_unavailable_exception() | 
+    invalid_secret_exception() | 
+    service_unavailable_error() | 
+    forbidden_exception() | 
+    transaction_not_found_exception() | 
+    statement_timeout_exception().
+
+-type begin_transaction_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    database_error_exception() | 
+    access_denied_exception() | 
+    database_not_found_exception() | 
+    http_endpoint_not_enabled_exception() | 
+    secrets_error_exception() | 
+    database_unavailable_exception() | 
+    invalid_secret_exception() | 
+    service_unavailable_error() | 
+    forbidden_exception() | 
+    transaction_not_found_exception() | 
+    statement_timeout_exception().
+
+-type commit_transaction_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    database_error_exception() | 
+    access_denied_exception() | 
+    database_not_found_exception() | 
+    http_endpoint_not_enabled_exception() | 
+    secrets_error_exception() | 
+    database_unavailable_exception() | 
+    not_found_exception() | 
+    invalid_secret_exception() | 
+    service_unavailable_error() | 
+    forbidden_exception() | 
+    transaction_not_found_exception() | 
+    statement_timeout_exception().
+
+-type execute_sql_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception() | 
+    service_unavailable_error() | 
+    forbidden_exception().
+
+-type execute_statement_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    database_error_exception() | 
+    access_denied_exception() | 
+    database_not_found_exception() | 
+    http_endpoint_not_enabled_exception() | 
+    secrets_error_exception() | 
+    database_unavailable_exception() | 
+    invalid_secret_exception() | 
+    service_unavailable_error() | 
+    forbidden_exception() | 
+    transaction_not_found_exception() | 
+    unsupported_result_exception() | 
+    statement_timeout_exception().
+
+-type rollback_transaction_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    database_error_exception() | 
+    access_denied_exception() | 
+    database_not_found_exception() | 
+    http_endpoint_not_enabled_exception() | 
+    secrets_error_exception() | 
+    database_unavailable_exception() | 
+    not_found_exception() | 
+    invalid_secret_exception() | 
+    service_unavailable_error() | 
+    forbidden_exception() | 
+    transaction_not_found_exception() | 
+    statement_timeout_exception().
 
 %%====================================================================
 %% API
@@ -327,38 +447,14 @@
 -spec batch_execute_statement(map(), batch_execute_statement_request()) ->
     {ok, batch_execute_statement_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, database_error_exception(), tuple()} |
-    {error, database_not_found_exception(), tuple()} |
-    {error, database_unavailable_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, http_endpoint_not_enabled_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, invalid_secret_exception(), tuple()} |
-    {error, secrets_error_exception(), tuple()} |
-    {error, service_unavailable_error(), tuple()} |
-    {error, statement_timeout_exception(), tuple()} |
-    {error, transaction_not_found_exception(), tuple()}.
+    {error, batch_execute_statement_errors(), tuple()}.
 batch_execute_statement(Client, Input) ->
     batch_execute_statement(Client, Input, []).
 
 -spec batch_execute_statement(map(), batch_execute_statement_request(), proplists:proplist()) ->
     {ok, batch_execute_statement_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, database_error_exception(), tuple()} |
-    {error, database_not_found_exception(), tuple()} |
-    {error, database_unavailable_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, http_endpoint_not_enabled_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, invalid_secret_exception(), tuple()} |
-    {error, secrets_error_exception(), tuple()} |
-    {error, service_unavailable_error(), tuple()} |
-    {error, statement_timeout_exception(), tuple()} |
-    {error, transaction_not_found_exception(), tuple()}.
+    {error, batch_execute_statement_errors(), tuple()}.
 batch_execute_statement(Client, Input0, Options0) ->
     Method = post,
     Path = ["/BatchExecute"],
@@ -397,38 +493,14 @@ batch_execute_statement(Client, Input0, Options0) ->
 -spec begin_transaction(map(), begin_transaction_request()) ->
     {ok, begin_transaction_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, database_error_exception(), tuple()} |
-    {error, database_not_found_exception(), tuple()} |
-    {error, database_unavailable_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, http_endpoint_not_enabled_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, invalid_secret_exception(), tuple()} |
-    {error, secrets_error_exception(), tuple()} |
-    {error, service_unavailable_error(), tuple()} |
-    {error, statement_timeout_exception(), tuple()} |
-    {error, transaction_not_found_exception(), tuple()}.
+    {error, begin_transaction_errors(), tuple()}.
 begin_transaction(Client, Input) ->
     begin_transaction(Client, Input, []).
 
 -spec begin_transaction(map(), begin_transaction_request(), proplists:proplist()) ->
     {ok, begin_transaction_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, database_error_exception(), tuple()} |
-    {error, database_not_found_exception(), tuple()} |
-    {error, database_unavailable_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, http_endpoint_not_enabled_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, invalid_secret_exception(), tuple()} |
-    {error, secrets_error_exception(), tuple()} |
-    {error, service_unavailable_error(), tuple()} |
-    {error, statement_timeout_exception(), tuple()} |
-    {error, transaction_not_found_exception(), tuple()}.
+    {error, begin_transaction_errors(), tuple()}.
 begin_transaction(Client, Input0, Options0) ->
     Method = post,
     Path = ["/BeginTransaction"],
@@ -457,40 +529,14 @@ begin_transaction(Client, Input0, Options0) ->
 -spec commit_transaction(map(), commit_transaction_request()) ->
     {ok, commit_transaction_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, database_error_exception(), tuple()} |
-    {error, database_not_found_exception(), tuple()} |
-    {error, database_unavailable_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, http_endpoint_not_enabled_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, invalid_secret_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, secrets_error_exception(), tuple()} |
-    {error, service_unavailable_error(), tuple()} |
-    {error, statement_timeout_exception(), tuple()} |
-    {error, transaction_not_found_exception(), tuple()}.
+    {error, commit_transaction_errors(), tuple()}.
 commit_transaction(Client, Input) ->
     commit_transaction(Client, Input, []).
 
 -spec commit_transaction(map(), commit_transaction_request(), proplists:proplist()) ->
     {ok, commit_transaction_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, database_error_exception(), tuple()} |
-    {error, database_not_found_exception(), tuple()} |
-    {error, database_unavailable_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, http_endpoint_not_enabled_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, invalid_secret_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, secrets_error_exception(), tuple()} |
-    {error, service_unavailable_error(), tuple()} |
-    {error, statement_timeout_exception(), tuple()} |
-    {error, transaction_not_found_exception(), tuple()}.
+    {error, commit_transaction_errors(), tuple()}.
 commit_transaction(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CommitTransaction"],
@@ -522,22 +568,14 @@ commit_transaction(Client, Input0, Options0) ->
 -spec execute_sql(map(), execute_sql_request()) ->
     {ok, execute_sql_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_error(), tuple()}.
+    {error, execute_sql_errors(), tuple()}.
 execute_sql(Client, Input) ->
     execute_sql(Client, Input, []).
 
 -spec execute_sql(map(), execute_sql_request(), proplists:proplist()) ->
     {ok, execute_sql_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, service_unavailable_error(), tuple()}.
+    {error, execute_sql_errors(), tuple()}.
 execute_sql(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ExecuteSql"],
@@ -572,40 +610,14 @@ execute_sql(Client, Input0, Options0) ->
 -spec execute_statement(map(), execute_statement_request()) ->
     {ok, execute_statement_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, database_error_exception(), tuple()} |
-    {error, database_not_found_exception(), tuple()} |
-    {error, database_unavailable_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, http_endpoint_not_enabled_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, invalid_secret_exception(), tuple()} |
-    {error, secrets_error_exception(), tuple()} |
-    {error, service_unavailable_error(), tuple()} |
-    {error, statement_timeout_exception(), tuple()} |
-    {error, transaction_not_found_exception(), tuple()} |
-    {error, unsupported_result_exception(), tuple()}.
+    {error, execute_statement_errors(), tuple()}.
 execute_statement(Client, Input) ->
     execute_statement(Client, Input, []).
 
 -spec execute_statement(map(), execute_statement_request(), proplists:proplist()) ->
     {ok, execute_statement_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, database_error_exception(), tuple()} |
-    {error, database_not_found_exception(), tuple()} |
-    {error, database_unavailable_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, http_endpoint_not_enabled_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, invalid_secret_exception(), tuple()} |
-    {error, secrets_error_exception(), tuple()} |
-    {error, service_unavailable_error(), tuple()} |
-    {error, statement_timeout_exception(), tuple()} |
-    {error, transaction_not_found_exception(), tuple()} |
-    {error, unsupported_result_exception(), tuple()}.
+    {error, execute_statement_errors(), tuple()}.
 execute_statement(Client, Input0, Options0) ->
     Method = post,
     Path = ["/Execute"],
@@ -634,40 +646,14 @@ execute_statement(Client, Input0, Options0) ->
 -spec rollback_transaction(map(), rollback_transaction_request()) ->
     {ok, rollback_transaction_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, database_error_exception(), tuple()} |
-    {error, database_not_found_exception(), tuple()} |
-    {error, database_unavailable_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, http_endpoint_not_enabled_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, invalid_secret_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, secrets_error_exception(), tuple()} |
-    {error, service_unavailable_error(), tuple()} |
-    {error, statement_timeout_exception(), tuple()} |
-    {error, transaction_not_found_exception(), tuple()}.
+    {error, rollback_transaction_errors(), tuple()}.
 rollback_transaction(Client, Input) ->
     rollback_transaction(Client, Input, []).
 
 -spec rollback_transaction(map(), rollback_transaction_request(), proplists:proplist()) ->
     {ok, rollback_transaction_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, database_error_exception(), tuple()} |
-    {error, database_not_found_exception(), tuple()} |
-    {error, database_unavailable_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, http_endpoint_not_enabled_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, invalid_secret_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, secrets_error_exception(), tuple()} |
-    {error, service_unavailable_error(), tuple()} |
-    {error, statement_timeout_exception(), tuple()} |
-    {error, transaction_not_found_exception(), tuple()}.
+    {error, rollback_transaction_errors(), tuple()}.
 rollback_transaction(Client, Input0, Options0) ->
     Method = post,
     Path = ["/RollbackTransaction"],

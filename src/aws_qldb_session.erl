@@ -219,6 +219,13 @@
 %% }
 -type value_holder() :: #{binary() => any()}.
 
+-type send_command_errors() ::
+    rate_exceeded_exception() | 
+    occ_conflict_exception() | 
+    limit_exceeded_exception() | 
+    invalid_session_exception() | 
+    capacity_exceeded_exception() | 
+    bad_request_exception().
 
 %%====================================================================
 %% API
@@ -250,12 +257,7 @@
 -spec send_command(map(), send_command_request()) ->
     {ok, send_command_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, capacity_exceeded_exception(), tuple()} |
-    {error, invalid_session_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, occ_conflict_exception(), tuple()} |
-    {error, rate_exceeded_exception(), tuple()}.
+    {error, send_command_errors(), tuple()}.
 send_command(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_command(Client, Input, []).
@@ -263,12 +265,7 @@ send_command(Client, Input)
 -spec send_command(map(), send_command_request(), proplists:proplist()) ->
     {ok, send_command_result(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, capacity_exceeded_exception(), tuple()} |
-    {error, invalid_session_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, occ_conflict_exception(), tuple()} |
-    {error, rate_exceeded_exception(), tuple()}.
+    {error, send_command_errors(), tuple()}.
 send_command(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendCommand">>, Input, Options).

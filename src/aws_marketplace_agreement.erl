@@ -360,6 +360,25 @@
 %% }
 -type resource() :: #{binary() => any()}.
 
+-type describe_agreement_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_agreement_terms_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type search_agreements_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 %%====================================================================
 %% API
@@ -370,11 +389,7 @@
 -spec describe_agreement(map(), describe_agreement_input()) ->
     {ok, describe_agreement_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_agreement_errors(), tuple()}.
 describe_agreement(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_agreement(Client, Input, []).
@@ -382,11 +397,7 @@ describe_agreement(Client, Input)
 -spec describe_agreement(map(), describe_agreement_input(), proplists:proplist()) ->
     {ok, describe_agreement_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_agreement_errors(), tuple()}.
 describe_agreement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAgreement">>, Input, Options).
@@ -417,11 +428,7 @@ describe_agreement(Client, Input, Options)
 -spec get_agreement_terms(map(), get_agreement_terms_input()) ->
     {ok, get_agreement_terms_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_agreement_terms_errors(), tuple()}.
 get_agreement_terms(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_agreement_terms(Client, Input, []).
@@ -429,11 +436,7 @@ get_agreement_terms(Client, Input)
 -spec get_agreement_terms(map(), get_agreement_terms_input(), proplists:proplist()) ->
     {ok, get_agreement_terms_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_agreement_terms_errors(), tuple()}.
 get_agreement_terms(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAgreementTerms">>, Input, Options).
@@ -491,10 +494,7 @@ get_agreement_terms(Client, Input, Options)
 -spec search_agreements(map(), search_agreements_input()) ->
     {ok, search_agreements_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_agreements_errors(), tuple()}.
 search_agreements(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_agreements(Client, Input, []).
@@ -502,10 +502,7 @@ search_agreements(Client, Input)
 -spec search_agreements(map(), search_agreements_input(), proplists:proplist()) ->
     {ok, search_agreements_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, search_agreements_errors(), tuple()}.
 search_agreements(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SearchAgreements">>, Input, Options).

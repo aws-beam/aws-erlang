@@ -72,15 +72,19 @@
 %%   <<"Message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_human_loop_request() :: #{}
 -type delete_human_loop_request() :: #{}.
+
 %% Example:
 %% delete_human_loop_response() :: #{}
 -type delete_human_loop_response() :: #{}.
+
 %% Example:
 %% describe_human_loop_request() :: #{}
 -type describe_human_loop_request() :: #{}.
+
 
 %% Example:
 %% describe_human_loop_response() :: #{
@@ -95,11 +99,13 @@
 %% }
 -type describe_human_loop_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% human_loop_data_attributes() :: #{
 %%   <<"ContentClassifiers">> => list(list(any())())
 %% }
 -type human_loop_data_attributes() :: #{binary() => any()}.
+
 
 %% Example:
 %% human_loop_input() :: #{
@@ -107,11 +113,13 @@
 %% }
 -type human_loop_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% human_loop_output() :: #{
 %%   <<"OutputS3Uri">> => string()
 %% }
 -type human_loop_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% human_loop_summary() :: #{
@@ -123,11 +131,13 @@
 %% }
 -type human_loop_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_human_loops_request() :: #{
@@ -140,6 +150,7 @@
 %% }
 -type list_human_loops_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_human_loops_response() :: #{
 %%   <<"HumanLoopSummaries">> => list(human_loop_summary()()),
@@ -147,17 +158,20 @@
 %% }
 -type list_human_loops_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_human_loop_request() :: #{
@@ -168,20 +182,24 @@
 %% }
 -type start_human_loop_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_human_loop_response() :: #{
 %%   <<"HumanLoopArn">> => string()
 %% }
 -type start_human_loop_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% stop_human_loop_request() :: #{
 %%   <<"HumanLoopName">> := string()
 %% }
 -type stop_human_loop_request() :: #{binary() => any()}.
+
 %% Example:
 %% stop_human_loop_response() :: #{}
 -type stop_human_loop_response() :: #{}.
+
 
 %% Example:
 %% throttling_exception() :: #{
@@ -189,11 +207,43 @@
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
+-type delete_human_loop_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
+
+-type describe_human_loop_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
+
+-type list_human_loops_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
+
+-type start_human_loop_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type stop_human_loop_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 %%====================================================================
 %% API
@@ -206,20 +256,14 @@
 -spec delete_human_loop(map(), binary() | list(), delete_human_loop_request()) ->
     {ok, delete_human_loop_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_human_loop_errors(), tuple()}.
 delete_human_loop(Client, HumanLoopName, Input) ->
     delete_human_loop(Client, HumanLoopName, Input, []).
 
 -spec delete_human_loop(map(), binary() | list(), delete_human_loop_request(), proplists:proplist()) ->
     {ok, delete_human_loop_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_human_loop_errors(), tuple()}.
 delete_human_loop(Client, HumanLoopName, Input0, Options0) ->
     Method = delete,
     Path = ["/human-loops/", aws_util:encode_uri(HumanLoopName), ""],
@@ -249,10 +293,7 @@ delete_human_loop(Client, HumanLoopName, Input0, Options0) ->
 -spec describe_human_loop(map(), binary() | list()) ->
     {ok, describe_human_loop_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_human_loop_errors(), tuple()}.
 describe_human_loop(Client, HumanLoopName)
   when is_map(Client) ->
     describe_human_loop(Client, HumanLoopName, #{}, #{}).
@@ -260,10 +301,7 @@ describe_human_loop(Client, HumanLoopName)
 -spec describe_human_loop(map(), binary() | list(), map(), map()) ->
     {ok, describe_human_loop_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_human_loop_errors(), tuple()}.
 describe_human_loop(Client, HumanLoopName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_human_loop(Client, HumanLoopName, QueryMap, HeadersMap, []).
@@ -271,10 +309,7 @@ describe_human_loop(Client, HumanLoopName, QueryMap, HeadersMap)
 -spec describe_human_loop(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_human_loop_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_human_loop_errors(), tuple()}.
 describe_human_loop(Client, HumanLoopName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/human-loops/", aws_util:encode_uri(HumanLoopName), ""],
@@ -298,10 +333,7 @@ describe_human_loop(Client, HumanLoopName, QueryMap, HeadersMap, Options0)
 -spec list_human_loops(map(), binary() | list()) ->
     {ok, list_human_loops_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_human_loops_errors(), tuple()}.
 list_human_loops(Client, FlowDefinitionArn)
   when is_map(Client) ->
     list_human_loops(Client, FlowDefinitionArn, #{}, #{}).
@@ -309,10 +341,7 @@ list_human_loops(Client, FlowDefinitionArn)
 -spec list_human_loops(map(), binary() | list(), map(), map()) ->
     {ok, list_human_loops_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_human_loops_errors(), tuple()}.
 list_human_loops(Client, FlowDefinitionArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_human_loops(Client, FlowDefinitionArn, QueryMap, HeadersMap, []).
@@ -320,10 +349,7 @@ list_human_loops(Client, FlowDefinitionArn, QueryMap, HeadersMap)
 -spec list_human_loops(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_human_loops_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_human_loops_errors(), tuple()}.
 list_human_loops(Client, FlowDefinitionArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/human-loops"],
@@ -354,22 +380,14 @@ list_human_loops(Client, FlowDefinitionArn, QueryMap, HeadersMap, Options0)
 -spec start_human_loop(map(), start_human_loop_request()) ->
     {ok, start_human_loop_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_human_loop_errors(), tuple()}.
 start_human_loop(Client, Input) ->
     start_human_loop(Client, Input, []).
 
 -spec start_human_loop(map(), start_human_loop_request(), proplists:proplist()) ->
     {ok, start_human_loop_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_human_loop_errors(), tuple()}.
 start_human_loop(Client, Input0, Options0) ->
     Method = post,
     Path = ["/human-loops"],
@@ -396,20 +414,14 @@ start_human_loop(Client, Input0, Options0) ->
 -spec stop_human_loop(map(), stop_human_loop_request()) ->
     {ok, stop_human_loop_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_human_loop_errors(), tuple()}.
 stop_human_loop(Client, Input) ->
     stop_human_loop(Client, Input, []).
 
 -spec stop_human_loop(map(), stop_human_loop_request(), proplists:proplist()) ->
     {ok, stop_human_loop_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_human_loop_errors(), tuple()}.
 stop_human_loop(Client, Input0, Options0) ->
     Method = post,
     Path = ["/human-loops/stop"],

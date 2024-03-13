@@ -146,9 +146,11 @@
 %%   <<"clientToken">> => string()
 %% }
 -type delete_launch_profile_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_streaming_image_request() :: #{}
 -type get_streaming_image_request() :: #{}.
+
 
 %% Example:
 %% put_studio_members_request() :: #{
@@ -158,6 +160,7 @@
 %% }
 -type put_studio_members_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% studio_component_initialization_script() :: #{
 %%   <<"launchProfileProtocolVersion">> => string(),
@@ -166,6 +169,7 @@
 %%   <<"script">> => string()
 %% }
 -type studio_component_initialization_script() :: #{binary() => any()}.
+
 
 %% Example:
 %% launch_profile_initialization() :: #{
@@ -181,6 +185,7 @@
 %% }
 -type launch_profile_initialization() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_streaming_sessions_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -188,11 +193,13 @@
 %% }
 -type list_streaming_sessions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> => map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% launch_profile_membership() :: #{
@@ -202,6 +209,7 @@
 %%   <<"sid">> => string()
 %% }
 -type launch_profile_membership() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_studio_component_request() :: #{
@@ -220,11 +228,13 @@
 %% }
 -type create_studio_component_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_launch_profile_member_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
 -type delete_launch_profile_member_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_streaming_image_request() :: #{
@@ -234,12 +244,14 @@
 %% }
 -type update_streaming_image_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_eulas_response() :: #{
 %%   <<"eulas">> => list(eula()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_eulas_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% eula_acceptance() :: #{
@@ -250,15 +262,18 @@
 %%   <<"eulaId">> => string()
 %% }
 -type eula_acceptance() :: #{binary() => any()}.
+
 %% Example:
 %% get_streaming_session_backup_request() :: #{}
 -type get_streaming_session_backup_request() :: #{}.
+
 
 %% Example:
 %% create_launch_profile_response() :: #{
 %%   <<"launchProfile">> => launch_profile()
 %% }
 -type create_launch_profile_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% launch_profile_initialization_script() :: #{
@@ -269,6 +284,7 @@
 %%   <<"studioComponentName">> => string()
 %% }
 -type launch_profile_initialization_script() :: #{binary() => any()}.
+
 
 %% Example:
 %% studio_component() :: #{
@@ -295,11 +311,13 @@
 %% }
 -type studio_component() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_studio_response() :: #{
 %%   <<"studio">> => studio()
 %% }
 -type delete_studio_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% streaming_session() :: #{
@@ -332,9 +350,11 @@
 %%   <<"volumeRetentionMode">> => list(any())
 %% }
 -type streaming_session() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% list_launch_profiles_response() :: #{
@@ -342,9 +362,11 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_launch_profiles_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_launch_profile_member_response() :: #{}
 -type delete_launch_profile_member_response() :: #{}.
+
 
 %% Example:
 %% list_studio_members_response() :: #{
@@ -353,6 +375,7 @@
 %% }
 -type list_studio_members_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_streaming_images_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -360,11 +383,13 @@
 %% }
 -type list_streaming_images_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_studio_response() :: #{
 %%   <<"studio">> => studio()
 %% }
 -type get_studio_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% stop_streaming_session_request() :: #{
@@ -372,9 +397,11 @@
 %%   <<"volumeRetentionMode">> => list(any())
 %% }
 -type stop_streaming_session_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_studio_component_request() :: #{}
 -type get_studio_component_request() :: #{}.
+
 
 %% Example:
 %% list_launch_profiles_request() :: #{
@@ -385,6 +412,7 @@
 %% }
 -type list_launch_profiles_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% stream_configuration_session_storage() :: #{
 %%   <<"mode">> => list(list(any())()),
@@ -392,11 +420,13 @@
 %% }
 -type stream_configuration_session_storage() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_eula_response() :: #{
 %%   <<"eula">> => eula()
 %% }
 -type get_eula_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_launch_profile_members_response() :: #{
@@ -405,11 +435,13 @@
 %% }
 -type list_launch_profile_members_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_streaming_session_response() :: #{
 %%   <<"session">> => streaming_session()
 %% }
 -type get_streaming_session_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_launch_profile_initialization_request() :: #{
@@ -419,12 +451,14 @@
 %% }
 -type get_launch_profile_initialization_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_streaming_session_request() :: #{
 %%   <<"backupId">> => string(),
 %%   <<"clientToken">> => string()
 %% }
 -type start_streaming_session_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_streaming_session_request() :: #{
@@ -437,6 +471,7 @@
 %% }
 -type create_streaming_session_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_streaming_session_backups_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -444,11 +479,13 @@
 %% }
 -type list_streaming_session_backups_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_launch_profile_response() :: #{
 %%   <<"launchProfile">> => launch_profile()
 %% }
 -type update_launch_profile_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_launch_profile_member_request() :: #{
@@ -456,15 +493,18 @@
 %%   <<"persona">> := list(any())
 %% }
 -type update_launch_profile_member_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_eula_request() :: #{}
 -type get_eula_request() :: #{}.
+
 
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_studios_response() :: #{
@@ -473,12 +513,14 @@
 %% }
 -type list_studios_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_launch_profile_members_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_launch_profile_members_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% shared_file_system_configuration() :: #{
@@ -490,11 +532,13 @@
 %% }
 -type shared_file_system_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_streaming_session_response() :: #{
 %%   <<"session">> => streaming_session()
 %% }
 -type delete_streaming_session_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% new_studio_member() :: #{
@@ -502,6 +546,7 @@
 %%   <<"principalId">> => string()
 %% }
 -type new_studio_member() :: #{binary() => any()}.
+
 
 %% Example:
 %% validation_result() :: #{
@@ -511,6 +556,7 @@
 %%   <<"type">> => list(any())
 %% }
 -type validation_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% streaming_session_stream() :: #{
@@ -525,6 +571,7 @@
 %% }
 -type streaming_session_stream() :: #{binary() => any()}.
 
+
 %% Example:
 %% stream_configuration_session_backup() :: #{
 %%   <<"maxBackupsToRetain">> => integer(),
@@ -532,17 +579,20 @@
 %% }
 -type stream_configuration_session_backup() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_studio_component_response() :: #{
 %%   <<"studioComponent">> => studio_component()
 %% }
 -type update_studio_component_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_streaming_session_response() :: #{
 %%   <<"session">> => streaming_session()
 %% }
 -type create_streaming_session_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_launch_profile_details_response() :: #{
@@ -552,14 +602,17 @@
 %% }
 -type get_launch_profile_details_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_streaming_session_stream_response() :: #{
 %%   <<"stream">> => streaming_session_stream()
 %% }
 -type create_streaming_session_stream_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_streaming_session_stream_request() :: #{}
 -type get_streaming_session_stream_request() :: #{}.
+
 
 %% Example:
 %% delete_studio_component_request() :: #{
@@ -567,14 +620,17 @@
 %% }
 -type delete_studio_component_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_launch_profile_response() :: #{
 %%   <<"launchProfile">> => launch_profile()
 %% }
 -type get_launch_profile_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_studio_member_request() :: #{}
 -type get_studio_member_request() :: #{}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -584,6 +640,7 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"code">> => string(),
@@ -591,6 +648,7 @@
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% launch_profile_initialization_active_directory() :: #{
@@ -604,11 +662,13 @@
 %% }
 -type launch_profile_initialization_active_directory() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_studio_s_s_o_configuration_repair_response() :: #{
 %%   <<"studio">> => studio()
 %% }
 -type start_studio_s_s_o_configuration_repair_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_studio_member_response() :: #{
@@ -616,12 +676,14 @@
 %% }
 -type get_studio_member_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_eula_acceptances_response() :: #{
 %%   <<"eulaAcceptances">> => list(eula_acceptance()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_eula_acceptances_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
@@ -631,11 +693,13 @@
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_launch_profile_response() :: #{
 %%   <<"launchProfile">> => launch_profile()
 %% }
 -type delete_launch_profile_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_studio_response() :: #{
@@ -643,11 +707,13 @@
 %% }
 -type create_studio_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_streaming_image_response() :: #{
 %%   <<"streamingImage">> => streaming_image()
 %% }
 -type delete_streaming_image_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_launch_profile_members_request() :: #{
@@ -656,6 +722,7 @@
 %%   <<"members">> := list(new_launch_profile_member()())
 %% }
 -type put_launch_profile_members_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% streaming_session_backup() :: #{
@@ -672,11 +739,13 @@
 %% }
 -type streaming_session_backup() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_streaming_session_response() :: #{
 %%   <<"session">> => streaming_session()
 %% }
 -type start_streaming_session_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_studio_members_request() :: #{
@@ -685,17 +754,20 @@
 %% }
 -type list_studio_members_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_studio_component_response() :: #{
 %%   <<"studioComponent">> => studio_component()
 %% }
 -type create_studio_component_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% eula() :: #{
@@ -706,6 +778,7 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type eula() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_studio_request() :: #{
@@ -719,12 +792,14 @@
 %% }
 -type create_studio_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% streaming_image_encryption_configuration() :: #{
 %%   <<"keyArn">> => string(),
 %%   <<"keyType">> => list(any())
 %% }
 -type streaming_image_encryption_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_studio_components_request() :: #{
@@ -735,6 +810,7 @@
 %% }
 -type list_studio_components_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_streaming_session_backups_request() :: #{
 %%   <<"nextToken">> => string(),
@@ -742,12 +818,14 @@
 %% }
 -type list_streaming_session_backups_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_streaming_session_stream_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"expirationInSeconds">> => integer()
 %% }
 -type create_streaming_session_stream_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_launch_profile_request() :: #{
@@ -761,15 +839,18 @@
 %%   <<"tags">> => map()
 %% }
 -type create_launch_profile_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_streaming_session_request() :: #{}
 -type get_streaming_session_request() :: #{}.
+
 
 %% Example:
 %% update_launch_profile_member_response() :: #{
 %%   <<"member">> => launch_profile_membership()
 %% }
 -type update_launch_profile_member_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% active_directory_computer_attribute() :: #{
@@ -778,11 +859,13 @@
 %% }
 -type active_directory_computer_attribute() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_studio_s_s_o_configuration_repair_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
 -type start_studio_s_s_o_configuration_repair_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% studio_encryption_configuration() :: #{
@@ -790,6 +873,7 @@
 %%   <<"keyType">> => list(any())
 %% }
 -type studio_encryption_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_launch_profile_request() :: #{
@@ -802,29 +886,35 @@
 %% }
 -type update_launch_profile_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_studios_request() :: #{
 %%   <<"nextToken">> => string()
 %% }
 -type list_studios_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_launch_profile_request() :: #{}
 -type get_launch_profile_request() :: #{}.
+
 
 %% Example:
 %% delete_studio_component_response() :: #{
 %%   <<"studioComponent">> => studio_component()
 %% }
 -type delete_studio_component_response() :: #{binary() => any()}.
+
 %% Example:
 %% put_launch_profile_members_response() :: #{}
 -type put_launch_profile_members_response() :: #{}.
+
 
 %% Example:
 %% stop_streaming_session_response() :: #{
 %%   <<"session">> => streaming_session()
 %% }
 -type stop_streaming_session_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% access_denied_exception() :: #{
@@ -833,9 +923,11 @@
 %%   <<"message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% list_streaming_sessions_request() :: #{
@@ -846,6 +938,7 @@
 %% }
 -type list_streaming_sessions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% studio_membership() :: #{
 %%   <<"identityStoreId">> => string(),
@@ -855,14 +948,17 @@
 %% }
 -type studio_membership() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_streaming_session_backup_response() :: #{
 %%   <<"streamingSessionBackup">> => streaming_session_backup()
 %% }
 -type get_streaming_session_backup_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_launch_profile_details_request() :: #{}
 -type get_launch_profile_details_request() :: #{}.
+
 
 %% Example:
 %% update_studio_request() :: #{
@@ -873,6 +969,7 @@
 %% }
 -type update_studio_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"code">> => string(),
@@ -880,9 +977,11 @@
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% list_studio_components_response() :: #{
@@ -890,6 +989,7 @@
 %%   <<"studioComponents">> => list(studio_component()())
 %% }
 -type list_studio_components_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% streaming_image() :: #{
@@ -909,6 +1009,7 @@
 %% }
 -type streaming_image() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_error_exception() :: #{
 %%   <<"code">> => string(),
@@ -917,11 +1018,13 @@
 %% }
 -type internal_server_error_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_streaming_session_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
 -type delete_streaming_session_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% launch_profile() :: #{
@@ -945,17 +1048,20 @@
 %% }
 -type launch_profile() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_studio_member_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
 -type delete_studio_member_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% accept_eulas_response() :: #{
 %%   <<"eulaAcceptances">> => list(eula_acceptance()())
 %% }
 -type accept_eulas_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% throttling_exception() :: #{
@@ -965,6 +1071,7 @@
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% new_launch_profile_member() :: #{
 %%   <<"persona">> => list(any()),
@@ -972,11 +1079,13 @@
 %% }
 -type new_launch_profile_member() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_streaming_image_response() :: #{
 %%   <<"streamingImage">> => streaming_image()
 %% }
 -type get_streaming_image_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% compute_farm_configuration() :: #{
@@ -985,12 +1094,14 @@
 %% }
 -type compute_farm_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_streaming_images_request() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"owner">> => string()
 %% }
 -type list_streaming_images_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% stream_configuration_create() :: #{
@@ -1007,6 +1118,7 @@
 %% }
 -type stream_configuration_create() :: #{binary() => any()}.
 
+
 %% Example:
 %% accept_eulas_request() :: #{
 %%   <<"clientToken">> => string(),
@@ -1014,11 +1126,13 @@
 %% }
 -type accept_eulas_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_studio_component_response() :: #{
 %%   <<"studioComponent">> => studio_component()
 %% }
 -type get_studio_component_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_studio_component_request() :: #{
@@ -1036,11 +1150,13 @@
 %% }
 -type update_studio_component_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_streaming_image_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
 -type delete_streaming_image_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% active_directory_configuration() :: #{
@@ -1050,6 +1166,7 @@
 %% }
 -type active_directory_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% volume_configuration() :: #{
 %%   <<"iops">> => integer(),
@@ -1058,11 +1175,13 @@
 %% }
 -type volume_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_streaming_image_response() :: #{
 %%   <<"streamingImage">> => streaming_image()
 %% }
 -type create_streaming_image_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_streaming_image_request() :: #{
@@ -1074,20 +1193,24 @@
 %% }
 -type create_streaming_image_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_streaming_session_stream_response() :: #{
 %%   <<"stream">> => streaming_session_stream()
 %% }
 -type get_streaming_session_stream_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_studio_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
 -type delete_studio_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_studio_request() :: #{}
 -type get_studio_request() :: #{}.
+
 
 %% Example:
 %% update_studio_response() :: #{
@@ -1095,18 +1218,22 @@
 %% }
 -type update_studio_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% script_parameter_key_value() :: #{
 %%   <<"key">> => string(),
 %%   <<"value">> => string()
 %% }
 -type script_parameter_key_value() :: #{binary() => any()}.
+
 %% Example:
 %% delete_studio_member_response() :: #{}
 -type delete_studio_member_response() :: #{}.
+
 %% Example:
 %% put_studio_members_response() :: #{}
 -type put_studio_members_response() :: #{}.
+
 
 %% Example:
 %% studio() :: #{
@@ -1128,15 +1255,18 @@
 %%   <<"userRoleArn">> => string()
 %% }
 -type studio() :: #{binary() => any()}.
+
 %% Example:
 %% get_launch_profile_member_request() :: #{}
 -type get_launch_profile_member_request() :: #{}.
+
 
 %% Example:
 %% license_service_configuration() :: #{
 %%   <<"endpoint">> => string()
 %% }
 -type license_service_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_eula_acceptances_request() :: #{
@@ -1145,6 +1275,7 @@
 %% }
 -type list_eula_acceptances_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% streaming_session_storage_root() :: #{
 %%   <<"linux">> => string(),
@@ -1152,17 +1283,20 @@
 %% }
 -type streaming_session_storage_root() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_streaming_image_response() :: #{
 %%   <<"streamingImage">> => streaming_image()
 %% }
 -type update_streaming_image_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_launch_profile_member_response() :: #{
 %%   <<"member">> => launch_profile_membership()
 %% }
 -type get_launch_profile_member_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% studio_component_summary() :: #{
@@ -1177,6 +1311,7 @@
 %%   <<"updatedBy">> => string()
 %% }
 -type studio_component_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% stream_configuration() :: #{
@@ -1193,11 +1328,13 @@
 %% }
 -type stream_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_launch_profile_initialization_response() :: #{
 %%   <<"launchProfileInitialization">> => launch_profile_initialization()
 %% }
 -type get_launch_profile_initialization_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_eulas_request() :: #{
@@ -1205,6 +1342,445 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_eulas_request() :: #{binary() => any()}.
+
+-type accept_eulas_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_launch_profile_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_streaming_image_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_streaming_session_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_streaming_session_stream_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_studio_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_studio_component_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_launch_profile_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_launch_profile_member_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_streaming_image_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_streaming_session_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_studio_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_studio_component_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_studio_member_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_eula_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_launch_profile_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_launch_profile_details_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_launch_profile_initialization_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_launch_profile_member_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_streaming_image_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_streaming_session_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_streaming_session_backup_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_streaming_session_stream_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_studio_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_studio_component_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_studio_member_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_eula_acceptances_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_eulas_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_launch_profile_members_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_launch_profiles_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_streaming_images_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_streaming_session_backups_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_streaming_sessions_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_studio_components_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_studio_members_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_studios_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type put_launch_profile_members_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type put_studio_members_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_streaming_session_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_studio_s_s_o_configuration_repair_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type stop_streaming_session_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_launch_profile_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_launch_profile_member_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_streaming_image_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_studio_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_studio_component_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -1214,26 +1790,14 @@
 -spec accept_eulas(map(), binary() | list(), accept_eulas_request()) ->
     {ok, accept_eulas_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, accept_eulas_errors(), tuple()}.
 accept_eulas(Client, StudioId, Input) ->
     accept_eulas(Client, StudioId, Input, []).
 
 -spec accept_eulas(map(), binary() | list(), accept_eulas_request(), proplists:proplist()) ->
     {ok, accept_eulas_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, accept_eulas_errors(), tuple()}.
 accept_eulas(Client, StudioId, Input0, Options0) ->
     Method = post,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/eula-acceptances"],
@@ -1262,26 +1826,14 @@ accept_eulas(Client, StudioId, Input0, Options0) ->
 -spec create_launch_profile(map(), binary() | list(), create_launch_profile_request()) ->
     {ok, create_launch_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_launch_profile_errors(), tuple()}.
 create_launch_profile(Client, StudioId, Input) ->
     create_launch_profile(Client, StudioId, Input, []).
 
 -spec create_launch_profile(map(), binary() | list(), create_launch_profile_request(), proplists:proplist()) ->
     {ok, create_launch_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_launch_profile_errors(), tuple()}.
 create_launch_profile(Client, StudioId, Input0, Options0) ->
     Method = post,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/launch-profiles"],
@@ -1310,26 +1862,14 @@ create_launch_profile(Client, StudioId, Input0, Options0) ->
 -spec create_streaming_image(map(), binary() | list(), create_streaming_image_request()) ->
     {ok, create_streaming_image_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_streaming_image_errors(), tuple()}.
 create_streaming_image(Client, StudioId, Input) ->
     create_streaming_image(Client, StudioId, Input, []).
 
 -spec create_streaming_image(map(), binary() | list(), create_streaming_image_request(), proplists:proplist()) ->
     {ok, create_streaming_image_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_streaming_image_errors(), tuple()}.
 create_streaming_image(Client, StudioId, Input0, Options0) ->
     Method = post,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-images"],
@@ -1362,26 +1902,14 @@ create_streaming_image(Client, StudioId, Input0, Options0) ->
 -spec create_streaming_session(map(), binary() | list(), create_streaming_session_request()) ->
     {ok, create_streaming_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_streaming_session_errors(), tuple()}.
 create_streaming_session(Client, StudioId, Input) ->
     create_streaming_session(Client, StudioId, Input, []).
 
 -spec create_streaming_session(map(), binary() | list(), create_streaming_session_request(), proplists:proplist()) ->
     {ok, create_streaming_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_streaming_session_errors(), tuple()}.
 create_streaming_session(Client, StudioId, Input0, Options0) ->
     Method = post,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-sessions"],
@@ -1414,26 +1942,14 @@ create_streaming_session(Client, StudioId, Input0, Options0) ->
 -spec create_streaming_session_stream(map(), binary() | list(), binary() | list(), create_streaming_session_stream_request()) ->
     {ok, create_streaming_session_stream_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_streaming_session_stream_errors(), tuple()}.
 create_streaming_session_stream(Client, SessionId, StudioId, Input) ->
     create_streaming_session_stream(Client, SessionId, StudioId, Input, []).
 
 -spec create_streaming_session_stream(map(), binary() | list(), binary() | list(), create_streaming_session_stream_request(), proplists:proplist()) ->
     {ok, create_streaming_session_stream_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_streaming_session_stream_errors(), tuple()}.
 create_streaming_session_stream(Client, SessionId, StudioId, Input0, Options0) ->
     Method = post,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-sessions/", aws_util:encode_uri(SessionId), "/streams"],
@@ -1499,26 +2015,14 @@ create_streaming_session_stream(Client, SessionId, StudioId, Input0, Options0) -
 -spec create_studio(map(), create_studio_request()) ->
     {ok, create_studio_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_studio_errors(), tuple()}.
 create_studio(Client, Input) ->
     create_studio(Client, Input, []).
 
 -spec create_studio(map(), create_studio_request(), proplists:proplist()) ->
     {ok, create_studio_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_studio_errors(), tuple()}.
 create_studio(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-08-01/studios"],
@@ -1547,26 +2051,14 @@ create_studio(Client, Input0, Options0) ->
 -spec create_studio_component(map(), binary() | list(), create_studio_component_request()) ->
     {ok, create_studio_component_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_studio_component_errors(), tuple()}.
 create_studio_component(Client, StudioId, Input) ->
     create_studio_component(Client, StudioId, Input, []).
 
 -spec create_studio_component(map(), binary() | list(), create_studio_component_request(), proplists:proplist()) ->
     {ok, create_studio_component_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_studio_component_errors(), tuple()}.
 create_studio_component(Client, StudioId, Input0, Options0) ->
     Method = post,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/studio-components"],
@@ -1595,26 +2087,14 @@ create_studio_component(Client, StudioId, Input0, Options0) ->
 -spec delete_launch_profile(map(), binary() | list(), binary() | list(), delete_launch_profile_request()) ->
     {ok, delete_launch_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_launch_profile_errors(), tuple()}.
 delete_launch_profile(Client, LaunchProfileId, StudioId, Input) ->
     delete_launch_profile(Client, LaunchProfileId, StudioId, Input, []).
 
 -spec delete_launch_profile(map(), binary() | list(), binary() | list(), delete_launch_profile_request(), proplists:proplist()) ->
     {ok, delete_launch_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_launch_profile_errors(), tuple()}.
 delete_launch_profile(Client, LaunchProfileId, StudioId, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/launch-profiles/", aws_util:encode_uri(LaunchProfileId), ""],
@@ -1643,26 +2123,14 @@ delete_launch_profile(Client, LaunchProfileId, StudioId, Input0, Options0) ->
 -spec delete_launch_profile_member(map(), binary() | list(), binary() | list(), binary() | list(), delete_launch_profile_member_request()) ->
     {ok, delete_launch_profile_member_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_launch_profile_member_errors(), tuple()}.
 delete_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId, Input) ->
     delete_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId, Input, []).
 
 -spec delete_launch_profile_member(map(), binary() | list(), binary() | list(), binary() | list(), delete_launch_profile_member_request(), proplists:proplist()) ->
     {ok, delete_launch_profile_member_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_launch_profile_member_errors(), tuple()}.
 delete_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/launch-profiles/", aws_util:encode_uri(LaunchProfileId), "/membership/", aws_util:encode_uri(PrincipalId), ""],
@@ -1691,26 +2159,14 @@ delete_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId, Inp
 -spec delete_streaming_image(map(), binary() | list(), binary() | list(), delete_streaming_image_request()) ->
     {ok, delete_streaming_image_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_streaming_image_errors(), tuple()}.
 delete_streaming_image(Client, StreamingImageId, StudioId, Input) ->
     delete_streaming_image(Client, StreamingImageId, StudioId, Input, []).
 
 -spec delete_streaming_image(map(), binary() | list(), binary() | list(), delete_streaming_image_request(), proplists:proplist()) ->
     {ok, delete_streaming_image_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_streaming_image_errors(), tuple()}.
 delete_streaming_image(Client, StreamingImageId, StudioId, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-images/", aws_util:encode_uri(StreamingImageId), ""],
@@ -1747,26 +2203,14 @@ delete_streaming_image(Client, StreamingImageId, StudioId, Input0, Options0) ->
 -spec delete_streaming_session(map(), binary() | list(), binary() | list(), delete_streaming_session_request()) ->
     {ok, delete_streaming_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_streaming_session_errors(), tuple()}.
 delete_streaming_session(Client, SessionId, StudioId, Input) ->
     delete_streaming_session(Client, SessionId, StudioId, Input, []).
 
 -spec delete_streaming_session(map(), binary() | list(), binary() | list(), delete_streaming_session_request(), proplists:proplist()) ->
     {ok, delete_streaming_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_streaming_session_errors(), tuple()}.
 delete_streaming_session(Client, SessionId, StudioId, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-sessions/", aws_util:encode_uri(SessionId), ""],
@@ -1795,26 +2239,14 @@ delete_streaming_session(Client, SessionId, StudioId, Input0, Options0) ->
 -spec delete_studio(map(), binary() | list(), delete_studio_request()) ->
     {ok, delete_studio_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_studio_errors(), tuple()}.
 delete_studio(Client, StudioId, Input) ->
     delete_studio(Client, StudioId, Input, []).
 
 -spec delete_studio(map(), binary() | list(), delete_studio_request(), proplists:proplist()) ->
     {ok, delete_studio_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_studio_errors(), tuple()}.
 delete_studio(Client, StudioId, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), ""],
@@ -1843,26 +2275,14 @@ delete_studio(Client, StudioId, Input0, Options0) ->
 -spec delete_studio_component(map(), binary() | list(), binary() | list(), delete_studio_component_request()) ->
     {ok, delete_studio_component_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_studio_component_errors(), tuple()}.
 delete_studio_component(Client, StudioComponentId, StudioId, Input) ->
     delete_studio_component(Client, StudioComponentId, StudioId, Input, []).
 
 -spec delete_studio_component(map(), binary() | list(), binary() | list(), delete_studio_component_request(), proplists:proplist()) ->
     {ok, delete_studio_component_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_studio_component_errors(), tuple()}.
 delete_studio_component(Client, StudioComponentId, StudioId, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/studio-components/", aws_util:encode_uri(StudioComponentId), ""],
@@ -1891,26 +2311,14 @@ delete_studio_component(Client, StudioComponentId, StudioId, Input0, Options0) -
 -spec delete_studio_member(map(), binary() | list(), binary() | list(), delete_studio_member_request()) ->
     {ok, delete_studio_member_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_studio_member_errors(), tuple()}.
 delete_studio_member(Client, PrincipalId, StudioId, Input) ->
     delete_studio_member(Client, PrincipalId, StudioId, Input, []).
 
 -spec delete_studio_member(map(), binary() | list(), binary() | list(), delete_studio_member_request(), proplists:proplist()) ->
     {ok, delete_studio_member_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_studio_member_errors(), tuple()}.
 delete_studio_member(Client, PrincipalId, StudioId, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/membership/", aws_util:encode_uri(PrincipalId), ""],
@@ -1939,13 +2347,7 @@ delete_studio_member(Client, PrincipalId, StudioId, Input0, Options0) ->
 -spec get_eula(map(), binary() | list()) ->
     {ok, get_eula_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_eula_errors(), tuple()}.
 get_eula(Client, EulaId)
   when is_map(Client) ->
     get_eula(Client, EulaId, #{}, #{}).
@@ -1953,13 +2355,7 @@ get_eula(Client, EulaId)
 -spec get_eula(map(), binary() | list(), map(), map()) ->
     {ok, get_eula_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_eula_errors(), tuple()}.
 get_eula(Client, EulaId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_eula(Client, EulaId, QueryMap, HeadersMap, []).
@@ -1967,13 +2363,7 @@ get_eula(Client, EulaId, QueryMap, HeadersMap)
 -spec get_eula(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_eula_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_eula_errors(), tuple()}.
 get_eula(Client, EulaId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/eulas/", aws_util:encode_uri(EulaId), ""],
@@ -1994,13 +2384,7 @@ get_eula(Client, EulaId, QueryMap, HeadersMap, Options0)
 -spec get_launch_profile(map(), binary() | list(), binary() | list()) ->
     {ok, get_launch_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_launch_profile_errors(), tuple()}.
 get_launch_profile(Client, LaunchProfileId, StudioId)
   when is_map(Client) ->
     get_launch_profile(Client, LaunchProfileId, StudioId, #{}, #{}).
@@ -2008,13 +2392,7 @@ get_launch_profile(Client, LaunchProfileId, StudioId)
 -spec get_launch_profile(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_launch_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_launch_profile_errors(), tuple()}.
 get_launch_profile(Client, LaunchProfileId, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_launch_profile(Client, LaunchProfileId, StudioId, QueryMap, HeadersMap, []).
@@ -2022,13 +2400,7 @@ get_launch_profile(Client, LaunchProfileId, StudioId, QueryMap, HeadersMap)
 -spec get_launch_profile(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_launch_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_launch_profile_errors(), tuple()}.
 get_launch_profile(Client, LaunchProfileId, StudioId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/launch-profiles/", aws_util:encode_uri(LaunchProfileId), ""],
@@ -2056,13 +2428,7 @@ get_launch_profile(Client, LaunchProfileId, StudioId, QueryMap, HeadersMap, Opti
 -spec get_launch_profile_details(map(), binary() | list(), binary() | list()) ->
     {ok, get_launch_profile_details_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_launch_profile_details_errors(), tuple()}.
 get_launch_profile_details(Client, LaunchProfileId, StudioId)
   when is_map(Client) ->
     get_launch_profile_details(Client, LaunchProfileId, StudioId, #{}, #{}).
@@ -2070,13 +2436,7 @@ get_launch_profile_details(Client, LaunchProfileId, StudioId)
 -spec get_launch_profile_details(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_launch_profile_details_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_launch_profile_details_errors(), tuple()}.
 get_launch_profile_details(Client, LaunchProfileId, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_launch_profile_details(Client, LaunchProfileId, StudioId, QueryMap, HeadersMap, []).
@@ -2084,13 +2444,7 @@ get_launch_profile_details(Client, LaunchProfileId, StudioId, QueryMap, HeadersM
 -spec get_launch_profile_details(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_launch_profile_details_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_launch_profile_details_errors(), tuple()}.
 get_launch_profile_details(Client, LaunchProfileId, StudioId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/launch-profiles/", aws_util:encode_uri(LaunchProfileId), "/details"],
@@ -2111,13 +2465,7 @@ get_launch_profile_details(Client, LaunchProfileId, StudioId, QueryMap, HeadersM
 -spec get_launch_profile_initialization(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_launch_profile_initialization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_launch_profile_initialization_errors(), tuple()}.
 get_launch_profile_initialization(Client, LaunchProfileId, StudioId, LaunchProfileProtocolVersions, LaunchPurpose, Platform)
   when is_map(Client) ->
     get_launch_profile_initialization(Client, LaunchProfileId, StudioId, LaunchProfileProtocolVersions, LaunchPurpose, Platform, #{}, #{}).
@@ -2125,13 +2473,7 @@ get_launch_profile_initialization(Client, LaunchProfileId, StudioId, LaunchProfi
 -spec get_launch_profile_initialization(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_launch_profile_initialization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_launch_profile_initialization_errors(), tuple()}.
 get_launch_profile_initialization(Client, LaunchProfileId, StudioId, LaunchProfileProtocolVersions, LaunchPurpose, Platform, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_launch_profile_initialization(Client, LaunchProfileId, StudioId, LaunchProfileProtocolVersions, LaunchPurpose, Platform, QueryMap, HeadersMap, []).
@@ -2139,13 +2481,7 @@ get_launch_profile_initialization(Client, LaunchProfileId, StudioId, LaunchProfi
 -spec get_launch_profile_initialization(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_launch_profile_initialization_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_launch_profile_initialization_errors(), tuple()}.
 get_launch_profile_initialization(Client, LaunchProfileId, StudioId, LaunchProfileProtocolVersions, LaunchPurpose, Platform, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/launch-profiles/", aws_util:encode_uri(LaunchProfileId), "/init"],
@@ -2172,13 +2508,7 @@ get_launch_profile_initialization(Client, LaunchProfileId, StudioId, LaunchProfi
 -spec get_launch_profile_member(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_launch_profile_member_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_launch_profile_member_errors(), tuple()}.
 get_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId)
   when is_map(Client) ->
     get_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId, #{}, #{}).
@@ -2186,13 +2516,7 @@ get_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId)
 -spec get_launch_profile_member(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_launch_profile_member_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_launch_profile_member_errors(), tuple()}.
 get_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId, QueryMap, HeadersMap, []).
@@ -2200,13 +2524,7 @@ get_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId, QueryM
 -spec get_launch_profile_member(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_launch_profile_member_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_launch_profile_member_errors(), tuple()}.
 get_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/launch-profiles/", aws_util:encode_uri(LaunchProfileId), "/membership/", aws_util:encode_uri(PrincipalId), ""],
@@ -2227,13 +2545,7 @@ get_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId, QueryM
 -spec get_streaming_image(map(), binary() | list(), binary() | list()) ->
     {ok, get_streaming_image_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_streaming_image_errors(), tuple()}.
 get_streaming_image(Client, StreamingImageId, StudioId)
   when is_map(Client) ->
     get_streaming_image(Client, StreamingImageId, StudioId, #{}, #{}).
@@ -2241,13 +2553,7 @@ get_streaming_image(Client, StreamingImageId, StudioId)
 -spec get_streaming_image(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_streaming_image_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_streaming_image_errors(), tuple()}.
 get_streaming_image(Client, StreamingImageId, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_streaming_image(Client, StreamingImageId, StudioId, QueryMap, HeadersMap, []).
@@ -2255,13 +2561,7 @@ get_streaming_image(Client, StreamingImageId, StudioId, QueryMap, HeadersMap)
 -spec get_streaming_image(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_streaming_image_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_streaming_image_errors(), tuple()}.
 get_streaming_image(Client, StreamingImageId, StudioId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-images/", aws_util:encode_uri(StreamingImageId), ""],
@@ -2286,13 +2586,7 @@ get_streaming_image(Client, StreamingImageId, StudioId, QueryMap, HeadersMap, Op
 -spec get_streaming_session(map(), binary() | list(), binary() | list()) ->
     {ok, get_streaming_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_streaming_session_errors(), tuple()}.
 get_streaming_session(Client, SessionId, StudioId)
   when is_map(Client) ->
     get_streaming_session(Client, SessionId, StudioId, #{}, #{}).
@@ -2300,13 +2594,7 @@ get_streaming_session(Client, SessionId, StudioId)
 -spec get_streaming_session(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_streaming_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_streaming_session_errors(), tuple()}.
 get_streaming_session(Client, SessionId, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_streaming_session(Client, SessionId, StudioId, QueryMap, HeadersMap, []).
@@ -2314,13 +2602,7 @@ get_streaming_session(Client, SessionId, StudioId, QueryMap, HeadersMap)
 -spec get_streaming_session(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_streaming_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_streaming_session_errors(), tuple()}.
 get_streaming_session(Client, SessionId, StudioId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-sessions/", aws_util:encode_uri(SessionId), ""],
@@ -2345,12 +2627,7 @@ get_streaming_session(Client, SessionId, StudioId, QueryMap, HeadersMap, Options
 -spec get_streaming_session_backup(map(), binary() | list(), binary() | list()) ->
     {ok, get_streaming_session_backup_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_streaming_session_backup_errors(), tuple()}.
 get_streaming_session_backup(Client, BackupId, StudioId)
   when is_map(Client) ->
     get_streaming_session_backup(Client, BackupId, StudioId, #{}, #{}).
@@ -2358,12 +2635,7 @@ get_streaming_session_backup(Client, BackupId, StudioId)
 -spec get_streaming_session_backup(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_streaming_session_backup_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_streaming_session_backup_errors(), tuple()}.
 get_streaming_session_backup(Client, BackupId, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_streaming_session_backup(Client, BackupId, StudioId, QueryMap, HeadersMap, []).
@@ -2371,12 +2643,7 @@ get_streaming_session_backup(Client, BackupId, StudioId, QueryMap, HeadersMap)
 -spec get_streaming_session_backup(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_streaming_session_backup_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_streaming_session_backup_errors(), tuple()}.
 get_streaming_session_backup(Client, BackupId, StudioId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-session-backups/", aws_util:encode_uri(BackupId), ""],
@@ -2404,13 +2671,7 @@ get_streaming_session_backup(Client, BackupId, StudioId, QueryMap, HeadersMap, O
 -spec get_streaming_session_stream(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_streaming_session_stream_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_streaming_session_stream_errors(), tuple()}.
 get_streaming_session_stream(Client, SessionId, StreamId, StudioId)
   when is_map(Client) ->
     get_streaming_session_stream(Client, SessionId, StreamId, StudioId, #{}, #{}).
@@ -2418,13 +2679,7 @@ get_streaming_session_stream(Client, SessionId, StreamId, StudioId)
 -spec get_streaming_session_stream(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_streaming_session_stream_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_streaming_session_stream_errors(), tuple()}.
 get_streaming_session_stream(Client, SessionId, StreamId, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_streaming_session_stream(Client, SessionId, StreamId, StudioId, QueryMap, HeadersMap, []).
@@ -2432,13 +2687,7 @@ get_streaming_session_stream(Client, SessionId, StreamId, StudioId, QueryMap, He
 -spec get_streaming_session_stream(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_streaming_session_stream_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_streaming_session_stream_errors(), tuple()}.
 get_streaming_session_stream(Client, SessionId, StreamId, StudioId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-sessions/", aws_util:encode_uri(SessionId), "/streams/", aws_util:encode_uri(StreamId), ""],
@@ -2459,13 +2708,7 @@ get_streaming_session_stream(Client, SessionId, StreamId, StudioId, QueryMap, He
 -spec get_studio(map(), binary() | list()) ->
     {ok, get_studio_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_studio_errors(), tuple()}.
 get_studio(Client, StudioId)
   when is_map(Client) ->
     get_studio(Client, StudioId, #{}, #{}).
@@ -2473,13 +2716,7 @@ get_studio(Client, StudioId)
 -spec get_studio(map(), binary() | list(), map(), map()) ->
     {ok, get_studio_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_studio_errors(), tuple()}.
 get_studio(Client, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_studio(Client, StudioId, QueryMap, HeadersMap, []).
@@ -2487,13 +2724,7 @@ get_studio(Client, StudioId, QueryMap, HeadersMap)
 -spec get_studio(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_studio_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_studio_errors(), tuple()}.
 get_studio(Client, StudioId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), ""],
@@ -2514,13 +2745,7 @@ get_studio(Client, StudioId, QueryMap, HeadersMap, Options0)
 -spec get_studio_component(map(), binary() | list(), binary() | list()) ->
     {ok, get_studio_component_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_studio_component_errors(), tuple()}.
 get_studio_component(Client, StudioComponentId, StudioId)
   when is_map(Client) ->
     get_studio_component(Client, StudioComponentId, StudioId, #{}, #{}).
@@ -2528,13 +2753,7 @@ get_studio_component(Client, StudioComponentId, StudioId)
 -spec get_studio_component(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_studio_component_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_studio_component_errors(), tuple()}.
 get_studio_component(Client, StudioComponentId, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_studio_component(Client, StudioComponentId, StudioId, QueryMap, HeadersMap, []).
@@ -2542,13 +2761,7 @@ get_studio_component(Client, StudioComponentId, StudioId, QueryMap, HeadersMap)
 -spec get_studio_component(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_studio_component_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_studio_component_errors(), tuple()}.
 get_studio_component(Client, StudioComponentId, StudioId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/studio-components/", aws_util:encode_uri(StudioComponentId), ""],
@@ -2569,13 +2782,7 @@ get_studio_component(Client, StudioComponentId, StudioId, QueryMap, HeadersMap, 
 -spec get_studio_member(map(), binary() | list(), binary() | list()) ->
     {ok, get_studio_member_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_studio_member_errors(), tuple()}.
 get_studio_member(Client, PrincipalId, StudioId)
   when is_map(Client) ->
     get_studio_member(Client, PrincipalId, StudioId, #{}, #{}).
@@ -2583,13 +2790,7 @@ get_studio_member(Client, PrincipalId, StudioId)
 -spec get_studio_member(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_studio_member_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_studio_member_errors(), tuple()}.
 get_studio_member(Client, PrincipalId, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_studio_member(Client, PrincipalId, StudioId, QueryMap, HeadersMap, []).
@@ -2597,13 +2798,7 @@ get_studio_member(Client, PrincipalId, StudioId, QueryMap, HeadersMap)
 -spec get_studio_member(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_studio_member_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_studio_member_errors(), tuple()}.
 get_studio_member(Client, PrincipalId, StudioId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/membership/", aws_util:encode_uri(PrincipalId), ""],
@@ -2624,13 +2819,7 @@ get_studio_member(Client, PrincipalId, StudioId, QueryMap, HeadersMap, Options0)
 -spec list_eula_acceptances(map(), binary() | list()) ->
     {ok, list_eula_acceptances_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_eula_acceptances_errors(), tuple()}.
 list_eula_acceptances(Client, StudioId)
   when is_map(Client) ->
     list_eula_acceptances(Client, StudioId, #{}, #{}).
@@ -2638,13 +2827,7 @@ list_eula_acceptances(Client, StudioId)
 -spec list_eula_acceptances(map(), binary() | list(), map(), map()) ->
     {ok, list_eula_acceptances_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_eula_acceptances_errors(), tuple()}.
 list_eula_acceptances(Client, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_eula_acceptances(Client, StudioId, QueryMap, HeadersMap, []).
@@ -2652,13 +2835,7 @@ list_eula_acceptances(Client, StudioId, QueryMap, HeadersMap)
 -spec list_eula_acceptances(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_eula_acceptances_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_eula_acceptances_errors(), tuple()}.
 list_eula_acceptances(Client, StudioId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/eula-acceptances"],
@@ -2684,13 +2861,7 @@ list_eula_acceptances(Client, StudioId, QueryMap, HeadersMap, Options0)
 -spec list_eulas(map()) ->
     {ok, list_eulas_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_eulas_errors(), tuple()}.
 list_eulas(Client)
   when is_map(Client) ->
     list_eulas(Client, #{}, #{}).
@@ -2698,13 +2869,7 @@ list_eulas(Client)
 -spec list_eulas(map(), map(), map()) ->
     {ok, list_eulas_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_eulas_errors(), tuple()}.
 list_eulas(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_eulas(Client, QueryMap, HeadersMap, []).
@@ -2712,13 +2877,7 @@ list_eulas(Client, QueryMap, HeadersMap)
 -spec list_eulas(map(), map(), map(), proplists:proplist()) ->
     {ok, list_eulas_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_eulas_errors(), tuple()}.
 list_eulas(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/eulas"],
@@ -2744,13 +2903,7 @@ list_eulas(Client, QueryMap, HeadersMap, Options0)
 -spec list_launch_profile_members(map(), binary() | list(), binary() | list()) ->
     {ok, list_launch_profile_members_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_launch_profile_members_errors(), tuple()}.
 list_launch_profile_members(Client, LaunchProfileId, StudioId)
   when is_map(Client) ->
     list_launch_profile_members(Client, LaunchProfileId, StudioId, #{}, #{}).
@@ -2758,13 +2911,7 @@ list_launch_profile_members(Client, LaunchProfileId, StudioId)
 -spec list_launch_profile_members(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_launch_profile_members_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_launch_profile_members_errors(), tuple()}.
 list_launch_profile_members(Client, LaunchProfileId, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_launch_profile_members(Client, LaunchProfileId, StudioId, QueryMap, HeadersMap, []).
@@ -2772,13 +2919,7 @@ list_launch_profile_members(Client, LaunchProfileId, StudioId, QueryMap, Headers
 -spec list_launch_profile_members(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_launch_profile_members_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_launch_profile_members_errors(), tuple()}.
 list_launch_profile_members(Client, LaunchProfileId, StudioId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/launch-profiles/", aws_util:encode_uri(LaunchProfileId), "/membership"],
@@ -2804,13 +2945,7 @@ list_launch_profile_members(Client, LaunchProfileId, StudioId, QueryMap, Headers
 -spec list_launch_profiles(map(), binary() | list()) ->
     {ok, list_launch_profiles_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_launch_profiles_errors(), tuple()}.
 list_launch_profiles(Client, StudioId)
   when is_map(Client) ->
     list_launch_profiles(Client, StudioId, #{}, #{}).
@@ -2818,13 +2953,7 @@ list_launch_profiles(Client, StudioId)
 -spec list_launch_profiles(map(), binary() | list(), map(), map()) ->
     {ok, list_launch_profiles_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_launch_profiles_errors(), tuple()}.
 list_launch_profiles(Client, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_launch_profiles(Client, StudioId, QueryMap, HeadersMap, []).
@@ -2832,13 +2961,7 @@ list_launch_profiles(Client, StudioId, QueryMap, HeadersMap)
 -spec list_launch_profiles(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_launch_profiles_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_launch_profiles_errors(), tuple()}.
 list_launch_profiles(Client, StudioId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/launch-profiles"],
@@ -2870,13 +2993,7 @@ list_launch_profiles(Client, StudioId, QueryMap, HeadersMap, Options0)
 -spec list_streaming_images(map(), binary() | list()) ->
     {ok, list_streaming_images_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_streaming_images_errors(), tuple()}.
 list_streaming_images(Client, StudioId)
   when is_map(Client) ->
     list_streaming_images(Client, StudioId, #{}, #{}).
@@ -2884,13 +3001,7 @@ list_streaming_images(Client, StudioId)
 -spec list_streaming_images(map(), binary() | list(), map(), map()) ->
     {ok, list_streaming_images_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_streaming_images_errors(), tuple()}.
 list_streaming_images(Client, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_streaming_images(Client, StudioId, QueryMap, HeadersMap, []).
@@ -2898,13 +3009,7 @@ list_streaming_images(Client, StudioId, QueryMap, HeadersMap)
 -spec list_streaming_images(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_streaming_images_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_streaming_images_errors(), tuple()}.
 list_streaming_images(Client, StudioId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-images"],
@@ -2930,12 +3035,7 @@ list_streaming_images(Client, StudioId, QueryMap, HeadersMap, Options0)
 -spec list_streaming_session_backups(map(), binary() | list()) ->
     {ok, list_streaming_session_backups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_streaming_session_backups_errors(), tuple()}.
 list_streaming_session_backups(Client, StudioId)
   when is_map(Client) ->
     list_streaming_session_backups(Client, StudioId, #{}, #{}).
@@ -2943,12 +3043,7 @@ list_streaming_session_backups(Client, StudioId)
 -spec list_streaming_session_backups(map(), binary() | list(), map(), map()) ->
     {ok, list_streaming_session_backups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_streaming_session_backups_errors(), tuple()}.
 list_streaming_session_backups(Client, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_streaming_session_backups(Client, StudioId, QueryMap, HeadersMap, []).
@@ -2956,12 +3051,7 @@ list_streaming_session_backups(Client, StudioId, QueryMap, HeadersMap)
 -spec list_streaming_session_backups(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_streaming_session_backups_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_streaming_session_backups_errors(), tuple()}.
 list_streaming_session_backups(Client, StudioId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-session-backups"],
@@ -2987,13 +3077,7 @@ list_streaming_session_backups(Client, StudioId, QueryMap, HeadersMap, Options0)
 -spec list_streaming_sessions(map(), binary() | list()) ->
     {ok, list_streaming_sessions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_streaming_sessions_errors(), tuple()}.
 list_streaming_sessions(Client, StudioId)
   when is_map(Client) ->
     list_streaming_sessions(Client, StudioId, #{}, #{}).
@@ -3001,13 +3085,7 @@ list_streaming_sessions(Client, StudioId)
 -spec list_streaming_sessions(map(), binary() | list(), map(), map()) ->
     {ok, list_streaming_sessions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_streaming_sessions_errors(), tuple()}.
 list_streaming_sessions(Client, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_streaming_sessions(Client, StudioId, QueryMap, HeadersMap, []).
@@ -3015,13 +3093,7 @@ list_streaming_sessions(Client, StudioId, QueryMap, HeadersMap)
 -spec list_streaming_sessions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_streaming_sessions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_streaming_sessions_errors(), tuple()}.
 list_streaming_sessions(Client, StudioId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-sessions"],
@@ -3049,13 +3121,7 @@ list_streaming_sessions(Client, StudioId, QueryMap, HeadersMap, Options0)
 -spec list_studio_components(map(), binary() | list()) ->
     {ok, list_studio_components_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_studio_components_errors(), tuple()}.
 list_studio_components(Client, StudioId)
   when is_map(Client) ->
     list_studio_components(Client, StudioId, #{}, #{}).
@@ -3063,13 +3129,7 @@ list_studio_components(Client, StudioId)
 -spec list_studio_components(map(), binary() | list(), map(), map()) ->
     {ok, list_studio_components_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_studio_components_errors(), tuple()}.
 list_studio_components(Client, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_studio_components(Client, StudioId, QueryMap, HeadersMap, []).
@@ -3077,13 +3137,7 @@ list_studio_components(Client, StudioId, QueryMap, HeadersMap)
 -spec list_studio_components(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_studio_components_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_studio_components_errors(), tuple()}.
 list_studio_components(Client, StudioId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/studio-components"],
@@ -3113,13 +3167,7 @@ list_studio_components(Client, StudioId, QueryMap, HeadersMap, Options0)
 -spec list_studio_members(map(), binary() | list()) ->
     {ok, list_studio_members_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_studio_members_errors(), tuple()}.
 list_studio_members(Client, StudioId)
   when is_map(Client) ->
     list_studio_members(Client, StudioId, #{}, #{}).
@@ -3127,13 +3175,7 @@ list_studio_members(Client, StudioId)
 -spec list_studio_members(map(), binary() | list(), map(), map()) ->
     {ok, list_studio_members_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_studio_members_errors(), tuple()}.
 list_studio_members(Client, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_studio_members(Client, StudioId, QueryMap, HeadersMap, []).
@@ -3141,13 +3183,7 @@ list_studio_members(Client, StudioId, QueryMap, HeadersMap)
 -spec list_studio_members(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_studio_members_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_studio_members_errors(), tuple()}.
 list_studio_members(Client, StudioId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/membership"],
@@ -3174,13 +3210,7 @@ list_studio_members(Client, StudioId, QueryMap, HeadersMap, Options0)
 -spec list_studios(map()) ->
     {ok, list_studios_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_studios_errors(), tuple()}.
 list_studios(Client)
   when is_map(Client) ->
     list_studios(Client, #{}, #{}).
@@ -3188,13 +3218,7 @@ list_studios(Client)
 -spec list_studios(map(), map(), map()) ->
     {ok, list_studios_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_studios_errors(), tuple()}.
 list_studios(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_studios(Client, QueryMap, HeadersMap, []).
@@ -3202,13 +3226,7 @@ list_studios(Client, QueryMap, HeadersMap)
 -spec list_studios(map(), map(), map(), proplists:proplist()) ->
     {ok, list_studios_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_studios_errors(), tuple()}.
 list_studios(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios"],
@@ -3241,13 +3259,7 @@ list_studios(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -3255,13 +3267,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -3269,13 +3275,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -3296,26 +3296,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec put_launch_profile_members(map(), binary() | list(), binary() | list(), put_launch_profile_members_request()) ->
     {ok, put_launch_profile_members_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_launch_profile_members_errors(), tuple()}.
 put_launch_profile_members(Client, LaunchProfileId, StudioId, Input) ->
     put_launch_profile_members(Client, LaunchProfileId, StudioId, Input, []).
 
 -spec put_launch_profile_members(map(), binary() | list(), binary() | list(), put_launch_profile_members_request(), proplists:proplist()) ->
     {ok, put_launch_profile_members_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_launch_profile_members_errors(), tuple()}.
 put_launch_profile_members(Client, LaunchProfileId, StudioId, Input0, Options0) ->
     Method = post,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/launch-profiles/", aws_util:encode_uri(LaunchProfileId), "/membership"],
@@ -3344,26 +3332,14 @@ put_launch_profile_members(Client, LaunchProfileId, StudioId, Input0, Options0) 
 -spec put_studio_members(map(), binary() | list(), put_studio_members_request()) ->
     {ok, put_studio_members_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_studio_members_errors(), tuple()}.
 put_studio_members(Client, StudioId, Input) ->
     put_studio_members(Client, StudioId, Input, []).
 
 -spec put_studio_members(map(), binary() | list(), put_studio_members_request(), proplists:proplist()) ->
     {ok, put_studio_members_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_studio_members_errors(), tuple()}.
 put_studio_members(Client, StudioId, Input0, Options0) ->
     Method = post,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/membership"],
@@ -3397,26 +3373,14 @@ put_studio_members(Client, StudioId, Input0, Options0) ->
 -spec start_streaming_session(map(), binary() | list(), binary() | list(), start_streaming_session_request()) ->
     {ok, start_streaming_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_streaming_session_errors(), tuple()}.
 start_streaming_session(Client, SessionId, StudioId, Input) ->
     start_streaming_session(Client, SessionId, StudioId, Input, []).
 
 -spec start_streaming_session(map(), binary() | list(), binary() | list(), start_streaming_session_request(), proplists:proplist()) ->
     {ok, start_streaming_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_streaming_session_errors(), tuple()}.
 start_streaming_session(Client, SessionId, StudioId, Input0, Options0) ->
     Method = post,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-sessions/", aws_util:encode_uri(SessionId), "/start"],
@@ -3459,26 +3423,14 @@ start_streaming_session(Client, SessionId, StudioId, Input0, Options0) ->
 -spec start_studio_s_s_o_configuration_repair(map(), binary() | list(), start_studio_s_s_o_configuration_repair_request()) ->
     {ok, start_studio_s_s_o_configuration_repair_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_studio_s_s_o_configuration_repair_errors(), tuple()}.
 start_studio_s_s_o_configuration_repair(Client, StudioId, Input) ->
     start_studio_s_s_o_configuration_repair(Client, StudioId, Input, []).
 
 -spec start_studio_s_s_o_configuration_repair(map(), binary() | list(), start_studio_s_s_o_configuration_repair_request(), proplists:proplist()) ->
     {ok, start_studio_s_s_o_configuration_repair_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_studio_s_s_o_configuration_repair_errors(), tuple()}.
 start_studio_s_s_o_configuration_repair(Client, StudioId, Input0, Options0) ->
     Method = put,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/sso-configuration"],
@@ -3512,26 +3464,14 @@ start_studio_s_s_o_configuration_repair(Client, StudioId, Input0, Options0) ->
 -spec stop_streaming_session(map(), binary() | list(), binary() | list(), stop_streaming_session_request()) ->
     {ok, stop_streaming_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_streaming_session_errors(), tuple()}.
 stop_streaming_session(Client, SessionId, StudioId, Input) ->
     stop_streaming_session(Client, SessionId, StudioId, Input, []).
 
 -spec stop_streaming_session(map(), binary() | list(), binary() | list(), stop_streaming_session_request(), proplists:proplist()) ->
     {ok, stop_streaming_session_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_streaming_session_errors(), tuple()}.
 stop_streaming_session(Client, SessionId, StudioId, Input0, Options0) ->
     Method = post,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-sessions/", aws_util:encode_uri(SessionId), "/stop"],
@@ -3560,26 +3500,14 @@ stop_streaming_session(Client, SessionId, StudioId, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/2020-08-01/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -3606,26 +3534,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-08-01/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -3653,26 +3569,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_launch_profile(map(), binary() | list(), binary() | list(), update_launch_profile_request()) ->
     {ok, update_launch_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_launch_profile_errors(), tuple()}.
 update_launch_profile(Client, LaunchProfileId, StudioId, Input) ->
     update_launch_profile(Client, LaunchProfileId, StudioId, Input, []).
 
 -spec update_launch_profile(map(), binary() | list(), binary() | list(), update_launch_profile_request(), proplists:proplist()) ->
     {ok, update_launch_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_launch_profile_errors(), tuple()}.
 update_launch_profile(Client, LaunchProfileId, StudioId, Input0, Options0) ->
     Method = patch,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/launch-profiles/", aws_util:encode_uri(LaunchProfileId), ""],
@@ -3701,26 +3605,14 @@ update_launch_profile(Client, LaunchProfileId, StudioId, Input0, Options0) ->
 -spec update_launch_profile_member(map(), binary() | list(), binary() | list(), binary() | list(), update_launch_profile_member_request()) ->
     {ok, update_launch_profile_member_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_launch_profile_member_errors(), tuple()}.
 update_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId, Input) ->
     update_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId, Input, []).
 
 -spec update_launch_profile_member(map(), binary() | list(), binary() | list(), binary() | list(), update_launch_profile_member_request(), proplists:proplist()) ->
     {ok, update_launch_profile_member_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_launch_profile_member_errors(), tuple()}.
 update_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId, Input0, Options0) ->
     Method = patch,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/launch-profiles/", aws_util:encode_uri(LaunchProfileId), "/membership/", aws_util:encode_uri(PrincipalId), ""],
@@ -3749,26 +3641,14 @@ update_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId, Inp
 -spec update_streaming_image(map(), binary() | list(), binary() | list(), update_streaming_image_request()) ->
     {ok, update_streaming_image_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_streaming_image_errors(), tuple()}.
 update_streaming_image(Client, StreamingImageId, StudioId, Input) ->
     update_streaming_image(Client, StreamingImageId, StudioId, Input, []).
 
 -spec update_streaming_image(map(), binary() | list(), binary() | list(), update_streaming_image_request(), proplists:proplist()) ->
     {ok, update_streaming_image_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_streaming_image_errors(), tuple()}.
 update_streaming_image(Client, StreamingImageId, StudioId, Input0, Options0) ->
     Method = patch,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-images/", aws_util:encode_uri(StreamingImageId), ""],
@@ -3800,26 +3680,14 @@ update_streaming_image(Client, StreamingImageId, StudioId, Input0, Options0) ->
 -spec update_studio(map(), binary() | list(), update_studio_request()) ->
     {ok, update_studio_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_studio_errors(), tuple()}.
 update_studio(Client, StudioId, Input) ->
     update_studio(Client, StudioId, Input, []).
 
 -spec update_studio(map(), binary() | list(), update_studio_request(), proplists:proplist()) ->
     {ok, update_studio_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_studio_errors(), tuple()}.
 update_studio(Client, StudioId, Input0, Options0) ->
     Method = patch,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), ""],
@@ -3848,26 +3716,14 @@ update_studio(Client, StudioId, Input0, Options0) ->
 -spec update_studio_component(map(), binary() | list(), binary() | list(), update_studio_component_request()) ->
     {ok, update_studio_component_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_studio_component_errors(), tuple()}.
 update_studio_component(Client, StudioComponentId, StudioId, Input) ->
     update_studio_component(Client, StudioComponentId, StudioId, Input, []).
 
 -spec update_studio_component(map(), binary() | list(), binary() | list(), update_studio_component_request(), proplists:proplist()) ->
     {ok, update_studio_component_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_studio_component_errors(), tuple()}.
 update_studio_component(Client, StudioComponentId, StudioId, Input0, Options0) ->
     Method = patch,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/studio-components/", aws_util:encode_uri(StudioComponentId), ""],

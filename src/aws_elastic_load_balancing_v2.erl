@@ -1466,6 +1466,271 @@
 %% }
 -type modify_target_group_attributes_output() :: #{binary() => any()}.
 
+-type add_listener_certificates_errors() ::
+    listener_not_found_exception() | 
+    too_many_certificates_exception() | 
+    certificate_not_found_exception().
+
+-type add_tags_errors() ::
+    too_many_tags_exception() | 
+    rule_not_found_exception() | 
+    listener_not_found_exception() | 
+    target_group_not_found_exception() | 
+    duplicate_tag_keys_exception() | 
+    load_balancer_not_found_exception() | 
+    trust_store_not_found_exception().
+
+-type add_trust_store_revocations_errors() ::
+    invalid_revocation_content_exception() | 
+    too_many_trust_store_revocation_entries_exception() | 
+    revocation_content_not_found_exception() | 
+    trust_store_not_found_exception().
+
+-type create_listener_errors() ::
+    unsupported_protocol_exception() | 
+    too_many_tags_exception() | 
+    trust_store_not_ready_exception() | 
+    too_many_registrations_for_target_id_exception() | 
+    target_group_not_found_exception() | 
+    a_l_p_n_policy_not_supported_exception() | 
+    target_group_association_limit_exception() | 
+    ssl_policy_not_found_exception() | 
+    too_many_certificates_exception() | 
+    too_many_listeners_exception() | 
+    invalid_load_balancer_action_exception() | 
+    too_many_targets_exception() | 
+    too_many_actions_exception() | 
+    load_balancer_not_found_exception() | 
+    trust_store_not_found_exception() | 
+    incompatible_protocols_exception() | 
+    too_many_unique_target_groups_per_load_balancer_exception() | 
+    certificate_not_found_exception() | 
+    duplicate_listener_exception() | 
+    invalid_configuration_request_exception().
+
+-type create_load_balancer_errors() ::
+    too_many_tags_exception() | 
+    invalid_scheme_exception() | 
+    duplicate_load_balancer_name_exception() | 
+    invalid_subnet_exception() | 
+    duplicate_tag_keys_exception() | 
+    invalid_security_group_exception() | 
+    operation_not_permitted_exception() | 
+    allocation_id_not_found_exception() | 
+    too_many_load_balancers_exception() | 
+    subnet_not_found_exception() | 
+    invalid_configuration_request_exception() | 
+    availability_zone_not_supported_exception() | 
+    resource_in_use_exception().
+
+-type create_rule_errors() ::
+    unsupported_protocol_exception() | 
+    too_many_tags_exception() | 
+    listener_not_found_exception() | 
+    too_many_registrations_for_target_id_exception() | 
+    target_group_not_found_exception() | 
+    target_group_association_limit_exception() | 
+    invalid_load_balancer_action_exception() | 
+    too_many_targets_exception() | 
+    too_many_actions_exception() | 
+    too_many_target_groups_exception() | 
+    incompatible_protocols_exception() | 
+    too_many_unique_target_groups_per_load_balancer_exception() | 
+    priority_in_use_exception() | 
+    too_many_rules_exception() | 
+    invalid_configuration_request_exception().
+
+-type create_target_group_errors() ::
+    too_many_tags_exception() | 
+    duplicate_target_group_name_exception() | 
+    too_many_target_groups_exception() | 
+    invalid_configuration_request_exception().
+
+-type create_trust_store_errors() ::
+    too_many_tags_exception() | 
+    ca_certificates_bundle_not_found_exception() | 
+    invalid_ca_certificates_bundle_exception() | 
+    duplicate_trust_store_name_exception() | 
+    duplicate_tag_keys_exception() | 
+    too_many_trust_stores_exception().
+
+-type delete_listener_errors() ::
+    listener_not_found_exception() | 
+    resource_in_use_exception().
+
+-type delete_load_balancer_errors() ::
+    operation_not_permitted_exception() | 
+    load_balancer_not_found_exception() | 
+    resource_in_use_exception().
+
+-type delete_rule_errors() ::
+    rule_not_found_exception() | 
+    operation_not_permitted_exception().
+
+-type delete_target_group_errors() ::
+    resource_in_use_exception().
+
+-type delete_trust_store_errors() ::
+    trust_store_in_use_exception() | 
+    trust_store_not_found_exception().
+
+-type deregister_targets_errors() ::
+    target_group_not_found_exception() | 
+    invalid_target_exception().
+
+-type describe_listener_certificates_errors() ::
+    listener_not_found_exception().
+
+-type describe_listeners_errors() ::
+    unsupported_protocol_exception() | 
+    listener_not_found_exception() | 
+    load_balancer_not_found_exception().
+
+-type describe_load_balancer_attributes_errors() ::
+    load_balancer_not_found_exception().
+
+-type describe_load_balancers_errors() ::
+    load_balancer_not_found_exception().
+
+-type describe_rules_errors() ::
+    unsupported_protocol_exception() | 
+    rule_not_found_exception() | 
+    listener_not_found_exception().
+
+-type describe_ssl_policies_errors() ::
+    ssl_policy_not_found_exception().
+
+-type describe_tags_errors() ::
+    rule_not_found_exception() | 
+    listener_not_found_exception() | 
+    target_group_not_found_exception() | 
+    load_balancer_not_found_exception() | 
+    trust_store_not_found_exception().
+
+-type describe_target_group_attributes_errors() ::
+    target_group_not_found_exception().
+
+-type describe_target_groups_errors() ::
+    target_group_not_found_exception() | 
+    load_balancer_not_found_exception().
+
+-type describe_target_health_errors() ::
+    health_unavailable_exception() | 
+    target_group_not_found_exception() | 
+    invalid_target_exception().
+
+-type describe_trust_store_associations_errors() ::
+    trust_store_not_found_exception().
+
+-type describe_trust_store_revocations_errors() ::
+    trust_store_not_found_exception() | 
+    revocation_id_not_found_exception().
+
+-type describe_trust_stores_errors() ::
+    trust_store_not_found_exception().
+
+-type get_trust_store_ca_certificates_bundle_errors() ::
+    trust_store_not_found_exception().
+
+-type get_trust_store_revocation_content_errors() ::
+    trust_store_not_found_exception() | 
+    revocation_id_not_found_exception().
+
+-type modify_listener_errors() ::
+    unsupported_protocol_exception() | 
+    listener_not_found_exception() | 
+    trust_store_not_ready_exception() | 
+    too_many_registrations_for_target_id_exception() | 
+    target_group_not_found_exception() | 
+    a_l_p_n_policy_not_supported_exception() | 
+    target_group_association_limit_exception() | 
+    ssl_policy_not_found_exception() | 
+    too_many_certificates_exception() | 
+    too_many_listeners_exception() | 
+    invalid_load_balancer_action_exception() | 
+    too_many_targets_exception() | 
+    too_many_actions_exception() | 
+    trust_store_not_found_exception() | 
+    incompatible_protocols_exception() | 
+    too_many_unique_target_groups_per_load_balancer_exception() | 
+    certificate_not_found_exception() | 
+    duplicate_listener_exception() | 
+    invalid_configuration_request_exception().
+
+-type modify_load_balancer_attributes_errors() ::
+    load_balancer_not_found_exception() | 
+    invalid_configuration_request_exception().
+
+-type modify_rule_errors() ::
+    unsupported_protocol_exception() | 
+    rule_not_found_exception() | 
+    too_many_registrations_for_target_id_exception() | 
+    target_group_not_found_exception() | 
+    target_group_association_limit_exception() | 
+    invalid_load_balancer_action_exception() | 
+    operation_not_permitted_exception() | 
+    too_many_targets_exception() | 
+    too_many_actions_exception() | 
+    incompatible_protocols_exception() | 
+    too_many_unique_target_groups_per_load_balancer_exception().
+
+-type modify_target_group_errors() ::
+    target_group_not_found_exception() | 
+    invalid_configuration_request_exception().
+
+-type modify_target_group_attributes_errors() ::
+    target_group_not_found_exception() | 
+    invalid_configuration_request_exception().
+
+-type modify_trust_store_errors() ::
+    ca_certificates_bundle_not_found_exception() | 
+    invalid_ca_certificates_bundle_exception() | 
+    trust_store_not_found_exception().
+
+-type register_targets_errors() ::
+    too_many_registrations_for_target_id_exception() | 
+    target_group_not_found_exception() | 
+    too_many_targets_exception() | 
+    invalid_target_exception().
+
+-type remove_listener_certificates_errors() ::
+    listener_not_found_exception() | 
+    operation_not_permitted_exception().
+
+-type remove_tags_errors() ::
+    too_many_tags_exception() | 
+    rule_not_found_exception() | 
+    listener_not_found_exception() | 
+    target_group_not_found_exception() | 
+    load_balancer_not_found_exception() | 
+    trust_store_not_found_exception().
+
+-type remove_trust_store_revocations_errors() ::
+    trust_store_not_found_exception() | 
+    revocation_id_not_found_exception().
+
+-type set_ip_address_type_errors() ::
+    invalid_subnet_exception() | 
+    load_balancer_not_found_exception() | 
+    invalid_configuration_request_exception().
+
+-type set_rule_priorities_errors() ::
+    rule_not_found_exception() | 
+    operation_not_permitted_exception() | 
+    priority_in_use_exception().
+
+-type set_security_groups_errors() ::
+    invalid_security_group_exception() | 
+    load_balancer_not_found_exception() | 
+    invalid_configuration_request_exception().
+
+-type set_subnets_errors() ::
+    invalid_subnet_exception() | 
+    load_balancer_not_found_exception() | 
+    allocation_id_not_found_exception() | 
+    subnet_not_found_exception() | 
+    invalid_configuration_request_exception() | 
+    availability_zone_not_supported_exception().
 
 %%====================================================================
 %% API
@@ -1489,9 +1754,7 @@
 -spec add_listener_certificates(map(), add_listener_certificates_input()) ->
     {ok, add_listener_certificates_output(), tuple()} |
     {error, any()} |
-    {error, certificate_not_found_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()} |
-    {error, too_many_certificates_exception(), tuple()}.
+    {error, add_listener_certificates_errors(), tuple()}.
 add_listener_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_listener_certificates(Client, Input, []).
@@ -1499,9 +1762,7 @@ add_listener_certificates(Client, Input)
 -spec add_listener_certificates(map(), add_listener_certificates_input(), proplists:proplist()) ->
     {ok, add_listener_certificates_output(), tuple()} |
     {error, any()} |
-    {error, certificate_not_found_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()} |
-    {error, too_many_certificates_exception(), tuple()}.
+    {error, add_listener_certificates_errors(), tuple()}.
 add_listener_certificates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddListenerCertificates">>, Input, Options).
@@ -1520,13 +1781,7 @@ add_listener_certificates(Client, Input, Options)
 -spec add_tags(map(), add_tags_input()) ->
     {ok, add_tags_output(), tuple()} |
     {error, any()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()} |
-    {error, load_balancer_not_found_exception(), tuple()} |
-    {error, rule_not_found_exception(), tuple()} |
-    {error, target_group_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, trust_store_not_found_exception(), tuple()}.
+    {error, add_tags_errors(), tuple()}.
 add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
@@ -1534,13 +1789,7 @@ add_tags(Client, Input)
 -spec add_tags(map(), add_tags_input(), proplists:proplist()) ->
     {ok, add_tags_output(), tuple()} |
     {error, any()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()} |
-    {error, load_balancer_not_found_exception(), tuple()} |
-    {error, rule_not_found_exception(), tuple()} |
-    {error, target_group_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, trust_store_not_found_exception(), tuple()}.
+    {error, add_tags_errors(), tuple()}.
 add_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTags">>, Input, Options).
@@ -1549,10 +1798,7 @@ add_tags(Client, Input, Options)
 -spec add_trust_store_revocations(map(), add_trust_store_revocations_input()) ->
     {ok, add_trust_store_revocations_output(), tuple()} |
     {error, any()} |
-    {error, invalid_revocation_content_exception(), tuple()} |
-    {error, revocation_content_not_found_exception(), tuple()} |
-    {error, too_many_trust_store_revocation_entries_exception(), tuple()} |
-    {error, trust_store_not_found_exception(), tuple()}.
+    {error, add_trust_store_revocations_errors(), tuple()}.
 add_trust_store_revocations(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_trust_store_revocations(Client, Input, []).
@@ -1560,10 +1806,7 @@ add_trust_store_revocations(Client, Input)
 -spec add_trust_store_revocations(map(), add_trust_store_revocations_input(), proplists:proplist()) ->
     {ok, add_trust_store_revocations_output(), tuple()} |
     {error, any()} |
-    {error, invalid_revocation_content_exception(), tuple()} |
-    {error, revocation_content_not_found_exception(), tuple()} |
-    {error, too_many_trust_store_revocation_entries_exception(), tuple()} |
-    {error, trust_store_not_found_exception(), tuple()}.
+    {error, add_trust_store_revocations_errors(), tuple()}.
 add_trust_store_revocations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTrustStoreRevocations">>, Input, Options).
@@ -1593,26 +1836,7 @@ add_trust_store_revocations(Client, Input, Options)
 -spec create_listener(map(), create_listener_input()) ->
     {ok, create_listener_output(), tuple()} |
     {error, any()} |
-    {error, a_l_p_n_policy_not_supported_exception(), tuple()} |
-    {error, certificate_not_found_exception(), tuple()} |
-    {error, duplicate_listener_exception(), tuple()} |
-    {error, incompatible_protocols_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, invalid_load_balancer_action_exception(), tuple()} |
-    {error, load_balancer_not_found_exception(), tuple()} |
-    {error, ssl_policy_not_found_exception(), tuple()} |
-    {error, target_group_association_limit_exception(), tuple()} |
-    {error, target_group_not_found_exception(), tuple()} |
-    {error, too_many_actions_exception(), tuple()} |
-    {error, too_many_certificates_exception(), tuple()} |
-    {error, too_many_listeners_exception(), tuple()} |
-    {error, too_many_registrations_for_target_id_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, too_many_targets_exception(), tuple()} |
-    {error, too_many_unique_target_groups_per_load_balancer_exception(), tuple()} |
-    {error, trust_store_not_found_exception(), tuple()} |
-    {error, trust_store_not_ready_exception(), tuple()} |
-    {error, unsupported_protocol_exception(), tuple()}.
+    {error, create_listener_errors(), tuple()}.
 create_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_listener(Client, Input, []).
@@ -1620,26 +1844,7 @@ create_listener(Client, Input)
 -spec create_listener(map(), create_listener_input(), proplists:proplist()) ->
     {ok, create_listener_output(), tuple()} |
     {error, any()} |
-    {error, a_l_p_n_policy_not_supported_exception(), tuple()} |
-    {error, certificate_not_found_exception(), tuple()} |
-    {error, duplicate_listener_exception(), tuple()} |
-    {error, incompatible_protocols_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, invalid_load_balancer_action_exception(), tuple()} |
-    {error, load_balancer_not_found_exception(), tuple()} |
-    {error, ssl_policy_not_found_exception(), tuple()} |
-    {error, target_group_association_limit_exception(), tuple()} |
-    {error, target_group_not_found_exception(), tuple()} |
-    {error, too_many_actions_exception(), tuple()} |
-    {error, too_many_certificates_exception(), tuple()} |
-    {error, too_many_listeners_exception(), tuple()} |
-    {error, too_many_registrations_for_target_id_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, too_many_targets_exception(), tuple()} |
-    {error, too_many_unique_target_groups_per_load_balancer_exception(), tuple()} |
-    {error, trust_store_not_found_exception(), tuple()} |
-    {error, trust_store_not_ready_exception(), tuple()} |
-    {error, unsupported_protocol_exception(), tuple()}.
+    {error, create_listener_errors(), tuple()}.
 create_listener(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateListener">>, Input, Options).
@@ -1668,19 +1873,7 @@ create_listener(Client, Input, Options)
 -spec create_load_balancer(map(), create_load_balancer_input()) ->
     {ok, create_load_balancer_output(), tuple()} |
     {error, any()} |
-    {error, allocation_id_not_found_exception(), tuple()} |
-    {error, availability_zone_not_supported_exception(), tuple()} |
-    {error, duplicate_load_balancer_name_exception(), tuple()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, invalid_scheme_exception(), tuple()} |
-    {error, invalid_security_group_exception(), tuple()} |
-    {error, invalid_subnet_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, subnet_not_found_exception(), tuple()} |
-    {error, too_many_load_balancers_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_load_balancer_errors(), tuple()}.
 create_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_load_balancer(Client, Input, []).
@@ -1688,19 +1881,7 @@ create_load_balancer(Client, Input)
 -spec create_load_balancer(map(), create_load_balancer_input(), proplists:proplist()) ->
     {ok, create_load_balancer_output(), tuple()} |
     {error, any()} |
-    {error, allocation_id_not_found_exception(), tuple()} |
-    {error, availability_zone_not_supported_exception(), tuple()} |
-    {error, duplicate_load_balancer_name_exception(), tuple()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, invalid_scheme_exception(), tuple()} |
-    {error, invalid_security_group_exception(), tuple()} |
-    {error, invalid_subnet_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, subnet_not_found_exception(), tuple()} |
-    {error, too_many_load_balancers_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_load_balancer_errors(), tuple()}.
 create_load_balancer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLoadBalancer">>, Input, Options).
@@ -1723,21 +1904,7 @@ create_load_balancer(Client, Input, Options)
 -spec create_rule(map(), create_rule_input()) ->
     {ok, create_rule_output(), tuple()} |
     {error, any()} |
-    {error, incompatible_protocols_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, invalid_load_balancer_action_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()} |
-    {error, priority_in_use_exception(), tuple()} |
-    {error, target_group_association_limit_exception(), tuple()} |
-    {error, target_group_not_found_exception(), tuple()} |
-    {error, too_many_actions_exception(), tuple()} |
-    {error, too_many_registrations_for_target_id_exception(), tuple()} |
-    {error, too_many_rules_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, too_many_target_groups_exception(), tuple()} |
-    {error, too_many_targets_exception(), tuple()} |
-    {error, too_many_unique_target_groups_per_load_balancer_exception(), tuple()} |
-    {error, unsupported_protocol_exception(), tuple()}.
+    {error, create_rule_errors(), tuple()}.
 create_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_rule(Client, Input, []).
@@ -1745,21 +1912,7 @@ create_rule(Client, Input)
 -spec create_rule(map(), create_rule_input(), proplists:proplist()) ->
     {ok, create_rule_output(), tuple()} |
     {error, any()} |
-    {error, incompatible_protocols_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, invalid_load_balancer_action_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()} |
-    {error, priority_in_use_exception(), tuple()} |
-    {error, target_group_association_limit_exception(), tuple()} |
-    {error, target_group_not_found_exception(), tuple()} |
-    {error, too_many_actions_exception(), tuple()} |
-    {error, too_many_registrations_for_target_id_exception(), tuple()} |
-    {error, too_many_rules_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, too_many_target_groups_exception(), tuple()} |
-    {error, too_many_targets_exception(), tuple()} |
-    {error, too_many_unique_target_groups_per_load_balancer_exception(), tuple()} |
-    {error, unsupported_protocol_exception(), tuple()}.
+    {error, create_rule_errors(), tuple()}.
 create_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRule">>, Input, Options).
@@ -1787,10 +1940,7 @@ create_rule(Client, Input, Options)
 -spec create_target_group(map(), create_target_group_input()) ->
     {ok, create_target_group_output(), tuple()} |
     {error, any()} |
-    {error, duplicate_target_group_name_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, too_many_target_groups_exception(), tuple()}.
+    {error, create_target_group_errors(), tuple()}.
 create_target_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_target_group(Client, Input, []).
@@ -1798,10 +1948,7 @@ create_target_group(Client, Input)
 -spec create_target_group(map(), create_target_group_input(), proplists:proplist()) ->
     {ok, create_target_group_output(), tuple()} |
     {error, any()} |
-    {error, duplicate_target_group_name_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, too_many_target_groups_exception(), tuple()}.
+    {error, create_target_group_errors(), tuple()}.
 create_target_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTargetGroup">>, Input, Options).
@@ -1810,12 +1957,7 @@ create_target_group(Client, Input, Options)
 -spec create_trust_store(map(), create_trust_store_input()) ->
     {ok, create_trust_store_output(), tuple()} |
     {error, any()} |
-    {error, ca_certificates_bundle_not_found_exception(), tuple()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, duplicate_trust_store_name_exception(), tuple()} |
-    {error, invalid_ca_certificates_bundle_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, too_many_trust_stores_exception(), tuple()}.
+    {error, create_trust_store_errors(), tuple()}.
 create_trust_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_trust_store(Client, Input, []).
@@ -1823,12 +1965,7 @@ create_trust_store(Client, Input)
 -spec create_trust_store(map(), create_trust_store_input(), proplists:proplist()) ->
     {ok, create_trust_store_output(), tuple()} |
     {error, any()} |
-    {error, ca_certificates_bundle_not_found_exception(), tuple()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, duplicate_trust_store_name_exception(), tuple()} |
-    {error, invalid_ca_certificates_bundle_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, too_many_trust_stores_exception(), tuple()}.
+    {error, create_trust_store_errors(), tuple()}.
 create_trust_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTrustStore">>, Input, Options).
@@ -1841,8 +1978,7 @@ create_trust_store(Client, Input, Options)
 -spec delete_listener(map(), delete_listener_input()) ->
     {ok, delete_listener_output(), tuple()} |
     {error, any()} |
-    {error, listener_not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_listener_errors(), tuple()}.
 delete_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_listener(Client, Input, []).
@@ -1850,8 +1986,7 @@ delete_listener(Client, Input)
 -spec delete_listener(map(), delete_listener_input(), proplists:proplist()) ->
     {ok, delete_listener_output(), tuple()} |
     {error, any()} |
-    {error, listener_not_found_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_listener_errors(), tuple()}.
 delete_listener(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteListener">>, Input, Options).
@@ -1874,9 +2009,7 @@ delete_listener(Client, Input, Options)
 -spec delete_load_balancer(map(), delete_load_balancer_input()) ->
     {ok, delete_load_balancer_output(), tuple()} |
     {error, any()} |
-    {error, load_balancer_not_found_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_load_balancer_errors(), tuple()}.
 delete_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_load_balancer(Client, Input, []).
@@ -1884,9 +2017,7 @@ delete_load_balancer(Client, Input)
 -spec delete_load_balancer(map(), delete_load_balancer_input(), proplists:proplist()) ->
     {ok, delete_load_balancer_output(), tuple()} |
     {error, any()} |
-    {error, load_balancer_not_found_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_load_balancer_errors(), tuple()}.
 delete_load_balancer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLoadBalancer">>, Input, Options).
@@ -1897,8 +2028,7 @@ delete_load_balancer(Client, Input, Options)
 -spec delete_rule(map(), delete_rule_input()) ->
     {ok, delete_rule_output(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, rule_not_found_exception(), tuple()}.
+    {error, delete_rule_errors(), tuple()}.
 delete_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rule(Client, Input, []).
@@ -1906,8 +2036,7 @@ delete_rule(Client, Input)
 -spec delete_rule(map(), delete_rule_input(), proplists:proplist()) ->
     {ok, delete_rule_output(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, rule_not_found_exception(), tuple()}.
+    {error, delete_rule_errors(), tuple()}.
 delete_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRule">>, Input, Options).
@@ -1924,7 +2053,7 @@ delete_rule(Client, Input, Options)
 -spec delete_target_group(map(), delete_target_group_input()) ->
     {ok, delete_target_group_output(), tuple()} |
     {error, any()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_target_group_errors(), tuple()}.
 delete_target_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_target_group(Client, Input, []).
@@ -1932,7 +2061,7 @@ delete_target_group(Client, Input)
 -spec delete_target_group(map(), delete_target_group_input(), proplists:proplist()) ->
     {ok, delete_target_group_output(), tuple()} |
     {error, any()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, delete_target_group_errors(), tuple()}.
 delete_target_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTargetGroup">>, Input, Options).
@@ -1941,8 +2070,7 @@ delete_target_group(Client, Input, Options)
 -spec delete_trust_store(map(), delete_trust_store_input()) ->
     {ok, delete_trust_store_output(), tuple()} |
     {error, any()} |
-    {error, trust_store_in_use_exception(), tuple()} |
-    {error, trust_store_not_found_exception(), tuple()}.
+    {error, delete_trust_store_errors(), tuple()}.
 delete_trust_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_trust_store(Client, Input, []).
@@ -1950,8 +2078,7 @@ delete_trust_store(Client, Input)
 -spec delete_trust_store(map(), delete_trust_store_input(), proplists:proplist()) ->
     {ok, delete_trust_store_output(), tuple()} |
     {error, any()} |
-    {error, trust_store_in_use_exception(), tuple()} |
-    {error, trust_store_not_found_exception(), tuple()}.
+    {error, delete_trust_store_errors(), tuple()}.
 delete_trust_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTrustStore">>, Input, Options).
@@ -1987,8 +2114,7 @@ delete_trust_store(Client, Input, Options)
 -spec deregister_targets(map(), deregister_targets_input()) ->
     {ok, deregister_targets_output(), tuple()} |
     {error, any()} |
-    {error, invalid_target_exception(), tuple()} |
-    {error, target_group_not_found_exception(), tuple()}.
+    {error, deregister_targets_errors(), tuple()}.
 deregister_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_targets(Client, Input, []).
@@ -1996,8 +2122,7 @@ deregister_targets(Client, Input)
 -spec deregister_targets(map(), deregister_targets_input(), proplists:proplist()) ->
     {ok, deregister_targets_output(), tuple()} |
     {error, any()} |
-    {error, invalid_target_exception(), tuple()} |
-    {error, target_group_not_found_exception(), tuple()}.
+    {error, deregister_targets_errors(), tuple()}.
 deregister_targets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterTargets">>, Input, Options).
@@ -2053,7 +2178,7 @@ describe_account_limits(Client, Input, Options)
 -spec describe_listener_certificates(map(), describe_listener_certificates_input()) ->
     {ok, describe_listener_certificates_output(), tuple()} |
     {error, any()} |
-    {error, listener_not_found_exception(), tuple()}.
+    {error, describe_listener_certificates_errors(), tuple()}.
 describe_listener_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_listener_certificates(Client, Input, []).
@@ -2061,7 +2186,7 @@ describe_listener_certificates(Client, Input)
 -spec describe_listener_certificates(map(), describe_listener_certificates_input(), proplists:proplist()) ->
     {ok, describe_listener_certificates_output(), tuple()} |
     {error, any()} |
-    {error, listener_not_found_exception(), tuple()}.
+    {error, describe_listener_certificates_errors(), tuple()}.
 describe_listener_certificates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeListenerCertificates">>, Input, Options).
@@ -2075,9 +2200,7 @@ describe_listener_certificates(Client, Input, Options)
 -spec describe_listeners(map(), describe_listeners_input()) ->
     {ok, describe_listeners_output(), tuple()} |
     {error, any()} |
-    {error, listener_not_found_exception(), tuple()} |
-    {error, load_balancer_not_found_exception(), tuple()} |
-    {error, unsupported_protocol_exception(), tuple()}.
+    {error, describe_listeners_errors(), tuple()}.
 describe_listeners(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_listeners(Client, Input, []).
@@ -2085,9 +2208,7 @@ describe_listeners(Client, Input)
 -spec describe_listeners(map(), describe_listeners_input(), proplists:proplist()) ->
     {ok, describe_listeners_output(), tuple()} |
     {error, any()} |
-    {error, listener_not_found_exception(), tuple()} |
-    {error, load_balancer_not_found_exception(), tuple()} |
-    {error, unsupported_protocol_exception(), tuple()}.
+    {error, describe_listeners_errors(), tuple()}.
 describe_listeners(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeListeners">>, Input, Options).
@@ -2115,7 +2236,7 @@ describe_listeners(Client, Input, Options)
 -spec describe_load_balancer_attributes(map(), describe_load_balancer_attributes_input()) ->
     {ok, describe_load_balancer_attributes_output(), tuple()} |
     {error, any()} |
-    {error, load_balancer_not_found_exception(), tuple()}.
+    {error, describe_load_balancer_attributes_errors(), tuple()}.
 describe_load_balancer_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_load_balancer_attributes(Client, Input, []).
@@ -2123,7 +2244,7 @@ describe_load_balancer_attributes(Client, Input)
 -spec describe_load_balancer_attributes(map(), describe_load_balancer_attributes_input(), proplists:proplist()) ->
     {ok, describe_load_balancer_attributes_output(), tuple()} |
     {error, any()} |
-    {error, load_balancer_not_found_exception(), tuple()}.
+    {error, describe_load_balancer_attributes_errors(), tuple()}.
 describe_load_balancer_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLoadBalancerAttributes">>, Input, Options).
@@ -2132,7 +2253,7 @@ describe_load_balancer_attributes(Client, Input, Options)
 -spec describe_load_balancers(map(), describe_load_balancers_input()) ->
     {ok, describe_load_balancers_output(), tuple()} |
     {error, any()} |
-    {error, load_balancer_not_found_exception(), tuple()}.
+    {error, describe_load_balancers_errors(), tuple()}.
 describe_load_balancers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_load_balancers(Client, Input, []).
@@ -2140,7 +2261,7 @@ describe_load_balancers(Client, Input)
 -spec describe_load_balancers(map(), describe_load_balancers_input(), proplists:proplist()) ->
     {ok, describe_load_balancers_output(), tuple()} |
     {error, any()} |
-    {error, load_balancer_not_found_exception(), tuple()}.
+    {error, describe_load_balancers_errors(), tuple()}.
 describe_load_balancers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLoadBalancers">>, Input, Options).
@@ -2153,9 +2274,7 @@ describe_load_balancers(Client, Input, Options)
 -spec describe_rules(map(), describe_rules_input()) ->
     {ok, describe_rules_output(), tuple()} |
     {error, any()} |
-    {error, listener_not_found_exception(), tuple()} |
-    {error, rule_not_found_exception(), tuple()} |
-    {error, unsupported_protocol_exception(), tuple()}.
+    {error, describe_rules_errors(), tuple()}.
 describe_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_rules(Client, Input, []).
@@ -2163,9 +2282,7 @@ describe_rules(Client, Input)
 -spec describe_rules(map(), describe_rules_input(), proplists:proplist()) ->
     {ok, describe_rules_output(), tuple()} |
     {error, any()} |
-    {error, listener_not_found_exception(), tuple()} |
-    {error, rule_not_found_exception(), tuple()} |
-    {error, unsupported_protocol_exception(), tuple()}.
+    {error, describe_rules_errors(), tuple()}.
 describe_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRules">>, Input, Options).
@@ -2182,7 +2299,7 @@ describe_rules(Client, Input, Options)
 -spec describe_ssl_policies(map(), describe_ssl_policies_input()) ->
     {ok, describe_ssl_policies_output(), tuple()} |
     {error, any()} |
-    {error, ssl_policy_not_found_exception(), tuple()}.
+    {error, describe_ssl_policies_errors(), tuple()}.
 describe_ssl_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_ssl_policies(Client, Input, []).
@@ -2190,7 +2307,7 @@ describe_ssl_policies(Client, Input)
 -spec describe_ssl_policies(map(), describe_ssl_policies_input(), proplists:proplist()) ->
     {ok, describe_ssl_policies_output(), tuple()} |
     {error, any()} |
-    {error, ssl_policy_not_found_exception(), tuple()}.
+    {error, describe_ssl_policies_errors(), tuple()}.
 describe_ssl_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSSLPolicies">>, Input, Options).
@@ -2205,11 +2322,7 @@ describe_ssl_policies(Client, Input, Options)
 -spec describe_tags(map(), describe_tags_input()) ->
     {ok, describe_tags_output(), tuple()} |
     {error, any()} |
-    {error, listener_not_found_exception(), tuple()} |
-    {error, load_balancer_not_found_exception(), tuple()} |
-    {error, rule_not_found_exception(), tuple()} |
-    {error, target_group_not_found_exception(), tuple()} |
-    {error, trust_store_not_found_exception(), tuple()}.
+    {error, describe_tags_errors(), tuple()}.
 describe_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tags(Client, Input, []).
@@ -2217,11 +2330,7 @@ describe_tags(Client, Input)
 -spec describe_tags(map(), describe_tags_input(), proplists:proplist()) ->
     {ok, describe_tags_output(), tuple()} |
     {error, any()} |
-    {error, listener_not_found_exception(), tuple()} |
-    {error, load_balancer_not_found_exception(), tuple()} |
-    {error, rule_not_found_exception(), tuple()} |
-    {error, target_group_not_found_exception(), tuple()} |
-    {error, trust_store_not_found_exception(), tuple()}.
+    {error, describe_tags_errors(), tuple()}.
 describe_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTags">>, Input, Options).
@@ -2247,7 +2356,7 @@ describe_tags(Client, Input, Options)
 -spec describe_target_group_attributes(map(), describe_target_group_attributes_input()) ->
     {ok, describe_target_group_attributes_output(), tuple()} |
     {error, any()} |
-    {error, target_group_not_found_exception(), tuple()}.
+    {error, describe_target_group_attributes_errors(), tuple()}.
 describe_target_group_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_target_group_attributes(Client, Input, []).
@@ -2255,7 +2364,7 @@ describe_target_group_attributes(Client, Input)
 -spec describe_target_group_attributes(map(), describe_target_group_attributes_input(), proplists:proplist()) ->
     {ok, describe_target_group_attributes_output(), tuple()} |
     {error, any()} |
-    {error, target_group_not_found_exception(), tuple()}.
+    {error, describe_target_group_attributes_errors(), tuple()}.
 describe_target_group_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTargetGroupAttributes">>, Input, Options).
@@ -2271,8 +2380,7 @@ describe_target_group_attributes(Client, Input, Options)
 -spec describe_target_groups(map(), describe_target_groups_input()) ->
     {ok, describe_target_groups_output(), tuple()} |
     {error, any()} |
-    {error, load_balancer_not_found_exception(), tuple()} |
-    {error, target_group_not_found_exception(), tuple()}.
+    {error, describe_target_groups_errors(), tuple()}.
 describe_target_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_target_groups(Client, Input, []).
@@ -2280,8 +2388,7 @@ describe_target_groups(Client, Input)
 -spec describe_target_groups(map(), describe_target_groups_input(), proplists:proplist()) ->
     {ok, describe_target_groups_output(), tuple()} |
     {error, any()} |
-    {error, load_balancer_not_found_exception(), tuple()} |
-    {error, target_group_not_found_exception(), tuple()}.
+    {error, describe_target_groups_errors(), tuple()}.
 describe_target_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTargetGroups">>, Input, Options).
@@ -2290,9 +2397,7 @@ describe_target_groups(Client, Input, Options)
 -spec describe_target_health(map(), describe_target_health_input()) ->
     {ok, describe_target_health_output(), tuple()} |
     {error, any()} |
-    {error, health_unavailable_exception(), tuple()} |
-    {error, invalid_target_exception(), tuple()} |
-    {error, target_group_not_found_exception(), tuple()}.
+    {error, describe_target_health_errors(), tuple()}.
 describe_target_health(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_target_health(Client, Input, []).
@@ -2300,9 +2405,7 @@ describe_target_health(Client, Input)
 -spec describe_target_health(map(), describe_target_health_input(), proplists:proplist()) ->
     {ok, describe_target_health_output(), tuple()} |
     {error, any()} |
-    {error, health_unavailable_exception(), tuple()} |
-    {error, invalid_target_exception(), tuple()} |
-    {error, target_group_not_found_exception(), tuple()}.
+    {error, describe_target_health_errors(), tuple()}.
 describe_target_health(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTargetHealth">>, Input, Options).
@@ -2311,7 +2414,7 @@ describe_target_health(Client, Input, Options)
 -spec describe_trust_store_associations(map(), describe_trust_store_associations_input()) ->
     {ok, describe_trust_store_associations_output(), tuple()} |
     {error, any()} |
-    {error, trust_store_not_found_exception(), tuple()}.
+    {error, describe_trust_store_associations_errors(), tuple()}.
 describe_trust_store_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trust_store_associations(Client, Input, []).
@@ -2319,7 +2422,7 @@ describe_trust_store_associations(Client, Input)
 -spec describe_trust_store_associations(map(), describe_trust_store_associations_input(), proplists:proplist()) ->
     {ok, describe_trust_store_associations_output(), tuple()} |
     {error, any()} |
-    {error, trust_store_not_found_exception(), tuple()}.
+    {error, describe_trust_store_associations_errors(), tuple()}.
 describe_trust_store_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrustStoreAssociations">>, Input, Options).
@@ -2329,8 +2432,7 @@ describe_trust_store_associations(Client, Input, Options)
 -spec describe_trust_store_revocations(map(), describe_trust_store_revocations_input()) ->
     {ok, describe_trust_store_revocations_output(), tuple()} |
     {error, any()} |
-    {error, revocation_id_not_found_exception(), tuple()} |
-    {error, trust_store_not_found_exception(), tuple()}.
+    {error, describe_trust_store_revocations_errors(), tuple()}.
 describe_trust_store_revocations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trust_store_revocations(Client, Input, []).
@@ -2338,8 +2440,7 @@ describe_trust_store_revocations(Client, Input)
 -spec describe_trust_store_revocations(map(), describe_trust_store_revocations_input(), proplists:proplist()) ->
     {ok, describe_trust_store_revocations_output(), tuple()} |
     {error, any()} |
-    {error, revocation_id_not_found_exception(), tuple()} |
-    {error, trust_store_not_found_exception(), tuple()}.
+    {error, describe_trust_store_revocations_errors(), tuple()}.
 describe_trust_store_revocations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrustStoreRevocations">>, Input, Options).
@@ -2349,7 +2450,7 @@ describe_trust_store_revocations(Client, Input, Options)
 -spec describe_trust_stores(map(), describe_trust_stores_input()) ->
     {ok, describe_trust_stores_output(), tuple()} |
     {error, any()} |
-    {error, trust_store_not_found_exception(), tuple()}.
+    {error, describe_trust_stores_errors(), tuple()}.
 describe_trust_stores(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trust_stores(Client, Input, []).
@@ -2357,7 +2458,7 @@ describe_trust_stores(Client, Input)
 -spec describe_trust_stores(map(), describe_trust_stores_input(), proplists:proplist()) ->
     {ok, describe_trust_stores_output(), tuple()} |
     {error, any()} |
-    {error, trust_store_not_found_exception(), tuple()}.
+    {error, describe_trust_stores_errors(), tuple()}.
 describe_trust_stores(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrustStores">>, Input, Options).
@@ -2369,7 +2470,7 @@ describe_trust_stores(Client, Input, Options)
 -spec get_trust_store_ca_certificates_bundle(map(), get_trust_store_ca_certificates_bundle_input()) ->
     {ok, get_trust_store_ca_certificates_bundle_output(), tuple()} |
     {error, any()} |
-    {error, trust_store_not_found_exception(), tuple()}.
+    {error, get_trust_store_ca_certificates_bundle_errors(), tuple()}.
 get_trust_store_ca_certificates_bundle(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_trust_store_ca_certificates_bundle(Client, Input, []).
@@ -2377,7 +2478,7 @@ get_trust_store_ca_certificates_bundle(Client, Input)
 -spec get_trust_store_ca_certificates_bundle(map(), get_trust_store_ca_certificates_bundle_input(), proplists:proplist()) ->
     {ok, get_trust_store_ca_certificates_bundle_output(), tuple()} |
     {error, any()} |
-    {error, trust_store_not_found_exception(), tuple()}.
+    {error, get_trust_store_ca_certificates_bundle_errors(), tuple()}.
 get_trust_store_ca_certificates_bundle(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTrustStoreCaCertificatesBundle">>, Input, Options).
@@ -2389,8 +2490,7 @@ get_trust_store_ca_certificates_bundle(Client, Input, Options)
 -spec get_trust_store_revocation_content(map(), get_trust_store_revocation_content_input()) ->
     {ok, get_trust_store_revocation_content_output(), tuple()} |
     {error, any()} |
-    {error, revocation_id_not_found_exception(), tuple()} |
-    {error, trust_store_not_found_exception(), tuple()}.
+    {error, get_trust_store_revocation_content_errors(), tuple()}.
 get_trust_store_revocation_content(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_trust_store_revocation_content(Client, Input, []).
@@ -2398,8 +2498,7 @@ get_trust_store_revocation_content(Client, Input)
 -spec get_trust_store_revocation_content(map(), get_trust_store_revocation_content_input(), proplists:proplist()) ->
     {ok, get_trust_store_revocation_content_output(), tuple()} |
     {error, any()} |
-    {error, revocation_id_not_found_exception(), tuple()} |
-    {error, trust_store_not_found_exception(), tuple()}.
+    {error, get_trust_store_revocation_content_errors(), tuple()}.
 get_trust_store_revocation_content(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTrustStoreRevocationContent">>, Input, Options).
@@ -2424,25 +2523,7 @@ get_trust_store_revocation_content(Client, Input, Options)
 -spec modify_listener(map(), modify_listener_input()) ->
     {ok, modify_listener_output(), tuple()} |
     {error, any()} |
-    {error, a_l_p_n_policy_not_supported_exception(), tuple()} |
-    {error, certificate_not_found_exception(), tuple()} |
-    {error, duplicate_listener_exception(), tuple()} |
-    {error, incompatible_protocols_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, invalid_load_balancer_action_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()} |
-    {error, ssl_policy_not_found_exception(), tuple()} |
-    {error, target_group_association_limit_exception(), tuple()} |
-    {error, target_group_not_found_exception(), tuple()} |
-    {error, too_many_actions_exception(), tuple()} |
-    {error, too_many_certificates_exception(), tuple()} |
-    {error, too_many_listeners_exception(), tuple()} |
-    {error, too_many_registrations_for_target_id_exception(), tuple()} |
-    {error, too_many_targets_exception(), tuple()} |
-    {error, too_many_unique_target_groups_per_load_balancer_exception(), tuple()} |
-    {error, trust_store_not_found_exception(), tuple()} |
-    {error, trust_store_not_ready_exception(), tuple()} |
-    {error, unsupported_protocol_exception(), tuple()}.
+    {error, modify_listener_errors(), tuple()}.
 modify_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_listener(Client, Input, []).
@@ -2450,25 +2531,7 @@ modify_listener(Client, Input)
 -spec modify_listener(map(), modify_listener_input(), proplists:proplist()) ->
     {ok, modify_listener_output(), tuple()} |
     {error, any()} |
-    {error, a_l_p_n_policy_not_supported_exception(), tuple()} |
-    {error, certificate_not_found_exception(), tuple()} |
-    {error, duplicate_listener_exception(), tuple()} |
-    {error, incompatible_protocols_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, invalid_load_balancer_action_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()} |
-    {error, ssl_policy_not_found_exception(), tuple()} |
-    {error, target_group_association_limit_exception(), tuple()} |
-    {error, target_group_not_found_exception(), tuple()} |
-    {error, too_many_actions_exception(), tuple()} |
-    {error, too_many_certificates_exception(), tuple()} |
-    {error, too_many_listeners_exception(), tuple()} |
-    {error, too_many_registrations_for_target_id_exception(), tuple()} |
-    {error, too_many_targets_exception(), tuple()} |
-    {error, too_many_unique_target_groups_per_load_balancer_exception(), tuple()} |
-    {error, trust_store_not_found_exception(), tuple()} |
-    {error, trust_store_not_ready_exception(), tuple()} |
-    {error, unsupported_protocol_exception(), tuple()}.
+    {error, modify_listener_errors(), tuple()}.
 modify_listener(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyListener">>, Input, Options).
@@ -2483,8 +2546,7 @@ modify_listener(Client, Input, Options)
 -spec modify_load_balancer_attributes(map(), modify_load_balancer_attributes_input()) ->
     {ok, modify_load_balancer_attributes_output(), tuple()} |
     {error, any()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, load_balancer_not_found_exception(), tuple()}.
+    {error, modify_load_balancer_attributes_errors(), tuple()}.
 modify_load_balancer_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_load_balancer_attributes(Client, Input, []).
@@ -2492,8 +2554,7 @@ modify_load_balancer_attributes(Client, Input)
 -spec modify_load_balancer_attributes(map(), modify_load_balancer_attributes_input(), proplists:proplist()) ->
     {ok, modify_load_balancer_attributes_output(), tuple()} |
     {error, any()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, load_balancer_not_found_exception(), tuple()}.
+    {error, modify_load_balancer_attributes_errors(), tuple()}.
 modify_load_balancer_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyLoadBalancerAttributes">>, Input, Options).
@@ -2511,17 +2572,7 @@ modify_load_balancer_attributes(Client, Input, Options)
 -spec modify_rule(map(), modify_rule_input()) ->
     {ok, modify_rule_output(), tuple()} |
     {error, any()} |
-    {error, incompatible_protocols_exception(), tuple()} |
-    {error, invalid_load_balancer_action_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, rule_not_found_exception(), tuple()} |
-    {error, target_group_association_limit_exception(), tuple()} |
-    {error, target_group_not_found_exception(), tuple()} |
-    {error, too_many_actions_exception(), tuple()} |
-    {error, too_many_registrations_for_target_id_exception(), tuple()} |
-    {error, too_many_targets_exception(), tuple()} |
-    {error, too_many_unique_target_groups_per_load_balancer_exception(), tuple()} |
-    {error, unsupported_protocol_exception(), tuple()}.
+    {error, modify_rule_errors(), tuple()}.
 modify_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_rule(Client, Input, []).
@@ -2529,17 +2580,7 @@ modify_rule(Client, Input)
 -spec modify_rule(map(), modify_rule_input(), proplists:proplist()) ->
     {ok, modify_rule_output(), tuple()} |
     {error, any()} |
-    {error, incompatible_protocols_exception(), tuple()} |
-    {error, invalid_load_balancer_action_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, rule_not_found_exception(), tuple()} |
-    {error, target_group_association_limit_exception(), tuple()} |
-    {error, target_group_not_found_exception(), tuple()} |
-    {error, too_many_actions_exception(), tuple()} |
-    {error, too_many_registrations_for_target_id_exception(), tuple()} |
-    {error, too_many_targets_exception(), tuple()} |
-    {error, too_many_unique_target_groups_per_load_balancer_exception(), tuple()} |
-    {error, unsupported_protocol_exception(), tuple()}.
+    {error, modify_rule_errors(), tuple()}.
 modify_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyRule">>, Input, Options).
@@ -2550,8 +2591,7 @@ modify_rule(Client, Input, Options)
 -spec modify_target_group(map(), modify_target_group_input()) ->
     {ok, modify_target_group_output(), tuple()} |
     {error, any()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, target_group_not_found_exception(), tuple()}.
+    {error, modify_target_group_errors(), tuple()}.
 modify_target_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_target_group(Client, Input, []).
@@ -2559,8 +2599,7 @@ modify_target_group(Client, Input)
 -spec modify_target_group(map(), modify_target_group_input(), proplists:proplist()) ->
     {ok, modify_target_group_output(), tuple()} |
     {error, any()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, target_group_not_found_exception(), tuple()}.
+    {error, modify_target_group_errors(), tuple()}.
 modify_target_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyTargetGroup">>, Input, Options).
@@ -2569,8 +2608,7 @@ modify_target_group(Client, Input, Options)
 -spec modify_target_group_attributes(map(), modify_target_group_attributes_input()) ->
     {ok, modify_target_group_attributes_output(), tuple()} |
     {error, any()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, target_group_not_found_exception(), tuple()}.
+    {error, modify_target_group_attributes_errors(), tuple()}.
 modify_target_group_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_target_group_attributes(Client, Input, []).
@@ -2578,8 +2616,7 @@ modify_target_group_attributes(Client, Input)
 -spec modify_target_group_attributes(map(), modify_target_group_attributes_input(), proplists:proplist()) ->
     {ok, modify_target_group_attributes_output(), tuple()} |
     {error, any()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, target_group_not_found_exception(), tuple()}.
+    {error, modify_target_group_attributes_errors(), tuple()}.
 modify_target_group_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyTargetGroupAttributes">>, Input, Options).
@@ -2588,9 +2625,7 @@ modify_target_group_attributes(Client, Input, Options)
 -spec modify_trust_store(map(), modify_trust_store_input()) ->
     {ok, modify_trust_store_output(), tuple()} |
     {error, any()} |
-    {error, ca_certificates_bundle_not_found_exception(), tuple()} |
-    {error, invalid_ca_certificates_bundle_exception(), tuple()} |
-    {error, trust_store_not_found_exception(), tuple()}.
+    {error, modify_trust_store_errors(), tuple()}.
 modify_trust_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_trust_store(Client, Input, []).
@@ -2598,9 +2633,7 @@ modify_trust_store(Client, Input)
 -spec modify_trust_store(map(), modify_trust_store_input(), proplists:proplist()) ->
     {ok, modify_trust_store_output(), tuple()} |
     {error, any()} |
-    {error, ca_certificates_bundle_not_found_exception(), tuple()} |
-    {error, invalid_ca_certificates_bundle_exception(), tuple()} |
-    {error, trust_store_not_found_exception(), tuple()}.
+    {error, modify_trust_store_errors(), tuple()}.
 modify_trust_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyTrustStore">>, Input, Options).
@@ -2627,10 +2660,7 @@ modify_trust_store(Client, Input, Options)
 -spec register_targets(map(), register_targets_input()) ->
     {ok, register_targets_output(), tuple()} |
     {error, any()} |
-    {error, invalid_target_exception(), tuple()} |
-    {error, target_group_not_found_exception(), tuple()} |
-    {error, too_many_registrations_for_target_id_exception(), tuple()} |
-    {error, too_many_targets_exception(), tuple()}.
+    {error, register_targets_errors(), tuple()}.
 register_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_targets(Client, Input, []).
@@ -2638,10 +2668,7 @@ register_targets(Client, Input)
 -spec register_targets(map(), register_targets_input(), proplists:proplist()) ->
     {ok, register_targets_output(), tuple()} |
     {error, any()} |
-    {error, invalid_target_exception(), tuple()} |
-    {error, target_group_not_found_exception(), tuple()} |
-    {error, too_many_registrations_for_target_id_exception(), tuple()} |
-    {error, too_many_targets_exception(), tuple()}.
+    {error, register_targets_errors(), tuple()}.
 register_targets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterTargets">>, Input, Options).
@@ -2652,8 +2679,7 @@ register_targets(Client, Input, Options)
 -spec remove_listener_certificates(map(), remove_listener_certificates_input()) ->
     {ok, remove_listener_certificates_output(), tuple()} |
     {error, any()} |
-    {error, listener_not_found_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()}.
+    {error, remove_listener_certificates_errors(), tuple()}.
 remove_listener_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_listener_certificates(Client, Input, []).
@@ -2661,8 +2687,7 @@ remove_listener_certificates(Client, Input)
 -spec remove_listener_certificates(map(), remove_listener_certificates_input(), proplists:proplist()) ->
     {ok, remove_listener_certificates_output(), tuple()} |
     {error, any()} |
-    {error, listener_not_found_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()}.
+    {error, remove_listener_certificates_errors(), tuple()}.
 remove_listener_certificates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveListenerCertificates">>, Input, Options).
@@ -2677,12 +2702,7 @@ remove_listener_certificates(Client, Input, Options)
 -spec remove_tags(map(), remove_tags_input()) ->
     {ok, remove_tags_output(), tuple()} |
     {error, any()} |
-    {error, listener_not_found_exception(), tuple()} |
-    {error, load_balancer_not_found_exception(), tuple()} |
-    {error, rule_not_found_exception(), tuple()} |
-    {error, target_group_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, trust_store_not_found_exception(), tuple()}.
+    {error, remove_tags_errors(), tuple()}.
 remove_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags(Client, Input, []).
@@ -2690,12 +2710,7 @@ remove_tags(Client, Input)
 -spec remove_tags(map(), remove_tags_input(), proplists:proplist()) ->
     {ok, remove_tags_output(), tuple()} |
     {error, any()} |
-    {error, listener_not_found_exception(), tuple()} |
-    {error, load_balancer_not_found_exception(), tuple()} |
-    {error, rule_not_found_exception(), tuple()} |
-    {error, target_group_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, trust_store_not_found_exception(), tuple()}.
+    {error, remove_tags_errors(), tuple()}.
 remove_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTags">>, Input, Options).
@@ -2704,8 +2719,7 @@ remove_tags(Client, Input, Options)
 -spec remove_trust_store_revocations(map(), remove_trust_store_revocations_input()) ->
     {ok, remove_trust_store_revocations_output(), tuple()} |
     {error, any()} |
-    {error, revocation_id_not_found_exception(), tuple()} |
-    {error, trust_store_not_found_exception(), tuple()}.
+    {error, remove_trust_store_revocations_errors(), tuple()}.
 remove_trust_store_revocations(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_trust_store_revocations(Client, Input, []).
@@ -2713,8 +2727,7 @@ remove_trust_store_revocations(Client, Input)
 -spec remove_trust_store_revocations(map(), remove_trust_store_revocations_input(), proplists:proplist()) ->
     {ok, remove_trust_store_revocations_output(), tuple()} |
     {error, any()} |
-    {error, revocation_id_not_found_exception(), tuple()} |
-    {error, trust_store_not_found_exception(), tuple()}.
+    {error, remove_trust_store_revocations_errors(), tuple()}.
 remove_trust_store_revocations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTrustStoreRevocations">>, Input, Options).
@@ -2724,9 +2737,7 @@ remove_trust_store_revocations(Client, Input, Options)
 -spec set_ip_address_type(map(), set_ip_address_type_input()) ->
     {ok, set_ip_address_type_output(), tuple()} |
     {error, any()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, invalid_subnet_exception(), tuple()} |
-    {error, load_balancer_not_found_exception(), tuple()}.
+    {error, set_ip_address_type_errors(), tuple()}.
 set_ip_address_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_ip_address_type(Client, Input, []).
@@ -2734,9 +2745,7 @@ set_ip_address_type(Client, Input)
 -spec set_ip_address_type(map(), set_ip_address_type_input(), proplists:proplist()) ->
     {ok, set_ip_address_type_output(), tuple()} |
     {error, any()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, invalid_subnet_exception(), tuple()} |
-    {error, load_balancer_not_found_exception(), tuple()}.
+    {error, set_ip_address_type_errors(), tuple()}.
 set_ip_address_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetIpAddressType">>, Input, Options).
@@ -2749,9 +2758,7 @@ set_ip_address_type(Client, Input, Options)
 -spec set_rule_priorities(map(), set_rule_priorities_input()) ->
     {ok, set_rule_priorities_output(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, priority_in_use_exception(), tuple()} |
-    {error, rule_not_found_exception(), tuple()}.
+    {error, set_rule_priorities_errors(), tuple()}.
 set_rule_priorities(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_rule_priorities(Client, Input, []).
@@ -2759,9 +2766,7 @@ set_rule_priorities(Client, Input)
 -spec set_rule_priorities(map(), set_rule_priorities_input(), proplists:proplist()) ->
     {ok, set_rule_priorities_output(), tuple()} |
     {error, any()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, priority_in_use_exception(), tuple()} |
-    {error, rule_not_found_exception(), tuple()}.
+    {error, set_rule_priorities_errors(), tuple()}.
 set_rule_priorities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetRulePriorities">>, Input, Options).
@@ -2781,9 +2786,7 @@ set_rule_priorities(Client, Input, Options)
 -spec set_security_groups(map(), set_security_groups_input()) ->
     {ok, set_security_groups_output(), tuple()} |
     {error, any()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, invalid_security_group_exception(), tuple()} |
-    {error, load_balancer_not_found_exception(), tuple()}.
+    {error, set_security_groups_errors(), tuple()}.
 set_security_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_security_groups(Client, Input, []).
@@ -2791,9 +2794,7 @@ set_security_groups(Client, Input)
 -spec set_security_groups(map(), set_security_groups_input(), proplists:proplist()) ->
     {ok, set_security_groups_output(), tuple()} |
     {error, any()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, invalid_security_group_exception(), tuple()} |
-    {error, load_balancer_not_found_exception(), tuple()}.
+    {error, set_security_groups_errors(), tuple()}.
 set_security_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetSecurityGroups">>, Input, Options).
@@ -2813,12 +2814,7 @@ set_security_groups(Client, Input, Options)
 -spec set_subnets(map(), set_subnets_input()) ->
     {ok, set_subnets_output(), tuple()} |
     {error, any()} |
-    {error, allocation_id_not_found_exception(), tuple()} |
-    {error, availability_zone_not_supported_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, invalid_subnet_exception(), tuple()} |
-    {error, load_balancer_not_found_exception(), tuple()} |
-    {error, subnet_not_found_exception(), tuple()}.
+    {error, set_subnets_errors(), tuple()}.
 set_subnets(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_subnets(Client, Input, []).
@@ -2826,12 +2822,7 @@ set_subnets(Client, Input)
 -spec set_subnets(map(), set_subnets_input(), proplists:proplist()) ->
     {ok, set_subnets_output(), tuple()} |
     {error, any()} |
-    {error, allocation_id_not_found_exception(), tuple()} |
-    {error, availability_zone_not_supported_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, invalid_subnet_exception(), tuple()} |
-    {error, load_balancer_not_found_exception(), tuple()} |
-    {error, subnet_not_found_exception(), tuple()}.
+    {error, set_subnets_errors(), tuple()}.
 set_subnets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetSubnets">>, Input, Options).

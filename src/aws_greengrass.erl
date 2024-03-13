@@ -251,15 +251,18 @@
 %%   <<"Functions">> => list(greengrass_function()())
 %% }
 -type function_definition_version() :: #{binary() => any()}.
+
 %% Example:
 %% delete_connector_definition_response() :: #{}
 -type delete_connector_definition_response() :: #{}.
+
 
 %% Example:
 %% update_device_definition_request() :: #{
 %%   <<"Name">> => string()
 %% }
 -type update_device_definition_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% connector() :: #{
@@ -269,6 +272,7 @@
 %% }
 -type connector() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_resource_definition_version_request() :: #{
 %%   <<"AmznClientToken">> => string(),
@@ -276,11 +280,13 @@
 %% }
 -type create_resource_definition_version_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_role_to_group_response() :: #{
 %%   <<"AssociatedAt">> => string()
 %% }
 -type associate_role_to_group_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% function_execution_config() :: #{
@@ -288,6 +294,7 @@
 %%   <<"RunAs">> => function_run_as_config()
 %% }
 -type function_execution_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% local_volume_resource_data() :: #{
@@ -297,11 +304,13 @@
 %% }
 -type local_volume_resource_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% disassociate_service_role_from_account_response() :: #{
 %%   <<"DisassociatedAt">> => string()
 %% }
 -type disassociate_service_role_from_account_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_logger_definitions_request() :: #{
@@ -310,11 +319,13 @@
 %% }
 -type list_logger_definitions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> => map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_deployments_request() :: #{
@@ -323,24 +334,30 @@
 %% }
 -type list_deployments_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_connectivity_info_response() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Version">> => string()
 %% }
 -type update_connectivity_info_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_function_definition_request() :: #{}
 -type delete_function_definition_request() :: #{}.
+
 %% Example:
 %% delete_device_definition_response() :: #{}
 -type delete_device_definition_response() :: #{}.
+
 %% Example:
 %% get_subscription_definition_request() :: #{}
 -type get_subscription_definition_request() :: #{}.
+
 %% Example:
 %% delete_logger_definition_response() :: #{}
 -type delete_logger_definition_response() :: #{}.
+
 
 %% Example:
 %% list_logger_definition_versions_response() :: #{
@@ -349,11 +366,13 @@
 %% }
 -type list_logger_definition_versions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_resource_definition_request() :: #{
 %%   <<"Name">> => string()
 %% }
 -type update_resource_definition_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% version_information() :: #{
@@ -364,6 +383,7 @@
 %% }
 -type version_information() :: #{binary() => any()}.
 
+
 %% Example:
 %% deployment() :: #{
 %%   <<"CreatedAt">> => string(),
@@ -373,9 +393,11 @@
 %%   <<"GroupArn">> => string()
 %% }
 -type deployment() :: #{binary() => any()}.
+
 %% Example:
 %% get_logger_definition_request() :: #{}
 -type get_logger_definition_request() :: #{}.
+
 
 %% Example:
 %% secrets_manager_secret_resource_data() :: #{
@@ -384,6 +406,7 @@
 %% }
 -type secrets_manager_secret_resource_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_group_certificate_authority_response() :: #{
 %%   <<"GroupCertificateAuthorityArn">> => string(),
@@ -391,6 +414,7 @@
 %%   <<"PemEncodedCertificate">> => string()
 %% }
 -type get_group_certificate_authority_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_group_version_request() :: #{
@@ -405,12 +429,14 @@
 %% }
 -type create_group_version_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_logger_definitions_response() :: #{
 %%   <<"Definitions">> => list(definition_information()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_logger_definitions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_subscription_definition_response() :: #{
@@ -425,11 +451,13 @@
 %% }
 -type get_subscription_definition_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_thing_runtime_configuration_request() :: #{
 %%   <<"TelemetryConfiguration">> => telemetry_configuration_update()
 %% }
 -type update_thing_runtime_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_subscription_definition_version_response() :: #{
@@ -442,6 +470,7 @@
 %% }
 -type get_subscription_definition_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_resource_definitions_request() :: #{
 %%   <<"MaxResults">> => string(),
@@ -449,12 +478,14 @@
 %% }
 -type list_resource_definitions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_bulk_deployment_detailed_reports_request() :: #{
 %%   <<"MaxResults">> => string(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_bulk_deployment_detailed_reports_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_connector_definition_request() :: #{
@@ -465,6 +496,7 @@
 %% }
 -type create_connector_definition_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_deployments_response() :: #{
 %%   <<"Deployments">> => list(deployment()()),
@@ -472,14 +504,17 @@
 %% }
 -type list_deployments_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_core_definition_request() :: #{
 %%   <<"Name">> => string()
 %% }
 -type update_core_definition_request() :: #{binary() => any()}.
+
 %% Example:
 %% list_group_certificate_authorities_request() :: #{}
 -type list_group_certificate_authorities_request() :: #{}.
+
 
 %% Example:
 %% list_connector_definitions_response() :: #{
@@ -487,6 +522,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_connector_definitions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_function_definition_version_request() :: #{
@@ -496,6 +532,7 @@
 %% }
 -type create_function_definition_version_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_core_definition_request() :: #{
 %%   <<"AmznClientToken">> => string(),
@@ -504,15 +541,18 @@
 %%   <<"tags">> => map()
 %% }
 -type create_core_definition_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_associated_role_request() :: #{}
 -type get_associated_role_request() :: #{}.
+
 
 %% Example:
 %% resource_definition_version() :: #{
 %%   <<"Resources">> => list(resource()())
 %% }
 -type resource_definition_version() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_logger_definition_response() :: #{
@@ -527,11 +567,13 @@
 %% }
 -type get_logger_definition_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% function_default_config() :: #{
 %%   <<"Execution">> => function_default_execution_config()
 %% }
 -type function_default_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_function_definition_version_response() :: #{
@@ -544,12 +586,14 @@
 %% }
 -type get_function_definition_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% group_owner_setting() :: #{
 %%   <<"AutoAddGroupOwner">> => boolean(),
 %%   <<"GroupOwner">> => string()
 %% }
 -type group_owner_setting() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_device_definition_request() :: #{
@@ -560,11 +604,13 @@
 %% }
 -type create_device_definition_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% runtime_configuration() :: #{
 %%   <<"TelemetryConfiguration">> => telemetry_configuration()
 %% }
 -type runtime_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_subscription_definition_versions_request() :: #{
@@ -572,6 +618,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_subscription_definition_versions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_deployment_request() :: #{
@@ -582,12 +629,14 @@
 %% }
 -type create_deployment_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_device_definition_version_request() :: #{
 %%   <<"AmznClientToken">> => string(),
 %%   <<"Devices">> => list(device()())
 %% }
 -type create_device_definition_version_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% function_run_as_config() :: #{
@@ -596,14 +645,17 @@
 %% }
 -type function_run_as_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% telemetry_configuration_update() :: #{
 %%   <<"Telemetry">> => list(any())
 %% }
 -type telemetry_configuration_update() :: #{binary() => any()}.
+
 %% Example:
 %% delete_subscription_definition_request() :: #{}
 -type delete_subscription_definition_request() :: #{}.
+
 
 %% Example:
 %% list_bulk_deployments_response() :: #{
@@ -611,6 +663,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_bulk_deployments_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_resource_definition_request() :: #{
@@ -621,6 +674,7 @@
 %% }
 -type create_resource_definition_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_resource_definitions_response() :: #{
 %%   <<"Definitions">> => list(definition_information()()),
@@ -628,20 +682,24 @@
 %% }
 -type list_resource_definitions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% subscription_definition_version() :: #{
 %%   <<"Subscriptions">> => list(subscription()())
 %% }
 -type subscription_definition_version() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_group_certificate_configuration_request() :: #{
 %%   <<"CertificateExpiryInMilliseconds">> => string()
 %% }
 -type update_group_certificate_configuration_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_function_definition_request() :: #{}
 -type get_function_definition_request() :: #{}.
+
 
 %% Example:
 %% create_software_update_job_response() :: #{
@@ -650,6 +708,7 @@
 %%   <<"PlatformSoftwareVersion">> => string()
 %% }
 -type create_software_update_job_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% definition_information() :: #{
@@ -664,6 +723,7 @@
 %% }
 -type definition_information() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_deployment_response() :: #{
 %%   <<"DeploymentArn">> => string(),
@@ -671,17 +731,20 @@
 %% }
 -type create_deployment_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% connector_definition_version() :: #{
 %%   <<"Connectors">> => list(connector()())
 %% }
 -type connector_definition_version() :: #{binary() => any()}.
+
 
 %% Example:
 %% function_configuration_environment() :: #{
@@ -691,6 +754,7 @@
 %%   <<"Variables">> => map()
 %% }
 -type function_configuration_environment() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_device_definition_version_response() :: #{
@@ -702,18 +766,22 @@
 %%   <<"Version">> => string()
 %% }
 -type get_device_definition_version_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_resource_definition_request() :: #{}
 -type delete_resource_definition_request() :: #{}.
+
 %% Example:
 %% get_service_role_for_account_request() :: #{}
 -type get_service_role_for_account_request() :: #{}.
+
 
 %% Example:
 %% update_group_request() :: #{
 %%   <<"Name">> => string()
 %% }
 -type update_group_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_function_definition_response() :: #{
@@ -727,11 +795,13 @@
 %% }
 -type create_function_definition_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% core_definition_version() :: #{
 %%   <<"Cores">> => list(core()())
 %% }
 -type core_definition_version() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_associated_role_response() :: #{
@@ -739,27 +809,33 @@
 %%   <<"RoleArn">> => string()
 %% }
 -type get_associated_role_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_function_definition_response() :: #{}
 -type delete_function_definition_response() :: #{}.
+
 
 %% Example:
 %% update_connectivity_info_request() :: #{
 %%   <<"ConnectivityInfo">> => list(connectivity_info()())
 %% }
 -type update_connectivity_info_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_core_definition_request() :: #{}
 -type delete_core_definition_request() :: #{}.
+
 %% Example:
 %% delete_connector_definition_request() :: #{}
 -type delete_connector_definition_request() :: #{}.
+
 
 %% Example:
 %% disassociate_role_from_group_response() :: #{
 %%   <<"DisassociatedAt">> => string()
 %% }
 -type disassociate_role_from_group_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_core_definition_response() :: #{
@@ -774,6 +850,7 @@
 %% }
 -type get_core_definition_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_resource_definition_version_response() :: #{
 %%   <<"Arn">> => string(),
@@ -784,6 +861,7 @@
 %% }
 -type get_resource_definition_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_core_definition_version_response() :: #{
 %%   <<"Arn">> => string(),
@@ -792,9 +870,11 @@
 %%   <<"Version">> => string()
 %% }
 -type create_core_definition_version_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_connector_definition_request() :: #{}
 -type get_connector_definition_request() :: #{}.
+
 
 %% Example:
 %% telemetry_configuration() :: #{
@@ -803,6 +883,7 @@
 %% }
 -type telemetry_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_download_owner_setting() :: #{
 %%   <<"GroupOwner">> => string(),
@@ -810,12 +891,14 @@
 %% }
 -type resource_download_owner_setting() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_core_definition_versions_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Versions">> => list(version_information()())
 %% }
 -type list_core_definition_versions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_subscription_definition_version_response() :: #{
@@ -826,12 +909,14 @@
 %% }
 -type create_subscription_definition_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_bulk_deployment_detailed_reports_response() :: #{
 %%   <<"Deployments">> => list(bulk_deployment_result()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_bulk_deployment_detailed_reports_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% connectivity_info() :: #{
@@ -842,12 +927,14 @@
 %% }
 -type connectivity_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_connectivity_info_response() :: #{
 %%   <<"ConnectivityInfo">> => list(connectivity_info()()),
 %%   <<"Message">> => string()
 %% }
 -type get_connectivity_info_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_connector_definition_response() :: #{
@@ -861,11 +948,13 @@
 %% }
 -type create_connector_definition_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% device_definition_version() :: #{
 %%   <<"Devices">> => list(device()())
 %% }
 -type device_definition_version() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_function_definitions_response() :: #{
@@ -873,9 +962,11 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_function_definitions_response() :: #{binary() => any()}.
+
 %% Example:
 %% stop_bulk_deployment_request() :: #{}
 -type stop_bulk_deployment_request() :: #{}.
+
 
 %% Example:
 %% list_group_versions_response() :: #{
@@ -883,6 +974,7 @@
 %%   <<"Versions">> => list(version_information()())
 %% }
 -type list_group_versions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_connector_definition_version_response() :: #{
@@ -893,12 +985,14 @@
 %% }
 -type create_connector_definition_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_subscription_definition_versions_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Versions">> => list(version_information()())
 %% }
 -type list_subscription_definition_versions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_connector_definitions_request() :: #{
@@ -907,14 +1001,17 @@
 %% }
 -type list_connector_definitions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_logger_definition_request() :: #{
 %%   <<"Name">> => string()
 %% }
 -type update_logger_definition_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_group_certificate_authority_request() :: #{}
 -type get_group_certificate_authority_request() :: #{}.
+
 
 %% Example:
 %% resource_data_container() :: #{
@@ -926,14 +1023,17 @@
 %% }
 -type resource_data_container() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_group_certificate_authority_response() :: #{
 %%   <<"GroupCertificateAuthorityArn">> => string()
 %% }
 -type create_group_certificate_authority_response() :: #{binary() => any()}.
+
 %% Example:
 %% update_function_definition_response() :: #{}
 -type update_function_definition_response() :: #{}.
+
 
 %% Example:
 %% create_subscription_definition_response() :: #{
@@ -946,9 +1046,11 @@
 %%   <<"Name">> => string()
 %% }
 -type create_subscription_definition_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_device_definition_request() :: #{}
 -type delete_device_definition_request() :: #{}.
+
 
 %% Example:
 %% update_subscription_definition_request() :: #{
@@ -956,11 +1058,13 @@
 %% }
 -type update_subscription_definition_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_group_certificate_authorities_response() :: #{
 %%   <<"GroupCertificateAuthorities">> => list(group_certificate_authority_properties()())
 %% }
 -type list_group_certificate_authorities_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% local_device_resource_data() :: #{
@@ -968,15 +1072,18 @@
 %%   <<"SourcePath">> => string()
 %% }
 -type local_device_resource_data() :: #{binary() => any()}.
+
 %% Example:
 %% get_core_definition_version_request() :: #{}
 -type get_core_definition_version_request() :: #{}.
+
 
 %% Example:
 %% get_connector_definition_version_request() :: #{
 %%   <<"NextToken">> => string()
 %% }
 -type get_connector_definition_version_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% reset_deployments_response() :: #{
@@ -985,12 +1092,14 @@
 %% }
 -type reset_deployments_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_resource_definition_versions_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Versions">> => list(version_information()())
 %% }
 -type list_resource_definition_versions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_deployment_status_response() :: #{
@@ -1002,21 +1111,25 @@
 %% }
 -type get_deployment_status_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% group_certificate_authority_properties() :: #{
 %%   <<"GroupCertificateAuthorityArn">> => string(),
 %%   <<"GroupCertificateAuthorityId">> => string()
 %% }
 -type group_certificate_authority_properties() :: #{binary() => any()}.
+
 %% Example:
 %% update_core_definition_response() :: #{}
 -type update_core_definition_response() :: #{}.
+
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% group_information() :: #{
@@ -1030,6 +1143,7 @@
 %% }
 -type group_information() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_logger_definition_version_request() :: #{
 %%   <<"AmznClientToken">> => string(),
@@ -1037,14 +1151,17 @@
 %% }
 -type create_logger_definition_version_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_function_definition_version_request() :: #{
 %%   <<"NextToken">> => string()
 %% }
 -type get_function_definition_version_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_group_certificate_configuration_request() :: #{}
 -type get_group_certificate_configuration_request() :: #{}.
+
 
 %% Example:
 %% bulk_deployment() :: #{
@@ -1054,11 +1171,13 @@
 %% }
 -type bulk_deployment() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_connector_definition_request() :: #{
 %%   <<"Name">> => string()
 %% }
 -type update_connector_definition_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_group_request() :: #{
@@ -1068,9 +1187,11 @@
 %%   <<"tags">> => map()
 %% }
 -type create_group_request() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_role_from_group_request() :: #{}
 -type disassociate_role_from_group_request() :: #{}.
+
 
 %% Example:
 %% sage_maker_machine_learning_model_resource_data() :: #{
@@ -1080,17 +1201,21 @@
 %% }
 -type sage_maker_machine_learning_model_resource_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_thing_runtime_configuration_response() :: #{
 %%   <<"RuntimeConfiguration">> => runtime_configuration()
 %% }
 -type get_thing_runtime_configuration_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_connectivity_info_request() :: #{}
 -type get_connectivity_info_request() :: #{}.
+
 %% Example:
 %% get_resource_definition_version_request() :: #{}
 -type get_resource_definition_version_request() :: #{}.
+
 
 %% Example:
 %% create_resource_definition_version_response() :: #{
@@ -1101,11 +1226,13 @@
 %% }
 -type create_resource_definition_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% associate_service_role_to_account_request() :: #{
 %%   <<"RoleArn">> := string()
 %% }
 -type associate_service_role_to_account_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_device_definition_response() :: #{
@@ -1120,12 +1247,14 @@
 %% }
 -type get_device_definition_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% reset_deployments_request() :: #{
 %%   <<"AmznClientToken">> => string(),
 %%   <<"Force">> => boolean()
 %% }
 -type reset_deployments_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_bulk_deployments_request() :: #{
@@ -1134,11 +1263,13 @@
 %% }
 -type list_bulk_deployments_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_logger_definition_version_request() :: #{
 %%   <<"NextToken">> => string()
 %% }
 -type get_logger_definition_version_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_group_certificate_configuration_response() :: #{
@@ -1148,6 +1279,7 @@
 %% }
 -type update_group_certificate_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_device_definitions_response() :: #{
 %%   <<"Definitions">> => list(definition_information()()),
@@ -1155,12 +1287,14 @@
 %% }
 -type list_device_definitions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_device_definition_versions_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Versions">> => list(version_information()())
 %% }
 -type list_device_definition_versions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_function_definition_response() :: #{
@@ -1175,6 +1309,7 @@
 %% }
 -type get_function_definition_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_group_version_response() :: #{
 %%   <<"Arn">> => string(),
@@ -1185,6 +1320,7 @@
 %% }
 -type get_group_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% logger() :: #{
 %%   <<"Component">> => list(any()),
@@ -1194,6 +1330,7 @@
 %%   <<"Type">> => list(any())
 %% }
 -type logger() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_logger_definition_response() :: #{
@@ -1207,6 +1344,7 @@
 %% }
 -type create_logger_definition_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_function_definition_request() :: #{
 %%   <<"AmznClientToken">> => string(),
@@ -1215,6 +1353,7 @@
 %%   <<"tags">> => map()
 %% }
 -type create_function_definition_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% group_version() :: #{
@@ -1228,12 +1367,14 @@
 %% }
 -type group_version() :: #{binary() => any()}.
 
+
 %% Example:
 %% error_detail() :: #{
 %%   <<"DetailedErrorCode">> => string(),
 %%   <<"DetailedErrorMessage">> => string()
 %% }
 -type error_detail() :: #{binary() => any()}.
+
 
 %% Example:
 %% function_default_execution_config() :: #{
@@ -1242,11 +1383,13 @@
 %% }
 -type function_default_execution_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% logger_definition_version() :: #{
 %%   <<"Loggers">> => list(logger()())
 %% }
 -type logger_definition_version() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_device_definition_versions_request() :: #{
@@ -1254,9 +1397,11 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_device_definition_versions_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_group_response() :: #{}
 -type delete_group_response() :: #{}.
+
 
 %% Example:
 %% core() :: #{
@@ -1266,9 +1411,11 @@
 %%   <<"ThingArn">> => string()
 %% }
 -type core() :: #{binary() => any()}.
+
 %% Example:
 %% get_deployment_status_request() :: #{}
 -type get_deployment_status_request() :: #{}.
+
 
 %% Example:
 %% create_logger_definition_version_response() :: #{
@@ -1279,6 +1426,7 @@
 %% }
 -type create_logger_definition_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_function_definition_version_response() :: #{
 %%   <<"Arn">> => string(),
@@ -1288,6 +1436,7 @@
 %% }
 -type create_function_definition_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_resource_definition_versions_request() :: #{
 %%   <<"MaxResults">> => string(),
@@ -1295,15 +1444,18 @@
 %% }
 -type list_resource_definition_versions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_core_definition_version_request() :: #{
 %%   <<"AmznClientToken">> => string(),
 %%   <<"Cores">> => list(core()())
 %% }
 -type create_core_definition_version_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_device_definition_request() :: #{}
 -type get_device_definition_request() :: #{}.
+
 
 %% Example:
 %% create_subscription_definition_version_request() :: #{
@@ -1312,6 +1464,7 @@
 %% }
 -type create_subscription_definition_version_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_connector_definition_versions_response() :: #{
 %%   <<"NextToken">> => string(),
@@ -1319,12 +1472,14 @@
 %% }
 -type list_connector_definition_versions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_logger_definition_versions_request() :: #{
 %%   <<"MaxResults">> => string(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_logger_definition_versions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_logger_definition_version_response() :: #{
@@ -1336,14 +1491,17 @@
 %% }
 -type get_logger_definition_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_function_definition_request() :: #{
 %%   <<"Name">> => string()
 %% }
 -type update_function_definition_request() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% get_group_certificate_configuration_response() :: #{
@@ -1352,6 +1510,7 @@
 %%   <<"GroupId">> => string()
 %% }
 -type get_group_certificate_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% function_configuration() :: #{
@@ -1366,6 +1525,7 @@
 %% }
 -type function_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_bulk_deployment_request() :: #{
 %%   <<"AmznClientToken">> => string(),
@@ -1375,14 +1535,17 @@
 %% }
 -type start_bulk_deployment_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_group_certificate_authority_request() :: #{
 %%   <<"AmznClientToken">> => string()
 %% }
 -type create_group_certificate_authority_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_bulk_deployment_status_request() :: #{}
 -type get_bulk_deployment_status_request() :: #{}.
+
 
 %% Example:
 %% internal_server_error_exception() :: #{
@@ -1390,6 +1553,7 @@
 %%   <<"Message">> => string()
 %% }
 -type internal_server_error_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% aws_greengrass_function() :: #{
@@ -1399,15 +1563,18 @@
 %% }
 -type aws_greengrass_function() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_bulk_deployment_response() :: #{
 %%   <<"BulkDeploymentArn">> => string(),
 %%   <<"BulkDeploymentId">> => string()
 %% }
 -type start_bulk_deployment_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_group_version_request() :: #{}
 -type get_group_version_request() :: #{}.
+
 
 %% Example:
 %% list_function_definition_versions_request() :: #{
@@ -1415,6 +1582,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_function_definition_versions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_group_response() :: #{
@@ -1429,12 +1597,14 @@
 %% }
 -type get_group_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_connector_definition_versions_request() :: #{
 %%   <<"MaxResults">> => string(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_connector_definition_versions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% subscription() :: #{
@@ -1444,6 +1614,7 @@
 %%   <<"Target">> => string()
 %% }
 -type subscription() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_device_definition_response() :: #{
@@ -1456,9 +1627,11 @@
 %%   <<"Name">> => string()
 %% }
 -type create_device_definition_response() :: #{binary() => any()}.
+
 %% Example:
 %% update_thing_runtime_configuration_response() :: #{}
 -type update_thing_runtime_configuration_response() :: #{}.
+
 
 %% Example:
 %% list_group_versions_request() :: #{
@@ -1466,6 +1639,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_group_versions_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_group_version_response() :: #{
@@ -1476,6 +1650,7 @@
 %% }
 -type create_group_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_device_definition_version_response() :: #{
 %%   <<"Arn">> => string(),
@@ -1484,12 +1659,15 @@
 %%   <<"Version">> => string()
 %% }
 -type create_device_definition_version_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_group_request() :: #{}
 -type delete_group_request() :: #{}.
+
 %% Example:
 %% get_resource_definition_request() :: #{}
 -type get_resource_definition_request() :: #{}.
+
 
 %% Example:
 %% bulk_deployment_result() :: #{
@@ -1504,6 +1682,7 @@
 %% }
 -type bulk_deployment_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_resource_definition_response() :: #{
 %%   <<"Arn">> => string(),
@@ -1516,6 +1695,7 @@
 %% }
 -type create_resource_definition_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_core_definitions_response() :: #{
 %%   <<"Definitions">> => list(definition_information()()),
@@ -1523,11 +1703,13 @@
 %% }
 -type list_core_definitions_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_device_definition_version_request() :: #{
 %%   <<"NextToken">> => string()
 %% }
 -type get_device_definition_version_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% bulk_deployment_metrics() :: #{
@@ -1537,15 +1719,18 @@
 %% }
 -type bulk_deployment_metrics() :: #{binary() => any()}.
 
+
 %% Example:
 %% bad_request_exception() :: #{
 %%   <<"ErrorDetails">> => list(error_detail()()),
 %%   <<"Message">> => string()
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_resource_definition_response() :: #{}
 -type delete_resource_definition_response() :: #{}.
+
 
 %% Example:
 %% list_subscription_definitions_response() :: #{
@@ -1553,6 +1738,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_subscription_definitions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_core_definition_version_response() :: #{
@@ -1565,14 +1751,17 @@
 %% }
 -type get_core_definition_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_subscription_definition_version_request() :: #{
 %%   <<"NextToken">> => string()
 %% }
 -type get_subscription_definition_version_request() :: #{binary() => any()}.
+
 %% Example:
 %% update_connector_definition_response() :: #{}
 -type update_connector_definition_response() :: #{}.
+
 
 %% Example:
 %% get_connector_definition_response() :: #{
@@ -1587,6 +1776,7 @@
 %% }
 -type get_connector_definition_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% device() :: #{
 %%   <<"CertificateArn">> => string(),
@@ -1595,9 +1785,11 @@
 %%   <<"ThingArn">> => string()
 %% }
 -type device() :: #{binary() => any()}.
+
 %% Example:
 %% delete_subscription_definition_response() :: #{}
 -type delete_subscription_definition_response() :: #{}.
+
 
 %% Example:
 %% create_core_definition_response() :: #{
@@ -1610,9 +1802,11 @@
 %%   <<"Name">> => string()
 %% }
 -type create_core_definition_response() :: #{binary() => any()}.
+
 %% Example:
 %% stop_bulk_deployment_response() :: #{}
 -type stop_bulk_deployment_response() :: #{}.
+
 
 %% Example:
 %% create_software_update_job_request() :: #{
@@ -1626,6 +1820,7 @@
 %% }
 -type create_software_update_job_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_connector_definition_version_request() :: #{
 %%   <<"AmznClientToken">> => string(),
@@ -1633,15 +1828,18 @@
 %% }
 -type create_connector_definition_version_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_groups_response() :: #{
 %%   <<"Groups">> => list(group_information()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_groups_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_group_request() :: #{}
 -type get_group_request() :: #{}.
+
 
 %% Example:
 %% list_subscription_definitions_request() :: #{
@@ -1650,6 +1848,7 @@
 %% }
 -type list_subscription_definitions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_service_role_for_account_response() :: #{
 %%   <<"AssociatedAt">> => string(),
@@ -1657,15 +1856,18 @@
 %% }
 -type get_service_role_for_account_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_core_definitions_request() :: #{
 %%   <<"MaxResults">> => string(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_core_definitions_request() :: #{binary() => any()}.
+
 %% Example:
 %% update_subscription_definition_response() :: #{}
 -type update_subscription_definition_response() :: #{}.
+
 
 %% Example:
 %% list_function_definitions_request() :: #{
@@ -1674,15 +1876,18 @@
 %% }
 -type list_function_definitions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_core_definition_versions_request() :: #{
 %%   <<"MaxResults">> => string(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_core_definition_versions_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_thing_runtime_configuration_request() :: #{}
 -type get_thing_runtime_configuration_request() :: #{}.
+
 
 %% Example:
 %% list_groups_request() :: #{
@@ -1691,12 +1896,14 @@
 %% }
 -type list_groups_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_function_definition_versions_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Versions">> => list(version_information()())
 %% }
 -type list_function_definition_versions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_resource_definition_response() :: #{
@@ -1711,6 +1918,7 @@
 %% }
 -type get_resource_definition_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_bulk_deployment_status_response() :: #{
 %%   <<"BulkDeploymentMetrics">> => bulk_deployment_metrics(),
@@ -1721,12 +1929,15 @@
 %%   <<"tags">> => map()
 %% }
 -type get_bulk_deployment_status_response() :: #{binary() => any()}.
+
 %% Example:
 %% update_logger_definition_response() :: #{}
 -type update_logger_definition_response() :: #{}.
+
 %% Example:
 %% update_group_response() :: #{}
 -type update_group_response() :: #{}.
+
 
 %% Example:
 %% associate_service_role_to_account_response() :: #{
@@ -1734,12 +1945,14 @@
 %% }
 -type associate_service_role_to_account_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_access_policy() :: #{
 %%   <<"Permission">> => list(any()),
 %%   <<"ResourceId">> => string()
 %% }
 -type resource_access_policy() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_subscription_definition_request() :: #{
@@ -1749,9 +1962,11 @@
 %%   <<"tags">> => map()
 %% }
 -type create_subscription_definition_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_core_definition_response() :: #{}
 -type delete_core_definition_response() :: #{}.
+
 
 %% Example:
 %% s3_machine_learning_model_resource_data() :: #{
@@ -1760,6 +1975,7 @@
 %%   <<"S3Uri">> => string()
 %% }
 -type s3_machine_learning_model_resource_data() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_connector_definition_version_response() :: #{
@@ -1771,12 +1987,15 @@
 %%   <<"Version">> => string()
 %% }
 -type get_connector_definition_version_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_logger_definition_request() :: #{}
 -type delete_logger_definition_request() :: #{}.
+
 %% Example:
 %% disassociate_service_role_from_account_request() :: #{}
 -type disassociate_service_role_from_account_request() :: #{}.
+
 
 %% Example:
 %% create_group_response() :: #{
@@ -1789,18 +2008,22 @@
 %%   <<"Name">> => string()
 %% }
 -type create_group_response() :: #{binary() => any()}.
+
 %% Example:
 %% update_device_definition_response() :: #{}
 -type update_device_definition_response() :: #{}.
+
 
 %% Example:
 %% associate_role_to_group_request() :: #{
 %%   <<"RoleArn">> := string()
 %% }
 -type associate_role_to_group_request() :: #{binary() => any()}.
+
 %% Example:
 %% update_resource_definition_response() :: #{}
 -type update_resource_definition_response() :: #{}.
+
 
 %% Example:
 %% list_device_definitions_request() :: #{
@@ -1808,9 +2031,11 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_device_definitions_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_core_definition_request() :: #{}
 -type get_core_definition_request() :: #{}.
+
 
 %% Example:
 %% create_logger_definition_request() :: #{
@@ -1821,6 +2046,7 @@
 %% }
 -type create_logger_definition_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource() :: #{
 %%   <<"Id">> => string(),
@@ -1828,6 +2054,272 @@
 %%   <<"ResourceDataContainer">> => resource_data_container()
 %% }
 -type resource() :: #{binary() => any()}.
+
+-type associate_role_to_group_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type associate_service_role_to_account_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type create_connector_definition_errors() ::
+    bad_request_exception().
+
+-type create_connector_definition_version_errors() ::
+    bad_request_exception().
+
+-type create_core_definition_errors() ::
+    bad_request_exception().
+
+-type create_core_definition_version_errors() ::
+    bad_request_exception().
+
+-type create_deployment_errors() ::
+    bad_request_exception().
+
+-type create_device_definition_errors() ::
+    bad_request_exception().
+
+-type create_device_definition_version_errors() ::
+    bad_request_exception().
+
+-type create_function_definition_errors() ::
+    bad_request_exception().
+
+-type create_function_definition_version_errors() ::
+    bad_request_exception().
+
+-type create_group_errors() ::
+    bad_request_exception().
+
+-type create_group_certificate_authority_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type create_group_version_errors() ::
+    bad_request_exception().
+
+-type create_logger_definition_errors() ::
+    bad_request_exception().
+
+-type create_logger_definition_version_errors() ::
+    bad_request_exception().
+
+-type create_resource_definition_errors() ::
+    bad_request_exception().
+
+-type create_resource_definition_version_errors() ::
+    bad_request_exception().
+
+-type create_software_update_job_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type create_subscription_definition_errors() ::
+    bad_request_exception().
+
+-type create_subscription_definition_version_errors() ::
+    bad_request_exception().
+
+-type delete_connector_definition_errors() ::
+    bad_request_exception().
+
+-type delete_core_definition_errors() ::
+    bad_request_exception().
+
+-type delete_device_definition_errors() ::
+    bad_request_exception().
+
+-type delete_function_definition_errors() ::
+    bad_request_exception().
+
+-type delete_group_errors() ::
+    bad_request_exception().
+
+-type delete_logger_definition_errors() ::
+    bad_request_exception().
+
+-type delete_resource_definition_errors() ::
+    bad_request_exception().
+
+-type delete_subscription_definition_errors() ::
+    bad_request_exception().
+
+-type disassociate_role_from_group_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type disassociate_service_role_from_account_errors() ::
+    internal_server_error_exception().
+
+-type get_associated_role_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type get_bulk_deployment_status_errors() ::
+    bad_request_exception().
+
+-type get_connectivity_info_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type get_connector_definition_errors() ::
+    bad_request_exception().
+
+-type get_connector_definition_version_errors() ::
+    bad_request_exception().
+
+-type get_core_definition_errors() ::
+    bad_request_exception().
+
+-type get_core_definition_version_errors() ::
+    bad_request_exception().
+
+-type get_deployment_status_errors() ::
+    bad_request_exception().
+
+-type get_device_definition_errors() ::
+    bad_request_exception().
+
+-type get_device_definition_version_errors() ::
+    bad_request_exception().
+
+-type get_function_definition_errors() ::
+    bad_request_exception().
+
+-type get_function_definition_version_errors() ::
+    bad_request_exception().
+
+-type get_group_errors() ::
+    bad_request_exception().
+
+-type get_group_certificate_authority_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type get_group_certificate_configuration_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type get_group_version_errors() ::
+    bad_request_exception().
+
+-type get_logger_definition_errors() ::
+    bad_request_exception().
+
+-type get_logger_definition_version_errors() ::
+    bad_request_exception().
+
+-type get_resource_definition_errors() ::
+    bad_request_exception().
+
+-type get_resource_definition_version_errors() ::
+    bad_request_exception().
+
+-type get_service_role_for_account_errors() ::
+    internal_server_error_exception().
+
+-type get_subscription_definition_errors() ::
+    bad_request_exception().
+
+-type get_subscription_definition_version_errors() ::
+    bad_request_exception().
+
+-type get_thing_runtime_configuration_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type list_bulk_deployment_detailed_reports_errors() ::
+    bad_request_exception().
+
+-type list_bulk_deployments_errors() ::
+    bad_request_exception().
+
+-type list_connector_definition_versions_errors() ::
+    bad_request_exception().
+
+-type list_core_definition_versions_errors() ::
+    bad_request_exception().
+
+-type list_deployments_errors() ::
+    bad_request_exception().
+
+-type list_device_definition_versions_errors() ::
+    bad_request_exception().
+
+-type list_function_definition_versions_errors() ::
+    bad_request_exception().
+
+-type list_group_certificate_authorities_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type list_group_versions_errors() ::
+    bad_request_exception().
+
+-type list_logger_definition_versions_errors() ::
+    bad_request_exception().
+
+-type list_resource_definition_versions_errors() ::
+    bad_request_exception().
+
+-type list_subscription_definition_versions_errors() ::
+    bad_request_exception().
+
+-type list_tags_for_resource_errors() ::
+    bad_request_exception().
+
+-type reset_deployments_errors() ::
+    bad_request_exception().
+
+-type start_bulk_deployment_errors() ::
+    bad_request_exception().
+
+-type stop_bulk_deployment_errors() ::
+    bad_request_exception().
+
+-type tag_resource_errors() ::
+    bad_request_exception().
+
+-type untag_resource_errors() ::
+    bad_request_exception().
+
+-type update_connectivity_info_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type update_connector_definition_errors() ::
+    bad_request_exception().
+
+-type update_core_definition_errors() ::
+    bad_request_exception().
+
+-type update_device_definition_errors() ::
+    bad_request_exception().
+
+-type update_function_definition_errors() ::
+    bad_request_exception().
+
+-type update_group_errors() ::
+    bad_request_exception().
+
+-type update_group_certificate_configuration_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type update_logger_definition_errors() ::
+    bad_request_exception().
+
+-type update_resource_definition_errors() ::
+    bad_request_exception().
+
+-type update_subscription_definition_errors() ::
+    bad_request_exception().
+
+-type update_thing_runtime_configuration_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
 
 %%====================================================================
 %% API
@@ -1841,16 +2333,14 @@
 -spec associate_role_to_group(map(), binary() | list(), associate_role_to_group_request()) ->
     {ok, associate_role_to_group_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, associate_role_to_group_errors(), tuple()}.
 associate_role_to_group(Client, GroupId, Input) ->
     associate_role_to_group(Client, GroupId, Input, []).
 
 -spec associate_role_to_group(map(), binary() | list(), associate_role_to_group_request(), proplists:proplist()) ->
     {ok, associate_role_to_group_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, associate_role_to_group_errors(), tuple()}.
 associate_role_to_group(Client, GroupId, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/role"],
@@ -1882,16 +2372,14 @@ associate_role_to_group(Client, GroupId, Input0, Options0) ->
 -spec associate_service_role_to_account(map(), associate_service_role_to_account_request()) ->
     {ok, associate_service_role_to_account_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, associate_service_role_to_account_errors(), tuple()}.
 associate_service_role_to_account(Client, Input) ->
     associate_service_role_to_account(Client, Input, []).
 
 -spec associate_service_role_to_account(map(), associate_service_role_to_account_request(), proplists:proplist()) ->
     {ok, associate_service_role_to_account_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, associate_service_role_to_account_errors(), tuple()}.
 associate_service_role_to_account(Client, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/servicerole"],
@@ -1921,14 +2409,14 @@ associate_service_role_to_account(Client, Input0, Options0) ->
 -spec create_connector_definition(map(), create_connector_definition_request()) ->
     {ok, create_connector_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_connector_definition_errors(), tuple()}.
 create_connector_definition(Client, Input) ->
     create_connector_definition(Client, Input, []).
 
 -spec create_connector_definition(map(), create_connector_definition_request(), proplists:proplist()) ->
     {ok, create_connector_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_connector_definition_errors(), tuple()}.
 create_connector_definition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/definition/connectors"],
@@ -1958,14 +2446,14 @@ create_connector_definition(Client, Input0, Options0) ->
 -spec create_connector_definition_version(map(), binary() | list(), create_connector_definition_version_request()) ->
     {ok, create_connector_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_connector_definition_version_errors(), tuple()}.
 create_connector_definition_version(Client, ConnectorDefinitionId, Input) ->
     create_connector_definition_version(Client, ConnectorDefinitionId, Input, []).
 
 -spec create_connector_definition_version(map(), binary() | list(), create_connector_definition_version_request(), proplists:proplist()) ->
     {ok, create_connector_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_connector_definition_version_errors(), tuple()}.
 create_connector_definition_version(Client, ConnectorDefinitionId, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/definition/connectors/", aws_util:encode_uri(ConnectorDefinitionId), "/versions"],
@@ -1998,14 +2486,14 @@ create_connector_definition_version(Client, ConnectorDefinitionId, Input0, Optio
 -spec create_core_definition(map(), create_core_definition_request()) ->
     {ok, create_core_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_core_definition_errors(), tuple()}.
 create_core_definition(Client, Input) ->
     create_core_definition(Client, Input, []).
 
 -spec create_core_definition(map(), create_core_definition_request(), proplists:proplist()) ->
     {ok, create_core_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_core_definition_errors(), tuple()}.
 create_core_definition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/definition/cores"],
@@ -2036,14 +2524,14 @@ create_core_definition(Client, Input0, Options0) ->
 -spec create_core_definition_version(map(), binary() | list(), create_core_definition_version_request()) ->
     {ok, create_core_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_core_definition_version_errors(), tuple()}.
 create_core_definition_version(Client, CoreDefinitionId, Input) ->
     create_core_definition_version(Client, CoreDefinitionId, Input, []).
 
 -spec create_core_definition_version(map(), binary() | list(), create_core_definition_version_request(), proplists:proplist()) ->
     {ok, create_core_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_core_definition_version_errors(), tuple()}.
 create_core_definition_version(Client, CoreDefinitionId, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/definition/cores/", aws_util:encode_uri(CoreDefinitionId), "/versions"],
@@ -2076,14 +2564,14 @@ create_core_definition_version(Client, CoreDefinitionId, Input0, Options0) ->
 -spec create_deployment(map(), binary() | list(), create_deployment_request()) ->
     {ok, create_deployment_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_deployment_errors(), tuple()}.
 create_deployment(Client, GroupId, Input) ->
     create_deployment(Client, GroupId, Input, []).
 
 -spec create_deployment(map(), binary() | list(), create_deployment_request(), proplists:proplist()) ->
     {ok, create_deployment_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_deployment_errors(), tuple()}.
 create_deployment(Client, GroupId, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/deployments"],
@@ -2115,14 +2603,14 @@ create_deployment(Client, GroupId, Input0, Options0) ->
 -spec create_device_definition(map(), create_device_definition_request()) ->
     {ok, create_device_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_device_definition_errors(), tuple()}.
 create_device_definition(Client, Input) ->
     create_device_definition(Client, Input, []).
 
 -spec create_device_definition(map(), create_device_definition_request(), proplists:proplist()) ->
     {ok, create_device_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_device_definition_errors(), tuple()}.
 create_device_definition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/definition/devices"],
@@ -2152,14 +2640,14 @@ create_device_definition(Client, Input0, Options0) ->
 -spec create_device_definition_version(map(), binary() | list(), create_device_definition_version_request()) ->
     {ok, create_device_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_device_definition_version_errors(), tuple()}.
 create_device_definition_version(Client, DeviceDefinitionId, Input) ->
     create_device_definition_version(Client, DeviceDefinitionId, Input, []).
 
 -spec create_device_definition_version(map(), binary() | list(), create_device_definition_version_request(), proplists:proplist()) ->
     {ok, create_device_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_device_definition_version_errors(), tuple()}.
 create_device_definition_version(Client, DeviceDefinitionId, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/definition/devices/", aws_util:encode_uri(DeviceDefinitionId), "/versions"],
@@ -2193,14 +2681,14 @@ create_device_definition_version(Client, DeviceDefinitionId, Input0, Options0) -
 -spec create_function_definition(map(), create_function_definition_request()) ->
     {ok, create_function_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_function_definition_errors(), tuple()}.
 create_function_definition(Client, Input) ->
     create_function_definition(Client, Input, []).
 
 -spec create_function_definition(map(), create_function_definition_request(), proplists:proplist()) ->
     {ok, create_function_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_function_definition_errors(), tuple()}.
 create_function_definition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/definition/functions"],
@@ -2230,14 +2718,14 @@ create_function_definition(Client, Input0, Options0) ->
 -spec create_function_definition_version(map(), binary() | list(), create_function_definition_version_request()) ->
     {ok, create_function_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_function_definition_version_errors(), tuple()}.
 create_function_definition_version(Client, FunctionDefinitionId, Input) ->
     create_function_definition_version(Client, FunctionDefinitionId, Input, []).
 
 -spec create_function_definition_version(map(), binary() | list(), create_function_definition_version_request(), proplists:proplist()) ->
     {ok, create_function_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_function_definition_version_errors(), tuple()}.
 create_function_definition_version(Client, FunctionDefinitionId, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/definition/functions/", aws_util:encode_uri(FunctionDefinitionId), "/versions"],
@@ -2272,14 +2760,14 @@ create_function_definition_version(Client, FunctionDefinitionId, Input0, Options
 -spec create_group(map(), create_group_request()) ->
     {ok, create_group_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_group_errors(), tuple()}.
 create_group(Client, Input) ->
     create_group(Client, Input, []).
 
 -spec create_group(map(), create_group_request(), proplists:proplist()) ->
     {ok, create_group_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_group_errors(), tuple()}.
 create_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/groups"],
@@ -2310,16 +2798,14 @@ create_group(Client, Input0, Options0) ->
 -spec create_group_certificate_authority(map(), binary() | list(), create_group_certificate_authority_request()) ->
     {ok, create_group_certificate_authority_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, create_group_certificate_authority_errors(), tuple()}.
 create_group_certificate_authority(Client, GroupId, Input) ->
     create_group_certificate_authority(Client, GroupId, Input, []).
 
 -spec create_group_certificate_authority(map(), binary() | list(), create_group_certificate_authority_request(), proplists:proplist()) ->
     {ok, create_group_certificate_authority_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, create_group_certificate_authority_errors(), tuple()}.
 create_group_certificate_authority(Client, GroupId, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/certificateauthorities"],
@@ -2348,14 +2834,14 @@ create_group_certificate_authority(Client, GroupId, Input0, Options0) ->
 -spec create_group_version(map(), binary() | list(), create_group_version_request()) ->
     {ok, create_group_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_group_version_errors(), tuple()}.
 create_group_version(Client, GroupId, Input) ->
     create_group_version(Client, GroupId, Input, []).
 
 -spec create_group_version(map(), binary() | list(), create_group_version_request(), proplists:proplist()) ->
     {ok, create_group_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_group_version_errors(), tuple()}.
 create_group_version(Client, GroupId, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/versions"],
@@ -2387,14 +2873,14 @@ create_group_version(Client, GroupId, Input0, Options0) ->
 -spec create_logger_definition(map(), create_logger_definition_request()) ->
     {ok, create_logger_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_logger_definition_errors(), tuple()}.
 create_logger_definition(Client, Input) ->
     create_logger_definition(Client, Input, []).
 
 -spec create_logger_definition(map(), create_logger_definition_request(), proplists:proplist()) ->
     {ok, create_logger_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_logger_definition_errors(), tuple()}.
 create_logger_definition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/definition/loggers"],
@@ -2424,14 +2910,14 @@ create_logger_definition(Client, Input0, Options0) ->
 -spec create_logger_definition_version(map(), binary() | list(), create_logger_definition_version_request()) ->
     {ok, create_logger_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_logger_definition_version_errors(), tuple()}.
 create_logger_definition_version(Client, LoggerDefinitionId, Input) ->
     create_logger_definition_version(Client, LoggerDefinitionId, Input, []).
 
 -spec create_logger_definition_version(map(), binary() | list(), create_logger_definition_version_request(), proplists:proplist()) ->
     {ok, create_logger_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_logger_definition_version_errors(), tuple()}.
 create_logger_definition_version(Client, LoggerDefinitionId, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/definition/loggers/", aws_util:encode_uri(LoggerDefinitionId), "/versions"],
@@ -2465,14 +2951,14 @@ create_logger_definition_version(Client, LoggerDefinitionId, Input0, Options0) -
 -spec create_resource_definition(map(), create_resource_definition_request()) ->
     {ok, create_resource_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_resource_definition_errors(), tuple()}.
 create_resource_definition(Client, Input) ->
     create_resource_definition(Client, Input, []).
 
 -spec create_resource_definition(map(), create_resource_definition_request(), proplists:proplist()) ->
     {ok, create_resource_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_resource_definition_errors(), tuple()}.
 create_resource_definition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/definition/resources"],
@@ -2502,14 +2988,14 @@ create_resource_definition(Client, Input0, Options0) ->
 -spec create_resource_definition_version(map(), binary() | list(), create_resource_definition_version_request()) ->
     {ok, create_resource_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_resource_definition_version_errors(), tuple()}.
 create_resource_definition_version(Client, ResourceDefinitionId, Input) ->
     create_resource_definition_version(Client, ResourceDefinitionId, Input, []).
 
 -spec create_resource_definition_version(map(), binary() | list(), create_resource_definition_version_request(), proplists:proplist()) ->
     {ok, create_resource_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_resource_definition_version_errors(), tuple()}.
 create_resource_definition_version(Client, ResourceDefinitionId, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/definition/resources/", aws_util:encode_uri(ResourceDefinitionId), "/versions"],
@@ -2543,16 +3029,14 @@ create_resource_definition_version(Client, ResourceDefinitionId, Input0, Options
 -spec create_software_update_job(map(), create_software_update_job_request()) ->
     {ok, create_software_update_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, create_software_update_job_errors(), tuple()}.
 create_software_update_job(Client, Input) ->
     create_software_update_job(Client, Input, []).
 
 -spec create_software_update_job(map(), create_software_update_job_request(), proplists:proplist()) ->
     {ok, create_software_update_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, create_software_update_job_errors(), tuple()}.
 create_software_update_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/updates"],
@@ -2585,14 +3069,14 @@ create_software_update_job(Client, Input0, Options0) ->
 -spec create_subscription_definition(map(), create_subscription_definition_request()) ->
     {ok, create_subscription_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_subscription_definition_errors(), tuple()}.
 create_subscription_definition(Client, Input) ->
     create_subscription_definition(Client, Input, []).
 
 -spec create_subscription_definition(map(), create_subscription_definition_request(), proplists:proplist()) ->
     {ok, create_subscription_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_subscription_definition_errors(), tuple()}.
 create_subscription_definition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/definition/subscriptions"],
@@ -2622,14 +3106,14 @@ create_subscription_definition(Client, Input0, Options0) ->
 -spec create_subscription_definition_version(map(), binary() | list(), create_subscription_definition_version_request()) ->
     {ok, create_subscription_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_subscription_definition_version_errors(), tuple()}.
 create_subscription_definition_version(Client, SubscriptionDefinitionId, Input) ->
     create_subscription_definition_version(Client, SubscriptionDefinitionId, Input, []).
 
 -spec create_subscription_definition_version(map(), binary() | list(), create_subscription_definition_version_request(), proplists:proplist()) ->
     {ok, create_subscription_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, create_subscription_definition_version_errors(), tuple()}.
 create_subscription_definition_version(Client, SubscriptionDefinitionId, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/definition/subscriptions/", aws_util:encode_uri(SubscriptionDefinitionId), "/versions"],
@@ -2658,14 +3142,14 @@ create_subscription_definition_version(Client, SubscriptionDefinitionId, Input0,
 -spec delete_connector_definition(map(), binary() | list(), delete_connector_definition_request()) ->
     {ok, delete_connector_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, delete_connector_definition_errors(), tuple()}.
 delete_connector_definition(Client, ConnectorDefinitionId, Input) ->
     delete_connector_definition(Client, ConnectorDefinitionId, Input, []).
 
 -spec delete_connector_definition(map(), binary() | list(), delete_connector_definition_request(), proplists:proplist()) ->
     {ok, delete_connector_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, delete_connector_definition_errors(), tuple()}.
 delete_connector_definition(Client, ConnectorDefinitionId, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/definition/connectors/", aws_util:encode_uri(ConnectorDefinitionId), ""],
@@ -2692,14 +3176,14 @@ delete_connector_definition(Client, ConnectorDefinitionId, Input0, Options0) ->
 -spec delete_core_definition(map(), binary() | list(), delete_core_definition_request()) ->
     {ok, delete_core_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, delete_core_definition_errors(), tuple()}.
 delete_core_definition(Client, CoreDefinitionId, Input) ->
     delete_core_definition(Client, CoreDefinitionId, Input, []).
 
 -spec delete_core_definition(map(), binary() | list(), delete_core_definition_request(), proplists:proplist()) ->
     {ok, delete_core_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, delete_core_definition_errors(), tuple()}.
 delete_core_definition(Client, CoreDefinitionId, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/definition/cores/", aws_util:encode_uri(CoreDefinitionId), ""],
@@ -2726,14 +3210,14 @@ delete_core_definition(Client, CoreDefinitionId, Input0, Options0) ->
 -spec delete_device_definition(map(), binary() | list(), delete_device_definition_request()) ->
     {ok, delete_device_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, delete_device_definition_errors(), tuple()}.
 delete_device_definition(Client, DeviceDefinitionId, Input) ->
     delete_device_definition(Client, DeviceDefinitionId, Input, []).
 
 -spec delete_device_definition(map(), binary() | list(), delete_device_definition_request(), proplists:proplist()) ->
     {ok, delete_device_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, delete_device_definition_errors(), tuple()}.
 delete_device_definition(Client, DeviceDefinitionId, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/definition/devices/", aws_util:encode_uri(DeviceDefinitionId), ""],
@@ -2760,14 +3244,14 @@ delete_device_definition(Client, DeviceDefinitionId, Input0, Options0) ->
 -spec delete_function_definition(map(), binary() | list(), delete_function_definition_request()) ->
     {ok, delete_function_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, delete_function_definition_errors(), tuple()}.
 delete_function_definition(Client, FunctionDefinitionId, Input) ->
     delete_function_definition(Client, FunctionDefinitionId, Input, []).
 
 -spec delete_function_definition(map(), binary() | list(), delete_function_definition_request(), proplists:proplist()) ->
     {ok, delete_function_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, delete_function_definition_errors(), tuple()}.
 delete_function_definition(Client, FunctionDefinitionId, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/definition/functions/", aws_util:encode_uri(FunctionDefinitionId), ""],
@@ -2794,14 +3278,14 @@ delete_function_definition(Client, FunctionDefinitionId, Input0, Options0) ->
 -spec delete_group(map(), binary() | list(), delete_group_request()) ->
     {ok, delete_group_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, delete_group_errors(), tuple()}.
 delete_group(Client, GroupId, Input) ->
     delete_group(Client, GroupId, Input, []).
 
 -spec delete_group(map(), binary() | list(), delete_group_request(), proplists:proplist()) ->
     {ok, delete_group_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, delete_group_errors(), tuple()}.
 delete_group(Client, GroupId, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), ""],
@@ -2828,14 +3312,14 @@ delete_group(Client, GroupId, Input0, Options0) ->
 -spec delete_logger_definition(map(), binary() | list(), delete_logger_definition_request()) ->
     {ok, delete_logger_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, delete_logger_definition_errors(), tuple()}.
 delete_logger_definition(Client, LoggerDefinitionId, Input) ->
     delete_logger_definition(Client, LoggerDefinitionId, Input, []).
 
 -spec delete_logger_definition(map(), binary() | list(), delete_logger_definition_request(), proplists:proplist()) ->
     {ok, delete_logger_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, delete_logger_definition_errors(), tuple()}.
 delete_logger_definition(Client, LoggerDefinitionId, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/definition/loggers/", aws_util:encode_uri(LoggerDefinitionId), ""],
@@ -2862,14 +3346,14 @@ delete_logger_definition(Client, LoggerDefinitionId, Input0, Options0) ->
 -spec delete_resource_definition(map(), binary() | list(), delete_resource_definition_request()) ->
     {ok, delete_resource_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, delete_resource_definition_errors(), tuple()}.
 delete_resource_definition(Client, ResourceDefinitionId, Input) ->
     delete_resource_definition(Client, ResourceDefinitionId, Input, []).
 
 -spec delete_resource_definition(map(), binary() | list(), delete_resource_definition_request(), proplists:proplist()) ->
     {ok, delete_resource_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, delete_resource_definition_errors(), tuple()}.
 delete_resource_definition(Client, ResourceDefinitionId, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/definition/resources/", aws_util:encode_uri(ResourceDefinitionId), ""],
@@ -2896,14 +3380,14 @@ delete_resource_definition(Client, ResourceDefinitionId, Input0, Options0) ->
 -spec delete_subscription_definition(map(), binary() | list(), delete_subscription_definition_request()) ->
     {ok, delete_subscription_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, delete_subscription_definition_errors(), tuple()}.
 delete_subscription_definition(Client, SubscriptionDefinitionId, Input) ->
     delete_subscription_definition(Client, SubscriptionDefinitionId, Input, []).
 
 -spec delete_subscription_definition(map(), binary() | list(), delete_subscription_definition_request(), proplists:proplist()) ->
     {ok, delete_subscription_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, delete_subscription_definition_errors(), tuple()}.
 delete_subscription_definition(Client, SubscriptionDefinitionId, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/definition/subscriptions/", aws_util:encode_uri(SubscriptionDefinitionId), ""],
@@ -2930,16 +3414,14 @@ delete_subscription_definition(Client, SubscriptionDefinitionId, Input0, Options
 -spec disassociate_role_from_group(map(), binary() | list(), disassociate_role_from_group_request()) ->
     {ok, disassociate_role_from_group_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, disassociate_role_from_group_errors(), tuple()}.
 disassociate_role_from_group(Client, GroupId, Input) ->
     disassociate_role_from_group(Client, GroupId, Input, []).
 
 -spec disassociate_role_from_group(map(), binary() | list(), disassociate_role_from_group_request(), proplists:proplist()) ->
     {ok, disassociate_role_from_group_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, disassociate_role_from_group_errors(), tuple()}.
 disassociate_role_from_group(Client, GroupId, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/role"],
@@ -2968,14 +3450,14 @@ disassociate_role_from_group(Client, GroupId, Input0, Options0) ->
 -spec disassociate_service_role_from_account(map(), disassociate_service_role_from_account_request()) ->
     {ok, disassociate_service_role_from_account_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, disassociate_service_role_from_account_errors(), tuple()}.
 disassociate_service_role_from_account(Client, Input) ->
     disassociate_service_role_from_account(Client, Input, []).
 
 -spec disassociate_service_role_from_account(map(), disassociate_service_role_from_account_request(), proplists:proplist()) ->
     {ok, disassociate_service_role_from_account_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, disassociate_service_role_from_account_errors(), tuple()}.
 disassociate_service_role_from_account(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/servicerole"],
@@ -3002,8 +3484,7 @@ disassociate_service_role_from_account(Client, Input0, Options0) ->
 -spec get_associated_role(map(), binary() | list()) ->
     {ok, get_associated_role_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_associated_role_errors(), tuple()}.
 get_associated_role(Client, GroupId)
   when is_map(Client) ->
     get_associated_role(Client, GroupId, #{}, #{}).
@@ -3011,8 +3492,7 @@ get_associated_role(Client, GroupId)
 -spec get_associated_role(map(), binary() | list(), map(), map()) ->
     {ok, get_associated_role_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_associated_role_errors(), tuple()}.
 get_associated_role(Client, GroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_associated_role(Client, GroupId, QueryMap, HeadersMap, []).
@@ -3020,8 +3500,7 @@ get_associated_role(Client, GroupId, QueryMap, HeadersMap)
 -spec get_associated_role(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_associated_role_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_associated_role_errors(), tuple()}.
 get_associated_role(Client, GroupId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/role"],
@@ -3042,7 +3521,7 @@ get_associated_role(Client, GroupId, QueryMap, HeadersMap, Options0)
 -spec get_bulk_deployment_status(map(), binary() | list()) ->
     {ok, get_bulk_deployment_status_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_bulk_deployment_status_errors(), tuple()}.
 get_bulk_deployment_status(Client, BulkDeploymentId)
   when is_map(Client) ->
     get_bulk_deployment_status(Client, BulkDeploymentId, #{}, #{}).
@@ -3050,7 +3529,7 @@ get_bulk_deployment_status(Client, BulkDeploymentId)
 -spec get_bulk_deployment_status(map(), binary() | list(), map(), map()) ->
     {ok, get_bulk_deployment_status_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_bulk_deployment_status_errors(), tuple()}.
 get_bulk_deployment_status(Client, BulkDeploymentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bulk_deployment_status(Client, BulkDeploymentId, QueryMap, HeadersMap, []).
@@ -3058,7 +3537,7 @@ get_bulk_deployment_status(Client, BulkDeploymentId, QueryMap, HeadersMap)
 -spec get_bulk_deployment_status(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bulk_deployment_status_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_bulk_deployment_status_errors(), tuple()}.
 get_bulk_deployment_status(Client, BulkDeploymentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/bulk/deployments/", aws_util:encode_uri(BulkDeploymentId), "/status"],
@@ -3079,8 +3558,7 @@ get_bulk_deployment_status(Client, BulkDeploymentId, QueryMap, HeadersMap, Optio
 -spec get_connectivity_info(map(), binary() | list()) ->
     {ok, get_connectivity_info_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_connectivity_info_errors(), tuple()}.
 get_connectivity_info(Client, ThingName)
   when is_map(Client) ->
     get_connectivity_info(Client, ThingName, #{}, #{}).
@@ -3088,8 +3566,7 @@ get_connectivity_info(Client, ThingName)
 -spec get_connectivity_info(map(), binary() | list(), map(), map()) ->
     {ok, get_connectivity_info_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_connectivity_info_errors(), tuple()}.
 get_connectivity_info(Client, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_connectivity_info(Client, ThingName, QueryMap, HeadersMap, []).
@@ -3097,8 +3574,7 @@ get_connectivity_info(Client, ThingName, QueryMap, HeadersMap)
 -spec get_connectivity_info(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_connectivity_info_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_connectivity_info_errors(), tuple()}.
 get_connectivity_info(Client, ThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/things/", aws_util:encode_uri(ThingName), "/connectivityInfo"],
@@ -3119,7 +3595,7 @@ get_connectivity_info(Client, ThingName, QueryMap, HeadersMap, Options0)
 -spec get_connector_definition(map(), binary() | list()) ->
     {ok, get_connector_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_connector_definition_errors(), tuple()}.
 get_connector_definition(Client, ConnectorDefinitionId)
   when is_map(Client) ->
     get_connector_definition(Client, ConnectorDefinitionId, #{}, #{}).
@@ -3127,7 +3603,7 @@ get_connector_definition(Client, ConnectorDefinitionId)
 -spec get_connector_definition(map(), binary() | list(), map(), map()) ->
     {ok, get_connector_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_connector_definition_errors(), tuple()}.
 get_connector_definition(Client, ConnectorDefinitionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_connector_definition(Client, ConnectorDefinitionId, QueryMap, HeadersMap, []).
@@ -3135,7 +3611,7 @@ get_connector_definition(Client, ConnectorDefinitionId, QueryMap, HeadersMap)
 -spec get_connector_definition(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_connector_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_connector_definition_errors(), tuple()}.
 get_connector_definition(Client, ConnectorDefinitionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/connectors/", aws_util:encode_uri(ConnectorDefinitionId), ""],
@@ -3160,7 +3636,7 @@ get_connector_definition(Client, ConnectorDefinitionId, QueryMap, HeadersMap, Op
 -spec get_connector_definition_version(map(), binary() | list(), binary() | list()) ->
     {ok, get_connector_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_connector_definition_version_errors(), tuple()}.
 get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinitionVersionId)
   when is_map(Client) ->
     get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinitionVersionId, #{}, #{}).
@@ -3168,7 +3644,7 @@ get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinit
 -spec get_connector_definition_version(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_connector_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_connector_definition_version_errors(), tuple()}.
 get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinitionVersionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinitionVersionId, QueryMap, HeadersMap, []).
@@ -3176,7 +3652,7 @@ get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinit
 -spec get_connector_definition_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_connector_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_connector_definition_version_errors(), tuple()}.
 get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinitionVersionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/connectors/", aws_util:encode_uri(ConnectorDefinitionId), "/versions/", aws_util:encode_uri(ConnectorDefinitionVersionId), ""],
@@ -3201,7 +3677,7 @@ get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinit
 -spec get_core_definition(map(), binary() | list()) ->
     {ok, get_core_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_core_definition_errors(), tuple()}.
 get_core_definition(Client, CoreDefinitionId)
   when is_map(Client) ->
     get_core_definition(Client, CoreDefinitionId, #{}, #{}).
@@ -3209,7 +3685,7 @@ get_core_definition(Client, CoreDefinitionId)
 -spec get_core_definition(map(), binary() | list(), map(), map()) ->
     {ok, get_core_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_core_definition_errors(), tuple()}.
 get_core_definition(Client, CoreDefinitionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_core_definition(Client, CoreDefinitionId, QueryMap, HeadersMap, []).
@@ -3217,7 +3693,7 @@ get_core_definition(Client, CoreDefinitionId, QueryMap, HeadersMap)
 -spec get_core_definition(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_core_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_core_definition_errors(), tuple()}.
 get_core_definition(Client, CoreDefinitionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/cores/", aws_util:encode_uri(CoreDefinitionId), ""],
@@ -3238,7 +3714,7 @@ get_core_definition(Client, CoreDefinitionId, QueryMap, HeadersMap, Options0)
 -spec get_core_definition_version(map(), binary() | list(), binary() | list()) ->
     {ok, get_core_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_core_definition_version_errors(), tuple()}.
 get_core_definition_version(Client, CoreDefinitionId, CoreDefinitionVersionId)
   when is_map(Client) ->
     get_core_definition_version(Client, CoreDefinitionId, CoreDefinitionVersionId, #{}, #{}).
@@ -3246,7 +3722,7 @@ get_core_definition_version(Client, CoreDefinitionId, CoreDefinitionVersionId)
 -spec get_core_definition_version(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_core_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_core_definition_version_errors(), tuple()}.
 get_core_definition_version(Client, CoreDefinitionId, CoreDefinitionVersionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_core_definition_version(Client, CoreDefinitionId, CoreDefinitionVersionId, QueryMap, HeadersMap, []).
@@ -3254,7 +3730,7 @@ get_core_definition_version(Client, CoreDefinitionId, CoreDefinitionVersionId, Q
 -spec get_core_definition_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_core_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_core_definition_version_errors(), tuple()}.
 get_core_definition_version(Client, CoreDefinitionId, CoreDefinitionVersionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/cores/", aws_util:encode_uri(CoreDefinitionId), "/versions/", aws_util:encode_uri(CoreDefinitionVersionId), ""],
@@ -3275,7 +3751,7 @@ get_core_definition_version(Client, CoreDefinitionId, CoreDefinitionVersionId, Q
 -spec get_deployment_status(map(), binary() | list(), binary() | list()) ->
     {ok, get_deployment_status_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_deployment_status_errors(), tuple()}.
 get_deployment_status(Client, DeploymentId, GroupId)
   when is_map(Client) ->
     get_deployment_status(Client, DeploymentId, GroupId, #{}, #{}).
@@ -3283,7 +3759,7 @@ get_deployment_status(Client, DeploymentId, GroupId)
 -spec get_deployment_status(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_deployment_status_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_deployment_status_errors(), tuple()}.
 get_deployment_status(Client, DeploymentId, GroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_deployment_status(Client, DeploymentId, GroupId, QueryMap, HeadersMap, []).
@@ -3291,7 +3767,7 @@ get_deployment_status(Client, DeploymentId, GroupId, QueryMap, HeadersMap)
 -spec get_deployment_status(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_deployment_status_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_deployment_status_errors(), tuple()}.
 get_deployment_status(Client, DeploymentId, GroupId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/deployments/", aws_util:encode_uri(DeploymentId), "/status"],
@@ -3312,7 +3788,7 @@ get_deployment_status(Client, DeploymentId, GroupId, QueryMap, HeadersMap, Optio
 -spec get_device_definition(map(), binary() | list()) ->
     {ok, get_device_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_device_definition_errors(), tuple()}.
 get_device_definition(Client, DeviceDefinitionId)
   when is_map(Client) ->
     get_device_definition(Client, DeviceDefinitionId, #{}, #{}).
@@ -3320,7 +3796,7 @@ get_device_definition(Client, DeviceDefinitionId)
 -spec get_device_definition(map(), binary() | list(), map(), map()) ->
     {ok, get_device_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_device_definition_errors(), tuple()}.
 get_device_definition(Client, DeviceDefinitionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_device_definition(Client, DeviceDefinitionId, QueryMap, HeadersMap, []).
@@ -3328,7 +3804,7 @@ get_device_definition(Client, DeviceDefinitionId, QueryMap, HeadersMap)
 -spec get_device_definition(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_device_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_device_definition_errors(), tuple()}.
 get_device_definition(Client, DeviceDefinitionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/devices/", aws_util:encode_uri(DeviceDefinitionId), ""],
@@ -3349,7 +3825,7 @@ get_device_definition(Client, DeviceDefinitionId, QueryMap, HeadersMap, Options0
 -spec get_device_definition_version(map(), binary() | list(), binary() | list()) ->
     {ok, get_device_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_device_definition_version_errors(), tuple()}.
 get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersionId)
   when is_map(Client) ->
     get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersionId, #{}, #{}).
@@ -3357,7 +3833,7 @@ get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersio
 -spec get_device_definition_version(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_device_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_device_definition_version_errors(), tuple()}.
 get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersionId, QueryMap, HeadersMap, []).
@@ -3365,7 +3841,7 @@ get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersio
 -spec get_device_definition_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_device_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_device_definition_version_errors(), tuple()}.
 get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/devices/", aws_util:encode_uri(DeviceDefinitionId), "/versions/", aws_util:encode_uri(DeviceDefinitionVersionId), ""],
@@ -3391,7 +3867,7 @@ get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersio
 -spec get_function_definition(map(), binary() | list()) ->
     {ok, get_function_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_function_definition_errors(), tuple()}.
 get_function_definition(Client, FunctionDefinitionId)
   when is_map(Client) ->
     get_function_definition(Client, FunctionDefinitionId, #{}, #{}).
@@ -3399,7 +3875,7 @@ get_function_definition(Client, FunctionDefinitionId)
 -spec get_function_definition(map(), binary() | list(), map(), map()) ->
     {ok, get_function_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_function_definition_errors(), tuple()}.
 get_function_definition(Client, FunctionDefinitionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function_definition(Client, FunctionDefinitionId, QueryMap, HeadersMap, []).
@@ -3407,7 +3883,7 @@ get_function_definition(Client, FunctionDefinitionId, QueryMap, HeadersMap)
 -spec get_function_definition(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_function_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_function_definition_errors(), tuple()}.
 get_function_definition(Client, FunctionDefinitionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/functions/", aws_util:encode_uri(FunctionDefinitionId), ""],
@@ -3430,7 +3906,7 @@ get_function_definition(Client, FunctionDefinitionId, QueryMap, HeadersMap, Opti
 -spec get_function_definition_version(map(), binary() | list(), binary() | list()) ->
     {ok, get_function_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_function_definition_version_errors(), tuple()}.
 get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinitionVersionId)
   when is_map(Client) ->
     get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinitionVersionId, #{}, #{}).
@@ -3438,7 +3914,7 @@ get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinition
 -spec get_function_definition_version(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_function_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_function_definition_version_errors(), tuple()}.
 get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinitionVersionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinitionVersionId, QueryMap, HeadersMap, []).
@@ -3446,7 +3922,7 @@ get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinition
 -spec get_function_definition_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_function_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_function_definition_version_errors(), tuple()}.
 get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinitionVersionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/functions/", aws_util:encode_uri(FunctionDefinitionId), "/versions/", aws_util:encode_uri(FunctionDefinitionVersionId), ""],
@@ -3471,7 +3947,7 @@ get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinition
 -spec get_group(map(), binary() | list()) ->
     {ok, get_group_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_group_errors(), tuple()}.
 get_group(Client, GroupId)
   when is_map(Client) ->
     get_group(Client, GroupId, #{}, #{}).
@@ -3479,7 +3955,7 @@ get_group(Client, GroupId)
 -spec get_group(map(), binary() | list(), map(), map()) ->
     {ok, get_group_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_group_errors(), tuple()}.
 get_group(Client, GroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_group(Client, GroupId, QueryMap, HeadersMap, []).
@@ -3487,7 +3963,7 @@ get_group(Client, GroupId, QueryMap, HeadersMap)
 -spec get_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_group_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_group_errors(), tuple()}.
 get_group(Client, GroupId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), ""],
@@ -3510,8 +3986,7 @@ get_group(Client, GroupId, QueryMap, HeadersMap, Options0)
 -spec get_group_certificate_authority(map(), binary() | list(), binary() | list()) ->
     {ok, get_group_certificate_authority_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_group_certificate_authority_errors(), tuple()}.
 get_group_certificate_authority(Client, CertificateAuthorityId, GroupId)
   when is_map(Client) ->
     get_group_certificate_authority(Client, CertificateAuthorityId, GroupId, #{}, #{}).
@@ -3519,8 +3994,7 @@ get_group_certificate_authority(Client, CertificateAuthorityId, GroupId)
 -spec get_group_certificate_authority(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_group_certificate_authority_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_group_certificate_authority_errors(), tuple()}.
 get_group_certificate_authority(Client, CertificateAuthorityId, GroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_group_certificate_authority(Client, CertificateAuthorityId, GroupId, QueryMap, HeadersMap, []).
@@ -3528,8 +4002,7 @@ get_group_certificate_authority(Client, CertificateAuthorityId, GroupId, QueryMa
 -spec get_group_certificate_authority(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_group_certificate_authority_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_group_certificate_authority_errors(), tuple()}.
 get_group_certificate_authority(Client, CertificateAuthorityId, GroupId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/certificateauthorities/", aws_util:encode_uri(CertificateAuthorityId), ""],
@@ -3550,8 +4023,7 @@ get_group_certificate_authority(Client, CertificateAuthorityId, GroupId, QueryMa
 -spec get_group_certificate_configuration(map(), binary() | list()) ->
     {ok, get_group_certificate_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_group_certificate_configuration_errors(), tuple()}.
 get_group_certificate_configuration(Client, GroupId)
   when is_map(Client) ->
     get_group_certificate_configuration(Client, GroupId, #{}, #{}).
@@ -3559,8 +4031,7 @@ get_group_certificate_configuration(Client, GroupId)
 -spec get_group_certificate_configuration(map(), binary() | list(), map(), map()) ->
     {ok, get_group_certificate_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_group_certificate_configuration_errors(), tuple()}.
 get_group_certificate_configuration(Client, GroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_group_certificate_configuration(Client, GroupId, QueryMap, HeadersMap, []).
@@ -3568,8 +4039,7 @@ get_group_certificate_configuration(Client, GroupId, QueryMap, HeadersMap)
 -spec get_group_certificate_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_group_certificate_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_group_certificate_configuration_errors(), tuple()}.
 get_group_certificate_configuration(Client, GroupId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/certificateauthorities/configuration/expiry"],
@@ -3590,7 +4060,7 @@ get_group_certificate_configuration(Client, GroupId, QueryMap, HeadersMap, Optio
 -spec get_group_version(map(), binary() | list(), binary() | list()) ->
     {ok, get_group_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_group_version_errors(), tuple()}.
 get_group_version(Client, GroupId, GroupVersionId)
   when is_map(Client) ->
     get_group_version(Client, GroupId, GroupVersionId, #{}, #{}).
@@ -3598,7 +4068,7 @@ get_group_version(Client, GroupId, GroupVersionId)
 -spec get_group_version(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_group_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_group_version_errors(), tuple()}.
 get_group_version(Client, GroupId, GroupVersionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_group_version(Client, GroupId, GroupVersionId, QueryMap, HeadersMap, []).
@@ -3606,7 +4076,7 @@ get_group_version(Client, GroupId, GroupVersionId, QueryMap, HeadersMap)
 -spec get_group_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_group_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_group_version_errors(), tuple()}.
 get_group_version(Client, GroupId, GroupVersionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/versions/", aws_util:encode_uri(GroupVersionId), ""],
@@ -3627,7 +4097,7 @@ get_group_version(Client, GroupId, GroupVersionId, QueryMap, HeadersMap, Options
 -spec get_logger_definition(map(), binary() | list()) ->
     {ok, get_logger_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_logger_definition_errors(), tuple()}.
 get_logger_definition(Client, LoggerDefinitionId)
   when is_map(Client) ->
     get_logger_definition(Client, LoggerDefinitionId, #{}, #{}).
@@ -3635,7 +4105,7 @@ get_logger_definition(Client, LoggerDefinitionId)
 -spec get_logger_definition(map(), binary() | list(), map(), map()) ->
     {ok, get_logger_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_logger_definition_errors(), tuple()}.
 get_logger_definition(Client, LoggerDefinitionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_logger_definition(Client, LoggerDefinitionId, QueryMap, HeadersMap, []).
@@ -3643,7 +4113,7 @@ get_logger_definition(Client, LoggerDefinitionId, QueryMap, HeadersMap)
 -spec get_logger_definition(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_logger_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_logger_definition_errors(), tuple()}.
 get_logger_definition(Client, LoggerDefinitionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/loggers/", aws_util:encode_uri(LoggerDefinitionId), ""],
@@ -3664,7 +4134,7 @@ get_logger_definition(Client, LoggerDefinitionId, QueryMap, HeadersMap, Options0
 -spec get_logger_definition_version(map(), binary() | list(), binary() | list()) ->
     {ok, get_logger_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_logger_definition_version_errors(), tuple()}.
 get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersionId)
   when is_map(Client) ->
     get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersionId, #{}, #{}).
@@ -3672,7 +4142,7 @@ get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersio
 -spec get_logger_definition_version(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_logger_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_logger_definition_version_errors(), tuple()}.
 get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersionId, QueryMap, HeadersMap, []).
@@ -3680,7 +4150,7 @@ get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersio
 -spec get_logger_definition_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_logger_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_logger_definition_version_errors(), tuple()}.
 get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/loggers/", aws_util:encode_uri(LoggerDefinitionId), "/versions/", aws_util:encode_uri(LoggerDefinitionVersionId), ""],
@@ -3706,7 +4176,7 @@ get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersio
 -spec get_resource_definition(map(), binary() | list()) ->
     {ok, get_resource_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_resource_definition_errors(), tuple()}.
 get_resource_definition(Client, ResourceDefinitionId)
   when is_map(Client) ->
     get_resource_definition(Client, ResourceDefinitionId, #{}, #{}).
@@ -3714,7 +4184,7 @@ get_resource_definition(Client, ResourceDefinitionId)
 -spec get_resource_definition(map(), binary() | list(), map(), map()) ->
     {ok, get_resource_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_resource_definition_errors(), tuple()}.
 get_resource_definition(Client, ResourceDefinitionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resource_definition(Client, ResourceDefinitionId, QueryMap, HeadersMap, []).
@@ -3722,7 +4192,7 @@ get_resource_definition(Client, ResourceDefinitionId, QueryMap, HeadersMap)
 -spec get_resource_definition(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_resource_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_resource_definition_errors(), tuple()}.
 get_resource_definition(Client, ResourceDefinitionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/resources/", aws_util:encode_uri(ResourceDefinitionId), ""],
@@ -3744,7 +4214,7 @@ get_resource_definition(Client, ResourceDefinitionId, QueryMap, HeadersMap, Opti
 -spec get_resource_definition_version(map(), binary() | list(), binary() | list()) ->
     {ok, get_resource_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_resource_definition_version_errors(), tuple()}.
 get_resource_definition_version(Client, ResourceDefinitionId, ResourceDefinitionVersionId)
   when is_map(Client) ->
     get_resource_definition_version(Client, ResourceDefinitionId, ResourceDefinitionVersionId, #{}, #{}).
@@ -3752,7 +4222,7 @@ get_resource_definition_version(Client, ResourceDefinitionId, ResourceDefinition
 -spec get_resource_definition_version(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_resource_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_resource_definition_version_errors(), tuple()}.
 get_resource_definition_version(Client, ResourceDefinitionId, ResourceDefinitionVersionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resource_definition_version(Client, ResourceDefinitionId, ResourceDefinitionVersionId, QueryMap, HeadersMap, []).
@@ -3760,7 +4230,7 @@ get_resource_definition_version(Client, ResourceDefinitionId, ResourceDefinition
 -spec get_resource_definition_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_resource_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_resource_definition_version_errors(), tuple()}.
 get_resource_definition_version(Client, ResourceDefinitionId, ResourceDefinitionVersionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/resources/", aws_util:encode_uri(ResourceDefinitionId), "/versions/", aws_util:encode_uri(ResourceDefinitionVersionId), ""],
@@ -3781,7 +4251,7 @@ get_resource_definition_version(Client, ResourceDefinitionId, ResourceDefinition
 -spec get_service_role_for_account(map()) ->
     {ok, get_service_role_for_account_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_service_role_for_account_errors(), tuple()}.
 get_service_role_for_account(Client)
   when is_map(Client) ->
     get_service_role_for_account(Client, #{}, #{}).
@@ -3789,7 +4259,7 @@ get_service_role_for_account(Client)
 -spec get_service_role_for_account(map(), map(), map()) ->
     {ok, get_service_role_for_account_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_service_role_for_account_errors(), tuple()}.
 get_service_role_for_account(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_service_role_for_account(Client, QueryMap, HeadersMap, []).
@@ -3797,7 +4267,7 @@ get_service_role_for_account(Client, QueryMap, HeadersMap)
 -spec get_service_role_for_account(map(), map(), map(), proplists:proplist()) ->
     {ok, get_service_role_for_account_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_service_role_for_account_errors(), tuple()}.
 get_service_role_for_account(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/servicerole"],
@@ -3818,7 +4288,7 @@ get_service_role_for_account(Client, QueryMap, HeadersMap, Options0)
 -spec get_subscription_definition(map(), binary() | list()) ->
     {ok, get_subscription_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_subscription_definition_errors(), tuple()}.
 get_subscription_definition(Client, SubscriptionDefinitionId)
   when is_map(Client) ->
     get_subscription_definition(Client, SubscriptionDefinitionId, #{}, #{}).
@@ -3826,7 +4296,7 @@ get_subscription_definition(Client, SubscriptionDefinitionId)
 -spec get_subscription_definition(map(), binary() | list(), map(), map()) ->
     {ok, get_subscription_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_subscription_definition_errors(), tuple()}.
 get_subscription_definition(Client, SubscriptionDefinitionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_subscription_definition(Client, SubscriptionDefinitionId, QueryMap, HeadersMap, []).
@@ -3834,7 +4304,7 @@ get_subscription_definition(Client, SubscriptionDefinitionId, QueryMap, HeadersM
 -spec get_subscription_definition(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_subscription_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_subscription_definition_errors(), tuple()}.
 get_subscription_definition(Client, SubscriptionDefinitionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/subscriptions/", aws_util:encode_uri(SubscriptionDefinitionId), ""],
@@ -3855,7 +4325,7 @@ get_subscription_definition(Client, SubscriptionDefinitionId, QueryMap, HeadersM
 -spec get_subscription_definition_version(map(), binary() | list(), binary() | list()) ->
     {ok, get_subscription_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_subscription_definition_version_errors(), tuple()}.
 get_subscription_definition_version(Client, SubscriptionDefinitionId, SubscriptionDefinitionVersionId)
   when is_map(Client) ->
     get_subscription_definition_version(Client, SubscriptionDefinitionId, SubscriptionDefinitionVersionId, #{}, #{}).
@@ -3863,7 +4333,7 @@ get_subscription_definition_version(Client, SubscriptionDefinitionId, Subscripti
 -spec get_subscription_definition_version(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_subscription_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_subscription_definition_version_errors(), tuple()}.
 get_subscription_definition_version(Client, SubscriptionDefinitionId, SubscriptionDefinitionVersionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_subscription_definition_version(Client, SubscriptionDefinitionId, SubscriptionDefinitionVersionId, QueryMap, HeadersMap, []).
@@ -3871,7 +4341,7 @@ get_subscription_definition_version(Client, SubscriptionDefinitionId, Subscripti
 -spec get_subscription_definition_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_subscription_definition_version_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, get_subscription_definition_version_errors(), tuple()}.
 get_subscription_definition_version(Client, SubscriptionDefinitionId, SubscriptionDefinitionVersionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/subscriptions/", aws_util:encode_uri(SubscriptionDefinitionId), "/versions/", aws_util:encode_uri(SubscriptionDefinitionVersionId), ""],
@@ -3896,8 +4366,7 @@ get_subscription_definition_version(Client, SubscriptionDefinitionId, Subscripti
 -spec get_thing_runtime_configuration(map(), binary() | list()) ->
     {ok, get_thing_runtime_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_thing_runtime_configuration_errors(), tuple()}.
 get_thing_runtime_configuration(Client, ThingName)
   when is_map(Client) ->
     get_thing_runtime_configuration(Client, ThingName, #{}, #{}).
@@ -3905,8 +4374,7 @@ get_thing_runtime_configuration(Client, ThingName)
 -spec get_thing_runtime_configuration(map(), binary() | list(), map(), map()) ->
     {ok, get_thing_runtime_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_thing_runtime_configuration_errors(), tuple()}.
 get_thing_runtime_configuration(Client, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_thing_runtime_configuration(Client, ThingName, QueryMap, HeadersMap, []).
@@ -3914,8 +4382,7 @@ get_thing_runtime_configuration(Client, ThingName, QueryMap, HeadersMap)
 -spec get_thing_runtime_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_thing_runtime_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, get_thing_runtime_configuration_errors(), tuple()}.
 get_thing_runtime_configuration(Client, ThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/things/", aws_util:encode_uri(ThingName), "/runtimeconfig"],
@@ -3937,7 +4404,7 @@ get_thing_runtime_configuration(Client, ThingName, QueryMap, HeadersMap, Options
 -spec list_bulk_deployment_detailed_reports(map(), binary() | list()) ->
     {ok, list_bulk_deployment_detailed_reports_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_bulk_deployment_detailed_reports_errors(), tuple()}.
 list_bulk_deployment_detailed_reports(Client, BulkDeploymentId)
   when is_map(Client) ->
     list_bulk_deployment_detailed_reports(Client, BulkDeploymentId, #{}, #{}).
@@ -3945,7 +4412,7 @@ list_bulk_deployment_detailed_reports(Client, BulkDeploymentId)
 -spec list_bulk_deployment_detailed_reports(map(), binary() | list(), map(), map()) ->
     {ok, list_bulk_deployment_detailed_reports_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_bulk_deployment_detailed_reports_errors(), tuple()}.
 list_bulk_deployment_detailed_reports(Client, BulkDeploymentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_bulk_deployment_detailed_reports(Client, BulkDeploymentId, QueryMap, HeadersMap, []).
@@ -3953,7 +4420,7 @@ list_bulk_deployment_detailed_reports(Client, BulkDeploymentId, QueryMap, Header
 -spec list_bulk_deployment_detailed_reports(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_bulk_deployment_detailed_reports_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_bulk_deployment_detailed_reports_errors(), tuple()}.
 list_bulk_deployment_detailed_reports(Client, BulkDeploymentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/bulk/deployments/", aws_util:encode_uri(BulkDeploymentId), "/detailed-reports"],
@@ -3979,7 +4446,7 @@ list_bulk_deployment_detailed_reports(Client, BulkDeploymentId, QueryMap, Header
 -spec list_bulk_deployments(map()) ->
     {ok, list_bulk_deployments_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_bulk_deployments_errors(), tuple()}.
 list_bulk_deployments(Client)
   when is_map(Client) ->
     list_bulk_deployments(Client, #{}, #{}).
@@ -3987,7 +4454,7 @@ list_bulk_deployments(Client)
 -spec list_bulk_deployments(map(), map(), map()) ->
     {ok, list_bulk_deployments_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_bulk_deployments_errors(), tuple()}.
 list_bulk_deployments(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_bulk_deployments(Client, QueryMap, HeadersMap, []).
@@ -3995,7 +4462,7 @@ list_bulk_deployments(Client, QueryMap, HeadersMap)
 -spec list_bulk_deployments(map(), map(), map(), proplists:proplist()) ->
     {ok, list_bulk_deployments_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_bulk_deployments_errors(), tuple()}.
 list_bulk_deployments(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/bulk/deployments"],
@@ -4026,7 +4493,7 @@ list_bulk_deployments(Client, QueryMap, HeadersMap, Options0)
 -spec list_connector_definition_versions(map(), binary() | list()) ->
     {ok, list_connector_definition_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_connector_definition_versions_errors(), tuple()}.
 list_connector_definition_versions(Client, ConnectorDefinitionId)
   when is_map(Client) ->
     list_connector_definition_versions(Client, ConnectorDefinitionId, #{}, #{}).
@@ -4034,7 +4501,7 @@ list_connector_definition_versions(Client, ConnectorDefinitionId)
 -spec list_connector_definition_versions(map(), binary() | list(), map(), map()) ->
     {ok, list_connector_definition_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_connector_definition_versions_errors(), tuple()}.
 list_connector_definition_versions(Client, ConnectorDefinitionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_connector_definition_versions(Client, ConnectorDefinitionId, QueryMap, HeadersMap, []).
@@ -4042,7 +4509,7 @@ list_connector_definition_versions(Client, ConnectorDefinitionId, QueryMap, Head
 -spec list_connector_definition_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_connector_definition_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_connector_definition_versions_errors(), tuple()}.
 list_connector_definition_versions(Client, ConnectorDefinitionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/connectors/", aws_util:encode_uri(ConnectorDefinitionId), "/versions"],
@@ -4107,7 +4574,7 @@ list_connector_definitions(Client, QueryMap, HeadersMap, Options0)
 -spec list_core_definition_versions(map(), binary() | list()) ->
     {ok, list_core_definition_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_core_definition_versions_errors(), tuple()}.
 list_core_definition_versions(Client, CoreDefinitionId)
   when is_map(Client) ->
     list_core_definition_versions(Client, CoreDefinitionId, #{}, #{}).
@@ -4115,7 +4582,7 @@ list_core_definition_versions(Client, CoreDefinitionId)
 -spec list_core_definition_versions(map(), binary() | list(), map(), map()) ->
     {ok, list_core_definition_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_core_definition_versions_errors(), tuple()}.
 list_core_definition_versions(Client, CoreDefinitionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_core_definition_versions(Client, CoreDefinitionId, QueryMap, HeadersMap, []).
@@ -4123,7 +4590,7 @@ list_core_definition_versions(Client, CoreDefinitionId, QueryMap, HeadersMap)
 -spec list_core_definition_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_core_definition_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_core_definition_versions_errors(), tuple()}.
 list_core_definition_versions(Client, CoreDefinitionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/cores/", aws_util:encode_uri(CoreDefinitionId), "/versions"],
@@ -4188,7 +4655,7 @@ list_core_definitions(Client, QueryMap, HeadersMap, Options0)
 -spec list_deployments(map(), binary() | list()) ->
     {ok, list_deployments_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_deployments_errors(), tuple()}.
 list_deployments(Client, GroupId)
   when is_map(Client) ->
     list_deployments(Client, GroupId, #{}, #{}).
@@ -4196,7 +4663,7 @@ list_deployments(Client, GroupId)
 -spec list_deployments(map(), binary() | list(), map(), map()) ->
     {ok, list_deployments_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_deployments_errors(), tuple()}.
 list_deployments(Client, GroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_deployments(Client, GroupId, QueryMap, HeadersMap, []).
@@ -4204,7 +4671,7 @@ list_deployments(Client, GroupId, QueryMap, HeadersMap)
 -spec list_deployments(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_deployments_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_deployments_errors(), tuple()}.
 list_deployments(Client, GroupId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/deployments"],
@@ -4230,7 +4697,7 @@ list_deployments(Client, GroupId, QueryMap, HeadersMap, Options0)
 -spec list_device_definition_versions(map(), binary() | list()) ->
     {ok, list_device_definition_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_device_definition_versions_errors(), tuple()}.
 list_device_definition_versions(Client, DeviceDefinitionId)
   when is_map(Client) ->
     list_device_definition_versions(Client, DeviceDefinitionId, #{}, #{}).
@@ -4238,7 +4705,7 @@ list_device_definition_versions(Client, DeviceDefinitionId)
 -spec list_device_definition_versions(map(), binary() | list(), map(), map()) ->
     {ok, list_device_definition_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_device_definition_versions_errors(), tuple()}.
 list_device_definition_versions(Client, DeviceDefinitionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_device_definition_versions(Client, DeviceDefinitionId, QueryMap, HeadersMap, []).
@@ -4246,7 +4713,7 @@ list_device_definition_versions(Client, DeviceDefinitionId, QueryMap, HeadersMap
 -spec list_device_definition_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_device_definition_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_device_definition_versions_errors(), tuple()}.
 list_device_definition_versions(Client, DeviceDefinitionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/devices/", aws_util:encode_uri(DeviceDefinitionId), "/versions"],
@@ -4311,7 +4778,7 @@ list_device_definitions(Client, QueryMap, HeadersMap, Options0)
 -spec list_function_definition_versions(map(), binary() | list()) ->
     {ok, list_function_definition_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_function_definition_versions_errors(), tuple()}.
 list_function_definition_versions(Client, FunctionDefinitionId)
   when is_map(Client) ->
     list_function_definition_versions(Client, FunctionDefinitionId, #{}, #{}).
@@ -4319,7 +4786,7 @@ list_function_definition_versions(Client, FunctionDefinitionId)
 -spec list_function_definition_versions(map(), binary() | list(), map(), map()) ->
     {ok, list_function_definition_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_function_definition_versions_errors(), tuple()}.
 list_function_definition_versions(Client, FunctionDefinitionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_function_definition_versions(Client, FunctionDefinitionId, QueryMap, HeadersMap, []).
@@ -4327,7 +4794,7 @@ list_function_definition_versions(Client, FunctionDefinitionId, QueryMap, Header
 -spec list_function_definition_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_function_definition_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_function_definition_versions_errors(), tuple()}.
 list_function_definition_versions(Client, FunctionDefinitionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/functions/", aws_util:encode_uri(FunctionDefinitionId), "/versions"],
@@ -4392,8 +4859,7 @@ list_function_definitions(Client, QueryMap, HeadersMap, Options0)
 -spec list_group_certificate_authorities(map(), binary() | list()) ->
     {ok, list_group_certificate_authorities_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_group_certificate_authorities_errors(), tuple()}.
 list_group_certificate_authorities(Client, GroupId)
   when is_map(Client) ->
     list_group_certificate_authorities(Client, GroupId, #{}, #{}).
@@ -4401,8 +4867,7 @@ list_group_certificate_authorities(Client, GroupId)
 -spec list_group_certificate_authorities(map(), binary() | list(), map(), map()) ->
     {ok, list_group_certificate_authorities_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_group_certificate_authorities_errors(), tuple()}.
 list_group_certificate_authorities(Client, GroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_group_certificate_authorities(Client, GroupId, QueryMap, HeadersMap, []).
@@ -4410,8 +4875,7 @@ list_group_certificate_authorities(Client, GroupId, QueryMap, HeadersMap)
 -spec list_group_certificate_authorities(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_group_certificate_authorities_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, list_group_certificate_authorities_errors(), tuple()}.
 list_group_certificate_authorities(Client, GroupId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/certificateauthorities"],
@@ -4432,7 +4896,7 @@ list_group_certificate_authorities(Client, GroupId, QueryMap, HeadersMap, Option
 -spec list_group_versions(map(), binary() | list()) ->
     {ok, list_group_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_group_versions_errors(), tuple()}.
 list_group_versions(Client, GroupId)
   when is_map(Client) ->
     list_group_versions(Client, GroupId, #{}, #{}).
@@ -4440,7 +4904,7 @@ list_group_versions(Client, GroupId)
 -spec list_group_versions(map(), binary() | list(), map(), map()) ->
     {ok, list_group_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_group_versions_errors(), tuple()}.
 list_group_versions(Client, GroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_group_versions(Client, GroupId, QueryMap, HeadersMap, []).
@@ -4448,7 +4912,7 @@ list_group_versions(Client, GroupId, QueryMap, HeadersMap)
 -spec list_group_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_group_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_group_versions_errors(), tuple()}.
 list_group_versions(Client, GroupId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/versions"],
@@ -4513,7 +4977,7 @@ list_groups(Client, QueryMap, HeadersMap, Options0)
 -spec list_logger_definition_versions(map(), binary() | list()) ->
     {ok, list_logger_definition_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_logger_definition_versions_errors(), tuple()}.
 list_logger_definition_versions(Client, LoggerDefinitionId)
   when is_map(Client) ->
     list_logger_definition_versions(Client, LoggerDefinitionId, #{}, #{}).
@@ -4521,7 +4985,7 @@ list_logger_definition_versions(Client, LoggerDefinitionId)
 -spec list_logger_definition_versions(map(), binary() | list(), map(), map()) ->
     {ok, list_logger_definition_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_logger_definition_versions_errors(), tuple()}.
 list_logger_definition_versions(Client, LoggerDefinitionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_logger_definition_versions(Client, LoggerDefinitionId, QueryMap, HeadersMap, []).
@@ -4529,7 +4993,7 @@ list_logger_definition_versions(Client, LoggerDefinitionId, QueryMap, HeadersMap
 -spec list_logger_definition_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_logger_definition_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_logger_definition_versions_errors(), tuple()}.
 list_logger_definition_versions(Client, LoggerDefinitionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/loggers/", aws_util:encode_uri(LoggerDefinitionId), "/versions"],
@@ -4594,7 +5058,7 @@ list_logger_definitions(Client, QueryMap, HeadersMap, Options0)
 -spec list_resource_definition_versions(map(), binary() | list()) ->
     {ok, list_resource_definition_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_resource_definition_versions_errors(), tuple()}.
 list_resource_definition_versions(Client, ResourceDefinitionId)
   when is_map(Client) ->
     list_resource_definition_versions(Client, ResourceDefinitionId, #{}, #{}).
@@ -4602,7 +5066,7 @@ list_resource_definition_versions(Client, ResourceDefinitionId)
 -spec list_resource_definition_versions(map(), binary() | list(), map(), map()) ->
     {ok, list_resource_definition_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_resource_definition_versions_errors(), tuple()}.
 list_resource_definition_versions(Client, ResourceDefinitionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_resource_definition_versions(Client, ResourceDefinitionId, QueryMap, HeadersMap, []).
@@ -4610,7 +5074,7 @@ list_resource_definition_versions(Client, ResourceDefinitionId, QueryMap, Header
 -spec list_resource_definition_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_resource_definition_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_resource_definition_versions_errors(), tuple()}.
 list_resource_definition_versions(Client, ResourceDefinitionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/resources/", aws_util:encode_uri(ResourceDefinitionId), "/versions"],
@@ -4675,7 +5139,7 @@ list_resource_definitions(Client, QueryMap, HeadersMap, Options0)
 -spec list_subscription_definition_versions(map(), binary() | list()) ->
     {ok, list_subscription_definition_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_subscription_definition_versions_errors(), tuple()}.
 list_subscription_definition_versions(Client, SubscriptionDefinitionId)
   when is_map(Client) ->
     list_subscription_definition_versions(Client, SubscriptionDefinitionId, #{}, #{}).
@@ -4683,7 +5147,7 @@ list_subscription_definition_versions(Client, SubscriptionDefinitionId)
 -spec list_subscription_definition_versions(map(), binary() | list(), map(), map()) ->
     {ok, list_subscription_definition_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_subscription_definition_versions_errors(), tuple()}.
 list_subscription_definition_versions(Client, SubscriptionDefinitionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_subscription_definition_versions(Client, SubscriptionDefinitionId, QueryMap, HeadersMap, []).
@@ -4691,7 +5155,7 @@ list_subscription_definition_versions(Client, SubscriptionDefinitionId, QueryMap
 -spec list_subscription_definition_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_subscription_definition_versions_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_subscription_definition_versions_errors(), tuple()}.
 list_subscription_definition_versions(Client, SubscriptionDefinitionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/subscriptions/", aws_util:encode_uri(SubscriptionDefinitionId), "/versions"],
@@ -4756,7 +5220,7 @@ list_subscription_definitions(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -4764,7 +5228,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -4772,7 +5236,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -4793,14 +5257,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec reset_deployments(map(), binary() | list(), reset_deployments_request()) ->
     {ok, reset_deployments_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, reset_deployments_errors(), tuple()}.
 reset_deployments(Client, GroupId, Input) ->
     reset_deployments(Client, GroupId, Input, []).
 
 -spec reset_deployments(map(), binary() | list(), reset_deployments_request(), proplists:proplist()) ->
     {ok, reset_deployments_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, reset_deployments_errors(), tuple()}.
 reset_deployments(Client, GroupId, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/deployments/$reset"],
@@ -4836,14 +5300,14 @@ reset_deployments(Client, GroupId, Input0, Options0) ->
 -spec start_bulk_deployment(map(), start_bulk_deployment_request()) ->
     {ok, start_bulk_deployment_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, start_bulk_deployment_errors(), tuple()}.
 start_bulk_deployment(Client, Input) ->
     start_bulk_deployment(Client, Input, []).
 
 -spec start_bulk_deployment(map(), start_bulk_deployment_request(), proplists:proplist()) ->
     {ok, start_bulk_deployment_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, start_bulk_deployment_errors(), tuple()}.
 start_bulk_deployment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/bulk/deployments"],
@@ -4878,14 +5342,14 @@ start_bulk_deployment(Client, Input0, Options0) ->
 -spec stop_bulk_deployment(map(), binary() | list(), stop_bulk_deployment_request()) ->
     {ok, stop_bulk_deployment_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, stop_bulk_deployment_errors(), tuple()}.
 stop_bulk_deployment(Client, BulkDeploymentId, Input) ->
     stop_bulk_deployment(Client, BulkDeploymentId, Input, []).
 
 -spec stop_bulk_deployment(map(), binary() | list(), stop_bulk_deployment_request(), proplists:proplist()) ->
     {ok, stop_bulk_deployment_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, stop_bulk_deployment_errors(), tuple()}.
 stop_bulk_deployment(Client, BulkDeploymentId, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/bulk/deployments/", aws_util:encode_uri(BulkDeploymentId), "/$stop"],
@@ -4918,14 +5382,14 @@ stop_bulk_deployment(Client, BulkDeploymentId, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -4952,14 +5416,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -4990,16 +5454,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_connectivity_info(map(), binary() | list(), update_connectivity_info_request()) ->
     {ok, update_connectivity_info_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, update_connectivity_info_errors(), tuple()}.
 update_connectivity_info(Client, ThingName, Input) ->
     update_connectivity_info(Client, ThingName, Input, []).
 
 -spec update_connectivity_info(map(), binary() | list(), update_connectivity_info_request(), proplists:proplist()) ->
     {ok, update_connectivity_info_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, update_connectivity_info_errors(), tuple()}.
 update_connectivity_info(Client, ThingName, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/things/", aws_util:encode_uri(ThingName), "/connectivityInfo"],
@@ -5026,14 +5488,14 @@ update_connectivity_info(Client, ThingName, Input0, Options0) ->
 -spec update_connector_definition(map(), binary() | list(), update_connector_definition_request()) ->
     {ok, update_connector_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, update_connector_definition_errors(), tuple()}.
 update_connector_definition(Client, ConnectorDefinitionId, Input) ->
     update_connector_definition(Client, ConnectorDefinitionId, Input, []).
 
 -spec update_connector_definition(map(), binary() | list(), update_connector_definition_request(), proplists:proplist()) ->
     {ok, update_connector_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, update_connector_definition_errors(), tuple()}.
 update_connector_definition(Client, ConnectorDefinitionId, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/definition/connectors/", aws_util:encode_uri(ConnectorDefinitionId), ""],
@@ -5060,14 +5522,14 @@ update_connector_definition(Client, ConnectorDefinitionId, Input0, Options0) ->
 -spec update_core_definition(map(), binary() | list(), update_core_definition_request()) ->
     {ok, update_core_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, update_core_definition_errors(), tuple()}.
 update_core_definition(Client, CoreDefinitionId, Input) ->
     update_core_definition(Client, CoreDefinitionId, Input, []).
 
 -spec update_core_definition(map(), binary() | list(), update_core_definition_request(), proplists:proplist()) ->
     {ok, update_core_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, update_core_definition_errors(), tuple()}.
 update_core_definition(Client, CoreDefinitionId, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/definition/cores/", aws_util:encode_uri(CoreDefinitionId), ""],
@@ -5094,14 +5556,14 @@ update_core_definition(Client, CoreDefinitionId, Input0, Options0) ->
 -spec update_device_definition(map(), binary() | list(), update_device_definition_request()) ->
     {ok, update_device_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, update_device_definition_errors(), tuple()}.
 update_device_definition(Client, DeviceDefinitionId, Input) ->
     update_device_definition(Client, DeviceDefinitionId, Input, []).
 
 -spec update_device_definition(map(), binary() | list(), update_device_definition_request(), proplists:proplist()) ->
     {ok, update_device_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, update_device_definition_errors(), tuple()}.
 update_device_definition(Client, DeviceDefinitionId, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/definition/devices/", aws_util:encode_uri(DeviceDefinitionId), ""],
@@ -5128,14 +5590,14 @@ update_device_definition(Client, DeviceDefinitionId, Input0, Options0) ->
 -spec update_function_definition(map(), binary() | list(), update_function_definition_request()) ->
     {ok, update_function_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, update_function_definition_errors(), tuple()}.
 update_function_definition(Client, FunctionDefinitionId, Input) ->
     update_function_definition(Client, FunctionDefinitionId, Input, []).
 
 -spec update_function_definition(map(), binary() | list(), update_function_definition_request(), proplists:proplist()) ->
     {ok, update_function_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, update_function_definition_errors(), tuple()}.
 update_function_definition(Client, FunctionDefinitionId, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/definition/functions/", aws_util:encode_uri(FunctionDefinitionId), ""],
@@ -5162,14 +5624,14 @@ update_function_definition(Client, FunctionDefinitionId, Input0, Options0) ->
 -spec update_group(map(), binary() | list(), update_group_request()) ->
     {ok, update_group_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, update_group_errors(), tuple()}.
 update_group(Client, GroupId, Input) ->
     update_group(Client, GroupId, Input, []).
 
 -spec update_group(map(), binary() | list(), update_group_request(), proplists:proplist()) ->
     {ok, update_group_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, update_group_errors(), tuple()}.
 update_group(Client, GroupId, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), ""],
@@ -5196,16 +5658,14 @@ update_group(Client, GroupId, Input0, Options0) ->
 -spec update_group_certificate_configuration(map(), binary() | list(), update_group_certificate_configuration_request()) ->
     {ok, update_group_certificate_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, update_group_certificate_configuration_errors(), tuple()}.
 update_group_certificate_configuration(Client, GroupId, Input) ->
     update_group_certificate_configuration(Client, GroupId, Input, []).
 
 -spec update_group_certificate_configuration(map(), binary() | list(), update_group_certificate_configuration_request(), proplists:proplist()) ->
     {ok, update_group_certificate_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, update_group_certificate_configuration_errors(), tuple()}.
 update_group_certificate_configuration(Client, GroupId, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/certificateauthorities/configuration/expiry"],
@@ -5232,14 +5692,14 @@ update_group_certificate_configuration(Client, GroupId, Input0, Options0) ->
 -spec update_logger_definition(map(), binary() | list(), update_logger_definition_request()) ->
     {ok, update_logger_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, update_logger_definition_errors(), tuple()}.
 update_logger_definition(Client, LoggerDefinitionId, Input) ->
     update_logger_definition(Client, LoggerDefinitionId, Input, []).
 
 -spec update_logger_definition(map(), binary() | list(), update_logger_definition_request(), proplists:proplist()) ->
     {ok, update_logger_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, update_logger_definition_errors(), tuple()}.
 update_logger_definition(Client, LoggerDefinitionId, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/definition/loggers/", aws_util:encode_uri(LoggerDefinitionId), ""],
@@ -5266,14 +5726,14 @@ update_logger_definition(Client, LoggerDefinitionId, Input0, Options0) ->
 -spec update_resource_definition(map(), binary() | list(), update_resource_definition_request()) ->
     {ok, update_resource_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, update_resource_definition_errors(), tuple()}.
 update_resource_definition(Client, ResourceDefinitionId, Input) ->
     update_resource_definition(Client, ResourceDefinitionId, Input, []).
 
 -spec update_resource_definition(map(), binary() | list(), update_resource_definition_request(), proplists:proplist()) ->
     {ok, update_resource_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, update_resource_definition_errors(), tuple()}.
 update_resource_definition(Client, ResourceDefinitionId, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/definition/resources/", aws_util:encode_uri(ResourceDefinitionId), ""],
@@ -5300,14 +5760,14 @@ update_resource_definition(Client, ResourceDefinitionId, Input0, Options0) ->
 -spec update_subscription_definition(map(), binary() | list(), update_subscription_definition_request()) ->
     {ok, update_subscription_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, update_subscription_definition_errors(), tuple()}.
 update_subscription_definition(Client, SubscriptionDefinitionId, Input) ->
     update_subscription_definition(Client, SubscriptionDefinitionId, Input, []).
 
 -spec update_subscription_definition(map(), binary() | list(), update_subscription_definition_request(), proplists:proplist()) ->
     {ok, update_subscription_definition_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()}.
+    {error, update_subscription_definition_errors(), tuple()}.
 update_subscription_definition(Client, SubscriptionDefinitionId, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/definition/subscriptions/", aws_util:encode_uri(SubscriptionDefinitionId), ""],
@@ -5334,16 +5794,14 @@ update_subscription_definition(Client, SubscriptionDefinitionId, Input0, Options
 -spec update_thing_runtime_configuration(map(), binary() | list(), update_thing_runtime_configuration_request()) ->
     {ok, update_thing_runtime_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, update_thing_runtime_configuration_errors(), tuple()}.
 update_thing_runtime_configuration(Client, ThingName, Input) ->
     update_thing_runtime_configuration(Client, ThingName, Input, []).
 
 -spec update_thing_runtime_configuration(map(), binary() | list(), update_thing_runtime_configuration_request(), proplists:proplist()) ->
     {ok, update_thing_runtime_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_error_exception(), tuple()}.
+    {error, update_thing_runtime_configuration_errors(), tuple()}.
 update_thing_runtime_configuration(Client, ThingName, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/things/", aws_util:encode_uri(ThingName), "/runtimeconfig"],

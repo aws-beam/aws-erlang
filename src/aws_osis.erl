@@ -56,6 +56,7 @@
 %% }
 -type service_vpc_endpoint() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"Arn">> := string(),
@@ -63,11 +64,13 @@
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_pipeline_response() :: #{
 %%   <<"Pipeline">> => pipeline()
 %% }
 -type get_pipeline_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_pipelines_response() :: #{
@@ -76,11 +79,13 @@
 %% }
 -type list_pipelines_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_pipeline_response() :: #{
 %%   <<"Pipeline">> => pipeline()
 %% }
 -type update_pipeline_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_pipelines_request() :: #{
@@ -88,9 +93,11 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_pipelines_request() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% create_pipeline_response() :: #{
@@ -98,11 +105,13 @@
 %% }
 -type create_pipeline_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_pipeline_change_progress_response() :: #{
 %%   <<"ChangeProgressStatuses">> => list(change_progress_status()())
 %% }
 -type get_pipeline_change_progress_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% pipeline() :: #{
@@ -125,11 +134,13 @@
 %% }
 -type pipeline() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_pipeline_response() :: #{
 %%   <<"Pipeline">> => pipeline()
 %% }
 -type start_pipeline_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% change_progress_status() :: #{
@@ -140,6 +151,7 @@
 %% }
 -type change_progress_status() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"Arn">> := string(),
@@ -147,23 +159,28 @@
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% cloud_watch_log_destination() :: #{
 %%   <<"LogGroup">> => string()
 %% }
 -type cloud_watch_log_destination() :: #{binary() => any()}.
+
 %% Example:
 %% start_pipeline_request() :: #{}
 -type start_pipeline_request() :: #{}.
+
 
 %% Example:
 %% buffer_options() :: #{
 %%   <<"PersistentBufferEnabled">> => boolean()
 %% }
 -type buffer_options() :: #{binary() => any()}.
+
 %% Example:
 %% list_pipeline_blueprints_request() :: #{}
 -type list_pipeline_blueprints_request() :: #{}.
+
 
 %% Example:
 %% list_pipeline_blueprints_response() :: #{
@@ -171,11 +188,13 @@
 %% }
 -type list_pipeline_blueprints_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -183,12 +202,14 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Value">> => string()
 %% }
 -type tag() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_pipeline_request() :: #{
@@ -204,6 +225,7 @@
 %% }
 -type create_pipeline_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_pipeline_request() :: #{
 %%   <<"BufferOptions">> => buffer_options(),
@@ -214,21 +236,26 @@
 %%   <<"PipelineConfigurationBody">> => string()
 %% }
 -type update_pipeline_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_pipeline_blueprint_request() :: #{}
 -type get_pipeline_blueprint_request() :: #{}.
+
 %% Example:
 %% delete_pipeline_request() :: #{}
 -type delete_pipeline_request() :: #{}.
+
 
 %% Example:
 %% get_pipeline_blueprint_response() :: #{
 %%   <<"Blueprint">> => pipeline_blueprint()
 %% }
 -type get_pipeline_blueprint_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_pipeline_change_progress_request() :: #{}
 -type get_pipeline_change_progress_request() :: #{}.
+
 
 %% Example:
 %% pipeline_summary() :: #{
@@ -244,17 +271,20 @@
 %% }
 -type pipeline_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% encryption_at_rest_options() :: #{
 %%   <<"KmsKeyArn">> => string()
 %% }
 -type encryption_at_rest_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"Tags">> => list(tag()())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% vpc_endpoint() :: #{
@@ -264,12 +294,14 @@
 %% }
 -type vpc_endpoint() :: #{binary() => any()}.
 
+
 %% Example:
 %% pipeline_blueprint() :: #{
 %%   <<"BlueprintName">> => string(),
 %%   <<"PipelineConfigurationBody">> => string()
 %% }
 -type pipeline_blueprint() :: #{binary() => any()}.
+
 
 %% Example:
 %% log_publishing_options() :: #{
@@ -278,14 +310,17 @@
 %% }
 -type log_publishing_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% pipeline_blueprint_summary() :: #{
 %%   <<"BlueprintName">> => string()
 %% }
 -type pipeline_blueprint_summary() :: #{binary() => any()}.
+
 %% Example:
 %% stop_pipeline_request() :: #{}
 -type stop_pipeline_request() :: #{}.
+
 
 %% Example:
 %% change_progress_stage() :: #{
@@ -296,11 +331,13 @@
 %% }
 -type change_progress_stage() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_message() :: #{
 %%   <<"Message">> => string()
 %% }
 -type validation_message() :: #{binary() => any()}.
+
 
 %% Example:
 %% internal_exception() :: #{
@@ -308,14 +345,17 @@
 %% }
 -type internal_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% stop_pipeline_response() :: #{
@@ -323,15 +363,18 @@
 %% }
 -type stop_pipeline_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% validate_pipeline_response() :: #{
 %%   <<"Errors">> => list(validation_message()()),
 %%   <<"isValid">> => boolean()
 %% }
 -type validate_pipeline_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_pipeline_request() :: #{}
 -type get_pipeline_request() :: #{}.
+
 
 %% Example:
 %% pipeline_status_reason() :: #{
@@ -339,17 +382,20 @@
 %% }
 -type pipeline_status_reason() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_request() :: #{
 %%   <<"Arn">> := string()
 %% }
 -type list_tags_for_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% vpc_options() :: #{
@@ -358,11 +404,13 @@
 %% }
 -type vpc_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_already_exists_exception() :: #{
@@ -370,20 +418,113 @@
 %% }
 -type resource_already_exists_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% validate_pipeline_request() :: #{
 %%   <<"PipelineConfigurationBody">> := string()
 %% }
 -type validate_pipeline_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_pipeline_response() :: #{}
 -type delete_pipeline_response() :: #{}.
+
 
 %% Example:
 %% invalid_pagination_token_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_pagination_token_exception() :: #{binary() => any()}.
+
+-type create_pipeline_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type delete_pipeline_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_pipeline_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type get_pipeline_blueprint_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type get_pipeline_change_progress_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type list_pipeline_blueprints_errors() ::
+    invalid_pagination_token_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception().
+
+-type list_pipelines_errors() ::
+    invalid_pagination_token_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type start_pipeline_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type stop_pipeline_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type update_pipeline_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type validate_pipeline_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception().
 
 %%====================================================================
 %% API
@@ -396,24 +537,14 @@
 -spec create_pipeline(map(), create_pipeline_request()) ->
     {ok, create_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_pipeline_errors(), tuple()}.
 create_pipeline(Client, Input) ->
     create_pipeline(Client, Input, []).
 
 -spec create_pipeline(map(), create_pipeline_request(), proplists:proplist()) ->
     {ok, create_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_pipeline_errors(), tuple()}.
 create_pipeline(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2022-01-01/osis/createPipeline"],
@@ -443,22 +574,14 @@ create_pipeline(Client, Input0, Options0) ->
 -spec delete_pipeline(map(), binary() | list(), delete_pipeline_request()) ->
     {ok, delete_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_pipeline_errors(), tuple()}.
 delete_pipeline(Client, PipelineName, Input) ->
     delete_pipeline(Client, PipelineName, Input, []).
 
 -spec delete_pipeline(map(), binary() | list(), delete_pipeline_request(), proplists:proplist()) ->
     {ok, delete_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_pipeline_errors(), tuple()}.
 delete_pipeline(Client, PipelineName, Input0, Options0) ->
     Method = delete,
     Path = ["/2022-01-01/osis/deletePipeline/", aws_util:encode_uri(PipelineName), ""],
@@ -485,10 +608,7 @@ delete_pipeline(Client, PipelineName, Input0, Options0) ->
 -spec get_pipeline(map(), binary() | list()) ->
     {ok, get_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_pipeline_errors(), tuple()}.
 get_pipeline(Client, PipelineName)
   when is_map(Client) ->
     get_pipeline(Client, PipelineName, #{}, #{}).
@@ -496,10 +616,7 @@ get_pipeline(Client, PipelineName)
 -spec get_pipeline(map(), binary() | list(), map(), map()) ->
     {ok, get_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_pipeline_errors(), tuple()}.
 get_pipeline(Client, PipelineName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_pipeline(Client, PipelineName, QueryMap, HeadersMap, []).
@@ -507,10 +624,7 @@ get_pipeline(Client, PipelineName, QueryMap, HeadersMap)
 -spec get_pipeline(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_pipeline_errors(), tuple()}.
 get_pipeline(Client, PipelineName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2022-01-01/osis/getPipeline/", aws_util:encode_uri(PipelineName), ""],
@@ -539,10 +653,7 @@ get_pipeline(Client, PipelineName, QueryMap, HeadersMap, Options0)
 -spec get_pipeline_blueprint(map(), binary() | list()) ->
     {ok, get_pipeline_blueprint_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_pipeline_blueprint_errors(), tuple()}.
 get_pipeline_blueprint(Client, BlueprintName)
   when is_map(Client) ->
     get_pipeline_blueprint(Client, BlueprintName, #{}, #{}).
@@ -550,10 +661,7 @@ get_pipeline_blueprint(Client, BlueprintName)
 -spec get_pipeline_blueprint(map(), binary() | list(), map(), map()) ->
     {ok, get_pipeline_blueprint_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_pipeline_blueprint_errors(), tuple()}.
 get_pipeline_blueprint(Client, BlueprintName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_pipeline_blueprint(Client, BlueprintName, QueryMap, HeadersMap, []).
@@ -561,10 +669,7 @@ get_pipeline_blueprint(Client, BlueprintName, QueryMap, HeadersMap)
 -spec get_pipeline_blueprint(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_pipeline_blueprint_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_pipeline_blueprint_errors(), tuple()}.
 get_pipeline_blueprint(Client, BlueprintName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2022-01-01/osis/getPipelineBlueprint/", aws_util:encode_uri(BlueprintName), ""],
@@ -594,10 +699,7 @@ get_pipeline_blueprint(Client, BlueprintName, QueryMap, HeadersMap, Options0)
 -spec get_pipeline_change_progress(map(), binary() | list()) ->
     {ok, get_pipeline_change_progress_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_pipeline_change_progress_errors(), tuple()}.
 get_pipeline_change_progress(Client, PipelineName)
   when is_map(Client) ->
     get_pipeline_change_progress(Client, PipelineName, #{}, #{}).
@@ -605,10 +707,7 @@ get_pipeline_change_progress(Client, PipelineName)
 -spec get_pipeline_change_progress(map(), binary() | list(), map(), map()) ->
     {ok, get_pipeline_change_progress_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_pipeline_change_progress_errors(), tuple()}.
 get_pipeline_change_progress(Client, PipelineName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_pipeline_change_progress(Client, PipelineName, QueryMap, HeadersMap, []).
@@ -616,10 +715,7 @@ get_pipeline_change_progress(Client, PipelineName, QueryMap, HeadersMap)
 -spec get_pipeline_change_progress(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_pipeline_change_progress_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_pipeline_change_progress_errors(), tuple()}.
 get_pipeline_change_progress(Client, PipelineName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2022-01-01/osis/getPipelineChangeProgress/", aws_util:encode_uri(PipelineName), ""],
@@ -644,20 +740,14 @@ get_pipeline_change_progress(Client, PipelineName, QueryMap, HeadersMap, Options
 -spec list_pipeline_blueprints(map(), list_pipeline_blueprints_request()) ->
     {ok, list_pipeline_blueprints_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_pipeline_blueprints_errors(), tuple()}.
 list_pipeline_blueprints(Client, Input) ->
     list_pipeline_blueprints(Client, Input, []).
 
 -spec list_pipeline_blueprints(map(), list_pipeline_blueprints_request(), proplists:proplist()) ->
     {ok, list_pipeline_blueprints_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_pipeline_blueprints_errors(), tuple()}.
 list_pipeline_blueprints(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2022-01-01/osis/listPipelineBlueprints"],
@@ -689,10 +779,7 @@ list_pipeline_blueprints(Client, Input0, Options0) ->
 -spec list_pipelines(map()) ->
     {ok, list_pipelines_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_pipelines_errors(), tuple()}.
 list_pipelines(Client)
   when is_map(Client) ->
     list_pipelines(Client, #{}, #{}).
@@ -700,10 +787,7 @@ list_pipelines(Client)
 -spec list_pipelines(map(), map(), map()) ->
     {ok, list_pipelines_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_pipelines_errors(), tuple()}.
 list_pipelines(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_pipelines(Client, QueryMap, HeadersMap, []).
@@ -711,10 +795,7 @@ list_pipelines(Client, QueryMap, HeadersMap)
 -spec list_pipelines(map(), map(), map(), proplists:proplist()) ->
     {ok, list_pipelines_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_pagination_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_pipelines_errors(), tuple()}.
 list_pipelines(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2022-01-01/osis/listPipelines"],
@@ -745,10 +826,7 @@ list_pipelines(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Arn)
   when is_map(Client) ->
     list_tags_for_resource(Client, Arn, #{}, #{}).
@@ -756,10 +834,7 @@ list_tags_for_resource(Client, Arn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, []).
@@ -767,10 +842,7 @@ list_tags_for_resource(Client, Arn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2022-01-01/osis/listTagsForResource"],
@@ -798,22 +870,14 @@ list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, Options0)
 -spec start_pipeline(map(), binary() | list(), start_pipeline_request()) ->
     {ok, start_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_pipeline_errors(), tuple()}.
 start_pipeline(Client, PipelineName, Input) ->
     start_pipeline(Client, PipelineName, Input, []).
 
 -spec start_pipeline(map(), binary() | list(), start_pipeline_request(), proplists:proplist()) ->
     {ok, start_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_pipeline_errors(), tuple()}.
 start_pipeline(Client, PipelineName, Input0, Options0) ->
     Method = put,
     Path = ["/2022-01-01/osis/startPipeline/", aws_util:encode_uri(PipelineName), ""],
@@ -843,22 +907,14 @@ start_pipeline(Client, PipelineName, Input0, Options0) ->
 -spec stop_pipeline(map(), binary() | list(), stop_pipeline_request()) ->
     {ok, stop_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_pipeline_errors(), tuple()}.
 stop_pipeline(Client, PipelineName, Input) ->
     stop_pipeline(Client, PipelineName, Input, []).
 
 -spec stop_pipeline(map(), binary() | list(), stop_pipeline_request(), proplists:proplist()) ->
     {ok, stop_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_pipeline_errors(), tuple()}.
 stop_pipeline(Client, PipelineName, Input0, Options0) ->
     Method = put,
     Path = ["/2022-01-01/osis/stopPipeline/", aws_util:encode_uri(PipelineName), ""],
@@ -888,22 +944,14 @@ stop_pipeline(Client, PipelineName, Input0, Options0) ->
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2022-01-01/osis/tagResource"],
@@ -935,20 +983,14 @@ tag_resource(Client, Input0, Options0) ->
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2022-01-01/osis/untagResource"],
@@ -979,22 +1021,14 @@ untag_resource(Client, Input0, Options0) ->
 -spec update_pipeline(map(), binary() | list(), update_pipeline_request()) ->
     {ok, update_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_pipeline_errors(), tuple()}.
 update_pipeline(Client, PipelineName, Input) ->
     update_pipeline(Client, PipelineName, Input, []).
 
 -spec update_pipeline(map(), binary() | list(), update_pipeline_request(), proplists:proplist()) ->
     {ok, update_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_pipeline_errors(), tuple()}.
 update_pipeline(Client, PipelineName, Input0, Options0) ->
     Method = put,
     Path = ["/2022-01-01/osis/updatePipeline/", aws_util:encode_uri(PipelineName), ""],
@@ -1027,18 +1061,14 @@ update_pipeline(Client, PipelineName, Input0, Options0) ->
 -spec validate_pipeline(map(), validate_pipeline_request()) ->
     {ok, validate_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, validate_pipeline_errors(), tuple()}.
 validate_pipeline(Client, Input) ->
     validate_pipeline(Client, Input, []).
 
 -spec validate_pipeline(map(), validate_pipeline_request(), proplists:proplist()) ->
     {ok, validate_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, validate_pipeline_errors(), tuple()}.
 validate_pipeline(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2022-01-01/osis/validatePipeline"],
